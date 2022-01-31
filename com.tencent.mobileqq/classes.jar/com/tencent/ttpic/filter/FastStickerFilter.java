@@ -20,6 +20,7 @@ import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.MatrixUtil;
+import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.PersonParam;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
@@ -385,6 +386,22 @@ public class FastStickerFilter
   {
     addAttribParam("inputTextureCoordinate", paramArrayOfFloat);
     return true;
+  }
+  
+  public void setTriggerCtrlItemMap(HashMap<String, TriggerCtrlItem> paramHashMap)
+  {
+    if (paramHashMap != null)
+    {
+      Iterator localIterator = this.stickerList.iterator();
+      while (localIterator.hasNext())
+      {
+        FastSticker localFastSticker = (FastSticker)localIterator.next();
+        TriggerCtrlItem localTriggerCtrlItem = (TriggerCtrlItem)paramHashMap.get(localFastSticker.getItemID());
+        if (localTriggerCtrlItem != null) {
+          localFastSticker.setTriggerCtrlItem(localTriggerCtrlItem);
+        }
+      }
+    }
   }
   
   public void updatePreview(Object paramObject)

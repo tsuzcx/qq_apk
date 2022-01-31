@@ -1,76 +1,54 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.view.LayoutInflater;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NewFriendMoreInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
-public class afkc
-  extends afjt
-  implements View.OnClickListener
+class afkc
+  extends ClickableSpan
 {
-  public afkc(Context paramContext, QQAppInterface paramQQAppInterface, aipn paramaipn, atza paramatza)
-  {
-    super(paramContext, paramQQAppInterface, paramaipn, paramatza);
-  }
-  
-  public View a(int paramInt, View paramView)
-  {
-    afkd localafkd;
-    if ((paramView == null) || (!(paramView.getTag() instanceof afkd)))
-    {
-      localafkd = new afkd();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560921, null);
-      localafkd.a = ((TextView)paramView.findViewById(2131370414));
-      if (ThemeUtil.isDefaultTheme())
-      {
-        paramView.setBackgroundResource(2130839184);
-        paramView.setTag(localafkd);
-      }
-    }
-    for (;;)
-    {
-      NewFriendMoreInfo localNewFriendMoreInfo = ((atzb)this.jdField_a_of_type_Atza).a;
-      localafkd.a.setText(localNewFriendMoreInfo.moreInfo);
-      paramView.setOnClickListener(this);
-      return paramView;
-      paramView.setBackgroundResource(2130839129);
-      break;
-      localafkd = (afkd)paramView.getTag();
-    }
-  }
+  afkc(afjb paramafjb) {}
   
   public void onClick(View paramView)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof afkd))) {}
-    switch (((atzb)this.jdField_a_of_type_Atza).a.type)
+    Intent localIntent;
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-    default: 
-      return;
-    case 1000: 
-      int i = this.jdField_a_of_type_Aipn.a();
-      NewFriendMoreSysMsgActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, 225, i);
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007704", "0X8007704", 0, 0, "", "", "", "");
+      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, EditActivity.class);
+      paramView = ((almv)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if ((paramView == null) || (!paramView.hasRenamed())) {
+        break label193;
+      }
+    }
+    label193:
+    for (paramView = paramView.discussionName;; paramView = "")
+    {
+      localIntent.putExtra("title", 2131691934);
+      localIntent.putExtra("action", 102);
+      localIntent.putExtra("limit", 48);
+      localIntent.putExtra("current", paramView);
+      localIntent.putExtra("canPostNull", false);
+      localIntent.putExtra("multiLine", false);
+      localIntent.putExtra("selfSet_leftViewText", this.a.jdField_a_of_type_AndroidContentContext.getString(2131690382));
+      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 6002);
+      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800666A", "0X800666A", 0, 0, "", "", "", "");
       return;
     }
-    paramView = (akbn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34);
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AddContactsActivity.class);
-    localIntent.putExtra("entrence_data_report", 4);
-    localIntent.putExtra("EntranceId", 6);
-    ((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 226);
-    paramView.f();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afkc
  * JD-Core Version:    0.7.0.1
  */

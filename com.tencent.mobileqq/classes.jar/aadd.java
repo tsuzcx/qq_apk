@@ -1,96 +1,165 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-class aadd
-  implements DialogInterface.OnCancelListener, bfph, bfpj
+public class aadd
 {
-  aabi jdField_a_of_type_Aabi;
-  bfpc jdField_a_of_type_Bfpc;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private String b;
+  private String c;
   
-  public aadd(bfpc parambfpc, aabi paramaabi)
+  public aadd(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Bfpc = parambfpc;
-    this.jdField_a_of_type_Aabi = paramaabi;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  public void OnClick(View paramView, int paramInt)
+  public aadd a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Bfpc.dismiss();
-    paramView = new JSONObject();
-    try
+    if ((paramInt >= 1) && (paramInt <= 40))
     {
-      paramView.put("cancel", false);
-      paramView.put("tapIndex", paramInt);
-      aaep.a(this.jdField_a_of_type_Aabi, paramView);
-      return;
+      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(paramInt), paramString);
     }
-    catch (JSONException paramView)
+    return this;
+  }
+  
+  public aadd a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public boolean a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0))) {
+      return false;
+    }
+    for (;;)
     {
-      String str = paramView.getMessage();
-      if (QLog.isColorLevel()) {
-        QLog.w("DoraemonOpenAPI.widget", 2, str, paramView);
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilList == null) {
+          this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        }
+        this.jdField_a_of_type_JavaUtilList.clear();
+        long l = NetConnInfoCenter.getServerTime();
+        this.jdField_a_of_type_JavaUtilList.add(String.valueOf(l));
+        this.jdField_a_of_type_JavaUtilList.add("1");
+        this.jdField_a_of_type_JavaUtilList.add("8.3.3");
+        this.jdField_a_of_type_JavaUtilList.add("");
+        this.jdField_a_of_type_JavaUtilList.add("2");
+        this.jdField_a_of_type_JavaUtilList.add(Build.BRAND);
+        int j = ndd.a();
+        if (j >= 0)
+        {
+          i = j;
+          if (j < aljq.c.length)
+          {
+            this.jdField_a_of_type_JavaUtilList.add(aljq.c[i]);
+            Object localObject2 = "";
+            Object localObject1 = localObject2;
+            if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+            {
+              BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+              localObject1 = localObject2;
+              if (localBaseApplication != null)
+              {
+                localObject1 = localBaseApplication.getResources().getDisplayMetrics();
+                localObject1 = ((DisplayMetrics)localObject1).widthPixels + "*" + ((DisplayMetrics)localObject1).heightPixels;
+              }
+            }
+            this.jdField_a_of_type_JavaUtilList.add(localObject1);
+            this.jdField_a_of_type_JavaUtilList.add("0");
+            this.jdField_a_of_type_JavaUtilList.add("0");
+            this.jdField_a_of_type_JavaUtilList.add("1");
+            this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangString);
+            this.jdField_a_of_type_JavaUtilList.add(this.b);
+            this.jdField_a_of_type_JavaUtilList.add("0");
+            this.jdField_a_of_type_JavaUtilList.add(this.c);
+            a(14, Build.MODEL);
+            a(15, Build.VERSION.RELEASE);
+            if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.size() > 0))
+            {
+              i = 1;
+              if (i <= 40)
+              {
+                localObject1 = String.valueOf(i);
+                localObject2 = this.jdField_a_of_type_JavaUtilList;
+                if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1)) {
+                  break label495;
+                }
+                localObject1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+                ((List)localObject2).add(localObject1);
+                i += 1;
+                continue;
+              }
+            }
+            biiv.a(null, "dc00087", this.jdField_a_of_type_JavaUtilList);
+            return true;
+          }
+        }
       }
-      aabi localaabi = this.jdField_a_of_type_Aabi;
-      paramView = str;
-      if (str == null) {
-        paramView = "";
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return false;
       }
-      aaep.a(localaabi, -2, paramView);
+      int i = 0;
+      continue;
+      label495:
+      String str = "";
     }
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public aadd b(String paramString)
   {
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("cancel", true);
-      paramDialogInterface.put("tapIndex", -1);
-      aaep.a(this.jdField_a_of_type_Aabi, paramDialogInterface);
-      return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      String str = paramDialogInterface.getMessage();
-      if (QLog.isColorLevel()) {
-        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
-      }
-      aabi localaabi = this.jdField_a_of_type_Aabi;
-      paramDialogInterface = str;
-      if (str == null) {
-        paramDialogInterface = "";
-      }
-      aaep.a(localaabi, -2, paramDialogInterface);
-    }
+    this.b = paramString;
+    return this;
   }
   
-  public void onDismiss()
+  public aadd c(String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("cancel", true);
-      localJSONObject.put("tapIndex", -1);
-      aaep.a(this.jdField_a_of_type_Aabi, localJSONObject);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      String str = localJSONException.getMessage();
-      if (QLog.isColorLevel()) {
-        QLog.w("DoraemonOpenAPI.widget", 2, str, localJSONException);
-      }
-      aabi localaabi = this.jdField_a_of_type_Aabi;
-      Object localObject = str;
-      if (str == null) {
-        localObject = "";
-      }
-      aaep.a(localaabi, -2, (String)localObject);
-    }
+    this.c = paramString;
+    return this;
+  }
+  
+  public aadd d(String paramString)
+  {
+    return a(4, paramString);
+  }
+  
+  public aadd e(String paramString)
+  {
+    return a(1, paramString);
+  }
+  
+  public aadd f(String paramString)
+  {
+    return a(11, paramString);
+  }
+  
+  public aadd g(String paramString)
+  {
+    return a(12, paramString);
+  }
+  
+  public aadd h(String paramString)
+  {
+    return a(35, paramString);
   }
 }
 

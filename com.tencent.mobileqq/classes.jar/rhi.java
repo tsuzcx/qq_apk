@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class rhi
-  implements View.OnLongClickListener
+class rhi
+  implements DialogInterface.OnShowListener
 {
-  public rhi(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  rhi(rhf paramrhf) {}
   
-  public boolean onLongClick(View paramView)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    ReadinjoyTabFrame.a(this.a);
-    return true;
+    rhf.a(this.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    rhf.a(this.a).getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhi
  * JD-Core Version:    0.7.0.1
  */

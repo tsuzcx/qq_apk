@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
 import android.content.Context;
-import aoqb;
-import aost;
-import apvj;
-import apxx;
+import aqiz;
+import aqlr;
+import arol;
+import arqz;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -20,7 +20,7 @@ public class QfileLocalFileMediaTabView
 {
   private int a;
   
-  public QfileLocalFileMediaTabView(Context paramContext, int paramInt, List<apxx> paramList, boolean paramBoolean)
+  public QfileLocalFileMediaTabView(Context paramContext, int paramInt, List<arqz> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     this.jdField_a_of_type_Int = 3;
@@ -34,9 +34,9 @@ public class QfileLocalFileMediaTabView
     ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  protected aoqb a()
+  protected aqiz a()
   {
-    return new aost(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
+    return new aqlr(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
   }
   
   protected void a()
@@ -101,7 +101,7 @@ public class QfileLocalFileMediaTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView
  * JD-Core Version:    0.7.0.1
  */

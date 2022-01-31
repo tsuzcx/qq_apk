@@ -8,8 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import axbt;
-import bgyj;
+import aywx;
+import bizg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -89,12 +89,12 @@ public class NotificationClickReceiver
       {
         if (str1.startsWith("mqzone://arouse/livevideo"))
         {
-          paramContext = new bgyj();
+          paramContext = new bizg();
           paramContext.c = String.valueOf(322);
           paramContext.d = String.valueOf(3);
           paramContext.e = String.valueOf(7);
           QZoneClickReport.report((String)localObject, paramContext, true);
-          axbt.a.clear();
+          aywx.a.clear();
         }
         localUri = Uri.parse(str1);
         if (!TextUtils.isEmpty(localUri.getQueryParameter("from"))) {
@@ -124,7 +124,7 @@ public class NotificationClickReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.NotificationClickReceiver
  * JD-Core Version:    0.7.0.1
  */

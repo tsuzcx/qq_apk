@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import beky;
+import bgkd;
+import bgkj;
 import org.json.JSONObject;
 
 class MapJsPlugin$1
-  implements beky
+  implements bgkj
 {
-  MapJsPlugin$1(MapJsPlugin paramMapJsPlugin, bekr parambekr) {}
+  MapJsPlugin$1(MapJsPlugin paramMapJsPlugin, bgkd parambgkd) {}
   
   public void onLocationFinishCallback(JSONObject paramJSONObject)
   {
@@ -16,7 +16,7 @@ class MapJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.MapJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

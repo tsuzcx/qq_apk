@@ -1,23 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-public final class acwe
-  implements Parcelable.Creator<ForwardUtils.SectionBase>
+public class acwe
+  implements asar
 {
-  public ForwardUtils.SectionBase a(Parcel paramParcel)
-  {
-    return new ForwardUtils.SectionBase(paramParcel);
-  }
+  public acwe(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public ForwardUtils.SectionBase[] a(int paramInt)
+  public void a()
   {
-    return new ForwardUtils.SectionBase[paramInt];
+    bhoh localbhoh = bhoh.a;
+    if ((localbhoh != null) && (localbhoh.a()))
+    {
+      if (!localbhoh.a(1)) {
+        localbhoh.b(1);
+      }
+      if ((!localbhoh.a(8)) && (localbhoh.a(5)) && (localbhoh.a(7))) {
+        localbhoh.b(8);
+      }
+      if ((!localbhoh.a(9)) && (localbhoh.a(6)) && (localbhoh.a(7))) {
+        localbhoh.b(9);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwe
  * JD-Core Version:    0.7.0.1
  */

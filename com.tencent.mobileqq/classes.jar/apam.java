@@ -1,29 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 
-class apam
+public class apam
   implements DialogInterface.OnClickListener
 {
-  apam(apah paramapah) {}
+  public apam(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Apll != null) {
-      this.a.jdField_a_of_type_Apll.a(false);
-    }
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      paramDialogInterface = (apaf)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramDialogInterface != null) {
-        paramDialogInterface.aC_();
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apam
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,47 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
-import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import mqq.app.AppRuntime.Status;
 
 public class awam
-  implements GLSurfaceView.EGLContextFactory
 {
-  private int jdField_a_of_type_Int = 12440;
+  public int a;
+  public long a;
+  public String a;
+  public AppRuntime.Status a;
+  public int b;
+  public String b;
   
-  public awam(HWVideoPlayView paramHWVideoPlayView) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public awam(long paramLong, String paramString1, String paramString2)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("HWVideoPlayView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
-    }
-    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public awam(AppRuntime.Status paramStatus)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.m();
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = awai.a(paramStatus);
+    this.jdField_a_of_type_JavaLangString = awai.a(paramStatus);
+  }
+  
+  public static String a(AppRuntime.Status paramStatus, long paramLong)
+  {
+    return paramStatus.getValue() + paramLong + "";
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return paramLong == 1000L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awam
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aiwi;
+import aknu;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.utils.VipUtils;
 class ApolloJsPlugin$8$2
   implements DialogInterface.OnClickListener
 {
-  ApolloJsPlugin$8$2(ApolloJsPlugin.8 param8, aiwi paramaiwi, CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  ApolloJsPlugin$8$2(ApolloJsPlugin.8 param8, aknu paramaknu, CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

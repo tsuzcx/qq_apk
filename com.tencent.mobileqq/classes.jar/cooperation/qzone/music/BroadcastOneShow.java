@@ -3,13 +3,13 @@ package cooperation.qzone.music;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhgb;
+import bjhm;
 import org.json.JSONObject;
 
 public class BroadcastOneShow
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadcastOneShow> CREATOR = new bhgb();
+  public static final Parcelable.Creator<BroadcastOneShow> CREATOR = new bjhm();
   public String bcShowId = "";
   public String bcShowName = "";
   public long endTime;
@@ -76,7 +76,7 @@ public class BroadcastOneShow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.music.BroadcastOneShow
  * JD-Core Version:    0.7.0.1
  */

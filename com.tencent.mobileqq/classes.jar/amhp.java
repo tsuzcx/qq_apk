@@ -1,26 +1,37 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.Comparator;
 
 public class amhp
-  implements amhm
+  implements Comparator<amhq>
 {
-  public void a(Context paramContext, ColorNote paramColorNote)
+  private int a;
+  
+  public amhp(int paramInt)
   {
-    String str = paramColorNote.getSubType();
-    Object localObject = str.split("-");
-    if (localObject.length > 0) {
-      str = localObject[0];
+    this.a = paramInt;
+  }
+  
+  public int a(amhq paramamhq1, amhq paramamhq2)
+  {
+    if (this.a == 2) {
+      if (paramamhq1.b <= paramamhq2.b) {}
     }
-    if (localObject.length > 1) {
-      localObject = localObject[1];
+    while (paramamhq1.a > paramamhq2.a)
+    {
+      return -1;
+      if (paramamhq1.b < paramamhq2.b) {
+        return 1;
+      }
+      return 0;
     }
-    paramColorNote = paramColorNote.getReserve();
-    bgpw.a(paramContext, "", Long.parseLong(str), paramColorNote);
+    if (paramamhq1.a < paramamhq2.a) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amhp
  * JD-Core Version:    0.7.0.1
  */

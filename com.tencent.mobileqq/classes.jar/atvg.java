@@ -1,115 +1,272 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.Looper;
+import android.text.SpannableString;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import java.util.Locale;
+import mqq.manager.Manager;
 
 public class atvg
-  extends atut
+  implements Manager
 {
-  public atvg(Context paramContext, QQAppInterface paramQQAppInterface)
+  public static final String[] a;
+  final atvi a;
+  
+  static
   {
-    super(paramContext, paramQQAppInterface);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "entry_setting", "entry_aio_video", "entry_file", "entry_chat_audio", "entry_chat_video", "entry_kandian_video" };
   }
   
-  public int a(atva paramatva)
+  public atvg(QQAppInterface paramQQAppInterface)
   {
-    return 4;
+    this.jdField_a_of_type_Atvi = new atvi(paramQQAppInterface.getAccount());
   }
   
-  public View a(ViewGroup paramViewGroup, atva paramatva)
+  public static CharSequence a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    paramatva = (atvh)paramatva;
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560891, paramViewGroup, false);
-    paramatva.g = ((TextView)paramViewGroup.findViewById(2131378373));
-    paramatva.e = ((ImageView)paramViewGroup.findViewById(2131368543));
-    paramatva.f = ((ImageView)paramViewGroup.findViewById(2131369339));
-    return paramViewGroup;
-  }
-  
-  public atvh a()
-  {
-    return new atvh(this);
-  }
-  
-  public boolean a(atva paramatva)
-  {
-    return false;
-  }
-  
-  public void d(atva paramatva)
-  {
-    if (!bbfj.g(this.jdField_a_of_type_AndroidContentContext)) {
-      bcql.a(this.jdField_a_of_type_AndroidContentContext, 1, ajya.a(2131706202), 0).a();
-    }
-    do
+    if (paramQQAppInterface != null) {}
+    for (;;)
     {
-      return;
-      bbeg localbbeg = bbex.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramatva.a.m);
-      if (localbbeg != null) {
-        localbbeg.c();
+      try
+      {
+        localObject1 = (atvg)paramQQAppInterface.getManager(221);
+        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+          if (((atvg)localObject1).a())
+          {
+            localObject1 = ((atvg)localObject1).a(paramInt);
+            i = 0;
+            j = i;
+            localObject2 = paramString;
+            if (localObject1 != null)
+            {
+              j = i;
+              localObject2 = paramString;
+            }
+          }
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("LiveMomentItemBuilder", 2, "handleContentClick, liveUrl=" + paramatva.a.m);
+      catch (Exception paramQQAppInterface)
+      {
+        Object localObject1;
+        i = 0;
+      }
+      try
+      {
+        if (!TextUtils.isEmpty(((atvj)localObject1).jdField_a_of_type_JavaLangString))
+        {
+          j = i;
+          localObject2 = paramString;
+          if (!TextUtils.isEmpty(((atvj)localObject1).b))
+          {
+            j = i;
+            localObject2 = paramString;
+            if (((atvj)localObject1).jdField_a_of_type_JavaLangString.contains(((atvj)localObject1).b))
+            {
+              j = i;
+              localObject2 = paramString;
+              if (!TextUtils.isEmpty(((atvj)localObject1).c))
+              {
+                String str = String.format("%s\n%s", new Object[] { paramString, ((atvj)localObject1).jdField_a_of_type_JavaLangString });
+                localObject2 = new SpannableString(str);
+                j = str.indexOf(((atvj)localObject1).b);
+                int k = ((atvj)localObject1).b.length();
+                ((SpannableString)localObject2).setSpan(new atvh(paramContext, ((atvj)localObject1).c, paramQQAppInterface.c(), paramInt), j, k + j, 17);
+                j = i;
+              }
+            }
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "getGuideEntry entry: %d retCode: %d context: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext }));
+        }
+        return localObject2;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        break label301;
+      }
+      localObject1 = null;
+      int i = 3;
+      continue;
+      localObject1 = ((atvg)localObject1).a(paramInt);
+      i = 0;
+      continue;
+      label301:
+      int j = i;
+      Object localObject2 = paramString;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("CUOpenCardGuideMng", 2, "getGuideEnty", paramQQAppInterface);
+        j = i;
+        localObject2 = paramString;
+        continue;
+        j = 0;
+        localObject2 = paramString;
+      }
+    }
   }
   
-  public void f(atva paramatva)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
   {
-    paramatva = (atvh)paramatva;
-    Object localObject2 = (atww)paramatva.a;
-    paramatva.g.setMovementMethod(LinkMovementMethod.getInstance());
-    if (!TextUtils.isEmpty(((atww)localObject2).n))
+    int i = bdee.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    Object localObject1 = null;
+    long l2 = 0L;
+    long l1 = 0L;
+    bdvs localbdvs;
+    if (i != 1)
     {
-      paramatva.g.setVisibility(0);
-      paramatva.g.setText(((atww)localObject2).n);
+      l2 = bdiv.e(paramQQAppInterface.getApp(), paramQQAppInterface.c());
+      l1 = System.currentTimeMillis();
+      localbdvs = bdvr.a(paramString2, true, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("CUOpenCardGuideMng", 2, "WL_DEBUG addCallGrayTip info.mPopUpType = " + localbdvs.jdField_a_of_type_Int + ", info.mGuideJumpUrl = " + localbdvs.jdField_a_of_type_JavaLangString);
+      }
+      paramString2 = (atvg)paramQQAppInterface.getManager(221);
+      if (paramString2 == null) {
+        break label620;
+      }
+      if (!paramBoolean) {
+        break label577;
+      }
+      paramString2 = paramString2.a(4);
     }
     for (;;)
     {
-      Object localObject1 = (String)paramatva.e.getTag(2131376882);
-      localObject2 = ((atww)localObject2).a;
-      if (!TextUtils.equals((CharSequence)localObject1, (CharSequence)localObject2)) {}
-      try
+      String[] arrayOfString2;
+      String[] arrayOfString1;
+      Bundle localBundle;
+      Object localObject3;
+      Object localObject2;
+      if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString2.b)) && (!TextUtils.isEmpty(localbdvs.jdField_a_of_type_JavaLangString)))
       {
-        localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844649);
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844649);
-        localObject1 = URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject1);
-        ((URLDrawable)localObject1).setTag(bavw.b(vzl.a(BaseApplicationImpl.getContext(), 180.0F), vzl.a(BaseApplicationImpl.getContext(), 180.0F), baxn.a(paramatva.e.getContext(), 4.0F)));
-        ((URLDrawable)localObject1).setDecodeHandler(bavw.c);
-        paramatva.e.setImageDrawable((Drawable)localObject1);
-        localObject1 = ayst.a("http://pub.idqqimg.com/pc/misc/files/20171219/4ed0e5a61d2f4024ac6886ee826ac51c.gif");
-        localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
-        localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-        paramatva.f.setImageDrawable((Drawable)localObject1);
-        return;
-        paramatva.g.setVisibility(8);
-      }
-      catch (Exception localException)
-      {
-        do
+        if (QLog.isColorLevel()) {
+          QLog.d("CUOpenCardGuideMng", 2, "WL_DEBUG addCallGrayTip entry.tip = " + paramString2.jdField_a_of_type_JavaLangString + ", entry.keyWord = " + paramString2.b);
+        }
+        arrayOfString2 = paramString2.jdField_a_of_type_JavaLangString.split("\\|");
+        arrayOfString1 = paramString2.b.split("\\|");
+        localBundle = null;
+        localObject3 = null;
+        localObject1 = localObject3;
+        localObject2 = localBundle;
+        if (arrayOfString2.length >= 2)
         {
-          paramatva.e.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844649));
-        } while (!QLog.isColorLevel());
-        QLog.i("LiveMomentItemBuilder", 2, "convertURL, e=" + localException.toString(), localException);
+          localObject1 = localObject3;
+          localObject2 = localBundle;
+          if (arrayOfString1.length >= 2)
+          {
+            if (localbdvs.jdField_a_of_type_Int != 2) {
+              break label588;
+            }
+            localObject2 = arrayOfString2[0];
+            localObject1 = arrayOfString1[0];
+          }
+        }
       }
+      for (;;)
+      {
+        if ((localObject2 != null) && (localObject1 != null))
+        {
+          localBundle = new Bundle();
+          localBundle.putInt("key_action", 1);
+          localBundle.putString("textColor", "#40A0FF");
+          localBundle.putString("key_action_DATA", localbdvs.jdField_a_of_type_JavaLangString);
+          int j = ((String)localObject2).indexOf((String)localObject1);
+          int k = ((String)localObject1).length();
+          localObject1 = new aslp(paramString1, paramQQAppInterface.c(), (String)localObject2, paramInt, -5020, 3145729, ayvc.a());
+          localObject2 = new MessageForUniteGrayTip();
+          if (j >= 0) {
+            ((aslp)localObject1).a(j, k + j, localBundle);
+          }
+          ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, (aslp)localObject1);
+          aslq.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject2);
+          azmj.b(null, "dc00898", "", "", "0X800812A", "0X800812A", 0, 0, "", "", "", "");
+          bdiv.e(paramQQAppInterface.getApp(), paramQQAppInterface.c(), System.currentTimeMillis());
+        }
+        localObject1 = paramString2;
+        if (QLog.isColorLevel()) {
+          QLog.i("CUOpenCardGuideMng", 2, "addCallGrayTip, friendUin= " + paramString1 + ",isVideoMsg=" + paramBoolean + ",netType=" + i + ",uinType=" + paramInt + ",lastAlertTime=" + l2 + ",currentTime=" + l1 + ",entry=" + localObject1);
+        }
+        return;
+        label577:
+        paramString2 = paramString2.a(3);
+        break;
+        label588:
+        localObject1 = localObject3;
+        localObject2 = localBundle;
+        if (localbdvs.jdField_a_of_type_Int == 3)
+        {
+          localObject2 = arrayOfString2[1];
+          localObject1 = arrayOfString1[1];
+        }
+      }
+      label620:
+      paramString2 = null;
+    }
+  }
+  
+  public atvj a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "getGuideEntry entry: %d, isInit: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.jdField_a_of_type_Atvi.jdField_a_of_type_Boolean) }));
+    }
+    this.jdField_a_of_type_Atvi.a();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_Atvi.b)
+    {
+      localObject1 = localObject2;
+      if (paramInt >= 0)
+      {
+        localObject1 = localObject2;
+        if (paramInt < this.jdField_a_of_type_Atvi.jdField_a_of_type_ArrayOfAtvj.length) {
+          localObject1 = this.jdField_a_of_type_Atvi.jdField_a_of_type_ArrayOfAtvj[paramInt];
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Atvi.a();
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "onGetConfig isInit: %b, config: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Atvi.jdField_a_of_type_Boolean), paramString }));
+    }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_Atvi.jdField_a_of_type_JavaLangString, 4).edit();
+    paramString.putString("config_content", str);
+    paramString.commit();
+    this.jdField_a_of_type_Atvi.a(str);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Atvi.jdField_a_of_type_Boolean;
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CUOpenCardGuideMng", 2, "onDestroy");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atvg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 class bddf
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnDismissListener
 {
-  bddf(bdde parambdde, bdah parambdah) {}
+  bddf(bddb parambddb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Bdah.b = paramBoolean;
-    this.jdField_a_of_type_Bdde.notifyDataSetChanged();
+    if ((this.a.a instanceof LoginActivity)) {
+      ((LoginActivity)this.a.a).finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bddf
  * JD-Core Version:    0.7.0.1
  */

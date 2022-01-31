@@ -1,82 +1,80 @@
-import android.annotation.TargetApi;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
 
-public class bgmv
-  extends Dialog
+class bgmv
+  extends BaseAdapter
 {
-  public bgmv(Context paramContext, String paramString)
+  bgmv(bgmu parambgmu) {}
+  
+  public int getCount()
   {
-    super(paramContext, 2131755794);
-    a(paramContext, paramString);
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
+    }
+    return 0;
   }
   
-  @TargetApi(14)
-  private void a(Context paramContext, String paramString)
+  public Object getItem(int paramInt)
   {
-    super.requestWindowFeature(1);
-    Object localObject1 = LayoutInflater.from(paramContext);
-    View localView = ((LayoutInflater)localObject1).inflate(2131558877, null);
-    try
-    {
-      Object localObject2 = ((LayoutInflater)localObject1).inflate(2131561453, (ViewGroup)localView, false);
-      localObject1 = (RelativeLayout)localView.findViewById(2131377452);
-      Object localObject3 = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131375329);
-      ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-      localObject2 = (TextView)localView.findViewById(2131368429);
-      IphoneTitleBarActivity.setLayerType((View)localObject2);
-      if (localObject2 != null) {
-        ((TextView)localObject2).setText(ajya.a(2131708291));
-      }
-      localObject3 = (TextView)localView.findViewById(2131368472);
-      IphoneTitleBarActivity.setLayerType((View)localObject2);
-      if (localObject3 != null) {
-        ((TextView)localObject3).setText(paramString);
-      }
-      super.setContentView((View)localObject1);
-      paramString = getWindow();
-      localObject1 = paramString.getAttributes();
-      ((WindowManager.LayoutParams)localObject1).width = -1;
-      ((WindowManager.LayoutParams)localObject1).height = -1;
-      paramString.setAttributes((WindowManager.LayoutParams)localObject1);
-      if (ImmersiveUtils.isSupporImmersive() == 1)
-      {
-        paramString.addFlags(67108864);
-        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131166910)).init();
-        localView.setFitsSystemWindows(true);
-        localView.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramContext), 0, 0);
-      }
-      return;
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
     }
-    catch (InflateException paramContext)
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQWIFIPluginLoadDialog", 2, "layout with merge ,use framelayout to immersive");
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.a.a(), null);
+      paramView = new bgnc(this.a, null);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131368564));
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (bgnc)paramViewGroup.getTag();
+    int i;
+    int j;
+    int k;
+    int m;
+    if (paramView.a != null)
+    {
+      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      paramView.a.setOnClickListener(new bgnb(this.a, paramInt));
+      i = paramView.a.getPaddingTop();
+      j = paramView.a.getPaddingLeft();
+      k = paramView.a.getPaddingRight();
+      m = paramView.a.getPaddingBottom();
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
+        break label212;
       }
-      super.setContentView(2131561453);
-      getWindow().setFeatureInt(7, 2131558875);
+      paramView.a.setBackgroundResource(2130840869);
+    }
+    for (;;)
+    {
+      paramView.a.setPadding(j, i, k, m);
+      return paramViewGroup;
+      label212:
+      if (paramInt == 0) {
+        paramView.a.setBackgroundResource(2130840870);
+      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
+        paramView.a.setBackgroundResource(2130840868);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgmv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,27 @@
+import com.tencent.mobileqq.servlet.LoginVerifyServlet.3;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-class ayxh
-  implements EIPClientConnectListener
+public class ayxh
+  implements HostnameVerifier
 {
-  ayxh(ayxg paramayxg) {}
+  public ayxh(LoginVerifyServlet.3 param3, URL paramURL) {}
   
-  public void connectFailed()
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    ayxg.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "connectFailed");
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
+    if (!bool) {
+      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
-  }
-  
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      ayxg.a(this.a, paramEIPCConnection.procName);
-    }
-    ayxg.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "connectSuccess");
-    }
-    ayxg.a(this.a);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayxh
  * JD-Core Version:    0.7.0.1
  */

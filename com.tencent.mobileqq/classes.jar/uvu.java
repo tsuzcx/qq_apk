@@ -1,15 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class uvu
+  implements bemn
 {
-  public List<uvp> a = new ArrayList(0);
-  public boolean a;
-  public boolean b;
+  public uvu(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
+  
+  public void a(String paramString)
+  {
+    this.a.a.setVisibility(4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uvu
  * JD-Core Version:    0.7.0.1
  */

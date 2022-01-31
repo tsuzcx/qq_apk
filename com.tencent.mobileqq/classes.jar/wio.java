@@ -1,27 +1,30 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
+import java.util.ArrayList;
+import java.util.List;
 
-final class wio
-  implements xgu<CertifiedAccountRead.StGetMainPageRsp>
+public class wio
+  extends uxs
 {
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public int a;
+  public String a;
+  public List<ShareGroupCollectionItem> a;
+  
+  public wio(ErrorMessage paramErrorMessage, String paramString)
   {
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      if (paramStGetMainPageRsp != null) {
-        win.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
-      }
-    }
-    else {
-      return;
-    }
-    QLog.w(win.class.getSimpleName(), 1, "getPuinUser empty");
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wio
  * JD-Core Version:    0.7.0.1
  */

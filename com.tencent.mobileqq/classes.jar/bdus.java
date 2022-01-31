@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUiPlugin;
 
 public class bdus
-  implements DialogInterface.OnClickListener
+  extends VasWebviewUiPlugin
 {
-  public bdus(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public long getPluginBusiness()
   {
-    paramDialogInterface.dismiss();
+    return 1048576L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdus
  * JD-Core Version:    0.7.0.1
  */

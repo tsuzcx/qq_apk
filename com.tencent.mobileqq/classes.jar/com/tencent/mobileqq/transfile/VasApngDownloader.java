@@ -2,9 +2,9 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import ayoj;
-import bbwu;
-import bbww;
+import bamf;
+import bdvv;
+import bdvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -18,7 +18,7 @@ import java.io.OutputStream;
 import java.net.URL;
 
 public class VasApngDownloader
-  extends ayoj
+  extends bamf
 {
   public VasApngDownloader()
   {
@@ -86,9 +86,9 @@ public class VasApngDownloader
         QLog.e("vasapngdownloader", 2, "downloadImage url has no http err, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
         return null;
       }
-      paramDownloadParams = new bbwu(paramOutputStream, localFile);
+      paramDownloadParams = new bdvv(paramOutputStream, localFile);
       paramDownloadParams.h = true;
-      i = bbww.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
+      i = bdvx.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (localFile.exists()) {
@@ -134,12 +134,17 @@ public class VasApngDownloader
       }
       return paramURLDrawableHandler;
     }
+    if (paramFile == null)
+    {
+      QLog.e("vasapngdownloader", 1, "decodeFile error : file == null");
+      return null;
+    }
     return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VasApngDownloader
  * JD-Core Version:    0.7.0.1
  */

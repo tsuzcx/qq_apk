@@ -1,120 +1,39 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeCustomizeStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
 
-class aemz
-  implements View.OnClickListener
+public class aemz
+  implements aivw
 {
-  aemz(aemy paramaemy) {}
+  public aemz(CustomizeStrategyFactory.ThemeCustomizeStrategy.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    Object localObject = (airx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
-    aizi localaizi = ((airx)localObject).a();
-    switch (paramView.getId())
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
     {
-    default: 
-    case 2131362596: 
-    case 2131362595: 
-    case 2131363455: 
-    case 2131363454: 
-    case 2131378286: 
-    case 2131378039: 
-    case 2131378320: 
-    case 2131378096: 
-      label620:
-      do
+      this.a.a.background = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy info.background=" + this.a.a.background);
+      }
+      CustomizeStrategyFactory.a().a(this.a.a);
+      return;
+    }
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
       {
-        return;
-        VipUtils.a(null, "cmshow", "Apollo", "guideOfAudio", 0, 0, new String[] { "1" });
-        this.a.w(false);
-        ((airx)localObject).a().a(this.a.a(), 319);
-        return;
-        this.a.v(false);
-        VipUtils.a(null, "cmshow", "Apollo", "guideOfAddFriend", 0, 0, new String[] { "1" });
-        if (!bbfj.d(BaseApplication.getContext()))
-        {
-          bcql.a(BaseApplication.getContext(), 2131692321, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
-          return;
-        }
-        localaizi.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        VipUtils.a(null, "cmshow", "Apollo", "addPlaymate", 0, 0, new String[] { "" });
-        return;
-        if (!bbfj.d(BaseApplication.getContext()))
-        {
-          bcql.a(BaseApplication.getContext(), 2131692321, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
-          return;
-        }
-        localaizi.g(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        VipUtils.a(null, "cmshow", "Apollo", "acceptBtn", 0, 0, new String[] { "" });
-        return;
-        if (!bbfj.d(BaseApplication.getContext()))
-        {
-          bcql.a(BaseApplication.getContext(), 2131692321, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
-          return;
-        }
-        aemy.a(this.a, (int)(System.currentTimeMillis() / 1000L));
-        localaizi.a(aemy.a(this.a).jdField_a_of_type_Int, aemy.a(this.a));
-        aemy.a(this.a).a(1);
-        VipUtils.a(null, "cmshow", "Apollo", "moreGame", 0, 0, new String[] { aemy.a(this.a).jdField_a_of_type_Int + "" });
-        return;
-        if (!bbfj.d(BaseApplication.getContext()))
-        {
-          bcql.a(BaseApplication.getContext(), 2131692321, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
-          return;
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
-        {
-          if (!aizr.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-            break label620;
-          }
-          this.a.a(aemy.a(this.a).jdField_a_of_type_Int, aemy.a(this.a).jdField_a_of_type_Long, aemy.a(this.a).a());
-        }
-        for (;;)
-        {
-          aemy.a(this.a).dismiss();
-          VipUtils.a(null, "cmshow", "Apollo", "acceptInvitation", 0, 0, new String[] { aemy.a(this.a).jdField_a_of_type_Int + "" });
-          return;
-          localaizi.a(true, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, aemy.a(this.a).jdField_a_of_type_Int, aemy.a(this.a).jdField_a_of_type_Long);
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
-        {
-          localaizi.a(false, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, aemy.a(this.a).jdField_a_of_type_Int, aemy.a(this.a).jdField_a_of_type_Long);
-          aize.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, aemy.a(this.a).jdField_a_of_type_Int, aemy.a(this.a).jdField_a_of_type_Long);
-        }
-        aemy.a(this.a).dismiss();
-        VipUtils.a(null, "cmshow", "Apollo", "refuseInvitation", 0, 0, new String[] { aemy.a(this.a).jdField_a_of_type_Int + "" });
-        return;
-        aemy.a(this.a).dismiss();
-      } while (aemy.b(this.a) < 2);
-      this.a.bp();
-      return;
-    }
-    if (((ajxl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      localObject = new ProfileActivity.AllInOne(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1);
-    }
-    for (((ProfileActivity.AllInOne)localObject).jdField_h_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;; ((ProfileActivity.AllInOne)localObject).jdField_h_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)
-    {
-      ((ProfileActivity.AllInOne)localObject).f = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      ((ProfileActivity.AllInOne)localObject).e = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-      ((ProfileActivity.AllInOne)localObject).g = 2;
-      ((ProfileActivity.AllInOne)localObject).jdField_h_of_type_Int = 106;
-      ProfileActivity.b(paramView.getContext(), (ProfileActivity.AllInOne)localObject);
-      VipUtils.a(null, "cmshow", "Apollo", "clickArea", 0, 0, new String[] { "" });
-      return;
-      localObject = new ProfileActivity.AllInOne(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 19);
+        paramPathResult.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemz
  * JD-Core Version:    0.7.0.1
  */

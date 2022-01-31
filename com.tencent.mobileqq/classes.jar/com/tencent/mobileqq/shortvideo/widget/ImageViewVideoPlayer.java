@@ -10,9 +10,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import axhq;
-import axmj;
-import axmk;
+import azcw;
+import azhp;
+import azhq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener;
@@ -25,7 +25,7 @@ import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
-import vyf;
+import xmx;
 
 public class ImageViewVideoPlayer
   extends LinearLayout
@@ -35,8 +35,8 @@ public class ImageViewVideoPlayer
   public int a;
   public Bitmap a;
   public BitmapDrawable a;
-  public axmj a;
-  public axmk a;
+  public azhp a;
+  public azhq a;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   public URLImageView a;
   public VideoDrawable a;
@@ -78,7 +78,7 @@ public class ImageViewVideoPlayer
       {
         this.jdField_a_of_type_ComTencentImageVideoDrawable = ((VideoDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
         boolean bool2 = this.jdField_a_of_type_ComTencentImageVideoDrawable.isAudioPlaying();
-        if ((!axhq.d(axhq.c)) && (!axhq.a(axhq.d))) {
+        if ((!azcw.d(azcw.c)) && (!azcw.a(azcw.d))) {
           break label141;
         }
         bool1 = true;
@@ -170,7 +170,7 @@ public class ImageViewVideoPlayer
       if (localFile.endsWith(".af")) {
         this.jdField_b_of_type_JavaLangString = (str + localFile);
       }
-      if ((localFile.endsWith(".vf")) && (vyf.a(str + localFile) > 0L)) {
+      if ((localFile.endsWith(".vf")) && (xmx.a(str + localFile) > 0L)) {
         this.jdField_a_of_type_JavaLangString = (str + localFile);
       }
       i += 1;
@@ -182,7 +182,7 @@ public class ImageViewVideoPlayer
       return -2;
     }
     this.f = false;
-    if (vyf.a(this.jdField_b_of_type_JavaLangString) > 0L)
+    if (xmx.a(this.jdField_b_of_type_JavaLangString) > 0L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), mNeedPlayAudio = " + this.f);
@@ -427,8 +427,8 @@ public class ImageViewVideoPlayer
       if ((bool) && (!this.d)) {
         f();
       }
-      if (this.jdField_a_of_type_Axmj != null) {
-        this.jdField_a_of_type_Axmj.a(this.jdField_c_of_type_Int);
+      if (this.jdField_a_of_type_Azhp != null) {
+        this.jdField_a_of_type_Azhp.a(this.jdField_c_of_type_Int);
       }
       return;
     }
@@ -439,14 +439,14 @@ public class ImageViewVideoPlayer
     this.d = paramBoolean;
   }
   
-  public void setIMPFrameListener(axmj paramaxmj)
+  public void setIMPFrameListener(azhp paramazhp)
   {
-    this.jdField_a_of_type_Axmj = paramaxmj;
+    this.jdField_a_of_type_Azhp = paramazhp;
   }
   
-  public void setIMPlayerEndListener(axmk paramaxmk)
+  public void setIMPlayerEndListener(azhq paramazhq)
   {
-    this.jdField_a_of_type_Axmk = paramaxmk;
+    this.jdField_a_of_type_Azhq = paramazhq;
   }
   
   public void setNeedPlayAudio(boolean paramBoolean)
@@ -456,7 +456,7 @@ public class ImageViewVideoPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

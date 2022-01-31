@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
-import ajya;
-import bcql;
+import alpo;
+import com.tencent.mobileqq.widget.QQToast;
 
 class QZoneVideoDownloadActivity$2
   implements Runnable
@@ -10,12 +10,12 @@ class QZoneVideoDownloadActivity$2
   
   public void run()
   {
-    bcql.a(this.this$0.getApplicationContext(), ajya.a(2131712535), 1).a();
+    QQToast.a(this.this$0.getApplicationContext(), alpo.a(2131712907), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QZoneVideoDownloadActivity.2
  * JD-Core Version:    0.7.0.1
  */

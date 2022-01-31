@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahkd;
-import ahle;
+import ajbm;
+import ajcn;
 import android.os.Message;
 
 public class BannerManager$31$1
   implements Runnable
 {
-  public BannerManager$31$1(ahle paramahle) {}
+  public BannerManager$31$1(ajcn paramajcn) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Ahkd.a(31, 2);
-    this.a.jdField_a_of_type_Ahkd.a(31, this.a.jdField_a_of_type_AndroidOsMessage);
+    this.a.jdField_a_of_type_Ajbm.a(31, 2);
+    this.a.jdField_a_of_type_Ajbm.a(31, this.a.jdField_a_of_type_AndroidOsMessage);
     this.a.jdField_a_of_type_AndroidOsMessage.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.BannerManager.31.1
  * JD-Core Version:    0.7.0.1
  */

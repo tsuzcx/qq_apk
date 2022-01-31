@@ -120,7 +120,7 @@ public final class mobile_feeds_piece_public
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_feeds_piece_public
  * JD-Core Version:    0.7.0.1
  */

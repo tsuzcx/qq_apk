@@ -1,32 +1,33 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
 
 public class tzp
-  extends QQUIEventReceiver<tzo, tzt>
+  extends ClickableSpan
 {
-  public tzp(@NonNull tzo paramtzo)
-  {
-    super(paramtzo);
-  }
+  public tzp(QCircleAsyncTextView paramQCircleAsyncTextView, tzq paramtzq) {}
   
-  public void a(@NonNull tzo paramtzo, @NonNull tzt paramtzt)
+  public void onClick(@NonNull View paramView)
   {
-    if (paramtzt.a.isSuccess())
-    {
-      ved.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramtzt.toString());
-      paramtzo.e();
+    QCircleAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView, true);
+    if (this.jdField_a_of_type_Tzq != null) {
+      this.jdField_a_of_type_Tzq.a();
     }
   }
   
-  public Class acceptEventClass()
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
   {
-    return tzt.class;
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setFakeBoldText(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tzp
  * JD-Core Version:    0.7.0.1
  */

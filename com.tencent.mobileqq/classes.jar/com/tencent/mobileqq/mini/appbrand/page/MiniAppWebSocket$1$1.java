@@ -7,12 +7,12 @@ class MiniAppWebSocket$1$1
   
   public void run()
   {
-    this.this$1.processMessage(this.val$result);
+    this.this$1.processMessage(this.val$text);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.MiniAppWebSocket.1.1
  * JD-Core Version:    0.7.0.1
  */

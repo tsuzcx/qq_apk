@@ -1,22 +1,20 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class aqfr
   implements DialogInterface.OnClickListener
 {
-  aqfr(aqfq paramaqfq, bbgu parambbgu) {}
+  aqfr(aqfq paramaqfq) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bbgu.dismiss();
-    this.jdField_a_of_type_Aqfq.a.setResult(-1);
-    this.jdField_a_of_type_Aqfq.a.finish();
+    Face2FaceAddFriendActivity.e(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfr
  * JD-Core Version:    0.7.0.1
  */

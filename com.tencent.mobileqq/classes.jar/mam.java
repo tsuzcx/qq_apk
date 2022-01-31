@@ -1,23 +1,20 @@
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
-final class mam
-  extends ClickableSpan
+public class mam
+  implements DialogInterface.OnClickListener
 {
-  mam(mar parammar) {}
+  public mam(AVSchema paramAVSchema, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    View.OnClickListener localOnClickListener = this.a.a();
-    if (localOnClickListener != null) {
-      localOnClickListener.onClick(paramView);
-    }
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mam
  * JD-Core Version:    0.7.0.1
  */

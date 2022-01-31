@@ -1,47 +1,65 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Context;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
 
-public class anpa
-  extends ColorDrawable
+public abstract class anpa
+  extends anoz
 {
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private final int b;
+  public int a;
+  protected Context a;
+  protected anpj a;
+  public Matrix4 a;
+  public float[] b = new float[3];
+  public float[] c = new float[3];
   
-  public anpa(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
+  public anpa(Context paramContext, int paramInt, SensorManager paramSensorManager, anos paramanos)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramInt2, paramInt3);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    super(paramSensorManager, paramanos);
+    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a(paramContext);
   }
   
-  public void draw(Canvas paramCanvas)
+  private void a(Context paramContext)
   {
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
+    this.jdField_a_of_type_Anpj = new anpj();
   }
   
-  public int getIntrinsicHeight()
+  protected void a(float[] paramArrayOfFloat)
   {
-    return this.b;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_Int;
+    if ((this.jdField_a_of_type_Anos == null) || (paramArrayOfFloat == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.set(paramArrayOfFloat);
+        this.jdField_a_of_type_Anpj.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4, 0, this.c);
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          this.jdField_a_of_type_Anos.updateAzimuth(this.c[0]);
+          return;
+        }
+        this.b[0] = this.c[1];
+        this.b[1] = (-this.c[0]);
+        this.b[2] = (-this.c[2]);
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          this.jdField_a_of_type_Anos.updateRotation(this.b[0], this.b[1], this.b[2]);
+          return;
+        }
+      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3));
+      this.jdField_a_of_type_Anos.updateRotation(this.b[0], this.b[1], this.b[2]);
+    } while ((this.jdField_a_of_type_Int != 3) || (paramArrayOfFloat.length != 16));
+    this.jdField_a_of_type_Anos.onRotationUpdateOriginal(paramArrayOfFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpa
  * JD-Core Version:    0.7.0.1
  */

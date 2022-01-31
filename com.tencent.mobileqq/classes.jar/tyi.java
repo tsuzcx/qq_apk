@@ -1,57 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.qqcircle.report.QCircleLpReportDc05503.1;
 
 public class tyi
-  extends JobSegment<String, upp>
 {
-  public tyi(tyc paramtyc) {}
-  
-  protected void a(JobContext paramJobContext, String paramString)
+  public static void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
   {
-    if ((tyc.a(this.a).a != null) && (TextUtils.equals(tyc.a(this.a).a.feedId, paramString)))
-    {
-      ved.d("Q.qqstory.player.CommentFloatDialogController", "feed item already exist , no need to pull again");
-      notifyError(new ErrorMessage(2223, "feed item already exist"));
-      return;
-    }
-    paramString = new upp();
-    Object localObject1 = (CommentLikeFeedItem)((uvx)tcz.a(11)).a(tyc.a(this.a));
-    if (localObject1 != null)
-    {
-      if ((localObject1 instanceof VideoListFeedItem))
-      {
-        paramJobContext = (VideoListFeedItem)localObject1;
-        localObject2 = ((uwd)tcz.a(12)).a(tyc.a(this.a), paramJobContext.mVideoPullType);
-        if (localObject2 != null)
-        {
-          paramJobContext.mVideoNextCookie = ((FeedVideoInfo)localObject2).mVideoNextCookie;
-          paramJobContext.mIsVideoEnd = ((FeedVideoInfo)localObject2).mIsVideoEnd;
-          paramJobContext.mVideoPullType = ((FeedVideoInfo)localObject2).mVideoPullType;
-          paramJobContext.mVideoSeq = ((FeedVideoInfo)localObject2).mVideoSeq;
-          paramString.a(((FeedVideoInfo)localObject2).mVideoItemList, true);
-        }
-      }
-      paramString.a = ((CommentLikeFeedItem)localObject1);
-      notifyResult(paramString);
-      return;
-    }
-    localObject1 = new tlw();
-    ((tlw)localObject1).a = new ArrayList();
-    Object localObject2 = new uvp(tyc.a(this.a), 0, "", "");
-    ((tlw)localObject1).a.add(localObject2);
-    syo.a().a((sys)localObject1, new tyj(this, paramJobContext, paramString));
+    a(paramLong1, paramLong2, paramLong3, "", "", "", "", "", "", paramInt);
+  }
+  
+  public static void a(long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
+  {
+    typ.a().a().post(new QCircleLpReportDc05503.1(paramLong1, paramLong2, paramLong3, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramInt));
+  }
+  
+  private static int b()
+  {
+    return 5503;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tyi
  * JD-Core Version:    0.7.0.1
  */

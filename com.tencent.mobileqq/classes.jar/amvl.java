@@ -1,69 +1,106 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class amvl
-  extends ampa<amvk>
+class amvl
+  implements ITransactionCallback
 {
-  public static amvk a()
+  amvl(amvj paramamvj, amxi paramamxi, long paramLong) {}
+  
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    return (amvk)ampl.a().a(292);
+    String str = "";
+    for (;;)
+    {
+      synchronized (amvj.a(this.jdField_a_of_type_Amvj))
+      {
+        if (amvj.a(this.jdField_a_of_type_Amvj) != null)
+        {
+          int i = 0;
+          if (i < amvj.a(this.jdField_a_of_type_Amvj).size())
+          {
+            if (((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amxi.a.equals(this.jdField_a_of_type_Amxi.a))
+            {
+              paramArrayOfByte = ((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amvm;
+              str = ((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amxi.a;
+              amvj.a(this.jdField_a_of_type_Amvj).remove(i);
+              QLog.i("AREngine_ARCloudFileUpload", 1, "Upload failed. retCode = " + paramInt + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str);
+              if (paramArrayOfByte != null) {
+                paramArrayOfByte.a(paramInt, str, null);
+              }
+              return;
+            }
+            i += 1;
+          }
+        }
+      }
+      paramArrayOfByte = null;
+    }
   }
   
-  public int a()
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    return 292;
+    Object localObject2 = null;
+    String str2 = "";
+    Object localObject3 = amvj.a(this.jdField_a_of_type_Amvj);
+    String str1 = str2;
+    Object localObject1 = localObject2;
+    for (;;)
+    {
+      try
+      {
+        if (amvj.a(this.jdField_a_of_type_Amvj) != null)
+        {
+          i = 0;
+          str1 = str2;
+          localObject1 = localObject2;
+          if (i < amvj.a(this.jdField_a_of_type_Amvj).size())
+          {
+            if (!((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amxi.a.equals(this.jdField_a_of_type_Amxi.a)) {
+              continue;
+            }
+            localObject1 = ((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amvm;
+            str1 = ((amvo)amvj.a(this.jdField_a_of_type_Amvj).get(i)).jdField_a_of_type_Amxi.a;
+            amvj.a(this.jdField_a_of_type_Amvj).remove(i);
+          }
+        }
+        paramArrayOfByte = amvj.a(this.jdField_a_of_type_Amvj, paramArrayOfByte, this.jdField_a_of_type_Amxi);
+        if (paramArrayOfByte == null)
+        {
+          QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 9058 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1 + ". deserialize pb failed.");
+          i = 9058;
+          if (localObject1 != null) {
+            ((amvm)localObject1).a(i, str1, paramArrayOfByte);
+          }
+          return;
+          i += 1;
+          continue;
+        }
+        QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 0 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1);
+      }
+      finally {}
+      int i = 0;
+    }
   }
   
-  @NonNull
-  public amvk a(int paramInt)
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
   {
-    return new amvk();
+    QLog.i("AREngine_ARCloudFileUpload", 1, "Upload start. sessionId = " + this.jdField_a_of_type_Amxi.a);
   }
   
-  @Nullable
-  public amvk a(amph[] paramArrayOfamph)
+  public void onUpdateProgress(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles = " + paramArrayOfamph);
+      QLog.d("AREngine_ARCloudFileUpload", 2, "onUpdateProgress. sessionId = " + this.jdField_a_of_type_Amxi.a + ". total size = " + this.jdField_a_of_type_Long + ", transfered size = " + paramInt);
     }
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles[0].content= " + paramArrayOfamph[0].a);
-      }
-      return amvk.a(paramArrayOfamph[0].a);
-    }
-    return null;
-  }
-  
-  public Class<amvk> a()
-  {
-    return amvk.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amvk paramamvk) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvl
  * JD-Core Version:    0.7.0.1
  */

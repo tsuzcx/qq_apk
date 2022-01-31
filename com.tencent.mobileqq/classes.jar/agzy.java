@@ -1,76 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
-import com.tencent.mobileqq.activity.qwallet.widget.RollNumberView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Calendar;
 
 public class agzy
-  extends Handler
 {
-  WeakReference<QzoneHbFragment> a;
+  long jdField_a_of_type_Long;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  CharSequence jdField_a_of_type_JavaLangCharSequence;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  long jdField_b_of_type_Long;
+  CharSequence jdField_b_of_type_JavaLangCharSequence;
   
-  public agzy(QzoneHbFragment paramQzoneHbFragment)
+  public agzy(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, String paramString, long paramLong1, CharSequence paramCharSequence, long paramLong2, MessageRecord paramMessageRecord)
   {
-    this.a = new WeakReference(paramQzoneHbFragment);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void handleMessage(Message paramMessage)
+  public CharSequence a()
   {
-    QzoneHbFragment localQzoneHbFragment = (QzoneHbFragment)this.a.get();
-    if (localQzoneHbFragment == null) {}
-    do
+    if (this.jdField_b_of_type_JavaLangCharSequence == null)
     {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          case 102: 
-          default: 
-            return;
-          case 100: 
-            if (QLog.isColorLevel()) {
-              QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----1");
-            }
-            break;
-          }
-        } while ((QzoneHbFragment.a(localQzoneHbFragment) == null) || (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment))));
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----in mModifyAmountBtn.setEnabled(false)");
-          }
-          double d = Double.parseDouble(QzoneHbFragment.a(localQzoneHbFragment));
-          QzoneHbFragment.a(localQzoneHbFragment).reset(d);
-          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
-          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
-          QzoneHbFragment.a(localQzoneHbFragment).roll();
-          QzoneHbFragment.b(localQzoneHbFragment).setEnabled(false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          paramMessage.printStackTrace();
-          return;
-        }
-      } while (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment)));
-      QzoneHbFragment.a(localQzoneHbFragment).setText(QzoneHbFragment.a(localQzoneHbFragment));
-      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
-      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
-      QzoneHbFragment.b(localQzoneHbFragment).setEnabled(true);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneHbFragment", 2, "MSG_ROLL_STOP AmountBtn.setEnabled(true)---");
+      Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
+      this.jdField_b_of_type_JavaLangCharSequence = bdjj.a(BaseApplicationImpl.getApplication().getApplicationContext(), 3, this.jdField_a_of_type_Long * 1000L);
+    }
+    return this.jdField_b_of_type_JavaLangCharSequence;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agzy
  * JD-Core Version:    0.7.0.1
  */

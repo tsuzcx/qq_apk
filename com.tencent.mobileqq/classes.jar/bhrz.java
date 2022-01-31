@@ -1,37 +1,41 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.widget.DynamicGridView;
 
-public class bhrz
-  extends bhsh
+class bhrz
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  private static void a(WebViewPlugin paramWebViewPlugin, bcdp parambcdp, String[] paramArrayOfString)
+  private final int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final int b;
+  
+  bhrz(bhry parambhry, View paramView, int paramInt1, int paramInt2)
   {
-    paramWebViewPlugin = new Intent("action_js2qzone");
-    paramArrayOfString = new Bundle();
-    paramArrayOfString.putString("cmd", "writeBlogSuccess");
-    paramWebViewPlugin.putExtras(paramArrayOfString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneBlogJsPlugin", 2, "handleWriteBlog actionString: " + paramWebViewPlugin.getAction());
-    }
-    bgyp.a(parambcdp.a(), bgyw.a(), paramWebViewPlugin);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean onPreDraw()
   {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while (!paramString3.equalsIgnoreCase("writeBlogSuccess")) {
-      return false;
+    this.jdField_a_of_type_Bhry.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    DynamicGridView.a(this.jdField_a_of_type_Bhry.a, DynamicGridView.a(this.jdField_a_of_type_Bhry.a) + bhry.a(this.jdField_a_of_type_Bhry));
+    DynamicGridView.b(this.jdField_a_of_type_Bhry.a, DynamicGridView.b(this.jdField_a_of_type_Bhry.a) + bhry.b(this.jdField_a_of_type_Bhry));
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    a(this.a, this.a.mRuntime, paramVarArgs);
+    DynamicGridView.a(this.jdField_a_of_type_Bhry.a, this.jdField_a_of_type_Bhry.a.a(DynamicGridView.a(this.jdField_a_of_type_Bhry.a)));
+    if (DynamicGridView.a(this.jdField_a_of_type_Bhry.a) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_Bhry.a).setVisibility(4);
+    }
+    DynamicGridView.a(this.jdField_a_of_type_Bhry.a, this.jdField_a_of_type_Int, this.b);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhrz
  * JD-Core Version:    0.7.0.1
  */

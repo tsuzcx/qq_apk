@@ -1,22 +1,22 @@
 package com.dataline.activities;
 
-import akpf;
-import aksy;
-import cl;
+import amfy;
+import amjd;
+import at;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
-import fk;
+import dt;
 
 public class LiteActivity$27$4
   implements Runnable
 {
-  public LiteActivity$27$4(cl paramcl, int paramInt, long paramLong) {}
+  public LiteActivity$27$4(at paramat, int paramInt, long paramLong) {}
   
   public void run()
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_Cl.a.app.a().a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
+    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_At.a.app.a().a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
     if (localDataLineMsgRecord == null) {}
     do
     {
@@ -26,22 +26,22 @@ public class LiteActivity$27$4
         {
           return;
         } while (localDataLineMsgRecord.isSendFromLocal());
-        DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_Cl.a.app.a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
+        DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_At.a.app.a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
         if ((localDataLineMsgSet == null) || (localDataLineMsgSet.isSingle())) {
           break;
         }
-      } while (this.jdField_a_of_type_Cl.a.jdField_a_of_type_Fk.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentWidgetXListView));
-      this.jdField_a_of_type_Cl.a.jdField_a_of_type_Fk.notifyDataSetChanged();
+      } while (this.jdField_a_of_type_At.a.jdField_a_of_type_Dt.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentWidgetXListView));
+      this.jdField_a_of_type_At.a.jdField_a_of_type_Dt.notifyDataSetChanged();
       return;
-      this.jdField_a_of_type_Cl.a.jdField_a_of_type_Fk.notifyDataSetChanged();
+      this.jdField_a_of_type_At.a.jdField_a_of_type_Dt.notifyDataSetChanged();
     } while (localDataLineMsgRecord.bIsResendOrRecvFile);
-    LiteActivity.a(this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentWidgetXListView);
-    LiteActivity.a(this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentWidgetXListView);
+    LiteActivity.a(this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentWidgetXListView);
+    LiteActivity.a(this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentWidgetXListView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.27.4
  * JD-Core Version:    0.7.0.1
  */

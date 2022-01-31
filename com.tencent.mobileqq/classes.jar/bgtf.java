@@ -1,17 +1,37 @@
-import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.app.Activity;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.utils.GameWnsUtils;
+import java.lang.ref.WeakReference;
 
 public class bgtf
-  implements EIPCResultCallback
 {
-  public bgtf(QQPimGetTipsInfoIPC.NoticeClickTipsRunnable paramNoticeClickTipsRunnable) {}
+  private static int jdField_a_of_type_Int;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public void onCallback(EIPCResult paramEIPCResult) {}
+  public static void a()
+  {
+    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_Int = 0;
+  }
+  
+  public static void a(WeakReference<Activity> paramWeakReference, String paramString, MiniAppInfo paramMiniAppInfo)
+  {
+    if ((!jdField_a_of_type_Boolean) && (GameWnsUtils.enableStorageExceedDialog()))
+    {
+      jdField_a_of_type_Int += 1;
+      if (jdField_a_of_type_Int >= GameWnsUtils.enableStorageExceedLimit())
+      {
+        jdField_a_of_type_Boolean = true;
+        if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+          bgiv.a((Activity)paramWeakReference.get(), paramString, paramMiniAppInfo, GameWnsUtils.getCacheFreeContent());
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgtf
  * JD-Core Version:    0.7.0.1
  */

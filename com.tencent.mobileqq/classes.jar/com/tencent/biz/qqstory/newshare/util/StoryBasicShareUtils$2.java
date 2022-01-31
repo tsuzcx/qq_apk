@@ -9,13 +9,13 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import java.io.File;
 import mqq.os.MqqHandler;
-import tpi;
-import trp;
+import vea;
+import vgh;
 
 public final class StoryBasicShareUtils$2
   implements Runnable
 {
-  public StoryBasicShareUtils$2(ApplicationInfo paramApplicationInfo, trp paramtrp, Context paramContext, tpi paramtpi) {}
+  public StoryBasicShareUtils$2(ApplicationInfo paramApplicationInfo, vgh paramvgh, Context paramContext, vea paramvea) {}
   
   public void run()
   {
@@ -23,9 +23,9 @@ public final class StoryBasicShareUtils$2
     localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
     localIntent.setType("image/*");
     localIntent.setFlags(268435456);
-    localIntent.putExtra("android.intent.extra.TEXT", this.jdField_a_of_type_Trp.a + this.jdField_a_of_type_Trp.c);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Trp.d)) {
-      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(this.jdField_a_of_type_Trp.d)));
+    localIntent.putExtra("android.intent.extra.TEXT", this.jdField_a_of_type_Vgh.a + this.jdField_a_of_type_Vgh.c);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Vgh.d)) {
+      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(this.jdField_a_of_type_Vgh.d)));
     }
     FileProvider7Helper.intentCompatForN(this.jdField_a_of_type_AndroidContentContext, localIntent);
     this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
@@ -34,7 +34,7 @@ public final class StoryBasicShareUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryBasicShareUtils.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.zimu;
 
-import lhl;
+import ljo;
 
 public class ZimuLiveItem
-  extends lhl
+  extends ljo
 {
   private String desc;
   private String iconurl;
@@ -66,7 +66,7 @@ public class ZimuLiveItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.business.manager.zimu.ZimuLiveItem
  * JD-Core Version:    0.7.0.1
  */

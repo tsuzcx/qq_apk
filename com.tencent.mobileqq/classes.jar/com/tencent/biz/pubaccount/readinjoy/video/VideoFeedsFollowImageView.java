@@ -6,11 +6,11 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.biz.pubaccount.VideoInfo;
-import qjn;
+import qyu;
 
 public class VideoFeedsFollowImageView
   extends ImageView
-  implements qjn
+  implements qyu
 {
   public VideoFeedsFollowImageView(Context paramContext)
   {
@@ -41,7 +41,7 @@ public class VideoFeedsFollowImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFollowImageView
  * JD-Core Version:    0.7.0.1
  */

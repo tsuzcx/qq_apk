@@ -1,47 +1,61 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class vhg
-  implements View.OnClickListener
+public class vhg
 {
-  vhg(vhd paramvhd) {}
+  public long a;
+  public StoryVideoItem a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
   
-  public void onClick(View paramView)
+  public JSONObject a()
   {
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Vqf.jdField_a_of_type_JavaLangString))
+    try
     {
-      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Vqf.jdField_a_of_type_JavaLangString;
-      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
-      {
-        vhm localvhm = this.a.jdField_a_of_type_Vhm;
-        if (this.a.jdField_a_of_type_Vhm.a())
-        {
-          paramView = "2";
-          localvhm.a("use_custom_tag", 0, 0, new String[] { paramView });
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
-      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("feedId", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("didRead", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("videoIndex", this.jdField_a_of_type_Long);
+      localJSONObject.put("isLocal", this.jdField_b_of_type_Boolean);
+      return localJSONObject;
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      this.a.jdField_a_of_type_Vhm.a(0);
+      localJSONException.printStackTrace();
+    }
+    return null;
+  }
+  
+  public void a(@NonNull JSONObject paramJSONObject)
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("didRead");
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("feedId");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("vid");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("videoIndex");
+      this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("isLocal");
       return;
-      paramView = "1";
-      break;
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
     }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
+  
+  public String toString()
+  {
+    return "MsgTabVideoData{didRead=" + this.jdField_a_of_type_Boolean + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoIndex='" + this.jdField_a_of_type_Long + '\'' + ", storyVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", isLocal=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhg
  * JD-Core Version:    0.7.0.1
  */

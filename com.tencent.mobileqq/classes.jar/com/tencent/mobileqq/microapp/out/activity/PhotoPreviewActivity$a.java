@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.microapp.out.activity;
 
-import agpc;
+import aikc;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import aywm;
+import baul;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 final class PhotoPreviewActivity$a
   extends BaseAdapter
-  implements agpc
+  implements aikc
 {
   SparseArray a = new SparseArray();
   URLDrawable b;
@@ -88,7 +88,7 @@ final class PhotoPreviewActivity$a
         paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
         paramViewGroup.mRequestWidth = i;
         paramViewGroup.mRequestHeight = j;
-        paramViewGroup.mLoadingDrawable = aywm.a;
+        paramViewGroup.mLoadingDrawable = baul.a;
         paramViewGroup = URLDrawable.getDrawable(str, paramViewGroup);
         switch (paramViewGroup.getStatus())
         {
@@ -128,7 +128,7 @@ final class PhotoPreviewActivity$a
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestWidth = paramViewGroup.getWidth();
       localURLDrawableOptions.mRequestHeight = paramViewGroup.getHeight();
-      localURLDrawableOptions.mLoadingDrawable = aywm.a;
+      localURLDrawableOptions.mLoadingDrawable = baul.a;
       paramView = URLDrawable.getDrawable(paramView, localURLDrawableOptions);
       paramView.setTag(Integer.valueOf(1));
       paramView.startDownload();
@@ -232,7 +232,7 @@ final class PhotoPreviewActivity$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.out.activity.PhotoPreviewActivity.a
  * JD-Core Version:    0.7.0.1
  */

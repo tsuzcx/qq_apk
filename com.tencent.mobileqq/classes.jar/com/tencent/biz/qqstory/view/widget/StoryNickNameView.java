@@ -9,12 +9,12 @@ import android.widget.TextView;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.IEventReceiver;
-import stb;
-import teg;
-import tki;
-import ved;
-import vxp;
-import wdr;
+import uht;
+import usy;
+import uza;
+import wsv;
+import xmh;
+import xsj;
 
 public class StoryNickNameView
   extends TextView
@@ -22,7 +22,7 @@ public class StoryNickNameView
 {
   private LruCache<String, QQUserUIItem> jdField_a_of_type_AndroidUtilLruCache;
   private String jdField_a_of_type_JavaLangString;
-  private wdr jdField_a_of_type_Wdr;
+  private xsj jdField_a_of_type_Xsj;
   private boolean jdField_a_of_type_Boolean;
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
@@ -51,17 +51,17 @@ public class StoryNickNameView
   
   private void a()
   {
-    this.jdField_a_of_type_Wdr = new wdr(this);
+    this.jdField_a_of_type_Xsj = new xsj(this);
     this.jdField_a_of_type_Boolean = false;
   }
   
   private void b()
   {
-    ved.d("Q.qqstoryStoryNickNameView", "requestUserInfoAsync : " + this.jdField_a_of_type_JavaLangString);
-    teg localteg = new teg("", this.jdField_a_of_type_JavaLangString);
-    tki localtki = new tki();
-    localtki.jdField_a_of_type_JavaLangString = "Q.qqstoryStoryNickNameView";
-    localtki.a(1, localteg, this.jdField_a_of_type_JavaLangString);
+    wsv.d("Q.qqstoryStoryNickNameView", "requestUserInfoAsync : " + this.jdField_a_of_type_JavaLangString);
+    usy localusy = new usy("", this.jdField_a_of_type_JavaLangString);
+    uza localuza = new uza();
+    localuza.jdField_a_of_type_JavaLangString = "Q.qqstoryStoryNickNameView";
+    localuza.a(1, localusy, this.jdField_a_of_type_JavaLangString);
   }
   
   private void b(QQUserUIItem paramQQUserUIItem)
@@ -76,14 +76,14 @@ public class StoryNickNameView
   
   public void a(LruCache<String, QQUserUIItem> paramLruCache)
   {
-    vxp.a(paramLruCache);
+    xmh.a(paramLruCache);
     this.jdField_a_of_type_AndroidUtilLruCache = paramLruCache;
   }
   
   public void a(QQUserUIItem paramQQUserUIItem)
   {
-    vxp.a(paramQQUserUIItem);
-    ved.d("Q.qqstoryStoryNickNameView", "onInfoRespond " + this.jdField_a_of_type_JavaLangString + " name = " + paramQQUserUIItem.getDisplayName());
+    xmh.a(paramQQUserUIItem);
+    wsv.d("Q.qqstoryStoryNickNameView", "onInfoRespond " + this.jdField_a_of_type_JavaLangString + " name = " + paramQQUserUIItem.getDisplayName());
     String str = paramQQUserUIItem.getDisplayName();
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       str = String.format(this.jdField_b_of_type_JavaLangString, new Object[] { paramQQUserUIItem.getDisplayName() });
@@ -99,13 +99,13 @@ public class StoryNickNameView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    stb.a().registerSubscriber(this.jdField_a_of_type_Wdr);
+    uht.a().registerSubscriber(this.jdField_a_of_type_Xsj);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    stb.a().unRegisterSubscriber(this.jdField_a_of_type_Wdr);
+    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Xsj);
   }
   
   public void setFormat(String paramString)
@@ -125,7 +125,7 @@ public class StoryNickNameView
     if (this.jdField_a_of_type_AndroidUtilLruCache != null) {}
     for (boolean bool = true;; bool = false)
     {
-      vxp.a(bool, "it must prepare this view before setUnionId!!");
+      xmh.a(bool, "it must prepare this view before setUnionId!!");
       setVisibility(0);
       this.jdField_b_of_type_Boolean = true;
       if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
@@ -146,7 +146,7 @@ public class StoryNickNameView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.StoryNickNameView
  * JD-Core Version:    0.7.0.1
  */

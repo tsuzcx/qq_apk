@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import ajya;
+import alpo;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import axau;
-import aykk;
+import ayvy;
+import baig;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import oex;
-import oey;
-import oez;
+import ojj;
+import ojk;
+import ojl;
 import org.json.JSONArray;
 
 public class CommentInfo
-  extends oez
+  extends ojl
   implements Serializable
 {
   public static final int HOT_AREA = 1;
@@ -43,7 +43,7 @@ public class CommentInfo
   public String commentId = "";
   public long commentTime;
   public int commentType;
-  public transient aykk decodedCommentContent;
+  public transient baig decodedCommentContent;
   public int disLikeCount;
   public boolean disLiked;
   public transient JSONArray gift_list;
@@ -67,9 +67,9 @@ public class CommentInfo
   public void createDecodedCommentContent()
   {
     if ((TextUtils.isEmpty(this.commentContent)) && (this.gift_list == null)) {
-      this.commentContent = ajya.a(2131702185);
+      this.commentContent = alpo.a(2131702557);
     }
-    this.decodedCommentContent = new aykk(axau.b(this.commentContent), 7, 16);
+    this.decodedCommentContent = new baig(ayvy.b(this.commentContent), 7, 16);
   }
   
   public void createProcessedAuthorComment()
@@ -79,7 +79,7 @@ public class CommentInfo
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       localSpannableStringBuilder.append("作者回复：");
       localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 0, localSpannableStringBuilder.length(), 33);
-      localSpannableStringBuilder.append(new aykk(axau.b(this.authorComment), 7, 16));
+      localSpannableStringBuilder.append(new baig(ayvy.b(this.authorComment), 7, 16));
       this.authorRealCommentSpanSb = localSpannableStringBuilder;
     }
   }
@@ -118,18 +118,18 @@ public class CommentInfo
       if (!TextUtils.isEmpty(localCommentInfo.authorNickName))
       {
         localSpannableStringBuilder.append(localCommentInfo.authorNickName);
-        localSpannableStringBuilder.setSpan(new oex(this, localCommentInfo, paramBaseActivity), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new ojj(this, localCommentInfo, paramBaseActivity), 0, localSpannableStringBuilder.length(), 33);
       }
       if ((localCommentInfo.hasTarget) && (!TextUtils.isEmpty(localCommentInfo.toNickName)))
       {
         localSpannableStringBuilder.append(" 回复 ");
         int k = localSpannableStringBuilder.length();
         localSpannableStringBuilder.append(localCommentInfo.toNickName);
-        localSpannableStringBuilder.setSpan(new oey(this, localCommentInfo, paramBaseActivity), k, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new ojk(this, localCommentInfo, paramBaseActivity), k, localSpannableStringBuilder.length(), 33);
       }
       localSpannableStringBuilder.append("：");
       if (!TextUtils.isEmpty(localCommentInfo.commentContent)) {
-        localSpannableStringBuilder.append(new aykk(axau.b(localCommentInfo.commentContent), 7, 16));
+        localSpannableStringBuilder.append(new baig(ayvy.b(localCommentInfo.commentContent), 7, 16));
       }
       this.secondLevelCommentSpanSbList.add(localSpannableStringBuilder);
     }
@@ -157,7 +157,7 @@ public class CommentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo
  * JD-Core Version:    0.7.0.1
  */

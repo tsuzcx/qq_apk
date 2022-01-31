@@ -1,35 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
 
-class qsw
-  implements ValueAnimator.AnimatorUpdateListener
+public class qsw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  qsw(qsu paramqsu, LinearLayout.LayoutParams paramLayoutParams, boolean paramBoolean1, boolean paramBoolean2) {}
+  public qsw(EditVideoFragment paramEditVideoFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.bottomMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (!this.b) {
-        break label63;
-      }
-      qsu.a(this.jdField_a_of_type_Qsu).v.setVisibility(0);
-    }
-    for (;;)
-    {
-      qsu.a(this.jdField_a_of_type_Qsu).t.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+    if (!paramCompoundButton.isPressed()) {
       return;
-      label63:
-      qsu.a(this.jdField_a_of_type_Qsu).u.setVisibility(0);
     }
+    EditVideoFragment.a(this.a).isRemindQQFriend = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qsw
  * JD-Core Version:    0.7.0.1
  */

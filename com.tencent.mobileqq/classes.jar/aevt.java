@@ -1,26 +1,12 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
 
-public class aevt
-  implements aevq
+public abstract interface aevt
 {
-  aevt(aevr paramaevr) {}
-  
-  public void a()
-  {
-    aevr.a(this.a, aevr.b(this.a));
-    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.2.1(this));
-  }
-  
-  public void b()
-  {
-    aevr.b(this.a, aevr.b(this.a));
-  }
+  public abstract void a(Bitmap paramBitmap, aevb paramaevb, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevt
  * JD-Core Version:    0.7.0.1
  */

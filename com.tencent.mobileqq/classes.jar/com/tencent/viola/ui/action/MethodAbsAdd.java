@@ -76,31 +76,37 @@ public abstract class MethodAbsAdd
   
   protected DomObject addDomInternal(DOMActionContext paramDOMActionContext, JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramJSONObject == null) {
+      localObject1 = localObject2;
+    }
     ViolaInstance localViolaInstance;
     do
     {
       do
       {
-        return null;
-      } while (paramDOMActionContext.isDestory());
-      localViolaInstance = paramDOMActionContext.getInstance();
-    } while (localViolaInstance == null);
-    localViolaInstance.mCreateDomStart = System.currentTimeMillis();
-    paramJSONObject = DomObject.parse(paramJSONObject, localViolaInstance, null);
-    if (paramJSONObject != null)
-    {
-      appendDomToTree(paramDOMActionContext, paramJSONObject);
-      int i = paramJSONObject.traverseTree(new DomObject.Consumer[] { paramDOMActionContext.getAddDOMConsumer(), paramDOMActionContext.getApplyStyleConsumer() });
-      localViolaInstance.mCreateDomEnd = System.currentTimeMillis();
-      if (localViolaInstance.getMaxDomDeep() < i) {
-        localViolaInstance.setMaxDomDeep(i);
-      }
-      localViolaInstance.mCreateComponentTreeStart = System.currentTimeMillis();
-      createComponent(paramDOMActionContext, paramJSONObject);
-      localViolaInstance.mCreateComponentTreeEnd = System.currentTimeMillis();
+        do
+        {
+          return localObject1;
+          localObject1 = localObject2;
+        } while (paramDOMActionContext.isDestory());
+        localViolaInstance = paramDOMActionContext.getInstance();
+        localObject1 = localObject2;
+      } while (localViolaInstance == null);
+      localViolaInstance.mCreateDomStart = System.currentTimeMillis();
+      paramJSONObject = DomObject.parse(paramJSONObject, localViolaInstance, null);
+      localObject1 = paramJSONObject;
+    } while (paramJSONObject == null);
+    appendDomToTree(paramDOMActionContext, paramJSONObject);
+    int i = paramJSONObject.traverseTree(new DomObject.Consumer[] { paramDOMActionContext.getAddDOMConsumer(), paramDOMActionContext.getApplyStyleConsumer() });
+    localViolaInstance.mCreateDomEnd = System.currentTimeMillis();
+    if (localViolaInstance.getMaxDomDeep() < i) {
+      localViolaInstance.setMaxDomDeep(i);
     }
-    paramDOMActionContext.postRenderTask(this);
+    localViolaInstance.mCreateComponentTreeStart = System.currentTimeMillis();
+    createComponent(paramDOMActionContext, paramJSONObject);
+    localViolaInstance.mCreateComponentTreeEnd = System.currentTimeMillis();
     return paramJSONObject;
   }
   
@@ -129,7 +135,7 @@ public abstract class MethodAbsAdd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodAbsAdd
  * JD-Core Version:    0.7.0.1
  */

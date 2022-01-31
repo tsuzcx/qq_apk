@@ -1,44 +1,77 @@
-import android.view.View;
+import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
+import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
 
 public class vys
-  extends vyw
+  extends uhn
 {
-  public int a;
+  public vys(QQStoryShieldActivity paramQQStoryShieldActivity) {}
   
-  public vys(vzb paramvzb, View paramView, int paramInt)
+  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
   {
-    super(paramvzb, paramView);
-    this.a = paramInt;
+    boolean bool = true;
+    QQStoryShieldActivity.a(this.a);
+    Switch localSwitch;
+    if ((paramBoolean) && (paramQQStoryUserInfo != null))
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+      this.a.b.setOnCheckedChangeListener(null);
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (paramQQStoryUserInfo.isAllowed != 1) {
+        break label119;
+      }
+      paramBoolean = true;
+      localSwitch.setChecked(paramBoolean);
+      localSwitch = this.a.b;
+      if (paramQQStoryUserInfo.isInterested != 1) {
+        break label124;
+      }
+    }
+    label119:
+    label124:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localSwitch.setChecked(paramBoolean);
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+      this.a.b.setOnCheckedChangeListener(this.a);
+      return;
+      paramBoolean = false;
+      break;
+    }
   }
   
-  public int a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    ved.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
-    return this.a;
-  }
-  
-  public CharSequence a()
-  {
-    ved.e("NullOptionElement", "getText() on %d", new Object[] { Integer.valueOf(this.a) });
-    return "";
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    ved.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public CharSequence b()
-  {
-    ved.e("NullOptionElement", "getHint() on %d", new Object[] { Integer.valueOf(this.a) });
-    return "";
+    boolean bool = true;
+    paramBoolean2 = true;
+    this.a.jdField_a_of_type_Beps.b();
+    if (paramBoolean1) {
+      return;
+    }
+    QQToast.a(this.a, 2131695132, 0).b(this.a.getTitleBarHeight());
+    if (paramBoolean3)
+    {
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
+      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
+    }
+    Switch localSwitch = this.a.b;
+    if (!this.a.b.isChecked()) {}
+    for (paramBoolean1 = bool;; paramBoolean1 = false)
+    {
+      localSwitch.setChecked(paramBoolean1);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vys
  * JD-Core Version:    0.7.0.1
  */

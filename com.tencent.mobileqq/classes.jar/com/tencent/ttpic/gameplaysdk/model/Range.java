@@ -4,6 +4,14 @@ public class Range
 {
   public float max;
   public float min;
+  
+  public Range() {}
+  
+  public Range(float paramFloat1, float paramFloat2)
+  {
+    this.min = paramFloat1;
+    this.max = paramFloat2;
+  }
 }
 
 

@@ -1,71 +1,96 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import org.json.JSONArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-public class ukh
-  extends uxs
+class ukh
+  implements ThreadExcutor.IThreadListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  ukh(ukd paramukd, ulw paramulw) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onAdded() {}
+  
+  public void onPostRun() {}
+  
+  public void onPreRun()
   {
-    switch (paramInt1)
+    boolean bool1;
+    int i;
+    int j;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ulw.b))
     {
-    default: 
-      ved.d("AddVideoMiddleCode", "unknown request code %d", new Object[] { Integer.valueOf(paramInt1) });
-      a(paramInt2, paramIntent);
-      e();
-      return;
+      bool1 = this.jdField_a_of_type_Ulw.a().getBooleanExtra("landscape_video", false);
+      boolean bool2 = this.jdField_a_of_type_Ulw.a().isLocalPublish;
+      boolean bool3 = this.jdField_a_of_type_Ulw.a().getBooleanExtra("is_hw_encode", false);
+      if (this.jdField_a_of_type_Ulw.a().businessId != 1) {
+        break label240;
+      }
+      i = 1;
+      j = this.jdField_a_of_type_Ulw.a().getIntExtra("thumb_rotation", 0);
+      if (!bool2) {
+        break label245;
+      }
+      j = 0;
+      label91:
+      if ((i == 0) || (!bool3) || ((bool2) && (!bool1)) || (j == 0)) {}
     }
-    if (paramInt2 == -1) {}
     for (;;)
     {
       try
       {
-        LinkedHashSet localLinkedHashSet = (LinkedHashSet)paramIntent.getSerializableExtra("extra_checked_vidset");
-        if ((localLinkedHashSet != null) && (localLinkedHashSet.size() > 0))
+        BufferedInputStream localBufferedInputStream = new BufferedInputStream(new FileInputStream(this.jdField_a_of_type_Ulw.b));
+        if (localBufferedInputStream != null)
         {
-          ved.d("AddVideoMiddleCode", "let's add video to group, count = %d, collection = %s", new Object[] { Integer.valueOf(localLinkedHashSet.size()), new JSONArray(localLinkedHashSet).toString() });
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.addAll(localLinkedHashSet);
-          svl.a(this.jdField_a_of_type_JavaLangString, localArrayList, this.jdField_a_of_type_Int);
-          paramIntent.putExtra("totalPublishVideoCount", localLinkedHashSet.size());
-          paramIntent.putExtra("isAddFromExist", true);
-          a(paramInt2, paramIntent);
-          e();
-          return;
+          Bitmap localBitmap1 = BitmapFactory.decodeStream(localBufferedInputStream);
+          Bitmap localBitmap2 = xmn.a(localBitmap1, j);
+          bool1 = xmn.a(localBitmap2, this.jdField_a_of_type_Ulw.b);
+          if (localBitmap2 != null) {
+            localBitmap2.recycle();
+          }
+          localBitmap1.recycle();
+          localBufferedInputStream.close();
+          if (bool1) {
+            continue;
+          }
+          wsv.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "compress file fail, %s", new Object[] { this.jdField_a_of_type_Ulw.b });
         }
       }
-      catch (ClassCastException localClassCastException)
+      catch (FileNotFoundException localFileNotFoundException)
       {
-        ved.c("AddVideoMiddleCode", "StoryPickerFragment return illegal value", localClassCastException);
-        Object localObject = null;
-        continue;
-        ved.d("AddVideoMiddleCode", "do not add video to group, exit ! result=%s, retValue=%s", new Object[] { Integer.valueOf(paramInt2), localObject });
-        paramInt2 = 0;
+        wsv.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "FileNotFoundException =", localFileNotFoundException);
         continue;
       }
-      ved.d("AddVideoMiddleCode", "add video to group cancel by user");
+      catch (IOException localIOException)
+      {
+        wsv.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "IOException =", localIOException);
+        continue;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        label240:
+        label245:
+        wsv.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "OutOfMemoryError = ", localOutOfMemoryError);
+        continue;
+      }
+      ukd.a(this.jdField_a_of_type_Ukd);
+      wsv.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_Ulw });
+      return;
+      i = 0;
+      break;
+      j = 360 - j;
+      break label91;
+      wsv.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "video local file exist %b, %s", new Object[] { Boolean.valueOf(xmx.b(this.jdField_a_of_type_Ulw.b)), this.jdField_a_of_type_Ulw.b });
     }
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramBundle2.getString("shareGroupId");
-    this.b = paramBundle2.getString("shareGroupName");
-    this.jdField_a_of_type_Int = paramBundle2.getInt("add_video_source");
-    ved.a("AddVideoMiddleCode", "shareGroupId = %s, shareGroupName = %s, source=%d", this.jdField_a_of_type_JavaLangString, this.b, Integer.valueOf(this.jdField_a_of_type_Int));
-    StoryPickerFragment.a(a(), null, this.b, 1000, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukh
  * JD-Core Version:    0.7.0.1
  */

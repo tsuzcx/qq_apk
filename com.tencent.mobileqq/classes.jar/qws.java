@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class qws
-  implements Parcelable.Creator<DiscoveryBannerInfo>
+class qws
+  implements qwj<qnz>
 {
-  public DiscoveryBannerInfo a(Parcel paramParcel)
-  {
-    return new DiscoveryBannerInfo(paramParcel);
-  }
+  qws(qwp paramqwp) {}
   
-  public DiscoveryBannerInfo[] a(int paramInt)
+  public boolean a(qnz paramqnz)
   {
-    return new DiscoveryBannerInfo[paramInt];
+    try
+    {
+      paramqnz = new File(paramqnz.b);
+      if (paramqnz.isFile())
+      {
+        boolean bool = paramqnz.exists();
+        if (bool) {
+          return true;
+        }
+      }
+      return false;
+    }
+    catch (Throwable paramqnz)
+    {
+      QLog.e("RIJUGC.SelectVideoPresenter", 1, "SelectVideoPresenter check error, file not found", paramqnz);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qws
  * JD-Core Version:    0.7.0.1
  */

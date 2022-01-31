@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -29,7 +29,7 @@ public class QQStoryVideoPlayerErrorView
   
   public void a()
   {
-    this.a.setText(ajya.a(2131711100));
+    this.a.setText(alpo.a(2131711472));
     this.a.setVisibility(0);
     this.b.setVisibility(8);
   }
@@ -42,9 +42,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559340, this, true);
-    this.a = ((TextView)paramContext.findViewById(2131375202));
-    this.b = ((TextView)paramContext.findViewById(2131377315));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559392, this, true);
+    this.a = ((TextView)paramContext.findViewById(2131375684));
+    this.b = ((TextView)paramContext.findViewById(2131377844));
   }
   
   public void setOnRetryClickListener(View.OnClickListener paramOnClickListener)
@@ -60,7 +60,7 @@ public class QQStoryVideoPlayerErrorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView
  * JD-Core Version:    0.7.0.1
  */

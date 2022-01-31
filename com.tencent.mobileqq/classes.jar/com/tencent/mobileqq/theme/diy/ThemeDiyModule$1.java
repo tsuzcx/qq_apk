@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.theme.diy;
 
-import askq;
-import aymj;
-import aymv;
+import aubp;
+import bakf;
+import bakr;
 import org.json.JSONObject;
 
 class ThemeDiyModule$1
-  implements askq<aymj>
+  implements aubp<bakf>
 {
   ThemeDiyModule$1(ThemeDiyModule paramThemeDiyModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(aymj paramaymj)
+  public void postQuery(bakf parambakf)
   {
-    if ((paramaymj != null) && (paramaymj.b())) {
+    if ((parambakf != null) && (parambakf.b())) {
       if (ThemeDiyModule.access$000(this.this$0) != null) {
         ThemeDiyModule.access$000(this.this$0).diyThemeSetup(this.val$styleObj, this.val$callbackId);
       }
@@ -25,7 +25,7 @@ class ThemeDiyModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDiyModule.1
  * JD-Core Version:    0.7.0.1
  */

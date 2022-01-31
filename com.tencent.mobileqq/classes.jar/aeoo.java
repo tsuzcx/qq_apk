@@ -1,82 +1,27 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
 
-class aeoo
-  extends akgy
+public class aeoo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aeoo(aeom paramaeom) {}
+  public aeoo(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {}
-    label335:
-    label336:
-    for (;;)
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f < 0.5F)
     {
+      this.a.c.setAlpha(1.0F - f * 2.0F);
       return;
-      if (this.a.c != null) {
-        this.a.c.dismiss();
-      }
-      if (paramBoolean)
-      {
-        paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
-        paramBoolean = false;
-        if (paramPBRepeatMessageField.hasNext())
-        {
-          if (!String.valueOf(((oidb_0x5d4.DelResult)paramPBRepeatMessageField.next()).uin.get()).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-            break label335;
-          }
-          paramBoolean = true;
-        }
-      }
-      for (;;)
-      {
-        break;
-        if (!paramBoolean) {
-          break label336;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "StrangerObserver : onDelete , result=" + paramBoolean);
-        }
-        paramPBRepeatMessageField = new ArrayList();
-        paramPBRepeatMessageField.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        aanz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), paramPBRepeatMessageField);
-        paramPBRepeatMessageField = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-        if (paramPBRepeatMessageField != null)
-        {
-          RecentUser localRecentUser = paramPBRepeatMessageField.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-          if (QLog.isDevelopLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "StrangerObserver, delete Recent user");
-          }
-          paramPBRepeatMessageField.b(localRecentUser);
-        }
-        bcql.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131719674), 0).a();
-        if (this.a.r) {
-          this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.setResult(-1);
-        }
-        this.a.H();
-        return;
-        bcql.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131719672), 0).a();
-        return;
-      }
     }
+    this.a.c.setAlpha(f * 2.0F - 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeoo
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,6 @@
                 </FrameLayout>
             </LinearLayout>
             <Button android:textStyle="bold" android:id="@id/jvd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i4" android:layout_marginTop="30.0dip" android:layout_marginRight="@dimen/i4" android:layout_marginBottom="16.0dip" android:text="@string/eep" style="@style/b9" />
-            <TextView android:textColor="@color/v3" android:gravity="center" android:layout_gravity="center" android:id="@id/m9l" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="25.0dip" android:text="@string/vp4" />
             <TextView android:textColor="#ffb0b3bf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i4" android:layout_marginTop="16.0dip" android:layout_marginRight="@dimen/i4" android:layout_marginBottom="10.0dip" android:text="@string/eev" />
         </LinearLayout>
     </com.tencent.widget.ScrollView>

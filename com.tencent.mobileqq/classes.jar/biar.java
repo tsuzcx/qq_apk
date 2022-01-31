@@ -1,238 +1,164 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.support.annotation.Nullable;
+import android.support.v4.os.TraceCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
-public class biar
-  extends Drawable
+class biar
+  extends RecyclerView.OnScrollListener
+  implements biat
 {
-  private int jdField_a_of_type_Int = -1;
-  private bias jdField_a_of_type_Bias;
-  private int b = -1;
+  private int jdField_a_of_type_Int = 0;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -1;
+  private boolean jdField_b_of_type_Boolean;
   
-  public biar()
-  {
-    this.jdField_a_of_type_Bias = new bias();
-  }
+  private biar(bial parambial) {}
   
-  public biar(bias parambias)
+  private void a()
   {
-    this.jdField_a_of_type_Bias = parambias;
-    if (parambias != null)
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    int i;
+    if (bial.b(this.jdField_a_of_type_Bial))
     {
-      h(parambias.d);
-      h(parambias.b);
-      h(parambias.c);
-      h(parambias.e);
-      h(parambias.f);
-      h(parambias.g);
-      h(parambias.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      if (!this.jdField_a_of_type_Bial.c()) {
+        bool1 = bool2;
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PagerSnapHelper", 2, "onScrollStateChanged: isRealIdle=" + bool1);
+      }
+      if (bool1) {
+        bial.a(this.jdField_a_of_type_Bial, false);
+      }
+      View localView = this.jdField_a_of_type_Bial.a(bial.a(this.jdField_a_of_type_Bial));
+      if (localView == null) {
+        break label146;
+      }
+      i = bial.a(this.jdField_a_of_type_Bial).getPosition(localView);
+      label104:
+      if (bial.a(this.jdField_a_of_type_Bial, i, bial.a(this.jdField_a_of_type_Bial))) {
+        break label151;
+      }
+      bial.a(this.jdField_a_of_type_Bial, localView, this.jdField_b_of_type_Boolean);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_Boolean = false;
+      return;
+      bool1 = false;
+      break;
+      label146:
+      i = -1;
+      break label104;
+      label151:
+      if ((!bial.a(this.jdField_a_of_type_Bial)) && (!bial.b(this.jdField_a_of_type_Bial))) {
+        if (i > bial.a(this.jdField_a_of_type_Bial, bial.a(this.jdField_a_of_type_Bial))) {
+          bial.a(this.jdField_a_of_type_Bial);
+        } else if (i < bial.a(this.jdField_a_of_type_Bial)) {
+          bial.b(this.jdField_a_of_type_Bial);
+        }
+      }
     }
   }
   
-  private void a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  private void a(int paramInt)
   {
-    if (paramDrawable != null) {
-      paramDrawable.setBounds(paramDrawable.getBounds().left + paramInt1, paramDrawable.getBounds().top + paramInt2, paramDrawable.getBounds().right + paramInt1, paramDrawable.getBounds().bottom + paramInt2);
-    }
-  }
-  
-  private void h(Drawable paramDrawable)
-  {
-    if (paramDrawable != null)
+    int i = -1;
+    View localView;
+    if ((paramInt == 0) || (paramInt == 2))
     {
-      paramDrawable = paramDrawable.getBounds();
-      Rect localRect = getBounds();
-      if ((localRect != null) && (paramDrawable != null))
+      localView = this.jdField_a_of_type_Bial.a(bial.a(this.jdField_a_of_type_Bial));
+      if (localView == null) {
+        break label164;
+      }
+      this.jdField_b_of_type_Int = bial.a(this.jdField_a_of_type_Bial).getPosition(localView);
+    }
+    label164:
+    for (this.jdField_b_of_type_Int = bial.a(this.jdField_a_of_type_Bial, this.jdField_b_of_type_Int);; this.jdField_b_of_type_Int = -1)
+    {
+      if ((bial.b(this.jdField_a_of_type_Bial) != -1) && (bial.a(this.jdField_a_of_type_Bial).findViewByPosition(bial.b(this.jdField_a_of_type_Bial)) == null))
       {
-        localRect.left = Math.min(paramDrawable.left, localRect.left);
-        localRect.right = Math.max(paramDrawable.right, localRect.right);
-        localRect.top = Math.min(paramDrawable.top, localRect.top);
-        localRect.bottom = Math.max(paramDrawable.bottom, localRect.bottom);
-        setBounds(localRect);
-        this.jdField_a_of_type_Int = Math.max(this.jdField_a_of_type_Int, localRect.right - localRect.left);
-        this.b = Math.max(this.b, localRect.bottom - localRect.top);
+        if (QLog.isColorLevel()) {
+          QLog.d("PagerSnapHelper", 2, "onScrollStateChanged: centerPosition has been recycler");
+        }
+        this.jdField_b_of_type_Boolean = true;
       }
-    }
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Bias != null) && (this.jdField_a_of_type_Bias.b != null)) {
-      return Math.abs(this.jdField_a_of_type_Bias.b.getBounds().left - getBounds().left);
-    }
-    return 0;
-  }
-  
-  public Drawable.ConstantState a()
-  {
-    return this.jdField_a_of_type_Bias;
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bias != null)
-    {
-      this.jdField_a_of_type_Bias.b = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_Bias != null) && (this.jdField_a_of_type_Bias.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {}
-    while ((this.jdField_a_of_type_Bias != null) && ((this.jdField_a_of_type_Bias.d != null) || (this.jdField_a_of_type_Bias.f != null) || (this.jdField_a_of_type_Bias.e != null) || (this.jdField_a_of_type_Bias.c != null))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int b()
-  {
-    if ((this.jdField_a_of_type_Bias != null) && (this.jdField_a_of_type_Bias.b != null)) {
-      return Math.abs(this.jdField_a_of_type_Bias.b.getBounds().top - getBounds().top);
-    }
-    return 0;
-  }
-  
-  public void b(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bias != null)
-    {
-      this.jdField_a_of_type_Bias.c = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public void c(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bias != null)
-    {
-      this.jdField_a_of_type_Bias.d = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public void d(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bias != null)
-    {
-      this.jdField_a_of_type_Bias.e = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    bias localbias = this.jdField_a_of_type_Bias;
-    if (localbias != null)
-    {
-      if (localbias.d != null) {
-        localbias.d.draw(paramCanvas);
-      }
-      if (localbias.f != null) {
-        localbias.f.draw(paramCanvas);
-      }
-      if (localbias.g != null) {
-        localbias.g.draw(paramCanvas);
-      }
-      if (localbias.e != null) {
-        localbias.e.draw(paramCanvas);
-      }
-      if (localbias.b != null) {
-        localbias.b.draw(paramCanvas);
-      }
-      if (localbias.c != null) {
-        localbias.c.draw(paramCanvas);
-      }
-      if (localbias.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-        localbias.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      }
-    }
-  }
-  
-  public void e(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bias != null)
-    {
-      this.jdField_a_of_type_Bias.f = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public void f(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bias != null)
-    {
-      this.jdField_a_of_type_Bias.g = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public void g(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bias != null)
-    {
-      this.jdField_a_of_type_Bias.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return super.getChangingConfigurations() | this.jdField_a_of_type_Bias.jdField_a_of_type_Int;
-  }
-  
-  public final Drawable.ConstantState getConstantState()
-  {
-    this.jdField_a_of_type_Bias.jdField_a_of_type_Int = getChangingConfigurations();
-    return this.jdField_a_of_type_Bias;
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.b;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (getBounds() != null)
-    {
-      int i = getBounds().left;
-      int j = getBounds().top;
-      if ((i != paramInt1) || (j != paramInt2))
+      if (QLog.isColorLevel())
       {
-        a(this.jdField_a_of_type_Bias.d, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bias.e, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bias.f, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bias.b, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bias.c, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bias.g, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bias.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramInt1 - i, paramInt2 - j);
+        StringBuilder localStringBuilder = new StringBuilder().append("onScrollStateChanged: lastCenterView=");
+        paramInt = i;
+        if (localView != null) {
+          paramInt = bial.a(this.jdField_a_of_type_Bial).getPosition(localView);
+        }
+        QLog.d("PagerSnapHelper", 2, paramInt);
       }
+      return;
     }
-    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
+  public boolean a(float paramFloat1, float paramFloat2)
+  {
+    if (bial.a(this.jdField_a_of_type_Bial) == null) {}
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return false;
+      } while ((bial.a(this.jdField_a_of_type_Bial).getAdapter() == null) || (!bial.a(this.jdField_a_of_type_Bial)));
+      i = bial.a(this.jdField_a_of_type_Bial).getMinFlingVelocity();
+      j = this.jdField_b_of_type_Int;
+    } while ((Math.abs(paramFloat2) <= i) && (Math.abs(paramFloat1) <= i));
+    try
+    {
+      TraceCompat.beginSection("snapFromFling");
+      boolean bool = bial.a(this.jdField_a_of_type_Bial, bial.a(this.jdField_a_of_type_Bial), paramFloat1, paramFloat2, j);
+      return bool;
+    }
+    finally
+    {
+      TraceCompat.endSection();
+    }
+  }
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PagerSnapHelper", 2, "onScrollStateChanged: state=" + paramInt);
+    }
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
+    {
+      TraceCompat.beginSection("snap onIdle");
+      a();
+      TraceCompat.endSection();
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    TraceCompat.beginSection("snap onDragging");
+    a(i);
+    TraceCompat.endSection();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 != 0) || (paramInt2 != 0)) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biar
  * JD-Core Version:    0.7.0.1
  */

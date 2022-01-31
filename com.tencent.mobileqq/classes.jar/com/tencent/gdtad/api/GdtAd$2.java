@@ -1,8 +1,8 @@
 package com.tencent.gdtad.api;
 
+import aaip;
+import aanp;
 import java.lang.ref.WeakReference;
-import ysy;
-import yxp;
 
 class GdtAd$2
   implements Runnable
@@ -13,16 +13,16 @@ class GdtAd$2
   {
     if ((this.a == null) || (this.a.get() == null) || (GdtAd.access$000((GdtAd)this.a.get()) == null) || (GdtAd.access$000((GdtAd)this.a.get()).get() == null))
     {
-      yxp.d("GdtAd", "notifyLoaded error");
+      aanp.d("GdtAd", "notifyLoaded error");
       return;
     }
-    yxp.b("GdtAd", "notifyLoaded");
-    ((ysy)GdtAd.access$000((GdtAd)this.a.get()).get()).a((GdtAd)this.a.get());
+    aanp.b("GdtAd", "notifyLoaded");
+    ((aaip)GdtAd.access$000((GdtAd)this.a.get()).get()).a((GdtAd)this.a.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.GdtAd.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@
   "view_type": "UIView",
   "layout_type": "layout_relative",
   "view_id": "id_pgc_video_content",
+  "margin_bottom": "10",
   "height": {
     "type": "relative",
     "value": "195"
@@ -31,10 +32,13 @@
         "setPlayMode:" : "1",
         "setShouldRepeat:": "NO",
         "setVideoScaleType:": "2",
+        "setShouldMute:": "YES",
         "setPlayIconUrl:": "http://qqpublic.qpic.cn/qq_public/0/0-2652434506-F059E11DBA4D14791005FEBF4164D972/0",
         "setPlayIconWidth:height:": ["50", "50"],
         "setPlayIconVisible:": "YES",
-        "setAttachInfo:": "$pgc_video_content_jump"
+        "setReportPlayDuration:": {
+          "rowkey": "$pgc_video_rowkey"
+        }
       },
       "data_attributes": {
         "setLocalInfo:": {

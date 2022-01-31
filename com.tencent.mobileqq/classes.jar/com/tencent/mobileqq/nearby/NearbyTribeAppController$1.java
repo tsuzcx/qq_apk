@@ -2,24 +2,24 @@ package com.tencent.mobileqq.nearby;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import atbm;
-import naj;
+import ausl;
+import ndd;
 import org.json.JSONObject;
 
 public class NearbyTribeAppController$1
   implements Runnable
 {
-  public NearbyTribeAppController$1(atbm paramatbm) {}
+  public NearbyTribeAppController$1(ausl paramausl) {}
   
   public void run()
   {
     try
     {
-      atbm.a(this.this$0, false);
+      ausl.a(this.this$0, false);
       Object localObject = new Bundle();
       ((Bundle)localObject).putString("REFERER", " https://buluo.qq.com/");
       ((Bundle)localObject).putString("HOST", " buluo.qq.com");
-      localObject = new JSONObject(naj.a(atbm.a(this.this$0), "http://buluo.qq.com/cgi-bin/bar/post/get_entry?entry_ids=[18]", "POST", null, (Bundle)localObject));
+      localObject = new JSONObject(ndd.a(ausl.a(this.this$0), "http://buluo.qq.com/cgi-bin/bar/post/get_entry?entry_ids=[18]", "POST", null, (Bundle)localObject));
       if (((JSONObject)localObject).getInt("retcode") == 0)
       {
         localObject = ((JSONObject)localObject).getJSONObject("result").getJSONObject("18").getString("download_link");
@@ -41,7 +41,7 @@ public class NearbyTribeAppController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyTribeAppController.1
  * JD-Core Version:    0.7.0.1
  */

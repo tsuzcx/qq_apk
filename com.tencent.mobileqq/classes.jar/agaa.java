@@ -1,25 +1,21 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.view.View.OnTouchListener;
 
-public class agaa
-  implements View.OnClickListener
+class agaa
+  implements View.OnTouchListener
 {
-  public agaa(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  agaa(afzx paramafzx, aeov paramaeov) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_d_of_type_Int == 11) {
-      axqy.b(this.a.getActivity().app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
-    }
-    this.a.jdField_d_of_type_AndroidAppDialog.cancel();
+    this.jdField_a_of_type_Aeov.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agaa
  * JD-Core Version:    0.7.0.1
  */

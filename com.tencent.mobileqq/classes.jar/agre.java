@@ -1,25 +1,26 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class agre
-  implements MessageQueue.IdleHandler
+  implements DialogInterface.OnClickListener
 {
-  public agre(AlbumListFragment paramAlbumListFragment, int paramInt1, int paramInt2) {}
+  public agre(TroopChatPie paramTroopChatPie) {}
   
-  public boolean queueIdle()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListActivity", 2, "load Scroll Position,index:" + this.jdField_a_of_type_Int + " top:" + this.b);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListFragment.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
-    return false;
+    paramDialogInterface = new Intent(this.a.jdField_a_of_type_AndroidContentContext, TroopLowCreditLevelNotifyActivity.class);
+    paramDialogInterface.putExtra("troopUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agre
  * JD-Core Version:    0.7.0.1
  */

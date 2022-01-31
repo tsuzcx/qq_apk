@@ -1,59 +1,38 @@
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class osy
-  implements Comparable<osy>
+public class osy
+  implements AladdinConfigHandler
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  
-  private osy(osx paramosx)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = "nil";
-  }
-  
-  public int a(osy paramosy)
-  {
-    if (paramosy.jdField_a_of_type_Long > this.jdField_a_of_type_Long) {
-      return 1;
-    }
-    if (paramosy.jdField_a_of_type_Long == this.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    int j = 1;
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_b_of_type_Long).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.c).append("_").append(String.format("%.2f", new Object[] { Float.valueOf(this.jdField_a_of_type_Float) })).append("_");
-    if (this.jdField_a_of_type_Boolean)
+    QLog.d("AdNativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      i = 1;
-      localStringBuilder = localStringBuilder.append(i).append("_");
-      if (!this.jdField_b_of_type_Boolean) {
-        break label128;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdNativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "commercialAdDetails_feeds")) {
+        bjxj.a("ad_native_proteus_offline_bid", str2);
       }
     }
-    label128:
-    for (int i = j;; i = 0)
-    {
-      return i + "_" + this.jdField_b_of_type_JavaLangString;
-      i = 0;
-      break;
-    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bjxj.a("ad_native_proteus_offline_bid", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osy
  * JD-Core Version:    0.7.0.1
  */

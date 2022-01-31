@@ -1,53 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xc90.RspBody;
 
-public class pef
+class pef
+  extends mzz
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  pef(ped paramped, sec paramsec) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = new JSONObject();
-    ((JSONObject)localObject).put("small_video_icon", "public_account_video_profile");
-    localJSONObject1.put("id_small_video_icon", localObject);
-    localObject = new JSONObject();
-    ((JSONObject)localObject).put("small_video_cover", "public_account_small_video_mengceng");
-    localJSONObject1.put("id_small_video_cover", localObject);
-    JSONObject localJSONObject2 = new JSONObject();
-    if (paramBaseArticleInfo.mSinglePicture != null)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_small_imge_url", localObject);
-      localJSONObject1.put("id_article_small_imge", localJSONObject2);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("small_video_duration", omr.a(paramBaseArticleInfo.mVideoDuration));
-      localJSONObject1.put("id_small_video_duration", localObject);
-      pek.a(paramBaseArticleInfo, localJSONObject1, true);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label186;
+      paramBundle = new oidb_0xc90.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (this.jdField_a_of_type_Sec != null) {
+        this.jdField_a_of_type_Sec.a(true, paramInt, paramBundle);
       }
-      pek.a(paramBaseArticleInfo, localJSONObject1);
-      pek.b(paramBaseArticleInfo, localJSONObject1);
+      return;
     }
-    for (;;)
+    catch (Exception paramArrayOfByte)
     {
-      pek.m(paramBaseArticleInfo, localJSONObject1);
-      pek.e(paramBaseArticleInfo, localJSONObject1);
-      pek.g(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
-      pek.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label186:
-      pek.d(paramBaseArticleInfo, localJSONObject1);
+      while (!QLog.isColorLevel()) {}
+      QLog.e(ped.a, 2, "requestNewCommunityMsg onResult(), exception = " + QLog.getStackTraceString(paramArrayOfByte));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pef
  * JD-Core Version:    0.7.0.1
  */

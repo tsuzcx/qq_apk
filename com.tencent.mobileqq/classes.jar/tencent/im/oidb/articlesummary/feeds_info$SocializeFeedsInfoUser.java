@@ -6,8 +6,10 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.MedalInfo;
 
 public final class feeds_info$SocializeFeedsInfoUser
   extends MessageMicro<SocializeFeedsInfoUser>
@@ -15,6 +17,8 @@ public final class feeds_info$SocializeFeedsInfoUser
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_person_desc = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField enum_uin_type = PBField.initEnum(0);
+  public feeds_info.AccountLevelInfo msg_account_level_info = new feeds_info.AccountLevelInfo();
+  public final PBRepeatMessageField<oidb_cmd0xb57.MedalInfo> rpt_msg_medal_info = PBField.initRepeatMessage(oidb_cmd0xb57.MedalInfo.class);
   public final PBUInt32Field uint32_star_style = PBField.initUInt32(0);
   public final PBUInt64Field uint64_real_uin = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
@@ -22,12 +26,12 @@ public final class feeds_info$SocializeFeedsInfoUser
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 48 }, new String[] { "uint64_uin", "enum_uin_type", "uint32_star_style", "bytes_person_desc", "uint64_real_uin" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L) }, SocializeFeedsInfoUser.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58 }, new String[] { "uint64_uin", "enum_uin_type", "uint32_star_style", "bytes_person_desc", "rpt_msg_medal_info", "uint64_real_uin", "msg_account_level_info" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null, Long.valueOf(0L), null }, SocializeFeedsInfoUser.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.feeds_info.SocializeFeedsInfoUser
  * JD-Core Version:    0.7.0.1
  */

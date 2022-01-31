@@ -1,55 +1,31 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.widget.AbsListView;
 
 public class achu
-  implements View.OnClickListener
+  implements bhpo
 {
-  public achu(TroopInfoActivity paramTroopInfoActivity) {}
+  public achu(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId != 0L) || (this.a.c != 0L))
+    this.a.m = paramInt;
+    if (paramInt == 0)
     {
-      this.a.c();
+      AbstractGifImage.resumeAll();
       return;
     }
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
-    {
-    default: 
-      return;
-    case 0: 
-    case 1: 
-      this.a.i();
-      return;
+    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
+      this.a.a.d();
     }
-    if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_a_of_type_Long <= this.a.jdField_b_of_type_Long) && (this.a.jdField_b_of_type_Int == 0))
-    {
-      paramView = bbdj.a(this.a, 230);
-      paramView.setTitle(null);
-      paramView.setMessage(this.a.getString(2131693494, new Object[] { this.a.jdField_a_of_type_Long + "" }));
-      paramView.setPositiveButton(this.a.getString(2131693471), new bbdt());
-      paramView.setPositiveButtonContentDescription(this.a.getString(2131693471));
-      paramView.show();
-      return;
-    }
-    paramView = TroopInfoActivity.a(this.a);
-    if (!TextUtils.isEmpty(paramView))
-    {
-      this.a.a(paramView);
-      return;
-    }
-    TroopInfoActivity.a(this.a);
+    AbstractGifImage.pauseAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achu
  * JD-Core Version:    0.7.0.1
  */

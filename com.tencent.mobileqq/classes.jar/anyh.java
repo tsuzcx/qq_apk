@@ -1,50 +1,61 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import android.support.annotation.Nullable;
 
 public class anyh
-  extends aoam
+  extends aofy<anyg>
 {
-  public EmojiStickerManager.StickerInfo a;
-  public boolean a;
-  public int c = -1;
-  public int d;
-  public int e;
-  public int f = 0;
-  public int g;
-  public String h;
-  public String i;
-  
-  public Drawable a(Context paramContext, float paramFloat)
+  public static anyg a()
   {
-    return aylc.a(paramContext.getResources(), this.e);
+    return (anyg)aogj.a().a(586);
   }
   
-  public Drawable a(Context paramContext, float paramFloat, int paramInt1, int paramInt2)
+  public int a()
   {
-    return aylc.a(paramContext.getResources(), this.e);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
-  
-  public Drawable b(Context paramContext, float paramFloat)
-  {
-    return a(paramContext, paramFloat);
+    return 586;
   }
   
   @NonNull
-  public String toString()
+  public anyg a(int paramInt)
   {
-    return "EmoticonInfo[type: " + this.c + "  action: " + this.h + "]";
+    return new anyg();
+  }
+  
+  @Nullable
+  public anyg a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return anyg.a(paramArrayOfaogf[0].a);
+    }
+    return null;
+  }
+  
+  public Class<anyg> a()
+  {
+    return anyg.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(anyg paramanyg) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyh
  * JD-Core Version:    0.7.0.1
  */

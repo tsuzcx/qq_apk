@@ -1,319 +1,149 @@
-import MQQ.VipUserInfo;
-import VIP.AIOSendRes;
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import java.util.Calendar;
+import java.util.Date;
 
 public class bbwn
+  implements aoed
 {
-  public static int a;
-  private static bbwn jdField_a_of_type_Bbwn;
-  public static String a;
-  public static int b;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
-  public static String j;
-  public static String k;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int c;
-  private int d;
-  private int e;
-  private String l;
-  private String m;
-  private String n;
-  private String o;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "aioVipDonateInfoSpFile_";
-    jdField_b_of_type_JavaLangString = "lastCheckTime_";
-    jdField_c_of_type_JavaLangString = "sendDisable";
-    jdField_d_of_type_JavaLangString = "checkFreq";
-    jdField_e_of_type_JavaLangString = "grayTail";
-    f = "sendList";
-    g = "popGraytips";
-    h = "graytips";
-    i = "hightLight";
-    j = "jumpUrl";
-    jdField_a_of_type_Int = 1;
-    k = "";
-    jdField_b_of_type_Int = 1;
-  }
+  private final int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilCalendar.getMaximum(1);
+  private long jdField_a_of_type_Long;
+  private Calendar jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
+  private final int b = this.jdField_a_of_type_JavaUtilCalendar.getMinimum(1);
+  private final int c;
   
   public bbwn()
   {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilCalendar.add(5, 1);
+    this.jdField_a_of_type_JavaUtilCalendar.set(11, 8);
+    this.jdField_a_of_type_JavaUtilCalendar.set(12, 0);
+    this.jdField_a_of_type_JavaUtilCalendar.set(13, 0);
+    this.jdField_a_of_type_JavaUtilCalendar.set(14, 0);
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, this.b);
+    localCalendar.set(5, 0);
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    this.jdField_a_of_type_Long = localCalendar.getTimeInMillis();
+    this.c = ((int)((this.jdField_a_of_type_JavaUtilCalendar.getTimeInMillis() - this.jdField_a_of_type_Long) / 86400000L));
   }
   
-  public static bbwn a()
+  public static int a(bbwo parambbwo, int paramInt)
   {
-    if (jdField_a_of_type_Bbwn == null) {}
-    try
+    return paramInt;
+  }
+  
+  public static long a()
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.add(5, 1);
+    localCalendar.set(11, 8);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    return localCalendar.getTimeInMillis() / 1000L;
+  }
+  
+  public static long a(bbwo parambbwo, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((parambbwo != null) && ((parambbwo.a() instanceof bbwn)))
     {
-      if (jdField_a_of_type_Bbwn == null) {
-        jdField_a_of_type_Bbwn = new bbwn();
-      }
-      return jdField_a_of_type_Bbwn;
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.setTime(a(parambbwo, paramInt1));
+      localCalendar.set(11, a(parambbwo, paramInt2));
+      localCalendar.set(12, b(parambbwo, paramInt3));
+      return localCalendar.getTimeInMillis();
     }
-    finally {}
+    return 0L;
   }
   
-  public long a(QQAppInterface paramQQAppInterface)
+  public static bbwo a(Context paramContext)
   {
-    if (paramQQAppInterface == null) {
-      return -1L;
-    }
-    if (this.jdField_d_of_type_Int == -1) {
-      this.jdField_d_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getInt(jdField_d_of_type_JavaLangString, -1);
-    }
-    return this.jdField_d_of_type_Int * 60 * 1000;
+    bbwn localbbwn = new bbwn();
+    paramContext = new bbwo(paramContext, localbbwn);
+    a(paramContext, localbbwn);
+    return paramContext;
   }
   
-  public String a(QQAppInterface paramQQAppInterface)
+  public static Date a(bbwo parambbwo, int paramInt)
   {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    if (TextUtils.isEmpty(this.m)) {
-      this.m = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getString(h, null);
-    }
-    return this.m;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    this.jdField_e_of_type_Int = paramInt;
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).edit();
-    paramQQAppInterface.putInt(g, paramInt);
-    if (Build.VERSION.SDK_INT < 9)
+    if ((parambbwo != null) && ((parambbwo.a() instanceof bbwn)))
     {
-      paramQQAppInterface.commit();
-      return;
+      parambbwo = (bbwn)parambbwo.a();
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(parambbwo.jdField_a_of_type_Long + 86400000L * paramInt);
+      return localCalendar.getTime();
     }
-    paramQQAppInterface.apply();
+    return null;
   }
   
-  @TargetApi(9)
-  public void a(QQAppInterface paramQQAppInterface, VipUserInfo paramVipUserInfo)
+  public static void a(bbwo parambbwo, bbwn parambbwn)
   {
-    int i2 = 0;
-    if ((paramQQAppInterface == null) || (paramVipUserInfo == null)) {
-      return;
-    }
-    Object localObject = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + (String)localObject, 0).edit();
-    this.jdField_c_of_type_Int = paramVipUserInfo.iSendDisable;
-    this.jdField_d_of_type_Int = paramVipUserInfo.iCheckFreq;
-    if (!TextUtils.isEmpty(paramVipUserInfo.sGrayTail))
+    if ((parambbwo != null) && (parambbwn != null))
     {
-      this.l = paramVipUserInfo.sGrayTail;
-      paramQQAppInterface.putString(jdField_e_of_type_JavaLangString, paramVipUserInfo.sGrayTail);
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.add(5, 1);
+      localCalendar.set(11, 8);
+      localCalendar.set(12, 0);
+      localCalendar.set(13, 0);
+      localCalendar.set(14, 0);
+      parambbwo.a(0, parambbwn.c);
+      parambbwo.a(1, localCalendar.get(11));
+      parambbwo.a(2, localCalendar.get(12));
     }
-    if ((paramVipUserInfo.vSendList != null) && (paramVipUserInfo.vSendList.size() > 0))
-    {
-      localObject = new StringBuilder();
-      int i1 = i2;
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        i1 = i2;
-      }
-      while (i1 < paramVipUserInfo.vSendList.size())
-      {
-        String str = String.valueOf(paramVipUserInfo.vSendList.get(i1));
-        ((StringBuilder)localObject).append(str).append(",");
-        this.jdField_a_of_type_JavaUtilList.add(str);
-        i1 += 1;
-      }
-      paramQQAppInterface.putString(f, ((StringBuilder)localObject).toString());
-    }
-    paramQQAppInterface.putInt(jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Int);
-    paramQQAppInterface.putInt(jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
-    if (Build.VERSION.SDK_INT < 9)
-    {
-      paramQQAppInterface.commit();
-      return;
-    }
-    paramQQAppInterface.apply();
   }
   
-  @TargetApi(9)
-  public void a(QQAppInterface paramQQAppInterface, AIOSendRes paramAIOSendRes)
+  public static int b(bbwo parambbwo, int paramInt)
   {
-    if ((paramQQAppInterface == null) || (paramAIOSendRes == null)) {}
-    label251:
+    return paramInt;
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return this.jdField_a_of_type_Int - this.b + 1;
+    case 1: 
+      return 24;
+    }
+    return 60;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    switch (paramInt1)
+    {
+    }
     for (;;)
     {
-      return;
-      this.jdField_e_of_type_Int = paramAIOSendRes.iPopGrayStip;
-      this.m = paramAIOSendRes.sGrayStipMsg;
-      paramAIOSendRes = paramAIOSendRes.mHighLightMap;
-      if ((paramAIOSendRes != null) && (paramAIOSendRes.size() > 0))
-      {
-        this.n = ((String)paramAIOSendRes.keySet().iterator().next());
-        if (!TextUtils.isEmpty(this.n)) {
-          this.o = ((String)paramAIOSendRes.get(this.n));
-        }
-      }
-      paramAIOSendRes = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString, 0).edit();
-      paramAIOSendRes.putInt(g, this.jdField_e_of_type_Int);
-      if (!TextUtils.isEmpty(this.m)) {
-        paramAIOSendRes.putString(h, this.m);
-      }
-      if (!TextUtils.isEmpty(this.n)) {
-        paramAIOSendRes.putString(i, this.n);
-      }
-      if (!TextUtils.isEmpty(this.o)) {
-        paramAIOSendRes.putString(j, this.o);
-      }
-      if (Build.VERSION.SDK_INT < 9) {
-        paramAIOSendRes.commit();
-      }
-      for (;;)
-      {
-        if (this.jdField_e_of_type_Int != jdField_b_of_type_Int) {
-          break label251;
-        }
-        paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-        if (paramQQAppInterface == null) {
-          break;
-        }
-        paramQQAppInterface.sendMessage(paramQQAppInterface.obtainMessage(58));
-        return;
-        paramAIOSendRes.apply();
-      }
+      return localStringBuilder.toString();
+      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(this.jdField_a_of_type_Long + 86400000L * paramInt2);
+      paramInt1 = this.jdField_a_of_type_JavaUtilCalendar.get(1);
+      paramInt2 = this.jdField_a_of_type_JavaUtilCalendar.get(2);
+      int i = this.jdField_a_of_type_JavaUtilCalendar.get(5);
+      localStringBuilder.append(paramInt1).append("年").append(String.valueOf(paramInt2 + 1)).append("月").append(i).append("日");
+      continue;
+      localStringBuilder.append(paramInt2);
+      this.jdField_a_of_type_JavaUtilCalendar.set(11, paramInt2);
+      continue;
+      localStringBuilder.append(paramInt2);
+      this.jdField_a_of_type_JavaUtilCalendar.set(12, paramInt2);
     }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return false;
-      if (this.jdField_c_of_type_Int == -1) {
-        this.jdField_c_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getInt(jdField_c_of_type_JavaLangString, -1);
-      }
-    } while (this.jdField_c_of_type_Int != jdField_a_of_type_Int);
-    return true;
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      return false;
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1))
-      {
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        }
-        paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getString(f, null);
-        if (!TextUtils.isEmpty(paramQQAppInterface))
-        {
-          paramQQAppInterface = paramQQAppInterface.split(",");
-          int i1 = 0;
-          while (i1 < paramQQAppInterface.length)
-          {
-            CharSequence localCharSequence = paramQQAppInterface[i1];
-            if (!TextUtils.isEmpty(localCharSequence)) {
-              this.jdField_a_of_type_JavaUtilList.add(localCharSequence.trim());
-            }
-            i1 += 1;
-          }
-        }
-      }
-    } while ((this.jdField_a_of_type_JavaUtilList == null) || (!this.jdField_a_of_type_JavaUtilList.contains(paramString)));
-    return true;
-  }
-  
-  public String b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    if (TextUtils.isEmpty(this.n)) {
-      this.n = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getString(i, null);
-    }
-    return this.n;
-  }
-  
-  public boolean b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    for (;;)
-    {
-      return false;
-      String str = paramQQAppInterface.getCurrentAccountUin();
-      if (TextUtils.isEmpty(this.l)) {
-        this.l = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getString(jdField_e_of_type_JavaLangString, null);
-      }
-      if (!TextUtils.isEmpty(this.l))
-      {
-        paramQQAppInterface = this.l.split(",");
-        int i1 = 0;
-        while (i1 < paramQQAppInterface.length)
-        {
-          CharSequence localCharSequence = paramQQAppInterface[i1];
-          if ((!TextUtils.isEmpty(localCharSequence)) && (str.endsWith(localCharSequence.trim()))) {
-            return true;
-          }
-          i1 += 1;
-        }
-      }
-    }
-  }
-  
-  public String c(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    if (TextUtils.isEmpty(this.o)) {
-      this.o = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getString(j, k);
-    }
-    return this.o;
-  }
-  
-  public boolean c(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return false;
-      if (this.jdField_e_of_type_Int == -1) {
-        this.jdField_e_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getInt(g, 0);
-      }
-    } while (this.jdField_e_of_type_Int != jdField_b_of_type_Int);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbwn
  * JD-Core Version:    0.7.0.1
  */

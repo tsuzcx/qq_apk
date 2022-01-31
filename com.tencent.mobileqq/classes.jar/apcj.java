@@ -1,19 +1,20 @@
-class apcj
-  extends apbu
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+
+public class apcj
+  implements View.OnClickListener
 {
-  public apcj(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  public apcj(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateSenderCancelSend";
+    bdcd.a(this.a.getActivity(), 0, 2131559472, alpo.a(2131703152), "", alpo.a(2131703147), alpo.a(2131703153), new apck(this), new apcl(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apcj
  * JD-Core Version:    0.7.0.1
  */

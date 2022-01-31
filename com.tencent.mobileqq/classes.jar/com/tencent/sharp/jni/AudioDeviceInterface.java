@@ -9,7 +9,7 @@ import android.media.AudioTrack;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Environment;
-import bfll;
+import bhmf;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -2683,7 +2683,7 @@ public class AudioDeviceInterface
     this.switchState = 0;
     this._streamType = TraeAudioManager.b(this._audioStreamTypePolicy);
     if (this._as == null) {
-      this._as = new TraeAudioSession(this._context, new bfll(this));
+      this._as = new TraeAudioSession(this._context, new bhmf(this));
     }
     this._preDone = false;
     if (this._as != null) {
@@ -2757,7 +2757,7 @@ public class AudioDeviceInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sharp.jni.AudioDeviceInterface
  * JD-Core Version:    0.7.0.1
  */

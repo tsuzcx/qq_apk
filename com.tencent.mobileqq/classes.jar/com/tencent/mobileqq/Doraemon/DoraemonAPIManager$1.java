@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.Doraemon;
 
-import aabl;
+import absi;
 
 public class DoraemonAPIManager$1
   implements Runnable
 {
-  public DoraemonAPIManager$1(aabl paramaabl) {}
+  public DoraemonAPIManager$1(absi paramabsi) {}
   
   public void run()
   {
-    aabl.a(this.this$0);
+    absi.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.DoraemonAPIManager.1
  * JD-Core Version:    0.7.0.1
  */

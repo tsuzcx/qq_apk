@@ -1,35 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import android.widget.HorizontalScrollView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.qphone.base.util.QLog;
-
 public class bday
-  extends Handler
 {
-  public bday(FriendChooser paramFriendChooser) {}
+  public int a;
+  public boolean a;
+  public int b;
   
-  public void handleMessage(Message paramMessage)
+  public bday(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
-      if (QLog.isColorLevel()) {
-        QLog.e("qqBaseActivity", 2, "" + this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width);
-      }
-    }
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bday
  * JD-Core Version:    0.7.0.1
  */

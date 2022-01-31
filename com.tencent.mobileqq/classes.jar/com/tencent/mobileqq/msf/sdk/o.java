@@ -5,7 +5,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 class o
   implements Runnable
 {
-  o(k paramk, ToServiceMsg paramToServiceMsg) {}
+  o(l paraml, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {

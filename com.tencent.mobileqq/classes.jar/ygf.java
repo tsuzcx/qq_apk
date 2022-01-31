@@ -1,41 +1,54 @@
-import java.util.List;
-
 public class ygf
 {
-  private static int d;
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
+  private volatile int jdField_a_of_type_Int = 0;
+  private ygp jdField_a_of_type_Ygp;
   
-  public ygf()
+  public void a()
   {
-    d += 1;
-    this.jdField_a_of_type_Int = d;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.c = 0;
+    a(-1);
   }
   
-  public String a()
+  public void a(int paramInt)
   {
-    return this.jdField_b_of_type_JavaLangString.replaceAll(":", "") + "0000";
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Ygp != null) {}
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case -1: 
+      this.jdField_a_of_type_Ygp.n();
+      return;
+    case 1: 
+      this.jdField_a_of_type_Ygp.l();
+      return;
+    case 2: 
+      this.jdField_a_of_type_Ygp.k();
+      return;
+    }
+    this.jdField_a_of_type_Ygp.m();
+  }
+  
+  public void a(ygp paramygp)
+  {
+    this.jdField_a_of_type_Ygp = paramygp;
+    a(this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == -1;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ygf
  * JD-Core Version:    0.7.0.1
  */

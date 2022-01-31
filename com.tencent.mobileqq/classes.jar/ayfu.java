@@ -1,34 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class ayfu
-  implements View.OnClickListener
+public class ayfu
+  implements View.OnTouchListener
 {
-  ayfu(ayft paramayft) {}
+  public ayfu(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((ayft.a(this.a) instanceof CustomWebView))
-    {
-      if (2 == ayft.a(this.a).c)
-      {
-        ((CustomWebView)ayft.a(this.a)).callJs("openAdvPermissionsMobile()");
-        this.a.b();
-      }
-    }
-    else {
-      return;
-    }
-    ((CustomWebView)ayft.a(this.a)).callJs("openCooperationMobile()");
-    this.a.b();
-    axqy.b(ayft.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayfu
  * JD-Core Version:    0.7.0.1
  */

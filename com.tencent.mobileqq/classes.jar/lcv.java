@@ -1,33 +1,22 @@
+import com.tencent.qphone.base.util.Cryptor;
+
 public class lcv
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
+  private final String a = "ZaDA32%dkn_vs4dAjg";
   
-  public String toString()
+  protected String a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin=").append(this.jdField_a_of_type_JavaLangString).append(", nick=").append(this.jdField_b_of_type_JavaLangString).append(", level=").append(this.jdField_c_of_type_JavaLangString).append(", distance=").append(this.jdField_d_of_type_JavaLangString).append(", age=").append(this.jdField_a_of_type_Int).append(", gender=").append(this.jdField_b_of_type_Int).append(", isFollowed=").append(this.jdField_a_of_type_Boolean).append(", logoUrl=").append(this.jdField_e_of_type_JavaLangString).append(", hint=").append(this.jdField_f_of_type_JavaLangString).append(",likeState=").append(this.jdField_c_of_type_Int).append(",showTime=").append(this.jdField_d_of_type_Int).append(",vipFee=").append(this.jdField_e_of_type_Int).append(",vipLevel=").append(this.jdField_f_of_type_Int).append(",desc=").append(this.jdField_g_of_type_JavaLangString).append(",selfUserType=").append(this.jdField_g_of_type_Int).append(",threeWord=").append(this.h).append(",tinyId=").append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    return new String(new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2));
+  }
+  
+  protected byte[] a()
+  {
+    return "ZaDA32%dkn_vs4dAjg".getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcv
  * JD-Core Version:    0.7.0.1
  */

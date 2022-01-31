@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acmw;
-import acmx;
-import acmy;
-import ajya;
+import aeeg;
+import aeeh;
+import aeei;
+import alpo;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -16,13 +16,13 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import axqy;
-import aywm;
-import bafo;
-import bafr;
-import bafs;
-import baft;
-import bafu;
+import azmj;
+import baul;
+import bcea;
+import bced;
+import bcee;
+import bcef;
+import bceg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
@@ -46,7 +46,7 @@ public class TroopShortcutbarFragment
   public FragmentActivity a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bafu jdField_a_of_type_Bafu;
+  bceg jdField_a_of_type_Bceg;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   Switch jdField_a_of_type_ComTencentWidgetSwitch;
   public ArrayList<Pair<URLDrawable, URLImageView>> a;
@@ -68,20 +68,20 @@ public class TroopShortcutbarFragment
       {
         return;
       } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      localObject2 = (baft)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(355);
-      localObject1 = (bafr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(171);
+      localObject2 = (bcef)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(355);
+      localObject1 = (bced)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(171);
     } while (localObject2 == null);
-    Object localObject2 = ((baft)localObject2).b(Long.valueOf(this.jdField_a_of_type_Long));
+    Object localObject2 = ((bcef)localObject2).b(Long.valueOf(this.jdField_a_of_type_Long));
     if (localObject2 != null)
     {
-      if ((paramBoolean) && (((bafs)localObject2).a() < System.currentTimeMillis()) && (localObject1 != null)) {
-        ((bafr)localObject1).b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+      if ((paramBoolean) && (((bcee)localObject2).a() < System.currentTimeMillis()) && (localObject1 != null)) {
+        ((bced)localObject1).b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
       }
-      if (((this.b) && (((bafs)localObject2).b() == 0)) || ((!this.b) && (((bafs)localObject2).a() == 0)))
+      if (((this.b) && (((bcee)localObject2).b() == 0)) || ((!this.b) && (((bcee)localObject2).a() == 0)))
       {
         this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696506);
-        localObject1 = ((bafs)localObject2).a();
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696681);
+        localObject1 = ((bcee)localObject2).a();
         this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
         this.jdField_a_of_type_JavaUtilArrayList.clear();
         localObject1 = ((ArrayList)localObject1).iterator();
@@ -91,27 +91,27 @@ public class TroopShortcutbarFragment
           if (!((Iterator)localObject1).hasNext()) {
             break label469;
           }
-          localObject2 = (bafo)((Iterator)localObject1).next();
+          localObject2 = (bcea)((Iterator)localObject1).next();
           try
           {
-            if ((this.b) || (((bafo)localObject2).a() != 1))
+            if ((this.b) || (((bcea)localObject2).a() != 1))
             {
-              localObject3 = LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131561178, null);
+              localObject3 = LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131561366, null);
               this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject3);
-              localObject4 = LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131561176, null);
-              ((View)localObject4).setBackgroundResource(2130849561);
+              localObject4 = LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131561364, null);
+              ((View)localObject4).setBackgroundResource(2130850002);
               this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject4);
               ((View)localObject4).getLayoutParams().height = 2;
-              ((TextView)((View)localObject3).findViewById(2131377350)).setText(((bafo)localObject2).a());
-              localObject4 = (Switch)((View)localObject3).findViewById(2131375951);
+              ((TextView)((View)localObject3).findViewById(2131377884)).setText(((bcea)localObject2).a());
+              localObject4 = (Switch)((View)localObject3).findViewById(2131376450);
               if (!this.b) {
                 break label517;
               }
-              acmx localacmx = new acmx();
-              localacmx.jdField_a_of_type_Int = 1;
-              localacmx.jdField_a_of_type_Long = ((bafo)localObject2).a();
-              ((Switch)localObject4).setTag(localacmx);
-              if (((bafo)localObject2).a() != 0) {
+              aeeh localaeeh = new aeeh();
+              localaeeh.jdField_a_of_type_Int = 1;
+              localaeeh.jdField_a_of_type_Long = ((bcea)localObject2).a();
+              ((Switch)localObject4).setTag(localaeeh);
+              if (((bcea)localObject2).a() != 0) {
                 break label512;
               }
               paramBoolean = true;
@@ -144,14 +144,14 @@ public class TroopShortcutbarFragment
         }
         ((Switch)localObject4).setChecked(paramBoolean);
         ((Switch)localObject4).setOnCheckedChangeListener(this);
-        Object localObject3 = (URLImageView)((View)localObject3).findViewById(2131376083);
+        Object localObject3 = (URLImageView)((View)localObject3).findViewById(2131376582);
         localObject4 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = aywm.a;
-        ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = aywm.a;
+        ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = baul.a;
+        ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = baul.a;
         ((URLDrawable.URLDrawableOptions)localObject4).mUseAutoScaleParams = false;
-        if (((bafo)localObject2).b() != null)
+        if (((bcea)localObject2).b() != null)
         {
-          localObject2 = URLDrawable.getDrawable(((bafo)localObject2).b(), (URLDrawable.URLDrawableOptions)localObject4);
+          localObject2 = URLDrawable.getDrawable(((bcea)localObject2).b(), (URLDrawable.URLDrawableOptions)localObject4);
           if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
             ((URLImageView)localObject3).setColorFilter(1996488704);
           }
@@ -175,17 +175,17 @@ public class TroopShortcutbarFragment
           label517:
           label564:
           this.jdField_a_of_type_JavaUtilArrayList.add(new Pair(localObject2, localObject3));
-          ((URLDrawable)localObject2).setURLDrawableListener(new acmy(this));
+          ((URLDrawable)localObject2).setURLDrawableListener(new aeei(this));
           if (!((URLDrawable)localObject2).isDownloadStarted())
           {
             ((URLDrawable)localObject2).startDownload();
             continue;
-            ((URLImageView)localObject3).setImageDrawable(getResources().getDrawable(2130843106));
+            ((URLImageView)localObject3).setImageDrawable(getResources().getDrawable(2130843290));
           }
         }
       }
       this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696507);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696682);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
       return;
     }
@@ -193,7 +193,7 @@ public class TroopShortcutbarFragment
       localInflateException.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
     }
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696507);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696682);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
   }
   
@@ -208,11 +208,11 @@ public class TroopShortcutbarFragment
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)this.mContentView.findViewById(2131375953));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)this.mContentView.findViewById(2131376452));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setTag(new acmx());
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131376085));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131376084));
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setTag(new aeeh());
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131376584));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131376583));
     paramViewGroup = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
     paramLayoutInflater = paramViewGroup.getStringExtra("troopuin");
     this.jdField_a_of_type_Long = Long.parseLong(paramLayoutInflater);
@@ -224,24 +224,24 @@ public class TroopShortcutbarFragment
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_Bafu = new acmw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bafu);
+      this.jdField_a_of_type_Bceg = new aeeg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bceg);
     }
     a(true);
-    setTitle(ajya.a(2131696508));
+    setTitle(alpo.a(2131696683));
     paramViewGroup = this.leftView;
-    paramBundle = getString(2131690572);
+    paramBundle = getString(2131690623);
     if (paramViewGroup != null)
     {
       paramViewGroup.setText("");
       paramViewGroup.setContentDescription(paramBundle);
     }
-    axqy.b(null, "dc00898", "", "", "0X800AAD8", "0X800AAD8", 0, 0, "", paramLayoutInflater, String.valueOf(this.jdField_a_of_type_Int), "");
+    azmj.b(null, "dc00898", "", "", "0X800AAD8", "0X800AAD8", 0, 0, "", paramLayoutInflater, String.valueOf(this.jdField_a_of_type_Int), "");
   }
   
   public int getContentLayoutId()
   {
-    return 2131559703;
+    return 2131559762;
   }
   
   public boolean onBackEvent()
@@ -261,83 +261,83 @@ public class TroopShortcutbarFragment
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    bafr localbafr;
+    bced localbced;
     Object localObject;
     label66:
-    label196:
-    label207:
-    label249:
+    label200:
+    label211:
+    label253:
     do
     {
-      bafs localbafs;
+      bcee localbcee;
       do
       {
         return;
-        paramCompoundButton = (acmx)paramCompoundButton.getTag();
-        localbafr = (bafr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(171);
-        localObject = (baft)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(355);
-        localbafs = ((baft)localObject).b(Long.valueOf(this.jdField_a_of_type_Long));
+        paramCompoundButton = (aeeh)paramCompoundButton.getTag();
+        localbced = (bced)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(171);
+        localObject = (bcef)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(355);
+        localbcee = ((bcef)localObject).b(Long.valueOf(this.jdField_a_of_type_Long));
         if (!paramBoolean) {
           break;
         }
         i = 0;
-        if ((paramCompoundButton == null) || (localbafr == null) || (localObject == null) || (localbafs == null)) {
-          break label196;
+        if ((paramCompoundButton == null) || (localbced == null) || (localObject == null) || (localbcee == null)) {
+          break label200;
         }
         if (paramCompoundButton.jdField_a_of_type_Int != 0) {
-          break label249;
+          break label253;
         }
-      } while (((!this.b) || (localbafs.b() == i)) && ((this.b) || (localbafs.a() == i)));
+      } while (((!this.b) || (localbcee.b() == i)) && ((this.b) || (localbcee.a() == i)));
       if (this.b) {
-        localbafs.b(i);
+        localbcee.b(i);
       }
       for (;;)
       {
-        localbafr.c(this.jdField_a_of_type_Long, i);
+        localbced.a(this.jdField_a_of_type_Long, i, this.b);
         if (!paramBoolean) {
-          break label207;
+          break label211;
         }
-        axqy.b(null, "dc00898", "", "", "0X800AAD9", "0X800AAD9", 0, 0, "", String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
+        azmj.b(null, "dc00898", "", "", "0X800AAD9", "0X800AAD9", 0, 0, "", String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
         return;
         i = 1;
         break label66;
         break;
-        localbafs.a(i);
+        localbcee.a(i);
       }
-      axqy.b(null, "dc00898", "", "", "0X800AADA", "0X800AADA", 0, 0, "", String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
+      azmj.b(null, "dc00898", "", "", "0X800AADA", "0X800AADA", 0, 0, "", String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
       return;
-      if ((localbafs.a(paramCompoundButton.jdField_a_of_type_Long)) && (!paramBoolean))
+      if ((localbcee.a(paramCompoundButton.jdField_a_of_type_Long)) && (!paramBoolean))
       {
-        localbafr.c(this.jdField_a_of_type_Long, i);
-        axqy.b(null, "dc00898", "", "", "0X800AADA", "0X800AADA", 0, 0, "", String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
-        axqy.b(null, "dc00898", "", "", "0X800AADC", "0X800AADC", 0, 0, String.valueOf(paramCompoundButton.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
+        localbced.a(this.jdField_a_of_type_Long, i, this.b);
+        azmj.b(null, "dc00898", "", "", "0X800AADA", "0X800AADA", 0, 0, "", String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
+        azmj.b(null, "dc00898", "", "", "0X800AADC", "0X800AADC", 0, 0, String.valueOf(paramCompoundButton.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
         return;
       }
-      localObject = localbafs.a(paramCompoundButton.jdField_a_of_type_Long);
-    } while ((localObject == null) || (((bafo)localObject).a() == i));
-    ((bafo)localObject).a(i);
+      localObject = localbcee.a(paramCompoundButton.jdField_a_of_type_Long);
+    } while ((localObject == null) || (((bcea)localObject).a() == i));
+    ((bcea)localObject).a(i);
     long l1 = this.jdField_a_of_type_Long;
     long l2 = paramCompoundButton.jdField_a_of_type_Long;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
-      localbafr.a(l1, l2, i);
+      localbced.a(l1, l2, i);
       if (!paramBoolean) {
         break;
       }
-      axqy.b(null, "dc00898", "", "", "0X800AADB", "0X800AADB", 0, 0, String.valueOf(((bafo)localObject).a()), String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
+      azmj.b(null, "dc00898", "", "", "0X800AADB", "0X800AADB", 0, 0, String.valueOf(((bcea)localObject).a()), String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
       return;
     }
-    axqy.b(null, "dc00898", "", "", "0X800AADC", "0X800AADC", 0, 0, String.valueOf(((bafo)localObject).a()), String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
+    azmj.b(null, "dc00898", "", "", "0X800AADC", "0X800AADC", 0, 0, String.valueOf(((bcea)localObject).a()), String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int), "");
   }
   
   public void onDestroy()
   {
     this.jdField_a_of_type_Boolean = true;
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bafu);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bceg);
     }
-    this.jdField_a_of_type_Bafu = null;
+    this.jdField_a_of_type_Bceg = null;
     super.onDestroy();
   }
   
@@ -363,7 +363,7 @@ public class TroopShortcutbarFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopShortcutbarFragment
  * JD-Core Version:    0.7.0.1
  */

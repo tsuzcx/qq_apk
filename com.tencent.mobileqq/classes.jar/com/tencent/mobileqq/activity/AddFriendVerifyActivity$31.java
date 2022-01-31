@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axqy;
+import azmj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AddFriendVerifyActivity$31
@@ -29,7 +29,7 @@ class AddFriendVerifyActivity$31
     label108:
     for (String str2 = "1";; str2 = String.valueOf(this.c))
     {
-      axqy.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str1, 0, 0, str3, str2, "", "");
+      azmj.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str1, 0, 0, str3, str2, "", "");
       return;
       str1 = "singleMode_send";
       break;
@@ -38,7 +38,7 @@ class AddFriendVerifyActivity$31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.31
  * JD-Core Version:    0.7.0.1
  */

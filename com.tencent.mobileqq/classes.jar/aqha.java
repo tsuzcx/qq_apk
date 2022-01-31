@@ -1,110 +1,40 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class aqha
-  extends aqbe
+  implements View.OnClickListener
 {
-  boolean i;
+  public aqha(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public aqha(Intent paramIntent)
+  public void onClick(View paramView)
   {
-    super(paramIntent);
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public List<RecentUser> a(List<RecentUser> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    ajxl localajxl = (ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(aqau.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
-        if ((localRecentUser.getType() == 0) && (!bbbr.a(localRecentUser.uin)) && (!bbbr.c(localRecentUser.uin)) && (!naz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
-        {
-          if ((localajxl != null) && (localajxl.b(localRecentUser.uin))) {
-            localArrayList.add(localRecentUser);
-          }
-        }
-        else if ((localRecentUser.getType() == 1006) || (((localRecentUser.getType() == 1004) || (localRecentUser.getType() == 1000)) && (this.jdField_b_of_type_Boolean))) {
-          localArrayList.add(localRecentUser);
-        }
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.g, 2, "click too fast , wait a minute.");
       }
     }
-    return localArrayList;
-  }
-  
-  protected void a()
-  {
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
-    }
-    this.jdField_a_of_type_JavaUtilSet.add(jdField_i_of_type_JavaLangInteger);
-    if (j()) {
-      this.jdField_a_of_type_JavaUtilSet.add(h);
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
-      return;
-    }
-    aqhb localaqhb = new aqhb(this);
-    paramInt = paramBundle.getInt("uintype");
-    String str1 = paramBundle.getString("troop_uin");
-    String str2 = paramBundle.getString("uin");
-    paramBundle = paramBundle.getString("uinname");
-    if ((paramInt == 0) || (paramInt == 1004)) {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramInt, str2, paramBundle, "", true, str1, true, true, localaqhb, "from_internal");
-    }
-    for (;;)
+    do
     {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "10", "", "", "");
       return;
-      if (paramInt == 1006) {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramInt, "0", paramBundle, str2, true, str1, true, true, localaqhb, "from_internal");
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    this.jdField_i_of_type_Boolean = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("fromWebXman", false);
-    return true;
-  }
-  
-  public String b()
-  {
-    return ajya.a(2131704863);
-  }
-  
-  public void f()
-  {
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Tc_msg_cate", 0, 0, "2", "", "", "");
-    if (this.jdField_i_of_type_Boolean) {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D9C", "0X8004D9C", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public void g()
-  {
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Tc_msg_search", 0, 0, "", "", "", "");
+      this.a.e();
+      paramView = (aqxm)paramView.getTag();
+    } while (paramView.a == 0);
+    int i = paramView.a;
+    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+    paramView.putBoolean("last_select_All", true);
+    paramView.commit();
+    FMLocalFileActivity.a(this.a, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqha
  * JD-Core Version:    0.7.0.1
  */

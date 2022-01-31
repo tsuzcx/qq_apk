@@ -1,82 +1,61 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.vashealth.SSOHttpUtils.1.1;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
 
-public final class bbuu
-  implements BusinessObserver
+class bbuu
+  implements bapx
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private boolean jdField_a_of_type_Boolean;
+  
+  bbuu(bbut parambbut, Handler paramHandler, int paramInt, boolean paramBoolean)
   {
-    String str = "";
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("extra_data");
-        if (localObject == null)
-        {
-          QLog.e("SSOHttpUtils", 1, "report failed response data is null");
-          return;
-        }
-        paramBundle = new WebSSOAgent.UniSsoServerRsp();
-        paramBundle.mergeFrom((byte[])localObject);
-        QLog.i("SSOHttpUtils", 1, "report result:" + paramBundle.rspdata.get() + ",ret:" + paramBundle.ret.get());
-        if (0L == paramBundle.ret.get())
-        {
-          localObject = new NewIntent(BaseApplicationImpl.getApplication(), bbvb.class);
-          ((NewIntent)localObject).putExtra("msf_cmd_type", "cmd_update_lastreport_time");
-          ((NewIntent)localObject).putExtra("last_report_time", new Long(NetConnInfoCenter.getServerTimeMillis()));
-          ((NewIntent)localObject).putExtra("has_report_yes", new Boolean(bbut.jdField_a_of_type_Boolean));
-          BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
-          bbut.jdField_a_of_type_Float = bbut.jdField_a_of_type_Int - bbut.b + bbut.c;
-          localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            bbut.jdField_a_of_type_JavaLangString = (String)localObject;
-          }
-          bbut.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-          QLog.i("SSOHttpUtils", 1, "SSOHttpUtils do report success steps:" + bbut.jdField_a_of_type_Float);
-        }
-        localObject = new JSONObject(paramBundle.rspdata.get());
-        paramBundle = str;
-        if (((JSONObject)localObject).has("svr_steps"))
-        {
-          paramInt = ((JSONObject)localObject).getInt("svr_steps");
-          QLog.e("SSOHttpUtils", 1, "step reset from server:" + paramInt);
-          paramBundle = new NewIntent(BaseApplicationImpl.getApplication(), bbvb.class);
-          paramBundle.putExtra("msf_cmd_type", "cmd_reset_step");
-          paramBundle.putExtra("server_step", paramInt);
-          BaseApplicationImpl.getApplication().getRuntime().startServlet(paramBundle);
-          paramBundle = str;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("SSOHttpUtils", 1, "Parse response exception:" + paramBundle.getMessage());
-        paramBundle = str;
-        continue;
-      }
-      ThreadManager.post(new SSOHttpUtils.1.1(this, -1, paramBundle), 5, null, true);
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onResp(baqw parambaqw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp: " + parambaqw.jdField_a_of_type_Int + ", desc: " + parambaqw.jdField_a_of_type_JavaLangString);
+    }
+    if (parambaqw.jdField_a_of_type_Int == 3) {
       return;
-      QLog.i("SSOHttpUtils", 1, "SSO sent Failed!!" + paramBundle.toString());
-      paramBundle = paramBundle.toString();
+    }
+    if (parambaqw.jdField_a_of_type_Int == 0)
+    {
+      parambaqw = bbut.a(parambaqw.jdField_a_of_type_Baqv.c);
+      if (bbut.a(this.jdField_a_of_type_Bbut).equalsIgnoreCase(parambaqw))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success");
+        }
+        bbut.a(this.jdField_a_of_type_Bbut, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success, md5 check failed");
+      }
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1112);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp error");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1113);
+  }
+  
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener Dowloading " + paramLong1 + "/" + paramLong2 + " " + 100L * paramLong1 / paramLong2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbuu
  * JD-Core Version:    0.7.0.1
  */

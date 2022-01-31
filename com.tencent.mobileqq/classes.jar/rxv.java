@@ -1,47 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.viola.core.ViolaInstance;
+import java.net.URL;
 
 public class rxv
-  implements rzl
 {
+  private final int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private final URL jdField_a_of_type_JavaNetURL;
+  private final boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public rxv(BridgeModule paramBridgeModule) {}
+  public rxv(int paramInt1, int paramInt2, URL paramURL, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaNetURL = paramURL;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public void a() {}
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
   public void a(boolean paramBoolean)
   {
-    ViolaFragment localViolaFragment;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
-    {
-      localViolaFragment = (ViolaFragment)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment();
-      if (!paramBoolean) {
-        break label85;
-      }
-      this.jdField_a_of_type_JavaLangString = localViolaFragment.b();
-      this.jdField_a_of_type_Boolean = localViolaFragment.a().booleanValue();
-      localViolaFragment.a("#FF000000");
-      localViolaFragment.b("#FF000000");
-      localViolaFragment.a(Boolean.valueOf(true), true);
-    }
-    label85:
-    do
-    {
-      return;
-      localViolaFragment.a(this.jdField_a_of_type_JavaLangString);
-      localViolaFragment.b(this.jdField_a_of_type_JavaLangString);
-      localViolaFragment.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), true);
-    } while ((!localViolaFragment.a()) || (localViolaFragment.a() == null));
-    localViolaFragment.a().f();
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxv
  * JD-Core Version:    0.7.0.1
  */

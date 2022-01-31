@@ -1,75 +1,45 @@
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.CacheMap;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aebv
+  implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = aebv.class.getSimpleName();
-  private StructingMsgItemBuilder.CacheMap jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap = new StructingMsgItemBuilder.CacheMap(null);
-  private StructingMsgItemBuilder.CacheMap b = new StructingMsgItemBuilder.CacheMap(null);
+  public aebv(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
   
-  private aebw a(String paramString, ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    Iterator localIterator = this.b.get(paramString).iterator();
-    while (localIterator.hasNext())
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.f) && (!TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity)))
     {
-      paramString = (aebw)localIterator.next();
-      if (paramString != null) {
-        paramString.a(paramViewGroup);
+      if (((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Int > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 3))
+      {
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
+        paramView.putExtra("member_uin", "0");
+        paramView.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, paramView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) {
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
+        }
+        return;
       }
-    }
-    for (;;)
-    {
-      this.b.remove(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(paramString);
-      return paramString;
-      paramString = null;
-    }
-  }
-  
-  public View a(String paramString, ViewGroup paramViewGroup)
-  {
-    a(paramString, paramViewGroup);
-    paramString = a(paramString, paramViewGroup);
-    if (paramString != null) {
-      return paramString.a();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.clear();
-    this.b.clear();
-  }
-  
-  public void a(String paramString, View paramView, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new aebw(paramString, paramView, paramViewGroup));
-  }
-  
-  public void a(String paramString, ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup == null) {}
-    aebw localaebw;
-    do
-    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, alpo.a(2131716007), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
       return;
-      while (!paramString.hasNext()) {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(paramString).iterator();
-      }
-      localaebw = (aebw)paramString.next();
-    } while ((localaebw == null) || (localaebw.a() == null) || (localaebw.a() != paramViewGroup));
-    localaebw.a().removeAllViews();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localaebw);
-    this.b.add(localaebw);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, alpo.a(2131716003), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebv
  * JD-Core Version:    0.7.0.1
  */

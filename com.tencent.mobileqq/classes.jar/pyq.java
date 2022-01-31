@@ -1,26 +1,24 @@
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class pyq
+class pyq
+  implements View.OnTouchListener
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<pyp> a;
-  public long b;
-  public String b;
-  public long c;
+  pyq(pyn parampyn, LinearLayout paramLinearLayout) {}
   
-  public pyq(pyn parampyn) {}
-  
-  public String toString()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return "\nGestureEvent{direction=" + this.jdField_a_of_type_Int + ", deltaFromLastScroll=" + this.jdField_a_of_type_Long + ", scrollDistance=" + this.jdField_b_of_type_Long + ", scrollMills=" + this.c + ", scrollSpeed=" + this.jdField_a_of_type_Float + ", scrollDownAndUpCoordinate='" + this.jdField_a_of_type_JavaLangString + '\'' + ", clickCoordinate='" + this.jdField_b_of_type_JavaLangString + '\'' + ", scrollStateInfos=" + this.jdField_a_of_type_JavaUtilArrayList + "}";
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pyq
  * JD-Core Version:    0.7.0.1
  */

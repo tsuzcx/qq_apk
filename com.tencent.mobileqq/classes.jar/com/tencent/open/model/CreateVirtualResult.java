@@ -3,12 +3,12 @@ package com.tencent.open.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdns;
+import bfmp;
 
 public class CreateVirtualResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<CreateVirtualResult> CREATOR = new bdns();
+  public static final Parcelable.Creator<CreateVirtualResult> CREATOR = new bfmp();
   public long a;
   public String a;
   

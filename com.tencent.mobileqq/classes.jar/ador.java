@@ -1,16 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
-class ador
-  implements DialogInterface.OnClickListener
+public class ador
+  implements DialogInterface.OnDismissListener
 {
-  ador(adop paramadop) {}
+  public ador(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ador
  * JD-Core Version:    0.7.0.1
  */

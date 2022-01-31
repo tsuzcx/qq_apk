@@ -1,92 +1,23 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.video.GIFCreator.1;
-import dov.com.qq.im.video.GifEncoder;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import cooperation.qqreader.VipProxyRreLoadReaderProcess.1;
 
 public class bivn
+  implements nbs
 {
-  private static String jdField_a_of_type_JavaLangString = bivn.class.getSimpleName();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bivp jdField_a_of_type_Bivp;
-  private GifEncoder jdField_a_of_type_DovComQqImVideoGifEncoder = new GifEncoder();
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private String b = biix.b;
-  private String c;
-  private String d;
-  private String e;
+  public bivn(VipProxyRreLoadReaderProcess.1 param1) {}
   
-  public bivn(String paramString)
+  public void loaded(String paramString, int paramInt)
   {
-    this.e = paramString;
-    this.jdField_a_of_type_JavaUtilList = a(paramString);
-    this.c = (this.b + System.currentTimeMillis() + ".gif");
-    this.d = (this.b + System.currentTimeMillis() + "_compressed.gif");
-    try
-    {
-      paramString = new File(this.b);
-      if (!paramString.isDirectory())
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, this.b + " is not a directory");
-        boolean bool = paramString.mkdirs();
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "mkdirs return " + bool);
-      }
-      paramString = new HandlerThread("GIFCreatorHT" + System.currentTimeMillis());
-      paramString.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "check dir exception, msg = " + paramString.getMessage());
-      }
+    bixe.d("VipProxyRreLoadReaderProcess", "Load offline package finish, code = " + paramInt);
+    if (paramInt != 0) {
+      bixe.a("VipProxyRreLoadReaderProcess", "offline update failed.");
     }
   }
   
-  private List<String> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new File(paramString);
-    if (((File)localObject).isDirectory())
-    {
-      localObject = ((File)localObject).list(new bivo(this));
-      if (localObject != null)
-      {
-        Arrays.sort((Object[])localObject);
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = localObject[i];
-          localArrayList.add(paramString + File.separator + str);
-          i += 1;
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    bbdx.a(this.e);
-  }
-  
-  public void a(bivp parambivp)
-  {
-    this.jdField_a_of_type_Bivp = parambivp;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "start create gif, gif path = ", this.c });
-    this.jdField_a_of_type_AndroidOsHandler.post(new GIFCreator.1(this, parambivp));
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bivn
  * JD-Core Version:    0.7.0.1
  */

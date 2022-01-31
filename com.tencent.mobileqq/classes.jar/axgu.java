@@ -1,168 +1,71 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
 
-class axgu
+public class axgu
+  extends axhd<ReceiptMessageReadMemberListContainerFragment>
 {
-  int jdField_a_of_type_Int = 0;
-  ayrx jdField_a_of_type_Ayrx;
-  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c;
-  
-  axgu()
+  public axgu(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
   {
-    this.jdField_c_of_type_Int = 0;
+    super(paramReceiptMessageReadMemberListContainerFragment);
   }
   
-  boolean a(DownloadInfo paramDownloadInfo)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == paramDownloadInfo) || (((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_model)) || (paramDownloadInfo.MD5_zip_model.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo.MD5_zip_model))) && ((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_so)) || (paramDownloadInfo.MD5_zip_so.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo.MD5_zip_so))))) {
-        break label382;
-      }
-      bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageReadMemberListContainerFragment", 4, "mTroopFetchReadMemberListCallback onRes: " + paramInt);
     }
-    for (;;)
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavGesture", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
-      }
-      if (!bool)
+      for (;;)
       {
-        return this.jdField_a_of_type_Boolean;
-        bool = true;
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Ayrx != null)
+        try
         {
-          Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-          if ((localObject instanceof AppInterface))
-          {
-            localObject = ((AppInterface)localObject).getNetEngine(0);
-            if (localObject != null)
-            {
-              QLog.d("QavGesture", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Ayrx.a() }));
-              ((aysa)localObject).b(this.jdField_a_of_type_Ayrx);
+          paramBundle = new oidb_0x986.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = paramBundle.rpt_msg_uin_info.get();
+          paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte).iterator();
+          if (!paramArrayOfByte.hasNext()) {
+            break;
+          }
+          ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)paramArrayOfByte.next();
+          if (!Long.toString(ReceiptMessageReadMemberListContainerFragment.d((ReceiptMessageReadMemberListContainerFragment)this.a)).equals(localMemberInfo.jdField_a_of_type_JavaLangString)) {
+            if (localMemberInfo.jdField_a_of_type_Long > 0L) {
+              ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
+            } else {
+              ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
             }
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = paramDownloadInfo;
-        this.jdField_c_of_type_Int = 0;
-        this.jdField_a_of_type_Ayrx = null;
-        this.jdField_a_of_type_Int = 0;
-        this.b = 0;
-        if (!axgy.d(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
         {
-          this.jdField_c_of_type_Int |= 0x1;
-          this.jdField_a_of_type_Int += 1;
+          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
+          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+          return;
         }
-        if (!axgy.c(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))
-        {
-          this.jdField_c_of_type_Int |= 0x2;
-          this.jdField_a_of_type_Int += 1;
-        }
-        if ((axgy.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo)) && (!axgy.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo)))
-        {
-          this.jdField_c_of_type_Int |= 0x3;
-          this.jdField_a_of_type_Int += 1;
-        }
-        QLog.d("QavGesture", 1, String.format("DownloadContrl, mResFlag[%s], mInfo[%s]", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
-        if (this.jdField_a_of_type_Int == 0) {
-          return this.jdField_a_of_type_Boolean;
-        }
-        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, 3);
-        return this.jdField_a_of_type_Boolean;
-        label382:
-        bool = false;
       }
-    }
-  }
-  
-  boolean a(DownloadInfo paramDownloadInfo, int paramInt)
-  {
-    String str2;
-    String str1;
-    int i;
-    if (!axgy.d(paramDownloadInfo))
-    {
-      str2 = paramDownloadInfo.url_zip_so;
-      str1 = paramDownloadInfo.MD5_zip_so;
-      i = 1;
-    }
-    String str3;
-    boolean bool2;
-    for (;;)
-    {
-      str3 = axgy.b() + str1;
-      if (paramInt >= 0) {
-        break label154;
-      }
-      QLog.d("QavGesture", 1, String.format("downloadRes, 下载死循环了. res_flag[%s], info[%s]", new Object[] { Integer.valueOf(i), paramDownloadInfo }));
-      axgt.a(-3);
-      bool2 = false;
-      return bool2;
-      if ((paramDownloadInfo.enable) && (!axgy.c(paramDownloadInfo)))
+      if (paramBundle.uint64_next_uin.get() == 0L)
       {
-        str2 = paramDownloadInfo.url_zip_model;
-        str1 = paramDownloadInfo.MD5_zip_model;
-        i = 2;
+        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
+        return;
       }
-      else
-      {
-        if ((!axgy.a(paramDownloadInfo)) || (axgy.b(paramDownloadInfo))) {
-          break;
-        }
-        str2 = paramDownloadInfo.url_zip_gamemodel;
-        str1 = paramDownloadInfo.MD5_zip_gamemodel;
-        i = 3;
-      }
+      paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).obtainMessage(3, Long.valueOf(paramBundle.uint64_next_uin.get()));
+      ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendMessage(paramArrayOfByte);
+      return;
     }
-    axgt.a(100);
-    return false;
-    label154:
-    ayrx localayrx = new ayrx();
-    localayrx.jdField_a_of_type_Aysc = new axgv(this, str1, paramDownloadInfo, i, paramInt);
-    localayrx.a(i + "_" + str1);
-    localayrx.jdField_a_of_type_JavaLangString = str2;
-    localayrx.jdField_a_of_type_Int = 0;
-    localayrx.jdField_c_of_type_JavaLangString = new File(str3).getPath();
-    localayrx.jdField_c_of_type_Int = bbfj.a(ayta.a().a());
-    paramDownloadInfo = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramDownloadInfo instanceof QQAppInterface))
-    {
-      paramDownloadInfo = ((QQAppInterface)paramDownloadInfo).getNetEngine(0);
-      if (paramDownloadInfo != null)
-      {
-        this.jdField_a_of_type_Ayrx = localayrx;
-        paramDownloadInfo.a(this.jdField_a_of_type_Ayrx);
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (!bool1) {
-        axgt.a(-2);
-      }
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("QavGesture", 2, String.format("downloadRes, res_flag[%s], md5[%s], etr[%s]", new Object[] { Integer.valueOf(i), str1, Boolean.valueOf(bool1) }));
-      return bool1;
-    }
+    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axgu
  * JD-Core Version:    0.7.0.1
  */

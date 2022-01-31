@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.utils.pngquant;
 
-import bbdx;
+import bdcs;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
-import mzb;
-import mzh;
-import wbh;
+import nbv;
+import ncb;
+import xpz;
 
 public final class PngQuantUtils
 {
@@ -15,15 +15,15 @@ public final class PngQuantUtils
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    mzb.b("1017", paramAppRuntime, true, new wbh());
+    nbv.b("1017", paramAppRuntime, true, new xpz());
   }
   
   public static boolean a()
   {
-    if ((!a.get()) && (mzb.c("1017")) && (mzb.a("1017", "http://libpngquantandroid.so")))
+    if ((!a.get()) && (nbv.c("1017")) && (nbv.a("1017", "http://libpngquantandroid.so")))
     {
-      String str = mzh.a("1017") + "1017" + File.separator + "libpngquantandroid.so";
-      if (bbdx.a(str))
+      String str = ncb.a("1017") + "1017" + File.separator + "libpngquantandroid.so";
+      if (bdcs.a(str))
       {
         System.load(str);
         a.set(true);
@@ -56,7 +56,7 @@ public final class PngQuantUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils
  * JD-Core Version:    0.7.0.1
  */

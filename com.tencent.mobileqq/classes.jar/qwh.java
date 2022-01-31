@@ -1,49 +1,104 @@
-class qwh
-  extends qwm
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class qwh
+  implements aypx<ayjl>, aypy<ayjl>
 {
-  private final float jdField_a_of_type_Float;
-  private final qwk jdField_a_of_type_Qwk;
-  private final qwk b;
+  private aypy<ayjl> jdField_a_of_type_Aypy;
+  private List<aypx> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<ayjl> b = new ArrayList();
   
-  public qwh(float paramFloat)
+  public qwh(List<aypx> paramList)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Qwk = new qwk(this.jdField_a_of_type_Float);
-    this.b = new qwk(this.jdField_a_of_type_Float);
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
   }
   
-  public long a(long paramLong)
+  public List<ayjl> a(ayql paramayql)
   {
-    this.jdField_a_of_type_Qwk.a(paramLong);
-    paramLong = this.jdField_a_of_type_Qwk.b;
-    this.b.a(paramLong);
-    long l = this.b.b;
-    float f = this.jdField_a_of_type_Float / (1.0F - this.jdField_a_of_type_Float);
-    return ((float)(paramLong - l) * f + (float)(2L * paramLong - l));
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll(((aypx)localIterator.next()).a(paramayql));
+    }
+    return localArrayList;
   }
   
   public void a()
   {
-    super.a();
-    this.jdField_a_of_type_Qwk.a();
-    this.b.a();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aypx)localIterator.next()).a();
+    }
+  }
+  
+  public void a(ayql paramayql, aypy<ayjl> paramaypy)
+  {
+    this.b.clear();
+    this.jdField_a_of_type_Aypy = paramaypy;
+    paramaypy = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramaypy.hasNext()) {
+      ((aypx)paramaypy.next()).a(paramayql, this);
+    }
+  }
+  
+  public void a(List<ayjl> paramList)
+  {
+    if (this.jdField_a_of_type_Aypy != null) {
+      this.jdField_a_of_type_Aypy.a(paramList);
+    }
+  }
+  
+  public void a(List<ayjl> paramList, int paramInt)
+  {
+    this.b.addAll(paramList);
+    if (this.jdField_a_of_type_Aypy != null) {
+      this.jdField_a_of_type_Aypy.a(this.b, paramInt);
+    }
+  }
+  
+  public void a(List<ayjl> paramList, ayqm paramayqm)
+  {
+    a(paramList, paramayqm.a);
   }
   
   public void b()
   {
-    super.b();
-    this.jdField_a_of_type_Qwk.b();
-    this.b.b();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aypx)localIterator.next()).b();
+    }
   }
   
-  public String toString()
+  public void c()
   {
-    return "DoubleExponentialPredictor(" + this.jdField_a_of_type_Float + ')';
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aypx)localIterator.next()).c();
+    }
+  }
+  
+  public void d()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aypx)localIterator.next()).d();
+    }
+  }
+  
+  public void e()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aypx)localIterator.next()).e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qwh
  * JD-Core Version:    0.7.0.1
  */

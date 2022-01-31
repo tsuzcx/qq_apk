@@ -1,34 +1,75 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aiqh
 {
-  public static aiqm a(int paramInt, auko paramauko, QQAppInterface paramQQAppInterface, Context paramContext)
+  public String a;
+  public Pattern a;
+  public boolean a;
+  public String b;
+  public Pattern b;
+  public boolean b;
+  public String c;
+  public String d;
+  
+  public static List<aiqh> a(String paramString)
   {
-    if (paramInt == 0) {
-      return new aiqk(paramQQAppInterface, paramContext, paramauko);
+    localArrayList = new ArrayList();
+    try
+    {
+      paramString = new JSONArray(paramString);
+      int i = 0;
+      if (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        aiqh localaiqh;
+        if (localJSONObject != null)
+        {
+          localaiqh = new aiqh();
+          localaiqh.jdField_a_of_type_JavaLangString = localJSONObject.optString("sourceURLRegular");
+          localaiqh.jdField_b_of_type_JavaLangString = localJSONObject.optString("interceptURLRegular");
+          if (localJSONObject.optInt("shouldReport") != 1) {
+            break label138;
+          }
+          bool = true;
+          label85:
+          localaiqh.jdField_a_of_type_Boolean = bool;
+          if (localJSONObject.optInt("shouldIntercept") != 1) {
+            break label143;
+          }
+        }
+        label138:
+        label143:
+        for (boolean bool = true;; bool = false)
+        {
+          localaiqh.jdField_b_of_type_Boolean = bool;
+          localaiqh.c = localJSONObject.optString("jumpURL");
+          localArrayList.add(localaiqh);
+          i += 1;
+          break;
+          bool = false;
+          break label85;
+        }
+      }
+      return localArrayList;
     }
-    if (paramInt == 5) {
-      return new aiqi(paramQQAppInterface, paramContext, paramauko);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
-    if (paramInt == 1) {
-      return new aiqq(paramQQAppInterface, paramContext, paramauko);
-    }
-    if (paramInt == 2) {
-      return new aiqs(paramQQAppInterface, paramContext, paramauko, 2);
-    }
-    if (paramInt == 3) {
-      return new aiqs(paramQQAppInterface, paramContext, paramauko, 3);
-    }
-    if (paramInt == 4) {
-      return new aiqk(paramQQAppInterface, paramContext, paramauko);
-    }
-    return null;
+  }
+  
+  public String toString()
+  {
+    return "InterceptConfig [mSrcUrlRegular=" + this.jdField_a_of_type_JavaLangString + ", mInterceptUrlRegular=" + this.jdField_b_of_type_JavaLangString + ", mIsReport=" + this.jdField_a_of_type_Boolean + ", mIsIntercept=" + this.jdField_b_of_type_Boolean + ", mJumpUrl=" + this.c + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiqh
  * JD-Core Version:    0.7.0.1
  */

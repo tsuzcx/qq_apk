@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import balu;
-import baud;
+import bckh;
+import bcsx;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
 
 public class VideoPicView
   extends FrameLayout
-  implements baud
+  implements bcsx
 {
   protected ImageView a;
   protected SpriteVideoView a;
@@ -26,7 +26,7 @@ public class VideoPicView
   public VideoPicView(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = balu.a(paramInt1);
+    this.jdField_a_of_type_JavaLangString = bckh.a(paramInt1);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = new SpriteVideoView(getContext(), true);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -57,7 +57,7 @@ public class VideoPicView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.VideoPicView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,77 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import java.util.List;
 
-class qvz
-  implements Animation.AnimationListener
+public class qvz
 {
-  qvz(qvx paramqvx) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int = 10;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int c = 30;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    paramAnimation = (ImageView)qvx.a(this.a).findViewById(2131378755);
-    ImageView localImageView = (ImageView)qvx.a(this.a).findViewById(2131378756);
-    qvx.a(this.a, localImageView, paramAnimation, 100L, 240L);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qvz
  * JD-Core Version:    0.7.0.1
  */

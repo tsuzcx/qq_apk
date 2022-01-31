@@ -1,6 +1,6 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import akdh;
+import aluw;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,19 +13,19 @@ class PublicAccountImageCollectionMainActivity$16
   public void run()
   {
     if (TextUtils.isEmpty(this.this$0.a)) {}
-    akdh localakdh;
+    aluw localaluw;
     do
     {
       return;
-      localakdh = (akdh)this.this$0.app.getManager(56);
-    } while (localakdh == null);
-    PublicAccountImageCollectionMainActivity.c(this.this$0, localakdh.a(Long.valueOf(this.this$0.a)));
+      localaluw = (aluw)this.this$0.app.getManager(56);
+    } while (localaluw == null);
+    PublicAccountImageCollectionMainActivity.c(this.this$0, localaluw.a(Long.valueOf(this.this$0.a)));
     PublicAccountImageCollectionMainActivity.a(this.this$0).postDelayed(new PublicAccountImageCollectionMainActivity.16.1(this), 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.16
  * JD-Core Version:    0.7.0.1
  */

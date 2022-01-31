@@ -3,7 +3,6 @@ package com.tencent.superplayer.api;
 public class SuperPlayerMsg
 {
   public static final int ERROR_CODE_TVIDEO_URL_EMPTY = 101;
-  public static final int MODULE_FCCPLAYER_ERROR = 2;
   public static final int MODULE_TPPLAYER_ERROR = 1;
   public static final int MODULE_TVIDEO_CGI_ERROR = 3;
   public static final int PLAYER_INFO_ALL_DOWNLOAD_FINISH = 201;
@@ -44,7 +43,7 @@ public class SuperPlayerMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerMsg
  * JD-Core Version:    0.7.0.1
  */

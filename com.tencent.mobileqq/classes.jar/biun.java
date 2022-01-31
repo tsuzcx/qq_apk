@@ -1,51 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFSinglePreviewFragment.2.1.1;
-import java.util.ArrayList;
+import android.os.Handler.Callback;
+import android.os.Message;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class biun
-  implements biwf
+public final class biun
+  extends WtloginObserver
 {
-  biun(bium parambium) {}
+  public biun(Handler.Callback paramCallback) {}
   
-  public void a()
+  public void OnException(String paramString, int paramInt)
   {
-    QLog.d("AEGIFSinglePreviewFragment", 4, "onGifCreateFail");
-    biuk.d(this.a.a);
-    bfny.a(new AEGIFSinglePreviewFragment.2.1.1(this));
+    paramString = Message.obtain();
+    paramString.what = 1001;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
+    }
   }
   
-  public void a(String paramString)
+  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    QLog.d("AEGIFSinglePreviewFragment", 4, "onGifCreateSuccess, come from AECAMERA_MODE_ALL");
-    biuk.d(this.a.a);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    String str;
-    if (!biuk.a(this.a.a)) {
-      if (biuk.a(this.a.a) != null) {
-        str = biuk.a(this.a.a).a();
-      }
+    paramString = Message.obtain();
+    paramString.what = 1000;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
     }
-    for (;;)
-    {
-      localArrayList1.add(paramString);
-      localArrayList2.add(str);
-      biuk.a(this.a.a, localArrayList1, localArrayList2);
-      if ((!biuk.b(this.a.a)) || (biuk.a(this.a.a) == null)) {
-        break;
-      }
-      biuk.a(this.a.a, paramString, biuk.a(this.a.a), str);
-      return;
-      str = "";
-      continue;
-      str = biuk.b(this.a.a);
-    }
-    bjzs.a(biuk.a(this.a.a), paramString, birt.b(this.a.a.getActivity()), true, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biun
  * JD-Core Version:    0.7.0.1
  */

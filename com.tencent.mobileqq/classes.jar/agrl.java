@@ -1,35 +1,35 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import mqq.app.AppRuntime;
-import mqq.util.WeakReference;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
-class agrl
-  extends atzq
+public class agrl
+  implements Animation.AnimationListener
 {
-  agrl(agrk paramagrk) {}
+  public agrl(TroopChatPie paramTroopChatPie) {}
   
-  protected void c(boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
-    {
-      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
-      this.a.jdField_a_of_type_Agrz.a = l;
-      paramBundle = ((AlbumListFragment)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).a;
-      if (paramBundle != null)
-      {
-        paramBundle.a(this.a.jdField_a_of_type_Agrz.a);
-        paramBundle.a();
-      }
-    }
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.jdField_a_of_type_Agrc.a);
+    this.a.d.setBackgroundResource(2130843215);
+    this.a.a.setBackgroundResource(2130843221);
+    this.a.q.setVisibility(8);
+    this.a.r.setVisibility(8);
+    this.a.o.setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.q.setVisibility(0);
+    this.a.r.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrl
  * JD-Core Version:    0.7.0.1
  */

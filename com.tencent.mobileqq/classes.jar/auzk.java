@@ -1,21 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.1.1;
 
 public class auzk
-  implements View.OnClickListener
+  implements auzu
 {
-  public auzk(ProfileHeaderView paramProfileHeaderView, View paramView) {}
+  auzk(auzj paramauzj) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    auvs.a().c(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (paramBoolean) {
+      ThreadManagerV2.excute(new ShortVideoShareUtil.1.1.1(this, (auqc)this.a.a.getManager(106)), 16, null, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auzk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.commonsdk.cache.Sizeable;
-import com.tencent.image.Utils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import java.util.UUID;
 
-public class bbqj
-  implements Sizeable
+class bbqj
+  implements amji
 {
-  public int a;
-  public HashMap<Integer, Bitmap> a = new HashMap();
-  public int b;
+  bbqj(bbqi parambbqi, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
   
-  public int getByteSize()
+  public void a(String paramString)
   {
-    Iterator localIterator = this.a.values().iterator();
-    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
-    return i;
+    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbqj
  * JD-Core Version:    0.7.0.1
  */

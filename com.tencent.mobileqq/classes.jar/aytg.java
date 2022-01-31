@@ -1,82 +1,56 @@
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
+
 public class aytg
+  implements ayrt
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public void a(String paramString)
+  public aytg(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramString != null) && (paramString.length() > 12))
-    {
-      paramString = paramString.split("\\|");
-      if ((paramString != null) && (paramString.length < 13)) {}
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt1, paramViewGroup, false);
+    paramViewGroup = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367910);
+    if ((paramViewGroup != null) && (paramInt2 > 0)) {
+      paramViewGroup.setImageResource(paramInt2);
     }
-    try
-    {
-      this.jdField_a_of_type_Long = Long.parseLong(paramString[12]);
-      if (paramString.length >= 14) {
-        this.jdField_a_of_type_JavaLangString = paramString[13];
-      }
-      if (paramString.length < 15) {}
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369073));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365127));
+    if (paramInt3 == 12) {
+      this.b.setText(alpo.a(2131714037) + swy.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext()) + alpo.a(2131714036));
     }
-    catch (Exception localException3)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int = Integer.parseInt(paramString[14]);
-        if (paramString.length < 16) {}
-      }
-      catch (Exception localException3)
-      {
-        try
-        {
-          this.jdField_b_of_type_JavaLangString = paramString[15];
-          if (paramString.length < 17) {}
-        }
-        catch (Exception localException3)
-        {
-          try
-          {
-            for (;;)
-            {
-              this.c = paramString[16];
-              if (paramString.length >= 18) {}
-              try
-              {
-                this.jdField_b_of_type_Int = Integer.parseInt(paramString[17]);
-                return;
-              }
-              catch (Exception paramString)
-              {
-                this.jdField_b_of_type_Int = -1;
-              }
-              localException1 = localException1;
-              this.jdField_a_of_type_Long = -1L;
-              continue;
-              localException2 = localException2;
-              this.jdField_a_of_type_Int = -1;
-            }
-            localException3 = localException3;
-            this.jdField_b_of_type_JavaLangString = null;
-          }
-          catch (Exception localException4)
-          {
-            for (;;)
-            {
-              this.c = null;
-            }
-          }
-        }
-      }
-    }
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public TextView a()
+  {
+    return null;
+  }
+  
+  public List<ayru> a()
+  {
+    return null;
+  }
+  
+  public TextView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aytg
  * JD-Core Version:    0.7.0.1
  */

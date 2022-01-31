@@ -1,30 +1,29 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-
-class qlw
-  extends GestureDetector.SimpleOnGestureListener
+public class qlw
+  implements Cloneable
 {
-  qlw(qlv paramqlv) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
+  public int f = -1;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public qlw()
   {
-    if ((qlv.a(this.a) != null) && (qlv.a(this.a).a != null)) {
-      this.a.a.a(qlv.a(this.a).a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-    }
-    return true;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public String toString()
   {
-    if ((qlv.a(this.a) != null) && (qlv.a(this.a).d != null)) {
-      this.a.a.onClick(qlv.a(this.a).d);
-    }
-    return true;
+    return "VideoExtraRepoerData{JumpWayWhich=" + this.jdField_a_of_type_Int + ", InOneThreeSource=" + this.jdField_b_of_type_Int + ", videoTimePosition=" + this.d + ", videoDuration=" + this.e + ", needWhetherClickIn=" + this.jdField_b_of_type_Boolean + ", whetherClickIn=" + this.jdField_a_of_type_Boolean + ", InVideoChannelSource=" + this.c + ", videoFromType=" + this.f + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qlw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,19 @@
-import java.io.File;
-import java.util.Comparator;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnBufferingUpdateListener;
 
-public final class vum
-  implements Comparator<File>
+class vum
+  implements MediaPlayer.OnBufferingUpdateListener
 {
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return 1;
-  }
+  vum(vuj paramvuj, vua paramvua) {}
   
-  public boolean equals(Object paramObject)
+  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    return true;
+    this.jdField_a_of_type_Vua.a(this.jdField_a_of_type_Vuj, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vum
  * JD-Core Version:    0.7.0.1
  */

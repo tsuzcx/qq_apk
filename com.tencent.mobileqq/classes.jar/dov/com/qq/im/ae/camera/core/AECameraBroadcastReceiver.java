@@ -5,16 +5,16 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bijd;
+import bkle;
 
 public class AECameraBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bijd a;
+  private bkle a;
   
-  public AECameraBroadcastReceiver(bijd parambijd)
+  public AECameraBroadcastReceiver(bkle parambkle)
   {
-    this.a = parambijd;
+    this.a = parambkle;
   }
   
   private IntentFilter a()
@@ -43,13 +43,13 @@ public class AECameraBroadcastReceiver
     while (!"new_qq_android_native_ptu_res_".equals(paramIntent.getAction())) {
       return;
     }
-    axeh.a = true;
+    ayzn.a = true;
     this.a.r();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

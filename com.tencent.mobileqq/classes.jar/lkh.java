@@ -1,159 +1,114 @@
+import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class lkh
 {
-  private static volatile lkh jdField_a_of_type_Lkh;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private lki[] jdField_a_of_type_ArrayOfLki = new lki[4];
+  private atus jdField_a_of_type_Atus;
+  String jdField_a_of_type_JavaLangString;
+  private lkc jdField_a_of_type_Lkc;
+  lkd jdField_a_of_type_Lkd;
+  lke jdField_a_of_type_Lke;
+  lkf jdField_a_of_type_Lkf;
+  String jdField_b_of_type_JavaLangString;
+  lkd jdField_b_of_type_Lkd;
+  lkd c = new lki(this);
   
-  public static lkh a()
+  public lkh()
   {
-    if (jdField_a_of_type_Lkh == null) {}
-    try
-    {
-      if (jdField_a_of_type_Lkh == null) {
-        jdField_a_of_type_Lkh = new lkh();
-      }
-      return jdField_a_of_type_Lkh;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ArrayOfLki.length;
+    a();
   }
   
   public void a()
   {
-    int i = 0;
-    QLog.i("FrameBufMgr", 1, "clear.");
-    for (;;)
+    if (this.jdField_a_of_type_Lkc == null)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if (bdcb.d())
       {
-        if (i < this.jdField_a_of_type_ArrayOfLki.length)
-        {
-          if (this.jdField_a_of_type_ArrayOfLki[i] != null)
-          {
-            this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_ArrayOfByte = null;
-            this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_Int = 0;
-          }
-        }
-        else {
-          return;
-        }
+        this.jdField_a_of_type_Lkc = new lkg();
+        lek.e("AVMagicfacePlayer", "initDecoder| use [MagicfaceNormalDecoder]");
       }
-      i += 1;
     }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Lkc = new lkg();
+    lek.e("AVMagicfacePlayer", "initDecoder|use [MagicfaceNormalDecoder]");
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(long paramLong, String paramString, lkf paramlkf, lke paramlke, lkd paramlkd)
   {
-    int j = 0;
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    for (;;)
-    {
+    if (this.jdField_a_of_type_Lkc.a) {
       try
       {
-        if (i < this.jdField_a_of_type_ArrayOfLki.length)
-        {
-          if (this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_Int == paramInt1)
-          {
-            this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_Int = paramInt2;
-            j = 1;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            QLog.i("FrameBufMgr", 1, "setFrameBufState failed. oldState = " + paramInt1 + ", newState = " + paramInt2);
-          }
-          return;
-        }
+        this.jdField_b_of_type_JavaLangString = paramString;
+        this.jdField_a_of_type_Lkf = paramlkf;
+        this.jdField_a_of_type_Lke = paramlke;
+        this.jdField_a_of_type_Lkd = paramlkd;
+        this.jdField_a_of_type_Lkc.b();
+        return;
       }
       finally {}
-      i += 1;
+    }
+    QLog.w("AVMagicfacePlayer", 1, "playMagicface, srcPath[" + paramString + "], seq[" + paramLong + "]");
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = (paramString + "audio" + File.separator + paramlkf.a.src);
+      this.jdField_b_of_type_Lkd = paramlkd;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Lkf = null;
+      this.jdField_a_of_type_Lke = null;
+      this.jdField_a_of_type_Lkd = null;
+      if ((paramlkf.a.src != null) && (!paramlkf.a.src.equals("")) && (this.jdField_a_of_type_Atus == null)) {
+        this.jdField_a_of_type_Atus = new atus();
+      }
+      this.jdField_a_of_type_Lkc.a(paramString);
+      this.jdField_a_of_type_Lkc.a(paramlkf);
+      this.jdField_a_of_type_Lkc.a(paramlke);
+      this.jdField_a_of_type_Lkc.a(this.c);
+      this.jdField_a_of_type_Lkc.a();
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Atus != null) {
+      this.jdField_a_of_type_Atus.a(paramString);
     }
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i < this.jdField_a_of_type_ArrayOfLki.length)
-        {
-          if (this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_ArrayOfByte == paramArrayOfByte) {
-            this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_Int = paramInt;
-          }
-        }
-        else
-        {
-          QLog.i("FrameBufMgr", 1, "setFrameBufState failed. dataBuf = " + paramArrayOfByte + ", state = " + paramInt);
-          return;
-        }
-      }
-      finally {}
-      i += 1;
+    lek.c("AVMagicfacePlayer", "playSound soundSrc = " + paramString + ", loop = " + paramInt);
+    if (this.jdField_a_of_type_Atus != null) {
+      this.jdField_a_of_type_Atus.a(paramString, paramInt, 0);
     }
   }
   
-  public boolean a(int paramInt)
+  public boolean a()
   {
-    int i = 0;
-    QLog.i("FrameBufMgr", 1, "init. bufSize = " + paramInt);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      while (i < this.jdField_a_of_type_ArrayOfLki.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfLki[i] == null) {
-          this.jdField_a_of_type_ArrayOfLki[i] = new lki(this);
-        }
-        if ((this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_ArrayOfByte.length != paramInt)) {
-          this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_ArrayOfByte = new byte[paramInt];
-        }
-        this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_Int = 0;
-        i += 1;
-      }
-      return true;
-    }
+    return this.jdField_a_of_type_Lkc.a;
   }
   
-  public byte[] a(int paramInt)
+  public void b()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    for (;;)
+    try
     {
-      try
-      {
-        if (i < this.jdField_a_of_type_ArrayOfLki.length)
-        {
-          if (this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_Int == paramInt)
-          {
-            byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfLki[i].jdField_a_of_type_ArrayOfByte;
-            return arrayOfByte;
-          }
-        }
-        else
-        {
-          QLog.i("FrameBufMgr", 1, "getFrameBufByState failed. state = " + paramInt);
-          return null;
-        }
-      }
-      finally {}
-      i += 1;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Lkf = null;
+      this.jdField_a_of_type_Lke = null;
+      this.jdField_a_of_type_Lkd = null;
+      this.jdField_a_of_type_Lkc.b();
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lkh
  * JD-Core Version:    0.7.0.1
  */

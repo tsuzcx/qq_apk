@@ -1,33 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
 
-public class aajl
-  implements DialogInterface.OnClickListener
+final class aajl
+  implements View.OnTouchListener
 {
-  public aajl(AssistantSettingActivity paramAssistantSettingActivity) {}
+  aajl(aajj paramaajj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.e("vip_ptt.AssistantSettingActivity", 1, "click pay for auto ptt");
-    paramDialogInterface = amzc.c();
-    if (TextUtils.isEmpty(paramDialogInterface.a)) {
-      bbje.a(this.a, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&type=!svip&aid=mvip.n.a.zdzwz");
-    }
-    for (;;)
-    {
-      this.a.b();
-      return;
-      paramDialogInterface = paramDialogInterface.a.replace("{aid}", "mvip.n.a.zdzwz");
-      bbje.a(this.a, paramDialogInterface);
-    }
+    aajj localaajj = this.a;
+    aajj.a.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aajl
  * JD-Core Version:    0.7.0.1
  */

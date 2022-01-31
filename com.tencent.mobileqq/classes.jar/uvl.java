@@ -1,38 +1,58 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 class uvl
-  extends SimpleObserver<uoy>
+  extends ujp
 {
-  uvl(uvk paramuvk) {}
+  private final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
   
-  public void a(uoy paramuoy)
+  public uvl(uvh paramuvh)
   {
-    super.onNext(paramuoy);
-    if (paramuoy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      tbw localtbw = (tbw)tcz.a(17);
-      localtbw.a(paramuoy.jdField_a_of_type_JavaUtilList, paramuoy.jdField_a_of_type_JavaLangString, false, false);
-      paramuoy.jdField_a_of_type_JavaUtilList.addAll(localtbw.b(paramuoy.jdField_a_of_type_JavaLangString, false));
-    }
-    stb.a().dispatch(paramuoy);
-    this.a.b();
-    ved.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull next");
+    super("MsgTabStoryVideoPreloader");
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, uja paramuja)
   {
-    super.onError(paramError);
-    this.a.b();
-    ved.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull error", paramError);
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramuja);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MsgTabStoryVideoPreloader", 2, "download error: vid=" + paramString + " fileType=" + paramInt1, paramErrorMessage);
+      }
+      this.jdField_a_of_type_Uvh.a(paramuja.c, true);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, uja paramuja)
+  {
+    super.a(paramString, paramInt1, paramFile, paramInt2, paramuja);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "download success before: vid=" + paramString + " fileType=" + paramInt1);
+      }
+      this.jdField_a_of_type_Uvh.a(paramuja.c, true);
+    }
+  }
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, uja paramuja)
+  {
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramuja);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "download success: vid=" + paramString + " fileType=" + paramInt1);
+      }
+      this.jdField_a_of_type_Uvh.a(paramuja.c, this.jdField_a_of_type_JavaUtilSet.add(paramString));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uvl
  * JD-Core Version:    0.7.0.1
  */

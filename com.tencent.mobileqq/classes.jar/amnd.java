@@ -1,63 +1,30 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class amnd
-  extends BaseAdapter
+class amnd
+  implements QQPermissionCallback
 {
-  private int jdField_a_of_type_Int = 25;
-  private int b;
+  amnd(amnc paramamnc, BaseActivity paramBaseActivity, amna paramamna) {}
   
-  public amnd(IphonePickerView paramIphonePickerView, int paramInt1, int paramInt2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramIphonePickerView.getResources().getDisplayMetrics()));
-  }
-  
-  public int getCount()
-  {
-    return IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("sms.content", 2, "checkPermission, deny");
     }
-    for (;;)
-    {
-      paramViewGroup = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(20.0F);
-      localWheelTextView.setTextColor(IphonePickerView.jdField_a_of_type_Int);
-      localWheelTextView.setGravity(17);
-      localWheelTextView.setText(paramViewGroup);
-      return paramView;
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    amnc.a(this.jdField_a_of_type_Amnc, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Amna);
+    if (QLog.isColorLevel()) {
+      QLog.d("sms.content", 2, "checkPermission, grant");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amnd
  * JD-Core Version:    0.7.0.1
  */

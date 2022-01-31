@@ -1,19 +1,19 @@
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+
 public class aiyo
+  extends aitx
 {
-  public String a;
-  public String b;
-  public String c;
+  public aiyo(DrawHbFragment paramDrawHbFragment) {}
   
-  public aiyo(String paramString1, String paramString2, String paramString3)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    DrawHbFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.os.Bundle;
-import bekr;
+import bgkd;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
 class NavigationJsPlugin$2
   implements MiniAppLauncher.MiniAppLaunchListener
 {
-  NavigationJsPlugin$2(NavigationJsPlugin paramNavigationJsPlugin, bekr parambekr) {}
+  NavigationJsPlugin$2(NavigationJsPlugin paramNavigationJsPlugin, bgkd parambgkd) {}
   
   public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
@@ -18,7 +18,7 @@ class NavigationJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

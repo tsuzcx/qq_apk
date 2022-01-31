@@ -1,248 +1,110 @@
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.WtloginManager;
-import mqq.observer.SSOAccountObserver;
-import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.RSACrypt;
-import oicq.wlogin_sdk.tools.util;
 
-public class bddk
-  extends SSOAccountObserver
+class bddk
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public bddk(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  bddk(bddb parambddb, bepp parambepp, String paramString1, String paramString2, String paramString3) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onFailed--action = " + paramInt1 + ", ret = " + paramInt2 + ", ssoAccount = *" + bdfb.a(paramString));
-    this.a.f();
-    if (paramInt2 == -1000)
+    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
+      this.jdField_a_of_type_Bepp.dismiss();
+    }
+    if ((paramAppPathInfo != null) && (paramInt == 0))
     {
-      this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a, this.a.getResources().getString(2131694906));
-      return;
-    }
-    paramBundle = (ErrMsg)paramBundle.getParcelable("lastError");
-    if (paramBundle == null) {}
-    for (paramBundle = this.a.getString(2131694902);; paramBundle = paramBundle.getMessage())
-    {
-      QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, new Object[] { "ssoAccount failed, error: ", paramBundle });
-      bcql.a(BaseApplicationImpl.getContext(), paramBundle + "(" + paramInt2 + ")", 0).a();
-      this.a.a(paramString);
-      return;
-    }
-  }
-  
-  public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
-  {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onGetA1WithA1--ret = " + paramInt1 + ", ssoAccount = *" + bdfb.a(paramString));
-    paramString = "" + this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a.jdField_a_of_type_MqqManagerWtloginManager, paramString);
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    this.a.b = null;
-    paramString = new WloginSimpleInfo();
-    this.a.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(this.a.jdField_a_of_type_JavaLangString, paramString);
-    paramArrayOfByte = new RSACrypt(this.a).EncryptData(this.a.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
-    paramString = (ErrMsg)paramBundle.getParcelable("errMsg");
-    paramBundle = this.a;
-    String str = this.a.jdField_a_of_type_JavaLangString;
-    if (paramString == null) {}
-    for (paramString = "";; paramString = paramString.getMessage())
-    {
-      paramBundle.a(paramInt1, paramArrayOfByte, str, paramString);
-      return;
-    }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onGetTicketNoPasswd--ssoAccount = *" + bdfb.a(paramString));
-    this.a.b = null;
-    if ((this.a.jdField_a_of_type_AndroidOsBundle.containsKey("qrcode")) && (this.a.jdField_a_of_type_AndroidOsBundle.containsKey("schemacallback"))) {
-      QuickLoginAuthorityActivity.a(this.a);
-    }
-    while (!this.a.jdField_a_of_type_AndroidOsBundle.containsKey("p")) {
-      return;
-    }
-    amvi localamvi = (amvi)ampl.a().a(546);
-    paramBundle = "";
-    if (paramInt == 32) {
-      paramBundle = util.buf_to_string(paramArrayOfByte);
-    }
-    String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString("p");
-    paramArrayOfByte = str1;
-    if (!TextUtils.isEmpty(str1))
-    {
-      paramArrayOfByte = str1;
-      if (!str1.endsWith("&")) {
-        paramArrayOfByte = str1 + "&";
+      if (QLog.isColorLevel()) {
+        QLog.d("JumpAction", 2, new Object[] { "Ark mqqapi://ligthapp/open goToLightAppOpen get path succeed, appPath: ", paramAppPathInfo.path });
+      }
+      paramObject = this.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(paramObject)) {
+        break label426;
+      }
+      paramString = ArkAppCacheMgr.getApplicationLauncher(paramAppPathInfo.path);
+      if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
+      {
+        paramAppPathInfo = paramObject;
+        paramInt = 0;
       }
     }
-    paramString = "keyindex=19&clientuin=$CLIENTUIN$&clientkey=$CLIENTKEY$".replace("$CLIENTUIN$", paramString).replace("$CLIENTKEY$", paramBundle);
-    String str3 = paramArrayOfByte + paramString;
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(str3));
-    paramBundle = null;
-    str1 = null;
-    String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString("schemacallback");
-    paramString = str1;
-    if (!TextUtils.isEmpty(str2))
-    {
-      if (str2.startsWith("mttbrowser://")) {
-        paramString = "com.tencent.mtt";
-      }
-    }
-    else
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label813;
-      }
-      paramArrayOfByte = Uri.parse(paramArrayOfByte).getQueryParameter("pt_browser");
-      QLog.i("SSOAccountObserver", 1, "-->onGetTicketNoPasswd--schemacallback=" + str2 + ",pt_browser=" + paramArrayOfByte);
-      if ((TextUtils.isEmpty(paramArrayOfByte)) || (!"LieBaoFast".equals(paramArrayOfByte))) {
-        break label813;
-      }
-      paramString = "com.ijinshan.browser_fast";
-    }
-    label806:
-    label813:
     for (;;)
     {
+      paramObject = this.b;
+      if (TextUtils.isEmpty(paramObject)) {
+        paramObject = "{}";
+      }
       for (;;)
       {
-        paramInt = 0;
-        if (!TextUtils.isEmpty(paramString)) {}
-        try
+        if (paramInt != 0)
         {
-          paramArrayOfByte = this.a.getPackageManager().getPackageInfo(paramString, 0);
-          if (localamvi.jdField_a_of_type_Int == 1)
-          {
-            paramBundle = (String)localamvi.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-            if ((this.a.a(paramString, paramBundle)) && (paramArrayOfByte != null))
-            {
-              paramInt = 1;
-              if (paramInt != 0)
-              {
-                localIntent.setPackage(paramString);
-                localIntent.setData(Uri.parse(str3));
-              }
-              if ((localamvi.b != 1) || (paramInt != 0)) {
-                break label754;
-              }
-              this.a.f();
-              bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131711244), 1).a();
-              paramArrayOfByte = new HashMap();
-              paramArrayOfByte.put("callback", str2);
-              if (paramInt == 0) {
-                break label806;
-              }
-              paramString = "1";
-              paramArrayOfByte.put("checkRes", paramString);
-              axrn.a(BaseApplicationImpl.getContext()).a("", "kQuickLoginForBrowser", true, 0L, 0L, paramArrayOfByte, "");
-              return;
-              if (str2.startsWith("ucweb://"))
-              {
-                paramString = "com.UCMobile";
-                break;
-              }
-              if (str2.startsWith("bdbrowser://"))
-              {
-                paramString = "com.baidu.browser.apps";
-                break;
-              }
-              if (str2.startsWith("bdapp://"))
-              {
-                paramString = "com.baidu.searchbox";
-                break;
-              }
-              if (str2.startsWith("googlechrome://"))
-              {
-                paramString = "com.android.chrome";
-                break;
-              }
-              if (str2.startsWith("mzbrowser://"))
-              {
-                paramString = "com.android.browser";
-                break;
-              }
-              if (str2.startsWith("lb://"))
-              {
-                paramString = "com.ijinshan.browser_fast";
-                break;
-              }
-              if (str2.startsWith("qihoobrowser://"))
-              {
-                paramString = "com.qihoo.browser";
-                break;
-              }
-              if (str2.startsWith("browser2345://"))
-              {
-                paramString = "com.browser2345";
-                break;
-              }
-              paramString = str1;
-              if (!str2.startsWith("SogouMSE://")) {
-                break;
-              }
-              paramString = "sogou.mobile.explorer";
-            }
+          anjv.a(null, this.c, "FullScreenOrH5Show", 0, 0, 0L, 0L, 0L, "", "");
+          if (this.jdField_a_of_type_Bddb.a != null) {
+            ArkFullScreenAppActivity.a(this.jdField_a_of_type_Bddb.a, this.c, paramAppPathInfo, "0.0.0.1", paramObject, anjs.a(), null, 1);
           }
         }
-        catch (PackageManager.NameNotFoundException paramArrayOfByte)
+        do
         {
-          for (;;)
+          do
           {
-            QLog.e("SSOAccountObserver", 1, "-->onGetTicketNoPasswd exception:" + paramArrayOfByte.getStackTrace().toString());
-            paramArrayOfByte = paramBundle;
-            continue;
-            paramInt = 0;
-            continue;
-            if (paramArrayOfByte != null)
+            return;
+            paramAppPathInfo = paramString;
+            paramInt = 1;
+            paramString = null;
+            break;
+            paramObject = new Intent();
+            paramObject.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserDelegationActivity");
+            paramObject.putExtra("param_force_internal_browser", true);
+            paramObject.putExtra("url", paramString);
+            paramObject.putExtra("injectrecommend", false);
+            paramObject.putExtra("browserType", 3);
+            if (!TextUtils.isEmpty(this.c))
             {
-              paramInt = 1;
-            }
-            else
-            {
-              paramInt = 0;
-              continue;
-              try
+              paramObject.putExtra("h5_ark_app_name", this.c);
+              paramString = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.c, paramAppPathInfo, null, false);
+              if (!TextUtils.isEmpty(paramString))
               {
-                label754:
-                this.a.startActivity(localIntent);
-                this.a.e();
-              }
-              catch (Exception paramString)
-              {
-                for (;;)
-                {
-                  QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "startActivity :" + paramString.getMessage());
+                paramObject.putExtra("h5_ark_app_path", paramString);
+                paramString = ArkAppCacheMgr.getApplicationDesc(this.c);
+                if (!TextUtils.isEmpty(paramString)) {
+                  paramObject.putExtra("h5_ark_app_des", paramString);
                 }
               }
-              paramString = "0";
             }
-          }
-        }
+            paramString = aoho.b(186);
+            if (paramString != null)
+            {
+              paramString = paramString.a();
+              if (!TextUtils.isEmpty(paramString)) {
+                paramObject.putExtra("h5_ark_check_config", paramString);
+              }
+            }
+            paramObject.addFlags(603979776);
+          } while (this.jdField_a_of_type_Bddb.a == null);
+          this.jdField_a_of_type_Bddb.a.startActivity(paramObject);
+          return;
+          QQToast.a(this.jdField_a_of_type_Bddb.a, 2131690238, 0).a();
+        } while (!QLog.isColorLevel());
+        QLog.d("JumpAction", 2, "Ark mqqapi://ligthapp/open goToLightAppOpen appPath is null ");
+        return;
       }
+      label426:
+      paramAppPathInfo = paramObject;
+      paramString = null;
+      paramInt = 1;
     }
-  }
-  
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
-  {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onUserCancel--action = " + paramInt + ", ssoAccount = *" + bdfb.a(paramString));
-    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bddk
  * JD-Core Version:    0.7.0.1
  */

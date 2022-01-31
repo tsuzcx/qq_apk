@@ -1,17 +1,28 @@
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 public class biiq
+  implements bika
 {
-  public static final String a = biir.a + File.separator + "aiscene";
-  public static final String b = a + File.separator + "res";
-  public static final String c = a + File.separator + "res_zip_download";
-  public static final String d = b + File.separator + "AISceneGuide";
-  public static final String e = b + File.separator + "AISceneLoading";
-  public static final String f = b + File.separator + "AutoAISceneAni";
+  private WeakReference<Handler> a;
+  
+  public biiq(Handler paramHandler)
+  {
+    this.a = new WeakReference(paramHandler);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    Handler localHandler = (Handler)this.a.get();
+    if (localHandler != null) {
+      localHandler.obtainMessage(1001, paramInt, 0, paramString).sendToTarget();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biiq
  * JD-Core Version:    0.7.0.1
  */

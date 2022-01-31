@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.nearby.now.model.Comments;
-
-public abstract interface atgz
+public class atgz
 {
-  public abstract void a();
-  
-  public abstract void a(Comments paramComments);
+  public int a;
+  public long a;
+  public boolean a;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atgz
  * JD-Core Version:    0.7.0.1
  */

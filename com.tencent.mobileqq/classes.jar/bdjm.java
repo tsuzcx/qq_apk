@@ -1,17 +1,37 @@
-public class bdjm
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+
+final class bdjm
+  extends ClickableSpan
 {
-  public static final String a = ajya.a(2131702454);
-  public static final String b = ajya.a(2131702452);
-  public static final String c = ajya.a(2131702460);
-  public static final String d = ajya.a(2131702455);
-  public static final String e = ajya.a(2131702458);
-  public static final String f = ajya.a(2131702456);
-  public static final String g = ajya.a(2131702453);
-  public static final String h = ajya.a(2131702459);
+  bdjm(Context paramContext, auyu paramauyu) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Auyu.b());
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Auyu.b());
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#00aced"));
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdjm
  * JD-Core Version:    0.7.0.1
  */

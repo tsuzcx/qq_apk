@@ -1,20 +1,24 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import android.os.Handler;
+import android.os.Message;
 
-public class sxf
-  implements swy
+class sxf
+  extends Handler
 {
-  public sxf(StoryVideoUploadTask paramStoryVideoUploadTask, sxe paramsxe) {}
+  sxf(sxe paramsxe) {}
   
-  public void a(swx paramswx)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Sxe.k = ((sws)paramswx).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxf
  * JD-Core Version:    0.7.0.1
  */

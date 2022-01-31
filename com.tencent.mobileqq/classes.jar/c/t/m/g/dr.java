@@ -1,153 +1,106 @@
 package c.t.m.g;
 
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.text.TextUtils;
-import java.util.Timer;
+import android.util.Base64;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 public final class dr
 {
-  private String A = "5.6.0.4";
-  private String B = "191221";
-  private String C = "5.6.0.4";
-  public int a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public int i;
-  public String j;
-  public long k;
-  public boolean l = true;
-  public boolean m = true;
-  public boolean n = true;
-  public int o = -2;
-  private final dx p;
-  private String q;
-  private int r = 0;
-  private int s = 0;
-  private int t = 0;
-  private boolean u = false;
-  private boolean v = false;
-  private boolean w = false;
-  private boolean x = false;
-  private long y = 20000L;
-  private long z = 30000L;
+  private static final byte[] a = { 84, 101, 110, 99, 101, 110, 116, 76, 111, 99, 97, 116, 105, 111, 110, 49 };
   
-  public dr(dx paramdx)
+  public static String a(String paramString1, String paramString2)
   {
-    this.p = paramdx;
+    return a(paramString1, paramString2, 1);
   }
   
-  static void a(HandlerThread paramHandlerThread)
+  private static String a(String paramString1, String paramString2, int paramInt)
   {
-    if (paramHandlerThread != null) {
+    Object localObject = null;
+    if ((paramInt != 1) && (paramInt != 2)) {
+      throw new IllegalArgumentException("wrong mode.");
+    }
+    if ((paramString1 == null) || (paramString1.length() == 0))
+    {
+      paramString1 = "";
+      return paramString1;
+    }
+    if (paramInt == 1) {}
+    for (;;)
+    {
       try
       {
-        if (Build.VERSION.SDK_INT >= 18)
+        paramString1 = paramString1.getBytes();
+        if (paramString1 == null) {
+          break label124;
+        }
+        if (paramString1.length == 0)
         {
-          paramHandlerThread.quitSafely();
-          return;
+          break label124;
+          if (paramInt == 2) {
+            paramString1 = Base64.decode(paramString1.getBytes(), 2);
+          }
         }
-        paramHandlerThread.quit();
-        return;
+        else
+        {
+          paramString2 = a(paramString1, paramString1.length, paramString2, paramInt);
+          if (paramInt == 1) {
+            return Base64.encodeToString(paramString2, 2);
+          }
+          paramString1 = localObject;
+          if (paramInt != 2) {
+            break;
+          }
+          paramString1 = new String(paramString2);
+          return paramString1;
+        }
       }
-      catch (Throwable paramHandlerThread)
+      catch (Throwable paramString1)
       {
-        if (co.e()) {
-          co.a("quit error.", paramHandlerThread);
-        }
+        return "";
       }
+      paramString1 = null;
     }
+    label124:
+    return "";
   }
   
-  public static void a(HandlerThread paramHandlerThread, Handler paramHandler, long paramLong)
+  private static byte[] a(byte[] paramArrayOfByte, int paramInt1, String paramString, int paramInt2)
   {
-    if (paramLong <= 0L)
-    {
-      a(paramHandlerThread);
-      return;
+    if ((paramInt2 != 1) && (paramInt2 != 2)) {
+      throw new IllegalArgumentException("wrong mode.");
     }
-    Handler localHandler = paramHandler;
-    if (paramHandler == null)
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (paramInt1 == 0)) {
+      return do.a;
+    }
+    try
     {
-      localHandler = paramHandler;
-      if (Looper.myLooper() != null) {
-        localHandler = new Handler(Looper.myLooper());
+      paramString = new SecretKeySpec(paramString.getBytes("UTF-8"), "AES");
+      Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+      localCipher.init(paramInt2, paramString, new IvParameterSpec(a));
+      if (localCipher == null) {
+        return do.a;
       }
+      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte, 0, paramInt1);
+      return paramArrayOfByte;
     }
-    if (localHandler == null) {}
-    for (paramHandler = new Timer("th_quit_delay");; paramHandler = null)
-    {
-      paramHandlerThread = new dr.1(paramHandlerThread, localHandler, paramHandler);
-      if (localHandler == null) {
-        break;
-      }
-      localHandler.postDelayed(paramHandlerThread, paramLong);
-      return;
-    }
-    paramHandler.schedule(paramHandlerThread, paramLong);
+    catch (Throwable paramArrayOfByte) {}
+    return do.a;
   }
   
-  public final String a()
+  public static byte[] a(byte[] paramArrayOfByte, String paramString)
   {
-    if (TextUtils.isEmpty(this.b)) {
-      return "0123456789ABCDEF";
-    }
-    return this.b;
+    return a(paramArrayOfByte, paramArrayOfByte.length, paramString, 1);
   }
   
-  public final String b()
+  public static String b(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(this.c)) {
-      return "0123456789ABCDEF";
-    }
-    return this.c;
-  }
-  
-  public final String c()
-  {
-    if ((TextUtils.isEmpty(this.e)) || (this.e.contains("0000"))) {
-      return "0123456789ABCDEF";
-    }
-    return this.e;
-  }
-  
-  public final String d()
-  {
-    if (this.A == null) {
-      return "None";
-    }
-    return this.A;
-  }
-  
-  public final String e()
-  {
-    if (this.B == null) {
-      return "None";
-    }
-    return this.B;
-  }
-  
-  public final String f()
-  {
-    if (this.q == null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(100);
-      localStringBuilder.append(a()).append("_").append(b()).append("_").append(c()).append("_QQGeoLocation");
-      this.q = co.c(localStringBuilder.toString());
-    }
-    return this.q;
+    return a(paramString1, paramString2, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dr
  * JD-Core Version:    0.7.0.1
  */

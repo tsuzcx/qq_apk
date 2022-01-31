@@ -1,23 +1,22 @@
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-public abstract class acuz
-  implements acvb
+public class acuz
+  implements View.OnClickListener
 {
-  public static final boolean e = AppSetting.d;
-  public int b;
+  public acuz(FriendProfileCardActivity paramFriendProfileCardActivity, TextView paramTextView, int paramInt) {}
   
-  public abstract View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, acxj paramacxj);
-  
-  public abstract void a();
-  
-  public abstract void a(View paramView, ChatMessage paramChatMessage, int paramInt);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    bdqe.a(paramView.getContext(), bdqa.b(this.jdField_a_of_type_Int), bdqa.c(this.jdField_a_of_type_Int), 3, false, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acuz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,19 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.effect.engine.QEffectData;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aymz
-  implements OnCompositionLoadedListener
+class aymz
+  implements View.OnClickListener
 {
-  public aymz(QEffectLottieImageView paramQEffectLottieImageView) {}
+  aymz(aymy paramaymy, ayjk paramayjk) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onClick(View paramView)
   {
-    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
-      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: composition= " + paramLottieComposition);
-    }
-    if (paramLottieComposition == null) {
-      return;
-    }
-    if (QEffectLottieImageView.a(this.a))
-    {
-      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
-      return;
-    }
-    this.a.cancelAnimation();
-    this.a.setComposition(paramLottieComposition);
-    this.a.setProgress(0.0F);
-    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
-    this.a.setVisibility(0);
-    this.a.playAnimation();
+    this.jdField_a_of_type_Ayjk.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aymz
  * JD-Core Version:    0.7.0.1
  */

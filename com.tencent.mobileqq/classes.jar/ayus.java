@@ -1,62 +1,53 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import mqq.app.NewIntent;
 
 class ayus
-  implements ITransactionCallback
+  extends Handler
 {
-  ayus(ayur paramayur, long paramLong) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  ayus(ayup paramayup, Looper paramLooper, Context paramContext, String paramString1, int paramInt, AppInterface paramAppInterface, String paramString2, String paramString3)
   {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
-    }
-    this.jdField_a_of_type_Ayur.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Ayur.b);
-    this.jdField_a_of_type_Ayur.d();
+    super(paramLooper);
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void handleMessage(Message paramMessage)
   {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long));
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_Ayup.b = true;
+      if (this.jdField_a_of_type_Ayup.jdField_a_of_type_MqqAppNewIntent != null)
+      {
+        this.jdField_a_of_type_Ayup.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+        this.jdField_a_of_type_Ayup.jdField_a_of_type_MqqAppNewIntent = null;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
+      }
+      paramMessage = ayup.a(this.jdField_a_of_type_Ayup.jdField_a_of_type_JavaLangString);
+      bfij.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramMessage, this.jdField_a_of_type_Int);
+      ayup.jdField_a_of_type_Boolean = false;
+      return;
     }
-    this.jdField_a_of_type_Ayur.b.b();
-    this.jdField_a_of_type_Ayur.b.a = 1;
-    this.jdField_a_of_type_Ayur.s = this.jdField_a_of_type_Ayur.q;
-    this.jdField_a_of_type_Ayur.a.a = paramArrayOfByte;
-    this.jdField_a_of_type_Ayur.e();
-    this.jdField_a_of_type_Ayur.a.a();
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> onTransStart()");
+    this.jdField_a_of_type_Ayup.b = true;
+    if (this.jdField_a_of_type_Ayup.jdField_a_of_type_MqqAppNewIntent != null)
+    {
+      this.jdField_a_of_type_Ayup.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+      this.jdField_a_of_type_Ayup.jdField_a_of_type_MqqAppNewIntent = null;
     }
-    this.jdField_a_of_type_Ayur.b.a();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    ayur localayur = this.jdField_a_of_type_Ayur;
-    ayqo localayqo = this.jdField_a_of_type_Ayur.a;
-    long l = paramInt;
-    localayqo.e = l;
-    localayur.s = l;
-    if ((paramInt < this.jdField_a_of_type_Ayur.q) && (!this.jdField_a_of_type_Ayur.o) && (!this.jdField_a_of_type_Ayur.k)) {
-      this.jdField_a_of_type_Ayur.i();
-    }
+    ayup.a(this.jdField_a_of_type_Ayup, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, this.c, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayus
  * JD-Core Version:    0.7.0.1
  */

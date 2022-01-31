@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.data.qzone;
 
-import auko;
-import aulz;
+import awbv;
+import awdg;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="ownerUin")
 public class FeedInfo
-  extends auko
+  extends awbv
 {
   public int appid;
   public String content;
   public long feedTime;
   public int hasPic;
-  @aulz
+  @awdg
   public boolean isExpose;
   public long ownerUin;
   public boolean showInTab = true;
@@ -28,7 +28,7 @@ public class FeedInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.qzone.FeedInfo
  * JD-Core Version:    0.7.0.1
  */

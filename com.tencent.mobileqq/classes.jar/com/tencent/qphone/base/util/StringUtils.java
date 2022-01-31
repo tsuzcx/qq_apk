@@ -156,9 +156,9 @@ public class StringUtils
         }
         i = 262144;
       }
-      catch (Exception localException)
+      catch (Throwable localThrowable1)
       {
-        QLog.e("LoadMSFSo", 1, localException, new Object[0]);
+        QLog.e("LoadMSFSo", 1, localThrowable1, new Object[0]);
         if (!"armeabi".equalsIgnoreCase(getPlatformString())) {
           break label155;
         }
@@ -178,11 +178,11 @@ public class StringUtils
         bool = loadLibrary(paramString1, paramString2, BaseApplication.getContext());
         QLog.d(paramString1, 1, "loadso x86 " + paramString2 + " " + bool);
       }
-      catch (Throwable localThrowable)
+      catch (Throwable localThrowable2)
       {
         for (;;)
         {
-          localThrowable.printStackTrace();
+          localThrowable2.printStackTrace();
           boolean bool = false;
         }
       }

@@ -209,6 +209,11 @@ public class CustomInterfaceLogic
     this.baseImpl.setCustomizedLog(paramCustomizedLog);
   }
   
+  public void setCustomizedOpenWxMiniProgram(CustomizedOpenWxMiniProgram paramCustomizedOpenWxMiniProgram)
+  {
+    ExtSdkBizAbilityImpl.getInstance().setCustomizedOpenWxMiniProgram(paramCustomizedOpenWxMiniProgram);
+  }
+  
   public void setCustomizedPay(CustomizedPayment paramCustomizedPayment)
   {
     this.customiseByHost.putBoolean("custom_pay", true);
@@ -244,6 +249,7 @@ public class CustomInterfaceLogic
   public void setFreeFlow(boolean paramBoolean)
   {
     this.customiseByHost.putBoolean("free_flow", paramBoolean);
+    Global.isQueenFreeFlow = paramBoolean;
   }
   
   public void setWelfareTaskCallback(WelfareTaskCallback paramWelfareTaskCallback)
@@ -256,7 +262,7 @@ public class CustomInterfaceLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.CustomInterfaceLogic
  * JD-Core Version:    0.7.0.1
  */

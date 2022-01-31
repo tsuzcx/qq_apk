@@ -1,45 +1,74 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-final class yup
-  extends QIPCModule
+public class yup
+  extends aofy<yuo>
 {
-  private static volatile yup a;
-  
-  private yup(String paramString)
+  public int a()
   {
-    super(paramString);
+    return 595;
   }
   
-  public static yup a()
+  public Class<yuo> a()
   {
-    if (a == null) {}
-    try
+    return yuo.class;
+  }
+  
+  @NonNull
+  public yuo a(int paramInt)
+  {
+    return new yuo();
+  }
+  
+  @Nullable
+  public yuo a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
     {
-      if (a == null) {
-        a = new yup("gdt_server_ipc");
-      }
-      return a;
+      yuo localyuo = yuo.a(paramArrayOfaogf[0].a);
+      a(localyuo);
+      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      return localyuo;
     }
-    finally {}
+    return null;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(yuo paramyuo)
   {
-    yxp.b("GdtInterstitialPreDownloader", String.format("onCall action:%s", new Object[] { paramString }));
-    if (TextUtils.equals(paramString, "PRELOAD_INTERSTITIAL_MAIN_TO_TOOL")) {
-      yul.b(yul.a());
+    QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate ");
+    if (paramyuo != null)
+    {
+      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate " + paramyuo.toString());
+      yuh.a().a("sticky_note_publish_entrance_config", paramyuo.a());
     }
-    paramString = new EIPCResult();
-    paramString.code = 0;
-    return paramString;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yup
  * JD-Core Version:    0.7.0.1
  */

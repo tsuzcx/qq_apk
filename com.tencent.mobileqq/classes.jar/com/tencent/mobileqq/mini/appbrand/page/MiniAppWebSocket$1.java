@@ -1,10 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
 import android.os.Handler;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
-import com.squareup.okhttp.ws.WebSocket;
-import com.squareup.okhttp.ws.WebSocketListener;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -17,36 +13,48 @@ import com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.JSUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.ValueCallback;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import okio.Buffer;
+import javax.annotation.Nullable;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+import okio.ByteString;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 class MiniAppWebSocket$1
-  implements WebSocketListener
+  extends WebSocketListener
 {
   MiniAppWebSocket$1(MiniAppWebSocket paramMiniAppWebSocket) {}
   
-  public void onClose(int paramInt, String paramString)
+  public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
   {
     QLog.e("ServiceRemoteRuntime", 2, "--onClose:  " + paramString);
   }
   
-  public void onFailure(IOException paramIOException, Response paramResponse)
+  public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
   {
-    QLog.e("ServiceRemoteRuntime", 2, "--onFailure: " + paramIOException);
+    QLog.e("ServiceRemoteRuntime", 2, "--onFailure: " + paramThrowable);
   }
   
-  public void onMessage(ResponseBody paramResponseBody)
+  public void onMessage(WebSocket paramWebSocket, String paramString)
   {
-    paramResponseBody = paramResponseBody.string();
-    QLog.e("ServiceRemoteRuntime", 2, "--onMessage: " + paramResponseBody);
+    super.onMessage(paramWebSocket, paramString);
+    QLog.e("ServiceRemoteRuntime", 2, "--onMessage: " + paramString);
     if (this.this$0.mThreadHandler != null) {
-      this.this$0.mThreadHandler.post(new MiniAppWebSocket.1.1(this, paramResponseBody));
+      this.this$0.mThreadHandler.post(new MiniAppWebSocket.1.1(this, paramString));
+    }
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
+  {
+    super.onMessage(paramWebSocket, paramByteString);
+    QLog.e("ServiceRemoteRuntime", 2, "--onMessage: " + paramByteString.toString());
+    if (this.this$0.mThreadHandler != null) {
+      this.this$0.mThreadHandler.post(new MiniAppWebSocket.1.2(this, paramByteString));
     }
   }
   
@@ -54,8 +62,6 @@ class MiniAppWebSocket$1
   {
     this.this$0.mWebSocket = paramWebSocket;
   }
-  
-  public void onPong(Buffer paramBuffer) {}
   
   protected void processMessage(String paramString)
   {
@@ -241,7 +247,7 @@ class MiniAppWebSocket$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.MiniAppWebSocket.1
  * JD-Core Version:    0.7.0.1
  */

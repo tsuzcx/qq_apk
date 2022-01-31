@@ -1,24 +1,34 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wqn
-  implements View.OnClickListener
+  extends QQUIEventReceiver<wps, vol>
 {
-  public wqn(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, wpw paramwpw) {}
-  
-  public void onClick(View paramView)
+  public wqn(@NonNull wps paramwps)
   {
-    wis.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", this.jdField_a_of_type_Wpw.a.poster.id.get()));
-    xhb.b(this.jdField_a_of_type_Wpw.a.poster.id.get(), "auth_person", "sync_qzone", 0, 0, new String[0]);
+    super(paramwps);
+  }
+  
+  public void a(@NonNull wps paramwps, @NonNull vol paramvol)
+  {
+    wsv.a(this.TAG, "play video groupId=%s, %s", paramvol.jdField_a_of_type_Vld, paramvol.b);
+    if ((wps.a(paramwps).equals(paramvol.jdField_a_of_type_JavaLangString)) && ((paramvol.jdField_a_of_type_Vld instanceof vks)))
+    {
+      wkh localwkh = ((vks)paramvol.jdField_a_of_type_Vld).a;
+      if (localwkh != null) {
+        paramwps.a(localwkh.jdField_a_of_type_JavaLangString, paramvol.b, true);
+      }
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vol.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqn
  * JD-Core Version:    0.7.0.1
  */

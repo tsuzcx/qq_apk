@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vip;
 
-import bbwo;
+import bdvp;
 
 class AioVipKeywordHelper$1$1
   implements Runnable
@@ -14,7 +14,7 @@ class AioVipKeywordHelper$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.AioVipKeywordHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

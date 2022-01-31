@@ -1,233 +1,136 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.1;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.2;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.3;
-import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.utils.preference.PreferenceManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import mqq.manager.Manager;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class otm
-  implements Manager
+  implements AladdinConfigHandler
 {
-  private QQAppInterface a;
-  
-  public otm(QQAppInterface paramQQAppInterface)
+  pgj a(String paramString, List<pgj> paramList)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private MessageRecord a(MessageRecord paramMessageRecord, String paramString, long paramLong)
-  {
-    if (paramMessageRecord == null) {
-      return null;
-    }
-    MessageRecord localMessageRecord = axas.a(-1000);
-    MessageRecord.copyMessageRecordBaseField(localMessageRecord, paramMessageRecord);
-    localMessageRecord.msgtype = -1000;
-    a(localMessageRecord, paramString, paramLong);
-    return localMessageRecord;
-  }
-  
-  private void a(MessageRecord paramMessageRecord, String paramString, long paramLong)
-  {
-    paramMessageRecord.issend = 1;
-    paramMessageRecord.isread = true;
-    paramMessageRecord.frienduin = ajsd.aP;
-    paramMessageRecord.senderuin = ajsd.aP;
-    paramMessageRecord.istroop = 1008;
-    paramMessageRecord.msg = paramString;
-    paramMessageRecord.time = paramLong;
-    paramMessageRecord.createMessageUniseq();
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    return TextUtils.equals(paramMessageRecord.frienduin, ajsd.aP);
-  }
-  
-  public WeishiRedDotInfo a()
-  {
-    if ((this.a == null) || (this.a.a() == null) || (this.a.a() == null)) {
-      return null;
-    }
-    if (this.a.a().a().a(ajsd.aP, 1008) > 0)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      MessageRecord localMessageRecord = this.a.a().b(ajsd.aP, 1008);
-      if ((localMessageRecord instanceof MessageForStructing)) {
-        return new WeishiRedDotInfo((MessageForStructing)localMessageRecord);
+      pgj localpgj = (pgj)paramList.next();
+      if (localpgj.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localpgj;
       }
     }
     return null;
   }
   
-  public MessageForStructing a()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if ((this.a == null) || (this.a.a() == null) || (this.a.a().a() == null)) {
-      return null;
-    }
-    MessageRecord localMessageRecord = this.a.a().b(ajsd.aP, 1008);
-    if ((localMessageRecord instanceof MessageForStructing)) {
-      return (MessageForStructing)localMessageRecord;
-    }
-    return null;
-  }
-  
-  public MessageRecord a(String paramString, long paramLong)
-  {
-    if (this.a == null) {
-      return null;
-    }
-    MessageRecord localMessageRecord = axas.a(-1000);
-    localMessageRecord.selfuin = this.a.getCurrentAccountUin();
-    a(localMessageRecord, paramString, paramLong);
-    return localMessageRecord;
-  }
-  
-  public String a()
-  {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((MessageForStructing)localObject).structingMsg;
-      if ((localObject != null) && (!TextUtils.isEmpty(((AbsStructMsg)localObject).mMsgActionData))) {
-        return ((AbsStructMsg)localObject).mMsgActionData;
-      }
-    }
-    return "";
-  }
-  
-  public List<Long> a()
-  {
+    QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    Map localMap = osq.a(paramString);
+    Object localObject4 = localMap.keySet();
+    Object localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
+    paramString = new JSONArray();
     ArrayList localArrayList = new ArrayList();
-    if ((this.a == null) || (this.a.a() == null) || (this.a.a().a() == null)) {
-      return null;
-    }
-    Object localObject = this.a.a().b(ajsd.aP, 1008);
-    if ((localObject instanceof MessageForStructing))
-    {
-      localObject = (MessageForStructing)localObject;
-      if ((((MessageForStructing)localObject).structingMsg != null) && (!TextUtils.isEmpty(((MessageForStructing)localObject).structingMsg.mArticleIds)))
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      try
       {
-        localObject = ((MessageForStructing)localObject).structingMsg.mArticleIds.split("\\|");
-        int i = 0;
-        while (i < localObject.length)
+        localObject1 = new JSONArray((String)localObject1);
+        if (localObject1 != null) {}
+        Object localObject5;
+        String[] arrayOfString;
+        Object localObject3;
+        Object localObject2;
+        for (;;) {}
+      }
+      catch (JSONException localJSONException1)
+      {
+        for (;;)
         {
-          localArrayList.add(Long.valueOf(localObject[i]));
-          i += 1;
+          try
+          {
+            QLog.d("KandianDailySettingConfigHandler", 2, "old data: " + localObject1);
+            paramInt1 = 0;
+            if (paramInt1 < ((JSONArray)localObject1).length())
+            {
+              localArrayList.add(pgj.a(((JSONArray)localObject1).optJSONObject(paramInt1)));
+              paramInt1 += 1;
+              continue;
+            }
+            paramString = (String)localObject1;
+            localObject4 = ((Set)localObject4).iterator();
+            if (!((Iterator)localObject4).hasNext()) {
+              continue;
+            }
+            localObject5 = (String)((Iterator)localObject4).next();
+            localObject1 = (String)localMap.get(localObject5);
+            QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] key=" + (String)localObject5 + ", value=" + (String)localObject1);
+            arrayOfString = ((String)localObject1).split("\\|");
+            if (arrayOfString.length != 3) {
+              continue;
+            }
+            paramInt1 = 1;
+            localObject3 = a((String)localObject5, localArrayList);
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              paramInt1 = 0;
+              localObject1 = new pgj();
+            }
+            ((pgj)localObject1).jdField_b_of_type_JavaLangString = arrayOfString[0];
+            ((pgj)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject5);
+            localObject3 = arrayOfString[1].split(",");
+            localObject5 = arrayOfString[2].split(",");
+            ((pgj)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
+            ((pgj)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+            ((pgj)localObject1).jdField_b_of_type_JavaUtilList.add("");
+            ((pgj)localObject1).jdField_a_of_type_JavaUtilList.add("");
+            paramInt2 = 0;
+            if (paramInt2 >= localObject3.length) {
+              continue;
+            }
+            ((pgj)localObject1).jdField_a_of_type_JavaUtilList.add(localObject3[paramInt2]);
+            paramInt2 += 1;
+            continue;
+            localJSONException1 = localJSONException1;
+          }
+          catch (JSONException localJSONException2)
+          {
+            paramString = localJSONException1;
+            localObject2 = localJSONException2;
+            continue;
+          }
+          localJSONException1.printStackTrace();
+          continue;
+          paramInt2 = 0;
+          if (paramInt2 < localObject5.length)
+          {
+            localJSONException1.jdField_b_of_type_JavaUtilList.add(localObject5[paramInt2]);
+            paramInt2 += 1;
+          }
+          else if (paramInt1 == 0)
+          {
+            paramString.put(localJSONException1.a());
+          }
         }
+        QLog.d("KandianDailySettingConfigHandler", 2, "new data: " + paramString.toString());
+        ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", paramString.toString());
+        return true;
       }
     }
-    return localArrayList;
   }
   
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  public void onWipeConfig(int paramInt)
   {
-    String str1 = paramstSimpleMetaFeed.id;
-    String str2 = paramstSimpleMetaFeed.feed_desc;
-    paramstSimpleMetaFeed = paramstSimpleMetaFeed.map_pass_back;
-    QLog.d("WeishiManager", 2, "id:" + str1 + ",feed_desc:" + str2);
-    QQMessageFacade localQQMessageFacade = this.a.a();
-    long l = NetConnInfoCenter.getServerTime();
-    if (localQQMessageFacade != null) {
-      ThreadManager.post(new WeishiManager.3(this, str2, l, localQQMessageFacade, str1, paramstSimpleMetaFeed), 10, null, false);
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (this.a == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = this.a.a();
-      } while (localObject == null);
-      localObject = ((QQMessageFacade)localObject).a();
-    } while ((localObject == null) || (((akpb)localObject).a(ajsd.aP, 1008) <= 0));
-    ThreadManager.post(new WeishiManager.1(this, paramActivity), 8, null, false);
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (this.a == null)) {}
-    QQMessageFacade localQQMessageFacade;
-    do
-    {
-      return;
-      localQQMessageFacade = this.a.a();
-    } while (localQQMessageFacade == null);
-    ThreadManager.post(new WeishiManager.2(this, localQQMessageFacade, paramString, paramLong), 10, null, false);
-  }
-  
-  public String b()
-  {
-    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_recommend_mappassback";
-  }
-  
-  public String c()
-  {
-    try
-    {
-      long l = Long.parseLong(this.a.getCurrentAccountUin());
-      String str = PreferenceManager.getDefaultPreference(this.a.getApplication(), l).getString("key_weishi_newest_feed_id", "");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      localException = localException;
-      QLog.d("WeishiManager", 2, localException.getMessage(), localException);
-      return "";
-    }
-    finally {}
-    return "";
-  }
-  
-  public String d()
-  {
-    try
-    {
-      long l = Long.parseLong(this.a.getCurrentAccountUin());
-      String str = PreferenceManager.getDefaultPreference(this.a.getApplication(), l).getString("key_weishi_newest_feed_desc", "");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      localException = localException;
-      QLog.d("WeishiManager", 2, localException.getMessage(), localException);
-      return "";
-    }
-    finally {}
-    return "";
-  }
-  
-  public void onDestroy()
-  {
-    this.a = null;
+    QLog.d("KandianDailySettingConfigHandler", 2, "[onWipeConfig]");
+    ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otm
  * JD-Core Version:    0.7.0.1
  */

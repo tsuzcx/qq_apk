@@ -1,21 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import com.tencent.qqmini.sdk.core.auth.ui.PermissionSettingFragment;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.widget.ADView;
 
 public class bein
-  implements DialogInterface.OnClickListener
+  implements bese
 {
-  public bein(PermissionSettingFragment paramPermissionSettingFragment, CompoundButton paramCompoundButton) {}
+  public bein(ADView paramADView, LinearLayout paramLinearLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(true);
+    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    int i = 0;
+    View localView;
+    while (i < j)
+    {
+      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if (localView != null) {
+        localView.setEnabled(false);
+      }
+      i += 1;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
+      if (paramInt == -1) {
+        i = j - 1;
+      }
+    }
+    for (;;)
+    {
+      if ((i > -1) && (i < j))
+      {
+        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        if (localView != null) {
+          localView.setEnabled(true);
+        }
+      }
+      return;
+      i = paramInt;
+      if (paramInt == j)
+      {
+        i = 0;
+        continue;
+        if (paramInt == -1)
+        {
+          i = 0;
+        }
+        else
+        {
+          i = paramInt;
+          if (paramInt == j) {
+            i = j - 1;
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bein
  * JD-Core Version:    0.7.0.1
  */

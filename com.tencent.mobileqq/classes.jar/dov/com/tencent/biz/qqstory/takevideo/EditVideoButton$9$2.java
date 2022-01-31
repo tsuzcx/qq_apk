@@ -1,22 +1,22 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.widget.ImageView;
-import bjve;
-import bjvm;
+import bmgo;
+import bmgw;
 
 public class EditVideoButton$9$2
   implements Runnable
 {
-  public EditVideoButton$9$2(bjvm parambjvm) {}
+  public EditVideoButton$9$2(bmgw parambmgw) {}
   
   public void run()
   {
-    bjve.a(this.a.a).setVisibility(8);
+    bmgo.a(this.a.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.9.2
  * JD-Core Version:    0.7.0.1
  */

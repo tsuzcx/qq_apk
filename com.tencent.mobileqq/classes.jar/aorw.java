@@ -1,82 +1,74 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-import cooperation.weiyun.AlbumBackupProxyActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aorw
-  implements bfux
 {
-  public aorw(FileAssistantActivity paramFileAssistantActivity) {}
+  private int a;
+  private int b;
+  private int c = 1;
   
-  public void a(bfuw parambfuw)
+  public static aorw a(aogf paramaogf)
   {
-    switch (parambfuw.a)
-    {
-    default: 
-      return;
-    case 0: 
-      parambfuw = new Intent(this.a.getApplicationContext(), LiteActivity.class);
-      if (this.a.j) {
-        apue.a("0X8005534");
+    aorw localaorw = new aorw();
+    if (paramaogf != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchHotWordConfBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
       }
-      for (;;)
-      {
-        try
-        {
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("category", 12);
-          parambfuw.putExtra("bundle", localBundle);
-          parambfuw.putExtra("from", "FileAssistant");
-          this.a.startActivityForResult(parambfuw, 101);
-          return;
-        }
-        catch (Exception parambfuw)
-        {
-          parambfuw.printStackTrace();
-          return;
-        }
-        apue.a("0X800681A");
-      }
-    case 1: 
-      if (this.a.j) {
-        apue.a("0X8005535");
-      }
-      for (;;)
-      {
-        FileAssistantActivity.b(this.a);
-        return;
-        apue.a("0X800681B");
-      }
-    case 2: 
-      if (this.a.j) {
-        apue.a("0X8005536");
-      }
-      for (;;)
-      {
-        AlbumBackupProxyActivity.a(this.a, this.a.app.getCurrentAccountUin(), "source_qfile_assistant", 10001);
-        FileAssistantActivity.a(this.a, this.a.c, "100160.100162");
-        return;
-        apue.a("0X800681C");
-      }
-    case 3: 
-      apue.a("0X800A15F");
-      parambfuw = new Bundle();
-      parambfuw.putString("url", "https://docs.qq.com/desktop/m/templates_list.html?padtype=0&_wv=2&_wwv=512");
-      parambfuw.putString("tdsourcetag", "s_qq_myfile_menu_create");
-      TeamWorkDocEditBrowserActivity.a(this.a, parambfuw, false);
-      return;
     }
-    apue.a("0X8005532");
-    apug.a(this.a.app, this.a, "_is_from_qfile_shortcut", this.a.getString(2131692428), 2130843523);
-    aptx.b(2131692472);
+    try
+    {
+      paramaogf = new JSONObject(paramaogf.jdField_a_of_type_JavaLangString);
+      localaorw.a(paramaogf.optInt("hotword_switch_message", 0));
+      localaorw.b(paramaogf.optInt("hotword_switch_contact", 0));
+      localaorw.c(paramaogf.optInt("hotword_switch_dongtai", 1));
+      return localaorw;
+    }
+    catch (Exception paramaogf)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SearchHotWordConfBean", 2, "parse error->" + paramaogf.toString());
+    }
+    return localaorw;
+  }
+  
+  void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  void b(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public boolean b()
+  {
+    return this.b == 1;
+  }
+  
+  void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mHotWordSwitchTabMessage:%d, mHotWordSwitchTabContact:%d, mHotWordSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aorw
  * JD-Core Version:    0.7.0.1
  */

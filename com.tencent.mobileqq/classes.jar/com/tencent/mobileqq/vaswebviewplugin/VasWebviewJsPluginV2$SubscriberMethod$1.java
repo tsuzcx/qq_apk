@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class VasWebviewJsPluginV2$SubscriberMethod$1
@@ -35,10 +36,25 @@ class VasWebviewJsPluginV2$SubscriberMethod$1
     String[] arrayOfString = this.this$0.args.split("\\|");
     Object[] arrayOfObject = new Object[arrayOfString.length];
     int i = 0;
-    while (i < arrayOfObject.length)
+    for (;;)
     {
-      arrayOfObject[i] = this.val$json.get(arrayOfString[i]);
-      i += 1;
+      int j = arrayOfObject.length;
+      if (i < j) {
+        try
+        {
+          Object localObject1 = this.val$json.get(arrayOfString[i]);
+          arrayOfObject[i] = localObject1;
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+            Object localObject2 = null;
+          }
+        }
+      }
     }
     this.this$0.method.invoke(this.val$weakReferenceInstance.get(), arrayOfObject);
   }

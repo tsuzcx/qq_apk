@@ -7,13 +7,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bccj;
-import bcfx;
-import bcsr;
+import bebk;
+import beey;
+import besa;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.qphone.base.util.QLog;
-import ocf;
-import otp;
+import ofx;
+import oyt;
 
 public class ReadInJoyAdPopSheetBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
@@ -21,7 +21,7 @@ public class ReadInJoyAdPopSheetBrowserFragment
   private static final String a;
   private String b;
   private String c;
-  private String t;
+  private String s;
   
   static
   {
@@ -35,7 +35,7 @@ public class ReadInJoyAdPopSheetBrowserFragment
     {
       this.b = ((Intent)localObject).getStringExtra("h5url");
       this.c = ((Intent)localObject).getStringExtra("adrl");
-      this.t = ((Intent)localObject).getStringExtra("traceId");
+      this.s = ((Intent)localObject).getStringExtra("traceId");
     }
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate h5Url: " + this.b);
@@ -45,22 +45,22 @@ public class ReadInJoyAdPopSheetBrowserFragment
       getActivity().finish();
       return;
     }
-    localObject = ocf.a(getActivity(), this.b, this.c, this.t);
-    ((ocf)localObject).a(new otp(this));
-    ((ocf)localObject).show();
+    localObject = ofx.a(getActivity(), this.b, this.c, this.s);
+    ((ofx)localObject).a(new oyt(this));
+    ((ofx)localObject).show();
   }
   
   public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
-    if ((this.jdField_a_of_type_Bccj != null) && (this.jdField_a_of_type_Bccj.a != null)) {
-      this.jdField_a_of_type_Bccj.a.setVisibility(8);
+    if ((this.jdField_a_of_type_Bebk != null) && (this.jdField_a_of_type_Bebk.a != null)) {
+      this.jdField_a_of_type_Bebk.a.setVisibility(8);
     }
     if (this.d != null) {
       this.d.setVisibility(8);
     }
-    if ((this.jdField_a_of_type_Bcfx != null) && (this.jdField_a_of_type_Bcfx.a != null)) {
-      this.jdField_a_of_type_Bcfx.a.a(false);
+    if ((this.jdField_a_of_type_Beey != null) && (this.jdField_a_of_type_Beey.a != null)) {
+      this.jdField_a_of_type_Beey.a.a(false);
     }
     getActivity().getWindow().getDecorView().setSystemUiVisibility(514);
     return i;
@@ -74,7 +74,7 @@ public class ReadInJoyAdPopSheetBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdPopSheetBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

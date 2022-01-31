@@ -1,7 +1,13 @@
-class zas {}
+public class zas
+{
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zas
  * JD-Core Version:    0.7.0.1
  */

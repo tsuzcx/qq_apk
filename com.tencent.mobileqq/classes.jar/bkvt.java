@@ -1,69 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
-import mqq.app.AppRuntime;
-
-public class bkvt
-  implements SeekBar.OnSeekBarChangeListener
+class bkvt
+  implements bkwg
 {
-  public bkvt(BeautyBar paramBeautyBar) {}
+  bkvt(bkvr parambkvr, bkwg parambkwg) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a(bkvu parambkvu, int paramInt)
   {
-    BeautyBar.a(this.a, paramInt);
-    if (paramBoolean) {
-      BeautyBar.a(this.a, BeautyBar.a(this.a), false);
-    }
-    if (BeautyBar.a(this.a) != BeautyBar.b(this.a))
-    {
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).b(BeautyBar.a(this.a));
-      }
-      BeautyBar.b(this.a, BeautyBar.a(this.a));
-    }
-    if (paramBoolean) {
-      BeautyBar.a(this.a).setContentDescription(ajya.a(2131701083) + BeautyBar.a(this.a) + "%");
+    if (this.jdField_a_of_type_Bkwg != null) {
+      this.jdField_a_of_type_Bkwg.a(parambkvu, paramInt);
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void a(bkvu parambkvu, boolean paramBoolean)
   {
-    BeautyBar.a(this.a).removeMessages(1011);
-    if (BeautyBar.a(this.a) != null) {
-      BeautyBar.a(this.a).setVisibility(0);
+    bkvu localbkvu = bkvr.a(this.jdField_a_of_type_Bkvr, parambkvu);
+    if (localbkvu != null) {
+      localbkvu.d = bkvr.a(parambkvu);
     }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (BeautyBar.b(this.a) >= 0)
+    if (this.jdField_a_of_type_Bkwg != null)
     {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localSharedPreferences.edit().putFloat("beauty_radius" + str, BeautyBar.b(this.a));
-      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, BeautyBar.b(this.a));
-      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
-      localSharedPreferences.edit().commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + BeautyBar.b(this.a) + " mBeautyProcess=" + paramSeekBar.getProgress());
-      }
-      BeautyBar.a(this.a).removeMessages(1011);
-      BeautyBar.a(this.a).sendEmptyMessageDelayed(1011, BeautyBar.a);
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).setVisibility(4);
+      this.jdField_a_of_type_Bkwg.a(parambkvu, paramBoolean);
+      if (localbkvu != null) {
+        blfg.b("AEMaterialManager", "【END】onDownloadFinish :" + localbkvu.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkvt
  * JD-Core Version:    0.7.0.1
  */

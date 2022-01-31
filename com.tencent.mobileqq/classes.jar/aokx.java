@@ -1,27 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-final class aokx
-  implements View.OnTouchListener
+public class aokx
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private aoky jdField_a_of_type_Aoky;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public aokx()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Aoky = new aoky();
+  }
+  
+  public aokx(String paramString, aoky paramaoky)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aoky = paramaoky;
+  }
+  
+  public aoky a()
+  {
+    return this.jdField_a_of_type_Aoky;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aokx
  * JD-Core Version:    0.7.0.1
  */

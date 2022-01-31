@@ -1,23 +1,27 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.support.annotation.Nullable;
 
-public class bkui
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bkui
+  implements bmac<Boolean>
 {
-  public bkui(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bkui(bkuc parambkuc) {}
   
-  public void onGlobalLayout()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    ThreadManager.post(this.a, 8, null, false);
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (paramBoolean == null) {
+      return;
+    }
+    bkuc localbkuc = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bkuc.a(localbkuc, bool);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkui
  * JD-Core Version:    0.7.0.1
  */

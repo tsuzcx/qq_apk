@@ -1,35 +1,35 @@
-import com.tencent.open.appcommon.JsWebWorker;
-import java.lang.reflect.Method;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class bdfo
 {
-  public Class a;
+  public float a;
+  public SessionInfo a;
   public String a;
-  public Map<Integer, Object> a;
-  public Map<String, Method> b = new HashMap();
+  public String b;
+  public String c;
+  public String d;
+  public String e = "";
   
-  public bdfo(JsWebWorker paramJsWebWorker)
+  public bdfo(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      localIterator.next();
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("appName");
+    this.b = paramBundle.getString("appView");
+    this.c = paramBundle.getString("appMinVersion");
+    this.d = paramBundle.getString("metaData");
+    this.jdField_a_of_type_Float = paramBundle.getFloat("scale", 1.0F);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
+    paramBundle = paramBundle.getString("troopUin");
+    if (paramBundle != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramBundle;
     }
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdfo
  * JD-Core Version:    0.7.0.1
  */

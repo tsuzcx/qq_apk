@@ -1,16 +1,16 @@
 package cooperation.photoplus;
 
-import ajsd;
-import aukp;
-import aukq;
-import bbbr;
-import bbdx;
-import bbwu;
-import bbww;
-import bbwz;
-import bfnk;
-import bfnz;
-import bgkz;
+import aljq;
+import awbw;
+import awbx;
+import bdal;
+import bdcs;
+import bdvv;
+import bdvx;
+import bdwa;
+import bhoe;
+import bhou;
+import bily;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -26,16 +26,16 @@ public class PhotoPlusManager
   implements Manager
 {
   public static final String a;
-  private bfnk jdField_a_of_type_Bfnk;
+  private bhoe jdField_a_of_type_Bhoe;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private List<Sticker> jdField_a_of_type_JavaUtilList;
-  private ConcurrentHashMap<String, bbwu> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, bdvv> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private volatile boolean jdField_a_of_type_Boolean;
   private volatile boolean b;
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajsd.aW + "PhotoPlus/";
+    jdField_a_of_type_JavaLangString = aljq.aX + "PhotoPlus/";
   }
   
   public PhotoPlusManager(AppInterface paramAppInterface)
@@ -47,16 +47,16 @@ public class PhotoPlusManager
     paramAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_a_of_type_JavaUtilList = paramAppInterface.a(Sticker.class, new Sticker().getTableName(), false, null, null, null, null, null, null);
     paramAppInterface.a();
-    this.jdField_a_of_type_Bfnk = new bfnk(ThreadManager.getFileThreadLooper(), null);
+    this.jdField_a_of_type_Bhoe = new bhoe(ThreadManager.getFileThreadLooper(), null);
     a(false);
   }
   
   private void a(String paramString1, String paramString2, String paramString3)
   {
-    bbwu localbbwu = (bbwu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
-    if (localbbwu != null)
+    bdvv localbdvv = (bdvv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
+    if (localbdvv != null)
     {
-      if ((localbbwu.a() == 2) || (localbbwu.a() == 3))
+      if ((localbdvv.a() == 2) || (localbdvv.a() == 3))
       {
         if (QLog.isColorLevel()) {
           QLog.d("PhotoPlusManager", 2, "[download] duplicated " + paramString2);
@@ -66,16 +66,16 @@ public class PhotoPlusManager
       if (QLog.isColorLevel()) {
         QLog.d("PhotoPlusManager", 2, "[download] task status error, cancel it " + paramString2);
       }
-      localbbwu.a(true);
+      localbdvv.a(true);
     }
-    localbbwu = new bbwu(paramString1, new File(paramString2));
-    localbbwu.n = true;
-    bbwz localbbwz = ((bbww)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(47)).a(1);
+    localbdvv = new bdvv(paramString1, new File(paramString2));
+    localbdvv.n = true;
+    bdwa localbdwa = ((bdvx)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(47)).a(1);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoPlusManager", 2, "[download] startDownload: " + paramString1 + " path=" + paramString2);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, localbbwu);
-    localbbwz.a(localbbwu, new bgkz(this, paramString2, paramString1, paramString3), null);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, localbdvv);
+    localbdwa.a(localbdvv, new bily(this, paramString2, paramString1, paramString3), null);
   }
   
   private void a(List<Sticker> paramList)
@@ -92,7 +92,7 @@ public class PhotoPlusManager
       if (paramList != null) {
         break label53;
       }
-      bbdx.a(jdField_a_of_type_JavaLangString);
+      bdcs.a(jdField_a_of_type_JavaLangString);
     }
     label53:
     do
@@ -135,7 +135,7 @@ public class PhotoPlusManager
                     if (QLog.isColorLevel()) {
                       QLog.d("PhotoPlusManager", 2, "[updateStickerResource] delete old dir: " + localObject2.getName() + File.separator + localSticker.getName());
                     }
-                    bbdx.a(localSticker.getAbsolutePath());
+                    bdcs.a(localSticker.getAbsolutePath());
                   }
                 }
                 for (;;)
@@ -163,7 +163,7 @@ public class PhotoPlusManager
         if (QLog.isColorLevel()) {
           QLog.d("PhotoPlusManager", 2, "[updateStickerResource] delete old dir: " + localObject2.getName());
         }
-        bbdx.a(localObject2.getAbsolutePath());
+        bdcs.a(localObject2.getAbsolutePath());
       }
       for (;;)
       {
@@ -198,7 +198,7 @@ public class PhotoPlusManager
     String str = paramString.substring(0, paramString.indexOf(".zip")) + File.separator;
     try
     {
-      bbdx.a(paramString, str, false);
+      bdcs.a(paramString, str, false);
       if (QLog.isColorLevel()) {
         QLog.d("PhotoPlusManager", 2, "[unzip] success: " + paramString);
       }
@@ -211,20 +211,20 @@ public class PhotoPlusManager
         if (QLog.isColorLevel()) {
           QLog.d("PhotoPlusManager", 2, "[unzip]", localException);
         }
-      } while (bbbr.b() <= 40960L);
-      bbdx.d(paramString);
+      } while (bdal.b() <= 40960L);
+      bdcs.d(paramString);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (bfnz.d()) {
+    if (bhou.d()) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("PhotoPlusManager", 2, "[updateStickerResource] isDelete=" + paramBoolean);
     }
-    this.jdField_a_of_type_Bfnk.post(new PhotoPlusManager.UpdateTask(this, this.jdField_a_of_type_JavaUtilList, paramBoolean));
+    this.jdField_a_of_type_Bhoe.post(new PhotoPlusManager.UpdateTask(this, this.jdField_a_of_type_JavaUtilList, paramBoolean));
   }
   
   /* Error */
@@ -300,17 +300,17 @@ public class PhotoPlusManager
     //   154: goto -45 -> 109
     //   157: aload_0
     //   158: getfield 64	cooperation/photoplus/PhotoPlusManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   161: invokevirtual 70	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Laukq;
-    //   164: invokevirtual 76	aukq:createEntityManager	()Laukp;
+    //   161: invokevirtual 70	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lawbx;
+    //   164: invokevirtual 76	awbx:createEntityManager	()Lawbw;
     //   167: astore_2
     //   168: aload_2
-    //   169: invokevirtual 322	aukp:a	()Laukr;
+    //   169: invokevirtual 322	awbw:a	()Lawby;
     //   172: astore_1
     //   173: aload_1
-    //   174: invokevirtual 325	aukr:a	()V
+    //   174: invokevirtual 325	awby:a	()V
     //   177: aload_2
     //   178: ldc 78
-    //   180: invokevirtual 328	aukp:a	(Ljava/lang/Class;)Z
+    //   180: invokevirtual 328	awbw:a	(Ljava/lang/Class;)Z
     //   183: pop
     //   184: aload_0
     //   185: getfield 89	cooperation/photoplus/PhotoPlusManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
@@ -323,7 +323,7 @@ public class PhotoPlusManager
     //   204: aload_3
     //   205: invokeinterface 201 1 0
     //   210: checkcast 78	cooperation/photoplus/sticker/Sticker
-    //   213: invokevirtual 331	aukp:b	(Lauko;)V
+    //   213: invokevirtual 331	awbw:b	(Lawbv;)V
     //   216: goto -22 -> 194
     //   219: astore_3
     //   220: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -334,22 +334,22 @@ public class PhotoPlusManager
     //   232: aload_3
     //   233: invokestatic 314	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   236: aload_1
-    //   237: invokevirtual 335	aukr:b	()V
+    //   237: invokevirtual 335	awby:b	()V
     //   240: aload_2
-    //   241: invokevirtual 91	aukp:a	()V
+    //   241: invokevirtual 91	awbw:a	()V
     //   244: aload_0
     //   245: iconst_1
     //   246: invokevirtual 107	cooperation/photoplus/PhotoPlusManager:a	(Z)V
     //   249: iconst_1
     //   250: ireturn
     //   251: aload_1
-    //   252: invokevirtual 338	aukr:c	()V
+    //   252: invokevirtual 338	awby:c	()V
     //   255: aload_1
-    //   256: invokevirtual 335	aukr:b	()V
+    //   256: invokevirtual 335	awby:b	()V
     //   259: goto -19 -> 240
     //   262: astore_2
     //   263: aload_1
-    //   264: invokevirtual 335	aukr:b	()V
+    //   264: invokevirtual 335	awby:b	()V
     //   267: aload_2
     //   268: athrow
     // Local variable table:
@@ -386,7 +386,7 @@ public class PhotoPlusManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.photoplus.PhotoPlusManager
  * JD-Core Version:    0.7.0.1
  */

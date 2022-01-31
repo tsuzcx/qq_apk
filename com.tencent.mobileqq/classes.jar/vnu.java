@@ -1,28 +1,43 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-class vnu
-  implements Animation.AnimationListener
+final class vnu
+  extends AnimatorListenerAdapter
 {
-  vnu(vns paramvns) {}
+  vnu(Animator.AnimatorListener paramAnimatorListener, ViewGroup paramViewGroup, ImageView paramImageView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Vnn != null) {
-      this.a.a.jdField_a_of_type_Vnn.a(null);
-    }
+    super.onAnimationCancel(paramAnimator);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    wsv.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation, onAnimationEnd");
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
+    paramAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
+    paramAnimator.setStartDelay(400L);
+    paramAnimator.setDuration(400L);
+    paramAnimator.addUpdateListener(new vnv(this));
+    paramAnimator.addListener(new vnw(this));
+    paramAnimator.start();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnu
  * JD-Core Version:    0.7.0.1
  */

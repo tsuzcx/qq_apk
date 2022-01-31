@@ -1,43 +1,46 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
-class ahui
-  extends akuo
+public class ahui
+  extends AccountObserver
 {
-  private int jdField_a_of_type_Int = -1;
+  public ahui(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public ahui(ahuf paramahuf, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if (QLog.isColorLevel())
     {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 == null)
+      {
+        i = 0;
+        QLog.e("Q.history.C2CAllFragment", 2, i);
       }
-      ahuf.a(this.jdField_a_of_type_Ahuf, d1, d2, this.jdField_a_of_type_Int);
     }
-    do
+    else
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+      paramString1 = this.a.a.obtainMessage(39);
+      if (!paramBoolean) {
+        break label103;
       }
-    } while ((ahuf.a(this.jdField_a_of_type_Ahuf) == null) || (!ahuf.a(this.jdField_a_of_type_Ahuf).hasMessages(this.jdField_a_of_type_Int)));
-    ahuf.a(this.jdField_a_of_type_Ahuf, false, null, this.jdField_a_of_type_Int);
+    }
+    label103:
+    for (int i = 1;; i = 0)
+    {
+      paramString1.arg1 = i;
+      paramString1.arg2 = 0;
+      this.a.a.sendMessage(paramString1);
+      return;
+      i = paramString2.length();
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahui
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="mUrl")
 public class UniformDownloadBPTransEntity
-  extends auko
+  extends awbv
   implements Cloneable
 {
   public String mFileName;
   public String mFilePath;
   public long mFileSize = 0L;
   public String mTempPath;
-  @aumc
+  @awdj
   public String mUrl;
   
   public static String tableName()
@@ -61,7 +61,7 @@ public class UniformDownloadBPTransEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity
  * JD-Core Version:    0.7.0.1
  */

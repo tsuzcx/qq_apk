@@ -1,31 +1,30 @@
-import android.view.View;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import mqq.app.AppActivity;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import friendlist.GetOnlineInfoResp;
 
 class whm
-  extends whi
+  extends alox
 {
   whm(whl paramwhl) {}
   
-  public void a()
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
-    {
-      this.a.jdField_a_of_type_Whr.a();
+    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
+    while (whl.a(this.a) == null) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
+    paramString = whl.a(this.a);
+    if (paramGetOnlineInfoResp.eIconType == 11) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
+      paramString.b(paramBoolean);
       return;
     }
-    this.a.jdField_a_of_type_Whr.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whm
  * JD-Core Version:    0.7.0.1
  */

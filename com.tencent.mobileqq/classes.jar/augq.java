@@ -1,22 +1,43 @@
-public abstract interface augq
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.widget.ListView;
+
+public class augq
+  extends auhr
 {
-  public abstract void a(akyn paramakyn);
+  public augq(MultiAIOItemFragment paramMultiAIOItemFragment, bhpo parambhpo, ListView paramListView) {}
   
-  public abstract void a(akyn paramakyn, boolean paramBoolean);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    boolean bool;
+    switch (paramInt)
+    {
+    default: 
+      bool = false;
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpo.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
+      if ((this.jdField_a_of_type_ComTencentWidgetListView instanceof ChatXListView))
+      {
+        ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_ComTencentWidgetListView;
+        int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+        localChatXListView.setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
+      }
+      return;
+      bool = false;
+      paramInt = 1;
+      continue;
+      paramInt = 2;
+      bool = true;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augq
  * JD-Core Version:    0.7.0.1
  */

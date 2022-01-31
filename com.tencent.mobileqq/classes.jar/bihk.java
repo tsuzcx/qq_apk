@@ -1,21 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
-class bihk
-  implements View.OnClickListener
+public class bihk
 {
-  bihk(bihj parambihj) {}
-  
-  public void onClick(View paramView)
+  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
   {
-    this.a.a.performClick();
-    axqy.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.back", 0, 0, "", "", "", "");
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
+    try
+    {
+      paramClass = (JceStruct)paramClass.newInstance();
+      paramClass.readFrom(new JceInputStream(paramArrayOfByte));
+      return paramClass;
+    }
+    catch (IllegalAccessException paramClass)
+    {
+      paramClass.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramClass)
+    {
+      for (;;)
+      {
+        paramClass.printStackTrace();
+      }
+    }
+  }
+  
+  public static byte[] a(JceStruct paramJceStruct)
+  {
+    if (paramJceStruct == null) {
+      return null;
+    }
+    JceOutputStream localJceOutputStream = new JceOutputStream();
+    localJceOutputStream.setServerEncoding("utf-8");
+    paramJceStruct.writeTo(localJceOutputStream);
+    return localJceOutputStream.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bihk
  * JD-Core Version:    0.7.0.1
  */

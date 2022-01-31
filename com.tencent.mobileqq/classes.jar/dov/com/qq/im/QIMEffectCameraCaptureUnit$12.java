@@ -26,7 +26,7 @@ class QIMEffectCameraCaptureUnit$12
     this.this$0.a.reset();
     this.this$0.v = true;
     QIMEffectCameraCaptureUnit.e(this.this$0).setVisibility(0);
-    QIMEffectCameraCaptureUnit.e(this.this$0).setText(2131699480);
+    QIMEffectCameraCaptureUnit.e(this.this$0).setText(2131699833);
     AlphaAnimation localAlphaAnimation = this.this$0.a;
     Object localObject;
     if (this.b)
@@ -52,7 +52,7 @@ class QIMEffectCameraCaptureUnit$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMEffectCameraCaptureUnit.12
  * JD-Core Version:    0.7.0.1
  */

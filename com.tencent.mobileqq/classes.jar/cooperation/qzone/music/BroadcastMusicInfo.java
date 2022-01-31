@@ -1,12 +1,12 @@
 package cooperation.qzone.music;
 
 import NS_NEXTRADIO_QZONEBGMUSIC.BroadcastForQzone;
-import ajya;
+import alpo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bhga;
+import bjhl;
 import com.tencent.mobileqq.music.SongInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class BroadcastMusicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new bhga();
+  public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new bjhl();
   public BroadcastAudio broadcastAudioUrl;
   public String broadcastID = "";
   public String broadcastName = "";
@@ -148,7 +148,7 @@ public class BroadcastMusicInfo
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = ajya.a(2131701209);
+        localObject2 = alpo.a(2131701578);
       }
       return localObject2;
     }
@@ -160,10 +160,10 @@ public class BroadcastMusicInfo
     try
     {
       localSongInfo.jdField_a_of_type_Long = Long.parseLong(this.broadcastID);
-      localSongInfo.jdField_b_of_type_JavaLangString = getTitle();
+      localSongInfo.c = getTitle();
       localSongInfo.jdField_b_of_type_Int = 9;
-      localSongInfo.e = this.detailUrl;
-      localSongInfo.jdField_a_of_type_JavaLangString = getSongUrl(paramBoolean);
+      localSongInfo.f = this.detailUrl;
+      localSongInfo.jdField_b_of_type_JavaLangString = getSongUrl(paramBoolean);
       localSongInfo.jdField_a_of_type_CooperationQzoneMusicBroadcastMusicInfo = this;
       return localSongInfo;
     }
@@ -182,7 +182,7 @@ public class BroadcastMusicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.music.BroadcastMusicInfo
  * JD-Core Version:    0.7.0.1
  */

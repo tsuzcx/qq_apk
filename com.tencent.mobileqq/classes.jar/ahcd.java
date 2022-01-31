@@ -1,68 +1,27 @@
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class ahcd
+  implements View.OnClickListener
 {
-  private static volatile ahcd jdField_a_of_type_Ahcd;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public ahcd(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public static ahcd a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Ahcd == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ahcd == null) {
-        jdField_a_of_type_Ahcd = new ahcd();
-      }
-      return jdField_a_of_type_Ahcd;
+    paramView = (InputMethodManager)this.a.getSystemService("input_method");
+    if ((paramView != null) && (paramView.isActive())) {
+      paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
     }
-    finally {}
-  }
-  
-  private void b()
-  {
-    this.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "begin connect:");
-    }
-    QIPCClientHelper.getInstance().getClient().addListener(new ahce(this));
-    long l = System.currentTimeMillis();
-    QIPCClientHelper.getInstance().getClient().connect(new ahcf(this, l));
-  }
-  
-  public void a()
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
-      b();
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {}
-        try
-        {
-          this.jdField_a_of_type_JavaLangObject.wait(500L);
-          return;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
-      }
-    }
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahcd
  * JD-Core Version:    0.7.0.1
  */

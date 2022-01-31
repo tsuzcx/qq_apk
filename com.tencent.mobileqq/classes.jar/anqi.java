@@ -1,21 +1,43 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.VideoDrawable;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.qphone.base.util.QLog;
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface anqi
+public class anqi
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  boolean a() default false;
+  public anqi(DynamicAvatarView paramDynamicAvatarView) {}
   
-  boolean b() default false;
+  public void onPlayRepeat(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
+    }
+    if ((this.a.b) || (paramInt < 1)) {}
+    while (this.a.a == null) {
+      return;
+    }
+    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localObject instanceof URLDrawable))
+    {
+      localObject = ((URLDrawable)localObject).getCurrDrawable();
+      if ((localObject instanceof VideoDrawable))
+      {
+        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
+        this.a.a.jdField_a_of_type_Anpx.a(this.a.a, true);
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
+        }
+      }
+    }
+    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    this.a.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqi
  * JD-Core Version:    0.7.0.1
  */

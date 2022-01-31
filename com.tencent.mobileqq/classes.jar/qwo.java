@@ -1,54 +1,22 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-final class qwo
-  extends qwm
+public class qwo
+  extends qrn
 {
-  private final int jdField_a_of_type_Int;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
+  public qwo(SelectVideoFragment paramSelectVideoFragment) {}
   
-  public qwo(int paramInt)
+  @Nullable
+  public qro a(int paramInt, @NotNull RecyclerView paramRecyclerView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public long a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (paramLong = 0L; localIterator.hasNext(); paramLong = ((Long)localIterator.next()).longValue() + paramLong) {}
-    return paramLong / this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public String toString()
-  {
-    return "MoveAvgPredictor(" + this.jdField_a_of_type_Int + ')';
+    return a(paramInt, SelectVideoFragment.a(this.a).getItemCount(), 3, bcwh.a(SelectVideoFragment.a(this.a), 8.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qwo
  * JD-Core Version:    0.7.0.1
  */

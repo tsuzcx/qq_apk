@@ -1,21 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class vdu
-  implements View.OnClickListener
+  implements vea
 {
-  vdu(vdr paramvdr) {}
+  vdu(vdt paramvdt) {}
   
-  public void onClick(View paramView)
+  public void a(vge paramvge)
   {
-    if (vdr.a(this.a) != null) {
-      vdr.a(this.a).h();
+    if (vdt.a(this.a) != null) {
+      vdt.a(this.a).a(paramvge.a);
+    }
+    if (vdt.a(this.a) != null) {
+      vdt.a(this.a).a();
+    }
+  }
+  
+  public void b(vge paramvge)
+  {
+    if (vdt.a(this.a) != null) {
+      vdt.a(this.a).c(paramvge.a);
+    }
+    if (vdt.a(this.a) != null) {
+      vdt.a(this.a).a();
+    }
+  }
+  
+  public void c(vge paramvge)
+  {
+    if (vdt.a(this.a) != null) {
+      vdt.a(this.a).d(paramvge.a);
+    }
+    if (vdt.a(this.a) != null) {
+      vdt.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,98 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 
-public class vex
-  extends Handler
+public abstract class vex
+  extends vez
 {
-  public vex(vew paramvew) {}
+  protected int a;
+  protected boolean a;
+  protected int b = -1;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  protected String h = QQStoryContext.a().b();
+  protected String i;
+  protected String j;
   
-  public void dispatchMessage(Message paramMessage)
+  public vex()
   {
-    super.dispatchMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      if (vew.a(this.a) != null)
-      {
-        vej.b("0X80080E3", vej.a);
-        paramMessage = new ArrayList();
-        paramMessage.add(Uri.parse(vew.a(this.a)));
-        paramMessage = new Intent("", Uri.parse("pituopenapi://TTPTBEAUTIFY?back=1&v=490&refer=qqimageedit")).setClassName("com.tencent.ttpic", "com.tencent.ttpic.module.MainActivity").putParcelableArrayListExtra("android.intent.extra.STREAM", paramMessage);
-        paramMessage.putExtra("big_brother_source_key", "biz_src_jc_editor");
-        if ((this.a.jdField_a_of_type_Vix != null) && (this.a.jdField_a_of_type_Vix.getActivity() != null)) {
-          this.a.jdField_a_of_type_Vix.getActivity().startActivityForResult(paramMessage, 100);
-        }
-      }
-      this.a.e();
-      return;
-    case 2: 
-      paramMessage = (Bitmap)paramMessage.obj;
-      this.a.jdField_a_of_type_Vhm.a(paramMessage, false);
-      if (this.a.jdField_a_of_type_Vhm.a != null)
-      {
-        this.a.jdField_a_of_type_Vhm.a.g();
-        this.a.jdField_a_of_type_Vhm.u();
-      }
-      this.a.jdField_a_of_type_Boolean = true;
-      return;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public final void a(vgd paramvgd)
+  {
+    super.a(paramvgd);
+    paramvgd.jdField_a_of_type_JavaLangString = a(6);
+    a(paramvgd);
+  }
+  
+  protected void a(vge paramvge) {}
+  
+  public void a(vgf paramvgf)
+  {
+    super.a(paramvgf);
+    paramvgf.b = 1;
+    paramvgf.m = this.g;
+    paramvgf.jdField_d_of_type_JavaLangString = this.f;
+    paramvgf.l = this.e;
+    paramvgf.k = this.jdField_d_of_type_JavaLangString;
+    paramvgf.jdField_a_of_type_JavaLangString = this.i;
+    paramvgf.h = a(1);
+    if (this.jdField_a_of_type_Int != -1) {
+      paramvgf.jdField_d_of_type_Int = this.jdField_a_of_type_Int;
     }
-    this.a.e();
+    if (this.b != -1) {
+      paramvgf.e = this.b;
+    }
+    a(paramvgf);
+  }
+  
+  public void a(vgg paramvgg)
+  {
+    super.a(paramvgg);
+    paramvgg.c = this.jdField_d_of_type_JavaLangString;
+    paramvgg.jdField_d_of_type_JavaLangString = this.e;
+    paramvgg.jdField_a_of_type_JavaLangString = this.i;
+    paramvgg.e = a(2);
+    a(paramvgg);
+  }
+  
+  public void a(vgh paramvgh)
+  {
+    super.a(paramvgh);
+    paramvgh.jdField_a_of_type_JavaLangString = this.j;
+    paramvgh.e = this.i;
+    paramvgh.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    paramvgh.jdField_d_of_type_JavaLangString = vgp.a(this.i);
+    paramvgh.c = a(5);
+    a(paramvgh);
+  }
+  
+  public void a(vgi paramvgi)
+  {
+    super.a(paramvgi);
+    paramvgi.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    paramvgi.c = this.e;
+    paramvgi.jdField_d_of_type_JavaLangString = a(3);
+    paramvgi.e = this.i;
+    paramvgi.b = true;
+    a(paramvgi);
+  }
+  
+  public void b(vgi paramvgi)
+  {
+    super.b(paramvgi);
+    paramvgi.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    paramvgi.c = this.e;
+    paramvgi.jdField_d_of_type_JavaLangString = a(4);
+    paramvgi.e = this.i;
+    paramvgi.b = true;
+    a(paramvgi);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vex
  * JD-Core Version:    0.7.0.1
  */

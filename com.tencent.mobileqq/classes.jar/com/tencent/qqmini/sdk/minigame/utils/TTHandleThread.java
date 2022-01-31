@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.minigame.utils;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import bejn;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 
 public class TTHandleThread
   extends HandlerThread
@@ -34,7 +34,7 @@ public class TTHandleThread
   
   public final void a(Runnable paramRunnable)
   {
-    bejn.b().post(paramRunnable);
+    ThreadManager.a(paramRunnable, 16, null, false);
   }
   
   public final void a(Runnable paramRunnable, long paramLong)
@@ -44,12 +44,17 @@ public class TTHandleThread
   
   public final void b(Runnable paramRunnable)
   {
+    ThreadManager.b().post(paramRunnable);
+  }
+  
+  public final void c(Runnable paramRunnable)
+  {
     jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.utils.TTHandleThread
  * JD-Core Version:    0.7.0.1
  */

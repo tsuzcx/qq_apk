@@ -1,21 +1,76 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
+import java.lang.ref.WeakReference;
+import mqq.manager.VerifyDevLockManager.NotifyType;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class acck
-  extends AccessibilityDelegateCompat
+public class acck
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  acck(accj paramaccj) {}
+  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public acck(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setSelected(true);
+    this.a = new WeakReference(paramVerifyDevLockObserver);
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+    this.a = null;
+  }
+  
+  public int getSeq()
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        return localVerifyDevLockObserver.getSeq();
+      }
+    }
+    return super.getSeq();
+  }
+  
+  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
+      }
+    }
+  }
+  
+  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
+      }
+    }
+  }
+  
+  public void setSeq(int paramInt)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null)
+      {
+        localVerifyDevLockObserver.setSeq(paramInt);
+        return;
+      }
+    }
+    super.setSeq(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acck
  * JD-Core Version:    0.7.0.1
  */

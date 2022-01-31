@@ -42,13 +42,13 @@ public class VideoLoadingImage
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130839659);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130839761);
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
       this.c = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
       this.d = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
     }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130839660);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130839762);
     if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
     {
       this.e = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
@@ -78,7 +78,7 @@ public class VideoLoadingImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.VideoLoadingImage
  * JD-Core Version:    0.7.0.1
  */

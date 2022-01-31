@@ -1,122 +1,40 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
 
-public class avbz
+public abstract interface avbz
 {
-  private static int jdField_a_of_type_Int = 5;
-  private static long jdField_a_of_type_Long;
-  private static String jdField_a_of_type_JavaLangString = avbz.class.getSimpleName();
-  private static ArrayList<avca> jdField_a_of_type_JavaUtilArrayList;
+  public abstract int a();
   
-  static
-  {
-    jdField_a_of_type_Long = 60000L;
-  }
+  public abstract long a();
   
-  public static bgbd a()
-  {
-    try
-    {
-      if (jdField_a_of_type_JavaUtilArrayList == null) {
-        jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      Object localObject3 = b();
-      Object localObject1 = localObject3;
-      if (localObject3 == null)
-      {
-        localObject3 = new avby();
-        ((bgbd)localObject3).a();
-        jdField_a_of_type_JavaUtilArrayList.add(new avca((bgbd)localObject3));
-        localObject1 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "can't find sscm object, add new one, size= " + jdField_a_of_type_JavaUtilArrayList.size());
-          localObject1 = localObject3;
-        }
-      }
-      return localObject1;
-    }
-    finally {}
-  }
+  public abstract View a();
   
-  public static void a()
-  {
-    try
-    {
-      jdField_a_of_type_JavaUtilArrayList = null;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public abstract void a();
   
-  public static void a(bgbd parambgbd)
-  {
-    for (;;)
-    {
-      avca localavca;
-      try
-      {
-        Object localObject = jdField_a_of_type_JavaUtilArrayList;
-        if (localObject == null) {}else {
-          localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-        }
-        if (!((Iterator)localObject).hasNext()) {
-          continue;
-        }
-        localavca = (avca)((Iterator)localObject).next();
-        if (parambgbd != localavca.jdField_a_of_type_Bgbd) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "return sscm, current size=" + jdField_a_of_type_JavaUtilArrayList.size());
-        }
-        if (jdField_a_of_type_JavaUtilArrayList.size() > jdField_a_of_type_Int)
-        {
-          ((Iterator)localObject).remove();
-          continue;
-        }
-        localavca.jdField_a_of_type_Boolean = false;
-      }
-      finally {}
-      localavca.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    }
-  }
+  public abstract void a(long paramLong);
   
-  private static bgbd b()
-  {
-    if (jdField_a_of_type_JavaUtilArrayList == null) {
-      return null;
-    }
-    Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      avca localavca = (avca)((Iterator)localObject).next();
-      if (!localavca.jdField_a_of_type_Boolean)
-      {
-        localObject = localavca.jdField_a_of_type_Bgbd;
-        localavca.jdField_a_of_type_Boolean = true;
-        long l = SystemClock.elapsedRealtime();
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "query for sscm, get one expired:" + (l - localavca.jdField_a_of_type_Long));
-        }
-        if (l - localavca.jdField_a_of_type_Long > jdField_a_of_type_Long) {
-          localavca.jdField_a_of_type_Bgbd.a();
-        }
-        return localObject;
-      }
-    }
-    return null;
-  }
+  public abstract void a(avca paramavca);
+  
+  public abstract void a(avcb paramavcb);
+  
+  public abstract void a(avcc paramavcc);
+  
+  public abstract void a(avcd paramavcd);
+  
+  public abstract void a(avce paramavce);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avbz
  * JD-Core Version:    0.7.0.1
  */

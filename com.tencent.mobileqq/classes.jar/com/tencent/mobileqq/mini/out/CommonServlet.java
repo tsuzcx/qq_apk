@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.out;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import mqq.app.MSFServlet;
@@ -28,7 +28,7 @@ public class CommonServlet
       localBundle = new Bundle();
       localBundle.putParcelable("req", localToServiceMsg);
       if ((bool) && (((Boolean)localToServiceMsg.getAttribute("is_pb_packet", Boolean.FALSE)).booleanValue())) {
-        paramFromServiceMsg.putWupBuffer(bbma.b(paramFromServiceMsg.getWupBuffer()));
+        paramFromServiceMsg.putWupBuffer(bdku.b(paramFromServiceMsg.getWupBuffer()));
       }
       localBundle.putParcelable("rsp", paramFromServiceMsg);
       if (!"LbsShareSvr.location".equals(str)) {
@@ -57,7 +57,7 @@ public class CommonServlet
         if (!((Boolean)paramIntent.getAttribute("is_pb_packet", Boolean.FALSE)).booleanValue()) {
           break label88;
         }
-        paramPacket.putSendData(bbma.a(paramIntent.getWupBuffer()));
+        paramPacket.putSendData(bdku.a(paramIntent.getWupBuffer()));
       }
     }
     for (;;)
@@ -73,7 +73,7 @@ public class CommonServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.CommonServlet
  * JD-Core Version:    0.7.0.1
  */

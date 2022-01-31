@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import java.util.List;
 
-class nfu
-  implements View.OnClickListener
+public class nfu
 {
-  nfu(nfr paramnfr) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(this.a.a);
-  }
+  public void a(int paramInt, List<SearchProtocol.WordItem> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfu
  * JD-Core Version:    0.7.0.1
  */

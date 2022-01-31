@@ -3,13 +3,13 @@ package com.tencent.mobileqq.theme;
 import android.graphics.Bitmap;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import ayml;
+import bakh;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ThemeSwitchManager$1
   implements Runnable
 {
-  public ThemeSwitchManager$1(ayml paramayml) {}
+  public ThemeSwitchManager$1(bakh parambakh) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public class ThemeSwitchManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeSwitchManager.1
  * JD-Core Version:    0.7.0.1
  */

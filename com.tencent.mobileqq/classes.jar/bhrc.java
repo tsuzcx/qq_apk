@@ -1,79 +1,90 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class bhrc
-  extends bhsh
+  extends Drawable
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private int jdField_b_of_type_Int;
+  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  
+  public bhrc(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    boolean bool;
-    do
+    this.jdField_a_of_type_Int = paramBitmap.getWidth();
+    this.jdField_b_of_type_Int = paramBitmap.getHeight();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    if (this.c <= 0) {
+      this.c = 1080;
+    }
+    if (this.d <= 0) {
+      this.d = 1920;
+    }
+    this.f = (this.d * this.jdField_a_of_type_Int / this.c);
+    if (this.jdField_b_of_type_Int > this.f) {
+      this.e = (this.jdField_b_of_type_Int - this.f);
+    }
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-          } while ((!"getQZoneLiveStatus".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0));
-          try
-          {
-            paramString1 = new JSONObject(paramVarArgs[0]);
-            paramJsBridgeListener = paramString1.optString("callback");
-            bool = paramString1.optBoolean("needInstall");
-            if (QLog.isColorLevel()) {
-              QLog.i("QZoneLiveJsPlugin", 2, "H5参数：" + paramString1);
-            }
-            paramString1 = new JSONObject();
-            paramString2 = bhkh.a();
-            if (QLog.isColorLevel()) {
-              QLog.i("QZoneLiveJsPlugin", 2, "pluginid ：" + paramString2);
-            }
-            if (!TextUtils.isEmpty(paramString2)) {
-              break;
-            }
-            paramString1.put("isInstalled", false);
-            if (QLog.isColorLevel()) {
-              QLog.i("QZoneLiveJsPlugin", 2, "pluginid 为空，返回：" + paramString1);
-            }
-            this.a.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-            return false;
-          }
-          catch (Exception paramJsBridgeListener) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QZoneLiveJsPlugin", 2, "", paramJsBridgeListener);
-        return false;
-        if (!"qzone_live_video_plugin.apk".equals(paramString2)) {
-          break;
-        }
-      } while (TextUtils.isEmpty(paramJsBridgeListener));
-      paramString2 = this.a.mRuntime.a();
-      if (paramString2 == null)
-      {
-        paramString1.put("isInstalled", false);
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneLiveJsPlugin", 2, "context 为空，返回：" + paramString1);
-        }
-        this.a.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-        return false;
-      }
-      PluginManagerHelper.getPluginInterface(paramString2, new bhrd(this, paramString1, paramJsBridgeListener, bool));
-      return false;
-    } while ((!paramString2.equals("qzone_live_video_plugin_hack.apk")) || (TextUtils.isEmpty(paramJsBridgeListener)));
-    bhjz.a(BaseApplicationImpl.getContext(), new bhre(this, paramString1, bool, paramJsBridgeListener));
-    return false;
+      QLog.i("UserGuideWeiShiActivity", 2, "displayWidth" + paramInt1 + " displayHeight " + paramInt2);
+      QLog.i("UserGuideWeiShiActivity", 2, "mWidth" + this.jdField_a_of_type_Int + " mHeight " + this.jdField_b_of_type_Int);
+      QLog.i("UserGuideWeiShiActivity", 2, "mNewBitmMapHeight" + this.f + " mTop " + this.e);
+    }
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, this.e, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_Int, this.f);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.f;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      super.invalidateSelf();
+    }
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    super.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhrc
  * JD-Core Version:    0.7.0.1
  */

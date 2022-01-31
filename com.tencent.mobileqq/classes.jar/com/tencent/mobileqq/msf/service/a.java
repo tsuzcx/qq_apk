@@ -52,7 +52,7 @@ class a
   
   public static void a()
   {
-    J = BaseApplication.getContext().getSharedPreferences(g.c, 0);
+    J = BaseApplication.getContext().getSharedPreferences(j.c, 0);
     b = J.getLong(v, 0L);
     c = J.getLong(w, 0L);
     d = J.getLong(x, 0L);
@@ -121,7 +121,7 @@ class a
     localHashMap.put("existTimeOff", "" + n);
     localHashMap.put("notExitTimeOff", "" + o);
     localHashMap.put("lastAliveOf", "" + p);
-    localHashMap.put("jobschedulerAB", "" + g.g);
+    localHashMap.put("jobschedulerAB", "" + j.g);
     if ((d > 0L) && (b > 0L) && (c > 0L) && (e >= 0L) && (m >= 0L) && (c > b)) {
       if (paramk != null)
       {
@@ -149,7 +149,7 @@ class a
         continue;
       }
       if (QLog.isColorLevel()) {
-        QLog.d(g.c, 1, "report failed");
+        QLog.d(j.c, 1, "report failed");
       }
     }
   }

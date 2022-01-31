@@ -3,13 +3,13 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
-import njb;
-import sfe;
+import nlx;
+import swy;
 
 public class RecentItemPublicAccountADFolderData
   extends RecentItemPublicAccountChatMsgData
@@ -21,7 +21,7 @@ public class RecentItemPublicAccountADFolderData
   {
     super(paramRecentUser);
     this.mUnreadFlag = 1;
-    this.trueUin = njb.a().a(paramRecentUser.uin);
+    this.trueUin = nlx.a().a(paramRecentUser.uin);
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -46,10 +46,10 @@ public class RecentItemPublicAccountADFolderData
     if (this.mUnreadNum > 0) {
       this.mUnreadNum = 1;
     }
-    if (sfe.a) {}
+    if (swy.a) {}
     for (this.mMenuFlag |= 0x1;; this.mMenuFlag &= 0xFFFFFFFE)
     {
-      if (AppSetting.d)
+      if (AppSetting.c)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName).append(",");
@@ -69,7 +69,7 @@ public class RecentItemPublicAccountADFolderData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountADFolderData
  * JD-Core Version:    0.7.0.1
  */

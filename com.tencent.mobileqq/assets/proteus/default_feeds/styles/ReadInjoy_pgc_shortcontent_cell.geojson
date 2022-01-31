@@ -1,6 +1,6 @@
 {
   "ReadInjoy_pgc_shortcontent_cell": {
-    "view_type": "cell",
+    "view_type": "container",
     "direction": "vertical",
     "height": {
       "type": "wrap_content"
@@ -89,7 +89,8 @@
         "margin_right":"6",
         "margin_top":"0",
         "height":{
-          "type":"absolutely","value":"0.5"
+          "type":"absolutely",
+          "value":"0.5"
         },
         "width":{
           "type":"relative",

@@ -1,22 +1,16 @@
-public class amqn
-  extends amqk
+public abstract interface amqn
 {
-  private amre a;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  amqn(String paramString, amre paramamre)
-  {
-    super(paramString);
-    this.a = paramamre;
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public amre a()
-  {
-    return this.a;
-  }
+  public abstract void c(int paramInt);
+  
+  public abstract void h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.qqmini.proxyimpl;
 
-import amgn;
+import anxn;
 
 class ColorNotePlugin$3
   implements Runnable
 {
-  ColorNotePlugin$3(ColorNotePlugin paramColorNotePlugin, amgn paramamgn) {}
+  ColorNotePlugin$3(ColorNotePlugin paramColorNotePlugin, anxn paramanxn) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class ColorNotePlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ColorNotePlugin.3
  * JD-Core Version:    0.7.0.1
  */

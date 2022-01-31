@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bcgl;
+import befm;
 
 class WebViewFragment$2
   implements Runnable
@@ -9,12 +9,12 @@ class WebViewFragment$2
   
   public void run()
   {
-    bcgl.a(this.this$0.d());
+    befm.a(this.this$0.e());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment.2
  * JD-Core Version:    0.7.0.1
  */

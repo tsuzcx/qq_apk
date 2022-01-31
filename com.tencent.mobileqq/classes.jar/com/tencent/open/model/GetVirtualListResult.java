@@ -3,13 +3,13 @@ package com.tencent.open.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdnt;
+import bfmq;
 import java.util.ArrayList;
 
 public class GetVirtualListResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<GetVirtualListResult> CREATOR = new bdnt();
+  public static final Parcelable.Creator<GetVirtualListResult> CREATOR = new bfmq();
   public int a;
   public long a;
   public ArrayList<VirtualInfo> a;

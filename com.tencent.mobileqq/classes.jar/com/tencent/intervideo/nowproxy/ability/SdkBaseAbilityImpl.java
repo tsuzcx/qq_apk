@@ -83,9 +83,6 @@ public class SdkBaseAbilityImpl
   
   public Bundle getTickets()
   {
-    if (Global.sLoginData == null) {
-      return null;
-    }
     return LoginData.getLoginBundle(Global.sLoginData);
   }
   
@@ -272,7 +269,7 @@ public class SdkBaseAbilityImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.ability.SdkBaseAbilityImpl
  * JD-Core Version:    0.7.0.1
  */

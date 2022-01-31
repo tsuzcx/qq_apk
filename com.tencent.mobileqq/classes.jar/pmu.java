@@ -1,28 +1,27 @@
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
-import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class pmu
-  implements URLDrawable.DownloadListener
+class pmu
+  implements ViewBase.OnClickListener
 {
-  public pmu(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
+  pmu(pms parampms, pgd parampgd, Container paramContainer) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    xdp localxdp = new xdp(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842195));
-    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localxdp, 0, 1, 17);
-    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
+    paramViewBase = this.jdField_a_of_type_Pgd.a();
+    if (paramViewBase != null)
+    {
+      ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.mArticleContentUrl, null);
+      rqj.a(paramViewBase, 0);
+      pms.b(this.jdField_a_of_type_Pms, true);
+    }
   }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pmu
  * JD-Core Version:    0.7.0.1
  */

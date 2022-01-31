@@ -2,15 +2,13 @@ package com.tencent.component.network.utils.http;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Request.Builder;
 import com.tencent.component.network.Global;
 import com.tencent.component.network.downloader.impl.DownloaderImpl;
 import com.tencent.component.network.module.base.Config;
 import com.tencent.component.network.module.base.QDLog;
+import com.tencent.component.network.module.common.dns.OkHttpDNS;
 import com.tencent.component.network.utils.AssertUtil;
 import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.component.network.utils.http.base.QZoneHttp2Client;
 import com.tencent.component.network.utils.http.base.QZoneHttpClient;
 import com.tencent.component.network.utils.http.base.SNIVerifier;
 import com.tencent.component.network.utils.http.base.SniSSLSocketFactory;
@@ -18,6 +16,14 @@ import com.tencent.component.network.utils.http.pool.CustomDnsResolve;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
+import okhttp3.ConnectionPool;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Protocol;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
+import okhttp3.internal.Util;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -82,18 +88,24 @@ public class HttpUtil
     return false;
   }
   
-  public static QZoneHttp2Client createHttp2Client()
+  public static OkHttpClient createHttp2Client()
   {
-    return createHttp2Client(null);
+    return createHttp2Client(null, null);
   }
   
-  public static QZoneHttp2Client createHttp2Client(HttpUtil.ClientOptions paramClientOptions)
+  public static OkHttpClient createHttp2Client(HttpUtil.ClientOptions paramClientOptions, CustomDnsResolve paramCustomDnsResolve)
   {
     HttpUtil.ClientOptions localClientOptions = paramClientOptions;
     if (paramClientOptions == null) {
       localClientOptions = DEFAULT_CLIENT_OPTIONS;
     }
-    return new QZoneHttp2Client(localClientOptions);
+    paramClientOptions = new OkHttpClient.Builder();
+    if (localClientOptions != null) {
+      paramClientOptions.connectTimeout(localClientOptions.connTimeout, TimeUnit.MILLISECONDS).readTimeout(localClientOptions.soTimeout, TimeUnit.MILLISECONDS).writeTimeout(localClientOptions.soTimeout, TimeUnit.MILLISECONDS);
+    }
+    long l = localClientOptions.timeToLive;
+    paramClientOptions.connectionPool(new ConnectionPool(localClientOptions.maxConnection, l * 1000L, TimeUnit.MILLISECONDS)).hostnameVerifier(SSLSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER).protocols(Util.immutableList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 })).dns(new OkHttpDNS(paramCustomDnsResolve));
+    return paramClientOptions.build();
   }
   
   public static QZoneHttpClient createHttpClient(HttpUtil.ClientOptions paramClientOptions)
@@ -202,7 +214,7 @@ public class HttpUtil
   
   public static HttpGet createHttpGet(Context paramContext, String paramString1, String paramString2, String paramString3, HttpUtil.RequestOptions paramRequestOptions)
   {
-    String str = prepareRefer(paramString1);
+    paramString1 = prepareRefer(paramString1);
     paramString3 = new HttpGet(prepareUrl(paramString3));
     paramString3.addHeader("x-online-host", paramString2);
     paramString3.addHeader("Host", paramString2);
@@ -210,15 +222,11 @@ public class HttpUtil
     if (!TextUtils.isEmpty(paramString2)) {
       paramString3.addHeader("Q-UA", paramString2);
     }
-    if (!TextUtils.isEmpty(str)) {
-      paramString3.addHeader("Referer", str);
-    }
-    for (;;)
-    {
-      prepareRequest(paramContext, paramString3, paramRequestOptions);
-      return paramString3;
+    if (!TextUtils.isEmpty(paramString1)) {
       paramString3.addHeader("Referer", paramString1);
     }
+    prepareRequest(paramContext, paramString3, paramRequestOptions);
+    return paramString3;
   }
   
   public static HttpGet createHttpGet(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, HttpUtil.RequestOptions paramRequestOptions)
@@ -290,8 +298,6 @@ public class HttpUtil
   {
     paramContext = prepareUrl(paramString3);
     paramContext = new Request.Builder().url(paramContext);
-    paramContext.addHeader("x-online-host", paramString2);
-    paramContext.addHeader("Host", paramString2);
     paramString1 = Config.getQUA();
     if (!TextUtils.isEmpty(paramString1)) {
       paramContext.addHeader("Q-UA", paramString1);
@@ -369,8 +375,8 @@ public class HttpUtil
     Object localObject = Proxy.NO_PROXY;
     Context localContext = Global.getContext();
     if (localContext == null) {}
-    label159:
-    label162:
+    label160:
+    label163:
     for (;;)
     {
       return localObject;
@@ -382,13 +388,13 @@ public class HttpUtil
       {
         bool1 = paramRequestOptions.allowProxy;
         if (paramRequestOptions == null) {
-          break label159;
+          break label160;
         }
       }
       for (boolean bool2 = paramRequestOptions.apnProxy;; bool2 = false)
       {
         if ((!bool1) || (!NetworkUtils.isMobileConnected(localContext))) {
-          break label162;
+          break label163;
         }
         paramRequestOptions = NetworkUtils.getProxy(localContext, bool2);
         if ((paramRequestOptions != null) && (QDLog.isDebugEnable()) && ((paramRequestOptions.address() instanceof InetSocketAddress)))
@@ -409,8 +415,8 @@ public class HttpUtil
       paramHttpRequest.getParams().setParameter("http.route.default-proxy", paramRequestOptions.mobileProxy);
     }
     label46:
-    label180:
-    label184:
+    label181:
+    label185:
     for (;;)
     {
       return;
@@ -419,13 +425,13 @@ public class HttpUtil
       {
         bool1 = paramRequestOptions.allowProxy;
         if (paramRequestOptions == null) {
-          break label180;
+          break label181;
         }
       }
       for (boolean bool2 = paramRequestOptions.apnProxy;; bool2 = false)
       {
         if ((!bool1) || (!NetworkUtils.isMobileConnected(paramContext))) {
-          break label184;
+          break label185;
         }
         paramContext = NetworkUtils.getProxy(paramContext, bool2);
         if (paramContext == null) {
@@ -490,7 +496,7 @@ public class HttpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.utils.http.HttpUtil
  * JD-Core Version:    0.7.0.1
  */

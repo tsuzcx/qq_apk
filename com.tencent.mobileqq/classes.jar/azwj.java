@@ -1,29 +1,13 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
-import java.util.ArrayList;
+import kotlin.Metadata;
 
-public class azwj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeRadioGroup$OnCheckChangeListener;", "", "onModeCheckedChanged", "", "curType", "", "oldType", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface azwj
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  
-  public azwj(HomeworkGuideFragment paramHomeworkGuideFragment) {}
-  
-  public void a(int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371608));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365016));
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((HWGuideItem)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.a.get(this.jdField_a_of_type_Int)).b);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azwj
  * JD-Core Version:    0.7.0.1
  */

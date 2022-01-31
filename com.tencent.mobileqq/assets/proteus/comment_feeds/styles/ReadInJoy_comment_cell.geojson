@@ -1,6 +1,6 @@
 {
     "ReadInJoy_comment_cell": {
-        "view_type": "cell",
+        "view_type": "container",
         "default_visible":"YES",
         "layout_type":"layout_relative",
         "padding_bottom":"10",

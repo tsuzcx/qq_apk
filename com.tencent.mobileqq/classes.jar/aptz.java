@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import java.util.List;
 
-final class aptz
-  implements Comparator<FileInfo>
+class aptz
+  implements aubp<List<apsj>>
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  aptz(aptw paramaptw) {}
+  
+  public void a(List<apsj> paramList)
   {
-    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
+    this.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aptz
  * JD-Core Version:    0.7.0.1
  */

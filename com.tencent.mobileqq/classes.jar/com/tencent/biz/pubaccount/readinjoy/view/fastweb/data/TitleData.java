@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import org.json.JSONObject;
-import rpr;
+import sfq;
 
 public class TitleData
   extends ProteusItemData
@@ -23,11 +23,11 @@ public class TitleData
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("style_ID", "ReadInjoy_article_title_cell");
       localJSONObject.put("id_attribute_text", this.jdField_a_of_type_JavaLangString);
-      Object localObject1 = this.V;
+      Object localObject1 = this.W;
       if (localObject1 != null) {
         try
         {
-          localObject1 = new JSONObject(this.V);
+          localObject1 = new JSONObject(this.W);
           Iterator localIterator = ((JSONObject)localObject1).keys();
           if (localIterator == null) {
             break label131;
@@ -37,7 +37,7 @@ public class TitleData
             String str = (String)localIterator.next();
             localJSONObject.put(str, ((JSONObject)localObject1).opt(str));
           }
-          localObject2 = rpr.a("native_article", true);
+          localObject2 = sfq.a("native_article", true);
         }
         catch (Exception localException1)
         {
@@ -50,12 +50,12 @@ public class TitleData
       }
       label131:
       label162:
-      for (Object localObject2 = ((rpr)localObject2).getTemplateBean(localJSONObject);; localObject2 = null)
+      for (Object localObject2 = ((sfq)localObject2).getTemplateBean(localJSONObject);; localObject2 = null)
       {
         if (localObject2 != null)
         {
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = ((TemplateBean)localObject2);
-          this.b = localJSONObject;
+          this.c = localJSONObject;
         }
         return;
         QLog.d("TitleData", 2, "merge result: " + localJSONObject.toString());
@@ -71,7 +71,7 @@ public class TitleData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.TitleData
  * JD-Core Version:    0.7.0.1
  */

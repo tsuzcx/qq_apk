@@ -1,45 +1,24 @@
-import com.tencent.biz.qqstory.database.VideoCollectionEntry;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
 class txf
-  implements tws
+  extends RecyclerView.OnScrollListener
 {
-  private int jdField_a_of_type_Int;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  twl jdField_a_of_type_Twl;
+  txf(txe paramtxe) {}
   
-  public txf(txe paramtxe, twl paramtwl)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_Twl = paramtwl;
-  }
-  
-  protected void a(String paramString, twt paramtwt)
-  {
-    tmc localtmc = new tmc();
-    localtmc.jdField_c_of_type_JavaLangString = txe.a(this.jdField_a_of_type_Txe).uid;
-    if (txe.a(this.jdField_a_of_type_Txe).collectionKey != null) {
-      localtmc.jdField_d_of_type_Int = VideoCollectionEntry.getCollectionId(txe.a(this.jdField_a_of_type_Txe).collectionKey);
+    if (paramInt == 0)
+    {
+      abqw.a().a("qcircle_content_page", false);
+      return;
     }
-    localtmc.jdField_d_of_type_JavaLangString = paramString;
-    localtmc.jdField_c_of_type_Int = 20;
-    localtmc.jdField_e_of_type_Int = txe.a(this.jdField_a_of_type_Txe).shareTimeZone;
-    localtmc.jdField_e_of_type_JavaLangString = txe.a(this.jdField_a_of_type_Txe).feedId;
-    localtmc.f = txe.a(this.jdField_a_of_type_Txe).identify;
-    localtmc.g = txe.a(this.jdField_a_of_type_Txe).videoListOrder;
-    syo.a().a(localtmc, new txg(this, paramtwt));
-  }
-  
-  public void a(twt paramtwt)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    a(txe.a(this.jdField_a_of_type_Txe), paramtwt);
+    abqw.a().a("qcircle_content_page");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txf
  * JD-Core Version:    0.7.0.1
  */

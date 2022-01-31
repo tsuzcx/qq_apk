@@ -1,16 +1,18 @@
-import android.graphics.Bitmap;
+import android.net.Uri;
 
-public abstract interface bbav<T>
+class bbav
+  implements bbfu
 {
-  public abstract T a(Bitmap paramBitmap);
+  bbav(bbau parambbau) {}
   
-  public abstract void a(Exception paramException);
-  
-  public abstract void a(T paramT, Bitmap paramBitmap);
+  public void a(Uri paramUri)
+  {
+    this.a.a.a = paramUri;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbav
  * JD-Core Version:    0.7.0.1
  */

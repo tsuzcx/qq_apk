@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:textColorHint="#ffffffff" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/k59" android:background="@drawable/bjh" android:paddingLeft="14.5dip" android:paddingRight="14.5dip" android:layout_width="0.0dip" android:layout_height="40.0dip" android:minWidth="183.0dip" android:hint="@string/wej" android:maxLines="1" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.5dip">
+        <com.tencent.biz.qqcircle.widgets.QCirclePolyParseFrameLayout android:id="@id/dwx" android:layout_width="30.0dip" android:layout_height="30.0dip" />
+        <com.tencent.biz.qqcircle.widgets.QCirclePraiseTextView android:textSize="10.0dip" android:textColor="@color/al3" android:id="@id/g0g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="@string/wgb" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip">
+        <ImageView android:id="@id/dus" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/bjg" android:scaleType="fitCenter" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:id="@id/dur" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="@string/wed" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/mh4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip">
+        <com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView android:id="@id/dvj" android:layout_width="30.0dip" android:layout_height="30.0dip" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:id="@id/m7f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="@string/wgg" android:includeFontPadding="false" />
+    </LinearLayout>
+</merge>

@@ -1,6 +1,6 @@
 package com.tencent.av.share;
 
-import ajya;
+import alpo;
 import android.text.TextUtils;
 import com.tencent.av.ReqGroupVideo.RspShareBackflowVerify;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -10,18 +10,18 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lgy;
-import lye;
-import mqy;
+import ljb;
+import mat;
+import mts;
 
 public class AVSchema$MyMsgListener$1
   implements Runnable
 {
-  public AVSchema$MyMsgListener$1(lye paramlye, ReqGroupVideo.RspShareBackflowVerify paramRspShareBackflowVerify, long paramLong) {}
+  public AVSchema$MyMsgListener$1(mat parammat, ReqGroupVideo.RspShareBackflowVerify paramRspShareBackflowVerify, long paramLong) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached()) {}
+    if (this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached()) {}
     String str2;
     int i;
     do
@@ -32,8 +32,8 @@ public class AVSchema$MyMsgListener$1
       do
       {
         return;
-        j = lgy.a(this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspShareBackflowVerify.result);
-        localObject = lgy.a(this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspShareBackflowVerify.result);
+        j = ljb.a(this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspShareBackflowVerify.result);
+        localObject = ljb.a(this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspShareBackflowVerify.result);
         str2 = this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspShareBackflowVerify.uint64_group_code.get() + "";
         long l = this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspShareBackflowVerify.uint64_room_id.get();
         int k = this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspShareBackflowVerify.uint32_room_create_time.get();
@@ -42,10 +42,10 @@ public class AVSchema$MyMsgListener$1
           i = this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspShareBackflowVerify.enum_verify_status.get();
         }
         str1 = this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspShareBackflowVerify.bytes_wording.get().toStringUtf8();
-        bool = AVSchema.a(this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyd, this.jdField_a_of_type_Lye.jdField_a_of_type_Lyd);
-        QLog.w(this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onReceiveResult.callback, result[" + j + "], errMsg[" + (String)localObject + "], enum_verify_status[" + i + "], group_uin[" + str2 + "], uint64_room_id[" + l + "], uint32_room_create_time[" + k + "], bytes_wording[" + str1 + "], isSameInfo[" + bool + "], Activity[" + this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity() + "], isResume[" + this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.isResumed() + "], seq[" + this.jdField_a_of_type_Long + "]");
+        bool = AVSchema.a(this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Mas, this.jdField_a_of_type_Mat.jdField_a_of_type_Mas);
+        QLog.w(this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onReceiveResult.callback, result[" + j + "], errMsg[" + (String)localObject + "], enum_verify_status[" + i + "], group_uin[" + str2 + "], uint64_room_id[" + l + "], uint32_room_create_time[" + k + "], bytes_wording[" + str1 + "], isSameInfo[" + bool + "], Activity[" + this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity() + "], isResume[" + this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.isResumed() + "], seq[" + this.jdField_a_of_type_Long + "]");
       } while (!bool);
-      this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.a(false);
+      this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.a(false);
       localObject = str1;
       if (TextUtils.isEmpty(str1)) {
         if (j == 0)
@@ -59,37 +59,37 @@ public class AVSchema$MyMsgListener$1
         }
         else
         {
-          localObject = ajya.a(2131700897);
+          localObject = alpo.a(2131701266);
         }
       }
-      this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyd.a = i;
+      this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Mas.a = i;
       switch (i)
       {
       default: 
-        this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_Long, (String)localObject);
+        this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_Long, (String)localObject);
       }
     } while (!AudioHelper.d());
-    Object localObject = ajya.a(2131700894) + i + "], bytes_wording[" + (String)localObject + "], seq[" + this.jdField_a_of_type_Long + "]";
-    QLog.w(this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, (String)localObject);
+    Object localObject = alpo.a(2131701263) + i + "], bytes_wording[" + (String)localObject + "], seq[" + this.jdField_a_of_type_Long + "]";
+    QLog.w(this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, (String)localObject);
     throw new RuntimeException((String)localObject);
-    mqy.a(0);
-    this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.c(str2);
+    mts.a(0);
+    this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.c(str2);
     return;
-    mqy.a(5);
-    mqy.a(0);
-    this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.c(str2);
-    this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_Long, (String)localObject, str2);
+    mts.a(5);
+    mts.a(0);
+    this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.c(str2);
+    this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_Long, (String)localObject, str2);
     return;
-    mqy.a(4);
-    this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, (String)localObject, str2);
+    mts.a(4);
+    this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, (String)localObject, str2);
     return;
-    mqy.a(i);
-    this.jdField_a_of_type_Lye.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_Long, (String)localObject);
+    mts.a(i);
+    this.jdField_a_of_type_Mat.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_Long, (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.MyMsgListener.1
  * JD-Core Version:    0.7.0.1
  */

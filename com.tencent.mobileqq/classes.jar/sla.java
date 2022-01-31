@@ -1,48 +1,98 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class sla
-  extends sks
 {
-  private TextView a;
-  
-  private sla(ViewGroup paramViewGroup, sjf paramsjf)
+  public static String a(int paramInt, String paramString)
   {
-    super(paramViewGroup, paramsjf, 2131560119);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("url", paramString);
+      localJSONObject.put("num", paramInt);
+      paramString = localJSONObject.toString();
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
   }
   
-  public static sla a(ViewGroup paramViewGroup, sjf paramsjf)
+  public static orz a(int paramInt)
   {
-    return new sla(paramViewGroup, paramsjf);
+    return new orz().b().a(paramInt);
   }
   
-  protected void a()
+  public static orz a(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.a = ((TextView)a(1).findViewById(2131379109));
+    localorz = a(paramInt);
+    try
+    {
+      paramString1 = localorz.b(paramString1).a("URL", paramString2);
+      if (paramBoolean) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        paramString1 = paramString1.a("ad_page", paramInt);
+        return paramString1;
+      }
+      return localorz;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
   }
   
-  protected void a(int paramInt)
+  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, qnf paramqnf)
   {
-    super.a(paramInt);
-    this.a.setVisibility(paramInt);
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    super.a(paramstSimpleMetaFeed);
-    if (paramstSimpleMetaFeed == null) {
+    if ((paramqnf instanceof qnh)) {}
+    for (String str = ((qnh)paramqnf).f;; str = "0")
+    {
+      nrt.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt3), String.valueOf(paramInt1), String.valueOf(paramqnf.jdField_a_of_type_Int), a(paramInt2, paramqnf.e, str, paramqnf.jdField_a_of_type_Boolean).a(), false);
       return;
     }
-    this.a.setText(paramstSimpleMetaFeed.feed_desc);
-    a(1, paramstSimpleMetaFeed);
-    a(2, 2, paramstSimpleMetaFeed);
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    orz localorz = a(paramInt1);
+    if (paramBoolean) {
+      paramInt1 = 1;
+    }
+    try
+    {
+      for (;;)
+      {
+        localorz.a("ad_page_include", paramInt1);
+        nrt.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt2), "", "", localorz.a(), false);
+        return;
+        paramInt1 = 0;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public static void a(String paramString, int paramInt, qnf paramqnf)
+  {
+    if ((paramqnf instanceof qnh)) {}
+    for (paramqnf = ((qnh)paramqnf).f;; paramqnf = "0")
+    {
+      nrt.a(null, "", paramString, paramString, 0, 0, String.valueOf(paramInt), "", "", a(paramInt, paramqnf), false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sla
  * JD-Core Version:    0.7.0.1
  */

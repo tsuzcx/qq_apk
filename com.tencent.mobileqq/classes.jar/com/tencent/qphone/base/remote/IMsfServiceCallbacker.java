@@ -5,9 +5,13 @@ import android.os.IInterface;
 public abstract interface IMsfServiceCallbacker
   extends IInterface
 {
-  public abstract void onRecvPushResp(FromServiceMsg paramFromServiceMsg);
+  public abstract void onReceivePushResp(FromServiceMsg paramFromServiceMsg);
   
   public abstract void onResponse(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
+  
+  public abstract void onSyncReceivePushResp(FromServiceMsg paramFromServiceMsg, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void onSyncResponse(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt1, int paramInt2, int paramInt3);
 }
 
 

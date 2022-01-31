@@ -1,117 +1,90 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aoud
-  extends aoui
 {
-  public aoud(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   
-  protected ImageView a(acuj paramacuj)
+  public static aoud a(aogf[] paramArrayOfaogf)
   {
-    if (paramacuj == null) {}
-    while (!(paramacuj instanceof adwy)) {
-      return null;
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+      paramArrayOfaogf = null;
     }
-    return ((adwy)paramacuj).a;
-  }
-  
-  protected void a(acuj paramacuj, ImageView paramImageView)
-  {
-    if (paramacuj == null) {}
-    while (!(paramacuj instanceof adwy)) {
-      return;
+    aoud localaoud;
+    for (;;)
+    {
+      return paramArrayOfaogf;
+      localaoud = new aoud();
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaogf[0].a);
+        if (localJSONObject.has("flag"))
+        {
+          localaoud.d = localJSONObject.getInt("flag");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips flag = " + localaoud.d);
+          }
+        }
+        if (localJSONObject.has("showCount"))
+        {
+          localaoud.c = localJSONObject.getInt("showCount");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips showCount = " + localaoud.c);
+          }
+        }
+        if (localJSONObject.has("groupFlag"))
+        {
+          localaoud.b = localJSONObject.getInt("groupFlag");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupFlag = " + localaoud.b);
+          }
+        }
+        paramArrayOfaogf = localaoud;
+        if (localJSONObject.has("groupShowCount"))
+        {
+          localaoud.a = localJSONObject.getInt("groupShowCount");
+          paramArrayOfaogf = localaoud;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupShowCount = " + localaoud.a);
+            return localaoud;
+          }
+        }
+      }
+      catch (Exception paramArrayOfaogf)
+      {
+        QLog.e("TencentDocStructMsgGrayTipsConfigBean", 1, "handleDocsStructMsgGrayTips e " + paramArrayOfaogf.toString());
+      }
     }
-    ((adwy)paramacuj).a = paramImageView;
+    return localaoud;
   }
   
-  protected void a(View paramView, acuj paramacuj, ChatMessage paramChatMessage, int paramInt)
+  public int a()
   {
-    if ((paramChatMessage == null) || (paramChatMessage.isMultiMsg)) {}
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          QLog.i("OfflineFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-        } while ((paramInt == -1) || (!(paramChatMessage instanceof MessageForFile)));
-        paramView = (MessageForFile)paramChatMessage;
-        paramacuj = apug.a(this.a, paramView);
-      } while (paramacuj == null);
-      if (paramView.istroop == 3000) {}
-      for (i = 3; paramInt == 0; i = 1)
-      {
-        axqy.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
-        this.a.a().a(paramacuj.nSessionId);
-        return;
-      }
-    } while (paramInt != 1);
-    axqy.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
-    a(new aoue(this, i, paramacuj));
+    return this.a;
   }
   
-  protected boolean a(ChatMessage paramChatMessage)
+  public int b()
   {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
-        paramChatMessage = (MessageForFile)paramChatMessage;
-        paramChatMessage = apug.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
-      }
-      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 2)) {
-        return true;
-      }
-    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 2));
-    return true;
+    return this.b;
   }
   
-  protected boolean b(ChatMessage paramChatMessage)
+  public int c()
   {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
-        paramChatMessage = (MessageForFile)paramChatMessage;
-        paramChatMessage = apug.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
-      }
-      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 3)) {
-        return true;
-      }
-    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 3));
-    return true;
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoud
  * JD-Core Version:    0.7.0.1
  */

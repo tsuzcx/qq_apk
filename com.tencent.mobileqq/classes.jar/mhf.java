@@ -1,27 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
-class mhf
-  implements Animator.AnimatorListener
+public class mhf
+  implements View.OnClickListener
 {
-  mhf(mha parammha) {}
+  public mhf(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    mha.a(this.a).setAlpha(0.0F);
-    mha.a(this.a).setVisibility(0);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b(2);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickIgnore", true, null, -1);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickIgnore");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhf
  * JD-Core Version:    0.7.0.1
  */

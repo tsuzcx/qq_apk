@@ -21,12 +21,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bjln;
-import bjlo;
-import bjlp;
-import bjlq;
-import bjlr;
-import blcq;
+import blwx;
+import blwy;
+import blwz;
+import blxa;
+import blxb;
+import bnoa;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class QIMSlidingTabView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private bjlq jdField_a_of_type_Bjlq;
+  private blxa jdField_a_of_type_Blxa;
   private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   private boolean jdField_a_of_type_Boolean;
   private int b = -16777216;
@@ -77,7 +77,7 @@ public class QIMSlidingTabView
     if (paramInt < 0) {
       return -1;
     }
-    paramView.setOnClickListener(new bjlo(this, paramInt));
+    paramView.setOnClickListener(new blwy(this, paramInt));
     this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramView);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, paramInt);
     return 0;
@@ -141,7 +141,7 @@ public class QIMSlidingTabView
     setFillViewport(true);
     setWillNotDraw(false);
     setHorizontalScrollBarEnabled(false);
-    this.q = blcq.a(this.p);
+    this.q = bnoa.a(this.p);
   }
   
   @TargetApi(11)
@@ -168,7 +168,7 @@ public class QIMSlidingTabView
       this.jdField_a_of_type_Boolean = false;
       localObject = ValueAnimator.ofInt(new int[] { i1, i2 });
       ((ValueAnimator)localObject).setDuration(100L);
-      ((ValueAnimator)localObject).addUpdateListener(new bjlp(this));
+      ((ValueAnimator)localObject).addUpdateListener(new blwz(this));
       ((ValueAnimator)localObject).start();
       return;
     }
@@ -196,7 +196,7 @@ public class QIMSlidingTabView
         }
         localObject = (Bundle)localView.getTag();
         if (localObject != null) {
-          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130845754));
+          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130846133));
         }
       }
       for (;;)
@@ -229,7 +229,7 @@ public class QIMSlidingTabView
           {
             localObject = (Bundle)localView.getTag();
             if (localObject != null) {
-              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130845753));
+              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130846132));
             }
           }
           else if ((localView instanceof RedDotTextView))
@@ -281,13 +281,13 @@ public class QIMSlidingTabView
     b(paramInt);
     c(paramInt);
     b();
-    if (this.jdField_a_of_type_Bjlq != null) {
-      this.jdField_a_of_type_Bjlq.a(paramInt);
+    if (this.jdField_a_of_type_Blxa != null) {
+      this.jdField_a_of_type_Blxa.a(paramInt);
     }
     this.o = this.n;
   }
   
-  public void a(ArrayList<bjlr> paramArrayList)
+  public void a(ArrayList<blxb> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -301,17 +301,17 @@ public class QIMSlidingTabView
     while (i1 < paramArrayList.size())
     {
       RedDotTextView localRedDotTextView = new RedDotTextView(getContext());
-      localRedDotTextView.setText(((bjlr)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
+      localRedDotTextView.setText(((blxb)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
       localRedDotTextView.setGravity(17);
       localRedDotTextView.setSingleLine();
       localRedDotTextView.setTextSize(0, this.d);
       localRedDotTextView.setPadding(this.f, 0, this.f, 0);
-      localRedDotTextView.a(((bjlr)paramArrayList.get(i1)).jdField_a_of_type_Boolean);
-      String str = ((bjlr)paramArrayList.get(i1)).jdField_b_of_type_JavaLangString;
+      localRedDotTextView.a(((blxb)paramArrayList.get(i1)).jdField_a_of_type_Boolean);
+      String str = ((blxb)paramArrayList.get(i1)).jdField_b_of_type_JavaLangString;
       if (!TextUtils.isEmpty(str)) {
         localRedDotTextView.setContentDescription(str);
       }
-      if (((bjlr)paramArrayList.get(i1)).jdField_b_of_type_Boolean) {
+      if (((blxb)paramArrayList.get(i1)).jdField_b_of_type_Boolean) {
         i2 = i1;
       }
       a(i1, localRedDotTextView);
@@ -345,17 +345,17 @@ public class QIMSlidingTabView
     a(0);
   }
   
-  public void c(ArrayList<bjln> paramArrayList)
+  public void c(ArrayList<blwx> paramArrayList)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
     int i1 = 0;
     if (i1 < paramArrayList.size())
     {
       Object localObject;
-      if (((bjln)paramArrayList.get(i1)).jdField_a_of_type_Int == 0)
+      if (((blwx)paramArrayList.get(i1)).jdField_a_of_type_Int == 0)
       {
         localObject = new TextView(getContext());
-        ((TextView)localObject).setText(((bjln)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
+        ((TextView)localObject).setText(((blwx)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
         ((TextView)localObject).setGravity(17);
         ((TextView)localObject).setSingleLine();
         ((TextView)localObject).setTextSize(0, this.d);
@@ -368,7 +368,7 @@ public class QIMSlidingTabView
         break;
         localObject = new QIMSlidingItemView(getContext());
         ((QIMSlidingItemView)localObject).a(this.d, this.f);
-        ((QIMSlidingItemView)localObject).setData((bjln)paramArrayList.get(i1));
+        ((QIMSlidingItemView)localObject).setData((blwx)paramArrayList.get(i1));
         a(i1, (View)localObject);
       }
     }
@@ -415,14 +415,14 @@ public class QIMSlidingTabView
     invalidate();
   }
   
-  public void setTabCheckListener(bjlq parambjlq)
+  public void setTabCheckListener(blxa paramblxa)
   {
-    this.jdField_a_of_type_Bjlq = parambjlq;
+    this.jdField_a_of_type_Blxa = paramblxa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMSlidingTabView
  * JD-Core Version:    0.7.0.1
  */

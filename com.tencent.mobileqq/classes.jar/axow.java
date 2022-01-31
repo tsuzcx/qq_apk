@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
-
-public class axow
+public abstract class axow
+  extends axpb
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  
-  private axow(MigrateSubscribeDB paramMigrateSubscribeDB) {}
-  
-  public String toString()
-  {
-    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
-  }
+  public int b = -1;
+  public int c;
+  public int d = -1;
+  public int e = -1;
+  public int f = -1;
+  public int g = -1;
+  public int h = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axow
  * JD-Core Version:    0.7.0.1
  */

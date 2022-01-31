@@ -1,31 +1,24 @@
-import android.view.SurfaceHolder;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.link.LinkByWeiyunFragment;
 
-class arbq
-  implements IVideoViewBase.IVideoViewCallBack
+final class arbq
+  implements View.OnClickListener
 {
-  arbq(arbp paramarbp) {}
+  arbq(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
+  public void onClick(View paramView)
   {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
-  }
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
-  }
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    this.a.a = true;
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbq
  * JD-Core Version:    0.7.0.1
  */

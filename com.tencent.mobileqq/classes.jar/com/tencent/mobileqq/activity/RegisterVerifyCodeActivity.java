@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import abze;
-import abzf;
-import abzh;
-import akwk;
-import akwm;
+import adqm;
+import adqn;
+import adqp;
+import amna;
+import amnc;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -25,13 +25,13 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aumk;
-import avqc;
-import avqe;
-import axqy;
-import bbfj;
-import bbfx;
-import bbyl;
+import awdr;
+import axia;
+import axic;
+import azmj;
+import bdee;
+import bdes;
+import bdxm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -41,19 +41,19 @@ import mqq.os.MqqHandler;
 
 public class RegisterVerifyCodeActivity
   extends RegisterNewBaseActivity
-  implements akwk, TextWatcher, View.OnClickListener, View.OnKeyListener, CompoundButton.OnCheckedChangeListener
+  implements amna, TextWatcher, View.OnClickListener, View.OnKeyListener, CompoundButton.OnCheckedChangeListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131378867, 2131378868, 2131378869, 2131378870, 2131378871, 2131378872 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131379488, 2131379489, 2131379490, 2131379491, 2131379492, 2131379493 };
   private int jdField_a_of_type_Int = 60;
-  private akwm jdField_a_of_type_Akwm;
+  private amnc jdField_a_of_type_Amnc;
   private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private avqc jdField_a_of_type_Avqc;
-  private avqe jdField_a_of_type_Avqe;
+  private axia jdField_a_of_type_Axia;
+  private axic jdField_a_of_type_Axic;
   private Runnable jdField_a_of_type_JavaLangRunnable = new RegisterVerifyCodeActivity.1(this);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new abzf(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new abze(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new adqn(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new adqm(this);
   private boolean jdField_a_of_type_Boolean = true;
   private EditText[] jdField_a_of_type_ArrayOfAndroidWidgetEditText = new EditText[6];
   private CheckBox jdField_b_of_type_AndroidWidgetCheckBox;
@@ -134,7 +134,7 @@ public class RegisterVerifyCodeActivity
   
   private void d()
   {
-    c(2131717201);
+    c(2131717573);
     b();
     boolean bool = getIntent().getBooleanExtra("key_register_from_fail_pay_lh", false);
     if (bool) {
@@ -142,32 +142,32 @@ public class RegisterVerifyCodeActivity
     }
     for (;;)
     {
-      TextView localTextView = (TextView)findViewById(2131378508);
+      TextView localTextView = (TextView)findViewById(2131379120);
       String str1 = "+" + this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString;
-      String str2 = getString(2131717193, new Object[] { str1 });
+      String str2 = getString(2131717565, new Object[] { str1 });
       SpannableString localSpannableString = new SpannableString(str2);
       ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-31676);
       int i = str2.indexOf(str1);
       int j = str2.indexOf(str1);
       localSpannableString.setSpan(localForegroundColorSpan, i, str1.length() + j, 33);
       localTextView.setText(localSpannableString);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363634));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363687));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717160) + "(" + this.jdField_a_of_type_Int + "s)");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717532) + "(" + this.jdField_a_of_type_Int + "s)");
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
       i = 0;
       while (i < 6)
       {
-        this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i] = ((EditText)findViewById(jdField_a_of_type_ArrayOfInt[i]).findViewById(2131378511));
+        this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i] = ((EditText)findViewById(jdField_a_of_type_ArrayOfInt[i]).findViewById(2131379123));
         this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i].addTextChangedListener(this);
         this.jdField_a_of_type_ArrayOfAndroidWidgetEditText[i].setOnKeyListener(this);
         i += 1;
       }
       a(66);
     }
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364184));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364246));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368930));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369160));
     if ((this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -182,15 +182,15 @@ public class RegisterVerifyCodeActivity
         this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_Boolean);
         this.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
         if (!this.jdField_a_of_type_Boolean) {
-          aumk.a().jdField_a_of_type_Boolean = false;
+          awdr.a().jdField_a_of_type_Boolean = false;
         }
       }
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378491));
-      this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364189));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379103));
+      this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364251));
       this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368995));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369225));
     } while (getResources().getDisplayMetrics().heightPixels < 480);
-    new abzh(this).execute(new Void[0]);
+    new adqp(this).execute(new Void[0]);
   }
   
   private void d(int paramInt)
@@ -198,7 +198,7 @@ public class RegisterVerifyCodeActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717160) + "(" + this.jdField_a_of_type_Int + "s)");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717532) + "(" + this.jdField_a_of_type_Int + "s)");
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
   
@@ -208,7 +208,7 @@ public class RegisterVerifyCodeActivity
     {
       this.h = null;
       ((AccountManager)this.app.getManager(0)).sendRegistByResendSms(this.jdField_a_of_type_MqqObserverAccountObserver);
-      b(2131717172);
+      b(2131717544);
       return;
     }
     catch (Exception localException)
@@ -219,9 +219,9 @@ public class RegisterVerifyCodeActivity
   
   private void f()
   {
-    if (!bbfj.d(BaseApplication.getContext()))
+    if (!bdee.d(BaseApplication.getContext()))
     {
-      a(2131692321, 0);
+      a(2131692397, 0);
       return;
     }
     Object localObject = new StringBuilder("");
@@ -245,11 +245,11 @@ public class RegisterVerifyCodeActivity
         try
         {
           ((AccountManager)this.app.getManager(0)).sendRegisterByCommitSmsVerifycode((String)localObject, this.jdField_a_of_type_MqqObserverAccountObserver);
-          b(2131717081);
-          axqy.a(this.app, "dc00898", "", "", "0X8007CC8", "0X8007CC8", 0, 0, "", "", "", "");
+          b(2131717453);
+          azmj.a(this.app, "dc00898", "", "", "0X8007CC8", "0X8007CC8", 0, 0, "", "", "", "");
           if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) && (this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) && (this.jdField_b_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_b_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) && (this.jdField_b_of_type_AndroidWidgetCheckBox != null) && (this.jdField_b_of_type_AndroidWidgetCheckBox.isChecked()))
           {
-            axqy.a(this.app, "dc00898", "", "", "0X8007CC8", "0X8007CC8", 1, 0, "", "", "", "");
+            azmj.a(this.app, "dc00898", "", "", "0X8007CC8", "0X8007CC8", 1, 0, "", "", "", "");
             return;
           }
         }
@@ -260,27 +260,27 @@ public class RegisterVerifyCodeActivity
         }
         if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() != 0) && ((this.jdField_b_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_b_of_type_AndroidWidgetLinearLayout.getVisibility() != 0)))
         {
-          axqy.a(this.app, "dc00898", "", "", "0X8007CC8", "0X8007CC8", 4, 0, "", "", "", "");
+          azmj.a(this.app, "dc00898", "", "", "0X8007CC8", "0X8007CC8", 4, 0, "", "", "", "");
           return;
         }
         if ((this.jdField_b_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_b_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) && (this.jdField_b_of_type_AndroidWidgetCheckBox != null) && (!this.jdField_b_of_type_AndroidWidgetCheckBox.isChecked())) {
-          axqy.a(this.app, "dc00898", "", "", "0X8007CC8", "0X8007CC8", 2, 0, "", "", "", "");
+          azmj.a(this.app, "dc00898", "", "", "0X8007CC8", "0X8007CC8", 2, 0, "", "", "", "");
         }
         if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() != 0) || (this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked())) {
           break;
         }
-        axqy.a(this.app, "dc00898", "", "", "0X8007CC8", "0X8007CC8", 3, 0, "", "", "", "");
+        azmj.a(this.app, "dc00898", "", "", "0X8007CC8", "0X8007CC8", 3, 0, "", "", "", "");
         return;
       }
-      a(2131717092, 0);
+      a(2131717464, 0);
       return;
     }
   }
   
   public void a()
   {
-    aumk.a().jdField_a_of_type_Boolean = this.jdField_e_of_type_Boolean;
-    aumk.a().a(this.app, this.jdField_e_of_type_Boolean);
+    awdr.a().jdField_a_of_type_Boolean = this.jdField_e_of_type_Boolean;
+    awdr.a().a(this.app, this.jdField_e_of_type_Boolean);
     boolean bool1 = getIntent().getBooleanExtra("key_register_from_fail_pay_lh", false);
     boolean bool2 = getIntent().getBooleanExtra("key_register_phonenum_bindnewqq", true);
     Object localObject1 = new StringBuilder("");
@@ -300,13 +300,13 @@ public class RegisterVerifyCodeActivity
     }
     if (bool1)
     {
-      if (this.jdField_a_of_type_Avqe == null) {
-        this.jdField_a_of_type_Avqe = new avqe(this);
+      if (this.jdField_a_of_type_Axic == null) {
+        this.jdField_a_of_type_Axic = new axic(this);
       }
       getIntent().putExtra("key_register_smscode", (String)localObject1);
       getIntent().putExtra("key_register_autologin", true);
       getIntent().putExtra("key_register_phonenum_bindnewqq", bool2);
-      this.jdField_a_of_type_Avqe.a(getIntent());
+      this.jdField_a_of_type_Axic.a(getIntent());
       return;
     }
     if (this.jdField_b_of_type_Boolean)
@@ -344,7 +344,7 @@ public class RegisterVerifyCodeActivity
     label163:
     for (int k = localEditable.toString().length();; k = 0)
     {
-      View localView = findViewById(jdField_a_of_type_ArrayOfInt[j]).findViewById(2131369234);
+      View localView = findViewById(jdField_a_of_type_ArrayOfInt[j]).findViewById(2131369467);
       if ((localEditable != null) && (localEditable == paramEditable))
       {
         if (k <= 0) {
@@ -383,9 +383,9 @@ public class RegisterVerifyCodeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561462);
+    setContentView(2131561652);
     if (QLog.isDevelopLevel()) {
-      bbyl.a(getClass().getSimpleName(), getIntent());
+      bdxm.a(getClass().getSimpleName(), getIntent());
     }
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("invite_code");
@@ -394,7 +394,7 @@ public class RegisterVerifyCodeActivity
     long l = getIntent().getLongExtra("key_register_exit_time", 0L);
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("onCreate countryCode=").append(this.jdField_b_of_type_JavaLangString).append(", phoneNum=").append(bbfx.a(this.jdField_a_of_type_JavaLangString)).append(", leftTime=").append(i).append(", exitTime=").append(l).append(", inviteCode=");
+      StringBuilder localStringBuilder = new StringBuilder().append("onCreate countryCode=").append(this.jdField_b_of_type_JavaLangString).append(", phoneNum=").append(bdes.a(this.jdField_a_of_type_JavaLangString)).append(", leftTime=").append(i).append(", exitTime=").append(l).append(", inviteCode=");
       if (this.jdField_c_of_type_JavaLangString == null)
       {
         paramBundle = "";
@@ -418,19 +418,19 @@ public class RegisterVerifyCodeActivity
       this.jdField_d_of_type_JavaLangString = getIntent().getStringExtra("key_register_binded_qq");
       this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
       d();
-      this.jdField_a_of_type_Akwm = new akwm(null, getIntent().getLongExtra("register_verify_code_start_time", 0L));
-      this.jdField_a_of_type_Akwm.a(this, this);
-      axqy.b(this.app, "CliOper", "", "", "0X8006656", "0X8006656", 0, 0, "", "", "", "");
-      axqy.a(this.app, "dc00898", "", "", "0X8007361", "0X8007361", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Amnc = new amnc(null, getIntent().getLongExtra("register_verify_code_start_time", 0L));
+      this.jdField_a_of_type_Amnc.a(this, this);
+      azmj.b(this.app, "CliOper", "", "", "0X8006656", "0X8006656", 0, 0, "", "", "", "");
+      azmj.a(this.app, "dc00898", "", "", "0X8007361", "0X8007361", 0, 0, "", "", "", "");
       if (this.jdField_b_of_type_Boolean) {
         break label567;
       }
-      axqy.a(this.app, "dc00898", "", "", "0X8007361", "0X8007361", 1, 0, "", "", "", "");
+      azmj.a(this.app, "dc00898", "", "", "0X8007361", "0X8007361", 1, 0, "", "", "", "");
       label501:
       if (this.jdField_b_of_type_Int != 7) {
         break label652;
       }
-      axqy.a(this.app, "new_reg_805", "msg_page", "page_exp", "", 1, "", "1", "", "", "", "", "", "", "");
+      azmj.a(this.app, "new_reg_805", "msg_page", "page_exp", "", 1, "", "1", "", "", "", "", "", "", "");
     }
     for (;;)
     {
@@ -440,21 +440,21 @@ public class RegisterVerifyCodeActivity
       label567:
       if (!this.jdField_c_of_type_Boolean)
       {
-        axqy.a(this.app, "dc00898", "", "", "0X8007361", "0X8007361", 2, 0, "", "", "", "");
+        azmj.a(this.app, "dc00898", "", "", "0X8007361", "0X8007361", 2, 0, "", "", "", "");
         break label501;
       }
-      axqy.a(this.app, "dc00898", "", "", "0X8007361", "0X8007361", 3, 0, "", "", "", "");
+      azmj.a(this.app, "dc00898", "", "", "0X8007361", "0X8007361", 3, 0, "", "", "", "");
       break label501;
       label652:
-      axqy.a(this.app, "new_reg_805", "msg_page", "page_exp", "", 1, "", "2", "", "", "", "", "", "", "");
+      azmj.a(this.app, "new_reg_805", "msg_page", "page_exp", "", 1, "", "2", "", "", "", "", "", "", "");
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Avqe != null) {
-      this.jdField_a_of_type_Avqe.b();
+    if (this.jdField_a_of_type_Axic != null) {
+      this.jdField_a_of_type_Axic.b();
     }
   }
   
@@ -471,8 +471,8 @@ public class RegisterVerifyCodeActivity
   public void onAccountChanged()
   {
     super.onAccountChanged();
-    if (this.jdField_a_of_type_Avqe != null) {
-      this.jdField_a_of_type_Avqe.d();
+    if (this.jdField_a_of_type_Axic != null) {
+      this.jdField_a_of_type_Axic.d();
     }
   }
   
@@ -493,7 +493,7 @@ public class RegisterVerifyCodeActivity
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton.getId() == 2131364189) {
+    if (paramCompoundButton.getId() == 2131364251) {
       this.jdField_e_of_type_Boolean = paramBoolean;
     }
     do
@@ -504,7 +504,7 @@ public class RegisterVerifyCodeActivity
         if (!paramBoolean) {
           break;
         }
-        axqy.b(this.app, "CliOper", "", "", "0X8006657", "0X8006657", 0, 0, "", "", "", "");
+        azmj.b(this.app, "CliOper", "", "", "0X8006657", "0X8006657", 0, 0, "", "", "", "");
         this.jdField_a_of_type_Boolean = true;
       } while (this.jdField_b_of_type_AndroidWidgetCheckBox == null);
       this.jdField_b_of_type_AndroidWidgetCheckBox.setEnabled(true);
@@ -520,40 +520,40 @@ public class RegisterVerifyCodeActivity
   
   public void onClick(View paramView)
   {
-    if (!bbfj.d(BaseApplication.getContext()))
+    if (!bdee.d(BaseApplication.getContext()))
     {
-      a(2131692321, 0);
+      a(2131692397, 0);
       return;
     }
     switch (paramView.getId())
     {
     default: 
       return;
-    case 2131363591: 
+    case 2131363636: 
       f();
       return;
     }
     e();
-    axqy.a(this.app, "new_reg_805", "msg_page", "resend_clk", "", 1, "", "", "", "", "", "", "", "", "");
+    azmj.a(this.app, "new_reg_805", "msg_page", "resend_clk", "", 1, "", "", "", "", "", "", "", "", "");
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     c();
-    if (this.jdField_a_of_type_Akwm != null) {
-      this.jdField_a_of_type_Akwm.a();
+    if (this.jdField_a_of_type_Amnc != null) {
+      this.jdField_a_of_type_Amnc.a();
     }
-    this.jdField_a_of_type_Akwm = null;
+    this.jdField_a_of_type_Amnc = null;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_Avqc != null) {
-      this.jdField_a_of_type_Avqc.a();
+    if (this.jdField_a_of_type_Axia != null) {
+      this.jdField_a_of_type_Axia.a();
     }
-    this.jdField_a_of_type_Avqc = null;
-    if (this.jdField_a_of_type_Avqe != null) {
-      this.jdField_a_of_type_Avqe.a();
+    this.jdField_a_of_type_Axia = null;
+    if (this.jdField_a_of_type_Axic != null) {
+      this.jdField_a_of_type_Axic.a();
     }
-    this.jdField_a_of_type_Avqe = null;
+    this.jdField_a_of_type_Axic = null;
   }
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
@@ -598,8 +598,8 @@ public class RegisterVerifyCodeActivity
         this.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
       this.jdField_a_of_type_AndroidAppDialog = null;
-      if (this.jdField_a_of_type_Avqe != null) {
-        this.jdField_a_of_type_Avqe.c();
+      if (this.jdField_a_of_type_Axic != null) {
+        this.jdField_a_of_type_Axic.c();
       }
       return;
     }
@@ -613,7 +613,7 @@ public class RegisterVerifyCodeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterVerifyCodeActivity
  * JD-Core Version:    0.7.0.1
  */

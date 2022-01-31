@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multicard;
 
-import assk;
+import aujh;
 import java.util.HashMap;
 
 class MultiCardManager$1$1
@@ -10,14 +10,14 @@ class MultiCardManager$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Assk != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Assk.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap);
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Aujh != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Aujh.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.1.1
  * JD-Core Version:    0.7.0.1
  */

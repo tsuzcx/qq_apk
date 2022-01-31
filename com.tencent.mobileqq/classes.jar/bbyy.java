@@ -1,22 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 public class bbyy
-  implements DialogInterface.OnDismissListener
+  extends Handler
 {
-  public bbyy(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public bbyy(bbyw parambbyw, Looper paramLooper)
   {
-    if (!LiangHaoBuyFragment.a(this.a)) {
-      LiangHaoBuyFragment.b(this.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    for (;;)
+    {
+      try
+      {
+        switch (paramMessage.what)
+        {
+        case 2: 
+          return;
+        }
+      }
+      finally {}
+      paramMessage = paramMessage.getData();
+      this.a.b(paramMessage.getDouble("startTime"), paramMessage.getStringArray("pinyins"));
+      this.a.a(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbyy
  * JD-Core Version:    0.7.0.1
  */

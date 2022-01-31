@@ -1,41 +1,42 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 class vfc
-  implements vqk<Boolean, vqp>
+  extends ved
 {
-  vfc(vfa paramvfa, long paramLong, int paramInt) {}
-  
-  public Void a(Boolean paramBoolean, vqp paramvqp)
+  vfc(vez paramvez, StoryVideoItem paramStoryVideoItem)
   {
-    if ((!paramBoolean.booleanValue()) || (paramvqp == null) || (paramvqp.jdField_a_of_type_AndroidGraphicsBitmap == null))
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    Object localObject = (String)a("result");
+    try
     {
-      ved.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
-    }
-    ved.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramvqp.jdField_a_of_type_Int));
-    if (paramvqp.jdField_a_of_type_Int >= this.jdField_a_of_type_Vfa.a.length)
-    {
-      ved.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramvqp.jdField_a_of_type_Int) });
-      return null;
-    }
-    ved.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramvqp.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Vfa.a[paramvqp.jdField_a_of_type_Int] = vfd.a(this.jdField_a_of_type_Vfa.a[paramvqp.jdField_a_of_type_Int], paramvqp.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Vfa.a[paramvqp.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramvqp.jdField_a_of_type_JavaLangString;
-    if (paramvqp.jdField_a_of_type_Long > 0L)
-    {
-      this.jdField_a_of_type_Vfa.a[paramvqp.jdField_a_of_type_Int].jdField_a_of_type_Int = ((int)paramvqp.jdField_a_of_type_Long / 1000);
-      ved.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix start time : %d ", Integer.valueOf(this.jdField_a_of_type_Vfa.a[paramvqp.jdField_a_of_type_Int].jdField_a_of_type_Int));
-      if ((this.jdField_a_of_type_Vfa.a[paramvqp.jdField_a_of_type_Int].b <= 0) && (this.jdField_a_of_type_Vfa.a.length == 1))
+      localObject = new URI((String)localObject);
+      if ("file".equals(((URI)localObject).getScheme()))
       {
-        this.jdField_a_of_type_Vfa.a[paramvqp.jdField_a_of_type_Int].b = ((int)this.jdField_a_of_type_Long);
-        ved.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix end time : %d ", Integer.valueOf(this.jdField_a_of_type_Int));
+        localObject = new File((URI)localObject);
+        if (((File)localObject).exists())
+        {
+          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
+          return true;
+        }
       }
     }
-    this.jdField_a_of_type_Vfa.i();
-    return null;
+    catch (URISyntaxException localURISyntaxException)
+    {
+      wsv.c(this.b, "Error: 保存投票失败", localURISyntaxException);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,57 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
 public class awlr
-  extends awkf<awoi, awwr>
+  implements alkr
 {
-  public awlr(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment, ListView paramListView, baxy parambaxy)
-  {
-    super(paramListView, parambaxy);
-  }
+  public void a(boolean paramBoolean, String paramString, long paramLong1, long paramLong2) {}
   
-  protected awrd<awoi, awwr> a(int paramInt)
-  {
-    return new awqs(this.jdField_a_of_type_Baxy);
-  }
+  public void a(boolean paramBoolean, String paramString, long paramLong, PersonalityLabelInfo paramPersonalityLabelInfo, int paramInt, byte[] paramArrayOfByte) {}
   
-  protected awws a(int paramInt, ViewGroup paramViewGroup)
+  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (awwa.a(SelectMemberContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentSelectMemberContactSearchFragment))) {
-      return new awwl(paramViewGroup, 2131562379);
+    switch (paramInt)
+    {
     }
-    return new awwl(paramViewGroup, 2131562380);
+    do
+    {
+      return;
+      if (paramBoolean)
+      {
+        paramObject = (Object[])paramObject;
+        a(true, (String)paramObject[0], (PersonalityLabel)paramObject[1], (byte[])paramObject[2], ((Integer)paramObject[3]).intValue());
+        return;
+      }
+      a(false, null, null, null, 0);
+      return;
+      paramObject = (Object[])paramObject;
+      if (paramBoolean)
+      {
+        a(true, (String)paramObject[0], ((Long)paramObject[1]).longValue(), (PersonalityLabelInfo)paramObject[2], ((Integer)paramObject[3]).intValue(), (byte[])paramObject[4]);
+        return;
+      }
+      if ((paramObject != null) && (paramObject.length > 0))
+      {
+        a(false, (String)paramObject[0], ((Long)paramObject[1]).longValue(), null, 0, null);
+        return;
+      }
+      a(false, "", -1L, null, 0, null);
+      return;
+      paramObject = (Object[])paramObject;
+      if (paramBoolean)
+      {
+        a(true, (String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
+        return;
+      }
+    } while (paramObject == null);
+    a(false, (String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awlr
  * JD-Core Version:    0.7.0.1
  */

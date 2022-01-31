@@ -1,31 +1,51 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+
 public class alib
+  extends bdqc
 {
-  public double a;
-  public int a;
-  public String a;
-  public alic[] a;
-  public int b;
+  public alib(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, int paramInt) {}
   
-  public String toString()
+  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    int i;
-    if ((this.jdField_a_of_type_ArrayOfAlic != null) && (this.jdField_a_of_type_ArrayOfAlic.length > 0)) {
-      i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, result=", Boolean.valueOf(paramBoolean), ", data=", paramObject });
     }
-    while (i < this.jdField_a_of_type_ArrayOfAlic.length)
+    if ((paramObject != null) && ((paramObject instanceof HashMap)))
     {
-      localStringBuilder.append("\n index:").append(i).append(this.jdField_a_of_type_ArrayOfAlic[i].toString()).append('\n');
-      i += 1;
-      continue;
-      localStringBuilder.append("\n only have one itemContent:" + this.jdField_a_of_type_JavaLangString + ",prob:" + this.jdField_a_of_type_Double).append('\n');
+      paramObject = (HashMap)paramObject;
+      localObject = (String)paramObject.get("optFrom");
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && ("newActionFloatView".equals(localObject))) {}
     }
-    return localStringBuilder.toString();
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.removeObserver(this);
+    if (paramBoolean)
+    {
+      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 0, 21, this.jdField_a_of_type_Int, null);
+      return;
+    }
+    Object localObject = new Bundle();
+    paramObject = (String)paramObject.get("url");
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, activityUrl=", paramObject });
+    }
+    ((Bundle)localObject).putString("activityUrl", paramObject);
+    ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 1, 22, this.jdField_a_of_type_Int, (Bundle)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alib
  * JD-Core Version:    0.7.0.1
  */

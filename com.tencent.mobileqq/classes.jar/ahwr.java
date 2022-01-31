@@ -1,71 +1,32 @@
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ahwr
+  implements bhqd
 {
-  private static WeakReference<ahwt> a;
-  private static WeakReference<ahws> b;
+  public ahwr(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, bhpy parambhpy) {}
   
-  public static void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (b != null) {}
-    for (ahws localahws = (ahws)b.get();; localahws = null)
+    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
+    if ((paramView == null) || (paramView.isEmpty())) {}
+    do
     {
-      if (localahws != null) {
-        localahws.j();
-      }
       return;
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    if (b != null) {}
-    for (ahws localahws = (ahws)b.get();; localahws = null)
-    {
-      if (localahws != null) {
-        localahws.b(paramInt);
-      }
-      return;
-    }
-  }
-  
-  public static void a(ahws paramahws)
-  {
-    b = new WeakReference(paramahws);
-  }
-  
-  public static void a(ahwt paramahwt)
-  {
-    a = new WeakReference(paramahwt);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (b != null) {}
-    for (ahws localahws = (ahws)b.get();; localahws = null)
-    {
-      if (localahws != null) {
-        localahws.c(paramString);
-      }
-      return;
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (a != null) {}
-    for (ahwt localahwt = (ahwt)a.get();; localahwt = null)
-    {
-      if (localahwt != null) {
-        localahwt.a(paramString, paramInt);
-      }
-      return;
-    }
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(paramView);
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new ahws(this));
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
+    } while (!this.jdField_a_of_type_Bhpy.isShowing());
+    this.jdField_a_of_type_Bhpy.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwr
  * JD-Core Version:    0.7.0.1
  */

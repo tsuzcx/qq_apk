@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.pendant;
 
-import lhl;
+import ljo;
 
 public class PendantItem
-  extends lhl
+  extends ljo
 {
   public static final int Category_BeautyMakeup = 3;
   public static final int Category_Face = 0;
@@ -155,7 +155,7 @@ public class PendantItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.PendantItem
  * JD-Core Version:    0.7.0.1
  */

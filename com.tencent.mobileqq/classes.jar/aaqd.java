@@ -1,31 +1,39 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
 public class aaqd
-  implements TopGestureLayout.InterceptTouchEventListener
+  extends BroadcastReceiver
 {
-  public aaqd(ChatFragment paramChatFragment) {}
+  private aaqd(GdtVideoCommonView paramGdtVideoCommonView) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a != null) {
-      this.a.a.b(paramMotionEvent);
+    int i;
+    if (("android.intent.action.HEADSET_PLUG".equals(paramIntent.getAction())) && (paramIntent.hasExtra("state")))
+    {
+      i = paramIntent.getIntExtra("state", 0);
+      if (i != 1) {
+        break label42;
+      }
+      aanp.a("GdtVideoCommonView", "ACTION_HEADSET_PLUG HEADSET on");
     }
-  }
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      return this.a.a.a(paramMotionEvent);
-    }
-    return true;
+    label42:
+    do
+    {
+      do
+      {
+        return;
+      } while (i != 0);
+      aanp.a("GdtVideoCommonView", "ACTION_HEADSET_PLUG HEADSET off " + this.a.a);
+    } while (!this.a.a);
+    GdtVideoCommonView.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqd
  * JD-Core Version:    0.7.0.1
  */

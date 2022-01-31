@@ -1,47 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-public abstract class akkr
-  extends akkm
+public final class akkr
+  implements absf
 {
-  public akkr(QQAppInterface paramQQAppInterface, akkq paramakkq, Class<? extends auko> paramClass)
+  public akkr(View paramView, absi paramabsi, long paramLong, int paramInt, String paramString) {}
+  
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    super(paramQQAppInterface, paramakkq, paramClass);
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Absi, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login failed," + paramString);
   }
   
-  protected void a()
+  public void onPermission(int paramInt)
   {
-    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject = localaukp.a(this.jdField_a_of_type_JavaLangClass, false, null, null, null, null, null, null);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        auko localauko = (auko)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(a(localauko), localauko);
-      }
-    }
-    localaukp.a();
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Absi, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login permision code");
   }
   
-  public void a(auko paramauko, int paramInt, akks paramakks)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    String str = a(paramauko);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramauko);
-    if (paramauko.getStatus() == 1000)
-    {
-      this.a.a(paramauko, 0, paramInt, paramakks);
-      return;
-    }
-    this.a.a(paramauko, 1, paramInt, paramakks);
+    ApolloRender.getLocationDoLocation(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Absi, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkr
  * JD-Core Version:    0.7.0.1
  */

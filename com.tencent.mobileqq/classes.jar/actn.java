@@ -1,16 +1,20 @@
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public abstract class actn
-  extends acva
+public class actn
+  implements Comparator<RecentUser>
 {
-  public int a;
-  public View a;
-  public TextView a;
+  public actn(ForwardRecentActivity paramForwardRecentActivity) {}
+  
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  {
+    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     actn
  * JD-Core Version:    0.7.0.1
  */

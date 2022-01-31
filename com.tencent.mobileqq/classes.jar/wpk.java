@@ -1,82 +1,36 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wpk
+  extends QQUIEventReceiver<MystoryListView, ukk>
 {
-  private volatile int jdField_a_of_type_Int = 4;
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  
-  public COMM.StCommonExt a()
+  public wpk(@NonNull MystoryListView paramMystoryListView)
   {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+    super(paramMystoryListView);
   }
   
-  public String a()
+  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull ukk paramukk)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = bbax.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
+    paramMystoryListView.q();
+    paramukk = (wps)paramMystoryListView.a("FeedSegment");
+    if (paramukk != null) {
+      paramukk.j();
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(COMM.StCommonExt paramStCommonExt)
-  {
-    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString != null) {
-      bbax.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
+    paramMystoryListView = (wrh)paramMystoryListView.a("NewMyStorySegment");
+    if (paramMystoryListView != null) {
+      paramMystoryListView.a(false);
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(boolean paramBoolean)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public COMM.StCommonExt b()
-  {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int != 4;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Int == 2;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_Int == 3;
+    return ukk.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpk
  * JD-Core Version:    0.7.0.1
  */

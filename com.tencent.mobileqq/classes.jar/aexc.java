@@ -1,37 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONObject;
-
-class aexc
-  implements aexe
+public class aexc
+  extends aexk
 {
-  aexc(aexb paramaexb) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void a(List<aewf> paramList, String paramString1, String paramString2)
+  public aexc(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (TextUtils.isEmpty(paramString1))
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
     {
-      paramString1 = new StringBuilder().append("OnImgUpdated: empty data or text ").append(paramString1).append(" ");
-      if (paramList == null) {}
-      for (paramList = "null";; paramList = Integer.valueOf(paramList.size()))
+      do
       {
-        QLog.i("StickerRecManager", 2, paramList);
-        return;
-      }
-    }
-    paramList = bhah.a(paramList);
-    if (paramList == null)
-    {
-      QLog.i("StickerRecManager", 2, "OnImgUpdated: failed to parse img data");
-      return;
-    }
-    bhah.a().a(paramString1, paramList.toString(), paramString2);
+        return false;
+      } while (!(paramObject instanceof aexc));
+      paramObject = (aexc)paramObject;
+    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.b != paramObject.b));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexc
  * JD-Core Version:    0.7.0.1
  */

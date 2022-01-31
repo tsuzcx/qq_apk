@@ -10,6 +10,8 @@ import java.util.Random;
 
 public class TriggerStateItem
 {
+  public static final int NEW_VERSION = 2;
+  public static final int OLD_VERSION = 1;
   private static final String STATE_IDLE = "idle";
   private static final long STATE_TIME = 1000L;
   private static final String TAG = TriggerStateItem.class.getSimpleName();
@@ -24,6 +26,7 @@ public class TriggerStateItem
   private long mStartChangeTime = 0L;
   private Map<Integer, List<TriggerStateEdge>> mStateItemGraph = new HashMap();
   private Map<String, Integer> mStateMap = new HashMap();
+  private int mStateVersion = 1;
   private int mTriggerType = 1;
   private Random rand = new Random();
   
@@ -148,7 +151,10 @@ public class TriggerStateItem
   
   private boolean isTooShortToChangeState()
   {
-    return System.currentTimeMillis() - this.mLastUpdateStateTime < 1000L;
+    if (this.mStateVersion == 1) {
+      return System.currentTimeMillis() - this.mLastUpdateStateTime < 1000L;
+    }
+    return false;
   }
   
   private void resetAllDelayTime()
@@ -250,6 +256,11 @@ public class TriggerStateItem
       return;
     }
     this.mIsStateValid = false;
+  }
+  
+  public void setStateVersion(int paramInt)
+  {
+    this.mStateVersion = paramInt;
   }
   
   public void updateState()

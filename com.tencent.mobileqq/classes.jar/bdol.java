@@ -1,12 +1,17 @@
-public abstract interface bdol
+public class bdol
 {
-  public abstract void a();
-  
-  public abstract void a(bdnp parambdnp);
+  public float a;
+  public int a;
+  public String a;
+  public String[] a;
+  public float b;
+  public int b;
+  public float c;
+  public float d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdol
  * JD-Core Version:    0.7.0.1
  */

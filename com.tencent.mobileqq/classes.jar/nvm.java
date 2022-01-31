@@ -1,22 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import java.util.Comparator;
+import org.json.JSONObject;
 
 public class nvm
-  implements arbk
+  implements Comparator<JSONObject>
 {
-  public nvm(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  String a;
   
-  public void a(HotPicData paramHotPicData)
+  public nvm(String paramString)
   {
-    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
-      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
-    }
+    this.a = paramString;
+  }
+  
+  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  {
+    long l = paramJSONObject1.optLong(this.a);
+    return (int)(paramJSONObject2.optLong(this.a) - l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvm
  * JD-Core Version:    0.7.0.1
  */

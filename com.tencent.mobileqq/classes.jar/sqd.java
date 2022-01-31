@@ -1,37 +1,61 @@
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.POI;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONObject;
 
 public class sqd
-  extends syn
 {
-  List<AddressItem> a = new ArrayList();
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
   
-  public sqd(qqstory_service.RspBatchGetPOIList paramRspBatchGetPOIList)
+  public sqd() {}
+  
+  public sqd(JSONObject paramJSONObject)
   {
-    super(paramRspBatchGetPOIList.result);
-    paramRspBatchGetPOIList = paramRspBatchGetPOIList.poi_list.get();
-    if (paramRspBatchGetPOIList != null)
+    if (paramJSONObject == null) {}
+    do
     {
-      paramRspBatchGetPOIList = paramRspBatchGetPOIList.iterator();
-      while (paramRspBatchGetPOIList.hasNext())
-      {
-        qqstory_service.POI localPOI = (qqstory_service.POI)paramRspBatchGetPOIList.next();
-        AddressItem localAddressItem = AddressItem.getAddressFromProtoObject(localPOI.address);
-        localAddressItem.poiType = localPOI.poi_type.get();
-        this.a.add(localAddressItem);
+      return;
+      if (paramJSONObject.has("busiType")) {
+        this.jdField_a_of_type_Int = paramJSONObject.getInt("busiType");
       }
-    }
+      if (paramJSONObject.has("vid")) {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("vid");
+      }
+      if (paramJSONObject.has("width")) {
+        this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
+      }
+      if (paramJSONObject.has("height")) {
+        this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
+      }
+      if (paramJSONObject.has("duration")) {
+        this.jdField_d_of_type_Int = paramJSONObject.getInt("duration");
+      }
+      if (paramJSONObject.has("poster")) {
+        this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("poster");
+      }
+      if (paramJSONObject.has("title")) {
+        this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("title");
+      }
+      if (paramJSONObject.has("xgFileSize")) {
+        this.jdField_a_of_type_Long = paramJSONObject.getLong("xgFileSize");
+      }
+    } while (!paramJSONObject.has("videoUrl"));
+    this.jdField_d_of_type_JavaLangString = paramJSONObject.getString("videoUrl");
+  }
+  
+  public String toString()
+  {
+    return "VideoInfo{busiType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", coverUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", XGFileSize=" + this.jdField_a_of_type_Long + ", videoUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqd
  * JD-Core Version:    0.7.0.1
  */

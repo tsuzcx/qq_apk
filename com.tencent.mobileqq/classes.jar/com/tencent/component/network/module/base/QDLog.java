@@ -3,6 +3,7 @@ package com.tencent.component.network.module.base;
 public class QDLog
 {
   public static final String TAG_DOWNLOAD = "downloader";
+  public static final String TAG_DOWNLOAD_RANGE = "downloader_RANGE";
   public static final String TAG_DOWNLOAD_RESULT = "downloader_result";
   private static com.tencent.component.network.module.base.inter.Log sLog;
   
@@ -111,7 +112,7 @@ public class QDLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.module.base.QDLog
  * JD-Core Version:    0.7.0.1
  */

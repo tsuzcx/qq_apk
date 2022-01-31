@@ -1,28 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-class uow
-  extends SimpleJob
+public class uow
+  extends ugz
 {
-  uow(uov paramuov, String paramString, uoy paramuoy, boolean paramBoolean)
+  public final int a;
+  public CommentLikeFeedItem a;
+  public final String a;
+  public int b = 0;
+  public int c;
+  
+  public uow(int paramInt1, String paramString, int paramInt2)
   {
-    super(paramString);
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public uow(int paramInt1, String paramString, int paramInt2, CommentLikeFeedItem paramCommentLikeFeedItem)
   {
-    this.jdField_a_of_type_Uov.a();
-    this.jdField_a_of_type_Uov.b();
-    ((tbw)tcz.a(17)).a(this.jdField_a_of_type_Uoy.a, uov.a(this.jdField_a_of_type_Uov).a, uov.a(this.jdField_a_of_type_Uov).a(), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Uov.a("Q.qqstory.detail:CommentListPageLoader");
-    return null;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public String toString()
+  {
+    return "InteractionInfoChangeEvent{, feedId=" + this.jdField_a_of_type_JavaLangString + ", what=" + this.b + ", commentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem + ", commentId=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uow
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,6 @@ public abstract class BaseTask
   protected Handler mainHander = new Handler(Looper.getMainLooper());
   public String msg = "";
   public int retCode = -1;
-  protected Handler workHander;
   
   public BaseTask(Context paramContext)
   {
@@ -78,14 +77,6 @@ public abstract class BaseTask
   public int getStatus()
   {
     return this.mSatus;
-  }
-  
-  public Handler getWorkHander()
-  {
-    if (this.workHander == null) {
-      this.workHander = new Handler(Looper.getMainLooper(), this);
-    }
-    return this.workHander;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -202,17 +193,10 @@ public abstract class BaseTask
       throw localObject;
     }
   }
-  
-  public void setWorkLooper(Looper paramLooper)
-  {
-    if (this.workHander == null) {
-      this.workHander = new Handler(paramLooper, this);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tfs.BaseTask
  * JD-Core Version:    0.7.0.1
  */

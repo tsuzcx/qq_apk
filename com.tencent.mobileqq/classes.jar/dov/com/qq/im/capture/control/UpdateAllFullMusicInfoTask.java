@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.control;
 
-import aukp;
-import aukr;
-import bjav;
+import awbw;
+import awby;
+import blmf;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.automator.ParallGroup;
@@ -17,7 +17,7 @@ import java.util.List;
 public class UpdateAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bjav.a(2);
+  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)blmf.a(2);
   private ArrayList<FlowMusic> jdField_a_of_type_JavaUtilArrayList;
   private List<FlowMusic> jdField_a_of_type_JavaUtilList = new ArrayList();
   private ArrayList<FlowMusic> b = new ArrayList();
@@ -48,10 +48,10 @@ public class UpdateAllFullMusicInfoTask
   {
     if (!this.b.isEmpty())
     {
-      aukr localaukr = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.a();
+      awby localawby = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.a();
       try
       {
-        localaukr.a();
+        localawby.a();
         Iterator localIterator = this.b.iterator();
         while (localIterator.hasNext())
         {
@@ -61,9 +61,9 @@ public class UpdateAllFullMusicInfoTask
       }
       finally
       {
-        localaukr.b();
+        localawby.b();
       }
-      localaukr.b();
+      localawby.b();
     }
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(4, true, this.jdField_a_of_type_JavaUtilArrayList);
@@ -133,7 +133,7 @@ public class UpdateAllFullMusicInfoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.control.UpdateAllFullMusicInfoTask
  * JD-Core Version:    0.7.0.1
  */

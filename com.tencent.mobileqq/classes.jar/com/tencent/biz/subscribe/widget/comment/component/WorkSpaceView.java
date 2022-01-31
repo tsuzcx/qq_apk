@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import wve;
+import yjx;
 
 public class WorkSpaceView
   extends FrameLayout
@@ -22,7 +22,7 @@ public class WorkSpaceView
   private Handler jdField_a_of_type_AndroidOsHandler;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private wve jdField_a_of_type_Wve;
+  private yjx jdField_a_of_type_Yjx;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = -1;
@@ -76,8 +76,8 @@ public class WorkSpaceView
       }
       paramInt = getWidth() * i - getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
-      if (this.jdField_a_of_type_Wve != null) {
-        this.jdField_a_of_type_Wve.a(i);
+      if (this.jdField_a_of_type_Yjx != null) {
+        this.jdField_a_of_type_Yjx.a(i);
       }
       invalidate();
       return;
@@ -299,14 +299,14 @@ public class WorkSpaceView
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  public void setOnScreenChangeListener(wve paramwve)
+  public void setOnScreenChangeListener(yjx paramyjx)
   {
-    this.jdField_a_of_type_Wve = paramwve;
+    this.jdField_a_of_type_Yjx = paramyjx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.comment.component.WorkSpaceView
  * JD-Core Version:    0.7.0.1
  */

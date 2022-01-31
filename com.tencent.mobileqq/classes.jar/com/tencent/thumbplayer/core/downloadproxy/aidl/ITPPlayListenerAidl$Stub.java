@@ -59,7 +59,7 @@ public abstract class ITPPlayListenerAidl$Stub
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
-      onDownloadProgressUpdate(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong(), paramParcel1.readLong());
+      onDownloadProgressUpdate(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong(), paramParcel1.readLong(), paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
     case 2: 
@@ -137,7 +137,7 @@ public abstract class ITPPlayListenerAidl$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl.Stub
  * JD-Core Version:    0.7.0.1
  */

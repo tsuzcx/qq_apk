@@ -1,16 +1,10 @@
-import android.content.Context;
-
-public class ahqd
-  extends ahpz
+public abstract interface ahqd
 {
-  public ahqd(Context paramContext)
-  {
-    this.a = "";
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqd
  * JD-Core Version:    0.7.0.1
  */

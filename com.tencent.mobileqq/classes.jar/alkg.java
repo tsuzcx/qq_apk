@@ -1,47 +1,35 @@
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BaseActivity.MyShakeListener.1;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
 public class alkg
+  extends alxv
 {
-  public float a;
-  public int a;
-  public String a;
-  public float b = 0.0F;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e = 0.0F;
-  public float f = 1.0F;
-  public float g = 0.0F;
-  public float h = 1.0F;
-  public float i = 0.0F;
-  
-  public alkg()
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-  }
-  
-  public alkg(int paramInt)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("KeyingParams {keyType: ").append(this.jdField_a_of_type_Int).append(", screenColorR: ").append(this.jdField_a_of_type_Float).append(", screenColorG: ").append(this.b).append(", screenColorB: ").append(this.c).append(", uA: ").append(this.d).append(", uD: ").append(this.e).append(", u_threshold: ").append(this.f).append(", u_clipBlack: ").append(this.g).append(", u_clipWhite: ").append(this.h).append("}");
-    return localStringBuilder.toString();
+    Object localObject = BaseActivity.sTopActivity;
+    if (localObject == null) {
+      ScreenShot.a("MyShakeListener - top activity is null");
+    }
+    do
+    {
+      return;
+      if (!((BaseActivity)localObject).mCurrentActivityShakeFlag)
+      {
+        ScreenShot.a("MyShakeListener - shake flag is false");
+        return;
+      }
+    } while (ThreadManager.getSubThreadHandler().hasMessages(1001));
+    localObject = ThreadManager.getSubThreadHandler().obtainMessage(1001, new BaseActivity.MyShakeListener.1(this, (BaseActivity)localObject));
+    ThreadManager.getSubThreadHandler().sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alkg
  * JD-Core Version:    0.7.0.1
  */

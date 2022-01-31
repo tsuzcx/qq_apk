@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.richmedia;
 
 import android.content.Intent;
-import avra;
-import avrg;
-import avrl;
-import uog;
+import axiy;
+import axje;
+import axjj;
+import wcy;
 
 class NewFlowCameraActivity$26
   implements Runnable
@@ -13,9 +13,9 @@ class NewFlowCameraActivity$26
   
   public void run()
   {
-    Object localObject = avrg.a().a().a(this.this$0.d);
+    Object localObject = axje.a().a().a(this.this$0.d);
     if (localObject != null) {
-      ((avra)localObject).a(103);
+      ((axiy)localObject).a(103);
     }
     for (;;)
     {
@@ -25,13 +25,13 @@ class NewFlowCameraActivity$26
       this.this$0.a.b();
       this.this$0.finish();
       return;
-      this.this$0.m();
+      this.this$0.l();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.26
  * JD-Core Version:    0.7.0.1
  */

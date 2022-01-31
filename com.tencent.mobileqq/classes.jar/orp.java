@@ -1,20 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class orp
-  extends atzn
 {
-  public orp(KandianMergeManager paramKandianMergeManager) {}
+  public int a;
+  public String a;
+  public List<Integer> a;
+  public String b;
+  public List<Integer> b;
+  public String c;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    QLog.d("KandianMergeManager", 1, "onGameCenterMsgReceive | redTouchObserver received a notification ");
-    KandianMergeManager.a(this.a);
-  }
+  public orp(oro paramoro) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     orp
  * JD-Core Version:    0.7.0.1
  */

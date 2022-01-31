@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.config;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ood;
+import oso;
 
 public class AladdinConfigServlet$ConfigResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<ConfigResult> CREATOR = new ood();
+  public static final Parcelable.Creator<ConfigResult> CREATOR = new oso();
   private final int a;
   private final int b;
   private final int c;
@@ -61,7 +61,7 @@ public class AladdinConfigServlet$ConfigResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult
  * JD-Core Version:    0.7.0.1
  */

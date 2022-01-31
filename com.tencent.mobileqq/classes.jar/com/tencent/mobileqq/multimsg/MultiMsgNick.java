@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.multimsg;
 
-import auko;
+import awbv;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="uin,uniseq")
 public class MultiMsgNick
-  extends auko
+  extends awbv
 {
   public String nick;
   public String uin;
@@ -14,7 +14,7 @@ public class MultiMsgNick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgNick
  * JD-Core Version:    0.7.0.1
  */

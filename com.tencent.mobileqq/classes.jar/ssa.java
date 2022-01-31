@@ -1,35 +1,30 @@
-import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
-import android.view.View;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class ssa
-  implements RecyclerView.OnChildAttachStateChangeListener
+public class ssa
+  implements DialogInterface.OnClickListener
 {
-  ssa(srs paramsrs) {}
+  public ssa(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void onChildViewAttachedToWindow(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (srk)srs.a(this.a).getChildViewHolder(paramView);
-    if ((paramView != null) && (paramView == srs.a(this.a)))
+    switch (paramInt)
     {
-      paramView.b();
-      ved.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
+    default: 
+      return;
+    case 1: 
+      ThreadManager.post(new ReadInJoyNewSearchActivity.5.1(this), 10, null, true);
+      return;
     }
-  }
-  
-  public void onChildViewDetachedFromWindow(View paramView)
-  {
-    paramView = (srk)srs.a(this.a).getChildViewHolder(paramView);
-    if ((paramView != null) && (paramView == srs.a(this.a)))
-    {
-      paramView.c();
-      ved.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssa
  * JD-Core Version:    0.7.0.1
  */

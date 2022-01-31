@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1;
 
 public class abzr
   implements DialogInterface.OnClickListener
 {
-  public abzr(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public abzr(ArkFullScreenAppActivity.8.1.1 param1) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(this.a.c);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzr
  * JD-Core Version:    0.7.0.1
  */

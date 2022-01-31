@@ -1,12 +1,12 @@
 package cooperation.qzone.zipanimate;
 
-import bhvj;
-import bhvk;
+import bjwu;
+import bjwv;
 
 public class ZipAnimationDrawable$1$1
   implements Runnable
 {
-  public ZipAnimationDrawable$1$1(bhvk parambhvk) {}
+  public ZipAnimationDrawable$1$1(bjwv parambjwv) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ZipAnimationDrawable$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.zipanimate.ZipAnimationDrawable.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,115 @@
-import android.graphics.RectF;
-import android.os.Build.VERSION;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-import dov.com.qq.im.ae.play.ScaleMoveImageViewer;
+import android.os.Bundle;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class biyd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends biyb
 {
-  public biyd(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, ScaleMoveImageViewer paramScaleMoveImageViewer, NodeItem paramNodeItem) {}
+  public long a;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
   
-  public void onGlobalLayout()
+  public void a(Bundle paramBundle)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_DovComQqImAePlayScaleMoveImageViewer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
+    super.a(paramBundle);
+    this.e = paramBundle.getString("_mqqpay_payapi_serialnumber");
+    this.f = paramBundle.getString("_mqqpay_payapi_callbackscheme");
+    this.g = paramBundle.getString("_mqqpay_payapi_pubacc");
+    this.h = paramBundle.getString("_mqqpay_payapi_pubacchint");
+    this.i = paramBundle.getString("_mqqpay_payapi_tokenid");
+    this.j = paramBundle.getString("_mqqpay_payapi_nonce");
+    this.jdField_a_of_type_Long = paramBundle.getLong("_mqqpay_payapi_timeStamp");
+    this.k = paramBundle.getString("_mqqpay_payapi_bargainorId");
+    this.l = paramBundle.getString("_mqqpay_payapi_sigType");
+    this.m = paramBundle.getString("_mqqpay_payapi_sig");
+    this.n = paramBundle.getString("_mqqpay_payapi_packageName");
+  }
+  
+  public void a(String paramString)
+  {
+    this.c = "browser";
+    this.d = "pay";
+    this.jdField_a_of_type_Int = 1;
+    try
     {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_DovComQqImAePlayScaleMoveImageViewer.getLayoutParams();
-      int i = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.left * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int j = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.top * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int k = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.right) * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int m = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.bottom) * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      localMarginLayoutParams.leftMargin = i;
-      localMarginLayoutParams.topMargin = j;
-      localMarginLayoutParams.rightMargin = k;
-      localMarginLayoutParams.bottomMargin = m;
-      localMarginLayoutParams.width = (AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - k - i);
-      localMarginLayoutParams.height = (AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - m - j);
-      this.jdField_a_of_type_DovComQqImAePlayScaleMoveImageViewer.setLayoutParams(localMarginLayoutParams);
-      AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment, this.jdField_a_of_type_DovComQqImAePlayScaleMoveImageViewer, AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment), AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      if (QLog.isDebugVersion()) {
-        QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "initAllNodeViewer onGlobalLayout: wxh=", Integer.valueOf(localMarginLayoutParams.width), "x", Integer.valueOf(localMarginLayoutParams.height) });
+      paramString = new JSONObject(paramString);
+      JSONObject localJSONObject = paramString.optJSONObject("action");
+      if (localJSONObject != null)
+      {
+        String str = localJSONObject.optString("name");
+        if (str != null)
+        {
+          if (!str.equals("pay")) {
+            return;
+          }
+          this.e = localJSONObject.optString("identifier");
+          localJSONObject = paramString.optJSONObject("application");
+          if (localJSONObject != null)
+          {
+            this.jdField_a_of_type_JavaLangString = localJSONObject.optString("appId");
+            this.b = localJSONObject.optString("sdkVersion");
+            this.n = localJSONObject.optString("pkgName");
+            this.f = localJSONObject.optString("urlScheme");
+          }
+          paramString = paramString.optJSONObject("params");
+          if (paramString != null)
+          {
+            this.i = paramString.optString("tokenId");
+            this.jdField_a_of_type_Long = paramString.optLong("timeStamp");
+            this.j = paramString.optString("nonce");
+            this.k = paramString.optString("bargainorId");
+            this.l = "HMAC-SHA1";
+            this.m = paramString.optString("sig");
+            return;
+          }
+        }
       }
-      return;
-      this.jdField_a_of_type_DovComQqImAePlayScaleMoveImageViewer.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    while ((TextUtils.isEmpty(this.c)) || ((!this.c.equals("native")) && (!this.c.equals("browser"))) || (TextUtils.isEmpty(this.n)) || ((!this.c.equals("browser")) && (TextUtils.isEmpty(this.f))) || (TextUtils.isEmpty(this.i)) || (TextUtils.isEmpty(this.k)) || (TextUtils.isEmpty(this.j)) || (TextUtils.isEmpty(this.m)) || (TextUtils.isEmpty(this.l)) || (this.jdField_a_of_type_Long <= 0L) || (TextUtils.isEmpty(this.e))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("&sn=" + this.e);
+    localStringBuilder.append("&cs=" + this.f);
+    localStringBuilder.append("&pa=" + this.g);
+    localStringBuilder.append("&pah=" + this.h);
+    localStringBuilder.append("&ti=" + this.i);
+    localStringBuilder.append("&ne=" + this.j);
+    localStringBuilder.append("&ts=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append("&bi=" + this.k);
+    localStringBuilder.append("&st=" + this.l);
+    localStringBuilder.append("&sg=" + this.m);
+    localStringBuilder.append("&pn=" + this.n);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biyd
  * JD-Core Version:    0.7.0.1
  */

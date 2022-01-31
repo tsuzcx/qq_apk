@@ -1,21 +1,23 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
-class nyz
-  implements ViewFactory.FoundClickableViewListener
+public class nyz
+  implements nbs
 {
-  nyz(nyy paramnyy, BaseData paramBaseData, Context paramContext, ViewBase paramViewBase) {}
+  public nyz(ReadInJoyFeedsActivity.1 param1) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void loaded(String paramString, int paramInt)
   {
-    paramViewBase.setOnClickListener(new nza(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyz
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import vzl;
+import xod;
 
 class ReadInJoyAtlasCommentFragment$2
   implements Runnable
@@ -13,8 +13,8 @@ class ReadInJoyAtlasCommentFragment$2
   {
     if ((!this.this$0.a) && (this.this$0.getView() != null))
     {
-      int i = this.this$0.getView().getHeight() - vzl.e(this.this$0.getActivity());
-      View localView = this.this$0.getView().findViewById(2131374783);
+      int i = this.this$0.getView().getHeight() - xod.e(this.this$0.getActivity());
+      View localView = this.this$0.getView().findViewById(2131375246);
       if (localView != null)
       {
         ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
@@ -29,7 +29,7 @@ class ReadInJoyAtlasCommentFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment.2
  * JD-Core Version:    0.7.0.1
  */

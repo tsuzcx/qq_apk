@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aulz;
+import awbv;
+import awdg;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
@@ -27,7 +27,7 @@ public class RouterMsgRecord
   public static final int status_transfer_pause = 5;
   public static final int status_transfer_suc = 3;
   public static final int status_transfering = 2;
-  @aulz
+  @awdg
   public long entityID;
   public long fileSize;
   public String filename;
@@ -68,7 +68,7 @@ public class RouterMsgRecord
     return null;
   }
   
-  public Class<? extends auko> getClassForTable()
+  public Class<? extends awbv> getClassForTable()
   {
     return RouterMsgRecord.class;
   }
@@ -88,7 +88,7 @@ public class RouterMsgRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RouterMsgRecord
  * JD-Core Version:    0.7.0.1
  */

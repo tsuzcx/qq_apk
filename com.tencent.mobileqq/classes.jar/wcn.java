@@ -1,12 +1,54 @@
-public abstract interface wcn
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class wcn
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public wcn(QQStoryMainActivity paramQQStoryMainActivity, Intent paramIntent) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
+        }
+        ndq.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
+        try
+        {
+          paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
+          if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->finish--send callback using PendingIntent");
+            }
+            paramDialogInterface.send();
+          }
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
+          return;
+        }
+        catch (Throwable paramDialogInterface) {}
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog ", paramDialogInterface);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->qbShowShareResultDialog--stay");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcn
  * JD-Core Version:    0.7.0.1
  */

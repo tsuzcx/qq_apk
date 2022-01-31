@@ -1,62 +1,27 @@
 import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity.4.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class abza
-  extends AccountObserver
+  implements View.OnClickListener
 {
-  public abza(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public abza(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  public void onClick(View paramView)
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte, paramInt2);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), RegisterQQNumberActivity.a(this.a), paramString2, paramString1 }));
+    paramView = this.a.getIntent();
+    paramView.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+    ahik.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), paramView);
+    if (AddRequestActivity.a(this.a) != null) {
+      azmj.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
     }
-    RegisterQQNumberActivity.a(this.a);
-    paramString1 = new Intent(this.a, LoginActivity.class);
-    paramString1.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString1.putExtra("tab_index", MainFragment.b);
-    paramString1.addFlags(131072);
-    this.a.startActivity(paramString1);
-    this.a.finish();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    super.onLoginSuccess(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginSuccess ");
-    }
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    RegisterQQNumberActivity.a(this.a);
-    this.a.a.post(new RegisterQQNumberActivity.4.1(this));
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onUserCancel ");
-    }
+    azmj.b(this.a.app, "CliOper", "", "", "0X800AA42", "0X800AA42", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abza
  * JD-Core Version:    0.7.0.1
  */

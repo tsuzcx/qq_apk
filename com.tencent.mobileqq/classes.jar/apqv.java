@@ -1,55 +1,48 @@
-import android.graphics.drawable.Drawable;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.qphone.base.util.QLog;
 
 class apqv
-  implements bfqu
+  extends apkn<CustomEmotionData>
 {
   apqv(apqu paramapqu) {}
   
-  public void F()
+  public void a()
   {
-    apqu.a(this.a, false);
-    this.a.jdField_a_of_type_Apqs.o();
-  }
-  
-  public void G()
-  {
-    apqu.a(this.a, false);
-    if (apqu.a(this.a)) {
-      this.a.b(true);
-    }
-    if (apqu.b(this.a)) {
-      this.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelFavHelper", 2, "upload_finish");
     }
   }
   
-  public void H() {}
-  
-  public void a(float paramFloat)
+  public void a(int paramInt)
   {
-    apqu.a(this.a, true);
-    if (apqu.a(this.a) != null)
-    {
-      Drawable localDrawable = apqu.a(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelFavHelper", 2, "download_finish");
     }
-    if (paramFloat < 0.8F)
-    {
-      if (apqu.a(this.a) != null) {
-        apqu.a(this.a).setVisibility(8);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      }
+    this.a.j();
+    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
+  }
+  
+  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
+  {
+    this.a.j();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelFavHelper", 2, "roaming_finish");
     }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a != null) {
+      ((apkf)this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a.getManager(103)).b(this.a.jdField_a_of_type_Apkn);
+    }
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apqv
  * JD-Core Version:    0.7.0.1
  */

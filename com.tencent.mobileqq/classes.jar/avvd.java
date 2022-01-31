@@ -1,10 +1,11 @@
-public abstract interface avvd
+public class avvd
 {
-  public abstract void a(boolean paramBoolean);
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avvd
  * JD-Core Version:    0.7.0.1
  */

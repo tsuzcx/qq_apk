@@ -2,12 +2,12 @@ package com.tencent.mobileqq.minigame.jsapi.plugins;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.utils.NioSelectorThread;
 import com.tencent.mobileqq.mini.utils.NioSelectorThread.NioHandler;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.Inet4Address;
@@ -139,7 +139,7 @@ class UDPPlugin$UDPTask
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("udpTaskId", this.taskId);
       localJSONObject.put("event", "message");
-      NativeBuffer.packNativeBuffer(paramArrayOfByte, 0, paramInt, NativeBuffer.TYPE_BUFFER_NATIVE, "message", localJSONObject, GameLoadManager.g().getGameEngine().getNativeBufferPool());
+      NativeBuffer.packNativeBuffer(paramArrayOfByte, 0, paramInt, NativeBuffer.TYPE_BUFFER_NATIVE, "message", localJSONObject, (ITNativeBufferPool)this.this$0.jsPluginEngine.getNativeBufferPool());
       paramArrayOfByte = new JSONObject();
       InetAddress localInetAddress;
       if ((paramSocketAddress instanceof InetSocketAddress))
@@ -147,7 +147,7 @@ class UDPPlugin$UDPTask
         paramSocketAddress = (InetSocketAddress)paramSocketAddress;
         localInetAddress = paramSocketAddress.getAddress();
         if (!(localInetAddress instanceof Inet4Address)) {
-          break label159;
+          break label161;
         }
         paramArrayOfByte.put("family", "IPv4");
       }
@@ -159,7 +159,7 @@ class UDPPlugin$UDPTask
         localJSONObject.put("remoteInfo", paramArrayOfByte);
         UDPPlugin.access$100(this.this$0).evaluateSubcribeJS("onUDPTaskEventCallback", localJSONObject.toString(), 0);
         return;
-        label159:
+        label161:
         paramArrayOfByte.put("family", "IPv6");
       }
       return;
@@ -177,7 +177,7 @@ class UDPPlugin$UDPTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.UDPPlugin.UDPTask
  * JD-Core Version:    0.7.0.1
  */

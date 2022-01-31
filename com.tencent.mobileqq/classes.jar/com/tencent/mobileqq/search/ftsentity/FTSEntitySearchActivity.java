@@ -2,7 +2,7 @@ package com.tencent.mobileqq.search.ftsentity;
 
 import android.content.Context;
 import android.content.Intent;
-import awly;
+import ayhb;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 
@@ -27,18 +27,18 @@ public class FTSEntitySearchActivity
   
   public String a()
   {
-    return awly.b(this, this.a);
+    return ayhb.b(this, this.a);
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    bbmp.a = true;
+    bdlj.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity
  * JD-Core Version:    0.7.0.1
  */

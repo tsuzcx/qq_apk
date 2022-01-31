@@ -1,26 +1,22 @@
-import NS_MINI_APP_MISC.MISC.StAppPlayingInfo;
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewStub;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-class aqkt
-  implements View.OnClickListener
+public class aqkt
+  extends AnimatorListenerAdapter
 {
-  aqkt(aqks paramaqks, MISC.StAppPlayingInfo paramStAppPlayingInfo) {}
+  public aqkt(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo.appId.get())) && (paramView != null)) {
-      MiniAppLauncher.launchMiniAppById(paramView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo.appId.get(), null, null, null, null, aqks.a(this.jdField_a_of_type_Aqks));
-    }
+    super.onAnimationEnd(paramAnimator);
+    FileAssistantActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkt
  * JD-Core Version:    0.7.0.1
  */

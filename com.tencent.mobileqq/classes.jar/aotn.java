@@ -1,62 +1,61 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aotn
-  extends apvf
+  extends aofy<aotm>
 {
-  public aotn(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
-  
-  public void a()
+  public static aotm a()
   {
-    this.a.a.a().b();
+    return (aotm)aogj.a().a(377);
   }
   
-  public void b()
+  public int a()
   {
-    this.a.a.a().p();
+    return 377;
   }
   
-  public void c()
+  @NonNull
+  public aotm a(int paramInt)
   {
-    this.a.a.a().q();
+    return new aotm();
   }
   
-  public void d()
+  @Nullable
+  public aotm a(aogf[] paramArrayOfaogf)
   {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-    Object localObject = apel.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (apej.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          axqy.b(QfileRecentAllFileTabView.b(this.a), "dc00898", "", "", "0X800A087", "0X800A087", 0, 0, "", "", "", "");
-        }
-      }
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aotm.a(paramArrayOfaogf);
     }
+    return null;
   }
   
-  public void f()
+  public Class<aotm> a()
   {
-    this.a.a.a().t();
+    return aotm.class;
   }
   
-  public void g()
+  public void a(int paramInt) {}
+  
+  public void a(aotm paramaotm) {}
+  
+  public int b()
   {
-    this.a.a.a().G();
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aotn
  * JD-Core Version:    0.7.0.1
  */

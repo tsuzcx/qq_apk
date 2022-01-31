@@ -1,15 +1,23 @@
-import android.support.annotation.NonNull;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-public abstract interface biob
+public final class biob
+  implements Parcelable.Creator<RecvMsg>
 {
-  public abstract void a(@NonNull List<binn> paramList, @NonNull List<binm> paramList1);
+  public RecvMsg a(Parcel paramParcel)
+  {
+    return new RecvMsg(paramParcel);
+  }
   
-  public abstract void x();
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biob
  * JD-Core Version:    0.7.0.1
  */

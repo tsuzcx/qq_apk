@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.app.Activity;
-import bcer;
-import bcqf;
-import bcql;
+import beds;
+import bepp;
+import com.tencent.mobileqq.widget.QQToast;
 
 class SwiftBrowserLongClickHandler$4$1
   implements Runnable
@@ -12,15 +12,15 @@ class SwiftBrowserLongClickHandler$4$1
   
   public void run()
   {
-    if ((this.a.this$0.jdField_a_of_type_Bcqf != null) && (this.a.this$0.jdField_a_of_type_Bcqf.isShowing())) {
-      this.a.this$0.jdField_a_of_type_Bcqf.dismiss();
+    if ((this.a.this$0.jdField_a_of_type_Bepp != null) && (this.a.this$0.jdField_a_of_type_Bepp.isShowing())) {
+      this.a.this$0.jdField_a_of_type_Bepp.dismiss();
     }
-    bcql.a(this.a.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131717246, 1).b(this.a.this$0.jdField_a_of_type_Int);
+    QQToast.a(this.a.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131717618, 1).b(this.a.this$0.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.4.1
  * JD-Core Version:    0.7.0.1
  */

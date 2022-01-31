@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.model;
 
 import android.os.Handler;
-import askf;
-import bbdx;
+import aube;
+import bdcs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import mqq.app.MobileQQ;
 public class EmoticonManager$26
   implements Runnable
 {
-  public EmoticonManager$26(askf paramaskf, int paramInt) {}
+  public EmoticonManager$26(aube paramaube, int paramInt) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public class EmoticonManager$26
       {
         localIOException.printStackTrace();
       }
-      byte[] arrayOfByte = bbdx.a((File)localObject);
+      byte[] arrayOfByte = bdcs.a((File)localObject);
       localObject = new EmosmPb.SubCmd0x5RspBQRecommend();
       if (arrayOfByte == null) {
         continue;
@@ -63,7 +63,7 @@ public class EmoticonManager$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.26
  * JD-Core Version:    0.7.0.1
  */

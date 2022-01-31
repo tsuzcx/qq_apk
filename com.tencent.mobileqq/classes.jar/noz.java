@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public final class noz
-  implements Parcelable.Creator<VideoAdInfo.NegFeedback>
+final class noz
+  implements BusinessObserver
 {
-  public VideoAdInfo.NegFeedback a(Parcel paramParcel)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new VideoAdInfo.NegFeedback(paramParcel);
-  }
-  
-  public VideoAdInfo.NegFeedback[] a(int paramInt)
-  {
-    return new VideoAdInfo.NegFeedback[paramInt];
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, "doAdReport success!");
+        }
+      }
+      return;
+    }
+    catch (Exception paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     noz
  * JD-Core Version:    0.7.0.1
  */

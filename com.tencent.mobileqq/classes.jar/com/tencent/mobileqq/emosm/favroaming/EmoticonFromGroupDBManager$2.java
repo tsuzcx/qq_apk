@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import ansk;
-import aukp;
+import apjs;
+import awbw;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonFromGroupDBManager$2
   implements Runnable
 {
-  public EmoticonFromGroupDBManager$2(ansk paramansk, int paramInt, EmoticonFromGroupEntity paramEmoticonFromGroupEntity) {}
+  public EmoticonFromGroupDBManager$2(apjs paramapjs, int paramInt, EmoticonFromGroupEntity paramEmoticonFromGroupEntity) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public class EmoticonFromGroupDBManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager.2
  * JD-Core Version:    0.7.0.1
  */

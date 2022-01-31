@@ -1,27 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.1.1;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-public class bacp
-  implements View.OnClickListener
+public final class bacp
+  implements Parcelable.Creator<TeamWorkFileImportInfo>
 {
-  bacp(baco parambaco) {}
-  
-  public void onClick(View paramView)
+  public TeamWorkFileImportInfo a(Parcel paramParcel)
   {
-    if (!paramView.hasFocus())
-    {
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      ThreadManager.getUIHandler().post(new TextItem.1.1(this, paramView));
-    }
+    return new TeamWorkFileImportInfo(paramParcel);
+  }
+  
+  public TeamWorkFileImportInfo[] a(int paramInt)
+  {
+    return new TeamWorkFileImportInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bacp
  * JD-Core Version:    0.7.0.1
  */

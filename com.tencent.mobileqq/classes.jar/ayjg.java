@@ -1,14 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 
-class ayjg
+public class ayjg
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  
+  public ayjg(HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayjg
  * JD-Core Version:    0.7.0.1
  */

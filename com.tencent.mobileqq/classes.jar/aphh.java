@@ -1,158 +1,84 @@
-import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
+import com.tencent.mobileqq.earlydownload.xmldata.QavGAudioSoundData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
 
 public class aphh
-  extends aphf
-  implements aztl
+  extends apgu
 {
-  protected aztm a;
-  protected String a;
-  
-  public aphh(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, aphg paramaphg)
+  public aphh(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramLong1, paramLong2, paramInt, paramaphg);
+    super("qq.android.qav.muteaudio", paramQQAppInterface);
   }
   
-  public static aztl a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, String paramString, aphg paramaphg)
+  public int a()
   {
-    if (paramaphg == null)
+    return 10046;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavGAudioSoundData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadGAudioSoundDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavGAudioSoundHandler", 2, "download success: " + paramString);
+    }
+    try
     {
-      QLog.e("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "getFileDownloader fileInfo is null");
-      return null;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "getFileDownloader strTmpFilePath is err");
-      return null;
-    }
-    if (!paramaphg.a())
-    {
-      QLog.e("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "getFileDownloader fileInfo is err");
-      return null;
-    }
-    paramQQAppInterface = new aphh(paramQQAppInterface, paramLong1, paramLong2, 1, paramaphg);
-    paramQQAppInterface.a(paramString);
-    return paramQQAppInterface;
-  }
-  
-  protected ExcitingTransferDownloadConfig a()
-  {
-    return apha.a().c();
-  }
-  
-  protected String a()
-  {
-    return ajsd.bl;
-  }
-  
-  protected void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
-  {
-    super.a(paramInt, paramExcitingTransferDownloadCompletedInfo);
-    if (this.jdField_a_of_type_Aztm != null)
-    {
-      Bundle localBundle = new Bundle();
-      if (paramExcitingTransferDownloadCompletedInfo != null) {
-        localBundle.putInt("nSrvReturnCode", paramExcitingTransferDownloadCompletedInfo.m_nSrvReturnCode);
-      }
-      this.jdField_a_of_type_Aztm.a(true, a(), paramInt, "", "", localBundle);
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    super.a(paramLong1, paramLong2, paramLong3);
-    if (this.jdField_a_of_type_Aztm != null) {
-      this.jdField_a_of_type_Aztm.a(paramLong2, this.jdField_a_of_type_Aphg.a());
-    }
-  }
-  
-  public void a(aztm paramaztm)
-  {
-    this.jdField_a_of_type_Aztm = paramaztm;
-  }
-  
-  protected void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
-  {
-    super.a(paramExcitingTransferDownloadCompletedInfo);
-    if (this.jdField_a_of_type_Aztm != null) {
-      this.jdField_a_of_type_Aztm.a(paramExcitingTransferDownloadCompletedInfo.m_strFileSavePath);
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int b()
-  {
-    if (a() != null) {
-      return a().m_uRetryTimes;
-    }
-    return 0;
-  }
-  
-  protected String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    a();
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
+      bdcs.a(paramString, mty.a(), false);
+      super.a(paramString);
       return;
     }
-    QLog.i("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "Id[" + this.d + "] cancelTask");
-    a();
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
   
-  public int d()
+  public void a(boolean paramBoolean)
   {
-    if (a() != null) {
-      return a().m_uProxyType;
+    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
+    if ((localQavGAudioSoundData != null) && (!localQavGAudioSoundData.autoDownload))
+    {
+      localQavGAudioSoundData.autoDownload = true;
+      apgi.a(localQavGAudioSoundData, new String[] { "autoDownload" });
     }
-    return 0;
+    super.a(paramBoolean);
   }
   
-  public String d()
+  public boolean a()
   {
-    if (a() != null) {
-      return a().m_strLastServerHost;
-    }
-    return "";
+    return true;
   }
   
-  public String e()
+  public String b()
   {
-    if (a() != null) {
-      return a().m_strLastServerHost;
+    return null;
+  }
+  
+  public boolean h()
+  {
+    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
+    if (localQavGAudioSoundData == null) {
+      return super.h();
     }
-    return "";
+    return localQavGAudioSoundData.autoDownload;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aphh
  * JD-Core Version:    0.7.0.1
  */

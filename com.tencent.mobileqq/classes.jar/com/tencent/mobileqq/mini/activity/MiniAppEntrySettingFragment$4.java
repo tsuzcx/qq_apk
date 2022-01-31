@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.activity;
 
 import android.support.v4.app.FragmentActivity;
-import auko;
-import aukp;
-import aukq;
+import awbv;
+import awbw;
+import awbx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppSettingSwitchInfoEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -36,7 +36,7 @@ class MiniAppEntrySettingFragment$4
         localObject2 = MiniAppSettingSwitchInfoEntity.class.getSimpleName();
         Object localObject3 = this.val$entity.key;
         String str = this.val$entity.key;
-        localObject2 = ((aukp)localObject1).a(MiniAppSettingSwitchInfoEntity.class, (String)localObject2, false, "key = ?", new String[] { localObject3 }, null, null, null, str);
+        localObject2 = ((awbw)localObject1).a(MiniAppSettingSwitchInfoEntity.class, (String)localObject2, false, "key = ?", new String[] { localObject3 }, null, null, null, str);
         if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
           break;
         }
@@ -44,17 +44,17 @@ class MiniAppEntrySettingFragment$4
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (MiniAppSettingSwitchInfoEntity)((Iterator)localObject2).next();
-          MiniAppEntrySettingFragment.access$500(this.this$0, (aukp)localObject1, (auko)localObject3);
+          MiniAppEntrySettingFragment.access$500(this.this$0, (awbw)localObject1, (awbv)localObject3);
         }
       }
     }
     Object localObject2 = new MiniAppSettingSwitchInfoEntity(this.val$entity.key, this.val$entity.title, this.val$entity.subTitle, this.val$entity.value);
-    MiniAppEntrySettingFragment.access$500(this.this$0, (aukp)localObject1, (auko)localObject2);
+    MiniAppEntrySettingFragment.access$500(this.this$0, (awbw)localObject1, (awbv)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.MiniAppEntrySettingFragment.4
  * JD-Core Version:    0.7.0.1
  */

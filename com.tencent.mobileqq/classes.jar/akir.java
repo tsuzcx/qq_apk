@@ -1,30 +1,47 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class akir
+  extends Handler
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<akiq> b;
-  
-  public akir(akin paramakin, View paramView, akiq paramakiq)
+  akir(akiq paramakiq, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramakiq);
+    super(paramLooper);
   }
   
-  public akiq a()
+  public void handleMessage(Message paramMessage)
   {
-    return (akiq)this.b.get();
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramMessage.what == akiq.a(this.a))
+    {
+      QLog.d(akiq.a(this.a), 4, "Receive Message!");
+      this.a.a();
+    }
+    for (;;)
+    {
+      try
+      {
+        azmj.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
+        return;
+      }
+      catch (Exception paramMessage) {}
+      if (paramMessage.what == akiq.b(this.a))
+      {
+        QLog.d(akiq.a(this.a), 4, "Receive Message!");
+        try
+        {
+          azmj.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
+          return;
+        }
+        catch (Exception paramMessage) {}
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akir
  * JD-Core Version:    0.7.0.1
  */

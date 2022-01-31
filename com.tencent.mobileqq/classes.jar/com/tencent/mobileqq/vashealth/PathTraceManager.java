@@ -16,21 +16,21 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import apvd;
-import auko;
-import aukp;
-import aukq;
-import bbcf;
-import bbug;
-import bbum;
-import bbun;
-import bbuo;
-import bbuq;
-import bbus;
-import bbwu;
-import bbww;
-import bbwz;
-import bcdp;
+import arof;
+import awbv;
+import awbw;
+import awbx;
+import bdaz;
+import bdtt;
+import bdtz;
+import bdua;
+import bdub;
+import bdud;
+import bduf;
+import bdvv;
+import bdvx;
+import bdwa;
+import becq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -68,17 +68,17 @@ public class PathTraceManager
   SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener;
   SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
   public Handler a;
-  aukp jdField_a_of_type_Aukp;
-  private bbus jdField_a_of_type_Bbus;
-  bbww jdField_a_of_type_Bbww;
-  bbwz jdField_a_of_type_Bbwz;
+  awbw jdField_a_of_type_Awbw;
+  private bduf jdField_a_of_type_Bduf;
+  bdvx jdField_a_of_type_Bdvx;
+  bdwa jdField_a_of_type_Bdwa;
   BrowserAppInterface jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface;
   private PluginInterface jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterface;
   private PluginInterfaceHelper.OnPluginInterfaceLoadedListener jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterfaceHelper$OnPluginInterfaceLoadedListener;
   private TracePathData jdField_a_of_type_ComTencentMobileqqVashealthTracePathData;
   private TracePointsData jdField_a_of_type_ComTencentMobileqqVashealthTracePointsData;
   private String jdField_a_of_type_JavaLangString;
-  public WeakReference<bbug> a;
+  public WeakReference<bdtt> a;
   public ArrayList<TracePointsData> a;
   private List<TracePointsData> jdField_a_of_type_JavaUtilList = new ArrayList(4);
   public boolean a;
@@ -104,11 +104,11 @@ public class PathTraceManager
   {
     this.jdField_e_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new bbuq(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new bdud(this, Looper.getMainLooper());
     this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = paramBrowserAppInterface;
-    this.jdField_a_of_type_Aukp = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Awbw = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterfaceHelper$OnPluginInterfaceLoadedListener = new bbum(this);
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterfaceHelper$OnPluginInterfaceLoadedListener = new bdtz(this);
     PluginInterfaceHelper.getPluginInterface(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterfaceHelper$OnPluginInterfaceLoadedListener);
     this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData = b();
     paramBrowserAppInterface = new StringBuilder(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp().getFilesDir().getPath());
@@ -117,7 +117,7 @@ public class PathTraceManager
     a(null);
     this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp().getApplicationContext().getSystemService("sensor"));
     this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(19);
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bbun(this);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bdua(this);
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -144,7 +144,7 @@ public class PathTraceManager
       localJSONObject.put("isBeforeRunning", "true");
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        paramTracePointsData = (bbug)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramTracePointsData = (bdtt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (paramTracePointsData != null) {
           paramTracePointsData.dispatchJsEvent("PathTraceSend", localJSONObject, new JSONObject());
         }
@@ -160,20 +160,20 @@ public class PathTraceManager
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 6
+    //   1: astore 5
     //   3: aconst_null
-    //   4: astore 5
+    //   4: astore 6
     //   6: aconst_null
     //   7: astore_3
-    //   8: aload 6
+    //   8: aload 5
     //   10: astore 4
-    //   12: aload 5
+    //   12: aload 6
     //   14: astore_2
     //   15: getstatic 269	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   18: ifnull +66 -> 84
-    //   21: aload 6
+    //   21: aload 5
     //   23: astore 4
-    //   25: aload 5
+    //   25: aload 6
     //   27: astore_2
     //   28: getstatic 269	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   31: invokevirtual 274	android/media/MediaPlayer:isPlaying	()Z
@@ -191,53 +191,53 @@ public class PathTraceManager
     //   53: aload_0
     //   54: invokevirtual 280	java/io/IOException:printStackTrace	()V
     //   57: return
-    //   58: aload 6
+    //   58: aload 5
     //   60: astore 4
-    //   62: aload 5
+    //   62: aload 6
     //   64: astore_2
     //   65: getstatic 269	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   68: ifnull +16 -> 84
-    //   71: aload 6
+    //   71: aload 5
     //   73: astore 4
-    //   75: aload 5
+    //   75: aload 6
     //   77: astore_2
     //   78: getstatic 269	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   81: invokevirtual 283	android/media/MediaPlayer:release	()V
-    //   84: aload 6
+    //   84: aload 5
     //   86: astore 4
-    //   88: aload 5
+    //   88: aload 6
     //   90: astore_2
     //   91: iconst_0
     //   92: putstatic 206	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_f_of_type_Int	I
-    //   95: aload 6
+    //   95: aload 5
     //   97: astore 4
-    //   99: aload 5
+    //   99: aload 6
     //   101: astore_2
     //   102: aload_0
     //   103: getstatic 206	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_f_of_type_Int	I
     //   106: invokevirtual 286	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   109: checkcast 288	android/net/Uri
     //   112: astore 7
-    //   114: aload 6
+    //   114: aload 5
     //   116: astore 4
-    //   118: aload 5
+    //   118: aload 6
     //   120: astore_2
     //   121: aload 7
     //   123: invokevirtual 291	android/net/Uri:getScheme	()Ljava/lang/String;
     //   126: ldc_w 293
     //   129: invokevirtual 299	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   132: ifeq +63 -> 195
-    //   135: aload 6
+    //   135: aload 5
     //   137: astore 4
-    //   139: aload 5
+    //   139: aload 6
     //   141: astore_2
     //   142: new 271	android/media/MediaPlayer
     //   145: dup
     //   146: invokespecial 300	android/media/MediaPlayer:<init>	()V
     //   149: putstatic 269	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   152: aload 6
+    //   152: aload 5
     //   154: astore 4
-    //   156: aload 5
+    //   156: aload 6
     //   158: astore_2
     //   159: new 302	java/io/FileInputStream
     //   162: dup
@@ -276,10 +276,10 @@ public class PathTraceManager
     //   228: aload_3
     //   229: astore_2
     //   230: getstatic 269	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   233: new 323	bbup
+    //   233: new 323	bduc
     //   236: dup
     //   237: aload_0
-    //   238: invokespecial 325	bbup:<init>	(Ljava/util/ArrayList;)V
+    //   238: invokespecial 325	bduc:<init>	(Ljava/util/ArrayList;)V
     //   241: invokevirtual 329	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   244: aload_3
     //   245: astore 4
@@ -345,8 +345,8 @@ public class PathTraceManager
     //   328	1	2	localFileInputStream1	java.io.FileInputStream
     //   7	327	3	localFileInputStream2	java.io.FileInputStream
     //   10	325	4	localObject2	Object
-    //   4	202	5	localMediaPlayer	MediaPlayer
-    //   1	152	6	localObject3	Object
+    //   1	205	5	localMediaPlayer	MediaPlayer
+    //   4	153	6	localObject3	Object
     //   112	56	7	localUri	Uri
     // Exception table:
     //   from	to	target	type
@@ -543,7 +543,7 @@ public class PathTraceManager
       localJSONObject1.put("data", localJSONObject2.toString());
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        paramList = (bbug)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramList = (bdtt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (paramList != null) {
           paramList.dispatchJsEvent("PathTraceSend", localJSONObject1, new JSONObject());
         }
@@ -579,7 +579,7 @@ public class PathTraceManager
   {
     TracePathData localTracePathData = null;
     Object localObject = "SELECT * FROM TracePathData WHERE startTime = " + paramLong;
-    localObject = this.jdField_a_of_type_Aukp.a(TracePathData.class, (String)localObject, null);
+    localObject = this.jdField_a_of_type_Awbw.a(TracePathData.class, (String)localObject, null);
     if (localObject != null) {
       localTracePathData = (TracePathData)((List)localObject).get(0);
     }
@@ -606,7 +606,7 @@ public class PathTraceManager
   {
     long l = System.currentTimeMillis();
     Object localObject = "SELECT * FROM TracePointsData WHERE startTime = " + paramLong;
-    localObject = this.jdField_a_of_type_Aukp.a(TracePointsData.class, (String)localObject, null);
+    localObject = this.jdField_a_of_type_Awbw.a(TracePointsData.class, (String)localObject, null);
     StringBuilder localStringBuilder = new StringBuilder().append("getAllTracePointByStartTime  size: ");
     if (localObject != null) {}
     for (int m = ((List)localObject).size();; m = 0)
@@ -620,7 +620,7 @@ public class PathTraceManager
   {
     JSONObject localJSONObject1 = new JSONObject();
     JSONArray localJSONArray = new JSONArray();
-    Object localObject = this.jdField_a_of_type_Aukp.a(TracePathData.class);
+    Object localObject = this.jdField_a_of_type_Awbw.a(TracePathData.class);
     try
     {
       localJSONObject1.put("retCode", 1);
@@ -727,22 +727,22 @@ public class PathTraceManager
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bbus == null) {
-      this.jdField_a_of_type_Bbus = new bbus(this, this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface);
+    if (this.jdField_a_of_type_Bduf == null) {
+      this.jdField_a_of_type_Bduf = new bduf(this, this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface);
     }
     this.jdField_c_of_type_Int = paramInt;
-    SosoInterface.a(this.jdField_a_of_type_Bbus);
+    SosoInterface.a(this.jdField_a_of_type_Bduf);
     if ((this.jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      localObject = (bbug)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localObject != null) && (((bbug)localObject).mRuntime != null)) {
-        if (((bbug)localObject).mRuntime.a() == null) {
+      localObject = (bdtt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localObject != null) && (((bdtt)localObject).mRuntime != null)) {
+        if (((bdtt)localObject).mRuntime.a() == null) {
           break label149;
         }
       }
     }
     label149:
-    for (Object localObject = ((bbug)localObject).mRuntime.a().h;; localObject = null)
+    for (Object localObject = ((bdtt)localObject).mRuntime.a().g;; localObject = null)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         a(this.jdField_c_of_type_Int, (String)localObject);
@@ -817,9 +817,9 @@ public class PathTraceManager
     QLog.e("PathTraceManager", 1, "postInvokeRemoteCmd Err");
   }
   
-  public void a(bbug parambbug)
+  public void a(bdtt parambdtt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbug);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambdtt);
   }
   
   protected void a(TracePathData paramTracePathData, boolean paramBoolean, TracePointsData paramTracePointsData)
@@ -1085,10 +1085,10 @@ public class PathTraceManager
           paramTracePointsData.put("retCode", -6);
           if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
           {
-            localObject2 = (bbug)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+            localObject2 = (bdtt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
             if (localObject2 != null)
             {
-              ((bbug)localObject2).dispatchJsEvent("PathTraceEnd", paramTracePointsData, new JSONObject());
+              ((bdtt)localObject2).dispatchJsEvent("PathTraceEnd", paramTracePointsData, new JSONObject());
               QLog.i("PathTraceManager", 1, "LONG END");
             }
           }
@@ -1271,7 +1271,7 @@ public class PathTraceManager
   {
     String str = this.jdField_a_of_type_JavaLangString + "audio715.zip";
     Object localObject;
-    if (!apvd.a(str))
+    if (!arof.a(str))
     {
       localObject = new File(this.jdField_a_of_type_JavaLangString, "audio715.zip");
       this.jdField_c_of_type_Boolean = false;
@@ -1282,21 +1282,21 @@ public class PathTraceManager
       do
       {
         return;
-        localObject = new bbwu("http://imgcache.qq.com/ac/vasapp/webviewlib/2513/run_sd/audio715.zip", (File)localObject);
-        ((bbwu)localObject).r = false;
-        ((bbwu)localObject).q = true;
-        if (this.jdField_a_of_type_Bbww == null)
+        localObject = new bdvv("http://imgcache.qq.com/ac/vasapp/webviewlib/2513/run_sd/audio715.zip", (File)localObject);
+        ((bdvv)localObject).r = false;
+        ((bdvv)localObject).q = true;
+        if (this.jdField_a_of_type_Bdvx == null)
         {
-          this.jdField_a_of_type_Bbww = ((bbww)this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getManager(47));
-          this.jdField_a_of_type_Bbwz = this.jdField_a_of_type_Bbww.a(1);
+          this.jdField_a_of_type_Bdvx = ((bdvx)this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getManager(47));
+          this.jdField_a_of_type_Bdwa = this.jdField_a_of_type_Bdvx.a(1);
         }
-        if (this.jdField_a_of_type_Bbwz != null) {
+        if (this.jdField_a_of_type_Bdwa != null) {
           break;
         }
       } while (!QLog.isColorLevel());
       QLog.d("PathTraceManager", 2, "loaderInterface Null");
       return;
-      this.jdField_a_of_type_Bbwz.a((bbwu)localObject, new bbuo(this, str, paramString), null);
+      this.jdField_a_of_type_Bdwa.a((bdvv)localObject, new bdub(this, str, paramString), null);
       return;
       localObject = null;
     }
@@ -1381,7 +1381,7 @@ public class PathTraceManager
   }
   
   /* Error */
-  public void a(List<auko> paramList)
+  public void a(List<awbv> paramList)
   {
     // Byte code:
     //   0: aload_1
@@ -1398,16 +1398,16 @@ public class PathTraceManager
     //   25: aload_1
     //   26: iconst_0
     //   27: invokeinterface 435 2 0
-    //   32: checkcast 1074	auko
-    //   35: invokevirtual 1077	com/tencent/mobileqq/vashealth/PathTraceManager:a	(Lauko;)Z
+    //   32: checkcast 1074	awbv
+    //   35: invokevirtual 1077	com/tencent/mobileqq/vashealth/PathTraceManager:a	(Lawbv;)Z
     //   38: pop
     //   39: return
     //   40: aload_0
-    //   41: getfield 103	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_Aukp	Laukp;
-    //   44: invokevirtual 1080	aukp:a	()Laukr;
+    //   41: getfield 103	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_Awbw	Lawbw;
+    //   44: invokevirtual 1080	awbw:a	()Lawby;
     //   47: astore_2
     //   48: aload_2
-    //   49: invokevirtual 1084	aukr:a	()V
+    //   49: invokevirtual 1084	awby:a	()V
     //   52: aload_1
     //   53: invokeinterface 492 1 0
     //   58: astore_1
@@ -1417,8 +1417,8 @@ public class PathTraceManager
     //   68: aload_0
     //   69: aload_1
     //   70: invokeinterface 500 1 0
-    //   75: checkcast 1074	auko
-    //   78: invokevirtual 1077	com/tencent/mobileqq/vashealth/PathTraceManager:a	(Lauko;)Z
+    //   75: checkcast 1074	awbv
+    //   78: invokevirtual 1077	com/tencent/mobileqq/vashealth/PathTraceManager:a	(Lawbv;)Z
     //   81: pop
     //   82: goto -23 -> 59
     //   85: astore_1
@@ -1437,23 +1437,23 @@ public class PathTraceManager
     //   115: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   118: invokestatic 444	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   121: aload_2
-    //   122: invokevirtual 1091	aukr:b	()V
+    //   122: invokevirtual 1091	awby:b	()V
     //   125: return
     //   126: aload_2
-    //   127: invokevirtual 1092	aukr:c	()V
+    //   127: invokevirtual 1092	awby:c	()V
     //   130: aload_2
-    //   131: invokevirtual 1091	aukr:b	()V
+    //   131: invokevirtual 1091	awby:b	()V
     //   134: return
     //   135: astore_1
     //   136: aload_2
-    //   137: invokevirtual 1091	aukr:b	()V
+    //   137: invokevirtual 1091	awby:b	()V
     //   140: aload_1
     //   141: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	142	0	this	PathTraceManager
-    //   0	142	1	paramList	List<auko>
-    //   47	90	2	localaukr	aukr
+    //   0	142	1	paramList	List<awbv>
+    //   47	90	2	localawby	awby
     // Exception table:
     //   from	to	target	type
     //   52	59	85	java/lang/Exception
@@ -1527,15 +1527,15 @@ public class PathTraceManager
     JSONObject localJSONObject = new JSONObject();
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
     Object localObject;
-    for (bbug localbbug = (bbug)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
+    for (bdtt localbdtt = (bdtt)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData.totalTime < 60L) || (this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData.distance < 100.0D))
       {
         try
         {
           localJSONObject.put("retCode", -5);
-          if (localbbug != null) {
-            localbbug.dispatchJsEvent("PathTraceEnd", localJSONObject, new JSONObject());
+          if (localbdtt != null) {
+            localbdtt.dispatchJsEvent("PathTraceEnd", localJSONObject, new JSONObject());
           }
           a(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData.startTime));
         }
@@ -1581,17 +1581,17 @@ public class PathTraceManager
     }
   }
   
-  public boolean a(auko paramauko)
+  public boolean a(awbv paramawbv)
   {
-    if ((this.jdField_a_of_type_Aukp != null) && (this.jdField_a_of_type_Aukp.a()))
+    if ((this.jdField_a_of_type_Awbw != null) && (this.jdField_a_of_type_Awbw.a()))
     {
-      if (paramauko.getStatus() == 1000)
+      if (paramawbv.getStatus() == 1000)
       {
-        this.jdField_a_of_type_Aukp.b(paramauko);
-        return paramauko.getStatus() == 1001;
+        this.jdField_a_of_type_Awbw.b(paramawbv);
+        return paramawbv.getStatus() == 1001;
       }
-      if ((paramauko.getStatus() == 1001) || (paramauko.getStatus() == 1002)) {
-        return this.jdField_a_of_type_Aukp.a(paramauko);
+      if ((paramawbv.getStatus() == 1001) || (paramawbv.getStatus() == 1002)) {
+        return this.jdField_a_of_type_Awbw.a(paramawbv);
       }
     }
     QLog.e("PathTraceManager", 1, "updateEntity Err");
@@ -1601,9 +1601,9 @@ public class PathTraceManager
   public boolean a(Long paramLong)
   {
     Object localObject = "DELETE FROM TracePathData WHERE startTime = " + paramLong;
-    this.jdField_a_of_type_Aukp.b((String)localObject);
+    this.jdField_a_of_type_Awbw.b((String)localObject);
     paramLong = "DELETE FROM TracePointsData WHERE time IN (SELECT time FROM TracePointsData WHERE startTime =" + paramLong + ")";
-    bool = this.jdField_a_of_type_Aukp.b(paramLong);
+    bool = this.jdField_a_of_type_Awbw.b(paramLong);
     try
     {
       localObject = new JSONObject();
@@ -1614,7 +1614,7 @@ public class PathTraceManager
       {
         paramLong = null;
         if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-          paramLong = (bbug)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          paramLong = (bdtt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         }
         if (paramLong == null) {
           break;
@@ -1639,7 +1639,7 @@ public class PathTraceManager
   public TracePathData b()
   {
     TracePathData localTracePathData = null;
-    List localList = this.jdField_a_of_type_Aukp.a(TracePathData.class, "SELECT * FROM TracePathData WHERE isStop <> 1 order by startTime desc limit 1 ", null);
+    List localList = this.jdField_a_of_type_Awbw.a(TracePathData.class, "SELECT * FROM TracePathData WHERE isStop <> 1 order by startTime desc limit 1 ", null);
     if (localList != null) {
       localTracePathData = (TracePathData)localList.get(0);
     }
@@ -1671,22 +1671,22 @@ public class PathTraceManager
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Bbus != null)
+    if (this.jdField_a_of_type_Bduf != null)
     {
-      SosoInterface.b(this.jdField_a_of_type_Bbus);
+      SosoInterface.b(this.jdField_a_of_type_Bduf);
       this.jdField_c_of_type_Int = paramInt;
       if ((this.jdField_c_of_type_Int == 2) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
       {
-        localObject = (bbug)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if ((localObject != null) && (((bbug)localObject).mRuntime != null)) {
-          if (((bbug)localObject).mRuntime.a() == null) {
+        localObject = (bdtt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if ((localObject != null) && (((bdtt)localObject).mRuntime != null)) {
+          if (((bdtt)localObject).mRuntime.a() == null) {
             break label133;
           }
         }
       }
     }
     label133:
-    for (Object localObject = ((bbug)localObject).mRuntime.a().h;; localObject = null)
+    for (Object localObject = ((bdtt)localObject).mRuntime.a().g;; localObject = null)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         a(this.jdField_c_of_type_Int, (String)localObject);
@@ -1705,7 +1705,7 @@ public class PathTraceManager
       int n = 1;
       if (m < paramArrayList.size())
       {
-        if (!apvd.a(this.jdField_a_of_type_JavaLangString + (String)paramArrayList.get(m) + ".mp3"))
+        if (!arof.a(this.jdField_a_of_type_JavaLangString + (String)paramArrayList.get(m) + ".mp3"))
         {
           if (paramArrayList.size() != 1) {
             break label117;
@@ -1724,7 +1724,7 @@ public class PathTraceManager
       if (n != 0)
       {
         if (paramArrayList.size() == 1) {
-          bbcf.a(Uri.fromFile(new File(this.jdField_a_of_type_JavaLangString + (String)paramArrayList.get(0) + ".mp3")), false, true);
+          bdaz.a(Uri.fromFile(new File(this.jdField_a_of_type_JavaLangString + (String)paramArrayList.get(0) + ".mp3")), false, true);
         }
       }
       else {
@@ -1947,13 +1947,13 @@ public class PathTraceManager
     b(-1);
     PathTraceService.c();
     c(a());
-    bbcf.a();
+    bdaz.a();
     QLog.i("PathTraceManager", 1, "onDestroy");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceManager
  * JD-Core Version:    0.7.0.1
  */

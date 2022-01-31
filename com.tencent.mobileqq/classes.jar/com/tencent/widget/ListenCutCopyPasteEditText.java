@@ -7,12 +7,12 @@ import android.content.Context;
 import android.text.Spanned;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import bftq;
+import bhun;
 
 public class ListenCutCopyPasteEditText
   extends EditText
 {
-  protected bftq a;
+  protected bhun a;
   
   public ListenCutCopyPasteEditText(Context paramContext)
   {
@@ -104,14 +104,14 @@ public class ListenCutCopyPasteEditText
     return bool;
   }
   
-  public void setCutCopyPasteCallback(bftq parambftq)
+  public void setCutCopyPasteCallback(bhun parambhun)
   {
-    this.a = parambftq;
+    this.a = parambhun;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.ListenCutCopyPasteEditText
  * JD-Core Version:    0.7.0.1
  */

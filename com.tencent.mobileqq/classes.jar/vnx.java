@@ -1,13 +1,28 @@
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+
 public class vnx
+  extends vnz
 {
-  public static boolean a(int paramInt)
+  private ElasticImageView a;
+  
+  public vnx(@NonNull ViewGroup paramViewGroup)
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
+    super(paramViewGroup);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131364341));
+    this.a.setOnClickListener(new vny(this));
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnx
  * JD-Core Version:    0.7.0.1
  */

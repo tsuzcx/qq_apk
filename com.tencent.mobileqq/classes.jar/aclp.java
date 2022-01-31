@@ -1,32 +1,21 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aclp
-  extends akgy
+class aclp
+  implements DialogInterface.OnClickListener
 {
-  public aclp(TroopRequestActivity paramTroopRequestActivity) {}
+  aclp(aclo paramaclo, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.isFinishing()) {
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
-    if (paramBoolean)
-    {
-      bcql.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131719675), 0).a();
-      this.a.c.setVisibility(8);
-      return;
-    }
-    bcql.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131719672), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclp
  * JD-Core Version:    0.7.0.1
  */

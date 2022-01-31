@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
-import askf;
-import aukp;
+import aube;
+import awbw;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class EmoticonManager$6
   implements Runnable
 {
-  public EmoticonManager$6(askf paramaskf, String paramString1, String paramString2) {}
+  public EmoticonManager$6(aube paramaube, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class EmoticonManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.6
  * JD-Core Version:    0.7.0.1
  */

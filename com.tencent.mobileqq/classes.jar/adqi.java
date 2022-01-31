@@ -1,42 +1,62 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity.4.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
-class adqi
-  implements aefb
+public class adqi
+  extends AccountObserver
 {
-  adqi(adqe paramadqe, adqq paramadqq, MessageForPoke paramMessageForPoke) {}
+  public adqi(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void a()
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte, paramInt2);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), RegisterQQNumberActivity.a(this.a), paramString2, paramString1 }));
+    }
+    RegisterQQNumberActivity.a(this.a);
+    paramString1 = new Intent(this.a, LoginActivity.class);
+    paramString1.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString1.putExtra("tab_index", MainFragment.b);
+    paramString1.addFlags(131072);
+    this.a.startActivity(paramString1);
+    this.a.finish();
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
     if (QLog.isColorLevel()) {
-      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 2");
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginSuccess ");
     }
-    adwf.a().a(20);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Adqq.b == adqe.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Adqe.a instanceof ChatHistoryActivity)) && (!adqe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Adqq.c.setVisibility(0);
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginTimeout ");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      actj.a -= 1;
-      return;
-      this.jdField_a_of_type_Adqq.c.setVisibility(8);
+    RegisterQQNumberActivity.a(this.a);
+    this.a.a.post(new RegisterQQNumberActivity.4.1(this));
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onUserCancel ");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqi
  * JD-Core Version:    0.7.0.1
  */

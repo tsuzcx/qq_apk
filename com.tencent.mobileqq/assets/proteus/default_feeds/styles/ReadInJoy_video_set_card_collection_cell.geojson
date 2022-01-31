@@ -1,6 +1,6 @@
 {
     "ReadInJoy_video_set_card_collection_cell": {
-        "view_type": "cell",
+        "view_type": "container",
         "view_id": "id_video_set_card_cell",
         "direction": "vertical",
         "height": {

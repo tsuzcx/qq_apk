@@ -15,10 +15,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import bipy;
-import biqg;
-import biqi;
-import biqj;
+import bkus;
+import bkva;
+import bkvc;
+import bkvd;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.string.StringUtils;
 import com.tencent.ttpic.openapi.model.WMElement;
@@ -34,8 +34,8 @@ public class WatermarkEditView
   private int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private DatePicker jdField_a_of_type_AndroidWidgetDatePicker;
-  private bipy jdField_a_of_type_Bipy;
-  private biqj jdField_a_of_type_Biqj;
+  private bkus jdField_a_of_type_Bkus;
+  private bkvd jdField_a_of_type_Bkvd;
   private WatermarkListView jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView;
   
   public WatermarkEditView(Context paramContext)
@@ -55,12 +55,11 @@ public class WatermarkEditView
   
   public void a()
   {
-    this.jdField_a_of_type_Bipy = new bipy(this.jdField_a_of_type_AndroidAppActivity, LogicDataManager.getInstance().getEditableWMElement());
-    this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView.setAdapter(this.jdField_a_of_type_Bipy, LogicDataManager.getInstance().getEditableWMElement());
+    this.jdField_a_of_type_Bkus = new bkus(this.jdField_a_of_type_AndroidAppActivity, LogicDataManager.getInstance().getEditableWMElement());
+    this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView.setAdapter(this.jdField_a_of_type_Bkus, LogicDataManager.getInstance().getEditableWMElement());
     this.jdField_a_of_type_AndroidWidgetDatePicker.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetDatePicker.init(this.jdField_a_of_type_AndroidWidgetDatePicker.getYear(), this.jdField_a_of_type_AndroidWidgetDatePicker.getMonth(), this.jdField_a_of_type_AndroidWidgetDatePicker.getDayOfMonth(), this.jdField_a_of_type_Bipy);
-    this.jdField_a_of_type_AndroidWidgetDatePicker.setCalendarViewShown(false);
-    this.jdField_a_of_type_Bipy.a(new biqi(this));
+    this.jdField_a_of_type_AndroidWidgetDatePicker.init(this.jdField_a_of_type_AndroidWidgetDatePicker.getYear(), this.jdField_a_of_type_AndroidWidgetDatePicker.getMonth(), this.jdField_a_of_type_AndroidWidgetDatePicker.getDayOfMonth(), this.jdField_a_of_type_Bkus);
+    this.jdField_a_of_type_Bkus.a(new bkvc(this));
     this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView.postDelayed(new WatermarkEditView.2(this), 100L);
     setVisibility(0);
   }
@@ -68,12 +67,11 @@ public class WatermarkEditView
   public void a(Activity paramActivity)
   {
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView = ((WatermarkListView)findViewById(2131365516));
-    this.jdField_a_of_type_AndroidWidgetDatePicker = ((DatePicker)findViewById(2131364914));
-    this.jdField_a_of_type_AndroidWidgetDatePicker.setCalendarViewShown(false);
+    this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView = ((WatermarkListView)findViewById(2131365601));
+    this.jdField_a_of_type_AndroidWidgetDatePicker = ((DatePicker)findViewById(2131365001));
     this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView.getViewTreeObserver().addOnGlobalLayoutListener(this);
-    findViewById(2131377090).setOnClickListener(this);
-    findViewById(2131377091).setOnClickListener(this);
+    findViewById(2131377611).setOnClickListener(this);
+    findViewById(2131377612).setOnClickListener(this);
   }
   
   public void b()
@@ -86,8 +84,8 @@ public class WatermarkEditView
     switch (paramView.getId())
     {
     default: 
-    case 2131377091: 
-      label350:
+    case 2131377612: 
+      label349:
       do
       {
         return;
@@ -96,7 +94,7 @@ public class WatermarkEditView
         int i = 0;
         if (i < this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView.a())
         {
-          Object localObject = (biqg)this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView.a(i);
+          Object localObject = (bkva)this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView.a(i);
           if (localObject == null) {}
           for (;;)
           {
@@ -107,25 +105,25 @@ public class WatermarkEditView
               paramView = (WMElement)LogicDataManager.getInstance().getEditableWMElement().get(i);
               if ((paramView.logic != null) && (paramView.logic.type != null) && ((paramView.logic.type.equals("since")) || (paramView.logic.type.equals("countdown"))))
               {
-                if ((((biqg)localObject).jdField_a_of_type_AndroidWidgetEditText.getTag() != null) && ((((biqg)localObject).jdField_a_of_type_AndroidWidgetEditText.getTag() instanceof String)))
+                if ((((bkva)localObject).jdField_a_of_type_AndroidWidgetEditText.getTag() != null) && ((((bkva)localObject).jdField_a_of_type_AndroidWidgetEditText.getTag() instanceof String)))
                 {
-                  localObject = (String)((biqg)localObject).jdField_a_of_type_AndroidWidgetEditText.getTag();
+                  localObject = (String)((bkva)localObject).jdField_a_of_type_AndroidWidgetEditText.getTag();
                   paramView.userValue = ((String)localObject);
                   LogicDataManager.getInstance().recordDate(paramView.logic.type, paramView.sid, (String)localObject);
                 }
               }
               else if (paramView.ischeckin)
               {
-                if (((biqg)localObject).jdField_a_of_type_Boolean)
+                if (((bkva)localObject).jdField_a_of_type_Boolean)
                 {
-                  ((biqg)localObject).jdField_a_of_type_Boolean = false;
+                  ((bkva)localObject).jdField_a_of_type_Boolean = false;
                   paramView.resetDays();
                 }
               }
               else
               {
-                localObject = StringUtils.removeUTF8Emoji(((biqg)localObject).jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-                if (!((String)localObject).equals(((bipy)this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView.a()).a(i))) {
+                localObject = StringUtils.removeUTF8Emoji(((bkva)localObject).jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+                if (!((String)localObject).equals(((bkus)this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkListView.a()).a(i))) {
                   paramView.userValue = ((String)localObject);
                 }
                 if (!((String)localObject).equals("")) {
@@ -134,7 +132,7 @@ public class WatermarkEditView
                 for (;;)
                 {
                   if (paramView.persistence != 1) {
-                    break label350;
+                    break label349;
                   }
                   paramView.saveTitle((String)localObject);
                   break;
@@ -144,8 +142,8 @@ public class WatermarkEditView
             }
           }
         }
-      } while (this.jdField_a_of_type_Biqj == null);
-      this.jdField_a_of_type_Biqj.a();
+      } while (this.jdField_a_of_type_Bkvd == null);
+      this.jdField_a_of_type_Bkvd.a();
       return;
     }
     b();
@@ -171,14 +169,14 @@ public class WatermarkEditView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setOnRenderTextListener(biqj parambiqj)
+  public void setOnRenderTextListener(bkvd parambkvd)
   {
-    this.jdField_a_of_type_Biqj = parambiqj;
+    this.jdField_a_of_type_Bkvd = parambkvd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView
  * JD-Core Version:    0.7.0.1
  */

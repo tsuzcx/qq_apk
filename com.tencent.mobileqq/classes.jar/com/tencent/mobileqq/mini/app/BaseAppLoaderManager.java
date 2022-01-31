@@ -31,6 +31,8 @@ public abstract interface BaseAppLoaderManager
   
   public abstract void onBaselibUpdated(Context paramContext, MiniAppConfig paramMiniAppConfig);
   
+  public abstract void onFakeApkgInfo(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2);
+  
   public abstract void preloadNextRuntime();
   
   public abstract void removeListner(Handler paramHandler);
@@ -51,7 +53,7 @@ public abstract interface BaseAppLoaderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.BaseAppLoaderManager
  * JD-Core Version:    0.7.0.1
  */

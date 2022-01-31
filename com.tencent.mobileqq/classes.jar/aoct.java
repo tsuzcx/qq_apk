@@ -1,15 +1,24 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.emoticonview.EmoticonImageView;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.IBaseActionListener.Stub;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
 
-public class aoct
-  extends anxj
+@Deprecated
+public abstract class aoct
+  extends IBaseActionListener.Stub
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  EmoticonImageView[] jdField_a_of_type_ArrayOfComTencentMobileqqEmoticonviewEmoticonImageView;
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
+  
+  public void onActionResult(FromServiceMsg paramFromServiceMsg) {}
+  
+  public void onRecvFromMsg(FromServiceMsg paramFromServiceMsg)
+  {
+    a((ToServiceMsg)paramFromServiceMsg.attributes.get(FromServiceMsg.class.getSimpleName()), paramFromServiceMsg);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoct
  * JD-Core Version:    0.7.0.1
  */

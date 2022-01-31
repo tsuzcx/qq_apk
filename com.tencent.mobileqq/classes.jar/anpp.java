@@ -1,204 +1,106 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.FaceScanNativeSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
-public class anpp
-  extends anpn
+class anpp
+  implements bapx
 {
-  public static final String a;
-  private int a;
-  private boolean d;
+  anpp(anpo paramanpo) {}
   
-  static
+  public void onResp(baqw arg1)
   {
-    if (AppSetting.b) {}
-    for (String str = "qq.android.ar.face.so_v8.2.0_64";; str = "qq.android.ar.face.so_v8.2.0_32")
+    Object localObject1;
+    boolean bool;
+    if (QLog.isColorLevel())
     {
-      jdField_a_of_type_JavaLangString = str;
-      return;
-    }
-  }
-  
-  public anpp(QQAppInterface paramQQAppInterface)
-  {
-    super(jdField_a_of_type_JavaLangString, paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "FaceScanNativeSoDownloadHandler construct,STR_RES_NAME = " + jdField_a_of_type_JavaLangString + ",AppSetting.IS_CPU_64_BIT = " + AppSetting.b);
-    }
-  }
-  
-  public int a()
-  {
-    return 10061;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return FaceScanNativeSoData.class;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    BaseApplicationImpl.sApplication.getSharedPreferences("face_scan_sp", 4).edit().putInt("face_scan_native_so_version", b()).apply();
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    super.a(paramLong1, paramLong2);
-    this.jdField_a_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
-    alcl.a(1, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download progress: " + this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (!paramBoolean) {
-      alcl.a(1, false);
-    }
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download finish: " + paramBoolean);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download success: " + paramString);
-    }
-    int i = alco.a(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download success: " + paramString + ",ret = " + i);
-    }
-    if (i != 0)
-    {
-      g();
-      a();
-      alcl.a(1, false);
-    }
-    for (;;)
-    {
-      super.a(paramString);
-      return;
-      alcl.a(1, true);
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008358", "0X8008358", 0, 0, "", "", "so", "");
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("res_type", "so");
-      axrn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FaceResDownloadSuccess", true, 0L, 0L, localHashMap, "", true);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-    super.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download restart userClick" + paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "download begin");
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceScanNativeSoDownloadHandler", 2, "isNetValid2Download by user ");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "isNetValid2Download by startup ");
-    }
-    return super.b();
-  }
-  
-  public void c()
-  {
-    boolean bool = apvd.a(new File(alco.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "deleteUnZipFile ret: " + bool);
-    }
-  }
-  
-  public boolean e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "downloadResource,isDownloadReqedByUser = " + this.d);
-    }
-    if (!this.d)
-    {
-      if (!alcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      localObject1 = new StringBuilder().append("onResp reqUrl: resp is null: ");
+      if (??? == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FaceScanNativeSoDownloadHandler", 2, "pre download config disable ");
-        }
-        return false;
-      }
-      if (BaseActivity.sTopActivity == null) {
-        break label115;
+        bool = true;
+        QLog.i("Q.dynamicAvatar", 2, bool);
       }
     }
-    label115:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceScanNativeSoDownloadHandler", 2, "downloadResource later " + bool);
+      if (??? != null) {
+        break label51;
       }
-      if (bool) {
-        break;
-      }
-      return super.e();
     }
+    label51:
+    do
+    {
+      return;
+      bool = false;
+      break;
+      localObject1 = ((baps)???.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString;
+      int i = ???.jdField_a_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.dynamicAvatar", 2, "onResp reqUrl: " + (String)localObject1 + " mResult: " + i + ",httpCode:" + ???.c + ",errDesc:" + ???.jdField_a_of_type_JavaLangString);
+      }
+      for (;;)
+      {
+        synchronized (anpo.a(this.a))
+        {
+          if (anpo.a(this.a).isEmpty()) {
+            break;
+          }
+          Iterator localIterator = anpo.a(this.a).iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          Object localObject3 = (WeakReference)localIterator.next();
+          if ((localObject3 == null) || (((WeakReference)localObject3).get() == null)) {
+            continue;
+          }
+          localObject3 = (anpq)((WeakReference)localObject3).get();
+          if (i == 0)
+          {
+            bool = true;
+            ((anpq)localObject3).a((String)localObject1, bool, false);
+          }
+        }
+        bool = false;
+      }
+      anpo.a(this.a).remove(localObject2);
+    } while ((!bdee.g(BaseApplicationImpl.getContext())) || (bdee.h(BaseApplicationImpl.getContext())));
+    anpo.a(this.a);
   }
   
-  public void g()
+  public void onUpdateProgeress(baqv arg1, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanNativeSoDownloadHandler", 2, "restoreState");
+    if ((!anpo.a(this.a).isEmpty()) && ((??? instanceof baps))) {
+      if (paramLong2 <= 0L) {
+        break label148;
+      }
     }
-    a().loadState = 0;
-    a().Version = 0;
-    anpb.a(a(), new String[0]);
+    label148:
+    for (int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);; i = 0)
+    {
+      String str = ((baps)???).jdField_a_of_type_JavaLangString;
+      synchronized (anpo.a(this.a))
+      {
+        if (!anpo.a(this.a).isEmpty())
+        {
+          Iterator localIterator = anpo.a(this.a).iterator();
+          while (localIterator.hasNext())
+          {
+            WeakReference localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+              ((anpq)localWeakReference.get()).a(str, i);
+            }
+          }
+        }
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpp
  * JD-Core Version:    0.7.0.1
  */

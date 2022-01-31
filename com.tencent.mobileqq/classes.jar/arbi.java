@@ -1,26 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
 class arbi
-  implements DialogInterface.OnClickListener
+  implements ShareActionSheet.OnItemClickListener
 {
-  arbi(arbb paramarbb) {}
+  arbi(arbg paramarbg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    arbb.jdField_a_of_type_Boolean = false;
-    arbb.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
-    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
+    if (paramActionSheetItem == null) {}
+    do
+    {
+      return;
+      arbg.a(this.a).dismiss();
+      if (paramActionSheetItem.listener != null)
+      {
+        paramActionSheetItem.listener.onClick(null);
+        return;
+      }
+    } while (arbg.a(this.a) == null);
+    arbg.a(this.a).a(paramActionSheetItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbi
  * JD-Core Version:    0.7.0.1
  */

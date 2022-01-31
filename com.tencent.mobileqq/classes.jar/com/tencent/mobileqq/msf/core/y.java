@@ -30,7 +30,7 @@ import com.qq.jce.wup.UniPacket;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.msf.sdk.utils.SignUtils;
 import com.tencent.mobileqq.msf.service.e;
-import com.tencent.mobileqq.msf.service.q;
+import com.tencent.mobileqq.msf.service.t;
 import com.tencent.msf.service.protocol.QQWiFi.WiFiService;
 import com.tencent.msf.service.protocol.QQWiFi.a;
 import com.tencent.msf.service.protocol.QQWiFi.b;
@@ -594,7 +594,7 @@ public class y
             }
             if ((!M) || (H <= X) || (H - X > U))
             {
-              localObject = q.a(paramToServiceMsg);
+              localObject = t.a(paramToServiceMsg);
               ((FromServiceMsg)localObject).setMsgSuccess();
               if (ad != null) {
                 ((FromServiceMsg)localObject).addAttribute("StepInfoJSON", ad.toString());
@@ -608,7 +608,7 @@ public class y
           }
           if (((String)localObject).equals("cmd_health_switch"))
           {
-            localObject = q.a(paramToServiceMsg);
+            localObject = t.a(paramToServiceMsg);
             ((FromServiceMsg)localObject).setMsgSuccess();
             boolean bool = ((Boolean)paramToServiceMsg.getAttribute("isOpen", Boolean.valueOf(false))).booleanValue();
             if (QLog.isColorLevel()) {

@@ -18,7 +18,7 @@ public class GetUserAppListRequestV2
   public static final String KEY_RSP = "response";
   private INTERFACE.StGetDropdownAppListReq req = new INTERFACE.StGetDropdownAppListReq();
   
-  public GetUserAppListRequestV2(COMM.StCommonExt paramStCommonExt, ArrayList<INTERFACE.StRecommendApp> paramArrayList, ArrayList<Integer> paramArrayList1, int paramInt, INTERFACE.DeviceInfo paramDeviceInfo)
+  public GetUserAppListRequestV2(COMM.StCommonExt paramStCommonExt, ArrayList<INTERFACE.StRecommendApp> paramArrayList, ArrayList<Integer> paramArrayList1, int paramInt, INTERFACE.DeviceInfo paramDeviceInfo, ArrayList<Integer> paramArrayList2, ArrayList<String> paramArrayList3)
   {
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt);
@@ -27,6 +27,8 @@ public class GetUserAppListRequestV2
     this.req.types.set(paramArrayList1);
     this.req.hasCache.set(paramInt);
     this.req.deviceInfo.set(paramDeviceInfo);
+    this.req.subTypes.set(paramArrayList2);
+    this.req.itemIds.set(paramArrayList3);
   }
   
   public static INTERFACE.StGetDropdownAppListRsp onResponse(byte[] paramArrayOfByte)
@@ -53,7 +55,7 @@ public class GetUserAppListRequestV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetUserAppListRequestV2
  * JD-Core Version:    0.7.0.1
  */

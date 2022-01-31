@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
+import aais;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -22,7 +23,6 @@ import common.config.service.QzoneConfig;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import ytb;
 
 class AppBoxPlugin$MiniAppBox
 {
@@ -31,7 +31,7 @@ class AppBoxPlugin$MiniAppBox
   private static final String COMP_ID = "compId";
   private static final String OPERATION_TYPE = "type";
   private static final String TAG = "[minigame] MiniAppBox";
-  private ytb adBox;
+  private aais adBox;
   private String adUnitId;
   private int appBoxId;
   private BaseJsPluginEngine jsPluginEngine;
@@ -94,23 +94,23 @@ class AppBoxPlugin$MiniAppBox
     {
       bool = ((GameActivity)this.jsPluginEngine.activityContext).getIsOrientationLandscape();
       if (!bool) {
-        break label539;
+        break label535;
       }
       i = 90;
       QLog.i("[minigame] MiniAppBox", 1, "handle initAdParam appId = " + (String)localObject2 + "， deviceOrient = " + i);
       localApkgInfo = this.jsPluginEngine.appBrandRuntime.getApkgInfo();
       if ((localApkgInfo == null) || (!localApkgInfo.isEngineTypeMiniApp())) {
-        break label544;
+        break label540;
       }
       j = 0;
       label212:
       if (j != 0) {
-        break label549;
+        break label545;
       }
     }
-    label539:
-    label544:
-    label549:
+    label535:
+    label540:
+    label545:
     for (int j = 7;; j = 8)
     {
       Object localObject3 = "";
@@ -145,7 +145,7 @@ class AppBoxPlugin$MiniAppBox
           localObject3 = str2;
           if (localApkgInfo.appConfig.launchParam != null)
           {
-            localObject4 = MiniAppInfo.getReportDataString(localApkgInfo.appConfig.launchParam.reportData);
+            localObject4 = localApkgInfo.appConfig.launchParam.reportData;
             localObject3 = String.valueOf(localApkgInfo.appConfig.launchParam.scene);
           }
         }
@@ -277,7 +277,7 @@ class AppBoxPlugin$MiniAppBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AppBoxPlugin.MiniAppBox
  * JD-Core Version:    0.7.0.1
  */

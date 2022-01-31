@@ -1,37 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
-
-public final class anir
-  implements Parcelable.Creator
+public class anir
 {
-  public IPSiteModel.Video a(Parcel paramParcel)
-  {
-    IPSiteModel.Video localVideo = new IPSiteModel.Video();
-    localVideo.id = paramParcel.readString();
-    localVideo.buttonDesc = paramParcel.readString();
-    localVideo.content = paramParcel.readString();
-    localVideo.cover = paramParcel.readString();
-    localVideo.desc = paramParcel.readString();
-    localVideo.name = paramParcel.readString();
-    localVideo.endTime = paramParcel.readString();
-    localVideo.isShow = paramParcel.readInt();
-    localVideo.newStartTime = paramParcel.readLong();
-    localVideo.newEndTime = paramParcel.readLong();
-    localVideo.redirectUrl = paramParcel.readString();
-    localVideo.videoSource = paramParcel.readString();
-    localVideo.showDate = paramParcel.readString();
-    return localVideo;
-  }
+  public volatile int a;
+  public volatile boolean a;
   
-  public IPSiteModel.Video[] a(int paramInt)
+  private anir()
   {
-    return new IPSiteModel.Video[paramInt];
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anir
  * JD-Core Version:    0.7.0.1
  */

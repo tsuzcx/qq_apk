@@ -1,83 +1,48 @@
-import java.nio.ByteBuffer;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import java.util.List;
 
-public class ahzm
+class ahzm
+  implements View.OnClickListener
 {
-  private static void a(int paramInt1, short[] paramArrayOfShort, int paramInt2, int paramInt3, ByteBuffer paramByteBuffer)
-  {
-    int i = paramInt3 * 16000 / paramInt1;
-    long l1 = 0L;
-    long l2 = (paramInt3 - 2 << 16) / (i - 2);
-    paramInt1 = 0;
-    while (paramInt1 < i - 1)
-    {
-      long l3 = 0xFFFF & l1;
-      int j = paramArrayOfShort[((int)(l1 >> 16) + paramInt2)];
-      int k = paramArrayOfShort[((int)(l1 >> 16) + 1 + paramInt2)];
-      long l4 = j;
-      j = (int)(l3 * k + l4 * (65536L - l3) >> 16);
-      paramByteBuffer.put((byte)(j & 0xFF));
-      paramByteBuffer.put((byte)((j & 0xFF00) >> 8));
-      l1 += l2;
-      paramInt1 += 1;
-    }
-    paramByteBuffer.put((byte)(paramArrayOfShort[(paramInt3 - 1 + paramInt2)] & 0xFF));
-    paramByteBuffer.put((byte)((paramArrayOfShort[(paramInt3 - 1 + paramInt2)] & 0xFF00) >> 8));
-  }
+  ahzm(ahzk paramahzk, TroopLinkElement paramTroopLinkElement, ahzo paramahzo) {}
   
-  public static void a(int paramInt1, short[] paramArrayOfShort, int paramInt2, ByteBuffer paramByteBuffer)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    int j = paramInt1 * 5 / 100;
-    if (paramInt2 <= j) {
-      a(paramInt1, paramArrayOfShort, 0, paramInt2, paramByteBuffer);
-    }
-    int k;
-    do
+    if (!ahzk.a(this.jdField_a_of_type_Ahzk))
     {
-      return;
-      k = paramInt2 / j;
-      while (i < k)
-      {
-        a(paramInt1, paramArrayOfShort, i * j, j, paramByteBuffer);
-        i += 1;
-      }
-    } while (paramInt2 - k * j <= 0);
-    a(paramInt1, paramArrayOfShort, k * j, paramInt2 - j * k, paramByteBuffer);
-  }
-  
-  public static void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
-  {
-    if ((paramArrayOfShort == null) || (paramInt2 <= 0)) {
+      paramView = new Intent(ahzk.a(this.jdField_a_of_type_Ahzk), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
+      ahzk.a(this.jdField_a_of_type_Ahzk).startActivity(paramView);
       return;
     }
-    int i = 0;
-    label11:
-    int j;
-    if (i < paramInt2)
+    boolean bool = ahzo.a(this.jdField_a_of_type_Ahzo).isChecked();
+    if (bool)
     {
-      j = paramArrayOfShort[(paramInt1 + i)] * 10;
-      if (j < 32767.0F) {
-        break label50;
+      ahzk.a(this.jdField_a_of_type_Ahzk).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      paramView = ahzo.a(this.jdField_a_of_type_Ahzo);
+      if (bool) {
+        break label125;
       }
-      paramArrayOfShort[(paramInt1 + i)] = 32767;
     }
-    for (;;)
+    label125:
+    for (bool = true;; bool = false)
     {
-      i += 1;
-      break label11;
+      paramView.setChecked(bool);
+      return;
+      ahzk.a(this.jdField_a_of_type_Ahzk).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
       break;
-      label50:
-      if (j <= -32768.0F) {
-        paramArrayOfShort[(paramInt1 + i)] = -32768;
-      } else {
-        paramArrayOfShort[(paramInt1 + i)] = ((short)j);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,35 @@
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.List;
 
-public class bbao
+class bbao
+  implements View.OnClickListener
 {
-  public static URLDrawable a(ImageView paramImageView, String paramString)
+  private bbap jdField_a_of_type_Bbap;
+  private bbaq jdField_a_of_type_Bbaq;
+  
+  public bbao(bbaq parambbaq)
   {
-    return a(paramImageView, paramString, bbbb.a);
+    this.jdField_a_of_type_Bbaq = parambbaq;
   }
   
-  public static URLDrawable a(ImageView paramImageView, String paramString, Drawable paramDrawable)
+  public void a(bbap parambbap)
   {
-    return a(paramImageView, paramString, bbbb.a, paramDrawable, paramDrawable);
+    this.jdField_a_of_type_Bbap = parambbap;
   }
   
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
+  public void onClick(View paramView)
   {
-    return a(paramImageView, paramString, paramDecodeHandler, null);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (paramImageView.getLayoutParams() != null)
-    {
-      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
+    int i = ((Integer)paramView.getTag()).intValue();
+    bbaq.a(this.jdField_a_of_type_Bbaq, i);
+    if (this.jdField_a_of_type_Bbap != null) {
+      this.jdField_a_of_type_Bbap.a((bbar)bbaq.a(this.jdField_a_of_type_Bbaq).get(i));
     }
-    if ((localURLDrawableOptions.mRequestWidth <= 0) || (localURLDrawableOptions.mRequestHeight <= 0))
-    {
-      localURLDrawableOptions.mRequestWidth = Math.max(paramImageView.getWidth(), 0);
-      localURLDrawableOptions.mRequestHeight = Math.max(paramImageView.getHeight(), 0);
-    }
-    localURLDrawableOptions.mFailedDrawable = paramDrawable2;
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    if (paramDecodeHandler != null) {
-      localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
-    }
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setDecodeHandler(paramDecodeHandler);
-    paramImageView.setImageDrawable(paramString);
-    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbao
  * JD-Core Version:    0.7.0.1
  */

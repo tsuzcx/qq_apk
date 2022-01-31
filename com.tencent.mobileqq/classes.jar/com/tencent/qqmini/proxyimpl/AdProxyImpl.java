@@ -1,11 +1,15 @@
 package com.tencent.qqmini.proxyimpl;
 
+import aaji;
+import aajj;
+import aajk;
+import aano;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfgd;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -21,21 +25,20 @@ import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBoxADLisener;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.ICmdListener;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IRewardVideoAdListener;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.InterstitialADLisener;
+import com.tencent.qqmini.sdk.utils.AdUtil;
 import java.lang.ref.WeakReference;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import ytr;
-import yts;
-import ytt;
-import yxo;
 
 public class AdProxyImpl
   extends AdProxy
 {
   private final String TAG = "AdProxyImpl";
+  private GdtAppReceiver mGgtAppReceiver;
   
-  private yts createGdtBannerView(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, int paramInt1, int paramInt2)
+  private aajj createGdtBannerView(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, int paramInt1, int paramInt2)
   {
     QLog.i("AdProxyImpl", 1, "createBannerAdView width = " + paramInt1 + ", height = " + paramInt2);
     if (paramAdInfo == null) {
@@ -44,14 +47,14 @@ public class AdProxyImpl
     try
     {
       QLog.i("AdProxyImpl", 1, "createBannerAd");
-      ytr localytr = new ytr();
-      localytr.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = getBannerClickParams(paramActivity, paramAdInfo);
-      localytr.jdField_a_of_type_Int = 0;
-      localytr.b = paramInt1;
-      localytr.c = paramInt2;
-      paramActivity = ytt.a(localytr);
+      aaji localaaji = new aaji();
+      localaaji.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = getBannerClickParams(paramActivity, paramAdInfo);
+      localaaji.jdField_a_of_type_Int = 0;
+      localaaji.b = paramInt1;
+      localaaji.c = paramInt2;
+      paramActivity = aajk.a(localaaji);
       if (paramActivity != null) {
-        localytr.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(new GdtAd(paramAdInfo), new WeakReference(paramActivity.a()));
+        localaaji.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(new GdtAd(paramAdInfo), new WeakReference(paramActivity.a()));
       } else {
         QLog.e("AdProxyImpl", 1, "build Ad error");
       }
@@ -69,14 +72,18 @@ public class AdProxyImpl
     if ((paramActivity == null) || (paramAdInfo == null)) {
       return null;
     }
-    GdtAppReceiver localGdtAppReceiver = new GdtAppReceiver();
+    if (this.mGgtAppReceiver == null)
+    {
+      this.mGgtAppReceiver = new GdtAppReceiver();
+      this.mGgtAppReceiver.register(paramActivity);
+    }
     GdtHandler.Params localParams = new GdtHandler.Params();
     localParams.c = 11;
     localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
     localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramAdInfo);
     localParams.jdField_a_of_type_Boolean = true;
     localParams.jdField_b_of_type_Boolean = true;
-    localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(localGdtAppReceiver);
+    localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.mGgtAppReceiver);
     localParams.jdField_b_of_type_JavaLangClass = GameBannerAdFragment.class;
     paramActivity = new Bundle();
     paramActivity.putString("big_brother_ref_source_key", "biz_src_miniapp");
@@ -109,7 +116,7 @@ public class AdProxyImpl
   {
     try
     {
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
       return localAdInfo;
     }
     catch (Exception localException)
@@ -130,7 +137,7 @@ public class AdProxyImpl
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           return;
         }
-        bfgd.a(paramInt, (String)localObject);
+        AdUtil.putSpAdGdtCookie(paramInt, (String)localObject);
         QLog.i("AdProxyImpl", 1, "parseAndSaveCookie save key success, adType = " + paramInt + ", value = " + (String)localObject);
         return;
       }
@@ -139,6 +146,38 @@ public class AdProxyImpl
     {
       QLog.i("AdProxyImpl", 1, "parseAndSaveCookie error" + paramString, localException);
     }
+  }
+  
+  public boolean adClick(Activity paramActivity, String paramString)
+  {
+    if ((paramActivity == null) || (TextUtils.isEmpty(paramString))) {
+      return false;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString));
+      if (this.mGgtAppReceiver == null)
+      {
+        this.mGgtAppReceiver = new GdtAppReceiver();
+        this.mGgtAppReceiver.register(paramActivity);
+      }
+      paramString = new GdtHandler.Params();
+      paramString.c = 11;
+      paramString.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+      paramString.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(localAdInfo);
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.jdField_b_of_type_Boolean = true;
+      paramString.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.mGgtAppReceiver);
+      paramString.jdField_b_of_type_JavaLangClass = GameBannerAdFragment.class;
+      paramActivity = new Bundle();
+      paramActivity.putString("big_brother_ref_source_key", "biz_src_miniappD");
+      paramString.jdField_a_of_type_AndroidOsBundle = paramActivity;
+      GdtHandler.a(paramString);
+      return true;
+    }
+    catch (JSONException paramActivity) {}
+    return false;
   }
   
   public AdProxy.AbsBannerAdView createBannerAdView(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, AdProxy.IBannerAdListener paramIBannerAdListener, Bundle paramBundle)
@@ -173,6 +212,22 @@ public class AdProxyImpl
     return new AdProxyImpl.SDKRewardedVideoAdView(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIRewardVideoAdListener);
   }
   
+  public void destroy(Activity paramActivity)
+  {
+    if (this.mGgtAppReceiver != null) {}
+    try
+    {
+      this.mGgtAppReceiver.unregister(paramActivity);
+      label15:
+      this.mGgtAppReceiver = null;
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      break label15;
+    }
+  }
+  
   public void requestAdInfo(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, AdProxy.ICmdListener paramICmdListener)
   {
     ThreadManagerV2.excute(new AdProxyImpl.1(this, paramActivity, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7, paramString8, paramICmdListener), 16, null, false);
@@ -180,7 +235,7 @@ public class AdProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -5,10 +5,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIActionCounter;
-import com.tencent.aekit.plugin.core.AIActionCounter.AI_TYPE;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.PTHandAttr;
-import com.tencent.ttpic.model.TriggerTimeUpdater;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.PTSegAttr;
@@ -17,11 +15,13 @@ import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
 import com.tencent.ttpic.openapi.model.TriggerStateItem;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.trigger.TriggerTimeUpdater;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+@Deprecated
 public class VideoFilterInputFreeze
 {
   private long DELAY_TRIGGER_TIME = 0L;
@@ -143,7 +143,7 @@ public class VideoFilterInputFreeze
       return bool;
       i = -1;
       break;
-      paramMap = AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND);
+      paramMap = AIActionCounter.getActions(AEDetectorType.HAND);
       i = j;
       if (paramMap != null)
       {

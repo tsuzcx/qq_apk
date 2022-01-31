@@ -1,39 +1,98 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.1;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.2;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class bbzx
-  implements myy
+public class bbzx
+  implements bjyt
 {
-  bbzx(bbzu parambbzu, long paramLong1, String paramString1, long paramLong2, String paramString2) {}
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   
-  public void loaded(String paramString, int paramInt)
+  public bbzx(bbzw parambbzw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid loaded,code:" + paramInt + ",cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("280")) {
-      this.jdField_a_of_type_Bbzu.a("http://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
-    }
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {
-      if (this.jdField_a_of_type_Bbzu.a(2L, this.jdField_b_of_type_Long)) {
-        this.jdField_a_of_type_Bbzu.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long);
-      }
-    }
-    while ((!this.jdField_a_of_type_Bbzu.a(5L, this.jdField_b_of_type_Long)) || (this.jdField_b_of_type_JavaLangString == null)) {
+    switch (bbzw.a(parambbzw))
+    {
+    default: 
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Float = 1.0F;
+      return;
+    case 1: 
+      this.jdField_a_of_type_Int = 10;
+      this.jdField_a_of_type_Float = 0.85F;
       return;
     }
-    this.jdField_a_of_type_Bbzu.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
+    this.jdField_a_of_type_Int = 95;
+    this.jdField_a_of_type_Float = 0.05F;
   }
   
-  public void progress(int paramInt)
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Bbzw.isCanceled())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress cancel. progress=", Integer.valueOf(paramInt) });
+      }
+      this.jdField_a_of_type_Bbzw.onCancel();
+    }
+    long l;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress. mediaType=", Integer.valueOf(bbzw.a(this.jdField_a_of_type_Bbzw)), ", info hash=", Integer.valueOf(bbzw.a(this.jdField_a_of_type_Bbzw).hashCode()), ", info status=", Integer.valueOf(bbzw.a(this.jdField_a_of_type_Bbzw).g), ", progress=", Integer.valueOf(paramInt) });
+      }
+      l = System.currentTimeMillis();
+      paramInt = this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float * paramInt);
+    } while ((paramInt >= 100) || (l - this.jdField_a_of_type_Long <= 500L));
+    this.jdField_a_of_type_Long = l;
+    ThreadManager.getUIHandler().post(new ImageInfo.UploadMediaSegment.MediaUploadCallback.2(this, paramInt));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bbzw.isCanceled())
+    {
+      this.jdField_a_of_type_Bbzw.onCancel();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onComplete. mediaType=", Integer.valueOf(bbzw.a(this.jdField_a_of_type_Bbzw)), ", info hash=", Integer.valueOf(bbzw.a(this.jdField_a_of_type_Bbzw).hashCode()), ", info status=", Integer.valueOf(bbzw.a(this.jdField_a_of_type_Bbzw).g) });
+    }
+    switch (bbzw.a(this.jdField_a_of_type_Bbzw))
+    {
+    }
+    while (!this.jdField_a_of_type_Bbzw.isCanceled())
+    {
+      bbzw.a(this.jdField_a_of_type_Bbzw, bbzw.a(this.jdField_a_of_type_Bbzw));
+      return;
+      bcaa localbcaa = (bcaa)bbzw.a(this.jdField_a_of_type_Bbzw);
+      localbcaa.e = paramString;
+      ThreadManager.getUIHandler().post(new ImageInfo.UploadMediaSegment.MediaUploadCallback.1(this, localbcaa));
+      continue;
+      bbzw.a(this.jdField_a_of_type_Bbzw).b = paramString;
+    }
+    this.jdField_a_of_type_Bbzw.onCancel();
+  }
+  
+  public void b(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid progress:" + paramInt);
+      QLog.e(getClass().getSimpleName(), 2, new Object[] { "upload onError. errorCode=", Integer.valueOf(paramInt), ", info type=", Integer.valueOf(bbzw.a(this.jdField_a_of_type_Bbzw).b()), ", mediaType=", Integer.valueOf(bbzw.a(this.jdField_a_of_type_Bbzw)) });
     }
+    if (bbzw.a(this.jdField_a_of_type_Bbzw) == 2)
+    {
+      bbzw.b(this.jdField_a_of_type_Bbzw, bbzw.a(this.jdField_a_of_type_Bbzw));
+      return;
+    }
+    bbzw.a(this.jdField_a_of_type_Bbzw, new Error("-3"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbzx
  * JD-Core Version:    0.7.0.1
  */

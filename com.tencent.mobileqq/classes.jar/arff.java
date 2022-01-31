@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-
-public class arff
-  implements View.OnClickListener
+class arff
+  implements areg
 {
-  private arff(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  arff(arfb paramarfb) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    GroupVideoLoadingFragment.a(this.a).a(ajya.a(2131705406), ajya.a(2131705410));
-    GroupVideoLoadingFragment.a(this.a).c();
-    GroupVideoLoadingFragment.a(this.a, false);
+    this.a.a(false, armf.a(this.a.a.a()), this.a.c(), new arfg(this));
+  }
+  
+  public void b()
+  {
+    arfb.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arff
  * JD-Core Version:    0.7.0.1
  */

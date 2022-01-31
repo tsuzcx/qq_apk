@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
 
 public class ovh
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public ovh(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
+  public ovh(ReadInJoyDynamicChannelBaseFragment paramReadInJoyDynamicChannelBaseFragment, StaggeredGridLayoutManager paramStaggeredGridLayoutManager) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (ReadInJoyProteusFamilyFragment.a(this.a) != null) {
-      ReadInJoyProteusFamilyFragment.a(this.a).a(true);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.invalidateSpanAssignments();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ovh
  * JD-Core Version:    0.7.0.1
  */

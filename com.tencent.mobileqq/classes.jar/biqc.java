@@ -1,20 +1,33 @@
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.ttpic.openapi.model.WMEditItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qqdataline.DatalineLeakHelper.2.1;
 
-class biqc
+public final class biqc
   implements View.OnClickListener
 {
-  biqc(bipy parambipy, biqg parambiqg, WMEditItem paramWMEditItem) {}
-  
   public void onClick(View paramView)
   {
-    bipy.a(this.jdField_a_of_type_Bipy, this.jdField_a_of_type_Biqg.a, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
+    if (this.a != null) {
+      this.a.dismiss();
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131703133) + "/Tencent/MobileQQ/log/", 1).a();
+    paramView = ThreadManager.newFreeHandlerThread("dataline-leaker", 10);
+    paramView.start();
+    paramView = paramView.getLooper();
+    if (paramView != null) {
+      new Handler(paramView).post(new DatalineLeakHelper.2.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biqc
  * JD-Core Version:    0.7.0.1
  */

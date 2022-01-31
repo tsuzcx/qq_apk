@@ -1,52 +1,29 @@
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
 public class pvl
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<rib> jdField_b_of_type_JavaUtilList = new ArrayList();
+  public pvl(PTSFragment paramPTSFragment) {}
   
-  private pvl(pvm parampvm)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = pvm.a(parampvm);
-    this.jdField_a_of_type_JavaLangString = pvm.a(parampvm);
-    this.jdField_b_of_type_JavaLangString = pvm.b(parampvm);
-    this.jdField_b_of_type_JavaUtilList = pvm.b(parampvm);
-    this.jdField_a_of_type_Int = pvm.a(parampvm);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<rib> a()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public List<URL> b()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    paramView = paramView.getContext();
+    Intent localIntent = new Intent(paramView, AccountDetailActivity.class);
+    localIntent.putExtra("uin", String.valueOf(3434959637L));
+    localIntent.putExtra("uintype", 1008);
+    localIntent.putExtra("source", 121);
+    paramView.startActivity(localIntent);
+    nrt.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pvl
  * JD-Core Version:    0.7.0.1
  */

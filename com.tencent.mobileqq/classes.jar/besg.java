@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.RenderInfo;
-
-public final class besg
-  implements Parcelable.Creator<RenderInfo>
+public abstract interface besg
 {
-  public RenderInfo a(Parcel paramParcel)
-  {
-    return new RenderInfo(paramParcel);
-  }
+  public abstract void a(int paramInt);
   
-  public RenderInfo[] a(int paramInt)
-  {
-    return new RenderInfo[paramInt];
-  }
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besg
  * JD-Core Version:    0.7.0.1
  */

@@ -2,25 +2,15 @@ package c.t.m.g;
 
 import android.os.Bundle;
 
-public final class df
-  implements de
+public abstract interface df
 {
-  public final Bundle a(String paramString, byte[] paramArrayOfByte, dd paramdd)
-  {
-    Bundle localBundle = new Bundle();
-    paramdd = new df.1(this, localBundle, paramdd);
-    if (paramArrayOfByte != null) {}
-    for (;;)
-    {
-      ds.a(paramString, paramArrayOfByte, 0, paramdd);
-      return localBundle;
-      paramArrayOfByte = dn.a;
-    }
-  }
+  public static final df a = new dg();
+  
+  public abstract Bundle a(String paramString, byte[] paramArrayOfByte, de paramde);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.df
  * JD-Core Version:    0.7.0.1
  */

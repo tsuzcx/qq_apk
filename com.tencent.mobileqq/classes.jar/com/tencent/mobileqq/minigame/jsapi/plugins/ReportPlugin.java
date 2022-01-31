@@ -3,6 +3,7 @@ package com.tencent.mobileqq.minigame.jsapi.plugins;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
@@ -10,9 +11,12 @@ import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04363;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04682;
 import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
 import com.tencent.mobileqq.minigame.manager.GameLibVersionManager;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 import org.json.JSONObject;
@@ -74,7 +78,8 @@ public class ReportPlugin
         try
         {
           JSONObject localJSONObject1 = new JSONObject(paramString2);
-          localObject = GameInfoManager.g().getMiniAppConfig();
+          GameRuntimeLoader localGameRuntimeLoader = GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.jsPluginEngine.appBrandRuntime.activity);
+          localObject = localGameRuntimeLoader.getGameInfoManager().getMiniAppConfig();
           JSONObject localJSONObject2 = new JSONObject(localJSONObject1.optString("actionData", ""));
           if (localJSONObject2 != null)
           {
@@ -99,7 +104,7 @@ public class ReportPlugin
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
               return "";
             }
-            localJSONObject2.put("version", GameLibVersionManager.g().getGameEngineVersion());
+            localJSONObject2.put("version", localGameRuntimeLoader.getLibVersionManager().getGameEngineVersion());
             localJSONObject1.put("actionData", localJSONObject2);
             paramString2 = localJSONObject1.toString();
           }
@@ -110,13 +115,15 @@ public class ReportPlugin
             return "{}";
           }
         }
-        catch (Throwable paramString1)
+        catch (Throwable paramString2)
         {
-          QLog.e("[minigame] ReportPlugin", 1, paramString1, new Object[0]);
+          QLog.e("[minigame] ReportPlugin", 1, paramString2, new Object[0]);
+          paramString2 = ApiUtil.wrapCallbackFail(paramString1, null);
+          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, paramString2, paramInt);
         }
       }
     }
-    return "{}";
+    return paramString2.toString();
   }
   
   public Set<String> supportedEvents()
@@ -126,7 +133,7 @@ public class ReportPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.ReportPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,51 @@
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentHashMap;
 
-class awav
-  extends akat
+public class awav
+  extends alsi
 {
-  awav(awat paramawat) {}
+  public awav(OpenApiManager paramOpenApiManager) {}
   
-  public void a(boolean paramBoolean, long paramLong, akau paramakau)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if (awat.a(this.a) == null)
+    a(false, paramString1, paramLong2);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    Intent localIntent;
+    if (OpenApiManager.access$300(this.a).containsKey(Long.valueOf(paramLong)))
     {
-      QLog.d(awat.a, 1, new Object[] { "return because queue is null, isSuccess:", Boolean.valueOf(paramBoolean), " ,uniseq:", Long.valueOf(paramLong) });
-      return;
-    }
-    awao localawao = (awao)awat.a(this.a).peek();
-    if (localawao != null) {
-      if ((paramLong == localawao.jdField_a_of_type_Long) && (localawao.c == 4))
+      if (QLog.isColorLevel()) {
+        QLog.d("OpenApi.Manager", 2, "onSendResult, isSuccess = " + paramBoolean + ", uniseq = " + paramLong);
+      }
+      paramString = (String)OpenApiManager.access$300(this.a).remove(Long.valueOf(paramLong));
+      paramString = (awaz)OpenApiManager.access$200(this.a).get(paramString);
+      if (paramString != null)
       {
-        localawao.c = 5;
-        awat.a(this.a).remove(localawao);
-        if (localawao.jdField_a_of_type_Akat != null) {
-          localawao.jdField_a_of_type_Akat.a(paramBoolean, paramLong, paramakau);
-        }
-        if (localawao.jdField_a_of_type_Awar != null) {
-          localawao.jdField_a_of_type_Awar.a(paramBoolean, paramLong);
-        }
-        if (localawao.jdField_a_of_type_Boolean) {
-          axfi.a().a(paramLong);
-        }
-        awat.a(this.a).b(localawao.jdField_a_of_type_Long);
-        if (QLog.isColorLevel())
-        {
-          paramakau = new StringBuilder();
-          paramakau.append("OrderSendObserver remove uniseq:").append(paramLong).append(", queue size:").append(awat.a(this.a).size()).append(", mNeedCompress:").append(localawao.jdField_a_of_type_Boolean).append(", issuccess:").append(paramBoolean);
-          QLog.d(awat.a, 2, paramakau.toString());
+        localIntent = new Intent("com.tencent.mobileqq.openapi.ACTION_MSG_SENDED." + paramString.b);
+        localIntent.putExtra("msgid", paramString.a(String.valueOf(paramLong)));
+        if (!paramBoolean) {
+          break label171;
         }
       }
     }
-    for (;;)
+    label171:
+    for (int i = 0;; i = -9)
     {
-      awat.a(this.a);
+      localIntent.putExtra("rs_code", i);
+      BaseApplicationImpl.sApplication.sendBroadcast(localIntent, paramString.c);
       return;
-      QLog.d(awat.a, 1, new Object[] { "OrderSendObserver peekFirst but fail, status:", Integer.valueOf(localawao.c), ", uniseq:", Long.valueOf(localawao.jdField_a_of_type_Long) });
-      continue;
-      QLog.d(awat.a, 1, new Object[] { "OrderSendObserver peekFirst is null. uniseq:", Long.valueOf(paramLong), ", issuccess:", Boolean.valueOf(paramBoolean) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awav
  * JD-Core Version:    0.7.0.1
  */

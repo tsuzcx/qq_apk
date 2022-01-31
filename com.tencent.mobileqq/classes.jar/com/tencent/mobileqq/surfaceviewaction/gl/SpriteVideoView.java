@@ -2,9 +2,9 @@ package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import aycd;
-import aycu;
-import aycv;
+import baaa;
+import baaq;
+import baar;
 
 public class SpriteVideoView
   extends SpriteGLView
@@ -29,16 +29,16 @@ public class SpriteVideoView
     this.a.j();
   }
   
-  public void a(String paramString, int paramInt, aycd paramaycd)
+  public void a(String paramString, int paramInt, baaa parambaaa)
   {
     this.a.a(paramString, paramInt);
-    this.a.a(paramaycd);
+    this.a.a(parambaaa);
   }
   
-  public void a(String paramString, aycd paramaycd)
+  public void a(String paramString, baaa parambaaa)
   {
     this.a.c(paramString);
-    this.a.a(paramaycd);
+    this.a.a(parambaaa);
   }
   
   protected void a(boolean paramBoolean)
@@ -64,19 +64,19 @@ public class SpriteVideoView
     this.a.a(paramBoolean);
   }
   
-  public void setOnPlayedListener(aycu paramaycu)
+  public void setOnPlayedListener(baaq parambaaq)
   {
-    this.a.a(paramaycu);
+    this.a.a(parambaaq);
   }
   
-  public void setOnProgressChangedListener(aycv paramaycv)
+  public void setOnProgressChangedListener(baar parambaar)
   {
-    this.a.a(paramaycv);
+    this.a.a(parambaar);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView
  * JD-Core Version:    0.7.0.1
  */

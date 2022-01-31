@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import axrn;
+import azmz;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -13,12 +13,12 @@ public final class VideoRecoveryReporter$3
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("close_reason", String.valueOf(this.jdField_a_of_type_Int));
-    axrn.a(BaseApplication.getContext()).a("", "av_recovery_close2", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    azmz.a(BaseApplication.getContext()).a("", "av_recovery_close2", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.VideoRecoveryReporter.3
  * JD-Core Version:    0.7.0.1
  */

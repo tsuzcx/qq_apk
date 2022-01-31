@@ -1,35 +1,69 @@
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import java.util.concurrent.Executor;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import java.util.HashSet;
+import java.util.Set;
 
-public abstract class bdiw<Param, Progress, Result>
-  extends AsyncTask<Param, Progress, Result>
+public class bdiw
 {
-  protected String a;
-  protected String b;
-  
-  public bdiw(String paramString1, String paramString2)
+  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Set<String> paramSet)
   {
-    this.a = paramString1;
-    if (!paramString1.toLowerCase().startsWith("http")) {
-      this.a = ("https://openmobile.qq.com/" + paramString1);
-    }
-    this.b = paramString2;
+    return a(paramEditor, paramString, paramSet.toArray());
   }
   
-  @SuppressLint({"InlinedApi", "NewApi"})
-  public Executor a()
+  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Object[] paramArrayOfObject)
   {
-    if (Build.VERSION.SDK_INT >= 11) {
-      return AsyncTask.THREAD_POOL_EXECUTOR;
+    String str = "";
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
+    {
+      int j = paramArrayOfObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramArrayOfObject[i];
+        str = str + localObject.toString();
+        str = str + " ";
+        i += 1;
+      }
+      paramEditor.putString(paramString, str);
+      return paramEditor;
     }
-    return null;
+    paramEditor.putString(paramString, "");
+    return paramEditor;
+  }
+  
+  public static Set<String> a(SharedPreferences paramSharedPreferences, String paramString, Set<String> paramSet)
+  {
+    paramString = paramSharedPreferences.getString(paramString, "");
+    paramSharedPreferences = paramSet;
+    if (paramString != null)
+    {
+      paramSharedPreferences = paramSet;
+      if (paramString.length() > 0)
+      {
+        paramSet = paramString.split(" ");
+        paramString = new HashSet();
+        int j = paramSet.length;
+        int i = 0;
+        for (;;)
+        {
+          paramSharedPreferences = paramString;
+          if (i >= j) {
+            break;
+          }
+          paramSharedPreferences = paramSet[i];
+          if ((paramSharedPreferences != null) && (paramSharedPreferences.length() > 0)) {
+            paramString.add(paramSharedPreferences);
+          }
+          i += 1;
+        }
+      }
+    }
+    return paramSharedPreferences;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdiw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class uwa
-  extends QQUIEventReceiver<uvx, tce>
+class uwa
+  extends uhn
 {
-  public uwa(@NonNull uvx paramuvx)
-  {
-    super(paramuvx);
-  }
+  uwa(uvz paramuvz) {}
   
-  public void a(@NonNull uvx paramuvx, @NonNull tce paramtce)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    Iterator localIterator = paramuvx.a.iterator();
-    int j;
-    for (int i = 0; localIterator.hasNext(); i = j)
+    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      QQToast.a(this.a.a.a, 2, alpo.a(2131707341), 0).a();
+    }
+    do
     {
-      Object localObject = (uxm)localIterator.next();
-      j = i;
-      if ((localObject instanceof uwf))
+      return;
+      if ((!paramBoolean1) && (paramBoolean2))
       {
-        j = i;
-        if (((uwf)localObject).b())
-        {
-          localObject = ((uwf)localObject).a().iterator();
-          for (;;)
-          {
-            j = i;
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            if (((StoryVideoItem)((Iterator)localObject).next()).mVid.equals(paramtce.a)) {
-              i = 1;
-            }
-          }
-        }
+        QQToast.a(this.a.a.a, 1, alpo.a(2131707346), 0).a();
+        return;
       }
-    }
-    if (i != 0) {
-      paramuvx.a.clear();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tce.class;
+    } while ((paramBoolean1) || (paramBoolean2));
+    QQToast.a(this.a.a.a, 1, alpo.a(2131707342), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uwa
  * JD-Core Version:    0.7.0.1
  */

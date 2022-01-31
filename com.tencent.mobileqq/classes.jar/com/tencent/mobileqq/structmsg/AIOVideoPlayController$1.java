@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.structmsg;
 
-import ampl;
-import amqd;
-import axuk;
+import aogj;
+import aohb;
+import azqe;
 
 public class AIOVideoPlayController$1
   implements Runnable
 {
-  public AIOVideoPlayController$1(axuk paramaxuk) {}
+  public AIOVideoPlayController$1(azqe paramazqe) {}
   
   public void run()
   {
-    axuk.a(this.this$0, (amqd)ampl.a().a(537));
+    azqe.a(this.this$0, (aohb)aogj.a().a(537));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AIOVideoPlayController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
-final class ote
-  implements otf
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+
+public class ote
+  extends SimpleConfigHandler
 {
-  public void l()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    shu.a(2, true, System.currentTimeMillis(), 0, 0, false);
-  }
-  
-  public void m()
-  {
-    shu.a(2, false, ota.d, 0, 0, false);
+    boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
+    bjxj.a("daily_header_proteus_bid", paramString);
+    QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ote
  * JD-Core Version:    0.7.0.1
  */

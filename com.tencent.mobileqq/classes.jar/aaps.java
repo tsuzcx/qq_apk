@@ -1,28 +1,31 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
-public final class aaps
-  implements QQPermissionCallback
+public class aaps
+  implements TextWatcher
 {
-  public aaps(DialogInterface.OnClickListener paramOnClickListener) {}
+  public aaps(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, deny, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.a.onClick(null, 0);
+    if ((this.a.a() == null) || (!this.a.a().isValid()) || (paramEditable == null))
+    {
+      aanp.d("GdtFormItemTextBoxView", "afterTextChanged error");
+      return;
+    }
+    aanp.b("GdtFormItemTextBoxView", "afterTextChanged " + paramEditable.toString());
+    this.a.a().content.text = paramEditable.toString();
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, grant, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.a.onClick(null, 1);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaps
  * JD-Core Version:    0.7.0.1
  */

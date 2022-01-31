@@ -1,21 +1,19 @@
-import java.lang.ref.WeakReference;
+import java.util.List;
 
-final class uyq
-  implements vaa
+public class uyq
+  extends ugz
 {
-  uyq(WeakReference paramWeakReference) {}
+  public List<String> a;
+  public List<vbu> b;
   
-  public void a(String paramString)
+  public String toString()
   {
-    paramString = (uys)this.a.get();
-    if (paramString != null) {
-      paramString.a(Integer.valueOf(((Integer)((tcs)tcz.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
-    }
+    return "GetStoryPlayerTagInfoEvent{requestVidList=" + this.a + ", tagVidList=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyq
  * JD-Core Version:    0.7.0.1
  */

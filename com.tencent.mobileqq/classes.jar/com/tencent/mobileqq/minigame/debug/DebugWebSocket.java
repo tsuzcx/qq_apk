@@ -3,16 +3,7 @@ package com.tencent.mobileqq.minigame.debug;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
-import com.squareup.okhttp.Dispatcher;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.ws.WebSocket;
-import com.squareup.okhttp.ws.WebSocketCall;
-import com.squareup.okhttp.ws.WebSocketListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
@@ -20,6 +11,13 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import okhttp3.Dispatcher;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Request.Builder;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
 
 public class DebugWebSocket
 {
@@ -37,7 +35,6 @@ public class DebugWebSocket
   private OkHttpClient mOkHttpClient;
   protected DebugWebSocket.DebugSocketListener mOutListener;
   private WebSocket mWebSocket;
-  private WebSocketCall mWebSocketCall;
   private ArrayList<String> sendingMessages = new ArrayList();
   private Runnable socketMsgRunnable = new DebugWebSocket.4(this);
   
@@ -72,7 +69,7 @@ public class DebugWebSocket
       this.mWebSocket = null;
       return;
     }
-    catch (IOException paramString)
+    catch (Exception paramString)
     {
       for (;;)
       {
@@ -85,22 +82,18 @@ public class DebugWebSocket
   {
     if (this.mOkHttpClient == null)
     {
-      this.mOkHttpClient = new OkHttpClient();
-      this.mOkHttpClient.setRetryOnConnectionFailure(true);
-      this.mOkHttpClient.setConnectTimeout(120L, TimeUnit.SECONDS);
-      this.mOkHttpClient.setWriteTimeout(120L, TimeUnit.SECONDS);
-      this.mOkHttpClient.setReadTimeout(120L, TimeUnit.SECONDS);
+      OkHttpClient.Builder localBuilder = new OkHttpClient().newBuilder().retryOnConnectionFailure(true).connectTimeout(120L, TimeUnit.SECONDS).writeTimeout(120L, TimeUnit.SECONDS).readTimeout(120L, TimeUnit.SECONDS);
       if (sWebSocketExecutor == null) {
         sWebSocketExecutor = new ThreadPoolExecutor(0, 2147483647, 300L, TimeUnit.SECONDS, new SynchronousQueue(), sThreadFactory);
       }
       if (sWebSocketDispatcher == null) {
         sWebSocketDispatcher = new Dispatcher(sWebSocketExecutor);
       }
-      this.mOkHttpClient.setDispatcher(sWebSocketDispatcher);
+      localBuilder.dispatcher(sWebSocketDispatcher);
+      this.mOkHttpClient = localBuilder.build();
     }
     paramString = new Request.Builder().url(paramString).build();
-    this.mWebSocketCall = WebSocketCall.create(this.mOkHttpClient, paramString);
-    this.mWebSocketCall.enqueue(this.listener);
+    this.mOkHttpClient.newWebSocket(paramString, this.listener);
     this.mOutListener = paramDebugSocketListener;
   }
   
@@ -108,7 +101,7 @@ public class DebugWebSocket
   {
     if (this.mOkHttpClient != null)
     {
-      this.mOkHttpClient.getDispatcher().getExecutorService().shutdown();
+      this.mOkHttpClient.dispatcher().executorService().shutdown();
       this.mOkHttpClient = null;
     }
   }
@@ -126,7 +119,8 @@ public class DebugWebSocket
         {
           try
           {
-            localWebSocket.sendMessage(RequestBody.create(MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8"), str));
+            MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
+            localWebSocket.send(str);
             localIterator.remove();
           }
           catch (Exception localException)
@@ -198,7 +192,7 @@ public class DebugWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.debug.DebugWebSocket
  * JD-Core Version:    0.7.0.1
  */

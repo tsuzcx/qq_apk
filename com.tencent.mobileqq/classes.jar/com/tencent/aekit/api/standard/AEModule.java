@@ -15,6 +15,7 @@ import com.tencent.ttpic.baseutils.device.DeviceInstance;
 import com.tencent.ttpic.baseutils.device.GpuScopeAttrs;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.filter.aifilter.NetworkRequest;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
@@ -22,30 +23,36 @@ import com.tencent.ttpic.openapi.util.CfConfig;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.util.DecryptListener;
 import com.tencent.ttpic.util.MustRunOnGLThread;
+import java.io.File;
 import java.util.concurrent.Executor;
 
 public class AEModule
 {
-  private static final String[] AEKIT_FORMER_VERSION = { "1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0", "1.6.0", "1.7.0", "1.7.1" };
-  private static final String AEKIT_VERSION = "1.7.1";
+  private static final String[] AEKIT_FORMER_VERSION = { "1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0", "1.6.0", "1.7.0", "1.7.1", "1.7.2", "1.7.3", "1.7.4" };
+  private static final String AEKIT_VERSION = "1.7.4";
   private static final String AEKIT_VERSION_FILE = "aekit_meta.txt";
   public static final String DEFAULT_LICENSE_NAME = "com_tencent_2118.lic";
+  private static final String DEFAULT_RESOURCE_DIR = "tencent" + File.separator + "aekit";
   private static final String TAG = "AEKitModule";
   private static String aekitVersion = null;
   private static boolean debugMode = false;
-  private static boolean enableDefaultBasic3 = false;
-  private static boolean enableReducedMeidaLibrary = false;
+  private static boolean enableDefaultBasic3;
+  private static boolean enableReducedMeidaLibrary;
   private static DecryptListener mDecryptListener = new AEModule.1();
   private static String mLicense;
   private static int mLicenseInitType;
   private static String mLutDirPath;
   private static String mModelPath = null;
   private static String mSoPath = null;
+  private static NetworkRequest networkRequest;
   private static Context sContext;
   
   static
   {
     mLutDirPath = null;
+    enableDefaultBasic3 = false;
+    enableReducedMeidaLibrary = false;
+    networkRequest = null;
   }
   
   @MustRunOnGLThread
@@ -81,20 +88,42 @@ public class AEModule
     return mLutDirPath;
   }
   
+  public static NetworkRequest getNetworkRequest()
+  {
+    return networkRequest;
+  }
+  
+  public static String getResouceRoot()
+  {
+    if (getContext() == null) {
+      return null;
+    }
+    try
+    {
+      String str = getContext().getExternalFilesDir(null).getAbsolutePath() + File.separator + DEFAULT_RESOURCE_DIR;
+      return str;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
+  }
+  
   public static String getVersion()
   {
     if (!TextUtils.isEmpty(aekitVersion)) {
       return aekitVersion;
     }
     if (sContext == null) {
-      aekitVersion = "1.7.1";
+      aekitVersion = "1.7.4";
     }
     for (;;)
     {
       return aekitVersion;
       String str = FileUtils.loadAssetsString(sContext, "aekit_meta.txt");
       if (TextUtils.isEmpty(str)) {
-        aekitVersion = "1.7.1";
+        aekitVersion = "1.7.4";
       } else {
         aekitVersion = str.split("\n")[0];
       }
@@ -111,7 +140,7 @@ public class AEModule
       }
     }
     label29:
-    for (aekitVersion = "1.7.1";; aekitVersion = paramContext.split("\n")[0]) {
+    for (aekitVersion = "1.7.4";; aekitVersion = paramContext.split("\n")[0]) {
       return aekitVersion;
     }
   }
@@ -125,11 +154,14 @@ public class AEModule
     mLicense = paramAEModuleConfig.getLicense();
     mLicenseInitType = paramAEModuleConfig.getLicenseInitType();
     enableReducedMeidaLibrary = paramAEModuleConfig.isEnableReducedMeidaLibrary();
+    networkRequest = paramAEModuleConfig.getNetworkRequest();
     SharedPreferences localSharedPreferences = paramAEModuleConfig.getPreferences();
     boolean bool1 = paramAEModuleConfig.isFramebufferFetchEnable();
     boolean bool2 = paramAEModuleConfig.isEnableResourceCheck();
     boolean bool3 = paramAEModuleConfig.isEnableDataReport();
     boolean bool4 = paramAEModuleConfig.isEnableProfiler();
+    setContext(paramContext);
+    AEBaseConfig.setContext(paramContext);
     debugMode = paramAEModuleConfig.isDebugMode();
     AEOpenRenderConfig.setEnableLog(debugMode);
     LogUtils.setEnable(debugMode);
@@ -152,8 +184,7 @@ public class AEModule
     FeatureManager.setModelDir(mModelPath);
     FeatureManager.setSoDir(mSoPath);
     FeatureManager.enableResourceCheck(bool2);
-    setContext(paramContext);
-    AEBaseConfig.setContext(paramContext);
+    FeatureManager.createNoMedia();
     VideoPrefsUtil.init(paramContext, localSharedPreferences);
     GLCapabilities.init(bool1);
     AVReportCenter.getInstance().init(getContext());
@@ -223,7 +254,7 @@ public class AEModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.api.standard.AEModule
  * JD-Core Version:    0.7.0.1
  */

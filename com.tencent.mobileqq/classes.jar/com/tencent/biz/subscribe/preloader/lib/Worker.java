@@ -7,76 +7,78 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import wqx;
-import wqy;
-import wra;
-import wrb;
-import wrc;
-import wrd;
-import wre;
+import yfn;
+import yfo;
+import yfq;
+import yfr;
+import yfs;
+import yft;
+import yfu;
 
 public class Worker<T>
-  implements Runnable, wrc, wrd<T>
+  implements Runnable, yfs, yft<T>
 {
   private static ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = new ThreadPoolExecutor(2, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), jdField_a_of_type_JavaUtilConcurrentThreadFactory);
-  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new wrb();
+  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new yfr();
   private long jdField_a_of_type_Long;
   private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private String jdField_a_of_type_JavaLangString;
-  wqx<T> jdField_a_of_type_Wqx;
-  private wre<T> jdField_a_of_type_Wre;
+  yfn<T> jdField_a_of_type_Yfn;
+  private volatile yfu<T> jdField_a_of_type_Yfu;
   private T[] jdField_a_of_type_ArrayOfJavaLangObject;
   private volatile String jdField_b_of_type_JavaLangString = "";
   private ExecutorService jdField_b_of_type_JavaUtilConcurrentExecutorService;
   
-  public Worker(String paramString, wqx<T> paramwqx, wre<T> paramwre)
+  public Worker(String paramString, yfn<T> paramyfn, yfu<T> paramyfu)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    a(paramwqx);
-    if (paramwre != null) {
-      this.jdField_a_of_type_Wre = paramwre;
+    a(paramyfn);
+    if (paramyfu != null) {
+      this.jdField_a_of_type_Yfu = paramyfu;
     }
   }
   
   private void a(String paramString)
   {
     this.jdField_b_of_type_JavaLangString = paramString;
-    wqy.b("set state to:" + paramString);
+    yfo.b("set state to:" + paramString);
   }
   
-  private void a(wqx<T> paramwqx)
+  private void a(yfn<T> paramyfn)
   {
-    this.jdField_a_of_type_Wqx = paramwqx;
-    a(wra.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Yfn = paramyfn;
+    a(yfq.jdField_a_of_type_JavaLangString);
   }
   
-  private void a(wre<T> paramwre, T... paramVarArgs)
+  private void a(yfu<T> paramyfu, T... paramVarArgs)
   {
     try
     {
       long l = System.currentTimeMillis();
-      if ((this.jdField_a_of_type_Wqx.jdField_a_of_type_Long > 0L) && (l - this.jdField_a_of_type_Long > this.jdField_a_of_type_Wqx.jdField_a_of_type_Long * 1000L))
+      if ((this.jdField_a_of_type_Yfn.jdField_a_of_type_Long > 0L) && (l - this.jdField_a_of_type_Long > this.jdField_a_of_type_Yfn.jdField_a_of_type_Long * 1000L))
       {
-        wqy.b("preload response is expored! mPreloadExpiredTime :" + this.jdField_a_of_type_Wqx.jdField_a_of_type_Long);
+        yfo.b("preload response is expored! mPreloadExpiredTime :" + this.jdField_a_of_type_Yfn.jdField_a_of_type_Long);
         paramVarArgs = null;
       }
       while (a())
       {
-        paramwre.a(paramVarArgs);
-        if (!this.jdField_a_of_type_Wqx.jdField_a_of_type_Boolean) {
+        yfo.b("is in mainThread");
+        paramyfu.a(paramVarArgs);
+        if (!this.jdField_a_of_type_Yfn.jdField_a_of_type_Boolean) {
           return;
         }
-        wqy.a(this.jdField_a_of_type_JavaLangString);
+        yfo.a(this.jdField_a_of_type_JavaLangString);
         return;
-        wqy.b("preload response is not expored! mPreloadExpiredTime :" + this.jdField_a_of_type_Wqx.jdField_a_of_type_Long);
+        yfo.b("preload response is not expored! mPreloadExpiredTime :" + this.jdField_a_of_type_Yfn.jdField_a_of_type_Long);
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new Worker.2(this, paramwre, paramVarArgs));
+      yfo.b("is not in mainThread");
     }
-    catch (Exception paramwre)
+    catch (Exception paramyfu)
     {
-      wqy.a(paramwre);
+      yfo.a(paramyfu);
       return;
     }
+    this.jdField_a_of_type_AndroidOsHandler.post(new Worker.2(this, paramyfu, paramVarArgs));
   }
   
   private boolean a()
@@ -91,20 +93,28 @@ public class Worker<T>
     }
     for (;;)
     {
-      a(wra.jdField_b_of_type_JavaLangString);
+      a(yfq.jdField_b_of_type_JavaLangString);
       return;
       jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(this);
     }
   }
   
-  public void a(wre paramwre)
+  public void a(yfu paramyfu)
   {
-    if (paramwre != null)
+    StringBuilder localStringBuilder = new StringBuilder().append("setListener listener");
+    if (paramyfu != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Wre = paramwre;
-      if (wra.c.equals(this.jdField_b_of_type_JavaLangString)) {
-        a(paramwre, this.jdField_a_of_type_ArrayOfJavaLangObject);
+      yfo.b(bool);
+      if (paramyfu != null)
+      {
+        this.jdField_a_of_type_Yfu = paramyfu;
+        yfo.b("mState" + this.jdField_b_of_type_JavaLangString);
+        if (yfq.c.equals(this.jdField_b_of_type_JavaLangString)) {
+          a(paramyfu, this.jdField_a_of_type_ArrayOfJavaLangObject);
+        }
       }
+      return;
     }
   }
   
@@ -112,22 +122,25 @@ public class Worker<T>
   {
     this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a(wra.c);
-    if (this.jdField_a_of_type_Wre != null) {
-      a(this.jdField_a_of_type_Wre, paramVarArgs);
+    a(yfq.c);
+    if (this.jdField_a_of_type_Yfu != null)
+    {
+      a(this.jdField_a_of_type_Yfu, paramVarArgs);
+      return;
     }
+    yfo.b("done but listener is null");
   }
   
   public void b()
   {
     try
     {
-      this.jdField_a_of_type_Wqx.a();
+      this.jdField_a_of_type_Yfn.a();
       return;
     }
     catch (Exception localException)
     {
-      wqy.a(localException);
+      yfo.a(localException);
     }
   }
   
@@ -135,18 +148,18 @@ public class Worker<T>
   {
     try
     {
-      this.jdField_a_of_type_Wqx.a(this);
+      this.jdField_a_of_type_Yfn.a(this);
       return;
     }
     catch (Exception localException)
     {
-      wqy.a(localException);
+      yfo.a(localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.preloader.lib.Worker
  * JD-Core Version:    0.7.0.1
  */

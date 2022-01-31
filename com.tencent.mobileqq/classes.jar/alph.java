@@ -1,26 +1,23 @@
-import com.tencent.ark.ark.VariantWrapper;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class alph
-  implements admg
+public class alph
+  implements alkr
 {
-  alph(alpe paramalpe, long paramLong) {}
+  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1) {}
   
-  public void a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alpe.a(this.jdField_a_of_type_Long);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (paramInt == 1)
+    {
+      paramObject = (HashMap)paramObject;
+      a(paramBoolean, (ArrayList)paramObject.get("mq_kandian_svc_results"), (ArrayList)paramObject.get("mq_kandian_svc_sentences"));
     }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    this.jdField_a_of_type_Alpe.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alph
  * JD-Core Version:    0.7.0.1
  */

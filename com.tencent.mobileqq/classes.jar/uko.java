@@ -1,53 +1,35 @@
 import android.support.annotation.NonNull;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec.1;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class uko
-  implements ukn
+public class uko
+  extends QQUIEventReceiver<ukd, ulg>
 {
-  private final int jdField_a_of_type_Int;
-  @NonNull
-  private final WeakReference<ukn> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public uko(@NonNull ukn paramukn)
+  public uko(@NonNull ukd paramukd)
   {
-    this.jdField_a_of_type_Int = System.identityHashCode(paramukn);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramukn);
+    super(paramukd);
   }
   
-  private boolean a()
+  public void a(@NonNull ukd paramukd, @NonNull ulg paramulg)
   {
-    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
-  }
-  
-  public void a(@NonNull ukl paramukl)
-  {
-    ukn localukn = (ukn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localukn != null) {
-      localukn.a(paramukl);
+    if (paramulg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      wsv.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramulg.jdField_a_of_type_JavaLangString, paramulg.b);
+      Bosses.get().postLightWeightJob(new StoryVideoUploadManager.VideoCompositeRec.1(this, paramukd, paramulg), 0);
     }
   }
   
-  public void b(@NonNull ukl paramukl)
+  public Class acceptEventClass()
   {
-    ukn localukn = (ukn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localukn != null) {
-      localukn.b(paramukl);
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof uko)) && (((uko)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int;
+    return ulg.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uko
  * JD-Core Version:    0.7.0.1
  */

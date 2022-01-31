@@ -1,46 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
+import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.trackrecordlib.core.IRecordConfig;
 
-class azkk
-  implements View.OnClickListener
+public class azkk
+  implements IRecordConfig
 {
-  azkk(azkj paramazkj) {}
+  public azkk(RecordTracer paramRecordTracer) {}
   
-  public void onClick(View paramView)
+  public int getCachedEventSize()
   {
-    Object localObject = (azmb)paramView.getTag();
-    if (((azmb)localObject).b == 1)
-    {
-      this.a.a.a.a(((azmb)localObject).a, null);
-      if (((azmb)localObject).a == null) {}
-      for (paramView = "";; paramView = ((azmb)localObject).a)
-      {
-        axqy.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, paramView, "", "", "");
-        return;
-      }
-    }
-    this.a.a.a.a(((azmb)localObject).d, ((azmb)localObject).a);
-    if (((azmb)localObject).d == null)
-    {
-      paramView = "";
-      if (((azmb)localObject).a != null) {
-        break label148;
-      }
-    }
-    label148:
-    for (localObject = "";; localObject = ((azmb)localObject).a)
-    {
-      axqy.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, paramView, (String)localObject, "", "");
-      return;
-      paramView = ((azmb)localObject).d;
-      break;
-    }
+    return 0;
+  }
+  
+  public String getTitleBarId()
+  {
+    return "com.tencent.mobileqq:id/ivTitleName";
+  }
+  
+  public boolean isEnableRelease()
+  {
+    return true;
+  }
+  
+  public boolean isFilterUGC()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azkk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,31 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
 
 class ujy
-  extends mxj
+  implements Comparable<ujy>
 {
-  ujy(uju paramuju, boolean paramBoolean) {}
+  public final long a;
+  public final File a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ujy(ujx paramujx, File paramFile)
   {
-    if (paramInt != 0)
-    {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(5, bool);
-        this.a.a(0, this.a.a.getString(2131720544));
-        return;
-      }
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Long = paramFile.lastModified();
+  }
+  
+  public int a(ujy paramujy)
+  {
+    if (this.jdField_a_of_type_Long < paramujy.jdField_a_of_type_Long) {
+      return -1;
     }
-    ((sst)this.a.a.app.getManager(181)).c(this.b);
+    if (this.jdField_a_of_type_Long == paramujy.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,31 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class arrg
-  implements arte
+  implements View.OnClickListener
 {
-  public Object a;
+  public arrg(SendBottomBar paramSendBottomBar) {}
   
-  private arrg(ListenTogetherManager paramListenTogetherManager)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaLangObject == null) {}
-    while (paramInt == 0) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    String str1 = alpo.a(2131714171) + aqxj.b() + alpo.a(2131714177);
+    paramView = null;
+    String str2 = alpo.a(2131714189);
+    if (SendBottomBar.a(this.a).g() != -1)
     {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
+      str1 = alpo.a(2131714195);
+      paramView = alpo.a(2131714191);
+      str2 = alpo.a(2131714188);
     }
+    this.a.a = bdcd.a(SendBottomBar.a(this.a), 230, paramView, str1, alpo.a(2131714187), str2, new arrh(this), new arri(this));
+    this.a.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrg
  * JD-Core Version:    0.7.0.1
  */

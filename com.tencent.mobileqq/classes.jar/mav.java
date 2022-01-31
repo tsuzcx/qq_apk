@@ -1,27 +1,29 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.AVActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class mav
-  implements MessageQueue.IdleHandler
+class mav
+  implements DialogInterface.OnClickListener
 {
-  public mav(AVActivity paramAVActivity) {}
+  mav(mau parammau, long paramLong) {}
   
-  public boolean queueIdle()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.b, 1, "call IdleHandler mPeerUin:=" + this.a.c);
+    if (this.jdField_a_of_type_Mau.jdField_a_of_type_ComTencentAvShareAVSchema.a("checkQAVPermission.callback", this.jdField_a_of_type_Long)) {
+      return;
     }
-    ThreadManager.getSubThreadHandler().postDelayed(new AVActivity.1.1(this), 2000L);
-    return false;
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Mau.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Mau.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Mau.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new maw(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,28 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import com.tencent.qphone.base.util.QLog;
 
-public class qgg
-  implements View.OnTouchListener
+class qgg
+  extends bhnr
 {
-  public qgg(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
+  qgg(qgf paramqgf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = ReadInJoyVideoSearchTagFragment.a(this.a).getCompoundDrawables()[2];
-    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
+    try
     {
-      float f = ReadInJoyVideoSearchTagFragment.a(this.a).getRight() - paramView.getBounds().width();
-      if (paramMotionEvent.getRawX() >= f)
-      {
-        ReadInJoyVideoSearchTagFragment.a(this.a);
-        return true;
-      }
+      this.a.a.removeView(qgf.a(this.a));
+      return;
     }
-    return false;
+    catch (Exception paramAnimation)
+    {
+      QLog.d("BaseRIJRedPacketDialog", 2, QLog.getStackTraceString(paramAnimation));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qgg
  * JD-Core Version:    0.7.0.1
  */

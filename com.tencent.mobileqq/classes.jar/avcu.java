@@ -1,26 +1,36 @@
-public class avcu
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.qphone.base.util.QLog;
+
+class avcu
+  implements auxz
 {
-  public int a;
-  public byte[] a;
-  public int b;
+  avcu(avcs paramavcs) {}
   
-  public avcu(byte[] paramArrayOfByte, int paramInt)
+  public void a(Comments.Comment paramComment)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.b = 0;
+    if (avcs.a(this.a) != null)
+    {
+      avcs.a(this.a).a(paramComment);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.bindphone", 2, "onPublishSuccess");
+      }
+    }
   }
   
-  public avcu(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void a(Comments.Comment paramComment, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.b = paramInt1;
+    if (avcs.a(this.a) != null)
+    {
+      avcs.a(this.a).a(paramComment, paramInt, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.bindphone", 2, "onDataNotAvailable, code=" + paramInt + ", tip=" + paramString + ", comment=" + paramComment);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avcu
  * JD-Core Version:    0.7.0.1
  */

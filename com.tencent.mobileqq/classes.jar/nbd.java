@@ -1,49 +1,107 @@
-import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class nbd
-  extends WebViewPlugin
 {
-  protected Activity a;
+  public static String a;
+  public static String b = "msg_back";
+  long jdField_a_of_type_Long = 0L;
+  aumt jdField_a_of_type_Aumt = new nbe(this);
+  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
+  private final String c = "QQMusicService";
   
-  public nbd()
+  static
   {
-    this.mPluginNameSpace = "eqq";
+    jdField_a_of_type_JavaLangString = "msg_key";
   }
   
-  private void b(String paramString)
+  public nbd(TroopMemberApiService paramTroopMemberApiService)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
+  }
+  
+  private JSONObject a(SongInfo paramSongInfo)
+  {
+    if (paramSongInfo == null) {
+      return null;
     }
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).getString("uin");
-      localObject = ((JSONObject)localObject).getString("name");
-      Intent localIntent = actj.a(new Intent(this.a, ChatActivity.class), null);
-      localIntent.putExtra("uin", paramString);
-      localIntent.putExtra("uintype", 1024);
-      localIntent.putExtra("uinname", (String)localObject);
-      localIntent.putExtra("entrance", 0);
-      localIntent.putExtra("aio_msg_source", 999);
-      this.a.startActivity(localIntent);
-      return;
+      localJSONObject.put("id", paramSongInfo.jdField_a_of_type_Long);
     }
-    catch (JSONException paramString)
+    catch (JSONException localJSONException4)
     {
-      paramString.printStackTrace();
+      try
+      {
+        localJSONObject.put("audio_url", paramSongInfo.b);
+      }
+      catch (JSONException localJSONException4)
+      {
+        try
+        {
+          localJSONObject.put("title", paramSongInfo.c);
+        }
+        catch (JSONException localJSONException4)
+        {
+          try
+          {
+            localJSONObject.put("desc", paramSongInfo.d);
+          }
+          catch (JSONException localJSONException4)
+          {
+            try
+            {
+              for (;;)
+              {
+                localJSONObject.put("image_url", paramSongInfo.e);
+                try
+                {
+                  localJSONObject.put("share_url", paramSongInfo.f);
+                  return localJSONObject;
+                }
+                catch (JSONException paramSongInfo)
+                {
+                  paramSongInfo.printStackTrace();
+                  return localJSONObject;
+                }
+                localJSONException1 = localJSONException1;
+                localJSONException1.printStackTrace();
+                continue;
+                localJSONException2 = localJSONException2;
+                localJSONException2.printStackTrace();
+                continue;
+                localJSONException3 = localJSONException3;
+                localJSONException3.printStackTrace();
+                continue;
+                localJSONException4 = localJSONException4;
+                localJSONException4.printStackTrace();
+              }
+            }
+            catch (JSONException localJSONException5)
+            {
+              for (;;)
+              {
+                localJSONException5.printStackTrace();
+              }
+            }
+          }
+        }
+      }
     }
   }
   
-  protected void a(String paramString)
+  public void a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     do
@@ -51,42 +109,89 @@ public class nbd
       return;
       try
       {
-        paramString = new JSONObject(paramString).getString("uin");
-        naz.a(this.a, null, paramString, false, -1, true, -1);
-        return;
+        localObject = new JSONObject(paramString);
+        paramString = (String)localObject;
       }
-      catch (JSONException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("EqqWebviewPlugin", 2, "showEqq json error!");
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"eqq".equals(paramString2)) {}
-    do
-    {
-      return false;
-      if ("showEQQ".equals(paramString3))
+      catch (JSONException localJSONException)
       {
-        if (paramVarArgs.length > 0) {
-          a(paramVarArgs[0]);
+        for (;;)
+        {
+          Object localObject;
+          if (QLog.isColorLevel()) {
+            QLog.i("QQMusicService", 2, "playQQMusic err:" + paramString);
+          }
+          localJSONException.printStackTrace();
+          paramString = null;
         }
-        return true;
       }
-    } while ((!"showEQQAio".equals(paramString3)) || (paramVarArgs.length != 1));
-    b(paramVarArgs[0]);
-    return false;
+    } while (paramString == null);
+    paramString.optInt("mtype", 1);
+    localObject = new SongInfo();
+    ((SongInfo)localObject).jdField_a_of_type_Long = paramString.optLong("id");
+    ((SongInfo)localObject).b = paramString.optString("audio_url");
+    ((SongInfo)localObject).c = paramString.optString("title");
+    ((SongInfo)localObject).d = paramString.optString("desc");
+    ((SongInfo)localObject).e = paramString.optString("image_url");
+    ((SongInfo)localObject).f = paramString.optString("share_url");
+    this.jdField_a_of_type_Long = ((SongInfo)localObject).jdField_a_of_type_Long;
+    QQPlayerService.a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
+    QQPlayerService.a(this.jdField_a_of_type_Aumt);
+    QQPlayerService.a(BaseApplication.getContext(), this.jdField_a_of_type_Aumt.getToken(), (SongInfo)localObject);
   }
   
-  public void onCreate()
+  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
   {
-    super.onCreate();
-    this.a = this.mRuntime.a();
+    if (paramBundle == null) {
+      return;
+    }
+    int i = paramBundle.getInt(jdField_a_of_type_JavaLangString);
+    paramAppRuntime = new Bundle();
+    paramAppRuntime.putInt(jdField_a_of_type_JavaLangString, i);
+    int j = paramBundle.getInt("seq", -1);
+    if (j != -1) {
+      paramAppRuntime.putInt("seq", j);
+    }
+    switch (i)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBundle.getString("music"));
+      return;
+    case 2: 
+      QQPlayerService.a(BaseApplication.getContext());
+      return;
+    case 3: 
+      QQPlayerService.b(BaseApplication.getContext());
+      return;
+    case 4: 
+      QQPlayerService.a(this.jdField_a_of_type_Aumt);
+      paramAppRuntime.putInt("state", QQPlayerService.a());
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(8, paramAppRuntime);
+      return;
+    case 5: 
+      QQPlayerService.a(paramBundle.getInt("mode"));
+      return;
+    case 6: 
+      QQPlayerService.a(this.jdField_a_of_type_Aumt);
+      paramAppRuntime.putInt("mode", QQPlayerService.b());
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(8, paramAppRuntime);
+      return;
+    case 7: 
+      QQPlayerService.a(this.jdField_a_of_type_Aumt);
+      paramBundle = a(QQPlayerService.b());
+      if (paramBundle != null) {
+        paramAppRuntime.putString("music", paramBundle.toString());
+      }
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(8, paramAppRuntime);
+      return;
+    }
+    QQPlayerService.c(BaseApplication.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbd
  * JD-Core Version:    0.7.0.1
  */

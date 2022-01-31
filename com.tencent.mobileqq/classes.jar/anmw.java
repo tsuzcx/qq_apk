@@ -1,67 +1,39 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.List;
-import mqq.manager.TicketManager;
-import tencent.im.oidb.cmd0x876.oidb_0x876.ReqBody;
-import tencent.im.oidb.cmd0x877.oidb_0x877.ReqBody;
-import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
-import tencent.nearby.now.nearby_now_anchor.ReqBatchGetAnchorStatus;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class anmw
+class anmw
+  implements EIPCResultCallback
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  anmw(anmv paramanmv, String paramString1, String paramString2, IArkDelegateNetCallback paramIArkDelegateNetCallback, int paramInt) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    localReqBody.uid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
-    localReqBody.tinyid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = ((TicketManager)localObject).getA2(paramQQAppInterface.getCurrentAccountUin());
-    localObject = ((TicketManager)localObject).getSkey(paramQQAppInterface.getCurrentAccountUin());
-    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.sendAppMsg cmd=", this.jdField_a_of_type_JavaLangString, ", msg=", this.b, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
+    switch (paramEIPCResult.code)
     {
-      localReqBody.a2.set(str);
-      localReqBody.platform.set(1);
-      localReqBody.version.set("8.3.0");
-      localReqBody.original_id.set(paramQQAppInterface.getCurrentAccountUin());
-      localReqBody.original_key.set((String)localObject);
-      localReqBody.original_id_type.set(1);
     }
-    localReqBody.cmd.set(24727);
-    localReqBody.subcmd.set(6);
-    mxf.a(paramQQAppInterface, new anmx(), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, anmy paramanmy)
-  {
-    oidb_0x877.ReqBody localReqBody = new oidb_0x877.ReqBody();
-    localReqBody.uint32_refer.set(paramInt);
-    mxf.a(paramQQAppInterface, paramanmy, localReqBody.toByteArray(), "OidbSvc.0x877_0", 2167, 0);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, anmz paramanmz)
-  {
-    mxf.a(paramQQAppInterface, paramanmz, new oidb_0x876.ReqBody().toByteArray(), "OidbSvc.0x876_" + paramInt, 2166, paramInt);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, List<Long> paramList, Bundle paramBundle, anna paramanna)
-  {
-    nearby_now_anchor.ReqBatchGetAnchorStatus localReqBatchGetAnchorStatus = new nearby_now_anchor.ReqBatchGetAnchorStatus();
-    localReqBatchGetAnchorStatus.uint64_uin.set(paramList);
-    paramList = paramBundle;
-    if (paramBundle == null) {
-      paramList = new Bundle();
-    }
-    mxf.a(paramQQAppInterface, paramanna, localReqBatchGetAnchorStatus.toByteArray(), "NearbyNowTips.batch_get_anchor_stats", paramList);
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback == null);
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(this.jdField_a_of_type_Int, false, null);
+      return;
+      paramEIPCResult = paramEIPCResult.data;
+    } while ((paramEIPCResult == null) || (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback == null));
+    int i = paramEIPCResult.getInt("type");
+    boolean bool = paramEIPCResult.getBoolean("sucess");
+    paramEIPCResult = paramEIPCResult.getString("data");
+    this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(i, bool, paramEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmw
  * JD-Core Version:    0.7.0.1
  */

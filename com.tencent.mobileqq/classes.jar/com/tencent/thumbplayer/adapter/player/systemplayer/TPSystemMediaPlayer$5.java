@@ -14,7 +14,7 @@ class TPSystemMediaPlayer$5
   public void onTimedText(MediaPlayer paramMediaPlayer, TimedText paramTimedText)
   {
     TPSubtitleData localTPSubtitleData;
-    if (TPSystemMediaPlayer.access$2700(this.this$0) != null)
+    if (TPSystemMediaPlayer.access$2600(this.this$0) != null)
     {
       localTPSubtitleData = new TPSubtitleData();
       if (paramTimedText == null) {
@@ -25,16 +25,16 @@ class TPSystemMediaPlayer$5
     for (paramMediaPlayer = paramTimedText.getText();; paramMediaPlayer = "")
     {
       localTPSubtitleData.subtitleData = paramMediaPlayer;
-      localTPSubtitleData.trackIndex = TPSystemMediaPlayer.access$2800(this.this$0);
+      localTPSubtitleData.trackIndex = TPSystemMediaPlayer.access$2700(this.this$0);
       localTPSubtitleData.startPositionMs = this.this$0.getCurrentPositionMs();
-      TPSystemMediaPlayer.access$2700(this.this$0).onSubtitleData(localTPSubtitleData);
+      TPSystemMediaPlayer.access$2600(this.this$0).onSubtitleData(localTPSubtitleData);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPSystemMediaPlayer.5
  * JD-Core Version:    0.7.0.1
  */

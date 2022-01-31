@@ -1,44 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import mqq.os.MqqHandler;
 
-public final class apka
-  extends WebViewClient
+class apka
+  implements aqwz
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final IHostInterface.IWebClient jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient;
+  public MqqHandler a;
   
-  private apka(Context paramContext, IHostInterface.IWebClient paramIWebClient)
+  public apka(MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient = paramIWebClient;
+    this.a = paramMqqHandler;
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void a(int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.onPageFinished(paramWebView, paramString))) {
-      super.onPageFinished(paramWebView, paramString);
+    if (this.a != null) {
+      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
     }
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void a(Object paramObject)
   {
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.shouldOverrideUrlLoading(paramWebView, paramString)))
-    {
-      paramWebView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserDelegationActivity.class);
-      paramWebView.putExtra("param_force_internal_browser", true);
-      paramWebView.putExtra("url", paramString);
-      acqv.a(this.jdField_a_of_type_AndroidContentContext, paramWebView, paramString);
+    if (this.a != null) {
+      this.a.sendEmptyMessageDelayed(100, 1500L);
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apka
  * JD-Core Version:    0.7.0.1
  */

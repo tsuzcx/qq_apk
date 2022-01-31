@@ -1,39 +1,45 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class arvz
+class arvz
   implements DialogInterface.OnClickListener
 {
-  public arvz(LocationDialogUtil.6 param6) {}
+  arvz(arvx paramarvx) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationDialogUtil", 2, new Object[] { "onClick: invoked. showStartShareLocationDialog  ", " which: ", Integer.valueOf(paramInt) });
-    }
-    if (BaseActivity.sTopActivity != null) {
-      LocationShareFragment.b(BaseActivity.sTopActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
-    }
-    try
+    if (paramInt == 1)
     {
-      arus.a(BaseActivity.sTopActivity.app).a(true);
-      label79:
-      arvm.a(this.a.b, "0X800A769");
-      return;
-    }
-    catch (Throwable paramDialogInterface)
-    {
-      break label79;
+      arvx.a(this.a).k(true);
+      paramDialogInterface = new Intent(arvx.a(this.a), LoginActivity.class);
+      paramDialogInterface.putExtra("is_change_account", true);
+      paramDialogInterface = aekt.a(paramDialogInterface, new int[] { 2 });
+      paramDialogInterface.putExtra("key_action", arvx.class.getSimpleName());
+      paramDialogInterface.putExtra("uin", arvx.a(this.a).jdField_a_of_type_JavaLangString);
+      paramDialogInterface.putExtra("uintype", arvx.a(this.a).jdField_a_of_type_Int);
+      paramDialogInterface.putExtra("thridparty_pull_aio", true);
+      paramDialogInterface.putExtra("pull_aio_audio", arvx.a(this.a));
+      paramDialogInterface.putExtra("pull_aio_video", arvx.b(this.a));
+      paramDialogInterface.putExtra("openid", arvx.a(this.a));
+      paramDialogInterface.putExtra("appid", arvx.b(this.a));
+      paramDialogInterface.putExtra("pull_aio_audio", arvx.a(this.a));
+      paramDialogInterface.putExtra("pull_aio_video", arvx.b(this.a));
+      paramDialogInterface.putExtra("uinname", arvx.a(this.a).d);
+      paramDialogInterface.addFlags(268435456);
+      paramDialogInterface.addFlags(67108864);
+      arvx.a(this.a).dismiss();
+      arvx.a(this.a).startActivity(paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arvz
  * JD-Core Version:    0.7.0.1
  */

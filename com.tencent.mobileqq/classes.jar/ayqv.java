@@ -1,116 +1,92 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.observer.BusinessObserver;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-class ayqv
-  extends ayqu
+public class ayqv
 {
-  private int jdField_a_of_type_Int;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new ayqw(this);
-  private AtomicBoolean c = new AtomicBoolean(false);
+  public static ayqv a;
+  public long a;
+  public Map<Long, WeakReference<Object>> a;
   
-  ayqv(ayqt paramayqt)
+  static
   {
-    super(paramayqt);
-    this.jdField_a_of_type_JavaLangString = "GetAppInfoStep";
-    AtomicBoolean localAtomicBoolean = this.c;
-    if (ayqt.a(paramayqt).jdField_a_of_type_Int == 1) {}
+    jdField_a_of_type_Ayqv = new ayqv();
+  }
+  
+  private ayqv()
+  {
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  }
+  
+  public static ayqv a()
+  {
+    return jdField_a_of_type_Ayqv;
+  }
+  
+  public long a(Object paramObject)
+  {
+    long l;
+    if (paramObject == null) {
+      l = -9223372036854775808L;
+    }
     for (;;)
     {
-      localAtomicBoolean.set(bool);
-      return;
-      bool = false;
-    }
-  }
-  
-  private void g()
-  {
-    Object localObject = this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.c, this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
-    if (((localObject instanceof MessageForStructing)) && ((((MessageForStructing)localObject).structingMsg instanceof AbsShareMsg)))
-    {
-      localObject = (AbsShareMsg)((MessageForStructing)localObject).structingMsg;
-      ((AbsShareMsg)localObject).mSource_A_ActionData = ayqt.a(this.jdField_b_of_type_Ayqt).jdField_a_of_type_JavaLangString;
-      ((AbsShareMsg)localObject).mSourceName = ayqt.a(this.jdField_b_of_type_Ayqt).b;
-      ((AbsShareMsg)localObject).mSourceIcon = ayqt.a(this.jdField_b_of_type_Ayqt).d;
-      ((AbsShareMsg)localObject).mSourceUrl = ayqt.a(this.jdField_b_of_type_Ayqt).c;
-      ((AbsShareMsg)localObject).shareData.appInfoStatus = 1;
-      this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.c, this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Long, ((AbsShareMsg)localObject).getBytes());
-      this.jdField_b_of_type_Ayqt.d(1002);
-    }
-  }
-  
-  void a(aqas paramaqas)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|useCachedAppInfo=,time=" + (System.currentTimeMillis() - ayqt.b(this.jdField_b_of_type_Ayqt)));
-    }
-    ayqt.a(this.jdField_b_of_type_Ayqt).d = paramaqas.a();
-    ayqt.a(this.jdField_b_of_type_Ayqt).e = paramaqas.e();
-    if (paramaqas.a())
-    {
-      if (!TextUtils.isEmpty(paramaqas.d())) {
-        ayqt.a(this.jdField_b_of_type_Ayqt).jdField_a_of_type_JavaLangString = paramaqas.d();
+      return l;
+      try
+      {
+        l = this.jdField_a_of_type_Long;
+        this.jdField_a_of_type_Long = (1L + l);
+        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), new WeakReference(paramObject));
       }
-      if (!TextUtils.isEmpty(paramaqas.c())) {
-        ayqt.a(this.jdField_b_of_type_Ayqt).b = paramaqas.c();
-      }
-      if ((!TextUtils.isEmpty(paramaqas.b())) && (ayqt.a(this.jdField_b_of_type_Ayqt) != Long.parseLong("1103584836"))) {
-        ayqt.a(this.jdField_b_of_type_Ayqt).c = paramaqas.b();
-      }
+      finally {}
     }
-    ayqt.a(this.jdField_b_of_type_Ayqt).jdField_a_of_type_Int = 1;
-    g();
-    this.c.set(true);
-    b();
   }
   
-  protected boolean a()
+  /* Error */
+  public Object a(long paramLong)
   {
-    return this.c.get();
-  }
-  
-  protected void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|process|appId=" + ayqt.a(this.jdField_b_of_type_Ayqt) + ",pkgName=" + ayqt.g(this.jdField_b_of_type_Ayqt) + ",retry=" + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      f();
-      return;
-    }
-    ayqt.a(this.jdField_b_of_type_Ayqt, System.currentTimeMillis());
-    switch (ayqt.b(this.jdField_b_of_type_Ayqt))
-    {
-    default: 
-      return;
-    case 2: 
-      xmq.a(this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Ayqt.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ayqt.a(this.jdField_b_of_type_Ayqt), 0L, this.jdField_a_of_type_MqqObserverBusinessObserver, ayqt.g(this.jdField_b_of_type_Ayqt));
-      return;
-    }
-    Object localObject = ((aqfo)this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(350)).a().a(ayqt.a(this.jdField_b_of_type_Ayqt));
-    if (localObject != null)
-    {
-      a((aqas)localObject);
-      return;
-    }
-    long l = ayqt.b(this.jdField_b_of_type_Ayqt) / 1000L;
-    localObject = AgentActivity.a(this.jdField_b_of_type_Ayqt.jdField_a_of_type_AndroidContentContext, ayqt.g(this.jdField_b_of_type_Ayqt), l + "");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|process|sign: " + (String)localObject);
-    }
-    xmq.a(this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Ayqt.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ayqt.a(this.jdField_b_of_type_Ayqt), (String)localObject, l, this.jdField_a_of_type_MqqObserverBusinessObserver, ayqt.g(this.jdField_b_of_type_Ayqt));
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 23	ayqv:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   6: lload_1
+    //   7: invokestatic 35	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   10: invokeinterface 51 2 0
+    //   15: checkcast 37	java/lang/ref/WeakReference
+    //   18: astore_3
+    //   19: aload_3
+    //   20: ifnull +12 -> 32
+    //   23: aload_3
+    //   24: invokevirtual 54	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   27: astore_3
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: aload_3
+    //   31: areturn
+    //   32: aconst_null
+    //   33: astore_3
+    //   34: goto -6 -> 28
+    //   37: astore_3
+    //   38: aload_0
+    //   39: monitorexit
+    //   40: aload_3
+    //   41: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	42	0	this	ayqv
+    //   0	42	1	paramLong	long
+    //   18	16	3	localObject1	Object
+    //   37	4	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	37	finally
+    //   23	28	37	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayqv
  * JD-Core Version:    0.7.0.1
  */

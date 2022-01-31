@@ -1,81 +1,54 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.MQLruCache;
-import android.util.Pair;
-import com.tencent.commonsdk.cache.Sizeable;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
 
 public class axol
-  extends MQLruCache<String, Object>
+  extends Handler
 {
-  public axol(Integer paramInteger)
+  public axol(LiteTcpConnection paramLiteTcpConnection, Looper paramLooper)
   {
-    super(paramInteger.intValue());
+    super(paramLooper);
   }
   
-  protected int a(String paramString, Object paramObject)
+  public void a()
   {
-    if ((paramObject instanceof Pair)) {
-      return ((Integer)((Pair)paramObject).second).intValue();
+    if (LiteTcpConnection.a(this.a) != null) {
+      LiteTcpConnection.a(this.a).sendEmptyMessage(3);
     }
-    if ((paramObject instanceof Bitmap))
-    {
-      paramString = (Bitmap)paramObject;
-      return paramString.getRowBytes() * paramString.getHeight();
+  }
+  
+  public void b()
+  {
+    axol localaxol = LiteTcpConnection.a(this.a);
+    if (localaxol != null) {
+      localaxol.sendEmptyMessage(2);
     }
-    if ((paramObject instanceof BitmapDrawable))
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
+    }
+    do
     {
-      paramObject = ((BitmapDrawable)paramObject).getBitmap();
-      if (paramObject != null)
+      return;
+      if (paramMessage.what == 2)
       {
-        int i = paramObject.getRowBytes();
-        return paramObject.getHeight() * i;
+        LiteTcpConnection.a(this.a);
+        return;
       }
-    }
-    else if ((paramObject instanceof rpd))
-    {
-      paramObject = ((rpd)paramObject).a();
-      if (paramObject != null) {
-        return rpn.a(paramObject);
-      }
-    }
-    else if ((paramObject instanceof Sizeable))
-    {
-      return ((Sizeable)paramObject).getByteSize();
-    }
-    xow.a(paramString, xow.m);
-    return 204800;
-  }
-  
-  public Object a(String paramString, Object paramObject)
-  {
-    Object localObject = paramObject;
-    if ((paramObject instanceof rpd)) {
-      localObject = ((rpd)paramObject).a();
-    }
-    return super.put(paramString, localObject);
-  }
-  
-  public Object a(String paramString, Object paramObject, byte paramByte)
-  {
-    Object localObject = paramObject;
-    if ((paramObject instanceof rpd)) {
-      localObject = ((rpd)paramObject).a();
-    }
-    return super.put(paramString, localObject, paramByte);
-  }
-  
-  public void a(String paramString, int paramInt) {}
-  
-  protected void a(boolean paramBoolean, String paramString, Object paramObject1, Object paramObject2)
-  {
-    if ((paramObject1 instanceof rpd)) {
-      ((rpd)paramObject1).a();
-    }
+    } while (paramMessage.what != 3);
+    LiteTcpConnection.a(this.a).quit();
+    LiteTcpConnection.a(this.a, null);
+    LiteTcpConnection.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axol
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class acjr
-  implements View.OnTouchListener
+public abstract interface acjr
 {
-  public acjr(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
+  public abstract void a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  public abstract void a(agfq paramagfq);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(agfq paramagfq);
+  
+  public abstract void b(ChatMessage paramChatMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acjr
  * JD-Core Version:    0.7.0.1
  */

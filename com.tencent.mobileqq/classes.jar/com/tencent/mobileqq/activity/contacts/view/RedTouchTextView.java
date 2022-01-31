@@ -7,7 +7,7 @@ import android.graphics.Paint.Style;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bbll;
+import bdkf;
 
 public class RedTouchTextView
   extends TextView
@@ -53,12 +53,12 @@ public class RedTouchTextView
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();
-    setMeasuredDimension(paramInt1 + bbll.a(10.0F), paramInt2 + bbll.a(10.0F));
+    setMeasuredDimension(paramInt1 + bdkf.a(10.0F), paramInt2 + bdkf.a(10.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.view.RedTouchTextView
  * JD-Core Version:    0.7.0.1
  */

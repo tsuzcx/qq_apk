@@ -3,13 +3,13 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apeu;
+import aqxs;
 import java.util.ArrayList;
 
 public class ForwardFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ForwardFileInfo> CREATOR = new apeu();
+  public static final Parcelable.Creator<ForwardFileInfo> CREATOR = new aqxs();
   public int a;
   private long jdField_a_of_type_Long;
   private WeiYunFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo;
@@ -279,7 +279,7 @@ public class ForwardFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.ForwardFileInfo
  * JD-Core Version:    0.7.0.1
  */

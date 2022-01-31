@@ -1,24 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.game.WebGameFakeView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class aiyn
-  implements View.OnClickListener
+  implements aixw
 {
-  public aiyn(WebGameFakeView paramWebGameFakeView, ImageView paramImageView) {}
+  public aiyn(DrawHbFragment paramDrawHbFragment, View paramView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    aixq.a().a(null);
-    if (aixq.a().a() <= 1) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368202).setVisibility(8);
+      return;
     }
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131368202).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyn
  * JD-Core Version:    0.7.0.1
  */

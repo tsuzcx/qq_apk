@@ -1,40 +1,36 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class awjk
-  implements View.OnClickListener
+final class awjk
+  implements bapw
 {
-  public awjk(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
-  
-  public void onClick(View paramView)
+  public void a(baqv parambaqv, baqw parambaqw)
   {
-    this.a.c();
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCursorVisible(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.removeTextChangedListener(this.a);
-    if ((ActiveEntitySearchActivity.a(this.a) == 1) && (!TextUtils.isEmpty(this.a.b)))
+    if ((parambaqv == null) || (parambaqw == null)) {}
+    do
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText(this.a.b);
-      ActiveEntitySearchActivity.a(this.a, ActiveEntitySearchActivity.a(this.a));
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.addTextChangedListener(this.a);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText("");
-      ActiveEntitySearchActivity.a(this.a, 2);
-    }
+      do
+      {
+        return;
+      } while (!(parambaqv instanceof baps));
+      parambaqv = (baps)parambaqv;
+      parambaqv.jdField_a_of_type_Long += parambaqw.c;
+      parambaqw.c = 0L;
+      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
+      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
+      if (parambaqw.contains("range="))
+      {
+        String str = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
+        parambaqv.jdField_a_of_type_JavaLangString = (str + "range=" + parambaqv.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("PrecoverResDownloader", 2, "IBreakDownFix, " + parambaqw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awjk
  * JD-Core Version:    0.7.0.1
  */

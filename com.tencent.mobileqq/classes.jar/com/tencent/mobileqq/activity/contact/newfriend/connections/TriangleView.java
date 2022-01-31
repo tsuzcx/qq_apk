@@ -9,14 +9,14 @@ import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bbll;
+import bdkf;
 
 public class TriangleView
   extends View
 {
-  public static final int a = bbll.a(7.0F);
-  public static final int b = bbll.a(2.0F);
-  public static final int c = bbll.a(2.0F);
+  public static final int a = bdkf.a(7.0F);
+  public static final int b = bdkf.a(2.0F);
+  public static final int c = bdkf.a(2.0F);
   private int d = 1;
   private int e = Color.parseColor("#00CAFC");
   
@@ -72,7 +72,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.connections.TriangleView
  * JD-Core Version:    0.7.0.1
  */

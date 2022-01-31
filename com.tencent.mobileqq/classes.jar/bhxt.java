@@ -1,42 +1,85 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.2;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.3;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 
 public class bhxt
 {
-  public int a;
-  public Bitmap a;
-  public bhxi a;
-  public bhxj a;
-  public bhxs a;
-  String jdField_a_of_type_JavaLangString;
-  public AtomicBoolean a;
-  public boolean a;
-  public int b;
-  public String b;
+  private TypedArray a;
   
-  public bhxt(TroopHWJsPlugin paramTroopHWJsPlugin)
+  public bhxt(TypedArray paramTypedArray)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_Bhxi = new bhxu(this);
+    this.a = paramTypedArray;
+  }
+  
+  public int a(int paramInt1, int paramInt2)
+  {
+    int i = paramInt2;
+    if (paramInt1 >= 0) {
+      i = this.a.getInt(paramInt1, paramInt2);
+    }
+    return i;
+  }
+  
+  public Drawable a(int paramInt)
+  {
+    if (paramInt >= 0) {
+      return this.a.getDrawable(paramInt);
+    }
+    return null;
   }
   
   public void a()
   {
-    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.2(this), null, false);
+    this.a.recycle();
   }
   
-  public void b()
+  public boolean a(int paramInt, boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.3(this), null, false);
+    boolean bool = paramBoolean;
+    if (paramInt >= 0) {
+      bool = this.a.getBoolean(paramInt, paramBoolean);
+    }
+    return bool;
+  }
+  
+  public CharSequence[] a(int paramInt)
+  {
+    if (paramInt >= 0) {
+      return this.a.getTextArray(paramInt);
+    }
+    return null;
+  }
+  
+  public int b(int paramInt1, int paramInt2)
+  {
+    int i = paramInt2;
+    if (paramInt1 >= 0) {
+      i = this.a.getColor(paramInt1, paramInt2);
+    }
+    return i;
+  }
+  
+  public int c(int paramInt1, int paramInt2)
+  {
+    int i = paramInt2;
+    if (paramInt1 >= 0) {
+      i = this.a.getDimensionPixelSize(paramInt1, paramInt2);
+    }
+    return i;
+  }
+  
+  public int hashCode()
+  {
+    return this.a.hashCode();
+  }
+  
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhxt
  * JD-Core Version:    0.7.0.1
  */

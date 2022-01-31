@@ -1,20 +1,32 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-class bdto
-  implements FilenameFilter
+public class bdto
+  extends Handler
 {
-  bdto(bdtn parambdtn) {}
+  public bdto(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".so"));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      QLog.d("HealthBusinessPlugin", 1, "plugin success");
+      return;
+    case 1: 
+      QLog.d("HealthBusinessPlugin", 1, "plugin fail");
+      return;
+    }
+    QLog.d("HealthBusinessPlugin", 1, String.format("plugin install %d", new Object[] { Integer.valueOf(this.a.c) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdto
  * JD-Core Version:    0.7.0.1
  */

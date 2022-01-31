@@ -1,21 +1,21 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import bjyd;
+import bmjn;
 
 public class EditVideoSave$4
   implements Runnable
 {
-  public EditVideoSave$4(bjyd parambjyd) {}
+  public EditVideoSave$4(bmjn parambmjn) {}
   
   public void run()
   {
-    bjyd.a(this.this$0).show();
+    bmjn.a(this.this$0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoSave.4
  * JD-Core Version:    0.7.0.1
  */

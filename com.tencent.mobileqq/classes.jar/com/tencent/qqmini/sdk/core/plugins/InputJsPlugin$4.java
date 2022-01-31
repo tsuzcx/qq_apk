@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import behq;
-import belx;
-import bfgl;
+import bgho;
+import bgln;
 import com.tencent.qqmini.sdk.core.widget.KeyboardLayout;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 
 class InputJsPlugin$4
-  implements belx
+  implements bgln
 {
   InputJsPlugin$4(InputJsPlugin paramInputJsPlugin) {}
   
@@ -16,7 +16,7 @@ class InputJsPlugin$4
       InputJsPlugin.access$300(this.this$0).setVisibility(8);
     }
     if ((this.this$0.mMiniAppContext != null) && (this.this$0.mMiniAppContext.a() != null)) {
-      bfgl.a(this.this$0.mMiniAppContext.a());
+      DisplayUtil.setActivityFullScreen(this.this$0.mMiniAppContext.a());
     }
   }
   
@@ -29,7 +29,7 @@ class InputJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.InputJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

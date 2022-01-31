@@ -123,6 +123,12 @@ public class SkinnableActivityProcesser
         paramContext = this.a.getWindow().getDecorView();
         if (paramContext != null)
         {
+          if (paramIntent.getBooleanExtra("isFont", false))
+          {
+            TextHook.getInstance().checkTypeface(paramContext.getContext());
+            TextHook.getInstance();
+            TextHook.updateFont(paramContext);
+          }
           paramIntent = (ViewGroup)paramContext;
           arrayOfView = new View[paramIntent.getChildCount()];
           i = 0;
@@ -158,7 +164,7 @@ public class SkinnableActivityProcesser
         }
         SkinEngine.invalidateAll(paramContext);
         if (this.b == null) {
-          break label157;
+          break label185;
         }
         this.b.onPostThemeChanged();
         i.a("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
@@ -168,7 +174,7 @@ public class SkinnableActivityProcesser
       }
       catch (Exception localException)
       {
-        break label130;
+        break label158;
       }
     }
     if (i < arrayOfView.length) {

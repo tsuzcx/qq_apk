@@ -1,34 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-final class atio
-  implements bcww
+public class atio
+  implements DialogInterface.OnDismissListener
 {
-  atio(String paramString, atiu paramatiu) {}
+  public atio(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, atjn paramatjn) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Atiu != null) {
-        this.jdField_a_of_type_Atiu.a(true);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
+    this.jdField_a_of_type_Atjn.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
     }
-    label50:
-    while (this.jdField_a_of_type_Atiu == null) {
-      return;
-    }
-    this.jdField_a_of_type_Atiu.a(false);
+    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atio
  * JD-Core Version:    0.7.0.1
  */

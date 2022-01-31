@@ -6,23 +6,23 @@ import android.graphics.BitmapFactory;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.IOException;
 import java.util.Map;
-import naj;
-import wkm;
-import wux;
+import ndd;
+import xzf;
+import yjq;
 
 public class SubscribeShareHelper$4
   implements Runnable
 {
-  public SubscribeShareHelper$4(wux paramwux, Map paramMap, Runnable paramRunnable) {}
+  public SubscribeShareHelper$4(yjq paramyjq, Map paramMap, Runnable paramRunnable) {}
   
   public void run()
   {
     try
     {
-      if (wux.a(this.this$0) == null) {
+      if (yjq.a(this.this$0) == null) {
         return;
       }
-      localObject = naj.a(BaseApplicationImpl.getContext(), wux.a(this.this$0).e(), "GET", null, null);
+      localObject = ndd.a(BaseApplicationImpl.getContext(), yjq.a(this.this$0).e(), "GET", null, null);
       if (localObject == null) {
         break label132;
       }
@@ -61,7 +61,7 @@ public class SubscribeShareHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeShareHelper.4
  * JD-Core Version:    0.7.0.1
  */

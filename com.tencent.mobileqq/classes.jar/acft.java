@@ -1,59 +1,21 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acft
-  extends ajxj
+public final class acft
+  implements DialogInterface.OnClickListener
 {
-  public acft(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public acft(acgy paramacgy) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Aiqb == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean1);
-      this.a.jdField_a_of_type_JavaUtilMap = asfd.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
-    this.a.jdField_a_of_type_Aiqb.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Aiqb.notifyDataSetChanged();
-    this.a.b();
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    if (this.a.jdField_a_of_type_Aiqb == null) {
-      return;
+    if (this.a != null) {
+      this.a.a();
     }
-    if ((paramBoolean) && (paramMap != null))
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Integer localInteger = (Integer)paramMap.get(str);
-        if (localInteger != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
-        }
-      }
-      this.a.jdField_a_of_type_Aiqb.a(this.a.jdField_a_of_type_JavaUtilMap);
-      this.a.jdField_a_of_type_Aiqb.notifyDataSetChanged();
-      this.a.b();
-      return;
-    }
-    this.a.jdField_a_of_type_Aiqb.notifyDataSetChanged();
-    this.a.b();
-    bcql.a(this.a.app.getApp(), 1, this.a.getString(2131720549), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acft
  * JD-Core Version:    0.7.0.1
  */

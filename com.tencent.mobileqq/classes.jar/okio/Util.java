@@ -8,21 +8,15 @@ final class Util
   
   public static boolean arrayRangeEquals(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < paramInt3)
     {
-      boolean bool1;
-      if (i >= paramInt3) {
-        bool1 = true;
+      if (paramArrayOfByte1[(i + paramInt1)] != paramArrayOfByte2[(i + paramInt2)]) {
+        return false;
       }
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramArrayOfByte1[(i + paramInt1)] != paramArrayOfByte2[(i + paramInt2)]);
       i += 1;
     }
+    return true;
   }
   
   public static void checkOffsetAndCount(long paramLong1, long paramLong2, long paramLong3)
@@ -60,7 +54,7 @@ final class Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.Util
  * JD-Core Version:    0.7.0.1
  */

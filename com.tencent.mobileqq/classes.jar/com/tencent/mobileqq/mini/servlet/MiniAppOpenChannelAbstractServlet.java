@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.servlet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -26,7 +26,7 @@ public class MiniAppOpenChannelAbstractServlet
     {
       if (paramFromServiceMsg.isSuccess())
       {
-        localBundle.putByteArray("responsedata", bbma.b(paramFromServiceMsg.getWupBuffer()));
+        localBundle.putByteArray("responsedata", bdku.b(paramFromServiceMsg.getWupBuffer()));
         notifyObserver(paramIntent, 1054, true, localBundle, MiniAppObserver.class);
       }
       for (;;)
@@ -57,14 +57,14 @@ public class MiniAppOpenChannelAbstractServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_webapp.OpenChannel");
-    paramPacket.putSendData(bbma.a(arrayOfByte1));
+    paramPacket.putSendData(bdku.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppOpenChannelAbstractServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ public class ActivityDAUReport
     //   0: aload_0
     //   1: getfield 16	com/tencent/mobileqq/app/automator/step/ActivityDAUReport:a	Lcom/tencent/mobileqq/app/automator/Automator;
     //   4: getfield 22	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
-    //   7: invokevirtual 28	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Laukq;
-    //   10: invokevirtual 34	aukq:createEntityManager	()Laukp;
+    //   7: invokevirtual 28	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lawbx;
+    //   10: invokevirtual 34	awbx:createEntityManager	()Lawbw;
     //   13: astore_3
     //   14: ldc 36
     //   16: monitorenter
     //   17: aload_3
     //   18: ldc 36
-    //   20: invokevirtual 41	aukp:a	(Ljava/lang/Class;)Ljava/util/List;
+    //   20: invokevirtual 41	awbw:a	(Ljava/lang/Class;)Ljava/util/List;
     //   23: astore_2
     //   24: aload_2
     //   25: ifnull +308 -> 333
@@ -124,7 +124,7 @@ public class ActivityDAUReport
     //   265: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   268: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   271: invokestatic 156	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   274: invokestatic 161	axrn:a	(Landroid/content/Context;)Laxrn;
+    //   274: invokestatic 161	azmz:a	(Landroid/content/Context;)Lazmz;
     //   277: aconst_null
     //   278: ldc 163
     //   280: iconst_1
@@ -135,7 +135,7 @@ public class ActivityDAUReport
     //   289: getfield 135	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
     //   292: aload 6
     //   294: aconst_null
-    //   295: invokevirtual 166	axrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   295: invokevirtual 166	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   298: goto -253 -> 45
     //   301: astore_2
     //   302: ldc 36
@@ -153,7 +153,7 @@ public class ActivityDAUReport
     //   323: goto +63 -> 386
     //   326: aload_3
     //   327: ldc 36
-    //   329: invokevirtual 174	aukp:a	(Ljava/lang/Class;)Z
+    //   329: invokevirtual 174	awbw:a	(Ljava/lang/Class;)Z
     //   332: pop
     //   333: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   336: ifeq +34 -> 370
@@ -191,7 +191,7 @@ public class ActivityDAUReport
     //   301	5	2	localObject1	java.lang.Object
     //   307	70	2	localException	java.lang.Exception
     //   387	1	2	localObject2	java.lang.Object
-    //   13	314	3	localaukp	aukp
+    //   13	314	3	localawbw	awbw
     //   43	13	4	localIterator	java.util.Iterator
     //   65	223	5	localActivityDAUInfo	com.tencent.mobileqq.data.ActivityDAUInfo
     //   75	218	6	localHashMap	java.util.HashMap

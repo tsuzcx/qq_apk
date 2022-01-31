@@ -1,14 +1,14 @@
-import javax.microedition.khronos.opengles.GL10;
-
-public abstract interface almp
+public class almp
+  implements almq<String>
 {
-  public abstract void a(GL10 paramGL10);
-  
-  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
+  public String a(String paramString)
+  {
+    return paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     almp
  * JD-Core Version:    0.7.0.1
  */

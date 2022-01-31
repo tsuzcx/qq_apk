@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aczt;
-import aczu;
-import ambh;
+import aerh;
+import aeri;
+import ansg;
 
 public class XBubbleAnimation$4$1
   implements Runnable
 {
-  public XBubbleAnimation$4$1(aczu paramaczu) {}
+  public XBubbleAnimation$4$1(aeri paramaeri) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class XBubbleAnimation$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.1
  * JD-Core Version:    0.7.0.1
  */

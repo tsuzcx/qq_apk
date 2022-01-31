@@ -8,7 +8,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import baxn;
+import bcwh;
 import java.util.Arrays;
 
 public class WebViewTopTabView
@@ -30,7 +30,7 @@ public class WebViewTopTabView
   {
     Object localObject;
     if (this.jdField_a_of_type_AndroidViewLayoutInflater != null) {
-      localObject = (RadioButton)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562616, this, false);
+      localObject = (RadioButton)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562820, this, false);
     }
     for (;;)
     {
@@ -109,7 +109,7 @@ public class WebViewTopTabView
     Object localObject;
     if (this.jdField_a_of_type_AndroidWidgetRadioButton.getLayoutParams() == null)
     {
-      localObject = new LinearLayout.LayoutParams(-2, baxn.a(super.getContext(), 30.0F));
+      localObject = new LinearLayout.LayoutParams(-2, bcwh.a(super.getContext(), 30.0F));
       super.addView(this.jdField_a_of_type_AndroidWidgetRadioButton, (ViewGroup.LayoutParams)localObject);
       paramInt2 = 1;
       label110:
@@ -120,7 +120,7 @@ public class WebViewTopTabView
       if (((RadioButton)localObject).getLayoutParams() != null) {
         break label179;
       }
-      super.addView((View)localObject, new LinearLayout.LayoutParams(-2, baxn.a(super.getContext(), 30.0F)));
+      super.addView((View)localObject, new LinearLayout.LayoutParams(-2, bcwh.a(super.getContext(), 30.0F)));
     }
     for (;;)
     {
@@ -135,7 +135,7 @@ public class WebViewTopTabView
     this.b = a(this.jdField_a_of_type_ArrayOfInt[(i - 1)]);
     if (this.b == null)
     {
-      localObject = new LinearLayout.LayoutParams(-2, baxn.a(super.getContext(), 30.0F));
+      localObject = new LinearLayout.LayoutParams(-2, bcwh.a(super.getContext(), 30.0F));
       super.addView(this.b, (ViewGroup.LayoutParams)localObject);
     }
     for (;;)
@@ -179,7 +179,7 @@ public class WebViewTopTabView
     int i = 0;
     while (i < super.getChildCount())
     {
-      super.getChildAt(i).setPadding(baxn.a(super.getContext(), paramInt), super.getPaddingTop(), baxn.a(super.getContext(), paramInt), super.getPaddingBottom());
+      super.getChildAt(i).setPadding(bcwh.a(super.getContext(), paramInt), super.getPaddingTop(), bcwh.a(super.getContext(), paramInt), super.getPaddingBottom());
       i += 1;
     }
   }
@@ -240,7 +240,7 @@ public class WebViewTopTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTopTabView
  * JD-Core Version:    0.7.0.1
  */

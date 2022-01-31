@@ -1,26 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class arzq
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  arzq(arzn paramarzn, BaseActivity paramBaseActivity, arum paramarum) {}
+  arzq(arzk paramarzk) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    int i = this.jdField_a_of_type_Arum.a();
-    Object localObject = this.jdField_a_of_type_Arum.a();
-    arus.a(paramView).a.a(3, i, (String)localObject);
-    localObject = new arum(i, (String)localObject);
-    arus.a(paramView).a((arum)localObject, false);
-    axqy.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
+    if ((arzk.a(this.a) == null) || (arzk.a(this.a).isFinishing())) {}
+    do
+    {
+      return;
+      paramContext = arwa.a(paramIntent.getStringExtra("key_share_image_by_server"));
+      QLog.d("ForwardShareByServerHelper", 1, new Object[] { "initBroadcastReceiver errorMsg=", paramContext });
+    } while (paramContext == null);
+    if (TextUtils.isEmpty(paramContext))
+    {
+      arzk.a(this.a, arzk.a(this.a).getIntent().getExtras());
+      return;
+    }
+    arzk.a(this.a, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arzq
  * JD-Core Version:    0.7.0.1
  */

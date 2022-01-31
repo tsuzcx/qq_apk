@@ -397,6 +397,64 @@ public class WebviewPool
     //   212	236	239	finally
   }
   
+  /* Error */
+  public void initServiceWebViewByFakeApkgInfo(ApkgInfo paramApkgInfo, String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 104	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   6: ifnull +54 -> 60
+    //   9: new 234	java/lang/StringBuilder
+    //   12: dup
+    //   13: invokespecial 235	java/lang/StringBuilder:<init>	()V
+    //   16: ldc_w 332
+    //   19: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: astore 4
+    //   24: aload_2
+    //   25: ifnull +38 -> 63
+    //   28: aload_2
+    //   29: invokevirtual 338	java/lang/String:length	()I
+    //   32: istore_3
+    //   33: ldc 232
+    //   35: iconst_1
+    //   36: aload 4
+    //   38: iload_3
+    //   39: invokevirtual 244	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 118	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   48: aload_0
+    //   49: getfield 104	com/tencent/mobileqq/mini/appbrand/utils/WebviewPool:mFirstServiceWebview	Lcom/tencent/mobileqq/mini/webview/JsRuntime;
+    //   52: aload_1
+    //   53: aload_2
+    //   54: aconst_null
+    //   55: invokeinterface 342 4 0
+    //   60: aload_0
+    //   61: monitorexit
+    //   62: return
+    //   63: iconst_m1
+    //   64: istore_3
+    //   65: goto -32 -> 33
+    //   68: astore_1
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: aload_1
+    //   72: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	73	0	this	WebviewPool
+    //   0	73	1	paramApkgInfo	ApkgInfo
+    //   0	73	2	paramString	String
+    //   32	33	3	i	int
+    //   22	15	4	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   2	24	68	finally
+    //   28	33	68	finally
+    //   33	60	68	finally
+  }
+  
   public void initServiceWebViewEx(Context paramContext, MiniAppConfig paramMiniAppConfig, ServiceWebview.Callback paramCallback)
   {
     for (;;)
@@ -701,7 +759,7 @@ public class WebviewPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.WebviewPool
  * JD-Core Version:    0.7.0.1
  */

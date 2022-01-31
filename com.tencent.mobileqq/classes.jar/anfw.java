@@ -1,18 +1,26 @@
-import java.util.List;
+import com.tencent.ark.ark.VariantWrapper;
 
-public abstract interface anfw
+class anfw
+  implements afeq
 {
-  public abstract void a(anga paramanga, anhx paramanhx, anhn paramanhn);
+  anfw(anfv paramanfv, long paramLong) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void a()
+  {
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anfv.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
   
-  public abstract void b(List<anga> paramList);
-  
-  public abstract void f();
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    this.jdField_a_of_type_Anfv.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfw
  * JD-Core Version:    0.7.0.1
  */

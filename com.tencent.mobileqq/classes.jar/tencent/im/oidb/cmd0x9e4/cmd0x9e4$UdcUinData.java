@@ -91,7 +91,7 @@ public final class cmd0x9e4$UdcUinData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9e4.cmd0x9e4.UdcUinData
  * JD-Core Version:    0.7.0.1
  */

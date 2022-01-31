@@ -1,28 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
-public class ator
-  implements Animation.AnimationListener
+class ator
+  implements View.OnClickListener
 {
-  public ator(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  ator(atop paramatop, atof paramatof) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = this.a;
-    paramAnimation.k += 1;
-    if (NearbyPeopleProfileActivity.a(this.a) != null) {
-      NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
+    if (this.jdField_a_of_type_Atop.jdField_a_of_type_Atof.a()) {
+      return;
     }
+    atof.a(this.jdField_a_of_type_Atop.jdField_a_of_type_Atof).a(atop.a(this.jdField_a_of_type_Atop));
+    azmj.b(null, "CliOper", "", "", "0X800A96F", "0X800A96F", 0, 0, "0", "0", "0", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ator
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
-public class afhu
-  implements View.OnClickListener
+class afhu
+  implements army
 {
-  public afhu(Face2FaceAddContactFragment paramFace2FaceAddContactFragment, Dialog paramDialog) {}
+  afhu(afhq paramafhq, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    arni.a(this.jdField_a_of_type_Afhq.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afhu
  * JD-Core Version:    0.7.0.1
  */

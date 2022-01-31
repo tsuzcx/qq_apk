@@ -1,36 +1,107 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aopn
-  implements View.OnClickListener
+  extends aofy<aopm>
 {
-  public aopn(UniformDownloadActivity paramUniformDownloadActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (bbfj.d(this.a.getActivity()))
-    {
-      UniformDownloadActivity.a(this.a).setVisibility(8);
-      if (apug.a())
+    return 554;
+  }
+  
+  @NonNull
+  public aopm a(int paramInt)
+  {
+    return new aopm();
+  }
+  
+  @Nullable
+  public aopm a(aogf[] paramArrayOfaogf)
+  {
+    QLog.i("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "onParsed");
+    if (paramArrayOfaogf != null) {
+      try
       {
-        aptt.a(this.a.getActivity(), 2131692673, 2131720614, new aopo(this));
-        return;
+        if (paramArrayOfaogf.length > 0)
+        {
+          paramArrayOfaogf = (aopm)aogt.a(paramArrayOfaogf[0].a, aopm.class);
+          return paramArrayOfaogf;
+        }
       }
-      UniformDownloadActivity.a(this.a);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      catch (QStorageInstantiateException paramArrayOfaogf)
+      {
+        QLog.e("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaogf.getMessage());
+      }
+    }
+    return null;
+  }
+  
+  public Class<aopm> a()
+  {
+    return aopm.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public void a(aopm paramaopm)
+  {
+    if (paramaopm != null)
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label152;
+      }
+    }
+    label152:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        if (TextUtils.isEmpty(paramaopm.a)) {
+          paramaopm.a = "{}";
+        }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("groupfile_excitingupload_" + ((QQAppInterface)localObject).c(), 0).edit();
+        localEditor.putString("qfile_groupfile_excitingupload", paramaopm.a);
+        localEditor.apply();
+        QLog.i("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Upload config [" + paramaopm.a + "]");
+        localObject = (aqpu)((QQAppInterface)localObject).getManager(317);
+        if (localObject != null) {
+          ((aqpu)localObject).a(paramaopm);
+        }
+      }
       return;
     }
-    aptx.a(2131692666);
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopn
  * JD-Core Version:    0.7.0.1
  */

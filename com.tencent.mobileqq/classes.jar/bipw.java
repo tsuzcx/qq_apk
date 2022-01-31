@@ -1,47 +1,28 @@
-import com.tencent.ttpic.openapi.watermark.LogicDataManager.OnGetQQNumberEventListener;
-import dov.com.qq.im.ae.camera.ui.watermark.WaterMarkOnlineUserManager.1.1;
-import java.util.Random;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class bipw
-  implements LogicDataManager.OnGetQQNumberEventListener
+  implements DialogInterface.OnClickListener
 {
-  bipw(bipv parambipv) {}
+  public bipw(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, String paramString1, String paramString2) {}
   
-  public int onGetQQNumber()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - bipv.a(this.a) > 60000L)
-    {
-      bipv.a(this.a, l);
-      new Thread(new WaterMarkOnlineUserManager.1.1(this)).start();
-      if (l - bipv.b(this.a) <= 1000L) {
-        break label168;
-      }
-      bipv.b(this.a, l);
-    }
-    for (;;)
-    {
-      synchronized (bipv.a(this.a))
-      {
-        if (bipv.a(this.a) != 0) {
-          bipv.a(this.a, bipv.a(this.a) - 1000 + new Random().nextInt(2000));
-        }
-        return bipv.a(this.a);
-        if (l - bipv.a(this.a) >= 0L) {
-          break;
-        }
-        bipv.a(this.a, l);
-      }
-      label168:
-      if (l - bipv.b(this.a) < 0L) {
-        bipv.b(this.a, l);
-      }
-    }
+    Intent localIntent = AddFriendLogicActivity.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.app.getApp().getApplicationContext(), 1, this.jdField_a_of_type_JavaLangString, null, 3002, 14, this.b, null, null, alpo.a(2131710406), null);
+    localIntent.putExtra("_FROM_QLINK_", true);
+    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bipw
  * JD-Core Version:    0.7.0.1
  */

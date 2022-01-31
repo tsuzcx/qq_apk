@@ -1,55 +1,25 @@
-import android.content.Context;
-import android.content.res.Resources;
-import java.io.IOException;
-import org.xmlpull.v1.XmlPullParserException;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.servlet.QZoneManagerImp.1.1;
 
 public class ayxo
+  extends ContentObserver
 {
-  private static ayxn jdField_a_of_type_Ayxn;
-  private static boolean jdField_a_of_type_Boolean;
-  
-  private static ayxn a(Context paramContext)
+  ayxo(ayxn paramayxn, Handler paramHandler)
   {
-    a(paramContext);
-    return jdField_a_of_type_Ayxn;
+    super(paramHandler);
   }
   
-  public static String a(Context paramContext, String paramString)
+  public void onChange(boolean paramBoolean)
   {
-    String str = paramString;
-    if (paramString != null) {
-      str = paramString.toLowerCase();
-    }
-    return a(paramContext).a(str);
-  }
-  
-  private static void a(Context paramContext)
-  {
-    ayxm localayxm;
-    if (!jdField_a_of_type_Boolean)
-    {
-      localayxm = new ayxm();
-      paramContext = paramContext.getResources().getXml(2131886084);
-    }
-    try
-    {
-      jdField_a_of_type_Ayxn = localayxm.a(paramContext);
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (XmlPullParserException paramContext)
-    {
-      throw new RuntimeException("PreselectedChannelsActivity: XmlPullParserException");
-    }
-    catch (IOException paramContext)
-    {
-      throw new RuntimeException("PreselectedChannelsActivity: IOException");
-    }
+    super.onChange(paramBoolean);
+    ThreadManager.post(new QZoneManagerImp.1.1(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayxo
  * JD-Core Version:    0.7.0.1
  */

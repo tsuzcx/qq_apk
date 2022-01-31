@@ -1,47 +1,57 @@
-import android.text.Layout;
-import android.text.SpannedString;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class azbq
-  implements View.OnTouchListener
+class azbq<K, V>
 {
-  azbq(azbo paramazbo) {}
+  private HashMap<K, ArrayList<V>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public azbq(azbp paramazbp) {}
+  
+  public ArrayList<V> a(K paramK)
   {
-    int i = paramMotionEvent.getAction();
-    TextView localTextView = (TextView)paramView;
-    CharSequence localCharSequence = localTextView.getText();
-    if (((localCharSequence instanceof SpannedString)) && (i == 1))
+    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+  }
+  
+  public void a(V paramV)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      int k = localTextView.getTotalPaddingLeft();
-      int m = localTextView.getTotalPaddingTop();
-      int n = localTextView.getScrollX();
-      int i1 = localTextView.getScrollY();
-      paramMotionEvent = localTextView.getLayout();
-      i = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(j - m + i1), i - k + n);
-      paramMotionEvent = (ClickableSpan[])((SpannedString)localCharSequence).getSpans(i, i, ClickableSpan.class);
-      if (paramMotionEvent.length != 0) {
-        paramMotionEvent[0].onClick(localTextView);
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      ArrayList localArrayList = (ArrayList)localEntry.getValue();
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        Object localObject = localArrayList.get(i);
+        if ((localObject == paramV) || ((localObject != null) && (localObject.equals(paramV)))) {
+          ((ArrayList)localEntry.getValue()).remove(paramV);
+        } else {
+          i += 1;
+        }
       }
     }
-    else
+  }
+  
+  public void a(K paramK, V paramV)
+  {
+    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null)
     {
-      return true;
+      localArrayList1 = new ArrayList();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramK, localArrayList1);
     }
-    paramView.performClick();
-    return true;
+    if (!localArrayList1.contains(paramV)) {
+      localArrayList1.add(paramV);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azbq
  * JD-Core Version:    0.7.0.1
  */

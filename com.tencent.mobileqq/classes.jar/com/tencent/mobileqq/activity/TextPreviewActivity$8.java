@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import ho;
+import fx;
 
 class TextPreviewActivity$8
   implements Runnable
@@ -12,10 +12,10 @@ class TextPreviewActivity$8
   
   public void run()
   {
-    Drawable localDrawable = this.this$0.jdField_a_of_type_Ho.a(this.this$0.e);
+    Drawable localDrawable = this.this$0.jdField_a_of_type_Fx.a(this.this$0.e);
     if (localDrawable == null)
     {
-      TextPreviewActivity.a(this.this$0.e, this.this$0.app, this.this$0.jdField_a_of_type_Bbwt);
+      TextPreviewActivity.a(this.this$0.e, this.this$0.app, this.this$0.jdField_a_of_type_Bdvu);
       return;
     }
     Message localMessage = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(18);
@@ -25,7 +25,7 @@ class TextPreviewActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.8
  * JD-Core Version:    0.7.0.1
  */

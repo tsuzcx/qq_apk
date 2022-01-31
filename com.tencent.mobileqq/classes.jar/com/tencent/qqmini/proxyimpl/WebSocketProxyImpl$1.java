@@ -9,12 +9,14 @@ class WebSocketProxyImpl$1
   
   public void run()
   {
-    this.val$task.mListener.onClose(this.val$socketId, this.val$code, this.val$reason);
+    if (!this.val$task.socketClosedCallbacked) {
+      this.val$task.mListener.onClose(this.val$socketId, this.val$code, this.val$reason);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.WebSocketProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

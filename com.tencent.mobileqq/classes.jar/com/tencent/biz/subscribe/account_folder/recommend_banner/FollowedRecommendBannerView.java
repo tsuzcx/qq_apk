@@ -19,32 +19,32 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 import mqq.app.AppRuntime;
-import wim;
-import wis;
-import wix;
-import wiz;
-import wja;
-import wjb;
-import wjc;
-import wjd;
-import wje;
-import wjf;
-import wjh;
-import wjn;
-import wjv;
-import wkl;
-import xhb;
+import xxe;
+import xxk;
+import xxp;
+import xxr;
+import xxs;
+import xxt;
+import xxu;
+import xxv;
+import xxw;
+import xxx;
+import xxz;
+import xyf;
+import xyn;
+import xze;
+import yvu;
 
 public class FollowedRecommendBannerView
   extends LinearLayout
-  implements wiz
+  implements xxr
 {
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private String jdField_a_of_type_JavaLangString;
-  private wix jdField_a_of_type_Wix;
-  private wjh jdField_a_of_type_Wjh;
+  private xxp jdField_a_of_type_Xxp;
+  private xxz jdField_a_of_type_Xxz;
   
   public FollowedRecommendBannerView(Context paramContext)
   {
@@ -60,23 +60,23 @@ public class FollowedRecommendBannerView
   
   private COMM.StCommonExt a()
   {
-    if (this.jdField_a_of_type_Wix != null) {
-      return this.jdField_a_of_type_Wix.a();
+    if (this.jdField_a_of_type_Xxp != null) {
+      return this.jdField_a_of_type_Xxp.a();
     }
     return null;
   }
   
   private void b()
   {
-    StringBuilder localStringBuilder = new StringBuilder(wim.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    StringBuilder localStringBuilder = new StringBuilder(xxe.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
     if (a() != null) {}
     for (;;)
     {
       try
       {
         localStringBuilder.append(URLEncoder.encode(a().attachInfo.get(), "UTF-8"));
-        xhb.b(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_more", 0, 0, new String[0]);
-        wis.a(localStringBuilder.toString());
+        yvu.b(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_more", 0, 0, new String[0]);
+        xxk.a(localStringBuilder.toString());
         return;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -96,10 +96,10 @@ public class FollowedRecommendBannerView
       measure(View.MeasureSpec.makeMeasureSpec(((View)localObject).getMeasuredWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
     }
     localObject = ValueAnimator.ofInt(new int[] { 0, getMeasuredHeight() });
-    ((ValueAnimator)localObject).addUpdateListener(new wjf(this, this, null));
-    ((ValueAnimator)localObject).addListener(new wjd(this));
+    ((ValueAnimator)localObject).addUpdateListener(new xxx(this, this, null));
+    ((ValueAnimator)localObject).addListener(new xxv(this));
     ((ValueAnimator)localObject).start();
-    xhb.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_exp", 0, 0, new String[0]);
+    yvu.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_exp", 0, 0, new String[0]);
   }
   
   public void a()
@@ -114,49 +114,49 @@ public class FollowedRecommendBannerView
       measure(View.MeasureSpec.makeMeasureSpec(((View)localObject).getMeasuredWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
     }
     localObject = ValueAnimator.ofInt(new int[] { getMeasuredHeight(), 0 });
-    ((ValueAnimator)localObject).addUpdateListener(new wjf(this, this, null));
-    ((ValueAnimator)localObject).addListener(new wje(this));
+    ((ValueAnimator)localObject).addUpdateListener(new xxx(this, this, null));
+    ((ValueAnimator)localObject).addListener(new xxw(this));
     ((ValueAnimator)localObject).start();
-    xhb.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_pack_up", 0, 0, new String[0]);
+    yvu.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_pack_up", 0, 0, new String[0]);
   }
   
   protected void a(Context paramContext)
   {
     setOrientation(1);
-    inflate(paramContext, 2131558674, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363040));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370432));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368713));
+    inflate(paramContext, 2131558710, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363076));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370738));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368924));
     paramContext = new LinearLayoutManager(paramContext);
     paramContext.setOrientation(0);
-    this.jdField_a_of_type_Wix = new wix();
-    this.jdField_a_of_type_Wix.a(this);
+    this.jdField_a_of_type_Xxp = new xxp();
+    this.jdField_a_of_type_Xxp.a(this);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new wjn());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new xyf());
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(new DefaultItemAnimator());
-    this.jdField_a_of_type_Wjh = new wjv(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_Wjh.a(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wjh);
-    this.jdField_a_of_type_Wjh.a(new wja(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new wjb(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new wjc(this));
+    this.jdField_a_of_type_Xxz = new xyn(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    this.jdField_a_of_type_Xxz.a(true);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Xxz);
+    this.jdField_a_of_type_Xxz.a(new xxs(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new xxt(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new xxu(this));
   }
   
   public void a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_Wix != null) {
-      this.jdField_a_of_type_Wix.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Xxp != null) {
+      this.jdField_a_of_type_Xxp.a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void a(List<wkl> paramList, boolean paramBoolean)
+  public void a(List<xze> paramList, boolean paramBoolean)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       return;
     }
-    if (this.jdField_a_of_type_Wjh != null) {
-      this.jdField_a_of_type_Wjh.a(null, paramList);
+    if (this.jdField_a_of_type_Xxz != null) {
+      this.jdField_a_of_type_Xxz.a(null, paramList);
     }
     c();
   }
@@ -174,7 +174,7 @@ public class FollowedRecommendBannerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView
  * JD-Core Version:    0.7.0.1
  */

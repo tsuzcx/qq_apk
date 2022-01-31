@@ -1,210 +1,171 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.tablequery.TableQueryController.1;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class babd
-  extends babq
-  implements babk
 {
-  private CopyOnWriteArrayList<babe> a = new CopyOnWriteArrayList();
+  private static babd jdField_a_of_type_Babd;
+  public static boolean a;
+  public static boolean b = true;
+  public static boolean c;
+  private static boolean e;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new babe(this);
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private babf jdField_a_of_type_Babf = new babf();
+  private TableQueryViewer jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer;
+  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
+  private boolean d;
   
-  public babd(JSONObject paramJSONObject)
+  /* Error */
+  public static babd a()
   {
-    a(paramJSONObject);
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 40	babd:jdField_a_of_type_Babd	Lbabd;
+    //   6: ifnonnull +19 -> 25
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: new 2	babd
+    //   15: dup
+    //   16: invokespecial 41	babd:<init>	()V
+    //   19: putstatic 40	babd:jdField_a_of_type_Babd	Lbabd;
+    //   22: ldc 2
+    //   24: monitorexit
+    //   25: ldc 2
+    //   27: monitorexit
+    //   28: getstatic 40	babd:jdField_a_of_type_Babd	Lbabd;
+    //   31: areturn
+    //   32: astore_0
+    //   33: ldc 2
+    //   35: monitorexit
+    //   36: aload_0
+    //   37: athrow
+    //   38: astore_0
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: aload_0
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   32	5	0	localObject1	Object
+    //   38	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	25	32	finally
+    //   33	36	32	finally
+    //   3	12	38	finally
+    //   25	28	38	finally
+    //   36	38	38	finally
+    //   39	42	38	finally
   }
   
-  public int a()
+  public int a(babc parambabc)
   {
-    return 0;
-  }
-  
-  public babe a(int paramInt)
-  {
-    if (paramInt >= this.a.size()) {
-      return null;
+    if (this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer == null) {
+      return 0;
     }
-    return (babe)this.a.get(paramInt);
-  }
-  
-  public List<babe> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      babe localbabe = (babe)localIterator.next();
-      if ((TextUtils.isEmpty(localbabe.a)) && (!TextUtils.isEmpty(localbabe.jdField_b_of_type_JavaLangString))) {
-        localArrayList.add(localbabe);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public JSONObject a()
-  {
-    return a(0);
-  }
-  
-  public JSONObject a(int paramInt)
-  {
-    JSONArray localJSONArray = new JSONArray();
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        JSONObject localJSONObject2 = ((babe)localIterator.next()).a(paramInt);
-        if (localJSONObject2 != null) {
-          localJSONArray.put(localJSONObject2);
-        }
-      }
-      localJSONObject1.put("type", "calculation").put("imgs", localJSONException);
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-      return localJSONObject1;
-    }
-    return localJSONObject1;
+    return this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a(parambabc);
   }
   
   public void a()
   {
-    Iterator localIterator = this.a.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      babe localbabe = (babe)localIterator.next();
-      int j = this.b.indexOf(Integer.valueOf(localbabe.jdField_b_of_type_Int));
-      if (j <= i) {
-        break label79;
-      }
-      i = j;
+    if (jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a();
     }
-    label79:
-    for (;;)
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
     {
-      break;
-      this.g = ((Integer)this.b.get(i)).intValue();
+      e = true;
+      if (!c) {
+        a().a();
+      }
+    }
+    while (paramMotionEvent.getAction() != 1) {
       return;
     }
+    paramMotionEvent = new TableQueryController.1(this);
+    ThreadManager.getSubThreadHandler().postDelayed(paramMotionEvent, 400L);
   }
   
-  public void a(babe parambabe)
+  public void a(babc parambabc)
   {
-    this.a.add(parambabe);
+    if (jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a(parambabc);
+    }
   }
   
-  public void a(String paramString)
+  public void b()
   {
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    if (this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer == null)
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)localBaseApplication.getSystemService("window"));
+      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer = new TableQueryViewer(localBaseApplication);
+    }
+    if (!this.d) {}
     try
     {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
-      JSONArray localJSONArray = new JSONObject(paramString).getJSONArray("imgs");
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-        babe localbabe = new babe();
-        localbabe.a(localJSONObject);
-        int j = this.a.indexOf(localbabe);
-        if (j >= 0) {
-          localbabe.copy(this.a.get(j));
-        }
-        localCopyOnWriteArrayList.add(localbabe);
-        i += 1;
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer);
+      label56:
+      int i;
+      if (Build.VERSION.SDK_INT >= 26) {
+        i = 2038;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ArithmeticInfo", 2, "mergeData ,json = " + paramString);
-      }
-      this.a = localCopyOnWriteArrayList;
-    }
-    catch (JSONException localJSONException)
-    {
       for (;;)
       {
-        localJSONException.printStackTrace();
+        WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
+        localLayoutParams.gravity = 51;
+        localLayoutParams.x = 0;
+        localLayoutParams.y = bcwh.a(localBaseApplication, 72.0F);
+        try
+        {
+          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer, localLayoutParams);
+          this.d = true;
+          return;
+          i = 2003;
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            QQToast.a(localBaseApplication, 1, localBaseApplication.getString(2131690526), 0).a();
+          }
+        }
       }
     }
-    super.a(paramString);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    this.a = new CopyOnWriteArrayList();
-    paramJSONObject = paramJSONObject.optJSONArray("imgs");
-    if (paramJSONObject != null)
+    catch (Exception localException2)
     {
-      int i = 0;
-      while (i < paramJSONObject.length())
-      {
-        JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-        babe localbabe = new babe();
-        localbabe.a(localJSONObject);
-        this.a.add(localbabe);
-        i += 1;
-      }
+      break label56;
     }
   }
   
-  public boolean a()
+  public void c()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      babe localbabe = (babe)localIterator.next();
-      if ((localbabe.jdField_b_of_type_Int != 3) && (localbabe.jdField_b_of_type_Int != 0)) {
-        return false;
-      }
+    if (this.d) {
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer);
     }
-    return true;
-  }
-  
-  public int b()
-  {
-    return 7;
-  }
-  
-  public void b(babe parambabe)
-  {
-    this.a.remove(parambabe);
-  }
-  
-  public int c()
-  {
-    return this.a.size();
-  }
-  
-  public void c(babe parambabe)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      babe localbabe = (babe)localIterator.next();
-      if (localbabe.equals(parambabe)) {
-        localbabe.copy(parambabe);
-      }
-    }
-  }
-  
-  public int d()
-  {
-    if (this.a.size() > 0) {
-      return 1;
-    }
-    return 0;
+    this.d = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     babd
  * JD-Core Version:    0.7.0.1
  */

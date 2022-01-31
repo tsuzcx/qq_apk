@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 
 import android.content.Context;
 import android.widget.FrameLayout;
-import bcqf;
+import bepp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.appbrand.a;
@@ -49,11 +49,11 @@ public final class AppBrandPageContainer
   private void executeDownSubPack(String paramString1, String paramString2)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    bcqf localbcqf = new bcqf(getContext());
-    localbcqf.a("正在加载模块...");
-    localbcqf.setCancelable(false);
-    localbcqf.show();
-    this.appBrandRuntime.c.a(paramString1, new AppBrandPageContainer.1(this, localWeakReference, paramString2, paramString1, localbcqf));
+    bepp localbepp = new bepp(getContext());
+    localbepp.a("正在加载模块...");
+    localbepp.setCancelable(false);
+    localbepp.show();
+    this.appBrandRuntime.c.a(paramString1, new AppBrandPageContainer.1(this, localWeakReference, paramString2, paramString1, localbepp));
   }
   
   private boolean isUrlResReady(String paramString)
@@ -280,7 +280,7 @@ public final class AppBrandPageContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer
  * JD-Core Version:    0.7.0.1
  */

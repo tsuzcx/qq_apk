@@ -1,19 +1,12 @@
-import com.tencent.open.appstore.js.DownloadInterfaceNew.2;
-import com.tencent.smtt.sdk.ValueCallback;
-
-public class bdhw
-  implements ValueCallback<String>
+public abstract interface bdhw
 {
-  public bdhw(DownloadInterfaceNew.2 param2) {}
+  public abstract void a(awug paramawug, awuh paramawuh);
   
-  public void a(String paramString)
-  {
-    bdii.b("DownloadInterfaceNew", "[jsCallBack]:" + paramString);
-  }
+  public abstract void b(awug paramawug, awuh paramawuh);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdhw
  * JD-Core Version:    0.7.0.1
  */

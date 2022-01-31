@@ -1,106 +1,208 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
-import mqq.app.AppActivity;
-import org.json.JSONObject;
 
 public class azcf
+  implements azck, azcq
 {
-  public static String a = "tribe_publish_TribePublishLauncher";
+  private int jdField_a_of_type_Int = 0;
+  private azcp jdField_a_of_type_Azcp = new azcp();
+  private VideoSourceHelper jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper;
+  private final String jdField_a_of_type_JavaLangString = "HwEncodeHelper";
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private long[] jdField_a_of_type_ArrayOfLong = new long[1];
+  private azcp jdField_b_of_type_Azcp = new azcp();
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private String c;
   
-  public static JSONObject a(Bundle paramBundle)
+  public azcf(String paramString1, String paramString2, String paramString3)
   {
-    if (paramBundle != null)
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper = new VideoSourceHelper(paramString1, paramString2);
+  }
+  
+  private boolean a()
+  {
+    boolean bool = true;
+    int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getBufferSize();
+    if ((arrayOfInt == null) || (arrayOfInt.length < 2)) {
+      bool = false;
+    }
+    for (;;)
     {
-      paramBundle = paramBundle.getString("options");
+      return bool;
       if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "getTribeJsonExtra option: " + paramBundle);
+        QLog.d("HwEncodeHelper", 4, "initMediaBuffer videosize=" + arrayOfInt[0] + ", audiosize=" + arrayOfInt[1]);
       }
       try
       {
-        paramBundle = new JSONObject(paramBundle);
-        return paramBundle;
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(a, 2, "getTribeJsonExtra: " + paramBundle);
+        if (this.jdField_a_of_type_ArrayOfByte == null) {
+          this.jdField_a_of_type_ArrayOfByte = new byte[arrayOfInt[0]];
         }
+        if (this.jdField_b_of_type_ArrayOfByte == null)
+        {
+          this.jdField_b_of_type_ArrayOfByte = new byte[arrayOfInt[1]];
+          return true;
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        localOutOfMemoryError.printStackTrace();
+      }
+    }
+    return false;
+  }
+  
+  public int a()
+  {
+    int j = 2;
+    if (!azcg.a()) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.initHelperParam() != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEncodeHelper", 4, "initHelperParam error");
+      }
+      return -1;
+    }
+    if (!a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEncodeHelper", 4, "initMediaBuffer error");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
+      return -1;
+    }
+    SVHwEncoder localSVHwEncoder = new SVHwEncoder();
+    int i;
+    if (azds.o == 16)
+    {
+      i = 1;
+      if (azds.p != 2) {
+        break label233;
+      }
+    }
+    for (;;)
+    {
+      int k = azds.q;
+      localSVHwEncoder.a(azds.q, i, k * i * j * 8, j);
+      int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getSourceVideoParam();
+      localSVHwEncoder.a(this.jdField_b_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1]);
+      boolean bool = localSVHwEncoder.a(azds.z, azds.y, this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.mOrientationDegree);
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEncodeHelper", 4, "startHwEncode mRecordFrames=" + azds.z + ", mRecordTime=" + azds.y + " successCode=" + bool);
+      }
+      if (bool) {
+        break label238;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
+      return -1;
+      i = 2;
+      break;
+      label233:
+      j = 1;
+    }
+    label238:
+    localSVHwEncoder.b(this, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public azcp a()
+  {
+    boolean bool = false;
+    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper != null) && (!this.jdField_a_of_type_Boolean))
+    {
+      int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getNextAudioFrame(this.jdField_b_of_type_ArrayOfByte);
+      this.jdField_b_of_type_Azcp.jdField_a_of_type_ArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+      this.jdField_b_of_type_Azcp.jdField_a_of_type_Int = 0;
+      this.jdField_b_of_type_Azcp.jdField_b_of_type_Int = i;
+      this.jdField_b_of_type_Azcp.jdField_b_of_type_Boolean = false;
+      azcp localazcp = this.jdField_b_of_type_Azcp;
+      if (i > 0) {}
+      for (;;)
+      {
+        localazcp.jdField_a_of_type_Boolean = bool;
+        localazcp = this.jdField_b_of_type_Azcp;
+        this.jdField_b_of_type_Azcp.c = -1;
+        localazcp.jdField_a_of_type_Long = -1;
+        this.jdField_b_of_type_Azcp.jdField_a_of_type_Float = -1.0F;
+        if (QLog.isColorLevel()) {
+          QLog.d("HwEncodeHelper", 4, "getAudioFrame() bufferSize=" + this.jdField_b_of_type_ArrayOfByte.length + ", readSize=" + i);
+        }
+        this.jdField_a_of_type_Boolean = this.jdField_b_of_type_Azcp.jdField_a_of_type_Boolean;
+        return this.jdField_b_of_type_Azcp;
+        bool = true;
       }
     }
     return null;
   }
   
-  public static void a(UiApiPlugin paramUiApiPlugin, Activity paramActivity, AppInterface paramAppInterface, String paramString1, byte paramByte, String paramString2)
+  public azcp a(int paramInt)
   {
-    if ((paramActivity instanceof AppActivity))
+    boolean bool = true;
+    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper != null) && (!this.jdField_b_of_type_Boolean))
     {
-      AppActivity localAppActivity = (AppActivity)paramActivity;
-      if (localAppActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0) {
-        localAppActivity.requestPermissions(new azcg(localAppActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getNextVideoFrame(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfLong, paramInt);
+      this.jdField_a_of_type_Azcp.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      this.jdField_a_of_type_Azcp.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Azcp.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_Azcp.jdField_b_of_type_Boolean = true;
+      azcp localazcp = this.jdField_a_of_type_Azcp;
+      if (paramInt > 0) {
+        bool = false;
       }
-    }
-    while ((lkj.b(paramActivity)) || (a(paramActivity))) {
-      return;
-    }
-    boolean bool = blcr.b(paramAppInterface);
-    if ((!bool) && (!bbfj.g(paramActivity)))
-    {
-      bcql.a(paramActivity, 2131718792, 0).a();
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "launchTakeVideoForTribe, videoSoUsable=" + bool);
-    }
-    paramUiApiPlugin.f();
-    paramAppInterface = new Bundle();
-    paramAppInterface.putBoolean("flow_camera_video_mode", true);
-    paramAppInterface.putBoolean("flow_camera_capture_mode", false);
-    paramAppInterface.putString("options", paramString1);
-    paramAppInterface.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
-    paramAppInterface.putInt("edit_video_type", 10012);
-    if (bool)
-    {
-      paramUiApiPlugin.startActivityForResult(QIMCameraCaptureActivity.a(paramActivity, paramAppInterface), paramByte);
-      if (!"barindex".equals(paramString2)) {
-        break label287;
+      localazcp.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Azcp.jdField_a_of_type_Long = this.jdField_a_of_type_ArrayOfLong[0];
+      this.jdField_a_of_type_Azcp.c = -1;
+      this.jdField_a_of_type_Azcp.jdField_a_of_type_Float = -1.0F;
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEncodeHelper", 4, "getVideoFrame() bufferSize=" + this.jdField_a_of_type_ArrayOfByte.length + ", readSize=" + paramInt + ", frametime=" + this.jdField_a_of_type_ArrayOfLong[0]);
       }
+      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Azcp.jdField_a_of_type_Boolean;
+      return this.jdField_a_of_type_Azcp;
     }
-    label287:
-    for (int i = 1;; i = 2)
-    {
-      axqy.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "exp_findview", i, 0, "", "", "", "");
-      return;
-      paramActivity = new Intent(paramActivity, CaptureQmcfSoDownloadActivity.class);
-      paramActivity.putExtras(paramAppInterface);
-      paramActivity.putExtra("pendingIntentClass", biib.class.getName());
-      paramActivity.putExtra("pendingIntentRequest", paramByte);
-      paramActivity.putExtra("pendingIntentAllWait", true);
-      paramUiApiPlugin.startActivityForResult(paramActivity, paramByte);
-      break;
-    }
+    return null;
   }
   
-  private static boolean a(Context paramContext)
+  public String a()
   {
-    boolean bool = false;
-    if (!avte.a())
-    {
-      bbdj.a(paramContext, 230).setMessage(ajya.a(2131715100)).setPositiveButton(2131694794, new azch()).show();
-      bool = true;
-    }
-    return bool;
+    return this.c;
   }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2) {}
+  
+  public void a(String paramString, int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEncodeHelper", 4, "svMergeOK() path=" + paramString + ", totalTime=" + paramInt + " mergetime=" + paramLong + " us");
+    }
+    this.c = paramString;
+  }
+  
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEncodeHelper", 4, "svErrorOcured() code=" + paramInt1 + ", subcode=" + paramInt2);
+    }
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azcf
  * JD-Core Version:    0.7.0.1
  */

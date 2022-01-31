@@ -3,19 +3,19 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import anqq;
-import anqu;
-import aylr;
-import aylt;
-import ayml;
-import bcdp;
+import aphy;
+import apic;
+import bajn;
+import bajp;
+import bakh;
+import becq;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 
 class ThemeJsPlugin$ThemeSwitchListener
-  extends aylr
+  extends bajn
 {
   private boolean needSetCurrent;
   private String themeId;
@@ -48,7 +48,7 @@ class ThemeJsPlugin$ThemeSwitchListener
     String str1 = "set skin theme back:" + paramInt;
     if (paramInt == 0) {
       if ("saveDiyTheme".equals(ThemeJsPlugin.access$000(this.this$0))) {
-        this.this$0.callJs(this.this$0.mCallbackId, new String[] { new aylt(0, "set skin theme back:" + paramInt).a() });
+        this.this$0.callJs(this.this$0.mCallbackId, new String[] { new bajp(0, "set skin theme back:" + paramInt).a() });
       }
     }
     for (;;)
@@ -75,7 +75,7 @@ class ThemeJsPlugin$ThemeSwitchListener
             localBundle.putString("themeArray", localJSONArray.toString());
             localBundle.putLong("startTime", l);
           }
-          localBundle = anqu.a("themeSwitchSucess", "", this.this$0.mOnRemoteResp.key, localBundle);
+          localBundle = apic.a("themeSwitchSucess", "", this.this$0.mOnRemoteResp.key, localBundle);
           this.this$0.sendRemoteReq(localBundle, false, true);
           i = j;
         }
@@ -84,7 +84,7 @@ class ThemeJsPlugin$ThemeSwitchListener
       {
         for (;;)
         {
-          this.this$0.callJs(this.this$0.mCallbackId, new String[] { new aylt(i, str1).a() });
+          this.this$0.callJs(this.this$0.mCallbackId, new String[] { new bajp(i, str1).a() });
           if (paramInt == 0) {
             break;
           }

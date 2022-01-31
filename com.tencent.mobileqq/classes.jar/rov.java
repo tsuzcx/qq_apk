@@ -1,45 +1,32 @@
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
 
-class rov
-  extends akjb
+public class rov
+  implements View.OnClickListener
 {
-  rov(rou paramrou) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
-    }
-  }
+  public rov(BaseTabbar paramBaseTabbar, int paramInt) {}
   
-  public void a(List<awpp> paramList, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 10) {}
-    awpp localawpp;
-    do
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 300L)
     {
-      do
-      {
-        return;
-        while ((paramList == null) || (paramList.size() <= 0)) {}
-        paramList = paramList.iterator();
-      } while (!paramList.hasNext());
-      localawpp = (awpp)paramList.next();
-    } while (!(localawpp instanceof HotWordSearchEntryDataModel));
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localawpp);
-    rou.jdField_a_of_type_Int = 0;
-    this.a.a(false, -1, -1);
+      this.jdField_a_of_type_Long = 0L;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
+      }
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rov
  * JD-Core Version:    0.7.0.1
  */

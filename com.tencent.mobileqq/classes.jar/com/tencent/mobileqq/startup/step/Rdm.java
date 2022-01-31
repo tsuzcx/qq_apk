@@ -2,9 +2,9 @@ package com.tencent.mobileqq.startup.step;
 
 import android.os.Looper;
 import android.os.SystemClock;
-import arzy;
-import axqn;
-import axrn;
+import atqu;
+import azly;
+import azmz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,12 +25,12 @@ public class Rdm
       return;
     }
     long l = SystemClock.uptimeMillis();
-    axqn localaxqn = axqn.a(BaseApplicationImpl.sApplication);
-    localaxqn.a(false);
-    localaxqn.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
-    localaxqn.b("MTA_" + paramString1.replace(':', '_'));
+    azly localazly = azly.a(BaseApplicationImpl.sApplication);
+    localazly.a(false);
+    localazly.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
+    localazly.b("MTA_" + paramString1.replace(':', '_'));
     if (!paramString1.endsWith(":openSdk")) {
-      localaxqn.a(paramString2);
+      localazly.a(paramString2);
     }
     QLog.d("AutoMonitor", 1, "MTA, cost=" + (SystemClock.uptimeMillis() - l) + " results: true");
   }
@@ -66,12 +66,12 @@ public class Rdm
       {
         if ((BaseApplicationImpl.sProcessId == 1) || (BaseApplicationImpl.sProcessId == 7))
         {
-          Thread.setDefaultUncaughtExceptionHandler(new arzy());
-          axrn.a(BaseApplicationImpl.sApplication).c((String)localObject1);
+          Thread.setDefaultUncaughtExceptionHandler(new atqu());
+          azmz.a(BaseApplicationImpl.sApplication).c((String)localObject1);
           Object localObject2 = localObject1;
           if (!str.endsWith(":openSdk"))
           {
-            axrn.a(BaseApplicationImpl.sApplication).a((String)localObject1);
+            azmz.a(BaseApplicationImpl.sApplication).a((String)localObject1);
             localObject2 = localObject1;
           }
           localObject1 = new Rdm.1(this, str);
@@ -100,7 +100,7 @@ public class Rdm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Rdm
  * JD-Core Version:    0.7.0.1
  */

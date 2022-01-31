@@ -1,45 +1,37 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bajc
+  implements alkr
 {
-  public static bajc[] a;
-  public String a;
+  protected void a(boolean paramBoolean, List<String> paramList) {}
   
-  static
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    jdField_a_of_type_ArrayOfBajc = new bajc[] { new bajc("BulkChatMessageConfig") };
-  }
-  
-  public bajc(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  final JSONObject a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      return a(paramString);
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
+    if (paramInt == 1) {
+      try
       {
-        paramString = new JSONObject();
+        if ((paramObject instanceof List))
+        {
+          a(paramBoolean, (List)paramObject);
+          return;
+        }
+        if (!paramBoolean)
+        {
+          a(false, null);
+          return;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("ParticipleObserver", 1, paramObject, new Object[0]);
       }
     }
-  }
-  
-  JSONObject a(JSONObject paramJSONObject)
-  {
-    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bajc
  * JD-Core Version:    0.7.0.1
  */

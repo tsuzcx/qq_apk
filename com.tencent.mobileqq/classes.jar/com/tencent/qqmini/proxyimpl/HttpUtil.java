@@ -2,12 +2,6 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.text.TextUtils;
 import android.util.Log;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.MultipartBuilder;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.internal.http.HttpMethod;
 import com.tencent.plato.mqq.network.ProgressRequestBody;
 import com.tencent.qqmini.sdk.core.proxy.UploaderProxy.UploadListener;
 import java.io.File;
@@ -21,6 +15,13 @@ import java.util.Map;
 import java.util.Set;
 import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLPeerUnverifiedException;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.MultipartBody.Builder;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
+import okhttp3.RequestBody;
+import okhttp3.internal.http.HttpMethod;
 
 public class HttpUtil
 {
@@ -54,14 +55,14 @@ public class HttpUtil
   
   public static RequestBody buildMultiPartBody(String paramString1, Map<String, String> paramMap, String paramString2, String paramString3, UploaderProxy.UploadListener paramUploadListener)
   {
-    MultipartBuilder localMultipartBuilder = new MultipartBuilder().type(MultipartBuilder.FORM);
+    MultipartBody.Builder localBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
     if (paramMap != null)
     {
       Iterator localIterator = paramMap.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        localMultipartBuilder.addFormDataPart(str, (String)paramMap.get(str));
+        localBuilder.addFormDataPart(str, (String)paramMap.get(str));
       }
     }
     paramMap = new File(paramString1);
@@ -70,8 +71,8 @@ public class HttpUtil
     if (TextUtils.isEmpty(paramString3)) {
       paramString1 = paramMap.getName();
     }
-    localMultipartBuilder.addFormDataPart(paramString2, paramString1, paramUploadListener);
-    return localMultipartBuilder.build();
+    localBuilder.addFormDataPart(paramString2, paramString1, paramUploadListener);
+    return localBuilder.build();
   }
   
   public static Request buildRequest(String paramString1, Map<String, String> paramMap, String paramString2, MediaType paramMediaType, byte[] paramArrayOfByte)
@@ -176,7 +177,7 @@ public class HttpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.HttpUtil
  * JD-Core Version:    0.7.0.1
  */

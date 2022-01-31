@@ -1,19 +1,28 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
 class phf
-  implements pvo
+  extends Handler
 {
-  phf(pgw parampgw, pau parampau) {}
-  
-  public void a()
+  phf(phd paramphd, Looper paramLooper)
   {
-    rbr localrbr = this.jdField_a_of_type_Pau.a().a();
-    if (localrbr != null) {
-      localrbr.a(null, this.jdField_a_of_type_Pau.a(), 1);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phf
  * JD-Core Version:    0.7.0.1
  */

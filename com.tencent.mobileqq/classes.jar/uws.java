@@ -1,55 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class uws
-  implements syq<tlq, tlr>
+class uws
+  extends uhn
 {
-  uws(uxo paramuxo) {}
+  uws(uwn paramuwn) {}
   
-  public void a(@NonNull tlq paramtlq, @Nullable tlr paramtlr, @NonNull ErrorMessage paramErrorMessage)
+  public void a()
   {
-    ved.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, refresh comment.");
-    if (paramtlr == null)
-    {
-      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, response is null.");
-      new tlr(paramErrorMessage);
+    wsv.b(uwn.b(), "msg: MSG_ON_STORY_MSGTAB_DATA_LOADED");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      wsv.e(uwn.b(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
+    }
+    uuq localuuq = (uuq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(251);
+    if (localuuq.a()) {
+      if (this.a.a()) {
+        this.a.jdField_a_of_type_Uvz.a("exp_story", 3);
+      }
     }
     do
     {
       do
       {
         return;
-        if (paramErrorMessage.isFail()) {
-          ved.d("Q.qqstory.home.data.HomeFeedPresenter", "request fail for comment request");
+        if (!localuuq.b()) {
+          break;
         }
-      } while ((paramtlr.jdField_a_of_type_JavaUtilList == null) || (paramtlr.jdField_a_of_type_JavaUtilList.isEmpty()));
-      paramtlq = (tbw)tcz.a(17);
-      paramtlr = (tls)paramtlr.jdField_a_of_type_JavaUtilList.get(0);
-    } while (paramtlr.jdField_a_of_type_JavaUtilList == null);
-    ved.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, commentFeedId:%s, commentSize:%s, entryListSize:%s", new Object[] { paramtlr.jdField_a_of_type_JavaLangString, Integer.valueOf(paramtlr.jdField_a_of_type_Int), Integer.valueOf(paramtlr.jdField_a_of_type_JavaUtilList.size()) });
-    paramtlq.a(paramtlr.jdField_a_of_type_JavaUtilList, this.a.a.feedId, true, true);
-    paramtlq = new uoy(paramErrorMessage, paramtlr.jdField_a_of_type_JavaLangString, 1);
-    paramtlq.jdField_a_of_type_JavaUtilList = paramtlr.jdField_a_of_type_JavaUtilList;
-    paramtlq.c = true;
-    if (((CommentLikeFeedItem)this.a.a).mCommentIsEnd == 1) {}
-    for (boolean bool = true;; bool = false)
+      } while (!this.a.a());
+      this.a.jdField_a_of_type_Uvz.a("exp_story", 2);
+      return;
+      if (!this.a.jdField_a_of_type_Uwx.a()) {
+        break;
+      }
+    } while (!this.a.a());
+    this.a.jdField_a_of_type_Uvz.a("exp_story", 5);
+    return;
+    if (localuuq.c())
     {
-      paramtlq.jdField_a_of_type_Boolean = bool;
-      paramtlq.jdField_b_of_type_JavaLangString = ((CommentLikeFeedItem)this.a.a).mCommentLastCookie;
-      paramtlq.jdField_b_of_type_Int = paramtlr.jdField_a_of_type_Int;
-      stb.a().dispatch(paramtlq);
+      this.a.h();
+      localuuq.a();
+      this.a.jdField_a_of_type_Uvz.a("exp_hide", 0);
       return;
     }
+    this.a.jdField_a_of_type_Uvz.a("exp_hide", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uws
  * JD-Core Version:    0.7.0.1
  */

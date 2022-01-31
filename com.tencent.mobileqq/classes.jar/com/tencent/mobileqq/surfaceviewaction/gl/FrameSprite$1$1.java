@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import aycc;
-import aycp;
+import azzz;
+import baam;
 import java.util.LinkedList;
 
 class FrameSprite$1$1
@@ -16,26 +16,26 @@ class FrameSprite$1$1
       int j;
       synchronized (this.a.this$0)
       {
-        aycp[] arrayOfaycp = aycc.a(this.a.this$0);
-        if ((arrayOfaycp == null) || (aycc.a(this.a.this$0))) {
+        baam[] arrayOfbaam = azzz.a(this.a.this$0);
+        if ((arrayOfbaam == null) || (azzz.a(this.a.this$0))) {
           return;
         }
-        aycc.a(this.a.this$0, new aycp[aycc.a(this.a.this$0).length / 2]);
+        azzz.a(this.a.this$0, new baam[azzz.a(this.a.this$0).length / 2]);
         j = 0;
         int i = 0;
-        if (j < aycc.a(this.a.this$0).length)
+        if (j < azzz.a(this.a.this$0).length)
         {
           if (j % 2 == 0)
           {
-            aycc localaycc2 = this.a.this$0;
+            azzz localazzz2 = this.a.this$0;
             int k = i + 1;
-            aycc.a(localaycc2, i, arrayOfaycp[j]);
+            azzz.a(localazzz2, i, arrayOfbaam[j]);
             i = k;
           }
           else
           {
-            aycc.a(this.a.this$0).remove(arrayOfaycp[j]);
-            arrayOfaycp[j].c();
+            azzz.a(this.a.this$0).remove(arrayOfbaam[j]);
+            arrayOfbaam[j].c();
           }
         }
         else {
@@ -48,7 +48,7 @@ class FrameSprite$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.1.1
  * JD-Core Version:    0.7.0.1
  */

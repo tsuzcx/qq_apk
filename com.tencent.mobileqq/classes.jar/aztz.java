@@ -1,141 +1,265 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aztz
+  extends azqk
 {
-  protected int a;
-  protected long a;
-  protected TroopFileTransferManager.Item a;
-  protected String a;
-  xaz a;
+  private final int o = 16;
   
-  protected aztz(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  private LinearLayout.LayoutParams a(Resources paramResources, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Xaz = new azua(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
-    {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      this.jdField_a_of_type_Int = paramInt;
-      return;
+    if (paramBoolean) {}
+    for (int i = 50;; i = 58) {
+      return new LinearLayout.LayoutParams(aekt.a(i, paramResources), aekt.a(i, paramResources));
     }
   }
   
-  public static aztz a(long paramLong, TroopFileTransferManager.Item paramItem)
+  private LinearLayout a(Context paramContext)
   {
-    if (paramLong == 0L)
+    Resources localResources = paramContext.getResources();
+    paramContext = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    a(paramContext);
+    d(paramContext);
+    int k = localResources.getDimensionPixelSize(2131298817);
+    int m = localResources.getDimensionPixelSize(2131298818);
+    int i;
+    if (a(1))
     {
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
-      return null;
-    }
-    if (paramItem == null)
-    {
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item.id=null");
-      return null;
-    }
-    if (paramItem.ForwardTroopuin == 0L)
-    {
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. ForwardTroopuin=0");
-      return null;
-    }
-    if (paramItem.BusId != 25)
-    {
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. BusId err:" + paramItem.BusId);
-      return null;
-    }
-    if (TextUtils.isEmpty(paramItem.ForwardPath))
-    {
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "get2WeiyunForwarder. ForwardPath=null");
-      return null;
-    }
-    return new aztz(paramLong, paramItem, 1);
-  }
-  
-  private final void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
-  {
-    paramInt2 = 601;
-    if (!paramBoolean)
-    {
-      bicz.a(-1);
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onTroop2weiyunResult isSuccess:false ");
-      paramString1 = new bajv(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, 601);
-      azsd.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
-      return;
-    }
-    azst.c("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onTroop2weiyunResult retCode:" + paramInt1 + " sClientWording:" + paramString3);
-    bicz.a(paramInt1);
-    if (paramInt1 != 0)
-    {
-      switch (paramInt1)
-      {
-      default: 
-        paramInt1 = paramInt2;
+      i = aekt.a(15.0F, localResources);
+      if (!a(2)) {
+        break label121;
       }
-      for (;;)
+    }
+    label121:
+    for (int j = aekt.a(15.0F, localResources);; j = aekt.a(6.0F, localResources))
+    {
+      paramContext.setPadding(k, i, m, j);
+      paramContext.setLayoutParams(localLayoutParams);
+      paramContext.setOrientation(0);
+      return paramContext;
+      i = aekt.a(6.0F, localResources);
+      break;
+    }
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 2) {}
+    int k;
+    int j;
+    do
+    {
+      return;
+      k = -1;
+      j = -1;
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        paramString1 = new bajv(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, paramInt1, paramString3);
-        azsd.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
-        return;
-        paramInt1 = 202;
-        continue;
-        paramInt1 = 702;
-        continue;
-        paramInt1 = 703;
-        continue;
-        paramInt1 = 702;
-        continue;
-        paramInt1 = 701;
-        continue;
-        paramInt1 = 705;
-        continue;
-        paramInt1 = paramInt2;
-        if (!TextUtils.isEmpty(paramString3)) {
-          paramInt1 = 704;
+        localazqj = (azqj)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        int m;
+        if ("title".equals(localazqj.jdField_a_of_type_JavaLangString)) {
+          m = i;
+        }
+        for (;;)
+        {
+          i += 1;
+          j = m;
+          break;
+          m = j;
+          if ("picture".equals(localazqj.jdField_a_of_type_JavaLangString))
+          {
+            k = i;
+            m = j;
+          }
+        }
+      }
+    } while ((j < 0) || (k < 0) || (j >= k));
+    azqj localazqj = (azqj)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+    this.jdField_a_of_type_JavaUtilArrayList.set(j, this.jdField_a_of_type_JavaUtilArrayList.get(k));
+    this.jdField_a_of_type_JavaUtilArrayList.set(k, localazqj);
+  }
+  
+  protected int b()
+  {
+    return 4;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    boolean bool = paramBundle.getBoolean("NAIOSub", false);
+    int j;
+    Object localObject2;
+    Object localObject3;
+    label79:
+    Object localObject1;
+    Object localObject4;
+    if (paramBundle.getInt("accostType") == AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA)
+    {
+      j = 1;
+      if ((paramView == null) || (!(paramView instanceof LinearLayout)) || (((LinearLayout)paramView).getChildCount() != this.jdField_a_of_type_JavaUtilArrayList.size())) {
+        break label281;
+      }
+      localObject2 = (LinearLayout)paramView;
+      if (j != 0) {
+        a();
+      }
+      localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      j = 0;
+      localObject1 = localObject2;
+      if (!((Iterator)localObject3).hasNext()) {
+        break label800;
+      }
+      localObject1 = (azqj)((Iterator)localObject3).next();
+      ((azqj)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      localObject4 = ((azqj)localObject1).jdField_a_of_type_JavaLangString;
+      if (("title".equals(localObject4)) || ("picture".equals(localObject4)) || ("video".equals(localObject4)))
+      {
+        ((azqj)localObject1).a(paramContext, ((LinearLayout)localObject2).getChildAt(j), paramBundle);
+        if ((localObject1 instanceof StructMsgItemTitle))
+        {
+          ((StructMsgItemTitle)localObject1).a(a(), this.l);
+          if ((((StructMsgItemTitle)localObject1).c() == null) || (((StructMsgItemTitle)localObject1).c().equals(""))) {
+            break label809;
+          }
         }
       }
     }
-    paramString1 = new bajv(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, 602);
-    azsd.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
-  }
-  
-  private int b()
-  {
-    QQAppInterface localQQAppInterface = azsr.a();
-    if (localQQAppInterface == null)
+    for (;;)
     {
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] troop2weiyun app=null");
-      return -1;
+      try
+      {
+        i = Integer.parseInt(((StructMsgItemTitle)localObject1).c()) / 2;
+        localObject1 = (TextView)paramView.findViewById(2131378985);
+        if (localObject1 != null) {
+          ((TextView)localObject1).setTextSize(2, i);
+        }
+        j += 1;
+        break label79;
+        j = 0;
+      }
+      catch (Exception localException1)
+      {
+        i = 16;
+        continue;
+      }
+      label281:
+      paramView = paramContext.getResources();
+      LinearLayout localLinearLayout = a(paramContext);
+      if (j != 0)
+      {
+        i = localLinearLayout.getPaddingTop();
+        int k = localLinearLayout.getPaddingBottom();
+        localLinearLayout.setPadding(paramView.getDimensionPixelSize(2131296355), i, paramView.getDimensionPixelOffset(2131296356), k);
+        a();
+      }
+      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject4 = (azqj)((Iterator)localObject2).next();
+        ((azqj)localObject4).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject3 = ((azqj)localObject4).jdField_a_of_type_JavaLangString;
+        if ("title".equals(localObject3))
+        {
+          localObject3 = ((azqj)localObject4).a(paramContext, null, paramBundle);
+          if (((localObject3 instanceof TextView)) && (!TextUtils.isEmpty(((TextView)localObject3).getText()))) {
+            localLinearLayout.setContentDescription(((TextView)localObject3).getText());
+          }
+          if (!(localObject4 instanceof StructMsgItemTitle)) {
+            break label803;
+          }
+          ((StructMsgItemTitle)localObject4).a(a(), this.l);
+          if ((((StructMsgItemTitle)localObject4).c() == null) || (((StructMsgItemTitle)localObject4).c().equals(""))) {
+            break label803;
+          }
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          i = Integer.parseInt(((StructMsgItemTitle)localObject4).c()) / 2;
+          localObject4 = new LinearLayout.LayoutParams(-1, -2);
+          ((LinearLayout.LayoutParams)localObject4).gravity = 16;
+          ((LinearLayout.LayoutParams)localObject4).weight = 1.0F;
+          if (localLinearLayout.getChildCount() == 0)
+          {
+            ((LinearLayout.LayoutParams)localObject4).leftMargin = 0;
+            ((LinearLayout.LayoutParams)localObject4).rightMargin = aekt.a(15.0F, paramView);
+            localTextView = (TextView)((View)localObject3).findViewById(2131378985);
+            if (localTextView != null)
+            {
+              localTextView.setEllipsize(TextUtils.TruncateAt.END);
+              if (i == 0) {
+                continue;
+              }
+              localTextView.setTextSize(2, i);
+            }
+            localLinearLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
+          }
+        }
+        catch (Exception localException2)
+        {
+          TextView localTextView;
+          i = 0;
+          continue;
+          localException2.leftMargin = aekt.a(15.0F, paramView);
+          localException2.rightMargin = 0;
+          if (j == 0) {
+            continue;
+          }
+          localException2.leftMargin = aekt.a(10.0F, paramView);
+          ((TextView)localObject3).setLineSpacing(aekt.a(2.5F, paramView), 1.0F);
+          ((TextView)localObject3).setMaxLines(2);
+          continue;
+          localTextView.setTextSize(2, 16.0F);
+          continue;
+        }
+        if (("picture".equals(localObject3)) || ("video".equals(localObject3)))
+        {
+          localLinearLayout.addView(localException2.a(paramContext, null, paramBundle), a(paramView, bool));
+          break;
+        }
+        if (!"hr".equals(localObject3)) {
+          break;
+        }
+        localObject3 = localException2.a(paramContext, null, paramBundle);
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 1);
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1) {
+          localLinearLayout.setPadding(localLinearLayout.getPaddingLeft(), 0, localLinearLayout.getPaddingRight(), 0);
+        }
+        localLinearLayout.addView((View)localObject3, localLayoutParams);
+        break;
+        label800:
+        return localLinearLayout;
+        label803:
+        i = 0;
+      }
+      label809:
+      int i = 16;
     }
-    azst.c("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] troop2weiyun. BusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId + " ForwardBusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardBusId + " ForwardPath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardPath);
-    xam.a(localQQAppInterface, true, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_Xaz);
-    return 0;
   }
   
-  public int a()
+  public String b()
   {
-    if (1 == this.jdField_a_of_type_Int) {
-      return b();
-    }
-    return -1;
-  }
-  
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
+    return "Layout4";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aztz
  * JD-Core Version:    0.7.0.1
  */

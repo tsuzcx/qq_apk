@@ -1,30 +1,22 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aqey
+public class aqey
   implements DialogInterface.OnClickListener
 {
-  aqey(aqes paramaqes) {}
+  public aqey(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
-    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.putExtra("fragment_id", 1);
-    paramDialogInterface.setFlags(67108864);
-    paramDialogInterface.setFlags(268435456);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    this.a.a = false;
+    this.a.doOnBackPressed();
+    azmj.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqey
  * JD-Core Version:    0.7.0.1
  */

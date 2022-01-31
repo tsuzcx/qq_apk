@@ -1,39 +1,92 @@
-import android.os.AsyncTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQzoneFeed;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import java.util.HashMap;
+import mqq.app.NewIntent;
 
 class afuq
-  extends AsyncTask<Void, Void, ArrayList<String>>
+  implements View.OnClickListener
 {
-  afuq(afup paramafup, List paramList) {}
+  int jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+  boolean jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
   
-  protected ArrayList<String> a(Void... paramVarArgs)
-  {
-    return this.jdField_a_of_type_Afup.a(this.jdField_a_of_type_JavaUtilList);
-  }
+  afuq(afun paramafun, boolean paramBoolean, int paramInt1, afur paramafur, String paramString, int paramInt2, MessageForQzoneFeed paramMessageForQzoneFeed) {}
   
-  protected void a(ArrayList<String> paramArrayList)
+  public void onClick(View paramView)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    int j = 1;
+    boolean bool;
+    label53:
+    int i;
+    label71:
+    Object localObject;
+    if (!this.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SDKEmotionSettingManager", 2, " openSetEmotion error pathList = " + paramArrayList);
+      bool = true;
+      this.jdField_a_of_type_Boolean = bool;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label316;
       }
-      afup.a(this.jdField_a_of_type_Afup, afup.a(this.jdField_a_of_type_Afup), Long.valueOf(afup.a(this.jdField_a_of_type_Afup)).longValue(), false, "");
-      afup.a(this.jdField_a_of_type_Afup);
-      return;
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_Afur.i.setText(afun.a(this.jdField_a_of_type_Int));
+      paramView = this.jdField_a_of_type_Afur.d;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label347;
+      }
+      i = 2130846979;
+      paramView.setImageResource(i);
+      long l = this.jdField_a_of_type_Afun.a.getLongAccountUin();
+      paramView = this.jdField_a_of_type_JavaLangString;
+      localObject = this.jdField_a_of_type_JavaLangString;
+      i = j;
+      if (this.jdField_a_of_type_Boolean) {
+        i = 0;
+      }
+      paramView = new bjey(Long.valueOf(l), paramView, (String)localObject, i, this.c);
+      paramView.a(100);
+      localObject = new QzoneCommonIntent(this.jdField_a_of_type_Afun.a.getApplication(), apbf.class);
+      Bundle localBundle = new Bundle();
+      localBundle.putBoolean("like_key", this.jdField_a_of_type_Boolean);
+      ((QzoneCommonIntent)localObject).putExtras(localBundle);
+      ((QzoneCommonIntent)localObject).setRequest(paramView);
+      this.jdField_a_of_type_Afun.a.startServlet((NewIntent)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.ulikeNum = this.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.mapExt == null) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.mapExt = new HashMap();
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.mapExt;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label353;
+      }
     }
-    int i = paramArrayList.size();
-    axqy.b(null, "dc00898", "", "", "0X8009DC8", "0X8009DC8", 0, 0, i + "", "", "", "");
-    afup.a(this.jdField_a_of_type_Afup).clear();
-    afup.a(this.jdField_a_of_type_Afup).addAll(paramArrayList);
-    this.jdField_a_of_type_Afup.a(paramArrayList);
+    label316:
+    label347:
+    label353:
+    for (paramView = "1";; paramView = "0")
+    {
+      ((HashMap)localObject).put("isliked", paramView);
+      this.jdField_a_of_type_Afun.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed, false);
+      this.jdField_a_of_type_Afun.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.selfuin);
+      return;
+      bool = false;
+      break;
+      this.jdField_a_of_type_Int -= 1;
+      this.jdField_a_of_type_Afur.i.setText(afun.a(this.jdField_a_of_type_Int));
+      break label53;
+      i = 2130846978;
+      break label71;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afuq
  * JD-Core Version:    0.7.0.1
  */

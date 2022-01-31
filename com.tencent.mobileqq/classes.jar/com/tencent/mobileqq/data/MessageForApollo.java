@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import akwa;
+import ammq;
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -70,7 +70,7 @@ public class MessageForApollo
   {
     try
     {
-      this.mApolloMessage = ((ApolloMessage)akwa.a(this.msgData));
+      this.mApolloMessage = ((ApolloMessage)ammq.a(this.msgData));
       this.hasPlayed = this.mApolloMessage.isPlayed;
       this.msg = ApolloUtil.a(this);
       if (!TextUtils.isEmpty(this.mApolloMessage.extStr))
@@ -221,7 +221,7 @@ public class MessageForApollo
     try
     {
       this.mApolloMessage.isPlayed = this.hasPlayed;
-      this.msgData = akwa.a(this.mApolloMessage);
+      this.msgData = ammq.a(this.mApolloMessage);
       return;
     }
     catch (Exception localException)
@@ -272,7 +272,7 @@ public class MessageForApollo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForApollo
  * JD-Core Version:    0.7.0.1
  */

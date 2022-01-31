@@ -1,23 +1,19 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class akkz
-  implements ThreadFactory
+class akkz
+  implements Comparator<ApolloActionData>
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  akkz(akkx paramakkx) {}
   
-  public Thread newThread(Runnable paramRunnable)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    paramRunnable = new Thread(paramRunnable, "Automator_" + this.a.getAndIncrement());
-    if (paramRunnable.getPriority() != 10) {
-      paramRunnable.setPriority(10);
-    }
-    return paramRunnable;
+    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkz
  * JD-Core Version:    0.7.0.1
  */

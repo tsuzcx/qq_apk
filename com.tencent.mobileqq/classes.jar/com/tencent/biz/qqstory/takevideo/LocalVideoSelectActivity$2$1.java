@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.widget.ImageView;
-import vjf;
+import wxx;
 
 public class LocalVideoSelectActivity$2$1
   implements Runnable
 {
-  public LocalVideoSelectActivity$2$1(vjf paramvjf) {}
+  public LocalVideoSelectActivity$2$1(wxx paramwxx) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class LocalVideoSelectActivity$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

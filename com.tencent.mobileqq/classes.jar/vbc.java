@@ -1,43 +1,14 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.util.ArrayList;
+import java.util.List;
 
-class vbc
-  implements INetInfoHandler
+public class vbc
 {
-  vbc(vba paramvba) {}
-  
-  public void onNetMobile2None()
-  {
-    vba.b(this.a, vba.a(3));
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    vba.b(this.a, vba.a(1));
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    vba.b(this.a, vba.a(2));
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    vba.b(this.a, vba.a(1));
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    vba.b(this.a, vba.a(2));
-  }
-  
-  public void onNetWifi2None()
-  {
-    vba.b(this.a, vba.a(3));
-  }
+  public String a;
+  public List<xjw> a = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbc
  * JD-Core Version:    0.7.0.1
  */

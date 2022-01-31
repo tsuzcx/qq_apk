@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.tts;
 
-import ajya;
-import bcql;
+import alpo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class SilkStreamPlayer$SilkStreamPlayerThread$2
   implements Runnable
@@ -11,12 +11,12 @@ class SilkStreamPlayer$SilkStreamPlayerThread$2
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.context, ajya.a(2131714167), 0).a();
+    QQToast.a(BaseApplicationImpl.context, alpo.a(2131714539), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.tts.SilkStreamPlayer.SilkStreamPlayerThread.2
  * JD-Core Version:    0.7.0.1
  */

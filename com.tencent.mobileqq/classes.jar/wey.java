@@ -1,39 +1,41 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-final class wey
-  extends AnimatorListenerAdapter
+class wey
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  wey(wew paramwew) {}
   
-  wey(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramView.getLayerType();
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.jdField_a_of_type_Int, null);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (wew.a(this.a)) {
+        break label105;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(wew.a(this.a), wew.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, wew.a(this.a).jdField_a_of_type_Boolean);
+      wew.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label100;
+      }
+    }
+    label100:
+    for (boolean bool = true;; bool = false)
+    {
+      wew.a(paramView, bool);
+      return false;
+    }
+    label105:
+    this.a.b();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wey
  * JD-Core Version:    0.7.0.1
  */

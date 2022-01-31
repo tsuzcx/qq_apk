@@ -1,165 +1,27 @@
-import com.tencent.av.ui.funchat.record.QavRecordReporter.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class mnp
+  implements lft
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  private static Throwable jdField_a_of_type_JavaLangThrowable;
-  private static boolean jdField_a_of_type_Boolean;
-  private static int jdField_b_of_type_Int;
-  private static long jdField_b_of_type_Long;
-  private static int c;
+  public mnp(VideoLayerUI paramVideoLayerUI, int paramInt, boolean paramBoolean) {}
   
-  public static void a()
+  public void a()
   {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    jdField_b_of_type_Long = -1L;
-    jdField_b_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-    c = 0;
-    jdField_a_of_type_JavaLangThrowable = null;
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = jdField_a_of_type_Long;
-    long l3 = jdField_b_of_type_Long;
-    int i = jdField_a_of_type_Int;
-    int j = jdField_b_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "onRecordEnd cores=" + paramInt1 + ", fqc=" + paramInt2 + ", start=" + l2 + ", end=" + l1 + ", frames=" + i + ", stopType=" + paramInt3 + ", mp4Start=" + l3 + ", mp4Frames=" + j);
-    }
-    ThreadManager.post(new QavRecordReporter.1(paramInt2, i, l1, l2, j, l3, paramLong, paramInt1, paramInt3), 5, null, false);
-  }
-  
-  public static void a(int paramInt, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "onError " + paramInt);
-    }
-    jdField_a_of_type_Boolean = true;
-    c = paramInt;
-    jdField_a_of_type_JavaLangThrowable = paramThrowable;
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "reportConvertPcmCostTime cost=" + paramLong);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_model", bbdh.d());
-    localHashMap.put("api", bbdh.e());
-    localHashMap.put("manufacture", bbdh.h());
-    axrn localaxrn = axrn.a(BaseApplicationImpl.getContext());
-    if (!jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp.length > this.jdField_a_of_type_Int))
     {
-      localaxrn.a("", "av_record_convert_pcm_cost", bool, paramLong / 1000L, 0L, localHashMap, "", false);
+      mth.a("switch_camera", "switchCameraFristData", 3, new Object[0]);
+      VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp[this.jdField_a_of_type_Int], this.jdField_a_of_type_Boolean);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    axqy.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "reportPCMSuccess success=" + paramBoolean + ", errcode=" + paramInt);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    axrn.a(BaseApplicationImpl.getContext()).a("", "av_record_convert_pcm_success", paramBoolean, 0L, 0L, localHashMap, "", false);
-  }
-  
-  public static void b()
-  {
-    jdField_a_of_type_Int += 1;
-  }
-  
-  public static void c()
-  {
-    if (jdField_b_of_type_Long < 0L) {
-      jdField_b_of_type_Long = System.currentTimeMillis();
-    }
-    jdField_b_of_type_Int += 1;
-  }
-  
-  public static void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "reportEnd");
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(c));
-    localHashMap.put("device_model", bbdh.d());
-    localHashMap.put("api", bbdh.e());
-    localHashMap.put("manufacture", bbdh.h());
-    localHashMap.put("throwable", String.valueOf(jdField_a_of_type_JavaLangThrowable));
-    jdField_a_of_type_JavaLangThrowable = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "reportEnd params=" + localHashMap);
-    }
-    axrn localaxrn = axrn.a(BaseApplicationImpl.getContext());
-    if (!jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localaxrn.a("", "av_record_report_end", bool, 0L, 0L, localHashMap, "", false);
-      return;
-    }
-  }
-  
-  public static void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail");
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_model", bbdh.d());
-    localHashMap.put("api", bbdh.e());
-    localHashMap.put("manufacture", bbdh.h());
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail  params=" + localHashMap);
-    }
-    axrn localaxrn = axrn.a(BaseApplicationImpl.getContext());
-    if (!jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localaxrn.a("", "av_record_audio_fail", bool, 0L, 0L, localHashMap, "", false);
-      return;
-    }
-  }
-  
-  public static void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "reportConvertPcmTimeout");
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_model", bbdh.d());
-    localHashMap.put("api", bbdh.e());
-    localHashMap.put("manufacture", bbdh.h());
-    axrn localaxrn = axrn.a(BaseApplicationImpl.getContext());
-    if (!jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localaxrn.a("", "av_record_convert_pcm_timeout", bool, 0L, 0L, localHashMap, "", false);
-      return;
-    }
+    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "switchCameraFristData Error : Index = " + this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mnp
  * JD-Core Version:    0.7.0.1
  */

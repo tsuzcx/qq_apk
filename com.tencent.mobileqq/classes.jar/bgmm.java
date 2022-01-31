@@ -1,60 +1,30 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.3;
 
 public class bgmm
-  implements INetEventHandler
+  implements Animation.AnimationListener
 {
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
-  private boolean jdField_a_of_type_Boolean;
+  public bgmm(ActionSheetDialog.3 param3) {}
   
-  public bgmm(bgmh parambgmh) {}
-  
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
+    try
     {
+      bgml.a(this.a.this$0);
+      bgml.a(this.a.this$0, true);
       return;
-      this.jdField_a_of_type_Boolean = true;
-      try
-      {
-        AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this);
-        return;
-      }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("plugin_tag", 2, localException, new Object[0]);
+    }
+    catch (Exception paramAnimation) {}
   }
   
-  public void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = false;
-      try
-      {
-        AppNetConnInfo.unregisterNetEventHandler(this);
-        return;
-      }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("plugin_tag", 2, localException, new Object[0]);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    bgmh.a(this.jdField_a_of_type_Bgmh).sendEmptyMessage(66304);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgmm
  * JD-Core Version:    0.7.0.1
  */

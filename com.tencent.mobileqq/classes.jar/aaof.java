@@ -1,49 +1,29 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aaof
-  extends atzq
+  extends aaog
 {
-  public SessionInfo a;
-  public WeakReference<QQAppInterface> a;
-  public boolean a;
+  aaof(aaoe paramaaoe) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed appRef==null");
-      }
-    }
-    QQAppInterface localQQAppInterface;
-    do
+    aanp.a("GdtC2SReporter", "onCheckC2SReport: " + paramInt + "， request ADID: " + paramString2);
+    aaoc.a(BaseApplicationImpl.getApplication(), this.a, paramInt, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_Long = -2147483648L;
+    if (aaoe.a(this.a).equals(paramString2))
     {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
+      azmj.a(null, "dc00898", "", "", "0X8009EBD", "0X8009EBD", this.a.jdField_a_of_type_Int, paramInt, "", "", aaoe.a(this.a), "");
+      if ((paramInt != 1) && (paramInt != 2)) {
+        ThreadManager.executeOnNetWorkThread(new GdtC2SReportInterface.1.1(this));
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed app == null || sessionInfo == nul");
-    return;
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
-      aanz.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_Boolean);
     }
-    paramBundle = (aaof)aanz.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    aanz.a().remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    localQQAppInterface.unRegistObserver(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaof
  * JD-Core Version:    0.7.0.1
  */

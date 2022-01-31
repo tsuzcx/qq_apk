@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bdot;
-import bicg;
+import bfnq;
+import bkec;
 import org.json.JSONObject;
 
 public class WadlParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<WadlParams> CREATOR = new bicg();
+  public static final Parcelable.Creator<WadlParams> CREATOR = new bkec();
   public int a;
   public long a;
   public String a;
@@ -23,6 +23,7 @@ public class WadlParams
   public int c;
   public long c;
   public String c;
+  public boolean c;
   public int d;
   public String d;
   public int e;
@@ -167,7 +168,6 @@ public class WadlParams
     this.jdField_c_of_type_Int = paramWadlParams.jdField_c_of_type_Int;
     this.jdField_a_of_type_Long = paramWadlParams.jdField_a_of_type_Long;
     this.jdField_b_of_type_Long = paramWadlParams.jdField_b_of_type_Long;
-    this.m = paramWadlParams.m;
     this.n = paramWadlParams.n;
     this.p = paramWadlParams.p;
     this.q = paramWadlParams.q;
@@ -244,7 +244,7 @@ public class WadlParams
     }
     catch (Exception paramString)
     {
-      bdot.a("WadlParams", "parse json exception:" + paramString.getMessage());
+      bfnq.a("WadlParams", "parse json exception:" + paramString.getMessage());
     }
   }
   
@@ -265,7 +265,7 @@ public class WadlParams
   
   public String toString()
   {
-    return "WadlParams{actionCode='" + a(this.jdField_b_of_type_Int) + '\'' + ", appId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", apkUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", versionCode=" + this.jdField_f_of_type_Int + ", packageName='" + this.j + '\'' + ", appName='" + this.k + '\'' + ", delayDownload=" + this.jdField_a_of_type_Boolean + ", extraData='" + this.p + '\'' + ", apkChannel='" + this.jdField_d_of_type_JavaLangString + '\'' + ", via='" + this.m + '\'' + ", flags=" + this.jdField_c_of_type_Int + ", from=" + this.jdField_d_of_type_Int + ", yyStartTime=" + this.jdField_a_of_type_Long + ", yyEndTime=" + this.jdField_b_of_type_Long + ", adtag='" + this.o + '\'' + ", isRES='" + this.jdField_b_of_type_Boolean + '\'' + ", resName='" + this.jdField_g_of_type_JavaLangString + '\'' + ", resIndex='" + this.jdField_e_of_type_Int + '\'' + ", resverCode='" + this.jdField_f_of_type_JavaLangString + '\'' + ", resMD5='" + this.h + '\'' + ", resUrl='" + this.i + '\'' + ", resDir='" + this.jdField_e_of_type_JavaLangString + '\'' + ", pkgSize=" + this.jdField_c_of_type_Long + ", ignoreSpace=" + this.jdField_g_of_type_Int + '}';
+    return "WadlParams{actionCode='" + a(this.jdField_b_of_type_Int) + '\'' + ", appId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", apkUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", versionCode=" + this.jdField_f_of_type_Int + ", packageName='" + this.j + '\'' + ", appName='" + this.k + '\'' + ", delayDownload=" + this.jdField_a_of_type_Boolean + ", extraData='" + this.p + '\'' + ", apkChannel='" + this.jdField_d_of_type_JavaLangString + '\'' + ", via='" + this.m + '\'' + ", flags=" + this.jdField_c_of_type_Int + ", from=" + this.jdField_d_of_type_Int + ", yyStartTime=" + this.jdField_a_of_type_Long + ", yyEndTime=" + this.jdField_b_of_type_Long + ", adtag='" + this.o + '\'' + ", isRES='" + this.jdField_b_of_type_Boolean + '\'' + ", resName='" + this.jdField_g_of_type_JavaLangString + '\'' + ", resIndex='" + this.jdField_e_of_type_Int + '\'' + ", resverCode='" + this.jdField_f_of_type_JavaLangString + '\'' + ", resMD5='" + this.h + '\'' + ", resUrl='" + this.i + '\'' + ", resDir='" + this.jdField_e_of_type_JavaLangString + '\'' + ", pkgSize=" + this.jdField_c_of_type_Long + ", ignoreSpace=" + this.jdField_g_of_type_Int + ", isCancelRequest=" + this.jdField_c_of_type_Boolean + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -321,7 +321,7 @@ public class WadlParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.wadl.ipc.WadlParams
  * JD-Core Version:    0.7.0.1
  */

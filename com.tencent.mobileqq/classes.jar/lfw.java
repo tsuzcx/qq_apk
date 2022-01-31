@@ -1,78 +1,109 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.RecvGVideoLevelInfo;
-import com.tencent.av.service.RecvMsg;
+import com.tencent.av.core.VcControllerImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class lfw
-  extends lwp
+public class lfw
+  implements muw
 {
-  lfw(lfv paramlfv) {}
-  
-  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public lfw(VideoController paramVideoController)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQServiceProxy", 2, "getDataFromVideoProcess cmd = " + paramInt1 + ",subCmd = " + paramInt2 + ",request = " + paramBundle + ",callbackCookie = " + paramString);
-    }
-    switch (paramInt1)
-    {
-    default: 
-      return null;
-    }
-    paramString = new Bundle();
-    paramString.putString("camera_used_desc", lkj.a);
-    return paramString;
-  }
-  
-  public void a(RecvMsg paramRecvMsg)
-  {
-    if (paramRecvMsg != null) {
-      this.a.a.a(new Object[] { Integer.valueOf(12), paramRecvMsg });
+      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "new QQPhoneStatusListener");
     }
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
-  
-  public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
+  public void a(boolean paramBoolean)
   {
-    if (TextUtils.equals(paramString, "avChatRoom"))
+    lid locallid = this.a.a();
+    boolean bool2 = locallid.S;
+    long l = AudioHelper.b();
+    boolean bool1;
+    if (QLog.isColorLevel())
     {
-      lko locallko = this.a.a.a();
-      if (locallko != null) {
-        locallko.a(paramInt, paramArrayOfByte);
+      String str = VideoController.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder().append("onCallStateChanged, isCalling[").append(locallid.b).append("->").append(paramBoolean).append("], mVcCtrl[");
+      if (this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null)
+      {
+        bool1 = true;
+        QLog.w(str, 1, bool1 + "], sessionInfo[" + locallid + "], isPeerOnPhone[" + bool2 + "], seq[" + l + "]");
       }
     }
-    if (QLog.isDevelopLevel())
+    else
     {
-      paramString = new StringBuilder().append("onReceivePushMsg , key[").append(paramString).append("], msgType[").append(paramInt).append("], bytes[");
-      if (paramArrayOfByte != null) {
-        break label96;
+      if (this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null) {
+        break label144;
       }
     }
-    label96:
-    for (paramInt = 0;; paramInt = paramArrayOfByte.length)
+    for (;;)
     {
-      QLog.i("ChatRoomMng", 4, paramInt + "]");
       return;
+      bool1 = false;
+      break;
+      label144:
+      if (paramBoolean) {
+        switch (locallid.jdField_g_of_type_Int)
+        {
+        }
+      }
+      while (!bool2)
+      {
+        this.a.a(true, paramBoolean);
+        return;
+        this.a.a(locallid.d, 218);
+        this.a.b(218);
+        this.a.b(locallid.d, 0);
+        continue;
+        this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.rejectVideo(locallid.d, this.a.c(), 65535);
+        this.a.a(locallid.d, 219);
+        this.a.b(219);
+        this.a.b(locallid.d, 1);
+        continue;
+        this.a.a(l, 3, Long.valueOf(locallid.d).longValue());
+        if (QLog.isColorLevel())
+        {
+          QLog.e(VideoController.jdField_a_of_type_JavaLangString, 2, "Reject Video Request when chating");
+          continue;
+          this.a.b(true);
+          continue;
+          this.a.a(l, this.a.n, this.a.d);
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.d), Integer.valueOf(3) });
+          continue;
+          this.a.a(mww.b(locallid.i), locallid.jdField_g_of_type_Long, 86);
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(66), Long.valueOf(locallid.jdField_g_of_type_Long) });
+          continue;
+          switch (locallid.jdField_g_of_type_Int)
+          {
+          case 2: 
+          case 5: 
+          case 6: 
+          case 7: 
+          case 8: 
+          default: 
+            break;
+          case 3: 
+          case 4: 
+          case 9: 
+          case 10: 
+            this.a.b(false);
+          }
+        }
+      }
     }
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  protected void finalize()
   {
-    this.a.a.a(new Object[] { Integer.valueOf(47), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3 });
-  }
-  
-  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
-  {
-    if ((paramArrayOfRecvGVideoLevelInfo != null) && (paramArrayOfRecvGVideoLevelInfo.length > 0)) {
-      this.a.a.a(new Object[] { Integer.valueOf(501), paramArrayOfRecvGVideoLevelInfo });
+    super.finalize();
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "finalize QQPhoneStatusListener");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfw
  * JD-Core Version:    0.7.0.1
  */

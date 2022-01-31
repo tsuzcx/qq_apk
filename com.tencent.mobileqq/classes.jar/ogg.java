@@ -1,34 +1,34 @@
-import android.text.Editable;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class ogg
-  implements Comparator<BiuNicknameSpan>
+  implements TVK_SDKMgr.InstallListener
 {
-  private Editable jdField_a_of_type_AndroidTextEditable;
+  public ogg(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
   
-  public ogg(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
+  public void onInstallProgress(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
+    aanp.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
   }
   
-  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
+  public void onInstalledFailed(int paramInt)
   {
-    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
-    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
-    if (i > j) {
-      return 1;
+    aanp.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    aanp.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
+    if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
+      ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
     }
-    if (i < j) {
-      return -1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogg
  * JD-Core Version:    0.7.0.1
  */

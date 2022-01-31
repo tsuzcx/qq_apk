@@ -6,12 +6,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.core.ViolaEnvironment;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rwq;
+import snd;
 
 public class JSAPIAdapter$1
   implements Runnable
 {
-  public JSAPIAdapter$1(rwq paramrwq, JSONObject paramJSONObject) {}
+  public JSAPIAdapter$1(snd paramsnd, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public class JSAPIAdapter$1
             String str = (String)this.a.get("url");
             if (!TextUtils.isEmpty(str))
             {
-              rwq.a(localApplication.getApplicationContext(), str, null);
+              snd.a(localApplication.getApplicationContext(), str, null);
               return;
             }
           }
@@ -42,7 +42,7 @@ public class JSAPIAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.adapter.JSAPIAdapter.1
  * JD-Core Version:    0.7.0.1
  */

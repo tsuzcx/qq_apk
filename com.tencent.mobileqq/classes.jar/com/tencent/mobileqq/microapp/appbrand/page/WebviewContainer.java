@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbkk;
+import bdje;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager.a;
 import com.tencent.mobileqq.microapp.apkg.f;
@@ -82,7 +82,7 @@ public class WebviewContainer
   
   private String getActualColor(String paramString)
   {
-    if (bbkk.a(paramString)) {
+    if (bdje.a(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -408,7 +408,7 @@ public class WebviewContainer
     if (localLayoutParams == null) {
       localObject2 = new FrameLayout.LayoutParams(-2, -2);
     }
-    if ((bbkk.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https")))) {}
+    if ((bdje.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https")))) {}
     for (;;)
     {
       try
@@ -437,7 +437,7 @@ public class WebviewContainer
       this.componentLayout.addView((View)localObject1, paramJSONObject);
       return;
       paramString2 = this.appBrandRuntime.c.j(paramString2);
-      if (!bbkk.a(paramString2)) {
+      if (!bdje.a(paramString2)) {
         ((CoverImageView)localObject1).setImageBitmap(com.tencent.mobileqq.microapp.b.a.i(paramString2));
       }
     }
@@ -506,7 +506,7 @@ public class WebviewContainer
       localObject2 = new FrameLayout.LayoutParams(-2, -2);
     }
     localObject3 = paramJSONObject.optJSONObject("style");
-    if ((localObject3 != null) && (!bbkk.a(getActualColor(((JSONObject)localObject3).optString("bgColor")))))
+    if ((localObject3 != null) && (!bdje.a(getActualColor(((JSONObject)localObject3).optString("bgColor")))))
     {
       ((CoverView)localObject1).setBackgroundColor(Color.parseColor(getActualColor(((JSONObject)localObject3).optString("bgColor"))));
       ((CoverView)localObject1).setScaleX(Float.parseFloat(((JSONObject)localObject3).optString("scaleX")));
@@ -520,7 +520,7 @@ public class WebviewContainer
     localObject3 = paramJSONObject.optJSONObject("label");
     if (localObject3 != null)
     {
-      if (!bbkk.a(((JSONObject)localObject3).optString("color"))) {
+      if (!bdje.a(((JSONObject)localObject3).optString("color"))) {
         ((CoverView)localObject1).setTextColor(Color.parseColor(getActualColor(((JSONObject)localObject3).optString("color"))));
       }
       ((CoverView)localObject1).setTextSize(1, ((JSONObject)localObject3).optInt("fontSize"));
@@ -531,7 +531,7 @@ public class WebviewContainer
     }
     for (;;)
     {
-      if (!bbkk.a(((JSONObject)localObject3).optString("content"))) {
+      if (!bdje.a(((JSONObject)localObject3).optString("content"))) {
         ((CoverView)localObject1).setText(((JSONObject)localObject3).optString("content"));
       }
       if ("bold".equals(((JSONObject)localObject3).optString("fontWeight"))) {
@@ -811,7 +811,7 @@ public class WebviewContainer
   public void updateImageView(JSONObject paramJSONObject, int paramInt, String paramString, boolean paramBoolean)
   {
     CoverImageView localCoverImageView = (CoverImageView)this.imageViewSparseArray.get(paramInt);
-    if ((localCoverImageView == null) || ((bbkk.a(paramString)) || ((paramString.startsWith("http")) || (paramString.startsWith("https"))))) {}
+    if ((localCoverImageView == null) || ((bdje.a(paramString)) || ((paramString.startsWith("http")) || (paramString.startsWith("https"))))) {}
     for (;;)
     {
       try
@@ -839,7 +839,7 @@ public class WebviewContainer
       localCoverImageView.setLayoutParams(paramJSONObject);
       return;
       paramString = this.appBrandRuntime.c.j(paramString);
-      if (!bbkk.a(paramString)) {
+      if (!bdje.a(paramString)) {
         localCoverImageView.setImageBitmap(com.tencent.mobileqq.microapp.b.a.i(paramString));
       }
     }
@@ -901,7 +901,7 @@ public class WebviewContainer
         ((FrameLayout.LayoutParams)localObject).topMargin = paramInt;
       }
       paramJSONObject = paramJSONObject.optString("filePath");
-      if (!bbkk.a(paramJSONObject))
+      if (!bdje.a(paramJSONObject))
       {
         localMiniAppVideoPlayer.a(paramJSONObject.replace("https:", "http:"));
         if (localMiniAppVideoPlayer.i) {
@@ -913,7 +913,7 @@ public class WebviewContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer
  * JD-Core Version:    0.7.0.1
  */

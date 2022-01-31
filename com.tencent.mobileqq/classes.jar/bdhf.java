@@ -1,31 +1,28 @@
-public class bdhf
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+
+class bdhf
+  implements TextWatcher
 {
-  private android.webkit.CookieManager jdField_a_of_type_AndroidWebkitCookieManager = android.webkit.CookieManager.getInstance();
-  private com.tencent.smtt.sdk.CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager = com.tencent.smtt.sdk.CookieManager.getInstance();
+  bdhf(bdhc parambdhc, int paramInt) {}
   
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie(paramString1, paramString2);
-    }
-    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieManager.setCookie(paramString1, paramString2);
-    }
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void a(boolean paramBoolean)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(paramBoolean);
-    }
-    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieManager.setAcceptCookie(paramBoolean);
+    if ((this.jdField_a_of_type_Bdhc.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
+    {
+      this.jdField_a_of_type_Bdhc.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      this.jdField_a_of_type_Bdhc.a.setSelection(this.jdField_a_of_type_Int - 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhf
  * JD-Core Version:    0.7.0.1
  */

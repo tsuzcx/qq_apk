@@ -1,159 +1,121 @@
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
 class argx
-  implements arfr
+  extends ypt
 {
-  argx(args paramargs) {}
+  argx(argq paramargq, argd paramargd) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    if ((args.a(this.a).isFinishing()) && (!this.a.jdField_a_of_type_Boolean)) {}
+    if (this.jdField_a_of_type_Argd == null) {}
+    Object localObject;
+    label612:
     do
     {
-      return;
-      if ((!args.a(this.a)) || (this.a.jdField_a_of_type_Boolean)) {
-        break;
-      }
-    } while ((paramInt != 8) && (paramInt != 7));
-    args.a(this.a).finish();
-    this.a.jdField_a_of_type_Bcqf.dismiss();
-    return;
-    args.a(this.a, paramInt);
-    args.a(this.a).setVisibility(8);
-    args.a(this.a).setVisibility(8);
-    args.a(this.a).setVisibility(8);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      args.a(this.a).setVisibility(4);
-      args.a(this.a, paramBundle.getLong("key_totalSize", 0L));
-      if (args.b(this.a))
+      do
       {
-        args.a(this.a).setVisibility(0);
-        args.a(this.a).setVisibility(0);
-        args.a(this.a).setText(ajya.a(2131705666));
-        localObject = ajya.a(2131705669);
-        paramBundle = (Bundle)localObject;
-        if (args.a(this.a) != 0L) {
-          paramBundle = (String)localObject + "(" + arex.a(args.a(this.a)) + ")";
-        }
-        args.a(this.a).setText(paramBundle);
-        args.a(this.a).setOnClickListener(new argy(this));
-      }
-      Log.i("huiyin.loading", "checkVersion? " + args.b(this.a) + "checkversion ok " + args.a(this.a));
-      return;
-    case 1: 
-      args.a(this.a).setVisibility(0);
-      paramInt = paramBundle.getInt("key_progress", 0);
-      args.a(this.a, paramBundle.getLong("key_totalSize", 0L));
-      args.a(this.a).setProgress(paramInt);
-      paramBundle = arex.a(args.a(this.a) * paramInt / 100L);
-      localObject = arex.a(args.a(this.a));
-      args.b(this.a).setText(paramBundle + "/" + (String)localObject);
-      Log.i("huiyin.loading", "downloading... " + paramInt);
-      return;
-    case 2: 
-      args.a(this.a).setVisibility(0);
-      args.b(this.a).setText(ajya.a(2131705670));
-      paramBundle = Message.obtain();
-      paramBundle.arg1 = 10;
-      args.a(this.a).sendMessage(paramBundle);
-      Log.i("huiyin.loading", "download complete");
-      if (args.b(this.a) != 0L)
-      {
-        localObject = args.a(this.a).opType("huiyin").opName("plugin_download_loading_view");
-        if (!bbfj.h(args.a(this.a).getApplicationContext())) {
-          break label670;
-        }
-      }
-      for (paramBundle = "3";; paramBundle = "2")
-      {
-        ((IVPluginDataReporter)localObject).d1(paramBundle).d2(String.valueOf(System.currentTimeMillis() - args.b(this.a))).d3(String.valueOf(this.a.jdField_a_of_type_Boolean)).report();
-        arhj.a.a(50, null);
+        do
+        {
+          return;
+          if (paramDownloadFileRspBody == null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.e("TroopFileModel<FileAssistant>", 4, "error DownloadFileRspBody is null!!!!!");
+            }
+            this.jdField_a_of_type_Argd.c();
+            return;
+          }
+          long l = paramBundle.getLong("troopUin");
+          localObject = TroopFileTransferManager.a(l);
+          if (localObject == null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.e("TroopFileModel<FileAssistant>", 4, "bad troopUin" + l);
+            }
+            this.jdField_a_of_type_Argd.c();
+            return;
+          }
+          paramBundle = paramBundle.getString("itemKey");
+          if (paramBundle == null)
+          {
+            this.jdField_a_of_type_Argd.c();
+            return;
+          }
+          localObject = ((TroopFileTransferManager)localObject).a(UUID.fromString(paramBundle));
+          if (localObject == null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.e("TroopFileModel<FileAssistant>", 4, "bad item key" + paramBundle);
+            }
+            this.jdField_a_of_type_Argd.c();
+            return;
+          }
+          paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+          if (QLog.isDevelopLevel()) {
+            QLog.e("TroopFileModel<FileAssistant>", 4, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+          }
+          ((TroopFileTransferManager.Item)localObject).cookieValue = bdcv.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+          if (((TroopFileTransferManager.Item)localObject).cookieValue != null) {
+            ((TroopFileTransferManager.Item)localObject).cookieValue = ((TroopFileTransferManager.Item)localObject).cookieValue.toLowerCase();
+          }
+          ((TroopFileTransferManager.Item)localObject).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+          ((TroopFileTransferManager.Item)localObject).DownloadUrl = bdcv.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+          ((TroopFileTransferManager.Item)localObject).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+          ((TroopFileTransferManager.Item)localObject).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+          if ((paramInt != -133) && (paramInt != -132) && (paramInt != -134)) {
+            break;
+          }
+          this.jdField_a_of_type_Argd.c();
+        } while (!QLog.isDevelopLevel());
+        QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
         return;
-      }
-    case 3: 
-      arhj.a.a(41, null);
-      args.a(this.a).setVisibility(4);
-      args.a(this.a).setVisibility(0);
-      localObject = ajya.a(2131705668);
-      paramBundle = (Bundle)localObject;
-      if (args.a(this.a) != 0L) {
-        paramBundle = (String)localObject + "(" + arex.a(args.a(this.a)) + ")";
-      }
-      args.a(this.a).setText(paramBundle);
-      if (!bbfj.g(args.a(this.a).getApplicationContext()))
+        if ((paramInt != -103) && (paramInt != -301)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
+      return;
+      paramDownloadFileRspBody = arcy.a(((TroopFileTransferManager.Item)localObject).DownloadIp, ((TroopFileTransferManager.Item)localObject).DownloadUrl, ((TroopFileTransferManager.Item)localObject).FilePath, ((TroopFileTransferManager.Item)localObject).cookieValue, "");
+      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
       {
-        args.a(this.a).setVisibility(0);
-        args.a(this.a).setText(ajya.a(2131705663));
+        this.jdField_a_of_type_Argd.a(paramDownloadFileRspBody, ((TroopFileTransferManager.Item)localObject).cookieValue);
+        if (QLog.isColorLevel()) {
+          QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
+        }
+        if (this.jdField_a_of_type_Argq.a.a() != null)
+        {
+          paramDownloadFileRspBody = String.valueOf(this.jdField_a_of_type_Argq.a.a().TroopUin);
+          if (this.jdField_a_of_type_Argq.a.a() == null) {
+            break label612;
+          }
+        }
+        for (paramBundle = arni.b(this.jdField_a_of_type_Argq.a.a().nFileType);; paramBundle = "unknow")
+        {
+          azmj.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
+          return;
+          paramDownloadFileRspBody = "";
+          break;
+        }
       }
-      args.a(this.a).opType("huiyin").opName("download_result").d1("1").d2(String.valueOf(bbfj.a(args.a(this.a).getApplicationContext()))).report();
-      args.a(this.a).setOnClickListener(new argz(this));
-      Log.i("huiyin.loading", "download fail");
-      return;
-    case 5: 
-    case 7: 
-      args.a(this.a).setVisibility(4);
-      localObject = ajya.a(2131705662);
-      paramBundle = (Bundle)localObject;
-      if (args.a(this.a) != 0L) {
-        paramBundle = (String)localObject + "(" + arex.a(args.a(this.a)) + ")";
-      }
-      args.a(this.a).setText(paramBundle);
-      args.a(this.a).setOnClickListener(new arha(this));
-      Log.i("huiyin.loading", "preload or load fail");
-      args.a(this.a).opType("huiyin").opName("launch_result").d1("1").report();
-      arhj.a.a(51, null);
-      return;
-    case 4: 
-      args.a(this.a).setVisibility(0);
-      args.b(this.a).setText(ajya.a(2131705667));
-      return;
-    case 6: 
-      args.a(this.a).setVisibility(0);
-      args.b(this.a, 90);
-      args.a(this.a).setProgress(90);
-      args.b(this.a).setText(ajya.a(2131705664));
-      Log.i("huiyin.loading", "load complete");
-      return;
-    case 9: 
-      label670:
-      if (this.a.jdField_a_of_type_Bcqf != null) {
-        this.a.jdField_a_of_type_Bcqf.dismiss();
-      }
-      args.a(this.a).finish();
-      arhj.a.a(61, null);
-      return;
-    }
-    args.a(this.a).setVisibility(0);
-    args.b(this.a, 100);
-    args.a(this.a).setProgress(100);
-    Log.i("huiyin.loading", "launch complete");
-    args.a(this.a).finish();
-    Object localObject = args.a(this.a).opType("huiyin").opName("launch_result").d1("0").d2(String.valueOf(System.currentTimeMillis() - args.c(this.a)));
-    if (this.a.jdField_a_of_type_Boolean) {}
-    for (paramBundle = "1";; paramBundle = "2")
-    {
-      ((IVPluginDataReporter)localObject).d4(paramBundle).report();
-      arhj.a.a(60, String.valueOf(System.currentTimeMillis() - args.c(this.a)));
-      return;
-    }
+      this.jdField_a_of_type_Argd.c();
+    } while (!QLog.isColorLevel());
+    QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argx
  * JD-Core Version:    0.7.0.1
  */

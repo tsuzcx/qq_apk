@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import smd;
+import tiz;
 
 public class WSPushOpModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushOpModel> CREATOR = new smd();
+  public static final Parcelable.Creator<WSPushOpModel> CREATOR = new tiz();
   public int a;
   public String a;
   
@@ -46,7 +46,7 @@ public class WSPushOpModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushOpModel
  * JD-Core Version:    0.7.0.1
  */

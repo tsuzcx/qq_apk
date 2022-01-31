@@ -1,15 +1,12 @@
-import com.tencent.widget.SingleLineTextView;
+import android.os.Bundle;
 
-public class aiqp
-  extends aipm
+public abstract interface aiqp
 {
-  public SingleLineTextView a;
-  public Object a;
-  public SingleLineTextView b;
+  public abstract void a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiqp
  * JD-Core Version:    0.7.0.1
  */

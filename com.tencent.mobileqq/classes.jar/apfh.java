@@ -1,19 +1,30 @@
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public class apfh
-  extends apfo
+class apfh
 {
-  public apfh(ViewGroup paramViewGroup)
+  apfh(apfg paramapfg) {}
+  
+  @QQPermissionDenied(1818)
+  public void denied()
   {
-    this.jdField_a_of_type_Int = 2131560477;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
-    a();
+    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
+    apfg.a(this.a);
+    this.a.onGetError(1830001);
+  }
+  
+  @QQPermissionGrant(1818)
+  public void grant()
+  {
+    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
+    apfg.a(this.a);
+    apfg.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apfh
  * JD-Core Version:    0.7.0.1
  */

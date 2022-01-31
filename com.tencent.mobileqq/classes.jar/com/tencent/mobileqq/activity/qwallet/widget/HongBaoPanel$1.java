@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import acvf;
+import aemp;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class HongBaoPanel$1
-  implements acvf
+  implements aemp
 {
   HongBaoPanel$1(HongBaoPanel paramHongBaoPanel) {}
   
@@ -21,7 +21,7 @@ class HongBaoPanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel.1
  * JD-Core Version:    0.7.0.1
  */

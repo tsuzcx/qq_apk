@@ -1,5 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
+import aais;
+import aait;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.api.adbox.GdtAdBoxData;
@@ -10,8 +12,6 @@ import com.tencent.qqmini.sdk.core.proxy.AdProxy.ICmdListener;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ytb;
-import ytc;
 
 class AdProxyImpl$SDKBoxAdView$1
   implements AdProxy.ICmdListener
@@ -56,7 +56,7 @@ class AdProxyImpl$SDKBoxAdView$1
         this.this$1.mBoxListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
         return;
         label164:
-        this.this$1.mGdtBoxView = ytb.a(this.val$activity).a(new GdtAdBoxData(paramJSONObject)).a(new AdProxyImpl.SDKBoxAdView.1.1(this)).a();
+        this.this$1.mGdtBoxView = aais.a(this.val$activity).a(new GdtAdBoxData(paramJSONObject)).a(new AdProxyImpl.SDKBoxAdView.1.1(this)).a();
         if (this.this$1.mGdtBoxView != null)
         {
           if (this.this$1.mBoxListener != null) {
@@ -86,7 +86,7 @@ class AdProxyImpl$SDKBoxAdView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBoxAdView.1
  * JD-Core Version:    0.7.0.1
  */

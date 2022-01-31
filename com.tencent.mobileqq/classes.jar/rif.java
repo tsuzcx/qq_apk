@@ -1,20 +1,24 @@
-public abstract class rif
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+
+class rif
+  extends AnimatorListenerAdapter
 {
-  private static int a = 7;
+  rif(ric paramric, rbt paramrbt) {}
   
-  public static int a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return a;
+    this.jdField_a_of_type_Ric.b(this.jdField_a_of_type_Rbt);
   }
   
-  public static void a(int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    a = paramInt;
+    ric.a(this.jdField_a_of_type_Ric).setRepeatCount(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rif
  * JD-Core Version:    0.7.0.1
  */

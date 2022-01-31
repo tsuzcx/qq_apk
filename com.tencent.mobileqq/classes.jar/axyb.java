@@ -1,66 +1,59 @@
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.content.SharedPreferences;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class axyb
-  implements acui
+public class axyb
+  implements Observer
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  boolean jdField_a_of_type_Boolean;
-  TextView b;
+  public axyb(SignTextEditFragment paramSignTextEditFragment) {}
   
-  private void a(boolean paramBoolean)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    Drawable localDrawable = this.a.getBackground();
-    if (localDrawable != null) {
-      if (!paramBoolean) {
-        break label28;
+    if (!SignTextEditFragment.a(this.a).get()) {}
+    do
+    {
+      return;
+      SignTextEditFragment.a(this.a).set(false);
+    } while (!(paramObject instanceof Integer));
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    case 3: 
+      paramObservable = axzn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+      if ((paramObservable != null) && (!TextUtils.isEmpty(paramObservable.a)) && (Integer.parseInt(paramObservable.a) > 0) && (paramObservable.f < 2)) {
+        if (BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "new_signature_version_826", true)) {
+          bdkd.a(this.a.getActivity(), this.a.getActivity().app, 0, "signature_chouti");
+        }
+      }
+      for (;;)
+      {
+        axzn.a().deleteObserver(this.a.jdField_a_of_type_JavaUtilObserver);
+        return;
+        this.a.a(100, SignTextEditFragment.a(this.a));
       }
     }
-    label28:
-    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
-    {
-      localDrawable.setColorFilter(localColorFilter);
-      localDrawable.invalidateSelf();
-      return;
+    if (BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "new_signature_version_826", true)) {
+      bdkd.a(this.a.getActivity(), this.a.getActivity().app, 0, "signature_chouti");
     }
-  }
-  
-  public void a(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
+    for (;;)
     {
-    case 2: 
-    default: 
-    case 1: 
-    case 3: 
-      do
-      {
-        return;
-        paramView = this.a.getBackground();
-      } while (paramView == null);
-      paramView.setColorFilter(null);
-      paramView.invalidateSelf();
+      axzn.a().deleteObserver(this.a.jdField_a_of_type_JavaUtilObserver);
       return;
+      this.a.a(100, SignTextEditFragment.a(this.a));
     }
-    a(false);
-  }
-  
-  public void a(View paramView, boolean paramBoolean)
-  {
-    a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axyb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.google.android.filament;
 
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.Size;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.Size;
 
 public class View
 {
@@ -64,6 +64,8 @@ public class View
   private static native void nSetName(long paramLong, String paramString);
   
   private static native void nSetPostProcessingEnabled(long paramLong, boolean paramBoolean);
+  
+  private static native void nSetRenderFlag(long paramLong, byte paramByte);
   
   private static native void nSetRenderQuality(long paramLong, int paramInt);
   
@@ -281,6 +283,11 @@ public class View
     nSetPostProcessingEnabled(getNativeObject(), paramBoolean);
   }
   
+  public void setRenderFlag(byte paramByte)
+  {
+    nSetRenderFlag(getNativeObject(), paramByte);
+  }
+  
   public void setRenderQuality(@NonNull View.RenderQuality paramRenderQuality)
   {
     this.mRenderQuality = paramRenderQuality;
@@ -339,7 +346,7 @@ public class View
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.View
  * JD-Core Version:    0.7.0.1
  */

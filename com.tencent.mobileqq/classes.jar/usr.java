@@ -1,37 +1,36 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.List;
 
 class usr
-  extends JobSegment<Integer, uvu>
+  implements uni<uss, ust>
 {
-  private uvt a;
+  private usr(usp paramusp) {}
   
-  public usr(@NonNull uvt paramuvt)
+  public void a(@NonNull uss paramuss, @Nullable ust paramust, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a = paramuvt;
-  }
-  
-  protected void a(JobContext paramJobContext, Integer paramInteger)
-  {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((uvu)localObject).a.size() > 0) || (((uvu)localObject).b))
+    if ((paramust != null) && (paramust.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
     {
-      ved.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramust.jdField_a_of_type_JavaUtilList);
+      wsv.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramust.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramust.jdField_a_of_type_Boolean), paramust.jdField_a_of_type_JavaLangString });
+      if ((paramust.jdField_a_of_type_Boolean) || (paramust.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        wsv.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramust.b) });
+        this.a.a(true, paramust.b);
+        return;
+      }
+      this.a.c = paramust.jdField_a_of_type_JavaLangString;
+      this.a.c();
       return;
     }
-    localObject = new tmq();
-    ((tmq)localObject).a = this.a.a();
-    ((tmq)localObject).b = QQStoryContext.a().b();
-    syo.a().a((sys)localObject, new uss(this, paramJobContext, paramInteger));
+    wsv.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
+    this.a.a(false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usr
  * JD-Core Version:    0.7.0.1
  */

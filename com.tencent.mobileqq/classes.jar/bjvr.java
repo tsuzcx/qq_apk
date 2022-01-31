@@ -1,27 +1,41 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDTextFace.1;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.Map;
 
 public class bjvr
-  implements View.OnTouchListener
 {
-  public bjvr(EditVideoDTextFace.1 param1) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private static Map<Integer, Long> a(long paramLong)
   {
-    if (1 == paramMotionEvent.getAction())
-    {
-      bjvq.a(this.a.this$0);
-      vei.a("video_edit_text", "clk_textWording", 0, 0, new String[] { this.a.this$0.a, "", "", "" });
+    Map localMap = bjse.a(LocalMultiProcConfig.getString("CTIME_MAP" + paramLong, ""));
+    if (!localMap.containsKey(Integer.valueOf(0))) {
+      localMap.put(Integer.valueOf(0), Long.valueOf(0L));
     }
-    this.a.this$0.d();
-    return false;
+    return localMap;
+  }
+  
+  public static Map<Integer, Long> a(Long paramLong)
+  {
+    return a(paramLong.longValue());
+  }
+  
+  public static void a(Integer paramInteger, Long paramLong)
+  {
+    Map localMap = a(paramLong);
+    localMap.put(paramInteger, Long.valueOf(System.currentTimeMillis() / 1000L));
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePersonalizeH5Service", 2, "updateCTime: " + paramInteger + "timestamp: " + System.currentTimeMillis() / 1000L);
+    }
+    a(localMap, paramLong);
+  }
+  
+  public static void a(Map<Integer, Long> paramMap, Long paramLong)
+  {
+    LocalMultiProcConfig.putString("CTIME_MAP" + paramLong, bjse.a(paramMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjvr
  * JD-Core Version:    0.7.0.1
  */

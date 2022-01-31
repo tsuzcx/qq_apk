@@ -108,7 +108,7 @@ public class RequestDataTrans
         localTransaction.mTransReport.connNum = paramRequestWorker.engine.mConnManager.getCurrentConnNum();
         TransReport localTransReport = localTransaction.mTransReport;
         if (this.protoType != 1) {
-          break label451;
+          break label442;
         }
         localObject = "TCP";
         localTransReport.protoType = ((String)localObject);
@@ -118,52 +118,48 @@ public class RequestDataTrans
         localTransaction.mTransReport.netIpType = paramRequestWorker.mCurnetIptype;
       }
       if (paramHwResponse.retCode != 0) {
-        break label689;
+        break label680;
       }
       if (paramHwResponse.segmentResp.uint32_flag.has()) {
         if ((paramHwResponse.segmentResp.uint32_flag.get() & 0x1) != 1) {
-          break label459;
+          break label450;
         }
       }
     }
-    label451:
-    label459:
+    label442:
+    label450:
     for (boolean bool = true;; bool = false)
     {
       paramHwResponse.isFinish = bool;
       checkCacheIp(paramHwResponse, this.mInfo.parent);
-      if (paramHwResponse.mBuCmdId != 25) {
-        break label648;
-      }
       if (this.mInfo.bitmapS == 0) {
         localTransaction.mTransReport.firstRange = paramHwResponse.range;
       }
       if (!paramHwResponse.needReUpload) {
-        break label556;
+        break label547;
       }
       if (localTransaction.reUploadTransaction) {
-        break label464;
+        break label455;
       }
       localTransaction.onTransReUpload(getHwSeq());
       return;
       localObject = "HTTP";
       break;
     }
-    label464:
+    label455:
     BdhLogUtil.LogEvent("T", "B_ID:" + localTransaction.mBuzCmdId + "\tT_ID:" + localTransaction.getTransationId() + " ReUpload twice,transaction fail");
     localTransaction.TRACKER.logStep("REUPLOAD", "ReUpload twice");
     localTransaction.onTransFailed(9304, "ReUpload twice", paramHwResponse.retCode, paramHwResponse.buzRetCode, this.retryCount, paramHwResponse.mBuExtendinfo);
     return;
-    label556:
+    label547:
     if ((paramHwResponse.range > localTransaction.transferedSizeBDH) && (getHwSeq() > localTransaction.reUploadHwSeq))
     {
       if (paramHwResponse.range <= localTransaction.totalLength) {
-        break label669;
+        break label660;
       }
       BdhLogUtil.LogEvent("T", "B_ID:" + localTransaction.mBuzCmdId + "\tT_ID:" + localTransaction.getTransationId() + " ReturnServerRangeError");
     }
-    label648:
-    label669:
+    label660:
     for (localTransaction.transferedSizeBDH = 0; paramHwResponse.isFinish; localTransaction.transferedSizeBDH = paramHwResponse.range)
     {
       localTransaction.onTransSuccess(this.mInfo, paramHwResponse.mBuExtendinfo);
@@ -171,7 +167,7 @@ public class RequestDataTrans
     }
     localTransaction.onTransProgress(this, paramHwResponse);
     return;
-    label689:
+    label680:
     BdhLogUtil.LogEvent("R", "HandleResp : RespError :" + dumpBaseInfo());
     Object localObject = localTransaction.mTransReport;
     if (this.protoType == 1) {}

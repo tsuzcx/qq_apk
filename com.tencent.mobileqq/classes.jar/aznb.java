@@ -1,31 +1,53 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 class aznb
-  extends aznh
 {
-  aznb(azna paramazna) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public aznb(long paramLong, String paramString1, String paramString2)
   {
-    if (!this.a.a.this$0.a) {}
-    do
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    int i;
+    if (paramString1 == null)
     {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
+      i = 0;
+      if (paramString2 != null) {
+        break label67;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
-    return;
-    azmw.a(this.a.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = (j + (i + 19 + 1) + 1);
+      return;
+      i = paramString1.getBytes().length;
+      break;
+      label67:
+      j = paramString2.getBytes().length;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    Date localDate = new Date(this.jdField_a_of_type_Long);
+    localStringBuilder.append(azmz.a().format(localDate));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aznb
  * JD-Core Version:    0.7.0.1
  */

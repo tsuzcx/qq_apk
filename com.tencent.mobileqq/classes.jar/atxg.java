@@ -1,14 +1,21 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class atxg
+class atxg
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public atxg a;
-  public List<atxg> a;
+  atxg(atxe paramatxe, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atxg
  * JD-Core Version:    0.7.0.1
  */

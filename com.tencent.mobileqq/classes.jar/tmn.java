@@ -1,63 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetLocation;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class tmn
-  extends sys<toh>
 {
-  private static final String a = sxm.a("StorySvc.get_location");
-  public final int c;
-  public final int d;
-  public final int e;
-  
-  public tmn(int paramInt1, int paramInt2, int paramInt3)
+  @NonNull
+  public static tmi a(String paramString, tmj paramtmj)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-  }
-  
-  public String a()
-  {
-    return a;
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetLocation localRspGetLocation = new qqstory_service.RspGetLocation();
-    try
-    {
-      localRspGetLocation.mergeFrom(paramArrayOfByte);
-      return new toh(localRspGetLocation);
+    if (TextUtils.equals(paramString, "recommend_tab")) {
+      return new tns(paramtmj);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+    if (TextUtils.equals(paramString, "follow_tab")) {
+      return new tno(paramtmj);
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetLocation localReqGetLocation = new qqstory_service.ReqGetLocation();
-    localReqGetLocation.coordinate.set(this.c);
-    localReqGetLocation.gps.lng.set(this.d);
-    localReqGetLocation.gps.lat.set(this.e);
-    localReqGetLocation.gps.setHasFlag(true);
-    return localReqGetLocation.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetLocationRequest{mCoordinate=" + this.c + ", mLng=" + this.d + ", mLat=" + this.e + '}';
+    if ((TextUtils.equals(paramString, "mini_app_personal_main")) || (TextUtils.equals(paramString, "mini_app_personal_guest"))) {
+      return new tnq(paramtmj);
+    }
+    return new tns(paramtmj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmn
  * JD-Core Version:    0.7.0.1
  */

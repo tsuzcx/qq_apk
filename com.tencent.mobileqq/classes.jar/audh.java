@@ -1,40 +1,27 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder.UrlDownloadListener.1;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class audh
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnClickListener
 {
-  audh(audg paramaudg) {}
+  public audh(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a == null) || (paramURLDrawable == null) || (paramURLDrawable.getURL() == null)) {}
-    do
-    {
+    if (this.a.b == 2) {
+      MsgBackupCompleteFragment.d(this.a.getActivity(), this.a.c, this.a.d);
+    }
+    while (this.a.b != 3) {
       return;
-      paramThrowable = this.a.a.findViewWithTag(paramURLDrawable.getURL().toString());
-      if ((paramThrowable != null) && ((paramThrowable instanceof ImageView))) {
-        paramThrowable.post(new SearchSougouResultItemBuilder.UrlDownloadListener.1(this, paramThrowable));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "UrlDownloadListener image fail," + paramURLDrawable.getURL());
+    }
+    MsgBackupCompleteFragment.j(this.a.getActivity(), this.a.c, this.a.d);
   }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     audh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,12 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.os.Bundle;
 
-public class auyy
-  implements bble<Rect>
+public abstract interface auyy
 {
-  public auyy(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
-  
-  public void a(bbky<Rect> parambbky, float paramFloat, Rect paramRect, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-  }
+  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auyy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,74 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class axrp
+public class axrp
+  extends Handler
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  protected WeakReference<axrn> a;
   
-  public axrp(long paramLong, String paramString1, String paramString2)
+  public axrp(axrn paramaxrn1, Looper paramLooper, axrn paramaxrn2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    int i;
-    if (paramString1 == null)
-    {
-      i = 0;
-      if (paramString2 != null) {
-        break label67;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = (j + (i + 19 + 1) + 1);
-      return;
-      i = paramString1.getBytes().length;
-      break;
-      label67:
-      j = paramString2.getBytes().length;
-    }
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxrn2);
   }
   
-  public String toString()
+  public void handleMessage(Message paramMessage)
   {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    Date localDate = new Date(this.jdField_a_of_type_Long);
-    localStringBuilder.append(axrn.a().format(localDate));
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("\n");
-    return localStringBuilder.toString();
+    int i = paramMessage.what;
+    axrn localaxrn = (axrn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localaxrn == null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("HWVideoRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
+      }
+    }
+    label187:
+    do
+    {
+      do
+      {
+        return;
+        switch (i)
+        {
+        default: 
+          throw new RuntimeException("Unhandled msg what=" + i);
+        case 0: 
+          if (paramMessage.obj != null)
+          {
+            axrn.a(localaxrn, (axrq)paramMessage.obj);
+            return;
+          }
+          throw new RuntimeException("bundle == null");
+        case 1: 
+          if ((axrn.a(this.jdField_a_of_type_Axrn)) || (axrn.a(this.jdField_a_of_type_Axrn) == null) || (!axrn.a(this.jdField_a_of_type_Axrn).a)) {
+            break label187;
+          }
+          sendEmptyMessageDelayed(1, 100L);
+        }
+      } while ((!QLog.isColorLevel()) || (!QLog.isColorLevel()));
+      QLog.d("HWVideoRecorder", 2, "Thumbnail is not ready. Wait 100ms and retry.");
+      return;
+      axrn.a(localaxrn);
+      return;
+      if (paramMessage.obj != null)
+      {
+        paramMessage = (Object[])paramMessage.obj;
+        if ((paramMessage == null) || (paramMessage.length != 5)) {
+          throw new IllegalArgumentException("args == null || args.length != 6");
+        }
+        localaxrn.b(((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
+        return;
+      }
+      throw new RuntimeException("bundle == null");
+    } while (axrn.a(this.jdField_a_of_type_Axrn) == null);
+    axrn.a(this.jdField_a_of_type_Axrn).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axrp
  * JD-Core Version:    0.7.0.1
  */

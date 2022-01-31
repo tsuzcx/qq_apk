@@ -1,53 +1,43 @@
-import com.tencent.commonsdk.util.notification.NotificationLimiter;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfof
-  implements NotificationLimiter
+  extends bfnr
 {
-  private boolean a(int paramInt)
+  private List<String> a;
+  
+  public bfof()
   {
-    return (paramInt == 241) || (paramInt == 244) || (paramInt == 242) || (paramInt == 243);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public boolean shouldNotify(int paramInt)
+  public void a(String paramString)
   {
-    boolean bool2 = false;
-    if (a(paramInt)) {
-      return true;
-    }
-    boolean bool1;
-    if (aggl.a().a())
+    super.a(paramString);
+    try
     {
-      bool1 = bool2;
-      if (QLog.isColorLevel())
+      paramString = new JSONObject(paramString).getJSONArray(this.jdField_a_of_type_JavaLangString);
+      int j = paramString.length();
+      int i = 0;
+      while (i < j)
       {
-        QLog.i("NotificationLimiterImpl", 2, "MINI PROC FORE");
-        bool1 = bool2;
+        this.jdField_a_of_type_JavaUtilList.add(paramString.getString(i));
+        i += 1;
       }
+      return;
     }
-    for (;;)
+    catch (JSONException paramString)
     {
-      return bool1;
-      if (MiniChatActivity.a())
-      {
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("NotificationLimiterImpl", 2, "MiniMsgActForeGround");
-          bool1 = bool2;
-        }
-      }
-      else
-      {
-        bool1 = true;
-      }
+      paramString.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfof
  * JD-Core Version:    0.7.0.1
  */

@@ -59,11 +59,11 @@ public class MiniAIOEntryView
   
   public void initAppBrandRuntime()
   {
-    this.miniAIOEntryView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559275, null));
-    this.miniAIOIcon = ((ImageView)this.miniAIOEntryView.findViewById(2131370258));
-    this.miniAIOUnReadView = ((TextView)this.miniAIOEntryView.findViewById(2131370259));
+    this.miniAIOEntryView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559322, null));
+    this.miniAIOIcon = ((ImageView)this.miniAIOEntryView.findViewById(2131370555));
+    this.miniAIOUnReadView = ((TextView)this.miniAIOEntryView.findViewById(2131370556));
     if ("black".equals(this.style)) {
-      this.miniAIOIcon.setBackgroundResource(2130840689);
+      this.miniAIOIcon.setBackgroundResource(2130840799);
     }
     for (;;)
     {
@@ -73,7 +73,7 @@ public class MiniAIOEntryView
       localLayoutParams.rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
       addView(this.miniAIOEntryView, localLayoutParams);
       return;
-      this.miniAIOIcon.setBackgroundResource(2130840690);
+      this.miniAIOIcon.setBackgroundResource(2130840800);
     }
   }
   
@@ -108,9 +108,23 @@ public class MiniAIOEntryView
   
   public void onOpenMiniAIOCallback() {}
   
-  public void onPause() {}
+  public void onPause()
+  {
+    if (this.mMiniMsgUser != null)
+    {
+      this.mMiniMsgUser.hideEntry();
+      this.mMiniMsgUser.onBackground();
+    }
+  }
   
-  public void onResume() {}
+  public void onResume()
+  {
+    if (this.mMiniMsgUser != null)
+    {
+      this.mMiniMsgUser.showEntry();
+      this.mMiniMsgUser.onForeground();
+    }
+  }
   
   public void setStyle(String paramString)
   {
@@ -119,10 +133,10 @@ public class MiniAIOEntryView
     }
     if ("black".equals(paramString))
     {
-      this.miniAIOIcon.setBackgroundResource(2130840689);
+      this.miniAIOIcon.setBackgroundResource(2130840799);
       return;
     }
-    this.miniAIOIcon.setBackgroundResource(2130840690);
+    this.miniAIOIcon.setBackgroundResource(2130840800);
   }
   
   public boolean show(int paramInt)
@@ -160,7 +174,7 @@ public class MiniAIOEntryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.MiniAIOEntryView
  * JD-Core Version:    0.7.0.1
  */

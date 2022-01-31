@@ -1,57 +1,49 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class wlh
-  implements xgu<CertifiedAccountRead.StGetFeedListRsp>
+  implements uni<vbr, vbs>
 {
-  wlh(wlg paramwlg, wpk paramwpk) {}
+  wlh(wlg paramwlg, JobContext paramJobContext, AtomicBoolean paramAtomicBoolean, Integer paramInteger) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public void a(@NonNull vbr paramvbr, @Nullable vbs paramvbs, @NonNull ErrorMessage paramErrorMessage)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if ((paramBoolean) && (paramLong == 0L))
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      if ((!this.jdField_a_of_type_Wpk.c()) && (!this.jdField_a_of_type_Wpk.d())) {
-        break label122;
-      }
-      paramString = this.jdField_a_of_type_Wlg;
-      localList = paramStGetFeedListRsp.vecFeed.get();
-      localStCommonExt = paramStGetFeedListRsp.extInfo;
-      if (paramStGetFeedListRsp.isFinish.get() != 1) {
-        break label117;
-      }
-      paramBoolean = bool1;
-      paramString.a(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
-      this.jdField_a_of_type_Wlg.b("share_key_continue_feeds", new wpf(paramStGetFeedListRsp.vecFeed.get()));
-    }
-    label117:
-    label122:
-    while (!this.jdField_a_of_type_Wpk.e()) {
-      for (;;)
-      {
-        return;
-        paramBoolean = false;
-      }
-    }
-    paramString = this.jdField_a_of_type_Wlg;
-    List localList = paramStGetFeedListRsp.vecFeed.get();
-    COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
-    if (paramStGetFeedListRsp.isFinish.get() == 1) {}
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      paramString.b(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
+      wsv.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId pull segment cancel on net respond");
       return;
     }
+    if ((paramErrorMessage.isFail()) || (paramvbs == null))
+    {
+      wsv.a("Q.qqstory.home.data.HomeFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      wlg.a(this.jdField_a_of_type_Wlg, paramErrorMessage);
+      return;
+    }
+    wlg.a(this.jdField_a_of_type_Wlg);
+    wlg.a(this.jdField_a_of_type_Wlg).a(paramvbs.jdField_a_of_type_JavaUtilList, paramvbs.jdField_a_of_type_JavaLangString, paramvbs.jdField_a_of_type_Boolean);
+    ((wkp)urr.a(11)).a(paramvbs.jdField_a_of_type_JavaUtilList);
+    boolean bool = wlg.a(paramvbs, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+    wsv.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramvbs.b), Integer.valueOf(wlg.b(this.jdField_a_of_type_Wlg)), Boolean.valueOf(bool) });
+    if ((!paramvbs.jdField_a_of_type_Boolean) && (wlg.b(this.jdField_a_of_type_Wlg) < 10) && ((!paramvbs.b) || (bool)))
+    {
+      wsv.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId list not end, pull more");
+      paramvbr.b = wlg.a(this.jdField_a_of_type_Wlg).a();
+      ung.a().a(paramvbr, this);
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) {
+      wlg.a(this.jdField_a_of_type_Wlg).c();
+    }
+    paramvbr = wlg.a(this.jdField_a_of_type_Wlg).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    wlg.a(this.jdField_a_of_type_Wlg, paramvbr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wlh
  * JD-Core Version:    0.7.0.1
  */

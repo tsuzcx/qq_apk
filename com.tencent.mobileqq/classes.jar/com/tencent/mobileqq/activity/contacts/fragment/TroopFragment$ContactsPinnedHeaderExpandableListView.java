@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import ails;
+import akdd;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -37,15 +37,15 @@ public class TroopFragment$ContactsPinnedHeaderExpandableListView
   public void setChildViewCanAction(boolean paramBoolean)
   {
     ExpandableListAdapter localExpandableListAdapter = a();
-    if ((localExpandableListAdapter instanceof ails)) {
-      ((ails)localExpandableListAdapter).b(paramBoolean);
+    if ((localExpandableListAdapter instanceof akdd)) {
+      ((akdd)localExpandableListAdapter).b(paramBoolean);
     }
     this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.ContactsPinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajmu;
+import aleh;
 import com.tencent.mobileqq.data.ApolloActionData;
 
 public class ApolloDaoManager$3
   implements Runnable
 {
-  public ApolloDaoManager$3(ajmu paramajmu, int paramInt) {}
+  public ApolloDaoManager$3(aleh paramaleh, int paramInt) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ApolloDaoManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloDaoManager.3
  * JD-Core Version:    0.7.0.1
  */

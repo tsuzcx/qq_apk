@@ -1,30 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class auit
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public auit(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public auit(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    aujh.a(AutoReplyEditActivity.a(this.a), false);
-    String str = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
-    if (AutoReplyEditActivity.a(this.a) != null) {}
-    for (paramView = AutoReplyEditActivity.a(this.a).getRawText(); !str.equals(paramView); paramView = "")
-    {
-      AutoReplyEditActivity.a(this.a);
-      return;
-    }
-    AutoReplyEditActivity.a(this.a);
+    super.onAnimationCancel(paramAnimator);
+    MultiCardFragment.b(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    MultiCardFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auit
  * JD-Core Version:    0.7.0.1
  */

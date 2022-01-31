@@ -1,21 +1,25 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class augd
   implements View.OnClickListener
 {
-  public augd(PromotionEntry paramPromotionEntry, akyn paramakyn) {}
+  public augd(MultiAIOFragment paramMultiAIOFragment) {}
   
   public void onClick(View paramView)
   {
-    axqy.b(null, "CliOper", "", "", "0X8009C6B", "0X8009C6B", 0, 0, this.jdField_a_of_type_Akyn.a, "0", "0", "");
-    PromotionEntry.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry).b(this.jdField_a_of_type_Akyn);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "onClick() called with: v = [" + paramView + "]");
+    }
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augd
  * JD-Core Version:    0.7.0.1
  */

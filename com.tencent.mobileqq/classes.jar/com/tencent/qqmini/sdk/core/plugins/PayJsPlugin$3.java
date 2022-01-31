@@ -1,27 +1,62 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
+import android.content.Intent;
+import android.os.Bundle;
+import bgjd;
+import bgje;
+import bgkd;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class PayJsPlugin$3
-  implements PayJsPlugin.IStarQueryListener
+  implements bgje
 {
-  PayJsPlugin$3(PayJsPlugin paramPayJsPlugin, bekr parambekr) {}
+  PayJsPlugin$3(PayJsPlugin paramPayJsPlugin, bgkd parambgkd) {}
   
-  public void onResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramBoolean)
+    QMLog.d("PayJsPlugin", "yuki doOnActivityResult requestCode" + paramInt1 + " resultCode:" + paramInt2);
+    if (paramInt1 == 3003)
     {
-      PayJsPlugin.access$300(this.this$0, this.val$req, paramJSONObject);
-      return;
+      JSONObject localJSONObject = new JSONObject();
+      if (paramInt2 == -1)
+      {
+        paramIntent = paramIntent.getExtras();
+        if (paramIntent != null)
+        {
+          paramInt1 = paramIntent.getInt("errCode");
+          paramIntent = paramIntent.getString("errMsg");
+          try
+          {
+            localJSONObject.put("resultCode", paramInt1);
+            localJSONObject.put("resultMsg", paramIntent);
+            if (paramInt1 == 0)
+            {
+              this.val$req.a(localJSONObject);
+              bgjd.a().b(this);
+              return true;
+            }
+          }
+          catch (JSONException paramIntent)
+          {
+            for (;;)
+            {
+              paramIntent.printStackTrace();
+            }
+          }
+        }
+      }
+      this.val$req.b();
+      bgjd.a().b(this);
+      return true;
     }
-    paramJSONObject = paramJSONObject.optString("errMsg");
-    PayJsPlugin.access$200(this.this$0, this.val$req, null, paramJSONObject);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.PayJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

@@ -21,13 +21,15 @@ import java.util.List;
 
 public final class QQNotificationManager
 {
+  public static final String CHANNEL_ID_GROUP_MSG = "CHANNEL_ID_GROUP_MSG";
   public static final String CHANNEL_ID_HIDE_BADGE = "CHANNEL_ID_HIDE_BADGE";
   public static final String CHANNEL_ID_LIMIT_CHAT = "CHANNEL_ID_LIMIT_CHAT";
   public static final String CHANNEL_ID_OTHER = "CHANNEL_ID_OTHER";
   public static final String CHANNEL_ID_SHOW_BADGE = "CHANNEL_ID_SHOW_BADGE";
-  private static final CharSequence CHANNEL_NAME_HIDE_BADGE = "通知栏显示QQ图标";
-  private static final CharSequence CHANNEL_NAME_LIMIT_CHAT = "扩列消息";
-  private static final CharSequence CHANNEL_NAME_OTHER = "其它通知";
+  private static final CharSequence CHANNEL_NAME_GROUP_MSG = "群消息";
+  private static final CharSequence CHANNEL_NAME_HIDE_BADGE;
+  private static final CharSequence CHANNEL_NAME_LIMIT_CHAT;
+  private static final CharSequence CHANNEL_NAME_OTHER;
   private static final CharSequence CHANNEL_NAME_SHOW_BADGE;
   private static final String CHECK_OP_NO_THROW = "checkOpNoThrow";
   private static final String GROUP_ID_TOP = "GROUP_ID_TOP";
@@ -44,6 +46,9 @@ public final class QQNotificationManager
   static
   {
     CHANNEL_NAME_SHOW_BADGE = "普通消息";
+    CHANNEL_NAME_HIDE_BADGE = "通知栏显示QQ图标";
+    CHANNEL_NAME_LIMIT_CHAT = "扩列消息";
+    CHANNEL_NAME_OTHER = "其它通知";
   }
   
   private QQNotificationManager()
@@ -106,7 +111,7 @@ public final class QQNotificationManager
         paramCharSequence.setLockscreenVisibility(0);
         paramCharSequence.setBypassDnd(true);
         if (("CHANNEL_ID_SHOW_BADGE".equals(paramString1)) && (Build.VERSION.SDK_INT <= 28)) {
-          break label307;
+          break label316;
         }
         paramCharSequence.enableVibration(true);
         paramCharSequence.setVibrationPattern(new long[] { 100L, 200L, 200L, 100L });
@@ -117,9 +122,10 @@ public final class QQNotificationManager
         if (QLog.isColorLevel()) {
           QLog.i("QQNotification", 2, "NotificationChannel " + paramString1 + "canShowBadge " + paramCharSequence.canShowBadge());
         }
+        if ("CHANNEL_ID_GROUP_MSG".equals(paramString1)) {}
         this.mLocalManager.createNotificationChannel(paramCharSequence);
         return;
-        label307:
+        label316:
         paramCharSequence.enableVibration(false);
       }
     }
@@ -157,10 +163,11 @@ public final class QQNotificationManager
     if (SdkInfoUtil.isOreo())
     {
       createNotificationChannel("CHANNEL_ID_SHOW_BADGE", CHANNEL_NAME_SHOW_BADGE, 4, "GROUP_ID_TOP", true);
+      if (SdkInfoUtil.isAndroidQ()) {}
       createNotificationChannel("CHANNEL_ID_OTHER", CHANNEL_NAME_OTHER, 4, "GROUP_ID_TOP", false);
       checkAndDelQQCallChannel();
+      createNotificationChannel("CHANNEL_ID_HIDE_BADGE", CHANNEL_NAME_HIDE_BADGE, 2, "GROUP_ID_TOP", false);
     }
-    createNotificationChannel("CHANNEL_ID_HIDE_BADGE", CHANNEL_NAME_HIDE_BADGE, 2, "GROUP_ID_TOP", false);
   }
   
   private void initGroup()
@@ -234,6 +241,24 @@ public final class QQNotificationManager
       return true;
     }
     catch (ClassNotFoundException paramContext) {}
+  }
+  
+  public boolean c2cChannelVibrateOn()
+  {
+    NotificationChannel localNotificationChannel;
+    if (SdkInfoUtil.isAndroidQ())
+    {
+      localNotificationChannel = this.mLocalManager.getNotificationChannel("CHANNEL_ID_SHOW_BADGE");
+      if (QLog.isColorLevel()) {
+        QLog.d("QQNotification", 2, new Object[] { "c2cChannelVibrateOn: invoked. ", " channel: ", localNotificationChannel });
+      }
+      if (localNotificationChannel != null) {}
+    }
+    else
+    {
+      return false;
+    }
+    return localNotificationChannel.shouldVibrate();
   }
   
   public void cancel(String paramString, int paramInt)
@@ -340,35 +365,66 @@ public final class QQNotificationManager
     return localBundle;
   }
   
+  public boolean groupChannelVibrateOn()
+  {
+    NotificationChannel localNotificationChannel;
+    if (SdkInfoUtil.isAndroidQ())
+    {
+      localNotificationChannel = this.mLocalManager.getNotificationChannel("CHANNEL_ID_GROUP_MSG");
+      if (QLog.isColorLevel()) {
+        QLog.d("QQNotification", 2, new Object[] { "groupChannelVibrateOn: invoked. ", " channel: ", localNotificationChannel });
+      }
+      if (localNotificationChannel != null) {}
+    }
+    else
+    {
+      return false;
+    }
+    return localNotificationChannel.shouldVibrate();
+  }
+  
   public boolean isIdValid(String paramString, int paramInt)
   {
     boolean bool;
-    StringBuilder localStringBuilder;
-    if ((paramInt >= 232) && (paramInt <= 526))
+    Object localObject;
+    if ((paramInt >= 232) && (paramInt <= 527))
     {
       bool = true;
       if (QLog.isColorLevel())
       {
-        localStringBuilder = new StringBuilder().append(paramString).append(" notify id:").append(paramInt).append(" is ");
+        StringBuilder localStringBuilder = new StringBuilder().append(paramString).append(" notify id:").append(paramInt).append(" is ");
         if (!bool) {
-          break label81;
+          break label141;
+        }
+        localObject = "Valid";
+        label60:
+        QLog.i("QQNotification", 2, (String)localObject);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append(paramString).append(" studymode_fight.notify id:").append(paramInt).append(" is ");
+        if (!bool) {
+          break label149;
         }
       }
     }
-    label81:
+    label141:
+    label149:
     for (paramString = "Valid";; paramString = "InValid")
     {
       QLog.i("QQNotification", 2, paramString);
       return bool;
       bool = false;
       break;
+      localObject = "InValid";
+      break label60;
     }
   }
   
   public void notify(String paramString, int paramInt, Notification paramNotification)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QQNotification", 2, paramString + " notify DontUseTag id:" + paramInt + " " + paramNotification);
+      QLog.i("QQNotification", 2, paramString + " notify1 DontUseTag id:" + paramInt + " " + paramNotification);
     }
     if ((this.mLocalManager != null) && (isIdValid(paramString, paramInt)) && (NotificationLimiterUtil.shouldNotify(paramInt)))
     {
@@ -387,7 +443,7 @@ public final class QQNotificationManager
       if ((isIdValid(paramString, i)) && (NotificationLimiterUtil.shouldNotify(i)))
       {
         if (QLog.isColorLevel()) {
-          QLog.i("QQNotification", 2, paramString + " notify DontUseTag notifyId:" + i + " " + paramNotification);
+          QLog.i("QQNotification", 2, paramString + " notify2 DontUseTag notifyId:" + i + " " + paramNotification);
         }
         NotificationReportUtil.reportNotification(i, str, j);
         this.mLocalManager.notify(i, paramNotification);
@@ -413,7 +469,7 @@ public final class QQNotificationManager
       if ((isIdValid(paramString1, i)) && (NotificationLimiterUtil.shouldNotify(i)))
       {
         if (QLog.isColorLevel()) {
-          QLog.i("QQNotification", 2, paramString1 + " notify UseTag:" + paramString2 + " notifyId:" + i + " notification:" + paramNotification);
+          QLog.i("QQNotification", 2, paramString1 + " notify3 UseTag:" + paramString2 + " notifyId:" + i + " notification:" + paramNotification);
         }
         NotificationReportUtil.reportNotification(i, str, j);
         this.mLocalManager.notify(paramString2, i, paramNotification);

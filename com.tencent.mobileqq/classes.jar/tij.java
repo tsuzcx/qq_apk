@@ -1,110 +1,156 @@
+import UserGrowth.stNotificationRedDot;
+import UserGrowth.stRedDotMenu;
+import UserGrowth.stSchema;
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.util.Iterator;
+import java.util.List;
 
 public class tij
-  extends tin
+  extends tie<tiu>
 {
-  public static final String a;
-  public QQUserUIItem a;
-  private boolean a;
+  private List<stNotificationRedDot> a;
+  private List<stRedDotMenu> b;
   
-  static
+  private int a()
   {
-    jdField_a_of_type_JavaLangString = sxm.a(2131699686);
+    return tee.a().a();
   }
   
-  public tij(ViewGroup paramViewGroup)
+  private the a()
   {
-    super(paramViewGroup, 2131561301);
+    return new the(new tko(), null, new tik(this), 1001);
   }
   
-  protected String a(QQUserUIItem paramQQUserUIItem)
+  private void a(Context paramContext, stRedDotMenu paramstRedDotMenu, String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
-      return null;
-    }
-    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
-      return paramQQUserUIItem.nickName;
-    }
-    return paramQQUserUIItem.getDisplayName();
-  }
-  
-  protected void a(String paramString)
-  {
-    b(vzi.b(paramString));
-  }
-  
-  protected void a(String paramString, boolean paramBoolean, tff paramtff)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
-  }
-  
-  public void a(tff paramtff)
-  {
-    super.a(paramtff);
-    ved.a("FollowNodeViewHolder", "bindData %s", paramtff);
-    this.itemView.setTag(paramtff.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((tdl)tcz.a(2)).a(paramtff.jdField_a_of_type_JavaLangString, false);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    Object localObject2;
-    Object localObject1;
-    if (thv.h)
+    if ((paramstRedDotMenu != null) && (paramstRedDotMenu.schema != null))
     {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
+      paramstRedDotMenu = paramstRedDotMenu.schema;
+      if (paramstRedDotMenu.type == 1)
       {
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
+        if (paramInt2 == 1) {
+          tlv.c("homepage_main");
+        }
+        for (;;)
+        {
+          a(paramContext, paramstRedDotMenu.miniAppSchema);
+          return;
+          if (paramInt2 == 2) {
+            tlv.c("message");
+          }
+        }
       }
+      if (paramstRedDotMenu.type == 2)
+      {
+        a(paramContext, paramstRedDotMenu.schema, "", "", paramInt1);
+        return;
+      }
+      if (paramstRedDotMenu.type == 3)
+      {
+        tch.a(paramContext, paramstRedDotMenu.H5Url);
+        return;
+      }
+      tlo.d("WSHomeFragmentPresenter", "jumOtherPlatform other type：" + paramstRedDotMenu.type);
+      a(paramContext, paramString, "", "", paramInt1);
+      return;
     }
-    else
+    tlo.d("WSHomeFragmentPresenter", "jumOtherPlatform messageMenu is null");
+    a(paramContext, paramString, "", "", paramInt1);
+  }
+  
+  private void a(Context paramContext, String paramString)
+  {
+    MiniAppLauncher.startMiniApp(paramContext, paramString, 2003, new til(this));
+  }
+  
+  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    tlv.a(paramContext, paramString1, paramString2, paramString3, a(), new tim(this, paramContext, paramInt));
+  }
+  
+  public List<stRedDotMenu> a()
+  {
+    return this.b;
+  }
+  
+  public void a(Context paramContext)
+  {
+    Object localObject2 = a();
+    Object localObject1 = null;
+    if (localObject2 != null)
     {
-      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label194;
-      }
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = ajya.a(2131704680);
+      Iterator localIterator = ((List)localObject2).iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (stRedDotMenu)localIterator.next();
+        if (!TextUtils.equals("PersonalPage", ((stRedDotMenu)localObject2).menuKey)) {
+          break label70;
+        }
+        localObject1 = localObject2;
       }
     }
     for (;;)
     {
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject1 = jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramtff.c)) {
-          localObject1 = paramtff.c;
-        }
-        ved.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramtff.jdField_a_of_type_JavaLangString);
-        stb.a().dispatch(new tfe(paramtff.jdField_a_of_type_JavaLangString));
-        localObject2 = localObject1;
-      }
-      a((String)localObject2, this.jdField_a_of_type_Boolean, paramtff);
-      a(paramtff.g);
+      a(paramContext, localObject1, "weishi://profile?goto=myself", 603, 1);
       return;
-      bool = false;
+      label70:
       break;
-      label194:
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
+      localObject1 = null;
+    }
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    Object localObject2 = a();
+    Object localObject1 = null;
+    if (localObject2 != null)
+    {
+      Iterator localIterator = ((List)localObject2).iterator();
+      while (localIterator.hasNext())
       {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
+        localObject2 = (stRedDotMenu)localIterator.next();
+        if (!TextUtils.equals("Notification", ((stRedDotMenu)localObject2).menuKey)) {
+          break label74;
         }
+        localObject1 = localObject2;
       }
     }
+    for (;;)
+    {
+      a(paramContext, localObject1, "weishi://message?page=notifiaction", paramInt, 2);
+      return;
+      label74:
+      break;
+      localObject1 = null;
+    }
+  }
+  
+  public void a(List<stNotificationRedDot> paramList)
+  {
+    this.a = paramList;
+  }
+  
+  public List<stNotificationRedDot> b()
+  {
+    return this.a;
+  }
+  
+  public void c()
+  {
+    tgx.a().a(a());
+  }
+  
+  public void d()
+  {
+    the localthe = new the(new tkh(), null, new tin(this), 4008);
+    tgx.a().a(localthe);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tij
  * JD-Core Version:    0.7.0.1
  */

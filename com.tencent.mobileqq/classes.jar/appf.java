@@ -1,32 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-class appf
-  implements asgr
+public class appf
+  extends apow
 {
-  appf(appb paramappb) {}
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      } while (appb.a(this.a));
-      appb.b(this.a);
-      return;
-      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    } while (!appb.a(this.a));
-    appb.a(this.a);
-  }
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,57 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class ouw
-  extends BaseAdapter
+  implements ImageAssetDelegate
 {
-  private ouw(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  public ouw(ReadInJoyLottieDrawable.3 param3) {}
   
-  public ouv a(int paramInt)
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    return (ouv)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.a.getActivity()).inflate(2131562302, paramViewGroup, false);
-      paramView.setOnClickListener(new oux(this));
-    }
+    Object localObject = paramLottieImageAsset.getFileName();
+    paramLottieImageAsset = out.a(this.a.this$0, this.a.a, "images");
+    if (paramLottieImageAsset != null) {}
     for (;;)
     {
-      paramViewGroup = (ouv)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramView.setTag(Integer.valueOf(paramInt));
-      ((TextView)paramView).setText(paramViewGroup.a());
-      this.a.jdField_a_of_type_Ola.a("exp_subchannel", paramViewGroup);
-      return paramView;
+      paramLottieImageAsset = paramLottieImageAsset.getAbsolutePath() + "/" + (String)localObject;
+      localObject = (Bitmap)out.b().get(paramLottieImageAsset);
+      if (localObject == null) {
+        break;
+      }
+      return localObject;
+      paramLottieImageAsset = this.a.a[0];
     }
+    ThreadManager.excute(new ReadInJoyLottieDrawable.3.1.1(this, paramLottieImageAsset), 64, null, true);
+    try
+    {
+      localObject = BitmapFactory.decodeFile(paramLottieImageAsset);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation path: " + paramLottieImageAsset);
+      return null;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation oom: " + paramLottieImageAsset);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ouw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,22 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.7.1;
-import com.tencent.mobileqq.widget.QQVideoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class afaq
-  implements MediaPlayer.OnPreparedListener
+class afaq
+  extends atqq
 {
-  public afaq(BlessActivity paramBlessActivity) {}
+  afaq(afao paramafao) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void a() {}
+  
+  public void a(atlh paramatlh)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
+    if ((afao.a(this.a) != null) && (afao.a(this.a).equals(paramatlh)) && (afao.a(this.a) == afao.a(this.a).a().a())) {
+      afao.a(this.a).a().a();
     }
-    if (BlessActivity.a(this.a) != null) {
-      BlessActivity.a(this.a).start();
-    }
-    BlessActivity.a(this.a).postDelayed(new BlessActivity.7.1(this), 800L);
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
-    }
-    axqy.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afaq
  * JD-Core Version:    0.7.0.1
  */

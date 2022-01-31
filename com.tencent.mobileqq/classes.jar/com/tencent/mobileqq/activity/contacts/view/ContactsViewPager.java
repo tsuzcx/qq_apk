@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import axlk;
+import azgq;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class ContactsViewPager
@@ -92,7 +92,7 @@ public class ContactsViewPager
       if ((!this.jdField_a_of_type_Boolean) || (k <= m)) {
         break label259;
       }
-      if ((k * 0.5F <= i) || (this.jdField_a_of_type_Int <= (int)(axlk.jdField_a_of_type_Int * 0.1F))) {
+      if ((k * 0.5F <= i) || (this.jdField_a_of_type_Int <= (int)(azgq.jdField_a_of_type_Int * 0.1F))) {
         break label254;
       }
       j = 1;
@@ -159,7 +159,7 @@ public class ContactsViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.view.ContactsViewPager
  * JD-Core Version:    0.7.0.1
  */

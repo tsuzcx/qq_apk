@@ -1,122 +1,82 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.net.URL;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class nln
-  extends nli
+  implements INetInfoHandler
 {
-  private spa a;
-  public int d;
-  public String d;
-  public int e;
+  private nln(VideoCoverAdapter paramVideoCoverAdapter) {}
   
-  public static nln a(JSONObject paramJSONObject)
+  public void onNetMobile2None()
   {
-    if (paramJSONObject == null) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from mobile to none");
+    }
+    VideoCoverAdapter.a(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from mobile to wifi");
+    }
+    VideoCoverAdapter.a(this.a, false);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from none to mobile");
+    }
+    if (!VideoCoverAdapter.a(this.a))
     {
-      return null;
-      try
+      paramString = this.a.a();
+      if ((paramString != null) && (paramString.isPlaying()))
       {
-        nln localnln = new nln();
-        localnln.jdField_d_of_type_JavaLangString = paramJSONObject.optString("imageUrl");
-        localnln.jdField_d_of_type_Int = paramJSONObject.optInt("imageWidth");
-        localnln.e = paramJSONObject.optInt("imageHeight");
-        boolean bool = TextUtils.isEmpty(localnln.jdField_d_of_type_JavaLangString);
-        if (!bool) {
-          return localnln;
-        }
+        this.a.c();
+        this.a.d();
       }
-      catch (Exception paramJSONObject)
+      VideoCoverAdapter.a(this.a, true);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from none to wifi");
+    }
+    VideoCoverAdapter.a(this.a, false);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from wifi to mobile");
+    }
+    if (!VideoCoverAdapter.a(this.a))
+    {
+      paramString = this.a.a();
+      if ((paramString != null) && (paramString.isPlaying()))
       {
-        paramJSONObject.printStackTrace();
+        this.a.c();
+        this.a.d();
       }
-    }
-    return null;
-  }
-  
-  public View a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nla paramnla, boolean paramBoolean)
-  {
-    super.a(paramContext, paramString1, paramString2, paramString3, paramInt, paramnla, paramBoolean);
-    paramString1 = LayoutInflater.from(paramContext).inflate(2131559973, null);
-    paramString2 = (ResizeURLImageView)paramString1.findViewById(2131371631);
-    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {}
-    try
-    {
-      paramString3 = new URL(this.jdField_d_of_type_JavaLangString);
-      paramString2.a(paramString3);
-      if (rpg.a().a(paramString3)) {
-        this.jdField_a_of_type_Int = 2;
-      }
-      for (;;)
-      {
-        a(paramContext, paramString1);
-        return paramString1;
-        this.jdField_a_of_type_Int = 1;
-        this.jdField_a_of_type_Spa = new nlo(this, paramString1, paramString2);
-        paramString2.setPublicAccountImageDownListener(this.jdField_a_of_type_Spa);
-        paramString1.findViewById(2131369489).setVisibility(0);
-      }
-    }
-    catch (Exception paramString2)
-    {
-      for (;;)
-      {
-        paramString2.printStackTrace();
-      }
+      VideoCoverAdapter.a(this.a, true);
     }
   }
   
-  public void a()
+  public void onNetWifi2None()
   {
-    super.a();
-    if (this.jdField_a_of_type_Int == 3) {
-      d();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from wifi to none");
     }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      nls localnls = (nls)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(248);
-      if (localnls != null) {
-        localnls.a(this.jdField_d_of_type_JavaLangString);
-      }
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    this.jdField_a_of_type_Spa = null;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369489).setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131365892).setVisibility(8);
-    try
-    {
-      URL localURL = new URL(this.jdField_d_of_type_JavaLangString);
-      ((ResizeURLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371631)).a(localURL);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    VideoCoverAdapter.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nln
  * JD-Core Version:    0.7.0.1
  */

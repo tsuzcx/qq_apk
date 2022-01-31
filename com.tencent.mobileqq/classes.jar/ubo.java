@@ -1,32 +1,28 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import android.widget.RadioGroup;
+import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
 
 public class ubo
-  extends ubs<StoryVideoItem>
+  implements ViewPager.OnPageChangeListener
 {
-  public ubo(VideoViewVideoHolder paramVideoViewVideoHolder)
-  {
-    super(paramVideoViewVideoHolder, null);
-  }
+  public ubo(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
   
-  public void a(StoryVideoItem paramStoryVideoItem)
-  {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void onError(@NonNull Error paramError)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    super.onError(paramError);
-    ved.d(this.a.a, "VideoStartSegment, error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    
+    if ((QCirclePersonalBottomView.a(this.a) != null) && (QCirclePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
+      QCirclePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubo
  * JD-Core Version:    0.7.0.1
  */

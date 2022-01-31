@@ -1,19 +1,18 @@
-import mqq.app.AppRuntime.Status;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
 
-public final class ajxa
+public class ajxa
+  extends alsi
 {
-  private final long jdField_a_of_type_Long;
-  private final AppRuntime.Status jdField_a_of_type_MqqAppAppRuntime$Status;
+  public ajxa(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  private ajxa(AppRuntime.Status paramStatus, long paramLong)
+  protected void a()
   {
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxa
  * JD-Core Version:    0.7.0.1
  */

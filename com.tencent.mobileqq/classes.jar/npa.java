@@ -1,84 +1,38 @@
-import com.tencent.biz.pubaccount.VideoColumnSubscribeHandler.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.QueryKdVideoColumnReq;
-import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.ReqBody;
-import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnReq;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import mqq.observer.BusinessObserver;
 
-public class npa
-  extends ajtb
+final class npa
+  implements BusinessObserver
 {
-  public static final String a = npa.class.getSimpleName();
-  
-  public npa(AppInterface paramAppInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramAppInterface);
-  }
-  
-  private void b(int paramInt)
-  {
-    oidb_0xd4b.ReqBody localReqBody = new oidb_0xd4b.ReqBody();
-    localReqBody.msg_subscribe_video_column_req.uint32_video_column_id.set(paramInt);
-    localReqBody.msg_query_kd_video_column_req.uint32_query_sub_status.set(1);
-    super.sendPbReq(super.makeOIDBPkg("OidbSvc.0xd4b", 3403, 1, localReqBody.toByteArray()));
-  }
-  
-  public void a(int paramInt)
-  {
-    ThreadManager.excute(new VideoColumnSubscribeHandler.1(this, paramInt), 16, null, true);
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
-    for (boolean bool = true;; bool = false)
+    if (paramBoolean) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "onReceive() isSuccess = " + bool);
-      }
-      if (bool)
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
       {
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        try
-        {
-          paramToServiceMsg.mergeFrom((byte[])paramObject);
-          if (paramToServiceMsg.uint32_result.has())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(a, 2, "onReceive() pkg.uint32_result = " + paramToServiceMsg.uint32_result.get());
-            }
-          }
-          else if (QLog.isColorLevel())
-          {
-            QLog.d(a, 2, "onReceive() pkg.uint32_result is null ");
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(a, 2, "onReceive() exception = " + paramToServiceMsg.getMessage());
-          }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, "nativeEngineAdReport success!" + localWebSsoResponseBody.data.get());
         }
       }
       return;
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npa
  * JD-Core Version:    0.7.0.1
  */

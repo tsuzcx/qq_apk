@@ -1,23 +1,50 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.util.BinderWarpper;
+import com.tencent.open.virtual.OpenSdkVirtualManager.2;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class bfnc
-  implements Parcelable.Creator<BinderWarpper>
+public class bfnc
+  extends bfnn
 {
-  public BinderWarpper a(Parcel paramParcel)
-  {
-    return new BinderWarpper(paramParcel.readStrongBinder());
-  }
+  public bfnc(OpenSdkVirtualManager.2 param2) {}
   
-  public BinderWarpper[] a(int paramInt)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    return new BinderWarpper[paramInt];
+    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
+    arzy.a("KEY_DELETE_VIRTUAL_D18", this.a.jdField_a_of_type_Bfmm, paramBoolean);
+    int i = paramInt;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        i = new JSONObject(paramString1).optInt("ErrorCode");
+        paramInt = i;
+        i = paramInt;
+        if (paramInt == 0)
+        {
+          paramBoolean = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("OpenSdkVirtualManager", 2, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
+          }
+          if (this.a.jdField_a_of_type_Bfnj != null) {
+            this.a.jdField_a_of_type_Bfnj.a(paramBoolean, paramInt);
+          }
+          return;
+        }
+      }
+      catch (Exception paramString2)
+      {
+        QLog.e("OpenSdkVirtualManager", 1, "Exception.e", paramString2);
+        i = paramInt;
+      }
+      paramBoolean = false;
+      paramInt = i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfnc
  * JD-Core Version:    0.7.0.1
  */

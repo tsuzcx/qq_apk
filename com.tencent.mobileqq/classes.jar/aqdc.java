@@ -1,60 +1,28 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class aqdc
-  extends mxj
+final class aqdc
+  implements DialogInterface.OnClickListener
 {
-  aqdc(aqcy paramaqcy) {}
+  aqdc(boolean paramBoolean, BaseActivity paramBaseActivity, int paramInt, String paramString1, String paramString2) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d(aqcy.a(), 1, new Object[] { "notifyNormalSendMessage onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(aqcy.a(this.a)) });
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_Boolean) {
+      aqcq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    }
+    for (;;)
     {
-      aqgj.a("KEY_STAGE_2_NORMAL_DC2", bool);
-      if (!aqcy.a(this.a)) {
-        break;
-      }
+      paramDialogInterface.dismiss();
       return;
+      aqcq.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString);
     }
-    if (paramBundle != null)
-    {
-      long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
-      if (QLog.isColorLevel()) {
-        QLog.d(aqcy.a(), 2, new Object[] { "notifyNormalSendMessage currentRequestTime =", Long.valueOf(aqcy.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
-      }
-      if ((l == -1L) || (l != aqcy.a(this.a)))
-      {
-        aqcy.a(this.a);
-        return;
-      }
-    }
-    axqy.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "", "", "");
-    paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.e(aqcy.a(), 1, new Object[] { "notifyNormalSendMessage sendOIDBRequest onResult errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
-      aqcy.a(this.a);
-      return;
-    }
-    aqcy.a(this.a, paramArrayOfByte);
-    ForwardUtils.a(aqcy.a(this.a), paramArrayOfByte, aqcy.a(this.a), aqcy.a(this.a).getString("share_comment_message_for_server"));
-  }
-  
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.e(aqcy.a(), 1, new Object[] { "notifyNormalSendMessage onError msg =", paramString });
-    }
-    return super.a(paramInt, paramString, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdc
  * JD-Core Version:    0.7.0.1
  */

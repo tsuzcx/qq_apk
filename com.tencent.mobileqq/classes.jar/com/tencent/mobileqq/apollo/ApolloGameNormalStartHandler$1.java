@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import airv;
+import akjg;
 import android.app.Activity;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class ApolloGameNormalStartHandler$1
   implements Runnable
 {
-  public ApolloGameNormalStartHandler$1(airv paramairv, int paramInt1, long paramLong, int paramInt2, int paramInt3, QQAppInterface paramQQAppInterface, String paramString1, int paramInt4, String paramString2, String paramString3, String paramString4, String paramString5, Activity paramActivity) {}
+  public ApolloGameNormalStartHandler$1(akjg paramakjg, int paramInt1, long paramLong, int paramInt2, int paramInt3, QQAppInterface paramQQAppInterface, String paramString1, int paramInt4, String paramString2, String paramString3, String paramString4, String paramString5, Activity paramActivity) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class ApolloGameNormalStartHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.1
  * JD-Core Version:    0.7.0.1
  */

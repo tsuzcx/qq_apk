@@ -1,23 +1,80 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter.FilterPagerAdapter;
 
-public final class wvg
-  implements Parcelable.Creator<CommodityBean>
+public class wvg
+  implements ViewPager.OnPageChangeListener
 {
-  public CommodityBean a(Parcel paramParcel)
+  private wvg(EditVideoFilter paramEditVideoFilter) {}
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    return new CommodityBean(paramParcel);
+    paramInt2 = 0;
+    int i = paramInt1 % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a();
+    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(i);
+    if (localObject != null) {}
+    for (paramInt1 = ((xej)localObject).jdField_a_of_type_Int;; paramInt1 = 0)
+    {
+      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a((i + 1) % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a());
+      if (localObject != null) {
+        paramInt2 = ((xej)localObject).jdField_a_of_type_Int;
+      }
+      localObject = (wwq)this.a.a(wwq.class);
+      if (localObject != null) {
+        ((wwq)localObject).a(paramInt1, paramInt2, paramFloat);
+      }
+      return;
+    }
   }
   
-  public CommodityBean[] a(int paramInt)
+  public void onPageSelected(int paramInt)
   {
-    return new CommodityBean[paramInt];
+    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
+    if (localObject != null) {}
+    for (int i = ((xej)localObject).jdField_a_of_type_Int;; i = 0)
+    {
+      this.a.jdField_a_of_type_AndroidUtilSparseArray.put(this.a.jdField_a_of_type_Wwe.a(), localObject);
+      if ((i == 2) || (i == 1) || (i == 3))
+      {
+        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
+        if ((localObject != null) && (TextUtils.isEmpty(((xek)localObject).jdField_a_of_type_Xej.b))) {
+          EditVideoFilter.a((xek)localObject);
+        }
+      }
+      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt - 1);
+      xek localxek = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt + 1);
+      if (localObject != null) {
+        ((xek)localObject).jdField_a_of_type_AndroidViewView.clearAnimation();
+      }
+      if (localxek != null) {
+        localxek.jdField_a_of_type_AndroidViewView.clearAnimation();
+      }
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.a.jdField_a_of_type_Int = i;
+      EditVideoFilter.a(this.a).put(this.a.jdField_a_of_type_Wwe.a(), paramInt);
+      localObject = (wwq)this.a.a(wwq.class);
+      if (localObject != null) {
+        ((wwq)localObject).b(i);
+      }
+      if (i != 0)
+      {
+        this.a.jdField_a_of_type_Wwe.a("608", "9", "0", true);
+        wtb.a("0X80076DE");
+      }
+      wsv.a("Q.qqstory.publish.edit.EditVideoFilter", "LastSelectVideoFilterTime : %s , LastSelectVideoPlayMode : %s .", Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(this.a.jdField_a_of_type_Int));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvg
  * JD-Core Version:    0.7.0.1
  */

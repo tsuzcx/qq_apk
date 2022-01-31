@@ -1,50 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-public class abqz
-  extends BroadcastReceiver
+public final class abqz
+  extends RecyclablePool.Recyclable
 {
-  public abqz(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public long a;
+  public String a;
+  public long[] a;
+  public long b;
+  public long c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public abqz()
   {
-    if (paramIntent == null) {}
-    do
+    this.jdField_a_of_type_ArrayOfLong = new long[6];
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfLong.length)
     {
-      do
-      {
-        return;
-        localObject = paramIntent.getAction();
-      } while ((TextUtils.isEmpty((CharSequence)localObject)) || (!TextUtils.equals((CharSequence)localObject, "mqq.intent.action.DEVLOCK_ROAM")));
-      if (paramContext != null) {
-        paramContext.unregisterReceiver(this);
-      }
-      Object localObject = aoem.a();
-      if (paramIntent.getIntExtra("guardphone_state", aoem.d) == aoem.c)
-      {
-        paramIntent = paramIntent.getStringExtra("guardphone_mask");
-        paramContext = paramIntent;
-        if (paramIntent == null) {
-          paramContext = "";
-        }
-        ((aoem)localObject).a(this.a, paramContext);
-        return;
-      }
-      this.a.jdField_a_of_type_Akco.a = true;
-      paramContext = (akgd)this.a.app.a(34);
-    } while (paramContext == null);
-    this.a.app.addObserver(this.a.jdField_a_of_type_Akge);
-    PhoneUnityBindInfoActivity.a(this.a, this.a.c, 2, 1);
-    paramContext.a(4, 31, null, null);
+      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+      i += 1;
+    }
+    this.c = 0L;
+  }
+  
+  public void recycle()
+  {
+    super.recycle();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abqz
  * JD-Core Version:    0.7.0.1
  */

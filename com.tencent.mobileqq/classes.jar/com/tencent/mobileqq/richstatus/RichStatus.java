@@ -9,14 +9,14 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.widget.TextView;
-import awck;
-import awcl;
-import awft;
-import awfv;
-import awga;
-import bbea;
-import bcnx;
-import bcry;
+import axxn;
+import axxo;
+import ayaw;
+import ayay;
+import aybd;
+import bdcv;
+import bemz;
+import berh;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -72,7 +72,7 @@ public class RichStatus
   public ArrayList<RichStatus.StickerInfo> mStickerInfos;
   public List<String> mUins;
   public ArrayList<String> plainText;
-  public HashMap<Integer, awcl> sigZanInfo;
+  public HashMap<Integer, axxo> sigZanInfo;
   public int signType;
   public long time;
   public List<Pair<Integer, String>> topics = new ArrayList();
@@ -156,7 +156,7 @@ public class RichStatus
           break label118;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.status", 2, bbea.a(paramArrayOfByte));
+          QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
         }
       }
       for (;;)
@@ -182,7 +182,7 @@ public class RichStatus
           break;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.status", 2, bbea.a(paramArrayOfByte));
+          QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
         }
       }
       n = i + 2;
@@ -243,7 +243,7 @@ public class RichStatus
         if (localByteBuffer.remaining() < 8)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("Q.richstatus.status", 2, bbea.a(paramArrayOfByte));
+            QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
           }
         }
         else
@@ -254,7 +254,7 @@ public class RichStatus
           if (localByteBuffer.remaining() < 8)
           {
             if (QLog.isColorLevel()) {
-              QLog.d("Q.richstatus.status", 2, bbea.a(paramArrayOfByte));
+              QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
             }
           }
           else
@@ -265,7 +265,7 @@ public class RichStatus
             localRichStatus.feedsId = new String(paramArrayOfByte, n, j);
             if (QLog.isColorLevel())
             {
-              QLog.d("Q.richstatus.status", 2, bbea.a(paramArrayOfByte) + ",sign feeds id=" + localRichStatus.feedsId);
+              QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte) + ",sign feeds id=" + localRichStatus.feedsId);
               continue;
               localRichStatus.tplId = localByteBuffer.getInt();
               continue;
@@ -329,7 +329,7 @@ public class RichStatus
         if (!QLog.isColorLevel()) {
           break label464;
         }
-        QLog.d("Q.richstatus.status", 2, bbea.a(paramArrayOfByte));
+        QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
         break label464;
       }
       i = localByteBuffer.getInt();
@@ -348,7 +348,7 @@ public class RichStatus
         if (!QLog.isColorLevel()) {
           break label464;
         }
-        QLog.d("Q.richstatus.status", 2, bbea.a(paramArrayOfByte));
+        QLog.d("Q.richstatus.status", 2, bdcv.a(paramArrayOfByte));
         break label464;
       }
       i = j;
@@ -702,15 +702,15 @@ public class RichStatus
       }
       try
       {
-        localObject2 = BitmapFactory.decodeResource(paramResources, 2130848544);
+        localObject2 = BitmapFactory.decodeResource(paramResources, 2130848972);
         if (localObject2 == null) {
           continue;
         }
         int i = (int)(0.9F * paramFloat + 0.5F);
         int j = ((Bitmap)localObject2).getWidth() * i / ((Bitmap)localObject2).getHeight();
-        paramResources = new bcry(paramResources, (Bitmap)localObject2, false, true);
+        paramResources = new berh(paramResources, (Bitmap)localObject2, false, true);
         paramResources.setBounds(0, 0, j, i);
-        paramResources = new bcnx(paramResources, 0).a(-0.1F);
+        paramResources = new bemz(paramResources, 0).a(-0.1F);
         if (paramCharSequence == null) {}
         for (i = 0;; i = paramCharSequence.length())
         {
@@ -875,7 +875,7 @@ public class RichStatus
   public void sortTopicPos()
   {
     if ((this.topicsPos != null) && (this.topicsPos.size() > 1)) {
-      Collections.sort(this.topicsPos, new awck(this));
+      Collections.sort(this.topicsPos, new axxn(this));
     }
   }
   
@@ -960,7 +960,7 @@ public class RichStatus
     }
   }
   
-  public CharSequence toSpannableStringWithTopic(String paramString, int paramInt1, int paramInt2, awfv paramawfv)
+  public CharSequence toSpannableStringWithTopic(String paramString, int paramInt1, int paramInt2, ayay paramayay)
   {
     String str1 = paramString;
     if (paramString == null) {
@@ -978,7 +978,7 @@ public class RichStatus
     {
       int k;
       String str2;
-      awft localawft;
+      ayaw localayaw;
       if (shouldShowAtHead())
       {
         j = 0;
@@ -991,9 +991,9 @@ public class RichStatus
             break;
             k = paramString.length();
             str2 = (String)((Pair)this.topics.get(j)).second;
-            localawft = new awft(paramawfv, awga.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(j)).first, str2));
+            localayaw = new ayaw(paramayay, aybd.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(j)).first, str2));
             paramString.append(str2);
-            paramString.setSpan(localawft, k, str2.length() + k, 33);
+            paramString.setSpan(localayaw, k, str2.length() + k, 33);
           }
         }
       }
@@ -1035,9 +1035,9 @@ public class RichStatus
           }
           return paramString;
         }
-        localawft = new awft(paramawfv, awga.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(j)).first, str2));
+        localayaw = new ayaw(paramayay, aybd.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(j)).first, str2));
         paramString.insert(k, str2);
-        paramString.setSpan(localawft, k, str2.length() + k, 33);
+        paramString.setSpan(localayaw, k, str2.length() + k, 33);
       }
     }
   }
@@ -1048,13 +1048,13 @@ public class RichStatus
   }
   
   @NotNull
-  public CharSequence toSpannableStringWithoutAction(awfv paramawfv)
+  public CharSequence toSpannableStringWithoutAction(ayay paramayay)
   {
     int k = 0;
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     int j;
     String str;
-    awft localawft;
+    ayaw localayaw;
     if (shouldShowAtHead())
     {
       i = 0;
@@ -1067,9 +1067,9 @@ public class RichStatus
           break;
           j = localSpannableStringBuilder.length();
           str = (String)((Pair)this.topics.get(i)).second;
-          localawft = new awft(paramawfv, awga.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(i)).first, str));
+          localayaw = new ayaw(paramayay, aybd.a(-11692801, -2142399233), new Pair(((Pair)this.topics.get(i)).first, str));
           localSpannableStringBuilder.append(str);
-          localSpannableStringBuilder.setSpan(localawft, j, str.length() + j, 33);
+          localSpannableStringBuilder.setSpan(localayaw, j, str.length() + j, 33);
         }
       }
     }
@@ -1107,9 +1107,9 @@ public class RichStatus
       if (j > localSpannableStringBuilder.length()) {
         return localSpannableStringBuilder;
       }
-      localawft = new awft(paramawfv, awga.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(i)).first, str));
+      localayaw = new ayaw(paramayay, aybd.a(-11692801, -2142399233), new Pair(((Pair)this.topicsPos.get(i)).first, str));
       localSpannableStringBuilder.insert(j, str);
-      localSpannableStringBuilder.setSpan(localawft, j, str.length() + j, 33);
+      localSpannableStringBuilder.setSpan(localayaw, j, str.length() + j, 33);
     }
   }
   
@@ -1464,7 +1464,7 @@ public class RichStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.RichStatus
  * JD-Core Version:    0.7.0.1
  */

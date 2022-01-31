@@ -1,91 +1,59 @@
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class nhe
-  extends akdn
+class nhe
+  implements View.OnClickListener
 {
-  public nhe(AccountDetailActivity paramAccountDetailActivity) {}
+  nhe(ngw paramngw, int paramInt, String paramString, nhq paramnhq) {}
   
-  void a()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_j_of_type_Boolean) {
-      this.a.F();
+    if (this.jdField_a_of_type_Int == 1) {
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Ngw.jdField_a_of_type_Nhu != null)) {
+        this.jdField_a_of_type_Ngw.jdField_a_of_type_Nhu.a(this.jdField_a_of_type_JavaLangString);
+      }
     }
-    this.a.jdField_j_of_type_Boolean = true;
-  }
-  
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    super.a(paramInt, paramPublicAccountInfo);
-    a();
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    super.a(paramBoolean, paramInt);
-    if (this.a.jdField_a_of_type_Nea == null) {
-      return;
-    }
-    this.a.r = true;
-    if (paramInt == 0)
+    for (;;)
     {
-      net localnet = nfd.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.d);
-      if (localnet != null)
+      azmj.b(this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_Ngw.jdField_a_of_type_JavaLangString, "0X8006981", "0X8006981", 0, 0, String.valueOf(this.jdField_a_of_type_Nhq.a.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Nhq.a.d), String.valueOf(this.jdField_a_of_type_Nhq.a.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Nhq.a.jdField_b_of_type_Int));
+      JSONObject localJSONObject = new JSONObject();
+      if (!this.jdField_a_of_type_Ngw.jdField_a_of_type_Boolean) {}
+      try
       {
-        this.a.jdField_a_of_type_Nea.a(localnet.b(), localnet.a);
-        this.a.jdField_a_of_type_Nea.a(localnet.b());
-      }
-    }
-    if (paramBoolean) {
-      if (this.a.jdField_a_of_type_Nea.a() == 0)
-      {
-        paramBoolean = bool1;
-        if (paramBoolean) {
-          this.a.u();
-        }
-        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b(paramBoolean);
-        bool1 = paramBoolean;
-        if (QLog.isColorLevel())
+        localJSONObject.put("cha_1", this.jdField_a_of_type_Nhq.a.jdField_b_of_type_JavaLangString);
+        localJSONObject.put("cha_2", ngw.a(this.jdField_a_of_type_Ngw));
+        QQAppInterface localQQAppInterface = this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        String str = this.jdField_a_of_type_Ngw.jdField_a_of_type_JavaLangString;
+        int i = this.jdField_a_of_type_Nhq.a.jdField_a_of_type_Int;
+        long l = this.jdField_a_of_type_Nhq.a.jdField_a_of_type_Long;
+        if (this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
+        for (paramView = "02";; paramView = "01")
         {
-          QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "onDynamicListGet: --hasMoreData=" + paramBoolean);
-          bool1 = paramBoolean;
+          azmj.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", str, "0X80077FA", "0X80077FA", 0, 0, String.valueOf(i), String.valueOf(l), paramView, localJSONObject.toString());
+          return;
+          if ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Ngw.jdField_a_of_type_Nhu == null)) {
+            break;
+          }
+          this.jdField_a_of_type_Ngw.jdField_a_of_type_Nhu.a(this.jdField_a_of_type_Nhq);
+          break;
         }
-        label172:
-        if (paramInt != 1) {
-          break label246;
-        }
+        return;
+      }
+      catch (JSONException paramView)
+      {
+        paramView.printStackTrace();
       }
     }
-    for (this.a.l = AccountDetailActivity.jdField_j_of_type_Int;; this.a.l = AccountDetailActivity.k) {
-      label246:
-      do
-      {
-        this.a.jdField_a_of_type_Nea.b(this.a.l);
-        this.a.jdField_a_of_type_Nea.notifyDataSetChanged();
-        return;
-        paramBoolean = true;
-        break;
-        this.a.jdField_a_of_type_Nea.notifyDataSetChanged();
-        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b();
-        bool1 = bool2;
-        break label172;
-      } while ((paramInt != 4) && ((paramInt != 0) || (bool1)));
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    super.a(paramBoolean, paramString);
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhe
  * JD-Core Version:    0.7.0.1
  */

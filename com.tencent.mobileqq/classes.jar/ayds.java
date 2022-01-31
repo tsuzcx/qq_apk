@@ -1,73 +1,70 @@
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.Callable;
 
-public class ayds
-  extends SSLSocketFactory
+class ayds
+  implements Callable<List<aydj>>
 {
-  private final SSLSocketFactory a;
+  ayds(aydq paramaydq, int paramInt1, int paramInt2) {}
   
-  public ayds()
+  public List<aydj> a()
   {
-    this.a = HttpsURLConnection.getDefaultSSLSocketFactory();
-  }
-  
-  public ayds(SSLSocketFactory paramSSLSocketFactory)
-  {
-    this.a = paramSSLSocketFactory;
-  }
-  
-  private Socket a(Socket paramSocket)
-  {
-    if ((paramSocket instanceof SSLSocket))
+    Object localObject = aydq.a(this.jdField_a_of_type_Aydq).subList(this.jdField_a_of_type_Int, this.b);
+    ArrayList localArrayList = new ArrayList();
+    aydj localaydj;
+    if (localObject != null)
     {
-      paramSocket = new aydv(this, (SSLSocket)paramSocket, null);
-      ((aydv)paramSocket).setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
-      return paramSocket;
+      localObject = ((List)localObject).iterator();
+      if (((Iterator)localObject).hasNext())
+      {
+        localaydj = (aydj)((Iterator)localObject).next();
+        if (!this.jdField_a_of_type_Aydq.isCancelled()) {
+          break label141;
+        }
+      }
+      if (!aydq.a(this.jdField_a_of_type_Aydq).equals(aydq.b(this.jdField_a_of_type_Aydq))) {
+        localObject = localArrayList.iterator();
+      }
     }
-    return paramSocket;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt)
-  {
-    return a(this.a.createSocket(paramString, paramInt));
-  }
-  
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
-  {
-    return a(this.a.createSocket(paramString, paramInt1, paramInetAddress, paramInt2));
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-  {
-    return a(this.a.createSocket(paramInetAddress, paramInt));
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-  {
-    return a(this.a.createSocket(paramInetAddress1, paramInt1, paramInetAddress2, paramInt2));
-  }
-  
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    return a(this.a.createSocket(paramSocket, paramString, paramInt, paramBoolean));
-  }
-  
-  public String[] getDefaultCipherSuites()
-  {
-    return this.a.getDefaultCipherSuites();
-  }
-  
-  public String[] getSupportedCipherSuites()
-  {
-    return this.a.getSupportedCipherSuites();
+    for (;;)
+    {
+      if (((Iterator)localObject).hasNext())
+      {
+        localaydj = (aydj)((Iterator)localObject).next();
+        if (!this.jdField_a_of_type_Aydq.isCancelled()) {}
+      }
+      else
+      {
+        return localArrayList;
+        label141:
+        localaydj.a(aydq.a(this.jdField_a_of_type_Aydq));
+        if (localaydj.c() == -9223372036854775808L) {
+          break;
+        }
+        int i = localArrayList.indexOf(localaydj);
+        if (-1 == i)
+        {
+          localArrayList.add(localaydj);
+          break;
+        }
+        if (((aydj)localArrayList.get(i)).c() >= localaydj.c()) {
+          break;
+        }
+        localArrayList.set(i, localaydj);
+        break;
+      }
+      long l = localaydj.c();
+      localaydj.a(aydq.b(this.jdField_a_of_type_Aydq));
+      if (localaydj.c() == -9223372036854775808L) {
+        localaydj.a(l);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayds
  * JD-Core Version:    0.7.0.1
  */

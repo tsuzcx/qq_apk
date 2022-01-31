@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AdapterView;
 
-public final class aezk
-  implements Parcelable.Creator<ZhituImgResponse>
+class aezk
+  implements bhqp
 {
-  public ZhituImgResponse a(Parcel paramParcel)
-  {
-    return new ZhituImgResponse(paramParcel);
-  }
+  aezk(aezj paramaezj) {}
   
-  public ZhituImgResponse[] a(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new ZhituImgResponse[paramInt];
+    paramAdapterView = (aicu)aezj.a(this.a).a.getItem(paramInt - 1);
+    aezj.a(this.a, paramAdapterView);
+    aezj.a(this.a).dismiss();
+    azmj.b(aezj.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezk
  * JD-Core Version:    0.7.0.1
  */

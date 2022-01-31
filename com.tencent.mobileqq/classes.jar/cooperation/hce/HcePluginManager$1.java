@@ -1,12 +1,12 @@
 package cooperation.hce;
 
-import bgkw;
+import bilu;
 import java.util.HashSet;
 
 public class HcePluginManager$1
   extends HashSet<String>
 {
-  public HcePluginManager$1(bgkw parambgkw)
+  public HcePluginManager$1(bilu parambilu)
   {
     add("A000000632010105");
     add("A000000632010106");
@@ -38,7 +38,7 @@ public class HcePluginManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.hce.HcePluginManager.1
  * JD-Core Version:    0.7.0.1
  */

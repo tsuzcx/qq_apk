@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.runtime.audiorecorder.LameMp3EncodeThread;
 
-class bhai
-  implements MiniAppPrePullManager.IPrePullListener
+public class bhai
+  implements MediaPlayer.OnPreparedListener
 {
-  bhai(bhah parambhah) {}
+  public bhai(LameMp3EncodeThread paramLameMp3EncodeThread) {}
   
-  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    QLog.d("QzoneIPCModule", 4, String.format("after preload For QQ MINI Program %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    LameMp3EncodeThread.a(this.a).sendEmptyMessage(101);
+    LameMp3EncodeThread.a(this.a).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhai
  * JD-Core Version:    0.7.0.1
  */

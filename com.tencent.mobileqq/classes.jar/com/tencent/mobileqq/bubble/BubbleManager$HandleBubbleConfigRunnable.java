@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.bubble;
 
-import ambd;
 import android.os.Handler;
 import android.os.Looper;
+import ansc;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -10,7 +10,7 @@ class BubbleManager$HandleBubbleConfigRunnable
   implements Runnable
 {
   int jdField_a_of_type_Int;
-  ambd jdField_a_of_type_Ambd;
+  ansc jdField_a_of_type_Ansc;
   boolean jdField_a_of_type_Boolean;
   
   public BubbleManager$HandleBubbleConfigRunnable(BubbleManager paramBubbleManager, int paramInt, boolean paramBoolean)
@@ -22,12 +22,12 @@ class BubbleManager$HandleBubbleConfigRunnable
   public void run()
   {
     Object localObject = this.this$0.a(this.jdField_a_of_type_Int).getAbsolutePath() + File.separatorChar + "config.json";
-    this.jdField_a_of_type_Ambd = this.this$0.a(this.jdField_a_of_type_Int, (String)localObject);
+    this.jdField_a_of_type_Ansc = this.this$0.a(this.jdField_a_of_type_Int, (String)localObject);
     if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "getBubbleConfig bubbleId=" + this.jdField_a_of_type_Int + ",filePath=" + (String)localObject + ",bubbleConfig=" + this.jdField_a_of_type_Ambd);
+      QLog.d("BubbleManager", 2, "getBubbleConfig bubbleId=" + this.jdField_a_of_type_Int + ",filePath=" + (String)localObject + ",bubbleConfig=" + this.jdField_a_of_type_Ansc);
     }
-    if (this.jdField_a_of_type_Ambd != null) {
-      this.this$0.a.put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_Ambd);
+    if (this.jdField_a_of_type_Ansc != null) {
+      this.this$0.a.put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_Ansc);
     }
     for (;;)
     {
@@ -48,7 +48,7 @@ class BubbleManager$HandleBubbleConfigRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleManager.HandleBubbleConfigRunnable
  * JD-Core Version:    0.7.0.1
  */

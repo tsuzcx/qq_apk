@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class alrp
-  implements alrx
+  implements BusinessObserver
 {
-  alrp(alrl paramalrl, alrv paramalrv, alrx paramalrx, String paramString) {}
+  alrp(alro paramalro, String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean)
-    {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_Alrx.a(true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
     }
-    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString }));
-    alrl.a(this.jdField_a_of_type_Alrl, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrv, new alrq(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alrp
  * JD-Core Version:    0.7.0.1
  */

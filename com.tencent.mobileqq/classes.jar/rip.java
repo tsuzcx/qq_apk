@@ -1,36 +1,33 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class rip
-  implements DialogInterface.OnDismissListener
 {
-  public rip(FastWebActivity paramFastWebActivity) {}
+  public static long a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static void a()
   {
-    Context localContext;
-    if (!FastWebActivity.a(this.a))
+    a = System.currentTimeMillis();
+  }
+  
+  public static void a(Context paramContext)
+  {
+    long l = System.currentTimeMillis();
+    if (l - a < 10000L)
     {
-      localContext = this.a.getApplicationContext();
-      if (!FastWebActivity.b(this.a)) {
-        break label79;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_starttime", String.valueOf(l - a));
+      ors.d(paramContext, ors.a(), true, localHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsStartStatistic", 2, "doReportStartTime param_starttime=" + (l - a));
       }
-    }
-    label79:
-    for (paramDialogInterface = "0X8008994";; paramDialogInterface = "0X800898D")
-    {
-      rmy.a(localContext, paramDialogInterface, 11, FastWebActivity.a(this.a));
-      rno.a(this.a, this.a.getAppInterface(), FastWebActivity.a(this.a), -1, -1, true);
-      FastWebActivity.d(this.a, false);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rip
  * JD-Core Version:    0.7.0.1
  */

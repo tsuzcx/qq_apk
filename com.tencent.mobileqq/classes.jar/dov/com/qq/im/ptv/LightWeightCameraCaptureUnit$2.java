@@ -2,15 +2,15 @@ package dov.com.qq.im.ptv;
 
 import android.app.Activity;
 import android.view.WindowManager.BadTokenException;
-import bbgu;
-import bjpq;
-import bjrl;
+import bdfq;
+import bmba;
+import bmcv;
 import com.tencent.qphone.base.util.QLog;
 
 public class LightWeightCameraCaptureUnit$2
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$2(bjpq parambjpq, String paramString) {}
+  public LightWeightCameraCaptureUnit$2(bmba parambmba, String paramString) {}
   
   public void run()
   {
@@ -20,11 +20,11 @@ public class LightWeightCameraCaptureUnit$2
     }
     try
     {
-      bjpq.a(this.this$0);
-      if (!bjpq.a(this.this$0).isShowing())
+      bmba.a(this.this$0);
+      if (!bmba.a(this.this$0).isShowing())
       {
-        bjpq.a(this.this$0).setCancelable(false);
-        bjpq.a(this.this$0).show();
+        bmba.a(this.this$0).setCancelable(false);
+        bmba.a(this.this$0).show();
       }
       QLog.e("LightWeightCameraCaptureUnit", 2, "onCameraStarted error = " + this.a);
       return;
@@ -42,7 +42,7 @@ public class LightWeightCameraCaptureUnit$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightWeightCameraCaptureUnit.2
  * JD-Core Version:    0.7.0.1
  */

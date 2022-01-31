@@ -1,112 +1,135 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextPaint;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
 
 public class qnj
+  extends qnf
 {
-  private static final String jdField_a_of_type_JavaLangString = ajya.a(2131716155);
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new qnk(this);
-  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private qwq jdField_a_of_type_Qwq;
-  private View b;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public int e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h = "";
+  public String i = "";
   
-  public qnj(FragmentActivity paramFragmentActivity)
+  public qnj()
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+    super(2);
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_g_of_type_JavaLangString = "";
   }
   
-  private void a(View paramView1, View paramView2, int paramInt1, int paramInt2, int paramInt3)
+  public static qnf b(oidb_cmd0xbc9.BannerItem paramBannerItem)
   {
-    if ((this.jdField_a_of_type_Qwq != null) && (this.jdField_a_of_type_Qwq.isShowing())) {
-      this.jdField_a_of_type_Qwq.dismiss();
+    if (!paramBannerItem.msg_video_banner_item.has()) {
+      return null;
     }
-    if ((paramView1 != null) && ((paramView1.getParent() instanceof ViewGroup))) {
-      ((ViewGroup)paramView1.getParent()).removeView(paramView1);
+    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = (oidb_cmd0xbc9.VideoBannerItem)paramBannerItem.msg_video_banner_item.get();
+    qnj localqnj = new qnj();
+    if (localVideoBannerItem.bytes_share_url.has()) {
+      localqnj.jdField_f_of_type_JavaLangString = localVideoBannerItem.bytes_share_url.get().toStringUtf8();
     }
-    int i = baxn.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 7.0F);
-    int j = baxn.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 12.0F);
-    int k = baxn.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 80.0F);
-    int m = -(paramInt1 - paramView2.getWidth() + paramView2.getWidth() / 2 - j / 2 - (paramInt1 / 2 - k - j / 2));
-    int n = baxn.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, -8.0F);
-    this.jdField_a_of_type_Qwq = new qwq(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    this.jdField_a_of_type_Qwq.setAnimationStyle(2131755812);
-    this.jdField_a_of_type_Qwq.setContentView(paramView1);
-    this.jdField_a_of_type_Qwq.setWidth(paramInt1);
-    this.jdField_a_of_type_Qwq.a(k, 0, 0, 0);
-    this.jdField_a_of_type_Qwq.a(j, i);
-    this.jdField_a_of_type_Qwq.a(j / 2);
-    this.jdField_a_of_type_Qwq.b(paramInt2);
-    this.jdField_a_of_type_Qwq.c(paramInt3);
-    try
-    {
-      this.jdField_a_of_type_Qwq.showAsDropDown(paramView2, m, n);
-      return;
+    if (localVideoBannerItem.uint32_video_duration.has()) {
+      localqnj.jdField_b_of_type_Int = localVideoBannerItem.uint32_video_duration.get();
     }
-    catch (Exception paramView1)
-    {
-      QLog.e("VideoFeedsFloatWindowGuideController", 1, "showAtLocation", paramView1);
+    if (localVideoBannerItem.uint32_video_width.has()) {
+      localqnj.jdField_c_of_type_Int = localVideoBannerItem.uint32_video_width.get();
     }
+    if (localVideoBannerItem.uint32_video_height.has()) {
+      localqnj.d = localVideoBannerItem.uint32_video_height.get();
+    }
+    if (localVideoBannerItem.bytes_video_vid.has()) {
+      localqnj.jdField_g_of_type_JavaLangString = localVideoBannerItem.bytes_video_vid.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.bytes_video_cover.has()) {
+      localqnj.jdField_c_of_type_JavaLangString = localVideoBannerItem.bytes_video_cover.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.bytes_inner_uinque_id.has()) {
+      localqnj.jdField_e_of_type_JavaLangString = localVideoBannerItem.bytes_inner_uinque_id.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.uint32_busi_type.has()) {
+      localqnj.jdField_e_of_type_Int = localVideoBannerItem.uint32_busi_type.get();
+    }
+    if (localVideoBannerItem.bytes_title.has()) {
+      localqnj.i = localVideoBannerItem.bytes_title.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.bytes_account_name.has()) {
+      localqnj.h = localVideoBannerItem.bytes_account_name.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.uint64_account_uin.has()) {
+      localqnj.jdField_b_of_type_Long = localVideoBannerItem.uint64_account_uin.get();
+    }
+    if (localVideoBannerItem.uint32_is_ugc.has()) {
+      localqnj.jdField_f_of_type_Int = localVideoBannerItem.uint32_is_ugc.get();
+    }
+    if (localVideoBannerItem.uint64_feeds_id.has()) {
+      localqnj.jdField_c_of_type_Long = localVideoBannerItem.uint64_feeds_id.get();
+    }
+    if (localVideoBannerItem.uint32_feeds_type.has()) {
+      localqnj.jdField_g_of_type_Int = localVideoBannerItem.uint32_feeds_type.get();
+    }
+    a(localqnj, paramBannerItem);
+    a(paramBannerItem, localqnj);
+    return localqnj;
   }
   
-  private void b(View paramView)
+  public oidb_cmd0xbc9.BannerItem a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsFloatWindowGuideController", 2, "showPrompt: showGuidePrompt");
+    oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
+    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = new oidb_cmd0xbc9.VideoBannerItem();
+    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_share_url.set(ByteStringMicro.copyFromUtf8(this.jdField_f_of_type_JavaLangString));
     }
-    if (this.b == null)
-    {
-      i = baxn.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 8.0F);
-      int j = baxn.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 10.0F);
-      TextView localTextView = new TextView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-      localTextView.setId(2131377032);
-      localTextView.setGravity(17);
-      localTextView.setTextSize(2, 16.0F);
-      localTextView.setText(jdField_a_of_type_JavaLangString);
-      localTextView.setTextColor(-1);
-      localTextView.setPadding(j, i, j, i);
-      this.jdField_a_of_type_Int = ((int)localTextView.getPaint().measureText(jdField_a_of_type_JavaLangString) + j * 2);
-      this.b = localTextView;
+    localVideoBannerItem.uint32_video_duration.set(this.jdField_b_of_type_Int);
+    localVideoBannerItem.uint32_video_width.set(this.jdField_c_of_type_Int);
+    localVideoBannerItem.uint32_video_height.set(this.d);
+    if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_video_vid.set(ByteStringMicro.copyFromUtf8(this.jdField_g_of_type_JavaLangString));
     }
-    int i = baxn.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 3.0F);
-    a(this.b, paramView, this.jdField_a_of_type_Int, -16777216, i);
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_video_cover.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_inner_uinque_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
+    }
+    localVideoBannerItem.uint32_busi_type.set(this.jdField_e_of_type_Int);
+    if (!TextUtils.isEmpty(this.i)) {
+      localVideoBannerItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.i));
+    }
+    if (!TextUtils.isEmpty(this.h)) {
+      localVideoBannerItem.bytes_account_name.set(ByteStringMicro.copyFromUtf8(this.h));
+    }
+    localVideoBannerItem.uint64_account_uin.set(this.jdField_b_of_type_Long);
+    localVideoBannerItem.uint32_is_ugc.set(this.jdField_f_of_type_Int);
+    localVideoBannerItem.uint64_feeds_id.set(this.jdField_c_of_type_Long);
+    localVideoBannerItem.uint32_feeds_type.set(this.jdField_g_of_type_Int);
+    localBannerItem.msg_video_banner_item.set(localVideoBannerItem);
+    return localBannerItem;
   }
   
-  public void a()
+  public boolean a()
   {
-    if ((this.jdField_a_of_type_Qwq != null) && (this.jdField_a_of_type_Qwq.isShowing())) {
-      this.jdField_a_of_type_Qwq.dismiss();
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    return this.jdField_f_of_type_Int == 1;
   }
   
-  public void a(View paramView)
+  public String toString()
   {
-    if (paramView == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsFloatWindowGuideController", 2, "showPrompt: count=" + 0);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = null;
+    return super.toString() + " vid: " + this.jdField_g_of_type_JavaLangString + " puin : " + this.jdField_b_of_type_Long + " busitype " + this.jdField_e_of_type_Int + " accountName : " + this.h + "  shareUrl : " + this.jdField_f_of_type_JavaLangString + " isUgc " + this.jdField_f_of_type_Int + " feedsId " + this.jdField_c_of_type_Long + " feedsType " + this.jdField_g_of_type_Int + " videoTitle: " + this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qnj
  * JD-Core Version:    0.7.0.1
  */

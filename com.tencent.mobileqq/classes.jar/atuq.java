@@ -1,14 +1,14 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-class atuq
+public abstract interface atuq
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public abstract void a(String paramString);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atuq
  * JD-Core Version:    0.7.0.1
  */

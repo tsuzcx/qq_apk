@@ -1,33 +1,88 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.view.animation.LinearInterpolator;
 
-class wzi
-  implements wzb
+public class wzi
+  extends xeh
 {
-  wzi(wzf paramwzf, long paramLong) {}
+  public final RectF a;
+  public final Drawable a;
+  public final String d;
+  public final String e;
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public wzi(wze paramwze, @NonNull Drawable paramDrawable, @NonNull wzm paramwzm, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    super(paramwzm.jdField_a_of_type_AndroidGraphicsPointF, paramwzm.jdField_a_of_type_Float, paramwzm.jdField_b_of_type_Float, paramwzm.c, paramwzm.d, paramwzm.jdField_a_of_type_Int, paramwzm.jdField_b_of_type_Int, true);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_d_of_type_JavaLangString = paramString1;
+    this.e = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramDrawable.getBounds());
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    float f2 = this.n;
+    float f1 = this.o;
+    if (f2 * this.j < 200.0F) {
+      f2 = 200.0F / this.j;
     }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Wzf.jdField_a_of_type_Wzd.e = paramString1;
-      this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze.a.b(this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze);
-      this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze.b();
-      return;
+    if (this.j * f1 < 200.0F) {
+      f1 = 200.0F / this.j;
     }
-    this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze.d = paramString2;
-    this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze.a.a(this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze);
+    paramCanvas.save();
+    paramCanvas.concat(this.b.a.a(this));
+    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.restore();
+    if (this.jdField_d_of_type_Boolean) {
+      xee.a(paramCanvas, this.b.a, this, 0, 2130844157, 2130844164);
+    }
+  }
+  
+  public void a(Canvas paramCanvas, boolean paramBoolean)
+  {
+    float f2 = this.n;
+    float f1 = this.o;
+    if (f2 * this.j < 200.0F) {
+      f2 = 200.0F / this.j;
+    }
+    if (this.j * f1 < 200.0F) {
+      f1 = 200.0F / this.j;
+    }
+    paramCanvas.save();
+    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new wzj(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new wzk(this));
+    }
+    if (!this.c) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.c)) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzi
  * JD-Core Version:    0.7.0.1
  */

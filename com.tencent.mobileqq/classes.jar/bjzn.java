@@ -1,21 +1,28 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
 
 public class bjzn
-  implements ufk
+  implements View.OnClickListener
 {
-  public bjzn(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public bjzn(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
   
-  public boolean a(ufh paramufh, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
+    switch (paramView.getId())
+    {
+    }
+    do
+    {
+      return;
+    } while (this.a.a);
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzn
  * JD-Core Version:    0.7.0.1
  */

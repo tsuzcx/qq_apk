@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.soso;
 
-import akum;
-import akuo;
+import amlc;
+import amle;
 
 public class SosoInterface$3$1
   implements Runnable
 {
-  public SosoInterface$3$1(akum paramakum, akuo paramakuo, String paramString1, int paramInt, String paramString2) {}
+  public SosoInterface$3$1(amlc paramamlc, amle paramamle, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akuo.onStatusUpdate(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Amle.onStatusUpdate(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

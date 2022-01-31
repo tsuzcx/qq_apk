@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import ozy;
+import pfg;
 
 class ChannelCoverInfoModule$4$2
   implements Runnable
@@ -10,12 +10,12 @@ class ChannelCoverInfoModule$4$2
   
   public void run()
   {
-    ozy.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule$4.this$0, this.jdField_a_of_type_JavaUtilList);
+    pfg.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule$4.this$0, this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.4.2
  * JD-Core Version:    0.7.0.1
  */

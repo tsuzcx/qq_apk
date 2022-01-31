@@ -1,174 +1,251 @@
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchMgr.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.UUID;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import java.util.ArrayList;
 
 public class azuh
-  implements azuk
+  extends azqk
 {
-  private LinkedList<String> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Map<String, azui> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private LinkedList<azui> b = new LinkedList();
-  
-  private String a()
+  public View a(Context paramContext, View paramView, boolean paramBoolean, Bundle paramBundle)
   {
-    return " WS:" + this.jdField_a_of_type_JavaUtilMap.size() + " QS:" + this.jdField_a_of_type_JavaUtilLinkedList.size() + " RS:" + this.b.size();
-  }
-  
-  public static String a(UUID paramUUID, int paramInt)
-  {
-    return paramUUID.toString() + "_" + paramInt;
-  }
-  
-  private void d()
-  {
-    if (this.b.size() >= 10) {}
-    label79:
+    Resources localResources = paramContext.getResources();
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    int i;
+    if (paramView != null)
+    {
+      localObject1 = localObject2;
+      if ((paramView instanceof RelativeLayout))
+      {
+        paramView = (RelativeLayout)paramView;
+        if (paramView.getChildCount() == j)
+        {
+          i = 0;
+          localObject1 = paramView;
+          if (i >= j) {
+            break label1053;
+          }
+          localObject1 = (azqj)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          ((azqj)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          localObject2 = ((azqj)localObject1).jdField_a_of_type_JavaLangString;
+          if ("summary".equals(localObject2))
+          {
+            localObject1 = (azvd)localObject1;
+            if (paramBoolean)
+            {
+              ((azvd)localObject1).b("black");
+              label122:
+              localObject2 = ((azvd)localObject1).f();
+              if ((localObject2 == null) || (!((String)localObject2).equals("1"))) {
+                break label189;
+              }
+              ((azvd)localObject1).c("22");
+              ((azvd)localObject1).a(true);
+              ((azvd)localObject1).a(paramContext, paramView.findViewById(2), paramBundle);
+            }
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            ((azvd)localObject1).b(null);
+            break label122;
+            label189:
+            if ((localObject2 != null) && (((String)localObject2).equals("2")))
+            {
+              ((azvd)localObject1).c("44");
+              ((azvd)localObject1).a(true);
+              ((azvd)localObject1).a(paramContext, paramView.findViewById(3), paramBundle);
+            }
+            else
+            {
+              ((azvd)localObject1).c("30");
+              ((azvd)localObject1).b(20);
+              ((azvd)localObject1).a(paramContext, paramView.findViewById(4), paramBundle);
+              continue;
+              if ("picture".equals(localObject2))
+              {
+                localObject1 = (azsm)localObject1;
+                if ((((azsm)localObject1).c != null) && (!((azsm)localObject1).c.equals("")))
+                {
+                  localObject2 = ((azsm)localObject1).a(paramContext, paramView.findViewById(6), true, paramBundle);
+                  ((View)localObject2).setClickable(true);
+                  ((View)localObject2).setOnClickListener((View.OnClickListener)localObject1);
+                }
+                else
+                {
+                  ((azsm)localObject1).a(paramContext, paramView.findViewById(5), true, paramBundle);
+                }
+              }
+            }
+          }
+        }
+        paramView.removeAllViews();
+        localObject1 = paramView;
+      }
+    }
+    if (localObject1 == null)
+    {
+      localObject1 = new RelativeLayout(paramContext);
+      ((RelativeLayout)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
+    }
     for (;;)
     {
-      return;
-      for (;;)
+      LinearLayout localLinearLayout = new LinearLayout(paramContext);
+      localLinearLayout.setOrientation(1);
+      localLinearLayout.setGravity(3);
+      localLinearLayout.setId(1);
+      paramView = new RelativeLayout.LayoutParams(-2, -2);
+      paramView.addRule(9, -1);
+      paramView.rightMargin = aekt.a(20.0F, localResources);
+      ((RelativeLayout)localObject1).addView(localLinearLayout, paramView);
+      paramView = null;
+      i = 0;
+      Object localObject3;
+      if (i < j)
       {
-        if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
-          break label79;
-        }
-        Object localObject = (String)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-        localObject = (azui)this.jdField_a_of_type_JavaUtilMap.remove(localObject);
-        if (localObject != null)
+        localObject2 = (azqj)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        ((azqj)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject3 = ((azqj)localObject2).jdField_a_of_type_JavaLangString;
+        if ("summary".equals(localObject3))
         {
-          this.b.add(localObject);
-          if (((azui)localObject).a()) {
-            break;
+          localObject2 = (azvd)localObject2;
+          if (paramBoolean)
+          {
+            ((azvd)localObject2).b("black");
+            label527:
+            localObject3 = ((azvd)localObject2).f();
+            if ((localObject3 == null) || (!((String)localObject3).equals("1"))) {
+              break label621;
+            }
+            ((azvd)localObject2).c("22");
+            ((azvd)localObject2).a(true);
+            localObject2 = ((azvd)localObject2).a(paramContext, null, paramBundle);
+            ((View)localObject2).setId(2);
+            ((View)localObject2).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+            localLinearLayout.addView((View)localObject2, 0);
           }
-          this.b.remove(localObject);
         }
       }
-    }
-  }
-  
-  public int a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {
-      return -1;
-    }
-    if (paramItem.Id == null) {
-      return -2;
-    }
-    if (paramInt == 0) {
-      return -5;
-    }
-    String str = a(paramItem.Id, paramInt);
-    if (a(str))
-    {
-      azst.c("TroopFileThumbnailFetchMgr", azst.a, "[" + str + "] fetchFileThumbnail worker exsited. ");
-      return -4;
-    }
-    azui localazui = azui.a(paramLong, paramItem, paramInt, this);
-    if (localazui == null) {
-      return -3;
-    }
-    azun.a(paramItem, paramInt);
-    this.jdField_a_of_type_JavaUtilMap.put(str, localazui);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(str);
-    azst.c("TroopFileThumbnailFetchMgr", azst.a, "[" + str + "] fetchFileThumbnail fileName. " + paramItem.FileName + a());
-    d();
-    return 0;
-  }
-  
-  public int a(UUID paramUUID, int paramInt)
-  {
-    if (paramUUID == null) {
-      return -2;
-    }
-    String str = a(paramUUID, paramInt);
-    Object localObject = this.b.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      azui localazui = (azui)((Iterator)localObject).next();
-      if (str.equalsIgnoreCase(localazui.a()))
-      {
-        localazui.a();
-        ((Iterator)localObject).remove();
-      }
-    }
-    for (paramInt = 1;; paramInt = 0)
-    {
-      int i = paramInt;
-      if (paramInt == 0)
-      {
-        localObject = (azui)this.jdField_a_of_type_JavaUtilMap.remove(paramUUID);
-        if (localObject == null) {
-          break label168;
-        }
-        ((azui)localObject).a();
-        paramInt |= 0x1;
-      }
-      label168:
+      label1053:
+      label1066:
       for (;;)
       {
-        boolean bool = this.jdField_a_of_type_JavaUtilLinkedList.remove(paramUUID) | paramInt;
-        if (bool) {
-          azst.c("TroopFileThumbnailFetchMgr", azst.a, "[" + str + "] stopFetch. " + a());
+        i += 1;
+        break;
+        ((azvd)localObject2).b(null);
+        break label527;
+        label621:
+        if ((localObject3 != null) && (((String)localObject3).equals("2")))
+        {
+          ((azvd)localObject2).c("44");
+          ((azvd)localObject2).a(true);
+          localObject2 = ((azvd)localObject2).a(paramContext, null, paramBundle);
+          ((View)localObject2).setId(3);
+          localObject3 = new LinearLayout.LayoutParams(-2, -2);
+          ((LinearLayout.LayoutParams)localObject3).topMargin = aekt.a(-3.5F, localResources);
+          localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
         }
-        d();
-        return 0;
+        else
+        {
+          ((azvd)localObject2).c("30");
+          ((azvd)localObject2).b(20);
+          localObject2 = ((azvd)localObject2).a(paramContext, null, paramBundle);
+          ((View)localObject2).setId(4);
+          localObject3 = new RelativeLayout.LayoutParams(-2, -2);
+          ((RelativeLayout.LayoutParams)localObject3).addRule(1, 1);
+          ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+          continue;
+          if ("picture".equals(localObject3))
+          {
+            localObject3 = (azsm)localObject2;
+            localObject2 = ((azsm)localObject3).a(paramContext, null, true, paramBundle);
+            RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(aekt.a(40.0F, localResources), aekt.a(40.0F, localResources));
+            if ((((azsm)localObject3).c != null) && (!((azsm)localObject3).c.equals("")))
+            {
+              ((View)localObject2).setId(6);
+              localLayoutParams.addRule(11, -1);
+              ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
+              ((View)localObject2).setClickable(true);
+              ((View)localObject2).setOnClickListener((View.OnClickListener)localObject3);
+            }
+            else
+            {
+              ((View)localObject2).setId(5);
+              paramView = (View)localObject2;
+              continue;
+              if (localLinearLayout.getChildCount() == 0) {
+                localLinearLayout.setVisibility(8);
+              }
+              if (paramView != null)
+              {
+                paramContext = new RelativeLayout.LayoutParams(aekt.a(40.0F, localResources), aekt.a(40.0F, localResources));
+                if (((RelativeLayout)localObject1).findViewById(6) != null)
+                {
+                  paramContext.addRule(0, 6);
+                  paramContext.rightMargin = aekt.a(7.5F, localResources);
+                  ((RelativeLayout)localObject1).addView(paramView, paramContext);
+                }
+              }
+              else
+              {
+                paramContext = ((RelativeLayout)localObject1).findViewById(4);
+                if (paramContext != null)
+                {
+                  paramView = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
+                  if (((RelativeLayout)localObject1).findViewById(5) == null) {
+                    break label1066;
+                  }
+                  paramView.addRule(0, 5);
+                }
+              }
+              for (;;)
+              {
+                paramContext.setLayoutParams(paramView);
+                a((View)localObject1);
+                i = aekt.a(22.5F, localResources);
+                j = aekt.a(22.5F, localResources);
+                ((RelativeLayout)localObject1).setPadding(i, aekt.a(10.75F, localResources), j, aekt.a(11.75F, localResources));
+                return localObject1;
+                paramContext.addRule(11, -1);
+                break;
+                if (((RelativeLayout)localObject1).findViewById(6) != null) {
+                  paramView.addRule(0, 6);
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
   
-  public void a() {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt, azui paramazui)
+  protected int b()
   {
-    azsk.a(new TroopFileThumbnailFetchMgr.1(this, paramString, paramBoolean, paramInt, paramazui), false);
+    return 9;
   }
   
-  protected boolean a(String paramString)
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.equalsIgnoreCase(((azui)localIterator.next()).a())) {
-        return true;
-      }
-    }
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
+    return a(paramContext, paramView, false, paramBundle);
   }
   
-  public void b()
+  public String b()
   {
-    c();
-  }
-  
-  public void b(String paramString, boolean paramBoolean, int paramInt, azui paramazui)
-  {
-    this.b.remove(paramazui);
-    azst.c("TroopFileThumbnailFetchMgr", azst.a, "[" + paramString + "] onWorkDoneInter. bSuc:" + paramBoolean + " errCode:" + paramInt + a());
-    d();
-  }
-  
-  protected void c()
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      ((azui)localIterator.next()).a();
-    }
-    this.b.clear();
-    localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((azui)localIterator.next()).a();
-    }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    azst.c("TroopFileThumbnailFetchMgr", azst.a, "stopAllInter");
+    return "Layout9";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azuh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,44 @@
-import android.os.Handler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class qud
-  implements TVK_SDKMgr.InstallListener
+class qud
+  implements qts
 {
-  private Handler a;
+  qud(qua paramqua, ColumnInfo paramColumnInfo) {}
   
-  public qud(Handler paramHandler)
+  public void a(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    this.a = paramHandler;
-  }
-  
-  public void onInstallProgress(float paramFloat)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(2);
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("version", "8.3.0");
-      localJSONObject.put("error_code", paramInt);
-      label25:
-      nol.a(null, null, "0X8009752", "0X8009752", 0, 0, "0", qkx.a(false), String.valueOf(paramInt), localJSONObject.toString(), false);
-      nol.a(null, null, "0X8009753", "0X8009753", 0, 0, "0", qkx.a(false), String.valueOf(paramInt), localJSONObject.toString(), false);
-      if (this.a != null) {
-        this.a.sendEmptyMessage(1);
-      }
+    QLog.i("RIJUGC.ManageColumnPresenter", 2, "createTopic response errorCode = " + paramInt1 + ", errorMsg = " + paramString1 + ", tip = " + paramString2 + ", topicId = " + paramInt2);
+    if (qua.a(this.jdField_a_of_type_Qua) == null) {
       return;
     }
-    catch (Exception localException)
+    qua.a(this.jdField_a_of_type_Qua).d();
+    if (paramInt1 == 0)
     {
-      break label25;
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("version", "8.3.0");
-      label17:
-      nol.a(null, null, "0X8009753", "0X8009753", 0, 0, "1", qkx.a(false), "", localJSONObject.toString(), false);
-      if (this.a != null) {
-        this.a.sendEmptyMessage(0);
+      if (paramString2.equals(Integer.toString(0)))
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID = paramInt2;
+        qua.a(this.jdField_a_of_type_Qua).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, true);
+        qua.a(this.jdField_a_of_type_Qua).a(2131718874);
+        qua.a(this.jdField_a_of_type_Qua).a();
+        return;
       }
+      qua.a(this.jdField_a_of_type_Qua).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+      if (!paramString1.isEmpty())
+      {
+        qua.a(this.jdField_a_of_type_Qua).a(paramString1);
+        return;
+      }
+      qua.a(this.jdField_a_of_type_Qua).a(2131718873);
       return;
     }
-    catch (Exception localException)
-    {
-      break label17;
-    }
+    qua.a(this.jdField_a_of_type_Qua).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+    qua.a(this.jdField_a_of_type_Qua).a(2131718873);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qud
  * JD-Core Version:    0.7.0.1
  */

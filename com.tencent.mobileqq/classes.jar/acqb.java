@@ -1,26 +1,38 @@
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acqb
-  implements bble<Integer>
+  implements Animation.AnimationListener
 {
-  public acqb(VisitorsActivity paramVisitorsActivity) {}
+  public acqb(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void a(bbky<Integer> parambbky, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.c.setText(paramInteger + "");
-    if (paramInteger.intValue() > 9999)
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
     {
-      this.a.c.setTextSize(36.0F);
+      this.jdField_a_of_type_AndroidAppDialog.show();
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+      DiscussionMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(8);
+    }
+    while (paramAnimation != this.b) {
       return;
     }
-    this.a.c.setTextSize(44.0F);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqb
  * JD-Core Version:    0.7.0.1
  */

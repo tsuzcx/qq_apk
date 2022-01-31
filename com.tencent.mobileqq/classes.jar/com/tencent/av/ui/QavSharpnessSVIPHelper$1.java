@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mil;
+import mld;
 
 public class QavSharpnessSVIPHelper$1
   implements Runnable
 {
-  public QavSharpnessSVIPHelper$1(mil parammil) {}
+  public QavSharpnessSVIPHelper$1(mld parammld) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QavSharpnessSVIPHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.QavSharpnessSVIPHelper.1
  * JD-Core Version:    0.7.0.1
  */

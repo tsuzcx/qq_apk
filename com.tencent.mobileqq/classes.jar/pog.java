@@ -1,17 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class pog
-  extends RecyclerView.ViewHolder
+class pog
+  implements View.OnClickListener
 {
-  public pog(pny parampny, View paramView)
+  pog(poe parampoe, Context paramContext, ArticleInfo paramArticleInfo) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramView);
+    ors.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, false, 6, false);
+    rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pog
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import baww;
-import bcjz;
-import bcka;
-import bckb;
-import bckc;
-import bcrh;
-import bftz;
+import bcvq;
+import beja;
+import bejb;
+import bejc;
+import bejd;
+import beqq;
+import bhuw;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.widget.ScrollView;
@@ -28,12 +28,12 @@ public class BounceScrollView
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new bcjz(this));
-  private bcka jdField_a_of_type_Bcka;
-  private bckb jdField_a_of_type_Bckb;
-  protected bckc a;
-  bcrh jdField_a_of_type_Bcrh = null;
-  bftz jdField_a_of_type_Bftz;
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new beja(this));
+  private bejb jdField_a_of_type_Bejb;
+  private bejc jdField_a_of_type_Bejc;
+  protected bejd a;
+  beqq jdField_a_of_type_Beqq = null;
+  bhuw jdField_a_of_type_Bhuw;
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 1.0F };
   private int[] jdField_a_of_type_ArrayOfInt = { -654311425, -654311425 };
@@ -55,8 +55,8 @@ public class BounceScrollView
     super(paramContext, paramAttributeSet);
     setOverScrollMode(0);
     setFadingEdgeLength(0);
-    if (AppSetting.d) {
-      baww.a(this, false);
+    if (AppSetting.jdField_c_of_type_Boolean) {
+      bcvq.a(this, false);
     }
   }
   
@@ -85,8 +85,8 @@ public class BounceScrollView
   public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_Bcka != null) {
-      this.jdField_a_of_type_Bcka.a();
+    if (this.jdField_a_of_type_Bejb != null) {
+      this.jdField_a_of_type_Bejb.a();
     }
   }
   
@@ -94,12 +94,12 @@ public class BounceScrollView
   {
     boolean bool2 = false;
     boolean bool1;
-    if (this.jdField_a_of_type_Bckb != null)
+    if (this.jdField_a_of_type_Bejc != null)
     {
       MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
       if (localMotionEvent != null)
       {
-        bool1 = this.jdField_a_of_type_Bckb.a(this, localMotionEvent);
+        bool1 = this.jdField_a_of_type_Bejc.a(this, localMotionEvent);
         localMotionEvent.recycle();
       }
     }
@@ -108,11 +108,11 @@ public class BounceScrollView
       int i = paramMotionEvent.getAction() & 0xFF;
       if (i == 1)
       {
-        if (this.jdField_a_of_type_Bckc != null) {
-          this.jdField_a_of_type_Bckc.a(paramMotionEvent.getX(), paramMotionEvent.getY());
+        if (this.jdField_a_of_type_Bejd != null) {
+          this.jdField_a_of_type_Bejd.a(paramMotionEvent.getX(), paramMotionEvent.getY());
         }
-        if (this.jdField_a_of_type_Bcrh != null) {
-          this.jdField_a_of_type_Bcrh.a(this, paramMotionEvent.getX(), paramMotionEvent.getY());
+        if (this.jdField_a_of_type_Beqq != null) {
+          this.jdField_a_of_type_Beqq.a(this, paramMotionEvent.getX(), paramMotionEvent.getY());
         }
       }
       for (;;)
@@ -133,12 +133,12 @@ public class BounceScrollView
         }
         if (i == 3)
         {
-          if (this.jdField_a_of_type_Bcrh != null) {
-            this.jdField_a_of_type_Bcrh.a(this, paramMotionEvent.getX(), paramMotionEvent.getY());
+          if (this.jdField_a_of_type_Beqq != null) {
+            this.jdField_a_of_type_Beqq.a(this, paramMotionEvent.getX(), paramMotionEvent.getY());
           }
         }
-        else if ((i == 0) && (this.jdField_a_of_type_Bcrh != null)) {
-          this.jdField_a_of_type_Bcrh.b(this, paramMotionEvent.getX(), paramMotionEvent.getY());
+        else if ((i == 0) && (this.jdField_a_of_type_Beqq != null)) {
+          this.jdField_a_of_type_Beqq.b(this, paramMotionEvent.getX(), paramMotionEvent.getY());
         }
       }
       bool1 = false;
@@ -162,8 +162,8 @@ public class BounceScrollView
   public void fling(int paramInt)
   {
     super.fling(paramInt);
-    if (this.jdField_a_of_type_Bcrh != null) {
-      this.jdField_a_of_type_Bcrh.a(this, paramInt);
+    if (this.jdField_a_of_type_Beqq != null) {
+      this.jdField_a_of_type_Beqq.a(this, paramInt);
     }
   }
   
@@ -197,11 +197,11 @@ public class BounceScrollView
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Bckc != null) {
-      this.jdField_a_of_type_Bckc.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_Bejd != null) {
+      this.jdField_a_of_type_Bejd.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    if (this.jdField_a_of_type_Bcrh != null) {
-      this.jdField_a_of_type_Bcrh.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_Beqq != null) {
+      this.jdField_a_of_type_Beqq.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
     if (this.jdField_c_of_type_Boolean) {
       getChildAt(0).invalidate();
@@ -213,8 +213,8 @@ public class BounceScrollView
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     a();
-    if (this.jdField_a_of_type_Bftz != null) {
-      this.jdField_a_of_type_Bftz.a(paramInt1, paramInt2, paramInt3, paramInt4, false, 0);
+    if (this.jdField_a_of_type_Bhuw != null) {
+      this.jdField_a_of_type_Bhuw.a(paramInt1, paramInt2, paramInt3, paramInt4, false, 0);
     }
   }
   
@@ -249,9 +249,9 @@ public class BounceScrollView
     return true;
   }
   
-  public void setDrawFinishedListener(bcka parambcka)
+  public void setDrawFinishedListener(bejb parambejb)
   {
-    this.jdField_a_of_type_Bcka = parambcka;
+    this.jdField_a_of_type_Bejb = parambejb;
   }
   
   public void setMaxHeight(int paramInt)
@@ -259,9 +259,9 @@ public class BounceScrollView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setMotionEventInterceptor(bckb parambckb)
+  public void setMotionEventInterceptor(bejc parambejc)
   {
-    this.jdField_a_of_type_Bckb = parambckb;
+    this.jdField_a_of_type_Bejc = parambejc;
   }
   
   public void setNeedHorizontalGesture(boolean paramBoolean)
@@ -269,19 +269,19 @@ public class BounceScrollView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScrollChangedListener(bckc parambckc)
+  public void setOnScrollChangedListener(bejd parambejd)
   {
-    this.jdField_a_of_type_Bckc = parambckc;
+    this.jdField_a_of_type_Bejd = parambejd;
   }
   
-  public void setOnSizeChangeListener(bftz parambftz)
+  public void setOnSizeChangeListener(bhuw parambhuw)
   {
-    this.jdField_a_of_type_Bftz = parambftz;
+    this.jdField_a_of_type_Bhuw = parambhuw;
   }
   
-  public void setScrollListener(bcrh parambcrh)
+  public void setScrollListener(beqq parambeqq)
   {
-    this.jdField_a_of_type_Bcrh = parambcrh;
+    this.jdField_a_of_type_Beqq = parambeqq;
   }
 }
 

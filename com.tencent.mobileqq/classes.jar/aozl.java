@@ -1,31 +1,29 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import java.lang.ref.WeakReference;
 
-class aozl
-  implements apag
+public class aozl
+  implements afev
 {
-  aozl(aozi paramaozi, FileManagerEntity paramFileManagerEntity) {}
+  public aozl(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
   
   public void a()
   {
-    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init cancel!");
-  }
-  
-  public void b()
-  {
-    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init success, start video download");
-    new aplp(this.jdField_a_of_type_Aozi.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
-    for (Object localObject = new apls(this.jdField_a_of_type_Aozi.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new aplp(this.jdField_a_of_type_Aozi.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
+    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
     {
-      apab.a((apll)localObject);
-      return;
+      Object localObject = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
+      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (localObject != null) {
+        localObject = (anjy)((QQAppInterface)localObject).a(95);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozl
  * JD-Core Version:    0.7.0.1
  */

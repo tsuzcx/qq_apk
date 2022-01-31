@@ -16,6 +16,7 @@ import com.tencent.viola.annotation.VComponentProp;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.ui.baseComponent.VComponentContainer;
+import com.tencent.viola.ui.dom.Attr;
 import com.tencent.viola.ui.dom.DomObject;
 import com.tencent.viola.ui.view.VModalView;
 import com.tencent.viola.utils.ViolaLogUtils;
@@ -27,6 +28,7 @@ public class VModal
   extends VComponentContainer<VModalView>
 {
   private boolean mHasAddView = false;
+  private boolean mIsAutoLayout = false;
   private boolean mIsSus = false;
   private Window mWindow = null;
   private WindowManager mWindowManager;
@@ -100,6 +102,9 @@ public class VModal
     paramContext = new VModalView(paramContext);
     paramContext.bindComponent(this);
     paramContext.setVisibility(8);
+    if ((getDomObject() != null) && (getDomObject().getAttributes() != null) && (getDomObject().getAttributes().containsKey("autoLayout"))) {
+      this.mIsAutoLayout = ((Boolean)getDomObject().getAttributes().get("autoLayout")).booleanValue();
+    }
     return paramContext;
   }
   
@@ -128,7 +133,7 @@ public class VModal
         if (((VModalView)getHostView()).getParent() != null) {
           break;
         }
-        if ((getInstance().getUrl().contains("v_present=2")) || (getInstance().getUrl().contains("v_present=1")) || (getInstance().getUrl().contains("v_old_modal=1"))) {
+        if ((getInstance().getUrl().contains("v_present=2")) || (getInstance().getUrl().contains("v_present=1")) || (getInstance().getUrl().contains("v_old_modal=1")) || (this.mIsAutoLayout)) {
           this.mIsSus = true;
         }
         if (this.mIsSus)
@@ -172,7 +177,7 @@ public class VModal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.component.VModal
  * JD-Core Version:    0.7.0.1
  */

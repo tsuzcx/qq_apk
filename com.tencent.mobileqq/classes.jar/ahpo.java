@@ -1,12 +1,10 @@
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-
 public abstract interface ahpo
 {
-  public abstract void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpo
  * JD-Core Version:    0.7.0.1
  */

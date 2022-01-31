@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.multimsg;
 
-import asua;
-import axrn;
+import aukx;
+import azmz;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,7 +14,7 @@ import java.util.List;
 public class MultiMsgManager$5
   implements Runnable
 {
-  public MultiMsgManager$5(asua paramasua, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
+  public MultiMsgManager$5(aukx paramaukx, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
@@ -24,11 +24,11 @@ public class MultiMsgManager$5
     StringBuilder localStringBuilder;
     if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)localObject).structingMsg.mMsgAction)))
     {
-      localObject = asua.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      localObject = aukx.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
       if (localObject != null)
       {
         j = ((List)localObject).size();
-        k = asua.a().a((Collection)localObject);
+        k = aukx.a().a((Collection)localObject);
         localObject = new HashMap();
         localStringBuilder = new StringBuilder();
         if (!this.jdField_a_of_type_Boolean) {
@@ -42,14 +42,14 @@ public class MultiMsgManager$5
       ((HashMap)localObject).put("result", i + "");
       ((HashMap)localObject).put("msgCount", j + "");
       ((HashMap)localObject).put("picCount", k + "");
-      axrn.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgSend", this.jdField_a_of_type_Boolean, 30000L, 0L, (HashMap)localObject, "");
+      azmz.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgSend", this.jdField_a_of_type_Boolean, 30000L, 0L, (HashMap)localObject, "");
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgManager.5
  * JD-Core Version:    0.7.0.1
  */

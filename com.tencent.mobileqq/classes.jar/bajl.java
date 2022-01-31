@@ -1,44 +1,65 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class bajl
+class bajl
+  implements bajj
 {
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, mxj parammxj)
+  private IBinder a;
+  
+  bajl(IBinder paramIBinder)
   {
-    if (paramLong <= 0L) {
-      return;
-    }
-    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.0,3,4480");
-    localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.seqno.set(0);
-    localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uin", paramLong);
-    mxf.a(paramQQAppInterface, parammxj, localGetPublicAccountDetailInfoRequest.toByteArray(), "PubAccountSvc.get_detail_info", localBundle);
+    this.a = paramIBinder;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, mxj parammxj, Bundle paramBundle)
+  public IBinder asBinder()
   {
-    mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
-    localFollowRequest.luin.set(paramLong);
-    localFollowRequest.ext.set("0");
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    return this.a;
+  }
+  
+  public void onComplete(String paramString, int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    mxf.a(paramQQAppInterface, parammxj, localFollowRequest.toByteArray(), "PubAccountSvc.follow", localBundle);
-    nol.a(paramQQAppInterface, "" + paramLong, 0);
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
+      localParcel1.writeString(paramString);
+      localParcel1.writeLong(paramLong1);
+      localParcel1.writeLong(paramLong2);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bajl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,19 @@
-import com.tencent.TMG.utils.QLog;
+import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
 
-public class awpg
-  extends awor
+public final class awpg
+  implements apqa
 {
-  public static final String a = awpg.class.getSimpleName();
-  public String b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  
-  public awpg(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public List<apsm> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public awpg(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.b = paramString.optString("leftIcon");
-      this.j = paramString.optString("firstTitle");
-      this.k = paramString.optString("secondTitle");
-      this.l = paramString.optString("moreText");
-      this.m = paramString.optString("jumpUrl");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(a, 0, paramString.toString());
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new apsm(7, 7, null));
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awpg
  * JD-Core Version:    0.7.0.1
  */

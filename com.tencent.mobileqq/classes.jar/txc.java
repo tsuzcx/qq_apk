@@ -1,62 +1,39 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
 
 public class txc
-  extends tvz<ProfileFeedPlayInfo>
+  implements uah
 {
-  public txc(ProfileFeedPlayInfo paramProfileFeedPlayInfo)
-  {
-    super(paramProfileFeedPlayInfo);
-    paramProfileFeedPlayInfo = (uvx)tcz.a(11);
-    if (paramProfileFeedPlayInfo.b != null) {
-      this.a = paramProfileFeedPlayInfo.b;
-    }
-  }
+  public txc(QCircleContentOperationView paramQCircleContentOperationView, View.OnClickListener paramOnClickListener) {}
   
-  public uvp a(String paramString)
+  public void a(boolean paramBoolean)
   {
-    if (this.a == null) {
-      return null;
-    }
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
+    int i;
+    QCircleContentOperationView localQCircleContentOperationView;
+    if (paramBoolean)
     {
-      uvp localuvp = (uvp)localIterator.next();
-      if (localuvp.a.equals(paramString)) {
-        return localuvp;
+      i = 2130843599;
+      ((QCircleContentOperationView)localObject).setBackgroundResource(i);
+      localQCircleContentOperationView = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
+      if (!paramBoolean) {
+        break label52;
       }
     }
-    return null;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, twr paramtwr)
-  {
-    if (this.a == null)
+    label52:
+    for (localObject = this.jdField_a_of_type_AndroidViewView$OnClickListener;; localObject = null)
     {
-      paramtwr.a(new ErrorMessage(940001, "null point"), null, true);
+      localQCircleContentOperationView.setOnClickListener((View.OnClickListener)localObject);
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.setClickable(paramBoolean);
       return;
+      i = 0;
+      break;
     }
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject).size() > 0))
-    {
-      List localList = b((List)localObject);
-      paramtwr.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
-      ved.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
-      return;
-    }
-    localObject = new tmq();
-    ((tmq)localObject).a = this.a.a();
-    ((tmq)localObject).b = QQStoryContext.a().b();
-    ved.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request with cookie " + ((tmq)localObject).a);
-    syo.a().a((sys)localObject, new txd(this, paramtwr));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txc
  * JD-Core Version:    0.7.0.1
  */

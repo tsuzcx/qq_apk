@@ -33,15 +33,15 @@ public class MsfService
   private static String fromProcessName = "null";
   public static volatile boolean inited = false;
   static HashSet invalidUids;
-  static n msfServiceReqHandler = new n();
-  static p msfServiceRespHandler;
+  static q msfServiceReqHandler = new q();
+  static s msfServiceRespHandler;
   static HashSet passedUids = new HashSet();
   public static volatile boolean sIsCreatedByAutoBoot = false;
   public static long serviceInitStart = 0L;
   public static final String tag = "MSF.S.MsfService";
-  private IBaseService.Stub binder = new j(this);
+  private IBaseService.Stub binder = new m(this);
   private NetConnInfoCenter mReceiver;
-  public Handler mUIHandler = new i(this, Looper.getMainLooper());
+  public Handler mUIHandler = new l(this, Looper.getMainLooper());
   
   static
   {
@@ -152,13 +152,13 @@ public class MsfService
         l1 = SystemClock.elapsedRealtime();
         QLog.d("MsfInitCost", 1, "MSF_Alive_Log MsfCoreInitCost: " + (l1 - serviceInitStart));
         e.a(paramContext, core);
-        msfServiceRespHandler = new p(core);
+        msfServiceRespHandler = new s(core);
         msfServiceRespHandler.setName("MsfServiceRespHandler");
         msfServiceRespHandler.start();
         inited = true;
         long l2 = SystemClock.elapsedRealtime() - serviceInitStart;
         QLog.d("MsfInitCost", 1, "MSF_Alive_Log ServiceInitCost: " + l2);
-        new l(l1, l2).start();
+        new o(l1, l2).start();
         bool1 = bool3;
       }
       try
@@ -191,7 +191,7 @@ public class MsfService
         }
       }
       if (bool2) {
-        new m().start();
+        new p().start();
       }
       return;
     }
@@ -269,8 +269,8 @@ public class MsfService
           if (a.am()) {
             a.a(false);
           }
-          g.a(paramIntent, 1);
-          h.a(this.mUIHandler);
+          j.a(paramIntent, 1);
+          k.a(this.mUIHandler);
           return this.binder;
         }
         catch (Exception localException2)
@@ -293,7 +293,7 @@ public class MsfService
     }
     sIsCreatedByAutoBoot = false;
     startForegroundCompat();
-    this.mUIHandler.postDelayed(new k(this), 10000L);
+    this.mUIHandler.postDelayed(new n(this), 10000L);
   }
   
   public void onDestroy()
@@ -340,8 +340,8 @@ public class MsfService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onStart");
-    g.a(paramIntent, 2);
-    h.a(this.mUIHandler);
+    j.a(paramIntent, 2);
+    k.a(this.mUIHandler);
     super.onStartCommand(paramIntent, paramInt1, paramInt2);
     return 1;
   }

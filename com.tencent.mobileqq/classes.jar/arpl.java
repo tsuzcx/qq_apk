@@ -1,434 +1,414 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader.2;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import tencent.im.PluginConfig.PluginConfig.BatchGetResourceReq;
-import tencent.im.PluginConfig.PluginConfig.BatchGetResourceResp;
-import tencent.im.PluginConfig.PluginConfig.GetResourceReq;
-import tencent.im.PluginConfig.PluginConfig.GetResourceResp;
-import tencent.im.PluginConfig.PluginConfig.GetResourceRespInfo;
-import tencent.im.PluginConfig.PluginConfig.PluginGroup;
-import tencent.im.PluginConfig.PluginConfig.PluginLayout;
+import mqq.os.MqqHandler;
 
 public class arpl
-  extends ajtb
 {
-  protected boolean a;
+  public static String a;
+  private int jdField_a_of_type_Int = 0;
+  final long jdField_a_of_type_Long;
+  private final Bundle jdField_a_of_type_AndroidOsBundle;
+  private arpn jdField_a_of_type_Arpn;
+  private arpo jdField_a_of_type_Arpo = new arpm(this);
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private List<arpo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private Bundle jdField_b_of_type_AndroidOsBundle;
+  private Object jdField_b_of_type_JavaLangObject = new Object();
+  private final String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
   
-  public arpl(QQAppInterface paramQQAppInterface)
+  static
   {
-    super(paramQQAppInterface);
+    jdField_a_of_type_JavaLangString = "UniformDownloader<FileAssistant>";
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public arpl(long paramLong, String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.CommPluginHandler", 2, "handleBatchGetPluginList");
-    }
-    Object localObject2 = "";
-    boolean bool2;
-    Object localObject1;
-    int i;
-    label85:
-    boolean bool1;
-    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramObject != null))
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public static String a(int paramInt)
+  {
+    String str = alpo.a(2131716270);
+    switch (paramInt)
     {
-      bool2 = true;
-      if (bool2) {
-        localObject1 = new PluginConfig.BatchGetResourceResp();
-      }
+    default: 
+      return str + "[" + String.valueOf(paramInt) + "]";
+    case 0: 
+      return "";
+    case 1: 
+      return str + "[" + String.valueOf(paramInt) + "]";
+    case 2: 
+      return alpo.a(2131716276);
+    case 3: 
+      return alpo.a(2131716264);
+    case 4: 
+      return alpo.a(2131716269);
+    case 5: 
+      return alpo.a(2131716266);
+    case 6: 
+      return alpo.a(2131716277);
+    case 7: 
+      return alpo.a(2131716274);
+    case 8: 
+      return alpo.a(2131716275);
+    case 9: 
+      return alpo.a(2131716273);
+    case 10: 
+      return "SDK下载服务错误";
+    case 11: 
+      return alpo.a(2131716268);
+    case 12: 
+      return "下载器DC失败";
+    case 13: 
+      return alpo.a(2131716267);
     }
-    else
+    return alpo.a(2131716272);
+  }
+  
+  private List<arpo> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      try
+      int j = this.jdField_a_of_type_JavaUtilList.size();
+      int i = 0;
+      while (i < j)
       {
-        Object localObject4 = (PluginConfig.BatchGetResourceResp)((PluginConfig.BatchGetResourceResp)localObject1).mergeFrom((byte[])paramObject);
-        if (!((PluginConfig.BatchGetResourceResp)localObject4).errcode.has()) {
-          break label398;
-        }
-        i = ((PluginConfig.BatchGetResourceResp)localObject4).errcode.get();
-        if (i != 0) {
-          break label404;
-        }
-        bool1 = true;
-        label93:
-        localObject1 = localObject2;
-        try
-        {
-          if (!((PluginConfig.BatchGetResourceResp)localObject4).errmsg.has()) {
-            break label410;
-          }
-          localObject1 = localObject2;
-          paramObject = ((PluginConfig.BatchGetResourceResp)localObject4).errmsg.get();
-          label121:
-          if (!bool1) {
-            break label450;
-          }
-          localObject1 = paramObject;
-          if (!((PluginConfig.BatchGetResourceResp)localObject4).resp_list.has()) {
-            break label465;
-          }
-          localObject1 = paramObject;
-          localObject2 = ((PluginConfig.BatchGetResourceResp)localObject4).resp_list.get();
-          label153:
-          if (localObject2 == null) {
-            break label416;
-          }
-          localObject1 = paramObject;
-          if (((List)localObject2).isEmpty()) {
-            break label416;
-          }
-          localObject1 = paramObject;
-          localObject2 = ((List)localObject2).iterator();
-          for (;;)
-          {
-            localObject1 = paramObject;
-            if (!((Iterator)localObject2).hasNext()) {
-              break;
-            }
-            localObject1 = paramObject;
-            localObject4 = (PluginConfig.GetResourceResp)((Iterator)localObject2).next();
-            if (localObject4 != null)
-            {
-              localObject1 = paramObject;
-              if (((PluginConfig.GetResourceResp)localObject4).plugin_type.get() == 4000)
-              {
-                localObject1 = paramObject;
-                a(true, paramToServiceMsg, paramFromServiceMsg, (PluginConfig.GetResourceResp)localObject4);
-              }
-            }
-          }
-          QLog.d("Q.lebatab.CommPluginHandler", 1, "handleBatchGetPluginList exp:" + ((Exception)localObject1).toString());
-        }
-        catch (Exception localException2)
-        {
-          paramObject = localObject1;
-          localObject1 = localException2;
-        }
+        localArrayList.add((arpo)this.jdField_a_of_type_JavaUtilList.get(i));
+        i += 1;
       }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          i = -1;
-          paramObject = "";
-        }
-      }
-      bool1 = false;
-    }
-    label398:
-    label404:
-    label410:
-    label416:
-    label450:
-    label465:
-    label471:
-    for (;;)
-    {
-      if ((bool1) && (bool2)) {}
-      for (boolean bool3 = true;; bool3 = false)
-      {
-        if (!bool3) {
-          a(false, paramToServiceMsg, paramFromServiceMsg, null);
-        }
-        QLog.d("Q.lebatab.CommPluginHandler", 1, new Object[] { "handleBatchGetPluginList finalResult:", Boolean.valueOf(bool3), ",ssoSuc=", Boolean.valueOf(bool2), ",busiSuc=", Boolean.valueOf(bool1), ",busiErrCode=", Integer.valueOf(i), ",errMsg=", paramObject });
-        return;
-        bool2 = false;
-        break;
-        i = -1;
-        break label85;
-        bool1 = false;
-        break label93;
-        paramObject = "";
-        break label121;
-        bool1 = false;
-        localObject1 = paramObject;
-        QLog.d("Q.lebatab.CommPluginHandler", 1, "handleBatchGetPluginList respInfoList is null");
-        break label471;
-      }
-      break label471;
-      i = -1;
-      bool1 = false;
-      paramObject = localException2;
-      continue;
-      Object localObject3 = null;
-      break label153;
+      return localArrayList;
     }
   }
   
-  private void a(List<PluginConfig.GetResourceReq> paramList)
+  private void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    QLog.i("Q.lebatab.CommPluginHandler", 1, "batchGetPluginList");
-    if ((paramList == null) || (paramList.isEmpty()))
+    ThreadManager.getSubThreadHandler().post(new UniformDownloader.2(this, paramBundle, paramInt, paramString));
+  }
+  
+  /* Error */
+  private boolean a(boolean paramBoolean, Bundle paramBundle)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: aload_0
+    //   5: getfield 150	arpl:jdField_a_of_type_Arpn	Larpn;
+    //   8: ifnull +24 -> 32
+    //   11: aload_0
+    //   12: getfield 150	arpl:jdField_a_of_type_Arpn	Larpn;
+    //   15: aconst_null
+    //   16: invokeinterface 155 2 0
+    //   21: pop
+    //   22: aload_0
+    //   23: getfield 150	arpl:jdField_a_of_type_Arpn	Larpn;
+    //   26: invokeinterface 157 1 0
+    //   31: pop
+    //   32: iload_1
+    //   33: ifeq +96 -> 129
+    //   36: aload_0
+    //   37: iconst_1
+    //   38: putfield 29	arpl:jdField_a_of_type_Int	I
+    //   41: aload_0
+    //   42: new 159	arpp
+    //   45: dup
+    //   46: aload_0
+    //   47: getfield 51	arpl:jdField_a_of_type_Long	J
+    //   50: invokespecial 162	arpp:<init>	(J)V
+    //   53: putfield 150	arpl:jdField_a_of_type_Arpn	Larpn;
+    //   56: aload_0
+    //   57: getfield 150	arpl:jdField_a_of_type_Arpn	Larpn;
+    //   60: aload_0
+    //   61: getfield 45	arpl:jdField_a_of_type_Arpo	Larpo;
+    //   64: invokeinterface 155 2 0
+    //   69: pop
+    //   70: iload_3
+    //   71: istore_1
+    //   72: aload_0
+    //   73: getfield 150	arpl:jdField_a_of_type_Arpn	Larpn;
+    //   76: aload_0
+    //   77: getfield 47	arpl:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   80: aload_2
+    //   81: invokeinterface 165 3 0
+    //   86: ifeq +39 -> 125
+    //   89: getstatic 22	arpl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   92: iconst_1
+    //   93: new 65	java/lang/StringBuilder
+    //   96: dup
+    //   97: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   100: ldc 167
+    //   102: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: aload_0
+    //   106: getfield 51	arpl:jdField_a_of_type_Long	J
+    //   109: invokevirtual 170	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   112: ldc 172
+    //   114: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   123: iconst_0
+    //   124: istore_1
+    //   125: aload_0
+    //   126: monitorexit
+    //   127: iload_1
+    //   128: ireturn
+    //   129: aload_0
+    //   130: iconst_2
+    //   131: putfield 29	arpl:jdField_a_of_type_Int	I
+    //   134: aload_0
+    //   135: new 180	arpx
+    //   138: dup
+    //   139: aload_0
+    //   140: getfield 51	arpl:jdField_a_of_type_Long	J
+    //   143: invokespecial 181	arpx:<init>	(J)V
+    //   146: putfield 150	arpl:jdField_a_of_type_Arpn	Larpn;
+    //   149: goto -93 -> 56
+    //   152: astore_2
+    //   153: aload_0
+    //   154: monitorexit
+    //   155: aload_2
+    //   156: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	157	0	this	arpl
+    //   0	157	1	paramBoolean	boolean
+    //   0	157	2	paramBundle	Bundle
+    //   1	70	3	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   4	32	152	finally
+    //   36	56	152	finally
+    //   56	70	152	finally
+    //   72	123	152	finally
+    //   129	149	152	finally
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Arpn != null)
     {
-      QLog.i("Q.lebatab.CommPluginHandler", 1, "batchGetPluginList return for req_list is empty");
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. start. ");
+      return this.jdField_a_of_type_Arpn.a();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. start. mDownloadler = null.");
+    return -1;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a(arpo paramarpo)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.contains(paramarpo)) {
+        this.jdField_a_of_type_JavaUtilList.remove(paramarpo);
+      }
       return;
     }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "PluginConfig.dynamic_plugin");
-    PluginConfig.BatchGetResourceReq localBatchGetResourceReq = new PluginConfig.BatchGetResourceReq();
-    localBatchGetResourceReq.req_list.set(paramList);
-    localToServiceMsg.putWupBuffer(localBatchGetResourceReq.toByteArray());
-    localToServiceMsg.extraData.putString("uin", this.app.getCurrentAccountUin());
-    sendPbReq(localToServiceMsg);
   }
   
-  private void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, PluginConfig.GetResourceResp paramGetResourceResp)
+  public void a(arpo paramarpo, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.CommPluginHandler", 2, "handleGetLebaPluginList");
-    }
-    int i = -1;
-    Object localObject = Collections.emptyList();
-    paramToServiceMsg = Collections.emptyList();
-    int j = -1;
-    if (paramBoolean)
+    for (;;)
     {
-      if (paramGetResourceResp != null) {}
+      synchronized (this.jdField_b_of_type_JavaLangObject)
+      {
+        int j = this.jdField_a_of_type_JavaUtilList.size();
+        i = 0;
+        if (i >= j) {
+          break label243;
+        }
+        if ((arpo)this.jdField_a_of_type_JavaUtilList.get(i) == paramarpo)
+        {
+          if (paramBoolean == true)
+          {
+            if ((!paramBoolean) || (i < 0)) {
+              break label109;
+            }
+            paramarpo = (arpo)this.jdField_a_of_type_JavaUtilList.remove(i);
+            this.jdField_a_of_type_JavaUtilList.add(paramarpo);
+            this.jdField_b_of_type_Boolean = true;
+            return;
+          }
+          return;
+        }
+      }
+      i += 1;
+      continue;
+      label109:
+      if (paramarpo != null)
+      {
+        if (!this.jdField_b_of_type_Boolean) {
+          break label229;
+        }
+        i = this.jdField_a_of_type_JavaUtilList.size();
+        arpo localarpo = (arpo)this.jdField_a_of_type_JavaUtilList.remove(i - 1);
+        this.jdField_a_of_type_JavaUtilList.add(paramarpo);
+        this.jdField_a_of_type_JavaUtilList.add(localarpo);
+      }
       for (;;)
       {
-        try
-        {
-          if (paramGetResourceResp.plugin_layout.has())
-          {
-            paramFromServiceMsg = (PluginConfig.PluginLayout)paramGetResourceResp.plugin_layout.get();
-            if (paramFromServiceMsg == null) {
-              continue;
-            }
-            if (!paramFromServiceMsg.layout_type.has()) {
-              continue;
-            }
-            j = paramFromServiceMsg.layout_type.get();
-          }
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. addListenser. size=" + this.jdField_a_of_type_JavaUtilList.size());
+        if (paramBoolean) {
+          this.jdField_b_of_type_Boolean = true;
         }
-        catch (Exception paramFromServiceMsg)
-        {
-          ArrayList localArrayList;
-          int n;
-          int m;
-          label426:
-          j = -1;
-          i = -1;
-          continue;
-          int k = -1;
-          i = j;
-          j = k;
-          continue;
-        }
-        try
-        {
-          if (paramFromServiceMsg.plugin_layout_seq.has()) {
-            i = paramFromServiceMsg.plugin_layout_seq.get();
-          }
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          i = -1;
-          continue;
-        }
-        try
-        {
-          if (paramFromServiceMsg.group_list.has())
-          {
-            paramFromServiceMsg = paramFromServiceMsg.group_list.get();
-            if (paramFromServiceMsg == null) {
-              continue;
-            }
-            localArrayList = new ArrayList();
-            k = 0;
-            n = 0;
-          }
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          continue;
-          k = i;
-          i = j;
-          j = k;
-          continue;
-        }
-        try
-        {
-          if (n < paramFromServiceMsg.size())
-          {
-            paramToServiceMsg = (PluginConfig.PluginGroup)paramFromServiceMsg.get(n);
-            m = k;
-            if (paramToServiceMsg.has())
-            {
-              m = k;
-              if (paramToServiceMsg.res_id.has())
-              {
-                paramToServiceMsg = paramToServiceMsg.res_id.get();
-                int i1 = 0;
-                m = k;
-                if (i1 < paramToServiceMsg.size())
-                {
-                  ajzn localajzn = new ajzn();
-                  localajzn.jdField_a_of_type_Long = ((Integer)paramToServiceMsg.get(i1)).intValue();
-                  localajzn.jdField_a_of_type_Int = n;
-                  k += 1;
-                  localajzn.b = k;
-                  localArrayList.add(localajzn);
-                  i1 += 1;
-                  continue;
-                  paramFromServiceMsg = null;
-                  continue;
-                  j = -1;
-                  continue;
-                  i = -1;
-                  continue;
-                  paramFromServiceMsg = null;
-                  continue;
-                }
-              }
-            }
-            n += 1;
-            k = m;
-          }
-          else
-          {
-            k = j;
-            paramToServiceMsg = localArrayList;
-            j = i;
-            i = k;
-          }
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          paramToServiceMsg = localArrayList;
-        }
-      }
-      try
-      {
-        paramGetResourceResp = paramGetResourceResp.respinfo_list.get();
-        paramFromServiceMsg = new ArrayList();
-        if (paramGetResourceResp == null) {
-          break label554;
-        }
-        try
-        {
-          paramGetResourceResp = paramGetResourceResp.iterator();
-          while (paramGetResourceResp.hasNext())
-          {
-            localObject = LebaPluginInfo.convToLocalPluginInfo((PluginConfig.GetResourceRespInfo)paramGetResourceResp.next());
-            if (localObject != null) {
-              paramFromServiceMsg.add(localObject);
-            }
-          }
-          QLog.d("Q.lebatab.CommPluginHandler", 1, "handleGetLebaPluginList exp:" + paramFromServiceMsg.toString());
-        }
-        catch (Exception paramGetResourceResp)
-        {
-          k = j;
-          j = i;
-          localObject = paramFromServiceMsg;
-          i = k;
-          paramFromServiceMsg = paramGetResourceResp;
-        }
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        k = i;
-        i = j;
-        j = k;
-        break label426;
-      }
-      paramBoolean = false;
-    }
-    for (;;)
-    {
-      if (localObject != null)
-      {
-        k = ((List)localObject).size();
-        label471:
-        if (paramToServiceMsg == null) {
-          break label598;
-        }
-      }
-      label554:
-      label598:
-      for (m = paramToServiceMsg.size();; m = 0)
-      {
-        QLog.d("Q.lebatab.CommPluginHandler", 1, new Object[] { "handleGetLebaPluginList isSuc:", Boolean.valueOf(paramBoolean), ", resultInfos.size=", Integer.valueOf(k), ", groupList.size=", Integer.valueOf(m) });
-        this.app.a().a(paramBoolean, i, paramToServiceMsg, (List)localObject, j);
         return;
-        k = i;
-        i = j;
-        j = k;
-        for (;;)
-        {
-          localObject = paramFromServiceMsg;
-          break;
-          paramBoolean = false;
-          QLog.d("Q.lebatab.CommPluginHandler", 1, "handleGetLebaPluginList respInfo is null");
-          j = -1;
-          paramFromServiceMsg = (FromServiceMsg)localObject;
-        }
-        k = 0;
-        break label471;
+        label229:
+        this.jdField_a_of_type_JavaUtilList.add(paramarpo);
       }
-      j = -1;
-      i = -1;
+      label243:
+      int i = -1;
     }
   }
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.CommPluginHandler", 2, "getAllPluginList");
-    }
-    PluginConfig.GetResourceReq localGetResourceReq = this.app.a().a();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localGetResourceReq);
-    a(localArrayList);
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("PluginConfig.dynamic_plugin");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return null;
-  }
-  
-  public void onDestroy()
-  {
-    this.a = true;
-    super.onDestroy();
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (msgCmdFilter(paramFromServiceMsg.getServiceCmd()))) {
-      QLog.d("Q.lebatab.CommPluginHandler", 1, "req or res is null");
-    }
-    while (!"PluginConfig.dynamic_plugin".equals(paramFromServiceMsg.getServiceCmd())) {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. setNotifyUserStarted." + this.jdField_a_of_type_Boolean + "->" + paramBoolean);
+      this.jdField_a_of_type_Boolean = paramBoolean;
       return;
     }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+  }
+  
+  public boolean a()
+  {
+    int i = f();
+    if ((1 == i) || (6 == i)) {}
+    while ((2 == this.jdField_a_of_type_Int) && (8 == i)) {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(Bundle paramBundle)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. >>>init UniformDownloader");
+    Object localObject2 = paramBundle.getString("_PARAM_FILENAME");
+    long l = paramBundle.getLong("_PARAM_FILESIZE");
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. init err. filename=null");
+      localObject1 = "unnamefile";
+    }
+    if (0L == l)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. init err. filesize=0");
+      return false;
+    }
+    localObject2 = new Bundle();
+    String str1 = arni.b(armo.a().c() + (String)localObject1);
+    String str2 = armo.a().b() + (String)localObject1;
+    ((Bundle)localObject2).putString("_PARAM_FILENAME", (String)localObject1);
+    ((Bundle)localObject2).putString("_PARAM_TMP_FILEPATH", str1);
+    ((Bundle)localObject2).putString("_PARAM_FILEPATH", str2);
+    ((Bundle)localObject2).putLong("_PARAM_FILESIZE", l);
+    ((Bundle)localObject2).putLong("_PARAM_POS", 0L);
+    paramBundle = paramBundle.getBundle("_PARAM_USER_DATA");
+    if (paramBundle != null)
+    {
+      paramBundle = paramBundle.getString("COOKIE");
+      if (!TextUtils.isEmpty(paramBundle)) {
+        ((Bundle)localObject2).putString("_PARAM_COOKIE", paramBundle);
+      }
+    }
+    this.jdField_b_of_type_AndroidOsBundle = ((Bundle)localObject2);
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. >>>init UniformDownload info :: filename:[" + (String)localObject1 + "] fileSize:[" + l + "] tmpPath(maybe change):[" + str1 + "] savePath(maybe change):[" + str2 + "] url:[" + this.jdField_b_of_type_JavaLangString + "]");
+    return a(arpg.a((String)localObject1), (Bundle)localObject2);
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_Arpn != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pause. ");
+      return this.jdField_a_of_type_Arpn.c();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pause. mDownloadler = null.");
+    return -1;
+  }
+  
+  public boolean b()
+  {
+    return 2 == f();
+  }
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_Arpn != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. resume. ");
+      return this.jdField_a_of_type_Arpn.d();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. resume. mDownloadler = null.");
+    return -1;
+  }
+  
+  public boolean c()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+  }
+  
+  public int d()
+  {
+    if (this.jdField_a_of_type_Arpn != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. stop. ");
+      return this.jdField_a_of_type_Arpn.b();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. stop. mDownloadler = null.");
+    return -1;
+  }
+  
+  public int e()
+  {
+    if (this.jdField_a_of_type_Arpn != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pauseSlience. ");
+      return this.jdField_a_of_type_Arpn.f();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pauseSlience. mDownloadler = null.");
+    return -1;
+  }
+  
+  public int f()
+  {
+    if (this.jdField_a_of_type_Arpn != null) {
+      return this.jdField_a_of_type_Arpn.e();
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. getStatus. mDownloadler = null.");
+    return 0;
+  }
+  
+  public int g()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpl
  * JD-Core Version:    0.7.0.1
  */

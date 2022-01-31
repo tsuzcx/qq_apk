@@ -1,37 +1,60 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.PeakAppInterface;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedReq;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
+import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bjal
+  extends QzoneExternalRequest
 {
-  public static AppInterface a()
+  public JceStruct a;
+  
+  public bjal(long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString, int paramInt)
   {
-    try
-    {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface)) {
-        return (QQAppInterface)localObject;
-      }
-      localObject = BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
-      if ((localObject instanceof PeakAppInterface))
-      {
-        localObject = (PeakAppInterface)localObject;
-        return localObject;
-      }
+    super.setRefer(paramString);
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong1);
+    paramString = new AIONewestFeedReq();
+    paramString.uOpUin = paramLong1;
+    paramString.uHostUin = paramArrayList;
+    paramString.uLastTime = paramLong2;
+    paramString.src = paramInt;
+    this.a = paramString;
+  }
+  
+  public static AIONewestFeedRsp a(byte[] paramArrayOfByte, QQAppInterface paramQQAppInterface, int[] paramArrayOfInt)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    catch (Exception localException)
+    do
     {
-      QLog.e("CaptureContext", 1, "getAppRuntime fail, ", localException);
-    }
+      return paramArrayOfByte;
+      paramQQAppInterface = (AIONewestFeedRsp)decode(paramArrayOfByte, "getAIONewestFeed", paramArrayOfInt);
+      paramArrayOfByte = paramQQAppInterface;
+    } while (paramQQAppInterface != null);
     return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getAIONewestFeed";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getAIONewestFeed";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjal
  * JD-Core Version:    0.7.0.1
  */

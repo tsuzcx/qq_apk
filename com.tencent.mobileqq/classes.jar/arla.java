@@ -1,123 +1,28 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherClientIPCModule.1;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.util.List;
 
-public class arla
-  extends QIPCModule
+class arla
+  implements army
 {
-  private static volatile arla jdField_a_of_type_Arla;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  arla(arky paramarky, List paramList, arld paramarld) {}
   
-  public arla(String paramString)
+  public void a()
   {
-    super(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchTogetherClientIPCModule", 2, "WatchTogetherClientIPCModule register");
+    arni.a(this.jdField_a_of_type_JavaUtilList, arky.a(this.jdField_a_of_type_Arky));
+    if (this.jdField_a_of_type_Arld != null) {
+      this.jdField_a_of_type_Arld.a(2, 0);
     }
   }
   
-  public static arla a()
+  public void b()
   {
-    if (jdField_a_of_type_Arla == null) {}
-    try
-    {
-      if (jdField_a_of_type_Arla == null) {
-        jdField_a_of_type_Arla = new arla("WatchTogetherClientIPCModule");
-      }
-      return jdField_a_of_type_Arla;
-    }
-    finally {}
-  }
-  
-  private boolean a()
-  {
-    return Thread.currentThread() == Looper.getMainLooper().getThread();
-  }
-  
-  public void a(String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData)
-  {
-    if (a())
-    {
-      if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
-        arkv.a().a(BaseApplicationImpl.getContext(), paramWatchTogetherFloatingData);
-      }
-      do
-      {
-        return;
-        if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
-        {
-          arkv.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
-          return;
-        }
-      } while (!"ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString));
-      arkv.a().b();
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherClientIPCModule.1(this, paramString, paramWatchTogetherFloatingData));
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchTogetherClientIPCModule", 2, "call TogetherBusinessIPCModule action=" + paramString);
-    }
-    EIPCResult localEIPCResult = new EIPCResult();
-    if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
-      if (paramBundle != null)
-      {
-        paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
-        if (paramBundle != null)
-        {
-          a(paramString, paramBundle);
-          localEIPCResult.code = 0;
-        }
-      }
-    }
-    for (;;)
-    {
-      callbackResult(paramInt, localEIPCResult);
-      return localEIPCResult;
-      localEIPCResult.code = -102;
-      continue;
-      localEIPCResult.code = -102;
-      continue;
-      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
-      {
-        if (paramBundle != null)
-        {
-          paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
-          if (paramBundle != null)
-          {
-            a(paramString, paramBundle);
-            localEIPCResult.code = 0;
-          }
-          else
-          {
-            localEIPCResult.code = -102;
-          }
-        }
-        else
-        {
-          localEIPCResult.code = -102;
-        }
-      }
-      else if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString))
-      {
-        a(paramString, new WatchTogetherFloatingData());
-        localEIPCResult.code = 0;
-      }
+    if (this.jdField_a_of_type_Arld != null) {
+      this.jdField_a_of_type_Arld.a(2, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arla
  * JD-Core Version:    0.7.0.1
  */

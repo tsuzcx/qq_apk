@@ -11,25 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
-import bcfg;
-import bcfx;
-import bcga;
+import beeh;
+import beey;
+import befb;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import nau;
-import uiy;
-import uiz;
-import ved;
+import ndq;
+import vxq;
+import vxr;
+import wsv;
 
 public class StoryPlayerWebFragment
   extends WebViewFragment
 {
   public BroadcastReceiver a;
-  public uiz a;
+  public vxr a;
   
   public StoryPlayerWebFragment()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new uiy(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new vxq(this);
   }
   
   public static Intent a(Activity paramActivity, String paramString)
@@ -49,36 +49,36 @@ public class StoryPlayerWebFragment
     return localStoryPlayerWebFragment;
   }
   
-  public void a(uiz paramuiz)
+  public void a(vxr paramvxr)
   {
-    this.jdField_a_of_type_Uiz = paramuiz;
+    this.jdField_a_of_type_Vxr = paramvxr;
   }
   
   public boolean a()
   {
-    ved.b("StoryPlayerWebFragment", "showPreview()");
-    nau.a("Web_qqbrowser_ShowPreview");
+    wsv.b("StoryPlayerWebFragment", "showPreview()");
+    ndq.a("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
-    this.jdField_a_of_type_Bcfx.a(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_Bcga.c = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcga.B);
+    this.jdField_a_of_type_Beey.a(this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_Befb.c = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.D);
     this.p = true;
     this.q = false;
-    F();
-    ved.b("StoryPlayerWebFragment", "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
-    this.jdField_a_of_type_Bcfx.c = true;
-    this.jdField_a_of_type_Bcfx.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
+    G();
+    wsv.b("StoryPlayerWebFragment", "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
+    this.jdField_a_of_type_Beey.c = true;
+    this.jdField_a_of_type_Beey.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_Bcfx.a(this.h);
-    this.jdField_a_of_type_Bcfx.b = false;
-    nau.b("Web_qqbrowser_ShowPreview");
+    this.jdField_a_of_type_Beey.a(this.g);
+    this.jdField_a_of_type_Beey.b = false;
+    ndq.b("Web_qqbrowser_ShowPreview");
     return true;
   }
   
   public void e()
   {
     super.e();
-    this.jdField_a_of_type_Bcfg.a("web_view_long_click", false);
+    this.jdField_a_of_type_Beeh.a("web_view_long_click", false);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -93,20 +93,20 @@ public class StoryPlayerWebFragment
   public void onDestroy()
   {
     super.onDestroy();
-    ved.b("StoryPlayerWebFragment", "onDestroy()");
+    wsv.b("StoryPlayerWebFragment", "onDestroy()");
     getActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
   
   public void onPause()
   {
     super.onPause();
-    ved.b("StoryPlayerWebFragment", "onPause()");
+    wsv.b("StoryPlayerWebFragment", "onPause()");
   }
   
   public void onResume()
   {
     super.onResume();
-    ved.b("StoryPlayerWebFragment", "onResume()");
+    wsv.b("StoryPlayerWebFragment", "onResume()");
     FragmentActivity localFragmentActivity = super.getActivity();
     if (localFragmentActivity != null)
     {
@@ -117,7 +117,7 @@ public class StoryPlayerWebFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment
  * JD-Core Version:    0.7.0.1
  */

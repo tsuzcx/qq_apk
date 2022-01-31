@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.ARPromotionMgr;
 
-import akxx;
-import akyc;
-import akyn;
-import akyo;
-import akyt;
-import akyx;
-import alfx;
-import alir;
+import amon;
+import amos;
+import ampd;
+import ampe;
+import ampj;
+import ampn;
+import amwn;
+import amzh;
 import android.text.TextUtils;
-import bbmd;
+import bdkx;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 import com.tencent.mobileqq.ar.model.ArModelResource;
@@ -32,7 +32,7 @@ import org.json.JSONObject;
 public class PromotionConfigInfo
   extends ConfigInfo
 {
-  public static final String TAG = akyx.jdField_a_of_type_JavaLangString;
+  public static final String TAG = ampn.jdField_a_of_type_JavaLangString;
   public static final int zipIndex_0 = 0;
   public static final int zipIndex_1 = 1;
   public static final int zipIndex_2 = 2;
@@ -41,12 +41,12 @@ public class PromotionConfigInfo
   public long config364Version;
   ArCloudConfigInfo mArCloudConfigInfo = null;
   public boolean mainswitch = false;
-  public TreeMap<String, akyn> operationInfos = new TreeMap();
+  public TreeMap<String, ampd> operationInfos = new TreeMap();
   public boolean showInTopView;
   public boolean showOnce;
   String version = "-1";
   
-  static boolean set364ZipItem(ArCloudConfigInfo paramArCloudConfigInfo, akyn paramakyn)
+  static boolean set364ZipItem(ArCloudConfigInfo paramArCloudConfigInfo, ampd paramampd)
   {
     int k = 0;
     int j = 0;
@@ -55,56 +55,56 @@ public class PromotionConfigInfo
       QLog.w(TAG, 1, "setZipItem，没有364信息");
       return false;
     }
-    akyn.a(paramakyn, paramArCloudConfigInfo);
+    ampd.a(paramampd, paramArCloudConfigInfo);
     int i = k;
-    akyo localakyo;
-    if (paramArCloudConfigInfo.jdField_a_of_type_Akyc != null)
+    ampe localampe;
+    if (paramArCloudConfigInfo.jdField_a_of_type_Amos != null)
     {
       i = k;
-      if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_Akyc.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_Amos.jdField_a_of_type_JavaLangString))
       {
         i = k;
-        if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_Akyc.jdField_b_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_Amos.jdField_b_of_type_JavaLangString))
         {
           i = j;
-          if (paramArCloudConfigInfo.jdField_a_of_type_Akyc.jdField_a_of_type_Int == 1) {
+          if (paramArCloudConfigInfo.jdField_a_of_type_Amos.jdField_a_of_type_Int == 1) {
             i = 1;
           }
-          localakyo = new akyo(paramakyn.jdField_a_of_type_JavaLangString, 1);
-          localakyo.jdField_b_of_type_Int = i;
-          localakyo.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_Akyc.jdField_a_of_type_JavaLangString;
-          localakyo.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_Akyc.jdField_b_of_type_JavaLangString;
-          localakyo.c = (akxx.b() + localakyo.jdField_b_of_type_JavaLangString + ".zip");
-          localakyo.d = (akxx.b() + localakyo.jdField_b_of_type_JavaLangString + File.separator);
-          akyn.a(paramakyn).put(Integer.valueOf(localakyo.jdField_a_of_type_Int), localakyo);
+          localampe = new ampe(paramampd.jdField_a_of_type_JavaLangString, 1);
+          localampe.jdField_b_of_type_Int = i;
+          localampe.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_Amos.jdField_a_of_type_JavaLangString;
+          localampe.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_Amos.jdField_b_of_type_JavaLangString;
+          localampe.c = (amon.b() + localampe.jdField_b_of_type_JavaLangString + ".zip");
+          localampe.d = (amon.b() + localampe.jdField_b_of_type_JavaLangString + File.separator);
+          ampd.a(paramampd).put(Integer.valueOf(localampe.jdField_a_of_type_Int), localampe);
         }
       }
     }
     if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString)))
     {
-      localakyo = new akyo(paramakyn.jdField_a_of_type_JavaLangString, 2);
-      localakyo.jdField_b_of_type_Int = i;
-      localakyo.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-      localakyo.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-      localakyo.c = (akxx.a() + localakyo.jdField_b_of_type_JavaLangString + akxx.jdField_a_of_type_JavaLangString);
-      localakyo.d = (akxx.a() + localakyo.jdField_b_of_type_JavaLangString + File.separator);
-      akyn.a(paramakyn).put(Integer.valueOf(localakyo.jdField_a_of_type_Int), localakyo);
+      localampe = new ampe(paramampd.jdField_a_of_type_JavaLangString, 2);
+      localampe.jdField_b_of_type_Int = i;
+      localampe.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
+      localampe.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
+      localampe.c = (amon.a() + localampe.jdField_b_of_type_JavaLangString + amon.jdField_a_of_type_JavaLangString);
+      localampe.d = (amon.a() + localampe.jdField_b_of_type_JavaLangString + File.separator);
+      ampd.a(paramampd).put(Integer.valueOf(localampe.jdField_a_of_type_Int), localampe);
     }
     return true;
   }
   
-  public akyn getActivityItem()
+  public ampd getActivityItem()
   {
-    akyn localakyn = getItem(this.activityid);
-    if ((localakyn != null) && (akyx.a(localakyn.jdField_a_of_type_Long, localakyn.jdField_b_of_type_Long))) {
-      return localakyn;
+    ampd localampd = getItem(this.activityid);
+    if ((localampd != null) && (ampn.a(localampd.jdField_a_of_type_Long, localampd.jdField_b_of_type_Long))) {
+      return localampd;
     }
     return null;
   }
   
-  public akyn getItem(String paramString)
+  public ampd getItem(String paramString)
   {
-    return (akyn)this.operationInfos.get(paramString);
+    return (ampd)this.operationInfos.get(paramString);
   }
   
   int loadResConfig()
@@ -120,15 +120,15 @@ public class PromotionConfigInfo
       do
       {
         return i;
-        j = bbmd.a(this.mUin);
-        str = bbmd.a(this.mUin);
+        j = bdkx.a(this.mUin);
+        str = bdkx.a(this.mUin);
         if (str != null) {
           break;
         }
       } while (!AudioHelper.e());
       QLog.w(TAG, 1, "loadResConfig, 没有json");
       return -1;
-      this.mArCloudConfigInfo = alfx.a(str);
+      this.mArCloudConfigInfo = amwn.a(str);
       if (this.mArCloudConfigInfo != null) {
         break;
       }
@@ -142,9 +142,9 @@ public class PromotionConfigInfo
     this.mArCloudConfigInfo.d = 8;
     this.mArCloudConfigInfo.c = 2;
     this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = new ArFeatureInfo();
-    this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d = (alir.a() + "ar_cloud_marker_model/" + this.mArCloudConfigInfo.d + File.separator);
-    if (this.mArCloudConfigInfo.jdField_a_of_type_Akyc != null) {
-      this.mArCloudConfigInfo.jdField_a_of_type_Akyc.jdField_a_of_type_Boolean = true;
+    this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d = (amzh.a() + "ar_cloud_marker_model/" + this.mArCloudConfigInfo.d + File.separator);
+    if (this.mArCloudConfigInfo.jdField_a_of_type_Amos != null) {
+      this.mArCloudConfigInfo.jdField_a_of_type_Amos.jdField_a_of_type_Boolean = true;
     }
     this.config364Version = j;
     return j;
@@ -180,13 +180,13 @@ public class PromotionConfigInfo
           if (i < paramJSONObject.length())
           {
             JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-            akyn localakyn = new akyn();
-            localakyn.jdField_a_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("begin")).getTime();
-            localakyn.jdField_b_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("end")).getTime();
-            localakyn.c = Integer.valueOf(localJSONObject.getString("recoglizeMask")).intValue();
-            localakyn.jdField_a_of_type_JavaLangString = localJSONObject.getString("id");
-            localakyn.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
-            localakyn.jdField_a_of_type_Boolean = localJSONObject.optBoolean("need364");
+            ampd localampd = new ampd();
+            localampd.jdField_a_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("begin")).getTime();
+            localampd.jdField_b_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("end")).getTime();
+            localampd.c = Integer.valueOf(localJSONObject.getString("recoglizeMask")).intValue();
+            localampd.jdField_a_of_type_JavaLangString = localJSONObject.getString("id");
+            localampd.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
+            localampd.jdField_a_of_type_Boolean = localJSONObject.optBoolean("need364");
             int j = 1;
             for (;;)
             {
@@ -198,22 +198,22 @@ public class PromotionConfigInfo
               }
               else
               {
-                localObject = new akyo(localakyn.jdField_a_of_type_JavaLangString, 0);
-                ((akyo)localObject).jdField_a_of_type_JavaLangString = localJSONObject.getString("urlEntry");
-                ((akyo)localObject).jdField_b_of_type_JavaLangString = localJSONObject.getString("md5Entry");
-                ((akyo)localObject).c = akyt.a(((akyo)localObject).e, 0, ((akyo)localObject).jdField_b_of_type_JavaLangString);
-                ((akyo)localObject).d = akyt.b(((akyo)localObject).e, 0, ((akyo)localObject).jdField_b_of_type_JavaLangString);
-                akyn.a(localakyn).put(Integer.valueOf(((akyo)localObject).jdField_a_of_type_Int), localObject);
-                if (localakyn.jdField_a_of_type_Boolean)
+                localObject = new ampe(localampd.jdField_a_of_type_JavaLangString, 0);
+                ((ampe)localObject).jdField_a_of_type_JavaLangString = localJSONObject.getString("urlEntry");
+                ((ampe)localObject).jdField_b_of_type_JavaLangString = localJSONObject.getString("md5Entry");
+                ((ampe)localObject).c = ampj.a(((ampe)localObject).e, 0, ((ampe)localObject).jdField_b_of_type_JavaLangString);
+                ((ampe)localObject).d = ampj.b(((ampe)localObject).e, 0, ((ampe)localObject).jdField_b_of_type_JavaLangString);
+                ampd.a(localampd).put(Integer.valueOf(((ampe)localObject).jdField_a_of_type_Int), localObject);
+                if (localampd.jdField_a_of_type_Boolean)
                 {
                   loadResConfig();
-                  set364ZipItem(this.mArCloudConfigInfo, localakyn);
+                  set364ZipItem(this.mArCloudConfigInfo, localampd);
                 }
-                this.operationInfos.put(localakyn.jdField_a_of_type_JavaLangString, localakyn);
+                this.operationInfos.put(localampd.jdField_a_of_type_JavaLangString, localampd);
                 i += 1;
                 break;
               }
-              localakyn.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
+              localampd.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
               j += 1;
             }
           }
@@ -232,16 +232,16 @@ public class PromotionConfigInfo
   public String toString()
   {
     Iterator localIterator = this.operationInfos.values().iterator();
-    akyn localakyn;
-    for (String str = ""; localIterator.hasNext(); str = str + "\n" + localakyn) {
-      localakyn = (akyn)localIterator.next();
+    ampd localampd;
+    for (String str = ""; localIterator.hasNext(); str = str + "\n" + localampd) {
+      localampd = (ampd)localIterator.next();
     }
     return "task_id[" + this.task_id + "], _parseRet[" + this._parseRet + "], mUin[" + this.mUin + "], version[" + this.version + "], enable[" + this.mainswitch + "], activityid[" + this.activityid + "], config364Version[" + this.config364Version + "], Items[" + str + "\n]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo
  * JD-Core Version:    0.7.0.1
  */

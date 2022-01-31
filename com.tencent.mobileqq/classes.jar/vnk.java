@@ -1,69 +1,128 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 public class vnk
-  implements vkt
+  extends xrg
+  implements View.OnClickListener
 {
-  public vnk(DoodleLayout paramDoodleLayout) {}
+  public static final String KEY = "PlayerDoubleTabSegment";
+  private int jdField_a_of_type_Int = 1;
+  private vmu jdField_a_of_type_Vmu;
+  private weh jdField_a_of_type_Weh;
+  private wph jdField_a_of_type_Wph;
   
-  public void a(int paramInt)
+  public vnk(Context paramContext)
   {
-    if (this.a.jdField_a_of_type_Vno != null) {
-      this.a.jdField_a_of_type_Vno.b(1, paramInt);
-    }
+    super(paramContext);
   }
   
-  public void a(vkn paramvkn)
+  private void a(TextView paramTextView, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_Vkn = paramvkn;
-    if (this.a.jdField_a_of_type_Vno != null)
+    if (paramBoolean)
     {
-      ved.b("DoodleLayout", "selectLocation: clickItem-->" + paramvkn.toString());
-      this.a.jdField_a_of_type_Vno.a(this.a.jdField_a_of_type_Vkn.a());
-    }
-  }
-  
-  public boolean a(vkq paramvkq)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
-      Object localObject;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
-        ((vpp)localObject).d = false;
-        if (!(localObject instanceof vkq)) {
-          break label120;
-        }
-        vkm localvkm = this.a.a();
-        if (localvkm != null) {
-          localvkm.a.add((vkq)localObject);
-        }
+      if (QQStoryContext.a()) {
+        paramTextView.setBackgroundResource(2130845947);
       }
       for (;;)
       {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramvkq);
-        paramvkq.d = true;
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
-        return true;
-        label120:
-        if ((localObject instanceof vlc))
-        {
-          localObject = this.a.a();
-          if (localObject != null) {
-            ((vla)localObject).d();
-          }
-        }
+        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166385));
+        return;
+        paramTextView.setBackgroundResource(2130845946);
       }
     }
-    return false;
+    paramTextView.setBackgroundResource(0);
+    if (QQStoryContext.a())
+    {
+      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166398));
+      return;
+    }
+    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166386));
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Weh != null) && (this.jdField_a_of_type_Weh.b())) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, wph paramwph, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramwph.a(2131377025);
+    TextView localTextView = (TextView)paramwph.a(2131377024);
+    if (QQStoryContext.a())
+    {
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166396));
+      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166396));
+      paramwph.a(2131373685).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166398));
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      a(paramViewGroup, true);
+      a(localTextView, false);
+    }
+    for (;;)
+    {
+      return paramwph.a();
+      a(paramViewGroup, false);
+      a(localTextView, true);
+    }
+  }
+  
+  public String a()
+  {
+    return "PlayerDoubleTabSegment";
+  }
+  
+  public wph a(int paramInt, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Wph = new wph(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561403, paramViewGroup, false));
+    paramViewGroup = (TextView)this.jdField_a_of_type_Wph.a(2131377025);
+    TextView localTextView = (TextView)this.jdField_a_of_type_Wph.a(2131377024);
+    paramViewGroup.setOnClickListener(this);
+    localTextView.setOnClickListener(this);
+    return this.jdField_a_of_type_Wph;
+  }
+  
+  public void a(vmu paramvmu)
+  {
+    this.jdField_a_of_type_Vmu = paramvmu;
+  }
+  
+  public void a(weh paramweh)
+  {
+    this.jdField_a_of_type_Weh = paramweh;
+    if (this.jdField_a_of_type_Weh.a()) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Vmu.a();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131377025: 
+      this.jdField_a_of_type_Vmu.a(1);
+      wta.a("content_flow", "clk_detail_reply", 0, 1, new String[] { "", wta.a(4444), this.jdField_a_of_type_Weh.a.feedId });
+      return;
+    }
+    this.jdField_a_of_type_Vmu.a(2);
+    wta.a("content_flow", "clk_detail_reply", 0, 2, new String[] { "", wta.a(4444), this.jdField_a_of_type_Weh.a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnk
  * JD-Core Version:    0.7.0.1
  */

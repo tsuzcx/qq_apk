@@ -1,54 +1,86 @@
-import com.tencent.TMG.utils.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgAction;
 
-public class amhd
-  implements ajte
+class amhd
+  implements barg
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  amhd(amha paramamha) {}
+  
+  public void a(bari parambari, barh parambarh)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      if ((paramObject != null) && (paramObject.length == 1))
-      {
-        amhf localamhf = amhg.a();
-        if ((localamhf == null) || (!localamhf.a())) {
-          break label135;
-        }
-      }
-      break;
+    ToServiceMsg localToServiceMsg = (ToServiceMsg)parambarh.a;
+    if (parambari.a.getResultCode() != 1000) {
+      this.a.a(4012, false, localToServiceMsg);
     }
-    label135:
-    for (paramInt = 1;; paramInt = 0)
+    for (;;)
     {
-      if ((paramInt != 0) && (!((Boolean)paramObject[0]).booleanValue())) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      try
       {
-        amgn.c(paramBoolean);
-        if (!QLog.isColorLevel()) {
-          break;
+        parambari = parambari.a.getWupBuffer();
+        localRspSystemMsgAction = new structmsg.RspSystemMsgAction();
+        localRspSystemMsgAction.mergeFrom(parambari);
+        j = localRspSystemMsgAction.head.result.get();
+        if (j != 0) {
+          continue;
         }
-        QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_GET_COLOR_NOTE_RECENT_SWITCH");
-        return;
+        bool1 = true;
+        parambari = localRspSystemMsgAction.msg_detail.get();
+        if (parambari != null) {
+          continue;
+        }
+        parambari = "";
       }
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Exception parambari)
+      {
+        structmsg.RspSystemMsgAction localRspSystemMsgAction;
+        int j;
+        boolean bool1;
+        int i;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambari);
+        boolean bool2 = false;
+        continue;
+        continue;
       }
-      QLog.d("ColorNoteObserver", 0, "onUpdate: params == null || params.length != 1");
+      i = -1;
+      if (localRspSystemMsgAction.remark_result.has()) {
+        i = localRspSystemMsgAction.remark_result.get();
+      }
+      localToServiceMsg.extraData.putString("system_msg_action_resp_key", parambari);
+      localToServiceMsg.extraData.putInt("system_msg_action_resp_result_code_key", localRspSystemMsgAction.head.result.get());
+      localToServiceMsg.extraData.putInt("system_msg_action_resp_type_key", localRspSystemMsgAction.type.get());
+      localToServiceMsg.extraData.putString("system_msg_action_resp_invalid_decided_key", localRspSystemMsgAction.msg_invalid_decided.get());
+      localToServiceMsg.extraData.putInt("system_msg_action_resp_remark_result_key", i);
+      bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgActionResp result:" + j + " msg:" + parambari);
+        bool2 = bool1;
+      }
+      this.a.a(4011, bool2, localToServiceMsg);
       return;
-      if (!QLog.isColorLevel()) {
-        break;
+      parambarh = localRspSystemMsgAction.head.msg_fail.get();
+      parambari = parambarh;
+      if (parambarh == null) {
+        parambari = "";
       }
-      QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_SET_COLOR_NOTE_RECENT_SWITCH");
-      return;
+      localToServiceMsg.extraData.putString("system_msg_action_resp_error_key", parambari);
+      bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amhd
  * JD-Core Version:    0.7.0.1
  */

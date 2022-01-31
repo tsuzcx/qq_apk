@@ -1,26 +1,20 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-public class vfh
+class vfh
+  extends veh
 {
-  public static String a;
-  
-  public static boolean a(long paramLong, Context paramContext)
+  vfh(vez paramvez, String paramString1, String paramString2, boolean paramBoolean, vgh paramvgh)
   {
-    a = ajwa.a + "QQEditPic" + File.separator;
-    paramContext = new File(a);
-    boolean bool1 = paramContext.mkdirs();
-    boolean bool2 = paramContext.isDirectory();
-    if (QLog.isColorLevel()) {
-      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
-    }
-    return (bool1) || (bool2);
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Vgh.c = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfh
  * JD-Core Version:    0.7.0.1
  */

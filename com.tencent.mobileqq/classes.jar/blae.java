@@ -1,46 +1,64 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import java.util.ArrayList;
+import com.tencent.aekit.openrender.internal.Frame;
 
 public class blae
-  implements Comparable<blae>
 {
-  public int a;
-  public bkzz a;
-  public blaa a;
-  public blai a;
-  public blam a;
-  public MessageForShortVideo a;
-  public String a;
-  public ArrayList<blaa> a;
-  public int b;
-  public String b;
-  public int c = 201;
+  private int jdField_a_of_type_Int;
+  private bkxn jdField_a_of_type_Bkxn = new bkxn();
+  private blaf jdField_a_of_type_Blaf;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b;
   
-  public blae()
+  public Frame a(Frame paramFrame, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = aunv.a();
+    Frame localFrame = paramFrame;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Bkxn.a(paramFrame, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    }
+    if (this.jdField_a_of_type_Blaf != null) {
+      this.jdField_a_of_type_Blaf.a(localFrame);
+    }
+    return localFrame;
   }
   
-  public int a(blae paramblae)
+  public void a()
   {
-    if (this.c < paramblae.c) {
-      return -1;
+    this.jdField_a_of_type_Bkxn.apply();
+    if (this.jdField_a_of_type_Blaf != null) {
+      this.jdField_a_of_type_Blaf.a();
     }
-    if (this.c > paramblae.c) {
-      return 1;
-    }
-    return 0;
   }
   
-  public void a(MessageForShortVideo paramMessageForShortVideo)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void a(blaf paramblaf)
+  {
+    this.jdField_a_of_type_Blaf = paramblaf;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bkxn.ClearGLSL();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    if (this.jdField_a_of_type_Blaf != null) {
+      this.jdField_a_of_type_Blaf.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blae
  * JD-Core Version:    0.7.0.1
  */

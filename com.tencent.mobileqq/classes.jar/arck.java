@@ -1,46 +1,57 @@
 import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.kwstudio.office.preview.TdsReaderView.OpenCallback;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTdsViewManager.OpenCallbackImpl.1;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x87a.RspBody;
+import java.lang.ref.WeakReference;
 
-final class arck
-  extends atzp
+public final class arck
+  implements TdsReaderView.OpenCallback
 {
-  arck(Activity paramActivity, String paramString, Runnable paramRunnable) {}
+  private final int jdField_a_of_type_Int;
+  private final arcj jdField_a_of_type_Arcj;
+  private final WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  private arck(Activity paramActivity, boolean paramBoolean, arcj paramarcj)
   {
-    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
-    if (paramInt == 89) {
-      bcql.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131699021), 0).a();
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Arcj = paramarcj;
+    if ((paramActivity != null) && (!paramActivity.isFinishing())) {}
+    for (int i = (int)paramActivity.getResources().getDimension(2131298914);; i = 0)
     {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
+      this.jdField_a_of_type_Int = i;
       return;
-      bcql.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
     }
   }
   
-  public void a(oidb_0x87a.RspBody paramRspBody)
+  public void onCallBackAction(Integer paramInteger, Object paramObject, Bundle paramBundle)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
-    localIntent.putExtra("k_from", "f_SetFaceData");
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
-    {
-      localIntent.putExtra("phone_num", paramRspBody);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      QLog.i("TdsReaderView_LocalTdsViewManager", 1, "onCallBackAction actionType[" + paramInteger + "]");
     }
+    Activity localActivity;
+    do
+    {
+      do
+      {
+        return;
+        localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while ((localActivity == null) || (localActivity.isFinishing()));
+      if (paramInteger.intValue() != 1001) {
+        break;
+      }
+    } while (paramBundle == null);
+    paramBundle.putInt("result_", this.jdField_a_of_type_Int);
+    return;
+    localActivity.runOnUiThread(new LocalTdsViewManager.OpenCallbackImpl.1(this, paramInteger, paramObject, paramBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arck
  * JD-Core Version:    0.7.0.1
  */

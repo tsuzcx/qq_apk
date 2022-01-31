@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
-
-public class sil
-  implements axof
+public abstract interface sil
 {
-  public sil(ShareImageUtils.2 param2) {}
+  public abstract int a();
   
-  public void a() {}
+  public abstract boolean a(int paramInt);
   
-  public void b() {}
+  public abstract void b(int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sil
  * JD-Core Version:    0.7.0.1
  */

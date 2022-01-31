@@ -1,14 +1,16 @@
-import com.tencent.common.app.AppInterface;
-import java.lang.ref.WeakReference;
-
-public abstract class mxg
-  extends mxj
+public class mxg
 {
-  public WeakReference<AppInterface> a = new WeakReference(null);
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxg
  * JD-Core Version:    0.7.0.1
  */

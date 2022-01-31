@@ -1,30 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import mqq.os.MqqHandler;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afof
-  implements bfph
+class afof
+  extends afpq
 {
-  public afof(TroopSuspiciousFragment paramTroopSuspiciousFragment, bfpc parambfpc) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  afof(aflj paramaflj)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a.sendEmptyMessage(1014);
-      }
-    }
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afug(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afof
  * JD-Core Version:    0.7.0.1
  */

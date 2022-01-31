@@ -1,68 +1,23 @@
-import android.content.res.Resources;
-import android.widget.TextView;
-import cooperation.qqreader.net.BaseCgiTask;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
-public class bgvv
-  extends bgvk
+public final class bgvv
+  implements View.OnClickListener
 {
-  public bgvv(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  public bgvv(Dialog paramDialog, TianShuAccess.AdItem paramAdItem, String paramString) {}
   
-  public void a(bgvj parambgvj)
+  public void onClick(View paramView)
   {
-    JSONObject localJSONObject = parambgvj.a();
-    if (localJSONObject == null) {}
-    try
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate response json is null");
-      return;
-    }
-    catch (Exception parambgvj)
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate parse failed: " + parambgvj.getMessage());
-      return;
-    }
-    int i = localJSONObject.getInt("ret");
-    parambgvj = localJSONObject.getString("msg");
-    localJSONObject = localJSONObject.getJSONObject("data");
-    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate ret=" + i + "|msg=" + parambgvj);
-      return;
-    }
-    i = localJSONObject.optInt("gray_level", 0);
-    int j = localJSONObject.optInt("updateStatus", 0);
-    int k = localJSONObject.optInt("updateStatus", 0);
-    int m = localJSONObject.optInt("remainMaxTime", 0);
-    bgwd.a(ForceUserUpdateActivity.a(this.a), i);
-    bgwd.b(ForceUserUpdateActivity.a(this.a), j);
-    bgwd.c(ForceUserUpdateActivity.a(this.a), k);
-    bgwd.d(ForceUserUpdateActivity.a(this.a), m);
-    bgwf.d("ForceUserUpdateActivity", "onReceiveData: QueryGrayUpdate result: level=" + i + "|status=" + j + "|remain=" + m + "|interval=" + k);
-    if (j == 1)
-    {
-      ForceUserUpdateActivity.c(this.a);
-      return;
-    }
-    if (j == 2)
-    {
-      ForceUserUpdateActivity.a(this.a, k);
-      ForceUserUpdateActivity.a(this.a).setText(this.a.getResources().getString(2131717188, new Object[] { Integer.valueOf(m) }));
-      return;
-    }
-    ForceUserUpdateActivity.d(this.a);
-    bgwd.b(ForceUserUpdateActivity.a(this.a), 2);
-  }
-  
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
-  {
-    ForceUserUpdateActivity.a(this.a, "onConnectionError: QueryGrayUpdate error: " + paramString);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    MiniGameAdBannerPopup.a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, this.jdField_a_of_type_JavaLangString, 122);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgvv
  * JD-Core Version:    0.7.0.1
  */

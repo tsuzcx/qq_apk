@@ -1,24 +1,23 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class vmp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Animation.AnimationListener
 {
-  private vmp(vmg paramvmg) {}
+  vmp(vml paramvml) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
-    {
-      this.a.dismiss();
-      return;
-    }
-    this.a.jdField_a_of_type_Vmn.a(this.a.a());
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmp
  * JD-Core Version:    0.7.0.1
  */

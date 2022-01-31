@@ -1,17 +1,47 @@
-import android.widget.ImageView;
+import android.content.Intent;
+import android.view.View;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class aipk
+  extends aimu
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
+  aipk(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  {
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  protected void c()
+  {
+    Object localObject = ((NewPhotoPreviewActivity)this.mActivity).getSubmitPhotoList();
+    Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
+    if (localObject != null)
+    {
+      aild.a(((ArrayList)localObject).size(), this.a.totalPicCount);
+      aild.a(localIntent, ((ArrayList)localObject).size(), this.mPhotoCommonData.currentQualityType);
+    }
+    localObject = (NewPhotoPreviewActivity)this.mActivity;
+    if ((localObject == null) || (((NewPhotoPreviewActivity)localObject).isFinishing())) {
+      return;
+    }
+    ((NewPhotoPreviewActivity)localObject).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)localObject).finish();
+  }
+  
+  public void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    super.onGalleryItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    paramAdapterView = (NewPhotoPreviewActivity)this.mActivity;
+    if ((paramAdapterView != null) && (!paramAdapterView.isFinishing())) {
+      paramAdapterView.titleView.setText(alpo.a(2131708523));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipk
  * JD-Core Version:    0.7.0.1
  */

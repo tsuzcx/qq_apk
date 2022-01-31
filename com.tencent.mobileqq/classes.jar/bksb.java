@@ -1,32 +1,22 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.maxvideo.trim.TrimNative;
+import android.support.annotation.Nullable;
 
-public class bksb
+class bksb
+  implements bmac<blbb>
 {
-  private static int a;
-  private static int b;
+  bksb(bkrq parambkrq) {}
   
-  public static Bitmap a(long paramLong1, long paramLong2)
+  public void a(@Nullable blbb paramblbb)
   {
-    if ((a <= 0) || (b <= 0)) {}
-    Bitmap localBitmap;
-    do
-    {
-      return null;
-      localBitmap = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
-      }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
-    return null;
-    return localBitmap;
+    if (paramblbb == null) {
+      return;
+    }
+    bkrq.a(this.a, paramblbb);
+    bkrq.a(this.a, paramblbb.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bksb
  * JD-Core Version:    0.7.0.1
  */

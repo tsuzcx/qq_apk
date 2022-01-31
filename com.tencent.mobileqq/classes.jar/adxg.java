@@ -1,38 +1,33 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import mqq.os.MqqHandler;
 
-class adxg
-  implements View.OnTouchListener
+public class adxg
+  extends amab
 {
-  final acxj jdField_a_of_type_Acxj;
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new adxh(this));
-  View jdField_a_of_type_AndroidViewView = null;
+  public adxg(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public adxg(adxe paramadxe, acxj paramacxj)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Acxj = paramacxj;
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a.sendEmptyMessage(1);
+      }
+    }
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
+      return;
+    }
+    atwd.a().b(paramString, this.a.app);
+    this.a.c();
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void b(String paramString)
   {
-    if (this.jdField_a_of_type_Acxj != null) {
-      this.jdField_a_of_type_Acxj.onTouch(paramView, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-      return true;
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
-    return false;
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxg
  * JD-Core Version:    0.7.0.1
  */

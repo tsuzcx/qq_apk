@@ -25,11 +25,8 @@ public final class GzipSink
   
   private void updateCrc(Buffer paramBuffer, long paramLong)
   {
-    for (paramBuffer = paramBuffer.head;; paramBuffer = paramBuffer.next)
+    for (paramBuffer = paramBuffer.head; paramLong > 0L; paramBuffer = paramBuffer.next)
     {
-      if (paramLong <= 0L) {
-        return;
-      }
       int i = (int)Math.min(paramLong, paramBuffer.limit - paramBuffer.pos);
       this.crc.update(paramBuffer.data, paramBuffer.pos, i);
       paramLong -= i;
@@ -39,7 +36,7 @@ public final class GzipSink
   private void writeFooter()
   {
     this.sink.writeIntLe((int)this.crc.getValue());
-    this.sink.writeIntLe(this.deflater.getTotalIn());
+    this.sink.writeIntLe((int)this.deflater.getBytesRead());
   }
   
   private void writeHeader()
@@ -109,6 +106,11 @@ public final class GzipSink
     }
   }
   
+  public final Deflater deflater()
+  {
+    return this.deflater;
+  }
+  
   public void flush()
   {
     this.deflaterSink.flush();
@@ -133,7 +135,7 @@ public final class GzipSink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.GzipSink
  * JD-Core Version:    0.7.0.1
  */

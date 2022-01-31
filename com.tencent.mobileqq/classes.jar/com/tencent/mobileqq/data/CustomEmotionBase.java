@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class CustomEmotionBase
-  extends auko
+  extends awbv
 {
   public String RomaingType = "init";
-  @aumc
+  @awdj
   public int emoId;
   public String emoOriginalPath;
   public String emoPath;
@@ -35,7 +35,7 @@ public class CustomEmotionBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.CustomEmotionBase
  * JD-Core Version:    0.7.0.1
  */

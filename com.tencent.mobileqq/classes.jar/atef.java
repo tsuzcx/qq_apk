@@ -1,14 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-final class atef
-  implements DialogInterface.OnClickListener
+public class atef
+  extends WebViewPlugin
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private final ymk a = ymk.a();
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("studyroom".equals(paramString2)) && ("predownload".equals(paramString3)))
+    {
+      this.a.k();
+      return true;
+    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a.a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.a.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atef
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
-final class acxt
-  implements bfpj
+public class acxt
+  implements DialogInterface.OnClickListener
 {
-  acxt(QQAppInterface paramQQAppInterface) {}
+  public acxt(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axqy.b(this.a, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
+    azmj.b(this.a.app, "dc00898", "", "", "0X800A0D8", "0X800A0D8", 0, 0, "", "", "", "");
+    FriendProfileMoreInfoActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxt
  * JD-Core Version:    0.7.0.1
  */

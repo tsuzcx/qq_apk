@@ -22,43 +22,23 @@ public class PTSNativeModuleRegistry
   {
     if (!TextUtils.isEmpty(paramString1))
     {
-      int i = -1;
-      switch (paramString1.hashCode())
-      {
+      if ("EVENT".equalsIgnoreCase(paramString1)) {
+        PTSLog.e("PTSNativeModuleRegistry", paramString2);
       }
-      for (;;)
+      do
       {
-        switch (i)
+        return;
+        if ("DEBUG".equalsIgnoreCase(paramString1))
         {
-        default: 
+          PTSLog.d("PTSNativeModuleRegistry", paramString2);
           return;
-          if (paramString1.equals("EVENT"))
-          {
-            i = 0;
-            continue;
-            if (paramString1.equals("DEBUG"))
-            {
-              i = 1;
-              continue;
-              if (paramString1.equals("INFO"))
-              {
-                i = 2;
-                continue;
-                if (paramString1.equals("WARN")) {
-                  i = 3;
-                }
-              }
-            }
-          }
-          break;
         }
-      }
-      PTSLog.e("PTSNativeModuleRegistry", paramString2);
-      return;
-      PTSLog.d("PTSNativeModuleRegistry", paramString2);
-      return;
-      PTSLog.i("PTSNativeModuleRegistry", paramString2);
-      return;
+        if ("INFO".equalsIgnoreCase(paramString1))
+        {
+          PTSLog.i("PTSNativeModuleRegistry", paramString2);
+          return;
+        }
+      } while (!"WARN".equalsIgnoreCase(paramString1));
       PTSLog.w("PTSNativeModuleRegistry", paramString2);
       return;
     }
@@ -170,7 +150,7 @@ public class PTSNativeModuleRegistry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.nativemodule.PTSNativeModuleRegistry
  * JD-Core Version:    0.7.0.1
  */

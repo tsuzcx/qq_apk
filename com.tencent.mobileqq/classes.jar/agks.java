@@ -1,53 +1,56 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import java.lang.ref.WeakReference;
 
 class agks
-  implements DialogInterface.OnClickListener
+  extends agga
 {
-  agks(agkq paramagkq) {}
+  final String jdField_a_of_type_JavaLangString = agkk.class.getSimpleName();
+  WeakReference<agkk> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agks(agkk paramagkk)
   {
-    if (this.a.a.jdField_a_of_type_Int == 2) {
-      this.a.a.a("0X8005B8A", 1);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramagkk);
+  }
+  
+  public void a(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
+  }
+  
+  public void b(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void c(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+    agkk localagkk = (agkk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localagkk == null)
     {
-      paramDialogInterface.dismiss();
-      if (bbfj.d(this.a.a)) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
       }
-      this.a.a.b(2131694673);
-      return;
-      if (this.a.a.jdField_a_of_type_Int == 6) {
-        this.a.a.a("0X8005B8A", 2);
-      } else if (this.a.a.jdField_a_of_type_Int == 7) {
-        this.a.a.a("0X8005B8A", 3);
-      }
-    }
-    paramDialogInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
-    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
-    {
-      this.a.a.setResult(0);
-      this.a.a.finish();
       return;
     }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new agkt(this);
-      this.a.a.app.registObserver(this.a.a.b);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
     }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
-    this.a.a.a(2131719292, 300L, true);
+    localagkk.f(paramCompressInfo.e);
+    agkk.a(localagkk).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agks
  * JD-Core Version:    0.7.0.1
  */

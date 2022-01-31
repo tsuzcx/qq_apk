@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import puy;
+import qbs;
 
 public class ComponentWhiteSpace
   extends ComponentDivider
@@ -31,7 +31,7 @@ public class ComponentWhiteSpace
   
   public void a(Context paramContext)
   {
-    setBackgroundResource(2131166743);
+    setBackgroundResource(2131166790);
   }
   
   public void b()
@@ -44,7 +44,7 @@ public class ComponentWhiteSpace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentWhiteSpace
  * JD-Core Version:    0.7.0.1
  */

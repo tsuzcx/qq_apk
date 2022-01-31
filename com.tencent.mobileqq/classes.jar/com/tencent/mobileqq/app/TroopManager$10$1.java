@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import akif;
+import alzv;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -22,9 +22,9 @@ class TroopManager$10$1
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      akif localakif = (akif)((WeakReference)((Iterator)localObject).next()).get();
-      if (localakif != null) {
-        localakif.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      alzv localalzv = (alzv)((WeakReference)((Iterator)localObject).next()).get();
+      if (localalzv != null) {
+        localalzv.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
       }
     }
   }

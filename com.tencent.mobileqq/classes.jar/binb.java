@@ -1,22 +1,19 @@
-import android.support.annotation.Nullable;
+import java.io.File;
+import java.io.FilenameFilter;
 
 class binb
-  implements bjos<biwo>
+  implements FilenameFilter
 {
-  binb(bina parambina) {}
+  binb(bina parambina, String paramString) {}
   
-  public void a(@Nullable biwo parambiwo)
+  public boolean accept(File paramFile, String paramString)
   {
-    if (parambiwo == null) {
-      return;
-    }
-    bina.a(this.a, parambiwo);
-    bina.b(this.a, parambiwo);
+    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     binb
  * JD-Core Version:    0.7.0.1
  */

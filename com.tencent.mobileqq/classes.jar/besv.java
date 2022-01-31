@@ -1,26 +1,20 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.StateListDrawable;
 
-public abstract interface besv
+public class besv
+  extends StateListDrawable
 {
-  public abstract void init(Context paramContext);
-  
-  public abstract void onAppBackground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
-  
-  public abstract void onAppDestroy(Bundle paramBundle);
-  
-  public abstract void onAppForeground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
-  
-  public abstract void onAppStart(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
-  
-  public abstract void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
+  public besv(int paramInt1, int paramInt2)
+  {
+    ColorDrawable localColorDrawable = new ColorDrawable(paramInt1);
+    addState(new int[] { 16842919 }, localColorDrawable);
+    localColorDrawable = new ColorDrawable(paramInt2);
+    addState(new int[] { 16842921 }, localColorDrawable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besv
  * JD-Core Version:    0.7.0.1
  */

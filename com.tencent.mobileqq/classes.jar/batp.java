@@ -1,296 +1,202 @@
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.trooponline.data.TroopAllOnlineData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryPic;
+import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.HashMap;
 
-public class batp
-  implements Manager
+class batp
+  implements ITransactionCallback
 {
-  protected long a;
-  protected QQAppInterface a;
-  private Map<String, batn> a;
-  private Map<String, TroopAllOnlineData> b = new ConcurrentHashMap();
+  batp(bato parambato, long paramLong) {}
   
-  public batp(QQAppInterface paramQQAppInterface)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = xng.a((String)paramHashMap.get("upFlow_WiFi"), -1L);
+    long l3 = xng.a((String)paramHashMap.get("dwFlow_WiFi"), -1L);
+    long l4 = xng.a((String)paramHashMap.get("upFlow_Xg"), -1L);
+    long l5 = xng.a((String)paramHashMap.get("dwFlow_Xg"), -1L);
+    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
+    String str1 = (String)paramHashMap.get("rep_bdhTrans");
+    String str2 = (String)paramHashMap.get("segspercnt");
+    String str3 = (String)paramHashMap.get("param_conf_segSize");
+    String str4 = (String)paramHashMap.get("param_conf_segNum");
+    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    wsv.c(bato.jdField_a_of_type_JavaLangString, "Transaction End : Failed. take time:" + (l1 - this.jdField_a_of_type_Long) + "ms");
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
+    this.jdField_a_of_type_Bato.a(l2, l3, l4, l5);
+    this.jdField_a_of_type_Bato.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bato.jdField_b_of_type_Bamy);
+    this.jdField_a_of_type_Bato.d();
   }
   
-  public int a(String paramString)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    paramString = (batn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((paramString != null) && (paramString.jdField_a_of_type_Int > 0)) {
-      return paramString.jdField_a_of_type_Int;
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    String str1 = (String)paramHashMap.get("tc_p:");
+    String str2 = (String)paramHashMap.get("rep_bdhTrans");
+    String str3 = (String)paramHashMap.get("segspercnt");
+    String str4 = (String)paramHashMap.get("param_conf_segSize");
+    String str5 = (String)paramHashMap.get("param_conf_segNum");
+    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    wsv.c(bato.jdField_a_of_type_JavaLangString, "Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Bato.jdField_a_of_type_Baoj.jdField_a_of_type_Long + " transInfo:" + str2);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", str1);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str2);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str3);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str4);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str5);
+    this.jdField_a_of_type_Bato.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
+    this.jdField_a_of_type_Bato.jdField_b_of_type_Bamy.b();
+    this.jdField_a_of_type_Bato.jdField_b_of_type_Bamy.a = 1;
+    this.jdField_a_of_type_Bato.s = this.jdField_a_of_type_Bato.q;
+    wsv.c(bato.jdField_a_of_type_JavaLangString, "ITransactionCallback.onSuccess()");
+    if (paramArrayOfByte == null) {
+      this.jdField_a_of_type_Bato.d();
     }
-    return 1;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public long a(String paramString)
-  {
-    paramString = (batn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {}
-    for (long l1 = paramString.jdField_b_of_type_Long;; l1 = 0L)
+    for (;;)
     {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = "";
-      return paramString;
-    }
-    String str = null;
-    Object localObject = (batn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject != null) {
-      str = ((batn)localObject).jdField_a_of_type_JavaLangString;
-    }
-    for (int i = ((batn)localObject).jdField_b_of_type_Int;; i = 0)
-    {
-      if (str == null) {
-        return "";
-      }
-      localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(paramString);
-      if ((localObject != null) && (((TroopInfo)localObject).wMemberNumClient > 0) && (i > ((TroopInfo)localObject).wMemberNumClient) && (!TextUtils.isEmpty(str)))
+      this.jdField_a_of_type_Bato.a(l2, l3, l4, l5);
+      this.jdField_a_of_type_Bato.jdField_a_of_type_Baoj.a();
+      return;
+      int i;
+      if (this.jdField_a_of_type_Bato.jdField_a_of_type_Baoj.b == 196610)
       {
-        str = str.replace(String.valueOf(i), String.valueOf(((TroopInfo)localObject).wMemberNumClient));
-        paramString = str;
-        if (!QLog.isColorLevel()) {
-          break;
+        paramHashMap = new qqstory_bhd_upload_pic.RspStoryPic();
+        try
+        {
+          paramHashMap.mergeFrom(paramArrayOfByte);
+          i = paramHashMap.retcode.get();
+          if (i != 0) {
+            break label567;
+          }
+          this.jdField_a_of_type_Bato.jdField_b_of_type_JavaLangString = paramHashMap.url.get().toStringUtf8();
+          wsv.a(bato.jdField_a_of_type_JavaLangString, "upload file %s return url %s", this.jdField_a_of_type_Bato.d, this.jdField_a_of_type_Bato.jdField_b_of_type_JavaLangString);
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_Bato.jdField_b_of_type_JavaLangString)) {
+            break label557;
+          }
+          this.jdField_a_of_type_Bato.jdField_j_of_type_Int = 940010;
+          this.jdField_a_of_type_Bato.jdField_j_of_type_JavaLangString = String.format("return illegal arg url:%s", new Object[] { this.jdField_a_of_type_Bato.jdField_b_of_type_JavaLangString });
+          this.jdField_a_of_type_Bato.d();
+          paramHashMap = bdcv.a(paramArrayOfByte);
+          str1 = bato.jdField_a_of_type_JavaLangString;
+          paramArrayOfByte = paramHashMap;
+          if (paramHashMap == null) {
+            paramArrayOfByte = "";
+          }
+          wsv.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
         }
-        QLog.d("TroopOnlineMemberManage", 2, String.format("getOnlineTip onlineCount: %s, memberNum: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(((TroopInfo)localObject).wMemberNumClient) }));
-        return str;
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          wsv.d(bato.jdField_a_of_type_JavaLangString, "parser buffer exception");
+          this.jdField_a_of_type_Bato.d();
+        }
+        continue;
+        label557:
+        this.jdField_a_of_type_Bato.e();
+        continue;
+        label567:
+        this.jdField_a_of_type_Bato.jdField_j_of_type_Int = i;
+        this.jdField_a_of_type_Bato.jdField_j_of_type_JavaLangString = paramHashMap.msg.get().toStringUtf8();
+        this.jdField_a_of_type_Bato.d();
       }
-      return str;
+      else if ((this.jdField_a_of_type_Bato.jdField_a_of_type_Baoj.b == 196609) || (this.jdField_a_of_type_Bato.jdField_a_of_type_Baoj.b == 327681))
+      {
+        paramHashMap = new qqstory_bhd_upload_pic.RspStoryVideo();
+        try
+        {
+          paramHashMap.mergeFrom(paramArrayOfByte);
+          i = paramHashMap.retcode.get();
+          if (i != 0) {
+            break label872;
+          }
+          this.jdField_a_of_type_Bato.jdField_o_of_type_JavaLangString = paramHashMap.cdn_url.get().toStringUtf8();
+          if (this.jdField_a_of_type_Bato.jdField_a_of_type_Baoj.b == 196609) {
+            this.jdField_a_of_type_Bato.jdField_o_of_type_JavaLangString = xod.a(this.jdField_a_of_type_Bato.jdField_o_of_type_JavaLangString, "authkey");
+          }
+          this.jdField_a_of_type_Bato.n = paramHashMap.file_key.get().toStringUtf8();
+          if ((!TextUtils.isEmpty(this.jdField_a_of_type_Bato.jdField_o_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bato.n))) {
+            break label862;
+          }
+          this.jdField_a_of_type_Bato.jdField_j_of_type_Int = 940010;
+          this.jdField_a_of_type_Bato.jdField_j_of_type_JavaLangString = String.format("return illegal arg vid:%s, url:%s", new Object[] { this.jdField_a_of_type_Bato.n, this.jdField_a_of_type_Bato.jdField_o_of_type_JavaLangString });
+          this.jdField_a_of_type_Bato.d();
+          paramHashMap = bdcv.a(paramArrayOfByte);
+          str1 = bato.jdField_a_of_type_JavaLangString;
+          paramArrayOfByte = paramHashMap;
+          if (paramHashMap == null) {
+            paramArrayOfByte = "";
+          }
+          wsv.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          wsv.d(bato.jdField_a_of_type_JavaLangString, "parser buffer exception");
+          this.jdField_a_of_type_Bato.d();
+        }
+        continue;
+        label862:
+        this.jdField_a_of_type_Bato.e();
+        continue;
+        label872:
+        this.jdField_a_of_type_Bato.jdField_j_of_type_Int = i;
+        this.jdField_a_of_type_Bato.jdField_j_of_type_JavaLangString = paramHashMap.msg.get().toStringUtf8();
+        this.jdField_a_of_type_Bato.d();
+      }
+      else
+      {
+        this.jdField_a_of_type_Bato.d(1005);
+        this.jdField_a_of_type_Bato.d();
+      }
     }
   }
   
-  public List<bato> a(String paramString)
-  {
-    paramString = (batn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.jdField_a_of_type_JavaUtilList;
-  }
+  public void onSwitch2BackupChannel() {}
   
-  public void a(long paramLong)
+  public void onTransStart()
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    wsv.a(bato.jdField_a_of_type_JavaLangString, "onTransStart %s", this.jdField_a_of_type_Bato.jdField_a_of_type_Baub.i);
+    long l1 = System.currentTimeMillis();
+    long l2 = bato.a(this.jdField_a_of_type_Bato);
+    String str2 = wta.a(BaseApplication.getContext());
+    if (this.jdField_a_of_type_Bato.jdField_a_of_type_Baoj.b == 196610) {}
+    for (String str1 = "pic";; str1 = "video")
     {
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      wta.b("publish_story", "publish_bdh", 0, 0, new String[] { "", String.valueOf(l1 - l2), str2, str1 });
+      this.jdField_a_of_type_Bato.jdField_b_of_type_Bamy.a();
+      bato.a(this.jdField_a_of_type_Bato, System.currentTimeMillis());
       return;
     }
-    catch (Exception paramString)
-    {
-      QLog.i("TroopOnlineMemberManage", 1, "removeDetailOnlineData: e = " + paramString.toString());
-    }
   }
   
-  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3)
+  public void onUpdateProgress(int paramInt)
   {
-    int i = paramInt1;
-    if (paramInt1 <= 0) {
-      i = 10;
+    bato localbato = this.jdField_a_of_type_Bato;
+    baoj localbaoj = this.jdField_a_of_type_Bato.jdField_a_of_type_Baoj;
+    long l = paramInt;
+    localbaoj.e = l;
+    localbato.s = l;
+    if ((paramInt <= this.jdField_a_of_type_Bato.q) && (!this.jdField_a_of_type_Bato.jdField_o_of_type_Boolean) && (!this.jdField_a_of_type_Bato.k)) {
+      this.jdField_a_of_type_Bato.i();
     }
-    batn localbatn2 = (batn)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
-    batn localbatn1 = localbatn2;
-    if (localbatn2 == null)
-    {
-      localbatn1 = new batn();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString1, localbatn1);
-    }
-    if ((i != 4) || (!TextUtils.isEmpty(paramString2)))
-    {
-      localbatn1.jdField_a_of_type_JavaLangString = paramString2;
-      localbatn1.jdField_b_of_type_Int = paramInt3;
-    }
-    localbatn1.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTime() + i);
-    if (paramInt2 != -1) {
-      localbatn1.jdField_a_of_type_Int = paramInt2;
-    }
-  }
-  
-  public void a(String paramString, List<String> paramList, int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt <= 0) {
-      i = 10;
-    }
-    TroopAllOnlineData localTroopAllOnlineData = new TroopAllOnlineData();
-    localTroopAllOnlineData.troopUin = paramString;
-    localTroopAllOnlineData.memberUinList = paramList;
-    localTroopAllOnlineData.nextReqTime = i;
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramString.b(localTroopAllOnlineData);
-    paramString.a();
-  }
-  
-  public void a(String paramString1, List<bato> paramList, int paramInt1, String paramString2, int paramInt2)
-  {
-    int i = paramInt1;
-    if (paramInt1 <= 0) {
-      i = 10;
-    }
-    batn localbatn2 = (batn)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
-    batn localbatn1 = localbatn2;
-    if (localbatn2 == null)
-    {
-      localbatn1 = new batn();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString1, localbatn1);
-    }
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      localbatn1.jdField_a_of_type_JavaLangString = paramString2;
-      localbatn1.jdField_b_of_type_Int = paramInt2;
-    }
-    if ((paramList != null) && (paramList.size() > 0)) {
-      localbatn1.jdField_a_of_type_JavaUtilList = paramList;
-    }
-    localbatn1.jdField_b_of_type_Long = (NetConnInfoCenter.getServerTime() + i);
-  }
-  
-  public int b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    paramString = (batn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {}
-    for (int i = paramString.jdField_b_of_type_Int;; i = 0) {
-      return i;
-    }
-  }
-  
-  public long b(String paramString)
-  {
-    paramString = (batn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {}
-    for (long l1 = paramString.jdField_a_of_type_Long;; l1 = 0L)
-    {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
-    }
-  }
-  
-  public List<String> b(String paramString)
-  {
-    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramString = (TroopAllOnlineData)localaukp.a(TroopAllOnlineData.class, paramString);
-    localaukp.a();
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.memberUinList;
-  }
-  
-  public void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      paramString = (batn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    } while (paramString == null);
-    paramString.jdField_a_of_type_JavaUtilList = null;
-    paramString.jdField_b_of_type_Long = NetConnInfoCenter.getServerTime();
-  }
-  
-  public void b(String paramString, List<String> paramList, int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt <= 0) {
-      i = 10;
-    }
-    TroopAllOnlineData localTroopAllOnlineData2 = (TroopAllOnlineData)this.b.get(paramString);
-    TroopAllOnlineData localTroopAllOnlineData1 = localTroopAllOnlineData2;
-    if (localTroopAllOnlineData2 == null)
-    {
-      localTroopAllOnlineData1 = new TroopAllOnlineData();
-      this.b.put(paramString, localTroopAllOnlineData1);
-    }
-    localTroopAllOnlineData1.troopUin = paramString;
-    localTroopAllOnlineData1.memberUinList = paramList;
-    localTroopAllOnlineData1.nextReqTime = (NetConnInfoCenter.getServerTime() + i);
-  }
-  
-  public long c(String paramString)
-  {
-    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramString = (TroopAllOnlineData)localaukp.a(TroopAllOnlineData.class, paramString);
-    localaukp.a();
-    if (paramString != null) {}
-    for (long l1 = paramString.nextReqTime;; l1 = 0L)
-    {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
-    }
-  }
-  
-  public List<String> c(String paramString)
-  {
-    paramString = (TroopAllOnlineData)this.b.get(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.memberUinList;
-  }
-  
-  public long d(String paramString)
-  {
-    paramString = (TroopAllOnlineData)this.b.get(paramString);
-    if (paramString != null) {}
-    for (long l1 = paramString.nextReqTime;; l1 = 0L)
-    {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     batp
  * JD-Core Version:    0.7.0.1
  */

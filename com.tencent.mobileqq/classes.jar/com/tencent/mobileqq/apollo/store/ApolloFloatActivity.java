@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.store;
 
-import aiye;
-import ajac;
-import ajcf;
+import akpq;
+import akro;
+import aktr;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -16,11 +16,11 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvq;
-import bcql;
+import apmy;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.SystemBarCompact;
 
@@ -75,17 +75,17 @@ public class ApolloFloatActivity
     if (localIntent != null)
     {
       this.e = localIntent.getIntExtra("extra_key_gameid", -1);
-      ajcf localajcf = ajac.a(this.e);
+      aktr localaktr = akro.a(this.e);
       i = localIntent.getIntExtra("extra_key_taskid", 0);
-      if (localajcf != null)
+      if (localaktr != null)
       {
-        localajcf.a(this, i);
+        localaktr.a(this, i);
         this.c = localIntent.getIntExtra("extra_key_from", -1);
         if (this.c != 1) {
           break label478;
         }
         getWindow().getDecorView().setSystemUiVisibility(5894);
-        i = ajac.a(localIntent.getIntExtra("extra_key_entratation", 1));
+        i = akro.a(localIntent.getIntExtra("extra_key_entratation", 1));
         setRequestedOrientation(i);
         localIntent.getIntExtra("extra_key_transparent", 1);
         this.d = 0;
@@ -118,7 +118,7 @@ public class ApolloFloatActivity
       localObject = super.getResources();
       if (this.mSystemBarComp != null)
       {
-        i = ((Resources)localObject).getColor(2131167087);
+        i = ((Resources)localObject).getColor(2131167138);
         this.mSystemBarComp.setStatusColor(i);
         this.mSystemBarComp.setStatusBarColor(i);
       }
@@ -129,8 +129,8 @@ public class ApolloFloatActivity
       if (!this.jdField_a_of_type_Boolean) {
         super.hideTitleBar();
       }
-      if (!anvq.a().a()) {
-        anvq.a().a().doBindService(paramBundle.getContext().getApplicationContext());
+      if (!apmy.a().a()) {
+        apmy.a().a().doBindService(paramBundle.getContext().getApplicationContext());
       }
       this.h = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
       return false;
@@ -148,11 +148,11 @@ public class ApolloFloatActivity
       label507:
       if (QLog.isColorLevel())
       {
-        bcql.a(this, "透明浮层url为空", 0).a();
+        QQToast.a(this, "透明浮层url为空", 0).a();
         QLog.e("ApolloFloatActivity", 2, "ApolloFloat WebUrl is empty!");
         continue;
         if (QLog.isColorLevel()) {
-          bcql.a(this, "透明浮层url为空", 0).a();
+          QQToast.a(this, "透明浮层url为空", 0).a();
         }
         QLog.e("ApolloFloatActivity", 2, "[doOnCreate] intent is null url null");
       }
@@ -162,7 +162,7 @@ public class ApolloFloatActivity
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     if (this.c == 1) {
-      aiye.a(this);
+      akpq.a(this);
     }
     super.doOnWindowFocusChanged(paramBoolean);
   }
@@ -194,7 +194,7 @@ public class ApolloFloatActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloFloatActivity
  * JD-Core Version:    0.7.0.1
  */

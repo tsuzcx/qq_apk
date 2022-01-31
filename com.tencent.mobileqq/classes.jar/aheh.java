@@ -1,26 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aheh
-  implements View.OnClickListener
+  implements ahoj
 {
-  public aheh(DrawHbFragment paramDrawHbFragment) {}
+  public aheh(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramView instanceof TextView))
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
+    }
+    paramObject = TroopView.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
-      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
+      paramObject = paramObject.obtainMessage(14, paramInt, i);
+      TroopView.a(this.a).sendMessage(paramObject);
+      return;
+    }
+  }
+  
+  public void au_()
+  {
+    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
+      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aheh
  * JD-Core Version:    0.7.0.1
  */

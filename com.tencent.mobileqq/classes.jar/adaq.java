@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class adaq
-  implements aybj
+public class adaq
+  extends BroadcastReceiver
 {
-  adaq(adap paramadap) {}
+  public adaq(JumpActivity paramJumpActivity) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = this.a.a.jdField_a_of_type_Int / 2;
-    int j = (int)(this.a.a.b - baxn.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Aycm.b / 2.0F);
-    int k = (int)(this.a.a.b - baxn.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Aycm.b / 2.0F);
-    aybr localaybr = new aybr(new aybi[] { new aybm(450, i, j, i, k), new aybm(450, i, k, i, j) });
-    localaybr.a = true;
-    this.a.a.jdField_a_of_type_Aycm.a(new aybi[] { localaybr });
+    if (!this.a.isFinishing())
+    {
+      this.a.finish();
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adaq
  * JD-Core Version:    0.7.0.1
  */

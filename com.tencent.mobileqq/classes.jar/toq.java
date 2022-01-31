@@ -1,44 +1,21 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
 public class toq
-  extends syn
 {
-  public final String a;
-  public final List<vvd> a;
-  public final int b;
-  
-  public toq(qqstory_service.RspGetTagList paramRspGetTagList)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    Object localObject = paramRspGetTagList.tag_list.get();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        qqstory_struct.TagItem localTagItem = (qqstory_struct.TagItem)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilList.add(new vvd(localTagItem));
-      }
-    }
-    this.b = paramRspGetTagList.is_end.get();
-    this.jdField_a_of_type_JavaLangString = paramRspGetTagList.next_cookie.get();
-  }
-  
-  public String toString()
-  {
-    return "GetTagListResponse{mTagItems=" + this.jdField_a_of_type_JavaUtilList + ", mIsEnd=" + this.b + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
-  }
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  public TextView a;
+  public VideoFeedsAlphaMaskView a;
+  public ZImageView a;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     toq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,46 @@
 package com.tencent.qqmini.proxyimpl;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import bejc;
-import bejd;
-import betc;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
 
 class MiniAppProxyImpl$6
-  implements bejd
+  implements EIPCResultCallback
 {
-  MiniAppProxyImpl$6(MiniAppProxyImpl paramMiniAppProxyImpl) {}
+  MiniAppProxyImpl$6(MiniAppProxyImpl paramMiniAppProxyImpl, MiniAppInfo paramMiniAppInfo) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramInt1 != 9527) {
-      return false;
-    }
-    bejc.a().b(this);
-    betc.a("MiniAppProxyImpl", "set isMiniMsgTabShow false");
-    MiniAppProxyImpl.access$802(this.this$0, false);
-    if (paramInt2 != -1)
+    MiniAppProxyImpl.access$600(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1000));
+    if (paramEIPCResult != null)
     {
-      betc.c("MiniAppProxyImpl", "onShareActivityResult, resultCode not Activity.RESULT_OK, but " + paramInt2);
-      return true;
+      QLog.d("MiniAppProxyImpl", 1, "onMoreClick onCallback code : " + paramEIPCResult.code);
+      if (paramEIPCResult.code == 0)
+      {
+        paramEIPCResult = paramEIPCResult.data;
+        int i = paramEIPCResult.getInt("topType");
+        paramEIPCResult = paramEIPCResult.getIntegerArrayList("backHomeSceneList");
+        if ((paramEIPCResult != null) && (paramEIPCResult.size() > 0))
+        {
+          MiniAppProxyImpl.access$700(this.this$0).clear();
+          MiniAppProxyImpl.access$700(this.this$0).addAll(paramEIPCResult);
+        }
+        if (this.val$miniAppInfo != null) {
+          this.val$miniAppInfo.topType = i;
+        }
+      }
     }
-    paramInt1 = paramIntent.getIntExtra("clickID", -1);
-    String str = "";
-    switch (paramInt1)
-    {
-    default: 
-      paramIntent = str;
-    }
-    for (;;)
-    {
-      MiniAppProxyImpl.access$300(this.this$0, paramIntent);
-      return true;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(2);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(6);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(7);
-      paramIntent = "share_WX";
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(8);
-      paramIntent = "share_Moments";
-      continue;
-      Message localMessage = new Message();
-      localMessage.what = 13;
-      localMessage.setData(paramIntent.getExtras());
-      MiniAppProxyImpl.access$600(this.this$0).sendMessage(localMessage);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(3);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(4);
-      paramIntent = "about";
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(5);
-      paramIntent = str;
-      continue;
-      paramIntent = "cancel";
-      continue;
-      paramIntent = "cancel_system";
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(9);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(11);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(10);
-      paramIntent = "back_home";
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(12);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(14);
-      paramIntent = str;
-    }
+    AppBrandTask.runTaskOnUiThread(new MiniAppProxyImpl.6.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.6
  * JD-Core Version:    0.7.0.1
  */

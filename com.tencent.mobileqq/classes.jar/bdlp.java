@@ -1,49 +1,10 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Map;
-
-class bdlp
-  extends QIPCModule
+public abstract interface bdlp
 {
-  bdlp(bdlo parambdlo, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    bdii.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    Object localObject = bdlo.a(this.a);
-    if (localObject == null) {
-      bdii.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
-    }
-    String str;
-    int i;
-    do
-    {
-      do
-      {
-        return null;
-      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
-      str = paramBundle.getString("PackageName");
-      i = paramBundle.getInt("VersionCode");
-      bdii.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
-    } while (str == null);
-    ((QQAppInterface)localObject).a(bdlo.a(this.a));
-    paramString = (ajud)((QQAppInterface)localObject).a(4);
-    localObject = str + "_" + i;
-    paramBundle.putInt("CallbackId", paramInt);
-    paramBundle = new Bundle(paramBundle);
-    bdlo.a(this.a).put(localObject, paramBundle);
-    paramString.a(str, i, (String)localObject);
-    return null;
-  }
+  public abstract void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdlp
  * JD-Core Version:    0.7.0.1
  */

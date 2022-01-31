@@ -166,7 +166,7 @@ final class a
     //   307: invokevirtual 139	com/tencent/mobileqq/microapp/appbrand/utils/b:a	(Ljava/lang/String;)Ljava/lang/String;
     //   310: astore 10
     //   312: aload 10
-    //   314: invokestatic 144	bbdx:a	(Ljava/lang/String;)Ljava/io/File;
+    //   314: invokestatic 144	bdcs:a	(Ljava/lang/String;)Ljava/io/File;
     //   317: astore 8
     //   319: new 146	java/io/FileOutputStream
     //   322: dup
@@ -339,7 +339,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.a
  * JD-Core Version:    0.7.0.1
  */

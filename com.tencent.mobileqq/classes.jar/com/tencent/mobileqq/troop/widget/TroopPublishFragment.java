@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
-import aqkc;
+import asdr;
 import com.tencent.mobileqq.fragment.BaseFragment;
 
 public class TroopPublishFragment
   extends BaseFragment
-  implements aqkc
+  implements asdr
 {
   public String a()
   {
@@ -16,7 +16,7 @@ public class TroopPublishFragment
   
   public void a(String paramString) {}
   
-  public void aS_() {}
+  public void aT_() {}
   
   public String b()
   {

@@ -1,10 +1,10 @@
 package com.tencent.qqmini.proxyimpl;
 
+import aajb;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBoxADLisener;
-import ytk;
 
 class AdProxyImpl$SDKBoxAdView$1$1
-  implements ytk
+  implements aajb
 {
   AdProxyImpl$SDKBoxAdView$1$1(AdProxyImpl.SDKBoxAdView.1 param1) {}
   
@@ -17,7 +17,7 @@ class AdProxyImpl$SDKBoxAdView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBoxAdView.1.1
  * JD-Core Version:    0.7.0.1
  */

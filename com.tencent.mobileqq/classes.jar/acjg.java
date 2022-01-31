@@ -1,21 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
-public class acjg
-  implements View.OnClickListener
+class acjg
+  implements Comparator<Object>
 {
-  public acjg(TroopMemberListActivity paramTroopMemberListActivity) {}
+  acjg(acjf paramacjf) {}
   
-  public void onClick(View paramView)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    this.a.g();
-    new axrc(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.b }).a();
+    if ((paramObject1 instanceof FileManagerEntity)) {
+      if ((paramObject2 instanceof FileManagerEntity)) {
+        if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return -1;
+          return 1;
+          if (!(paramObject2 instanceof TencentDocData)) {
+            break;
+          }
+        } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
+        return 1;
+        if (!(paramObject1 instanceof TencentDocData)) {
+          break label124;
+        }
+        if (!(paramObject2 instanceof FileManagerEntity)) {
+          break;
+        }
+      } while (((TencentDocData)paramObject1).aioTime > ((FileManagerEntity)paramObject2).srvTime);
+      return 1;
+      if (!(paramObject2 instanceof TencentDocData)) {
+        break;
+      }
+    } while (((TencentDocData)paramObject1).aioTime > ((TencentDocData)paramObject2).aioTime);
+    return 1;
+    label124:
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acjg
  * JD-Core Version:    0.7.0.1
  */

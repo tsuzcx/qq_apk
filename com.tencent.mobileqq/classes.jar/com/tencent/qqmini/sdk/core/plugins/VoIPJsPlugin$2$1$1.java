@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import behp;
-import bejs;
-import bekr;
-import betc;
+import bghn;
+import bgkd;
+import com.tencent.qqmini.sdk.core.manager.VoIPManager.EventListener;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class VoIPJsPlugin$2$1$1
-  implements bejs
+  implements VoIPManager.EventListener
 {
   VoIPJsPlugin$2$1$1(VoIPJsPlugin.2.1 param1) {}
   
@@ -27,7 +27,7 @@ class VoIPJsPlugin$2$1$1
     {
       for (;;)
       {
-        betc.d("[mini] VoIPJsPlugin", "JSONException", paramString);
+        QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramString);
       }
     }
   }
@@ -45,7 +45,7 @@ class VoIPJsPlugin$2$1$1
     {
       for (;;)
       {
-        betc.d("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
+        QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
       }
     }
   }
@@ -63,14 +63,14 @@ class VoIPJsPlugin$2$1$1
     {
       for (;;)
       {
-        betc.d("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
+        QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.VoIPJsPlugin.2.1.1
  * JD-Core Version:    0.7.0.1
  */

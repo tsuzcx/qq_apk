@@ -1,26 +1,45 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
+import com.tencent.biz.qqcircle.viewmodels.QCircleMessageNoticeViewModel.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class tzd
-  implements ValueAnimator.AnimatorUpdateListener
+public class tzd
+  extends tyz
 {
-  tzd(tzc paramtzc) {}
+  private static final String jdField_a_of_type_JavaLangString = tzd.class.getSimpleName();
+  private MutableLiveData<trt> jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private void a(List<String> paramList, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 16)
+    String str = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder().append("setNoticeTipValue ");
+    if (paramList == null) {}
+    for (int i = 0;; i = paramList.size())
     {
-      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      QLog.e(str, 1, i + ", " + paramInt);
+      paramList = new trt(paramList, paramInt);
+      this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.postValue(paramList);
       return;
     }
-    this.a.a.setImageResource(2130849558);
+  }
+  
+  public MutableLiveData<trt> a()
+  {
+    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+  }
+  
+  public void a(Context paramContext)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "pullLastestInfo");
+    ThreadManager.getSubThreadHandler().post(new QCircleMessageNoticeViewModel.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tzd
  * JD-Core Version:    0.7.0.1
  */

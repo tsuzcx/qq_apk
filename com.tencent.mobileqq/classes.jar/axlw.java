@@ -1,42 +1,55 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class axlw
+  extends AnimatorListenerAdapter
 {
-  public static int a;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static boolean jdField_a_of_type_Boolean;
+  public axlw(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
   
-  static
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    jdField_a_of_type_Int = -4;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
+    }
   }
   
-  public static boolean a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    boolean bool = false;
-    if (jdField_a_of_type_Boolean) {
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
     }
-    String str = axle.e(BaseApplicationImpl.getContext());
-    if (str == null) {
-      return false;
+    if (!this.a.b.get())
+    {
+      this.a.a.set(true);
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
+      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
     }
-    if (!bbdx.a(str + "libObjectTracker.so")) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TrackerSoLoader", 2, " isTrackingSoExist =" + bool);
-      }
-      jdField_a_of_type_Boolean = bool;
-      return jdField_a_of_type_Boolean;
-      bool = true;
+      this.a.b.set(false);
+      return;
+      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
+      CameraCaptureButtonLayout.a(this.a);
+      CameraCaptureButtonLayout.a(this.a, 1.0F);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axlw
  * JD-Core Version:    0.7.0.1
  */

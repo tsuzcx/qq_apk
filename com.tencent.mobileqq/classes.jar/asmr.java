@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-
-public class asmr
-  implements View.OnClickListener
+class asmr
+  implements bhyh
 {
-  public asmr(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  asmr(asmq paramasmq) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing())) {
-      MsgBackupDateFragment.a(this.a).dismiss();
-    }
+    this.a.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asmr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.av.gaudio.AVPhoneUserInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.AVActivity;
 
-final class mdo
+public class mdo
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e = true;
+  public mdo(AVActivity paramAVActivity) {}
   
-  private mdo(mdl parammdl) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.i();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdo
  * JD-Core Version:    0.7.0.1
  */

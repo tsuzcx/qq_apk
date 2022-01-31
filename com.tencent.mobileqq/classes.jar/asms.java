@@ -1,60 +1,67 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import java.util.Calendar;
+import android.util.Base64;
+import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
 
 public class asms
-  implements amnf
 {
-  private asms(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  static final String a = 'W' + 't' + 'R' + 'x' + 'K' + 'b' + 'L' + 'k';
   
-  public int a()
+  public static String a(String paramString)
   {
-    return 3;
+    return a(paramString, a);
   }
   
-  public int a(int paramInt)
+  public static String a(String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return MsgBackupDateFragment.c(this.a) - MsgBackupDateFragment.d(this.a) + 1;
-    case 1: 
-      return 12;
+    if (paramString1 == null) {
+      throw new XorCipherException("null input");
     }
-    Calendar localCalendar = Calendar.getInstance();
-    if (MsgBackupDateFragment.b(this.a) == 1)
+    try
     {
-      localCalendar.set(1, MsgBackupDateFragment.e(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.f(this.a));
-      localCalendar.set(5, 1);
+      paramString1 = new String(Base64.encode(a(paramString1.getBytes(), paramString2.getBytes()), 0));
+      return paramString1;
     }
-    for (;;)
+    catch (Throwable paramString1)
     {
-      return localCalendar.getActualMaximum(5);
-      localCalendar.set(1, MsgBackupDateFragment.g(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.h(this.a));
-      localCalendar.set(5, 1);
+      throw new XorCipherException(paramString1);
     }
   }
   
-  public String a(int paramInt1, int paramInt2)
+  private static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    switch (paramInt1)
+    byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
+    int i = 0;
+    while (i < paramArrayOfByte1.length)
     {
-    default: 
-      return "";
-    case 0: 
-      return MsgBackupDateFragment.d(this.a) + paramInt2 + ajya.a(2131706932);
-    case 1: 
-      return paramInt2 + 1 + ajya.a(2131706915);
+      arrayOfByte[i] = ((byte)(paramArrayOfByte1[i] ^ paramArrayOfByte2[(i % paramArrayOfByte2.length)]));
+      i += 1;
     }
-    return paramInt2 + 1 + ajya.a(2131706931);
+    return arrayOfByte;
+  }
+  
+  public static String b(String paramString)
+  {
+    return b(paramString, a);
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new XorCipherException("null input");
+    }
+    try
+    {
+      paramString1 = new String(a(Base64.decode(paramString1, 0), paramString2.getBytes()));
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      throw new XorCipherException(paramString1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asms
  * JD-Core Version:    0.7.0.1
  */

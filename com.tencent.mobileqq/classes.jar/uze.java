@@ -1,41 +1,17 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class uze
-  extends syn
+public final class uze
+  extends ugz
 {
-  public List<String> a = new ArrayList();
-  public int b;
-  
-  public uze(qqstory_service.RspGetPhotographyGuide paramRspGetPhotographyGuide)
-  {
-    super(paramRspGetPhotographyGuide.result);
-    Object localObject = paramRspGetPhotographyGuide.word.get();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ByteStringMicro localByteStringMicro = (ByteStringMicro)((Iterator)localObject).next();
-        this.a.add(localByteStringMicro.toStringUtf8());
-      }
-    }
-    this.b = paramRspGetPhotographyGuide.seqno.get();
-  }
-  
-  public String toString()
-  {
-    return "GetPhotographyGuideResponse{, wordList=" + this.a.size() + ", seqno=" + this.b + '}';
-  }
+  public List<qqstory_struct.VidPollInfo> a = new ArrayList();
+  public List<qqstory_struct.VidRateInfo> b = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uze
  * JD-Core Version:    0.7.0.1
  */

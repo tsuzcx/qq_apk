@@ -1,62 +1,21 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class bbjw
+class bbjw
+  implements Comparator<Map.Entry<String, bbjy>>
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  bbjw(bbjv parambbjv) {}
   
-  private void a()
+  public int a(Map.Entry<String, bbjy> paramEntry1, Map.Entry<String, bbjy> paramEntry2)
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    float f = ((bbjy)paramEntry2.getValue()).a() - ((bbjy)paramEntry1.getValue()).a();
+    if (f > 0.0F) {
+      return 1;
     }
-  }
-  
-  private void a(View paramView)
-  {
-    if (paramView != null)
-    {
-      paramView = paramView.getParent();
-      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
-        a((ViewGroup)paramView);
-      }
+    if (f < 0.0F) {
+      return -1;
     }
-  }
-  
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup != null) {
-      paramViewGroup.removeAllViews();
-    }
-  }
-  
-  void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
-    }
-  }
-  
-  void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    a(this.jdField_a_of_type_AndroidViewView);
-    a(paramView);
-    if (paramView != null) {
-      paramView.setLayoutParams(paramLayoutParams);
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
-    a();
+    return 0;
   }
 }
 

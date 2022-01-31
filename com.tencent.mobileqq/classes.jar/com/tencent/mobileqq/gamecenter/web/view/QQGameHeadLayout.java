@@ -24,7 +24,7 @@ public class QQGameHeadLayout
   
   protected int a()
   {
-    return 2131559094;
+    return 2131559137;
   }
   
   public boolean a()
@@ -34,7 +34,7 @@ public class QQGameHeadLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.view.QQGameHeadLayout
  * JD-Core Version:    0.7.0.1
  */

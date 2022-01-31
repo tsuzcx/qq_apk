@@ -6,8 +6,8 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import mhp;
-import mhr;
+import mkh;
+import mkj;
 
 public abstract class QavListItemBase
   extends LinearLayout
@@ -16,7 +16,7 @@ public abstract class QavListItemBase
   protected int a;
   Context jdField_a_of_type_AndroidContentContext;
   final String jdField_a_of_type_JavaLangString;
-  mhp jdField_a_of_type_Mhp;
+  mkh jdField_a_of_type_Mkh;
   
   public QavListItemBase(Context paramContext)
   {
@@ -34,25 +34,25 @@ public abstract class QavListItemBase
   
   public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(int paramInt, mhp parammhp)
+  public void a(int paramInt, mkh parammkh)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Mhp = parammhp;
+    this.jdField_a_of_type_Mkh = parammkh;
   }
   
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, mhr parammhr, mhp parammhp);
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, mkj parammkj, mkh parammkh);
   
-  public void a(mhr parammhr, int paramInt) {}
+  public void a(mkj parammkj, int paramInt) {}
   
   public abstract void b(int paramInt1, int paramInt2);
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Mhp != null)
+    if (this.jdField_a_of_type_Mkh != null)
     {
       long l = AudioHelper.b();
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onClick, seq[" + l + "], mPosition[" + this.jdField_a_of_type_Int + "]");
-      this.jdField_a_of_type_Mhp.a(l, this.jdField_a_of_type_Int, this);
+      this.jdField_a_of_type_Mkh.a(l, this.jdField_a_of_type_Int, this);
     }
   }
   
@@ -60,7 +60,7 @@ public abstract class QavListItemBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.QavListItemBase
  * JD-Core Version:    0.7.0.1
  */

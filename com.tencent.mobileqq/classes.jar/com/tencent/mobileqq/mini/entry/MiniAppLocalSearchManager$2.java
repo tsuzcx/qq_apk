@@ -1,53 +1,52 @@
 package com.tencent.mobileqq.mini.entry;
 
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_SEARCH.SEARCH.StAppSearchItem;
-import NS_MINI_APP_SEARCH.SEARCH.StLocalSearchDataRsp;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import awbv;
+import awbw;
+import awbx;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONObject;
 
 class MiniAppLocalSearchManager$2
-  implements MiniAppCmdInterface
+  implements Runnable
 {
-  MiniAppLocalSearchManager$2(MiniAppLocalSearchManager paramMiniAppLocalSearchManager) {}
+  MiniAppLocalSearchManager$2(MiniAppLocalSearchManager paramMiniAppLocalSearchManager, MiniAppLocalSearchEntity paramMiniAppLocalSearchEntity) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void run()
   {
-    if (paramBoolean)
+    Object localObject1 = MiniAppLocalSearchManager.access$000();
+    if (localObject1 == null) {
+      QLog.e("MiniAppLocalSearchManager", 2, "updateDataToDB, app is null.");
+    }
+    for (;;)
     {
-      paramJSONObject = paramJSONObject.opt("response");
-      if (paramJSONObject != null)
+      return;
+      localObject1 = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+      if (localObject1 != null)
       {
-        Object localObject = (SEARCH.StLocalSearchDataRsp)paramJSONObject;
-        int i = ((SEARCH.StLocalSearchDataRsp)localObject).status.get();
-        MiniAppLocalSearchManager.access$202(this.this$0, (COMM.StCommonExt)((SEARCH.StLocalSearchDataRsp)localObject).extInfo.get());
-        if (i == 1)
+        Object localObject2 = MiniAppLocalSearchEntity.class.getSimpleName();
+        Object localObject3 = this.val$netResult.appId;
+        String str = this.val$netResult.appId;
+        localObject2 = ((awbw)localObject1).a(MiniAppLocalSearchEntity.class, (String)localObject2, false, "appId = ?", new String[] { localObject3 }, null, null, null, str);
+        if ((localObject2 != null) && (((List)localObject2).size() > 0))
         {
-          paramJSONObject = new ArrayList();
-          localObject = ((SEARCH.StLocalSearchDataRsp)localObject).items.get().iterator();
-          while (((Iterator)localObject).hasNext())
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
           {
-            SEARCH.StAppSearchItem localStAppSearchItem = (SEARCH.StAppSearchItem)((Iterator)localObject).next();
-            paramJSONObject.add(new MiniAppLocalSearchEntity(localStAppSearchItem.appid.get(), localStAppSearchItem.appname.get(), localStAppSearchItem.appIcon.get(), localStAppSearchItem.desc.get(), localStAppSearchItem.showMask.get()));
+            localObject3 = (MiniAppLocalSearchEntity)((Iterator)localObject2).next();
+            QLog.i("MiniAppLocalSearchManager", 2, "updateDataDbFromNetResult  : " + this.val$netResult.desc);
+            ((MiniAppLocalSearchEntity)localObject3).desc = this.val$netResult.desc;
+            MiniAppLocalSearchManager.access$100(this.this$0, (awbw)localObject1, (awbv)localObject3);
           }
-          MiniAppLocalSearchManager.access$300(this.this$0, paramJSONObject);
         }
       }
-      return;
     }
-    QLog.e("MiniAppLocalSearchManager", 2, "onCmdListener, isSuc = " + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager.2
  * JD-Core Version:    0.7.0.1
  */

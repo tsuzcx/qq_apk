@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.support.v4.widget.SwipeRefreshLayout;
-import bekj;
-import betc;
+import bgid;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class PageWebviewContainer$4
   implements Runnable
 {
-  PageWebviewContainer$4(PageWebviewContainer paramPageWebviewContainer, bekj parambekj) {}
+  PageWebviewContainer$4(PageWebviewContainer paramPageWebviewContainer, bgid parambgid) {}
   
   public void run()
   {
@@ -18,13 +18,13 @@ class PageWebviewContainer$4
       this.a.a();
       return;
     }
-    betc.d("PageWebviewContainer", "EVENT_STOP_PULLDOWN_REFRESH mSwipeRefreshLayout is null.");
+    QMLog.e("PageWebviewContainer", "EVENT_STOP_PULLDOWN_REFRESH mSwipeRefreshLayout is null.");
     this.a.a("refresh layout error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer.4
  * JD-Core Version:    0.7.0.1
  */

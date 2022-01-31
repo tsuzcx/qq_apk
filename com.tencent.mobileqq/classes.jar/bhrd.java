@@ -1,100 +1,32 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.widget.BubblePopupWindow;
+import java.lang.ref.WeakReference;
 
-class bhrd
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class bhrd
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  bhrd(bhrc parambhrc, JSONObject paramJSONObject, String paramString, boolean paramBoolean) {}
+  public bhrd(BubblePopupWindow paramBubblePopupWindow) {}
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public void onScrollChanged()
   {
-    boolean bool = false;
-    if (paramPluginManagerClient == null) {}
-    try
+    if (BubblePopupWindow.a(this.a) != null) {}
+    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneLiveJsPlugin", 2, "context 为空，返回：" + this.jdField_a_of_type_OrgJsonJSONObject);
+      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
+      {
+        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
+        BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
+        this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
       }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", false);
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneLiveJsPlugin", 2, "pluginManagerClient 为空，返回：" + this.jdField_a_of_type_OrgJsonJSONObject);
-      }
-      this.jdField_a_of_type_Bhrc.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-      return;
-    }
-    catch (JSONException paramPluginManagerClient)
-    {
-      if (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.e("QZoneLiveJsPlugin", 2, "", paramPluginManagerClient);
-      return;
-      if (((PluginBaseInfo)localObject).mState != 4) {
-        break label301;
-      }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", true);
-      if (!QLog.isColorLevel()) {
-        break label272;
-      }
-      QLog.i("QZoneLiveJsPlugin", 2, "插件已安装，返回：" + this.jdField_a_of_type_OrgJsonJSONObject);
-      label272:
-      this.jdField_a_of_type_Bhrc.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-      return;
-      label301:
-      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", false);
-      if (!QLog.isColorLevel()) {
-        break label371;
-      }
-      QLog.i("QZoneLiveJsPlugin", 2, "插件未安装,state=" + ((PluginBaseInfo)localObject).mState + "needInstall：" + this.jdField_a_of_type_Boolean + "返回：" + this.jdField_a_of_type_OrgJsonJSONObject);
-      label371:
-      if (!this.jdField_a_of_type_Boolean) {
-        break label449;
-      }
-      int i = NetworkState.getNetworkType();
-      if (!QLog.isColorLevel()) {
-        break label424;
-      }
-      Object localObject = new StringBuilder().append("NetworkState.NET_TYPE_WIFI == type:");
-      if (1 != i) {
-        break label409;
-      }
-      bool = true;
-      label409:
-      QLog.i("QZoneLiveJsPlugin", 2, bool);
-      label424:
-      if (1 != i) {
-        break label449;
-      }
-      if (!QLog.isColorLevel()) {
-        break label443;
-      }
-      QLog.i("QZoneLiveJsPlugin", 2, "开始下载");
-      label443:
-      paramPluginManagerClient.installPlugin("qzone_live_video_plugin.apk");
-      label449:
-      this.jdField_a_of_type_Bhrc.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-    }
-    localObject = paramPluginManagerClient.queryPlugin("qzone_live_video_plugin.apk");
-    if (localObject == null)
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", false);
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneLiveJsPlugin", 2, "pluginInfo 为空，返回：" + this.jdField_a_of_type_OrgJsonJSONObject);
-      }
-      this.jdField_a_of_type_Bhrc.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhrd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import java.util.List;
+import android.content.Context;
 
-public class bjjy
-  implements View.OnClickListener
+public abstract interface bjjy
 {
-  public bjjy(AdvancedProviderView paramAdvancedProviderView) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = bkzo.a().a();
-    if (paramView.size() > 1) {
-      vzw.a(this.a.a, paramView.get(1));
-    }
-  }
+  public abstract void a(boolean paramBoolean, Context paramContext, bjjz parambjjz);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjjy
  * JD-Core Version:    0.7.0.1
  */

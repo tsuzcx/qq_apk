@@ -1,10 +1,17 @@
-public abstract interface vjn
+class vjn
+  implements voj
 {
-  public abstract void a();
+  vjn(vjl paramvjl) {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjn
  * JD-Core Version:    0.7.0.1
  */

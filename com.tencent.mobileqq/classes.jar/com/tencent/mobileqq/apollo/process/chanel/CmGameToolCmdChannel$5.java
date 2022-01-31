@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajac;
-import ajbu;
-import ajcf;
+import akro;
+import aktg;
+import aktr;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
@@ -19,13 +19,13 @@ public final class CmGameToolCmdChannel$5
     CmGameStartChecker.StartCheckParam localStartCheckParam;
     try
     {
-      ajcf localajcf = ajac.a(this.jdField_a_of_type_Int);
-      if ((localajcf == null) || (localajcf.a() == null))
+      aktr localaktr = akro.a(this.jdField_a_of_type_Int);
+      if ((localaktr == null) || (localaktr.a() == null))
       {
         QLog.e("cmgame_process.CmGameToolCmdChannel", 1, "cmd:" + this.jdField_a_of_type_JavaLangString + "cmGameLauncher == null || cmGameLauncher.getCheckParam() == null");
         return;
       }
-      localStartCheckParam = localajcf.a();
+      localStartCheckParam = localaktr.a();
       if (TextUtils.isEmpty(localStartCheckParam.mTempAIOUin))
       {
         QLog.e("cmgame_process.CmGameToolCmdChannel", 1, "cmd:" + this.jdField_a_of_type_JavaLangString + "startCheckParam.mTempAIOUin is empty");
@@ -42,7 +42,7 @@ public final class CmGameToolCmdChannel$5
     localJSONObject.put("nickName", localStartCheckParam.mTempAIONickName);
     localJSONObject.put("robotOpenId", localStartCheckParam.mRobotOpenId);
     localJSONObject.put("gameId", this.jdField_a_of_type_Int);
-    ajbu.a(this.jdField_a_of_type_JavaLangString, localJSONObject.toString(), false, null, this.jdField_a_of_type_Int);
+    aktg.a(this.jdField_a_of_type_JavaLangString, localJSONObject.toString(), false, null, this.jdField_a_of_type_Int);
     Activity localActivity = localException.a();
     if (localActivity != null) {
       localActivity.finish();
@@ -51,7 +51,7 @@ public final class CmGameToolCmdChannel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.chanel.CmGameToolCmdChannel.5
  * JD-Core Version:    0.7.0.1
  */

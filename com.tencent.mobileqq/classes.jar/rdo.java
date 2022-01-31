@@ -1,21 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
 
-public class rdo
-  extends oyd
+final class rdo
+  extends ClickableSpan
 {
-  public rdo(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  rdo(TextView paramTextView) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramString);
+    this.a.performClick();
   }
   
-  public void a(oxx paramoxx)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    paramoxx.a(ReadInJoyListViewGroup.a(this.a), this.a.a);
+    paramTextPaint.setColor(Color.parseColor("#FF00CAFC"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdo
  * JD-Core Version:    0.7.0.1
  */

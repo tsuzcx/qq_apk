@@ -1,57 +1,38 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class auuf
-  implements ajte
+  implements behy<oidb_0x8e4.RspBody>
 {
-  public void a(boolean paramBoolean, String paramString, long paramLong1, long paramLong2) {}
+  public auuf(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, String paramString, long paramLong, PersonalityLabelInfo paramPersonalityLabelInfo, int paramInt, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    switch (paramInt)
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
+      return;
     }
-    do
+    paramRspBody = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
+    paramRspBody.b = null;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Boolean)
     {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.c();
       return;
-      if (paramBoolean)
-      {
-        paramObject = (Object[])paramObject;
-        a(true, (String)paramObject[0], (PersonalityLabel)paramObject[1], (byte[])paramObject[2], ((Integer)paramObject[3]).intValue());
-        return;
-      }
-      a(false, null, null, null, 0);
-      return;
-      paramObject = (Object[])paramObject;
-      if (paramBoolean)
-      {
-        a(true, (String)paramObject[0], ((Long)paramObject[1]).longValue(), (PersonalityLabelInfo)paramObject[2], ((Integer)paramObject[3]).intValue(), (byte[])paramObject[4]);
-        return;
-      }
-      if ((paramObject != null) && (paramObject.length > 0))
-      {
-        a(false, (String)paramObject[0], ((Long)paramObject[1]).longValue(), null, 0, null);
-        return;
-      }
-      a(false, "", -1L, null, 0, null);
-      return;
-      paramObject = (Object[])paramObject;
-      if (paramBoolean)
-      {
-        a(true, (String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
-        return;
-      }
-    } while (paramObject == null);
-    a(false, (String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auuf
  * JD-Core Version:    0.7.0.1
  */

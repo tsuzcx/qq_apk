@@ -1,22 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class bcfu
-  implements View.OnClickListener
+  implements bcqt
 {
-  bcfu(bcfs parambcfs) {}
+  bcfu(bcfr parambcfr) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcfu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,26 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.troop.homework.ErrorInfo;
-import tencent.im.troop.homework.ReqSend1V1Msg;
-import tencent.im.troop.homework.RspSend1V1Msg;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView;
 
-public class bagy
-  extends akil
+class bagy
+  extends bafp
 {
-  public bagy(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  SingleLineHotwordTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView;
+  TextView b;
+  TextView c;
   
-  protected void a(boolean paramBoolean, homework.RspSend1V1Msg paramRspSend1V1Msg, homework.ReqSend1V1Msg paramReqSend1V1Msg)
+  private bagy(bagw parambagw)
   {
-    if (QLog.isColorLevel()) {
-      if (paramRspSend1V1Msg != null) {
-        break label97;
-      }
-    }
-    label97:
-    for (Object localObject = "null";; localObject = vyp.a(paramRspSend1V1Msg))
-    {
-      QLog.d(".troop.troop_app.BulkSendMessageFragment", 2, new Object[] { "Receive response succ=", Boolean.valueOf(paramBoolean), "resp: ", localObject });
-      if (this.a.jdField_a_of_type_Vzo != null)
-      {
-        this.a.jdField_a_of_type_Vzo.a();
-        this.a.jdField_a_of_type_Vzo = null;
-      }
-      localObject = this.a.getActivity();
-      if (localObject != null) {
-        break;
-      }
-      QLog.e(".troop.troop_app.BulkSendMessageFragment", 2, "onBulkSendMessage() Error: getActivity == null");
-      return;
-    }
-    if (paramRspSend1V1Msg == null)
-    {
-      bcql.a((Context)localObject, 1, ajya.a(2131701232), 1).a();
-      return;
-    }
-    if (paramRspSend1V1Msg.result.error_code.get() != 0)
-    {
-      bcql.a((Context)localObject, 1, paramRspSend1V1Msg.result.error_desc.get().toStringUtf8(), 1).a();
-      return;
-    }
-    bcql.a((Context)localObject, 2, ajya.a(2131701228), 1).a();
-    ((FragmentActivity)localObject).finish();
-    ((FragmentActivity)localObject).overridePendingTransition(0, 2130772001);
-    paramRspSend1V1Msg = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-    if (paramRspSend1V1Msg != null) {
-      paramRspSend1V1Msg.sendEmptyMessage(1009);
-    }
-    paramRspSend1V1Msg = bbbp.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString);
-    bbbp.a("Grp_edu", "MassMessage", "CreateMessage_Send", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramRspSend1V1Msg, paramReqSend1V1Msg.text.get().toStringUtf8(), String.valueOf(paramReqSend1V1Msg.to_uins.size()) });
+    super(parambagw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bagy
  * JD-Core Version:    0.7.0.1
  */

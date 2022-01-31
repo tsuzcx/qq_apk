@@ -1,47 +1,50 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
-class bjap
-  implements bkdr
+final class bjap
+  extends AccountObserver
 {
-  bjap(bjao parambjao) {}
+  bjap(String paramString, alkr paramalkr) {}
   
-  public void a()
+  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (this.a.jdField_a_of_type_Int != 14)
+    if ((paramBoolean) && (paramHashMap != null))
     {
-      this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setVisibility(0);
-      bjao.a(this.a).setVisibility(0);
-      bjao.a(this.a).setVisibility(0);
-      bjao.a(this.a).a();
-      if ((!this.a.f()) && (!bjao.a(this.a)))
-      {
-        bjao.a(this.a).setVisibility(0);
-        if (this.a.c()) {
-          bjao.a(this.a).setVisibility(0);
-        }
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
+        break label30;
       }
     }
-  }
-  
-  public void a(bkin parambkin)
-  {
-    this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setVisibility(8);
-    bjao.a(this.a).setVisibility(8);
-    bjao.a(this.a).setVisibility(8);
-    if (this.a.c()) {
-      bjao.a(this.a).setVisibility(8);
+    for (;;)
+    {
+      return;
+      label30:
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
+      {
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          if (this.jdField_a_of_type_Alkr != null) {
+            this.jdField_a_of_type_Alkr.onUpdate(1, true, localOpenID);
+          }
+        }
+        i += 1;
+      }
     }
-    bjao.a(this.a).a(103, new Object[] { parambkin });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjap
  * JD-Core Version:    0.7.0.1
  */

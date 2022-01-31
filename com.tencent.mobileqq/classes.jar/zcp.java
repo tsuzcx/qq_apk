@@ -1,61 +1,88 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class zcp
-  extends zcl
+  extends Dialog
 {
-  private boolean a;
-  private String c;
-  private String d;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  private TextView c;
   
-  public zcp(JSONObject paramJSONObject)
+  public zcp(Context paramContext)
   {
-    a(paramJSONObject);
+    super(paramContext, 2131755801);
+    super.setContentView(2131560257);
+    super.getWindow().setWindowAnimations(2131755128);
+    a();
   }
   
-  public String a()
+  public void a()
   {
-    String str = super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365220));
+    this.b = ((TextView)super.findViewById(2131365226));
+    this.c = ((TextView)super.findViewById(2131377893));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131377894));
+    this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
+  }
+  
+  public void a(DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (acew.S)
+    {
+      Resources localResources = getContext().getResources();
+      this.b.setContentDescription(localResources.getString(2131690622, new Object[] { localResources.getString(2131719910) }));
+    }
+    this.b.setOnClickListener(new zcr(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.c != null) {
+      this.c.setText(paramString);
+    }
+  }
+  
+  public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if (acew.S)
+    {
+      Resources localResources = getContext().getResources();
+      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      String str = paramString;
+      if (paramString == null) {
+        str = "";
+      }
+      localTextView.setContentDescription(localResources.getString(2131690622, new Object[] { str }));
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new zcq(this, paramOnClickListener));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  public void dismiss()
+  {
     try
     {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("driverVersion", this.c);
-      ((JSONObject)localObject).put("previousPatch", this.d);
-      ((JSONObject)localObject).put("isDelayLoad", this.jdField_a_of_type_Boolean);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      super.dismiss();
+      return;
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "NativePatchItemConfig writeToJsonString", localJSONException);
-    }
-    return str;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    this.c = paramJSONObject.optString("driverVersion", null);
-    this.d = paramJSONObject.optString("previousPatch", null);
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isDelayLoad", false);
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(this.c))
-    {
-      QLog.d("PatchLogTag", 1, "NativePatchItemConfig isValidConfig driverVersion is null");
-      return false;
-    }
-    return super.a(paramBoolean);
+    catch (Exception localException) {}
   }
 }
 

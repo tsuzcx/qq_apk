@@ -1,36 +1,76 @@
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import com.tencent.mobileqq.activity.qwallet.widget.RollNumberView;
 import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import java.lang.ref.WeakReference;
 
 public class aitv
-  implements aiur
+  extends Handler
 {
-  private int a;
+  WeakReference<QzoneHbFragment> a;
   
-  public aitv(int paramInt)
+  public aitv(QzoneHbFragment paramQzoneHbFragment)
   {
-    QLog.i("ApolloTextureView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
-    this.a = paramInt;
+    this.a = new WeakReference(paramQzoneHbFragment);
   }
   
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  public void handleMessage(Message paramMessage)
   {
-    int i = this.a;
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
-    if (arrayOfInt[0] == 0)
+    QzoneHbFragment localQzoneHbFragment = (QzoneHbFragment)this.a.get();
+    if (localQzoneHbFragment == null) {}
+    do
     {
-      QLog.e("ApolloTextureView", 1, "[ApolloConfigChooser], fail to set config");
-      return null;
-    }
-    return arrayOfEGLConfig[0];
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          case 102: 
+          default: 
+            return;
+          case 100: 
+            if (QLog.isColorLevel()) {
+              QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----1");
+            }
+            break;
+          }
+        } while ((QzoneHbFragment.a(localQzoneHbFragment) == null) || (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment))));
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----in mModifyAmountBtn.setEnabled(false)");
+          }
+          double d = Double.parseDouble(QzoneHbFragment.a(localQzoneHbFragment));
+          QzoneHbFragment.a(localQzoneHbFragment).reset(d);
+          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
+          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
+          QzoneHbFragment.a(localQzoneHbFragment).roll();
+          QzoneHbFragment.b(localQzoneHbFragment).setEnabled(false);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          paramMessage.printStackTrace();
+          return;
+        }
+      } while (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment)));
+      QzoneHbFragment.a(localQzoneHbFragment).setText(QzoneHbFragment.a(localQzoneHbFragment));
+      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
+      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
+      QzoneHbFragment.b(localQzoneHbFragment).setEnabled(true);
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneHbFragment", 2, "MSG_ROLL_STOP AmountBtn.setEnabled(true)---");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitv
  * JD-Core Version:    0.7.0.1
  */

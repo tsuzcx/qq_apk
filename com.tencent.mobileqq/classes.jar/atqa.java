@@ -1,17 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class atqa
-  implements atar
+  implements View.OnClickListener
 {
-  atqa(atpk paramatpk) {}
+  atqa(atpy paramatpy) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.c(paramBoolean);
-    this.a.t = paramBoolean;
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atqa
  * JD-Core Version:    0.7.0.1
  */

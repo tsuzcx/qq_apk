@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajnv;
-import ajod;
-import ajog;
+import alfi;
+import alfq;
+import alft;
 
 public class ApolloGameUtil$6$6
   implements Runnable
 {
-  public ApolloGameUtil$6$6(ajnv paramajnv, String paramString, String[] paramArrayOfString, ajod paramajod) {}
+  public ApolloGameUtil$6$6(alfi paramalfi, String paramString, String[] paramArrayOfString, alfq paramalfq) {}
   
   public void run()
   {
-    ajog.a("https://open.hudong.qq.com/devtool/authorize", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajod);
+    alft.a("https://open.hudong.qq.com/devtool/authorize", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Alfq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,62 @@
-import android.text.Editable;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.StringTokenizer;
 
-final class baev
-  implements Comparator
+public abstract class baev
 {
-  baev(Editable paramEditable) {}
+  public int a;
+  public bafb a;
+  public QQAppInterface a;
+  public ChatMessage a;
+  public String a;
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public baev(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bafb parambafb)
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_JavaLangString = paramChatMessage.frienduin;
+    this.jdField_a_of_type_Int = paramChatMessage.istroop;
+    this.jdField_a_of_type_Bafb = parambafb;
+  }
+  
+  public abstract String a();
+  
+  public abstract void a(baew parambaew);
+  
+  public boolean a()
+  {
+    Object localObject = aoui.a().c();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null, or maybe has not recv");
+      }
+    }
+    String str;
+    do
+    {
+      while (!((StringTokenizer)localObject).hasMoreTokens())
+      {
+        do
+        {
+          return false;
+          str = arof.a(a());
+          localObject = new StringTokenizer((String)localObject, "|");
+          if (((StringTokenizer)localObject).hasMoreTokens()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null");
+        return false;
+      }
+    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baev
  * JD-Core Version:    0.7.0.1
  */

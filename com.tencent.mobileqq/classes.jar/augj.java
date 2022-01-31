@@ -1,39 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class augj
-  implements ImageAssetDelegate
+public class augj
+  implements auie
 {
-  augj(augi paramaugi) {}
+  public augj(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void a(int paramInt)
   {
-    Object localObject = null;
-    paramLottieImageAsset = paramLottieImageAsset.getFileName();
-    String str = this.a.jdField_a_of_type_JavaLangString + "guide_images" + File.separator + paramLottieImageAsset;
-    try
-    {
-      paramLottieImageAsset = mpv.a(str, this.a.jdField_a_of_type_Int, this.a.b);
-      return paramLottieImageAsset;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
     }
-    catch (Exception localException)
+    switch (paramInt)
     {
-      do
-      {
-        paramLottieImageAsset = localObject;
-      } while (!AudioHelper.e());
-      QLog.w(augh.jdField_a_of_type_JavaLangString, 1, "PromotionGuide Exception, imagePath[" + str + "]", localException);
+    default: 
+      return;
+    case 0: 
+      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
+      return;
+    case 1: 
+      MultiAIOFragment.b(this.a);
+      return;
     }
-    return null;
+    MultiAIOFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augj
  * JD-Core Version:    0.7.0.1
  */

@@ -10,38 +10,38 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.animation.LinearInterpolator;
-import bjcu;
-import bkak;
-import bkao;
-import bkau;
-import bkav;
-import bkay;
-import bkba;
-import bkbd;
-import bkbi;
-import bkbk;
-import bkdn;
-import bkdo;
-import bkdp;
-import bkdq;
-import bkdr;
-import bkeo;
-import bkin;
+import blof;
+import bmlu;
+import bmly;
+import bmme;
+import bmmf;
+import bmmi;
+import bmmk;
+import bmmn;
+import bmms;
+import bmmu;
+import bmox;
+import bmoy;
+import bmoz;
+import bmpa;
+import bmpb;
+import bmpy;
+import bmtx;
 import dov.com.qq.im.capture.text.DynamicTextItem;
 import dov.com.tencent.biz.qqstory.takevideo.EditPicRawImage;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import java.util.ArrayList;
 import java.util.List;
-import ved;
+import wsv;
 
 public class DoodleEditView
   extends DoodleView
-  implements bkeo
+  implements bmpy
 {
   private float jdField_a_of_type_Float;
-  private bjcu jdField_a_of_type_Bjcu;
-  public bkay a;
-  private bkdr jdField_a_of_type_Bkdr;
+  private blof jdField_a_of_type_Blof;
+  public bmmi a;
+  private bmpb jdField_a_of_type_Bmpb;
   Runnable jdField_a_of_type_JavaLangRunnable = new DoodleEditView.5(this);
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
@@ -59,20 +59,20 @@ public class DoodleEditView
     return this.e;
   }
   
-  public bjcu a()
+  public blof a()
   {
-    return this.jdField_a_of_type_Bjcu;
+    return this.jdField_a_of_type_Blof;
   }
   
-  public bkay a()
+  public bmmi a()
   {
-    return this.jdField_a_of_type_Bkay;
+    return this.jdField_a_of_type_Bmmi;
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_Bkay = new bkay(this);
-    this.jdField_a_of_type_Bjcu = new bkdn(this);
+    this.jdField_a_of_type_Bmmi = new bmmi(this);
+    this.jdField_a_of_type_Blof = new bmox(this);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -90,14 +90,14 @@ public class DoodleEditView
     }
   }
   
-  public void a(bkin parambkin)
+  public void a(bmtx parambmtx)
   {
-    if (parambkin == null) {}
+    if (parambmtx == null) {}
     ValueAnimator localValueAnimator1;
     do
     {
       return;
-      ValueAnimator localValueAnimator2 = parambkin.a;
+      ValueAnimator localValueAnimator2 = parambmtx.a;
       localValueAnimator1 = localValueAnimator2;
       if (localValueAnimator2 == null)
       {
@@ -107,12 +107,12 @@ public class DoodleEditView
         localValueAnimator1.setRepeatMode(1);
         localValueAnimator1.setRepeatCount(-1);
         localValueAnimator1.setInterpolator(new LinearInterpolator());
-        localValueAnimator1.addUpdateListener(new bkdp(this, parambkin));
-        localValueAnimator1.addListener(new bkdq(this, parambkin));
-        parambkin.a = localValueAnimator1;
+        localValueAnimator1.addUpdateListener(new bmoz(this, parambmtx));
+        localValueAnimator1.addListener(new bmpa(this, parambmtx));
+        parambmtx.a = localValueAnimator1;
       }
-    } while ((parambkin.a.isStarted()) || (parambkin.a.isRunning()));
-    ved.b("DoodleEditView", "breathScale start ");
+    } while ((parambmtx.a.isStarted()) || (parambmtx.a.isRunning()));
+    wsv.b("DoodleEditView", "breathScale start ");
     localValueAnimator1.start();
   }
   
@@ -133,25 +133,25 @@ public class DoodleEditView
   
   public void b()
   {
-    bkin localbkin = this.jdField_a_of_type_Bkay.a();
-    if (localbkin != null) {
-      localbkin.d();
+    bmtx localbmtx = this.jdField_a_of_type_Bmmi.a();
+    if (localbmtx != null) {
+      localbmtx.d();
     }
-    if (this.jdField_a_of_type_Bkay.b != null)
+    if (this.jdField_a_of_type_Bmmi.b != null)
     {
-      this.jdField_a_of_type_Bkay.b.d();
-      this.jdField_a_of_type_Bkay.b = null;
+      this.jdField_a_of_type_Bmmi.b.d();
+      this.jdField_a_of_type_Bmmi.b = null;
     }
   }
   
-  public void b(bkin parambkin)
+  public void b(bmtx parambmtx)
   {
-    if (parambkin == null) {}
-    while ((parambkin.a == null) || (!parambkin.a.isRunning())) {
+    if (parambmtx == null) {}
+    while ((parambmtx.a == null) || (!parambmtx.a.isRunning())) {
       return;
     }
-    ved.b("DoodleEditView", "cancelNailAnimator");
-    parambkin.a.cancel();
+    wsv.b("DoodleEditView", "cancelNailAnimator");
+    parambmtx.a.cancel();
   }
   
   public void b(boolean paramBoolean)
@@ -159,23 +159,23 @@ public class DoodleEditView
     if (paramBoolean) {
       removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
-    bkin localbkin;
+    bmtx localbmtx;
     Object localObject2;
     Object localObject1;
     if ((paramBoolean) || ((!paramBoolean) && (getVisibility() == 0))) {
-      if (this.jdField_a_of_type_Bkay.b())
+      if (this.jdField_a_of_type_Bmmi.b())
       {
-        localbkin = this.jdField_a_of_type_Bkay.a();
-        localbkin.jdField_k_of_type_Boolean = false;
-        if (!(localbkin instanceof bkao)) {
+        localbmtx = this.jdField_a_of_type_Bmmi.a();
+        localbmtx.jdField_k_of_type_Boolean = false;
+        if (!(localbmtx instanceof bmly)) {
           break label220;
         }
-        localObject2 = (bkak)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(bkak.jdField_a_of_type_JavaLangString);
-        bkao localbkao = (bkao)localbkin;
-        if (((bkao)localbkin).h != 1)
+        localObject2 = (bmlu)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(bmlu.jdField_a_of_type_JavaLangString);
+        bmly localbmly = (bmly)localbmtx;
+        if (((bmly)localbmtx).h != 1)
         {
           localObject1 = localObject2;
-          if (((bkao)localbkin).h != 3) {}
+          if (((bmly)localbmtx).h != 3) {}
         }
         else if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null)
         {
@@ -184,60 +184,60 @@ public class DoodleEditView
         }
         else
         {
-          localObject1 = (bkak)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a("DynamicFaceLayer");
-          ((bkao)localbkin).a.setCallback(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
+          localObject1 = (bmlu)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a("DynamicFaceLayer");
+          ((bmly)localbmtx).a.setCallback(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
         }
         if (localObject1 != null) {
-          ((bkak)localObject1).jdField_a_of_type_JavaUtilList.add(localbkao);
+          ((bmlu)localObject1).jdField_a_of_type_JavaUtilList.add(localbmly);
         }
       }
     }
     for (;;)
     {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
-      this.jdField_a_of_type_Bkay.c();
+      this.jdField_a_of_type_Bmmi.c();
       setVisibility(8);
-      if (this.jdField_a_of_type_Bkdr != null) {
-        this.jdField_a_of_type_Bkdr.a();
+      if (this.jdField_a_of_type_Bmpb != null) {
+        this.jdField_a_of_type_Bmpb.a();
       }
       return;
       label220:
-      if ((localbkin instanceof bkbd))
+      if ((localbmtx instanceof bmmn))
       {
-        if (((bkbd)localbkin).a != null) {
-          ((bkbd)localbkin).a.a(-1, false);
+        if (((bmmn)localbmtx).a != null) {
+          ((bmmn)localbmtx).a.a(-1, false);
         }
-        localObject1 = (bkba)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(bkba.jdField_a_of_type_JavaLangString);
+        localObject1 = (bmmk)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(bmmk.jdField_a_of_type_JavaLangString);
         if (localObject1 != null)
         {
-          localObject2 = ((bkbd)localbkin).a;
+          localObject2 = ((bmmn)localbmtx).a;
           if (localObject2 != null)
           {
             if ((!((DynamicTextItem)localObject2).e()) && (((DynamicTextItem)localObject2).d())) {
               ((DynamicTextItem)localObject2).a(true);
             }
             if (!((DynamicTextItem)localObject2).b()) {
-              ((bkba)localObject1).jdField_a_of_type_JavaUtilArrayList.add((bkbd)localbkin);
+              ((bmmk)localObject1).jdField_a_of_type_JavaUtilArrayList.add((bmmn)localbmtx);
             }
           }
         }
       }
-      else if ((localbkin instanceof bkav))
+      else if ((localbmtx instanceof bmmf))
       {
-        localObject1 = (bkau)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b.a("InteractPasterLayer");
+        localObject1 = (bmme)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b.a("InteractPasterLayer");
         if (localObject1 != null)
         {
-          ((bkau)localObject1).a = ((bkbk)localbkin);
-          ((bkau)localObject1).f();
+          ((bmme)localObject1).a = ((bmmu)localbmtx);
+          ((bmme)localObject1).f();
         }
       }
-      else if ((localbkin instanceof bkbk))
+      else if ((localbmtx instanceof bmmu))
       {
-        localObject1 = (bkbi)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b.a("VoteLayer");
+        localObject1 = (bmms)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b.a("VoteLayer");
         if (localObject1 != null)
         {
-          ((bkbi)localObject1).a = ((bkbk)localbkin);
-          ((bkbi)localObject1).f();
+          ((bmms)localObject1).a = ((bmmu)localbmtx);
+          ((bmms)localObject1).f();
         }
       }
     }
@@ -245,9 +245,9 @@ public class DoodleEditView
   
   public void c()
   {
-    b(this.jdField_a_of_type_Bkay.a());
+    b(this.jdField_a_of_type_Bmmi.a());
     super.c();
-    this.jdField_a_of_type_Bkay.b();
+    this.jdField_a_of_type_Bmmi.b();
     this.jdField_a_of_type_Float = 0.0F;
     this.jdField_b_of_type_Float = 0.0F;
   }
@@ -259,7 +259,7 @@ public class DoodleEditView
       setVisibility(4);
       return;
     }
-    postDelayed(this.jdField_a_of_type_JavaLangRunnable, bkba.e);
+    postDelayed(this.jdField_a_of_type_JavaLangRunnable, bmmk.e);
   }
   
   public void d()
@@ -269,10 +269,10 @@ public class DoodleEditView
   
   public void e()
   {
-    if ((a() == 1) && (this.jdField_a_of_type_Bkay.b()))
+    if ((a() == 1) && (this.jdField_a_of_type_Bmmi.b()))
     {
-      bkin localbkin = this.jdField_a_of_type_Bkay.a();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.setTrackerState(localbkin, 0);
+      bmtx localbmtx = this.jdField_a_of_type_Bmmi.a();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.setTrackerState(localbmtx, 0);
       postInvalidate();
     }
   }
@@ -286,7 +286,7 @@ public class DoodleEditView
     if ((this.jdField_a_of_type_Float > 0.0F) || (this.jdField_b_of_type_Float > 0.0F)) {
       paramCanvas.translate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
     }
-    this.jdField_a_of_type_Bkay.d(paramCanvas);
+    this.jdField_a_of_type_Bmmi.d(paramCanvas);
     paramCanvas.restore();
   }
   
@@ -304,13 +304,13 @@ public class DoodleEditView
     }
     for (;;)
     {
-      if ((paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Bkay.b(paramMotionEvent))) {
+      if ((paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Bmmi.b(paramMotionEvent))) {
         this.c = true;
       }
       boolean bool;
       if (this.c)
       {
-        bool = this.jdField_a_of_type_Bkay.c(paramMotionEvent);
+        bool = this.jdField_a_of_type_Bmmi.c(paramMotionEvent);
         invalidate();
         if (paramMotionEvent.getAction() == 1) {
           this.c = false;
@@ -325,22 +325,22 @@ public class DoodleEditView
       float f1;
       float f2;
       float f3;
-      if ((!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a()) && (this.jdField_a_of_type_Bkay.b()))
+      if ((!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a()) && (this.jdField_a_of_type_Bmmi.b()))
       {
-        localObject = this.jdField_a_of_type_Bkay.a();
-        if (((bkin)localObject).i == 1)
+        localObject = this.jdField_a_of_type_Bmmi.a();
+        if (((bmtx)localObject).i == 1)
         {
-          this.jdField_a_of_type_Bkay.b = ((bkin)localObject);
-          if (((bkin)localObject).i == 1)
+          this.jdField_a_of_type_Bmmi.b = ((bmtx)localObject);
+          if (((bmtx)localObject).i == 1)
           {
-            b((bkin)localObject);
-            f5 = ((bkin)localObject).b.x + ((bkin)localObject).s - ((bkin)localObject).u * ((bkin)localObject).q / 2.0F;
-            f6 = ((bkin)localObject).b.y + ((bkin)localObject).t - ((bkin)localObject).v * ((bkin)localObject).q / 2.0F;
-            if ((!((bkin)localObject).g) || (!((bkin)localObject).h)) {
+            b((bmtx)localObject);
+            f5 = ((bmtx)localObject).b.x + ((bmtx)localObject).s - ((bmtx)localObject).u * ((bmtx)localObject).q / 2.0F;
+            f6 = ((bmtx)localObject).b.y + ((bmtx)localObject).t - ((bmtx)localObject).v * ((bmtx)localObject).q / 2.0F;
+            if ((!((bmtx)localObject).g) || (!((bmtx)localObject).h)) {
               break label392;
             }
-            f1 = ((bkin)localObject).l + ((bkin)localObject).j - ((bkin)localObject).u / 2.0F;
-            f2 = ((bkin)localObject).m + ((bkin)localObject).jdField_k_of_type_Float - ((bkin)localObject).v / 2.0F;
+            f1 = ((bmtx)localObject).l + ((bmtx)localObject).j - ((bmtx)localObject).u / 2.0F;
+            f2 = ((bmtx)localObject).m + ((bmtx)localObject).jdField_k_of_type_Float - ((bmtx)localObject).v / 2.0F;
             f3 = f1 - f5;
             f4 = f2 - f6;
           }
@@ -348,13 +348,13 @@ public class DoodleEditView
       }
       for (;;)
       {
-        ((bkin)localObject).o = ((bkin)localObject).q;
-        ((bkin)localObject).i = 2;
+        ((bmtx)localObject).o = ((bmtx)localObject).q;
+        ((bmtx)localObject).i = 2;
         DoodleLayout localDoodleLayout = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout;
-        f5 = ((bkin)localObject).u;
-        f6 = ((bkin)localObject).q;
-        float f7 = ((bkin)localObject).v;
-        localDoodleLayout.a(f1, f2, f5 * f6, ((bkin)localObject).q * f7, f3, f4);
+        f5 = ((bmtx)localObject).u;
+        f6 = ((bmtx)localObject).q;
+        float f7 = ((bmtx)localObject).v;
+        localDoodleLayout.a(f1, f2, f5 * f6, ((bmtx)localObject).q * f7, f3, f4);
         d();
         bool = false;
         break;
@@ -367,9 +367,9 @@ public class DoodleEditView
     }
   }
   
-  public void setDoodleEditViewListener(bkdr parambkdr)
+  public void setDoodleEditViewListener(bmpb parambmpb)
   {
-    this.jdField_a_of_type_Bkdr = parambkdr;
+    this.jdField_a_of_type_Bmpb = parambmpb;
   }
   
   public void setFrom(int paramInt)
@@ -379,13 +379,13 @@ public class DoodleEditView
   
   public void setOnLayerTouchListener()
   {
-    this.jdField_a_of_type_Bkay.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Bker);
-    this.jdField_a_of_type_Bkay.a(new bkdo(this));
+    this.jdField_a_of_type_Bmmi.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Bmqb);
+    this.jdField_a_of_type_Bmmi.a(new bmoy(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView
  * JD-Core Version:    0.7.0.1
  */

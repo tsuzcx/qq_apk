@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ajzd;
-import axrn;
+import alqr;
+import azmz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public class IndividualRedPacketManager$2
   implements Runnable
 {
-  public IndividualRedPacketManager$2(ajzd paramajzd) {}
+  public IndividualRedPacketManager$2(alqr paramalqr) {}
   
   public void run()
   {
@@ -23,13 +23,13 @@ public class IndividualRedPacketManager$2
     {
       arrayOfString = new String[4];
       localObject1 = str;
-      arrayOfString[0] = ajzd.a(5);
+      arrayOfString[0] = alqr.a(5);
       localObject1 = str;
-      arrayOfString[1] = ajzd.a(6);
+      arrayOfString[1] = alqr.a(6);
       localObject1 = str;
-      arrayOfString[2] = ajzd.a(7);
+      arrayOfString[2] = alqr.a(7);
       localObject1 = str;
-      arrayOfString[3] = ajzd.a(8);
+      arrayOfString[3] = alqr.a(8);
     }
     catch (Exception localException2)
     {
@@ -40,14 +40,14 @@ public class IndividualRedPacketManager$2
         File[] arrayOfFile;
         int j;
         if (QLog.isColorLevel()) {
-          QLog.e(ajzd.b(), 2, "eliminateImageCache error: " + localException2.getMessage() + ", in step=" + (String)localObject1);
+          QLog.e(alqr.b(), 2, "eliminateImageCache error: " + localException2.getMessage() + ", in step=" + (String)localObject1);
         }
         label425:
         try
         {
           HashMap localHashMap = new HashMap();
           localHashMap.put("param_FailCode", localObject1);
-          axrn.a(BaseApplicationImpl.sApplication.getApplicationContext()).a(((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getAccount(), "RedpacketClearCacheError", false, 1L, 0L, localHashMap, "", false);
+          azmz.a(BaseApplicationImpl.sApplication.getApplicationContext()).a(((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getAccount(), "RedpacketClearCacheError", false, 1L, 0L, localHashMap, "", false);
           return;
         }
         catch (Exception localException1) {}

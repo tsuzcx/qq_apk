@@ -1,116 +1,64 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoul
-  extends aoui
 {
-  public aoul(QQAppInterface paramQQAppInterface, Context paramContext)
+  private String a = "";
+  private String b = "";
+  
+  public static aoul a(aogf[] paramArrayOfaogf)
   {
-    super(paramQQAppInterface, paramContext);
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+      paramArrayOfaogf = null;
+    }
+    aoul localaoul;
+    for (;;)
+    {
+      return paramArrayOfaogf;
+      localaoul = new aoul();
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaogf[0].a);
+        if (localJSONObject.has("AndroidDrawerJumpURL"))
+        {
+          localaoul.a = localJSONObject.getString("AndroidDrawerJumpURL");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidDrawerJumpURL = " + localaoul.a);
+          }
+        }
+        paramArrayOfaogf = localaoul;
+        if (localJSONObject.has("AndroidAioJumpURL"))
+        {
+          localaoul.b = localJSONObject.getString("AndroidAioJumpURL");
+          paramArrayOfaogf = localaoul;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidAioJumpURL = " + localaoul.b);
+            return localaoul;
+          }
+        }
+      }
+      catch (JSONException paramArrayOfaogf)
+      {
+        paramArrayOfaogf.printStackTrace();
+      }
+    }
+    return localaoul;
   }
   
-  protected ImageView a(acuj paramacuj)
+  public String a()
   {
-    if (paramacuj == null) {}
-    while (!(paramacuj instanceof adwy)) {
+    if (TextUtils.isEmpty(this.a)) {
       return null;
     }
-    return ((adwy)paramacuj).a;
-  }
-  
-  protected void a(acuj paramacuj, ImageView paramImageView)
-  {
-    if (paramacuj == null) {}
-    while (!(paramacuj instanceof adwy)) {
-      return;
-    }
-    ((adwy)paramacuj).a = paramImageView;
-  }
-  
-  protected void a(View paramView, acuj paramacuj, ChatMessage paramChatMessage, int paramInt)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              QLog.i("TroopFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-            } while (paramInt == -1);
-            paramacuj = (MessageForTroopFile)paramChatMessage;
-            paramView = TroopFileTransferManager.a(this.a, Long.parseLong(paramChatMessage.frienduin));
-          } while (paramView == null);
-          paramacuj = bakx.a(this.a, paramacuj);
-        } while (paramacuj == null);
-        if (paramInt != 0) {
-          break;
-        }
-      } while ((paramacuj.b != 0) && (paramacuj.b != 1));
-      axqy.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", 2, 0, "", "", "", "");
-      paramView.a(paramacuj.a);
-      return;
-    } while ((paramInt != 1) || (paramacuj.b != 2));
-    axqy.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", 2, 0, "", "", "", "");
-    a(new aoum(this, paramChatMessage.frienduin, paramacuj));
-  }
-  
-  protected boolean a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!(paramChatMessage instanceof MessageForTroopFile));
-        paramChatMessage = (MessageForTroopFile)paramChatMessage;
-        paramChatMessage = bakx.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileBubblePauseHandler", 1, "needShowPauseIcon: current file status[" + paramChatMessage.b + "]");
-      }
-    } while ((paramChatMessage.b != 0) && (paramChatMessage.b != 1));
-    return true;
-  }
-  
-  protected boolean b(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!(paramChatMessage instanceof MessageForTroopFile));
-        paramChatMessage = (MessageForTroopFile)paramChatMessage;
-        paramChatMessage = bakx.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileBubblePauseHandler", 1, "needShowResumeIcon: current file status[" + paramChatMessage.b + "]");
-      }
-    } while ((paramChatMessage.b != 3) && (paramChatMessage.b != 2));
-    return true;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoul
  * JD-Core Version:    0.7.0.1
  */

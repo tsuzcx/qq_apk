@@ -1,21 +1,40 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.qqcircle.comment.ItemReplyView;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
 
 public class tts
-  implements bfos
+  implements uad
 {
-  public tts(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public tts(ItemReplyView paramItemReplyView) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean)
   {
-    this.a.b = paramInt1;
+    FeedCloudMeta.StComment localStComment;
+    FeedCloudMeta.StReply localStReply;
+    yde localyde;
+    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
+    if (ItemReplyView.a(this.a) != null)
+    {
+      localStComment = ItemReplyView.a(this.a);
+      localStReply = ItemReplyView.a(this.a);
+      localyde = ItemReplyView.a(this.a);
+      localQCircleCommentPraiseLayout = ItemReplyView.a(this.a);
+      if (!paramBoolean) {
+        break label83;
+      }
+    }
+    label83:
+    for (int i = 14;; i = 15)
+    {
+      localyde.a(localQCircleCommentPraiseLayout, i, ItemReplyView.a(this.a), new Object[] { localStComment, localStReply });
+      return;
+    }
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tts
  * JD-Core Version:    0.7.0.1
  */

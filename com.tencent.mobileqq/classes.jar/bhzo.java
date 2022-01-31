@@ -1,329 +1,392 @@
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemAnimator;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.TMG.utils.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.view.animation.Interpolator;
+import java.util.List;
 
-public class bhzo
-  implements Handler.Callback
+public abstract class bhzo
 {
-  protected int a;
-  protected Handler a;
-  protected View a;
-  private ArrayList<bhzo> a;
-  protected int b;
-  protected String c;
+  private static final int ABS_HORIZONTAL_DIR_FLAGS = 789516;
+  public static final int DEFAULT_DRAG_ANIMATION_DURATION = 200;
+  public static final int DEFAULT_SWIPE_ANIMATION_DURATION = 250;
+  private static final long DRAG_SCROLL_ACCELERATION_LIMIT_TIME_MS = 2000L;
+  static final int RELATIVE_DIR_FLAGS = 3158064;
+  private static final Interpolator sDragScrollInterpolator = new bhzp();
+  private static final Interpolator sDragViewScrollCapInterpolator = new bhzq();
+  private static final bhzv sUICallback = new bhzx();
+  private int mCachedMaxScrollSpeed = -1;
   
-  public bhzo(View paramView)
+  static
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public bhzo(String paramString, View paramView)
-  {
-    this(paramView);
-    this.c = paramString;
-  }
-  
-  private void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    Drawable localDrawable = a(paramString);
-    if (localDrawable != null)
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localDrawable);
+      sUICallback = new bhzy();
       return;
     }
-    throw new RuntimeException(getClass().getName() + " set background drawable = null not match value = " + paramString);
   }
   
-  private int b(String paramString)
+  public static int convertToRelativeDirection(int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString)) {}
+    int i = paramInt1 & 0xC0C0C;
+    if (i == 0) {
+      return paramInt1;
+    }
+    paramInt1 = (i ^ 0xFFFFFFFF) & paramInt1;
+    if (paramInt2 == 0) {
+      return paramInt1 | i << 2;
+    }
+    return paramInt1 | i << 1 & 0xFFF3F3F3 | (i << 1 & 0xC0C0C) << 2;
+  }
+  
+  public static bhzv getDefaultUIUtil()
+  {
+    return sUICallback;
+  }
+  
+  private int getMaxDragScroll(RecyclerView paramRecyclerView)
+  {
+    if (this.mCachedMaxScrollSpeed == -1) {
+      this.mCachedMaxScrollSpeed = paramRecyclerView.getResources().getDimensionPixelSize(2131297139);
+    }
+    return this.mCachedMaxScrollSpeed;
+  }
+  
+  public static int makeFlag(int paramInt1, int paramInt2)
+  {
+    return paramInt2 << paramInt1 * 8;
+  }
+  
+  public static int makeMovementFlags(int paramInt1, int paramInt2)
+  {
+    return makeFlag(0, paramInt2 | paramInt1) | makeFlag(1, paramInt2) | makeFlag(2, paramInt1);
+  }
+  
+  public boolean canDropOver(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
+  {
+    return true;
+  }
+  
+  public RecyclerView.ViewHolder chooseDropTarget(RecyclerView.ViewHolder paramViewHolder, List<RecyclerView.ViewHolder> paramList, int paramInt1, int paramInt2)
+  {
+    int m = paramViewHolder.itemView.getWidth();
+    int n = paramViewHolder.itemView.getHeight();
+    Object localObject2 = null;
+    int i = -1;
+    int i1 = paramInt1 - paramViewHolder.itemView.getLeft();
+    int i2 = paramInt2 - paramViewHolder.itemView.getTop();
+    int i3 = paramList.size();
+    int j = 0;
+    Object localObject1;
+    int k;
+    if (j < i3)
+    {
+      localObject1 = (RecyclerView.ViewHolder)paramList.get(j);
+      if (i1 <= 0) {
+        break label346;
+      }
+      k = ((RecyclerView.ViewHolder)localObject1).itemView.getRight() - (paramInt1 + m);
+      if ((k >= 0) || (((RecyclerView.ViewHolder)localObject1).itemView.getRight() <= paramViewHolder.itemView.getRight())) {
+        break label346;
+      }
+      k = Math.abs(k);
+      if (k <= i) {
+        break label346;
+      }
+      i = k;
+      localObject2 = localObject1;
+      label143:
+      if (i1 >= 0) {
+        break label359;
+      }
+      k = ((RecyclerView.ViewHolder)localObject1).itemView.getLeft() - paramInt1;
+      if ((k <= 0) || (((RecyclerView.ViewHolder)localObject1).itemView.getLeft() >= paramViewHolder.itemView.getLeft())) {
+        break label359;
+      }
+      k = Math.abs(k);
+      if (k <= i) {
+        break label359;
+      }
+      localObject2 = localObject1;
+      i = k;
+    }
+    label346:
+    label359:
     for (;;)
     {
-      return -2;
-      try
+      if (i2 < 0)
       {
-        if ("fill".equals(paramString)) {
-          return -1;
-        }
-        if (!"fit".equals(paramString))
+        k = ((RecyclerView.ViewHolder)localObject1).itemView.getTop() - paramInt2;
+        if ((k > 0) && (((RecyclerView.ViewHolder)localObject1).itemView.getTop() < paramViewHolder.itemView.getTop()))
         {
-          int i = a(paramString);
-          return i;
+          k = Math.abs(k);
+          if (k > i)
+          {
+            localObject2 = localObject1;
+            i = k;
+          }
         }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return -2;
-  }
-  
-  protected int a()
-  {
-    return bbll.a();
-  }
-  
-  protected int a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    try
-    {
-      int i;
-      if (paramString.endsWith("w")) {
-        i = Integer.parseInt(paramString.substring(0, paramString.indexOf("w"))) * a();
       }
       for (;;)
       {
-        return i / 10000;
-        if (paramString.endsWith("h"))
+        if (i2 > 0)
         {
-          i = Integer.parseInt(paramString.substring(0, paramString.indexOf("h"))) * b();
+          k = ((RecyclerView.ViewHolder)localObject1).itemView.getBottom() - (paramInt2 + n);
+          if ((k < 0) && (((RecyclerView.ViewHolder)localObject1).itemView.getBottom() > paramViewHolder.itemView.getBottom()))
+          {
+            k = Math.abs(k);
+            if (k > i) {
+              i = k;
+            }
+          }
         }
-        else
+        for (;;)
         {
-          i = Integer.parseInt(paramString);
-          int j = a();
-          i *= j;
+          j += 1;
+          localObject2 = localObject1;
+          break;
+          return localObject2;
+          break label143;
+          localObject1 = localObject2;
         }
       }
-      return 0;
     }
-    catch (Exception localException)
+  }
+  
+  public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    sUICallback.a(paramViewHolder.itemView);
+  }
+  
+  public int convertToAbsoluteDirection(int paramInt1, int paramInt2)
+  {
+    int i = paramInt1 & 0x303030;
+    if (i == 0) {
+      return paramInt1;
+    }
+    paramInt1 = (i ^ 0xFFFFFFFF) & paramInt1;
+    if (paramInt2 == 0) {
+      return paramInt1 | i >> 2;
+    }
+    return paramInt1 | i >> 1 & 0xFFCFCFCF | (i >> 1 & 0x303030) >> 2;
+  }
+  
+  final int getAbsoluteMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return convertToAbsoluteDirection(getMovementFlags(paramRecyclerView, paramViewHolder), ViewCompat.getLayoutDirection(paramRecyclerView));
+  }
+  
+  public long getAnimationDuration(RecyclerView paramRecyclerView, int paramInt, float paramFloat1, float paramFloat2)
+  {
+    paramRecyclerView = paramRecyclerView.getItemAnimator();
+    if (paramRecyclerView == null)
     {
-      localException.printStackTrace();
-      QLog.e("JsonInflateViewModel", 1, "getIntegerValue exception: value =  " + paramString);
-    }
-  }
-  
-  protected Drawable a(String paramString)
-  {
-    ColorDrawable localColorDrawable = null;
-    if (paramString.startsWith("#")) {
-      localColorDrawable = new ColorDrawable(Color.parseColor(paramString));
-    }
-    return localColorDrawable;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  protected ViewGroup.LayoutParams a(int paramInt1, int paramInt2)
-  {
-    return new ViewGroup.LayoutParams(paramInt1, paramInt2);
-  }
-  
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
-  {
-    return paramLayoutParams;
-  }
-  
-  public ViewGroup.LayoutParams a(JSONObject paramJSONObject, bhzo parambhzo)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {
-      return null;
-    }
-    Object localObject1 = paramJSONObject.optString("width");
-    Object localObject2 = paramJSONObject.optString("height");
-    this.jdField_a_of_type_Int = b((String)localObject1);
-    this.b = b((String)localObject2);
-    if (QLog.isColorLevel()) {
-      QLog.i("JsonInflateViewModel", 0, "class = " + this.jdField_a_of_type_AndroidViewView.getClass().getSimpleName() + " width = " + this.jdField_a_of_type_Int + " height = " + this.b);
-    }
-    localObject1 = a(this.jdField_a_of_type_Int, this.b);
-    localObject2 = paramJSONObject.keys();
-    while (((Iterator)localObject2).hasNext())
-    {
-      String str = (String)((Iterator)localObject2).next();
-      a(str, paramJSONObject.optString(str), (ViewGroup.LayoutParams)localObject1);
-    }
-    parambhzo.a((ViewGroup.LayoutParams)localObject1, paramJSONObject);
-    return localObject1;
-  }
-  
-  public bhzo a(String paramString)
-  {
-    bhzo localbhzo2 = null;
-    bhzo localbhzo1 = localbhzo2;
-    if (!TextUtils.isEmpty(this.c))
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        break label25;
+      if (paramInt == 8) {
+        return 200L;
       }
-      localbhzo1 = localbhzo2;
+      return 250L;
     }
-    label25:
-    do
-    {
-      return localbhzo1;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-      {
-        if (this.c.equals(paramString)) {}
-        for (paramString = this;; paramString = null) {
-          return paramString;
-        }
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      localbhzo1 = null;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localbhzo2 = (bhzo)localIterator.next();
-      if (localbhzo2 == null) {
-        break label110;
-      }
-      localbhzo2 = localbhzo2.a(paramString);
-      localbhzo1 = localbhzo2;
-    } while (localbhzo2 != null);
-    localbhzo1 = localbhzo2;
-    label110:
+    if (paramInt == 8) {
+      return paramRecyclerView.getMoveDuration();
+    }
+    return paramRecyclerView.getRemoveDuration();
+  }
+  
+  public int getBoundingBoxMargin()
+  {
+    return 0;
+  }
+  
+  public float getMoveThreshold(RecyclerView.ViewHolder paramViewHolder)
+  {
+    return 0.5F;
+  }
+  
+  public abstract int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder);
+  
+  public float getSwipeEscapeVelocity(float paramFloat)
+  {
+    return paramFloat;
+  }
+  
+  public float getSwipeThreshold(RecyclerView.ViewHolder paramViewHolder)
+  {
+    return 0.5F;
+  }
+  
+  public float getSwipeVelocityThreshold(float paramFloat)
+  {
+    return paramFloat;
+  }
+  
+  boolean hasDragFlag(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return (getAbsoluteMovementFlags(paramRecyclerView, paramViewHolder) & 0xFF0000) != 0;
+  }
+  
+  boolean hasSwipeFlag(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return (getAbsoluteMovementFlags(paramRecyclerView, paramViewHolder) & 0xFF00) != 0;
+  }
+  
+  public int interpolateOutOfBoundsScroll(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    float f1 = 1.0F;
+    paramInt3 = getMaxDragScroll(paramRecyclerView);
+    int i = Math.abs(paramInt2);
+    int j = (int)Math.signum(paramInt2);
+    float f2 = Math.min(1.0F, i * 1.0F / paramInt1);
+    paramInt1 = (int)(paramInt3 * j * sDragViewScrollCapInterpolator.getInterpolation(f2));
+    if (paramLong > 2000L) {}
     for (;;)
     {
+      f2 = paramInt1;
+      paramInt3 = (int)(sDragScrollInterpolator.getInterpolation(f1) * f2);
+      paramInt1 = paramInt3;
+      if (paramInt3 == 0)
+      {
+        if (paramInt2 <= 0) {
+          break;
+        }
+        paramInt1 = 1;
+      }
+      return paramInt1;
+      f1 = (float)paramLong / 2000.0F;
+    }
+    return -1;
+  }
+  
+  public boolean isItemViewSwipeEnabled()
+  {
+    return true;
+  }
+  
+  public boolean isLongPressDragEnabled()
+  {
+    return true;
+  }
+  
+  public void onChildDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
+  {
+    sUICallback.a(paramCanvas, paramRecyclerView, paramViewHolder.itemView, paramFloat1, paramFloat2, paramInt, paramBoolean);
+  }
+  
+  public void onChildDrawOver(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
+  {
+    sUICallback.b(paramCanvas, paramRecyclerView, paramViewHolder.itemView, paramFloat1, paramFloat2, paramInt, paramBoolean);
+  }
+  
+  void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder, List<bhzs> paramList, int paramInt, float paramFloat1, float paramFloat2)
+  {
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
+    {
+      bhzs localbhzs = (bhzs)paramList.get(i);
+      localbhzs.c();
+      int k = paramCanvas.save();
+      onChildDraw(paramCanvas, paramRecyclerView, localbhzs.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localbhzs.e, localbhzs.f, localbhzs.jdField_b_of_type_Int, false);
+      paramCanvas.restoreToCount(k);
+      i += 1;
+    }
+    if (paramViewHolder != null)
+    {
+      i = paramCanvas.save();
+      onChildDraw(paramCanvas, paramRecyclerView, paramViewHolder, paramFloat1, paramFloat2, paramInt, true);
+      paramCanvas.restoreToCount(i);
+    }
+  }
+  
+  void onDrawOver(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder, List<bhzs> paramList, int paramInt, float paramFloat1, float paramFloat2)
+  {
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
+    {
+      bhzs localbhzs = (bhzs)paramList.get(i);
+      int k = paramCanvas.save();
+      onChildDrawOver(paramCanvas, paramRecyclerView, localbhzs.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localbhzs.e, localbhzs.f, localbhzs.jdField_b_of_type_Int, false);
+      paramCanvas.restoreToCount(k);
+      i += 1;
+    }
+    if (paramViewHolder != null)
+    {
+      i = paramCanvas.save();
+      onChildDrawOver(paramCanvas, paramRecyclerView, paramViewHolder, paramFloat1, paramFloat2, paramInt, true);
+      paramCanvas.restoreToCount(i);
+    }
+    paramInt = 0;
+    i = j - 1;
+    if (i >= 0)
+    {
+      paramCanvas = (bhzs)paramList.get(i);
+      if ((paramCanvas.c) && (!paramCanvas.a)) {
+        paramList.remove(i);
+      }
+    }
+    for (;;)
+    {
+      i -= 1;
       break;
-      return localbhzo1;
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(bhzo parambhzo)
-  {
-    if (parambhzo == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambhzo);
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {
-      return;
-    }
-    if ("background_color".equals(paramString1))
-    {
-      a(paramString2);
-      return;
-    }
-    if ("rotate".equals(paramString1))
-    {
-      this.jdField_a_of_type_AndroidViewView.setPivotX(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setPivotY(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setRotation(Float.parseFloat(paramString2));
-      return;
-    }
-    if ("id".equals(paramString1))
-    {
-      this.jdField_a_of_type_AndroidViewView.setId(Integer.parseInt(paramString2));
-      return;
-    }
-    QLog.e("JsonInflateViewModel", 1, this.c + " illegal attr :" + paramString1 + " = " + paramString2);
-  }
-  
-  protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    if ((paramLayoutParams instanceof ViewGroup.MarginLayoutParams))
-    {
-      if (!"x".equals(paramString1)) {
-        break label30;
-      }
-      ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin = a(paramString2);
-    }
-    label30:
-    while (!"y".equals(paramString1)) {
-      return;
-    }
-    ((ViewGroup.MarginLayoutParams)paramLayoutParams).topMargin = a(paramString2);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {
-      return;
-    }
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      a(str, paramJSONObject.optString(str));
-    }
-    b();
-  }
-  
-  protected int b()
-  {
-    return bbll.b();
-  }
-  
-  protected void b() {}
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bhzo localbhzo = (bhzo)localIterator.next();
-      if (localbhzo != null) {
-        localbhzo.c();
+      if (!paramCanvas.c)
+      {
+        paramInt = 1;
+        continue;
+        if (paramInt != 0) {
+          paramRecyclerView.invalidate();
+        }
+        return;
       }
     }
   }
   
-  public void e()
+  public abstract boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2);
+  
+  public void onMoved(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, int paramInt1, RecyclerView.ViewHolder paramViewHolder2, int paramInt2, int paramInt3, int paramInt4)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    RecyclerView.LayoutManager localLayoutManager = paramRecyclerView.getLayoutManager();
+    if ((localLayoutManager instanceof bhzu)) {
+      ((bhzu)localLayoutManager).a(paramViewHolder1.itemView, paramViewHolder2.itemView, paramInt3, paramInt4);
+    }
+    do
     {
-      bhzo localbhzo = (bhzo)localIterator.next();
-      if (localbhzo != null) {
-        localbhzo.e();
+      do
+      {
+        return;
+        if (localLayoutManager.canScrollHorizontally())
+        {
+          if (localLayoutManager.getDecoratedLeft(paramViewHolder2.itemView) <= paramRecyclerView.getPaddingLeft()) {
+            paramRecyclerView.scrollToPosition(paramInt2);
+          }
+          if (localLayoutManager.getDecoratedRight(paramViewHolder2.itemView) >= paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight()) {
+            paramRecyclerView.scrollToPosition(paramInt2);
+          }
+        }
+      } while (!localLayoutManager.canScrollVertically());
+      if (localLayoutManager.getDecoratedTop(paramViewHolder2.itemView) <= paramRecyclerView.getPaddingTop()) {
+        paramRecyclerView.scrollToPosition(paramInt2);
       }
+    } while (localLayoutManager.getDecoratedBottom(paramViewHolder2.itemView) < paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom());
+    paramRecyclerView.scrollToPosition(paramInt2);
+  }
+  
+  public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (paramViewHolder != null) {
+      sUICallback.b(paramViewHolder.itemView);
     }
   }
   
-  public void f()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bhzo localbhzo = (bhzo)localIterator.next();
-      if (localbhzo != null) {
-        localbhzo.f();
-      }
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
+  public abstract void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhzo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bbfj;
+import bdee;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -38,7 +38,7 @@ public class NetworkJsPlugin
   {
     if (this.jsPluginEngine.getServiceRuntime() != null)
     {
-      switch (bbfj.a(this.jsPluginEngine.getServiceRuntime().getContextEx()))
+      switch (bdee.a(this.jsPluginEngine.getServiceRuntime().getContextEx()))
       {
       default: 
         return "unknown";
@@ -92,7 +92,7 @@ public class NetworkJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.NetworkJsPlugin
  * JD-Core Version:    0.7.0.1
  */

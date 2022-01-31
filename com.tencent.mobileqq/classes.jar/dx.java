@@ -1,32 +1,50 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.dataline.activities.LiteAdvanceActivity;
-import com.tencent.widget.Switch;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.widget.QQToast;
+import java.lang.ref.WeakReference;
 
-public class dx
-  implements CompoundButton.OnCheckedChangeListener
+class dx
+  implements arnx
 {
-  public dx(LiteAdvanceActivity paramLiteAdvanceActivity) {}
+  dx(dt paramdt, DataLineMsgRecord paramDataLineMsgRecord) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (!LiteAdvanceActivity.a(this.a, paramBoolean))
+    if ((this.jdField_a_of_type_Dt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext == null)) {}
+    String str;
+    do
     {
-      paramCompoundButton = LiteAdvanceActivity.a(this.a);
-      if (!paramBoolean) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      do
       {
-        paramCompoundButton.setChecked(paramBoolean);
-        bcql.a(this.a, 1, ajya.a(2131706194), 0).b(this.a.getTitleBarHeight());
-        return;
-      }
-    }
-    LiteAdvanceActivity.b(this.a, paramBoolean);
+        do
+        {
+          return;
+          paramView = new WeakReference(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext);
+        } while (!(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext instanceof Activity));
+        if (!bdee.d(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext))
+        {
+          QQToast.a(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext, 2131692397, 0).b(this.jdField_a_of_type_Dt.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+          return;
+        }
+      } while ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord == null) || (paramView.get() == null));
+      str = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.getExtInfoFromExtStr("key_team_work_ext_info_new_url");
+      Boolean.parseBoolean(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.getExtInfoFromExtStr("team_work_is_message_convert"));
+    } while (TextUtils.isEmpty(str));
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", str);
+    localBundle.putString("tdsourcetag", "s_qq_aio_grey");
+    TeamWorkDocEditBrowserActivity.a((Context)paramView.get(), localBundle, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dx
  * JD-Core Version:    0.7.0.1
  */

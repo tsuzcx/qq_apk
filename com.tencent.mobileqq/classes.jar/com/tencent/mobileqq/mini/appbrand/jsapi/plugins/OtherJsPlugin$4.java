@@ -1,52 +1,31 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import NS_MINI_INTERFACE.INTERFACE.StGetAuthListRsp;
-import com.tencent.mobileqq.mini.app.AuthorizeCenter;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import android.content.Intent;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONObject;
 
 class OtherJsPlugin$4
-  implements MiniAppCmdInterface
+  implements MiniAppController.ActivityResultListener
 {
-  OtherJsPlugin$4(OtherJsPlugin paramOtherJsPlugin, AuthorizeCenter paramAuthorizeCenter, String paramString, JsRuntime paramJsRuntime, int paramInt) {}
+  OtherJsPlugin$4(OtherJsPlugin paramOtherJsPlugin, String paramString, JsRuntime paramJsRuntime, int paramInt) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
+    QLog.d(OtherJsPlugin.access$000(), 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    if (paramInt1 == 5)
     {
-      QLog.d(OtherJsPlugin.access$000(), 1, "getSetting-getAuthList suc, ret:" + paramJSONObject.toString());
-      Object localObject = paramJSONObject.opt("authList");
-      if ((localObject instanceof byte[])) {
-        paramJSONObject = new INTERFACE.StGetAuthListRsp();
-      }
-      try
-      {
-        paramJSONObject.mergeFrom((byte[])localObject);
-        localObject = paramJSONObject.auths.get();
-        paramJSONObject = paramJSONObject.settings.get();
-        this.val$authorizeCenter.updateAuthList((List)localObject, paramJSONObject);
-        this.val$authorizeCenter.setAuthorizeSynchronized();
-        OtherJsPlugin.access$200(this.this$0, this.val$authorizeCenter, this.val$eventName, this.val$webview, this.val$callbackId);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramJSONObject)
-      {
-        QLog.e(OtherJsPlugin.access$000(), 1, "getSetting, InvalidProtocolBufferMicroException:" + paramJSONObject);
-        paramJSONObject.printStackTrace();
-        return;
-      }
+      OtherJsPlugin.access$400(this.this$0, this.val$eventName, this.val$webview, this.val$callbackId);
+      MiniAppController.getInstance().removeActivityResultListener(this);
+      return true;
     }
-    QLog.e(OtherJsPlugin.access$000(), 1, "getSetting-getAuthList failed");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OtherJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

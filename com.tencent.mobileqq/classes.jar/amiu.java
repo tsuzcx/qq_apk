@@ -1,139 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import com.tencent.qphone.base.util.QLog;
 
 public class amiu
+  extends Resources
 {
-  public static final int[] a = { 17039360, 17104896, 16908289 };
+  private amiy a;
   
-  public static amjg a(int paramInt)
+  public amiu(amiy paramamiy)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 16908292: 
-      return new amjb();
-    case 17104896: 
-      return new amjc();
-    case 17039360: 
-      return new aplg();
-    }
-    return new amjd();
+    super(paramamiy.b().getAssets(), paramamiy.b().getDisplayMetrics(), paramamiy.b().getConfiguration());
+    this.a = paramamiy;
   }
   
-  public static List<ColorNote> a(int paramInt)
+  public CharSequence getText(int paramInt)
   {
-    List localList1 = b(paramInt);
-    List localList2 = c(0);
-    if (localList1 == null) {
-      return null;
-    }
-    if ((localList2 == null) || (localList2.size() == 0)) {
-      return localList1;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = localList1.iterator();
-    while (localIterator1.hasNext())
+    int i = this.a.a(paramInt);
+    try
     {
-      ColorNote localColorNote = (ColorNote)localIterator1.next();
-      Iterator localIterator2 = localList2.iterator();
-      while (localIterator2.hasNext()) {
-        if (amhh.a(localColorNote, (ColorNote)localIterator2.next())) {
-          localArrayList.add(localColorNote);
-        }
+      CharSequence localCharSequence = this.a.a().getText(i);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiLanguageEngine", 4, new Object[] { "getText delegate:", Integer.valueOf(paramInt), " ,langId:", Integer.valueOf(i), " ,content:" + localCharSequence });
       }
+      return localCharSequence;
     }
-    localList1.removeAll(localArrayList);
-    return localList1;
-  }
-  
-  public static List<ColorNote> a(List<ColorNote> paramList)
-  {
-    Object localObject = paramList;
-    if (paramList != null)
-    {
-      localObject = paramList;
-      if (paramList.size() > 3) {
-        localObject = paramList.subList(0, 3);
-      }
-    }
-    return localObject;
-  }
-  
-  private static List<ColorNote> a(List<ColorNote> paramList, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ColorNote localColorNote = (ColorNote)paramList.next();
-      if (localColorNote.getServiceType() == paramInt) {
-        localArrayList.add(0, localColorNote);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(ColorNote paramColorNote)
-  {
-    if ((paramColorNote == null) || (TextUtils.isEmpty(paramColorNote.getMainTitle()))) {
-      return;
-    }
-    paramColorNote.setType(2);
-    amgo localamgo = new amgo();
-    localamgo.a(paramColorNote.getServiceType(), paramColorNote.getSubType(), 2);
-    localamgo.a(new amiv(localamgo, paramColorNote));
-    a(paramColorNote.getServiceType());
-  }
-  
-  private static void a(List<ColorNote> paramList)
-  {
-    if ((paramList != null) && (paramList.size() >= 20))
-    {
-      amgo localamgo = new amgo();
-      int i = 9;
-      while (i < paramList.size())
-      {
-        ColorNote localColorNote = (ColorNote)paramList.get(i);
-        localamgo.a(localColorNote.getServiceType(), localColorNote.getSubType(), 2);
-        i += 1;
-      }
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      List localList = b(paramInt);
-      if ((localList != null) && (localList.size() > 20)) {
-        a(localList);
-      }
-      return true;
-    }
-    amgr.a(paramInt);
-    return true;
-  }
-  
-  public static List<ColorNote> b(int paramInt)
-  {
-    return a(c(2), paramInt);
-  }
-  
-  public static List<ColorNote> c(int paramInt)
-  {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a().a().a(false, paramInt);
+    catch (Resources.NotFoundException localNotFoundException) {}
+    return this.a.b().getText(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amiu
  * JD-Core Version:    0.7.0.1
  */

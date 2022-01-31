@@ -1,22 +1,11 @@
-public class ayyw
-  extends ayza
+public abstract interface ayyw
 {
-  public int a;
-  public long a;
-  public byte[] a;
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" size:");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append(" storeType:");
-    return localStringBuilder.toString();
-  }
+  public static final String a = alpo.a(2131714414);
+  public static final String b = alpo.a(2131714440);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayyw
  * JD-Core Version:    0.7.0.1
  */

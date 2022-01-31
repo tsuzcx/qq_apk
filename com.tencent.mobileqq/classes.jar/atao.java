@@ -1,21 +1,24 @@
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
 public class atao
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
+  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2) {}
   
-  public String toString()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin=").append(this.jdField_a_of_type_Long).append(",freeLikeCount=").append(this.jdField_a_of_type_Int).append(",payLikeCount=").append(this.b).append(",totalPerCount=").append(this.c).append(",source=").append(this.d);
-    return localStringBuilder.toString();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramBundle.getInt("appId"), paramBundle.getLong("uin", 0L), paramBundle.getString("openId"), paramBundle.getString("error_msg"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atao
  * JD-Core Version:    0.7.0.1
  */

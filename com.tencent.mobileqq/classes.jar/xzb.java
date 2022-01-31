@@ -1,25 +1,24 @@
-import com.tencent.device.bind.DevicePluginDownloadActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
 public class xzb
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  public xzb(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
+  public xzb(BaseWidgetView paramBaseWidgetView) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bbdj.b(this.a);
-    this.a.finish();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    DevicePluginDownloadActivity.a(this.a);
+    if ((this.a.a() != null) && (!this.a.a(paramView)))
+    {
+      this.a.b(this.a.a());
+      this.a.a().onClick(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzb
  * JD-Core Version:    0.7.0.1
  */

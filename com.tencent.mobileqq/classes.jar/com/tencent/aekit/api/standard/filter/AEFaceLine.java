@@ -46,9 +46,9 @@ public class AEFaceLine
     {
       if (this.mFaceAttr.getAllFacePoints().size() > i)
       {
-        this.mFaceLineFilter.updatePoints(this.mFaceAttr.getAllFacePoints(), i);
+        this.mFaceLineFilter.updatePoints(this.mFaceAttr.getAllFacePoints(), this.mFaceAttr.getFaceDetectScale(), i);
         if ((this.mFaceAttr.getFaceStatusList().size() <= i) || (this.mFaceAttr.getFaceStatusList().get(i) == null) || (((FaceStatus)this.mFaceAttr.getFaceStatusList().get(i)).gender != GenderType.FEMALE.value)) {
-          break label146;
+          break label153;
         }
         this.mFaceLineFilter.updateBlurAlpha(1.0F);
       }
@@ -57,7 +57,7 @@ public class AEFaceLine
         this.mFaceLineFilter.render(paramFrame.getTextureId(), this.previewWidth, this.previewHeight);
         i += 1;
         break;
-        label146:
+        label153:
         if ((this.mFaceAttr.getFaceStatusList().size() > i) && (this.mFaceAttr.getFaceStatusList().get(i) != null) && (((FaceStatus)this.mFaceAttr.getFaceStatusList().get(i)).gender == GenderType.MALE.value)) {
           this.mFaceLineFilter.updateBlurAlpha(0.5F);
         } else {
@@ -82,7 +82,7 @@ public class AEFaceLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AEFaceLine
  * JD-Core Version:    0.7.0.1
  */

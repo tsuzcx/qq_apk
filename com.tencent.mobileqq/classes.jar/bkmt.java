@@ -1,28 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class bkmt
-  implements ValueAnimator.AnimatorUpdateListener
+class bkmt
+  extends avqu
 {
-  public bkmt(SlideBottomPanel paramSlideBottomPanel, View paramView, int paramInt) {}
+  bkmt(bkms parambkms) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
     {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
+      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
+      this.a.jdField_a_of_type_Aimj.a = l;
+      paramBundle = this.a.a();
+      if (paramBundle != null)
+      {
+        paramBundle.a(this.a.jdField_a_of_type_Aimj.a);
+        paramBundle.b();
       }
     }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.jdField_a_of_type_Aima.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmt
  * JD-Core Version:    0.7.0.1
  */

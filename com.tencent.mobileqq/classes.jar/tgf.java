@@ -1,63 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import java.util.List;
 
-public class tgf
-  extends sys
+class tgf
+  implements Animator.AnimatorListener
 {
-  public static String a = sxm.a("StorySvc.check_activity");
-  public String b;
-  public final String c;
+  tgf(tge paramtge, DiniFlyAnimationView paramDiniFlyAnimationView) {}
   
-  public tgf(String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.c = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
   }
   
-  public String a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return a;
+    tge.a(this.jdField_a_of_type_Tge).removeView(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
+    tge.a(this.jdField_a_of_type_Tge).remove(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
   }
   
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
-    try
-    {
-      localRspCheckActivity.mergeFrom(paramArrayOfByte);
-      return new tgg(localRspCheckActivity);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  protected byte[] a()
-  {
-    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
-    if (!TextUtils.isEmpty(this.c)) {
-      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
-    }
-    ved.a("MsgTabCheckActiveRequest", "client version=%s", "8.3.0");
-    localReqCheckActivity.version.set("8.3.0");
-    return localReqCheckActivity.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgf
  * JD-Core Version:    0.7.0.1
  */

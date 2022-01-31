@@ -3,11 +3,13 @@ package com.tencent.ttpic.filter;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
+import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.model.FaceCropItem;
 import com.tencent.ttpic.model.FaceCropItem.CropFrame;
 import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.filter.RenderItem;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
@@ -24,7 +26,7 @@ public class FaceCropFilter
   private float[] attrTexCoords = new float[8];
   private FaceCropItem faceCropItem;
   private boolean needRender;
-  private List<NormalVideoFilter> normalFilters;
+  private List<RenderItem> normalRenderItems;
   
   public FaceCropFilter(VideoMaterial paramVideoMaterial)
   {
@@ -111,9 +113,9 @@ public class FaceCropFilter
     return 180.0F * paramFloat / 3.14159F;
   }
   
-  public void setNormalFilters(List<NormalVideoFilter> paramList)
+  public void setNormalRenderItems(List<RenderItem> paramList)
   {
-    this.normalFilters = paramList;
+    this.normalRenderItems = paramList;
   }
   
   public void updatePreview(Object paramObject)
@@ -121,49 +123,62 @@ public class FaceCropFilter
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      if ((this.faceCropItem != null) && (paramObject.facePoints != null) && (paramObject.facePoints.size() >= 90) && (paramObject.faceAngles != null) && (paramObject.faceAngles.length >= 3)) {
-        break label62;
+      if ((this.faceCropItem == null) || (paramObject.facePoints == null) || (paramObject.facePoints.size() < 90) || (paramObject.faceAngles == null) || (paramObject.faceAngles.length < 3)) {
+        this.needRender = false;
       }
-      this.needRender = false;
     }
-    label62:
-    int i;
-    label99:
-    do
+    else
     {
       return;
-      NormalVideoFilter localNormalVideoFilter;
-      if (!CollectionUtils.isEmpty(this.normalFilters))
-      {
-        bool = true;
-        this.needRender = bool;
-        if (this.normalFilters == null) {
-          break label168;
-        }
-        Iterator localIterator = this.normalFilters.iterator();
-        i = 0;
-        if (!localIterator.hasNext()) {
-          continue;
-        }
-        localNormalVideoFilter = (NormalVideoFilter)localIterator.next();
-        localNormalVideoFilter.updatePreview(paramObject);
-        if ((!this.needRender) || (!localNormalVideoFilter.isRenderReady())) {
-          break label163;
-        }
+    }
+    boolean bool;
+    label75:
+    label101:
+    int j;
+    if (!CollectionUtils.isEmpty(this.normalRenderItems))
+    {
+      bool = true;
+      this.needRender = bool;
+      if (this.normalRenderItems == null) {
+        break label195;
       }
-      for (boolean bool = true;; bool = false)
-      {
-        this.needRender = bool;
-        i = localNormalVideoFilter.getLastFrameIndex();
-        break label99;
-        bool = false;
+      Iterator localIterator = this.normalRenderItems.iterator();
+      int i = 0;
+      j = i;
+      if (!localIterator.hasNext()) {
+        break label197;
+      }
+      AEFilterI localAEFilterI = ((RenderItem)localIterator.next()).filter;
+      if (!(localAEFilterI instanceof NormalVideoFilter)) {
+        break label239;
+      }
+      localAEFilterI.updatePreview(paramObject);
+      if ((!this.needRender) || (!((NormalVideoFilter)localAEFilterI).isRenderReady())) {
+        break label189;
+      }
+      bool = true;
+      label165:
+      this.needRender = bool;
+      i = ((NormalVideoFilter)localAEFilterI).getLastFrameIndex();
+    }
+    label189:
+    label195:
+    label197:
+    label239:
+    for (;;)
+    {
+      break label101;
+      bool = false;
+      break label75;
+      bool = false;
+      break label165;
+      j = 0;
+      if ((!this.needRender) || (CollectionUtils.indexOutOfBounds(this.faceCropItem.frameList, j))) {
         break;
       }
-      i = 0;
-    } while ((!this.needRender) || (CollectionUtils.indexOutOfBounds(this.faceCropItem.frameList, i)));
-    label163:
-    label168:
-    updateParams(VideoMaterialUtil.copyList(paramObject.facePoints), paramObject.faceAngles, paramObject.phoneAngle, i);
+      updateParams(VideoMaterialUtil.copyList(paramObject.facePoints), paramObject.faceAngles, paramObject.phoneAngle, j);
+      return;
+    }
   }
 }
 

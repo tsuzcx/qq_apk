@@ -1,40 +1,34 @@
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class amqu
-  extends amqq
+public abstract interface amqu
 {
-  public int a()
-  {
-    return 159;
-  }
+  public abstract amqz a();
   
-  public amqk a(String paramString)
-  {
-    QLog.d("ArkMsgAIDisableConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
-    try
-    {
-      amri localamri = (amri)ampv.a(paramString, amri.class);
-      return new amqo(paramString, localamri);
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
-      {
-        QLog.i("ArkMsgAIDisableConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
-      }
-    }
-  }
+  public abstract anbv a();
   
-  public boolean a()
-  {
-    return true;
-  }
+  public abstract Context a();
+  
+  public abstract Object a(int paramInt);
+  
+  public abstract void a();
+  
+  public abstract void a(amqs paramamqs, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, amqu paramamqu);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqu
  * JD-Core Version:    0.7.0.1
  */

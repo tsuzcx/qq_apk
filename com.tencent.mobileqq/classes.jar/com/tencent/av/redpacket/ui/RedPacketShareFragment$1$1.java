@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import aqbe;
+import arum;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import wij;
+import xxb;
 
 class RedPacketShareFragment$1$1
   implements Runnable
@@ -22,7 +22,7 @@ class RedPacketShareFragment$1$1
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       RedPacketShareFragment.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$1.this$0);
-      wij.a(1, 2131696769);
+      xxb.a(1, 2131696944);
       return;
     }
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$1.this$0.a(false);
@@ -32,19 +32,19 @@ class RedPacketShareFragment$1$1
     ((Bundle)localObject).putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
     ((Bundle)localObject).putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
     ((Bundle)localObject).putString("forward_extra", this.jdField_a_of_type_JavaLangString);
-    ((Bundle)localObject).putInt(aqbe.e, 1);
+    ((Bundle)localObject).putInt(arum.e, 1);
     Intent localIntent = new Intent();
     localIntent.putExtra("isFromShare", false);
     localIntent.putExtras((Bundle)localObject);
     localObject = new ForwardFileInfo();
     ((ForwardFileInfo)localObject).b(10012);
     localIntent.putExtra("fileinfo", (Parcelable)localObject);
-    aqbe.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$1.this$0.getActivity(), localIntent, 21);
+    arum.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$1.this$0.getActivity(), localIntent, 21);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketShareFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

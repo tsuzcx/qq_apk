@@ -4,9 +4,6 @@ import android.opengl.GLES20;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
-import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.StickerItem;
 
 public class SnapShotFilter
@@ -47,21 +44,6 @@ public class SnapShotFilter
     }
     this.mFrame.setCanUnlock(false);
     return this.mFrame;
-  }
-  
-  public int getPlayCount()
-  {
-    return this.triggerCtrlItem.getPlayCount();
-  }
-  
-  public TRIGGERED_STATUS getTriggerStatus(PTDetectInfo paramPTDetectInfo)
-  {
-    return this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
-  }
-  
-  public boolean isCurrentFrameTriggered(PTDetectInfo paramPTDetectInfo)
-  {
-    return this.triggerCtrlItem.isCurrentFrameTriggered(paramPTDetectInfo);
   }
   
   public boolean isHasSnapShot()

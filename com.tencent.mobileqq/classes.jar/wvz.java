@@ -1,53 +1,21 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
 
 public class wvz
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  implements DialogInterface.OnDismissListener
 {
-  private List<CertifiedAccountMeta.StQQGroup> jdField_a_of_type_JavaUtilList;
+  public wvz(EditVideoMusic paramEditVideoMusic) {}
   
-  public wvz(List<CertifiedAccountMeta.StQQGroup> paramList)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt))
-    {
-      paramViewHolder = (wwa)paramViewHolder;
-      if (paramViewHolder != null) {
-        paramViewHolder.a((CertifiedAccountMeta.StQQGroup)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      }
-    }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558683, paramViewGroup, false);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 1)) {
-      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    }
-    return new wwa(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView, paramViewGroup);
+    this.a.a.a(0);
+    wtb.a("0X80076DD");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvz
  * JD-Core Version:    0.7.0.1
  */

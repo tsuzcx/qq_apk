@@ -1,41 +1,79 @@
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint.FontMetrics;
-import android.text.TextPaint;
-import android.view.View;
-import com.tencent.av.widget.stageview.StageMemberView;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 public class mvr
-  extends View
 {
-  public mvr(StageMemberView paramStageMemberView, Context paramContext)
+  Context jdField_a_of_type_AndroidContentContext;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public boolean a;
+  Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  Animation jdField_b_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  Animation jdField_c_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  
+  public void a()
   {
-    super(paramContext);
+    c();
+    e();
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_b_of_type_AndroidWidgetImageView = null;
+    this.jdField_c_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
+    this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
   }
   
-  public void draw(Canvas paramCanvas)
+  public void b()
   {
-    float f;
-    if (StageMemberView.a(this.a) != null)
-    {
-      f = -StageMemberView.a(this.a).getFontMetrics().ascent;
-      if (this.a.a == null) {
-        break label76;
-      }
-      StageMemberView.a(this.a).setColor(this.a.a.a);
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
     }
-    for (;;)
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      paramCanvas.drawText(StageMemberView.a(this.a), 0.0F, f, StageMemberView.a(this.a));
-      return;
-      label76:
-      StageMemberView.a(this.a).setColor(-1);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null)) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    }
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
+    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null))
+    {
+      this.jdField_b_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_c_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvr
  * JD-Core Version:    0.7.0.1
  */

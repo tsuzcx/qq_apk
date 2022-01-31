@@ -5,7 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -79,7 +79,7 @@ public class MiniAppGetAppInfoByIdForSDKServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetAppInfoById");
-      paramPacket.putSendData(bbma.a((byte[])localObject1));
+      paramPacket.putSendData(bdku.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;
@@ -98,7 +98,7 @@ public class MiniAppGetAppInfoByIdForSDKServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByIdForSDKServlet
  * JD-Core Version:    0.7.0.1
  */

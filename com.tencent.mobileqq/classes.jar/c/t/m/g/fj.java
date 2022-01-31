@@ -2,163 +2,308 @@ package c.t.m.g;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.location.LocationManager;
-import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
+import android.provider.Settings.Global;
+import android.provider.Settings.System;
+import android.telephony.CellInfo;
+import android.telephony.CellLocation;
+import android.telephony.NeighboringCellInfo;
+import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
+import android.telephony.cdma.CdmaCellLocation;
+import android.telephony.gsm.GsmCellLocation;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public final class fj
 {
-  private static fj a = null;
-  private int b = -1;
-  private int c = -1;
-  private int d = 1;
+  public static boolean a = false;
   
-  @SuppressLint({"NewApi"})
-  public static int a(Context paramContext)
+  public static int a(CellLocation paramCellLocation)
   {
-    if (paramContext == null)
+    if ((paramCellLocation instanceof CdmaCellLocation)) {
+      return ((CdmaCellLocation)paramCellLocation).getBaseStationId();
+    }
+    try
     {
-      i = -1;
+      int i = ((GsmCellLocation)paramCellLocation).getCid();
       return i;
     }
-    boolean bool3 = b(paramContext);
+    catch (Exception paramCellLocation) {}
+    return -1;
+  }
+  
+  public static CellLocation a(ea paramea)
+  {
+    boolean bool2 = false;
+    TelephonyManager localTelephonyManager = paramea.f;
+    if (localTelephonyManager != null) {}
     for (;;)
     {
+      boolean bool3;
       try
       {
-        localWifiManager = (WifiManager)paramContext.getSystemService("wifi");
-        if (localWifiManager == null) {
-          continue;
+        CellLocation localCellLocation = localTelephonyManager.getCellLocation();
+        int i = localTelephonyManager.getSimState();
+        int j;
+        if (i == 5) {
+          j = 1;
         }
-        bool1 = localWifiManager.isWifiEnabled();
-        if (!bool1) {
-          continue;
-        }
-        i = 1;
-      }
-      catch (Exception localException2)
-      {
-        WifiManager localWifiManager;
-        boolean bool1;
-        boolean bool2;
-        int m;
-        i = 0;
-        k = 0;
-        j = i;
-        i = k;
-        continue;
-      }
-      catch (Error localError2)
-      {
-        i = 0;
-        int k = 0;
-        int j = i;
-        i = k;
-        continue;
-      }
-      try
-      {
-        if (Build.VERSION.SDK_INT <= 17) {
-          continue;
-        }
-        bool1 = localWifiManager.isScanAlwaysAvailable();
-        if (!bool1) {
-          continue;
-        }
-        i = 1;
-        j = 1;
         try
         {
-          paramContext = (LocationManager)paramContext.getSystemService("location");
-          if (paramContext != null)
+          bool1 = TextUtils.isEmpty(localTelephonyManager.getSubscriberId());
+          if (bool1) {
+            continue;
+          }
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          i = 1;
+          continue;
+        }
+        if ((j != 0) && (i != 0))
+        {
+          bool3 = a(paramea.a);
+          i = a(localCellLocation);
+          if ((localCellLocation != null) && (!b(localCellLocation)))
           {
-            bool2 = paramContext.isProviderEnabled("gps");
-            paramContext = paramContext.getAllProviders();
-            if (paramContext == null) {
-              bool1 = false;
-            } else {
-              bool1 = paramContext.contains("gps");
+            bool1 = bool2;
+            if (i >= 0) {
+              a = bool1;
             }
           }
-          else
+        }
+        else
+        {
+          return localCellLocation;
+          j = 0;
+          continue;
+          i = 0;
+          continue;
+          return CellLocation.getEmpty();
+        }
+      }
+      catch (Exception paramea)
+      {
+        a = true;
+      }
+      boolean bool1 = bool2;
+      if (!bool3) {
+        bool1 = true;
+      }
+    }
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    return paramInt != eu.a.c.ordinal();
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (b(paramInt1)) {
+      if ((paramInt2 >= 0) && (paramInt3 >= 0) && (paramInt4 > 0) && (paramInt4 < 65535) && (paramInt5 > 0) && (paramInt5 < 65535))
+      {
+        bool1 = bool2;
+        if (paramInt3 == 0)
+        {
+          bool1 = bool2;
+          if (paramInt4 == 0)
           {
-            bool1 = false;
-            bool2 = false;
+            bool1 = bool2;
+            if (paramInt5 != 0) {}
           }
         }
-        catch (Exception paramContext)
-        {
-          bool1 = false;
-          bool2 = false;
-        }
-        m = 0;
       }
-      catch (Error localError1) {}catch (Exception localException1)
+      else
       {
-        continue;
+        bool1 = false;
       }
-      continue;
-      j = 1;
-      continue;
-      i = 0;
-      continue;
-      if (!bool3)
+    }
+    do
+    {
+      return bool1;
+      if ((paramInt2 < 0) || (paramInt3 < 0) || (paramInt4 <= 0) || (paramInt4 >= 65535) || (paramInt5 == 268435455) || (paramInt5 == 2147483647) || (paramInt5 == 50594049) || (paramInt5 == 65535)) {
+        break;
+      }
+      bool1 = bool2;
+    } while (paramInt5 > 0);
+    return false;
+  }
+  
+  public static boolean a(int paramInt, SignalStrength paramSignalStrength1, SignalStrength paramSignalStrength2)
+  {
+    if ((paramSignalStrength1 == null) || (paramSignalStrength2 == null)) {}
+    int i;
+    do
+    {
+      do
       {
-        m = 1;
-        k = m;
-        if (j == 0) {
-          k = m | 0x2;
-        }
-        j = k;
-        if (!bool2) {
-          j = k | 0x4;
-        }
-        k = j;
-        if (i == 0) {
-          k = j | 0x8;
-        }
-        i = k;
-        if (bool1) {
+        return true;
+        i = Math.abs(b(paramInt, paramSignalStrength1, paramSignalStrength2));
+        if (!a(paramInt)) {
           break;
         }
-        return k | 0x10;
-        j = 0;
-        i = 0;
-        k = i;
-        i = j;
-        j = k;
+      } while (i > 3);
+      return false;
+      if (!b(paramInt)) {
+        break;
+      }
+    } while (i > 6);
+    return false;
+    return false;
+  }
+  
+  @SuppressLint({"NewApi"})
+  public static boolean a(Context paramContext)
+  {
+    boolean bool = true;
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 17)
+      {
+        if (Settings.Global.getInt(paramContext.getContentResolver(), "airplane_mode_on") != 1) {
+          break label47;
+        }
+        return true;
+      }
+      int i = Settings.System.getInt(paramContext.getContentResolver(), "airplane_mode_on");
+      if (i != 1) {
+        return false;
       }
     }
-  }
-  
-  public static fj a()
-  {
-    if (a == null) {
-      a = new fj();
+    catch (Throwable paramContext)
+    {
+      bool = false;
     }
-    return a;
+    return bool;
+    label47:
+    return false;
   }
   
-  private static boolean b(Context paramContext)
+  public static boolean a(CellLocation paramCellLocation1, CellLocation paramCellLocation2)
+  {
+    int i;
+    if ((paramCellLocation1 == null) || (paramCellLocation2 == null))
+    {
+      i = 1;
+      if (i == 0) {
+        break label21;
+      }
+    }
+    label21:
+    label62:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            i = 0;
+            break;
+          } while (paramCellLocation1.getClass() != paramCellLocation2.getClass());
+          if (!(paramCellLocation1 instanceof GsmCellLocation)) {
+            break label62;
+          }
+          paramCellLocation1 = (GsmCellLocation)paramCellLocation1;
+          paramCellLocation2 = (GsmCellLocation)paramCellLocation2;
+        } while (paramCellLocation1.getCid() != paramCellLocation2.getCid());
+        return true;
+      } while (!(paramCellLocation1 instanceof CdmaCellLocation));
+      paramCellLocation1 = (CdmaCellLocation)paramCellLocation1;
+      paramCellLocation2 = (CdmaCellLocation)paramCellLocation2;
+    } while (paramCellLocation1.getBaseStationId() != paramCellLocation2.getBaseStationId());
+    return true;
+  }
+  
+  public static boolean a(eu parameu)
+  {
+    if (parameu == null) {}
+    for (int i = 1; i != 0; i = 0) {
+      return false;
+    }
+    return a(parameu.a.ordinal(), parameu.b, parameu.c, parameu.d, parameu.e);
+  }
+  
+  private static int b(int paramInt, SignalStrength paramSignalStrength1, SignalStrength paramSignalStrength2)
   {
     try
     {
-      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      if (paramContext == null) {
-        return false;
+      if (a(paramInt)) {
+        return paramSignalStrength1.getGsmSignalStrength() - paramSignalStrength2.getGsmSignalStrength();
       }
-      int i = paramContext.getSimState();
-      return i == 5;
+      if (b(paramInt))
+      {
+        paramInt = paramSignalStrength1.getCdmaDbm();
+        int i = paramSignalStrength2.getCdmaDbm();
+        return paramInt - i;
+      }
     }
-    catch (Exception paramContext) {}
+    catch (Throwable paramSignalStrength1) {}
+    return 0;
+  }
+  
+  @SuppressLint({"NewApi"})
+  public static List<CellInfo> b(ea paramea)
+  {
+    try
+    {
+      paramea = paramea.f.getAllCellInfo();
+      if (paramea != null) {
+        return paramea;
+      }
+    }
+    catch (Throwable paramea) {}
+    return new ArrayList();
+  }
+  
+  private static boolean b(int paramInt)
+  {
+    return paramInt == eu.a.c.ordinal();
+  }
+  
+  private static boolean b(CellLocation paramCellLocation)
+  {
+    try
+    {
+      paramCellLocation = (GsmCellLocation)paramCellLocation;
+      if (paramCellLocation.getCid() == 0)
+      {
+        int i = paramCellLocation.getLac();
+        if (i == 0) {
+          return true;
+        }
+      }
+    }
+    catch (ClassCastException paramCellLocation) {}
     return false;
+  }
+  
+  public static List<NeighboringCellInfo> c(ea paramea)
+  {
+    paramea = paramea.f;
+    if (paramea != null) {
+      try
+      {
+        paramea = paramea.getNeighboringCellInfo();
+        return paramea;
+      }
+      catch (Exception paramea) {}
+    }
+    return Collections.emptyList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.fj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,310 +1,325 @@
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.util.Xml;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppEntryHandler;
+import com.tencent.mobileqq.ar.FaceScanDownloadManager.1;
+import com.tencent.mobileqq.ar.FaceScanDownloadManager.2;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import mqq.app.AppRuntime;
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import org.xmlpull.v1.XmlPullParser;
 
 public class amtb
-  extends ampa<amta>
 {
-  public static volatile int a = -1;
-  public static volatile int b = -1;
+  public static Handler a;
+  private static ArrayList<amtc> a;
   
-  public static int a(int paramInt)
+  static
   {
-    paramInt = a("miniapptriggerfullscreenheight", paramInt);
-    QLog.d("MiniAppConfProcessor", 2, "getTriggerFullScreenHeight, height = " + paramInt);
-    return paramInt;
+    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
   }
   
-  public static int a(String paramString, int paramInt)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    try
-    {
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      int i = Integer.parseInt(BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getString(str + "_" + paramString, String.valueOf(paramInt)));
-      paramInt = i;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("MiniAppConfProcessor", 1, "getMiniAppHighPriorityConfig, error!", localException);
-      }
+    return PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).getInt("key_download_cfg_version" + paramQQAppInterface.getLongAccountUin(), 0);
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_JavaUtilArrayList != null) {
+      jdField_a_of_type_JavaUtilArrayList.clear();
     }
     if (QLog.isColorLevel()) {
-      QLog.d("MiniAppConfProcessor", 1, "getMiniAppHighPriorityConfig, secondaryKey: " + paramString + ", Value = " + paramInt);
+      QLog.d("FaceScanDownloadManager", 2, "clearCallback");
     }
-    return paramInt;
   }
   
-  public static amta a()
-  {
-    return (amta)ampl.a().a(425);
-  }
-  
-  public static String a()
-  {
-    String str = "";
-    amta localamta = a();
-    if (localamta != null) {
-      str = localamta.a();
-    }
-    return str;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    try
-    {
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      str = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getString(str + "_" + paramString1, paramString2);
-      paramString2 = str;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("MiniAppConfProcessor", 1, "getMiniAppHighPriorityConfig, error!", localException);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppConfProcessor", 1, "getMiniAppHighPriorityConfig, secondaryKey: " + paramString1 + ", Value = " + paramString2);
-    }
-    return paramString2;
-  }
-  
-  public static String b()
-  {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationUin", "1038354735");
-  }
-  
-  public static int c()
-  {
-    if (b == -1)
-    {
-      b = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappfullscreenminedatamaxnum", 50);
-      QLog.d("MiniAppConfProcessor", 1, "[MiniAppUserAppInfoListManager].maxtopnum = " + b);
-    }
-    return b;
-  }
-  
-  public static String c()
-  {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationNickName", "小程序通知");
-  }
-  
-  public static String d()
-  {
-    String str2 = "QQ小程序";
-    String str1 = str2;
-    try
-    {
-      String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      str1 = str2;
-      str2 = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getString(str3 + "_" + "miniappfullscreentitle", "QQ小程序");
-      str1 = str2;
-      if (QLog.isColorLevel())
-      {
-        str1 = str2;
-        QLog.d("MiniAppConfProcessor", 2, "[DesktopDataManager]. desktopTitleConfig title: " + str2 + "，uin: " + str3);
-      }
-      return str2;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. desktopTitleConfig Exception");
-    }
-    return str1;
-  }
-  
-  public static boolean e()
-  {
-    boolean bool = true;
-    amta localamta = a();
-    if (localamta != null) {
-      bool = localamta.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppConfProcessor", 2, "needShowMiniAppEntry: " + bool);
-    }
-    return bool;
-  }
-  
-  public static boolean f()
-  {
-    boolean bool = false;
-    amta localamta = a();
-    if (localamta != null) {
-      bool = localamta.h();
-    }
-    return bool;
-  }
-  
-  public static boolean g()
-  {
-    if (a == -1) {}
-    try
-    {
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      a = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt(str + "_" + "miniappshowfullscreen", 1);
-      QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager].needShowMiniAppFullScreen, showFullScreen = " + a);
-      if (a == 1) {
-        return true;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        a = 1;
-        QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. needShowMiniAppFullScreen Exception");
-      }
-    }
-    return false;
-  }
-  
-  public static boolean h()
-  {
-    return a("miniappshowreddot", 0) == 1;
-  }
-  
-  public static boolean i()
-  {
-    return a("miniappshowmessagereddot", 0) == 1;
-  }
-  
-  public static boolean j()
-  {
-    return a("miniappfullscreenshownotificationbtn", 1) == 1;
-  }
-  
-  public static boolean k()
-  {
-    if (a("miniappfullscreenshownotificationreddot", 1) == 1) {}
-    for (int i = 1; (j()) && (i != 0); i = 0) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean l()
-  {
-    return !m();
-  }
-  
-  public static boolean m()
+  public static void a(int paramInt1, int paramInt2)
   {
     for (;;)
     {
       try
       {
-        String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        i = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt(str + "_" + "miniappfullscreenshowsetting", 0);
-        j = i;
-        QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. needShowSettingButton Exception.");
+        Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
+        if ((arrayOfObject == null) || (arrayOfObject.length <= 0)) {
+          return;
+        }
       }
-      catch (Exception localException1)
+      finally {}
+      int i = 0;
+      while (i < localObject.length)
       {
-        try
+        amtc localamtc = (amtc)localObject[i];
+        jdField_a_of_type_AndroidOsHandler.post(new FaceScanDownloadManager.1(localamtc, paramInt1, paramInt2));
+        i += 1;
+      }
+    }
+  }
+  
+  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceScanDownloadManager", 2, "downloadFaceRes app is null");
+      }
+      return;
+    }
+    paramQQAppInterface = (apgj)paramQQAppInterface.getManager(77);
+    boolean bool;
+    switch (paramInt)
+    {
+    default: 
+      bool = false;
+      paramQQAppInterface = null;
+    }
+    while (paramQQAppInterface != null)
+    {
+      paramInt = paramQQAppInterface.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceScanDownloadManager", 2, "initAr version=" + paramQQAppInterface.b());
+      }
+      if ((bool) && (paramQQAppInterface.g()) && (paramInt > 1)) {
+        break;
+      }
+      paramQQAppInterface.a(true);
+      return;
+      paramQQAppInterface = paramQQAppInterface.a("qq.android.ar.face.models_v8.2.0");
+      bool = amtd.a();
+      continue;
+      paramQQAppInterface = paramQQAppInterface.a("qq.android.ar.face.so_v8.2.0_32");
+      bool = amte.a();
+      if (paramQQAppInterface != null) {
+        BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit().putInt("ar_native_so_version", paramQQAppInterface.b()).commit();
+      }
+    }
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
+        if ((arrayOfObject == null) || (arrayOfObject.length <= 0)) {
+          return;
+        }
+      }
+      finally {}
+      int i = 0;
+      while (i < localObject.length)
+      {
+        amtc localamtc = (amtc)localObject[i];
+        jdField_a_of_type_AndroidOsHandler.post(new FaceScanDownloadManager.2(localamtc, paramInt, paramBoolean));
+        i += 1;
+      }
+    }
+  }
+  
+  public static void a(amtc paramamtc)
+  {
+    if (paramamtc != null) {}
+    try
+    {
+      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramamtc))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("FaceScanDownloadManager", 2, "addDownloadCallback");
+        }
+        jdField_a_of_type_JavaUtilArrayList.add(paramamtc);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      do
+      {
+        do
         {
-          if (QLog.isColorLevel())
+          return;
+          paramQQAppInterface = (apgj)paramQQAppInterface.getManager(77);
+        } while (paramQQAppInterface == null);
+        apgw localapgw = (apgw)paramQQAppInterface.a("qq.android.ar.face.so_v8.2.0_32");
+        if ((localapgw != null) && (localapgw.g()) && (!amte.a()))
+        {
+          localapgw.g();
+          if (QLog.isColorLevel()) {
+            QLog.d("FaceScanDownloadManager", 2, "reset native so download state");
+          }
+        }
+        paramQQAppInterface = (apgv)paramQQAppInterface.a("qq.android.ar.face.models_v8.2.0");
+      } while ((paramQQAppInterface == null) || (!paramQQAppInterface.g()) || (amtd.a()));
+      paramQQAppInterface.a();
+    } while (!QLog.isColorLevel());
+    QLog.d("FaceScanDownloadManager", 2, "reset modules so download state");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).edit();
+    localEditor.putInt("key_download_cfg_version" + paramQQAppInterface.getLongAccountUin(), paramInt);
+    localEditor.commit();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    XmlPullParser localXmlPullParser = Xml.newPullParser();
+    for (;;)
+    {
+      try
+      {
+        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+        i = localXmlPullParser.getEventType();
+        bool2 = false;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("FaceScanDownloadManager", 2, paramString, paramQQAppInterface);
+        return;
+      }
+      int i = localXmlPullParser.next();
+      boolean bool2 = bool1;
+      break label171;
+      boolean bool1 = bool2;
+      if (localXmlPullParser.getName().equalsIgnoreCase("PreDownload"))
+      {
+        bool1 = bool2;
+        if (Integer.valueOf(localXmlPullParser.nextText()).intValue() == 1)
+        {
+          bool1 = true;
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d("FaceScanDownloadManager", 2, "handleResp_GetArScanFacePreDownConfig success：isPreDownload|version=" + bool2 + "|" + paramInt);
+          }
+          a(paramQQAppInterface, paramInt);
+          a(paramQQAppInterface, bool2);
+          return;
+          label171:
+          if (i != 1)
           {
-            QLog.d("MiniAppConfProcessor", 2, "[DesktopDataManager]. needShowSettingButton settingValue: " + i + "，uin: " + str);
-            j = i;
+            bool1 = bool2;
+            switch (i)
+            {
+            }
+            bool1 = bool2;
           }
-          QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager].needShowSettingButton, settingValue = " + j);
-          if (j != 1) {
-            break;
-          }
-          return true;
         }
-        catch (Exception localException2)
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).edit();
+    localEditor.putBoolean("key_download_cfg_enable" + paramQQAppInterface.getLongAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean a()
+  {
+    return (amte.a()) && (amtd.a());
+  }
+  
+  private static boolean a(apgu paramapgu)
+  {
+    if (paramapgu == null) {}
+    do
+    {
+      do
+      {
+        return false;
+        paramapgu = paramapgu.a();
+      } while (paramapgu == null);
+      if ((!TextUtils.isEmpty(paramapgu.strPkgName)) && (!TextUtils.isEmpty(paramapgu.strResURL_big))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("FaceScanDownloadManager", 2, "strPkgName is empty:" + TextUtils.isEmpty(paramapgu.strPkgName) + " strResURL_big is empty:" + TextUtils.isEmpty(paramapgu.strResURL_big) + " loadState :" + paramapgu.loadState);
+    return false;
+    return true;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool3 = true;
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return false;
+      paramQQAppInterface = (apgj)paramQQAppInterface.getManager(77);
+    } while (paramQQAppInterface == null);
+    apgw localapgw = (apgw)paramQQAppInterface.a("qq.android.ar.face.so_v8.2.0_32");
+    boolean bool2 = a(localapgw);
+    boolean bool1 = bool2;
+    if (!bool2)
+    {
+      bool1 = bool2;
+      if (localapgw != null)
+      {
+        bool1 = bool2;
+        if (localapgw.g())
         {
-          int i;
-          int j;
-          break label129;
+          bool1 = bool2;
+          if (amte.a()) {
+            bool1 = true;
+          }
         }
-        localException1 = localException1;
-        i = 0;
       }
-      label129:
-      j = i;
     }
-    return false;
-  }
-  
-  public int a()
-  {
-    return 425;
-  }
-  
-  @NonNull
-  public amta a(int paramInt)
-  {
-    return new amta();
-  }
-  
-  @Nullable
-  public amta a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
-    {
-      new amta();
-      return amta.a(paramArrayOfamph);
+    if (bool1) {
+      localapgw.a();
     }
-    return null;
-  }
-  
-  public Class<amta> a()
-  {
-    return amta.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amta paramamta)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("MiniAppConfProcessor", 2, "onUpdate " + paramamta.toString());
+      QLog.d("FaceScanDownloadManager", 2, "native so config is exist :" + bool1);
     }
-    paramamta = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramamta instanceof QQAppInterface))
+    paramQQAppInterface = (apgv)paramQQAppInterface.a("qq.android.ar.face.models_v8.2.0");
+    bool2 = a(paramQQAppInterface);
+    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (amtd.a())) {
+      bool2 = true;
+    }
+    for (;;)
     {
-      paramamta = (MiniAppEntryHandler)((QQAppInterface)paramamta).a(149);
-      if (paramamta != null) {
-        paramamta.notifyUI(0, true, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceScanDownloadManager", 2, "models config is exist :" + bool2);
+      }
+      if ((bool1) && (bool2)) {}
+      for (bool1 = bool3;; bool1 = false) {
+        return bool1;
       }
     }
   }
   
-  public boolean a()
+  public static void b(QQAppInterface paramQQAppInterface)
   {
-    return true;
+    a(paramQQAppInterface, 0);
+    a(paramQQAppInterface, false);
   }
   
-  public int b()
+  public static boolean b(QQAppInterface paramQQAppInterface)
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).getBoolean("key_download_cfg_enable" + paramQQAppInterface.getLongAccountUin(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtb
  * JD-Core Version:    0.7.0.1
  */

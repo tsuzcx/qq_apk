@@ -1,80 +1,27 @@
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class baah
-  extends BaseAdapter
+  extends azyx
 {
-  protected SearchReciteArticleFragment a;
-  protected String a;
-  protected List<baag> a;
+  protected SpriteGLView a;
   
-  public baah(SearchReciteArticleFragment paramSearchReciteArticleFragment)
+  public azzd a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment = paramSearchReciteArticleFragment;
+    return this.a;
   }
   
-  public baag a(int paramInt)
-  {
-    return (baag)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
+  public void aP_() {}
   
-  public void a()
+  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(baag parambaag)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(parambaag);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560367, null, false);
-      paramViewGroup = new baai(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378383));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131378112));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      baag localbaag = a(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, localbaag.jdField_a_of_type_JavaLangString, Color.parseColor("#00B6F9")));
-      paramViewGroup.b.setText(localbaag.b);
-      return paramView;
-      paramViewGroup = (baai)paramView.getTag();
-    }
+    this.e = paramInt1;
+    this.f = paramInt2;
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baah
  * JD-Core Version:    0.7.0.1
  */

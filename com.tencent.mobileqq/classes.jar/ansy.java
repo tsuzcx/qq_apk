@@ -1,77 +1,50 @@
-import android.os.Looper;
-import android.os.Message;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
 
 class ansy
-  extends aywb
+  extends AnimatorListenerAdapter
 {
-  ansy(ansx paramansx, Looper paramLooper)
+  ansy(ansu paramansu, ante paramante) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramLooper);
+    if ((this.jdField_a_of_type_Ansu.d != null) && (this.jdField_a_of_type_Ansu.e != null))
+    {
+      this.jdField_a_of_type_Ansu.d.setVisibility(4);
+      this.jdField_a_of_type_Ansu.e.setVisibility(0);
+      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Ansu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      paramAnimator.jdField_a_of_type_Long = -1L;
+      this.jdField_a_of_type_Ansu.a("show pendant, " + this.jdField_a_of_type_Ansu.jdField_a_of_type_Long);
+      paramAnimator.b();
+    }
+    if (this.jdField_a_of_type_Ansu.c != null) {
+      this.jdField_a_of_type_Ansu.c.setVisibility(0);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    Object localObject = (ayqo)paramMessage.obj;
-    if ((localObject == null) || (((ayqo)localObject).c != this.a.a())) {}
-    do
+    if ((this.jdField_a_of_type_Ansu.d != null) && (this.jdField_a_of_type_Ansu.e != null))
     {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          case 1002: 
-          case 1006: 
-          case 1007: 
-          default: 
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("FavroamingManager", 2, "start uploadFace favEmoticon");
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FavroamingManager", 2, "finish uploadFace favEmoticon resId=" + ((ayqo)localObject).g);
-        }
-      } while (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet() < this.a.jdField_b_of_type_Int);
-      this.a.f();
-      return;
-      if (ansx.a(this.a) == null)
-      {
-        QLog.e("FavroamingManager", 1, "app is null");
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FavroamingManager", 2, "STATUS_SEND_AND_SAVE_FINISHED resId=" + ((ayqo)localObject).g);
-      }
-      paramMessage = ((answ)this.a.a()).a(((ayqo)localObject).g);
-      localObject = (ajvy)ansx.b(this.a).a(72);
-    } while ((localObject == null) || (paramMessage == null) || (paramMessage.isMarkFace));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramMessage);
-    ((ajvy)localObject).a(localArrayList, 1);
-    return;
-    QLog.i("FavroamingManager", 1, "upload fav error:" + ((ayqo)localObject).g);
-    if (ansx.c(this.a) != null) {}
-    for (int i = bbfj.b(ansx.d(this.a).getApplication());; i = -1)
-    {
-      bbrx.a("emotionType", "emotionActionFav", "4", "", "", i + "", ((ayqo)localObject).g, "", "", "");
-      return;
-      QLog.i("FavroamingManager", 1, "upload fav cancel:" + ((ayqo)localObject).g);
-      return;
+      this.jdField_a_of_type_Ansu.d.setVisibility(0);
+      this.jdField_a_of_type_Ansu.e.setVisibility(4);
+      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Ansu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      this.jdField_a_of_type_Ansu.a("stop show pendant, " + this.jdField_a_of_type_Ansu.jdField_a_of_type_Long);
+      paramAnimator.jdField_a_of_type_Long = this.jdField_a_of_type_Ansu.jdField_a_of_type_Long;
+      paramAnimator.a();
+    }
+    if ((this.jdField_a_of_type_Ansu.c != null) && (TextUtils.isEmpty(this.jdField_a_of_type_Ante.e))) {
+      this.jdField_a_of_type_Ansu.c.setVisibility(4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansy
  * JD-Core Version:    0.7.0.1
  */

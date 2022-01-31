@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apwq;
-import apwr;
+import arps;
+import arpt;
 
 public class UniformDownloaderAppBabySdk$4$4
   implements Runnable
 {
-  public UniformDownloaderAppBabySdk$4$4(apwr paramapwr) {}
+  public UniformDownloaderAppBabySdk$4$4(arpt paramarpt) {}
   
   public void run()
   {
-    apwq.c(this.a.a);
-    apwq.a(this.a.a);
+    arps.c(this.a.a);
+    arps.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.4
  * JD-Core Version:    0.7.0.1
  */

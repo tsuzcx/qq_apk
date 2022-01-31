@@ -1,24 +1,28 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.subscribe.comment.CommentPresenter.5.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.IEventReceiver;
 
 public class wnl
-  implements View.OnLayoutChangeListener
+  implements IEventReceiver
 {
-  wnl(wni paramwni) {}
+  protected wmu a;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public wmu a()
   {
-    QLog.d(wni.a(), 2, "OnLayoutChangeListener scrollToReplyView start mScrollToTargetReply" + wni.c(this.a));
-    if ((wni.a(this.a) != null) && (wni.c(this.a))) {
-      wni.a(this.a, new CommentPresenter.5.1(this));
-    }
+    return this.a;
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    wsv.b("Q.qqstory.home.Repository", "executeRunnableOnWorkThread");
+  }
+  
+  public boolean isValidate()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wnl
  * JD-Core Version:    0.7.0.1
  */

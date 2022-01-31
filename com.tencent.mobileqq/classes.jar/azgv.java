@@ -1,35 +1,18 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
 public class azgv
-  extends ClickableSpan
+  implements FileFilter
 {
-  public azgv(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public boolean accept(File paramFile)
   {
-    TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, 2002, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.t);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
-    {
-      axqy.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_add_topic", i, 0, "", "", "", "");
-      return;
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azgv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,20 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
-class adqy
-  extends ClickableSpan
+public class adqy
+  implements DialogInterface.OnClickListener
 {
-  adqy(adqw paramadqw, String paramString) {}
+  public adqy(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    axqy.b(this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
-    try
-    {
-      this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
+    this.a.a(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqy
  * JD-Core Version:    0.7.0.1
  */

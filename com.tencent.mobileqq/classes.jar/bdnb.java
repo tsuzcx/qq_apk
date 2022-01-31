@@ -1,22 +1,37 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
-
 public class bdnb
-  implements View.OnClickListener
+  extends apsj
 {
-  public bdnb(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    bdhz.b(bdib.a().a("200").k(ApkFileDownloadFragment.a(this.a).b).j("1").l("0").m(ApkFileDownloadFragment.a(this.a).a).a(ApkFileDownloadFragment.a(this.a).h).b(ApkFileDownloadFragment.a(this.a).f).g(ApkFileDownloadFragment.a(this.a).e));
-    ApkFileDownloadFragment.a(this.a).finish();
-  }
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public static int d = 4;
+  public static int e = 5;
+  public static int f = 6;
+  public static int g = 7;
+  public static int h = 8;
+  public static int i;
+  public static int j = 1;
+  public static int k = 6;
+  public static int l = 1;
+  public static int m = 2;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public int n;
+  public int o;
+  public int p;
+  public int q;
+  public int r;
+  public int s;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdnb
  * JD-Core Version:    0.7.0.1
  */

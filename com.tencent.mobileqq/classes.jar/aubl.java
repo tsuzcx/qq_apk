@@ -1,31 +1,19 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 class aubl
-  implements Camera.PreviewCallback
+  implements aubq<Pair<String, Integer>, EmoticonPackage>
 {
-  aubl(aubi paramaubi) {}
+  aubl(aube paramaube) {}
   
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  public EmoticonPackage a(Pair<String, Integer> paramPair)
   {
-    if (paramArrayOfByte == null) {
-      return;
-    }
-    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!aubi.a(this.a)))
-    {
-      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      if ((this.a.e != 1) && (System.currentTimeMillis() - aubi.a(this.a) > this.a.c))
-      {
-        aubi.a(this.a, System.currentTimeMillis());
-        aubi.a(this.a, paramArrayOfByte);
-      }
-    }
-    aubi.a(this.a).addCallbackBuffer(paramArrayOfByte);
+    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aubl
  * JD-Core Version:    0.7.0.1
  */

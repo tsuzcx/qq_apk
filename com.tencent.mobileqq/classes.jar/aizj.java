@@ -1,55 +1,48 @@
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.data.MessageForApollo;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.text.DecimalFormat;
 
 public class aizj
-  implements aizk
 {
-  public void a(int paramInt) {}
+  public static String a;
+  public static DecimalFormat a;
+  private static boolean a;
+  public static String b;
+  public static String c;
+  private static String d;
+  public int a;
+  public long a;
+  public int b;
+  public long b;
   
-  public void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2) {}
+  static
+  {
+    jdField_a_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
+    jdField_b_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
+    c = jdField_a_of_type_JavaLangString;
+    d = jdField_b_of_type_JavaLangString;
+    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
+  }
   
-  public void a(String paramString) {}
+  public static String a()
+  {
+    if (!jdField_a_of_type_Boolean)
+    {
+      QQAppInterface localQQAppInterface = ajaf.a();
+      if (localQQAppInterface != null) {
+        d = ((aitd)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
+      }
+    }
+    return d;
+  }
   
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(String paramString, int paramInt, long paramLong) {}
-  
-  public void a(String paramString, int paramInt, List<MessageForApollo> paramList) {}
-  
-  public void a(String paramString, aenl paramaenl) {}
-  
-  public void a(String paramString, aizm paramaizm) {}
-  
-  public void a(String paramString, List<ApolloGameData> paramList) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt, long paramLong) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, long paramLong, String paramString2) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt, long paramLong) {}
-  
-  public void b(String paramString) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt, long paramLong) {}
-  
-  public void c(String paramString) {}
-  
-  public void d(String paramString) {}
-  
-  public void e(String paramString) {}
+  public String toString()
+  {
+    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aizj
  * JD-Core Version:    0.7.0.1
  */

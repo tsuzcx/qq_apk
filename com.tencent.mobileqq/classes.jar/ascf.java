@@ -1,33 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.1;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ascf
-  implements View.OnClickListener
+  implements avpt
 {
-  public ascf(PngFrameManager.1 param1) {}
+  public ascf(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    if (this.a.a.jdField_a_of_type_Adus.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0) {}
-    do
+    return this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("nearby.NearbyHybridFragment", 2, "status =" + paramInt1 + ",direction =" + paramInt2 + ",height =" + paramInt3);
+    }
+    String str = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_view_change_callback", "");
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(str)) {
+      localJSONObject = new JSONObject();
+    }
+    try
     {
-      do
-      {
-        return;
-      } while (this.a.a.jdField_a_of_type_Adus.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0);
-      this.a.a.jdField_a_of_type_Boolean = true;
-      this.a.a.jdField_a_of_type_Adus.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.a.this$0.e(this.a.a);
-    } while (this.a.a.jdField_a_of_type_Asci == null);
-    this.a.a.jdField_a_of_type_Asci.a(this.a.a.jdField_a_of_type_Adus);
+      localJSONObject.put("status", paramInt1);
+      localJSONObject.put("direction", paramInt2);
+      localJSONObject.put("height", paramInt3);
+      if (this.a.jdField_a_of_type_Ascg != null) {
+        this.a.jdField_a_of_type_Ascg.mWebview.callJs(str, new String[] { localJSONObject.toString() });
+      }
+      return false;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("nearby.NearbyHybridFragment", 2, localJSONException, new Object[0]);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ascf
  * JD-Core Version:    0.7.0.1
  */

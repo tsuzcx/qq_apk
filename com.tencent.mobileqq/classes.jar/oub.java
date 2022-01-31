@@ -1,30 +1,49 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class oub
-  implements ViewTreeObserver.OnPreDrawListener
+public class oub
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  oub(oua paramoua, ReadInJoyStaticGridView paramReadInJoyStaticGridView) {}
-  
-  public boolean onPreDraw()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getChildAt(0);
-    Object localObject2 = new int[2];
-    ((View)localObject1).getLocationOnScreen((int[])localObject2);
-    localObject2 = this.jdField_a_of_type_Oua.a.a(oua.a(this.jdField_a_of_type_Oua), (int[])localObject2);
-    ReadInJoyChannelPanelFragment.a(localObject2[0], 0.0F, localObject2[1], 0.0F, (View)localObject1);
-    localObject1 = (ViewTreeObserver.OnPreDrawListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getTag(2131374762);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)localObject1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.setTag(2131374762, null);
-    return false;
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoEntranceTypeConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = osq.a(paramString);
+    Object localObject = paramString.keySet();
+    try
+    {
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "readinjoy_video_recommend_entrance_direct")) {
+          bjxj.j(Integer.parseInt(str2));
+        }
+      }
+      return true;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bjxj.j(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oub
  * JD-Core Version:    0.7.0.1
  */

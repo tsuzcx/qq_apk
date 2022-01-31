@@ -1,31 +1,21 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.qphone.base.util.QLog;
-
-public class aznc
-  extends aznh
+class aznc
 {
-  public aznc(TroopAioKeywordTipBar.4 param4) {}
+  int jdField_a_of_type_Int = 1;
+  boolean jdField_a_of_type_Boolean = true;
+  int b = 86400;
+  int c = 5;
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  void a()
   {
-    if (!this.a.this$0.a) {}
-    do
-    {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
-    return;
-    azmw.a(this.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 1;
+    this.b = 86400;
+    this.c = 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aznc
  * JD-Core Version:    0.7.0.1
  */

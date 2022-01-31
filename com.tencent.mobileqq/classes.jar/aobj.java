@@ -1,26 +1,46 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.colornote.swipeback.SwipeBackLayout;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-class aobj
-  implements View.OnClickListener
+public class aobj
+  extends Handler
 {
-  aobj(aobh paramaobh, IPSiteModel.Goods paramGoods) {}
+  private WeakReference<SwipeBackLayout> a;
   
-  public void onClick(View paramView)
+  public aobj(SwipeBackLayout paramSwipeBackLayout)
   {
-    paramView = new Intent(aobh.a(this.jdField_a_of_type_Aobh), QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(aobh.a(this.jdField_a_of_type_Aobh), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.moreUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(aobh.a(this.jdField_a_of_type_Aobh), "IP", "aio_productmore", "", 0, 0, 0, aobh.b(this.jdField_a_of_type_Aobh), aobh.c(this.jdField_a_of_type_Aobh), "", "", "", "", "", 0, 0, 0, 0);
+    this.a = new WeakReference(paramSwipeBackLayout);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    SwipeBackLayout localSwipeBackLayout = (SwipeBackLayout)this.a.get();
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (SwipeBackLayout.a(localSwipeBackLayout));
+      SwipeBackLayout.a(localSwipeBackLayout, true);
+    } while (!(localSwipeBackLayout.a instanceof Activity));
+    if (QLog.isColorLevel()) {
+      QLog.d("SwipeBackLayout", 2, "SwipeBackLayout finish()");
+    }
+    localSwipeBackLayout.c = true;
+    ((Activity)localSwipeBackLayout.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aobj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,90 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.DetailVideoInfoWidget.SubscribeStatusReceiver.1;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.Dispatcher;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class uhr
-  extends ssv
+class uhr
+  implements Executor
 {
-  public String a;
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private int b;
   
-  private uhr(uhg paramuhg) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  private uhr(@NonNull String paramString, int paramInt1, @IntRange(from=0L) int paramInt2)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    boolean bool = TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString);
-    if (bool) {
-      this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  }
+  
+  public void execute(@NonNull Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilQueue.offer(paramRunnable);
+    int i = this.jdField_a_of_type_JavaUtilQueue.size();
+    if (i > Runtime.getRuntime().availableProcessors()) {
+      wsv.b(this.jdField_a_of_type_JavaLangString, "too many runnable remained in the queue, size " + i);
     }
-    StoryVideoItem localStoryVideoItem;
-    if (this.jdField_a_of_type_Uhg.a != null)
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= this.jdField_a_of_type_Int)
     {
-      localStoryVideoItem = this.jdField_a_of_type_Uhg.a.a();
-      if (localStoryVideoItem != null) {
-        break label64;
+      wsv.b(this.jdField_a_of_type_JavaLangString, "current number of task threshold is " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
+      {
+        paramRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+        if (paramRunnable != null) {
+          ThreadManager.excute(paramRunnable, this.b, new uhs(this, paramRunnable), false);
+        }
       }
     }
-    label64:
-    label326:
-    do
-    {
-      do
-      {
-        tdl localtdl;
-        QQUserUIItem localQQUserUIItem;
-        do
-        {
-          return;
-          localStoryVideoItem = null;
-          break;
-          localtdl = (tdl)tcz.a(2);
-          localQQUserUIItem = localtdl.b(localStoryVideoItem.mOwnerUid);
-        } while ((localQQUserUIItem == null) || (!TextUtils.equals(paramString, localQQUserUIItem.getUnionId())));
-        if (paramBoolean1)
-        {
-          if (paramBoolean2) {}
-          for (paramInt = 1;; paramInt = 0)
-          {
-            localQQUserUIItem.isSubscribe = paramInt;
-            ThreadManager.post(new DetailVideoInfoWidget.SubscribeStatusReceiver.1(this, localtdl, localQQUserUIItem), 5, null, false);
-            if (paramBoolean2)
-            {
-              paramString = (sst)tsr.a().getManager(181);
-              if (!paramString.g())
-              {
-                paramString.c();
-                bcql.a(tsr.a(), 2, ajya.a(2131703169), 0).a();
-              }
-              paramString = new uyo(2);
-              stb.a().dispatch(paramString);
-            }
-            uhg.a(this.jdField_a_of_type_Uhg, localStoryVideoItem, localQQUserUIItem);
-            if (!bool) {
-              break;
-            }
-            vei.a("play_video", "follow_suc", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
-            return;
-          }
-        }
-        if (!paramBoolean2) {
-          break label326;
-        }
-        bcql.a(tsr.a(), 1, ajya.a(2131703168), 0).a();
-      } while (!bool);
-      vei.a("play_video", "follow_fail", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
-      return;
-      bcql.a(tsr.a(), 1, ajya.a(2131703166), 0).a();
-    } while (!bool);
-    vei.a("play_video", "unfollow_fail", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhr
  * JD-Core Version:    0.7.0.1
  */

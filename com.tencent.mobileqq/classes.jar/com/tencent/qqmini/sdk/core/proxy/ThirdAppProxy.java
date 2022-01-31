@@ -6,7 +6,7 @@ public abstract class ThirdAppProxy
 {
   public abstract void init();
   
-  public abstract void installApp(String paramString);
+  public abstract boolean installApp(String paramString, AsyncResult paramAsyncResult);
   
   public abstract void queryApkDownloadInfo(String paramString, AsyncResult paramAsyncResult);
   
@@ -20,7 +20,7 @@ public abstract class ThirdAppProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.ThirdAppProxy
  * JD-Core Version:    0.7.0.1
  */

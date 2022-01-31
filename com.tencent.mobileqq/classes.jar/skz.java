@@ -1,48 +1,20 @@
-import UserGrowth.stSimpleMetaFeed;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
 
 public class skz
-  extends sks
+  implements View.OnClickListener
 {
-  private TextView a;
+  public skz(BannerAdapter paramBannerAdapter, int paramInt) {}
   
-  private skz(ViewGroup paramViewGroup, sjf paramsjf)
+  public void onClick(View paramView)
   {
-    super(paramViewGroup, paramsjf, 2131560120);
-  }
-  
-  public static skz a(ViewGroup paramViewGroup, sjf paramsjf)
-  {
-    return new skz(paramViewGroup, paramsjf);
-  }
-  
-  protected void a()
-  {
-    this.a = ((TextView)a(1).findViewById(2131379109));
-  }
-  
-  protected void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.a.setVisibility(paramInt);
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    super.a(paramstSimpleMetaFeed);
-    if (paramstSimpleMetaFeed == null) {
-      return;
-    }
-    this.a.setText(paramstSimpleMetaFeed.feed_desc);
-    a(1, 1, paramstSimpleMetaFeed);
-    a(2, 2, paramstSimpleMetaFeed);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     skz
  * JD-Core Version:    0.7.0.1
  */

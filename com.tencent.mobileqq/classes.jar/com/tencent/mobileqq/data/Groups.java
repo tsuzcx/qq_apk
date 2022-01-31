@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.database.Cursor;
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class Groups
-  extends auko
+  extends awbv
 {
   @Deprecated
   public long datetime;
   public int group_friend_count;
-  @aumc
+  @awdj
   public int group_id;
   public String group_name;
   @Deprecated

@@ -9,32 +9,32 @@ import com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
-import omr;
-import ppz;
-import rpe;
-import rph;
+import orc;
+import pwq;
+import sfd;
+import sfg;
 
 public class PTSImageView
   extends KandianUrlImageView
-  implements IView<ppz>
+  implements IView<pwq>
 {
   private PTSViewDecorationUtil.RoundedCorner jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner;
   private final String jdField_a_of_type_JavaLangString = "PTSImageView";
   private URL jdField_a_of_type_JavaNetURL;
-  private ppz jdField_a_of_type_Ppz;
+  private pwq jdField_a_of_type_Pwq;
   private String b;
   
-  public PTSImageView(ppz paramppz)
+  public PTSImageView(pwq parampwq)
   {
-    super(paramppz.getContext());
-    this.jdField_a_of_type_Ppz = paramppz;
-    this.jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this.jdField_a_of_type_Ppz);
+    super(parampwq.getContext());
+    this.jdField_a_of_type_Pwq = parampwq;
+    this.jdField_a_of_type_ComTencentPtsUtilsPTSViewDecorationUtil$RoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this.jdField_a_of_type_Pwq);
     setScaleType(ImageView.ScaleType.FIT_XY);
   }
   
-  public ppz a()
+  public pwq a()
   {
-    return this.jdField_a_of_type_Ppz;
+    return this.jdField_a_of_type_Pwq;
   }
   
   public void draw(Canvas paramCanvas)
@@ -48,8 +48,8 @@ public class PTSImageView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    rph localrph = this.jdField_a_of_type_Rpe.a();
-    if ((localrph == null) || (localrph.a)) {
+    sfg localsfg = this.jdField_a_of_type_Sfd.a();
+    if ((localsfg == null) || (localsfg.a)) {
       setImageSrc(this.b);
     }
   }
@@ -72,7 +72,7 @@ public class PTSImageView
       for (;;)
       {
         QLog.d("PTSImageView", 2, "[setImageSrc], mPathUrl = " + this.jdField_a_of_type_JavaNetURL);
-        omr.a(this, this.jdField_a_of_type_JavaNetURL, getContext());
+        orc.a(this, this.jdField_a_of_type_JavaNetURL, getContext());
         return;
         QLog.d("PTSImageView", 2, "[setImageSrc], current path unchanged ");
       }
@@ -86,7 +86,7 @@ public class PTSImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSImageView
  * JD-Core Version:    0.7.0.1
  */

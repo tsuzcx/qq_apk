@@ -1,29 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedHashMap;
 
-public class aohx
-  implements View.OnTouchListener
+class aohx
+  extends aohw
 {
-  public aohx(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  private String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aohx(String paramString)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      ExtendFriendProfileEditFragment.a(this.a).setVisibility(0);
-    }
-    while ((i != 1) && (i != 3)) {
-      return false;
-    }
-    ExtendFriendProfileEditFragment.a(this.a).setVisibility(8);
-    return false;
+    this.a = paramString;
+  }
+  
+  public Object a(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      return null;
+      paramObject = (LinkedHashMap)paramObject;
+      if (!(paramObject instanceof LinkedHashMap))
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
+        return null;
+      }
+    } while (TextUtils.isEmpty(this.a));
+    return paramObject.get(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohx
  * JD-Core Version:    0.7.0.1
  */

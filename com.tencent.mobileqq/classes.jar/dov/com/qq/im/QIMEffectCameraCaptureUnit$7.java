@@ -1,12 +1,12 @@
 package dov.com.qq.im;
 
-import bjav;
-import bjcb;
-import bjrl;
-import bkrf;
-import bkrg;
-import bkrh;
-import bkzp;
+import blmf;
+import blnl;
+import bmcv;
+import bncp;
+import bncq;
+import bncr;
+import bnkz;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
@@ -30,27 +30,27 @@ class QIMEffectCameraCaptureUnit$7
     {
       return;
       localVideoFilterViewPager.setCaptureScene(0);
-      Object localObject = ((bjcb)bjav.a(5)).a;
-      bkzp localbkzp = (bkzp)bjav.a(3);
+      Object localObject = ((blnl)blmf.a(5)).a;
+      bnkz localbnkz = (bnkz)blmf.a(3);
       if (localObject != null)
       {
-        localObject = ((bkrg)localObject).a(0);
+        localObject = ((bncq)localObject).a(0);
         if (localObject != null)
         {
-          localVideoFilterViewPager.a(((bkrh)localObject).c);
+          localVideoFilterViewPager.a(((bncr)localObject).c);
           localVideoFilterViewPager.b();
         }
       }
-      bkrf.a().a(null);
-      bkrf.a().a(null, this.this$0.jdField_a_of_type_Bjrl.a(), 0);
-      bjbe.c = 0;
+      bncp.a().a(null);
+      bncp.a().a(null, this.this$0.jdField_a_of_type_Bmcv.a(), 0);
+      blmo.c = 0;
     } while (!QLog.isColorLevel());
     QLog.d("QIMEffectCameraCaptureUnit", 2, "onResourceDownload update filterpager end");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMEffectCameraCaptureUnit.7
  * JD-Core Version:    0.7.0.1
  */

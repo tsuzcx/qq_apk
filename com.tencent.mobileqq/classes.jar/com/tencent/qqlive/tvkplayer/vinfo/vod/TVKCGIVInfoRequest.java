@@ -2,6 +2,7 @@ package com.tencent.qqlive.tvkplayer.vinfo.vod;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.qqlive.tvkplayer.TVideoMgr;
 import com.tencent.qqlive.tvkplayer.tools.utils.ITVKHttpProcessor.ITVKHttpCallback;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKLogUtil;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKUtils;
@@ -25,7 +26,7 @@ public class TVKCGIVInfoRequest
   private static final String ENCRYPT_VER_4 = "4.1";
   private static final String ENCRYPT_VER_4_2 = "4.2";
   private static final String ENCRYPT_VER_5 = "5.1";
-  private static final String TAG = "TVKPlayer[VideoInfo][TVKCGIVInfoRequest]";
+  private static final String TAG = "MediaPlayerMgr[TVKCGIVInfoRequest.java]";
   private int mCGIRetryCount = 0;
   private String mCKey = "";
   private ITVKCGIVInfoResponse mCallback;
@@ -50,7 +51,7 @@ public class TVKCGIVInfoRequest
   {
     int i = paramTVKCGIVInfoRequestParams.getEncrypVer();
     int j = paramTVKCGIVInfoRequestParams.getPlatForm();
-    String str1 = this.mParams.getSdtFrom();
+    String str1 = paramTVKCGIVInfoRequestParams.getSdtFrom();
     Object localObject2 = paramTVKCGIVInfoRequestParams.getVid();
     String str2 = paramTVKCGIVInfoRequestParams.getAppVer();
     paramTVKCGIVInfoRequestParams.getFd();
@@ -80,7 +81,7 @@ public class TVKCGIVInfoRequest
       if (paramMap != null)
       {
         if ((!paramMap.containsKey("toushe")) || (!paramMap.containsKey("from_platform"))) {
-          break label311;
+          break label319;
         }
         localObject2[0] = 16;
         localObject2[1] = TVKUtils.optInt((String)paramMap.get("from_platform"), j);
@@ -89,11 +90,11 @@ public class TVKCGIVInfoRequest
     for (;;)
     {
       this.mCKey = CKeyFacade.getCKey(str3, l1 + l2, (String)localObject1, str2, String.valueOf(j), str1, (int[])localObject2, localObject2.length, "");
-      TVKLogUtil.i("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", "[vinfo][getvinfo] GenCkey version =  vid = " + (String)localObject1 + " encryptVer = " + i + " platform= " + j + " ckey= " + this.mCKey);
+      TVKLogUtil.i("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] GenCkey appVer = " + TVideoMgr.getPlayerVersion() + " vid = " + (String)localObject1 + " encryptVer = " + i + " platform= " + j + " ckey= " + this.mCKey);
       return this.mCKey;
       localObject2[0] = 4;
       break;
-      label311:
+      label319:
       if (paramMap.containsKey("sptest")) {
         localObject2[0] = 64;
       } else if (paramMap.containsKey("ottflag")) {
@@ -194,7 +195,7 @@ public class TVKCGIVInfoRequest
       {
         for (;;)
         {
-          TVKLogUtil.e("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", "DNS Exception");
+          TVKLogUtil.e("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "DNS Exception");
         }
       }
     }
@@ -362,6 +363,7 @@ public class TVKCGIVInfoRequest
     if (!TextUtils.isEmpty(this.mParams.getWxOpenId())) {
       localHashMap.put("openid", this.mParams.getWxOpenId());
     }
+    localHashMap.put("spwm", "1");
     return localHashMap;
   }
   
@@ -391,7 +393,7 @@ public class TVKCGIVInfoRequest
       this.mGetUrlCount += 1;
       this.mCurrentHostUrlRetryCount += 1;
       Map localMap = packRequestParams();
-      TVKLogUtil.i("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", "[vinfo][getvinfo] start to request, request time:" + this.mCurrentHostUrlRetryCount);
+      TVKLogUtil.i("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] start to request, request time:" + this.mCurrentHostUrlRetryCount);
       this.mStartRequestMS = SystemClock.elapsedRealtime();
       TVKVideoInfoHttpProcessor.getInstance().addToRequestQueue(this.mCurrentHostUrlRetryCount, getRequestUrl(), localMap, getHeaders(), this.mGetVinfoCb);
       return;
@@ -400,7 +402,7 @@ public class TVKCGIVInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVInfoRequest
  * JD-Core Version:    0.7.0.1
  */

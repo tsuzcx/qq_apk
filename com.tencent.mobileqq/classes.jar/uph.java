@@ -1,48 +1,44 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
-class uph
-  implements syq<upu, upv>
+public class uph
+  implements TextView.OnEditorActionListener
 {
-  uph(upg paramupg, JobContext paramJobContext, String paramString) {}
+  public uph(StoryInputBarView paramStoryInputBarView) {}
   
-  public void a(@NonNull upu paramupu, @Nullable upv paramupv, @NonNull ErrorMessage paramErrorMessage)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (paramInt == 4)
     {
-      ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
-      return;
-    }
-    if ((paramupv == null) || (paramErrorMessage.isFail()))
-    {
-      ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
-      upg.a(this.jdField_a_of_type_Upg, paramErrorMessage);
-      return;
-    }
-    if (this.jdField_a_of_type_Upg.a == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      ((tcl)tcz.a(15)).a(paramupv.a, this.jdField_a_of_type_JavaLangString, bool, true);
-      paramupu = new upc(bool, paramupv.a, paramupv.b, paramupv.c);
-      try
-      {
-        upg.a(this.jdField_a_of_type_Upg, paramupu);
-        return;
+      paramTextView = paramTextView.getText().toString();
+      if (paramTextView.length() <= 0) {
+        break label140;
       }
-      catch (NullPointerException paramupu)
-      {
-        ved.c("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "notifyResult error :%s", paramupu);
-        upg.b(this.jdField_a_of_type_Upg, new ErrorMessage());
-        return;
+      this.a.setKeyBoardState(false);
+      if (this.a.jdField_a_of_type_Uok != null) {
+        this.a.jdField_a_of_type_Uok.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      if (StoryInputBarView.a(this.a) != null) {
+        StoryInputBarView.a(this.a).a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
       }
     }
+    return false;
+    label140:
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uph
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,84 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bcbr
-  implements mxl
+public class bcbr
+  extends WebViewPlugin
 {
-  bcbr(bcbp parambcbp) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  private boolean a(JSONObject paramJSONObject)
   {
-    Object localObject = this.a.mRuntime.a(this.a.mRuntime.a());
-    if (paramBoolean) {
-      if (this.a.a)
+    String str1 = paramJSONObject.optString("callback");
+    String str2 = paramJSONObject.optString("grayType");
+    paramJSONObject = paramJSONObject.optString("gc");
+    if (!str2.equals("dragonPrivilege")) {
+      return false;
+    }
+    aerk localaerk = (aerk)aogj.a().a(609);
+    if ((localaerk != null) && (localaerk.a(paramJSONObject))) {}
+    for (int i = 1;; i = 0) {
+      try
       {
-        if ((localObject != null) && ((localObject instanceof bcii))) {
-          ((bcii)localObject).a(true, 1, 2131691477);
-        }
+        paramJSONObject = new JSONObject();
+        paramJSONObject.put(str2, i);
+        callJs(str1, new String[] { paramJSONObject.toString() });
+        return true;
       }
-      else {
-        bcbp.a(this.a);
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return false;
       }
     }
-    while ((localObject == null) || (!(localObject instanceof bcii))) {
-      for (;;)
-      {
-        return;
-        localObject = bcql.a(BaseApplicationImpl.getContext(), 1, 2131691477, 1);
-        ((bcql)localObject).b(((bcql)localObject).c());
+  }
+  
+  private boolean b(JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("gc");
+    paramJSONObject = paramJSONObject.optString("text");
+    Activity localActivity = this.mRuntime.a();
+    Intent localIntent = aekt.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 });
+    localIntent.addFlags(4194304);
+    localIntent.putExtra("uin", str);
+    localIntent.putExtra("uintype", 1);
+    localIntent.putExtra("chat_inputBarContent", paramJSONObject);
+    localActivity.startActivity(localIntent);
+    localActivity.overridePendingTransition(2130771990, 2130772294);
+    return true;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"groupInteractionIcon".equals(paramString2)) {
+      return false;
+    }
+    try
+    {
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      if (paramJsBridgeListener == null) {
+        return true;
       }
     }
-    ((bcii)localObject).a(false, 0, 0);
+    catch (JSONException paramJsBridgeListener)
+    {
+      paramJsBridgeListener.printStackTrace();
+      return false;
+    }
+    if (paramString3.equals("getGroupGrayFlag")) {
+      return a(paramJsBridgeListener);
+    }
+    if (paramString3.equals("jumpToAIOAndFillText")) {
+      return b(paramJsBridgeListener);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcbr
  * JD-Core Version:    0.7.0.1
  */

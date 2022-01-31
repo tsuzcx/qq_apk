@@ -1,18 +1,15 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.stickerbubble.PokeEmoItemView;
 
 public class afsr
+  extends aelt
 {
-  public int a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public ArrayList<String> b;
-  public ArrayList<Integer> c;
-  public ArrayList<byte[]> d;
+  PokeEmoItemView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView;
+  
+  public afsr(afsp paramafsp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afsr
  * JD-Core Version:    0.7.0.1
  */

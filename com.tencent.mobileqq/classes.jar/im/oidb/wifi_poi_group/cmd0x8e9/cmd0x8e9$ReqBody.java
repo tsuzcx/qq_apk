@@ -27,7 +27,7 @@ public final class cmd0x8e9$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     im.oidb.wifi_poi_group.cmd0x8e9.cmd0x8e9.ReqBody
  * JD-Core Version:    0.7.0.1
  */

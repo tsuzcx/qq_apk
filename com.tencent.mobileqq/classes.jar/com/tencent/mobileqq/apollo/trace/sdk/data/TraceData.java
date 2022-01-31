@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.trace.sdk.data;
 
-import ajmf;
-import ajmh;
-import ajmi;
-import auko;
-import aulz;
-import aumc;
+import alds;
+import aldu;
+import aldv;
+import awbv;
+import awdg;
+import awdj;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -19,63 +19,63 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class TraceData
-  extends auko
+  extends awbv
   implements Serializable
 {
-  @aulz
+  @awdg
   public int endJavaHeap;
-  @aulz
+  @awdg
   public int endNativeHeap;
   public int extra1;
   public int extra2;
   public int extra3;
   public int featureId;
-  @aulz
+  @awdg
   public String featureKey;
-  @aulz
+  @awdg
   public int initJavaHeap;
-  @aulz
+  @awdg
   public int initNativeHeap;
-  @aulz
+  @awdg
   public boolean isSampleFocus;
-  @aulz
-  public BlockingQueue<ajmi> mSpanQueue;
+  @awdg
+  public BlockingQueue<aldv> mSpanQueue;
   public String packData;
-  @aulz
-  public ajmh result;
+  @awdg
+  public aldu result;
   public long serverTime;
-  @aulz
+  @awdg
   public long startTime;
   public String tUid;
   public long timestamp;
-  @aumc
+  @awdj
   public long traceId;
   public String uid;
   public String version;
   
-  private ajmh getResultData(JSONObject paramJSONObject)
+  private aldu getResultData(JSONObject paramJSONObject)
   {
-    ajmh localajmh = new ajmh();
-    localajmh.jdField_a_of_type_Int = paramJSONObject.optInt("errCode");
-    localajmh.b = paramJSONObject.optInt("cost");
-    localajmh.d = paramJSONObject.optInt("cpu");
-    localajmh.c = paramJSONObject.optInt("memory");
-    localajmh.e = paramJSONObject.optInt("netType");
-    localajmh.f = paramJSONObject.optInt("javaHeap");
-    localajmh.g = paramJSONObject.optInt("nativeHeap");
-    return localajmh;
+    aldu localaldu = new aldu();
+    localaldu.jdField_a_of_type_Int = paramJSONObject.optInt("errCode");
+    localaldu.b = paramJSONObject.optInt("cost");
+    localaldu.d = paramJSONObject.optInt("cpu");
+    localaldu.c = paramJSONObject.optInt("memory");
+    localaldu.e = paramJSONObject.optInt("netType");
+    localaldu.f = paramJSONObject.optInt("javaHeap");
+    localaldu.g = paramJSONObject.optInt("nativeHeap");
+    return localaldu;
   }
   
-  private JSONObject getResultObject(ajmh paramajmh)
+  private JSONObject getResultObject(aldu paramaldu)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("errCode", paramajmh.jdField_a_of_type_Int);
-    localJSONObject.put("cost", paramajmh.b);
-    localJSONObject.put("memory", paramajmh.c);
-    localJSONObject.put("cpu", paramajmh.d);
-    localJSONObject.put("netType", paramajmh.e);
-    localJSONObject.put("javaHeap", paramajmh.f);
-    localJSONObject.put("nativeHeap", paramajmh.g);
+    localJSONObject.put("errCode", paramaldu.jdField_a_of_type_Int);
+    localJSONObject.put("cost", paramaldu.b);
+    localJSONObject.put("memory", paramaldu.c);
+    localJSONObject.put("cpu", paramaldu.d);
+    localJSONObject.put("netType", paramaldu.e);
+    localJSONObject.put("javaHeap", paramaldu.f);
+    localJSONObject.put("nativeHeap", paramaldu.g);
     return localJSONObject;
   }
   
@@ -97,35 +97,35 @@ public class TraceData
         while (i < ((JSONArray)localObject1).length())
         {
           Object localObject3 = ((JSONArray)localObject1).optJSONObject(i);
-          localObject2 = new ajmi(((JSONObject)localObject3).optInt("spanId"));
-          ((ajmi)localObject2).jdField_a_of_type_Long = ((JSONObject)localObject3).optLong("timestamp");
-          ((ajmi)localObject2).b = ((JSONObject)localObject3).optLong("serverTime");
-          ((ajmi)localObject2).jdField_a_of_type_Ajmh = getResultData(((JSONObject)localObject3).optJSONObject("resultObject"));
+          localObject2 = new aldv(((JSONObject)localObject3).optInt("spanId"));
+          ((aldv)localObject2).jdField_a_of_type_Long = ((JSONObject)localObject3).optLong("timestamp");
+          ((aldv)localObject2).b = ((JSONObject)localObject3).optLong("serverTime");
+          ((aldv)localObject2).jdField_a_of_type_Aldu = getResultData(((JSONObject)localObject3).optJSONObject("resultObject"));
           Object localObject4 = ((JSONObject)localObject3).optJSONArray("annoArray");
           int j;
           if ((localObject4 != null) && (((JSONArray)localObject4).length() > 0))
           {
-            ((ajmi)localObject2).jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+            ((aldv)localObject2).jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
             j = 0;
             while (j < ((JSONArray)localObject4).length())
             {
               Object localObject5 = ((JSONArray)localObject4).optJSONObject(j);
-              localObject5 = new ajmf(((JSONObject)localObject5).optString("msg"), ((JSONObject)localObject5).optLong("timestamp"), ((JSONObject)localObject5).optLong("serverTime"));
-              ((ajmi)localObject2).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localObject5);
+              localObject5 = new alds(((JSONObject)localObject5).optString("msg"), ((JSONObject)localObject5).optLong("timestamp"), ((JSONObject)localObject5).optLong("serverTime"));
+              ((aldv)localObject2).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localObject5);
               j += 1;
             }
           }
           localObject3 = ((JSONObject)localObject3).optJSONArray("extArray");
           if ((localObject3 != null) && (((JSONArray)localObject3).length() > 0))
           {
-            ((ajmi)localObject2).jdField_a_of_type_JavaUtilMap = new HashMap();
+            ((aldv)localObject2).jdField_a_of_type_JavaUtilMap = new HashMap();
             j = 0;
             while (j < ((JSONArray)localObject3).length())
             {
               localObject4 = ((JSONArray)localObject3).optJSONObject(j);
               int k = ((JSONObject)localObject4).optInt("extKey" + j);
               long l = ((JSONObject)localObject4).optLong("extKey" + j);
-              ((ajmi)localObject2).jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Long.valueOf(l));
+              ((aldv)localObject2).jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Long.valueOf(l));
               j += 1;
             }
           }
@@ -167,22 +167,22 @@ public class TraceData
         if (!localIterator.hasNext()) {
           break;
         }
-        localObject1 = (ajmi)localIterator.next();
-        localJSONObject2.put("spanId", ((ajmi)localObject1).jdField_a_of_type_Int);
-        localJSONObject2.put("timestamp", ((ajmi)localObject1).jdField_a_of_type_Long);
-        localJSONObject2.put("serverTime", ((ajmi)localObject1).b);
-        localJSONObject2.put("resultObject", getResultObject(((ajmi)localObject1).jdField_a_of_type_Ajmh));
-        if ((((ajmi)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null) && (((ajmi)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() > 0))
+        localObject1 = (aldv)localIterator.next();
+        localJSONObject2.put("spanId", ((aldv)localObject1).jdField_a_of_type_Int);
+        localJSONObject2.put("timestamp", ((aldv)localObject1).jdField_a_of_type_Long);
+        localJSONObject2.put("serverTime", ((aldv)localObject1).b);
+        localJSONObject2.put("resultObject", getResultObject(((aldv)localObject1).jdField_a_of_type_Aldu));
+        if ((((aldv)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null) && (((aldv)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() > 0))
         {
           localJSONArray2 = new JSONArray();
-          localObject2 = ((ajmi)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+          localObject2 = ((aldv)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
           if (((Iterator)localObject2).hasNext())
           {
-            localObject3 = (ajmf)((Iterator)localObject2).next();
+            localObject3 = (alds)((Iterator)localObject2).next();
             JSONObject localJSONObject3 = new JSONObject();
-            localJSONObject3.put("timestamp", ((ajmf)localObject3).jdField_a_of_type_Long);
-            localJSONObject3.put("serverTime", ((ajmf)localObject3).b);
-            localJSONObject3.put("msg", ((ajmf)localObject3).jdField_a_of_type_JavaLangString);
+            localJSONObject3.put("timestamp", ((alds)localObject3).jdField_a_of_type_Long);
+            localJSONObject3.put("serverTime", ((alds)localObject3).b);
+            localJSONObject3.put("msg", ((alds)localObject3).jdField_a_of_type_JavaLangString);
             localJSONArray2.put(localJSONObject3);
             continue;
           }
@@ -194,11 +194,11 @@ public class TraceData
         QLog.e("TraceReport", 1, "Exception:", localException);
         return;
       }
-      if ((((ajmi)localObject1).jdField_a_of_type_JavaUtilMap != null) && (((ajmi)localObject1).jdField_a_of_type_JavaUtilMap.size() > 0))
+      if ((((aldv)localObject1).jdField_a_of_type_JavaUtilMap != null) && (((aldv)localObject1).jdField_a_of_type_JavaUtilMap.size() > 0))
       {
         localJSONArray2 = new JSONArray();
         int i = 0;
-        localObject1 = ((ajmi)localObject1).jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        localObject1 = ((aldv)localObject1).jdField_a_of_type_JavaUtilMap.entrySet().iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (Map.Entry)((Iterator)localObject1).next();
@@ -235,8 +235,8 @@ public class TraceData
       Iterator localIterator = this.mSpanQueue.iterator();
       while (localIterator.hasNext())
       {
-        ajmi localajmi = (ajmi)localIterator.next();
-        localStringBuilder.append("\n").append(localajmi.toString());
+        aldv localaldv = (aldv)localIterator.next();
+        localStringBuilder.append("\n").append(localaldv.toString());
       }
     }
     localStringBuilder.append("}");
@@ -245,7 +245,7 @@ public class TraceData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.trace.sdk.data.TraceData
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ public class InitData
   public String mAppID;
   public int mClientType;
   public String mGuid;
+  public boolean mIsCpu64bit = false;
   public String mQBID;
   public String mQUA;
   public boolean mSetILoggerFactoryInside = true;
@@ -13,7 +14,7 @@ public class InitData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.InitData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import betc;
+import bgkd;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.IPayResultCallBack;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.PayResponse;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PayJsPlugin$7
   implements PayProxy.IPayResultCallBack
 {
-  PayJsPlugin$7(PayJsPlugin paramPayJsPlugin, bekr parambekr) {}
+  PayJsPlugin$7(PayJsPlugin paramPayJsPlugin, bgkd parambgkd) {}
   
   public void onPayCallBack(PayProxy.PayResponse paramPayResponse)
   {
@@ -24,7 +24,7 @@ class PayJsPlugin$7
       }
       for (;;)
       {
-        betc.b("PayJsPlugin", "handleMidasGoodsPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
+        QMLog.i("PayJsPlugin", "handleMidasMonthCardPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
         return;
         if ((paramPayResponse.getResultCode() == 2) || (paramPayResponse.getPayState() == 1))
         {
@@ -45,13 +45,13 @@ class PayJsPlugin$7
   
   public void payNeedLogin()
   {
-    betc.d("PayJsPlugin", "handleMidasGoodsPay payNeedLogin");
+    QMLog.e("PayJsPlugin", "handleMidasMonthCardPay payNeedLogin");
     PayJsPlugin.access$200(this.this$0, this.val$req, null, "payNeedLogin");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.PayJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

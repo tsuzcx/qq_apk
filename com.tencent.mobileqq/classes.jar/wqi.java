@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wqi
-  implements View.OnClickListener
+  extends QQUIEventReceiver<wps, uqv>
 {
-  public wqi(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
-  
-  public void onClick(View paramView)
+  public wqi(@NonNull wps paramwps)
   {
-    if (SubscribeMultiPicFragment.a(this.a) != null) {
-      this.a.a(SubscribeMultiPicFragment.a(this.a).a(1));
+    super(paramwps);
+  }
+  
+  public void a(@NonNull wps paramwps, @NonNull uqv paramuqv)
+  {
+    if (paramuqv.a) {
+      wps.d(paramwps);
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uqv.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqi
  * JD-Core Version:    0.7.0.1
  */

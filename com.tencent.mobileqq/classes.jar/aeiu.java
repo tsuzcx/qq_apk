@@ -1,33 +1,52 @@
-import android.content.Context;
-import android.view.View.MeasureSpec;
-import android.widget.FrameLayout;
-import com.tencent.widget.GridView;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
-class aeiu
-  extends FrameLayout
+public class aeiu
+  extends ambo
 {
-  public aeiu(aeis paramaeis, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public aeiu(ActivateFriendView paramActivateFriendView) {}
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void b()
   {
-    int i = aeis.a(this.a).getPaddingLeft() + getPaddingLeft();
-    if (i != paramInt1) {
-      offsetLeftAndRight(i - paramInt1);
-    }
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(aeis.a(this.a).getMeasuredWidth() - aeis.a(this.a).getPaddingLeft() - aeis.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+    if ((ActivateFriendView.a(this.a) == null) || (ActivateFriendView.b(this.a) == null)) {}
+    do
+    {
+      return;
+      ActivateFriendView.a(this.a, 0);
+      int i = 0;
+      if (i < ActivateFriendView.a(this.a).size())
+      {
+        if (this.a.a.c(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
+        {
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689585));
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (this.a.a.b(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
+          {
+            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
+            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689588));
+          }
+          else
+          {
+            ActivateFriendView.b(this.a);
+            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(true);
+          }
+        }
+      }
+    } while (ActivateFriendView.a(this.a) == null);
+    ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeiu
  * JD-Core Version:    0.7.0.1
  */

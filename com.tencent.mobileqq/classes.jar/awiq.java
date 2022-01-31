@@ -1,231 +1,202 @@
-import android.annotation.TargetApi;
-import android.os.AsyncTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
 
 public class awiq
-  extends AsyncTask<Void, Void, Void>
 {
-  private static Comparator<awij> jdField_a_of_type_JavaUtilComparator = new awit();
-  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(0, 3, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new awir());
-  private static Comparator<awij> jdField_b_of_type_JavaUtilComparator = new awiu();
-  private final int jdField_a_of_type_Int = 300;
-  private awiv jdField_a_of_type_Awiv;
-  private String jdField_a_of_type_JavaLangString;
-  private List<? extends awij> jdField_a_of_type_JavaUtilList;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  public static int[] a;
+  public static Bitmap[] a;
+  public float a;
+  public int a;
+  long jdField_a_of_type_Long;
+  public Bitmap a;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString;
-  private List<Future<List<awij>>> jdField_b_of_type_JavaUtilList;
-  private List<awij> c;
+  public float b;
+  public int b;
+  public Bitmap b;
+  public int c;
+  Bitmap c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  int m = 0;
   
-  public awiq(String paramString1, String paramString2, List<? extends awij> paramList, awiv paramawiv)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Awiv = paramawiv;
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(20);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.c = new ArrayList();
+    jdField_a_of_type_ArrayOfInt = new int[0];
   }
   
-  private void a(List<awij> paramList, String paramString)
+  public awiq(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramList.size() > 20) {}
-    for (int i = 20;; i = paramList.size())
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Float = 1.0F;
+    this.jdField_c_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.h = paramInt8;
+    this.g = paramInt7;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.f = paramInt6;
+    a(paramContext);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.m = 0;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.h = paramInt8;
+    this.g = paramInt7;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.f = paramInt6;
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (jdField_a_of_type_ArrayOfAndroidGraphicsBitmap == null)
     {
-      int j = 0;
-      while (j < i)
+      jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[jdField_a_of_type_ArrayOfInt.length];
+      int n = 0;
+      try
       {
-        awii localawii = (awii)paramList.get(j);
-        if (QLog.isColorLevel()) {
-          QLog.d("SearchTask", 2, "printSearchResultData " + paramString + "matchDegree : " + localawii.c() + " message time : " + localawii.Y);
+        for (;;)
+        {
+          int i1 = jdField_a_of_type_ArrayOfInt.length;
+          if (n < i1) {
+            try
+            {
+              jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[n] = BitmapFactory.decodeResource(paramContext.getResources(), jdField_a_of_type_ArrayOfInt[n]);
+              n += 1;
+            }
+            catch (OutOfMemoryError localOutOfMemoryError)
+            {
+              for (;;)
+              {
+                localOutOfMemoryError.printStackTrace();
+              }
+            }
+          }
         }
-        j += 1;
+        return;
+      }
+      catch (OutOfMemoryError paramContext)
+      {
+        paramContext.printStackTrace();
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       }
     }
   }
   
-  protected Void a(Void... paramVarArgs)
+  public void a(Bitmap paramBitmap)
   {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchTask", 2, "Start doInBackground , keyword = " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+      return;
+    }
+    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public boolean a(Canvas paramCanvas)
+  {
+    long l1 = 880L;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      return false;
+    }
+    paramCanvas.save();
+    paramCanvas.translate(this.jdField_c_of_type_Int, this.d);
+    paramCanvas.scale(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.e, this.f, this.e + this.g, this.f + this.h);
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+    if (this.jdField_c_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_Int - this.k - this.i, this.jdField_b_of_type_Int - this.l - this.j, this.jdField_a_of_type_Int - this.k, this.jdField_b_of_type_Int - this.l);
+      paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
+    }
+    long l2;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      l2 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+      if (l2 >= 440L) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
       }
-      int k = this.jdField_a_of_type_JavaUtilList.size();
-      int m = k / 300;
-      int i = 0;
-      int n;
-      if (i < m + 1)
-      {
-        n = i * 300;
-        if (n + 300 <= k) {
-          break label168;
-        }
-        j = k;
-        label91:
-        if ((!isCancelled()) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
-          break label178;
-        }
+      if (l2 < 880L) {
+        break label436;
       }
-      for (;;)
-      {
-        try
-        {
-          this.c.clear();
-          l1 = System.currentTimeMillis();
-          i = 0;
-          if ((i >= this.jdField_b_of_type_JavaUtilList.size()) || (isCancelled()))
-          {
-            this.jdField_b_of_type_JavaUtilList.clear();
-            boolean bool = isCancelled();
-            if (!bool) {
-              continue;
-            }
-            return null;
-            label168:
-            j = n + 300;
-            break label91;
-            label178:
-            paramVarArgs = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new awis(this, n, j));
-            this.jdField_b_of_type_JavaUtilList.add(paramVarArgs);
-            i += 1;
-            break;
-          }
-          paramVarArgs = (List)((Future)this.jdField_b_of_type_JavaUtilList.get(i)).get();
-          if (i == 0)
-          {
-            this.c.addAll(paramVarArgs);
-            paramVarArgs.clear();
-            i += 1;
-            continue;
-          }
-          localIterator = paramVarArgs.iterator();
-        }
-        catch (InterruptedException paramVarArgs)
-        {
-          Iterator localIterator;
-          awij localawij;
-          paramVarArgs.printStackTrace();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("SearchTask", 2, "InterruptedException happens, keyword = " + this.jdField_a_of_type_JavaLangString + " : ");
-          this.jdField_a_of_type_Boolean = false;
-          return null;
-          if (((awij)this.c.get(j)).c() >= localawij.c()) {
-            continue;
-          }
-          this.c.set(j, localawij);
-          continue;
-        }
-        catch (ExecutionException paramVarArgs)
-        {
-          long l1;
-          paramVarArgs.printStackTrace();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("SearchTask", 2, "InterruptedException happens, keyword = " + this.jdField_a_of_type_JavaLangString + " : ");
-          continue;
-          a(this.c);
-          l2 = System.currentTimeMillis();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("SearchTask", 2, "SearchTask ======= doInBackground time = " + (l2 - l1) + " , keyword = " + this.jdField_a_of_type_JavaLangString);
-          continue;
-        }
-        if (localIterator.hasNext())
-        {
-          localawij = (awij)localIterator.next();
-          if (!isCancelled())
-          {
-            j = this.c.indexOf(localawij);
-            if (-1 != j) {
-              continue;
-            }
-            this.c.add(localawij);
-          }
-        }
-      }
+      b();
     }
     for (;;)
     {
-      long l2;
-      this.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchTask", 2, "doInBackground:: inputSet is null.");
+      this.m = ((int)(l1 / 40L));
+      if (this.m >= jdField_a_of_type_ArrayOfInt.length) {
+        this.m %= jdField_a_of_type_ArrayOfInt.length;
       }
-    }
-  }
-  
-  @TargetApi(11)
-  public void a()
-  {
-    executeOnExecutor(jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, new Void[0]);
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchTask", 2, "Start execute , keyword = " + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    if (isCancelled())
-    {
-      this.c.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchTask", 2, "onPostExecute:: isCancelled.");
+      int n = (int)(this.g * 0.35F / 2.0F);
+      int i1 = (int)(this.h * 0.35F / 2.0F);
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.e - n, this.f - i1, n + this.e + this.g, i1 + (this.f + this.h));
+      if (jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.m] != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.m].getWidth(), jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.m].getHeight());
+        paramCanvas.drawBitmap(jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.m], this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, null);
       }
+      paramCanvas.restore();
+      return true;
+      paramCanvas.restore();
+      return false;
+      label436:
+      l1 = l2;
     }
-    while (this.jdField_a_of_type_Awiv == null) {
-      return;
-    }
-    int i = 1;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 0;
-    }
-    this.jdField_a_of_type_Awiv.a(i, this.c);
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
   }
   
-  protected void a(List<awij> paramList)
+  public void b()
   {
-    long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchTask", 2, "start sortResultSet(), keyword = " + this.jdField_a_of_type_JavaLangString);
-    }
-    Collections.sort(paramList, jdField_a_of_type_JavaUtilComparator);
-    int i = Math.min(paramList.size(), 30);
-    List localList = paramList.subList(0, i);
-    Collections.sort(localList, jdField_b_of_type_JavaUtilComparator);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(localList);
-    localArrayList.addAll(paramList.subList(i, paramList.size()));
-    a(paramList, "after sort ");
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchTask", 2, "sortResultSet() time = " + (System.currentTimeMillis() - l) + " , keyword = " + this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public void c(Bitmap paramBitmap)
+  {
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awiq
  * JD-Core Version:    0.7.0.1
  */

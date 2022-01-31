@@ -4,10 +4,8 @@ import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.t;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.msf.service.q;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.msf.service.protocol.security.RequestCustomSig;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -137,7 +135,7 @@ public class l
   
   private void a(ToServiceMsg paramToServiceMsg, String paramString)
   {
-    FromServiceMsg localFromServiceMsg = t.a(paramToServiceMsg);
+    FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.core.t.a(paramToServiceMsg);
     QLog.d("MSF.C.WTLoginCenter", 1, Thread.currentThread().getName() + " createNeedLoginRespByWt setAccountNoLogin uin=" + MsfSdkUtils.getShortUin(localFromServiceMsg.getUin()));
     d.getAccountCenter().k(localFromServiceMsg.getUin());
     localFromServiceMsg.setBusinessFail(2001, localFromServiceMsg.getBusinessFailMsg());
@@ -268,7 +266,8 @@ public class l
     n.a(paramToServiceMsg);
     WUserSigInfo localWUserSigInfo = n.b(paramToServiceMsg.getRequestSsoSeq());
     localWUserSigInfo._seqence = localp.f;
-    a(paramToServiceMsg, localp, e.RefreshSMSData(paramToServiceMsg.getUin(), 9L, localWUserSigInfo), "wt_RefreshSMSData");
+    byte[] arrayOfByte = (byte[])paramToServiceMsg.getAttribute("smsExtraData");
+    a(paramToServiceMsg, localp, e.RefreshSMSData(paramToServiceMsg.getUin(), 9L, localWUserSigInfo, arrayOfByte), "wt_RefreshSMSData");
   }
   
   public void F(ToServiceMsg paramToServiceMsg)
@@ -278,7 +277,8 @@ public class l
     n.a(paramToServiceMsg);
     WUserSigInfo localWUserSigInfo = n.b(paramToServiceMsg.getRequestSsoSeq());
     localWUserSigInfo._seqence = localp.f;
-    a(paramToServiceMsg, localp, e.CheckSMSAndGetSt(paramToServiceMsg.getUin(), (byte[])paramToServiceMsg.getAttribute("userInput"), localWUserSigInfo), "wt_CheckSMSAndGetSt");
+    byte[] arrayOfByte = (byte[])paramToServiceMsg.getAttribute("smsExtraData");
+    a(paramToServiceMsg, localp, e.CheckSMSAndGetSt(paramToServiceMsg.getUin(), (byte[])paramToServiceMsg.getAttribute("userInput"), localWUserSigInfo, (byte[][])null, arrayOfByte), "wt_CheckSMSAndGetSt");
   }
   
   public void G(ToServiceMsg paramToServiceMsg)
@@ -288,7 +288,8 @@ public class l
     n.a(paramToServiceMsg);
     WUserSigInfo localWUserSigInfo = n.b(paramToServiceMsg.getRequestSsoSeq());
     localWUserSigInfo._seqence = localp.f;
-    a(paramToServiceMsg, localp, e.CheckSMSAndGetSt(paramToServiceMsg.getUin(), (byte[])paramToServiceMsg.getAttribute("userInput"), localWUserSigInfo, (byte[][])null), "wt_CheckSMSAndGetSt");
+    byte[] arrayOfByte = (byte[])paramToServiceMsg.getAttribute("smsExtraData");
+    a(paramToServiceMsg, localp, e.CheckSMSAndGetSt(paramToServiceMsg.getUin(), (byte[])paramToServiceMsg.getAttribute("userInput"), localWUserSigInfo, (byte[][])null, arrayOfByte), "wt_CheckSMSAndGetSt");
   }
   
   public void H(ToServiceMsg paramToServiceMsg)
@@ -473,7 +474,7 @@ public class l
       return 0;
     }
     QLog.d("MSF.C.WTLoginCenter", 1, "checkIsNeedLoginWithPasswd " + MD5.toMD5(paramToServiceMsg.getUin()) + " IsNeedLoginWithPasswd");
-    paramWtloginHelper = t.a(paramToServiceMsg);
+    paramWtloginHelper = com.tencent.mobileqq.msf.core.t.a(paramToServiceMsg);
     paramWtloginHelper.setBusinessFail(2001, paramToServiceMsg.getUin() + " not login");
     MsfSdkUtils.addFromMsgProcessName("*", paramWtloginHelper);
     d.addRespToQuque(paramToServiceMsg, paramWtloginHelper);
@@ -577,7 +578,7 @@ public class l
     {
       n.a(d, paramToServiceMsg);
       m = a(paramToServiceMsg, e);
-      QLog.d("MSF.C.WTLoginCenter", 1, "changeTokenAfterLogin checkIsNeedLoginWithPasswd " + m + " process:" + q.b(paramToServiceMsg) + " cmd:" + paramToServiceMsg.getServiceCmd());
+      QLog.d("MSF.C.WTLoginCenter", 1, "changeTokenAfterLogin checkIsNeedLoginWithPasswd " + m + " process:" + com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg) + " cmd:" + paramToServiceMsg.getServiceCmd());
       switch (m)
       {
       case -1: 

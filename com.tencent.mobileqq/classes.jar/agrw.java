@@ -1,222 +1,74 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
-import com.tencent.image.RegionDrawableData;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class agrw
-  extends BaseAdapter
-  implements agpc
+  extends BroadcastReceiver
 {
-  int jdField_a_of_type_Int = -1;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  public agrw(TroopChatPie paramTroopChatPie) {}
   
-  public agrw(NewPhotoPreviewActivity paramNewPhotoPreviewActivity) {}
-  
-  String a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("(preview) Actives: ");
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_AndroidUtilSparseArray.size())
+    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event"))))
     {
-      if (i > 0) {
-        localStringBuilder.append(" , ");
-      }
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i) + 1);
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
-      return (String)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPreviewActivity", 2, "wywy getCount =" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_JavaUtilArrayList.size());
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.a != null) {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agsq.a.a(paramInt, paramView, paramViewGroup);
-    }
-    return localView;
-  }
-  
-  public View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = (URLDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramView != null) {
-      if (paramView.getStatus() == 3) {
-        paramView.restartDownload();
+      paramContext = paramIntent.getStringExtra("data");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label41;
       }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PEAK", 2, a());
-      }
-      do
-      {
-        do
-        {
-          return null;
-        } while (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.a(a(paramInt)) == 1);
-        paramView = a(paramInt);
-        if (!TextUtils.isEmpty(paramView)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("PhotoPreviewActivity", 2, "Path is empty. position " + paramInt + ", size " + getCount());
-      return null;
-      File localFile = new File(paramView);
-      if (localFile.exists())
-      {
-        paramView = URLDrawable.URLDrawableOptions.obtain();
-        paramView.mRequestWidth = paramViewGroup.getWidth();
-        paramView.mRequestHeight = paramViewGroup.getHeight();
-        paramView.mLoadingDrawable = aywm.a;
-        paramView.mPlayGifImage = true;
-        paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.a(localFile);
-        if (paramViewGroup != null)
-        {
-          paramView = URLDrawable.getDrawable(paramViewGroup, paramView);
-          paramView.setTag(Integer.valueOf(1));
-          paramView.startDownload();
-          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
-        }
-      }
-    }
-  }
-  
-  public void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = (URLDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramView != null)
-    {
-      if (paramView.getStatus() == 0) {
-        paramView.cancelDownload(true);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.jdField_a_of_type_Agso.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PEAK", 2, a());
-    }
-  }
-  
-  public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
-  {
-    if (!ImageView.class.isInstance(paramView)) {}
-    do
-    {
       return;
-      paramView = ((ImageView)paramView).getDrawable();
-    } while (!URLDrawable.class.isInstance(paramView));
-    ((URLDrawable)paramView).updateRegionBitmap(paramRegionDrawableData);
-  }
-  
-  public void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup) {}
-  
-  public void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
-  {
-    if (paramInt == this.jdField_a_of_type_Int)
-    {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 0)) {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.cancelDownload(true);
-      }
-      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-      this.jdField_a_of_type_Int = -1;
-      if (QLog.isColorLevel()) {
-        QLog.d("PEAK", 2, "(preview)destory rawDrawable, position: " + paramInt);
-      }
-    }
-  }
-  
-  public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (!(paramView instanceof AbstractImageAdapter.URLImageView2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PEAK", 2, "onscaleBegin,classcast error,class of current view is " + paramView.getClass().toString());
-      }
-    }
-    do
-    {
-      do
+      try
       {
-        do
+        label41:
+        Object localObject = new JSONObject(paramContext);
+        paramContext = ((JSONObject)localObject).optString("groupCode");
+        if (TextUtils.equals(paramContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
         {
-          return;
-          paramView = (AbstractImageAdapter.URLImageView2)paramView;
-          paramViewGroup = paramView.getDrawable();
-          localObject = paramView.jdField_a_of_type_ComTencentImageURLDrawable;
-        } while ((!(paramViewGroup instanceof URLDrawable)) || (!((URLDrawable)paramViewGroup).isFakeSize()) || (localObject != null));
-        paramViewGroup = ((URLDrawable)paramViewGroup).getURL();
-      } while ((!"file".equals(paramViewGroup.getProtocol())) || (paramViewGroup.getRef() != null));
-      if ((paramInt != this.jdField_a_of_type_Int) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null)) {
-        break;
+          paramIntent = ((JSONObject)localObject).optString("content");
+          String str1 = ((JSONObject)localObject).optString("source");
+          int i = ((JSONObject)localObject).optInt("rankId", 333);
+          String str2 = ((JSONObject)localObject).optString("nickName");
+          String str3 = ((JSONObject)localObject).optString("uin");
+          String str4 = ((JSONObject)localObject).optString("course");
+          localObject = ((JSONObject)localObject).optString("name");
+          if ((!"join".equals(str1)) && (TextUtils.equals(str3, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
+          {
+            ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str3, str2, i, str4, (String)localObject);
+            if (this.a.jdField_a_of_type_Agvh != null)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "mHomeworkTroopIdentityChangedReceiver dismissTipsBar.");
+              }
+              this.a.jdField_a_of_type_Agvh.a(TroopChatPie.a(this.a), false);
+            }
+            if (TroopChatPie.a(this.a) != null) {
+              TroopChatPie.a(this.a).a(i);
+            }
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("zivonchen", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver troopUin = ", paramContext, ", content = ", paramIntent, ", source = ", str1, ", rankId = ", Integer.valueOf(i), ", nickName = ", str2, "uin = ", str3 });
+            return;
+          }
+        }
       }
-      paramView = this.jdField_a_of_type_ComTencentImageURLDrawable;
-    } while ((!QLog.isColorLevel()) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null));
-    QLog.d("PEAK", 2, "use exist raw drawable");
-    return;
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentImageURLDrawable != null)) {
-      QLog.d("PEAK", 2, "rawDrawable is exist");
+      catch (JSONException paramContext) {}
     }
-    paramViewGroup = paramViewGroup.toString() + "#NOSAMPLE";
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mUseExifOrientation = false;
-    ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = false;
-    paramViewGroup = URLDrawable.getDrawable(paramViewGroup, (URLDrawable.URLDrawableOptions)localObject);
-    paramViewGroup.setTag(Integer.valueOf(2));
-    this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-    this.jdField_a_of_type_Int = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("PEAK", 2, "create rawDrawable, position:" + paramInt);
-    }
-    if (paramViewGroup.getStatus() == 1)
-    {
-      paramView.jdField_a_of_type_Boolean = true;
-      paramView.setImageDrawable(paramViewGroup);
-      paramView.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    paramView.setDecodingDrawble(paramViewGroup);
-    paramViewGroup.startDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrw
  * JD-Core Version:    0.7.0.1
  */

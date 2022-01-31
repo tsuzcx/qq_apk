@@ -1,42 +1,36 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aecv
-  extends aecw
+  implements View.OnClickListener
 {
-  public aecv(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder)
-  {
-    super(paramTribeShortVideoItemBuilder);
-  }
+  public aecv(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeShortVideoItemBuilder", 2, "get video download finish,vid=" + paramString1);
+    if (((aloz)this.a.app.getManager(51)).b(TroopRequestActivity.a(this.a))) {
+      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 1);
     }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
-  }
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeShortVideoItemBuilder", 2, "Download video failed,vid=" + paramString1);
+    for (;;)
+    {
+      azmj.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, paramView);
+      return;
+      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 24);
+      bclo.a(this.a.a, paramView);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Aecx, this.jdField_a_of_type_Long);
-  }
-  
-  public void b(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeShortVideoItemBuilder", 2, "Download video onPause,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Aecx, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecv
  * JD-Core Version:    0.7.0.1
  */

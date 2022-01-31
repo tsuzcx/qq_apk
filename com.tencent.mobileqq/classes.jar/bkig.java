@@ -1,17 +1,25 @@
-import android.animation.TimeInterpolator;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bkig
-  implements TimeInterpolator
+final class bkig
+  implements DialogInterface.OnClickListener
 {
-  public float getInterpolation(float paramFloat)
+  bkig(int paramInt, Activity paramActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    double d = Math.pow(2.0D, -10.0F * paramFloat);
-    return (float)(Math.sin((paramFloat - 0.7F / 4.0F) * 6.283185307179586D / 0.7F) * d + 1.0D);
+    if (bkif.b(this.jdField_a_of_type_Int))
+    {
+      bkif.a(this.jdField_a_of_type_AndroidAppActivity, null, false);
+      return;
+    }
+    bkif.b(this.jdField_a_of_type_AndroidAppActivity, "mvip.n.a.zcwy_popup", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkig
  * JD-Core Version:    0.7.0.1
  */

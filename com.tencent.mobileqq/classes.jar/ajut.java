@@ -1,125 +1,77 @@
-import com.tencent.litetransfersdk.Session;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView.3.1;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajut
-  implements ajte
+  implements View.OnClickListener
 {
-  protected void a() {}
+  public ajut(FriendTabView paramFriendTabView) {}
   
-  protected void a(int paramInt, String paramString, long paramLong) {}
-  
-  protected void a(long paramLong) {}
-  
-  protected void a(long paramLong, float paramFloat) {}
-  
-  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2) {}
-  
-  protected void a(Session paramSession) {}
-  
-  protected void a(Session paramSession, float paramFloat) {}
-  
-  protected void a(Session paramSession, boolean paramBoolean) {}
-  
-  protected void a(Object paramObject, boolean paramBoolean) {}
-  
-  protected void a(String paramString) {}
-  
-  protected void a(boolean paramBoolean, long paramLong) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, String paramString) {}
-  
-  protected void a(boolean paramBoolean, Long paramLong) {}
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString) {}
-  
-  protected void b() {}
-  
-  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2) {}
-  
-  protected void b(Session paramSession) {}
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    Long localLong;
-    switch (paramInt)
+    QLog.d("FriendTabView", 2, "----->onBuddyListClick");
+    ajwj localajwj = (ajwj)paramView.getTag();
+    String str;
+    boolean bool;
+    if ((localajwj != null) && (localajwj.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localajwj.jdField_a_of_type_JavaLangObject != null))
     {
-    case 13: 
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (Long)paramObject[0], (String)paramObject[1]);
-      return;
-    case 2: 
-      paramObject = (Object[])paramObject;
-      localLong = (Long)paramObject[0];
-      b(paramBoolean, ((Long)paramObject[1]).longValue(), (String)paramObject[2]);
-      return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      localLong = (Long)paramObject[0];
-      a(paramBoolean, ((Long)paramObject[1]).longValue(), (String)paramObject[2]);
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      ((Long)paramObject[0]).longValue();
-      a(((Long)paramObject[1]).longValue(), ((Float)paramObject[2]).floatValue());
-      return;
-    case 5: 
-      paramObject = (Object[])paramObject;
-      localLong = (Long)paramObject[0];
-      a(paramBoolean, ((Long)paramObject[1]).longValue());
-      return;
-    case 6: 
-      paramObject = (Object[])paramObject;
-      localLong = (Long)paramObject[0];
-      a(((Long)paramObject[1]).longValue(), (String)paramObject[2], ((Byte)paramObject[3]).byteValue(), ((Boolean)paramObject[4]).booleanValue(), ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue());
-      return;
-    case 7: 
-      paramObject = (Object[])paramObject;
-      localLong = (Long)paramObject[0];
-      b(((Long)paramObject[1]).longValue(), (String)paramObject[2], ((Byte)paramObject[3]).byteValue(), ((Boolean)paramObject[4]).booleanValue(), ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue());
-      return;
-    case 8: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Long)paramObject[2]).longValue());
-      return;
-    case 9: 
-      a((String)((Object[])(Object[])paramObject)[0]);
-      return;
-    case 10: 
-      a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
-      return;
-    case 11: 
-      a();
-      return;
-    case 12: 
-      b();
-      return;
-    case 18: 
-      a(paramBoolean, (Long)paramObject);
-      return;
-    case 17: 
-      a((Session)paramObject);
-      return;
-    case 14: 
-      b((Session)paramObject);
-      return;
-    case 15: 
-      paramObject = (Object[])paramObject;
-      a((Session)paramObject[0], ((Float)paramObject[1]).floatValue());
-      return;
-    case 16: 
-      a((Session)paramObject, paramBoolean);
-      return;
+      str = "";
+      if (!(localajwj.jdField_a_of_type_JavaLangObject instanceof Friends)) {
+        break label236;
+      }
+      str = ((Friends)localajwj.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
+      if (localajwj.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      {
+        if (!localajwj.jdField_a_of_type_JavaLangString.startsWith("+")) {
+          break label262;
+        }
+        bool = this.a.a.a(localajwj.jdField_a_of_type_JavaLangString, str, 4, "-1", "");
+        label110:
+        if (QLog.isDevelopLevel()) {
+          QLog.d("FriendTabView", 2, "----->onBuddyListClick = " + bool);
+        }
+        localajwj.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        if (AppSetting.c)
+        {
+          if (!localajwj.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+            break label287;
+          }
+          paramView.setContentDescription(localajwj.d.getText().toString() + alpo.a(2131705325));
+        }
+      }
     }
-    a(paramObject, paramBoolean);
+    for (;;)
+    {
+      this.a.c();
+      if (AppSetting.c) {
+        paramView.postDelayed(new FriendTabView.3.1(this, paramView), 2000L);
+      }
+      return;
+      label236:
+      if (!(localajwj.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
+        break;
+      }
+      str = ((PhoneContact)localajwj.jdField_a_of_type_JavaLangObject).name;
+      break;
+      label262:
+      bool = this.a.a.a(localajwj.jdField_a_of_type_JavaLangString, str, 0, "-1", "");
+      break label110;
+      label287:
+      paramView.setContentDescription(localajwj.d.getText().toString() + alpo.a(2131705326));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajut
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,41 @@
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.VipComicFavorEmoStructMsgInfo;
-import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 class anub
-  extends bbwt
+  implements bhqd
 {
-  anub(anua paramanua, File paramFile, CustomEmotionData paramCustomEmotionData, answ paramansw, List paramList1, IPicDownloadListener paramIPicDownloadListener, List paramList2, aukp paramaukp, VipComicFavorEmoStructMsgInfo paramVipComicFavorEmoStructMsgInfo, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2) {}
+  anub(anua paramanua, Context paramContext, bhpy parambhpy) {}
   
-  public void onDone(bbwu parambbwu)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.onDone(parambbwu);
-    if ((parambbwu.a() == 3) && (parambbwu.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()))
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-      if ("needDownload".equals(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = "isUpdate";
-      }
-      if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath)))
-      {
-        parambbwu = SecUtil.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
-        if (!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5.equals(parambbwu)) {
-          QLog.i("VipComicMqqManager", 2, "init = " + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 + " , compute = " + parambbwu);
-        }
-      }
-      this.jdField_a_of_type_Answ.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, true);
-      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) && (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onDone(this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
-      }
-      return;
-      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_Answ.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_Aukp.b(this.jdField_a_of_type_ComTencentMobileqqDataVipComicFavorEmoStructMsgInfo);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, false);
+      this.jdField_a_of_type_Bhpy.dismiss();
+      do
+      {
+        return;
+        paramView = this.jdField_a_of_type_Anua.b + this.jdField_a_of_type_Anua.jdField_a_of_type_JavaLangString;
+      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      if ((this.jdField_a_of_type_Anua.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Anua.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        azmj.b((QQAppInterface)this.jdField_a_of_type_Anua.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Anua.jdField_a_of_type_JavaLangString, "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anub
  * JD-Core Version:    0.7.0.1
  */

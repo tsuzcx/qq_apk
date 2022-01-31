@@ -16,19 +16,19 @@ import com.tencent.widget.ListView;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import ofw;
-import ogj;
-import ogm;
-import ogv;
-import oif;
-import ojq;
+import oki;
+import okw;
+import okz;
+import olj;
+import omt;
+import ooe;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class KdCommentList
   extends VDiv
-  implements ogj, ogm, ogv, ojq
+  implements okw, okz, olj, ooe
 {
   public static final String EVENT_CHANGE = "change";
   public static final String EVENT_COMMENT_CHANGE = "commentChange";
@@ -140,7 +140,7 @@ public class KdCommentList
   public void onActivityDestroy()
   {
     super.onActivityDestroy();
-    ofw.a().b(this);
+    oki.a().b(this);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -151,17 +151,17 @@ public class KdCommentList
     }
   }
   
-  public void onCommentCreate(boolean paramBoolean, oif paramoif, List<oif> paramList, int paramInt)
+  public void onCommentCreate(boolean paramBoolean, omt paramomt, List<omt> paramList, int paramInt)
   {
     if (!this.mAppendEvents.contains("change")) {}
     while (!paramBoolean) {
       return;
     }
-    paramoif = new JSONObject();
+    paramomt = new JSONObject();
     try
     {
-      paramoif.put("commentChange", 1);
-      fireCommentListEvent(paramoif);
+      paramomt.put("commentChange", 1);
+      fireCommentListEvent(paramomt);
       return;
     }
     catch (JSONException paramList)
@@ -173,19 +173,19 @@ public class KdCommentList
     }
   }
   
-  public void onCommentCreate(boolean paramBoolean1, oif paramoif, boolean paramBoolean2, List<oif> paramList, int paramInt) {}
+  public void onCommentCreate(boolean paramBoolean1, omt paramomt, boolean paramBoolean2, List<omt> paramList, int paramInt) {}
   
-  public void onCommentDelete(int paramInt1, boolean paramBoolean, oif paramoif, int paramInt2)
+  public void onCommentDelete(int paramInt1, boolean paramBoolean, omt paramomt, int paramInt2)
   {
     if (!this.mAppendEvents.contains("change")) {}
     while (!paramBoolean) {
       return;
     }
-    paramoif = new JSONObject();
+    paramomt = new JSONObject();
     try
     {
-      paramoif.put("commentChange", -1);
-      fireCommentListEvent(paramoif);
+      paramomt.put("commentChange", -1);
+      fireCommentListEvent(paramomt);
       return;
     }
     catch (JSONException localJSONException)
@@ -199,11 +199,11 @@ public class KdCommentList
   
   public void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<oif> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<omt> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
   
-  public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<oif> paramList, boolean paramBoolean2, int paramInt2) {}
+  public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<omt> paramList, boolean paramBoolean2, int paramInt2) {}
   
-  public void onCommentReply(boolean paramBoolean, oif paramoif) {}
+  public void onCommentReply(boolean paramBoolean, omt paramomt) {}
   
   public void onCommentStateError(int paramInt) {}
   
@@ -268,7 +268,7 @@ public class KdCommentList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.comment.KdCommentList
  * JD-Core Version:    0.7.0.1
  */

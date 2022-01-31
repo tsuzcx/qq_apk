@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class afvv
-  implements DialogInterface.OnClickListener
+class afvv
+  implements View.OnClickListener
 {
-  public afvv(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
+  afvv(afvt paramafvt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof MessageForShortVideo))
+    {
+      localObject = (MessageForShortVideo)localObject;
+      ayzc.a(paramView.getContext(), this.a.a.a, ((MessageForShortVideo)localObject).msgTailType);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afvv
  * JD-Core Version:    0.7.0.1
  */

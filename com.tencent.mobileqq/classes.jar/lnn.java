@@ -1,21 +1,29 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-
 public class lnn
 {
-  public int a;
-  public long a;
-  public boolean a;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString = "";
+  int jdField_c_of_type_Int = 0;
+  String jdField_c_of_type_JavaLangString = "";
+  int jdField_d_of_type_Int = 0;
+  String jdField_d_of_type_JavaLangString = "";
+  int jdField_e_of_type_Int = 0;
+  String jdField_e_of_type_JavaLangString = "";
+  int f = 0;
+  int g = 0;
+  int h = 0;
+  int i = 0;
+  int j = 0;
+  int k = 0;
+  int l = 0;
+  int m = 0;
   
-  public lnn(AVNotifyCenter paramAVNotifyCenter) {}
-  
-  public String toString()
-  {
-    return "relationId[" + this.jdField_a_of_type_Long + "], isOffLine[" + this.jdField_a_of_type_Boolean + "], avType[" + this.jdField_a_of_type_Int + "]";
-  }
+  public lnn(lnd paramlnd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import auko;
-import aulz;
-import aumc;
-import bbqa;
+import awbv;
+import awdg;
+import awdj;
+import bdou;
 import java.io.Serializable;
 
 public class ApolloActionData
-  extends auko
+  extends awbv
   implements Serializable
 {
   public static final int ACTION_HIDE = 0;
@@ -18,14 +18,14 @@ public class ApolloActionData
   public static final int MAIN_ACTION = 1;
   public static final int POST_ACTION = 2;
   public static final int PRE_ACTION = 0;
-  @aumc
+  @awdj
   public int actionId;
   public float actionMoveDis;
   public String actionName;
   public int actionType;
   public int activeValue;
   public String anmiName;
-  @aulz
+  @awdg
   public String atNickName;
   public String boy1;
   public String bubbleText;
@@ -42,7 +42,7 @@ public class ApolloActionData
   public boolean hasSound;
   public int icon;
   public String iconUrl;
-  @aulz
+  @awdg
   public String inputText;
   public int isShow;
   public String keywords;
@@ -102,12 +102,12 @@ public class ApolloActionData
   
   public boolean verifyVersion(String paramString)
   {
-    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bbqa.a(this.minVer, paramString)) && (bbqa.a(paramString, this.maxVer)));
+    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bdou.a(this.minVer, paramString)) && (bdou.a(paramString, this.maxVer)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloActionData
  * JD-Core Version:    0.7.0.1
  */

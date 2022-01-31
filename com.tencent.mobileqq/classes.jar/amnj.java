@@ -1,589 +1,317 @@
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.confess.ConfessConfig.1;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.applets.PublicAccountIntent;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.text.NumberFormat;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.Random;
-import org.json.JSONObject;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.FollowExt;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.FollowReq;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.ReqBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class amnj
+  extends MSFServlet
 {
-  private static File jdField_a_of_type_JavaIoFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "confess_talk");
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public static final String d;
-  public static final String e;
-  public static final String f;
-  public static final String g;
-  public static final String h;
-  public float a;
-  public int a;
-  public long a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private final Random jdField_a_of_type_JavaUtilRandom;
-  boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  public int c;
-  private long c;
-  public int d;
-  private long d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  private int m;
-  public String m;
-  private int n;
-  public String n;
-  public String o;
-  public String p;
-  public String q;
-  public String r;
-  public String s;
-  private String t;
-  private String u;
+  private String a = "com.tencent.mobileqq.applets.NewPublicAccountServlet";
   
-  static
+  protected byte[] a(FromServiceMsg paramFromServiceMsg)
   {
-    jdField_a_of_type_JavaLangString = ajya.a(2131702393);
-    jdField_b_of_type_JavaLangString = ajya.a(2131702391);
-    jdField_c_of_type_JavaLangString = ajya.a(2131702396);
-    jdField_d_of_type_JavaLangString = ajya.a(2131702397);
-    jdField_e_of_type_JavaLangString = ajya.a(2131702392);
-    jdField_f_of_type_JavaLangString = ajya.a(2131702394);
-    jdField_g_of_type_JavaLangString = ajya.a(2131702399);
-    jdField_h_of_type_JavaLangString = ajya.a(2131702395);
-  }
-  
-  public amnj(String paramString)
-  {
-    this.jdField_j_of_type_Int = 24;
-    this.t = paramString;
-    paramString = bbkb.a(this.t, "confess_config_sp");
-    this.jdField_a_of_type_JavaUtilRandom = new Random(SystemClock.elapsedRealtime());
-    this.jdField_b_of_type_Long = paramString.getLong("lLastVanishTime", 0L);
-    this.jdField_m_of_type_Int = paramString.getInt("nContinuousVanishCount", 0);
-    a(null, true);
-    ThreadManager.postImmediately(new ConfessConfig.1(this), null, true);
-  }
-  
-  public static int a(long paramLong1, long paramLong2)
-  {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(paramLong1);
-    int i1 = localCalendar1.get(6);
-    int i4 = localCalendar1.get(1);
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTimeInMillis(paramLong2);
-    int i3 = localCalendar2.get(6);
-    int i2 = localCalendar1.get(1);
-    i1 -= i3;
-    i3 = i1;
-    if (i2 != i4)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramFromServiceMsg != null)
     {
-      i3 = i1;
-      if (i2 < i4)
-      {
-        if (((i2 % 4 == 0) && (i2 % 100 != 0)) || (i2 % 400 == 0)) {
-          i1 += 366;
-        }
-        for (;;)
-        {
-          i2 += 1;
-          break;
-          i1 += 365;
-        }
+      localObject1 = localObject2;
+      if (paramFromServiceMsg.isSuccess()) {
+        localObject1 = bdku.b(paramFromServiceMsg.getWupBuffer());
       }
     }
-    return i3;
+    return localObject1;
   }
   
-  public static long a(QQAppInterface paramQQAppInterface, String paramString)
+  /* Error */
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramQQAppInterface == null) {
-      return 0L;
-    }
-    return bbkb.a(paramQQAppInterface.getAccount(), "confess_config_sp").getLong(paramString, 0L);
+    // Byte code:
+    //   0: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +13 -> 16
+    //   6: aload_0
+    //   7: getfield 14	amnj:a	Ljava/lang/String;
+    //   10: iconst_2
+    //   11: ldc 44
+    //   13: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   16: aload_1
+    //   17: ldc 50
+    //   19: invokevirtual 56	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   22: astore 6
+    //   24: aload_0
+    //   25: aload_2
+    //   26: invokevirtual 58	amnj:a	(Lcom/tencent/qphone/base/remote/FromServiceMsg;)[B
+    //   29: astore 5
+    //   31: new 60	android/os/Bundle
+    //   34: dup
+    //   35: invokespecial 61	android/os/Bundle:<init>	()V
+    //   38: astore 7
+    //   40: aload 7
+    //   42: ldc 63
+    //   44: aload 5
+    //   46: invokevirtual 67	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   49: aload 7
+    //   51: ldc 69
+    //   53: aload_2
+    //   54: invokevirtual 73	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailCode	()I
+    //   57: invokevirtual 77	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   60: ldc 79
+    //   62: aload 6
+    //   64: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   67: ifeq +171 -> 238
+    //   70: aload_1
+    //   71: checkcast 87	com/tencent/mobileqq/applets/PublicAccountIntent
+    //   74: invokevirtual 90	com/tencent/mobileqq/applets/PublicAccountIntent:a	()Lalkr;
+    //   77: checkcast 92	amnh
+    //   80: astore 6
+    //   82: aload_2
+    //   83: invokevirtual 22	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   86: ifeq +273 -> 359
+    //   89: new 94	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   92: dup
+    //   93: invokespecial 95	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   96: astore_1
+    //   97: aload_1
+    //   98: aload 5
+    //   100: checkcast 97	[B
+    //   103: invokevirtual 101	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   106: checkcast 94	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   109: astore_2
+    //   110: aload_2
+    //   111: astore_1
+    //   112: iconst_m1
+    //   113: istore 4
+    //   115: iload 4
+    //   117: istore_3
+    //   118: aload_1
+    //   119: ifnull +65 -> 184
+    //   122: iload 4
+    //   124: istore_3
+    //   125: aload_1
+    //   126: getfield 105	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   129: invokevirtual 110	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   132: ifeq +52 -> 184
+    //   135: aload_1
+    //   136: getfield 105	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   139: invokevirtual 113	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   142: istore 4
+    //   144: iload 4
+    //   146: istore_3
+    //   147: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   150: ifeq +34 -> 184
+    //   153: aload_0
+    //   154: getfield 14	amnj:a	Ljava/lang/String;
+    //   157: iconst_2
+    //   158: new 115	java/lang/StringBuilder
+    //   161: dup
+    //   162: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   165: ldc 118
+    //   167: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: iload 4
+    //   172: invokevirtual 125	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   175: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   178: invokestatic 132	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   181: iload 4
+    //   183: istore_3
+    //   184: iload_3
+    //   185: ifne +138 -> 323
+    //   188: aload_1
+    //   189: getfield 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   192: invokevirtual 139	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   195: ifeq +128 -> 323
+    //   198: aload_1
+    //   199: getfield 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   202: invokevirtual 142	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   205: ifnull +118 -> 323
+    //   208: aload_1
+    //   209: getfield 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   212: invokevirtual 142	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   215: invokevirtual 147	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   218: pop
+    //   219: aload_0
+    //   220: invokespecial 151	mqq/app/MSFServlet:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   223: new 153	com/tencent/mobileqq/applets/NewPublicAccountServlet$1
+    //   226: dup
+    //   227: aload_0
+    //   228: aload 6
+    //   230: aload 5
+    //   232: invokespecial 156	com/tencent/mobileqq/applets/NewPublicAccountServlet$1:<init>	(Lamnj;Lamnh;[B)V
+    //   235: invokevirtual 162	mqq/app/AppRuntime:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   238: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   241: ifeq +13 -> 254
+    //   244: aload_0
+    //   245: getfield 14	amnj:a	Ljava/lang/String;
+    //   248: iconst_2
+    //   249: ldc 164
+    //   251: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   254: return
+    //   255: astore_2
+    //   256: aload_0
+    //   257: getfield 14	amnj:a	Ljava/lang/String;
+    //   260: iconst_4
+    //   261: aload_2
+    //   262: invokevirtual 167	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
+    //   265: aload_2
+    //   266: invokestatic 171	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   269: goto -157 -> 112
+    //   272: astore_1
+    //   273: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   276: ifeq -38 -> 238
+    //   279: aload_0
+    //   280: getfield 14	amnj:a	Ljava/lang/String;
+    //   283: iconst_2
+    //   284: iconst_2
+    //   285: anewarray 173	java/lang/Object
+    //   288: dup
+    //   289: iconst_0
+    //   290: ldc 175
+    //   292: aastore
+    //   293: dup
+    //   294: iconst_1
+    //   295: aload_1
+    //   296: invokevirtual 176	java/lang/Exception:toString	()Ljava/lang/String;
+    //   299: aastore
+    //   300: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   303: goto -65 -> 238
+    //   306: astore_2
+    //   307: aload_0
+    //   308: getfield 14	amnj:a	Ljava/lang/String;
+    //   311: iconst_4
+    //   312: aload_2
+    //   313: invokevirtual 180	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   316: aload_2
+    //   317: invokestatic 171	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   320: goto -208 -> 112
+    //   323: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   326: ifeq +13 -> 339
+    //   329: aload_0
+    //   330: getfield 14	amnj:a	Ljava/lang/String;
+    //   333: iconst_2
+    //   334: ldc 182
+    //   336: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   339: aload_0
+    //   340: invokespecial 151	mqq/app/MSFServlet:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   343: new 184	com/tencent/mobileqq/applets/NewPublicAccountServlet$2
+    //   346: dup
+    //   347: aload_0
+    //   348: aload 6
+    //   350: invokespecial 187	com/tencent/mobileqq/applets/NewPublicAccountServlet$2:<init>	(Lamnj;Lamnh;)V
+    //   353: invokevirtual 162	mqq/app/AppRuntime:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   356: goto -118 -> 238
+    //   359: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   362: ifeq +33 -> 395
+    //   365: aload_0
+    //   366: getfield 14	amnj:a	Ljava/lang/String;
+    //   369: iconst_2
+    //   370: new 115	java/lang/StringBuilder
+    //   373: dup
+    //   374: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   377: ldc 189
+    //   379: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   382: aload_2
+    //   383: invokevirtual 73	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailCode	()I
+    //   386: invokevirtual 125	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   389: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   392: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   395: aload_0
+    //   396: invokespecial 151	mqq/app/MSFServlet:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   399: new 191	com/tencent/mobileqq/applets/NewPublicAccountServlet$3
+    //   402: dup
+    //   403: aload_0
+    //   404: aload 6
+    //   406: invokespecial 192	com/tencent/mobileqq/applets/NewPublicAccountServlet$3:<init>	(Lamnj;Lamnh;)V
+    //   409: invokevirtual 162	mqq/app/AppRuntime:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   412: goto -174 -> 238
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	415	0	this	amnj
+    //   0	415	1	paramIntent	Intent
+    //   0	415	2	paramFromServiceMsg	FromServiceMsg
+    //   117	68	3	i	int
+    //   113	69	4	j	int
+    //   29	202	5	arrayOfByte	byte[]
+    //   22	383	6	localObject	Object
+    //   38	12	7	localBundle	android.os.Bundle
+    // Exception table:
+    //   from	to	target	type
+    //   97	110	255	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   70	97	272	java/lang/Exception
+    //   125	144	272	java/lang/Exception
+    //   147	181	272	java/lang/Exception
+    //   188	238	272	java/lang/Exception
+    //   256	269	272	java/lang/Exception
+    //   307	320	272	java/lang/Exception
+    //   323	339	272	java/lang/Exception
+    //   339	356	272	java/lang/Exception
+    //   359	395	272	java/lang/Exception
+    //   395	412	272	java/lang/Exception
+    //   97	110	306	java/lang/Exception
   }
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if ((paramAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    paramAppInterface = ((amnn)paramAppInterface.getManager(269)).b();
-    if (paramAppInterface == null)
-    {
-      paramAppInterface = "http://ti.qq.com/honest-say/holmes.html?_nav_alpha=0&_wwv=4&_qStyle=1";
-      label30:
-      if (TextUtils.isEmpty(paramAppInterface)) {
-        break label195;
-      }
-      paramAppInterface = paramAppInterface + "&fromUin=" + atbp.a(paramString1);
-      paramAppInterface = paramAppInterface + "&toUin=" + atbp.a(paramString2);
-      paramString1 = paramAppInterface + "&topicId=" + paramInt;
-      if (!paramBoolean) {
-        break label197;
-      }
-    }
-    label195:
-    label197:
-    for (paramAppInterface = "1";; paramAppInterface = "0")
-    {
-      paramAppInterface = paramString1 + "&isConfessor=" + paramAppInterface;
-      paramString1 = new Intent(paramContext, QQBrowserActivity.class);
-      paramString1.putExtra("hide_more_button", true);
-      paramString1.putExtra("hide_operation_bar", true);
-      paramString1.putExtra("url", paramAppInterface);
-      paramContext.startActivity(paramString1);
-      return;
-      paramAppInterface = paramAppInterface.s;
-      break label30;
-      break;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("ConfessConfig", 2, String.format("saveRedPointShow key:%s value:%d", new Object[] { paramString, Long.valueOf(paramLong) }));
+      QLog.d(this.a, 2, "onSend");
     }
-    bbkb.a(paramQQAppInterface.getAccount(), "confess_config_sp").edit().putLong(paramString, paramLong).apply();
-  }
-  
-  private void a(String paramString, boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.u = "";
-    this.jdField_n_of_type_Int = 0;
-    this.jdField_h_of_type_Int = 1;
-    this.jdField_i_of_type_Int = 0;
-    this.r = "";
-    this.jdField_j_of_type_Int = 24;
-    this.jdField_k_of_type_Int = 5;
-    this.jdField_l_of_type_Int = 0;
-    label322:
-    Locale localLocale;
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_d_of_type_Int = 0;
-      this.jdField_e_of_type_Int = 0;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_a_of_type_Float = 5.0F;
-      if (TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) {
-        this.jdField_l_of_type_JavaLangString = "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=contact_tab";
-      }
-      if (TextUtils.isEmpty(this.jdField_k_of_type_JavaLangString)) {
-        this.jdField_k_of_type_JavaLangString = "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=message_box";
-      }
-      if (TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString)) {
-        this.jdField_i_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
-      }
-      if (TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) {
-        this.jdField_j_of_type_JavaLangString = jdField_b_of_type_JavaLangString;
-      }
-      if (TextUtils.isEmpty(this.jdField_m_of_type_JavaLangString)) {
-        this.jdField_m_of_type_JavaLangString = "https://ti.qq.com/honest-say/friends-received.html?_bid=3104&_wv=9191&_qStyle=1&adtag=message_box";
-      }
-      if (TextUtils.isEmpty(this.jdField_n_of_type_JavaLangString)) {
-        this.jdField_n_of_type_JavaLangString = "https://ti.qq.com/honest-say/confess-detail.html?_bid=3104&_wv=9191&_nav_alpha=0&_nav_txtclr=ffffff&_nav_titleclr=ffffff&_nav_anim=true&ADTAG=aio_card";
-      }
-      if (TextUtils.isEmpty(this.p)) {
-        this.p = "https://ti.qq.com/honest-say/setting.html?_wv=9191&_wwv=4&_qStyle=1&adtag=message_box";
-      }
-      if (TextUtils.isEmpty(this.r)) {
-        this.r = jdField_c_of_type_JavaLangString;
-      }
-      if (TextUtils.isEmpty(this.o)) {
-        this.o = "https://ti.qq.com/honest-say/group-received.html?_bid=3104&_wv=9191&_qStyle=1";
-      }
-      if (TextUtils.isEmpty(this.q)) {
-        this.q = "https://ti.qq.com/honest-say/rank.html?_wv=9191&_wwv=4&_qStyle=1";
-      }
-      if (TextUtils.isEmpty(this.s)) {
-        this.s = "http://ti.qq.com/honest-say/holmes.html?_nav_alpha=0&_wwv=4&_qStyle=1";
-      }
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (paramBoolean) {
-        break label896;
-      }
-      this.jdField_a_of_type_Long = awzy.a();
-      a((QQAppInterface)localObject, "rec_config_time", this.jdField_a_of_type_Long);
-      if (QLog.isDevelopLevel())
-      {
-        localLocale = Locale.getDefault();
-        if (!paramBoolean) {
-          break label910;
-        }
-      }
+    paramIntent.getByteArrayExtra("data");
+    Object localObject1 = paramIntent.getStringExtra("BUNDLE_PUBLIC_ACCOUNT_CMD");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a, 2, new Object[] { "cmd=", localObject1 });
     }
-    label896:
-    label910:
-    String str;
-    for (Object localObject = "local";; str = "server")
-    {
-      for (;;)
+    if ("newFollow".equals(localObject1)) {
+      paramIntent = (PublicAccountIntent)paramIntent;
+    }
+    while (!QLog.isColorLevel()) {
+      try
       {
-        QLog.i("ConfessConfig", 4, String.format(localLocale, "parse %s config: %s", new Object[] { localObject, paramString }));
+        localObject1 = (QQAppInterface)super.getAppRuntime();
+        localObject2 = (amnh)paramIntent.a();
+        ((amnh)localObject2).a((QQAppInterface)localObject1);
+        ((QQAppInterface)localObject1).addObserver((alkr)localObject2);
+        amnm.a((QQAppInterface)localObject1, paramIntent.getBooleanExtra("BUNDLE_PUBLIC_ACCOUNT_IS_FOLLOW", false), paramIntent.getStringExtra("BUNDLE_PUBLIC_ACCOUNT_UIN"), paramIntent.getIntExtra("BUNDLE_PUBLIC_ACCOUNT_SOURCE", 0));
+        paramPacket.setSSOCommand(null);
         return;
-        try
-        {
-          localObject = new JSONObject(paramString);
-          if (((JSONObject)localObject).has("min")) {
-            this.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("min");
-          }
-          if (((JSONObject)localObject).has("max")) {
-            this.jdField_c_of_type_Int = ((JSONObject)localObject).getInt("max");
-          }
-          if (((JSONObject)localObject).has("delta")) {
-            this.jdField_d_of_type_Int = ((JSONObject)localObject).getInt("delta");
-          }
-          if (((JSONObject)localObject).has("X")) {
-            this.jdField_e_of_type_Int = ((JSONObject)localObject).getInt("X");
-          }
-          if (((JSONObject)localObject).has("Y")) {
-            this.jdField_f_of_type_Int = ((JSONObject)localObject).getInt("Y");
-          }
-          if (((JSONObject)localObject).has("contactEntryUrl")) {
-            this.jdField_l_of_type_JavaLangString = ((JSONObject)localObject).getString("contactEntryUrl");
-          }
-          if (((JSONObject)localObject).has("boxEntryUrl")) {
-            this.jdField_k_of_type_JavaLangString = ((JSONObject)localObject).getString("boxEntryUrl");
-          }
-          if (((JSONObject)localObject).has("title")) {
-            this.jdField_i_of_type_JavaLangString = ((JSONObject)localObject).getString("title");
-          }
-          if (((JSONObject)localObject).has("subtitle")) {
-            this.jdField_j_of_type_JavaLangString = ((JSONObject)localObject).getString("subtitle");
-          }
-          if (((JSONObject)localObject).has("changeInterval")) {
-            this.jdField_a_of_type_Float = ((float)((JSONObject)localObject).getDouble("changeInterval"));
-          }
-          if (((JSONObject)localObject).has("frdRecUrl")) {
-            this.jdField_m_of_type_JavaLangString = ((JSONObject)localObject).getString("frdRecUrl");
-          }
-          if (((JSONObject)localObject).has("frdRecMsgSwitch")) {
-            this.jdField_n_of_type_Int = ((JSONObject)localObject).getInt("frdRecMsgSwitch");
-          }
-          if (((JSONObject)localObject).has("detailUrl")) {
-            this.jdField_n_of_type_JavaLangString = ((JSONObject)localObject).getString("detailUrl");
-          }
-          if (((JSONObject)localObject).has("settingUrl")) {
-            this.p = ((JSONObject)localObject).getString("settingUrl");
-          }
-          if (((JSONObject)localObject).has("entryBoxSwitch")) {
-            this.jdField_h_of_type_Int = ((JSONObject)localObject).getInt("entryBoxSwitch");
-          }
-          if (((JSONObject)localObject).has("entryContactSwitch")) {
-            this.jdField_i_of_type_Int = ((JSONObject)localObject).getInt("entryContactSwitch");
-          }
-          if (((JSONObject)localObject).has("redPointText")) {
-            this.r = ((JSONObject)localObject).getString("redPointText");
-          }
-          if (((JSONObject)localObject).has("blockTime")) {
-            this.jdField_j_of_type_Int = ((JSONObject)localObject).getInt("blockTime");
-          }
-          if (((JSONObject)localObject).has("groupCfsListUrl")) {
-            this.o = ((JSONObject)localObject).getString("groupCfsListUrl");
-          }
-          if (((JSONObject)localObject).has("rankingSwitch")) {
-            this.jdField_g_of_type_Int = ((JSONObject)localObject).getInt("rankingSwitch");
-          }
-          if (((JSONObject)localObject).has("rankingUrl")) {
-            this.q = ((JSONObject)localObject).getString("rankingUrl");
-          }
-          if (((JSONObject)localObject).has("holmesCount")) {
-            this.jdField_k_of_type_Int = ((JSONObject)localObject).optInt("holmesCount", 5);
-          }
-          if (((JSONObject)localObject).has("holmesUrl")) {
-            this.s = ((JSONObject)localObject).optString("holmesUrl");
-          }
-          if (!((JSONObject)localObject).has("holmesSwitch")) {
-            break;
-          }
-          this.jdField_l_of_type_Int = ((JSONObject)localObject).optInt("holmesSwitch", 0);
+      }
+      catch (ClassCastException localClassCastException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a, 2, new Object[] { "ClassCastException e", localClassCastException.toString() });
         }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-      break;
-      this.jdField_a_of_type_Long = a(localException, "rec_config_time");
-      break label322;
-    }
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    if (paramAppInterface == null) {
-      return false;
-    }
-    return ((amnn)paramAppInterface.getManager(269)).b().b();
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramQQAppInterface == null) {}
-    while (bbkb.a(paramQQAppInterface.getAccount(), "confess_config_sp").getLong(paramString, 0L) <= 0L) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    return bbkb.a(paramQQAppInterface.getAccount(), "confess_config_sp").edit().putBoolean(paramString, paramBoolean).commit();
-  }
-  
-  private String b()
-  {
-    Object localObject = "";
-    try
-    {
-      String str = bbdx.b(new File(jdField_a_of_type_JavaIoFile, "confess_talk.cfg"));
-      localObject = str;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        QLog.i("ConfessConfig", 1, "getConfigFromFile exception : " + QLog.getStackTraceString(localIOException));
+        oidb_cmd0xc96.ReqBody localReqBody = new oidb_cmd0xc96.ReqBody();
+        localReqBody.puin.set(Long.parseLong(paramIntent.getStringExtra("BUNDLE_PUBLIC_ACCOUNT_UIN")));
+        Object localObject2 = new oidb_cmd0xc96.FollowExt();
+        ((oidb_cmd0xc96.FollowExt)localObject2).source_from.set(paramIntent.getIntExtra("BUNDLE_PUBLIC_ACCOUNT_SOURCE", 0));
+        paramIntent = new oidb_cmd0xc96.FollowReq();
+        paramIntent.ext.set((MessageMicro)localObject2);
+        localReqBody.follow_req.set(paramIntent);
+        localReqBody.cmd_type.set(1);
+        paramIntent = new oidb_sso.OIDBSSOPkg();
+        paramIntent.uint32_command.set(3222);
+        paramIntent.uint32_result.set(0);
+        paramIntent.uint32_service_type.set(0);
+        paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
+        paramIntent = paramIntent.toByteArray();
+        paramPacket.setSSOCommand("OidbSvc.0xc96");
+        paramPacket.putSendData(bdku.a(paramIntent));
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessConfig", 2, "getConfigFromFile config is: " + (String)localObject);
-    }
-    return localObject;
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    return bbkb.a(paramQQAppInterface.getAccount(), "confess_config_sp").getBoolean(paramString, false);
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessConfig", 2, "updateHolmesTipsNeedShow key:" + paramString + " value:" + paramBoolean);
-    }
-    return bbkb.a(paramQQAppInterface.getAccount(), "confess_config_sp").edit().putBoolean("holmes_tips_show_" + paramString, paramBoolean).commit();
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessConfig", 2, "saveConfig2File config is: " + paramString);
-    }
-    String str2 = jdField_a_of_type_JavaIoFile.getPath() + File.separator;
-    String str1 = paramString;
-    if (paramString == null) {
-      str1 = "";
-    }
-    boolean bool = bbdx.a(str2, "confess_talk.cfg", str1);
-    QLog.i("ConfessConfig", 1, "saveConfig2File result : " + bool);
-    return bool;
-  }
-  
-  public static boolean c(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    return bbkb.a(paramQQAppInterface.getAccount(), "confess_config_sp").getBoolean("holmes_tips_show_" + paramString, false);
-  }
-  
-  public String a()
-  {
-    long l1 = SystemClock.elapsedRealtime();
-    if ((!TextUtils.isEmpty(this.u)) && (Math.abs(l1 - this.jdField_d_of_type_Long) < (this.jdField_a_of_type_Float * 60000.0F))) {
-      return this.u;
-    }
-    if (TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) {
-      this.u = "";
-    }
-    for (;;)
-    {
-      return this.u;
-      if (!this.jdField_j_of_type_JavaLangString.contains("N"))
-      {
-        this.u = this.jdField_j_of_type_JavaLangString;
-      }
-      else if ((this.jdField_c_of_type_Int > 0) && (this.jdField_c_of_type_Int > this.jdField_b_of_type_Int))
-      {
-        int i1 = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_Int);
-        int i2 = this.jdField_c_of_type_Int;
-        int i3 = this.jdField_b_of_type_Int;
-        int i4 = this.jdField_b_of_type_Int;
-        this.jdField_d_of_type_Long = l1;
-        NumberFormat localNumberFormat = NumberFormat.getNumberInstance();
-        this.u = this.jdField_j_of_type_JavaLangString.replace("N", localNumberFormat.format(i1 % (i2 - i3 + 1) + i4));
-      }
-      else
-      {
-        this.u = "";
-      }
-    }
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    if (a(paramQQAppInterface, "redpoint_leba_show"))
-    {
-      if (this.r == null) {
-        return jdField_c_of_type_JavaLangString;
-      }
-      return this.r;
-    }
-    if (this.jdField_i_of_type_JavaLangString == null) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    return this.jdField_i_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    String str = b();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        a(str, true);
-        this.jdField_a_of_type_Boolean = true;
-      }
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool3 = true;
-    long l1 = SystemClock.elapsedRealtime();
-    if (Math.abs(l1 - this.jdField_c_of_type_Long) < 60000L) {
-      return this.jdField_b_of_type_Boolean;
-    }
-    boolean bool1;
-    if (this.jdField_i_of_type_Int >= 1)
-    {
-      bool1 = true;
-      boolean bool2 = bool1;
-      if (bool1)
-      {
-        bool2 = bool1;
-        if (TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) {
-          bool2 = false;
-        }
-      }
-      bool1 = bool2;
-      if (bool2)
-      {
-        if (a(NetConnInfoCenter.getServerTimeMillis(), this.jdField_b_of_type_Long) == 0) {
-          break label132;
-        }
-        bool1 = true;
-      }
-      label80:
-      if ((!bool1) || (this.jdField_m_of_type_Int < this.jdField_e_of_type_Int)) {
-        break label142;
-      }
-      if (a(NetConnInfoCenter.getServerTimeMillis(), this.jdField_b_of_type_Long) <= this.jdField_f_of_type_Int) {
-        break label137;
-      }
-      bool1 = bool3;
-    }
-    label132:
-    label137:
-    label142:
-    for (;;)
-    {
-      this.jdField_c_of_type_Long = l1;
-      this.jdField_b_of_type_Boolean = bool1;
-      return bool1;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label80;
-      bool1 = false;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessConfig", 2, "onGetConfigFromServer config :" + paramString);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      a(paramString, false);
-      return b(paramString);
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_l_of_type_Int == 1;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_n_of_type_Int == 1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(140);
-    localStringBuilder.append("HonestSayConfig{").append("nSwitch: ").append(this.jdField_a_of_type_Int).append(", frdRecMsgSwitch: ").append(this.jdField_n_of_type_Int).append(", nMin: ").append(this.jdField_b_of_type_Int).append(", nMax: ").append(this.jdField_c_of_type_Int).append(", nDelta: ").append(this.jdField_d_of_type_Int).append(", nX: ").append(this.jdField_e_of_type_Int).append(", nY: ").append(this.jdField_f_of_type_Int).append(", fChangeInterval: ").append(this.jdField_a_of_type_Float).append(", title: ").append(this.jdField_i_of_type_JavaLangString).append(", subtitle: ").append(this.jdField_j_of_type_JavaLangString).append(", contactEntryUrl: ").append(this.jdField_l_of_type_JavaLangString).append(", boxEntryUrl: ").append(this.jdField_k_of_type_JavaLangString).append(", detailUrl: ").append(this.jdField_n_of_type_JavaLangString).append(", settingUrl: ").append(this.p).append(", lLastVanishTime: ").append(this.jdField_b_of_type_Long).append(", nContinuousVanishCount: ").append(this.jdField_m_of_type_Int).append(", rankingUrl: ").append(this.q).append(", rankSwitch: ").append(this.jdField_g_of_type_Int).append("}");
-    return localStringBuilder.toString();
+    QLog.d(this.a, 2, "onSend exit");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amnj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,20 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PreloadWebService;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class adjf
-  implements adif
+  extends WebViewClient
 {
-  private int jdField_a_of_type_Int = 0;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  public adjf(PreloadWebService paramPreloadWebService) {}
   
-  public adjf(BaseChatPie paramBaseChatPie)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public String a()
-  {
-    String str = null;
-    if (this.jdField_a_of_type_Int == 1) {
-      str = ajya.a(2131714283);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " getSpecKeyWord:  mSpecWordType=" + this.jdField_a_of_type_Int);
-    }
-    return str;
-  }
-  
-  public void a()
-  {
-    b();
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    b();
-  }
-  
-  public void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " beforeTextChanged:  start=" + paramInt1 + " after=" + paramInt3 + " count=" + paramInt2);
-    }
-    if ((paramInt2 > paramInt3) || (paramInt3 == 0)) {
-      b();
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SpecWordEmotionThinkHelper", 2, " needSendMixMsg:  mSpecWordType=" + this.jdField_a_of_type_Int);
-      }
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 11, 16 };
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " clearSpecWordType");
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " setSpecWordType:  mSpecWordType=" + this.jdField_a_of_type_Int);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjf
  * JD-Core Version:    0.7.0.1
  */

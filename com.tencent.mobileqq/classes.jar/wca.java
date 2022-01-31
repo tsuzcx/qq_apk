@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface wca
+class wca
+  implements View.OnClickListener
 {
-  public abstract void a(DialogInterface paramDialogInterface, int paramInt);
+  wca(wbz paramwbz) {}
+  
+  public void onClick(View paramView)
+  {
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (this.a.a.a != null) {
+      this.a.a.a.a(paramView, this.a.a.a(i));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wca
  * JD-Core Version:    0.7.0.1
  */

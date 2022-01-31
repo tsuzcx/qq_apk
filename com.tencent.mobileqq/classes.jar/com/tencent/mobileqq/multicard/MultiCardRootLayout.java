@@ -14,13 +14,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
-import assz;
-import asta;
-import astb;
-import astc;
-import bbll;
-import bfsa;
-import bfsb;
+import aujw;
+import aujx;
+import aujy;
+import aujz;
+import bdkf;
+import bhsx;
+import bhsy;
 import com.tencent.widget.FitSystemWindowsRelativeLayout;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -29,14 +29,14 @@ public class MultiCardRootLayout
   extends FitSystemWindowsRelativeLayout
 {
   private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private float jdField_a_of_type_Float = bbll.b(18.0F);
+  private float jdField_a_of_type_Float = bdkf.b(18.0F);
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private bfsa jdField_a_of_type_Bfsa;
-  private bfsb jdField_a_of_type_Bfsb;
-  private WeakReference<astc> jdField_a_of_type_JavaLangRefWeakReference;
+  private bhsx jdField_a_of_type_Bhsx;
+  private bhsy jdField_a_of_type_Bhsy;
+  private WeakReference<aujz> jdField_a_of_type_JavaLangRefWeakReference;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private boolean jdField_b_of_type_Boolean = true;
   private boolean c = true;
@@ -71,10 +71,10 @@ public class MultiCardRootLayout
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     if (this.jdField_a_of_type_AndroidViewGestureDetector == null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new assz(this), new Handler(Looper.getMainLooper()));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new aujw(this), new Handler(Looper.getMainLooper()));
     }
-    this.jdField_a_of_type_Bfsa = new asta(this);
-    this.jdField_a_of_type_Bfsb = new astb(this);
+    this.jdField_a_of_type_Bhsx = new aujx(this);
+    this.jdField_a_of_type_Bhsy = new aujy(this);
     a(true);
   }
   
@@ -87,13 +87,13 @@ public class MultiCardRootLayout
       if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
       {
         this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166899));
+        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166946));
         this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       }
       if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
         this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166900));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166947));
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       }
       if (this.jdField_b_of_type_Boolean)
@@ -153,8 +153,8 @@ public class MultiCardRootLayout
   {
     if (paramBoolean)
     {
-      super.setOnInterceptTouchEventListener(this.jdField_a_of_type_Bfsb);
-      super.setDispatchTouchEventListener(this.jdField_a_of_type_Bfsa);
+      super.setOnInterceptTouchEventListener(this.jdField_a_of_type_Bhsy);
+      super.setDispatchTouchEventListener(this.jdField_a_of_type_Bhsx);
       return;
     }
     super.setOnInterceptTouchEventListener(null);
@@ -186,19 +186,19 @@ public class MultiCardRootLayout
     super.onDraw(paramCanvas);
   }
   
-  public void setListener(astc paramastc)
+  public void setListener(aujz paramaujz)
   {
-    if (paramastc == null)
+    if (paramaujz == null)
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramastc);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaujz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRootLayout
  * JD-Core Version:    0.7.0.1
  */

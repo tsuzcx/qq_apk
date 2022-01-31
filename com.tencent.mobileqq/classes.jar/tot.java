@@ -1,22 +1,21 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
 public class tot
-  extends syn
+  implements TextView.OnEditorActionListener
 {
-  public final String a;
-  public final int b;
+  public tot(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public tot(qqstory_service.RspGetWeather paramRspGetWeather)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.b = paramRspGetWeather.temperature.get();
-    this.a = paramRspGetWeather.wea_desc.get();
+    return paramKeyEvent.getKeyCode() == 66;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tot
  * JD-Core Version:    0.7.0.1
  */

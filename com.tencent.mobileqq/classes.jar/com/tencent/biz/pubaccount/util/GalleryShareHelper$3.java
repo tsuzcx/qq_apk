@@ -7,20 +7,20 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.IOException;
 import java.util.Map;
-import naj;
-import sds;
-import shc;
+import ndd;
+import svl;
+import syx;
 
 public class GalleryShareHelper$3
   implements Runnable
 {
-  public GalleryShareHelper$3(sds paramsds, String paramString, boolean paramBoolean, Map paramMap, shc paramshc) {}
+  public GalleryShareHelper$3(svl paramsvl, String paramString, boolean paramBoolean, Map paramMap, syx paramsyx) {}
   
   public void run()
   {
     try
     {
-      localObject = naj.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      localObject = ndd.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
       if (localObject == null) {
         break label129;
       }
@@ -50,12 +50,12 @@ public class GalleryShareHelper$3
       for (;;) {}
     }
     this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
-    sds.a(this.this$0).runOnUiThread(new GalleryShareHelper.3.1(this));
+    svl.a(this.this$0).runOnUiThread(new GalleryShareHelper.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.GalleryShareHelper.3
  * JD-Core Version:    0.7.0.1
  */

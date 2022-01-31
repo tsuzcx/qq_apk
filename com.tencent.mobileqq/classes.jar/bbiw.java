@@ -1,30 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 class bbiw
-  extends Handler
+  implements View.OnClickListener
 {
-  bbiw(bbiu parambbiu, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bbiw(bbiv parambbiv) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
-    {
-      if (bbiu.a(this.a) != null) {
-        bbiu.a(this.a).a(bbiu.a(this.a));
-      }
-      while (!QLog.isDevelopLevel())
-      {
-        super.handleMessage(paramMessage);
-        return;
-      }
-      QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
-    }
+    GroupManagerActivity.a((Activity)bbiv.a(this.a));
   }
 }
 

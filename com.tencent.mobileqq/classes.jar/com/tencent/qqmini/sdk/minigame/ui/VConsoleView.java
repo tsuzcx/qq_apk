@@ -8,12 +8,15 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.ProcessUtil;
 
 public class VConsoleView
   extends LinearLayout
 {
   public WebView a;
   public ImageView a;
+  private volatile boolean a;
   
   public VConsoleView(Context paramContext)
   {
@@ -33,11 +36,20 @@ public class VConsoleView
     a();
   }
   
+  private String a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return "";
+    }
+    return ProcessUtil.getCurrentProcessName(paramContext);
+  }
+  
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131559311, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370270));
-    this.jdField_a_of_type_AndroidWebkitWebView = ((WebView)findViewById(2131370265));
+    a(getContext());
+    LayoutInflater.from(getContext()).inflate(2131559362, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370567));
+    this.jdField_a_of_type_AndroidWebkitWebView = ((WebView)findViewById(2131370562));
     this.jdField_a_of_type_AndroidWebkitWebView.getSettings().setJavaScriptEnabled(true);
     if (Build.VERSION.SDK_INT >= 11)
     {
@@ -46,10 +58,33 @@ public class VConsoleView
       this.jdField_a_of_type_AndroidWebkitWebView.removeJavascriptInterface("accessibilityTraversal");
     }
   }
+  
+  public void a(Context paramContext)
+  {
+    if ((paramContext == null) || (this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 28)
+      {
+        String str = a(paramContext);
+        if (!paramContext.getPackageName().equals(str)) {
+          WebView.setDataDirectorySuffix(str);
+        }
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (IllegalStateException paramContext)
+    {
+      QMLog.e("VConsoleView", "Failed to initWebviewEvn", paramContext);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.ui.VConsoleView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,49 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.image.JpegExifReader.JpegExifReaderInterface;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class azjz
+  implements JpegExifReader.JpegExifReaderInterface
 {
-  public static void a(Context paramContext)
-  {
-    String str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.3.0", Integer.valueOf(0) });
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", str);
-    localIntent.putExtra("isShowAd", false);
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    paramContext.startActivity(localIntent);
-    ((Activity)paramContext).overridePendingTransition(2130771992, 2130771993);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.troopCreate", 2, "enterTroopCreate");
-    }
-  }
+  public void doReport(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3) {}
   
-  public static void a(Context paramContext, int paramInt)
+  public boolean readEnableFromDPC()
   {
-    if ((paramInt == 1) || (paramInt == 2)) {}
-    for (String str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.3.0", Integer.valueOf(1) });; str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.3.0", Integer.valueOf(0) }))
+    try
     {
-      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      localIntent.putExtra("isShowAd", false);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("troop_create_from", paramInt);
-      ((BaseActivity)paramContext).startActivityForResult(localIntent, 51);
-      ((Activity)paramContext).overridePendingTransition(2130771992, 2130771993);
+      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.troopCreate", 2, "enterTroopCreateForResult");
+        QLog.d("JpegExifReader", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
       }
-      return;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length >= 9)
+        {
+          int i = Integer.parseInt(localObject[8]);
+          if (i != 1) {
+            break label81;
+          }
+        }
+      }
     }
-  }
-  
-  public static void a(Context paramContext, Bundle paramBundle, String paramString)
-  {
-    if ((paramContext == null) || (paramBundle == null)) {
-      return;
+    catch (Exception localException)
+    {
+      label81:
+      while (!QLog.isColorLevel()) {}
+      QLog.e("JpegExifReader", 2, "read dpc", localException);
     }
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtras(paramBundle);
-    localIntent.putExtra("url", paramString);
-    localIntent.putExtra("isShowAd", false);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    Object localObject = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.3.0", Integer.valueOf(0) });
-    paramString = (String)localObject + String.format("&initgrouptype=%s", new Object[] { paramString });
-    localObject = new Intent(paramContext, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramString);
-    ((Intent)localObject).putExtra("isShowAd", false);
-    ((Intent)localObject).putExtra("hide_more_button", true);
-    ((Intent)localObject).putExtra("hide_operation_bar", true);
-    paramContext.startActivity((Intent)localObject);
-    ((Activity)paramContext).overridePendingTransition(2130771992, 2130771993);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.troopCreate", 2, "enterTroopCreateFromH5");
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString1);
-    localIntent.putExtra("uin", paramString2);
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("hide_operation_bar", false);
-    localIntent.putExtra("isShowAd", false);
-    paramContext.startActivity(localIntent);
+    return true;
+    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azjz
  * JD-Core Version:    0.7.0.1
  */

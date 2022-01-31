@@ -1,51 +1,63 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONObject;
 
-class obe
-  implements obl
+public class obe
 {
-  obe(obd paramobd) {}
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public int b;
+  public long b;
+  public String b;
+  public double c;
+  public long c;
+  public String c;
+  public double d;
   
-  public void a(GiftServiceBean paramGiftServiceBean)
+  public static obe a(JSONObject paramJSONObject)
   {
-    Object localObject = obd.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!((String)localObject).equals(paramGiftServiceBean.t)))
-    {
-      obd.a(this.a, paramGiftServiceBean);
-      obd.a(this.a).setText(paramGiftServiceBean.t);
-      obd.b(this.a, null);
-      if (obd.a(this.a)) {
-        obd.c(this.a, null);
-      }
-      obd.b(this.a).setText("");
-      obd.c(this.a).setText("");
-      obd.a(this.a, new ArrayList());
-      localObject = obd.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
-        if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
-          obd.b(this.a).add(localGiftServiceBean);
-        }
-      }
-      if (obd.b(this.a).size() <= 0)
-      {
-        paramGiftServiceBean = new GiftServiceBean();
-        paramGiftServiceBean.t = ajya.a(2131705282);
-        paramGiftServiceBean.v = "0";
-        obd.b(this.a).add(paramGiftServiceBean);
-      }
-      obd.a(this.a);
+    if (paramJSONObject == null) {
+      return null;
     }
+    try
+    {
+      obe localobe = new obe();
+      try
+      {
+        localobe.jdField_a_of_type_Int = paramJSONObject.optInt("showGesturesAdType");
+        localobe.jdField_a_of_type_Long = paramJSONObject.optLong("showGesturesAd_beginTime");
+        localobe.jdField_b_of_type_Long = paramJSONObject.optLong("showGesturesAd_endTime");
+        localobe.jdField_a_of_type_JavaLangString = paramJSONObject.optString("DragGoods");
+        localobe.jdField_a_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateH");
+        localobe.jdField_b_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateW");
+        localobe.jdField_c_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateX");
+        localobe.d = paramJSONObject.optDouble("DragGoodsCoordinateY");
+        localobe.jdField_b_of_type_JavaLangString = paramJSONObject.optString("LongPressColor");
+        localobe.jdField_c_of_type_Long = paramJSONObject.optLong("LongPressTime");
+        localobe.jdField_c_of_type_JavaLangString = paramJSONObject.optString("slideColor");
+        localobe.jdField_b_of_type_Int = paramJSONObject.optInt("validSlideLength");
+        return localobe;
+      }
+      catch (Exception localException1)
+      {
+        paramJSONObject = localobe;
+      }
+    }
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        paramJSONObject = null;
+      }
+    }
+    localException1.printStackTrace();
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     obe
  * JD-Core Version:    0.7.0.1
  */

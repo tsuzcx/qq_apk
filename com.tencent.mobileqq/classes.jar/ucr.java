@@ -1,13 +1,19 @@
-import android.support.annotation.NonNull;
 import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface ucr
+class ucr
+  implements View.OnClickListener
 {
-  public abstract void a(@NonNull View paramView, int paramInt);
+  ucr(ucp paramucp) {}
+  
+  public void onClick(View paramView)
+  {
+    ucp.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucr
  * JD-Core Version:    0.7.0.1
  */

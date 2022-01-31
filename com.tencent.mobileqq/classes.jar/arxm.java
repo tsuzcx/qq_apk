@@ -1,39 +1,28 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import com.tencent.qphone.base.util.QLog;
 
 class arxm
-  extends akil
+  extends RecyclerView.OnScrollListener
 {
   arxm(arxj paramarxj) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super.a(paramInt1, paramInt2, paramString);
-    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0)) {
-      arxj.a(arxj.a(this.a), 1, paramString);
+    QLog.i("Forward.Preview.Dialog", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      arxj.a(this.a).c();
     }
-  }
-  
-  protected void b(String paramString, int paramInt)
-  {
-    super.b(paramString, paramInt);
-    if ((arxj.a(this.a).a() == 1) && (arxj.a(this.a).a().equals(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareController", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
-      }
-      if (arxj.a(this.a) != null)
-      {
-        arxj.a(this.a).finish();
-        bcql.a(arxj.a(this.a), 2131693252, 1).a();
-      }
-      arxj.a(arxj.a(this.a), 1, paramString);
+    while (!arxj.a(this.a).a()) {
+      return;
     }
+    arxj.a(this.a).b();
+    arxj.a(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arxm
  * JD-Core Version:    0.7.0.1
  */

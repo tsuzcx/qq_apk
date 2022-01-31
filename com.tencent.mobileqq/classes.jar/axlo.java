@@ -1,49 +1,167 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Properties;
 
-class axlo
-  extends BroadcastReceiver
+public class axlo
 {
-  axlo(axln paramaxln) {}
+  public static int a;
+  public static long a;
+  public static String a;
+  public static boolean a;
+  public static int b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private static String a()
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    String str1 = paramIntent.getStringExtra("uuid");
-    String str2 = paramIntent.getStringExtra("md5");
-    String str3 = paramIntent.getStringExtra("imgurl");
-    String str4 = paramIntent.getStringExtra("mediaType");
-    boolean bool = avte.e();
-    paramIntent = new JSONObject();
+    if (jdField_a_of_type_Int % 180 == 0) {
+      return "0";
+    }
+    return "1";
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_Int = 90;
+    b = 2;
+    jdField_a_of_type_Long = 0L;
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
     try
     {
-      paramIntent.put("uuid", str1);
-      paramIntent.put("md5", str2);
-      paramIntent.put("imgurl", str3);
-      paramIntent.put("mediaType", str4);
-      paramIntent.put("hasGesture", bool);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoJsApiPlugin", 2, "call webView, uuid" + str1 + ", md5:" + str2 + ", imgurl:" + str3 + ", mediaType:" + str4 + ", hasGesture:" + bool);
+      long l = axsg.a(paramString);
+      if (l == 0L) {}
+      for (float f = -1.0F;; f = paramInt * 1000.0F / (float)l)
+      {
+        azmz.a(BaseApplication.getContext()).a(null, "capture_video_fps", false, f, 0L, null, "");
+        return;
       }
-      this.a.callJs(paramContext, new String[] { paramIntent.toString() });
       return;
     }
-    catch (JSONException localJSONException)
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+  }
+  
+  public static void a(Activity paramActivity, int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt2 == -1)
+        {
+          if (jdField_a_of_type_Boolean)
+          {
+            ajlj.a("", "0X80072C5", b(), jdField_a_of_type_JavaLangString, "", "");
+            return;
+          }
+          ajlj.a("", "0X80072C4", b());
+          return;
+        }
+      } while (paramInt2 != 0);
+      if (jdField_a_of_type_Boolean)
+      {
+        ajlj.b("", "0X80072C6");
+        return;
+      }
+      ajlj.b("", "0X80072C7");
+      return;
+      if (paramInt2 == -1)
+      {
+        paramActivity = new Properties();
+        paramActivity.setProperty("shortvideo_duration", String.valueOf(jdField_a_of_type_Long));
+        paramActivity.setProperty("shortvideo_rotation", a());
+        paramActivity.setProperty("shortvideo_camera", b());
+        if (!jdField_a_of_type_Boolean)
+        {
+          ajlj.a("", "0X8006A16", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
+          ajoe.a("shortvideo_send_noeffects", paramActivity);
+          return;
+        }
+        ajlj.a("", "0X8006A19", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
+        ajoe.a("shortvideo_send_effects", paramActivity);
+        return;
+      }
+    } while (paramInt2 != 0);
+    if (jdField_a_of_type_Boolean)
+    {
+      ajlj.b("", "0X8006A1B");
+      return;
+    }
+    ajlj.b("", "0X8006A17");
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
+    {
+      ajlj.a("", "0X8007BB7", str);
+      return;
+    }
+  }
+  
+  private static String b()
+  {
+    if (b == 1) {
+      return "1";
+    }
+    return "0";
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      ajlj.a("", "0X80072C3", b(), jdField_a_of_type_JavaLangString, "", "");
+      return;
+    }
+    ajlj.a("", "0X80072C2", b());
+  }
+  
+  public static void c()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      ajlj.a("", "0X8006A18", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ajlj.a("", "0X8006A13", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
+  }
+  
+  public static void d()
+  {
+    ajlj.b("", "0X80072C1");
+  }
+  
+  public static void e()
+  {
+    ajlj.b("", "0X8006A12");
+  }
+  
+  public static void f()
+  {
+    ajlj.b("", "0X8006A15");
+    ajoe.a("shortvideo_rotate_camera", null);
+  }
+  
+  public static void g()
+  {
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axlo
  * JD-Core Version:    0.7.0.1
  */

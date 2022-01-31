@@ -1,23 +1,27 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class oka
-  implements View.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  oka(ojz paramojz, oif paramoif, Context paramContext) {}
+  oka(ojn paramojn) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    QLog.d(ojz.a(this.jdField_a_of_type_Ojz), 1, "getBottomGuideView : " + ojz.b(this.jdField_a_of_type_Ojz));
-    ojz.a(this.jdField_a_of_type_Ojz, "0X8009FEA", this.jdField_a_of_type_Oif.a);
-    onh.a(this.jdField_a_of_type_AndroidContentContext, ojz.b(this.jdField_a_of_type_Ojz));
+    if (this.a.jdField_a_of_type_Omt.a != null)
+    {
+      ors.a(this.a.jdField_a_of_type_Omg.a().getContext(), this.a.jdField_a_of_type_Omt.a.activityJumpUrl);
+      if (this.a.jdField_a_of_type_Omg.a() != null) {
+        this.a.jdField_a_of_type_Omg.a().e(this.a.jdField_a_of_type_Omt);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oka
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,60 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewParent;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wem
-  implements wef
+  extends unk<vcy>
 {
-  protected final float a;
-  protected int a;
-  protected final wej a;
-  protected final wel a;
-  protected final float b;
+  public String a;
+  public boolean a;
+  public int c = -1;
   
-  public wem(wel paramwel, float paramFloat1, float paramFloat2)
+  public String a()
   {
-    this.jdField_a_of_type_Wel = paramwel;
-    this.jdField_a_of_type_Wej = new wej();
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    return ume.a("StorySvc.feed_like_list_715");
   }
   
-  public void a(wef paramwef)
+  public unf a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_Wel.jdField_a_of_type_Wek.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 2)
+    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
+    try
     {
-      this.jdField_a_of_type_Int = i;
-      return;
+      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
+      return new wen(localRspFeedLikeList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wsv.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  protected byte[] a()
   {
-    wek localwek = this.jdField_a_of_type_Wel.jdField_a_of_type_Wek;
-    if (localwek.jdField_a_of_type_Int != paramMotionEvent.getPointerId(0)) {
-      this.jdField_a_of_type_Wel.a(this.jdField_a_of_type_Wel.jdField_a_of_type_Wee);
-    }
-    View localView;
-    weg localweg;
-    do
+    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
+    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2;; i = 1)
     {
-      return true;
-      localView = this.jdField_a_of_type_Wel.a();
-      localweg = this.jdField_a_of_type_Wel.jdField_a_of_type_Weg;
-    } while (!localweg.a(localView, this.jdField_a_of_type_Wej, paramMotionEvent));
-    float f2 = this.jdField_a_of_type_Wej.b;
-    if (this.jdField_a_of_type_Wej.jdField_a_of_type_Boolean == localwek.jdField_a_of_type_Boolean) {}
-    for (float f1 = this.jdField_a_of_type_Float;; f1 = this.b)
-    {
-      f1 = f2 / f1;
-      f2 = this.jdField_a_of_type_Wej.jdField_a_of_type_Float + f1;
-      if (((!localwek.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Wej.jdField_a_of_type_Boolean) || (f2 > localwek.jdField_a_of_type_Float)) && ((localwek.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Wej.jdField_a_of_type_Boolean) || (f2 < localwek.jdField_a_of_type_Float))) {
-        break;
+      localReqFeedLikeList.source.set(i);
+      if (this.c != -1) {
+        localReqFeedLikeList.type.set(this.c);
       }
-      localweg.a(localView, localwek.jdField_a_of_type_Float, paramMotionEvent);
-      this.jdField_a_of_type_Wel.a(this.jdField_a_of_type_Wel.jdField_a_of_type_Weh);
-      return true;
+      return localReqFeedLikeList.toByteArray();
     }
-    if (localView.getParent() != null) {
-      localView.getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    long l = paramMotionEvent.getEventTime() - paramMotionEvent.getHistoricalEventTime(0);
-    if (l > 0L) {
-      this.jdField_a_of_type_Wel.jdField_a_of_type_Float = (f1 / (float)l);
-    }
-    localweg.a(localView, f2);
-    return true;
   }
   
-  public boolean b(MotionEvent paramMotionEvent)
+  public String toString()
   {
-    this.jdField_a_of_type_Wel.a(this.jdField_a_of_type_Wel.jdField_a_of_type_Wee);
-    return false;
+    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,57 @@
-import android.annotation.TargetApi;
-import android.media.MediaMetadataRetriever;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager;
+import android.view.MotionEvent;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
-@TargetApi(18)
 public class axkv
+  implements GLGestureListener
 {
-  public static int a(String paramString, axkw paramaxkw)
+  private ViewPager a;
+  
+  public axkv(ViewPager paramViewPager)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    label226:
-    for (;;)
+    this.a = paramViewPager;
+  }
+  
+  public void a(ViewPager paramViewPager)
+  {
+    this.a = paramViewPager;
+  }
+  
+  public int onGetPriority()
+  {
+    return 1002;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    int i = paramMotionEvent.getPointerCount();
+    paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean) && (this.a != null) && (this.a.isShown())) {}
+    try
     {
-      String str1;
-      String str2;
-      String str3;
+      this.a.onTouchEvent(paramMotionEvent);
+      if ((i != 2) || (!paramBoolean) || (this.a == null) || (!this.a.isShown())) {}
+    }
+    catch (Exception localException)
+    {
       try
       {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        str1 = localMediaMetadataRetriever.extractMetadata(18);
-        str2 = localMediaMetadataRetriever.extractMetadata(19);
-        paramString = localMediaMetadataRetriever.extractMetadata(24);
-        str3 = localMediaMetadataRetriever.extractMetadata(9);
-        localMediaMetadataRetriever.release();
-        if ((paramString != null) && (!"".equals(paramString)) && (!"null".equals(paramString))) {
-          break label226;
-        }
-        paramString = "0";
-        if ((str1 == null) || (str2 == null))
+        if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
         {
-          QLog.e("MediaMetadataUtils", 1, "[@] extractMetadata:width=" + str1 + " height=" + str2);
-          return -2;
+          paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
+          this.a.onTouchEvent(paramMotionEvent);
+          paramMotionEvent.recycle();
         }
+        return false;
+        localException = localException;
+        localException.printStackTrace();
       }
-      catch (RuntimeException paramString)
+      catch (Exception paramMotionEvent)
       {
-        QLog.e("MediaMetadataUtils", 1, "[@] setDataSource", paramString);
-        return -1;
-      }
-      for (;;)
-      {
-        try
+        for (;;)
         {
-          paramaxkw.a[0] = Integer.parseInt(str1);
-          paramaxkw.a[1] = Integer.parseInt(str2);
-          paramaxkw.a[3] = Integer.parseInt(str3);
-          i = 0;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", localNumberFormatException);
-          int i = -3;
-          continue;
-        }
-        try
-        {
-          paramaxkw.a[2] = Integer.parseInt(paramString);
-          paramaxkw.a[4] = 0;
-          return i;
-        }
-        catch (NumberFormatException paramString)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", paramString);
-          paramaxkw.a[2] = 0;
-          return i;
+          paramMotionEvent.printStackTrace();
         }
       }
     }
@@ -70,7 +59,7 @@ public class axkv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axkv
  * JD-Core Version:    0.7.0.1
  */

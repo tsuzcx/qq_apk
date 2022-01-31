@@ -1,30 +1,68 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.View;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import java.util.List;
 
 public class vnj
-  implements vkx
+  extends wna
 {
-  public vnj(DoodleLayout paramDoodleLayout) {}
+  public vnj(vng paramvng) {}
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public void a(int paramInt, View paramView, Object paramObject, wph paramwph)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
+    if ((paramInt < 0) || (paramInt > this.a.a.a(vng.a(this.a)).size())) {}
+    do
+    {
+      return;
+      paramObject = (CommentEntry)this.a.a.a(vng.a(this.a)).get(paramInt);
+      switch (paramView.getId())
+      {
+      default: 
+        return;
+      }
+    } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
+    ume.a(paramView.getContext(), 12, paramObject.authorUnionId);
+    return;
+    if (vng.a(this.a) != null) {
+      vng.a(this.a).a(paramObject, paramInt, vng.a(this.a).a());
     }
+    vng.a(this.a).a(vng.a(this.a).a());
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void b(int paramInt, View paramView, Object paramObject, wph paramwph)
   {
-    if (this.a.a != null)
-    {
-      ved.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
+    if ((paramInt < 0) || (paramInt > this.a.a.a(vng.a(this.a)).size())) {
+      return;
     }
+    paramObject = (CommentEntry)this.a.a.a(vng.a(this.a)).get(paramInt);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131364541: 
+      paramView = vng.a(this.a).a();
+      if ((paramView != null) && (paramView.a != null)) {
+        if (!paramView.a.getOwner().isMe()) {
+          break label194;
+        }
+      }
+      label194:
+      for (paramView = "2";; paramView = "1")
+      {
+        wta.a("home_page", "press_reply", 0, 0, new String[] { paramView, wta.a(vng.a(this.a)) });
+        if (vng.a(this.a) == null) {
+          break;
+        }
+        vng.a(this.a).b(paramObject, paramInt, vng.a(this.a).a());
+        return;
+      }
+    }
+    vng.a(this.a).a(vng.a(this.a).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnj
  * JD-Core Version:    0.7.0.1
  */

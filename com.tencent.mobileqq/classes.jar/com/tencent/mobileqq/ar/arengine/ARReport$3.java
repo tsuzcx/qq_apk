@@ -1,55 +1,55 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import alip;
-import axrn;
-import bbfj;
+import amzf;
+import azmz;
+import bdee;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$3
   implements Runnable
 {
-  public ARReport$3(alip paramalip, long paramLong1, long paramLong2, long paramLong3, int paramInt1, String paramString, int paramInt2, long paramLong4, long paramLong5, long paramLong6, int paramInt3) {}
+  public ARReport$3(amzf paramamzf, long paramLong1, long paramLong2, long paramLong3, int paramInt1, String paramString, int paramInt2, long paramLong4, long paramLong5, long paramLong6, int paramInt3) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (alip.a(this.this$0, this.jdField_a_of_type_Long)) {
+    if (amzf.a(this.this$0, this.jdField_a_of_type_Long)) {
       localHashMap.put("cloud_choose_time", String.valueOf(this.jdField_a_of_type_Long));
     }
-    if (alip.a(this.this$0, this.jdField_b_of_type_Long)) {
+    if (amzf.a(this.this$0, this.jdField_b_of_type_Long)) {
       localHashMap.put("cloud_upload_time", String.valueOf(this.jdField_b_of_type_Long));
     }
-    if (alip.a(this.this$0, this.jdField_c_of_type_Long)) {
+    if (amzf.a(this.this$0, this.jdField_c_of_type_Long)) {
       localHashMap.put("cloud_upload_size", String.valueOf(this.jdField_c_of_type_Long));
     }
-    if (alip.a(this.this$0, this.jdField_a_of_type_Int)) {
+    if (amzf.a(this.this$0, this.jdField_a_of_type_Int)) {
       localHashMap.put("cloud_upload_times", String.valueOf(this.jdField_a_of_type_Int));
     }
     if (this.jdField_a_of_type_JavaLangString != null) {
       localHashMap.put("cloud_upload_imgid", this.jdField_a_of_type_JavaLangString);
     }
-    if (alip.a(this.this$0, this.jdField_b_of_type_Int)) {
+    if (amzf.a(this.this$0, this.jdField_b_of_type_Int)) {
       localHashMap.put("cloud_recognize_time", String.valueOf(this.jdField_b_of_type_Int));
     }
-    if (alip.a(this.this$0, this.d)) {
+    if (amzf.a(this.this$0, this.d)) {
       localHashMap.put("cloud_all_size", String.valueOf(this.d));
     }
-    if (alip.a(this.this$0, this.e)) {
+    if (amzf.a(this.this$0, this.e)) {
       localHashMap.put("cloud_time", String.valueOf(this.e));
     }
-    localHashMap.put("cloud_net_type", String.valueOf(bbfj.a(BaseApplication.getContext())));
-    if (alip.a(this.this$0, this.f)) {
+    localHashMap.put("cloud_net_type", String.valueOf(bdee.a(BaseApplication.getContext())));
+    if (amzf.a(this.this$0, this.f)) {
       localHashMap.put("cloud_all_time", String.valueOf(this.f));
     }
     localHashMap.put("cloud_all_result", String.valueOf(this.jdField_c_of_type_Int));
     localHashMap.put("cloud_type", "0");
-    axrn.a(BaseApplication.getContext()).a("", "AndroidactARCloud", true, 0L, 0L, localHashMap, "", true);
+    azmz.a(BaseApplication.getContext()).a("", "AndroidactARCloud", true, 0L, 0L, localHashMap, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.3
  * JD-Core Version:    0.7.0.1
  */

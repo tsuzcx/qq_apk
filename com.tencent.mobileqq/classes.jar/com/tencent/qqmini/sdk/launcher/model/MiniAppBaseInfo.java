@@ -4,8 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import berk;
-import berv;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +15,7 @@ public class MiniAppBaseInfo
   public static final int Audit = 2;
   public static final int AuditPass = 6;
   public static final int AuditReject = 7;
-  public static final Parcelable.Creator<MiniAppBaseInfo> CREATOR = new berv();
+  public static final Parcelable.Creator<MiniAppBaseInfo> CREATOR = new MiniAppBaseInfo.1();
   public static final int Deleted = 5;
   public static final int Develop = 0;
   public static final String ENV_VERSION_DEVELOP = "develop";
@@ -31,7 +29,7 @@ public class MiniAppBaseInfo
   public static final String TAG = "MiniAppInfo";
   public static final int TYPE_MINI_APP = 0;
   public static final int TYPE_MINI_GAME = 1;
-  public berk apkgInfo;
+  public ApkgBaseInfo apkgInfo;
   public String appId;
   public AppMode appMode;
   public int appType;
@@ -54,7 +52,7 @@ public class MiniAppBaseInfo
   public int noNeedRealRecommend;
   public ArrayList<String> qualifications;
   public RenderInfo renderInfo;
-  public Map<String, String> reportData;
+  public String reportData;
   public List<String> requestDomainList;
   public List<SecondApiRightInfo> secondApiRightInfoList;
   public String shareId;
@@ -75,7 +73,7 @@ public class MiniAppBaseInfo
   
   public MiniAppBaseInfo() {}
   
-  public MiniAppBaseInfo(Parcel paramParcel)
+  protected MiniAppBaseInfo(Parcel paramParcel)
   {
     this.appId = paramParcel.readString();
     this.name = paramParcel.readString();
@@ -178,7 +176,7 @@ public class MiniAppBaseInfo
   
   public boolean isInternalApp()
   {
-    return (this.appMode != null) && (this.appMode.a);
+    return (this.appMode != null) && (this.appMode.interMode);
   }
   
   public String simpleInfo()
@@ -188,14 +186,14 @@ public class MiniAppBaseInfo
   
   public boolean supportNativeRenderMode()
   {
-    return (this.renderInfo != null) && (this.renderInfo.jdField_a_of_type_Int == 1) && (!TextUtils.isEmpty((CharSequence)this.renderInfo.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1))));
+    return (this.renderInfo != null) && (this.renderInfo.renderMode == 1) && (!TextUtils.isEmpty((CharSequence)this.renderInfo.renderMaterialMap.get(Integer.valueOf(1))));
   }
   
   public String toSimpleString()
   {
     StringBuilder localStringBuilder = new StringBuilder().append("{appId=").append(this.appId).append(", name=").append(this.name).append(", version=").append(this.version).append(", verType=").append(this.verType).append(", engineType=").append(this.engineType).append(", renderInfo=");
     if (this.renderInfo != null) {}
-    for (int i = this.renderInfo.jdField_a_of_type_Int;; i = -1) {
+    for (int i = this.renderInfo.renderMode;; i = -1) {
       return i + ", firstPage=" + this.firstPage;
     }
   }
@@ -204,7 +202,7 @@ public class MiniAppBaseInfo
   {
     StringBuilder localStringBuilder = new StringBuilder().append("MiniAppInfo{appId=").append(this.appId).append(", name=").append(this.name).append(", version=").append(this.version).append(", verType=").append(this.verType).append(", engineType=").append(this.engineType).append(", renderInfo=");
     if (this.renderInfo != null) {}
-    for (int i = this.renderInfo.jdField_a_of_type_Int;; i = -1) {
+    for (int i = this.renderInfo.renderMode;; i = -1) {
       return i + ", firstPage=" + this.firstPage;
     }
   }
@@ -253,7 +251,7 @@ public class MiniAppBaseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo
  * JD-Core Version:    0.7.0.1
  */

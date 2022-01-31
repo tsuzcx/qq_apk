@@ -1,25 +1,40 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.mobileqq.widget.DropdownView.1.1;
 
 public class bele
+  implements View.OnClickListener
 {
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public bele(DropdownView paramDropdownView) {}
+  
+  public void onClick(View paramView)
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { paramFloat1, paramFloat2 });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 });
-    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.setDuration(100L);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, paramView });
-    localAnimatorSet.addListener(new belf());
-    localAnimatorSet.start();
+    this.a.jdField_a_of_type_Belf.clearFocus();
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Belf.getWindowToken(), 0);
+    if ((this.a.jdField_a_of_type_Belf.getAdapter() != null) && (this.a.jdField_a_of_type_Belf.getAdapter().getCount() > 0))
+    {
+      if ((((ImageView)paramView).getDrawable() != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
+        break label160;
+      }
+      DropdownView.a(this.a).postDelayed(new DropdownView.1.1(this, paramView), 250L);
+      paramView = paramView.getContext();
+      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
+        azmj.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
+      }
+    }
+    return;
+    label160:
+    this.a.jdField_a_of_type_Belf.dismissDropDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bele
  * JD-Core Version:    0.7.0.1
  */

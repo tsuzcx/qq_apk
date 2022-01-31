@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abql;
+import adht;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -9,7 +9,7 @@ import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.Window;
-import anqv;
+import apid;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -22,7 +22,7 @@ public class PayBridgeActivity
   extends BaseActivity
 {
   protected long a;
-  private abql jdField_a_of_type_Abql;
+  private adht jdField_a_of_type_Adht;
   private PayLogic jdField_a_of_type_CooperationQwalletPluginPayPayLogic;
   protected boolean a;
   public boolean b;
@@ -53,9 +53,9 @@ public class PayBridgeActivity
   {
     try
     {
-      this.jdField_a_of_type_Abql = new abql(this);
+      this.jdField_a_of_type_Adht = new adht(this);
       IntentFilter localIntentFilter = new IntentFilter("action_launch_completed");
-      registerReceiver(this.jdField_a_of_type_Abql, localIntentFilter);
+      registerReceiver(this.jdField_a_of_type_Adht, localIntentFilter);
       return;
     }
     catch (Throwable localThrowable)
@@ -101,7 +101,7 @@ public class PayBridgeActivity
       return false;
     }
     Intent localIntent = new Intent(paramActivity, PayBridgeActivity.class);
-    localIntent.putExtras(new anqv(paramString1, paramString2, paramString3, paramString4, "uin", "skey", paramString5, paramString6, paramString7, paramString8, paramString9).a());
+    localIntent.putExtras(new apid(paramString1, paramString2, paramString3, paramString4, "uin", "skey", paramString5, paramString6, paramString7, paramString8, paramString9).a());
     localIntent.putExtra("pay_requestcode", 1);
     localIntent.addFlags(67108864);
     localIntent.addFlags(536870912);
@@ -113,8 +113,8 @@ public class PayBridgeActivity
   {
     try
     {
-      if (this.jdField_a_of_type_Abql != null) {
-        unregisterReceiver(this.jdField_a_of_type_Abql);
+      if (this.jdField_a_of_type_Adht != null) {
+        unregisterReceiver(this.jdField_a_of_type_Adht);
       }
       return;
     }
@@ -182,7 +182,7 @@ public class PayBridgeActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167087);
+    getWindow().setBackgroundDrawableResource(2131167138);
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay.PayBridgeActivity", 2, "doOnCreate@" + hashCode());
     }
@@ -278,7 +278,7 @@ public class PayBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PayBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

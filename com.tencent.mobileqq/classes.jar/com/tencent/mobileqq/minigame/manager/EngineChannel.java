@@ -17,9 +17,11 @@ public class EngineChannel
   public static final String KEY_BUNDLE_ENGINE_INSTALLER_PROGRESS = "engineInstallerProgress";
   public static final String KEY_BUNDLE_ENGINE_PID = "enginePid";
   public static final String KEY_BUNDLE_INSTALLED_ENGINE_LIST = "installedEngineList";
+  public static final String KEY_BUNDLE_INVALID_ENGINE = "invalidEngine";
   public static final String LOG_TAG = "EngineChannel";
   public static final int WHAT_EVENT_ACK = 55;
   public static final int WHAT_EVENT_BASE = 50;
+  public static final int WHAT_EVENT_DELETE_INVALID_ENGINE = 56;
   public static final int WHAT_EVENT_INSTALLED_ENGINE_LIST = 51;
   public static final int WHAT_EVENT_INSTALL_LATEST_ENGINE_BEGIN = 52;
   public static final int WHAT_EVENT_INSTALL_LATEST_ENGINE_FINISH = 54;
@@ -76,7 +78,7 @@ public class EngineChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.EngineChannel
  * JD-Core Version:    0.7.0.1
  */

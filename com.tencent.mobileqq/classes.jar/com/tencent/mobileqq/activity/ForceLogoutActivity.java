@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import abbo;
-import ajsd;
+import acsn;
+import aljq;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,21 +10,21 @@ import com.tencent.mobileqq.app.BaseActivity;
 
 public class ForceLogoutActivity
   extends BaseActivity
-  implements ajsd
+  implements aljq
 {
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559066);
+    super.setContentView(2131559107);
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("msg");
     if ((paramBundle != null) && (paramBundle.length() > 0)) {
-      ((TextView)findViewById(2131378010)).setText(paramBundle);
+      ((TextView)findViewById(2131378556)).setText(paramBundle);
     }
     if ((str != null) && (str.length() > 0)) {
-      ((TextView)findViewById(2131378011)).setText(str);
+      ((TextView)findViewById(2131378557)).setText(str);
     }
-    ((Button)findViewById(2131363430)).setOnClickListener(new abbo(this));
+    ((Button)findViewById(2131363470)).setOnClickListener(new acsn(this));
     return true;
   }
   
@@ -37,7 +37,7 @@ public class ForceLogoutActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForceLogoutActivity
  * JD-Core Version:    0.7.0.1
  */

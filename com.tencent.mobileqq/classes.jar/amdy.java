@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.app.automator.step.RegisterProxy;
 
 public class amdy
-  implements View.OnClickListener
+  extends aljr
 {
-  public amdy(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  private amdy(RegisterProxy paramRegisterProxy) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    paramView = (amea)paramView.getTag();
-    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
+    this.a.a(10000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdy
  * JD-Core Version:    0.7.0.1
  */

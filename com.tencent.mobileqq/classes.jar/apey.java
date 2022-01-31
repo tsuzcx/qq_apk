@@ -1,33 +1,39 @@
+import android.app.Dialog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+
 public class apey
-  implements Cloneable
+  extends Dialog
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a = new byte[16];
-  public long b;
-  public short b;
-  public boolean b;
-  public long c = -1L;
+  private apez a;
   
-  public apey a()
+  public apey(@NonNull Context paramContext)
   {
-    try
-    {
-      apey localapey = (apey)super.clone();
-      return localapey;
+    super(paramContext, 2131755969);
+    super.setContentView(2131558691);
+    super.setCanceledOnTouchOutside(false);
+    super.setCancelable(false);
+    super.findViewById(2131363796).setOnClickListener(this);
+  }
+  
+  public void a(apez paramapez)
+  {
+    this.a = paramapez;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.a(this);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      localCloneNotSupportedException.printStackTrace();
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apey
  * JD-Core Version:    0.7.0.1
  */

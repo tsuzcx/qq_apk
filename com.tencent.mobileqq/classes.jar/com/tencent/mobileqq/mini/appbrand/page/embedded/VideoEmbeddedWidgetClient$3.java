@@ -15,6 +15,7 @@ class VideoEmbeddedWidgetClient$3
   
   public boolean onInfo(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
+    long l2 = 0L;
     QLog.d("miniapp-embedded", 2, "onInfo what : " + paramInt1 + "; extra : " + paramInt2 + "; isHls : " + VideoEmbeddedWidgetClient.access$400(this.this$0));
     switch (paramInt1)
     {
@@ -24,20 +25,27 @@ class VideoEmbeddedWidgetClient$3
       return false;
       if (VideoEmbeddedWidgetClient.access$200(this.this$0) != null)
       {
+        label375:
+        label381:
         for (;;)
         {
           try
           {
+            l1 = VideoEmbeddedWidgetClient.access$500(this.this$0).getDuration();
+            if (l1 <= 0L) {
+              break label375;
+            }
+            l1 /= 1000L;
             paramIMediaPlayer = new JSONObject();
-            paramIMediaPlayer.put("data", VideoEmbeddedWidgetClient.access$500(this.this$0));
+            paramIMediaPlayer.put("data", VideoEmbeddedWidgetClient.access$600(this.this$0));
             paramIMediaPlayer.put("videoPlayerId", VideoEmbeddedWidgetClient.access$700(this.this$0));
             if ((VideoEmbeddedWidgetClient.access$400(this.this$0) == null) || (!VideoEmbeddedWidgetClient.access$400(this.this$0).booleanValue())) {
-              break label341;
+              break label381;
             }
-            d = 0.0D;
-            paramIMediaPlayer.put("duration", d);
-            paramIMediaPlayer.put("width", VideoEmbeddedWidgetClient.access$600(this.this$0).getVideoWidth() / DisplayUtil.getDensity(VideoEmbeddedWidgetClient.access$200(this.this$0).getContextEx()));
-            paramIMediaPlayer.put("height", VideoEmbeddedWidgetClient.access$600(this.this$0).getVideoHeight() / DisplayUtil.getDensity(VideoEmbeddedWidgetClient.access$200(this.this$0).getContextEx()));
+            l1 = l2;
+            paramIMediaPlayer.put("duration", l1);
+            paramIMediaPlayer.put("width", VideoEmbeddedWidgetClient.access$500(this.this$0).getVideoWidth() / DisplayUtil.getDensity(VideoEmbeddedWidgetClient.access$200(this.this$0).getContextEx()));
+            paramIMediaPlayer.put("height", VideoEmbeddedWidgetClient.access$500(this.this$0).getVideoHeight() / DisplayUtil.getDensity(VideoEmbeddedWidgetClient.access$200(this.this$0).getContextEx()));
             ((AppBrandRuntime)VideoEmbeddedWidgetClient.access$900(this.this$0)).serviceRuntime.evaluateSubcribeJS("onXWebVideoLoadedMetaData", paramIMediaPlayer.toString(), VideoEmbeddedWidgetClient.access$800(this.this$0));
             VideoEmbeddedWidgetClient.access$200(this.this$0).evaluateSubcribeJS("onXWebVideoLoadedMetaData", paramIMediaPlayer.toString(), VideoEmbeddedWidgetClient.access$800(this.this$0));
             QLog.d("miniapp-embedded", 2, "evaluateSubcribeJS onXWebVideoLoadedMetaData = " + paramIMediaPlayer.toString());
@@ -47,16 +55,14 @@ class VideoEmbeddedWidgetClient$3
             QLog.e("miniapp-embedded", 1, "VIDEO_EVENT_LOADED_METADATA  error.", paramIMediaPlayer);
           }
           break;
-          label341:
-          long l = VideoEmbeddedWidgetClient.access$600(this.this$0).getDuration();
-          double d = l / 1000.0D;
+          long l1 = 0L;
         }
         if (VideoEmbeddedWidgetClient.access$200(this.this$0) != null)
         {
           try
           {
             paramIMediaPlayer = new JSONObject();
-            paramIMediaPlayer.put("data", VideoEmbeddedWidgetClient.access$500(this.this$0));
+            paramIMediaPlayer.put("data", VideoEmbeddedWidgetClient.access$600(this.this$0));
             paramIMediaPlayer.put("videoPlayerId", VideoEmbeddedWidgetClient.access$700(this.this$0));
             ((AppBrandRuntime)VideoEmbeddedWidgetClient.access$900(this.this$0)).serviceRuntime.evaluateSubcribeJS("onXWebVideoWaiting", paramIMediaPlayer.toString(), VideoEmbeddedWidgetClient.access$800(this.this$0));
             VideoEmbeddedWidgetClient.access$200(this.this$0).evaluateSubcribeJS("onXWebVideoWaiting", paramIMediaPlayer.toString(), VideoEmbeddedWidgetClient.access$800(this.this$0));
@@ -71,7 +77,7 @@ class VideoEmbeddedWidgetClient$3
             try
             {
               paramIMediaPlayer = new JSONObject();
-              paramIMediaPlayer.put("data", VideoEmbeddedWidgetClient.access$500(this.this$0));
+              paramIMediaPlayer.put("data", VideoEmbeddedWidgetClient.access$600(this.this$0));
               paramIMediaPlayer.put("videoPlayerId", VideoEmbeddedWidgetClient.access$700(this.this$0));
               paramIMediaPlayer.put("timeStamp", System.currentTimeMillis());
               ((AppBrandRuntime)VideoEmbeddedWidgetClient.access$900(this.this$0)).serviceRuntime.evaluateSubcribeJS("onXWebVideoPlay", paramIMediaPlayer.toString(), VideoEmbeddedWidgetClient.access$800(this.this$0));
@@ -90,7 +96,7 @@ class VideoEmbeddedWidgetClient$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient.3
  * JD-Core Version:    0.7.0.1
  */

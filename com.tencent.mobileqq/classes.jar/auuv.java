@@ -1,35 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+
 public class auuv
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public auuv(GameRoomTransActivity paramGameRoomTransActivity) {}
   
-  public boolean a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.b != null)
-    {
-      bool1 = bool2;
-      if (this.b.trim().length() > 0) {
-        bool1 = false;
-      }
-    }
-    return bool1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.b).append(",").append(this.c).append(",").append(this.d).append("]");
-    return localStringBuilder.toString();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auuv
  * JD-Core Version:    0.7.0.1
  */

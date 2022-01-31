@@ -1,10 +1,20 @@
-public abstract interface alpx
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+final class alpx
+  implements View.OnClickListener
 {
-  public abstract boolean a(String paramString1, String paramString2, String paramString3);
+  alpx(Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alpx
  * JD-Core Version:    0.7.0.1
  */

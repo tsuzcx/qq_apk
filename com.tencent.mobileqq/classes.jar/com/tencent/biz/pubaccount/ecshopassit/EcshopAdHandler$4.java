@@ -1,5 +1,9 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
+import aaoo;
+import aaop;
+import aaoq;
+import aaor;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,20 +21,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import nqu;
+import nud;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
 import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
 import tencent.im.oidb.qqshop.qq_ad.QQAdGet.Phone;
-import yyp;
-import yyq;
-import yyr;
-import yys;
 
 public class EcshopAdHandler$4
   implements Runnable
 {
-  public EcshopAdHandler$4(nqu paramnqu, List paramList1, List paramList2, boolean paramBoolean, String paramString) {}
+  public EcshopAdHandler$4(nud paramnud, List paramList1, List paramList2, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -41,13 +41,13 @@ public class EcshopAdHandler$4
       {
         qq_ad.QQAdGet localQQAdGet = new qq_ad.QQAdGet();
         qq_ad.QQAdGet.Phone localPhone = new qq_ad.QQAdGet.Phone();
-        Object localObject1 = new yyq();
-        ((yyq)localObject1).jdField_a_of_type_JavaLangString = "cd22b9";
+        Object localObject1 = new aaop();
+        ((aaop)localObject1).jdField_a_of_type_JavaLangString = "cd22b9";
         long l = System.currentTimeMillis();
-        localObject1 = yyp.a(BaseApplicationImpl.getApplication().getApplicationContext(), (yyq)localObject1);
+        localObject1 = aaoo.a(BaseApplicationImpl.getApplication().getApplicationContext(), (aaop)localObject1);
         if (localObject1 != null)
         {
-          localObject1 = ((yyr)localObject1).a;
+          localObject1 = ((aaoq)localObject1).a;
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder().append("get deviceInfo cost：").append(System.currentTimeMillis() - l).append(", result = ");
@@ -58,7 +58,7 @@ public class EcshopAdHandler$4
           }
           if (localObject1 != null)
           {
-            localPhone.carrier.set(yys.a(this.this$0.app.getApplication()));
+            localPhone.carrier.set(aaor.a(this.this$0.app.getApplication()));
             localPhone.muid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid.get());
             localPhone.muid_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid_type.get());
             localPhone.conn.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).conn.get());
@@ -142,7 +142,7 @@ public class EcshopAdHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler.4
  * JD-Core Version:    0.7.0.1
  */

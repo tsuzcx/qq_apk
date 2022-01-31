@@ -1,13 +1,24 @@
-class adrt
-  implements bfpj
+import android.view.View;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+
+public class adrt
+  implements bhwu
 {
-  adrt(adrs paramadrs) {}
+  public adrt(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void onDismiss() {}
+  public void a(View paramView)
+  {
+    SearchMightKnowFragment.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    SearchMightKnowFragment.a(this.a, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrt
  * JD-Core Version:    0.7.0.1
  */

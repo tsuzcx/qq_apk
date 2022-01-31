@@ -1,76 +1,23 @@
-import android.annotation.TargetApi;
-import android.media.MediaMetadataRetriever;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment.2.1;
+import mqq.os.MqqHandler;
 
-@TargetApi(18)
 public class blcj
+  extends bkvo
 {
-  public static int a(String paramString, blck paramblck)
+  public blcj(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
+  
+  public void b(boolean paramBoolean, int paramInt)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    label227:
-    for (;;)
-    {
-      String str1;
-      String str2;
-      String str3;
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        str1 = localMediaMetadataRetriever.extractMetadata(18);
-        str2 = localMediaMetadataRetriever.extractMetadata(19);
-        paramString = localMediaMetadataRetriever.extractMetadata(24);
-        str3 = localMediaMetadataRetriever.extractMetadata(9);
-        localMediaMetadataRetriever.release();
-        if ((paramString != null) && (!"".equals(paramString)) && (!"null".equals(paramString))) {
-          break label227;
-        }
-        paramString = "0";
-        if ((str1 == null) || (str2 == null))
-        {
-          QLog.e("MediaMetadataUtils", 1, "extractMetadata:width=" + str1 + " height=" + str2);
-          return -102;
-        }
-      }
-      catch (RuntimeException paramString)
-      {
-        QLog.e("MediaMetadataUtils", 1, "setDataSource", paramString);
-        return -101;
-      }
-      for (;;)
-      {
-        try
-        {
-          paramblck.a[0] = Integer.parseInt(str1);
-          paramblck.a[1] = Integer.parseInt(str2);
-          paramblck.a[3] = Integer.parseInt(str3);
-          i = 0;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("MediaMetadataUtils", 1, "parseInt", localNumberFormatException);
-          int i = -103;
-          continue;
-        }
-        try
-        {
-          paramblck.a[2] = Integer.parseInt(paramString);
-          paramblck.a[4] = 0;
-          return i;
-        }
-        catch (NumberFormatException paramString)
-        {
-          QLog.e("MediaMetadataUtils", 1, "parseInt", paramString);
-          paramblck.a[2] = 0;
-          return i;
-        }
-      }
-    }
+    AETakeFacePhotoPreviewFragment.a(this.a).removeObserver(this);
+    ThreadManager.getUIHandler().post(new AETakeFacePhotoPreviewFragment.2.1(this, paramBoolean, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blcj
  * JD-Core Version:    0.7.0.1
  */

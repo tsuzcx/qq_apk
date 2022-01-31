@@ -1,27 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerIndicator;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class nij
-  implements View.OnClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  public nij(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public nij(AccountDetailBannerViewPager paramAccountDetailBannerViewPager) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountAdvertisementActivity", 2, "action cancel");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailBannerViewPager", 2, "onPageScrollStateChanged->" + paramInt);
     }
-    axqy.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FD", "0X80090FD", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-    if ((PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).isShowing())) {
-      PublicAccountAdvertisementActivity.a(this.a).dismiss();
+    AccountDetailBannerViewPager.a(this.a, paramInt);
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailBannerViewPager", 2, "onPageSelected->" + paramInt);
+    }
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
+    if (AccountDetailBannerViewPager.a(this.a) != null) {
+      AccountDetailBannerViewPager.a(this.a).a(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nij
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bjtd;
+import bmen;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
 
 public class EditLocalPhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new bjtd();
+  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new bmen();
   public final LocalMediaInfo a;
   public final String a;
   
@@ -74,7 +74,7 @@ public class EditLocalPhotoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource
  * JD-Core Version:    0.7.0.1
  */

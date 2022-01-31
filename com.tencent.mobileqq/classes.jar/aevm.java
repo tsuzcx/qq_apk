@@ -1,59 +1,26 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class aevm
-  implements Sizeable
+  implements aexi
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-  private int b;
+  public aevm(DoodlePanel paramDoodlePanel) {}
   
-  public aevm(String paramString, BitmapDrawable[] paramArrayOfBitmapDrawable, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable = paramArrayOfBitmapDrawable;
-    this.jdField_a_of_type_Int = paramInt;
-    a();
-  }
-  
-  private void a()
-  {
-    int i = 0;
-    this.b = 0;
-    BitmapDrawable[] arrayOfBitmapDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-    int j = arrayOfBitmapDrawable.length;
-    while (i < j)
+    if (DoodlePanel.a(this.a) != null)
     {
-      BitmapDrawable localBitmapDrawable = arrayOfBitmapDrawable[i];
-      if ((localBitmapDrawable != null) && (localBitmapDrawable.getBitmap() != null))
-      {
-        int k = this.b;
-        this.b = (localBitmapDrawable.getBitmap().getByteCount() + k);
+      if (DoodlePanel.a(this.a) != null) {
+        DoodlePanel.a(this.a).setTemplateID(paramInt);
       }
-      i += 1;
+      DoodlePanel.a(this.a);
+      bczr.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public BitmapDrawable[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-  }
-  
-  public int getByteSize()
-  {
-    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class vyn
-  implements INetEventHandler
+class vyn
+  extends uhn
 {
-  vyn(Context paramContext) {}
+  vyn(vym paramvym) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void c(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      vym.a(this.a);
-      return;
-    }
-    vym.a("");
-    vym.b("");
+    uhl localuhl = (uhl)this.a.a.app.getManager(181);
+    this.a.a(2, localuhl.a());
+    this.a.a(3, localuhl.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyn
  * JD-Core Version:    0.7.0.1
  */

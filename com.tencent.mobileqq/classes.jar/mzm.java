@@ -1,24 +1,25 @@
+import com.tencent.biz.PoiMapActivity;
+
 public class mzm
-  implements mzq
 {
-  public void a(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void b(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
-  }
-  
-  public void c(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
-  }
+  public mzm(PoiMapActivity paramPoiMapActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzm
  * JD-Core Version:    0.7.0.1
  */

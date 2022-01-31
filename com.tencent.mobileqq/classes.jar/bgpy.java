@@ -1,49 +1,32 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-final class bgpy
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class bgpy
 {
-  bgpy(Runnable paramRunnable) {}
+  public int a;
+  public bgqg a;
+  public Object a;
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public bgpy(int paramInt, bgqg parambgqg)
   {
-    if (paramPluginManagerClient == null) {}
-    try
-    {
-      ThreadManager.post(this.a, 5, null, false);
-      return;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bgqg = parambgqg;
+  }
+  
+  public static bgpy a(int paramInt, bgqg parambgqg)
+  {
+    return new bgpy(paramInt, parambgqg);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("{RuntimeLoader@");
+    if (this.jdField_a_of_type_Bgqg != null) {}
+    for (Object localObject = Integer.valueOf(this.jdField_a_of_type_Bgqg.hashCode());; localObject = "=") {
+      return localObject + this.jdField_a_of_type_Bgqg + " what=" + this.jdField_a_of_type_Int + "}";
     }
-    catch (Exception paramPluginManagerClient) {}
-    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "qqfav.apk already installed.");
-      }
-      bgpw.a().set(true);
-      try
-      {
-        ThreadManager.post(this.a, 5, null, false);
-        return;
-      }
-      catch (Exception paramPluginManagerClient)
-      {
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
-    }
-    paramPluginManagerClient.installPlugin("qqfav.apk", new bgpz(this));
-    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgpy
  * JD-Core Version:    0.7.0.1
  */

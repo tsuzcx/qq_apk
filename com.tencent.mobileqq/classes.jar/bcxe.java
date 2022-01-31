@@ -1,24 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
-final class bcxe
-  extends BroadcastReceiver
+public abstract interface bcxe
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
-      return;
-    }
-    bcxb.a(paramIntent.getStringExtra("account"));
-    bcxb.b(bcxb.a());
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcxe
  * JD-Core Version:    0.7.0.1
  */

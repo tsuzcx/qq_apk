@@ -1,23 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 
-public final class vfe
-  implements Parcelable.Creator<EditLocalVideoSource>
+class vfe
+  extends veb
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
+  vfe(vez paramvez, StoryVideoItem paramStoryVideoItem)
   {
-    return new EditLocalVideoSource(paramParcel);
+    super(paramStoryVideoItem);
   }
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public boolean b()
   {
-    return new EditLocalVideoSource[paramInt];
+    Object localObject = (String)a("result");
+    try
+    {
+      localObject = new URI((String)localObject);
+      if ("file".equals(((URI)localObject).getScheme()))
+      {
+        localObject = new File((URI)localObject);
+        if (((File)localObject).exists())
+        {
+          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
+          return true;
+        }
+      }
+    }
+    catch (URISyntaxException localURISyntaxException)
+    {
+      wsv.c(this.b, "Error: 评分投票失败", localURISyntaxException);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfe
  * JD-Core Version:    0.7.0.1
  */

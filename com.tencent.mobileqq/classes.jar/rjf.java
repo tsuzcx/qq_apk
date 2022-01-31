@@ -1,18 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Queue;
 
-public class rjf
-  implements rjr
+class rjf
+  extends ntc
 {
-  public rjf(FastWebActivity paramFastWebActivity) {}
+  private rjf(rja paramrja) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    FastWebActivity.q(this.a);
+    super.a(paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoFullPlayController", 2, "onGetRecommend:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+      rja.a(this.a).addAll(rja.a(this.a).a(paramBundle));
+      this.a.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjf
  * JD-Core Version:    0.7.0.1
  */

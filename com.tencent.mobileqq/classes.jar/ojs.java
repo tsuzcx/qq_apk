@@ -1,23 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class ojs
+class ojs
+  implements ViewBase.OnClickListener
 {
-  public String a;
-  public List<CommentData> a = new ArrayList();
-  public boolean a;
-  public List<SubCommentData> b = new ArrayList();
+  ojs(ojn paramojn) {}
   
-  public boolean a()
+  public void onClick(ViewBase paramViewBase)
   {
-    return (this.a != null) && (this.a.size() > 0);
+    ojm.a(this.a.jdField_a_of_type_Omg, this.a.jdField_a_of_type_Omt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ojs
  * JD-Core Version:    0.7.0.1
  */

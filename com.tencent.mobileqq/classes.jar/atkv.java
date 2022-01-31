@@ -1,56 +1,40 @@
-import android.os.Handler;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 class atkv
-  implements atle
+  implements atik
 {
-  atkv(atko paramatko, VideoData paramVideoData, boolean paramBoolean) {}
+  atkv(atkt paramatkt) {}
   
-  public void a(atkz paramatkz)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Atko.jdField_a_of_type_Atkx != null) {
-      this.jdField_a_of_type_Atko.jdField_a_of_type_Atkx.c();
-    }
-    atix localatix;
-    if (((this.jdField_a_of_type_Atko.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) && (((BaseActivity)this.jdField_a_of_type_Atko.jdField_a_of_type_AndroidContentContext).isResume()))
+    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.a.jdField_a_of_type_Atkz.jdField_a_of_type_Int, this.a.jdField_a_of_type_Atkz.jdField_a_of_type_JavaLangString, paramBoolean);
+    azmj.b(null, "dc00899", this.a.jdField_a_of_type_Atky.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_quit", 0, 0, this.a.jdField_a_of_type_Atky.b, "", this.a.jdField_a_of_type_Atky.jdField_a_of_type_Int + "", "");
+    String str2;
+    String str3;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin().equalsIgnoreCase(this.a.jdField_a_of_type_Atkz.c))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayerView", 2, "player truly start! app=" + this.jdField_a_of_type_Atko.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      this.jdField_a_of_type_Atko.jdField_a_of_type_Atib.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, null);
-      if (this.jdField_a_of_type_Atko.jdField_a_of_type_Atjh != null) {
-        this.jdField_a_of_type_Atko.jdField_a_of_type_Atjh.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 100, 0, "");
-      }
-      ((atvs)this.jdField_a_of_type_Atko.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
-      localatix = new atix().i("video_view").h("video");
-      if (!this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Boolean) {
-        break label367;
+      str2 = this.a.jdField_a_of_type_Atky.jdField_a_of_type_JavaLangString;
+      str3 = this.a.jdField_a_of_type_Atky.b;
+      if (!paramBoolean) {
+        break label185;
       }
     }
-    label367:
-    for (paramatkz = "0";; paramatkz = "1")
+    label185:
+    for (String str1 = "1";; str1 = "0")
     {
-      localatix.g(paramatkz).b().f(atix.a + "").a(this.jdField_a_of_type_Atko.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Atko.jdField_a_of_type_Atkz.b();
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        long l = this.jdField_a_of_type_Atko.b();
-        double d = this.jdField_a_of_type_Atko.c() / l;
-        atiy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 1, String.valueOf(d), String.valueOf(l), String.valueOf(this.jdField_a_of_type_Atko.c()), String.valueOf(atiy.a()), true);
-      }
-      this.jdField_a_of_type_Atko.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-      this.jdField_a_of_type_Atko.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
-      this.jdField_a_of_type_Atko.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2026, 300L);
+      azmj.b(null, "dc00899", str2, "", "music_tab", "clk_quit_opener", 0, 0, str3, "", str1, "");
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkv
  * JD-Core Version:    0.7.0.1
  */

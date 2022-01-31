@@ -1,14 +1,17 @@
-public abstract interface auek
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+
+public class auek
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(auej paramauej);
+  public auek(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public abstract boolean a(auej paramauej);
-  
-  public abstract boolean b(auej paramauej);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auek
  * JD-Core Version:    0.7.0.1
  */

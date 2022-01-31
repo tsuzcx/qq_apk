@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import aqza;
+import aspo;
 
 public class HotPicMainPanel$2$1
   implements Runnable
 {
-  public HotPicMainPanel$2$1(aqza paramaqza) {}
+  public HotPicMainPanel$2$1(aspo paramaspo) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class HotPicMainPanel$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicMainPanel.2.1
  * JD-Core Version:    0.7.0.1
  */

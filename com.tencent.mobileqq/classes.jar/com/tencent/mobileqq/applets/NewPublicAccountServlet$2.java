@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.applets;
 
-import akwr;
-import akwt;
+import amnh;
+import amnj;
 
 public class NewPublicAccountServlet$2
   implements Runnable
 {
-  public NewPublicAccountServlet$2(akwt paramakwt, akwr paramakwr) {}
+  public NewPublicAccountServlet$2(amnj paramamnj, amnh paramamnh) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class NewPublicAccountServlet$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.NewPublicAccountServlet.2
  * JD-Core Version:    0.7.0.1
  */

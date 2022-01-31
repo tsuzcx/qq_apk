@@ -1,77 +1,42 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyReq;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.model.GetVirtualListResult;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
 public class bfav
-  extends bfau
+  implements bfnk
 {
-  private MiniAppMidasPay.StQueryStarCurrencyReq a = new MiniAppMidasPay.StQueryStarCurrencyReq();
+  public bfav(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public bfav(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void a()
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    this.a.appId.set(paramString1);
-    this.a.prepayId.set(paramString2);
-    this.a.starCurrency.set(paramInt1);
-    this.a.sandboxEnv.set(paramInt2);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_pay";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    MiniAppMidasPay.StQueryStarCurrencyRsp localStQueryStarCurrencyRsp = new MiniAppMidasPay.StQueryStarCurrencyRsp();
-    try
+    boolean bool = true;
+    GetVirtualListResult localGetVirtualListResult = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
+    if (localGetVirtualListResult != null)
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStQueryStarCurrencyRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStQueryStarCurrencyRsp != null)
+      QLog.d("OpenAuthorityFragment", 1, "getVirtualList onSuccess null != virtualResult");
+      bfnj localbfnj = this.a.jdField_a_of_type_Bfnj;
+      if (localGetVirtualListResult.a == 0) {}
+      for (;;)
       {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStQueryStarCurrencyRsp);
-        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
+        localbfnj.a(bool, localGetVirtualListResult);
+        return;
+        bool = false;
       }
-      betc.a("QueryCurrencyRequest", "onResponse fail.rsp = null");
-      return null;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("QueryCurrencyRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
+    QLog.d("OpenAuthorityFragment", 1, "getVirtualList onSuccess null == virtualResult");
+    this.a.jdField_a_of_type_Bfnj.a(false, null);
   }
   
-  public byte[] a()
+  public void a(int paramInt, String paramString)
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "QueryStarCurrency";
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "getVirtualList onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
+    this.a.jdField_a_of_type_Bfnj.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,30 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-class bbep
-  implements tsc
+public class bbep
+  implements TextWatcher
 {
-  bbep(bbeg parambbeg) {}
+  public bbep(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void a(tno paramtno, bcqf parambcqf)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((parambcqf != null) && (parambcqf.isShowing())) {
-      parambcqf.dismiss();
-    }
-    tsa.a(this.a.a);
-    if ((paramtno != null) && (paramtno.jdField_a_of_type_Int == 0))
+    if ((!TextUtils.isEmpty(this.a.a.b)) && (paramInt1 > 0) && (paramInt1 < this.a.a.b.length() + this.a.a.c.length() + this.a.a.a.length() + this.a.J.length()) && (paramInt2 > paramInt3))
     {
-      tsa.a(paramtno.jdField_a_of_type_JavaLangString, this.a.a);
-      bbeg.a(this.a);
+      this.a.e(false);
       return;
     }
-    if (!bbfj.g(BaseApplicationImpl.getContext()))
-    {
-      bcql.a(BaseApplicationImpl.getApplication(), 1, 2131694611, 1).a();
-      return;
-    }
-    this.a.c = "open";
-    bbeg.a(this.a);
+    TroopBarPublishActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbep
  * JD-Core Version:    0.7.0.1
  */

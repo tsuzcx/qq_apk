@@ -1,41 +1,39 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class vmr
-  implements TextWatcher
+  implements upu
 {
-  vmr(vmq paramvmq) {}
+  vmr(vmq paramvmq, CommentEntry paramCommentEntry, boolean paramBoolean) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_Vmu != null)
-    {
-      this.a.jdField_a_of_type_Vlp.a = paramEditable.toString();
-      this.a.jdField_a_of_type_Vmu.a(this.a.jdField_a_of_type_Vlp);
+    a(-1, alpo.a(2131702552));
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131702549), 0).a();
+    wsv.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+  }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    if (!vml.b(this.jdField_a_of_type_Vmq.a)) {
+      vml.a(this.jdField_a_of_type_Vmq.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_Vmu == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.a(paramCharSequence.toString()) <= 420);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setText(paramCharSequence.subSequence(0, paramInt1));
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setSelection(paramInt1);
-    } while (this.a.jdField_a_of_type_Vmu == null);
-    this.a.jdField_a_of_type_Vmu.b(420);
-  }
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmr
  * JD-Core Version:    0.7.0.1
  */

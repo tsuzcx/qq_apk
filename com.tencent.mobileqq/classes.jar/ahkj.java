@@ -1,32 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.Conversation;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class ahkj
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
   ahkj(ahki paramahki) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (ajcm.a() != null) {
-      ajac.a();
-    }
-    paramDialogInterface = ajac.a();
-    if (paramDialogInterface != null)
-    {
-      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkj
  * JD-Core Version:    0.7.0.1
  */

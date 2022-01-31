@@ -1,44 +1,37 @@
-import java.util.ArrayList;
-import java.util.Comparator;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
 class amoh
-  implements Comparator<amoi>
+  implements MediaPlayer.OnPreparedListener
 {
-  amoh(amod paramamod, boolean paramBoolean, ArrayList paramArrayList) {}
+  amoh(amof paramamof) {}
   
-  public int a(amoi paramamoi1, amoi paramamoi2)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    int i = -1;
-    if (paramamoi1.jdField_a_of_type_Int > paramamoi2.jdField_a_of_type_Int) {}
-    do
+    try
     {
-      return 1;
-      if (paramamoi1.jdField_a_of_type_Int < paramamoi2.jdField_a_of_type_Int) {
-        return -1;
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + amof.b(this.a));
       }
-      if ((paramamoi1.jdField_a_of_type_Boolean) && (!paramamoi2.jdField_a_of_type_Boolean))
+      this.a.a.seekTo(0);
+      amof.b(this.a, true);
+      if (amof.b(this.a))
       {
-        if (this.jdField_a_of_type_Boolean) {}
-        for (;;)
-        {
-          return i;
-          i = 1;
-        }
+        this.a.a.start();
+        amof.c(this.a, false);
       }
-      if ((paramamoi1.jdField_a_of_type_Boolean) || (!paramamoi2.jdField_a_of_type_Boolean)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return -1;
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (Math.abs(paramamoi1.jdField_a_of_type_Float - paramamoi2.jdField_a_of_type_Float) > 3.0F)) {
-      return Float.compare(paramamoi1.jdField_a_of_type_Float, paramamoi2.jdField_a_of_type_Float);
+      return;
     }
-    return 0;
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amoh
  * JD-Core Version:    0.7.0.1
  */

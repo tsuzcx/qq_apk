@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
-
-public class bcah
+class bcah
+  implements bdkt
 {
-  int jdField_a_of_type_Int;
-  bcaa jdField_a_of_type_Bcaa;
-  bcaf jdField_a_of_type_Bcaf;
-  bcai jdField_a_of_type_Bcai;
-  QQVoiceChangerThread jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread;
-  boolean jdField_a_of_type_Boolean;
+  bcah(bcag parambcag) {}
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    this.a.b(bcag.a(this.a));
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcah
  * JD-Core Version:    0.7.0.1
  */

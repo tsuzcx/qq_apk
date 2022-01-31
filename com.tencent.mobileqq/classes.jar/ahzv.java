@@ -1,59 +1,40 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
 
-public class ahzv
+class ahzv
+  extends arqb
 {
-  private ahzw jdField_a_of_type_Ahzw;
-  private ConcurrentHashMap<Integer, aiaa> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  ahzv(ahzt paramahzt) {}
   
-  public ahzv(ahzw paramahzw)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_Ahzw = paramahzw;
-  }
-  
-  public aiaa a(int paramInt)
-  {
-    return (aiaa)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
+    if ((ahzt.a(this.a)) && (ahzt.a(this.a) != null))
     {
-      aiaa localaiaa = (aiaa)localIterator.next();
-      localaiaa.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      localaiaa.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      if (paramView.getId() != 2131365543) {
+        break label43;
+      }
+      ahzt.a(this.a).a(1);
     }
-  }
-  
-  public void a(aiaa paramaiaa)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FrameAdapter", 2, "addFrame, index=" + paramaiaa.jdField_a_of_type_Int);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramaiaa.jdField_a_of_type_Int), paramaiaa);
-    if (this.jdField_a_of_type_Ahzw != null) {
-      this.jdField_a_of_type_Ahzw.a();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    label43:
+    do
+    {
+      return;
+      if (paramView.getId() == 2131365548)
+      {
+        ahzt.a(this.a).a(3);
+        return;
+      }
+      if (paramView.getId() == 2131365544)
+      {
+        ahzt.a(this.a).a(2);
+        return;
+      }
+    } while (paramView.getId() != 2131365542);
+    ahzt.a(this.a).a(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzv
  * JD-Core Version:    0.7.0.1
  */

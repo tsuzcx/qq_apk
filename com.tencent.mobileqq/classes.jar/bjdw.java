@@ -1,10 +1,17 @@
-public abstract interface bjdw
+import java.io.File;
+import java.io.FilenameFilter;
+
+final class bjdw
+  implements FilenameFilter
 {
-  public abstract void a(boolean paramBoolean);
+  public boolean accept(File paramFile, String paramString)
+  {
+    return !paramString.endsWith("OldVersion.version");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjdw
  * JD-Core Version:    0.7.0.1
  */

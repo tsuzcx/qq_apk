@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class RecentInviteUser
-  extends auko
+  extends awbv
   implements Comparable<RecentInviteUser>
 {
   public String lastInviteId;
   public long lastInviteTime;
   public String uin;
   public int uinType;
-  @aumc
+  @awdj
   public String uniKey;
   
   public static String getKey(int paramInt, String paramString)
@@ -34,7 +34,7 @@ public class RecentInviteUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.RecentInviteUser
  * JD-Core Version:    0.7.0.1
  */

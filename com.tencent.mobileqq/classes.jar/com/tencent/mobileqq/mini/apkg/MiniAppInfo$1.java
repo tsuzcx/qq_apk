@@ -3,9 +3,8 @@ package com.tencent.mobileqq.mini.apkg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.model.ResourcePreCacheInfo;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 final class MiniAppInfo$1
   implements Parcelable.Creator<MiniAppInfo>
@@ -50,10 +49,7 @@ final class MiniAppInfo$1
       localMiniAppInfo.developerDesc = paramParcel.readString();
       localMiniAppInfo.extraData = paramParcel.readString();
       localMiniAppInfo.recommend = paramParcel.readInt();
-      if (localMiniAppInfo.reportData == null) {
-        localMiniAppInfo.reportData = new HashMap();
-      }
-      paramParcel.readMap(localMiniAppInfo.reportData, Map.class.getClassLoader());
+      localMiniAppInfo.reportData = paramParcel.readString();
       localMiniAppInfo.appMode = ((AppMode)paramParcel.readParcelable(AppMode.class.getClassLoader()));
       localMiniAppInfo.openId = paramParcel.readString();
       localMiniAppInfo.tinyId = paramParcel.readLong();
@@ -64,10 +60,10 @@ final class MiniAppInfo$1
         bool = true;
         localMiniAppInfo.isSupportBlueBar = bool;
         if (paramParcel.readInt() != 1) {
-          break label659;
+          break label647;
         }
       }
-      label659:
+      label647:
       for (boolean bool = true;; bool = false)
       {
         localMiniAppInfo.isSupportOffline = bool;
@@ -95,6 +91,7 @@ final class MiniAppInfo$1
         localMiniAppInfo.ide_extraAppid = paramParcel.readString();
         localMiniAppInfo.ide_extraData = paramParcel.readString();
         localMiniAppInfo.tianshuAdId = paramParcel.readInt();
+        localMiniAppInfo.resourcePreCacheInfo = paramParcel.createTypedArrayList(ResourcePreCacheInfo.CREATOR);
         return localMiniAppInfo;
         bool = false;
         break;
@@ -114,7 +111,7 @@ final class MiniAppInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.MiniAppInfo.1
  * JD-Core Version:    0.7.0.1
  */

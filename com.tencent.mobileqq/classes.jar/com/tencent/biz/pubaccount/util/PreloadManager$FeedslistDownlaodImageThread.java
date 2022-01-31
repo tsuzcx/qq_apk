@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import seu;
+import swo;
 
 class PreloadManager$FeedslistDownlaodImageThread
   implements Runnable
 {
   PreloadManager$FeedslistDownlaodImageThread(PreloadManager paramPreloadManager) {}
   
-  seu a()
+  swo a()
   {
     Object localObject1 = this.this$0.a;
     int i = 3;
@@ -20,7 +20,7 @@ class PreloadManager$FeedslistDownlaodImageThread
     {
       try
       {
-        seu localseu;
+        swo localswo;
         do
         {
           Iterator localIterator = PreloadManager.a(this.this$0).values().iterator();
@@ -36,12 +36,12 @@ class PreloadManager$FeedslistDownlaodImageThread
             }
             localObject3 = ((ArrayList)localObject3).iterator();
           }
-          localseu = (seu)((Iterator)localObject3).next();
-          if (localseu == null) {
+          localswo = (swo)((Iterator)localObject3).next();
+          if (localswo == null) {
             return null;
           }
-        } while ((PreloadManager.a(localseu.jdField_a_of_type_JavaLangString) != 0) || (localseu.jdField_a_of_type_Int != i));
-        return localseu;
+        } while ((PreloadManager.a(localswo.jdField_a_of_type_JavaLangString) != 0) || (localswo.jdField_a_of_type_Int != i));
+        return localswo;
       }
       finally {}
       i -= 1;
@@ -54,21 +54,21 @@ class PreloadManager$FeedslistDownlaodImageThread
     this.this$0.b = true;
     for (;;)
     {
-      seu localseu = a();
-      if (localseu == null) {
+      swo localswo = a();
+      if (localswo == null) {
         break;
       }
       if (NetworkState.getNetworkType() != 1) {
         return;
       }
-      this.this$0.b(localseu.jdField_a_of_type_JavaLangString);
+      this.this$0.b(localswo.jdField_a_of_type_JavaLangString);
     }
     this.this$0.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PreloadManager.FeedslistDownlaodImageThread
  * JD-Core Version:    0.7.0.1
  */

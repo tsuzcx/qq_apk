@@ -1,32 +1,65 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aoth
-  implements bfph
+public class aoth
+  extends aofy<aotf>
 {
-  aoth(aotg paramaotg, FileManagerEntity paramFileManagerEntity, bfpc parambfpc) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static aotf a()
   {
-    if (QfileBaseRecentFileTabView.o(this.jdField_a_of_type_Aotg.a.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId)) {}
-    this.jdField_a_of_type_Aotg.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) && (3000 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType)) {
-      QfileBaseRecentFileTabView.p(this.jdField_a_of_type_Aotg.a.a).a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
+    return (aotf)aogj.a().a(569);
+  }
+  
+  public int a()
+  {
+    return 569;
+  }
+  
+  @NonNull
+  public aotf a(int paramInt)
+  {
+    return new aotf();
+  }
+  
+  @Nullable
+  public aotf a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aotf.a(paramArrayOfaogf);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM = true;
-    QfileBaseRecentFileTabView.q(this.jdField_a_of_type_Aotg.a.a).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_Aotg.a.a.g();
-    if (this.jdField_a_of_type_Bfpc.isShowing()) {
-      this.jdField_a_of_type_Bfpc.dismiss();
-    }
+    return null;
+  }
+  
+  public Class<aotf> a()
+  {
+    return aotf.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TencentDocFormKeyWordsProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public void a(aotf paramaotf) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoth
  * JD-Core Version:    0.7.0.1
  */

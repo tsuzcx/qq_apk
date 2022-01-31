@@ -1,32 +1,76 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
-class bkbf
-  implements ValueAnimator.AnimatorUpdateListener
+public class bkbf
+  extends bkbk
 {
-  bkbf(bkbd parambkbd) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bkbf(String paramString, View paramView)
   {
-    if (this.a.a.b == null) {
-      return;
+    super(paramString, paramView);
+  }
+  
+  private ImageView.ScaleType a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return ImageView.ScaleType.CENTER_CROP;
     }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * (1.0F - f));
-    this.a.t = (this.a.e + this.a.g * (1.0F - f));
-    this.a.q = (this.a.b + this.a.h * (1.0F - f));
-    this.a.r = (this.a.c + this.a.i * (1.0F - f));
-    if (f == 1.0F)
+    if ("center_crop".equals(paramString)) {
+      return ImageView.ScaleType.CENTER_CROP;
+    }
+    if ("fit_center".equals(paramString)) {
+      return ImageView.ScaleType.FIT_CENTER;
+    }
+    return ImageView.ScaleType.CENTER_CROP;
+  }
+  
+  protected void a(String paramString)
+  {
+    if (!bhos.a(paramString)) {}
+    do
     {
-      this.a.a.b = null;
-      this.a.a.b(4);
-    }
-    bkba.b(this.a.a);
+      return;
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
+      {
+        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
+        localURLDrawableOptions.mRequestHeight = this.b;
+      }
+      localURLDrawableOptions.mLoadingDrawable = baul.a;
+      localURLDrawableOptions.mFailedDrawable = baul.a;
+      localURLDrawableOptions.mPlayGifImage = false;
+      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    } while (paramString == null);
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(paramString);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {}
+    do
+    {
+      return;
+      if ("content".equals(paramString1))
+      {
+        a(paramString2);
+        return;
+      }
+    } while (!"scale_type".equals(paramString1));
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setScaleType(a(paramString2));
+  }
+  
+  protected void b()
+  {
+    super.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkbf
  * JD-Core Version:    0.7.0.1
  */

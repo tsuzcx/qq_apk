@@ -1,79 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.cache.SDCardMountMonitorReceiver;
-import java.io.File;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class ahzo
-  implements bhcr
+class ahzo
 {
-  private static ahzo jdField_a_of_type_Ahzo;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ahzp jdField_a_of_type_Ahzp;
-  private String jdField_a_of_type_JavaLangString = "";
+  private View jdField_a_of_type_AndroidViewView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  private TextView c;
   
-  private ahzo()
+  public ahzo(View paramView)
   {
-    a();
-    SDCardMountMonitorReceiver.a().a(this);
-  }
-  
-  public static ahzo a()
-  {
-    if (jdField_a_of_type_Ahzo == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Ahzo == null) {
-        jdField_a_of_type_Ahzo = new ahzo();
-      }
-      return jdField_a_of_type_Ahzo;
-    }
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaLangString = bhcg.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("StorageManager", 2, "updateStorePath, storeVideoPath=" + this.jdField_a_of_type_JavaLangString);
-    }
-    try
-    {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("StorageManager", 2, "create root path directory error", localException);
-    }
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StorageManager", 2, "sdcard mount receiver, isMount=" + paramBoolean);
-    }
-    String str = bhcg.b();
-    if ((this.jdField_a_of_type_Ahzp != null) && (!str.equals(this.jdField_a_of_type_JavaLangString)))
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_Ahzp.a(1, this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Ahzp.a(0, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368579);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369485));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369491));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377972));
+    this.b = ((TextView)paramView.findViewById(2131365004));
+    this.c = ((TextView)paramView.findViewById(2131371140));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365120));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzo
  * JD-Core Version:    0.7.0.1
  */

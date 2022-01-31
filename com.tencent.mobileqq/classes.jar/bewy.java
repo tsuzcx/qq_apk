@@ -1,75 +1,91 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class bewy
-  implements AsyncResult
+public class bewy
 {
-  bewy(beww parambeww) {}
+  public static String a = "ctnet";
+  public static String b = "ctwap";
+  public static String c = "cmnet";
+  public static String d = "cmwap";
+  public static String e = "uninet";
+  public static String f = "uniwap";
+  public static String g = "3gnet";
+  public static String h = "3gwap";
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public static int a(Context paramContext)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
+    int i = 0;
+    switch (AppNetConnInfo.getConnInfo())
     {
-      long l = paramJSONObject.optLong("retCode");
-      Object localObject = paramJSONObject.optString("errMsg");
-      betc.a("MiniAppInfoLoadTask", "getAppInfoByLink, retCode = " + l + ",errMsg = " + (String)localObject);
-      if (l != 0L)
-      {
-        if ((TextUtils.isEmpty((CharSequence)localObject)) && (bfgi.a())) {
-          new StringBuilder().append("请求失败").append(", retCode = ").append(l).toString();
-        }
-        this.a.f();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NetUtil", 2, "getNetType " + i);
       }
-      localObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
-      paramJSONObject = paramJSONObject.optString("shareTicket", "");
-      if ((l == 0L) && (localObject != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject).appId)))
+      return i;
+      switch (AppNetConnInfo.getMobileInfo())
       {
-        ((MiniAppInfo)localObject).launchParam.a(beww.a(this.a).launchParam);
-        ((MiniAppInfo)localObject).apkgInfo = beww.a(this.a).apkgInfo;
-        ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaLangString = ((MiniAppInfo)localObject).appId;
-        ((MiniAppInfo)localObject).launchParam.h = paramJSONObject;
-        ((MiniAppInfo)localObject).launchParam.e = ((MiniAppInfo)localObject).extraData;
-        if (!TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.h)) {
-          ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_Int = 1044;
-        }
-        if (((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaUtilMap == null) {
-          ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaUtilMap = new HashMap();
-        }
-        if (((MiniAppInfo)localObject).reportData != null) {
-          ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaUtilMap.putAll(((MiniAppInfo)localObject).reportData);
-        }
-        if (((MiniAppInfo)localObject).verType != 3) {
-          ((MiniAppInfo)localObject).forceReroad = 3;
-        }
-        beww.a(this.a, (MiniAppInfo)localObject);
-        this.a.c();
-        return;
-      }
-      bezl.a(beww.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
-      beyq.a("2launch_fail", "shotcut_request_fail", null, beww.a(this.a));
-      if (localObject == null) {
-        betc.d("MiniAppInfoLoadTask", "getAppInfoByLink  onCmdListener appinfo==null retCode= " + l);
-      }
-      for (;;)
-      {
-        this.a.f();
-        return;
-        betc.d("MiniAppInfoLoadTask", "getAppInfoByLink  onCmdListener retCode= " + l + " appid=" + ((MiniAppInfo)localObject).appId);
+      default: 
+        break;
+      case 1: 
+        i = 2;
+        break;
+      case 2: 
+        i = 3;
+        break;
+      case 3: 
+        i = 4;
+        continue;
+        i = 1;
       }
     }
-    bezl.a(beww.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
-    beyq.a("2launch_fail", "shotcut_request_fail", null, beww.a(this.a));
-    this.a.f();
+  }
+  
+  public static String a(Context paramContext)
+  {
+    String str1 = "nomatch";
+    String str2 = AppNetConnInfo.getCurrentAPN();
+    paramContext = str1;
+    if (!TextUtils.isEmpty(str2))
+    {
+      if (!str2.startsWith(a)) {
+        break label32;
+      }
+      paramContext = a;
+    }
+    label32:
+    do
+    {
+      return paramContext;
+      if (str2.startsWith(b)) {
+        return b;
+      }
+      if (str2.startsWith(c)) {
+        return c;
+      }
+      if (str2.startsWith(d)) {
+        return d;
+      }
+      if (str2.startsWith(e)) {
+        return e;
+      }
+      if (str2.startsWith(f)) {
+        return f;
+      }
+      if (str2.startsWith(g)) {
+        return g;
+      }
+      paramContext = str1;
+    } while (!str2.startsWith(h));
+    return h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bewy
  * JD-Core Version:    0.7.0.1
  */

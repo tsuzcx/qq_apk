@@ -1,26 +1,36 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aqzu
-  implements Animation.AnimationListener
+public abstract interface aqzu
 {
-  aqzu(aqzt paramaqzt) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.a.a == 3) {
-      this.a.d.setVisibility(8);
-    }
-  }
+  public abstract long a();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract FileManagerEntity a();
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract String a();
+  
+  public abstract void a(Object paramObject, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract void aD_();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzu
  * JD-Core Version:    0.7.0.1
  */

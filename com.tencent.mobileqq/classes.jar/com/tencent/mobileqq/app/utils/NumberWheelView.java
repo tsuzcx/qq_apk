@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.utils;
 
-import akwd;
-import akwe;
+import ammt;
+import ammu;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import bfpv;
-import bfxa;
-import bfxb;
-import bfxc;
+import bhqr;
+import bhxx;
+import bhxy;
+import bhxz;
 import com.tencent.mobileqq.remind.widget.WheelTextView;
 import com.tencent.mobileqq.remind.widget.WheelView;
 import com.tencent.widget.AdapterView;
@@ -18,11 +18,11 @@ import java.util.List;
 
 public class NumberWheelView
   extends WheelView
-  implements bfpv, bfxa, bfxb, bfxc
+  implements bhqr, bhxx, bhxy, bhxz
 {
   public int a;
-  private akwd jdField_a_of_type_Akwd;
-  private akwe jdField_a_of_type_Akwe;
+  private ammt jdField_a_of_type_Ammt;
+  private ammu jdField_a_of_type_Ammu;
   private Context jdField_a_of_type_AndroidContentContext;
   private final int h = 0;
   private final int i = 36;
@@ -88,10 +88,10 @@ public class NumberWheelView
   public int a()
   {
     int i1 = getSelectedItemPosition();
-    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_Akwd.a.size())) {
+    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_Ammt.a.size())) {
       return 0;
     }
-    return ((Integer)this.jdField_a_of_type_Akwd.a.get(i1)).intValue();
+    return ((Integer)this.jdField_a_of_type_Ammt.a.get(i1)).intValue();
   }
   
   public void a(View paramView, int paramInt)
@@ -99,33 +99,19 @@ public class NumberWheelView
     b(paramView, 1);
   }
   
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    int i1 = this.jdField_a_of_type_Akwd.getCount();
-    paramInt = 0;
-    while (paramInt < i1)
-    {
-      b(paramAdapterView.getChildAt(paramInt), 0);
-      paramInt += 1;
-    }
-    b(paramView, 1);
-  }
-  
   public void a(VerticalGallery paramVerticalGallery)
   {
     this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_Akwe != null) {
-      this.jdField_a_of_type_Akwe.a(this, paramVerticalGallery);
+    if (this.jdField_a_of_type_Ammu != null) {
+      this.jdField_a_of_type_Ammu.a(this, paramVerticalGallery);
     }
   }
   
   public void b(VerticalGallery paramVerticalGallery)
   {
     this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_Akwe != null) {
-      this.jdField_a_of_type_Akwe.a(this, paramVerticalGallery);
+    if (this.jdField_a_of_type_Ammu != null) {
+      this.jdField_a_of_type_Ammu.a(this, paramVerticalGallery);
     }
   }
   
@@ -137,6 +123,20 @@ public class NumberWheelView
     }
     return bool;
   }
+  
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    int i1 = this.jdField_a_of_type_Ammt.getCount();
+    paramInt = 0;
+    while (paramInt < i1)
+    {
+      b(paramAdapterView.getChildAt(paramInt), 0);
+      paramInt += 1;
+    }
+    b(paramView, 1);
+  }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
@@ -154,20 +154,20 @@ public class NumberWheelView
       this.p = paramInt2;
       this.q = paramInt1;
     }
-    while (this.jdField_a_of_type_Akwd == null)
+    while (this.jdField_a_of_type_Ammt == null)
     {
-      this.jdField_a_of_type_Akwd = new akwd(this, this.jdField_a_of_type_AndroidContentContext, 36, this.p, this.q);
-      setAdapter(this.jdField_a_of_type_Akwd);
+      this.jdField_a_of_type_Ammt = new ammt(this, this.jdField_a_of_type_AndroidContentContext, 36, this.p, this.q);
+      setAdapter(this.jdField_a_of_type_Ammt);
       return;
       this.q = paramInt2;
       this.p = paramInt1;
     }
-    this.jdField_a_of_type_Akwd.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Ammt.a(paramInt1, paramInt2);
   }
   
-  public void setScrollStateListener(akwe paramakwe)
+  public void setScrollStateListener(ammu paramammu)
   {
-    this.jdField_a_of_type_Akwe = paramakwe;
+    this.jdField_a_of_type_Ammu = paramammu;
   }
   
   public void setValue(int paramInt)

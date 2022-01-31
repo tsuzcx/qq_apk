@@ -1,30 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.content.res.Resources;
-import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
-import onh;
-import onk;
+import com.tencent.mobileqq.widget.QQToast;
+import ors;
+import orv;
 
 public class ReadInJoyUtils$15$2
   implements Runnable
 {
-  public ReadInJoyUtils$15$2(onk paramonk) {}
+  public ReadInJoyUtils$15$2(orv paramorv) {}
   
   public void run()
   {
-    if (onh.g() >= 2)
+    if (ors.g() >= 2)
     {
-      bcql.a(this.this$0.a, 0, this.this$0.a.getString(2131718435), 0).b(this.this$0.a.getResources().getDimensionPixelSize(2131298865));
+      QQToast.a(this.this$0.a, 0, this.this$0.a.getString(2131718857), 0).b(this.this$0.a.getResources().getDimensionPixelSize(2131298914));
       return;
     }
-    onh.b(this.this$0.a);
-    onh.a("3", "2");
+    ors.a(this.this$0.a);
+    ors.a("3", "2");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.2
  * JD-Core Version:    0.7.0.1
  */

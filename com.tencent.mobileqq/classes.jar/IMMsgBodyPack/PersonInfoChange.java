@@ -42,7 +42,7 @@ public final class PersonInfoChange
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     IMMsgBodyPack.PersonInfoChange
  * JD-Core Version:    0.7.0.1
  */

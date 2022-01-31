@@ -1,29 +1,56 @@
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
 
 public class vvt
+  extends vox
 {
-  public static final int[] a;
-  public static final int[] b;
-  public int a;
-  public Drawable a;
-  public int b;
+  public vvt(vvs paramvvs) {}
   
-  static
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { -16777216, -1, -2148308, -1009097, -8136876, -13338378, -8464904, -531608, -1551972 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130845877, 2130845875, 2130845878, 2130845876, 2130845881, 2130845880, 2130845884, 2130845879, 2130845882 };
-  }
-  
-  public vvt(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    String str1;
+    String str2;
+    if ((paramInt1 == 20000) && (paramInt2 == -1))
+    {
+      paramIntent = BaseActivity.sActivityRoute;
+      str1 = SplashActivity.class.getSimpleName();
+      str2 = QQStoryMainActivity.class.getSimpleName();
+      paramInt1 = paramIntent.size() - 1;
+    }
+    for (;;)
+    {
+      String str3;
+      if (paramInt1 >= 0)
+      {
+        str3 = (String)paramIntent.get(paramInt1);
+        if (TextUtils.isEmpty(str3)) {
+          break label95;
+        }
+        if (str3.startsWith(str1)) {
+          this.a.b();
+        }
+      }
+      else
+      {
+        return;
+      }
+      if (TextUtils.equals(str3, str2))
+      {
+        this.a.c();
+        return;
+      }
+      label95:
+      paramInt1 -= 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvt
  * JD-Core Version:    0.7.0.1
  */

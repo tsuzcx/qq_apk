@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aclc;
+import aecm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class TroopMemberListActivity$TroopAdmin
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopAdmin> CREATOR = new aclc();
+  public static final Parcelable.Creator<TroopAdmin> CREATOR = new aecm();
   public String a;
   public short a;
   public String b;
@@ -51,7 +51,7 @@ public class TroopMemberListActivity$TroopAdmin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin
  * JD-Core Version:    0.7.0.1
  */

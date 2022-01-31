@@ -1,12 +1,20 @@
-import android.graphics.Bitmap;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public abstract interface bbaw
+public final class bbaw
+  extends Editable.Factory
 {
-  public abstract void a(Bitmap paramBitmap);
+  public Editable newEditable(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof baiq)) {
+      return (Editable)paramCharSequence;
+    }
+    return new baiq(paramCharSequence, 3, 20);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbaw
  * JD-Core Version:    0.7.0.1
  */

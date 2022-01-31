@@ -1,44 +1,43 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-public abstract interface bjrm
+class bjrm
+  implements ModuleDownloadListener
 {
-  public abstract View a();
+  bjrm(bjrl parambjrl, bjro parambjro) {}
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public void onDownloadCanceled(String paramString)
+  {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
   
-  public abstract void a(Intent paramIntent);
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
+    bjrl.a(this.jdField_a_of_type_Bjrl, false);
+    this.jdField_a_of_type_Bjro.a(false);
+  }
   
-  public abstract void a(Bundle paramBundle);
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
   
-  public abstract boolean a();
-  
-  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
-  
-  public abstract void b(Bundle paramBundle);
-  
-  public abstract void b_(int paramInt1, int paramInt2);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void p();
-  
-  public abstract void s();
-  
-  public abstract void t();
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("xmpcore.jar")) {
+      return;
+    }
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", bjrl.a(), " onDownloadSucceed = ", bjrl.b() });
+    LocalMultiProcConfig.putString("xmp_core_file_md5", bjrl.b());
+    bjrl.a(this.jdField_a_of_type_Bjrl);
+    this.jdField_a_of_type_Bjro.a(bjrl.a(this.jdField_a_of_type_Bjrl));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjrm
  * JD-Core Version:    0.7.0.1
  */

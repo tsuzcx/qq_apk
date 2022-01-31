@@ -1,54 +1,87 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.util.Log;
+import com.tencent.tmassistant.common.ProtocolPackage;
+import com.tencent.tmassistant.common.jce.ReqHead;
+import com.tencent.tmassistant.common.jce.Request;
+import com.tencent.tmassistant.common.jce.Response;
+import com.tencent.tmassistant.common.jce.StatItem;
+import com.tencent.tmassistant.common.jce.StatReportRequest;
+import com.tencent.tmassistant.common.jce.StatReportResponse;
+import java.util.ArrayList;
 
-@behk(a="BaselibLoadAsyncTask")
 public class bfec
-  extends bffh
+  extends bfee
 {
-  private best a;
+  protected bfed a;
   
-  public bfec(Context paramContext, beqm parambeqm)
+  public int a(ArrayList<StatItem> paramArrayList)
   {
-    super(paramContext, parambeqm);
+    StatReportRequest localStatReportRequest = new StatReportRequest();
+    localStatReportRequest.data = paramArrayList;
+    return a(localStatReportRequest);
   }
   
-  public void a()
+  public void a(bfed parambfed)
   {
-    beyq.a(204, "", a().getMiniAppInfoForReport());
-    betc.a("AppRuntimeLoader", "startLoadBaseLib.");
-    boolean bool = a();
-    if (a().getMiniAppInfoForReport() != null) {}
-    for (String str = a().getMiniAppInfoForReport().appId; bool; str = "")
+    this.a = parambfed;
+  }
+  
+  public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
+  {
+    Log.i("StatReportHttpRequest", "errorCode: " + paramInt);
+    Response localResponse = ProtocolPackage.unpackPackage(paramArrayOfByte2);
+    paramArrayOfByte1 = ProtocolPackage.unpackRequestPackage(paramArrayOfByte1);
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.head != null)) {}
+    for (int i = paramArrayOfByte1.head.requestId;; i = 0)
     {
-      c();
-      return;
+      if ((paramArrayOfByte2 == null) && (this.a != null))
+      {
+        Log.i("StatReportHttpRequest", "response is null");
+        this.a.a(i, null, null, paramInt);
+        return;
+      }
+      if (this.a != null)
+      {
+        if ((localResponse == null) || (localResponse.body == null)) {
+          break label225;
+        }
+        paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(localResponse.body, StatReportResponse.class);
+        if (paramArrayOfByte1 == null) {
+          break label208;
+        }
+        if (paramInt != 0) {
+          break label191;
+        }
+        if ((paramArrayOfByte1 instanceof StatReportResponse))
+        {
+          paramArrayOfByte1 = (StatReportResponse)paramArrayOfByte1;
+          if (paramArrayOfByte1.ret != 0) {
+            break label171;
+          }
+          this.a.a(i, null, paramArrayOfByte1, 0);
+        }
+      }
+      for (;;)
+      {
+        Log.i("StatReportHttpRequest", "exit");
+        return;
+        label171:
+        this.a.a(i, null, paramArrayOfByte1, paramArrayOfByte1.ret);
+        continue;
+        label191:
+        this.a.a(i, null, null, paramInt);
+        continue;
+        label208:
+        this.a.a(i, null, null, paramInt);
+        continue;
+        label225:
+        this.a.a(i, null, null, paramInt);
+      }
     }
-    bezi.a(beze.a(), 10, "0");
-    beys.b(str, true);
-    MiniAppEnv.g().getBaselibLoader().loadBaselib(a(), new bfed(this));
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (this.a.a());
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.a = null;
-  }
-  
-  public void c()
-  {
-    super.c();
-    beyq.a(205, "", a().getMiniAppInfoForReport());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfec
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.handlers.FrameworkHandler.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class pdf
+public class pdf
   implements View.OnClickListener
 {
-  pdf(pcy parampcy, String paramString1, String paramString2) {}
+  pdf(pde parampde) {}
   
   public void onClick(View paramView)
   {
-    pcy.a(2, this.jdField_a_of_type_JavaLangString);
-    onh.a(pcy.a(this.jdField_a_of_type_Pcy), this.b);
+    this.a.a(false);
+    ThreadManager.executeOnSubThread(new FrameworkHandler.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pdf
  * JD-Core Version:    0.7.0.1
  */

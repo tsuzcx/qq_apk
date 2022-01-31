@@ -1,38 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.widget.GridListView;
 
 public class belr
+  extends DataSetObserver
 {
-  private static volatile belr jdField_a_of_type_Belr;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bels(this);
-  private belt jdField_a_of_type_Belt;
+  public belr(GridListView paramGridListView) {}
   
-  public static belr a()
+  public void onChanged()
   {
-    if (jdField_a_of_type_Belr == null) {}
-    try
-    {
-      if (jdField_a_of_type_Belr == null) {
-        jdField_a_of_type_Belr = new belr();
-      }
-      return jdField_a_of_type_Belr;
+    if (this.a.jdField_a_of_type_Belu != null) {
+      GridListView.a(this.a, this.a.jdField_a_of_type_Belu.getCount());
     }
-    finally {}
+    if (this.a.jdField_a_of_type_Belv != null) {
+      this.a.jdField_a_of_type_Belv.notifyDataSetChanged();
+    }
   }
   
-  public void a()
+  public void onInvalidated()
   {
-    if ((this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (this.jdField_a_of_type_Belt != null))
-    {
-      MiniAppEnv.g().getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Belt = null;
+    if (this.a.jdField_a_of_type_Belu != null) {
+      GridListView.a(this.a, this.a.jdField_a_of_type_Belu.getCount());
+    }
+    if (this.a.jdField_a_of_type_Belv != null) {
+      this.a.jdField_a_of_type_Belv.notifyDataSetInvalidated();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     belr
  * JD-Core Version:    0.7.0.1
  */

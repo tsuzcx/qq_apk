@@ -1,35 +1,26 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
-final class wal
-  extends waa
+class wal
+  extends vdz
 {
-  wal(waa paramwaa, PublishVideoEntry paramPublishVideoEntry) {}
+  wal(wak paramwak) {}
   
-  public void onFailure(String paramString)
+  public void a()
   {
-    QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 1, paramString);
-    this.jdField_a_of_type_Waa.onFailure(paramString);
-    vei.a("music_composite", "music_clip", 0, 1, new String[0]);
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio failed  msg：" + paramString);
+    super.a();
+    wak.a(this.a).jdField_a_of_type_Vdt = null;
   }
   
-  public void onStart()
+  public void a(int paramInt)
   {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio start");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    paramString = String.valueOf(System.currentTimeMillis() - this.b);
-    vei.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio end cost：" + paramString);
+    super.a(paramInt);
+    wta.a("share_story", "day_suc", 0, paramInt, new String[] { wak.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wal
  * JD-Core Version:    0.7.0.1
  */

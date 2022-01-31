@@ -1,74 +1,59 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class amqh
-  extends ampa<amqg>
 {
-  public static void b()
+  private int jdField_a_of_type_Int;
+  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  
+  public amqh(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    amqg localamqg = (amqg)ampl.a().a(430);
-    amqg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localamqg);
+    this.jdField_a_of_type_JavaIoBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = 0;
+    if ((this.c != 8) && (this.c != 16)) {
+      throw new RuntimeException(String.format("bit deepth must be 8 or 16, current is %s", new Object[] { Integer.valueOf(this.c) }));
+    }
   }
   
-  public int a()
+  public void a()
   {
-    return 430;
+    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaIoBufferedInputStream.close();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
   }
   
-  @NonNull
-  public amqg a(int paramInt)
+  public byte[] a(long paramLong)
   {
-    return new amqg();
-  }
-  
-  @Nullable
-  public amqg a(amph[] paramArrayOfamph)
-  {
-    return amqg.a(paramArrayOfamph);
-  }
-  
-  public Class<amqg> a()
-  {
-    return amqg.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(amqg paramamqg)
-  {
-    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
-    amqg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramamqg);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    int i = (int)(this.jdField_a_of_type_Int * paramLong / 1000L) * this.b * (this.c / 8);
+    byte[] arrayOfByte1 = new byte[i];
+    byte[] arrayOfByte2 = new byte[i];
+    i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(arrayOfByte1, this.d, i);
+    if (i != -1) {
+      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, i);
+    }
+    QLog.d("AudioGenerator", 4, String.format("read index:%s, len: %s", new Object[] { Integer.valueOf(this.e), Integer.valueOf(i) }));
+    return arrayOfByte2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqh
  * JD-Core Version:    0.7.0.1
  */

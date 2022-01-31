@@ -306,7 +306,7 @@ public class InjectUtils
     //   170: invokevirtual 48	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   173: aload 10
     //   175: iconst_1
-    //   176: invokestatic 153	akhc:a	(Landroid/app/Application;Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   176: invokestatic 153	alys:a	(Landroid/app/Application;Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
     //   179: astore 5
     //   181: ldc 11
     //   183: iconst_1
@@ -406,43 +406,45 @@ public class InjectUtils
     //   6: istore_2
     //   7: iload_2
     //   8: bipush 21
-    //   10: if_icmpge +29 -> 39
+    //   10: if_icmpge +33 -> 43
     //   13: aload_0
-    //   14: iload_1
-    //   15: invokestatic 173	com/tencent/mobileqq/app/InjectUtils:injectExtraDexManual	(Landroid/app/Application;Z)Ljava/lang/String;
-    //   18: astore_0
-    //   19: ldc 2
-    //   21: monitorexit
-    //   22: aload_0
-    //   23: areturn
-    //   24: astore_0
-    //   25: ldc 11
-    //   27: iconst_1
-    //   28: ldc 113
-    //   30: aload_0
-    //   31: invokestatic 107	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   34: aconst_null
-    //   35: astore_0
-    //   36: goto -17 -> 19
-    //   39: ldc 8
-    //   41: astore_0
-    //   42: goto -23 -> 19
+    //   14: invokestatic 175	com/tencent/commonsdk/soload/DexReleasor:initDexCount	(Landroid/content/Context;)V
+    //   17: aload_0
+    //   18: iload_1
+    //   19: invokestatic 177	com/tencent/mobileqq/app/InjectUtils:injectExtraDexManual	(Landroid/app/Application;Z)Ljava/lang/String;
+    //   22: astore_0
+    //   23: ldc 2
+    //   25: monitorexit
+    //   26: aload_0
+    //   27: areturn
+    //   28: astore_0
+    //   29: ldc 11
+    //   31: iconst_1
+    //   32: ldc 113
+    //   34: aload_0
+    //   35: invokestatic 107	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   38: aconst_null
+    //   39: astore_0
+    //   40: goto -17 -> 23
+    //   43: ldc 8
     //   45: astore_0
-    //   46: ldc 2
-    //   48: monitorexit
-    //   49: aload_0
-    //   50: athrow
+    //   46: goto -23 -> 23
+    //   49: astore_0
+    //   50: ldc 2
+    //   52: monitorexit
+    //   53: aload_0
+    //   54: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	51	0	paramApplication	android.app.Application
-    //   0	51	1	paramBoolean	boolean
+    //   0	55	0	paramApplication	android.app.Application
+    //   0	55	1	paramBoolean	boolean
     //   6	5	2	i	int
     // Exception table:
     //   from	to	target	type
-    //   13	19	24	java/lang/Throwable
-    //   3	7	45	finally
-    //   13	19	45	finally
-    //   25	34	45	finally
+    //   13	23	28	java/lang/Throwable
+    //   3	7	49	finally
+    //   13	23	49	finally
+    //   29	38	49	finally
   }
 }
 

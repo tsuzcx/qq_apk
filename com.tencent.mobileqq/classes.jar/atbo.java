@@ -1,35 +1,123 @@
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherClientIPCModule.1;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-class atbo
-  implements apwm
+public class atbo
+  extends QIPCModule
 {
-  atbo(atbm paramatbm) {}
+  private static volatile atbo jdField_a_of_type_Atbo;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public atbo(String paramString)
   {
-    QLog.d(atbm.a(this.a), 2, "onDownloadFailed,errCode=" + paramInt);
-  }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.d(atbm.a(this.a), 2, "onDownloadSucess,filePath:" + paramString);
+    super(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchTogetherClientIPCModule", 2, "WatchTogetherClientIPCModule register");
     }
   }
   
-  public void b(int paramInt, Bundle paramBundle) {}
+  public static atbo a()
+  {
+    if (jdField_a_of_type_Atbo == null) {}
+    try
+    {
+      if (jdField_a_of_type_Atbo == null) {
+        jdField_a_of_type_Atbo = new atbo("WatchTogetherClientIPCModule");
+      }
+      return jdField_a_of_type_Atbo;
+    }
+    finally {}
+  }
   
-  public void c(int paramInt, Bundle paramBundle) {}
+  private boolean a()
+  {
+    return Thread.currentThread() == Looper.getMainLooper().getThread();
+  }
   
-  public void d(int paramInt, Bundle paramBundle) {}
+  public void a(String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData)
+  {
+    if (a())
+    {
+      if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
+        atbj.a().a(BaseApplicationImpl.getContext(), paramWatchTogetherFloatingData);
+      }
+      do
+      {
+        return;
+        if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
+        {
+          atbj.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+          return;
+        }
+      } while (!"ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString));
+      atbj.a().b();
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherClientIPCModule.1(this, paramString, paramWatchTogetherFloatingData));
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchTogetherClientIPCModule", 2, "call TogetherBusinessIPCModule action=" + paramString);
+    }
+    EIPCResult localEIPCResult = new EIPCResult();
+    if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
+      if (paramBundle != null)
+      {
+        paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
+        if (paramBundle != null)
+        {
+          a(paramString, paramBundle);
+          localEIPCResult.code = 0;
+        }
+      }
+    }
+    for (;;)
+    {
+      callbackResult(paramInt, localEIPCResult);
+      return localEIPCResult;
+      localEIPCResult.code = -102;
+      continue;
+      localEIPCResult.code = -102;
+      continue;
+      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
+      {
+        if (paramBundle != null)
+        {
+          paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
+          if (paramBundle != null)
+          {
+            a(paramString, paramBundle);
+            localEIPCResult.code = 0;
+          }
+          else
+          {
+            localEIPCResult.code = -102;
+          }
+        }
+        else
+        {
+          localEIPCResult.code = -102;
+        }
+      }
+      else if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString))
+      {
+        a(paramString, new WatchTogetherFloatingData());
+        localEIPCResult.code = 0;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbo
  * JD-Core Version:    0.7.0.1
  */

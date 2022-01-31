@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
-public final class asjf
-  implements Parcelable.Creator<MiniAppOptions>
+public class asjf
+  implements nbs
 {
-  public MiniAppOptions a(Parcel paramParcel)
+  public asjf(QQGameHelper.2 param2) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    return new MiniAppOptions(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameHelper", 2, "load 4235 html web resource finish code:" + paramInt);
+    }
   }
   
-  public MiniAppOptions[] a(int paramInt)
-  {
-    return new MiniAppOptions[paramInt];
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asjf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,29 @@
-public abstract interface bcly
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.troop.widget.AddedRobotView;
+import com.tencent.qphone.base.util.QLog;
+
+public class bcly
+  extends RecyclerView.OnScrollListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public bcly(AddedRobotView paramAddedRobotView) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      AddedRobotView.a(this.a).c();
+    }
+    while (!AddedRobotView.a(this.a).a()) {
+      return;
+    }
+    AddedRobotView.a(this.a).b();
+    AddedRobotView.a(this.a).notifyDataSetChanged();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcly
  * JD-Core Version:    0.7.0.1
  */

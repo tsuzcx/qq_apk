@@ -1,18 +1,18 @@
 package com.tencent.open.appstore.dl;
 
-import bdlr;
-import bdmk;
+import bfko;
+import bflh;
 
 public class DownloadManagerV2$18
   implements Runnable
 {
   public void run()
   {
-    if (bdmk.a()) {
-      bdmk.a().a();
+    if (bflh.a()) {
+      bflh.a().a();
     }
-    if (bdlr.d()) {
-      bdlr.a().h();
+    if (bfko.d()) {
+      bfko.a().h();
     }
   }
 }

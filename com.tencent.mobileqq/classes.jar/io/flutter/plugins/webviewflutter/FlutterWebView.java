@@ -127,6 +127,7 @@ public class FlutterWebView
       bool = ((Boolean)paramMap.get(localObject)).booleanValue();
       localObject = this.flutterWebViewClient.createWebViewClient(bool);
       this.webView.setWebViewClient((WebViewClient)localObject);
+      this.webView.setWebChromeClient(this.flutterWebViewClient.createWebChromeClient());
       continue;
       updateJsMode(((Integer)paramMap.get(localObject)).intValue());
     }
@@ -414,7 +415,7 @@ public class FlutterWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.FlutterWebView
  * JD-Core Version:    0.7.0.1
  */

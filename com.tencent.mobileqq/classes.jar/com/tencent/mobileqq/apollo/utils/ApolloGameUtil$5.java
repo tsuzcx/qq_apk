@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajmu;
+import aleh;
 import android.text.TextUtils;
-import bbrd;
+import bdpx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloGameRoamData;
 import com.tencent.qphone.base.util.QLog;
@@ -23,12 +23,12 @@ final class ApolloGameUtil$5
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       QLog.e("ApolloGameUtil", 1, "[highLightGame] app is null");
     }
-    ajmu localajmu;
+    aleh localaleh;
     do
     {
       return;
-      localajmu = (ajmu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-      localObject1 = localajmu.g();
+      localaleh = (aleh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      localObject1 = localaleh.g();
       if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
         break;
       }
@@ -81,10 +81,10 @@ final class ApolloGameUtil$5
       i = 0;
     }
     if (this.jdField_a_of_type_Boolean) {
-      ((bbrd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (int[])localObject2);
+      ((bdpx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (int[])localObject2);
     }
-    localajmu.c();
-    localajmu.b((ArrayList)localObject1);
+    localaleh.c();
+    localaleh.b((ArrayList)localObject1);
     ApolloGameUtil.b();
     return;
     QLog.e("ApolloGameUtil", 1, "[highLightGame] no game in list");
@@ -92,7 +92,7 @@ final class ApolloGameUtil$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.5
  * JD-Core Version:    0.7.0.1
  */

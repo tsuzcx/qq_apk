@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class abxg
-  extends ajuf
+class abxg
+  implements DialogInterface.OnClickListener
 {
-  public abxg(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  abxg(abxe paramabxe) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
-    QQSettingSettingActivity.c(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxg
  * JD-Core Version:    0.7.0.1
  */

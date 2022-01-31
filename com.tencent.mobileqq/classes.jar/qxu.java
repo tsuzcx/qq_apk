@@ -1,80 +1,153 @@
-import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class qxu
-  implements qxq
+  extends qoe
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<VideoInfo> jdField_a_of_type_JavaUtilArrayList;
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private nps jdField_a_of_type_Nps;
-  private qxw jdField_a_of_type_Qxw;
-  private qyc jdField_a_of_type_Qyc;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public Bundle a;
+  baua jdField_a_of_type_Baua = new qxv(this);
+  baub jdField_a_of_type_Baub;
+  private WeakReference<qog> jdField_a_of_type_JavaLangRefWeakReference;
+  private QQAppInterface jdField_b_of_type_ComTencentMobileqqAppQQAppInterface;
+  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
+  private String d;
+  private String e;
+  private String f;
+  private String g;
+  private String h;
   
-  public qxu(Activity paramActivity, ArrayList<VideoInfo> paramArrayList, int paramInt, Bundle paramBundle, qyc paramqyc)
+  public qxu(Context paramContext, qog paramqog, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Qyc = paramqyc;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("VIDEO_COMMON_DATA");
-    this.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("VIDEO_BUSINESS_INFO");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onh.a());
-    this.jdField_a_of_type_Qxw = new qxw(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Qxw);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramqog);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ors.a());
+    this.jdField_a_of_type_AndroidOsBundle = paramIntent.getExtras();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    c();
+    qod.a(this.jdField_a_of_type_AndroidOsBundle);
+  }
+  
+  private void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((qog)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramFloat);
+    }
+  }
+  
+  private void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    paramString1 = qxn.a().a(paramString1).b(paramString2).d(paramString4).c(paramString3).e(paramString5).a();
+    if (paramInt == 0) {
+      a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidOsBundle, paramString1, (qog)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    }
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((qog)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramInt, paramString1);
+    }
+  }
+  
+  private void b(int paramInt)
+  {
+    a(paramInt, null, null, null, null, null);
+  }
+  
+  private void c()
+  {
+    this.g = this.jdField_a_of_type_AndroidOsBundle.getString("arg_video_path");
+    this.h = this.jdField_a_of_type_AndroidOsBundle.getString("arg_video_cover");
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("mTaskID");
+  }
+  
+  private void c(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    long l1 = NetConnInfoCenter.getServerTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    azmz localazmz = azmz.a((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get());
+    String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localazmz.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
+      return;
+    }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    if (this.jdField_a_of_type_Nps == null) {
-      this.jdField_a_of_type_Nps = ((nps)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(90));
-    }
-    Object localObject2 = this.jdField_a_of_type_Qyc.a();
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new VideoInfo();
-    }
-    if (((VideoInfo)localObject1).a != null) {}
-    for (int i = ((VideoInfo)localObject1).a.jdField_a_of_type_Int;; i = 0)
-    {
-      localObject2 = new ArrayList(this.jdField_a_of_type_Qyc.a());
-      this.jdField_a_of_type_Nps.a(this.jdField_a_of_type_Qxw, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), (VideoInfo)localObject1, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList, ((VideoInfo)localObject1).i, -1L, true, i, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, null, this.jdField_b_of_type_Int, null, this.jdField_a_of_type_ArrayOfByte, 1, 1, (ArrayList)localObject2);
-      return;
-    }
+    a(this.h);
+    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size() - 5) {
-      a();
+    QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic path=" + paramString);
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic empty path!");
+      b(10);
+      return;
+    }
+    if (!new File(paramString).exists())
+    {
+      QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic file not exist, path=" + paramString);
+      b(5);
+      return;
+    }
+    if (!ndk.a((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get()))
+    {
+      b(1003);
+      return;
+    }
+    this.d = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.f = "";
+    CompressInfo localCompressInfo = new CompressInfo(paramString, 0);
+    localCompressInfo.f = 0;
+    if (!awga.a(localCompressInfo)) {
+      c(1001);
+    }
+    QLog.d("KingsMomentVideoDeliveControllerr", 1, "startUploadPic compressPath=" + localCompressInfo.jdField_e_of_type_JavaLangString + ", originPath=" + paramString + ", outWidth=" + localCompressInfo.d + ", outHeight=" + localCompressInfo.jdField_e_of_type_Int);
+    if (TextUtils.isEmpty(localCompressInfo.jdField_e_of_type_JavaLangString)) {}
+    for (;;)
+    {
+      this.d = paramString;
+      paramString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      this.jdField_a_of_type_Baua.addFilter(new Class[] { bamp.class });
+      paramString.a(this.jdField_a_of_type_Baua);
+      this.jdField_a_of_type_Baub = new baub();
+      this.jdField_a_of_type_Baub.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Baub.jdField_c_of_type_Int = 10;
+      this.jdField_a_of_type_Baub.i = this.d;
+      this.jdField_a_of_type_Baub.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+      this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString = "0";
+      this.jdField_a_of_type_Baub.b = 24;
+      this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
+      paramString.a(this.jdField_a_of_type_Baub);
+      return;
+      paramString = localCompressInfo.jdField_e_of_type_JavaLangString;
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Qxw);
+    qod.a(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qxu
  * JD-Core Version:    0.7.0.1
  */

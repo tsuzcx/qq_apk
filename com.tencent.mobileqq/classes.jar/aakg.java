@@ -1,95 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class aakg
-  implements View.OnClickListener
+class aakg
+  implements aajw
 {
-  public aakg(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  aakg(aake paramaake) {}
   
-  public void onClick(View paramView)
+  public void a(aajt paramaajt)
   {
-    if (!(paramView instanceof RotateSwitchImageView)) {}
-    View localView2;
-    do
-    {
-      do
-      {
-        return;
-        localView1 = AssociatedAccountManageActivity.a(this.a, paramView);
-        localView2 = AssociatedAccountManageActivity.b(this.a, paramView);
-        if (AssociatedAccountManageActivity.a(this.a) != null) {
-          break;
-        }
-        AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
-        AssociatedAccountManageActivity.a(this.a).b();
-        if (localView2 != null)
-        {
-          localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
-          ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.a(this.a) * 12.0F + AssociatedAccountManageActivity.b(this.a) * 75.0F));
-          localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).b();
-        }
-      } while (!AppSetting.d);
-      paramView.setContentDescription(this.a.getString(2131690799));
-      return;
-      if (AssociatedAccountManageActivity.a(this.a) != paramView) {
-        break;
-      }
-      AssociatedAccountManageActivity.a(this.a).a();
-      if (localView2 != null)
-      {
-        localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.c(this.a) * 12.0F));
-        localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      if ((localView1 instanceof ShaderAnimLayout)) {
-        ((ShaderAnimLayout)localView1).f();
-      }
-      AssociatedAccountManageActivity.a(this.a, null);
-    } while (!AppSetting.d);
-    paramView.setContentDescription(this.a.getString(2131720648));
-    return;
-    AssociatedAccountManageActivity.a(this.a).a();
-    Object localObject = AssociatedAccountManageActivity.b(this.a, AssociatedAccountManageActivity.a(this.a));
-    if (localObject != null)
-    {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
-      localLayoutParams.rightMargin = ((int)(AssociatedAccountManageActivity.d(this.a) * 12.0F));
-      ((View)localObject).setLayoutParams(localLayoutParams);
-    }
-    ((RotateSwitchImageView)paramView).b();
-    if (localView2 != null)
-    {
-      localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.e(this.a) * 12.0F + AssociatedAccountManageActivity.f(this.a) * 75.0F));
-      localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    }
-    if (AppSetting.d)
-    {
-      paramView.setContentDescription(this.a.getString(2131690799));
-      AssociatedAccountManageActivity.a(this.a).setContentDescription(this.a.getString(2131720648));
-    }
-    if ((localView1 instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)localView1).b();
-    }
-    View localView1 = AssociatedAccountManageActivity.a(this.a, AssociatedAccountManageActivity.a(this.a));
-    if ((localView1 instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)localView1).f();
-    }
-    AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+    aanp.b("GdtInterstitialPreDownloader", String.format("onPreDownloaded appName:%s view:%s minVersion:%s", new Object[] { paramaajt.a, paramaajt.b, paramaajt.c }));
+    aaoc.a(BaseApplicationImpl.getApplication(), aake.a(aake.a()), 0, -2147483648);
+  }
+  
+  public void a(aajt paramaajt, int paramInt)
+  {
+    aanp.b("GdtInterstitialPreDownloader", String.format("onStatusChanged appName:%s view:%s minVersion:%s status:%d", new Object[] { paramaajt.a, paramaajt.b, paramaajt.c, Integer.valueOf(paramInt) }));
+  }
+  
+  public void a(aajt paramaajt, int paramInt1, int paramInt2)
+  {
+    aanp.d("GdtInterstitialPreDownloader", String.format("onFailedToPreDownload appName:%s view:%s minVersion:%s error:%d arkError:%d", new Object[] { paramaajt.a, paramaajt.b, paramaajt.c, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    aaoc.a(BaseApplicationImpl.getApplication(), aake.a(aake.a()), paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aakg
  * JD-Core Version:    0.7.0.1
  */

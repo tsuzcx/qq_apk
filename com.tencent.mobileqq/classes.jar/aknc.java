@@ -1,33 +1,12 @@
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
 
-public class aknc
-  extends MqqHandler
+public abstract interface aknc
 {
-  public aknc(HiddenChatFragment paramHiddenChatFragment) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((this.a.getActivity() == null) || (!this.a.getActivity().app.isLogin())) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a();
-      return;
-    }
-    this.a.a();
-  }
+  public abstract void a(Bitmap paramBitmap, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknc
  * JD-Core Version:    0.7.0.1
  */

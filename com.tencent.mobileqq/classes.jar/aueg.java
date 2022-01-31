@@ -1,36 +1,40 @@
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
 
-public abstract interface aueg
+public class aueg
+  implements best
 {
-  public abstract void a(Matrix paramMatrix);
+  public aueg(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public abstract void a(MotionEvent paramMotionEvent);
-  
-  public abstract void a(ScaleGestureDetector paramScaleGestureDetector);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
-  
-  public abstract void b(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean b(ScaleGestureDetector paramScaleGestureDetector);
-  
-  public abstract void c(MotionEvent paramMotionEvent);
-  
-  public abstract boolean c(MotionEvent paramMotionEvent);
+  public void a(View paramView, int paramInt)
+  {
+    int i = 2;
+    if (paramInt == 1)
+    {
+      aufh.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(aucf.c) });
+      if (MsgBackupSelectionFragment.a(this.a) != 0) {
+        break label79;
+      }
+      paramInt = i;
+      if (MsgBackupSelectionFragment.a(this.a)) {
+        paramInt = 3;
+      }
+      auff.a("0X800A242", paramInt);
+    }
+    for (;;)
+    {
+      this.a.onBackEvent();
+      return;
+      label79:
+      if ((aucf.c) && (aubu.a().a() == 1)) {
+        auff.a("0X800A266", 5);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aueg
  * JD-Core Version:    0.7.0.1
  */

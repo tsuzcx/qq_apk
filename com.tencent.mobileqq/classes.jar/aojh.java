@@ -1,29 +1,83 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aojh
-  extends AnimatorListenerAdapter
+  extends aofy<aojg>
 {
-  public aojh(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment, MatchingView paramMatchingView, View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  @NonNull
+  public static aojg a()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    ExtendFriendLimitChatMatchFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatExtendFriendLimitChatMatchFragment, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.a();
+    aojg localaojg2 = (aojg)aogj.a().a(455);
+    aojg localaojg1 = localaojg2;
+    if (localaojg2 == null) {
+      localaojg1 = new aojg();
+    }
+    return localaojg1;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.setVisibility(0);
+    return 455;
+  }
+  
+  @NonNull
+  public aojg a(int paramInt)
+  {
+    return new aojg();
+  }
+  
+  @Nullable
+  public aojg a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    {
+      aojg localaojg = aojg.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      }
+      return localaojg;
+    }
+    return new aojg();
+  }
+  
+  public Class<aojg> a()
+  {
+    return aojg.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    }
+  }
+  
+  public void a(aojg paramaojg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramaojg);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aojh
  * JD-Core Version:    0.7.0.1
  */

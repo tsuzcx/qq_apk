@@ -1,17 +1,25 @@
-public abstract interface bjzc
-  extends bjxm
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
+
+public class bjzc
+  implements QQPermissionCallback
 {
-  public abstract bjzb a();
+  public bjzc(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
   
-  public abstract void a(bkbk parambkbk, float paramFloat1, float paramFloat2);
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bdcd.b(this.jdField_a_of_type_AndroidAppActivity);
+  }
   
-  public abstract void b(int paramInt, bkld parambkld);
-  
-  public abstract void d();
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.d(this.jdField_a_of_type_Int);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,32 @@
-import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
-public class amzk
-  extends amyp<amzj>
+final class amzk
+  implements bapw
 {
-  public int a()
+  public void a(baqv parambaqv, baqw parambaqw)
   {
-    return 465;
-  }
-  
-  @NonNull
-  public amzj a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
+    if ((parambaqv == null) || (parambaqw == null)) {}
+    while (!(parambaqv instanceof baps)) {
+      return;
     }
-    return new amzj();
-  }
-  
-  @NonNull
-  public amzj a(@NonNull amph[] paramArrayOfamph)
-  {
-    amzj localamzj = new amzj();
-    try
+    baps localbaps = (baps)parambaqv;
+    localbaps.jdField_a_of_type_Long += parambaqw.c;
+    parambaqw.c = 0L;
+    parambaqw = "bytes=" + localbaps.jdField_a_of_type_Long + "-";
+    localbaps.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+    parambaqw = localbaps.jdField_a_of_type_JavaLangString;
+    if (parambaqw.contains("range="))
     {
-      localamzj.a = new JSONObject(paramArrayOfamph[0].a).optBoolean("showVipIcon", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localamzj.a);
-      }
-      return localamzj;
+      parambaqw = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
+      localbaps.jdField_a_of_type_JavaLangString = (parambaqw + "range=" + localbaps.jdField_a_of_type_Long);
     }
-    catch (JSONException paramArrayOfamph)
-    {
-      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfamph);
-    }
-    return localamzj;
-  }
-  
-  public Class<amzj> a()
-  {
-    return amzj.class;
-  }
-  
-  @NonNull
-  public amzj b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
-    }
-    return new amzj();
+    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((baps)parambaqv).jdField_a_of_type_JavaLangString + ", offset=" + localbaps.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzk
  * JD-Core Version:    0.7.0.1
  */

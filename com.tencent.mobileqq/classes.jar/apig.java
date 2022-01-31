@@ -1,27 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class apig
-  implements AdapterView.OnItemClickListener
+public final class apig
 {
-  public apig(FileBrowserActivity paramFileBrowserActivity) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static aphr a(QQAppInterface paramQQAppInterface, apik paramapik, int paramInt)
   {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
+    switch (paramInt)
+    {
+    default: 
+      return new apiu(paramQQAppInterface, paramapik);
+    case 0: 
+      return new apiu(paramQQAppInterface, paramapik);
     }
-    this.a.a.b();
-    ((bbjv)paramAdapterView).a.a.onClick(paramView);
+    return new aphs(paramQQAppInterface, paramapik);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apig
  * JD-Core Version:    0.7.0.1
  */

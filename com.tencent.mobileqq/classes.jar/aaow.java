@@ -1,27 +1,99 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.view.Window;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AuthorizationItem;
+import java.util.Iterator;
+import java.util.List;
 
-public final class aaow
-  implements DialogInterface.OnClickListener
+public class aaow
 {
-  public aaow(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, String paramString, int paramInt3) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private aaoz a(String paramString1, String paramString2, String paramString3, List<bhra> paramList)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    axqy.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.c + "", "0", "");
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (paramList.contains(AuthorizationItem.a))
+    {
+      if (!paramList.contains(AuthorizationItem.b)) {
+        break label57;
+      }
+      label26:
+      if (!paramList.contains(AuthorizationItem.c)) {
+        break label63;
+      }
     }
+    for (;;)
+    {
+      return new aaoz(paramString1, paramString2, paramString3, null);
+      paramString1 = "";
+      break;
+      label57:
+      paramString2 = "";
+      break label26;
+      label63:
+      paramString3 = "";
+    }
+  }
+  
+  private void a(Activity paramActivity, boolean paramBoolean, aaoz paramaaoz, aaoy paramaaoy, List<bhra> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult: entity -> " + paramaaoz);
+    }
+    if (paramBoolean)
+    {
+      if (a(paramActivity, paramList))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult has authorized, return info direct ");
+        }
+        if (paramaaoy != null)
+        {
+          paramaaoz.a = 0;
+          paramaaoy.a(paramaaoz);
+        }
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult show authorize dialog to authorize user info");
+      }
+      paramActivity = new bhqz(paramActivity, paramaaoz, paramaaoy, paramList);
+      paramaaoz = paramActivity.getWindow();
+      if (paramaaoz != null) {
+        paramaaoz.setWindowAnimations(2131755012);
+      }
+      paramActivity.show();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtUserInfoAuthorizationHelper", 2, "handleInfoResult get result fail");
+    }
+    if (paramaaoy != null) {
+      paramaaoy.a(aaoz.a());
+    }
+    Toast.makeText(paramActivity, paramActivity.getString(2131690342), 0).show();
+  }
+  
+  private boolean a(Context paramContext, List<bhra> paramList)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext.getApplicationContext());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (!paramContext.getBoolean(((bhra)paramList.next()).b, false))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GdtUserInfoAuthorizationHelper", 2, "checkAuthorize user phone not authorize");
+        }
+        return false;
+      }
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaow
  * JD-Core Version:    0.7.0.1
  */

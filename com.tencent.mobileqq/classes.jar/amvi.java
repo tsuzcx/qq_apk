@@ -1,87 +1,79 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.config.business.QuickAuthorityConfBean.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONObject;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class amvi
+class amvi
+  implements amvg
 {
-  public int a;
-  public ConcurrentHashMap<String, String> a;
-  public int b;
-  public int c = 1;
-  public int d;
-  public int e;
+  private IBinder a;
   
-  public amvi()
+  amvi(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
+    this.a = paramIBinder;
   }
   
-  public static amvi a(String paramString)
+  public void a()
   {
-    amvi localamvi = new amvi();
-    if (paramString == null) {
-      return localamvi;
-    }
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     try
     {
-      paramString = new JSONObject(paramString);
-      localamvi.jdField_a_of_type_Int = paramString.optInt("kCheckSignatureSwitch", 0);
-      localamvi.b = paramString.optInt("kDisableChooseSwitch", 0);
-      localamvi.c = paramString.optInt("kShowKickDialog", 1);
-      localamvi.d = paramString.optInt("kFDSwitch", 0);
-      localamvi.e = paramString.optInt("kWtloginPowTest", 0);
-      paramString = paramString.optJSONObject("kSignatureList");
-      if (paramString != null)
-      {
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          String str2 = paramString.optString(str1);
-          if (!TextUtils.isEmpty(str2))
-          {
-            localamvi.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, str2);
-            if (QLog.isColorLevel()) {
-              QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "package: ", str1, " signature:", str2 });
-            }
-          }
-        }
-      }
-      QLog.d("QuickAuthorityConfProcessor", 2, "confBean = " + localamvi.toString());
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    catch (Exception paramString)
+    finally
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QuickAuthorityConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-      }
-      return null;
-    }
-    if (localamvi.e == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ThreadManagerV2.executeOnSubThread(new QuickAuthorityConfBean.1(bool));
-      return localamvi;
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
-  public String toString()
+  public void a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("kCheckSignatureSwitch:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" kDisableChooseSwitch:").append(this.b);
-    localStringBuilder.append(" signatureMaps:").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-    localStringBuilder.append(" fdSwitch:").append(this.d);
-    localStringBuilder.append(" wtloginPowTest:").append(this.e);
-    return localStringBuilder.toString();
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvi
  * JD-Core Version:    0.7.0.1
  */

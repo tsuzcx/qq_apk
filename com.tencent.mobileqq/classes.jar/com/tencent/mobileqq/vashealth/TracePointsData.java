@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vashealth;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import org.json.JSONObject;
 
 public class TracePointsData
-  extends auko
+  extends awbv
 {
   public static final String TABLE_NAME = "TracePointsData";
   public int accuracy;
@@ -15,7 +15,7 @@ public class TracePointsData
   public float speed;
   public long startTime;
   public int steps;
-  @aumc
+  @awdj
   public long time;
   
   public JSONObject toJson()
@@ -45,7 +45,7 @@ public class TracePointsData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.TracePointsData
  * JD-Core Version:    0.7.0.1
  */

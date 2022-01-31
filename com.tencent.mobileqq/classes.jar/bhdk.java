@@ -1,13 +1,12 @@
-public class bhdk
+public abstract interface bhdk
 {
-  public long a;
-  public String a;
-  public long b;
-  public long c;
+  public abstract String a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhdk
  * JD-Core Version:    0.7.0.1
  */

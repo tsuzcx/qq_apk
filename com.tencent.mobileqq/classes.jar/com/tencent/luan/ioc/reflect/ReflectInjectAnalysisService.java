@@ -24,11 +24,7 @@ public class ReflectInjectAnalysisService
 {
   private static final String TAG = "ReflectInjectAnalysisSe";
   private final ClassLoader loader;
-  
-  public ReflectInjectAnalysisService()
-  {
-    this(null);
-  }
+  private volatile boolean valid = true;
   
   public ReflectInjectAnalysisService(ClassLoader paramClassLoader)
   {
@@ -76,11 +72,11 @@ public class ReflectInjectAnalysisService
   
   public ReflectInjectConstructor<?> getInjectConstructor(Class<?> paramClass)
   {
-    Object localObject1 = null;
     Object localObject2 = "";
     Constructor[] arrayOfConstructor = paramClass.getConstructors();
     int j = arrayOfConstructor.length;
     int i = 0;
+    Object localObject1 = null;
     if (i < j)
     {
       localObject3 = arrayOfConstructor[i];
@@ -107,6 +103,7 @@ public class ReflectInjectAnalysisService
     }
     Object localObject3 = localObject1;
     if (localObject1 == null) {}
+    Object localObject4;
     try
     {
       localObject3 = paramClass.getConstructor(new Class[0]);
@@ -116,24 +113,31 @@ public class ReflectInjectAnalysisService
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      Object localObject4;
       for (;;)
       {
         LuanLog.e("ReflectInjectAnalysisSe", "getInjectConstructor: none injected constructor and failed to get empty constructor in " + paramClass.getName(), localNoSuchMethodException);
         localObject4 = localObject1;
       }
       localObject1 = (Named)localObject4.getAnnotation(Named.class);
-      if (localObject4.getParameterTypes().length == 0)
-      {
-        if (((String)localObject2).length() > 0) {
-          LuanLog.w("ReflectInjectAnalysisSe", "getInjectConstructor: inject has a type name on an empty constructor of " + paramClass.getName() + ", is Anything wrong? And this type will be ignored " + (String)localObject2);
-        }
-        if (localObject1 != null) {
-          LuanLog.w("ReflectInjectAnalysisSe", "getInjectConstructor: inject has been named on an empty constructor of " + ((Named)localObject1).value() + ", is Anything wrong? And this name will be ignored");
-        }
-        return new ReflectInjectConstructor(localObject4);
+      if (localObject4.getParameterTypes().length != 0) {
+        break label343;
       }
-      return new ReflectInjectConstructor(localObject4, getInjectParam(localObject4.getParameterTypes()[0], (String)localObject2, (Named)localObject1));
+    }
+    if (((String)localObject2).length() > 0) {
+      LuanLog.w("ReflectInjectAnalysisSe", "getInjectConstructor: inject has a type name on an empty constructor of " + paramClass.getName() + ", is Anything wrong? And this type will be ignored " + (String)localObject2);
+    }
+    if (localObject1 != null)
+    {
+      LuanLog.w("ReflectInjectAnalysisSe", "getInjectConstructor: inject has been named on an empty constructor of " + ((Named)localObject1).value() + ", is Anything wrong? And this name will be ignored");
+      paramClass = null;
+    }
+    for (;;)
+    {
+      return new ReflectInjectConstructor(localObject4, paramClass);
+      label343:
+      paramClass = getInjectParam(localObject4.getParameterTypes()[0], (String)localObject2, (Named)localObject1);
+      continue;
+      paramClass = null;
     }
   }
   
@@ -162,7 +166,12 @@ public class ReflectInjectAnalysisService
     return Collections.unmodifiableList(localLinkedList);
   }
   
-  public List<ProvideMethod> getProvideMethods(Class<?> paramClass)
+  public ClassLoader getLoader()
+  {
+    return this.loader;
+  }
+  
+  public List<ProvideMethod<?>> getProvideMethods(Class<?> paramClass)
   {
     HashSet localHashSet1 = new HashSet();
     HashSet localHashSet2 = new HashSet();
@@ -226,6 +235,11 @@ public class ReflectInjectAnalysisService
     }
   }
   
+  public boolean isValid()
+  {
+    return this.valid;
+  }
+  
   Class<?> loadClass(String paramString)
   {
     try
@@ -238,10 +252,15 @@ public class ReflectInjectAnalysisService
       throw new InjectException("failed to load injected class " + paramString, localClassNotFoundException);
     }
   }
+  
+  public void setValid(boolean paramBoolean)
+  {
+    this.valid = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.luan.ioc.reflect.ReflectInjectAnalysisService
  * JD-Core Version:    0.7.0.1
  */

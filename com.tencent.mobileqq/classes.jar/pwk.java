@@ -1,20 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.pts.core.jni.PTSJsJniHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class pwk
-  implements View.OnClickListener
+class pwk
+  extends pvj
 {
-  public pwk(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
+  pwk(pwj parampwj) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, List<Long> paramList, long paramLong)
   {
-    this.a.a();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onFeedsLoaded], channelID = ").append(paramInt).append("\n");
+    paramList = owy.a().a(Integer.valueOf(paramInt), paramList);
+    if (QLog.isColorLevel())
+    {
+      paramInt = 0;
+      while (paramInt < paramList.size())
+      {
+        ((StringBuilder)localObject).append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
+        paramInt += 1;
+      }
+      QLog.i("PTSLoadFeedsModule", 1, ((StringBuilder)localObject).toString());
+    }
+    localObject = new Object[1];
+    localObject[0] = pwh.a(true, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTSLoadFeedsModule", 1, "[onFeedsLoaded], args[0]" + localObject[0]);
+    }
+    QLog.i("PTSLoadFeedsModule", 1, "js callback ptr = " + paramLong);
+    PTSJsJniHandler.jsFunctionCallbackAsync(paramLong, (Object[])localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwk
  * JD-Core Version:    0.7.0.1
  */

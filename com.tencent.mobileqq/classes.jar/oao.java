@@ -1,17 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
 
-final class oao
-  implements DialogInterface.OnClickListener
+public class oao
+  implements qft
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public oao(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    if (paramBoolean)
+    {
+      ReadInJoyVideoSubChannelActivity.a(this.a).setVisibility(0);
+      if (ReadInJoyVideoSubChannelActivity.a(this.a).a() != null) {}
+      for (String str = ReadInJoyVideoSubChannelActivity.a(this.a).a().a();; str = null)
+      {
+        ReadInJoyVideoSubChannelActivity.a(this.a).a(4, ReadInJoyVideoSubChannelActivity.a(this.a).a(), str);
+        return;
+      }
+    }
+    ReadInJoyVideoSubChannelActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oao
  * JD-Core Version:    0.7.0.1
  */

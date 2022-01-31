@@ -1,27 +1,38 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+
 public class alaf
-  extends alah
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  float[] jdField_a_of_type_ArrayOfFloat;
-  float jdField_b_of_type_Float;
-  float[] jdField_b_of_type_ArrayOfFloat;
-  float c;
+  public alaf(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
   
-  public alaf(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(0);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat1;
-    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat2;
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
+        break label42;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alac.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+    }
+    label42:
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(alac.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+        return;
+      }
+    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(alac.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alaf
  * JD-Core Version:    0.7.0.1
  */

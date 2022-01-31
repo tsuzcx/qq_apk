@@ -1,68 +1,63 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class axly
+  extends Handler
 {
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, float paramFloat5, float paramFloat6)
-  {
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramFloat5, paramFloat6);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0, paramFloat1, 0, paramFloat2, 0, paramFloat3, 0, paramFloat4);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.setDuration(paramInt);
-    localAnimationSet.setFillEnabled(true);
-    localAnimationSet.setFillBefore(true);
-    localAnimationSet.setFillAfter(true);
-    paramView.startAnimation(localAnimationSet);
-  }
+  public axly(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
   
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, Animation.AnimationListener paramAnimationListener)
+  public void handleMessage(Message paramMessage)
   {
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat3, paramFloat4, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(paramInt);
-    localScaleAnimation.setFillEnabled(true);
-    localScaleAnimation.setFillBefore(true);
-    localScaleAnimation.setFillAfter(true);
-    if (paramAnimationListener != null) {
-      localScaleAnimation.setAnimationListener(paramAnimationListener);
+    super.handleMessage(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "handleMessage what:" + paramMessage.what + ", shortVideoShot:" + this.a.a.get());
     }
-    paramView.startAnimation(localScaleAnimation);
-  }
-  
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    a(paramView, paramBoolean, 200);
-  }
-  
-  public static void a(View paramView, boolean paramBoolean, int paramInt)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.2F, 1.0F);
-    localAlphaAnimation.setDuration(paramInt);
-    localAlphaAnimation.setFillAfter(paramBoolean);
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static void b(View paramView, boolean paramBoolean)
-  {
-    b(paramView, paramBoolean, 200);
-  }
-  
-  public static void b(View paramView, boolean paramBoolean, int paramInt)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.2F);
-    localAlphaAnimation.setFillAfter(paramBoolean);
-    localAlphaAnimation.setDuration(paramInt);
-    paramView.startAnimation(localAlphaAnimation);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            CameraCaptureButtonLayout.c(this.a);
+            return;
+          } while (CameraCaptureButtonLayout.a(this.a) == null);
+          CameraCaptureButtonLayout.a(this.a).b();
+          return;
+        } while (!this.a.a.get());
+        if (CameraCaptureButtonLayout.a(this.a) != null) {
+          CameraCaptureButtonLayout.a(this.a).c();
+        }
+        this.a.a.set(false);
+        CameraCaptureButtonLayout.d(this.a);
+        return;
+        if (CameraCaptureButtonLayout.a(this.a) != null) {
+          CameraCaptureButtonLayout.a(this.a).a();
+        }
+        CameraCaptureButtonLayout.d(this.a);
+        return;
+      } while (!this.a.a.get());
+      CameraCaptureButtonLayout.e(this.a);
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(5, 50L);
+      return;
+    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axly
  * JD-Core Version:    0.7.0.1
  */

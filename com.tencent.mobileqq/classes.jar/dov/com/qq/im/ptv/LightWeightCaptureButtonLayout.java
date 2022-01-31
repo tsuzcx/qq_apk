@@ -1,6 +1,6 @@
 package dov.com.qq.im.ptv;
 
-import ajya;
+import alpo;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
@@ -20,24 +20,24 @@ import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import avwg;
-import baww;
-import bjpl;
-import bjqf;
-import bjqg;
-import bjqh;
-import bjqi;
-import bjqj;
-import bjqk;
-import bjql;
-import bjqm;
-import bjqn;
-import bjqo;
-import bjqp;
-import bjqs;
-import bjqt;
-import bjqu;
-import blcq;
+import axof;
+import bcvq;
+import bmav;
+import bmbp;
+import bmbq;
+import bmbr;
+import bmbs;
+import bmbt;
+import bmbu;
+import bmbv;
+import bmbw;
+import bmbx;
+import bmby;
+import bmbz;
+import bmcc;
+import bmcd;
+import bmce;
+import bnoa;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView;
 import com.tencent.qphone.base.util.QLog;
@@ -48,16 +48,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class LightWeightCaptureButtonLayout
   extends RelativeLayout
-  implements avwg
+  implements axof
 {
   protected float a;
   protected int a;
   protected long a;
   protected Handler a;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bjqf(this);
-  public bjqs a;
-  protected bjqt a;
-  protected bjqu a;
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bmbp(this);
+  public bmcc a;
+  protected bmcd a;
+  protected bmce a;
   protected SimpleEffectsCaptureView a;
   public BaseButton a;
   private LWMotionEvent jdField_a_of_type_DovComQqImPtvLWMotionEvent = new LWMotionEvent();
@@ -93,12 +93,12 @@ public abstract class LightWeightCaptureButtonLayout
     this.jdField_a_of_type_Float = 20000.0F;
     this.jdField_b_of_type_Int = 30;
     this.jdField_c_of_type_Int = 3;
-    this.jdField_b_of_type_Float = blcq.a(2.0F);
-    this.jdField_c_of_type_Float = blcq.a(5.0F);
-    this.jdField_d_of_type_Float = blcq.a(2.0F);
+    this.jdField_b_of_type_Float = bnoa.a(2.0F);
+    this.jdField_c_of_type_Float = bnoa.a(5.0F);
+    this.jdField_d_of_type_Float = bnoa.a(2.0F);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new bjqi(this, Looper.getMainLooper());
-    this.jdField_a_of_type_Bjqs = new bjqs();
+    this.jdField_a_of_type_AndroidOsHandler = new bmbs(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Bmcc = new bmcc();
     a();
   }
   
@@ -110,12 +110,12 @@ public abstract class LightWeightCaptureButtonLayout
     this.jdField_a_of_type_Float = 20000.0F;
     this.jdField_b_of_type_Int = 30;
     this.jdField_c_of_type_Int = 3;
-    this.jdField_b_of_type_Float = blcq.a(2.0F);
-    this.jdField_c_of_type_Float = blcq.a(5.0F);
-    this.jdField_d_of_type_Float = blcq.a(2.0F);
+    this.jdField_b_of_type_Float = bnoa.a(2.0F);
+    this.jdField_c_of_type_Float = bnoa.a(5.0F);
+    this.jdField_d_of_type_Float = bnoa.a(2.0F);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new bjqi(this, Looper.getMainLooper());
-    this.jdField_a_of_type_Bjqs = new bjqs();
+    this.jdField_a_of_type_AndroidOsHandler = new bmbs(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Bmcc = new bmcc();
     a();
   }
   
@@ -225,23 +225,23 @@ public abstract class LightWeightCaptureButtonLayout
   
   protected void a()
   {
-    this.jdField_a_of_type_Int = getResources().getColor(2131166155);
+    this.jdField_a_of_type_Int = getResources().getColor(2131166202);
     LayoutInflater.from(getContext()).inflate(a(), this, true);
-    this.jdField_a_of_type_DovComQqImPtvBaseButton = ((BaseButton)findViewById(2131375010));
-    this.jdField_b_of_type_DovComQqImPtvBaseButton = ((BaseButton)findViewById(2131365002));
-    this.jdField_c_of_type_DovComQqImPtvBaseButton = ((BaseButton)findViewById(2131369558));
+    this.jdField_a_of_type_DovComQqImPtvBaseButton = ((BaseButton)findViewById(2131375480));
+    this.jdField_b_of_type_DovComQqImPtvBaseButton = ((BaseButton)findViewById(2131365087));
+    this.jdField_c_of_type_DovComQqImPtvBaseButton = ((BaseButton)findViewById(2131369820));
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowDraw(false);
-    if (AppSetting.jdField_d_of_type_Boolean)
+    if (AppSetting.jdField_c_of_type_Boolean)
     {
-      baww.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, true);
-      baww.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, ajya.a(2131706076), Button.class.getName());
-      baww.a(this.jdField_b_of_type_DovComQqImPtvBaseButton, ajya.a(2131706102), Button.class.getName());
-      baww.a(this.jdField_c_of_type_DovComQqImPtvBaseButton, ajya.a(2131706104), Button.class.getName());
+      bcvq.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, true);
+      bcvq.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, alpo.a(2131706448), Button.class.getName());
+      bcvq.a(this.jdField_b_of_type_DovComQqImPtvBaseButton, alpo.a(2131706474), Button.class.getName());
+      bcvq.a(this.jdField_c_of_type_DovComQqImPtvBaseButton, alpo.a(2131706476), Button.class.getName());
     }
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setEnabled(true);
-    this.jdField_c_of_type_DovComQqImPtvBaseButton.setShadowStrokeWidth(blcq.a(3.0F));
-    this.jdField_b_of_type_DovComQqImPtvBaseButton.setShadowStrokeWidth(blcq.a(3.0F));
+    this.jdField_c_of_type_DovComQqImPtvBaseButton.setShadowStrokeWidth(bnoa.a(3.0F));
+    this.jdField_b_of_type_DovComQqImPtvBaseButton.setShadowStrokeWidth(bnoa.a(3.0F));
     this.jdField_b_of_type_DovComQqImPtvBaseButton.setShadowDraw(true);
     this.jdField_c_of_type_DovComQqImPtvBaseButton.setShadowDraw(true);
   }
@@ -296,8 +296,8 @@ public abstract class LightWeightCaptureButtonLayout
             case 2: 
               if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
               {
-                if (this.jdField_a_of_type_Bjqt != null) {
-                  this.jdField_a_of_type_Bjqt.n();
+                if (this.jdField_a_of_type_Bmcd != null) {
+                  this.jdField_a_of_type_Bmcd.n();
                 }
                 this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
                 return;
@@ -308,14 +308,14 @@ public abstract class LightWeightCaptureButtonLayout
           QLog.i("CameraCaptureLayout", 2, "handleCaptureMessage[Have Already started]: what: " + paramMessage.what + ", shortVideoShot:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
           return;
         } while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-        if (this.jdField_a_of_type_Bjqt != null) {
-          this.jdField_a_of_type_Bjqt.o();
+        if (this.jdField_a_of_type_Bmcd != null) {
+          this.jdField_a_of_type_Bmcd.o();
         }
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
         return;
       } while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-      if (this.jdField_a_of_type_Bjqt != null) {
-        this.jdField_a_of_type_Bjqt.q();
+      if (this.jdField_a_of_type_Bmcd != null) {
+        this.jdField_a_of_type_Bmcd.q();
       }
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       b();
@@ -327,28 +327,28 @@ public abstract class LightWeightCaptureButtonLayout
     d();
   }
   
-  public void a(bjqt parambjqt, SimpleEffectsCaptureView paramSimpleEffectsCaptureView, LightWeightProgress paramLightWeightProgress)
+  public void a(bmcd parambmcd, SimpleEffectsCaptureView paramSimpleEffectsCaptureView, LightWeightProgress paramLightWeightProgress)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSimpleEffectsCaptureView = paramSimpleEffectsCaptureView;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSimpleEffectsCaptureView.setAudioVolumeListener(this);
-    this.jdField_a_of_type_Bjqt = parambjqt;
+    this.jdField_a_of_type_Bmcd = parambmcd;
     this.jdField_a_of_type_DovComQqImPtvLightWeightProgress = paramLightWeightProgress;
   }
   
   protected void a(LWMotionEvent paramLWMotionEvent)
   {
-    this.jdField_a_of_type_Bjqs.jdField_a_of_type_Float = paramLWMotionEvent.a();
-    this.jdField_a_of_type_Bjqs.jdField_b_of_type_Float = paramLWMotionEvent.b();
-    this.jdField_a_of_type_Bjqs.jdField_c_of_type_Float = paramLWMotionEvent.a();
-    this.jdField_a_of_type_Bjqs.jdField_d_of_type_Float = paramLWMotionEvent.b();
-    this.jdField_a_of_type_Bjqs.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bjqs.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Bjqs.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Bjqs.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_Bjqs.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Bjqs.jdField_e_of_type_Boolean = false;
+    this.jdField_a_of_type_Bmcc.jdField_a_of_type_Float = paramLWMotionEvent.a();
+    this.jdField_a_of_type_Bmcc.jdField_b_of_type_Float = paramLWMotionEvent.b();
+    this.jdField_a_of_type_Bmcc.jdField_c_of_type_Float = paramLWMotionEvent.a();
+    this.jdField_a_of_type_Bmcc.jdField_d_of_type_Float = paramLWMotionEvent.b();
+    this.jdField_a_of_type_Bmcc.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Bmcc.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Bmcc.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Bmcc.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_Bmcc.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_Bmcc.jdField_e_of_type_Boolean = false;
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "handleTouch[Adsorption] startX=" + this.jdField_a_of_type_Bjqs.jdField_a_of_type_Float + " startY=" + this.jdField_a_of_type_Bjqs.jdField_b_of_type_Float + " lastX=" + this.jdField_a_of_type_Bjqs.jdField_c_of_type_Float + " lastY=" + this.jdField_a_of_type_Bjqs.jdField_d_of_type_Float);
+      QLog.i("CameraCaptureLayout", 2, "handleTouch[Adsorption] startX=" + this.jdField_a_of_type_Bmcc.jdField_a_of_type_Float + " startY=" + this.jdField_a_of_type_Bmcc.jdField_b_of_type_Float + " lastX=" + this.jdField_a_of_type_Bmcc.jdField_c_of_type_Float + " lastY=" + this.jdField_a_of_type_Bmcc.jdField_d_of_type_Float);
     }
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowDraw(true);
   }
@@ -403,13 +403,13 @@ public abstract class LightWeightCaptureButtonLayout
   protected boolean a(LWMotionEvent paramLWMotionEvent)
   {
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowDraw(false);
-    this.jdField_a_of_type_Bjqs.jdField_d_of_type_Boolean = true;
-    if (!this.jdField_a_of_type_Bjqs.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_Bmcc.jdField_d_of_type_Boolean = true;
+    if (!this.jdField_a_of_type_Bmcc.jdField_a_of_type_Boolean)
     {
       h();
       return true;
     }
-    switch (this.jdField_a_of_type_Bjqs.jdField_d_of_type_Int)
+    switch (this.jdField_a_of_type_Bmcc.jdField_d_of_type_Int)
     {
     default: 
       return false;
@@ -459,16 +459,16 @@ public abstract class LightWeightCaptureButtonLayout
   {
     float f1 = paramLWMotionEvent.a();
     float f2 = paramLWMotionEvent.b();
-    this.jdField_a_of_type_Bjqs.jdField_e_of_type_Float = (f1 - this.jdField_a_of_type_Bjqs.jdField_c_of_type_Float);
-    this.jdField_a_of_type_Bjqs.f = (f2 - this.jdField_a_of_type_Bjqs.jdField_d_of_type_Float);
+    this.jdField_a_of_type_Bmcc.jdField_e_of_type_Float = (f1 - this.jdField_a_of_type_Bmcc.jdField_c_of_type_Float);
+    this.jdField_a_of_type_Bmcc.f = (f2 - this.jdField_a_of_type_Bmcc.jdField_d_of_type_Float);
     c();
-    if (this.jdField_a_of_type_Bjqs.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_Bmcc.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bjqs.jdField_c_of_type_Float = f1;
-      this.jdField_a_of_type_Bjqs.jdField_d_of_type_Float = f2;
+      this.jdField_a_of_type_Bmcc.jdField_c_of_type_Float = f1;
+      this.jdField_a_of_type_Bmcc.jdField_d_of_type_Float = f2;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "handleTouch[Adsorption] xDiff=" + this.jdField_a_of_type_Bjqs.jdField_e_of_type_Float + " currentX=" + f1 + " yDiff=" + this.jdField_a_of_type_Bjqs.f + " currentY=" + f2);
+      QLog.i("CameraCaptureLayout", 2, "handleTouch[Adsorption] xDiff=" + this.jdField_a_of_type_Bmcc.jdField_e_of_type_Float + " currentX=" + f1 + " yDiff=" + this.jdField_a_of_type_Bmcc.f + " currentY=" + f2);
     }
   }
   
@@ -503,8 +503,8 @@ public abstract class LightWeightCaptureButtonLayout
         this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_DovComQqImPtvLightWeightCaptureButtonLayout$StartRunnable);
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       }
-      if (this.jdField_a_of_type_Bjqu != null) {
-        this.jdField_a_of_type_Bjqu.l();
+      if (this.jdField_a_of_type_Bmce != null) {
+        this.jdField_a_of_type_Bmce.l();
       }
     }
     label117:
@@ -554,12 +554,12 @@ public abstract class LightWeightCaptureButtonLayout
     label147:
     for (int j = 10000;; j = (int)((float)l / this.jdField_a_of_type_Float * 10000.0F))
     {
-      String str = (int)l / 1000 + ajya.a(2131706106);
+      String str = (int)l / 1000 + alpo.a(2131706478);
       if (QLog.isColorLevel()) {
         QLog.i("CameraCaptureLayout", 2, "updateProgress percent:" + j + ", time:" + str);
       }
-      if (this.jdField_a_of_type_Bjqt != null) {
-        this.jdField_a_of_type_Bjqt.c(j);
+      if (this.jdField_a_of_type_Bmcd != null) {
+        this.jdField_a_of_type_Bmcd.c(j);
       }
       if (this.jdField_a_of_type_Boolean) {
         h();
@@ -593,8 +593,8 @@ public abstract class LightWeightCaptureButtonLayout
     }
     if (l < 1000L)
     {
-      if (this.jdField_a_of_type_Bjqu != null) {
-        this.jdField_a_of_type_Bjqu.i();
+      if (this.jdField_a_of_type_Bmce != null) {
+        this.jdField_a_of_type_Bmce.i();
       }
       j();
       return;
@@ -613,8 +613,8 @@ public abstract class LightWeightCaptureButtonLayout
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_DovComQqImPtvLightWeightCaptureButtonLayout$StartRunnable);
       p();
-      if (this.jdField_a_of_type_Bjqu != null) {
-        this.jdField_a_of_type_Bjqu.l();
+      if (this.jdField_a_of_type_Bmce != null) {
+        this.jdField_a_of_type_Bmce.l();
       }
     }
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
@@ -631,8 +631,8 @@ public abstract class LightWeightCaptureButtonLayout
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_DovComQqImPtvLightWeightCaptureButtonLayout$StartRunnable);
       q();
-      if (this.jdField_a_of_type_Bjqu != null) {
-        this.jdField_a_of_type_Bjqu.l();
+      if (this.jdField_a_of_type_Bmce != null) {
+        this.jdField_a_of_type_Bmce.l();
       }
     }
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
@@ -640,82 +640,82 @@ public abstract class LightWeightCaptureButtonLayout
   
   protected void k()
   {
-    this.jdField_a_of_type_Bjqs.jdField_d_of_type_Int = 3;
-    int j = getResources().getColor(2131165528);
+    this.jdField_a_of_type_Bmcc.jdField_d_of_type_Int = 3;
+    int j = getResources().getColor(2131165564);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.jdField_b_of_type_DovComQqImPtvBaseButton, "backgroundColor", new int[] { j });
-    localObjectAnimator.setEvaluator(bjpl.a());
-    int k = getResources().getColor(2131165529);
+    localObjectAnimator.setEvaluator(bmav.a());
+    int k = getResources().getColor(2131165565);
     Object localObject2 = ObjectAnimator.ofInt(this.jdField_b_of_type_DovComQqImPtvBaseButton, "shadowColor", new int[] { k });
-    ((ObjectAnimator)localObject2).setEvaluator(bjpl.a());
+    ((ObjectAnimator)localObject2).setEvaluator(bmav.a());
     Object localObject1 = new AnimatorSet();
     ((AnimatorSet)localObject1).play(localObjectAnimator).with((Animator)localObject2);
     ((AnimatorSet)localObject1).setDuration(100L);
     localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_b_of_type_DovComQqImPtvBaseButton, "rotation", new float[] { 0.0F, 180.0F });
-    localObjectAnimator.addListener(new bjqj(this));
+    localObjectAnimator.addListener(new bmbt(this));
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.add(localObjectAnimator);
     a(this.jdField_b_of_type_DovComQqImPtvBaseButton, 1.0F, 1.533F, 1.533F, 1.5F, (Animator)localObject1, this.jdField_a_of_type_JavaUtilArrayList, 140L, 50L).start();
-    this.jdField_b_of_type_DovComQqImPtvBaseButton.setImageResource(2130843618);
+    this.jdField_b_of_type_DovComQqImPtvBaseButton.setImageResource(2130843977);
     localObject1 = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvBaseButton, "backgroundColor", new int[] { j });
-    ((ObjectAnimator)localObject1).setEvaluator(bjpl.a());
-    j = getResources().getColor(2131165322);
+    ((ObjectAnimator)localObject1).setEvaluator(bmav.a());
+    j = getResources().getColor(2131165357);
     localObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvBaseButton, "shadowColor", new int[] { j });
-    localObjectAnimator.setEvaluator(bjpl.a());
+    localObjectAnimator.setEvaluator(bmav.a());
     localObject2 = new AnimatorSet();
     ((AnimatorSet)localObject2).play((Animator)localObject1).with(localObjectAnimator);
     ((AnimatorSet)localObject2).setDuration(100L);
     localObject1 = a(this.jdField_a_of_type_DovComQqImPtvBaseButton, 1.0F, 1.022F, 1.022F, 1.0F, (Animator)localObject2, null, 140L, 50L);
-    ((AnimatorSet)localObject1).addListener(new bjqk(this));
+    ((AnimatorSet)localObject1).addListener(new bmbu(this));
     ((AnimatorSet)localObject1).start();
-    j = getResources().getColor(2131166159);
+    j = getResources().getColor(2131166206);
     localObject1 = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvLightWeightProgress, "deleteColor", new int[] { this.jdField_a_of_type_DovComQqImPtvLightWeightProgress.a(), j });
     ((ObjectAnimator)localObject1).setStartDelay(90L);
     ((ObjectAnimator)localObject1).setDuration(50L);
-    ((ObjectAnimator)localObject1).addListener(new bjql(this));
+    ((ObjectAnimator)localObject1).addListener(new bmbv(this));
     ((ObjectAnimator)localObject1).start();
   }
   
   protected void l()
   {
-    int j = getResources().getColor(2131165694);
-    int k = getResources().getColor(2131165695);
-    int m = getResources().getColor(2131165228);
-    this.jdField_a_of_type_Bjqs.jdField_d_of_type_Int = 3;
+    int j = getResources().getColor(2131165731);
+    int k = getResources().getColor(2131165732);
+    int m = getResources().getColor(2131165258);
+    this.jdField_a_of_type_Bmcc.jdField_d_of_type_Int = 3;
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.jdField_c_of_type_DovComQqImPtvBaseButton, "backgroundColor", new int[] { -1, j });
-    localObjectAnimator.setEvaluator(bjpl.a());
+    localObjectAnimator.setEvaluator(bmav.a());
     Object localObject2 = ObjectAnimator.ofInt(this.jdField_c_of_type_DovComQqImPtvBaseButton, "shadowColor", new int[] { m, k });
-    ((ObjectAnimator)localObject2).setEvaluator(bjpl.a());
+    ((ObjectAnimator)localObject2).setEvaluator(bmav.a());
     Object localObject1 = new AnimatorSet();
     ((AnimatorSet)localObject1).play(localObjectAnimator).with((Animator)localObject2);
     ((AnimatorSet)localObject1).setDuration(100L);
     localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_c_of_type_DovComQqImPtvBaseButton, "rotation", new float[] { 0.0F, 0.0F });
-    localObjectAnimator.addListener(new bjqm(this));
+    localObjectAnimator.addListener(new bmbw(this));
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.add(localObjectAnimator);
     a(this.jdField_c_of_type_DovComQqImPtvBaseButton, 1.0F, 1.533F, 1.533F, 1.5F, (Animator)localObject1, this.jdField_a_of_type_JavaUtilArrayList, 140L, 50L).start();
-    this.jdField_c_of_type_DovComQqImPtvBaseButton.setImageResource(2130843623);
+    this.jdField_c_of_type_DovComQqImPtvBaseButton.setImageResource(2130843982);
     localObject1 = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvBaseButton, "backgroundColor", new int[] { j });
-    ((ObjectAnimator)localObject1).setEvaluator(bjpl.a());
-    j = getResources().getColor(2131165325);
+    ((ObjectAnimator)localObject1).setEvaluator(bmav.a());
+    j = getResources().getColor(2131165360);
     localObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvBaseButton, "shadowColor", new int[] { j });
-    localObjectAnimator.setEvaluator(bjpl.a());
+    localObjectAnimator.setEvaluator(bmav.a());
     localObject2 = new AnimatorSet();
     ((AnimatorSet)localObject2).play((Animator)localObject1).with(localObjectAnimator);
     ((AnimatorSet)localObject2).setDuration(100L);
     localObject1 = a(this.jdField_a_of_type_DovComQqImPtvBaseButton, 1.0F, 1.022F, 1.022F, 1.0F, (Animator)localObject2, null, 140L, 50L);
-    ((AnimatorSet)localObject1).addListener(new bjqn(this));
+    ((AnimatorSet)localObject1).addListener(new bmbx(this));
     ((AnimatorSet)localObject1).start();
   }
   
   protected void m()
   {
-    int j = getResources().getColor(2131165694);
-    int k = getResources().getColor(2131165695);
-    int m = getResources().getColor(2131165228);
+    int j = getResources().getColor(2131165731);
+    int k = getResources().getColor(2131165732);
+    int m = getResources().getColor(2131165258);
     Object localObject1 = ObjectAnimator.ofInt(this.jdField_c_of_type_DovComQqImPtvBaseButton, "backgroundColor", new int[] { j, -1 });
-    ((ObjectAnimator)localObject1).setEvaluator(bjpl.a());
+    ((ObjectAnimator)localObject1).setEvaluator(bmav.a());
     Object localObject2 = ObjectAnimator.ofInt(this.jdField_c_of_type_DovComQqImPtvBaseButton, "shadowColor", new int[] { k, m });
-    ((ObjectAnimator)localObject2).setEvaluator(bjpl.a());
+    ((ObjectAnimator)localObject2).setEvaluator(bmav.a());
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_c_of_type_DovComQqImPtvBaseButton, "scaleX", new float[] { 1.5F, 1.0F });
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_c_of_type_DovComQqImPtvBaseButton, "scaleY", new float[] { 1.5F, 1.0F });
     AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -726,15 +726,15 @@ public abstract class LightWeightCaptureButtonLayout
     localObject1 = a(this.jdField_c_of_type_DovComQqImPtvBaseButton, this.jdField_c_of_type_DovComQqImPtvBaseButton.getTranslationX(), -this.jdField_b_of_type_Float);
     localObject2 = new AnimatorSet();
     ((AnimatorSet)localObject2).play(localAnimatorSet).with((Animator)localObject1);
-    ((AnimatorSet)localObject2).addListener(new bjqo(this));
+    ((AnimatorSet)localObject2).addListener(new bmby(this));
     ((AnimatorSet)localObject2).start();
-    m = getResources().getColor(2131165323);
-    k = getResources().getColor(2131165324);
+    m = getResources().getColor(2131165358);
+    k = getResources().getColor(2131165359);
     localObject1 = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvBaseButton, "backgroundColor", new int[] { j, m });
-    ((ObjectAnimator)localObject1).setEvaluator(bjpl.a());
-    j = getResources().getColor(2131165325);
+    ((ObjectAnimator)localObject1).setEvaluator(bmav.a());
+    j = getResources().getColor(2131165360);
     localObject2 = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvBaseButton, "shadowColor", new int[] { j, k });
-    ((ObjectAnimator)localObject2).setEvaluator(bjpl.a());
+    ((ObjectAnimator)localObject2).setEvaluator(bmav.a());
     localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_DovComQqImPtvBaseButton, "scaleX", new float[] { 1.0F, 0.7889F });
     localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_DovComQqImPtvBaseButton, "scaleY", new float[] { 1.0F, 0.7889F });
     localAnimatorSet = new AnimatorSet();
@@ -745,42 +745,42 @@ public abstract class LightWeightCaptureButtonLayout
     localObject1 = a(this.jdField_a_of_type_DovComQqImPtvBaseButton, this.jdField_a_of_type_DovComQqImPtvBaseButton.getTranslationX(), this.jdField_b_of_type_Float);
     localObject2 = new AnimatorSet();
     ((AnimatorSet)localObject2).play(localAnimatorSet).with((Animator)localObject1);
-    ((AnimatorSet)localObject2).addListener(new bjqp(this));
+    ((AnimatorSet)localObject2).addListener(new bmbz(this));
     ((AnimatorSet)localObject2).start();
   }
   
   protected void n()
   {
-    int j = getResources().getColor(2131165694);
-    int k = getResources().getColor(2131165695);
-    int m = getResources().getColor(2131165228);
+    int j = getResources().getColor(2131165731);
+    int k = getResources().getColor(2131165732);
+    int m = getResources().getColor(2131165258);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.jdField_c_of_type_DovComQqImPtvBaseButton, "backgroundColor", new int[] { j, -1 });
-    localObjectAnimator.setEvaluator(bjpl.a());
+    localObjectAnimator.setEvaluator(bmav.a());
     Object localObject2 = ObjectAnimator.ofInt(this.jdField_c_of_type_DovComQqImPtvBaseButton, "shadowColor", new int[] { k, m });
-    ((ObjectAnimator)localObject2).setEvaluator(bjpl.a());
+    ((ObjectAnimator)localObject2).setEvaluator(bmav.a());
     Object localObject1 = new AnimatorSet();
     ((AnimatorSet)localObject1).play(localObjectAnimator).with((Animator)localObject2);
     ((AnimatorSet)localObject1).setDuration(100L);
     localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_c_of_type_DovComQqImPtvBaseButton, "rotation", new float[] { 0.0F, 0.0F });
     localObject2 = ObjectAnimator.ofFloat(this.jdField_c_of_type_DovComQqImPtvBaseButton, "translationX", new float[] { this.jdField_c_of_type_DovComQqImPtvBaseButton.getTranslationX(), 0.0F });
-    localObjectAnimator.addListener(new bjqg(this));
+    localObjectAnimator.addListener(new bmbq(this));
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.add(localObjectAnimator);
     this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
     a(this.jdField_c_of_type_DovComQqImPtvBaseButton, 1.5F, 1.533F, 1.533F, 1.0F, (Animator)localObject1, this.jdField_a_of_type_JavaUtilArrayList, 140L, 50L).start();
-    this.jdField_c_of_type_DovComQqImPtvBaseButton.setImageResource(2130843635);
-    m = getResources().getColor(2131165319);
-    k = getResources().getColor(2131165326);
+    this.jdField_c_of_type_DovComQqImPtvBaseButton.setImageResource(2130843994);
+    m = getResources().getColor(2131165354);
+    k = getResources().getColor(2131165361);
     localObject1 = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvBaseButton, "backgroundColor", new int[] { j, m });
-    ((ObjectAnimator)localObject1).setEvaluator(bjpl.a());
-    j = getResources().getColor(2131165325);
+    ((ObjectAnimator)localObject1).setEvaluator(bmav.a());
+    j = getResources().getColor(2131165360);
     localObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvBaseButton, "shadowColor", new int[] { j, k });
-    localObjectAnimator.setEvaluator(bjpl.a());
+    localObjectAnimator.setEvaluator(bmav.a());
     localObject2 = new AnimatorSet();
     ((AnimatorSet)localObject2).play((Animator)localObject1).with(localObjectAnimator);
     ((AnimatorSet)localObject2).setDuration(100L);
     localObject1 = a(this.jdField_a_of_type_DovComQqImPtvBaseButton, 1.0F, 1.022F, 1.022F, 1.0F, (Animator)localObject2, null, 140L, 50L);
-    ((AnimatorSet)localObject1).addListener(new bjqh(this));
+    ((AnimatorSet)localObject1).addListener(new bmbr(this));
     ((AnimatorSet)localObject1).start();
   }
   
@@ -802,14 +802,14 @@ public abstract class LightWeightCaptureButtonLayout
     this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void setUIButtonListener(bjqu parambjqu)
+  public void setUIButtonListener(bmce parambmce)
   {
-    this.jdField_a_of_type_Bjqu = parambjqu;
+    this.jdField_a_of_type_Bmce = parambmce;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightWeightCaptureButtonLayout
  * JD-Core Version:    0.7.0.1
  */

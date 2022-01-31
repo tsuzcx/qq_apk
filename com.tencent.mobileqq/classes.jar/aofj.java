@@ -1,47 +1,74 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendFeedView;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import com.tencent.mobileqq.confess.data.TroopConfessMsg;
+import com.tencent.mobileqq.confess.data.TroopConfessMsgItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aofj
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+class aofj
+  extends aelt
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  aojb jdField_a_of_type_Aojb;
-  public bibp a;
-  public ExtendFriendFeedView a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ConfessNewsBgView jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView;
+  private TextView b;
+  private View jdField_c_of_type_AndroidViewView;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public aofj(View paramView, Context paramContext, aojb paramaojb, bibp parambibp)
+  public void a(TroopConfessMsg paramTroopConfessMsg)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView = ((ExtendFriendFeedView)paramView);
-    this.jdField_a_of_type_Bibp = parambibp;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aojb = paramaojb;
-    if (this.jdField_a_of_type_Bibp != null) {
-      this.jdField_a_of_type_Bibp.a(this.jdField_a_of_type_Bibp.a(), new aofk(this));
+    if (paramTroopConfessMsg == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData null is troopConfessMsgItem.");
+      }
     }
-  }
-  
-  public void a(aofj paramaofj, aogm paramaogm, int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView != null) && (paramaogm != null))
+    do
     {
-      int i = paramaofj.getPosition();
-      paramaofj.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView.setFeedBgParams(i, paramaogm.mVoiceUrl, paramInt, false);
+      return;
+      if ((paramTroopConfessMsg.items != null) && (!paramTroopConfessMsg.items.isEmpty())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData items is null or empty.");
+    return;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopConfessMsg.getConfessToNick());
+    this.b.setText(((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic);
+    String str2 = ((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic;
+    float f = aoey.a(str2);
+    int i;
+    if (f > 8.0F)
+    {
+      this.b.setTextSize(1, 24.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
+      this.b.setLineSpacing(0.0F, 1.1F);
+      str1 = str2;
+      if (f <= 12.0F)
+      {
+        str1 = str2;
+        if (aoey.a(str2)) {
+          i = (int)(f * 0.7D);
+        }
+      }
     }
-    if ((this.jdField_a_of_type_Bibp != null) && (paramaogm != null) && (paramaogm.mAlumbasicdata != null)) {
-      paramaofj.jdField_a_of_type_Bibp.a(paramaogm.mAlumbasicdata, paramaofj.getAdapterPosition());
+    for (String str1 = str2.substring(0, i) + "\n" + str2.substring(i, str2.length());; str1 = str2)
+    {
+      this.b.setText(str1);
+      if (paramTroopConfessMsg.totalCount > 1) {
+        break;
+      }
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      return;
+      this.b.setTextSize(1, 24.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
+      this.b.setLineSpacing(0.0F, 1.0F);
     }
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(alpo.a(2131715658), new Object[] { Integer.valueOf(paramTroopConfessMsg.totalCount - 1) }));
   }
-  
-  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofj
  * JD-Core Version:    0.7.0.1
  */

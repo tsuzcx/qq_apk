@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.servlet;
 
-import akuf;
+import amkv;
 import android.os.Build.VERSION;
-import axcl;
+import ayxp;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
@@ -15,8 +15,8 @@ public final class QZoneNotifyServlet$4
     if ((Build.VERSION.SDK_INT < 23) || (BaseApplication.getContext() == null) || (BaseApplication.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0)) {
       try
       {
-        axcl.a(System.currentTimeMillis());
-        akuf.a(axcl.a());
+        ayxp.a(System.currentTimeMillis());
+        amkv.a(ayxp.a());
         return;
       }
       catch (Exception localException)
@@ -30,7 +30,7 @@ public final class QZoneNotifyServlet$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.4
  * JD-Core Version:    0.7.0.1
  */

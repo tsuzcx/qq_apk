@@ -1,20 +1,20 @@
 package cooperation.qzone.webviewplugin;
 
-import bhrm;
+import bjsx;
 
 public class QZoneSharePictureJsPlugin$3
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$3(bhrm parambhrm, String[] paramArrayOfString) {}
+  public QZoneSharePictureJsPlugin$3(bjsx parambjsx, String[] paramArrayOfString) {}
   
   public void run()
   {
-    bhrm.b(this.this$0, this.a[0]);
+    bjsx.b(this.this$0, this.a[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

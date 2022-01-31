@@ -1,16 +1,59 @@
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
 
 public class bijb
+  extends RemoteCommand
 {
-  public static final String a = biir.a + File.separator + "playshow";
-  public static final String b = biiu.e;
-  public static final String c = a + File.separator + "material_config";
-  public static final String d = a + File.separator + "thumbs";
-  public static final String e = a + File.separator + "videos";
+  private boolean a;
+  
+  public bijb(String paramString, boolean paramBoolean)
+  {
+    super(paramString);
+    this.a = paramBoolean;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = PluginCommunicationHandler.getInstance();
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.register(new bijb("qqcomicemoticonipccmd", false));
+    }
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicEmoticonUploadRemoteCmd", 2, "onRemoteInvoke cannot get QQAppInterface");
+      }
+    }
+    do
+    {
+      do
+      {
+        return null;
+        localObject = (QQAppInterface)localObject;
+      } while (!"Remotecall_uploadEmoticon".equals(paramBundle.getString("qqcomicemoticonipccmd")));
+      localObject = (biiz)((QQAppInterface)localObject).getManager(147);
+    } while (localObject == null);
+    ((biiz)localObject).a(paramBundle, paramOnInvokeFinishLinstener);
+    return null;
+  }
+  
+  public boolean isSynchronized()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bijb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aert;
+import aanv;
+import agot;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import axup;
-import axyg;
-import axyi;
-import axzs;
-import bbkk;
+import azqj;
+import azua;
+import azuc;
+import azvm;
+import bdje;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
@@ -19,44 +20,48 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nqn;
-import nqu;
-import nqx;
-import nrf;
+import ntw;
+import nud;
+import nug;
+import nup;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
-import yxv;
 
 public class PublicAccountChatPie$3
   implements Runnable
 {
-  public PublicAccountChatPie$3(aert paramaert) {}
+  public PublicAccountChatPie$3(agot paramagot) {}
   
   public void run()
   {
     if (this.this$0.ad) {}
-    nrf localnrf;
+    nup localnup;
     do
     {
       return;
       this.this$0.ad = true;
-      localnrf = (nrf)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88);
+      localnup = (nup)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88);
       localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    } while ((localObject1 == null) || (((List)localObject1).isEmpty()) || (localnrf == null));
+    } while ((localObject1 == null) || (((List)localObject1).isEmpty()) || (localnup == null));
     Object localObject1 = (ChatMessage)((List)localObject1).get(((List)localObject1).size() - 1);
     Object localObject2 = ((ChatMessage)localObject1).getExtInfoFromExtStr("public_account_msg_id");
-    if ("1".equals(((ChatMessage)localObject1).getExtInfoFromExtStr("is_AdArrive_Msg")))
+    Object localObject3 = ((ChatMessage)localObject1).getExtInfoFromExtStr("is_AdArrive_Msg");
+    if (QLog.isColorLevel()) {
+      QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 2, "enter qqgouwu aio msgId = " + (String)localObject2 + " hasAdver: " + (String)localObject3);
+    }
+    if ("1".equals(localObject3))
     {
-      localObject2 = new nqx();
-      ((nqx)localObject2).jdField_a_of_type_Int = 2;
-      localObject2 = nqu.a((nqx)localObject2, (MessageRecord)localObject1);
-      ((nqu)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(139)).a((nqx)localObject2, null);
+      localObject2 = new nug();
+      ((nug)localObject2).jdField_a_of_type_Int = 2;
+      localObject2 = nud.a((nug)localObject2, (MessageRecord)localObject1);
+      ((nud)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(139)).a((nug)localObject2, null);
       if ((localObject1 instanceof MessageForStructing))
       {
         localObject1 = ((MessageForStructing)localObject1).structingMsg;
@@ -70,10 +75,10 @@ public class PublicAccountChatPie$3
             {
               if (((Iterator)localObject1).hasNext())
               {
-                localObject2 = (axup)((Iterator)localObject1).next();
-                if ((localObject2 instanceof axyg))
+                localObject2 = (azqj)((Iterator)localObject1).next();
+                if ((localObject2 instanceof azua))
                 {
-                  localObject2 = ((axyg)localObject2).a;
+                  localObject2 = ((azua)localObject2).a;
                   if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {
                     continue;
                   }
@@ -81,15 +86,15 @@ public class PublicAccountChatPie$3
                   if (!((Iterator)localObject2).hasNext()) {
                     continue;
                   }
-                  axup localaxup = (axup)((Iterator)localObject2).next();
-                  if (!(localaxup instanceof axzs)) {
+                  localObject3 = (azqj)((Iterator)localObject2).next();
+                  if (!(localObject3 instanceof azvm)) {
                     break;
                   }
-                  yxv.a(1, 2, nqn.a(localaxup));
+                  aanv.a(1, 2, ntw.a((azqj)localObject3));
                   continue;
                 }
-                if ((localObject2 instanceof axyi)) {
-                  yxv.a(1, 2, nqn.a((axyi)localObject2));
+                if ((localObject2 instanceof azuc)) {
+                  aanv.a(1, 2, ntw.a((azuc)localObject2));
                 }
               }
             }
@@ -103,7 +108,7 @@ public class PublicAccountChatPie$3
       if (i != 2) {
         break;
       }
-      localnrf.a(134243865, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null, null, null, i, false);
+      localnup.a(134243865, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null, null, null, i, false);
       return;
       if ((localObject1 instanceof MessageForArkApp))
       {
@@ -114,7 +119,7 @@ public class PublicAccountChatPie$3
             continue;
           }
           localObject1 = ((ArkAppMessage)localObject1).metaList;
-          if (bbkk.a((String)localObject1)) {
+          if (bdje.a((String)localObject1)) {
             continue;
           }
           localObject2 = new JSONObject((String)localObject1).optJSONObject("gdt");
@@ -124,9 +129,9 @@ public class PublicAccountChatPie$3
           if (localObject2 == null) {
             continue;
           }
-          ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).report_info.thirdparty_monitor_urls.api_click_monitor_url.set(nrf.a(((JSONObject)localObject2).optJSONArray("api_click_monitor_url")));
-          ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).report_info.thirdparty_monitor_urls.api_exposure_monitor_url.set(nrf.a(((JSONObject)localObject2).optJSONArray("api_exposure_monitor_url")));
-          yxv.a(1, 2, (qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
+          ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).report_info.thirdparty_monitor_urls.api_click_monitor_url.set(nup.a(((JSONObject)localObject2).optJSONArray("api_click_monitor_url")));
+          ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).report_info.thirdparty_monitor_urls.api_exposure_monitor_url.set(nup.a(((JSONObject)localObject2).optJSONArray("api_exposure_monitor_url")));
+          aanv.a(1, 2, (qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
         }
         catch (Exception localException)
         {
@@ -134,9 +139,9 @@ public class PublicAccountChatPie$3
         }
         continue;
         if ((localException instanceof MessageForArkApp)) {
-          localnrf.a(134243863, localException.senderuin, (String)localObject2, null, null, 0L, false);
+          localnup.a(134243863, localException.senderuin, (String)localObject2, null, null, 0L, false);
         } else {
-          localnrf.a(134243857, localException.senderuin, (String)localObject2, null, null, 0L, false);
+          localnup.a(134243857, localException.senderuin, (String)localObject2, null, null, 0L, false);
         }
       }
     }
@@ -144,7 +149,7 @@ public class PublicAccountChatPie$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.3
  * JD-Core Version:    0.7.0.1
  */

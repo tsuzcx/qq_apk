@@ -1,31 +1,29 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
 
 public class asbs
+  implements TouchWebView.OnScrollChangedListener
 {
-  private List<asbt> a = Collections.synchronizedList(new ArrayList());
+  public asbs(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  void a(long paramLong)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((asbt)localIterator.next()).a(paramLong);
+    if (paramInt4 > paramInt2) {
+      if (paramInt2 == 0) {
+        this.a.a.b();
+      }
     }
-  }
-  
-  void b(long paramLong)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((asbt)localIterator.next()).b(paramLong);
+    while ((paramInt4 >= paramInt2) || (paramInt2 < this.a.c.getHeight())) {
+      return;
     }
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asbs
  * JD-Core Version:    0.7.0.1
  */

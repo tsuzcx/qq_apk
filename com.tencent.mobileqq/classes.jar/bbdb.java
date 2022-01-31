@@ -1,6 +1,13 @@
-public abstract interface bbdb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+
+public class bbdb
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString);
+  public bbdb(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

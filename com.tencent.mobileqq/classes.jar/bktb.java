@@ -1,14 +1,20 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bktb
+class bktb
+  implements View.OnClickListener
 {
-  public int a;
+  bktb(bkta parambkta, bktd parambktd) {}
   
-  private bktb(GLVideoClipUtil paramGLVideoClipUtil) {}
+  public void onClick(View paramView)
+  {
+    int i = this.jdField_a_of_type_Bktd.getLayoutPosition();
+    bkta.a(this.jdField_a_of_type_Bkta).a(this.jdField_a_of_type_Bktd.itemView, i);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bktb
  * JD-Core Version:    0.7.0.1
  */

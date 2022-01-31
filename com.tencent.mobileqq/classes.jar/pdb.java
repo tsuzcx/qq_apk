@@ -1,48 +1,86 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import org.json.JSONException;
+import android.content.Context;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
 
-class pdb
-  implements View.OnClickListener
+public class pdb
 {
-  pdb(pcy parampcy) {}
-  
-  public void onClick(View paramView)
+  public static boolean a(Context paramContext, String paramString)
   {
-    RefreshData localRefreshData = pyz.b(pcy.a(this.a), 0);
-    shu.a(false);
-    paramView = new ono();
-    paramView.h().b().e().a(pcy.a(this.a).e()).f().g().d();
-    if ((pcy.a(this.a).e() != 0) || (localRefreshData != null)) {}
-    for (;;)
+    pcz.a(paramString);
+    QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "jumpToKDTab, scheme = " + paramString);
+    if (TextUtils.isEmpty(paramString))
     {
-      try
-      {
-        if (!localRefreshData.isAD) {
-          continue;
-        }
-        i = 1;
-        paramView.a("ad_page", i);
-      }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        localJSONException.printStackTrace();
-        continue;
-      }
-      nol.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, bhvy.a("default_feeds_proteus_offline_bid"), "", "", paramView.a(), false);
-      if (pcy.a(this.a) != null) {
-        pcy.a(this.a).c();
-      }
-      return;
-      i = 0;
+      QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], scheme is empty.");
+      return false;
     }
+    String str2;
+    String str4;
+    boolean bool;
+    do
+    {
+      String str3;
+      String str5;
+      do
+      {
+        try
+        {
+          paramString = Uri.parse(paramString);
+          str1 = paramString.getQueryParameter("target");
+          if (!"2".equals(str1))
+          {
+            QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], target = " + str1 + ", do not jump to channel.");
+            return false;
+          }
+        }
+        catch (Exception paramContext)
+        {
+          QLog.e("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], e = " + paramContext);
+          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], do not handle.");
+          return false;
+        }
+        String str1 = paramString.getQueryParameter("channelid");
+        int i = -1;
+        try
+        {
+          int j = Integer.parseInt(str1);
+          i = j;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          for (;;)
+          {
+            QLog.e("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], e = " + localNumberFormatException);
+          }
+          str2 = paramString.getQueryParameter("rowkey");
+          str3 = paramString.getQueryParameter("algorithmid");
+          str4 = paramString.getQueryParameter("article_url");
+          str5 = URLDecoder.decode(str4, "utf-8");
+          bool = TextUtils.equals("1", paramString.getQueryParameter("show_floating_window"));
+          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], articleURLDecoded = " + str5);
+        }
+        if (i != 0)
+        {
+          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], not recommend tab.");
+          return false;
+        }
+      } while ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4)) || (TextUtils.isEmpty(str5)));
+      if (!bjxj.i())
+      {
+        ors.a(paramContext, str5);
+        QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], open article directly.");
+        return true;
+      }
+    } while (!bool);
+    paramContext.startActivity(nxu.a(paramContext, 12, str2, str4));
+    QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], open floating window.");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pdb
  * JD-Core Version:    0.7.0.1
  */

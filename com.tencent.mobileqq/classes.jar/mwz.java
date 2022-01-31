@@ -1,27 +1,69 @@
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import android.view.Window;
 
-class mwz
-  implements bfos
+public class mwz
+  extends bhpy
 {
-  mwz(mwx parammwx, PoiMapActivity paramPoiMapActivity) {}
+  public static boolean a;
+  boolean b = false;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  protected mwz(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_Mwx.jdField_a_of_type_Mwu.b))
+    super(paramContext, paramBoolean1, paramBoolean2);
+  }
+  
+  public static mwz a(Context paramContext)
+  {
+    paramContext = new mwz(paramContext, false, false);
+    paramContext.getWindow().setWindowAnimations(2131755223);
+    return paramContext;
+  }
+  
+  public static boolean a()
+  {
+    return a;
+  }
+  
+  public void dismiss()
+  {
+    a = false;
+    this.b = false;
+    super.dismiss();
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    if (this.b)
     {
-      this.jdField_a_of_type_Mwx.b(false);
-      if (!PoiMapActivity.b(this.jdField_a_of_type_Mwx.jdField_a_of_type_ComTencentBizPoiMapActivity)) {
-        this.jdField_a_of_type_Mwx.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "turn_page", this.jdField_a_of_type_Mwx.jdField_a_of_type_ComTencentBizPoiMapActivity.f, this.jdField_a_of_type_Mwx.jdField_a_of_type_ComTencentBizPoiMapActivity.e, "", "");
-      }
+      a = false;
+      this.b = false;
     }
+    super.onDetachedFromWindow();
+  }
+  
+  public void onStop()
+  {
+    if (this.b)
+    {
+      a = false;
+      this.b = false;
+    }
+    super.onStop();
+  }
+  
+  public void show()
+  {
+    if (a == true) {
+      return;
+    }
+    a = true;
+    this.b = true;
+    super.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwz
  * JD-Core Version:    0.7.0.1
  */

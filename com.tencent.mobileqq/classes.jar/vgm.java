@@ -1,22 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class vgm
-  implements View.OnTouchListener
+class vgm
+  implements DialogInterface.OnCancelListener
 {
-  public vgm(EditVideoFilter paramEditVideoFilter) {}
+  vgm(vgj paramvgj) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return this.a.a.a(paramMotionEvent);
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgm
  * JD-Core Version:    0.7.0.1
  */

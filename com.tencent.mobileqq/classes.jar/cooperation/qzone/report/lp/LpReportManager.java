@@ -3,7 +3,7 @@ package cooperation.qzone.report.lp;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bhln;
+import bjmy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -306,7 +306,7 @@ public class LpReportManager
     }
     for (;;)
     {
-      bhln.a().a();
+      bjmy.a().a();
       return;
       QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new LpReportManager.3(this, paramInt));
       continue;
@@ -316,7 +316,7 @@ public class LpReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportManager
  * JD-Core Version:    0.7.0.1
  */

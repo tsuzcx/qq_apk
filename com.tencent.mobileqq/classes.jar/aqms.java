@@ -1,26 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.gallery.model.video.AIOFileVideoData;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
-class aqms
-  implements aptw
+public class aqms
+  extends aqnl
 {
-  aqms(aqmr paramaqmr, Context paramContext, AIOFileVideoData paramAIOFileVideoData, agqv paramagqv) {}
+  public aqms(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public void a()
+  protected void a(aqxx paramaqxx)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData != null) && (this.jdField_a_of_type_Agqv != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.g = true;
-      this.jdField_a_of_type_Agqv.b();
-      this.jdField_a_of_type_Agqv.f();
+    super.a(paramaqxx);
+    if ((paramaqxx.b != null) && (paramaqxx.b.length() > 0)) {
+      this.a.i();
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqms
  * JD-Core Version:    0.7.0.1
  */

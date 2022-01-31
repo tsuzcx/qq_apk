@@ -1,25 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
 public class sol
-  implements Animation.AnimationListener
+  implements spj
 {
-  public sol(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public sol(BridgeModule paramBridgeModule) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    this.a.a.startAnimation(PublicAccountImageCollectionMainActivity.a(this.a));
+    this.a.invokeCallJS(paramString, paramJSONObject);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sol
  * JD-Core Version:    0.7.0.1
  */

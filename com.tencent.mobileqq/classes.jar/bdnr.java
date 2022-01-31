@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.AppInfo;
+import android.text.SpannableString;
 
-public final class bdnr
-  implements Parcelable.Creator<AppInfo>
+class bdnr
 {
-  public AppInfo a(Parcel paramParcel)
-  {
-    return new AppInfo(paramParcel);
-  }
-  
-  public AppInfo[] a(int paramInt)
-  {
-    return new AppInfo[paramInt];
-  }
+  int jdField_a_of_type_Int;
+  SpannableString jdField_a_of_type_AndroidTextSpannableString;
+  int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdnr
  * JD-Core Version:    0.7.0.1
  */

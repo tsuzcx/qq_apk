@@ -1,33 +1,22 @@
-import java.util.List;
-
 public class awhq
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public String b;
-  public String c;
+  int jdField_a_of_type_Int;
+  int[] jdField_a_of_type_ArrayOfInt;
   
-  public awhq(int paramInt, String paramString1, String paramString2, String paramString3)
+  private awhq(int[] paramArrayOfInt, int paramInt)
   {
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
   }
   
-  public awhq(int paramInt, String paramString1, String paramString2, String paramString3, List<String> paramList)
+  static awhq a(int[] paramArrayOfInt, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    return new awhq(paramArrayOfInt, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awhq
  * JD-Core Version:    0.7.0.1
  */

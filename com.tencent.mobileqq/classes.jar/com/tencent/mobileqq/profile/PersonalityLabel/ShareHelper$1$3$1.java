@@ -2,11 +2,11 @@ package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import auuj;
-import auuk;
-import auum;
+import awlv;
+import awlw;
+import awly;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import wij;
+import xxb;
 
 class ShareHelper$1$3$1
   implements Runnable
@@ -15,26 +15,26 @@ class ShareHelper$1$3$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Auuk.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Awlw.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Auuk.a.jdField_a_of_type_Auum.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Awlw.a.jdField_a_of_type_Awly.a(false);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      wij.a(1, 2131696769);
+      xxb.a(1, 2131696944);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Long == 2L)
     {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Auuk.a.jdField_a_of_type_AndroidGraphicsBitmap, 0);
+      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Awlw.a.jdField_a_of_type_AndroidGraphicsBitmap, 0);
       return;
     }
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Auuk.a.jdField_a_of_type_AndroidGraphicsBitmap, 1);
+    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Awlw.a.jdField_a_of_type_AndroidGraphicsBitmap, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3.1
  * JD-Core Version:    0.7.0.1
  */

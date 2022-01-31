@@ -1,27 +1,21 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 
-class aplq
-  extends aowi
+public class aplq
+  implements apnq
 {
-  aplq(aplp paramaplp, apaf paramapaf) {}
+  public aplq(MessengerService paramMessengerService) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
+  public void a(boolean paramBoolean)
   {
-    QLog.i("VideoForC2C<QFile>", 2, "[" + this.jdField_a_of_type_Aplp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],[getOnlinePlay]  ID[" + paramLong2 + "]onUpdateGetOfflineDownloadInfo");
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Aplp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
-      this.jdField_a_of_type_Aplp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString6;
+    if (this.a.a != null) {
+      EmojiStickerManager.a().a(this.a.a, paramBoolean);
     }
-    apug.a(this.jdField_a_of_type_Aplp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Aplp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aplr(this, paramLong1, paramBoolean, paramString3, paramString2, paramShort, paramString4));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aplq
  * JD-Core Version:    0.7.0.1
  */

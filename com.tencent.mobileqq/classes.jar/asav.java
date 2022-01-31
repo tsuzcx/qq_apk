@@ -1,24 +1,40 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.widget.Switch;
 
-class asav
-  implements View.OnClickListener
+public class asav
+  implements DialogInterface.OnClickListener
 {
-  asav(asar paramasar, Activity paramActivity) {}
+  public asav(AppletsSettingFragment paramAppletsSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoginUserGuideHelper.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Asar.a.a, asar.a(this.jdField_a_of_type_Asar));
-    this.jdField_a_of_type_Asar.g();
-    axqy.b(this.jdField_a_of_type_Asar.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 1, 0, "1", "", "", "");
+    boolean bool = true;
+    if (paramInt == 1)
+    {
+      paramDialogInterface = this.a;
+      if (!AppletsSettingFragment.a(this.a))
+      {
+        AppletsSettingFragment.a(paramDialogInterface, bool);
+        AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
+        this.a.a.cancel();
+      }
+    }
+    while (paramInt != 0) {
+      for (;;)
+      {
+        return;
+        bool = false;
+      }
+    }
+    AppletsSettingFragment.a(this.a).setChecked(AppletsSettingFragment.a(this.a));
+    this.a.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asav
  * JD-Core Version:    0.7.0.1
  */

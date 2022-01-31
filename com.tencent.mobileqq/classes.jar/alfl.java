@@ -1,39 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.2;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.3;
+import com.tencent.qphone.base.util.QLog;
 
-public class alfl
-  extends Handler
+class alfl
+  extends alfq
 {
-  public alfl(alfj paramalfj, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  alfl(alfi paramalfi) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      alku.a().a(new ARCamera.ARCameraHandler.1(this));
-      removeMessages(100);
-      sendEmptyMessageDelayed(100, 3000L);
-      return;
-    case 101: 
-      alku.a().a(new ARCamera.ARCameraHandler.2(this));
-      return;
-    }
-    alku.a().a(new ARCamera.ARCameraHandler.3(this));
+    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alfl
  * JD-Core Version:    0.7.0.1
  */

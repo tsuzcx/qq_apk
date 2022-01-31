@@ -1,26 +1,16 @@
-import android.widget.TextView;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.List;
 
 public class alve
-  extends alvh
 {
-  public alve(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void a(int paramInt)
-  {
-    if (ArkIDESettingFragment.a(this.a) != null)
-    {
-      TextView localTextView = ArkIDESettingFragment.a(this.a);
-      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
-    }
-  }
+  public int a;
+  public long a;
+  public List<PublicAccountInfo> a;
+  public boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alve
  * JD-Core Version:    0.7.0.1
  */

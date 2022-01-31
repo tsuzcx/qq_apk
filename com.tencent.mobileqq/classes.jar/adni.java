@@ -1,22 +1,22 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class adni
-  extends actn
+public class adni
+  implements DialogInterface.OnClickListener
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  View d;
+  public adni(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
-  adni(adnh paramadnh) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ThreadManager.executeOnNetWorkThread(new QQSettingCleanActivity.2.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adni
  * JD-Core Version:    0.7.0.1
  */

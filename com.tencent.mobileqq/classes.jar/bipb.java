@@ -1,178 +1,151 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import dov.com.qq.im.ae.view.AEDownLoadingView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QlinkReliableReport.1;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bipb
-  extends RecyclerView.ViewHolder
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public ImageView a;
-  public RelativeLayout a;
-  public URLImageView a;
-  public AEDownLoadingView a;
-  public ImageView b;
-  public ImageView c;
+  private static bipb jdField_a_of_type_Bipb;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private List<bipc> jdField_a_of_type_JavaUtilList;
   
-  public bipb(View paramView)
+  public static bipb a()
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377242));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375797));
-    this.b = ((ImageView)paramView.findViewById(2131365361));
-    this.c = ((ImageView)paramView.findViewById(2131377618));
-    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2131372030));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131379363));
-  }
-  
-  private static int a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return 0;
-    }
-    return 8;
-  }
-  
-  private void a(bire parambire)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.b.setVisibility(8);
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-  }
-  
-  private void b(bire parambire)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    c(parambire);
-    e(parambire);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(parambire.a));
-  }
-  
-  private void c(bire parambire)
-  {
-    if (parambire.a())
+    if (jdField_a_of_type_Bipb == null) {}
+    try
     {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
-      return;
+      if (jdField_a_of_type_Bipb == null) {
+        jdField_a_of_type_Bipb = new bipb();
+      }
+      return jdField_a_of_type_Bipb;
     }
-    if (parambire.d)
+    finally {}
+  }
+  
+  public static void a()
+  {
+    bipb localbipb = a();
+    if (localbipb != null) {
+      localbipb.e();
+    }
+  }
+  
+  private void a(bipc parambipc)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QlinkReliableReport", 2, "addPerformanceReporting:" + parambipc);
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      }
+      this.jdField_a_of_type_JavaUtilList.add(parambipc);
       return;
     }
-    if (parambire.jdField_e_of_type_Boolean)
+  }
+  
+  public static void a(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QlinkReliableReport", 2, "collectPerformance:tagName[" + paramString2 + "]");
+    }
+    bipb localbipb = a();
+    if (localbipb != null) {
+      localbipb.a(new bipc(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap));
+    }
+  }
+  
+  public static void b()
+  {
+    bipb localbipb = a();
+    if (localbipb != null) {
+      localbipb.f();
+    }
+  }
+  
+  private static void h()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QlinkReliableReport", 2, "start:");
+    }
+    bipb localbipb = a();
+    if (localbipb != null) {
+      localbipb.i();
+    }
+  }
+  
+  private void i()
+  {
+    if (!bdee.d(BaseApplication.getContext())) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QlinkReliableReport", 2, "doReportPerformance: network is not surpport");
+      }
+    }
+    for (;;)
     {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(0);
-      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgress(parambire.jdField_e_of_type_Int);
       return;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        List localList = this.jdField_a_of_type_JavaUtilList;
+        this.jdField_a_of_type_JavaUtilList = null;
+        if ((localList != null) && (localList.size() != 0))
+        {
+          ??? = azmz.a(BaseApplication.getContext());
+          Iterator localIterator = localList.iterator();
+          if (localIterator.hasNext())
+          {
+            bipc localbipc = (bipc)localIterator.next();
+            ((azmz)???).a(localbipc.a(), localbipc.b(), localbipc.a(), localbipc.a(), localbipc.b(), localbipc.a(), null);
+          }
+        }
+      }
     }
-    this.b.setVisibility(0);
-    this.b.setImageResource(2130843773);
-    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+    localObject1.clear();
   }
   
-  private void d(bire parambire)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843839);
-    c(parambire);
-    e(parambire);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(parambire.a));
-  }
+  protected void c() {}
   
-  private void e(bire parambire)
+  protected void d()
   {
-    if (parambire.a())
+    f();
+    try
     {
-      this.c.setVisibility(0);
-      this.c.setImageResource(2130845104);
+      jdField_a_of_type_Bipb = null;
       return;
     }
-    if (parambire.b())
+    finally {}
+  }
+  
+  public void e()
+  {
+    QLog.d("QlinkReliableReport", 2, "doStartReportTimer");
+    if (this.jdField_a_of_type_JavaLangRunnable == null)
     {
-      this.c.setVisibility(0);
-      this.c.setImageResource(parambire.a());
-      return;
+      this.jdField_a_of_type_JavaLangRunnable = new QlinkReliableReport.1(this);
+      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
     }
-    this.c.setVisibility(8);
   }
   
-  private void f(bire parambire)
+  public void f()
   {
-    switch (this.jdField_a_of_type_Int)
+    QLog.d("QlinkReliableReport", 2, "doStopReportTimer");
+    if (this.jdField_a_of_type_JavaLangRunnable != null)
     {
-    default: 
-      a(parambire);
-      return;
-    case 0: 
-      a(parambire);
-      return;
-    case 1: 
-      b(parambire);
-      g(parambire);
-      return;
+      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable = null;
     }
-    d(parambire);
-    g(parambire);
-  }
-  
-  private void g(bire parambire)
-  {
-    if (TextUtils.isEmpty(parambire.c)) {
-      return;
-    }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    int i = actj.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843772);
-    localURLDrawableOptions.mRequestWidth = i;
-    localURLDrawableOptions.mRequestHeight = i;
-    localURLDrawableOptions.mFailedDrawable = localDrawable;
-    localURLDrawableOptions.mLoadingDrawable = localDrawable;
-    localURLDrawableOptions.mRetryCount = 3;
-    parambire = URLDrawable.getDrawable(parambire.c, localURLDrawableOptions);
-    if (parambire.getStatus() == 2) {
-      parambire.restartDownload();
-    }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(parambire);
-  }
-  
-  public void a(int paramInt, bire parambire)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    f(parambire);
-  }
-  
-  public void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    int i = actj.a(6.0F, paramContext.getResources());
-    int j = actj.a(2.0F, paramContext.getResources());
-    int k = actj.a(16.0F, paramContext.getResources());
-    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgCorner(k / 2);
-    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumHeight(k);
-    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumWidth(k);
-    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressSizeAndMode(i, j, false);
-    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgColor(-1);
-    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressColor(-16725252);
-    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bipb
  * JD-Core Version:    0.7.0.1
  */

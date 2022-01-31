@@ -1,25 +1,47 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import mqq.util.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class alvp
-  implements aptw
+public class alvp
+  extends BroadcastReceiver
 {
-  alvp(alvo paramalvo) {}
+  public alvp(QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    alvo.a(this.a);
-  }
-  
-  public void b()
-  {
-    ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
+          {
+            asoq.a();
+            return;
+          }
+        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
+        paramContext = paramIntent.getStringExtra("kickedUin");
+      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.a.getAccount())));
+      paramContext = this.a.getKickIntent();
+    } while (paramContext == null);
+    paramContext.putExtra("isSameDevice", false);
+    paramIntent = paramIntent.getStringExtra("msg");
+    if (!TextUtils.isEmpty(paramIntent)) {
+      paramContext.putExtra("msg", paramIntent);
+    }
+    this.a.setKickIntent(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alvp
  * JD-Core Version:    0.7.0.1
  */

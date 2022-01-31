@@ -1,115 +1,124 @@
-import android.content.Context;
+import BOSSStrategyCenter.tAdvDesc;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.ui.NativeUIManager.1;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ajdy
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  public HashMap<String, ajdx> a;
+  public int a;
+  public tAdvDesc a;
+  public SparseArray<ajdz> a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  private int d;
   
-  public ajdy(Context paramContext, int paramInt)
+  public ajdy(tAdvDesc paramtAdvDesc)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc = paramtAdvDesc;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    a();
   }
   
-  public ajdx a(String paramString)
+  public static ajdy a(tAdvDesc paramtAdvDesc)
   {
-    ajdq localajdq = null;
-    Object localObject = null;
-    if ("Dialog".equals(paramString))
-    {
-      localajdq = new ajdq();
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        break label38;
-      }
+    if ((paramtAdvDesc == null) || (TextUtils.isEmpty(paramtAdvDesc.res_data))) {
+      return null;
     }
-    label38:
-    for (paramString = localObject;; paramString = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    switch (paramtAdvDesc.pattern_id)
     {
-      localajdq.a(paramString);
-      return localajdq;
+    default: 
+      return null;
+    case 1012: 
+      return new ajdy(paramtAdvDesc);
+    case 1108: 
+      return new bkca(paramtAdvDesc);
+    }
+    return new bkcc(paramtAdvDesc);
+  }
+  
+  public ajec a()
+  {
+    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data))) {
+      return null;
+    }
+    switch (this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.pattern_id)
+    {
+    default: 
+      return null;
+    case 1012: 
+      return new ajec();
+    case 1108: 
+      return new bkcb();
+    }
+    return new bkcf();
+  }
+  
+  protected void a()
+  {
+    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data)))
+    {
+      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
+      return;
+    }
+    String str1 = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data;
+    try
+    {
+      Object localObject = new JSONObject(str1);
+      int i = ((JSONObject)localObject).optInt("res_type");
+      String str2 = ((JSONObject)localObject).optString("res_url");
+      String str3 = ((JSONObject)localObject).optString("res_url_md5");
+      int j = ((JSONObject)localObject).optInt("jump_type");
+      String str4 = ((JSONObject)localObject).optString("jump_url");
+      int k = ((JSONObject)localObject).optInt("WebViewPreloadFlag");
+      if (QLog.isColorLevel()) {
+        QLog.d("QbossADBannerManager", 2, "webViewPreloadFlag: " + k);
+      }
+      this.jdField_a_of_type_Int = i;
+      this.jdField_b_of_type_Int = j;
+      this.jdField_a_of_type_JavaLangString = str4;
+      this.d = k;
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_traceinfo;
+      this.c = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id;
+      localObject = new ajdz();
+      ((ajdz)localObject).jdField_a_of_type_JavaLangString = str2;
+      ((ajdz)localObject).jdField_b_of_type_JavaLangString = str3;
+      ((ajdz)localObject).c = ajea.a().a(str2);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(1, localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
+      bjmf.a().a(2741, this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id, 102, "json parseError exception = " + localException.getMessage() + " json string = " + str1);
     }
   }
   
-  public void a()
+  boolean a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = (ajdx)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-          if (localObject != null) {
-            ((ajdx)localObject).a();
-          }
-        }
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
+    return this.d == 1;
   }
   
-  public void a(ajdx paramajdx)
+  public boolean b()
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (paramajdx != null)) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramajdx.a());
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    paramString1 = ajac.a(this.jdField_a_of_type_Int);
-    if (paramString1 != null)
+    int i = 0;
+    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      paramString1 = paramString1.a();
-      if (paramString1 != null) {
-        paramString1.runRenderTask(new NativeUIManager.1(this, paramString1, paramString2, paramString3));
+      ajdz localajdz = (ajdz)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if ((localajdz == null) || (TextUtils.isEmpty(localajdz.c)) || (!localajdz.a())) {
+        return false;
       }
+      i += 1;
     }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    ajdx localajdx;
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      localajdx = null;
-      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-        localajdx = (ajdx)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-      }
-      if (localajdx == null) {
-        break label45;
-      }
-      localajdx.a(paramString2, paramString4, this);
-    }
-    label45:
-    do
-    {
-      do
-      {
-        return;
-      } while ("destroy".equals(paramString3));
-      localajdx = a(paramString1);
-    } while (localajdx == null);
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localajdx);
-    a(paramString1, paramString2, paramString3, paramString4);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdy
  * JD-Core Version:    0.7.0.1
  */

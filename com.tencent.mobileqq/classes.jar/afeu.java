@@ -1,30 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
 
 public class afeu
-  implements DialogInterface.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public afeu(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public afeu(ArkAppRootLayout paramArkAppRootLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
-      return;
+    if (ArkAppRootLayout.a(this.a) != null) {
+      ArkAppRootLayout.a(this.a).a();
     }
-    paramDialogInterface.dismiss();
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afeu
  * JD-Core Version:    0.7.0.1
  */

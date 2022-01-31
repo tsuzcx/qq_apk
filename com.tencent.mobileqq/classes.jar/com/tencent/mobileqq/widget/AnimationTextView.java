@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import aebx;
-import aicc;
-import aice;
-import ambg;
-import amcy;
+import afyl;
+import ajtm;
+import ajto;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -12,6 +10,10 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,18 +27,22 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView.BufferType;
-import aykk;
-import aykr;
-import aykt;
-import bcjp;
-import bcjq;
+import ansf;
+import anty;
+import baig;
+import bain;
+import baip;
+import beiq;
+import beir;
+import bhow;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 
 public class AnimationTextView
   extends PatchedTextView
-  implements aicc
+  implements ajtm, Handler.Callback
 {
+  private static final int MSG_INVALIDATE = 1;
   private static final String TAG = "AnimationTextView";
   public boolean doublleClicked;
   private boolean hasStroke;
@@ -45,6 +51,7 @@ public class AnimationTextView
   public boolean isSingleClick = true;
   private boolean mBlockRelayout;
   private MotionEvent mCurrentDownEvent;
+  private final Handler mHandler = new bhow(Looper.myLooper(), this);
   private boolean mHasSelected;
   private int mHighlightBackgroundColor = -5250572;
   private Paint mHighlightPaint;
@@ -52,14 +59,14 @@ public class AnimationTextView
   private boolean mIsHighlight;
   private boolean mIsSelectable = true;
   private MotionEvent mPreviousUpEvent;
-  protected aice mSelectDelegate;
+  protected ajto mSelectDelegate;
   private int mSelectEnd;
   private int mSelectStart;
   private int mStrokeColor;
   private final int[] mTempLocation = new int[2];
   Runnable mTimerForSecondClick = new AnimationTextView.1(this);
-  public bcjp onDoubleClick;
-  public bcjq onSingleClick;
+  public beiq onDoubleClick;
+  public beir onSingleClick;
   public float touchL;
   public float touchT;
   
@@ -106,33 +113,33 @@ public class AnimationTextView
   {
     int i = 0;
     float f1 = this.touchL;
-    float f3 = aebx.e;
-    float f2 = this.touchT - aebx.c;
-    ambg localambg = (ambg)getTag(2131363707);
-    Object localObject = (ChatMessage)getTag(2131364152);
+    float f3 = afyl.e;
+    float f2 = this.touchT - afyl.c;
+    ansf localansf = (ansf)getTag(2131363763);
+    Object localObject = (ChatMessage)getTag(2131364214);
     if (localObject != null) {}
     for (boolean bool = ((ChatMessage)localObject).isSend();; bool = false)
     {
       if (bool) {}
-      for (f1 = this.touchL - aebx.f;; f1 -= f3)
+      for (f1 = this.touchL - afyl.f;; f1 -= f3)
       {
         localObject = getText();
-        if ((localObject instanceof aykk))
+        if ((localObject instanceof baig))
         {
-          localObject = (aykk)localObject;
-          localObject = (aykr[])((aykk)localObject).getSpans(0, ((aykk)localObject).length(), aykr.class);
+          localObject = (baig)localObject;
+          localObject = (bain[])((baig)localObject).getSpans(0, ((baig)localObject).length(), bain.class);
           int k;
           for (int j = 0; i < localObject.length; j = k)
           {
-            aykt localaykt = localObject[i];
+            baip localbaip = localObject[i];
             k = j;
-            if ((localaykt instanceof aykt))
+            if ((localbaip instanceof baip))
             {
-              localaykt = (aykt)localaykt;
-              f3 = localaykt.a;
-              float f4 = localaykt.b;
-              float f5 = localaykt.c;
-              float f6 = localaykt.d;
+              localbaip = (baip)localbaip;
+              f3 = localbaip.a;
+              float f4 = localbaip.b;
+              float f5 = localbaip.c;
+              float f6 = localbaip.d;
               k = j;
               if (f1 >= f3)
               {
@@ -159,21 +166,21 @@ public class AnimationTextView
           if (j != 0)
           {
             localObject = getBackground();
-            if ((localObject == null) || (!(localObject instanceof amcy))) {
+            if ((localObject == null) || (!(localObject instanceof anty))) {
               break label277;
             }
-            ((amcy)localObject).a = true;
+            ((anty)localObject).a = true;
           }
         }
         label277:
-        while ((localObject == null) || (localambg == null)) {
+        while ((localObject == null) || (localansf == null)) {
           return;
         }
         localObject = getResources();
         if (bool) {}
-        for (i = 2130848934;; i = 2130848758)
+        for (i = 2130849365;; i = 2130849189)
         {
-          localambg.a(this, ((Resources)localObject).getDrawable(i));
+          localansf.a(this, ((Resources)localObject).getDrawable(i));
           return;
         }
       }
@@ -324,9 +331,9 @@ public class AnimationTextView
     return (paramInt > 0) && (localLayout.getLineForOffset(paramInt) == localLayout.getLineForOffset(paramInt - 1) + 1);
   }
   
-  public void bind(@Nullable aice paramaice)
+  public void bind(@Nullable ajto paramajto)
   {
-    this.mSelectDelegate = paramaice;
+    this.mSelectDelegate = paramajto;
   }
   
   public void clearHighlightContent()
@@ -351,7 +358,7 @@ public class AnimationTextView
   }
   
   @Nullable
-  public aice delegate()
+  public ajto delegate()
   {
     return this.mSelectDelegate;
   }
@@ -367,6 +374,37 @@ public class AnimationTextView
   public int endIndex()
   {
     return this.mSelectEnd;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    Object localObject1;
+    do
+    {
+      do
+      {
+        return true;
+        localObject1 = getText();
+      } while (!(localObject1 instanceof Spannable));
+      localObject1 = (Spannable)localObject1;
+      localObject1 = (bain[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), bain.class);
+    } while ((localObject1 == null) || (localObject1.length <= 0));
+    this.mBlockRelayout = true;
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      if (localObject2.a() == paramMessage.obj) {
+        invlidateSpan(localObject2);
+      }
+      i += 1;
+    }
+    this.mBlockRelayout = false;
+    return true;
   }
   
   public void hasSelected(boolean paramBoolean) {}
@@ -407,27 +445,10 @@ public class AnimationTextView
   public void invalidateDrawable(Drawable paramDrawable)
   {
     super.invalidateDrawable(paramDrawable);
-    Object localObject1 = getText();
-    if ((localObject1 instanceof Spannable))
-    {
-      localObject1 = (Spannable)localObject1;
-      localObject1 = (aykr[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), aykr.class);
-      if ((localObject1 != null) && (localObject1.length > 0))
-      {
-        this.mBlockRelayout = true;
-        int j = localObject1.length;
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          if (localObject2.a() == paramDrawable) {
-            invlidateSpan(localObject2);
-          }
-          i += 1;
-        }
-        this.mBlockRelayout = false;
-      }
-    }
+    Message localMessage = this.mHandler.obtainMessage(1);
+    localMessage.obj = paramDrawable;
+    this.mHandler.removeMessages(1);
+    this.mHandler.sendMessageDelayed(localMessage, 100L);
   }
   
   public void isSelectable(boolean paramBoolean)
@@ -453,6 +474,12 @@ public class AnimationTextView
     paramArrayOfInt[0] = (paramArrayOfInt[0] + (int)localLayout.getPrimaryHorizontal(paramInt) + getPaddingLeft());
     int i = paramArrayOfInt[1];
     paramArrayOfInt[1] = (localLayout.getLineBottom(localLayout.getLineForOffset(paramInt)) + i + getPaddingTop());
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    this.mHandler.removeMessages(1);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -596,7 +623,7 @@ public class AnimationTextView
     if ((localObject != paramCharSequence) && ((getText() instanceof Spanned)))
     {
       paramCharSequence = (Spanned)getText();
-      paramBufferType = (aykr[])paramCharSequence.getSpans(0, paramCharSequence.length(), aykr.class);
+      paramBufferType = (bain[])paramCharSequence.getSpans(0, paramCharSequence.length(), bain.class);
       localObject = new Drawable[paramBufferType.length];
       int i = 0;
       while (i < paramBufferType.length)

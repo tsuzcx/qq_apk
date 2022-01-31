@@ -1,28 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ngq
-  implements View.OnClickListener
+public class ngq
+  implements bhqd
 {
-  ngq(nfr paramnfr, nms paramnms) {}
+  public ngq(EqqAccountDetailActivity paramEqqAccountDetailActivity, npo paramnpo, bhpy parambhpy, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = new Intent((Context)this.jdField_a_of_type_Nfr.a.get(), ScannerActivity.class);
-    paramView.putExtra("from", this.jdField_a_of_type_Nfr.a.getClass().getName());
-    paramView.putExtra("finishAfterSucc", true);
-    ((BaseActivity)this.jdField_a_of_type_Nfr.a.get()).startActivity(paramView);
-    nfr.a(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_Nms.a);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_Npo, paramInt + 1);
+      this.jdField_a_of_type_Bhpy.dismiss();
+    } while ((!((ntw)EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getManager(88)).a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))) || (this.jdField_a_of_type_Int == paramInt));
+    ((nup)EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).a(88)).a(134243867, EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), null, null, null, paramInt + 1, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngq
  * JD-Core Version:    0.7.0.1
  */

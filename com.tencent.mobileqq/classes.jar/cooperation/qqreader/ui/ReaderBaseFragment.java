@@ -13,10 +13,10 @@ import android.view.ViewParent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bcfx;
-import bguq;
-import bguy;
-import bgwi;
+import beey;
+import bivp;
+import bivx;
+import bixh;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
@@ -36,8 +36,8 @@ public abstract class ReaderBaseFragment
   
   private void j()
   {
-    if (this.jdField_a_of_type_Bcfx.a != null) {
-      this.jdField_a_of_type_Bcfx.a.setVisibility(8);
+    if (this.jdField_a_of_type_Beey.a != null) {
+      this.jdField_a_of_type_Beey.a.setVisibility(8);
     }
   }
   
@@ -77,14 +77,14 @@ public abstract class ReaderBaseFragment
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.a(paramWebView, paramInt, paramString1, paramString2);
-    bguq.a().a();
+    bivp.a().a();
   }
   
   public void a(WebView paramWebView, String paramString)
   {
     super.a(paramWebView, paramString);
     this.jdField_a_of_type_Boolean = false;
-    bguq.a().a();
+    bivp.a().a();
   }
   
   public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -95,19 +95,13 @@ public abstract class ReaderBaseFragment
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       k();
     }
-    bguq.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    super.a(paramString, paramInt);
-    bgwi.b(getActivity(), paramInt, paramString);
+    bivp.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
   public boolean a()
   {
     this.b = true;
-    this.jdField_a_of_type_Bcfx.b = false;
+    this.jdField_a_of_type_Beey.b = false;
     return super.a();
   }
   
@@ -131,13 +125,19 @@ public abstract class ReaderBaseFragment
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         k();
       }
-      bguq.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
+      bivp.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
     }
     for (;;)
     {
       return true;
-      bguq.a().a();
+      bivp.a().a();
     }
+  }
+  
+  public void c(String paramString, int paramInt)
+  {
+    super.c(paramString, paramInt);
+    bixh.b(getActivity(), paramInt, paramString);
   }
   
   public int d(Bundle paramBundle)
@@ -155,7 +155,7 @@ public abstract class ReaderBaseFragment
     {
       localObject = ((ReaderBaseWebActivity)localObject).a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
       if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-        ((bguy)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
+        ((bivx)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
       }
     }
     this.jdField_a_of_type_ComTencentBizUiTouchWebView.getView().setVerticalScrollBarEnabled(false);
@@ -197,7 +197,7 @@ public abstract class ReaderBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderBaseFragment
  * JD-Core Version:    0.7.0.1
  */

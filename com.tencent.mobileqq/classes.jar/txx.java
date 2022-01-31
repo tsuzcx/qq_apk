@@ -1,23 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
 
-class txx
-  implements Animation.AnimationListener
+public class txx
+  extends yfn
 {
-  txx(txt paramtxt) {}
+  private String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public txx(String paramString)
   {
-    this.a.dismiss();
+    this.a = paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a() {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(yft paramyft)
+  {
+    QCircleGetMainPageRequest localQCircleGetMainPageRequest = new QCircleGetMainPageRequest(this.a, null);
+    paramyft = new txy(this, paramyft);
+    localQCircleGetMainPageRequest.setEnableCache(true);
+    VSNetworkHelper.a().a(localQCircleGetMainPageRequest, paramyft);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txx
  * JD-Core Version:    0.7.0.1
  */

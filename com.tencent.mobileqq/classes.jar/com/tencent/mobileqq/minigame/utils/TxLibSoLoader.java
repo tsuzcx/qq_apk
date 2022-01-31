@@ -6,7 +6,7 @@ import com.tencent.mobileqq.mini.utils.DebugUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import llw;
+import lnz;
 
 public class TxLibSoLoader
 {
@@ -16,7 +16,7 @@ public class TxLibSoLoader
   {
     try
     {
-      if (llw.f() > 2) {}
+      if (lnz.f() > 2) {}
       for (paramString = "/txlib/lib" + paramString + "-v7a.so";; paramString = "/txlib/lib" + paramString + "-armeabi.so")
       {
         paramString = BaseApplicationImpl.getContext().getFilesDir().getParent() + paramString;
@@ -47,7 +47,7 @@ public class TxLibSoLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.TxLibSoLoader
  * JD-Core Version:    0.7.0.1
  */

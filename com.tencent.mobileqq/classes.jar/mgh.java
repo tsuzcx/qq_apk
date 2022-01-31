@@ -1,20 +1,30 @@
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mgh
-  implements aapz
+  implements View.OnTouchListener
 {
-  public mgh(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public mgh(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.h = paramInt1;
-    this.a.i = paramInt2;
-    this.a.d(10);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,63 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import com.tencent.qphone.base.util.QLog;
 
-class ardu
-  implements TextWatcher
+public class ardu
 {
-  ardu(ardt paramardt) {}
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public static int a(int paramInt)
   {
-    if (ardt.a(this.a) != null)
+    int j = 9;
+    int i = j;
+    switch (paramInt)
     {
-      if (TextUtils.isEmpty(paramCharSequence)) {
-        break label45;
+    default: 
+      i = j;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QFileBrowserUtils", 1, "getVideoQRReportFromType: reportFromType[" + i + "]");
       }
-      if (!ardt.b(this.a))
-      {
-        ardt.b(this.a, true);
-        ardt.a(this.a, 1);
+      return i;
+      i = 8;
+      continue;
+      i = 7;
+      continue;
+      i = 6;
+      continue;
+      i = 5;
+      continue;
+      i = 4;
+    }
+  }
+  
+  public static void a(long paramLong)
+  {
+    int i;
+    if (paramLong < 51200L) {
+      i = 1;
+    }
+    for (;;)
+    {
+      azmj.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
+      return;
+      if (paramLong < 102400L) {
+        i = 2;
+      } else if (paramLong < 512000L) {
+        i = 3;
+      } else if (paramLong < 1024000L) {
+        i = 4;
+      } else if (paramLong < 3072000L) {
+        i = 5;
+      } else if (paramLong < 10240000L) {
+        i = 6;
+      } else {
+        i = 7;
       }
     }
-    return;
-    label45:
-    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardu
  * JD-Core Version:    0.7.0.1
  */

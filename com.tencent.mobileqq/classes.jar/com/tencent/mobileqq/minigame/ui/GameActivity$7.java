@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ajya;
+import alpo;
 import android.widget.Toast;
 
 class GameActivity$7
@@ -10,12 +10,12 @@ class GameActivity$7
   
   public void run()
   {
-    Toast.makeText(this.this$0, ajya.a(2131705018), 0).show();
+    Toast.makeText(this.this$0, alpo.a(2131705390), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.7
  * JD-Core Version:    0.7.0.1
  */

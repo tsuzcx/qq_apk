@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.DeliverData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
 
-public final class qet
-  implements Parcelable.Creator<ReadInJoyDeliverUGCActivity.DeliverData>
+public class qet
+  implements View.OnClickListener
 {
-  public ReadInJoyDeliverUGCActivity.DeliverData a(Parcel paramParcel)
-  {
-    return new ReadInJoyDeliverUGCActivity.DeliverData(paramParcel);
-  }
+  public qet(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  public ReadInJoyDeliverUGCActivity.DeliverData[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ReadInJoyDeliverUGCActivity.DeliverData[paramInt];
+    pja.a(2, this.jdField_a_of_type_JavaLangString);
+    ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qet
  * JD-Core Version:    0.7.0.1
  */

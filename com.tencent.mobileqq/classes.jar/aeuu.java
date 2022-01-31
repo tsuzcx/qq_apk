@@ -1,33 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aeuu
-  extends BroadcastReceiver
+class aeuu
+  implements ymm
 {
-  public aeuu(TroopChatPie paramTroopChatPie) {}
+  aeuu(aeut paramaeut) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void callback(Bundle paramBundle)
   {
-    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
+    boolean bool;
+    if (paramBundle.getInt("type") == 73)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Confess action! ");
-      }
-      if (TroopChatPie.a(this.a) != null)
-      {
-        TroopChatPie.b(this.a).a(35);
-        amom.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-      }
+      bool = paramBundle.getBoolean("isSuccess");
+      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
     }
+    else
+    {
+      return;
+    }
+    if (Boolean.valueOf(bool).booleanValue())
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131720946, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131720943, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,94 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.quickat.ui.AllMemberItemViewWrapper.3.1;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class bael
-  extends akil
+  extends badk
 {
-  bael(baei parambaei) {}
+  public bael(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
   
-  protected void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    ThreadManager.getUIHandlerV2().post(new AllMemberItemViewWrapper.3.1(this, paramBoolean1, paramString1, paramBoolean2, paramString2, paramString3, paramBoolean3));
+    this.a.stopTitleProgress();
+    if (!paramBoolean) {
+      armz.a(alpo.a(2131715183));
+    }
+    while ((this.a.jdField_a_of_type_Int != paramInt) && (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    if ((0 == 0) && (QLog.isDevelopLevel())) {
+      QLog.i("TeamWorkAuthorizeSettingFragment", 1, "padInfo is null, maybe is newpad");
+    }
+    this.a.jdField_a_of_type_JavaUtilList.clear();
+    if (0 != 0) {
+      throw new NullPointerException();
+    }
+    for (;;)
+    {
+      TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
+      TeamWorkAuthorizeSettingFragment.a(this.a);
+      TeamWorkAuthorizeSettingFragment.a(this.a, true);
+      return;
+      this.a.b = 2;
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList)
+  {
+    this.a.stopTitleProgress();
+    if (!paramBoolean) {
+      armz.a(alpo.a(2131715171));
+    }
+    while (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.a.jdField_a_of_type_JavaUtilList.clear();
+    paramString = paramList.iterator();
+    while (paramString.hasNext())
+    {
+      paramList = (TimDocSSOMsg.UinRightInfo)paramString.next();
+      babz localbabz = new babz();
+      localbabz.jdField_a_of_type_JavaLangString = String.valueOf(paramList.uint64_uin.get());
+      localbabz.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = paramList;
+      this.a.jdField_a_of_type_Babx.a(localbabz);
+    }
+    this.a.b = paramInt;
+    TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
+    TeamWorkAuthorizeSettingFragment.a(this.a);
+    TeamWorkAuthorizeSettingFragment.a(this.a, true);
+  }
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    TeamWorkAuthorizeSettingFragment.a(this.a, true);
+    this.a.getRightTextView().setEnabled(true);
+    this.a.stopTitleProgress();
+    if (!paramBoolean) {
+      armz.a(alpo.a(2131715126));
+    }
+    Intent localIntent;
+    do
+    {
+      return;
+      armz.b(alpo.a(2131715128));
+      this.a.stopTitleProgress();
+      localIntent = new Intent();
+      localIntent.putExtra("url", paramString);
+      localIntent.putExtra("type", paramInt);
+    } while (!this.a.isAdded());
+    this.a.getActivity().setResult(1122, localIntent);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bael
  * JD-Core Version:    0.7.0.1
  */

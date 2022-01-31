@@ -3,7 +3,6 @@ package com.tencent.bugly.crashreport.crash.anr;
 import android.app.ActivityManager;
 import android.app.ActivityManager.ProcessErrorStateInfo;
 import android.content.Context;
-import android.os.Build.VERSION;
 import android.os.FileObserver;
 import android.os.Process;
 import com.tencent.bugly.crashreport.common.strategy.StrategyBean;
@@ -599,11 +598,11 @@ public final class b
     {
       try
       {
-        e();
+        f();
         return;
       }
       finally {}
-      f();
+      g();
     }
   }
   
@@ -626,13 +625,13 @@ public final class b
   }
   
   /* Error */
-  private void e()
+  private void f()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 610	com/tencent/bugly/crashreport/crash/anr/b:g	()Z
+    //   3: invokespecial 610	com/tencent/bugly/crashreport/crash/anr/b:h	()Z
     //   6: ifeq +17 -> 23
     //   9: ldc_w 612
     //   12: iconst_0
@@ -702,13 +701,13 @@ public final class b
   }
   
   /* Error */
-  private void f()
+  private void g()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 610	com/tencent/bugly/crashreport/crash/anr/b:g	()Z
+    //   3: invokespecial 610	com/tencent/bugly/crashreport/crash/anr/b:h	()Z
     //   6: ifne +17 -> 23
     //   9: ldc_w 642
     //   12: iconst_0
@@ -761,7 +760,7 @@ public final class b
   }
   
   /* Error */
-  private boolean g()
+  private boolean h()
   {
     // Byte code:
     //   0: aload_0
@@ -796,7 +795,7 @@ public final class b
     //   2	7	22	finally
   }
   
-  private boolean h()
+  private boolean i()
   {
     try
     {
@@ -810,45 +809,6 @@ public final class b
     }
   }
   
-  public final void a(StrategyBean paramStrategyBean)
-  {
-    boolean bool = true;
-    if (paramStrategyBean == null) {}
-    for (;;)
-    {
-      return;
-      for (;;)
-      {
-        try
-        {
-          if (paramStrategyBean.j != g()) {
-            x.d("server anr changed to %b", new Object[] { Boolean.valueOf(paramStrategyBean.j) });
-          }
-          if (Build.VERSION.SDK_INT > 19) {
-            break label109;
-          }
-          if ((paramStrategyBean.j) && (h()))
-          {
-            if (bool == g()) {
-              break;
-            }
-            x.a("anr changed to %b", new Object[] { Boolean.valueOf(bool) });
-            b(bool);
-            break;
-          }
-        }
-        finally {}
-        bool = false;
-      }
-      label109:
-      if (paramStrategyBean.j) {
-        c();
-      } else {
-        d();
-      }
-    }
-  }
-  
   /* Error */
   public final void a(String paramString)
   {
@@ -857,9 +817,9 @@ public final class b
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 42	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   6: invokevirtual 669	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   6: invokevirtual 651	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   9: ifeq +17 -> 26
-    //   12: ldc_w 671
+    //   12: ldc_w 653
     //   15: iconst_0
     //   16: anewarray 4	java/lang/Object
     //   19: invokestatic 92	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -873,19 +833,19 @@ public final class b
     //   31: invokevirtual 481	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   34: aload_0
     //   35: monitorexit
-    //   36: ldc_w 673
+    //   36: ldc_w 655
     //   39: iconst_0
     //   40: anewarray 4	java/lang/Object
     //   43: invokestatic 92	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   46: pop
     //   47: aload_1
     //   48: iconst_0
-    //   49: invokestatic 677	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper:readFirstDumpInfo	(Ljava/lang/String;Z)Lcom/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a;
+    //   49: invokestatic 659	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper:readFirstDumpInfo	(Ljava/lang/String;Z)Lcom/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a;
     //   52: astore 6
     //   54: aload 6
     //   56: ifnull +336 -> 392
     //   59: aload 6
-    //   61: getfield 678	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a:c	J
+    //   61: getfield 660	com/tencent/bugly/crashreport/crash/anr/TraceFileHelper$a:c	J
     //   64: lstore_2
     //   65: lload_2
     //   66: lstore 4
@@ -893,22 +853,22 @@ public final class b
     //   69: ldc2_w 43
     //   72: lcmp
     //   73: ifne +19 -> 92
-    //   76: ldc_w 680
+    //   76: ldc_w 662
     //   79: iconst_0
     //   80: anewarray 4	java/lang/Object
     //   83: invokestatic 458	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   86: pop
-    //   87: invokestatic 685	java/lang/System:currentTimeMillis	()J
+    //   87: invokestatic 667	java/lang/System:currentTimeMillis	()J
     //   90: lstore 4
     //   92: lload 4
     //   94: aload_0
     //   95: getfield 46	com/tencent/bugly/crashreport/crash/anr/b:b	J
     //   98: lsub
-    //   99: invokestatic 691	java/lang/Math:abs	(J)J
+    //   99: invokestatic 673	java/lang/Math:abs	(J)J
     //   102: ldc2_w 84
     //   105: lcmp
     //   106: ifge +37 -> 143
-    //   109: ldc_w 693
+    //   109: ldc_w 675
     //   112: iconst_1
     //   113: anewarray 4	java/lang/Object
     //   116: dup
@@ -935,16 +895,16 @@ public final class b
     //   150: getfield 42	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
     //   153: iconst_1
     //   154: invokevirtual 481	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   157: getstatic 695	com/tencent/bugly/crashreport/crash/c:f	I
+    //   157: getstatic 677	com/tencent/bugly/crashreport/crash/c:f	I
     //   160: iconst_0
-    //   161: invokestatic 698	com/tencent/bugly/proguard/z:a	(IZ)Ljava/util/Map;
+    //   161: invokestatic 680	com/tencent/bugly/proguard/z:a	(IZ)Ljava/util/Map;
     //   164: astore 6
     //   166: aload 6
     //   168: ifnull +13 -> 181
     //   171: aload 6
     //   173: invokeinterface 448 1 0
     //   178: ifgt +49 -> 227
-    //   181: ldc_w 700
+    //   181: ldc_w 682
     //   184: iconst_0
     //   185: anewarray 4	java/lang/Object
     //   188: invokestatic 458	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -958,7 +918,7 @@ public final class b
     //   202: aload_1
     //   203: invokestatic 356	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   206: pop
-    //   207: ldc_w 702
+    //   207: ldc_w 684
     //   210: iconst_0
     //   211: anewarray 4	java/lang/Object
     //   214: invokestatic 436	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -971,11 +931,11 @@ public final class b
     //   227: aload_0
     //   228: getfield 55	com/tencent/bugly/crashreport/crash/anr/b:c	Landroid/content/Context;
     //   231: ldc2_w 84
-    //   234: invokestatic 704	com/tencent/bugly/crashreport/crash/anr/b:a	(Landroid/content/Context;J)Landroid/app/ActivityManager$ProcessErrorStateInfo;
+    //   234: invokestatic 686	com/tencent/bugly/crashreport/crash/anr/b:a	(Landroid/content/Context;J)Landroid/app/ActivityManager$ProcessErrorStateInfo;
     //   237: astore 7
     //   239: aload 7
     //   241: ifnonnull +23 -> 264
-    //   244: ldc_w 706
+    //   244: ldc_w 688
     //   247: iconst_0
     //   248: anewarray 4	java/lang/Object
     //   251: invokestatic 92	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -986,10 +946,10 @@ public final class b
     //   260: invokevirtual 481	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   263: return
     //   264: aload 7
-    //   266: getfield 709	android/app/ActivityManager$ProcessErrorStateInfo:pid	I
-    //   269: invokestatic 714	android/os/Process:myPid	()I
+    //   266: getfield 691	android/app/ActivityManager$ProcessErrorStateInfo:pid	I
+    //   269: invokestatic 696	android/os/Process:myPid	()I
     //   272: if_icmpeq +31 -> 303
-    //   275: ldc_w 716
+    //   275: ldc_w 698
     //   278: iconst_1
     //   279: anewarray 4	java/lang/Object
     //   282: dup
@@ -1004,7 +964,7 @@ public final class b
     //   298: iconst_0
     //   299: invokevirtual 481	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   302: return
-    //   303: ldc_w 718
+    //   303: ldc_w 700
     //   306: iconst_0
     //   307: anewarray 4	java/lang/Object
     //   310: invokestatic 462	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -1016,7 +976,7 @@ public final class b
     //   320: aload 7
     //   322: lload 4
     //   324: aload 6
-    //   326: invokespecial 720	com/tencent/bugly/crashreport/crash/anr/b:a	(Landroid/content/Context;Ljava/lang/String;Landroid/app/ActivityManager$ProcessErrorStateInfo;JLjava/util/Map;)Z
+    //   326: invokespecial 702	com/tencent/bugly/crashreport/crash/anr/b:a	(Landroid/content/Context;Ljava/lang/String;Landroid/app/ActivityManager$ProcessErrorStateInfo;JLjava/util/Map;)Z
     //   329: pop
     //   330: aload_0
     //   331: getfield 42	com/tencent/bugly/crashreport/crash/anr/b:a	Ljava/util/concurrent/atomic/AtomicInteger;
@@ -1029,14 +989,14 @@ public final class b
     //   344: ifne +7 -> 351
     //   347: aload_1
     //   348: invokevirtual 359	java/lang/Throwable:printStackTrace	()V
-    //   351: ldc_w 722
+    //   351: ldc_w 704
     //   354: iconst_1
     //   355: anewarray 4	java/lang/Object
     //   358: dup
     //   359: iconst_0
     //   360: aload_1
     //   361: invokevirtual 536	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   364: invokevirtual 723	java/lang/Class:toString	()Ljava/lang/String;
+    //   364: invokevirtual 705	java/lang/Class:toString	()Ljava/lang/String;
     //   367: aastore
     //   368: invokestatic 436	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   371: pop
@@ -1100,7 +1060,7 @@ public final class b
   public final void a(boolean paramBoolean)
   {
     c(paramBoolean);
-    boolean bool = h();
+    boolean bool = i();
     com.tencent.bugly.crashreport.common.strategy.a locala = com.tencent.bugly.crashreport.common.strategy.a.a();
     paramBoolean = bool;
     if (locala != null) {
@@ -1111,7 +1071,7 @@ public final class b
     label68:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      if (paramBoolean != g())
+      if (paramBoolean != h())
       {
         x.a("anr changed to %b", new Object[] { Boolean.valueOf(paramBoolean) });
         b(paramBoolean);
@@ -1232,7 +1192,21 @@ public final class b
     }
   }
   
-  public final boolean c()
+  public final void c()
+  {
+    try
+    {
+      x.d("customer decides whether to open or close.", new Object[0]);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean d()
   {
     if ((this.k != null) && (this.k.isAlive())) {
       return false;
@@ -1248,7 +1222,7 @@ public final class b
     return this.k.d();
   }
   
-  public final boolean d()
+  public final boolean e()
   {
     boolean bool = false;
     if (this.k != null)

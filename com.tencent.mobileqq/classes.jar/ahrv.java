@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
 
-class ahrv
-  implements DialogInterface.OnClickListener
+public class ahrv
 {
-  ahrv(ahrt paramahrt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrv
  * JD-Core Version:    0.7.0.1
  */

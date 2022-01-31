@@ -1,20 +1,50 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
 
-public class ril
-  implements MessageQueue.IdleHandler
+class ril
+  extends AnimatorListenerAdapter
 {
-  public ril(FastWebActivity paramFastWebActivity) {}
+  ril(rig paramrig) {}
   
-  public boolean queueIdle()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    FastWebActivity.a(this.a, FastWebActivity.a(this.a));
-    return false;
+    super.onAnimationCancel(paramAnimator);
+    if (rig.a(this.a).u != null) {
+      rig.a(this.a).u.setTag(2131362578, null);
+    }
+    if (rig.a(this.a) != null) {
+      rig.a(this.a).b(rig.a(this.a));
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    if (rig.a(this.a) != null)
+    {
+      paramAnimator = rig.a(this.a).a();
+      rig.a(this.a, rig.a(this.a).h, paramAnimator, rig.a(this.a), 18, -1);
+    }
+    if (rig.a(this.a).u != null) {
+      rig.a(this.a).u.setTag(2131362578, null);
+    }
+    if (rig.a(this.a) != null) {
+      rig.a(this.a).c(rig.a(this.a));
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (rig.a(this.a) != null) {
+      rig.a(this.a).a(rig.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ril
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import agcf;
-import akdq;
+import aiak;
+import alvf;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class MainFragment$1
@@ -16,7 +16,7 @@ public class MainFragment$1
     }
     if (MainFragment.a(this.this$0) != null)
     {
-      ((akdq)MainFragment.a(this.this$0).getManager(257)).a(MainFragment.a(this.this$0));
+      ((alvf)MainFragment.a(this.this$0).getManager(257)).a(MainFragment.a(this.this$0));
       MainFragment.a(this.this$0).registObserver(MainFragment.a(this.this$0));
       MainFragment.a(this.this$0).registObserver(MainFragment.a(this.this$0));
     }
@@ -25,7 +25,7 @@ public class MainFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MainFragment.1
  * JD-Core Version:    0.7.0.1
  */

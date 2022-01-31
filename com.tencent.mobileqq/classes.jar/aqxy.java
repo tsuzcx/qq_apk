@@ -1,99 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.etrump.mixlayout.EMEmoticon;
-import com.etrump.mixlayout.ETFont;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class aqxy
-  extends Handler
+public final class aqxy
+  implements Parcelable.Creator<WeiYunFileInfo>
 {
-  public void handleMessage(Message paramMessage)
+  public WeiYunFileInfo a(Parcel paramParcel)
   {
-    aqxx localaqxx = (aqxx)paramMessage.obj;
-    if (localaqxx == null) {}
-    label277:
-    label299:
-    label322:
-    label344:
-    label377:
-    label380:
-    label381:
-    for (;;)
-    {
-      return;
-      HiBoomTextView localHiBoomTextView = (HiBoomTextView)aqxx.a(localaqxx).get();
-      if ((localHiBoomTextView != null) && (HiBoomTextView.a(localHiBoomTextView) != null)) {
-        switch (paramMessage.what)
-        {
-        case 258: 
-        default: 
-          return;
-        case 257: 
-          if ((localHiBoomTextView.getVisibility() == 0) && (HiBoomTextView.jdField_a_of_type_AndroidOsHandler != null))
-          {
-            HiBoomTextView.jdField_a_of_type_AndroidOsHandler.obtainMessage(258, aqxx.a(localHiBoomTextView)).sendToTarget();
-            return;
-          }
-          break;
-        case 259: 
-          if ((localHiBoomTextView != null) && (HiBoomTextView.a(localHiBoomTextView) != null) && (localHiBoomTextView.getVisibility() == 0) && (localaqxx != null) && (HiBoomTextView.a(localHiBoomTextView) == aqxx.a(localaqxx)) && (localHiBoomTextView.jdField_a_of_type_Aqxw.a() == aqxx.a(localaqxx)) && (HiBoomTextView.a(localHiBoomTextView).currentFrameIndex() == aqxx.b(localaqxx)) && (HiBoomTextView.a(localHiBoomTextView) != null) && (HiBoomTextView.a(localHiBoomTextView).equals(aqxx.a(localaqxx))))
-          {
-            localHiBoomTextView.invalidate();
-            boolean bool;
-            int i;
-            if ((HiBoomTextView.b(localHiBoomTextView)) && (!HiBoomTextView.c(localHiBoomTextView)) && (HiBoomTextView.c()))
-            {
-              bool = true;
-              if (!bool) {
-                break label380;
-              }
-              paramMessage = HiBoomTextView.a(localHiBoomTextView);
-              if (!paramMessage.nextFrame()) {
-                break label344;
-              }
-              i = paramMessage.getFrameDelay();
-              long l = System.currentTimeMillis() - aqxx.b(localaqxx);
-              if (l <= 0L) {
-                break label377;
-              }
-              i = (int)(i - l);
-              if (i > 1) {
-                break label322;
-              }
-              sendMessage(obtainMessage(257, aqxx.a(localHiBoomTextView)));
-              bool = true;
-            }
-            for (;;)
-            {
-              if (localHiBoomTextView.d()) {
-                break label381;
-              }
-              HiBoomTextView.b(localHiBoomTextView, bool);
-              return;
-              bool = false;
-              break;
-              sendMessageDelayed(obtainMessage(257, aqxx.a(localHiBoomTextView)), i);
-              break label299;
-              HiBoomTextView.a(localHiBoomTextView, true);
-              HiBoomTextView.b(localHiBoomTextView, false);
-              if (localHiBoomTextView.d()) {
-                localHiBoomTextView.a(true);
-              }
-              bool = false;
-              continue;
-              break label277;
-            }
-          }
-          break;
-        }
-      }
-    }
+    return new WeiYunFileInfo(paramParcel);
+  }
+  
+  public WeiYunFileInfo[] a(int paramInt)
+  {
+    return new WeiYunFileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxy
  * JD-Core Version:    0.7.0.1
  */

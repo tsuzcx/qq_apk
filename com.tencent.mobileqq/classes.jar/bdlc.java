@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
 
-public final class bdlc
-  implements Parcelable.Creator<DownloadInfo>
+public class bdlc
+  implements bhri
 {
-  public DownloadInfo a(Parcel paramParcel)
-  {
-    return new DownloadInfo(paramParcel);
-  }
+  public bdlc(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout) {}
   
-  public DownloadInfo[] a(int paramInt)
+  public void a()
   {
-    return new DownloadInfo[paramInt];
+    if (ajsx.a().c()) {
+      ajsx.a().d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdlc
  * JD-Core Version:    0.7.0.1
  */

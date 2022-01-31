@@ -1,38 +1,13 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-class atoe
-  implements URLDrawableDownListener
+public abstract interface atoe
 {
-  atoe(atod paramatod, atof paramatof, int paramInt) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_Atof.a(this.jdField_a_of_type_Int, false);
-    this.jdField_a_of_type_Atof.a(this.jdField_a_of_type_Int);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if ((paramInt > 0) && (paramInt < 10000)) {
-      this.jdField_a_of_type_Atof.b(this.jdField_a_of_type_Int, paramInt / 100);
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Atof.a(this.jdField_a_of_type_Int, true);
-    this.jdField_a_of_type_Atof.a(this.jdField_a_of_type_Int);
-  }
+  public abstract void a(List<LocationRoom.Venue> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atoe
  * JD-Core Version:    0.7.0.1
  */

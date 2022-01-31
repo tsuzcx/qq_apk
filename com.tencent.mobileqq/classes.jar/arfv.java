@@ -1,89 +1,54 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
 class arfv
-  implements argj
+  implements arei
 {
-  arfv(arfu paramarfu) {}
+  arfv(arfr paramarfr) {}
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void a(argc paramargc)
   {
-    Intent localIntent = new Intent(arfy.a(arfu.a(this.a)));
-    localIntent.putExtra("key_state", paramInt);
-    switch (paramInt)
+    paramargc = ((arem)paramargc).a();
+    if (paramargc == null) {}
+    label12:
+    do
     {
-    case 6: 
-    case 7: 
-    case 8: 
-    case 9: 
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      for (;;)
+      do
       {
-        arfu.a(this.a).sendBroadcast(localIntent);
+        do
+        {
+          break label12;
+          do
+          {
+            return;
+          } while ((TextUtils.isEmpty(paramargc.a())) || (arni.a(paramargc.a()) != 0) || (!TextUtils.isEmpty(paramargc.g())));
+          paramargc = paramargc.a();
+          if (paramargc != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("DeviceFileModel<FileAssistant>", 2, "mEntity = null");
         return;
-        localIntent.putExtra("key_totalSize", ((Long)paramVarArgs[0]).longValue());
-        continue;
-        paramInt = ((Integer)paramVarArgs[0]).intValue();
-        localIntent.putExtra("key_totalSize", ((Long)paramVarArgs[1]).longValue());
-        localIntent.putExtra("key_progress", paramInt);
-        continue;
-        localIntent.putExtra("key_installedplugin", (InstalledPlugin)paramVarArgs[0]);
-        if (arfy.a(arfu.a(this.a)))
-        {
-          argk.a("2691709");
+        if (TextUtils.isEmpty(paramargc.strThumbPath)) {
+          break;
         }
-        else if (arfy.b(arfu.a(this.a)))
-        {
-          argk.a("2597857");
-          continue;
-          localIntent.putExtra("key_error_msg", (String)paramVarArgs[0]);
-          if (arfy.a(arfu.a(this.a)))
-          {
-            argk.a("2691710");
-          }
-          else if (arfy.b(arfu.a(this.a)))
-          {
-            argk.a("2597858");
-            continue;
-            if ("download".equals(arfu.b(this.a)))
-            {
-              InstalledPlugin localInstalledPlugin = (InstalledPlugin)paramVarArgs[0];
-              boolean bool = ((Boolean)paramVarArgs[1]).booleanValue();
-              long l = ((Long)paramVarArgs[2]).longValue();
-              arfu.a(this.a, localInstalledPlugin, bool, l);
-            }
-            if (arfy.a(arfu.a(this.a)))
-            {
-              argk.a("2691703");
-            }
-            else if (arfy.b(arfu.a(this.a)))
-            {
-              argk.a("2597720");
-              continue;
-              localIntent.putExtra("key_error_msg", (String)paramVarArgs[0]);
-              if (arfy.a(arfu.a(this.a))) {
-                argk.a("2691704");
-              } else if (arfy.b(arfu.a(this.a))) {
-                argk.a("2597721");
-              }
-            }
-          }
-        }
-      }
-    }
-    arfu.a(this.a);
+      } while (this.a.jdField_a_of_type_Arge == null);
+      this.a.jdField_a_of_type_Arge.a(String.valueOf(paramargc.nSessionId), paramargc.strThumbPath);
+      return;
+      paramargc = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramargc.peerUin, paramargc.peerType, paramargc.msgSeq);
+    } while (paramargc == null);
+    paramargc = (MessageForDeviceSingleStruct)paramargc;
+    zte localzte = ((ztk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a();
+    arfr.a(this.a, localzte.a(paramargc, null, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfv
  * JD-Core Version:    0.7.0.1
  */

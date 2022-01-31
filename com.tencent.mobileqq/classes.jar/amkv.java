@@ -1,252 +1,291 @@
-import android.graphics.Paint;
 import android.text.TextUtils;
-import android.util.LruCache;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.List<Ltencent.im.oidb.oidb_0xdea.Comment;>;
-import tencent.im.msg.im_msg_body.AnonymousGroupMsg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.RichText;
-import tencent.im.oidb.oidb_0xdea.Comment;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class amkv
 {
-  private static amkv jdField_a_of_type_Amkv;
-  public int a;
-  private amlc jdField_a_of_type_Amlc;
-  public Paint a;
-  private LruCache<String, amkw> jdField_a_of_type_AndroidUtilLruCache;
-  private axan jdField_a_of_type_Axan;
+  private static final HashMap<String, amkx> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static Map<amky, amle> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(8, 0.75F);
+  private static Map<amle, amky> b = new ConcurrentHashMap(8, 0.75F);
   
-  private amkv()
+  static
   {
-    this.jdField_a_of_type_Int = bbll.a(150.0F);
-    if (this.jdField_a_of_type_AndroidUtilLruCache == null) {
-      this.jdField_a_of_type_AndroidUtilLruCache = new LruCache(10485760);
+    b();
+  }
+  
+  private static amkx a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    if (BaseApplicationImpl.sProcessId == 1)
+    return (amkx)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  private static amle a(amky paramamky)
+  {
+    boolean bool1 = false;
+    amkx localamkx = a(paramamky.businessId);
+    if (localamkx == null)
     {
-      if (this.jdField_a_of_type_Amlc == null) {
-        this.jdField_a_of_type_Amlc = new amlc();
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS.LbsManagerService", 0, "makeSososOnLocationListener business info is null, business id: " + paramamky.businessId);
       }
-      if (this.jdField_a_of_type_Axan == null) {
-        this.jdField_a_of_type_Axan = new axan();
+      return null;
+    }
+    int i = localamkx.a();
+    int j = localamkx.jdField_b_of_type_Int;
+    boolean bool2 = localamkx.jdField_b_of_type_Boolean;
+    boolean bool3 = localamkx.c;
+    if (!localamkx.d) {
+      bool1 = true;
+    }
+    return new amkw(j, bool1, bool3, i, paramamky.observerOnUiThread, bool2, paramamky.businessId, paramamky);
+  }
+  
+  public static SosoInterface.SosoLbsInfo a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SOSO.LBS.LbsManagerService", 0, "getCachedLbsInfo business id: " + paramString);
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = a(paramString);
+      if (paramString != null) {
+        break;
       }
-      b();
-    }
-  }
-  
-  public static amkv a()
-  {
-    if (jdField_a_of_type_Amkv == null) {
-      jdField_a_of_type_Amkv = new amkv();
-    }
-    return jdField_a_of_type_Amkv;
-  }
-  
-  public amkw a(String paramString)
-  {
-    return (amkw)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
-  }
-  
-  public QQAppInterface a()
-  {
-    if (BaseApplicationImpl.sProcessId == 1) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
+    } while (!QLog.isColorLevel());
+    QLog.w("SOSO.LBS.LbsManagerService", 0, "getCachedLbsInfo business info is null.");
     return null;
+    if (paramString.d) {
+      return SosoInterface.a(paramString.jdField_a_of_type_Boolean);
+    }
+    return SosoInterface.a(paramString.jdField_b_of_type_Int, paramString.jdField_a_of_type_Boolean);
   }
   
-  public String a(long paramLong1, long paramLong2)
+  public static String a()
   {
-    return String.valueOf(paramLong1) + paramLong2;
+    return SosoInterface.a();
   }
   
-  public List<DanmuItemBean> a(List<oidb_0xdea.Comment> paramList, long paramLong)
+  public static void a()
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
+    synchronized (jdField_a_of_type_JavaUtilMap)
+    {
+      jdField_a_of_type_JavaUtilMap.clear();
+      b.clear();
+      return;
+    }
+  }
+  
+  public static void a(amky paramamky)
+  {
+    if (paramamky == null) {
+      return;
+    }
+    label129:
+    label134:
+    for (;;)
+    {
+      synchronized (jdField_a_of_type_JavaUtilMap)
+      {
+        if (jdField_a_of_type_JavaUtilMap.containsKey(paramamky)) {
+          break label129;
+        }
+        localamle = a(paramamky);
+        if (localamle == null) {
+          break label134;
+        }
+        jdField_a_of_type_JavaUtilMap.put(paramamky, localamle);
+        b.put(localamle, paramamky);
+        break label134;
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder().append("startLocation sosoLocationListener is null : ");
+          if (localamle == null)
+          {
+            bool = true;
+            QLog.i("SOSO.LBS.LbsManagerService", 0, bool + " business id: " + paramamky.businessId);
+          }
+        }
+        else
+        {
+          if (localamle == null) {
+            break;
+          }
+          SosoInterface.a(localamle);
+          return;
+        }
+      }
+      boolean bool = false;
+      continue;
+      amle localamle = null;
+    }
+  }
+  
+  public static boolean a()
+  {
+    return SosoInterface.a();
+  }
+  
+  private static SosoInterface.SosoLbsInfo b(SosoInterface.SosoLbsInfo paramSosoLbsInfo, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    Object localObject;
+    do
+    {
       return null;
+      localObject = a(paramString);
+    } while ((localObject == null) || (paramSosoLbsInfo == null));
+    if (((amkx)localObject).d)
+    {
+      paramString = new SosoInterface.SosoLbsInfo();
+      paramString.jdField_a_of_type_ArrayOfByte = paramSosoLbsInfo.jdField_a_of_type_ArrayOfByte;
+      if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation != null) {
+        paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation = paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a(0, ((amkx)localObject).jdField_a_of_type_Boolean);
+      }
+      if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute != null) {
+        paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute = paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.a();
+      }
+      localObject = new ArrayList();
+      if (paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList != null) {
+        ((ArrayList)localObject).addAll(paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList);
+      }
+      paramString.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+      localObject = new ArrayList();
+      if (paramSosoLbsInfo.jdField_b_of_type_JavaUtilArrayList != null) {
+        ((ArrayList)localObject).addAll(paramSosoLbsInfo.jdField_b_of_type_JavaUtilArrayList);
+      }
+      paramString.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+      paramString.jdField_a_of_type_Long = paramSosoLbsInfo.jdField_a_of_type_Long;
+      paramString.jdField_a_of_type_JavaLangString = paramSosoLbsInfo.jdField_a_of_type_JavaLangString;
+      paramString.jdField_b_of_type_JavaLangString = paramSosoLbsInfo.jdField_b_of_type_JavaLangString;
+      return paramString;
     }
-    if (this.jdField_a_of_type_Axan == null) {
-      this.jdField_a_of_type_Axan = new axan();
-    }
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    Iterator localIterator = paramList.iterator();
-    Object localObject1;
-    if (localIterator.hasNext()) {
-      localObject1 = (oidb_0xdea.Comment)localIterator.next();
+    paramString = new SosoInterface.SosoLbsInfo();
+    paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation = paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a(((amkx)localObject).jdField_b_of_type_Int, ((amkx)localObject).jdField_a_of_type_Boolean);
+    return paramString;
+  }
+  
+  public static String b()
+  {
+    return SosoInterface.b();
+  }
+  
+  private static void b()
+  {
+    amkx localamkx = new amkx("official_location", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("QQMapActivity", true, 5, 1, true, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("readinjoy_anti_cheating", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("vas_red_point", false, 2, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_address_select", true, 5, 0, false, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_for_report", true, 3, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_weather", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_live", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_say", true, 5, 0, false, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_upload_pic_video", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_photo_recommend", true, 3, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_little_video_enter", true, 3, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_request_server", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_h5", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qzone_other", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("readinjoy_feed_ad_distance", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("gdt_tangram", true, 1, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("nearby_readinjoy", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("troop_handler", true, 2, 0, false, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("troop_member_distance", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("webview", true, 3, 4, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qq_weather", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qq_story_water_mark", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("readinjoy_weather", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("LBSService.Point", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("Login.Guide", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("recommend_troop", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("vfuchong_bus_card", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("readinjoy_position", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+    localamkx = new amkx("qqcircle", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localamkx.jdField_a_of_type_JavaLangString, localamkx);
+  }
+  
+  public static void b(amky paramamky)
+  {
+    if (paramamky == null) {
+      return;
     }
     for (;;)
     {
-      long l1;
-      long l2;
-      int i;
-      try
+      synchronized (jdField_a_of_type_JavaUtilMap)
       {
-        paramList = new im_msg_body.MsgBody();
-        paramList.mergeFrom(((oidb_0xdea.Comment)localObject1).bytes_comment_msg.get().toByteArray());
-        Object localObject2 = new im_msg_body.RichText();
-        ((im_msg_body.RichText)localObject2).mergeFrom(((im_msg_body.RichText)paramList.rich_text.get()).toByteArray());
-        localObject2 = ((im_msg_body.RichText)localObject2).elems.get();
-        l1 = ((oidb_0xdea.Comment)localObject1).uint64_comment_uin.get();
-        l2 = ((oidb_0xdea.Comment)localObject1).uint64_seq.get();
-        long l3 = ((oidb_0xdea.Comment)localObject1).uint32_comment_ctime.get();
-        long l4 = ((oidb_0xdea.Comment)localObject1).uint64_comment_location.get();
-        paramList = new azml();
-        paramList.jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
-        paramList.jdField_a_of_type_Int = 1;
-        Object localObject3 = this.jdField_a_of_type_Axan.a((List)localObject2, new StringBuilder(), l2, paramList);
-        if (TextUtils.isEmpty(((axao)localObject3).jdField_a_of_type_JavaLangString)) {
-          break;
+        if (!jdField_a_of_type_JavaUtilMap.containsKey(paramamky)) {
+          break label120;
         }
-        if ((TextUtils.isEmpty(((axao)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mAnonymousNickName)) && (((axao)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForText$AtTroopMemberInfo != null) && (!TextUtils.isEmpty(((axao)localObject3).jdField_a_of_type_JavaLangString)) && (((axao)localObject3).jdField_a_of_type_JavaLangString.length() > ((axao)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForText$AtTroopMemberInfo.textLen + 1) && (((axao)localObject3).jdField_a_of_type_JavaLangString.startsWith(((axao)localObject3).b)))
+        localamle = (amle)jdField_a_of_type_JavaUtilMap.remove(paramamky);
+        b.remove(localamle);
+        if (QLog.isColorLevel())
         {
-          paramList = ((axao)localObject3).jdField_a_of_type_JavaLangString.substring(((axao)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForText$AtTroopMemberInfo.textLen + 1);
-          if (!TextUtils.isEmpty(paramList)) {
-            ((axao)localObject3).jdField_a_of_type_JavaLangString = paramList;
-          }
-        }
-        paramList = ((oidb_0xdea.Comment)localObject1).bytes_nick.get().toStringUtf8();
-        i = ((oidb_0xdea.Comment)localObject1).uint32_source.get();
-        if (TextUtils.isEmpty(paramList))
-        {
-          localObject1 = bbcz.h(localQQAppInterface, String.valueOf(paramLong), String.valueOf(l1));
-          paramList = (List<oidb_0xdea.Comment>)localObject1;
-          if (QLog.isColorLevel())
+          paramamky = new StringBuilder().append("removeListener business id is: ").append(paramamky.businessId).append(" sosoLocationListener is null: ");
+          if (localamle == null)
           {
-            QLog.d("DanmuDataHolder", 2, new Object[] { "decodeCommentList, use local nickname, seq:", Long.valueOf(l2) });
-            paramList = (List<oidb_0xdea.Comment>)localObject1;
+            bool = true;
+            QLog.i("SOSO.LBS.LbsManagerService", 0, bool);
           }
-          paramList = amle.a(this.jdField_a_of_type_AndroidGraphicsPaint, paramList, this.jdField_a_of_type_Int);
-          localObject1 = new DanmuItemBean(l1, l2, l3, l4, ((axao)localObject3).jdField_a_of_type_JavaLangString, paramList);
-          localArrayList.add(localObject1);
-          localObject2 = ((List)localObject2).iterator();
-          if (!((Iterator)localObject2).hasNext()) {
+        }
+        else
+        {
+          if (localamle == null) {
             break;
           }
-          paramList = (im_msg_body.Elem)((Iterator)localObject2).next();
-          if (!paramList.anon_group_msg.has()) {
-            continue;
-          }
-          localObject3 = (im_msg_body.AnonymousGroupMsg)paramList.anon_group_msg.get();
-          paramList = ((im_msg_body.AnonymousGroupMsg)localObject3).str_anon_nick.get().toByteArray();
-          if (((im_msg_body.AnonymousGroupMsg)localObject3).uint32_flags.get() <= 0) {
-            break label797;
-          }
-          bool = true;
-          ((DanmuItemBean)localObject1).jdField_a_of_type_Boolean = bool;
-          if (paramList != null) {
-            break label742;
-          }
-          paramList = "";
-          ((DanmuItemBean)localObject1).c = paramList;
-          ((DanmuItemBean)localObject1).jdField_a_of_type_Int = ((im_msg_body.AnonymousGroupMsg)localObject3).uint32_head_portrait.get();
-          QLog.d("DanmuDataHolder", 1, new Object[] { "decodeCommentList, 匿名消息,", localObject1 });
-          continue;
+          SosoInterface.b(localamle);
+          return;
         }
       }
-      catch (Exception paramList)
-      {
-        QLog.d("DanmuDataHolder", 1, "decodeCommentList, e:" + paramList);
-      }
-      if (i == 4)
-      {
-        localObject1 = ((ajxl)localQQAppInterface.getManager(51)).b(String.valueOf(l1));
-        if ((localObject1 != null) && (((Friends)localObject1).isFriend()) && (!TextUtils.isEmpty(((Friends)localObject1).remark)))
-        {
-          localObject1 = ((Friends)localObject1).remark;
-          paramList = (List<oidb_0xdea.Comment>)localObject1;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("DanmuDataHolder", 2, new Object[] { "decodeCommentList, use local remake, seq:", Long.valueOf(l2) });
-          paramList = (List<oidb_0xdea.Comment>)localObject1;
-          continue;
-          label742:
-          paramList = new String(paramList);
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("DanmuDataHolder", 2, "decodeCommentList, " + localArrayList.toString());
-          }
-          return localArrayList;
-        }
-      }
-      continue;
-      label797:
       boolean bool = false;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidUtilLruCache.evictAll();
-    this.jdField_a_of_type_Axan = null;
-  }
-  
-  public void a(amku paramamku, amla paramamla)
-  {
-    if ((paramamku.a == 0L) || (paramamku.b == 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DanmuDataHolder", 2, String.format("request, bad parameter, topicUin:%s, groupUin:%s", new Object[] { Long.valueOf(paramamku.a), Long.valueOf(paramamku.b) }));
-      }
-      return;
-    }
-    Object localObject = a().a(paramamku.b, paramamku.a);
-    amkw localamkw = a().a((String)localObject);
-    localObject = localamkw;
-    if (localamkw == null)
-    {
-      localObject = new amkw(this).a(paramamku).d(0).e(0).a(paramamla).a();
-      QLog.d("DanmuDataHolder", 2, "request start, reqHolder is null, create it");
-    }
-    this.jdField_a_of_type_Amlc.a((amkw)localObject);
-  }
-  
-  public void a(String paramString, amkw paramamkw)
-  {
-    this.jdField_a_of_type_AndroidUtilLruCache.put(paramString, paramamkw);
-  }
-  
-  public amkw b(String paramString)
-  {
-    amkw localamkw = new amkw(this);
-    a(paramString, localamkw);
-    return localamkw;
-  }
-  
-  public void b()
-  {
-    QQAppInterface localQQAppInterface = a();
-    if ((this.jdField_a_of_type_AndroidGraphicsPaint == null) && (localQQAppInterface != null)) {
-      this.jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(localQQAppInterface.getApp()).inflate(2131558817, null).findViewById(2131364437)).getPaint();
+      continue;
+      label120:
+      amle localamle = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkv
  * JD-Core Version:    0.7.0.1
  */

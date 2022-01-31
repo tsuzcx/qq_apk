@@ -1,60 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.album.QzonePhotoInfo;
 
-public class bjdc
-  implements View.OnClickListener
+public final class bjdc
+  implements Parcelable.Creator<QzonePhotoInfo>
 {
-  protected int a;
-  protected View a;
-  protected bigp a;
-  protected CaptureModeController a;
-  protected boolean a;
-  
-  public bjdc(CaptureModeController paramCaptureModeController)
+  public QzonePhotoInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController = paramCaptureModeController;
-    this.jdField_a_of_type_Bigp = this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bigp;
+    return new QzonePhotoInfo(paramParcel);
   }
   
-  public int a()
+  public QzonePhotoInfo[] a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    return new QzonePhotoInfo[paramInt];
   }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjdc
  * JD-Core Version:    0.7.0.1
  */

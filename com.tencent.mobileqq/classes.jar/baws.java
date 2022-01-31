@@ -1,33 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-
-final class baws
-  implements DownloadParams.DecodeHandler
+public class baws
+  extends bawz
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
+  
+  public String toString()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bbef.e(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" groupFileID:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" groupFileKey:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" md5:");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" downType:").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baws
  * JD-Core Version:    0.7.0.1
  */

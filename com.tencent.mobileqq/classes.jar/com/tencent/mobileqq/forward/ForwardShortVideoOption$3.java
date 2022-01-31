@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
-import aywm;
+import baul;
 import com.tencent.image.URLDrawable;
 
 class ForwardShortVideoOption$3
@@ -11,13 +11,13 @@ class ForwardShortVideoOption$3
   
   public void run()
   {
-    aywm.a(this.a, null, false);
+    baul.a(this.a, null, false);
     this.this$0.a.runOnUiThread(new ForwardShortVideoOption.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShortVideoOption.3
  * JD-Core Version:    0.7.0.1
  */

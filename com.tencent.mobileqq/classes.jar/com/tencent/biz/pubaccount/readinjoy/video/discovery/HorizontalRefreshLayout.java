@@ -9,10 +9,10 @@ import android.view.ViewParent;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import baxn;
-import qwv;
-import qww;
-import qwx;
+import bcwh;
+import rmk;
+import rml;
+import rmm;
 
 public class HorizontalRefreshLayout
   extends FrameLayout
@@ -20,15 +20,15 @@ public class HorizontalRefreshLayout
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private qww jdField_a_of_type_Qww;
-  private qwx jdField_a_of_type_Qwx;
+  private rml jdField_a_of_type_Rml;
+  private rmm jdField_a_of_type_Rmm;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
   private int c;
   private int d;
   private int e;
-  private int f = baxn.a(getContext(), 25.0F);
+  private int f = bcwh.a(getContext(), 25.0F);
   
   public HorizontalRefreshLayout(Context paramContext)
   {
@@ -82,7 +82,7 @@ public class HorizontalRefreshLayout
   {
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null))
     {
-      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new qwv(this)).start();
+      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new rmk(this)).start();
       this.jdField_b_of_type_AndroidViewView.animate().translationX(this.jdField_a_of_type_Int).setDuration(500L).start();
     }
   }
@@ -197,27 +197,27 @@ public class HorizontalRefreshLayout
       return false;
       this.c = 0;
       this.e = 0;
-      if (this.jdField_a_of_type_Qww != null) {
-        this.jdField_a_of_type_Qww.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
+      if (this.jdField_a_of_type_Rml != null) {
+        this.jdField_a_of_type_Rml.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
       }
       b();
     }
   }
   
-  public void setOnDraggingListener(qww paramqww)
+  public void setOnDraggingListener(rml paramrml)
   {
-    this.jdField_a_of_type_Qww = paramqww;
+    this.jdField_a_of_type_Rml = paramrml;
   }
   
-  public void setRefreshHeader(qwx paramqwx)
+  public void setRefreshHeader(rmm paramrmm)
   {
-    this.jdField_a_of_type_Qwx = paramqwx;
-    a(this.jdField_a_of_type_Qwx.a(this));
+    this.jdField_a_of_type_Rmm = paramrmm;
+    a(this.jdField_a_of_type_Rmm.a(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

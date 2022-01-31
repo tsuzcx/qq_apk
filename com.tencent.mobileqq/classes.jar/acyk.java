@@ -1,42 +1,26 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PAMessage;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
 
 public class acyk
+  implements View.OnClickListener
 {
-  public static LruCache<String, PAMessage> a = new LruCache(50);
+  public acyk(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public static PAMessage a(MessageRecord paramMessageRecord)
+  public void onClick(View paramView)
   {
-    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
-  }
-  
-  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
-  {
-    String str = a(paramString, paramLong1, paramLong2);
-    PAMessage localPAMessage = (PAMessage)a.get(str);
-    paramString = localPAMessage;
-    if (localPAMessage == null)
-    {
-      paramArrayOfByte = sen.a(paramArrayOfByte);
-      paramString = paramArrayOfByte;
-      if (paramArrayOfByte != null)
-      {
-        a.put(str, paramArrayOfByte);
-        paramString = paramArrayOfByte;
-      }
-    }
-    return paramString;
-  }
-  
-  private static String a(String paramString, long paramLong1, long paramLong2)
-  {
-    return paramString + "&" + paramLong1 + "&" + paramLong2;
+    paramView = new Intent();
+    paramView.putExtra("set_display_type", 1);
+    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingChatOperationFragment.class);
+    azmj.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyk
  * JD-Core Version:    0.7.0.1
  */

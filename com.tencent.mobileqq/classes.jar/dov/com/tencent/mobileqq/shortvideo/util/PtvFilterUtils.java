@@ -3,7 +3,7 @@ package dov.com.tencent.mobileqq.shortvideo.util;
 import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import android.os.HandlerThread;
-import bbdx;
+import bdcs;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -45,7 +45,7 @@ public class PtvFilterUtils
     if (QLog.isColorLevel()) {
       QLog.d("PtvFilterUtils", 2, "configure file content:" + localStringBuilder.toString());
     }
-    bbdx.a(paramString1, localStringBuilder.toString());
+    bdcs.a(paramString1, localStringBuilder.toString());
   }
   
   public static void a(boolean paramBoolean)
@@ -103,7 +103,7 @@ public class PtvFilterUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.PtvFilterUtils
  * JD-Core Version:    0.7.0.1
  */

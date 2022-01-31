@@ -1,29 +1,29 @@
-import com.tencent.biz.pubaccount.QualityReporter.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class now
+class now
+  implements rsd
 {
-  public static void a(qbu paramqbu)
-  {
-    ThreadManager.excute(new QualityReporter.1(paramqbu), 16, null, true);
-  }
+  now(not paramnot, AdvertisementInfo paramAdvertisementInfo) {}
   
-  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
+  public void a()
   {
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), nor.class);
-    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
-    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
-    localNewIntent.setObserver(new nox(localNewIntent));
-    onh.a().startServlet(localNewIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdDislikeHelper", 2, "onComplain");
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_from_type", 1);
+    localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+    PublicFragmentActivity.a(not.a(this.jdField_a_of_type_Not), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    not.a(this.jdField_a_of_type_Not).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     now
  * JD-Core Version:    0.7.0.1
  */

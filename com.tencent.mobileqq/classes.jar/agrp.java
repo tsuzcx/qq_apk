@@ -1,41 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class agrp
-  implements bfpt
+  extends asld
 {
-  public agrp(NewPhotoListActivity paramNewPhotoListActivity) {}
+  public agrp(TroopChatPie paramTroopChatPie) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a()
   {
-    agrz localagrz = this.a.jdField_a_of_type_Agsc.jdField_a_of_type_Agrz;
-    int i = this.a.jdField_a_of_type_Agrs.getItemViewType(paramInt);
-    if (this.a.jdField_a_of_type_Agsc.jdField_a_of_type_Agsf != null) {}
-    switch (i)
-    {
-    default: 
-      return;
-    case 0: 
-      if (this.a.jdField_a_of_type_Agsa.c)
-      {
-        this.a.jdField_a_of_type_Agsc.jdField_a_of_type_Agsf.a(paramAdapterView, paramView, paramInt, paramLong);
-        return;
-      }
-      paramAdapterView = this.a.jdField_a_of_type_Agsc.jdField_a_of_type_Agsf.a(paramAdapterView, paramView, paramInt, paramLong);
-      this.a.jdField_a_of_type_Agsc.c(paramAdapterView);
-      bbbx.a(this.a, true, true);
-      return;
-    case 1: 
-      this.a.jdField_a_of_type_Agsc.jdField_a_of_type_Agsf.b(paramAdapterView, paramView, paramInt, paramLong);
-      return;
+    if (((askw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      TroopChatPie.c(this.a).a(this.a.jdField_a_of_type_Agvb, new Object[0]);
     }
-    this.a.jdField_a_of_type_Agsc.jdField_a_of_type_Agsf.c(paramAdapterView, paramView, paramInt, paramLong);
+  }
+  
+  protected void b()
+  {
+    if (((askw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Agvb.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((askw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (TroopChatPie.d(this.a).a() == 14)) {
+      TroopChatPie.e(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrp
  * JD-Core Version:    0.7.0.1
  */

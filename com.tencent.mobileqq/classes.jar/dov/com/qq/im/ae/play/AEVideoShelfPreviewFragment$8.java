@@ -7,15 +7,16 @@ class AEVideoShelfPreviewFragment$8
   
   public void run()
   {
+    AEVideoShelfPreviewFragment.a(this.this$0, false);
     AEVideoShelfPreviewFragment.a(this.this$0, 0);
-    if (AEVideoShelfPreviewFragment.a(this.this$0)) {
+    if (AEVideoShelfPreviewFragment.b(this.this$0)) {
       AEVideoShelfPreviewFragment.c(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment.8
  * JD-Core Version:    0.7.0.1
  */

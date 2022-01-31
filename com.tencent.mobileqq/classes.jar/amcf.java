@@ -1,11 +1,20 @@
 public class amcf
-  extends amcc
 {
-  public String e = "";
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcf
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
-import bcyb;
-import beln;
-import bgyi;
+import bexd;
+import bgld;
+import bizf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 public class MiniProgramLpReportDC05115$ReportModel
 {
   private String androidID;
-  private String clientVersion = "8.3.0.4480";
+  private String clientVersion = "8.3.3.4515";
   private int cpuAVG;
   private long crashErrorNum;
   private String deviceManufacturer = Build.MANUFACTURER;
@@ -60,7 +60,7 @@ public class MiniProgramLpReportDC05115$ReportModel
   private String openID = "null";
   private long pkgDownloadCost;
   private String pkgDownloadResult;
-  private String qua = bgyi.a();
+  private String qua = bizf.a();
   private long relaunchCost;
   private String x5Version = String.valueOf(QbSdk.getTbsVersion(BaseApplicationImpl.getApplication()));
   
@@ -77,10 +77,10 @@ public class MiniProgramLpReportDC05115$ReportModel
     try
     {
       if (this.networkSSID == null) {
-        this.networkSSID = beln.b(bcyb.a().a());
+        this.networkSSID = bgld.b(bexd.a().a());
       }
       if (this.androidID == null) {
-        this.androidID = Settings.Secure.getString(bcyb.a().a().getContentResolver(), "android_id");
+        this.androidID = Settings.Secure.getString(bexd.a().a().getContentResolver(), "android_id");
       }
     }
     catch (Throwable localThrowable)
@@ -379,7 +379,7 @@ public class MiniProgramLpReportDC05115$ReportModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05115.ReportModel
  * JD-Core Version:    0.7.0.1
  */

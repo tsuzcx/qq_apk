@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.data.Emoticon;
 
 class atve
-  implements View.OnClickListener
+  implements atuz
 {
-  atve(atvd paramatvd, ViewGroup paramViewGroup) {}
+  atve(atva paramatva, Emoticon paramEmoticon, int paramInt1, String paramString, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (atvd.a(this.jdField_a_of_type_Atvd) != null) {
-      atvd.a(this.jdField_a_of_type_Atvd).a(this.jdField_a_of_type_AndroidViewViewGroup);
-    }
+    this.jdField_a_of_type_Atva.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atve
  * JD-Core Version:    0.7.0.1
  */

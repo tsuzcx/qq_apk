@@ -1,44 +1,55 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
-import com.tencent.biz.qqstory.view.widget.ViewPagerTapBlockView;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import java.util.List;
 
 public class wdl
-  implements ViewPager.OnPageChangeListener
+  extends uhw<StoryAtVideoFragment, wev>
 {
-  public wdl(SlideTabViewPager paramSlideTabViewPager) {}
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public wdl(StoryAtVideoFragment paramStoryAtVideoFragment)
   {
-    if (SlideTabViewPager.a(this.a) == 0)
+    super(paramStoryAtVideoFragment);
+  }
+  
+  public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull wev paramwev)
+  {
+    if ((!paramwev.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) || (paramwev.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramStoryAtVideoFragment.jdField_a_of_type_Weh == null))
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)SlideTabViewPager.a(this.a).getLayoutParams();
-      SlideTabViewPager localSlideTabViewPager = this.a;
-      paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-      SlideTabViewPager.a(localSlideTabViewPager, localLayoutParams.leftMargin + paramInt2);
+      wsv.b(this.TAG, "ignore this comment list event. %s.", paramwev.toString());
+      return;
     }
-    paramInt2 = (int)(SlideTabViewPager.a(this.a, 12.5F) + SlideTabViewPager.a(this.a) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setOffset(paramInt2);
-    paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-    int i = SlideTabViewPager.a(this.a).getWidth();
-    paramInt1 = (int)(paramInt2 + (i - paramInt2) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setBlockWidth(paramInt1);
+    if (!paramStoryAtVideoFragment.jdField_a_of_type_Weh.c())
+    {
+      wsv.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramwev.toString() });
+      return;
+    }
+    wsv.a(this.TAG, "receive comment list event. %s.", paramwev.toString());
+    paramStoryAtVideoFragment.jdField_a_of_type_Weh.a(paramwev.jdField_a_of_type_JavaUtilList, paramwev.c);
+    paramStoryAtVideoFragment.jdField_a_of_type_Weh.a().updateVideoInfo(paramwev.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+    if (paramStoryAtVideoFragment.jdField_a_of_type_Weh.a().size() < 1)
+    {
+      paramStoryAtVideoFragment.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
+      paramStoryAtVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      return;
+    }
+    paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_Weh);
   }
   
-  public void onPageSelected(int paramInt)
+  public Class acceptEventClass()
   {
-    this.a.a(paramInt);
-    if (SlideTabViewPager.a(this.a) != null) {
-      onPageSelected(paramInt);
-    }
+    return wev.class;
   }
+  
+  public void b(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull wev paramwev) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdl
  * JD-Core Version:    0.7.0.1
  */

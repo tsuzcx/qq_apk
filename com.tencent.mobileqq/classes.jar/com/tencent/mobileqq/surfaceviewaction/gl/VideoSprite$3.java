@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
+import android.media.MediaPlayer;
+
 class VideoSprite$3
   implements Runnable
 {
@@ -7,14 +9,14 @@ class VideoSprite$3
   
   public void run()
   {
-    this.this$0.i();
-    VideoSprite.a(this.this$0);
-    VideoSprite.b(this.this$0);
+    if ((this.this$0.g) && (this.this$0.a != null) && (!this.this$0.a.isPlaying())) {
+      this.this$0.a.start();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.3
  * JD-Core Version:    0.7.0.1
  */

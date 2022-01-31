@@ -1,45 +1,34 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Set;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class auzp
-  implements ajte
+final class auzp
+  implements bevy
 {
-  private WeakReference<ProfileHeaderView> a;
+  auzp(String paramString, auzu paramauzu) {}
   
-  public auzp(ProfileHeaderView paramProfileHeaderView)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a = new WeakReference(paramProfileHeaderView);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramInt == 66) && ((paramObject instanceof Set)))
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
     {
-      paramObject = (Set)paramObject;
-      ProfileHeaderView localProfileHeaderView = (ProfileHeaderView)this.a.get();
-      if (localProfileHeaderView == null) {
-        break label80;
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label50;
       }
-      if (paramObject.contains(localProfileHeaderView.jdField_a_of_type_Auuy.a.jdField_a_of_type_JavaLangString))
-      {
-        localProfileHeaderView.b(localProfileHeaderView.jdField_a_of_type_Auuy, false);
-        localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+      if (this.jdField_a_of_type_Auzu != null) {
+        this.jdField_a_of_type_Auzu.a(true);
       }
     }
-    label80:
-    while (!QLog.isColorLevel()) {
+    label50:
+    while (this.jdField_a_of_type_Auzu == null) {
       return;
     }
-    QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "Can't get reference to ProfileHeadView.");
+    this.jdField_a_of_type_Auzu.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auzp
  * JD-Core Version:    0.7.0.1
  */

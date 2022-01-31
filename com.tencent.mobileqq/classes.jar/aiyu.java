@@ -1,12 +1,20 @@
-public abstract interface aiyu
+import android.os.Handler;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.4.1;
+
+public class aiyu
+  implements aiyi
 {
-  public abstract void a();
+  public aiyu(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public abstract void a(int paramInt);
+  public void a(boolean paramBoolean)
+  {
+    DrawRedpacketPannelPreviewFragment.a(this.a).post(new DrawRedpacketPannelPreviewFragment.4.1(this, paramBoolean));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyu
  * JD-Core Version:    0.7.0.1
  */

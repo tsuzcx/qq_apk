@@ -1,91 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
 public class bbbs
+  implements Animation.AnimationListener
 {
-  public static CardProfile a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  public bbbs(MediaPreviewActivity paramMediaPreviewActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    boolean bool = true;
-    CardProfile localCardProfile = null;
-    aukp localaukp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramQQAppInterface = localCardProfile;
-    if (localaukp != null)
-    {
-      localCardProfile = (CardProfile)localaukp.a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(paramInt) });
-      paramQQAppInterface = localCardProfile;
-      if (QLog.isColorLevel())
-      {
-        paramQQAppInterface = new StringBuilder().append("readFromDb. uin:").append(paramLong).append(" find:");
-        if (localCardProfile == null) {
-          break label111;
-        }
-      }
-    }
-    for (;;)
-    {
-      QLog.i("VoteUtil", 2, bool);
-      paramQQAppInterface = localCardProfile;
-      return paramQQAppInterface;
-      label111:
-      bool = false;
-    }
+    this.a.b = false;
+    paramAnimation.setAnimationListener(null);
+    this.a.finish();
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
-  {
-    Object localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    CardProfile localCardProfile;
-    if (localObject != null)
-    {
-      paramQQAppInterface = (CardProfile)((aukp)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(2) });
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface.bAvailableCnt -= paramInt;
-        paramQQAppInterface.bTodayVotedCnt += paramInt;
-        if (paramQQAppInterface.getStatus() != 1000) {
-          break label238;
-        }
-        ((aukp)localObject).b(paramQQAppInterface);
-      }
-      localCardProfile = (CardProfile)((aukp)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(3) });
-      if (localCardProfile != null)
-      {
-        localCardProfile.bAvailableCnt -= paramInt;
-        localCardProfile.bTodayVotedCnt += paramInt;
-        localCardProfile.bVoteCnt = ((short)(int)localCardProfile.bTodayVotedCnt);
-        if (localCardProfile.getStatus() != 1000) {
-          break label248;
-        }
-        ((aukp)localObject).b(localCardProfile);
-      }
-      label180:
-      ((aukp)localObject).a();
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("updateProfileCardVote. uin:").append(paramLong).append(" find:");
-        if (paramQQAppInterface == null) {
-          break label259;
-        }
-      }
-    }
-    label259:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("VoteUtil", 2, bool);
-      return;
-      label238:
-      ((aukp)localObject).a(paramQQAppInterface);
-      break;
-      label248:
-      ((aukp)localObject).a(localCardProfile);
-      break label180;
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbs
  * JD-Core Version:    0.7.0.1
  */

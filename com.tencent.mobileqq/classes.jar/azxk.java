@@ -1,43 +1,76 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.hlyyb.downloader.DownloaderTaskListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.studyroom.download.DownloadTaskListenerBridge.1;
+import mqq.os.MqqHandler;
 
 public class azxk
-  extends BroadcastReceiver
+  implements DownloaderTaskListener
 {
-  public azxk(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  private azxm a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public azxk(azxm paramazxm)
   {
-    if (this.a.a != null)
-    {
-      paramContext = paramIntent.getAction();
-      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
-        break label51;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublishHomeWorkFragment", 2, "receive action_recv_video_request");
-      }
-      this.a.a.b(102);
-    }
-    label51:
-    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
-      return;
-    }
-    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
-      QLog.d("PublishHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
-    }
-    this.a.a.b(102);
+    this.a = paramazxm;
   }
+  
+  public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.a(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskDetectedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.b(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskFailedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    ThreadManager.getSubThreadHandler().post(new DownloadTaskListenerBridge.1(this, paramDownloaderTask));
+  }
+  
+  public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedMainloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.d(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.f(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.e(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azxk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,96 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class tzu
-  extends tzh
+class tzu
+  implements appt
 {
-  public ImageView a;
-  private tzw jdField_a_of_type_Tzw;
-  private vxr jdField_a_of_type_Vxr;
+  tzu(tzr paramtzr) {}
   
-  public tzu(@NonNull ViewGroup paramViewGroup)
+  public void a(appw paramappw)
   {
-    super(paramViewGroup);
+    int i;
+    int j;
+    if ((paramappw instanceof apuw))
+    {
+      i = this.a.a.getSelectionStart();
+      j = this.a.a.getSelectionEnd();
+      if ((i < 0) || (j < 0) || (j < i)) {}
+    }
+    apur localapur;
+    int k;
+    int m;
+    do
+    {
+      this.a.a.getEditableText().replace(i, j, baiy.c(((apuw)paramappw).a));
+      do
+      {
+        return;
+      } while (!(paramappw instanceof apur));
+      localapur = (apur)paramappw;
+      i = this.a.a.getSelectionStart();
+      j = this.a.a.getSelectionEnd();
+      k = localapur.a;
+      m = localapur.b;
+      if ((i < 0) || (j < 0) || (j < i)) {
+        break;
+      }
+    } while ((k == 2) && (m == -1));
+    if (k == 1) {}
+    for (paramappw = baiy.c(m);; paramappw = baiy.a(m))
+    {
+      this.a.a.getEditableText().replace(i, j, paramappw);
+      this.a.a.requestFocus();
+      localapur.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
+      return;
+    }
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
+  
+  public boolean a(appw paramappw)
   {
-    return paramViewGroup;
+    return true;
   }
   
-  public void a(int paramInt)
+  public void b()
   {
-    ved.b(this.jdField_a_of_type_JavaLangString, "setVisibility ignore");
+    if (this.a.a.getSelectionStart() == 0) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Editable localEditable = this.a.a.getText();
+        int i = this.a.a.getSelectionStart();
+        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
   
-  protected void b()
-  {
-    super.b();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379046));
-    ((StoryPlayerGroupHolder)a()).a.setOnTouchListener(new tzx(this, null));
-    this.jdField_a_of_type_Tzw = new tzw(this, null);
-    this.jdField_a_of_type_Vxr = new vxr(a(), this.jdField_a_of_type_Tzw);
-    this.jdField_a_of_type_Vxr.a(50);
-  }
+  public void b(appw paramappw) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tzu
  * JD-Core Version:    0.7.0.1
  */

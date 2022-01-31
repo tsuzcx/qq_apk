@@ -1,202 +1,348 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Xml;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.util.HashMap;
-import org.xmlpull.v1.XmlPullParser;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aljs
-  extends aljf
+  extends WebViewPlugin
 {
-  private static final Object a;
-  public static boolean b;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aljt(this);
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new alju(this);
+  private String jdField_a_of_type_JavaLangString;
   
-  static
+  public aljs()
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    this.mPluginNameSpace = "babyQ";
   }
   
-  public static byte a(String paramString)
+  private void a(String paramString, Bundle paramBundle)
   {
-    return aljf.a(2, paramString);
+    aljy.a().a(paramString, paramBundle, this.jdField_a_of_type_EipcEIPCResultCallback);
   }
   
-  public static Object a()
+  private void a(String paramString1, String paramString2, String paramString3)
   {
-    return jdField_a_of_type_JavaLangObject;
-  }
-  
-  public static String a()
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
+    if (!TextUtils.isEmpty(paramString1))
     {
+      paramString1 = paramString1 + "(" + paramString2 + ");";
+      callJs(paramString1);
       if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, "getFilesDir is null");
+        QLog.i("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb callback js api: jsapi=" + paramString3 + ", script=" + paramString1);
       }
-      localObject = "";
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.minidetect.model_v8.2.0";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, "getLibDir ,path = " + str);
-    return str;
   }
   
-  public static String a(String paramString)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    return paramString;
-  }
-  
-  protected static void a(boolean paramBoolean)
-  {
-    b = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    if ((!a("qr_anchor.bin")) || (!a("qr_detection_model.txt")) || (!a("qr_detection_model.bin")))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDetectModelLoader", 2, "modules is not exist!");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb handleJsRequest url =", paramString1, ",method=", paramString3 });
+    }
+    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("babyQ")) || (TextUtils.isEmpty(paramString3)) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (this.jdField_a_of_type_AndroidAppActivity == null)) {
       return false;
     }
+    paramString2 = null;
+    paramString1 = null;
+    long l2 = 0L;
+    long l1 = l2;
+    paramJsBridgeListener = paramString1;
+    if (paramVarArgs != null)
+    {
+      l1 = l2;
+      paramJsBridgeListener = paramString1;
+      if (paramVarArgs.length > 0) {
+        paramString1 = paramString2;
+      }
+    }
+    try
+    {
+      localJSONObject = new JSONObject(paramVarArgs[0]);
+      paramString1 = paramString2;
+      paramString2 = localJSONObject.optString("callback");
+      l1 = l2;
+      paramJsBridgeListener = paramString2;
+      paramString1 = paramString2;
+      if (paramString3.equals("setPushStatus"))
+      {
+        paramString1 = paramString2;
+        i = localJSONObject.optInt("pushStatus");
+        l1 = i;
+        paramJsBridgeListener = paramString2;
+      }
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      JSONObject localJSONObject;
+      int i;
+      Bundle localBundle;
+      Object localObject;
+      for (;;)
+      {
+        l1 = l2;
+        paramJsBridgeListener = paramString1;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb " + paramString3 + " req error args msg: " + paramVarArgs[0]);
+          l1 = l2;
+          paramJsBridgeListener = paramString1;
+        }
+      }
+      if (!paramString3.equals("setFriendStatus")) {
+        break label495;
+      }
+      if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+        break label1287;
+      }
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString1 = paramJsBridgeListener.optString("callback");
+        i = paramJsBridgeListener.optInt("user_type");
+        int j = paramJsBridgeListener.optInt("from_type");
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          this.jdField_a_of_type_JavaLangString = paramString1;
+          paramJsBridgeListener = new Intent("com.tencent.mobileqq.babyq.add");
+          paramJsBridgeListener.putExtra("user_type", i);
+          paramJsBridgeListener.putExtra("from_type", j);
+          paramJsBridgeListener.setPackage(this.jdField_a_of_type_AndroidAppActivity.getPackageName());
+          this.jdField_a_of_type_AndroidAppActivity.sendBroadcast(paramJsBridgeListener);
+        }
+        else
+        {
+          this.jdField_a_of_type_JavaLangString = null;
+        }
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (!QLog.isColorLevel()) {
+          break label1287;
+        }
+      }
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb setFriendStatus req error args msg: " + paramVarArgs[0]);
+      break label1287;
+      label495:
+      if (!paramString3.equals("getZanVoteCount")) {
+        break label575;
+      }
+      paramString2 = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "getZanVoteCount", localBundle);
+      if (!paramString2.isSuccess()) {
+        break label565;
+      }
+      l1 = paramString2.data.getLong("key_get_zan_vote_count");
+      paramString1 = "{ \"ret\": 0, \"votecount\": " + l1 + "}";
+      label565:
+      a(paramJsBridgeListener, paramString1, paramString3);
+      return true;
+      label575:
+      if (!paramString3.equals("requestZan")) {
+        break label663;
+      }
+      paramVarArgs = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "requestZan", localBundle);
+      paramString1 = paramString2;
+      if (!paramVarArgs.isSuccess()) {
+        break label653;
+      }
+      l1 = paramVarArgs.data.getLong("key_request_zan_vote_result", 2L);
+      paramString1 = "{\"ret\":" + l1 + "}";
+      label653:
+      a(paramJsBridgeListener, paramString1, paramString3);
+      return true;
+      label663:
+      if (!paramString3.equals("addFriend")) {
+        break label706;
+      }
+      startActivityForResult(AddFriendLogicActivity.a(this.mRuntime.a(), 2, aljq.aC, null, 3001, 12, "babyQ", null, null, null, null), (byte)1);
+      return true;
+      label706:
+      if (!paramString3.equals("sendmsg")) {
+        break label810;
+      }
+      paramJsBridgeListener = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "sendmsg", localBundle);
+      if (!paramJsBridgeListener.isSuccess()) {
+        break label808;
+      }
+      paramJsBridgeListener = (ProfileActivity.AllInOne)paramJsBridgeListener.data.getParcelable("key_parcel_allinone");
+      paramString1 = new awmk();
+      paramString1.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = paramJsBridgeListener;
+      paramString1.jdField_a_of_type_ComTencentMobileqqDataCard = new Card();
+      paramString1.jdField_a_of_type_ComTencentMobileqqDataCard.uin = aljq.aC;
+      FriendProfileCardActivity.a(this.mRuntime.a(), paramString1, aljq.aC, 0, paramJsBridgeListener.h);
+      label808:
+      return true;
+      label810:
+      if (!paramString3.equals("deleteFriend")) {
+        break label864;
+      }
+      if (!QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "deleteFriend", localBundle).isSuccess()) {
+        break label862;
+      }
+      BaseApplicationImpl.getContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.ACTION_WEBVIEW_CLOSE"), "com.tencent.msg.permission.pushnotify");
+      label862:
+      return true;
+      label864:
+      if (!paramString3.equals("getFriendGrouping")) {
+        break label950;
+      }
+      paramString2 = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "getFriendGrouping", localBundle);
+      paramString1 = localJSONObject;
+      if (!paramString2.isSuccess()) {
+        break label940;
+      }
+      paramString1 = paramString2.data.getString("key_handle_set_get_group");
+      paramString1 = "{ \"ret\": 0, \"group\": \"" + paramString1 + "\"}";
+      label940:
+      a(paramJsBridgeListener, paramString1, paramString3);
+      return true;
+      label950:
+      if (!paramString3.equals("setFriendGrouping")) {
+        break label1087;
+      }
+      paramString1 = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "setFriendGrouping", localBundle);
+      if (!paramString1.isSuccess()) {
+        break label1076;
+      }
+      paramJsBridgeListener = paramString1.data.getString("friendUin");
+      byte b = paramString1.data.getByte("mgid");
+      paramString1 = this.mRuntime.a();
+      paramString2 = new Intent(paramString1, MoveToGroupActivity.class);
+      paramString2.putExtra("friendUin", paramJsBridgeListener);
+      paramString2.putExtra("mgid", b);
+      paramString2.putExtra("key_from_babyq_web_plugin", true);
+      paramString1.startActivity(paramString2);
+      if (!QLog.isColorLevel()) {
+        break label1076;
+      }
+      QLog.i("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb set group begin");
+      label1076:
+      a("setFriendGrouping", localBundle);
+      return true;
+      label1087:
+      if (!paramString3.equals("reportFriend")) {
+        break label1163;
+      }
+      paramJsBridgeListener = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "reportFriend", localBundle);
+      if (!paramJsBridgeListener.isSuccess()) {
+        break label1161;
+      }
+      paramJsBridgeListener = paramJsBridgeListener.data.getString("key_report_msg");
+      yzg.a((BaseActivity)this.mRuntime.a(), aljq.aC, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), 21001, paramJsBridgeListener);
+      label1161:
+      return true;
+      label1163:
+      if (!paramString3.equals("getPushStatus")) {
+        break label1250;
+      }
+      paramString2 = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "getPushStatus", localBundle);
+      paramString1 = localObject;
+      if (!paramString2.isSuccess()) {
+        break label1240;
+      }
+      l1 = paramString2.data.getLong("key_request_zan_vote_result", 0L);
+      paramString1 = "{ \"ret\": 0, \"pushStatus\": " + l1 + "}";
+      label1240:
+      a(paramJsBridgeListener, paramString1, paramString3);
+      return true;
+      label1250:
+      if (!paramString3.equals("setPushStatus")) {
+        break label1280;
+      }
+      localBundle.putLong("key_push_status", l1);
+      a("setPushStatus", localBundle);
+      return true;
+      label1280:
+      return false;
+    }
+    localBundle = new Bundle();
+    localBundle.putString("web_js_call_back_id", paramJsBridgeListener);
+    paramString2 = null;
+    localJSONObject = null;
+    localObject = null;
+    paramString1 = null;
+    if (paramString3.equals("getFriendStatus"))
+    {
+      paramString1 = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "getFriendStatus", localBundle);
+      if (!paramString1.isSuccess()) {
+        break label1282;
+      }
+      l1 = paramString1.data.getLong("key_get_friend_status");
+    }
+    label1282:
+    for (paramString1 = "{ \"ret\": 0, \"response\": { \"has_add\":" + l1 + "}}";; paramString1 = null)
+    {
+      a(paramJsBridgeListener, paramString1, paramString3);
+      return true;
+    }
+    label1287:
     return true;
   }
   
-  public static boolean a(String paramString)
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    return aljf.a(2, b, paramString);
-  }
-  
-  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    boolean bool = true;
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    paramHashMap.clear();
-    for (;;)
-    {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception paramHashMap)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("MiniRecog.MiniScanDetectModelLoader", 2, paramString, paramHashMap);
-        bool = false;
-        return bool;
-      }
-      int i = localXmlPullParser.next();
-      break label245;
-      String str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("qr_anchor.bin"))
-      {
-        paramHashMap.put("qr_anchor.bin", localXmlPullParser.nextText());
-        continue;
-      }
-      else
-      {
-        if (str.equalsIgnoreCase("qr_detection_model.txt"))
-        {
-          paramHashMap.put("qr_detection_model.txt", localXmlPullParser.nextText());
-          continue;
-        }
-        if (str.equalsIgnoreCase("qr_detection_model.bin"))
-        {
-          paramHashMap.put("qr_detection_model.bin", localXmlPullParser.nextText());
-          continue;
-        }
-        if (str.equalsIgnoreCase("match_detect_so_md5"))
-        {
-          b("match_detect_so_md5", localXmlPullParser.nextText());
-          continue;
-        }
-        if (!str.equalsIgnoreCase("match_detect_so_md5_64")) {
-          continue;
-        }
-        b("match_detect_so_md5_64", localXmlPullParser.nextText());
-        continue;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MiniRecog.MiniScanDetectModelLoader", 2, "parseConfig success|config=" + paramHashMap);
-        return true;
-        label245:
-        if (i != 1) {
-          switch (i)
-          {
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, String.format("babyqWeb onActivityResult requestCode=%s resultCode=%s intent=%s", new Object[] { Byte.valueOf(paramByte), Integer.valueOf(paramInt), paramIntent }));
     }
   }
   
-  public static String b()
+  public void onCreate()
   {
-    String str1;
-    String str3;
-    if (jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
+    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
     {
-      str1 = "match_detect_so_md5_64";
-      str3 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString("mini_native_" + str1, null);
-      if (QLog.isColorLevel()) {
-        if (str3 != null) {
-          break label88;
-        }
-      }
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("com.tencent.mobileqq.babyq.added");
+      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
-    label88:
-    for (String str2 = "null";; str2 = str3)
-    {
-      QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("getMatchDetectSoMd5=%s tag=%s", new Object[] { str2, str1 }));
-      return str3;
-      str1 = "match_detect_so_md5";
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebViewPlugin onCreate:" + this);
     }
   }
   
-  public static String b(String paramString)
+  public void onDestroy()
   {
-    return paramString;
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).edit();
-    if (TextUtils.isEmpty(paramString2)) {
-      ((SharedPreferences.Editor)localObject).putString("mini_native_" + paramString1, "").apply();
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebViewPlugin onDestroy:" + this);
     }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {}
+    try
     {
-      if (QLog.isColorLevel())
-      {
-        localObject = paramString2;
-        if (paramString2 == null) {
-          localObject = "null";
-        }
-        QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("saveMatchDetectSoMd5=%s tag=%s", new Object[] { localObject, paramString1 }));
-      }
+      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      label54:
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
       return;
-      ((SharedPreferences.Editor)localObject).putString("mini_native_" + paramString1, paramString2).apply();
+    }
+    catch (Exception localException)
+    {
+      break label54;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aljs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,289 +1,80 @@
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.text.format.Time;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.HongbaoKeywordGrayTips.1;
-import com.tencent.mobileqq.app.HotChatManager;
+import android.widget.ListAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.widget.ListView;
 
 public class aeyd
-  implements aexz
 {
-  private volatile long jdField_a_of_type_Long = -1L;
-  private acup jdField_a_of_type_Acup;
-  private aeyv jdField_a_of_type_Aeyv;
-  private Time jdField_a_of_type_AndroidTextFormatTime;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { ajya.a(2131705525), ajya.a(2131705526), ajya.a(2131705527) };
+  private int a = -1;
+  private int b = -1;
   
-  public aeyd(QQAppInterface paramQQAppInterface, aeyv paramaeyv, Activity paramActivity, SessionInfo paramSessionInfo, acup paramacup)
+  private void a(QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Aeyv = paramaeyv;
-    this.jdField_a_of_type_Acup = paramacup;
-  }
-  
-  private void a(ChatMessage paramChatMessage)
-  {
-    boolean bool = a(paramChatMessage);
     if (QLog.isColorLevel()) {
-      QLog.d("HongbaoKeywordGrayTips", 2, "detect : matchKeywords=" + bool);
+      QLog.d("ListViewExposeLogic", 2, "reportListItemMessage : exposeItemIndex -> " + paramInt);
     }
-    SharedPreferences localSharedPreferences;
-    long l1;
-    if (bool)
+    if (paramInt >= 0)
     {
-      paramChatMessage = "key_hongbao_keyword_gray_tips" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localSharedPreferences = BaseApplication.getContext().getSharedPreferences("free_call", 0);
-      String str = localSharedPreferences.getString(paramChatMessage, "");
-      l1 = awzy.a() * 1000L;
-      if (TextUtils.isEmpty(str)) {
-        break label303;
-      }
-      long l2 = Long.parseLong(str);
-      this.jdField_a_of_type_AndroidTextFormatTime.set(l2);
-      int i = this.jdField_a_of_type_AndroidTextFormatTime.year;
-      int j = this.jdField_a_of_type_AndroidTextFormatTime.month;
-      int k = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-      int m = this.jdField_a_of_type_AndroidTextFormatTime.hour;
-      if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "lastShowDate :" + i + " - " + (j + 1) + " - " + k + " - " + m);
-      }
-      if (l1 - l2 > 86400000L) {
-        break label249;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "has show in a day, just return;");
-      }
-    }
-    label249:
-    do
-    {
-      do
+      Object localObject = paramListView.getAdapter();
+      if ((localObject != null) && (paramInt < ((ListAdapter)localObject).getCount()))
       {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("HongbaoKeywordGrayTips", 2, "GrayTips show time interval > 1day, can show.");
+        localObject = ((ListAdapter)localObject).getItem(paramInt);
+        if ((localObject instanceof MessageRecord))
+        {
+          localObject = (MessageRecord)localObject;
+          aeyb.a(paramListView.getContext(), paramQQAppInterface, (MessageRecord)localObject, 1);
         }
-      } while (!this.jdField_a_of_type_Aeyv.a(this, new Object[0]));
-      localSharedPreferences.edit().putString(paramChatMessage, String.valueOf(l1)).commit();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("HongbaoKeywordGrayTips", 2, "GrayTips has never been shown, can show.");
       }
-    } while (!this.jdField_a_of_type_Aeyv.a(this, new Object[0]));
-    label303:
-    localSharedPreferences.edit().putString(paramChatMessage, String.valueOf(l1)).commit();
+    }
   }
   
-  private boolean a(ChatMessage paramChatMessage)
+  public void a(QQAppInterface paramQQAppInterface, ListView paramListView)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (!(paramChatMessage instanceof MessageForText))
-    {
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("HongbaoKeywordGrayTips", 2, "match : not MessageForText");
-        bool2 = bool1;
-      }
-      return bool2;
+    int j = paramListView.mFirstPosition;
+    int k = paramListView.getChildCount();
+    if (QLog.isColorLevel()) {
+      QLog.d("ListViewExposeLogic", 2, "reportExposeOnShowFirst : curFirstPosition -> " + j + ", childCount -> " + k);
     }
-    bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
-    if (!TextUtils.isEmpty(paramChatMessage.msg))
+    int i = j;
+    while (i < j + k)
     {
-      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      j = arrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        String str = arrayOfString[i];
-        if (paramChatMessage.msg.contains(str)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("HongbaoKeywordGrayTips", 2, "match : ret=" + bool1);
-        return bool1;
-      }
+      a(paramQQAppInterface, paramListView, i);
       i += 1;
     }
+    this.a = paramListView.mFirstPosition;
+    this.b = paramListView.getChildCount();
   }
   
-  public MessageRecord a(Object... paramVarArgs)
+  public void b(QQAppInterface paramQQAppInterface, ListView paramListView)
   {
-    paramVarArgs = axas.a(-1045);
-    long l = awzy.a();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, "", l, -1045, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
-    paramVarArgs.isread = true;
-    return paramVarArgs;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    int j = 1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1)) {}
-    label103:
-    long l;
-    int i;
-    Object localObject;
-    label203:
-    label354:
-    label383:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
-              break;
-            }
-            paramVarArgs = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60);
-          } while ((paramVarArgs != null) && (paramVarArgs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-        } while ((paramInt != 1000) && (paramInt != 1001));
-        if (paramInt == 1000)
-        {
-          paramInt = 1;
-          l = awzy.a();
-          if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
-            this.jdField_a_of_type_AndroidTextFormatTime = new Time();
-          }
-          this.jdField_a_of_type_AndroidTextFormatTime.set(l * 1000L);
-          i = this.jdField_a_of_type_AndroidTextFormatTime.year;
-          int k = this.jdField_a_of_type_AndroidTextFormatTime.month + 1;
-          int m = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-          int n = this.jdField_a_of_type_AndroidTextFormatTime.hour;
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder().append("onAIOEvent() :");
-            if (paramInt == 0) {
-              break label310;
-            }
-            paramVarArgs = " TYPE_ON_SHOW ";
-            QLog.d("HongbaoKeywordGrayTips", 2, paramVarArgs + ", curDate :" + i + " - " + k + " - " + m + " - " + n);
-          }
-          if ((i != 2015) || (k != 2) || (m > 21) || (m < 18)) {
-            break label316;
-          }
-        }
-        for (i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label321;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("HongbaoKeywordGrayTips", 2, "time not match, just return");
-          return;
-          paramInt = 0;
-          break label103;
-          paramVarArgs = " TYPE_ON_MSG_SENT_RECV";
-          break label203;
-        }
-        if (paramInt != 0)
-        {
-          ThreadManager.getSubThreadHandler().post(new HongbaoKeywordGrayTips.1(this));
-          return;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {
-          break;
-        }
-        paramInt = j;
-        l = this.jdField_a_of_type_Long;
-        paramVarArgs = this.jdField_a_of_type_Acup.a();
-        i = paramVarArgs.size();
-      } while (i <= 0);
-      i -= 1;
-      if (i < 0) {
-        break;
-      }
-      localObject = (ChatMessage)paramVarArgs.get(i);
-      if (paramInt == 0) {
-        break label503;
-      }
-    } while (((ChatMessage)localObject).time <= l);
-    label310:
-    label316:
-    label321:
-    if (QLog.isColorLevel()) {
-      QLog.d("HongbaoKeywordGrayTips", 2, "TYPE_ON_MSG_SENT_RECV : new message =====>");
+    int j = paramListView.mFirstPosition;
+    int k = paramListView.getChildCount();
+    if ((j == this.a) && (this.b == k)) {
+      return;
     }
-    if ((((ChatMessage)localObject).isSendFromLocal()) && (((ChatMessage)localObject).extraflag != 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "TYPE_ON_MSG_SENT_RECV : msg send not success");
-      }
+    int i = -1;
+    if (j < this.a) {
+      i = j;
     }
     for (;;)
     {
-      i -= 1;
-      break label383;
-      break;
-      paramInt = 0;
-      break label354;
-      a((ChatMessage)localObject);
-      if (((ChatMessage)localObject).time > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = ((ChatMessage)localObject).time;
-        continue;
-        label503:
-        if (((ChatMessage)localObject).shmsgseq <= l) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("HongbaoKeywordGrayTips", 2, "TYPE_ON_MSG_SENT_RECV : new message =====>");
-        }
-        a((ChatMessage)localObject);
-        if (((ChatMessage)localObject).shmsgseq > this.jdField_a_of_type_Long) {
-          this.jdField_a_of_type_Long = ((ChatMessage)localObject).shmsgseq;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("ListViewExposeLogic", 2, "handleListViewScroll : curExposeItemIndex -> " + i + ", curFirstPosition -> " + j + ", childCount -> " + k);
+      }
+      this.a = j;
+      this.b = k;
+      a(paramQQAppInterface, paramListView, i);
+      return;
+      if (j + k > this.a + this.b) {
+        i = j + k - 1;
       }
     }
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 1004;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyd
  * JD-Core Version:    0.7.0.1
  */

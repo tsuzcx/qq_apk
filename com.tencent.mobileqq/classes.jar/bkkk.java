@@ -1,14 +1,17 @@
-import java.util.List;
+import com.tencent.ttpic.video.AECoderFactory.AEDecoderFactory;
+import com.tencent.ttpic.video.AEDecoder;
 
-public abstract interface bkkk
+final class bkkk
+  implements AECoderFactory.AEDecoderFactory
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void a(List<Long> paramList);
+  public AEDecoder createDecoder(String paramString)
+  {
+    return new axpf(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkkk
  * JD-Core Version:    0.7.0.1
  */

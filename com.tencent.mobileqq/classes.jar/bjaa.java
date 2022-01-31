@@ -1,149 +1,28 @@
-import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.common.config.AppSetting;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import cooperation.qzone.report.lp.LpReportInfo_dc00321;
 
 public class bjaa
+  implements View.OnClickListener
 {
-  private static final List<Pair<String, Integer>> a = new LinkedList();
+  public bjaa(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  static
+  public void onClick(View paramView)
   {
-    a.add(new Pair("AEKIT_CAMERA_FIRST_LAUNCH", Integer.valueOf(0)));
-    a.add(new Pair("CameraModuleSvc.GetCompressedCategoryMaterialMqStoryCamera", Integer.valueOf(4)));
-    a.add(new Pair("CameraModuleSvc.GetCompressedCategoryMaterialMqEmoCamera", Integer.valueOf(4)));
-    a.add(new Pair("CameraModuleSvc.GetPlayShowCatMatTree", Integer.valueOf(4)));
-  }
-  
-  private bjaa()
-  {
-    Object localObject = bjad.a("key_app_version", "");
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!AppSetting.a().equals(localObject)))
+    if (!this.a.b)
     {
-      localObject = a.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Pair localPair = (Pair)((Iterator)localObject).next();
-        if (4 == ((Integer)localPair.second).intValue()) {
-          bjad.a((String)localPair.first);
-        } else {
-          bjac.a((String)localPair.first);
-        }
+      if (1 == this.a.c) {
+        LpReportInfo_dc00321.report(8, 129, 0, false, false, null);
       }
-      bjad.a("key_app_version", AppSetting.a());
+      this.a.a(false, false);
+      this.a.b();
     }
-  }
-  
-  public static bjaa a()
-  {
-    return bjae.a();
-  }
-  
-  public int a(@NonNull String paramString, int paramInt1, int paramInt2)
-  {
-    if (4 == paramInt2) {
-      return bjad.a(paramString, paramInt1);
-    }
-    return bjac.a(paramString, paramInt1);
-  }
-  
-  public long a(@NonNull String paramString, long paramLong, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bjad.a(paramString, paramLong);
-    }
-    return bjac.a(paramString, paramLong);
-  }
-  
-  @NonNull
-  public SharedPreferences a()
-  {
-    return bjac.a();
-  }
-  
-  @Nullable
-  public String a(@NonNull String paramString1, String paramString2, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bjad.a(paramString1, paramString2);
-    }
-    return bjac.a(paramString1, paramString2);
-  }
-  
-  public void a(@NonNull String paramString, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bjad.a(paramString);
-      return;
-    }
-    bjac.a(paramString);
-  }
-  
-  public void a(@NonNull String paramString, int paramInt1, int paramInt2)
-  {
-    if (4 == paramInt2)
-    {
-      bjad.a(paramString, paramInt1);
-      return;
-    }
-    bjac.a(paramString, paramInt1);
-  }
-  
-  public void a(@NonNull String paramString, long paramLong, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bjad.a(paramString, paramLong);
-      return;
-    }
-    bjac.a(paramString, paramLong);
-  }
-  
-  public void a(@NonNull String paramString1, String paramString2, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bjad.a(paramString1, paramString2);
-      return;
-    }
-    bjac.a(paramString1, paramString2);
-  }
-  
-  public void a(@NonNull String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bjad.a(paramString, paramBoolean);
-      return;
-    }
-    bjac.a(paramString, paramBoolean);
-  }
-  
-  public boolean a(@NonNull String paramString, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bjad.a(paramString);
-    }
-    return bjac.a(paramString);
-  }
-  
-  public boolean a(@NonNull String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bjad.a(paramString, paramBoolean);
-    }
-    return bjac.a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjaa
  * JD-Core Version:    0.7.0.1
  */

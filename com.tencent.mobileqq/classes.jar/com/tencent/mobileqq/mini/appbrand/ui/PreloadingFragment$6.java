@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bcyb;
+import bexd;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -12,8 +12,6 @@ import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
@@ -33,12 +31,14 @@ class PreloadingFragment$6
       QLog.d("PreloadingFragment", 2, "getAppInfoByLink, retCode = " + l1 + ",errMsg = " + (String)localObject1);
       if (l1 != 0L) {
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label733;
+          break label763;
         }
       }
     }
-    label733:
-    for (paramJSONObject = this.this$0.getString(2131718748);; paramJSONObject = (JSONObject)localObject1)
+    label298:
+    label455:
+    label763:
+    for (paramJSONObject = this.this$0.getString(2131719221);; paramJSONObject = (JSONObject)localObject1)
     {
       if (PreloadingFragment.access$300(this.this$0) != null)
       {
@@ -64,18 +64,16 @@ class PreloadingFragment$6
           if (!TextUtils.isEmpty(paramJSONObject.launchParam.shareTicket)) {
             paramJSONObject.launchParam.scene = 1044;
           }
-          if (paramJSONObject.launchParam.reportData == null) {
-            paramJSONObject.launchParam.reportData = new HashMap();
+          if (!TextUtils.isEmpty(paramJSONObject.launchParam.reportData)) {
+            break label455;
           }
-          if (((MiniAppInfo)localObject2).reportData != null) {
-            paramJSONObject.launchParam.reportData.putAll(((MiniAppInfo)localObject2).reportData);
-          }
+          paramJSONObject.launchParam.reportData = ((MiniAppInfo)localObject2).reportData;
           if ((((MiniAppInfo)localObject2).verType != 3) && (((MiniAppInfo)localObject2).verType != 1)) {
             paramJSONObject.forceReroad = 3;
           }
           if (((MiniAppInfo)localObject2).clearAuths == 1)
           {
-            long l2 = bcyb.a().a();
+            long l2 = bexd.a().a();
             if (l2 > 0L)
             {
               AuthorizeCenter.clearAuth(((MiniAppInfo)localObject2).appId, String.valueOf(l2));
@@ -107,6 +105,11 @@ class PreloadingFragment$6
         return;
         paramJSONObject.launchParam = this.val$param;
         break;
+        if (TextUtils.isEmpty(((MiniAppInfo)localObject2).reportData)) {
+          break label298;
+        }
+        paramJSONObject.launchParam.reportData = (paramJSONObject.launchParam.reportData + "&" + ((MiniAppInfo)localObject2).reportData);
+        break label298;
         if (localObject2 == null) {
           QLog.e("PreloadingFragment", 1, "getAppInfoByLink  onCmdListener appinfo==null retCode= " + l1);
         }
@@ -141,7 +144,7 @@ class PreloadingFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.6
  * JD-Core Version:    0.7.0.1
  */

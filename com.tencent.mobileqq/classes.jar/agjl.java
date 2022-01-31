@@ -1,81 +1,72 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimTipsInfo;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import java.util.List;
-import mqq.app.TicketManagerImpl;
-import mqq.os.MqqHandler;
 
-public class agjl
-  extends MqqHandler
+class agjl
+  extends alxx
 {
-  private WeakReference<ContactListView> a;
+  agjl(agiy paramagiy) {}
   
-  public agjl(ContactListView paramContactListView)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    this.a = new WeakReference(paramContactListView);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    do
+    {
+      int k;
+      do
+      {
+        return;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          k = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bdal.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
+    } while (!paramBoolean);
+    this.a.br();
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void b(boolean paramBoolean, List<Long> paramList)
   {
-    ContactListView localContactListView = (ContactListView)this.a.get();
-    if (localContactListView == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ContactListView", 2, "UiHandler() handleMessage a == null");
-      }
-    }
+    int k = 0;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
     do
     {
       do
       {
         return;
-        switch (paramMessage.what)
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
         {
-        case 3: 
-        case 7: 
-        default: 
-          throw new RuntimeException("Unknown message: " + paramMessage.what);
-        case 1: 
-          if ((ContactListView.a(localContactListView)) && (!localContactListView.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e()))
+          int j = 0;
+          while ((k == 0) && (j < i))
           {
-            localContactListView.g();
-            ContactListView.a(localContactListView, false);
+            if (bdal.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
           }
-          localContactListView.j();
-          return;
-        case 2: 
-          localContactListView.j();
         }
-      } while (bbfj.d(localContactListView.getContext()));
-      localContactListView.i();
-      localContactListView.b(ajya.a(2131702505));
-      return;
-      localContactListView.b = ((List)paramMessage.obj);
-      localContactListView.jdField_a_of_type_Aimf.a(localContactListView.b);
-      localContactListView.jdField_a_of_type_Aimf.notifyDataSetChanged();
-      return;
-      paramMessage = ContactListView.a(localContactListView).getAccount();
-      localObject = (TicketManagerImpl)ContactListView.a(localContactListView).getManager(2);
-    } while (localObject == null);
-    Object localObject = ((TicketManagerImpl)localObject).getA2(paramMessage);
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactListView", 2, "a2 = " + (String)localObject);
-    }
-    QQPimGetTipsInfoIPC.a().a(ContactListView.a(localContactListView), ContactListView.a(localContactListView), paramMessage, (String)localObject);
-    return;
-    ContactListView.a(localContactListView, (QQPimTipsInfo)paramMessage.obj);
-    return;
-    localContactListView.i();
-    localContactListView.l();
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, true);
+    } while (!paramBoolean);
+    this.a.br();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agjl
  * JD-Core Version:    0.7.0.1
  */

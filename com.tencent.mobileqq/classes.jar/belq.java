@@ -1,70 +1,37 @@
-import android.text.TextUtils;
-import android.util.Log;
-import java.lang.reflect.Field;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.GifAnimationDrawable;
+import java.lang.ref.WeakReference;
 
 public class belq
+  extends Handler
 {
-  public static Object a(String paramString)
+  private final WeakReference<GifAnimationDrawable> a;
+  
+  public belq(GifAnimationDrawable paramGifAnimationDrawable)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName(paramString).newInstance();
-      return paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      Log.e("ReflectionUtil", "ClassNotFoundException: ");
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      Log.e("ReflectionUtil", "IllegalAccessException: ");
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramString)
-    {
-      Log.e("ReflectionUtil", "InstantiationException: ");
-      paramString.printStackTrace();
-    }
-    return null;
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(paramGifAnimationDrawable);
   }
   
-  public static Object a(String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    try
+    switch (paramMessage.what)
     {
-      paramString1 = Class.forName(paramString1);
-      paramString1 = paramString1.getField(paramString2).get(paramString1);
-      return paramString1;
     }
-    catch (NoSuchFieldException paramString1)
+    GifAnimationDrawable localGifAnimationDrawable;
+    do
     {
-      Log.w("ReflectionUtil", "NoSuchFieldException: " + paramString1.getMessage());
-      return null;
-    }
-    catch (IllegalAccessException paramString1)
-    {
-      Log.w("ReflectionUtil", "IllegalAccessException: " + paramString1.getMessage());
-      return null;
-    }
-    catch (ClassNotFoundException paramString1)
-    {
-      Log.w("ReflectionUtil", "ClassNotFoundException: " + paramString1.getMessage());
-    }
-    return null;
+      return;
+      localGifAnimationDrawable = (GifAnimationDrawable)this.a.get();
+    } while (localGifAnimationDrawable == null);
+    GifAnimationDrawable.a(localGifAnimationDrawable, (belp)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     belq
  * JD-Core Version:    0.7.0.1
  */

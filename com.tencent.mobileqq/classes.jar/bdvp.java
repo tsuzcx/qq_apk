@@ -1,347 +1,792 @@
+import VIP.AIOSendRes;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qidian.controller.QidianPubAccountBigDataHandler.1;
-import com.tencent.qidian.controller.QidianPubAccountBigDataHandler.2;
-import com.tencent.qidian.controller.QidianPubAccountBigDataHandler.3;
-import com.tencent.qidian.data.PubAccountNavigationMenu;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vip.AioVipKeywordHelper.1;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
-import tencent.im.cs.cmd0x6ff.subcmd0x519.CRMMsgHead;
-import tencent.im.cs.cmd0x6ff.subcmd0x519.GetNavigationMenuReqBody;
-import tencent.im.cs.cmd0x6ff.subcmd0x519.GetNavigationMenuRspBody;
-import tencent.im.cs.cmd0x6ff.subcmd0x519.ReqBody;
-import tencent.im.cs.cmd0x6ff.subcmd0x519.RetInfo;
-import tencent.im.cs.cmd0x6ff.subcmd0x519.RspBody;
+import java.util.Random;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bdvp
-  extends bdvi
 {
-  public static final AtomicBoolean a;
-  public Map<Long, PubAccountNavigationMenu> a;
+  private static bdvp jdField_a_of_type_Bdvp;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e = "mvip.p.a.aio_tlzkt";
+  public static String f = "mvip.p.a.aio_tlzzs";
+  static String g = alpo.a(2131700516);
+  static String h = alpo.a(2131700514);
+  static String i = alpo.a(2131700515);
+  static String j = alpo.a(2131700513);
+  public int a;
+  public long a;
+  public SessionInfo a;
+  public MessageRecord a;
+  public List<String> a;
+  public Map<String, Boolean> a;
+  private boolean jdField_a_of_type_Boolean;
+  public String[] a;
+  public int b;
+  public long b;
+  private String[] b;
+  public int c;
+  public long c;
+  private String[] c;
+  private int d;
+  public long d;
+  public String k = g;
+  public String l = h;
+  public String m = i;
+  public String n = j;
+  public String o = g;
+  public String p = i;
+  public String q = h;
+  public String r = j;
+  public String s;
+  public String t;
+  public String u;
+  public String v;
+  public String w;
+  public String x;
   
   static
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    jdField_a_of_type_JavaLangString = "mvip.pt.android.aiocuifei_recikai";
+    jdField_b_of_type_JavaLangString = "mvip.pt.android.aiocuifei_recizeng";
+    jdField_c_of_type_JavaLangString = "mvip.p.a.aio_qunkt";
+    jdField_d_of_type_JavaLangString = "mvip.p.a.aio_qunzs";
   }
   
-  public bdvp(QQAppInterface paramQQAppInterface)
+  public bdvp()
   {
-    super(paramQQAppInterface);
+    this.jdField_d_of_type_Int = 1;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_a_of_type_Long = 86400L;
+    this.jdField_b_of_type_Long = 86400L;
+    this.jdField_c_of_type_Long = 86400L;
+    this.jdField_d_of_type_Long = 2000L;
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    ThreadManager.post(new QidianPubAccountBigDataHandler.1(this), 8, null, true);
   }
   
-  private void a()
+  public static bdvp a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianPubAccountBigDataHandler", 4, "initial ...");
-    }
-    localaukp = this.app.getEntityManagerFactory().createEntityManager();
+    if (jdField_a_of_type_Bdvp == null) {}
     try
     {
-      a(localaukp);
+      if (jdField_a_of_type_Bdvp == null) {
+        jdField_a_of_type_Bdvp = new bdvp();
+      }
+      return jdField_a_of_type_Bdvp;
     }
-    catch (Exception localException)
-    {
-      for (;;)
+    finally {}
+  }
+  
+  private static boolean a(String paramString)
+  {
+    return (paramString != null) && (paramString.length() > 2);
+  }
+  
+  private String[] a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    int i1 = 0;
+    if (paramBoolean) {
+      if ((this.jdField_b_of_type_ArrayOfJavaLangString != null) && (this.jdField_b_of_type_ArrayOfJavaLangString.length >= 1)) {}
+    }
+    for (i1 = 1;; i1 = 1) {
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("QidianPubAccountBigDataHandler", 2, "QidianManager get data from db error: " + localException.getMessage());
+        if (i1 != 0) {
+          a(paramContext, paramString);
         }
-        localaukp.a();
-      }
-    }
-    finally
-    {
-      localaukp.a();
-    }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  private void a(long paramLong1, PubAccountNavigationMenu paramPubAccountNavigationMenu, long paramLong2)
-  {
-    Object localObject1 = this.app.getCurrentAccountUin();
-    try
-    {
-      paramLong2 = Long.parseLong((String)localObject1);
-      localObject1 = new subcmd0x519.GetNavigationMenuReqBody();
-      ((subcmd0x519.GetNavigationMenuReqBody)localObject1).uint64_puin.set(paramLong1);
-      Object localObject2 = ((subcmd0x519.GetNavigationMenuReqBody)localObject1).uint32_ver_no;
-      if (paramPubAccountNavigationMenu == null) {}
-      for (int i = 0;; i = paramPubAccountNavigationMenu.version)
-      {
-        ((PBUInt32Field)localObject2).set(i);
-        ((subcmd0x519.GetNavigationMenuReqBody)localObject1).uint64_uin.set(paramLong2);
-        localObject2 = new subcmd0x519.ReqBody();
-        ((subcmd0x519.ReqBody)localObject2).uint32_sub_cmd.set(36);
-        ((subcmd0x519.ReqBody)localObject2).msg_get_navigation_menu_req.set((MessageMicro)localObject1);
-        localObject1 = new subcmd0x519.CRMMsgHead();
-        ((subcmd0x519.CRMMsgHead)localObject1).uint32_ver_no.set(bdvz.a("8.3.0"));
-        ((subcmd0x519.CRMMsgHead)localObject1).uint32_crm_sub_cmd.set(36);
-        ((subcmd0x519.CRMMsgHead)localObject1).uint32_clienttype.set(2);
-        ((subcmd0x519.CRMMsgHead)localObject1).uint64_kf_uin.set(paramLong1);
-        ((subcmd0x519.CRMMsgHead)localObject1).uint64_puin.set(paramLong1);
-        ((subcmd0x519.ReqBody)localObject2).msg_crm_common_head.set((MessageMicro)localObject1);
-        a(3001, (MessageMicro)localObject2, 1305, paramPubAccountNavigationMenu);
-        return;
-      }
-      return;
-    }
-    catch (Exception paramPubAccountNavigationMenu) {}
-  }
-  
-  private void a(aukp paramaukp)
-  {
-    if (paramaukp != null)
-    {
-      paramaukp = paramaukp.a(PubAccountNavigationMenu.class);
-      if (paramaukp != null)
-      {
-        paramaukp = paramaukp.iterator();
-        while (paramaukp.hasNext())
-        {
-          PubAccountNavigationMenu localPubAccountNavigationMenu = (PubAccountNavigationMenu)paramaukp.next();
-          if (QLog.isColorLevel()) {
-            QLog.d("QidianPubAccountBigDataHandler", 4, "loadMenus query from db: " + localPubAccountNavigationMenu);
-          }
-          if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(localPubAccountNavigationMenu.puin))) {
-            this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(localPubAccountNavigationMenu.puin), localPubAccountNavigationMenu);
-          }
+        if (!paramBoolean) {
+          break;
         }
-      }
+        return this.jdField_b_of_type_ArrayOfJavaLangString;
+      } while ((this.jdField_c_of_type_ArrayOfJavaLangString != null) && (this.jdField_c_of_type_ArrayOfJavaLangString.length >= 1));
     }
+    return this.jdField_c_of_type_ArrayOfJavaLangString;
   }
   
-  private void a(PubAccountNavigationMenu paramPubAccountNavigationMenu)
+  public Pair<String, String> a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramPubAccountNavigationMenu.puin), paramPubAccountNavigationMenu);
-    ThreadManager.post(new QidianPubAccountBigDataHandler.3(this, paramPubAccountNavigationMenu), 5, null, true);
-  }
-  
-  private void a(boolean paramBoolean, byte[] paramArrayOfByte, Object paramObject)
-  {
-    if ((paramBoolean) && (paramArrayOfByte != null)) {}
+    String str2 = "";
+    String str1 = "";
+    switch (paramInt)
+    {
+    }
     for (;;)
     {
-      try
+      return new Pair(str2, str1);
+      if (paramBoolean) {}
+      for (str2 = this.k;; str2 = this.l)
       {
-        Object localObject = new subcmd0x519.RspBody();
-        ((subcmd0x519.RspBody)localObject).mergeFrom((byte[])paramArrayOfByte);
-        localObject = ((subcmd0x519.RspBody)localObject).msg_get_navigation_menu_rsp;
-        paramArrayOfByte = (subcmd0x519.RetInfo)((subcmd0x519.GetNavigationMenuRspBody)localObject).msg_ret.get();
-        i = paramArrayOfByte.uint32_ret_code.get();
-        if (i == 0)
-        {
-          if ((!((subcmd0x519.GetNavigationMenuRspBody)localObject).int32_is_show.has()) || (((subcmd0x519.GetNavigationMenuRspBody)localObject).int32_is_show.get() != 1)) {
-            break label397;
-          }
-          paramBoolean = true;
-          if (!((subcmd0x519.GetNavigationMenuRspBody)localObject).str_struct_msg.has()) {
-            break label402;
-          }
-          paramArrayOfByte = ((subcmd0x519.GetNavigationMenuRspBody)localObject).str_struct_msg.get();
-          if (!((subcmd0x519.GetNavigationMenuRspBody)localObject).uint32_ver_no.has()) {
-            break label409;
-          }
-          i = ((subcmd0x519.GetNavigationMenuRspBody)localObject).uint32_ver_no.get();
-          if (paramObject == null) {
-            break label391;
-          }
-          paramObject = (PubAccountNavigationMenu)paramObject;
-          if (QLog.isColorLevel()) {
-            QLog.d("QidianPubAccountBigDataHandler", 2, "handleGetNatigationMenu isShow: " + paramBoolean + " version: " + i + " | xml: " + paramArrayOfByte);
-          }
-          localObject = paramObject;
-          if (paramObject == null) {
-            localObject = new PubAccountNavigationMenu();
-          }
-          if (paramArrayOfByte != null)
-          {
-            paramObject = paramArrayOfByte;
-            if (paramArrayOfByte.length() != 0) {}
-          }
-          else
-          {
-            paramObject = ((PubAccountNavigationMenu)localObject).xml;
-          }
-          ((PubAccountNavigationMenu)localObject).xml = paramObject;
-          ((PubAccountNavigationMenu)localObject).version = i;
-          a((PubAccountNavigationMenu)localObject);
-          if (paramBoolean)
-          {
-            notifyUI(3001, true, localObject);
-            return;
-          }
-          if (!QLog.isColorLevel()) {
-            break label396;
-          }
-          QLog.d("QidianPubAccountBigDataHandler", 2, "handleGetNatigationMenu no need show");
-          return;
+        if (!paramBoolean) {
+          break label86;
         }
+        str1 = this.m;
+        break;
       }
-      catch (Exception paramArrayOfByte)
+      label86:
+      str1 = this.n;
+      continue;
+      if (paramBoolean) {}
+      for (str2 = this.o;; str2 = this.q)
       {
-        notifyUI(3001, false, null);
-        paramArrayOfByte.printStackTrace();
-        return;
-      }
-      notifyUI(3001, false, null);
-      if (paramArrayOfByte.str_error_msg.has()) {
-        paramArrayOfByte = paramArrayOfByte.str_error_msg.get();
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QidianPubAccountBigDataHandler", 2, "handleGetNatigationMenu error: " + i + " msg: " + paramArrayOfByte);
-          return;
-          notifyUI(3001, false, null);
-          if (QLog.isColorLevel())
-          {
-            QLog.d("QidianPubAccountBigDataHandler", 2, "handleGetNatigationMenu fail");
-            return;
-            paramArrayOfByte = "Unknown error";
-            continue;
-            label391:
-            paramObject = null;
-            break;
-          }
+        if (!paramBoolean) {
+          break label125;
         }
+        str1 = this.p;
+        break;
       }
-      label396:
-      return;
-      label397:
-      paramBoolean = false;
-      continue;
-      label402:
-      paramArrayOfByte = "";
-      continue;
-      label409:
-      int i = 0;
+      label125:
+      str1 = this.r;
     }
   }
   
-  public PubAccountNavigationMenu a(String paramString)
+  public String a(int paramInt)
   {
-    try
-    {
-      long l = Long.parseLong(paramString);
-      paramString = (PubAccountNavigationMenu)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l));
-      if (paramString != null) {
-        return paramString;
-      }
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        return null;
-      }
-      a(l);
-      paramString = (PubAccountNavigationMenu)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l));
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
-  protected void a(int paramInt1, boolean paramBoolean, byte[] paramArrayOfByte, int paramInt2, Object paramObject)
-  {
-    if (paramInt2 != 1305)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QidianPubAccountBigDataHandler", 2, "recevie but not 0x519");
-      }
-      return;
-    }
-    switch (paramInt1)
+    switch (paramInt)
     {
     default: 
-      return;
+      return "";
+    case 0: 
+      return "0";
+    case 1: 
+      return "1";
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianPubAccountBigDataHandler", 2, "recevie CMD_BIG_DATA_GET_NATIGATION_MENU,begin to handle...");
-    }
-    a(paramBoolean, paramArrayOfByte, paramObject);
+    return "2";
   }
   
-  public void a(long paramLong)
+  public String a(boolean paramBoolean, int paramInt)
   {
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    switch (paramInt)
     {
-      Object localObject = this.app.getEntityManagerFactory().createEntityManager();
-      if (localObject != null)
+    default: 
+      return "";
+    case 0: 
+      if (paramBoolean) {
+        return jdField_a_of_type_JavaLangString;
+      }
+      return jdField_b_of_type_JavaLangString;
+    case 1: 
+      if (paramBoolean) {
+        return jdField_c_of_type_JavaLangString;
+      }
+      return jdField_d_of_type_JavaLangString;
+    }
+    if (paramBoolean) {
+      return e;
+    }
+    return f;
+  }
+  
+  public void a(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {}
+    do
+    {
+      return;
+      Object localObject = null;
+      File localFile = new File(paramContext.getFilesDir(), "vipKerwordJson");
+      paramContext = localObject;
+      if (localFile.exists()) {
+        paramContext = bdcs.a(localFile);
+      }
+    } while (TextUtils.isEmpty(paramContext));
+    a(paramContext, paramString);
+    a(BaseApplicationImpl.getApplication().getRuntime());
+  }
+  
+  public void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AioVipKeywordHelper", 2, "updateKeywordJson");
+    }
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
+      return;
+    }
+    a(paramString1, paramString2);
+    bdcs.a(paramContext.getFilesDir() + File.separator + "vipKerwordJson", paramString1);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong)
+  {
+    paramQQAppInterface.getApplication().getSharedPreferences("AioVipKeywordGrayTips_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("lastShowGrayTipsTime_" + paramInt + "_" + paramString, paramLong).commit();
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, AIOSendRes paramAIOSendRes)
+  {
+    if (paramAIOSendRes != null)
+    {
+      this.u = paramAIOSendRes.sGrayStipMsg;
+      if (paramAIOSendRes.mHighLightMap != null)
       {
-        localObject = (PubAccountNavigationMenu)((aukp)localObject).a(PubAccountNavigationMenu.class, new String[] { String.valueOf(paramLong) });
-        if (localObject != null) {
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(((PubAccountNavigationMenu)localObject).puin), localObject);
+        Iterator localIterator = paramAIOSendRes.mHighLightMap.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          this.v = ((String)localIterator.next());
+          this.w = ((String)paramAIOSendRes.mHighLightMap.get(this.v));
         }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AioVipKeywordHelper", 4, "fetched tips from server: tips=" + this.u + ", highlight=" + this.v + ", openUrl=" + this.w);
+      }
+      if ((this.x != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+      {
+        a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.x, true);
+        this.x = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
       }
     }
   }
   
-  public void a(String paramString, long paramLong)
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage, String paramString, Context paramContext, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianPubAccountBigDataHandler", 2, "getNatigationMenu: BEGIN");
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramChatMessage == null) || (TextUtils.isEmpty(paramString))) {
+      QLog.e("AioVipKeywordHelper", 1, "detectKeyword : params error");
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("AioVipKeywordHelper", 4, "keyword has been detected, message is ignored.");
+      return;
+    } while (!a(paramQQAppInterface, paramSessionInfo));
+    ThreadManager.executeOnSubThread(new AioVipKeywordHelper.1(this, paramQQAppInterface, paramSessionInfo, paramContext, paramString, paramChatMessage, paramBoolean), true);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      Object localObject;
+      String str1;
+      label58:
+      String str2;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+      {
+        localObject = a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), paramSessionInfo.jdField_a_of_type_Int);
+        if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+          break label231;
+        }
+        if (!paramBoolean) {
+          break label196;
+        }
+        str1 = this.u;
+        if (!paramBoolean) {
+          break label209;
+        }
+        localObject = this.v;
+        if (!paramBoolean) {
+          break label222;
+        }
+        str2 = this.w;
+        break label271;
+      }
+      for (;;)
+      {
+        label72:
+        String str3 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+        if (a(str3))
+        {
+          a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_Int, str3, System.currentTimeMillis());
+          a(paramQQAppInterface, str3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin, paramSessionInfo.jdField_a_of_type_Int, -4021, str1, (String)localObject, str2, paramString);
+          if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+            break label260;
+          }
+        }
+        label260:
+        for (paramQQAppInterface = "0";; paramQQAppInterface = "1")
+        {
+          VasWebviewUtil.reportVipKeywords(paramString, paramQQAppInterface, "0", a(paramSessionInfo.jdField_a_of_type_Int), str3, "", "", "", "", "");
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
+          if (paramBoolean)
+          {
+            this.w = null;
+            this.v = null;
+            this.u = null;
+          }
+          return;
+          label196:
+          str1 = (String)((Pair)localObject).first;
+          break;
+          label209:
+          localObject = (String)((Pair)localObject).second;
+          break label58;
+          label222:
+          str2 = this.t;
+          break label271;
+          label231:
+          str1 = (String)((Pair)localObject).first;
+          localObject = (String)((Pair)localObject).second;
+          str2 = this.s;
+          break label72;
+        }
+      }
+    }
+    finally {}
+  }
+  
+  void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    MessageRecord localMessageRecord = ayvw.a(paramInt2);
+    localMessageRecord.selfuin = paramQQAppInterface.getCurrentAccountUin();
+    String str = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      str = "";
+    }
+    localMessageRecord.frienduin = str;
+    if (TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = "";
+      localMessageRecord.senderuin = paramString1;
+      localMessageRecord.msg = paramString3;
+      localMessageRecord.msgtype = paramInt2;
+      localMessageRecord.isread = true;
+      if (!paramString2.equals(paramQQAppInterface.getAccount())) {
+        break label224;
+      }
+      paramInt2 = 1;
+      label87:
+      localMessageRecord.issend = paramInt2;
+      localMessageRecord.istroop = paramInt1;
+      paramInt1 = aytq.jdField_a_of_type_Int;
+      aytq.jdField_a_of_type_Int = paramInt1 + 1;
+      localMessageRecord.msgseq = paramInt1;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) {
+        break label230;
+      }
+      l1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq;
+      label137:
+      localMessageRecord.shmsgseq = l1;
+      localMessageRecord.msgUid = arni.b();
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) {
+        break label249;
+      }
+    }
+    label224:
+    label230:
+    label249:
+    for (long l1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time;; l1 = ayvc.a())
+    {
+      localMessageRecord.time = l1;
+      localMessageRecord.saveExtInfoToExtStr("aio_vip_keyword", paramString6);
+      localMessageRecord.saveExtInfoToExtStr("aio_vip_tips_highlight", paramString4);
+      localMessageRecord.saveExtInfoToExtStr("aio_vip_tips_open_url", paramString5);
+      paramQQAppInterface.a().a(localMessageRecord, paramQQAppInterface.getCurrentAccountUin());
+      return;
+      paramString1 = paramString2;
+      break;
+      paramInt2 = 0;
+      break label87;
+      l1 = Math.abs(new Random().nextInt());
+      break label137;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    String[] arrayOfString = null;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return;
     }
     for (;;)
     {
       try
       {
-        l = Long.parseLong(paramString);
-        paramString = (PubAccountNavigationMenu)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l));
-        if (paramString == null) {
+        Object localObject = new JSONObject(paramString1);
+        if (!((JSONObject)localObject).has("switch")) {
+          break label676;
+        }
+        i1 = ((JSONObject)localObject).getInt("switch");
+        this.jdField_d_of_type_Int = i1;
+        if (((JSONObject)localObject).has("openWording"))
+        {
+          paramString1 = ((JSONObject)localObject).getString("openWording");
+          this.k = paramString1;
+          if (((JSONObject)localObject).has("openHighlightWording"))
+          {
+            paramString1 = ((JSONObject)localObject).getString("openHighlightWording");
+            this.m = paramString1;
+            if (!((JSONObject)localObject).has("giftWording")) {
+              continue;
+            }
+            paramString1 = ((JSONObject)localObject).getString("giftWording");
+            this.l = paramString1;
+            if (!((JSONObject)localObject).has("giftHighlightWording")) {
+              continue;
+            }
+            paramString1 = ((JSONObject)localObject).getString("giftHighlightWording");
+            this.n = paramString1;
+            this.o = ((JSONObject)localObject).optString("groupOpenWording", g);
+            this.p = ((JSONObject)localObject).optString("groupOpenHighlightWording", i);
+            this.q = ((JSONObject)localObject).optString("groupGiftWording", h);
+            this.r = ((JSONObject)localObject).optString("groupGiftHighlightWording", j);
+            if (!((JSONObject)localObject).has("giftUrl")) {
+              break label681;
+            }
+            paramString1 = ((JSONObject)localObject).getString("giftUrl");
+            this.s = paramString1;
+            if (!((JSONObject)localObject).has("openUrl")) {
+              break label686;
+            }
+            paramString1 = ((JSONObject)localObject).getString("openUrl");
+            this.t = paramString1;
+            if (!((JSONObject)localObject).has("grayTail")) {
+              break label691;
+            }
+            paramString1 = ((JSONObject)localObject).getString("grayTail");
+            this.jdField_a_of_type_Boolean = false;
+            if (!TextUtils.isEmpty(paramString1))
+            {
+              paramString1 = paramString1.split(";");
+              i1 = 0;
+              if (i1 < paramString1.length)
+              {
+                localCharSequence = paramString1[i1];
+                if ((TextUtils.isEmpty(localCharSequence)) || (!paramString2.endsWith(localCharSequence.trim()))) {
+                  break label696;
+                }
+                this.jdField_a_of_type_Boolean = true;
+              }
+            }
+            if (!((JSONObject)localObject).has("keyword")) {
+              break label703;
+            }
+            paramString1 = ((JSONObject)localObject).getString("keyword");
+            if (TextUtils.isEmpty(paramString1)) {
+              continue;
+            }
+            paramString2 = new ArrayList();
+            paramString1 = paramString1.split(";");
+            i1 = 0;
+            if (i1 >= paramString1.length) {
+              continue;
+            }
+            CharSequence localCharSequence = paramString1[i1];
+            if ((TextUtils.isEmpty(localCharSequence)) || (TextUtils.isEmpty(localCharSequence.trim()))) {
+              break label669;
+            }
+            paramString2.add(localCharSequence.trim().toLowerCase());
+            break label669;
+          }
+        }
+        else
+        {
+          paramString1 = g;
           continue;
         }
-        a(l, paramString, paramLong);
+        paramString1 = i;
+        continue;
+        paramString1 = h;
+        continue;
+        paramString1 = j;
+        continue;
+        this.jdField_b_of_type_ArrayOfJavaLangString = ((String[])paramString2.toArray(new String[paramString2.size()]));
+        paramString1 = arrayOfString;
+        if (((JSONObject)localObject).has("groupKeywords")) {
+          paramString1 = ((JSONObject)localObject).optString("groupKeywords");
+        }
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          paramString2 = new ArrayList();
+          arrayOfString = paramString1.split(";");
+          i1 = 0;
+          if (i1 < arrayOfString.length)
+          {
+            localObject = arrayOfString[i1];
+            if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(((String)localObject).trim()))) {
+              break label708;
+            }
+            paramString2.add(((String)localObject).trim().toLowerCase());
+            break label708;
+          }
+          this.jdField_c_of_type_ArrayOfJavaLangString = ((String[])paramString2.toArray(new String[paramString2.size()]));
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("AioVipKeywordHelper", 2, "keyword = " + paramString1);
+          return;
+        }
       }
-      catch (Exception paramString)
+      catch (Exception paramString1)
       {
-        long l;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("QidianPubAccountBigDataHandler", 2, "getNatigationMenu error: " + paramString.getMessage());
-        continue;
-        ThreadManager.post(new QidianPubAccountBigDataHandler.2(this, l, paramLong), 8, null, true);
-        continue;
+        paramString1.printStackTrace();
+        QLog.d("AioVipKeywordHelper", 1, "parseKeyword : json error " + paramString1);
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QidianPubAccountBigDataHandler", 2, "getNatigationMenu: END");
-      }
-      return;
-      if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        continue;
-      }
-      paramString = new PubAccountNavigationMenu();
-      paramString.version = 0;
-      paramString.puin = l;
-      paramString.xml = "";
-      a(l, paramString, paramLong);
+      this.jdField_c_of_type_ArrayOfJavaLangString = this.jdField_b_of_type_ArrayOfJavaLangString;
+      continue;
+      label669:
+      i1 += 1;
+      continue;
+      label676:
+      int i1 = 0;
+      continue;
+      label681:
+      paramString1 = null;
+      continue;
+      label686:
+      paramString1 = null;
+      continue;
+      label691:
+      paramString1 = null;
+      continue;
+      label696:
+      i1 += 1;
+      continue;
+      label703:
+      paramString1 = null;
+      continue;
+      label708:
+      i1 += 1;
     }
   }
   
-  protected Class<? extends ajte> observerClass()
+  public void a(AppRuntime paramAppRuntime)
   {
-    return bdvm.class;
+    boolean bool2 = false;
+    paramAppRuntime = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "vip_personal_card.json", true, null);
+    if (paramAppRuntime == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AioVipKeywordHelper", 2, "parsejson file not exists");
+      }
+      return;
+    }
+    Object localObject1 = paramAppRuntime.optJSONObject("isChooseStyleClosed");
+    if (localObject1 != null) {
+      if (((JSONObject)localObject1).optInt("isChooseStyleClosed", 0) != 1) {
+        break label266;
+      }
+    }
+    ArrayList localArrayList;
+    int i2;
+    int i1;
+    label266:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity.jdField_a_of_type_Boolean = bool1;
+      localObject1 = paramAppRuntime.optJSONObject("aioVIPGrayTips");
+      if (localObject1 == null) {
+        break label385;
+      }
+      this.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("c2cEnable", 1);
+      this.jdField_b_of_type_Int = ((JSONObject)localObject1).optInt("groupEnable", 1);
+      this.jdField_c_of_type_Int = ((JSONObject)localObject1).optInt("discussGroupEnable", 1);
+      this.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("c2cFreq", 86400L);
+      this.jdField_b_of_type_Long = ((JSONObject)localObject1).optLong("groupFreq", 86400L);
+      this.jdField_c_of_type_Long = ((JSONObject)localObject1).optLong("discussGroupFreq", 86400L);
+      this.jdField_d_of_type_Long = ((JSONObject)localObject1).optLong("fetchWordingTolerateTime", 2000L);
+      Object localObject2 = ((JSONObject)localObject1).optString("dirtyWords");
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        break label296;
+      }
+      localArrayList = new ArrayList();
+      localObject2 = ((String)localObject2).split(";");
+      i2 = localObject2.length;
+      i1 = 0;
+      while (i1 < i2)
+      {
+        CharSequence localCharSequence = localObject2[i1];
+        if (!TextUtils.isEmpty(localCharSequence)) {
+          localArrayList.add(localCharSequence.trim().toLowerCase());
+        }
+        i1 += 1;
+      }
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localArrayList.toArray(new String[localArrayList.size()]));
+    label296:
+    localObject1 = ((JSONObject)localObject1).optString("groupGrayTail");
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject1 = ((String)localObject1).split(";");
+      i2 = localObject1.length;
+      i1 = 0;
+      while (i1 < i2)
+      {
+        localArrayList = localObject1[i1];
+        if (!TextUtils.isEmpty(localArrayList)) {
+          this.jdField_a_of_type_JavaUtilList.add(localArrayList.trim().toLowerCase());
+        }
+        i1 += 1;
+      }
+    }
+    label385:
+    localObject1 = paramAppRuntime.optJSONObject("recommendConfig");
+    if (localObject1 != null) {
+      aprk.a(((JSONObject)localObject1).optLong("interval", 86400L));
+    }
+    localObject1 = paramAppRuntime.optJSONObject("lottieConfig");
+    if (localObject1 != null) {
+      if (((JSONObject)localObject1).optInt("switch") != 1) {
+        break label769;
+      }
+    }
+    label769:
+    for (bool1 = true;; bool1 = false)
+    {
+      arsj.jdField_a_of_type_Boolean = bool1;
+      QLog.i("AioVipKeywordHelper", 1, "lottieConfig.switch is " + bool1);
+      localObject1 = paramAppRuntime.optJSONObject("ipProductGrayTips");
+      if (localObject1 != null)
+      {
+        aubd.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("leftText", aubd.jdField_a_of_type_JavaLangString);
+        aubd.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("linkText", aubd.jdField_b_of_type_JavaLangString);
+        if (QLog.isColorLevel()) {
+          QLog.d("AioVipKeywordHelper", 2, "ipProductGrayTips: " + ((JSONObject)localObject1).toString());
+        }
+      }
+      localObject1 = paramAppRuntime.optJSONObject("getStrangerInterval");
+      if (localObject1 != null)
+      {
+        bdbg.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("interval", 5000);
+        QLog.d("AioVipKeywordHelper", 1, "getStrangerInterval is " + bdbg.jdField_a_of_type_Int);
+      }
+      localObject1 = paramAppRuntime.optJSONObject("downloadTimeoutConfig");
+      if (localObject1 != null)
+      {
+        apnf.jdField_b_of_type_Int = ((JSONObject)localObject1).optInt("emotion", apnf.jdField_b_of_type_Int);
+        bool1 = bool2;
+        if (((JSONObject)localObject1).optInt("emoTryReadNoLen", 0) == 1) {
+          bool1 = true;
+        }
+        apnf.jdField_b_of_type_Boolean = bool1;
+        QLog.d("AioVipKeywordHelper", 1, "downloadTimeoutConfig is " + ((JSONObject)localObject1).toString());
+      }
+      localObject1 = paramAppRuntime.optJSONObject("tmsDualCoreConfig");
+      if (localObject1 != null) {
+        QLog.d("KC.TMSManager", 1, "tms DPC : " + ((JSONObject)localObject1).toString());
+      }
+      localObject1 = paramAppRuntime.optJSONArray("shareDomainConfig");
+      if (localObject1 != null) {
+        bdre.a().a((JSONArray)localObject1);
+      }
+      apos.a(paramAppRuntime.optJSONArray("h5MagicTips"));
+      return;
+    }
   }
   
-  public void onDestroy()
+  public boolean a(SessionInfo paramSessionInfo)
   {
-    super.onDestroy();
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    switch (paramSessionInfo.jdField_a_of_type_Int)
+    {
+    default: 
+      return false;
+    case 0: 
+      return this.jdField_a_of_type_Boolean;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+        return ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramSessionInfo.jdField_a_of_type_JavaLangString)).booleanValue();
+      }
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (paramSessionInfo.jdField_a_of_type_JavaLangString.endsWith(str))
+          {
+            this.jdField_a_of_type_JavaUtilMap.put(paramSessionInfo.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+            return true;
+          }
+        }
+      }
+      this.jdField_a_of_type_JavaUtilMap.put(paramSessionInfo.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AioVipKeywordHelper", 4, "current uin is not gray number.");
+    }
+    return false;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if (TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AioVipKeywordHelper", 2, "sessionInfo.curFriendUin=" + paramSessionInfo.jdField_a_of_type_JavaLangString + ", need not detect keyword.");
+      }
+    }
+    long l1;
+    label173:
+    do
+    {
+      do
+      {
+        return false;
+      } while ((azib.b()) || (this.jdField_d_of_type_Int == 0));
+      l1 = 86400L;
+      int i1;
+      switch (paramSessionInfo.jdField_a_of_type_Int)
+      {
+      default: 
+        i1 = 0;
+      }
+      for (;;)
+      {
+        if (i1 != 0) {
+          break label173;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("AioVipKeywordHelper", 4, "VIP Keyword Function is closed.");
+        return false;
+        i1 = this.jdField_a_of_type_Int;
+        l1 = this.jdField_a_of_type_Long;
+        continue;
+        i1 = this.jdField_b_of_type_Int;
+        l1 = this.jdField_b_of_type_Long;
+        continue;
+        i1 = this.jdField_c_of_type_Int;
+        l1 = this.jdField_c_of_type_Long;
+      }
+      long l2 = paramQQAppInterface.getApplication().getSharedPreferences("AioVipKeywordGrayTips_" + paramQQAppInterface.getCurrentAccountUin(), 0).getLong("lastShowGrayTipsTime_" + paramSessionInfo.jdField_a_of_type_Int + "_" + paramSessionInfo.jdField_a_of_type_JavaLangString, 0L);
+      if (System.currentTimeMillis() - l2 >= 1000L * l1) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AioVipKeywordHelper", 4, "VIP Keyword Function frequency = " + l1 + "s, so need not detect keyword.");
+    return false;
+    return a(paramSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdvp
  * JD-Core Version:    0.7.0.1
  */

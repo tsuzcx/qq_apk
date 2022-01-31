@@ -1,44 +1,23 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.RecyclerView.SmoothScroller.Action;
-import android.support.v7.widget.RecyclerView.State;
-import android.util.DisplayMetrics;
-import android.view.View;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.plugin.PluginRecord;
 
-class bjkh
-  extends LinearSmoothScroller
+public final class bjkh
+  implements Parcelable.Creator<PluginRecord>
 {
-  bjkh(bjkf parambjkf, Context paramContext)
+  public PluginRecord a(Parcel paramParcel)
   {
-    super(paramContext);
+    return new PluginRecord(paramParcel);
   }
   
-  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
+  public PluginRecord[] a(int paramInt)
   {
-    return 100.0F / paramDisplayMetrics.densityDpi;
-  }
-  
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    return null;
-  }
-  
-  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
-  {
-    paramView = this.a.a(this.a.a.getLayoutManager(), paramView);
-    int i = paramView[0];
-    int j = paramView[1];
-    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
-    if (k > 0) {
-      paramAction.update(i, j, k, this.mDecelerateInterpolator);
-    }
+    return new PluginRecord[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjkh
  * JD-Core Version:    0.7.0.1
  */

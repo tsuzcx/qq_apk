@@ -1,135 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
-import android.media.MediaPlayer;
+import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity.3;
 
 public class rfh
-  implements aybx
+  implements View.OnClickListener
 {
-  public rfh(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView, View.OnClickListener paramOnClickListener1, String paramString1, int paramInt, String paramString2, Context paramContext, View.OnClickListener paramOnClickListener2) {}
+  public rfh(VideoFeedsPlayActivity.3 param3) {}
   
-  public void a(aybe paramaybe, aybf paramaybf, String paramString)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    RefreshData localRefreshData = pyz.b(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView), 0);
-    if (paramString.equals("close"))
+    rdm.a(this.a.this$0, this.a.a.a.d);
+    ron localron = new ron(this.a.a).h(this.a.a.g).t(this.a.a.a.a);
+    if (this.a.a.a.d != null) {}
+    for (paramView = this.a.a.a.d.e;; paramView = "")
     {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView);
-      paramaybe = new ono();
-      for (;;)
-      {
-        try
-        {
-          paramaybe.e();
-          paramaybe.a("skin_id", this.jdField_a_of_type_JavaLangString);
-          paramaybe.a("channel_id", this.jdField_a_of_type_Int);
-          if ((localRefreshData == null) || (!localRefreshData.isAD)) {
-            continue;
-          }
-          paramaybe.a("ad_page", i);
-        }
-        catch (JSONException paramaybf)
-        {
-          paramaybf.printStackTrace();
-          continue;
-        }
-        nol.a(localQQAppInterface, "", "0X800969E", "0X800969E", 0, 0, this.jdField_a_of_type_JavaLangString, "" + onh.e(), String.valueOf(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView)), paramaybe.a(), false);
-        return;
-        i = 0;
-      }
-    }
-    if (paramString.equals("open_sound"))
-    {
-      paramaybe = paramaybe.a(ajya.a(2131713085));
-      if (paramaybe != null) {
-        paramaybe.c(0.0F);
-      }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a = new MediaPlayer();
-      }
-      for (;;)
-      {
-        try
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.setDataSource(this.jdField_b_of_type_JavaLangString + "/audio.mp3");
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.prepare();
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.start();
-          paramaybe = new ono();
-          try
-          {
-            paramaybe.e();
-            paramaybe.a("skin_id", this.jdField_a_of_type_JavaLangString);
-            paramaybe.a("channel_id", this.jdField_a_of_type_Int);
-            if ((localRefreshData == null) || (!localRefreshData.isAD)) {
-              break label460;
-            }
-            i = 1;
-            paramaybe.a("ad_page", i);
-          }
-          catch (JSONException paramaybf)
-          {
-            paramaybf.printStackTrace();
-            continue;
-          }
-          nol.a(localQQAppInterface, "", "0X800969D", "0X800969D", 0, 0, this.jdField_a_of_type_JavaLangString, "" + onh.e(), String.valueOf(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView)), paramaybe.a(), false);
-          return;
-        }
-        catch (Exception paramaybe)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("ReadInJoySkinSlideDownView", 2, QLog.getStackTraceString(paramaybe));
-          continue;
-        }
-        try
-        {
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.isPlaying()) {
-            continue;
-          }
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.start();
-        }
-        catch (Exception paramaybe) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("ReadInJoySkinSlideDownView", 2, QLog.getStackTraceString(paramaybe));
-          continue;
-          label460:
-          i = 0;
-        }
-      }
-    }
-    paramaybe = bbex.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
-    if (paramaybe != null)
-    {
-      paramaybe.c();
-      ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView).onClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView);
-    }
-    for (;;)
-    {
-      ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView, this.jdField_a_of_type_Int, paramString, ((ayba)paramaybf).g_());
+      nrt.b(null, "", "0X800A18B", "0X800A18B", 0, 0, "", "", "", localron.p(paramView).a().a(), false);
       return;
-      if ((paramString.startsWith("https://")) || (paramString.startsWith("http://")))
-      {
-        paramaybe = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        paramaybe.putExtra("url", paramString);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramaybe);
-        this.jdField_b_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.thumbplayer.adapter;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+import com.tencent.thumbplayer.api.TPPlayerState;
 
 public class TPPlayerStateStrategy
 {
@@ -42,7 +43,7 @@ public class TPPlayerStateStrategy
   
   private static boolean validCallGetDuration(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(7));
+    return (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(7));
   }
   
   private static boolean validCallGetPosition(TPPlayerState paramTPPlayerState)
@@ -239,7 +240,7 @@ public class TPPlayerStateStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlayerStateStrategy
  * JD-Core Version:    0.7.0.1
  */

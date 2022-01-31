@@ -6,11 +6,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
-import aqug;
+import asku;
 
 public abstract class BaseNestHeaderLayout
   extends BaseLayout
-  implements aqug
+  implements asku
 {
   public BaseNestHeaderLayout(@NonNull Context paramContext)
   {
@@ -36,7 +36,7 @@ public abstract class BaseNestHeaderLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.view.BaseNestHeaderLayout
  * JD-Core Version:    0.7.0.1
  */

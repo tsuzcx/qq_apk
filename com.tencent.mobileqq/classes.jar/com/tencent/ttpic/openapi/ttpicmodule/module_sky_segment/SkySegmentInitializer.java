@@ -6,7 +6,8 @@ import android.util.Log;
 import com.tencent.ttpic.model.SizeI;
 import com.tencent.ttpic.openapi.initializer.Feature;
 import com.tencent.ttpic.openapi.initializer.ModelInfo;
-import com.tencent.ttpic.openapi.initializer.RapidNetSDKInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetSegCpuInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetSegGpuInitializer;
 import com.tencent.ttpic.openapi.initializer.SharedLibraryInfo;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
@@ -33,13 +34,19 @@ public class SkySegmentInitializer
   {
     this.useSmallModel = false;
     this.useCPULib = false;
-    return FeatureManager.Features.RAPID_NET.loadRapidModelFrom(getFinalResourcesDir(), "sky_58k_320x320_1106.onnx.opt.onnx", false, true, 0, RapidNetSDKInitializer.RAPID_NET_TYPE_GPU_LIB, 2);
+    return FeatureManager.Features.RAPID_NET_SEG_GPU.loadRapidModelFrom(getFinalResourcesDir(), "sky_58k_320x320_1106.onnx.opt.onnx", false, true, 0, 1, 2);
   }
   
   private boolean initModelSync()
   {
-    if (FeatureManager.Features.RAPID_NET.isModelLoaded(2)) {
-      return true;
+    if (this.useSmallModel)
+    {
+      if (!FeatureManager.Features.RAPID_NET_SEG_CPU.isModelLoaded(2)) {}
+    }
+    else {
+      while (FeatureManager.Features.RAPID_NET_SEG_GPU.isModelLoaded(2)) {
+        return true;
+      }
     }
     if (OfflineConfig.getPhonePerfLevel() <= 2)
     {
@@ -63,10 +70,10 @@ public class SkySegmentInitializer
       str1 = "CPU";
       localStringBuilder = localStringBuilder.append(str1).append("+");
       if (!this.useSmallModel) {
-        break label152;
+        break label169;
       }
     }
-    label152:
+    label169:
     for (String str1 = "small";; str1 = "big")
     {
       Log.i(str2, str1);
@@ -80,7 +87,7 @@ public class SkySegmentInitializer
   {
     this.useSmallModel = true;
     this.useCPULib = true;
-    return FeatureManager.Features.RAPID_NET.loadRapidModelFrom(getFinalResourcesDir(), "sky_small_192x256_20191128.onnx.opt.onnx", false, true, 0, RapidNetSDKInitializer.RAPID_NET_TYPE_CPU_LIB, 2);
+    return FeatureManager.Features.RAPID_NET_SEG_CPU.loadRapidModelFrom(getFinalResourcesDir(), "sky_small_192x256_20191128.onnx.opt.onnx", false, true, 0, 0, 2);
   }
   
   public boolean destroyImpl()
@@ -93,7 +100,10 @@ public class SkySegmentInitializer
     if (!isFunctionReady()) {
       return paramBitmap;
     }
-    return FeatureManager.Features.RAPID_NET.forward(paramBitmap, 0, this.useCPULib, this.useSmallModel, paramInt);
+    if (this.useSmallModel) {}
+    for (paramBitmap = FeatureManager.Features.RAPID_NET_SEG_CPU.forward(paramBitmap, 2, this.useSmallModel, this.useSmallModel, paramInt);; paramBitmap = FeatureManager.Features.RAPID_NET_SEG_GPU.forward(paramBitmap, 2, this.useSmallModel, this.useSmallModel, paramInt)) {
+      return paramBitmap;
+    }
   }
   
   public SizeI getCurrentSize()
@@ -134,7 +144,7 @@ public class SkySegmentInitializer
   
   public boolean initImpl()
   {
-    if (!FeatureManager.Features.RAPID_NET.init()) {}
+    if ((!FeatureManager.Features.RAPID_NET_SEG_GPU.init()) || (!FeatureManager.Features.RAPID_NET_SEG_CPU.init())) {}
     do
     {
       return false;
@@ -146,7 +156,7 @@ public class SkySegmentInitializer
   
   public boolean isFunctionReady()
   {
-    return (this.isInited) && (FeatureManager.Features.RAPID_NET.isModelLoaded(2));
+    return (this.isInited) && (((FeatureManager.Features.RAPID_NET_SEG_CPU.isModelLoaded(2)) && (this.useSmallModel)) || ((FeatureManager.Features.RAPID_NET_SEG_GPU.isModelLoaded(2)) && (!this.useSmallModel)));
   }
   
   public boolean isUseCPULib()
@@ -161,8 +171,14 @@ public class SkySegmentInitializer
   
   public boolean reloadModel()
   {
-    if (FeatureManager.Features.RAPID_NET.isModelLoaded(2)) {
-      return true;
+    if (this.useSmallModel)
+    {
+      if (!FeatureManager.Features.RAPID_NET_SEG_CPU.isModelLoaded(2)) {}
+    }
+    else {
+      while (FeatureManager.Features.RAPID_NET_SEG_GPU.isModelLoaded(2)) {
+        return true;
+      }
     }
     return initModelSync();
   }

@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.persistence.EntityDaoRegister;
 
-public abstract interface awci
+public class awci
 {
-  public abstract void a(int paramInt, RichStatus paramRichStatus, Object paramObject);
+  public static awci a = new awci();
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public static awci a()
+  {
+    return a;
+  }
   
-  public abstract void b(int paramInt, boolean paramBoolean);
+  public awch a(Class paramClass)
+  {
+    return EntityDaoRegister.a(paramClass);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awci
  * JD-Core Version:    0.7.0.1
  */

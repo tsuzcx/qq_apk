@@ -1,42 +1,20 @@
-import com.tencent.qqmini.sdk.minigame.webaudio.AudioNativeManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity.5;
 
 public class bext
+  implements DialogInterface.OnClickListener
 {
-  private long a = System.currentTimeMillis();
+  public bext(AuthorityActivity.5 param5) {}
   
-  public bext()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AudioNativeManager.initAudioContext();
-  }
-  
-  public float a(int paramInt)
-  {
-    return AudioNativeManager.getCurrentGain(paramInt);
-  }
-  
-  public int a()
-  {
-    return AudioNativeManager.createBufferSource();
-  }
-  
-  public long a()
-  {
-    return System.currentTimeMillis() - this.a;
-  }
-  
-  public void a(int paramInt, double paramDouble)
-  {
-    AudioNativeManager.setCurrentGain(paramInt, (float)paramDouble);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    AudioNativeManager.setBufferSourceLoop(paramInt, paramBoolean);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bext
  * JD-Core Version:    0.7.0.1
  */

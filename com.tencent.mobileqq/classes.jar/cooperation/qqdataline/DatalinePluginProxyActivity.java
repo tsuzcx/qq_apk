@@ -7,9 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcqf;
-import bglh;
-import bglq;
+import bepp;
+import bimg;
+import bimp;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.PluginInfo;
@@ -30,21 +30,21 @@ public class DatalinePluginProxyActivity
     return DatalinePluginProxyActivity.class;
   }
   
-  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, bcqf parambcqf)
+  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, bepp parambepp)
   {
     paramIntent.putExtra("userQqResources", 2);
-    bglq localbglq = new bglq(0);
-    localbglq.jdField_b_of_type_JavaLangString = "qqdataline.apk";
-    localbglq.d = PluginInfo.d;
-    localbglq.jdField_a_of_type_JavaLangString = paramString1;
-    localbglq.e = paramString2;
-    localbglq.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
-    localbglq.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbglq.jdField_b_of_type_Int = paramInt;
-    localbglq.jdField_a_of_type_AndroidAppDialog = parambcqf;
-    localbglq.c = 10000;
-    localbglq.f = null;
-    bglh.a(paramActivity, localbglq);
+    bimp localbimp = new bimp(0);
+    localbimp.jdField_b_of_type_JavaLangString = "qqdataline.apk";
+    localbimp.d = PluginInfo.d;
+    localbimp.jdField_a_of_type_JavaLangString = paramString1;
+    localbimp.e = paramString2;
+    localbimp.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
+    localbimp.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbimp.jdField_b_of_type_Int = paramInt;
+    localbimp.jdField_a_of_type_AndroidAppDialog = parambepp;
+    localbimp.c = 10000;
+    localbimp.f = null;
+    bimg.a(paramActivity, localbimp);
   }
   
   public static boolean a(Context paramContext)
@@ -100,7 +100,7 @@ public class DatalinePluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqdataline.DatalinePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

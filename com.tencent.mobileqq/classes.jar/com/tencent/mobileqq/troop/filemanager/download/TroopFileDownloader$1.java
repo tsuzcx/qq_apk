@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import azst;
-import aztu;
-import bbfj;
+import bbrc;
+import bbsd;
+import bdee;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class TroopFileDownloader$1
   implements Runnable
 {
-  public TroopFileDownloader$1(aztu paramaztu) {}
+  public TroopFileDownloader$1(bbsd parambbsd) {}
   
   public void run()
   {
     if (this.this$0.a) {
-      azst.b("TroopFileDownloader", azst.a, "[" + this.this$0.b + "] download. had stoped");
+      bbrc.b("TroopFileDownloader", bbrc.a, "[" + this.this$0.b + "] download. had stoped");
     }
     while (this.this$0.a()) {
       return;
@@ -23,7 +23,7 @@ public class TroopFileDownloader$1
       this.this$0.a(true, -5001, "file open exception", "");
       return;
     }
-    if (!bbfj.d(BaseApplication.getContext()))
+    if (!bdee.d(BaseApplication.getContext()))
     {
       this.this$0.a(true, 9004, "no network", "");
       return;

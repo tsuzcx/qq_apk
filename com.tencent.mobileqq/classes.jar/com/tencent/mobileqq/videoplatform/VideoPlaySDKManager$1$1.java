@@ -1,24 +1,31 @@
 package com.tencent.mobileqq.videoplatform;
 
-import bbwh;
-import bbwi;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class VideoPlaySDKManager$1$1
+class VideoPlaySDKManager$1$1
   implements Runnable
 {
-  public VideoPlaySDKManager$1$1(bbwi parambbwi) {}
+  VideoPlaySDKManager$1$1(VideoPlaySDKManager.1 param1) {}
   
   public void run()
   {
-    bbwh.a(this.a.jdField_a_of_type_Bbwh, this.a.jdField_a_of_type_AndroidAppActivity);
-    ThreadManager.getUIHandler().post(new VideoPlaySDKManager.1.1.1(this));
+    VideoPlaySDKManager.access$000(this.this$1.this$0, this.this$1.val$context);
+    VideoPlaySDKManager.access$100(this.this$1.this$0).set(2);
+    if (VideoPlaySDKManager.access$200(this.this$1.this$0) != null)
+    {
+      Iterator localIterator = VideoPlaySDKManager.access$200(this.this$1.this$0).iterator();
+      while (localIterator.hasNext()) {
+        ((SDKInitListener)localIterator.next()).onSDKInited(true);
+      }
+      VideoPlaySDKManager.access$200(this.this$1.this$0).clear();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlaySDKManager.1.1
  * JD-Core Version:    0.7.0.1
  */

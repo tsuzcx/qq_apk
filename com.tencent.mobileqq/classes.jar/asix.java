@@ -1,71 +1,76 @@
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class asix
+  extends MSFServlet
 {
-  Map<String, asiw> a = new ConcurrentHashMap();
-  
-  asiw a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    asiw localasiw = (asiw)this.a.get(paramString);
-    if ((localasiw != null) && (paramBoolean)) {
-      if (!a(localasiw, paramInt1, paramInt2)) {}
-    }
-    while (!QLog.isColorLevel())
+    long l = 0L;
+    if (QLog.isColorLevel())
     {
-      return localasiw;
-      return null;
+      l = System.currentTimeMillis();
+      QLog.d("GameCenterUnissoServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
     }
-    QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache invalid. cacheKey=", paramString });
-    return localasiw;
-  }
-  
-  void a(asiw paramasiw, int paramInt, asiz paramasiz)
-  {
-    ThreadManagerV2.excute(new MiniAppInfoManager.1(this, paramasiz, paramasiw, paramInt), 128, null, true);
-  }
-  
-  boolean a(asiw paramasiw)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyAppInfo. appState=", Integer.valueOf(paramasiw.jdField_c_of_type_Int) });
-    }
-    return (paramasiw != null) && (paramasiw.jdField_c_of_type_Int == 1);
-  }
-  
-  boolean a(asiw paramasiw, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache valid. cacheKey=", paramasiw.h });
-    }
-    if (paramInt2 == 1)
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
     {
-      if (paramasiw.jdField_c_of_type_Long <= NetConnInfoCenter.getServerTimeMillis()) {}
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    else {
-      while ((paramInt2 == 0) && (((paramInt1 == 1) && (paramasiw.a > NetConnInfoCenter.getServerTimeMillis())) || ((paramInt1 == 2) && (paramasiw.b > NetConnInfoCenter.getServerTimeMillis())))) {
-        return true;
+    for (;;)
+    {
+      asiv localasiv = (asiv)((QQAppInterface)super.getAppRuntime()).a(175);
+      if (localasiv != null) {
+        localasiv.a(paramIntent, paramFromServiceMsg, arrayOfByte);
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("GameCenterUnissoServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
+      }
+      return;
+      arrayOfByte = null;
     }
-    return false;
   }
   
-  boolean b(asiw paramasiw)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyDownloadUrl. downloadUrl=", paramasiw.f });
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label117;
+      }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bdlr.a(paramIntent, 0, arrayOfByte.length + 4);
+      bdlr.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
     }
-    return !TextUtils.isEmpty(paramasiw.f);
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GameCenterUnissoServlet", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label117:
+      paramIntent = new byte[4];
+      bdlr.a(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asix
  * JD-Core Version:    0.7.0.1
  */

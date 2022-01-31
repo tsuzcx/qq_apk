@@ -1,29 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.troop.TroopPluginManager;
+import android.view.View;
 
-public class bhwz
-  extends Handler
+public abstract interface bhwz
 {
-  public bhwz(TroopPluginManager paramTroopPluginManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(View paramView);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    ((bhxc)paramMessage.obj).a(paramMessage.arg1);
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(View paramView);
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhwz
  * JD-Core Version:    0.7.0.1
  */

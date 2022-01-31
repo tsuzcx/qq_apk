@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ajna
-  implements Comparator<ApolloActionData>
+public class ajna
+  implements ajrs
 {
-  ajna(ajmu paramajmu) {}
+  public ajna(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void a_(String paramString)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
     }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
+    this.a.a.b();
+    NewFlowCameraActivity.a(this.a, paramString, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajna
  * JD-Core Version:    0.7.0.1
  */

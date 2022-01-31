@@ -1,20 +1,27 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+
 public class ahxm
+  implements View.OnTouchListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public ahxm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public String toString()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.x();
+      paramView = this.a.o;
+      this.a.a("Clk_find", paramView, "");
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxm
  * JD-Core Version:    0.7.0.1
  */

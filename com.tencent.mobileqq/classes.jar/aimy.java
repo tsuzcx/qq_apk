@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.data.RecentUser;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class aimy
+class aimy
+  implements army
 {
-  public int a;
-  public RecentUser a;
-  public String a;
-  public String b;
+  aimy(aimx paramaimx) {}
+  
+  public void a()
+  {
+    this.a.a.c();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).sendBtn.setClickable(true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aimy
  * JD-Core Version:    0.7.0.1
  */

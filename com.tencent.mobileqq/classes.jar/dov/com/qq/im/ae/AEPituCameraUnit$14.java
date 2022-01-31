@@ -1,23 +1,23 @@
 package dov.com.qq.im.ae;
 
-import bijd;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.content.Context;
+import bkle;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class AEPituCameraUnit$14
   implements Runnable
 {
-  public AEPituCameraUnit$14(bijd parambijd) {}
+  public AEPituCameraUnit$14(bkle parambkle, Context paramContext) {}
   
   public void run()
   {
-    if (bijd.a(this.this$0) != null) {
-      bijd.a(this.this$0).setVisibility(8);
-    }
+    QQToast.a(this.a, this.a.getString(2131699233), 0).a();
+    this.this$0.q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.14
  * JD-Core Version:    0.7.0.1
  */

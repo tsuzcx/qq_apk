@@ -1,33 +1,24 @@
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
 public class alcf
+  extends alcy
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  ayrx jdField_a_of_type_Ayrx;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  String c;
+  alcf(alce paramalce) {}
   
-  public String toString()
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append(", fileSize=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", downloadSize=").append(this.jdField_b_of_type_Long);
-    localStringBuffer.append(", req=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new AVEngineWalper.1.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alcf
  * JD-Core Version:    0.7.0.1
  */

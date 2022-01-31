@@ -1,27 +1,38 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
-import java.io.File;
-import java.util.Comparator;
+import java.util.HashMap;
 
 public class axou
-  implements Comparator<File>
+  extends axow
 {
-  public axou(MigrateSubscribeDB paramMigrateSubscribeDB) {}
+  public long a = 0L;
+  public long b;
   
-  public int a(File paramFile1, File paramFile2)
+  public axou()
   {
-    long l = paramFile2.lastModified() - paramFile1.lastModified();
-    if (l > 0L) {
-      return 1;
+    this.jdField_b_of_type_Long = -1L;
+  }
+  
+  public HashMap<String, String> a(String paramString)
+  {
+    if ("ShortVideo.FullscreenPreview".equals(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_duration", this.a + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_playTimeCost", this.jdField_b_of_type_Long + "");
+      return paramString;
     }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axou
  * JD-Core Version:    0.7.0.1
  */

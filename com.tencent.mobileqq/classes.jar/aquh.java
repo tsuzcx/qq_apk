@@ -1,14 +1,19 @@
-import com.tencent.smtt.sdk.WebView;
-
-public abstract interface aquh
+class aquh
+  extends aqus
 {
-  public abstract void a(WebView paramWebView);
+  public aquh(aqug paramaqug)
+  {
+    super(paramaqug);
+  }
   
-  public abstract void b(WebView paramWebView);
+  protected String a()
+  {
+    return "StateAcceptByPC";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aquh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,90 +1,65 @@
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.util.WeakReference;
 
 public class nbf
-  extends nbg
 {
-  protected int a;
-  protected int b;
+  HashMap<Integer, WeakReference<nbg>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  ymk jdField_a_of_type_Ymk;
   
-  public static nbf a(ByteBuffer paramByteBuffer)
+  public nbf(ymk paramymk)
   {
-    return a(paramByteBuffer, new nbf());
+    this.jdField_a_of_type_Ymk = paramymk;
   }
   
-  public static nbf a(ByteBuffer paramByteBuffer, nbf paramnbf)
+  public void a()
   {
-    paramByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    if (paramByteBuffer.capacity() < paramByteBuffer.position() + 4) {
-      return null;
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+  }
+  
+  public void a(int paramInt, nbg paramnbg)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
     }
-    return paramnbf.a(paramByteBuffer.getInt(paramByteBuffer.position()) + paramByteBuffer.position(), paramByteBuffer);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramnbg));
   }
   
-  private int b(int paramInt)
+  public void a(Bundle paramBundle)
   {
-    paramInt = (paramInt + 2) * 2;
-    if (paramInt < this.b) {
-      return this.jdField_a_of_type_JavaNioByteBuffer.getShort(paramInt + this.jdField_a_of_type_Int);
+    if (paramBundle == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebPushClient", 2, "data is null");
+      }
     }
-    return 0;
-  }
-  
-  public long a(int paramInt, long paramLong)
-  {
-    paramInt = b(paramInt);
-    if (paramInt != 0) {
-      paramLong = this.jdField_a_of_type_JavaNioByteBuffer.getLong(paramInt + this.c);
-    }
-    return paramLong;
-  }
-  
-  public String a(int paramInt)
-  {
-    paramInt = b(paramInt);
-    if (paramInt != 0) {
-      return b(paramInt + this.c);
-    }
-    return null;
-  }
-  
-  public nbe a(int paramInt)
-  {
-    return a(paramInt, new nbe());
-  }
-  
-  public nbe a(int paramInt, nbe paramnbe)
-  {
-    paramInt = b(paramInt);
-    if (paramInt != 0) {
-      return paramnbe.a(a(paramInt + this.c), this.jdField_a_of_type_JavaNioByteBuffer);
-    }
-    return null;
-  }
-  
-  public nbf a(int paramInt, ByteBuffer paramByteBuffer)
-  {
-    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
-      paramByteBuffer = null;
-    }
+    WeakReference localWeakReference;
     do
     {
-      return paramByteBuffer;
-      this.c = paramInt;
-      this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
-      this.jdField_a_of_type_Int = (this.c - this.jdField_a_of_type_JavaNioByteBuffer.getInt(this.c));
-      if (!a(this.jdField_a_of_type_Int, 2)) {
-        return null;
-      }
-      this.b = this.jdField_a_of_type_JavaNioByteBuffer.getShort(this.jdField_a_of_type_Int);
-      paramByteBuffer = this;
-    } while (a(this.jdField_a_of_type_Int, this.b));
-    return null;
+      int i;
+      do
+      {
+        return;
+        i = paramBundle.getInt("msgType", -1);
+        if (i != 0) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("WebPushClient", 2, "type is 0");
+      return;
+      localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+    } while ((localWeakReference == null) || (localWeakReference.get() == null));
+    ((nbg)localWeakReference.get()).a(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbf
  * JD-Core Version:    0.7.0.1
  */

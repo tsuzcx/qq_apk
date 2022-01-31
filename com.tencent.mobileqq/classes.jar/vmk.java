@@ -1,32 +1,64 @@
-import android.support.annotation.NonNull;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.DiscoverBannerPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.MemorySelectVideoPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAIOPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
 
-class vmk
-  implements vvm
+public class vmk
 {
-  vmk(vmg paramvmg) {}
-  
-  public void a(@NonNull vvt paramvvt)
+  public static vla a(Object paramObject)
   {
-    switch (paramvvt.a)
-    {
+    wsv.d("Q.qqstory.player.data.SimpleDataProvider", "play info:%s", new Object[] { paramObject });
+    if ((paramObject instanceof HomeFeedPlayInfo)) {
+      return new vlz(new vkw((HomeFeedPlayInfo)paramObject));
     }
-    do
-    {
-      return;
-      int i = paramvvt.b;
-      this.a.jdField_a_of_type_Vlp.a = i;
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(i);
-      vej.b("0X80075D8");
-    } while ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a != 3));
-    LpReportInfo_pf00064.allReport(615, 3, 2);
+    if ((paramObject instanceof TroopAssistantHomeFeedPlayInfo)) {
+      return new vlz(new vmg((TroopAssistantHomeFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof ProfileFeedPlayInfo)) {
+      return new vlz(new vlu((ProfileFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof SingleFeedPlayInfo)) {
+      return new vlz(new vmf((SingleFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof MsgTabPlayInfo)) {
+      return new vlz(new vlq((MsgTabPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof MemoriesFeedPlayInfo)) {
+      return new vlz(new vlm((MemoriesFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof HotRecommendFeedPlayInfo)) {
+      return new vlz(new vkz((HotRecommendFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof VidListPlayInfo)) {
+      return new vlz(new vmj((VidListPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof DiscoverBannerPlayInfo)) {
+      return new vlz(new vkq((DiscoverBannerPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof TroopAIOPlayInfo)) {
+      return new vmi(((TroopAIOPlayInfo)paramObject).storyId);
+    }
+    if ((paramObject instanceof ShareFromMemoryPlayInfo)) {
+      return new vlz(new vlw((ShareFromMemoryPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof MemorySelectVideoPlayInfo)) {
+      return new vlz(new vlp((MemorySelectVideoPlayInfo)paramObject));
+    }
+    xmh.a("play info unknown", new Object[0]);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmk
  * JD-Core Version:    0.7.0.1
  */

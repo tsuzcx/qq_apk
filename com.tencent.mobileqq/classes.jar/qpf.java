@@ -1,22 +1,32 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-class qpf
-  implements oef
+public class qpf
+  implements tpv
 {
-  qpf(qpd paramqpd) {}
+  public qpf(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void a(int paramInt)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, sfc paramsfc)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS", paramInt);
-    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_CAMERA_CAPTURE_SO_DOWNLOAD", localBundle, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
+    }
+    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramsfc.a()));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.a(this.a));
+    }
+    this.a.setRightViewTextDisable(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qpf
  * JD-Core Version:    0.7.0.1
  */

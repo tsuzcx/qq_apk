@@ -1,61 +1,20 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetFormIdReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetFormIdRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
 public class bezz
-  extends bfau
+  implements Comparator<Friend>
 {
-  private INTERFACE.StGetFormIdReq a = new INTERFACE.StGetFormIdReq();
+  public bezz(FriendChooser paramFriendChooser) {}
   
-  public bezz(String paramString)
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_userapp";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetFormIdRsp localStGetFormIdRsp = new INTERFACE.StGetFormIdRsp();
-    try
-    {
-      localStGetFormIdRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetFormIdRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("formId", localStGetFormIdRsp.formId.get());
-        return paramArrayOfByte;
-      }
-      betc.a("GetFormIdRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("GetFormIdRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetFormId";
+    return paramFriend1.g.compareToIgnoreCase(paramFriend2.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezz
  * JD-Core Version:    0.7.0.1
  */

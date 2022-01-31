@@ -1,25 +1,11 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import mqq.util.WeakReference;
-
-class agsn
-  implements aptw
+public class agsn
 {
-  agsn(agsj paramagsj) {}
-  
-  public void a()
-  {
-    this.a.h();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
-  }
+  public int a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsn
  * JD-Core Version:    0.7.0.1
  */

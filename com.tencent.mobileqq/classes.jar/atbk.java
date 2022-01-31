@@ -1,62 +1,29 @@
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 
-public class atbk
-  extends MSFServlet
+class atbk
+  implements IVideoInnerStatusListener
 {
-  public String[] getPreferSSOCommands()
-  {
-    return null;
-  }
+  atbk(atbj paramatbj) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void notifyVideoClose(int paramInt) {}
+  
+  public void notifyVideoSeek(int paramInt) {}
+  
+  public void notifyVideoStart()
   {
-    if (paramIntent != null)
+    if (atbj.a(this.a) != null)
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("NearbyServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((NearbyAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      atxn.a().a(1, atbj.a(this.a));
       return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
+    this.a.a(false);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("NearbyServlet", 4, "send: " + paramIntent.getServiceCmd());
-        }
-      }
-    }
-  }
+  public void notifyVideoStop() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class wgq
-  implements DialogInterface.OnClickListener
+class wgq
+  extends vdz
 {
-  public wgq(QRLoginAuthActivity paramQRLoginAuthActivity) {}
+  wgq(wgn paramwgn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    super.a();
+    wgn.a(this.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    wta.a("home_page", "suc_share", 2, paramInt, new String[] { wta.b(wgn.a(this.a).a) + "", wta.a(wgn.a(this.a).a) + "", wgn.a(this.a).a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    wta.a("home_page", "share_chanel", 2, paramInt, new String[] { wta.b(wgn.a(this.a).a) + "", wta.a(wgn.a(this.a).a) + "", wgn.a(this.a).a.feedId });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgq
  * JD-Core Version:    0.7.0.1
  */

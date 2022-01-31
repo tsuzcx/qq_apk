@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.app;
 
-import akbx;
-import aukp;
-import aukq;
+import altm;
+import awbw;
+import awbx;
 import com.tencent.mobileqq.data.ExtensionInfo;
 
 public class PPCLoginAuthHandler$1
   implements Runnable
 {
-  public PPCLoginAuthHandler$1(akbx paramakbx) {}
+  public PPCLoginAuthHandler$1(altm paramaltm) {}
   
   public void run()
   {
-    aukp localaukp = this.this$0.a.getEntityManagerFactory(this.this$0.a.getCurrentAccountUin()).createEntityManager();
-    ExtensionInfo localExtensionInfo = (ExtensionInfo)localaukp.a(ExtensionInfo.class, this.this$0.a.getAccount());
+    awbw localawbw = this.this$0.a.getEntityManagerFactory(this.this$0.a.getCurrentAccountUin()).createEntityManager();
+    ExtensionInfo localExtensionInfo = (ExtensionInfo)localawbw.a(ExtensionInfo.class, this.this$0.a.getAccount());
     if (localExtensionInfo != null)
     {
       localExtensionInfo.commingRingId = 0L;
-      localaukp.a(localExtensionInfo);
+      localawbw.a(localExtensionInfo);
     }
     for (;;)
     {
-      localaukp.a();
+      localawbw.a();
       return;
       localExtensionInfo = new ExtensionInfo();
       localExtensionInfo.uin = this.this$0.a.getAccount();
-      localaukp.a(localExtensionInfo);
+      localawbw.a(localExtensionInfo);
     }
   }
 }

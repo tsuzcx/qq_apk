@@ -1,38 +1,22 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
-class xaa
-  implements URLDrawableDownListener
+public class xaa
+  implements xab
 {
-  xaa(wzt paramwzt) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void a(List<wzy> paramList, DoodleView paramDoodleView)
   {
-    this.a.a(false, "onLoadCancelled");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.a.a(false, "onLoadFailed");
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    this.a.a(false, "onLoadInterrupted");
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.a(true, "onLoadSuccessed");
-    this.a.b = true;
+    wze localwze = new wze(paramDoodleView);
+    wzo localwzo = new wzo(paramDoodleView);
+    paramDoodleView = new wzs(paramDoodleView);
+    paramList.add(localwze);
+    paramList.add(localwzo);
+    paramList.add(paramDoodleView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xaa
  * JD-Core Version:    0.7.0.1
  */

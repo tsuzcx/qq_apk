@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import agzb;
-import agzd;
+import aitb;
+import aitd;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -15,18 +15,18 @@ class PreloadManager$1
     if (QLog.isColorLevel()) {
       QLog.d("PreloadManager", 2, "synDataFromMoggy");
     }
-    Object localObject = (agzd)this.this$0.a.getManager(245);
+    Object localObject = (aitd)this.this$0.a.getManager(245);
     if (localObject != null)
     {
-      ((agzd)localObject).c("preload", this.this$0);
-      localObject = ((agzd)localObject).a("preload");
-      this.this$0.a((agzb)localObject);
+      ((aitd)localObject).c("preload", this.this$0);
+      localObject = ((aitd)localObject).a("preload");
+      this.this$0.a((aitb)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import akzk;
-import akzn;
+import amqa;
+import amqd;
 
 public class ARVideoRecordUIControllerImpl$2
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$2(akzk paramakzk) {}
+  public ARVideoRecordUIControllerImpl$2(amqa paramamqa) {}
   
   public void run()
   {
-    if (akzk.a(this.this$0) != null)
+    if (amqa.a(this.this$0) != null)
     {
-      akzk.a(this.this$0).a(0);
-      akzk.a(this.this$0).b();
+      amqa.a(this.this$0).a(0);
+      amqa.a(this.this$0).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl.2
  * JD-Core Version:    0.7.0.1
  */

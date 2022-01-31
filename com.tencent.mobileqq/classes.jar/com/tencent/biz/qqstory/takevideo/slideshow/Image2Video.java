@@ -4,27 +4,27 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.os.Handler;
-import bbdx;
+import bdcs;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.LinkedList;
-import vth;
-import vtj;
-import vtk;
-import vto;
+import xhz;
+import xib;
+import xic;
+import xig;
 
 public class Image2Video
-  implements vth
+  implements xhz
 {
   public static final String a;
   public static final String b = jdField_a_of_type_JavaLangString + "cache/";
   private Context jdField_a_of_type_AndroidContentContext;
   private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
-  private HashMap<Long, vtj> jdField_a_of_type_JavaUtilHashMap;
-  private LinkedList<vtj> jdField_a_of_type_JavaUtilLinkedList;
+  private HashMap<Long, xib> jdField_a_of_type_JavaUtilHashMap;
+  private LinkedList<xib> jdField_a_of_type_JavaUtilLinkedList;
   private boolean jdField_a_of_type_Boolean;
   
   static
@@ -271,7 +271,7 @@ public class Image2Video
   public static String a()
   {
     String str = jdField_a_of_type_JavaLangString + "/noaudio";
-    bbdx.c(str);
+    bdcs.c(str);
     return str;
   }
   
@@ -289,8 +289,8 @@ public class Image2Video
       if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
         break label199;
       }
-      vtj localvtj = (vtj)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-      if (localvtj == null) {
+      xib localxib = (xib)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+      if (localxib == null) {
         return;
       }
     }
@@ -315,9 +315,9 @@ public class Image2Video
     }
   }
   
-  public void a(vto paramvto)
+  public void a(xig paramxig)
   {
-    if (paramvto == null) {
+    if (paramxig == null) {
       if (QLog.isColorLevel()) {
         QLog.d("Image2Video", 2, "onConvertResult, resultinfo is null!!!");
       }
@@ -331,11 +331,11 @@ public class Image2Video
         {
           return;
           if (QLog.isColorLevel()) {
-            QLog.d("Image2Video", 2, "onConvertResult, taskId:" + paramvto.jdField_a_of_type_Long + ", resultcode:" + paramvto.jdField_a_of_type_Int + ", image:" + paramvto.jdField_a_of_type_JavaLangString + ". destfile:" + paramvto.b);
+            QLog.d("Image2Video", 2, "onConvertResult, taskId:" + paramxig.jdField_a_of_type_Long + ", resultcode:" + paramxig.jdField_a_of_type_Int + ", image:" + paramxig.jdField_a_of_type_JavaLangString + ". destfile:" + paramxig.b);
           }
           try
           {
-            localObject = (vtj)this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramvto.jdField_a_of_type_Long));
+            localObject = (xib)this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramxig.jdField_a_of_type_Long));
             if (localObject == null)
             {
               if (!QLog.isColorLevel()) {
@@ -346,24 +346,24 @@ public class Image2Video
           }
           finally {}
         }
-        if (paramvto.jdField_a_of_type_Int != 7) {
+        if (paramxig.jdField_a_of_type_Int != 7) {
           break;
         }
-        localObject = (vtk)((vtj)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (xic)((xib)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
       } while (localObject == null);
-      ((vtk)localObject).a(paramvto);
+      ((xic)localObject).a(paramxig);
       return;
-      if (paramvto.jdField_a_of_type_Int == 0) {
+      if (paramxig.jdField_a_of_type_Int == 0) {
         a();
       }
-      localObject = (vtk)((vtj)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (xic)((xib)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
     } while (localObject == null);
-    ((vtk)localObject).a(paramvto);
+    ((xic)localObject).a(paramxig);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.Image2Video
  * JD-Core Version:    0.7.0.1
  */

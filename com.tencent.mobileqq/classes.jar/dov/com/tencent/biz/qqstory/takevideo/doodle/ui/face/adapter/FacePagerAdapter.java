@@ -5,10 +5,10 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import bjcu;
-import bkfy;
-import bkfz;
-import bkgr;
+import blof;
+import bmri;
+import bmrj;
+import bmsb;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
 import java.util.Iterator;
@@ -19,9 +19,9 @@ public class FacePagerAdapter
   extends PagerAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private bjcu jdField_a_of_type_Bjcu;
-  private bkfy jdField_a_of_type_Bkfy;
-  private bkgr jdField_a_of_type_Bkgr;
+  private blof jdField_a_of_type_Blof;
+  private bmri jdField_a_of_type_Bmri;
+  private bmsb jdField_a_of_type_Bmsb;
   private List<FaceListPage> jdField_a_of_type_JavaUtilList = new LinkedList();
   
   public FacePagerAdapter(Context paramContext)
@@ -61,33 +61,33 @@ public class FacePagerAdapter
   
   public void a(int paramInt)
   {
-    bkfz localbkfz = this.jdField_a_of_type_Bkgr.a(paramInt);
-    if (localbkfz != null)
+    bmrj localbmrj = this.jdField_a_of_type_Bmsb.a(paramInt);
+    if (localbmrj != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
         FaceListPage localFaceListPage = (FaceListPage)localIterator.next();
         if ((localFaceListPage.jdField_a_of_type_Int == paramInt) && (localFaceListPage.jdField_a_of_type_Boolean)) {
-          localFaceListPage.a(localbkfz);
+          localFaceListPage.a(localbmrj);
         }
       }
     }
   }
   
-  public void a(bjcu parambjcu)
+  public void a(blof paramblof)
   {
-    this.jdField_a_of_type_Bjcu = parambjcu;
+    this.jdField_a_of_type_Blof = paramblof;
   }
   
-  public void a(bkfy parambkfy)
+  public void a(bmri parambmri)
   {
-    this.jdField_a_of_type_Bkfy = parambkfy;
+    this.jdField_a_of_type_Bmri = parambmri;
   }
   
-  public void a(bkgr parambkgr)
+  public void a(bmsb parambmsb)
   {
-    this.jdField_a_of_type_Bkgr = parambkgr;
+    this.jdField_a_of_type_Bmsb = parambmsb;
     notifyDataSetChanged();
   }
   
@@ -101,9 +101,9 @@ public class FacePagerAdapter
       {
         if (!localFaceListPage.jdField_a_of_type_Boolean)
         {
-          bkfz localbkfz = this.jdField_a_of_type_Bkgr.a(paramInt);
+          bmrj localbmrj = this.jdField_a_of_type_Bmsb.a(paramInt);
           localFaceListPage.jdField_a_of_type_Boolean = true;
-          localFaceListPage.a(localbkfz);
+          localFaceListPage.a(localbmrj);
         }
         localFaceListPage.a();
       }
@@ -131,9 +131,9 @@ public class FacePagerAdapter
         bool = false;
       }
     }
-    Object localObject = this.jdField_a_of_type_Bkgr.a(paramInt);
+    Object localObject = this.jdField_a_of_type_Bmsb.a(paramInt);
     localFaceListPage.jdField_a_of_type_Boolean = true;
-    localFaceListPage.a((bkfz)localObject);
+    localFaceListPage.a((bmrj)localObject);
   }
   
   public void d(int paramInt)
@@ -147,7 +147,7 @@ public class FacePagerAdapter
         if ((localFaceListPage.jdField_a_of_type_Int != paramInt) && (localFaceListPage.jdField_a_of_type_Boolean))
         {
           localFaceListPage.jdField_a_of_type_Boolean = false;
-          localFaceListPage.a(this.jdField_a_of_type_Bkgr.a(localFaceListPage.jdField_a_of_type_Int));
+          localFaceListPage.a(this.jdField_a_of_type_Bmsb.a(localFaceListPage.jdField_a_of_type_Int));
           if (QLog.isColorLevel()) {
             QLog.i("FacePagerAdapter", 2, "clearOtherView position:" + localFaceListPage.jdField_a_of_type_Int + ", current:" + paramInt);
           }
@@ -167,10 +167,10 @@ public class FacePagerAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Bkgr == null) {
+    if (this.jdField_a_of_type_Bmsb == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Bkgr.a();
+    return this.jdField_a_of_type_Bmsb.a();
   }
   
   public int getItemPosition(Object paramObject)
@@ -180,17 +180,17 @@ public class FacePagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_Bkgr == null) {
+    if (this.jdField_a_of_type_Bmsb == null) {
       return null;
     }
-    bkfz localbkfz = this.jdField_a_of_type_Bkgr.a(paramInt);
-    FaceListPage localFaceListPage = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjcu, this.jdField_a_of_type_Bkfy);
+    bmrj localbmrj = this.jdField_a_of_type_Bmsb.a(paramInt);
+    FaceListPage localFaceListPage = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Blof, this.jdField_a_of_type_Bmri);
     paramViewGroup.addView(localFaceListPage);
     localFaceListPage.jdField_a_of_type_Int = paramInt;
     if (((ViewPager)paramViewGroup).getCurrentItem() == paramInt) {}
     for (localFaceListPage.jdField_a_of_type_Boolean = true;; localFaceListPage.jdField_a_of_type_Boolean = false)
     {
-      localFaceListPage.a(localbkfz);
+      localFaceListPage.a(localbmrj);
       this.jdField_a_of_type_JavaUtilList.add(localFaceListPage);
       return localFaceListPage;
     }
@@ -203,7 +203,7 @@ public class FacePagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

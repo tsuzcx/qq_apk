@@ -1,44 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class vxu
-  extends Handler
+public class vxu
+  extends QQUIEventReceiver<vxs, ukn>
 {
-  vxu(vxt paramvxt) {}
-  
-  vxu(vxt paramvxt, Handler paramHandler)
+  public vxu(@NonNull vxs paramvxs)
   {
-    super(paramHandler.getLooper());
+    super(paramvxs);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(@NonNull vxs paramvxs, @NonNull ukn paramukn)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message " + paramMessage);
-    case 1: 
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
-    }
+    if ((paramvxs.a == null) || (paramukn.a == null) || (!TextUtils.equals(paramvxs.a.a, paramukn.a.mVid))) {}
     do
     {
       return;
-      this.a.a();
-      return;
-    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
-      return;
-    }
-    this.a.b = true;
+      paramvxs.i();
+      paramvxs = (vpm)paramvxs.a(vpm.class);
+    } while (paramvxs == null);
+    paramvxs.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ukn.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxu
  * JD-Core Version:    0.7.0.1
  */

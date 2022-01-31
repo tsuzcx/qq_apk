@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class anlc
-  implements View.OnClickListener
+class anlc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public anlc(DataReportSettingFragment paramDataReportSettingFragment) {}
+  anlc(anlb paramanlb) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    bbdj.a(this.a.getActivity(), 0, 2131559420, ajya.a(2131702780), "", ajya.a(2131702775), ajya.a(2131702781), new anld(this), new anle(this)).show();
+    anlb.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlc
  * JD-Core Version:    0.7.0.1
  */

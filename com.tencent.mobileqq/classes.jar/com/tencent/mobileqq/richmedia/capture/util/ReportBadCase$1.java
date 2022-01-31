@@ -2,8 +2,8 @@ package com.tencent.mobileqq.richmedia.capture.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import avto;
-import bbdx;
+import axln;
+import bdcs;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils;
 import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class ReportBadCase$1
   implements Runnable
 {
-  public ReportBadCase$1(avto paramavto, BadcaseReportUtils.BadDataFrame paramBadDataFrame) {}
+  public ReportBadCase$1(axln paramaxln, BadcaseReportUtils.BadDataFrame paramBadDataFrame) {}
   
   public void run()
   {
     ??? = Bitmap.createBitmap(this.a.width, this.a.height, Bitmap.Config.ARGB_8888);
     ((Bitmap)???).copyPixelsFromBuffer(this.a.pictureBuffer);
-    String str1 = avto.a();
-    boolean bool = avto.a((Bitmap)???, str1);
+    String str1 = axln.a();
+    boolean bool = axln.a((Bitmap)???, str1);
     if (QLog.isColorLevel()) {
       QLog.d("BadcaseReportUtils", 2, "BadcaseReportUtils|writeBitmapToFile success=" + bool);
     }
@@ -30,27 +30,27 @@ public class ReportBadCase$1
       this.a.picturePath = str1;
       this.a.convertedPath = (str1 + "_ct_2");
       BadcaseReportUtils.convertDataFormat(this.a);
-      synchronized (avto.a())
+      synchronized (axln.a())
       {
-        avto.a().add(this.a);
+        axln.a().add(this.a);
       }
     }
-    synchronized (avto.a())
+    synchronized (axln.a())
     {
-      int i = avto.a().size();
+      int i = axln.a().size();
       if (i == 3) {
         ThreadManager.postDownLoadTask(new ReportBadCase.1.1(this), 5, null, true);
       }
       return;
       str2 = finally;
       throw str2;
-      bbdx.d(str2);
+      bdcs.d(str2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.util.ReportBadCase.1
  * JD-Core Version:    0.7.0.1
  */

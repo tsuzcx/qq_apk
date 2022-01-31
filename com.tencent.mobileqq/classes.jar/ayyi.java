@@ -1,269 +1,475 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.PendantVersionManager.1;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.Inet6Address;
-import java.net.InetAddress;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.cs.cmd0x388.cmd0x388.GetPttUrlReq;
-import tencent.im.cs.cmd0x388.cmd0x388.GetPttUrlRsp;
-import tencent.im.cs.cmd0x388.cmd0x388.IPv6Info;
-import tencent.im.cs.cmd0x388.cmd0x388.ReqBody;
-import tencent.im.cs.cmd0x388.cmd0x388.RspBody;
 
 public class ayyi
-  extends ayyb
 {
-  void a(int paramInt, ayza paramayza, cmd0x388.ReqBody paramReqBody)
+  private static final String[] a = { "art_res_cache", "other_res_cache", "portrait_res_cache", "ptu_res" };
+  private static final String[] b = { "libimage_filter_common.so", "libimage_filter_gpu.so", "libpitu_tools.so", "libimage_filter_cpu.so", "libalgo_youtu_jni.so", "libformat_convert.so" };
+  
+  public static String a()
   {
-    paramayza = (ayyt)paramayza;
-    cmd0x388.GetPttUrlReq localGetPttUrlReq = new cmd0x388.GetPttUrlReq();
-    localGetPttUrlReq.setHasFlag(true);
-    localGetPttUrlReq.uint64_file_id.set(paramInt);
-    localGetPttUrlReq.uint64_dst_uin.set(Long.valueOf(paramayza.c).longValue());
-    localGetPttUrlReq.uint64_group_code.set(Long.parseLong(paramayza.d));
-    localGetPttUrlReq.bytes_file_md5.set(ByteStringMicro.copyFrom(paramayza.jdField_a_of_type_ArrayOfByte));
-    if (paramayza.jdField_a_of_type_Long != 0L) {
-      localGetPttUrlReq.uint64_fileid.set(paramayza.jdField_a_of_type_Long);
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("pendant_short_video_mgr_sp", 4).getString("pendant_sv_md5_version_soname_key", "Pendant000_0");
+    boolean bool = a(str, 72);
+    VideoEnvironment.a("PendantVersionManager", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    if (bool) {
+      return str;
     }
-    localGetPttUrlReq.uint32_req_platform_type.set(9);
-    localGetPttUrlReq.uint32_req_term.set(5);
-    localGetPttUrlReq.uint32_inner_ip.set(0);
-    Object localObject = localGetPttUrlReq.uint32_bu_type;
-    if (paramayza.f == 1) {
-      paramInt = 3;
-    }
-    for (;;)
-    {
-      ((PBUInt32Field)localObject).set(paramInt);
-      localGetPttUrlReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(ayuk.a()));
-      localGetPttUrlReq.uint32_codec.set(paramayza.jdField_a_of_type_Int);
-      if (paramayza.jdField_a_of_type_JavaLangString != null) {}
-      try
-      {
-        localObject = paramayza.jdField_a_of_type_JavaLangString.getBytes("utf-8");
-        localGetPttUrlReq.bytes_file_key.set(ByteStringMicro.copyFrom((byte[])localObject));
-        label207:
-        localGetPttUrlReq.uint32_is_auto.set(paramayza.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.GroupPttDownHandler", 2, "constructReqBody GroupPttDownReq = " + paramayza.toString());
-        }
-        paramReqBody.rpt_msg_getptt_url_req.add(localGetPttUrlReq);
-        return;
-        paramInt = 4;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        break label207;
-      }
-    }
+    return "Pendant000_0";
   }
   
-  public void a(aytl paramaytl, aytk paramaytk)
+  /* Error */
+  private static ArrayList<String> a(File paramFile)
   {
-    FromServiceMsg localFromServiceMsg = paramaytl.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    byte[] arrayOfByte = paramaytl.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    ayyp localayyp = (ayyp)paramaytk.jdField_a_of_type_JavaLangObject;
-    ayze localayze = localayyp.jdField_a_of_type_Ayze;
-    akau localakau = paramaytl.jdField_a_of_type_Akau;
-    int i;
-    if (localFromServiceMsg.getResultCode() != 1000)
-    {
-      i = localFromServiceMsg.getResultCode();
-      if ((i == 1002) || (i == 1013))
-      {
-        localObject1 = MessageHandler.a(localFromServiceMsg);
-        paramaytk = localFromServiceMsg.getBusinessFailMsg();
-        paramaytl = paramaytk;
-        if (paramaytk == null) {
-          paramaytl = "";
-        }
-        a(-1, 9311, (String)localObject1, paramaytl, localakau, localayze.jdField_a_of_type_JavaUtilList);
-      }
-      for (;;)
-      {
-        ayzv.a(localayyp, localayze);
-        return;
-        localObject1 = MessageHandler.a(localFromServiceMsg);
-        paramaytk = localFromServiceMsg.getBusinessFailMsg();
-        paramaytl = paramaytk;
-        if (paramaytk == null) {
-          paramaytl = "";
-        }
-        a(-1, 9044, (String)localObject1, paramaytl, localakau, localayze.jdField_a_of_type_JavaUtilList);
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        Iterator localIterator = ((cmd0x388.RspBody)new cmd0x388.RspBody().mergeFrom(arrayOfByte)).rpt_msg_getptt_url_rsp.get().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        paramaytl = (cmd0x388.GetPttUrlRsp)localIterator.next();
-      }
-      catch (Exception paramaytl)
-      {
-        a(-1, -9527, aypb.a("P", -9529L), paramaytl.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localakau, localayze.jdField_a_of_type_JavaUtilList);
-      }
-      try
-      {
-        localObject1 = (ayzk)localayze.jdField_a_of_type_JavaUtilList.get((int)paramaytl.uint64_file_id.get());
-        if ((localObject1 != null) && (localFromServiceMsg != null)) {}
-        try
-        {
-          ((ayzk)localObject1).d = ((Boolean)localFromServiceMsg.getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
-          if (QLog.isColorLevel()) {
-            QLog.e("http_sideway", 2, "GroupPttDownHandler.onProtoResp:isSendByQuickHttp=" + ((ayzk)localObject1).d);
-          }
-          i = paramaytl.uint32_result.get();
-          if (i != 0) {
-            break label714;
-          }
-          ((ayzk)localObject1).jdField_a_of_type_JavaLangString = paramaytl.bytes_down_para.get().toStringUtf8();
-          List localList = paramaytl.rpt_uint32_down_ip.get();
-          Object localObject2 = paramaytl.rpt_uint32_down_port.get();
-          i = 0;
-          if (i < localList.size())
-          {
-            ayuq localayuq = new ayuq();
-            localayuq.jdField_a_of_type_JavaLangString = bbmx.a(((Integer)localList.get(i)).intValue() & 0xFFFFFFFF);
-            localayuq.jdField_a_of_type_Int = ((Integer)((List)localObject2).get(i)).intValue();
-            ((ayzk)localObject1).jdField_a_of_type_JavaUtilArrayList.add(i, localayuq);
-            i += 1;
-            continue;
-          }
-          if ((paramaytl.rpt_msg_down_ip6.has()) && (paramaytl.rpt_msg_down_ip6.size() > 0))
-          {
-            localList = paramaytl.rpt_msg_down_ip6.get();
-            i = 0;
-            if (i < localList.size())
-            {
-              localObject2 = new ayuq();
-              ((ayuq)localObject2).jdField_a_of_type_JavaLangString = Inet6Address.getByAddress(((cmd0x388.IPv6Info)localList.get(i)).bytes_ip6.get().toByteArray()).getHostAddress();
-              ((ayuq)localObject2).jdField_a_of_type_Int = ((cmd0x388.IPv6Info)localList.get(i)).uint32_port.get();
-              ((ayuq)localObject2).jdField_a_of_type_Boolean = true;
-              ((ayzk)localObject1).jdField_b_of_type_JavaUtilArrayList.add(i, localObject2);
-              i += 1;
-              continue;
-            }
-          }
-          if (paramaytl.rpt_str_domain.has()) {
-            ((ayzk)localObject1).jdField_b_of_type_JavaLangString = paramaytl.rpt_str_domain.get();
-          }
-          a(0, 0, "", "", localakau, (ayzr)localObject1);
-        }
-        catch (Exception paramaytl) {}
-      }
-      catch (Exception paramaytl)
-      {
-        localObject1 = null;
-        continue;
-      }
-      a(-1, -9527, aypb.a("P", -9529L), paramaytl.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localakau, (ayzr)localObject1);
-      continue;
-      break;
-      label714:
-      if (paramaytl.uint32_allow_retry.get() == 1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.BaseHandler", 2, "onProtoResp :group ptt server not allow retry");
-        }
-        ((ayzk)localObject1).e = false;
-      }
-      if (ayyh.a(i))
-      {
-        this.b += 1;
-        if (this.b < 2)
-        {
-          localayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(paramaytk);
-          return;
-        }
-      }
-      a(-1, -9527, aypb.a(i), "", localakau, (ayzr)localObject1);
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: new 95	java/util/ArrayList
+    //   7: dup
+    //   8: iconst_1
+    //   9: invokespecial 98	java/util/ArrayList:<init>	(I)V
+    //   12: astore 4
+    //   14: new 100	java/io/FileReader
+    //   17: dup
+    //   18: aload_0
+    //   19: invokespecial 103	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   22: astore_0
+    //   23: new 105	java/io/BufferedReader
+    //   26: dup
+    //   27: aload_0
+    //   28: invokespecial 108	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   31: astore_2
+    //   32: aload_2
+    //   33: invokevirtual 111	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   36: astore_1
+    //   37: aload_1
+    //   38: ifnull +18 -> 56
+    //   41: aload 4
+    //   43: aload_1
+    //   44: invokevirtual 115	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   47: pop
+    //   48: aload_2
+    //   49: invokevirtual 111	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   52: astore_1
+    //   53: goto -16 -> 37
+    //   56: aload_2
+    //   57: ifnull +7 -> 64
+    //   60: aload_2
+    //   61: invokevirtual 118	java/io/BufferedReader:close	()V
+    //   64: aload_0
+    //   65: ifnull +7 -> 72
+    //   68: aload_0
+    //   69: invokevirtual 119	java/io/FileReader:close	()V
+    //   72: aload 4
+    //   74: areturn
+    //   75: astore_1
+    //   76: aload_1
+    //   77: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   80: goto -16 -> 64
+    //   83: astore_0
+    //   84: aload_0
+    //   85: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   88: aload 4
+    //   90: areturn
+    //   91: astore_0
+    //   92: aconst_null
+    //   93: astore_2
+    //   94: aload_0
+    //   95: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   98: ldc 64
+    //   100: ldc 125
+    //   102: aload_0
+    //   103: invokestatic 88	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   106: aload_2
+    //   107: ifnull +7 -> 114
+    //   110: aload_2
+    //   111: invokevirtual 118	java/io/BufferedReader:close	()V
+    //   114: aload_1
+    //   115: ifnull -43 -> 72
+    //   118: aload_1
+    //   119: invokevirtual 119	java/io/FileReader:close	()V
+    //   122: aload 4
+    //   124: areturn
+    //   125: astore_0
+    //   126: aload_0
+    //   127: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   130: aload 4
+    //   132: areturn
+    //   133: astore_0
+    //   134: aload_0
+    //   135: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   138: goto -24 -> 114
+    //   141: astore_0
+    //   142: aconst_null
+    //   143: astore_3
+    //   144: aload_2
+    //   145: astore_1
+    //   146: aload_3
+    //   147: astore_2
+    //   148: aload_2
+    //   149: ifnull +7 -> 156
+    //   152: aload_2
+    //   153: invokevirtual 118	java/io/BufferedReader:close	()V
+    //   156: aload_1
+    //   157: ifnull +7 -> 164
+    //   160: aload_1
+    //   161: invokevirtual 119	java/io/FileReader:close	()V
+    //   164: aload_0
+    //   165: athrow
+    //   166: astore_2
+    //   167: aload_2
+    //   168: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   171: goto -15 -> 156
+    //   174: astore_1
+    //   175: aload_1
+    //   176: invokevirtual 122	java/io/IOException:printStackTrace	()V
+    //   179: goto -15 -> 164
+    //   182: astore_3
+    //   183: aconst_null
+    //   184: astore_2
+    //   185: aload_0
+    //   186: astore_1
+    //   187: aload_3
+    //   188: astore_0
+    //   189: goto -41 -> 148
+    //   192: astore_3
+    //   193: aload_0
+    //   194: astore_1
+    //   195: aload_3
+    //   196: astore_0
+    //   197: goto -49 -> 148
+    //   200: astore_0
+    //   201: goto -53 -> 148
+    //   204: astore_3
+    //   205: aconst_null
+    //   206: astore_2
+    //   207: aload_0
+    //   208: astore_1
+    //   209: aload_3
+    //   210: astore_0
+    //   211: goto -117 -> 94
+    //   214: astore_3
+    //   215: aload_0
+    //   216: astore_1
+    //   217: aload_3
+    //   218: astore_0
+    //   219: goto -125 -> 94
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	222	0	paramFile	File
+    //   3	50	1	str	String
+    //   75	44	1	localIOException1	java.io.IOException
+    //   145	16	1	localObject1	Object
+    //   174	2	1	localIOException2	java.io.IOException
+    //   186	31	1	localFile	File
+    //   1	152	2	localObject2	Object
+    //   166	2	2	localIOException3	java.io.IOException
+    //   184	23	2	localObject3	Object
+    //   143	4	3	localObject4	Object
+    //   182	6	3	localObject5	Object
+    //   192	4	3	localObject6	Object
+    //   204	6	3	localException1	Exception
+    //   214	4	3	localException2	Exception
+    //   12	119	4	localArrayList	ArrayList
+    // Exception table:
+    //   from	to	target	type
+    //   60	64	75	java/io/IOException
+    //   68	72	83	java/io/IOException
+    //   14	23	91	java/lang/Exception
+    //   118	122	125	java/io/IOException
+    //   110	114	133	java/io/IOException
+    //   14	23	141	finally
+    //   152	156	166	java/io/IOException
+    //   160	164	174	java/io/IOException
+    //   23	32	182	finally
+    //   32	37	192	finally
+    //   41	53	192	finally
+    //   94	106	200	finally
+    //   23	32	204	java/lang/Exception
+    //   32	37	214	java/lang/Exception
+    //   41	53	214	java/lang/Exception
   }
   
-  public void a(ayyp paramayyp)
+  public static void a()
   {
-    if ((paramayyp != null) && (paramayyp.jdField_a_of_type_JavaUtilList != null) && (paramayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      aytk localaytk = new aytk();
-      localaytk.jdField_a_of_type_JavaLangString = "PttStore.GroupPttDown";
-      localaytk.jdField_a_of_type_ArrayOfByte = a(paramayyp.jdField_a_of_type_JavaUtilList);
-      localaytk.jdField_a_of_type_JavaLangObject = paramayyp;
-      localaytk.jdField_a_of_type_Aytj = this;
-      a(paramayyp, localaytk);
-    }
-  }
-  
-  byte[] a(List<ayza> paramList)
-  {
-    cmd0x388.ReqBody localReqBody = new cmd0x388.ReqBody();
-    localReqBody.setHasFlag(true);
-    localReqBody.uint32_subcmd.set(4);
+    int j = 0;
+    String str1 = azgk.a(VideoEnvironment.a());
+    String[] arrayOfString = b;
+    int k = arrayOfString.length;
     int i = 0;
-    while (i < paramList.size())
+    String str2;
+    while (i < k)
     {
-      a(i, (ayza)paramList.get(i), localReqBody);
+      str2 = arrayOfString[i];
+      bdcs.d(str1 + str2);
       i += 1;
     }
-    switch (ayta.a().a())
+    bdcs.d(str1 + "libartfilter.so");
+    bdcs.d(str1 + "262_8_model");
+    bdcs.d(str1 + "262_8_md04_reshape");
+    str1 = str1 + "bakcup/";
+    if (bdcs.a(str1))
     {
-    default: 
-      i = 6;
-    }
-    for (;;)
-    {
-      paramList = ayta.a().a();
-      int j = i;
-      if (paramList != null)
+      arrayOfString = b;
+      k = arrayOfString.length;
+      i = j;
+      while (i < k)
       {
-        j = i;
-        if (paramList.contains("wap")) {
-          j = 5;
-        }
+        str2 = arrayOfString[i];
+        bdcs.d(str1 + str2);
+        i += 1;
       }
-      localReqBody.uint32_net_type.set(j);
-      return localReqBody.toByteArray();
-      i = 3;
-      continue;
-      i = 6;
-      continue;
-      i = 7;
-      continue;
-      i = 8;
+      bdcs.d(str1 + "libartfilter.so");
+      bdcs.d(str1 + "262_8_model");
+      bdcs.d(str1 + "262_8_md04_reshape");
     }
   }
   
-  void b(ayyp paramayyp)
+  static void a(boolean paramBoolean) {}
+  
+  public static boolean a()
   {
-    ayze localayze = paramayyp.jdField_a_of_type_Ayze;
-    localayze.jdField_a_of_type_JavaUtilList.clear();
-    int i = 0;
-    while (i < paramayyp.jdField_a_of_type_JavaUtilList.size())
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("pendant_short_video_mgr_sp", 4).getString("pendant_sv_md5_version_soname_key", "Pendant000_0");
+    boolean bool = a(str, 72);
+    VideoEnvironment.a("PendantVersionManager", "checkPendantVersionOk success=" + bool + ", md5Version=" + str, null);
+    return bool;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool = true;
+    File localFile = new File(paramString);
+    if ((!localFile.exists()) || (!localFile.isDirectory())) {
+      bool = false;
+    }
+    int i;
+    do
     {
-      ayzk localayzk = new ayzk();
-      localayze.jdField_a_of_type_JavaUtilList.add(i, localayzk);
+      return bool;
+      i = bdcs.a(paramString, bkkt.b, false, true, QLog.isColorLevel());
+      VideoEnvironment.a("PendantVersionManager", "copyResFileToFinalDir errorcode:" + i + ", fromPath:" + paramString, null);
+    } while (i == 0);
+    return false;
+  }
+  
+  static boolean a(String paramString, int paramInt)
+  {
+    String str = paramString.trim();
+    VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK signature=" + paramString, null);
+    paramString = azab.a(str);
+    int i = paramString.a();
+    VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK errCode=" + i + ",trimSignature=" + str, null);
+    if (i == 0)
+    {
+      paramString = paramString.b().trim();
+      VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK versionValid=" + paramString, null);
+      i = Integer.parseInt(paramString);
+      VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK version=" + i + ",limitVersion=" + paramInt, null);
+      if (i >= paramInt) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  static boolean a(String paramString1, String paramString2)
+  {
+    boolean bool3 = false;
+    boolean bool2 = true;
+    bool1 = true;
+    for (;;)
+    {
+      try
+      {
+        String str = azgk.a(VideoEnvironment.a());
+        str = str + paramString1 + File.separator;
+        File localFile = new File(str);
+        if (localFile.exists())
+        {
+          if ((a().equals(paramString1)) && (c(str, "pendant_config_file")))
+          {
+            VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:[checkUnzipFileListSizeIsOK]success=true", null);
+            bool1 = false;
+            return bool1;
+          }
+          bdcs.a(str);
+          VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + str, null);
+        }
+        boolean bool4 = localFile.mkdirs();
+        VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:[exists]mkOK=" + bool4, null);
+        if (!localFile.exists())
+        {
+          VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:unzipFile.exists=false[error]", null);
+          continue;
+        }
+        try
+        {
+          bdcs.a(paramString2, str, false);
+          bool1 = c(str, "pendant_config_file");
+          VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:checkUnzipFileListSizeIsOK success=" + bool1, null);
+          if (!bool1) {
+            break label437;
+          }
+          bool1 = a(str);
+          VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:copyResFileToFinalDir copyOK=" + bool1, null);
+          if (!bool1) {
+            break;
+          }
+          bool4 = c(paramString1);
+          VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:checkUnzipFileListSizeIsOK saveOK=" + bool4, null);
+          bool1 = bool3;
+          if (!bool4)
+          {
+            bool4 = c(paramString1);
+            VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool4, null);
+            bool1 = bool3;
+            if (!bool4)
+            {
+              VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
+              bool1 = c("Pendant000_0");
+              VideoEnvironment.a("PendantVersionManager", "uncompressPendantZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
+              bool1 = true;
+            }
+          }
+          b();
+        }
+        catch (Exception paramString1)
+        {
+          for (;;)
+          {
+            paramString1.printStackTrace();
+            continue;
+            bool1 = true;
+            continue;
+            bool1 = true;
+          }
+        }
+      }
+      finally {}
+      bool2 = bool1;
+      bool1 = bool2;
+      if (bool2)
+      {
+        bdcs.a(str);
+        bool1 = bool2;
+      }
+    }
+  }
+  
+  private static void b()
+  {
+    ThreadManager.excute(new PendantVersionManager.1(), 64, null, false);
+  }
+  
+  static boolean b(String paramString1, String paramString2)
+  {
+    paramString2 = paramString1 + paramString2;
+    VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK configPath=" + paramString2, null);
+    Object localObject = new File(paramString2);
+    if (!((File)localObject).exists())
+    {
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK configPath=" + paramString2 + ",exists=false", null);
+      return false;
+    }
+    paramString2 = a((File)localObject);
+    if (paramString2.size() <= 0)
+    {
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK configData.size()=" + paramString2.size(), null);
+      return false;
+    }
+    int i = 0;
+    if (i < paramString2.size())
+    {
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK itemLineValue=" + (String)paramString2.get(i), null);
+      if (TextUtils.isEmpty((CharSequence)paramString2.get(i))) {}
+      String str;
+      int j;
+      long l;
+      do
+      {
+        do
+        {
+          i += 1;
+          break;
+          str = ((String)paramString2.get(i)).trim();
+        } while (TextUtils.isEmpty(str));
+        VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK trimValue=" + str, null);
+        localObject = azab.a(str);
+        j = ((azac)localObject).a('|');
+        if (j != 0) {
+          break label407;
+        }
+        str = paramString1 + ((azac)localObject).c();
+        File localFile = new File(str);
+        if (!localFile.exists())
+        {
+          VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK[exists=false] fileName=" + str, null);
+          return false;
+        }
+        j = Integer.parseInt(((azac)localObject).d());
+        l = localFile.length();
+      } while (j == l);
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK sizeConfig=" + j + ",fileSize=" + l, null);
+      return false;
+      label407:
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK[CfgParser] errCode=" + j + ",trimValue=" + str, null);
+      return false;
+    }
+    VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK[OK]", null);
+    return true;
+  }
+  
+  private static boolean c(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("pendant_short_video_mgr_sp", 4).edit();
+    localEditor.putString("pendant_sv_md5_version_soname_key", paramString);
+    boolean bool = localEditor.commit();
+    VideoEnvironment.a("PendantVersionManager", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
+    return bool;
+  }
+  
+  private static boolean c(String paramString1, String paramString2)
+  {
+    if (!azgk.a(paramString1))
+    {
+      VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK[isFilterSoExist] exists=false", null);
+      return false;
+    }
+    return b(paramString1, paramString2);
+  }
+  
+  private static boolean d(String paramString)
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < a.length)
+      {
+        if (paramString.equals(a[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayyi
  * JD-Core Version:    0.7.0.1
  */

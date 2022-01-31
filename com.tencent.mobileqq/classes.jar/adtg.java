@@ -1,28 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class adtg
-  implements bfph
+  implements acgy
 {
-  public adtg(LightVideoItemBuilder paramLightVideoItemBuilder, MessageForLightVideo paramMessageForLightVideo, adtj paramadtj, bfpc parambfpc) {}
+  public adtg(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      LightVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo, this.jdField_a_of_type_Adtj);
-    }
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adtg
  * JD-Core Version:    0.7.0.1
  */

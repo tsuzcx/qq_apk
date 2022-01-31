@@ -1,30 +1,30 @@
 package cooperation.qzone;
 
-import bhbq;
+import bjcx;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class UploadSoDownloader$1
   implements Runnable
 {
-  public UploadSoDownloader$1(bhbq parambhbq) {}
+  public UploadSoDownloader$1(bjcx parambjcx) {}
   
   public void run()
   {
-    boolean bool = bhbq.a(this.this$0, bhbq.a().getAbsolutePath());
+    boolean bool = bjcx.a(this.this$0, bjcx.a().getAbsolutePath());
     QLog.d("UploadEnv", 1, "check so md5 result: " + bool);
     if (bool)
     {
-      bhbq.a(true);
+      bjcx.a(true);
       return;
     }
     try
     {
-      if (bhbq.a().exists()) {
-        bhbq.a().delete();
+      if (bjcx.a().exists()) {
+        bjcx.a().delete();
       }
-      bhbq.a(this.this$0, false);
-      bhbq.a(false);
+      bjcx.a(this.this$0, false);
+      bjcx.a(false);
       return;
     }
     catch (Throwable localThrowable)
@@ -38,7 +38,7 @@ public class UploadSoDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.UploadSoDownloader.1
  * JD-Core Version:    0.7.0.1
  */

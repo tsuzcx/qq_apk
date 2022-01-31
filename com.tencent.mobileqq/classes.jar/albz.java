@@ -1,89 +1,224 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController.1;
+import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController.2;
+import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController.3;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionPush;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class albz
 {
-  public static int a(String paramString1, String paramString2, String paramString3, String paramString4)
+  private static albz a;
+  public long a;
+  public WeakReference<QQAppInterface> a;
+  
+  private albz()
   {
-    for (;;)
+    this.jdField_a_of_type_Long = -1L;
+  }
+  
+  public static albz a()
+  {
+    try
     {
-      try
-      {
-        paramString1 = a(paramString1, paramString2, paramString3) + File.separator + paramString4 + ".so";
-        QLog.i("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo. soFilename = " + paramString1);
-        boolean bool = new File(paramString1).exists();
-        if (bool)
-        {
-          try
-          {
-            if ((paramString1.endsWith("libARCloud.so")) || (paramString1.endsWith("libARCloud_64.so")) || (paramString1.endsWith("libARFeature.so"))) {
-              SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "c++_shared");
-            }
-            System.load(paramString1);
-            i = 0;
-            QLog.i("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo successfully. result = " + 0 + ", soFilename = " + paramString1);
-          }
-          catch (UnsatisfiedLinkError paramString2)
-          {
-            i = -4;
-            QLog.e("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo failed. result = " + -4 + ", soFilename = " + paramString1 + ", errMsg = " + paramString2.getMessage() + ", StackTrace = " + paramString2.getStackTrace().toString());
-            continue;
-          }
-          return i;
-        }
+      if (jdField_a_of_type_Albz == null) {
+        jdField_a_of_type_Albz = new albz();
       }
-      finally {}
-      int i = -2;
-      QLog.i("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo failed. result = " + -2 + ", soFilename = " + paramString1);
+      albz localalbz = jdField_a_of_type_Albz;
+      return localalbz;
     }
+    finally {}
   }
   
-  public static String a()
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    if (BaseApplicationImpl.sApplication.getFilesDir() == null)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloMsgPlayController", 2, "[playUnreadAction] app:" + paramQQAppInterface + "sessionInfo:" + paramSessionInfo);
+    }
+    if ((paramSessionInfo == null) || (paramQQAppInterface == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloMsgPlayController", 2, "[playUnreadAction] sessionInfo or app is null,return.");
+      }
+    }
+    aleh localaleh;
+    Object localObject1;
+    Object localObject2;
+    do
     {
-      QLog.i("AREngine_ArNativeSoLoaderBase", 2, "getARNativeSoRootDir. ARNativeSoRootDir is null.");
-      return "";
+      return;
+      localaleh = (aleh)paramQQAppInterface.getManager(155);
+      localObject1 = localaleh.a(paramSessionInfo);
+      if (localObject1 != null)
+      {
+        ThreadManager.getSubThreadHandler().postDelayed(new ApolloMsgPlayController.1(this, paramQQAppInterface, (ApolloActionPush)localObject1), 500L);
+        return;
+      }
+      localObject2 = paramQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, null, 5);
+      if (((List)localObject2).size() > 0) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloMsgPlayController", 2, "[playUnreadAction] no message,return.");
+    return;
+    int i = ((List)localObject2).size() - 1;
+    label164:
+    MessageRecord localMessageRecord;
+    if (i >= 0)
+    {
+      localMessageRecord = (MessageRecord)((List)localObject2).get(i);
+      if (!(localMessageRecord instanceof MessageForApollo)) {
+        break label429;
+      }
+      localObject1 = (MessageForApollo)localMessageRecord;
+      if ((i != ((List)localObject2).size() - 1) || (!ApolloGameUtil.a(((MessageForApollo)localObject1).msgType))) {
+        break label262;
+      }
+      ApolloGameData localApolloGameData = localaleh.a(((MessageForApollo)localObject1).gameId);
+      if ((localApolloGameData == null) || (!alee.a("8.3.3", localApolloGameData.minVer, localApolloGameData.maxVer))) {
+        break label262;
+      }
     }
-    return BaseApplicationImpl.getContext().getFilesDir() + "/pddata/prd";
+    label262:
+    label329:
+    int j;
+    label393:
+    label429:
+    do
+    {
+      do
+      {
+        boolean bool2;
+        do
+        {
+          do
+          {
+            do
+            {
+              i -= 1;
+              break label164;
+              break;
+              if ((((MessageForApollo)localObject1).hasPlayed) || (i == ((List)localObject2).size() - 1)) {
+                break label393;
+              }
+              if (!ApolloGameUtil.a(((MessageForApollo)localObject1).msgType)) {
+                break label329;
+              }
+              localObject1 = localaleh.a(((MessageForApollo)localObject1).gameId);
+            } while ((localObject1 != null) && (alee.a("8.3.3", ((ApolloGameData)localObject1).minVer, ((ApolloGameData)localObject1).maxVer)));
+            paramQQAppInterface = ((akwq)paramQQAppInterface.getManager(249)).a();
+            if (paramQQAppInterface != null) {
+              paramQQAppInterface.a(1, (MessageForApollo)localMessageRecord);
+            }
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ApolloMsgPlayController", 2, "[playUnreadAction] play MessageForApollo:" + localMessageRecord.toString());
+            return;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ApolloMsgPlayController", 2, "[playUnreadAction] has already played MessageForApollo:" + localMessageRecord.toString());
+            return;
+            if ((!(localMessageRecord instanceof MessageForText)) && (!(localMessageRecord instanceof MessageForLongMsg))) {
+              break label681;
+            }
+          } while ((paramSessionInfo.jdField_a_of_type_Int != 0) && (paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000));
+          localObject1 = new ArrayList();
+          bool2 = ApolloUtil.a(paramQQAppInterface, paramSessionInfo, localMessageRecord, (List)localObject1);
+        } while ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0));
+        paramSessionInfo = localMessageRecord.getExtInfoFromExtStr("is_apollo_emoticon_action_played");
+        if ((!TextUtils.isEmpty(paramSessionInfo)) && ("2".equals(paramSessionInfo)))
+        {
+          bool1 = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloMsgPlayController", 2, new Object[] { "[playUnreadAction] apollo emoticon action played=", Boolean.valueOf(bool1), ", uniseq=", Long.valueOf(localMessageRecord.uniseq) });
+          }
+          if ((bool1) || (i == ((List)localObject2).size() - 1)) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloMsgPlayController", 2, new Object[] { "[playUnreadAction] send action list to play, actionList=", localObject1 });
+          }
+          localObject2 = (ChatMessage)localMessageRecord;
+          if (!bool2) {
+            break label676;
+          }
+        }
+        for (paramSessionInfo = (SessionInfo)localObject1;; paramSessionInfo = null)
+        {
+          a(paramQQAppInterface, (ChatMessage)localObject2, (ArrayList)localObject1, paramSessionInfo);
+          localMessageRecord.saveExtInfoToExtStr("is_apollo_emoticon_action_played", "2");
+          ThreadManager.post(new ApolloMsgPlayController.2(this, localMessageRecord), 5, null, false);
+          return;
+          bool1 = false;
+          break;
+        }
+      } while ((!(localMessageRecord instanceof MessageForArkApp)) || ((paramSessionInfo.jdField_a_of_type_Int != 0) && (paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000)));
+      j = ApolloUtil.a(paramQQAppInterface, (MessageForArkApp)localMessageRecord);
+    } while (j <= 0);
+    label676:
+    label681:
+    paramSessionInfo = localMessageRecord.getExtInfoFromExtStr("is_share_ark_message_action_played");
+    if ((!TextUtils.isEmpty(paramSessionInfo)) && ("2".equals(paramSessionInfo))) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloMsgPlayController", 2, new Object[] { "[playUnreadAction] share ark action played=", Boolean.valueOf(bool1), ", uniseq=", Long.valueOf(localMessageRecord.uniseq) });
+      }
+      if ((bool1) || (i == ((List)localObject2).size() - 1)) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloMsgPlayController", 2, new Object[] { "[playUnreadAction] send action list to play, actionId=", Integer.valueOf(j) });
+      }
+      paramQQAppInterface = ((akwq)paramQQAppInterface.getManager(249)).a();
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a((ChatMessage)localMessageRecord, j);
+      }
+      localMessageRecord.saveExtInfoToExtStr("is_share_ark_message_action_played", "2");
+      ThreadManager.excute(new ApolloMsgPlayController.3(this, localMessageRecord), 32, null, false);
+      return;
+    }
   }
   
-  public static String a(String paramString)
+  public void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, ArrayList<Integer> paramArrayList1, ArrayList<Integer> paramArrayList2)
   {
-    return a() + File.separator + paramString;
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    return a(paramString1) + File.separator + paramString2 + File.separator + paramString3;
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    paramString1 = paramString1 + paramString2 + paramString3;
-    paramString2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).edit();
-    paramString2.putString(paramString1, paramString4);
-    paramString2.commit();
-    QLog.i("AREngine_ArNativeSoLoaderBase", 2, "saveMd5. key = " + paramString1 + ", md5 = " + paramString4);
-  }
-  
-  public static String b(String paramString1, String paramString2, String paramString3)
-  {
-    paramString1 = paramString1 + paramString2 + paramString3;
-    paramString2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString(paramString1, "");
-    QLog.i("AREngine_ArNativeSoLoaderBase", 2, "readMd5. key = " + paramString1 + ", md5 = " + paramString2);
-    return paramString2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloMsgPlayController", 2, "[playWhiteFace]");
+    }
+    if ((paramQQAppInterface == null) || (paramChatMessage == null) || (paramArrayList1 == null) || (paramArrayList1.size() == 0)) {}
+    do
+    {
+      return;
+      paramQQAppInterface = ((akwq)paramQQAppInterface.getManager(249)).a();
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(paramChatMessage, paramArrayList1, paramArrayList2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     albz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,22 @@
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
 
-public abstract interface assl
+class assl
+  implements TVK_IMediaPlayer.OnVideoPreparingListener
 {
-  public abstract void a(long paramLong, ArrayList<Long> paramArrayList);
+  assl(assd paramassd) {}
+  
+  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     assl
  * JD-Core Version:    0.7.0.1
  */

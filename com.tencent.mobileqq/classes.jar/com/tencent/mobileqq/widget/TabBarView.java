@@ -17,10 +17,10 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcrz;
-import bcsa;
-import bcsb;
-import bcsc;
+import beri;
+import berj;
+import berk;
+import berl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -40,9 +40,9 @@ public class TabBarView
   public float a;
   public long a;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bcrz(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new beri(this);
   protected LinearLayout.LayoutParams a;
-  public bcsc a;
+  public berl a;
   protected List<RedDotTextView> a;
   private boolean jdField_a_of_type_Boolean;
   protected int b;
@@ -84,14 +84,14 @@ public class TabBarView
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_Int = p;
     this.jdField_c_of_type_Int = q;
-    this.e = paramContext.getResources().getColor(2131166862);
-    this.f = paramContext.getResources().getColor(2131166854);
+    this.e = paramContext.getResources().getColor(2131166909);
+    this.f = paramContext.getResources().getColor(2131166901);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(0, -1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.weight = 1.0F;
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.gravity = 17;
-    setBackgroundDrawable(getResources().getDrawable(2130849292));
+    setBackgroundDrawable(getResources().getDrawable(2130849723));
     if (jdField_a_of_type_Int == 0) {
       jdField_a_of_type_Int = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getWidth();
     }
@@ -99,8 +99,8 @@ public class TabBarView
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bcsc != null) {
-      this.jdField_a_of_type_Bcsc.onTabSelected(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Berl != null) {
+      this.jdField_a_of_type_Berl.onTabSelected(paramInt1, paramInt2);
     }
   }
   
@@ -117,7 +117,7 @@ public class TabBarView
         RedDotTextView localRedDotTextView = a(i1);
         if (localRedDotTextView != null)
         {
-          ((StringBuilder)localObject).append(localRedDotTextView.getText()).append("，").append(getContext().getString(2131691105));
+          ((StringBuilder)localObject).append(localRedDotTextView.getText()).append("，").append(getContext().getString(2131691158));
           if (this.o == i1) {
             ((StringBuilder)localObject).append("，").append("已选中");
           }
@@ -214,7 +214,7 @@ public class TabBarView
     if (localView == null) {
       return null;
     }
-    localView = localView.findViewById(2131377107);
+    localView = localView.findViewById(2131377628);
     if ((localView instanceof RedDotTextView)) {
       return (RedDotTextView)localView;
     }
@@ -247,9 +247,9 @@ public class TabBarView
     localRedDotTextView.setContentDescription(paramString);
     localRedDotTextView.setGravity(17);
     if (!TextUtils.isEmpty(paramString)) {
-      localRedDotTextView.setOnClickListener(new bcsa(this, paramInt));
+      localRedDotTextView.setOnClickListener(new berj(this, paramInt));
     }
-    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new bcsb(this));
+    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new berk(this));
     this.jdField_a_of_type_JavaUtilList.add(localRedDotTextView);
     this.jdField_b_of_type_JavaUtilList.add(localLinearLayout1);
     this.jdField_c_of_type_JavaUtilList.add(paramString);
@@ -376,7 +376,7 @@ public class TabBarView
         localLinearLayout2.setGravity(17);
         break label397;
         label912:
-        localRedDotTextView.setId(2131377107);
+        localRedDotTextView.setId(2131377628);
         if ((localHashMap != null) && (localHashMap.get("paddingLeft") != null))
         {
           localLinearLayout1.addView(localRedDotTextView, paramString);
@@ -479,9 +479,9 @@ public class TabBarView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnTabChangeListener(bcsc parambcsc)
+  public void setOnTabChangeListener(berl paramberl)
   {
-    this.jdField_a_of_type_Bcsc = parambcsc;
+    this.jdField_a_of_type_Berl = paramberl;
   }
   
   public void setSelectBgRes(int paramInt)

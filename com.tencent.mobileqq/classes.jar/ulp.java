@@ -1,34 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ulp
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tzt>
+public abstract class ulp
+  extends JobSegment<ErrorMessage, ErrorMessage>
 {
-  public ulp(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  protected AtomicInteger a;
+  public ulq a;
+  
+  public ulp()
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tzt paramtzt)
+  protected abstract void a();
+  
+  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
   {
-    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramtzt.jdField_a_of_type_JavaLangString)) && ((paramtzt.jdField_a_of_type_Twl instanceof tww)))
-    {
-      paramtzt = ((tww)paramtzt.jdField_a_of_type_Twl).a;
-      if (paramtzt != null) {
-        paramQQStoryShareGroupProfileActivity.a(paramtzt.jdField_a_of_type_JavaLangString);
-      }
+    a();
+  }
+  
+  public void a(ulq paramulq)
+  {
+    this.jdField_a_of_type_Ulq = paramulq;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Ulq != null) {
+      this.jdField_a_of_type_Ulq.a(this);
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tzt.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulp
  * JD-Core Version:    0.7.0.1
  */

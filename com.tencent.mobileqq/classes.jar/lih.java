@@ -1,17 +1,24 @@
-import com.tencent.ttpic.util.Coffee;
-import com.tencent.ttpic.util.DecryptListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-final class lih
-  implements DecryptListener
+public class lih
+  extends BroadcastReceiver
 {
-  public byte[] decrypt(byte[] paramArrayOfByte)
+  public lih(VideoAppInterface paramVideoAppInterface) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
+    paramContext = paramIntent.getAction();
+    QLog.d(VideoAppInterface.c(), 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    System.exit(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lih
  * JD-Core Version:    0.7.0.1
  */

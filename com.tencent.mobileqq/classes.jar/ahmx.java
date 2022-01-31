@@ -1,18 +1,21 @@
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.widget.TextView;
 
 class ahmx
-  implements tkq
+  extends akee
 {
-  ahmx(ahmv paramahmv) {}
+  public int a;
+  public TextView a;
   
-  public void a()
+  public ahmx(View paramView)
   {
-    this.a.a.invalidateViews();
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378790));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahmx
  * JD-Core Version:    0.7.0.1
  */

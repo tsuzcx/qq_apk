@@ -1,26 +1,26 @@
-import android.widget.ImageButton;
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class asfx
-  implements PopupWindow.OnDismissListener
+class asfx
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public asfx(MedalGuideView paramMedalGuideView) {}
+  asfx(asfu paramasfu, String paramString) {}
   
-  public void onDismiss()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
+    paramCompoundButton = bkeu.a();
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      paramCompoundButton.a(str, i);
+      return;
     }
-    this.a.d = true;
-    this.a.a.performClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asfx
  * JD-Core Version:    0.7.0.1
  */

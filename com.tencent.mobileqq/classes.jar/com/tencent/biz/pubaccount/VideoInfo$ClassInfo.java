@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import npe;
+import nsm;
 
 public class VideoInfo$ClassInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ClassInfo> CREATOR = new npe();
+  public static final Parcelable.Creator<ClassInfo> CREATOR = new nsm();
   public long a;
   public String a;
   public long b;
@@ -53,7 +53,7 @@ public class VideoInfo$ClassInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.ClassInfo
  * JD-Core Version:    0.7.0.1
  */

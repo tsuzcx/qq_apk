@@ -1,70 +1,78 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.text.style.DynamicDrawableSpan;
-import com.etrump.mixlayout.AnimatedImageDrawable;
-import com.etrump.mixlayout.AnimatedImageSpan.1;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import java.util.Map;
 
-public class gw
-  extends DynamicDrawableSpan
+public final class gw
 {
-  private Drawable a;
-  
-  public gw(Drawable paramDrawable)
+  private static gs a(hg paramhg, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a = paramDrawable;
-    paramDrawable = new Handler();
-    paramDrawable.post(new AnimatedImageSpan.1(this, paramDrawable));
+    paramhg = paramhg.a();
+    if (paramhg == null) {
+      throw new IllegalStateException();
+    }
+    int k = paramhg.b();
+    int m = paramhg.a();
+    int i = (paramInt3 << 1) + k;
+    int j = (paramInt3 << 1) + m;
+    paramInt1 = Math.max(paramInt1, i);
+    paramInt3 = Math.max(paramInt2, j);
+    int n = Math.min(paramInt1 / i, paramInt3 / j);
+    j = (paramInt1 - k * n) / 2;
+    paramInt2 = (paramInt3 - m * n) / 2;
+    gs localgs = new gs(paramInt1, paramInt3);
+    paramInt1 = 0;
+    while (paramInt1 < m)
+    {
+      i = 0;
+      paramInt3 = j;
+      while (i < k)
+      {
+        if (paramhg.a(i, paramInt1) == 1) {
+          localgs.a(paramInt3, paramInt2, n, n);
+        }
+        i += 1;
+        paramInt3 += n;
+      }
+      paramInt2 += n;
+      paramInt1 += 1;
+    }
+    return localgs;
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public gs a(String paramString, int paramInt1, int paramInt2, Map<EncodeHintType, ?> paramMap)
   {
-    paramCharSequence = this.a;
-    if ((paramCharSequence instanceof AnimatedImageDrawable)) {
-      paramCharSequence = ((AnimatedImageDrawable)this.a).a();
+    if (paramString.length() == 0) {
+      throw new IllegalArgumentException("Found empty contents");
+    }
+    if ((paramInt1 < 0) || (paramInt2 < 0)) {
+      throw new IllegalArgumentException("Requested dimensions are too small: " + paramInt1 + 'x' + paramInt2);
+    }
+    Object localObject1 = ErrorCorrectionLevel.L;
+    Object localObject2 = localObject1;
+    int i;
+    if (paramMap != null)
+    {
+      localObject2 = (ErrorCorrectionLevel)paramMap.get(EncodeHintType.ERROR_CORRECTION);
+      if (localObject2 != null) {
+        localObject1 = localObject2;
+      }
+      Integer localInteger = (Integer)paramMap.get(EncodeHintType.MARGIN);
+      localObject2 = localObject1;
+      if (localInteger != null) {
+        i = localInteger.intValue();
+      }
     }
     for (;;)
     {
-      if (paramCharSequence == null) {
-        return;
-      }
-      paramCanvas.save();
-      paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
-      paramInt1 = paramInt2;
-      if (this.mVerticalAlignment == 1) {
-        paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
-      }
-      paramCanvas.translate(paramFloat, paramInt1);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
+      return a(hc.a(paramString, (ErrorCorrectionLevel)localObject1, paramMap), paramInt1, paramInt2, i);
+      i = 4;
+      localObject1 = localObject2;
     }
-  }
-  
-  public Drawable getDrawable()
-  {
-    return this.a;
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    paramPaint = getDrawable().getBounds();
-    if (paramFontMetricsInt != null)
-    {
-      paramFontMetricsInt.ascent = (-paramPaint.bottom);
-      paramFontMetricsInt.descent = 0;
-      paramFontMetricsInt.top = paramFontMetricsInt.ascent;
-      paramFontMetricsInt.bottom = 0;
-    }
-    return paramPaint.right;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     gw
  * JD-Core Version:    0.7.0.1
  */

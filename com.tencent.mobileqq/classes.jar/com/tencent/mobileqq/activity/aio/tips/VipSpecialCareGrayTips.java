@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aexz;
-import aeyv;
-import aiiz;
-import akpx;
+import abot;
+import agve;
+import agwa;
+import akaj;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.text.format.Time;
-import awzy;
-import axas;
+import ayvc;
+import ayvw;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForVideo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -27,11 +27,11 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public class VipSpecialCareGrayTips
-  implements aexz, Runnable
+  implements agve, Runnable
 {
   private final int jdField_a_of_type_Int = 30;
   private final long jdField_a_of_type_Long = 604800000L;
-  private aeyv jdField_a_of_type_Aeyv;
+  private agwa jdField_a_of_type_Agwa;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private Time jdField_a_of_type_AndroidTextFormatTime;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
@@ -40,10 +40,10 @@ public class VipSpecialCareGrayTips
   private final int b = 20;
   private final int c = 2;
   
-  public VipSpecialCareGrayTips(QQAppInterface paramQQAppInterface, aeyv paramaeyv, Activity paramActivity, SessionInfo paramSessionInfo)
+  public VipSpecialCareGrayTips(QQAppInterface paramQQAppInterface, agwa paramagwa, Activity paramActivity, SessionInfo paramSessionInfo)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aeyv = paramaeyv;
+    this.jdField_a_of_type_Agwa = paramagwa;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplication.getContext().getSharedPreferences("free_call", 0);
   }
@@ -52,7 +52,7 @@ public class VipSpecialCareGrayTips
   {
     boolean bool = false;
     SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    if ((aiiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (localSharedPreferences.getBoolean("specialcare_already_set" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, false))) {
+    if ((akaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (localSharedPreferences.getBoolean("specialcare_already_set" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, false))) {
       bool = true;
     }
     return bool;
@@ -73,7 +73,7 @@ public class VipSpecialCareGrayTips
     boolean bool2 = true;
     String str = "key_specialcare_gray_tips_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
     str = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(str, "");
-    long l1 = awzy.a() * 1000L;
+    long l1 = ayvc.a() * 1000L;
     boolean bool1 = bool2;
     if (!TextUtils.isEmpty(str))
     {
@@ -202,7 +202,7 @@ public class VipSpecialCareGrayTips
                 {
                   i2 = i;
                   i1 = j;
-                  if (((MessageForVideo)localObject2).text.contains(BaseApplicationImpl.getApplication().getResources().getString(2131720780)))
+                  if (((MessageForVideo)localObject2).text.contains(BaseApplicationImpl.getApplication().getResources().getString(2131721320)))
                   {
                     localObject2 = ((MessageForVideo)localObject2).text;
                     localObject2 = ((String)localObject2).substring(((String)localObject2).indexOf(':') - 2, ((String)localObject2).lastIndexOf(':') + 3).split(":");
@@ -280,8 +280,8 @@ public class VipSpecialCareGrayTips
   
   public MessageRecord a(Object... paramVarArgs)
   {
-    paramVarArgs = axas.a(-5005);
-    long l = awzy.a();
+    paramVarArgs = ayvw.a(-5005);
+    long l = ayvc.a();
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, "", l, -5005, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
     paramVarArgs.isread = true;
@@ -290,7 +290,7 @@ public class VipSpecialCareGrayTips
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    if ((!akpx.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) || (paramInt != 1001)) {
+    if ((!abot.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) || (paramInt != 1001)) {
       return;
     }
     ThreadManager.getSubThreadHandler().post(this);
@@ -325,12 +325,12 @@ public class VipSpecialCareGrayTips
         QLog.d("VipSpecialCareGrayTips", 2, "aioMsgList == null");
       }
     }
-    while ((!c()) || (!this.jdField_a_of_type_Aeyv.a(this, new Object[0]))) {
+    while ((!c()) || (!this.jdField_a_of_type_Agwa.a(this, new Object[0]))) {
       return;
     }
     String str = "key_specialcare_gray_tips_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
     localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    ((SharedPreferences.Editor)localObject).putString(str, String.valueOf(awzy.a() * 1000L));
+    ((SharedPreferences.Editor)localObject).putString(str, String.valueOf(ayvc.a() * 1000L));
     str = "key_specialcare_tips_count_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
     ((SharedPreferences.Editor)localObject).putInt(str, this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(str, 0) + 1);
     ((SharedPreferences.Editor)localObject).commit();
@@ -339,7 +339,7 @@ public class VipSpecialCareGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.VipSpecialCareGrayTips
  * JD-Core Version:    0.7.0.1
  */

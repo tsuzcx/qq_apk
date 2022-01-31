@@ -1,73 +1,113 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
+import java.util.List;
 
-public abstract class mtj
+public class mtj
 {
-  public static long a(Intent paramIntent)
+  public static int a(int[] paramArrayOfInt, int paramInt)
   {
-    return paramIntent.getLongExtra("log_seq", 0L);
+    return a(paramArrayOfInt, paramInt, 0);
   }
   
-  public static long a(Bundle paramBundle)
+  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    long l = 0L;
-    if (paramBundle != null) {
-      l = paramBundle.getLong("log_seq");
+    if (paramArrayOfInt == null)
+    {
+      paramInt2 = -1;
+      return paramInt2;
     }
-    return l;
-  }
-  
-  public static long a(ToServiceMsg paramToServiceMsg)
-  {
-    return a(paramToServiceMsg.getAttribute("log_seq"));
-  }
-  
-  public static long a(Object paramObject)
-  {
-    long l = 0L;
-    if ((paramObject instanceof Long)) {
-      l = ((Long)paramObject).longValue();
+    int i = paramInt2;
+    if (paramInt2 < 0) {
+      i = 0;
     }
-    return l;
-  }
-  
-  public static long a(HashMap<String, Object> paramHashMap)
-  {
-    if ((paramHashMap != null) && (paramHashMap.containsKey("log_seq"))) {
-      return a(paramHashMap.get("log_seq"));
+    for (;;)
+    {
+      if (i >= paramArrayOfInt.length) {
+        break label38;
+      }
+      paramInt2 = i;
+      if (paramInt1 == paramArrayOfInt[i]) {
+        break;
+      }
+      i += 1;
     }
-    return 0L;
+    label38:
+    return -1;
   }
   
-  public static long a(Object[] paramArrayOfObject, int paramInt)
+  public static int a(Object[] paramArrayOfObject, Object paramObject)
   {
-    long l = 0L;
-    if (paramArrayOfObject.length > paramInt) {
-      l = a(paramArrayOfObject[paramInt]);
+    return a(paramArrayOfObject, paramObject, 0);
+  }
+  
+  public static int a(Object[] paramArrayOfObject, Object paramObject, int paramInt)
+  {
+    if (paramArrayOfObject == null)
+    {
+      paramInt = -1;
+      return paramInt;
     }
-    return l;
+    if (paramInt < 0) {
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      int i;
+      if (paramObject == null)
+      {
+        i = paramInt;
+        for (;;)
+        {
+          if (i >= paramArrayOfObject.length) {
+            break label82;
+          }
+          paramInt = i;
+          if (paramArrayOfObject[i] == null) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      if (paramArrayOfObject.getClass().getComponentType().isInstance(paramObject))
+      {
+        i = paramInt;
+        for (;;)
+        {
+          if (i >= paramArrayOfObject.length) {
+            break label82;
+          }
+          paramInt = i;
+          if (paramObject.equals(paramArrayOfObject[i])) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      label82:
+      return -1;
+    }
   }
   
-  public static void a(Intent paramIntent, long paramLong)
+  public static <T> boolean a(List<T> paramList, T paramT)
   {
-    paramIntent.putExtra("log_seq", paramLong);
+    if (paramList == null) {}
+    while (paramList.indexOf(paramT) < 0) {
+      return false;
+    }
+    return true;
   }
   
-  public static void a(Bundle paramBundle, long paramLong)
+  public static boolean a(int[] paramArrayOfInt, int paramInt)
   {
-    paramBundle.putLong("log_seq", paramLong);
+    return a(paramArrayOfInt, paramInt) != -1;
   }
   
-  public static void a(HashMap<String, Object> paramHashMap, long paramLong)
+  public static boolean a(Object[] paramArrayOfObject, Object paramObject)
   {
-    paramHashMap.put("log_seq", Long.valueOf(paramLong));
+    return a(paramArrayOfObject, paramObject) != -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtj
  * JD-Core Version:    0.7.0.1
  */

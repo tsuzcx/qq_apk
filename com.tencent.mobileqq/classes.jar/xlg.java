@@ -1,55 +1,44 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 class xlg
-  implements View.OnClickListener
+  extends naa
 {
-  xlg(xlb paramxlb) {}
+  xlg(xlf paramxlf) {}
   
-  public void onClick(View paramView)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramView = this.a.mRuntime.a();
-    if (paramView == null) {}
-    seh localseh;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((xlb.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(xlb.a(this.a))));
-        localseh = (seh)xlb.jdField_a_of_type_JavaUtilHashMap.get(xlb.a(this.a));
-      } while (localseh == null);
-      if (localseh.b() == 3)
-      {
-        localseh.a();
-        this.a.b();
-        localseh.a(4);
-        if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-          this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        }
-        xlb.jdField_a_of_type_JavaUtilHashMap.remove(xlb.a(this.a));
-        return;
-      }
-    } while (localseh.b() != 0);
-    mzb.a(paramView.getApplicationContext(), xlb.a(this.a), localseh.f, localseh.a, localseh);
-    localseh.a(1);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "troop story revoke result, code=" + paramInt);
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 2000L);
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
+      {
+        paramBundle = new qqstory_group.RspGroupVideoDelete();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
+        if (paramArrayOfByte.error_code.has()) {
+          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "revoke rsp.result.error_code=" + paramArrayOfByte.error_code.get());
+        }
+        return paramArrayOfByte;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
+        }
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xlg
  * JD-Core Version:    0.7.0.1
  */

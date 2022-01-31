@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import aitt;
+import aklf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -16,17 +16,17 @@ class ApolloSurfaceView$6
     }
     if (this.this$0.mSurfaceCallBackData != null)
     {
-      ApolloSurfaceView.access$1001(this.this$0, this.this$0.mSurfaceCallBackData.jdField_a_of_type_AndroidViewSurfaceHolder, this.this$0.mSurfaceCallBackData.jdField_a_of_type_Int, this.this$0.mSurfaceCallBackData.b, this.this$0.mSurfaceCallBackData.c);
+      ApolloSurfaceView.access$1101(this.this$0, this.this$0.mSurfaceCallBackData.jdField_a_of_type_AndroidViewSurfaceHolder, this.this$0.mSurfaceCallBackData.jdField_a_of_type_Int, this.this$0.mSurfaceCallBackData.b, this.this$0.mSurfaceCallBackData.c);
       if (QLog.isColorLevel()) {
         QLog.d("ApolloSurfaceView", 2, new Object[] { "mSurfaceChangeRunnable mSurfaceCallBackData:", this.this$0.mSurfaceCallBackData });
       }
     }
-    ApolloSurfaceView.access$1102(this.this$0, false);
+    ApolloSurfaceView.access$1202(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloSurfaceView.6
  * JD-Core Version:    0.7.0.1
  */

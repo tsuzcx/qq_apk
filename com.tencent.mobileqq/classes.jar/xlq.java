@@ -1,43 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class xlq
-  implements DialogInterface.OnClickListener
+public class xlq
 {
-  xlq(xll paramxll) {}
+  public View a;
+  public View b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xlq(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    if (!TextUtils.isEmpty(this.a.a))
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView.findViewById(2131369433);
+  }
+  
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  {
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
+    float f = 0.0F;
+    if (localIterator.hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Contact menu dialog click phone = %s, which = %d", new Object[] { this.a.a, Integer.valueOf(paramInt) }));
-      }
-      switch (paramInt)
+      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
       {
-      default: 
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow contact button %d", new Object[] { Integer.valueOf(paramInt) }));
-        }
+      }
+      for (;;)
+      {
         break;
+        if ((xmq.b(paramTroopStoryItemInfo.publishTime)) || (xmq.d(paramTroopStoryItemInfo.publishTime)))
+        {
+          f = xod.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
+        }
+        else
+        {
+          f = xod.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
+          continue;
+          f = xod.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+          continue;
+          f = xod.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
+          continue;
+          f = xod.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+        }
       }
     }
-    while (!QLog.isColorLevel())
+    int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
+    paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
+    if (i <= 0)
     {
-      return;
-      xll.h(this.a);
-      return;
-      xll.i(this.a);
+      paramTroopStoryItemInfo.height = 0;
+      this.b.setLayoutParams(paramTroopStoryItemInfo);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
     }
-    QLog.d("PubAccountMailJsPlugin", 2, "phone is empty");
+    paramTroopStoryItemInfo.height = i;
+    this.b.setLayoutParams(paramTroopStoryItemInfo);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xlq
  * JD-Core Version:    0.7.0.1
  */

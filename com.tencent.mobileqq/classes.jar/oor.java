@@ -1,62 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class oor
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+class oor
+  implements ViewFactory.FoundClickableViewListener
 {
-  public static String a = "CommentFamilyConfigHandler";
+  oor(oop paramoop) {}
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void onFound(ViewBase paramViewBase)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = oof.a(paramString);
-    Object localObject = paramString.keySet();
-    for (;;)
-    {
-      String str1;
-      String str2;
-      try
-      {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          str1 = (String)((Iterator)localObject).next();
-          str2 = (String)paramString.get(str1);
-          if (TextUtils.equals(str1, "rij_comment_family_entrance_switch")) {
-            bhvy.n(Integer.parseInt(str2));
-          }
-        }
-        else
-        {
-          return true;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-      if (TextUtils.equals(str1, "rij_small_zhitiao_entrance_switch")) {
-        bhvy.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
-      }
+    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
+      return;
     }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    super.onWipeConfig(paramInt);
-    bhvy.n(0);
+    paramViewBase.setOnClickListener(new oos(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,69 @@
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.screendetect.ScreenShotDetector;
+import com.tencent.mobileqq.screendetect.ScreenShotDetector.MediaContentObserver.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
 public class aybn
-  extends aybi
+  extends ContentObserver
 {
-  private int f;
-  private int g;
+  private Uri a;
   
-  public aybn(int paramInt1, int paramInt2, int paramInt3)
+  public aybn(ScreenShotDetector paramScreenShotDetector, Uri paramUri, Handler paramHandler)
   {
-    super(paramInt1, 16, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
+    super(paramHandler);
+    this.jdField_a_of_type_AndroidNetUri = paramUri;
   }
   
-  protected void a(int paramInt, float paramFloat)
+  public void onChange(boolean paramBoolean)
   {
-    this.b = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.b >= this.g) {
-        this.b = this.g;
+    super.onChange(paramBoolean);
+    if (!aybw.a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenShotDetector", 2, "ScreenShot: onChange screen switch is closed!");
       }
+      return;
     }
+    Object localObject = (Build.MANUFACTURER + Build.MODEL).trim().toLowerCase();
+    String[] arrayOfString = ScreenShotDetector.a();
+    int j = arrayOfString.length;
+    int i = 0;
     for (;;)
     {
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.b <= this.g) {
-        this.b = this.g;
+      for (;;)
+      {
+        if ((i >= j) || (((String)localObject).contains(arrayOfString[i].toLowerCase()))) {
+          try
+          {
+            localObject = BaseApplicationImpl.getApplication().getRuntime();
+            if (((localObject instanceof QQAppInterface)) && (((QQAppInterface)localObject).a.b())) {
+              break;
+            }
+            ThreadManager.getSubThreadHandler().post(new ScreenShotDetector.MediaContentObserver.1(this));
+            return;
+          }
+          catch (Exception localException)
+          {
+            QLog.e("ScreenShotDetector", 2, "ScreenShot: onChange error!", localException);
+            return;
+          }
+        }
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aybn
  * JD-Core Version:    0.7.0.1
  */

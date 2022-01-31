@@ -3,8 +3,6 @@ package com.tencent.ttpic.openapi.ttpicmodule;
 import android.graphics.Bitmap;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.PTSkyAttr;
-import com.tencent.ttpic.openapi.initializer.RapidNetSDKInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.ttpicmodule.module_sky_segment.PTSkySegmenter;
 import com.tencent.ttpic.openapi.ttpicmodule.module_sky_segment.SkySegmentInitializer;
 
@@ -37,7 +35,7 @@ public class SkySegmentImpl
   
   public PTSkyAttr detectFrame(Bitmap paramBitmap, int paramInt, float[] paramArrayOfFloat, long paramLong)
   {
-    if ((FeatureManager.Features.RAPID_NET.isModelLoaded(2)) && (BitmapUtils.isLegal(paramBitmap)))
+    if ((PTSkySegmenter.SKY_SEGMENT.isFunctionReady()) && (BitmapUtils.isLegal(paramBitmap)))
     {
       if (BitmapUtils.isLegal(paramBitmap)) {
         this.outBitmap = PTSkySegmenter.SKY_SEGMENT.forward(paramBitmap, (-paramInt + 360) % 360);

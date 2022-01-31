@@ -1,32 +1,41 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-class upi
-  extends ParallelJobSegment<String, Integer>
+public class upi
+  implements View.OnTouchListener
 {
-  public upi(upa paramupa)
-  {
-    this(paramupa, "RequestViewCountSegment");
-  }
+  public upi(StoryInputBarView paramStoryInputBarView) {}
   
-  public upi(upa paramupa, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramString);
-  }
-  
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    tmi localtmi = new tmi();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    localtmi.a = localArrayList;
-    syo.a().a(localtmi, new upj(this, paramJobContext, paramString));
+    if (paramMotionEvent.getAction() == 0)
+    {
+      StoryInputBarView.a(this.a);
+      if (this.a.jdField_a_of_type_Boolean) {
+        break label94;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Wdj.jdField_a_of_type_Boolean);
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label89;
+      }
+    }
+    label89:
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.jdField_a_of_type_Boolean = bool;
+      return false;
+    }
+    label94:
+    this.a.a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
+import java.util.Map;
 
-public abstract class aewc
-  implements aewg
+public abstract interface aewc
 {
-  protected QQAppInterface a;
+  public abstract void a(String paramString, int paramInt, aevu paramaevu, List<aewp> paramList, Map<Integer, Integer> paramMap);
   
-  public aewc(QQAppInterface paramQQAppInterface)
-  {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a() {}
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return aexb.a(paramQQAppInterface).a(paramString);
-  }
+  public abstract boolean a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewc
  * JD-Core Version:    0.7.0.1
  */

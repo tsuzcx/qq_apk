@@ -1,17 +1,32 @@
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wii
+  extends QQUIEventReceiver<wic, uqw>
 {
-  public HashMap<String, String> a = new HashMap();
-  public HashMap<String, String> b = new HashMap();
-  public HashMap<String, String> c = new HashMap();
-  public HashMap<String, String> d = new HashMap();
-  public HashMap<String, String> e = new HashMap();
-  public HashMap<String, String> f = new HashMap();
+  public wii(wic paramwic)
+  {
+    super(paramwic);
+  }
+  
+  public void a(@NonNull wic paramwic, @NonNull uqw paramuqw)
+  {
+    if (paramuqw.a.isSuccess())
+    {
+      wsv.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramuqw.toString());
+      wic.a(paramwic, true);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uqw.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wii
  * JD-Core Version:    0.7.0.1
  */

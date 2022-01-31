@@ -6,23 +6,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import axrn;
-import bhvy;
+import azmz;
+import bjxj;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import nte;
-import onh;
-import osg;
+import nwj;
+import ors;
+import owy;
 
 public class ReadInJoyFollowFragment
   extends ReadInJoyBaseFragment
 {
   private int jdField_a_of_type_Int = 1;
   private View jdField_a_of_type_AndroidViewView;
-  protected nte a;
+  protected nwj a;
   private boolean jdField_a_of_type_Boolean;
   
   public static ReadInJoyFollowFragment a()
@@ -34,12 +34,12 @@ public class ReadInJoyFollowFragment
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374833);
-    this.jdField_a_of_type_Nte = new nte(getActivity());
-    this.jdField_a_of_type_Nte.a(70);
-    this.jdField_a_of_type_Nte.b(0);
-    this.jdField_a_of_type_Nte.a(localViewGroup);
-    this.jdField_a_of_type_Nte.a();
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375298);
+    this.jdField_a_of_type_Nwj = new nwj(getActivity());
+    this.jdField_a_of_type_Nwj.a(70);
+    this.jdField_a_of_type_Nwj.b(0);
+    this.jdField_a_of_type_Nwj.a(localViewGroup);
+    this.jdField_a_of_type_Nwj.a();
   }
   
   public int a()
@@ -49,7 +49,7 @@ public class ReadInJoyFollowFragment
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Nte.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Nwj.a(paramInt1, paramInt2, paramIntent);
     super.a(paramInt1, paramInt2, paramIntent);
   }
   
@@ -66,27 +66,27 @@ public class ReadInJoyFollowFragment
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     super.a(paramBoolean, paramActivity, paramBundle);
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.b();
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.b();
     }
     this.jdField_a_of_type_Boolean = true;
-    if ((!bhvy.i()) || ((paramActivity instanceof ReadInJoyNewFeedsActivity)))
+    if ((!bjxj.i()) || ((paramActivity instanceof ReadInJoyNewFeedsActivity)))
     {
       paramActivity = ((ReadInJoyNewFeedsActivity)paramActivity).a();
       int i = paramActivity.b();
       if (i == 2) {
         paramActivity.b(i);
       }
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b(2) > 0) && (this.jdField_a_of_type_Nte != null)) {
-        this.jdField_a_of_type_Nte.a(true);
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b(2) > 0) && (this.jdField_a_of_type_Nwj != null)) {
+        this.jdField_a_of_type_Nwj.a(true);
       }
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Nte != null) {
-        this.jdField_a_of_type_Nte.h();
+      if (this.jdField_a_of_type_Nwj != null) {
+        this.jdField_a_of_type_Nwj.h();
       }
-      axrn.a(getActivity()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "actReadInJoyEnterDD", true, 0L, 0L, null, null);
+      azmz.a(getActivity()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "actReadInJoyEnterDD", true, 0L, 0L, null, null);
       return;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.d(2);
     }
@@ -99,20 +99,20 @@ public class ReadInJoyFollowFragment
   
   public boolean d()
   {
-    return onh.g();
+    return ors.g();
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.a(true);
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.a(true);
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.a(true);
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.a(true);
     }
   }
   
@@ -120,21 +120,21 @@ public class ReadInJoyFollowFragment
   {
     super.g();
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.g();
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.g();
     }
   }
   
   public void i()
   {
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.k();
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.k();
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Nte.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Nwj.a(paramInt1, paramInt2, paramIntent);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
@@ -146,7 +146,7 @@ public class ReadInJoyFollowFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559931, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560030, paramViewGroup, false);
     a();
     return this.jdField_a_of_type_AndroidViewView;
   }
@@ -154,21 +154,21 @@ public class ReadInJoyFollowFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Nte.d();
-    osg.a().a();
+    this.jdField_a_of_type_Nwj.d();
+    owy.a().a();
   }
   
   public void onDetach()
   {
     super.onDetach();
-    this.jdField_a_of_type_Nte.c();
+    this.jdField_a_of_type_Nwj.c();
   }
   
   public void onPause()
   {
     super.onPause();
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Nte.g();
+      this.jdField_a_of_type_Nwj.g();
     }
   }
   
@@ -176,7 +176,7 @@ public class ReadInJoyFollowFragment
   {
     super.onResume();
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Nte.h();
+      this.jdField_a_of_type_Nwj.h();
     }
   }
   
@@ -184,19 +184,19 @@ public class ReadInJoyFollowFragment
   {
     super.onStart();
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Nte.e();
+      this.jdField_a_of_type_Nwj.e();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_Nte.f();
+    this.jdField_a_of_type_Nwj.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFollowFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class abts
-  extends Handler
+public final class abts
 {
-  public abts(QQBroadcastActivity paramQQBroadcastActivity) {}
+  public long a;
+  public String a;
+  public long b;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
+  public JSONObject a()
   {
-    switch (paramMessage.what)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
+      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
+      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
+      return localJSONObject;
     }
-    do
+    catch (JSONException localJSONException)
     {
-      return;
-    } while (this.a.a == null);
-    this.a.a.changeCursor(this.a.a());
+      while (!QLog.isColorLevel()) {}
+      QLog.e(abtp.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+    }
+    return localJSONObject;
+  }
+  
+  public String toString()
+  {
+    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abts
  * JD-Core Version:    0.7.0.1
  */

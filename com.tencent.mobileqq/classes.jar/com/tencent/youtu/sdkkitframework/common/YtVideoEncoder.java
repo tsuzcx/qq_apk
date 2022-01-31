@@ -107,7 +107,7 @@ public class YtVideoEncoder
   
   private byte[] convertYUV(int paramInt1, int paramInt2, YuvImage paramYuvImage)
   {
-    if (this.colorFormat == 2130706688) {
+    if (this.colorFormat == 21) {
       return NV12ToNV21(paramInt1, paramInt2, paramYuvImage);
     }
     return I420ToNV21(paramInt1, paramInt2, paramYuvImage);
@@ -527,7 +527,7 @@ public class YtVideoEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,12 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import java.util.List;
 
-public class bjde
+public abstract interface bjde
 {
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 4;
-    case 3: 
-      return 2;
-    case 4: 
-      return 5;
-    }
-    return 10;
-  }
-  
-  public static bjdc a(int paramInt, CaptureModeController paramCaptureModeController)
-  {
-    switch (paramInt)
-    {
-    case 3: 
-    case 6: 
-    case 7: 
-    case 8: 
-    case 9: 
-    default: 
-      return new bjdf(paramCaptureModeController);
-    case 1: 
-      return new bjdg(paramCaptureModeController);
-    case 4: 
-      return new bjdo(paramCaptureModeController);
-    case 2: 
-      return new bjdk(paramCaptureModeController);
-    case 5: 
-      return new bjry(paramCaptureModeController);
-    case 10: 
-      return new bjdn(paramCaptureModeController);
-    }
-    if ((paramCaptureModeController.a instanceof bihx)) {
-      return new bjdg(paramCaptureModeController);
-    }
-    return new bjdf(paramCaptureModeController);
-  }
+  public abstract void a(String paramString, List<Long> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjde
  * JD-Core Version:    0.7.0.1
  */

@@ -1,117 +1,212 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
 public class wsv
 {
-  public static final String a;
-  private static wsv jdField_a_of_type_Wsv;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static wst a = ;
   
-  static
+  private static String a(String paramString, Object... paramVarArgs)
   {
-    jdField_a_of_type_JavaLangString = wsv.class.getSimpleName();
+    return String.format(null, paramString, paramVarArgs);
   }
   
-  private String a(String paramString1, String paramString2, String paramString3)
+  public static void a(String paramString1, String paramString2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      localStringBuilder.append(paramString1);
-      if (TextUtils.isEmpty(paramString2)) {
-        break label78;
-      }
-      localStringBuilder.append("&&").append(paramString2);
-      label42:
-      if (TextUtils.isEmpty(paramString3)) {
-        break label94;
-      }
-      localStringBuilder.append("&&").append(paramString3);
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append("0");
-      break;
-      label78:
-      localStringBuilder.append("&&").append("0");
-      break label42;
-      label94:
-      localStringBuilder.append("&&").append("0");
+    if (a.a(2)) {
+      a.a(paramString1, paramString2);
     }
   }
   
-  public static wsv a()
+  public static void a(String paramString1, String paramString2, Object paramObject)
   {
-    if (jdField_a_of_type_Wsv == null) {}
-    try
-    {
-      if (jdField_a_of_type_Wsv == null) {
-        jdField_a_of_type_Wsv = new wsv();
-      }
-      return jdField_a_of_type_Wsv;
-    }
-    finally {}
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "storeComment storeKey: " + paramString1 + " comment: " + paramString2);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
-  }
-  
-  private String b(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
-  {
-    if (paramStFeed != null)
-    {
-      paramStFeed = paramStFeed.id.get();
-      if (paramStComment == null) {
-        break label50;
-      }
-      paramStComment = paramStComment.id.get();
-      label24:
-      if (paramStReply == null) {
-        break label56;
-      }
-    }
-    label50:
-    label56:
-    for (paramStReply = paramStReply.id.get();; paramStReply = "")
-    {
-      return a(paramStFeed, paramStComment, paramStReply);
-      paramStFeed = "";
-      break;
-      paramStComment = "";
-      break label24;
+    if (a.a(3)) {
+      a.b(paramString1, a(paramString2, new Object[] { paramObject }));
     }
   }
   
-  public String a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
   {
-    paramStFeed = b(paramStFeed, paramStComment, paramStReply);
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramStFeed))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "getComment storeKey: " + paramStFeed + " preCommentText: " + (String)this.jdField_a_of_type_JavaUtilMap.get(paramStFeed));
-      return (String)this.jdField_a_of_type_JavaUtilMap.get(paramStFeed);
+    if (a.a(3)) {
+      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2 }));
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "getComment storeKey: " + paramStFeed + " preCommentText doesn't exit");
-    return "";
   }
   
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply, String paramString)
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3)
   {
-    a(b(paramStFeed, paramStComment, paramStReply), paramString);
+    if (a.a(3)) {
+      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3 }));
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  {
+    if (a.a(3)) {
+      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3, paramObject4 }));
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a.a(3)) {
+      a.a(paramString1, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(2)) {
+      a.a(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void a(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(3)) {
+      a(paramString1, a(paramString2, paramVarArgs), paramThrowable);
+    }
+  }
+  
+  public static void a(wst paramwst)
+  {
+    if (paramwst == null) {
+      throw new IllegalArgumentException();
+    }
+    a = paramwst;
+  }
+  
+  public static boolean a()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    if (a.a(3)) {
+      a.b(paramString1, paramString2);
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, a(paramString2, new Object[] { paramObject }));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2 }));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3 }));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3, paramObject4 }));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a.a(5)) {
+      a.c(paramString1, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(3)) {
+      b(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void b(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(4)) {
+      a.b(paramString1, a(paramString2, paramVarArgs), paramThrowable);
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, paramString2);
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a.a(6)) {
+      a.d(paramString1, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(4)) {
+      a.c(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void c(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(5)) {
+      a.c(paramString1, a(paramString2, paramVarArgs), paramThrowable);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    if (a.a(5)) {
+      a.d(paramString1, paramString2);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(5)) {
+      a.d(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void d(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(6)) {
+      a.d(paramString1, a(paramString2, paramVarArgs), paramThrowable);
+    }
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    if (a.a(6)) {
+      a.e(paramString1, paramString2);
+    }
+  }
+  
+  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(6)) {
+      a.e(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void f(String paramString1, String paramString2)
+  {
+    if (a.a(6)) {
+      a.e(paramString1, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsv
  * JD-Core Version:    0.7.0.1
  */

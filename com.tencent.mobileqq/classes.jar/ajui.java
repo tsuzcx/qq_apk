@@ -1,76 +1,80 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.Comparator;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import java.util.List;
+import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
 
-final class ajui
-  implements Comparator<auko>
+public class ajui
+  extends BaseAdapter
 {
-  public int a(auko paramauko1, auko paramauko2)
+  ajuj jdField_a_of_type_Ajuj;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  
+  public ajui(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity)
   {
-    int i = 0;
-    if ((paramauko1 instanceof Groups))
-    {
-      paramauko1 = (Groups)paramauko1;
-      paramauko2 = (Groups)paramauko2;
-      return paramauko1.seqid - paramauko2.seqid;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramCreateFaceToFaceDiscussionActivity.jdField_a_of_type_AndroidContentContext);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    Object localObject = "-";
-    String str = "-";
-    int j;
-    if ((paramauko1 instanceof Friends))
-    {
-      paramauko1 = (Friends)paramauko1;
-      localObject = (Friends)paramauko2;
-      j = paramauko1.mComparePartInt;
-      paramauko2 = paramauko1.mCompareSpell;
-      i = ((Friends)localObject).mComparePartInt;
-      paramauko1 = ((Friends)localObject).mCompareSpell;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() < 50) {
+      return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() + 1;
     }
-    for (;;)
+    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
+      return null;
+    }
+    return (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      return ajuh.a(j, paramauko2, i, paramauko1);
-      if ((paramauko1 instanceof TroopInfo))
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560963, null);
+      this.jdField_a_of_type_Ajuj = new ajuj(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
+      this.jdField_a_of_type_Ajuj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
+      this.jdField_a_of_type_Ajuj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370958));
+      paramView.setTag(this.jdField_a_of_type_Ajuj);
+    }
+    while ((paramInt == getCount() - 1) && (getCount() < 50))
+    {
+      CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView);
+      return paramView;
+      this.jdField_a_of_type_Ajuj = ((ajuj)paramView.getTag());
+      if (this.jdField_a_of_type_Ajuj.jdField_a_of_type_Boolean)
       {
-        paramauko1 = (TroopInfo)paramauko1;
-        localObject = (TroopInfo)paramauko2;
-        j = paramauko1.mComparePartInt;
-        i = ((TroopInfo)localObject).mComparePartInt;
-        paramauko2 = paramauko1.mCompareSpell;
-        paramauko1 = ((TroopInfo)localObject).mCompareSpell;
-      }
-      else if ((paramauko1 instanceof DiscussionInfo))
-      {
-        paramauko1 = (DiscussionInfo)paramauko1;
-        localObject = (DiscussionInfo)paramauko2;
-        j = paramauko1.mComparePartInt;
-        i = ((DiscussionInfo)localObject).mComparePartInt;
-        paramauko2 = paramauko1.mCompareSpell;
-        paramauko1 = ((DiscussionInfo)localObject).mCompareSpell;
-      }
-      else if ((paramauko1 instanceof PublicAccountInfo))
-      {
-        paramauko1 = (PublicAccountInfo)paramauko1;
-        localObject = (PublicAccountInfo)paramauko2;
-        j = paramauko1.mComparePartInt;
-        i = ((PublicAccountInfo)localObject).mComparePartInt;
-        paramauko2 = paramauko1.mCompareSpell;
-        paramauko1 = ((PublicAccountInfo)localObject).mCompareSpell;
-      }
-      else
-      {
-        j = 0;
-        paramauko1 = str;
-        paramauko2 = (auko)localObject;
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560963, null);
+        this.jdField_a_of_type_Ajuj = new ajuj(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
+        this.jdField_a_of_type_Ajuj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
+        this.jdField_a_of_type_Ajuj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370958));
+        paramView.setTag(this.jdField_a_of_type_Ajuj);
+        this.jdField_a_of_type_Ajuj.jdField_a_of_type_Boolean = false;
       }
     }
+    CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView, (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajui
  * JD-Core Version:    0.7.0.1
  */

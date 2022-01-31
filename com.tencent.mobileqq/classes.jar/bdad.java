@@ -1,58 +1,74 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bdad
-  extends URLDrawableDownListener.Adapter
+  implements aeov
 {
-  public bdad(CardContainer paramCardContainer) {}
+  List<View.OnTouchListener> a = new ArrayList();
+  List<View.OnLongClickListener> b = new ArrayList();
+  List<aeov> c = new ArrayList();
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  void a(aeov paramaeov)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadCancelled, view: " + paramView);
+    this.c.add(paramaeov);
+  }
+  
+  void a(View.OnTouchListener paramOnTouchListener)
+  {
+    this.a.add(paramOnTouchListener);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    for (int i = 0;; i = 0) {
+      try
+      {
+        while (i < this.b.size())
+        {
+          ((View.OnLongClickListener)this.b.get(i)).onLongClick(paramView);
+          i += 1;
+          continue;
+          while (i < this.c.size())
+          {
+            ((View.OnLongClickListener)this.c.get(i)).onLongClick(paramView);
+            i += 1;
+          }
+          return false;
+        }
+      }
+      finally {}
     }
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadFailed, view: " + paramView);
+    for (int i = 0;; i = 0) {
+      try
+      {
+        while (i < this.a.size())
+        {
+          ((View.OnTouchListener)this.a.get(i)).onTouch(paramView, paramMotionEvent);
+          i += 1;
+          continue;
+          while (i < this.c.size())
+          {
+            ((aeov)this.c.get(i)).onTouch(paramView, paramMotionEvent);
+            i += 1;
+          }
+          return false;
+        }
+      }
+      finally {}
     }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadInterrupted, view: " + paramView);
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    super.onLoadProgressed(paramView, paramURLDrawable, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadProgressed, view: " + paramView);
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
-    }
-    CardContainer.a(this.a);
-    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdad
  * JD-Core Version:    0.7.0.1
  */

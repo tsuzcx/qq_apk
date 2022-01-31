@@ -1,45 +1,25 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.util.Log;
 
 class atsw
-  implements amne
+  implements atsy
 {
-  atsw(atsc paramatsc, IphonePickerView paramIphonePickerView, bfpc parambfpc) {}
+  atsw(atsv paramatsv) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing()))
-    {
-      atsc.a(this.jdField_a_of_type_Atsc, this.jdField_a_of_type_Atsc.c, false);
-      this.jdField_a_of_type_Bfpc.dismiss();
-    }
+    this.a.a = true;
+    this.a.c(paramInt);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void b(int paramInt)
   {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
-      {
-        if ((paramInt1 == 0) || (paramInt1 == 1)) {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-        }
-        this.jdField_a_of_type_Atsc.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
-      }
-      return;
-      this.jdField_a_of_type_Atsc.e = paramInt2;
-      continue;
-      this.jdField_a_of_type_Atsc.f = paramInt2;
-      continue;
-      this.jdField_a_of_type_Atsc.g = paramInt2;
-    }
+    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
+    this.a.b(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsw
  * JD-Core Version:    0.7.0.1
  */

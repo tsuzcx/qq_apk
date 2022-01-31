@@ -1,78 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class amsv
-  extends ampa<amsu>
 {
-  public int a()
-  {
-    return 575;
-  }
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  baps jdField_a_of_type_Baps;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
+  String c;
   
-  @NonNull
-  public amsu a(int paramInt)
+  public String toString()
   {
-    return new amsu();
-  }
-  
-  @Nullable
-  public amsu a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
-    {
-      amsu localamsu = amsu.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationEasterEggConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
-      }
-      return localamsu;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public Class<amsu> a()
-  {
-    return amsu.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(amsu paramamsu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, "onUpdate " + paramamsu.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append(", fileSize=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", downloadSize=").append(this.jdField_b_of_type_Long);
+    localStringBuffer.append(", req=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsv
  * JD-Core Version:    0.7.0.1
  */

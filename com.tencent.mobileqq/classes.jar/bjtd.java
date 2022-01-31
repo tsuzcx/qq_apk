@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class bjtd
-  implements Parcelable.Creator<EditLocalPhotoSource>
+final class bjtd
+  implements DialogInterface.OnClickListener
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
+  bjtd(bdfq parambdfq) {}
   
-  public EditLocalPhotoSource[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new EditLocalPhotoSource[paramInt];
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjtd
  * JD-Core Version:    0.7.0.1
  */

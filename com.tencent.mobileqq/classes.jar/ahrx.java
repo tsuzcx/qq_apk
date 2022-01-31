@@ -1,30 +1,34 @@
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.3;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahrx
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public ahrx(LoginView.3 param3) {}
+  public ahrx(ImgPreviewAdapter paramImgPreviewAdapter) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.this$0.c.setVisibility(0);
-    this.a.this$0.c.clearAnimation();
-    this.a.this$0.c.setAnimation(null);
-    this.a.this$0.a.invalidate();
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
+    if (localEmoticonFromGroupEntity != null)
+    {
+      if (localEmoticonFromGroupEntity.msg != null)
+      {
+        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
+        return;
+      }
+      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
+      return;
+    }
+    QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrx
  * JD-Core Version:    0.7.0.1
  */

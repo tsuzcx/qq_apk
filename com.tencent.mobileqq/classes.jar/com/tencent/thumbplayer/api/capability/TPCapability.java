@@ -2,8 +2,8 @@ package com.tencent.thumbplayer.api.capability;
 
 import com.tencent.thumbplayer.adapter.player.thumbplayer.TPDrmCapability;
 import com.tencent.thumbplayer.api.TPPlayerMgr;
-import com.tencent.thumbplayer.core.common.TPCodecCapability.TPVCodecBlackPropertyRange;
 import com.tencent.thumbplayer.core.common.TPCodecCapability.TPVCodecMaxCapability;
+import com.tencent.thumbplayer.core.common.TPCodecCapability.TPVCodecPropertyRange;
 import com.tencent.thumbplayer.core.common.TPNativeLibraryLoader;
 import com.tencent.thumbplayer.core.common.TPThumbplayerCapabilityHelper;
 import com.tencent.thumbplayer.utils.TPEnumUtils;
@@ -13,9 +13,9 @@ public class TPCapability
 {
   public static boolean addVCodecBlacklist(int paramInt1, int paramInt2, TPVCodecCapabilityForSet paramTPVCodecCapabilityForSet)
   {
-    TPCodecCapability.TPVCodecBlackPropertyRange localTPVCodecBlackPropertyRange = new TPCodecCapability.TPVCodecBlackPropertyRange();
-    localTPVCodecBlackPropertyRange.set(paramTPVCodecCapabilityForSet.getUpperboundWidth(), paramTPVCodecCapabilityForSet.getUpperboundHeight(), paramTPVCodecCapabilityForSet.getLowerboundWidth(), paramTPVCodecCapabilityForSet.getLowerboundHeight(), paramTPVCodecCapabilityForSet.getProfile(), paramTPVCodecCapabilityForSet.getLevel());
-    return TPThumbplayerCapabilityHelper.addVCodecBlacklist(TPEnumUtils.convertDecoderType2Inner(paramInt1), TPEnumUtils.convertCodecType2Inner(paramInt2), localTPVCodecBlackPropertyRange);
+    TPCodecCapability.TPVCodecPropertyRange localTPVCodecPropertyRange = new TPCodecCapability.TPVCodecPropertyRange();
+    localTPVCodecPropertyRange.set(paramTPVCodecCapabilityForSet.getUpperboundWidth(), paramTPVCodecCapabilityForSet.getUpperboundHeight(), paramTPVCodecCapabilityForSet.getLowerboundWidth(), paramTPVCodecCapabilityForSet.getLowerboundHeight(), paramTPVCodecCapabilityForSet.getProfile(), paramTPVCodecCapabilityForSet.getLevel());
+    return TPThumbplayerCapabilityHelper.addVCodecBlacklist(TPEnumUtils.convertDecoderType2Inner(paramInt1), TPEnumUtils.convertCodecType2Inner(paramInt2), localTPVCodecPropertyRange);
   }
   
   public static int[] getDRMCapabilities()
@@ -91,7 +91,7 @@ public class TPCapability
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.capability.TPCapability
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,112 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.core.AECameraManager.8;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Observable;
+import mqq.app.MobileQQ;
+import mqq.manager.Manager;
 
 public class bikc
-  implements axie
+  extends Observable
+  implements Manager
 {
-  public bikc(AECameraManager.8 param8) {}
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public bikc(AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AECameraManager", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
-    }
-    if (paramBoolean1)
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bikd(this);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.redpoint.broadcast.push.av"));
+  }
+  
+  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
+  {
+    if (paramArrayList == null) {}
+    do
     {
-      bika.c(this.a.this$0, true);
+      do
+      {
+        return null;
+        localObject = new Bundle();
+        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
+        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getRedTouchInfo", (Bundle)localObject);
+      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
+      paramArrayList = paramArrayList.data;
+      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
+      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
+    } while (localObject == null);
+    paramArrayList = new HashMap();
+    Object localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
+      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
+    }
+    return paramArrayList;
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null) {
       return;
     }
-    bika.a().g();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("path", paramString);
+    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "reportRedTouchClick", localBundle);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    boolean bool2 = false;
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("appId", paramInt);
+    localObject = QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "isLebaItemOpen", (Bundle)localObject);
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((EIPCResult)localObject).code == 0)
+      {
+        bool1 = bool2;
+        if (((EIPCResult)localObject).data != null) {
+          bool1 = ((EIPCResult)localObject).data.getBoolean("isLebaItemOpen", false);
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public void onDestroy()
+  {
+    super.deleteObservers();
+    try
+    {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bikc
  * JD-Core Version:    0.7.0.1
  */

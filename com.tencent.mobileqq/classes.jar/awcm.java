@@ -1,86 +1,216 @@
-import android.text.Editable;
-import android.text.Spannable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.richstatus.RichStatusEditText;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.persistence.NoColumnError;
 
 public class awcm
-  implements TextWatcher
+  extends awch
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  
-  public awcm(RichStatusEditText paramRichStatusEditText) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public awcm()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.getText().replace(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setSelection(this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.length());
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = true;
-    }
+    this.a = 16;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public awbv a(awbv paramawbv, Cursor paramCursor, boolean paramBoolean, awcg paramawcg)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (paramInt3 > 0)
+    paramawbv = (QQOperationViopTipTask)paramawbv;
+    if (paramawcg == null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt3;
-      RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setCursorVisible(true);
-      return;
+      paramawbv.taskid = paramCursor.getInt(paramCursor.getColumnIndex("taskid"));
+      paramawbv.uinType = paramCursor.getInt(paramCursor.getColumnIndex("uinType"));
+      paramawbv.tipType = paramCursor.getInt(paramCursor.getColumnIndex("tipType"));
+      paramawbv.adwords = paramCursor.getString(paramCursor.getColumnIndex("adwords"));
+      paramawbv.clickableWord = paramCursor.getString(paramCursor.getColumnIndex("clickableWord"));
+      paramawbv.linkOffset = paramCursor.getInt(paramCursor.getColumnIndex("linkOffset"));
+      paramawbv.url = paramCursor.getString(paramCursor.getColumnIndex("url"));
+      paramawbv.limitDayAIOCount = paramCursor.getInt(paramCursor.getColumnIndex("limitDayAIOCount"));
+      paramawbv.limitDayAIOShowCount = paramCursor.getInt(paramCursor.getColumnIndex("limitDayAIOShowCount"));
+      paramawbv.limitTotalAIOCount = paramCursor.getInt(paramCursor.getColumnIndex("limitTotalAIOCount"));
+      paramawbv.limitTotalShowCount = paramCursor.getInt(paramCursor.getColumnIndex("limitTotalShowCount"));
+      paramawbv.keywordString = paramCursor.getString(paramCursor.getColumnIndex("keywordString"));
+      paramawbv.begin = paramCursor.getString(paramCursor.getColumnIndex("begin"));
+      paramawbv.end = paramCursor.getString(paramCursor.getColumnIndex("end"));
+      paramawbv.frequencyTime = paramCursor.getInt(paramCursor.getColumnIndex("frequencyTime"));
+      paramawbv.frequencyMessage = paramCursor.getInt(paramCursor.getColumnIndex("frequencyMessage"));
+      return paramawbv;
     }
-    this.jdField_a_of_type_Boolean = false;
-    paramCharSequence = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, false, false);
-    if (paramCharSequence != null)
+    int i = paramCursor.getColumnIndex("taskid");
+    if (i == -1)
     {
-      paramInt3 = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).getSpanStart(paramCharSequence);
-      if (paramInt3 != paramInt1)
-      {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = paramInt3;
-        this.jdField_b_of_type_Int = (paramInt1 - paramInt3);
-        this.jdField_a_of_type_JavaLangString = "";
+      paramawcg.a(new NoColumnError("taskid", Integer.TYPE));
+      i = paramCursor.getColumnIndex("uinType");
+      if (i != -1) {
+        break label871;
       }
+      paramawcg.a(new NoColumnError("uinType", Integer.TYPE));
+      label370:
+      i = paramCursor.getColumnIndex("tipType");
+      if (i != -1) {
+        break label886;
+      }
+      paramawcg.a(new NoColumnError("tipType", Integer.TYPE));
+      label405:
+      i = paramCursor.getColumnIndex("adwords");
+      if (i != -1) {
+        break label901;
+      }
+      paramawcg.a(new NoColumnError("adwords", String.class));
+      label439:
+      i = paramCursor.getColumnIndex("clickableWord");
+      if (i != -1) {
+        break label916;
+      }
+      paramawcg.a(new NoColumnError("clickableWord", String.class));
+      label473:
+      i = paramCursor.getColumnIndex("linkOffset");
+      if (i != -1) {
+        break label931;
+      }
+      paramawcg.a(new NoColumnError("linkOffset", Integer.TYPE));
+      label508:
+      i = paramCursor.getColumnIndex("url");
+      if (i != -1) {
+        break label946;
+      }
+      paramawcg.a(new NoColumnError("url", String.class));
+      label542:
+      i = paramCursor.getColumnIndex("limitDayAIOCount");
+      if (i != -1) {
+        break label961;
+      }
+      paramawcg.a(new NoColumnError("limitDayAIOCount", Integer.TYPE));
+      label577:
+      i = paramCursor.getColumnIndex("limitDayAIOShowCount");
+      if (i != -1) {
+        break label976;
+      }
+      paramawcg.a(new NoColumnError("limitDayAIOShowCount", Integer.TYPE));
+      label612:
+      i = paramCursor.getColumnIndex("limitTotalAIOCount");
+      if (i != -1) {
+        break label991;
+      }
+      paramawcg.a(new NoColumnError("limitTotalAIOCount", Integer.TYPE));
+      label647:
+      i = paramCursor.getColumnIndex("limitTotalShowCount");
+      if (i != -1) {
+        break label1006;
+      }
+      paramawcg.a(new NoColumnError("limitTotalShowCount", Integer.TYPE));
+      label682:
+      i = paramCursor.getColumnIndex("keywordString");
+      if (i != -1) {
+        break label1021;
+      }
+      paramawcg.a(new NoColumnError("keywordString", String.class));
+      label716:
+      i = paramCursor.getColumnIndex("begin");
+      if (i != -1) {
+        break label1036;
+      }
+      paramawcg.a(new NoColumnError("begin", String.class));
+      label750:
+      i = paramCursor.getColumnIndex("end");
+      if (i != -1) {
+        break label1051;
+      }
+      paramawcg.a(new NoColumnError("end", String.class));
+      label784:
+      i = paramCursor.getColumnIndex("frequencyTime");
+      if (i != -1) {
+        break label1066;
+      }
+      paramawcg.a(new NoColumnError("frequencyTime", Integer.TYPE));
     }
-    RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, paramInt2);
+    for (;;)
+    {
+      i = paramCursor.getColumnIndex("frequencyMessage");
+      if (i != -1) {
+        break label1081;
+      }
+      paramawcg.a(new NoColumnError("frequencyMessage", Integer.TYPE));
+      return paramawbv;
+      paramawbv.taskid = paramCursor.getInt(i);
+      break;
+      label871:
+      paramawbv.uinType = paramCursor.getInt(i);
+      break label370;
+      label886:
+      paramawbv.tipType = paramCursor.getInt(i);
+      break label405;
+      label901:
+      paramawbv.adwords = paramCursor.getString(i);
+      break label439;
+      label916:
+      paramawbv.clickableWord = paramCursor.getString(i);
+      break label473;
+      label931:
+      paramawbv.linkOffset = paramCursor.getInt(i);
+      break label508;
+      label946:
+      paramawbv.url = paramCursor.getString(i);
+      break label542;
+      label961:
+      paramawbv.limitDayAIOCount = paramCursor.getInt(i);
+      break label577;
+      label976:
+      paramawbv.limitDayAIOShowCount = paramCursor.getInt(i);
+      break label612;
+      label991:
+      paramawbv.limitTotalAIOCount = paramCursor.getInt(i);
+      break label647;
+      label1006:
+      paramawbv.limitTotalShowCount = paramCursor.getInt(i);
+      break label682;
+      label1021:
+      paramawbv.keywordString = paramCursor.getString(i);
+      break label716;
+      label1036:
+      paramawbv.begin = paramCursor.getString(i);
+      break label750;
+      label1051:
+      paramawbv.end = paramCursor.getString(i);
+      break label784;
+      label1066:
+      paramawbv.frequencyTime = paramCursor.getInt(i);
+    }
+    label1081:
+    paramawbv.frequencyMessage = paramCursor.getInt(i);
+    return paramawbv;
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public String a(String paramString)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      bckn localbckn = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1 + paramInt3, true, false);
-      if ((localbckn != null) && (RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText) != null) && (!RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).a(localbckn)))
-      {
-        this.jdField_a_of_type_JavaLangString = "";
-        this.jdField_b_of_type_Boolean = true;
-        return;
-      }
-      this.jdField_a_of_type_JavaLangString = paramCharSequence.subSequence(paramInt1, paramInt1 + paramInt3).toString();
-    } while (!this.jdField_a_of_type_JavaLangString.contains("\n"));
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("\n", "");
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,taskid INTEGER ,uinType INTEGER ,tipType INTEGER ,adwords TEXT ,clickableWord TEXT ,linkOffset INTEGER ,url TEXT ,limitDayAIOCount INTEGER ,limitDayAIOShowCount INTEGER ,limitTotalAIOCount INTEGER ,limitTotalShowCount INTEGER ,keywordString TEXT ,begin TEXT ,end TEXT ,frequencyTime INTEGER ,frequencyMessage INTEGER,UNIQUE(taskid) ON CONFLICT REPLACE)");
+    return localStringBuilder.toString();
+  }
+  
+  public void a(awbv paramawbv, ContentValues paramContentValues)
+  {
+    paramawbv = (QQOperationViopTipTask)paramawbv;
+    paramContentValues.put("taskid", Integer.valueOf(paramawbv.taskid));
+    paramContentValues.put("uinType", Integer.valueOf(paramawbv.uinType));
+    paramContentValues.put("tipType", Integer.valueOf(paramawbv.tipType));
+    paramContentValues.put("adwords", paramawbv.adwords);
+    paramContentValues.put("clickableWord", paramawbv.clickableWord);
+    paramContentValues.put("linkOffset", Integer.valueOf(paramawbv.linkOffset));
+    paramContentValues.put("url", paramawbv.url);
+    paramContentValues.put("limitDayAIOCount", Integer.valueOf(paramawbv.limitDayAIOCount));
+    paramContentValues.put("limitDayAIOShowCount", Integer.valueOf(paramawbv.limitDayAIOShowCount));
+    paramContentValues.put("limitTotalAIOCount", Integer.valueOf(paramawbv.limitTotalAIOCount));
+    paramContentValues.put("limitTotalShowCount", Integer.valueOf(paramawbv.limitTotalShowCount));
+    paramContentValues.put("keywordString", paramawbv.keywordString);
+    paramContentValues.put("begin", paramawbv.begin);
+    paramContentValues.put("end", paramawbv.end);
+    paramContentValues.put("frequencyTime", Integer.valueOf(paramawbv.frequencyTime));
+    paramContentValues.put("frequencyMessage", Integer.valueOf(paramawbv.frequencyMessage));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awcm
  * JD-Core Version:    0.7.0.1
  */

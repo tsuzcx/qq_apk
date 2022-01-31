@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.3;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
 public class airw
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public airw(ApolloGameNormalStartHandler.3 param3) {}
+  public airw(SendHbActivity paramSendHbActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    airv.a(this.a.this$0).dismiss();
-    airv.a(this.a.this$0, true);
+    paramDialogInterface.dismiss();
+    SendHbActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airw
  * JD-Core Version:    0.7.0.1
  */

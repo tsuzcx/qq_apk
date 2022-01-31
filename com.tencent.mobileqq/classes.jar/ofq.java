@@ -1,23 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 class ofq
-  implements ViewBase.OnClickListener
+  implements Animator.AnimatorListener
 {
-  ofq(ofb paramofb, ViewBase paramViewBase) {}
+  ofq(ofn paramofn) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    onh.a(this.jdField_a_of_type_Ofb.jdField_a_of_type_Ohs.a().getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
-    if (this.jdField_a_of_type_Ofb.jdField_a_of_type_Ohs.a() != null) {
-      this.jdField_a_of_type_Ofb.jdField_a_of_type_Ohs.a().g(this.jdField_a_of_type_Ofb.jdField_a_of_type_Oif);
-    }
+    ofn.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ofn.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    ofn.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ofn.a(this.a, true);
+    ofn.a(this.a).setAlpha(0.0F);
+    ofn.b(this.a).setAlpha(0.0F);
+    ofn.c(this.a).setAlpha(0.0F);
+    ofn.a(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofq
  * JD-Core Version:    0.7.0.1
  */

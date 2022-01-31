@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.text.TextUtils;
-import auos;
-import autd;
+import awga;
+import awkp;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -31,7 +31,7 @@ class PersonalityLabelGalleryActivity$4
       }
       localObject = new CompressInfo((String)localObject, 0);
       ((CompressInfo)localObject).f = 0;
-      auos.b((CompressInfo)localObject);
+      awga.b((CompressInfo)localObject);
       if (QLog.isColorLevel()) {
         QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label uploadPhoto(), thumb_path = " + ((CompressInfo)localObject).e);
       }
@@ -58,14 +58,14 @@ class PersonalityLabelGalleryActivity$4
       }
     }
     if (localArrayList.size() > 0) {
-      this.this$0.jdField_a_of_type_Autd.a(localArrayList, PersonalityLabelGalleryActivity.a(this.this$0));
+      this.this$0.jdField_a_of_type_Awkp.a(localArrayList, PersonalityLabelGalleryActivity.a(this.this$0));
     }
     this.this$0.runOnUiThread(new PersonalityLabelGalleryActivity.4.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.4
  * JD-Core Version:    0.7.0.1
  */

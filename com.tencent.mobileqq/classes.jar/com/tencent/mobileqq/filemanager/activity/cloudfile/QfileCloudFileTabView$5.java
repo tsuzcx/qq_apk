@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.cloudfile;
 
-import apvw;
+import aroy;
 import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -11,7 +11,7 @@ class QfileCloudFileTabView$5
 {
   public void run()
   {
-    Object localObject = apvw.a(this.a.b);
+    Object localObject = aroy.a(this.a.b);
     if (!this.this$0.a.containsKey(localObject)) {
       this.this$0.a.put(localObject, new ArrayList());
     }
@@ -25,7 +25,7 @@ class QfileCloudFileTabView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.5
  * JD-Core Version:    0.7.0.1
  */

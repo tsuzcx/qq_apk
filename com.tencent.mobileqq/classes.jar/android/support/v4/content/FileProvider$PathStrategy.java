@@ -3,7 +3,7 @@ package android.support.v4.content;
 import android.net.Uri;
 import java.io.File;
 
-abstract interface FileProvider$PathStrategy
+public abstract interface FileProvider$PathStrategy
 {
   public abstract File getFileForUri(Uri paramUri);
   

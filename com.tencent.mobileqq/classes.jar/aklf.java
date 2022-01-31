@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.app.automator.step.CheckAuthCode;
+import android.view.SurfaceHolder;
 
 public class aklf
-  extends ajuf
 {
-  private aklf(CheckAuthCode paramCheckAuthCode) {}
+  public int a;
+  public SurfaceHolder a;
+  public int b;
+  public int c;
   
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  public String toString()
   {
-    this.a.a(7);
+    StringBuffer localStringBuffer = new StringBuffer("SurfaceCallBackData{");
+    localStringBuffer.append("holder=").append(this.jdField_a_of_type_AndroidViewSurfaceHolder);
+    localStringBuffer.append(", format=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", w=").append(this.b);
+    localStringBuffer.append(", h=").append(this.c);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aklf
  * JD-Core Version:    0.7.0.1
  */

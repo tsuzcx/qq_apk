@@ -1,167 +1,338 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import common.config.service.QzoneConfig;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ListAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bhpp
 {
-  private static final int jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneRegLruMapSize", 50);
-  private static long jdField_a_of_type_Long;
-  private static LRULinkedHashMap<String, Pattern> jdField_a_of_type_ComTencentUtilLRULinkedHashMap;
-  private static String jdField_a_of_type_JavaLangString;
+  private int jdField_a_of_type_Int;
+  private bhpq jdField_a_of_type_Bhpq;
+  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList;
+  private View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[0];
+  private ArrayList<View>[] jdField_a_of_type_ArrayOfJavaUtilArrayList;
+  private int b;
   
-  private static String a()
+  public bhpp(AbsListView paramAbsListView) {}
+  
+  private void d()
   {
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long >= 180000L)
+    int m = this.jdField_a_of_type_ArrayOfAndroidViewView.length;
+    int n = this.b;
+    ArrayList[] arrayOfArrayList = this.jdField_a_of_type_ArrayOfJavaUtilArrayList;
+    int i = 0;
+    while (i < n)
     {
-      jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneUrlBanList", "[{'domains':['^.*\\.douyin\\.com/.*'],'items':['^https?://d\\.douyin\\.com/.+']},{'domains':['^.*\\.huoshan\\.com/.*'],'items':['^https?://d\\.huoshan\\.com/.+']},{'domains':['^.*\\.toutiao\\.com/.*','^.*\\.xiguaapp\\.cn/.*','^.*\\.xiguashipin\\.cn/.*','^.*\\.365yg\\.com/.*','^.*\\.snssdk\\.com/.*','^.*\\.ixigua\\.com/.*','^.*\\.toutiaocdn\\.net/.*'],'items':['^https?://d\\.toutiao\\.com/.+','^https?://d\\.ixigua\\.com/.+']},{'domains':['^http.*'],'items':['^snssdk[0-9]+://.*','^changba://.*','^orpheus://.*']}]");
-      jdField_a_of_type_Long = l;
+      ArrayList localArrayList = arrayOfArrayList[i];
+      int i1 = localArrayList.size();
+      int j = i1 - 1;
+      int k = 0;
+      while (k < i1 - m)
+      {
+        AbsListView.access$4400(this.jdField_a_of_type_ComTencentWidgetAbsListView, (View)localArrayList.remove(j), false);
+        k += 1;
+        j -= 1;
+      }
+      i += 1;
     }
-    return jdField_a_of_type_JavaLangString;
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  public View a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramString2)) {
-      return false;
-    }
-    if (jdField_a_of_type_ComTencentUtilLRULinkedHashMap == null) {
-      jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(jdField_a_of_type_Int);
-    }
-    Pattern localPattern1 = null;
-    try
+    paramInt -= this.jdField_a_of_type_Int;
+    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
+    if ((paramInt >= 0) && (paramInt < arrayOfView.length))
     {
-      if (jdField_a_of_type_Int > 0) {
-        localPattern1 = (Pattern)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString2);
-      }
-      Pattern localPattern2 = localPattern1;
-      if (localPattern1 == null)
+      View localView = arrayOfView[paramInt];
+      arrayOfView[paramInt] = null;
+      return localView;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    ArrayList localArrayList;
+    int j;
+    if (this.b == 1)
+    {
+      localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      j = localArrayList.size();
+      while (i < j)
       {
-        localPattern1 = Pattern.compile(paramString2);
-        localPattern2 = localPattern1;
-        if (jdField_a_of_type_Int > 0)
-        {
-          jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(paramString2, localPattern1);
-          localPattern2 = localPattern1;
+        ((View)localArrayList.get(i)).forceLayout();
+        i += 1;
+      }
+    }
+    int k = this.b;
+    i = 0;
+    while (i < k)
+    {
+      localArrayList = this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i];
+      int m = localArrayList.size();
+      j = 0;
+      while (j < m)
+      {
+        ((View)localArrayList.get(j)).forceLayout();
+        j += 1;
+      }
+      i += 1;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt < 1) {
+      throw new IllegalArgumentException("Can't have a viewTypeCount < 1");
+    }
+    ArrayList[] arrayOfArrayList = new ArrayList[paramInt];
+    int i = 0;
+    while (i < paramInt)
+    {
+      arrayOfArrayList[i] = new ArrayList();
+      i += 1;
+    }
+    this.b = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = arrayOfArrayList[0];
+    this.jdField_a_of_type_ArrayOfJavaUtilArrayList = arrayOfArrayList;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ArrayOfAndroidViewView.length < paramInt1) {
+      this.jdField_a_of_type_ArrayOfAndroidViewView = new View[paramInt1];
+    }
+    this.jdField_a_of_type_Int = paramInt2;
+    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
+    paramInt2 = 0;
+    while (paramInt2 < paramInt1)
+    {
+      View localView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(paramInt2);
+      AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)localView.getLayoutParams();
+      if ((localLayoutParams != null) && (localLayoutParams.jdField_a_of_type_Int != -2)) {
+        arrayOfView[paramInt2] = localView;
+      }
+      paramInt2 += 1;
+    }
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)paramView.getLayoutParams();
+    if (localLayoutParams == null) {}
+    for (;;)
+    {
+      return;
+      int i = localLayoutParams.jdField_a_of_type_Int;
+      if (!a(i))
+      {
+        if (i != -2) {
+          AbsListView.access$4100(this.jdField_a_of_type_ComTencentWidgetAbsListView, paramView, false);
         }
       }
-      boolean bool = localPattern2.matcher(paramString1).lookingAt();
-      return bool;
+      else
+      {
+        localLayoutParams.b = paramInt;
+        if (this.b == 1)
+        {
+          AbsListView.access$4200(this.jdField_a_of_type_ComTencentWidgetAbsListView, paramView);
+          this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
+        }
+        while (this.jdField_a_of_type_Bhpq != null)
+        {
+          this.jdField_a_of_type_Bhpq.b(paramView);
+          return;
+          AbsListView.access$4200(this.jdField_a_of_type_ComTencentWidgetAbsListView, paramView);
+          if (i < this.jdField_a_of_type_ArrayOfJavaUtilArrayList.length) {
+            this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i].add(paramView);
+          }
+        }
+      }
     }
-    catch (Exception paramString1)
-    {
-      QLog.e("QzoneStringMatcher", 1, "isMatch reg error.", paramString1);
-    }
-    return false;
   }
   
-  public static boolean a(String paramString1, String paramString2, boolean paramBoolean)
+  public void a(List<View> paramList)
   {
-    if (!paramBoolean) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramString2)) {
-      return false;
-    }
-    String str1 = a();
-    if (TextUtils.isEmpty(str1)) {
-      return false;
-    }
-    int i;
-    label102:
-    int j;
-    try
-    {
-      localJSONArray = new JSONArray(str1);
-      if (localJSONArray.length() > 0) {
-        break label291;
-      }
-      return false;
-    }
-    catch (JSONException paramString1)
-    {
-      JSONArray localJSONArray;
-      Object localObject1;
-      Object localObject2;
-      String str2;
-      label147:
-      QLog.e("QzoneStringMatcher", 1, "config is not valid json. " + str1);
-    }
-    if (i < localJSONArray.length())
-    {
-      localObject1 = localJSONArray.getJSONObject(i);
-      localObject2 = ((JSONObject)localObject1).optJSONArray("domains");
-      if (localObject2 == null) {
-        break label296;
-      }
-      if (((JSONArray)localObject2).length() != 0) {
-        break label303;
-      }
-      break label296;
-      if (j >= ((JSONArray)localObject2).length()) {
-        break label285;
-      }
-      str2 = (String)((JSONArray)localObject2).get(j);
-      if ((TextUtils.isEmpty(str2)) || (!a(paramString1, str2))) {
-        break label309;
-      }
-      j = 1;
-      if (j == 0) {
-        break label296;
-      }
-      localObject1 = ((JSONObject)localObject1).optJSONArray("items");
-      if ((localObject1 == null) || (((JSONArray)localObject1).length() == 0)) {
-        break label296;
-      }
-      j = 0;
+    if (this.b == 1) {
+      paramList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
     }
     for (;;)
     {
-      if (j < ((JSONArray)localObject1).length())
+      return;
+      int j = this.b;
+      ArrayList[] arrayOfArrayList = this.jdField_a_of_type_ArrayOfJavaUtilArrayList;
+      int i = 0;
+      while (i < j)
       {
-        localObject2 = (String)((JSONArray)localObject1).get(j);
-        if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!a(paramString2, (String)localObject2))) {
-          break label318;
-        }
-        QLog.d("QzoneStringMatcher", 2, "match url:" + paramString2 + ",item=" + (String)localObject2);
-        return true;
-        return false;
-        label285:
-        j = 0;
-        break label147;
-        label291:
-        i = 0;
-        break;
+        paramList.addAll(arrayOfArrayList[i]);
+        i += 1;
       }
-      label296:
-      i += 1;
-      break;
-      label303:
-      j = 0;
-      break label102;
-      label309:
-      j += 1;
-      break label102;
-      label318:
-      j += 1;
     }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return paramInt >= 0;
+  }
+  
+  public View b(int paramInt)
+  {
+    if (this.b == 1) {
+      return AbsListView.retrieveFromScrap(this.jdField_a_of_type_JavaUtilArrayList, paramInt);
+    }
+    int i = this.jdField_a_of_type_ComTencentWidgetAbsListView.mAdapter.getItemViewType(paramInt);
+    if ((i >= 0) && (this.jdField_a_of_type_ArrayOfJavaUtilArrayList != null) && (i < this.jdField_a_of_type_ArrayOfJavaUtilArrayList.length)) {
+      return AbsListView.retrieveFromScrap(this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i], paramInt);
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    ArrayList localArrayList;
+    int j;
+    if (this.b == 1)
+    {
+      localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      j = localArrayList.size();
+      i = 0;
+      while (i < j)
+      {
+        AbsListView.access$3900(this.jdField_a_of_type_ComTencentWidgetAbsListView, (View)localArrayList.remove(j - 1 - i), false);
+        i += 1;
+      }
+    }
+    int k = this.b;
+    int i = 0;
+    while (i < k)
+    {
+      localArrayList = this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i];
+      int m = localArrayList.size();
+      j = 0;
+      while (j < m)
+      {
+        AbsListView.access$4000(this.jdField_a_of_type_ComTencentWidgetAbsListView, (View)localArrayList.remove(m - 1 - j), false);
+        j += 1;
+      }
+      i += 1;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.b == 1)
+    {
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+      j = ((ArrayList)localObject1).size();
+      i = 0;
+      while (i < j)
+      {
+        ((View)((ArrayList)localObject1).get(i)).setDrawingCacheBackgroundColor(paramInt);
+        i += 1;
+      }
+    }
+    int k = this.b;
+    int i = 0;
+    while (i < k)
+    {
+      localObject1 = this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i];
+      int m = ((ArrayList)localObject1).size();
+      j = 0;
+      while (j < m)
+      {
+        ((View)((ArrayList)localObject1).get(j)).setDrawingCacheBackgroundColor(paramInt);
+        j += 1;
+      }
+      i += 1;
+    }
+    Object localObject1 = this.jdField_a_of_type_ArrayOfAndroidViewView;
+    int j = localObject1.length;
+    i = 0;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      if (localObject2 != null) {
+        localObject2.setDrawingCacheBackgroundColor(paramInt);
+      }
+      i += 1;
+    }
+  }
+  
+  public void c()
+  {
+    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
+    int i;
+    int j;
+    label25:
+    Object localObject1;
+    int k;
+    label37:
+    View localView;
+    Object localObject2;
+    int m;
+    if (this.jdField_a_of_type_Bhpq != null)
+    {
+      i = 1;
+      if (this.b <= 1) {
+        break label128;
+      }
+      j = 1;
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+      k = arrayOfView.length - 1;
+      if (k < 0) {
+        break label200;
+      }
+      localView = arrayOfView[k];
+      localObject2 = localObject1;
+      if (localView != null)
+      {
+        localObject2 = (AbsListView.LayoutParams)localView.getLayoutParams();
+        m = ((AbsListView.LayoutParams)localObject2).jdField_a_of_type_Int;
+        arrayOfView[k] = null;
+        if (a(m)) {
+          break label133;
+        }
+        localObject2 = localObject1;
+        if (m != -2)
+        {
+          AbsListView.access$4300(this.jdField_a_of_type_ComTencentWidgetAbsListView, localView, false);
+          localObject2 = localObject1;
+        }
+      }
+    }
+    for (;;)
+    {
+      k -= 1;
+      localObject1 = localObject2;
+      break label37;
+      i = 0;
+      break;
+      label128:
+      j = 0;
+      break label25;
+      label133:
+      if (j != 0) {
+        localObject1 = this.jdField_a_of_type_ArrayOfJavaUtilArrayList[m];
+      }
+      AbsListView.access$4200(this.jdField_a_of_type_ComTencentWidgetAbsListView, localView);
+      ((AbsListView.LayoutParams)localObject2).b = (this.jdField_a_of_type_Int + k);
+      ((ArrayList)localObject1).add(localView);
+      localObject2 = localObject1;
+      if (i != 0)
+      {
+        this.jdField_a_of_type_Bhpq.b(localView);
+        localObject2 = localObject1;
+      }
+    }
+    label200:
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhpp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController;
 
-class mtt
-  implements DialogInterface.OnShowListener
+public class mtt
 {
-  mtt(mtq parammtq) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
+  public static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1E at: " + System.currentTimeMillis());
+    mtq.a("0X800A3D9", VideoController.a().a().d);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    int i = VideoController.a().a().d;
+    if (paramBoolean) {
+      mtq.a("0X800A3DA", i);
     }
-    axqy.b(null, "CliOper", "", "", "0X8008D1E", "0X8008D1E", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtt
  * JD-Core Version:    0.7.0.1
  */

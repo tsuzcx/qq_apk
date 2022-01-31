@@ -1,71 +1,94 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.NumberCheckBox;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQzoneFeed;
+import cooperation.qzone.QZoneClickReport;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class afuo
-  extends RecyclerView.ViewHolder
+class afuo
   implements View.OnClickListener
 {
-  private afun a;
-  public ImageView a;
-  public NumberCheckBox a;
-  public ImageView[] a;
-  public NumberCheckBox[] a;
-  public ImageView b;
-  public NumberCheckBox b;
-  public ImageView[] b;
-  public ImageView c;
-  public NumberCheckBox c;
-  public ImageView d;
-  public ImageView e;
-  public ImageView f;
-  
-  public afuo(View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367978));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364193));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368010));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367979));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364194));
-    this.d = ((ImageView)paramView.findViewById(2131368011));
-    this.e = ((ImageView)paramView.findViewById(2131367980));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364195));
-    this.f = ((ImageView)paramView.findViewById(2131368012));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_c_of_type_AndroidWidgetImageView, this.e };
-    paramView = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-    int j = paramView.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramView[i].setOnClickListener(this);
-      i += 1;
-    }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetNumberCheckBox = new NumberCheckBox[] { this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox, this.jdField_b_of_type_ComTencentMobileqqWidgetNumberCheckBox, this.jdField_c_of_type_ComTencentMobileqqWidgetNumberCheckBox };
-    this.jdField_b_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { this.jdField_b_of_type_AndroidWidgetImageView, this.d, this.f };
-  }
-  
-  void a(afun paramafun)
-  {
-    this.jdField_a_of_type_Afun = paramafun;
-  }
+  afuo(afun paramafun, MessageForQzoneFeed paramMessageForQzoneFeed) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("picOnClick.1", 2, "v.getId: " + paramView.getId() + " itemView.getTag: " + this.itemView.getTag());
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl = afun.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl)) {
+      return;
     }
-    if (this.jdField_a_of_type_Afun != null) {
-      this.jdField_a_of_type_Afun.a(((Integer)this.itemView.getTag()).intValue(), paramView.getId());
+    Map localMap = bhos.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
+    Object localObject = null;
+    if (localMap != null) {
+      localObject = (String)localMap.get("g");
+    }
+    if (("110".equals(localObject)) || ("279".equals(localObject)) || ("318".equals(localObject)))
+    {
+      paramView = paramView.getContext();
+      localObject = bizt.a();
+      ((bizt)localObject).a = this.jdField_a_of_type_Afun.a.getCurrentAccountUin();
+      ((bizt)localObject).b = this.jdField_a_of_type_Afun.a.getCurrentNickname();
+      bizm.a((Activity)paramView, (bizt)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl, "mqqChat.QzoneCard", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.appId, -1);
+      paramView = new bizg();
+      paramView.c = "1";
+      paramView.d = "0";
+      paramView.b = 4;
+      paramView.l = "3";
+      paramView.m = "AIO";
+      paramView.n = "detailPage";
+      QZoneClickReport.startReportImediately(this.jdField_a_of_type_Afun.a.getAccount(), paramView);
+      paramView = new HashMap();
+      paramView.put("source_type", "3");
+      paramView.put("source_from", "AIO");
+      paramView.put("source_to", "detailPage");
+      azmz.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_Afun.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, paramView, null);
+      paramView = null;
+      if (localMap != null) {
+        paramView = (String)localMap.get("a");
+      }
+      if (paramView != null)
+      {
+        if (!paramView.equals("4")) {
+          break label461;
+        }
+        paramView = "1";
+      }
+    }
+    for (;;)
+    {
+      localObject = new bizg();
+      ((bizg)localObject).c = "330";
+      ((bizg)localObject).d = "2";
+      ((bizg)localObject).e = paramView;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.isFirstMsgWithNewFriend) {
+        ((bizg)localObject).i = "1";
+      }
+      ((bizg)localObject).a = new ArrayList();
+      ((bizg)localObject).a.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
+      QZoneClickReport.startReportImediately(this.jdField_a_of_type_Afun.a.getAccount(), (bizg)localObject);
+      azmj.b(this.jdField_a_of_type_Afun.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "2", "", "");
+      azmj.b(this.jdField_a_of_type_Afun.a, "CliOper", "", "", "0X8006000", "0X8006000", 0, 0, "", "", "", "");
+      return;
+      this.jdField_a_of_type_Afun.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
+      break;
+      label461:
+      if (paramView.equals("311")) {
+        paramView = "2";
+      } else if (paramView.equals("2")) {
+        paramView = "3";
+      } else {
+        paramView = "4";
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afuo
  * JD-Core Version:    0.7.0.1
  */

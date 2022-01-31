@@ -1,31 +1,31 @@
-import java.util.HashMap;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class apjt
-  implements aysb
+class apjt
+  implements Handler.Callback
 {
-  public void a(aysy paramaysy, aysz paramaysz)
+  apjt(apjs paramapjs) {}
+  
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((paramaysy == null) || (paramaysz == null)) {}
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      do
-      {
-        return;
-      } while (!(paramaysy instanceof ayrx));
-      paramaysy = (ayrx)paramaysy;
-      paramaysy.jdField_a_of_type_Long += paramaysz.c;
-      paramaysz.c = 0L;
-      paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
-      paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
-      paramaysz = paramaysy.jdField_a_of_type_JavaLangString;
-    } while (!paramaysz.contains("range="));
-    paramaysz = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
-    paramaysy.jdField_a_of_type_JavaLangString = (paramaysz + "range=" + paramaysy.jdField_a_of_type_Long);
+      return true;
+      this.a.b = true;
+      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
+    } while (this.a.b() < 300);
+    apjs.a(this.a).clear();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apjt
  * JD-Core Version:    0.7.0.1
  */

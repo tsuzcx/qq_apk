@@ -1,27 +1,24 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
 
-final class bgli
-  implements bglo
+class bgli
+  extends BroadcastReceiver
 {
-  bgli(bgln parambgln) {}
+  bgli(bglh parambglh) {}
   
-  public void a(boolean paramBoolean, Context paramContext, bglq parambglq)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    if (bglo.a(paramIntent.getAction())) {}
+    while (bglh.a(this.a) == null) {
+      return;
     }
-    if (paramBoolean) {
-      bglh.d(paramContext, parambglq);
-    }
-    if (this.a != null) {
-      this.a.a(paramBoolean);
-    }
+    bglh.a(this.a).a(paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgli
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhfm;
+import bjgw;
 
 public class PublishEventTag
   implements Parcelable
 {
-  public static final Parcelable.Creator<PublishEventTag> CREATOR = new bhfm();
+  public static final Parcelable.Creator<PublishEventTag> CREATOR = new bjgw();
   public String a;
   public String b;
   public String c;
@@ -49,7 +49,7 @@ public class PublishEventTag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.PublishEventTag
  * JD-Core Version:    0.7.0.1
  */

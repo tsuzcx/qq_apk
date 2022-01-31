@@ -1,9 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils;
 
+import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -16,80 +18,111 @@ public class BindDataUtil
   
   public static void bindDynamicValueWithoutRecursion(Container paramContainer, TemplateBean paramTemplateBean1, TemplateBean paramTemplateBean2)
   {
+    if ((paramContainer == null) || (paramTemplateBean2 == null))
+    {
+      LogUtil.QLog.i(TAG, 1, "[bindDynamicValueWithoutRecursion], container or newTemplateBean is null.");
+      return;
+    }
     long l1 = System.currentTimeMillis();
     Map localMap1 = paramContainer.getViewIdMapping();
     Map localMap2 = paramTemplateBean2.getViewDataBinding();
     HashSet localHashSet = new HashSet();
     if (paramTemplateBean1 != null) {}
-    for (paramContainer = paramTemplateBean1.getViewDataBinding();; paramContainer = null)
+    for (paramTemplateBean1 = paramTemplateBean1.getViewDataBinding();; paramTemplateBean1 = null)
     {
       if ((localHashSet != null) && (localMap1 != null)) {
         localHashSet.addAll(localMap1.keySet());
       }
       Iterator localIterator = localMap2.keySet().iterator();
-      label131:
-      label403:
+      label150:
+      label425:
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
         long l2 = System.currentTimeMillis();
-        ViewBean localViewBean = (ViewBean)localMap2.get(str);
+        ViewBean localViewBean2 = (ViewBean)localMap2.get(str);
+        ViewBean localViewBean1;
         ViewBase localViewBase;
         int i;
-        if (paramContainer != null)
+        if (paramTemplateBean1 != null)
         {
-          paramTemplateBean1 = (ViewBean)paramContainer.get(str);
+          localViewBean1 = (ViewBean)paramTemplateBean1.get(str);
           if (localHashSet != null) {
             localHashSet.remove(str);
           }
           localViewBase = (ViewBase)localMap1.get(str);
-          if ((str == null) || (localViewBase == null) || (localViewBean == null) || ((paramTemplateBean1 != null) && (localViewBean.valueBean.dynamicValue.equals(paramTemplateBean1.valueBean.dynamicValue)))) {
-            break label303;
+          if ((str == null) || (localViewBase == null) || (localViewBean2 == null) || ((localViewBean1 != null) && (localViewBean2.valueBean.dynamicValue.equals(localViewBean1.valueBean.dynamicValue)))) {
+            break label325;
           }
           i = 1;
-          label204:
+          label225:
           if (i == 0) {
-            break label308;
+            break label330;
           }
-          localViewBean.setVisible(true);
-          localViewBase.bindDynamicValue(localViewBean);
-          LogUtil.QLog.d(TAG, 1, "bindDynamicValueWithoutRecursion | [ viewId = " + str + " value changed ] newValue: " + localViewBean.valueBean.dynamicValue + "; cost " + (System.currentTimeMillis() - l2) + "ms");
+          localViewBean2.setVisible(true);
+          localViewBase.bindDynamicValue(localViewBean2);
+          LogUtil.QLog.d(TAG, 1, "bindDynamicValueWithoutRecursion | [ viewId = " + str + " value changed ] newValue: " + localViewBean2.valueBean.dynamicValue + "; cost " + (System.currentTimeMillis() - l2) + "ms");
         }
         for (;;)
         {
           if (localViewBase == null) {
-            break label403;
+            break label425;
           }
           localViewBase.setVisibility(0);
           break;
-          paramTemplateBean1 = null;
-          break label131;
-          label303:
+          localViewBean1 = null;
+          break label150;
+          label325:
           i = 0;
-          break label204;
-          label308:
-          if (localViewBean != null)
+          break label225;
+          label330:
+          if (localViewBean2 != null)
           {
-            LogUtil.QLog.i(TAG, 1, "[bindDynamicValueWithoutRecursion] skip: " + localViewBean.valueBean.dynamicValue + " viewId = " + str);
+            LogUtil.QLog.i(TAG, 1, "[bindDynamicValueWithoutRecursion] skip: " + localViewBean2.valueBean.dynamicValue + " viewId = " + str);
             LogUtil.QLog.d(TAG, 2, "bindDynamicValueWithoutRecursion | [ viewId = " + str + " value not changed ] cost " + (System.currentTimeMillis() - l2) + "ms");
           }
         }
       }
       if (localHashSet != null)
       {
-        paramContainer = localHashSet.iterator();
-        while (paramContainer.hasNext()) {
-          ((ViewBase)localMap1.get((String)paramContainer.next())).setVisibility(8);
+        paramTemplateBean1 = localHashSet.iterator();
+        while (paramTemplateBean1.hasNext()) {
+          ((ViewBase)localMap1.get((String)paramTemplateBean1.next())).setVisibility(8);
         }
       }
       LogUtil.QLog.d(TAG, 2, "bindDynamicValueWithoutRecursion_____ " + paramTemplateBean2.getStyleName() + " cost " + (System.currentTimeMillis() - l1) + "ms");
-      return;
+      paramTemplateBean1 = paramContainer.getVirtualView();
+      if (paramTemplateBean1 == null) {
+        break;
+      }
+      paramTemplateBean2 = paramTemplateBean1.getComLayoutParams();
+      if (paramTemplateBean2 == null) {
+        break;
+      }
+      paramTemplateBean1 = paramContainer.getLayoutParams();
+      if (paramTemplateBean1 == null) {
+        paramTemplateBean1 = new ViewGroup.MarginLayoutParams(paramTemplateBean2.mLayoutWidth, paramTemplateBean2.mLayoutHeight);
+      }
+      for (;;)
+      {
+        if ((paramTemplateBean1 instanceof ViewGroup.MarginLayoutParams))
+        {
+          ((ViewGroup.MarginLayoutParams)paramTemplateBean1).leftMargin = paramTemplateBean2.mLayoutMarginLeft;
+          ((ViewGroup.MarginLayoutParams)paramTemplateBean1).topMargin = paramTemplateBean2.mLayoutMarginTop;
+          ((ViewGroup.MarginLayoutParams)paramTemplateBean1).rightMargin = paramTemplateBean2.mLayoutMarginRight;
+          ((ViewGroup.MarginLayoutParams)paramTemplateBean1).bottomMargin = paramTemplateBean2.mLayoutMarginBottom;
+        }
+        paramContainer.setLayoutParams(paramTemplateBean1);
+        return;
+        paramTemplateBean1.width = paramTemplateBean2.mLayoutWidth;
+        paramTemplateBean1.height = paramTemplateBean2.mLayoutHeight;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.BindDataUtil
  * JD-Core Version:    0.7.0.1
  */

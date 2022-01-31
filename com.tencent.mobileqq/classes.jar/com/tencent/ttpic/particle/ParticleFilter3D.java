@@ -15,8 +15,6 @@ import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.model.ParticleParam;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.RedPacketPosition;
 import com.tencent.ttpic.openapi.model.StickerItem;
@@ -33,7 +31,9 @@ public class ParticleFilter3D
   public static final String PARTICLE_3D_FLAG = "json";
   private static final String TAG = ParticleFilter3D.class.getSimpleName();
   private static final String VERTEX_SHADER = "attribute vec4 position;\n attribute vec2 inputTextureCoordinate;\n attribute vec4 aColor;\n attribute float spriteIndex;\n\n varying vec2 vTexCoords;\n varying vec4 vColor;\n varying float vSpriteIndex;\n uniform mat4 u_MVPMatrix;\n\n\n void main() {\n     gl_Position = u_MVPMatrix * position;\n     vTexCoords  = inputTextureCoordinate;\n     vColor = aColor;\n     vSpriteIndex = spriteIndex;\n }";
+  private double audioScaleFactor = 1.0D;
   private float canvasScale = -1.0F;
+  private int frameInedx = 0;
   private ArrayList<RedPacketPosition> hotAreaPositions;
   protected StickerItem item;
   private int lastCanvasWidth = 2147483647;
@@ -47,7 +47,6 @@ public class ParticleFilter3D
   private BasePaticleEmitter particleEmitter;
   private ParticleParam particleParam = new ParticleParam();
   private float phoneAngles;
-  protected TriggerCtrlItem triggerCtrlItem;
   
   public ParticleFilter3D(String paramString, StickerItem paramStickerItem)
   {
@@ -56,7 +55,6 @@ public class ParticleFilter3D
     this.particleEmitter = new ParticleEmitter3D(paramStickerItem);
     this.particleEmitter.initEmitter(paramString, paramStickerItem.particleConfig);
     this.particleEmitter.setRotateType(paramStickerItem.rotateType);
-    this.triggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
     initParams();
     setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
   }
@@ -153,7 +151,7 @@ public class ParticleFilter3D
     Vector3 localVector3 = new Vector3();
     label67:
     int i;
-    label354:
+    label351:
     float f;
     switch (this.item.type)
     {
@@ -170,7 +168,7 @@ public class ParticleFilter3D
         {
           this.particleEmitter.clearPositionLossTrigger();
           localParticleEmitterParam.emitPosition = paramList;
-          localParticleEmitterParam.extraScale *= (float)this.triggerCtrlItem.getAudioScaleFactor();
+          localParticleEmitterParam.extraScale *= (float)this.audioScaleFactor;
           localParticleEmitterParam.extraScale *= this.width * 1.0F / 720.0F;
           return localParticleEmitterParam;
           int j;
@@ -222,20 +220,20 @@ public class ParticleFilter3D
         double d = Math.pow(localPointF2.x - paramList.x, 2.0D);
         d = Math.sqrt(Math.pow(localPointF2.y - paramList.y, 2.0D) + d) / this.item.scaleFactor;
         if ((this.item.type != 2) && (this.item.type != 4)) {
-          break label1073;
+          break label1070;
         }
         localParticleEmitterParam.extraScale = ((float)d);
         f = (float)Math.pow(4.0D, 0.5D - d);
         if (f <= 0.25D) {
-          break label934;
+          break label931;
         }
-        label754:
+        label751:
         localVector3 = new Vector3((localPointF1.x - this.width / 2.0F) * f, this.height - (localPointF1.y - this.height / 2.0F) * f, (1.0F - f) * this.height);
       }
       break;
     }
-    label934:
-    label1073:
+    label931:
+    label1070:
     for (;;)
     {
       if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length >= 3))
@@ -257,9 +255,9 @@ public class ParticleFilter3D
         paramList = localVector3;
         break label67;
         i = this.item.alignFacePoints[1];
-        break label354;
+        break label351;
         f = 0.25F;
-        break label754;
+        break label751;
       }
       localParticleEmitterParam.rotateZ = ((float)Math.toRadians((360.0F - this.phoneAngles) % 360.0F));
       paramList = localVector3;
@@ -277,14 +275,10 @@ public class ParticleFilter3D
     }
   }
   
-  private void updateHotArea()
+  private void updateHotArea(ArrayList<RedPacketPosition> paramArrayList)
   {
-    if ((this.triggerCtrlItem != null) && (this.hotAreaPositions != null))
-    {
-      ArrayList localArrayList = this.triggerCtrlItem.getHotArea();
-      if (localArrayList != null) {
-        this.hotAreaPositions.addAll(localArrayList);
-      }
+    if ((this.hotAreaPositions != null) && (paramArrayList != null)) {
+      this.hotAreaPositions.addAll(paramArrayList);
     }
   }
   
@@ -330,7 +324,7 @@ public class ParticleFilter3D
       for (;;)
       {
         if (i1 >= this.particleEmitter.activeParticleCount()) {
-          break label627;
+          break label624;
         }
         if (this.particleEmitter.textures != null) {
           localObject2[i1] = this.particleEmitter.particleSpriteIndex[i1];
@@ -341,7 +335,7 @@ public class ParticleFilter3D
           arrayOfFloat[(k + i3)] = this.particleEmitter.particleColors[(i2 + i3)];
           i3 += 1;
           continue;
-          float f2 = (float)this.triggerCtrlItem.getAudioScaleFactor();
+          float f2 = (float)this.audioScaleFactor;
           LogUtils.e(TAG, "AudioScaleFactor = " + f2);
           this.particleEmitter.setExtraScale(f2);
           this.particleEmitter.setSourcePosition((Vector3)localObject1);
@@ -396,7 +390,7 @@ public class ParticleFilter3D
         j += 12;
         i1 += 1;
       }
-      label627:
+      label624:
       BenchUtil.benchEnd("setValue");
       setCoordNum(i4 * 6);
       addAttribParam(new AttributeParam("spriteIndex", (float[])localObject2, 1));
@@ -430,20 +424,20 @@ public class ParticleFilter3D
           this.particleParam.blendFuncDst = this.particleEmitter.blendFuncDestination;
           localObject2 = this.particleParam;
           if ((this.particleEmitter.textures == null) || (this.particleEmitter.textures.length <= 0)) {
-            break label1126;
+            break label1123;
           }
           i = this.particleEmitter.textures[0];
-          label1017:
+          label1014:
           ((ParticleParam)localObject2).texture = i;
           this.particleParam.isPartical2 = 1;
           localObject2 = this.particleParam;
           if (!this.particleEmitter.opacityModifyRGB) {
-            break label1132;
+            break label1129;
           }
         }
       }
-      label1126:
-      label1132:
+      label1123:
+      label1129:
       for (i = 1;; i = 0)
       {
         ((ParticleParam)localObject2).uOpacityModifyRGB = i;
@@ -455,7 +449,7 @@ public class ParticleFilter3D
         i = 0;
         break;
         i = 0;
-        break label1017;
+        break label1014;
       }
     }
     resetParams();
@@ -530,19 +524,28 @@ public class ParticleFilter3D
     this.hotAreaPositions = paramArrayList;
   }
   
-  protected void update(List<PointF> paramList, float[] paramArrayOfFloat)
+  public void stopParticle3D(Object paramObject)
   {
-    updateParticle(updateEmitterParam(paramList, paramArrayOfFloat));
+    if (((paramObject instanceof PTDetectInfo)) && (!CollectionUtils.isEmpty(((PTDetectInfo)paramObject).handPoints)) && (this.particleEmitter != null)) {
+      this.particleEmitter.clearPositionLossTrigger();
+    }
   }
   
-  protected TRIGGERED_STATUS updateActionTriggered(PTDetectInfo paramPTDetectInfo)
+  protected void update(List<PointF> paramList, float[] paramArrayOfFloat)
   {
-    return this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
+    try
+    {
+      updateParticle(updateEmitterParam(paramList, paramArrayOfFloat));
+      return;
+    }
+    catch (Throwable paramList)
+    {
+      paramList.printStackTrace();
+    }
   }
   
   public void updatePreview(Object paramObject)
   {
-    boolean bool;
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
@@ -550,37 +553,26 @@ public class ParticleFilter3D
         avoidBodyPointsShake(paramObject);
       }
       this.phoneAngles = paramObject.phoneAngle;
-      updateActionTriggered(paramObject);
-      updateHotArea();
-      this.needRender = this.triggerCtrlItem.isTriggered();
+      this.needRender = paramObject.needRender;
+      this.frameInedx = paramObject.frameIndex;
+      this.audioScaleFactor = paramObject.audioScaleFactor;
+      updateHotArea(paramObject.redPacketPositions);
       if (!VideoMaterialUtil.isGestureItem(this.item)) {
-        break label122;
-      }
-      if ((!this.needRender) || (CollectionUtils.isEmpty(paramObject.handPoints))) {
-        break label117;
-      }
-      bool = true;
-      this.needRender = bool;
-      if (!this.needRender) {
-        this.particleEmitter.clearPositionLossTrigger();
+        break label90;
       }
       update(paramObject.handPoints, paramObject.faceAngles);
     }
-    label117:
-    label122:
+    label90:
     do
     {
       return;
-      bool = false;
-      break;
       if (!VideoMaterialUtil.isBodyDetectItem(this.item)) {
-        break label157;
+        break;
       }
       update(paramObject.bodyPoints, paramObject.faceAngles);
     } while (this.mHasBodyDetected);
     paramObject.bodyPoints = null;
     return;
-    label157:
     if (VideoMaterialUtil.isStarItem(this.item))
     {
       update(paramObject.starPoints, paramObject.faceAngles);

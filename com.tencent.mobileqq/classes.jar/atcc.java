@@ -1,46 +1,103 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.nearby.nearby_ice_break.IceRsp;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Looper;
+import android.support.v4.util.MQLruCache;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-class atcc
-  implements athz
+public class atcc
 {
-  atcc(atbz paramatbz) {}
+  private static zdh a = new zdh(BaseApplicationImpl.sApplication);
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static void a()
   {
-    paramBundle = new nearby_ice_break.IceRsp();
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (paramBundle.result.has())
+      JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, Boolean.TYPE, new atcd(90001) });
+    }
+    catch (NoSuchMethodException localNoSuchMethodException2)
+    {
+      try
       {
-        if (paramBundle.result.get() == 0)
+        JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, [I.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, new atcd(90002) });
+      }
+      catch (NoSuchMethodException localNoSuchMethodException2)
+      {
+        try
         {
-          if (!QLog.isColorLevel()) {
-            return;
+          for (;;)
+          {
+            JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeResource", new Object[] { Resources.class, Integer.TYPE, BitmapFactory.Options.class, new atcd(90003) });
+            try
+            {
+              JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeFile", new Object[] { String.class, BitmapFactory.Options.class, new atcd(90004) });
+              return;
+            }
+            catch (NoSuchMethodException localNoSuchMethodException4)
+            {
+              bdal.a(localNoSuchMethodException4);
+            }
+            localNoSuchMethodException1 = localNoSuchMethodException1;
+            bdal.a(localNoSuchMethodException1);
+            continue;
+            localNoSuchMethodException2 = localNoSuchMethodException2;
+            bdal.a(localNoSuchMethodException2);
           }
-          QLog.i("NearbyCardHandler", 2, "sendPoBingMsg. success");
-          return;
         }
-        QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. result=" + paramBundle.result.get() + " errorMsg=" + paramBundle.err_msg.get());
-        return;
+        catch (NoSuchMethodException localNoSuchMethodException3)
+        {
+          for (;;)
+          {
+            bdal.a(localNoSuchMethodException3);
+          }
+        }
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  private static void b(boolean paramBoolean, int paramInt)
+  {
+    String str = null;
+    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (localObject != null) {
+      str = ((QQAppInterface)localObject).getCurrentAccountUin();
+    }
+    localObject = new HashMap();
+    ((HashMap)localObject).put("param_FailCode", Integer.toString(paramInt));
+    azmz.a(BaseApplicationImpl.getApplication()).a(str, "BitmapOOMHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
+  }
+  
+  private static void c()
+  {
+    if (BaseApplicationImpl.sImageCache != null) {
+      BaseApplicationImpl.sImageCache.evictAll();
+    }
+    System.gc();
+    Thread.yield();
+    System.gc();
+    if (ThreadManager.getUIHandler().getLooper() != Looper.myLooper()) {}
+    try
     {
-      QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. error=" + QLog.getStackTraceString(paramArrayOfByte));
+      Thread.sleep(1000L);
       return;
     }
-    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. no result");
+    catch (InterruptedException localInterruptedException)
+    {
+      localInterruptedException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcc
  * JD-Core Version:    0.7.0.1
  */

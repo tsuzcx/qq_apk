@@ -1,34 +1,36 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
-import java.util.ArrayList;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-class afuv
-  implements View.OnClickListener
+final class afuv
+  extends azai
 {
-  afuv(afup paramafup, int paramInt, ArrayList paramArrayList) {}
+  afuv(MessageForShortVideo paramMessageForShortVideo, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, azaa paramazaa)
   {
-    if (!afup.a(this.jdField_a_of_type_Afup))
+    if (paramazaa.jdField_a_of_type_Int == 0)
     {
-      if (this.jdField_a_of_type_Int == 1) {
-        SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), afup.a(this.jdField_a_of_type_Afup), null);
-      }
-    }
-    else {
+      paramazaa = (awei)paramazaa.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath = paramazaa.b;
+      ((MessageForReplyText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setSourceMessageRecord(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+      ((MessageForReplyText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).serial();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.msgData);
+      afus.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView);
       return;
     }
-    paramView = new Intent();
-    paramView.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
-    PublicFragmentActivity.a(afup.a(this.jdField_a_of_type_Afup), paramView, SDKSetEmotionPreviewFragment.class);
+    QLog.d("ReplyTextItemBuilder", 2, "reply render get thumbPath Fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afuv
  * JD-Core Version:    0.7.0.1
  */

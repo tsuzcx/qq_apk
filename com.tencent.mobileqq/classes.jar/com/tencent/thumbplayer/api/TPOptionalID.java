@@ -41,12 +41,13 @@ public class TPOptionalID
   public static final int OPTION_ID_BEFORE_QUEUEINT_VIDEO_DEC_TYPE = 204;
   public static final int OPTION_ID_BEFORE_STRING_HLS_TAG_CALLBACK = 118;
   public static final int OPTION_ID_CONTINUE_BUFFERING_ON_PAUSE = 502;
+  public static final int OPTION_ID_EXTERNAL_AUDIO_TRACK_PARAM = 6;
   public static final int OPTION_ID_GLOBAL_LONG_CURRENT_PAUSE_FOR_SWITCHING_SURFACE = 501;
   public static final int OPTION_ID_GLOBAL_LONG_SKIP_END_TIME_MS = 500;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPOptionalID
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.data;
 
-import azni;
+import bblr;
 
 public class TroopAioMsgNavigateBar$4
   implements Runnable
 {
-  public TroopAioMsgNavigateBar$4(azni paramazni) {}
+  public TroopAioMsgNavigateBar$4(bblr parambblr) {}
   
   public void run()
   {
-    azni.b(this.this$0);
+    bblr.b(this.this$0);
   }
 }
 

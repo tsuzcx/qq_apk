@@ -20,13 +20,13 @@ class TVKCGIVInfoRequest$1
   
   public void onFailure(IOException paramIOException)
   {
-    TVKLogUtil.i("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", "getvinfo onFailure, e:" + paramIOException.toString());
+    TVKLogUtil.i("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "getvinfo onFailure, e:" + paramIOException.toString());
     long l1 = SystemClock.elapsedRealtime();
     long l2 = TVKCGIVInfoRequest.access$500(this.this$0);
     if ((paramIOException instanceof ITVKHttpProcessor.InvalidResponseCodeException)) {}
     for (int i = ((ITVKHttpProcessor.InvalidResponseCodeException)paramIOException).responseCode;; i = TVKVideoInfoErrorCodeUtil.getErrCodeByThrowable(paramIOException.getCause()))
     {
-      TVKLogUtil.e("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", "[vinfo][getvinfo] failed, time cost:" + (l1 - l2) + "ms error:" + paramIOException.toString());
+      TVKLogUtil.e("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] failed, time cost:" + (l1 - l2) + "ms error:" + paramIOException.toString());
       if ((TVKCGIVInfoRequest.access$000(this.this$0)) && (TVKCGIVInfoRequest.access$100(this.this$0) == TVKCGIVInfoRequest.access$200()) && (TVKCGIVInfoRequest.access$300(this.this$0) != null))
       {
         int j = 1401000 + i;
@@ -45,7 +45,7 @@ class TVKCGIVInfoRequest$1
   
   public void onSuccess(ITVKHttpProcessor.HttpResponse paramHttpResponse)
   {
-    TVKLogUtil.i("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", "getvinfo onSuccess.");
+    TVKLogUtil.i("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "getvinfo onSuccess.");
     label387:
     label627:
     for (;;)
@@ -61,7 +61,7 @@ class TVKCGIVInfoRequest$1
           paramHttpResponse = new String(paramHttpResponse, "UTF-8");
           long l1 = SystemClock.elapsedRealtime();
           long l2 = TVKCGIVInfoRequest.access$500(this.this$0);
-          TVKLogUtil.i("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", "[vinfo][getvinfo] success time cost:" + (l1 - l2) + " xml:" + paramHttpResponse);
+          TVKLogUtil.i("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] success time cost:" + (l1 - l2) + " xml:" + paramHttpResponse);
           if (paramHttpResponse.contains("<?xml")) {
             break label255;
           }
@@ -72,7 +72,7 @@ class TVKCGIVInfoRequest$1
       }
       catch (Exception paramHttpResponse)
       {
-        TVKLogUtil.e("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", paramHttpResponse);
+        TVKLogUtil.e("MediaPlayerMgr[TVKCGIVInfoRequest.java]", paramHttpResponse);
         if ((!TVKCGIVInfoRequest.access$000(this.this$0)) || (TVKCGIVInfoRequest.access$100(this.this$0) != TVKCGIVInfoRequest.access$200())) {
           continue;
         }
@@ -94,7 +94,7 @@ class TVKCGIVInfoRequest$1
         {
           if ((TVKCGIVInfoRequest.access$700(this.this$0) <= 2) && ((paramHttpResponse.isXML85ErrorCode()) || (paramHttpResponse.isXMLHaveRetryNode())))
           {
-            TVKLogUtil.i("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", "[vinfo][getvinfo] cgi return retry or 85 error");
+            TVKLogUtil.i("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] cgi return retry or 85 error");
             TVKCGIVInfoRequest.access$704(this.this$0);
             TVKCGIVInfoRequest.access$106(this.this$0);
             TVKCGIVInfoRequest.access$806(this.this$0);
@@ -119,7 +119,7 @@ class TVKCGIVInfoRequest$1
         }
         else
         {
-          TVKLogUtil.e("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", "[vinfo][getvinfo] xml parse error");
+          TVKLogUtil.e("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] xml parse error");
           if ((TVKCGIVInfoRequest.access$000(this.this$0)) && (TVKCGIVInfoRequest.access$100(this.this$0) == TVKCGIVInfoRequest.access$200()))
           {
             if (TVKCGIVInfoRequest.access$300(this.this$0) != null) {
@@ -133,7 +133,7 @@ class TVKCGIVInfoRequest$1
       }
       else
       {
-        TVKLogUtil.e("TVKPlayer[VideoInfo][TVKCGIVInfoRequest]", "[vinfo][getvinfo] return xml error!");
+        TVKLogUtil.e("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] return xml error!");
         if ((TVKCGIVInfoRequest.access$000(this.this$0)) && (TVKCGIVInfoRequest.access$100(this.this$0) == TVKCGIVInfoRequest.access$200()))
         {
           if (TVKCGIVInfoRequest.access$300(this.this$0) != null) {
@@ -152,7 +152,7 @@ class TVKCGIVInfoRequest$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVInfoRequest.1
  * JD-Core Version:    0.7.0.1
  */

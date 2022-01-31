@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
-class paq
-  implements qec<oidb_cmd0x977.FollowStatusInfo, qaz>
+public class paq
+  implements bhqp
 {
-  paq(pan parampan) {}
+  public paq(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
   
-  public qaz a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new qaz(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
+    if (paramInt <= 0) {}
+    do
+    {
+      return;
+      paramAdapterView = (pio)ReadInJoySelectPositionFragment.a(this.a).get(paramInt - 1);
+    } while (paramAdapterView.a != 2);
+    this.a.a(new SelectPositionModule.PositionData(paramAdapterView.d, paramAdapterView.c, paramAdapterView.b, paramAdapterView.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     paq
  * JD-Core Version:    0.7.0.1
  */

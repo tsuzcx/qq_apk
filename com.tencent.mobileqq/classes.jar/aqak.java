@@ -1,50 +1,21 @@
-import com.tencent.qflutter.utils.FLog.Log;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
 public class aqak
-  implements FLog.Log
+  implements aqdv
 {
-  public void d(String paramString1, String paramString2)
-  {
-    if (QLog.isDebugVersion()) {
-      QLog.d(paramString1, 4, paramString2);
-    }
-  }
+  public aqak(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public void e(String paramString1, String paramString2)
+  public void a(String paramString, int paramInt)
   {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
+    this.a.a.setText(paramString);
+    this.a.a.setSelection(this.a.a.length());
+    this.a.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqak
  * JD-Core Version:    0.7.0.1
  */

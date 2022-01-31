@@ -1,77 +1,92 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.activity.PubAccountMoreInfoActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ndz
-  implements BusinessObserver
+  extends WebViewPlugin
 {
-  public ndz(PubAccountMoreInfoActivity paramPubAccountMoreInfoActivity) {}
+  protected Activity a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ndz()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMoreInfoActivity", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean)
-    {
-      this.a.a(2131695569);
+    this.mPluginNameSpace = "eqq";
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    for (;;)
+    try
     {
-      byte[] arrayOfByte;
-      oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse;
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).getString("uin");
+      localObject = ((JSONObject)localObject).getString("name");
+      Intent localIntent = aekt.a(new Intent(this.a, ChatActivity.class), null);
+      localIntent.putExtra("uin", paramString);
+      localIntent.putExtra("uintype", 1024);
+      localIntent.putExtra("uinname", (String)localObject);
+      localIntent.putExtra("entrance", 0);
+      localIntent.putExtra("aio_msg_source", 999);
+      this.a.startActivity(localIntent);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
       try
       {
-        arrayOfByte = paramBundle.getByteArray("data");
-        paramInt = paramBundle.getInt("type", 0);
-        if (arrayOfByte == null) {
-          break;
-        }
-        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-        localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
-        if (paramInt == 0)
-        {
-          paramBundle.mergeFrom(arrayOfByte);
-          paramBoolean = true;
-          if (!paramBoolean) {
-            break;
-          }
-          if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
-            break label259;
-          }
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && ((!paramBundle.seqno.has()) || (paramBundle.seqno.get() == this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno))) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PubAccountMoreInfoActivity", 2, "sendPublicAccountDetailInfoRequest: need update local data , new seqno = " + paramBundle.seqno.get());
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse = paramBundle;
-          this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = new AccountDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
-          PubAccountMoreInfoActivity.a(this.a);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        this.a.a(2131695569);
+        paramString = new JSONObject(paramString).getString("uin");
+        ndv.a(this.a, null, paramString, false, -1, true, -1);
         return;
       }
-      paramBoolean = sgg.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle);
-    }
-    label259:
-    this.a.a(2131695569);
+      catch (JSONException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("EqqWebviewPlugin", 2, "showEqq json error!");
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"eqq".equals(paramString2)) {}
+    do
+    {
+      return false;
+      if ("showEQQ".equals(paramString3))
+      {
+        if (paramVarArgs.length > 0) {
+          a(paramVarArgs[0]);
+        }
+        return true;
+      }
+    } while ((!"showEQQAio".equals(paramString3)) || (paramVarArgs.length != 1));
+    b(paramVarArgs[0]);
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a = this.mRuntime.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ndz
  * JD-Core Version:    0.7.0.1
  */

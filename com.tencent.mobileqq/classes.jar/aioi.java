@@ -1,23 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-class aioi
-  implements DialogInterface.OnClickListener
+public class aioi
+  extends aiml
 {
-  aioi(aiod paramaiod) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aioi(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "cancel click");
-    }
-    axqy.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 1, 0, "", "", "", "");
+    super(paramNewPhotoListActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.mPhotoCommonData.a = 6291456;
+    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aioi
  * JD-Core Version:    0.7.0.1
  */

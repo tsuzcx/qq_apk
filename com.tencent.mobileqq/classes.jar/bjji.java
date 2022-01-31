@@ -1,82 +1,71 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.lang.ref.WeakReference;
+import android.opengl.GLES20;
+import cooperation.qzone.util.QZLog;
 
 public class bjji
 {
-  private static bjji jdField_a_of_type_Bjji;
-  private WeakReference<DoodleLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<DoodleLayout> b;
-  
-  public static bjji a()
+  public static int a()
   {
-    if (jdField_a_of_type_Bjji == null) {
-      jdField_a_of_type_Bjji = new bjji();
-    }
-    return jdField_a_of_type_Bjji;
+    return a(a("attribute vec4 aPosition;\nuniform mat4 uProjectMatrix;\nattribute vec2 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main(){\n\tgl_Position = uProjectMatrix * aPosition;\n    vTextureCoord = aTextureCoord;\n}"), b("precision mediump float;\nuniform sampler2D uTexture;\nvarying vec2 vTextureCoord;\nvoid main(){\n\tgl_FragColor = texture2D(uTexture, vTextureCoord);\n}"));
   }
   
-  public DoodleLayout a(int paramInt)
+  private static int a(int paramInt1, int paramInt2)
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramInt == 0)
+    int i = GLES20.glCreateProgram();
+    if (i == 0)
     {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-          localObject1 = (DoodleLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        }
-      }
+      QZLog.e("ShaderUtil", "glCreateProgram: fail");
+      return 0;
     }
-    for (;;)
+    GLES20.glAttachShader(i, paramInt1);
+    GLES20.glAttachShader(i, paramInt2);
+    GLES20.glLinkProgram(i);
+    int[] arrayOfInt = new int[1];
+    GLES20.glGetProgramiv(i, 35714, arrayOfInt, 0);
+    QZLog.e("ShaderUtil", "glGetShaderiv: " + GLES20.glGetShaderInfoLog(i));
+    if (arrayOfInt[0] == 0)
     {
-      if ((localObject1 == null) && (QLog.isColorLevel())) {
-        QLog.e("DoodleLayoutConnector", 2, "getDoodleLayout null, not init yet");
-      }
-      return localObject1;
-      localObject1 = localObject2;
-      if (this.b != null)
-      {
-        localObject1 = localObject2;
-        if (this.b.get() != null) {
-          localObject1 = (DoodleLayout)this.b.get();
-        }
-      }
+      GLES20.glDeleteProgram(i);
+      QZLog.e("ShaderUtil", "glGetProgramiv: fail 0 ");
+      return 0;
     }
+    return i;
   }
   
-  public void a(int paramInt)
+  private static int a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleLayoutConnector", 2, "unbind " + paramInt);
-    }
+    paramInt = GLES20.glCreateShader(paramInt);
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
+      QZLog.e("ShaderUtil", "glCreateShader: fail 0 ");
+      return 0;
     }
-    this.b = null;
+    GLES20.glShaderSource(paramInt, paramString);
+    GLES20.glCompileShader(paramInt);
+    paramString = new int[1];
+    GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
+    QZLog.e("ShaderUtil", "glGetShaderiv: " + GLES20.glGetShaderInfoLog(paramInt));
+    if (paramString[0] == 0)
+    {
+      GLES20.glDeleteShader(paramInt);
+      QZLog.e("ShaderUtil", "glGetShaderiv: fail 0 ");
+      return 0;
+    }
+    return paramInt;
   }
   
-  public void a(int paramInt, DoodleLayout paramDoodleLayout)
+  private static int a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleLayoutConnector", 2, "bind " + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleLayout);
-      return;
-    }
-    this.b = new WeakReference(paramDoodleLayout);
+    return a(35633, paramString);
+  }
+  
+  private static int b(String paramString)
+  {
+    return a(35632, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjji
  * JD-Core Version:    0.7.0.1
  */

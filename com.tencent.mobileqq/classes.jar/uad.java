@@ -1,14 +1,10 @@
-import java.util.ArrayList;
-
-public class uad
-  extends ssh
+public abstract interface uad
 {
-  public ArrayList<String> a;
-  public boolean a = true;
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uad
  * JD-Core Version:    0.7.0.1
  */

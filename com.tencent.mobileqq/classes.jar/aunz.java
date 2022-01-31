@@ -1,24 +1,11 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pic.PicShareToWX.2.1;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import mqq.os.MqqHandler;
-
-public final class aunz
-  implements EIPCResultCallback
+public class aunz
 {
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWX", 2, "onCallback, eipcResult.code = " + paramEIPCResult.code);
-    }
-    ThreadManager.getUIHandler().post(new PicShareToWX.2.1(this, paramEIPCResult));
-  }
+  public static final long[] a = { 1L, 2L, 3L, 4L, 5L, 6L, 7L, 12L };
+  public static final long[] b = { 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 12L, 16L, 17L, 19L, 20L, 21L };
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aunz
  * JD-Core Version:    0.7.0.1
  */

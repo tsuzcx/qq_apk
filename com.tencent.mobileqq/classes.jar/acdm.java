@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
 public class acdm
-  implements DialogInterface.OnClickListener
+  implements apsa
 {
-  public acdm(SplashActivity paramSplashActivity) {}
+  public acdm(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(67);
+      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+      return;
+    }
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, 6000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdm
  * JD-Core Version:    0.7.0.1
  */

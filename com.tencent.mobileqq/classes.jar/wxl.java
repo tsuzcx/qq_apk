@@ -1,41 +1,30 @@
-import android.widget.FrameLayout;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.Timer;
+import com.tencent.widget.AbsListView;
+import java.util.List;
 
-public class wxl
+class wxl
+  implements bhpo
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private String jdField_a_of_type_JavaLangString;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private wxj jdField_a_of_type_Wxj;
-  private boolean jdField_a_of_type_Boolean;
-  private double jdField_b_of_type_Double;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private double jdField_c_of_type_Double;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private double jdField_d_of_type_Double;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private double jdField_e_of_type_Double;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private double jdField_f_of_type_Double;
-  private int jdField_f_of_type_Int;
-  private int g;
-  private int h;
+  int jdField_a_of_type_Int = 0;
+  
+  wxl(wxj paramwxj) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == wxj.a(this.jdField_a_of_type_Wxj, wxj.a(this.jdField_a_of_type_Wxj)).a().size()) && (!wxj.a(this.jdField_a_of_type_Wxj, wxj.a(this.jdField_a_of_type_Wxj)).a()))
+    {
+      paramAbsListView = wxj.a(this.jdField_a_of_type_Wxj);
+      wxj.a(this.jdField_a_of_type_Wxj, wxj.a(this.jdField_a_of_type_Wxj)).b(paramAbsListView);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxl
  * JD-Core Version:    0.7.0.1
  */

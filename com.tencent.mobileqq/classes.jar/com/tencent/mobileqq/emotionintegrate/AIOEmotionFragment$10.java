@@ -1,30 +1,38 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import apvv;
+import apvw;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class AIOEmotionFragment$10
   implements Runnable
 {
-  AIOEmotionFragment$10(AIOEmotionFragment paramAIOEmotionFragment, String paramString1, String paramString2, int paramInt, AudioPlayer paramAudioPlayer) {}
+  AIOEmotionFragment$10(AIOEmotionFragment paramAIOEmotionFragment, List paramList, apvv paramapvv) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.b))
+    boolean bool = false;
+    this.this$0.jdField_a_of_type_Apvw.a(this.jdField_a_of_type_JavaUtilList);
+    this.this$0.jdField_a_of_type_Apvw.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Apvv != null) {}
+    for (int i = this.this$0.jdField_a_of_type_Apvw.a(this.jdField_a_of_type_Apvv);; i = 0)
     {
-      float f = this.jdField_a_of_type_Int / this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a();
-      if (f > 0.0F)
+      this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setSelection(i);
+      if (QLog.isColorLevel())
       {
-        QLog.i("AIOEmotionFragment", 2, "AudioPlayer on onProgressChanged, playPosition = " + f);
-        this.this$0.a.setProgress(f);
+        if (this.jdField_a_of_type_Apvv == null) {
+          bool = true;
+        }
+        QLog.d("AIOEmotionFragment", 2, new Object[] { "mGallery setSelection pos:", Integer.valueOf(i), " dataIsNull:", Boolean.valueOf(bool) });
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.10
  * JD-Core Version:    0.7.0.1
  */

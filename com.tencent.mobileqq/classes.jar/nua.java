@@ -1,247 +1,221 @@
-import android.os.Handler;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.view.ViewGroup;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.4;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import mqq.app.NewIntent;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPAccoutRelation;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPClientReq;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPClientRsp;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPNewUserRecmd;
 
 public class nua
+  extends alko
 {
-  public static int b;
-  public static int c;
-  public static int d = 7;
-  public int a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ReadInJoyNavigationGridview jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview;
-  protected osm a;
-  private boolean jdField_a_of_type_Boolean = true;
-  public final int e = bbll.a(5.0F);
-  
-  public nua(ViewGroup paramViewGroup, ReadInJoyNavigationGridview paramReadInJoyNavigationGridview, ImageView paramImageView)
+  public nua(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Osm = new nue(this);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview = paramReadInJoyNavigationGridview;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.setChannelButtonListener(new nuf(this));
-    osj.a().a(this.jdField_a_of_type_Osm);
-    a();
+    super(paramQQAppInterface);
   }
   
-  public static String a(int paramInt, ChannelCoverInfo paramChannelCoverInfo)
+  private void a(byte[] paramArrayOfByte)
   {
-    JSONObject localJSONObject = onh.b();
-    switch (paramInt)
+    Object localObject = new qqshop.SQQSHPClientRsp();
+    try
     {
+      ((qqshop.SQQSHPClientRsp)localObject).mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (byte[])localObject;
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      return localJSONObject.toString();
-      if (paramChannelCoverInfo != null) {
+      do
+      {
         for (;;)
         {
-          try
-          {
-            localJSONObject.put("channel_id", paramChannelCoverInfo.mChannelCoverId);
-            if (!TextUtils.isEmpty(paramChannelCoverInfo.mChannelJumpUrl)) {
-              break label89;
-            }
-            paramInt = 1;
-            localJSONObject.put("content_type", paramInt);
-            localJSONObject.put("channel_index", c);
-          }
-          catch (Exception paramChannelCoverInfo)
-          {
-            paramChannelCoverInfo.printStackTrace();
-          }
+          paramArrayOfByte.printStackTrace();
+          paramArrayOfByte = null;
+        }
+        if (paramArrayOfByte.retcode.get() == 0) {
           break;
-          label89:
-          paramInt = 2;
         }
-      }
-      localJSONObject.put("channel_id", -1);
-      localJSONObject.put("content_type", -1);
-      localJSONObject.put("channel_index", -1);
-    }
-  }
-  
-  private List<ChannelCoverInfo> a(List<ChannelCoverInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)paramList.next();
-        if (!localChannelCoverInfo.isExternalExposure) {
-          localArrayList.add(localChannelCoverInfo);
-        }
-      }
-    }
-    QLog.d("ReadInJoyNaviController", 2, "filtered channel list size: " + localArrayList.size());
-    return localArrayList;
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    String str = "";
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      nol.a(null, "CliOper", "", "", str, str, 0, 0, "", "", "", paramString, false);
+      } while (!QLog.isColorLevel());
+      QLog.e("EcShopHandler", 2, "response from server error: " + paramArrayOfByte.retcode.get());
       return;
-      str = "0X8008B81";
-      continue;
-      str = "0X8008B83";
+      if (!paramArrayOfByte.newusrrecmd.has()) {
+        break label175;
+      }
+      localObject = (qqshop.SQQSHPNewUserRecmd)paramArrayOfByte.newusrrecmd.get();
+      if ((!((qqshop.SQQSHPNewUserRecmd)localObject).recmdflag.has()) || (((qqshop.SQQSHPNewUserRecmd)localObject).recmdflag.get() != 1)) {
+        break label175;
+      }
+      localObject = ((qqshop.SQQSHPNewUserRecmd)localObject).recmdurl.get();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label175;
+      }
+      if (!QLog.isColorLevel()) {
+        break label167;
+      }
+      QLog.i("EcShopHandler", 2, "newusrrecmd url:" + (String)localObject);
+      label167:
+      notifyUI(0, true, localObject);
+      return;
+      label175:
+      if (!paramArrayOfByte.recmdlist.has()) {
+        break label210;
+      }
+      paramArrayOfByte = paramArrayOfByte.recmdlist.get();
+      if (paramArrayOfByte.size() <= 0) {
+        break label210;
+      }
+      notifyUI(0, true, paramArrayOfByte);
+      return;
+      label210:
+      notifyUI(0, false, null);
+    }
+    if (paramArrayOfByte == null) {
+      return;
     }
   }
   
-  private void a(long paramLong)
+  private void b(byte[] paramArrayOfByte)
   {
-    onh.b().postDelayed(new ReadInJoyNaviController.4(this), paramLong);
+    qqshop.SQQSHPClientRsp localSQQSHPClientRsp = new qqshop.SQQSHPClientRsp();
+    try
+    {
+      localSQQSHPClientRsp.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = localSQQSHPClientRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      do
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          paramArrayOfByte = null;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("EcShopHandler", 2, "no bind uin found!");
+      return;
+    }
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.bindlist.has()))
+    {
+      paramArrayOfByte = paramArrayOfByte.bindlist.get();
+      if ((paramArrayOfByte != null) && (!paramArrayOfByte.isEmpty()))
+      {
+        paramArrayOfByte = (qqshop.SQQSHPAccoutRelation)paramArrayOfByte.get(0);
+        if ((!paramArrayOfByte.customerservice.has()) || (paramArrayOfByte.customerservice.get() != 1)) {
+          break label148;
+        }
+        if ((paramArrayOfByte.binduin.has()) && (paramArrayOfByte.puin.has()))
+        {
+          ntw.a.put(String.valueOf(paramArrayOfByte.puin.get()), String.valueOf(paramArrayOfByte.binduin.get()));
+          notifyUI(3, true, null);
+        }
+      }
+      return;
+    }
+    label148:
+    notifyUI(3, false, null);
   }
   
   public void a()
   {
-    try
-    {
-      osl localosl = (osl)onh.a().getManager(163);
-      List localList = localosl.a().a(0);
-      if ((localList == null) || (localList.size() == 0))
-      {
-        localosl.a().c(0);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyNaviController", 2, "No channel Cache info.");
-        }
-      }
-      for (;;)
-      {
-        localosl.a().a(0);
-        return;
-        a(localList);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    notifyUI(4, true, null);
   }
   
-  public void a(int paramInt)
+  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.a() <= 0)
-    {
-      a();
+    if (paramArrayOfByte == null) {
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNaviController", 2, "No channel info.");
+        QLog.e("EcShopHandler", 2, "onReceive data null.");
       }
     }
     do
     {
-      return;
-      b = paramInt;
-    } while (this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("mReadInJoyNavigation") != null);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-    localLayoutParams.gravity = 48;
-    localLayoutParams.topMargin = this.jdField_a_of_type_Int;
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.a().iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      ChannelCoverInfo localChannelCoverInfo = ((ChannelCoverInfo)localIterator.next()).clone();
-      if (localChannelCoverInfo != null) {
-        if (paramInt != localChannelCoverInfo.mChannelCoverId) {
-          break label174;
-        }
-      }
-      label174:
-      for (boolean bool = true;; bool = false)
+      for (;;)
       {
-        localChannelCoverInfo.isSelected = bool;
-        if (paramInt == localChannelCoverInfo.mChannelCoverId) {
-          c = i;
-        }
-        localArrayList.add(localChannelCoverInfo);
-        i += 1;
-        break;
-      }
-    }
-    a(localArrayList);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.setAlpha(0.0F);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview, localLayoutParams);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.setTag("mReadInJoyNavigation");
-    onh.b().postDelayed(new ReadInJoyNaviController.1(this), 0L);
-  }
-  
-  public void a(ChannelCoverInfo paramChannelCoverInfo)
-  {
-    Iterator localIterator;
-    int i;
-    if (a()) {
-      if (paramChannelCoverInfo != null)
-      {
-        localIterator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.a().iterator();
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)localIterator.next();
-        if ((localChannelCoverInfo != null) && (localChannelCoverInfo.mChannelCoverId == paramChannelCoverInfo.mChannelCoverId)) {
-          c = i;
-        }
-      }
-      else
-      {
-        onh.b().postDelayed(new ReadInJoyNaviController.2(this, paramChannelCoverInfo), 0L);
         return;
+        paramIntent = paramIntent.getStringExtra("cmd");
+        if (!TextUtils.isEmpty(paramIntent))
+        {
+          if (paramIntent.equals("GetFolderInfo"))
+          {
+            a(paramArrayOfByte);
+            return;
+          }
+          if ((!paramIntent.equals("GetShopBindUin")) && (!paramIntent.equals("UserEventReport")))
+          {
+            if (paramIntent.equals("GetShopCustomerservice"))
+            {
+              b(paramArrayOfByte);
+              return;
+            }
+            if (paramIntent.equals("GetRecommendShop"))
+            {
+              paramIntent = new qqshop.SQQSHPClientRsp();
+              try
+              {
+                paramIntent.mergeFrom(paramArrayOfByte);
+                if ((paramIntent != null) && (paramIntent.rcpuin.has()))
+                {
+                  notifyUI(5, true, String.valueOf(paramIntent.rcpuin.get()));
+                  return;
+                }
+              }
+              catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+              {
+                for (;;)
+                {
+                  paramIntent = null;
+                  paramFromServiceMsg.printStackTrace();
+                }
+              }
+            }
+          }
+        }
       }
-      i += 1;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("EcShopHandler", 2, "EcShopHandler onReceive cmd cannot be recognized");
   }
   
-  public void a(List<ChannelCoverInfo> paramList)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNaviController", 2, "setAdapterData.");
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EcShopAssistantActivity", 2, "getShopUinServantInfo empty uin.");
+      }
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.setNaviBarAdapterDataSet(a(paramList));
+    qqshop.SQQSHPClientReq localSQQSHPClientReq = new qqshop.SQQSHPClientReq();
+    localSQQSHPClientReq.puinlist.add(Long.valueOf(paramString));
+    paramString = new NewIntent(this.app.getApp(), nuc.class);
+    paramString.putExtra("cmd", "GetShopCustomerservice");
+    paramString.putExtra("data", localSQQSHPClientReq.toByteArray());
+    paramString.putExtra("timeout", 30000);
+    this.app.startServlet(paramString);
   }
   
-  public boolean a()
+  protected Class<? extends alkr> observerClass()
   {
-    return this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("mReadInJoyNavigation") != null;
+    return nub.class;
   }
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.a();
-    }
-    osj.a().b(this.jdField_a_of_type_Osm);
-  }
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nua
  * JD-Core Version:    0.7.0.1
  */

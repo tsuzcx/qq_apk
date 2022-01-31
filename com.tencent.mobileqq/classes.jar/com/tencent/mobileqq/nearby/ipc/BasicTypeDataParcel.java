@@ -3,12 +3,12 @@ package com.tencent.mobileqq.nearby.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atfu;
+import auwt;
 
 public class BasicTypeDataParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator<BasicTypeDataParcel> CREATOR = new atfu();
+  public static final Parcelable.Creator<BasicTypeDataParcel> CREATOR = new auwt();
   public int a;
   public Object[] a;
   
@@ -58,7 +58,7 @@ public class BasicTypeDataParcel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import ahcw;
-import ahcy;
-import ahcz;
+import aixa;
+import aixc;
+import aixd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbkk;
+import bdje;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
@@ -24,7 +24,7 @@ import java.util.List;
 class HongBaoPanel$HongBaoAdapter
   extends RecyclerView.Adapter<HongBaoPanel.MyViewHolder>
 {
-  private List<ahcz> mDatas = new ArrayList();
+  private List<aixd> mDatas = new ArrayList();
   private HongBaoPanel.OnHolderItemClickListener mHolderItemClickListener;
   
   HongBaoPanel$HongBaoAdapter(HongBaoPanel paramHongBaoPanel) {}
@@ -35,7 +35,7 @@ class HongBaoPanel$HongBaoAdapter
     notifyDataSetChanged();
   }
   
-  public List<ahcz> getDatas()
+  public List<aixd> getDatas()
   {
     return this.mDatas;
   }
@@ -48,12 +48,12 @@ class HongBaoPanel$HongBaoAdapter
     return 0;
   }
   
-  public ahcz getPanelDataAtPos(int paramInt)
+  public aixd getPanelDataAtPos(int paramInt)
   {
     if ((this.mDatas == null) || (this.mDatas.size() <= 0) || (this.mDatas.size() <= paramInt)) {
       return null;
     }
-    return (ahcz)this.mDatas.get(paramInt);
+    return (aixd)this.mDatas.get(paramInt);
   }
   
   public void onBindViewHolder(HongBaoPanel.MyViewHolder paramMyViewHolder, int paramInt)
@@ -67,33 +67,33 @@ class HongBaoPanel$HongBaoAdapter
       do
       {
         return;
-        localObject1 = (ahcz)this.mDatas.get(paramInt);
+        localObject1 = (aixd)this.mDatas.get(paramInt);
         localObject2 = this.this$0;
         localObject3 = paramMyViewHolder.hongbaoText;
-        String str = ((ahcz)this.mDatas.get(paramInt)).b;
+        String str = ((aixd)this.mDatas.get(paramInt)).b;
         if (!HongBaoPanel.access$300(this.this$0).equals("#5B6175")) {
           break;
         }
-        i = this.this$0.mContext.getResources().getColor(2131166854);
+        i = this.this$0.mContext.getResources().getColor(2131166901);
         HongBaoPanel.access$400((HongBaoPanel)localObject2, (TextView)localObject3, str, i, 0);
-        paramMyViewHolder.hongbaoPic.setImageResource(2130842810);
-        if (!bbkk.a(((ahcz)localObject1).c))
+        paramMyViewHolder.hongbaoPic.setImageResource(2130842994);
+        if (!bdje.a(((aixd)localObject1).c))
         {
-          paramMyViewHolder.hongbaoPic.setTag(((ahcz)localObject1).c);
-          localObject2 = HongBaoPanel.access$500(this.this$0, paramInt, ((ahcz)localObject1).c, paramMyViewHolder.hongbaoPic);
+          paramMyViewHolder.hongbaoPic.setTag(((aixd)localObject1).c);
+          localObject2 = HongBaoPanel.access$500(this.this$0, paramInt, ((aixd)localObject1).c, paramMyViewHolder.hongbaoPic);
           if ((localObject2 != null) && (((CustomizeStrategyFactory.RedPacketInfo)localObject2).icon != null)) {
             paramMyViewHolder.hongbaoPic.setImageBitmap(((CustomizeStrategyFactory.RedPacketInfo)localObject2).icon);
           }
         }
       } while (this.this$0.redManager == null);
-      localObject1 = this.this$0.redManager.a(((ahcz)localObject1).jdField_a_of_type_JavaLangString);
+      localObject1 = this.this$0.redManager.a(((aixd)localObject1).jdField_a_of_type_JavaLangString);
     } while (localObject1 == null);
     Object localObject2 = paramMyViewHolder.hbRedPointContainer;
-    if (((ahcy)localObject1).jdField_a_of_type_Boolean) {}
+    if (((aixc)localObject1).jdField_a_of_type_Boolean) {}
     for (paramInt = 0;; paramInt = 8)
     {
       ((RelativeLayout)localObject2).setVisibility(paramInt);
-      if (!((ahcy)localObject1).b) {
+      if (!((aixc)localObject1).b) {
         break label349;
       }
       paramMyViewHolder.imgFlag.setVisibility(0);
@@ -104,7 +104,7 @@ class HongBaoPanel$HongBaoAdapter
         localObject3 = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject2);
         ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject2);
-        localObject1 = URLDrawable.getDrawable(((ahcy)localObject1).jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject3);
+        localObject1 = URLDrawable.getDrawable(((aixc)localObject1).jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject3);
         paramMyViewHolder.imgFlag.setImageDrawable((Drawable)localObject1);
         return;
       }
@@ -122,10 +122,10 @@ class HongBaoPanel$HongBaoAdapter
   
   public HongBaoPanel.MyViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new HongBaoPanel.MyViewHolder(this.this$0, LayoutInflater.from(this.this$0.mContext).inflate(2131560211, paramViewGroup, false), this.mHolderItemClickListener);
+    return new HongBaoPanel.MyViewHolder(this.this$0, LayoutInflater.from(this.this$0.mContext).inflate(2131560319, paramViewGroup, false), this.mHolderItemClickListener);
   }
   
-  public void setDatas(List<ahcz> paramList)
+  public void setDatas(List<aixd> paramList)
   {
     if ((paramList == null) || (paramList.size() <= 0)) {
       return;
@@ -142,7 +142,7 @@ class HongBaoPanel$HongBaoAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel.HongBaoAdapter
  * JD-Core Version:    0.7.0.1
  */

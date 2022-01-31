@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import behq;
-import bekj;
-import bekr;
+import bgho;
+import bgid;
+import bgkd;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
 public class NavigationBarPlugin
@@ -13,14 +13,14 @@ public class NavigationBarPlugin
   public static final String SET_NAV_BAR_TITLE = "setNavigationBarTitle";
   public static final String SHOW_NAVBAR_LOADING = "showNavigationBarLoading";
   
-  public void doInterceptJsEvent(bekr parambekr)
+  public void doInterceptJsEvent(bgkd parambgkd)
   {
-    this.mMiniAppContext.a(bekj.a(parambekr, 0));
+    this.mMiniAppContext.a(bgid.a(parambgkd, 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.plugin.NavigationBarPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,250 +1,61 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class pzx
+  extends pxl
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static List<String> jdField_a_of_type_JavaUtilList;
-  private static int jdField_b_of_type_Int = -1;
-  private static String jdField_b_of_type_JavaLangString;
-  private static int jdField_c_of_type_Int = -1;
-  private static String jdField_c_of_type_JavaLangString;
-  
-  static
+  public pzx(Context paramContext, bcws parambcws, rqj paramrqj)
   {
-    jdField_a_of_type_Long = -1L;
+    super(paramContext, parambcws, paramrqj);
   }
   
-  public static int a()
+  public pxl a()
   {
-    if (jdField_a_of_type_Int == 0) {
-      a();
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
+  }
+  
+  public pxl d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    return jdField_a_of_type_Int;
-  }
-  
-  public static String a()
-  {
-    return bbvj.a(ajsd.aW + ".readInjoy/refresh_res/");
-  }
-  
-  public static String a(String paramString)
-  {
-    return bbvj.a(ajsd.aW + ".readInjoy/refresh_res/" + paramString);
-  }
-  
-  public static List<String> a()
-  {
-    Object localObject3 = null;
-    Object localObject2;
-    if (jdField_a_of_type_JavaUtilList != null)
-    {
-      localObject2 = jdField_a_of_type_JavaUtilList;
-      return localObject2;
-    }
-    if (jdField_a_of_type_Int == 0) {
-      a();
-    }
-    Object localObject1;
-    if ((jdField_a_of_type_Int == 1) || (jdField_a_of_type_Int == 3)) {
-      localObject1 = new File(c() + "refreshAnimatePictures" + "/");
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pgq)) && (ors.s(((pgq)this.jdField_a_of_type_JavaLangObject).a()))) {
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aekt.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
     }
     for (;;)
     {
-      localObject2 = localObject3;
-      if (localObject1 == null) {
-        break;
+      if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBig))) {
+        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pxk);
       }
-      localObject2 = localObject3;
-      if (!((File)localObject1).exists()) {
-        break;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
       }
-      localObject2 = localObject3;
-      if (!((File)localObject1).isDirectory()) {
-        break;
-      }
-      localObject1 = ((File)localObject1).listFiles();
-      localObject2 = localObject3;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject2 = new ArrayList();
-      int i = 0;
-      for (;;)
-      {
-        if (i < localObject1.length)
-        {
-          if (localObject1[i].getName().endsWith(".png")) {
-            ((List)localObject2).add(localObject1[i].getName());
-          }
-          i += 1;
-          continue;
-          if (jdField_a_of_type_Int != 2) {
-            break label206;
-          }
-          localObject1 = new File(c() + "refreshRandomPictures" + "/");
-          break;
-        }
-      }
-      jdField_a_of_type_JavaUtilList = (List)localObject2;
-      return localObject2;
-      label206:
-      localObject1 = null;
+      a(localLinearLayout);
+      return this;
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aekt.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
     }
   }
   
-  public static void a()
+  public pxl e()
   {
-    JSONObject localJSONObject = null;
-    String str2 = null;
-    String str1 = str2;
-    Object localObject = localJSONObject;
-    try
-    {
-      File localFile = new File(c() + "refreshConfig.json");
-      str1 = str2;
-      localObject = localJSONObject;
-      if (localFile.exists())
-      {
-        str1 = str2;
-        localObject = localJSONObject;
-        str2 = bbdx.b(localFile);
-        str1 = str2;
-        localObject = str2;
-        localJSONObject = new JSONObject(str2);
-        if (localJSONObject != null)
-        {
-          str1 = str2;
-          localObject = str2;
-          jdField_a_of_type_Int = localJSONObject.optInt("refresh_type");
-          str1 = str2;
-          localObject = str2;
-          jdField_b_of_type_JavaLangString = localJSONObject.optString("voice_path");
-          str1 = str2;
-          localObject = str2;
-          jdField_c_of_type_JavaLangString = localJSONObject.optString("rain_animate_path");
-          str1 = str2;
-          localObject = str2;
-          jdField_b_of_type_Int = localJSONObject.optInt("refresh_sub_type");
-          str1 = str2;
-          localObject = str2;
-          jdField_c_of_type_Int = localJSONObject.optInt("refresh_length_type", 0);
-        }
-      }
-      else
-      {
-        str1 = str2;
-        localObject = localJSONObject;
-        QLog.e("RefreshRes", 1, "parseRefreshParaJson error refreshConfig not exist ");
-        return;
-      }
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("RefreshRes", 1, "parseRefreshParaJson JSONException json = " + localIOException);
-      localJSONException.printStackTrace();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("RefreshRes", 1, localException, new Object[] { "parseRefreshParaJson error json = " + localJSONException });
-      localException.printStackTrace();
-    }
-  }
-  
-  static void a(String paramString, long paramLong)
-  {
-    if ((!jdField_a_of_type_JavaLangString.equals(paramString)) || (jdField_a_of_type_Long != paramLong))
-    {
-      jdField_a_of_type_JavaLangString = paramString;
-      b();
-    }
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_c_of_type_Int < 0) {
-      a();
-    }
-    return jdField_c_of_type_Int > 0;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return aybs.a(new File(a(paramString)));
-  }
-  
-  public static int b()
-  {
-    return jdField_b_of_type_Int;
-  }
-  
-  public static String b()
-  {
-    return bbvj.a(ajsd.aW + ".readInjoy/refresh_res/" + jdField_a_of_type_JavaLangString);
-  }
-  
-  private static void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RefreshRes", 2, "clearDataAfterSetRefreshInfo()");
-    }
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_JavaLangString = null;
-    jdField_c_of_type_JavaLangString = null;
-    jdField_a_of_type_JavaUtilList = null;
-    jdField_b_of_type_Int = -1;
-    jdField_a_of_type_Long = -1L;
-  }
-  
-  public static String c()
-  {
-    return b() + "/" + "refresh" + "/";
-  }
-  
-  public static String d()
-  {
-    return c() + "refreshGuideConfig";
-  }
-  
-  public static String e()
-  {
-    if ((TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && (jdField_a_of_type_Int == 0)) {
-      a();
-    }
-    if (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) {
-      return c() + jdField_b_of_type_JavaLangString;
-    }
     return null;
   }
   
-  public static String f()
+  public pxl g()
   {
-    if ((TextUtils.isEmpty(jdField_c_of_type_JavaLangString)) && (jdField_a_of_type_Int == 0)) {
-      a();
-    }
-    if (!TextUtils.isEmpty(jdField_c_of_type_JavaLangString)) {
-      return c() + jdField_c_of_type_JavaLangString;
-    }
-    return null;
+    this.jdField_a_of_type_Pxk = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pzx
  * JD-Core Version:    0.7.0.1
  */

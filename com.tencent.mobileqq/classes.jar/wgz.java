@@ -1,20 +1,32 @@
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class wgz
-  implements wig
 {
-  public wgz(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  private qqstory_struct.GatherCardInfo a;
   
-  public void a(ArrayList<wid> paramArrayList)
+  public wgz(qqstory_struct.GatherCardInfo paramGatherCardInfo)
   {
-    this.a.runOnUiThread(new QRLoginMgrActivity.6.1(this, paramArrayList));
+    this.a = paramGatherCardInfo;
+  }
+  
+  public wgz(byte[] paramArrayOfByte)
+  {
+    this.a = new qqstory_struct.GatherCardInfo();
+    try
+    {
+      this.a.mergeFrom(paramArrayOfByte);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wsv.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgz
  * JD-Core Version:    0.7.0.1
  */

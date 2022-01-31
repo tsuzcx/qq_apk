@@ -1,10 +1,10 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bbdx;
-import bkrf;
-import bkzv;
-import blag;
-import blah;
+import bdcs;
+import bncp;
+import bnlf;
+import bnlq;
+import bnlr;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import java.io.File;
 
@@ -13,8 +13,8 @@ public final class ShortVideoArtResourceMgr$1
 {
   public void run()
   {
-    String str1 = bkzv.b();
-    String str2 = bkzv.a();
+    String str1 = bnlf.b();
+    String str2 = bnlf.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int j;
     Object localObject1;
@@ -38,8 +38,8 @@ public final class ShortVideoArtResourceMgr$1
           localObject2 = arrayOfFile[k].getName();
           if (!str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = blag.a((String)localObject2);
-            m = ((blah)localObject3).a();
+            localObject3 = bnlq.a((String)localObject2);
+            m = ((bnlr)localObject3).a();
             if (m == 0) {
               break label197;
             }
@@ -51,7 +51,7 @@ public final class ShortVideoArtResourceMgr$1
           }
         }
         label197:
-        localObject3 = ((blah)localObject3).a();
+        localObject3 = ((bnlr)localObject3).a();
       }
     }
     label419:
@@ -82,8 +82,8 @@ public final class ShortVideoArtResourceMgr$1
           ((File)localObject1).delete();
         }
       }
-      if (new File(bkrf.a).exists()) {
-        bbdx.a(bkrf.a);
+      if (new File(bncp.a).exists()) {
+        bdcs.a(bncp.a);
       }
       return;
     }
@@ -91,7 +91,7 @@ public final class ShortVideoArtResourceMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr.1
  * JD-Core Version:    0.7.0.1
  */

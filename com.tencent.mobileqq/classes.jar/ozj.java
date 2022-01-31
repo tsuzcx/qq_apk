@@ -1,18 +1,28 @@
-import java.util.Comparator;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
+import com.tencent.mobileqq.widget.AutoFitTextView;
 
-class ozj
-  implements Comparator<Integer>
+public class ozj
+  implements beiy
 {
-  ozj(ozh paramozh) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
+  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
   
-  public int a(Integer paramInteger1, Integer paramInteger2)
+  public ozj(ozh paramozh) {}
+  
+  public int a()
   {
-    return paramInteger1.intValue() - paramInteger2.intValue();
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() - bcwh.a(ozh.a(this.jdField_a_of_type_Ozh), 10.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ozj
  * JD-Core Version:    0.7.0.1
  */

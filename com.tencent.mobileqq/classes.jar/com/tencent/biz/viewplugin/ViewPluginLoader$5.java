@@ -2,18 +2,18 @@ package com.tencent.biz.viewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbwt;
-import bbwu;
-import bbwz;
+import bdvu;
+import bdvv;
+import bdwa;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
-import xjf;
+import yxy;
 
 public class ViewPluginLoader$5
   implements Runnable
 {
-  public ViewPluginLoader$5(xjf paramxjf, JSONObject paramJSONObject, String paramString, bbwt parambbwt) {}
+  public ViewPluginLoader$5(yxy paramyxy, JSONObject paramJSONObject, String paramString, bdvu parambdvu) {}
   
   public void run()
   {
@@ -26,16 +26,16 @@ public class ViewPluginLoader$5
       return;
       Object localObject = new File(this.jdField_a_of_type_JavaLangString);
       Bundle localBundle = new Bundle();
-      localObject = new bbwu(str, (File)localObject);
-      ((bbwu)localObject).b = 3;
-      this.this$0.a().a((bbwu)localObject, this.jdField_a_of_type_Bbwt, localBundle);
+      localObject = new bdvv(str, (File)localObject);
+      ((bdvv)localObject).b = 3;
+      this.this$0.a().a((bdvv)localObject, this.jdField_a_of_type_Bdvu, localBundle);
     } while (!QLog.isColorLevel());
     QLog.d("ViewPluginLoader", 2, "start Download url = " + str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginLoader.5
  * JD-Core Version:    0.7.0.1
  */

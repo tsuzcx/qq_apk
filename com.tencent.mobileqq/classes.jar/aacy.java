@@ -1,15 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-class aacy
-  implements View.OnClickListener
+public class aacy
+  implements TVK_SDKMgr.InstallListener
 {
-  aacy(aacw paramaacw) {}
+  public aacy(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void onClick(View paramView)
+  public void onInstallProgress(float paramFloat)
   {
-    this.a.a.d();
-    aacw.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("GCApi", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GCApi", 1, "plugin fail errorCode = " + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GCApi", 1, "plugin success");
+    }
   }
 }
 

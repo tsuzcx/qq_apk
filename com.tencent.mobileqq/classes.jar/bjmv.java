@@ -1,23 +1,16 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import cooperation.qzone.report.QzoneReportManager;
 
-final class bjmv
-  implements EIPCResultCallback
+public final class bjmv
+  extends bjoe<QzoneReportManager, Void>
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  protected QzoneReportManager a(Void paramVoid)
   {
-    if (paramEIPCResult != null)
-    {
-      boolean bool = paramEIPCResult.data.getBoolean("key_result");
-      QLog.d("PeakIpcController", 2, "sendVideo result:" + bool);
-    }
+    return new QzoneReportManager();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjmv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
-import android.view.animation.Interpolator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-final class auwt
-  implements Interpolator
+public final class auwt
+  implements Parcelable.Creator<BasicTypeDataParcel>
 {
-  public float getInterpolation(float paramFloat)
+  public BasicTypeDataParcel a(Parcel paramParcel)
   {
-    if (paramFloat <= 0.3333333F) {
-      return 0.0F;
-    }
-    return (paramFloat - 0.3333333F) * 1.5F;
+    return new BasicTypeDataParcel(paramParcel);
+  }
+  
+  public BasicTypeDataParcel[] a(int paramInt)
+  {
+    return new BasicTypeDataParcel[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auwt
  * JD-Core Version:    0.7.0.1
  */

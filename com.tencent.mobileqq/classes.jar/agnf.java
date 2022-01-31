@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agnf
-  implements bcwm
+class agnf
+  implements DialogInterface.OnClickListener
 {
-  public agnf(PhotoListActivity paramPhotoListActivity, Runnable paramRunnable) {}
+  agnf(agmy paramagmy, bdfq parambdfq) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    this.jdField_a_of_type_Bdfq.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnf
  * JD-Core Version:    0.7.0.1
  */

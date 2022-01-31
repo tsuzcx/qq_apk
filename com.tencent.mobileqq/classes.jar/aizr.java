@@ -1,37 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
 
 public class aizr
 {
-  private static final SharedPreferences a = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_robot", 4);
+  public static final Set<String> a = new HashSet();
   
-  public static void a(String paramString)
+  static
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      a.edit().putLong(paramString, System.currentTimeMillis()).commit();
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      long l = a.getLong(paramString, 0L);
-      if (System.currentTimeMillis() - l < 86400000L)
-      {
-        QLog.i("CmGameTemp_RobotDataUtil", 1, "isRobotUin:" + paramString);
-        return true;
-      }
-    }
-    return false;
+    a.add("SoLoadModule");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aizr
  * JD-Core Version:    0.7.0.1
  */

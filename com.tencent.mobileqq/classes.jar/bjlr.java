@@ -1,13 +1,10 @@
-public class bjlr
+public abstract interface bjlr
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjlr
  * JD-Core Version:    0.7.0.1
  */

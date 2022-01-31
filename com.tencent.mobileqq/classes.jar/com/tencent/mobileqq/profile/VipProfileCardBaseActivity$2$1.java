@@ -2,8 +2,8 @@ package com.tencent.mobileqq.profile;
 
 import android.os.Handler;
 import android.os.Message;
-import auwa;
-import axrn;
+import awnm;
+import azmz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import java.util.HashMap;
@@ -11,11 +11,11 @@ import java.util.HashMap;
 public class VipProfileCardBaseActivity$2$1
   implements Runnable
 {
-  public VipProfileCardBaseActivity$2$1(auwa paramauwa, Card paramCard, HashMap paramHashMap, String paramString) {}
+  public VipProfileCardBaseActivity$2$1(awnm paramawnm, Card paramCard, HashMap paramHashMap, String paramString) {}
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_Auwa.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet);
+    boolean bool = this.jdField_a_of_type_Awnm.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet);
     HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
     if (bool) {}
     for (Object localObject = "0";; localObject = "-102")
@@ -24,19 +24,19 @@ public class VipProfileCardBaseActivity$2$1
       if (bool != true) {
         break;
       }
-      axrn.a(this.jdField_a_of_type_Auwa.a.app.getApp()).a(this.jdField_a_of_type_JavaLangString, "profileCardSet", true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-      localObject = this.jdField_a_of_type_Auwa.a.a.obtainMessage(5);
-      this.jdField_a_of_type_Auwa.a.a.sendMessage((Message)localObject);
+      azmz.a(this.jdField_a_of_type_Awnm.a.app.getApp()).a(this.jdField_a_of_type_JavaLangString, "profileCardSet", true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
+      localObject = this.jdField_a_of_type_Awnm.a.a.obtainMessage(5);
+      this.jdField_a_of_type_Awnm.a.a.sendMessage((Message)localObject);
       return;
     }
-    axrn.a(this.jdField_a_of_type_Auwa.a.app.getApp()).a(this.jdField_a_of_type_JavaLangString, "profileCardSet", false, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-    localObject = this.jdField_a_of_type_Auwa.a.a.obtainMessage(6);
-    this.jdField_a_of_type_Auwa.a.a.sendMessage((Message)localObject);
+    azmz.a(this.jdField_a_of_type_Awnm.a.app.getApp()).a(this.jdField_a_of_type_JavaLangString, "profileCardSet", false, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
+    localObject = this.jdField_a_of_type_Awnm.a.a.obtainMessage(6);
+    this.jdField_a_of_type_Awnm.a.a.sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardBaseActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

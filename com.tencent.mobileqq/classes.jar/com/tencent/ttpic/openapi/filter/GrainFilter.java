@@ -1,9 +1,14 @@
 package com.tencent.ttpic.openapi.filter;
 
+import android.graphics.Bitmap;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
+import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.TextureResParam;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
+import com.tencent.ttpic.openapi.util.FeatureUtils;
 import com.tencent.ttpic.util.AlgoUtils;
 
 public class GrainFilter
@@ -18,7 +23,10 @@ public class GrainFilter
   public GrainFilter()
   {
     super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-    this.mFilter.addParam(new TextureResParam("inputImageTexture2", "sh/grain.jpg", 33986));
+    Bitmap localBitmap = FeatureUtils.getEncryptedBitmap("assets://raw/sh/", FeatureManager.getResourceDir(), "grain.jpg");
+    if (BitmapUtils.isLegal(localBitmap)) {
+      this.mFilter.addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", localBitmap, 33986, true));
+    }
     this.mFilter.addParam(new UniformParam.FloatParam("alpha", this.mAlpha));
   }
   
@@ -45,6 +53,14 @@ public class GrainFilter
       this.mFilter.setTexCords(AlgoUtils.calTexCoords(512, 512, paramFloat1 / paramFloat2));
       this.mPostRotateFilter.setRotationAndFlip(0, 0, 0);
     }
+  }
+  
+  public Frame render(Frame paramFrame)
+  {
+    if (this.mAlpha == 1.0F) {
+      return paramFrame;
+    }
+    return super.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
   }
   
   public void setAlpha(float paramFloat)

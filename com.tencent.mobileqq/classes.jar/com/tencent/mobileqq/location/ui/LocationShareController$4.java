@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import aryz;
+import atpv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class LocationShareController$4
@@ -10,12 +10,12 @@ public final class LocationShareController$4
   
   public void run()
   {
-    aryz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
+    atpv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationShareController.4
  * JD-Core Version:    0.7.0.1
  */

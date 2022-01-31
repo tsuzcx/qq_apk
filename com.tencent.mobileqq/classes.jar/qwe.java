@@ -1,30 +1,84 @@
-import android.net.ConnectivityManager.NetworkCallback;
-import android.net.Network;
-import android.os.Handler;
-import android.support.annotation.RequiresApi;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.1;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.2;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
 
-@RequiresApi(21)
-public final class qwe
-  extends ConnectivityManager.NetworkCallback
+public class qwe
+  implements ayjl
 {
-  private qwe(qwc paramqwc) {}
+  private String jdField_a_of_type_JavaLangString;
+  private qkw jdField_a_of_type_Qkw;
   
-  public void onAvailable(@Nullable Network paramNetwork)
+  public qwe(qkw paramqkw)
   {
-    qwc.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.1(this));
+    this.jdField_a_of_type_Qkw = paramqkw;
   }
   
-  public void onLost(@Nullable Network paramNetwork)
+  public int a()
   {
-    qwc.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.2(this));
+    return 0;
+  }
+  
+  public CharSequence a()
+  {
+    return ayrd.b(this.jdField_a_of_type_Qkw.a(), this.jdField_a_of_type_JavaLangString, 6, true);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public qkw a()
+  {
+    return this.jdField_a_of_type_Qkw;
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(View paramView) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.jdField_a_of_type_Qkw.a().contains(paramString);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public CharSequence b()
+  {
+    return "";
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_Qkw.a().toString();
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public CharSequence c()
+  {
+    return alpo.a(2131705051);
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qwe
  * JD-Core Version:    0.7.0.1
  */

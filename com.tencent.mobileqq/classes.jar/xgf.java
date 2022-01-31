@@ -1,26 +1,35 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Friends;
 
-class xgf
-  implements Animation.AnimationListener
+public class xgf
 {
-  xgf(xgb paramxgb) {}
+  @NonNull
+  protected final Friends a;
+  protected boolean a;
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public xgf(@NonNull Friends paramFriends)
   {
-    if (xgb.b(this.a) != null) {
-      xgb.b(this.a).setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgf
  * JD-Core Version:    0.7.0.1
  */

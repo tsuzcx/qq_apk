@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.Window;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.Context;
+import android.os.Build.VERSION;
 
-public class ncr
-  implements View.OnLayoutChangeListener
+public final class ncr
 {
-  public ncr(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  @TargetApi(11)
+  public static void a(Context paramContext, String paramString)
   {
-    paramInt1 = this.a.getWindow().getDecorView().getBottom() - this.a.getWindow().getDecorView().getTop();
-    if (paramInt1 != this.a.b) {
-      LebaSearchPluginManagerActivity.a(this.a, paramInt1);
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
+      return;
     }
+    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncr
  * JD-Core Version:    0.7.0.1
  */

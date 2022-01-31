@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class afww
-  implements akay
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public afww(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
+  public afww(SixCombolEffectView paramSixCombolEffectView, afxk paramafxk) {}
   
-  public void a(int paramInt1, int paramInt2, Object paramObject) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
-    }
-    this.a.o();
-    if (paramBoolean)
-    {
-      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
-      return;
-    }
-    this.a.c(this.a.getString(2131690722));
+    this.jdField_a_of_type_Afxk.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afww
  * JD-Core Version:    0.7.0.1
  */

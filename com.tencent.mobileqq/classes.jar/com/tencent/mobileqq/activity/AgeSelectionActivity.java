@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aaij;
-import aaik;
-import ajya;
+import abzj;
+import abzk;
+import alpo;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
-import bazx;
-import bbbr;
-import bfpc;
+import bcyr;
+import bdal;
+import bhpy;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 import com.tencent.mobileqq.widget.DispatchActionMoveScrollView;
@@ -28,7 +28,7 @@ public class AgeSelectionActivity
 {
   private int jdField_a_of_type_Int;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bfpc jdField_a_of_type_Bfpc;
+  private bhpy jdField_a_of_type_Bhpy;
   private IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
   private String jdField_a_of_type_JavaLangString;
   private Calendar jdField_a_of_type_JavaUtilCalendar;
@@ -46,7 +46,7 @@ public class AgeSelectionActivity
   
   public static int a(String paramString)
   {
-    return Arrays.asList(bazx.c).indexOf(paramString);
+    return Arrays.asList(bcyr.c).indexOf(paramString);
   }
   
   private void a()
@@ -62,33 +62,33 @@ public class AgeSelectionActivity
     if (this.j < 0) {
       this.j = 0;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.j + ajya.a(2131700021));
-    this.jdField_a_of_type_JavaLangString = bbbr.a(this.h + 1, this.i + 1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.j + alpo.a(2131700390));
+    this.jdField_a_of_type_JavaLangString = bdal.a(this.h + 1, this.i + 1);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bfpc == null)
+    if (this.jdField_a_of_type_Bhpy == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getLayoutInflater().inflate(2131560804, null));
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new aaik(this, null));
-      this.jdField_a_of_type_Bfpc = bfpc.c(this);
-      this.jdField_a_of_type_Bfpc.d(true);
-      this.jdField_a_of_type_Bfpc.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
-      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_Bfpc.findViewById(2131361922);
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getLayoutInflater().inflate(2131560987, null));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new abzk(this, null));
+      this.jdField_a_of_type_Bhpy = bhpy.c(this);
+      this.jdField_a_of_type_Bhpy.d(true);
+      this.jdField_a_of_type_Bhpy.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
+      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_Bhpy.findViewById(2131361924);
       ((DispatchActionMoveScrollView)localObject).a = true;
       ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
       if (Build.VERSION.SDK_INT >= 11)
       {
-        localObject = this.jdField_a_of_type_Bfpc.getWindow();
+        localObject = this.jdField_a_of_type_Bhpy.getWindow();
         if (localObject != null) {
           ((Window)localObject).setFlags(16777216, 16777216);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new aaij(this));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new abzj(this));
     }
-    if (!this.jdField_a_of_type_Bfpc.isShowing())
+    if (!this.jdField_a_of_type_Bhpy.isShowing())
     {
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.g);
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.h);
@@ -96,7 +96,7 @@ public class AgeSelectionActivity
     }
     try
     {
-      this.jdField_a_of_type_Bfpc.show();
+      this.jdField_a_of_type_Bhpy.show();
       return;
     }
     catch (Exception localException) {}
@@ -131,13 +131,13 @@ public class AgeSelectionActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560608);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362189));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364626));
-    findViewById(2131362193).setOnClickListener(this);
-    findViewById(2131364627).setOnClickListener(this);
-    setTitle(ajya.a(2131700018));
-    setLeftViewName(2131690331);
+    super.setContentView(2131560783);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362209));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364705));
+    findViewById(2131362213).setOnClickListener(this);
+    findViewById(2131364706).setOnClickListener(this);
+    setTitle(alpo.a(2131700387));
+    setLeftViewName(2131690382);
     this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
     this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
     this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilCalendar.get(1);
@@ -198,7 +198,7 @@ public class AgeSelectionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AgeSelectionActivity
  * JD-Core Version:    0.7.0.1
  */

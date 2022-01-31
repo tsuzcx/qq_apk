@@ -6,7 +6,7 @@ public abstract interface COMM_MALL_INSERT_FEED
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cnst.COMM_MALL_INSERT_FEED
  * JD-Core Version:    0.7.0.1
  */

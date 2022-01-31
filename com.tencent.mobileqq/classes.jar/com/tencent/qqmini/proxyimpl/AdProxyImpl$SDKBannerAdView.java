@@ -1,5 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
+import aajj;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -8,19 +9,19 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBannerAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBannerAdListener;
 import java.lang.ref.WeakReference;
-import yts;
 
 class AdProxyImpl$SDKBannerAdView
   extends AdProxy.AbsBannerAdView
 {
   int SHARE_RATE = 53;
   WeakReference<Activity> mActivity;
+  long mAdId;
   int mAdType;
   String mAppid;
   AdProxy.IBannerAdListener mBannerListener;
   int mDeviceOrientation;
   String mEntryPath;
-  yts mGdtBannerView;
+  aajj mGdtBannerView;
   String mGdtCookie;
   int mHeight;
   String mPosid;
@@ -55,6 +56,11 @@ class AdProxyImpl$SDKBannerAdView
     this.mActivity = null;
     this.mBannerListener = null;
     this.mGdtBannerView = null;
+  }
+  
+  public long getAdID()
+  {
+    return this.mAdId;
   }
   
   public String getReportUrl()
@@ -122,7 +128,7 @@ class AdProxyImpl$SDKBannerAdView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBannerAdView
  * JD-Core Version:    0.7.0.1
  */

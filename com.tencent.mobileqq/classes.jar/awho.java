@@ -1,30 +1,19 @@
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import kotlin.Metadata;
 
-class awho
-  implements Comparator<awng>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelStudyModeAppInfoOrderConfigProcessor;", "Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelAppInfoOrderConfigProcessor;", "()V", "type", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class awho
+  extends awhm
 {
-  awho(awhn paramawhn) {}
+  public static final awhp a = new awhp(null);
   
-  public int a(awng paramawng1, awng paramawng2)
+  public int a()
   {
-    int i = paramawng2.a[2] - paramawng1.a[2];
-    if (i != 0) {}
-    int j;
-    do
-    {
-      return i;
-      j = paramawng1.a[0] - paramawng2.a[0];
-      i = j;
-    } while (j != 0);
-    paramawng1 = paramawng1.c.substring(paramawng1.a[0] + paramawng1.a[1]);
-    paramawng2 = paramawng2.c.substring(paramawng2.a[0] + paramawng2.a[1]);
-    return ChnToSpell.a(paramawng1, 2).compareTo(ChnToSpell.a(paramawng2, 2));
+    return 611;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awho
  * JD-Core Version:    0.7.0.1
  */

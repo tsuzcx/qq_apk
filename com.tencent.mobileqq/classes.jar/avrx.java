@@ -1,44 +1,31 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-class avrx
-  implements aysc
+public class avrx
+  extends bajc
 {
-  avrx(avrv paramavrv, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  public avrx(OCRResultActivity paramOCRResultActivity) {}
   
-  public void onResp(aysz paramaysz)
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramaysz.c);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Avrv.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
+    super.a(paramBoolean, paramList);
+    OCRResultActivity.c(this.a);
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
     {
-      nav.a(new File(avrv.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), avrv.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
-      if (this.jdField_a_of_type_Avrv.a != null) {
-        this.jdField_a_of_type_Avrv.a.a();
-      }
+      this.a.a.setParticipleItems(paramList);
+      this.a.a.a();
+      OCRResultActivity.d(this.a);
       return;
     }
-    catch (IOException paramaysz)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          paramaysz.printStackTrace();
-        }
-      }
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131708206), 0).a();
   }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avrx
  * JD-Core Version:    0.7.0.1
  */

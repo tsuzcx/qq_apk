@@ -1,22 +1,47 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
-class afxf
-  implements apsb
+public class afxf
+  extends AnimatorListenerAdapter
 {
-  afxf(afxe paramafxe) {}
+  public afxf(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramInt1 == 3) && (paramInt2 == 0))
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {}
+    do
     {
-      axqy.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
-      ChatHistoryC2CFileFragment.a(this.a.a, true);
-    }
+      do
+      {
+        return;
+        SixCombolEffectView.jdField_a_of_type_Int = 4;
+        if (QLog.isColorLevel()) {
+          QLog.w("SixCombolEffectView", 2, "Animation 4 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+        }
+      } while (SixCombolEffectView.a(this.a) == null);
+      paramAnimator = SixCombolEffectView.a(this.a);
+    } while (paramAnimator == null);
+    SixCombolEffectView.a(this.a).a(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 3;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 3 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afxf
  * JD-Core Version:    0.7.0.1
  */

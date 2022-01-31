@@ -1,69 +1,18 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import android.view.animation.Interpolator;
 
-public class qgc
-  implements TextWatcher
+class qgc
+  implements Interpolator
 {
-  private int jdField_a_of_type_Int;
+  qgc(qga paramqga) {}
   
-  public qgc(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public float getInterpolation(float paramFloat)
   {
-    int k = paramEditable.length();
-    int i;
-    int j;
-    label24:
-    Drawable[] arrayOfDrawable;
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      i = 1;
-      if (k <= 0) {
-        break label120;
-      }
-      j = 1;
-      if ((j ^ i) != 0)
-      {
-        arrayOfDrawable = ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).getCompoundDrawables();
-        if (k <= 0) {
-          break label125;
-        }
-        arrayOfDrawable[2] = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getResources().getDrawable(2130839266);
-      }
-    }
-    for (;;)
-    {
-      ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      this.jdField_a_of_type_Int = k;
-      if (paramEditable.length() <= 0) {
-        break label133;
-      }
-      osg.a().g(paramEditable.toString());
-      return;
-      i = 0;
-      break;
-      label120:
-      j = 0;
-      break label24;
-      label125:
-      arrayOfDrawable[2] = null;
-    }
-    label133:
-    ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).clear();
+    return (float)(Math.pow(2.0D, -10.0F * paramFloat) * Math.sin((paramFloat + 0.12F) * 6.283185307179586D / -0.1800000071525574D) + 1.0D);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qgc
  * JD-Core Version:    0.7.0.1
  */

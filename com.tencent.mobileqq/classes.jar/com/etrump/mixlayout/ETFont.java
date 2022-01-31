@@ -1,7 +1,7 @@
 package com.etrump.mixlayout;
 
 import android.graphics.Typeface;
-import gx;
+import fg;
 
 public class ETFont
 {
@@ -155,7 +155,7 @@ public class ETFont
   public void onDestroy()
   {
     if (0L != this.m_diyHandle) {
-      gx.a(this.m_diyHandle);
+      fg.a(this.m_diyHandle);
     }
   }
   
@@ -165,7 +165,7 @@ public class ETFont
       return;
     }
     this.mDIYConfigString = paramString;
-    this.m_diyHandle = gx.a(this, paramString);
+    this.m_diyHandle = fg.a(this, paramString);
   }
   
   public void setBold(boolean paramBoolean)
@@ -244,7 +244,7 @@ public class ETFont
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.etrump.mixlayout.ETFont
  * JD-Core Version:    0.7.0.1
  */

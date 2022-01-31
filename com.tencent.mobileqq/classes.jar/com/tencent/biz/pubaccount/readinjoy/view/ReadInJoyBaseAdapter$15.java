@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import nol;
-import npu;
+import nrt;
+import ntd;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ram;
+import rqj;
 
 public class ReadInJoyBaseAdapter$15
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$15(ram paramram, BaseArticleInfo paramBaseArticleInfo) {}
+  public ReadInJoyBaseAdapter$15(rqj paramrqj, BaseArticleInfo paramBaseArticleInfo) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class ReadInJoyBaseAdapter$15
       try
       {
         localJSONObject.put("algorithm_id", this.a.mAlgorithmID);
-        nol.a(null, "", "0X8008AD1", "0X8008AD1", 0, 0, "", "", "", npu.a(this.a.mVideoVid, this.a.innerUniqueID, (int)this.a.mChannelID, localJSONObject), false);
+        nrt.a(null, "", "0X8008AD1", "0X8008AD1", 0, 0, "", "", "", ntd.a(this.a.mVideoVid, this.a.innerUniqueID, (int)this.a.mChannelID, localJSONObject), false);
         return;
       }
       catch (JSONException localJSONException)
@@ -39,7 +39,7 @@ public class ReadInJoyBaseAdapter$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.15
  * JD-Core Version:    0.7.0.1
  */

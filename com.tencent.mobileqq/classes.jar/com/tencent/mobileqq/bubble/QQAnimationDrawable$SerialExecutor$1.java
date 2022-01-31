@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.bubble;
 
-import amcw;
+import antw;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQAnimationDrawable$SerialExecutor$1
   implements Runnable
 {
-  public QQAnimationDrawable$SerialExecutor$1(amcw paramamcw, Runnable paramRunnable) {}
+  public QQAnimationDrawable$SerialExecutor$1(antw paramantw, Runnable paramRunnable) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class QQAnimationDrawable$SerialExecutor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.QQAnimationDrawable.SerialExecutor.1
  * JD-Core Version:    0.7.0.1
  */

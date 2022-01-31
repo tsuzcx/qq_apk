@@ -1,35 +1,72 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aomh
-  implements View.OnClickListener
+  extends aofy<aomf>
 {
-  public aomh(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (bbfj.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
+    return 534;
+  }
+  
+  @NonNull
+  public aomf a(int paramInt)
+  {
+    return new aomf();
+  }
+  
+  @Nullable
+  public aomf a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
     {
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.d();
-      paramView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-      paramView.what = 2;
-      paramView.arg1 = 2;
-      paramView.obj = this.jdField_a_of_type_JavaLangString;
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramView);
-      axqy.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
-      return;
+      aomf localaomf = aomf.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicConfProcessor", 2, "onParsed  " + paramArrayOfaogf[0].a);
+      }
+      return localaomf;
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131692271);
-    bcql.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
+    return null;
+  }
+  
+  public Class<aomf> a()
+  {
+    return aomf.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aomf paramaomf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramaomf.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomh
  * JD-Core Version:    0.7.0.1
  */

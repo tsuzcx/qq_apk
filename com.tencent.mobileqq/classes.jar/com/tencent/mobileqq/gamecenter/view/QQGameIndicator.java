@@ -7,14 +7,14 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup.LayoutParams;
-import aqti;
-import aqtj;
+import asju;
+import asjv;
 import com.tencent.av.ui.MultiMembersAudioIndicator;
 
 public class QQGameIndicator
   extends MultiMembersAudioIndicator
 {
-  private aqtj a;
+  private asjv a;
   
   public QQGameIndicator(Context paramContext)
   {
@@ -28,25 +28,25 @@ public class QQGameIndicator
   
   public RadioButton a()
   {
-    aqti localaqti = new aqti(this, super.getContext());
-    localaqti.setButtonDrawable(2130845356);
-    localaqti.setGravity(17);
+    asju localasju = new asju(this, super.getContext());
+    localasju.setButtonDrawable(2130845727);
+    localasju.setGravity(17);
     Resources localResources = super.getContext().getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 6.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 6.0F, localResources.getDisplayMetrics()));
     localLayoutParams.gravity = 17;
     int i = (int)TypedValue.applyDimension(1, 2.0F, localResources.getDisplayMetrics());
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
-    localaqti.setLayoutParams(localLayoutParams);
-    localaqti.setClickable(false);
-    localaqti.setFocusable(false);
-    return localaqti;
+    localasju.setLayoutParams(localLayoutParams);
+    localasju.setClickable(false);
+    localasju.setFocusable(false);
+    return localasju;
   }
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_Aqtj != null) {
-      this.jdField_a_of_type_Aqtj.a(paramInt1, paramFloat, paramInt2);
+    if (this.jdField_a_of_type_Asjv != null) {
+      this.jdField_a_of_type_Asjv.a(paramInt1, paramFloat, paramInt2);
     }
   }
   
@@ -66,10 +66,10 @@ public class QQGameIndicator
       if (localRadioButton != null) {
         localRadioButton.setChecked(true);
       }
-      if (this.jdField_a_of_type_Aqtj == null) {
+      if (this.jdField_a_of_type_Asjv == null) {
         break;
       }
-      this.jdField_a_of_type_Aqtj.a(paramInt);
+      this.jdField_a_of_type_Asjv.a(paramInt);
       return;
     }
   }
@@ -86,14 +86,14 @@ public class QQGameIndicator
     }
   }
   
-  public void setPageListener(aqtj paramaqtj)
+  public void setPageListener(asjv paramasjv)
   {
-    this.jdField_a_of_type_Aqtj = paramaqtj;
+    this.jdField_a_of_type_Asjv = paramasjv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.QQGameIndicator
  * JD-Core Version:    0.7.0.1
  */

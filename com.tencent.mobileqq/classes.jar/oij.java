@@ -1,41 +1,79 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
 
-class oij
-  extends ClickableSpan
+public class oij
 {
-  oij(oif paramoif, BaseCommentData paramBaseCommentData, String paramString1, String paramString2) {}
-  
-  public void onClick(@NotNull View paramView)
+  private static AladdinConfig a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAuthorReply()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage))) {
-      ohf.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage, BaseActivity.sTopActivity);
-    }
-    for (;;)
-    {
-      nol.a(null, ohf.a(this.jdField_a_of_type_Oif.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Oif.a.mArticleID), String.valueOf(this.jdField_a_of_type_Oif.a.mAlgorithmID), this.jdField_a_of_type_Oif.a.innerUniqueID, this.b, false);
-      return;
-      ohf.a(this.jdField_a_of_type_JavaLangString, BaseActivity.sTopActivity);
-    }
+    return Aladdin.getConfig(278);
   }
   
-  public void updateDrawState(@NotNull TextPaint paramTextPaint)
+  public static String a()
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#376099"));
-    paramTextPaint.setUnderlineText(false);
+    return a().getString("comment_guide_wording", "");
+  }
+  
+  public static boolean a()
+  {
+    return a().getIntegerFromString("comment_and_biu_combine_switch", 0) == 1;
+  }
+  
+  public static String b()
+  {
+    return a().getString("biu_editor_guide_wording", "");
+  }
+  
+  public static boolean b()
+  {
+    return a().getIntegerFromString("biu_editor_checkbox_default_status", 0) == 1;
+  }
+  
+  public static String c()
+  {
+    return a().getString("biu_editor_confirm_btn_wording", "");
+  }
+  
+  public static boolean c()
+  {
+    return a().getIntegerFromString("biu_editor_checkbox_enable_remember", 0) == 1;
+  }
+  
+  public static String d()
+  {
+    return a().getString("biu_editor_checkbox_wording", "");
+  }
+  
+  public static boolean d()
+  {
+    return a().getIntegerFromString("biu_editor_checkbox_hidden", 0) == 1;
+  }
+  
+  public static String e()
+  {
+    if (a()) {
+      return a().getString("operate_cell_aladding_keys", "");
+    }
+    return "";
+  }
+  
+  public static boolean e()
+  {
+    return a().getIntegerFromString("biu_feed_card_white_jump", 1) == 1;
+  }
+  
+  public static boolean f()
+  {
+    return a().getIntegerFromString("biu_feed_card_gray_jump", 1) == 1;
+  }
+  
+  public static boolean g()
+  {
+    return a().getIntegerFromString("biu_feed_card_btn_jump", 1) == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oij
  * JD-Core Version:    0.7.0.1
  */

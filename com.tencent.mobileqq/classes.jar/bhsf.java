@@ -1,17 +1,14 @@
-public class bhsf
+import android.view.View;
+
+public abstract interface bhsf
 {
-  public int a;
-  public int b;
+  public abstract void a(View paramView, int paramInt, long paramLong);
   
-  public bhsf(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhsf
  * JD-Core Version:    0.7.0.1
  */

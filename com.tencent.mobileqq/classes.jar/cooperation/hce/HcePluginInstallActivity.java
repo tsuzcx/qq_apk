@@ -1,25 +1,25 @@
 package cooperation.hce;
 
-import aabi;
-import aabl;
-import aabq;
-import ajya;
+import absf;
+import absi;
+import absn;
+import alpo;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.os.Bundle;
-import bcql;
-import bfnn;
-import bgku;
-import bgkv;
-import bgkw;
-import bglh;
+import bhoi;
+import bils;
+import bilt;
+import bilu;
+import bimg;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
 import cooperation.qwallet.plugin.QWalletPayProgressDialog;
@@ -27,10 +27,10 @@ import cooperation.qwallet.plugin.QWalletPayProgressDialog;
 public class HcePluginInstallActivity
   extends BaseActivity
 {
-  private aabi jdField_a_of_type_Aabi = new bgkv(this);
-  private aabl jdField_a_of_type_Aabl;
-  private bglh jdField_a_of_type_Bglh;
-  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new bgku(this);
+  private absf jdField_a_of_type_Absf = new bilt(this);
+  private absi jdField_a_of_type_Absi;
+  private bimg jdField_a_of_type_Bimg;
+  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new bils(this);
   protected QWalletPayProgressDialog a;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -38,8 +38,8 @@ public class HcePluginInstallActivity
   
   private void a()
   {
-    aabq.a();
-    this.jdField_a_of_type_Aabl = aabq.a(this, 4, "1106788359");
+    absn.a();
+    this.jdField_a_of_type_Absi = absn.a(this, 4, "1106788359");
   }
   
   private void a(String paramString)
@@ -47,12 +47,12 @@ public class HcePluginInstallActivity
     if (QLog.isDevelopLevel()) {
       QLog.i("HcePluginInstallActivity", 4, "goPlugin " + paramString);
     }
-    if (this.jdField_a_of_type_Bglh.isPlugininstalled("vfc_plugin.apk"))
+    if (this.jdField_a_of_type_Bimg.isPlugininstalled("vfc_plugin.apk"))
     {
       c();
       return;
     }
-    this.jdField_a_of_type_Bglh.installPlugin("vfc_plugin.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener);
+    this.jdField_a_of_type_Bimg.installPlugin("vfc_plugin.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener);
   }
   
   private void a(boolean paramBoolean)
@@ -72,7 +72,7 @@ public class HcePluginInstallActivity
     {
       return;
       this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog = new QWalletPayProgressDialog(this);
-      this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog.setMessage(ajya.a(2131705444));
+      this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog.setMessage(alpo.a(2131705816));
       this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog.show();
       return;
     }
@@ -107,8 +107,8 @@ public class HcePluginInstallActivity
     if (QLog.isDevelopLevel()) {
       QLog.i("HcePluginInstallActivity", 4, "initPluginManager");
     }
-    this.jdField_a_of_type_Bglh = ((bglh)this.app.getManager(27));
-    this.b = bfnn.a("0e8bd1");
+    this.jdField_a_of_type_Bimg = ((bimg)this.app.getManager(27));
+    this.b = bhoi.a("0e8bd1");
     a(true);
     ThreadManagerV2.executeOnSubThread(new HcePluginInstallActivity.1(this));
   }
@@ -118,20 +118,20 @@ public class HcePluginInstallActivity
     this.jdField_a_of_type_JavaLangString = "";
     if (!a(getApplicationContext()))
     {
-      bcql.a(getApplicationContext(), 2131694621, 0).a();
+      QQToast.a(getApplicationContext(), 2131694777, 0).a();
       d();
     }
-    while (this.jdField_a_of_type_Aabl == null) {
+    while (this.jdField_a_of_type_Absi == null) {
       return;
     }
-    this.jdField_a_of_type_Aabl.a("loginSilent", null, this.jdField_a_of_type_Aabi);
+    this.jdField_a_of_type_Absi.a("loginSilent", null, this.jdField_a_of_type_Absf);
   }
   
   private void d()
   {
     try
     {
-      QWalletHelper.launchVfcPlugin(this, this.app, this.jdField_a_of_type_JavaLangString, this.b, bgkw.a());
+      QWalletHelper.launchVfcPlugin(this, this.app, this.jdField_a_of_type_JavaLangString, this.b, bilu.a());
       return;
     }
     catch (Throwable localThrowable)
@@ -156,8 +156,8 @@ public class HcePluginInstallActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Aabl != null) {
-      this.jdField_a_of_type_Aabl.b();
+    if (this.jdField_a_of_type_Absi != null) {
+      this.jdField_a_of_type_Absi.b();
     }
     a(false);
   }
@@ -180,7 +180,7 @@ public class HcePluginInstallActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.hce.HcePluginInstallActivity
  * JD-Core Version:    0.7.0.1
  */

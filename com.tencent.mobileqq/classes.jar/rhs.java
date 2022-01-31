@@ -1,24 +1,16 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rhs
-  extends bfzx<RecyclerView.Adapter>
+public abstract interface rhs
 {
-  public rhs(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix, RecyclerView.Adapter paramAdapter)
-  {
-    super(paramAdapter);
-  }
+  public abstract void a(VideoInfo paramVideoInfo);
   
-  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.a(paramViewHolder, paramInt);
-    this.a.a(paramViewHolder, paramInt);
-  }
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhs
  * JD-Core Version:    0.7.0.1
  */

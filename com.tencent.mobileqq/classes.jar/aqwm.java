@@ -1,165 +1,75 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
-import com.tencent.mobileqq.bigbrother.ServerApi.RspDownloadCheckRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.RspJumpCheckRecmd;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.CheckShareExtensionRsp;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.RspBody;
-import tencent.im.oidb.jump_url_check.jump_url_check.RspJumpUrlCheckRecmd;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import cooperation.weiyun.channel.pb.WeiyunPB.FileExtInfo;
+import cooperation.weiyun.channel.pb.WeiyunPB.FileItem;
+import cooperation.weiyun.channel.pb.WeiyunPB.LibInfoListGetMsgRsp;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-public class aqwm
-  extends MSFServlet
+class aqwm
+  implements bkgc<WeiyunPB.LibInfoListGetMsgRsp>
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  aqwm(aqwl paramaqwl, String paramString) {}
+  
+  public void a(int paramInt, String paramString, WeiyunPB.LibInfoListGetMsgRsp paramLibInfoListGetMsgRsp)
   {
-    int i = 2;
-    boolean bool2 = false;
     if (QLog.isColorLevel()) {
-      QLog.d("CheckForwardServlet", 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
     }
-    Object localObject1 = paramIntent.getStringExtra("CMD");
-    if ("OidbSvc.0xc78_1".equals(localObject1)) {
-      i = 1;
-    }
-    for (;;)
-    {
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("ext_info", paramIntent.getStringExtra("ext_info"));
-      ((Bundle)localObject1).putInt("req_id", paramIntent.getIntExtra("req_id", 0));
-      bool1 = paramFromServiceMsg.isSuccess();
-      if (!bool1) {
-        break label637;
-      }
-      try
-      {
-        localObject2 = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new byte[((ByteBuffer)localObject2).getInt() - 4];
-        ((ByteBuffer)localObject2).get(paramFromServiceMsg);
-        switch (i)
-        {
-        }
-      }
-      catch (Throwable paramFromServiceMsg)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          label164:
-          QLog.e("CheckForwardServlet", 1, paramFromServiceMsg, new Object[0]);
-          bool1 = bool2;
-        }
-      }
-      notifyObserver(paramIntent, i, bool1, (Bundle)localObject1, aqwl.class);
-      return;
-      if (!"QQApkSvc.check_jump_url".equals(localObject1)) {
-        if ("QQApkSvc.check_download_apk".equals(localObject1))
-        {
-          i = 3;
-        }
-        else
-        {
-          if (!"QQApkSvc.check_jump_apk".equals(localObject1)) {
-            break label640;
-          }
-          i = 4;
-        }
-      }
-    }
-    localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).mergeFrom(paramFromServiceMsg);
-    if (((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.get() == 0) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (bool1)
-      {
-        paramFromServiceMsg = new oidb_cmd0xc78.RspBody();
-        paramFromServiceMsg.mergeFrom(((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.get().toByteArray());
-        paramFromServiceMsg = (oidb_cmd0xc78.CheckShareExtensionRsp)paramFromServiceMsg.check_share_extension_rsp.get();
-        if (QLog.isColorLevel()) {
-          QLog.i("CheckForwardServlet", 2, "onreceive result: " + paramFromServiceMsg.result.get() + ", jump: " + paramFromServiceMsg.jump_result.get());
-        }
-        ((Bundle)localObject1).putInt("result", paramFromServiceMsg.result.get());
-        ((Bundle)localObject1).putInt("jump_result", paramFromServiceMsg.jump_result.get());
-        ((Bundle)localObject1).putString("jump_url", paramFromServiceMsg.jump_url.get());
-        break label645;
-        localObject2 = new jump_url_check.RspJumpUrlCheckRecmd();
-        ((jump_url_check.RspJumpUrlCheckRecmd)localObject2).mergeFrom(paramFromServiceMsg);
-        ((Bundle)localObject1).putInt("err_code", ((jump_url_check.RspJumpUrlCheckRecmd)localObject2).err_code.get());
-        ((Bundle)localObject1).putString("err_msg", ((jump_url_check.RspJumpUrlCheckRecmd)localObject2).err_msg.get());
-        ((Bundle)localObject1).putBoolean("can_jump", ((jump_url_check.RspJumpUrlCheckRecmd)localObject2).can_jump.get());
-        break label164;
-        localObject2 = new ServerApi.RspDownloadCheckRecmd();
-        ((ServerApi.RspDownloadCheckRecmd)localObject2).mergeFrom(paramFromServiceMsg);
-        ((Bundle)localObject1).putBoolean("allow_download", ((ServerApi.RspDownloadCheckRecmd)localObject2).check_pass.get());
-        paramFromServiceMsg = (ServerApi.ErrorInfo)((ServerApi.RspDownloadCheckRecmd)localObject2).err_info.get();
-        if (paramFromServiceMsg == null) {
-          break label164;
-        }
-        ((Bundle)localObject1).putInt("err_code", paramFromServiceMsg.err_code.get());
-        ((Bundle)localObject1).putString("err_msg", paramFromServiceMsg.err_msg.get());
-        ((Bundle)localObject1).putString("jump_url", paramFromServiceMsg.jump_url.get());
-        break label164;
-        localObject2 = new ServerApi.RspJumpCheckRecmd();
-        ((ServerApi.RspJumpCheckRecmd)localObject2).mergeFrom(paramFromServiceMsg);
-        ((Bundle)localObject1).putInt("jump", ((ServerApi.RspJumpCheckRecmd)localObject2).jump_method.get());
-        paramFromServiceMsg = (ServerApi.ErrorInfo)((ServerApi.RspJumpCheckRecmd)localObject2).err_info.get();
-        if (paramFromServiceMsg == null) {
-          break label164;
-        }
-        ((Bundle)localObject1).putInt("err_code", paramFromServiceMsg.err_code.get());
-        ((Bundle)localObject1).putString("err_msg", paramFromServiceMsg.err_msg.get());
-        break label164;
-        label637:
-        break label164;
-        label640:
-        i = 0;
-        break;
-      }
-      label645:
-      break label164;
-    }
+    aqwl.a(this.jdField_a_of_type_Aqwl).a().a(false, 31, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_JavaLangString });
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(WeiyunPB.LibInfoListGetMsgRsp paramLibInfoListGetMsgRsp)
   {
-    if (paramIntent == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList onSucceed, num[" + paramLibInfoListGetMsgRsp.FileItem_items.size() + "]");
     }
-    String str = paramIntent.getStringExtra("CMD");
-    paramPacket.setSSOCommand(str);
-    if (str.equals("QQApkSvc.check_jump_url")) {
-      paramPacket.setTimeout(10000L);
-    }
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = paramLibInfoListGetMsgRsp.FileItem_items.get().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CheckForwardServlet", 2, "onSend with cmd: " + str);
+      localObject2 = (WeiyunPB.FileItem)((Iterator)localObject1).next();
+      WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
+      localWeiYunFileInfo.jdField_b_of_type_Long = ((WeiyunPB.FileItem)localObject2).file_mtime.get();
+      localWeiYunFileInfo.jdField_a_of_type_Long = ((WeiyunPB.FileItem)localObject2).file_size.get();
+      localWeiYunFileInfo.jdField_a_of_type_Int = ((WeiyunPB.FileItem)localObject2).ext_info.from_source.get();
+      localWeiYunFileInfo.jdField_a_of_type_JavaLangString = ((WeiyunPB.FileItem)localObject2).file_id.get();
+      localWeiYunFileInfo.jdField_b_of_type_JavaLangString = bkia.a(((WeiyunPB.FileItem)localObject2).pdir_key.get());
+      localWeiYunFileInfo.c = ((WeiyunPB.FileItem)localObject2).filename.get();
+      localWeiYunFileInfo.f = ((WeiyunPB.FileItem)localObject2).ext_info.cookie_name.get();
+      localWeiYunFileInfo.g = ((WeiyunPB.FileItem)localObject2).ext_info.cookie_value.get();
+      localWeiYunFileInfo.e = ((WeiyunPB.FileItem)localObject2).ext_info.thumb_url.get();
+      localWeiYunFileInfo.d = ((WeiyunPB.FileItem)localObject2).ext_info.weiyun_host.get();
+      localWeiYunFileInfo.jdField_b_of_type_Int = ((WeiyunPB.FileItem)localObject2).ext_info.weiyun_port.get();
+      localWeiYunFileInfo.i = bkia.a(((WeiyunPB.FileItem)localObject2).file_md5.get());
+      localWeiYunFileInfo.j = bkia.a(((WeiyunPB.FileItem)localObject2).file_sha.get());
+      if (!aqwl.a(this.jdField_a_of_type_Aqwl).containsKey(localWeiYunFileInfo.jdField_a_of_type_JavaLangString))
+      {
+        aqwl.a(this.jdField_a_of_type_Aqwl).put(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo);
+        localArrayList.add(localWeiYunFileInfo);
       }
-      paramPacket.putSendData(bbma.a(paramIntent.getByteArrayExtra("RequestBytes")));
+    }
+    localObject1 = aqwl.a(this.jdField_a_of_type_Aqwl).a();
+    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    if (paramLibInfoListGetMsgRsp.finish_flag.get() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((aqse)localObject1).a(true, 31, new Object[] { localObject2, Boolean.valueOf(bool), Integer.valueOf(paramLibInfoListGetMsgRsp.FileItem_items.size()), paramLibInfoListGetMsgRsp.server_version.get(), localArrayList, Integer.valueOf(aqwl.a(this.jdField_a_of_type_Aqwl)) });
       return;
-      if (str.equals("QQApkSvc.check_download_apk")) {
-        paramPacket.setTimeout(((amaw)ampl.a().a(416)).a);
-      } else if (str.equals("QQApkSvc.check_jump_apk")) {
-        paramPacket.setTimeout(((amaw)ampl.a().a(416)).b);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwm
  * JD-Core Version:    0.7.0.1
  */

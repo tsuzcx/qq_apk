@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class ApolloActionPackage
-  extends auko
+  extends awbv
 {
   public static final int PACKAGE_ID_3D_SEGMENT = 300;
   public static final int PACKAGE_ID_COLLECT = 4;
@@ -21,7 +21,7 @@ public class ApolloActionPackage
   public String mIconSelectedUrl;
   public String mIconUnselectedUrl;
   public String name;
-  @aumc
+  @awdj
   public int packageId;
   public int redFlowId;
   public long redInterval;
@@ -54,7 +54,7 @@ public class ApolloActionPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloActionPackage
  * JD-Core Version:    0.7.0.1
  */

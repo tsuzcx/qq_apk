@@ -1,25 +1,6 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
-
-class ajmx
-  implements Comparator<ApolloActionData>
-{
-  ajmx(ajmu paramajmu) {}
-  
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
-  {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
-    }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmx
  * JD-Core Version:    0.7.0.1
  */

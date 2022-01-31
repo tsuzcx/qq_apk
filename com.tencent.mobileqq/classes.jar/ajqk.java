@@ -1,46 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class ajqk
-  implements DialogInterface.OnClickListener
+class ajqk
+  implements ajqn
 {
-  public ajqk(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3) {}
+  ajqk(ajqj paramajqj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.n();
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
-    {
-      paramDialogInterface = (bbrd)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
-      if (!this.jdField_a_of_type_JavaLangString.equals(String.valueOf(2))) {}
+    if ((paramInt1 != this.a.a) && (this.a.a != 0)) {
+      return false;
     }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "icon_alert_clickbuy", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.b });
-      }
-      String str = new JSONObject(this.c).getString("packageId");
-      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), Integer.parseInt(this.b), Integer.parseInt(str));
-      return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      QLog.e("ApolloPanel", 1, "[showAioDialog] Exception:", paramDialogInterface);
-    }
+    return ajqj.a(this.a, paramInt1, paramInt2, paramString, paramInt3, paramInt4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqk
  * JD-Core Version:    0.7.0.1
  */

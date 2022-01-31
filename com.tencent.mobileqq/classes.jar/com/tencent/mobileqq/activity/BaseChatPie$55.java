@@ -1,43 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.Context;
-import android.os.Build;
-import bcsj;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 class BaseChatPie$55
   implements Runnable
 {
-  BaseChatPie$55(BaseChatPie paramBaseChatPie, int paramInt) {}
+  BaseChatPie$55(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "recorderVolumeChange " + this.a);
-    }
-    if (this.a == 1) {
-      if (!this.this$0.n()) {
-        QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 1, "volueme state err" + Build.MANUFACTURER + Build.MODEL);
-      }
-    }
-    while (((this.a != 2) && (this.a != 0)) || (this.this$0.jdField_a_of_type_Bcsj == null) || (!this.this$0.jdField_a_of_type_Bcsj.isShowing()) || (this.this$0.jdField_a_of_type_Bcsj.getWindow() == null))
-    {
-      do
-      {
-        return;
-      } while ((this.this$0.jdField_a_of_type_Bcsj != null) && (this.this$0.jdField_a_of_type_Bcsj.isShowing()));
-      this.this$0.jdField_a_of_type_Bcsj = new bcsj(this.this$0.jdField_a_of_type_AndroidContentContext);
-      this.this$0.jdField_a_of_type_Bcsj.a(this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131698554));
-      this.this$0.jdField_a_of_type_Bcsj.show();
-      return;
-    }
-    this.this$0.jdField_a_of_type_Bcsj.dismiss();
-    this.this$0.jdField_a_of_type_Bcsj = null;
+    QQToast.a(this.this$0.a.getApp(), 2131690070, 1).b(this.this$0.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.55
  * JD-Core Version:    0.7.0.1
  */

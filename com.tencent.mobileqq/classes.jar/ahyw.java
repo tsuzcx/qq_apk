@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.PacmanParcelItem;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-public final class ahyw
-  implements Parcelable.Creator<PacmanParcelItem>
+public class ahyw
+  implements TextWatcher
 {
-  public PacmanParcelItem a(Parcel paramParcel)
+  public ahyw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    return new PacmanParcelItem(paramParcel);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.e(paramEditable);
   }
   
-  public PacmanParcelItem[] a(int paramInt)
-  {
-    return new PacmanParcelItem[paramInt];
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahyw
  * JD-Core Version:    0.7.0.1
  */

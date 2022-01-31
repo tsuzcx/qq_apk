@@ -10,7 +10,7 @@ import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
-import com.tencent.mobileqq.msf.service.q;
+import com.tencent.mobileqq.msf.service.t;
 import com.tencent.msf.service.protocol.push.RequestMSFForceOffline;
 import com.tencent.msf.service.protocol.security.i;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -138,12 +138,12 @@ public class ah
         {
           QLog.d("MSF.C.SSORespHandler", 1, Thread.currentThread().getName() + " handleSsoFailCode tokenExpired to setAccountNoLogin uin=" + MsfSdkUtils.getShortUin(paramFromServiceMsg.getUin()));
           this.s.getAccountCenter().k(paramFromServiceMsg.getUin());
-          if ((!q.b()) && ((this.u == -1L) || (System.currentTimeMillis() - this.u > 10000L))) {}
+          if ((!t.b()) && ((this.u == -1L) || (System.currentTimeMillis() - this.u > 10000L))) {}
           try
           {
-            localObject1 = q.c();
+            localObject1 = t.c();
             i1 = this.s.getUinPushStatus(paramFromServiceMsg.getUin());
-            q.a(BaseApplication.getContext(), BaseApplication.getContext().getPackageName(), paramFromServiceMsg.getUin(), (String)localObject1, i1, null);
+            t.a(BaseApplication.getContext(), BaseApplication.getContext().getPackageName(), paramFromServiceMsg.getUin(), (String)localObject1, i1, null);
             QLog.d("MSF.C.SSORespHandler", 1, "sendBootAction for mainProcess for " + MD5.toMD5(paramFromServiceMsg.getUin()));
             this.u = System.currentTimeMillis();
             paramFromServiceMsg.setBusinessFail(2001, paramFromServiceMsg.getBusinessFailMsg());

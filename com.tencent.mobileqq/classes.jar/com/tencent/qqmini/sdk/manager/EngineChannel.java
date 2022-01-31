@@ -6,22 +6,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
-import bejn;
-import betj;
-import betk;
-import betl;
+import bgrq;
+import bgrr;
+import bgrs;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 
 public class EngineChannel
   implements Parcelable
 {
-  public static final Parcelable.Creator<EngineChannel> CREATOR = new betj();
+  public static final Parcelable.Creator<EngineChannel> CREATOR = new bgrq();
   private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
-  private betl jdField_a_of_type_Betl;
+  private bgrs jdField_a_of_type_Bgrs;
   private String jdField_a_of_type_JavaLangString = "Unknown";
   
   public EngineChannel()
   {
-    this.jdField_a_of_type_AndroidOsResultReceiver = new EngineChannel.MyReceiver(this, new betk(bejn.a().getLooper()));
+    this.jdField_a_of_type_AndroidOsResultReceiver = new EngineChannel.MyReceiver(this, new bgrr(ThreadManager.a().getLooper()));
   }
   
   private EngineChannel(ResultReceiver paramResultReceiver)
@@ -36,9 +36,9 @@ public class EngineChannel
     }
   }
   
-  public void a(betl parambetl)
+  public void a(bgrs parambgrs)
   {
-    this.jdField_a_of_type_Betl = parambetl;
+    this.jdField_a_of_type_Bgrs = parambgrs;
   }
   
   public void a(String paramString)
@@ -64,7 +64,7 @@ public class EngineChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineChannel
  * JD-Core Version:    0.7.0.1
  */

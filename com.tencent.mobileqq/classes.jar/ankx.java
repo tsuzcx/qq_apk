@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.Context;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 
 class ankx
-  implements DialogInterface.OnKeyListener
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  ankx(ankw paramankw) {}
+  ankx(anku paramanku, String paramString, Context paramContext) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    return (paramInt == 84) || (paramInt == 4);
+    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
+      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new anky(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankx
  * JD-Core Version:    0.7.0.1
  */

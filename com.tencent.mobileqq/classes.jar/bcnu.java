@@ -1,73 +1,107 @@
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView.2.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-public class bcnu
-  implements View.OnClickListener
+class bcnu
+  implements URLDrawableDownListener
 {
-  public bcnu(NewStyleDropdownView paramNewStyleDropdownView) {}
+  bcnu(bcnt parambcnt, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
   
-  public void onClick(View paramView)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.a.jdField_a_of_type_Bcnv.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Bcnv.getWindowToken(), 0);
-    Drawable localDrawable;
-    StringBuilder localStringBuilder;
-    if ((this.a.jdField_a_of_type_Bcnv.getAdapter() != null) && (this.a.jdField_a_of_type_Bcnv.getAdapter().getCount() > 0))
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadCancelled ", new Object[0]));
+    }
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
     {
-      int i = this.a.jdField_a_of_type_Bcnv.getAdapter().getCount();
-      if (i >= 5) {
-        break label323;
-      }
-      int j = actj.a(7.5F, this.a.getResources());
-      int k = actj.a(40.0F, this.a.getResources());
-      this.a.jdField_a_of_type_Bcnv.setDropDownHeight(i * (j * 2 + k) + j * 2);
-      localDrawable = ((ImageView)paramView).getDrawable();
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("arrow clicked, drawable is down=");
-        if (localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
-          break label348;
-        }
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
       }
     }
-    label323:
-    label348:
-    for (boolean bool = true;; bool = false)
+    azmj.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadFailed ", new Object[0]));
+    }
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
     {
-      QLog.d("NewStyleDropdownView", 2, bool + ", isLastDropDown=" + this.a.jdField_a_of_type_Boolean);
-      if ((localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
-        break label354;
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
       }
-      if (this.a.jdField_a_of_type_Bcnw != null) {
-        this.a.jdField_a_of_type_Bcnw.c(false);
-      }
-      NewStyleDropdownView.a(this.a).postDelayed(new NewStyleDropdownView.2.1(this, paramView), 500L);
-      paramView = paramView.getContext();
-      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
-        axqy.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
-      }
+    }
+    if (paramThrowable == null) {}
+    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
+    {
+      azmj.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
       return;
-      this.a.jdField_a_of_type_Bcnv.setDropDownHeight(actj.a(251.5F, this.a.getResources()));
-      break;
     }
-    label354:
-    if (this.a.jdField_a_of_type_Bcnw != null) {
-      this.a.jdField_a_of_type_Bcnw.c(true);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
     }
-    this.a.jdField_a_of_type_Bcnv.dismissDropDown();
+    if (paramInterruptedException == null) {}
+    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
+    {
+      azmj.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      return;
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadProgressed progress=%d", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadSuccessed ", new Object[0]));
+    }
+    this.jdField_a_of_type_Bcnt.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
+    }
+    azmj.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcnu
  * JD-Core Version:    0.7.0.1
  */

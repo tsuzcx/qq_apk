@@ -9,26 +9,26 @@ import android.database.Cursor;
 import android.net.Uri;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
-import xpa;
-import xpb;
+import zdt;
+import zdu;
 
 public class QZoneConfigProvider
   extends ContentProvider
-  implements xpb
+  implements zdu
 {
   private static final UriMatcher jdField_a_of_type_AndroidContentUriMatcher = ;
-  private xpa jdField_a_of_type_Xpa;
+  private zdt jdField_a_of_type_Zdt;
   
   private int a(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    int i = this.jdField_a_of_type_Xpa.d(paramString, paramArrayOfString);
+    int i = this.jdField_a_of_type_Zdt.d(paramString, paramArrayOfString);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return i;
   }
   
   private int a(Uri paramUri, ContentValues[] paramArrayOfContentValues)
   {
-    int i = this.jdField_a_of_type_Xpa.a(paramUri, "table_qz_unread", paramArrayOfContentValues);
+    int i = this.jdField_a_of_type_Zdt.a(paramUri, "table_qz_unread", paramArrayOfContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return i;
   }
@@ -49,94 +49,94 @@ public class QZoneConfigProvider
   
   private Cursor a(String[] paramArrayOfString)
   {
-    return this.jdField_a_of_type_Xpa.c(paramArrayOfString);
+    return this.jdField_a_of_type_Zdt.c(paramArrayOfString);
   }
   
   private Cursor a(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_Xpa.b(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return this.jdField_a_of_type_Zdt.b(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri a(Uri paramUri, ContentValues paramContentValues)
   {
     paramContentValues.put("name", "cookie");
-    paramUri = this.jdField_a_of_type_Xpa.d(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Zdt.d(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private int b(Uri paramUri, ContentValues[] paramArrayOfContentValues)
   {
-    int i = this.jdField_a_of_type_Xpa.a(paramUri, "qz_navigator_bar", paramArrayOfContentValues);
+    int i = this.jdField_a_of_type_Zdt.a(paramUri, "qz_navigator_bar", paramArrayOfContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return i;
   }
   
   private Cursor b(String[] paramArrayOfString)
   {
-    return this.jdField_a_of_type_Xpa.a(paramArrayOfString);
+    return this.jdField_a_of_type_Zdt.a(paramArrayOfString);
   }
   
   private Cursor b(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_Xpa.c(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return this.jdField_a_of_type_Zdt.c(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri b(Uri paramUri, ContentValues paramContentValues)
   {
     paramContentValues.put("name", "check_time");
-    paramUri = this.jdField_a_of_type_Xpa.e(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Zdt.e(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Cursor c(String[] paramArrayOfString)
   {
-    return this.jdField_a_of_type_Xpa.b(paramArrayOfString);
+    return this.jdField_a_of_type_Zdt.b(paramArrayOfString);
   }
   
   private Cursor c(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_Xpa.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return this.jdField_a_of_type_Zdt.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri c(Uri paramUri, ContentValues paramContentValues)
   {
     paramContentValues.put("name", "updatelog");
-    paramUri = this.jdField_a_of_type_Xpa.f(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Zdt.f(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Cursor d(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_Xpa.d(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return this.jdField_a_of_type_Zdt.d(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri d(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_Xpa.a(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Zdt.a(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Uri e(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_Xpa.c(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Zdt.c(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Uri f(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_Xpa.b(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Zdt.b(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Uri g(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_Xpa.g(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Zdt.g(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
@@ -153,7 +153,7 @@ public class QZoneConfigProvider
     case 8: 
       return b(paramUri, paramArrayOfContentValues);
     }
-    return this.jdField_a_of_type_Xpa.a(paramUri, "qz_configs", paramArrayOfContentValues);
+    return this.jdField_a_of_type_Zdt.a(paramUri, "qz_configs", paramArrayOfContentValues);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
@@ -164,19 +164,19 @@ public class QZoneConfigProvider
     default: 
       return 0;
     case 1: 
-      return this.jdField_a_of_type_Xpa.a(paramString, paramArrayOfString);
+      return this.jdField_a_of_type_Zdt.a(paramString, paramArrayOfString);
     case 2: 
-      return this.jdField_a_of_type_Xpa.a();
+      return this.jdField_a_of_type_Zdt.a();
     case 3: 
-      return this.jdField_a_of_type_Xpa.c();
+      return this.jdField_a_of_type_Zdt.c();
     case 4: 
-      return this.jdField_a_of_type_Xpa.b(paramString, paramArrayOfString);
+      return this.jdField_a_of_type_Zdt.b(paramString, paramArrayOfString);
     case 6: 
-      return this.jdField_a_of_type_Xpa.d();
+      return this.jdField_a_of_type_Zdt.d();
     case 5: 
-      return this.jdField_a_of_type_Xpa.b();
+      return this.jdField_a_of_type_Zdt.b();
     case 8: 
-      return this.jdField_a_of_type_Xpa.c(paramString, paramArrayOfString);
+      return this.jdField_a_of_type_Zdt.c(paramString, paramArrayOfString);
     }
     return a(paramUri, paramString, paramArrayOfString);
   }
@@ -212,7 +212,7 @@ public class QZoneConfigProvider
   
   public boolean onCreate()
   {
-    this.jdField_a_of_type_Xpa = new xpa(getContext());
+    this.jdField_a_of_type_Zdt = new zdt(getContext());
     return true;
   }
   

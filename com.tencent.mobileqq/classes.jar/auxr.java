@@ -1,47 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.widget.ScrollView;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
 
 public class auxr
-  implements View.OnTouchListener
+  implements URLDrawable.URLDrawableListener
 {
-  public auxr(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public auxr(StoryPlayController paramStoryPlayController, avby paramavby) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (StickyNotePublishFragment.a(this.a))
-    {
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      bfni.b(StickyNotePublishFragment.a(this.a));
-      return false;
+    if (this.jdField_a_of_type_Avby != null) {
+      this.jdField_a_of_type_Avby.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
     }
-    if (StickyNotePublishFragment.a(this.a) == 0)
-    {
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(0);
-      StickyNotePublishFragment.a(this.a).requestFocus();
-      bfni.a(StickyNotePublishFragment.a(this.a));
-      return false;
-    }
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a, 0);
-    this.a.a(false);
-    this.a.b(false);
-    this.a.c(true);
-    this.a.c(0, 0);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auxr
  * JD-Core Version:    0.7.0.1
  */

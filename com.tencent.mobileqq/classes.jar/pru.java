@@ -1,34 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class pru
-  implements View.OnClickListener
+  implements phj
 {
-  pru(prt paramprt) {}
+  pru(prr paramprr, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Ram == null) {}
-    int i;
-    rbo localrbo;
-    do
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    }
+    if (paramBoolean)
     {
-      do
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
       {
+        paramString.isFollowed = paramBoolean;
+        prr.a(this.jdField_a_of_type_Prr, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        prr.a(this.jdField_a_of_type_Prr).notifyDataSetChanged();
         return;
-        paramView = ((pau)this.a.jdField_a_of_type_JavaLangObject).a();
-      } while (paramView == null);
-      i = ComponentContentGalleryBiu.a(paramView, this.a.jdField_a_of_type_Ram);
-      localrbo = this.a.jdField_a_of_type_Ram.a();
-    } while (localrbo == null);
-    localrbo.a(this.a.jdField_a_of_type_AndroidContentContext, paramView, 0, paramView.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
+      }
+    }
+    QQToast.a(prr.a(this.jdField_a_of_type_Prr).getContext(), 1, 2131718949, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pru
  * JD-Core Version:    0.7.0.1
  */

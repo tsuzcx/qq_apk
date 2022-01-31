@@ -1,44 +1,34 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ausk
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends bamu
 {
-  public ausk(CoverDetailFragment paramCoverDetailFragment) {}
+  private NearbyAppInterface a;
   
-  public void onGlobalLayout()
+  public ausk(NearbyAppInterface paramNearbyAppInterface)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      CoverDetailFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
+    super(paramNearbyAppInterface);
+    this.a = paramNearbyAppInterface;
+  }
+  
+  public bamw a(baub parambaub)
+  {
+    if (parambaub == null) {}
+    do
     {
-      Object localObject = this.a.getActivity().getResources().getDrawable(2130849630);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = CoverDetailFragment.a(this.a).getWidth();
-      localURLDrawableOptions.mRequestHeight = CoverDetailFragment.a(this.a).getHeight();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localObject = URLDrawable.getDrawable(CoverDetailFragment.a(this.a).d, localURLDrawableOptions);
-      ((URLDrawable)localObject).setURLDrawableListener(CoverDetailFragment.a(this.a));
-      CoverDetailFragment.a(this.a).setImageDrawable((Drawable)localObject);
-      CoverDetailFragment.b(this.a).setImageDrawable(this.a.a((Drawable)localObject));
-      return;
-      CoverDetailFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
+      return null;
+      if ((parambaub.b == 8) || (parambaub.b == 64) || (parambaub.b == 21)) {
+        return new baqs(this, parambaub);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.richmedia.TransFileController", 2, parambaub.toString());
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ausk
  * JD-Core Version:    0.7.0.1
  */

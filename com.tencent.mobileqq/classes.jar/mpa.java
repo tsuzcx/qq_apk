@@ -1,19 +1,34 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.view.MotionEvent;
 
 class mpa
-  extends lgg
+  implements mpd
 {
-  mpa(moz parammoz) {}
+  mpa(mov parammov) {}
   
-  protected void a(long paramLong)
+  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    this.a.a("onConnected_init_when_not_support");
-    moz.a(this.a).b(this);
+    if (paramBoolean)
+    {
+      if (!this.a.c()) {
+        break label23;
+      }
+      this.a.f();
+    }
+    for (;;)
+    {
+      return false;
+      label23:
+      if (this.a.b()) {
+        this.a.e();
+      } else if (mov.a(this.a) != null) {
+        mov.a(this.a).a(paramMotionEvent);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpa
  * JD-Core Version:    0.7.0.1
  */

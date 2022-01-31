@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.PointF;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
-class awrp
-  implements View.OnClickListener
+public class awrp
+  implements bdjy<PointF>
 {
-  awrp(awro paramawro) {}
+  public awrp(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
   
-  public void onClick(View paramView)
+  public void a(bdjs<PointF> parambdjs, float paramFloat, PointF paramPointF, Transformation paramTransformation)
   {
-    awro.a(this.a).a(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramPointF.x, paramPointF.y);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awrp
  * JD-Core Version:    0.7.0.1
  */

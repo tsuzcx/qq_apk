@@ -4,18 +4,13 @@ import android.content.DialogInterface.OnClickListener;
 class afuz
   implements DialogInterface.OnClickListener
 {
-  afuz(afup paramafup) {}
+  afuz(afus paramafus) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      afup.a(this.a);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afuz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,82 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import QC.BubbleInfo;
+import QC.BubbleRecommendRsp;
+import QC.ItemBase;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class asnc
-  implements DialogInterface.OnClickListener
+  implements asnl<BubbleRecommendRsp>
 {
-  public asnc(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    asoi.a("MsgBackup_MsgBackupPcBaseFragment", "showDisConnDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
-    aslg.a().a().c();
-    aslg.a().d();
-    if (this.a.jdField_a_of_type_Boolean) {
-      if ((!this.a.e) && (this.a.b == 1)) {
-        this.a.a(this.a.getActivity());
-      }
-    }
-    do
+    return 4;
+  }
+  
+  public String a(Context paramContext)
+  {
+    return bdox.a(paramContext, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab");
+  }
+  
+  public String a(FontBubble paramFontBubble)
+  {
+    return bdox.a("bubblePreview").replace("[id]", Integer.toString(paramFontBubble.bubbleId));
+  }
+  
+  public List<FontBubble> a(QQAppInterface paramQQAppInterface, BubbleRecommendRsp paramBubbleRecommendRsp)
+  {
+    int j = 0;
+    paramQQAppInterface = ((aloz)paramQQAppInterface.getManager(51)).a(paramQQAppInterface.getAccount());
+    int i;
+    if (paramQQAppInterface == null)
     {
-      return;
-      this.a.m();
-      return;
-      if (!this.a.e) {
+      QLog.e("FontBubbleManager", 1, "BubbleController no ExtensionInfo");
+      i = 0;
+    }
+    for (;;)
+    {
+      paramQQAppInterface = new ArrayList();
+      if (paramBubbleRecommendRsp.vItems == null) {
         break;
       }
-    } while (this.a.getActivity() == null);
-    this.a.getActivity().setResult(1001);
-    this.a.getActivity().finish();
-    return;
-    this.a.a(this.a.getActivity());
+      paramBubbleRecommendRsp = paramBubbleRecommendRsp.vItems.iterator();
+      while (paramBubbleRecommendRsp.hasNext())
+      {
+        BubbleInfo localBubbleInfo = (BubbleInfo)paramBubbleRecommendRsp.next();
+        FontBubble localFontBubble = new FontBubble();
+        localFontBubble.viewType = 1;
+        localFontBubble.fontId = i;
+        localFontBubble.engine = j;
+        localFontBubble.bubbleId = localBubbleInfo.item.itemId;
+        localFontBubble.name = localBubbleInfo.name;
+        localFontBubble.feeType = localBubbleInfo.feeType;
+        localFontBubble.payUrl = localBubbleInfo.payUrl;
+        localFontBubble.title = localBubbleInfo.title;
+        localFontBubble.msg = localBubbleInfo.msg;
+        localFontBubble.btn = localBubbleInfo.btn;
+        localFontBubble.picUrl = localBubbleInfo.strPicUrl;
+        localFontBubble.panelType = 4;
+        paramQQAppInterface.add(localFontBubble);
+      }
+      i = (int)paramQQAppInterface.uVipFont;
+      j = paramQQAppInterface.vipFontType;
+    }
+    return paramQQAppInterface;
+  }
+  
+  public void a(alxl paramalxl)
+  {
+    paramalxl.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asnc
  * JD-Core Version:    0.7.0.1
  */

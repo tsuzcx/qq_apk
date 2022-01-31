@@ -1,31 +1,40 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class alxc
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Handler
 {
-  alxc(alww paramalww, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  alxc(alxb paramalxb, Looper paramLooper)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
     do
     {
       return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-this.jdField_a_of_type_Alww.d * f);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Alww.g);
-    this.b.setAlpha(1.0F - f);
+      this.a.b();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(alxb.a(this.a)), " ,devStatus:", Integer.valueOf(alxb.b(this.a)), " ,clientType:", Long.valueOf(alxb.a(this.a)), " ,appid:", Long.valueOf(alxb.b(this.a)) });
+      }
+      this.a.notifyUI(2, true, new Object[] { Integer.valueOf(alxb.b(this.a)) });
+    } while (alxb.b(this.a) != 0);
+    if (!this.a.a.hasMessages(101)) {
+      this.a.a.sendEmptyMessageDelayed(101, 3000L);
+    }
+    bcys.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxc
  * JD-Core Version:    0.7.0.1
  */

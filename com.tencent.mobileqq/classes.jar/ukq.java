@@ -1,122 +1,70 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus.1;
 
-class ukq
-  extends Drawable
+public class ukq
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_a_of_type_JavaLangString = "story.icon.ShareGroupIconDrawable";
-  private ukl jdField_a_of_type_Ukl;
-  private ukn jdField_a_of_type_Ukn = new ukr(this);
-  private Drawable b;
+  public int a;
+  private Runnable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  private boolean b;
   
-  ukq(@NonNull ukl paramukl, @NonNull Drawable paramDrawable)
+  private ukq(ukp paramukp)
   {
-    this.jdField_a_of_type_Ukl = paramukl;
-    this.jdField_a_of_type_Ukl.a(this.jdField_a_of_type_Ukn);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.b = paramDrawable;
-    paramukl = this.jdField_a_of_type_Ukl.a();
-    if (paramukl != null) {
-      a(paramukl);
-    }
+    this.jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
   }
   
-  private void a(@NonNull Drawable paramDrawable)
+  private void c()
   {
-    ukj.a(this.jdField_a_of_type_JavaLangString, "updateCurrentDrawable view:%s drawable: %s", getCallback(), paramDrawable);
-    if (paramDrawable != this.b)
+    switch (this.jdField_a_of_type_Int)
     {
-      paramDrawable.setBounds(getBounds());
-      paramDrawable.setVisible(isVisible(), true);
-      paramDrawable.setState(getState());
-      paramDrawable.setLevel(getLevel());
-      paramDrawable.setCallback(getCallback());
-      if (Build.VERSION.SDK_INT >= 19) {
-        paramDrawable.setAlpha(getAlpha());
-      }
-      Drawable localDrawable = this.b;
-      this.b = paramDrawable;
-      if (localDrawable != null) {
-        localDrawable.setCallback(null);
-      }
-      invalidateSelf();
+    default: 
+    case 0: 
+    case 1: 
+    case 2: 
+    case 3: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_b_of_type_Int = 0;
+            return;
+            this.jdField_b_of_type_Int += 1;
+          } while (this.jdField_b_of_type_Int < 60);
+          this.jdField_b_of_type_Int = 59;
+          return;
+          this.jdField_b_of_type_Int += 1;
+        } while (this.jdField_b_of_type_Int < 95);
+        this.jdField_b_of_type_Int = 94;
+        return;
+        this.jdField_b_of_type_Int += 1;
+      } while (this.jdField_b_of_type_Int < 100);
+      this.jdField_b_of_type_Int = 99;
+      return;
     }
+    this.jdField_b_of_type_Int = 100;
   }
   
-  public void draw(@NonNull Canvas paramCanvas)
+  public void a()
   {
-    this.b.draw(paramCanvas);
-    this.jdField_a_of_type_Ukl.b();
+    this.jdField_b_of_type_Boolean = false;
+    ukp.a(this.jdField_a_of_type_Ukp).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
   }
   
-  public int getOpacity()
+  public void b()
   {
-    return this.b.getOpacity();
-  }
-  
-  public boolean getPadding(@NonNull Rect paramRect)
-  {
-    return this.b.getPadding(paramRect);
-  }
-  
-  @NonNull
-  public Drawable mutate()
-  {
-    this.b.mutate();
-    return super.mutate();
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    super.onBoundsChange(paramRect);
-    this.b.setBounds(paramRect);
-  }
-  
-  protected boolean onLevelChange(int paramInt)
-  {
-    this.b.setLevel(paramInt);
-    return true;
-  }
-  
-  protected boolean onStateChange(int[] paramArrayOfInt)
-  {
-    this.b.setState(paramArrayOfInt);
-    return true;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.b.setAlpha(paramInt);
-  }
-  
-  public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
-  {
-    super.setColorFilter(paramInt, paramMode);
-    this.b.setColorFilter(paramInt, paramMode);
-  }
-  
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
-  {
-    this.b.setColorFilter(paramColorFilter);
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    this.b.setVisible(paramBoolean1, paramBoolean2);
-    return bool;
+    this.jdField_b_of_type_Boolean = true;
+    ukp.a(this.jdField_a_of_type_Ukp).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukq
  * JD-Core Version:    0.7.0.1
  */

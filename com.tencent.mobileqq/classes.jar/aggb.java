@@ -1,69 +1,96 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
-import com.tencent.mobileqq.data.MessageForScribble;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aggb
-  extends aebx
+class aggb
+  implements agfz
 {
-  public aggb(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  private IBinder a;
+  
+  aggb(IBinder paramIBinder)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.a = paramIBinder;
   }
   
-  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, acuj paramacuj, int paramInt1, int paramInt2)
+  public void a(CompressInfo paramCompressInfo)
   {
-    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramacuj, paramInt1, paramInt2);
-    paramContext = (aece)paramacuj;
-    if (paramContext.d != null)
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-      if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo))) {
-        break label109;
-      }
-      if (!TextUtils.isEmpty(paramChatMessage.msg)) {
-        break label95;
-      }
-      paramContext.d.setText(ajya.a(2131706846));
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      localParcel.writeParcelable(paramCompressInfo, 1);
+      this.a.transact(1, localParcel, null, 1);
+      return;
     }
-    for (;;)
+    catch (RemoteException paramCompressInfo)
     {
-      if (paramContext.b != null) {
-        paramContext.b.setVisibility(8);
-      }
-      if (paramContext.c != null) {
-        paramContext.c.setVisibility(8);
+      if (QLog.isColorLevel()) {
+        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
       }
       return;
-      label95:
-      paramContext.d.setText(paramChatMessage.msg);
-      continue;
-      label109:
-      if ((paramChatMessage instanceof MessageForScribble)) {
-        paramContext.d.setText(ajya.a(2131706845));
-      } else {
-        paramContext.d.setText(ajya.a(2131706847));
-      }
+    }
+    finally
+    {
+      localParcel.recycle();
     }
   }
   
-  public void b(View paramView)
+  public IBinder asBinder()
   {
-    super.b(paramView);
+    return this.a;
+  }
+  
+  public void b(CompressInfo paramCompressInfo)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      localParcel.writeParcelable(paramCompressInfo, 1);
+      this.a.transact(2, localParcel, null, 1);
+      return;
+    }
+    catch (RemoteException paramCompressInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void c(CompressInfo paramCompressInfo)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      localParcel.writeParcelable(paramCompressInfo, 1);
+      this.a.transact(3, localParcel, null, 1);
+      return;
+    }
+    catch (RemoteException paramCompressInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggb
  * JD-Core Version:    0.7.0.1
  */

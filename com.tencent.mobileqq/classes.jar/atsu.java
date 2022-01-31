@@ -1,42 +1,45 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.content.res.TypedArray;
 
-class atsu
-  implements View.OnLongClickListener
+public class atsu
 {
-  atsu(atsc paramatsc) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
   
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  public void a(TypedArray paramTypedArray)
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
-    }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new attf(this.a, paramView), paramView, 0);
-    localObject = atsc.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    atsc.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
-    {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(atsc.a(this.a), i);
-      return true;
-    }
-    paramView.setVisibility(4);
-    return true;
+    this.jdField_a_of_type_Int = paramTypedArray.getDimensionPixelSize(19, 16);
+    this.jdField_b_of_type_Int = paramTypedArray.getInt(18, 255);
+    this.jdField_c_of_type_Int = paramTypedArray.getInt(20, 255);
+    this.d = paramTypedArray.getDimensionPixelSize(8, 20);
+    this.i = paramTypedArray.getDimensionPixelSize(9, 20);
+    this.j = paramTypedArray.getDimensionPixelSize(0, 15);
+    this.e = paramTypedArray.getDimensionPixelSize(4, 20);
+    this.f = paramTypedArray.getInt(2, 255);
+    this.g = paramTypedArray.getInt(5, 255);
+    this.h = paramTypedArray.getDimensionPixelSize(3, 20);
+    this.k = paramTypedArray.getDimensionPixelSize(12, 20);
+    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(11, false);
+    this.l = paramTypedArray.getDimensionPixelSize(7, 10);
+    this.jdField_c_of_type_Boolean = paramTypedArray.getBoolean(6, false);
+    this.jdField_b_of_type_Boolean = paramTypedArray.getBoolean(1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,49 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryUploadProgressView.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBannerVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class vaw
-  implements svz
+  extends unk<vcu>
 {
-  public MessageProgressView a;
-  private String a;
+  public static final String a = ume.a("StorySvc.square_720_banner_vid_list");
+  public String b;
+  public String c;
   
-  public vaw(MessageProgressView paramMessageProgressView)
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
+    return a;
   }
   
-  private void b(String paramString, int paramInt)
+  public unf a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, this.jdField_a_of_type_JavaLangString + "_" + hashCode());
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(vzl.a(this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getContext(), 8.0F), false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(paramInt);
-  }
-  
-  public void a(bcnl parambcnl)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(parambcnl);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    b(paramString, paramInt);
-    if (paramInt >= 100) {
-      ThreadManager.getUIHandler().postDelayed(new StoryUploadProgressView.1(this), 500L);
+    qqstory_service.RspBannerVideoList localRspBannerVideoList = new qqstory_service.RspBannerVideoList();
+    try
+    {
+      localRspBannerVideoList.mergeFrom(paramArrayOfByte);
+      return new vcu(localRspBannerVideoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
   }
   
-  public boolean a()
+  protected byte[] a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+    qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
+    localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqBannerVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
+    return localReqBannerVideoList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vaw
  * JD-Core Version:    0.7.0.1
  */

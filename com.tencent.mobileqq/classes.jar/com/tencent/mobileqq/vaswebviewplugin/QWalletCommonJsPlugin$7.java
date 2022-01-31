@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bbdj;
-import bcdp;
+import bdcd;
+import becq;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.QQPermissionCallback;
 
@@ -15,7 +15,7 @@ class QWalletCommonJsPlugin$7
     if (QLog.isColorLevel()) {
       QLog.d("QWalletCommonJsPlugin", 1, "CheckPermission user denied");
     }
-    bbdj.a(this.this$0.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+    bdcd.a(this.this$0.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
     this.this$0.callJs(QWalletCommonJsPlugin.access$200(this.this$0), new String[] { "{'result':-1, 'msg': 'no permission to read contact number'}" });
   }
   

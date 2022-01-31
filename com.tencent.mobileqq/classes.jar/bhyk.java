@@ -1,22 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
 
-class bhyk
-  implements bhza
+public abstract interface bhyk
 {
-  bhyk(bhyi parambhyi) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.d("VipARCameraController", 2, "loadState " + paramBoolean);
-    bhyi.b(this.a, paramBoolean);
-    if (paramBoolean) {
-      bhyv.a().a(bhyi.a(this.a));
-    }
-  }
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhyk
  * JD-Core Version:    0.7.0.1
  */

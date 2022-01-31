@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
-import bctl;
+import besu;
 
 public class PressEffectLinearLayout
   extends LinearLayout
@@ -27,10 +27,10 @@ public class PressEffectLinearLayout
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bctl.a(this);
+      besu.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bctl.b(this);
+      besu.b(this);
     }
   }
   

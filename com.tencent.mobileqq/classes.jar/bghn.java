@@ -1,28 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.webbundle.sdk.WebBundleH5OptionListner;
-import cooperation.comic.VipComicHelper.2.1;
-import mqq.os.MqqHandler;
+import android.webkit.ValueCallback;
 
-public final class bghn
-  implements WebBundleH5OptionListner
+public abstract interface bghn
 {
-  bghn(SharedPreferences paramSharedPreferences) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void enableWebBundle(boolean paramBoolean)
-  {
-    QLog.d("WebBundle.Comic", 2, "handle enable webbundle. enable = " + paramBoolean);
-    this.a.edit().putBoolean("webbundle_enable", paramBoolean).apply();
-    if (!paramBoolean) {
-      ThreadManager.getUIHandler().post(new VipComicHelper.2.1(this));
-    }
-  }
+  public abstract void a(String paramString, ValueCallback paramValueCallback);
+  
+  public abstract void a(String paramString1, String paramString2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bghn
  * JD-Core Version:    0.7.0.1
  */

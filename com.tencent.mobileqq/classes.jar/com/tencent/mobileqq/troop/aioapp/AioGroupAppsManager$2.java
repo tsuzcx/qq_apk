@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import azjs;
-import azju;
-import azjw;
-import azjx;
+import bbib;
+import bbid;
+import bbif;
+import bbig;
 
 public class AioGroupAppsManager$2
   implements Runnable
 {
-  public AioGroupAppsManager$2(azjs paramazjs, long paramLong) {}
+  public AioGroupAppsManager$2(bbib parambbib, long paramLong) {}
   
   public void run()
   {
-    azjs.a(this.this$0).a();
-    if (!azjx.a(this.this$0.a(this.a))) {
-      azjw.a(azjs.a(this.this$0), this.a);
+    bbib.a(this.this$0).a();
+    if (!bbig.a(this.this$0.a(this.a))) {
+      bbif.a(bbib.a(this.this$0), this.a);
     }
   }
 }

@@ -1,6 +1,6 @@
 {
     "ReadInjoy_article_header_cell": {
-        "view_type": "cell",
+        "view_type": "container",
         "direction": "vertical",
         "height": {
             "type": "wrap_content"
@@ -9,7 +9,7 @@
             "type": "wrap_content"
         },
         "subviews": [
-            
+
             {
                 "view_type": "container",
                 "layout_type":"layout_relative",
@@ -29,6 +29,7 @@
                         "align_parent_left":"YES",
                         "align_parent_top":"YES",
                         "event_type":"cmd_avatar_click",
+                        "margin_top":"-3.5",
                         "margin_left":"12",
                         "height":{
                             "type":"relative",
@@ -55,7 +56,7 @@
                         "width": {
                             "type": "wrap_content"
                         },
-                        
+
                         "subviews": [
                             {
                                 "view_type": "UILabel",
@@ -117,8 +118,8 @@
                             }
                         ]
                     },
-                    
-                    
+
+
                     {
                         "view_type": "UIButton",
                         "view_id": "id_article_header_follow_button",

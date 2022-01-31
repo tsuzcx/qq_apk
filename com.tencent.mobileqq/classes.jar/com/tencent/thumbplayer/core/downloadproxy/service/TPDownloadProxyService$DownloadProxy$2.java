@@ -189,18 +189,18 @@ class TPDownloadProxyService$DownloadProxy$2
     }
   }
   
-  public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
     try
     {
       if (this.val$playListener != null) {
-        this.val$playListener.onDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2);
+        this.val$playListener.onDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2, paramString);
       }
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Throwable paramString)
     {
-      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onDownloadProgressUpdate failed, error:" + localThrowable.toString());
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onDownloadProgressUpdate failed, error:" + paramString.toString());
     }
   }
   
@@ -264,7 +264,7 @@ class TPDownloadProxyService$DownloadProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.service.TPDownloadProxyService.DownloadProxy.2
  * JD-Core Version:    0.7.0.1
  */

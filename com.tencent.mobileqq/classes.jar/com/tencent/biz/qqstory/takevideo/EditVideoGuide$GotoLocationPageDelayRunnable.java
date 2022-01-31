@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ver;
+import wtj;
 
 class EditVideoGuide$GotoLocationPageDelayRunnable
   implements Runnable
@@ -9,15 +9,15 @@ class EditVideoGuide$GotoLocationPageDelayRunnable
   
   public void run()
   {
-    ver localver = (ver)this.this$0.a(ver.class);
-    if (localver != null) {
-      localver.b();
+    wtj localwtj = (wtj)this.this$0.a(wtj.class);
+    if (localwtj != null) {
+      localwtj.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoGuide.GotoLocationPageDelayRunnable
  * JD-Core Version:    0.7.0.1
  */

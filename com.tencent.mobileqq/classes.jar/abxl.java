@@ -1,66 +1,19 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class abxl
-  extends Dialog
+  implements bepr
 {
-  public abxl(Context paramContext)
-  {
-    super(paramContext, 2131755648);
-    setContentView(2131561839);
-    getWindow().setFlags(1024, 2048);
-  }
+  public abxl(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void a(String paramString)
+  public void a()
   {
-    ((TextView)findViewById(2131377350)).setText(paramString);
-  }
-  
-  public void dismiss()
-  {
-    try
-    {
-      super.dismiss();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
-    }
-  }
-  
-  public void setTitle(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (String str = null;; str = getContext().getResources().getString(paramInt))
-    {
-      a(str);
-      return;
-    }
-  }
-  
-  public void show()
-  {
-    try
-    {
-      super.show();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
-    }
+    this.a.onBackPressed();
+    AddFriendLogicActivity.a(this.a).a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxl
  * JD-Core Version:    0.7.0.1
  */

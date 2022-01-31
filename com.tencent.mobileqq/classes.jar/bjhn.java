@@ -1,17 +1,23 @@
-public class bjhn<F, S>
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastUrl;
+
+public final class bjhn
+  implements Parcelable.Creator<BroadcastUrl>
 {
-  public F a;
-  public S b;
-  
-  public bjhn(F paramF, S paramS)
+  public BroadcastUrl a(Parcel paramParcel)
   {
-    this.a = paramF;
-    this.b = paramS;
+    return new BroadcastUrl(paramParcel);
+  }
+  
+  public BroadcastUrl[] a(int paramInt)
+  {
+    return new BroadcastUrl[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjhn
  * JD-Core Version:    0.7.0.1
  */

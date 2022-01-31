@@ -1,13 +1,10 @@
-import com.tencent.biz.now.NowVideoLayout;
-
-public class axxg
+public abstract interface axxg
 {
-  public axvy a;
-  public NowVideoLayout a;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxg
  * JD-Core Version:    0.7.0.1
  */

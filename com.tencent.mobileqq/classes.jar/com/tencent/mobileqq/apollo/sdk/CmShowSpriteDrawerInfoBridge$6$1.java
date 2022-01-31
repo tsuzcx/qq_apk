@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import ajgc;
-import ajgf;
-import ajgj;
+import akxo;
+import akxr;
+import akxv;
 
 public class CmShowSpriteDrawerInfoBridge$6$1
   implements Runnable
 {
-  public CmShowSpriteDrawerInfoBridge$6$1(ajgj paramajgj, ajgc paramajgc) {}
+  public CmShowSpriteDrawerInfoBridge$6$1(akxv paramakxv, akxo paramakxo) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Ajgc != null) && (this.jdField_a_of_type_Ajgj.a != null))
+    if ((this.jdField_a_of_type_Akxo != null) && (this.jdField_a_of_type_Akxv.a != null))
     {
-      this.jdField_a_of_type_Ajgc.a(this.jdField_a_of_type_Ajgj.a.b, false);
-      this.jdField_a_of_type_Ajgc.a(this.jdField_a_of_type_Ajgj.a.a, false);
+      this.jdField_a_of_type_Akxo.a(this.jdField_a_of_type_Akxv.a.b, false);
+      this.jdField_a_of_type_Akxo.a(this.jdField_a_of_type_Akxv.a.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.6.1
  * JD-Core Version:    0.7.0.1
  */

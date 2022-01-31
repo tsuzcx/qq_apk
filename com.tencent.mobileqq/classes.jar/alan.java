@@ -1,109 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.Random;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public class alan
-  extends alag
+  extends Animation
 {
-  public Boolean a;
-  public ArrayList<akyd> a;
-  public Boolean b;
-  public String b;
-  public String c;
-  public int d = 3;
-  public int e = 1;
+  private final int a;
+  private final int b;
+  private final int c;
+  private final int d;
+  private final int e;
+  private final int f;
   
-  public alan(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3, ArrayList<akyd> paramArrayList, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt4, int paramInt5)
+  public alan(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    super(paramString1, paramInt1, 2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_b_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangBoolean = paramBoolean1;
-    this.jdField_b_of_type_JavaLangBoolean = paramBoolean2;
-    this.e = paramInt4;
+    this.e = paramInt1;
+    this.f = paramInt2;
     this.d = paramInt5;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
+    this.c = paramInt6;
+    this.a = paramInt3;
+    this.b = paramInt4;
   }
   
-  public akyd a()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromRandFunction");
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      akyd localakyd = (akyd)localIterator.next();
-      if (localakyd.b == 3) {
-        localArrayList.add(localakyd);
-      }
-    }
-    if (localArrayList.isEmpty()) {
-      return null;
-    }
-    return (akyd)localArrayList.get(new Random().nextInt(localArrayList.size()));
-  }
-  
-  public akyd a(int paramInt)
-  {
-    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromClickOperation");
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      akyd localakyd = (akyd)localIterator.next();
-      if ((paramInt <= localakyd.d) && (paramInt >= localakyd.c) && (localakyd.b == 1)) {
-        return localakyd;
-      }
-    }
-    return null;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return false;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (((akyd)localIterator.next()).b == paramInt) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public akyd b()
-  {
-    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromTime");
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return null;
-    }
-    int i = Calendar.getInstance().get(11);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      akyd localakyd = (akyd)localIterator.next();
-      if ((i < localakyd.d) && (i >= localakyd.c) && (localakyd.b == 2)) {
-        return localakyd;
-      }
-    }
-    return null;
+    float f1 = this.e;
+    float f2 = this.a;
+    float f3 = this.d;
+    float f4 = this.f;
+    float f5 = this.b;
+    float f6 = this.c;
+    paramTransformation.getMatrix().preTranslate((1.0F - paramFloat) * (1.0F - paramFloat) * f1 + 2.0F * paramFloat * (1.0F - paramFloat) * f2 + paramFloat * paramFloat * f3, (1.0F - paramFloat) * (1.0F - paramFloat) * f4 + 2.0F * paramFloat * (1.0F - paramFloat) * f5 + paramFloat * paramFloat * f6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alan
  * JD-Core Version:    0.7.0.1
  */

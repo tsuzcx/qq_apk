@@ -18,12 +18,12 @@ class ScreenJsPlugin$ScreenShotListenManager$MediaContentObserver
   public void onChange(boolean paramBoolean)
   {
     super.onChange(paramBoolean);
-    ScreenJsPlugin.ScreenShotListenManager.access$100(this.this$0, this.mContentUri);
+    ScreenJsPlugin.ScreenShotListenManager.access$000(this.this$0, this.mContentUri);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.ScreenJsPlugin.ScreenShotListenManager.MediaContentObserver
  * JD-Core Version:    0.7.0.1
  */

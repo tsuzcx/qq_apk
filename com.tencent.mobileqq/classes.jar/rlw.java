@@ -1,23 +1,23 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1;
+import org.jetbrains.annotations.NotNull;
 
-class rlw
-  implements View.OnLongClickListener
+public final class rlw
+  extends BroadcastReceiver
 {
-  rlw(rlt paramrlt, View paramView, ProteusItemData paramProteusItemData) {}
+  private rlw(rlt paramrlt) {}
   
-  public boolean onLongClick(View paramView)
+  public void onReceive(@NotNull Context paramContext, @NotNull Intent paramIntent)
   {
-    paramView = new bbmf();
-    paramView.a(0, ajya.a(2131716891));
-    bbcq.a(this.jdField_a_of_type_AndroidViewView, paramView, new rlx(this), new rly(this));
-    return true;
+    rlt.a(this.a).post(new BandwidthPredictor.NetworkChangeReceiver.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlw
  * JD-Core Version:    0.7.0.1
  */

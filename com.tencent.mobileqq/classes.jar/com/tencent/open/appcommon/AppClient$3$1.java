@@ -2,7 +2,7 @@ package com.tencent.open.appcommon;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bdlr;
+import bfko;
 
 class AppClient$3$1
   implements Runnable
@@ -11,7 +11,7 @@ class AppClient$3$1
   
   public void run()
   {
-    bdlr.a().a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.a, this.this$0.jdField_a_of_type_Boolean, false);
+    bfko.a().a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.a, this.this$0.jdField_a_of_type_Boolean, false);
   }
 }
 

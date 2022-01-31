@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import aitx;
+import aklj;
 import com.tencent.qphone.base.util.QLog;
 
 public class ChatPieApolloViewController$3
   extends IApolloRunnableTask
 {
-  public ChatPieApolloViewController$3(aitx paramaitx, ApolloRender paramApolloRender, String paramString) {}
+  public ChatPieApolloViewController$3(aklj paramaklj, ApolloRender paramApolloRender, String paramString) {}
   
   public int a()
   {
@@ -29,7 +29,7 @@ public class ChatPieApolloViewController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ChatPieApolloViewController.3
  * JD-Core Version:    0.7.0.1
  */

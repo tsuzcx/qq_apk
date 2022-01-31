@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import aqhm;
-import aqhn;
+import asbb;
+import asbc;
 
 public class DeleteFaceFragment$2$1$1
   implements Runnable
 {
-  public DeleteFaceFragment$2$1$1(aqhn paramaqhn) {}
+  public DeleteFaceFragment$2$1$1(asbc paramasbc) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class DeleteFaceFragment$2$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.DeleteFaceFragment.2.1.1
  * JD-Core Version:    0.7.0.1
  */

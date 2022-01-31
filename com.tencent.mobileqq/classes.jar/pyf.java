@@ -1,26 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation.1.1;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pyf
-  implements Animation.AnimationListener
+class pyf
+  implements View.OnClickListener
 {
-  public pyf(ComponentSocialOperation paramComponentSocialOperation) {}
+  pyf(pye parampye) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.post(new ComponentSocialOperation.1.1(this));
+    rro localrro = this.a.jdField_a_of_type_Rqj.a();
+    if (localrro != null) {
+      localrro.a(paramView, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pyf
  * JD-Core Version:    0.7.0.1
  */

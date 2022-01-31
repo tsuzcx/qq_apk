@@ -1,50 +1,65 @@
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.concurrent.CountDownLatch;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class areb
-  implements arhu
+public class areb
+  implements anxw
 {
-  areb(ardz paramardz, File paramFile, Exception[] paramArrayOfException, long paramLong, CountDownLatch paramCountDownLatch) {}
+  private String a;
   
-  public void a()
+  public areb(String paramString)
   {
-    QLog.d("shadow::CdnPmUpdater", 1, " download cdn success");
-    if (!ardz.a(this.jdField_a_of_type_Ardz).renameTo(this.jdField_a_of_type_JavaIoFile)) {
-      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(ajya.a(2131701468) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-    }
-    if (ardz.b(this.jdField_a_of_type_Ardz)) {}
-    for (String str = "33669797";; str = "33669802")
-    {
-      argk.b(str);
-      ardz.a(this.jdField_a_of_type_Ardz).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
+    this.a = paramString;
+    if (bdcs.b(this.a)) {
+      this.a = new File(this.a).getAbsolutePath();
     }
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  private String a()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException) {}
+    return "";
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (!bdcs.b(this.a))
+    {
+      QLog.i("FavFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
+      return null;
+    }
+    anyc localanyc = new anyc();
+    localanyc.a(17039360);
+    String str = aroo.b(4, this.a);
     if (QLog.isColorLevel()) {
-      QLog.d("shadow::CdnPmUpdater", 2, " onDownloadFailed ");
+      QLog.i("FavFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
     }
-    if (ardz.b(this.jdField_a_of_type_Ardz)) {}
-    for (paramString = "33669798";; paramString = "33669803")
-    {
-      argk.b(paramString);
-      ardz.a(this.jdField_a_of_type_Ardz).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
+    localanyc.a(str);
+    str = arni.a(this.a);
+    localanyc.b(str);
+    localanyc.c(arof.a(arni.a(this.a)));
+    int i = arni.a(arni.a(str));
+    localanyc.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localanyc.a(str.getBytes());
     }
+    return localanyc.a();
   }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     areb
  * JD-Core Version:    0.7.0.1
  */

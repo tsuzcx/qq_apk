@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class aecc
-  implements DialogInterface.OnClickListener
+public class aecc
+  implements View.OnClickListener
 {
-  aecc(aebx paramaebx) {}
+  public aecc(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.jdField_d_of_type_Boolean = true;
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131368615));
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setText(alpo.a(2131716020));
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new aecd(this));
+    TroopMemberListActivity.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecc
  * JD-Core Version:    0.7.0.1
  */

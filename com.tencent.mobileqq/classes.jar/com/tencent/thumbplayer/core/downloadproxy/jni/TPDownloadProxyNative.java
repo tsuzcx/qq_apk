@@ -52,9 +52,9 @@ public class TPDownloadProxyNative
   
   public native int deInitService(int paramInt);
   
-  public native int deleteOfflineCache(String paramString);
+  public native int deleteCache(String paramString1, String paramString2);
   
-  public native byte[] getClipPlayUrl(int paramInt1, int paramInt2);
+  public native byte[] getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3);
   
   public native byte[] getErrorCodeStr(int paramInt);
   
@@ -62,7 +62,7 @@ public class TPDownloadProxyNative
   
   public String getNativeVersion()
   {
-    String str = "1.0.8.00016";
+    String str = "1.3.0.00016";
     if (isLoadDownloadProxySucceed) {
       str = TPDLProxyUtils.byteArrayToString(getVersion());
     }
@@ -159,7 +159,7 @@ public class TPDownloadProxyNative
   
   public native int startDownload(int paramInt);
   
-  public native int stopAllDownload();
+  public native int stopAllDownload(int paramInt);
   
   public native int stopDownload(int paramInt);
   
@@ -171,7 +171,7 @@ public class TPDownloadProxyNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative
  * JD-Core Version:    0.7.0.1
  */

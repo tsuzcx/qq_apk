@@ -1,51 +1,88 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 public class rmu
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private List<BaseData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private rmv jdField_a_of_type_Rmv;
-  private List<BaseData> b = new ArrayList();
+  private static final String jdField_a_of_type_JavaLangString = rmu.class.getSimpleName();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private rmn jdField_a_of_type_Rmn;
+  private rng jdField_a_of_type_Rng;
   
-  public rmu(String paramString, rmv paramrmv)
+  rmu(Activity paramActivity, rmn paramrmn, rng paramrng)
   {
-    this.jdField_a_of_type_Rmv = paramrmv;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Rmn = paramrmn;
+    this.jdField_a_of_type_Rng = paramrng;
   }
   
-  private void a()
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    try
+    switch (paramInt1)
     {
-      if ((this.b != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Rmv != null)) {
-        this.jdField_a_of_type_Rmv.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b);
+    }
+    label20:
+    String str;
+    VideoInfo localVideoInfo;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          break label20;
+          while (paramInt2 != -1) {}
+          str = paramIntent.getStringExtra("ARG_VIDEO_ARTICLE_ID");
+        } while ((!paramIntent.getBooleanExtra("KEY_VIDEO_BIU_SUCCESS", false)) || (str == null) || (this.jdField_a_of_type_Rmn == null));
+        paramIntent = this.jdField_a_of_type_Rng.a().iterator();
+      } while (!paramIntent.hasNext());
+      localVideoInfo = (VideoInfo)paramIntent.next();
+    } while (!str.equals(localVideoInfo.g));
+    localVideoInfo.f += 1;
+    this.jdField_a_of_type_Rmn.b(localVideoInfo);
+  }
+  
+  public void a(VideoInfo paramVideoInfo)
+  {
+    boolean bool = true;
+    if (ohq.a() == 1) {}
+    for (;;)
+    {
+      try
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ReadInJoyDeliverBiuActivity.class);
+        if ((paramVideoInfo.jdField_a_of_type_Int == 6) && (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)) {
+          localIntent.putExtra("feedsType", paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType);
+        }
+        localIntent.putExtra("ARG_VIDEO_ARTICLE_ID", paramVideoInfo.g);
+        localIntent.putExtra("biu_src", 2);
+        localIntent.putExtra("arg_from_type", 8);
+        localIntent.putExtra("arg_article_info", paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+        localIntent.putExtra("fast_biu_type", bool);
+        this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 102);
+        this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+        return;
       }
-      return;
+      catch (Exception paramVideoInfo)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "innerOpenReadInJoyBiuActivity error exception = " + paramVideoInfo.getMessage());
+      }
+      bool = false;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(List<BaseData> paramList)
-  {
-    this.b = paramList;
-    a();
-  }
-  
-  public void b(List<BaseData> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmu
  * JD-Core Version:    0.7.0.1
  */

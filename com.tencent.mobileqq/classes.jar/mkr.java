@@ -1,46 +1,34 @@
-import android.content.Intent;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-class mkr
-  implements mii
+public class mkr
+  implements mkk
 {
-  mkr(mkq parammkq, long paramLong) {}
+  public mkr(QavPanel paramQavPanel) {}
   
-  public void a(boolean paramBoolean)
+  public void a(View paramView, int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (mkq.a(this.jdField_a_of_type_Mkq)) {
-        return;
-      }
-      if (this.jdField_a_of_type_Mkq.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
-        this.jdField_a_of_type_Mkq.a("0X80051FE");
-      }
-      for (;;)
-      {
-        QLog.w("VideoInviteUILock", 1, "SlideAcceptListener, seq[" + this.jdField_a_of_type_Long + "]");
-        this.jdField_a_of_type_Mkq.a.d = true;
-        this.jdField_a_of_type_Mkq.a.c(this.jdField_a_of_type_Long);
-        return;
-        if (this.jdField_a_of_type_Mkq.a.b) {
-          this.jdField_a_of_type_Mkq.a("0X8004201");
-        } else {
-          this.jdField_a_of_type_Mkq.a("0X8004205");
-        }
-      }
+    paramView = this.a.a(paramInt);
+    if ((paramView instanceof QavBeautyMenuPanel)) {
+      ((QavBeautyMenuPanel)paramView).a();
     }
-    if (this.jdField_a_of_type_Mkq.a.b)
-    {
-      this.jdField_a_of_type_Mkq.a("0X800439E");
-      return;
+    long l = AudioHelper.b();
+    this.a.a(l, paramInt, true);
+  }
+  
+  public void a(View paramView1, View paramView2)
+  {
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView2);
     }
-    this.jdField_a_of_type_Mkq.a("0X80043FD");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkr
  * JD-Core Version:    0.7.0.1
  */

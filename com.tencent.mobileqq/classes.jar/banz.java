@@ -1,54 +1,30 @@
-import android.text.Layout;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.TextView;
+import java.io.File;
 
 public class banz
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  File a;
   
-  public banz(TextView paramTextView, int paramInt)
+  public banz(File paramFile)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(this.jdField_a_of_type_Int + 1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(false);
+    this.a = paramFile;
   }
   
-  public void onGlobalLayout()
+  baoa a(String paramString)
   {
-    int i;
-    String str;
-    CharSequence localCharSequence1;
-    if (this.jdField_a_of_type_AndroidWidgetTextView.getLineCount() > this.jdField_a_of_type_Int)
-    {
-      i = this.jdField_a_of_type_AndroidWidgetTextView.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
-      str = "...";
-      localCharSequence1 = this.jdField_a_of_type_AndroidWidgetTextView.getText();
+    return new baoa(this, paramString);
+  }
+  
+  File a(String paramString)
+  {
+    if (!this.a.exists()) {
+      this.a.mkdirs();
     }
-    try
-    {
-      localCharSequence1 = localCharSequence1.subSequence(0, i - 3);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localCharSequence1);
-      this.jdField_a_of_type_AndroidWidgetTextView.append(str);
-      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        str = "";
-        CharSequence localCharSequence2 = this.jdField_a_of_type_AndroidWidgetTextView.getText();
-      }
-    }
+    return new File(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     banz
  * JD-Core Version:    0.7.0.1
  */

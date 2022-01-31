@@ -1,29 +1,21 @@
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class txa
-  implements tws
+  implements xzd
 {
-  private final twz a;
+  public txa(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public txa(twz paramtwz)
+  public void a()
   {
-    this.a = paramtwz;
-  }
-  
-  public void a(twt paramtwt)
-  {
-    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new tfv("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
-    Stream localStream1 = localStream2;
-    if (this.a.a.a == 5) {
-      localStream1 = localStream2.map(new tfs()).map(new tfi(this.a.a));
+    if (this.a.a() != null) {
+      tyk.a(17, 2, (FeedCloudMeta.StFeed)this.a.a(), 2, 0);
     }
-    localStream1.subscribe(new txb(this, paramtwt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txa
  * JD-Core Version:    0.7.0.1
  */

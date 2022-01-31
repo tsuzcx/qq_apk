@@ -1,38 +1,25 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class abqo
-  extends ardw
+final class abqo
+  implements Comparator
 {
-  public abqo(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    int i = 1;
-    if (!paramBoolean1)
-    {
-      this.a.a(2131719386, 1);
-      return;
+    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
+    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
+    if (i == j) {
+      return 0;
     }
-    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean2) {
-      i = 2;
+    if (i < j) {
+      return 2;
     }
-    axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqo
  * JD-Core Version:    0.7.0.1
  */

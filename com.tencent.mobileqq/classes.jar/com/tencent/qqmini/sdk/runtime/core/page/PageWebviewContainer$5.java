@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.support.v4.widget.SwipeRefreshLayout;
-import bekj;
-import betc;
+import bgid;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class PageWebviewContainer$5
   implements Runnable
 {
-  PageWebviewContainer$5(PageWebviewContainer paramPageWebviewContainer, boolean paramBoolean, bekj parambekj) {}
+  PageWebviewContainer$5(PageWebviewContainer paramPageWebviewContainer, boolean paramBoolean, bgid parambgid) {}
   
   public void run()
   {
@@ -30,8 +30,8 @@ class PageWebviewContainer$5
     label106:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      betc.a("PageWebviewContainer", bool1);
-      this.jdField_a_of_type_Bekj.a();
+      QMLog.d("PageWebviewContainer", bool1);
+      this.jdField_a_of_type_Bgid.a();
       return;
       bool1 = false;
       break;
@@ -40,7 +40,7 @@ class PageWebviewContainer$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer.5
  * JD-Core Version:    0.7.0.1
  */

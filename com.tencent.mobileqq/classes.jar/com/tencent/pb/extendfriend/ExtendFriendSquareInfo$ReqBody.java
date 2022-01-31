@@ -14,7 +14,9 @@ public final class ExtendFriendSquareInfo$ReqBody
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_req_buff = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_req_page_cookies = PBField.initBytes(ByteStringMicro.EMPTY);
+  public ExtendFriendSquareInfo.LBSInfo msg_lbs_info = new ExtendFriendSquareInfo.LBSInfo();
   public final PBBytesField str_keyword = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBUInt32Field uint32_get_online_number = PBField.initUInt32(0);
   public final PBUInt32Field uint32_req_num = PBField.initUInt32(0);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
   
@@ -23,7 +25,7 @@ public final class ExtendFriendSquareInfo$ReqBody
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42 }, new String[] { "uint64_uin", "bytes_req_page_cookies", "uint32_req_num", "str_keyword", "bytes_req_buff" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3 }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 48, 58 }, new String[] { "uint64_uin", "bytes_req_page_cookies", "uint32_req_num", "str_keyword", "bytes_req_buff", "uint32_get_online_number", "msg_lbs_info" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), null }, ReqBody.class);
   }
 }
 

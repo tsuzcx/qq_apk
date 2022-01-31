@@ -1,42 +1,75 @@
-import android.text.TextUtils;
-import cooperation.qzone.remote.IActionListener.Stub;
-import cooperation.qzone.remote.RecvMsg;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class bhld
-  extends IActionListener.Stub
+public class bhld
 {
-  bhld(bhlc parambhlc) {}
+  private AtomicInteger a = new AtomicInteger(0);
   
-  public void onRecvFromMsg(RecvMsg paramRecvMsg)
+  public void a()
   {
-    if (paramRecvMsg == null) {}
-    for (;;)
+    int i;
+    do
     {
-      return;
-      if ((!TextUtils.isEmpty(paramRecvMsg.getServiceCmd())) && (bhlc.a(this.a) != null))
+      i = this.a.get();
+      if ((i & 0xFFFFFFFE) == 0) {}
+      do
       {
-        Iterator localIterator = bhlc.a(this.a).iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (WeakReference)localIterator.next();
-          if (localObject != null)
-          {
-            localObject = (bhlf)((WeakReference)localObject).get();
-            if (localObject != null) {
-              ((bhlf)localObject).onWebEvent(paramRecvMsg.getServiceCmd(), paramRecvMsg.extraData);
-            }
-          }
+        return;
+        if ((i & 0x1) == 0) {
+          break;
         }
+      } while ((this.a.addAndGet(-2) & 0xFFFFFFFE) != 0);
+      synchronized (this.a)
+      {
+        this.a.notifyAll();
+        return;
+      }
+    } while (!this.a.compareAndSet(i, i - 2));
+  }
+  
+  public boolean a()
+  {
+    int i;
+    do
+    {
+      i = this.a.get();
+      if ((i & 0x1) != 0) {
+        return false;
+      }
+    } while (!this.a.compareAndSet(i, i + 2));
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.compareAndSet(0, 1)) {}
+    while (this.a.compareAndSet(1, 1)) {
+      return;
+    }
+    int i;
+    do
+    {
+      i = this.a.get();
+    } while (!this.a.compareAndSet(i, i | 0x1));
+    try
+    {
+      synchronized (this.a)
+      {
+        this.a.wait();
+        return;
+      }
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhld
  * JD-Core Version:    0.7.0.1
  */

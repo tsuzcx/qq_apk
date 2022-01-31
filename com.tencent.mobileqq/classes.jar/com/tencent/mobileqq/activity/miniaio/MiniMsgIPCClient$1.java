@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import arkv;
+import atbj;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MiniMsgIPCClient$1
@@ -10,12 +10,12 @@ class MiniMsgIPCClient$1
   
   public void run()
   {
-    arkv.a().a(BaseApplicationImpl.getContext());
+    atbj.a().a(BaseApplicationImpl.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgIPCClient.1
  * JD-Core Version:    0.7.0.1
  */

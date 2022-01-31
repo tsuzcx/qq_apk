@@ -1,135 +1,158 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.PAReportInfo;
-import com.tencent.biz.pubaccount.util.PAReportManager.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.manager.Manager;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-public class seo
-  implements Handler.Callback, Manager
+class seo
+  implements URLDrawable.URLDrawableListener, ses
 {
-  private volatile int jdField_a_of_type_Int = -1;
-  private aukp jdField_a_of_type_Aukp;
-  private bfnk jdField_a_of_type_Bfnk;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<PAReportInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static seq jdField_a_of_type_Seq = new seq(null);
+  private ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
+  private ReadInJoyCapsuleView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView;
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private boolean jdField_a_of_type_Boolean;
   
-  public seo(QQAppInterface paramQQAppInterface)
+  seo(ReadInJoyCapsuleView paramReadInJoyCapsuleView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Bfnk = new bfnk(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView = paramReadInJoyCapsuleView;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = sei.a();
+    localURLDrawableOptions.mFailedDrawable = sei.a();
+    localURLDrawableOptions.mPlayGifImage = paramBoolean;
+    try
+    {
+      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl), localURLDrawableOptions);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      return;
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      QLog.e("ReadInJoyFeedsHeaderVie", 2, "fail to set background", localMalformedURLException);
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(Color.parseColor("#777777"));
+    int i = sei.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, false);
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(new ColorDrawable(Color.parseColor("#F1F3F6")));
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    a(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setColorFilter(sei.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(-1);
+    int i = sei.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, true);
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
+    }
+  }
+  
+  private void e()
+  {
+    a(true);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
+    {
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
+      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
+        onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      }
+    }
+  }
+  
+  public ChannelCoverInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "scheduleReport ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) && (this.jdField_a_of_type_Int == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAReport", 2, "scheduleReport ... No need query DB");
-      }
-    }
-    do
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onPlayOnce: pause the animation - " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
     {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
-        break;
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
+      if ((localDrawable instanceof GifDrawable))
+      {
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setIndividualPause(true);
+        ((GifDrawable)localDrawable).getImage().reset();
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setGIFPlayOnceListener(null);
+        a(false);
+        QLog.d("ReadInJoyFeedsHeaderVie", 2, "reset gif");
       }
-    } while (this.jdField_a_of_type_Bfnk.hasMessages(100001));
-    this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(100001, 3000L);
-    return;
-    this.jdField_a_of_type_Bfnk.sendEmptyMessage(100002);
+    }
   }
   
-  public void a(PAReportInfo paramPAReportInfo)
+  void a(ChannelCoverInfo paramChannelCoverInfo, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Bfnk.post(new PAReportManager.1(this, paramPAReportInfo));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setOnClickListener(new sep(this, paramOnClickListener));
+    if ((TextUtils.isEmpty(paramChannelCoverInfo.externalExposureBackgroundUrl)) || (bjxj.c(paramChannelCoverInfo.mChannelCoverId)))
+    {
+      c();
+      return;
+    }
+    e();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "queryDatabases ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b().a(PAReportInfo.class.getSimpleName());
-    }
-    List localList2 = this.jdField_a_of_type_Aukp.a(PAReportInfo.class, true, null, (String[])null, null, null, null, String.valueOf(20));
-    if (localList2 != null) {}
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(localList2);
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(100002);
-      return;
-    }
+    jdField_a_of_type_Seq.a();
   }
   
-  public void c()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reporting ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {}
-    for (;;)
-    {
-      return;
-      Object localObject1 = (PAReportInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      if (!this.jdField_a_of_type_Aukp.b((auko)localObject1)) {
-        continue;
-      }
-      this.jdField_a_of_type_Int -= 1;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        ??? = new ArrayList();
-        localObject1 = ((PAReportInfo)localObject1).msgIds.split("\\|");
-        int j = localObject1.length;
-        int i = 0;
-        if (i >= j) {
-          continue;
-        }
-        ((List)???).add(localObject1[i]);
-        i += 1;
-      }
-    }
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadCanceled: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
+    c();
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramMessage.what == 100001)
-    {
-      b();
-      return true;
-    }
-    if (paramMessage.what == 100002)
-    {
-      c();
-      return true;
-    }
-    return false;
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadFialed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
+    c();
   }
   
-  public void onDestroy()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Aukp.a();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Int = -1;
-      return;
-    }
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadSuccessed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
+    d();
+    AbstractGifImage.resumeAll();
+    jdField_a_of_type_Seq.a(this, paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     seo
  * JD-Core Version:    0.7.0.1
  */

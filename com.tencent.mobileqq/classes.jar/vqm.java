@@ -1,88 +1,43 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.lang.ref.WeakReference;
 
 public class vqm
+  implements DialogInterface.OnDismissListener
 {
-  public Handler a;
-  public HandlerThread a;
-  public vqn a;
+  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public vqm()
+  public vqm(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MediaCodecThumbnailGenerator");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private float a(Bitmap paramBitmap)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i1 = paramBitmap.getHeight() / 16;
-    int i2 = paramBitmap.getWidth() / 9;
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    while (k < paramBitmap.getHeight())
+    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDialogInterface != null)
     {
-      int m = 0;
-      if (m < paramBitmap.getWidth())
-      {
-        int n = paramBitmap.getPixel(m, k);
-        if (((n >> 16 & 0xFF) < 10) && ((n >> 8 & 0xFF) < 10) && ((n & 0xFF) < 10))
-        {
-          n = j + 1;
-          j = i;
-        }
-        for (i = n;; i = n)
-        {
-          n = m + i2;
-          m = i;
-          i = j;
-          j = m;
-          m = n;
-          break;
-          n = j;
-          j = i + 1;
-        }
+      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
+        break label40;
       }
-      k += i1;
+      wsv.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
     }
-    float f = j / (i + j);
-    ved.c("MediaCodecThumbnailGen", "whitePixelCount = " + i + " blackPixelCount = " + j);
-    return f;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Vqn = new vqn(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.myLooper());
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, vqk<Boolean, vqq> paramvqk, vqk<Boolean, vqp> paramvqk1)
-  {
-    vqo localvqo = new vqo();
-    localvqo.jdField_a_of_type_JavaLangString = paramString1;
-    localvqo.jdField_b_of_type_JavaLangString = paramString2;
-    localvqo.jdField_a_of_type_Boolean = paramBoolean1;
-    localvqo.jdField_a_of_type_Int = paramInt1;
-    localvqo.jdField_b_of_type_Int = paramInt2;
-    localvqo.c = paramInt3;
-    localvqo.d = paramInt4;
-    localvqo.jdField_b_of_type_Boolean = paramBoolean2;
-    localvqo.jdField_b_of_type_Vqk = paramvqk;
-    localvqo.jdField_a_of_type_Vqk = paramvqk1;
-    Message.obtain(this.jdField_a_of_type_Vqn, 1, localvqo).sendToTarget();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    label40:
+    while (paramDialogInterface.e()) {
+      return;
+    }
+    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
+    paramDialogInterface.d();
+    paramDialogInterface.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqm
  * JD-Core Version:    0.7.0.1
  */

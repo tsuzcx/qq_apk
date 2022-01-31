@@ -1,47 +1,114 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.ad.tangram.canvas.download.AdDownloaderAdapter;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class aahm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements AdDownloaderAdapter
 {
-  public aahm(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onGlobalLayout()
+  public void doDownloadAction(Activity paramActivity, Bundle paramBundle, String paramString, int paramInt)
   {
-    Object localObject = new Rect();
-    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
-    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
-    {
-      i = 1;
-      localObject = this.a.getCurrentFocus();
-      if (i != 0) {
-        break label101;
-      }
-      if ((localObject != null) && ((localObject instanceof EditText))) {
-        ((EditText)localObject).setCursorVisible(false);
-      }
+    bfgm.a().a(paramActivity, paramBundle, paramString, null, paramInt);
+  }
+  
+  public int getCurrentPkgDownloadProgress(Context paramContext, String paramString1, String paramString2)
+  {
+    return aaon.c(paramContext, paramString1, paramString2);
+  }
+  
+  public Object getDownloadInfoByUrl(String paramString)
+  {
+    paramString = bfgi.a().b(paramString);
+    paramString.m = "biz_src_ads";
+    return paramString;
+  }
+  
+  public IAdDownloader getDownloader()
+  {
+    return this;
+  }
+  
+  public int getProgress(Object paramObject)
+  {
+    if (!(paramObject instanceof DownloadInfo)) {
+      return 0;
     }
-    label101:
-    while ((localObject == null) || (!(localObject instanceof EditText)))
-    {
+    paramObject = (DownloadInfo)DownloadInfo.class.cast(paramObject);
+    if (paramObject != null) {}
+    for (int i = paramObject.f;; i = 0) {
+      return i;
+    }
+  }
+  
+  public void installDownload(Object paramObject)
+  {
+    if ((paramObject instanceof DownloadInfo)) {
+      bfgi.a().a((DownloadInfo)paramObject);
+    }
+    while (!(paramObject instanceof Bundle)) {
       return;
-      i = 0;
-      break;
     }
-    ((EditText)localObject).setCursorVisible(true);
+    bfgm.a((Bundle)paramObject);
+  }
+  
+  public boolean isCurrentPkgTask(Pair<String, String> paramPair, Object paramObject)
+  {
+    if ((paramPair == null) || (TextUtils.isEmpty((CharSequence)paramPair.first)) || (TextUtils.isEmpty((CharSequence)paramPair.second)) || (!(paramObject instanceof AdAppBtnData))) {}
+    do
+    {
+      do
+      {
+        return false;
+        paramPair = bfgi.a().b((String)paramPair.first);
+      } while (paramPair == null);
+      paramObject = (AdAppBtnData)paramObject;
+    } while ((TextUtils.isEmpty(paramPair.e)) || (TextUtils.isEmpty(paramPair.c)) || (TextUtils.isEmpty(paramObject.packageName)) || (TextUtils.isEmpty(paramObject.mGdtAd_appId)));
+    return (paramPair.e.equals(paramObject.packageName)) && (paramPair.c.equals(paramObject.mGdtAd_appId));
+  }
+  
+  public int isPkgDownloadPaused(Context paramContext, String paramString1, String paramString2)
+  {
+    return aaon.b(paramContext, paramString1, paramString2);
+  }
+  
+  public int isPkgDownloading(Context paramContext, String paramString1, String paramString2)
+  {
+    return aaon.a(paramContext, paramString1, paramString2);
+  }
+  
+  public boolean isPkgExist(Context paramContext, String paramString1, String paramString2)
+  {
+    return aaon.b(paramContext, paramString2);
+  }
+  
+  public void pauseDownload(String paramString1, String paramString2)
+  {
+    bfgi.a().a(paramString2);
+  }
+  
+  public void registerListener(IAdDownloader.Callback paramCallback)
+  {
+    if ((paramCallback instanceof bfka)) {
+      bfgi.a().a((bfka)paramCallback);
+    }
+  }
+  
+  public void unregisterListener(IAdDownloader.Callback paramCallback)
+  {
+    if ((paramCallback instanceof bfka)) {
+      bfgi.a().b((bfka)paramCallback);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahm
  * JD-Core Version:    0.7.0.1
  */

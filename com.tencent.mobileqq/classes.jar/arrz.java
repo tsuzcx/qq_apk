@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
 public class arrz
-  implements DialogInterface.OnClickListener
+  implements aeov
 {
-  public arrz(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  public arrz(FlashChatPanel paramFlashChatPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    ListenTogetherOverlayFragment.a(this.a).finish();
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((paramView instanceof ArkAppView)) {
+      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrz
  * JD-Core Version:    0.7.0.1
  */

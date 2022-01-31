@@ -42,6 +42,24 @@
             },
             "subviews": [
                 {
+                    "view_type":"UIImageView",
+                    "view_id":"id_red_packet_icon",
+                    "margin_left":"6",
+                    "margin_right": "-2.5",
+                    "align_parent_center_vertical": "YES",
+                    "height":{
+                        "type":"relative",
+                        "value":"13"
+                    },
+                    "width":{
+                        "type":"relative",
+                        "value":"13"
+                    },
+                    "attributes":{
+                        "loadImageWithPath:":"$red_packet_icon_path"
+                    }
+                },
+                {
                     "view_type":"UILabel",
                     "view_id":"id_info_status",
                     "margin_left":"6",
@@ -128,14 +146,14 @@
                                "value":"18"
                      },
                      "width": {
-                               "type": "absolutely",
+                               "type": "relative",
                                "value":"84.5"
                       },
                       "attributes": {
                                 "loadImageWithPath:": "$family_icon_url",
-                                "setWHRate:widthBenchmark:": ["$family_icon_wh_rate", "NO"],
-                                "setAttatchInfo:":"$family_jump_schema",
-                                "setScaleType:": "1"
+                                 "setWHRate:widthBenchmark:": ["$family_icon_wh_rate", "NO"],
+                                 "setAttatchInfo:":"$family_jump_schema",
+                                 "setScaleType:": "1"
                      },
 
                      "event_type":"cmd_family_comment_icon_click"

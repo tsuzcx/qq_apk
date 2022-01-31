@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
-import ucz;
-import uiw;
+import vrr;
+import vxo;
 
 public class ProgressBarVideoInfoWidget$2
   implements Runnable
 {
-  public ProgressBarVideoInfoWidget$2(uiw paramuiw, ucz paramucz) {}
+  public ProgressBarVideoInfoWidget$2(vxo paramvxo, vrr paramvrr) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ProgressBarVideoInfoWidget$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.ProgressBarVideoInfoWidget.2
  * JD-Core Version:    0.7.0.1
  */

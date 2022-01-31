@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class InterestLabelInfo
-  extends auko
+  extends awbv
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleInfo.class.getSimpleName();
-  @aumc
+  @awdj
   public int mInterestLabelID;
   public String mInterestLabelNme;
   public boolean mIsDefault;
@@ -29,7 +29,7 @@ public class InterestLabelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo
  * JD-Core Version:    0.7.0.1
  */

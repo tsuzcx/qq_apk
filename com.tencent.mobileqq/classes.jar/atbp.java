@@ -1,53 +1,44 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class atbp
+  extends Handler
 {
-  public static String a(String paramString)
+  WeakReference<WatchTogetherFloatingView> a;
+  
+  public atbp(WatchTogetherFloatingView paramWatchTogetherFloatingView)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    String str = "*S1*" + baxe.a(paramString.getBytes(), 11);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("NearbyURLSafeUtil", 4, "encode:" + paramString + " to:" + str);
-    }
-    return str;
+    this.a = new WeakReference(paramWatchTogetherFloatingView);
   }
   
-  public static boolean a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramString == null) {
-      throw new NullPointerException("isBase64 src should not be null");
-    }
-    return paramString.startsWith("*S1*");
-  }
-  
-  public static String b(String paramString)
-  {
-    if (paramString == null) {
-      throw new NullPointerException("decode src should not be null");
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("NearbyURLSafeUtil", 4, "decode src:" + paramString);
-    }
-    String str = paramString;
-    if (a(paramString))
+    switch (paramMessage.what)
     {
-      paramString = new String(baxe.a(paramString.substring("*S1*".length()), 11));
-      str = paramString;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.i("NearbyURLSafeUtil", 4, "decode result:" + paramString);
-        str = paramString;
-      }
     }
-    return str;
+    do
+    {
+      return;
+      sendEmptyMessageDelayed(2, 20000L);
+      return;
+      removeMessages(2);
+      return;
+      try
+      {
+        ((WatchTogetherFloatingView)this.a.get()).a();
+        return;
+      }
+      catch (NullPointerException paramMessage) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("WatchTogetherFloatingView", 2, "MESSAGE_WAIT_LOADING END, but View missing");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbp
  * JD-Core Version:    0.7.0.1
  */

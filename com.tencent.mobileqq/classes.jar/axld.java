@@ -1,118 +1,306 @@
-import android.opengl.GLES20;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.aekit.plugin.core.AEDetectorType;
+import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
+import com.tencent.ttpic.openapi.ttpicmodule.PTSegmenter;
+import java.util.HashMap;
 
 public class axld
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  private int[] c = new int[1];
-  private int[] d = new int[1];
+  public static int a;
+  public static boolean a;
+  public static int b;
+  public static boolean b;
+  public static boolean c;
   
-  public static void a(String paramString) {}
-  
-  private void d()
+  static
   {
-    if (this.jdField_a_of_type_Boolean)
+    jdField_a_of_type_Int = -1;
+    jdField_b_of_type_Int = -1;
+  }
+  
+  public static int a(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt % 16 != 0)
     {
-      GLES20.glGenRenderbuffers(1, this.c, 0);
-      a("glGenRenderbuffers:Depth");
-      GLES20.glBindRenderbuffer(36161, this.c[0]);
-      a("glBindRenderbuffer:Depth");
-      if (this.jdField_b_of_type_Boolean)
-      {
-        GLES20.glRenderbufferStorage(36161, 35056, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        a("glRenderbufferStorage:Depth[packed]");
-        GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
-        a("glFramebufferRenderbuffer:Depth[packed]");
-        GLES20.glFramebufferRenderbuffer(36160, 36128, 36161, this.c[0]);
-        a("glFramebufferRenderbuffer:Stencil[packed]");
-        this.d[0] = this.c[0];
+      if (paramInt % 16 < 8) {
+        i = paramInt - paramInt % 16;
       }
     }
-    else
+    else {
+      return i;
+    }
+    return paramInt + (16 - paramInt % 16);
+  }
+  
+  public static DisplayMetrics a(Context paramContext)
+  {
+    try
+    {
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+      return localDisplayMetrics;
+    }
+    catch (Exception paramContext) {}
+    return null;
+  }
+  
+  public static void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((!paramBoolean2) && (jdField_b_of_type_Boolean == paramBoolean1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("CaptureUtil", 2, "no need to update ,update recognition result : " + paramBoolean1 + " force : " + paramBoolean2);
+      }
+    }
+    do
     {
       return;
+      jdField_b_of_type_Boolean = paramBoolean1;
+      bdiv.a(BaseApplicationImpl.getApplication().getSharedPreferences("CaptureUtil", 4).edit().putBoolean("capture_shared_gesture_recognize_result", paramBoolean1));
+    } while (!QLog.isColorLevel());
+    QLog.d("CaptureUtil", 2, "update sp ,update recognition result : " + paramBoolean1 + " force : " + paramBoolean2);
+  }
+  
+  public static boolean a()
+  {
+    int i = 1;
+    boolean bool1;
+    if (Build.VERSION.SDK_INT < 21) {
+      bool1 = false;
     }
-    GLES20.glRenderbufferStorage(36161, 33189, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    a("glRenderbufferStorage:Depth");
-    GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
-    a("glFramebufferRenderbuffer:Depth");
-    this.d[0] = 0;
-  }
-  
-  public void a()
-  {
-    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
-  }
-  
-  public void a(int paramInt)
-  {
-    a();
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt, 0);
-    a("glFramebufferTexture2D");
-    paramInt = GLES20.glCheckFramebufferStatus(36160);
-    if (paramInt != 36053) {
-      a("glCheckFramebufferStatus: status=" + paramInt);
+    for (;;)
+    {
+      if (!azfz.a())
+      {
+        i = 2;
+        bool1 = false;
+      }
+      int j = i;
+      boolean bool2 = bool1;
+      if (Build.MODEL.equals("GT-I9500"))
+      {
+        j = i;
+        bool2 = bool1;
+        if (Build.VERSION.SDK_INT == 18)
+        {
+          j = 6;
+          bool2 = false;
+        }
+      }
+      if (BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).getInt("sp_mc_crash_times", 0) >= 2) {
+        i = 5;
+      }
+      for (bool1 = false;; bool1 = bool2)
+      {
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("param_FailCode", Integer.toString(i));
+        azmz.a(BaseApplicationImpl.getContext()).a(null, "actMediaCodecSupport", bool1, 0L, 0L, localHashMap, "");
+        if (QLog.isColorLevel()) {
+          QLog.i("CaptureUtil", 2, "mediacodec isMediaCodecSupport:" + bool1 + ", code:" + i);
+        }
+        return bool1;
+        i = j;
+      }
+      bool1 = true;
+      i = 0;
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public static boolean a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    GLES20.glActiveTexture(33987);
-    GLES20.glBindTexture(3553, paramInt1);
-    a("glBindTexture");
-    GLES20.glTexParameteri(3553, 10240, 9728);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10241, 9728);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    a("glTexParameteri");
-    GLES20.glTexImage2D(3553, 0, 6408, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 6408, 5121, null);
-    a("glTexImage2D");
-    GLES20.glBindTexture(3553, 0);
-    a("glBindTexture");
+    boolean bool5 = true;
+    boolean bool4 = true;
+    for (;;)
+    {
+      boolean bool6;
+      boolean bool2;
+      boolean bool1;
+      boolean bool3;
+      try
+      {
+        if (!jdField_a_of_type_Boolean)
+        {
+          bool6 = GraphicRenderMgr.loadSo();
+          int j = azgk.a(BaseApplicationImpl.getContext());
+          blfg.d("CaptureUtil", "PtvFilterSoLoad.getFilterSoState result = " + j);
+          if (j != 1) {
+            continue;
+          }
+          bool2 = azgk.a();
+          bool1 = bool2;
+          if (paramBoolean) {
+            bool1 = bool2 & AIManager.installDetector(PTSegmenter.class, FeatureManager.getSoDir(), FeatureManager.getResourceDir());
+          }
+          bool3 = azgk.b();
+          if ((!bool1) || (!bool3)) {
+            continue;
+          }
+          i = 1;
+          jdField_a_of_type_Int = i;
+          bool2 = bool1;
+          bool1 = bool3;
+          if (!azgk.g()) {
+            break label328;
+          }
+          if (!AIManager.isDetectorReady(AEDetectorType.SEGMENT)) {
+            break label363;
+          }
+          break label328;
+          if (!ayzn.a(BaseApplicationImpl.getContext())) {
+            break label334;
+          }
+          ayzn.jdField_a_of_type_Boolean = true;
+          break label334;
+          label143:
+          jdField_a_of_type_Boolean = paramBoolean;
+          if (QLog.isColorLevel()) {
+            QLog.d("CaptureUtil", 2, new Object[] { "loadEffectSo, ", Boolean.valueOf(jdField_a_of_type_Boolean), "  avSo:", Boolean.valueOf(bool6), "  ptuSo:", Boolean.valueOf(bool2), "  ptuSoVersion:", Boolean.valueOf(bool1), "  portraitSo:", Boolean.valueOf(bool3), " result:", Integer.valueOf(j), "  PTV_FILTER_SO_LOADED:", Integer.valueOf(jdField_a_of_type_Int), "  PTU_RES_DOWNLOADED:", Boolean.valueOf(ayzn.jdField_a_of_type_Boolean) });
+          }
+        }
+        paramBoolean = jdField_a_of_type_Boolean;
+        return paramBoolean;
+        int i = 0;
+        continue;
+        jdField_a_of_type_Int = 2;
+        bool1 = false;
+        bool2 = false;
+        continue;
+        label308:
+        jdField_a_of_type_Boolean = paramBoolean;
+        continue;
+        paramBoolean = false;
+      }
+      finally {}
+      label328:
+      label334:
+      label363:
+      do
+      {
+        break label308;
+        bool3 = true;
+        break;
+        if (paramBoolean)
+        {
+          if ((bool6) && (bool2) && (bool1) && (bool3))
+          {
+            paramBoolean = bool4;
+            break label143;
+            bool3 = false;
+            break;
+          }
+          paramBoolean = false;
+          break label143;
+        }
+      } while ((!bool6) || (!bool2) || (!bool1));
+      paramBoolean = bool5;
+    }
   }
   
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
+  public static int[] a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    a("glIsTexture");
-    GLES20.glGenFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    a("glGenFramebuffers");
-    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
-    a("glBindFramebuffer");
-    d();
+    if (paramInt3 > paramInt1) {
+      return new int[] { a((int)(paramInt2 * (1.0F * paramInt1 / paramInt3))), paramInt1 };
+    }
+    return new int[] { paramInt2, paramInt3 };
+  }
+  
+  public static int[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
+  {
+    int j = a((int)(paramInt1 * paramFloat));
+    int i = a((int)(paramInt2 * paramFloat));
+    float f1 = paramInt2 * 1.0F / paramInt1;
+    float f2 = paramInt4 * 1.0F / paramInt3;
+    if (f1 > f2) {
+      i = a((int)(j * f2));
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CaptureUtil", 2, "clipVideoSize(" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4 + "," + paramFloat + ") = (" + j + "," + i + ")");
+      }
+      return new int[] { j, i };
+      j = a((int)(i / f2));
+    }
+  }
+  
+  public static int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 90: 
+    default: 
+      return 0;
+    case 0: 
+      return 270;
+    case 180: 
+      return 90;
+    }
+    return 180;
+  }
+  
+  public static boolean b()
+  {
+    try
+    {
+      boolean bool = a(true);
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static int c(int paramInt)
+  {
+    return (paramInt + 45) / 90 * 90;
+  }
+  
+  public static boolean c()
+  {
+    String str1 = Build.CPU_ABI;
+    String str2 = Build.CPU_ABI2;
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureUtil", 2, "isX86Platform: Build.CPU_ABI=" + str1 + " Build.CPU_ABI2=" + str2);
+    }
+    if ((str1 != null) && (!"".equals(str1)) && ("x86".equalsIgnoreCase(str1))) {}
+    do
+    {
+      return true;
+      if (lnz.f() != 7) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("CaptureUtil", 2, "isX86Platform: VcSystemInfo.getCpuArchitecture()=x86");
     return true;
+    return false;
   }
   
-  public void b()
+  public static boolean d()
   {
-    GLES20.glBindFramebuffer(36160, 0);
+    return !c();
   }
   
-  public void c()
+  public static boolean e()
   {
-    b();
-    if (this.jdField_a_of_type_Boolean) {
-      GLES20.glDeleteRenderbuffers(1, this.c, 0);
-    }
-    GLES20.glDeleteFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    this.jdField_b_of_type_ArrayOfInt[0] = 0;
-    this.c[0] = 0;
-    this.d[0] = 0;
+    return BaseApplicationImpl.getApplication().getSharedPreferences("CaptureUtil", 4).getBoolean("capture_shared_gesture_recognize_result", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axld
  * JD-Core Version:    0.7.0.1
  */

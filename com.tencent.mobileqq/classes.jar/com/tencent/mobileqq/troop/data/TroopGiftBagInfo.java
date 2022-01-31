@@ -2,10 +2,10 @@ package com.tencent.mobileqq.troop.data;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import auko;
-import aulz;
-import aumc;
-import azqy;
+import awbv;
+import awdg;
+import awdj;
+import bbph;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -20,7 +20,7 @@ import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.GiftBagInfo;
 import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
 
 public class TroopGiftBagInfo
-  extends auko
+  extends awbv
 {
   public int amount;
   public int count;
@@ -28,16 +28,16 @@ public class TroopGiftBagInfo
   public int endFlag;
   public long endTime;
   public String ext;
-  @aumc
+  @awdj
   public String giftBagId;
   public String giftName;
   public long giftOwner;
   public String giftUnit;
-  @aulz
-  public azqy myGrabResult;
+  @awdg
+  public bbph myGrabResult;
   public String myGrabResultData;
-  @aulz
-  public List<azqy> players;
+  @awdg
+  public List<bbph> players;
   public String playersData;
   public int remainAmount;
   public int remainCount;
@@ -59,8 +59,8 @@ public class TroopGiftBagInfo
     int i = 0;
     while (i < localList.size())
     {
-      azqy localazqy = new azqy((oidb_0x6c2.Player)localList.get(i));
-      this.players.add(localazqy);
+      bbph localbbph = new bbph((oidb_0x6c2.Player)localList.get(i));
+      this.players.add(localbbph);
       i += 1;
     }
     this.endFlag = paramGiftBagInfo.int32_end.get();
@@ -74,11 +74,11 @@ public class TroopGiftBagInfo
     this.giftUnit = paramGiftBagInfo.bytes_gift_unit.get().toStringUtf8();
     this.ext = paramGiftBagInfo.bytes_ext.get().toStringUtf8();
     if (paramPlayer != null) {
-      this.myGrabResult = new azqy(paramPlayer);
+      this.myGrabResult = new bbph(paramPlayer);
     }
   }
   
-  private List<azqy> decodeBagPlayerList(String paramString)
+  private List<bbph> decodeBagPlayerList(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       paramString = null;
@@ -99,9 +99,9 @@ public class TroopGiftBagInfo
             break;
           }
           paramString = localJSONArray.get(i);
-          azqy localazqy = new azqy();
-          localazqy.a(paramString.toString());
-          localArrayList.add(localazqy);
+          bbph localbbph = new bbph();
+          localbbph.a(paramString.toString());
+          localArrayList.add(localbbph);
           i += 1;
         }
         return localArrayList;
@@ -131,7 +131,7 @@ public class TroopGiftBagInfo
     this.giftName = paramCursor.getString(paramCursor.getColumnIndex("giftName"));
     this.giftUnit = paramCursor.getString(paramCursor.getColumnIndex("giftUnit"));
     this.ext = paramCursor.getString(paramCursor.getColumnIndex("ext"));
-    this.myGrabResult = new azqy();
+    this.myGrabResult = new bbph();
     String str = paramCursor.getString(paramCursor.getColumnIndex("myGrabResultData"));
     if (!TextUtils.isEmpty(str)) {
       this.myGrabResult.a(str);
@@ -151,7 +151,7 @@ public class TroopGiftBagInfo
     int i = 0;
     while (i < this.players.size())
     {
-      localJSONArray.put(((azqy)this.players.get(i)).a());
+      localJSONArray.put(((bbph)this.players.get(i)).a());
       i += 1;
     }
     this.playersData = localJSONArray.toString();

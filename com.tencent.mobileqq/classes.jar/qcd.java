@@ -1,70 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.articlesummary.feeds_info.AccountProfile;
+import android.view.View;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 public class qcd
+  implements bhqp
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public qcd(ComponentContentGridImage paramComponentContentGridImage) {}
   
-  public static qcd a(feeds_info.AccountProfile paramAccountProfile)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject;
-    if (paramAccountProfile == null) {
-      localObject = null;
-    }
-    qcd localqcd;
-    do
+    if ((ComponentContentGridImage.a(this.a) == 62) || (ComponentContentGridImage.a(this.a) == 63) || (ComponentContentGridImage.a(this.a) == 64) || (ComponentContentGridImage.a(this.a) == 65))
     {
-      return localObject;
-      localqcd = new qcd();
-      localqcd.jdField_a_of_type_Long = paramAccountProfile.uint64_uin.get();
-      localqcd.jdField_a_of_type_Int = paramAccountProfile.uint32_account_type.get();
-      if (paramAccountProfile.bytes_desc.has()) {
-        localqcd.c = paramAccountProfile.bytes_desc.get().toStringUtf8();
+      if (ComponentContentGridImage.a(this.a) != null) {
+        ComponentContentGridImage.a(this.a).a(paramInt);
       }
-      if (paramAccountProfile.bytes_profile_photo_url.has()) {
-        localqcd.b = paramAccountProfile.bytes_profile_photo_url.get().toStringUtf8();
+      return;
+    }
+    if ((Aladdin.getConfig(192).getIntegerFromString("picture_click_jumptype", 0) == 1) && (((pgq)this.a.a).a().mSocialFeedInfo != null) && (((pgq)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qmr != null) && (((pgq)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qmr.a) && (((pgq)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qmk != null)) {
+      try
+      {
+        ors.a(this.a.getContext(), ((pgq)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qmk.a.c, null);
+        return;
       }
-      if (paramAccountProfile.bytes_nick.has()) {
-        localqcd.jdField_a_of_type_JavaLangString = paramAccountProfile.bytes_nick.get().toStringUtf8();
+      catch (Exception paramAdapterView)
+      {
+        QLog.e("ComponentContentGridImage", 1, paramAdapterView.getLocalizedMessage());
+        return;
       }
-      localObject = localqcd;
-    } while (!paramAccountProfile.bytes_home_page_url.has());
-    localqcd.d = paramAccountProfile.bytes_home_page_url.get().toStringUtf8();
-    return localqcd;
-  }
-  
-  public feeds_info.AccountProfile a()
-  {
-    feeds_info.AccountProfile localAccountProfile = new feeds_info.AccountProfile();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localAccountProfile.bytes_nick.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
     }
-    if (!TextUtils.isEmpty(this.b)) {
-      localAccountProfile.bytes_profile_photo_url.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      localAccountProfile.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.c));
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      localAccountProfile.bytes_home_page_url.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    localAccountProfile.uint32_account_type.set(this.jdField_a_of_type_Int);
-    localAccountProfile.uint64_uin.set(this.jdField_a_of_type_Long);
-    return localAccountProfile;
+    ComponentContentGridImage.a(this.a, paramInt, ComponentContentGridImage.a(this.a).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qcd
  * JD-Core Version:    0.7.0.1
  */

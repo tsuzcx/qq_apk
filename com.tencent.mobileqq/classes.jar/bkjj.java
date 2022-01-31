@@ -1,26 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar;
+import android.view.View.OnTouchListener;
 
-public class bkjj
-  implements View.OnClickListener
+class bkjj
+  implements View.OnTouchListener
 {
-  public bkjj(RateWidgetRatingBar paramRateWidgetRatingBar) {}
+  bkjj(bkjf parambkjf) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (RateWidgetRatingBar.a(this.a))
-    {
-      this.a.setStar(this.a.indexOfChild(paramView) + 1.0F);
-      if (RateWidgetRatingBar.a(this.a) != null) {
-        RateWidgetRatingBar.a(this.a).b(this.a.indexOfChild(paramView) + 1.0F);
-      }
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkjj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,24 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import NS_COMM.COMM.StCommonExt;
+import java.util.List;
 
-class yem
+public class yem
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<aniz> b;
-  
-  public yem(yel paramyel, View paramView, aniz paramaniz)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramaniz);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public aniz a()
-  {
-    return (aniz)this.b.get();
-  }
+  public CertifiedAccountMeta.StFeed a;
+  public CertifiedAccountMeta.StUser a;
+  public CertifiedAccountRead.StGetMainPageRsp a;
+  public COMM.StCommonExt a;
+  public String a;
+  public List<CertifiedAccountMeta.StFeed> a;
+  public boolean a;
+  public String b;
+  public boolean b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yem
  * JD-Core Version:    0.7.0.1
  */

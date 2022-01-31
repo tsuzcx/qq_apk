@@ -2,7 +2,7 @@ package com.tencent.biz.qrcode.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import aqbe;
+import arum;
 
 class QRDisplayActivity$20$1
   implements Runnable
@@ -22,12 +22,12 @@ class QRDisplayActivity$20$1
     localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
     Intent localIntent = new Intent();
     localIntent.putExtras(localBundle);
-    aqbe.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$20.this$0, localIntent, 21);
+    arum.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$20.this$0, localIntent, 21);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.20.1
  * JD-Core Version:    0.7.0.1
  */

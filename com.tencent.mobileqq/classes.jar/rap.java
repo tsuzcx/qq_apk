@@ -1,20 +1,26 @@
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+
 class rap
-  implements qtw
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  rap(ram paramram) {}
+  rap(ran paramran) {}
   
-  public void a(qtv paramqtv, boolean paramBoolean)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (paramBoolean) {}
-    while ((this.a.c == 0) || (qkr.c)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(ran.a(), 2, "播放器状态回调 onError model = " + paramInt1 + ", what = " + paramInt2 + ", detailInfo = " + paramString);
     }
-    this.a.a(paramqtv);
+    if (ran.a(this.a) != null) {
+      ran.a(this.a).a(3, paramInt1 + "-" + paramInt2, null, 0L);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rap
  * JD-Core Version:    0.7.0.1
  */

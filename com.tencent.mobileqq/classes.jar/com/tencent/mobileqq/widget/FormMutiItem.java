@@ -117,7 +117,7 @@ public class FormMutiItem
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(b(getResources(), this.jdField_a_of_type_Int));
-    int j = getResources().getDimensionPixelSize(2131296637);
+    int j = getResources().getDimensionPixelSize(2131296653);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, j);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -135,7 +135,7 @@ public class FormMutiItem
     }
     for (;;)
     {
-      j = getResources().getDimensionPixelSize(2131296646);
+      j = getResources().getDimensionPixelSize(2131296662);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(b(getResources(), this.g));
       this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, j);
       this.jdField_b_of_type_AndroidWidgetTextView.setGravity(19);
@@ -144,20 +144,20 @@ public class FormMutiItem
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       localObject = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelOffset(2131296621);
+      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelOffset(2131296637);
       if (!this.c) {
-        ((LinearLayout.LayoutParams)localObject).bottomMargin = getResources().getDimensionPixelOffset(2131296627);
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = getResources().getDimensionPixelOffset(2131296643);
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131366625);
-      ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131366627);
+      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131366743);
+      ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131366745);
       ((RelativeLayout.LayoutParams)localObject).addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
-      setCustomHeight(getResources().getDimensionPixelSize(2131298096));
+      setCustomHeight(getResources().getDimensionPixelSize(2131298119));
       return;
       this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(false);
-      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(2131296631);
+      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(2131296647);
     }
   }
   
@@ -239,7 +239,7 @@ public class FormMutiItem
     }
     label63:
     label69:
-    for (int j = getResources().getDimensionPixelSize(2131298096);; j = getResources().getDimensionPixelSize(2131298013))
+    for (int j = getResources().getDimensionPixelSize(2131298119);; j = getResources().getDimensionPixelSize(2131298036))
     {
       setCustomHeight(j);
       return;

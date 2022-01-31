@@ -1,85 +1,123 @@
-import android.content.res.Resources;
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import dov.com.tencent.biz.qqstory.takevideo.linker.VipFrwrdLinkView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import java.io.File;
+import java.util.HashMap;
 
-public class bjyw
-  extends bjxl
+class bjyw
+  implements ITMAssistantDownloadClientListener
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  VipFrwrdLinkView jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView;
-  private teo jdField_a_of_type_Teo;
-  private boolean jdField_a_of_type_Boolean;
+  bjyw(bjyv parambjyv) {}
   
-  public teo a()
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    return this.jdField_a_of_type_Teo;
-  }
-  
-  public void a(int paramInt, @NonNull bkld parambkld)
-  {
-    super.a(paramInt, parambkld);
-    if (this.jdField_a_of_type_Teo != null) {
-      parambkld.a.setLinkInfo(this.jdField_a_of_type_Teo);
+    paramTMAssistantDownloadClient = (bjyx)bjyv.a(this.a).get(paramString);
+    if (paramTMAssistantDownloadClient != null) {
+      paramTMAssistantDownloadClient.a(paramString, paramLong1, paramLong2);
     }
   }
   
-  void d()
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.jdField_a_of_type_Bjxn.a().d();
-    RelativeLayout.LayoutParams localLayoutParams;
+    int j = 6;
+    String str = "";
+    Object localObject;
     int i;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView == null)
+    if (paramInt1 == 4)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131365313));
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+      str = (String)bjyv.b(this.a).get(paramString1);
+      localObject = "";
+      try
       {
-        localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-        localLayoutParams.addRule(12, -1);
-        localLayoutParams.setMargins(0, 0, 0, a().getDimensionPixelSize(2131297902) + actj.a(17.0F, a()));
-        i = 0;
+        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
+        if (paramTMAssistantDownloadClient != null) {
+          break label153;
+        }
+        paramTMAssistantDownloadClient = null;
       }
+      catch (Exception paramTMAssistantDownloadClient)
+      {
+        for (;;)
+        {
+          QLog.e(bjyv.a, 2, paramTMAssistantDownloadClient.toString());
+          paramTMAssistantDownloadClient = (TMAssistantDownloadClient)localObject;
+          continue;
+          QLog.e(bjyv.a, 2, "file renameTo faild frompath:" + paramTMAssistantDownloadClient + " topath:" + str);
+          i = 0;
+        }
+        QLog.e(bjyv.a, 2, "file not exist path:" + paramTMAssistantDownloadClient);
+      }
+      if (!TextUtils.isEmpty(paramTMAssistantDownloadClient))
+      {
+        localObject = new File(paramTMAssistantDownloadClient);
+        if (((File)localObject).exists()) {
+          if (((File)localObject).renameTo(new File(str)))
+          {
+            i = 1;
+            if (i != 0) {
+              break label265;
+            }
+            paramTMAssistantDownloadClient = (bjyx)bjyv.a(this.a).get(paramString1);
+            if (paramTMAssistantDownloadClient != null) {
+              paramTMAssistantDownloadClient.a(paramString1, 6, 0, "", "");
+            }
+            bjyv.a(this.a).remove(paramString1);
+            bjyv.b(this.a).remove(paramString1);
+          }
+        }
+      }
+    }
+    label153:
+    do
+    {
+      return;
+      paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.mSavePath;
+      break;
+      for (;;)
+      {
+        i = 0;
+        break;
+        QLog.e(bjyv.a, 2, "currentPath is null");
+      }
+      paramTMAssistantDownloadClient = (bjyx)bjyv.a(this.a).get(paramString1);
+    } while (paramTMAssistantDownloadClient == null);
+    label265:
+    switch (paramInt1)
+    {
+    default: 
+      paramInt1 = 0;
     }
     for (;;)
     {
-      if (i < this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildCount())
-      {
-        if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(i).getId() == 2131365315)
-        {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView = new VipFrwrdLinkView(a());
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView, i, localLayoutParams);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
-    if (this.jdField_a_of_type_Boolean) {
+      paramTMAssistantDownloadClient.a(paramString1, paramInt1, paramInt2, paramString2, str);
       return;
+      paramInt1 = 2;
+      continue;
+      bjyv.a(this.a).remove(paramString1);
+      bjyv.b(this.a).remove(paramString1);
+      paramInt1 = j;
+      continue;
+      paramInt1 = 3;
+      bjyv.a(this.a).remove(paramString1);
+      bjyv.b(this.a).remove(paramString1);
+      continue;
+      paramInt1 = 4;
+      continue;
+      paramInt1 = 1;
+      continue;
+      paramInt1 = 5;
+      bjyv.a(this.a).remove(paramString1);
+      bjyv.b(this.a).remove(paramString1);
     }
-    Looper.myQueue().addIdleHandler(new bjyx(this));
   }
   
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView = null;
-  }
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyw
  * JD-Core Version:    0.7.0.1
  */

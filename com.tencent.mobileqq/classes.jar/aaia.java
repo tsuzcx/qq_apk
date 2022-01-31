@@ -1,27 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.ad.tangram.version.AdVersionAdapter;
 
 public class aaia
-  implements View.OnClickListener
+  implements AdVersionAdapter
 {
-  public aaia(AddRequestActivity paramAddRequestActivity) {}
-  
-  public void onClick(View paramView)
+  public String getAppVersion()
   {
-    paramView = this.a.getIntent();
-    paramView.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
-    aflf.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), paramView);
-    if (AddRequestActivity.a(this.a) != null) {
-      axqy.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
-    }
-    axqy.b(this.a.app, "CliOper", "", "", "0X800AA42", "0X800AA42", 0, 0, "", "", "", "");
+    return aans.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaia
  * JD-Core Version:    0.7.0.1
  */

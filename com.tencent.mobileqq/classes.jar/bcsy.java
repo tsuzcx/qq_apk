@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
+import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView.1;
 
-public final class bcsy
-  implements Parcelable.Creator<Workspace.SavedState>
+public class bcsy
+  implements Animator.AnimatorListener
 {
-  public Workspace.SavedState a(Parcel paramParcel)
+  public bcsy(PhantomPicView.1 param1) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new Workspace.SavedState(paramParcel, null);
+    this.a.this$0.c();
   }
   
-  public Workspace.SavedState[] a(int paramInt)
-  {
-    return new Workspace.SavedState[paramInt];
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcsy
  * JD-Core Version:    0.7.0.1
  */

@@ -1372,18 +1372,19 @@ public class IpContainer
           {
             insertOrReplace(paramContext, paramAppRuntime.mIpv6List, paramHwConfig.ipv6List, false);
             insertOrReplace(paramContext, this.mCfg.mIpv6List, paramHwConfig.ipv6List, true);
+            if (paramConfigManager == null) {
+              break label438;
+            }
             paramConfigManager.mIpv6Available.clearIpv6Available(paramContext);
             if (paramConfigManager.getHwEngine() == null) {
-              break label428;
+              break label438;
             }
             paramConfigManager.getHwEngine().preConnect();
-            break label428;
+            break label438;
           }
         }
       }
-    }
-    for (;;)
-    {
+      label236:
       bool2 = bool1;
       if (paramHwConfig != null)
       {
@@ -1401,12 +1402,18 @@ public class IpContainer
             {
               insertOrReplace(paramContext, paramAppRuntime.mIpv6List, paramHwConfig.ipv6List, false);
               insertOrReplace(paramContext, this.mCfg.mIpv6List, paramHwConfig.ipv6List, true);
+              if (paramConfigManager == null) {
+                break label444;
+              }
               paramConfigManager.mIpv6Available.clearIpv6Available(paramContext);
-              bool2 = true;
+              break label444;
             }
           }
         }
       }
+    }
+    for (;;)
+    {
       bool1 = bool2;
       if (paramHwConfig != null)
       {
@@ -1430,8 +1437,11 @@ public class IpContainer
       return bool1;
       bool2 = false;
       break;
-      label428:
+      label438:
       bool1 = true;
+      break label236;
+      label444:
+      bool2 = true;
     }
   }
   

@@ -1,22 +1,18 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public abstract class aqrt
-  extends RecyclerView.ViewHolder
+public class aqrt
 {
-  public aqrt(Context paramContext, View paramView, ViewGroup paramViewGroup)
-  {
-    super(paramView);
-  }
+  long a;
+  public FileManagerEntity a;
   
-  public abstract void a(FeedsItemData paramFeedsItemData);
+  public aqrt(FileManagerEntity paramFileManagerEntity)
+  {
+    this.a = paramFileManagerEntity;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqrt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,26 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class bacz
-  extends bacm
+  extends bacq
 {
-  public bacz(View paramView)
+  public bacz(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
+    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
   }
   
-  protected void a()
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    this.a.setVisibility(4);
-    this.c.setVisibility(0);
-    this.b.setVisibility(4);
+    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
+    {
+      this.jdField_a_of_type_Bacn.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      this.jdField_a_of_type_Bacn.h(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bacz
  * JD-Core Version:    0.7.0.1
  */

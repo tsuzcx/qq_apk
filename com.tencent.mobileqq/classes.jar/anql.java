@@ -1,20 +1,30 @@
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
 
-class anql
-  implements anqs
+public class anql
+  extends AnimatorListenerAdapter
 {
-  anql(anqk paramanqk) {}
+  public anql(SelectCoverActivity paramSelectCoverActivity, View paramView1, View paramView2) {}
   
-  public void a(List<anyh> paramList)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.a.a != null) {
-      this.a.a.b(paramList);
-    }
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anql
  * JD-Core Version:    0.7.0.1
  */

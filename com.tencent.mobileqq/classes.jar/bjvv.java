@@ -1,25 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-class bjvv
-  implements DialogInterface.OnDismissListener
+public class bjvv
 {
-  bjvv(bjvt parambjvt) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static void a(becq parambecq, String... paramVarArgs)
   {
-    paramDialogInterface = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a;
-    if (paramDialogInterface != null) {
-      paramDialogInterface.b();
+    paramVarArgs = new Intent("action_js2qzone");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cmd", "CleanZebraNum");
+    paramVarArgs.putExtras(localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneZebraAlbumJsHandleLogicQZonePersonalizePlugin", 2, "actionString: " + paramVarArgs.getAction());
     }
-    this.a.jdField_a_of_type_Bjxn.a(true, 0.0F, 0.0F, 0.0F, 0.0F);
+    bizm.a(parambecq.a(), bizt.a(), paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjvv
  * JD-Core Version:    0.7.0.1
  */

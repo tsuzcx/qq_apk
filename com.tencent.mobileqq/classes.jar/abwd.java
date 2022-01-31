@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.os.MqqHandler;
 
 public class abwd
-  implements abwb
+  extends MqqHandler
 {
-  public abwd(QQSettingCleanActivity.ScanSpaceTask paramScanSpaceTask) {}
+  public abwd(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.this$0.a.setPercent(paramInt);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwd
  * JD-Core Version:    0.7.0.1
  */

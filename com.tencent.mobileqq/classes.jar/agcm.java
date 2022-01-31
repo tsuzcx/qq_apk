@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
-class agcm
-  implements DialogInterface.OnCancelListener
+public class agcm
+  implements View.OnLongClickListener
 {
-  agcm(agck paramagck) {}
+  public agcm(PanelIconLinearLayout paramPanelIconLinearLayout) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public boolean onLongClick(View paramView)
+  {
+    if (PanelIconLinearLayout.a(this.a) != null) {
+      PanelIconLinearLayout.a(this.a).a(1);
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-
-class qmm
-  implements Animation.AnimationListener
+public class qmm
 {
-  qmm(qmj paramqmj, RelativeLayout paramRelativeLayout) {}
+  private qmn jdField_a_of_type_Qmn = new qmn(0L);
+  private qmo jdField_a_of_type_Qmo = new qmo("");
+  private qmp jdField_a_of_type_Qmp = new qmp("");
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(qmn paramqmn)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_a_of_type_Qmn = paramqmn;
+  }
+  
+  public void a(qmo paramqmo)
+  {
+    this.jdField_a_of_type_Qmo = paramqmo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmm
  * JD-Core Version:    0.7.0.1
  */

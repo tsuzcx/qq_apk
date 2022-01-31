@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import azay;
+import bayx;
 
 public class TribeVideoListPlayerFragment$21$2
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$21$2(azay paramazay) {}
+  public TribeVideoListPlayerFragment$21$2(bayx parambayx) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class TribeVideoListPlayerFragment$21$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.21.2
  * JD-Core Version:    0.7.0.1
  */

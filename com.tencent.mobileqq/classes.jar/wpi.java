@@ -1,21 +1,26 @@
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-public class wpi
-  implements SwipeRefreshLayout.OnRefreshListener
+public abstract interface wpi
 {
-  public wpi(ComponentPageView paramComponentPageView) {}
+  public abstract StoryInputBarView a();
   
-  public void onRefresh()
-  {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-  }
+  public abstract xrg a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpi
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import wsu;
+import yhm;
 
 public class GetSubscribeFeedListRequest
   extends VSBaseRequest
@@ -30,7 +30,7 @@ public class GetSubscribeFeedListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt.get());
     }
-    paramStCommonExt = wsu.a().a();
+    paramStCommonExt = yhm.a().a();
     if (paramStCommonExt != null)
     {
       vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -57,7 +57,7 @@ public class GetSubscribeFeedListRequest
       if (paramStCommonExt != null) {
         this.req.extInfo.set(paramStCommonExt.get());
       }
-      paramStFeed = wsu.a().a();
+      paramStFeed = yhm.a().a();
       if (paramStFeed != null)
       {
         paramStCommonExt = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -92,7 +92,7 @@ public class GetSubscribeFeedListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.GetSubscribeFeedListRequest
  * JD-Core Version:    0.7.0.1
  */

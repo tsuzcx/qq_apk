@@ -1,65 +1,42 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class auzr
+final class auzr
+  implements URLDrawable.URLDrawableListener
 {
-  private Map<ProfileLabelInfo, ToggleButton> a = new HashMap();
+  auzr(String paramString1, auzu paramauzu, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface) {}
   
-  public ToggleButton a(ProfileLabelInfo paramProfileLabelInfo)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return (ToggleButton)this.a.get(paramProfileLabelInfo);
+    paramURLDrawable = bcwc.b(BaseApplicationImpl.getApplication().getResources(), 2130844842);
+    WXShareHelper.a().a(new auzt(this));
+    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
+    new auzx().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public Map<ProfileLabelInfo, ToggleButton> a()
-  {
-    return this.a;
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void a()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.clear();
-  }
-  
-  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (!a(paramProfileLabelInfo)) {
-      this.a.put(paramProfileLabelInfo, paramToggleButton);
+    Bitmap localBitmap = auzi.a(paramURLDrawable);
+    paramURLDrawable = localBitmap;
+    if (localBitmap == null) {
+      paramURLDrawable = bcwc.b(BaseApplicationImpl.getApplication().getResources(), 2130844842);
     }
-  }
-  
-  public boolean a(ProfileLabelInfo paramProfileLabelInfo)
-  {
-    return this.a.get(paramProfileLabelInfo) != null;
-  }
-  
-  public void b(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (a(paramProfileLabelInfo)) {
-      this.a.remove(paramProfileLabelInfo);
-    }
-  }
-  
-  public void c(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_NORMAL) {
-      a(paramProfileLabelInfo, paramToggleButton);
-    }
-    for (;;)
-    {
-      paramProfileLabelInfo.toggleStatus();
-      paramToggleButton.toggle();
-      return;
-      if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        b(paramProfileLabelInfo, paramToggleButton);
-      }
-    }
+    WXShareHelper.a().a(new auzs(this));
+    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
+    new auzx().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auzr
  * JD-Core Version:    0.7.0.1
  */

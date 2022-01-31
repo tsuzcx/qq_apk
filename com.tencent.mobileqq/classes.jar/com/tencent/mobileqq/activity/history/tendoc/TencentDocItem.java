@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history.tendoc;
 
-import azjx;
+import bbig;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -24,7 +24,7 @@ public class TencentDocItem
     }
     try
     {
-      paramArrayOfByte = azjx.a(paramArrayOfByte);
+      paramArrayOfByte = bbig.a(paramArrayOfByte);
       if (paramArrayOfByte == null) {
         break label32;
       }
@@ -48,7 +48,7 @@ public class TencentDocItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.tendoc.TencentDocItem
  * JD-Core Version:    0.7.0.1
  */

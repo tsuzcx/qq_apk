@@ -1,41 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class oox
-  implements AladdinConfigHandler
+  implements ViewBase.IBuilder
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public ViewBase build(VafContext paramVafContext)
   {
-    paramString = oof.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("readinjoyClickChannelView", str1)) {
-        bhvy.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      } else if (TextUtils.equals("readinjoySlideChannelView", str1)) {
-        bhvy.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      } else if (TextUtils.equals("readinjoyClickDiversionCard", str1)) {
-        bhvy.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      }
-    }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    bhvy.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(false));
-    bhvy.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(false));
-    bhvy.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(false));
+    return new oow(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oox
  * JD-Core Version:    0.7.0.1
  */

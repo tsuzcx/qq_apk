@@ -21,6 +21,7 @@ class AppBrandRuntime$8
   {
     QLog.i("miniapp-start", 1, "custom_event_PAGE_EVENT __DOMReady.  Show the page.");
     MiniReportManager.reportEventType(this.this$0.apkgInfo.appConfig, 611, MiniProgramReportHelper.currentUrlFromAppBrandRuntime(this.this$0), null, null, 0, MiniAppStartState.getBaseLibDownloadDesc(this.this$0.appId), MiniAppStartState.getApkgDownloadDesc(this.this$0.appId), MiniAppStartState.getBaselibLoadDesc(this.this$0.appId), MiniAppStartState.getPageSwitchDesc(this.this$0.appId));
+    MiniReportManager.reportEventType(this.this$0.apkgInfo.appConfig, 645, MiniProgramReportHelper.currentUrlFromAppBrandRuntime(this.this$0), null, null, 0);
     AbsAppBrandPage localAbsAppBrandPage;
     if (this.this$0.pageContainer != null)
     {
@@ -30,7 +31,7 @@ class AppBrandRuntime$8
     try
     {
       localAbsAppBrandPage.setVisibility(0);
-      Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.getAppLoaderManager().getContext(), 2130772256);
+      Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.getAppLoaderManager().getContext(), 2130772270);
       localAnimation.setAnimationListener(new AppBrandRuntime.8.1(this));
       localAbsAppBrandPage.setAnimation(localAnimation);
       return;
@@ -43,7 +44,7 @@ class AppBrandRuntime$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.AppBrandRuntime.8
  * JD-Core Version:    0.7.0.1
  */

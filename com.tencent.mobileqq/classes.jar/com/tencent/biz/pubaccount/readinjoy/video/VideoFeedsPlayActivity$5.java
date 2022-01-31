@@ -1,39 +1,50 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.VideoInfo;
-import nol;
-import qza;
-import qzb;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import nrt;
+import rom;
+import ron;
 
 class VideoFeedsPlayActivity$5
   implements Runnable
 {
-  VideoFeedsPlayActivity$5(VideoFeedsPlayActivity paramVideoFeedsPlayActivity, VideoInfo paramVideoInfo, String paramString) {}
+  VideoFeedsPlayActivity$5(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
   public void run()
   {
-    qzb localqzb = new qzb(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-    String str1 = "";
-    String str2 = "0";
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
+    int i = 3;
+    VideoFeedsPlayActivity.a(this.this$0).a();
+    Object localObject = VideoFeedsPlayActivity.a(this.this$0).a();
+    ron localron1 = new ron((VideoInfo)localObject);
+    ron localron2;
+    if (localObject != null)
     {
-      str1 = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j;
-      str2 = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g;
-      localqzb.h(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g);
+      localObject = ((VideoInfo)localObject).g;
+      localron2 = localron1.a("icon_position", Integer.valueOf(3));
+      if (!VideoFeedsPlayActivity.b(this.this$0)) {
+        break label111;
+      }
     }
-    String str4 = this.jdField_a_of_type_JavaLangString;
-    String str5 = this.jdField_a_of_type_JavaLangString;
-    if (VideoFeedsPlayActivity.a(this.this$0)) {}
-    for (String str3 = "1";; str3 = "0")
+    for (;;)
     {
-      nol.a(null, str1, str4, str5, 0, 0, str3, "", str2, localqzb.a().a(), false);
+      localron2.a("icon_status", Integer.valueOf(i)).h((String)localObject);
+      nrt.a(null, "", "0X800ABBB", "0X800ABBB", 0, 0, "", "", (String)localObject, localron1.a().a(), false);
       return;
+      localObject = "";
+      break;
+      label111:
+      if (VideoFeedsPlayActivity.a(this.this$0).a() == 1) {
+        i = 2;
+      } else {
+        i = 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity.5
  * JD-Core Version:    0.7.0.1
  */

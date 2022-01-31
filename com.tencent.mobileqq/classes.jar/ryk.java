@@ -1,29 +1,28 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.content.Intent;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-class ryk
-  implements bcww
+public class ryk
+  implements MessageQueue.IdleHandler
 {
-  ryk(ryj paramryj) {}
+  public ryk(FastWebActivity paramFastWebActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  public boolean queueIdle()
   {
-    if ((ryj.a(this.a) == null) || (!ryj.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    if (FastWebActivity.a(this.a).c == 0) {}
+    for (String str = "";; str = FastWebActivity.a(this.a).p)
     {
-    case -2: 
-    case -1: 
-    default: 
-      wij.a(1, 2131719487);
-      return;
+      int i = this.a.getIntent().getIntExtra("floating_window_scene", 0);
+      scq.a(FastWebActivity.a(this.a).o, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).d), FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).c(), str, FastWebActivity.a(this.a).m, FastWebActivity.a(this.a).n, FastWebActivity.a(this.a), FastWebActivity.b(this.a), i, FastWebActivity.a(this.a).mChannelID);
+      return false;
     }
-    wij.a(2, 2131719506);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryk
  * JD-Core Version:    0.7.0.1
  */

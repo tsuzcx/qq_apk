@@ -7,14 +7,16 @@ import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import banx;
+import bcmk;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.theme.ISkinIgnoreTypeface;
 
 public class EllipsizingTextView
   extends TextView
+  implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 1;
-  private banx jdField_a_of_type_Banx;
+  private bcmk jdField_a_of_type_Bcmk;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -47,14 +49,15 @@ public class EllipsizingTextView
       }
       paramContext.recycle();
     }
+    setTypeface(null);
   }
   
-  private banx a()
+  private bcmk a()
   {
-    if (this.jdField_a_of_type_Banx == null) {
-      this.jdField_a_of_type_Banx = new banx(this);
+    if (this.jdField_a_of_type_Bcmk == null) {
+      this.jdField_a_of_type_Bcmk = new bcmk(this);
     }
-    return this.jdField_a_of_type_Banx;
+    return this.jdField_a_of_type_Bcmk;
   }
   
   public void a()
@@ -73,15 +76,15 @@ public class EllipsizingTextView
     ((TextPaint)localObject).setColor(getCurrentTextColor());
     ((TextPaint)localObject).drawableState = getDrawableState();
     localObject = a();
-    ((banx)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    ((bcmk)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
     if (getEllipsize() == TextUtils.TruncateAt.END)
     {
-      ((banx)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
+      ((bcmk)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
       return;
     }
     if (getEllipsize() == TextUtils.TruncateAt.MIDDLE)
     {
-      ((banx)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
+      ((bcmk)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
       return;
     }
     super.onDraw(paramCanvas);

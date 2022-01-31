@@ -1,103 +1,84 @@
-import android.content.Context;
+import android.os.Build;
 import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class vqa
-  extends vps<vpy>
+public class vqa
+  extends SimpleJob<Object>
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367657);
-  private ImageView b = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367658);
-  private ImageView c = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370334);
-  private ImageView d = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370335);
-  
-  private vqa(vpy paramvpy, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public vqa(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, StoryVideoItem paramStoryVideoItem, long paramLong1, long paramLong2, int paramInt, String paramString2)
   {
-    super(paramContext, paramViewGroup);
+    super(paramString1);
   }
   
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return LayoutInflater.from(paramContext).inflate(2131561383, paramViewGroup, false);
-  }
-  
-  void a(ImageView paramImageView, char paramChar)
-  {
-    switch (paramChar)
+    int j = 1;
+    for (;;)
     {
-    default: 
-      return;
-    case '0': 
-      paramImageView.setImageResource(2130845783);
-      return;
-    case '1': 
-      paramImageView.setImageResource(2130845784);
-      return;
-    case '2': 
-      paramImageView.setImageResource(2130845785);
-      return;
-    case '3': 
-      paramImageView.setImageResource(2130845786);
-      return;
-    case '4': 
-      paramImageView.setImageResource(2130845787);
-      return;
-    case '5': 
-      paramImageView.setImageResource(2130845788);
-      return;
-    case '6': 
-      paramImageView.setImageResource(2130845789);
-      return;
-    case '7': 
-      paramImageView.setImageResource(2130845790);
-      return;
-    case '8': 
-      paramImageView.setImageResource(2130845791);
-      return;
-    }
-    paramImageView.setImageResource(2130845792);
-  }
-  
-  public void a(vpy paramvpy, int paramInt)
-  {
-    super.a(paramvpy, paramInt);
-    paramvpy = new SimpleDateFormat("HH:mm");
-    ((vpy)this.jdField_a_of_type_Vpr).c = paramvpy.format(new Date());
-    ved.b("TimeFilterData", "TimeFilterData time:" + ((vpy)this.jdField_a_of_type_Vpr).c);
-    a(this.jdField_a_of_type_AndroidWidgetImageView, ((vpy)this.jdField_a_of_type_Vpr).c.charAt(0));
-    a(this.b, ((vpy)this.jdField_a_of_type_Vpr).c.charAt(1));
-    a(this.c, ((vpy)this.jdField_a_of_type_Vpr).c.charAt(3));
-    a(this.d, ((vpy)this.jdField_a_of_type_Vpr).c.charAt(4));
-    int i = vzl.d(this.jdField_a_of_type_AndroidViewView.getContext());
-    if (((this.jdField_a_of_type_Vpy.a != null) && (this.jdField_a_of_type_Vpy.a.jdField_a_of_type_Int == 10)) || ((this.jdField_a_of_type_Vpy.a != null) && (this.jdField_a_of_type_Vpy.a.jdField_a_of_type_Int == 12)))
-    {
-      if (this.jdField_a_of_type_Vpy.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a() / this.jdField_a_of_type_Vpy.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b() > bbdh.k() / bbdh.l())
+      try
       {
-        paramInt = (int)(bbdh.k() * this.jdField_a_of_type_Vpy.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b() / this.jdField_a_of_type_Vpy.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
-        if (paramInt > i / 3 * 2 + baxn.a(this.jdField_a_of_type_AndroidViewView.getContext(), 75.0F))
+        paramJobContext = new JSONObject();
+        paramJobContext.put("author_id", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid + "");
+        paramJobContext.put("author_type", "1");
+        paramJobContext.put("video_type", "1");
+        paramJobContext.put("video_time", this.jdField_a_of_type_Long + "");
+        paramJobContext.put("play_time", this.b + "");
+        paramJobContext.put("video_restrict", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mBanType + "");
+        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
         {
-          this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
-          return;
+          i = 1;
+          paramJobContext.put("content_type", i);
+          if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalCreateTime > 0L) {
+            break label426;
+          }
+          i = j;
+          paramJobContext.put("content_origin", i);
+          paramJobContext.put("mobile_type", Build.MODEL);
+          paramJobContext.put("wifi_ssid", xne.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
+          paramJobContext.put("wifi_mac", xne.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
+          long l1;
+          if (VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder) > 0L)
+          {
+            l1 = VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
+            paramJobContext.put("load_time", l1 + "");
+            wta.a("story_grp", "play_video_js", this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a().mReportData.from, this.jdField_a_of_type_Int, new String[] { paramJobContext.toString(), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+            this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.d = 3;
+          }
+          else
+          {
+            l1 = System.currentTimeMillis();
+            long l2 = VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
+            l1 -= l2;
+            continue;
+          }
+          return null;
         }
-        i = baxn.a(this.jdField_a_of_type_AndroidViewView.getContext(), 75.0F);
-        this.jdField_a_of_type_AndroidViewView.setPadding(0, paramInt - i, 0, 0);
-        return;
       }
-      this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
-      return;
+      catch (JSONException paramJobContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, 2, "reportTroopVideo exception:" + QLog.getStackTraceString(paramJobContext));
+        }
+      }
+      int i = 2;
+      continue;
+      label426:
+      i = 2;
     }
-    this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqa
  * JD-Core Version:    0.7.0.1
  */

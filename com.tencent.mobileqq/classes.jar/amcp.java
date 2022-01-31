@@ -1,20 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class amcp
-  extends AnimatorListenerAdapter
+public class amcp
+  implements ThreadFactory
 {
-  amcp(amco paramamco) {}
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public Thread newThread(Runnable paramRunnable)
   {
-    super.onAnimationEnd(paramAnimator);
-    amco.a(this.a, null);
+    paramRunnable = new Thread(paramRunnable, "Automator_" + this.a.getAndIncrement());
+    if (paramRunnable.getPriority() != 10) {
+      paramRunnable.setPriority(10);
+    }
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcp
  * JD-Core Version:    0.7.0.1
  */

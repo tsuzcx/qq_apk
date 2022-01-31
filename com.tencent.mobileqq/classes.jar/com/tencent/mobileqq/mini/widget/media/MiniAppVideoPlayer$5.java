@@ -1,52 +1,20 @@
 package com.tencent.mobileqq.mini.widget.media;
 
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.widget.ImageView;
 
 class MiniAppVideoPlayer$5
-  implements TVK_SDKMgr.OnLogListener
+  implements Runnable
 {
   MiniAppVideoPlayer$5(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public int d(String paramString1, String paramString2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppVideoPlayer_TVK_IMediaPlayer", 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    QLog.e("MiniAppVideoPlayer_TVK_IMediaPlayer", 1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniAppVideoPlayer_TVK_IMediaPlayer", 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppVideoPlayer_TVK_IMediaPlayer", 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    QLog.w("MiniAppVideoPlayer_TVK_IMediaPlayer", 1, paramString2);
-    return 0;
+    MiniAppVideoPlayer.access$2700(this.this$0).performClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppVideoPlayer.5
  * JD-Core Version:    0.7.0.1
  */

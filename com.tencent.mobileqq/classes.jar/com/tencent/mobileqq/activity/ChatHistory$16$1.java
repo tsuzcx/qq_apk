@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import aaqn;
+import achl;
 import android.os.Message;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import mqq.os.MqqHandler;
 
 public class ChatHistory$16$1
   implements Runnable
 {
-  public ChatHistory$16$1(aaqn paramaaqn) {}
+  public ChatHistory$16$1(achl paramachl) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class ChatHistory$16$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.16.1
  * JD-Core Version:    0.7.0.1
  */

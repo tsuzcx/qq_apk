@@ -12,8 +12,9 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.widget.TextView;
 import android.widget.Toast;
-import aqsp;
-import bccj;
+import asii;
+import asin;
+import bebk;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -25,7 +26,7 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import java.io.IOException;
-import naj;
+import ndd;
 import org.apache.http.client.ClientProtocolException;
 
 public class GameCenterActivity
@@ -56,7 +57,7 @@ public class GameCenterActivity
     paramString3.putString("Cookie", paramString2);
     try
     {
-      paramContext = naj.a(paramContext, paramString1, "POST", localBundle, paramString3);
+      paramContext = ndd.a(paramContext, paramString1, "POST", localBundle, paramString3);
       if (QLog.isColorLevel()) {
         QLog.i("GameCenter", 2, "httpRequest: result:" + paramContext);
       }
@@ -78,6 +79,19 @@ public class GameCenterActivity
     return "{'ret': -105, 'data' : 'httpRequest::Http no response.'}";
   }
   
+  private void a()
+  {
+    Intent localIntent = getIntent();
+    if ((localIntent != null) && (localIntent.getIntExtra("game_msg_enter_from", 0) == 1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GameCenterActivity", 2, "handlePushReport() called");
+      }
+      localIntent.removeExtra("game_msg_enter_from");
+      asin.a(10004, 2);
+    }
+  }
+  
   private boolean a()
   {
     TextView localTextView = b().a.b;
@@ -85,7 +99,7 @@ public class GameCenterActivity
     while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       return false;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130839142);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130839226);
     this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = localTextView.getCompoundDrawables();
     this.e = localTextView.getCompoundDrawablePadding();
     localTextView.setCompoundDrawablePadding(10);
@@ -127,6 +141,7 @@ public class GameCenterActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     jdField_a_of_type_Int += 1;
+    a();
     return super.doOnCreate(paramBundle);
   }
   
@@ -208,7 +223,7 @@ public class GameCenterActivity
   
   public boolean onBackEvent()
   {
-    GameCenterVideoViewController localGameCenterVideoViewController = aqsp.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = asii.a().a();
     if ((localGameCenterVideoViewController != null) && (localGameCenterVideoViewController.a()))
     {
       localGameCenterVideoViewController.c();
@@ -219,7 +234,7 @@ public class GameCenterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gamecenter.activities.GameCenterActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,35 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.widget.AuthorizationItem;
 
-class bhra
-  implements bhaf
+public final class bhra
 {
-  bhra(bhqz parambhqz, String paramString) {}
+  public final int a;
+  public final String a;
+  public final String b;
   
-  public void a()
+  public bhra(String paramString1, String paramString2, int paramInt)
   {
-    if (this.jdField_a_of_type_Bhqz.a != null)
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static bhra a(int paramInt)
+  {
+    switch (paramInt)
     {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
-      this.jdField_a_of_type_Bhqz.a.callJs(str);
+    default: 
+      return AuthorizationItem.d;
+    case 0: 
+      return AuthorizationItem.a;
+    case 1: 
+      return AuthorizationItem.b;
     }
+    return AuthorizationItem.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhra
  * JD-Core Version:    0.7.0.1
  */

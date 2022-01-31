@@ -1,52 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.VideoController.AnyChatReqTimeoutRunnable;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 public class lfs
+  implements DialogInterface.OnClickListener
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  public lfs(VideoController.AnyChatReqTimeoutRunnable paramAnyChatReqTimeoutRunnable) {}
   
-  public lfs(VideoAppInterface paramVideoAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lfu(paramVideoAppInterface, null);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.qav.notify.accept");
-    localIntentFilter.addAction("com.tencent.qav.notify.refuse");
-    localIntentFilter.addAction("tencent.video.q2v.ptusoDownloadRet");
-    localIntentFilter.addAction("tencent.video.q2v.ptuLibpagDownloadRet");
-    localIntentFilter.addAction("tencent.video.q2v.avReceivePushMsg");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("QAVNotifyActionMonitor", 2, "register");
+    if (this.a.this$0.a().d == null) {
+      this.a.this$0.a().d = this.a.this$0.a().a.c;
     }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QAVNotifyActionMonitor", 2, "unRegister");
-    }
+    this.a.this$0.a(this.a.a, 2131230741, 1, this.a.this$0.b);
+    this.a.this$0.a().a("AnyChatReqTimeoutRunnable", 6);
+    this.a.this$0.a.a(new Object[] { Integer.valueOf(14), Integer.valueOf(9), this.a.this$0.a().d, Long.valueOf(this.a.a) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfs
  * JD-Core Version:    0.7.0.1
  */

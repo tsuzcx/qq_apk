@@ -1,37 +1,13 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
 public class aixm
-  extends aixj
 {
-  public aixm(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(ajfq paramajfq, Context paramContext, QQAppInterface paramQQAppInterface) {}
-  
-  public void a(ajfq paramajfq, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (!this.c)) {}
-    SharedPreferences localSharedPreferences;
-    do
-    {
-      return;
-      this.b = true;
-      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
-    ajfh.a(paramajfq, ajya.a(2131704615), 7, 0);
-    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
-    a(paramContext, paramQQAppInterface);
-  }
+  public static final IRedPacket a = new RedPacketManager();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixm
  * JD-Core Version:    0.7.0.1
  */

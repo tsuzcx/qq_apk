@@ -1,22 +1,48 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.List;
 
-final class uyr
-  implements uzz
+public class uyr
+  extends uxv
+  implements uni<uyt, uyu>
 {
-  uyr(WeakReference paramWeakReference) {}
+  public List<String> a = new ArrayList();
   
-  public void a(ErrorMessage paramErrorMessage)
+  public uyr(String paramString)
   {
-    uys localuys = (uys)this.a.get();
-    if (localuys != null) {
-      localuys.a(paramErrorMessage);
+    this.a.add(paramString);
+  }
+  
+  public void a()
+  {
+    uyt localuyt = new uyt();
+    localuyt.c = 1;
+    localuyt.a = this.a;
+    ung.a().a(localuyt, this);
+  }
+  
+  public void a(@NonNull uyt paramuyt, @Nullable uyu paramuyu, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramuyt = new uys(paramErrorMessage);
+    if ((paramErrorMessage.isSuccess()) && (paramuyu != null) && (paramuyu.a != null))
+    {
+      paramuyt.a = paramuyu.a;
+      b();
+    }
+    for (;;)
+    {
+      uht.a().dispatch(paramuyt);
+      return;
+      c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class agcv
-  implements DialogInterface.OnClickListener
+public class agcv
+  extends BroadcastReceiver
 {
-  agcv(agcf paramagcf, String paramString) {}
+  public agcv(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Agcf.a, SearchContactsActivity.class);
-    paramDialogInterface.putExtra("from_key", 0);
-    paramDialogInterface.putExtra("fromType", 13);
-    paramDialogInterface.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("auto_add_and_prohibit_auto_search", true);
-    this.jdField_a_of_type_Agcf.a.startActivity(paramDialogInterface);
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryActivity", 2, "receive videochat in aiogallery");
+      }
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcv
  * JD-Core Version:    0.7.0.1
  */

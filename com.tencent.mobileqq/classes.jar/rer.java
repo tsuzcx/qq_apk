@@ -1,30 +1,19 @@
-import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.10.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.10.2;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLazyLoadDelegate;
 
 public class rer
-  implements ory
+  extends ntc
 {
-  public rer(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  public rer(VideoFeedsLazyLoadDelegate paramVideoFeedsLazyLoadDelegate) {}
   
-  public void a(MessageRecord paramMessageRecord) {}
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.10.2(this));
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.10.1(this));
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rer
  * JD-Core Version:    0.7.0.1
  */

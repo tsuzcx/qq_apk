@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
 
 public class avuf
-  implements axie
+  implements nfz
 {
-  public avuf(CameraCaptureView paramCameraCaptureView) {}
+  public avuf(SearchResultFragment paramSearchResultFragment) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
-    }
-    if (paramBoolean1)
-    {
-      CameraCaptureView.a(this.a, true);
-      return;
-    }
-    CameraCaptureView.a.g();
+    this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(paramInt);
+    this.a.jdField_a_of_type_Avts.a(false);
   }
+  
+  public void b(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avuf
  * JD-Core Version:    0.7.0.1
  */

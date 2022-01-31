@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
+import android.widget.TextView;
 
-public final class bgnc
-  implements Parcelable.Creator<RecvMsg>
+class bgnc
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public RecvMsg[] a(int paramInt)
-  {
-    return new RecvMsg[paramInt];
-  }
+  private bgnc(bgmu parambgmu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgnc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class afza
-  extends bajx
+class afza
+  extends Handler
 {
-  public afza(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, bajw parambajw, QQAppInterface paramQQAppInterface)
+  afza(afyz paramafyz, Looper paramLooper)
   {
-    super(paramContext, parambajw, paramQQAppInterface);
+    super(paramLooper);
   }
   
-  protected void b(Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    super.b(paramObject);
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(102);
+    if (paramMessage.what == afyz.a) {
+      this.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afza
  * JD-Core Version:    0.7.0.1
  */

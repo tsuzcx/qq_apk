@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import java.util.Comparator;
 
-class awkt
-  implements View.OnClickListener
+public class awkt
+  implements Comparator<PersonalityLabelInfo>
 {
-  awkt(awkq paramawkq) {}
+  public awkt(PersonalityLabel paramPersonalityLabel) {}
   
-  public void onClick(View paramView)
+  public int a(PersonalityLabelInfo paramPersonalityLabelInfo1, PersonalityLabelInfo paramPersonalityLabelInfo2)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.f.setVisibility(8);
+    return -(int)(paramPersonalityLabelInfo1.modTime - paramPersonalityLabelInfo2.modTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awkt
  * JD-Core Version:    0.7.0.1
  */

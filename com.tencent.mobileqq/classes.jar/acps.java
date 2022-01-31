@@ -1,29 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class acps
-  implements DialogInterface.OnClickListener
+  extends alkl
 {
-  public acps(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public acps(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    this.a.n();
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    this.a.h();
+    if (paramBoolean)
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, naj.a(), paramDialogInterface, "0");
-      this.a.finish();
+      if (paramBoolean1.booleanValue()) {
+        DiscussionInfoCardActivity.e(this.a);
+      }
       return;
     }
+    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acps
  * JD-Core Version:    0.7.0.1
  */

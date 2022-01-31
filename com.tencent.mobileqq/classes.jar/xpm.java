@@ -1,19 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.video.decode.ShortVideoSoLoad;
 
 class xpm
-  implements View.OnClickListener
 {
-  xpm(xpk paramxpk) {}
-  
-  public void onClick(View paramView)
+  static String a(Context paramContext)
   {
-    this.a.e();
+    if (Build.VERSION.SDK_INT >= 16) {}
+    for (String str = "trim_process_pie";; str = "trim_process_pic") {
+      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
+    }
+  }
+  
+  static String b(Context paramContext)
+  {
+    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
+    String str = VideoEnvironment.a();
+    return paramContext + str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpm
  * JD-Core Version:    0.7.0.1
  */

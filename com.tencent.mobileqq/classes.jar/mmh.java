@@ -1,18 +1,37 @@
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.VideoControlUI;
+import java.lang.ref.WeakReference;
 
-public abstract interface mmh
+public class mmh
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong);
+  WeakReference<VideoControlUI> a;
   
-  public abstract void a(int paramInt, long paramLong);
+  public mmh(VideoControlUI paramVideoControlUI)
+  {
+    this.a = new WeakReference(paramVideoControlUI);
+  }
   
-  public abstract void a(MotionEvent paramMotionEvent);
-  
-  public abstract void a(String paramString);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    paramView = (VideoControlUI)this.a.get();
+    if (paramView != null) {
+      switch (paramMotionEvent.getAction())
+      {
+      }
+    }
+    for (;;)
+    {
+      return false;
+      paramView.C(0L);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmh
  * JD-Core Version:    0.7.0.1
  */

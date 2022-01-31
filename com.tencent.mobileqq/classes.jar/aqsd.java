@@ -1,36 +1,26 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.1;
 
 public class aqsd
-  implements ArkViewImplement.LoadCallback
+  extends BroadcastReceiver
 {
-  public aqsd(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
+  public aqsd(FileManagerDataCenter.1 param1) {}
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    if ((QLog.isColorLevel()) || (paramInt == -1)) {
-      QLog.d("QQGamePadFaceFragment", 2, new Object[] { "onLoadFinish, ret=", Integer.valueOf(paramInt), ", ", QQGamePadFaceFragment.a(this.a) });
+    paramContext = paramIntent.getAction();
+    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
+    {
+      paramContext = paramIntent.getBundleExtra("extraBundle");
+      aqsc.a(this.a.this$0, paramContext);
     }
-    if (paramInt == 1) {
-      QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
-    }
-    while (paramInt != -1) {
-      return;
-    }
-    QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
-    QQGamePadFaceFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqsd
  * JD-Core Version:    0.7.0.1
  */

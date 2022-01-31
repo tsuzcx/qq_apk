@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.launcher;
 
 import android.text.TextUtils;
-import beqw;
-import betc;
+import bgqp;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class MiniAppInfoLoadingFragment$1$2
   implements Runnable
 {
-  public MiniAppInfoLoadingFragment$1$2(beqw parambeqw, JSONObject paramJSONObject) {}
+  public MiniAppInfoLoadingFragment$1$2(bgqp parambgqp, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -23,13 +23,13 @@ public class MiniAppInfoLoadingFragment$1$2
     if (TextUtils.isEmpty(str1)) {
       str2 = "网络请求错误，无法加载";
     }
-    betc.d("MiniAppInfoLoadingFragment", "getAppInfoById failed. retCode=" + l + " errMsg=" + str2);
-    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Beqw.a, str2, l);
+    QMLog.e("MiniAppInfoLoadingFragment", "getAppInfoById failed. retCode=" + l + " errMsg=" + str2);
+    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Bgqp.a, str2, l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.MiniAppInfoLoadingFragment.1.2
  * JD-Core Version:    0.7.0.1
  */

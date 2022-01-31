@@ -1,29 +1,34 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONArray;
 
-public class alat
-  extends alag
+class alat
+  implements akzr
 {
-  public String b;
-  public String c;
+  alat(alap paramalap, String paramString1, File paramFile, JSONArray paramJSONArray, int[] paramArrayOfInt, String paramString2) {}
   
-  public alat(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    if (!TextUtils.isEmpty(paramString2))
+    QLog.d("ApolloPluginRscLoader", 1, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
+    Object localObject = this.jdField_a_of_type_Alap;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_JavaIoFile.exists()) {}
+    for (paramInt = 0;; paramInt = 2)
     {
-      paramString1 = paramString2.split("\\|");
-      if (paramString1.length > 0) {
-        this.b = paramString1[0];
+      localObject = alap.a((alap)localObject, 6, str, paramInt);
+      this.jdField_a_of_type_OrgJsonJSONArray.put(localObject);
+      if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0)) {
+        break;
       }
+      this.jdField_a_of_type_Alap.a(this.b, alpo.a(2131700874), this.jdField_a_of_type_OrgJsonJSONArray);
+      return;
     }
-    this.c = paramString3;
-    QLog.d("GreetingCardResourceInfo", 2, String.format("GreetingCardResourceInfo mLuaScriptPath=%s mResourceDirPath=%s", new Object[] { this.b, this.c }));
+    alap.a(this.jdField_a_of_type_Alap, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alat
  * JD-Core Version:    0.7.0.1
  */

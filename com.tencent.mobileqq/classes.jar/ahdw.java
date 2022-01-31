@@ -1,34 +1,27 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahdw
-  implements ahdz
+  implements aher
 {
-  public ahdw(DoodleLayout paramDoodleLayout) {}
+  public ahdw(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 80000001) {
+      ayrd.a("add_page", "search", "clk_search_grp", this.a.d + 1, 0, new String[] { "", "", paramString, "" });
     }
-  }
-  
-  public void b()
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
-    }
+    this.a.a(paramString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahdw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,24 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 
-class akym
-  implements ServiceConnection
+public class akym
+  implements DialogInterface.OnClickListener
 {
-  akym(akyk paramakyk) {}
+  public akym(ApolloGameActivity paramApolloGameActivity, Intent paramIntent, String paramString, Bitmap paramBitmap, alfo paramalfo, int paramInt) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.w(akyx.a, 1, "onServiceConnected, name[" + paramComponentName + "]");
-    try
-    {
-      this.a.a = alec.a(paramIBinder);
-      this.a.a.a(akyk.a(this.a));
-      this.a.a.c();
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      QLog.w(akyx.a, 1, "onServiceConnected, Exception", paramComponentName);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.w(akyx.a, 1, "onServiceDisconnected, name[" + paramComponentName + "]");
-    this.a.a();
+    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, new akyn(this));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akym
  * JD-Core Version:    0.7.0.1
  */

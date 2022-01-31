@@ -1,6 +1,6 @@
 package com.tencent.biz.addContactTroopView;
 
-import affi;
+import ahcn;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
@@ -10,15 +10,15 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import axqy;
-import baxn;
+import azmj;
+import bcwh;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import mxz;
+import nat;
 import tencent.im.troop_search_popclassifc.popclassifc.BannerCard;
 import tencent.im.troop_search_popclassifc.popclassifc.BannerItem;
 import tencent.im.troop_search_popclassifc.popclassifc.RspBody;
@@ -38,12 +38,12 @@ public class TroopCardBanner
   {
     try
     {
-      Object localObject = (mxz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(80);
-      if ((localObject != null) && (((mxz)localObject).a() != null) && (((mxz)localObject).a().popRsb != null))
+      Object localObject = (nat)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(80);
+      if ((localObject != null) && (((nat)localObject).a() != null) && (((nat)localObject).a().popRsb != null))
       {
-        int i = ((mxz)localObject).a().popRsb.uint32_longitude.get();
-        int j = ((mxz)localObject).a().popRsb.uint32_latitude.get();
-        localObject = ((mxz)localObject).a().popRsb.str_city_id.get();
+        int i = ((nat)localObject).a().popRsb.uint32_longitude.get();
+        int j = ((nat)localObject).a().popRsb.uint32_latitude.get();
+        localObject = ((nat)localObject).a().popRsb.str_city_id.get();
         localObject = "lon=" + String.valueOf(i) + "&lat=" + String.valueOf(j) + "&city=" + (String)localObject;
         return localObject;
       }
@@ -66,16 +66,16 @@ public class TroopCardBanner
       if (i < this.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.size())
       {
         ImageView localImageView = new ImageView(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-        int j = baxn.a(this.jdField_a_of_type_Affi.a(), 6.0F);
+        int j = bcwh.a(this.jdField_a_of_type_Ahcn.a(), 6.0F);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
         if (i != 0) {
-          localLayoutParams.leftMargin = baxn.a(this.jdField_a_of_type_Affi.a(), 4.0F);
+          localLayoutParams.leftMargin = bcwh.a(this.jdField_a_of_type_Ahcn.a(), 4.0F);
         }
         localImageView.setLayoutParams(localLayoutParams);
         if (i == 0)
         {
           this.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-          localImageView.setImageResource(2130837712);
+          localImageView.setImageResource(2130837908);
         }
         for (;;)
         {
@@ -83,7 +83,7 @@ public class TroopCardBanner
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localImageView);
           i += 1;
           break;
-          localImageView.setImageResource(2130837713);
+          localImageView.setImageResource(2130837909);
         }
       }
     }
@@ -115,7 +115,7 @@ public class TroopCardBanner
       localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", paramView);
       this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_banner", 0, 0, "", String.valueOf(i), "", "");
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_banner", 0, 0, "", String.valueOf(i), "", "");
       return;
     }
   }
@@ -142,7 +142,7 @@ public class TroopCardBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.TroopCardBanner
  * JD-Core Version:    0.7.0.1
  */

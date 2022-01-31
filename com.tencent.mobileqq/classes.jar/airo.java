@@ -1,28 +1,27 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.9.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class airo
-  extends AVVideoCtrl.LocalVideoPreviewCallback
+  implements aivw
 {
-  airo(airn paramairn) {}
+  public airo(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    Object localObject = ajac.a(airm.a(this.a.a));
-    if (localObject == null) {}
-    do
+    if ((!this.a.c()) && (paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-      return;
-      localObject = ((ajcf)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
+      paramPathResult = AnimationView.AnimationInfo.loadFromFolder(paramPathResult.folderPath);
+      this.a.a.post(new RedPacketKSongFragment.9.1(this, paramPathResult));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airo
  * JD-Core Version:    0.7.0.1
  */

@@ -54,11 +54,6 @@ public class TTJSBridge
   public void evaluateCallbackJs(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     paramInt2 = this.mBridgeLoger.printEndLog(paramInt1, paramInt2, paramString2);
-    if (this.mTritonEngine.isGLThread())
-    {
-      JNICaller.TTJSBridge.nativeEvaluateCallbackJs(this, this.mTritonEngine.getNativeTTAppHandle(), paramInt1, paramString1, paramInt2, paramString2);
-      return;
-    }
     this.mTritonEngine.postRunnable(new TTJSBridge.1(this, paramInt1, paramString1, paramInt2, paramString2));
   }
   
@@ -79,11 +74,6 @@ public class TTJSBridge
   public void evaluateSubscribeJs(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     this.mBridgeLoger.printEndLog(paramInt, paramString2, paramString3);
-    if (this.mTritonEngine.isGLThread())
-    {
-      JNICaller.TTJSBridge.nativeEvaluateSubscribeJs(this, this.mTritonEngine.getNativeTTAppHandle(), paramInt, paramString1, paramString2, paramString3);
-      return;
-    }
     this.mTritonEngine.postRunnable(new TTJSBridge.2(this, paramInt, paramString1, paramString2, paramString3));
   }
   
@@ -196,7 +186,7 @@ public class TTJSBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.bridge.TTJSBridge
  * JD-Core Version:    0.7.0.1
  */

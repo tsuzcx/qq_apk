@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bhjw;
+import bjlh;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QZoneHelper$7
@@ -10,15 +10,15 @@ public final class QZoneHelper$7
   
   public void run()
   {
-    bhjw localbhjw = (bhjw)this.a.getManager(175);
-    if (localbhjw != null) {
-      localbhjw.b();
+    bjlh localbjlh = (bjlh)this.a.getManager(175);
+    if (localbjlh != null) {
+      localbjlh.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.7
  * JD-Core Version:    0.7.0.1
  */

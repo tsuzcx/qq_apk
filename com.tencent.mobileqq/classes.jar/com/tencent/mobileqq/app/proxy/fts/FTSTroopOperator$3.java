@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.proxy.fts;
 
-import aktm;
-import bcql;
+import amjr;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class FTSTroopOperator$3
   implements Runnable
 {
   public void run()
   {
-    bcql.a(this.this$0.a.getApp(), this.a, 0).a();
+    QQToast.a(this.this$0.a.getApp(), this.a, 0).a();
   }
 }
 

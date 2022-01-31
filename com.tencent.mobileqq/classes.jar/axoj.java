@@ -1,46 +1,16 @@
-import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.startup.step.InitMagnifierSDK;
-import com.tencent.mobileqq.startup.step.InitMagnifierSDK.LeakListener.1;
-import com.tencent.mobileqq.startup.step.InitMagnifierSDK.LeakListener.2;
-import java.util.ArrayList;
-import java.util.List;
-
-public class axoj
-  implements zzt
+public abstract interface axoj
 {
-  public List<String> a(String paramString)
-  {
-    if (BaseActivity.sTopActivity != null) {
-      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDK.LeakListener.1(this, paramString));
-    }
-    paramString = new ArrayList(4);
-    paramString.add(zzq.b());
-    paramString.add(zzq.a());
-    paramString.addAll(zzq.b());
-    return paramString;
-  }
+  public abstract void a();
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if (BaseActivity.sTopActivity != null) {
-      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDK.LeakListener.2(this, paramString1, paramBoolean, paramString2));
-    }
-  }
+  public abstract void a(axok paramaxok);
   
-  public boolean a(LeakInspector.InspectUUID paramInspectUUID)
-  {
-    return InitMagnifierSDK.a(paramInspectUUID);
-  }
+  public abstract void b();
   
-  public boolean a(Object paramObject)
-  {
-    return false;
-  }
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axoj
  * JD-Core Version:    0.7.0.1
  */

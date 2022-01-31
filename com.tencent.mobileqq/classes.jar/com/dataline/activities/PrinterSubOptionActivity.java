@@ -1,8 +1,8 @@
 package com.dataline.activities;
 
-import ajum;
-import ajya;
-import akcv;
+import allz;
+import alpo;
+import aluk;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,12 +13,12 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
-import ek;
-import el;
-import em;
-import ev;
-import ew;
-import ez;
+import ct;
+import cu;
+import cv;
+import de;
+import df;
+import di;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,66 +26,66 @@ public class PrinterSubOptionActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  public ajum a;
+  public allz a;
   public LayoutInflater a;
   public XListView a;
-  em jdField_a_of_type_Em;
-  private ez jdField_a_of_type_Ez = new ek(this);
+  cv jdField_a_of_type_Cv;
+  private di jdField_a_of_type_Di = new ct(this);
   public String a;
   List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
-  public List<el> b = new ArrayList();
+  public List<cu> b = new ArrayList();
   
   public PrinterSubOptionActivity()
   {
-    this.jdField_a_of_type_Ajum = null;
+    this.jdField_a_of_type_Allz = null;
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew != null)
+    if (this.jdField_a_of_type_Allz.jdField_a_of_type_Df != null)
     {
       int j = 0;
       int k = 0;
       this.b.clear();
-      List localList = this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a();
+      List localList = this.jdField_a_of_type_Allz.jdField_a_of_type_Df.a();
       int i1 = localList.size();
       int i = 0;
       if (i < i1)
       {
-        ev localev = (ev)localList.get(i);
+        de localde = (de)localList.get(i);
         int n;
         int m;
-        if ((localev.jdField_a_of_type_Int == 1) && (j == 0))
+        if ((localde.jdField_a_of_type_Int == 1) && (j == 0))
         {
-          this.b.add(new el(this, 1, 0L, "PC绑定的打印机"));
+          this.b.add(new cu(this, 1, 0L, "PC绑定的打印机"));
           n = 1;
           m = k;
         }
         for (;;)
         {
-          this.b.add(new el(this, 2, localev.jdField_a_of_type_Long, localev.jdField_a_of_type_JavaLangString));
+          this.b.add(new cu(this, 2, localde.jdField_a_of_type_Long, localde.jdField_a_of_type_JavaLangString));
           i += 1;
           k = m;
           j = n;
           break;
           m = k;
           n = j;
-          if (localev.jdField_a_of_type_Int == 2)
+          if (localde.jdField_a_of_type_Int == 2)
           {
             m = k;
             n = j;
             if (k == 0)
             {
-              this.b.add(new el(this, 1, 0L, "QQ物联打印机"));
+              this.b.add(new cu(this, 1, 0L, "QQ物联打印机"));
               m = 1;
               n = j;
             }
           }
         }
       }
-      this.jdField_a_of_type_Em.notifyDataSetChanged();
+      this.jdField_a_of_type_Cv.notifyDataSetChanged();
     }
   }
   
@@ -93,49 +93,49 @@ public class PrinterSubOptionActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this);
-    this.jdField_a_of_type_Ajum = ((ajum)this.app.a(8));
-    this.jdField_a_of_type_Ajum.jdField_a_of_type_Akcs.jdField_a_of_type_JavaUtilList = null;
-    getWindow().setBackgroundDrawableResource(2131165360);
-    setContentView(2131558948);
-    setTitle(2131691375);
+    this.jdField_a_of_type_Allz = ((allz)this.app.a(8));
+    this.jdField_a_of_type_Allz.jdField_a_of_type_Aluh.jdField_a_of_type_JavaUtilList = null;
+    getWindow().setBackgroundDrawableResource(2131165395);
+    setContentView(2131558985);
+    setTitle(2131691428);
     getWindow().setBackgroundDrawable(null);
-    this.jdField_a_of_type_Em = new em(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131371934));
+    this.jdField_a_of_type_Cv = new cv(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131372253));
     this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361806, "n/a");
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Em);
-    if (!this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a())
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cv);
+    if (!this.jdField_a_of_type_Allz.jdField_a_of_type_Df.a())
     {
-      paramBundle = findViewById(2131365659);
+      paramBundle = findViewById(2131365743);
       paramBundle.setVisibility(0);
-      paramBundle.setContentDescription(ajya.a(2131708434));
-      ((TextView)findViewById(2131377589)).setText(getString(2131691367));
-      ((TextView)findViewById(2131363396)).setText(getString(2131691366));
+      paramBundle.setContentDescription(alpo.a(2131708806));
+      ((TextView)findViewById(2131378126)).setText(getString(2131691420));
+      ((TextView)findViewById(2131363435)).setText(getString(2131691419));
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)
     {
-      setLeftViewName(2131690572);
+      setLeftViewName(2131690623);
       this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361806, "n/a");
       return true;
       a();
-      this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a(this.jdField_a_of_type_Ez);
+      this.jdField_a_of_type_Allz.jdField_a_of_type_Df.a(this.jdField_a_of_type_Di);
     }
   }
   
   public void doOnDestroy()
   {
-    this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a();
+    this.jdField_a_of_type_Allz.jdField_a_of_type_Df.a();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_JavaLangString = getString(2131691368);
+    this.jdField_a_of_type_JavaLangString = getString(2131691421);
     this.b.clear();
     a();
-    akcv localakcv = (akcv)this.app.a(74);
-    this.jdField_a_of_type_Boolean = localakcv.a();
-    localakcv.a();
+    aluk localaluk = (aluk)this.app.a(74);
+    this.jdField_a_of_type_Boolean = localaluk.a();
+    localaluk.a();
   }
   
   public boolean onBackEvent()
@@ -149,7 +149,7 @@ public class PrinterSubOptionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.activities.PrinterSubOptionActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,59 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
+import cooperation.qzone.contentbox.model.MQLikeCell;
+import cooperation.qzone.contentbox.model.MQMsg;
+import cooperation.qzone.contentbox.model.MQMsgInteractData;
 
 public class bjen
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public bjen(HummingActivity paramHummingActivity) {}
+  public bjen(QZoneMsgFragment paramQZoneMsgFragment) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (bjeg.b()) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("HUM_HummingActivity", 2, "onClick: play mHumMusicItemInfo = " + HummingActivity.a(this.a));
-    }
-    if (HummingActivity.a(this.a).b(HummingActivity.a(this.a)))
+    int j;
+    int k;
+    boolean bool;
+    int i;
+    if (paramIntent.getAction() == "com.qzone.sync_comment_like")
     {
-      paramView = new Intent();
-      paramView.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
-      this.a.setResult(-1, paramView);
-      this.a.finish();
-      return;
+      j = paramIntent.getIntExtra("sync_comment_commentnum", 0);
+      paramContext = paramIntent.getStringExtra("sync_comment_likekey");
+      k = paramIntent.getIntExtra("sync_comment_likenum", 0);
+      bool = paramIntent.getBooleanExtra("sync_comment_haslike", false);
+      if ((this.a.jdField_a_of_type_Bjel != null) && (!TextUtils.isEmpty(paramContext))) {
+        i = 0;
+      }
     }
-    HummingActivity.a(this.a).a(HummingActivity.a(this.a), this.a.a);
+    for (;;)
+    {
+      if (i < this.a.jdField_a_of_type_Bjel.getCount())
+      {
+        paramIntent = (MQMsg)this.a.jdField_a_of_type_Bjel.getItem(i);
+        if ((paramIntent.msgInteractData != null) && (paramIntent.msgInteractData.likeCell != null) && (paramIntent.msgInteractData.likeCell.likeKey.equals(paramContext)))
+        {
+          paramIntent.msgInteractData.likeCell.totalLike = k;
+          paramIntent.msgInteractData.totalComment = j;
+          paramIntent.msgInteractData.likeCell.liked = bool;
+          ((bjer)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(293)).a(paramIntent);
+        }
+      }
+      else
+      {
+        this.a.jdField_a_of_type_Bjel.notifyDataSetChanged();
+        return;
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjen
  * JD-Core Version:    0.7.0.1
  */

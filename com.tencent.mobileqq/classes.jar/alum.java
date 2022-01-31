@@ -1,33 +1,16 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import java.util.concurrent.ConcurrentHashMap;
-
 class alum
-  implements View.OnClickListener
+  extends alxd
 {
-  alum(alul paramalul) {}
+  alum(aluk paramaluk) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if ((alul.a(this.a) == 0) && (!TextUtils.isEmpty(alul.a(this.a))))
-    {
-      alul.a(this.a).put(alul.b(this.a), Integer.valueOf(1));
-      paramView = this.a.mRuntime.a();
-      if (paramView != null) {
-        paramView.a.loadUrl(alul.a(this.a));
-      }
-      alul.a(this.a, null);
-    }
-    alul.a(this.a).dismiss();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alum
  * JD-Core Version:    0.7.0.1
  */

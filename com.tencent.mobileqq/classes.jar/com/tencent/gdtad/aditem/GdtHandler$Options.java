@@ -1,18 +1,18 @@
 package com.tencent.gdtad.aditem;
 
+import aaij;
+import aanp;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import yss;
-import yxp;
 
 public class GdtHandler$Options
   implements Parcelable
 {
-  public static final Parcelable.Creator<Options> CREATOR = new yss();
+  public static final Parcelable.Creator<Options> CREATOR = new aaij();
   public int a;
   public long a;
   public Rect a;
@@ -42,7 +42,7 @@ public class GdtHandler$Options
     this.jdField_b_of_type_Int = -2147483648;
     if (paramParcel == null)
     {
-      yxp.d("GdtHandler", "Options(Parcel in) error");
+      aanp.d("GdtHandler", "Options(Parcel in) error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)paramParcel.readParcelable(GdtAd.class.getClassLoader()));
@@ -130,7 +130,7 @@ public class GdtHandler$Options
     int j = 1;
     if (paramParcel == null)
     {
-      yxp.d("GdtHandler", "writeToParcel error");
+      aanp.d("GdtHandler", "writeToParcel error");
       return;
     }
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramInt);
@@ -206,7 +206,7 @@ public class GdtHandler$Options
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtHandler.Options
  * JD-Core Version:    0.7.0.1
  */

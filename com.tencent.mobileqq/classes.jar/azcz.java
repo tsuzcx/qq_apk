@@ -1,19 +1,14 @@
-import android.net.Uri;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-
 public class azcz
-  implements azhl
 {
-  public azcz(AbsPublishActivity paramAbsPublishActivity) {}
+  int jdField_a_of_type_Int = -1;
+  int b = -1;
+  int c = -1;
   
-  public void a(Uri paramUri)
-  {
-    this.a.a = paramUri;
-  }
+  public azcz(azcx paramazcx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azcz
  * JD-Core Version:    0.7.0.1
  */

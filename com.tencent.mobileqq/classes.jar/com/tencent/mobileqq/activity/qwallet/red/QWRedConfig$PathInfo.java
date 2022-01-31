@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.red;
 
-import ahcy;
+import aixc;
 import android.text.TextUtils;
 import java.io.Serializable;
 import java.util.Iterator;
@@ -101,7 +101,7 @@ public class QWRedConfig$PathInfo
     }
   }
   
-  public ahcy getShowInfo()
+  public aixc getShowInfo()
   {
     Iterator localIterator = this.redInfos.iterator();
     boolean bool2 = false;
@@ -132,7 +132,7 @@ public class QWRedConfig$PathInfo
     }
     for (;;)
     {
-      return new ahcy(bool2, bool1, (String)localObject2, (String)localObject1);
+      return new aixc(bool2, bool1, (String)localObject2, (String)localObject1);
       if ((((QWRedConfig.RedInfo)localObject3).type == 3) && (!bool2))
       {
         localObject3 = ((QWRedConfig.RedInfo)localObject3).content;
@@ -190,7 +190,7 @@ public class QWRedConfig$PathInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.PathInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,190 +1,192 @@
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.provider.MediaStore.Images.Thumbnails;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.SerializationPB.PicInfo;
+import com.tencent.biz.qqstory.database.StoryAlbumPicEntry;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.pb.PBDoubleField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.AlbumThumbDownloader;
 
 public class uer
 {
-  private int jdField_a_of_type_Int;
-  private List<ues> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Queue<ues> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private int b;
+  public double a;
+  public int a;
+  public long a;
+  public AddressItem a;
+  private LocalMediaInfo a;
+  public String a;
+  public double b;
+  public int b;
+  public long b;
+  @Deprecated
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  private int d;
+  public long d;
+  public String d;
+  public long e;
   
-  public ues a()
+  public Bitmap a(Context paramContext, int paramInt, BitmapFactory.Options paramOptions)
   {
-    try
+    
+    if (paramContext == null)
     {
-      ues localues = (ues)this.jdField_a_of_type_JavaUtilQueue.poll();
-      if (localues != null) {
-        this.b -= localues.jdField_a_of_type_JavaNioByteBuffer.remaining();
-      }
-      return localues;
+      xmh.a("Need the context to get thumbnail!", new Object[0]);
+      return null;
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    try
+    if ((paramInt != 1) && (paramInt != 3))
     {
-      for (;;)
-      {
-        ues localues = (ues)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (localues == null) {
-          break;
-        }
-        a(localues);
-      }
-      this.b = 0;
+      xmh.a("kind is illegal", new Object[0]);
+      return null;
     }
-    finally {}
+    return MediaStore.Images.Thumbnails.getThumbnail(paramContext.getContentResolver(), this.jdField_a_of_type_Long, paramInt, paramOptions);
   }
   
-  /* Error */
-  public void a(ByteBuffer paramByteBuffer, long paramLong)
+  public SerializationPB.PicInfo a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
-    //   6: aload_0
-    //   7: getfield 53	uer:jdField_a_of_type_Int	I
-    //   10: if_icmple +20 -> 30
-    //   13: aload_0
-    //   14: getfield 25	uer:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   17: invokeinterface 58 1 0
-    //   22: aload_0
-    //   23: aload_1
-    //   24: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
-    //   27: putfield 53	uer:jdField_a_of_type_Int	I
-    //   30: aload_0
-    //   31: getfield 25	uer:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   34: invokeinterface 62 1 0
-    //   39: ifne +101 -> 140
-    //   42: aload_0
-    //   43: getfield 25	uer:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   46: iconst_0
-    //   47: invokeinterface 66 2 0
-    //   52: checkcast 38	ues
-    //   55: astore 5
-    //   57: aload 5
-    //   59: getfield 41	ues:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   62: aload_1
-    //   63: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
-    //   66: invokevirtual 70	java/nio/ByteBuffer:limit	(I)Ljava/nio/Buffer;
-    //   69: pop
-    //   70: aload 5
-    //   72: getfield 41	ues:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   75: invokevirtual 74	java/nio/ByteBuffer:mark	()Ljava/nio/Buffer;
-    //   78: pop
-    //   79: aload 5
-    //   81: getfield 41	ues:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   84: aload_1
-    //   85: invokevirtual 78	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
-    //   88: pop
-    //   89: aload 5
-    //   91: getfield 41	ues:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   94: invokevirtual 81	java/nio/ByteBuffer:reset	()Ljava/nio/Buffer;
-    //   97: pop
-    //   98: aload 5
-    //   100: lload_2
-    //   101: putfield 84	ues:jdField_a_of_type_Long	J
-    //   104: aload_0
-    //   105: getfield 20	uer:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   108: aload 5
-    //   110: invokeinterface 88 2 0
-    //   115: pop
-    //   116: aload_0
-    //   117: getfield 29	uer:b	I
-    //   120: istore 4
-    //   122: aload_0
-    //   123: aload 5
-    //   125: getfield 41	ues:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   128: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
-    //   131: iload 4
-    //   133: iadd
-    //   134: putfield 29	uer:b	I
-    //   137: aload_0
-    //   138: monitorexit
-    //   139: return
-    //   140: new 38	ues
-    //   143: dup
-    //   144: aload_1
-    //   145: invokevirtual 47	java/nio/ByteBuffer:remaining	()I
-    //   148: invokespecial 91	ues:<init>	(I)V
-    //   151: astore 5
-    //   153: goto -96 -> 57
-    //   156: astore_1
-    //   157: aload_0
-    //   158: monitorexit
-    //   159: aload_1
-    //   160: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	161	0	this	uer
-    //   0	161	1	paramByteBuffer	ByteBuffer
-    //   0	161	2	paramLong	long
-    //   120	14	4	i	int
-    //   55	97	5	localues	ues
-    // Exception table:
-    //   from	to	target	type
-    //   2	30	156	finally
-    //   30	57	156	finally
-    //   57	137	156	finally
-    //   140	153	156	finally
+    SerializationPB.PicInfo localPicInfo = new SerializationPB.PicInfo();
+    localPicInfo.id.set(this.jdField_a_of_type_Long);
+    PBStringField localPBStringField = localPicInfo.path;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      str = "";
+      localPBStringField.set(str);
+      localPBStringField = localPicInfo.thumb;
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        break label196;
+      }
+    }
+    label196:
+    for (String str = "";; str = this.jdField_b_of_type_JavaLangString)
+    {
+      localPBStringField.set(str);
+      localPicInfo.width.set(this.jdField_a_of_type_Int);
+      localPicInfo.height.set(this.jdField_b_of_type_Int);
+      localPicInfo.orientation.set(this.jdField_c_of_type_Int);
+      localPicInfo.create_time.set(this.jdField_b_of_type_Long);
+      localPicInfo.lat.set(this.jdField_a_of_type_Double);
+      localPicInfo.lng.set(this.jdField_b_of_type_Double);
+      localPicInfo.geo_hash.set(this.jdField_c_of_type_JavaLangString);
+      localPicInfo.state.set(this.jdField_d_of_type_Int);
+      localPicInfo.mime.set(this.jdField_d_of_type_JavaLangString);
+      localPicInfo.size.set(this.e);
+      localPicInfo.db_create_time.set(this.jdField_d_of_type_Long);
+      return localPicInfo;
+      str = this.jdField_a_of_type_JavaLangString;
+      break;
+    }
   }
   
-  /* Error */
-  public void a(ues paramues)
+  public StoryAlbumPicEntry a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: getfield 41	ues:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   6: invokevirtual 94	java/nio/ByteBuffer:capacity	()I
-    //   9: istore_2
-    //   10: aload_0
-    //   11: getfield 53	uer:jdField_a_of_type_Int	I
-    //   14: istore_3
-    //   15: iload_2
-    //   16: iload_3
-    //   17: if_icmpeq +6 -> 23
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: return
-    //   23: aload_1
-    //   24: getfield 41	ues:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   27: invokevirtual 97	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
-    //   30: pop
-    //   31: aload_0
-    //   32: getfield 25	uer:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   35: aload_1
-    //   36: invokeinterface 98 2 0
-    //   41: pop
-    //   42: goto -22 -> 20
-    //   45: astore_1
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: aload_1
-    //   49: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	50	0	this	uer
-    //   0	50	1	paramues	ues
-    //   9	9	2	i	int
-    //   14	4	3	j	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	15	45	finally
-    //   23	42	45	finally
+    StoryAlbumPicEntry localStoryAlbumPicEntry = new StoryAlbumPicEntry();
+    localStoryAlbumPicEntry.path = this.jdField_a_of_type_JavaLangString;
+    localStoryAlbumPicEntry.thumbPath = this.jdField_b_of_type_JavaLangString;
+    localStoryAlbumPicEntry.width = this.jdField_a_of_type_Int;
+    localStoryAlbumPicEntry.height = this.jdField_b_of_type_Int;
+    localStoryAlbumPicEntry.orientation = this.jdField_c_of_type_Int;
+    localStoryAlbumPicEntry.createTime = this.jdField_b_of_type_Long;
+    localStoryAlbumPicEntry.gpsLat = this.jdField_a_of_type_Double;
+    localStoryAlbumPicEntry.gpsLng = this.jdField_b_of_type_Double;
+    localStoryAlbumPicEntry.geohashString = this.jdField_c_of_type_JavaLangString;
+    localStoryAlbumPicEntry.state = this.jdField_d_of_type_Int;
+    localStoryAlbumPicEntry.mime = this.jdField_d_of_type_JavaLangString;
+    localStoryAlbumPicEntry.size = this.e;
+    return localStoryAlbumPicEntry;
+  }
+  
+  public LocalMediaInfo a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo._id = this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.orientation = this.jdField_c_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_b_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mMimeType = this.jdField_d_of_type_JavaLangString;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.fileSize = this.e;
+      LocalMediaInfo localLocalMediaInfo1 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      LocalMediaInfo localLocalMediaInfo2 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      int i = AlbumThumbDownloader.THUMB_WIDHT;
+      localLocalMediaInfo2.thumbHeight = i;
+      localLocalMediaInfo1.thumbWidth = i;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+  }
+  
+  public void a(SerializationPB.PicInfo paramPicInfo)
+  {
+    this.jdField_a_of_type_Long = paramPicInfo.id.get();
+    this.jdField_a_of_type_JavaLangString = paramPicInfo.path.get();
+    this.jdField_b_of_type_JavaLangString = paramPicInfo.thumb.get();
+    this.jdField_a_of_type_Int = paramPicInfo.width.get();
+    this.jdField_b_of_type_Int = paramPicInfo.height.get();
+    this.jdField_c_of_type_Int = paramPicInfo.orientation.get();
+    this.jdField_b_of_type_Long = paramPicInfo.create_time.get();
+    this.jdField_a_of_type_Double = paramPicInfo.lat.get();
+    this.jdField_b_of_type_Double = paramPicInfo.lng.get();
+    this.jdField_c_of_type_JavaLangString = paramPicInfo.geo_hash.get();
+    this.jdField_d_of_type_Int = paramPicInfo.state.get();
+    this.jdField_d_of_type_JavaLangString = paramPicInfo.mime.get();
+    this.e = paramPicInfo.size.get();
+    this.jdField_d_of_type_Long = paramPicInfo.db_create_time.get();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      this.jdField_d_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_d_of_type_Int == 1;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof uer)) {
+      return this.jdField_a_of_type_JavaLangString.equals(((uer)paramObject).jdField_a_of_type_JavaLangString);
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("PicInfo=[");
+    localStringBuilder.append(" mId:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" mPath:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mThumbPath:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" width:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" height:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" orientation:").append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(" mCreateTime:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" mDBCreateTime:").append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(" mGpsLat:").append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(" mGpsLng:").append(this.jdField_b_of_type_Double);
+    localStringBuilder.append(" mGeohashString:").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" mState:").append(this.jdField_d_of_type_Int);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uer
  * JD-Core Version:    0.7.0.1
  */

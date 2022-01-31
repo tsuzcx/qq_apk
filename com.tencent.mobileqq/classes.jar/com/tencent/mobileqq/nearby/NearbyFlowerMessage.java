@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
-import ajya;
+import alpo;
 import android.os.Bundle;
 import android.text.TextUtils;
-import axxb;
+import azsv;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -67,9 +67,9 @@ public class NearbyFlowerMessage
       if ((paramMessageForStructing.mMsgServiceID == 52) && (paramMessageForStructing.getItemCount() > 0))
       {
         paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-        if ((paramMessageForStructing instanceof axxb))
+        if ((paramMessageForStructing instanceof azsv))
         {
-          paramMessageForStructing = (axxb)paramMessageForStructing;
+          paramMessageForStructing = (azsv)paramMessageForStructing;
           if (!paramMessageForStructing.jdField_a_of_type_Boolean) {
             paramMessageForStructing.a();
           }
@@ -107,10 +107,10 @@ public class NearbyFlowerMessage
         continue;
       }
       paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-      if (!(paramMessageForStructing instanceof axxb)) {
+      if (!(paramMessageForStructing instanceof azsv)) {
         continue;
       }
-      paramMessageForStructing = (axxb)paramMessageForStructing;
+      paramMessageForStructing = (azsv)paramMessageForStructing;
       if (!paramMessageForStructing.jdField_a_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
@@ -189,7 +189,7 @@ public class NearbyFlowerMessage
           if (!this.isSend) {
             break label875;
           }
-          this.brief = (ajya.a(2131707155) + this.toName + ajya.a(2131707160));
+          this.brief = (alpo.a(2131707527) + this.toName + alpo.a(2131707532));
           if (QLog.isColorLevel()) {
             QLog.i("NearbyFlowerMessage", 2, paramMessageForStructing.jdField_a_of_type_AndroidOsBundle.toString());
           }
@@ -218,12 +218,12 @@ public class NearbyFlowerMessage
             if ((TextUtils.isEmpty(this.fromName)) || (TextUtils.equals(this.fromName, "null"))) {
               this.fromName = paramQQAppInterface.a().a(this.sUin);
             }
-            this.brief = (this.fromName + ajya.a(2131707159) + ajya.a(2131707152));
+            this.brief = (this.fromName + alpo.a(2131707531) + alpo.a(2131707524));
             continue;
-            this.brief = (this.fromName + ajya.a(2131707151) + this.toName + ajya.a(2131707156));
+            this.brief = (this.fromName + alpo.a(2131707523) + this.toName + alpo.a(2131707528));
             continue;
             label1011:
-            this.brief = (this.sNick + ajya.a(2131707158) + this.rNick + ajya.a(2131707161));
+            this.brief = (this.sNick + alpo.a(2131707530) + this.rNick + alpo.a(2131707533));
           }
         }
       }
@@ -237,7 +237,7 @@ public class NearbyFlowerMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFlowerMessage
  * JD-Core Version:    0.7.0.1
  */

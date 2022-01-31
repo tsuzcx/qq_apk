@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import java.util.Comparator;
 
-public class bbmr
-  implements HostnameVerifier
+final class bbmr
+  implements Comparator<String>
 {
-  public bbmr(HttpCommunicator paramHttpCommunicator, String paramString, bbmu parambbmu) {}
-  
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public int a(String paramString1, String paramString2)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaLangString, paramSSLSession);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_Bbmu, "httpsSSLProcess,HostnameVerifier", "reqhost = " + this.jdField_a_of_type_JavaLangString + ",address = " + paramSSLSession.getPeerHost() + "result:isverify = " + bool);
-    return bool;
+    try
+    {
+      int i = paramString1.getBytes("utf-8").length;
+      int j = paramString2.getBytes("utf-8").length;
+      return i - j;
+    }
+    catch (Exception localException) {}
+    return paramString1.getBytes().length - paramString2.getBytes().length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbmr
  * JD-Core Version:    0.7.0.1
  */

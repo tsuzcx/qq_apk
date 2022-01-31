@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.util.Log;
-import axuo;
-import axwg;
+import azqi;
+import azsa;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -16,23 +16,23 @@ public class StructMsgSubImageVideo$ImageItem
   public String schema;
   public String title;
   
-  private static ImageItem a(axwg paramaxwg)
+  private static ImageItem a(azsa paramazsa)
   {
-    Iterator localIterator = paramaxwg.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramazsa.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject1 = null;
     Object localObject2 = null;
     Object localObject3;
     if (localIterator.hasNext())
     {
-      localObject3 = (axwg)localIterator.next();
-      if ("title".equals(((axwg)localObject3).b)) {
+      localObject3 = (azsa)localIterator.next();
+      if ("title".equals(((azsa)localObject3).b)) {
         localObject2 = localObject3;
       }
     }
     for (;;)
     {
       break;
-      if ("picture".equals(((axwg)localObject3).b))
+      if ("picture".equals(((azsa)localObject3).b))
       {
         localObject1 = localObject3;
         continue;
@@ -42,11 +42,11 @@ public class StructMsgSubImageVideo$ImageItem
           return null;
         }
         localObject3 = new ImageItem();
-        ((ImageItem)localObject3).schema = paramaxwg.a("url");
+        ((ImageItem)localObject3).schema = paramazsa.a("url");
         if (localObject2 == null) {}
-        for (paramaxwg = "";; paramaxwg = localObject2.jdField_a_of_type_JavaLangString)
+        for (paramazsa = "";; paramazsa = localObject2.jdField_a_of_type_JavaLangString)
         {
-          ((ImageItem)localObject3).title = paramaxwg;
+          ((ImageItem)localObject3).title = paramazsa;
           ((ImageItem)localObject3).imageUrl = localObject1.a("cover");
           return localObject3;
         }
@@ -61,19 +61,19 @@ public class StructMsgSubImageVideo$ImageItem
     this.schema = paramObjectInput.readUTF();
   }
   
-  public void toXml(axuo paramaxuo)
+  public void toXml(azqi paramazqi)
   {
-    paramaxuo.startTag(null, "item");
-    paramaxuo.attribute(null, "apptype", "10");
-    paramaxuo.attribute(null, "type", "0");
-    paramaxuo.attribute(null, "url", this.schema);
-    paramaxuo.startTag(null, "title");
+    paramazqi.startTag(null, "item");
+    paramazqi.attribute(null, "apptype", "10");
+    paramazqi.attribute(null, "type", "0");
+    paramazqi.attribute(null, "url", this.schema);
+    paramazqi.startTag(null, "title");
     if (this.title == null)
     {
       str = "";
-      paramaxuo.text(str);
-      paramaxuo.endTag(null, "title");
-      paramaxuo.startTag(null, "picture");
+      paramazqi.text(str);
+      paramazqi.endTag(null, "title");
+      paramazqi.startTag(null, "picture");
       if (this.imageUrl != null) {
         break label124;
       }
@@ -81,9 +81,9 @@ public class StructMsgSubImageVideo$ImageItem
     label124:
     for (String str = "";; str = this.imageUrl)
     {
-      paramaxuo.attribute(null, "cover", str);
-      paramaxuo.endTag(null, "picture");
-      paramaxuo.endTag(null, "item");
+      paramazqi.attribute(null, "cover", str);
+      paramazqi.endTag(null, "picture");
+      paramazqi.endTag(null, "item");
       return;
       str = this.title;
       break;
@@ -121,7 +121,7 @@ public class StructMsgSubImageVideo$ImageItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.ImageItem
  * JD-Core Version:    0.7.0.1
  */

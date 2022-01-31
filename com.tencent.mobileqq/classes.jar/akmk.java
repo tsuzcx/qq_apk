@@ -1,29 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.automator.step.RegisterProxy;
+import com.tencent.mobileqq.apollo.GLTextureView;
 
 public class akmk
-  extends Handler
+  extends akma
 {
-  public akmk(RegisterProxy paramRegisterProxy, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    RegisterProxy.a(this.a, false);
-  }
+  public akmk(GLTextureView paramGLTextureView, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akmk
  * JD-Core Version:    0.7.0.1
  */

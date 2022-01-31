@@ -1,24 +1,25 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
 class oht
-  implements bfos
+  implements pgi
 {
   oht(ohs paramohs) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt)
   {
-    if (this.a.a != null)
+    if ((ohs.a(this.a) != null) && (ohs.a(this.a).a != null))
     {
-      paramInt1 = ohs.a(this.a, paramInt1);
-      this.a.a.onScroll(paramInt1);
+      if (ohs.a(this.a).a.mSocialFeedInfo == null) {
+        ohs.a(this.a).a.mSocialFeedInfo = new SocializeFeedsInfo();
+      }
+      ohs.a(this.a).a.mSocialFeedInfo.a.a = paramInt;
     }
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oht
  * JD-Core Version:    0.7.0.1
  */

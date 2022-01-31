@@ -1,12 +1,17 @@
-import android.view.View;
-
-public abstract interface ahpn
+class ahpn
+  implements azwv
 {
-  public abstract void a(float paramFloat1, float paramFloat2, int paramInt, View paramView);
+  ahpn(ahpm paramahpm) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    paramBoolean = this.a.a();
+    this.a.d(paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,35 @@
-import android.content.SharedPreferences;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.data.EqqDetail;
 
-class ngn
-  implements Handler.Callback
+public class ngn
+  implements bhqd
 {
-  ngn(nfr paramnfr) {}
+  public ngn(EqqAccountDetailActivity paramEqqAccountDetailActivity, bhpy parambhpy, String paramString) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Bhpy.dismiss();
+    switch (paramInt)
     {
     default: 
-      bool1 = false;
-    }
-    do
-    {
+    case 0: 
       do
       {
-        return bool1;
-        if (QLog.isColorLevel()) {
-          QLog.i("AccountDetailGroupListContainer", 2, "refresh recent list, from_handle");
-        }
-        bool1 = bool2;
-      } while (!this.a.b);
-      bool1 = bool2;
-    } while (this.a.jdField_a_of_type_AndroidViewView == null);
-    this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("public_account_detail_setting_status", 0);
-    int i;
-    if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null)
-    {
-      i = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_result_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -10000);
-      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
+        return;
+      } while (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a == null);
+      ndv.a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a.name, EqqAccountDetailActivity.m(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "IvrEnterpriseDetailEngineFalse");
+      return;
     }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i != 0) {
-        break;
-      }
-      bool1 = bool2;
-      if (this.a.jdField_a_of_type_Int <= -1) {
-        break;
-      }
-      nfr.b(this.a, this.a.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_AndroidViewView.setOnClickListener(new ngo(this));
-      return true;
-      i = -10000;
-    }
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngn
  * JD-Core Version:    0.7.0.1
  */

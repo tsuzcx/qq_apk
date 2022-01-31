@@ -1,58 +1,60 @@
-import com.tencent.mobileqq.doutu.DuiButtonImageView;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.common.app.AppInterface;
 
-class anok
-  extends bbwt
+public class anok
 {
-  anok(anoi paramanoi, String paramString1, String paramString2, String paramString3) {}
+  public static final String a;
+  public anom[] a;
   
-  public void onDone(bbwu parambbwu)
+  static
   {
-    boolean bool;
+    jdField_a_of_type_JavaLangString = anon.class.getSimpleName() + "." + anok.class.getSimpleName();
+  }
+  
+  public anok()
+  {
+    this.jdField_a_of_type_ArrayOfAnom = new anom[6];
+  }
+  
+  public anom a(AppInterface paramAppInterface, int paramInt)
+  {
     int i;
-    if (parambbwu.a() == 3)
+    if (paramInt >= 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] download finished " + this.jdField_a_of_type_JavaLangString);
-      }
-      parambbwu = anoi.a(this.jdField_a_of_type_Anoi, this.b);
-      if (this.c.equalsIgnoreCase(parambbwu))
+      i = paramInt;
+      if (paramInt <= 6) {}
+    }
+    else
+    {
+      i = 0;
+    }
+    Object localObject = this.jdField_a_of_type_ArrayOfAnom[i];
+    paramAppInterface = (AppInterface)localObject;
+    if (localObject == null)
+    {
+      paramAppInterface = (AppInterface)localObject;
+      switch (i)
       {
-        anoi.a(this.jdField_a_of_type_Anoi, this.b);
-        anoi.a(this.jdField_a_of_type_Anoi, anoi.jdField_a_of_type_JavaLangString + "doutuResInfo", this.c);
-        bbkb.d(BaseApplication.getContext(), false);
-        DuiButtonImageView.a();
-        bool = true;
-        i = 0;
+      default: 
+        paramAppInterface = (AppInterface)localObject;
       }
     }
     for (;;)
     {
-      parambbwu = new HashMap();
-      parambbwu.put("param_FailCode", String.valueOf(i));
-      axrn.a(BaseApplication.getContext()).a(null, "doutuResDownload", bool, 0L, 0L, parambbwu, "");
-      anoi.jdField_a_of_type_Boolean = false;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "[onDone] checkMd5 failed: " + this.b);
+      localObject = paramAppInterface;
+      if (paramAppInterface == null) {
+        localObject = new anol();
       }
-      i = 80704;
-      bbdx.d(this.b);
-      bool = false;
+      this.jdField_a_of_type_ArrayOfAnom[i] = localObject;
+      return localObject;
+      paramAppInterface = new lwq();
       continue;
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] downloadFile failed: " + parambbwu.b + " code=" + parambbwu.a);
-      }
-      i = parambbwu.a;
-      bool = false;
+      paramAppInterface = new amoz();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anok
  * JD-Core Version:    0.7.0.1
  */

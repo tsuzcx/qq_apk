@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.canvas.components.appbutton.GdtCanvasAppBtnComponentView;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
 
 public class yzm
-  implements View.OnClickListener
+  implements aoed
 {
-  public yzm(GdtCanvasAppBtnComponentView paramGdtCanvasAppBtnComponentView) {}
+  public yzm(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    GdtCanvasAppBtnComponentView.a(this.a).canShowProgress = true;
-    this.a.h();
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzm
  * JD-Core Version:    0.7.0.1
  */

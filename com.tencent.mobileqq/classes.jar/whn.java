@@ -1,51 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import mqq.app.AppActivity;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class whn
-  implements DialogInterface.OnClickListener
+public class whn
+  extends QQUIEventReceiver<whl, uyb>
 {
-  whn(whl paramwhl, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public whn(@NonNull whl paramwhl)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
-    if (paramDialogInterface.startsWith("www.")) {
-      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
+    super(paramwhl);
+  }
+  
+  public void a(@NonNull whl paramwhl, @NonNull uyb paramuyb)
+  {
+    if (paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_Whl.jdField_a_of_type_MqqAppAppActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("param_force_internal_browser", true);
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("fromQrcode", true);
-      localIntent.putExtra("injectrecommend", false);
-      localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan_qr");
-      this.jdField_a_of_type_Whl.jdField_a_of_type_MqqAppAppActivity.startActivity(localIntent);
-      if (this.jdField_a_of_type_Whl.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e) {
-        this.jdField_a_of_type_Whl.jdField_a_of_type_MqqAppAppActivity.finish();
-      }
-      if (this.jdField_a_of_type_Whl.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.b) {
-        this.jdField_a_of_type_Whl.jdField_a_of_type_MqqAppAppActivity.finish();
-      }
-      return;
-      if (paramDialogInterface.startsWith("https:")) {
-        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
-      } else if (paramDialogInterface.startsWith("http:")) {
-        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
-      } else {
-        paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+      wsv.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramuyb.jdField_a_of_type_Int));
+      if ((TextUtils.isEmpty(paramuyb.b)) || (paramuyb.b.equals(paramwhl.jdField_a_of_type_JavaLangString))) {
+        break label49;
       }
     }
+    label49:
+    do
+    {
+      return;
+      if (paramuyb.jdField_a_of_type_Int != -1) {
+        whl.a(paramwhl, paramuyb.jdField_a_of_type_Int);
+      }
+    } while (paramwhl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
+    paramwhl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = whl.a(paramwhl);
+    ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramwhl), 5, null, false);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uyb.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whn
  * JD-Core Version:    0.7.0.1
  */

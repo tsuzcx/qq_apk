@@ -1,32 +1,23 @@
-import android.content.BroadcastReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class qms
 {
-  private static int jdField_a_of_type_Int = 5;
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new qmt();
-  private static final String jdField_a_of_type_JavaLangString = qms.class.getSimpleName();
-  private static Thread jdField_a_of_type_JavaLangThread;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private static AtomicInteger b;
+  public int a;
+  public long a;
+  public String a;
+  public qmt a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  static
+  public String toString()
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    b = new AtomicInteger(0);
-  }
-  
-  private static long b()
-  {
-    for (long l = 0L; jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1; l += 1L) {}
-    return l;
+    return "PGCPicInfo{pic_width=" + this.jdField_a_of_type_Int + ", pic_height=" + this.jdField_b_of_type_Int + ", pic_md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pic_url='" + this.jdField_b_of_type_JavaLangString + '\'' + ", thumbnail_url='" + this.jdField_c_of_type_JavaLangString + '\'' + ", is_animation=" + this.jdField_c_of_type_Int + ", picDesc='" + this.d + '\'' + ", galleryIndex=" + this.jdField_a_of_type_Long + ", pgcVideoInfo=" + this.jdField_a_of_type_Qmt + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qms
  * JD-Core Version:    0.7.0.1
  */

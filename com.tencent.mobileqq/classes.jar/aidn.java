@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class aidn
-  extends ajxj
+class aidn
+  implements View.OnClickListener
 {
-  public aidn(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  aidn(aidj paramaidj) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1) {
-      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
-    }
+    aidj.a(this.a).setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aidn
  * JD-Core Version:    0.7.0.1
  */

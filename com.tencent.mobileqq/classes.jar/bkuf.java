@@ -1,23 +1,22 @@
-import android.os.Message;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class bkuf
-  extends MqqHandler
+class bkuf
+  implements bmac<Boolean>
 {
-  public bkuf(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bkuf(bkuc parambkuc) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    if (paramBoolean == null) {
+      return;
+    }
+    bkuc.e(this.a).setSelected(paramBoolean.booleanValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkuf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abyh;
+import adpp;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Handler;
 import android.view.ViewGroup;
-import bcqr;
+import beqa;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class RegisterBaseActivity
@@ -23,7 +23,7 @@ public class RegisterBaseActivity
   public RegisterBaseActivity()
   {
     this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_b_of_type_AndroidOsHandler = new abyh(this);
+    this.jdField_b_of_type_AndroidOsHandler = new adpp(this);
   }
   
   protected void a(int paramInt)
@@ -41,7 +41,7 @@ public class RegisterBaseActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    new bcqr(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+    new beqa(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -53,7 +53,7 @@ public class RegisterBaseActivity
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
     }
-    new bcqr(this).a(str, getTitleBarHeight(), 0, paramInt);
+    new beqa(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public void a(String paramString1, String paramString2)
@@ -89,7 +89,7 @@ public class RegisterBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterBaseActivity
  * JD-Core Version:    0.7.0.1
  */

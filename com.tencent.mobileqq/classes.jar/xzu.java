@@ -1,92 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.device.ble.JNIEngineLite;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Set;
-import mqq.os.MqqHandler;
 
 class xzu
-  extends BroadcastReceiver
+  implements yic
 {
-  xzu(xzr paramxzr) {}
+  xzu(xzn paramxzn, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE2", 2, "mGattUpdateReceiver onReceive action=" + paramContext);
-    }
-    if ("com.tencent.device.ble.ACTION_GATT_CONNECTED".equals(paramContext)) {
-      ymt.a().a(null, "Net_Bind_BLE_Connect", 0);
-    }
-    do
+    QLog.d(xzn.jdField_a_of_type_JavaLangString, 2, "count:" + paramInt);
+    if ((xzn.n(this.jdField_a_of_type_Xzn) != null) && (paramInt == 1))
     {
-      int i;
-      boolean bool;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (!"com.tencent.device.ble.ACTION_GATT_DISCONNECTED".equals(paramContext)) {
-              break;
-            }
-            i = paramIntent.getIntExtra("com.tencent.device.ble.EXTRA_BLEID", 0);
-            paramIntent.getIntExtra("com.tencent.device.ble.EXTRA_STATUS", 0);
-            paramContext = this.a.a(i);
-            if (paramContext != null)
-            {
-              paramContext.jdField_a_of_type_Boolean = false;
-              paramContext.c = false;
-              paramContext.b = false;
-              JNIEngineLite.disconnectBle(paramContext.jdField_a_of_type_Int);
-              xzr.b(this.a).remove(paramContext);
-              if (this.a.jdField_a_of_type_Ygf == paramContext) {
-                this.a.jdField_a_of_type_Ygf = null;
-              }
-              xzr.a(this.a).remove(paramContext);
-              xzr.a(this.a, i);
-              this.a.a(paramContext);
-              return;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.e("DeviceBLE2", 2, "ACTION_GATT_DISCONNECTED but no peerInfo with id:" + i);
-          return;
-          if ((!"com.tencent.device.ble.ACTION_GATT_SET_NOTIFICATION_FAILED".equals(paramContext)) && (!"com.tencent.device.ble.ACTION_GATT_NOT_QQ".equals(paramContext))) {
-            break;
-          }
-          i = paramIntent.getIntExtra("com.tencent.device.ble.EXTRA_BLEID", 0);
-          paramContext = this.a.a(i);
-        } while (paramContext == null);
-        xzr.a(this.a, i);
-        this.a.a(paramContext);
-        return;
-        if ("com.tencent.device.ble.ACTION_DATA_AVAILABLE".equals(paramContext))
-        {
-          JNIEngineLite.bleReceived(paramIntent.getIntExtra("com.tencent.device.ble.EXTRA_BLEID", 0), paramIntent.getByteArrayExtra("com.tencent.device.ble.EXTRA_DATA"));
-          return;
-        }
-        if (!"com.tencent.device.ble.ACTION_DATA_WRITE_RST".equals(paramContext)) {
-          break;
-        }
-        i = paramIntent.getIntExtra("com.tencent.device.ble.EXTRA_BLEID", 0);
-        bool = paramIntent.getBooleanExtra("com.tencent.device.ble.EXRTA_RESULT", false);
-        paramContext = this.a.a(i);
-      } while (bool);
-      xzr.a(this.a, i);
-      this.a.a(paramContext);
+      if (yib.a().a(xzn.o(this.jdField_a_of_type_Xzn), "subscribe_sp_key_show_praise_guide") != 0) {
+        break label90;
+      }
+      if ((this.jdField_a_of_type_Xzn.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (!this.jdField_a_of_type_Xzn.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())) {
+        this.jdField_a_of_type_Xzn.f();
+      }
+    }
+    label90:
+    while ((yib.a().a(xzn.p(this.jdField_a_of_type_Xzn), "subscribe_sp_key_show_follow_guide") != 0) || (xxl.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed))) {
       return;
-    } while ((!"onDeviceVerifyRsp".equals(paramContext)) || (this.a.jdField_a_of_type_MqqOsMqqHandler == null));
-    this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(100);
+    }
+    this.jdField_a_of_type_Xzn.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzu
  * JD-Core Version:    0.7.0.1
  */

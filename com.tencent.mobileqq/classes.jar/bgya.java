@@ -1,29 +1,438 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.WifiInfo;
+import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
+import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportReq;
+import NS_MINI_REPORT.REPORT.SingleDcData;
+import NS_MINI_REPORT.REPORT.StDcReportReq;
+import NS_MINI_REPORT.REPORT.StThirdDcReportReq;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.report.MiniProgramReporter.3;
+import com.tencent.qqmini.sdk.report.MiniProgramReporter.4;
+import com.tencent.qqmini.sdk.report.MiniProgramReporter.5;
+import com.tencent.qqmini.sdk.report.MiniProgramReporter.6;
+import com.tencent.qqmini.sdk.report.MiniProgramReporter.7;
+import com.tencent.qqmini.sdk.utils.JSONUtils;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
-public final class bgya
-  implements Parcelable.Creator<LbsDataV2.WifiInfo>
+public class bgya
 {
-  public LbsDataV2.WifiInfo a(Parcel paramParcel)
+  private static final bgya jdField_a_of_type_Bgya = new bgya();
+  private long jdField_a_of_type_Long = System.currentTimeMillis();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private List<APP_REPORT_TRANSFER.SingleDcData> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long = System.currentTimeMillis();
+  private List<APP_REPORT_TRANSFER.SingleDcData> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private long jdField_c_of_type_Long = System.currentTimeMillis();
+  private List<REPORT.SingleDcData> jdField_c_of_type_JavaUtilList = new ArrayList();
+  private List<REPORT.SingleDcData> d = new ArrayList();
+  private List<APP_REPORT_TRANSFER.SingleDcData> e = new ArrayList();
+  
+  private bgya()
   {
-    LbsDataV2.WifiInfo localWifiInfo = new LbsDataV2.WifiInfo();
-    if (paramParcel != null)
-    {
-      localWifiInfo.mac = paramParcel.readString();
-      localWifiInfo.rssi = paramParcel.readInt();
-    }
-    return localWifiInfo;
+    HandlerThread localHandlerThread = new HandlerThread("mini_program_report");
+    localHandlerThread.setPriority(10);
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
   }
   
-  public LbsDataV2.WifiInfo[] a(int paramInt)
+  public static bgya a()
   {
-    return null;
+    return jdField_a_of_type_Bgya;
+  }
+  
+  private void a(byte[] paramArrayOfByte, List<APP_REPORT_TRANSFER.SingleDcData> paramList)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).dataReport(paramArrayOfByte, new bgyc(this, paramList));
+    }
+  }
+  
+  private void a(byte[] paramArrayOfByte, List<REPORT.SingleDcData> paramList, String paramString1, String paramString2)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).report(paramArrayOfByte, paramString1, paramString2, new bgyb(this, paramList));
+    }
+  }
+  
+  private boolean a()
+  {
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long > TimeUnit.SECONDS.toMillis(600L);
+  }
+  
+  private static String b(REPORT.SingleDcData paramSingleDcData)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramSingleDcData != null) {
+      localStringBuilder.append(JSONUtils.convert2JSON(paramSingleDcData));
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private void d()
+  {
+    if (!this.d.isEmpty())
+    {
+      ArrayList localArrayList = new ArrayList(this.d);
+      this.d.clear();
+      byte[] arrayOfByte = bgxz.a(localArrayList).toByteArray();
+      if (arrayOfByte.length > 0) {
+        a(arrayOfByte, localArrayList, "mini_app_dcreport", "ThirdDcReport");
+      }
+    }
+  }
+  
+  private void e()
+  {
+    if (!this.e.isEmpty())
+    {
+      ArrayList localArrayList = new ArrayList(this.e);
+      this.e.clear();
+      byte[] arrayOfByte = bgxz.a(localArrayList).toByteArray();
+      if (arrayOfByte.length > 0) {
+        a(arrayOfByte, localArrayList);
+      }
+    }
+  }
+  
+  private void f()
+  {
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    ArrayList localArrayList;
+    Object localObject2;
+    Object localObject1;
+    if (!this.jdField_b_of_type_JavaUtilList.isEmpty())
+    {
+      localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilList);
+      this.jdField_b_of_type_JavaUtilList.clear();
+      localObject2 = bgxz.a(localArrayList);
+      if (localObject2 != null) {
+        localObject1 = null;
+      }
+    }
+    try
+    {
+      localObject2 = ((APP_REPORT_TRANSFER.StDataReportReq)localObject2).toByteArray();
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QMLog.e("MiniProgramReporter", "performReportLaunchDcDataToServer", localException);
+      }
+      if (localObject1.length > 262144) {
+        break label104;
+      }
+      a((byte[])localObject1, localArrayList);
+      return;
+      label104:
+      i = localObject1.length / 262144 + 1;
+      k = localArrayList.size() / i;
+      QMLog.d("MiniProgramReporter", "performReportLaunchDcDataToServer: split into " + i + " count");
+      j = 0;
+      i = k;
+    }
+    if (localObject1 == null) {}
+    for (;;)
+    {
+      return;
+      int i;
+      int k;
+      int j;
+      while (i <= localArrayList.size())
+      {
+        if ((j < i) && (j >= 0) && (i <= localArrayList.size()))
+        {
+          localObject1 = localArrayList.subList(j, i);
+          APP_REPORT_TRANSFER.StDataReportReq localStDataReportReq = bgxz.a((List)localObject1);
+          if (localStDataReportReq != null) {
+            a(localStDataReportReq.toByteArray(), (List)localObject1);
+          }
+        }
+        int m = i + k;
+        if (m > localArrayList.size())
+        {
+          m = localArrayList.size();
+          j = i;
+          i = m;
+        }
+        else
+        {
+          j = i;
+          i = m;
+        }
+      }
+    }
+  }
+  
+  private void g()
+  {
+    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    ArrayList localArrayList;
+    Object localObject2;
+    Object localObject1;
+    if (!this.jdField_c_of_type_JavaUtilList.isEmpty())
+    {
+      localArrayList = new ArrayList(this.jdField_c_of_type_JavaUtilList);
+      this.jdField_c_of_type_JavaUtilList.clear();
+      localObject2 = bgxz.a(localArrayList);
+      if (localObject2 != null) {
+        localObject1 = null;
+      }
+    }
+    try
+    {
+      localObject2 = ((REPORT.StDcReportReq)localObject2).toByteArray();
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QMLog.e("MiniProgramReporter", "performReportToServer", localException);
+      }
+      if (localObject1.length > 262144) {
+        break label108;
+      }
+      a((byte[])localObject1, localArrayList, "mini_app_apireport", "DcReport");
+      return;
+      label108:
+      i = localObject1.length / 262144 + 1;
+      k = localArrayList.size() / i;
+      QMLog.d("MiniProgramReporter", "performReportToServer: split into " + i + " count");
+      j = 0;
+      i = k;
+    }
+    if (localObject1 == null) {}
+    for (;;)
+    {
+      return;
+      int i;
+      int k;
+      int j;
+      while (i <= localArrayList.size())
+      {
+        if ((j < i) && (j >= 0) && (i <= localArrayList.size()))
+        {
+          localObject1 = localArrayList.subList(j, i);
+          REPORT.StDcReportReq localStDcReportReq = bgxz.a((List)localObject1);
+          if (localStDcReportReq != null) {
+            a(localStDcReportReq.toByteArray(), (List)localObject1, "mini_app_apireport", "DcReport");
+          }
+        }
+        int m = i + k;
+        if (m > localArrayList.size())
+        {
+          m = localArrayList.size();
+          j = i;
+          i = m;
+        }
+        else
+        {
+          j = i;
+          i = m;
+        }
+      }
+    }
+  }
+  
+  private void h()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    ArrayList localArrayList;
+    Object localObject2;
+    Object localObject1;
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_JavaUtilList.clear();
+      localObject2 = bgxz.a(localArrayList);
+      if (localObject2 != null) {
+        localObject1 = null;
+      }
+    }
+    try
+    {
+      localObject2 = ((APP_REPORT_TRANSFER.StDataReportReq)localObject2).toByteArray();
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QMLog.e("MiniProgramReporter", "performReportToServer", localException);
+      }
+      if (localObject1.length > 262144) {
+        break label104;
+      }
+      a((byte[])localObject1, localArrayList);
+      return;
+      label104:
+      i = localObject1.length / 262144 + 1;
+      k = localArrayList.size() / i;
+      QMLog.d("MiniProgramReporter", "performReportToServer: split into " + i + " count");
+      j = 0;
+      i = k;
+    }
+    if (localObject1 == null) {}
+    for (;;)
+    {
+      return;
+      int i;
+      int k;
+      int j;
+      while (i <= localArrayList.size())
+      {
+        if ((j < i) && (j >= 0) && (i <= localArrayList.size()))
+        {
+          localObject1 = localArrayList.subList(j, i);
+          APP_REPORT_TRANSFER.StDataReportReq localStDataReportReq = bgxz.a((List)localObject1);
+          if (localStDataReportReq != null) {
+            a(localStDataReportReq.toByteArray(), (List)localObject1);
+          }
+        }
+        int m = i + k;
+        if (m > localArrayList.size())
+        {
+          m = localArrayList.size();
+          j = i;
+          i = m;
+        }
+        else
+        {
+          j = i;
+          i = m;
+        }
+      }
+    }
+  }
+  
+  private void i()
+  {
+    if ((a()) || (this.jdField_a_of_type_JavaUtilList.size() >= 64)) {
+      h();
+    }
+    if ((System.currentTimeMillis() - this.jdField_c_of_type_Long > TimeUnit.SECONDS.toMillis(600L)) || (this.jdField_c_of_type_JavaUtilList.size() >= 64)) {
+      g();
+    }
+    if (this.d.size() >= 1) {
+      d();
+    }
+    if (this.e.size() >= 1) {
+      e();
+    }
+  }
+  
+  public Handler a()
+  {
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public String a(String paramString)
+  {
+    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    k = 64;
+    i = 10;
+    try
+    {
+      j = bglq.a("qqminiapp", "mini_app_report_time_threshold", 10);
+      i = j;
+      int m = bglq.a("qqminiapp", "mini_app_report_count_threshold", 64);
+      i = m;
+      k = j;
+      j = i;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int j = k;
+        k = i;
+      }
+    }
+    if ((System.currentTimeMillis() - this.jdField_b_of_type_Long > TimeUnit.SECONDS.toMillis(k * 60)) || (this.jdField_b_of_type_JavaUtilList.size() >= j) || (this.jdField_a_of_type_Boolean))
+    {
+      c();
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a(APP_REPORT_TRANSFER.SingleDcData paramSingleDcData)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new MiniProgramReporter.4(this, paramSingleDcData));
+  }
+  
+  public void a(REPORT.SingleDcData paramSingleDcData)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new MiniProgramReporter.3(this, paramSingleDcData));
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+  }
+  
+  public void a(Collection<? extends REPORT.SingleDcData> paramCollection)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new MiniProgramReporter.5(this, paramCollection));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new MiniProgramReporter.7(this));
+  }
+  
+  public void b(APP_REPORT_TRANSFER.SingleDcData paramSingleDcData)
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaUtilList.add(paramSingleDcData);
+      a();
+      return;
+    }
+    finally
+    {
+      paramSingleDcData = finally;
+      throw paramSingleDcData;
+    }
+  }
+  
+  public void b(Collection<? extends APP_REPORT_TRANSFER.SingleDcData> paramCollection)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new MiniProgramReporter.6(this, paramCollection));
+  }
+  
+  public void c()
+  {
+    f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgya
  * JD-Core Version:    0.7.0.1
  */

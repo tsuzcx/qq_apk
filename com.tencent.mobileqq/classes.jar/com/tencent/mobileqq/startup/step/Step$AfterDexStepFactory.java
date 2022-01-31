@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import axnx;
-import axpm;
+import azjg;
+import azkx;
 
 public class Step$AfterDexStepFactory
-  implements axpm
+  implements azkx
 {
-  public Step a(int paramInt, axnx paramaxnx, int[] paramArrayOfInt)
+  public Step a(int paramInt, azjg paramazjg, int[] paramArrayOfInt)
   {
-    paramaxnx = null;
+    paramazjg = null;
     switch (paramInt)
     {
     case 7: 
@@ -17,9 +17,9 @@ public class Step$AfterDexStepFactory
     case 12: 
     case 20: 
     default: 
-      paramaxnx = new Step();
+      paramazjg = new Step();
     case 30: 
-      return paramaxnx;
+      return paramazjg;
     case 6: 
     case 18: 
       return new LoadData();
@@ -73,6 +73,8 @@ public class Step$AfterDexStepFactory
       return new InstallPlugins();
     case 37: 
       return new HuayangPluginContainer();
+    case 47: 
+      return new StudyRoomPluginContainer();
     case 38: 
       return new ThreadHookStep();
     case 39: 
@@ -87,8 +89,10 @@ public class Step$AfterDexStepFactory
       return new BroadcastReportRegister();
     case 45: 
       return RecordTracer.a();
+    case 46: 
+      return new NowliveContainer();
     }
-    return new NowliveContainer();
+    return new GdtInitializeOnToolProcessStep();
   }
 }
 

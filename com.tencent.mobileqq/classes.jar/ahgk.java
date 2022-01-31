@@ -1,31 +1,55 @@
-import android.graphics.Bitmap;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean.BreathLight;
-import java.util.List;
 
-public abstract interface ahgk
+public class ahgk
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public abstract void a(int paramInt);
+  public ahgk(Context paramContext, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  }
   
-  public abstract void a(Bitmap paramBitmap, String paramString, List<Bitmap> paramList);
+  public static ahgk a(Context paramContext, View paramView)
+  {
+    return new ahgk(paramContext, paramView);
+  }
   
-  public abstract void a(ViewGroup paramViewGroup, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3, String paramString4);
+  public static ahgk a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return new ahgk(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
+  }
   
-  public abstract void a(String paramString1, String paramString2);
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
   
-  public abstract void a(boolean paramBoolean, SpringFestivalRedpakcetPreviewConfBean.BreathLight paramBreathLight);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public <T extends View> T a(int paramInt)
+  {
+    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
+    }
+    return localView1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgk
  * JD-Core Version:    0.7.0.1
  */

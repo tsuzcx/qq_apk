@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount;
 
-import ahpd;
+import ajgm;
 import android.os.Handler;
-import axqy;
-import bbfq;
+import azmj;
+import bdel;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
-import nnu;
-import sgg;
+import nrc;
+import syb;
 
 class AccountDetailActivity$3
   implements Runnable
@@ -24,23 +24,23 @@ class AccountDetailActivity$3
     }
     if (this.this$0.k)
     {
-      int i = sgg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.accountFlag);
+      int i = syb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.accountFlag);
       if ((i == -3) || (i == -4)) {
-        nnu.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+        nrc.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
       }
     }
     this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.d, this.this$0.b);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.b(this.this$0.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
     this.this$0.b(this.this$0.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    ahpd.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.d, this.this$0.b);
-    axqy.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.this$0.d, "0X8004E43", "0X8004E43", 0, 0, this.this$0.d, "", "", "");
-    bbfq.a(" pubAcc_follow_cancel", null, this.this$0.d);
+    ajgm.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.d, this.this$0.b);
+    azmj.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.this$0.d, "0X8004E43", "0X8004E43", 0, 0, this.this$0.d, "", "", "");
+    bdel.a(" pubAcc_follow_cancel", null, this.this$0.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetailActivity.3
  * JD-Core Version:    0.7.0.1
  */

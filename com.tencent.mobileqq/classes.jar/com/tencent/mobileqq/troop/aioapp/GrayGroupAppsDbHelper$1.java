@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import azju;
+import bbid;
 import com.tencent.mobileqq.troop.aioapp.data.GrayGroupAppEntity;
 
 public class GrayGroupAppsDbHelper$1
   implements Runnable
 {
-  public GrayGroupAppsDbHelper$1(azju paramazju, GrayGroupAppEntity paramGrayGroupAppEntity) {}
+  public GrayGroupAppsDbHelper$1(bbid parambbid, GrayGroupAppEntity paramGrayGroupAppEntity) {}
   
   public void run()
   {
-    azju.a(this.this$0, this.a);
+    bbid.a(this.this$0, this.a);
   }
 }
 

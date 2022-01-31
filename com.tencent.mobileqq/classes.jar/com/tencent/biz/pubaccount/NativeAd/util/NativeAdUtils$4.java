@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.NativeAd.util;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhvy;
+import bjxj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -17,14 +17,14 @@ public final class NativeAdUtils$4
     Object localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
     if (localObject != null)
     {
-      localObject = bhvy.a((AppRuntime)localObject, true, false);
+      localObject = bjxj.a((AppRuntime)localObject, true, false);
       if (localObject != null)
       {
         localObject = ((SharedPreferences)localObject).edit();
         if (localObject != null)
         {
           ((SharedPreferences.Editor)localObject).putString("sp_key_ad_cookie", this.a);
-          bhvy.a((SharedPreferences.Editor)localObject, true);
+          bjxj.a((SharedPreferences.Editor)localObject, true);
           if (QLog.isColorLevel()) {
             QLog.d("NativeAdUtils", 2, "saveAdCookie cookie=" + this.a);
           }
@@ -35,7 +35,7 @@ public final class NativeAdUtils$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils.4
  * JD-Core Version:    0.7.0.1
  */

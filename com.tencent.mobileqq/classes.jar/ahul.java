@@ -1,52 +1,30 @@
-import android.app.Activity;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
 public class ahul
+  implements View.OnClickListener
 {
-  public double a;
-  public int a;
-  public ahua a;
-  public Activity a;
-  public QzoneVerticalVideoTopicInfo a;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public double b;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public boolean e;
-  public int f;
-  public String f;
-  public boolean f;
-  public int g;
-  public String g;
-  public boolean g;
-  public int h;
-  public String h;
-  public boolean h;
-  public int i;
-  public String i;
-  public boolean i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public int m;
+  public ahul(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!this.a.d)
+    {
+      if (bhou.e()) {
+        this.a.startActivity(new Intent("android.settings.SETTINGS"));
+      }
+    }
+    else {
+      return;
+    }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahul
  * JD-Core Version:    0.7.0.1
  */

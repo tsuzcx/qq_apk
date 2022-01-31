@@ -1,131 +1,197 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class bauj
-  implements AdapterView.OnItemClickListener
+public class bauj
 {
-  bauj(baui parambaui) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static String a(String paramString)
   {
-    int j = 0;
-    paramAdapterView = paramView.getTag();
-    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null)) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bbjq.b();
-    switch (((bbjv)paramAdapterView).a.c)
+    paramString = a(paramString);
+    if ((paramString == null) || (paramString.length < 6)) {}
+    do
     {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = ((int)paramLong);
-      if (paramLong != 7L) {
+      return null;
+      paramString = paramString[5];
+      if (QLog.isColorLevel()) {
+        QLog.d("TransfileUtile", 2, "getPicMD5ByMsgContent:" + paramString);
+      }
+      if (paramString.length() == 32) {
         break;
       }
-      paramAdapterView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Face2FaceAddFriendActivity.class);
-      paramAdapterView.putExtra("activity_from_type", 1);
-      paramAdapterView.putExtra("activity_troop_uin", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramAdapterView);
-      return;
-      paramLong = 0L;
-      continue;
-      paramLong = 1L;
-      continue;
-      paramLong = 3L;
-      continue;
-      paramLong = 2L;
-      continue;
-      paramLong = 4L;
-      continue;
-      paramLong = 5L;
-      continue;
-      paramLong = 7L;
+    } while (!QLog.isColorLevel());
+    QLog.d("TransfileUtile", 2, "getPicMD5ByMsgContent: error md5: length is not 32.");
+    return null;
+    return paramString;
+  }
+  
+  @Deprecated
+  public static String a(String paramString, long paramLong, int paramInt, boolean paramBoolean)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append('\026');
+    localStringBuffer.append(paramString);
+    localStringBuffer.append('|');
+    localStringBuffer.append(paramLong);
+    localStringBuffer.append('|');
+    localStringBuffer.append(paramInt);
+    localStringBuffer.append('|');
+    if (paramBoolean) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      localStringBuffer.append(paramInt);
+      return localStringBuffer.toString();
     }
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131720917;
+  }
+  
+  @Deprecated
+  public static String a(String paramString1, long paramLong, int paramInt, boolean paramBoolean, String paramString2)
+  {
+    paramString1 = a(paramString1, paramLong, paramInt, paramBoolean);
+    paramString1 = paramString1 + "|";
+    if ((paramString2 == null) || (paramString2.length() <= 0)) {
+      return paramString1 + "null";
+    }
+    return paramString1 + paramString2;
+  }
+  
+  public static String a(String paramString1, long paramLong, int paramInt, boolean paramBoolean, String paramString2, String paramString3, String paramString4)
+  {
+    paramString1 = a(paramString1, paramLong, paramInt, paramBoolean);
+    paramString1 = paramString1 + "|";
+    if ((paramString2 == null) || (paramString2.length() <= 0))
+    {
+      paramString1 = paramString1 + "null";
+      paramString1 = paramString1 + "|";
+      if ((paramString3 != null) && (paramString3.length() > 0)) {
+        break label191;
       }
+    }
+    label191:
+    for (paramString1 = paramString1 + "null";; paramString1 = paramString1 + paramString3)
+    {
+      paramString1 = paramString1 + "|";
+      if ((paramString4 != null) && (paramString4.length() > 0)) {
+        break label214;
+      }
+      return paramString1 + "null";
+      paramString1 = paramString1 + paramString2;
+      break;
+    }
+    label214:
+    return paramString1 + paramString4;
+  }
+  
+  public static String a(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3)
+  {
+    return a(paramString1, paramLong, paramInt1, paramBoolean, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramInt2, paramInt3, null);
+  }
+  
+  public static String a(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3, String paramString9)
+  {
+    paramString1 = a(paramString1, paramLong, paramInt1, paramBoolean, paramString2, paramString3, paramString4);
+    paramString1 = paramString1 + "|";
+    if ((paramString5 == null) || (paramString5.length() <= 0))
+    {
+      paramString1 = paramString1 + "null";
+      paramString1 = paramString1 + "|";
+      if ((paramString6 != null) && (paramString6.length() > 0)) {
+        break label382;
+      }
+      paramString1 = paramString1 + "null";
+      label121:
+      paramString1 = paramString1 + "|";
+      if ((paramString7 != null) && (paramString7.length() > 0)) {
+        break label405;
+      }
+      paramString1 = paramString1 + "null";
+      label174:
+      paramString1 = paramString1 + "|";
+      if ((paramString8 != null) && (paramString8.length() > 0)) {
+        break label428;
+      }
+    }
+    label405:
+    label428:
+    for (paramString1 = paramString1 + "null";; paramString1 = paramString1 + paramString8)
+    {
+      paramString1 = paramString1 + "|";
+      paramString1 = paramString1 + paramInt2;
+      paramString1 = paramString1 + "|";
+      paramString2 = paramString1 + paramInt3;
+      paramString1 = paramString2;
+      if (paramString9 != null)
+      {
+        paramString1 = paramString2 + "|";
+        paramString1 = paramString1 + paramString9;
+      }
+      return paramString1;
+      paramString1 = paramString1 + paramString5;
+      break;
+      label382:
+      paramString1 = paramString1 + paramString6;
+      break label121;
+      paramString1 = paramString1 + paramString7;
+      break label174;
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
+  {
+    paramString1 = a(paramString1, 0L, 1, true, paramString2);
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append('|');
+    localStringBuffer.append(paramString2);
+    localStringBuffer.append('|');
+    localStringBuffer.append(paramString3);
+    localStringBuffer.append('|');
+    localStringBuffer.append(paramLong);
+    localStringBuffer.append('|');
+    localStringBuffer.append(paramInt);
+    return paramString1 + localStringBuffer.toString();
+  }
+  
+  public static String[] a(String paramString)
+  {
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      paramString = paramString.split("\026");
+    } while ((paramString == null) || (paramString.length < 2));
+    return paramString[1].split("\\|");
+  }
+  
+  public static String b(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('\026');
+    paramString1 = a(paramString1);
+    int i = 0;
+    while ((i < paramString1.length) && (i < 5))
+    {
+      localStringBuilder.append(paramString1[i]);
+      localStringBuilder.append('|');
+      i += 1;
+    }
+    if (paramString1.length == 4)
+    {
+      localStringBuilder.append("");
+      localStringBuilder.append('|');
     }
     for (;;)
     {
-      if (i != -1)
-      {
-        this.a.b(false);
-        bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(i), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-        this.a.jdField_a_of_type_Int = -1;
-        this.a.b = -1;
-        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          break;
-        }
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-        return;
-        if (WXShareHelper.a().b()) {
-          break label680;
-        }
-        i = 2131720918;
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopShareUtility", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-      }
-      if ((this.a.jdField_a_of_type_Int == 5) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
-      {
-        this.a.g();
-        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          break;
-        }
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-        return;
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim()) && (!TroopInfo.isQidianPrivateTroop((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)))
-      {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          this.a.jdField_a_of_type_Boolean = true;
-        }
-        if ((TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 512))) {}
-        for (paramInt = 1;; paramInt = 0)
-        {
-          i = j;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.cGroupOption == 1) {
-            i = 1;
-          }
-          if ((paramInt | i) == 0) {
-            break;
-          }
-          this.a.b(true);
-          this.a.c();
-          return;
-        }
-        this.a.e();
-        return;
-      }
-      this.a.b(true);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-        this.a.jdField_a_of_type_Boolean = false;
-      }
-      this.a.b = 0;
-      baui.a(this.a);
-      return;
-      label680:
-      i = -1;
+      return localStringBuilder.toString();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append('|');
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append('|');
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append('|');
+      localStringBuilder.append(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bauj
  * JD-Core Version:    0.7.0.1
  */

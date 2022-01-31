@@ -1,37 +1,69 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.common.app.AppInterface;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.NewIntent;
 
-class uno
+public class uno
+  extends SimpleJob
 {
-  public TextView a;
-  public StoryPickerHorizontalListView a;
-  
-  public uno(unn paramunn, View paramView, unm paramunm)
+  public uno(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, unk paramunk)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364924));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView = ((StoryPickerHorizontalListView)paramView.findViewById(2131367610));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setSelection(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setOnHorizontalScrollListener(paramunm);
-    paramView = (ung)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.a();
-    paramView.a(paramunn.jdField_a_of_type_Unl);
-    paramView.a(paramunn.jdField_a_of_type_Unk);
+    super(paramString);
   }
   
-  public void a(int paramInt, VideoCollectionItem paramVideoCollectionItem)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setData(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setTag(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(vxy.b(paramVideoCollectionItem.collectionTime));
-    this.jdField_a_of_type_Unn.jdField_a_of_type_JavaUtilHashMap.put(paramVideoCollectionItem.collectionId, new WeakReference(this));
+    for (;;)
+    {
+      NewIntent localNewIntent;
+      try
+      {
+        paramJobContext = this.jdField_a_of_type_Unk.a();
+        paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).getAndIncrement());
+        AppInterface localAppInterface = QQStoryContext.a();
+        localNewIntent = new NewIntent(localAppInterface.getApp(), unv.class);
+        localNewIntent.putExtra("storySeq", paramArrayOfObject);
+        localNewIntent.putExtra("cmd", this.jdField_a_of_type_Unk.a());
+        localNewIntent.putExtra("data", paramJobContext);
+        localNewIntent.putExtra("start_time", System.currentTimeMillis());
+        if (this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a.contains(Integer.valueOf(this.jdField_a_of_type_Unk.b())))
+        {
+          localNewIntent.putExtra("timeout", 10000L);
+          localNewIntent.putExtra("support_retry", true);
+          QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).put(paramArrayOfObject, this.jdField_a_of_type_Unk);
+          localAppInterface.startServlet(localNewIntent);
+          return null;
+        }
+      }
+      catch (QQStoryCmdHandler.IllegalUinException paramJobContext)
+      {
+        Bosses.get().scheduleJobDelayed(new unp(this, "Q.qqstory.net:QQStoryCmdHandler", paramJobContext), 100);
+        return null;
+      }
+      if (this.jdField_a_of_type_Unk.a > 0L) {
+        localNewIntent.putExtra("timeout", this.jdField_a_of_type_Unk.a);
+      }
+    }
+  }
+  
+  public int getJobType()
+  {
+    return 16;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uno
  * JD-Core Version:    0.7.0.1
  */

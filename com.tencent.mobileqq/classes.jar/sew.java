@@ -1,26 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class sew
-  implements Parcelable.Creator<ProfileParams>
+class sew
+  extends BroadcastReceiver
 {
-  public ProfileParams a(Parcel paramParcel)
-  {
-    sex localsex = new sex();
-    localsex.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
-    return localsex.a();
-  }
+  sew(set paramset) {}
   
-  public ProfileParams[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new ProfileParams[paramInt];
+    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.a.a);
+    this.a.b(false, -1, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sew
  * JD-Core Version:    0.7.0.1
  */

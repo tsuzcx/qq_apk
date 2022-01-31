@@ -1,21 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
+import android.os.Bundle;
 
-class bcyx
-  implements DialogInterface.OnClickListener
+public class bcyx
 {
-  bcyx(bcyu parambcyu) {}
+  Bundle a = new Bundle();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Bundle a()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
+    return this.a;
+  }
+  
+  public bcyx a(String paramString)
+  {
+    this.a.putString("text_evidence", paramString);
+    return this;
+  }
+  
+  public bcyx b(String paramString)
+  {
+    this.a.putString("img_evidence", paramString);
+    return this;
+  }
+  
+  public bcyx c(String paramString)
+  {
+    this.a.putString("url_evidence", paramString);
+    return this;
+  }
+  
+  public bcyx d(String paramString)
+  {
+    this.a.putString("video_evidence", paramString);
+    return this;
+  }
+  
+  public bcyx e(String paramString)
+  {
+    this.a.putString("file_evidence", paramString);
+    return this;
+  }
+  
+  public bcyx f(String paramString)
+  {
+    this.a.putString("audio_evidence", paramString);
+    return this;
+  }
+  
+  public bcyx g(String paramString)
+  {
+    this.a.putString("user_input_param", paramString);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcyx
  * JD-Core Version:    0.7.0.1
  */

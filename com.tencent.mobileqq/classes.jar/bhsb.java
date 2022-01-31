@@ -1,90 +1,39 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin.1;
-import cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin.2;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.widget.DynamicGridView;
 
-public class bhsb
-  extends bhsh
-  implements bhlf
+class bhsb
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  private static final String a;
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  static
+  bhsb(bhsa parambhsa, int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaLangString = bhrz.class.getSimpleName();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  private static void a(WebViewPlugin paramWebViewPlugin, bcdp parambcdp, String[] paramArrayOfString)
+  public boolean onPreDraw()
   {
-    parambcdp.a().getHandler(bhsb.class).post(new QzoneDeviceTagJsPlugin.1(paramArrayOfString));
-  }
-  
-  private static void b(WebViewPlugin paramWebViewPlugin, bcdp parambcdp, String[] paramArrayOfString)
-  {
-    parambcdp.a().getHandler(bhsb.class).post(new QzoneDeviceTagJsPlugin.2());
-  }
-  
-  public void a()
-  {
-    super.a();
-    bhlc.a().b(this);
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!"Qzone".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      return false;
+    this.jdField_a_of_type_Bhsa.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    DynamicGridView.a(this.jdField_a_of_type_Bhsa.a, DynamicGridView.a(this.jdField_a_of_type_Bhsa.a) + bhsa.a(this.jdField_a_of_type_Bhsa));
+    DynamicGridView.b(this.jdField_a_of_type_Bhsa.a, DynamicGridView.b(this.jdField_a_of_type_Bhsa.a) + bhsa.b(this.jdField_a_of_type_Bhsa));
+    if (DynamicGridView.a(this.jdField_a_of_type_Bhsa.a) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_Bhsa.a).setVisibility(0);
     }
-    if ("GetDeviceInfo".equalsIgnoreCase(paramString3))
-    {
-      bhlc.a().a(this);
-      b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
+    DynamicGridView.a(this.jdField_a_of_type_Bhsa.a, this.jdField_a_of_type_Bhsa.a.a(DynamicGridView.a(this.jdField_a_of_type_Bhsa.a)));
+    if (DynamicGridView.a(this.jdField_a_of_type_Bhsa.a) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_Bhsa.a).setVisibility(4);
     }
-    if ("SetUserTail".equalsIgnoreCase(paramString3))
-    {
-      bhlc.a().a(this);
-      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    return false;
-  }
-  
-  public void onWebEvent(String paramString, Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramBundle = paramBundle.getBundle("data");
-          if (paramBundle != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "call js function,bundle is empty");
-        return;
-        if (!"cmd.getDeviceInfos".equals(paramString)) {
-          break;
-        }
-        paramString = paramBundle.getString("param.DeviceInfos");
-      } while (TextUtils.isEmpty(paramString));
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZPhoneTagJSInterface.onReceive({code:0,data:" + paramString + "})");
-      return;
-    } while (!"cmd.setUserTail".equals(paramString));
+    DynamicGridView.a(this.jdField_a_of_type_Bhsa.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhsb
  * JD-Core Version:    0.7.0.1
  */

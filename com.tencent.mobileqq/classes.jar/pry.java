@@ -1,24 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class pry
-  implements View.OnTouchListener
+  implements Animator.AnimatorListener
 {
-  pry(prt paramprt, LinearLayout paramLinearLayout) {}
+  pry(prr paramprr, boolean paramBoolean) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      prr.a(this.jdField_a_of_type_Prr).isShowRecommendList = false;
+      prr.a(this.jdField_a_of_type_Prr);
     }
-    return false;
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pry
  * JD-Core Version:    0.7.0.1
  */

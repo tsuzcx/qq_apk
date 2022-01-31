@@ -1,27 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
-class adqx
-  implements View.OnClickListener
+public class adqx
+  implements DialogInterface.OnClickListener
 {
-  adqx(adqw paramadqw, long paramLong) {}
+  public adqx(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("uinType", this.jdField_a_of_type_Adqw.a.a);
-    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    abtq.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
+    this.a.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqx
  * JD-Core Version:    0.7.0.1
  */

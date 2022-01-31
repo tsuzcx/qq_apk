@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public final class vfs
-  implements Parcelable.Creator<EditTakePhotoSource>
+class vfs
+  extends veb
 {
-  public EditTakePhotoSource a(Parcel paramParcel)
+  vfs(vez paramvez, StoryVideoItem paramStoryVideoItem, vgi paramvgi)
   {
-    return new EditTakePhotoSource(paramParcel);
+    super(paramStoryVideoItem);
   }
   
-  public EditTakePhotoSource[] a(int paramInt)
+  public boolean b()
   {
-    return new EditTakePhotoSource[paramInt];
+    this.jdField_a_of_type_Vgi.e = ((String)a("result"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfs
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ import android.provider.MediaStore.Images.Media;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.WindowManager;
-import betc;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,14 +44,14 @@ public class ScreenJsPlugin$ScreenShotListenManager
     {
       sScreenRealSize = getRealScreenSize();
       if (sScreenRealSize != null) {
-        betc.a("ScreenShotListenManager", "Screen Real Size: " + sScreenRealSize.x + " * " + sScreenRealSize.y);
+        QMLog.d("ScreenShotListenManager", "Screen Real Size: " + sScreenRealSize.x + " * " + sScreenRealSize.y);
       }
     }
     else
     {
       return;
     }
-    betc.c("ScreenShotListenManager", "Get screen real size failed.");
+    QMLog.w("ScreenShotListenManager", "Get screen real size failed.");
   }
   
   public static void assertInMainThread()
@@ -217,7 +217,7 @@ public class ScreenJsPlugin$ScreenShotListenManager
         }
         try
         {
-          betc.d("ScreenShotListenManager", "Deviant logic.");
+          QMLog.e("ScreenShotListenManager", "Deviant logic.");
           if ((paramUri != null) && (!paramUri.isClosed())) {
             paramUri.close();
           }
@@ -238,7 +238,7 @@ public class ScreenJsPlugin$ScreenShotListenManager
         break;
       }
       localObject1 = paramUri;
-      betc.a("ScreenShotListenManager", "Cursor no data.");
+      QMLog.d("ScreenShotListenManager", "Cursor no data.");
     } while ((paramUri == null) || (paramUri.isClosed()));
     paramUri.close();
     return;
@@ -288,13 +288,13 @@ public class ScreenJsPlugin$ScreenShotListenManager
   {
     if (checkScreenShot(paramString, paramLong, paramInt1, paramInt2))
     {
-      betc.a("ScreenShotListenManager", "ScreenShot: path = " + paramString + "; size = " + paramInt1 + " * " + paramInt2 + "; date = " + paramLong);
+      QMLog.d("ScreenShotListenManager", "ScreenShot: path = " + paramString + "; size = " + paramInt1 + " * " + paramInt2 + "; date = " + paramLong);
       if ((this.mListener != null) && (!checkCallback(paramString))) {
         this.mListener.onShot(paramString);
       }
       return;
     }
-    betc.c("ScreenShotListenManager", "Media content changed, but not screenshot: path = " + paramString + "; size = " + paramInt1 + " * " + paramInt2 + "; date = " + paramLong);
+    QMLog.w("ScreenShotListenManager", "Media content changed, but not screenshot: path = " + paramString + "; size = " + paramInt1 + " * " + paramInt2 + "; date = " + paramLong);
   }
   
   public static ScreenShotListenManager newInstance(Context paramContext)
@@ -315,8 +315,8 @@ public class ScreenJsPlugin$ScreenShotListenManager
     this.mStartListenTime = System.currentTimeMillis();
     this.mInternalObserver = new ScreenJsPlugin.ScreenShotListenManager.MediaContentObserver(this, MediaStore.Images.Media.INTERNAL_CONTENT_URI, this.mUiHandler);
     this.mExternalObserver = new ScreenJsPlugin.ScreenShotListenManager.MediaContentObserver(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, this.mUiHandler);
-    this.mContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, false, this.mInternalObserver);
-    this.mContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, false, this.mExternalObserver);
+    this.mContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, true, this.mInternalObserver);
+    this.mContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this.mExternalObserver);
   }
   
   public void stopListen()
@@ -353,7 +353,7 @@ public class ScreenJsPlugin$ScreenShotListenManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.ScreenJsPlugin.ScreenShotListenManager
  * JD-Core Version:    0.7.0.1
  */

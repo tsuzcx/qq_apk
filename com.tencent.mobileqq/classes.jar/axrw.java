@@ -1,88 +1,116 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.opengl.EGL14;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView.Renderer;
+import android.opengl.Matrix;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import java.nio.IntBuffer;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class axrw
+  implements GLSurfaceView.Renderer
 {
-  public static int a(Context paramContext, String paramString)
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private axqx jdField_a_of_type_Axqx;
+  private axqy jdField_a_of_type_Axqy;
+  private GPUBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
+  private int b;
+  
+  public Bitmap a(Bitmap paramBitmap, GPUBaseFilter paramGPUBaseFilter)
   {
-    return a(paramContext, paramString, "Click_grp_asst");
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = paramGPUBaseFilter;
+    onSurfaceCreated(null, null);
+    onSurfaceChanged(null, paramBitmap.getWidth(), paramBitmap.getHeight());
+    onDrawFrame(null);
+    onDrawFrame(null);
+    paramGPUBaseFilter = IntBuffer.allocate(paramBitmap.getWidth() * paramBitmap.getHeight());
+    GLES20.glReadPixels(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), 6408, 5121, paramGPUBaseFilter);
+    paramGPUBaseFilter = paramGPUBaseFilter.array();
+    paramBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+    paramBitmap.copyPixelsFromBuffer(IntBuffer.wrap(paramGPUBaseFilter));
+    return paramBitmap;
   }
   
-  public static int a(Context paramContext, String paramString1, String paramString2)
+  public void a()
   {
-    paramString1 = paramString1 + paramString2;
-    return paramContext.getSharedPreferences("mobileQQ", 0).getInt(paramString1, 0);
+    if (this.jdField_a_of_type_Axqy != null)
+    {
+      this.jdField_a_of_type_Axqy.a();
+      this.jdField_a_of_type_Axqy = null;
+    }
+    if (this.jdField_a_of_type_Axqx != null)
+    {
+      this.jdField_a_of_type_Axqx.a();
+      this.jdField_a_of_type_Axqx = null;
+    }
   }
   
-  public static void a(Context paramContext, String paramString)
+  @TargetApi(17)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0).edit();
-    paramContext.putInt(paramString + "Click_grp_asst", 0);
-    paramContext.putInt(paramString + "grp_setting_asst", 0);
-    paramContext.putInt(paramString + "grp_setting_msg", 0);
-    paramContext.putInt(paramString + "grp_msg_equ", 0);
-    paramContext.putInt(paramString + "grp_msg_dec", 0);
-    paramContext.putInt(paramString + "grp_msg_inc", 0);
-    paramContext.commit();
+    if (Build.VERSION.SDK_INT >= 17) {
+      this.jdField_a_of_type_Axqx = new axqx(EGL14.eglGetCurrentContext(), 1);
+    }
+    this.jdField_a_of_type_Axqy = new axqy(this.jdField_a_of_type_Axqx);
+    this.jdField_a_of_type_Axqy.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Axqy.b();
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2)
+  public void onDrawFrame(GL10 paramGL10)
   {
-    paramString1 = paramString1 + paramString2;
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
-    int i = paramContext.getInt(paramString1, 0);
-    paramContext.edit().putInt(paramString1, i + 1).commit();
+    GLES20.glClear(16640);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() % 2 == 1)
+    {
+      paramGL10 = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + 1, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+      localObject = new Canvas(paramGL10);
+      ((Canvas)localObject).drawARGB(0, 0, 0, 0);
+      ((Canvas)localObject).drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, null);
+      this.jdField_a_of_type_Int = 1;
+      if (paramGL10 != null) {
+        break label144;
+      }
+    }
+    label144:
+    for (Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;; localObject = paramGL10)
+    {
+      this.b = GlUtil.createTexture(3553, (Bitmap)localObject);
+      if ((paramGL10 != null) && (!paramGL10.isRecycled())) {
+        paramGL10.recycle();
+      }
+      paramGL10 = new float[16];
+      Matrix.setIdentityM(paramGL10, 0);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(this.b, null, paramGL10);
+      return;
+      this.jdField_a_of_type_Int = 0;
+      paramGL10 = null;
+      break;
+    }
   }
   
-  public static int b(Context paramContext, String paramString)
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    return a(paramContext, paramString, "grp_setting_asst");
+    GLES20.glViewport(0, 0, paramInt1, paramInt2);
+    GLES20.glUseProgram(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.getProgram());
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.onOutputSizeChanged(paramInt1, paramInt2);
   }
   
-  public static void b(Context paramContext, String paramString)
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    a(paramContext, paramString, "grp_setting_asst");
-  }
-  
-  public static int c(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_setting_msg");
-  }
-  
-  public static void c(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_equ");
-  }
-  
-  public static int d(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_equ");
-  }
-  
-  public static void d(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_dec");
-  }
-  
-  public static int e(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_dec");
-  }
-  
-  public static void e(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_inc");
-  }
-  
-  public static int f(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_inc");
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+    GLES20.glDisable(2929);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axrw
  * JD-Core Version:    0.7.0.1
  */

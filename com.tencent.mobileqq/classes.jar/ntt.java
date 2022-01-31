@@ -1,69 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
 
-class ntt
-  implements ozr
+public class ntt
+  extends BroadcastReceiver
 {
-  ntt(ntr paramntr, ozo paramozo) {}
+  public ntt(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  private long a(List<ArticleInfo> paramList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramList = paramList.iterator();
-    long l = 0L;
-    if (paramList.hasNext())
+    paramContext = paramIntent.getAction();
+    if ("action_decode_finish".equals(paramContext))
     {
-      ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-      if (l >= localArticleInfo.mRecommendSeq) {
-        break label50;
+      paramContext = paramIntent.getStringExtra("uin");
+      paramIntent = (Bitmap)paramIntent.getParcelableExtra("bitmap");
+      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramContext)) && (paramIntent != null)) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramIntent);
       }
-      l = localArticleInfo.mRecommendSeq;
     }
-    label50:
-    for (;;)
+    do
     {
-      break;
-      return l;
-    }
-  }
-  
-  public List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2)
-  {
-    if ((!oou.c(paramInt)) || (paramList2 == null) || (paramList1 == null) || (paramList2.isEmpty())) {
-      return null;
-    }
-    long l = a(paramList2);
-    if (l < 1000L)
-    {
-      QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l);
-      return null;
-    }
-    paramList2 = new ArrayList();
-    if (!ntr.a())
-    {
-      paramList1 = paramList1.iterator();
-      while (paramList1.hasNext())
+      do
       {
-        ArticleInfo localArticleInfo = (ArticleInfo)paramList1.next();
-        if ((localArticleInfo.mRecommendSeq > 0L) && (localArticleInfo.mRecommendSeq < 1000L))
-        {
-          localArticleInfo.mRecommendSeq += l;
-          paramList2.add(localArticleInfo);
-          QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l + "  seq: " + localArticleInfo.mRecommendSeq);
-        }
-      }
+        return;
+      } while ((!"action_follow_status_finish".equals(paramContext)) || (!String.valueOf(paramIntent.getStringExtra("uin")).equals(this.a.jdField_a_of_type_JavaLangString)));
+      this.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isFollow", false);
+    } while (this.a.jdField_a_of_type_AndroidWidgetTextView == null);
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131701626));
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+      return;
     }
-    bhvy.a(ntr.a(), Boolean.valueOf(true));
-    ntr.a(true);
-    this.jdField_a_of_type_Ozo.a(null);
-    return paramList2;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131701638));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ntt
  * JD-Core Version:    0.7.0.1
  */

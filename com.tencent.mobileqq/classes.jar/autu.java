@@ -1,27 +1,20 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.GlowCountRecyclerView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
 
-public class autu
+class autu
+  implements behq
 {
-  public long a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public GlowCountRecyclerView a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  View c;
-  public ImageView c;
-  public View d;
-  public ImageView d;
-  View e;
+  autu(autt paramautt) {}
+  
+  public void a()
+  {
+    this.a.a.a.setVisibility(8);
+    this.a.a.a(true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     autu
  * JD-Core Version:    0.7.0.1
  */

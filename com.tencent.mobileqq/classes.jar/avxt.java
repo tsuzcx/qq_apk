@@ -1,41 +1,23 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupMenu;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class avxt
-  implements GLSurfaceView.EGLContextFactory
+class avxt
+  implements View.OnClickListener
 {
-  private static int jdField_a_of_type_Int = 12440;
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  avxt(avxp paramavxp) {}
   
-  public EGLContext a()
+  public void onClick(View paramView)
   {
-    ved.d("FlowEdit_EditorEGLContextFactory", "getEGLContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  }
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
-  {
-    int i = jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-    ved.d("FlowEdit_EditorEGLContextFactory", "createContext %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-      ved.e("FlowEdit_EditorEGLContextFactory", "EditorEGLContextDisplay, display: " + paramEGLDisplay + " context: " + paramEGLContext);
-    }
-    ved.d("FlowEdit_EditorEGLContextFactory", "destroyContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+    paramView = new PopupMenu(avxp.a(this.a), paramView);
+    this.a.a(avxp.a(this.a).b, paramView);
+    paramView.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avxt
  * JD-Core Version:    0.7.0.1
  */

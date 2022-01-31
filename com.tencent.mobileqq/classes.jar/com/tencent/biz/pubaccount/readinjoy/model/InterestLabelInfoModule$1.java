@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aukp;
+import awbw;
 import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import java.util.List;
-import pav;
+import pge;
 
 public class InterestLabelInfoModule$1
   implements Runnable
 {
-  public InterestLabelInfoModule$1(pav parampav) {}
+  public InterestLabelInfoModule$1(pge parampge) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class InterestLabelInfoModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.1
  * JD-Core Version:    0.7.0.1
  */

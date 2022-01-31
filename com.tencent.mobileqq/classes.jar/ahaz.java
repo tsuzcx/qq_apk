@@ -1,38 +1,39 @@
-import android.widget.EditText;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import mqq.app.QQPermissionCallback;
 
-public class ahaz
-  extends ahak
+class ahaz
+  implements QQPermissionCallback
 {
-  public ahaz(EditText paramEditText)
+  ahaz(ahay paramahay) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramEditText);
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "requestLBSPermissionOnClickListener deny");
+    }
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramInt1 = 1;
-    paramCharSequence = paramCharSequence.toString();
-    if (paramCharSequence.startsWith("0"))
-    {
-      paramInt2 = bgxb.a(paramCharSequence, 1);
-      if (paramInt2 != 0) {
-        break label53;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener grant");
     }
-    for (;;)
+    this.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    if (amkv.a("recommend_troop") == null)
     {
-      paramCharSequence = String.valueOf(paramInt1);
-      this.a.setText(paramCharSequence);
-      this.a.setSelection(paramCharSequence.length());
+      amkv.a(new ahba(this, "recommend_troop"));
       return;
-      label53:
-      paramInt1 = paramInt2;
     }
+    this.a.a.jdField_a_of_type_Ahap.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahaz
  * JD-Core Version:    0.7.0.1
  */

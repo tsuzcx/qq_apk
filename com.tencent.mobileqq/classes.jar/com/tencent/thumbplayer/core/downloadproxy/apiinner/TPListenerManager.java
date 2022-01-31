@@ -79,7 +79,7 @@ public class TPListenerManager
     default: 
       return;
     case 2: 
-      paramITPOfflineDownloadListener.onDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L));
+      paramITPOfflineDownloadListener.onDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L), TPDLProxyUtils.byteArrayToString((byte[])paramObject5));
       return;
     case 3: 
       paramITPOfflineDownloadListener.onDownloadFinish();
@@ -119,14 +119,16 @@ public class TPListenerManager
     long l;
     switch (paramInt1)
     {
-    case 4: 
     default: 
       return;
     case 2: 
-      paramITPPlayListener.onDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L));
+      paramITPPlayListener.onDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L), TPDLProxyUtils.byteArrayToString((byte[])paramObject5));
       return;
     case 3: 
       paramITPPlayListener.onDownloadFinish();
+      return;
+    case 4: 
+      paramITPPlayListener.onDownloadError(((Integer)paramObject1).intValue(), ((Integer)paramObject2).intValue(), TPDLProxyUtils.byteArrayToString((byte[])paramObject3));
       return;
     case 5: 
       paramITPPlayListener.onDownloadCdnUrlUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1));
@@ -176,13 +178,13 @@ public class TPListenerManager
     default: 
       return;
     case 2: 
-      paramITPPreLoadListener.onPrepareDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L));
+      paramITPPreLoadListener.onPrepareDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L), TPDLProxyUtils.byteArrayToString((byte[])paramObject5));
       return;
     case 50: 
       paramITPPreLoadListener.onPrepareOK();
       return;
     }
-    paramITPPreLoadListener.onPrepareError();
+    paramITPPreLoadListener.onPrepareError(((Integer)paramObject1).intValue(), ((Integer)paramObject2).intValue(), TPDLProxyUtils.byteArrayToString((byte[])paramObject3));
   }
   
   public static TPListenerManager getInstance()
@@ -249,6 +251,24 @@ public class TPListenerManager
       this.mMsgHandler = new Handler(this.mMsgHandlerThread.getLooper());
       this.mMsgHandler.postDelayed(this.updatePlayerInfo, 1000L);
       this.mMsgHandler.postDelayed(this.updateProxyPlayerInfo, 1000L);
+    }
+  }
+  
+  public void removeAllPlayListener()
+  {
+    synchronized (PLAY_LISTENER_MAP_MUTEX)
+    {
+      this.mPlayListenerMap.clear();
+      return;
+    }
+  }
+  
+  public void removeAllPreLoadListener()
+  {
+    synchronized (PRELOAD_LISTENER_MAP_MUTEX)
+    {
+      this.mPreLoadListenerMap.clear();
+      return;
     }
   }
   
@@ -342,7 +362,7 @@ public class TPListenerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager
  * JD-Core Version:    0.7.0.1
  */

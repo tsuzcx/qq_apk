@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class achi
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public achi(TroopInfoActivity paramTroopInfoActivity) {}
+  public achi(ChatHistory paramChatHistory) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
+    this.a.a(12, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achi
  * JD-Core Version:    0.7.0.1
  */

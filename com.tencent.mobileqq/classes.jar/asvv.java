@@ -1,37 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public class asvv
-  extends BroadcastReceiver
+class asvv
+  implements mug
 {
-  public asvv(QQPlayerService paramQQPlayerService) {}
+  asvv(asvu paramasvu, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt)
   {
-    if (QQPlayerService.c(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQPlayerService", 2, "received broadcast after service destroy");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
     }
-    do
+    mtz.a().a();
+    if (paramInt == 1)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
-      }
-    } while ((!"com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) && (!"qqplayer_exit_action".equals(paramIntent.getAction())));
-    if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
-      this.a.a.b = true;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("roomCodeType", 1);
+      localBundle.putLong("roomid", Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
+      asvu.a(this.jdField_a_of_type_Asvu, localBundle, 1001L);
     }
-    QQPlayerService.c(this.a.getApplicationContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asvv
  * JD-Core Version:    0.7.0.1
  */

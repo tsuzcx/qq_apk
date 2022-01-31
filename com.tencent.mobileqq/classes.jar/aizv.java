@@ -1,24 +1,30 @@
+import VACDReport.ReportRsp;
 import android.os.Bundle;
-import eipc.EIPCResult;
+import mqq.observer.BusinessObserver;
 
 class aizv
-  implements oef
+  implements BusinessObserver
 {
-  aizv(aizu paramaizu, int paramInt) {}
+  aizv(aizt paramaizt) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    aizu.b = false;
-    if (paramInt == 1)
+    switch (paramInt)
     {
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, new Bundle());
-      this.jdField_a_of_type_Aizu.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+    default: 
+      return;
+    }
+    if (paramBundle.containsKey("rsp")) {}
+    for (paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;; paramBundle = null)
+    {
+      aizt.a(this.a, paramBundle);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aizv
  * JD-Core Version:    0.7.0.1
  */

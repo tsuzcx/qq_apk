@@ -1,143 +1,180 @@
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ArNativeSoLoader.1;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.DrawerPushItem;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.util.HashMap;
-import org.xmlpull.v1.XmlPullParser;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class alby
+  implements akwx
 {
-  public static final String a;
   public static boolean a;
-  private static final byte[] a;
-  public static boolean b;
+  private int jdField_a_of_type_Int = 1;
+  akwl jdField_a_of_type_Akwl;
+  private boolean b;
+  private boolean c;
   
-  static
+  public alby(akwl paramakwl)
   {
-    if (AppSetting.b) {}
-    for (String str = "ArMapEngine800Arch64";; str = "ArMapEngine800")
+    this.jdField_a_of_type_Akwl = paramakwl;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    if (paramQQAppInterface != null)
     {
-      jdField_a_of_type_JavaLangString = str;
-      jdField_a_of_type_ArrayOfByte = new byte[0];
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
+      if (localSharedPreferences.getInt(paramQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_" + ApolloUtil.b(), 0) >= localSharedPreferences.getInt("sp_key_aio_bubble_max_count", 3)) {
+        bool = true;
+      }
+      jdField_a_of_type_Boolean = bool;
+    }
+  }
+  
+  private void b()
+  {
+    if (!this.b) {}
+    Object localObject;
+    akje localakje;
+    akji localakji;
+    do
+    {
+      do
+      {
+        return;
+        this.b = false;
+        localObject = this.jdField_a_of_type_Akwl.a();
+      } while (localObject == null);
+      localakje = (akje)((QQAppInterface)localObject).getManager(211);
+      localakji = (akji)((QQAppInterface)localObject).getManager(153);
+      localObject = null;
+      if (localakje.jdField_a_of_type_Albw != null) {
+        localObject = localakje.jdField_a_of_type_Albw.a();
+      }
+    } while ((localObject == null) || ((((DrawerPushItem)localObject).msg_type != 7) && (((DrawerPushItem)localObject).msg_type != 9) && (((DrawerPushItem)localObject).msg_type != 2) && (((DrawerPushItem)localObject).msg_type != 10)));
+    QLog.i("ApolloBubbleLogic", 1, "checkIfPanelBubble remove panel bubble");
+    localakji.a((DrawerPushItem)localObject);
+    localakje.jdField_a_of_type_Albw.a();
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp", 0);
+    Object localObject1 = paramQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_";
+    String str1 = (String)localObject1 + ApolloUtil.b();
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
+    if (((SharedPreferences)localObject2).contains(str1)) {
+      localEditor.putInt(str1, ((SharedPreferences)localObject2).getInt(str1, 0) + 1);
+    }
+    for (;;)
+    {
+      localEditor.commit();
+      a(paramQQAppInterface);
       return;
+      Object localObject3 = ((SharedPreferences)localObject2).getAll();
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
+      {
+        localObject3 = ((Map)localObject3).entrySet().iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
+          String str2 = (String)localEntry.getKey();
+          if ((str2 != null) && (str2.startsWith((String)localObject1))) {
+            ((List)localObject2).add(localEntry.getKey());
+          }
+        }
+        localObject1 = ((List)localObject2).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          localEditor.remove((String)((Iterator)localObject1).next());
+        }
+      }
+      localEditor.putInt(str1, 1);
     }
   }
   
-  public static byte a(String paramString)
+  public int a()
   {
-    byte b2 = 0;
-    if (paramString == null) {
-      return -1;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Akwl != null)
+    {
+      akje localakje = (akje)this.jdField_a_of_type_Akwl.a().getManager(211);
+      localakje.jdField_a_of_type_Int = -1;
+      localakje.a(-1, -1);
     }
-    String str = a() + "/lib" + paramString + ".so";
-    if (QLog.isColorLevel()) {
-      QLog.i("ArConfig_ArNativeSoLoader", 2, "start arNativeSo: " + str);
+    this.jdField_a_of_type_Akwl = null;
+    this.c = false;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
+    {
     }
-    File localFile = new File(str);
-    if ((!jdField_a_of_type_Boolean) && (localFile.exists())) {}
+    label304:
     for (;;)
     {
-      try
+      return;
+      b();
+      return;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_Akwl.a();
+      if ((localQQAppInterface != null) && (this.jdField_a_of_type_Akwl.a() != null) && (akwt.a(localQQAppInterface) != null))
       {
-        System.load(str);
-        b1 = b2;
-        if (QLog.isColorLevel())
+        SharedPreferences localSharedPreferences = localQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
+        int i = localSharedPreferences.getInt(localQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_" + ApolloUtil.b(), 0);
+        int j = localSharedPreferences.getInt("sp_key_aio_bubble_max_count", 3);
+        if (i >= j)
         {
-          QLog.i("ArConfig_ArNativeSoLoader", 2, "load " + str + " success!");
-          b1 = b2;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, new Object[] { "AIO Bubble show count limited:", Integer.valueOf(j) });
+          }
         }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("ArConfig_ArNativeSoLoader", 2, "load from ar dir failed.", localUnsatisfiedLinkError);
-        b1 = -3;
-        continue;
-      }
-      a(paramString, b1);
-      return b1;
-      b2 = -2;
-      byte b1 = b2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("ArConfig_ArNativeSoLoader", 2, "no ar so in ar dir");
-        b1 = b2;
-      }
-    }
-  }
-  
-  public static String a()
-  {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ArConfig_ArNativeSoLoader", 2, "getFilesDir is null");
-      }
-      return "";
-    }
-    return localFile.getParent() + "/ar";
-  }
-  
-  private static void a(String paramString, byte paramByte)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
-    byte b1 = localSharedPreferences.getInt("ar_native_so_load_result" + paramString, 0);
-    if ((!b) || (b1 != paramByte))
-    {
-      b = true;
-      ThreadManager.post(new ArNativeSoLoader.1(paramString, paramByte, localSharedPreferences), 5, null, true);
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return a(paramString, true);
-  }
-  
-  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    boolean bool = true;
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    paramHashMap.clear();
-    for (;;)
-    {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception paramHashMap)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("ArConfig_ArNativeSoLoader", 2, paramString, paramHashMap);
-        bool = false;
-        return bool;
-      }
-      int i = localXmlPullParser.next();
-      if (localXmlPullParser.getName().equalsIgnoreCase(jdField_a_of_type_JavaLangString))
-      {
-        paramHashMap.put(jdField_a_of_type_JavaLangString, localXmlPullParser.nextText());
-        break label106;
-        ;;
-        label106:
-        if (QLog.isColorLevel())
+        else if (this.c)
         {
-          QLog.d("ArConfig_ArNativeSoLoader", 2, "parseConfig success|config=" + paramHashMap);
-          return true;
-          if (i != 1) {
-            switch (i)
-            {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, "current AIO has play bubble, wait for next time");
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, "start play bubble");
+          }
+          if (a(localQQAppInterface)) {
+            paramInt = 2;
+          }
+          for (;;)
+          {
+            if (paramInt <= 0) {
+              break label304;
+            }
+            this.b = true;
+            this.c = true;
+            b(localQQAppInterface);
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ApolloBubbleLogic", 2, new Object[] { "AIO bubble play type:", Integer.valueOf(paramInt), ",current count:", Integer.valueOf(i), ",maxCount:", Integer.valueOf(j) });
+            return;
+            if (b(localQQAppInterface)) {
+              paramInt = 3;
+            } else {
+              paramInt = 0;
             }
           }
         }
@@ -145,285 +182,61 @@ public class alby
     }
   }
   
-  public static boolean a(String paramString, boolean paramBoolean)
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    akje localakje = (akje)paramQQAppInterface.getManager(211);
+    if (localakje.jdField_a_of_type_Albw != null) {}
+    for (DrawerPushItem localDrawerPushItem = localakje.jdField_a_of_type_Albw.a();; localDrawerPushItem = null)
+    {
+      if ((localDrawerPushItem != null) && (localDrawerPushItem.msg_type != 7) && (localakje.jdField_a_of_type_Albw.a(paramQQAppInterface, this.jdField_a_of_type_Akwl.jdField_a_of_type_Int)))
+      {
+        if (localDrawerPushItem.reddotGameId > 0)
+        {
+          localakje.jdField_a_of_type_Int = localDrawerPushItem.reddotGameId;
+          localakje.a(localDrawerPushItem.reddotGameId, 3);
+          VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_msg_display", ApolloUtil.b(this.jdField_a_of_type_Akwl.jdField_a_of_type_Int), 3, new String[] { String.valueOf(localDrawerPushItem.reddotGameId), String.valueOf(localDrawerPushItem.reddotRedId) });
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, new Object[] { "show aio bubble for reddot game, game id=", Integer.valueOf(localDrawerPushItem.reddotGameId) });
+          }
+        }
+        return true;
+      }
+      return false;
+    }
+  }
+  
+  public boolean b(QQAppInterface paramQQAppInterface)
   {
     boolean bool2 = false;
-    boolean bool3 = false;
-    String str1 = a() + "/lib" + paramString + ".so";
-    ??? = new File(str1);
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArNativeSoLoader", 2, "isSoFileExist libPath=" + str1 + ", exist=" + ((File)???).exists() + ", isUncompressZip=" + jdField_a_of_type_Boolean);
-    }
-    boolean bool1 = bool3;
-    if (!jdField_a_of_type_Boolean)
+    akje localakje = (akje)paramQQAppInterface.getManager(211);
+    if (localakje.jdField_a_of_type_Albw != null) {}
+    for (Object localObject = localakje.jdField_a_of_type_Albw.a();; localObject = null)
     {
-      bool1 = bool3;
-      if (((File)???).exists())
+      boolean bool1 = bool2;
+      if (localObject != null)
       {
-        if (paramBoolean) {
-          break label132;
-        }
-        bool1 = true;
-      }
-    }
-    return bool1;
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_ArrayOfByte)
-      {
-        label132:
-        String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString("ar_native_" + paramString, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArNativeSoLoader", 2, "isSoFileExist: md5= " + str2);
-        }
-        if (str2 == null) {
-          break label283;
-        }
-        if (str2.equalsIgnoreCase(aurn.a(str1)))
+        bool1 = bool2;
+        if (((DrawerPushItem)localObject).msg_type == 7)
         {
-          break label283;
-          return paramBoolean;
+          localObject = (akji)paramQQAppInterface.getManager(153);
+          bool1 = bool2;
+          if (localakje.jdField_a_of_type_Albw.a(paramQQAppInterface, this.jdField_a_of_type_Akwl.jdField_a_of_type_Int))
+          {
+            if (localObject != null) {
+              ((akji)localObject).o = true;
+            }
+            VipUtils.a(null, "cmshow", "Apollo", "peoplebubble", ApolloUtil.b(this.jdField_a_of_type_Akwl.jdField_a_of_type_Int), 0, new String[] { String.valueOf(1) });
+            bool1 = true;
+          }
         }
       }
-      paramBoolean = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ArConfig_ArNativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " check md5 false!");
-        paramBoolean = bool2;
-        continue;
-        label283:
-        paramBoolean = true;
-      }
+      return bool1;
     }
-  }
-  
-  /* Error */
-  public static byte b(String arg0)
-  {
-    // Byte code:
-    //   0: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +28 -> 31
-    //   6: ldc 54
-    //   8: iconst_2
-    //   9: new 29	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 236
-    //   18: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: aload_0
-    //   22: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokestatic 204	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   31: iconst_1
-    //   32: putstatic 67	alby:jdField_a_of_type_Boolean	Z
-    //   35: aload_0
-    //   36: invokestatic 35	alby:a	()Ljava/lang/String;
-    //   39: invokestatic 241	albv:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   42: new 151	java/util/HashMap
-    //   45: dup
-    //   46: invokespecial 242	java/util/HashMap:<init>	()V
-    //   49: astore 5
-    //   51: getstatic 95	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   54: ldc 112
-    //   56: iconst_0
-    //   57: invokevirtual 116	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   60: invokeinterface 246 1 0
-    //   65: astore 4
-    //   67: new 62	java/io/File
-    //   70: dup
-    //   71: new 29	java/lang/StringBuilder
-    //   74: dup
-    //   75: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   78: invokestatic 35	alby:a	()Ljava/lang/String;
-    //   81: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: ldc 248
-    //   86: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: invokespecial 65	java/io/File:<init>	(Ljava/lang/String;)V
-    //   95: astore_3
-    //   96: aload_3
-    //   97: invokevirtual 70	java/io/File:exists	()Z
-    //   100: ifeq +311 -> 411
-    //   103: aconst_null
-    //   104: astore_0
-    //   105: aload_3
-    //   106: invokestatic 253	bbdx:b	(Ljava/io/File;)Ljava/lang/String;
-    //   109: astore_3
-    //   110: aload_3
-    //   111: astore_0
-    //   112: aload_0
-    //   113: ifnull +274 -> 387
-    //   116: aload_0
-    //   117: aload 5
-    //   119: invokestatic 255	alby:a	(Ljava/lang/String;Ljava/util/HashMap;)Z
-    //   122: ifeq +265 -> 387
-    //   125: getstatic 21	alby:jdField_a_of_type_ArrayOfByte	[B
-    //   128: astore_0
-    //   129: aload_0
-    //   130: monitorenter
-    //   131: aload 5
-    //   133: invokevirtual 259	java/util/HashMap:entrySet	()Ljava/util/Set;
-    //   136: invokeinterface 265 1 0
-    //   141: astore_3
-    //   142: aload_3
-    //   143: invokeinterface 270 1 0
-    //   148: ifeq +283 -> 431
-    //   151: aload_3
-    //   152: invokeinterface 273 1 0
-    //   157: checkcast 275	java/util/Map$Entry
-    //   160: astore 5
-    //   162: new 29	java/lang/StringBuilder
-    //   165: dup
-    //   166: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   169: invokestatic 35	alby:a	()Ljava/lang/String;
-    //   172: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: ldc 41
-    //   177: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: aload 5
-    //   182: invokeinterface 278 1 0
-    //   187: checkcast 158	java/lang/String
-    //   190: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   193: ldc 43
-    //   195: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: astore 7
-    //   203: new 62	java/io/File
-    //   206: dup
-    //   207: aload 7
-    //   209: invokespecial 65	java/io/File:<init>	(Ljava/lang/String;)V
-    //   212: astore 6
-    //   214: aload 6
-    //   216: invokevirtual 70	java/io/File:exists	()Z
-    //   219: ifeq +163 -> 382
-    //   222: aload 7
-    //   224: invokestatic 228	aurn:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   227: astore 7
-    //   229: aload 5
-    //   231: invokeinterface 281 1 0
-    //   236: checkcast 158	java/lang/String
-    //   239: aload 7
-    //   241: invokevirtual 186	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   244: ifne +84 -> 328
-    //   247: aload 6
-    //   249: invokevirtual 284	java/io/File:delete	()Z
-    //   252: pop
-    //   253: iconst_2
-    //   254: istore_1
-    //   255: aload 4
-    //   257: invokeinterface 289 1 0
-    //   262: pop
-    //   263: aload_0
-    //   264: monitorexit
-    //   265: iconst_0
-    //   266: putstatic 67	alby:jdField_a_of_type_Boolean	Z
-    //   269: iload_1
-    //   270: ireturn
-    //   271: astore_0
-    //   272: iconst_0
-    //   273: putstatic 67	alby:jdField_a_of_type_Boolean	Z
-    //   276: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   279: ifeq +32 -> 311
-    //   282: ldc 54
-    //   284: iconst_2
-    //   285: new 29	java/lang/StringBuilder
-    //   288: dup
-    //   289: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   292: ldc_w 291
-    //   295: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   298: aload_0
-    //   299: invokevirtual 294	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   302: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   305: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   308: invokestatic 204	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   311: invokestatic 35	alby:a	()Ljava/lang/String;
-    //   314: iconst_0
-    //   315: invokestatic 297	bbdx:a	(Ljava/lang/String;Z)V
-    //   318: iconst_m1
-    //   319: ireturn
-    //   320: astore_3
-    //   321: aload_3
-    //   322: invokevirtual 300	java/io/IOException:printStackTrace	()V
-    //   325: goto -213 -> 112
-    //   328: aload 4
-    //   330: new 29	java/lang/StringBuilder
-    //   333: dup
-    //   334: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   337: ldc 217
-    //   339: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   342: aload 5
-    //   344: invokeinterface 278 1 0
-    //   349: checkcast 158	java/lang/String
-    //   352: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   358: aload 5
-    //   360: invokeinterface 281 1 0
-    //   365: checkcast 158	java/lang/String
-    //   368: invokeinterface 304 3 0
-    //   373: pop
-    //   374: goto -232 -> 142
-    //   377: astore_3
-    //   378: aload_0
-    //   379: monitorexit
-    //   380: aload_3
-    //   381: athrow
-    //   382: iconst_3
-    //   383: istore_1
-    //   384: goto -129 -> 255
-    //   387: iconst_4
-    //   388: istore_2
-    //   389: iload_2
-    //   390: istore_1
-    //   391: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   394: ifeq -129 -> 265
-    //   397: ldc 54
-    //   399: iconst_2
-    //   400: ldc_w 306
-    //   403: invokestatic 204	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   406: iload_2
-    //   407: istore_1
-    //   408: goto -143 -> 265
-    //   411: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   414: ifeq +12 -> 426
-    //   417: ldc 54
-    //   419: iconst_2
-    //   420: ldc_w 308
-    //   423: invokestatic 204	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   426: iconst_0
-    //   427: istore_1
-    //   428: goto -163 -> 265
-    //   431: iconst_0
-    //   432: istore_1
-    //   433: goto -178 -> 255
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   254	179	1	b1	byte
-    //   388	19	2	b2	byte
-    //   95	57	3	localObject1	Object
-    //   320	2	3	localIOException	java.io.IOException
-    //   377	4	3	localObject2	Object
-    //   65	264	4	localEditor	android.content.SharedPreferences.Editor
-    //   49	310	5	localObject3	Object
-    //   212	36	6	localFile	File
-    //   201	39	7	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   35	42	271	java/io/IOException
-    //   105	110	320	java/io/IOException
-    //   131	142	377	finally
-    //   142	253	377	finally
-    //   255	265	377	finally
-    //   328	374	377	finally
-    //   378	380	377	finally
-  }
-  
-  public static boolean b(String paramString)
-  {
-    return new File(a() + "/lib" + paramString + ".so").exists();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alby
  * JD-Core Version:    0.7.0.1
  */

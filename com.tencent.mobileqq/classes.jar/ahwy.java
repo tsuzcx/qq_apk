@@ -1,44 +1,27 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import android.content.Context;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
-class ahwy
-  implements aysc
+public class ahwy
+  extends bcik
 {
-  public void onResp(aysz paramaysz)
+  public ahwy(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, bcij parambcij, QQAppInterface paramQQAppInterface)
   {
-    Object localObject = (ahxb)paramaysz.jdField_a_of_type_Aysy.a();
-    lcg.c("VideoFilterTools", "download file call back. file = " + ((ahxb)localObject).a);
-    if (paramaysz.jdField_a_of_type_Int != 0)
-    {
-      lcg.c("VideoFilterTools", "download file faild. errcode = " + paramaysz.b);
-      return;
-    }
-    if (!((ahxb)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c)))
-    {
-      lcg.c("VideoFilterTools", "download file faild : md5 is not match.");
-      bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
-      return;
-    }
-    lcg.c("VideoFilterTools", "download file successed.");
-    try
-    {
-      localObject = ahww.a();
-      bbdx.a(paramaysz.jdField_a_of_type_Aysy.c, (String)localObject, false);
-      bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
-      return;
-    }
-    catch (IOException paramaysz)
-    {
-      paramaysz.printStackTrace();
-      lcg.c("VideoFilterTools", "BEAUTY_ZIP unzip file faild.");
-    }
+    super(paramContext, parambcij, paramQQAppInterface);
   }
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
+  protected void b(Object paramObject)
+  {
+    super.b(paramObject);
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(102);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwy
  * JD-Core Version:    0.7.0.1
  */

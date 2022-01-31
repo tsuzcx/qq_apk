@@ -7,7 +7,6 @@ import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 import org.json.JSONObject;
 
 class PermissionSettingFragment$1
@@ -20,16 +19,15 @@ class PermissionSettingFragment$1
     if ((paramBoolean) && (paramJSONObject != null))
     {
       QLog.d(PermissionSettingFragment.access$000(), 1, "getSetting-getAuthList suc, ret:" + paramJSONObject.toString());
-      Object localObject = paramJSONObject.opt("authList");
-      if ((localObject instanceof byte[]))
+      paramJSONObject = paramJSONObject.opt("authList");
+      if ((paramJSONObject instanceof byte[]))
       {
-        paramJSONObject = new INTERFACE.StGetAuthListRsp();
+        INTERFACE.StGetAuthListRsp localStGetAuthListRsp = new INTERFACE.StGetAuthListRsp();
         try
         {
-          paramJSONObject.mergeFrom((byte[])localObject);
-          localObject = paramJSONObject.auths.get();
-          paramJSONObject = paramJSONObject.settings.get();
-          this.this$0.authorizeCenter.updateAuthList((List)localObject, paramJSONObject);
+          localStGetAuthListRsp.mergeFrom((byte[])paramJSONObject);
+          paramJSONObject = localStGetAuthListRsp.settings.get();
+          this.this$0.authorizeCenter.updateAuthList(null, paramJSONObject);
           this.this$0.authorizeCenter.setAuthorizeSynchronized();
           this.this$0.getActivity().runOnUiThread(new PermissionSettingFragment.1.1(this));
           return;
@@ -51,7 +49,7 @@ class PermissionSettingFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

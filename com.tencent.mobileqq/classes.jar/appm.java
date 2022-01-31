@@ -1,20 +1,37 @@
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class appm
-  implements apuv
+  implements apsl
 {
-  appm(appl paramappl) {}
+  appm(appj paramappj) {}
   
-  public void onClick(View paramView)
+  public void a(List<apsj> paramList)
   {
-    int i = apvm.b(this.a.a.e());
-    axqy.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
-    this.a.a.h();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("refreshPanelData call back dataList = ");
+      if (paramList != null) {
+        break label60;
+      }
+    }
+    label60:
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.d("CameraEmotionAdapter", 2, localObject);
+      if (paramList != null)
+      {
+        this.a.a(paramList);
+        this.a.notifyDataSetChanged();
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appm
  * JD-Core Version:    0.7.0.1
  */

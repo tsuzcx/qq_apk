@@ -1,61 +1,136 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import android.graphics.BitmapFactory.Options;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
 public class aqyl
+  extends aynd
 {
-  public static float b;
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public float c;
-  public int c;
-  public int d = 10;
-  public int e = 8;
-  public int f = 150;
-  public int g = 300;
-  public int h = 32;
-  public int i = 27;
-  public int j = 3000;
-  public int k;
-  public int l;
+  private BitmapFactory.Options a = new BitmapFactory.Options();
   
-  static
+  public aqyl(bcws parambcws)
   {
-    jdField_b_of_type_Float = 1.0F;
+    super(parambcws);
   }
   
-  private aqyl()
+  public void a(ayjl paramayjl, ayru paramayru)
   {
-    this.jdField_a_of_type_Int = 250;
-    this.jdField_c_of_type_Int = 20;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Boolean = true;
+    paramayru.a().setMaxWidth(800);
+    Object localObject = (aqyg)paramayjl;
+    ImageView localImageView = paramayru.b();
+    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    localImageView.setImageDrawable(null);
+    localImageView.setBackgroundDrawable(null);
+    if (((aqyg)localObject).a == null) {
+      return;
+    }
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)((aqyg)localObject).a.get(0);
+    int i = arni.a(localFileManagerEntity.fileName);
+    if ((i == 0) || (i == 2))
+    {
+      if (bdcs.b(localFileManagerEntity.strThumbPath)) {
+        localObject = localFileManagerEntity.strThumbPath;
+      }
+      for (;;)
+      {
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramayru.b().getHeight();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramayru.b().getWidth();
+        paramayru = paramayru.d();
+        if ((paramayru != null) && (!TextUtils.isEmpty(paramayjl.d())))
+        {
+          paramayru.setText(paramayjl.d());
+          paramayru.setVisibility(0);
+        }
+        paramayjl = aroa.a(localFileManagerEntity);
+        if (paramayjl == null) {
+          break;
+        }
+        paramayjl = URLDrawable.getDrawable(paramayjl, (URLDrawable.URLDrawableOptions)localObject);
+        if (paramayjl == null) {
+          localImageView.setImageDrawable(localImageView.getContext().getResources().getDrawable(2130843839));
+        }
+        localImageView.setImageDrawable(paramayjl);
+        return;
+        if (bdcs.b(localFileManagerEntity.strLargeThumPath))
+        {
+          localObject = localFileManagerEntity.strLargeThumPath;
+        }
+        else
+        {
+          if (!bdcs.b(localFileManagerEntity.strFilePath)) {
+            break label266;
+          }
+          localObject = localFileManagerEntity.strFilePath;
+        }
+      }
+      label266:
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localFileManagerEntity.getCloudType() == 1) {
+        localObject = ((QQAppInterface)localObject).a().a(localFileManagerEntity, 7);
+      }
+    }
+    for (;;)
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localImageView.setImageDrawable(BaseApplicationImpl.getContext().getResources().getDrawable(2130843839));
+        return;
+        if (localFileManagerEntity.getCloudType() == 2) {
+          localObject = ((QQAppInterface)localObject).a().a(localFileManagerEntity.WeiYunFileId, localFileManagerEntity.strLargeThumPath, 3, localFileManagerEntity);
+        }
+      }
+      else
+      {
+        localFileManagerEntity.strThumbPath = ((String)localObject);
+        break;
+        arni.a(localImageView, localFileManagerEntity);
+        return;
+      }
+      localObject = "";
+    }
   }
   
-  public aqyl(HeartLayout paramHeartLayout)
+  public void b(ayjl paramayjl, ayru paramayru)
   {
-    this.jdField_a_of_type_Int = 250;
-    this.jdField_c_of_type_Int = 20;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = paramHeartLayout.getContext().getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = ((int)((paramHeartLayout.getWidth() - this.jdField_a_of_type_Float * 32.0F) / 2.0F));
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 27.0F));
-    this.h = ((int)(this.jdField_a_of_type_Float * 32.0F));
-    this.i = ((int)(this.jdField_a_of_type_Float * 27.0F));
-    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float * 20.0F));
-    this.d = ((int)(this.jdField_a_of_type_Float * 10.0F));
-    this.f = ((int)(this.jdField_a_of_type_Float * 150.0F));
-    this.g = ((int)(this.jdField_a_of_type_Float * 300.0F));
+    super.b(paramayjl, paramayru);
+    if ((paramayru.a() != null) && (!TextUtils.isEmpty(paramayjl.a())))
+    {
+      paramayru.a().setVisibility(0);
+      paramayru.a().setText(paramayjl.a());
+    }
+    if ((paramayru.b() != null) && (!TextUtils.isEmpty(paramayjl.b())))
+    {
+      paramayru.b().setVisibility(0);
+      paramayru.b().setText(paramayjl.b());
+    }
+    if ((paramayru.c() != null) && (!TextUtils.isEmpty(paramayjl.c())))
+    {
+      paramayru.c().setVisibility(0);
+      paramayru.c().setText(paramayjl.c());
+    }
+    if ((paramayjl.d() == null) && (paramayru.d() != null)) {
+      paramayru.d().setVisibility(8);
+    }
+    if ((paramayru.d() != null) && (paramayjl.d() != null))
+    {
+      paramayru.d().setVisibility(0);
+      paramayru.d().setText(paramayjl.d());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyl
  * JD-Core Version:    0.7.0.1
  */

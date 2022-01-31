@@ -1,22 +1,25 @@
-public class vzo
+import android.support.annotation.NonNull;
+
+public abstract class vzo
+  implements vzf
 {
-  bcqf a;
+  protected void a(Error paramError) {}
   
-  vzo(bcqf parambcqf)
+  protected void a(vzc paramvzc) {}
+  
+  public final void a(@NonNull vzd paramvzd)
   {
-    this.a = parambcqf;
+    a(new vzc(paramvzd.a()));
   }
   
-  public void a()
+  public final void b(@NonNull vzd paramvzd)
   {
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
-    }
+    a(paramvzd.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzo
  * JD-Core Version:    0.7.0.1
  */

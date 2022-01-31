@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import actj;
+import aekt;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import aqau;
-import aqbe;
-import aqdm;
-import axqy;
+import aruc;
+import arum;
+import arwu;
+import azmj;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -17,13 +17,13 @@ public class BaseForwardSelectionActivity
   extends FragmentActivity
 {
   protected Bundle a;
-  public aqbe a;
+  public arum a;
   public boolean a;
   public boolean b;
   
   private void a()
   {
-    Intent localIntent = actj.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = aekt.a(new Intent(this, SplashActivity.class), null);
     Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
     ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", false);
     ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
@@ -54,7 +54,7 @@ public class BaseForwardSelectionActivity
       finish();
       return;
     }
-    this.jdField_a_of_type_Aqbe.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Arum.a(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -66,8 +66,8 @@ public class BaseForwardSelectionActivity
       this.b = getIntent().getBooleanExtra("call_by_forward", false);
       if (this.b)
       {
-        this.jdField_a_of_type_Aqbe = aqdm.a(paramBundle, this.app, this);
-        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Aqbe.a();
+        this.jdField_a_of_type_Arum = arwu.a(paramBundle, this.app, this);
+        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Arum.a();
       }
     }
     return true;
@@ -75,8 +75,8 @@ public class BaseForwardSelectionActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Aqbe != null) {
-      this.jdField_a_of_type_Aqbe.w();
+    if (this.jdField_a_of_type_Arum != null) {
+      this.jdField_a_of_type_Arum.w();
     }
     super.doOnDestroy();
   }
@@ -99,14 +99,14 @@ public class BaseForwardSelectionActivity
     paramIntent = (String)paramIntent.get(0);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_forward_ability_type", 0);
-    if ((i == aqau.f.intValue()) || (i == aqau.k.intValue()))
+    if ((i == aruc.f.intValue()) || (i == aruc.k.intValue()))
     {
-      this.jdField_a_of_type_Aqbe.b(i);
+      this.jdField_a_of_type_Arum.b(i);
       return;
     }
     this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
     a();
-    axqy.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
+    azmj.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
   }
   
   public void finish()
@@ -117,7 +117,7 @@ public class BaseForwardSelectionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseForwardSelectionActivity
  * JD-Core Version:    0.7.0.1
  */

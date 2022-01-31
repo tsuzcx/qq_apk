@@ -1,65 +1,44 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-public class anbq
-  extends ampa<anbp>
+class anbq
+  extends Handler
 {
-  public static anbp a()
+  public anbq(anbp paramanbp, Looper paramLooper)
   {
-    return (anbp)ampl.a().a(261);
+    super(paramLooper);
   }
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return 261;
-  }
-  
-  @NonNull
-  public anbp a(int paramInt)
-  {
-    return new anbp();
-  }
-  
-  @Nullable
-  public anbp a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return anbp.a(paramArrayOfamph);
+    switch (paramMessage.what)
+    {
     }
-    return null;
-  }
-  
-  public Class<anbp> a()
-  {
-    return anbp.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocConvertConfigProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(anbp paramanbp) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    do
+    {
+      return;
+      anbp.a(this.a);
+      return;
+      if (anbp.a(this.a))
+      {
+        anbp.a(this.a, false);
+        anak.a();
+      }
+      try
+      {
+        anbp.b(this.a);
+        return;
+      }
+      catch (Throwable paramMessage) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("QRSession", 2, paramMessage.getMessage(), paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,29 @@
-import android.annotation.TargetApi;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
-@TargetApi(14)
-public class bjzx
+class bjzx
+  implements View.OnClickListener
 {
-  private static float jdField_a_of_type_Float;
-  private static int jdField_a_of_type_Int;
-  private static int b;
+  bjzx(bjzu parambjzu, String paramString) {}
   
-  public static float a(Resources paramResources)
+  public void onClick(View paramView)
   {
-    if ((b == 0) || (jdField_a_of_type_Int == 0))
+    bjzu.a(this.jdField_a_of_type_Bjzu);
+    if ((bjzu.a(this.jdField_a_of_type_Bjzu) != null) && (bjzu.a(this.jdField_a_of_type_Bjzu).a() != null) && (bjzu.a(this.jdField_a_of_type_Bjzu).a().app != null) && (bjzu.a(this.jdField_a_of_type_Bjzu) != null))
     {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
+      bjzt.a(bjzu.a(this.jdField_a_of_type_Bjzu).a().app, bjzu.a(this.jdField_a_of_type_Bjzu).a(), this.jdField_a_of_type_JavaLangString, 4005);
+      bjzt.a(bjzu.a(this.jdField_a_of_type_Bjzu).a().app, 102, String.valueOf(bjzu.a(this.jdField_a_of_type_Bjzu).iAdId.get()), bjzu.a(this.jdField_a_of_type_Bjzu).traceinfo.get());
     }
-    return jdField_a_of_type_Float;
-  }
-  
-  public static int a(Resources paramResources)
-  {
-    if (jdField_a_of_type_Int == 0)
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return jdField_a_of_type_Int;
-  }
-  
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new bjzy(paramView));
-    paramView.setVisibility(8);
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static int b(Resources paramResources)
-  {
-    if (b == 0)
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return b;
-  }
-  
-  public static void b(View paramView, boolean paramBoolean)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(500L);
-    if (paramBoolean) {
-      localAlphaAnimation.setStartOffset(500L);
-    }
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new bjzz(paramView));
-    paramView.setVisibility(0);
-    paramView.startAnimation(localAlphaAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzx
  * JD-Core Version:    0.7.0.1
  */

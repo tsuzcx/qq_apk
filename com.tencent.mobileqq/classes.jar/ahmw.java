@@ -1,18 +1,27 @@
-import com.tencent.widget.XListView;
-
-class ahmw
-  implements tkq
+public class ahmw
 {
-  ahmw(ahmv paramahmv) {}
+  public akhv a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
   
-  public void a()
+  public ahmw(akhv paramakhv)
   {
-    this.a.a.invalidateViews();
+    this.a = paramakhv;
+  }
+  
+  public String toString()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahmw
  * JD-Core Version:    0.7.0.1
  */

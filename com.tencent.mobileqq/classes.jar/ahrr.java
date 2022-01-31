@@ -1,89 +1,47 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.text.method.PasswordTransformationMethod;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import android.graphics.Color;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class ahrr
-  implements TextWatcher
+  extends RecyclerView.OnScrollListener
 {
-  public ahrr(LoginView paramLoginView) {}
+  public ahrr(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
-      LoginView.a(this.a, null);
-    }
-    String str;
-    SimpleAccount localSimpleAccount;
-    for (;;)
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    paramInt1 = paramRecyclerView.findFirstVisibleItemPosition();
+    String str = EmoticonGroupStoreFragment.a(this.a).a(paramInt1);
+    if ((str != null) && (paramInt2 != 0))
     {
-      return;
-      if (paramCharSequence != null)
+      EmoticonGroupStoreFragment.a(this.a).setTextSize(16.0F);
+      EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF000000"));
+      EmoticonGroupStoreFragment.a(this.a).setText(str);
+    }
+    if (paramInt2 < 0)
+    {
+      paramRecyclerView = paramRecyclerView.findViewByPosition(paramInt1);
+      if (paramRecyclerView != null)
       {
-        str = paramCharSequence.toString();
-        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
-          break;
-        }
-        paramInt1 = 0;
-        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+        float f = paramRecyclerView.getY();
+        if ((paramInt1 == 0) && (0.0F == f))
         {
-          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
-          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
-            break label110;
-          }
-          paramInt1 += 1;
+          EmoticonGroupStoreFragment.a(this.a).setTextSize(14.0F);
+          EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF777777"));
+          EmoticonGroupStoreFragment.a(this.a).setText(EmoticonGroupStoreFragment.a(this.a));
         }
       }
-    }
-    label110:
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-    {
-      paramCharSequence = localSimpleAccount.getUin();
-      label126:
-      if (!str.equals(paramCharSequence)) {
-        break label298;
-      }
-      if ((localSimpleAccount != null) && (localSimpleAccount.isLogined())) {
-        if (!LoginView.h(this.a))
-        {
-          LoginView.h(this.a, true);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-          paramCharSequence = this.a.c;
-          if ((!LoginView.d(this.a)) && (!LoginView.e(this.a)) && (!LoginView.f(this.a))) {
-            break label300;
-          }
-        }
-      }
-    }
-    label298:
-    label300:
-    for (paramInt1 = 2130846072;; paramInt1 = 2130843889)
-    {
-      paramCharSequence.setImageResource(paramInt1);
-      this.a.c.setContentDescription(ajya.a(2131706361));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("!@#ewaGbhkc$!!=");
-      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
-      LoginView.c(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
-      return;
-      paramCharSequence = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(localSimpleAccount.getUin());
-      break label126;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrr
  * JD-Core Version:    0.7.0.1
  */

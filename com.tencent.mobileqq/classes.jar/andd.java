@@ -1,78 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public final class andd
-  extends ampa<andc>
+class andd
+  implements Animator.AnimatorListener
 {
-  public static andc a()
+  andd(andc paramandc) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.d("TencentDocUrl2DocConfigProcessor", 1, "getConfig");
-    return (andc)ampl.a().a(559);
+    if (andc.a(this.a) != null) {
+      andc.a(this.a).a();
+    }
   }
   
-  public static boolean a(String paramString)
-  {
-    andc localandc = a();
-    return (localandc != null) && (localandc.a()) && (localandc.a(paramString));
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public int a()
-  {
-    return 559;
-  }
-  
-  @NonNull
-  public andc a(int paramInt)
-  {
-    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new andc();
-  }
-  
-  @Nullable
-  public andc a(amph[] paramArrayOfamph)
-  {
-    return andc.a(paramArrayOfamph);
-  }
-  
-  public Class<andc> a()
-  {
-    return andc.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.e("TencentDocUrl2DocConfigProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(andc paramandc)
-  {
-    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "onUpdate");
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andd
  * JD-Core Version:    0.7.0.1
  */

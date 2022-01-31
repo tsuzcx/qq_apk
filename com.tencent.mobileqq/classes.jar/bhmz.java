@@ -1,21 +1,21 @@
-import android.net.Proxy;
+import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
 
-final class bhmz
-  extends bhmy
+public class bhmz
+  implements GestureGameResource
 {
-  public int a()
+  public String getGameModelPath()
   {
-    return Proxy.getDefaultPort();
+    return azce.c();
   }
   
-  public String a()
+  public boolean isGestureGameEnable()
   {
-    return Proxy.getDefaultHost();
+    return azbx.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhmz
  * JD-Core Version:    0.7.0.1
  */

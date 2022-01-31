@@ -1,35 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ColorNickTextView;
 
 public class aibm
-  extends aibu
 {
-  protected final BaseChatPie a;
-  
-  public aibm(BaseChatPie paramBaseChatPie)
-  {
-    this.a = paramBaseChatPie;
-  }
-  
-  void a(bbmf parambbmf, View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((parambbmf != null) && (parambbmf.a() > 0))
-    {
-      if (this.a == null) {
-        break label43;
-      }
-      if (this.a.g() < 8) {
-        a(paramView, paramInt1, paramInt2, parambbmf, paramInt3, false);
-      }
-    }
-    return;
-    label43:
-    a(paramView, paramInt1, paramInt2, parambbmf, paramInt3, false);
-  }
+  public ImageView a;
+  public TextView a;
+  public ColorNickTextView a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibm
  * JD-Core Version:    0.7.0.1
  */

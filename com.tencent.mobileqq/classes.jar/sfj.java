@@ -1,24 +1,76 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.qphone.base.util.QLog;
 
-class sfj
-  implements bckm
+public class sfj<T>
 {
-  sfj(sfh paramsfh) {}
+  public static final String a;
+  private int jdField_a_of_type_Int;
+  private T jdField_a_of_type_JavaLangObject;
+  private final sfk<T> jdField_a_of_type_Sfk;
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  static
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    jdField_a_of_type_JavaLangString = "zimage." + sfj.class.getSimpleName();
+  }
+  
+  public sfj(T paramT, sfk<T> paramsfk)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.jdField_a_of_type_Sfk = paramsfk;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public T a()
+  {
+    try
+    {
+      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+      return localObject1;
+    }
+    finally
+    {
+      localObject2 = finally;
+      throw localObject2;
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int += 1;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int -= 1;
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        if (QLog.isColorLevel()) {
+          sfm.a("Reference", " decReference 0 " + this.jdField_a_of_type_JavaLangObject);
+        }
+        if (this.jdField_a_of_type_JavaLangObject != null)
+        {
+          this.jdField_a_of_type_Sfk.a(this.jdField_a_of_type_JavaLangObject);
+          this.jdField_a_of_type_JavaLangObject = null;
+        }
+      }
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     sfj
  * JD-Core Version:    0.7.0.1
  */

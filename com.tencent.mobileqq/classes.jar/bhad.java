@@ -1,16 +1,26 @@
-class bhad
-  implements bhab
+public class bhad
+  implements bghv<Boolean>
 {
-  bhad(bhac parambhac, bgzz parambgzz) {}
+  private String a;
   
-  public void a()
+  public static bhad a(String paramString)
   {
-    this.jdField_a_of_type_Bgzz.a();
+    bhad localbhad = new bhad();
+    localbhad.a = paramString;
+    return localbhad;
+  }
+  
+  public Boolean a(bghl parambghl)
+  {
+    if ((parambghl instanceof bhap)) {
+      ((bhap)parambghl).a(this.a);
+    }
+    return Boolean.valueOf(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhad
  * JD-Core Version:    0.7.0.1
  */

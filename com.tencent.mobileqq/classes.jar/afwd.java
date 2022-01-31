@@ -1,19 +1,50 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class afwd
-  implements afwa
+  extends aelt
 {
-  public afwd(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public VideoProgressView a;
+  public CropBubbleVideoView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public boolean a(TencentDocItem paramTencentDocItem)
+  public afwd(afvt paramafvt) {}
+  
+  public void a()
   {
-    return (this.a.a != null) && (this.a.a.a(paramTencentDocItem));
+    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
+    {
+      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
+      if (l > 0L)
+      {
+        MessageForShortVideo localMessageForShortVideo = bdan.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        if (localMessageForShortVideo != null) {
+          afvt.a(this.jdField_a_of_type_Afvt, localMessageForShortVideo, l);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
+      afvt.a().remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afwd
  * JD-Core Version:    0.7.0.1
  */

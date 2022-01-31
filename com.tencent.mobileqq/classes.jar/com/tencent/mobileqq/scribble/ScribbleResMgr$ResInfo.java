@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.scribble;
 
-import arlz;
+import atcn;
 
 public class ScribbleResMgr$ResInfo
 {
-  @arlz(a="downloading")
+  @atcn(a="downloading")
   public boolean downloading;
-  @arlz(a="isShow")
+  @atcn(a="isShow")
   public int isShow = 1;
-  @arlz(a="name")
+  @atcn(a="name")
   public String name = "";
-  @arlz(a="orderIndex")
+  @atcn(a="orderIndex")
   public int orderIndex;
-  @arlz(a="predownload")
+  @atcn(a="predownload")
   public int predownload = 1;
-  @arlz(a="resType")
+  @atcn(a="resType")
   public int resType;
-  @arlz(a="showInApp")
+  @atcn(a="showInApp")
   public int showInApp;
-  @arlz(a="sourceId")
+  @atcn(a="sourceId")
   public int sourceId;
-  @arlz(a="sourceMd5")
+  @atcn(a="sourceMd5")
   public String sourceMd5 = "";
-  @arlz(a="sourceUrl")
+  @atcn(a="sourceUrl")
   public String sourceUrl = "";
   
   ResInfo cpy(ResInfo paramResInfo)
@@ -43,7 +43,7 @@ public class ScribbleResMgr$ResInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo
  * JD-Core Version:    0.7.0.1
  */

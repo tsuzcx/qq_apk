@@ -1,30 +1,37 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class alzm
-  extends AnimatorListenerAdapter
+class alzm
+  implements muf
 {
-  public alzm(SelectCoverActivity paramSelectCoverActivity, View paramView1, View paramView2) {}
+  private final bcrz jdField_a_of_type_Bcrz;
+  private final WeakReference<alzf> jdField_a_of_type_JavaLangRefWeakReference;
+  private final long[] jdField_a_of_type_ArrayOfLong;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  alzm(alzf paramalzf, bcrz parambcrz, long[] paramArrayOfLong)
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-    this.b.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalzf);
+    this.jdField_a_of_type_Bcrz = parambcrz;
+    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt1, muh parammuh, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-    this.b.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
+    parammuh = (alzf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((parammuh != null) && (parammuh.app != null))
+    {
+      if (paramInt1 == 0) {
+        parammuh.app.a().a(1, this.jdField_a_of_type_Bcrz.a, this.jdField_a_of_type_Bcrz.b, this.jdField_a_of_type_ArrayOfLong, 2, 0, 0, -1);
+      }
+      return;
+    }
+    QLog.e("TroopHandler", 1, "WeakGVideoGrayConfigListener#onResult get weakAppReference " + parammuh);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzm
  * JD-Core Version:    0.7.0.1
  */

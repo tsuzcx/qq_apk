@@ -1,13 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+
 public class ysq
+  implements View.OnClickListener
 {
-  public static String a(long paramLong1, long paramLong2, int paramInt)
+  public ysq(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    return bdik.d(String.format("%s_%d_%d_%d", new Object[] { "!@#$%qboi!@#^&*m13=4aa22", Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) })).toLowerCase();
+    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.view.OrientationEventListener;
-import behq;
-import betc;
+import bgho;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 public class OrientationJsPlugin
   extends BaseJsPlugin
@@ -13,15 +13,15 @@ public class OrientationJsPlugin
   private String lastOrientation;
   private OrientationEventListener mOrientationListener;
   
-  public void onCreate(behq parambehq)
+  public void onCreate(bgho parambgho)
   {
-    super.onCreate(parambehq);
+    super.onCreate(parambgho);
     if (this.mMiniAppContext.a() != null)
     {
-      this.mOrientationListener = new OrientationJsPlugin.GameOrientationListener(this, parambehq.a(), 3);
+      this.mOrientationListener = new OrientationJsPlugin.GameOrientationListener(this, parambgho.a(), 3);
       if (this.mOrientationListener.canDetectOrientation())
       {
-        betc.b("OrientationJsPlugin", "can detect orientation, start listening Orientation change");
+        QMLog.i("OrientationJsPlugin", "can detect orientation, start listening Orientation change");
         this.mOrientationListener.enable();
       }
     }
@@ -29,13 +29,13 @@ public class OrientationJsPlugin
     {
       return;
     }
-    betc.b("OrientationJsPlugin", "can not detect orientation");
+    QMLog.i("OrientationJsPlugin", "can not detect orientation");
     this.mOrientationListener.disable();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.plugins.OrientationJsPlugin
  * JD-Core Version:    0.7.0.1
  */

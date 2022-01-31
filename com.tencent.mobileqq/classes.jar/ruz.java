@@ -1,25 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class ruz
-  extends AnimatorListenerAdapter
+  implements azzy
 {
-  public ruz(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
+  public ruz(ReadInJoySkinGuideView.1 param1) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(azzb paramazzb)
   {
-    this.a.setClickable(true);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setClickable(true);
+    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, paramazzb));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ruz
  * JD-Core Version:    0.7.0.1
  */

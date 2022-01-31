@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class qal
-  implements Parcelable.Creator<ArticleInfo>
+class qal
+  implements View.OnClickListener
 {
-  public ArticleInfo a(Parcel paramParcel)
-  {
-    return new ArticleInfo(paramParcel);
-  }
+  qal(qaf paramqaf) {}
   
-  public ArticleInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ArticleInfo[paramInt];
+    paramView = this.a.jdField_a_of_type_Rqj.a();
+    if (paramView != null) {
+      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qal
  * JD-Core Version:    0.7.0.1
  */

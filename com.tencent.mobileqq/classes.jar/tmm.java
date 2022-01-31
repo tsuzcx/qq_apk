@@ -1,59 +1,174 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class tmm
-  extends sys<tog>
+  implements thf
 {
-  public String a = "";
-  public String b = "";
-  public int c;
+  private tnc jdField_a_of_type_Tnc;
+  private tne jdField_a_of_type_Tne;
+  private tnk jdField_a_of_type_Tnk;
   
-  public String a()
+  private WSPlayerManager a()
   {
-    return sxm.a("StorySvc.homepage_feed_loadmore_720");
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
-    try
-    {
-      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
-      return new tog(localRspFriendStoryFeedVideoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      ved.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
+    if ((this.jdField_a_of_type_Tnk != null) && (this.jdField_a_of_type_Tnk.a() != null)) {
+      return this.jdField_a_of_type_Tnk.a().a();
     }
     return null;
   }
   
-  protected byte[] a()
+  public void a(thl paramthl) {}
+  
+  public void a(thl paramthl, int paramInt1, int paramInt2, String paramString)
   {
-    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
-    if (!TextUtils.isEmpty(this.a)) {
-      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.h();
+      this.jdField_a_of_type_Tnc.a(paramString);
     }
-    if (!TextUtils.isEmpty(this.b)) {
-      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
-    return localReqFriendStoryFeedVideoList.toByteArray();
   }
   
-  public String toString()
+  public void a(thl paramthl, int paramInt, boolean paramBoolean) {}
+  
+  public void a(thl paramthl, long paramLong1, long paramLong2)
   {
-    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
+    if ((this.jdField_a_of_type_Tne != null) && (!this.jdField_a_of_type_Tne.a()))
+    {
+      if (paramLong2 == 0L) {
+        this.jdField_a_of_type_Tne.a(0.0F);
+      }
+    }
+    else {
+      return;
+    }
+    float f = (float)paramLong1 / (float)paramLong2;
+    this.jdField_a_of_type_Tne.a(f);
+  }
+  
+  public void a(thl paramthl, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Tne != null)
+    {
+      tlo.b("WS_VIDEO_ProgressBar", "WSVerticalPlayerUIDelegate onVideoInitiate() show");
+      this.jdField_a_of_type_Tne.f();
+    }
+  }
+  
+  public void a(thl paramthl, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((this.jdField_a_of_type_Tnc != null) && (paramBoolean1) && (paramBoolean2)) {
+      this.jdField_a_of_type_Tnc.a(8, 400);
+    }
+  }
+  
+  public void a(tnk paramtnk)
+  {
+    this.jdField_a_of_type_Tnk = paramtnk;
+    if (paramtnk != null)
+    {
+      this.jdField_a_of_type_Tnc = paramtnk.a();
+      this.jdField_a_of_type_Tne = paramtnk.a();
+    }
+  }
+  
+  public boolean a(thl paramthl)
+  {
+    return false;
+  }
+  
+  public void b(thl paramthl) {}
+  
+  public void c(thl paramthl)
+  {
+    tlo.b("WS_VIDEO_VerticalUIDelegate", "WSVerticalPlayerUIDelegate onVideoViewLayoutSwitched()");
+    if (this.jdField_a_of_type_Tnc != null) {
+      this.jdField_a_of_type_Tnc.a(8, 200);
+    }
+  }
+  
+  public void d(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.a(8, 400);
+      this.jdField_a_of_type_Tnc.b(8);
+      this.jdField_a_of_type_Tnc.h();
+      this.jdField_a_of_type_Tnc.i();
+    }
+    if (this.jdField_a_of_type_Tne != null)
+    {
+      tlo.b("WS_VIDEO_ProgressBar", "WSVerticalPlayerUIDelegate onVideoStart() hide");
+      this.jdField_a_of_type_Tne.g();
+    }
+  }
+  
+  public void e(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null) {
+      this.jdField_a_of_type_Tnc.b(0);
+    }
+  }
+  
+  public void f(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.b(8);
+      this.jdField_a_of_type_Tnc.i();
+    }
+  }
+  
+  public void g(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.h();
+      this.jdField_a_of_type_Tnc.a(0, 100);
+      this.jdField_a_of_type_Tnc.b(8);
+    }
+    if (this.jdField_a_of_type_Tne != null) {
+      this.jdField_a_of_type_Tne.g();
+    }
+  }
+  
+  public void h(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.g();
+      paramthl = a();
+      if ((paramthl != null) && (paramthl.b())) {
+        this.jdField_a_of_type_Tnc.b(8);
+      }
+    }
+  }
+  
+  public void i(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tne != null)
+    {
+      tlo.b("WS_VIDEO_ProgressBar", "WSVerticalPlayerUIDelegate onVideoBufferEnd() hide");
+      this.jdField_a_of_type_Tne.g();
+    }
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.h();
+      paramthl = a();
+      if ((paramthl != null) && (paramthl.b())) {
+        this.jdField_a_of_type_Tnc.b(0);
+      }
+    }
+  }
+  
+  public void j(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null) {
+      this.jdField_a_of_type_Tnc.a(0, 100);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmm
  * JD-Core Version:    0.7.0.1
  */

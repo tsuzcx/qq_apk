@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount;
 
-import akpx;
-import axzs;
+import abot;
+import azvm;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
-import nol;
+import nrt;
 import org.json.JSONObject;
-import set;
+import swn;
 
 public final class VideoReporter$2
   implements Runnable
@@ -22,8 +22,8 @@ public final class VideoReporter$2
     if (this.jdField_a_of_type_Int == -2011)
     {
       l1 = System.currentTimeMillis();
-      localaxzs = set.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long));
-      if (localaxzs != null) {
+      localazvm = swn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long));
+      if (localazvm != null) {
         localObject1 = "";
       }
     }
@@ -32,9 +32,9 @@ public final class VideoReporter$2
       try
       {
         localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("vid", localaxzs.U);
+        ((JSONObject)localObject2).put("vid", localazvm.U);
         ((JSONObject)localObject2).put("os", "1");
-        if (!akpx.c(this.b)) {
+        if (!abot.d(this.b)) {
           continue;
         }
         ((JSONObject)localObject2).put("aiotype", i);
@@ -47,14 +47,14 @@ public final class VideoReporter$2
         long l2;
         localException.printStackTrace();
         continue;
-        String str = localaxzs.Z;
+        String str = localazvm.Z;
         continue;
       }
-      if (localaxzs.Z != null) {
+      if (localazvm.Z != null) {
         continue;
       }
       localObject2 = "0";
-      nol.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "1", (String)localObject2, (String)localObject1, false);
+      nrt.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "1", (String)localObject2, (String)localObject1, false);
       l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("VideoReporter", 2, "reportVideoStructMsgSendSuc cost = " + (l2 - l1) + "ms");
@@ -78,7 +78,7 @@ public final class VideoReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoReporter.2
  * JD-Core Version:    0.7.0.1
  */

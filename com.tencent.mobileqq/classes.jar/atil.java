@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.1.1;
-
-public class atil
-  implements atiu
+public abstract interface atil
 {
-  atil(atik paramatik) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ThreadManagerV2.excute(new ShortVideoShareUtil.1.1.1(this, (aszf)this.a.a.getManager(106)), 16, null, false);
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atil
  * JD-Core Version:    0.7.0.1
  */

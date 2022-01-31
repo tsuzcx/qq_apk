@@ -9,33 +9,33 @@ class TPDownloadProxyService$DownloadProxy$3
 {
   TPDownloadProxyService$DownloadProxy$3(TPDownloadProxyService.DownloadProxy paramDownloadProxy, ITPPreLoadListenerAidl paramITPPreLoadListenerAidl) {}
   
-  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
     try
     {
       if (this.val$preloadListener != null) {
-        this.val$preloadListener.onPrepareDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2);
+        this.val$preloadListener.onPrepareDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2, paramString);
       }
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Throwable paramString)
     {
-      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onPrepareDownloadProgressUpdate failed, error:" + localThrowable.toString());
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onPrepareDownloadProgressUpdate failed, error:" + paramString.toString());
     }
   }
   
-  public void onPrepareError()
+  public void onPrepareError(int paramInt1, int paramInt2, String paramString)
   {
     try
     {
       if (this.val$preloadListener != null) {
-        this.val$preloadListener.onPrepareError();
+        this.val$preloadListener.onPrepareError(paramInt1, paramInt2, paramString);
       }
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Throwable paramString)
     {
-      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onPrepareError failed, error:" + localThrowable.toString());
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onPrepareError failed, error:" + paramString.toString());
     }
   }
   
@@ -56,7 +56,7 @@ class TPDownloadProxyService$DownloadProxy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.service.TPDownloadProxyService.DownloadProxy.3
  * JD-Core Version:    0.7.0.1
  */

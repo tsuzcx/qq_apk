@@ -1,21 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class absy
-  extends atzn
+class absy
+  extends SimpleObserver<atzw>
 {
-  public absy(PublicAccountListActivity paramPublicAccountListActivity) {}
+  absy(absu paramabsu, abte paramabte) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(atzw paramatzw)
   {
-    if (PublicAccountListActivity.a(this.a)) {
-      PublicAccountListActivity.a(this.a);
+    abte localabte = this.jdField_a_of_type_Abte;
+    if (paramatzw.c == 1) {}
+    for (int i = 2;; i = 3)
+    {
+      localabte.a(paramatzw, i);
+      return;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
+    }
+    int i;
+    if ((paramError instanceof VerifyUrlJobSegment.UrlNotauthorizedError)) {
+      i = 4;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Abte.a(null, i);
+      return;
+      if ((paramError instanceof AppInfoError)) {
+        i = ((AppInfoError)paramError).type;
+      } else {
+        i = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absy
  * JD-Core Version:    0.7.0.1
  */

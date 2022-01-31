@@ -1,67 +1,138 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.PopupWindow;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import java.util.HashSet;
 import java.util.Set;
-import mqq.app.AppRuntime;
 
 public class oop
-  implements AladdinConfigHandler
+  extends PopupWindow
 {
-  public static int a(AppRuntime paramAppRuntime, int paramInt)
+  public final float a;
+  private final int jdField_a_of_type_Int = 0;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  public final String a;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private oot jdField_a_of_type_Oot;
+  public final float b;
+  private int b;
+  
+  public oop(Activity paramActivity, ArticleInfo paramArticleInfo)
   {
-    int i = 1;
-    if (paramAppRuntime == null)
+    super(paramActivity);
+    this.jdField_a_of_type_JavaLangString = "GuidePopuppWindow";
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    a(a());
+    setTouchable(true);
+    setFocusable(true);
+    setOutsideTouchable(false);
+    setInputMethodMode(1);
+    setBackgroundDrawable(new ColorDrawable(0));
+    a();
+  }
+  
+  private void a(VafContext paramVafContext)
+  {
+    TemplateBean localTemplateBean = otd.a(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
+    opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), localTemplateBean.getViewBean());
+    setContentView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    paramVafContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
+    setHeight(paramVafContext.mLayoutHeight);
+    setWidth(paramVafContext.mLayoutWidth);
+  }
+  
+  public VafContext a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
     {
-      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
-      return 0;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new put();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(this.jdField_a_of_type_AndroidAppActivity);
+      opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "comment_feeds");
     }
-    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
-    if (BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).getBoolean("channel_" + paramInt, false)) {}
-    for (paramInt = i;; paramInt = 0) {
-      return paramInt;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  }
+  
+  public void a()
+  {
+    setOnDismissListener(new ooq(this));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
     }
   }
   
-  public static void a(AppRuntime paramAppRuntime, int paramInt)
+  protected void a(float paramFloat)
   {
-    if (paramAppRuntime == null)
+    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
+    localLayoutParams.alpha = paramFloat;
+    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(View paramView)
+  {
+    if (isShowing())
     {
-      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
+      dismiss();
       return;
     }
-    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
-    BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).edit().putBoolean("channel_" + paramInt, true).apply();
+    this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
+    a(0);
+    a(1.0F);
+    setAnimationStyle(2131755037);
+    showAtLocation(paramView, 17, 0, 0);
+    paramView = new orz();
+    paramView.i().b("wording", "" + otd.a());
+    olt.a("0X8009FE7", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramView);
   }
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void a(ArticleInfo paramArticleInfo)
   {
-    QLog.d("ChannelListDynamicOrder", 2, "[onReceiveConfig] " + paramString);
-    paramString = oof.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("channel_list_dynamic_order_switch", str1)) {
-        bhvy.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void a(Container paramContainer)
+  {
+    if (paramContainer == null) {
+      return;
     }
-    return true;
+    ViewFactory.findClickableViewListener(paramContainer.getVirtualView(), new oor(this));
   }
   
-  public void onWipeConfig(int paramInt)
+  public void a(oot paramoot)
   {
-    bhvy.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false));
+    this.jdField_a_of_type_Oot = paramoot;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oop
  * JD-Core Version:    0.7.0.1
  */

@@ -1,89 +1,109 @@
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qzonealbumreddot.QzonePhotoGuideNotifyService.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class awxa
-  implements awws
 {
-  public static final String a;
-  public final int a;
-  public Context a;
-  public View a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new awxb(this);
+  protected Handler a;
+  public awwx a;
+  protected QQAppInterface a;
+  Runnable jdField_a_of_type_JavaLangRunnable = new QzonePhotoGuideNotifyService.1(this);
   
-  static
+  public awxa(QQAppInterface paramQQAppInterface, awwx paramawwx)
   {
-    jdField_a_of_type_JavaLangString = awxa.class.getSimpleName();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Awwx = paramawwx;
+    if (paramQQAppInterface != null) {}
+    try
+    {
+      paramawwx = new IntentFilter("com.qzonex.localalbum.new_photo_notification_feedback_action");
+      paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramawwx);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("QzonePhotoGuideNotifyServlet", 1, "registerreceiver fail:" + paramQQAppInterface);
+    }
   }
   
-  public awxa(Context paramContext, int paramInt)
+  public static boolean a(Context paramContext, int paramInt)
   {
-    if (paramContext == null) {
-      throw new IllegalArgumentException(jdField_a_of_type_JavaLangString + "type is illegal, type = " + paramInt);
-    }
-    int i;
-    if (paramInt >= 0)
+    boolean bool = false;
+    try
     {
-      i = paramInt;
-      if (paramInt <= 2) {}
-    }
-    else
-    {
-      i = 0;
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "type is illegal, type = " + 0);
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = i;
-  }
-  
-  public View a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView;
-    }
-    boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      if (bool) {
-        localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166783));
+      paramContext = paramContext.getPackageManager().getApplicationInfo("com.qzone", 128);
+      if ((paramContext == null) || (paramContext.metaData == null)) {
+        break label50;
       }
-      break;
+      i = paramContext.metaData.getInt("com.qzone.versioncode");
     }
-    for (;;)
+    catch (PackageManager.NameNotFoundException paramContext)
     {
-      this.jdField_a_of_type_AndroidViewView = localRelativeLayout;
-      return localRelativeLayout;
-      localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, baxn.a(this.jdField_a_of_type_AndroidContentContext, 12.0F)));
-      View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-      if (bool) {
-        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166794));
-      }
       for (;;)
       {
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, 1);
-        localLayoutParams.addRule(15);
-        localLayoutParams.leftMargin = baxn.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-        localLayoutParams.rightMargin = baxn.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-        localRelativeLayout.addView(localView, localLayoutParams);
-        break;
-        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166793));
+        paramContext.printStackTrace();
+        int i = 0;
       }
-      localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, baxn.a(this.jdField_a_of_type_AndroidContentContext, 18.0F)));
-      break;
-      localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167134));
+    }
+    if (i >= paramInt) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Intent localIntent = new Intent("com.qzonex.localalbum.new_photo_notification_action");
+      localIntent.setComponent(new ComponentName("com.qzone", "com.qzonex.proxy.localalbum.business.NewPhotoNotificationService"));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().startService(localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.i("QzonePhotoGuideNotifyServlet", 2, "calling qzone");
+      }
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("QzonePhotoGuideNotifyServlet", 1, "startService fail:" + localException);
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzonePhotoGuideNotifyServlet", 1, "stopService fail:" + localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awxa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,18 @@
-import android.os.Bundle;
-
 public abstract interface bcgf
 {
-  public abstract int a(Bundle paramBundle);
+  public abstract String getFriendUin();
+  
+  public abstract int getLimitType();
+  
+  public abstract long getSenderUin();
+  
+  public abstract long getShmsgseq();
+  
+  public abstract boolean isReaded();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcgf
  * JD-Core Version:    0.7.0.1
  */

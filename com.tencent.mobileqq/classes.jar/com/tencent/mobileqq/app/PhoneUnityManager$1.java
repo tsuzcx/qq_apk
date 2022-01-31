@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import akco;
+import alud;
 
 public class PhoneUnityManager$1
   implements Runnable
 {
-  public PhoneUnityManager$1(akco paramakco) {}
+  public PhoneUnityManager$1(alud paramalud) {}
   
   public void run()
   {
-    akco.a(this.this$0);
+    alud.a(this.this$0);
   }
 }
 

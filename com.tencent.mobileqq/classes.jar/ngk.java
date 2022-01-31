@@ -1,24 +1,26 @@
-import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
-class ngk
+public class ngk
   implements View.OnClickListener
 {
-  ngk(nfr paramnfr, String paramString) {}
+  public ngk(EqqAccountDetailActivity paramEqqAccountDetailActivity, String paramString, npo paramnpo) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    ((BaseActivity)this.jdField_a_of_type_Nfr.a.get()).startActivity(paramView);
+    EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString.contains(alpo.a(2131704561))))
+    {
+      nrt.a(EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
+      return;
+    }
+    EqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,169 @@
-class bbnn
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.1;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedHashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class bbnn
+  implements bcgo
 {
-  static final int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  static final long[] jdField_a_of_type_ArrayOfLong = new long[0];
-  static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
+  bbnn(bbnl parambbnl) {}
   
-  static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    int i = 0;
-    int j = paramInt1 - 1;
-    paramInt1 = i;
-    i = j;
-    while (paramInt1 <= i)
+    if (paramJSONObject != null) {}
+    for (;;)
     {
-      j = paramInt1 + i >>> 1;
-      int k = paramArrayOfInt[j];
-      if (k < paramInt2) {
-        paramInt1 = j + 1;
-      } else if (k > paramInt2) {
-        i = j - 1;
-      } else {
-        return j;
+      try
+      {
+        if (paramJSONObject.optInt("retcode") == 0) {
+          break label723;
+        }
+        i = paramJSONObject.optInt("ec");
+        if (i == 0) {
+          break label723;
+        }
+        i = 0;
+        if (i == 0)
+        {
+          if ((paramInt == 1000) || (paramInt == 1002))
+          {
+            bbnl.e(this.a);
+            this.a.notifyObservers(Integer.valueOf(103));
+            if (paramInt == 1002) {
+              this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopFeedsDataManager", 2, "cgi end(failed): " + System.currentTimeMillis());
+          }
+          return;
+        }
       }
+      catch (Exception paramBundle)
+      {
+        paramBundle = paramBundle;
+        paramBundle.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager", 2, "cgi end(suc): " + System.currentTimeMillis());
+        }
+        if (paramInt == 1000)
+        {
+          ThreadManager.getSubThreadHandler().post(new TroopFeedsDataManager.3.1(this, paramJSONObject));
+          return;
+        }
+      }
+      finally {}
+      if (paramInt == 1002)
+      {
+        ThreadManager.getSubThreadHandler().post(new TroopFeedsDataManager.3.2(this, paramJSONObject));
+        return;
+      }
+      if (paramInt == 1007)
+      {
+        this.a.b = paramJSONObject;
+        bbnl.f(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager", 2, "cgi return. requestCode: GET_TROOP_NOTICE, msg = NOTIFY_REMIND_NOTICE");
+        }
+        this.a.notifyObservers(Integer.valueOf(1011));
+        return;
+      }
+      Object localObject;
+      JSONObject localJSONObject;
+      if ((paramInt == 1004) || (paramInt == 1003))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager", 2, "cgi return. requestCode: GET_NOR_NOTICE");
+        }
+        localObject = paramJSONObject.optJSONArray("feeds");
+        paramBundle = paramJSONObject.optJSONArray("inst");
+        if ((localObject != null) && (((JSONArray)localObject).length() == 1))
+        {
+          localJSONObject = ((JSONArray)localObject).optJSONObject(0);
+          this.a.b = localJSONObject;
+          this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
+          paramInt = 1;
+        }
+      }
+      for (;;)
+      {
+        i = paramInt;
+        if (paramBundle != null)
+        {
+          i = paramInt;
+          if (paramBundle.length() > 0)
+          {
+            paramBundle = paramBundle.optJSONObject(0);
+            long l2 = paramBundle.optLong("pubt");
+            long l1 = 0L;
+            if (this.a.b != null) {
+              l1 = this.a.b.optLong("pubt");
+            }
+            i = paramInt;
+            if (l2 > l1)
+            {
+              this.a.b = paramBundle;
+              this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
+              i = 1;
+            }
+          }
+        }
+        if (i != 0)
+        {
+          bbnl.g(this.a);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopFeedsDataManager", 2, "cgi return. NOTIFY_NOR_NOTICE");
+          }
+          this.a.notifyObservers(Integer.valueOf(1007));
+          return;
+          if ((localObject != null) && (((JSONArray)localObject).length() == 2))
+          {
+            localJSONObject = ((JSONArray)localObject).optJSONObject(0);
+            localObject = ((JSONArray)localObject).optJSONObject(1);
+            if (localJSONObject.optLong("pubt") >= ((JSONObject)localObject).optLong("pubt")) {
+              this.a.b = localJSONObject;
+            }
+            for (this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");; this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad"))
+            {
+              paramInt = 1;
+              break;
+              this.a.b = ((JSONObject)localObject);
+            }
+          }
+        }
+        else
+        {
+          bbnl.h(this.a);
+          this.a.notifyObservers(Integer.valueOf(1012));
+          return;
+          if ((paramInt != 1005) && (paramInt != 1006)) {
+            break;
+          }
+          paramJSONObject = bbnc.a(paramJSONObject, "" + this.a.jdField_a_of_type_JavaLangLong, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          paramBundle = (List)paramJSONObject[0];
+          paramJSONObject = (List)paramJSONObject[1];
+          this.a.jdField_a_of_type_JavaUtilList = paramJSONObject;
+          bbnl.i(this.a);
+          if (paramInt == 1005)
+          {
+            this.a.notifyObservers(Integer.valueOf(1008));
+            return;
+          }
+          this.a.notifyObservers(Integer.valueOf(1009));
+          return;
+        }
+        paramInt = 0;
+      }
+      label723:
+      int i = 1;
     }
-    return paramInt1 ^ 0xFFFFFFFF;
   }
 }
 

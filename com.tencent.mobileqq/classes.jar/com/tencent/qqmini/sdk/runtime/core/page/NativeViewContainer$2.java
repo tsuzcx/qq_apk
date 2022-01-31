@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bekj;
-import bfda;
+import bgid;
+import bhcq;
 
 class NativeViewContainer$2
   implements Runnable
 {
-  NativeViewContainer$2(NativeViewContainer paramNativeViewContainer, bekj parambekj) {}
+  NativeViewContainer$2(NativeViewContainer paramNativeViewContainer, bgid parambgid) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ class NativeViewContainer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer.2
  * JD-Core Version:    0.7.0.1
  */

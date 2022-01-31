@@ -1,45 +1,16 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.FlowMusic;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-class vqz
-  implements bjbu
+public final class vqz
+  implements Comparator<vre>
 {
-  vqz(vqx paramvqx) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
+  public int a(vre paramvre1, vre paramvre2)
   {
-    String str = vqx.a(this.a).getResources().getString(2131698328);
-    Object localObject = str;
-    if (paramBoolean)
-    {
-      paramObject = (FlowMusic)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
-      }
-      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
-      {
-        localObject = new vrk();
-        ((vrk)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
-        ((vrk)localObject).d = paramObject.url;
-        ((vrk)localObject).jdField_b_of_type_Int = 2;
-        ((vrk)localObject).a = String.valueOf(paramObject.songId);
-        this.a.a(12, localObject);
-        return;
-      }
-      localObject = str;
-      if (paramObject.playable != 1) {
-        localObject = vqx.a(this.a).getResources().getString(2131698329);
-      }
-    }
-    this.a.a(7, localObject);
+    return paramvre1.a - paramvre2.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqz
  * JD-Core Version:    0.7.0.1
  */

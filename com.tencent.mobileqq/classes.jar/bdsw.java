@@ -1,14 +1,12 @@
-public class bdsw
+import android.graphics.drawable.Drawable;
+
+public abstract interface bdsw
 {
-  public int a;
-  public String a;
-  public byte[] a;
-  public String b;
-  public String c;
+  public abstract void a(Drawable paramDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdsw
  * JD-Core Version:    0.7.0.1
  */

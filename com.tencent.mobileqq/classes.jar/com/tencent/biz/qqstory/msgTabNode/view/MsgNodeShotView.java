@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -15,16 +15,16 @@ import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsg
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import tfz;
-import tgd;
-import ved;
-import vzl;
+import uur;
+import uuv;
+import wsv;
+import xod;
 
 public class MsgNodeShotView
   extends StoryMsgNodeFrameLayout
 {
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private tgd jdField_a_of_type_Tgd;
+  private uuv jdField_a_of_type_Uuv;
   
   public MsgNodeShotView(@NonNull Context paramContext)
   {
@@ -43,17 +43,17 @@ public class MsgNodeShotView
     return this.jdField_b_of_type_AndroidWidgetTextView.getText().toString();
   }
   
-  public tgd a()
+  public uuv a()
   {
-    return this.jdField_a_of_type_Tgd;
+    return this.jdField_a_of_type_Uuv;
   }
   
   protected void a(String paramString)
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845748);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846127);
     }
-    vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "msg_tab_thumb");
+    xod.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "msg_tab_thumb");
   }
   
   public void c()
@@ -63,30 +63,30 @@ public class MsgNodeShotView
   
   public void d()
   {
-    Object localObject = ((tfz)QQStoryContext.a().getManager(252)).a();
-    if ((localObject != null) && (((tgd)localObject).a()))
+    Object localObject = ((uur)QQStoryContext.a().getManager(252)).a();
+    if ((localObject != null) && (((uuv)localObject).a()))
     {
-      this.jdField_a_of_type_Tgd = new tgd();
-      this.jdField_a_of_type_Tgd.a((tgd)localObject);
-      ved.c("Q.qqstory.config.takevideo", "bindData config=" + ((tgd)localObject).b + " id=" + ((tgd)localObject).d);
-      setNodeName(this.jdField_a_of_type_Tgd.b, false);
+      this.jdField_a_of_type_Uuv = new uuv();
+      this.jdField_a_of_type_Uuv.a((uuv)localObject);
+      wsv.c("Q.qqstory.config.takevideo", "bindData config=" + ((uuv)localObject).b + " id=" + ((uuv)localObject).d);
+      setNodeName(this.jdField_a_of_type_Uuv.b, false);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845748);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846127);
       }
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      if (this.jdField_a_of_type_Tgd.a.endsWith(".gif"))
+      if (this.jdField_a_of_type_Uuv.a.endsWith(".gif"))
       {
         ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "msg_tab_thumb";
         ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-        ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = vzl.a(getContext(), 3.0F);
+        ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = xod.a(getContext(), 3.0F);
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_Int;
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_b_of_type_Int;
         ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_Tgd.a, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_Uuv.a, (URLDrawable.URLDrawableOptions)localObject);
         if ((((URLDrawable)localObject).getStatus() == 1) && (((URLDrawable)localObject).getCurrDrawable() != null))
         {
-          ved.a("Q.qqstory.msgTab.MsgNodeShotView", "setImageByURLDrawable() %s, %s, not start download!", this.jdField_a_of_type_Tgd.a, localObject);
+          wsv.a("Q.qqstory.msgTab.MsgNodeShotView", "setImageByURLDrawable() %s, %s, not start download!", this.jdField_a_of_type_Uuv.a, localObject);
           this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable((Drawable)localObject);
         }
       }
@@ -103,18 +103,18 @@ public class MsgNodeShotView
       }
       ((URLDrawable)localObject).startDownload();
       break;
-      a(this.jdField_a_of_type_Tgd.a);
+      a(this.jdField_a_of_type_Uuv.a);
       continue;
-      ved.b("Q.qqstory.msgTab.MsgNodeShotView", "normal info");
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130845748);
-      setNodeName(ajya.a(2131706955), false);
-      this.jdField_a_of_type_Tgd = null;
+      wsv.b("Q.qqstory.msgTab.MsgNodeShotView", "normal info");
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130846127);
+      setNodeName(alpo.a(2131707327), false);
+      this.jdField_a_of_type_Uuv = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgNodeShotView
  * JD-Core Version:    0.7.0.1
  */

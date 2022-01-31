@@ -14,7 +14,7 @@ import com.tencent.mobileqq.msf.core.quic.QuicWrapper;
 import com.tencent.mobileqq.msf.core.t;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.msf.service.g;
+import com.tencent.mobileqq.msf.service.j;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -1947,7 +1947,7 @@ public class a
   
   public static int bw()
   {
-    int i1 = g.j;
+    int i1 = j.j;
     try
     {
       if (r.containsKey("jobscheduler_enable")) {

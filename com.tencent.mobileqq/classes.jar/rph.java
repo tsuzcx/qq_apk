@@ -1,89 +1,71 @@
-import android.graphics.Bitmap.Config;
-import java.net.URL;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rph
+  extends BaseAdapter
 {
-  public int a;
-  public Bitmap.Config a;
-  public URL a;
-  public volatile boolean a;
-  public int b;
-  public boolean b;
-  public int c = 0;
+  private rph(ChannelClassificationListView paramChannelClassificationListView) {}
   
-  public rph()
+  public T a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
+    return (rpj)ChannelClassificationListView.a(this.a).get(paramInt);
   }
   
-  public String a()
+  public int getCount()
   {
-    return "kandian_zimage_image_req_" + hashCode();
+    return ChannelClassificationListView.a(this.a).size();
   }
   
-  public boolean equals(Object paramObject)
+  public long getItemId(int paramInt)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    do
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      do
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131562494, paramViewGroup, false);
+      paramView.setOnClickListener(new rpi(this, paramViewGroup));
+    }
+    for (;;)
+    {
+      paramViewGroup = (rpj)ChannelClassificationListView.a(this.a).get(paramInt);
+      paramView.setTag(Integer.valueOf(paramInt));
+      ((TextView)paramView).setText(paramViewGroup.a());
+      if (!paramViewGroup.a())
       {
-        do
+        paramViewGroup.a(true);
+        paramViewGroup = new JSONObject();
+      }
+      try
+      {
+        paramViewGroup.put("subchannelid", a(paramInt).b());
+        paramViewGroup.put("subchannelname", a(paramInt).a());
+        paramViewGroup.put("channelid", ChannelClassificationListView.a(this.a));
+        nrt.a(null, ors.a() + "", "0X8009932", "0X8009932", 0, 0, "", "", "", paramViewGroup.toString(), false);
+        return paramView;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                return bool1;
-                bool1 = bool3;
-              } while (paramObject == null);
-              bool1 = bool3;
-            } while (getClass() != paramObject.getClass());
-            paramObject = (rph)paramObject;
-            bool1 = bool3;
-          } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
-          bool1 = bool3;
-        } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
-        bool1 = bool3;
-      } while (this.c != paramObject.c);
-      if (this.jdField_a_of_type_JavaNetURL == null) {
-        break;
+          localJSONException.printStackTrace();
+        }
       }
-      bool1 = bool3;
-    } while (!this.jdField_a_of_type_JavaNetURL.equals(paramObject.jdField_a_of_type_JavaNetURL));
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap$Config == paramObject.jdField_a_of_type_AndroidGraphicsBitmap$Config) {}
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      return bool1;
-      if (paramObject.jdField_a_of_type_JavaNetURL == null) {
-        break;
-      }
-      return false;
     }
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaNetURL != null) {}
-    for (int i = this.jdField_a_of_type_JavaNetURL.hashCode();; i = 0) {
-      return (((i * 31 + this.jdField_a_of_type_Int) * 31 + this.jdField_b_of_type_Int) * 31 + this.jdField_a_of_type_AndroidGraphicsBitmap$Config.hashCode()) * 31 + this.c;
-    }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaNetURL + " " + this.jdField_a_of_type_Int + "x" + this.jdField_b_of_type_Int + " isPreload:" + this.jdField_b_of_type_Boolean + " isCancel:" + this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rph
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,61 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.TagFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Color;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
 import java.util.List;
 
 public class uxn
-  extends uxo<TagFeedItem>
+  extends upy<utx>
 {
-  public uxn(@NonNull TagFeedItem paramTagFeedItem)
+  protected ImageView a;
+  protected TextView a;
+  protected RotateCircleImageView a;
+  protected ImageView b;
+  protected TextView b;
+  protected ImageView c = (ImageView)a(2131375453);
+  
+  public uxn(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramTagFeedItem);
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView = ((RotateCircleImageView)a(2131364275));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131367514));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131377281));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131377884));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131375454));
   }
   
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  protected void a(int paramInt1, int paramInt2)
   {
-    Object localObject = (qqstory_struct.TagFeed)paramStoryFeed.tag_feed.get();
-    ((TagFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.TagFeed)localObject);
-    ((TagFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.TagFeed)localObject).video_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
+    int[] arrayOfInt = new int[paramInt1];
+    int i = 0;
+    if (i < paramInt1)
     {
-      qqstory_struct.TagVideoInfo localTagVideoInfo = (qqstory_struct.TagVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localTagVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+      if (i < paramInt1 - paramInt2) {
+        arrayOfInt[i] = Color.parseColor("#DEDFE0");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        arrayOfInt[i] = Color.parseColor("#19D7FD");
+      }
     }
-    c(paramStoryFeed, true);
-    return true;
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderColors(arrayOfInt);
+  }
+  
+  public void a(utx paramutx)
+  {
+    if ((paramutx.a != null) && (!paramutx.a.isEmpty())) {
+      a(paramutx.a.size(), paramutx.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxn
  * JD-Core Version:    0.7.0.1
  */

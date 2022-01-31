@@ -1,23 +1,20 @@
-import MWIFI.SCGet3rdCloudCheck;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
-final class bcwe
-  implements akjt
+class bcwe<Bitmap>
+  extends WeakReference<Bitmap>
 {
-  bcwe(QQAppInterface paramQQAppInterface, akjs paramakjs) {}
+  private final String a;
   
-  public void a(int paramInt)
+  public bcwe(String paramString, Bitmap paramBitmap, ReferenceQueue paramReferenceQueue)
   {
-    if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akjs);
-    }
+    super(paramBitmap, paramReferenceQueue);
+    this.a = paramString;
   }
-  
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcwe
  * JD-Core Version:    0.7.0.1
  */

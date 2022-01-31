@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ajds
-  implements DialogInterface.OnClickListener
+public abstract interface ajds
 {
-  ajds(ajdq paramajdq, ajdy paramajdy) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_Ajdy != null) {
-      this.jdField_a_of_type_Ajdy.a(this.jdField_a_of_type_Ajdq.a(), "sc.xy_alert_show_success.local", "{\"confirm\":1}");
-    }
-  }
+  public abstract void a(int paramInt, float paramFloat);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajds
  * JD-Core Version:    0.7.0.1
  */

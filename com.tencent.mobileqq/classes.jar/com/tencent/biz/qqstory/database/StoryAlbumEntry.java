@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
+import awbv;
 
 public class StoryAlbumEntry
-  extends auko
+  extends awbv
 {
   public String albumDesc;
   public long albumId;
@@ -23,7 +23,7 @@ public class StoryAlbumEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.StoryAlbumEntry
  * JD-Core Version:    0.7.0.1
  */

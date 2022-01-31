@@ -1,12 +1,12 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.widget.ImageView;
 
 public abstract interface sub
 {
-  public abstract void a(sui paramsui, ErrorMessage paramErrorMessage);
+  public abstract boolean a(ImageView paramImageView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sub
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
-import vzl;
+import xod;
 
 public class QZoneLayoutTemplateBase
   extends ViewGroup
@@ -31,7 +31,7 @@ public class QZoneLayoutTemplateBase
   public QZoneLayoutTemplateBase(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.c = vzl.a(paramContext, 5.0F);
+    this.c = xod.a(paramContext, 5.0F);
   }
   
   public void addView(View paramView)
@@ -100,7 +100,7 @@ public class QZoneLayoutTemplateBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.QZoneLayoutTemplateBase
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,70 @@
-import android.text.TextUtils;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.util.HashMap;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import java.util.Comparator;
 
 class qvv
-  implements TVK_ICacheMgr.IPreloadCallback
+  implements Comparator<qvt>
 {
-  qvv(qvt paramqvt) {}
-  
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public int a(qvt paramqvt)
   {
-    if (qvt.a(this.a) != null)
+    if (paramqvt.jdField_a_of_type_Int != -1) {
+      return paramqvt.jdField_a_of_type_Int;
+    }
+    Friends localFriends = paramqvt.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = bdbt.a(localFriends.detalStatusFlag, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
     {
-      paramString2 = (String)qvt.a(this.a).get(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        qvt.a(this.a).a(paramString1, paramInt, paramString2);
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label132;
       }
+      i = 4096;
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        label64:
+        i = j | i | (int)localFriends.getLastLoginType();
+      }
+    }
+    for (;;)
+    {
+      paramqvt.jdField_a_of_type_Int = i;
+      return i;
+      j = 131072;
+      break;
+      label132:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      {
+        i = 8192;
+        break label64;
+      }
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      {
+        i = 12288;
+        break label64;
+      }
+      i = 16384;
+      break label64;
+      i = j | i | 0x1;
+      continue;
+      i = j | i | 0x2;
+      continue;
+      i = j | i | 0x3;
     }
   }
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
+  public int a(qvt paramqvt1, qvt paramqvt2)
   {
-    if (qvt.a(this.a) != null)
-    {
-      paramString2 = (String)qvt.a(this.a).get(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        qvt.a(this.a).a(paramString1, 1, paramString2);
-      }
-    }
+    return a(paramqvt1) - a(paramqvt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qvv
  * JD-Core Version:    0.7.0.1
  */

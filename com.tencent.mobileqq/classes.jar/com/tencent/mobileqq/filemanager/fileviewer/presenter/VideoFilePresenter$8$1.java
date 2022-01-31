@@ -1,33 +1,30 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import appt;
-import apqd;
+import android.os.Handler;
+import aris;
+import arjf;
+import arke;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import java.util.HashMap;
-import java.util.Map;
 
 public class VideoFilePresenter$8$1
   implements Runnable
 {
-  public VideoFilePresenter$8$1(apqd paramapqd, String paramString) {}
+  public VideoFilePresenter$8$1(arjf paramarjf) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Apqd.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
-      return;
+    if ((this.a.a.jdField_a_of_type_Boolean == true) && (this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)) {
+      this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
     }
-    this.jdField_a_of_type_Apqd.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-    appt.a(this.jdField_a_of_type_Apqd.a, this.jdField_a_of_type_JavaLangString);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", "bus_type_video_file");
-    this.jdField_a_of_type_Apqd.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    this.jdField_a_of_type_Apqd.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_Apqd.a.jdField_a_of_type_AndroidAppActivity, appt.a(this.jdField_a_of_type_Apqd.a), 0L, 0L, this.jdField_a_of_type_Apqd.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
+    this.a.a.jdField_a_of_type_Arke.d(aris.a(this.a.a));
+    if (aris.a(this.a.a) != null) {
+      aris.a(this.a.a).postDelayed(this.a.a.jdField_a_of_type_JavaLangRunnable, 100L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8.1
  * JD-Core Version:    0.7.0.1
  */

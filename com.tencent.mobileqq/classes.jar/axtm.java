@@ -1,69 +1,33 @@
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
 
-class axtm
-  implements Comparable<axtm>
+public final class axtm
+  implements Parcelable.Creator<AIOBrowserBaseData>
 {
-  public int a;
-  public String a;
-  public HashMap<String, axtm> a;
-  
-  public axtm()
+  public AIOBrowserBaseData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-  }
-  
-  public axtm(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a(axtm paramaxtm)
-  {
-    return paramaxtm.jdField_a_of_type_Int - this.jdField_a_of_type_Int;
-  }
-  
-  public axtm a(String paramString)
-  {
-    return (axtm)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.isEmpty();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
+    Object localObject = paramParcel.readString();
+    try
+    {
+      localObject = AIOBrowserBaseData.a((String)localObject);
+      ((AIOBrowserBaseData)localObject).readFromParcel(paramParcel);
+      return localObject;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    catch (ClassNotFoundException paramParcel)
+    {
+      throw new RuntimeException(paramParcel);
     }
-    return ((axtm)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
   }
   
-  public int hashCode()
+  public AIOBrowserBaseData[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("FdNode{");
-    localStringBuilder.append("text='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", appearTimes=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    return new AIOBrowserBaseData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axtm
  * JD-Core Version:    0.7.0.1
  */

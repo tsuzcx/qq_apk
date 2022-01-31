@@ -1,10 +1,7 @@
-public abstract interface asdp
-{
-  public abstract void a();
-}
+public abstract interface asdp {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdp
  * JD-Core Version:    0.7.0.1
  */

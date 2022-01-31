@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.plugins.engine;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import bemx;
+import bgmn;
 
 class BaseJsPluginEngine$6
   implements View.OnClickListener
@@ -17,7 +17,7 @@ class BaseJsPluginEngine$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.engine.BaseJsPluginEngine.6
  * JD-Core Version:    0.7.0.1
  */

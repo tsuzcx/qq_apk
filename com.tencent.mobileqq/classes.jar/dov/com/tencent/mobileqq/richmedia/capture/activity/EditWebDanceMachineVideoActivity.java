@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
-import ahty;
-import ajya;
+import ajli;
+import alpo;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -25,29 +25,29 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import axqu;
-import axty;
-import aytt;
-import aytv;
-import aytw;
-import ayty;
-import bbdx;
-import bbjs;
-import bcql;
-import bcww;
-import bfnk;
-import bfpc;
-import bjxn;
-import bjyv;
-import bkus;
-import bkut;
-import bkxj;
-import bkxn;
-import blcq;
+import azmf;
+import azpr;
+import barq;
+import bars;
+import bart;
+import barv;
+import bdcs;
+import bevy;
+import bhoe;
+import bhpy;
+import bmix;
+import bmkf;
+import bngc;
+import bngd;
+import bnit;
+import bnix;
+import bnoa;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
@@ -64,15 +64,15 @@ import java.util.List;
 
 public class EditWebDanceMachineVideoActivity
   extends EditVideoActivity
-  implements Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener, aytv, ayty
+  implements Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener, bars, barv
 {
   public static int a;
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aytt jdField_a_of_type_Aytt;
-  private bcww jdField_a_of_type_Bcww;
-  private bfnk jdField_a_of_type_Bfnk;
-  public bkxj a;
+  private barq jdField_a_of_type_Barq;
+  private bevy jdField_a_of_type_Bevy;
+  private bhoe jdField_a_of_type_Bhoe;
+  public bnit a;
   private String jdField_a_of_type_JavaLangString = "http://qvq.qq.com/dancing/share.html";
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
@@ -155,9 +155,9 @@ public class EditWebDanceMachineVideoActivity
   private String a()
   {
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) {
-      return ajya.a(2131703960);
+      return alpo.a(2131704332);
     }
-    return ajya.a(2131703949);
+    return alpo.a(2131704321);
   }
   
   private String a(int paramInt1, String paramString1, String paramString2, int paramInt2)
@@ -172,28 +172,28 @@ public class EditWebDanceMachineVideoActivity
       return d();
     }
     if (paramInt2 == 0) {}
-    for (String str = "#DOV高能舞蹈教室#【" + paramString1 + ajya.a(2131703959); "S".equals(paramString1); str = "[DOV高能舞室]") {
-      return str + paramString2 + " " + paramInt1 + ajya.a(2131703965) + ajya.a(2131703958);
+    for (String str = "#DOV高能舞蹈教室#【" + paramString1 + alpo.a(2131704331); "S".equals(paramString1); str = "[DOV高能舞室]") {
+      return str + paramString2 + " " + paramInt1 + alpo.a(2131704337) + alpo.a(2131704330);
     }
     if ("A".equals(paramString1)) {
-      return str + paramString2 + " " + paramInt1 + ajya.a(2131703956) + ajya.a(2131703969);
+      return str + paramString2 + " " + paramInt1 + alpo.a(2131704328) + alpo.a(2131704341);
     }
     if ("B".equals(paramString1)) {
-      return str + paramString2 + " " + paramInt1 + ajya.a(2131703947) + ajya.a(2131703951);
+      return str + paramString2 + " " + paramInt1 + alpo.a(2131704319) + alpo.a(2131704323);
     }
     if ("C".equals(paramString1)) {
-      return str + paramString2 + " " + paramInt1 + ajya.a(2131703966) + ajya.a(2131703952);
+      return str + paramString2 + " " + paramInt1 + alpo.a(2131704338) + alpo.a(2131704324);
     }
-    return str + ajya.a(2131703961);
+    return str + alpo.a(2131704333);
   }
   
   private void a(int paramInt)
   {
     String str = "";
-    if ((this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) {
-      str = ((EditTakeVideoSource)this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_b_of_type_JavaLangString;
+    if ((this.jdField_a_of_type_Bmix.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) {
+      str = ((EditTakeVideoSource)this.jdField_a_of_type_Bmix.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_b_of_type_JavaLangString;
     }
-    new bkut(this, this, str, this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a(), paramInt, getAppInterface(), this).execute(new Void[0]);
+    new bngd(this, this, str, this.jdField_a_of_type_Bmix.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a(), paramInt, getAppInterface(), this).execute(new Void[0]);
   }
   
   private void a(Context paramContext, int paramInt)
@@ -211,11 +211,11 @@ public class EditWebDanceMachineVideoActivity
         }
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131755791);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131755801);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559386);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371557));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559438);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371874));
       }
       return;
     }
@@ -284,46 +284,46 @@ public class EditWebDanceMachineVideoActivity
     }
   }
   
-  private List<bbjs>[] a(Context paramContext)
+  private List<ShareActionSheetBuilder.ActionSheetItem>[] a(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
-    bbjs localbbjs = new bbjs();
-    localbbjs.jdField_a_of_type_JavaLangString = paramContext.getString(2131690145);
-    localbbjs.jdField_b_of_type_Int = 2130848652;
-    localbbjs.jdField_b_of_type_Boolean = true;
-    localbbjs.jdField_c_of_type_Int = 2;
-    localbbjs.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbjs);
-    localbbjs = new bbjs();
-    localbbjs.jdField_a_of_type_JavaLangString = paramContext.getString(2131696716);
-    localbbjs.jdField_b_of_type_Int = 2130838758;
-    localbbjs.jdField_c_of_type_Int = 9;
-    localbbjs.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbjs);
-    localbbjs = new bbjs();
-    localbbjs.jdField_a_of_type_JavaLangString = paramContext.getString(2131696699);
-    localbbjs.jdField_b_of_type_Int = 2130838752;
-    localbbjs.jdField_c_of_type_Int = 10;
-    localbbjs.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbjs);
-    paramContext = new bbjs();
-    paramContext.jdField_a_of_type_JavaLangString = ajya.a(2131703970);
-    paramContext.jdField_b_of_type_Boolean = true;
-    paramContext.jdField_b_of_type_Int = 2130838757;
-    paramContext.jdField_c_of_type_Int = 12;
-    paramContext.jdField_b_of_type_JavaLangString = "";
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131690192);
+    localActionSheetItem.icon = 2130849084;
+    localActionSheetItem.iconNeedBg = true;
+    localActionSheetItem.action = 2;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131696891);
+    localActionSheetItem.icon = 2130838920;
+    localActionSheetItem.action = 9;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131696874);
+    localActionSheetItem.icon = 2130838914;
+    localActionSheetItem.action = 10;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    paramContext = new ShareActionSheetBuilder.ActionSheetItem();
+    paramContext.label = alpo.a(2131704342);
+    paramContext.iconNeedBg = true;
+    paramContext.icon = 2130838919;
+    paramContext.action = 12;
+    paramContext.argus = "";
     localArrayList.add(paramContext);
     return (List[])new ArrayList[] { localArrayList };
   }
   
   private String b()
   {
-    return "我在DOV集到了" + this.jdField_c_of_type_Int + ajya.a(2131703963);
+    return "我在DOV集到了" + this.jdField_c_of_type_Int + alpo.a(2131704335);
   }
   
   private String c()
   {
-    return ajya.a(2131703967) + getAppInterface().getCurrentNickname() + ajya.a(2131703962);
+    return alpo.a(2131704339) + getAppInterface().getCurrentNickname() + alpo.a(2131704334);
   }
   
   private void c(int paramInt)
@@ -331,27 +331,27 @@ public class EditWebDanceMachineVideoActivity
     if ((TextUtils.isEmpty(this.q)) || (TextUtils.isEmpty(this.p))) {
       return;
     }
-    axty localaxty = new axty();
+    azpr localazpr = new azpr();
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
     {
-      localaxty.jdField_d_of_type_JavaLangString = "0X800903E";
+      localazpr.jdField_d_of_type_JavaLangString = "0X800903E";
       if (paramInt != 0) {
         break label90;
       }
-      localaxty.h = String.valueOf(4);
+      localazpr.h = String.valueOf(4);
     }
     for (;;)
     {
-      axqu.a(null, localaxty);
+      azmf.a(null, localazpr);
       ThreadManager.executeOnSubThread(new EditWebDanceMachineVideoActivity.2(this, paramInt));
       return;
-      localaxty.jdField_d_of_type_JavaLangString = "0X8008FB3";
+      localazpr.jdField_d_of_type_JavaLangString = "0X8008FB3";
       break;
       label90:
       if (paramInt == 1) {
-        localaxty.h = String.valueOf(2);
+        localazpr.h = String.valueOf(2);
       } else if (paramInt == 2) {
-        localaxty.h = String.valueOf(3);
+        localazpr.h = String.valueOf(3);
       }
     }
   }
@@ -359,7 +359,7 @@ public class EditWebDanceMachineVideoActivity
   private void c(int paramInt, String paramString)
   {
     g();
-    this.jdField_a_of_type_Bfnk.removeMessages(-1);
+    this.jdField_a_of_type_Bhoe.removeMessages(-1);
     runOnUiThread(new EditWebDanceMachineVideoActivity.1(this));
     if (QLog.isColorLevel()) {
       QLog.e("DANCE_MACHINE_SHARE_TAG", 2, "upload failed, error code is " + paramInt + " error description : " + paramString);
@@ -368,7 +368,7 @@ public class EditWebDanceMachineVideoActivity
   
   private String d()
   {
-    return ajya.a(2131703968);
+    return alpo.a(2131704340);
   }
   
   private void f()
@@ -416,7 +416,7 @@ public class EditWebDanceMachineVideoActivity
   public void a()
   {
     g();
-    this.jdField_a_of_type_Bfnk.removeMessages(-1);
+    this.jdField_a_of_type_Bhoe.removeMessages(-1);
     if (this.jdField_b_of_type_Long != -1L) {
       this.jdField_b_of_type_Long = (SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long);
     }
@@ -490,7 +490,7 @@ public class EditWebDanceMachineVideoActivity
       QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "video upload success, uuid : " + paramString);
     }
     this.n = paramString;
-    new aytw(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.p, this.jdField_a_of_type_ArrayOfByte, ahty.jdField_b_of_type_Int, paramString).a();
+    new bart(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.p, this.jdField_a_of_type_ArrayOfByte, ajli.jdField_b_of_type_Int, paramString).a();
   }
   
   public void b(int paramInt, String paramString)
@@ -503,8 +503,8 @@ public class EditWebDanceMachineVideoActivity
   
   public void d()
   {
-    if (this.jdField_a_of_type_Bjxn == null) {
-      this.jdField_a_of_type_Bjxn = new bkus(this);
+    if (this.jdField_a_of_type_Bmix == null) {
+      this.jdField_a_of_type_Bmix = new bngc(this);
     }
   }
   
@@ -512,20 +512,20 @@ public class EditWebDanceMachineVideoActivity
   {
     this.jdField_a_of_type_Boolean = false;
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Bfnk = new bfnk(this);
-    this.jdField_a_of_type_Bjxn.c(0);
-    if (this.jdField_a_of_type_Bjxn.jdField_a_of_type_Bjyv == null)
+    this.jdField_a_of_type_Bhoe = new bhoe(this);
+    this.jdField_a_of_type_Bmix.c(0);
+    if (this.jdField_a_of_type_Bmix.jdField_a_of_type_Bmkf == null)
     {
       finish();
       return true;
     }
     f();
-    paramBundle = this.jdField_a_of_type_Bjxn.jdField_a_of_type_Bjyv.a().findViewById(2131372824);
+    paramBundle = this.jdField_a_of_type_Bmix.jdField_a_of_type_Bmkf.a().findViewById(2131373262);
     ((ViewGroup)paramBundle.getParent()).removeView(paramBundle);
-    paramBundle = (RelativeLayout)findViewById(2131363766);
+    paramBundle = (RelativeLayout)findViewById(2131363822);
     Object localObject = paramBundle.getLayoutParams();
     RelativeLayout localRelativeLayout = new RelativeLayout(this);
-    ((ViewGroup.LayoutParams)localObject).height = blcq.a(73.0F);
+    ((ViewGroup.LayoutParams)localObject).height = bnoa.a(73.0F);
     localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     ((ViewGroup)paramBundle.getParent()).addView(localRelativeLayout);
     paramBundle = new GradientDrawable();
@@ -536,7 +536,7 @@ public class EditWebDanceMachineVideoActivity
       paramBundle.setStroke(0, Color.parseColor("#12B7F5"));
       localObject = new FadedButton(this);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      int i1 = blcq.a(15.0F);
+      int i1 = bnoa.a(15.0F);
       localLayoutParams.topMargin = i1;
       localLayoutParams.bottomMargin = i1;
       localLayoutParams.leftMargin = i1;
@@ -550,16 +550,16 @@ public class EditWebDanceMachineVideoActivity
       }
     }
     label373:
-    for (paramBundle = ajya.a(2131703971);; paramBundle = ajya.a(2131703953))
+    for (paramBundle = alpo.a(2131704343);; paramBundle = alpo.a(2131704325))
     {
       ((FadedButton)localObject).setText(paramBundle);
       ((FadedButton)localObject).setGravity(17);
       ((FadedButton)localObject).setOnClickListener(this);
       localRelativeLayout.addView((View)localObject);
-      this.jdField_a_of_type_Bkxj = new bkxj(this);
-      this.jdField_a_of_type_Bkxj.a(a(this));
-      this.jdField_a_of_type_Bkxj.a(this);
-      this.jdField_a_of_type_Bkxj.a(getString(2131719508));
+      this.jdField_a_of_type_Bnit = new bnit(this);
+      this.jdField_a_of_type_Bnit.a(a(this));
+      this.jdField_a_of_type_Bnit.a(this);
+      this.jdField_a_of_type_Bnit.a(getString(2131720040));
       return true;
       paramBundle.setColor(Color.parseColor("#12B7F5"));
       break;
@@ -570,16 +570,16 @@ public class EditWebDanceMachineVideoActivity
   {
     super.doOnDestroy();
     if (!TextUtils.isEmpty(this.p)) {
-      bbdx.a(new File(this.p).getParent());
+      bdcs.a(new File(this.p).getParent());
     }
-    if (this.jdField_a_of_type_Bcww != null) {
-      WXShareHelper.a().b(this.jdField_a_of_type_Bcww);
+    if (this.jdField_a_of_type_Bevy != null) {
+      WXShareHelper.a().b(this.jdField_a_of_type_Bevy);
     }
-    if ((jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null))
+    if ((jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Bmix.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null))
     {
-      String str = new File(this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a()).getParent();
+      String str = new File(this.jdField_a_of_type_Bmix.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a()).getParent();
       if (str != null) {
-        bbdx.a(str);
+        bdcs.a(str);
       }
     }
   }
@@ -587,10 +587,10 @@ public class EditWebDanceMachineVideoActivity
   public void doOnResume()
   {
     super.doOnResume();
-    ((RelativeLayout)findViewById(2131363766)).setVisibility(8);
+    ((RelativeLayout)findViewById(2131363822)).setVisibility(8);
     if ((this.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
     {
-      DoodleLayout localDoodleLayout = (DoodleLayout)findViewById(2131365311);
+      DoodleLayout localDoodleLayout = (DoodleLayout)findViewById(2131365396);
       if ((localDoodleLayout != null) && (localDoodleLayout.a != null)) {
         localDoodleLayout.a.setPreventTouch(true);
       }
@@ -604,32 +604,32 @@ public class EditWebDanceMachineVideoActivity
     default: 
       return false;
     }
-    this.jdField_a_of_type_Aytt.a();
+    this.jdField_a_of_type_Barq.a();
     g();
-    bcql.a(this, 1, ajya.a(2131703954), 0).a();
+    QQToast.a(this, 1, alpo.a(2131704326), 0).a();
     return false;
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bkxj.a();
+    this.jdField_a_of_type_Bnit.a();
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
     {
-      paramView = new axty();
+      paramView = new azpr();
       paramView.jdField_d_of_type_JavaLangString = "0X800903C";
-      axqu.a(null, paramView);
+      azmf.a(null, paramView);
     }
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Bkxj.a().isShowing()) {
-      this.jdField_a_of_type_Bkxj.a().dismiss();
+    if (this.jdField_a_of_type_Bnit.a().isShowing()) {
+      this.jdField_a_of_type_Bnit.a().dismiss();
     }
-    paramInt = ((bkxn)paramView.getTag()).a.jdField_c_of_type_Int;
+    paramInt = ((bnix)paramView.getTag()).a.action;
     if ((paramInt == 9) || (paramInt == 10)) {
       if (!WXShareHelper.a().a()) {
-        paramAdapterView = ajya.a(2131703945);
+        paramAdapterView = alpo.a(2131704317);
       }
     }
     for (;;)
@@ -637,10 +637,10 @@ public class EditWebDanceMachineVideoActivity
       if (!TextUtils.isEmpty(paramAdapterView))
       {
         jdField_a_of_type_Int = -1;
-        bcql.a(this, 1, paramAdapterView, 0).a();
+        QQToast.a(this, 1, paramAdapterView, 0).a();
         return;
         if (!WXShareHelper.a().b()) {
-          paramAdapterView = ajya.a(2131703957);
+          paramAdapterView = alpo.a(2131704329);
         }
       }
       else
@@ -653,19 +653,19 @@ public class EditWebDanceMachineVideoActivity
         case 2: 
           if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
           {
-            paramAdapterView = new axty();
+            paramAdapterView = new azpr();
             paramAdapterView.jdField_d_of_type_JavaLangString = "0X800903E";
             paramAdapterView.h = String.valueOf(1);
-            axqu.a(null, paramAdapterView);
+            azmf.a(null, paramAdapterView);
           }
           for (;;)
           {
-            this.jdField_a_of_type_Bjxn.d();
+            this.jdField_a_of_type_Bmix.d();
             return;
-            paramAdapterView = new axty();
+            paramAdapterView = new azpr();
             paramAdapterView.jdField_d_of_type_JavaLangString = "0X8008FB3";
             paramAdapterView.h = String.valueOf(1);
-            axqu.a(null, paramAdapterView);
+            azmf.a(null, paramAdapterView);
           }
         case 9: 
           this.e = 1;
@@ -701,7 +701,7 @@ public class EditWebDanceMachineVideoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity
  * JD-Core Version:    0.7.0.1
  */

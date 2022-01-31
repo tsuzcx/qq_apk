@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 
-public class basx
-  extends balg
+class basx
+  implements ITransCallbackForReport
 {
-  public basx(TroopInteractGiftAnimationController.1.1 param1) {}
+  basx(basv parambasv) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
-    }
+    this.a.a(false, paramInt, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     basx
  * JD-Core Version:    0.7.0.1
  */

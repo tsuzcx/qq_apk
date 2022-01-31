@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.highway.netprobe.WeakNetLearner;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bamz
-  extends banh
 {
-  public void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList)
+  protected static basf a;
+  public static WeakNetLearner a;
+  
+  static
   {
-    if ((this.a == null) || (this.a.getState() == Thread.State.TERMINATED) || (this.a.a()))
-    {
-      this.a = ((TroopUploadingThread)bang.a(paramClass));
-      this.a.a(paramArrayList, paramHashMap, paramList, this);
-      this.a.start();
-    }
+    jdField_a_of_type_Basf = new basf();
+    jdField_a_of_type_ComTencentMobileqqHighwayNetprobeWeakNetLearner = new WeakNetLearner(BaseApplication.getContext(), new bana());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bamz
  * JD-Core Version:    0.7.0.1
  */

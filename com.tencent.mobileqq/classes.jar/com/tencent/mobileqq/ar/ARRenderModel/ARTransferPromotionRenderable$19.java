@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import alal;
+import amrb;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferPromotionRenderable$19
   implements Runnable
 {
-  public ARTransferPromotionRenderable$19(alal paramalal, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public ARTransferPromotionRenderable$19(amrb paramamrb, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
-    alal.a(this.this$0, 0);
-    QLog.i("ARTransferPromotionRenderable", 1, "setRecogRes. mInsertedSparkTotalCnt = 0, sparkShaderVertFileName = , circleR = " + this.a + ", circleX = " + this.b + ", circleY = " + this.c + ", clockwise = " + this.d + ", hasDrawedFrame = " + alal.e(this.this$0));
-    if ((alal.a(this.this$0) != null) && (alal.e(this.this$0))) {
-      alal.a(this.this$0).native_setRecogRes("", "", "", "", "", this.a, this.b, this.c, this.d);
+    amrb.a(this.this$0, 0);
+    QLog.i("ARTransferPromotionRenderable", 1, "setRecogRes. mInsertedSparkTotalCnt = 0, sparkShaderVertFileName = , circleR = " + this.a + ", circleX = " + this.b + ", circleY = " + this.c + ", clockwise = " + this.d + ", hasDrawedFrame = " + amrb.e(this.this$0));
+    if ((amrb.a(this.this$0) != null) && (amrb.e(this.this$0))) {
+      amrb.a(this.this$0).native_setRecogRes("", "", "", "", "", this.a, this.b, this.c, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.19
  * JD-Core Version:    0.7.0.1
  */

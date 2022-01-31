@@ -1,44 +1,36 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.UUID;
 
-public class afzu
-  extends balg
+class afzu
+  implements DialogInterface.OnClickListener
 {
-  public afzu(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  afzu(afzs paramafzs, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
+    switch (paramInt)
     {
-      paramString = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramString);
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface = bcil.a(this.jdField_a_of_type_Afzs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
+      this.jdField_a_of_type_Afzs.h(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Afzs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_Afzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Afzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      return;
     }
-  }
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList");
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, paramArrayOfLong1);
-    ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
-    ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
-    ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
-    {
-      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramArrayOfLong1);
-    }
+    new bboe(this.jdField_a_of_type_Long, this.jdField_a_of_type_Afzs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afzu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,197 +1,636 @@
-import android.support.annotation.NonNull;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ArticleTopicData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.NoCommentPlaceHolderData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusRecommendItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ShareBottomData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class sdi
 {
-  private static final Comparator<sdo> a = new sdj();
-  
-  @NonNull
-  public static sdl a(@NonNull sdk paramsdk)
+  private static int a(List<BaseData> paramList)
   {
-    return a(paramsdk, true);
+    int i = paramList.size() - 1;
+    while (i > 0)
+    {
+      BaseData localBaseData = (BaseData)paramList.get(i);
+      if ((scm.a(localBaseData)) && (localBaseData.s != 0))
+      {
+        if (i < paramList.size() - 1) {
+          return i + 1;
+        }
+        return i;
+      }
+      i -= 1;
+    }
+    return 1;
   }
   
-  @NonNull
-  public static sdl a(@NonNull sdk paramsdk, boolean paramBoolean)
+  private static int a(List<BaseData> paramList, BaseData paramBaseData)
   {
-    int i = paramsdk.a();
-    int j = paramsdk.b();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    localArrayList2.add(new sdn(0, i, 0, j));
-    i = i + j + Math.abs(i - j);
-    int[] arrayOfInt1 = new int[i * 2];
-    int[] arrayOfInt2 = new int[i * 2];
-    ArrayList localArrayList3 = new ArrayList();
-    while (!localArrayList2.isEmpty())
+    int i = 2;
+    if (paramBaseData.s == 9) {
+      i = ((RecommendAdData)paramBaseData).a;
+    }
+    int j = 0;
+    for (int k = i; j < paramList.size(); k = i)
     {
-      sdn localsdn2 = (sdn)localArrayList2.remove(localArrayList2.size() - 1);
-      sdo localsdo = a(paramsdk, localsdn2.jdField_a_of_type_Int, localsdn2.jdField_b_of_type_Int, localsdn2.c, localsdn2.d, arrayOfInt1, arrayOfInt2, i);
-      if (localsdo != null)
+      i = k;
+      if (((BaseData)paramList.get(j)).s == 6)
       {
-        if (localsdo.c > 0) {
-          localArrayList1.add(localsdo);
-        }
-        localsdo.jdField_a_of_type_Int += localsdn2.jdField_a_of_type_Int;
-        localsdo.jdField_b_of_type_Int += localsdn2.c;
-        sdn localsdn1;
-        if (localArrayList3.isEmpty())
-        {
-          localsdn1 = new sdn();
-          label217:
-          localsdn1.jdField_a_of_type_Int = localsdn2.jdField_a_of_type_Int;
-          localsdn1.c = localsdn2.c;
-          if (!localsdo.jdField_b_of_type_Boolean) {
-            break label362;
-          }
-          localsdn1.jdField_b_of_type_Int = localsdo.jdField_a_of_type_Int;
-          localsdn1.d = localsdo.jdField_b_of_type_Int;
-          label265:
-          localArrayList2.add(localsdn1);
-          if (!localsdo.jdField_b_of_type_Boolean) {
-            break label457;
-          }
-          if (!localsdo.jdField_a_of_type_Boolean) {
-            break label420;
-          }
-          localsdn2.jdField_a_of_type_Int = (localsdo.jdField_a_of_type_Int + localsdo.c + 1);
-          localsdn2.c = (localsdo.jdField_b_of_type_Int + localsdo.c);
-        }
-        for (;;)
-        {
-          localArrayList2.add(localsdn2);
-          break;
-          localsdn1 = (sdn)localArrayList3.remove(localArrayList3.size() - 1);
-          break label217;
-          label362:
-          if (localsdo.jdField_a_of_type_Boolean)
-          {
-            localsdn1.jdField_b_of_type_Int = (localsdo.jdField_a_of_type_Int - 1);
-            localsdn1.d = localsdo.jdField_b_of_type_Int;
-            break label265;
-          }
-          localsdn1.jdField_b_of_type_Int = localsdo.jdField_a_of_type_Int;
-          localsdn1.d = (localsdo.jdField_b_of_type_Int - 1);
-          break label265;
-          label420:
-          localsdn2.jdField_a_of_type_Int = (localsdo.jdField_a_of_type_Int + localsdo.c);
-          localsdn2.c = (localsdo.jdField_b_of_type_Int + localsdo.c + 1);
-          continue;
-          label457:
-          localsdn2.jdField_a_of_type_Int = (localsdo.jdField_a_of_type_Int + localsdo.c);
-          localsdn2.c = (localsdo.jdField_b_of_type_Int + localsdo.c);
+        k -= 1;
+        i = k;
+        if (k == 1) {
+          return j + 1;
         }
       }
-      localArrayList3.add(localsdn2);
+      j += 1;
     }
-    Collections.sort(localArrayList1, a);
-    return new sdl(paramsdk, localArrayList1, arrayOfInt1, arrayOfInt2, paramBoolean);
+    return -1;
   }
   
-  private static sdo a(sdk paramsdk, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt5)
+  public static List<BaseData> a(List<BaseData> paramList)
   {
-    int m = paramInt2 - paramInt1;
-    int n = paramInt4 - paramInt3;
-    if ((paramInt2 - paramInt1 < 1) || (paramInt4 - paramInt3 < 1)) {
+    if (paramList == null) {
       return null;
     }
-    int i1 = m - n;
-    int i2 = (m + n + 1) / 2;
-    Arrays.fill(paramArrayOfInt1, paramInt5 - i2 - 1, paramInt5 + i2 + 1, 0);
-    Arrays.fill(paramArrayOfInt2, paramInt5 - i2 - 1 + i1, paramInt5 + i2 + 1 + i1, m);
-    int i;
-    if (i1 % 2 != 0)
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add((BaseData)paramList.next());
+    }
+    return localArrayList;
+  }
+  
+  public static void a(List<BaseData> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    Object localObject = paramList.iterator();
+    int j = 0;
+    label14:
+    if (((Iterator)localObject).hasNext()) {
+      if (((BaseData)((Iterator)localObject).next()).s != 6) {
+        break label144;
+      }
+    }
+    label144:
+    for (int i = j + 1;; i = j)
     {
-      paramInt4 = 1;
-      i = 0;
+      j = i;
+      break label14;
+      paramList = paramList.iterator();
+      i = 1;
+      if (!paramList.hasNext()) {
+        break;
+      }
+      localObject = (BaseData)paramList.next();
+      switch (((BaseData)localObject).s)
+      {
+      }
+      for (;;)
+      {
+        break;
+        localObject = (ProteusRecommendItemData)localObject;
+        ((ProteusRecommendItemData)localObject).a = i;
+        ((ProteusRecommendItemData)localObject).b = j;
+        i += 1;
+        continue;
+        i += 1;
+      }
+    }
+  }
+  
+  public static void a(List<BaseData> paramList, int paramInt)
+  {
+    if (paramList == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      BaseData localBaseData = (BaseData)localIterator.next();
+      if (localBaseData.s == paramInt) {
+        localArrayList.add(localBaseData);
+      }
+    }
+    paramList.removeAll(localArrayList);
+  }
+  
+  public static void a(List<BaseData> paramList, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
+  {
+    if (scx.a())
+    {
+      a(paramList, 19);
+      a(paramList, new ShareBottomData(), null);
     }
     for (;;)
     {
-      if (i > i2) {
-        break label664;
-      }
-      int j = -i;
-      boolean bool;
-      int k;
-      for (;;)
+      a(paramList, 21);
+      return;
+      a(paramList, 19);
+    }
+  }
+  
+  public static void a(List<BaseData> paramList, BaseData paramBaseData, ItemShowDispatcher paramItemShowDispatcher)
+  {
+    int k = 0;
+    if ((paramList == null) || (paramBaseData == null)) {
+      return;
+    }
+    int i = 0;
+    for (;;)
+    {
+      int j = k;
+      if (i < paramList.size())
       {
-        if (j > i) {
-          break label382;
-        }
-        if ((j == -i) || ((j != i) && (paramArrayOfInt1[(paramInt5 + j - 1)] < paramArrayOfInt1[(paramInt5 + j + 1)]))) {
-          paramInt2 = paramArrayOfInt1[(paramInt5 + j + 1)];
-        }
-        for (bool = false;; bool = true)
+        if (paramBaseData.b((BaseData)paramList.get(i)))
         {
-          k = paramInt2;
-          paramInt2 -= j;
-          while ((k < m) && (paramInt2 < n) && (paramsdk.a(paramInt1 + k, paramInt3 + paramInt2)))
-          {
-            k += 1;
-            paramInt2 += 1;
-          }
-          paramInt4 = 0;
+          j = 1;
+          paramList.add(i, paramBaseData);
+        }
+      }
+      else
+      {
+        if (j != 0) {
           break;
-          paramInt2 = paramArrayOfInt1[(paramInt5 + j - 1)] + 1;
         }
-        paramArrayOfInt1[(paramInt5 + j)] = k;
-        if ((paramInt4 != 0) && (j >= i1 - i + 1) && (j <= i1 + i - 1) && (paramArrayOfInt1[(paramInt5 + j)] >= paramArrayOfInt2[(paramInt5 + j)]))
-        {
-          paramsdk = new sdo();
-          paramsdk.jdField_a_of_type_Int = paramArrayOfInt2[(paramInt5 + j)];
-          paramsdk.jdField_b_of_type_Int = (paramsdk.jdField_a_of_type_Int - j);
-          paramsdk.c = (paramArrayOfInt1[(paramInt5 + j)] - paramArrayOfInt2[(paramInt5 + j)]);
-          paramsdk.jdField_a_of_type_Boolean = bool;
-          paramsdk.jdField_b_of_type_Boolean = false;
-          return paramsdk;
-        }
-        j += 2;
-      }
-      label382:
-      j = -i;
-      while (j <= i)
-      {
-        int i3 = j + i1;
-        if ((i3 == i + i1) || ((i3 != -i + i1) && (paramArrayOfInt2[(paramInt5 + i3 - 1)] < paramArrayOfInt2[(paramInt5 + i3 + 1)]))) {
-          paramInt2 = paramArrayOfInt2[(paramInt5 + i3 - 1)];
-        }
-        for (bool = false;; bool = true)
-        {
-          k = paramInt2;
-          paramInt2 -= i3;
-          while ((k > 0) && (paramInt2 > 0) && (paramsdk.a(paramInt1 + k - 1, paramInt3 + paramInt2 - 1)))
-          {
-            k -= 1;
-            paramInt2 -= 1;
-          }
-          paramInt2 = paramArrayOfInt2[(paramInt5 + i3 + 1)] - 1;
-        }
-        paramArrayOfInt2[(paramInt5 + i3)] = k;
-        if ((paramInt4 == 0) && (j + i1 >= -i) && (j + i1 <= i) && (paramArrayOfInt1[(paramInt5 + i3)] >= paramArrayOfInt2[(paramInt5 + i3)]))
-        {
-          paramsdk = new sdo();
-          paramsdk.jdField_a_of_type_Int = paramArrayOfInt2[(paramInt5 + i3)];
-          paramsdk.jdField_b_of_type_Int = (paramsdk.jdField_a_of_type_Int - i3);
-          paramsdk.c = (paramArrayOfInt1[(paramInt5 + i3)] - paramArrayOfInt2[(paramInt5 + i3)]);
-          paramsdk.jdField_a_of_type_Boolean = bool;
-          paramsdk.jdField_b_of_type_Boolean = true;
-          return paramsdk;
-        }
-        j += 2;
+        QLog.d("ItemDatasListUtils", 2, "insertForWeight, add in the end.");
+        paramList.add(paramBaseData);
+        return;
       }
       i += 1;
     }
-    label664:
-    throw new IllegalStateException("DiffUtil hit an unexpected case while trying to calculate the optimal path. Please make sure your data is not changing during the diff calculation.");
+  }
+  
+  public static void a(List<BaseData> paramList1, List<BaseData> paramList2)
+  {
+    Object localObject1 = new ArrayList();
+    Object localObject2;
+    if (paramList1 != null)
+    {
+      localObject2 = paramList1.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        BaseData localBaseData = (BaseData)((Iterator)localObject2).next();
+        if ((localBaseData.s == 9) || (localBaseData.s == 10) || (localBaseData.s == 11) || (localBaseData.s == 17) || (localBaseData.s == 24)) {
+          ((List)localObject1).add(localBaseData);
+        }
+      }
+      paramList1.removeAll((Collection)localObject1);
+    }
+    if (paramList2 != null)
+    {
+      paramList2 = paramList2.iterator();
+      label276:
+      while (paramList2.hasNext())
+      {
+        localObject1 = (BaseData)paramList2.next();
+        if ((((BaseData)localObject1).s == 10) || (((BaseData)localObject1).s == 11) || (((BaseData)localObject1).s == 17) || (((BaseData)localObject1).s == 24))
+        {
+          a(paramList1, (BaseData)localObject1, null);
+        }
+        else
+        {
+          if (((BaseData)localObject1).s == 22) {}
+          for (int i = b(paramList1, (BaseData)localObject1);; i = a(paramList1, (BaseData)localObject1))
+          {
+            if (i <= 0) {
+              break label276;
+            }
+            if (i < paramList1.size())
+            {
+              localObject2 = (BaseData)paramList1.get(i);
+              if (((localObject2 instanceof RecommendTitleData)) && ((localObject1 instanceof ProteusBannerBigPicItemData))) {
+                ((RecommendTitleData)localObject2).jdField_a_of_type_Boolean = ((ProteusBannerBigPicItemData)localObject1).jdField_a_of_type_Boolean;
+              }
+            }
+            paramList1.add(i, localObject1);
+            break;
+          }
+        }
+      }
+    }
+  }
+  
+  public static void a(List<BaseData> paramList1, List<BaseData> paramList2, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, SparseArray<Float> paramSparseArray, ItemShowDispatcher paramItemShowDispatcher)
+  {
+    Object localObject = new ArrayList();
+    if (paramList1 != null)
+    {
+      Iterator localIterator = paramList1.iterator();
+      while (localIterator.hasNext())
+      {
+        BaseData localBaseData = (BaseData)localIterator.next();
+        if ((localBaseData.s == 7) || (localBaseData.s == 6) || (localBaseData.s == 8)) {
+          ((List)localObject).add(localBaseData);
+        }
+      }
+      paramList1.removeAll((Collection)localObject);
+    }
+    if (paramList2 != null)
+    {
+      paramList2 = new ArrayList(paramList2).iterator();
+      while (paramList2.hasNext())
+      {
+        localObject = (BaseData)paramList2.next();
+        ((BaseData)localObject).b = paramArticleInfo;
+        ((BaseData)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo = paramFastWebArticleInfo;
+        if ((localObject instanceof ProteusItemData)) {
+          scq.a(paramArticleInfo, (ProteusItemData)localObject, 5, paramSparseArray);
+        }
+        a(paramList1, (BaseData)localObject, paramItemShowDispatcher);
+      }
+    }
+  }
+  
+  public static void a(List<BaseData> paramList1, List<BaseData> paramList2, List<BaseData> paramList3, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, boolean paramBoolean, SparseArray<Float> paramSparseArray, ItemShowDispatcher paramItemShowDispatcher)
+  {
+    if ((paramList2 != null) && (!paramList2.isEmpty())) {
+      a(paramList1, paramList2, paramArticleInfo, paramFastWebArticleInfo, paramSparseArray, paramItemShowDispatcher);
+    }
+    if (paramList3 != null)
+    {
+      if (!paramBoolean) {
+        break label48;
+      }
+      b(paramList1, paramList3);
+    }
+    for (;;)
+    {
+      f(paramList1);
+      g(paramList1);
+      return;
+      label48:
+      a(paramList1, paramList3);
+    }
+  }
+  
+  public static void a(boolean paramBoolean, List<BaseData> paramList, FastWebArticleInfo paramFastWebArticleInfo, ArticleInfo paramArticleInfo)
+  {
+    if ((paramList == null) || (paramList.isEmpty()) || (paramFastWebArticleInfo == null) || ((paramBoolean) && (paramFastWebArticleInfo.jdField_a_of_type_JavaUtilList == null))) {
+      return;
+    }
+    int i = 0;
+    int j = -1;
+    if (i < paramList.size())
+    {
+      localObject = (BaseData)paramList.get(i);
+      int k;
+      if (scm.a((BaseData)localObject)) {
+        k = i;
+      }
+      do
+      {
+        i += 1;
+        j = k;
+        break;
+        k = j;
+      } while (((BaseData)localObject).s != 15);
+    }
+    for (Object localObject = (ArticleTopicData)localObject;; localObject = null)
+    {
+      if (!paramBoolean)
+      {
+        if (localObject == null) {
+          break;
+        }
+        paramList.remove(localObject);
+        return;
+      }
+      if (localObject != null)
+      {
+        ((ArticleTopicData)localObject).jdField_a_of_type_JavaUtilList = paramFastWebArticleInfo.jdField_a_of_type_JavaUtilList;
+        ((ArticleTopicData)localObject).b = paramArticleInfo;
+        ((ArticleTopicData)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo = paramFastWebArticleInfo;
+        ((ArticleTopicData)localObject).jdField_a_of_type_Boolean = false;
+        return;
+      }
+      if (j == -1) {
+        break;
+      }
+      localObject = new ArticleTopicData();
+      ((ArticleTopicData)localObject).jdField_a_of_type_JavaUtilList = paramFastWebArticleInfo.jdField_a_of_type_JavaUtilList;
+      ((ArticleTopicData)localObject).b = paramArticleInfo;
+      ((ArticleTopicData)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo = paramFastWebArticleInfo;
+      paramList.add(j + 1, localObject);
+      return;
+    }
+  }
+  
+  private static int b(List<BaseData> paramList, BaseData paramBaseData)
+  {
+    int j = 0;
+    if (paramBaseData.s == 22)
+    {
+      boolean bool = ((ProteusInnerData)paramBaseData).f();
+      int n = ((ProteusInnerData)paramBaseData).a;
+      int i = paramList.size() - 1;
+      int k = 0;
+      int m;
+      if (i > 0)
+      {
+        paramBaseData = (BaseData)paramList.get(i);
+        if ((!bool) && (n > 0))
+        {
+          m = k;
+          if (!scm.a(paramBaseData)) {
+            break label170;
+          }
+          m = k;
+          if (paramBaseData.s == 0) {
+            break label170;
+          }
+          k += 1;
+          m = k;
+          if (j != 0) {
+            break label170;
+          }
+          m = i;
+          j = k;
+          k = m;
+          label112:
+          m = j;
+          if (j != n) {
+            break label156;
+          }
+        }
+      }
+      for (;;)
+      {
+        if ((i == -1) || (n <= 0) || (n > paramList.size())) {
+          i = a(paramList);
+        }
+        return i;
+        m = k;
+        k = j;
+        label156:
+        i -= 1;
+        j = k;
+        k = m;
+        break;
+        label170:
+        k = j;
+        j = m;
+        break label112;
+        i = -1;
+      }
+    }
+    return -1;
+  }
+  
+  public static void b(List<BaseData> paramList)
+  {
+    if (paramList == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramList.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      } while (((BaseData)localIterator.next()).s != 16);
+      for (int i = 1; i == 0; i = 0)
+      {
+        paramList.add(new NoCommentPlaceHolderData());
+        return;
+      }
+    }
+  }
+  
+  public static void b(List<BaseData> paramList, BaseData paramBaseData, ItemShowDispatcher paramItemShowDispatcher)
+  {
+    if ((paramList == null) || (paramBaseData == null)) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      BaseData localBaseData = (BaseData)localIterator.next();
+      if (localBaseData.s == 23) {
+        localArrayList.add(localBaseData);
+      }
+    }
+    paramList.removeAll(localArrayList);
+    a(paramList, paramBaseData, paramItemShowDispatcher);
+  }
+  
+  public static void b(List<BaseData> paramList1, List<BaseData> paramList2)
+  {
+    Object localObject = new ArrayList();
+    if (paramList1 != null)
+    {
+      Iterator localIterator = paramList1.iterator();
+      while (localIterator.hasNext())
+      {
+        BaseData localBaseData = (BaseData)localIterator.next();
+        if (localBaseData.s == 22) {
+          ((List)localObject).add(localBaseData);
+        }
+      }
+      paramList1.removeAll((Collection)localObject);
+    }
+    if (paramList2 != null)
+    {
+      paramList2 = paramList2.iterator();
+      while (paramList2.hasNext())
+      {
+        localObject = (BaseData)paramList2.next();
+        if (((BaseData)localObject).s == 22) {}
+        for (int i = b(paramList1, (BaseData)localObject);; i = a(paramList1, (BaseData)localObject))
+        {
+          if (i <= 0) {
+            break label151;
+          }
+          if (i > paramList1.size() - 1) {
+            break label153;
+          }
+          paramList1.add(i, localObject);
+          break;
+        }
+        label151:
+        continue;
+        label153:
+        paramList1.add(localObject);
+      }
+    }
+  }
+  
+  public static void c(List<BaseData> paramList)
+  {
+    if (paramList == null) {}
+    BaseData localBaseData;
+    do
+    {
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = paramList.iterator();
+      }
+      localBaseData = (BaseData)localIterator.next();
+    } while (localBaseData.s != 16);
+    paramList.remove(localBaseData);
+  }
+  
+  public static void c(List<BaseData> paramList, List<CommentInfo> paramList1)
+  {
+    if ((paramList == null) || (paramList.isEmpty()) || (paramList1 == null) || (paramList1.isEmpty())) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    paramList1 = paramList1.iterator();
+    while (paramList1.hasNext())
+    {
+      CommentInfo localCommentInfo = (CommentInfo)paramList1.next();
+      localHashMap.put(localCommentInfo.commentId, localCommentInfo);
+    }
+    int j = 0;
+    int i = 0;
+    if (j < paramList.size())
+    {
+      paramList1 = (BaseData)paramList.get(j);
+      if (paramList1.s != 12) {
+        break label192;
+      }
+      paramList1 = (CommentData)paramList1;
+      if (!localHashMap.containsKey(paramList1.a.commentId)) {
+        break label192;
+      }
+      paramList1.a = ((CommentInfo)localHashMap.get(paramList1.a.commentId));
+      i += 1;
+    }
+    label192:
+    for (;;)
+    {
+      j += 1;
+      break;
+      QLog.d(sdi.class.getSimpleName(), 2, "update comment data! size : " + i);
+      return;
+    }
+  }
+  
+  public static void d(List<BaseData> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      BaseData localBaseData = (BaseData)localIterator.next();
+      if (localBaseData.s == 22) {
+        localArrayList.add(localBaseData);
+      }
+    }
+    paramList.removeAll(localArrayList);
+  }
+  
+  public static void e(List<BaseData> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      BaseData localBaseData = (BaseData)localIterator.next();
+      if (localBaseData.s == 17) {
+        localArrayList.add(localBaseData);
+      }
+    }
+    paramList.removeAll(localArrayList);
+  }
+  
+  private static void f(List<BaseData> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    int i = 0;
+    label22:
+    BaseData localBaseData;
+    if (localIterator.hasNext())
+    {
+      localBaseData = (BaseData)localIterator.next();
+      if ((localBaseData.s == 10) || (localBaseData.s == 17) || (localBaseData.s == 24)) {
+        localArrayList.add(localBaseData);
+      }
+    }
+    for (;;)
+    {
+      break label22;
+      if ((localBaseData.s == 22) && (((ProteusInnerData)localBaseData).f()))
+      {
+        i = 1;
+        continue;
+        if (i == 0) {
+          break;
+        }
+        paramList.removeAll(localArrayList);
+        return;
+      }
+    }
+  }
+  
+  private static void g(List<BaseData> paramList)
+  {
+    if (paramList == null) {}
+    label73:
+    for (;;)
+    {
+      return;
+      int i = 0;
+      Object localObject;
+      if (i < paramList.size())
+      {
+        localObject = (BaseData)paramList.get(i);
+        if (((BaseData)localObject).s == 16)
+        {
+          localObject = (NoCommentPlaceHolderData)localObject;
+          paramList.remove(i);
+        }
+      }
+      for (;;)
+      {
+        if (localObject == null) {
+          break label73;
+        }
+        paramList.add(localObject);
+        return;
+        i += 1;
+        break;
+        localObject = null;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdi
  * JD-Core Version:    0.7.0.1
  */

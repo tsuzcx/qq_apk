@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import azuh;
-import azul;
-import azun;
+import bbsq;
+import bbsu;
+import bbsw;
 
 public class TroopFileThumbnailMgr$4
   implements Runnable
 {
   public void run()
   {
-    azun.a(this.this$0).a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Int);
-    azun.a(this.this$0).a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Int);
+    bbsw.a(this.this$0).a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Int);
+    bbsw.a(this.this$0).a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Int);
   }
 }
 

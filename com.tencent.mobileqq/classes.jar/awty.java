@@ -1,43 +1,18 @@
-public class awty
+import com.tencent.mobileqq.data.MessageForPtt;
+
+public abstract interface awty
 {
-  boolean jdField_a_of_type_Boolean;
+  public abstract void a();
   
-  public awty(awtu paramawtu, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract boolean a(MessageForPtt paramMessageForPtt);
   
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public abstract boolean a(MessageForPtt paramMessageForPtt, int paramInt);
   
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public abstract boolean b(MessageForPtt paramMessageForPtt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awty
  * JD-Core Version:    0.7.0.1
  */

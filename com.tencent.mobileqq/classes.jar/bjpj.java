@@ -1,20 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.util.Printer;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.QzoneThreadMonitor;
 
-public abstract interface bjpj
+public class bjpj
+  implements Printer
 {
-  public abstract Activity a();
+  public bjpj(QzoneThreadMonitor paramQzoneThreadMonitor) {}
   
-  public abstract SessionInfo a();
-  
-  public abstract QQAppInterface a();
-  
-  public abstract boolean a();
+  public void println(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzoneThreadMonitor", 4, paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjpj
  * JD-Core Version:    0.7.0.1
  */

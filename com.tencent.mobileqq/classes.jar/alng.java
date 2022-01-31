@@ -1,208 +1,60 @@
-import android.content.BroadcastReceiver;
-import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.1;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FaceDownloader;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import mqq.os.MqqHandler;
 
 public class alng
-  extends alpc
+  extends MqqHandler
 {
-  private alnh jdField_a_of_type_Alnh = new alnh(this, null);
-  private alnj jdField_a_of_type_Alnj = new alnj(this, null);
-  private alnx jdField_a_of_type_Alnx = new alnx(this, null);
-  private alnz jdField_a_of_type_Alnz = new alnz(this, null);
-  public aloo a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private HashMap<String, alni> b = new ArkAppDeviceModule.1(this);
-  
-  public alng(ark.Application paramApplication, long paramLong)
+  public alng(FaceDownloader paramFaceDownloader, Looper paramLooper)
   {
-    super(paramApplication, paramLong);
-    this.jdField_a_of_type_Aloo = new aloo(this.jdField_a_of_type_JavaLangString);
+    super(paramLooper);
   }
   
-  private void a(long paramLong, String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doScanCodeCallback cbId=" + paramLong + ", scanResult=" + paramString1 + ", scanType=" + paramString2);
-    }
-    ark.VariantWrapper localVariantWrapper1 = a(paramLong);
-    if (localVariantWrapper1 == null) {
+    if (paramMessage == null) {}
+    while (paramMessage.what != 100) {
       return;
     }
-    int i;
-    ark.VariantWrapper localVariantWrapper2;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    int i = 0;
+    label16:
+    if (i < this.a.b.size())
     {
-      i = 1;
-      localVariantWrapper2 = localVariantWrapper1.Create();
-      if (i == 0) {
-        break label186;
+      paramMessage = (alnj)this.a.b.get(i);
+      if (paramMessage != null) {
+        break label56;
       }
-      if (!"QR_CODE".equalsIgnoreCase(paramString2)) {
-        break label179;
-      }
-      paramString2 = "QRCode";
-      label104:
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"result\":\"%s\",\"type\":\"%s\",\"charset\":\"%s\"}", new Object[] { paramString1, paramString2, "utf-8" }));
     }
     for (;;)
     {
-      paramString1 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString1);
-      paramString1.Reset();
-      localVariantWrapper2.Reset();
-      localVariantWrapper1.Reset();
-      return;
-      i = 0;
+      i += 1;
+      break label16;
       break;
-      label179:
-      paramString2 = "BarCode";
-      break label104;
-      label186:
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doPositionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", lat=" + paramDouble1 + ", lng=" + paramDouble2);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"latitude\":%.6f,\"longitude\":%.6f}", new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) }));
-    }
-    for (;;)
-    {
-      ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, localVariantWrapper3);
-      localVariantWrapper3.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doConnectionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", netType=" + paramString);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetString(paramString);
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doSensorCallback cbId=" + paramLong + ", success=" + paramBoolean + ", sensorEventType=" + paramString + ", argA=" + paramFloat1 + ", argB=" + paramFloat2 + ", argC=" + paramFloat3);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    String str = null;
-    if ("Motion".equals(paramString))
-    {
-      str = "{\"x\":%.6f,\"y\":%.6f,\"z\":%.6f}";
-      if ((!paramBoolean) || (TextUtils.isEmpty(str))) {
-        break label220;
+      label56:
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.FaceDownloader", 2, "handle download finish task.faceInfo=" + paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo + ",bitmap=" + paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
       }
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, str, new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) }));
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      if (!"Orientation".equals(paramString)) {
-        break;
+      if ((paramMessage != null) && (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo != null) && (paramMessage.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.a.a.size() > 0))
+      {
+        int j = 0;
+        while (j < this.a.a.size())
+        {
+          ((alnh)this.a.a.get(j)).a(true, paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+          j += 1;
+        }
       }
-      str = "{\"alpha\":%.6f,\"beta\":%.6f,\"gamma\":%.6f}";
-      break;
-      label220:
-      localVariantWrapper2.SetNull();
+      this.a.b.remove(i);
+      i -= 1;
     }
-  }
-  
-  public void Destruct()
-  {
-    if (this.jdField_a_of_type_Aloo != null) {
-      this.jdField_a_of_type_Aloo.a();
-    }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
-    try
-    {
-      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      label31:
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      super.Destruct();
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label31;
-    }
-  }
-  
-  public String GetTypeName()
-  {
-    return "Device";
-  }
-  
-  public boolean HasMenthod(String paramString)
-  {
-    return (this.b != null) && (this.b.containsKey(paramString)) && (this.b.get(paramString) != null);
-  }
-  
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "invokeFunc=" + paramString);
-    }
-    if (!a(paramString)) {
-      return false;
-    }
-    if (this.b != null)
-    {
-      alni localalni = (alni)this.b.get(paramString);
-      if (localalni != null) {
-        return localalni.a(paramString, paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alng
  * JD-Core Version:    0.7.0.1
  */

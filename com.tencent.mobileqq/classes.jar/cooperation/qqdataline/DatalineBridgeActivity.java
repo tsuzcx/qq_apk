@@ -1,21 +1,21 @@
 package cooperation.qqdataline;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
-import bbcz;
-import bbfj;
-import bcqf;
-import bcql;
-import bfnk;
-import bglh;
-import bgpa;
+import bdbt;
+import bdee;
+import bepp;
+import bhoe;
+import bimg;
+import bipz;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.PluginInfo;
 
@@ -25,28 +25,28 @@ public class DatalineBridgeActivity
 {
   private long jdField_a_of_type_Long;
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private bcqf jdField_a_of_type_Bcqf;
-  private bfnk jdField_a_of_type_Bfnk;
-  private bglh jdField_a_of_type_Bglh;
+  private bepp jdField_a_of_type_Bepp;
+  private bhoe jdField_a_of_type_Bhoe;
+  private bimg jdField_a_of_type_Bimg;
   private String jdField_a_of_type_JavaLangString;
   
   private void a(int paramInt)
   {
     QLog.e("DatalineBridgeActivity", 1, "[DatalineBridgeActivity] handleFailed errCode:" + paramInt);
-    int i = getResources().getDimensionPixelSize(2131298865);
-    String str = ajya.a(2131702750);
+    int i = getResources().getDimensionPixelSize(2131298914);
+    String str = alpo.a(2131703122);
     if (-4 == paramInt) {
-      str = ajya.a(2131702768);
+      str = alpo.a(2131703140);
     }
     for (;;)
     {
-      bcql.a(this.app.getApp(), 1, str, 0).b(i);
+      QQToast.a(this.app.getApp(), 1, str, 0).b(i);
       finish();
       return;
       if ((-5 == paramInt) || (-1 == paramInt) || (-3 == paramInt) || (-2 == paramInt)) {
-        str = ajya.a(2131702763);
+        str = alpo.a(2131703135);
       } else if (-6 == paramInt) {
-        str = ajya.a(2131702766);
+        str = alpo.a(2131703138);
       }
     }
   }
@@ -62,7 +62,7 @@ public class DatalineBridgeActivity
     }
     if (paramPluginBaseInfo == null)
     {
-      if (!this.jdField_a_of_type_Bglh.isReady())
+      if (!this.jdField_a_of_type_Bimg.isReady())
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("DatalineBridgeActivity", 4, "[DatalineBridgeActivity] queryPluginInfo is no ready and query it");
@@ -72,7 +72,7 @@ public class DatalineBridgeActivity
           a(-5);
           return;
         }
-        this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1001, 400L);
+        this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(1001, 400L);
         return;
       }
       a(-1);
@@ -81,7 +81,7 @@ public class DatalineBridgeActivity
     if (QLog.isDevelopLevel()) {
       QLog.d("DatalineBridgeActivity", 4, "[DatalineBridgeActivity] queryPluginInfo mState : " + paramPluginBaseInfo.mState + " progress:" + paramPluginBaseInfo.mDownloadProgress);
     }
-    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!bbfj.g(getApplicationContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
+    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!bdee.g(getApplicationContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
     {
       a(-4);
       return;
@@ -95,7 +95,7 @@ public class DatalineBridgeActivity
       a(-6);
       return;
     case 0: 
-      this.jdField_a_of_type_Bglh.a("qqdataline.apk");
+      this.jdField_a_of_type_Bimg.a("qqdataline.apk");
     case 1: 
     case 2: 
       if (i != 0)
@@ -103,7 +103,7 @@ public class DatalineBridgeActivity
         a(-5);
         return;
       }
-      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1001, 400L);
+      this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(1001, 400L);
       return;
     case 3: 
       if (i != 0)
@@ -111,7 +111,7 @@ public class DatalineBridgeActivity
         a(-5);
         return;
       }
-      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1001, 400L);
+      this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(1001, 400L);
       return;
     case 4: 
       b();
@@ -127,13 +127,13 @@ public class DatalineBridgeActivity
       if (this.app == null) {
         return false;
       }
-      this.jdField_a_of_type_Bglh = ((bglh)this.app.getManager(27));
-      if (this.jdField_a_of_type_Bglh == null)
+      this.jdField_a_of_type_Bimg = ((bimg)this.app.getManager(27));
+      if (this.jdField_a_of_type_Bimg == null)
       {
         a(-6);
         return false;
       }
-      Object localObject1 = this.jdField_a_of_type_Bglh.a("qqdataline.apk");
+      Object localObject1 = this.jdField_a_of_type_Bimg.a("qqdataline.apk");
       if ((localObject1 != null) && (((PluginBaseInfo)localObject1).mState != 4)) {
         return false;
       }
@@ -153,7 +153,7 @@ public class DatalineBridgeActivity
       localObject1 = this.app.getAccount();
       try
       {
-        localObject2 = bbcz.a(this.app, this.app.getAccount());
+        localObject2 = bdbt.a(this.app, this.app.getAccount());
         localObject1 = localObject2;
       }
       catch (Exception localException)
@@ -196,7 +196,7 @@ public class DatalineBridgeActivity
     Object localObject1 = this.app.getAccount();
     try
     {
-      localObject2 = bbcz.a(this.app, this.app.getAccount());
+      localObject2 = bdbt.a(this.app, this.app.getAccount());
       localObject1 = localObject2;
     }
     catch (Exception localException)
@@ -207,7 +207,7 @@ public class DatalineBridgeActivity
         localException.printStackTrace();
       }
       localIntent.putExtra("userQqResources", 2);
-      DatalinePluginProxyActivity.a(this, localException, localIntent, this.jdField_a_of_type_JavaLangString, -1, this.jdField_a_of_type_Bcqf);
+      DatalinePluginProxyActivity.a(this, localException, localIntent, this.jdField_a_of_type_JavaLangString, -1, this.jdField_a_of_type_Bepp);
       overridePendingTransition(0, 0);
     }
     localObject2 = localObject1;
@@ -225,16 +225,16 @@ public class DatalineBridgeActivity
   
   public void a()
   {
-    this.jdField_a_of_type_Bglh = ((bglh)this.app.getManager(27));
+    this.jdField_a_of_type_Bimg = ((bimg)this.app.getManager(27));
     QLog.i("DatalineBridgeActivity", 1, "[DatalineBridgeActivity] onPluginManagerLoaded SUPPORT_NETWORKING:true");
-    if (this.jdField_a_of_type_Bglh == null) {
+    if (this.jdField_a_of_type_Bimg == null) {
       a(-6);
     }
     for (;;)
     {
       return;
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      PluginInfo localPluginInfo = this.jdField_a_of_type_Bglh.a("qqdataline.apk");
+      PluginInfo localPluginInfo = this.jdField_a_of_type_Bimg.a("qqdataline.apk");
       int j = 0;
       int i = j;
       if (localPluginInfo != null)
@@ -246,16 +246,16 @@ public class DatalineBridgeActivity
       }
       for (i = 1; i == 0; i = j)
       {
-        if (this.jdField_a_of_type_Bcqf != null)
+        if (this.jdField_a_of_type_Bepp != null)
         {
-          this.jdField_a_of_type_Bcqf.a(ajya.a(2131702762));
-          this.jdField_a_of_type_Bcqf.show();
+          this.jdField_a_of_type_Bepp.a(alpo.a(2131703134));
+          this.jdField_a_of_type_Bepp.show();
         }
-        this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1001, 400L);
+        this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(1001, 400L);
         return;
         label122:
         QLog.i("DatalineBridgeActivity", 1, "[DatalineBridgeActivity] onPluginManagerLoaded start down or install...");
-        this.jdField_a_of_type_Bglh.a("qqdataline.apk");
+        this.jdField_a_of_type_Bimg.a("qqdataline.apk");
       }
     }
   }
@@ -265,14 +265,14 @@ public class DatalineBridgeActivity
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getBundleExtra("_param_");
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("componetname");
-    this.jdField_a_of_type_Bfnk = new bfnk(this);
+    this.jdField_a_of_type_Bhoe = new bhoe(this);
     if (a()) {
       return true;
     }
-    this.jdField_a_of_type_Bcqf = new bcqf(this, getResources().getDimensionPixelSize(2131298865));
-    this.jdField_a_of_type_Bcqf.a(ajya.a(2131702764));
-    this.jdField_a_of_type_Bcqf.setOnDismissListener(new bgpa(this));
-    this.jdField_a_of_type_Bfnk.postDelayed(new DatalineBridgeActivity.2(this), 300L);
+    this.jdField_a_of_type_Bepp = new bepp(this, getResources().getDimensionPixelSize(2131298914));
+    this.jdField_a_of_type_Bepp.a(alpo.a(2131703136));
+    this.jdField_a_of_type_Bepp.setOnDismissListener(new bipz(this));
+    this.jdField_a_of_type_Bhoe.postDelayed(new DatalineBridgeActivity.2(this), 300L);
     return true;
   }
   
@@ -288,7 +288,7 @@ public class DatalineBridgeActivity
         QLog.d("DatalineBridgeActivity", 4, "[DatalineBridgeActivity]  ACTION_QUERY!");
       }
       if (!isFinishing()) {
-        a("qqdataline.apk", this.jdField_a_of_type_Bglh.a("qqdataline.apk"));
+        a("qqdataline.apk", this.jdField_a_of_type_Bimg.a("qqdataline.apk"));
       }
     }
   }
@@ -296,15 +296,15 @@ public class DatalineBridgeActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bcqf != null)
+    if (this.jdField_a_of_type_Bepp != null)
     {
-      this.jdField_a_of_type_Bcqf.dismiss();
-      this.jdField_a_of_type_Bcqf = null;
+      this.jdField_a_of_type_Bepp.dismiss();
+      this.jdField_a_of_type_Bepp = null;
     }
-    if (this.jdField_a_of_type_Bfnk != null) {
-      this.jdField_a_of_type_Bfnk.removeMessages(1001);
+    if (this.jdField_a_of_type_Bhoe != null) {
+      this.jdField_a_of_type_Bhoe.removeMessages(1001);
     }
-    if ((this.jdField_a_of_type_Bglh == null) || (QLog.isDevelopLevel())) {
+    if ((this.jdField_a_of_type_Bimg == null) || (QLog.isDevelopLevel())) {
       QLog.d("QPlugin", 4, "DatalineBridgeActivity onDestroy");
     }
   }
@@ -316,7 +316,7 @@ public class DatalineBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqdataline.DatalineBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

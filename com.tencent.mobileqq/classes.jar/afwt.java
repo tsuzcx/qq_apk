@@ -1,53 +1,44 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import mqq.os.MqqHandler;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class afwt
-  extends WtloginObserver
+  extends aelt
 {
-  public afwt(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, long paramLong, boolean paramBoolean) {}
+  public ImageView a;
+  public TextView a;
+  public CropBubbleVideoView a;
+  public MessageProgressView a;
+  public ImageView b;
+  public int e;
+  public int f;
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public afwt(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  
+  public void a()
   {
-    int i = 1;
-    boolean bool;
-    if (QLog.isColorLevel())
+    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
     {
-      long l = System.currentTimeMillis();
-      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
-      if (paramDevlockInfo == null)
+      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
+      if (l > 0L)
       {
-        bool = true;
-        QLog.d("Q.history.C2CAllFragment", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
+        MessageForShortVideo localMessageForShortVideo = bdan.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        if (localMessageForShortVideo != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(localMessageForShortVideo, l);
+        }
       }
-    }
-    else
-    {
-      paramWUserSigInfo = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(40);
-      paramWUserSigInfo.arg1 = paramInt;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label135;
-      }
-    }
-    label135:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramWUserSigInfo.arg2 = paramInt;
-      paramWUserSigInfo.obj = paramDevlockInfo;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramWUserSigInfo);
-      return;
-      bool = false;
-      break;
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
+      ShortVideoRealItemBuilder.a.remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afwt
  * JD-Core Version:    0.7.0.1
  */

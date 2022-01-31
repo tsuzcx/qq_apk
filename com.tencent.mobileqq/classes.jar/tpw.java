@@ -1,39 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
 
-class tpw
-  implements auoq
+public class tpw
+  extends GestureDetector.SimpleOnGestureListener
 {
-  tpw(tpv paramtpv) {}
+  private final tpx jdField_a_of_type_Tpx;
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public tpw(PublicAccountImageView paramPublicAccountImageView, tpx paramtpx)
   {
-    return null;
+    this.jdField_a_of_type_Tpx = paramtpx;
   }
   
-  public void a(auor paramauor) {}
-  
-  public void b(auor paramauor)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if ((paramauor.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramauor.jdField_b_of_type_JavaLangString)))
-    {
-      this.a.a("UploadImageJob_out_image_url", paramauor.jdField_b_of_type_JavaLangString);
-      tpv.a(this.a, true);
-      return;
-    }
-    paramauor = new ErrorMessage(paramauor.jdField_b_of_type_Int, paramauor.a);
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramauor, new Object[0]);
-    }
-    tpv.b(this.a, false);
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return false;
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpw
  * JD-Core Version:    0.7.0.1
  */

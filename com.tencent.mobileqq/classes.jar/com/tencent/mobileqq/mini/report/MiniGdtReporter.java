@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.report;
 
+import aaob;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
@@ -8,7 +9,6 @@ import java.net.URLEncoder;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yyb;
 
 public class MiniGdtReporter
 {
@@ -92,14 +92,14 @@ public class MiniGdtReporter
         catch (Exception localException1) {}
         try
         {
-          str = paramMiniAppConfig.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("8.3.0", "utf-8"));
+          str = paramMiniAppConfig.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("8.3.3", "utf-8"));
           paramMiniAppConfig = str;
           paramInt = 1;
           if (paramInt == 0) {
             break;
           }
           QLog.i("MiniGdtReporter", 2, "report: get report url " + paramMiniAppConfig + " " + localLaunchParam.timestamp);
-          yyb.a(paramMiniAppConfig);
+          aaob.a(paramMiniAppConfig);
           return;
         }
         catch (Exception localException2)
@@ -118,7 +118,7 @@ public class MiniGdtReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniGdtReporter
  * JD-Core Version:    0.7.0.1
  */

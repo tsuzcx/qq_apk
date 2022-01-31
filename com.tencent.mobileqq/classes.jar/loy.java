@@ -1,114 +1,59 @@
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.StringTokenizer;
+import org.json.JSONObject;
 
 public class loy
 {
-  private char jdField_a_of_type_Char = '\r';
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private char b = '\t';
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  String b;
+  String c;
+  String d;
   
-  public loy()
+  public static loy a()
   {
-    this.jdField_a_of_type_Char = '\r';
-    this.b = '\t';
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    Object localObject = lex.b(298).jdField_a_of_type_JavaLangString;
+    loy localloy = null;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localloy = a((String)localObject);
+    }
+    localObject = localloy;
+    if (localloy == null) {
+      localObject = new loy();
+    }
+    return localObject;
   }
   
-  public loy(char paramChar1, char paramChar2)
+  static loy a(String paramString)
   {
-    this.jdField_a_of_type_Char = paramChar1;
-    this.b = paramChar2;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public int a(String paramString)
-  {
-    return a(paramString, 0);
-  }
-  
-  public int a(String paramString, int paramInt)
-  {
-    String str = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    int i = paramInt;
-    if (str != null) {}
     try
     {
-      i = Integer.parseInt(str);
-      return i;
+      paramString = new JSONObject(paramString);
+      loy localloy = new loy();
+      localloy.jdField_a_of_type_Boolean = paramString.getBoolean("enable");
+      localloy.jdField_a_of_type_Int = paramString.getInt("task_id");
+      localloy.jdField_a_of_type_JavaLangString = paramString.getString("url_zip_so");
+      localloy.b = paramString.getString("MD5_zip_so");
+      localloy.c = paramString.getString("MD5_so");
+      localloy.d = paramString.getString("so_name");
+      return localloy;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
-      QLog.w("GlStringParser", 1, "getInt, key[" + paramString + "], value[" + str + "], def[" + paramInt + "]", localException);
+      QLog.d("QavGPDownloadManager", 1, String.format("parseJson, Exception\n%s", new Object[] { paramString }));
     }
-    return paramInt;
+    return null;
   }
   
-  public String a()
+  public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localStringBuilder.append(str);
-      localStringBuilder.append(this.jdField_a_of_type_Char);
-      localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilMap.get(str));
-      localStringBuilder.append(this.b);
-    }
-    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    return localStringBuilder.toString();
-  }
-  
-  public String a(String paramString)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.b);
-      paramString = new StringTokenizer(paramString, ((StringBuilder)localObject).toString());
-      while (paramString.hasMoreElements())
-      {
-        String str = paramString.nextToken();
-        int i = str.indexOf(this.jdField_a_of_type_Char);
-        if (i != -1)
-        {
-          localObject = str.substring(0, i);
-          str = str.substring(i + 1);
-          this.jdField_a_of_type_JavaUtilMap.put(localObject, str);
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.toString(paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString1.indexOf(this.b) != -1) || (paramString1.indexOf(this.jdField_a_of_type_Char) != -1)) {}
-    while ((paramString2 == null) || (paramString2.indexOf(this.jdField_a_of_type_Char) != -1) || (paramString2.indexOf(this.b) != -1)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+    return String.format("task_id[%s], enable[%s], url_zip_so[%s], MD5_zip_so[%s], MD5_so[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.c });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     loy
  * JD-Core Version:    0.7.0.1
  */

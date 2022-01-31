@@ -22,12 +22,12 @@ import com.tencent.viola.ui.baseComponent.VComponentContainer;
 import com.tencent.viola.ui.view.IVView;
 import java.lang.ref.WeakReference;
 import java.util.Map;
-import ryq;
-import ryt;
-import ryu;
-import ryv;
-import rzc;
-import rzm;
+import spx;
+import sqa;
+import sqb;
+import sqc;
+import sqj;
+import sqt;
 
 public class VVideoView
   extends FrameLayout
@@ -37,8 +37,8 @@ public class VVideoView
   private ViewGroup.LayoutParams jdField_a_of_type_AndroidViewViewGroup$LayoutParams;
   private VVideo jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo;
   private WeakReference<VVideo> jdField_a_of_type_JavaLangRefWeakReference;
-  private ryu jdField_a_of_type_Ryu;
-  private ryv jdField_a_of_type_Ryv;
+  private sqb jdField_a_of_type_Sqb;
+  private sqc jdField_a_of_type_Sqc;
   private int b;
   private int c = 1;
   
@@ -69,20 +69,20 @@ public class VVideoView
     return null;
   }
   
-  public ryu a()
+  public sqb a()
   {
-    return this.jdField_a_of_type_Ryu;
+    return this.jdField_a_of_type_Sqb;
   }
   
-  public ryv a()
+  public sqc a()
   {
-    return this.jdField_a_of_type_Ryv;
+    return this.jdField_a_of_type_Sqc;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ryu != null) {
-      this.jdField_a_of_type_Ryu.f(this);
+    if (this.jdField_a_of_type_Sqb != null) {
+      this.jdField_a_of_type_Sqb.f(this);
     }
   }
   
@@ -125,32 +125,32 @@ public class VVideoView
         QLog.d("VVideoView", 2, "initView: playerType=" + paramInt1 + ", sceneType=" + paramInt2);
       }
       if (paramInt1 != 1) {
-        break label147;
+        break label154;
       }
-      localObject1 = new ryt(a().getInstance().getActivity(), this, paramInt2);
-      setVideoViewControlListener((ryu)localObject1);
+      localObject1 = new sqa(a().getInstance().getActivity(), this, paramInt2, a().getInstance());
+      setVideoViewControlListener((sqb)localObject1);
       localObject2 = (BaseModule)ViolaModuleManager.findModuleMapById(a().getInstance().getInstanceId()).get(BridgeModule.MODULE_NAME);
       if ((localObject2 instanceof BridgeModule))
       {
         localObject2 = ((BridgeModule)localObject2).getField("predownload");
         if ((localObject2 instanceof VideoPreDownloadMgr)) {
-          ((ryt)localObject1).a((VideoPreDownloadMgr)localObject2);
+          ((sqa)localObject1).a((VideoPreDownloadMgr)localObject2);
         }
       }
     }
     return;
-    label147:
+    label154:
     if (this.jdField_a_of_type_Int == 1)
     {
       localObject1 = new ViolaVideoView(a().getInstance().getActivity());
-      setVideoViewControlListener(new rzc(a().getInstance().getActivity(), (ryq)localObject1, this));
+      setVideoViewControlListener(new sqj(a().getInstance().getActivity(), (spx)localObject1, this, a().getInstance()));
       addView((View)localObject1, -1, -1);
       return;
     }
     Object localObject1 = new ViolaVideoView(a().getInstance().getActivity());
-    Object localObject2 = new rzm(a().getInstance().getActivity(), (ryq)localObject1, this);
-    setVideoViewControlListener((ryu)localObject2);
-    setVideoViewLifeCycleChangeListener((ryv)localObject2);
+    Object localObject2 = new sqt(a().getInstance().getActivity(), (spx)localObject1, this, a().getInstance());
+    setVideoViewControlListener((sqb)localObject2);
+    setVideoViewLifeCycleChangeListener((sqc)localObject2);
     addView((View)localObject1, -1, -1);
   }
   
@@ -166,8 +166,8 @@ public class VVideoView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ryu != null) {
-      this.jdField_a_of_type_Ryu.g(this);
+    if (this.jdField_a_of_type_Sqb != null) {
+      this.jdField_a_of_type_Sqb.g(this);
     }
   }
   
@@ -186,19 +186,19 @@ public class VVideoView
     }
   }
   
-  public void setVideoViewControlListener(ryu paramryu)
+  public void setVideoViewControlListener(sqb paramsqb)
   {
-    this.jdField_a_of_type_Ryu = paramryu;
+    this.jdField_a_of_type_Sqb = paramsqb;
   }
   
-  public void setVideoViewLifeCycleChangeListener(ryv paramryv)
+  public void setVideoViewLifeCycleChangeListener(sqc paramsqc)
   {
-    this.jdField_a_of_type_Ryv = paramryv;
+    this.jdField_a_of_type_Sqc = paramsqc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView
  * JD-Core Version:    0.7.0.1
  */

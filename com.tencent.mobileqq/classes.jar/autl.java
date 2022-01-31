@@ -1,29 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
-public class autl
-  extends ajxj
+class autl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public autl(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  autl(autj paramautj, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
-    }
-    if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
+    if (this.jdField_a_of_type_Autj.b)
     {
-      PersonalityLabelGalleryActivity.a(this.a, bbcz.a(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
-      if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
-        PersonalityLabelGalleryActivity.d(this.a);
-      }
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
+      this.jdField_a_of_type_Autj.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Autj.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      return;
     }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     autl
  * JD-Core Version:    0.7.0.1
  */

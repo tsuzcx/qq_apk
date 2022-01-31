@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.doodle.control;
 
-import actj;
-import addu;
-import adff;
-import adfg;
-import adfh;
-import ajya;
+import aekt;
+import aevw;
+import aexh;
+import aexi;
+import aexj;
+import alpo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -16,8 +16,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import awhg;
-import axqy;
+import ayck;
+import azmj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,10 +27,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class GifTemplatePicker
-  extends RDBaseListLayout<adff, adfh>
-  implements View.OnClickListener, awhg
+  extends RDBaseListLayout<aexh, aexj>
+  implements View.OnClickListener, ayck
 {
-  private adfg a;
+  private aexi a;
   
   public GifTemplatePicker(Context paramContext)
   {
@@ -52,8 +52,8 @@ public class GifTemplatePicker
   
   private void b(boolean paramBoolean)
   {
-    a(new adff(2130837694, 0), false);
-    Object localObject = addu.a().a(1);
+    a(new aexh(2130837749, 0), false);
+    Object localObject = aevw.a().a(1);
     if (localObject == null) {}
     for (;;)
     {
@@ -62,49 +62,49 @@ public class GifTemplatePicker
       while (((Iterator)localObject).hasNext())
       {
         Integer localInteger = (Integer)((Iterator)localObject).next();
-        if (!addu.a().a(1, localInteger.intValue()))
+        if (!aevw.a().a(1, localInteger.intValue()))
         {
           if (paramBoolean) {
-            addu.a().a(1, localInteger.intValue(), this, this);
+            aevw.a().a(1, localInteger.intValue(), this, this);
           }
         }
         else {
-          a(new adff(localInteger.intValue(), 1), false);
+          a(new aexh(localInteger.intValue(), 1), false);
         }
       }
     }
   }
   
-  public adfh a(int paramInt, adff paramadff)
+  public aexj a(int paramInt, aexh paramaexh)
   {
-    adfh localadfh = new adfh();
+    aexj localaexj = new aexj();
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     localRelativeLayout.setOnClickListener(this);
-    localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(actj.a(50.0F, getResources()), actj.a(37.0F, getResources())));
-    localadfh.a(localRelativeLayout);
-    localadfh.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    Object localObject = new RelativeLayout.LayoutParams(actj.a(40.0F, getResources()), actj.a(27.0F, getResources()));
-    paramInt = actj.a(5.0F, getResources());
+    localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(aekt.a(50.0F, getResources()), aekt.a(37.0F, getResources())));
+    localaexj.a(localRelativeLayout);
+    localaexj.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
+    Object localObject = new RelativeLayout.LayoutParams(aekt.a(40.0F, getResources()), aekt.a(27.0F, getResources()));
+    paramInt = aekt.a(5.0F, getResources());
     ((RelativeLayout.LayoutParams)localObject).leftMargin = paramInt;
     ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt;
-    localadfh.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localaexj.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = null;
-    if (paramadff.a == 1) {
-      localObject = addu.a().a(1, paramadff.b);
+    if (paramaexh.a == 1) {
+      localObject = aevw.a().a(1, paramaexh.b);
     }
     for (;;)
     {
-      localadfh.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      localadfh.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      localRelativeLayout.addView(localadfh.jdField_a_of_type_AndroidWidgetImageView);
-      localadfh.jdField_a_of_type_AndroidViewView = new View(getContext());
-      localadfh.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      localadfh.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1427313428);
-      localadfh.jdField_a_of_type_AndroidViewView.setClickable(false);
-      localRelativeLayout.addView(localadfh.jdField_a_of_type_AndroidViewView, 0);
-      return localadfh;
-      if (paramadff.a == 0) {
-        localObject = getContext().getResources().getDrawable(paramadff.b);
+      localaexj.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+      localaexj.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localRelativeLayout.addView(localaexj.jdField_a_of_type_AndroidWidgetImageView);
+      localaexj.jdField_a_of_type_AndroidViewView = new View(getContext());
+      localaexj.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+      localaexj.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1427313428);
+      localaexj.jdField_a_of_type_AndroidViewView.setClickable(false);
+      localRelativeLayout.addView(localaexj.jdField_a_of_type_AndroidViewView, 0);
+      return localaexj;
+      if (paramaexh.a == 0) {
+        localObject = getContext().getResources().getDrawable(paramaexh.b);
       }
     }
   }
@@ -114,31 +114,31 @@ public class GifTemplatePicker
     this.a = null;
   }
   
-  public void a(int paramInt, adff paramadff)
+  public void a(int paramInt, aexh paramaexh)
   {
-    if ((this.a != null) && (paramadff != null))
+    if ((this.a != null) && (paramaexh != null))
     {
-      if (paramadff.a == 0) {
+      if (paramaexh.a == 0) {
         this.a.a(-1);
       }
     }
     else {
       return;
     }
-    this.a.a(paramadff.b);
+    this.a.a(paramaexh.b);
   }
   
-  public void a(int paramInt, adff paramadff, adfh paramadfh)
+  public void a(int paramInt, aexh paramaexh, aexj paramaexj)
   {
-    if (paramadfh.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (paramaexj.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       localObject = null;
-      if (paramadff.a != 1) {
+      if (paramaexh.a != 1) {
         break label89;
       }
-      localObject = addu.a().a(1, paramadff.b);
-      paramadfh.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      if (AppSetting.d) {
+      localObject = aevw.a().a(1, paramaexh.b);
+      paramaexj.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      if (AppSetting.c) {
         if (paramInt != 0) {
           break label115;
         }
@@ -146,25 +146,25 @@ public class GifTemplatePicker
     }
     label89:
     label115:
-    for (Object localObject = ajya.a(2131705275);; localObject = ajya.a(2131705274) + paramInt)
+    for (Object localObject = alpo.a(2131705647);; localObject = alpo.a(2131705646) + paramInt)
     {
-      paramadfh.jdField_a_of_type_AndroidWidgetImageView.setContentDescription((CharSequence)localObject);
-      if (paramadfh.jdField_a_of_type_AndroidViewView != null)
+      paramaexj.jdField_a_of_type_AndroidWidgetImageView.setContentDescription((CharSequence)localObject);
+      if (paramaexj.jdField_a_of_type_AndroidViewView != null)
       {
-        if (!paramadff.a()) {
+        if (!paramaexh.a()) {
           break label142;
         }
-        paramadfh.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        paramaexj.jdField_a_of_type_AndroidViewView.setVisibility(0);
       }
       return;
-      if (paramadff.a != 0) {
+      if (paramaexh.a != 0) {
         break;
       }
-      localObject = getContext().getResources().getDrawable(paramadff.b);
+      localObject = getContext().getResources().getDrawable(paramaexh.b);
       break;
     }
     label142:
-    paramadfh.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    paramaexj.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
   public void a(View paramView, int paramInt1, ScribbleResMgr.ResInfo paramResInfo, int paramInt2)
@@ -196,30 +196,30 @@ public class GifTemplatePicker
   {
     int i = a(paramView);
     a(i, false);
-    paramView = (adff)a(i);
+    paramView = (aexh)a(i);
     QQAppInterface localQQAppInterface;
     if (paramView != null)
     {
       localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       if (1 == paramView.a) {
-        axqy.b(localQQAppInterface, "dc00898", "", "", "0X80081B4", "0X80081B4", 1, paramView.b, "", "", "", "");
+        azmj.b(localQQAppInterface, "dc00898", "", "", "0X80081B4", "0X80081B4", 1, paramView.b, "", "", "", "");
       }
     }
     else
     {
       return;
     }
-    axqy.b(localQQAppInterface, "dc00898", "", "", "0X80081B4", "0X80081B4", 1, 0, "", "", "", "");
+    azmj.b(localQQAppInterface, "dc00898", "", "", "0X80081B4", "0X80081B4", 1, 0, "", "", "", "");
   }
   
-  public void setListener(adfg paramadfg)
+  public void setListener(aexi paramaexi)
   {
-    this.a = paramadfg;
+    this.a = paramaexi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.GifTemplatePicker
  * JD-Core Version:    0.7.0.1
  */

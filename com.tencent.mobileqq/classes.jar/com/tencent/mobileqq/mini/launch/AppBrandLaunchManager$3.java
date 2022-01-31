@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.mini.launch;
 
-import com.tencent.mobileqq.mini.apkg.BaseLibManager;
-
 class AppBrandLaunchManager$3
   implements Runnable
 {
@@ -9,12 +7,12 @@ class AppBrandLaunchManager$3
   
   public void run()
   {
-    BaseLibManager.g().installInnerBaseLib();
+    AppBrandLaunchManager.access$300(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.3
  * JD-Core Version:    0.7.0.1
  */

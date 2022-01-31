@@ -18,6 +18,7 @@ public class FaceItem
   public CharmRange charmRange;
   public int countTriggerType;
   public boolean disable3DCorrect = false;
+  public String externalTriggerWords;
   public String faceExchangeImage;
   public boolean faceExchangeImageDisableOpacity = false;
   public boolean faceExchangeImageFullFace = false;
@@ -34,6 +35,8 @@ public class FaceItem
   public String id;
   public String irisImage;
   public boolean is3DCos = false;
+  public float[] lipsRGBA;
+  public String lipsStyleMask;
   public int personID;
   public int playCount;
   public int preTriggerType;

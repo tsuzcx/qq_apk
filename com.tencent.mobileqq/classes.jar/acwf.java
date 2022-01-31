@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-public final class acwf
-  implements Parcelable.Creator<ForwardUtils.Section_Pic>
+public class acwf
+  implements bhum
 {
-  public ForwardUtils.Section_Pic a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Pic(paramParcel);
-  }
+  public acwf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public ForwardUtils.Section_Pic[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    return new ForwardUtils.Section_Pic[paramInt];
+    FriendProfileCardActivity.a(this.a, paramInt1);
+    if ((paramInt1 + paramInt2 != paramInt3) || (paramInt3 <= 0) || (this.a.d()) || (!bdee.d(this.a))) {}
+    while ((this.a.a == null) || (!this.a.a.a())) {
+      return;
+    }
+    this.a.a.a();
+    this.a.d(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwf
  * JD-Core Version:    0.7.0.1
  */

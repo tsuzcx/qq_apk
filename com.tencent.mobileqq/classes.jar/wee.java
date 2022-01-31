@@ -1,111 +1,61 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.async.JobContext;
+import java.util.List;
 
-public class wee
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, wef
+class wee
+  implements uni<vao, vap>
 {
-  protected final float a;
-  protected final Interpolator a;
-  protected final wed a;
-  protected final wel a;
-  protected final float b;
+  wee(wed paramwed, JobContext paramJobContext) {}
   
-  public wee(wel paramwel, float paramFloat)
+  public void a(@NonNull vao paramvao, @Nullable vap paramvap, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
-    this.jdField_a_of_type_Wel = paramwel;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.b = (2.0F * paramFloat);
-    this.jdField_a_of_type_Wed = new wed();
-  }
-  
-  protected Animator a()
-  {
-    float f1 = 0.0F;
-    Object localObject1 = this.jdField_a_of_type_Wel.a();
-    Object localObject2 = this.jdField_a_of_type_Wel.jdField_a_of_type_Weg;
-    Object localObject3 = this.jdField_a_of_type_Wel.jdField_a_of_type_Wek;
-    float f3 = this.jdField_a_of_type_Wel.jdField_a_of_type_Float;
-    ((weg)localObject2).a((View)localObject1, this.jdField_a_of_type_Wed);
-    if ((f3 == 0.0F) || ((f3 < 0.0F) && (((wek)localObject3).jdField_a_of_type_Boolean)) || ((f3 > 0.0F) && (!((wek)localObject3).jdField_a_of_type_Boolean))) {
-      return a(this.jdField_a_of_type_Wed.jdField_a_of_type_Float);
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      wsv.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull commentLikeFeedItem cancel on net respond");
+      return;
     }
-    float f2 = -f3 / this.jdField_a_of_type_Float;
-    if (f2 < 0.0F) {}
+    if ((paramErrorMessage.isFail()) || (paramvap == null))
+    {
+      wsv.a("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
+      wed.a(this.jdField_a_of_type_Wed, paramErrorMessage);
+      return;
+    }
+    paramvao = (wkp)urr.a(11);
+    if (paramvap.a.size() < 1)
+    {
+      wsv.e("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
+      paramvao.a(wec.a(this.jdField_a_of_type_Wed.a));
+      paramvao = new ErrorMessage(2222, "no feed data back.");
+      wed.b(this.jdField_a_of_type_Wed, paramvao);
+      return;
+    }
+    paramvap = (wjz)paramvap.a.get(0);
+    if ((paramvap instanceof wmg))
+    {
+      paramErrorMessage = (wmg)paramvap;
+      if ((wec.a(this.jdField_a_of_type_Wed.a).a == null) || (wec.a(this.jdField_a_of_type_Wed.a).a().mVideoSeq != paramErrorMessage.a().mVideoSeq))
+      {
+        wec.a(this.jdField_a_of_type_Wed.a).a = paramvap.a();
+        wec.a(this.jdField_a_of_type_Wed.a).a(paramvao.a(wec.a(this.jdField_a_of_type_Wed.a), paramvap.a(), true), true);
+        ((wkv)urr.a(12)).a(2, wec.a(this.jdField_a_of_type_Wed.a).a.feedId, wec.a(this.jdField_a_of_type_Wed.a).a().mVideoSeq, wec.a(this.jdField_a_of_type_Wed.a).a(), wec.a(this.jdField_a_of_type_Wed.a).a().mVideoNextCookie, wec.a(this.jdField_a_of_type_Wed.a).a().mIsVideoEnd, wec.a(this.jdField_a_of_type_Wed.a).a().mVideoPullType, true);
+      }
+    }
     for (;;)
     {
-      f2 = -f3 * f3 / this.b + this.jdField_a_of_type_Wed.jdField_a_of_type_Float;
-      localObject1 = a((View)localObject1, (int)f1, f2);
-      localObject2 = a(f2);
-      localObject3 = new AnimatorSet();
-      ((AnimatorSet)localObject3).playSequentially(new Animator[] { localObject1, localObject2 });
-      return localObject3;
-      f1 = f2;
+      wec.a(this.jdField_a_of_type_Wed.a).a = ((CommentLikeFeedItem)paramvao.a(wec.a(this.jdField_a_of_type_Wed.a).a));
+      wed.a(this.jdField_a_of_type_Wed, wec.a(this.jdField_a_of_type_Wed.a));
+      return;
+      wec.a(this.jdField_a_of_type_Wed.a).a = paramvap.a();
     }
   }
-  
-  protected ObjectAnimator a(float paramFloat)
-  {
-    Object localObject = this.jdField_a_of_type_Wel.a();
-    wek localwek = this.jdField_a_of_type_Wel.jdField_a_of_type_Wek;
-    paramFloat = Math.abs(paramFloat) / this.jdField_a_of_type_Wed.b;
-    localObject = ObjectAnimator.ofFloat(localObject, this.jdField_a_of_type_Wed.jdField_a_of_type_AndroidUtilProperty, new float[] { localwek.jdField_a_of_type_Float });
-    ((ObjectAnimator)localObject).setDuration(Math.max((int)(paramFloat * 800.0F), 200));
-    ((ObjectAnimator)localObject).setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-    ((ObjectAnimator)localObject).addUpdateListener(this);
-    return localObject;
-  }
-  
-  protected ObjectAnimator a(View paramView, int paramInt, float paramFloat)
-  {
-    paramView = ObjectAnimator.ofFloat(paramView, this.jdField_a_of_type_Wed.jdField_a_of_type_AndroidUtilProperty, new float[] { paramFloat });
-    paramView.setDuration(paramInt);
-    paramView.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-    paramView.addUpdateListener(this);
-    return paramView;
-  }
-  
-  public void a(wef paramwef)
-  {
-    paramwef = a();
-    paramwef.addListener(this);
-    paramwef.start();
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Wel.a(this.jdField_a_of_type_Wel.jdField_a_of_type_Weh);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wee
  * JD-Core Version:    0.7.0.1
  */

@@ -17,6 +17,7 @@ public final class UnifySearchDiscovery$HotSearchItem
   public final PBBytesField jump_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField mark_bg_color = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField mark_text_color = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField recall_word = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField right_icon_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field show_type = PBField.initUInt32(0);
   public final PBBytesField text_color = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -34,12 +35,13 @@ public final class UnifySearchDiscovery$HotSearchItem
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 82, 88 }, new String[] { "show_type", "img_url", "title", "detail_text", "jump_url", "mark_text_color", "mark_bg_color", "img_bg_url", "text_color", "right_icon_url", "wz_ts" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, Integer.valueOf(0) }, HotSearchItem.class);
+    ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 82, 88, 98 }, new String[] { "show_type", "img_url", "title", "detail_text", "jump_url", "mark_text_color", "mark_bg_color", "img_bg_url", "text_color", "right_icon_url", "wz_ts", "recall_word" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, Integer.valueOf(0), localByteStringMicro10 }, HotSearchItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pb.unify.search.UnifySearchDiscovery.HotSearchItem
  * JD-Core Version:    0.7.0.1
  */

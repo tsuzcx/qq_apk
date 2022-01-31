@@ -5,8 +5,8 @@ import com.tencent.luan.ioc.InjectChecker;
 import com.tencent.luan.ioc.InjectParam;
 import java.lang.reflect.Method;
 
-class ReflectProvideMethod
-  extends AbstractProvideMethod
+class ReflectProvideMethod<T>
+  extends AbstractProvideMethod<T>
 {
   private final InjectParam argParam;
   private final Method method;
@@ -20,70 +20,70 @@ class ReflectProvideMethod
   }
   
   /* Error */
-  public java.lang.Object provide(com.tencent.luan.ioc.Injector paramInjector)
+  public T newInstance(com.tencent.luan.ioc.Injector paramInjector)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 29	com/tencent/luan/ioc/reflect/ReflectProvideMethod:argParam	Lcom/tencent/luan/ioc/InjectParam;
+    //   1: getfield 30	com/tencent/luan/ioc/reflect/ReflectProvideMethod:argParam	Lcom/tencent/luan/ioc/InjectParam;
     //   4: ifnonnull +16 -> 20
     //   7: aload_0
-    //   8: getfield 27	com/tencent/luan/ioc/reflect/ReflectProvideMethod:method	Ljava/lang/reflect/Method;
+    //   8: getfield 28	com/tencent/luan/ioc/reflect/ReflectProvideMethod:method	Ljava/lang/reflect/Method;
     //   11: aconst_null
     //   12: iconst_0
-    //   13: anewarray 38	java/lang/Object
-    //   16: invokevirtual 42	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   13: anewarray 39	java/lang/Object
+    //   16: invokevirtual 43	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   19: areturn
     //   20: aload_0
-    //   21: getfield 29	com/tencent/luan/ioc/reflect/ReflectProvideMethod:argParam	Lcom/tencent/luan/ioc/InjectParam;
-    //   24: getfield 48	com/tencent/luan/ioc/InjectParam:name	Ljava/lang/String;
-    //   27: invokevirtual 54	java/lang/String:isEmpty	()Z
+    //   21: getfield 30	com/tencent/luan/ioc/reflect/ReflectProvideMethod:argParam	Lcom/tencent/luan/ioc/InjectParam;
+    //   24: getfield 49	com/tencent/luan/ioc/InjectParam:name	Ljava/lang/String;
+    //   27: invokevirtual 55	java/lang/String:isEmpty	()Z
     //   30: ifeq +34 -> 64
     //   33: aload_1
     //   34: aload_0
-    //   35: getfield 29	com/tencent/luan/ioc/reflect/ReflectProvideMethod:argParam	Lcom/tencent/luan/ioc/InjectParam;
-    //   38: getfield 58	com/tencent/luan/ioc/InjectParam:type	Ljava/lang/Class;
-    //   41: invokeinterface 64 2 0
+    //   35: getfield 30	com/tencent/luan/ioc/reflect/ReflectProvideMethod:argParam	Lcom/tencent/luan/ioc/InjectParam;
+    //   38: getfield 59	com/tencent/luan/ioc/InjectParam:type	Ljava/lang/Class;
+    //   41: invokeinterface 65 2 0
     //   46: astore_1
     //   47: aload_0
-    //   48: getfield 27	com/tencent/luan/ioc/reflect/ReflectProvideMethod:method	Ljava/lang/reflect/Method;
+    //   48: getfield 28	com/tencent/luan/ioc/reflect/ReflectProvideMethod:method	Ljava/lang/reflect/Method;
     //   51: aconst_null
     //   52: iconst_1
-    //   53: anewarray 38	java/lang/Object
+    //   53: anewarray 39	java/lang/Object
     //   56: dup
     //   57: iconst_0
     //   58: aload_1
     //   59: aastore
-    //   60: invokevirtual 42	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   60: invokevirtual 43	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   63: areturn
     //   64: aload_1
     //   65: aload_0
-    //   66: getfield 29	com/tencent/luan/ioc/reflect/ReflectProvideMethod:argParam	Lcom/tencent/luan/ioc/InjectParam;
-    //   69: getfield 48	com/tencent/luan/ioc/InjectParam:name	Ljava/lang/String;
-    //   72: invokeinterface 67 2 0
+    //   66: getfield 30	com/tencent/luan/ioc/reflect/ReflectProvideMethod:argParam	Lcom/tencent/luan/ioc/InjectParam;
+    //   69: getfield 49	com/tencent/luan/ioc/InjectParam:name	Ljava/lang/String;
+    //   72: invokeinterface 68 2 0
     //   77: astore_1
     //   78: goto -31 -> 47
     //   81: astore_1
-    //   82: new 69	com/tencent/luan/ioc/InjectException
+    //   82: new 70	com/tencent/luan/ioc/InjectException
     //   85: dup
-    //   86: new 71	java/lang/StringBuilder
+    //   86: new 72	java/lang/StringBuilder
     //   89: dup
-    //   90: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   93: ldc 76
-    //   95: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: invokespecial 75	java/lang/StringBuilder:<init>	()V
+    //   93: ldc 77
+    //   95: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   98: aload_0
-    //   99: getfield 27	com/tencent/luan/ioc/reflect/ReflectProvideMethod:method	Ljava/lang/reflect/Method;
-    //   102: invokevirtual 84	java/lang/reflect/Method:getDeclaringClass	()Ljava/lang/Class;
-    //   105: invokevirtual 90	java/lang/Class:getName	()Ljava/lang/String;
-    //   108: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   111: ldc 92
-    //   113: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: getfield 28	com/tencent/luan/ioc/reflect/ReflectProvideMethod:method	Ljava/lang/reflect/Method;
+    //   102: invokevirtual 85	java/lang/reflect/Method:getDeclaringClass	()Ljava/lang/Class;
+    //   105: invokevirtual 91	java/lang/Class:getName	()Ljava/lang/String;
+    //   108: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: ldc 93
+    //   113: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: aload_0
-    //   117: getfield 27	com/tencent/luan/ioc/reflect/ReflectProvideMethod:method	Ljava/lang/reflect/Method;
-    //   120: invokevirtual 93	java/lang/reflect/Method:getName	()Ljava/lang/String;
-    //   123: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   117: getfield 28	com/tencent/luan/ioc/reflect/ReflectProvideMethod:method	Ljava/lang/reflect/Method;
+    //   120: invokevirtual 94	java/lang/reflect/Method:getName	()Ljava/lang/String;
+    //   123: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   129: aload_1
-    //   130: invokespecial 99	com/tencent/luan/ioc/InjectException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   130: invokespecial 100	com/tencent/luan/ioc/InjectException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   133: athrow
     // Local variable table:
     //   start	length	slot	name	signature
@@ -99,7 +99,7 @@ class ReflectProvideMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.luan.ioc.reflect.ReflectProvideMethod
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-final class ayar
-  extends SubAccountObserver
+class ayar
+  implements Observer
 {
-  ayar(QQAppInterface paramQQAppInterface) {}
+  ayar(ayap paramayap) {}
   
-  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "initAllData() onGetKeyBack() thread.name=" + Thread.currentThread().getName());
-    }
-    paramString1 = (ayax)this.a.getManager(61);
-    int j;
-    if ((paramString3 != null) && (paramString3.length() > 0))
-    {
-      j = 1;
-      i = j;
-      if (paramString1 != null) {
-        paramString1.a(paramString2, paramString3, false);
+    if ((paramObject instanceof Integer)) {
+      switch (((Integer)paramObject).intValue())
+      {
       }
     }
-    for (int i = j;; i = 0)
+    do
     {
-      if (i == 0) {
-        paramString1.e(paramString2);
-      }
       return;
+      paramObservable = this.a.a();
+    } while ((paramObservable == null) || (paramObservable.a.get()) || (this.a.b != true) || (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus == null) || (this.a.c) || (this.a.d));
+    if (QLog.isColorLevel()) {
+      QLog.i("BaseSignViewHolder", 2, "update tplId=" + this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
     }
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    ThreadManager.getUIHandlerV2().post(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayar
  * JD-Core Version:    0.7.0.1
  */

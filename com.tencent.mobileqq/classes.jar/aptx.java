@@ -1,198 +1,161 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.1;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.2;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.3;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.4;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.5;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.6;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.7;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil.8;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.ProgressButton;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.MobileQQ;
 
-public class aptx
+class aptx
+  implements aubp<EmoticonPackage>
 {
-  private static int jdField_a_of_type_Int = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865) - (int)bbdv.a(BaseApplicationImpl.getContext(), 5.0F);
-  private static Map<Integer, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private static Map<String, Long> b = new HashMap();
+  aptx(aptw paramaptw, bdnb parambdnb, boolean paramBoolean, apnf paramapnf, ProgressButton paramProgressButton, int paramInt) {}
   
-  public static void a(int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    try
+    boolean bool = false;
+    int i = ((alxl)this.jdField_a_of_type_Aptw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).g();
+    Object localObject2 = "vip";
+    Object localObject1 = "";
+    Object localObject3;
+    if (this.jdField_a_of_type_Bdnb.n == 4)
     {
-      if (BaseApplicationImpl.sApplication.getRuntime().isBackground_Pause) {
-        return;
+      localObject1 = "mvip.g.a.bq_" + this.jdField_a_of_type_Bdnb.a;
+      if (this.jdField_a_of_type_Bdnb.o != 4) {
+        break label376;
       }
-      if (a(paramInt))
+      localObject3 = "!vip";
+      if (i != 1)
       {
-        Looper localLooper = Looper.getMainLooper();
-        if (Thread.currentThread() != localLooper.getThread())
-        {
-          new Handler(localLooper).post(new FMToastUtil.1(paramInt));
-          return;
+        localObject2 = localObject3;
+        if (i != 3) {}
+      }
+      else
+      {
+        bool = true;
+        localObject2 = localObject3;
+      }
+      label104:
+      localObject3 = new EmoticonPackage();
+      ((EmoticonPackage)localObject3).jobType = this.jdField_a_of_type_Bdnb.n;
+      ((EmoticonPackage)localObject3).epId = this.jdField_a_of_type_Bdnb.a;
+      if (paramEmoticonPackage == null) {
+        break label1002;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RecommendEmotionAdapter", 2, "canDownload:" + bool + ",vipType:" + i + ",isPayBack:" + this.jdField_a_of_type_Boolean);
+      }
+      if (aptw.a(this.jdField_a_of_type_Aptw, this.jdField_a_of_type_Bdnb))
+      {
+        this.jdField_a_of_type_Apnf.a(paramEmoticonPackage.epId);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(this.jdField_a_of_type_Bdnb.d);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
+        if (this.jdField_a_of_type_Boolean) {
+          azmj.b(this.jdField_a_of_type_Aptw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800581D", 0, 0, this.jdField_a_of_type_Bdnb.a, "", "", "");
         }
-        bcql.a(BaseApplicationImpl.getContext(), 0, paramInt, 0).b(jdField_a_of_type_Int);
       }
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {}
-    while (!a(paramString)) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new FMToastUtil.8(paramInt1, paramString, paramInt2));
-      return;
-    }
-    bcql.a(BaseApplicationImpl.getContext(), paramInt1, paramString, paramInt2).b(jdField_a_of_type_Int);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (BaseApplicationImpl.sApplication.getRuntime().isBackground_Pause) {}
-    while (!a(paramString)) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new FMToastUtil.2(paramString));
-      return;
-    }
-    bcql.a(BaseApplicationImpl.getContext(), 0, paramString, 0).b(jdField_a_of_type_Int);
-  }
-  
-  private static boolean a(int paramInt)
-  {
-    if (jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
-    {
-      long l1 = ((Long)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).longValue();
-      long l2 = SystemClock.uptimeMillis();
-      if (l1 + 2000L < l2)
+      label376:
+      do
       {
-        jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(l2));
-        return true;
+        do
+        {
+          return;
+          if (this.jdField_a_of_type_Bdnb.n == 0)
+          {
+            localObject1 = "mvip.g.a.bq_" + this.jdField_a_of_type_Bdnb.a;
+            break;
+          }
+          if ((this.jdField_a_of_type_Bdnb.n != 3) && (this.jdField_a_of_type_Bdnb.n != 5)) {
+            break;
+          }
+          localObject1 = "mvip.g.a.bq_mg_" + this.jdField_a_of_type_Bdnb.a;
+          break;
+          if (this.jdField_a_of_type_Bdnb.o == 5)
+          {
+            localObject3 = "!svip";
+            localObject2 = localObject3;
+            if (i != 3) {
+              break label104;
+            }
+            bool = true;
+            localObject2 = localObject3;
+            break label104;
+          }
+          bool = true;
+          break label104;
+          azmj.b(this.jdField_a_of_type_Aptw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005817", 0, 0, this.jdField_a_of_type_Bdnb.a, "", "", "");
+          return;
+          if (bool)
+          {
+            localObject1 = (alna)this.jdField_a_of_type_Aptw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12);
+            if (this.jdField_a_of_type_Int == 1)
+            {
+              ((alna)localObject1).a(paramEmoticonPackage.epId, this.jdField_a_of_type_Int);
+              this.jdField_a_of_type_Apnf.a(paramEmoticonPackage, true, this.jdField_a_of_type_Int);
+              this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(alpo.a(2131713644));
+              this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgressDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.a(-16745986));
+              if (!this.jdField_a_of_type_Boolean) {
+                azmj.b(this.jdField_a_of_type_Aptw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005814", 0, 0, this.jdField_a_of_type_Bdnb.a, "", "", "");
+              }
+              localObject1 = this.jdField_a_of_type_Aptw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+              localObject2 = this.jdField_a_of_type_Bdnb.a;
+              if (!this.jdField_a_of_type_Aptw.jdField_a_of_type_Boolean) {
+                break label805;
+              }
+              paramEmoticonPackage = "1";
+              azmj.b((QQAppInterface)localObject1, "CliOper", "", "", "ep_mall", "0X8006139", 0, 0, (String)localObject2, paramEmoticonPackage, "", "");
+              i = this.jdField_a_of_type_Aptw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).getInt("recommendRuleId", -1);
+              int j = this.jdField_a_of_type_Aptw.jdField_a_of_type_JavaUtilList.indexOf(this.jdField_a_of_type_Bdnb);
+              localObject1 = this.jdField_a_of_type_Aptw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+              localObject2 = this.jdField_a_of_type_Bdnb.a;
+              localObject3 = j + 1 + "";
+              if (!this.jdField_a_of_type_Aptw.jdField_a_of_type_Boolean) {
+                break label811;
+              }
+            }
+            for (paramEmoticonPackage = "1";; paramEmoticonPackage = "")
+            {
+              VasWebviewUtil.reportCommercialDrainage((String)localObject1, "ep_mall", "0X8005814", "", 0, 0, 0, "", (String)localObject2, (String)localObject3, paramEmoticonPackage, "", i + "", "", 0, 0, 0, 0);
+              return;
+              if (paramEmoticonPackage.type == 4) {
+                break;
+              }
+              ((alna)localObject1).a(paramEmoticonPackage.epId, this.jdField_a_of_type_Int);
+              break;
+              paramEmoticonPackage = "";
+              break label609;
+            }
+          }
+        } while (this.jdField_a_of_type_Boolean);
+        this.jdField_a_of_type_Aptw.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton;
+        paramEmoticonPackage = "https://mc.vip.qq.com/qqwallet/index?aid=" + (String)localObject1 + "&type=" + (String)localObject2 + "&send=0&return_url=jsbridge://qw_charge/emojiPayResultOk&debug=1";
+        localObject1 = new Intent(this.jdField_a_of_type_Aptw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject1).putExtra("url", paramEmoticonPackage);
+      } while (!(this.jdField_a_of_type_Aptw.jdField_a_of_type_AndroidContentContext instanceof Activity));
+      label609:
+      ((Activity)this.jdField_a_of_type_Aptw.jdField_a_of_type_AndroidContentContext).startActivityForResult((Intent)localObject1, 4779);
+      label805:
+      label811:
+      if (QLog.isColorLevel()) {
+        QLog.d("RecommendEmotionAdapter", 2, "func downloadOrPay. mCurPageIndex: epid = " + this.jdField_a_of_type_Bdnb.a);
       }
-    }
-    else
-    {
-      jdField_a_of_type_JavaUtilMap.clear();
-      jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(SystemClock.uptimeMillis()));
-      return true;
-    }
-    return false;
-  }
-  
-  private static boolean a(String paramString)
-  {
-    if (b.containsKey(paramString))
-    {
-      long l1 = ((Long)b.get(paramString)).longValue();
-      long l2 = SystemClock.uptimeMillis();
-      if (l1 + 2000L < l2)
-      {
-        b.put(paramString, Long.valueOf(l2));
-        return true;
-      }
-    }
-    else
-    {
-      b.clear();
-      b.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
-      return true;
-    }
-    return false;
-  }
-  
-  public static void b(int paramInt)
-  {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {}
-    while (!a(paramInt)) {
+      azmj.b(this.jdField_a_of_type_Aptw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005815", 0, 0, this.jdField_a_of_type_Bdnb.a, "", "", "");
       return;
+      label1002:
+      paramEmoticonPackage = (EmoticonPackage)localObject3;
     }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new FMToastUtil.3(paramInt));
-      return;
-    }
-    bcql.a(BaseApplicationImpl.getContext(), 2, paramInt, 0).b(jdField_a_of_type_Int);
-  }
-  
-  public static void b(String paramString)
-  {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new FMToastUtil.4(paramString));
-      return;
-    }
-    bcql.a(BaseApplicationImpl.getContext(), 2, paramString, 0).b(jdField_a_of_type_Int);
-  }
-  
-  public static void c(int paramInt)
-  {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {}
-    while (!a(paramInt)) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new FMToastUtil.7(paramInt));
-      return;
-    }
-    bcql.a(BaseApplicationImpl.getContext(), 0, paramInt, 0).b(jdField_a_of_type_Int);
-  }
-  
-  public static void c(String paramString)
-  {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {}
-    while (!a(paramString)) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new FMToastUtil.5(paramString));
-      return;
-    }
-    bcql.a(BaseApplicationImpl.getContext(), 2, paramString, 1).b(jdField_a_of_type_Int);
-  }
-  
-  public static void d(String paramString)
-  {
-    if (((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).isBackground_Pause) {
-      return;
-    }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new FMToastUtil.6(paramString));
-      return;
-    }
-    bcql.a(BaseApplicationImpl.getContext(), 0, paramString, 0).b(jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aptx
  * JD-Core Version:    0.7.0.1
  */

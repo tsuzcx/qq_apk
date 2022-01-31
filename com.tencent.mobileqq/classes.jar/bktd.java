@@ -1,38 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bktd
-  implements INetInfoHandler
+  extends RecyclerView.ViewHolder
 {
-  bktd(bktc parambktc) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView b;
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  public bktd(View paramView)
   {
-    Thread.currentThread().getId();
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      bktc.a(this.a);
-    }
-    while (bktc.a(this.a) == null) {
-      return;
-    }
-    bktc.a(this.a).post(new LbsFilterStatusManager.3.1(this));
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
+    this.b = ((ImageView)paramView.findViewById(2131368195));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366356));
   }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bktd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,135 +1,133 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButtonImp;
-import org.json.JSONObject;
+import android.support.annotation.Nullable;
+import java.util.List;
 
-public class pia
-  implements php
+public class pia<BEAN, VIEW extends phs<BEAN>>
+  implements phr<BEAN, VIEW>
 {
-  protected View a(int paramInt, Context paramContext)
+  private phq<BEAN> jdField_a_of_type_Phq;
+  private phs<BEAN> jdField_a_of_type_Phs;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public pia(phq<BEAN> paramphq)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 22: 
-    case 80: 
-      return new ComponentContentUgcImage(paramContext);
-    case 36: 
-      return new ComponentContentGridImage(paramContext);
-    case 23: 
-    case 120: 
-      return new ComponentContentUgcVideo(paramContext);
-    }
-    return new ComponentContentUGCVoice(paramContext);
+    this.jdField_a_of_type_Phq = paramphq;
   }
   
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  private void a(List<BEAN> paramList)
   {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    long l2 = 0L;
-    long l1 = l2;
-    if (paramBaseArticleInfo.mSocialFeedInfo != null)
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      l1 = l2;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
-        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
-      }
-    }
-    return new pdm().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).C(paramBaseArticleInfo).q(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).x(paramBaseArticleInfo).y(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).D(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).H(paramBaseArticleInfo).L(paramBaseArticleInfo).l(paramBaseArticleInfo).I(paramBaseArticleInfo).t(paramBaseArticleInfo).u(paramBaseArticleInfo).O(paramBaseArticleInfo).P(paramBaseArticleInfo).a();
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
-  {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    pli localpli = (pli)localViewBase.findViewBaseByName("id_middle_body_content");
-    if (localpli != null)
-    {
-      NativeMiddleBodyView localNativeMiddleBodyView = (NativeMiddleBodyView)localpli.getNativeView();
-      if (localNativeMiddleBodyView.a() == null)
+      if (this.jdField_a_of_type_Phs != null)
       {
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.setMargins(bbll.a(12.0F), 0, bbll.a(12.0F), 0);
-        localpli.a(localLayoutParams);
-        paramContainer = a(paramInt1, paramContainer.getContext());
-        if (paramContainer != null) {
-          localNativeMiddleBodyView.a(paramContainer, localLayoutParams);
-        }
+        this.jdField_a_of_type_Phs.e();
+        this.jdField_a_of_type_Phs.a(paramList, false);
+        this.jdField_a_of_type_Phs.g();
+        this.jdField_a_of_type_Phs.a();
       }
-      a(paramInt1, parampau, localNativeMiddleBodyView);
+      this.jdField_a_of_type_Boolean = true;
     }
-    paramContainer = (pju)localViewBase.findViewBaseByName("id_info_avator");
-    if (paramContainer != null) {
-      paramContainer.a(parampau);
-    }
-    paramContainer = (NativeButton)localViewBase.findViewBaseByName("id_super_topic_button");
-    if ((paramContainer != null) && (paramContainer.getNativeView() != null) && ((paramContainer.getNativeView() instanceof NativeButtonImp))) {
-      ((NativeButtonImp)paramContainer.getNativeView()).setTextColor(-1);
-    }
-    paramContainer = (pjs)localViewBase.findViewBaseByName("id_article_comment");
-    if (paramContainer != null) {
-      paramContainer.a(parampau);
-    }
-    pmo.a(localViewBase, parampau.a());
-    pek.a(localViewBase, parampau);
-    pmo.a(localViewBase, parampau);
-    pmo.b(localViewBase, parampau);
   }
   
-  protected void a(int paramInt, pau parampau, NativeMiddleBodyView paramNativeMiddleBodyView)
+  private void a(boolean paramBoolean, int paramInt, List<BEAN> paramList)
   {
-    if ((paramNativeMiddleBodyView.a() == null) || (parampau.a() == null)) {
-      return;
-    }
-    ram localram = parampau.a();
-    switch (paramInt)
+    if (paramBoolean)
     {
-    default: 
-      throw new IllegalArgumentException("" + paramInt);
-    case 22: 
-    case 80: 
-      ((ComponentContentUgcImage)paramNativeMiddleBodyView.a()).a(parampau);
-      return;
-    case 36: 
-      paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
-      ((ComponentContentGridImage)paramNativeMiddleBodyView).setMIReadInJoyModel(parampau);
-      paramNativeMiddleBodyView.a(ComponentContentGridImage.a(parampau.a()));
-      ((ComponentContentGridImage)paramNativeMiddleBodyView).setOnNoItemClickListener(new pib(this, parampau, localram));
-      return;
-    case 23: 
-    case 120: 
-      paramNativeMiddleBodyView = (ComponentContentUgcVideo)paramNativeMiddleBodyView.a();
-      paramNativeMiddleBodyView.a(parampau);
-      ((ComponentContentUgcVideo)paramNativeMiddleBodyView).setOnClickListener(new pic(this, paramInt, localram, parampau));
+      a(paramList);
       return;
     }
-    ((ComponentContentUGCVoice)paramNativeMiddleBodyView.a()).a(parampau);
+    b(paramInt, paramList);
   }
   
-  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
+  private void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, @Nullable String paramString)
   {
-    return false;
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Phs != null)) {
+      this.jdField_a_of_type_Phs.a(paramInt, paramString);
+    }
+    if ((paramList != null) && (!paramList.isEmpty()) && (paramBoolean) && (this.jdField_a_of_type_Phs != null))
+    {
+      this.jdField_a_of_type_Phs.e();
+      this.jdField_a_of_type_Phs.a(paramList, false);
+      this.jdField_a_of_type_Phs.g();
+    }
+    while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Phs == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Phs.b(paramInt, paramString);
+    this.jdField_a_of_type_Phs.a(0);
+  }
+  
+  private void b(int paramInt, List<BEAN> paramList)
+  {
+    if (this.jdField_a_of_type_Phs != null)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Phs.b();
+      }
+      a(paramInt, paramList);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Phs = null;
+  }
+  
+  public void a(int paramInt, List<BEAN> paramList)
+  {
+    if (this.jdField_a_of_type_Phs != null)
+    {
+      this.jdField_a_of_type_Phs.a(paramInt);
+      this.jdField_a_of_type_Phs.a(paramList, false);
+      if ((paramList == null) || (paramList.isEmpty())) {
+        break label82;
+      }
+      this.jdField_a_of_type_Phs.e();
+      if (this.jdField_a_of_type_Phq.a()) {
+        this.jdField_a_of_type_Phs.h();
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_Phs.g();
+    return;
+    label82:
+    this.jdField_a_of_type_Phs.d();
+    this.jdField_a_of_type_Phs.i();
+  }
+  
+  public void a(VIEW paramVIEW)
+  {
+    this.jdField_a_of_type_Phs = paramVIEW;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Phs != null) {
+      this.jdField_a_of_type_Phs.c();
+    }
+    this.jdField_a_of_type_Phq.a(true, new pib(this));
+  }
+  
+  public void c()
+  {
+    if (!this.jdField_a_of_type_Phq.a())
+    {
+      if (this.jdField_a_of_type_Phs != null) {
+        this.jdField_a_of_type_Phs.g();
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_Phs != null) {
+      this.jdField_a_of_type_Phs.f();
+    }
+    this.jdField_a_of_type_Phq.a(new pic(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pia
  * JD-Core Version:    0.7.0.1
  */

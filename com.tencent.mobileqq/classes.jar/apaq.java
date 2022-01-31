@@ -1,293 +1,284 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
 import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.1;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.2;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.3;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.4;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.ProxyIpManager;
-import mqq.manager.ProxyIpManager.ProxyIp;
+import java.lang.ref.WeakReference;
 
 public class apaq
+  extends ClickableSpan
 {
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MessageForNearbyMarketGrayTips jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips;
   private String jdField_a_of_type_JavaLangString;
-  private Iterator<String> jdField_a_of_type_JavaUtilIterator;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private ProxyIpManager.ProxyIp jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp;
-  private boolean jdField_a_of_type_Boolean;
-  private Iterator<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilIterator;
-  private List<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilList;
-  private boolean jdField_b_of_type_Boolean;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private int jdField_b_of_type_Int;
+  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
+  private int c;
+  private int d;
+  private int e = 2147483647;
   
-  public apaq(QQAppInterface paramQQAppInterface, String paramString)
+  public apaq(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, int paramInt4, MessageForNearbyMarketGrayTips paramMessageForNearbyMarketGrayTips)
   {
-    int i = paramString.indexOf("://");
-    int j;
-    if (i == -1)
-    {
-      i = 0;
-      j = paramString.substring(i).indexOf("/") + i;
-      if ((-1 != j) || (-1 != j)) {
-        break label116;
-      }
-      paramString = null;
-    }
-    for (;;)
-    {
-      if ((localObject != null) && (paramString != null))
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        this.jdField_a_of_type_JavaLangString = paramString;
-      }
-      a(paramQQAppInterface);
-      return;
-      i += 3;
-      break;
-      label116:
-      int k = paramString.indexOf("&bHost=");
-      if (-1 == k) {
-        localObject = str;
-      }
-      for (;;)
-      {
-        if (localObject != null) {
-          break label238;
-        }
-        localObject = paramString.substring(i, j);
-        paramString = paramString.substring(j);
-        break;
-        int m = paramString.indexOf("&bPort=", k);
-        localObject = str;
-        if (-1 != m)
-        {
-          localObject = paramString.substring("&bHost=".length() + k, m);
-          str = paramString.substring(m + "&bPort=".length());
-          localObject = (String)localObject + ":" + str;
-        }
-      }
-      label238:
-      paramString = paramString.substring(j, k);
-    }
-  }
-  
-  public apaq(QQAppInterface paramQQAppInterface, List<String> paramList, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
     this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    }
-    a(paramQQAppInterface);
+    this.d = paramInt4;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips = paramMessageForNearbyMarketGrayTips;
   }
   
-  private void a(QQAppInterface paramQQAppInterface)
+  public String a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_b_of_type_JavaUtilList = ((ProxyIpManager)paramQQAppInterface.getManager(3)).getProxyIp(5);
-    if (this.jdField_b_of_type_JavaUtilList == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("HttpUrlProcessor", 4, "HttpUrlProcessor: getProxyIp return null, so new empty ProxyList");
-      }
-      this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {
+      return null;
     }
-    a();
+    localObject = (NearbyGrayTipsManager)((QQAppInterface)localObject).getManager(93);
+    if (localObject != null) {
+      return ((NearbyGrayTipsManager)localObject).a(this.c, paramInt, paramBoolean);
+    }
+    return "";
   }
   
-  public static boolean a(String paramString)
+  public String a(boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {
+      return null;
     }
-    String str2 = null;
-    for (;;)
-    {
-      try
-      {
-        int i = paramString.indexOf("://");
-        if (i == -1)
-        {
-          i = 0;
-          String str1 = paramString.substring(i);
-          if (TextUtils.isEmpty(str1)) {
-            break;
-          }
-          int k = str1.indexOf("/");
-          int j = k;
-          if (-1 == k) {
-            j = str1.length() - 1;
-          }
-          k = paramString.indexOf("&bHost=");
-          if (-1 == k)
-          {
-            str1 = str2;
-            if (str2 == null) {
-              str1 = paramString.substring(i, j + i);
-            }
-            if (str1 == null) {
-              break;
-            }
-            i = str1.indexOf(":");
-            paramString = str1;
-            if (i >= 0) {
-              paramString = str1.substring(0, i);
-            }
-            return b(paramString);
-          }
-          int m = paramString.indexOf("&bPort=", k);
-          if (-1 == m) {
-            continue;
-          }
-          str1 = paramString.substring("&bHost=".length() + k, m);
-          str2 = paramString.substring("&bPort=".length() + m);
-          str2 = str1 + ":" + str2;
-          continue;
-        }
-        i += 3;
-      }
-      catch (Exception paramString)
-      {
-        return false;
-      }
+    localObject = (NearbyGrayTipsManager)((QQAppInterface)localObject).getManager(93);
+    if (localObject != null) {
+      return ((NearbyGrayTipsManager)localObject).a(this.c, paramBoolean);
     }
+    return "";
   }
   
-  public static boolean b(String paramString)
+  public void a(String paramString)
   {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MessageForNearbyMarketGrayTips", 4, "clickJumpWeb, url = " + paramString);
+    }
     if (TextUtils.isEmpty(paramString)) {}
+    Context localContext;
+    do
+    {
+      return;
+      localContext = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    } while (localContext == null);
+    Object localObject = paramString;
+    if (paramString.contains("strangerUin=xxx")) {
+      localObject = paramString.replace("strangerUin=xxx", "strangerUin=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramString = (String)localObject;
+    if (localQQAppInterface != null)
+    {
+      paramString = (String)localObject;
+      if (((String)localObject).contains("sign=xxx"))
+      {
+        if (1001 != this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.istroop) {
+          break label352;
+        }
+        paramString = ((String)localObject).replace("sign=xxx", "sign=" + bdal.a(localQQAppInterface.a().m(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin)));
+      }
+      localObject = paramString;
+      if (paramString.contains("sourceType=xxx"))
+      {
+        if (1001 != this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.istroop) {
+          break label472;
+        }
+        localObject = paramString.replace("sourceType=xxx", "sourceType=1");
+      }
+    }
     for (;;)
     {
-      return false;
-      int i;
-      if ((paramString.length() >= 7) && (paramString.length() <= 15))
+      paramString = (String)localObject;
+      if (((String)localObject).equals("https://imgcache.qq.com/club/client/flower/release/html/index.html"))
       {
-        paramString = paramString.split("\\.");
-        if ((paramString != null) && (paramString.length == 4))
+        paramString = this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin;
+        localObject = bdal.a(localQQAppInterface.a().m(paramString));
+        localObject = String.format("https://imgcache.qq.com/club/client/flower/release/html/index.html?strangerUin=%s&sign=%s&sourceType=%d&ADTAG=%s&groupCode=%s&_wv=2147347&_bid=2050", new Object[] { auso.a(paramString), ((String)localObject).toLowerCase(), Integer.valueOf(1), "aio.plus.s", "" });
+        paramString = (String)localObject;
+        if (QLog.isColorLevel())
         {
-          i = 0;
-          if (i >= 4) {}
+          QLog.i("MessageForNearbyMarketGrayTips", 2, "jump flow store, " + (String)localObject);
+          paramString = (String)localObject;
         }
       }
-      try
+      localObject = new Intent(localContext, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramString));
+      localContext.startActivity((Intent)localObject);
+      return;
+      label352:
+      if (1010 == this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.istroop)
       {
-        int j = Integer.parseInt(paramString[i]);
-        if ((j >= 0) && (j <= 255)) {
-          i += 1;
-        }
+        paramString = ((String)localObject).replace("sign=xxx", "sign=" + bdal.a(localQQAppInterface.a().p(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin)));
+        break;
       }
-      catch (Exception paramString) {}
+      paramString = (String)localObject;
+      if (10002 != this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.istroop) {
+        break;
+      }
+      paramString = ((String)localObject).replace("sign=xxx", "sign=" + bdal.a(localQQAppInterface.a().k(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin)));
+      break;
+      label472:
+      localObject = paramString;
+      if (1010 == this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.istroop) {
+        localObject = paramString.replace("sourceType=xxx", "sourceType=2");
+      }
     }
-    return true;
-    return false;
   }
   
-  public String a()
+  public void b(String paramString)
   {
-    Object localObject1 = null;
-    Object localObject2;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      localObject2 = localObject1;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("HttpUrlProcessor", 4, "getNextUrl: no host, so return null");
-        localObject2 = localObject1;
-      }
-      return localObject2;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MessageForNearbyMarketGrayTips", 4, "clickJumpNative, schema = " + paramString);
     }
-    if (!this.jdField_a_of_type_JavaUtilIterator.hasNext())
+    if (TextUtils.isEmpty(paramString)) {}
+    Context localContext;
+    do
     {
-      if (this.jdField_b_of_type_JavaUtilIterator.hasNext())
+      return;
+      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localContext = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    } while ((localObject == null) || (localContext == null));
+    Object localObject = bdds.a((QQAppInterface)localObject, localContext, paramString);
+    if (localObject != null)
+    {
+      ((bddb)localObject).c();
+      return;
+    }
+    a(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MessageForNearbyMarketGrayTips", 4, "clickAutoInput, content = " + paramString);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {}
+    long l;
+    do
+    {
+      return;
+      l = Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      if (l <= 5000L) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("MessageForNearbyMarketGrayTips", 2, "clickAutoInput, time = " + l);
+    return;
+    ((ausd)localQQAppInterface.a(66)).a("tag_nearby_chat", paramString, null);
+    ThreadManager.post(new MessageForNearbyMarketGrayTips.HightlightClickableSpan.4(this, localQQAppInterface), 2, null, false);
+  }
+  
+  public void onClick(View paramView)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface != null)
+    {
+      azmj.b(localQQAppInterface, "CliOper", "", "", "0X800524C", "0X800524C", 0, 0, String.valueOf(this.c), "", "", "");
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.AioType == 0)
       {
-        this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        paramView = "0";
+        azmj.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_link", 0, 0, paramView, "", "", "");
       }
     }
     else
     {
-      label94:
-      localObject2 = (String)this.jdField_a_of_type_JavaUtilIterator.next();
-      QLog.e("HttpUrlProcessor", 4, "waterLog- getNextUrl: host[" + (String)localObject2 + "]");
-      if (!this.jdField_a_of_type_Boolean) {
-        break label418;
+      switch (this.jdField_b_of_type_Int)
+      {
       }
-      int i = ((String)localObject2).indexOf(":");
-      if (i <= 0) {
-        break label330;
+    }
+    label343:
+    label350:
+    do
+    {
+      do
+      {
+        return;
+        paramView = "1";
+        break;
+        a(this.jdField_a_of_type_JavaLangString);
+        return;
+        b(this.jdField_a_of_type_JavaLangString);
+        return;
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        paramView = a(false);
+        if (TextUtils.isEmpty(paramView))
+        {
+          ThreadManager.post(new MessageForNearbyMarketGrayTips.HightlightClickableSpan.1(this), 5, null, true);
+          return;
+        }
+        c(paramView);
+        return;
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        if (QLog.isColorLevel()) {
+          QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE. mGender=" + this.e);
+        }
+      } while (localQQAppInterface == null);
+      if (aupt.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips, "isFaceScoreSecondMember"))
+      {
+        paramView = "2";
+        if (!aupt.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips, "isFaceScoreSpecialLike")) {
+          break label343;
+        }
       }
-      localObject1 = ((String)localObject2).substring(0, i);
-      String str = ((String)localObject2).substring(i + 1);
-      localObject2 = localObject1;
-      localObject1 = str;
-      label176:
-      if (!this.jdField_b_of_type_Boolean) {
-        break label349;
+      for (String str = "2";; str = "1")
+      {
+        aupt.a("clk_hi", this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin, new String[] { paramView, "", "", str });
+        if (this.e != 2147483647) {
+          break label350;
+        }
+        ThreadManager.post(new MessageForNearbyMarketGrayTips.HightlightClickableSpan.2(this, localQQAppInterface), 5, null, true);
+        return;
+        paramView = "1";
+        break;
       }
-      localObject1 = "https://" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip + ":" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port + this.jdField_a_of_type_JavaLangString + "&bHost=" + (String)localObject2 + "&bPort=" + (String)localObject1;
+      paramView = a(this.e, false);
+      if (TextUtils.isEmpty(paramView))
+      {
+        ThreadManager.post(new MessageForNearbyMarketGrayTips.HightlightClickableSpan.3(this), 5, null, true);
+        return;
+      }
+      c(paramView);
+    } while (!QLog.isColorLevel());
+    QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE. from cache. FaceScoreWording=" + paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      paramTextPaint.setColor(paramTextPaint.linkColor);
     }
     for (;;)
     {
-      localObject2 = localObject1;
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("HttpUrlProcessor", 4, "getNextUrl: url:" + (String)localObject1);
-      return localObject1;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        break label94;
-      }
-      localObject2 = localObject1;
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("HttpUrlProcessor", 4, "getNextUrl: no proxy no host, so return null");
-      return null;
-      label330:
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localObject1 = "443";
-        break label176;
-      }
-      localObject1 = "80";
-      break label176;
-      label349:
-      localObject1 = "http://" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip + ":" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port + this.jdField_a_of_type_JavaLangString + "&bHost=" + (String)localObject2 + "&bPort=" + (String)localObject1;
-      continue;
-      label418:
-      if (this.jdField_b_of_type_Boolean) {
-        localObject1 = "https://" + (String)localObject2 + this.jdField_a_of_type_JavaLangString;
-      } else {
-        localObject1 = "http://" + (String)localObject2 + this.jdField_a_of_type_JavaLangString;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_JavaUtilIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    if (this.jdField_b_of_type_JavaUtilIterator.hasNext()) {
-      this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
-    }
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
-    {
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      }
+      paramTextPaint.setUnderlineText(false);
       return;
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apaq
  * JD-Core Version:    0.7.0.1
  */

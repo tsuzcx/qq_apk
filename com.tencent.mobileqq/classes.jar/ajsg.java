@@ -1,47 +1,10 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.qphone.base.util.QLog;
-
-class ajsg
-  extends BroadcastReceiver
+public abstract interface ajsg
 {
-  ajsg(ajsf paramajsf) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (!TextUtils.isEmpty(ajsf.a(this.a)))
-    {
-      int i = paramIntent.getIntExtra("result", -1);
-      paramContext = "{ \"ret\": " + i + " }";
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
-      }
-      if (i != 0) {
-        break label176;
-      }
-      if (ajsf.a(this.a) != null)
-      {
-        paramContext = new Intent(ajsf.a(this.a), ChatActivity.class);
-        paramContext.putExtra("uin", ajsd.aC);
-        paramContext.putExtra("uintype", 0);
-        paramContext.putExtra("uinname", "babyQ");
-        paramContext.putExtra("selfSet_leftViewText", ajsf.a(this.a).getString(2131690572));
-        ajsf.a(this.a).startActivity(paramContext);
-        ajsf.a(this.a).finish();
-      }
-    }
-    return;
-    label176:
-    this.a.callJs(ajsf.a(this.a) + "(" + paramContext + ");");
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsg
  * JD-Core Version:    0.7.0.1
  */

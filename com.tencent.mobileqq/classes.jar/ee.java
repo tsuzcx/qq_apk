@@ -1,23 +1,17 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.dataline.activities.LiteMutiPicViewerActivity;
-import com.dataline.util.widget.AsyncImageView;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-
 public class ee
 {
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public AsyncImageView a;
-  public DataLineMsgRecord a;
+  public final int a;
+  public final String a;
   
-  public ee(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
+  private ee(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ee
  * JD-Core Version:    0.7.0.1
  */

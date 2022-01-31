@@ -1,8 +1,8 @@
 package cooperation.qzone.contentbox;
 
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneMsgFragment$4
@@ -25,7 +25,7 @@ class QZoneMsgFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,40 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.lang.ref.WeakReference;
 
-public class aamb
-  implements View.OnClickListener
+class aamb
+  implements EIPCResultCallback
 {
-  public aamb(BaseChatPie paramBaseChatPie) {}
+  aamb(aama paramaama, WeakReference paramWeakReference, aamh paramaamh) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.jdField_a_of_type_Aeyv.a();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-    paramView.putInt("funcall_tip_" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 4);
-    paramView.commit();
+    aami localaami = new aami();
+    boolean bool;
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
+    {
+      bool = true;
+      localaami.jdField_a_of_type_Boolean = bool;
+      if (paramEIPCResult == null) {
+        break label83;
+      }
+    }
+    label83:
+    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = null)
+    {
+      localaami.jdField_a_of_type_AndroidOsBundle = paramEIPCResult;
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        ((aamd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Aamh, localaami);
+      }
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamb
  * JD-Core Version:    0.7.0.1
  */

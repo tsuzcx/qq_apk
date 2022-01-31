@@ -1,91 +1,31 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qzone.util.QZLog;
 
-public class bkda
-  implements InputFilter
+class bkda
+  extends BroadcastReceiver
 {
-  protected int a;
-  private bcql a;
+  bkda(bkcz parambkcz) {}
   
-  public bkda(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a(CharSequence paramCharSequence)
-  {
-    int j = 0;
-    int m = paramCharSequence.length();
-    int i = 0;
-    while (i < m)
+    try
     {
-      int n = paramCharSequence.charAt(i);
-      int k;
-      if (n != 10)
-      {
-        k = j;
-        if (n != 13) {}
-      }
-      else
-      {
-        k = j + 1;
-      }
-      i += 1;
-      j = k;
+      paramContext = paramIntent.getAction();
+      QZLog.i("BaseTranslucentControll", 4, "reveiver action = " + paramContext);
+      this.a.a(paramIntent);
+      return;
     }
-    return j;
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Bcql == null) {
-      this.jdField_a_of_type_Bcql = bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131703708), 0);
-    }
-    if (!this.jdField_a_of_type_Bcql.c()) {
-      this.jdField_a_of_type_Bcql.a();
-    }
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    paramInt3 = this.jdField_a_of_type_Int - (paramSpanned.length() - (paramInt4 - paramInt3));
-    paramInt4 = paramInt2 - paramInt1 - a(paramCharSequence.subSequence(paramInt1, paramInt2));
-    if (paramInt3 > 0)
+    catch (Exception paramContext)
     {
-      paramInt2 = paramInt3;
-      if (paramInt3 >= paramInt4) {}
+      QZLog.e("BaseTranslucentControll", "onReceive error", paramContext);
     }
-    else
-    {
-      paramInt2 = paramInt3 + a(paramSpanned);
-    }
-    if (((paramInt2 <= 0) || (paramInt2 < paramInt4)) && (!TextUtils.equals("", paramCharSequence))) {
-      a();
-    }
-    if (paramInt2 <= 0) {
-      return "";
-    }
-    if (paramInt2 >= paramInt4) {
-      return null;
-    }
-    paramInt3 = paramInt2 + paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1) {
-        return "";
-      }
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkda
  * JD-Core Version:    0.7.0.1
  */

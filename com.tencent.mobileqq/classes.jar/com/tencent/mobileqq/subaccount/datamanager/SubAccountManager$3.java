@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.subaccount.datamanager;
 
-import ayax;
+import azyu;
 import com.tencent.mobileqq.data.SubAccountInfo;
 
 public class SubAccountManager$3
   implements Runnable
 {
-  public SubAccountManager$3(ayax paramayax, SubAccountInfo paramSubAccountInfo) {}
+  public SubAccountManager$3(azyu paramazyu, SubAccountInfo paramSubAccountInfo) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class SubAccountManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.datamanager.SubAccountManager.3
  * JD-Core Version:    0.7.0.1
  */

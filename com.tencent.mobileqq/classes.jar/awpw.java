@@ -1,17 +1,40 @@
-import com.tencent.mobileqq.search.mostused.MostUsedSearch;
-import java.util.Comparator;
+import QC.SuixintieCheckInfo;
+import QC.SuixintieCheckItem;
+import com.qq.taf.jce.JceInputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-final class awpw
-  implements Comparator<MostUsedSearch>
+public class awpw
 {
-  public int a(MostUsedSearch paramMostUsedSearch1, MostUsedSearch paramMostUsedSearch2)
+  public static SuixintieCheckInfo a(String paramString)
   {
-    return Long.signum(paramMostUsedSearch2.latestUsedTime - paramMostUsedSearch1.latestUsedTime);
+    SuixintieCheckInfo localSuixintieCheckInfo = new SuixintieCheckInfo();
+    localSuixintieCheckInfo.readFrom(new JceInputStream(beuz.a(paramString, 0)));
+    if (localSuixintieCheckInfo.vSuixintieCheckList != null) {
+      return localSuixintieCheckInfo;
+    }
+    return null;
+  }
+  
+  public static SuixintieCheckItem a(SuixintieCheckInfo paramSuixintieCheckInfo, int paramInt)
+  {
+    if (paramSuixintieCheckInfo.vSuixintieCheckList != null)
+    {
+      paramSuixintieCheckInfo = paramSuixintieCheckInfo.vSuixintieCheckList.iterator();
+      while (paramSuixintieCheckInfo.hasNext())
+      {
+        SuixintieCheckItem localSuixintieCheckItem = (SuixintieCheckItem)paramSuixintieCheckInfo.next();
+        if (localSuixintieCheckItem.appid == paramInt) {
+          return localSuixintieCheckItem;
+        }
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awpw
  * JD-Core Version:    0.7.0.1
  */

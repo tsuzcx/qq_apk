@@ -1,20 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aoty
-  implements View.OnClickListener
+  extends aofy<aotx>
 {
-  public aoty(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
-  
-  public void onClick(View paramView)
+  public static aotx a()
   {
-    QfileRecentPicFileTabView.a(this.a, paramView, false);
+    return (aotx)aogj.a().a(437);
+  }
+  
+  public int a()
+  {
+    return 437;
+  }
+  
+  @NonNull
+  public aotx a(int paramInt)
+  {
+    return new aotx();
+  }
+  
+  @Nullable
+  public aotx a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aotx.a(paramArrayOfaogf);
+    }
+    return null;
+  }
+  
+  public Class<aotx> a()
+  {
+    return aotx.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aotx paramaotx) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoty
  * JD-Core Version:    0.7.0.1
  */

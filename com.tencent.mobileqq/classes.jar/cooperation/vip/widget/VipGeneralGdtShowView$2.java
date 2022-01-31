@@ -1,7 +1,7 @@
 package cooperation.vip.widget;
 
 import android.text.TextUtils;
-import bibp;
+import bkdl;
 import cooperation.qzone.util.QZLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -9,7 +9,7 @@ import java.net.URL;
 public class VipGeneralGdtShowView$2
   implements Runnable
 {
-  public VipGeneralGdtShowView$2(bibp parambibp, String paramString) {}
+  public VipGeneralGdtShowView$2(bkdl parambkdl, String paramString) {}
   
   public void run()
   {
@@ -51,7 +51,7 @@ public class VipGeneralGdtShowView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.vip.widget.VipGeneralGdtShowView.2
  * JD-Core Version:    0.7.0.1
  */

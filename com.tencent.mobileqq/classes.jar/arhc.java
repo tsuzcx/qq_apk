@@ -1,30 +1,42 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
 class arhc
-  extends BroadcastReceiver
+  implements arej
 {
-  arhc(args paramargs) {}
+  arhc(argq paramargq) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    paramContext = paramIntent.getAction();
-    if ("close.activity".equals(paramContext)) {
-      if (args.a(this.a) != null) {
-        args.a(this.a).finish();
-      }
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Ardq.a();
+    bbpe localbbpe = bcjk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity);
+    if ((TextUtils.isEmpty(argq.a(this.a))) && (localbbpe.a != null)) {
+      argq.a(this.a, localbbpe.a.toString());
     }
-    while ((!"close.loading".equals(paramContext)) || (this.a.a == null)) {
-      return;
+    bboe localbboe = new bboe(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
+    if (((localbbpe.b == 3) || (localbbpe.b == 2)) && (localbbpe.a != null)) {
+      localbboe.a(localbbpe.a);
     }
-    this.a.a.dismiss();
+    localFileManagerEntity.status = 2;
+  }
+  
+  public void b()
+  {
+    Object localObject = this.a.jdField_a_of_type_Ardq.a();
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
+    localObject = bcjk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
+    if (!TextUtils.isEmpty(argq.a(this.a)))
+    {
+      localTroopFileTransferManager.a(UUID.fromString(argq.a(this.a)));
+      argq.a(this.a, (bbpe)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhc
  * JD-Core Version:    0.7.0.1
  */

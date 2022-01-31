@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richstatus;
 
-import awci;
-import aweq;
-import awet;
+import axxl;
+import axzt;
+import axzw;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -13,16 +13,16 @@ class StatusManager$3$2$1
   
   public void run()
   {
-    if (aweq.b(this.a.jdField_a_of_type_Awet.a) != null)
+    if (axzt.b(this.a.jdField_a_of_type_Axzw.a) != null)
     {
-      Iterator localIterator = aweq.b(this.a.jdField_a_of_type_Awet.a).iterator();
+      Iterator localIterator = axzt.b(this.a.jdField_a_of_type_Axzw.a).iterator();
       if (localIterator.hasNext())
       {
-        awci localawci = (awci)localIterator.next();
+        axxl localaxxl = (axxl)localIterator.next();
         if (this.a.jdField_a_of_type_Boolean) {}
         for (int i = 100;; i = -1)
         {
-          localawci.a(i, RichStatus.getEmptyStatus(), null);
+          localaxxl.a(i, RichStatus.getEmptyStatus(), null);
           break;
         }
       }
@@ -31,7 +31,7 @@ class StatusManager$3$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.3.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import java.util.List;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
 
-public final class bkwd
-  extends BroadcastReceiver
+public class bkwd
 {
-  private bkwd(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static void a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      bkuv.a().b();
-      bkuv.a().a(new bkwe());
-      this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
-    }
+    paramSVConfigItem.name = "new_qq_android_native_short_filter_72";
+    paramSVConfigItem.arm_url = "http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_72.zip";
+    paramSVConfigItem.armv7a_url = "http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_72.zip";
+    paramSVConfigItem.x86_url = "http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_72.zip";
+    paramSVConfigItem.arm64v8a_url = "http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_72_64bit.zip";
+    paramSVConfigItem.arm_md5 = "5e5e78d4dd585b45ce9afe09871ccd3e";
+    paramSVConfigItem.armv7a_md5 = "5e5e78d4dd585b45ce9afe09871ccd3e";
+    paramSVConfigItem.x86_md5 = "5e5e78d4dd585b45ce9afe09871ccd3e";
+    paramSVConfigItem.arm64v8a_md5 = "a73e9dd385a963b641509b77c18a6a96";
+    paramSVConfigItem.versionCode = 72;
+    paramSVConfigItem.predownload = false;
+  }
+  
+  static void b(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  {
+    paramSVConfigItem.name = "new_qq_android_native_ptu_res_77";
+    paramSVConfigItem.arm_url = "http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_77.zip";
+    paramSVConfigItem.armv7a_url = "http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_77.zip";
+    paramSVConfigItem.x86_url = "http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_77.zip";
+    paramSVConfigItem.arm64v8a_url = "http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_77_64bit.zip";
+    paramSVConfigItem.arm_md5 = "c4f89190bbda13a3338ab3d208dbe6e5";
+    paramSVConfigItem.armv7a_md5 = "c4f89190bbda13a3338ab3d208dbe6e5";
+    paramSVConfigItem.x86_md5 = "c4f89190bbda13a3338ab3d208dbe6e5";
+    paramSVConfigItem.arm64v8a_md5 = "246f22c25e2f347cee293427c0c131ff";
+    paramSVConfigItem.versionCode = 77;
+    paramSVConfigItem.predownload = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkwd
  * JD-Core Version:    0.7.0.1
  */

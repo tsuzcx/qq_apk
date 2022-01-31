@@ -1,22 +1,45 @@
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
 public class poz
+  implements ViewBase.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public String toString()
+  public poz(Context paramContext, ArticleInfo paramArticleInfo)
   {
-    return "InnerMsg{innerUniqId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", title='" + this.jdField_b_of_type_JavaLangString + '\'' + ", algorithID=" + this.jdField_a_of_type_Long + ", strategyID=" + this.jdField_a_of_type_Int + ", jumpSrcType=" + this.jdField_b_of_type_Int + ", pushContext='" + this.jdField_c_of_type_JavaLangString + '\'' + ", templateID=" + this.jdField_c_of_type_Int + ", articleContentType=" + this.d + '}';
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    paramViewBase = bjxj.a("kd_topic_recommend_card_jump_url");
+    if ((paramViewBase instanceof String)) {}
+    for (paramViewBase = (String)paramViewBase;; paramViewBase = "")
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnJumpWrapperClickListener", 2, new Object[] { "jumpUrl = ", paramViewBase });
+      }
+      if (!TextUtils.isEmpty(paramViewBase))
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
+          rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+        }
+        ors.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     poz
  * JD-Core Version:    0.7.0.1
  */

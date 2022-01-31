@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anqq;
-import anqu;
-import bcdp;
+import aphy;
+import apic;
+import becq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -78,7 +78,7 @@ public class IndividualRedPacketJsPlugin
           paramJsBridgeListener = paramString1;
           continue;
         }
-        super.sendRemoteReq(anqu.a(paramJsBridgeListener, paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+        super.sendRemoteReq(apic.a(paramJsBridgeListener, paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
         return true;
         if ("setFlag".equals(paramString3))
         {

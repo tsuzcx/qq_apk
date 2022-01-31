@@ -1,84 +1,117 @@
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqnb
+  extends aqng
 {
-  public int a;
-  public String a;
-  public ArrayList<aqnc> a;
-  private boolean a;
-  public int b = -1;
-  public int c;
-  public int d;
-  
-  private int a(aqnc paramaqnc1, aqnc paramaqnc2)
+  public aqnb(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    int i = Math.abs(paramaqnc2.jdField_a_of_type_Int - paramaqnc1.jdField_a_of_type_Int);
-    int j = Math.abs(paramaqnc2.b - paramaqnc1.b);
-    return (int)Math.ceil(Math.sqrt(i * i + j * j));
+    super(paramQQAppInterface, paramContext);
   }
   
-  public int a()
+  protected ImageView a(aelt paramaelt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return 0;
+    if (paramaelt == null) {}
+    while (!(paramaelt instanceof aftl)) {
+      return null;
     }
-    aqnc localaqnc1 = (aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    aqnc localaqnc2 = (aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(1);
-    int i = localaqnc2.jdField_a_of_type_Int - localaqnc1.jdField_a_of_type_Int;
-    int j = localaqnc2.b - localaqnc1.b;
-    double d1 = Math.sqrt(i * i + j * j);
-    float f = (float)(Math.asin(j / d1) / 3.141592653589793D * 180.0D);
-    if (localaqnc2.jdField_a_of_type_Int < localaqnc1.jdField_a_of_type_Int) {
-      if (f > 0.0F) {
-        f = 180.0F - f;
-      }
-    }
-    for (;;)
-    {
-      return Math.round(f);
-      f = -(180.0F + f);
-    }
+    return ((aftl)paramaelt).a;
   }
   
-  public void a(float paramFloat)
+  protected void a(aelt paramaelt, ImageView paramImageView)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (paramaelt == null) {}
+    while (!(paramaelt instanceof aftl)) {
+      return;
+    }
+    ((aftl)paramaelt).a = paramImageView;
+  }
+  
+  protected void a(View paramView, aelt paramaelt, ChatMessage paramChatMessage, int paramInt)
+  {
+    if ((paramChatMessage == null) || (paramChatMessage.isMultiMsg)) {}
+    int i;
+    do
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      do
       {
-        ((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int = ((int)(((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int * paramFloat));
-        ((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b = ((int)(((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b * paramFloat));
-        i += 1;
+        do
+        {
+          return;
+          QLog.i("OfflineFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
+        } while ((paramInt == -1) || (!(paramChatMessage instanceof MessageForFile)));
+        paramView = (MessageForFile)paramChatMessage;
+        paramaelt = arni.a(this.a, paramView);
+      } while (paramaelt == null);
+      if (paramView.istroop == 3000) {}
+      for (i = 3; paramInt == 0; i = 1)
+      {
+        azmj.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
+        this.a.a().a(paramaelt.nSessionId);
+        return;
       }
-      this.jdField_a_of_type_Boolean = true;
-    }
+    } while (paramInt != 1);
+    azmj.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
+    a(new aqnc(this, i, paramaelt));
   }
   
-  public int b()
+  protected boolean a(ChatMessage paramChatMessage)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
-      return 0;
-    }
-    return a((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(0), (aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(2));
+    if (paramChatMessage == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
+        paramChatMessage = (MessageForFile)paramChatMessage;
+        paramChatMessage = arni.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+      }
+      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 2)) {
+        return true;
+      }
+    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 2));
+    return true;
   }
   
-  public int c()
+  protected boolean b(ChatMessage paramChatMessage)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
-      return 0;
-    }
-    return a((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(0), (aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(3));
-  }
-  
-  public String toString()
-  {
-    return "PicOcrResult{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", confidence=" + this.jdField_a_of_type_Int + ", coorPoints=" + this.jdField_a_of_type_JavaUtilArrayList + ", arc=" + a() + '}';
+    if (paramChatMessage == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
+        paramChatMessage = (MessageForFile)paramChatMessage;
+        paramChatMessage = arni.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+      }
+      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 3)) {
+        return true;
+      }
+    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 3));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnb
  * JD-Core Version:    0.7.0.1
  */

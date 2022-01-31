@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import ozo;
+import pew;
 
 public class ArticleInfoModule$32
   implements Runnable
 {
-  public ArticleInfoModule$32(ozo paramozo, ArticleInfo paramArticleInfo) {}
+  public ArticleInfoModule$32(pew parampew, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ArticleInfoModule$32
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.32
  * JD-Core Version:    0.7.0.1
  */

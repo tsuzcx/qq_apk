@@ -1,29 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.List;
-
-public final class ncw
-  extends Handler
+class ncw
+  implements bhqf
 {
-  public ncw(Looper paramLooper, ncy paramncy)
-  {
-    super(paramLooper);
-  }
+  ncw(ncv paramncv) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss()
   {
-    if (paramMessage.arg1 == 0)
-    {
-      this.a.a(paramMessage.arg1, (List)paramMessage.obj);
-      return;
-    }
-    this.a.a(paramMessage.arg1, null);
+    ncv.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncw
  * JD-Core Version:    0.7.0.1
  */

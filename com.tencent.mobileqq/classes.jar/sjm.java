@@ -1,30 +1,14 @@
-import UserGrowth.stSimpleMetaFeed;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-
-public class sjm
-  implements sjg
+public abstract interface sjm
 {
-  public sjm(WSRecommendFragment paramWSRecommendFragment) {}
+  public abstract int a();
   
-  public void a(bfzf<stSimpleMetaFeed> parambfzf)
-  {
-    int i;
-    if (WSRecommendFragment.d(this.a))
-    {
-      i = parambfzf.getAdapterPosition();
-      parambfzf = (stSimpleMetaFeed)WSRecommendFragment.a(this.a).a(i);
-      if (parambfzf != null) {}
-    }
-    else
-    {
-      return;
-    }
-    WSRecommendFragment.a(this.a, parambfzf, i);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sjm
  * JD-Core Version:    0.7.0.1
  */

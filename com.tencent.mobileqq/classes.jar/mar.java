@@ -1,77 +1,31 @@
-import android.view.View.OnClickListener;
-import java.lang.ref.WeakReference;
+import com.tencent.av.share.AVSchema;
+import com.tencent.qphone.base.util.QLog;
 
 public class mar
-  extends mas
+  implements acgy
 {
-  WeakReference<View.OnClickListener> a = null;
-  int f = 0;
-  int g = 0;
-  int h = -1;
-  int i = -1;
-  int j = -1;
+  public mar(AVSchema paramAVSchema, long paramLong) {}
   
-  public mar(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6, View.OnClickListener paramOnClickListener)
+  public void a()
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
-    this.f = paramInt5;
-    this.g = paramInt6;
-    if (paramOnClickListener != null) {
-      this.a = new WeakReference(paramOnClickListener);
-    }
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onCancel, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
   }
   
-  public int a()
+  public void b()
   {
-    return 3;
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onBeforeStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
   }
   
-  public View.OnClickListener a()
+  public void c()
   {
-    if ((this.a == null) || (this.a.isEnqueued())) {
-      return null;
-    }
-    return (View.OnClickListener)this.a.get();
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener != null)
-    {
-      this.a = new WeakReference(paramOnClickListener);
-      return;
-    }
-    this.a = null;
-  }
-  
-  public int f()
-  {
-    return this.f;
-  }
-  
-  public int g()
-  {
-    return this.g;
-  }
-  
-  public int h()
-  {
-    return this.h;
-  }
-  
-  public int i()
-  {
-    return this.i;
-  }
-  
-  public int j()
-  {
-    return this.j;
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onAfterStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mar
  * JD-Core Version:    0.7.0.1
  */

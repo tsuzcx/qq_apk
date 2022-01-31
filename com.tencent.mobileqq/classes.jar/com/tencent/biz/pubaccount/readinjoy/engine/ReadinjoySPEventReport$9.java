@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo.NotifyI
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import sgg;
+import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class ReadinjoySPEventReport$9
@@ -35,14 +35,14 @@ public class ReadinjoySPEventReport$9
     }
     for (int i = 17;; i = 16)
     {
-      sgg.a(i, localArrayList);
+      syb.a(i, localArrayList);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.9
  * JD-Core Version:    0.7.0.1
  */

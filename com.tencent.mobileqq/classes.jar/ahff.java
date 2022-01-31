@@ -1,48 +1,133 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.text.DecimalFormat;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ahff
+class ahff
+  extends ahfb
 {
-  public static String a;
-  public static DecimalFormat a;
-  private static boolean a;
-  public static String b;
-  public static String c;
-  private static String d;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  ahff(ahfc paramahfc) {}
   
-  static
+  public void a(String paramString1, String paramString2, List<ahfi> paramList)
   {
-    jdField_a_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
-    jdField_b_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
-    c = jdField_a_of_type_JavaLangString;
-    d = jdField_b_of_type_JavaLangString;
-    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
-  }
-  
-  public static String a()
-  {
-    if (!jdField_a_of_type_Boolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceAddContactPresenter", 2, "onFace2FaceAddContactPush mSessionId:" + ahfc.a(this.a) + " sessionId:" + paramString2 + " faceFriends:" + paramList + " currentUin:" + paramString1);
+    }
+    if ((TextUtils.equals(paramString2, ahfc.a(this.a))) && (ahfc.a(this.a) != null) && (TextUtils.equals(paramString1, ahfc.a(this.a).getCurrentAccountUin())) && (paramList != null) && (paramList.size() > 0))
     {
-      QQAppInterface localQQAppInterface = ahiw.a();
-      if (localQQAppInterface != null) {
-        d = ((agzd)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
+      ahfc.b(this.a);
+      if (ahfc.a(this.a) != null) {
+        ahfc.a(this.a).a(paramString1, paramList);
       }
     }
-    return d;
   }
   
-  public String toString()
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceAddContactPresenter", 2, "onExitFace2FaceAddContact isSuccess:" + paramBoolean + " mSessionId:" + ahfc.a(this.a) + " sessionId:" + paramString1 + " errorCode:" + paramInt + " errorMsg:" + paramString2);
+    }
+    ahfc.b(this.a);
+    if (ahfc.a(this.a) != null) {
+      ahfc.a(this.a).a();
+    }
+  }
+  
+  public void a(boolean paramBoolean1, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, boolean paramBoolean2)
+  {
+    if (QLog.isDebugVersion()) {
+      QLog.d("Face2FaceAddContactPresenter", 2, "onEnterFace2FaceAddContact isSuccess:" + paramBoolean1 + " mSessionId:" + ahfc.a(this.a) + " sessionId:" + paramString1 + " errorCode:" + paramInt1 + " errorMsg:" + paramString2 + " securityLevel:" + paramInt2 + " verifyUrl:" + paramString3 + " heartbeatTime:" + paramInt3 + " expireTime:" + paramInt4 + " isEnterAfterVerify:" + paramBoolean2);
+    }
+    if ((paramBoolean1) && (TextUtils.equals(ahfc.a(this.a), paramString1)) && (ahfc.a(this.a) != null)) {
+      if (paramInt2 == 2) {
+        if (ahfc.a(this.a) != null) {
+          ahfc.a(this.a).f();
+        }
+      }
+    }
+    while (ahfc.a(this.a) == null)
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if (paramInt2 != 3) {
+                  break;
+                }
+              } while (ahfc.a(this.a) == null);
+              ahfc.a(this.a).b(paramString3);
+              return;
+              switch (paramInt1)
+              {
+              default: 
+                return;
+              case 0: 
+                ahfc.a(this.a, Math.max(paramInt3 * 1000, 10000));
+                ahfc.b(this.a, Math.max(paramInt4 * 1000, 10000));
+                if (ahfc.a(this.a) != null)
+                {
+                  ahfc.a(this.a).a(ahfc.a(this.a));
+                  ahfc.a(this.a).b(ahfc.b(this.a));
+                }
+                ahfc.a(this.a);
+                return;
+              }
+            } while (ahfc.a(this.a) == null);
+            ahfc.a(this.a).g();
+            return;
+          } while (ahfc.a(this.a) == null);
+          ahfc.a(this.a).c();
+          return;
+        } while (ahfc.a(this.a) == null);
+        ahfc.a(this.a).d();
+        return;
+      } while (ahfc.a(this.a) == null);
+      ahfc.a(this.a).e();
+      return;
+    }
+    ahfc.a(this.a).e();
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, List<String> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceAddContactPresenter", 2, "onFace2FaceAddContactHeartBeat isSuccess:" + paramBoolean + " mSessionId:" + ahfc.a(this.a) + " sessionId:" + paramString1 + " errorCode:" + paramInt + " errorMsg:" + paramString2 + " missingList:" + paramList);
+    }
+    if ((paramBoolean) && (TextUtils.equals(paramString1, ahfc.a(this.a)))) {
+      switch (paramInt)
+      {
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (ahfc.a(this.a) == null);
+        if ((paramList != null) && (paramList.size() > 0)) {
+          ahfc.a(this.a).a(paramList);
+        }
+        ahfc.a(this.a).b(ahfc.b(this.a));
+        return;
+      } while (ahfc.a(this.a) == null);
+      ahfc.a(this.a).c();
+      return;
+    } while (ahfc.a(this.a) == null);
+    ahfc.a(this.a).d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahff
  * JD-Core Version:    0.7.0.1
  */

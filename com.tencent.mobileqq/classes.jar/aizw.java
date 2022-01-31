@@ -1,54 +1,60 @@
+import VACDReport.ReportReq;
+import VACDReport.ReportRsp;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.List;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class aizw
-  implements bbrf
+public class aizw
+  extends MSFServlet
 {
-  aizw(aizu paramaizu, List paramList, String paramString1, String paramString2, int paramInt) {}
-  
-  public boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
-    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onGetBaseInfo uin:" + ApolloUtil.d(paramString));
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      int i = airx.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
-      int j = airx.a(ApolloUtil.a(), this.b, true);
-      paramString = new Bundle();
-      paramString.putInt("selfUinStatus", i);
-      paramString.putInt("friendUinStatus", j);
-      paramString = EIPCResult.createSuccessResult(paramString);
-      this.jdField_a_of_type_Aizu.callbackResult(this.jdField_a_of_type_Int, paramString);
-      return true;
+    if ((paramFromServiceMsg == null) || (paramIntent == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("VACDReport", 2, "onReceive request or response is null");
+      }
     }
-    return false;
+    while (!"QQWalletPayReportSvc.vacdReportProxy".equals(paramFromServiceMsg.getServiceCmd())) {
+      return;
+    }
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (ReportRsp localReportRsp = (ReportRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new ReportRsp());; localReportRsp = null)
+    {
+      Bundle localBundle = new Bundle();
+      if (localReportRsp != null) {
+        localBundle.putSerializable("rsp", localReportRsp);
+      }
+      localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+      notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), localBundle, null);
+      return;
+    }
   }
   
-  public boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
-    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onDressUpdated uin:" + ApolloUtil.d(paramString));
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    switch (paramIntent.getExtras().getInt("cmd_type"))
     {
-      int i = airx.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
-      int j = airx.a(ApolloUtil.a(), this.b, true);
-      paramString = new Bundle();
-      paramString.putInt("selfUinStatus", i);
-      paramString.putInt("friendUinStatus", j);
-      paramString = EIPCResult.createSuccessResult(paramString);
-      this.jdField_a_of_type_Aizu.callbackResult(this.jdField_a_of_type_Int, paramString);
-      return true;
+    default: 
+      return;
     }
-    return false;
+    try
+    {
+      paramPacket.addRequestPacket("req", (ReportReq)paramIntent.getSerializableExtra("req"));
+      paramPacket.setSSOCommand("QQWalletPayReportSvc.vacdReportProxy");
+      paramPacket.setFuncName("vacdReportProxy");
+      paramPacket.setServantName("MQQ.VACDReportServer.VACDReportObj");
+      paramPacket.setTimeout(15000L);
+      return;
+    }
+    catch (OutOfMemoryError paramIntent) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aizw
  * JD-Core Version:    0.7.0.1
  */

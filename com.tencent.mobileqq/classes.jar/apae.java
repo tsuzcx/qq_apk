@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-class apae
-  implements DialogInterface.OnClickListener
+public abstract interface apae
 {
-  apae(apab paramapab, apag paramapag) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Apag.a();
-  }
+  public abstract void a(View paramView, MessageForDeviceFile paramMessageForDeviceFile);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apae
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,20 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
 
 public class wcb
-  implements URLDrawable.URLDrawableListener
+  implements bhtl
 {
-  private final WeakReference<TextView> a;
+  public wcb(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
   
-  public wcb(TextView paramTextView)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.a = new WeakReference(paramTextView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = (TextView)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setVisibility(8);
+    if ((paramInt == 4097) && (this.a.jdField_a_of_type_Wce != null)) {
+      this.a.jdField_a_of_type_Wce.a(this.a.jdField_a_of_type_Wby.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcb
  * JD-Core Version:    0.7.0.1
  */

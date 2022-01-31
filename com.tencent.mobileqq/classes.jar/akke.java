@@ -1,23 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ApolloActionPush;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akke
-  implements Parcelable.Creator<AddFriendBlockedInfo>
+class akke
+  implements akkf
 {
-  public AddFriendBlockedInfo a(Parcel paramParcel)
-  {
-    return new AddFriendBlockedInfo(paramParcel);
-  }
+  akke(akkd paramakkd) {}
   
-  public AddFriendBlockedInfo[] a(int paramInt)
+  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
   {
-    return new AddFriendBlockedInfo[paramInt];
+    if ((akkd.a(this.a) != null) && (paramApolloActionPush != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
+      }
+      if ((akkd.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == akkd.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(akkd.a(this.a).jdField_a_of_type_JavaLangString)) && (akkd.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
+        this.a.a(paramApolloActionPush);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akke
  * JD-Core Version:    0.7.0.1
  */

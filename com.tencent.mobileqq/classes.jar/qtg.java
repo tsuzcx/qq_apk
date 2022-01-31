@@ -1,41 +1,46 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTopicViewGroup;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class qtg
-  implements View.OnClickListener
+final class qtg
+  extends nac
 {
-  public qtg(VideoFeedsTopicViewGroup paramVideoFeedsTopicViewGroup, VideoInfo.ChannelInfo paramChannelInfo) {}
+  qtg(qth paramqth, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup)))
+    boolean bool;
+    if (this.jdField_a_of_type_Qth != null)
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.c)) {
-        break label152;
+      paramArrayOfByte = this.jdField_a_of_type_Qth;
+      if (paramInt == 0)
+      {
+        bool = true;
+        paramArrayOfByte.a(bool, Integer.toString(paramInt));
+        if (QLog.isColorLevel()) {
+          QLog.d("RIJUGC.PublishVideoHelper", 2, "moveVideo: errorCode = " + paramInt + "callback =" + this.jdField_a_of_type_Qth);
+        }
       }
-      onh.a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.c);
     }
     for (;;)
     {
-      paramView = new qzb("", "", VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).jdField_a_of_type_JavaLangString, VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).g).u(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_Int).v(qoi.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo)).a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).N).a().a();
-      if (!VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup)) {
-        break;
+      if (paramInt != 0) {
+        break label130;
       }
-      nol.a(null, "", "0X8009331", "0X8009331", 0, 0, "3", "", "", paramView, false);
+      oxb.a().e();
       return;
-      label152:
-      nuq.b(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.b, 8, null);
+      bool = false;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJUGC.PublishVideoHelper", 2, "moveVideo: errorCode = " + paramInt + "callback is null.");
+      }
     }
-    nol.a(null, "", "0X80092F9", "0X80092F9", 0, 0, "3", "", "", paramView, false);
+    label130:
+    QLog.i("RIJUGC.PublishVideoHelper", 1, "moveVideo: columnId = " + this.jdField_a_of_type_Int + "errorCode = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qtg
  * JD-Core Version:    0.7.0.1
  */

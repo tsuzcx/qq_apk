@@ -1,50 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender.1.1;
-import java.util.UUID;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 
-public class azuu
-  extends xbb
+class azuu
+  extends URLDrawableDownListener.Adapter
 {
-  azuu(azut paramazut) {}
+  azuu(azus paramazus) {}
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (!paramBoolean) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramString = paramBundle.getString("itemKey");
-        } while (paramString == null);
-        paramString = UUID.fromString(paramString);
-      } while (!paramString.equals(this.a.a()));
-      azst.c("TroopFileUploadFeedsSender", azst.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult retCode:" + paramInt1);
-      paramBundle = paramBundle.getString("fileId");
-      bajy localbajy = azsr.a(this.a.d);
-      if (localbajy == null)
-      {
-        azst.a("TroopFileUploadFeedsSender", azst.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getTroopFileMgr()=null");
-        return;
-      }
-      paramString = localbajy.a(paramString);
-      if (paramString == null)
-      {
-        azst.a("TroopFileUploadFeedsSender", azst.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getFileInfo()=null");
-        return;
-      }
-    } while (paramInt1 != 0);
-    azst.c("TroopFileUploadFeedsSender", azst.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult refreshOneFile");
-    xam.a(azsr.a(), this.a.d, paramString.a, paramString.b, this.a.jdField_a_of_type_Xav);
-    ThreadManager.executeOnSubThread(new TroopFileUploadFeedsSender.1.1(this, paramBundle, paramString));
+    super.onLoadCancelled(paramView, paramURLDrawable);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azuu
  * JD-Core Version:    0.7.0.1
  */

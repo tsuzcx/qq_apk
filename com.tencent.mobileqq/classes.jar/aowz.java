@@ -1,62 +1,63 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
-class aowz
-  extends aoxv
+public class aowz
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  private final SparseArray<BlockingQueue<aoxh>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private aoxq jdField_a_of_type_Aoxq;
+  private final BlockingQueue<aoxh> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
   
-  aowz(aowx paramaowx, MessageRecord paramMessageRecord)
+  public aowz(aoxq paramaoxq)
   {
-    super(paramaowx);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    this.jdField_a_of_type_Aoxq = paramaoxq;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aoxt paramaoxt)
+  protected int a()
   {
-    if ("1".equals(this.g))
+    return 300;
+  }
+  
+  public aoxh a(int paramInt, Object paramObject)
+  {
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null) {
+      localObject = new LinkedBlockingQueue();
+    }
+    localObject = (aoxh)((BlockingQueue)localObject).poll();
+    if (localObject == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaoxt.a(aowx.a(this.jdField_a_of_type_Long, false), false);
-      return;
+      localObject = this.jdField_a_of_type_Aoxq.a(paramInt);
+      aozj.a("DanmakuFactory", new Object[] { localObject, " is created " });
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
-      }
-      paramaoxt.a(aowx.a(this.jdField_a_of_type_Long, true), false);
-      return;
+      ((aoxh)localObject).e();
+      ((aoxh)localObject).a(paramObject);
+      return localObject;
+      aozj.a("DanmakuFactory", new Object[] { localObject, " is reused " });
     }
-    aouo localaouo = aowx.a(this.jdField_a_of_type_Aowx).a().a();
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
+  }
+  
+  public void a(aoxh paramaoxh)
+  {
+    int i = paramaoxh.a();
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null)
+    {
+      localObject = new LinkedBlockingQueue();
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
     }
-    localaouo.a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new aoxa(this, paramString, paramaoxt));
+    if (a() > ((BlockingQueue)localObject).size()) {
+      ((BlockingQueue)localObject).add(paramaoxh);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowz
  * JD-Core Version:    0.7.0.1
  */

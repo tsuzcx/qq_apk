@@ -15,7 +15,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baok;
+import bcmx;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -94,7 +94,7 @@ public class MessageSubtitleView
           break label135;
         }
         ((Animator)localObject).setInterpolator(new AccelerateInterpolator(0.2F));
-        ((Animator)localObject).addListener(new baok(this, bool, paramInt2));
+        ((Animator)localObject).addListener(new bcmx(this, bool, paramInt2));
         ((Animator)localObject).start();
         return;
         bool = false;
@@ -159,7 +159,7 @@ public class MessageSubtitleView
       Object localObject = getContext();
       CharSequence localCharSequence = (CharSequence)this.jdField_a_of_type_JavaUtilQueue.poll();
       TextView localTextView = new TextView((Context)localObject);
-      localTextView.setShadowLayer(3.0F, 3.0F, 3.0F, 2131165467);
+      localTextView.setShadowLayer(3.0F, 3.0F, 3.0F, 2131165502);
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       localTextView.setSingleLine(true);
       localTextView.setTextSize(18.0F);
@@ -167,7 +167,7 @@ public class MessageSubtitleView
       localTextView.setTag(Long.valueOf(System.currentTimeMillis()));
       localTextView.setTranslationY(0.0F);
       localTextView.setText(localCharSequence);
-      localObject = new RelativeLayout.LayoutParams(((Context)localObject).getResources().getDimensionPixelSize(2131298808), ((Context)localObject).getResources().getDimensionPixelSize(2131298806));
+      localObject = new RelativeLayout.LayoutParams(((Context)localObject).getResources().getDimensionPixelSize(2131298836), ((Context)localObject).getResources().getDimensionPixelSize(2131298834));
       ((RelativeLayout.LayoutParams)localObject).topMargin = (this.jdField_a_of_type_JavaUtilArrayList.size() * this.jdField_a_of_type_Int);
       addView(localTextView, (ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_JavaUtilArrayList.add(localTextView);
@@ -185,7 +185,7 @@ public class MessageSubtitleView
   void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(paramContext.getMainLooper());
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131298806);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131298834);
   }
   
   public void b()

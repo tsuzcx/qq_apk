@@ -5,13 +5,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
-import orh;
-import orj;
+import ovz;
+import owb;
 
 public class DynamicChannelDataModule$6$1
   implements Runnable
 {
-  public DynamicChannelDataModule$6$1(orj paramorj, Bundle paramBundle, JSONObject paramJSONObject) {}
+  public DynamicChannelDataModule$6$1(owb paramowb, Bundle paramBundle, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -23,12 +23,12 @@ public class DynamicChannelDataModule$6$1
       if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
         break label97;
       }
-      localObject = orh.a(this.jdField_a_of_type_Orj.jdField_a_of_type_Orh, this.jdField_a_of_type_Orj.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle);
+      localObject = ovz.a(this.jdField_a_of_type_Owb.jdField_a_of_type_Ovz, this.jdField_a_of_type_Owb.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle);
     }
     for (;;)
     {
       if ((localObject == null) || (((List)localObject).size() == 0)) {
-        orh.a(this.jdField_a_of_type_Orj.jdField_a_of_type_Orh, bool, this.jdField_a_of_type_Orj.jdField_a_of_type_Int, false, false, null);
+        ovz.a(this.jdField_a_of_type_Owb.jdField_a_of_type_Ovz, bool, this.jdField_a_of_type_Owb.jdField_a_of_type_Int, false, false, null);
       }
       return;
       bool = false;
@@ -40,7 +40,7 @@ public class DynamicChannelDataModule$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DynamicChannelDataModule.6.1
  * JD-Core Version:    0.7.0.1
  */

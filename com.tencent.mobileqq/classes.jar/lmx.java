@@ -1,12 +1,25 @@
-public abstract interface lmx
+import java.util.Comparator;
+
+final class lmx
+  implements Comparator<lmw>
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public int a(lmw paramlmw1, lmw paramlmw2)
+  {
+    if (paramlmw1 == paramlmw2) {
+      return 0;
+    }
+    if (paramlmw1 == null) {
+      return -1;
+    }
+    if (paramlmw2 == null) {
+      return 1;
+    }
+    return paramlmw1.a - paramlmw2.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmx
  * JD-Core Version:    0.7.0.1
  */

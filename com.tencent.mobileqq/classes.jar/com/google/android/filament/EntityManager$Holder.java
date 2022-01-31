@@ -6,7 +6,7 @@ class EntityManager$Holder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.EntityManager.Holder
  * JD-Core Version:    0.7.0.1
  */

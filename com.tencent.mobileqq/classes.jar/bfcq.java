@@ -1,35 +1,21 @@
-import android.content.Context;
-import android.util.AttributeSet;
-import io.flutter.plugin.common.BasicMessageChannel;
-import io.flutter.plugin.common.StringCodec;
-import io.flutter.view.FlutterNativeView;
-import io.flutter.view.FlutterView;
+import android.text.Editable;
+import com.tencent.open.agent.SendStoryActivity;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
-final class bfcq
-  extends FlutterView
+public class bfcq
+  implements Comparator<Friend>
 {
-  private final BasicMessageChannel<String> a = new BasicMessageChannel(this, "flutter/lifecycle", StringCodec.INSTANCE);
+  public bfcq(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
   
-  bfcq(Context paramContext, AttributeSet paramAttributeSet, FlutterNativeView paramFlutterNativeView)
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    super(paramContext, paramAttributeSet, paramFlutterNativeView);
-  }
-  
-  public void onFirstFrame()
-  {
-    super.onFirstFrame();
-    setAlpha(1.0F);
-  }
-  
-  public void onPostResume()
-  {
-    super.onPostResume();
-    this.a.send("AppLifecycleState.resumed");
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfcq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,35 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agkz
-  extends atzq
+class agkz
+  extends asld
 {
-  public agkz(AlbumListActivity paramAlbumListActivity) {}
+  agkz(agkt paramagkt) {}
   
-  protected void c(boolean paramBoolean, Bundle paramBundle)
+  protected void a()
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof get_albumlist_num_rsp)))
-    {
-      this.a.jdField_a_of_type_Long = ((get_albumlist_num_rsp)paramBundle).album_num;
-      if (this.a.jdField_a_of_type_Agla != null)
-      {
-        this.a.jdField_a_of_type_Agla.a(this.a.jdField_a_of_type_Long);
-        this.a.jdField_a_of_type_Agla.a();
-        if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.q)) {
-          LpReportInfo_pf00064.allReport(96, 1, 1);
-        }
-      }
+    if (((askw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      agkt.a(this.a).a(this.a.jdField_a_of_type_Agvb, new Object[0]);
     }
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(AlbumListActivity.a(this.a));
+  }
+  
+  protected void b()
+  {
+    if (((askw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Agvb.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((askw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (agkt.b(this.a).a() == 14)) {
+      agkt.c(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkz
  * JD-Core Version:    0.7.0.1
  */

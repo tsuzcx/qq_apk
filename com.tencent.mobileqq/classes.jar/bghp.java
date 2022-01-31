@@ -1,199 +1,120 @@
-import android.text.TextUtils;
-import android.util.Pair;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.List<Ljava.lang.String;>;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniRuntime;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 
 public class bghp
+  implements IMiniRuntime
 {
-  private static final HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private int jdField_a_of_type_Int;
-  private final ConcurrentHashMap<String, Pair<Integer, String>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private bgho a;
   
-  static
+  public bghp(bgho parambgho)
   {
-    jdField_a_of_type_JavaUtilHashMap.put("obj_ownerid", Integer.valueOf(11));
-    jdField_a_of_type_JavaUtilHashMap.put("obj_pos", Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilHashMap.put("mod", Integer.valueOf(16));
-    jdField_a_of_type_JavaUtilHashMap.put("land_page", Integer.valueOf(42));
-    jdField_a_of_type_JavaUtilHashMap.put("detailpage_from", Integer.valueOf(43));
-    jdField_a_of_type_JavaUtilHashMap.put("algo_id", Integer.valueOf(44));
+    this.a = parambgho;
   }
   
-  private String a(String paramString1, String paramString2)
+  public void close()
   {
-    Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-    if (localPair != null) {
-      return (String)localPair.second;
-    }
-    int i = ((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString1)).intValue();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, new Pair(Integer.valueOf(i), paramString2));
-    return paramString2;
-  }
-  
-  public bghp a()
-  {
-    bghp localbghp = new bghp();
-    localbghp.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-    return localbghp;
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = bfns.a();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    Activity localActivity = this.a.a();
+    if ((localActivity != null) && (!localActivity.isFinishing()) && (!localActivity.moveTaskToBack(true)))
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (!TextUtils.isEmpty((CharSequence)((Pair)localEntry.getValue()).second))
-      {
-        if (i > 0) {
-          localStringBuilder.append('&');
-        }
-        localStringBuilder.append((String)localEntry.getKey());
-        localStringBuilder.append('=');
-        localStringBuilder.append((String)((Pair)localEntry.getValue()).second);
-        i += 1;
+      QMLog.e("MiniRuntime", "moveTaskToBack failed, finish the activity.");
+      localActivity.finish();
+    }
+  }
+  
+  public Activity getAttachedActivity()
+  {
+    return this.a.a();
+  }
+  
+  public MiniAppInfo getMiniAppInfo()
+  {
+    return this.a.a();
+  }
+  
+  public int getRuntimeId()
+  {
+    return 0;
+  }
+  
+  public ShareState getShareState()
+  {
+    MiniAppInfo localMiniAppInfo = getMiniAppInfo();
+    if (localMiniAppInfo == null)
+    {
+      QMLog.w("MiniRuntime", "getShareState. Failed to get share state, mini app info is null");
+      return null;
+    }
+    ShareState localShareState = bgic.a(this.a);
+    if (localShareState == null)
+    {
+      QMLog.w("MiniRuntime", "getShareState. Failed to get share state, share state is null");
+      return null;
+    }
+    if ((localMiniAppInfo.verType != 3) || (QUAUtil.isDemoApp()))
+    {
+      localShareState.showDebug = true;
+      localShareState.showMonitor = true;
+    }
+    if (bglq.a("qqminiapp", "mini_app_share_to_wx_switcher", 1) != 1)
+    {
+      localShareState.withShareWeChatFriend = false;
+      localShareState.withShareWeChatMoment = false;
+    }
+    localShareState.isOrientationLandscape = this.a.c();
+    return localShareState;
+  }
+  
+  public boolean restart()
+  {
+    return ((Boolean)this.a.a(bgig.a())).booleanValue();
+  }
+  
+  public void share(int paramInt, Bundle paramBundle)
+  {
+    switch (paramInt)
+    {
+    default: 
+      Bundle localBundle = paramBundle;
+      if (paramBundle == null) {
+        localBundle = new Bundle();
       }
-    }
-    return URLEncoder.encode(localStringBuilder.toString());
-  }
-  
-  public List<String> a(List<String> paramList)
-  {
-    Object localObject;
-    if (paramList == null)
-    {
-      localObject = null;
-      return localObject;
-    }
-    if (paramList.size() > this.jdField_a_of_type_Int + 1) {}
-    for (;;)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      for (;;)
-      {
-        localObject = paramList;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (Map.Entry)localIterator.next();
-        if (!jdField_a_of_type_JavaUtilHashMap.containsKey(((Map.Entry)localObject).getKey())) {
-          paramList.set(((Integer)((Pair)((Map.Entry)localObject).getValue()).first).intValue(), ((Pair)((Map.Entry)localObject).getValue()).second);
-        }
-      }
-      localObject = new ArrayList(this.jdField_a_of_type_Int + 1);
-      ((List)localObject).addAll(paramList);
-      paramList = (List<String>)localObject;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_Int = 0;
-    if (TextUtils.isEmpty(paramString)) {
+      localBundle.putInt("id", paramInt);
+      this.a.a(bgik.a(14, localBundle));
+      return;
+    case 1: 
+      this.a.a(bgik.a(2));
+      return;
+    case 2: 
+      this.a.a(bgik.a(6));
+      return;
+    case 3: 
+      this.a.a(bgik.a(7));
+      return;
+    case 4: 
+      this.a.a(bgik.a(8));
       return;
     }
-    paramString = URLDecoder.decode(paramString).split("&");
-    int j = paramString.length;
-    int i = 0;
-    label35:
-    String str1;
-    int k;
-    if (i < j)
-    {
-      str1 = paramString[i];
-      k = str1.indexOf("=");
-      if (k > 0) {
-        break label66;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label35;
-      break;
-      label66:
-      String str2 = str1.substring(0, k);
-      int m = str2.lastIndexOf("_");
-      if (m > 0)
-      {
-        String str3 = str2.substring(m + 1, str2.length());
-        if (TextUtils.isDigitsOnly(str3))
-        {
-          int n = Integer.parseInt(str3) - 2;
-          if (n > 8)
-          {
-            if (n > this.jdField_a_of_type_Int) {
-              this.jdField_a_of_type_Int = n;
-            }
-            str2 = str2.substring(0, m);
-            str1 = str1.substring(k + 1, str1.length());
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str2, new Pair(Integer.valueOf(n), str1));
-          }
-        }
-      }
-    }
+    this.a.a(bgik.a(13, paramBundle));
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public boolean toggleDebugPanel()
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramInt <= 8)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, new Pair(Integer.valueOf(paramInt), paramString2));
+    return bgim.a(this.a).booleanValue();
   }
   
-  public void a(JSONObject paramJSONObject)
+  public boolean toggleMonitorPanel()
   {
-    if (paramJSONObject == null) {
-      return;
-    }
-    bghl.a = a("mod", paramJSONObject.optString("from", bghl.a));
-    bghl.d = a("land_page", paramJSONObject.optString("land_page_id", bghl.d));
-    bghl.b = a("obj_ownerid", paramJSONObject.optString("obj_ownerid", bghl.b));
-    bghl.e = a("obj_pos", paramJSONObject.optString("pos", ""));
-    bghl.f = a("detailpage_from", bghl.a(paramJSONObject.optString("detailpage_from"), paramJSONObject.optString("prepage")));
-    bghl.g = a("algo_id", paramJSONObject.optString("algo_id", "0"));
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = bfns.a();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (!TextUtils.isEmpty((CharSequence)((Pair)localEntry.getValue()).second))
-      {
-        if (i > 0) {
-          localStringBuilder.append('&');
-        }
-        localStringBuilder.append((String)localEntry.getKey());
-        localStringBuilder.append('_');
-        localStringBuilder.append(((Integer)((Pair)localEntry.getValue()).first).intValue() + 2);
-        localStringBuilder.append('=');
-        localStringBuilder.append((String)((Pair)localEntry.getValue()).second);
-        i += 1;
-      }
-    }
-    return URLEncoder.encode(localStringBuilder.toString());
+    return bgim.b(this.a).booleanValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bghp
  * JD-Core Version:    0.7.0.1
  */

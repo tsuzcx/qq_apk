@@ -13,8 +13,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import onh;
 import org.json.JSONObject;
+import ors;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.AccountInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.ContextInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.ControlInfo;
@@ -333,17 +333,17 @@ public class Kandian210Msg0xeeInfo
   
   public static Kandian210Msg0xeeInfo getKandian210Msg0xeeInfoFromSp(QQAppInterface paramQQAppInterface)
   {
-    return (Kandian210Msg0xeeInfo)onh.a(paramQQAppInterface, "kandian_push_0x210_ee", true);
+    return (Kandian210Msg0xeeInfo)ors.a(paramQQAppInterface, "kandian_push_0x210_ee", true);
   }
   
   public static void removeKandian210Msg0xeeInfoFromSp()
   {
-    onh.a("kandian_push_0x210_ee", true);
+    ors.a("kandian_push_0x210_ee", true);
   }
   
   public static void writeToSpAsync(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo)
   {
-    onh.a("kandian_push_0x210_ee", paramKandian210Msg0xeeInfo, true);
+    ors.a("kandian_push_0x210_ee", paramKandian210Msg0xeeInfo, true);
   }
   
   public boolean isArticleAppInPush()
@@ -363,7 +363,7 @@ public class Kandian210Msg0xeeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,24 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-class bbxy
-  extends MQLruCache<String, Object>
+public class bbxy
+  implements DialogInterface.OnClickListener
 {
-  bbxy(bbxx parambbxx, int paramInt)
-  {
-    super(paramInt);
-  }
+  public bbxy(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  protected int a(String paramString, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramObject != null) && ((paramObject instanceof Bitmap)))
-    {
-      paramString = (Bitmap)paramObject;
-      return paramString.getRowBytes() * paramString.getHeight();
+    this.a.c();
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).e();
     }
-    return super.sizeOfObj(paramString, paramObject);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbxy
  * JD-Core Version:    0.7.0.1
  */

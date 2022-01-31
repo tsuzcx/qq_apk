@@ -1,335 +1,216 @@
-import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.os.Build.VERSION;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.FastOutSlowInInterpolator;
+import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.text.TextUtils;
+import android.util.StateSet;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.MeasureSpec;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class rty
-  extends LinearLayout
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = -1;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int b;
-  private int c = -1;
-  private int d = -1;
-  private int e = -1;
-  private int f;
-  private int g;
-  private int h;
+  public final int a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private final String jdField_a_of_type_JavaLangString = "ReadInJoyNavigationAdapter";
+  private List<ChannelCoverInfo> jdField_a_of_type_JavaUtilList;
+  private rua jdField_a_of_type_Rua;
+  public int b = -13879999;
+  public int c = -723466;
   
-  public rty(TabLayoutCompat paramTabLayoutCompat, Context paramContext)
+  public rty(Context paramContext)
   {
-    super(paramContext);
-    setWillNotDraw(false);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_Int = -9387998;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private void a()
+  private List<ChannelCoverInfo> a(List<ChannelCoverInfo> paramList)
   {
-    View localView = getChildAt(this.jdField_a_of_type_Int);
-    int i;
-    int j;
-    if ((localView != null) && (localView.getWidth() > 0))
+    Object localObject = paramList;
+    if (paramList != null)
     {
-      int m = localView.getLeft();
-      int k = localView.getRight();
-      i = k;
-      j = m;
-      if (this.jdField_a_of_type_Float > 0.0F)
-      {
-        i = k;
-        j = m;
-        if (this.jdField_a_of_type_Int < getChildCount() - 1)
-        {
-          localView = getChildAt(this.jdField_a_of_type_Int + 1);
-          float f1 = this.jdField_a_of_type_Float;
-          float f2 = localView.getLeft();
-          float f3 = this.jdField_a_of_type_Float;
-          j = (int)(m * (1.0F - f3) + f1 * f2);
-          f1 = this.jdField_a_of_type_Float;
-          f2 = localView.getRight();
-          f3 = this.jdField_a_of_type_Float;
-          i = (int)(k * (1.0F - f3) + f2 * f1);
-        }
+      localObject = paramList;
+      if (paramList.size() > 28) {
+        localObject = paramList.subList(0, 28);
       }
     }
-    for (;;)
-    {
-      a(j, i);
-      return;
-      i = -1;
-      j = -1;
-    }
+    return localObject;
   }
   
-  public void a(int paramInt)
+  private void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint.getColor() != paramInt)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-      ViewCompat.postInvalidateOnAnimation(this);
-    }
+    GradientDrawable localGradientDrawable1 = new GradientDrawable();
+    localGradientDrawable1.setShape(0);
+    localGradientDrawable1.setCornerRadius(bdkf.a(17.0F));
+    localGradientDrawable1.setColor(-723466);
+    localGradientDrawable1.setStroke(1, paramInt);
+    GradientDrawable localGradientDrawable2 = new GradientDrawable();
+    localGradientDrawable2.setShape(0);
+    localGradientDrawable2.setCornerRadius(bdkf.a(17.0F));
+    localGradientDrawable2.setColor(-2697514);
+    localGradientDrawable2.setStroke(1, paramInt);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, localGradientDrawable2);
+    localStateListDrawable.addState(StateSet.WILD_CARD, localGradientDrawable1);
+    paramView.setBackgroundDrawable(localStateListDrawable);
   }
   
-  public void a(int paramInt, float paramFloat)
+  public void a(List<ChannelCoverInfo> paramList)
   {
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(a(paramList));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNavigationAdapter", 2, new Object[] { "mChannels size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat;
-    a();
+    notifyDataSetChanged();
   }
   
-  void a(int paramInt1, int paramInt2)
+  public void a(rua paramrua)
   {
-    if ((paramInt1 != this.d) || (paramInt2 != this.e))
-    {
-      this.d = paramInt1;
-      this.e = paramInt2;
-      ViewCompat.postInvalidateOnAnimation(this);
-    }
+    this.jdField_a_of_type_Rua = paramrua;
   }
   
-  public boolean a()
+  public int getCount()
   {
-    boolean bool2 = false;
-    int j = getChildCount();
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (getChildAt(i).getWidth() <= 0) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
+    return 0;
   }
   
-  public void b(int paramInt)
+  public Object getItem(int paramInt)
   {
-    if (this.b != paramInt)
-    {
-      this.b = paramInt;
-      ViewCompat.postInvalidateOnAnimation(this);
-    }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public long getItemId(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    }
-    int i;
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
     Object localObject;
-    if (ViewCompat.getLayoutDirection(this) == 1)
+    if (paramView == null)
     {
-      i = 1;
-      localObject = getChildAt(paramInt1);
-      if (localObject != null) {
-        break label56;
+      localObject = new rub(this, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560075, paramViewGroup, false);
+      ((rub)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364735);
+      ((rub)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377349));
+      paramView.setTag(localObject);
+      paramViewGroup = (ViewGroup)localObject;
+      localObject = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (localObject != null)
+      {
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ChannelCoverInfo)localObject).mChannelCoverName);
+        int i = 5;
+        paramInt = 12;
+        if (bdcb.m() < 1080L)
+        {
+          i = 4;
+          paramInt = 11;
+        }
+        if (paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.length() < i) {
+          break label281;
+        }
       }
-      a();
     }
     for (;;)
     {
-      return;
-      i = 0;
-      break;
-      label56:
-      int k = ((View)localObject).getLeft();
-      int m = ((View)localObject).getRight();
-      int j;
-      if (Math.abs(paramInt1 - this.jdField_a_of_type_Int) <= 1)
+      float f = alnq.a() / 16.0F;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextSize(paramInt / f);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(((ChannelCoverInfo)localObject).mFontColor);
+      a(paramViewGroup.jdField_a_of_type_AndroidViewView, this.c);
+      if (!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mIconUrl)) {}
+      for (;;)
       {
-        i = this.d;
-        j = this.e;
+        if (!((ChannelCoverInfo)localObject).isReport)
+        {
+          ((ChannelCoverInfo)localObject).isReport = true;
+          ojb.a("0X8007F01", (ChannelCoverInfo)localObject, ojb.b);
+        }
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(localObject);
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+        return paramView;
+        paramViewGroup = (rub)paramView.getTag();
+        break;
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setPadding(bdkf.a(8.0F), 0, bdkf.a(8.0F), 0);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
       }
-      while ((i != k) || (j != m))
-      {
-        localObject = new ValueAnimator();
-        this.jdField_a_of_type_AndroidAnimationValueAnimator = ((ValueAnimator)localObject);
-        ((ValueAnimator)localObject).setInterpolator(new FastOutSlowInInterpolator());
-        ((ValueAnimator)localObject).setDuration(paramInt2);
-        ((ValueAnimator)localObject).setFloatValues(new float[] { 0.0F, 1.0F });
-        ((ValueAnimator)localObject).addUpdateListener(new rtz(this, i, k, j, m));
-        ((ValueAnimator)localObject).addListener(new rua(this, paramInt1));
-        ((ValueAnimator)localObject).start();
-        return;
-        j = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(24);
-        if (paramInt1 < this.jdField_a_of_type_Int)
-        {
-          if (i != 0)
-          {
-            j = k - j;
-            i = j;
-          }
-          else
-          {
-            j = m + j;
-            i = j;
-          }
-        }
-        else if (i != 0)
-        {
-          j = m + j;
-          i = j;
-        }
-        else
-        {
-          j = k - j;
-          i = j;
-        }
-      }
+      label281:
+      paramInt = 14;
     }
   }
   
-  public void c(int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.f != paramInt)
+    switch (paramView.getId())
     {
-      this.f = paramInt;
-      ViewCompat.postInvalidateOnAnimation(this);
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    if (this.g != paramInt)
-    {
-      this.g = paramInt;
-      ViewCompat.postInvalidateOnAnimation(this);
-    }
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
-    if ((this.d >= 0) && (this.e > this.d)) {
-      paramCanvas.drawRect(this.d + this.f, getHeight() - this.b - this.h, this.e - this.g, getHeight() - this.h, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-  }
-  
-  public void e(int paramInt)
-  {
-    if (this.h != paramInt)
-    {
-      this.h = paramInt;
-      ViewCompat.postInvalidateOnAnimation(this);
-    }
-  }
-  
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()))
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      long l = this.jdField_a_of_type_AndroidAnimationValueAnimator.getDuration();
-      paramInt1 = this.jdField_a_of_type_Int;
-      float f1 = this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedFraction();
-      b(paramInt1, Math.round((float)l * (1.0F - f1)));
+    default: 
       return;
     }
-    a();
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    int m = 0;
-    super.onMeasure(paramInt1, paramInt2);
-    if (View.MeasureSpec.getMode(paramInt1) != 1073741824) {
-      break label18;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNavigationAdapter", 2, "click container");
     }
-    label18:
-    while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.i != 1) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.h != 1)) {
-      return;
-    }
-    int n = getChildCount();
-    int k = 0;
-    int j = 0;
-    label53:
+    ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)paramView.getTag();
     Object localObject;
-    if (k < n)
+    if (localChannelCoverInfo != null)
     {
-      localObject = getChildAt(k);
-      if (((View)localObject).getVisibility() != 0) {
-        break label238;
+      if (!TextUtils.isEmpty(localChannelCoverInfo.mChannelJumpUrl)) {
+        break label252;
+      }
+      localObject = new HashMap();
+      ((HashMap)localObject).put("param_key_ariticle_id", Long.valueOf(localChannelCoverInfo.mArticleId));
+      ((HashMap)localObject).put("param_key_channel_cover_style", Integer.valueOf(localChannelCoverInfo.mChannelCoverStyle));
+      nxu.a(this.jdField_a_of_type_AndroidContentContext, localChannelCoverInfo.mChannelCoverId, localChannelCoverInfo.mChannelCoverName, localChannelCoverInfo.mChannelType, 4, (Map)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNavigationAdapter", 2, "launchChannelActivity info.mArticleId:" + localChannelCoverInfo.mArticleId + " info.mChannelCoverStyle: " + localChannelCoverInfo.mChannelCoverStyle + " info.mChannelCoverId:" + localChannelCoverInfo.mChannelCoverId + " info.mChannelCoverName:" + localChannelCoverInfo.mChannelCoverName + " info.mChannelType: " + localChannelCoverInfo.mChannelType);
       }
     }
-    label136:
-    label223:
-    label235:
-    label238:
-    for (int i = Math.max(j, ((View)localObject).getMeasuredWidth());; i = j)
+    label351:
+    for (;;)
     {
-      k += 1;
-      j = i;
-      break label53;
-      if (j <= 0) {
+      ojb.a("0X8007F02", localChannelCoverInfo, ojb.b);
+      if ((this.jdField_a_of_type_Rua == null) || (!(paramView.getTag() instanceof ChannelCoverInfo))) {
         break;
       }
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(16);
-      if (j * n <= getMeasuredWidth() - i * 2)
-      {
-        k = 0;
-        i = m;
-        m = i;
-        if (k >= n) {
-          break label223;
-        }
-        localObject = (LinearLayout.LayoutParams)getChildAt(k).getLayoutParams();
-        if ((((LinearLayout.LayoutParams)localObject).width == j) && (((LinearLayout.LayoutParams)localObject).weight == 0.0F)) {
-          break label235;
-        }
-        ((LinearLayout.LayoutParams)localObject).width = j;
-        ((LinearLayout.LayoutParams)localObject).weight = 0.0F;
-        i = 1;
+      this.jdField_a_of_type_Rua.a((ChannelCoverInfo)paramView.getTag());
+      return;
+      label252:
+      if (smk.b(localChannelCoverInfo.mChannelJumpUrl)) {
+        smk.a(this.jdField_a_of_type_AndroidContentContext, "", localChannelCoverInfo.mChannelJumpUrl, null);
       }
       for (;;)
       {
-        k += 1;
-        break label136;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.h = 0;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(false);
-        m = 1;
-        if (m == 0) {
-          break;
+        if (!QLog.isColorLevel()) {
+          break label351;
         }
-        super.onMeasure(paramInt1, paramInt2);
-        return;
+        QLog.d("ReadInJoyNavigationAdapter", 2, "info.mChannelJumpUrl:" + localChannelCoverInfo.mChannelJumpUrl);
+        break;
+        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", localChannelCoverInfo.mChannelJumpUrl);
+        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
       }
-    }
-  }
-  
-  public void onRtlPropertiesChanged(int paramInt)
-  {
-    super.onRtlPropertiesChanged(paramInt);
-    if ((Build.VERSION.SDK_INT < 23) && (this.c != paramInt))
-    {
-      requestLayout();
-      this.c = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rty
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,48 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tribe.async.async.Job;
+import android.util.LruCache;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
 import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 class uih
-  extends Job<Object, Object, Object>
+  extends SimpleJob<Void>
 {
-  uih(uig paramuig, String paramString, tce paramtce)
+  uih(uid paramuid, String paramString1, String paramString2, int paramInt)
   {
-    super(paramString);
+    super(paramString1);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    stb.a().dispatch(this.jdField_a_of_type_Tce);
-    return null;
+    try
+    {
+      uid.a(this.jdField_a_of_type_Uid).lock();
+      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      uid.a(this.jdField_a_of_type_Uid).remove(paramJobContext);
+      paramJobContext = QQStoryContext.a().a().createEntityManager();
+      paramVarArgs = uro.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
+      if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
+      {
+        paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
+        paramVarArgs.setStatus(1000);
+        paramVarArgs.bIsDownloadCompleted = 1;
+        paramJobContext.b(paramVarArgs);
+      }
+      return null;
+    }
+    finally
+    {
+      uid.a(this.jdField_a_of_type_Uid).unlock();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uih
  * JD-Core Version:    0.7.0.1
  */

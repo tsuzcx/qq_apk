@@ -3,14 +3,14 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import athh;
+import auyg;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Comments
   implements Parcelable
 {
-  public static final Parcelable.Creator<Comments> CREATOR = new athh();
+  public static final Parcelable.Creator<Comments> CREATOR = new auyg();
   public long a;
   public List<Comments.Comment> a;
   public boolean a;
@@ -68,7 +68,7 @@ public class Comments
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.Comments
  * JD-Core Version:    0.7.0.1
  */

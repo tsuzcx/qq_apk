@@ -1,92 +1,98 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class amyz
-  extends amyp<QQLevelIconConfig>
+class amyz
+  implements bavq
 {
-  public static QQLevelIconConfig c()
+  amyz(amyy paramamyy, amze paramamze) {}
+  
+  public void a(bavp parambavp)
   {
-    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)ampl.a().a(542);
-    QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
-    if (localQQLevelIconConfig2 == null) {
-      localQQLevelIconConfig1 = new QQLevelIconConfig();
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "onPreDownloadStart");
+  }
+  
+  public void onResp(baqw parambaqw)
+  {
+    if (parambaqw.jdField_a_of_type_Int == 3) {
+      QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download init. url = " + ((baps)parambaqw.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString);
     }
-    return localQQLevelIconConfig1;
-  }
-  
-  public int a()
-  {
-    return 542;
-  }
-  
-  @NonNull
-  public QQLevelIconConfig a()
-  {
-    return new QQLevelIconConfig();
-  }
-  
-  @NonNull
-  public QQLevelIconConfig a(amph[] paramArrayOfamph)
-  {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLevelIconProcessor", 1, paramArrayOfamph[0].a);
-    }
-    QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
-    paramArrayOfamph = paramArrayOfamph[0].a;
     for (;;)
     {
-      try
+      return;
+      int i;
+      synchronized (amyy.a(this.jdField_a_of_type_Amyy))
       {
-        if (!TextUtils.isEmpty(paramArrayOfamph))
+        if (amyy.a(this.jdField_a_of_type_Amyy) != null)
         {
-          paramArrayOfamph = new JSONObject(paramArrayOfamph);
-          if (paramArrayOfamph.optInt("newguideswitch", 1) != 1) {
-            continue;
+          i = 0;
+          label67:
+          if (i < amyy.a(this.jdField_a_of_type_Amyy).size())
+          {
+            if (!((amze)amyy.a(this.jdField_a_of_type_Amyy).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Amze.jdField_a_of_type_JavaLangString)) {
+              break label342;
+            }
+            amyy.a(this.jdField_a_of_type_Amyy).remove(i);
           }
-          bool1 = true;
-          localQQLevelIconConfig.mIsEnableGuide = bool1;
-          bool1 = bool2;
-          if (paramArrayOfamph.optInt("rushfeeswitch", 1) == 1) {
-            bool1 = true;
-          }
-          localQQLevelIconConfig.mIsNotifyPayment = bool1;
-          localQQLevelIconConfig.mNotifyPaymentText = paramArrayOfamph.optString("rushfeetips", localQQLevelIconConfig.mNotifyPaymentText);
-          localQQLevelIconConfig.mExpiredNotifyPaymentText = paramArrayOfamph.optString("expiredtips", localQQLevelIconConfig.mExpiredNotifyPaymentText);
         }
       }
-      catch (JSONException paramArrayOfamph)
+      synchronized (amyy.a(this.jdField_a_of_type_Amyy))
       {
-        boolean bool1;
-        ved.e("QQLevelIconProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfamph.getMessage());
-        continue;
+        ??? = (amzd)amyy.a(this.jdField_a_of_type_Amyy).get(this.jdField_a_of_type_Amze.b);
+        if (parambaqw.jdField_a_of_type_Int == 0)
+        {
+          if (amyy.a(this.jdField_a_of_type_Amyy) != null) {
+            amyy.a(this.jdField_a_of_type_Amyy).a(this.jdField_a_of_type_Amze.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amze.jdField_a_of_type_Long);
+          }
+          ??? = new File(((baps)parambaqw.jdField_a_of_type_Baqv).c);
+          String str = awiz.a(((File)???).getAbsolutePath());
+          if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Amze.b))) && (this.jdField_a_of_type_Amze.jdField_a_of_type_Int != 1))
+          {
+            QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download end. MD5 check error. url = " + ((baps)parambaqw.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
+            if (??? == null) {
+              continue;
+            }
+            ((amzd)???).a(false, this.jdField_a_of_type_Amze);
+            return;
+            label342:
+            i += 1;
+            break label67;
+            parambaqw = finally;
+            throw parambaqw;
+          }
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLevelIconProcessor", 1, " : " + localQQLevelIconConfig.toString());
+      for (boolean bool = true; ??? != null; bool = false)
+      {
+        ((amzd)???).a(bool, this.jdField_a_of_type_Amze);
+        return;
+        if (amyy.a(this.jdField_a_of_type_Amyy) != null) {
+          amyy.a(this.jdField_a_of_type_Amyy).a(this.jdField_a_of_type_Amze.jdField_a_of_type_JavaLangString, -1L);
+        }
       }
-      return localQQLevelIconConfig;
-      bool1 = false;
     }
   }
   
-  public Class<QQLevelIconConfig> a()
+  public void onUpdateProgeress(baqv arg1, long paramLong1, long paramLong2)
   {
-    return QQLevelIconConfig.class;
-  }
-  
-  @NonNull
-  public QQLevelIconConfig b()
-  {
-    return new QQLevelIconConfig();
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARPreSoResourceDownload", 2, "onUpdateProgeress. url = " + ((baps)???).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    }
+    synchronized (amyy.a(this.jdField_a_of_type_Amyy))
+    {
+      amzd localamzd = (amzd)amyy.a(this.jdField_a_of_type_Amyy).get(this.jdField_a_of_type_Amze.b);
+      if (localamzd != null) {
+        localamzd.a(paramLong1, paramLong2);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.structmsg.widget;
 
-import agvp;
-import agvq;
+import aipo;
+import aipp;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import ayae;
-import ayaf;
+import azvy;
+import azvz;
 
 public class CountdownTextView
   extends TextView
 {
-  private agvp jdField_a_of_type_Agvp = new agvp();
-  private agvq jdField_a_of_type_Agvq;
+  private aipo jdField_a_of_type_Aipo = new aipo();
+  private aipp jdField_a_of_type_Aipp;
   
   public CountdownTextView(Context paramContext)
   {
@@ -31,19 +31,19 @@ public class CountdownTextView
   
   public void a()
   {
-    agvp localagvp = this.jdField_a_of_type_Agvp;
-    if (localagvp != null) {
-      localagvp.b(this.jdField_a_of_type_Agvq);
+    aipo localaipo = this.jdField_a_of_type_Aipo;
+    if (localaipo != null) {
+      localaipo.b(this.jdField_a_of_type_Aipp);
     }
   }
   
-  public void a(long paramLong, ayaf paramayaf)
+  public void a(long paramLong, azvz paramazvz)
   {
-    agvp localagvp = this.jdField_a_of_type_Agvp;
-    if (localagvp != null)
+    aipo localaipo = this.jdField_a_of_type_Aipo;
+    if (localaipo != null)
     {
-      this.jdField_a_of_type_Agvq = new ayae(this, paramLong, paramayaf);
-      localagvp.a(this.jdField_a_of_type_Agvq);
+      this.jdField_a_of_type_Aipp = new azvy(this, paramLong, paramazvz);
+      localaipo.a(this.jdField_a_of_type_Aipp);
     }
   }
   
@@ -55,7 +55,7 @@ public class CountdownTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.widget.CountdownTextView
  * JD-Core Version:    0.7.0.1
  */

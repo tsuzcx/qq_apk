@@ -1,23 +1,13 @@
-import android.widget.PopupWindow.OnDismissListener;
-
 class rau
-  implements PopupWindow.OnDismissListener
 {
-  rau(ram paramram) {}
-  
-  public void onDismiss()
-  {
-    ram.a(this.a).a(1.0F);
-    if (this.a.b)
-    {
-      this.a.a.c();
-      this.a.b = false;
-    }
-  }
+  public int a;
+  public long a;
+  public int b = 2147483647;
+  public long b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rau
  * JD-Core Version:    0.7.0.1
  */

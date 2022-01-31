@@ -1,14 +1,15 @@
-import com.tencent.av.chatroom.ChatRoomInfo;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public abstract interface lkr
+public class lkr
 {
-  public abstract void a(int paramInt, ChatRoomInfo paramChatRoomInfo);
-  
-  public abstract void a(lkq paramlkq);
+  public PendantItem a;
+  public VideoMaterial a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lkr
  * JD-Core Version:    0.7.0.1
  */

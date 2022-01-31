@@ -1,119 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.aio.video.aio_video.ErrInfo;
-import tencent.aio.video.aio_video.RspGetUinByOpenId;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
 
-class bcbk
-  extends mxj
+public class bcbk
+  extends BroadcastReceiver
 {
-  bcbk(bcbh parambcbh, bcbn parambcbn) {}
+  public bcbk(HWReciteItem paramHWReciteItem) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("urlSecMgr", 2, "receive getUinWithOpenID code=" + paramInt);
-    }
-    Object localObject = "";
-    j = -1;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    if (("com.tnecnet.mobileqq.homework.recite.stopAudio".equals(paramIntent.getAction())) && (HWReciteItem.a(this.a)) && (this.a.a != null) && (this.a.a.a != null))
     {
-      i = j;
-      paramBundle = (Bundle)localObject;
-      if (paramArrayOfByte != null) {
-        paramBundle = (Bundle)localObject;
-      }
-    }
-    try
-    {
-      aio_video.RspGetUinByOpenId localRspGetUinByOpenId = new aio_video.RspGetUinByOpenId();
-      paramBundle = (Bundle)localObject;
-      localRspGetUinByOpenId.mergeFrom(paramArrayOfByte);
-      paramBundle = (Bundle)localObject;
-      localObject = localRspGetUinByOpenId.err_info.err_msg.get().toStringUtf8();
-      paramBundle = (Bundle)localObject;
-      i = localRspGetUinByOpenId.err_info.err_code.get();
-      paramBundle = (Bundle)localObject;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        label340:
-        i = j;
-        continue;
-        paramArrayOfByte = "";
-        paramInt = 0;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("getUinWithOpenID error code=").append(paramInt);
-      if (paramArrayOfByte == null)
-      {
-        paramArrayOfByte = ", data=null";
-        QLog.i("urlSecMgr", 2, paramArrayOfByte);
-        paramArrayOfByte = "";
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Bcbn != null)
-        {
-          localObject = new Bundle();
-          if (paramInt != 0) {
-            i = 0;
-          }
-          ((Bundle)localObject).putInt("result", i);
-          ((Bundle)localObject).putString("errMsg", paramBundle);
-          ((Bundle)localObject).putString("retUin", paramArrayOfByte);
-          this.jdField_a_of_type_Bcbn.a((Bundle)localObject);
-        }
-        return;
-        paramArrayOfByte = ", msg=" + paramBundle + ", errCode=" + i;
-        break;
-        paramBundle = new aio_video.RspGetUinByOpenId();
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          long l = paramBundle.uin.get();
-          paramArrayOfByte = String.valueOf(l);
-        }
-        catch (InvalidProtocolBufferMicroException paramBundle)
-        {
-          try
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("urlSecMgr", 2, new Object[] { "getUinWithOpenID uin:", Long.valueOf(paramBundle.uin.get()) });
-            }
-            paramInt = 1;
-            i = j;
-            paramBundle = (Bundle)localObject;
-          }
-          catch (InvalidProtocolBufferMicroException paramBundle)
-          {
-            break label340;
-          }
-          paramBundle = paramBundle;
-          paramArrayOfByte = "";
-          if (QLog.isColorLevel()) {
-            QLog.i("urlSecMgr", 2, "parse error", paramBundle);
-          }
-          paramInt = 0;
-          i = j;
-          paramBundle = (Bundle)localObject;
-        }
-      }
+      this.a.b();
+      this.a.a.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcbk
  * JD-Core Version:    0.7.0.1
  */

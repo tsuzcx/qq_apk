@@ -1,43 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-public class rpt
-  implements ComplementFileStringLoader
+public abstract interface rpt
 {
-  private rqa a;
-  
-  public rpt(rqa paramrqa)
-  {
-    this.a = paramrqa;
-  }
-  
-  public String loadFileAsString(String paramString)
-  {
-    try
-    {
-      InputStream localInputStream = this.a.a(paramString);
-      if (localInputStream == null) {
-        throw new IllegalStateException(paramString + " not found");
-      }
-    }
-    catch (IOException localIOException)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
-      return null;
-    }
-    String str = rqj.a(localIOException);
-    return str;
-  }
+  public abstract void a(@NonNull View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpt
  * JD-Core Version:    0.7.0.1
  */

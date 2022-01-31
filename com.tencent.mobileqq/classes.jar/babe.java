@@ -1,99 +1,67 @@
-import android.text.TextUtils;
-import javax.annotation.Nullable;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.tablequery.TReportData;
+import com.tencent.mobileqq.tablequery.TableQueryController.2.1;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class babe
-  implements ssi
+  extends BroadcastReceiver
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  babe(babd parambabd) {}
   
-  public babe()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  @Nullable
-  public JSONObject a(int paramInt)
-  {
-    int j = 1;
-    int i = 1;
-    JSONObject localJSONObject = new JSONObject();
-    switch (paramInt)
+    paramContext = paramIntent.getAction();
+    if ("action.query.data.viewer" == paramContext)
     {
-    default: 
-      paramInt = i;
+      paramIntent = (TReportData)paramIntent.getSerializableExtra("queryData");
+      if (paramIntent != null) {}
     }
-    while (paramInt != 0)
+    int i;
+    do
     {
-      return null;
-      paramInt = i;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      do
       {
-        localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
-        paramInt = 0;
-        continue;
-        paramInt = j;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        return;
+        babc localbabc = new babc();
+        localbabc.k = "";
+        localbabc.b = (paramIntent.actionName + "\n" + paramIntent.subAction + "\n" + paramIntent.mainAction + "\n");
+        if (paramIntent.actionName == null) {}
+        for (paramContext = paramIntent.mainAction;; paramContext = paramIntent.subAction)
         {
-          localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
-          paramInt = 0;
+          localbabc.a = paramContext;
+          if ((babd.a) && (!babd.b) && (babd.a(this.a) != null)) {
+            babd.a(this.a).a(localbabc);
+          }
+          if ((babd.a) && ((babd.c) || (babd.a()))) {
+            babd.a(this.a).a((QQAppInterface)babd.a(this.a).get(), paramIntent.table, 2, paramIntent.mainAction, paramIntent.actionName, paramIntent.subAction);
+          }
+          QLog.d("TableQueryController", 1, paramIntent.actionName + "\n" + paramIntent.mainAction + "\n" + paramIntent.subAction + "\n" + paramIntent.table + "\n");
+          return;
         }
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-        {
-          localJSONObject.put("fake_url", this.jdField_b_of_type_JavaLangString);
-          paramInt = 0;
-        }
+      } while ("com.tencent.plugin.state.change" != paramContext);
+      i = paramIntent.getIntExtra("key_plugin_state", -1);
+      if (1 == i)
+      {
+        this.a.b();
+        paramContext = new TableQueryController.2.1(this);
+        ThreadManager.getSubThreadHandler().postDelayed(paramContext, 2000L);
+        return;
       }
-    }
-    return localJSONObject;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("raw_url");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("fake_url");
-  }
-  
-  public void copy(Object paramObject)
-  {
-    if ((paramObject instanceof babe))
-    {
-      paramObject = (babe)paramObject;
-      if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramObject.jdField_a_of_type_JavaLangString;
-      }
-      if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = paramObject.jdField_b_of_type_JavaLangString;
-      }
-      if (paramObject.jdField_a_of_type_Int != -1) {
-        this.jdField_a_of_type_Int = paramObject.jdField_a_of_type_Int;
-      }
-      if (paramObject.jdField_b_of_type_Int != -1) {
-        this.jdField_b_of_type_Int = paramObject.jdField_b_of_type_Int;
-      }
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof babe))
-    {
-      paramObject = (babe)paramObject;
-      if ((this.jdField_b_of_type_JavaLangString != null) && (paramObject.jdField_b_of_type_JavaLangString != null)) {
-        return TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString);
-      }
-      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString);
-    }
-    return false;
+    } while (i != 0);
+    this.a.c();
+    babd.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     babe
  * JD-Core Version:    0.7.0.1
  */

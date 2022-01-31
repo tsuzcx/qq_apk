@@ -27,7 +27,7 @@ public final class intimate_relation$IntimateLadybro
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.intimate_relation.intimate_relation.IntimateLadybro
  * JD-Core Version:    0.7.0.1
  */

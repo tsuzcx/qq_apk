@@ -1,24 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
 
-public class abpr
-  implements View.OnClickListener
+public final class abpr
+  implements Parcelable.Creator<FromService>
 {
-  public abpr(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
-  
-  public void onClick(View paramView)
+  public FromService a(Parcel paramParcel)
   {
-    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
-    this.a.startActivity(paramView);
-    axqy.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
+    FromService localFromService = new FromService();
+    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
+    localFromService.b = paramParcel.readInt();
+    localFromService.c = paramParcel.readInt();
+    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localFromService;
+  }
+  
+  public FromService[] a(int paramInt)
+  {
+    return new FromService[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpr
  * JD-Core Version:    0.7.0.1
  */

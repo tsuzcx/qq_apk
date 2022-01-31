@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.content.res.Resources;
-import bbfj;
+import bdee;
 
 public class PersonalityLabelGalleryActivity$1
   implements Runnable
@@ -14,10 +14,10 @@ public class PersonalityLabelGalleryActivity$1
     if (!this.this$0.isFinishing())
     {
       this.this$0.a(this.a, false);
-      if (bbfj.d(this.this$0)) {
+      if (bdee.d(this.this$0)) {
         break label101;
       }
-      PersonalityLabelGalleryActivity.a(this.this$0, this.this$0.getResources().getString(2131694608));
+      PersonalityLabelGalleryActivity.a(this.this$0, this.this$0.getResources().getString(2131694764));
       if ((this.a == null) || (this.a.getSize() <= 0)) {
         break label91;
       }
@@ -42,7 +42,7 @@ public class PersonalityLabelGalleryActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.1
  * JD-Core Version:    0.7.0.1
  */

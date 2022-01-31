@@ -1,60 +1,41 @@
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qphone.base.util.QLog;
-
-public class wtu
-  implements IVideoInnerStatusListener
+class wtu
+  implements xfc<Boolean, xfh>
 {
-  public wtu(VideoPlayerView paramVideoPlayerView) {}
+  wtu(wts paramwts, long paramLong, int paramInt) {}
   
-  public void notifyVideoClose(int paramInt)
+  public Void a(Boolean paramBoolean, xfh paramxfh)
   {
-    VideoPlayerView.c(this.a, false);
-    if (VideoPlayerView.a(this.a) != null)
+    if ((!paramBoolean.booleanValue()) || (paramxfh == null) || (paramxfh.jdField_a_of_type_AndroidGraphicsBitmap == null))
     {
-      VideoPlayerView.a(this.a).b();
-      VideoPlayerView.a(this.a, null);
+      wsv.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
+      return null;
     }
-    VideoPlayerView.a(this.a, null);
-    this.a.g();
-  }
-  
-  public void notifyVideoSeek(int paramInt)
-  {
-    QLog.d("VideoPlayerView", 4, "notifyVideoSeek seek " + paramInt);
-    this.a.a(paramInt * this.a.a().b() / 100L);
-  }
-  
-  public void notifyVideoStart()
-  {
-    if (VideoPlayerView.a(this.a).a() < VideoPlayerView.a(this.a).b())
+    wsv.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramxfh.jdField_a_of_type_Int));
+    if (paramxfh.jdField_a_of_type_Int >= this.jdField_a_of_type_Wts.a.length)
     {
-      this.a.d();
-      return;
+      wsv.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramxfh.jdField_a_of_type_Int) });
+      return null;
     }
-    if (VideoPlayerView.c(this.a))
+    wsv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramxfh.jdField_a_of_type_Int));
+    this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int] = wtv.a(this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int], paramxfh.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramxfh.jdField_a_of_type_JavaLangString;
+    if (paramxfh.jdField_a_of_type_Long > 0L)
     {
-      QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
-      return;
+      this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int].jdField_a_of_type_Int = ((int)paramxfh.jdField_a_of_type_Long / 1000);
+      wsv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix start time : %d ", Integer.valueOf(this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int].jdField_a_of_type_Int));
+      if ((this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int].b <= 0) && (this.jdField_a_of_type_Wts.a.length == 1))
+      {
+        this.jdField_a_of_type_Wts.a[paramxfh.jdField_a_of_type_Int].b = ((int)this.jdField_a_of_type_Long);
+        wsv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix end time : %d ", Integer.valueOf(this.jdField_a_of_type_Int));
+      }
     }
-    VideoPlayerView.a(this.a).a(true);
-    this.a.f();
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).onVideoStart((int)VideoPlayerView.a(this.a).b());
-    }
-    QLog.d("VideoPlayerView", 4, "no more, player repeat");
-  }
-  
-  public void notifyVideoStop()
-  {
-    this.a.a();
+    this.jdField_a_of_type_Wts.i();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtu
  * JD-Core Version:    0.7.0.1
  */

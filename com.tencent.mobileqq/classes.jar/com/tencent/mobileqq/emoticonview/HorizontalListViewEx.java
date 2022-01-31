@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import actj;
+import aekt;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,12 +17,12 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.WindowManager;
 import android.widget.ListAdapter;
-import anzo;
-import anzp;
-import anzq;
-import aobf;
-import bbll;
-import bfuc;
+import aprl;
+import aprm;
+import aprn;
+import aptc;
+import bdkf;
+import bhuz;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -52,7 +52,7 @@ public class HorizontalListViewEx
   public HorizontalListViewEx(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = actj.a(51.0F, paramContext.getResources());
+    this.jdField_b_of_type_Int = aekt.a(51.0F, paramContext.getResources());
     paramAttributeSet = new DisplayMetrics();
     ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(paramAttributeSet);
     this.c = paramAttributeSet.widthPixels;
@@ -79,9 +79,9 @@ public class HorizontalListViewEx
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166376));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166423));
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.e = bbll.a(18.0F);
+    this.e = bdkf.a(18.0F);
   }
   
   private void d()
@@ -93,9 +93,9 @@ public class HorizontalListViewEx
       View localView = getChildAt(i);
       if (localView.getTag() != null)
       {
-        anzq localanzq = (anzq)localView.getTag();
+        aprn localaprn = (aprn)localView.getTag();
         localView.setSelected(false);
-        localanzq.a.setSelected(false);
+        localaprn.a.setSelected(false);
       }
       i += 1;
     }
@@ -136,7 +136,7 @@ public class HorizontalListViewEx
         ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { i, j });
         localValueAnimator.setDuration(200L);
         this.jdField_b_of_type_Boolean = true;
-        localValueAnimator.addUpdateListener(new aobf(this, localView, j));
+        localValueAnimator.addUpdateListener(new aptc(this, localView, j));
         localValueAnimator.start();
         return;
         if (this.d < getFirstVisiblePosition()) {
@@ -178,25 +178,25 @@ public class HorizontalListViewEx
       return;
       j = getChildCount();
     } while (getAdapter() == null);
-    paramCanvas = (anzo)getAdapter();
+    paramCanvas = (aprl)getAdapter();
     int i = 0;
     label149:
     Object localObject2;
-    anzq localanzq;
+    aprn localaprn;
     if (i < j)
     {
       localObject1 = getChildAt(i);
       localObject2 = paramCanvas.getItem(this.mLeftViewAdapterIndex + i);
       if (((View)localObject1).getTag() != null)
       {
-        localanzq = (anzq)((View)localObject1).getTag();
+        localaprn = (aprn)((View)localObject1).getTag();
         if (localObject1 != getSelectedView()) {
           break label240;
         }
         ((View)localObject1).setSelected(true);
-        localanzq.a.setSelected(true);
+        localaprn.a.setSelected(true);
         if (localObject2 != null) {
-          ((View)localObject1).setContentDescription(((anzp)localObject2).b);
+          ((View)localObject1).setContentDescription(((aprm)localObject2).b);
         }
       }
     }
@@ -207,9 +207,9 @@ public class HorizontalListViewEx
       break;
       label240:
       ((View)localObject1).setSelected(false);
-      localanzq.a.setSelected(false);
+      localaprn.a.setSelected(false);
       if (localObject2 != null) {
-        ((View)localObject1).setContentDescription(((anzp)localObject2).b);
+        ((View)localObject1).setContentDescription(((aprm)localObject2).b);
       }
     }
   }
@@ -224,8 +224,8 @@ public class HorizontalListViewEx
     int j = 0;
     super.setSelection(paramInt);
     if (this.mAdapter == null) {}
-    label673:
-    label705:
+    label671:
+    label703:
     for (;;)
     {
       return;
@@ -250,14 +250,14 @@ public class HorizontalListViewEx
             }
           }
           if (i == 0) {
-            break label673;
+            break label671;
           }
           a(i);
         }
         for (;;)
         {
           if (!this.jdField_a_of_type_Boolean) {
-            break label705;
+            break label703;
           }
           b();
           this.d = this.mCurrentlySelectedAdapterIndex;
@@ -285,7 +285,7 @@ public class HorizontalListViewEx
             localView = getChildAt(0);
             arrayOfInt = new int[2];
             localView.getLocationOnScreen(arrayOfInt);
-            i = arrayOfInt[0] - this.jdField_b_of_type_Int;
+            i = arrayOfInt[0] - getLeft();
             if ((DEBUG) && (QLog.isDevelopLevel())) {
               QLog.i(HorizontalListView.class.getSimpleName(), 4, "setSelectionEx: view on half left screen, position:" + paramInt + ",location:" + arrayOfInt[0] + ",mNextX:" + this.mNextX + ",deltaX:" + i);
             }
@@ -296,7 +296,7 @@ public class HorizontalListViewEx
             localView = getChildAt(getChildCount() - 1);
             arrayOfInt = new int[2];
             localView.getLocationOnScreen(arrayOfInt);
-            j = this.jdField_b_of_type_Int * 2 - (this.c - arrayOfInt[0]);
+            j = arrayOfInt[0] + this.jdField_b_of_type_Int - getRight();
             i = j;
             if (j < 0) {
               i = 0;
@@ -334,7 +334,7 @@ public class HorizontalListViewEx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.HorizontalListViewEx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,49 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.MotionEvent;
 
-public class txl
-  extends Subscriber.SingleEventSubscriberNoRefect<tla>
+class txl
+  implements RecyclerView.OnItemTouchListener
 {
-  txh a;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public txl(@NonNull txh paramtxh)
+  txl(txk paramtxk) {}
+  
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    this.a = paramtxh;
+    if (txk.a(this.jdField_a_of_type_Txk)) {}
+    int j;
+    int i;
+    do
+    {
+      return false;
+      switch (paramMotionEvent.getAction())
+      {
+      case 1: 
+      default: 
+        return false;
+      case 0: 
+        this.b = ((int)(paramMotionEvent.getX() + 0.5F));
+        this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getY() + 0.5F));
+        return false;
+      }
+      j = (int)(paramMotionEvent.getX() + 0.5F);
+      i = (int)(paramMotionEvent.getY() + 0.5F);
+      j -= this.b;
+      i = (int)((i - this.jdField_a_of_type_Int) * 0.6F);
+    } while ((Math.abs(j) <= txk.a(this.jdField_a_of_type_Txk)) || (Math.abs(j) < Math.abs(i)) || (txk.a(this.jdField_a_of_type_Txk) == null));
+    txk.a(this.jdField_a_of_type_Txk).requestDisallowInterceptTouchEvent(true);
+    return false;
   }
   
-  protected void a(@NonNull tla paramtla)
-  {
-    if (paramtla.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramtla.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
   
-  public Class acceptEventClass()
-  {
-    return tla.class;
-  }
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txl
  * JD-Core Version:    0.7.0.1
  */

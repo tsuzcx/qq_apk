@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.ads;
 
-import ajaf;
-import ajah;
+import akrr;
+import akrt;
 import android.app.Activity;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
@@ -10,20 +10,20 @@ import java.util.HashMap;
 public class CmGameBannerAds$3
   implements Runnable
 {
-  public CmGameBannerAds$3(ajaf paramajaf, int paramInt) {}
+  public CmGameBannerAds$3(akrr paramakrr, int paramInt) {}
   
   public void run()
   {
     try
     {
-      ajah localajah = (ajah)ajaf.a(this.this$0).get(Integer.valueOf(this.a));
-      Activity localActivity = ajaf.a(this.this$0);
-      if ((localajah != null) && (localajah.a != null))
+      akrt localakrt = (akrt)akrr.a(this.this$0).get(Integer.valueOf(this.a));
+      Activity localActivity = akrr.a(this.this$0);
+      if ((localakrt != null) && (localakrt.a != null))
       {
         if (localActivity == null) {
           return;
         }
-        localajah.a.setVisibility(8);
+        localakrt.a.setVisibility(8);
         return;
       }
     }
@@ -35,7 +35,7 @@ public class CmGameBannerAds$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.3
  * JD-Core Version:    0.7.0.1
  */

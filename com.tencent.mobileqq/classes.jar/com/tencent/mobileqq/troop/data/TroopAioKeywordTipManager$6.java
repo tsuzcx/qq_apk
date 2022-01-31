@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.troop.data;
 
-import azmt;
-import azne;
+import bblc;
+import bbln;
 import java.util.List;
 
 public class TroopAioKeywordTipManager$6
   implements Runnable
 {
-  public TroopAioKeywordTipManager$6(azne paramazne, String paramString1, String paramString2, Integer paramInteger) {}
+  public TroopAioKeywordTipManager$6(bbln parambbln, String paramString1, String paramString2, Integer paramInteger) {}
   
   public void run()
   {
-    String str = azne.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangInteger);
+    String str = bbln.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangInteger);
     synchronized (this.this$0.b)
     {
       if (!this.this$0.b.contains(str)) {
         this.this$0.b.add(str);
       }
-      azmt.a(this.this$0.a, str);
+      bblc.a(this.this$0.a, str);
       return;
     }
   }

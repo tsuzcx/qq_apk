@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import airx;
-import ajmu;
+import akji;
+import aleh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
@@ -12,20 +12,20 @@ import java.util.List;
 public class ApolloManager$8
   implements Runnable
 {
-  public ApolloManager$8(airx paramairx, boolean paramBoolean, int paramInt) {}
+  public ApolloManager$8(akji paramakji, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
     if (this.this$0.a != null)
     {
-      localObject2 = (ajmu)this.this$0.a.getManager(155);
+      localObject2 = (aleh)this.this$0.a.getManager(155);
       localObject1 = new ArrayList();
       if (localObject2 != null)
       {
         if (!this.jdField_a_of_type_Boolean) {
           break label65;
         }
-        localObject1 = ((ajmu)localObject2).c();
+        localObject1 = ((aleh)localObject2).c();
       }
       if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
         break label77;
@@ -36,7 +36,7 @@ public class ApolloManager$8
     do
     {
       return;
-      localObject1 = ((ajmu)localObject2).b(this.jdField_a_of_type_Int);
+      localObject1 = ((aleh)localObject2).b(this.jdField_a_of_type_Int);
       break;
       localObject2 = new ArrayList();
       int i = 0;
@@ -62,7 +62,7 @@ public class ApolloManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloManager.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.download.ReadInJoyDownloader.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import com.tencent.tmdownloader.TMAssistantDownloadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class opz
+final class opz
+  implements ViewFactory.FoundClickableViewListener
 {
-  private static volatile opz jdField_a_of_type_Opz;
-  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).getDownloadSDKClient("ReadInJoyDownloader");
-  private final opy jdField_a_of_type_Opy = new opy();
+  opz(VafContext paramVafContext, TemplateBean paramTemplateBean) {}
   
-  private opz()
+  public void onFound(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_Opy);
-  }
-  
-  public static opz a()
-  {
-    if (jdField_a_of_type_Opz != null) {
-      return jdField_a_of_type_Opz;
-    }
-    try
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
     {
-      if (jdField_a_of_type_Opz == null) {
-        jdField_a_of_type_Opz = new opz();
-      }
-      return jdField_a_of_type_Opz;
+    default: 
+      paramViewBase.setOnClickListener(new oqc(this, paramViewBase));
+      return;
+    case 1123: 
+      paramViewBase.setOnClickListener(new oqa(this));
+      return;
     }
-    finally {}
-  }
-  
-  private void a(oqa paramoqa)
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(new ReadInJoyDownloader.1(this, paramoqa), 15000L);
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    QLog.d("ReadInJoyDownloader", 2, "[startDownload] ");
-    bdmt.a().a(paramDownloadInfo);
-    a(new oqa(paramDownloadInfo, null));
-  }
-  
-  public void a(opx paramopx)
-  {
-    this.jdField_a_of_type_Opy.a(paramopx);
-  }
-  
-  public void b(opx paramopx)
-  {
-    this.jdField_a_of_type_Opy.b(paramopx);
+    paramViewBase.setOnClickListener(new oqb(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opz
  * JD-Core Version:    0.7.0.1
  */

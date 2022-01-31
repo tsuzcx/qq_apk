@@ -1,71 +1,201 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
-import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
 public class qbs
 {
-  public int a;
-  public long a;
-  public String a;
-  public articlesummary.PackInfo a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
-  public int f;
-  public long f;
+  public pgd a;
+  public pxt a;
   
-  public qbs()
+  public static boolean a(ArticleInfo paramArticleInfo)
   {
-    this.jdField_a_of_type_Int = 6;
+    return qfg.a(paramArticleInfo);
   }
   
-  public static qbs a(articlesummary.PackInfo paramPackInfo)
+  public static boolean a(pgd parampgd)
   {
+    return (parampgd.a() == 49) || (parampgd.a() == 62) || (parampgd.a() == 63);
+  }
+  
+  public static boolean b(ArticleInfo paramArticleInfo)
+  {
+    return qfg.b(paramArticleInfo);
+  }
+  
+  public static boolean b(pgd parampgd)
+  {
+    return (parampgd.a() == 39) || (parampgd.a() == 116) || (parampgd.a() == 66) || (parampgd.a() == 115) || (parampgd.a() == 122);
+  }
+  
+  public static boolean c(ArticleInfo paramArticleInfo)
+  {
+    int i = rqj.c(paramArticleInfo);
+    return (i == 23) || (i == 26) || (i == 56) || (i == 59);
+  }
+  
+  public static boolean c(pgd parampgd)
+  {
+    switch (parampgd.a())
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean d(pgd parampgd)
+  {
+    return parampgd.c() == 3;
+  }
+  
+  public static boolean e(pgd parampgd)
+  {
+    return parampgd.a() == 10;
+  }
+  
+  public static boolean f(pgd parampgd)
+  {
+    return parampgd.a() == 11;
+  }
+  
+  public static boolean g(pgd parampgd)
+  {
+    return parampgd.a() == 12;
+  }
+  
+  public static boolean h(pgd parampgd)
+  {
+    return parampgd.a() == 27;
+  }
+  
+  public static boolean i(pgd parampgd)
+  {
+    return parampgd.a() == 28;
+  }
+  
+  public static boolean j(pgd parampgd)
+  {
+    return qfg.b(parampgd.a());
+  }
+  
+  public static boolean k(pgd parampgd)
+  {
+    return qfg.a(parampgd.a());
+  }
+  
+  public int a()
+  {
+    if ((m()) && ((this.jdField_a_of_type_Pgd.a() instanceof AdvertisementInfo))) {
+      return AdvertisementInfo.getBigAppAdStyle((AdvertisementInfo)this.jdField_a_of_type_Pgd.a());
+    }
+    return 0;
+  }
+  
+  public long a()
+  {
+    if ((this.jdField_a_of_type_Pgd != null) && (this.jdField_a_of_type_Pgd.a() != null) && (this.jdField_a_of_type_Pgd.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.a != null)) {}
     try
     {
-      qbs localqbs = new qbs();
-      localqbs.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackInfo = paramPackInfo;
-      localqbs.jdField_a_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_title.get();
-      localqbs.jdField_b_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).bytes_recommend_reason.get().toStringUtf8();
-      localqbs.jdField_b_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_puin.get();
-      localqbs.jdField_c_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_icon_url.get();
-      localqbs.jdField_a_of_type_Int = paramPackInfo.pack_type.get();
-      localqbs.jdField_c_of_type_Long = paramPackInfo.uint64_pack_id.get();
-      localqbs.jdField_d_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_jump_url.get();
-      localqbs.jdField_b_of_type_Int = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_icon_shape.get();
-      localqbs.jdField_e_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_algorithm_id.get();
-      localqbs.jdField_d_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_strategy_id.get();
-      localqbs.f = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_topic_id.get();
-      localqbs.jdField_a_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_posttime.get();
-      localqbs.jdField_e_of_type_Int = paramPackInfo.uint32_follow_status.get();
-      return localqbs;
+      long l = this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.a.a;
+      return l;
     }
-    catch (Exception paramPackInfo) {}
-    return null;
+    catch (NumberFormatException localNumberFormatException)
+    {
+      localNumberFormatException.printStackTrace();
+      return 0L;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
   
-  public String toString()
+  public pgd a()
   {
-    return "PolymericInfo【 packID : " + this.jdField_c_of_type_Long + "\n polymericType : " + this.jdField_a_of_type_Int + "\n algorithmID : " + this.jdField_e_of_type_Long + "\n strategyID : " + this.jdField_d_of_type_Long + "\n title : " + this.jdField_a_of_type_JavaLangString + "\n desc : " + this.jdField_b_of_type_JavaLangString + "\n publicTime : " + this.jdField_a_of_type_Long + "\n iconUrl : " + this.jdField_c_of_type_JavaLangString + "\n uin : " + this.jdField_b_of_type_Long + "\n topicID : " + this.f + "\n topicMemberCount : " + this.jdField_c_of_type_Int + "\n jumpUrl : " + this.jdField_d_of_type_JavaLangString + "\n videoCount : " + this.jdField_d_of_type_Int + "\n followStatus : " + this.jdField_e_of_type_Int + "】";
+    return this.jdField_a_of_type_Pgd;
+  }
+  
+  public void a(pgd parampgd)
+  {
+    this.jdField_a_of_type_Pgd = parampgd;
+  }
+  
+  public void a(pxt parampxt)
+  {
+    this.jdField_a_of_type_Pxt = parampxt;
+  }
+  
+  public boolean a()
+  {
+    return d(this.jdField_a_of_type_Pgd);
+  }
+  
+  public boolean b()
+  {
+    return e(this.jdField_a_of_type_Pgd);
+  }
+  
+  public boolean c()
+  {
+    return f(this.jdField_a_of_type_Pgd);
+  }
+  
+  public boolean d()
+  {
+    return g(this.jdField_a_of_type_Pgd);
+  }
+  
+  public boolean e()
+  {
+    return h(this.jdField_a_of_type_Pgd);
+  }
+  
+  public boolean f()
+  {
+    return (this.jdField_a_of_type_Pgd.a() == 50) || (this.jdField_a_of_type_Pgd.a() == 51) || (this.jdField_a_of_type_Pgd.a() == 52);
+  }
+  
+  public boolean g()
+  {
+    return i(this.jdField_a_of_type_Pgd);
+  }
+  
+  public boolean h()
+  {
+    return a(this.jdField_a_of_type_Pgd);
+  }
+  
+  public boolean i()
+  {
+    return j(this.jdField_a_of_type_Pgd);
+  }
+  
+  public boolean j()
+  {
+    return k(this.jdField_a_of_type_Pgd);
+  }
+  
+  public boolean k()
+  {
+    return c(this.jdField_a_of_type_Pgd);
+  }
+  
+  public boolean l()
+  {
+    return this.jdField_a_of_type_Pgd.a() == 16;
+  }
+  
+  public boolean m()
+  {
+    return b(this.jdField_a_of_type_Pgd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qbs
  * JD-Core Version:    0.7.0.1
  */

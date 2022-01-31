@@ -1,30 +1,24 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-class bhym
-  implements ScaleGestureDetector.OnScaleGestureListener
+public class bhym
+  implements View.OnFocusChangeListener
 {
-  bhym(bhyi parambhyi) {}
+  public bhym(XPanelContainer paramXPanelContainer) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    if (bhyi.a(this.a) != null) {
-      bhyi.a(this.a).a("onActionScale", new float[] { f });
+    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
+      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
     }
-    return true;
   }
-  
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return true;
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhym
  * JD-Core Version:    0.7.0.1
  */

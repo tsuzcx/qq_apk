@@ -1,22 +1,29 @@
-import java.util.Comparator;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-final class spq
-  implements Comparator<spz>
+class spq
+  implements bevy
 {
-  public int a(spz paramspz1, spz paramspz2)
+  spq(spp paramspp) {}
+  
+  public void a(BaseResp paramBaseResp)
   {
-    if ((paramspz1 == paramspz2) || (paramspz1.b == paramspz2.b)) {
-      return 0;
+    if ((spp.a(this.a) == null) || (!spp.a(this.a).equals(paramBaseResp.transaction))) {
+      return;
     }
-    if (paramspz1.b < paramspz2.b) {
-      return -1;
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      xxb.a(1, 2131720019);
+      return;
     }
-    return 1;
+    xxb.a(2, 2131720038);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spq
  * JD-Core Version:    0.7.0.1
  */

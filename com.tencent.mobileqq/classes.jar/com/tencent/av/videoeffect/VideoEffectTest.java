@@ -6,8 +6,8 @@ import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGL10;
-import mus;
-import muv;
+import mxl;
+import mxo;
 
 public class VideoEffectTest
   implements Runnable
@@ -20,11 +20,11 @@ public class VideoEffectTest
   private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
   private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  muv jdField_a_of_type_Muv = null;
+  mxo jdField_a_of_type_Mxo = null;
   
-  public VideoEffectTest(muv parammuv)
+  public VideoEffectTest(mxo parammxo)
   {
-    this.jdField_a_of_type_Muv = parammuv;
+    this.jdField_a_of_type_Mxo = parammxo;
   }
   
   private void c()
@@ -118,10 +118,10 @@ public class VideoEffectTest
     {
       try
       {
-        localObject = new mus((byte[])localObject, 480, 640);
-        ((mus)localObject).a();
-        l2 = (((mus)localObject).a() + 0L + ((mus)localObject).a()) / 2L;
-        ((mus)localObject).b();
+        localObject = new mxl((byte[])localObject, 480, 640);
+        ((mxl)localObject).a();
+        l2 = (((mxl)localObject).a() + 0L + ((mxl)localObject).a()) / 2L;
+        ((mxl)localObject).b();
         if (l2 > 0L) {
           continue;
         }
@@ -134,8 +134,8 @@ public class VideoEffectTest
         i = 0;
         continue;
       }
-      if (this.jdField_a_of_type_Muv != null) {
-        this.jdField_a_of_type_Muv.a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
+      if (this.jdField_a_of_type_Mxo != null) {
+        this.jdField_a_of_type_Mxo.a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
       }
       return;
       i = 1;
@@ -164,9 +164,9 @@ public class VideoEffectTest
     }
     catch (Throwable localThrowable)
     {
-      if (this.jdField_a_of_type_Muv != null)
+      if (this.jdField_a_of_type_Mxo != null)
       {
-        this.jdField_a_of_type_Muv.a(0, 0L, null, null);
+        this.jdField_a_of_type_Mxo.a(0, 0L, null, null);
         return;
         d();
       }
@@ -175,7 +175,7 @@ public class VideoEffectTest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.videoeffect.VideoEffectTest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,34 @@
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class lhb<T1 extends MessageMicro, T2 extends MessageMicro>
+class lhb
+  extends BroadcastReceiver
 {
-  protected final void a(long paramLong, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  lhb(lha paramlha) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = lgy.a(this);
-    ((lha)localObject).a("QAVMessageHandler", paramLong);
-    if ((((lha)localObject).a != null) && (((lha)localObject).b != null)) {}
-    try
+    if ((paramIntent != null) && ("com.tencent.av.EXIT_VIDEO_PROCESS".equals(paramIntent.getAction())))
     {
-      MessageMicro localMessageMicro = (MessageMicro)((lha)localObject).a.newInstance();
-      localObject = (MessageMicro)((lha)localObject).b.newInstance();
-      paramToServiceMsg = paramToServiceMsg.getWupBuffer();
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
-        localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);
+      long l = mwd.a(paramIntent);
+      QLog.w("GAudioExitMonitor", 1, "onReceive.EXIT_VIDEO_ACTION, seq[" + l + "]");
+      paramContext = lha.a(this.a).a();
+      if (paramContext != null)
+      {
+        paramContext.a(false, 202, new int[] { paramContext.a().C });
+        paramContext.b(202);
+        paramContext.d(1011);
       }
-      ((MessageMicro)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
-      a(paramLong, paramFromServiceMsg.isSuccess(), localMessageMicro, (MessageMicro)localObject, paramObject);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.w("QAVMessageHandler", 1, "onSendMsgRsp, Exception, seq[" + paramLong + "]", paramToServiceMsg);
     }
   }
-  
-  public abstract void a(long paramLong, boolean paramBoolean, T1 paramT1, T2 paramT2, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhb
  * JD-Core Version:    0.7.0.1
  */

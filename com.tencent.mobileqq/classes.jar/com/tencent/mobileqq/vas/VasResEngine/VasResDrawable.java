@@ -16,12 +16,12 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bbrz;
-import bbsa;
-import bbsc;
-import bbsd;
-import bbse;
-import bbsf;
+import bdqt;
+import bdqu;
+import bdqw;
+import bdqx;
+import bdqy;
+import bdqz;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -43,11 +43,11 @@ public class VasResDrawable
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bbsa jdField_a_of_type_Bbsa;
-  private bbsd jdField_a_of_type_Bbsd;
-  private bbse jdField_a_of_type_Bbse;
-  private bbsf jdField_a_of_type_Bbsf;
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new bbsc(this);
+  private bdqu jdField_a_of_type_Bdqu;
+  private bdqx jdField_a_of_type_Bdqx;
+  private bdqy jdField_a_of_type_Bdqy;
+  private bdqz jdField_a_of_type_Bdqz;
+  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new bdqw(this);
   AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   private Handler b;
   private int i;
@@ -55,7 +55,7 @@ public class VasResDrawable
   public VasResDrawable(AppRuntime paramAppRuntime, int paramInt)
   {
     super(paramAppRuntime.getApplication().getApplicationContext().getResources());
-    a(paramAppRuntime, paramInt, new bbsd(this));
+    a(paramAppRuntime, paramInt, new bdqx(this));
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   }
@@ -74,7 +74,7 @@ public class VasResDrawable
       {
         if (!TextUtils.isEmpty(a().jdField_a_of_type_JavaLangString)) {}
         for (paramString1 = new URL(a().jdField_a_of_type_JavaLangString, paramString2, paramString1); (paramString1 == null) || (this.jdField_a_of_type_MqqAppAppRuntime == null); paramString1 = new URL("http", paramString2, paramString1)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845272);
+          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845639);
         }
       }
       catch (MalformedURLException paramString2)
@@ -114,36 +114,36 @@ public class VasResDrawable
     return null;
   }
   
-  private void a(AppRuntime paramAppRuntime, int paramInt, bbsd parambbsd)
+  private void a(AppRuntime paramAppRuntime, int paramInt, bdqx parambdqx)
   {
     this.i = paramInt;
-    this.jdField_a_of_type_Bbsd = parambbsd;
+    this.jdField_a_of_type_Bdqx = parambdqx;
     this.jdField_a_of_type_AndroidContentContext = paramAppRuntime.getApplication().getApplicationContext();
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     this.b = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Bbsa = new bbsa(paramInt, this.jdField_a_of_type_MqqAppAppRuntime, this.b);
+    this.jdField_a_of_type_Bdqu = new bdqu(paramInt, this.jdField_a_of_type_MqqAppAppRuntime, this.b);
   }
   
-  public bbrz a()
+  public bdqt a()
   {
-    return this.jdField_a_of_type_Bbsf;
+    return this.jdField_a_of_type_Bdqz;
   }
   
-  public bbsa a()
+  public bdqu a()
   {
-    return this.jdField_a_of_type_Bbsa;
+    return this.jdField_a_of_type_Bdqu;
   }
   
-  public bbsd a()
+  public bdqx a()
   {
-    return this.jdField_a_of_type_Bbsd;
+    return this.jdField_a_of_type_Bdqx;
   }
   
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_Bbsf != null) {
-      this.jdField_a_of_type_Bbsf.c();
+    if (this.jdField_a_of_type_Bdqz != null) {
+      this.jdField_a_of_type_Bdqz.c();
     }
   }
   
@@ -152,42 +152,42 @@ public class VasResDrawable
     this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void a(bbse parambbse)
+  public void a(bdqy parambdqy)
   {
-    this.jdField_a_of_type_Bbse = parambbse;
+    this.jdField_a_of_type_Bdqy = parambdqy;
   }
   
-  public void a(bbsf parambbsf)
+  public void a(bdqz parambdqz)
   {
-    this.jdField_a_of_type_Bbsf = parambbsf;
-    if (this.jdField_a_of_type_Bbsf != null) {
-      this.jdField_a_of_type_Bbsf.b();
+    this.jdField_a_of_type_Bdqz = parambdqz;
+    if (this.jdField_a_of_type_Bdqz != null) {
+      this.jdField_a_of_type_Bdqz.b();
     }
     invalidateSelf();
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_Bbsd.jdField_a_of_type_ArrayOfOrgApacheHttpHeader != null) && (this.jdField_a_of_type_Bbsd.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length != 0))
+    if ((this.jdField_a_of_type_Bdqx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader != null) && (this.jdField_a_of_type_Bdqx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length != 0))
     {
-      Header[] arrayOfHeader = new Header[this.jdField_a_of_type_Bbsd.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length + 1];
-      System.arraycopy(this.jdField_a_of_type_Bbsd.jdField_a_of_type_ArrayOfOrgApacheHttpHeader, 0, arrayOfHeader, 0, this.jdField_a_of_type_Bbsd.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length);
-      arrayOfHeader[this.jdField_a_of_type_Bbsd.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length] = new BasicHeader(paramString1, paramString2);
-      this.jdField_a_of_type_Bbsd.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = arrayOfHeader;
+      Header[] arrayOfHeader = new Header[this.jdField_a_of_type_Bdqx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length + 1];
+      System.arraycopy(this.jdField_a_of_type_Bdqx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader, 0, arrayOfHeader, 0, this.jdField_a_of_type_Bdqx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length);
+      arrayOfHeader[this.jdField_a_of_type_Bdqx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length] = new BasicHeader(paramString1, paramString2);
+      this.jdField_a_of_type_Bdqx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = arrayOfHeader;
       return;
     }
-    this.jdField_a_of_type_Bbsd.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = new Header[] { new BasicHeader(paramString1, paramString2) };
+    this.jdField_a_of_type_Bdqx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = new Header[] { new BasicHeader(paramString1, paramString2) };
   }
   
   public void b(int paramInt)
   {
     if (a().b > 0) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getResources().getDrawable(this.jdField_a_of_type_Bbsd.b);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getResources().getDrawable(this.jdField_a_of_type_Bdqx.b);
     }
     super.a();
-    this.jdField_a_of_type_Bbsa.a(paramInt);
-    if (this.jdField_a_of_type_Bbsf != null) {
-      this.jdField_a_of_type_Bbsf.b();
+    this.jdField_a_of_type_Bdqu.a(paramInt);
+    if (this.jdField_a_of_type_Bdqz != null) {
+      this.jdField_a_of_type_Bdqz.b();
     }
   }
   
@@ -202,7 +202,7 @@ public class VasResDrawable
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(getBounds());
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
-    if (this.jdField_a_of_type_Bbsf.a()) {
+    if (this.jdField_a_of_type_Bdqz.a()) {
       super.draw(paramCanvas);
     }
   }
@@ -214,7 +214,7 @@ public class VasResDrawable
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Bbsf == null) {
+    if (this.jdField_a_of_type_Bdqz == null) {
       return false;
     }
     switch (paramMessage.what)
@@ -223,8 +223,8 @@ public class VasResDrawable
     for (;;)
     {
       return true;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bbsf.a())) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(String.valueOf(this.i), this.jdField_a_of_type_Bbsf.a());
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bdqz.a())) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(String.valueOf(this.i), this.jdField_a_of_type_Bdqz.a());
       }
       paramMessage = paramMessage.getData();
       if (paramMessage.getInt("type") == 1)
@@ -237,18 +237,18 @@ public class VasResDrawable
         this.f = k;
       }
       invalidateSelf();
-      if (this.jdField_a_of_type_Bbse != null) {
-        this.jdField_a_of_type_Bbse.a();
+      if (this.jdField_a_of_type_Bdqy != null) {
+        this.jdField_a_of_type_Bdqy.a();
       }
       return true;
-      this.jdField_a_of_type_Bbsf.a(paramMessage.arg1, (Bundle)paramMessage.obj);
-      if (this.jdField_a_of_type_Bbse != null) {
-        this.jdField_a_of_type_Bbse.b();
+      this.jdField_a_of_type_Bdqz.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      if (this.jdField_a_of_type_Bdqy != null) {
+        this.jdField_a_of_type_Bdqy.b();
       }
       return true;
-      this.jdField_a_of_type_Bbsf.b();
-      if (this.jdField_a_of_type_Bbse != null) {
-        this.jdField_a_of_type_Bbse.c();
+      this.jdField_a_of_type_Bdqz.b();
+      if (this.jdField_a_of_type_Bdqy != null) {
+        this.jdField_a_of_type_Bdqy.c();
       }
     }
   }
@@ -265,7 +265,7 @@ public class VasResDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasResDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -7,26 +7,26 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.ListAdapter;
-import baxn;
-import bfsm;
-import bfwu;
+import bcwh;
+import bhtj;
+import bhxr;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
-import vdo;
-import vdp;
-import vdq;
-import ved;
-import wdd;
+import wsg;
+import wsh;
+import wsi;
+import wsv;
+import xrv;
 
 public class StoryHomeHorizontalListView
   extends HorizontalListView
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private bfsm jdField_a_of_type_Bfsm;
-  private vdp jdField_a_of_type_Vdp;
-  private vdq jdField_a_of_type_Vdq;
-  private wdd jdField_a_of_type_Wdd;
+  private bhtj jdField_a_of_type_Bhtj;
+  private wsh jdField_a_of_type_Wsh;
+  private wsi jdField_a_of_type_Wsi;
+  private xrv jdField_a_of_type_Xrv;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   protected int b;
@@ -52,8 +52,8 @@ public class StoryHomeHorizontalListView
   private void a(Context paramContext)
   {
     this.jdField_b_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.jdField_c_of_type_Int = baxn.a(paramContext, 147.0F);
-    super.setOnItemScollEventListener(new vdo(this));
+    this.jdField_c_of_type_Int = bcwh.a(paramContext, 147.0F);
+    super.setOnItemScollEventListener(new wsg(this));
     setOverScrollMode(1);
   }
   
@@ -70,8 +70,8 @@ public class StoryHomeHorizontalListView
       } while (this.jdField_c_of_type_Boolean);
       i = getLastVisiblePosition();
       j = getAdapter().getCount();
-      ved.a("HorizontalListView", "on item scroll last:%d, count:%d", Integer.valueOf(i), Integer.valueOf(j));
-    } while ((j - i >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Wdd == null) || (!this.jdField_a_of_type_Wdd.a(false)));
+      wsv.a("HorizontalListView", "on item scroll last:%d, count:%d", Integer.valueOf(i), Integer.valueOf(j));
+    } while ((j - i >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Xrv == null) || (!this.jdField_a_of_type_Xrv.a(false)));
     this.jdField_c_of_type_Boolean = true;
   }
   
@@ -99,7 +99,7 @@ public class StoryHomeHorizontalListView
       }
       float f2 = this.jdField_a_of_type_Float;
       f3 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > baxn.a(getContext(), 5.0F))) {
+      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > bcwh.a(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
@@ -120,34 +120,34 @@ public class StoryHomeHorizontalListView
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bfwu.a("StoryHorizontal.onLayout");
+    bhxr.a("StoryHorizontal.onLayout");
     int i = this.mCurrentX;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_Vdq != null) && (i != this.mCurrentX))
+    if ((this.jdField_a_of_type_Wsi != null) && (i != this.mCurrentX))
     {
-      this.jdField_a_of_type_Vdq.a(i, this.mCurrentX);
-      ved.a("Q.qqstory.friendStory", "onLayout() %d -> %d", Integer.valueOf(i), Integer.valueOf(this.mCurrentX));
+      this.jdField_a_of_type_Wsi.a(i, this.mCurrentX);
+      wsv.a("Q.qqstory.friendStory", "onLayout() %d -> %d", Integer.valueOf(i), Integer.valueOf(this.mCurrentX));
     }
-    bfwu.a();
+    bhxr.a();
   }
   
   public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
-    if ((this.jdField_b_of_type_Boolean) && (paramInt3 > 0) && (paramInt3 > baxn.a(getContext(), 50.0F)))
+    if ((this.jdField_b_of_type_Boolean) && (paramInt3 > 0) && (paramInt3 > bcwh.a(getContext(), 50.0F)))
     {
       this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Vdp != null) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Vdp.P_();
+      if ((this.jdField_a_of_type_Wsh != null) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Wsh.X_();
       }
     }
     for (;;)
     {
       return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
-      if ((this.jdField_b_of_type_Boolean) && (paramInt3 < 0) && (paramInt3 < -baxn.a(getContext(), 50.0F)))
+      if ((this.jdField_b_of_type_Boolean) && (paramInt3 < 0) && (paramInt3 < -bcwh.a(getContext(), 50.0F)))
       {
         this.jdField_b_of_type_Boolean = false;
-        if ((this.jdField_a_of_type_Vdp != null) && (this.jdField_a_of_type_Boolean)) {
-          this.jdField_a_of_type_Vdp.Q_();
+        if ((this.jdField_a_of_type_Wsh != null) && (this.jdField_a_of_type_Boolean)) {
+          this.jdField_a_of_type_Wsh.Y_();
         }
       }
     }
@@ -174,29 +174,29 @@ public class StoryHomeHorizontalListView
     this.jdField_c_of_type_Boolean = false;
   }
   
-  public void setOnItemScollEventListener(bfsm parambfsm)
+  public void setOnItemScollEventListener(bhtj parambhtj)
   {
-    this.jdField_a_of_type_Bfsm = parambfsm;
+    this.jdField_a_of_type_Bhtj = parambhtj;
   }
   
-  public void setOnLoadMoreListener(wdd paramwdd)
+  public void setOnLoadMoreListener(xrv paramxrv)
   {
-    this.jdField_a_of_type_Wdd = paramwdd;
+    this.jdField_a_of_type_Xrv = paramxrv;
   }
   
-  public void setOnOverScrollRightListener(vdp paramvdp)
+  public void setOnOverScrollRightListener(wsh paramwsh)
   {
-    this.jdField_a_of_type_Vdp = paramvdp;
+    this.jdField_a_of_type_Wsh = paramwsh;
   }
   
-  public void setOnScrollChangeListener(vdq paramvdq)
+  public void setOnScrollChangeListener(wsi paramwsi)
   {
-    this.jdField_a_of_type_Vdq = paramvdq;
+    this.jdField_a_of_type_Wsi = paramwsi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

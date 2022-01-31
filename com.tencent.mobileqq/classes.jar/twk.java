@@ -1,46 +1,22 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
 
 public class twk
-  extends twm
+  implements ydr<tri>
 {
-  public ErrorMessage a;
+  public twk(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
   
-  public twk(twl paramtwl, @Nullable ErrorMessage paramErrorMessage)
+  public void a(yeb paramyeb, tri paramtri)
   {
-    super(paramtwl);
-    if (paramErrorMessage == null) {}
-    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
+    if ((paramyeb.d()) && (QCirclePersonalDetailFragment.a(this.a) != null))
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      return;
+      QCirclePersonalDetailFragment.a(this.a).a(QCirclePersonalDetailFragment.a(this.a), false);
+      QCirclePersonalDetailFragment.a(this.a).b(QCirclePersonalDetailFragment.a(this.a), false);
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
-  }
-  
-  public boolean b()
-  {
-    return (!a()) && (!c());
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
-  }
-  
-  public String toString()
-  {
-    return "fg{g=" + this.jdField_a_of_type_Twl + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twk
  * JD-Core Version:    0.7.0.1
  */

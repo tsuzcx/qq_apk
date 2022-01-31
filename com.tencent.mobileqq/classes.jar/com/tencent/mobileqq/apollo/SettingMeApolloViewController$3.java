@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import ajrs;
+import aljf;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
@@ -33,12 +33,12 @@ class SettingMeApolloViewController$3
       this.this$0.b.b();
       return;
     }
-    this.this$0.b.setGifData(30, null, this.a, ajrs.a(this.a), true);
+    this.this$0.b.setGifData(30, null, this.a, aljf.a(this.a), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.SettingMeApolloViewController.3
  * JD-Core Version:    0.7.0.1
  */

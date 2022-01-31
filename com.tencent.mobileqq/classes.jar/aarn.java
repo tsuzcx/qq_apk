@@ -1,64 +1,93 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.open.adapter.OpenAppClient;
-import mqq.manager.TicketManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aarn
-  implements View.OnClickListener
+public class aarn
+  extends aark
 {
-  aarn(aarf paramaarf, int paramInt, abjf paramabjf, String paramString) {}
+  private ArrayList<String> a;
   
-  public void onClick(View paramView)
+  public aarn(JSONObject paramJSONObject)
   {
-    if ((this.jdField_a_of_type_Int == -3000) && ((this.jdField_a_of_type_Abjf.a.istroop == 1001) || (this.jdField_a_of_type_Abjf.a.istroop == 10002)))
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    a(paramJSONObject);
+  }
+  
+  public String a()
+  {
+    String str1 = super.a();
+    try
     {
-      paramView = bbmx.a(this.jdField_a_of_type_JavaLangString);
-      paramView = bbex.a(this.jdField_a_of_type_Aarf.a.app, this.jdField_a_of_type_Aarf.a, paramView);
-      if (paramView != null) {
-        paramView.c();
+      JSONObject localJSONObject = new JSONObject(str1);
+      localJSONObject.put("patchName", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("patchUrl", this.b);
+      localJSONObject.put("patchSize", this.jdField_a_of_type_Int);
+      StringBuilder localStringBuilder = new StringBuilder("");
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          String str3 = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str3)) {
+            localStringBuilder.append(str3).append(";");
+          }
+        }
       }
-      return;
+      localJSONException.put("classIdList", localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_Int == -3000) || (this.jdField_a_of_type_Int == -3004) || (this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003))
+    catch (JSONException localJSONException)
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_Aarf.a, this.jdField_a_of_type_Aarf.a.app, this.jdField_a_of_type_Abjf.a.action, this.jdField_a_of_type_Abjf.a.shareAppID, this.jdField_a_of_type_Abjf.a.msgtype);
-      return;
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik writeToJsonString", localJSONException);
+      return str1;
     }
-    if (this.jdField_a_of_type_Int == -3005)
+    String str2 = localJSONException.toString();
+    return str2;
+  }
+  
+  public ArrayList<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  protected void a(JSONObject paramJSONObject)
+  {
+    int i = 0;
+    super.a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
+    paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
+    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_Aarf.a, this.jdField_a_of_type_Aarf.a.app, this.jdField_a_of_type_Abjf.a.action, this.jdField_a_of_type_Abjf.a.shareAppID, this.jdField_a_of_type_Abjf.a.msgtype);
-      return;
+      int j = paramJSONObject.length;
+      while (i < j)
+      {
+        CharSequence localCharSequence = paramJSONObject[i];
+        if (!TextUtils.isEmpty(localCharSequence)) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(localCharSequence);
+        }
+        i += 1;
+      }
     }
-    if (this.jdField_a_of_type_Int == -3001)
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
     {
-      paramView = new Bundle();
-      paramView.putString("schemaurl", this.jdField_a_of_type_JavaLangString);
-      String str = this.jdField_a_of_type_Aarf.a.app.getCurrentAccountUin();
-      paramView.putString("uin", str);
-      paramView.putString("vkey", ((TicketManager)this.jdField_a_of_type_Aarf.a.app.getManager(2)).getSkey(str));
-      OpenAppClient.a(this.jdField_a_of_type_Aarf.a, paramView);
-      return;
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik isValidConfig classIdList is empty");
+      return false;
     }
-    if (advs.a(this.jdField_a_of_type_Abjf.a))
-    {
-      AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_Abjf.a, this.jdField_a_of_type_Aarf.a.a, xpu.a(paramView));
-      return;
-    }
-    if ((this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003)) {
-      this.jdField_a_of_type_Abjf.a.isInMixedMsg = true;
-    }
-    advs.a(this.jdField_a_of_type_Aarf.a.app, paramView.getContext(), paramView, this.jdField_a_of_type_Abjf.a, this.jdField_a_of_type_Aarf.a.a, false, true, true, null);
+    return super.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aarn
  * JD-Core Version:    0.7.0.1
  */

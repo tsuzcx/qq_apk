@@ -26,7 +26,7 @@ public class WXVadData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.wx.voice.vad.WXVadData
  * JD-Core Version:    0.7.0.1
  */

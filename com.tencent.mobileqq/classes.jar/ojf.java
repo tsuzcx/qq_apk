@@ -1,19 +1,7 @@
-class ojf
-  extends ojn
-{
-  ojf(oil paramoil, int paramInt)
-  {
-    super(paramoil, null);
-  }
-  
-  void a(ojq paramojq)
-  {
-    paramojq.onCommentStateError(this.jdField_a_of_type_Int);
-  }
-}
+class ojf {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ojf
  * JD-Core Version:    0.7.0.1
  */

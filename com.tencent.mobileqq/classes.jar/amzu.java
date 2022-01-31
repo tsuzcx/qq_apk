@@ -1,42 +1,24 @@
+import android.graphics.Rect;
+
 public class amzu
 {
-  private String jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/qzone/visitor/";
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public float a;
+  public int a;
+  public Rect a;
   
-  public String a()
+  public amzu()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
   }
   
-  public void a(String paramString)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    return String.format("AIRect[%d,%.2f,%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_AndroidGraphicsRect });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzu
  * JD-Core Version:    0.7.0.1
  */

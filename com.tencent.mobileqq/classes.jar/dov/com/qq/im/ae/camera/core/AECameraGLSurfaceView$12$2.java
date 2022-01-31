@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.app.Activity;
-import avtl;
-import bijt;
+import axlk;
+import bkob;
 
 public class AECameraGLSurfaceView$12$2
   implements Runnable
@@ -11,12 +11,12 @@ public class AECameraGLSurfaceView$12$2
   
   public void run()
   {
-    new avtl((Activity)this.a.this$0.getContext(), new bijt(this)).a();
+    new axlk((Activity)this.a.this$0.getContext(), new bkob(this)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.12.2
  * JD-Core Version:    0.7.0.1
  */

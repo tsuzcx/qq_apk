@@ -1,26 +1,23 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.widget.QQViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
-class afxq
-  extends ViewPager.SimpleOnPageChangeListener
+public class afxq
+  implements View.OnClickListener
 {
-  afxq(afxp paramafxp) {}
+  public afxq(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1) {
-      this.a.b = this.a.a.getCurrentItem();
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    afxp.a(this.a, paramInt);
+    paramView = ((agot)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
+    ((agot)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afxq
  * JD-Core Version:    0.7.0.1
  */

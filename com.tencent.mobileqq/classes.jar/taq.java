@@ -1,41 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.os.Bundle;
 
 public class taq
-  implements View.OnTouchListener
+  implements alkr
 {
-  public taq(StoryInputBarView paramStoryInputBarView) {}
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (paramObject != null)
     {
-      StoryInputBarView.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Uor.jdField_a_of_type_Boolean);
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label89;
-      }
+      a(paramBoolean, (Bundle)paramObject);
+      return;
     }
-    label89:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.jdField_a_of_type_Boolean = bool;
-      return false;
-    }
-    label94:
-    this.a.a();
-    return false;
+    a(paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     taq
  * JD-Core Version:    0.7.0.1
  */

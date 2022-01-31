@@ -1,29 +1,36 @@
-import android.os.Handler;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class atkr
-  implements atla
+final class atkr
+  implements bapw
 {
-  atkr(atko paramatko) {}
-  
-  public void a(atkz paramatkz)
+  public void a(baqv parambaqv, baqw parambaqw)
   {
-    if (this.a.jdField_a_of_type_Atkx != null) {
-      this.a.jdField_a_of_type_Atkx.a();
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-    paramatkz = atko.a(this.a).a;
-    if (this.a.c()) {}
-    for (int i = 1;; i = 2)
+    if ((parambaqv == null) || (parambaqw == null)) {}
+    do
     {
-      atiy.a(paramatkz, i);
-      return;
-    }
+      do
+      {
+        return;
+      } while (!(parambaqv instanceof baps));
+      parambaqv = (baps)parambaqv;
+      parambaqv.jdField_a_of_type_Long += parambaqw.c;
+      parambaqw.c = 0L;
+      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
+      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
+      if (parambaqw.contains("range="))
+      {
+        String str = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
+        parambaqv.jdField_a_of_type_JavaLangString = (str + "range=" + parambaqv.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ListenTogether.downloader", 2, "IBreakDownFix, " + parambaqw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkr
  * JD-Core Version:    0.7.0.1
  */

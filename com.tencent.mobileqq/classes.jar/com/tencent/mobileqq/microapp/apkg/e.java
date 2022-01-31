@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import ahbr;
+import aivw;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.mobileqq.microapp.c.c;
 import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
 import java.io.File;
 
 final class e
-  implements ahbr
+  implements aivw
 {
   e(d paramd, String paramString) {}
   
@@ -26,7 +26,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.e
  * JD-Core Version:    0.7.0.1
  */

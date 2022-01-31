@@ -2,19 +2,19 @@ package com.tencent.biz.qqstory.database;
 
 import android.os.Parcel;
 import android.text.TextUtils;
-import auko;
-import aulz;
-import aumc;
+import awbv;
+import awdg;
+import awdj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class DiscoverBannerVideoEntry
-  extends auko
+  extends awbv
 {
   public static final String TAG = "Q.qqstory.discover.DiscoverBannerVideoEntry";
-  @aumc
+  @awdj
   public String bannerId;
-  @aulz
+  @awdg
   public List<DiscoverBannerVideoEntry.BannerInfo> bannerInfoList;
   public byte[] bannerInfoListByte;
   public String nextCookie;
@@ -158,7 +158,7 @@ public class DiscoverBannerVideoEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry
  * JD-Core Version:    0.7.0.1
  */

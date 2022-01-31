@@ -1,83 +1,58 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.8.1;
+import com.tencent.mobileqq.ar.ArConfigService.8.2;
+import com.tencent.mobileqq.ar.ArConfigService.8.3;
 import com.tencent.qphone.base.util.QLog;
 
 public class amsj
-  extends ampa<amsi>
+  implements amzd
 {
-  @NonNull
-  public static amsi a()
+  public amsj(ArConfigService paramArConfigService) {}
+  
+  public void a()
   {
-    amsi localamsi2 = (amsi)ampl.a().a(455);
-    amsi localamsi1 = localamsi2;
-    if (localamsi2 == null) {
-      localamsi1 = new amsi();
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "mARFeatureDownloadCallBack");
     }
-    return localamsi1;
   }
   
-  public int a()
+  public void a(long paramLong1, long paramLong2)
   {
-    return 455;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    ArConfigService.e(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.8.1(this, i));
+    }
   }
   
-  @NonNull
-  public amsi a(int paramInt)
+  public void a(boolean paramBoolean, amze paramamze)
   {
-    return new amsi();
-  }
-  
-  @Nullable
-  public amsi a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack  result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
     {
-      amsi localamsi = amsi.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      ArConfigService.f(this.a, true);
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.8.2(this));
       }
-      return localamsi;
     }
-    return new amsi();
-  }
-  
-  public Class<amsi> a()
-  {
-    return amsi.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    while (ArConfigService.e(this.a)) {
+      return;
     }
+    ArConfigService.a(this.a).post(new ArConfigService.8.3(this));
+    ArConfigService.a(this.a, true);
   }
   
-  public void a(amsi paramamsi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramamsi);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsj
  * JD-Core Version:    0.7.0.1
  */

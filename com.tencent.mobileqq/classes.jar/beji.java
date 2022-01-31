@@ -1,35 +1,46 @@
-import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.List;
-import java.util.Map;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-class beji
-  implements DownloaderProxy.DownloadListener
+public class beji
+  implements View.OnTouchListener
 {
-  beji(bejg parambejg, MiniAppInfo paramMiniAppInfo, String paramString, bejj parambejj) {}
+  public beji(ClearableEditText paramClearableEditText) {}
   
-  public void onDownloadFailed(int paramInt, String paramString) {}
-  
-  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
-  
-  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!bejz.a(paramString, bejg.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, false), this.jdField_a_of_type_JavaLangString)) {
-      if (this.jdField_a_of_type_Bejj != null) {
-        this.jdField_a_of_type_Bejj.a(null, -1, "解包失败");
+    int i = 1;
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    label107:
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
+        for (;;)
+        {
+          if (i == 0) {
+            break label107;
+          }
+          this.a.setText("");
+          this.a.setClearButtonVisible(false);
+          if (this.a.jdField_a_of_type_Bejl == null) {
+            break;
+          }
+          this.a.jdField_a_of_type_Bejl.m();
+          return false;
+          i = 0;
+        }
       }
     }
-    while (this.jdField_a_of_type_Bejj == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bejj.a((bekp)this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.apkgInfo, 0, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     beji
  * JD-Core Version:    0.7.0.1
  */

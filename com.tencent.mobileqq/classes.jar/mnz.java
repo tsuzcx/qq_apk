@@ -1,35 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.av.ui.VideoLayerUIBase;
 import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
-class mnz
-  extends Handler
+public class mnz
+  implements Observer
 {
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<mny> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<VideoLayerUIBase> a;
   
-  mnz(String paramString, mny parammny)
+  public mnz(VideoLayerUIBase paramVideoLayerUIBase)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammny);
+    this.a = new WeakReference(paramVideoLayerUIBase);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    mny localmny = (mny)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localmny != null) {}
-    switch (paramMessage.what)
-    {
-    default: 
+    VideoLayerUIBase localVideoLayerUIBase = (VideoLayerUIBase)this.a.get();
+    if (localVideoLayerUIBase == null) {
       return;
     }
-    mny.a(localmny);
-    lcg.c(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
+    VideoLayerUIBase.a(localVideoLayerUIBase, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mnz
  * JD-Core Version:    0.7.0.1
  */

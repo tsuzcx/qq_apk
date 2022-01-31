@@ -1,25 +1,20 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.VideoControlUI;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class mjj
-  implements View.OnTouchListener
 {
-  public mjj(VideoControlUI paramVideoControlUI) {}
+  public long a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      return this.a.a.onTouchEvent(paramMotionEvent);
-    }
-    return false;
-  }
+  mjj(mji parammji) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjj
  * JD-Core Version:    0.7.0.1
  */

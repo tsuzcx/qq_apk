@@ -1,38 +1,34 @@
 public class akzy
+  implements Comparable
 {
-  private akzz jdField_a_of_type_Akzz = new akzz();
-  private alaa jdField_a_of_type_Alaa = new alaa();
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
   
-  public akzy()
+  public int compareTo(Object paramObject)
   {
-    this.jdField_a_of_type_Akzz.a();
-    this.jdField_a_of_type_Alaa.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Akzz.c();
-    this.jdField_a_of_type_Alaa.c();
-  }
-  
-  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    if (paramInt1 == 36197)
-    {
-      this.jdField_a_of_type_Alaa.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
-      return;
+    paramObject = (akzy)paramObject;
+    if (this.d < paramObject.d) {
+      return 1;
     }
-    if (paramInt1 == 3553)
-    {
-      this.jdField_a_of_type_Akzz.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
-      return;
+    if (this.d > paramObject.d) {
+      return -1;
     }
-    throw new RuntimeException("textureType must be GLES11Ext.GL_TEXTURE_EXTERNAL_OES or GLES20.GL_TEXTURE_2D.");
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzy
  * JD-Core Version:    0.7.0.1
  */

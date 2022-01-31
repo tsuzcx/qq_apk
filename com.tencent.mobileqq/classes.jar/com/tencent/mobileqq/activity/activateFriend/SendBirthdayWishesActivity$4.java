@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import ajya;
+import alpo;
 import android.widget.ImageButton;
 
 class SendBirthdayWishesActivity$4
@@ -12,17 +12,17 @@ class SendBirthdayWishesActivity$4
   {
     if (this.a == 2)
     {
-      this.this$0.a.setImageResource(2130837922);
-      this.this$0.a.setContentDescription(ajya.a(2131713791));
+      this.this$0.a.setImageResource(2130837978);
+      this.this$0.a.setContentDescription(alpo.a(2131714163));
       return;
     }
-    this.this$0.a.setImageResource(2130846988);
-    this.this$0.a.setContentDescription(ajya.a(2131713792));
+    this.this$0.a.setImageResource(2130847355);
+    this.this$0.a.setContentDescription(alpo.a(2131714164));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity.4
  * JD-Core Version:    0.7.0.1
  */

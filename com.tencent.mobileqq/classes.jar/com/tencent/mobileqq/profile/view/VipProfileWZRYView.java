@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.view;
 
 import SummaryCardTaf.summaryCardWzryInfo;
-import ajsd;
+import aljq;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
@@ -19,18 +19,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import ausw;
-import auuy;
-import auvf;
-import auwm;
-import auwn;
-import auwo;
-import auwp;
-import avau;
-import avav;
-import baxn;
-import bbac;
-import bfnk;
+import awki;
+import awmk;
+import awmr;
+import awny;
+import awnz;
+import awoa;
+import awob;
+import awsh;
+import awsi;
+import bcwh;
+import bcyw;
+import bhoe;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -47,7 +47,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import naj;
+import ndd;
 
 public class VipProfileWZRYView
   extends ProfileHeaderView
@@ -72,14 +72,14 @@ public class VipProfileWZRYView
   
   static
   {
-    jdField_c_of_type_JavaLangString = ajsd.cm + File.separator + "wzryTemplate";
+    jdField_c_of_type_JavaLangString = aljq.cn + File.separator + "wzryTemplate";
   }
   
-  public VipProfileWZRYView(BaseActivity paramBaseActivity, auuy paramauuy)
+  public VipProfileWZRYView(BaseActivity paramBaseActivity, awmk paramawmk)
   {
-    super(paramBaseActivity, paramauuy);
-    d(paramauuy);
-    a(paramauuy);
+    super(paramBaseActivity, paramawmk);
+    d(paramawmk);
+    a(paramawmk);
   }
   
   int a(TextView paramTextView, int paramInt, String paramString, String[] paramArrayOfString)
@@ -199,11 +199,11 @@ public class VipProfileWZRYView
       }
       for (;;)
       {
-        if (auvf.b != null) {
-          localSpannableStringBuilder.setSpan(new VipProfileWZRYView.CustomTypefaceSpan("", auvf.b), k, j, 17);
+        if (awmr.b != null) {
+          localSpannableStringBuilder.setSpan(new VipProfileWZRYView.CustomTypefaceSpan("", awmr.b), k, j, 17);
         }
         localSpannableStringBuilder.setSpan(new TextAppearanceSpan(null, 3, paramInt, paramColorStateList, null), k, j, 17);
-        localSpannableStringBuilder.setSpan(new avav(paramInt, -2.0F), k, j, 17);
+        localSpannableStringBuilder.setSpan(new awsi(paramInt, -2.0F), k, j, 17);
         i += 1;
         break label69;
         str = paramString;
@@ -232,47 +232,47 @@ public class VipProfileWZRYView
     ApngImage.playByTag(7);
   }
   
-  public void a(auuy paramauuy)
+  public void a(awmk paramawmk)
   {
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561636, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379539));
-    auvf.a(this.jdField_a_of_type_AndroidWidgetImageView, "apngDrawable", paramauuy.jdField_a_of_type_Auvf, "wzryLogo");
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561827, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380282));
+    awmr.a(this.jdField_a_of_type_AndroidWidgetImageView, "apngDrawable", paramawmk.jdField_a_of_type_Awmr, "wzryLogo");
     ApngImage.playByTag(7);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379540));
-    auvf.a(this.jdField_b_of_type_AndroidWidgetImageView, "background", paramauuy.jdField_a_of_type_Auvf, "wzryLogoBg");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView = ((VoteView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379546));
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout = ((HeartLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379530));
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = ((AvatarLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379534));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379532));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView = ((ProfileNameView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379536));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379538));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379533);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout = ((ShimmerLinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379528));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379525));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379529));
-    auvf.a(this.jdField_a_of_type_AndroidWidgetHorizontalScrollView, "background", paramauuy.jdField_a_of_type_Auvf, "wzryGameInfoBackground");
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380283));
+    awmr.a(this.jdField_b_of_type_AndroidWidgetImageView, "background", paramawmk.jdField_a_of_type_Awmr, "wzryLogoBg");
+    this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView = ((VoteView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380289));
+    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout = ((HeartLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380273));
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = ((AvatarLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380277));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380275));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView = ((ProfileNameView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380279));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380281));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380276);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout = ((ShimmerLinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380271));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380268));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380272));
+    awmr.a(this.jdField_a_of_type_AndroidWidgetHorizontalScrollView, "background", paramawmk.jdField_a_of_type_Awmr, "wzryGameInfoBackground");
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setVisibility(0);
-    ausw localausw = new ausw(1, null);
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setTag(localausw);
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setOnClickListener(paramauuy.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
+    awki localawki = new awki(1, null);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setTag(localawki);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setOnClickListener(paramawmk.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (paramawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
     {
-      localObject = getContext().getString(2131691185);
+      localObject = getContext().getString(2131691238);
       this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setContentDescription((CharSequence)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.a(0, this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.findViewById(2131363079), false);
+      this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.a(0, this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.findViewById(2131363115), false);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_face", this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout);
-      super.a(paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+      super.a(paramawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(paramauuy.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_c_of_type_AndroidWidgetImageView.setTag(localausw);
+      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(paramawmk.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.jdField_c_of_type_AndroidWidgetImageView.setTag(localawki);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_avatar_pendant", this.jdField_c_of_type_AndroidWidgetImageView);
-      super.b(paramauuy, true);
+      super.b(paramawmk, true);
       this.jdField_d_of_type_Float = this.jdField_c_of_type_Float;
-      int i = getResources().getDimensionPixelSize(2131296940);
-      int j = bbac.a(getResources());
+      int i = getResources().getDimensionPixelSize(2131296956);
+      int j = bcyw.a(getResources());
       localObject = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).height = ((int)this.jdField_c_of_type_Float - bbac.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 160) - i - j);
+      ((RelativeLayout.LayoutParams)localObject).height = ((int)this.jdField_c_of_type_Float - bcyw.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 160) - i - j);
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         ((RelativeLayout.LayoutParams)localObject).height += ImmersiveUtils.getStatusBarHeight(getContext());
       }
@@ -286,39 +286,39 @@ public class VipProfileWZRYView
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setClickable(true);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
-      super.f(paramauuy);
+      super.f(paramawmk);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_sex_age_area", this.jdField_a_of_type_AndroidWidgetTextView);
-      super.b(paramauuy);
+      super.b(paramawmk);
       this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.setEnabled(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView.setHeartLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView);
-      super.e(paramauuy);
-      m(paramauuy);
-      super.a(paramauuy);
-      super.g(paramauuy);
+      super.e(paramawmk);
+      m(paramawmk);
+      super.a(paramawmk);
+      super.g(paramawmk);
       d();
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {
         break label784;
       }
     }
     label784:
     for (Object localObject = "PV_owner";; localObject = "PV_visitor")
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_gameking", (String)localObject, "0", 1, 0, 0, naj.a(), String.valueOf(paramauuy.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId), String.valueOf(paramauuy.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId));
+      VasWebviewUtil.reportCommercialDrainage("", "card_gameking", (String)localObject, "0", 1, 0, 0, ndd.a(), String.valueOf(paramawmk.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId), String.valueOf(paramawmk.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId));
       return;
-      localObject = getContext().getString(2131691184);
+      localObject = getContext().getString(2131691237);
       break;
     }
   }
   
-  public void a(auuy paramauuy, boolean paramBoolean)
+  public void a(awmk paramawmk, boolean paramBoolean)
   {
-    super.e(paramauuy);
-    super.f(paramauuy);
-    super.b(paramauuy);
-    super.c(paramauuy);
-    super.b(paramauuy, false);
-    m(paramauuy);
+    super.e(paramawmk);
+    super.f(paramawmk);
+    super.b(paramawmk);
+    super.c(paramawmk);
+    super.b(paramawmk, false);
+    m(paramawmk);
   }
   
   public void b()
@@ -338,33 +338,33 @@ public class VipProfileWZRYView
   
   void d()
   {
-    this.jdField_a_of_type_Bfnk.postDelayed(new VipProfileWZRYView.2(this), 1000L);
+    this.jdField_a_of_type_Bhoe.postDelayed(new VipProfileWZRYView.2(this), 1000L);
   }
   
-  public void d(auuy paramauuy) {}
+  public void d(awmk paramawmk) {}
   
-  public void m(auuy paramauuy)
+  public void m(awmk paramawmk)
   {
     this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout.b();
     this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout.removeAllViews();
-    Object localObject1 = paramauuy.jdField_a_of_type_ComTencentMobileqqDataCard.getWzryHonorInfo();
+    Object localObject1 = paramawmk.jdField_a_of_type_ComTencentMobileqqDataCard.getWzryHonorInfo();
     Object localObject2 = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
     if (((List)localObject1).isEmpty())
     {
       this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setVisibility(8);
-      ((RelativeLayout.LayoutParams)localObject2).height = (this.g - bbac.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 67));
+      ((RelativeLayout.LayoutParams)localObject2).height = (this.g - bcyw.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 67));
       return;
     }
     this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setVisibility(0);
-    ((RelativeLayout.LayoutParams)localObject2).height = (this.g - bbac.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 132));
+    ((RelativeLayout.LayoutParams)localObject2).height = (this.g - bcyw.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 132));
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, 0, baxn.a(getContext(), 5.0F), 0);
-    auwm localauwm = auwm.jdField_a_of_type_Auwm;
-    int j = getResources().getDimensionPixelSize(2131298968);
-    int k = getResources().getDimensionPixelSize(2131298970);
-    ColorStateList localColorStateList1 = getResources().getColorStateList(2131167154);
-    ColorStateList localColorStateList2 = getResources().getColorStateList(2131167156);
-    if (localauwm != null)
+    localLayoutParams.setMargins(0, 0, bcwh.a(getContext(), 5.0F), 0);
+    awny localawny = awny.jdField_a_of_type_Awny;
+    int j = getResources().getDimensionPixelSize(2131299023);
+    int k = getResources().getDimensionPixelSize(2131299025);
+    ColorStateList localColorStateList1 = getResources().getColorStateList(2131167212);
+    ColorStateList localColorStateList2 = getResources().getColorStateList(2131167214);
+    if (localawny != null)
     {
       Iterator localIterator = ((List)localObject1).iterator();
       while (localIterator.hasNext())
@@ -377,37 +377,37 @@ public class VipProfileWZRYView
         if (!TextUtils.isEmpty(((summaryCardWzryInfo)localObject2).strRecord)) {
           localObject1 = ((summaryCardWzryInfo)localObject2).strRecord.split("_");
         }
-        auwn localauwn = (auwn)localauwm.jdField_a_of_type_AndroidUtilSparseArray.get(((summaryCardWzryInfo)localObject2).honorId);
-        if (localauwn != null)
+        awnz localawnz = (awnz)localawny.jdField_a_of_type_AndroidUtilSparseArray.get(((summaryCardWzryInfo)localObject2).honorId);
+        if (localawnz != null)
         {
-          View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561637, null);
-          ImageView localImageView = (ImageView)localView.findViewById(2131379542);
-          TextView localTextView1 = (TextView)localView.findViewById(2131379544);
-          TextView localTextView2 = (TextView)localView.findViewById(2131379543);
-          if (auvf.a != null)
+          View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561828, null);
+          ImageView localImageView = (ImageView)localView.findViewById(2131380285);
+          TextView localTextView1 = (TextView)localView.findViewById(2131380287);
+          TextView localTextView2 = (TextView)localView.findViewById(2131380286);
+          if (awmr.a != null)
           {
-            localTextView1.setTypeface(auvf.a);
-            localTextView2.setTypeface(auvf.a);
+            localTextView1.setTypeface(awmr.a);
+            localTextView2.setTypeface(awmr.a);
           }
           int i;
           label407:
           label418:
           String str;
-          if (localauwn.jdField_b_of_type_Int == 2)
+          if (localawnz.jdField_b_of_type_Int == 2)
           {
             i = 1;
             if (i == 0) {
               break label532;
             }
-            localObject2 = localauwn.jdField_b_of_type_JavaLangString;
+            localObject2 = localawnz.jdField_b_of_type_JavaLangString;
             if (i == 0) {
               break label542;
             }
-            str = localauwn.jdField_a_of_type_JavaLangString;
+            str = localawnz.jdField_a_of_type_JavaLangString;
             label429:
             localTextView1.setText(a((String)localObject2, (String[])localObject1, a(localTextView1, k, (String)localObject2, (String[])localObject1), 0.0F, localColorStateList2));
             localTextView2.setText(a(str, (String[])localObject1, j, localTextView2.getTextSize(), localColorStateList1));
-            if ((localauwn.jdField_a_of_type_Auwo != null) && (!TextUtils.isEmpty(localauwn.jdField_a_of_type_Auwo.jdField_a_of_type_JavaLangString))) {
+            if ((localawnz.jdField_a_of_type_Awoa != null) && (!TextUtils.isEmpty(localawnz.jdField_a_of_type_Awoa.jdField_a_of_type_JavaLangString))) {
               break label552;
             }
             localImageView.setVisibility(8);
@@ -420,35 +420,35 @@ public class VipProfileWZRYView
             i = 0;
             break label407;
             label532:
-            localObject2 = localauwn.jdField_a_of_type_JavaLangString;
+            localObject2 = localawnz.jdField_a_of_type_JavaLangString;
             break label418;
             label542:
-            str = localauwn.jdField_b_of_type_JavaLangString;
+            str = localawnz.jdField_b_of_type_JavaLangString;
             break label429;
             label552:
             localImageView.setVisibility(0);
             localTextView1.setVisibility(8);
-            localObject2 = localauwn.jdField_a_of_type_Auwo.jdField_a_of_type_JavaLangString;
+            localObject2 = localawnz.jdField_a_of_type_Awoa.jdField_a_of_type_JavaLangString;
             localObject1 = localObject2;
             if (((String)localObject2).contains("/")) {
               localObject1 = ((String)localObject2).substring(((String)localObject2).lastIndexOf("/"));
             }
-            localObject1 = auwp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()) + (String)localObject1;
-            if (paramauuy.jdField_a_of_type_Auvf != null) {
-              localImageView.setImageDrawable(paramauuy.jdField_a_of_type_Auvf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, true, true));
+            localObject1 = awob.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()) + (String)localObject1;
+            if (paramawmk.jdField_a_of_type_Awmr != null) {
+              localImageView.setImageDrawable(paramawmk.jdField_a_of_type_Awmr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, true, true));
             }
           }
         }
       }
     }
-    if ((paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) || (paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
+    if ((paramawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) || (paramawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
     {
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-      auvf.a(this.jdField_d_of_type_AndroidWidgetImageView, "background", paramauuy.jdField_a_of_type_Auvf, "addIcon");
-      this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new avau(this, paramauuy));
+      awmr.a(this.jdField_d_of_type_AndroidWidgetImageView, "background", paramawmk.jdField_a_of_type_Awmr, "addIcon");
+      this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new awsh(this, paramawmk));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout.a == null) {
-      auvf.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout, "shimmer_mask", paramauuy.jdField_a_of_type_Auvf, "wzryShimmer");
+      awmr.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout, "shimmer_mask", paramawmk.jdField_a_of_type_Awmr, "wzryShimmer");
     }
     this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout.a();
   }
@@ -469,7 +469,7 @@ public class VipProfileWZRYView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VipProfileWZRYView
  * JD-Core Version:    0.7.0.1
  */

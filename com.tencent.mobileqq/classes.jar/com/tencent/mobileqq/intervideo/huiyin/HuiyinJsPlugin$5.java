@@ -207,23 +207,23 @@ public class HuiyinJsPlugin$5
     //   417: invokevirtual 271	com/tencent/mobileqq/intervideo/huiyin/HuiyinProto$LoginCheckRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   420: pop
     //   421: aload_0
-    //   422: getfield 273	com/tencent/mobileqq/intervideo/huiyin/HuiyinJsPlugin$5:this$0	Larhd;
+    //   422: getfield 273	com/tencent/mobileqq/intervideo/huiyin/HuiyinJsPlugin$5:this$0	Lasxr;
     //   425: aload_3
     //   426: getfield 276	com/tencent/mobileqq/intervideo/huiyin/HuiyinProto$LoginCheckRsp:uid	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   429: invokevirtual 278	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   432: putfield 283	arhd:jdField_a_of_type_Long	J
+    //   432: putfield 283	asxr:jdField_a_of_type_Long	J
     //   435: aload_0
-    //   436: getfield 273	com/tencent/mobileqq/intervideo/huiyin/HuiyinJsPlugin$5:this$0	Larhd;
+    //   436: getfield 273	com/tencent/mobileqq/intervideo/huiyin/HuiyinJsPlugin$5:this$0	Lasxr;
     //   439: aload_3
     //   440: getfield 286	com/tencent/mobileqq/intervideo/huiyin/HuiyinProto$LoginCheckRsp:a2_key	Lcom/tencent/mobileqq/pb/PBStringField;
     //   443: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   446: putfield 289	arhd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   446: putfield 289	asxr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   449: aload_0
-    //   450: getfield 273	com/tencent/mobileqq/intervideo/huiyin/HuiyinJsPlugin$5:this$0	Larhd;
+    //   450: getfield 273	com/tencent/mobileqq/intervideo/huiyin/HuiyinJsPlugin$5:this$0	Lasxr;
     //   453: aload_3
     //   454: getfield 292	com/tencent/mobileqq/intervideo/huiyin/HuiyinProto$LoginCheckRsp:user_name	Lcom/tencent/mobileqq/pb/PBStringField;
     //   457: invokevirtual 288	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   460: putfield 293	arhd:c	Ljava/lang/String;
+    //   460: putfield 293	asxr:c	Ljava/lang/String;
     //   463: ldc_w 295
     //   466: new 135	java/lang/StringBuilder
     //   469: dup
@@ -231,8 +231,8 @@ public class HuiyinJsPlugin$5
     //   473: ldc_w 297
     //   476: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   479: aload_0
-    //   480: getfield 273	com/tencent/mobileqq/intervideo/huiyin/HuiyinJsPlugin$5:this$0	Larhd;
-    //   483: getfield 283	arhd:jdField_a_of_type_Long	J
+    //   480: getfield 273	com/tencent/mobileqq/intervideo/huiyin/HuiyinJsPlugin$5:this$0	Lasxr;
+    //   483: getfield 283	asxr:jdField_a_of_type_Long	J
     //   486: invokevirtual 300	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   489: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   492: invokestatic 306	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abrx;
+import adjf;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -33,7 +33,7 @@ public class PreloadWebService
       if (this.a == null)
       {
         this.a = new CustomWebView(getBaseContext());
-        this.a.setWebViewClient(new abrx(this));
+        this.a.setWebViewClient(new adjf(this));
         WebSettings localWebSettings = this.a.getSettings();
         localWebSettings.setJavaScriptEnabled(true);
         localWebSettings.setCacheMode(-1);
@@ -63,7 +63,7 @@ public class PreloadWebService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PreloadWebService
  * JD-Core Version:    0.7.0.1
  */

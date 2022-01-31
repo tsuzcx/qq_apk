@@ -1,28 +1,20 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 
-class awqu
+public class awqu
   implements View.OnClickListener
 {
-  awqu(awqs paramawqs, awoi paramawoi) {}
+  public awqu(ProfileHeaderView paramProfileHeaderView, awmk paramawmk) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getContext();
-    paramView = this.jdField_a_of_type_Awoi.b();
-    if ((localObject instanceof BaseActivity))
-    {
-      awwa.a("all_result", "clk_result_join", new String[0]);
-      localObject = (BaseActivity)localObject;
-      awqs.a(this.jdField_a_of_type_Awqs, (Activity)localObject, paramView);
-    }
+    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Awmk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awqu
  * JD-Core Version:    0.7.0.1
  */

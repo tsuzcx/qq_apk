@@ -1,67 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedLike;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-public class tlt
-  extends sys
+final class tlt
+  implements ShareActionSheet.OnItemClickListener
 {
-  public static final String a;
-  private List<String> a;
-  private int c;
+  tlt(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt1, int paramInt2, String paramString) {}
   
-  static
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.feed_like_list_batch_715");
-  }
-  
-  public tlt(List<String> paramList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.c = i;
-      return;
-    }
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchFeedLike localRspBatchFeedLike = new qqstory_service.RspBatchFeedLike();
-    try
-    {
-      localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
-      return new tlu(localRspBatchFeedLike);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
-    localReqBatchFeedLike.feed_id_list.set(localList);
-    localReqBatchFeedLike.source.set(this.c);
-    return localReqBatchFeedLike.toByteArray();
+    tlr.a(this.jdField_a_of_type_AndroidContentContext, paramActionSheetItem, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    paramShareActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlt
  * JD-Core Version:    0.7.0.1
  */

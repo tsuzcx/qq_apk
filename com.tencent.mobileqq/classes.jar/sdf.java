@@ -1,29 +1,53 @@
-import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
-import com.tencent.biz.pubaccount.util.Achilles;
-import com.tencent.biz.pubaccount.util.Achilles.1;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StrikethroughSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 
-public class sdf
-  extends amal
+class sdf
 {
-  public sdf(Achilles.1 param1, RockDownloadInfo paramRockDownloadInfo, AchillesParams paramAchillesParams) {}
+  int a;
+  private int b;
+  private int c;
   
-  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
+  public static sdf a(int paramInt, Object... paramVarArgs)
   {
-    QLog.d("Achilles", 1, "query predownload info fail: " + paramRockDownloadInfo);
-    Achilles.a(this.jdField_a_of_type_ComTencentMobileqqDataRockDownloadInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyConfigBeansAchillesParams);
+    sdf localsdf = new sdf();
+    localsdf.a = paramInt;
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      return localsdf;
+    case 1: 
+    case 2: 
+      localsdf.b = ((Integer)paramVarArgs[0]).intValue();
+      return localsdf;
+    }
+    localsdf.c = ((Integer)paramVarArgs[0]).intValue();
+    return localsdf;
   }
   
-  public void a(ArrayList<RockDownloadInfo> paramArrayList)
+  public Object a()
   {
-    QLog.d("Achilles", 1, "query predownload info success: " + paramArrayList);
+    switch (this.a)
+    {
+    default: 
+      return null;
+    case 1: 
+      return new sde(this.b);
+    case 2: 
+      return new ForegroundColorSpan(this.b);
+    case 5: 
+      return new StrikethroughSpan();
+    case 4: 
+      return new StyleSpan(this.c);
+    }
+    return new UnderlineSpan();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdf
  * JD-Core Version:    0.7.0.1
  */

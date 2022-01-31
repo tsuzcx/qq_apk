@@ -1,41 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-public class akew
-  implements ajte
+class akew
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private Handler a;
+  akew(akev paramakev, RedTouch paramRedTouch, aovj paramaovj) {}
   
-  public akew(Handler paramHandler)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a = paramHandler;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    int i = 1;
-    if (this.a == null) {}
-    while ((paramInt != 1) && (paramInt != 0)) {
-      return;
-    }
-    Handler localHandler = this.a;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
-      return;
-      i = 0;
+    if (!AppSetting.c) {
+      akev.a(this.jdField_a_of_type_Akev, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Aovj, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akew
  * JD-Core Version:    0.7.0.1
  */

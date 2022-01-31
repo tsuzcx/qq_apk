@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
@@ -18,8 +18,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import aykk;
-import aykr;
+import baig;
+import bain;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
@@ -27,9 +27,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
-import oou;
-import rfo;
-import rfp;
+import otf;
+import rvk;
+import rvl;
 
 public class ReadInJoyYAFolderTextView
   extends TextView
@@ -44,7 +44,7 @@ public class ReadInJoyYAFolderTextView
   private Vector<ClickableSpan> jdField_a_of_type_JavaUtilVector = new Vector();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = ajya.a(2131713062);
+  private String jdField_b_of_type_JavaLangString = alpo.a(2131713434);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -1;
   public boolean c;
@@ -70,7 +70,7 @@ public class ReadInJoyYAFolderTextView
   
   private SpannableStringBuilder a(SpannableStringBuilder paramSpannableStringBuilder)
   {
-    Object localObject = (aykr[])paramSpannableStringBuilder.getSpans(0, paramSpannableStringBuilder.length(), aykr.class);
+    Object localObject = (bain[])paramSpannableStringBuilder.getSpans(0, paramSpannableStringBuilder.length(), bain.class);
     int i = paramSpannableStringBuilder.length();
     if ((localObject != null) && (localObject.length > 0))
     {
@@ -88,7 +88,7 @@ public class ReadInJoyYAFolderTextView
     paramInt = paramDynamicLayout.getLineEnd(paramInt - 1);
     paramDynamicLayout = paramDynamicLayout.getText();
     String str1 = paramDynamicLayout.subSequence(i, paramInt).toString();
-    String str2 = ajya.a(2131712748);
+    String str2 = alpo.a(2131713120);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     if ((str1.equals(str2.substring(1))) || (str1.equals(str2.substring(2))) || (str1.equals(str2.substring(3))))
     {
@@ -113,7 +113,7 @@ public class ReadInJoyYAFolderTextView
   
   private void b()
   {
-    setMovementMethod(rfo.a());
+    setMovementMethod(rvk.a());
   }
   
   public int a(ArticleInfo paramArticleInfo)
@@ -126,7 +126,7 @@ public class ReadInJoyYAFolderTextView
       l = paramArticleInfo.mChannelID;
       if (paramArticleInfo.isPGCShortContent())
       {
-        if ((l == 0L) || (oou.c((int)l)))
+        if ((l == 0L) || (otf.c((int)l)))
         {
           AladdinConfig localAladdinConfig = Aladdin.getConfig(168);
           int i = localAladdinConfig.getIntegerFromString("main_channel_textlines", 3);
@@ -159,8 +159,8 @@ public class ReadInJoyYAFolderTextView
       if (localIterator.hasNext())
       {
         ClickableSpan localClickableSpan = (ClickableSpan)localIterator.next();
-        if ((localClickableSpan instanceof rfp)) {
-          ((rfp)localClickableSpan).a(false);
+        if ((localClickableSpan instanceof rvl)) {
+          ((rvl)localClickableSpan).a(false);
         }
         localIterator.remove();
       }
@@ -472,10 +472,10 @@ public class ReadInJoyYAFolderTextView
         this.jdField_a_of_type_JavaLangObject = arrayOfClickableSpan[0];
         this.jdField_c_of_type_Int = paramMotionEvent.getSpanStart(arrayOfClickableSpan[0]);
         this.d = paramMotionEvent.getSpanEnd(arrayOfClickableSpan[0]);
-        if ((this.jdField_c_of_type_Int < 0) || (this.d < this.jdField_c_of_type_Int) || (!(arrayOfClickableSpan[0] instanceof rfp))) {
+        if ((this.jdField_c_of_type_Int < 0) || (this.d < this.jdField_c_of_type_Int) || (!(arrayOfClickableSpan[0] instanceof rvl))) {
           break label410;
         }
-        ((rfp)arrayOfClickableSpan[0]).a(true);
+        ((rvl)arrayOfClickableSpan[0]).a(true);
         this.jdField_a_of_type_JavaUtilVector.add(arrayOfClickableSpan[0]);
       }
       catch (Exception paramMotionEvent)
@@ -489,10 +489,10 @@ public class ReadInJoyYAFolderTextView
         if ((this.jdField_c_of_type_Int < 0) || (this.d < this.jdField_c_of_type_Int)) {
           continue;
         }
-        if ((this.jdField_a_of_type_JavaLangObject == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof rfp))) {
+        if ((this.jdField_a_of_type_JavaLangObject == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof rvl))) {
           continue;
         }
-        ((rfp)this.jdField_a_of_type_JavaLangObject).a(false);
+        ((rvl)this.jdField_a_of_type_JavaLangObject).a(false);
         this.jdField_a_of_type_JavaLangObject = null;
         Selection.removeSelection(paramMotionEvent);
         this.jdField_c_of_type_Int = -1;
@@ -509,8 +509,8 @@ public class ReadInJoyYAFolderTextView
       this.jdField_a_of_type_JavaLangObject = null;
       if ((this.jdField_c_of_type_Int >= 0) && (this.d >= this.jdField_c_of_type_Int))
       {
-        if ((arrayOfClickableSpan[0] instanceof rfp)) {
-          ((rfp)arrayOfClickableSpan[0]).a(false);
+        if ((arrayOfClickableSpan[0] instanceof rvl)) {
+          ((rvl)arrayOfClickableSpan[0]).a(false);
         }
         Selection.removeSelection(paramMotionEvent);
         this.jdField_c_of_type_Int = -1;
@@ -561,7 +561,7 @@ public class ReadInJoyYAFolderTextView
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
     Object localObject = paramCharSequence;
-    if ((paramCharSequence instanceof aykk)) {
+    if ((paramCharSequence instanceof baig)) {
       localObject = new SpannableStringBuilder(paramCharSequence);
     }
     super.setText((CharSequence)localObject, paramBufferType);
@@ -573,7 +573,7 @@ public class ReadInJoyYAFolderTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -14,6 +14,7 @@ public final class CameraEmotionRoaming_sso$ImgInfo
   public final PBBytesField bytes_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_resource_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBRepeatField<ByteStringMicro> bytes_text = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBBytesField bytes_widget_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField url = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
@@ -22,12 +23,13 @@ public final class CameraEmotionRoaming_sso$ImgInfo
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "bytes_resource_id", "bytes_text", "url", "bytes_md5" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, ImgInfo.class);
+    ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42 }, new String[] { "bytes_resource_id", "bytes_text", "url", "bytes_md5", "bytes_widget_id" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5 }, ImgInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.selfgif.CameraEmotionRoaming_sso.ImgInfo
  * JD-Core Version:    0.7.0.1
  */

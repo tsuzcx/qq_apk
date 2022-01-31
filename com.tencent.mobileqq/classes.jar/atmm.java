@@ -1,16 +1,17 @@
-class atmm
-  implements bfpj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
+
+public class atmm
+  implements DialogInterface.OnClickListener
 {
-  atmm(atlw paramatlw) {}
+  public atmm(LocationDialogUtil.11 param11) {}
   
-  public void onDismiss()
-  {
-    this.a.b = false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmm
  * JD-Core Version:    0.7.0.1
  */

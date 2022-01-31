@@ -108,10 +108,10 @@ public class MethodRemoveElement
         return;
       }
       clearRegistryForComponent(paramRenderActionContext, localVComponent);
+      localVComponent.removedByJs();
       localVComponentContainer.remove(localVComponent, true);
       localVComponent.notifyChange();
       localVComponent.notifyWhenChange("remove", this.mDomObject);
-      localVComponent.removedByJs();
       paramRenderActionContext = (VComponentContainer)paramRenderActionContext.getComponent(this.mRootRef);
     } while ((paramRenderActionContext == null) || (paramRenderActionContext.isDestroyed()));
     paramRenderActionContext.applyLayout();
@@ -119,7 +119,7 @@ public class MethodRemoveElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodRemoveElement
  * JD-Core Version:    0.7.0.1
  */

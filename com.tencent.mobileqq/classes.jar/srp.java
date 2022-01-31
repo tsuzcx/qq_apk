@@ -1,29 +1,14 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.album.view.AlbumImageView;
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView;
 
-class srp
-  implements Animation.AnimationListener
+public abstract interface srp
 {
-  srp(sro paramsro) {}
+  public abstract void a(WormholeView paramWormholeView);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (srk.a(this.a.a) == 1)
-    {
-      this.a.a.b.setVisibility(8);
-      srk.a(this.a.a).sendEmptyMessage(1);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void b(WormholeView paramWormholeView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srp
  * JD-Core Version:    0.7.0.1
  */

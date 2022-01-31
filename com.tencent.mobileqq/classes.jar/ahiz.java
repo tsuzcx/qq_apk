@@ -1,23 +1,21 @@
-import Wallet.ReportHBGameRsp;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
 
-final class ahiz
-  implements BusinessObserver
+public class ahiz
+  implements View.OnClickListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ahiz(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
+  
+  public void onClick(View paramView)
   {
-    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
-    }
-    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiz
  * JD-Core Version:    0.7.0.1
  */

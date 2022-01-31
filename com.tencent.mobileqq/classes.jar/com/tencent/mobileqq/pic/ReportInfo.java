@@ -3,12 +3,12 @@ package com.tencent.mobileqq.pic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import auol;
+import awft;
 
 public class ReportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReportInfo> CREATOR = new auol();
+  public static final Parcelable.Creator<ReportInfo> CREATOR = new awft();
   public int a;
   public long a;
   public int b;
@@ -65,7 +65,7 @@ public class ReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

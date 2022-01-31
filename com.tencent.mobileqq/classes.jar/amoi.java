@@ -1,93 +1,23 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class amoi
+class amoi
+  implements MediaPlayer.OnErrorListener
 {
-  public float a;
-  public int a;
-  public String a;
-  public ArrayList<Pair<String, Float>> a;
-  Set<Integer> a;
-  public boolean a;
-  public int b;
-  public int c = 36;
+  amoi(amof paramamof) {}
   
-  public amoi(String paramString)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = amoa.a(paramString, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Float = amoa.a(paramString);
-    this.b = this.jdField_a_of_type_JavaUtilArrayList.size();
-    this.c = a(this.b);
-    this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b));
-      if (this.b % 2 != 0) {
-        break label172;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
     }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 2));
-      }
-      return;
-      label172:
-      i = 0;
-    }
-  }
-  
-  private int a(int paramInt)
-  {
-    if (paramInt <= 2) {
-      paramInt = amoa.a.nextInt(8) - 4 + 74;
-    }
-    for (;;)
-    {
-      return paramInt / 4 * 4;
-      if (paramInt <= 4) {
-        paramInt = amoa.a.nextInt(8) - 4 + 70;
-      } else if (paramInt <= 6) {
-        paramInt = amoa.a.nextInt(8) - 4 + 66;
-      } else if (paramInt <= 8) {
-        paramInt = amoa.a.nextInt(8) - 4 + 62;
-      } else {
-        paramInt = amoa.a.nextInt(8) - 4 + 60;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.b % 3 != 0) {
-        break label56;
-      }
-    }
-    label56:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 3));
-      }
-      return;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amoi
  * JD-Core Version:    0.7.0.1
  */

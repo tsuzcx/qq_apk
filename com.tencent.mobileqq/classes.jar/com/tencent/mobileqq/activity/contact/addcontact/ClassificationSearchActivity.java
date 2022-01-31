@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import afeq;
-import afer;
-import afes;
-import afet;
-import afeu;
-import afev;
-import afew;
-import afex;
-import afey;
-import afez;
-import affa;
-import affb;
-import affc;
-import affd;
-import affu;
-import affv;
-import afgv;
-import ajya;
+import ahbv;
+import ahbw;
+import ahbx;
+import ahby;
+import ahbz;
+import ahca;
+import ahcb;
+import ahcc;
+import ahcd;
+import ahce;
+import ahcf;
+import ahcg;
+import ahch;
+import ahci;
+import ahcz;
+import ahda;
+import ahea;
+import alpo;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -41,9 +41,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bbdj;
-import bbgu;
-import bfsi;
+import bdcd;
+import bdfq;
+import bhtf;
 import com.tencent.biz.lebasearch.SearchProtocol;
 import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
@@ -61,20 +61,20 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ncy;
-import nol;
-import osg;
-import osj;
-import osm;
-import rfc;
-import sfe;
+import nfu;
+import nrt;
+import owy;
+import oxb;
+import oxe;
+import ruy;
+import swy;
 
 public class ClassificationSearchActivity
   extends SearchBaseActivity
-  implements affv
+  implements ahda
 {
   public static int a;
-  private static afgv jdField_a_of_type_Afgv;
+  private static ahea jdField_a_of_type_Ahea;
   public static String a;
   public static int b;
   static String jdField_b_of_type_JavaLangString = "";
@@ -83,19 +83,19 @@ public class ClassificationSearchActivity
   public static int d;
   public static int e;
   protected Handler a;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new afet(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new ahby(this);
   View jdField_a_of_type_AndroidViewView;
   ReadInJoySearchTipsContainer jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   List<ReadInJoySearchHistoryEntity> jdField_a_of_type_JavaUtilList = new ArrayList();
-  ncy jdField_a_of_type_Ncy = new affc(this);
-  protected osm a;
-  rfc jdField_a_of_type_Rfc = new afer(this);
+  nfu jdField_a_of_type_Nfu = new ahch(this);
+  protected oxe a;
+  ruy jdField_a_of_type_Ruy = new ahbw(this);
   boolean jdField_a_of_type_Boolean = false;
   View jdField_b_of_type_AndroidViewView;
   ReadInJoySearchTipsContainer jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer;
   public List<SearchProtocol.WordItem> b;
-  rfc jdField_b_of_type_Rfc = new afes(this);
+  ruy jdField_b_of_type_Ruy = new ahbx(this);
   View jdField_c_of_type_AndroidViewView;
   public List<ChannelInfo> c;
   View d;
@@ -118,13 +118,13 @@ public class ClassificationSearchActivity
     this.jdField_f_of_type_Int = 0;
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_c_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Osm = new affd(this);
-    this.jdField_a_of_type_AndroidOsHandler = new afev(this);
+    this.jdField_a_of_type_Oxe = new ahci(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ahca(this);
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, afgv paramafgv)
+  public static void a(Activity paramActivity, Intent paramIntent, ahea paramahea)
   {
-    jdField_a_of_type_Afgv = paramafgv;
+    jdField_a_of_type_Ahea = paramahea;
     jdField_c_of_type_JavaLangString = paramIntent.getStringExtra("last_hint");
     paramActivity.startActivityForResult(paramIntent, 1);
   }
@@ -146,7 +146,7 @@ public class ClassificationSearchActivity
         paramString = localUnsupportedEncodingException;
       }
     }
-    localObject = sfe.jdField_c_of_type_JavaLangString;
+    localObject = swy.jdField_c_of_type_JavaLangString;
     if (localObject != null)
     {
       if (!((String)localObject).contains("keyword")) {}
@@ -168,7 +168,7 @@ public class ClassificationSearchActivity
     do
     {
       return;
-      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer.setOnTipsClickListener(this.jdField_a_of_type_Rfc);
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer.setOnTipsClickListener(this.jdField_a_of_type_Ruy);
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
@@ -191,7 +191,7 @@ public class ClassificationSearchActivity
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer.setOnTipsClickListener(this.jdField_b_of_type_Rfc);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer.setOnTipsClickListener(this.jdField_b_of_type_Ruy);
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
@@ -204,21 +204,21 @@ public class ClassificationSearchActivity
   
   private void e()
   {
-    this.jdField_d_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131559771, null);
+    this.jdField_d_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131559832, null);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
     this.jdField_d_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_d_of_type_AndroidViewView.findViewById(2131375713));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_d_of_type_AndroidViewView.findViewById(2131376207));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131559426, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131559478, null);
     this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer = ((ReadInJoySearchTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131377315));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer = ((ReadInJoySearchTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131377844));
     if ((this.jdField_f_of_type_Int == jdField_a_of_type_Int) || (this.jdField_f_of_type_Int == jdField_d_of_type_Int)) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer.setmMaxLines(-1);
     }
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131375715);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377331);
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer = ((ReadInJoySearchTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131364050));
-    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364049);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131376209);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377863);
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer = ((ReadInJoySearchTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131364112));
+    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364111);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.jdField_a_of_type_AndroidViewView);
   }
   
@@ -264,28 +264,28 @@ public class ClassificationSearchActivity
   
   protected SearchBaseFragment a()
   {
-    if ((jdField_a_of_type_Afgv == null) && ((this.jdField_f_of_type_Int == jdField_a_of_type_Int) || (this.jdField_f_of_type_Int == jdField_d_of_type_Int) || (this.jdField_f_of_type_Int == jdField_e_of_type_Int) || (this.jdField_f_of_type_Int == jdField_b_of_type_Int) || (this.jdField_f_of_type_Int == jdField_c_of_type_Int))) {
+    if ((jdField_a_of_type_Ahea == null) && ((this.jdField_f_of_type_Int == jdField_a_of_type_Int) || (this.jdField_f_of_type_Int == jdField_d_of_type_Int) || (this.jdField_f_of_type_Int == jdField_e_of_type_Int) || (this.jdField_f_of_type_Int == jdField_b_of_type_Int) || (this.jdField_f_of_type_Int == jdField_c_of_type_Int))) {
       return ClassificationSearchFragment.a(this.jdField_f_of_type_Int);
     }
-    return ClassificationSearchFragment.a(jdField_a_of_type_Afgv);
+    return ClassificationSearchFragment.a(jdField_a_of_type_Ahea);
   }
   
   public void a()
   {
-    bbgu localbbgu = bbdj.a(this, 230);
-    Object localObject = new afeu(this);
-    localbbgu.setPositiveButton(2131696274, (DialogInterface.OnClickListener)localObject);
-    localbbgu.setNegativeButton(2131696273, (DialogInterface.OnClickListener)localObject);
-    localObject = getString(2131696275);
-    localbbgu.setTitle(2131697522);
+    bdfq localbdfq = bdcd.a(this, 230);
+    Object localObject = new ahbz(this);
+    localbdfq.setPositiveButton(2131696446, (DialogInterface.OnClickListener)localObject);
+    localbdfq.setNegativeButton(2131696445, (DialogInterface.OnClickListener)localObject);
+    localObject = getString(2131696447);
+    localbdfq.setTitle(2131697697);
     TextView localTextView = new TextView(this);
     localTextView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     localTextView.setTextSize(14.0F);
-    localTextView.setTextColor(getResources().getColor(2131165413));
+    localTextView.setTextColor(getResources().getColor(2131165448));
     localTextView.setText((CharSequence)localObject);
     localTextView.setGravity(1);
-    localbbgu.addView(localTextView);
-    localbbgu.show();
+    localbdfq.addView(localTextView);
+    localbdfq.show();
   }
   
   public void a(ReadInJoySearchHistoryEntity paramReadInJoySearchHistoryEntity)
@@ -297,7 +297,7 @@ public class ClassificationSearchActivity
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
       }
       b(paramReadInJoySearchHistoryEntity.keyWord);
-      nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006819", "0X8006819", 0, 0, paramReadInJoySearchHistoryEntity.keyWord, "", "", "");
+      nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006819", "0X8006819", 0, 0, paramReadInJoySearchHistoryEntity.keyWord, "", "", "");
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramReadInJoySearchHistoryEntity.keyWord, false);
@@ -316,21 +316,21 @@ public class ClassificationSearchActivity
     }
     if (this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == null)
     {
-      paramList = new affu(this, paramList, this);
+      paramList = new ahcz(this, paramList, this);
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(paramList);
     }
-    affu localaffu;
+    ahcz localahcz;
     do
     {
       return;
-      if (!(this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() instanceof bfsi)) {
+      if (!(this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() instanceof bhtf)) {
         break;
       }
-      localaffu = (affu)((bfsi)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).getWrappedAdapter();
-    } while (localaffu == null);
-    localaffu.a(paramList);
+      localahcz = (ahcz)((bhtf)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).getWrappedAdapter();
+    } while (localahcz == null);
+    localahcz.a(paramList);
     return;
-    ((affu)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
+    ((ahcz)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
   }
   
   public void a(boolean paramBoolean)
@@ -372,43 +372,43 @@ public class ClassificationSearchActivity
   {
     super.c();
     String str;
-    if (jdField_a_of_type_Afgv != null)
+    if (jdField_a_of_type_Ahea != null)
     {
       str = "";
-      switch (jdField_a_of_type_Afgv.jdField_a_of_type_Int)
+      switch (jdField_a_of_type_Ahea.jdField_a_of_type_Int)
       {
       }
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setHint(str);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new afew(this));
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new afex(this));
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new afey(this));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new afez(this));
-      if (AppSetting.d) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(ajya.a(2131701935) + this.jdField_d_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ahcb(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new ahcc(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ahcd(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahce(this));
+      if (AppSetting.c) {
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(alpo.a(2131702307) + this.jdField_d_of_type_JavaLangString);
       }
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new affa(this));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new ahcf(this));
       if ((this.jdField_f_of_type_Int == jdField_a_of_type_Int) || (this.jdField_f_of_type_Int == jdField_d_of_type_Int))
       {
         e();
-        Looper.myQueue().addIdleHandler(new affb(this));
+        Looper.myQueue().addIdleHandler(new ahcg(this));
       }
       return;
-      str = ajya.a(2131701928);
+      str = alpo.a(2131702300);
       continue;
-      str = ajya.a(2131701934);
+      str = alpo.a(2131702306);
       continue;
       if (UniteSearchActivity.jdField_d_of_type_Int == 12)
       {
-        str = ajya.a(2131701931) + sfe.a(this.app, getApplicationContext());
+        str = alpo.a(2131702303) + swy.a(this.app, getApplicationContext());
       }
       else
       {
-        str = ajya.a(2131701938);
+        str = alpo.a(2131702310);
         continue;
-        str = ajya.a(2131701930);
+        str = alpo.a(2131702302);
       }
     }
   }
@@ -431,23 +431,23 @@ public class ClassificationSearchActivity
     if (this.jdField_f_of_type_Int == jdField_a_of_type_Int)
     {
       d();
-      SearchProtocol.a(this.app, this, this.jdField_a_of_type_Ncy);
-      osj.a().a(this.jdField_a_of_type_Osm);
-      if (osg.a().b() == 0) {
-        osg.a().a(1, 1);
+      SearchProtocol.a(this.app, this, this.jdField_a_of_type_Nfu);
+      oxb.a().a(this.jdField_a_of_type_Oxe);
+      if (owy.a().b() == 0) {
+        owy.a().a(1, 1);
       }
     }
     while (this.jdField_f_of_type_Int != jdField_d_of_type_Int) {
       return bool;
     }
     a(null, true);
-    SearchProtocol.a(this.app, this, this.jdField_a_of_type_Ncy);
+    SearchProtocol.a(this.app, this, this.jdField_a_of_type_Nfu);
     return bool;
   }
   
   public void doOnDestroy()
   {
-    osj.a().b(this.jdField_a_of_type_Osm);
+    oxb.a().b(this.jdField_a_of_type_Oxe);
     super.doOnDestroy();
   }
   
@@ -459,7 +459,7 @@ public class ClassificationSearchActivity
     }
     if (((ClassificationSearchFragment)this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment).a())
     {
-      Looper.myQueue().addIdleHandler(new afeq(this));
+      Looper.myQueue().addIdleHandler(new ahbv(this));
       ((ClassificationSearchFragment)this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment).a(false);
     }
     if (this.jdField_f_of_type_Int == jdField_a_of_type_Int)
@@ -475,12 +475,12 @@ public class ClassificationSearchActivity
       f();
       if (this.jdField_f_of_type_Int == jdField_d_of_type_Int)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131701933));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alpo.a(2131702305));
         f();
       }
       if (this.jdField_f_of_type_Int == jdField_b_of_type_Int)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131701924));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alpo.a(2131702296));
         f();
         if ((!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_Boolean)) {
           this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(jdField_b_of_type_JavaLangString, false);
@@ -492,14 +492,14 @@ public class ClassificationSearchActivity
         if (this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().equals("")) {
           this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131701925));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alpo.a(2131702297));
       }
       if (this.jdField_f_of_type_Int == jdField_e_of_type_Int)
       {
         if (this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().equals("")) {
           this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131701929));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alpo.a(2131702301));
       }
       return;
       label313:
@@ -510,7 +510,7 @@ public class ClassificationSearchActivity
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131701942));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alpo.a(2131702314));
       }
     }
   }
@@ -526,7 +526,7 @@ public class ClassificationSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity
  * JD-Core Version:    0.7.0.1
  */

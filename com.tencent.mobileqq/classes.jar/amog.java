@@ -1,30 +1,38 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
 
 class amog
-  implements Comparator<Rect>
+  implements SoundPool.OnLoadCompleteListener
 {
-  amog(amod paramamod) {}
+  amog(amof paramamof) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
-    do
+    if (paramInt2 != 0) {}
+    try
     {
-      return -1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return 1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return 1;
+      QLog.e("ARMusicController", 2, "load fire music failed. " + amof.a(this.a));
+      return;
     }
-    return 0;
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. : " + amof.a(this.a));
+    }
+    amof.a(this.a, true);
+    if (amof.a(this.a))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amog
  * JD-Core Version:    0.7.0.1
  */

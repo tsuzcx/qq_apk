@@ -1,19 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class agth
-  implements DialogInterface.OnClickListener
+public abstract class agth
+  implements agtl
 {
-  agth(agta paramagta, Runnable paramRunnable) {}
+  protected QQAppInterface a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agth(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a() {}
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return agug.a(paramQQAppInterface).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agth
  * JD-Core Version:    0.7.0.1
  */

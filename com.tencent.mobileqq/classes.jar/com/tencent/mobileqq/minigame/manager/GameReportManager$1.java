@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 class GameReportManager$1
@@ -11,18 +10,17 @@ class GameReportManager$1
   
   public void run()
   {
-    if (!GameReportManager.access$000(this.this$0))
+    if ((!GameReportManager.access$000(this.this$0)) && (GameReportManager.access$100(this.this$0) != null))
     {
-      MiniAppConfig localMiniAppConfig = GameInfoManager.g().getMiniAppConfig();
       Bundle localBundle = new Bundle();
-      localBundle.putParcelable("app_config", localMiniAppConfig);
+      localBundle.putParcelable("app_config", GameReportManager.access$100(this.this$0));
       QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "launch_report_js_error", localBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameReportManager.1
  * JD-Core Version:    0.7.0.1
  */

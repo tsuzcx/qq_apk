@@ -1,69 +1,73 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.net.InetAddress;
+import java.net.Socket;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 
 public class babp
-  extends babg
+  extends SSLSocketFactory
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public boolean c;
+  private final SSLSocketFactory a;
   
-  public babp(String paramString)
+  public babp()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    try
+    this.a = HttpsURLConnection.getDefaultSSLSocketFactory();
+  }
+  
+  public babp(SSLSocketFactory paramSSLSocketFactory)
+  {
+    this.a = paramSSLSocketFactory;
+  }
+  
+  private Socket a(Socket paramSocket)
+  {
+    if ((paramSocket instanceof SSLSocket))
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("type", "str");
-      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
-      return;
+      paramSocket = new babs(this, (SSLSocket)paramSocket, null);
+      ((babs)paramSocket).setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
+      return paramSocket;
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return paramSocket;
   }
   
-  public babp(JSONObject paramJSONObject)
+  public Socket createSocket(String paramString, int paramInt)
   {
-    a(paramJSONObject);
+    return a(this.a.createSocket(paramString, paramInt));
   }
   
-  public int a()
+  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
   {
-    return this.jdField_a_of_type_JavaLangString.length();
+    return a(this.a.createSocket(paramString, paramInt1, paramInetAddress, paramInt2));
   }
   
-  public void a(JSONObject paramJSONObject)
+  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("text");
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangString.length();
+    return a(this.a.createSocket(paramInetAddress, paramInt));
   }
   
-  public int b()
+  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
   {
-    return 0;
+    return a(this.a.createSocket(paramInetAddress1, paramInt1, paramInetAddress2, paramInt2));
   }
   
-  public void b(String paramString)
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return a(this.a.createSocket(paramSocket, paramString, paramInt, paramBoolean));
+  }
+  
+  public String[] getDefaultCipherSuites()
+  {
+    return this.a.getDefaultCipherSuites();
+  }
+  
+  public String[] getSupportedCipherSuites()
+  {
+    return this.a.getSupportedCipherSuites();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     babp
  * JD-Core Version:    0.7.0.1
  */

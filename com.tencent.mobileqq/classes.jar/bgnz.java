@@ -1,32 +1,28 @@
-import android.app.Dialog;
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qlink.QlinkLeakHelper.2.1;
+import android.os.Looper;
+import android.os.Message;
 
-public final class bgnz
-  implements View.OnClickListener
+class bgnz
+  extends Handler
 {
-  public void onClick(View paramView)
+  public bgnz(bgnx parambgnx)
   {
-    if (this.a != null) {
-      this.a.dismiss();
+    super(Looper.getMainLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131709894) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("qlink-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new QlinkLeakHelper.2.1(this));
-    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgnz
  * JD-Core Version:    0.7.0.1
  */

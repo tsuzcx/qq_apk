@@ -8,9 +8,9 @@ public abstract class VoIPProxy
   
   public abstract void exitRoom();
   
-  public abstract void init(VoIPProxy.VoIPListener paramVoIPListener);
+  public abstract void init(long paramLong, VoIPProxy.VoIPListener paramVoIPListener);
   
-  public abstract int joinRoom(long paramLong, int paramInt, String paramString);
+  public abstract int joinRoom(long paramLong, int paramInt, String paramString, byte[] paramArrayOfByte);
   
   public abstract void setAudioRoute(int paramInt);
   
@@ -20,7 +20,7 @@ public abstract class VoIPProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.VoIPProxy
  * JD-Core Version:    0.7.0.1
  */

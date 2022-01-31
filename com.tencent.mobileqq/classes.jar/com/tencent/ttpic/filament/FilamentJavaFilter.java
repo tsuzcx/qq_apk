@@ -52,8 +52,8 @@ import com.google.android.filament.gltfio.ResourceLoader;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.util.GlUtil;
+import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIActionCounter;
-import com.tencent.aekit.plugin.core.AIActionCounter.AI_TYPE;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.SurfaceTextureFilter;
@@ -449,7 +449,7 @@ public class FilamentJavaFilter
   {
     BenchUtil.benchStart("[filament] updateActionTriggered 0");
     Object localObject1 = paramPTFaceAttr.getFaceActionCounter();
-    Object localObject2 = AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND);
+    Object localObject2 = AIActionCounter.getActions(AEDetectorType.HAND);
     Set localSet = paramPTFaceAttr.getTriggeredExpression();
     paramAIAttr = new PTDetectInfo.Builder().faceActionCounter((Map)localObject1).handActionCounter((Map)localObject2).triggeredExpression(localSet).aiAttr(paramAIAttr).faceDetector(paramPTFaceAttr.getFaceDetector()).timestamp(paramPTFaceAttr.getTimeStamp()).build();
     paramPTFaceAttr = this.engine.getRenderableManager();

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aecg;
+import afyu;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class BaseChatPie$23
@@ -10,12 +10,12 @@ class BaseChatPie$23
   
   public void run()
   {
-    aecg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    afyu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.23
  * JD-Core Version:    0.7.0.1
  */

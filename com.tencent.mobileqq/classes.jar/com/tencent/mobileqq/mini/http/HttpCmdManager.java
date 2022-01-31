@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.http;
 
 import NS_COMM.COMM.StCommonExt;
 import android.util.Log;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.mini.http.httpRequest.HttpCheckNavigateRightRequest;
 import com.tencent.mobileqq.mini.http.httpRequest.HttpGetAppInfoByIdRequest;
 import com.tencent.mobileqq.mini.http.httpRequest.HttpGetAppInfoByLinkRequest;
@@ -29,7 +29,7 @@ public class HttpCmdManager
       if (arrayOfByte1 == null) {
         arrayOfByte2 = new byte[4];
       }
-      MiniappHttpUtil.httpPostV2(paramString, bbma.a(arrayOfByte2), null, new HttpCmdManager.1(this, paramHttpCmdResult, paramHttpProtoBufRequest), null);
+      MiniappHttpUtil.httpPostV2(paramString, bdku.a(arrayOfByte2), null, new HttpCmdManager.1(this, paramHttpCmdResult, paramHttpProtoBufRequest), null);
       return;
     }
     catch (Exception localException)
@@ -68,7 +68,7 @@ public class HttpCmdManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.http.HttpCmdManager
  * JD-Core Version:    0.7.0.1
  */

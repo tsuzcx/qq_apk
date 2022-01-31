@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork;
 
-import ajya;
-import bcqf;
-import bcql;
+import alpo;
+import bepp;
+import com.tencent.mobileqq.widget.QQToast;
 
 class TeamWorkForceShare$ImageRequestTask$2
   implements Runnable
@@ -12,12 +12,12 @@ class TeamWorkForceShare$ImageRequestTask$2
   public void run()
   {
     TeamWorkForceShare.a(this.a.this$0).dismiss();
-    bcql.a(TeamWorkForceShare.a(this.a.this$0), ajya.a(2131714815), 0).a();
+    QQToast.a(TeamWorkForceShare.a(this.a.this$0), alpo.a(2131715187), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask.2
  * JD-Core Version:    0.7.0.1
  */

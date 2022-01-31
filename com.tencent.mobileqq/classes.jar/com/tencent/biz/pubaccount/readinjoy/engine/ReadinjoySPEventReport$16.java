@@ -4,10 +4,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import osx;
-import otj;
-import otk;
-import sgg;
+import oxp;
+import oyb;
+import oyc;
+import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$16
@@ -17,7 +17,7 @@ public final class ReadinjoySPEventReport$16
   
   public void run()
   {
-    if (osx.b(19))
+    if (oxp.b(19))
     {
       ArrayList localArrayList = new ArrayList();
       Object localObject1 = new StringBuilder();
@@ -27,18 +27,18 @@ public final class ReadinjoySPEventReport$16
       int i = 0;
       if (j < this.a.size())
       {
-        localObject2 = (otk)this.a.get(j);
-        ((StringBuilder)localObject1).append(((otk)localObject2).jdField_a_of_type_Int + "-" + ((otk)localObject2).jdField_a_of_type_Long + "-" + ((otk)localObject2).b + "-" + ((otk)localObject2).c);
+        localObject2 = (oyc)this.a.get(j);
+        ((StringBuilder)localObject1).append(((oyc)localObject2).jdField_a_of_type_Int + "-" + ((oyc)localObject2).jdField_a_of_type_Long + "-" + ((oyc)localObject2).b + "-" + ((oyc)localObject2).c);
         if (j != this.a.size() - 1) {
           ((StringBuilder)localObject1).append(":");
         }
         for (;;)
         {
-          i += ((otk)localObject2).b;
-          l += ((otk)localObject2).jdField_a_of_type_Long;
+          i += ((oyc)localObject2).b;
+          l += ((oyc)localObject2).jdField_a_of_type_Long;
           j += 1;
           break;
-          k = ((otk)localObject2).d;
+          k = ((oyc)localObject2).d;
         }
       }
       Object localObject2 = new oidb_cmd0x80a.AttributeList();
@@ -61,14 +61,14 @@ public final class ReadinjoySPEventReport$16
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("items");
       ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set("" + k);
       localArrayList.add(localObject1);
-      sgg.a(19, localArrayList);
+      syb.a(19, localArrayList);
     }
-    otj.a();
+    oyb.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.16
  * JD-Core Version:    0.7.0.1
  */

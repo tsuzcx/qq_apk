@@ -1,14 +1,20 @@
-public abstract interface azol
+import android.util.Pair;
+import java.util.HashSet;
+
+class azol
 {
-  public abstract void a(int paramInt, String paramString);
+  public int a;
+  public String a;
+  public HashSet<Pair<Long, Long>> a;
   
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c(String paramString);
+  private azol(azok paramazok)
+  {
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azol
  * JD-Core Version:    0.7.0.1
  */

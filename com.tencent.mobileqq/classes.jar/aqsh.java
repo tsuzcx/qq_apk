@@ -1,35 +1,48 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gamecenter.activities.GameCenterActivity;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqsh
-  implements View.OnClickListener
+class aqsh
+  extends aqnl
 {
-  public aqsh(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  aqsh(aqsg paramaqsg) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    Object localObject = "";
-    if (this.a.a != null) {
-      localObject = this.a.a(this.a.a.getCurrentItem());
+    if (QLog.isColorLevel()) {
+      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
     }
-    yoa.a(ajac.a(), "769", "205037", (String)localObject, "76901", "1", "160", new String[] { this.a.a(), "", "20" });
-    localObject = new Intent(BaseApplication.getContext(), GameCenterActivity.class);
-    ((Intent)localObject).putExtra("url", "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393");
-    ((Intent)localObject).addFlags(268435456);
-    ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-    ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_zf_games");
-    paramView.getContext().startActivity((Intent)localObject);
+    bkif.a(null, paramInt2);
+    paramString1 = this.a.a.a().a(paramLong2);
+    Bundle localBundle;
+    if ((paramString1 != null) && (paramString1.nOpType == 50))
+    {
+      localBundle = new Bundle();
+      localBundle.putString("taskId", paramString1.miniAppDownloadId);
+      if (!paramBoolean) {
+        break label163;
+      }
+    }
+    label163:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      localBundle.putInt("retCode", paramInt1);
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        paramString1 = "";
+      }
+      localBundle.putString("retMsg", paramString1);
+      QIPCServerHelper.getInstance().callClient(aqxc.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", localBundle, null);
+      this.a.a(paramLong2);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqsh
  * JD-Core Version:    0.7.0.1
  */

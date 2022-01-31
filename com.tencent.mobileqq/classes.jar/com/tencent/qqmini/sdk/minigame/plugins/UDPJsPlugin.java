@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bekr;
-import bell;
-import betc;
-import bfhm;
+import bgkd;
+import bglb;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.StorageUtil;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -52,7 +52,7 @@ public class UDPJsPlugin
   
   private boolean getEnableDebug(String paramString)
   {
-    return bfhm.a().getBoolean(paramString + "_debug", false);
+    return StorageUtil.getPreference().getBoolean(paramString + "_debug", false);
   }
   
   private void handleTaskOperation(JSONObject paramJSONObject1, JSONObject paramJSONObject2, String paramString, int paramInt, UDPJsPlugin.UDPTask paramUDPTask)
@@ -96,9 +96,9 @@ public class UDPJsPlugin
           break;
         }
         paramJSONObject1.put("errMsg", "invalid address :[" + str + "]");
-        betc.a("UDPPlugin", "invalid address :[" + str + "]");
+        QMLog.d("UDPPlugin", "invalid address :[" + str + "]");
         return;
-        localObject1 = bell.a(this.mMiniAppContext, paramJSONObject2, "message");
+        localObject1 = bglb.a(this.mMiniAppContext, paramJSONObject2, "message");
         int k = paramJSONObject2.optInt("offset");
         int m = paramJSONObject2.optInt("length", -1);
         i = m;
@@ -106,7 +106,7 @@ public class UDPJsPlugin
         paramJSONObject2 = localObject2;
         if (localObject1 != null)
         {
-          localObject1 = ((bell)localObject1).a;
+          localObject1 = ((bglb)localObject1).a;
           i = m;
           j = k;
           paramJSONObject2 = (JSONObject)localObject1;
@@ -166,22 +166,22 @@ public class UDPJsPlugin
         }
         catch (UnknownHostException localUnknownHostException)
         {
-          betc.a("UDPPlugin", "valid address [" + paramString + "]", localUnknownHostException);
+          QMLog.d("UDPPlugin", "valid address [" + paramString + "]", localUnknownHostException);
         }
       }
     }
     return null;
   }
   
-  public String createUDPTask(bekr parambekr)
+  public String createUDPTask(bgkd parambgkd)
   {
-    parambekr = new JSONObject();
+    parambgkd = new JSONObject();
     try
     {
       UDPJsPlugin.UDPTask localUDPTask = new UDPJsPlugin.UDPTask(this);
       this.mTaskRegistry.put(localUDPTask.taskId, localUDPTask);
-      parambekr.put("udpTaskId", localUDPTask.taskId);
-      return parambekr.toString();
+      parambgkd.put("udpTaskId", localUDPTask.taskId);
+      return parambgkd.toString();
     }
     catch (IOException localIOException)
     {
@@ -189,7 +189,7 @@ public class UDPJsPlugin
       {
         try
         {
-          parambekr.put("errMsg", localIOException.getMessage());
+          parambgkd.put("errMsg", localIOException.getMessage());
         }
         catch (JSONException localJSONException1) {}
       }
@@ -200,7 +200,7 @@ public class UDPJsPlugin
       {
         try
         {
-          parambekr.put("errMsg", localJSONException2.getMessage());
+          parambgkd.put("errMsg", localJSONException2.getMessage());
         }
         catch (JSONException localJSONException3) {}
       }
@@ -214,12 +214,12 @@ public class UDPJsPlugin
     }
     if (this.mMiniAppInfo.skipDomainCheck == 1)
     {
-      betc.a("[mini] http.udp", "udp ip检查 skip: " + paramString);
+      QMLog.d("[mini] http.udp", "udp ip检查 skip: " + paramString);
       return true;
     }
     if ((this.mMiniAppInfo.verType != 3) && (getEnableDebug(this.mMiniAppInfo.appId)))
     {
-      betc.a("[mini] http.udp", "debug opened and not online version, skip:" + paramString);
+      QMLog.d("[mini] http.udp", "debug opened and not online version, skip:" + paramString);
       return true;
     }
     if (this.mUdpIpWhiteSet == null) {}
@@ -239,42 +239,42 @@ public class UDPJsPlugin
     super.onDestroy();
   }
   
-  public String operateUDPTask(bekr parambekr)
+  public String operateUDPTask(bgkd parambgkd)
   {
     localJSONObject = new JSONObject();
     for (;;)
     {
       try
       {
-        parambekr = new JSONObject(parambekr.b);
-        String str = parambekr.optString("operation");
-        int i = parambekr.optInt("udpTaskId");
+        parambgkd = new JSONObject(parambgkd.b);
+        String str = parambgkd.optString("operation");
+        int i = parambgkd.optInt("udpTaskId");
         UDPJsPlugin.UDPTask localUDPTask = (UDPJsPlugin.UDPTask)this.mTaskRegistry.get(i);
         if (localUDPTask == null) {
           continue;
         }
-        handleTaskOperation(localJSONObject, parambekr, str, i, localUDPTask);
-        parambekr = localJSONObject.optString("errMsg", null);
-        if (parambekr != null) {
-          callbackError(parambekr, i);
+        handleTaskOperation(localJSONObject, parambgkd, str, i, localUDPTask);
+        parambgkd = localJSONObject.optString("errMsg", null);
+        if (parambgkd != null) {
+          callbackError(parambgkd, i);
         }
       }
-      catch (IOException parambekr)
+      catch (IOException parambgkd)
       {
         try
         {
-          localJSONObject.put("errMsg", parambekr.getMessage());
+          localJSONObject.put("errMsg", parambgkd.getMessage());
         }
-        catch (JSONException parambekr) {}
+        catch (JSONException parambgkd) {}
         continue;
       }
-      catch (JSONException parambekr)
+      catch (JSONException parambgkd)
       {
         try
         {
-          localJSONObject.put("errMsg", parambekr.getMessage());
+          localJSONObject.put("errMsg", parambgkd.getMessage());
         }
-        catch (JSONException parambekr) {}
+        catch (JSONException parambgkd) {}
         continue;
       }
       return localJSONObject.toString();
@@ -284,7 +284,7 @@ public class UDPJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.plugins.UDPJsPlugin
  * JD-Core Version:    0.7.0.1
  */

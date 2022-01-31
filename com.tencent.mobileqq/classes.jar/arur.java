@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface arur
+class arur
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(arum paramarum, int paramInt);
+  arur(arum paramarum) {}
   
-  public abstract void a(arum paramarum, int paramInt1, int paramInt2);
-  
-  public abstract void a(arum paramarum, LocationRoom.Venue paramVenue, List<aruk> paramList);
-  
-  public abstract void b(arum paramarum, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.r();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arur
  * JD-Core Version:    0.7.0.1
  */

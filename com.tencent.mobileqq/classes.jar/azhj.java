@@ -1,66 +1,109 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.view.Surface;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
-public final class azhj
-  implements DialogInterface.OnClickListener
+@TargetApi(14)
+public class azhj
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public azhj(Bundle paramBundle, int paramInt1, int paramInt2, Activity paramActivity) {}
+  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  public Surface a;
+  azhk jdField_a_of_type_Azhk;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azhj()
   {
-    TroopBarPublishUtils.a().a();
-    switch (paramInt)
+    a();
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_Azhk = new azhk();
+    this.jdField_a_of_type_Azhk.a();
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Azhk.a());
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null)
     {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("bid", "0");
-      String str1;
-      if ("interestcircle".endsWith(this.jdField_a_of_type_AndroidOsBundle.getString("from")))
-      {
-        paramDialogInterface = "pub_page_new";
-        if (this.jdField_a_of_type_Int != 3) {
-          break label144;
-        }
-        str1 = "Clk_cancel";
-        label79:
-        if (this.jdField_a_of_type_Int != 3) {
-          break label155;
-        }
-        if (!"0".endsWith(str2)) {
-          break label150;
-        }
-        paramInt = 2;
+      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext().equals(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
+        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
       }
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+    }
+    this.jdField_a_of_type_AndroidViewSurface.release();
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
+    this.jdField_a_of_type_Azhk = null;
+    this.jdField_a_of_type_AndroidViewSurface = null;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+  }
+  
+  @SuppressLint({"NewApi"})
+  public void c()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
       for (;;)
       {
-        axqy.b(null, "dc00899", "Grp_tribe", "", paramDialogInterface, str1, paramInt, 0, str2, "", "", "");
-        return;
-        if ("0".endsWith(str2)) {}
-        for (paramDialogInterface = "pub_page_new";; paramDialogInterface = "reply_page_new") {
-          break;
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {
+          try
+          {
+            this.jdField_a_of_type_JavaLangObject.wait(5000L);
+            if (!this.jdField_a_of_type_Boolean) {
+              throw new RuntimeException("Surface frame wait timed out");
+            }
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            Thread.currentThread().interrupt();
+          }
         }
-        label144:
-        str1 = "Clk_cancelup";
-        break label79;
-        label150:
-        paramInt = 1;
-        continue;
-        label155:
-        paramInt = 0;
       }
     }
-    paramDialogInterface.dismiss();
-    TroopBarPublishUtils.a(this.b, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Azhk.a("before updateTexImage");
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Azhk.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+  }
+  
+  public void onFrameAvailable(SurfaceTexture arg1)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azhj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,19 @@
-public class lcz
+import android.content.Context;
+import android.util.Pair;
+import java.util.List;
+import org.apache.http.Header;
+
+abstract class lcz
+  extends lcw
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = null;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString = null;
-  long jdField_c_of_type_Long = 0L;
-  String jdField_c_of_type_JavaLangString = null;
-  String d = null;
-  String e = null;
-  String f = null;
-  
-  public lcz(lcy paramlcy) {}
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<Pair<String, String>> paramList, lcl paramlcl)
+  {
+    a().a(paramContext, "https://www.googleapis.com/language/translate/v2", paramArrayOfHeader, paramList, paramlcl);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcz
  * JD-Core Version:    0.7.0.1
  */

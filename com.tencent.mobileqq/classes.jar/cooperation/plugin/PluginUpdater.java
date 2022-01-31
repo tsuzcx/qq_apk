@@ -4,10 +4,10 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import axrn;
-import bglb;
-import bglz;
-import bgmq;
+import azmz;
+import bima;
+import bimy;
+import binp;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfoHelper;
@@ -36,7 +36,7 @@ public class PluginUpdater
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bgmq jdField_a_of_type_Bgmq;
+  private binp jdField_a_of_type_Binp;
   private Map<String, PluginInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_a_of_type_Boolean;
   
@@ -45,8 +45,8 @@ public class PluginUpdater
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(paramHandler.getLooper(), this);
     paramContext = a(paramContext);
-    boolean bool = bglz.a(paramContext);
-    paramHandler = bglz.a(paramContext);
+    boolean bool = bimy.a(paramContext);
+    paramHandler = bimy.a(paramContext);
     if (paramHandler != null)
     {
       int n = paramHandler.length;
@@ -88,7 +88,7 @@ public class PluginUpdater
           j += 1;
           break label102;
           label181:
-          localObject = bglz.a(localFile);
+          localObject = bimy.a(localFile);
           if (localObject != null) {
             this.jdField_a_of_type_JavaUtilMap.put(((PluginInfo)localObject).mID, localObject);
           } else {
@@ -98,7 +98,7 @@ public class PluginUpdater
       }
     }
     if (bool) {
-      bglz.a(paramContext);
+      bimy.a(paramContext);
     }
     QLog.d("plugin_tag", 1, "init plugin updater :" + this.jdField_a_of_type_JavaUtilMap.size());
   }
@@ -200,7 +200,7 @@ public class PluginUpdater
             localHashMap.put(((PluginInfo)localObject1).mID, localObject5);
             break label1124;
           }
-          if ((this.jdField_a_of_type_Bgmq == null) || (!this.jdField_a_of_type_Bgmq.a((PluginInfo)localObject1))) {
+          if ((this.jdField_a_of_type_Binp == null) || (!this.jdField_a_of_type_Binp.a((PluginInfo)localObject1))) {
             break label1116;
           }
           ((Map)localObject3).remove(((PluginInfo)localObject1).mID);
@@ -251,14 +251,14 @@ public class PluginUpdater
         }
         else
         {
-          if (this.jdField_a_of_type_Bgmq != null) {
-            this.jdField_a_of_type_Bgmq.a(true);
+          if (this.jdField_a_of_type_Binp != null) {
+            this.jdField_a_of_type_Binp.a(true);
           }
           if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
           {
             localObject1 = new HashMap();
-            axrn.a((Map)localObject1, AppSetting.a());
-            axrn.a(this.jdField_a_of_type_AndroidContentContext).a(String.valueOf(paramGetResourceRespV2.uin), "pluginUpdateEmpty", false, 0L, 0L, (HashMap)localObject1, "");
+            azmz.a((Map)localObject1, AppSetting.a());
+            azmz.a(this.jdField_a_of_type_AndroidContentContext).a(String.valueOf(paramGetResourceRespV2.uin), "pluginUpdateEmpty", false, 0L, 0L, (HashMap)localObject1, "");
           }
           if (i != 0) {
             a();
@@ -288,7 +288,7 @@ public class PluginUpdater
     PluginInfo localPluginInfo2 = (PluginInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
     PluginInfo localPluginInfo1 = localPluginInfo2;
     if (localPluginInfo2 == null) {
-      localPluginInfo1 = bglb.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
+      localPluginInfo1 = bima.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
     }
     return localPluginInfo1;
   }
@@ -296,7 +296,7 @@ public class PluginUpdater
   public void a()
   {
     File localFile = a(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject = bglz.a(localFile);
+    Object localObject = bimy.a(localFile);
     if (localObject != null)
     {
       int i = 0;
@@ -308,13 +308,13 @@ public class PluginUpdater
     }
     localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (((Iterator)localObject).hasNext()) {
-      bglz.a((PluginInfo)((Iterator)localObject).next(), localFile);
+      bimy.a((PluginInfo)((Iterator)localObject).next(), localFile);
     }
   }
   
-  public void a(bgmq parambgmq)
+  public void a(binp parambinp)
   {
-    this.jdField_a_of_type_Bgmq = parambgmq;
+    this.jdField_a_of_type_Binp = parambinp;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -358,8 +358,8 @@ public class PluginUpdater
       QLog.d("plugin_tag", 2, "onGetPluginConfig: " + paramBoolean);
     }
     if (paramInt != 128) {
-      if (this.jdField_a_of_type_Bgmq != null) {
-        this.jdField_a_of_type_Bgmq.a(false);
+      if (this.jdField_a_of_type_Binp != null) {
+        this.jdField_a_of_type_Binp.a(false);
       }
     }
     do
@@ -368,8 +368,8 @@ public class PluginUpdater
       if ((paramBoolean) && (paramGetResourceRespV2 != null)) {
         break;
       }
-    } while (this.jdField_a_of_type_Bgmq == null);
-    this.jdField_a_of_type_Bgmq.a(false);
+    } while (this.jdField_a_of_type_Binp == null);
+    this.jdField_a_of_type_Binp.a(false);
     return;
     a(paramGetResourceRespV2);
     this.jdField_a_of_type_Boolean = false;
@@ -452,7 +452,7 @@ public class PluginUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.plugin.PluginUpdater
  * JD-Core Version:    0.7.0.1
  */

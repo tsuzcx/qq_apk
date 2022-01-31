@@ -3,32 +3,17 @@ package com.tencent.mobileqq.minigame.task;
 import android.content.Context;
 import com.tencent.mobileqq.mini.tfs.AsyncTask;
 import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
-import com.tencent.mobileqq.minigame.utils.GameLog;
 
 public class GameJsPluginEngineTask
   extends AsyncTask
 {
-  private static final String TAG = "GameJsPluginEngineTask";
-  private static volatile GameJsPluginEngineTask instance;
+  private final String TAG = toString();
   private GameJsPluginEngine mGameJsPluginEngine;
   
-  private GameJsPluginEngineTask(Context paramContext)
+  public GameJsPluginEngineTask(Context paramContext, GameJsPluginEngine paramGameJsPluginEngine)
   {
     super(paramContext);
-    GameLog.getInstance().i("GameJsPluginEngineTask", "constructor");
-  }
-  
-  public static GameJsPluginEngineTask g(Context paramContext)
-  {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new GameJsPluginEngineTask(paramContext);
-      }
-      return instance;
-    }
-    finally {}
+    this.mGameJsPluginEngine = paramGameJsPluginEngine;
   }
   
   public void executeAsync()
@@ -39,24 +24,12 @@ public class GameJsPluginEngineTask
       onTaskSucceed();
       return;
     }
-    onTaskFailed();
-  }
-  
-  public GameJsPluginEngine getJsPluginEngine()
-  {
-    return this.mGameJsPluginEngine;
-  }
-  
-  public void setJsPluginEngine(GameJsPluginEngine paramGameJsPluginEngine)
-  {
-    if (this.mGameJsPluginEngine == null) {
-      this.mGameJsPluginEngine = paramGameJsPluginEngine;
-    }
+    onTaskFailed(-1, "null GameJsPluginEngine configured");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.task.GameJsPluginEngineTask
  * JD-Core Version:    0.7.0.1
  */

@@ -42,7 +42,7 @@ public final class s_arkshare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_OPERATION.s_arkshare
  * JD-Core Version:    0.7.0.1
  */

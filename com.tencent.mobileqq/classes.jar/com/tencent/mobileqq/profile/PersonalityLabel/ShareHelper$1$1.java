@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import auuj;
-import auuk;
+import awlv;
+import awlw;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class ShareHelper$1$1
   implements Runnable
 {
-  public ShareHelper$1$1(auuk paramauuk) {}
+  public ShareHelper$1$1(awlw paramawlw) {}
   
   public void run()
   {
-    String str = auuj.a(this.a.a);
+    String str = awlv.a(this.a.a);
     ThreadManager.getUIHandler().post(new ShareHelper.1.1.1(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

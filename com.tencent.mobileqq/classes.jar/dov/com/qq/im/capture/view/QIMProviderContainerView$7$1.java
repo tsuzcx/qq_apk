@@ -4,7 +4,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bjju;
+import blvf;
 
 class QIMProviderContainerView$7$1
   implements Runnable
@@ -37,7 +37,7 @@ class QIMProviderContainerView$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMProviderContainerView.7.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import android.view.View;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
 
-public class rci
-  implements okf
+class rci
+  extends URLDrawableDownListener.Adapter
 {
-  public rci(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
+  rci(rch paramrch) {}
   
-  public void a(int paramInt)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    boolean bool = true;
-    ReadInJoyFastWebBottomSocialView localReadInJoyFastWebBottomSocialView;
-    if (paramInt != 2)
-    {
-      if ((!ReadInJoyFastWebBottomSocialView.a(this.a)) || (ReadInJoyFastWebBottomSocialView.a(this.a).fusionBiuInfo == null)) {
-        break label62;
-      }
-      localReadInJoyFastWebBottomSocialView = this.a;
-      if (ReadInJoyFastWebBottomSocialView.a(this.a).fusionBiuInfo.b) {
-        break label57;
-      }
-    }
-    for (;;)
-    {
-      ReadInJoyFastWebBottomSocialView.a(localReadInJoyFastWebBottomSocialView, bool);
-      return;
-      label57:
-      bool = false;
-    }
-    label62:
-    ReadInJoyFastWebBottomSocialView.a(this.a, true);
+    this.a.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rci
  * JD-Core Version:    0.7.0.1
  */

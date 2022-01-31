@@ -1,16 +1,10 @@
-import com.tencent.oskplayer.util.Singleton;
-
-class xii
-  extends Singleton<xig>
+public abstract interface xii
 {
-  protected xig a()
-  {
-    return new xig(null);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xii
  * JD-Core Version:    0.7.0.1
  */

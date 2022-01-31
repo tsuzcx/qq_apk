@@ -13,9 +13,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import asax;
-import bbll;
-import bhvj;
+import atrx;
+import bdkf;
+import bjwu;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
@@ -31,8 +31,8 @@ public class LoveZoneTabRedDotView
   private final int jdField_a_of_type_Int = 11;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new asax(this);
-  private bhvj jdField_a_of_type_Bhvj;
+  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new atrx(this);
+  private bjwu jdField_a_of_type_Bjwu;
   public boolean a;
   private String b = "";
   
@@ -89,11 +89,11 @@ public class LoveZoneTabRedDotView
     {
       this.jdField_a_of_type_Boolean = false;
       setVisibility(8);
-      if (this.jdField_a_of_type_Bhvj != null)
+      if (this.jdField_a_of_type_Bjwu != null)
       {
-        this.jdField_a_of_type_Bhvj.stop();
-        this.jdField_a_of_type_Bhvj.b();
-        this.jdField_a_of_type_Bhvj = null;
+        this.jdField_a_of_type_Bjwu.stop();
+        this.jdField_a_of_type_Bjwu.b();
+        this.jdField_a_of_type_Bjwu = null;
       }
     }
   }
@@ -102,14 +102,14 @@ public class LoveZoneTabRedDotView
   {
     if ((this.jdField_a_of_type_Boolean) && (getVisibility() == 0))
     {
-      if (this.jdField_a_of_type_Bhvj == null) {
+      if (this.jdField_a_of_type_Bjwu == null) {
         requestLayout();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Bhvj.d();
+    this.jdField_a_of_type_Bjwu.d();
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -119,24 +119,24 @@ public class LoveZoneTabRedDotView
       return;
     }
     paramCanvas.save();
-    Drawable localDrawable = getResources().getDrawable(2130845198);
+    Drawable localDrawable = getResources().getDrawable(2130845563);
     localDrawable.getBounds();
     localDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
     localDrawable.draw(paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + bbll.b(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Bhvj == null)
+    paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + bdkf.b(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Bjwu == null)
     {
-      this.jdField_a_of_type_Bhvj = new bhvj();
-      this.jdField_a_of_type_Bhvj.a(jdField_a_of_type_JavaLangString, 18);
-      this.jdField_a_of_type_Bhvj.a(false);
-      this.jdField_a_of_type_Bhvj.b(true);
-      this.jdField_a_of_type_Bhvj.c();
-      this.jdField_a_of_type_Bhvj.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
-      this.jdField_a_of_type_Bhvj.start();
+      this.jdField_a_of_type_Bjwu = new bjwu();
+      this.jdField_a_of_type_Bjwu.a(jdField_a_of_type_JavaLangString, 18);
+      this.jdField_a_of_type_Bjwu.a(false);
+      this.jdField_a_of_type_Bjwu.b(true);
+      this.jdField_a_of_type_Bjwu.c();
+      this.jdField_a_of_type_Bjwu.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+      this.jdField_a_of_type_Bjwu.start();
     }
-    this.jdField_a_of_type_Bhvj.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - bbll.b(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + bbll.b(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + bbll.b(25.0F) - bbll.b(2.0F) * 3);
-    this.jdField_a_of_type_Bhvj.draw(paramCanvas);
+    this.jdField_a_of_type_Bjwu.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - bdkf.b(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + bdkf.b(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + bdkf.b(25.0F) - bdkf.b(2.0F) * 3);
+    this.jdField_a_of_type_Bjwu.draw(paramCanvas);
     paramCanvas.restore();
   }
   
@@ -149,15 +149,15 @@ public class LoveZoneTabRedDotView
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(bbll.b(11.0F));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(bdkf.b(11.0F));
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
     }
     int j = View.MeasureSpec.getSize(paramInt2);
-    paramInt1 = (int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.b) + bbll.b(6.0F) + bbll.b(25.0F);
+    paramInt1 = (int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.b) + bdkf.b(6.0F) + bdkf.b(25.0F);
     Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
     int i = (int)(localFontMetrics.bottom - localFontMetrics.top);
-    j = j / 2 - i / 2 - bbll.b(2.0F);
-    int k = bbll.b(2.0F);
+    j = j / 2 - i / 2 - bdkf.b(2.0F);
+    int k = bdkf.b(2.0F);
     if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
@@ -165,7 +165,7 @@ public class LoveZoneTabRedDotView
     this.jdField_a_of_type_AndroidGraphicsRect.top = j;
     this.jdField_a_of_type_AndroidGraphicsRect.right = (paramInt1 + 0);
     this.jdField_a_of_type_AndroidGraphicsRect.bottom = (i + k * 2 + j);
-    this.jdField_a_of_type_Float = (j + bbll.b(2.0F) - localFontMetrics.top);
+    this.jdField_a_of_type_Float = (j + bdkf.b(2.0F) - localFontMetrics.top);
     setMeasuredDimension(paramInt1, paramInt2);
   }
   
@@ -189,7 +189,7 @@ public class LoveZoneTabRedDotView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView
  * JD-Core Version:    0.7.0.1
  */

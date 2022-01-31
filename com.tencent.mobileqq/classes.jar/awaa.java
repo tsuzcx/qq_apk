@@ -1,20 +1,30 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
 public class awaa
-  extends avzy
+  implements View.OnClickListener
 {
-  private static String a = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230752);
+  public awaa(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public awaa()
+  public void onClick(View paramView)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", a);
-    this.mFilterType = 7;
+    if (AutoReplyEditActivity.c(this.a))
+    {
+      AutoReplyEditActivity.a(this.a, false);
+      return;
+    }
+    if (AutoReplyEditActivity.d(this.a))
+    {
+      AutoReplyEditActivity.b(this.a, false);
+      return;
+    }
+    AutoReplyEditActivity.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awaa
  * JD-Core Version:    0.7.0.1
  */

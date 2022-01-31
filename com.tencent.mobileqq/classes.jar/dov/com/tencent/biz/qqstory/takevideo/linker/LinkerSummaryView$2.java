@@ -1,11 +1,11 @@
 package dov.com.tencent.biz.qqstory.takevideo.linker;
 
-import bkjr;
+import bmvb;
 
 class LinkerSummaryView$2
   implements Runnable
 {
-  LinkerSummaryView$2(LinkerSummaryView paramLinkerSummaryView, bkjr parambkjr) {}
+  LinkerSummaryView$2(LinkerSummaryView paramLinkerSummaryView, bmvb parambmvb) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ class LinkerSummaryView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.linker.LinkerSummaryView.2
  * JD-Core Version:    0.7.0.1
  */

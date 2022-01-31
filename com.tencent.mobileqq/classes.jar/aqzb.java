@@ -1,31 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 
-public class aqzb
-  implements Animator.AnimatorListener
+class aqzb
+  implements View.OnClickListener
 {
-  public aqzb(HotPicMainPanel paramHotPicMainPanel) {}
+  aqzb(aqyz paramaqyz, ayjl paramayjl) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
+    aqyy localaqyy = (aqyy)this.jdField_a_of_type_Ayjl;
+    localaqyy.a(paramView);
+    paramView = (CheckBox)paramView.findViewById(2131366313);
+    if (paramView.getVisibility() == 0) {
+      paramView.setChecked(localaqyy.b());
     }
-    this.a.b.setVisibility(8);
+    if (aqyz.a(this.jdField_a_of_type_Aqyz) != null) {
+      aqyz.a(this.jdField_a_of_type_Aqyz).a();
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzb
  * JD-Core Version:    0.7.0.1
  */

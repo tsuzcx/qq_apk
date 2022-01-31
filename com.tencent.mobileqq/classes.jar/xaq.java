@@ -1,49 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.DeleteFolderRspBody;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
-public abstract class xaq
-  extends mxj
+class xaq
+  implements uni<vbh, vdb>
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt != 0)
-    {
-      a(false, paramInt);
-      return;
-    }
-    paramBundle = new oidb_0x6d7.RspBody();
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d7.DeleteFolderRspBody)paramBundle.delete_folder_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label84;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
-      {
-        a(true, 0);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1);
-      return;
-    }
-    a(false, paramArrayOfByte.int32_ret_code.get());
-    return;
-    label84:
-    a(false, -1);
-  }
+  xaq(xak paramxak, WeakReference paramWeakReference) {}
   
-  protected abstract void a(boolean paramBoolean, int paramInt);
+  public void a(@NonNull vbh paramvbh, @Nullable vdb paramvdb, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (paramvdb == null)
+    {
+      paramvbh = (xax)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramvbh != null) {
+        paramvbh.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
+      return;
+    }
+    paramvbh = (xax)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramvbh != null)
+    {
+      paramvbh.a(0, paramvdb.a);
+      return;
+    }
+    wsv.c("DoodleEmojiManager", "requestPoiFaces callback is null");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xaq
  * JD-Core Version:    0.7.0.1
  */

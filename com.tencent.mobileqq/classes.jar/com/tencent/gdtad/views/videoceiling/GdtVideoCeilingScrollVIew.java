@@ -1,10 +1,10 @@
 package com.tencent.gdtad.views.videoceiling;
 
+import aanp;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
-import yxp;
 
 public class GdtVideoCeilingScrollVIew
   extends ScrollView
@@ -26,31 +26,31 @@ public class GdtVideoCeilingScrollVIew
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    yxp.b("GdtVideoCeilingScrollVIew", "dispatchTouchEvent");
+    aanp.b("GdtVideoCeilingScrollVIew", "dispatchTouchEvent");
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    yxp.b("GdtVideoCeilingScrollVIew", "onInterceptTouchEvent");
+    aanp.b("GdtVideoCeilingScrollVIew", "onInterceptTouchEvent");
     return false;
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    yxp.b("GdtVideoCeilingScrollVIew", "onScrollChanged: t -> " + paramInt2 + ", oldt -> " + paramInt4 + ", l -> " + paramInt1 + ", oldl -> " + paramInt3);
+    aanp.b("GdtVideoCeilingScrollVIew", "onScrollChanged: t -> " + paramInt2 + ", oldt -> " + paramInt4 + ", l -> " + paramInt1 + ", oldl -> " + paramInt3);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    yxp.b("GdtVideoCeilingScrollVIew", "onTouchEvent");
+    aanp.b("GdtVideoCeilingScrollVIew", "onTouchEvent");
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingScrollVIew
  * JD-Core Version:    0.7.0.1
  */

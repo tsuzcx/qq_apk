@@ -1,24 +1,43 @@
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class atif
-  extends mxi
+  implements EIPCResultCallback
 {
-  atif(atib paramatib, String paramString, atii paramatii) {}
+  atif(atid paramatid) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramInt != 0) {
-      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=" + paramInt + ", data=" + paramArrayOfByte + ", mQueryString=" + this.jdField_a_of_type_JavaLangString);
+    int i = 0;
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(atid.a(this.a))) {
+      localJSONObject = new JSONObject();
     }
-    if (this.jdField_a_of_type_Atii != null) {
-      this.jdField_a_of_type_Atii.a(paramInt, paramArrayOfByte, paramBundle);
+    try
+    {
+      if (paramEIPCResult.data.getBoolean("result")) {}
+      for (;;)
+      {
+        localJSONObject.put("result", i);
+        this.a.callJs(atid.a(this.a), new String[] { localJSONObject.toString() });
+        return;
+        i = 1;
+      }
+      return;
+    }
+    catch (JSONException paramEIPCResult)
+    {
+      paramEIPCResult.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atif
  * JD-Core Version:    0.7.0.1
  */

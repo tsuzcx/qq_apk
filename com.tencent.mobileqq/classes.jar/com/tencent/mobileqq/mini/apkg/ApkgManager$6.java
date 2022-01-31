@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import ajya;
+import alpo;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
@@ -23,7 +23,7 @@ class ApkgManager$6
   {
     if (this.val$listener != null)
     {
-      this.val$listener.onGetApkgInfo(null, 4, ajya.a(2131700292));
+      this.val$listener.onGetApkgInfo(null, 4, alpo.a(2131700661));
       QLog.d("ApkgManager", 2, "onDownloadCanceled() called with: s = [" + paramString + "]");
     }
   }
@@ -79,7 +79,7 @@ class ApkgManager$6
       i = -99999;
       break;
     }
-    this.val$listener.onGetApkgInfo(null, 1, ajya.a(2131700293));
+    this.val$listener.onGetApkgInfo(null, 1, alpo.a(2131700662));
     QLog.d("ApkgManager", 1, "onDownloadFailed() called with: s = [" + paramString + "], downloadResult = [" + paramDownloadResult + "]");
   }
   
@@ -103,7 +103,7 @@ class ApkgManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager.6
  * JD-Core Version:    0.7.0.1
  */

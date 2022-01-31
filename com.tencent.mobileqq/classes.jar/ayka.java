@@ -1,104 +1,100 @@
-import android.text.Editable.Factory;
-import android.text.SpannableStringBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class ayka
-  extends SpannableStringBuilder
+  extends ayju
+  implements View.OnClickListener
 {
-  public static Editable.Factory a;
-  private int a;
+  public static final String a;
+  public int a;
+  public JSONObject a;
+  public String b;
+  public String j;
   
   static
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new aykb();
+    jdField_a_of_type_JavaLangString = ayka.class.getSimpleName();
   }
   
-  public ayka(CharSequence paramCharSequence, int paramInt)
+  protected ayka(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, UnifySearchCommon.ResultItem paramResultItem)
   {
-    super(a(paramCharSequence, paramInt));
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt1);
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_Int = paramInt2;
+    b(paramJSONObject);
   }
   
-  private static CharSequence a(CharSequence paramCharSequence, int paramInt)
+  protected ayka(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, DynamicSearch.ResultItem paramResultItem)
   {
-    if ((paramCharSequence instanceof ayjw)) {
-      return ((ayjw)paramCharSequence).a();
-    }
-    return new ayjw(paramCharSequence, paramInt).a();
+    super(paramString, paramLong, paramList, paramResultItem, paramInt1);
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_Int = paramInt2;
+    b(paramJSONObject);
   }
   
-  public SpannableStringBuilder replace(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, int paramInt4)
+  public int a(int paramInt)
   {
-    if (paramInt1 < 0) {
-      j = 0;
-    }
-    for (;;)
+    int i = paramInt;
+    switch (paramInt)
     {
-      try
+    default: 
+      i = 1;
+    }
+    return i;
+  }
+  
+  public void a(View paramView)
+  {
+    aydx localaydx;
+    JSONObject localJSONObject;
+    if (aydw.b.containsKey(this))
+    {
+      localaydx = (aydx)aydw.b.get(this);
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("project", aynt.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localaydx.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "web");
+      localJSONObject.put("extra_info", this.b);
+      localJSONObject.put("tepl", this.f);
+      aynt.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(this.jdField_a_of_type_Long + "").obj2(this.j).ver1(this.g).ver2(aynt.a(this.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + aydw.jdField_a_of_type_Long));
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        k = length();
-        if (paramInt2 > k)
-        {
-          paramInt1 = k;
-          paramInt2 = paramInt1;
-          if (paramInt1 < 0) {
-            i = paramInt1;
-          }
-        }
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
       }
-      catch (Throwable localThrowable1)
-      {
-        int k;
-        Object localObject;
-        QLog.e("ColorNick.EmoticonBuilder", 1, "QQTextBuilder.replace caused crash..text:" + toString() + ", replace text:" + paramCharSequence + " , " + j + "-" + paramInt2 + " , " + paramInt3 + "-" + paramInt4, localThrowable1);
-        return new SpannableStringBuilder();
-      }
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label255;
-        }
-        i = paramInt1;
-        QLog.w("ColorNick.EmoticonBuilder", 2, "selection error, start = " + j + " end = " + paramInt1 + " length = " + k);
-      }
-      catch (Throwable localThrowable2)
-      {
-        paramInt2 = i;
-        continue;
-        continue;
-        paramInt2 = 0;
-        continue;
-      }
-      i = paramInt2;
-      if (paramCharSequence.length() <= 0) {
-        break label252;
-      }
-      i = paramInt2;
-      localObject = new ayjw(paramCharSequence, this.jdField_a_of_type_Int).a();
-      paramCharSequence = (CharSequence)localObject;
-      try
-      {
-        localObject = super.replace(j, paramInt2, paramCharSequence, paramInt3, paramInt4);
-        return localObject;
-      }
-      catch (Throwable localThrowable3)
-      {
-        continue;
-      }
-      j = paramInt1;
-      continue;
-      paramInt1 = paramInt2;
     }
   }
   
-  public CharSequence subSequence(int paramInt1, int paramInt2)
+  public void a(aysg paramaysg) {}
+  
+  public void b(JSONObject paramJSONObject) {}
+  
+  public void onClick(View paramView)
   {
-    return super.subSequence(paramInt1, paramInt2);
+    a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayka
  * JD-Core Version:    0.7.0.1
  */

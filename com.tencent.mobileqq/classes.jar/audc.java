@@ -1,29 +1,28 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
-import com.tencent.mobileqq.ocr.ui.SearchResultViewPagerAdapter;
-
 public class audc
-  implements ViewPager.OnPageChangeListener
 {
-  public audc(SearchResultFragment paramSearchResultFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public audc()
   {
-    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(paramInt);
-    if (this.a.jdField_a_of_type_Int != paramInt) {
-      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public String toString()
+  {
+    return "MsgBackupSessionTask[msg = " + this.jdField_a_of_type_JavaLangString + ", cmd = " + this.jdField_a_of_type_Int + ", isFileTask = " + this.jdField_a_of_type_Boolean + ", sessionId = " + this.jdField_a_of_type_Long + ", path = " + this.jdField_b_of_type_JavaLangString + ", url = " + this.c + ", retryTimes = " + this.jdField_a_of_type_Short + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     audc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
 
-class pgb
-  implements ViewBase.OnClickListener
+final class pgb
+  extends CharacterStyle
 {
-  pgb(pfy parampfy, ArticleInfo paramArticleInfo, Container paramContainer) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
-    if (paramViewBase != null)
-    {
-      qoi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-      pfy.a(this.jdField_a_of_type_Pfy, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, paramViewBase.e, "");
-    }
+    paramTextPaint.setColor(Color.parseColor("#FF3DB8FF"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgb
  * JD-Core Version:    0.7.0.1
  */

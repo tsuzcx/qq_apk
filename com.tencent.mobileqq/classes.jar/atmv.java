@@ -1,19 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class atmv
-  implements View.OnClickListener
+public class atmv
+  implements DialogInterface.OnClickListener
 {
-  atmv(atlw paramatlw) {}
+  public atmv(LocationDialogUtil.6 param6) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.e(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationDialogUtil", 2, new Object[] { "onClick: invoked. showStartShareLocationDialog  ", " which: ", Integer.valueOf(paramInt) });
+    }
+    if (BaseActivity.sTopActivity != null) {
+      LocationShareFragment.b(BaseActivity.sTopActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    }
+    try
+    {
+      atln.a(BaseActivity.sTopActivity.app).a(true);
+      label79:
+      atmi.a(this.a.b, "0X800A769");
+      return;
+    }
+    catch (Throwable paramDialogInterface)
+    {
+      break label79;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmv
  * JD-Core Version:    0.7.0.1
  */

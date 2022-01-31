@@ -1,53 +1,41 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
+import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.AnimationEndClearListener.1;
 
-class aecf
-  implements bcjp
+public class aecf
+  implements Animation.AnimationListener
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Activity> b;
+  public int a;
+  public View a;
   
-  aecf(aebx paramaebx, QQAppInterface paramQQAppInterface, Activity paramActivity)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new TroopMemberListActivity.AnimationEndClearListener.1(this), 0L);
   }
   
-  public void a(View paramView)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Activity localActivity = (Activity)this.b.get();
-    if ((localActivity == null) || (localQQAppInterface == null)) {
-      QLog.e("ChatItemBuilder", 1, "TextItemBuilder  onDoubleClick  app null fa null");
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
-    do
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
     {
-      return;
-      actj.n = true;
-    } while ((this.jdField_a_of_type_Aebx.a()) || (amnr.a(actj.a(paramView))) || (arqp.a(this.jdField_a_of_type_Aebx.a)) || (paramView.getId() == 2131377248) || (paramView.getId() == 2131370452) || (paramView.getId() == 2131364137));
-    Object localObject = (FragmentActivity)paramView.getContext();
-    if (localObject != null) {}
-    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        ChatActivityUtils.a(localQQAppInterface, paramView, localActivity);
-        return;
-      }
-      ChatActivityUtils.a(localQQAppInterface, paramView, localActivity, this.jdField_a_of_type_Aebx.a.a);
-      return;
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecf
  * JD-Core Version:    0.7.0.1
  */

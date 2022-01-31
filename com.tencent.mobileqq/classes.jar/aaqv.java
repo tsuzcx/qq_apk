@@ -1,41 +1,24 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.view.View;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
 
 public class aaqv
-  implements acts
+  implements aaqm
 {
-  public aaqv(ChatHistory paramChatHistory) {}
+  public aaqv(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public void a(View paramView)
   {
-    this.a.p();
-    if (this.a.jdField_a_of_type_Aarq != null) {
-      this.a.jdField_a_of_type_Aarq.d();
+    switch (paramView.getId())
+    {
+    default: 
+      return;
     }
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    this.a.a();
   }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.b(2131695205);
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
-  }
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqv
  * JD-Core Version:    0.7.0.1
  */

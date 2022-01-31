@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.monitor.service;
 
-import akdd;
+import alus;
 
 class TaskMonitorManager$1
   implements Runnable
@@ -10,13 +10,13 @@ class TaskMonitorManager$1
   public void run()
   {
     this.this$0.mAppLastUsage = this.this$0.mAppCurUsage;
-    this.this$0.mAppCurUsage = akdd.a("-1");
+    this.this$0.mAppCurUsage = alus.a("-1");
     long l2 = this.this$0.mAppCurUsage;
     long l3 = this.this$0.mAppLastUsage;
     if (this.this$0.isCalcDeviceUsageOk)
     {
       this.this$0.mDeviceLastUsage = this.this$0.mDeviceCurUsage;
-      this.this$0.mDeviceCurUsage = akdd.a("-2");
+      this.this$0.mDeviceCurUsage = alus.a("-2");
     }
     for (long l1 = this.this$0.mDeviceCurUsage - this.this$0.mDeviceLastUsage;; l1 = 0L)
     {
@@ -38,7 +38,7 @@ class TaskMonitorManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager.1
  * JD-Core Version:    0.7.0.1
  */

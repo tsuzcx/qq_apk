@@ -1,23 +1,43 @@
-class lld
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.av.app.VideoAppInterface;
+
+public abstract class lld
 {
-  byte jdField_a_of_type_Byte = 0;
-  byte b = 0;
-  byte c = 0;
-  byte d = 0;
-  byte e = 0;
-  byte f = 0;
-  byte g = 0;
-  byte h = 0;
-  byte i = 0;
-  byte j = 0;
-  byte k = 0;
-  byte l = 0;
+  protected int a;
+  protected long a;
+  protected VideoAppInterface a;
+  protected String a;
+  protected int b;
+  protected long b;
   
-  lld(llc paramllc) {}
+  public lld(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public abstract int a(String paramString);
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = Build.MODEL.toLowerCase();
+    this.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
+    this.jdField_a_of_type_Long = lnz.d();
+    this.jdField_b_of_type_Int = lnz.e();
+    this.jdField_b_of_type_Long = bdcb.d();
+  }
+  
+  public abstract boolean a(int paramInt, String paramString);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lld
  * JD-Core Version:    0.7.0.1
  */

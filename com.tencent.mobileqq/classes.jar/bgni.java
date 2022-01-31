@@ -1,59 +1,89 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qlink.SendMsg;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.BlockingQueue;
 
-public abstract class bgni
-  extends Binder
-  implements bgnh
+class bgni
+  extends Handler
 {
-  public bgni()
+  private bgni(Looper paramLooper)
   {
-    attachInterface(this, "cooperation.qlink.IQlinkService");
+    super(paramLooper);
   }
   
-  public static bgnh a(IBinder paramIBinder)
+  private void a(bgnf parambgnf)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qlink.IQlinkService");
-    if ((localIInterface != null) && ((localIInterface instanceof bgnh))) {
-      return (bgnh)localIInterface;
-    }
-    return new bgnj(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    if (parambgnf == null) {}
+    for (;;)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qlink.IQlinkService");
-      return true;
+      return;
+      if (!bgnf.a(parambgnf))
+      {
+        bgnf.a(parambgnf, System.currentTimeMillis() + bgnf.a(parambgnf));
+        bgnf.b(parambgnf, true);
+      }
+      parambgnf.a();
+      if (bgnf.a(parambgnf) == 0) {}
+      for (int i = 200; bgnf.b(parambgnf) + i < bgnf.c(parambgnf); i = 400)
+      {
+        bgnf.a().add(new WeakReference(parambgnf));
+        long l = bgnf.b(parambgnf);
+        a(parambgnf, i + l - System.currentTimeMillis());
+        return;
+      }
     }
-    paramParcel1.enforceInterface("cooperation.qlink.IQlinkService");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+  }
+  
+  private void a(bgnf parambgnf, long paramLong)
+  {
+    QMLog.d("QQToast", "scheduleNextToast to " + paramLong);
+    removeMessages(1);
+    bgnf.a().add(new WeakReference(parambgnf));
+    sendEmptyMessageDelayed(1, paramLong);
+  }
+  
+  private void b(bgnf parambgnf)
+  {
+    if (parambgnf == null) {}
+    do
     {
-      a(paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
+      return;
+      bgnf.b(parambgnf, false);
+    } while (bgnf.a(parambgnf) == null);
+    bgnf.a(parambgnf).cancel();
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      do
+      {
+        return;
+        if (QMLog.isColorLevel()) {
+          QMLog.d("QQToast", "MSG_SHOW_TOAST received");
+        }
+        paramMessage = (WeakReference)bgnf.a().poll();
+      } while (paramMessage == null);
+      a((bgnf)paramMessage.get());
+      return;
+      if (QMLog.isColorLevel()) {
+        QMLog.d("QQToast", "MSG_HIDE_TOAST received");
+      }
+      paramMessage = (WeakReference)bgnf.a().poll();
+    } while (paramMessage == null);
+    b((bgnf)paramMessage.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgni
  * JD-Core Version:    0.7.0.1
  */

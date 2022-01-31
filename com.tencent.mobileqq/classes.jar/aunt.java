@@ -1,62 +1,27 @@
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.PicPreDownloader.ScreenBroadcastReceiver.1;
-
 public class aunt
-  extends BroadcastReceiver
 {
-  public String a;
+  public final long a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public aunt(String paramString)
+  public aunt(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    this.a = paramString;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = false;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent))
-    {
-      PicPreDownloader.b = PicPreDownloader.a;
-      if (!a(paramContext)) {
-        bool = true;
-      }
-      PicPreDownloader.a = bool;
-    }
-    for (;;)
-    {
-      aung.a("PIC_TAG_PRELOAD", "onReceive", "isScreenOn:" + PicPreDownloader.a + ",lastScreenOnState:" + PicPreDownloader.b);
-      if ((PicPreDownloader.b != PicPreDownloader.a) || (PicPreDownloader.a)) {
-        break;
-      }
-      return;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
-      {
-        PicPreDownloader.b = PicPreDownloader.a;
-        PicPreDownloader.a = false;
-      }
-      else if ("android.intent.action.USER_PRESENT".equals(paramIntent))
-      {
-        PicPreDownloader.b = PicPreDownloader.a;
-        PicPreDownloader.a = true;
-      }
-    }
-    ThreadManager.post(new PicPreDownloader.ScreenBroadcastReceiver.1(this), 5, null, true);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aunt
  * JD-Core Version:    0.7.0.1
  */

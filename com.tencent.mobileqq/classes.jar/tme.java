@@ -1,49 +1,58 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBannerVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class tme
-  extends sys<toc>
+  extends LinearLayoutManager
 {
-  public static final String a = sxm.a("StorySvc.square_720_banner_vid_list");
-  public String b;
-  public String c;
+  private VideoFeedsRecyclerView a;
   
-  public String a()
+  public tme(Context paramContext, VideoFeedsRecyclerView paramVideoFeedsRecyclerView, int paramInt, boolean paramBoolean)
   {
-    return a;
+    super(paramContext, paramInt, paramBoolean);
+    this.a = paramVideoFeedsRecyclerView;
   }
   
-  public syn a(byte[] paramArrayOfByte)
+  private boolean a(View paramView)
   {
-    qqstory_service.RspBannerVideoList localRspBannerVideoList = new qqstory_service.RspBannerVideoList();
-    try
+    if (paramView == null) {}
+    int i;
+    int j;
+    do
     {
-      localRspBannerVideoList.mergeFrom(paramArrayOfByte);
-      return new toc(localRspBannerVideoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      return false;
+      i = this.a.getChildViewHolder(paramView).getLayoutPosition();
+      j = this.a.b();
+    } while ((j < 0) || ((i != j + 1) && (i != j - 1)));
+    return true;
+  }
+  
+  public int getExtraLayoutSpace(RecyclerView.State paramState)
+  {
+    return super.getExtraLayoutSpace(paramState) + 200;
+  }
+  
+  public void removeAndRecycleView(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    if (!a(paramView)) {
+      super.removeAndRecycleView(paramView, paramRecycler);
     }
   }
   
-  protected byte[] a()
+  public void removeAndRecycleViewAt(int paramInt, RecyclerView.Recycler paramRecycler)
   {
-    qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
-    localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqBannerVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
-    return localReqBannerVideoList.toByteArray();
+    if (!a(getChildAt(paramInt))) {
+      super.removeAndRecycleViewAt(paramInt, paramRecycler);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tme
  * JD-Core Version:    0.7.0.1
  */

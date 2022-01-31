@@ -1,46 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class avag
-  implements View.OnClickListener
+  extends avbo
 {
-  private long jdField_a_of_type_Long;
+  public auxh a;
+  public VideoData a;
+  private String b = "MagazinePlayerView";
+  private long d;
   
-  public avag(QzonePhotoView paramQzonePhotoView) {}
-  
-  public void onClick(View paramView)
+  public avag(Context paramContext, auxh paramauxh, QQAppInterface paramQQAppInterface)
   {
-    long l = System.currentTimeMillis();
-    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
-    do
+    super(paramContext, paramQQAppInterface);
+    this.jdField_a_of_type_Auxh = paramauxh;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null)
     {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Long = l;
-      } while ((paramView == null) || (!(paramView.getTag() instanceof ausw)));
-      paramView = (ausw)paramView.getTag();
-    } while (paramView == null);
-    int i = paramView.a;
-    paramView = QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).a.a;
-    switch (i)
-    {
-    default: 
+      QLog.w(this.b, 2, "pasue mShortVideoInfo is null!!");
       return;
     }
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "2", "", "", "");
+    super.a();
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, avah paramavah)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
+      QLog.i(this.b, 2, "play() called with: rootView = [" + paramRelativeLayout + "], videoData = [" + paramVideoData + "]");
     }
-    QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView, QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
+    this.jdField_a_of_type_Avah = paramavah;
+    if (paramVideoData.a == 1)
+    {
+      a(paramRelativeLayout);
+      this.d = 0L;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      d();
+      auzw.a().a(this.jdField_a_of_type_AndroidWidgetImageView, paramVideoData.c, new ColorDrawable(0), new ColorDrawable(0), null);
+      this.jdField_a_of_type_AndroidOsHandler.post(new MagazinePlayerView.1(this));
+      return;
+    }
+    super.a(paramRelativeLayout, paramVideoData, paramavah);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
+    while (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 1) {
+      return;
+    }
+    if (this.jdField_a_of_type_Auxh != null) {
+      this.jdField_a_of_type_Auxh.a();
+    }
+    super.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,68 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 public class vel
-  extends aywb
+  extends vej
 {
-  public vel(CommonPicUploadFragment paramCommonPicUploadFragment) {}
+  private final String c;
   
-  public void handleMessage(Message paramMessage)
+  private boolean a(vzc paramvzc)
   {
-    ayqo localayqo = (ayqo)paramMessage.obj;
-    if ((localayqo == null) || (localayqo.b != 24) || (localayqo.c != CommonPicUploadFragment.a(this.a, CommonPicUploadFragment.a(this.a)))) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (localayqo.f.equals(CommonPicUploadFragment.b(this.a)));
-      switch (paramMessage.what)
-      {
-      case 1004: 
-      default: 
-        return;
-      case 1003: 
-        if (QLog.isColorLevel()) {
-          QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send finished!" + CommonPicUploadFragment.a(this.a));
-        }
-        break;
-      }
-    } while (CommonPicUploadFragment.a(this.a));
-    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
+    boolean bool = false;
     try
     {
-      paramMessage.mergeFrom(localayqo.a, 0, localayqo.a.length);
-      CommonPicUploadFragment.a(this.a, true);
-      CommonPicUploadFragment.b(this.a, localayqo.f);
-      CommonPicUploadFragment.c(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
-      CommonPicUploadFragment.d(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler mUuid=" + CommonPicUploadFragment.c(this.a) + ", mPicMd5=" + CommonPicUploadFragment.b(this.a) + ", mPicUrl=" + CommonPicUploadFragment.d(this.a));
-      }
-      CommonPicUploadFragment.a(this.a).sendEmptyMessage(1005);
-      return;
+      Bitmap localBitmap = Bitmap.createBitmap(paramvzc.a(), paramvzc.b(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawColor(-1);
+      localCanvas.drawBitmap(paramvzc.a(), 0.0F, 0.0F, null);
+      bdda.a(bdda.a(localBitmap, 100), new File(this.c));
+      bool = true;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    catch (IOException paramvzc)
     {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramvzc, new Object[0]);
+      return false;
     }
+    catch (OutOfMemoryError paramvzc)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramvzc, new Object[0]);
+    }
+    return bool;
+    return false;
+  }
+  
+  protected void a(Error paramError)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send error:" + localayqo.g);
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
     }
-    CommonPicUploadFragment.a(this.a).sendEmptyMessage(1003);
+    b(false);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
+      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
+    }
+  }
+  
+  protected void a(vzc paramvzc)
+  {
+    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramvzc), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vel
  * JD-Core Version:    0.7.0.1
  */

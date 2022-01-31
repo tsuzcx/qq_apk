@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajxl;
+import aloz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ class PermisionPrivacyActivity$6
   
   public void run()
   {
-    ArrayList localArrayList = ((ajxl)this.this$0.app.getManager(51)).a();
+    ArrayList localArrayList = ((aloz)this.this$0.app.getManager(51)).a();
     if ((localArrayList == null) || (localArrayList.isEmpty())) {}
     for (int i = 0;; i = localArrayList.size())
     {
@@ -23,7 +23,7 @@ class PermisionPrivacyActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.6
  * JD-Core Version:    0.7.0.1
  */

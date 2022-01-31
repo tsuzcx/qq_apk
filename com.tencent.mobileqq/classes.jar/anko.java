@@ -1,32 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
 
-class anko
-  implements DialogInterface.OnCancelListener
+public class anko
 {
-  anko(ankn paramankn) {}
+  protected static boolean a = false;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public static void a()
   {
-    if (ankn.a(this.a).equals("checked corrupt"))
-    {
-      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
-      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_Cancel").commit();
-      QLog.d(ankn.a(), 1, "dialog cancel");
+    if (!a) {
+      a = true;
     }
-    this.a.a();
+  }
+  
+  public static void a(ankq paramankq)
+  {
+    ThreadManager.post(new ArkMessageServerLogic.1(paramankq), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anko
  * JD-Core Version:    0.7.0.1
  */

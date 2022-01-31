@@ -1,24 +1,30 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public class apfe
-  extends apfi
+class apfe
 {
-  public CharSequence c()
+  apfe(apfd paramapfd) {}
+  
+  @QQPermissionDenied(1819)
+  public void denied()
   {
-    Object localObject = (FileManagerEntity)this.a.get(0);
-    String str1 = apvw.b(((FileManagerEntity)localObject).srvTime);
-    String str2 = apug.b((FileManagerEntity)localObject);
-    localObject = apvd.a(((FileManagerEntity)localObject).fileSize);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str2).append("  ").append(str1).append("  ").append((String)localObject);
-    this.b = localStringBuilder;
-    return localStringBuilder;
+    QLog.e("CameraHelper", 1, "checkPermission user denied");
+    apfd.a(this.a);
+    apfd.a(this.a, false, 1830003);
+  }
+  
+  @QQPermissionGrant(1819)
+  public void grant()
+  {
+    QLog.d("CameraHelper", 1, "checkPermission user grant");
+    apfd.a(this.a);
+    apfd.a(this.a, true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apfe
  * JD-Core Version:    0.7.0.1
  */

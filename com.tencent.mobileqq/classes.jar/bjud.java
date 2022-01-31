@@ -1,16 +1,24 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
 class bjud
-  implements bjgh
+  extends BroadcastReceiver
 {
-  bjud(bjtx parambjtx) {}
+  bjud(bjuc parambjuc) {}
   
-  public void aY_()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bjtx.a(this.a).e();
+    if (paramIntent.getAction().equals("com.tencent.qq.syncQunMsg"))
+    {
+      int i = paramIntent.getIntExtra("com.tencent.qq.unreadcount", 0);
+      bjuc.a(this.a, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjud
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
 class pfe
-  implements pvo
+  implements pfa
 {
-  pfe(pfb parampfb, pau parampau) {}
+  pfe(pfd parampfd) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    rbr localrbr = this.jdField_a_of_type_Pau.a().a();
-    if (localrbr != null) {
-      localrbr.a(null, this.jdField_a_of_type_Pau.a(), 1);
+    if (this.a.a(paramInt) == null) {
+      this.a.c(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfe
  * JD-Core Version:    0.7.0.1
  */

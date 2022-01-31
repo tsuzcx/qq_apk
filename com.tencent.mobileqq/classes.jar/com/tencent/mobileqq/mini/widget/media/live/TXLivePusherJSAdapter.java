@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
-import bhom;
+import bjpx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Set;
@@ -544,12 +544,12 @@ public class TXLivePusherJSAdapter
   
   private void txCloudVideoView_disableLog(Boolean paramBoolean, Object paramObject)
   {
-    bhom.a(paramObject, "disableLog", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bjpx.a(paramObject, "disableLog", false, bjpx.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayer_setVisibility(int paramInt, Object paramObject)
   {
-    bhom.a(paramObject, "setVisibility", false, bhom.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bjpx.a(paramObject, "setVisibility", false, bjpx.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public TXJSAdapterError enterBackground(boolean paramBoolean)
@@ -962,7 +962,7 @@ public class TXLivePusherJSAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.live.TXLivePusherJSAdapter
  * JD-Core Version:    0.7.0.1
  */

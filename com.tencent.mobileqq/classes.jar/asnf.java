@@ -1,30 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class asnf
-  implements bctk
+class asnf
+  implements DialogInterface.OnClickListener
 {
-  public asnf(MsgBackupQRFragment paramMsgBackupQRFragment) {}
+  asnf(asnd paramasnd) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click left btn");
-    }
-    aslg.a().d();
-    this.a.onBackEvent();
-    asog.a("0X800A242", 4);
+    asnd.a(this.a, null);
+    asnd.b(this.a, null);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asnf
  * JD-Core Version:    0.7.0.1
  */

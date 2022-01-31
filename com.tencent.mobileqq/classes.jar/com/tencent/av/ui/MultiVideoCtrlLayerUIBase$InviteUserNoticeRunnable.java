@@ -26,12 +26,12 @@ public class MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.e(this.this$0.c, 2, "onInviteUserNotice-->Can not get AVActivity");
+    QLog.e(this.this$0.d, 2, "onInviteUserNotice-->Can not get AVActivity");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.InviteUserNoticeRunnable
  * JD-Core Version:    0.7.0.1
  */

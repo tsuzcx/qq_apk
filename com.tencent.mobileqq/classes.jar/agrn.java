@@ -1,159 +1,52 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GestureSelectGridView;
-import java.util.HashSet;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class agrn
-  implements bfsh
+  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public agrn(TroopChatPie paramTroopChatPie) {}
   
-  public agrn(NewPhotoListActivity paramNewPhotoListActivity) {}
-  
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsa.c) {}
-    LocalMediaInfo localLocalMediaInfo;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("OnSelectListener", 2, "onSelectBegin beginIndex:" + paramInt);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsa.a.clear();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsa.b.clear();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsa.k = false;
-      this.jdField_a_of_type_Boolean = false;
-      this.b = paramInt;
-      this.jdField_a_of_type_Int = paramInt;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agrs.a(paramInt);
-      if (localLocalMediaInfo.selectStatus == 2) {
-        bool = true;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-    } while (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsc.a(localLocalMediaInfo, this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsc.d();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
+    this.a.q.setVisibility(8);
+    this.a.r.setVisibility(8);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsa.c) {}
-    int j;
-    int k;
-    do
+    this.a.d.setBackgroundDrawable(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.a);
+    if (!this.a.I)
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("OnSelectListener", 2, "onSelectChanged beginIndex:" + paramInt1 + " selectIndex:" + paramInt2);
-        }
-        j = Math.min(paramInt1, paramInt2);
-        k = Math.max(paramInt1, paramInt2);
-        if (paramInt2 >= paramInt1) {
-          break;
-        }
-        i = this.b;
-        this.b = Math.min(paramInt2, this.b);
-        if (paramInt2 >= i) {
-          break label323;
-        }
-      } while ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsa.k));
-      i -= 1;
-      while (i >= paramInt2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsc.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agrs.a(i), this.jdField_a_of_type_Boolean);
-        if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsa.k))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsc.d();
-          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
-          return;
-        }
-        i -= 1;
-      }
-      i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = Math.max(paramInt2, this.jdField_a_of_type_Int);
-      if (paramInt2 <= i) {
-        break;
-      }
-    } while ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsa.k));
-    i += 1;
-    while (i <= paramInt2)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsc.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agrs.a(i), this.jdField_a_of_type_Boolean);
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsa.k))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsc.d();
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
-        return;
-      }
-      i += 1;
-    }
-    label323:
-    int i = this.b;
-    agsc localagsc;
-    LocalMediaInfo localLocalMediaInfo;
-    boolean bool;
-    if (i < j)
-    {
-      localagsc = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsc;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agrs.a(i);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        localagsc.a(localLocalMediaInfo, bool);
-        i += 1;
-        break;
-      }
-    }
-    i = k + 1;
-    if (i <= this.jdField_a_of_type_Int)
-    {
-      localagsc = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsc;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agrs.a(i);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        localagsc.a(localLocalMediaInfo, bool);
-        i += 1;
-        break;
-      }
-    }
-    if (paramInt2 < paramInt1)
-    {
-      this.b = paramInt2;
-      if (this.jdField_a_of_type_Int > paramInt1) {
-        this.jdField_a_of_type_Int = paramInt1;
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130849463);
+      this.a.o.setVisibility(8);
+      paramAnimation = this.a.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131166898);
+      this.a.e.setTextColor(paramAnimation);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsc.d();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
+      aekt.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout, 2130849207);
       return;
-      this.jdField_a_of_type_Int = paramInt2;
-      if (this.b < paramInt1) {
-        this.b = paramInt1;
-      }
-    }
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.jdField_a_of_type_Agsc.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("OnSelectListener", 2, "onSelectEnd");
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130849464);
+      this.a.o.setVisibility(8);
+      paramAnimation = this.a.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131166899);
+      this.a.e.setTextColor(paramAnimation);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,34 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
-import com.tencent.widget.BubblePopupWindow;
+import java.nio.ByteBuffer;
 
-public class bbmg
-  extends TextView
+class bbmg
 {
-  public bbmg(QQCustomMenuImageLayout paramQQCustomMenuImageLayout, Context paramContext)
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
+  
+  public bbmg(long paramLong)
   {
-    super(paramContext);
+    this.a = 2882377846L;
+    this.b = 1007L;
+    this.c = 0L;
+    this.d = paramLong;
   }
   
-  public boolean performClick()
+  public bbmg(ByteBuffer paramByteBuffer)
   {
-    boolean bool = super.performClick();
-    QQCustomMenuImageLayout.a(this.a).b();
-    return bool;
+    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+  }
+  
+  public void a(ByteBuffer paramByteBuffer)
+  {
+    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
   }
 }
 

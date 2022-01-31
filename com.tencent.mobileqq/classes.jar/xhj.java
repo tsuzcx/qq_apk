@@ -1,19 +1,23 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-class xhj
-  implements SurfaceTexture.OnFrameAvailableListener
+public final class xhj
+  implements Parcelable.Creator<PublishParam>
 {
-  xhj(xhi paramxhi) {}
-  
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public PublishParam a(Parcel paramParcel)
   {
-    xhi.c(this.a);
+    return new PublishParam(paramParcel);
+  }
+  
+  public PublishParam[] a(int paramInt)
+  {
+    return new PublishParam[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhj
  * JD-Core Version:    0.7.0.1
  */

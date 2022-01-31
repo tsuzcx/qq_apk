@@ -1,28 +1,67 @@
-import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class askt
-  implements Comparator<TroopMessageNavigateInfo>
+  extends WebViewPlugin
 {
-  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
+  public static String a = "QQGameWebViewJsPlugin";
+  
+  public askt()
   {
-    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
+    this.mPluginNameSpace = a;
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    super.handleEvent(paramString, paramLong, paramMap);
+    if (paramLong == 8589934621L)
     {
-      int i = 0;
-      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
-        i = -1;
+      paramString = new JSONObject();
+      if (paramMap != null) {}
+      try
+      {
+        paramString.put("action", paramMap.get("action"));
+        if (paramMap.containsKey("height")) {
+          paramString.put("height", paramMap.get("height"));
+        }
+        if (paramMap.containsKey("index")) {
+          paramString.put("index", paramMap.get("index"));
+        }
+        if (paramMap.containsKey("gameData")) {
+          paramString.put("gameData", paramMap.get("gameData"));
+        }
       }
-      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
-        return i;
+      catch (ClassCastException paramMap)
+      {
+        for (;;)
+        {
+          paramMap.printStackTrace();
+        }
       }
-      return 1;
+      catch (JSONException paramMap)
+      {
+        for (;;)
+        {
+          paramMap.printStackTrace();
+        }
+      }
+      dispatchJsEvent("gameFeedsEvent", paramString, null);
+      return true;
     }
-    return -(paramTroopMessageNavigateInfo1.getMsgBizType() - paramTroopMessageNavigateInfo2.getMsgBizType());
+    return super.handleEvent(paramString, paramLong, paramMap);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     askt
  * JD-Core Version:    0.7.0.1
  */

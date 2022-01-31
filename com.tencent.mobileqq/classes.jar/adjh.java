@@ -1,27 +1,14 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class adjh
-  implements aoah
+public final class adjh
+  implements DialogInterface.OnClickListener
 {
-  adjh(adjg paramadjg) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 8) {
-      adjg.a(this.a).b();
-    }
-    while ((paramInt != 0) || (adjg.a(this.a) == 0L)) {
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = adjg.a(this.a);
-    axrn.a(BaseApplication.getContext()).a(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
-    adjg.a(this.a, 0L);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjh
  * JD-Core Version:    0.7.0.1
  */

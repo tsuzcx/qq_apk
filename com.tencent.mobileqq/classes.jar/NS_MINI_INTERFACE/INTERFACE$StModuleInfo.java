@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StModuleInfo
   extends MessageMicro<StModuleInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 66, 74, 80, 90, 98, 106 }, new String[] { "title", "userAppList", "moduleType", "useOld", "jumpMoreApp", "isFinished", "appTotalNum", "desc", "ranks", "freshInternal", "titleIcon", "backgroundPic", "dittoDsl" }, new Object[] { "", null, Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), "", null, Integer.valueOf(0), "", "", "" }, StModuleInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 66, 74, 80, 90, 98, 106, 112 }, new String[] { "title", "userAppList", "moduleType", "useOld", "jumpMoreApp", "isFinished", "appTotalNum", "desc", "ranks", "freshInternal", "titleIcon", "backgroundPic", "dittoDsl", "subTypes" }, new Object[] { "", null, Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), "", null, Integer.valueOf(0), "", "", "", Integer.valueOf(0) }, StModuleInfo.class);
   public final PBInt32Field appTotalNum = PBField.initInt32(0);
   public final PBStringField backgroundPic = PBField.initString("");
   public final PBStringField desc = PBField.initString("");
@@ -20,6 +20,7 @@ public final class INTERFACE$StModuleInfo
   public INTERFACE.StUserAppInfo jumpMoreApp = new INTERFACE.StUserAppInfo();
   public final PBInt32Field moduleType = PBField.initInt32(0);
   public final PBRepeatMessageField<INTERFACE.StFriendRanking> ranks = PBField.initRepeatMessage(INTERFACE.StFriendRanking.class);
+  public final PBInt32Field subTypes = PBField.initInt32(0);
   public final PBStringField title = PBField.initString("");
   public final PBStringField titleIcon = PBField.initString("");
   public final PBInt32Field useOld = PBField.initInt32(0);

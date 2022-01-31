@@ -1,39 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.msg.data.MessageForDevShortVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
 
-public final class yex
-  implements Parcelable.Creator<MessageForShortVideo>
+public class yex
+  implements View.OnClickListener
 {
-  public MessageForDevShortVideo a(Parcel paramParcel)
-  {
-    MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
-    localMessageForDevShortVideo.uuid = paramParcel.readString();
-    localMessageForDevShortVideo.md5 = paramParcel.readString();
-    localMessageForDevShortVideo.videoFileName = paramParcel.readString();
-    localMessageForDevShortVideo.videoFileSize = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileFormat = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileTime = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbWidth = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbHeight = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileStatus = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileProgress = paramParcel.readInt();
-    localMessageForDevShortVideo.fileType = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbMD5 = paramParcel.readString();
-    localMessageForDevShortVideo.fileSource = paramParcel.readString();
-    localMessageForDevShortVideo.lastModified = paramParcel.readLong();
-    return localMessageForDevShortVideo;
-  }
+  public yex(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
   
-  public MessageForDevShortVideo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new MessageForDevShortVideo[paramInt];
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yex
  * JD-Core Version:    0.7.0.1
  */

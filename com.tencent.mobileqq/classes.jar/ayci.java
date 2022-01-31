@@ -1,61 +1,85 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.5;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayci
-  extends aycm
+  implements bapx
 {
-  private Paint a;
-  private String b = "";
-  private int g = 20;
-  private int h = -1;
+  public ayci(ScribbleResMgr.5 param5) {}
   
-  public ayci(SpriteGLView paramSpriteGLView, Context paramContext, String paramString, int paramInt1, int paramInt2)
+  public void onResp(baqw parambaqw)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    e(paramInt1);
-    f(paramInt2);
-    a(paramSpriteGLView, paramString);
-  }
-  
-  public void a(SpriteGLView paramSpriteGLView, String paramString)
-  {
-    if (paramString.equals(this.b)) {
-      return;
+    int j = 2;
+    QLog.i("ScribbleResMgr", 2, "DownloadResIcon onResp resp.mResult:  " + parambaqw.a);
+    int i = j;
+    Object localObject;
+    String str1;
+    String str2;
+    if (parambaqw.a == 0)
+    {
+      localObject = "";
+      str1 = "";
+      if (this.a.a == 3)
+      {
+        localObject = ScribbleResMgr.a(this.a.this$0);
+        str1 = ScribbleResMgr.b(this.a.this$0);
+      }
+      if (this.a.a == 4)
+      {
+        localObject = ScribbleResMgr.c(this.a.this$0);
+        str1 = ScribbleResMgr.d(this.a.this$0);
+      }
+      str2 = bdcs.c((String)localObject);
+      if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1))) {
+        break label259;
+      }
+      str1 = ScribbleResMgr.a;
+      i = ndr.a((String)localObject, str1);
+      if (i == 0) {
+        break label334;
+      }
+      QLog.e("ScribbleResMgr", 2, "unZipFolder  failed, filepath=" + (String)localObject + " destDir= " + str1 + " result: " + i);
     }
-    this.b = paramString;
-    paramString = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString), this.g, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(paramString);
-    localCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
-    localCanvas.drawText(this.b, 0.0F, this.g * 0.8F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Aycp != null) {
-      this.jdField_a_of_type_Aycp.c();
+    label259:
+    label334:
+    for (i = 0;; i = 1)
+    {
+      if (i != 0) {
+        i = 1;
+      }
+      for (;;)
+      {
+        if (parambaqw.a == 3) {
+          i = 4;
+        }
+        parambaqw = new ScribbleResMgr.ResInfo();
+        parambaqw.resType = this.a.a;
+        parambaqw.sourceId = 0;
+        ScribbleResMgr.a(this.a.this$0, parambaqw, i);
+        return;
+        if (str2 == null) {}
+        for (localObject = "";; localObject = str2)
+        {
+          str2 = str1;
+          if (str1 == null) {
+            str2 = "";
+          }
+          QLog.e("ScribbleResMgr", 2, "check wrong md5 =" + (String)localObject + " desMd5 = " + str2);
+          i = j;
+          break;
+        }
+        i = 2;
+      }
     }
-    this.jdField_a_of_type_Aycp = new aycp(paramSpriteGLView, paramString);
-    g();
-    f();
   }
   
-  public void e(int paramInt)
-  {
-    this.h = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-  }
-  
-  public void f(int paramInt)
-  {
-    this.g = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
-  }
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayci
  * JD-Core Version:    0.7.0.1
  */

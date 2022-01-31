@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import android.os.PowerManager.WakeLock;
-import appt;
-import apqc;
-import aprb;
-import com.tencent.qphone.base.util.QLog;
+import arfz;
+import aris;
+import arje;
+import arke;
 
 public class VideoFilePresenter$7$1
   implements Runnable
 {
-  public VideoFilePresenter$7$1(apqc paramapqc) {}
+  public VideoFilePresenter$7$1(arje paramarje, int paramInt) {}
   
   public void run()
   {
-    appt.b(this.a.a, true);
-    appt.a(this.a.a, 0);
-    appt.a(this.a.a).release();
-    this.a.a.a.c(0);
-    this.a.a.a.b(0L);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("#@#@", 1, "setProgress 187 [0]");
+    if (this.jdField_a_of_type_Int == 21)
+    {
+      this.jdField_a_of_type_Arje.a.jdField_a_of_type_Arke.h(true);
+      this.jdField_a_of_type_Arje.a.jdField_a_of_type_Arfz.a("0x8009D62", null);
     }
+    while (this.jdField_a_of_type_Int != 22) {
+      return;
+    }
+    this.jdField_a_of_type_Arje.a.jdField_a_of_type_Arke.h(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.7.1
  * JD-Core Version:    0.7.0.1
  */

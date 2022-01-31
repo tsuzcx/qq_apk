@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.model;
 
-import aqar;
+import artz;
 import java.util.Map;
 
 public class SCFSwitchs
@@ -11,17 +11,17 @@ public class SCFSwitchs
   
   public static SCFSwitchs fromMap(Map paramMap)
   {
-    return (SCFSwitchs)aqar.a(paramMap, SCFSwitchs.class);
+    return (SCFSwitchs)artz.a(paramMap, SCFSwitchs.class);
   }
   
   public static Map toMap(SCFSwitchs paramSCFSwitchs)
   {
-    return aqar.a(paramSCFSwitchs);
+    return artz.a(paramSCFSwitchs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.model.SCFSwitchs
  * JD-Core Version:    0.7.0.1
  */

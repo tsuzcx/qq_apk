@@ -1,55 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.qphone.base.util.QLog;
 
-class bexi
-  extends BroadcastReceiver
+public class bexi
+  implements View.OnLayoutChangeListener
 {
-  final String jdField_a_of_type_JavaLangString = "reason";
-  final String b = "globalactions";
-  final String c = "recentapps";
-  final String d = "homekey";
+  public bexi(AuthorityAccountView paramAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
   
-  bexi(bexh parambexh) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramIntent == null) {}
+    paramInt1 = paramView.getHeight();
+    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("AuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
+    }
+    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    if (paramView == null) {
+      paramView = new RelativeLayout.LayoutParams(-1, -2);
+    }
     for (;;)
     {
+      paramView.addRule(12);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
       return;
-      paramContext = paramIntent.getAction();
-      if ("action.qq.miniapp.show.monitorview".equals(paramContext))
-      {
-        boolean bool = paramIntent.getBooleanExtra("show", true);
-        bexh.a(this.jdField_a_of_type_Bexh).a(bool);
-      }
-      if ("android.intent.action.CLOSE_SYSTEM_DIALOGS".equals(paramContext))
-      {
-        paramIntent = paramIntent.getStringExtra("reason");
-        if ((paramIntent != null) && (bexh.a(this.jdField_a_of_type_Bexh) != null))
-        {
-          if (!paramIntent.equals("homekey")) {
-            break label113;
-          }
-          bexh.a(this.jdField_a_of_type_Bexh).a();
-        }
-      }
-      while ("android.intent.action.SCREEN_OFF".equals(paramContext))
-      {
-        bexh.a(this.jdField_a_of_type_Bexh).c();
-        return;
-        label113:
-        if (paramIntent.equals("recentapps")) {
-          bexh.a(this.jdField_a_of_type_Bexh).b();
-        }
-      }
+      paramView.height = -2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexi
  * JD-Core Version:    0.7.0.1
  */

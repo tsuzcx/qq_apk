@@ -1,48 +1,51 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import android.text.TextUtils;
-import aukp;
-import aukq;
+import android.util.Log;
+import awbw;
+import awbx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 class DesktopDataManager$30
   implements Runnable
 {
-  DesktopDataManager$30(DesktopDataManager paramDesktopDataManager) {}
+  DesktopDataManager$30(DesktopDataManager paramDesktopDataManager, String paramString) {}
   
   public void run()
   {
     Object localObject = MiniAppUtils.getAppInterface();
     if (localObject == null) {
-      QLog.e("DesktopDataManager", 1, "initLocalDataRunnable, app is null.");
+      QLog.e("DesktopDataManager", 1, "deleteMiniAppFromDB, app is null.");
     }
-    for (;;)
+    MiniAppRedDotEntity localMiniAppRedDotEntity;
+    do
     {
       return;
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager().a(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
-      if ((localObject != null) && (((List)localObject).size() > 0))
+      localMiniAppRedDotEntity = new MiniAppRedDotEntity(this.val$appId, 0, 0);
+      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    } while (localObject == null);
+    try
+    {
+      localMiniAppRedDotEntity.setStatus(1001);
+      if (((awbw)localObject).a(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          MiniAppRedDotEntity localMiniAppRedDotEntity = (MiniAppRedDotEntity)((Iterator)localObject).next();
-          if ((localMiniAppRedDotEntity != null) && (!TextUtils.isEmpty(localMiniAppRedDotEntity.appId))) {
-            DesktopDataManager.access$2800(this.this$0).put(localMiniAppRedDotEntity.appId, Integer.valueOf(localMiniAppRedDotEntity.wnsPushRedDotNum));
-          }
-        }
+        QLog.d("DesktopDataManager", 2, "deleteRedDotDataFromDB, delete " + localMiniAppRedDotEntity.appId + " success from db");
+        return;
       }
     }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("DesktopDataManager", 1, "deleteRedDotDataFromDB, exception: " + Log.getStackTraceString(localThrowable));
+      return;
+    }
+    QLog.d("DesktopDataManager", 2, "deleteRedDotDataFromDB, delete " + localThrowable.appId + " fail from db");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.30
  * JD-Core Version:    0.7.0.1
  */

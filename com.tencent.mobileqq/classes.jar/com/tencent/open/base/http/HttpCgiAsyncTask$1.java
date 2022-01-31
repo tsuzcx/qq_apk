@@ -1,14 +1,14 @@
 package com.tencent.open.base.http;
 
-import bdjd;
-import bdje;
+import bfib;
+import bfic;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class HttpCgiAsyncTask$1
   implements Runnable
 {
-  public HttpCgiAsyncTask$1(bdjd parambdjd, HashMap paramHashMap) {}
+  public HttpCgiAsyncTask$1(bfib parambfib, HashMap paramHashMap) {}
   
   public void run()
   {

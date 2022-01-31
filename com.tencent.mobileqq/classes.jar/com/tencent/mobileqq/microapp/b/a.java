@@ -1656,7 +1656,7 @@ public final class a
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: invokestatic 719	bbkk:a	(Ljava/lang/String;)Z
+    //   3: invokestatic 719	bdje:a	(Ljava/lang/String;)Z
     //   6: ifeq +7 -> 13
     //   9: aload_2
     //   10: astore_0
@@ -2470,7 +2470,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.b.a
  * JD-Core Version:    0.7.0.1
  */

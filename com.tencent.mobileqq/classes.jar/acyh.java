@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-public final class acyh
-  implements Parcelable.Creator<SessionInfo>
+class acyh
+  implements baji
 {
-  public SessionInfo a(Parcel paramParcel)
+  acyh(acyg paramacyg, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
+  
+  public void onCancel()
   {
-    return new SessionInfo(paramParcel);
+    this.jdField_a_of_type_Acyg.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
   }
   
-  public SessionInfo[] a(int paramInt)
+  public void onConfirm()
   {
-    return new SessionInfo[paramInt];
+    this.jdField_a_of_type_Acyg.a.b();
+    GeneralSettingActivity.a(this.jdField_a_of_type_Acyg.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyh
  * JD-Core Version:    0.7.0.1
  */

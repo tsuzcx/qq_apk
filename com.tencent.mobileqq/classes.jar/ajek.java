@@ -1,27 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.ImageView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 class ajek
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  ajek(ajei paramajei) {}
+  ajek(ajee paramajee) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (ajei.a(this.a) != null)
+    if (paramView == null) {}
+    Object localObject1;
+    RecentBaseData localRecentBaseData;
+    do
     {
-      ajei.b(this.a).setVisibility(8);
-      ajei.c(this.a).setVisibility(8);
-      ajei.b(this.a, false);
-      ajei.a(this.a).a();
-    }
-    this.a.a(6, 3, true);
+      do
+      {
+        int i;
+        do
+        {
+          return;
+          i = paramView.getId();
+        } while ((i < 0) || (i >= this.a.getCount()));
+        localObject1 = this.a.getItem(i);
+      } while ((localObject1 == null) || (!(localObject1 instanceof RecentBaseData)));
+      localRecentBaseData = (RecentBaseData)localObject1;
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if ((paramView instanceof TextView))
+      {
+        paramView = ((TextView)paramView).getText();
+        localObject1 = localObject2;
+        if (paramView != null) {
+          localObject1 = paramView.toString();
+        }
+      }
+    } while (TextUtils.isEmpty((CharSequence)localObject1));
+    this.a.a(localRecentBaseData, (String)localObject1, "1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajek
  * JD-Core Version:    0.7.0.1
  */

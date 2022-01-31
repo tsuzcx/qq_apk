@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import agas;
+import ahyq;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import baeh;
-import baff;
+import bcct;
+import bcdr;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -22,10 +22,10 @@ public class AIOAtSearchManager
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private baeh jdField_a_of_type_Baeh;
+  private bcct jdField_a_of_type_Bcct;
   private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<agas> jdField_a_of_type_JavaUtilList = new ArrayList(0);
+  private List<ahyq> jdField_a_of_type_JavaUtilList = new ArrayList(0);
   private ConcurrentHashMap<String, Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(1);
   private Handler b;
   
@@ -38,7 +38,7 @@ public class AIOAtSearchManager
     this.b = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
   }
   
-  public List<agas> a()
+  public List<ahyq> a()
   {
     try
     {
@@ -69,9 +69,9 @@ public class AIOAtSearchManager
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
   }
   
-  public void a(baeh parambaeh)
+  public void a(bcct parambcct)
   {
-    this.jdField_a_of_type_Baeh = parambaeh;
+    this.jdField_a_of_type_Bcct = parambcct;
   }
   
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -93,7 +93,7 @@ public class AIOAtSearchManager
   }
   
   /* Error */
-  public void a(List<agas> paramList)
+  public void a(List<ahyq> paramList)
   {
     // Byte code:
     //   0: aload_0
@@ -120,7 +120,7 @@ public class AIOAtSearchManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	33	0	this	AIOAtSearchManager
-    //   0	33	1	paramList	List<agas>
+    //   0	33	1	paramList	List<ahyq>
     //   12	2	2	bool	boolean
     // Exception table:
     //   from	to	target	type
@@ -141,16 +141,16 @@ public class AIOAtSearchManager
     if (QLog.isColorLevel()) {
       QLog.e("AIOAtSearchManager", 2, "taa handleMessage  " + System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_Baeh == null) {}
+    if (this.jdField_a_of_type_Bcct == null) {}
     do
     {
       do
       {
         return true;
       } while (paramMessage.what != 1);
-      paramMessage = (baff)paramMessage.obj;
+      paramMessage = (bcdr)paramMessage.obj;
     } while (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramMessage.a));
-    this.jdField_a_of_type_Baeh.a(paramMessage);
+    this.jdField_a_of_type_Bcct.a(paramMessage);
     return true;
   }
 }

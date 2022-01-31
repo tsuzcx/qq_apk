@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class ActivateFriendActivity$8
@@ -13,7 +13,7 @@ class ActivateFriendActivity$8
   public void run()
   {
     int i = this.this$0.app.a().b();
-    Object localObject2 = this.this$0.app.getApp().getString(2131720034);
+    Object localObject2 = this.this$0.app.getApp().getString(2131720570);
     Object localObject1 = localObject2;
     if (i > 0)
     {
@@ -33,7 +33,7 @@ class ActivateFriendActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity.8
  * JD-Core Version:    0.7.0.1
  */

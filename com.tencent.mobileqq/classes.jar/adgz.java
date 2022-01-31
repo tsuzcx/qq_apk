@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
-class adgz
-  implements DialogInterface.OnClickListener
+public class adgz
+  implements View.OnClickListener
 {
-  adgz(adgx paramadgx, ChatMessage paramChatMessage) {}
+  public adgz(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Adgx.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
+    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
+    this.a.startActivity(paramView);
+    azmj.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgz
  * JD-Core Version:    0.7.0.1
  */

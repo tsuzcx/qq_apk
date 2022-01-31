@@ -1,25 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
 
-final class akda
-  implements DialogInterface.OnClickListener
+public class akda
 {
-  akda(DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    akcy.a("1");
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
-    }
-  }
+  public int a = 1;
+  public ImageView a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akda
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,21 @@
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-class admz
-  implements admt
+public class admz
+  implements View.OnClickListener
 {
-  admz(admx paramadmx, MessageForArkFlashChat paramMessageForArkFlashChat) {}
+  public admz(QQMapActivity paramQQMapActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
-    if ((localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat) && (localAutoStartProgressBar != null))
-    {
-      localAutoStartProgressBar.b();
-      localAutoStartProgressBar.setVisibility(8);
-    }
+    this.a.u();
+    azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     admz
  * JD-Core Version:    0.7.0.1
  */

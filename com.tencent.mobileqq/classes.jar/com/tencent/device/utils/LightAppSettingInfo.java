@@ -1,16 +1,16 @@
 package com.tencent.device.utils;
 
+import aaba;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
 import java.util.HashMap;
-import ymh;
 
 public class LightAppSettingInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new ymh();
+  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new aaba();
   public int a;
   public long a;
   public String a;
@@ -68,7 +68,7 @@ public class LightAppSettingInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.device.utils.LightAppSettingInfo
  * JD-Core Version:    0.7.0.1
  */

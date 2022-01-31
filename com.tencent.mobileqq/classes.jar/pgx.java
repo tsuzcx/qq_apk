@@ -1,27 +1,15 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcShortContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
 
-class pgx
-  extends ComponentContentPgcShortContentGridImage
+public abstract interface pgx
 {
-  pgx(pgw parampgw, Context paramContext, ArticleInfo paramArticleInfo)
-  {
-    super(paramContext);
-  }
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
   
-  public int d()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
-      return 11;
-    }
-    return super.d();
-  }
+  public abstract void a(List<pio> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgx
  * JD-Core Version:    0.7.0.1
  */

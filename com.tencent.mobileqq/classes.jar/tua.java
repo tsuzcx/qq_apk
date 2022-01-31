@@ -1,35 +1,30 @@
-import android.app.Dialog;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudWrite.StDoCommentRsp;
+import java.util.Map;
 
-public class tua
-  extends GestureDetector.SimpleOnGestureListener
+class tua
+  implements yvn<FeedCloudWrite.StDoCommentRsp>
 {
-  public tua(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  tua(ttv paramttv, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoCommentRsp paramStDoCommentRsp)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
-    {
-      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
-      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
-      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
+    if (paramStDoCommentRsp != null) {
+      paramStDoCommentRsp.comment.id.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get());
     }
-    return false;
+    ttv.a(this.jdField_a_of_type_Ttv).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Ttv.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) - 1 - this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.vecReply.size()));
+    yej.a().a(new QCircleCommentUpdateEvent(2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Ttv.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get())));
+    uht.a().dispatch(this.jdField_a_of_type_Ttv.a(new Object[] { Integer.valueOf(5), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, Integer.valueOf(this.jdField_a_of_type_Ttv.hashCode()) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tua
  * JD-Core Version:    0.7.0.1
  */

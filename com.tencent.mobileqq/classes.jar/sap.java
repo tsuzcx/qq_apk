@@ -1,48 +1,53 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.text.TextUtils;
-import android.webkit.URLUtil;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentHeaderData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
 
-public class sap
-  implements xgu<CertifiedAccountRead.StGetMainPageRsp>
+class sap
+  extends sah
 {
-  public sap(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View b;
+  private View c;
   
-  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public sap(sal paramsal, View paramView, BaseData paramBaseData)
   {
-    CertifiedAccountMeta.StUser localStUser = (CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get();
-    ServiceAccountFolderActivityNew.a(this.a, localStUser.id.get());
-    String str = localStUser.icon.get();
-    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl(str)))
-    {
-      ServiceAccountFolderActivityNew.a(this.a).setImageURL(str);
-      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new saq(this, localStUser));
-    }
+    super(paramView, paramBaseData);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378985));
+    this.b = paramView.findViewById(2131365360);
+    this.c = paramView.findViewById(2131376859);
   }
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    if (paramBoolean)
+    paramBaseData1 = "";
+    if (paramBaseData2.s == 7)
     {
-      if (paramStGetMainPageRsp != null)
-      {
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
-        ved.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
-        a(paramStGetMainPageRsp);
-        ServiceAccountFolderActivityNew.a(this.a);
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
-      }
-      return;
+      paramBaseData1 = ((RecommendTitleData)paramBaseData2).jdField_a_of_type_JavaLangString;
+      this.b.setVisibility(0);
     }
-    ved.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if ((paramBaseData2.s != 7) || (!((RecommendTitleData)paramBaseData2).jdField_a_of_type_Boolean)) {
+        break;
+      }
+      this.c.setVisibility(8);
+      return;
+      if (paramBaseData2.s == 13)
+      {
+        paramBaseData1 = ((CommentHeaderData)paramBaseData2).jdField_a_of_type_JavaLangString;
+        this.b.setVisibility(8);
+      }
+    }
+    this.c.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sap
  * JD-Core Version:    0.7.0.1
  */

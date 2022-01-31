@@ -1,96 +1,41 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Canvas;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aoyh
-  extends aoyq
+public abstract class aoyh<D extends aoxh>
 {
-  public aoyh(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  private ArrayList<aoym> a;
+  
+  private void c(Canvas paramCanvas, D paramD, aoxq paramaoxq, float paramFloat1, float paramFloat2)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    QLog.e("DefaultBubbleModel", 1, "error, this is a default bubble model.");
+    if (this.a != null)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((aoym)localIterator.next()).a(paramCanvas, paramD, paramaoxq, paramFloat1, paramFloat2);
+      }
+    }
   }
   
-  public int a()
-  {
-    return 0;
-  }
-  
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public aouf a()
-  {
-    return null;
-  }
-  
-  public aoui a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public List<Integer> a(int paramInt)
-  {
-    return null;
-  }
+  public abstract aozf a(D paramD);
   
   public void a() {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, View paramView) {}
-  
-  protected void a(ChatMessage paramChatMessage) {}
-  
-  public boolean a()
+  public final void a(Canvas paramCanvas, D paramD, aoxq paramaoxq, float paramFloat1, float paramFloat2)
   {
-    return false;
+    b(paramCanvas, paramD, paramaoxq, paramFloat1, paramFloat2);
+    c(paramCanvas, paramD, paramaoxq, paramFloat1, paramFloat2);
   }
   
-  public int b()
-  {
-    return 0;
-  }
+  public void a(D paramD) {}
   
-  public String b()
-  {
-    return null;
-  }
+  public abstract boolean a(aoxh paramaoxh);
   
-  public List<Integer> b(int paramInt)
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public int d()
-  {
-    return 0;
-  }
-  
-  public int e()
-  {
-    return 0;
-  }
+  public abstract void b(Canvas paramCanvas, D paramD, aoxq paramaoxq, float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyh
  * JD-Core Version:    0.7.0.1
  */

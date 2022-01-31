@@ -1,43 +1,27 @@
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.widget.ListView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
 public class aspr
-  extends asqs
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aspr(MultiAIOItemFragment paramMultiAIOItemFragment, bfos parambfos, ListView paramListView) {}
+  public aspr(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
   
-  public void b(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.b(paramInt);
-    boolean bool;
-    switch (paramInt)
-    {
-    default: 
-      bool = false;
-      paramInt = 0;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i == this.jdField_a_of_type_Int) {
+      AbstractGifImage.resumeAll();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfos.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
-      if ((this.jdField_a_of_type_ComTencentWidgetListView instanceof ChatXListView))
-      {
-        ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_ComTencentWidgetListView;
-        int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
-        localChatXListView.setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
-      }
-      return;
-      bool = false;
-      paramInt = 1;
-      continue;
-      paramInt = 2;
-      bool = true;
-    }
+    XPanelContainer.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspr
  * JD-Core Version:    0.7.0.1
  */

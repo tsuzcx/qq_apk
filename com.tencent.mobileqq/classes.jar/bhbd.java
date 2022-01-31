@@ -1,58 +1,29 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVideoSoDownloadModule;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
 
 public class bhbd
-  implements axeq
+  implements Animator.AnimatorListener
 {
-  ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
+  public bhbd(AppBrandPage paramAppBrandPage, bgid parambgid) {}
   
-  public bhbd(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, ResultReceiver paramResultReceiver)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
+    this.jdField_a_of_type_Bgid.b();
   }
   
-  public void G_()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.e("QzoneVideoSoDownloadModule", 1, "onNetWorkNone");
-    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, ajya.a(2131712479));
+    this.jdField_a_of_type_Bgid.a();
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i("QzoneVideoSoDownloadModule", 1, "onDownloadFinish name=" + paramString1 + " result=" + paramInt + " filePath=" + paramString2);
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label111;
-      }
-      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, ajya.a(2131712488) + paramInt + "]");
-      axdu.b(2, paramInt);
-    }
-    for (;;)
-    {
-      if (paramString1.startsWith("new_qq_android_native_short_filter_")) {}
-      return;
-      label111:
-      if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-      {
-        paramString2 = new Bundle();
-        this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString2);
-      }
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneVideoSoDownloadModule", 4, "onUpdateProgress: name=" + paramString + " curOffset=" + paramLong1 + " totalLen=" + paramLong2);
-    }
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhbd
  * JD-Core Version:    0.7.0.1
  */

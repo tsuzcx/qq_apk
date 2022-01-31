@@ -1,68 +1,84 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.SVIPHandler.1;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class akfw
-  implements ajte
+class akfw
+  extends almw
 {
-  public akfw(SVIPHandler.1 param1, ambe paramambe) {}
+  akfw(akfo paramakfo) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(long paramLong)
   {
-    try
+    if (paramLong == 0L) {}
+    String str1;
+    String str2;
+    do
     {
-      String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
-      if ((paramObject instanceof List))
+      do
       {
-        paramObject = (List)paramObject;
-        if (paramObject.size() > 0)
+        return;
+      } while (!this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)));
+      str1 = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      str2 = bdbt.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong));
+      if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1))) {
+        akfo.a(this.a, false);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "checkIfNeedUpdate [uin: %d, pre: %s, cur: %s]", new Object[] { Long.valueOf(paramLong), str1, str2 }));
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if (paramBoolean) {
+      a(paramLong);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      if (!(paramObject instanceof ArrayList)) {
+        break label70;
+      }
+    }
+    label70:
+    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (paramObject.size() > 0))
+      {
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
         {
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
-          {
-            Object localObject = (BubbleDiyEntity)paramObject.next();
-            String str2;
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
-              this.jdField_a_of_type_Ambe.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
-              this.jdField_a_of_type_Ambe.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
-              this.jdField_a_of_type_Ambe.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
-            {
-              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
-              this.jdField_a_of_type_Ambe.b.add(localObject);
-            }
+          Object localObject = paramObject.next();
+          if ((localObject instanceof Long)) {
+            a(((Long)localObject).longValue());
           }
         }
       }
       return;
     }
-    catch (Exception paramObject)
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SVIPHandler", 2, paramObject.getMessage());
-      }
+      a(Long.parseLong(paramString));
+      return;
     }
-    this.jdField_a_of_type_Ambe.b();
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfw
  * JD-Core Version:    0.7.0.1
  */

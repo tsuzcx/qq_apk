@@ -6,9 +6,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import aoqa;
-import aorq;
-import apxv;
+import aqiy;
+import aqko;
+import arqx;
 import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
 
 public class QfilePinnedHeaderExpandableListView
@@ -16,7 +16,7 @@ public class QfilePinnedHeaderExpandableListView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
-  private apxv jdField_a_of_type_Apxv;
+  private arqx jdField_a_of_type_Arqx;
   private final String jdField_a_of_type_JavaLangString = "QfilePinnedHeaderExpandableListView<FileAssistant>";
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -52,7 +52,7 @@ public class QfilePinnedHeaderExpandableListView
   
   private void a(Context paramContext)
   {
-    setSelector(2131167087);
+    setSelector(2131167138);
     setGroupIndicator(null);
   }
   
@@ -82,15 +82,15 @@ public class QfilePinnedHeaderExpandableListView
     localObject = ((View)localObject).getTag();
     if (localObject != null)
     {
-      if ((localObject instanceof aoqa))
+      if ((localObject instanceof aqiy))
       {
-        localObject = (aoqa)localObject;
-        return new int[] { ((aoqa)localObject).jdField_b_of_type_Int, ((aoqa)localObject).jdField_a_of_type_Int };
+        localObject = (aqiy)localObject;
+        return new int[] { ((aqiy)localObject).jdField_b_of_type_Int, ((aqiy)localObject).jdField_a_of_type_Int };
       }
-      if (aorq.class.isInstance(localObject))
+      if (aqko.class.isInstance(localObject))
       {
-        localObject = (aorq)localObject;
-        return new int[] { ((aorq)localObject).jdField_b_of_type_Int, ((aorq)localObject).jdField_a_of_type_Int };
+        localObject = (aqko)localObject;
+        return new int[] { ((aqko)localObject).jdField_b_of_type_Int, ((aqko)localObject).jdField_a_of_type_Int };
       }
     }
     return null;
@@ -192,8 +192,8 @@ public class QfilePinnedHeaderExpandableListView
               }
               if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int != -1) && (this.jdField_b_of_type_Int != -1))
               {
-                if (this.jdField_a_of_type_Apxv != null) {
-                  this.jdField_a_of_type_Apxv.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+                if (this.jdField_a_of_type_Arqx != null) {
+                  this.jdField_a_of_type_Arqx.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
                 }
                 this.jdField_a_of_type_Boolean = true;
               }
@@ -216,34 +216,34 @@ public class QfilePinnedHeaderExpandableListView
         this.jdField_a_of_type_Int = j;
         this.jdField_d_of_type_Int = i;
         this.jdField_b_of_type_Int = i;
-        if (this.jdField_a_of_type_Apxv != null) {
-          this.jdField_a_of_type_Apxv.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        if (this.jdField_a_of_type_Arqx != null) {
+          this.jdField_a_of_type_Arqx.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         }
         this.jdField_a_of_type_Boolean = true;
         break;
-        if (this.jdField_a_of_type_Apxv == null) {
+        if (this.jdField_a_of_type_Arqx == null) {
           break label130;
         }
-        this.jdField_a_of_type_Apxv.a(true);
+        this.jdField_a_of_type_Arqx.a(true);
         break label130;
       }
       this.jdField_c_of_type_Int = j;
       this.jdField_d_of_type_Int = i;
-      if (this.jdField_a_of_type_Apxv == null) {
+      if (this.jdField_a_of_type_Arqx == null) {
         break;
       }
-      this.jdField_a_of_type_Apxv.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+      this.jdField_a_of_type_Arqx.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
       break;
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Float = f2;
       break;
       boolean bool = this.jdField_d_of_type_Boolean;
-      if (this.jdField_a_of_type_Apxv != null)
+      if (this.jdField_a_of_type_Arqx != null)
       {
         if (this.jdField_d_of_type_Boolean) {
-          this.jdField_a_of_type_Apxv.b(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+          this.jdField_a_of_type_Arqx.b(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
         }
-        this.jdField_a_of_type_Apxv.a(false);
+        this.jdField_a_of_type_Arqx.a(false);
       }
       this.jdField_c_of_type_Int = -1;
       this.jdField_a_of_type_Int = -1;
@@ -267,9 +267,9 @@ public class QfilePinnedHeaderExpandableListView
     this.e = paramInt;
   }
   
-  public void setOnIndexChangedListener(apxv paramapxv)
+  public void setOnIndexChangedListener(arqx paramarqx)
   {
-    this.jdField_a_of_type_Apxv = paramapxv;
+    this.jdField_a_of_type_Arqx = paramarqx;
   }
   
   public void setTouchSlop(Context paramContext)
@@ -284,7 +284,7 @@ public class QfilePinnedHeaderExpandableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

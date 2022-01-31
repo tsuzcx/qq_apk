@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import asbv;
+import atsv;
 
 public class LyricViewController$9
   implements Runnable
 {
-  public LyricViewController$9(asbv paramasbv, int paramInt1, int paramInt2) {}
+  public LyricViewController$9(atsv paramatsv, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class LyricViewController$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewController.9
  * JD-Core Version:    0.7.0.1
  */

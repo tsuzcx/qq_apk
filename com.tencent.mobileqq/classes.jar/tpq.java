@@ -1,44 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class tpq
-  extends syr<tnn, tno>
+final class tpq
+  implements bevy
 {
-  tpq(tpp paramtpp, String[] paramArrayOfString) {}
+  tpq(String paramString) {}
   
-  public void a(@NonNull tnn paramtnn, @Nullable tno paramtno, @NonNull ErrorMessage paramErrorMessage)
+  public void a(BaseResp paramBaseResp)
   {
-    if ((paramtno == null) || (paramtno.jdField_a_of_type_Int != 0))
-    {
-      if (paramtno != null) {}
-      for (int i = paramtno.jdField_a_of_type_Int;; i = -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("EncryptUrlJob", 2, "encrypt failed, error code = " + i);
-        }
-        tpp.a(this.jdField_a_of_type_Tpp, false);
-        return;
-      }
-    }
-    if (((Boolean)((tcs)tcz.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {}
-    for (paramtnn = trx.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], tpp.a(this.jdField_a_of_type_Tpp));; paramtnn = this.jdField_a_of_type_ArrayOfJavaLangString[1])
-    {
-      paramtnn = this.jdField_a_of_type_ArrayOfJavaLangString[0] + "?token=" + paramtno.jdField_a_of_type_JavaLangString + "&" + paramtnn;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt done url:", paramtnn });
-      }
-      this.jdField_a_of_type_Tpp.a("EncryptUrlJob_coverUrl", paramtno.c);
-      this.jdField_a_of_type_Tpp.a("EncryptUrlJob_encryptedUrl", paramtnn);
-      tpp.b(this.jdField_a_of_type_Tpp, true);
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
       return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      xxb.a(1, 2131720019);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      xxb.a(2, 2131720038);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpq
  * JD-Core Version:    0.7.0.1
  */

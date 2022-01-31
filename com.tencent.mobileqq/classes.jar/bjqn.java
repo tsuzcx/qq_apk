@@ -1,24 +1,40 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class bjqn
-  extends AnimatorListenerAdapter
+final class bjqn
+  implements FilenameFilter
 {
-  public bjqn(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  bjqn(long paramLong1, long paramLong2) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean accept(File paramFile, String paramString)
   {
-    this.a.a.d = 5;
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation  190ms all end");
+    if (!paramString.endsWith(".trace")) {}
+    long l;
+    do
+    {
+      File localFile;
+      do
+      {
+        return false;
+        localFile = new File(paramFile + File.separator + paramString);
+      } while ((localFile == null) || (!localFile.exists()));
+      l = localFile.lastModified();
+      if (QLog.isDevelopLevel())
+      {
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
+      }
+    } while ((l < this.a) || (l > this.b));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjqn
  * JD-Core Version:    0.7.0.1
  */

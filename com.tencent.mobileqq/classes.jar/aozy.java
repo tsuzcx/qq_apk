@@ -1,43 +1,37 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Video;
 
-class aozy
-  implements apaa
+public final class aozy
+  implements Parcelable.Creator
 {
-  private bgbd jdField_a_of_type_Bgbd = new bgbd();
-  
-  public aozy(aozx paramaozx)
+  public IPSiteModel.Video a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Bgbd.a();
+    IPSiteModel.Video localVideo = new IPSiteModel.Video();
+    localVideo.id = paramParcel.readString();
+    localVideo.buttonDesc = paramParcel.readString();
+    localVideo.content = paramParcel.readString();
+    localVideo.cover = paramParcel.readString();
+    localVideo.desc = paramParcel.readString();
+    localVideo.name = paramParcel.readString();
+    localVideo.endTime = paramParcel.readString();
+    localVideo.isShow = paramParcel.readInt();
+    localVideo.newStartTime = paramParcel.readLong();
+    localVideo.newEndTime = paramParcel.readLong();
+    localVideo.redirectUrl = paramParcel.readString();
+    localVideo.videoSource = paramParcel.readString();
+    localVideo.showDate = paramParcel.readString();
+    return localVideo;
   }
   
-  public int a(long paramLong1, long paramLong2)
+  public IPSiteModel.Video[] a(int paramInt)
   {
-    int j = this.jdField_a_of_type_Bgbd.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
-    int k = bgbg.a(BaseApplication.getContext());
-    int i;
-    if (k != 1)
-    {
-      i = j;
-      if (k != 2) {}
-    }
-    else
-    {
-      i = j;
-      if (j > 16384) {
-        i = 16384;
-      }
-    }
-    return i;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bgbd.b();
+    return new IPSiteModel.Video[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozy
  * JD-Core Version:    0.7.0.1
  */

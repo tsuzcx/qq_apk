@@ -17,7 +17,6 @@ import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
@@ -398,22 +397,18 @@ public class DynamicNumFilter
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      if (updateActionTriggered(paramObject) != TRIGGERED_STATUS.FIRST_TRIGGERED) {
-        break label64;
+      updatePlayer(this.isFirstTriggered);
+      if (needClearTexture())
+      {
+        clearTextureParam();
+        this.triggered = false;
+        this.playCount = 0;
+        this.mTimestamp = -1L;
+        this.mNum = -1;
       }
     }
-    label64:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      updatePlayer(bool);
-      if (!needClearTexture()) {
-        break;
-      }
-      clearTextureParam();
-      this.triggered = false;
-      this.playCount = 0;
-      this.mTimestamp = -1L;
-      this.mNum = -1;
       return;
     }
     this.mTimestamp = paramObject.timestamp;

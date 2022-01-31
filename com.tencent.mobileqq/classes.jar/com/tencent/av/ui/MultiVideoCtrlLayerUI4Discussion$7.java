@@ -16,12 +16,12 @@ class MultiVideoCtrlLayerUI4Discussion$7
     }
     String str = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(String.valueOf(this.a), String.valueOf(this.this$0.b), this.this$0.e);
     this.this$0.jdField_a_of_type_JavaUtilMap.put(String.valueOf(this.a), str);
-    QLog.d(this.this$0.c, 1, "refreshUI --> user name mark name=" + str + ", mApp.getCurrentAccountUin()=" + String.valueOf(this.a) + ", mMapNickNameCache.size()=" + this.this$0.jdField_a_of_type_JavaUtilMap.size());
+    QLog.d(this.this$0.d, 1, "refreshUI --> user name mark name=" + str + ", mApp.getCurrentAccountUin()=" + String.valueOf(this.a) + ", mMapNickNameCache.size()=" + this.this$0.jdField_a_of_type_JavaUtilMap.size());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion.7
  * JD-Core Version:    0.7.0.1
  */

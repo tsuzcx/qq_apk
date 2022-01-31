@@ -1,17 +1,19 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public final class vul
-  implements FilenameFilter
+class vul
+  implements MediaPlayer.OnCompletionListener
 {
-  public boolean accept(File paramFile, String paramString)
+  vul(vuj paramvuj, vub paramvub) {}
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    return paramString.endsWith(".mp4");
+    this.jdField_a_of_type_Vub.a(this.jdField_a_of_type_Vuj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vul
  * JD-Core Version:    0.7.0.1
  */

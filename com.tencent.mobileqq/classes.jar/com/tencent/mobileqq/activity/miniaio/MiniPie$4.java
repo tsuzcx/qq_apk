@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aggw;
+import aifb;
 import android.app.Activity;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import bbkf;
+import bdiz;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniPie$4
   implements Runnable
 {
-  public MiniPie$4(aggw paramaggw) {}
+  public MiniPie$4(aifb paramaifb) {}
   
   public void run()
   {
@@ -22,9 +22,9 @@ public class MiniPie$4
     if (k <= 0)
     {
       QLog.e(this.this$0.jdField_a_of_type_JavaLangString, 1, "emoHeight <=0 reset to 196dp");
-      i = bbkf.a(0);
+      i = bdiz.a(0);
     }
-    k = aggw.a(this.this$0, this.this$0.jdField_a_of_type_AndroidViewViewGroup);
+    k = aifb.a(this.this$0, this.this$0.jdField_a_of_type_AndroidViewViewGroup);
     int m = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight();
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "dialogHeight" + m + " emoh " + i + " dY " + k);
@@ -52,7 +52,7 @@ public class MiniPie$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.4
  * JD-Core Version:    0.7.0.1
  */

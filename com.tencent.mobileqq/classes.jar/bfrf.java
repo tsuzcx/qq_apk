@@ -1,39 +1,61 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.widget.DynamicGridView;
+import java.util.List;
 
-class bfrf
-  implements ViewTreeObserver.OnPreDrawListener
+public class bfrf
+  extends bfro
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  public static final int MSG_ON_ENTER_ROOM = 1;
+  public static final int MSG_ON_ERROR = 2;
+  public static final int MSG_ON_USER_AUDIO_AVAILABLE = 5;
+  public static final int MSG_ON_USER_ENTER = 3;
+  public static final int MSG_ON_USER_EXIT = 4;
+  public static final int MSG_ON_USER_SPEAKING = 6;
+  public static final int MSG_ON_USER_UPDATE = 7;
   
-  bfrf(bfre parambfre, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public void onEnterRoom() {}
   
-  public boolean onPreDraw()
+  public void onError(int paramInt) {}
+  
+  public void onUserAudioAvailable(bfqt parambfqt, boolean paramBoolean) {}
+  
+  public void onUserEnter(bfqt parambfqt) {}
+  
+  public void onUserExit(bfqt parambfqt) {}
+  
+  public void onUserSpeaking(bfqt parambfqt, boolean paramBoolean) {}
+  
+  public void onUserUpdate(List<bfqt> paramList) {}
+  
+  public void update(int paramInt, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_Bfre.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    DynamicGridView.a(this.jdField_a_of_type_Bfre.a, DynamicGridView.a(this.jdField_a_of_type_Bfre.a) + bfre.a(this.jdField_a_of_type_Bfre));
-    DynamicGridView.b(this.jdField_a_of_type_Bfre.a, DynamicGridView.b(this.jdField_a_of_type_Bfre.a) + bfre.b(this.jdField_a_of_type_Bfre));
-    if (DynamicGridView.a(this.jdField_a_of_type_Bfre.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Bfre.a).setVisibility(0);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      onEnterRoom();
+      return;
+    case 2: 
+      onError(((Integer)paramVarArgs[0]).intValue());
+      return;
+    case 3: 
+      onUserEnter((bfqt)paramVarArgs[0]);
+      return;
+    case 4: 
+      onUserExit((bfqt)paramVarArgs[0]);
+      return;
+    case 5: 
+      onUserAudioAvailable((bfqt)paramVarArgs[0], ((Boolean)paramVarArgs[1]).booleanValue());
+      return;
+    case 6: 
+      onUserSpeaking((bfqt)paramVarArgs[0], ((Boolean)paramVarArgs[1]).booleanValue());
+      return;
     }
-    DynamicGridView.a(this.jdField_a_of_type_Bfre.a, this.jdField_a_of_type_Bfre.a.a(DynamicGridView.a(this.jdField_a_of_type_Bfre.a)));
-    if (DynamicGridView.a(this.jdField_a_of_type_Bfre.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Bfre.a).setVisibility(4);
-    }
-    DynamicGridView.a(this.jdField_a_of_type_Bfre.a, this.jdField_a_of_type_Int, this.b);
-    return true;
+    onUserUpdate((List)paramVarArgs[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfrf
  * JD-Core Version:    0.7.0.1
  */

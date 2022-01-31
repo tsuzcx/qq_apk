@@ -1,44 +1,61 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class vay
-  extends uyi
+public class vay
+  extends unk
 {
-  vay(vax paramvax) {}
+  public static final String a;
+  public wkg a;
   
-  public void a(int paramInt, View paramView, Object paramObject, vap paramvap)
+  static
   {
-    if (vzl.b()) {}
-    label6:
-    do
+    jdField_a_of_type_JavaLangString = ume.a("StorySvc.feed_comment_list_775");
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public unf a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspFeedCommentList localRspFeedCommentList = new qqstory_service.RspFeedCommentList();
+    try
     {
-      do
+      localRspFeedCommentList.mergeFrom(paramArrayOfByte);
+      return new vaz(localRspFeedCommentList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        do
-        {
-          break label6;
-          do
-          {
-            return;
-          } while ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()));
-          paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-        } while (TextUtils.isEmpty(paramObject.mOwnerUid));
-        paramObject = vax.a(this.a).b(paramObject.mOwnerUid);
-      } while (paramObject == null);
-      switch (paramView.getId())
-      {
-      default: 
-        return;
+        paramArrayOfByte.printStackTrace();
       }
-    } while (vax.a(this.a) == null);
-    vax.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
+    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Wkg.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Wkg.jdField_b_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_Wkg.jdField_b_of_type_JavaLangString = "";
+    }
+    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Wkg.jdField_b_of_type_JavaLangString));
+    localReqFeedCommentList.source.set(this.jdField_a_of_type_Wkg.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Wkg.jdField_b_of_type_Int != -1) {
+      localReqFeedCommentList.type.set(this.jdField_a_of_type_Wkg.jdField_b_of_type_Int);
+    }
+    return localReqFeedCommentList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vay
  * JD-Core Version:    0.7.0.1
  */

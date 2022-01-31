@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import axll;
-import axlm;
+import azgr;
+import azgs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
@@ -13,19 +13,19 @@ public final class ShortVideoGuideUtil$1
   {
     try
     {
-      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new axlm(this));
+      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new azgs(this));
       return;
     }
     catch (Throwable localThrowable)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d(axll.a, 2, "installSDK t==" + localThrowable.toString());
+      QLog.d(azgr.a, 2, "installSDK t==" + localThrowable.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil.1
  * JD-Core Version:    0.7.0.1
  */

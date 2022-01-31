@@ -76,6 +76,7 @@ public class VideoEmbeddedWidgetClient
   private boolean hide;
   private int initialTime;
   private volatile Boolean isHls;
+  private boolean isOnPageBackGrond;
   private boolean isPaused;
   private boolean loop;
   private Map<String, String> mAttributes;
@@ -244,6 +245,7 @@ public class VideoEmbeddedWidgetClient
   
   public boolean handleMessage(Message paramMessage)
   {
+    long l2 = 0L;
     switch (paramMessage.what)
     {
     }
@@ -256,38 +258,41 @@ public class VideoEmbeddedWidgetClient
       }
       else
       {
-        long l1 = System.currentTimeMillis();
+        long l3 = System.currentTimeMillis();
         if ((this.mMediaPlayer != null) && (this.callBackWebview != null) && (!this.hasCompleted)) {}
         for (;;)
         {
           try
           {
+            l1 = this.mMediaPlayer.getDuration();
+            if (l1 <= 0L) {
+              continue;
+            }
+            l1 /= 1000L;
             paramMessage = new JSONObject();
             paramMessage.put("data", this.data);
             paramMessage.put("position", this.mMediaPlayer.getCurrentPosition() / 1000.0D);
             if ((this.isHls == null) || (!this.isHls.booleanValue())) {
               continue;
             }
-            d = 0.0D;
-            paramMessage.put("duration", d);
+            l1 = l2;
+            paramMessage.put("duration", l1);
             paramMessage.put("videoPlayerId", this.viewId);
             ((AppBrandRuntime)this.curAppBrandRuntime).serviceRuntime.evaluateSubcribeJS("onXWebVideoTimeUpdate", paramMessage.toString(), this.curPageWebviewId);
             this.callBackWebview.evaluateSubcribeJS("onXWebVideoTimeUpdate", paramMessage.toString(), this.curPageWebviewId);
           }
           catch (Throwable paramMessage)
           {
-            double d;
-            long l2;
+            long l1;
             QLog.e("miniapp-embedded", 1, "VIDEO_EVENT_TIME_UPDATE error.", paramMessage);
             continue;
           }
           if (this.isPaused) {
             break;
           }
-          sendTimingMsg(400L + l1 - System.currentTimeMillis());
+          sendTimingMsg(400L + l3 - System.currentTimeMillis());
           break;
-          l2 = this.mMediaPlayer.getDuration();
-          d = l2 / 1000.0D;
+          l1 = 0L;
         }
         if (this.renderer != null)
         {
@@ -318,7 +323,7 @@ public class VideoEmbeddedWidgetClient
     {
       str = paramJSONObject.optString("type");
       if (!"play".equals(str)) {
-        break label598;
+        break label617;
       }
       this.isPaused = false;
       if (((this.hasCompleted) || (this.hasStoped)) && (this.mMediaPlayer != null))
@@ -332,7 +337,7 @@ public class VideoEmbeddedWidgetClient
     try
     {
       if ((!this.filePath.startsWith("http")) && (!this.filePath.startsWith("https"))) {
-        break label411;
+        break label418;
       }
       paramJSONObject = OskPlayerCore.getInstance().getUrl(MiniAppFileManager.getInstance().getAbsolutePath(this.filePath));
       QLog.d("miniapp-embedded", 1, "handleOperateXWebVideo playUrl : " + paramJSONObject);
@@ -347,13 +352,15 @@ public class VideoEmbeddedWidgetClient
       for (;;)
       {
         QLog.e("miniapp-embedded", 1, "handleOperateXWebVideo  play error.", paramJSONObject);
+        continue;
+        QLog.e("miniapp-embedded", 1, "isOnPageBackGrond when mediaPlayerStart - 1");
       }
     }
     if (this.hasPrepared) {
       if (this.mMediaPlayer == null) {}
     }
-    label411:
-    label598:
+    label418:
+    label617:
     do
     {
       float f;
@@ -364,9 +371,12 @@ public class VideoEmbeddedWidgetClient
           if (this.renderer != null) {
             this.renderer.resumeRender();
           }
-          this.isPaused = false;
-          this.mMediaPlayer.start();
-          sendTimingMsg(400L);
+          if (!this.isOnPageBackGrond)
+          {
+            this.isPaused = false;
+            this.mMediaPlayer.start();
+            sendTimingMsg(400L);
+          }
         }
         catch (Throwable paramJSONObject)
         {
@@ -474,7 +484,7 @@ public class VideoEmbeddedWidgetClient
         else
         {
           if ((!"playbackRate".equals(str)) || (TextUtils.isEmpty(this.data))) {
-            break label1026;
+            break label1045;
           }
           if (this.mMediaPlayer != null) {
             try
@@ -505,7 +515,7 @@ public class VideoEmbeddedWidgetClient
       QLog.e("miniapp-embedded", 1, "playbackRate error." + f);
       return;
     } while ((!"stop".equals(str)) || (this.mMediaPlayer == null));
-    label1026:
+    label1045:
     this.isPaused = true;
     this.hasStoped = true;
     QLog.e("miniapp-embedded", 1, "pause isPaused true");
@@ -634,7 +644,7 @@ public class VideoEmbeddedWidgetClient
   public void nativePause()
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.nativePause " + this);
-    if ((this.mMediaPlayer != null) && (this.mMediaPlayer.isPlaying()) && (this.autoPauseIfOpenNative)) {
+    if ((this.mMediaPlayer != null) && (this.autoPauseIfOpenNative)) {
       this.pauseByOpenNative = true;
     }
     try
@@ -655,23 +665,29 @@ public class VideoEmbeddedWidgetClient
   public void nativeResume()
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.nativeResume " + this);
-    if ((this.mMediaPlayer != null) && (this.pauseByOpenNative)) {
+    if ((this.mMediaPlayer != null) && (this.pauseByOpenNative))
+    {
       this.pauseByOpenNative = false;
-    }
-    try
-    {
-      if (this.renderer != null) {
-        this.renderer.resumeRender();
+      try
+      {
+        if (this.renderer != null) {
+          this.renderer.resumeRender();
+        }
+        QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.webviewResume isPaused " + this.isPaused);
+        if (!this.isOnPageBackGrond)
+        {
+          this.isPaused = false;
+          this.mMediaPlayer.start();
+          sendTimingMsg(400L);
+          return;
+        }
+        QLog.e("miniapp-embedded", 1, "isOnPageBackGrond when mediaPlayerStart - 3");
+        return;
       }
-      QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.webviewResume isPaused " + this.isPaused);
-      this.isPaused = false;
-      this.mMediaPlayer.start();
-      sendTimingMsg(400L);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("miniapp-embedded", 1, "nativeResume mMediaPlayer.start() error.", localThrowable);
+      catch (Throwable localThrowable)
+      {
+        QLog.e("miniapp-embedded", 1, "nativeResume mMediaPlayer.start() error.", localThrowable);
+      }
     }
   }
   
@@ -730,8 +746,16 @@ public class VideoEmbeddedWidgetClient
   public void onStateChanged()
   {
     QLog.i("miniapp-embedded", 1, "onStateChanged : " + getCurrState() + "; videoTexture : " + this.videoTexture);
-    if ((getCurrState() == this.stateCanPlay) && (this.videoTexture != null))
+    if (this.isOnPageBackGrond) {
+      break label49;
+    }
+    for (;;)
     {
+      label49:
+      return;
+      if ((getCurrState() != this.stateCanPlay) || (this.videoTexture == null)) {
+        continue;
+      }
       QLog.d("miniapp-embedded", 1, "stateCanPlay!!!!");
       this.mediaPlaySurface = new Surface(this.videoTexture);
       this.mMediaPlayer.setSurface(this.mediaPlaySurface);
@@ -747,66 +771,88 @@ public class VideoEmbeddedWidgetClient
           this.renderer.resumeRender();
         }
       }
-      if (((!this.autoplay) && (!this.hasPlayClicked)) || (this.mMediaPlayer == null)) {}
-    }
-    try
-    {
-      this.isPaused = false;
-      this.mMediaPlayer.start();
-      sendTimingMsg(400L);
-      updateMediaPlayer();
-      if (this.callBackWebview != null) {
-        if (!this.autoplay) {
-          if (this.hasPlayClicked) {
-            break label372;
-          }
-        }
+      if (((!this.autoplay) && (!this.hasPlayClicked)) || (this.mMediaPlayer == null)) {
+        break;
       }
-    }
-    catch (Throwable localThrowable2)
-    {
       try
       {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("data", this.data);
-        localJSONObject.put("videoPlayerId", this.viewId);
-        localJSONObject.put("timeStamp", System.currentTimeMillis());
-        ((AppBrandRuntime)this.curAppBrandRuntime).serviceRuntime.evaluateSubcribeJS("onXWebVideoPlay", localJSONObject.toString(), this.curPageWebviewId);
-        this.callBackWebview.evaluateSubcribeJS("onXWebVideoPlay", localJSONObject.toString(), this.curPageWebviewId);
-        QLog.d("miniapp-embedded", 2, "evaluateSubcribeJS onXWebVideoPlay = " + localJSONObject.toString());
-        label372:
-        if (this.mMediaPlayer == null) {}
+        if (!this.isOnPageBackGrond)
+        {
+          this.isPaused = false;
+          this.mMediaPlayer.start();
+          sendTimingMsg(400L);
+          updateMediaPlayer();
+          if (this.callBackWebview == null) {
+            continue;
+          }
+          if (!this.autoplay) {
+            if (this.hasPlayClicked) {
+              break label387;
+            }
+          }
+        }
       }
       catch (Throwable localThrowable2)
       {
         try
         {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("data", this.data);
-          localJSONObject.put("position", this.mMediaPlayer.getCurrentPosition() / 1000.0D);
-          if ((this.isHls != null) && (this.isHls.booleanValue())) {}
-          long l;
-          for (double d = 0.0D;; d = l / 1000.0D)
+          for (;;)
           {
-            localJSONObject.put("duration", d);
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("data", this.data);
             localJSONObject.put("videoPlayerId", this.viewId);
-            ((AppBrandRuntime)this.curAppBrandRuntime).serviceRuntime.evaluateSubcribeJS("onXWebVideoTimeUpdate", localJSONObject.toString(), this.curPageWebviewId);
-            this.callBackWebview.evaluateSubcribeJS("onXWebVideoTimeUpdate", localJSONObject.toString(), this.curPageWebviewId);
-            QLog.d("miniapp-embedded", 2, "evaluateSubcribeJS onXWebVideoTimeUpdateo nStateChanged = " + localJSONObject.toString());
-            return;
-            localThrowable1 = localThrowable1;
-            QLog.e("miniapp-embedded", 1, "mMediaPlayer.start() error.", localThrowable1);
-            break;
-            localThrowable2 = localThrowable2;
-            QLog.e("miniapp-embedded", 1, "VIDEO_EVENT_PLAY error.", localThrowable2);
-            break label372;
-            l = this.mMediaPlayer.getDuration();
+            localJSONObject.put("timeStamp", System.currentTimeMillis());
+            ((AppBrandRuntime)this.curAppBrandRuntime).serviceRuntime.evaluateSubcribeJS("onXWebVideoPlay", localJSONObject.toString(), this.curPageWebviewId);
+            this.callBackWebview.evaluateSubcribeJS("onXWebVideoPlay", localJSONObject.toString(), this.curPageWebviewId);
+            QLog.d("miniapp-embedded", 2, "evaluateSubcribeJS onXWebVideoPlay = " + localJSONObject.toString());
+            label387:
+            if (this.mMediaPlayer == null) {
+              break;
+            }
+            try
+            {
+              l1 = this.mMediaPlayer.getDuration();
+              if (l1 <= 0L) {
+                break label644;
+              }
+              l1 /= 1000L;
+              localJSONObject = new JSONObject();
+              localJSONObject.put("data", this.data);
+              localJSONObject.put("position", this.mMediaPlayer.getCurrentPosition() / 1000.0D);
+              long l2 = l1;
+              if (this.isHls != null)
+              {
+                l2 = l1;
+                if (this.isHls.booleanValue()) {
+                  l2 = 0L;
+                }
+              }
+              localJSONObject.put("duration", l2);
+              localJSONObject.put("videoPlayerId", this.viewId);
+              ((AppBrandRuntime)this.curAppBrandRuntime).serviceRuntime.evaluateSubcribeJS("onXWebVideoTimeUpdate", localJSONObject.toString(), this.curPageWebviewId);
+              this.callBackWebview.evaluateSubcribeJS("onXWebVideoTimeUpdate", localJSONObject.toString(), this.curPageWebviewId);
+              QLog.d("miniapp-embedded", 2, "evaluateSubcribeJS onXWebVideoTimeUpdateo nStateChanged = " + localJSONObject.toString());
+              return;
+            }
+            catch (Throwable localThrowable1)
+            {
+              QLog.e("miniapp-embedded", 1, "VIDEO_EVENT_TIME_UPDATE error.", localThrowable1);
+              return;
+            }
+            QLog.e("miniapp-embedded", 1, "isOnPageBackGrond when mediaPlayerStart - 4");
           }
-          return;
+          localThrowable2 = localThrowable2;
+          QLog.e("miniapp-embedded", 1, "mMediaPlayer.start() error.", localThrowable2);
         }
         catch (Throwable localThrowable3)
         {
-          QLog.e("miniapp-embedded", 1, "VIDEO_EVENT_TIME_UPDATE error.", localThrowable3);
+          for (;;)
+          {
+            QLog.e("miniapp-embedded", 1, "VIDEO_EVENT_PLAY error.", localThrowable3);
+            continue;
+            label644:
+            long l1 = 0L;
+          }
         }
       }
     }
@@ -881,6 +927,7 @@ public class VideoEmbeddedWidgetClient
   public void webviewPause()
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.webviewPause " + this);
+    this.isOnPageBackGrond = true;
     if ((this.mMediaPlayer != null) && (this.mMediaPlayer.isPlaying()) && (this.autoPauseIfNavigate)) {
       this.pauseByNavigate = true;
     }
@@ -902,29 +949,36 @@ public class VideoEmbeddedWidgetClient
   public void webviewResume()
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.webviewResume " + this);
-    if ((this.mMediaPlayer != null) && (this.pauseByNavigate)) {
+    this.isOnPageBackGrond = false;
+    if ((this.mMediaPlayer != null) && (this.pauseByNavigate))
+    {
       this.pauseByNavigate = false;
-    }
-    try
-    {
-      if (this.renderer != null) {
-        this.renderer.resumeRender();
+      try
+      {
+        if (this.renderer != null) {
+          this.renderer.resumeRender();
+        }
+        QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.webviewResume isPaused " + this.isPaused);
+        if (!this.isOnPageBackGrond)
+        {
+          this.isPaused = false;
+          this.mMediaPlayer.start();
+          sendTimingMsg(400L);
+          return;
+        }
+        QLog.e("miniapp-embedded", 1, "isOnPageBackGrond when mediaPlayerStart - 2");
+        return;
       }
-      QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.webviewResume isPaused " + this.isPaused);
-      this.isPaused = false;
-      this.mMediaPlayer.start();
-      sendTimingMsg(400L);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("miniapp-embedded", 1, "webviewResume mMediaPlayer.start() error.", localThrowable);
+      catch (Throwable localThrowable)
+      {
+        QLog.e("miniapp-embedded", 1, "webviewResume mMediaPlayer.start() error.", localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient
  * JD-Core Version:    0.7.0.1
  */

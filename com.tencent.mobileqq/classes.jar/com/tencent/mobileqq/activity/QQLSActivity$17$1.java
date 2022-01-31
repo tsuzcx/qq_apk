@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abup;
+import adlx;
 import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
 
 public class QQLSActivity$17$1
   implements Runnable
 {
-  public QQLSActivity$17$1(abup paramabup) {}
+  public QQLSActivity$17$1(adlx paramadlx) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class QQLSActivity$17$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.17.1
  * JD-Core Version:    0.7.0.1
  */

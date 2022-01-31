@@ -1,75 +1,30 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import java.util.HashMap;
 
 public class oys
-  extends oxx
+  implements View.OnClickListener
 {
-  private void i()
+  public oys(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = a();
-    if (localObject == null) {
+    paramView = (beei)this.a.a.a(4);
+    if ((paramView != null) && (paramView.a != null) && (paramView.a.isShowing())) {
       return;
     }
-    int i = ((AbsListView)localObject).getFirstVisiblePosition();
-    int k = ((AbsListView)localObject).getLastVisiblePosition();
-    label24:
-    BaseArticleInfo localBaseArticleInfo;
-    StringBuilder localStringBuilder;
-    if (i <= k)
-    {
-      localObject = a(i);
-      if (localObject != null)
-      {
-        localBaseArticleInfo = (BaseArticleInfo)localObject;
-        str = onh.a(localBaseArticleInfo);
-        int j = 0;
-        localObject = str;
-        if (TextUtils.isEmpty(str))
-        {
-          localObject = onh.b(localBaseArticleInfo);
-          j = 1;
-        }
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && ("1".equals(Uri.parse((String)localObject).getQueryParameter("v_feeds_preload"))))
-        {
-          qkb.a().b((String)localObject);
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder = new StringBuilder().append("preloadFrom: ");
-            if (j != 0) {
-              break label186;
-            }
-          }
-        }
-      }
-    }
-    label186:
-    for (String str = "Gallery";; str = "ShortContent")
-    {
-      QLog.d("ViolaHandler", 2, str + " and invoke webpreload data ,openUrl = " + (String)localObject + ";articleInfo = " + localBaseArticleInfo.toString());
-      i += 1;
-      break label24;
-      break;
-    }
-  }
-  
-  public int a()
-  {
-    return 4;
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0) {
-      i();
-    }
+    ReadInJoyAdIMAXBrowserFragment.a(this.a);
+    paramView = new HashMap();
+    paramView.put("stat_src", "5");
+    noy.a(new obk().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(noy.u).b(noy.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(noy.a(paramView)).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oys
  * JD-Core Version:    0.7.0.1
  */

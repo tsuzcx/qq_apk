@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.share;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.res.Resources;
-import bcqf;
-import bcql;
+import bepp;
 import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniProgramOpenSdkUtil$2
@@ -21,7 +21,7 @@ final class MiniProgramOpenSdkUtil$2
       if ((this.val$outInfo.progressDialog != null) && (this.val$outInfo.progressDialog.isShowing())) {
         this.val$outInfo.progressDialog.dismiss();
       }
-      bcql.a(this.val$context, ajya.a(2131692231), 0).b(this.val$context.getResources().getDimensionPixelSize(2131298865));
+      QQToast.a(this.val$context, alpo.a(2131692307), 0).b(this.val$context.getResources().getDimensionPixelSize(2131298914));
       if (((this.val$context instanceof JumpActivity)) && (!((JumpActivity)this.val$context).isFinishing())) {
         MiniProgramOpenSdkUtil.access$100(this.val$context);
       }
@@ -35,7 +35,7 @@ final class MiniProgramOpenSdkUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil.2
  * JD-Core Version:    0.7.0.1
  */

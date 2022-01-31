@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-
-public final class aldt
-  implements Parcelable.Creator<ARCommonConfigInfo>
+public class aldt
 {
-  public ARCommonConfigInfo a(Parcel paramParcel)
-  {
-    return new ARCommonConfigInfo(paramParcel);
-  }
+  public int a;
+  public int b;
   
-  public ARCommonConfigInfo[] a(int paramInt)
+  public aldt(int paramInt1, int paramInt2)
   {
-    return new ARCommonConfigInfo[paramInt];
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,34 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
-class bhur
-  implements bhuv
+public class bhur
+  extends ImageSpan
 {
-  bhur(bhuq parambhuq, IWebviewListener paramIWebviewListener) {}
-  
-  public void a()
+  public bhur(Drawable paramDrawable, int paramInt)
   {
-    if (bhuq.a(this.jdField_a_of_type_Bhuq) == null) {}
-    do
-    {
-      return;
-      if (bhuq.a(this.jdField_a_of_type_Bhuq).getVisibility() != 0) {
-        bhuq.a(this.jdField_a_of_type_Bhuq).setVisibility(0);
-      }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
+    super(paramDrawable, paramInt);
   }
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
-      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
-    }
+    paramCharSequence = getDrawable();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = paramPaint.descent;
+    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt2 = paramCharSequence.getBounds().bottom / 2;
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhur
  * JD-Core Version:    0.7.0.1
  */

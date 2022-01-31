@@ -1,38 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.widget.VerticalGallery;
 
 public class bcpi
-  implements awcf
+  implements bhxy
 {
-  final WeakReference<ProfileCardMoreInfoView> a;
+  private int jdField_a_of_type_Int;
   
-  public bcpi(ProfileCardMoreInfoView paramProfileCardMoreInfoView)
+  public bcpi(WheelPickerLayout paramWheelPickerLayout, int paramInt)
   {
-    this.a = new WeakReference(paramProfileCardMoreInfoView);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(VerticalGallery paramVerticalGallery)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCardMoreInfoView", 2, String.format("onGetIcon actionId=%s size=%s icon=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramBitmap }));
+    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
+    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
+      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
     }
-    if (paramBitmap == null) {
-      QLog.e("ProfileCardMoreInfoView", 1, "onGetIcon decode icon fail.");
-    }
-    do
-    {
-      return;
-      paramBitmap = (ProfileCardMoreInfoView)this.a.get();
-    } while ((paramBitmap == null) || (paramBitmap.a == null) || (paramBitmap.a.a == null) || (paramBitmap.a.a.actionId != paramInt1));
-    paramBitmap.a(paramBitmap.a, true, new String[] { "map_key_sig" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpi
  * JD-Core Version:    0.7.0.1
  */

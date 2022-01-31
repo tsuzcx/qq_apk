@@ -1,302 +1,155 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.RectF;
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
-import java.nio.FloatBuffer;
-import java.util.concurrent.atomic.AtomicInteger;
-
-public abstract class ahyq
+public class ahyq
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  public static final float[] a;
-  private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer;
-  public static final float[] b;
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private long jdField_b_of_type_Long;
-  private float c;
-  private float d;
-  private float e;
-  private float f = 1.0F;
-  private float g = 1.0F;
+  public double a = -100.0D;
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b = "";
+  public boolean b;
+  public int c;
+  public long c;
+  public String c = "";
+  public boolean c;
+  public int d;
+  public long d;
+  public String d = "";
+  public boolean d;
+  public int e;
+  public String e = "";
+  public int f;
+  public String f = "";
+  public int g;
+  public String g = "";
+  public int h;
+  public String h = "";
+  public int i;
+  public String i = "";
+  public int j;
+  public String j = "";
+  public int k;
+  public String k = "";
+  public int l;
+  public String l = "";
+  public int m;
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u;
+  public String v = "";
+  public String w = "";
+  public String x = "";
   
-  static
+  public void a(String paramString)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-    jdField_a_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_a_of_type_ArrayOfFloat);
-    jdField_b_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_b_of_type_ArrayOfFloat);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.d = str;
   }
   
-  public ahyq(long paramLong1, long paramLong2, boolean paramBoolean)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean) {
-      e();
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.g = str;
   }
   
-  public static int a()
+  public void c(String paramString)
   {
-    return jdField_a_of_type_Int;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.h = str;
   }
   
-  public static Bitmap a(float paramFloat1, float paramFloat2)
+  public void d(String paramString)
   {
-    if ((paramFloat1 <= 0.0F) || (paramFloat2 <= 0.0F)) {
-      return null;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    int i = (int)paramFloat1;
-    int j = (int)paramFloat2;
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(i + 1, j + 1, Bitmap.Config.ARGB_8888);
-      Paint localPaint = new Paint();
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-      new Canvas(localBitmap).drawPaint(localPaint);
-      return localBitmap;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ItemBase", 2, "createcache exception:" + localException);
-      return null;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("ItemBase", 2, "createcache OOM:");
-    }
-    return null;
+    this.i = str;
   }
   
-  public static void a(RenderBuffer paramRenderBuffer, int paramInt, float paramFloat1, float paramFloat2, RectF paramRectF, float paramFloat3, float paramFloat4)
+  public void e(String paramString)
   {
-    if ((paramRenderBuffer == null) || (paramInt <= 0)) {}
-    int j;
-    int k;
-    do
-    {
-      return;
-      j = paramRenderBuffer.getWidth();
-      k = paramRenderBuffer.getHeight();
-    } while ((k <= 0) || (j <= 0));
-    b("onDrawFrame start");
-    int i = a();
-    float f2;
-    float f1;
-    if (paramRectF != null)
-    {
-      f2 = paramRectF.width();
-      f1 = paramRectF.height();
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    for (;;)
-    {
-      paramRenderBuffer = new float[16];
-      Matrix.setIdentityM(paramRenderBuffer, 0);
-      if (paramRectF != null)
-      {
-        Matrix.translateM(paramRenderBuffer, 0, paramRectF.left / paramFloat1, paramRectF.top / paramFloat2, 0.0F);
-        Matrix.scaleM(paramRenderBuffer, 0, f2 / paramFloat1, f1 / paramFloat2, 0.0F);
-      }
-      paramRectF = new float[16];
-      Matrix.setIdentityM(paramRectF, 0);
-      Matrix.translateM(paramRectF, 0, (2.0F * paramFloat3 + f2) / j - 1.0F, (2.0F * paramFloat4 + f1) / k - 1.0F, 0.0F);
-      Matrix.scaleM(paramRectF, 0, f2 / j, f1 / k, 1.0F);
-      GLES20.glUseProgram(i);
-      b("glUseProgram");
-      j = GLES20.glGetAttribLocation(i, "aPosition");
-      k = GLES20.glGetAttribLocation(i, "aTextureCoord");
-      int m = GLES20.glGetUniformLocation(i, "uMVPMatrix");
-      i = GLES20.glGetUniformLocation(i, "uTextureMatrix");
-      GLES20.glVertexAttribPointer(j, 2, 5126, false, 8, jdField_a_of_type_JavaNioFloatBuffer);
-      b("glVertexAttribPointer aPosition");
-      GLES20.glEnableVertexAttribArray(j);
-      b("glEnableVertexAttribArray mPositionHandle");
-      GLES20.glVertexAttribPointer(k, 2, 5126, false, 8, jdField_b_of_type_JavaNioFloatBuffer);
-      b("glVertexAttribPointer mTextureHandle");
-      GLES20.glEnableVertexAttribArray(k);
-      b("glEnableVertexAttribArray mTextureHandle");
-      GLES20.glUniformMatrix4fv(m, 1, false, paramRectF, 0);
-      GLES20.glUniformMatrix4fv(i, 1, false, paramRenderBuffer, 0);
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, paramInt);
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(770, 771);
-      GLES20.glDrawArrays(5, 0, 4);
-      b("glDrawArrays");
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, 0);
-      return;
-      f1 = paramFloat2;
-      f2 = paramFloat1;
-    }
+    this.j = str;
   }
   
-  public static void b(String paramString)
+  public void f(String paramString)
   {
-    for (;;)
-    {
-      int i = GLES20.glGetError();
-      if (i == 0) {
-        break;
-      }
-      QLog.e("ItemBase", 2, paramString + ": glError " + i);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.k = str;
   }
   
-  public static void e()
+  public void g(String paramString)
   {
-    try
-    {
-      if (jdField_a_of_type_Int > 0) {
-        break label56;
-      }
-      jdField_a_of_type_Int = GlUtil.createProgram("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", "precision mediump float;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uTexture;\n\nvoid main() {\n    gl_FragColor = texture2D(uTexture, vTextureCoord);\n}\n");
-      if (jdField_a_of_type_Int == 0) {
-        throw new RuntimeException("ItemBase: failed to creating program ");
-      }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    finally {}
-    if (QLog.isColorLevel()) {
-      QLog.d("ItemBase", 2, "initOpenGL, program OK");
-    }
-    label56:
-    int i = 0;
-    if (jdField_a_of_type_Int > 0) {
-      i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ItemBase", 2, "supportOpenGL, current refcount: " + i);
-    }
+    this.p = str;
   }
   
-  public static void f()
+  public void h(String paramString)
   {
-    try
-    {
-      int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-      if ((i <= 0) && (jdField_a_of_type_Int > 0))
-      {
-        GLES20.glDeleteProgram(jdField_a_of_type_Int);
-        jdField_a_of_type_Int = -1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ItemBase", 2, "program deleted. ");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ItemBase", 2, "unInitOpenGL, current refcount: " + i);
-      }
-      return;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    finally {}
+    this.l = str;
   }
   
-  public float a(int paramInt)
+  public void i(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      throw new IllegalArgumentException();
-    case 6: 
-      return this.jdField_a_of_type_Float;
-    case 7: 
-      return this.jdField_b_of_type_Float;
-    case 4: 
-      return this.d;
-    case 3: 
-      return this.c;
-    case 5: 
-      return this.e;
-    case 8: 
-      return this.f;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    return this.g;
+    this.m = str;
   }
   
-  public long a(int paramInt)
+  public void j(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      throw new IllegalArgumentException();
-    case 2: 
-      return this.jdField_b_of_type_Long;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    return this.jdField_a_of_type_Long;
+    this.n = str;
   }
   
-  public void a()
+  public void k(String paramString)
   {
-    this.jdField_a_of_type_Float -= this.e;
-  }
-  
-  public void a(int paramInt, float paramFloat)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 6: 
-      this.jdField_a_of_type_Float = paramFloat;
-      return;
-    case 7: 
-      this.jdField_b_of_type_Float = paramFloat;
-      return;
-    case 4: 
-      this.d = paramFloat;
-      return;
-    case 3: 
-      this.c = paramFloat;
-      return;
-    case 5: 
-      this.e = paramFloat;
-      return;
-    case 8: 
-      this.f = paramFloat;
-      return;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    this.g = paramFloat;
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b() {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    e();
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      f();
-    }
-    b();
+    this.o = str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahyq
  * JD-Core Version:    0.7.0.1
  */

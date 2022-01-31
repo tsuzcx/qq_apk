@@ -1,22 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class abue
-  implements DialogInterface.OnClickListener
+public class abue
+  extends absj
 {
-  abue(abud paramabud) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull absf paramabsf)
   {
-    paramDialogInterface.dismiss();
-    QQIdentiferActivity.a(this.a.a, 205, ajya.a(2131710371));
-    this.a.a.finish();
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    paramJSONObject = (TicketManager)paramString.getManager(2);
+    paramString = paramString.getAccount();
+    paramJSONObject = paramJSONObject.getSkey(paramString);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uin", paramString);
+      localJSONObject.put("skey", paramJSONObject);
+      abvm.a(paramabsf, localJSONObject);
+      return true;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramJSONObject = paramString.getMessage();
+        if (QLog.isColorLevel()) {
+          QLog.w("DoraemonOpenAPI.innerApi", 2, paramJSONObject, paramString);
+        }
+        paramString = paramJSONObject;
+        if (paramJSONObject == null) {
+          paramString = "";
+        }
+        abvm.a(paramabsf, -1, paramString);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abue
  * JD-Core Version:    0.7.0.1
  */

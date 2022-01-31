@@ -1,21 +1,10 @@
-class biuw
-  implements bivd
+public abstract interface biuw
 {
-  biuw(biur parambiur) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (biur.a(this.a))
-    {
-      biur.a(this.a, paramBoolean1, paramBoolean2);
-      return;
-    }
-    biur.b(this.a, paramBoolean1, paramBoolean2);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biuw
  * JD-Core Version:    0.7.0.1
  */

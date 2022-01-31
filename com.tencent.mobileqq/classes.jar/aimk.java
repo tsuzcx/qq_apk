@@ -1,223 +1,40 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SearchHistory;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
+import java.util.HashMap;
 
 public class aimk
-  extends ailo
-  implements awil, bfos
+  extends PhotoListBaseData
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private boolean jdField_b_of_type_Boolean;
-  
-  public aimk(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, List<awii> paramList, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, boolean paramBoolean)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, paramList);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener2;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  private void a(TextView paramTextView, boolean paramBoolean)
-  {
-    if (paramTextView == null) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramTextView.getContext().getResources().getDrawable(2130841310);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
-      }
-      ThemeUtil.setThemeFilter(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
-      paramTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
-      return;
-    }
-    paramTextView.setCompoundDrawables(null, null, null, null);
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  protected boolean a(ailp paramailp)
-  {
-    boolean bool2 = super.a(paramailp);
-    boolean bool1 = bool2;
-    if ((paramailp instanceof aiml))
-    {
-      paramailp = (aiml)paramailp;
-      if ((bool2) && (!paramailp.jdField_a_of_type_Boolean)) {
-        bool1 = true;
-      }
-    }
-    else
-    {
-      return bool1;
-    }
-    return false;
-  }
-  
-  public void c()
-  {
-    super.b();
-  }
-  
-  public int getCount()
-  {
-    int i = super.getCount();
-    if (i > 5) {
-      return 5;
-    }
-    return i;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    boolean bool2 = true;
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558856, paramViewGroup, false);
-      paramViewGroup = new aiml();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368595));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368698));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368575));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378265));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375368);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setContentDescription(ajya.a(2131702562));
-      awiw.a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378257));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378406));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131368598));
-      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131378332);
-      paramView.setTag(paramViewGroup);
-    }
-    Object localObject1;
-    for (;;)
-    {
-      localObject1 = (awii)getItem(paramInt);
-      if (localObject1 != null) {
-        break;
-      }
-      QLog.w("ContactsSearchResultAdapter", 1, "getView entity is null.");
-      return paramView;
-      paramViewGroup = (aiml)paramView.getTag();
-    }
-    Object localObject2 = ((awii)localObject1).c();
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-    if (String.valueOf(9954L).equals(((awii)localObject1).d())) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView, bool1);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(((awii)localObject1).b());
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(((awii)localObject1).b());
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(((awii)localObject1).a());
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((awii)localObject1).d();
-      paramViewGroup.jdField_a_of_type_Int = ((awii)localObject1).c();
-      if ((localObject1 instanceof awhm))
-      {
-        SearchHistory localSearchHistory = ((awhm)localObject1).a();
-        bool1 = bool2;
-        if (localSearchHistory.type != 56938)
-        {
-          if (localSearchHistory.type != 56942) {
-            break label524;
-          }
-          bool1 = bool2;
-        }
-      }
-      for (;;)
-      {
-        paramViewGroup.jdField_a_of_type_Boolean = bool1;
-        if (paramViewGroup.jdField_a_of_type_Boolean)
-        {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841580);
-          paramViewGroup.d.setVisibility(0);
-          paramViewGroup.d.setText(bbcz.a((String)localObject2));
-          label386:
-          localObject2 = ((awii)localObject1).a();
-          if (localObject2 != null) {
-            break label561;
-          }
-          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-          label407:
-          if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
-          {
-            paramView.setTag(-1, Integer.valueOf(paramInt));
-            paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          }
-          if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null)
-          {
-            paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(-1, Long.valueOf(((SearchHistory)((awii)localObject1).a()).getId()));
-            paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-          }
-          localObject1 = paramView.findViewById(2131365282);
-          if (paramInt != getCount() - 1) {
-            break label581;
-          }
-          ((View)localObject1).setVisibility(8);
-        }
-        for (;;)
-        {
-          if (paramViewGroup.jdField_b_of_type_AndroidViewView == null) {
-            break label588;
-          }
-          if (!awiw.a(paramViewGroup.jdField_a_of_type_JavaLangString)) {
-            break label590;
-          }
-          paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          return paramView;
-          label524:
-          bool1 = false;
-          break;
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(paramViewGroup.jdField_a_of_type_JavaLangString, paramViewGroup.jdField_a_of_type_Int));
-          paramViewGroup.d.setVisibility(8);
-          break label386;
-          label561:
-          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-          break label407;
-          label581:
-          ((View)localObject1).setVisibility(0);
-        }
-        label588:
-        break;
-        label590:
-        paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        return paramView;
-        bool1 = false;
-      }
-    }
-  }
+  public int a;
+  public long a = -1L;
+  public SessionInfo a;
+  public String a;
+  public HashMap<String, PhotoSendParams> a;
+  public xiv a;
+  public boolean a;
+  public String b;
+  public HashMap<String, byte[]> b;
+  public boolean b;
+  public String c;
+  public HashMap<LocalMediaInfo, LocalMediaInfo> c = new HashMap();
+  public boolean c;
+  public String d;
+  public boolean d = true;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aimk
  * JD-Core Version:    0.7.0.1
  */

@@ -22,6 +22,7 @@ public class ArkView
   private int mBorderType = -1;
   private Context mContext = null;
   private boolean mGetArkViewSize = false;
+  private boolean mHardwareRenderingEnable = true;
   private ArkAppInfo.Size mHintSize = null;
   private ArkView.InitInfo mInfo = null;
   private ArkAppInfo.Size mMaxSize = null;
@@ -41,6 +42,7 @@ public class ArkView
     this.mMinSize = new ArkAppInfo.Size(30, 30);
     this.mMaxSize = new ArkAppInfo.Size(paramContext.widthPixels, paramContext.heightPixels);
     this.mHintSize = new ArkAppInfo.Size(320, 480);
+    this.mOnStartTemporaryDetach = false;
     getViewTreeObserver().addOnGlobalLayoutListener(new ArkView.1(this));
   }
   
@@ -48,18 +50,31 @@ public class ArkView
   {
     if (paramInitInfo != null)
     {
-      ArkAppCacheMgr.setupArkEnvironment(true);
-      if (this.mArkModel != null) {
-        this.mArkModel.doOnEvent(2);
-      }
-      this.mArkModel = new ArkModel(ArkDelegateManager.getInstance().getApplicationCallback(), true);
+      StringBuilder localStringBuilder = new StringBuilder("loadImpl() appPath=");
+      localStringBuilder.append(paramInitInfo.appPath);
+      this.mArkModel = new ArkModel(ArkDelegateManager.getInstance().getApplicationCallback(), this.mHardwareRenderingEnable);
+      localStringBuilder.append(",gpuRenderingEnabled=").append(this.mHardwareRenderingEnable);
       setInputCallback(ArkDelegateManager.getInstance().getInputCallback());
+      if (this.mArkViewCallback != null) {
+        setLoadCallback((ArkViewImplement.LoadCallback)this.mArkViewCallback.get());
+      }
       float f = this.mContext.getResources().getDisplayMetrics().scaledDensity;
       this.mArkModel.setAppPath(paramInitInfo.appPath);
       this.mArkModel.init(paramInitInfo.appName, paramInitInfo.appView, paramInitInfo.minVersion, paramInitInfo.metaData, paramInitInfo.appConfig, f);
-      setSize(this.mPrefferSize, this.mMinSize, this.mMaxSize);
-      if (this.mArkViewCallback != null) {
-        setLoadCallback((ArkViewImplement.LoadCallback)this.mArkViewCallback.get());
+      if (this.mMinSize != null)
+      {
+        this.mArkModel.setMinSize(this.mMinSize.width, this.mMinSize.height);
+        localStringBuilder.append(".mMinSize=(").append(this.mMinSize.width).append(",").append(this.mMinSize.height).append(")");
+      }
+      if (this.mMaxSize != null)
+      {
+        this.mArkModel.setMaxSize(this.mMaxSize.width, this.mMaxSize.height);
+        localStringBuilder.append(".mMaxSize=(").append(this.mMaxSize.width).append(",").append(this.mMaxSize.height).append(")");
+      }
+      if (this.mPrefferSize != null)
+      {
+        this.mArkModel.setMaxSize(this.mPrefferSize.width, this.mPrefferSize.height);
+        localStringBuilder.append(".mPrefferSize=(").append(this.mPrefferSize.width).append(",").append(this.mPrefferSize.height).append(")");
       }
       if (this.mRadius > 0.0F) {
         super.setClipRadius(this.mRadius);
@@ -70,6 +85,7 @@ public class ArkView
       if (this.mBorderType >= 0) {
         super.setBorderType(this.mBorderType);
       }
+      ENV.logI("ArkApp.ArkView", localStringBuilder.toString());
       super.initArkView(this.mArkModel);
     }
   }
@@ -124,6 +140,7 @@ public class ArkView
   {
     if (this.mArkModel != null)
     {
+      ENV.logI("ArkApp.ArkView", "onDestroy()");
       this.mArkModel.doOnEvent(2);
       this.mArkModel = null;
     }
@@ -131,14 +148,18 @@ public class ArkView
   
   public void onPause()
   {
-    if (this.mArkModel != null) {
+    if (this.mArkModel != null)
+    {
+      ENV.logI("ArkApp.ArkView", "onPause()");
       this.mArkModel.doOnEvent(0);
     }
   }
   
   public void onResume()
   {
-    if (this.mArkModel != null) {
+    if (this.mArkModel != null)
+    {
+      ENV.logI("ArkApp.ArkView", "onResume()");
       this.mArkModel.doOnEvent(1);
     }
   }
@@ -176,35 +197,55 @@ public class ArkView
     ENV.logI("ArkApp.ArkView", "setClipRadiusTop radiusTop=" + paramFloat);
   }
   
+  public void setHardwareRenderingEnable(boolean paramBoolean)
+  {
+    this.mHardwareRenderingEnable = paramBoolean;
+    ENV.logI("ArkApp.ArkView", "setHardwareRenderingEnable:" + paramBoolean);
+  }
+  
+  public void setOnStartTemporaryDetach(boolean paramBoolean)
+  {
+    this.mOnStartTemporaryDetach = paramBoolean;
+    ENV.logI("ArkApp.ArkView", "setOnStartTemporaryDetach:" + paramBoolean);
+  }
+  
   public boolean setSize(ArkAppInfo.Size paramSize1, ArkAppInfo.Size paramSize2, ArkAppInfo.Size paramSize3)
   {
     if ((paramSize1 != null) || (paramSize2 != null) || (paramSize3 != null))
     {
       StringBuilder localStringBuilder = new StringBuilder("setSize");
-      this.mArkModel.setHintSize(this.mHintSize.width, this.mHintSize.height);
       localStringBuilder.append(".hitSize=(").append(this.mHintSize.width).append(",").append(this.mHintSize.height).append(")");
       if (paramSize1 != null)
       {
         this.mPrefferSize.width = paramSize1.width;
         this.mPrefferSize.height = paramSize1.height;
-        this.mArkModel.setFixSize(this.mPrefferSize.width, this.mPrefferSize.height);
         localStringBuilder.append(".prefferSize=(").append(this.mPrefferSize.width).append(",").append(this.mPrefferSize.height).append(")");
       }
       if (paramSize2 != null)
       {
         this.mMinSize.width = paramSize2.width;
         this.mMinSize.height = paramSize2.height;
-        this.mArkModel.setMinSize(this.mMinSize.width, this.mMinSize.height);
         localStringBuilder.append(".minSize=(").append(this.mMinSize.width).append(",").append(this.mMinSize.height).append(")");
       }
       if (paramSize3 != null)
       {
         this.mMaxSize.width = paramSize3.width;
         this.mMaxSize.height = paramSize3.height;
-        this.mArkModel.setMaxSize(this.mMaxSize.width, this.mMaxSize.height);
         localStringBuilder.append(".maxSize=(").append(this.mMaxSize.width).append(",").append(this.mMaxSize.height).append(")");
       }
-      setViewRect(this.mPrefferSize.width, this.mPrefferSize.height);
+      ENV.logI("ArkApp.ArkView", localStringBuilder.toString());
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean updateSize(ArkAppInfo.Size paramSize)
+  {
+    if (paramSize != null)
+    {
+      setViewRect(paramSize.width, paramSize.height);
+      StringBuilder localStringBuilder = new StringBuilder("updateSize");
+      localStringBuilder.append(".setViewRect=(").append(paramSize.width).append(",").append(paramSize.height).append(")");
       ENV.logI("ArkApp.ArkView", localStringBuilder.toString());
       return true;
     }
@@ -213,7 +254,7 @@ public class ArkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ark.open.ArkView
  * JD-Core Version:    0.7.0.1
  */

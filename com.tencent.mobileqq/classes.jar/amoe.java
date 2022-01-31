@@ -1,37 +1,25 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
-import java.util.Comparator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 
 class amoe
-  implements Comparator<Rect>
+  implements Animation.AnimationListener
 {
-  amoe(amod paramamod) {}
+  amoe(amob paramamob) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.g.contains(paramRect1)) {}
-    do
-    {
-      do
-      {
-        return 1;
-        if (this.a.g.contains(paramRect2)) {
-          return -1;
-        }
-        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
-          return -1;
-        }
-      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
-      if (paramRect1.width() > paramRect2.width()) {
-        return -1;
-      }
-    } while (paramRect1.width() < paramRect2.width());
-    return 0;
+    this.a.a.setVisibility(8);
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amoe
  * JD-Core Version:    0.7.0.1
  */

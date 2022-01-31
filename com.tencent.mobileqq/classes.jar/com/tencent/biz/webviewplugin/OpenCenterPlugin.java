@@ -1,9 +1,9 @@
 package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
-import bccb;
-import bccc;
-import bcdp;
+import bebc;
+import bebd;
+import becq;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.open.adapter.OpenAppClient;
 import com.tencent.open.appcommon.js.BaseInterface;
@@ -21,8 +21,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class OpenCenterPlugin
-  extends bccb
-  implements bccc
+  extends bebc
+  implements bebd
 {
   private Map<String, BaseInterface> a;
   
@@ -166,7 +166,7 @@ public class OpenCenterPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OpenCenterPlugin
  * JD-Core Version:    0.7.0.1
  */

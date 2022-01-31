@@ -1,38 +1,28 @@
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiwm
-  implements Cloneable
+class aiwm
+  implements IRedPacket.OnGetSkinListener
 {
-  public int a;
-  public long a;
-  public ArrayList<String> a;
-  public int b;
-  public int c;
+  aiwm(aiwk paramaiwk, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
   
-  protected Object clone()
+  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
   {
-    Object localObject = null;
-    try
-    {
-      aiwm localaiwm = (aiwm)super.clone();
-      localObject = localaiwm;
+    this.jdField_a_of_type_AndroidOsBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "getRedPacketBundle | info resPath = " + paramRedPacketInfoBase.resPath);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      for (;;)
-      {
-        localCloneNotSupportedException.printStackTrace();
-      }
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, this.jdField_a_of_type_AndroidOsBundle);
     }
-    if (this.a != null) {
-      localObject.a = ((ArrayList)this.a.clone());
-    }
-    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwm
  * JD-Core Version:    0.7.0.1
  */

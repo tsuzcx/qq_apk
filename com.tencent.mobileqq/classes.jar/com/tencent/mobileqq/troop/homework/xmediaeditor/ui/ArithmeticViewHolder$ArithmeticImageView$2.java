@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import bhxj;
+import bjyu;
 
 class ArithmeticViewHolder$ArithmeticImageView$2
   implements Runnable
 {
-  ArithmeticViewHolder$ArithmeticImageView$2(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView, bhxj parambhxj) {}
+  ArithmeticViewHolder$ArithmeticImageView$2(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView, bjyu parambjyu) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bhxj.a();
+    this.jdField_a_of_type_Bjyu.a();
   }
 }
 

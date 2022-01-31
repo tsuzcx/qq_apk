@@ -14,11 +14,10 @@ class OpenAuthorityAccountView$5
   public void run()
   {
     Bitmap localBitmap = OpenAuthorityAccountView.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, (int)(58.0F * this.this$0.a), true);
-    if (OpenAuthorityAccountView.a(this.this$0) == null) {
+    if (OpenAuthorityAccountView.a(this.this$0) == null)
+    {
+      QLog.e("OpenAuthorityAccountView", 1, "-->updateAccountFace mContext == null");
       return;
-    }
-    if ((localBitmap == null) && (QLog.isColorLevel())) {
-      QLog.e("OpenAuthorityAccountView", 2, "-->updateAccountFace uin = " + this.jdField_a_of_type_JavaLangString);
     }
     ((BaseActivity)OpenAuthorityAccountView.a(this.this$0)).runOnUiThread(new OpenAuthorityAccountView.5.1(this, localBitmap));
   }

@@ -1,24 +1,31 @@
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.TextUtils.TruncateAt;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
 
-public class bfvt
-  extends StaticLayout
+class bfvt
+  implements bhqd
 {
-  public bfvt(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4)
-  {
-    super(paramCharSequence, paramInt1, paramInt2, paramTextPaint, paramInt3, paramAlignment, paramFloat1, paramFloat2, paramBoolean, paramTruncateAt, paramInt4);
-  }
+  bfvt(bfvs parambfvs, Intent paramIntent, bhpy parambhpy) {}
   
-  public int getParagraphDirection(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return 1;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      paramView = this.jdField_a_of_type_AndroidContentIntent.getExtras();
+      if ((paramView.containsKey("request_type")) && (paramView.containsKey("uin")) && (paramView.containsKey("sigt")) && (paramView.containsKey("nickname"))) {
+        bfvr.a(this.jdField_a_of_type_Bfvs.a, paramView);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfvt
  * JD-Core Version:    0.7.0.1
  */

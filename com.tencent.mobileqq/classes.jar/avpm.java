@@ -1,140 +1,154 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qzone.widget.RoundCornerLinearLayout;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class avpm
-  extends avpl
+  extends Dialog
 {
-  public int a;
-  public String a;
-  public String b = "";
+  protected int a;
+  protected Context a;
+  protected Drawable a;
+  protected View.OnClickListener a;
+  protected avpp a;
+  protected int b;
   
-  public avpm()
+  public avpm(Context paramContext, ArrayList<avpo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1001;
+    super(paramContext, 2131755801);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new avpn(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = bcwh.a(paramContext, 34.0F);
+    this.jdField_a_of_type_Int = bcwh.a(paramContext, 34.0F);
+    a(paramArrayList);
   }
   
-  private RedAppInfo a(String paramString, QQAppInterface paramQQAppInterface)
+  public void a(int paramInt1, int paramInt2, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq getRedPointInfo", 2, "path = " + paramString);
-    }
-    if ("7720.772004".equals(paramString)) {}
-    for (paramString = asfl.a(paramQQAppInterface, paramString);; paramString = ((avps)paramQQAppInterface.getManager(36)).a(paramString)) {
-      return avpv.a(paramString);
-    }
+    Window localWindow = getWindow();
+    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+    localLayoutParams.x = paramInt1;
+    localLayoutParams.y = paramInt2;
+    localLayoutParams.gravity = 85;
+    localLayoutParams.dimAmount = paramFloat;
+    localWindow.setAttributes(localLayoutParams);
+    super.show();
   }
   
-  private void a(QQAppInterface paramQQAppInterface, String paramString)
+  protected void a(ImageView paramImageView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq clearRed", 2, "path = " + paramString);
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#f2f2f2"));
     }
-    ((avps)paramQQAppInterface.getManager(36)).b(paramString);
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq reportRedInfo", 2, "path = " + paramString + "act_id == " + paramInt);
-    }
-    if (paramString == null) {
-      return;
-    }
+    Object localObject2 = null;
     try
     {
-      if (paramString.contains("\\.")) {}
-      for (i = Integer.parseInt(paramString.split("\\.")[0]);; i = Integer.parseInt(paramString))
+      if (!TextUtils.isEmpty(paramString))
       {
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          paramString = ((avps)paramQQAppInterface.getManager(36)).a(paramString);
-          localJSONObject.put("service_type", 0);
-          localJSONObject.put("act_id", paramInt);
-          localJSONObject.put("obj_id", "");
-          localJSONObject.put("pay_amt", 0);
-          localJSONObject.put("service_id", i);
-          ((avps)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
-          return;
+        localObject1 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_a_of_type_Int;
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_b_of_type_Int;
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
+      }
+      for (;;)
+      {
+        paramString = (String)localObject1;
+        if (localObject1 == null) {
+          paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         }
-        catch (JSONException paramQQAppInterface)
+        paramImageView.setImageDrawable(paramString);
+        return;
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
         {
-          paramQQAppInterface.printStackTrace();
-          return;
+          QLog.w("NearbyPublishMenu", 2, "loadImage empty url");
+          localObject1 = localObject2;
         }
       }
     }
-    catch (NumberFormatException localNumberFormatException)
+    catch (Exception localException)
     {
       for (;;)
       {
-        localNumberFormatException.printStackTrace();
-        int i = 0;
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    paramBundle.putString("path", this.jdField_a_of_type_JavaLangString);
-    paramBundle.putInt("act_id", this.jdField_a_of_type_Int);
-    paramBundle.putString("reportPath", this.b);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
-  {
-    Object localObject = paramBundle.getString("cmd");
-    if ("getRedInfo".equals(localObject))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
-      }
-      paramQQAppInterface = a(this.jdField_a_of_type_JavaLangString, paramQQAppInterface);
-      localObject = new Bundle();
-      ((Bundle)localObject).putParcelable("redInfoResp", paramQQAppInterface);
-      paramBundle.putBundle("keyResponse", (Bundle)localObject);
-      super.a(paramBundle);
-    }
-    do
-    {
-      return;
-      if ("reportRedInfo".equals(localObject))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
+        Object localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.w("NearbyPublishMenu", 2, "loadImage exp: url=" + paramString, localException);
+          localObject1 = localObject2;
         }
-        a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        return;
       }
-    } while (!"clearRedInfo".equals(localObject));
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
     }
-    a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString);
   }
   
-  public void b(Bundle paramBundle)
+  public void a(avpp paramavpp)
   {
-    super.b(paramBundle);
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("path");
-    this.jdField_a_of_type_Int = paramBundle.getInt("act_id");
-    this.b = paramBundle.getString("reportPath");
+    this.jdField_a_of_type_Avpp = paramavpp;
+  }
+  
+  protected void a(ArrayList<avpo> paramArrayList)
+  {
+    RoundCornerLinearLayout localRoundCornerLinearLayout = new RoundCornerLinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localRoundCornerLinearLayout.setOrientation(1);
+    localRoundCornerLinearLayout.setBackgroundResource(2130845072);
+    int i = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+    localRoundCornerLinearLayout.setPadding(0, i, 0, i);
+    localRoundCornerLinearLayout.setRadius(bcwh.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
+    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    paramArrayList = paramArrayList.iterator();
+    if (paramArrayList.hasNext())
+    {
+      avpo localavpo = (avpo)paramArrayList.next();
+      ViewGroup localViewGroup = (ViewGroup)localLayoutInflater.inflate(2131559390, localRoundCornerLinearLayout, false);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131367808);
+      TextView localTextView1 = (TextView)localViewGroup.findViewById(2131377884);
+      TextView localTextView2 = (TextView)localViewGroup.findViewById(2131377143);
+      localTextView1.setText(localavpo.jdField_b_of_type_JavaLangString);
+      if (TextUtils.isEmpty(localavpo.c))
+      {
+        localTextView2.setVisibility(8);
+        label167:
+        if (TextUtils.isEmpty(localavpo.a)) {
+          break label227;
+        }
+        a(localImageView, localavpo.a);
+      }
+      for (;;)
+      {
+        localViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        localViewGroup.setTag(localavpo);
+        localRoundCornerLinearLayout.addView(localViewGroup);
+        break;
+        localTextView2.setText(localavpo.c);
+        break label167;
+        label227:
+        if (localavpo.jdField_b_of_type_Int > 0) {
+          localImageView.setImageResource(localavpo.jdField_b_of_type_Int);
+        }
+      }
+    }
+    setContentView(localRoundCornerLinearLayout);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avpm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-
-public class ayzm
-  extends ayzr
+public abstract interface ayzm
 {
-  public mobileqq_mp.RetInfo a;
-  public String a;
-  public String b;
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayzm
  * JD-Core Version:    0.7.0.1
  */

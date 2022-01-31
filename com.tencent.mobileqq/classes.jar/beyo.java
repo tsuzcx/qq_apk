@@ -1,20 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.report.GdtCgiReportRunnable;
-
 public class beyo
 {
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    bejn.a(new GdtCgiReportRunnable(paramString), 16, null, false);
-    betc.b("GDT_CGI_REPORT", paramString);
-  }
+  public String a;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyo
  * JD-Core Version:    0.7.0.1
  */

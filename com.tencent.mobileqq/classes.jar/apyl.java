@@ -1,20 +1,60 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppExposureData;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import java.util.ArrayList;
+import java.util.List;
 
-class apyl
-  implements bcwm
+public class apyl
+  extends RecyclerView.Adapter<apyk>
 {
-  apyl(apyi paramapyi) {}
+  private List<MiniAppRecommInfo.MiniApp> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(int paramInt)
+  public apyl(apyj paramapyj) {}
+  
+  public apyk a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramInt == 2) {
-      this.a.a.c();
+    paramViewGroup = LayoutInflater.from(apyj.a(this.jdField_a_of_type_Apyj)).inflate(2131559364, null, false);
+    return new apyk(apyj.a(this.jdField_a_of_type_Apyj), paramViewGroup);
+  }
+  
+  public void a(apyk paramapyk, int paramInt)
+  {
+    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramapyk.a(localMiniApp);
+    paramapyk.a(paramInt);
+    if ((localMiniApp != null) && (localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
+    {
+      paramapyk = new MiniAppConfig(localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
+      paramapyk.launchParam.scene = 2065;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(paramapyk, paramInt));
+      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
+      apyj.a(101, paramInt, localMiniApp.jdField_a_of_type_Int);
     }
+  }
+  
+  public void a(List<MiniAppRecommInfo.MiniApp> paramList)
+  {
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyl
  * JD-Core Version:    0.7.0.1
  */

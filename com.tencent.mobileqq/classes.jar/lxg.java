@@ -1,40 +1,53 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
 
 public class lxg
-  extends atcd
+  extends lxh
 {
-  public lxg(QQServiceForAV paramQQServiceForAV) {}
+  public lxc a;
+  public int b;
+  public int c;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, int paramInt1, int paramInt2)
+  public lxg(lxc paramlxc)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(", nickname=").append(paramString).append(", gender=").append(paramInt1).append(", age=").append(paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "QQServiceForAV.onNearbyCardDownload(), isSuccess: " + paramBoolean + ", card = " + ((StringBuilder)localObject).toString());
+    this.jdField_b_of_type_Long = 1800L;
+    this.a = paramlxc;
+  }
+  
+  public void a(long paramLong)
+  {
+    super.a(paramLong);
+    Rect localRect = this.a.a();
+    int i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
+    int j = (localRect.top + localRect.bottom - this.c) / 2;
+    int k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
+    int m = localRect.top;
+    a(i, j, k, (localRect.bottom + m + this.c) / 2);
+    if (this.a.a != null) {
+      a(this.a.a());
     }
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.q2v.getNearByProfile");
-    localIntent.putExtra("uin", String.valueOf(paramLong));
-    localIntent.putExtra("nickname", paramString);
-    localIntent.putExtra("gender", paramInt1);
-    localIntent.putExtra("age", paramInt2);
-    localObject = (QQAppInterface)this.a.a();
-    paramString = (String)localObject;
-    if (localObject == null) {
-      paramString = (QQAppInterface)this.a.a();
+    for (;;)
+    {
+      b(this.a.a());
+      return;
+      a(0);
     }
-    if (paramString != null) {
-      paramString.getApp().sendBroadcast(localIntent);
-    }
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.a = null;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = (paramInt1 * 152 / 160);
+    this.c = (paramInt1 * 152 / 160);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxg
  * JD-Core Version:    0.7.0.1
  */

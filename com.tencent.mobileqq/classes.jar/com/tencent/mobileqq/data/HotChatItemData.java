@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class HotChatItemData
-  extends auko
+  extends awbv
 {
   public String mADsContent;
   public long mDraftSec;
@@ -16,12 +16,12 @@ public class HotChatItemData
   public long mLatestMsgSec;
   public long mMakeTopTime;
   public int mState;
-  @aumc
+  @awdj
   public String mTroopUin;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.HotChatItemData
  * JD-Core Version:    0.7.0.1
  */

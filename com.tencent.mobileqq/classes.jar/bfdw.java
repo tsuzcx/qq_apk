@@ -1,51 +1,66 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.runtime.flutter.FlutterRuntimeLoader;
-
-public final class bfdw
-  implements beqn<FlutterRuntimeLoader>
+public class bfdw
 {
-  public FlutterRuntimeLoader a(Context paramContext, Bundle paramBundle)
+  public static int a(int paramInt)
   {
-    return new FlutterRuntimeLoader(paramContext);
+    int i = 1;
+    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 4)) {
+      i = 2;
+    }
+    while (paramInt == 5) {
+      return i;
+    }
+    return 3;
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public boolean a(Bundle paramBundle)
+  public static int a(int paramInt, String paramString)
   {
-    if ((beku.a != null) && (!TextUtils.isEmpty(beku.a.getNativeLibDir()))) {}
-    for (int i = 1; i != 0; i = 0) {
-      return true;
+    int i = 1;
+    if (paramInt == 0) {
+      i = 0;
     }
-    if (paramBundle != null) {
-      try
-      {
-        paramBundle = (String)paramBundle.get("tissuenativelibdir");
-        if (beku.a == null) {
-          beku.a = new bfdx(this, paramBundle);
-        }
-        boolean bool = TextUtils.isEmpty(beku.a.getNativeLibDir());
-        if (!bool) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-        return false;
-      }
-      catch (Throwable paramBundle) {}
+    while (paramInt == 1) {
+      return i;
     }
+    if (paramInt == 3000) {
+      return 2;
+    }
+    if (aljq.aH.equals(paramString)) {
+      return 3;
+    }
+    if (aljq.L.equals(paramString)) {
+      return 4;
+    }
+    if (aljq.A.equals(paramString)) {
+      return 5;
+    }
+    return -1;
   }
   
-  public boolean a(MiniAppInfo paramMiniAppInfo)
+  public static int b(int paramInt)
   {
-    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode());
+    switch (paramInt)
+    {
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+    default: 
+      return -1;
+    case 1: 
+      return 0;
+    case 2: 
+      return 1;
+    case 3: 
+      return 2;
+    case 4: 
+      return 3;
+    }
+    return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfdw
  * JD-Core Version:    0.7.0.1
  */

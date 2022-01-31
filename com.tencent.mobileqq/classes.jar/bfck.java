@@ -1,57 +1,77 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import com.tencent.qqmini.sdk.runtime.core.page.swipe.SwipeBackLayout;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.util;
+import org.json.JSONObject;
 
 public class bfck
-  extends bfco
+  extends WtloginObserver
 {
-  public bfck(SwipeBackLayout paramSwipeBackLayout) {}
+  public bfck(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public int a(View paramView)
+  public void OnException(String paramString, int paramInt)
   {
-    return SwipeBackLayout.b(this.a);
+    super.OnException(paramString, paramInt);
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnException() e:" + paramString);
   }
   
-  public int a(View paramView, int paramInt1, int paramInt2)
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (paramInt1 < 0) {
-      return 0;
-    }
-    return Math.min(paramInt1, SwipeBackLayout.b(this.a));
-  }
-  
-  public void a(View paramView, float paramFloat1, float paramFloat2)
-  {
-    if (SwipeBackLayout.a(this.a) >= SwipeBackLayout.b(this.a) / 10)
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): ret=" + paramInt);
+    if (paramInt == 0)
     {
-      SwipeBackLayout.a(this.a, true);
-      SwipeBackLayout.a(this.a).a(SwipeBackLayout.b(this.a), paramView.getTop());
+      if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
+        paramInt = 0;
+      }
+      while (paramInt < paramArrayList.size())
+      {
+        try
+        {
+          paramString = HexUtil.hexStr2Bytes((String)paramArrayList.get(paramInt));
+          int i = util.buf_to_int16(paramString, 0);
+          int j = util.buf_to_int16(paramString, 2);
+          if (i == 54)
+          {
+            paramArrayOfByte1 = new byte[j];
+            System.arraycopy(paramString, 4, paramArrayOfByte1, 0, j);
+            paramString = new String(paramArrayOfByte1);
+            QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid sucess Json:" + paramString);
+            paramString = new JSONObject(paramString);
+            paramLong = paramString.optLong("open_appid");
+            paramString = paramString.optString("comefrom");
+            this.a.a(paramLong, paramString);
+            if (!TextUtils.isEmpty(paramString))
+            {
+              paramArrayOfByte1 = Message.obtain();
+              paramArrayOfByte1.what = 1004;
+              paramArrayOfByte1.obj = paramString;
+              this.a.b.sendMessage(paramArrayOfByte1);
+            }
+          }
+        }
+        catch (Throwable paramString)
+        {
+          for (;;)
+          {
+            QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): Exeption:", paramString);
+          }
+        }
+        paramInt += 1;
+        continue;
+        QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid failed for data is null");
+      }
     }
-    for (;;)
-    {
-      this.a.invalidate();
-      return;
-      SwipeBackLayout.a(this.a).a(0, paramView.getTop());
-    }
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    SwipeBackLayout.a(this.a, Math.abs(paramInt1 / (this.a.a.getWidth() + SwipeBackLayout.a(this.a).getIntrinsicWidth())));
-    SwipeBackLayout.a(this.a, paramInt1);
-    if ((SwipeBackLayout.a(this.a)) && (SwipeBackLayout.a(this.a) == SwipeBackLayout.b(this.a)) && (SwipeBackLayout.a(this.a) != null)) {
-      SwipeBackLayout.a(this.a).a();
-    }
-  }
-  
-  public boolean a(View paramView, int paramInt)
-  {
-    return paramView == this.a.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfck
  * JD-Core Version:    0.7.0.1
  */

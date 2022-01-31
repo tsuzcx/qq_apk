@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import bbef;
+import bdda;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -32,7 +32,7 @@ class GameActivity$13
         ((RoundedBitmapDrawable)localObject).setAntiAlias(true);
         if (Build.VERSION.SDK_INT >= 21)
         {
-          localObject = new ActivityManager.TaskDescription(this.val$miniConfig.config.name, bbef.b((Drawable)localObject));
+          localObject = new ActivityManager.TaskDescription(this.val$miniConfig.config.name, bdda.b((Drawable)localObject));
           this.this$0.setTaskDescription((ActivityManager.TaskDescription)localObject);
         }
         if (!localBitmap.isRecycled()) {
@@ -49,7 +49,7 @@ class GameActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.13
  * JD-Core Version:    0.7.0.1
  */

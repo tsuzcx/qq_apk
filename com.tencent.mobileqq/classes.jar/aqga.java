@@ -1,29 +1,34 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.animation.Interpolator;
 
 class aqga
-  implements DialogInterface.OnClickListener
+  implements Interpolator
 {
-  aqga(aqfv paramaqfv, int paramInt, String paramString) {}
+  aqga(aqfv paramaqfv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    if (paramInt == 1)
-    {
-      aqfv.a(aqfv.a(this.jdField_a_of_type_Aqfv), "shareToQQ", aqfv.a(this.jdField_a_of_type_Aqfv), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      nau.a(aqfv.a(this.jdField_a_of_type_Aqfv), 0, "", "");
-      if (aqfv.a(this.jdField_a_of_type_Aqfv) != null) {
-        aqfv.a(this.jdField_a_of_type_Aqfv).b(1);
-      }
-      aqfv.a(this.jdField_a_of_type_Aqfv).moveTaskToBack(true);
+    if (paramFloat == 0.0F) {
+      return 0.0F;
     }
+    float f = paramFloat * 2.0F;
+    if (f >= 2.0F) {
+      return 1.0F;
+    }
+    paramFloat = 0.45F / 4.0F;
+    if (f < 1.0F)
+    {
+      f -= 1.0F;
+      d = Math.pow(2.0D, 10.0F * f);
+      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
+    }
+    f -= 1.0F;
+    double d = Math.pow(2.0D, -10.0F * f);
+    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqga
  * JD-Core Version:    0.7.0.1
  */

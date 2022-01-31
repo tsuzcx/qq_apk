@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.store;
 
-import actj;
-import ajgu;
-import ajgw;
-import ajya;
+import aekt;
+import akyg;
+import akyi;
+import alpo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,17 +22,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import ayjy;
-import bcql;
+import bahu;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloDiyTextFragment
   extends PublicBaseFragment
   implements TextWatcher, View.OnClickListener
 {
-  private ajgw jdField_a_of_type_Ajgw;
+  private akyi jdField_a_of_type_Akyi;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -53,10 +53,10 @@ public class ApolloDiyTextFragment
     for (;;)
     {
       str = paramString;
-      if (i >= ayjy.d.length) {
+      if (i >= bahu.d.length) {
         break;
       }
-      int j = paramString.indexOf(ayjy.d[i], 0);
+      int j = paramString.indexOf(bahu.d[i], 0);
       str = paramString;
       if (j != -1)
       {
@@ -100,18 +100,18 @@ public class ApolloDiyTextFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    ajgu.a(super.getActivity());
+    akyg.a(super.getActivity());
   }
   
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_b_of_type_AndroidWidgetImageView)
     {
-      paramView = this.jdField_a_of_type_Ajgw.getText();
+      paramView = this.jdField_a_of_type_Akyi.getText();
       if ((paramView != null) && (paramView.length() > 0))
       {
         if (paramView.length() > 12) {
-          bcql.a(super.getActivity(), ajya.a(2131700324), 0).a();
+          QQToast.a(super.getActivity(), alpo.a(2131700693), 0).a();
         }
       }
       else {
@@ -123,8 +123,8 @@ public class ApolloDiyTextFragment
       return;
       Intent localIntent = new Intent();
       localIntent.putExtra("ret", 1);
-      if (this.jdField_a_of_type_Ajgw.getText() != null) {}
-      for (paramView = this.jdField_a_of_type_Ajgw.getText().toString();; paramView = "")
+      if (this.jdField_a_of_type_Akyi.getText() != null) {}
+      for (paramView = this.jdField_a_of_type_Akyi.getText().toString();; paramView = "")
       {
         localIntent.putExtra("text", paramView);
         super.getActivity().setResult(-1, localIntent);
@@ -135,8 +135,8 @@ public class ApolloDiyTextFragment
       {
         localIntent = new Intent();
         localIntent.putExtra("ret", 0);
-        if (this.jdField_a_of_type_Ajgw.getText() != null) {}
-        for (paramView = this.jdField_a_of_type_Ajgw.getText().toString();; paramView = "")
+        if (this.jdField_a_of_type_Akyi.getText() != null) {}
+        for (paramView = this.jdField_a_of_type_Akyi.getText().toString();; paramView = "")
         {
           localIntent.putExtra("text", paramView);
           super.getActivity().setResult(0, localIntent);
@@ -146,8 +146,8 @@ public class ApolloDiyTextFragment
         }
       }
     } while (paramView != this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_Ajgw.setText("");
-    this.jdField_a_of_type_Ajgw.setHint(" ");
+    this.jdField_a_of_type_Akyi.setText("");
+    this.jdField_a_of_type_Akyi.setHint(" ");
     VipUtils.a(null, "cmshow", "Apollo", "ClearClick", 0, 0, new String[0]);
   }
   
@@ -163,42 +163,42 @@ public class ApolloDiyTextFragment
     paramViewGroup = new RelativeLayout.LayoutParams(-2, -2);
     paramViewGroup.addRule(14, -1);
     paramViewGroup.addRule(12, -1);
-    paramViewGroup.bottomMargin = actj.a(80.0F, getResources());
+    paramViewGroup.bottomMargin = aekt.a(80.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, paramViewGroup);
     paramViewGroup = new RelativeLayout(paramLayoutInflater);
     paramBundle = new RelativeLayout.LayoutParams(-1, -1);
-    paramBundle.bottomMargin = actj.a(44.0F, getResources());
+    paramBundle.bottomMargin = aekt.a(44.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Ajgw = new ajgw(paramLayoutInflater);
-    this.jdField_a_of_type_Ajgw.setCursorVisible(true);
-    this.jdField_a_of_type_Ajgw.setTextSize(24.0F);
-    this.jdField_a_of_type_Ajgw.setTextColor(-1);
-    this.jdField_a_of_type_Ajgw.setHintTextColor(-1);
-    this.jdField_a_of_type_Ajgw.setHint(ajya.a(2131700328));
-    this.jdField_a_of_type_Ajgw.setBackgroundColor(0);
-    this.jdField_a_of_type_Ajgw.addTextChangedListener(this);
-    this.jdField_a_of_type_Ajgw.setSingleLine(false);
-    this.jdField_a_of_type_Ajgw.setSelection(0);
-    float f = this.jdField_a_of_type_Ajgw.getPaint().measureText(ajya.a(2131700327));
+    this.jdField_a_of_type_Akyi = new akyi(paramLayoutInflater);
+    this.jdField_a_of_type_Akyi.setCursorVisible(true);
+    this.jdField_a_of_type_Akyi.setTextSize(24.0F);
+    this.jdField_a_of_type_Akyi.setTextColor(-1);
+    this.jdField_a_of_type_Akyi.setHintTextColor(-1);
+    this.jdField_a_of_type_Akyi.setHint(alpo.a(2131700697));
+    this.jdField_a_of_type_Akyi.setBackgroundColor(0);
+    this.jdField_a_of_type_Akyi.addTextChangedListener(this);
+    this.jdField_a_of_type_Akyi.setSingleLine(false);
+    this.jdField_a_of_type_Akyi.setSelection(0);
+    float f = this.jdField_a_of_type_Akyi.getPaint().measureText(alpo.a(2131700696));
     paramBundle = new RelativeLayout.LayoutParams(-2, -2);
     paramBundle.addRule(13, -1);
-    paramViewGroup.addView(this.jdField_a_of_type_Ajgw, paramBundle);
-    this.jdField_a_of_type_Ajgw.setMaxWidth((int)(f + 1.0F));
+    paramViewGroup.addView(this.jdField_a_of_type_Akyi, paramBundle);
+    this.jdField_a_of_type_Akyi.setMaxWidth((int)(f + 1.0F));
     paramViewGroup = new RelativeLayout(paramLayoutInflater);
     paramBundle = new View(paramLayoutInflater);
     paramBundle.setBackgroundColor(-460552);
-    new RelativeLayout.LayoutParams(-1, actj.a(1.0F, getResources())).addRule(10, -1);
+    new RelativeLayout.LayoutParams(-1, aekt.a(1.0F, getResources())).addRule(10, -1);
     paramViewGroup.addView(paramBundle);
     paramBundle = new View(paramLayoutInflater);
     paramBundle.setBackgroundColor(-460552);
-    new RelativeLayout.LayoutParams(-1, actj.a(1.0F, getResources())).addRule(12, -1);
+    new RelativeLayout.LayoutParams(-1, aekt.a(1.0F, getResources())).addRule(12, -1);
     paramViewGroup.addView(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramLayoutInflater);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838297);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838357);
     paramBundle = new RelativeLayout.LayoutParams(-2, -2);
     paramBundle.addRule(15);
     paramBundle.addRule(9);
-    paramBundle.leftMargin = actj.a(15.0F, getResources());
+    paramBundle.leftMargin = aekt.a(15.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramBundle);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramLayoutInflater);
@@ -206,10 +206,10 @@ public class ApolloDiyTextFragment
     paramBundle = new RelativeLayout.LayoutParams(-2, -2);
     paramBundle.addRule(15);
     paramBundle.addRule(11);
-    paramBundle.rightMargin = actj.a(10.0F, getResources());
+    paramBundle.rightMargin = aekt.a(10.0F, getResources());
     paramViewGroup.addView(this.jdField_b_of_type_AndroidWidgetImageView, paramBundle);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramLayoutInflater);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131700326));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131700695));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(16.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
@@ -217,22 +217,22 @@ public class ApolloDiyTextFragment
     paramBundle.addRule(13);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramBundle);
-    paramBundle = new RelativeLayout.LayoutParams(-1, actj.a(43.0F, getResources()));
+    paramBundle = new RelativeLayout.LayoutParams(-1, aekt.a(43.0F, getResources()));
     paramBundle.addRule(12, -1);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup, paramBundle);
     paramLayoutInflater = paramLayoutInflater.getIntent().getStringExtra("extra_key_last_text");
     if (!TextUtils.isEmpty(paramLayoutInflater))
     {
-      this.jdField_a_of_type_Ajgw.setGravity(17);
-      this.jdField_a_of_type_Ajgw.setText(paramLayoutInflater);
-      this.jdField_a_of_type_Ajgw.a(paramLayoutInflater.length());
+      this.jdField_a_of_type_Akyi.setGravity(17);
+      this.jdField_a_of_type_Akyi.setText(paramLayoutInflater);
+      this.jdField_a_of_type_Akyi.a(paramLayoutInflater.length());
       int i = 12 - paramLayoutInflater.length();
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(ajya.a(2131700325) + i + ajya.a(2131700323));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131700694) + i + alpo.a(2131700692));
       if (i < 0) {
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-65536);
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838299);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838359);
     }
     for (;;)
     {
@@ -242,10 +242,10 @@ public class ApolloDiyTextFragment
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(paramLayoutInflater);
       VipUtils.a(null, "cmshow", "Apollo", "PageView", 1, 0, new String[0]);
       return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      this.jdField_a_of_type_Ajgw.setGravity(3);
+      this.jdField_a_of_type_Akyi.setGravity(3);
       this.jdField_b_of_type_AndroidWidgetTextView.setText("还可以输入12个字");
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838298);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838358);
     }
   }
   
@@ -254,14 +254,14 @@ public class ApolloDiyTextFragment
     String str;
     if ((paramCharSequence != null) && (paramCharSequence.length() > 0))
     {
-      this.jdField_a_of_type_Ajgw.setHint(" ");
+      this.jdField_a_of_type_Akyi.setHint(" ");
       str = paramCharSequence.toString();
       paramCharSequence = a(str);
       if (QLog.isColorLevel()) {
         QLog.d("ApolloDiyTextActivity", 2, "onTextChanged:" + str + " newStr:" + paramCharSequence);
       }
       paramInt1 = paramCharSequence.length();
-      paramInt2 = this.jdField_a_of_type_Ajgw.getSelectionEnd();
+      paramInt2 = this.jdField_a_of_type_Akyi.getSelectionEnd();
       if (paramInt1 > 50)
       {
         paramCharSequence = paramCharSequence.substring(0, 50);
@@ -275,7 +275,7 @@ public class ApolloDiyTextFragment
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(ajya.a(2131700322) + (12 - paramInt1) + ajya.a(2131700321));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131700691) + (12 - paramInt1) + alpo.a(2131700690));
       if (paramInt1 > 12)
       {
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-65536);
@@ -295,16 +295,16 @@ public class ApolloDiyTextFragment
       {
         if (!str.equals(paramCharSequence))
         {
-          this.jdField_a_of_type_Ajgw.removeTextChangedListener(this);
-          this.jdField_a_of_type_Ajgw.setText(paramCharSequence);
-          this.jdField_a_of_type_Ajgw.setSelection(paramInt1);
-          this.jdField_a_of_type_Ajgw.addTextChangedListener(this);
+          this.jdField_a_of_type_Akyi.removeTextChangedListener(this);
+          this.jdField_a_of_type_Akyi.setText(paramCharSequence);
+          this.jdField_a_of_type_Akyi.setSelection(paramInt1);
+          this.jdField_a_of_type_Akyi.addTextChangedListener(this);
         }
-        if ((this.jdField_a_of_type_Ajgw.getText() != null) && (this.jdField_a_of_type_Ajgw.getText().length() > 0))
+        if ((this.jdField_a_of_type_Akyi.getText() != null) && (this.jdField_a_of_type_Akyi.getText().length() > 0))
         {
-          this.jdField_a_of_type_Ajgw.setGravity(17);
+          this.jdField_a_of_type_Akyi.setGravity(17);
           if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-            this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838299);
+            this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838359);
           }
         }
         do
@@ -320,9 +320,9 @@ public class ApolloDiyTextFragment
           this.jdField_b_of_type_AndroidWidgetTextView.setText("还可以输入12个字");
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
           break label280;
-          this.jdField_a_of_type_Ajgw.setGravity(3);
+          this.jdField_a_of_type_Akyi.setGravity(3);
         } while (this.jdField_b_of_type_AndroidWidgetImageView == null);
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838298);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838358);
         return;
       }
       label414:
@@ -332,7 +332,7 @@ public class ApolloDiyTextFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloDiyTextFragment
  * JD-Core Version:    0.7.0.1
  */

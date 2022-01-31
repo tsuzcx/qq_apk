@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import com.tencent.mobileqq.data.MessageForPtt;
+import java.util.ArrayList;
 
-final class awtx
-  implements Comparator<RecentUser>
+class awtx
 {
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
-  {
-    return Long.signum(paramRecentUser2.lastmsgtime - paramRecentUser1.lastmsgtime);
-  }
+  public int a;
+  public final ArrayList<MessageForPtt> a = new ArrayList(100);
+  public final int b = 99;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awtx
  * JD-Core Version:    0.7.0.1
  */

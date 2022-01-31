@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -14,24 +14,24 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import baxn;
+import bcwh;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.LayoutParams;
-import rbx;
-import rex;
-import rey;
+import rru;
+import rut;
+import ruu;
 
 public class ReadInJoyPullToZoomListView
   extends ReadInJoyBaseListView
 {
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new rex();
+  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new rut();
   private static boolean e;
   float jdField_a_of_type_Float = -1.0F;
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ReadInJoyPullToZoomListView.ScalingRunnalable jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$ScalingRunnalable;
-  private rey jdField_a_of_type_Rey;
+  private ruu jdField_a_of_type_Ruu;
   float jdField_b_of_type_Float = -1.0F;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   float jdField_c_of_type_Float = 1.401F;
@@ -76,10 +76,10 @@ public class ReadInJoyPullToZoomListView
   private void b(boolean paramBoolean)
   {
     f();
-    rbx localrbx;
-    if (this.jdField_a_of_type_Rbx != null)
+    rru localrru;
+    if (this.jdField_a_of_type_Rru != null)
     {
-      localrbx = this.jdField_a_of_type_Rbx;
+      localrru = this.jdField_a_of_type_Rru;
       if (!paramBoolean) {
         break label31;
       }
@@ -87,7 +87,7 @@ public class ReadInJoyPullToZoomListView
     label31:
     for (int i = 1;; i = 0)
     {
-      localrbx.a(this, i);
+      localrru.a(this, i);
       return;
     }
   }
@@ -98,12 +98,12 @@ public class ReadInJoyPullToZoomListView
     {
       TextView localTextView = new TextView(getContext());
       localTextView.setTextColor(-1);
-      localTextView.setText(ajya.a(2131713125));
+      localTextView.setText(alpo.a(2131713497));
       localTextView.setGravity(17);
       localTextView.setVisibility(8);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 49;
-      localLayoutParams.topMargin = baxn.a(getContext(), 52.0F);
+      localLayoutParams.topMargin = bcwh.a(getContext(), 52.0F);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView, localLayoutParams);
       this.jdField_b_of_type_AndroidWidgetTextView = localTextView;
     }
@@ -120,7 +120,7 @@ public class ReadInJoyPullToZoomListView
       localTextView.setVisibility(8);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 49;
-      localLayoutParams.topMargin = baxn.a(getContext(), 58.0F);
+      localLayoutParams.topMargin = bcwh.a(getContext(), 58.0F);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView, localLayoutParams);
       this.jdField_c_of_type_AndroidWidgetTextView = localTextView;
     }
@@ -144,9 +144,9 @@ public class ReadInJoyPullToZoomListView
       if (bool != this.jdField_f_of_type_Boolean)
       {
         this.jdField_f_of_type_Boolean = bool;
-        if (this.jdField_a_of_type_Rey != null)
+        if (this.jdField_a_of_type_Ruu != null)
         {
-          this.jdField_a_of_type_Rey.a(this.jdField_f_of_type_Boolean);
+          this.jdField_a_of_type_Ruu.a(this.jdField_f_of_type_Boolean);
           if (QLog.isColorLevel()) {
             QLog.i("Q.readinjoy.video.PullToZoomListView", 2, "checkIsTopFixed(): mFixed=" + this.jdField_f_of_type_Boolean);
           }
@@ -164,7 +164,7 @@ public class ReadInJoyPullToZoomListView
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 8))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      Drawable localDrawable = getResources().getDrawable(2130839142);
+      Drawable localDrawable = getResources().getDrawable(2130839226);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
       ((Animatable)localDrawable).start();
@@ -315,14 +315,14 @@ public class ReadInJoyPullToZoomListView
     this.g = ((int)(this.jdField_f_of_type_Int * this.jdField_c_of_type_Float));
   }
   
-  public void setOnTopCallback(rey paramrey)
+  public void setOnTopCallback(ruu paramruu)
   {
-    this.jdField_a_of_type_Rey = paramrey;
+    this.jdField_a_of_type_Ruu = paramruu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyPullToZoomListView
  * JD-Core Version:    0.7.0.1
  */

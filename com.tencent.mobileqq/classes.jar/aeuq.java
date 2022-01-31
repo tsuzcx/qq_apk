@@ -1,23 +1,23 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
 
 public class aeuq
-  implements ViewPager.OnPageChangeListener
+  implements bedj
 {
-  public aeuq(TroopChatPie paramTroopChatPie) {}
+  public aeuq(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public Object a(int paramInt)
   {
-    TroopChatPie.a(this.a, paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new aeur(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuq
  * JD-Core Version:    0.7.0.1
  */

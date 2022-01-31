@@ -1,76 +1,73 @@
-import android.os.Handler;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.13.1;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.6.1;
+import com.tencent.mobileqq.troop.widget.CountdownTimeTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 
 public class bahj
-  implements aycd
+  implements TextWatcher
 {
-  bahj(bahf parambahf) {}
+  bahj(bahd parambahd) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.jdField_a_of_type_Int = 1;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) && (this.a.jdField_a_of_type_AndroidAppActivity == null) && (!bahf.jdField_a_of_type_JavaLangString.equals(this.a.jdField_b_of_type_JavaLangString))) {}
-    String str1;
-    List localList;
+    if (this.a.d) {
+      this.a.d = false;
+    }
     do
     {
       return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {
-        break;
-      }
-      str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_JavaLangString;
-      localList = (List)this.a.jdField_b_of_type_JavaUtilHashMap.get(str1);
-    } while ((balu.a(localList)) || (localList == null));
-    if (localList != null) {}
-    for (;;)
-    {
-      try
+      if (paramEditable == null) {}
+      for (paramEditable = ""; paramEditable.trim().equals(""); paramEditable = paramEditable.toString())
       {
-        Object localObject3 = (baht)localList.remove(0);
-        if ((localObject3 instanceof MessageForDeliverGiftTips))
-        {
-          localObject3 = (MessageForDeliverGiftTips)localObject3;
-          String str2 = balu.b((MessageForDeliverGiftTips)localObject3);
-          ((MessageForDeliverGiftTips)localObject3).hasFetchButFailed = false;
-          if (QLog.isColorLevel()) {
-            QLog.d("AIOAnimationControlManager", 2, "onMagicPlayEnd id:" + str2);
-          }
-          if (this.a.jdField_a_of_type_Bahu != null) {
-            this.a.jdField_a_of_type_Bahu.a(str1, str2);
-          }
-        }
-        if (localList.size() == 0) {
-          break label250;
-        }
-        Collections.sort(localList, this.a.jdField_a_of_type_JavaUtilComparator);
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new AIOAnimationControlManager.13.1(this));
+        this.a.c();
         return;
       }
-      finally {}
-      Object localObject2 = this.a.jdField_b_of_type_JavaLangString;
-      break;
-      label250:
-      this.a.jdField_a_of_type_Baro.a(null);
-      bahf.a(this.a, false);
-      localObject2 = ChatActivityUtils.a((String)localObject2, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      if ((bahf.jdField_a_of_type_Boolean) && (localObject2 != null) && (-1 == ((Integer)localObject2).intValue()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)) {
-        bahf.jdField_a_of_type_Boolean = false;
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      if (!bdee.g(this.a.jdField_a_of_type_AndroidAppActivity))
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask != null)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.b();
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
+        }
+        this.a.b();
+        return;
       }
+      this.a.c = false;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask == null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = new CountdownTimeTask(new TroopTeamWorkFileSearchDialog.6.1(this), 800);
+        ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask, 5, null, true);
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.a() > 0L)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.a();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("TroopTeamWorkFileSearchDialog", 2, "!!!!!! 这是个什么情况,逻辑出错了 !!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((!this.a.d) || ((this.a.d) && (this.a.jdField_b_of_type_Int <= 0)))
+    {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      return;
     }
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bahj
  * JD-Core Version:    0.7.0.1
  */

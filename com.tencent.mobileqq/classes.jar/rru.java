@@ -1,27 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 
-public class rru
-  extends AnimatorListenerAdapter
+public abstract interface rru
 {
-  public rru(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  public abstract void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ReadInJoyDynamicGridView.b(this.a, false);
-    ReadInJoyDynamicGridView.a(this.a);
-  }
+  public abstract void b();
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ReadInJoyDynamicGridView.b(this.a, true);
-    ReadInJoyDynamicGridView.a(this.a);
-  }
+  public abstract void b(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rru
  * JD-Core Version:    0.7.0.1
  */

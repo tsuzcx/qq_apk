@@ -1,73 +1,83 @@
-import android.graphics.PointF;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
 
 public class auzw
-  implements Animation.AnimationListener
 {
-  public auzw(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
+  private static auzw a = new auzw();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static auzw a()
   {
-    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView;
-    paramAnimation.i -= 1;
-    paramAnimation = (RatioLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    if (paramAnimation != null)
+    return a;
+  }
+  
+  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
+  {
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
     {
-      if (this.jdField_a_of_type_AndroidViewView.getAnimation() != null) {
-        this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      wsv.e("ImageLoader", "ImageView or uri is null.");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageLoader", 2, "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    if ((paramInt1 > 0) && (paramInt2 > 0))
+    {
+      localURLDrawableOptions.mRequestWidth = paramInt1;
+      localURLDrawableOptions.mRequestHeight = paramInt2;
+    }
+    Drawable localDrawable = paramDrawable1;
+    if (paramDrawable1 == null) {
+      localDrawable = baul.a;
+    }
+    localURLDrawableOptions.mFailedDrawable = localDrawable;
+    paramDrawable1 = paramDrawable2;
+    if (paramDrawable2 == null) {
+      paramDrawable1 = baul.a;
+    }
+    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
+    localURLDrawableOptions.mMemoryCacheKeySuffix = "now";
+    localURLDrawableOptions.mUseAutoScaleParams = false;
+    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    if (paramBoolean) {
+      paramString.setDecodeHandler(bcuq.a);
+    }
+    if (paramURLDrawableListener != null)
+    {
+      if (paramString.getStatus() != 1) {
+        break label208;
       }
-      if ((paramAnimation.a != this.jdField_a_of_type_AndroidGraphicsPointF.x) || (paramAnimation.b != this.jdField_a_of_type_AndroidGraphicsPointF.y))
-      {
-        paramAnimation.a = this.jdField_a_of_type_AndroidGraphicsPointF.x;
-        paramAnimation.b = this.jdField_a_of_type_AndroidGraphicsPointF.y;
-        this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-        if ((this.jdField_a_of_type_AndroidViewView instanceof VipTagView)) {
-          ((VipTagView)this.jdField_a_of_type_AndroidViewView).setShakingState(true);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.i == 0) {
-        if (!this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b())
-        {
-          paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_Auuy.a.getLabelList();
-          if (paramAnimation != null)
-          {
-            if ((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ArrayOfAndroidViewView[(ProfileTagView.a().length - 1)] == null) || (paramAnimation.size() != 0)) {
-              break label244;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          }
-        }
-      }
+      wsv.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
+      paramURLDrawableListener.onLoadSuccessed(paramString);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.e)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.g(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_Auuy);
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.e = false;
-      }
+      paramString.setURLDrawableListener(paramURLDrawableListener);
+      paramImageView.setImageDrawable(paramString);
       return;
-      label244:
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      label208:
+      wsv.b("ImageLoader", "start load URLDrawable.");
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener)
+  {
+    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, false);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
+  {
+    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auzw
  * JD-Core Version:    0.7.0.1
  */

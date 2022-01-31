@@ -1,26 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bixt
-  implements bizb
+class bixt
+  implements View.OnClickListener
 {
-  public bixt(AETemplateInfoFragment paramAETemplateInfoFragment, boolean[] paramArrayOfBoolean, String paramString) {}
+  bixt(bixs parambixs) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-    BitmapUtils.saveBitmap(paramBitmap, this.jdField_a_of_type_JavaLangString);
+    if (bixs.a(this.a))
+    {
+      if (bixs.b(this.a)) {
+        this.a.dismiss();
+      }
+      if (bixs.a(this.a) != null) {
+        bixs.a(this.a).onClick(paramView);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bixt
  * JD-Core Version:    0.7.0.1
  */

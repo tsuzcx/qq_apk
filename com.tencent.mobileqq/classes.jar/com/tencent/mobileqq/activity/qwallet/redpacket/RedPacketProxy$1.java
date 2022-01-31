@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket;
 
-import ahdk;
+import aixo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -10,7 +10,7 @@ import mqq.app.AppRuntime;
 public class RedPacketProxy$1
   extends ResultReceiver
 {
-  public RedPacketProxy$1(ahdk paramahdk, Handler paramHandler, IRedPacket.OnGetSkinListener paramOnGetSkinListener)
+  public RedPacketProxy$1(aixo paramaixo, Handler paramHandler, IRedPacket.OnGetSkinListener paramOnGetSkinListener)
   {
     super(paramHandler);
   }
@@ -28,7 +28,7 @@ public class RedPacketProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.1
  * JD-Core Version:    0.7.0.1
  */

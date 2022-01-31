@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajvu;
+import alni;
 import android.os.Process;
 import com.tencent.mobileqq.util.FaceInfo;
 import com.tencent.qphone.base.util.QLog;

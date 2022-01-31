@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import atvw;
-import atvy;
+import avmw;
+import avmy;
 import java.util.List;
 
 class NearbyMomentManager$4$1$1
@@ -11,14 +11,14 @@ class NearbyMomentManager$4$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Atvw.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Atvw.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.b, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Avmw.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Avmw.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.b, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.4.1.1
  * JD-Core Version:    0.7.0.1
  */

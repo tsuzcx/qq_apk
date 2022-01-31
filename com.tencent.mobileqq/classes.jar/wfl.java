@@ -1,34 +1,19 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
 
 public class wfl
-  extends Handler
+  extends xrw
 {
-  public wfl(QRCardActivity paramQRCardActivity) {}
+  public wfl(StoryDetailFragment paramStoryDetailFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_Boolean) || (!(paramMessage.obj instanceof Bitmap)));
-      paramMessage = (Bitmap)paramMessage.obj;
-    } while (paramMessage == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
+    this.a.d();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wfl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,22 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.FormEditItem;
 
 public class belm
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static final String a = MiniAppEnv.g().getContext().getFilesDir().getPath() + "/mini/";
-  public static final String b = a + "navigateback_appid";
+  public belm(FormEditItem paramFormEditItem) {}
   
-  public static void a(String paramString)
+  public void onGlobalLayout()
   {
-    Object localObject = new File(b);
-    do
-    {
-      try
-      {
-        localObject = new BufferedWriter(new FileWriter((File)localObject));
-        betc.d("NavigateBackUtils", "getTagAppid exception!", paramString);
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          ((BufferedWriter)localObject).write(paramString);
-          ((BufferedWriter)localObject).close();
-          return;
-        }
-        catch (Exception paramString)
-        {
-          continue;
-        }
-        paramString = paramString;
-        localObject = null;
-      }
-    } while (localObject == null);
-    try
-    {
-      ((BufferedWriter)localObject).close();
-      return;
-    }
-    catch (Exception paramString) {}
+    this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    FormEditItem.a(this.a, this.a.getMeasuredWidth());
+    FormEditItem.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     belm
  * JD-Core Version:    0.7.0.1
  */

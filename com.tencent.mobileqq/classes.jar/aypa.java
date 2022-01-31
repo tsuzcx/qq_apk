@@ -1,45 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public class aypa
-  extends Handler
+final class aypa
+  implements Comparator<RecentUser>
 {
-  public aypa(ayoz paramayoz, Looper paramLooper)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    super(paramLooper);
-  }
-  
-  public void a(aypb paramaypb)
-  {
-    sendMessage(obtainMessage(0, paramaypb));
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((paramMessage.what == 0) && (paramMessage.obj != null) && ((paramMessage.obj instanceof aypb))) {
-      paramMessage = (aypb)paramMessage.obj;
-    }
-    try
-    {
-      aywc localaywc = paramMessage.a();
-      if ((localaywc != null) && (localaywc.jdField_a_of_type_Long != 0L) && (localaywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) && ((paramMessage.a instanceof QQAppInterface))) {
-        localaywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((QQAppInterface)paramMessage.a).a().b(localaywc.c, localaywc.jdField_a_of_type_Int, localaywc.jdField_a_of_type_Long);
-      }
-    }
-    catch (Exception localException)
-    {
-      label96:
-      break label96;
-    }
-    paramMessage.aR_();
+    return Long.signum(paramRecentUser2.lastmsgtime - paramRecentUser1.lastmsgtime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aypa
  * JD-Core Version:    0.7.0.1
  */

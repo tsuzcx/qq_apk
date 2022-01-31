@@ -1,25 +1,18 @@
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class bixb
+public final class bixb
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  
-  public bixb() {}
-  
-  public bixb(@NonNull bixb parambixb)
+  private static SharedPreferences b(Context paramContext)
   {
-    this.a = parambixb.a;
-    this.b = parambixb.b;
-    this.c = parambixb.c;
-    this.d = parambixb.d;
+    return paramContext.getSharedPreferences("reader_user" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bixb
  * JD-Core Version:    0.7.0.1
  */

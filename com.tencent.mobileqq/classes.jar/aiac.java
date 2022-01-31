@@ -1,14 +1,23 @@
-public abstract interface aiac
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
+
+public class aiac
+  extends BroadcastReceiver
 {
-  public abstract int a(int paramInt1, int paramInt2, ahzv paramahzv);
+  public aiac(QzoneFrame paramQzoneFrame) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QzoneFrame.a(this.a) != null) {
+      ((bjdm)QzoneFrame.a(this.a)).updatePublishBox(paramIntent);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiac
  * JD-Core Version:    0.7.0.1
  */

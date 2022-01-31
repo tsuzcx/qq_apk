@@ -1,53 +1,64 @@
-import NS_MOBILE_MAIN_PAGE.PhotoWall;
-import NS_MOBILE_MAIN_PAGE.mobile_sub_del_photo_wall_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgym
-  extends QzoneExternalRequest
+  extends bgzp
 {
-  public JceStruct a;
+  private byte[] a;
   
-  public bgym(long paramLong1, long paramLong2, String paramString, Long paramLong)
+  public bgym(byte[] paramArrayOfByte)
   {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong2);
-    mobile_sub_del_photo_wall_req localmobile_sub_del_photo_wall_req = new mobile_sub_del_photo_wall_req();
-    PhotoWall localPhotoWall = new PhotoWall();
-    localPhotoWall.photoId = paramString;
-    localPhotoWall.ctime = paramLong.longValue();
-    localmobile_sub_del_photo_wall_req.vecUrls = new ArrayList();
-    localmobile_sub_del_photo_wall_req.vecUrls.add(localPhotoWall);
-    this.a = localmobile_sub_del_photo_wall_req;
+    this.a = paramArrayOfByte;
   }
   
-  public static JceStruct a(byte[] paramArrayOfByte)
+  protected String a()
+  {
+    return "mini_app_report_transfer";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
       return null;
     }
-    return decode(paramArrayOfByte, "delPhotoWall");
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    try
+    {
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = new APP_REPORT_TRANSFER.StDataReportRsp();
+      paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      int i = paramArrayOfByte.ret.get();
+      if (i == 0) {
+        return new JSONObject();
+      }
+      QMLog.d("ProtoBufRequest", "onResponse fail.retCode = " + i);
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public String getCmdString()
-  {
-    return "QzoneNewService.delPhotoWall";
-  }
-  
-  public JceStruct getReq()
+  public byte[] a()
   {
     return this.a;
   }
   
-  public String uniKey()
+  protected String b()
   {
-    return "delPhotoWall";
+    return "DataReport";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-class agfm
-  implements View.OnClickListener
+public class agfm
 {
-  agfm(agfk paramagfk) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-  }
+  public agfm(agfi paramagfi) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agfm
  * JD-Core Version:    0.7.0.1
  */

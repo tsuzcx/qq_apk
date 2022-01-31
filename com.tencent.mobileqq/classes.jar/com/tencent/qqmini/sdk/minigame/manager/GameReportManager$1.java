@@ -1,27 +1,23 @@
 package com.tencent.qqmini.sdk.minigame.manager;
 
 import android.os.Bundle;
-import bevz;
-import bewc;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import bguw;
 
 public class GameReportManager$1
   implements Runnable
 {
-  public GameReportManager$1(bewc parambewc) {}
+  public GameReportManager$1(bguw parambguw) {}
   
   public void run()
   {
-    if (!bewc.a(this.this$0))
-    {
-      MiniAppInfo localMiniAppInfo = bevz.a().a();
-      new Bundle().putParcelable("app_config", localMiniAppInfo);
+    if (!bguw.a(this.this$0)) {
+      new Bundle().putParcelable("app_config", bguw.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.manager.GameReportManager.1
  * JD-Core Version:    0.7.0.1
  */

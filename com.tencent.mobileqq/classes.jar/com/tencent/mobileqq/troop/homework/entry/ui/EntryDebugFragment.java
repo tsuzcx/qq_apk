@@ -37,19 +37,19 @@ public class EntryDebugFragment
     this.mContentView.setBackgroundColor(-1);
     paramLayoutInflater = new int[7];
     LayoutInflater tmp21_20 = paramLayoutInflater;
-    tmp21_20[0] = 2131372127;
+    tmp21_20[0] = 2131372445;
     LayoutInflater tmp26_21 = tmp21_20;
-    tmp26_21[1] = 2131376656;
+    tmp26_21[1] = 2131377166;
     LayoutInflater tmp31_26 = tmp26_21;
-    tmp31_26[2] = 2131376654;
+    tmp31_26[2] = 2131377164;
     LayoutInflater tmp36_31 = tmp31_26;
-    tmp36_31[3] = 2131376657;
+    tmp36_31[3] = 2131377167;
     LayoutInflater tmp41_36 = tmp36_31;
-    tmp41_36[4] = 2131363140;
+    tmp41_36[4] = 2131363176;
     LayoutInflater tmp46_41 = tmp41_36;
-    tmp46_41[5] = 2131363723;
+    tmp46_41[5] = 2131363779;
     LayoutInflater tmp51_46 = tmp46_41;
-    tmp51_46[6] = 2131375227;
+    tmp51_46[6] = 2131375709;
     tmp51_46;
     int j = paramLayoutInflater.length;
     int i = 0;
@@ -65,7 +65,7 @@ public class EntryDebugFragment
   
   public int getContentLayoutId()
   {
-    return 2131560345;
+    return 2131560453;
   }
   
   public void onClick(View paramView)
@@ -74,22 +74,22 @@ public class EntryDebugFragment
     {
     default: 
       return;
-    case 2131372127: 
+    case 2131372445: 
       PublishHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), null);
       return;
-    case 2131363723: 
+    case 2131363779: 
       BulkSendMessageFragment.a(getActivity(), getActivity().getIntent().getExtras());
       return;
-    case 2131376656: 
+    case 2131377166: 
       SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416265328L);
       return;
-    case 2131376654: 
+    case 2131377164: 
       SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416243152L);
       return;
-    case 2131376657: 
+    case 2131377167: 
       SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416294178L);
       return;
-    case 2131375227: 
+    case 2131375709: 
       return;
     }
     BeginnerGuideFragment.a(getActivity(), getActivity().getIntent().getExtras(), 7);

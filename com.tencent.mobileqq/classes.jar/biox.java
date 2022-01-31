@@ -1,29 +1,41 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import android.app.Dialog;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class biox
-  implements Animator.AnimatorListener
 {
-  public biox(AEProviderContainerView paramAEProviderContainerView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  private static void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEProviderContainerView", 2, "panel closed");
+    Dialog localDialog = new Dialog(BaseApplicationImpl.getApplication(), 2131755801);
+    localDialog.getWindow().setType(2003);
+    localDialog.setContentView(2131558920);
+    TextView localTextView = (TextView)localDialog.findViewById(2131365235);
+    if (localTextView != null) {
+      localTextView.setText("dump文件保存地址");
     }
+    localTextView = (TextView)localDialog.findViewById(2131365231);
+    if ((localTextView != null) && (paramString != null)) {
+      localTextView.setText(paramString);
+    }
+    localTextView = (TextView)localDialog.findViewById(2131365220);
+    if (localTextView != null)
+    {
+      localTextView.setText(2131690648);
+      localTextView.setOnClickListener(new bioz(localDialog));
+    }
+    localTextView = (TextView)localDialog.findViewById(2131365226);
+    if (localTextView != null)
+    {
+      localTextView.setText(2131691602);
+      localTextView.setOnClickListener(new bipa(localDialog, paramString));
+    }
+    localDialog.show();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biox
  * JD-Core Version:    0.7.0.1
  */

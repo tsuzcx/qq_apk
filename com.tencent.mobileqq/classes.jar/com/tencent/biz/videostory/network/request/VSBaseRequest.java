@@ -1,12 +1,14 @@
 package com.tencent.biz.videostory.network.request;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import bgyh;
-import bgyi;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import bize;
+import bizf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.io.Serializable;
@@ -15,8 +17,9 @@ import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
-import xgo;
-import xgq;
+import org.jetbrains.annotations.NotNull;
+import yvh;
+import yvj;
 
 public abstract class VSBaseRequest
   implements Serializable
@@ -25,9 +28,10 @@ public abstract class VSBaseRequest
   public static final AtomicInteger atomicInteger = new AtomicInteger(0);
   private static final long serialVersionUID = -1L;
   private boolean isEnableCache;
+  private int mContextHashCode = -1;
   private String mRequestKey;
   private int mSeq;
-  private String mTraceId;
+  protected String mTraceId;
   
   private String a()
   {
@@ -50,7 +54,7 @@ public abstract class VSBaseRequest
     if ((paramVSBaseRequest == null) || (paramVSBaseRequest.getRequestByteData() == null)) {
       return false;
     }
-    return xgq.a().a(BaseApplicationImpl.sApplication.getRuntime().getAccount() + bgyi.a() + new String(paramVSBaseRequest.getRequestByteData()));
+    return yvj.a().a(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bizf.a() + new String(paramVSBaseRequest.getRequestByteKey()));
   }
   
   public static void reMoveCache(VSBaseRequest paramVSBaseRequest)
@@ -58,27 +62,26 @@ public abstract class VSBaseRequest
     if ((paramVSBaseRequest == null) || (paramVSBaseRequest.getRequestByteData() == null)) {
       return;
     }
-    xgq.a().a(BaseApplicationImpl.sApplication.getRuntime().getAccount() + bgyi.a() + new String(paramVSBaseRequest.getRequestByteData()));
+    yvj.a().a(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bizf.a() + new String(paramVSBaseRequest.getRequestByteKey()));
   }
   
   public abstract MessageMicro decode(byte[] paramArrayOfByte);
   
   public byte[] encode()
   {
-    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
-    localStQWebReq.Seq.set(this.mSeq);
-    localStQWebReq.qua.set(bgyi.a());
-    localStQWebReq.deviceInfo.set(bgyh.a().c());
     byte[] arrayOfByte = getRequestByteData();
-    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(arrayOfByte));
-    localStQWebReq.traceid.set(this.mTraceId);
     if (isEnableCache()) {
-      this.mRequestKey = (getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bgyi.a() + new String(arrayOfByte));
+      this.mRequestKey = (getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bizf.a() + new String(getRequestByteKey()));
     }
-    return localStQWebReq.toByteArray();
+    return getRequestWrapper(ByteStringMicro.copyFrom(arrayOfByte)).toByteArray();
   }
   
   public abstract String getCmdName();
+  
+  public int getContextHashCode()
+  {
+    return this.mContextHashCode;
+  }
   
   public int getCurrentSeq()
   {
@@ -94,9 +97,26 @@ public abstract class VSBaseRequest
   
   protected abstract byte[] getRequestByteData();
   
+  public byte[] getRequestByteKey()
+  {
+    return getRequestByteData();
+  }
+  
   public String getRequestKey()
   {
     return this.mRequestKey;
+  }
+  
+  @NotNull
+  protected MessageMicro getRequestWrapper(ByteStringMicro paramByteStringMicro)
+  {
+    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+    localStQWebReq.Seq.set(getCurrentSeq());
+    localStQWebReq.qua.set(bizf.a());
+    localStQWebReq.deviceInfo.set(bize.a().c());
+    localStQWebReq.busiBuff.set(paramByteStringMicro);
+    localStQWebReq.traceid.set(this.mTraceId);
+    return localStQWebReq;
   }
   
   public String getTraceId()
@@ -114,6 +134,18 @@ public abstract class VSBaseRequest
     return this.isEnableCache;
   }
   
+  public Object[] parseResponseWrapper(byte[] paramArrayOfByte)
+  {
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    localStQWebRsp.mergeFrom(paramArrayOfByte);
+    return new Object[] { Long.valueOf(localStQWebRsp.retCode.get()), localStQWebRsp.errMsg.get().toStringUtf8(), localStQWebRsp.busiBuff.get() };
+  }
+  
+  public void setContextHashCode(int paramInt)
+  {
+    this.mContextHashCode = paramInt;
+  }
+  
   public void setEnableCache(boolean paramBoolean)
   {
     this.isEnableCache = paramBoolean;
@@ -121,7 +153,7 @@ public abstract class VSBaseRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.videostory.network.request.VSBaseRequest
  * JD-Core Version:    0.7.0.1
  */

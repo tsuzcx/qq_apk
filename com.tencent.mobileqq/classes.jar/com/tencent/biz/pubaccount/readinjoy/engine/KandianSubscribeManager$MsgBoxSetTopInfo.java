@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ahnl;
-import ajsd;
-import aktf;
+import ajeu;
+import aljq;
+import amjk;
 import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
@@ -21,8 +21,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nol;
-import onh;
+import nrt;
+import ors;
 
 public class KandianSubscribeManager$MsgBoxSetTopInfo
   implements Serializable
@@ -36,7 +36,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
   private Pair<Integer, Long> a(int paramInt)
   {
     Pair localPair = new Pair(Integer.valueOf(-1), Long.valueOf(-1L));
-    int j = onh.a;
+    int j = ors.a;
     Object localObject1 = new ArrayList();
     label300:
     label331:
@@ -47,7 +47,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
       Object localObject3;
       try
       {
-        Object localObject2 = ahnl.a().a;
+        Object localObject2 = ajeu.a().a;
         if (localObject2 == null) {
           return localPair;
         }
@@ -62,7 +62,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
             ((Iterator)localObject2).remove();
             break label334;
           }
-          if (!ajsd.aQ.equals(((RecentBaseData)localObject3).a())) {
+          if (!aljq.aR.equals(((RecentBaseData)localObject3).a())) {
             break label331;
           }
           i = 1;
@@ -79,7 +79,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
         {
           localObject2 = (RecentBaseData)((List)localObject1).get(i);
           localObject3 = (RecentUserBaseData)localObject2;
-          if (TextUtils.equals(((RecentUserBaseData)localObject3).a(), ajsd.aQ))
+          if (TextUtils.equals(((RecentUserBaseData)localObject3).a(), aljq.aR))
           {
             if (i < j)
             {
@@ -145,7 +145,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
     if (!a()) {}
     Pair localPair;
     QQAppInterface localQQAppInterface;
-    aktf localaktf;
+    amjk localamjk;
     RecentUser localRecentUser;
     do
     {
@@ -156,29 +156,29 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
           return;
           localPair = a(this.setTopPosition);
         } while ((((Integer)localPair.first).intValue() < 0) || (((Long)localPair.second).longValue() < 0L));
-        localQQAppInterface = (QQAppInterface)onh.a();
-        localObject = localQQAppInterface.a().b(ajsd.aQ, 1008);
+        localQQAppInterface = (QQAppInterface)ors.a();
+        localObject = localQQAppInterface.a().b(aljq.aR, 1008);
       } while ((localObject == null) || (((MessageRecord)localObject).isread));
-      localaktf = localQQAppInterface.a().a();
-      localRecentUser = localaktf.b(ajsd.aQ, 1008);
+      localamjk = localQQAppInterface.a().a();
+      localRecentUser = localamjk.b(aljq.aR, 1008);
     } while (localRecentUser == null);
     localRecentUser.lastmsgtime = ((Long)localPair.second).longValue();
     ((MessageRecord)localObject).time = ((Long)localPair.second).longValue();
-    localQQAppInterface.a().a(ajsd.aQ, 1008, ((MessageRecord)localObject).uniseq, "time", Long.valueOf(((MessageRecord)localObject).time));
-    localaktf.a(localRecentUser);
+    localQQAppInterface.a().a(aljq.aR, 1008, ((MessageRecord)localObject).uniseq, "time", Long.valueOf(((MessageRecord)localObject).time));
+    localamjk.a(localRecentUser);
     Object localObject = localQQAppInterface.getHandler(Conversation.class);
     if (localObject != null) {
       ((MqqHandler)localObject).sendEmptyMessage(1009);
     }
     this.lastSetTopTimeMillis = System.currentTimeMillis();
-    onh.a("kandian_subscribe_settop_info_key", this, true);
+    ors.a("kandian_subscribe_settop_info_key", this, true);
     QLog.d(KandianSubscribeManager.a, 1, "settop successful! pos : " + localPair.first + ", msgtime : " + localPair.second);
-    nol.a(localQQAppInterface, "CliOper", "", "", "0X80097D5", "0X80097D5", 0, 1, String.valueOf(localPair.first), null, null, null, false);
+    nrt.a(localQQAppInterface, "CliOper", "", "", "0X80097D5", "0X80097D5", 0, 1, String.valueOf(localPair.first), null, null, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager.MsgBoxSetTopInfo
  * JD-Core Version:    0.7.0.1
  */

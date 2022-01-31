@@ -1,47 +1,116 @@
-import android.os.Handler;
-import android.os.Message;
-import dov.com.qq.im.capture.view.CountDownView;
-import java.lang.ref.WeakReference;
-import org.jetbrains.annotations.NotNull;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public final class bjkc
-  extends Handler
+class bjkc
+  implements bjka
 {
-  private WeakReference<CountDownView> a;
+  private IBinder a;
   
-  public bjkc(CountDownView paramCountDownView)
+  bjkc(IBinder paramIBinder)
   {
-    this.a = new WeakReference(paramCountDownView);
+    this.a = paramIBinder;
   }
   
-  public void a(CountDownView paramCountDownView, @NotNull Message paramMessage)
+  public void a()
   {
-    if (paramMessage.what == 1) {
-      CountDownView.a(paramCountDownView, CountDownView.a(paramCountDownView) - 1);
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a.get() == null)
-    {
-      removeCallbacksAndMessages(null);
-      return;
-    }
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     try
     {
-      a((CountDownView)this.a.get(), paramMessage);
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    catch (Exception paramMessage)
+    finally
     {
-      paramMessage.printStackTrace();
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      localParcel1.writeFloat(paramFloat);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(5, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void c()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjkc
  * JD-Core Version:    0.7.0.1
  */

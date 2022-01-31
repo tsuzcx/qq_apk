@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.confess;
 
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public final class ConfessMsgUtil$3
   implements Runnable
@@ -15,7 +15,7 @@ public final class ConfessMsgUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessMsgUtil.3
  * JD-Core Version:    0.7.0.1
  */

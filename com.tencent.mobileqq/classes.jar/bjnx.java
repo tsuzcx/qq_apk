@@ -1,39 +1,54 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.text.TextUtils;
 
-class bjnx
+public class bjnx
 {
-  final Map<bjnp, List<bjny>> a;
-  final Map<bjny, bjnp> b;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean = false;
+  private String b = "";
   
-  bjnx(Map<bjny, bjnp> paramMap)
+  public String a()
   {
-    this.b = paramMap;
-    this.a = new HashMap();
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+    if (!TextUtils.isEmpty(this.b))
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      bjnp localbjnp = (bjnp)localEntry.getValue();
-      List localList = (List)this.a.get(localbjnp);
-      paramMap = localList;
-      if (localList == null)
-      {
-        paramMap = new ArrayList();
-        this.a.put(localbjnp, paramMap);
-      }
-      paramMap.add(localEntry.getKey());
+      this.b = this.b.replaceAll("\\+86", "");
+      this.b = this.b.replaceAll("\\D", "");
     }
+  }
+  
+  public String toString()
+  {
+    return "SimInfo mIseDataTrafficSim=" + this.jdField_a_of_type_Boolean + ",mIMSI=" + this.jdField_a_of_type_JavaLangString + ",mPhoneNum=" + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjnx
  * JD-Core Version:    0.7.0.1
  */

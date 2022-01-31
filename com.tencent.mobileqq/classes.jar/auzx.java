@@ -1,31 +1,153 @@
-import android.graphics.Matrix;
-import android.graphics.PointF;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class auzx
-  implements bble<Float>
 {
-  public auzx(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
+  public static int a;
+  public static long a;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  boolean a;
+  protected int b;
+  boolean b;
+  protected int c;
+  protected int d;
+  protected String e = "";
+  protected String f = "";
+  protected String g = "";
+  protected String h = "";
+  protected String i = "";
+  protected String j = "";
+  protected String k = "";
+  protected String l = "";
+  protected String m = "";
+  protected String n = "";
+  protected String o = "";
+  protected String p = "";
   
-  public void a(bbky<Float> parambbky, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  static
   {
-    paramTransformation.getMatrix().setScale(paramFloat1.floatValue(), paramFloat1.floatValue(), this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
-    paramFloat = this.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getWidth();
-    float f3 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f4 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f5 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getHeight();
-    paramTransformation.getMatrix().postTranslate((paramFloat - f1) * f2 * paramFloat1.floatValue(), (f3 - f4) * f5 * paramFloat1.floatValue());
-    paramTransformation.getMatrix().postRotate(paramFloat1.floatValue() * 120.0F - 120.0F, this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    jdField_c_of_type_JavaLangString = "";
+    jdField_d_of_type_JavaLangString = "";
+  }
+  
+  public auzx()
+  {
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public auzx a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return this;
+  }
+  
+  public auzx a(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      this.m = ("" + aush.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
+    }
+    long l1 = System.currentTimeMillis() - jdField_a_of_type_Long;
+    if (l1 % 1000L > 500L) {}
+    for (l1 = (int)l1 / 1000 + 1;; l1 = (int)l1 / 1000)
+    {
+      this.e = (l1 + "");
+      this.f = jdField_c_of_type_JavaLangString;
+      this.g = jdField_b_of_type_JavaLangString;
+      this.h = jdField_a_of_type_JavaLangString;
+      this.i = (ndd.a() + "");
+      azmj.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
+      return;
+    }
+  }
+  
+  public auzx b()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    return this;
+  }
+  
+  public auzx b(String paramString)
+  {
+    this.f = paramString;
+    return this;
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramQQAppInterface != null)) {
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
+    }
+    if ((this.jdField_b_of_type_Boolean) && (paramQQAppInterface != null))
+    {
+      this.jdField_b_of_type_Boolean = true;
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("gender", 0));
+    }
+    this.i = (ndd.a() + "");
+    azmj.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
+  }
+  
+  public auzx c(String paramString)
+  {
+    this.g = paramString;
+    return this;
+  }
+  
+  public auzx d(String paramString)
+  {
+    this.h = paramString;
+    return this;
+  }
+  
+  public auzx e(String paramString)
+  {
+    this.m = paramString;
+    return this;
+  }
+  
+  public auzx f(String paramString)
+  {
+    this.n = paramString;
+    return this;
+  }
+  
+  public auzx g(String paramString)
+  {
+    this.p = paramString;
+    return this;
+  }
+  
+  public auzx h(String paramString)
+  {
+    this.j = paramString;
+    return this;
+  }
+  
+  public auzx i(String paramString)
+  {
+    this.k = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auzx
  * JD-Core Version:    0.7.0.1
  */

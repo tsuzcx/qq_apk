@@ -1,22 +1,34 @@
-import java.util.Comparator;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 
-final class asxh
-  implements Comparator<asxi>
+class asxh
+  implements View.OnClickListener
 {
-  public int a(asxi paramasxi1, asxi paramasxi2)
+  asxh(asxg paramasxg) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramasxi1.b < paramasxi2.b) {
-      return -1;
+    asxx.a.a(31, null);
+    aswd.a(asxg.a(this.a).getApplicationContext(), this.a.a).a();
+    asxg.a(this.a).finish();
+    asxg.a(this.a).opType("huiyin").opName("loading_close").d1(String.valueOf(bdee.a(asxg.a(this.a).getApplicationContext()))).d2(String.valueOf(asxg.a(this.a))).report();
+    if (asxg.a(this.a) == 1)
+    {
+      if (!bdee.a(asxg.a(this.a).getApplicationContext())) {
+        asxg.a(this.a).opType("huiyin").opName("plugin_download_close").report();
+      }
     }
-    if (paramasxi1.b > paramasxi2.b) {
-      return 1;
+    else {
+      return;
     }
-    return 0;
+    asxg.a(this.a).opType("huiyin").opName("plugin_download_loading_close").report();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asxh
  * JD-Core Version:    0.7.0.1
  */

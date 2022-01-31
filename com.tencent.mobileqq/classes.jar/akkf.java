@@ -1,25 +1,12 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.ApolloActionPush;
 
-public class akkf
-  extends MqqHandler
+public abstract interface akkf
 {
-  public akkf(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    NewFriendVerifyBlockedListFragment.a(this.a);
-  }
+  public abstract void a(int paramInt, ApolloActionPush paramApolloActionPush);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,96 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.NegativeChildrenLayout;
+import com.tencent.qg.sdk.log.IQLog;
 
-class bfsv
-  implements View.OnClickListener
+public class bfsv
+  implements IQLog
 {
-  bfsv(bfst parambfst) {}
-  
-  public void onClick(View paramView)
+  private static String a(String paramString, Object... paramVarArgs)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      this.a.dismiss();
-      return;
-    case 2131370711: 
-      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_a_of_type_JavaUtilArrayList, ajya.a(2131705935), this.a.jdField_a_of_type_Bfsy);
-      this.a.a(true);
-      this.a.r = 1;
-      this.a.c = ajya.a(2131705940);
-      bfst.a(this.a, paramView.getTag(), false);
-      return;
-    case 2131370707: 
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
-      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_b_of_type_JavaUtilArrayList, ajya.a(2131705934), this.a.jdField_a_of_type_Bfsy);
-      this.a.a(true);
-      this.a.r = 2;
-      this.a.c = ajya.a(2131705943);
-      bfst.a(this.a, paramView.getTag(), false);
-      return;
-    case 2131370713: 
-      this.a.c(paramView);
-      this.a.c();
-      this.a.r = 3;
-      this.a.c = ajya.a(2131705939);
-      bfst.a(this.a, paramView.getTag(), true);
-      return;
-    case 2131370710: 
-      this.a.c(paramView);
-      this.a.c();
-      this.a.r = 4;
-      this.a.c = this.a.jdField_b_of_type_JavaLangString;
-      bfst.a(this.a, paramView.getTag(), false);
-      return;
-    case 2131370709: 
-      this.a.c(paramView);
-      this.a.c();
-      this.a.r = 5;
-      this.a.c = BaseApplicationImpl.getContext().getString(2131718479);
-      bfst.a(this.a, paramView.getTag(), false);
-      return;
-    }
-    this.a.a(false);
+    return String.format(null, paramString, paramVarArgs);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    wsv.c(paramString1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    wsv.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    wsv.b(paramString1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    wsv.a(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    wsv.b(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    wsv.e(paramString1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    wsv.c(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    wsv.c(paramString1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    wsv.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    wsv.c(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    wsv.a(paramString1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    wsv.a(paramString1, paramString2, new Object[] { paramThrowable });
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    wsv.c(paramString1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    wsv.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    wsv.d(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void w(String paramString, Throwable paramThrowable)
+  {
+    wsv.b(paramString, "", paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfsv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,50 @@
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import QQWalletPay.RespCheckChangePwdAuth;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class bddp
-  implements bcyl
+class bddp
+  extends Handler
 {
-  public bddp(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  private bddp(bddb parambddb) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    axqy.b(null, "dc00898", "", "", "0X800A7BD", "0X800A7BD", QuickLoginAuthorityActivity.b(this.a), 0, "", "", "", "");
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "report-dc00898-0X800A7BD-fromType=" + QuickLoginAuthorityActivity.b(this.a));
+    if (paramMessage.what != 1) {
+      return;
+    }
+    if (bddb.a(this.a) != null)
+    {
+      bddb.a(this.a).a();
+      bddb.a(this.a).removeObserver(bddb.a(this.a));
+    }
+    if (paramMessage.arg1 != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("JumpAction", 2, "msf return error ");
+      }
+      bddb.a(this.a, 1);
+      return;
+    }
+    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
+    {
+      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
+      if (paramMessage.retCode == 0)
+      {
+        bddb.b(this.a);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
+      }
+    }
+    bddb.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bddp
  * JD-Core Version:    0.7.0.1
  */

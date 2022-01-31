@@ -1,49 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class baum
-  implements bfph
+public class baum
+  implements URLDrawable.URLDrawableListener
 {
-  baum(baui parambaui) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (this.a.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopShareUtility", 2, "OnClick.chooseLinkType: " + paramInt);
-    }
-    this.a.jdField_b_of_type_Boolean = true;
-    switch (paramInt)
-    {
-    default: 
-      this.a.b(false);
-      this.a.jdField_a_of_type_Int = -1;
-      this.a.jdField_b_of_type_Int = -1;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_Bfpc.dismiss();
-      return;
-      this.a.b(true);
-      this.a.jdField_b_of_type_Int = 1;
-      baui.a(this.a);
-      continue;
-      this.a.b(true);
-      this.a.jdField_b_of_type_Int = 0;
-      baui.a(this.a);
-    }
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baum
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class xil
-  implements xim
+  implements View.OnClickListener
 {
-  xil(xij paramxij) {}
+  xil(xij paramxij, int paramInt) {}
   
-  public void a(xer paramxer)
+  public void onClick(View paramView)
   {
-    int i = paramxer.a();
-    if ((xij.a(this.a)) && (i == 100))
-    {
-      this.a.a(true);
-      return;
+    if (xij.a(this.jdField_a_of_type_Xij) != null) {
+      xij.a(this.jdField_a_of_type_Xij).a(this.jdField_a_of_type_Int);
     }
-    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xil
  * JD-Core Version:    0.7.0.1
  */

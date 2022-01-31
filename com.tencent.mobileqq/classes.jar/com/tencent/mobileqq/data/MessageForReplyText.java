@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import akpx;
-import akwa;
+import abot;
+import ammq;
 import android.text.TextUtils;
-import anij;
-import aulz;
-import axqy;
-import bbea;
+import aozq;
+import awdg;
+import azmj;
+import bdcv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,11 +15,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
-import myb;
+import nav;
 
 public class MessageForReplyText
   extends ChatMessage
-  implements anij
+  implements aozq
 {
   public static final String KEY_BARRAGE_SOURCE_MSG_TYPE = "barrage_source_msg_type";
   public static final String KEY_BARRAGE_TIME_LOCATION = "barrage_time_location";
@@ -31,7 +31,7 @@ public class MessageForReplyText
   public MessageForReplyText.SourceMsgInfo mSourceMsgInfo;
   public int msgVia;
   public CharSequence sb;
-  @aulz
+  @awdg
   private MessageRecord sourceMessage;
   
   public static QQAppInterface getAppInterface()
@@ -49,7 +49,7 @@ public class MessageForReplyText
   public static boolean needHideLocate(MessageForReplyText paramMessageForReplyText)
   {
     if (paramMessageForReplyText == null) {}
-    while (((akpx.c(paramMessageForReplyText.istroop)) && (paramMessageForReplyText.mSourceMsgInfo != null) && (paramMessageForReplyText.mSourceMsgInfo.origUid == 0L)) || (paramMessageForReplyText.mSourceMsgInfo.origUid == -1L)) {
+    while (((abot.d(paramMessageForReplyText.istroop)) && (paramMessageForReplyText.mSourceMsgInfo != null) && (paramMessageForReplyText.mSourceMsgInfo.origUid == 0L)) || (paramMessageForReplyText.mSourceMsgInfo.origUid == -1L)) {
       return true;
     }
     return false;
@@ -59,7 +59,7 @@ public class MessageForReplyText
   {
     if (paramSessionInfo.jdField_a_of_type_Int == 0)
     {
-      axqy.b(paramQQAppInterface, "dc00898", "", "", "0X80095E8", "0X80095E8", 0, 0, "", "", "", "");
+      azmj.b(paramQQAppInterface, "dc00898", "", "", "0X80095E8", "0X80095E8", 0, 0, "", "", "", "");
       return;
     }
     reportReplyMsg(paramQQAppInterface, "Msg_menu", "clk_replyMsg", paramSessionInfo.jdField_a_of_type_JavaLangString, paramChatMessage);
@@ -86,12 +86,12 @@ public class MessageForReplyText
         str1 = "Grp_Dis_replyMsg";
         label99:
         String str2 = i + "";
-        if (!myb.a(paramChatMessage)) {
+        if (!nav.a(paramChatMessage)) {
           break label281;
         }
         paramChatMessage = "1";
         label133:
-        axqy.b(paramQQAppInterface, "P_CliOper", str1, "", paramString1, paramString2, 0, 0, paramString3, str2, paramChatMessage, (String)localObject);
+        azmj.b(paramQQAppInterface, "P_CliOper", str1, "", paramString1, paramString2, 0, 0, paramString3, str2, paramChatMessage, (String)localObject);
         return;
         i = 0;
         localObject = "";
@@ -129,7 +129,7 @@ public class MessageForReplyText
         break label99;
         paramChatMessage = "0";
         break label133;
-        axqy.b(paramQQAppInterface, "P_CliOper", "Grp_replyMsg", "", paramString1, paramString2, 0, 0, paramString3, "", "", "");
+        azmj.b(paramQQAppInterface, "P_CliOper", "Grp_replyMsg", "", paramString1, paramString2, 0, 0, paramString3, "", "", "");
         return;
       }
       label317:
@@ -185,196 +185,196 @@ public class MessageForReplyText
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 193	com/tencent/mobileqq/data/MessageForReplyText:msg	Ljava/lang/String;
+    //   1: getfield 192	com/tencent/mobileqq/data/MessageForReplyText:msg	Ljava/lang/String;
     //   4: ifnonnull +166 -> 170
     //   7: ldc 79
     //   9: astore_2
     //   10: aload_0
-    //   11: ldc 195
-    //   13: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   11: ldc 194
+    //   13: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   16: astore_3
     //   17: aload_3
-    //   18: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   18: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   21: ifne +162 -> 183
     //   24: aload_3
-    //   25: invokestatic 211	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
+    //   25: invokestatic 210	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
     //   28: istore_1
     //   29: iload_1
     //   30: ifeq +379 -> 409
-    //   33: getstatic 217	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   36: instanceof 219
+    //   33: getstatic 216	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   36: instanceof 218
     //   39: ifne +12 -> 51
-    //   42: getstatic 217	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   45: instanceof 221
+    //   42: getstatic 216	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   45: instanceof 220
     //   48: ifeq +361 -> 409
     //   51: iconst_0
     //   52: istore_1
     //   53: aload_0
-    //   54: ldc 223
-    //   56: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   54: ldc 222
+    //   56: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   59: astore_3
     //   60: aload_3
-    //   61: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   61: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   64: ifne +47 -> 111
     //   67: aload_0
     //   68: getfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
     //   71: ifnonnull +40 -> 111
     //   74: aload_0
     //   75: aload_3
-    //   76: invokestatic 228	bbea:a	(Ljava/lang/String;)[B
-    //   79: invokestatic 233	akwa:a	([B)Ljava/lang/Object;
+    //   76: invokestatic 227	bdcv:a	(Ljava/lang/String;)[B
+    //   79: invokestatic 232	ammq:a	([B)Ljava/lang/Object;
     //   82: checkcast 63	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo
     //   85: putfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
     //   88: aload_0
     //   89: getfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
     //   92: ifnull +19 -> 111
-    //   95: invokestatic 235	com/tencent/mobileqq/data/MessageForReplyText:getAppInterface	()Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   95: invokestatic 234	com/tencent/mobileqq/data/MessageForReplyText:getAppInterface	()Lcom/tencent/mobileqq/app/QQAppInterface;
     //   98: astore_3
     //   99: aload_0
     //   100: aload_0
     //   101: getfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
     //   104: aload_3
-    //   105: invokevirtual 239	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:unPackSourceMsg	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lcom/tencent/mobileqq/data/MessageRecord;
-    //   108: invokevirtual 242	com/tencent/mobileqq/data/MessageForReplyText:setSourceMessageRecord	(Lcom/tencent/mobileqq/data/MessageRecord;)V
+    //   105: invokevirtual 238	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:unPackSourceMsg	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   108: invokevirtual 241	com/tencent/mobileqq/data/MessageForReplyText:setSourceMessageRecord	(Lcom/tencent/mobileqq/data/MessageRecord;)V
     //   111: aload_0
-    //   112: getstatic 247	axaf:i	Ljava/lang/String;
-    //   115: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   112: getstatic 246	ayvj:i	Ljava/lang/String;
+    //   115: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   118: astore_3
     //   119: aload_3
-    //   120: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   120: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   123: ifne +24 -> 147
     //   126: aload_3
-    //   127: invokestatic 253	com/tencent/mobileqq/data/MessageForText:getTroopMemberInfoFromExtrJson	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   127: invokestatic 252	com/tencent/mobileqq/data/MessageForText:getTroopMemberInfoFromExtrJson	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   130: astore_3
     //   131: aload_3
     //   132: ifnull +15 -> 147
     //   135: aload_3
-    //   136: invokevirtual 259	java/util/ArrayList:size	()I
+    //   136: invokevirtual 258	java/util/ArrayList:size	()I
     //   139: ifle +8 -> 147
     //   142: aload_0
     //   143: aload_3
-    //   144: putfield 263	com/tencent/mobileqq/data/MessageForReplyText:atInfoList	Ljava/util/ArrayList;
+    //   144: putfield 262	com/tencent/mobileqq/data/MessageForReplyText:atInfoList	Ljava/util/ArrayList;
     //   147: aload_0
-    //   148: new 265	aykk
+    //   148: new 264	baig
     //   151: dup
     //   152: aload_2
     //   153: bipush 13
-    //   155: invokestatic 269	com/tencent/mobileqq/activity/ChatTextSizeSettingActivity:a	()I
+    //   155: invokestatic 268	com/tencent/mobileqq/activity/ChatTextSizeSettingActivity:a	()I
     //   158: aload_0
-    //   159: invokespecial 272	aykk:<init>	(Ljava/lang/CharSequence;IILcom/tencent/mobileqq/data/MessageRecord;)V
-    //   162: putfield 274	com/tencent/mobileqq/data/MessageForReplyText:sb	Ljava/lang/CharSequence;
+    //   159: invokespecial 271	baig:<init>	(Ljava/lang/CharSequence;IILcom/tencent/mobileqq/data/MessageRecord;)V
+    //   162: putfield 273	com/tencent/mobileqq/data/MessageForReplyText:sb	Ljava/lang/CharSequence;
     //   165: iload_1
     //   166: ifne +100 -> 266
     //   169: return
     //   170: aload_0
-    //   171: getfield 193	com/tencent/mobileqq/data/MessageForReplyText:msg	Ljava/lang/String;
+    //   171: getfield 192	com/tencent/mobileqq/data/MessageForReplyText:msg	Ljava/lang/String;
     //   174: astore_2
     //   175: goto -165 -> 10
     //   178: astore_3
     //   179: aload_3
-    //   180: invokevirtual 277	java/lang/Exception:printStackTrace	()V
+    //   180: invokevirtual 276	java/lang/Exception:printStackTrace	()V
     //   183: iconst_1
     //   184: istore_1
     //   185: goto -156 -> 29
     //   188: astore_3
-    //   189: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   189: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   192: ifeq -81 -> 111
     //   195: ldc 144
     //   197: iconst_2
     //   198: new 104	java/lang/StringBuilder
     //   201: dup
     //   202: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   205: ldc_w 279
+    //   205: ldc_w 278
     //   208: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   211: aload_3
-    //   212: invokevirtual 282	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   212: invokevirtual 281	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   215: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   218: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   221: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   221: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   224: goto -113 -> 111
     //   227: astore_3
-    //   228: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   228: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   231: ifeq -84 -> 147
     //   234: ldc 144
     //   236: iconst_2
     //   237: new 104	java/lang/StringBuilder
     //   240: dup
     //   241: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   244: ldc_w 279
+    //   244: ldc_w 278
     //   247: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   250: aload_3
-    //   251: invokevirtual 282	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   251: invokevirtual 281	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   254: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   257: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   260: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   260: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   263: goto -116 -> 147
     //   266: aload_0
-    //   267: ldc_w 284
-    //   270: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   267: ldc_w 283
+    //   270: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   273: astore_3
     //   274: aload_3
-    //   275: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   275: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   278: ifne +70 -> 348
     //   281: aload_0
-    //   282: ldc_w 286
-    //   285: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   282: ldc_w 285
+    //   285: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   288: astore 4
     //   290: aload 4
-    //   292: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   292: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   295: ifne +109 -> 404
     //   298: aload 4
     //   300: ldc 123
-    //   302: invokevirtual 291	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   302: invokevirtual 290	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   305: ifeq +99 -> 404
     //   308: iconst_1
     //   309: istore_1
     //   310: iload_1
     //   311: ifne +11 -> 322
     //   314: aload_0
-    //   315: ldc_w 293
+    //   315: ldc_w 292
     //   318: aload_2
-    //   319: invokevirtual 297	com/tencent/mobileqq/data/MessageForReplyText:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
-    //   322: new 299	java/util/concurrent/CopyOnWriteArrayList
+    //   319: invokevirtual 296	com/tencent/mobileqq/data/MessageForReplyText:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
+    //   322: new 298	java/util/concurrent/CopyOnWriteArrayList
     //   325: dup
-    //   326: invokespecial 300	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
+    //   326: invokespecial 299	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
     //   329: astore_2
     //   330: aload_2
     //   331: aload_0
-    //   332: invokeinterface 306 2 0
+    //   332: invokeinterface 305 2 0
     //   337: pop
     //   338: aload_0
     //   339: aload_2
     //   340: iload_1
     //   341: aload_3
-    //   342: invokestatic 228	bbea:a	(Ljava/lang/String;)[B
-    //   345: invokestatic 311	bcxb:a	(Lcom/tencent/mobileqq/data/MessageRecord;Ljava/util/List;Z[B)V
+    //   342: invokestatic 227	bdcv:a	(Ljava/lang/String;)[B
+    //   345: invokestatic 310	bewd:a	(Lcom/tencent/mobileqq/data/MessageRecord;Ljava/util/List;Z[B)V
     //   348: aload_0
     //   349: ldc 13
-    //   351: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   351: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   354: astore_2
     //   355: aload_2
-    //   356: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   356: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   359: ifne -190 -> 169
     //   362: aload_0
     //   363: iconst_1
-    //   364: putfield 313	com/tencent/mobileqq/data/MessageForReplyText:isBarrageMsg	Z
+    //   364: putfield 312	com/tencent/mobileqq/data/MessageForReplyText:isBarrageMsg	Z
     //   367: aload_0
     //   368: aload_2
-    //   369: invokestatic 319	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   372: invokevirtual 323	java/lang/Long:longValue	()J
-    //   375: putfield 325	com/tencent/mobileqq/data/MessageForReplyText:barrageTimeLocation	J
+    //   369: invokestatic 318	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   372: invokevirtual 322	java/lang/Long:longValue	()J
+    //   375: putfield 324	com/tencent/mobileqq/data/MessageForReplyText:barrageTimeLocation	J
     //   378: aload_0
     //   379: ldc 10
-    //   381: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   381: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   384: astore_2
     //   385: aload_2
-    //   386: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   386: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   389: ifne -220 -> 169
     //   392: aload_0
     //   393: aload_2
-    //   394: invokestatic 330	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   397: invokevirtual 333	java/lang/Integer:intValue	()I
-    //   400: putfield 335	com/tencent/mobileqq/data/MessageForReplyText:barrageSourceMsgType	I
+    //   394: invokestatic 329	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   397: invokevirtual 332	java/lang/Integer:intValue	()I
+    //   400: putfield 334	com/tencent/mobileqq/data/MessageForReplyText:barrageSourceMsgType	I
     //   403: return
     //   404: iconst_0
     //   405: istore_1
@@ -421,7 +421,7 @@ public class MessageForReplyText
   
   public boolean isSupportFTS()
   {
-    return akpx.v(this.istroop);
+    return abot.x(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -459,7 +459,7 @@ public class MessageForReplyText
         if ((this.sourceMessage != null) && (localObject != null)) {
           this.mSourceMsgInfo.packSourceMsg((QQAppInterface)localObject, this.sourceMessage);
         }
-        saveExtInfoToExtStr("sens_msg_source_msg_info", bbea.a(akwa.a(this.mSourceMsgInfo)));
+        saveExtInfoToExtStr("sens_msg_source_msg_info", bdcv.a(ammq.a(this.mSourceMsgInfo)));
         if (this.isBarrageMsg)
         {
           saveExtInfoToExtStr("barrage_time_location", String.valueOf(this.barrageTimeLocation));
@@ -513,7 +513,7 @@ public class MessageForReplyText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForReplyText
  * JD-Core Version:    0.7.0.1
  */

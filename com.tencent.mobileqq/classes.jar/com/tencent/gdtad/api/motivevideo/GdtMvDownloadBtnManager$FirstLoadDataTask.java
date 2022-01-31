@@ -1,12 +1,12 @@
 package com.tencent.gdtad.api.motivevideo;
 
+import aalg;
+import aanp;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.gdtad.aditem.GdtAd;
 import java.lang.ref.WeakReference;
-import yvn;
-import yxp;
 
 class GdtMvDownloadBtnManager$FirstLoadDataTask
   implements Runnable
@@ -16,13 +16,13 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask
   
   private void a(GdtMvAppBtnData paramGdtMvAppBtnData)
   {
-    yxp.a("FirstLoadDataTask", "postResultToUI() called with: tempAppBtnData = [" + paramGdtMvAppBtnData + "]");
+    aanp.a("FirstLoadDataTask", "postResultToUI() called with: tempAppBtnData = [" + paramGdtMvAppBtnData + "]");
     new Handler(Looper.getMainLooper()).post(new GdtMvDownloadBtnManager.FirstLoadDataTask.1(this, paramGdtMvAppBtnData));
   }
   
   public void run()
   {
-    yxp.a("FirstLoadDataTask", "run() called");
+    aanp.a("FirstLoadDataTask", "run() called");
     if (this.jdField_a_of_type_Boolean) {}
     GdtMvDownloadBtnManager localGdtMvDownloadBtnManager;
     do
@@ -30,7 +30,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask
       return;
       localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while ((localGdtMvDownloadBtnManager == null) || (GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager) == null) || (TextUtils.isEmpty(GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager).getUrlForClick())));
-    GdtMvAppBtnData localGdtMvAppBtnData = new yvn().a(GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager).getUrlForClick(), "&gd=1", 1);
+    GdtMvAppBtnData localGdtMvAppBtnData = new aalg().a(GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager).getUrlForClick(), "&gd=1", 1);
     if ((localGdtMvAppBtnData != null) && (localGdtMvAppBtnData.isValid()))
     {
       GdtMvDownloadBtnManager.a(localGdtMvAppBtnData.apkUrlhttp);
@@ -38,12 +38,12 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask
       a(localGdtMvAppBtnData);
       return;
     }
-    yxp.b("FirstLoadDataTask", "load gdt mv app btn data error");
+    aanp.b("FirstLoadDataTask", "load gdt mv app btn data error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager.FirstLoadDataTask
  * JD-Core Version:    0.7.0.1
  */

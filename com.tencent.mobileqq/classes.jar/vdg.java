@@ -1,35 +1,41 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoSimpleInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vdg
-  extends QQUIEventReceiver<vcp, tkk>
+  extends unf
 {
-  public vdg(@NonNull vcp paramvcp)
+  public List<StoryVideoItem> a = new ArrayList();
+  
+  public vdg(qqstory_service.RspSimpleInfoList paramRspSimpleInfoList)
   {
-    super(paramvcp);
+    super(paramRspSimpleInfoList.result);
+    paramRspSimpleInfoList = paramRspSimpleInfoList.video_list.get();
+    if (paramRspSimpleInfoList != null)
+    {
+      paramRspSimpleInfoList = paramRspSimpleInfoList.iterator();
+      while (paramRspSimpleInfoList.hasNext())
+      {
+        qqstory_struct.StoryVideoSimpleInfo localStoryVideoSimpleInfo = (qqstory_struct.StoryVideoSimpleInfo)paramRspSimpleInfoList.next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom("Q.qqstory.net:GetSimpleInfoListResponse", localStoryVideoSimpleInfo);
+        this.a.add(localStoryVideoItem);
+      }
+    }
   }
   
-  public void a(@NonNull vcp paramvcp, @NonNull tkk paramtkk)
+  public String toString()
   {
-    if ((paramtkk == null) || (paramtkk.a == null) || (TextUtils.isEmpty(paramtkk.a.headUrl))) {
-      ved.c(this.TAG, "GetUserInfoHandler return headUrl is null!", new IllegalStateException());
-    }
-    while (!paramtkk.a.isMe()) {
-      return;
-    }
-    vcp.b(paramvcp);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tkk.class;
+    return "GetSimpleInfoListResponse{mVideoItemList=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdg
  * JD-Core Version:    0.7.0.1
  */

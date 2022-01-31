@@ -1,28 +1,24 @@
-import android.text.TextUtils;
+import android.opengl.GLES20;
 
 class amrq
+  implements anau
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  amrq(amrp paramamrp) {}
   
-  public String a()
+  public void a()
   {
-    return this.a + this.b;
+    GLES20.glUniform1i(amrp.a(this.a), amrp.b(this.a));
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+    amrp.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    amsa.a("glGetUniformLocation uDisplayType");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrq
  * JD-Core Version:    0.7.0.1
  */

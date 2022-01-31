@@ -1,16 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class blbx
+  implements View.OnClickListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = false;
-  float b = 0.0F;
+  blbx(blbw paramblbw) {}
   
-  private blbx(blbu paramblbu) {}
+  public void onClick(View paramView)
+  {
+    if ((this.a.a != null) && (blbw.a(this.a) != null)) {
+      blbw.a(this.a).a(paramView, this.a.a, blbw.a(this.a));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blbx
  * JD-Core Version:    0.7.0.1
  */

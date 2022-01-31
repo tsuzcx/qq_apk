@@ -1,85 +1,70 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
 public abstract class bajn
-  extends mxj
+  extends Binder
+  implements bajm
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.ISwitchCallback";
+  static final int TRANSACTION_beginSwitch = 1;
+  static final int TRANSACTION_doSwitch = 3;
+  static final int TRANSACTION_onProgress = 2;
+  static final int TRANSACTION_postSwitch = 4;
+  
+  public bajn()
   {
-    boolean bool2 = false;
-    Object localObject = null;
-    long l2 = 0L;
-    long l1;
-    boolean bool1;
-    if ((paramInt == 0) && (paramBundle != null))
-    {
-      l2 = paramBundle.getLong("uin");
-      l1 = l2;
-      if (paramArrayOfByte == null) {
-        break label199;
-      }
-      paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        bool1 = bool2;
-        if (!((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) {
-          break label211;
-        }
-        bool1 = bool2;
-        if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
-          break label211;
-        }
-        bool1 = true;
-        paramArrayOfByte = new AccountDetail(paramBundle);
-        bool1 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        bool2 = bool1;
-        bool1 = bool2;
-        paramArrayOfByte = localObject;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("TroopBindPubAccountProtocol", 2, paramBundle.toString());
-        bool1 = bool2;
-        paramArrayOfByte = localObject;
-        continue;
-      }
-      a(bool1, l2, paramArrayOfByte);
-      return;
-      l1 = l2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("TroopBindPubAccountProtocol", 2, "get pubAccountInfo failed, errorCode=" + paramInt);
-        l1 = l2;
-      }
-      label199:
-      bool1 = false;
-      paramArrayOfByte = null;
-      l2 = l1;
-      continue;
-      label211:
-      paramArrayOfByte = null;
-      bool1 = false;
-    }
+    attachInterface(this, "com.tencent.mobileqq.theme.ISwitchCallback");
   }
   
-  protected abstract void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail);
+  public static bajm asInterface(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof bajm))) {
+      return (bajm)localIInterface;
+    }
+    return new bajo(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.theme.ISwitchCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+      beginSwitch();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+      onProgress(paramParcel1.readLong(), paramParcel1.readLong());
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+      doSwitch(paramParcel1.readString(), paramParcel1.readString());
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+    postSwitch(paramParcel1.readInt());
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bajn
  * JD-Core Version:    0.7.0.1
  */

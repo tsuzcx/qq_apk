@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.app;
 
-import ajzd;
-import bbps;
-import bbpy;
+import alqr;
+import bdom;
+import bdos;
 import com.tencent.qphone.base.util.QLog;
 
 public class IndividualRedPacketManager$1
   implements Runnable
 {
-  public IndividualRedPacketManager$1(ajzd paramajzd) {}
+  public IndividualRedPacketManager$1(alqr paramalqr) {}
   
   public void run()
   {
     this.this$0.a(true);
     if (QLog.isColorLevel()) {
-      QLog.d(ajzd.b(), 2, "AIO_BG_WIDTH:" + this.this$0.b);
+      QLog.d(alqr.b(), 2, "AIO_BG_WIDTH:" + this.this$0.b);
     }
     this.this$0.a().d();
     this.this$0.a().c();
     this.this$0.a();
     if (this.this$0.j > 0)
     {
-      bbpy localbbpy = this.this$0.a().a(String.valueOf(this.this$0.j), true);
-      if ((localbbpy == null) || (localbbpy.a == null) || (localbbpy.b == null) || (localbbpy.c == null)) {
+      bdos localbdos = this.this$0.a().a(String.valueOf(this.this$0.j), true);
+      if ((localbdos == null) || (localbdos.a == null) || (localbdos.b == null) || (localbdos.c == null)) {
         this.this$0.a().a(16L, String.valueOf(this.this$0.j), null);
       }
     }

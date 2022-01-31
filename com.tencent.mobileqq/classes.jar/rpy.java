@@ -1,65 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleLoaderHelper.DummyCallback.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
 
 public class rpy
-  implements myy
+  implements View.OnClickListener
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
+  public rpy(KandianProgressView paramKandianProgressView) {}
   
-  public rpy(rpx paramrpx, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    QLog.d("TemplateFactory", 2, "loaded: bid : " + this.jdField_a_of_type_JavaLangString + " param " + paramString + " code : " + paramInt);
-    if (paramInt == 0)
-    {
-      if (paramString == null) {}
-      try
-      {
-        QLog.d("TemplateFactory", 2, "下载离线样式包完成 : " + this.jdField_a_of_type_JavaLangString);
-        rqj.a(rpx.a(this.jdField_a_of_type_Rpx));
-        if ((paramString == null) && (rqj.a(this.jdField_a_of_type_JavaLangString).a))
-        {
-          QLog.d("TemplateFactory", 2, "加载离线包 : " + this.jdField_a_of_type_JavaLangString);
-          sez.a(2, rpx.a(this.jdField_a_of_type_Rpx));
-          paramString = this.jdField_a_of_type_Rpx.a(BaseApplicationImpl.getApplication());
-          if (paramString == null)
-          {
-            QLog.d("TemplateFactory", 2, "templateFactory == null  bid : " + this.jdField_a_of_type_JavaLangString + " code : " + paramInt);
-            return;
-          }
-          paramString.a(rpx.a().incrementAndGet());
-          rqj.a(this.jdField_a_of_type_JavaLangString, paramString);
-          rpr.a();
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString, paramString);
-      }
+    if (this.a.jdField_a_of_type_Rpz == null) {
+      return;
     }
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131365080: 
+    case 2131365095: 
+      this.a.jdField_a_of_type_Rpz.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    this.a.jdField_a_of_type_Rpz.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
   }
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    ThreadManager.getFileThreadHandler().post(new StyleLoaderHelper.DummyCallback.1(this, paramInt, paramString));
-  }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpy
  * JD-Core Version:    0.7.0.1
  */

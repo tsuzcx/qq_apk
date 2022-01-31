@@ -1,25 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class xpz
-  implements Animation.AnimationListener
+public final class xpz
+  implements nbs
 {
-  xpz(xpx paramxpx) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void loaded(String paramString, int paramInt)
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(4);
+    if (QLog.isColorLevel()) {
+      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
+    }
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
+      PngQuantUtils.a.set(false);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpz
  * JD-Core Version:    0.7.0.1
  */

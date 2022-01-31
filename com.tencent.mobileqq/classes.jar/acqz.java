@@ -1,30 +1,24 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
 
 public class acqz
-  implements Handler.Callback
+  extends alox
 {
-  public acqz(ActivateFriendActivity paramActivateFriendActivity) {}
+  public acqz(EditInfoActivity paramEditInfoActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    switch (paramMessage.what)
-    {
+    if (!this.a.f.equals(paramString1)) {}
+    while (!this.a.j) {
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if (ActivateFriendActivity.a(this.a) != null) {
-        ActivateFriendActivity.a(this.a).e();
-      }
-    }
+    this.a.j = false;
+    this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramString2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqz
  * JD-Core Version:    0.7.0.1
  */

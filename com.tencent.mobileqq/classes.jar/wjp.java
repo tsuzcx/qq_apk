@@ -1,21 +1,21 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
-class wjp
-  implements wsn
+public class wjp
+  implements View.OnClickListener
 {
-  wjp(wjo paramwjo) {}
+  public wjp(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      wpt.a().a(new RecommendFeedbackEvent(RecommendBannerItemView.a(this.a.a)));
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
+    wta.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjp
  * JD-Core Version:    0.7.0.1
  */

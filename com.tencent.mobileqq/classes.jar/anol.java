@@ -1,30 +1,71 @@
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class anol
-  implements anog
+public class anol
+  implements anom
 {
-  anol(anoi paramanoi, MqqHandler paramMqqHandler) {}
+  public final String a = anok.a + "." + getClass().getSimpleName();
   
-  public void a(int paramInt)
+  public static final String a(String paramString1, String paramString2)
   {
-    switch (paramInt)
+    return anpm.a() + File.separator + "_res/" + paramString1;
+  }
+  
+  public String a(anop paramanop)
+  {
+    return anpm.a() + File.separator + "_res/" + paramanop.b + File.separator;
+  }
+  
+  public boolean a(anop paramanop)
+  {
+    String str = b(paramanop);
+    try
     {
+      boolean bool = new File(str).exists();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a, 2, "needDownload.file exist|" + bool + "|" + paramanop + "|" + str);
+      }
+      if (!bool) {
+        return true;
+      }
     }
-    do
+    catch (Throwable paramanop)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(80);
-      return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(80, 5000L);
+      if (QLog.isColorLevel()) {
+        QLog.i(this.a, 2, "isNeedDownload.exception happen.e=" + paramanop.getMessage());
+      }
+      paramanop.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean a(anop paramanop, boolean paramBoolean)
+  {
+    return true;
+  }
+  
+  public String b(anop paramanop)
+  {
+    return a(paramanop.b, paramanop.c);
+  }
+  
+  public boolean b(anop paramanop)
+  {
+    boolean bool = true;
+    String str = awiz.a(b(paramanop));
+    if (!paramanop.b.equalsIgnoreCase(str))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.a, 1, "checkDownloadFile.verify failed|" + str + "|" + paramanop);
+      }
+      bool = false;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anol
  * JD-Core Version:    0.7.0.1
  */

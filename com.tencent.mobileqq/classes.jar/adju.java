@@ -1,49 +1,29 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class adju
-  implements adif
+  extends allb
 {
-  public void a(int paramInt)
+  public adju(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  
+  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 4: 
-      wtl.a().a();
-      return;
-    case 9: 
-      wtl.a().b();
-      return;
+      this.a.setResult(-1);
+      this.a.b(2131720586);
     }
-    wtl.a().c();
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    wtl.a().a(paramAbsListView, paramInt);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    wtl.a().a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (adng.class.isInstance(paramObject)) {
-      wtl.a().a((adng)paramObject);
+    for (;;)
+    {
+      this.a.a = false;
+      this.a.finish();
+      return;
+      this.a.b(2131720584);
     }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 11, 6, 4, 9 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adju
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aaiq;
-import aair;
-import ajya;
+import abzq;
+import abzr;
+import alpo;
 import android.content.Intent;
-import aqbe;
-import bbdj;
-import bbgu;
+import arum;
+import bdcd;
+import bdfq;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkFullScreenAppActivity$8$1$1
@@ -20,13 +20,13 @@ public class ArkFullScreenAppActivity$8$1$1
     {
       if (this.jdField_a_of_type_AndroidContentIntent != null)
       {
-        aqbe.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, this.jdField_a_of_type_AndroidContentIntent, 100);
+        arum.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, this.jdField_a_of_type_AndroidContentIntent, 100);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("ArkFullScreenAppActivity", 2, "showActionSheet share: intent == null");
       }
-      bbdj.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, 230, ajya.a(2131700686), ajya.a(2131700682), new aair(this), null).show();
+      bdcd.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, 230, alpo.a(2131701055), alpo.a(2131701051), new abzr(this), null).show();
       return;
     }
     catch (Exception localException)
@@ -39,7 +39,7 @@ public class ArkFullScreenAppActivity$8$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1
  * JD-Core Version:    0.7.0.1
  */

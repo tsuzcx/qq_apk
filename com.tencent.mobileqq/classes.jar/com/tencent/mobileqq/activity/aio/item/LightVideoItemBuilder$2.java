@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import axaf;
+import ayvj;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForLightVideo;
 import java.util.Iterator;
@@ -24,7 +24,7 @@ class LightVideoItemBuilder$2
       {
         ChatMessage localChatMessage = (ChatMessage)((Iterator)localObject).next();
         if (((localChatMessage instanceof MessageForLightVideo)) && (localChatMessage.uniseq == this.a.uniseq)) {
-          localChatMessage.saveExtInfoToExtStr(axaf.u, "1");
+          localChatMessage.saveExtInfoToExtStr(ayvj.u, "1");
         }
       }
     }
@@ -34,7 +34,7 @@ class LightVideoItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

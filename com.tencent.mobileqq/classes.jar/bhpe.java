@@ -1,43 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 
-final class bhpe
-  implements FilenameFilter
+public final class bhpe
 {
-  bhpe(long paramLong1, long paramLong2) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public static int a(Context paramContext, String paramString)
   {
-    if ((!paramString.startsWith("QAVSDK")) && (!paramString.startsWith("qavsdk"))) {}
-    long l;
-    do
+    return a(paramContext, paramString).versionCode;
+  }
+  
+  public static PackageInfo a(Context paramContext, String paramString)
+  {
+    return paramContext.getPackageManager().getPackageInfo(paramString, 0);
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    try
     {
-      File localFile;
-      do
-      {
-        do
-        {
-          return false;
-        } while (paramString.split("_").length == 2);
-        localFile = new File(paramFile + File.separator + paramString);
-      } while ((localFile == null) || (!localFile.exists()));
-      l = localFile.lastModified();
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
-      }
-    } while ((l < this.a) || (l > this.b));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
+      a(paramContext, paramString);
+      return true;
     }
-    return true;
+    catch (PackageManager.NameNotFoundException paramContext) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhpe
  * JD-Core Version:    0.7.0.1
  */

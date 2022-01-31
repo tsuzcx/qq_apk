@@ -9,13 +9,13 @@ public class GesturePWDManualGuideActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131559118);
-    setTitle(2131692997);
+    super.setContentView(2131559161);
+    setTitle(2131693098);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDManualGuideActivity
  * JD-Core Version:    0.7.0.1
  */

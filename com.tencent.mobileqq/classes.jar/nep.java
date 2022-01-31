@@ -1,21 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
 public class nep
+  implements SoundPool.OnLoadCompleteListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ImageView b;
-  TextView b;
-  public ImageView c;
-  TextView c;
-  public ImageView d;
+  public nep(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  nep(nea paramnea) {}
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nep
  * JD-Core Version:    0.7.0.1
  */

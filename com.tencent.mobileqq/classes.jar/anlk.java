@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class anlk
+class anlk
+  implements View.OnClickListener
 {
-  anlh jdField_a_of_type_Anlh;
-  FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  anlk(anlh paramanlh) {}
   
-  protected anlk(DataReportSettingFragment paramDataReportSettingFragment) {}
+  public void onClick(View paramView)
+  {
+    abvm.a(anlh.a(this.a), -3, "user canceled");
+    anlh.a(this.a).a();
+    anlh.a(this.a).dismiss();
+    anlh.a(this.a, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlk
  * JD-Core Version:    0.7.0.1
  */

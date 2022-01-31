@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.monitor.service;
 
-import ajya;
+import alpo;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import baxq;
+import bcwk;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
@@ -14,7 +14,7 @@ public class TaskMonitorManager
   public static final String SCENE_TAG_HIDE = "hide";
   public static final String SCENE_TAG_SHOW = "show";
   public static final String TAG = "TaskMonitorManager";
-  public static String TASK_PERFM_SWITCH_PAGE = ajya.a(2131714740);
+  public static String TASK_PERFM_SWITCH_PAGE = alpo.a(2131715112);
   protected static TaskMonitorManager mInstance;
   protected boolean isCalcDeviceUsageOk = true;
   protected volatile long mAppCurUsage;
@@ -29,7 +29,7 @@ public class TaskMonitorManager
   
   protected TaskMonitorManager()
   {
-    baxq.a().a(this.mFpsListener);
+    bcwk.a().a(this.mFpsListener);
     updateCpuInfoSync();
   }
   
@@ -296,7 +296,7 @@ public class TaskMonitorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager
  * JD-Core Version:    0.7.0.1
  */

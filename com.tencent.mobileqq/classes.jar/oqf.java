@@ -1,28 +1,22 @@
-import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import java.io.File;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oqf
-  implements OnCompositionLoadedListener
+class oqf
+  implements ViewBase.OnClickListener
 {
-  public oqf(ReadInJoyLottieDrawable.4 param4) {}
+  oqf(oqd paramoqd) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (paramLottieComposition != null)
-    {
-      oqb.a().put(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramLottieComposition);
-      oqb.a(this.a.this$0).post(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
+    qki.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, "0X8009B77");
+    ors.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.jump_url);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqf
  * JD-Core Version:    0.7.0.1
  */

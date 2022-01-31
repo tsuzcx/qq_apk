@@ -1,36 +1,14 @@
-import android.app.Activity;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter.Params;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
-import com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment;
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import java.lang.ref.WeakReference;
+import java.util.List;
 
-public final class ysa
-  implements AdCanvasAdapter
+public abstract interface ysa
 {
-  public AdError show(AdCanvasAdapter.Params paramParams)
-  {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
-    {
-      yxp.d("GdtCanvasAdapter", "show error");
-      return new AdError(4);
-    }
-    GdtCanvasData localGdtCanvasData = yzf.a((GdtAd)GdtAd.class.cast(paramParams.ad), paramParams.autoDownload);
-    if ((localGdtCanvasData == null) || (!localGdtCanvasData.isValid()))
-    {
-      yxp.d("GdtCanvasAdapter", "show error");
-      return new AdError(4);
-    }
-    GdtCanvasBaseFragment.start((Activity)paramParams.activity.get(), GdtCanvasFragmentForJS.class, localGdtCanvasData, paramParams.extrasForIntent);
-    return new AdError(0);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(List<bckf> paramList, yqx paramyqx);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysa
  * JD-Core Version:    0.7.0.1
  */

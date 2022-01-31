@@ -1,35 +1,21 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class sbs
-  implements View.OnFocusChangeListener
+class sbs
+  implements ViewFactory.FoundClickableViewListener
 {
-  public sbs(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  sbs(sbr paramsbr, ProteusItemData paramProteusItemData, Context paramContext) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onFound(ViewBase paramViewBase)
   {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      SubscriptFeedsActivity.a(this.a);
-      long l = System.currentTimeMillis();
-      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
-      {
-        SubscriptFeedsActivity.a(this.a, l);
-        UniteSearchActivity.a(this.a, null, 12);
-        if (QLog.isColorLevel()) {
-          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
-        }
-      }
-    }
+    paramViewBase.setOnClickListener(new sbt(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbs
  * JD-Core Version:    0.7.0.1
  */

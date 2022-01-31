@@ -28,14 +28,14 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import bbdh;
-import bbll;
-import bbqz;
-import bcsd;
-import bcse;
-import bcsf;
-import bcsg;
-import bcsh;
+import bdcb;
+import bdkf;
+import bdpt;
+import berm;
+import bern;
+import bero;
+import berp;
+import berq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
@@ -48,7 +48,7 @@ import mqq.app.AppRuntime;
 public class TabDragAnimationView
   extends View
 {
-  private static final int jdField_g_of_type_Int = bbll.b(2.0F);
+  private static final int jdField_g_of_type_Int = bdkf.b(2.0F);
   float jdField_a_of_type_Float = 0.0F;
   protected int a;
   public ValueAnimator a;
@@ -61,10 +61,10 @@ public class TabDragAnimationView
   private GestureDetector.OnDoubleTapListener jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private bcse jdField_a_of_type_Bcse;
-  private final bcsf jdField_a_of_type_Bcsf;
-  private final bcsg jdField_a_of_type_Bcsg;
-  private final bcsh jdField_a_of_type_Bcsh;
+  private bern jdField_a_of_type_Bern;
+  private final bero jdField_a_of_type_Bero;
+  private final berp jdField_a_of_type_Berp;
+  private final berq jdField_a_of_type_Berq;
   public URLDrawable a;
   private String jdField_a_of_type_JavaLangString = "TabDragAnimationView@" + Integer.toHexString(hashCode());
   public boolean a;
@@ -125,15 +125,15 @@ public class TabDragAnimationView
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, "load xml attr, expected logo width=" + this.jdField_h_of_type_Int + ", expected logo height=" + this.jdField_i_of_type_Int);
       }
       paramAttributeSet.recycle();
-      this.jdField_a_of_type_Bcsh = new bcsh(this);
-      this.jdField_a_of_type_Bcsg = new bcsg(this);
-      this.jdField_a_of_type_Bcsf = new bcsf(this);
+      this.jdField_a_of_type_Berq = new berq(this);
+      this.jdField_a_of_type_Berp = new berp(this);
+      this.jdField_a_of_type_Bero = new bero(this);
       this.jdField_c_of_type_Boolean = ThemeUtil.isNowThemeIsAnimate();
       if ((Build.MODEL.contains("vivo")) || (Build.MANUFACTURER.contains("vivo"))) {
         bool = true;
       }
       this.jdField_g_of_type_Boolean = bool;
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bcsd(this), this.jdField_a_of_type_AndroidOsHandler);
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new berm(this), this.jdField_a_of_type_AndroidOsHandler);
       return;
     }
     finally
@@ -201,7 +201,7 @@ public class TabDragAnimationView
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       String str2 = "- tab-" + this.jdField_e_of_type_Int;
       String str3 = "- tab-" + this.jdField_e_of_type_Int;
-      this.jdField_a_of_type_ComTencentImageURLDrawable = bbqz.a(localAppRuntime, str1, str2, localDrawable, new int[] { i1 }, str3, localBundle);
+      this.jdField_a_of_type_ComTencentImageURLDrawable = bdpt.a(localAppRuntime, str1, str2, localDrawable, new int[] { i1 }, str3, localBundle);
       if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
       {
         this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback(this);
@@ -319,7 +319,7 @@ public class TabDragAnimationView
   {
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bcsh.a();
+      this.jdField_a_of_type_Berq.a();
       f();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return;
@@ -340,13 +340,13 @@ public class TabDragAnimationView
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bcsf);
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bero);
     }
     this.jdField_d_of_type_Int = 1;
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(200L);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bcsf);
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bero);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -376,8 +376,8 @@ public class TabDragAnimationView
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bcsf);
-      this.jdField_a_of_type_Bcsf.a();
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bero);
+      this.jdField_a_of_type_Bero.a();
       this.jdField_b_of_type_AndroidAnimationValueAnimator = null;
     }
   }
@@ -387,12 +387,12 @@ public class TabDragAnimationView
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bcsh);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Berq);
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bcsh);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Berq);
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -422,11 +422,11 @@ public class TabDragAnimationView
       if ((this.jdField_d_of_type_Int != 1) || (this.jdField_a_of_type_Boolean)) {
         break label659;
       }
-      if (((this.jdField_a_of_type_Bcsf.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bcsf.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
+      if (((this.jdField_a_of_type_Bero.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bero.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
       {
         localDrawable2 = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
         label208:
-        if (((!this.jdField_a_of_type_Bcsf.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bcsf.jdField_b_of_type_Boolean)) || (!this.jdField_d_of_type_Boolean)) {
+        if (((!this.jdField_a_of_type_Bero.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bero.jdField_b_of_type_Boolean)) || (!this.jdField_d_of_type_Boolean)) {
           break label650;
         }
       }
@@ -436,8 +436,8 @@ public class TabDragAnimationView
     label650:
     for (Drawable localDrawable1 = a();; localDrawable1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
     {
-      if (this.jdField_a_of_type_Bcsf.jdField_a_of_type_Float != 1.0F) {
-        paramCanvas.scale(this.jdField_a_of_type_Bcsf.jdField_a_of_type_Float, this.jdField_a_of_type_Bcsf.jdField_a_of_type_Float, i6, i5);
+      if (this.jdField_a_of_type_Bero.jdField_a_of_type_Float != 1.0F) {
+        paramCanvas.scale(this.jdField_a_of_type_Bero.jdField_a_of_type_Float, this.jdField_a_of_type_Bero.jdField_a_of_type_Float, i6, i5);
       }
       if (localDrawable1 != null)
       {
@@ -674,7 +674,7 @@ public class TabDragAnimationView
     case 3: 
       if (this.jdField_g_of_type_Boolean)
       {
-        i6 = (int)(bbdh.j() - bbll.a(14.0F));
+        i6 = (int)(bdcb.j() - bdkf.a(14.0F));
         if (this.jdField_e_of_type_Float > i6)
         {
           this.jdField_a_of_type_Float = 0.0F;
@@ -702,8 +702,8 @@ public class TabDragAnimationView
       if (((i6 >= i2) || (i7 <= i2)) && (f1 > 0.0F) && (f1 < i3) && (f2 > 0.0F) && (f2 < i4)) {}
       for (i1 = 1;; i1 = 0)
       {
-        if ((i1 == 0) && (this.jdField_a_of_type_Bcse != null)) {
-          this.jdField_a_of_type_Bcse.a();
+        if ((i1 == 0) && (this.jdField_a_of_type_Bern != null)) {
+          this.jdField_a_of_type_Bern.a();
         }
         if ((this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null) && (getParent() != null) && (i1 != 0))
         {
@@ -912,7 +912,7 @@ public class TabDragAnimationView
   public void setIconSize(int paramInt1, int paramInt2)
   {
     Drawable localDrawable;
-    if (((this.jdField_a_of_type_Bcsf.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bcsf.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
+    if (((this.jdField_a_of_type_Bero.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bero.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
     {
       localDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
       if (paramInt2 < 0) {
@@ -952,9 +952,9 @@ public class TabDragAnimationView
     this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener = paramOnDoubleTapListener;
   }
   
-  public void setOnDragListener(bcse parambcse)
+  public void setOnDragListener(bern parambern)
   {
-    this.jdField_a_of_type_Bcse = parambcse;
+    this.jdField_a_of_type_Bern = parambern;
   }
   
   public void setOnLongClickListener(@Nullable View.OnLongClickListener paramOnLongClickListener)

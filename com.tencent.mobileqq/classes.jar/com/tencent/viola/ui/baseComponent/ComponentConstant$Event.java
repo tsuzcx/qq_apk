@@ -31,6 +31,8 @@ public abstract interface ComponentConstant$Event
   public static final String INPUT = "input";
   public static final String LOAD_MORE = "loadMore";
   public static final String LONG_PRESS = "longPress";
+  public static final String LOTTIE_LOADFINISH = "loadFinish";
+  public static final String LOTTIE_STATECHANGE = "stateChange";
   public static final String MOUNTED = "mounted";
   public static final String ON_LAYOUT = "layout";
   public static final String OVER_SCROLL = "overScroll";
@@ -68,7 +70,7 @@ public abstract interface ComponentConstant$Event
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.ComponentConstant.Event
  * JD-Core Version:    0.7.0.1
  */

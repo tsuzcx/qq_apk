@@ -1,40 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Hashtable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
 
-class bbet
-  extends ajxj
+public class bbet
+  implements View.OnClickListener
 {
-  private final bbeg b;
+  public bbet(TroopBarPublishActivity.16 param16) {}
   
-  bbet(bbeg parambbeg1, bbeg parambbeg2)
+  public void onClick(View paramView)
   {
-    this.b = parambbeg2;
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((!paramBoolean) || (bbeg.a(this.a) == null) || (!bbeg.a(this.a).containsKey(paramString))) {}
-    do
-    {
-      return;
-      bbeg.a(this.a).remove(paramString);
-      if (bbeg.a(this.a).size() == 0) {
-        bbeg.a(this.a).removeObserver(bbeg.a(this.a));
-      }
-      Object localObject = Uri.parse(bbeg.a(this.a) + "&uin=" + paramString);
-      localObject = new Intent(this.b.h, (Uri)localObject);
-      this.a.a.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-    } while (!QLog.isColorLevel());
-    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + this.b.h);
+    this.a.this$0.t();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abwr;
+import adnz;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class QQSettingMe$31$2
   implements Runnable
 {
-  public QQSettingMe$31$2(abwr paramabwr) {}
+  public QQSettingMe$31$2(adnz paramadnz) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class QQSettingMe$31$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.31.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,84 +1,117 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.av.opengl.GraphicRenderMgr;
 
-class lnc
-  implements aysc
+public final class lnc
 {
-  lnc(lnb paramlnb, String paramString, lmv paramlmv, int paramInt) {}
+  protected String a;
   
-  public void onResp(aysz paramaysz)
+  public lnc(String paramString)
   {
-    ayrx localayrx = (ayrx)paramaysz.jdField_a_of_type_Aysy;
-    if (this.jdField_a_of_type_Lnb.jdField_a_of_type_Ayrx == localayrx) {
-      this.jdField_a_of_type_Lnb.jdField_a_of_type_Ayrx = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QavGPDownloadManager", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localayrx.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaysz.jdField_a_of_type_Int), Integer.valueOf(paramaysz.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    int i;
-    if (paramaysz.jdField_a_of_type_Int == 0)
+    this.a = paramString;
+  }
+  
+  public int a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      paramaysz = new File(localayrx.c);
-      if (paramaysz.exists())
+      return paramInt;
+      paramString = a(paramString);
+    } while ((paramString == null) || (paramString.length <= 0));
+    return paramString[0];
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    do
+    {
+      return paramString2;
+      paramString1 = a(paramString1);
+    } while ((paramString1 == null) || (paramString1.length <= 0));
+    return paramString1[0];
+  }
+  
+  public boolean a()
+  {
+    return TextUtils.isEmpty(this.a);
+  }
+  
+  public int[] a(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    String[] arrayOfString;
+    int j;
+    int i;
+    try
+    {
+      localObject1 = GraphicRenderMgr.getInstance().findConfigValue(this.a, paramString, "unknown");
+      paramString = localObject2;
+      if (localObject1 != null)
       {
-        try
-        {
-          String str = paramaysz.getParent();
-          bbdx.a(localayrx.c, str, false);
-          QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载成功了. path[%s]", new Object[] { str }));
-          lna.a(this.jdField_a_of_type_Lmv);
-          i = 1;
+        if (((String)localObject1).equalsIgnoreCase("unknown")) {
+          paramString = localObject2;
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
-          }
-          lna.a(-1);
-          return;
-        }
-        paramaysz.delete();
       }
+      else {
+        return paramString;
+      }
+    }
+    catch (UnsatisfiedLinkError paramString)
+    {
+      do
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          localObject1 = null;
+        }
+        arrayOfString = ((String)localObject1).split(",");
+        paramString = localObject2;
+      } while (arrayOfString == null);
+      j = arrayOfString.length;
+      localObject1 = new int[j];
+      i = 0;
     }
     for (;;)
     {
-      if (i != 0)
-      {
-        lna.a(100 / this.jdField_a_of_type_Lnb.jdField_a_of_type_Int + this.jdField_a_of_type_Lnb.b);
-        paramaysz = this.jdField_a_of_type_Lnb;
-        paramaysz.b += 100 / this.jdField_a_of_type_Lnb.jdField_a_of_type_Int;
-        if (!this.jdField_a_of_type_Lnb.a(this.jdField_a_of_type_Lmv, this.jdField_a_of_type_Int - 1)) {
-          this.jdField_a_of_type_Lnb.jdField_a_of_type_Boolean = false;
-        }
-        return;
+      paramString = (String)localObject1;
+      if (i >= j) {
+        break;
       }
-      i = 0;
+      try
+      {
+        localObject1[i] = Integer.parseInt(arrayOfString[i].trim());
+        i += 1;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          localObject1[i] = 0;
+        }
+      }
     }
   }
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
+  public String[] a(String paramString)
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
+    paramString = GraphicRenderMgr.getInstance().findConfigValue(this.a, paramString, "unknown");
+    if ((paramString == null) || (paramString.equalsIgnoreCase("unknown"))) {
+      return null;
     }
-    for (;;)
-    {
-      lna.a(i / this.jdField_a_of_type_Lnb.jdField_a_of_type_Int + this.jdField_a_of_type_Lnb.b);
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
-    }
+    return paramString.trim().split(",");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnc
  * JD-Core Version:    0.7.0.1
  */

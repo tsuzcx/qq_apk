@@ -1,17 +1,23 @@
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import mqq.os.MqqHandler;
+
 public class ajzn
+  extends MqqHandler
 {
-  public int a;
-  public long a;
-  public int b;
+  public ajzn(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public String toString()
+  public void handleMessage(Message paramMessage)
   {
-    return "GroupInfo：" + this.jdField_a_of_type_Long + "|" + this.jdField_a_of_type_Int + "|" + this.b;
+    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
+    this.a.c.setText(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzn
  * JD-Core Version:    0.7.0.1
  */

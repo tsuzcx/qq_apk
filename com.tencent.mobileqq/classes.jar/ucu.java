@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.support.v4.os.ParcelableCompatCreatorCallbacks;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView;
 
-public final class ucu
-  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
+public class ucu
+  implements Animation.AnimationListener
 {
-  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  public ucu(QCircleRockeyPopupView paramQCircleRockeyPopupView, View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new XViewPager.SavedState(paramParcel, paramClassLoader);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
   
-  public XViewPager.SavedState[] a(int paramInt)
-  {
-    return new XViewPager.SavedState[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,30 @@
-import android.app.Activity;
+import android.provider.Settings.System;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class adui
-  implements bfph
+public class adui
+  implements View.OnClickListener
 {
-  adui(adue paramadue, aobp paramaobp, bfpc parambfpc, MessageForMarketFace paramMessageForMarketFace) {}
+  public adui(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    this.a.b(2);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
+    if (this.a.a().booleanValue())
     {
-    default: 
-      return;
-    case 0: 
-      if (this.jdField_a_of_type_Aobp.a.jobType != 1) {
-        break;
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (this.jdField_a_of_type_Aobp.a.jobType == 3) {}
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Adue.b, this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_Aobp.a.epId, bool1, bool2);
-        this.jdField_a_of_type_Bfpc.cancel();
-        return;
-      }
-      aanz.a(this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adue.b, this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aobp.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.uniseq);
-      this.jdField_a_of_type_Bfpc.cancel();
-      return;
+      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
+      this.a.b();
+      this.a.a(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adui
  * JD-Core Version:    0.7.0.1
  */

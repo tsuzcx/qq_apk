@@ -1,287 +1,112 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.app.ActivityManager.RunningServiceInfo;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
-import android.os.Build.VERSION;
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.security.MessageDigest;
-import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.ExtendGridView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.Pic_list;
+import com.tencent.mobileqq.troop.data.TroopBarMyBar;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Hashtable;
 
 public class bbey
+  extends Handler
 {
-  public static void a(Context paramContext, String paramString, int paramInt)
+  public bbey(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    Intent localIntent;
-    if (paramContext != null)
-    {
-      localIntent = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpimsecure");
-      if (localIntent != null)
-      {
-        Bundle localBundle = new Bundle();
-        if ((paramString != null) && (paramString.length() > 0)) {
-          localBundle.putString("platform_Id", paramString);
-        }
-        if (paramInt > 0) {
-          localBundle.putInt("dest_view", paramInt);
-        }
-        localIntent.putExtras(localBundle);
-        if (paramInt != 9502721) {
-          break label93;
-        }
-        localIntent.putExtra("big_brother_source_key", "biz_src_tmm");
-      }
-    }
-    for (;;)
-    {
-      localIntent.setFlags(402653184);
-      paramContext.startActivity(localIntent);
+    if (this.a.isFinishing()) {
       return;
-      label93:
-      localIntent.putExtra("big_brother_source_key", "biz_src_safe");
     }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool1 = false;
-    try
+    long l1;
+    label254:
+    long l2;
+    label418:
+    long l3;
+    switch (paramMessage.what)
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 64).signatures;
-      Object localObject = MessageDigest.getInstance("MD5");
-      if ((paramContext != null) && (paramContext.length > 0)) {
-        ((MessageDigest)localObject).update(paramContext[0].toByteArray());
-      }
-      paramContext = ((MessageDigest)localObject).digest();
-      localObject = new char[16];
-      Object tmp58_56 = localObject;
-      tmp58_56[0] = 48;
-      Object tmp63_58 = tmp58_56;
-      tmp63_58[1] = 49;
-      Object tmp68_63 = tmp63_58;
-      tmp68_63[2] = 50;
-      Object tmp73_68 = tmp68_63;
-      tmp73_68[3] = 51;
-      Object tmp78_73 = tmp73_68;
-      tmp78_73[4] = 52;
-      Object tmp83_78 = tmp78_73;
-      tmp83_78[5] = 53;
-      Object tmp88_83 = tmp83_78;
-      tmp88_83[6] = 54;
-      Object tmp94_88 = tmp88_83;
-      tmp94_88[7] = 55;
-      Object tmp100_94 = tmp94_88;
-      tmp100_94[8] = 56;
-      Object tmp106_100 = tmp100_94;
-      tmp106_100[9] = 57;
-      Object tmp112_106 = tmp106_100;
-      tmp112_106[10] = 65;
-      Object tmp118_112 = tmp112_106;
-      tmp118_112[11] = 66;
-      Object tmp124_118 = tmp118_112;
-      tmp124_118[12] = 67;
-      Object tmp130_124 = tmp124_118;
-      tmp130_124[13] = 68;
-      Object tmp136_130 = tmp130_124;
-      tmp136_130[14] = 69;
-      Object tmp142_136 = tmp136_130;
-      tmp142_136[15] = 70;
-      tmp142_136;
-      StringBuilder localStringBuilder = new StringBuilder(paramContext.length * 2);
-      int i = 0;
-      while (i < paramContext.length)
+    default: 
+      return;
+    case 1001: 
+      if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing()))
       {
-        localStringBuilder.append(localObject[((paramContext[i] & 0xF0) >>> 4)]);
-        localStringBuilder.append(localObject[(paramContext[i] & 0xF)]);
-        i += 1;
+        this.a.c(false);
+        this.a.rightViewText.setEnabled(true);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
+        QQToast.a(this.a.getActivity(), 2131696720, 1).b(this.a.getTitleBarHeight());
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
+          break label254;
+        }
       }
-      if (!"00B1208638DE0FCD3E920886D658DAF6".equalsIgnoreCase(localStringBuilder.toString()))
+      for (localObject = "0";; localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.jdField_c_of_type_JavaLangString)
       {
-        boolean bool2 = "7CC749CFC0FB5677E6ABA342EDBDBA5A".equalsIgnoreCase(localStringBuilder.toString());
-        if (!bool2) {}
+        bcht.a("pub_page", "fail", (String)localObject, "51", TroopBarPublishActivity.b(this.a), "");
+        QLog.d("tribe_publish_TroopBarPublishActivity", 2, "uploadVideoThumb failed " + paramMessage.obj);
+        TroopBarPublishActivity.a(this.a, null);
+        l1 = xmx.a(TroopBarPublishActivity.c(this.a));
+        bcht.a(this.a.getActivity(), "tribe_video", "video_thumb_upload", paramMessage.arg1, String.valueOf(l1), "", "");
+        return;
       }
-      else
+    case 1003: 
+      localObject = (TroopBarPublishActivity.Pic_list)bcht.a.get(TroopBarPublishActivity.c(this.a));
+      if (localObject != null)
       {
-        bool1 = true;
+        this.a.jdField_a_of_type_Bayk.d = ((TroopBarPublishActivity.Pic_list)localObject).url;
+        QLog.d("tribe_publish_TroopBarPublishActivity", 2, "uploadVideoThumb succ " + paramMessage.obj);
+        l1 = xmx.a(TroopBarPublishActivity.c(this.a));
+        bcht.a(this.a.getActivity(), "tribe_video", "video_thumb_upload", paramMessage.arg1, String.valueOf(l1), String.valueOf(paramMessage.arg2), "");
+        if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangString)) {
+          break label418;
+        }
+        this.a.b(this.a.H, true);
       }
-      return bool1;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    Object localObject1;
-    if (paramContext != null)
-    {
-      localObject1 = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-      if (localObject1 != null)
-      {
-        localObject1 = ((List)localObject1).iterator();
-        do
-        {
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-        } while (!"com.tencent.qqpimsecure".equalsIgnoreCase(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next()).processName));
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if ((!bool1) && (Build.VERSION.SDK_INT >= 21)) {}
-      boolean bool2;
       for (;;)
       {
-        try
-        {
-          localObject1 = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(new String[] { "ps" }).getInputStream()));
-          Object localObject2 = ((BufferedReader)localObject1).readLine();
-          bool2 = bool1;
-          if (localObject2 != null)
-          {
-            if (((String)localObject2).indexOf("com.tencent.qqpimsecure") == -1) {
-              continue;
-            }
-            localObject2 = new StringTokenizer((String)localObject2, " ");
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            bool2 = TextUtils.equals(((StringTokenizer)localObject2).nextToken().trim(), "com.tencent.qqpimsecure");
-            if (!bool2) {
-              continue;
-            }
-            bool2 = true;
-          }
-          if ((bool2) || (Build.VERSION.SDK_INT <= 23) || (paramContext == null)) {
-            break;
-          }
-          paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(2147483647);
-          if (paramContext == null) {
-            break;
-          }
-          paramContext = paramContext.iterator();
-          if (!paramContext.hasNext()) {
-            break;
-          }
-          localObject1 = (ActivityManager.RunningServiceInfo)paramContext.next();
-          if ((localObject1 == null) || (((ActivityManager.RunningServiceInfo)localObject1).service == null) || (((ActivityManager.RunningServiceInfo)localObject1).process == null) || (!((ActivityManager.RunningServiceInfo)localObject1).process.contains("com.tencent.qqpimsecure"))) {
-            continue;
-          }
-          return true;
-        }
-        catch (Throwable localThrowable)
-        {
-          localThrowable.printStackTrace();
-        }
-        bool2 = bool1;
-      }
-      return bool2;
-    }
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    boolean bool2 = false;
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
-      if (paramContext != null)
-      {
-        paramContext = paramContext.versionName;
-        bool1 = bool2;
-        if (paramContext != null)
-        {
-          boolean bool3 = paramContext.contains("mini");
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
-          }
+        TroopBarPublishActivity.a(this.a, null);
+        return;
+        if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
+          this.a.l();
         }
       }
-      return bool1;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    boolean bool2 = false;
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
-      if (paramContext != null)
-      {
-        paramContext = paramContext.versionName;
-        bool1 = bool2;
-        if (paramContext != null)
-        {
-          boolean bool3 = paramContext.contains("minipay");
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
-          }
-        }
+    case 1011: 
+      paramMessage = (bbaj)paramMessage.obj;
+      this.a.jdField_a_of_type_Bayk.b = paramMessage.jdField_c_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangString = paramMessage.b;
+      TroopBarPublishActivity.a(this.a, null);
+      if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
+        this.a.l();
       }
-      return bool1;
+      l1 = xmx.a(paramMessage.jdField_a_of_type_JavaLangString);
+      l2 = SystemClock.elapsedRealtime();
+      l3 = paramMessage.jdField_a_of_type_Long;
+      bcht.a(this.a.getActivity(), "tribe_video", "video_upload", 0, String.valueOf(l1), String.valueOf(l2 - l3), "");
+      return;
     }
-    catch (PackageManager.NameNotFoundException paramContext)
+    Object localObject = (bbaj)paramMessage.obj;
+    if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing()))
     {
-      paramContext.printStackTrace();
-    }
-    return false;
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    boolean bool2 = false;
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
-      if (paramContext != null)
-      {
-        int i = paramContext.versionCode;
-        bool1 = bool2;
-        if (i >= 198) {
-          bool1 = true;
-        }
+      QQToast.a(this.a, 2131696720, 1).b(this.a.getTitleBarHeight());
+      this.a.c(false);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
+        break label732;
       }
-      return bool1;
     }
-    catch (PackageManager.NameNotFoundException paramContext)
+    label732:
+    for (paramMessage = "0";; paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.jdField_c_of_type_JavaLangString)
     {
-      paramContext.printStackTrace();
+      bcht.a("pub_page", "fail", paramMessage, "52", TroopBarPublishActivity.b(this.a), "");
+      l1 = xmx.a(((bbaj)localObject).jdField_a_of_type_JavaLangString);
+      l2 = SystemClock.elapsedRealtime();
+      l3 = ((bbaj)localObject).jdField_a_of_type_Long;
+      bcht.a(this.a.getActivity(), "tribe_video", "video_upload", ((bbaj)localObject).jdField_c_of_type_Int, String.valueOf(l1), String.valueOf(l2 - l3), "");
+      TroopBarPublishActivity.a(this.a, null);
+      return;
     }
-    return false;
-  }
-  
-  public static boolean f(Context paramContext)
-  {
-    return ((a(paramContext)) && (e(paramContext)) && (!c(paramContext))) || (d(paramContext));
   }
 }
 

@@ -1,57 +1,21 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSpecialTopic;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.SideBarView;
 
 public class ptt
-  extends pqq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ptt(Context paramContext, baxy parambaxy, ram paramram)
-  {
-    super(paramContext, parambaxy, paramram);
-  }
+  public ptt(ProteusRecycleView paramProteusRecycleView) {}
   
-  public pqq a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return c();
-  }
-  
-  public pqq d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_Pqp != null) && ((this.jdField_a_of_type_Pqp instanceof ComponentContentSpecialTopic))) {
-      localLinearLayout.addView((ComponentContentSpecialTopic)this.jdField_a_of_type_Pqp);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public pqq e()
-  {
-    return null;
-  }
-  
-  public pqq g()
-  {
-    this.jdField_a_of_type_Pqp = new ComponentContentSpecialTopic(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    this.a.setPadding(0, 0, (int)ProteusRecycleView.a(this.a).a(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ptt
  * JD-Core Version:    0.7.0.1
  */

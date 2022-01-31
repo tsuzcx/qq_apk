@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.VerticalGallery;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class avqr
-  implements bfxa
+  implements BusinessObserver
 {
-  public avqr(IosTimepicker paramIosTimepicker) {}
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public void b(VerticalGallery paramVerticalGallery)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    IosTimepicker.a(this.a);
+    if (paramInt == 10000) {
+      a(paramBoolean, paramBundle.getBoolean("new"), paramBundle.getInt("gc_notify_type", 0));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avqr
  * JD-Core Version:    0.7.0.1
  */

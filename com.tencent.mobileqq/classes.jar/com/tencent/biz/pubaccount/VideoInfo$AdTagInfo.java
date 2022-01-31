@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
-import npc;
+import nsk;
 
 public class VideoInfo$AdTagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<AdTagInfo> CREATOR = new npc();
+  public static final Parcelable.Creator<AdTagInfo> CREATOR = new nsk();
   public int a;
   public VideoInfo.ClassInfo a;
   public String a;
@@ -52,7 +52,7 @@ public class VideoInfo$AdTagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.AdTagInfo
  * JD-Core Version:    0.7.0.1
  */

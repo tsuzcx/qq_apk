@@ -1,43 +1,22 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import mqq.os.MqqHandler;
-
 public class bkuj
-  implements SurfaceHolder.Callback
+  extends bmag
 {
-  public bkuj(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  private bmab<bkuk> a = new bmab();
+  private bmab<Boolean> b = new bmab();
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public bmab<bkuk> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.h + ",mSavedPlayState : " + this.a.a(this.a.i));
-    }
-    if ((this.a.i == 1) && (this.a.h > 0))
-    {
-      this.a.a(this.a.h);
-      this.a.h = 0;
-      this.a.i = 0;
-    }
+    return this.a;
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  public bmab<Boolean> b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    this.a.b();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkuj
  * JD-Core Version:    0.7.0.1
  */

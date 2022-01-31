@@ -25,31 +25,17 @@ public class PTSNodeImage
     if (super.setAttribute(paramString, paramObject)) {
       return true;
     }
-    int i = -1;
-    switch (paramString.hashCode())
+    if (("src".equalsIgnoreCase(paramString)) && ((paramObject instanceof String)))
     {
-    default: 
-      switch (i)
-      {
-      }
-      break;
+      setImageSrc((String)paramObject);
+      return true;
     }
-    do
-    {
-      return false;
-      if (!paramString.equals("src")) {
-        break;
-      }
-      i = 0;
-      break;
-    } while (!(paramObject instanceof String));
-    setImageSrc((String)paramObject);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeImage
  * JD-Core Version:    0.7.0.1
  */

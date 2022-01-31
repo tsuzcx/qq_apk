@@ -1,23 +1,54 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
 
-final class bbgd
-  extends akil
+public class bbgd
+  implements View.OnClickListener
 {
-  bbgd(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
+  public bbgd(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
+    switch (((aepe)paramView.getTag()).a)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        TroopBarReplyActivity.b(this.a);
+        return;
+        TroopBarReplyActivity.c(this.a);
+        return;
+        TroopBarReplyActivity.d(this.a);
+        return;
+        if (this.a.k)
+        {
+          bcht.a(this.a.m, this.a.n, "Clk_music", this.a.o, "", "", "");
+          bcht.b("reply_page_new", "Clk_music", this.a.o, "", "", "");
+        }
+      } while (this.a.a(4));
+      if ((this.a.a.a() != 0) && (this.a.a.a() != 3))
+      {
+        this.a.a(3);
+        return;
+      }
+      this.a.b(4);
+      return;
+      if (this.a.k)
+      {
+        bcht.a(this.a.m, this.a.n, "Clk_video", this.a.o, "", "", "");
+        bcht.b("reply_page_new", "Clk_video", this.a.o, "", "", "");
+      }
+    } while (this.a.a(8));
+    if ((this.a.a.a() != 0) && (this.a.a.a() != 4))
+    {
+      this.a.a(7);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
-    if (paramBoolean) {
-      bbgf.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    this.a.b(3);
   }
 }
 

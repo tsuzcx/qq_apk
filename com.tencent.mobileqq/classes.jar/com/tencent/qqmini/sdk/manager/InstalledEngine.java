@@ -7,16 +7,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import belh;
-import betc;
-import betm;
-import beur;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import bgkv;
+import bgrt;
+import bgtc;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 public class InstalledEngine
   implements Parcelable, Comparable<InstalledEngine>
 {
-  public static final Parcelable.Creator<InstalledEngine> CREATOR = new beur();
+  public static final Parcelable.Creator<InstalledEngine> CREATOR = new bgtc();
   public int a;
   public EngineVersion a;
   public String a;
@@ -40,10 +41,10 @@ public class InstalledEngine
   {
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      belh.a(this.jdField_b_of_type_JavaLangString, false);
-      betm.a().edit().remove(this.jdField_b_of_type_JavaLangString).apply();
+      bgkv.a(this.jdField_b_of_type_JavaLangString, false);
+      bgrt.a().edit().remove(this.jdField_b_of_type_JavaLangString).apply();
     }
-    betc.b("InstalledEngine", "[MiniEng] delete engine " + this + ", pName=" + MiniAppEnv.g().getContext().getPackageName());
+    QMLog.i("InstalledEngine", "[MiniEng] delete engine " + this + ", pName=" + AppLoaderFactory.g().getMiniAppEnv().getContext().getPackageName());
   }
   
   public int describeContents()
@@ -84,7 +85,7 @@ public class InstalledEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.InstalledEngine
  * JD-Core Version:    0.7.0.1
  */

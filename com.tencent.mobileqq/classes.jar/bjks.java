@@ -1,24 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.component.network.downloader.strategy.ConfigKeepAliveStrategy;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
 public class bjks
-  implements DialogInterface.OnClickListener
+  extends ConfigKeepAliveStrategy
+  implements bihi
 {
-  public bjks(MusicProviderView paramMusicProviderView, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bjks()
   {
-    paramDialogInterface.dismiss();
-    MusicProviderView.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_Bjky.k();
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    a();
+    QzoneConfig.getInstance().addListener(this);
+  }
+  
+  private void a()
+  {
+    String str = QzoneConfig.getInstance().getConfig("PhotoDownload", "KpDomainList", "m.qpic.cn,a[0-9].qpic.cn,b\\d+\\.photo\\.store\\.qq\\.com,a\\d+\\.photo\\.store\\.qq\\.com,.*d3g\\.qq\\.com,.*i.gtimg.cn,.*qzonestyle.gtimg.cn,.*qzs.qq.com,qlogo[0-9].store.qq.com,group.store.qq.com,pgdt.gtimg.cn,img[0-7].paipaiimg.com");
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "loadConfig, kp_domain_list=" + str);
+    }
+    setConfig(str);
+  }
+  
+  public void onConfigChange()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "KeepAlive receive change");
+    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjks
  * JD-Core Version:    0.7.0.1
  */

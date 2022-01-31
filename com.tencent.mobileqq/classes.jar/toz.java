@@ -1,45 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideoBatch;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.VideoItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.net.URL;
 
 public class toz
-  extends syn
 {
-  public List<tcq> a;
+  public int a;
+  public URL a;
+  public int b;
   
-  public toz(qqstory_service.RspWatchVideoBatch paramRspWatchVideoBatch)
+  public static toz a(URL paramURL, int paramInt1, int paramInt2)
   {
-    super(paramRspWatchVideoBatch.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspWatchVideoBatch = paramRspWatchVideoBatch.succ_video_list.get();
-    if (paramRspWatchVideoBatch == null) {}
-    for (;;)
-    {
-      return;
-      paramRspWatchVideoBatch = paramRspWatchVideoBatch.iterator();
-      while (paramRspWatchVideoBatch.hasNext())
-      {
-        qqstory_service.VideoItem localVideoItem = (qqstory_service.VideoItem)paramRspWatchVideoBatch.next();
-        tcq localtcq = new tcq();
-        localtcq.a = localVideoItem.vid.get().toStringUtf8();
-        this.jdField_a_of_type_JavaUtilList.add(localtcq);
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    return "WatchVideoBatchResponse{ errorCode=" + this.jdField_a_of_type_Int + " succList=" + this.jdField_a_of_type_JavaUtilList + "}";
+    toz localtoz = new toz();
+    localtoz.jdField_a_of_type_JavaNetURL = paramURL;
+    localtoz.jdField_a_of_type_Int = paramInt1;
+    localtoz.b = paramInt2;
+    return localtoz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     toz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import java.util.Comparator;
 
 class phm
-  implements raa
+  implements Comparator<WeiShiVideoArticleInfo>
 {
-  phm(phl paramphl) {}
+  phm(phk paramphk) {}
   
-  public void a()
+  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
   {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
-    this.a.jdField_a_of_type_Phn.a(true);
-  }
-  
-  public void b()
-  {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
-    this.a.jdField_a_of_type_Phn.a(false);
+    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return 0;
+    }
+    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phm
  * JD-Core Version:    0.7.0.1
  */

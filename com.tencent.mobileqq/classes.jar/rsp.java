@@ -1,14 +1,33 @@
-public abstract interface rsp
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
+
+public class rsp
+  extends bhqo
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public rsp(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
+  {
+    super(paramReadInJoyFlowLayout);
+  }
   
-  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
+  public void a()
+  {
+    super.a();
+  }
   
-  public abstract void b(boolean paramBoolean, String paramString);
+  public void onChanged()
+  {
+    super.onChanged();
+    ReadInJoyFlowLayout.a(this.a);
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    ReadInJoyFlowLayout.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsp
  * JD-Core Version:    0.7.0.1
  */

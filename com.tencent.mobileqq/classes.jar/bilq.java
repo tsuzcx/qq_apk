@@ -1,21 +1,39 @@
-import android.support.annotation.Nullable;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
 
 class bilq
-  implements bjos<biks>
+  implements ServiceConnection
 {
-  bilq(bill parambill) {}
+  bilq(bilo parambilo) {}
   
-  public void a(@Nullable biks parambiks)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    bill.a(this.a, parambiks);
-    if (bill.a(this.a) != null) {
-      bill.a(this.a).a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
     }
+    this.a.jdField_a_of_type_Lqr = lqs.a(paramIBinder);
+    if ((this.a.jdField_a_of_type_Lqr != null) && (this.a.jdField_a_of_type_Bilp != null)) {
+      this.a.jdField_a_of_type_Bilp.a(this.a);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
+    }
+    this.a.jdField_a_of_type_Lqr = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bilq
  * JD-Core Version:    0.7.0.1
  */

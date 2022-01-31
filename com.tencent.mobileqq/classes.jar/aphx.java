@@ -1,75 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tencent.commonsdk.util.HexUtil;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.Client;
 import com.tencent.qphone.base.util.QLog;
 
 public class aphx
-  extends aphy
+  extends Handler
 {
-  final byte[] a;
-  final byte[] b;
-  
-  public aphx(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6)
+  public aphx(Client paramClient, Looper paramLooper)
   {
-    super(paramString1, paramString2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
-    this.a = paramArrayOfByte5;
-    this.b = paramArrayOfByte6;
+    super(paramLooper);
   }
   
-  public boolean a()
+  public void handleMessage(Message paramMessage)
   {
-    if (!super.a()) {}
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+    }
     do
     {
       do
       {
-        do
-        {
-          return false;
-          if ((b() != null) && (b().length != 0)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBuf10MMdd5 is err");
-        return false;
-        if ((this.a != null) && (this.a.length != 0)) {
-          break;
-        }
+        return;
+        this.a.onRespFromServer(paramMessage.getData());
       } while (!QLog.isColorLevel());
-      QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUuid is err");
-      return false;
-      if ((this.b != null) && (this.b.length != 0)) {
-        break;
-      }
+      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
+      return;
+      this.a.onPushMsgFromServer(paramMessage.getData());
     } while (!QLog.isColorLevel());
-    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUploadKey is err");
-    return false;
-    return true;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append(" uuid:");
-    if (this.a != null)
-    {
-      str = HexUtil.bytes2HexStr(this.a);
-      localStringBuilder = localStringBuilder.append(str).append(" mBufUploadKey:");
-      if (this.b == null) {
-        break label76;
-      }
-    }
-    label76:
-    for (String str = HexUtil.bytes2HexStr(this.b);; str = "")
-    {
-      return str;
-      str = "";
-      break;
-    }
+    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aphx
  * JD-Core Version:    0.7.0.1
  */

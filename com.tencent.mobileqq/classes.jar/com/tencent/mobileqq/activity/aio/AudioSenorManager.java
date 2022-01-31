@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio;
 
-import actu;
-import actv;
-import actw;
+import aele;
+import aelf;
+import aelg;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Build;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -21,9 +21,9 @@ public class AudioSenorManager
 {
   public static int a;
   public float a;
-  private actu jdField_a_of_type_Actu;
-  private actv jdField_a_of_type_Actv;
-  private actw jdField_a_of_type_Actw;
+  private aele jdField_a_of_type_Aele;
+  private aelf jdField_a_of_type_Aelf;
+  private aelg jdField_a_of_type_Aelg;
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
   Runnable jdField_a_of_type_JavaLangRunnable = new AudioSenorManager.1(this);
@@ -79,7 +79,7 @@ public class AudioSenorManager
   
   private void a(String paramString)
   {
-    if (!bbkk.a(paramString))
+    if (!bdje.a(paramString))
     {
       this.jdField_a_of_type_JavaUtilList.add(paramString);
       e();
@@ -95,7 +95,7 @@ public class AudioSenorManager
   
   private void b(String paramString)
   {
-    if (!bbkk.a(paramString))
+    if (!bdje.a(paramString))
     {
       if (this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
         this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.indexOf(paramString));
@@ -107,8 +107,8 @@ public class AudioSenorManager
         if (this.jdField_b_of_type_Int != 0)
         {
           this.jdField_b_of_type_Int = 0;
-          if (this.jdField_a_of_type_Actv != null) {
-            this.jdField_a_of_type_Actv.a(this.jdField_b_of_type_Int);
+          if (this.jdField_a_of_type_Aelf != null) {
+            this.jdField_a_of_type_Aelf.a(this.jdField_b_of_type_Int);
           }
         }
       }
@@ -272,11 +272,11 @@ public class AudioSenorManager
     //   307: invokevirtual 277	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
     //   310: putfield 169	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_b_of_type_AndroidHardwareSensor	Landroid/hardware/Sensor;
     //   313: aload_0
-    //   314: new 279	actu
+    //   314: new 279	aele
     //   317: dup
     //   318: aload_0
-    //   319: invokespecial 280	actu:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
-    //   322: putfield 131	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Actu	Lactu;
+    //   319: invokespecial 280	aele:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
+    //   322: putfield 131	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Aele	Laele;
     //   325: aload_0
     //   326: aload_0
     //   327: getfield 75	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_AndroidHardwareSensorManager	Landroid/hardware/SensorManager;
@@ -284,11 +284,11 @@ public class AudioSenorManager
     //   332: invokevirtual 277	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
     //   335: putfield 140	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_AndroidHardwareSensor	Landroid/hardware/Sensor;
     //   338: aload_0
-    //   339: new 282	actw
+    //   339: new 282	aelg
     //   342: dup
     //   343: aload_0
-    //   344: invokespecial 283	actw:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
-    //   347: putfield 137	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Actw	Lactw;
+    //   344: invokespecial 283	aelg:<init>	(Lcom/tencent/mobileqq/activity/aio/AudioSenorManager;)V
+    //   347: putfield 137	com/tencent/mobileqq/activity/aio/AudioSenorManager:jdField_a_of_type_Aelg	Laelg;
     //   350: fload_1
     //   351: ldc_w 284
     //   354: fcmpl
@@ -411,17 +411,17 @@ public class AudioSenorManager
   
   public void a()
   {
-    this.jdField_a_of_type_Actv = null;
+    this.jdField_a_of_type_Aelf = null;
     this.jdField_a_of_type_JavaUtilList.clear();
     ThreadManager.removeJobFromThreadPool(this.jdField_b_of_type_JavaLangRunnable, 16);
     ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_JavaLangRunnable, 16);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Actu);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Actw);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Aele);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Aelg);
   }
   
-  public void a(actv paramactv)
+  public void a(aelf paramaelf)
   {
-    this.jdField_a_of_type_Actv = paramactv;
+    this.jdField_a_of_type_Aelf = paramaelf;
   }
   
   public void b()
@@ -447,8 +447,8 @@ public class AudioSenorManager
     if (this.jdField_b_of_type_Int != 0)
     {
       this.jdField_b_of_type_Int = 0;
-      if (this.jdField_a_of_type_Actv != null) {
-        this.jdField_a_of_type_Actv.a(this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Aelf != null) {
+        this.jdField_a_of_type_Aelf.a(this.jdField_b_of_type_Int);
       }
     }
   }
@@ -472,7 +472,7 @@ public class AudioSenorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AudioSenorManager
  * JD-Core Version:    0.7.0.1
  */

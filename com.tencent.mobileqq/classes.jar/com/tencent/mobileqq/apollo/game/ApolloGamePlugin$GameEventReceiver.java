@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.game;
 
-import ajac;
+import akro;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +26,7 @@ public class ApolloGamePlugin$GameEventReceiver
         if (QLog.isColorLevel()) {
           QLog.d("ApolloGamePlugin", 2, new Object[] { "[onReceive] action=", paramContext });
         }
-      } while ((ajac.a() == null) || (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
+      } while ((akro.a() == null) || (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
       paramContext = paramIntent.getStringExtra("data");
     } while (TextUtils.isEmpty(ApolloGamePlugin.a(this.a)));
     this.a.a(0, "sc.apolloGameWebMessage.local", paramContext);
@@ -34,7 +34,7 @@ public class ApolloGamePlugin$GameEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGamePlugin.GameEventReceiver
  * JD-Core Version:    0.7.0.1
  */

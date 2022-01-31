@@ -20,11 +20,11 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
-import bfnz;
-import bfpt;
-import bfpu;
-import bfpv;
-import bfwu;
+import bhou;
+import bhqp;
+import bhqq;
+import bhqr;
+import bhxr;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
@@ -59,9 +59,9 @@ public abstract class AdapterView<T extends Adapter>
   public int mOldItemCount;
   protected int mOldSelectedPosition = -1;
   long mOldSelectedRowId = -9223372036854775808L;
-  bfpt mOnItemClickListener;
-  bfpu mOnItemLongClickListener;
-  bfpv mOnItemSelectedListener;
+  bhqp mOnItemClickListener;
+  bhqq mOnItemLongClickListener;
+  bhqr mOnItemSelectedListener;
   @ViewDebug.ExportedProperty(category="list")
   public int mSelectedPosition = -1;
   public long mSelectedRowId = -9223372036854775808L;
@@ -98,10 +98,10 @@ public abstract class AdapterView<T extends Adapter>
     if (i >= 0)
     {
       View localView = getSelectedView();
-      this.mOnItemSelectedListener.a(this, localView, i, getAdapter().getItemId(i));
+      this.mOnItemSelectedListener.onItemSelected(this, localView, i, getAdapter().getItemId(i));
       return;
     }
-    this.mOnItemSelectedListener.a(this);
+    this.mOnItemSelectedListener.onNothingSelected(this);
   }
   
   protected static int getStyleableValue(String paramString)
@@ -152,7 +152,7 @@ public abstract class AdapterView<T extends Adapter>
   
   public static void traceBegin(String paramString)
   {
-    bfwu.a(paramString);
+    bhxr.a(paramString);
   }
   
   public static void traceEnd() {}
@@ -403,17 +403,17 @@ public abstract class AdapterView<T extends Adapter>
     return this.mFirstPosition + getChildCount() - 1;
   }
   
-  public final bfpt getOnItemClickListener()
+  public final bhqp getOnItemClickListener()
   {
     return this.mOnItemClickListener;
   }
   
-  public final bfpu getOnItemLongClickListener()
+  public final bhqq getOnItemLongClickListener()
   {
     return this.mOnItemLongClickListener;
   }
   
-  public final bfpv getOnItemSelectedListener()
+  public final bhqr getOnItemSelectedListener()
   {
     return this.mOnItemSelectedListener;
   }
@@ -574,7 +574,7 @@ public abstract class AdapterView<T extends Adapter>
   @TargetApi(11)
   protected void invalidateParentIfNeeded()
   {
-    if ((bfnz.e()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
+    if ((bhou.e()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
       ((View)getParent()).invalidate();
     }
   }
@@ -587,7 +587,7 @@ public abstract class AdapterView<T extends Adapter>
   @TargetApi(14)
   public boolean isInScrollingContainer()
   {
-    if (bfnz.d()) {
+    if (bhou.d()) {
       for (ViewParent localViewParent = getParent(); (localViewParent != null) && ((localViewParent instanceof ViewGroup)); localViewParent = localViewParent.getParent()) {
         if (((ViewGroup)localViewParent).shouldDelayChildPressedState()) {
           return true;
@@ -853,22 +853,22 @@ public abstract class AdapterView<T extends Adapter>
     throw new RuntimeException("Don't call setOnClickListener for an AdapterView. You probably want setOnItemClickListener instead");
   }
   
-  public void setOnItemClickListener(bfpt parambfpt)
+  public void setOnItemClickListener(bhqp parambhqp)
   {
-    this.mOnItemClickListener = parambfpt;
+    this.mOnItemClickListener = parambhqp;
   }
   
-  public void setOnItemLongClickListener(bfpu parambfpu)
+  public void setOnItemLongClickListener(bhqq parambhqq)
   {
     if (!isLongClickable()) {
       setLongClickable(true);
     }
-    this.mOnItemLongClickListener = parambfpu;
+    this.mOnItemLongClickListener = parambhqq;
   }
   
-  public void setOnItemSelectedListener(bfpv parambfpv)
+  public void setOnItemSelectedListener(bhqr parambhqr)
   {
-    this.mOnItemSelectedListener = parambfpv;
+    this.mOnItemSelectedListener = parambhqr;
   }
   
   public void setSelectedPositionInt(int paramInt)

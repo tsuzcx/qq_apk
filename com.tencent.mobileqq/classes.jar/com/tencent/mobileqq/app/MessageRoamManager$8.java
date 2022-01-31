@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import akaw;
+import alsl;
 
 public class MessageRoamManager$8
   implements Runnable
 {
-  public MessageRoamManager$8(akaw paramakaw) {}
+  public MessageRoamManager$8(alsl paramalsl) {}
   
   public void run()
   {
-    if (akaw.a(this.this$0))
+    if (alsl.a(this.this$0))
     {
       this.this$0.a(19, null);
       return;

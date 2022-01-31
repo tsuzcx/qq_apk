@@ -1,6 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import com.tencent.widget.BubblePopupWindow;
 
 class ReadInJoyFastWebBottomSocialView$5
   implements Runnable
@@ -9,15 +12,15 @@ class ReadInJoyFastWebBottomSocialView$5
   
   public void run()
   {
-    ReadInJoyFastWebBottomSocialView.b(this.this$0, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyFastWebBottomSocialView", 2, "reset mIsWaitingForFavoriteResult = false, not to block request too long.");
+    Context localContext = ReadInJoyFastWebBottomSocialView.a(this.this$0).a().getContext();
+    if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing())) {
+      ReadInJoyFastWebBottomSocialView.a(this.this$0).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView.5
  * JD-Core Version:    0.7.0.1
  */

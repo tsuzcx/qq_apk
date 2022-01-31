@@ -1,526 +1,271 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.data.ReadInJoyDAUReport;
-import com.tencent.gamecenter.appointment.GameCenterCheck;
-import com.tencent.mobileqq.activity.activateFriend.biz.QQReminderStepAsync;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabServerInitStep;
-import com.tencent.mobileqq.app.automator.AsyncStep;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.InitBeforeSyncMsg;
-import com.tencent.mobileqq.app.automator.LinearGroup;
-import com.tencent.mobileqq.app.automator.ParallGroup;
-import com.tencent.mobileqq.app.automator.ReportDevice;
-import com.tencent.mobileqq.app.automator.TimerChecker;
-import com.tencent.mobileqq.app.automator.step.ActiveAccount;
-import com.tencent.mobileqq.app.automator.step.ActivityDAUReport;
-import com.tencent.mobileqq.app.automator.step.AfterSyncMsg;
-import com.tencent.mobileqq.app.automator.step.AppNewsAlert;
-import com.tencent.mobileqq.app.automator.step.AutomatorFinish;
-import com.tencent.mobileqq.app.automator.step.CameraCategoryMaterialStep;
-import com.tencent.mobileqq.app.automator.step.ChatBackgroundAuth;
-import com.tencent.mobileqq.app.automator.step.CheckAuthCode;
-import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
-import com.tencent.mobileqq.app.automator.step.CheckHotSpotNode;
-import com.tencent.mobileqq.app.automator.step.CheckMsgCount;
-import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
-import com.tencent.mobileqq.app.automator.step.CheckQZoneOatFile;
-import com.tencent.mobileqq.app.automator.step.CheckSafeCenterConfig;
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import com.tencent.mobileqq.app.automator.step.EcShopFirstRunMsgConfigs;
-import com.tencent.mobileqq.app.automator.step.GetApolloContentUpdateStatus;
-import com.tencent.mobileqq.app.automator.step.GetBigEmoticonStep;
-import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
-import com.tencent.mobileqq.app.automator.step.GetClubContentUpdateStatus;
-import com.tencent.mobileqq.app.automator.step.GetCommonUsedSystemEmojiStep;
-import com.tencent.mobileqq.app.automator.step.GetConfig;
-import com.tencent.mobileqq.app.automator.step.GetDiscussionInfo;
-import com.tencent.mobileqq.app.automator.step.GetDonateFriends;
-import com.tencent.mobileqq.app.automator.step.GetEmosmList;
-import com.tencent.mobileqq.app.automator.step.GetEmoticonWhenNoFile;
-import com.tencent.mobileqq.app.automator.step.GetFunCallData;
-import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
-import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListMessageStep;
-import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
-import com.tencent.mobileqq.app.automator.step.GetNumRedStep;
-import com.tencent.mobileqq.app.automator.step.GetQZoneFeedCount;
-import com.tencent.mobileqq.app.automator.step.GetQZoneFeeds;
-import com.tencent.mobileqq.app.automator.step.GetQZonePhotoGuideCheck;
-import com.tencent.mobileqq.app.automator.step.GetRecommendEmotionStep;
-import com.tencent.mobileqq.app.automator.step.GetRedpointStep;
-import com.tencent.mobileqq.app.automator.step.GetSecMsgConfigs;
-import com.tencent.mobileqq.app.automator.step.GetSecMsgNewSeq;
-import com.tencent.mobileqq.app.automator.step.GetSelfInfo;
-import com.tencent.mobileqq.app.automator.step.GetSelfPendantId;
-import com.tencent.mobileqq.app.automator.step.GetSig;
-import com.tencent.mobileqq.app.automator.step.GetSplashConfig;
-import com.tencent.mobileqq.app.automator.step.GetSubAccount;
-import com.tencent.mobileqq.app.automator.step.GetSubAccountSpecialCare;
-import com.tencent.mobileqq.app.automator.step.GetTbsSwitchInfo;
-import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
-import com.tencent.mobileqq.app.automator.step.GetTroopConfig;
-import com.tencent.mobileqq.app.automator.step.GetTroopRedPointInfoStep;
-import com.tencent.mobileqq.app.automator.step.GetWebViewAuthorize;
-import com.tencent.mobileqq.app.automator.step.LimitChatSettingStep;
-import com.tencent.mobileqq.app.automator.step.LoginWelcomeRequest;
-import com.tencent.mobileqq.app.automator.step.MonitorSocketDownload;
-import com.tencent.mobileqq.app.automator.step.NotifyQZoneServer;
-import com.tencent.mobileqq.app.automator.step.PPCLoginAuth;
-import com.tencent.mobileqq.app.automator.step.QAVStep;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
-import com.tencent.mobileqq.app.automator.step.QQUpdateVersion;
-import com.tencent.mobileqq.app.automator.step.RegisterProxy;
-import com.tencent.mobileqq.app.automator.step.RegisterPush;
-import com.tencent.mobileqq.app.automator.step.ReportClientInfo;
-import com.tencent.mobileqq.app.automator.step.ReportLoginInfo;
-import com.tencent.mobileqq.app.automator.step.SendThemeAuth;
-import com.tencent.mobileqq.app.automator.step.SetLogOn;
-import com.tencent.mobileqq.app.automator.step.SignatureScan;
-import com.tencent.mobileqq.app.automator.step.StartQSecLogic;
-import com.tencent.mobileqq.app.automator.step.StartSecurityScan;
-import com.tencent.mobileqq.app.automator.step.StartSecurityUpdate;
-import com.tencent.mobileqq.app.automator.step.StartSmartDevice;
-import com.tencent.mobileqq.app.automator.step.StartTxVerifyApk;
-import com.tencent.mobileqq.app.automator.step.TimerCheckMsgCount;
-import com.tencent.mobileqq.app.automator.step.TroopEnterEffectsStep;
-import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
-import com.tencent.mobileqq.app.automator.step.UpdateFriend;
-import com.tencent.mobileqq.app.automator.step.UpdateIcon;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
-import com.tencent.mobileqq.app.automator.step.VideoConfigUpdate;
-import com.tencent.mobileqq.app.automator.step.VipCheckGift;
-import com.tencent.mobileqq.app.automator.step.VipRequestMessageRoamPassword;
-import com.tencent.mobileqq.app.automator.step.WeiyunCheckAlbum;
-import com.tencent.mobileqq.app.automator.step.getLocalRedtouchStep;
-import com.tencent.mobileqq.statistics.DailyReport;
-import com.tencent.mobileqq.vashealth.StepServiceAsync;
-import java.util.HashSet;
-import java.util.Set;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
-public class aklb
+class aklb
+  extends BaseAdapter
 {
-  public static Set<Integer> a;
-  public static final int[] a;
-  public static final String[] a;
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  static
+  public aklb(akkx paramakkx, Context paramContext)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 6, 12, 24, 168 };
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "{,101}", "{94}", "{56,64,36,52,66,68,62,76,75,83,90,31}", "{}" };
-    jdField_a_of_type_JavaUtilSet = new HashSet();
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(85));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(4));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(5));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(6));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(11));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(14));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(17));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(20));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(21));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(59));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(60));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static int a(LinearGroup paramLinearGroup, boolean paramBoolean)
+  public void a(List<Integer> paramList, int paramInt)
   {
-    if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,108,44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-      if (paramLinearGroup.e <= 4) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("ApolloResponseManager", 2, "new actions:" + paramList.toString());
     }
-    while (paramBoolean)
+    this.jdField_a_of_type_Int = paramInt;
+    Object localObject1;
+    int j;
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      return 1;
-      return 0;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      localObject2 = (aleh)this.jdField_a_of_type_Akkx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      localObject4 = (akji)this.jdField_a_of_type_Akkx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+      localObject3 = new ArrayList();
+      localObject1 = new ArrayList();
+      i = paramList.size();
+      paramInt = 0;
+      if (paramInt < i)
+      {
+        j = ((Integer)paramList.get(paramInt)).intValue();
+        ApolloActionData localApolloActionData = ((aleh)localObject2).a(j);
+        if (localApolloActionData == null) {}
+        for (;;)
+        {
+          paramInt += 1;
+          break;
+          if ((localApolloActionData.feeType == 9) && ((((akji)localObject4).a == null) || (!((akji)localObject4).a.containsKey(Integer.valueOf(localApolloActionData.actionId)))))
+          {
+            if (!((akji)this.jdField_a_of_type_Akkx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_Akkx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
+              QLog.e("ApolloResponseManager", 1, "remove vip data:" + localApolloActionData.actionName + ",id:" + j);
+            }
+          }
+          else if ((localApolloActionData.feeType != 1) && ((localApolloActionData.isShow == 0) || (((akji)localObject4).a == null) || (!((akji)localObject4).a.containsKey(Integer.valueOf(localApolloActionData.actionId)))))
+          {
+            QLog.e("ApolloResponseManager", 1, "remove " + localApolloActionData.feeType + " data:" + localApolloActionData.actionName + ",id:" + j);
+            continue;
+          }
+          ((List)localObject1).add(localApolloActionData);
+        }
+      }
+      if (((List)localObject1).size() < 2) {
+        QLog.e("ApolloResponseManager", 1, "invalid data size:" + ((List)localObject1).size());
+      }
     }
-    return 0;
+    else
+    {
+      return;
+    }
+    Collections.sort((List)localObject1, this.jdField_a_of_type_Akkx.jdField_a_of_type_JavaUtilComparator);
+    Object localObject2 = new Random();
+    int i = ((List)localObject1).size() - 1;
+    paramInt = 0;
+    if (paramInt < 2)
+    {
+      if (i <= 1)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).actionId));
+        ((List)localObject3).add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).feeType));
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        if (((List)localObject1).get(paramInt) != null)
+        {
+          j = ((ApolloActionData)((List)localObject1).get(paramInt)).feeType;
+          if (j == 1)
+          {
+            int k;
+            do
+            {
+              j = ((Random)localObject2).nextInt(i - paramInt + 1) + paramInt;
+              k = ((ApolloActionData)((List)localObject1).get(j)).actionId;
+            } while (this.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(k)));
+            this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(k));
+            ((List)localObject3).add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(j)).feeType));
+          }
+          else
+          {
+            this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).actionId));
+            ((List)localObject3).add(Integer.valueOf(j));
+          }
+        }
+      }
+    }
+    notifyDataSetChanged();
+    Object localObject4 = String.valueOf(this.jdField_a_of_type_Akkx.jdField_a_of_type_JavaLangString);
+    paramInt = ApolloUtil.b(this.jdField_a_of_type_Akkx.jdField_a_of_type_Int);
+    i = this.jdField_a_of_type_Int;
+    if (paramList.size() > 0)
+    {
+      localObject1 = String.valueOf(paramList.get(0));
+      if (((List)localObject3).size() <= 0) {
+        break label867;
+      }
+      localObject2 = String.valueOf(((List)localObject3).get(0));
+      label777:
+      if (paramList.size() <= 1) {
+        break label874;
+      }
+      paramList = String.valueOf(paramList.get(1));
+      label798:
+      if (((List)localObject3).size() <= 1) {
+        break label880;
+      }
+    }
+    label867:
+    label874:
+    label880:
+    for (Object localObject3 = String.valueOf(((List)localObject3).get(1));; localObject3 = "0")
+    {
+      VipUtils.a(null, "cmshow", "Apollo", "quickresponsepv", (String)localObject4, paramInt, i, new String[] { localObject1, localObject2, paramList, localObject3 });
+      return;
+      localObject1 = "0";
+      break;
+      localObject2 = "0";
+      break label777;
+      paramList = "0";
+      break label798;
+    }
   }
   
-  public static AsyncStep a(Automator paramAutomator, String paramString)
+  public int getCount()
   {
-    String str = paramString;
-    if (paramString != null) {
-      str = paramString.trim();
-    }
-    if (TextUtils.isEmpty(str)) {
-      throw new RuntimeException("createStepGroup: " + str);
-    }
-    int i = -1;
-    if (str.startsWith("{"))
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources();
+    int i = ((Integer)getItem(paramInt)).intValue();
+    Object localObject2;
+    Object localObject3;
+    if (paramView == null)
     {
-      paramString = new LinearGroup();
-      paramString.b = str;
+      paramViewGroup = new akla(this.jdField_a_of_type_Akkx);
+      paramView = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      ((LinearLayout)paramView).setOrientation(1);
+      localObject2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      ((LinearLayout)localObject2).setBackgroundResource(2130838487);
+      ((LinearLayout)localObject2).setOrientation(0);
+      localObject3 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+      int j = aekt.a(28.0F, (Resources)localObject1);
+      Object localObject4 = new LinearLayout.LayoutParams(j, j);
+      ((LinearLayout.LayoutParams)localObject4).leftMargin = aekt.a(2.2F, (Resources)localObject1);
+      ((LinearLayout.LayoutParams)localObject4).gravity = 16;
+      ((LinearLayout)localObject2).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
+      localObject4 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      ((TextView)localObject4).setTextSize(11.0F);
+      ((TextView)localObject4).setMaxLines(1);
+      ((TextView)localObject4).setIncludeFontPadding(false);
+      ((TextView)localObject4).setGravity(1);
+      ((TextView)localObject4).setTextColor(((Resources)localObject1).getColor(2131166908));
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.gravity = 16;
+      ((LinearLayout)localObject2).addView((View)localObject4, localLayoutParams);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject3);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject4);
+      localObject3 = new View(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = ((View)localObject3);
+      ((LinearLayout)paramView).addView((View)localObject2);
+      ((LinearLayout)paramView).addView((View)localObject3);
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramString.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator = paramAutomator;
-      paramString.b = i;
-      if (i < 0) {
-        break;
-      }
-      paramString.jdField_a_of_type_JavaLangString = paramString.getClass().getSimpleName();
-      return paramString;
-      if (str.startsWith("["))
+      paramView.setTag(2131362662, Integer.valueOf(i));
+      paramView.setTag(2131362663, Integer.valueOf(this.jdField_a_of_type_Int));
+      localObject2 = paramViewGroup.jdField_a_of_type_AndroidViewView;
+      float f;
+      if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
       {
-        paramString = new ParallGroup();
-        paramString.b = str;
+        f = 8.0F;
+        label333:
+        ((View)localObject2).setMinimumHeight(aekt.a(f, (Resources)localObject1));
       }
-      else
+      try
       {
-        i = Integer.parseInt(str);
-        switch (i)
+        localObject2 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
+        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Resources)localObject1).getDrawable(2130838424);
+        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Resources)localObject1).getDrawable(2130838426);
+        localObject1 = new URL("apollo_gif", "", String.valueOf(i));
+        localObject3 = new File(afdl.a(i));
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setTag(Integer.valueOf(i));
+        if (((File)localObject3).exists())
         {
-        case 49: 
-        case 51: 
-        case 62: 
-        case 79: 
-        case 82: 
-        case 106: 
-        default: 
-          paramString = new AsyncStep();
-          break;
-        case 2: 
-          paramString = new ActiveAccount();
-          break;
-        case 3: 
-        case 7: 
-        case 8: 
-          paramString = new UpdateFriend();
-          break;
-        case 4: 
-        case 9: 
-          paramString = new UpdateTroop();
-          break;
-        case 5: 
-          paramString = new UpdateDiscuss();
-          break;
-        case 6: 
-        case 10: 
-          paramString = new CheckPublicAccount();
-          break;
-        case 12: 
-        case 13: 
-          paramString = new RegisterPush();
-          break;
-        case 17: 
-        case 18: 
-        case 19: 
-          paramString = new RegisterProxy();
-          break;
-        case 20: 
-          paramString = new GetGeneralSettings();
-          break;
-        case 21: 
-          paramString = new GetTroopAssisMsg();
-          break;
-        case 14: 
-        case 15: 
-        case 16: 
-          paramString = new InitBeforeSyncMsg();
-          break;
-        case 11: 
-          paramString = new GetSubAccount();
-          break;
-        case 22: 
-        case 23: 
-        case 24: 
-          paramString = new AfterSyncMsg();
-          break;
-        case 26: 
-          paramString = new GetEmoticonWhenNoFile();
-          break;
-        case 25: 
-          paramString = new QAVStep();
-          break;
-        case 27: 
-          paramString = new GetSelfPendantId();
-          break;
-        case 28: 
-          paramString = new StartSecurityScan();
-          break;
-        case 29: 
-          paramString = new GetEmosmList();
-          break;
-        case 30: 
-          paramString = new GetSelfInfo();
-          break;
-        case 31: 
-          paramString = new EcShopFirstRunMsgConfigs();
-          break;
-        case 32: 
-          paramString = new GetSecMsgConfigs();
-          break;
-        case 33: 
-          paramString = new GetSecMsgNewSeq();
-          break;
-        case 34: 
-          paramString = new CheckFriendsLastLoginInfo();
-          break;
-        case 35: 
-          paramString = new GetSig();
-          break;
-        case 36: 
-          paramString = new StartSecurityUpdate();
-          break;
-        case 39: 
-          paramString = new GetWebViewAuthorize();
-          break;
-        case 40: 
-          paramString = new GetDiscussionInfo();
-          break;
-        case 41: 
-          paramString = new SetLogOn();
-          break;
-        case 42: 
-          paramString = new GetQZoneFeedCount();
-          break;
-        case 43: 
-          paramString = new CheckQZoneOatFile();
-          break;
-        case 44: 
-          paramString = new GetConfig();
-          break;
-        case 45: 
-        case 46: 
-          paramString = new GetCheckUpdate();
-          break;
-        case 47: 
-          paramString = new GetSplashConfig();
-          break;
-        case 72: 
-          paramString = new GetFunCallData();
-          break;
-        case 48: 
-          paramString = new SendThemeAuth();
-          break;
-        case 50: 
-          paramString = new GetTbsSwitchInfo();
-          break;
-        case 91: 
-          paramString = new CheckAuthCode();
-          break;
-        case 52: 
-          paramString = new CleanCache();
-          break;
-        case 53: 
-          paramString = new CheckMsgCount();
-          break;
-        case 75: 
-          paramString = new TimerCheckMsgCount();
-          break;
-        case 55: 
-          paramString = new GetClubContentUpdateStatus();
-          break;
-        case 107: 
-          paramString = new GetApolloContentUpdateStatus();
-          break;
-        case 56: 
-          paramString = new VideoConfigUpdate();
-          break;
-        case 57: 
-          paramString = new TimerChecker();
-          break;
-        case 105: 
-          paramString = new AutomatorFinish();
-          break;
-        case 54: 
-          paramString = new SignatureScan();
-          break;
-        case 58: 
-        case 59: 
-          paramString = new GetJoinedHotChatListStep();
-          break;
-        case 60: 
-          paramString = new GetJoinedHotChatListMessageStep();
-          break;
-        case 61: 
-          paramString = new GetTroopRedPointInfoStep();
-          break;
-        case 65: 
-          paramString = new UpdateIcon();
-          break;
-        case 63: 
-          paramString = new VipCheckGift();
-          break;
-        case 64: 
-          paramString = new VipRequestMessageRoamPassword();
-          break;
-        case 66: 
-          paramString = new ReportDevice();
-          break;
-        case 67: 
-          paramString = new StartSmartDevice();
-          break;
-        case 68: 
-          paramString = new WeiyunCheckAlbum();
-          break;
-        case 69: 
-          paramString = new ChatBackgroundAuth();
-          break;
-        case 70: 
-          paramString = new GetRecommendEmotionStep();
-          break;
-        case 73: 
-          paramString = new PPCLoginAuth();
-          break;
-        case 71: 
-          paramString = new GetNumRedStep();
-          break;
-        case 74: 
-          paramString = new QQUpdateVersion();
-          break;
-        case 76: 
-          paramString = new MonitorSocketDownload();
-          break;
-        case 77: 
-          paramString = new GetQZoneFeeds();
-          break;
-        case 78: 
-          paramString = new GetBigEmoticonStep();
-          break;
-        case 80: 
-          paramString = new StepServiceAsync();
-          break;
-        case 81: 
-          paramString = new GetQZonePhotoGuideCheck();
-          break;
-        case 83: 
-          paramString = new ActivityDAUReport();
-          break;
-        case 84: 
-          paramString = new CheckHotSpotNode();
-          break;
-        case 85: 
-          paramString = new LoginWelcomeRequest();
-          break;
-        case 86: 
-          paramString = new QQComicStep();
-          break;
-        case 87: 
-          paramString = new GetDonateFriends();
-          break;
-        case 88: 
-        case 89: 
-          paramString = new GetRedpointStep();
-          break;
-        case 90: 
-          paramString = new ReadInJoyDAUReport();
-          break;
-        case 92: 
-          paramString = new getLocalRedtouchStep();
-          break;
-        case 93: 
-          paramString = new GetCommonUsedSystemEmojiStep();
-          break;
-        case 94: 
-          paramString = new DailyReport();
-          break;
-        case 95: 
-        case 96: 
-          paramString = new GetSubAccountSpecialCare();
-          break;
-        case 99: 
-          paramString = new NotifyQZoneServer();
-          break;
-        case 37: 
-          paramString = new ReportClientInfo();
-          break;
-        case 38: 
-          paramString = new StartTxVerifyApk();
-          break;
-        case 97: 
-        case 98: 
-          paramString = new CheckSafeCenterConfig();
-          break;
-        case 100: 
-          paramString = new GameCenterCheck();
-          break;
-        case 101: 
-          paramString = new AppNewsAlert();
-          break;
-        case 102: 
-          paramString = new StartQSecLogic();
-          break;
-        case 103: 
-          paramString = new GetTroopConfig();
-          break;
-        case 104: 
-          paramString = new TroopEnterEffectsStep();
-          break;
-        case 108: 
-          paramString = new MiniMsgTabServerInitStep();
-          break;
-        case 109: 
-          paramString = new QQReminderStepAsync();
-          break;
-        case 110: 
-          paramString = new ReportLoginInfo();
-          break;
-        case 111: 
-          paramString = new CameraCategoryMaterialStep();
-          break;
-        case 112: 
-          paramString = new LimitChatSettingStep();
+          localObject1 = URLDrawable.getDrawable((File)localObject3, (URLDrawable.URLDrawableOptions)localObject2);
+          paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
         }
-      }
-    }
-    paramString.jdField_a_of_type_JavaLangString = str;
-    return paramString;
-  }
-  
-  public static boolean a(LinearGroup paramLinearGroup)
-  {
-    if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,108,44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-      if (paramLinearGroup.e < 3) {}
-    }
-    do
-    {
-      do
-      {
-        return true;
-        return false;
-        if (!"{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-      } while (paramLinearGroup.e >= 1);
-      return false;
-    } while (("{15,18,21,58,60,24}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) || (!"{[11,12,14],17,20,21,22108,}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) || (paramLinearGroup.e >= 2));
-    return false;
-  }
-  
-  public static boolean b(LinearGroup paramLinearGroup)
-  {
-    return (!"{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,108,44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) || (paramLinearGroup.e > 5);
-  }
-  
-  public static boolean c(LinearGroup paramLinearGroup)
-  {
-    if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,108,44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-      if (paramLinearGroup.e <= 4) {}
-    }
-    do
-    {
-      do
-      {
-        do
+        for (;;)
         {
-          return true;
-          return false;
-          if (!"{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
-            break;
+          label454:
+          localObject1 = ((aleh)this.jdField_a_of_type_Akkx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(i);
+          if (localObject1 != null)
+          {
+            localObject1 = ((ApolloActionData)localObject1).actionName;
+            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
           }
-        } while (paramLinearGroup.e > 2);
-        return false;
-        if (!"{15,18,21,58,60,24}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) {
+          paramView.setOnClickListener(this.jdField_a_of_type_Akkx.jdField_a_of_type_AndroidViewView$OnClickListener);
+          return paramView;
+          paramViewGroup = (akla)paramView.getTag();
           break;
+          f = 5.0F;
+          break label333;
+          localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+          ((URLDrawable)localObject1).setTag(Integer.valueOf(i));
+          paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
         }
-      } while (paramLinearGroup.e > 2);
-      return false;
-    } while ((!"{[11,12,14],17,20,21,22108,}".equals(paramLinearGroup.jdField_a_of_type_JavaLangString)) || (paramLinearGroup.e > 2));
-    return false;
+      }
+      catch (Throwable localThrowable)
+      {
+        break label454;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aklb
  * JD-Core Version:    0.7.0.1
  */

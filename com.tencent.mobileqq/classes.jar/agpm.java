@@ -1,24 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.27.1;
 
-class agpm
-  implements DialogInterface.OnClickListener
+public class agpm
+  implements Animation.AnimationListener
 {
-  agpm(agpl paramagpl) {}
+  agpm(agot paramagot) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 0)
-    {
-      this.a.b();
-      agpl.a(this.a).moveTaskToBack(true);
-    }
+    agot.g(this.a).post(new PublicAccountChatPie.27.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agpm
  * JD-Core Version:    0.7.0.1
  */

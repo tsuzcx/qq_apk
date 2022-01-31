@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 
-class anry
-  extends ajth
+public class anry
 {
-  anry(anrx paramanrx) {}
-  
-  protected void a(int paramInt, CameraEmotionData paramCameraEmotionData)
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    this.a.a(paramInt, paramCameraEmotionData);
+    Intent localIntent = new Intent();
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.putExtra("big_brother_source_key", paramString2);
+    localIntent.putExtra("key_callback_id", paramInt);
+    localIntent.setData(Uri.parse(paramString1));
+    paramActivity.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anry
  * JD-Core Version:    0.7.0.1
  */

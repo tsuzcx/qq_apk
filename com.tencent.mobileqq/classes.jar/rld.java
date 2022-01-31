@@ -1,47 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
 class rld
-  implements ViewBase.OnClickListener
+  implements rjj
 {
-  rld(rlc paramrlc) {}
+  rld(rlb paramrlb) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(rjk paramrjk, rjn paramrjn, int paramInt1, int paramInt2, Object paramObject)
   {
-    int i;
-    if ((rlb.a(this.a.jdField_a_of_type_Rlb) instanceof AdData)) {
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        i = -1;
-      }
-    }
-    for (;;)
+    if (paramInt2 == 0) {}
+    do
     {
-      rla.a(this.a.jdField_a_of_type_Rlb.a);
-      rmq.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)rlb.a(this.a.jdField_a_of_type_Rlb), true, true, i);
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramInt2 == 1) || (paramInt2 == 2));
+        if (paramInt2 != 3) {
+          break;
+        }
+        this.a.a(this.a.b(), "video playing", 1);
+      } while (this.a.b());
+      this.a.a(true, "PLAY_STATE_PLAYING");
       return;
-      rnk.a(rlb.a(this.a.jdField_a_of_type_Rlb), paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      i = 4;
-      continue;
-      i = 3;
-      continue;
-      i = 5;
-      continue;
-      i = 8;
-      continue;
-      i = 1;
-      continue;
-      i = 1000;
-    }
+    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rld
  * JD-Core Version:    0.7.0.1
  */

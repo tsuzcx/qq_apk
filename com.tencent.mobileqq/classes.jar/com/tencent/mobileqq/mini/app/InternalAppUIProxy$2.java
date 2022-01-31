@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.app;
 
-import ajya;
+import alpo;
 import android.os.Handler;
 import android.os.Message;
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class InternalAppUIProxy$2
@@ -19,16 +19,16 @@ class InternalAppUIProxy$2
     if (str != null) {}
     for (;;)
     {
-      bcql.a(localBaseApplication, 1, str, 1).a();
+      QQToast.a(localBaseApplication, 1, str, 1).a();
       InternalAppUIProxy.access$100(this.this$0).postDelayed(new InternalAppUIProxy.2.1(this), 1000L);
       return;
-      str = ajya.a(2131705814);
+      str = alpo.a(2131706186);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.InternalAppUIProxy.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.data.ArkFlashChatMessage;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 class adnb
-  implements DialogInterface.OnClickListener
+  implements bhqd
 {
-  adnb(admx paramadmx, MessageForArkFlashChat paramMessageForArkFlashChat) {}
+  adnb(adna paramadna) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramDialogInterface = (MessageForArkFlashChat)axas.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat);
-    if (paramDialogInterface.msgData == null) {
-      if (paramDialogInterface.ark_app_message == null) {
-        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
-      }
-    }
-    while (this.jdField_a_of_type_Admx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)
+    switch (paramInt)
     {
-      return;
-      paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
     }
-    this.jdField_a_of_type_Admx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Admx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Admx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.uniseq);
-    this.jdField_a_of_type_Admx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
+    for (;;)
+    {
+      this.a.a.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_QQshare", 0, 0, "", "", "", "");
+      zcg.a("share_success");
+      this.a.a.u();
+      continue;
+      if (biqt.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.l, this.a.a.i, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
+      {
+        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131298914);
+        QQToast.a(this.a.a, 2, this.a.a.getString(2131692401), 1).b(paramInt);
+        zcg.a("favorite_success");
+      }
+      birh.a(null, 65, 7);
+      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnb
  * JD-Core Version:    0.7.0.1
  */

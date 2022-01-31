@@ -11,9 +11,9 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import arlw;
-import awbs;
-import awbt;
+import atck;
+import axwv;
+import axww;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -27,7 +27,7 @@ public class ActionUrlActivity
   private View jdField_a_of_type_AndroidViewView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private arlw jdField_a_of_type_Arlw;
+  private atck jdField_a_of_type_Atck;
   private StatusJsHandler jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler;
   private ProtectedWebView jdField_a_of_type_ComTencentWidgetProtectedWebView;
   private String jdField_a_of_type_JavaLangString;
@@ -36,7 +36,7 @@ public class ActionUrlActivity
   @SuppressLint({"SetJavaScriptEnabled"})
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131378727));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131379345));
     this.jdField_a_of_type_ComTencentWidgetProtectedWebView = new ProtectedWebView(BaseApplicationImpl.sApplication);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentWidgetProtectedWebView, 0, new RelativeLayout.LayoutParams(-1, -1));
     if (Build.VERSION.SDK_INT >= 11) {
@@ -49,16 +49,16 @@ public class ActionUrlActivity
     localWebSettings.setDatabaseEnabled(true);
     localWebSettings.setDatabasePath(getApplicationContext().getDir("database", 0).getPath());
     localWebSettings.setDomStorageEnabled(true);
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebViewClient(new awbt(this, null));
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebChromeClient(new awbs(this, null));
-    this.jdField_a_of_type_Arlw = new arlw();
+    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebViewClient(new axww(this, null));
+    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebChromeClient(new axwv(this, null));
+    this.jdField_a_of_type_Atck = new atck();
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler = new StatusJsHandler(this, this.jdField_a_of_type_ComTencentWidgetProtectedWebView, null);
-    this.jdField_a_of_type_Arlw.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler, "statusJsHandler");
-    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131378723));
+    this.jdField_a_of_type_Atck.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler, "statusJsHandler");
+    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131379341));
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131378724));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131379342));
     this.jdField_a_of_type_JavaLangString = this.leftView.getText().toString();
-    this.b = findViewById(2131369803);
+    this.b = findViewById(2131370067);
     if (ThemeUtil.isInNightMode(this.app)) {
       this.b.setVisibility(0);
     }
@@ -68,7 +68,7 @@ public class ActionUrlActivity
   {
     if (this.jdField_a_of_type_ComTencentWidgetProtectedWebView.canGoBack())
     {
-      this.leftView.setText(2131720600);
+      this.leftView.setText(2131721140);
       return;
     }
     this.leftView.setText(this.jdField_a_of_type_JavaLangString);
@@ -77,7 +77,7 @@ public class ActionUrlActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131562585);
+    setContentView(2131562787);
     b();
     this.jdField_a_of_type_ComTencentWidgetProtectedWebView.loadUrl(getIntent().getStringExtra("key_params_qq"));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
@@ -143,7 +143,7 @@ public class ActionUrlActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.ActionUrlActivity
  * JD-Core Version:    0.7.0.1
  */

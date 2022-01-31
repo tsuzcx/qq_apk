@@ -1,23 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.widget.RelativeLayout;
 
-public class afzr
-  implements View.OnTouchListener
+class afzr
+  extends aelt
 {
-  public afzr(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, InputMethodManager paramInputMethodManager) {}
+  public long a;
+  public RelativeLayout a;
+  public String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  private afzr(afzp paramafzp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afzr
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,14 @@ package com.tencent.mobileqq.profile.view;
 
 import android.os.Handler;
 import android.os.Message;
-import auuy;
+import awmk;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
 
 class PhotoViewForShopping$2
   implements Runnable
 {
-  PhotoViewForShopping$2(PhotoViewForShopping paramPhotoViewForShopping, auuy paramauuy) {}
+  PhotoViewForShopping$2(PhotoViewForShopping paramPhotoViewForShopping, awmk paramawmk) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ class PhotoViewForShopping$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.PhotoViewForShopping.2
  * JD-Core Version:    0.7.0.1
  */

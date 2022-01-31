@@ -1,12 +1,12 @@
 package com.tencent.biz.authorize;
 
 import java.io.File;
-import myp;
+import nbj;
 
 public class FlatBuffersConfig$1
   implements Runnable
 {
-  public FlatBuffersConfig$1(myp parammyp) {}
+  public FlatBuffersConfig$1(nbj paramnbj) {}
   
   public void run()
   {

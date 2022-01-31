@@ -1,68 +1,69 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
-public class azoy
-  extends azow
+class azoy
+  implements Comparable<azoy>
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  public int a;
+  public String a;
+  public HashMap<String, azoy> a;
+  
+  public azoy()
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+  }
+  
+  public azoy(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a(azoy paramazoy)
+  {
+    return paramazoy.jdField_a_of_type_Int - this.jdField_a_of_type_Int;
+  }
+  
+  public azoy a(String paramString)
+  {
+    return (azoy)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.isEmpty();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
     }
-    for (;;)
-    {
-      int i;
-      int j;
-      try
-      {
-        localTroopFeedItem.type = paramJSONObject.getInt("feed_type");
-        JSONArray localJSONArray = paramJSONObject.getJSONArray("content");
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-        i = 0;
-        if (i >= localJSONArray.length()) {
-          break label200;
-        }
-        paramJSONObject = localJSONArray.getJSONObject(i);
-        j = paramJSONObject.getInt("type");
-        if (j == 0)
-        {
-          localTroopFeedItem.content = paramJSONObject.getString("value");
-        }
-        else if (j == 3)
-        {
-          if (!paramJSONObject.has("pic_url")) {
-            break label203;
-          }
-          localTroopFeedItem.picPath = (paramJSONObject.getString("pic_url") + "/109");
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
-      }
-      if (j == 10)
-      {
-        localTroopFeedItem.title = paramJSONObject.getString("value");
-      }
-      else if ((j == 6) && (bbkk.a(localTroopFeedItem.picPath)) && (paramJSONObject.has("pic_url")))
-      {
-        localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
-        break label203;
-        label200:
-        return localTroopFeedItem;
-      }
-      label203:
-      i += 1;
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
     }
+    return ((azoy)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("FdNode{");
+    localStringBuilder.append("text='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", appearTimes=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azoy
  * JD-Core Version:    0.7.0.1
  */

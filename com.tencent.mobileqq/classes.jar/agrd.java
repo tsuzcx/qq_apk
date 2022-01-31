@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class agrd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public agrd(AlbumListFragment paramAlbumListFragment) {}
+  public agrd(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((NewPhotoListActivity)this.a.getActivity()).a(false);
+    this.a.I();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,82 @@
-import android.content.res.XmlResourceParser;
-import org.xmlpull.v1.XmlPullParser;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class ayxm
+  extends MSFServlet
 {
-  private ayxn jdField_a_of_type_Ayxn;
-  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
-  
-  private void a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
-    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
-    this.jdField_a_of_type_Ayxn.a(str1, str2);
-  }
-  
-  public ayxn a()
-  {
-    this.jdField_a_of_type_Ayxn = new ayxn();
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-    if (i != 1)
+    paramIntent.getStringExtra("key_cmd_string");
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-      if (i == 2) {
-        if (!str.equals("MimeTypes")) {}
-      }
-      for (;;)
+      paramIntent = paramFromServiceMsg.getWupBuffer();
+      arrayOfInt = new int[1];
+      paramIntent = bjal.a(paramIntent, (QQAppInterface)getAppRuntime(), arrayOfInt);
+      if (paramIntent != null)
       {
-        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
-        break;
-        if (str.equals("type"))
-        {
-          a();
-          continue;
-          if ((i != 3) || (!str.equals("MimeTypes"))) {}
-        }
+        paramFromServiceMsg = new Bundle();
+        paramFromServiceMsg.putSerializable("data", paramIntent);
+        notifyObserver(null, 1001, true, paramFromServiceMsg, avqu.class);
       }
     }
-    return this.jdField_a_of_type_Ayxn;
+    while (paramFromServiceMsg == null)
+    {
+      int[] arrayOfInt;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneFeedsServlet", 2, new Object[] { "inform QZoneFeedsServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
+      }
+      notifyObserver(null, 1001, false, new Bundle(), avqu.class);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneFeedsServlet", 2, "inform QZoneFeedsServlet resultcode fail.");
+    }
+    notifyObserver(null, 1001, false, new Bundle(), avqu.class);
   }
   
-  public ayxn a(XmlResourceParser paramXmlResourceParser)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
-    return a();
+    if (paramIntent == null) {}
+    long l1;
+    do
+    {
+      return;
+      l1 = paramIntent.getLongExtra("selfuin", 0L);
+      localObject1 = paramIntent.getLongArrayExtra("hostuin");
+    } while (localObject1 == null);
+    Object localObject2 = new ArrayList(localObject1.length);
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      ((ArrayList)localObject2).add(Long.valueOf(localObject1[i]));
+      i += 1;
+    }
+    long l2 = paramIntent.getLongExtra("lasttime", 0L);
+    i = paramIntent.getIntExtra("src", 0);
+    localObject2 = new bjal(l1, (ArrayList)localObject2, l2, paramIntent.getStringExtra("refer"), i);
+    Object localObject1 = ((bjal)localObject2).encode();
+    paramIntent.putExtra("key_cmd_string", ((bjal)localObject2).getCmdString());
+    if (localObject1 == null) {}
+    for (paramIntent = new byte[4];; paramIntent = (Intent)localObject1)
+    {
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeed");
+      paramPacket.putSendData(paramIntent);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayxm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class SystemMsgOldData
-  extends auko
+  extends awbv
 {
   public long msgtime;
-  @aumc
+  @awdj
   public long uin;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.SystemMsgOldData
  * JD-Core Version:    0.7.0.1
  */

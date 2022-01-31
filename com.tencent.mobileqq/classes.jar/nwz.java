@@ -1,61 +1,38 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class nwz
-  implements CompoundButton.OnCheckedChangeListener
+  implements AladdinConfigHandler
 {
-  public nwz(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    ReadInJoySettingActivity.c(this.a, paramBoolean);
-    int i;
-    label51:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      bcql.a(this.a.getBaseContext(), 2, 2131718582, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131718581);
-      if (!paramBoolean) {
-        break label149;
-      }
-      i = 1;
-      bhvy.e(i);
-      bhvy.a(paramBoolean);
-      bhvy.a(true);
-      localQQAppInterface = this.a.a;
-      if (!paramBoolean) {
-        break label154;
-      }
-      paramCompoundButton = "0X8008236";
-      label80:
-      if (!paramBoolean) {
-        break label160;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
+      if (TextUtils.equals("readinjoy_drop_frame_monitor", str1)) {
+        bjxj.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
       }
     }
-    label149:
-    label154:
-    label160:
-    for (String str = "0X8008236";; str = "0X8008235")
-    {
-      nol.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
-      return;
-      bcql.a(this.a.getBaseContext(), 2, 2131718580, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131718584);
-      break;
-      i = 0;
-      break label51;
-      paramCompoundButton = "0X8008235";
-      break label80;
-    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
+    bjxj.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwz
  * JD-Core Version:    0.7.0.1
  */

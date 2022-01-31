@@ -70,7 +70,7 @@
 			"setText:": "text"
 		},
 		"id_star_list_jump_icon": {
-			"loadImageWithPath:": "image_url"
+			"setImageWithURLString:lineup:": ["image_url", "lineup"]
 		},
 		"id_native_star_container": {
 			"setAttatchInfo:": "jump_url"
@@ -88,7 +88,7 @@
 		},
 
 		"id_recommend_cover_img": {
-			"loadImageWithPath:": "image_url"
+			"setImageWithURLString:lineup:": ["image_url", "1"]
 		},
 		"id_recommend_video_bg": {
 			"loadImageWithPath:": "image_url"
@@ -249,15 +249,15 @@
 			"setImageWithURLString:lineup:": ["image_url", "lineup"]
 		},
 		"id_recommend_category_download": {
-            "setRecommendAdModel:": "recommendAdModel",
-		    "setText:": "text",
-		    "setImage:": "left_image"
-		},
+                "setRecommendAdModel:": "recommendAdModel",
+    		    "setText:": "text",
+    		    "setImage:": "left_image"
+    	},
         "id_native_ad_banner_large_pic_container": {
-            "setAttatchInfo:": "jump_url"
+                "setAttatchInfo:": "jump_url"
         },
         "id_ad_banner_bottom_imge": {
-            "setImageWithURLString:lineup:": ["image_url", "lineup"]
+                "setImageWithURLString:lineup:": ["image_url", "lineup"]
         }
 	},
 	"version": "201901231648"

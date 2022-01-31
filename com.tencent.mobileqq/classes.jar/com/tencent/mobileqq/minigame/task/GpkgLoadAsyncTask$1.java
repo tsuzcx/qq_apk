@@ -6,7 +6,7 @@ import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.minigame.gpkg.GpkgManager.OnInitGpkgListener;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager.GameLoadListener;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader.GameRuntimeProgressListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 
@@ -24,33 +24,37 @@ class GpkgLoadAsyncTask$1
     {
       this.lastProgress = paramFloat;
       str = String.format(Locale.getDefault(), "%.2f", new Object[] { Float.valueOf(100.0F * paramFloat) }) + "%";
-      QLog.i("GameLoadManager", 1, "[Gpkg]" + paramMiniAppInfo.appId + "(" + paramMiniAppInfo.name + "), progress " + str + ", size=" + paramLong + ",listener=" + GpkgLoadAsyncTask.access$200(this.this$0));
+      QLog.i(GpkgLoadAsyncTask.access$000(this.this$0), 1, "[Gpkg]" + paramMiniAppInfo.appId + "(" + paramMiniAppInfo.name + "), progress " + str + ", size=" + paramLong + ",listener=" + GpkgLoadAsyncTask.access$300(this.this$0));
     }
-    if ((!TextUtils.isEmpty(str)) && (GpkgLoadAsyncTask.access$200(this.this$0) != null)) {
-      GpkgLoadAsyncTask.access$200(this.this$0).onTaskProgress(this.this$0, paramFloat, "");
+    if ((!TextUtils.isEmpty(str)) && (GpkgLoadAsyncTask.access$300(this.this$0) != null)) {
+      GpkgLoadAsyncTask.access$300(this.this$0).onTaskProgress(this.this$0, paramFloat, "");
     }
   }
   
   public void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString)
   {
-    QLog.i("GameLoadManager", 1, "[Gpkg] getGpkgInfoByConfig end, resCode=" + paramInt + ", msg=" + paramString + " ,timecost=" + (System.currentTimeMillis() - this.val$startTime));
+    QLog.i(GpkgLoadAsyncTask.access$000(this.this$0), 1, "[Gpkg] getGpkgInfoByConfig end, resCode=" + paramInt + ", msg=" + paramString + " ,timecost=" + (System.currentTimeMillis() - this.val$startTime));
     if ((paramInt == 0) && (paramMiniGamePkg != null))
     {
       MiniAppFileManager.getInstance().initFileManager(paramMiniGamePkg, true);
       ThreadManagerV2.excute(new GpkgLoadAsyncTask.1.1(this), 16, null, true);
-      QLog.i("GameLoadManager", 1, "[Gpkg] getGpkgInfoByConfig appid=" + paramMiniGamePkg.appId + ", appName=" + paramMiniGamePkg.apkgName + " success");
-      GpkgLoadAsyncTask.access$002(this.this$0, paramMiniGamePkg);
-      GpkgLoadAsyncTask.access$102(this.this$0, null);
+      QLog.i(GpkgLoadAsyncTask.access$000(this.this$0), 1, "[Gpkg] getGpkgInfoByConfig appid=" + paramMiniGamePkg.appId + ", appName=" + paramMiniGamePkg.apkgName + " success");
+      GpkgLoadAsyncTask.access$102(this.this$0, paramMiniGamePkg);
+      GpkgLoadAsyncTask.access$202(this.this$0, null);
+      if (GpkgLoadAsyncTask.access$300(this.this$0) != null) {
+        GpkgLoadAsyncTask.access$300(this.this$0).onTaskProgress(this.this$0, 1.0F, "");
+      }
       this.this$0.onTaskSucceed();
       return;
     }
+    String str = GpkgLoadAsyncTask.access$000(this.this$0);
     StringBuilder localStringBuilder = new StringBuilder().append("[Gpkg] getGpkgInfoByConfig appid=");
     if (paramMiniGamePkg != null) {}
     for (paramMiniGamePkg = paramMiniGamePkg.appId;; paramMiniGamePkg = "unknown appid")
     {
-      QLog.e("GameLoadManager", 1, paramMiniGamePkg + ", fail " + paramString);
-      GpkgLoadAsyncTask.access$002(this.this$0, null);
+      QLog.e(str, 1, paramMiniGamePkg + ", fail " + paramString);
       GpkgLoadAsyncTask.access$102(this.this$0, null);
+      GpkgLoadAsyncTask.access$202(this.this$0, null);
       this.this$0.onTaskFailed(paramInt, paramString);
       return;
     }
@@ -58,7 +62,7 @@ class GpkgLoadAsyncTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.task.GpkgLoadAsyncTask.1
  * JD-Core Version:    0.7.0.1
  */

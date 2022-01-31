@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
-public class ahvq
-  implements aiai
+class ahvq
+  implements aulm
 {
-  public ahvq(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  ahvq(ahvp paramahvp) {}
   
-  public void a_(String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
-    }
-    this.a.a.b();
-    NewFlowCameraActivity.a(this.a, paramString, true);
+    this.a.jdField_a_of_type_Ault.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Ault.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvq
  * JD-Core Version:    0.7.0.1
  */

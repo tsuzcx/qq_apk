@@ -1,41 +1,24 @@
-import android.support.annotation.RestrictTo;
+import cooperation.qzone.share.QZoneShareActivity;
+import mqq.app.QQPermissionCallback;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class bjnj
-  implements bjnn
+  implements QQPermissionCallback
 {
-  private final bjnm[] a;
+  public bjnj(QZoneShareActivity paramQZoneShareActivity) {}
   
-  bjnj(bjnm[] paramArrayOfbjnm)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a = paramArrayOfbjnm;
+    bdcd.b(this.a);
   }
   
-  public void a(bjns parambjns, bjnp parambjnp)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int j = 0;
-    bjnu localbjnu = new bjnu();
-    bjnm[] arrayOfbjnm = this.a;
-    int k = arrayOfbjnm.length;
-    int i = 0;
-    while (i < k)
-    {
-      arrayOfbjnm[i].a(parambjns, parambjnp, false, localbjnu);
-      i += 1;
-    }
-    arrayOfbjnm = this.a;
-    k = arrayOfbjnm.length;
-    i = j;
-    while (i < k)
-    {
-      arrayOfbjnm[i].a(parambjns, parambjnp, true, localbjnu);
-      i += 1;
-    }
+    QZoneShareActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjnj
  * JD-Core Version:    0.7.0.1
  */

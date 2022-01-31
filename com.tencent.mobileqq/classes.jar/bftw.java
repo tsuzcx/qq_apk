@@ -1,28 +1,25 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.ReplacementSpan;
+import android.view.View;
+import com.tencent.qidian.PhotoWallViewForQiDianProfile;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class bftw
-  extends ReplacementSpan
+  implements bhqp
 {
-  private int a;
+  public bftw(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile) {}
   
-  public bftw(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramInt;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return this.a;
+    paramAdapterView = (bfvl)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.a.jdField_a_of_type_Bftz == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Bftz.a(paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bftw
  * JD-Core Version:    0.7.0.1
  */

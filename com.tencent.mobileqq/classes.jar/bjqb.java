@@ -1,32 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import mqq.app.QQPermissionCallback;
 
-public class bjqb
-  extends AnimatorListenerAdapter
+final class bjqb
+  implements QQPermissionCallback
 {
-  public bjqb(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  bjqb(Bitmap paramBitmap, int paramInt, String paramString, Activity paramActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView 100ms back end");
-    }
-    this.a.j();
-    arqn.b();
+    bdcd.b(bjpz.a(this.jdField_a_of_type_AndroidAppActivity));
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView begin");
-    }
+    bjpz.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjqb
  * JD-Core Version:    0.7.0.1
  */

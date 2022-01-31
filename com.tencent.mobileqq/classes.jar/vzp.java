@@ -1,53 +1,75 @@
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
+import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 
-class vzp
+public class vzp
+  implements vzs
 {
-  public static ConcurrentHashMap<vzn, Boolean> a;
-  private static volatile vzp a;
+  private final HashSet<URLDrawable> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private final ConcurrentHashMap<String, HashSet<vzt>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  static
+  private Bitmap a(@NonNull URLDrawable paramURLDrawable, int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    Object localObject = paramURLDrawable.getCurrDrawable();
+    if ((localObject instanceof RegionDrawable))
+    {
+      localObject = ((RegionDrawable)localObject).getBitmap();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return bdda.a(paramURLDrawable, paramInt1, paramInt2);
   }
   
-  public static vzp a()
+  public void a(String paramString, int paramInt1, int paramInt2, vzt paramvzt)
   {
-    if (jdField_a_of_type_Vzp == null) {}
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(1073741824);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable;
     try
     {
-      if (jdField_a_of_type_Vzp == null) {
-        jdField_a_of_type_Vzp = new vzp();
+      URL localURL = new URL(paramString);
+      localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setURLDrawableListener(new vzq(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
+      ((URLDrawable)localObject).setAutoDownload(true);
+      if (((URLDrawable)localObject).getStatus() != 1) {
+        break label177;
       }
-      return jdField_a_of_type_Vzp;
+      wsv.a("story.icon.ShareGroupIconManager", "download url success directly. %s", paramString);
+      localObject = a((URLDrawable)localObject, paramInt1, paramInt2);
+      if (localObject != null)
+      {
+        paramvzt.a(paramString, (Bitmap)localObject);
+        return;
+      }
     }
-    finally {}
-  }
-  
-  public static void a(URLDrawable paramURLDrawable, String paramString)
-  {
-    paramString = new vzn(a(), paramURLDrawable, paramString);
-    paramURLDrawable.setDownloadListener(paramString);
-    paramURLDrawable.setURLDrawableListener(paramString);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
-  }
-  
-  public void a(@NonNull vzn paramvzn)
-  {
-    boolean bool = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramvzn);
-    ved.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
-    if (!bool) {
-      axpu.a(vzg.a(ajya.a(2131715877), null), "Story.UIUtils.monitor " + paramvzn.toString());
+    catch (MalformedURLException localMalformedURLException)
+    {
+      wsv.d("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
+      paramvzt.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+      return;
     }
-    paramvzn.a.setDownloadListener(null);
-    paramvzn.a.setURLDrawableListener(null);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramvzn);
+    wsv.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+    paramvzt.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+    return;
+    label177:
+    wsv.a("story.icon.ShareGroupIconManager", "download url pending. %s", paramString);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramString, new HashSet());
+    ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(paramvzt);
+    this.jdField_a_of_type_JavaUtilHashSet.add(localMalformedURLException);
+    localMalformedURLException.startDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzp
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qwu;
+import rmj;
 
 public class DiscoveryInfo$TopicVideoCard
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopicVideoCard> CREATOR = new qwu();
+  public static final Parcelable.Creator<TopicVideoCard> CREATOR = new rmj();
   public int a;
   public long a;
   public String a;
@@ -120,7 +120,7 @@ public class DiscoveryInfo$TopicVideoCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard
  * JD-Core Version:    0.7.0.1
  */

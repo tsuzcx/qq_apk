@@ -1,40 +1,40 @@
-import java.util.Locale;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import java.util.HashMap;
+import java.util.Map;
 
 class asgc
+  implements View.OnClickListener
 {
-  public static int a;
-  public float a;
-  public long a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
-  public float l;
+  asgc(asgb paramasgb) {}
   
-  public asgc()
+  public void onClick(View paramView)
   {
-    int m = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = m + 1;
-    this.jdField_b_of_type_Int = m;
-  }
-  
-  public String toString()
-  {
-    return String.format(Locale.getDefault(), "[id:%d, start: %d, x: %f, y: %f, vx: %f, vy: %f, size: %d", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.c), Float.valueOf(this.jdField_d_of_type_Float), Integer.valueOf(this.jdField_d_of_type_Int) });
+    if ((asgb.a(this.a) == null) || (TextUtils.isEmpty(asgb.a(this.a).jumpUrl))) {
+      return;
+    }
+    paramView = new Intent(asfu.a(asgb.a(this.a)), QQBrowserActivity.class);
+    paramView.putExtra("url", asgb.a(this.a).jumpUrl);
+    asfu.a(asgb.a(this.a)).startActivity(paramView);
+    paramView = new HashMap();
+    aact.a(paramView, asgb.a(this.a).msgId);
+    paramView.put(Integer.valueOf(2), asgb.a(this.a).msgId);
+    paramView.put(Integer.valueOf(6), asgb.a(this.a).feedId);
+    paramView.put(Integer.valueOf(4), "20");
+    paramView.put(Integer.valueOf(43), asgb.a(this.a).algorithmId);
+    paramView.put(Integer.valueOf(44), asgb.a(this.a).type + "");
+    aact.a(akro.a(), "769", "205022", asgb.a(this.a).a().gameAppId, "76902", "1", "160", paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asgc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import java.util.Comparator;
 
 class azpw
-  implements DialogInterface.OnClickListener
+  implements Comparator
 {
-  azpw(azpv paramazpv, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(this.jdField_a_of_type_JavaUtilUUID);
+    paramObject1 = (azps)paramObject1;
+    paramObject2 = (azps)paramObject2;
+    if (paramObject1.a > paramObject2.a) {
+      return -1;
     }
+    if (paramObject1.a < paramObject2.a) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azpw
  * JD-Core Version:    0.7.0.1
  */

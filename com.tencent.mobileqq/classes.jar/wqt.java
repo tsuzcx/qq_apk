@@ -1,38 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
-public class wqt
-  implements View.OnClickListener
+class wqt
+  extends SimpleJob<Object>
 {
-  public wqt(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
-  
-  public void onClick(View paramView)
+  wqt(wqs paramwqs, String paramString, StoryVideoItem paramStoryVideoItem, List paramList)
   {
-    boolean bool2 = true;
-    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.a(this.a) != null))
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  {
+    synchronized (wqs.a(this.jdField_a_of_type_Wqs))
     {
-      paramView = SubscribeVideoDetailFragment.a(this.a).a(1);
-      bool1 = bool2;
-      if (SubscribeVideoDetailFragment.a(this.a).d()) {
-        if (SubscribeVideoDetailFragment.a(this.a).f()) {
-          break label78;
-        }
-      }
-    }
-    label78:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramView.c = bool1;
-      this.a.a(paramView);
-      return;
+      this.jdField_a_of_type_Wqs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+      this.jdField_a_of_type_Wqs.jdField_a_of_type_Wqu = new wqu(this.jdField_a_of_type_Wqs.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      this.jdField_a_of_type_Wqs.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_Wqs.b();
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqt
  * JD-Core Version:    0.7.0.1
  */

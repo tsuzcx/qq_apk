@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.webkit.URLUtil;
-import aqgj;
-import bcqf;
+import arzy;
+import bepp;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
@@ -22,7 +22,7 @@ final class MiniProgramOpenSdkUtil$3
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
     int i = 1;
-    aqgj.b("KEY_STAGE_1_GET_SHARE_INFO");
+    arzy.b("KEY_STAGE_1_GET_SHARE_INFO");
     QLog.d("MiniProgramOpenSdkUtil", 1, new Object[] { "arkShareJson:", paramJSONObject.toString() });
     ThreadManager.getUIHandler().removeCallbacks(this.val$timeoutRunnable);
     ThreadManager.getUIHandler().removeCallbacks(this.val$showLoadingRunnable);
@@ -47,7 +47,7 @@ final class MiniProgramOpenSdkUtil$3
       if ((!URLUtil.isHttpUrl(this.val$finalNotEmptyPicUri)) && (!URLUtil.isHttpsUrl(this.val$finalNotEmptyPicUri))) {}
       while (i != 0)
       {
-        aqgj.a("KEY_STAGE_1_UPLOAD_IMAGE");
+        arzy.a("KEY_STAGE_1_UPLOAD_IMAGE");
         MiniArkShareAsyncManager.performUploadArkShareImage(this.val$finalNotEmptyPicUri, new MiniProgramOpenSdkUtil.3.1(this, paramJSONObject, localOpenSdkShareModel));
         return;
         i = 0;
@@ -66,7 +66,7 @@ final class MiniProgramOpenSdkUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil.3
  * JD-Core Version:    0.7.0.1
  */

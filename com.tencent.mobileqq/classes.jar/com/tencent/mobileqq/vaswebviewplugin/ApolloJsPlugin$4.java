@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ajhu;
-import ajic;
-import ajya;
+import akzg;
+import akzo;
+import alpo;
 import android.app.Activity;
 import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
 
 class ApolloJsPlugin$4
-  implements ajic
+  implements akzo
 {
   ApolloJsPlugin$4(ApolloJsPlugin paramApolloJsPlugin, ApolloWebAvatarParam paramApolloWebAvatarParam, Activity paramActivity, int paramInt, String paramString) {}
   
@@ -16,14 +16,14 @@ class ApolloJsPlugin$4
     if (paramBoolean)
     {
       if ((this.val$param.dressIds == null) || (this.val$param.dressIds.length == 0)) {
-        this.val$param.dressIds = ajhu.a(this.val$param.roleId);
+        this.val$param.dressIds = akzg.a(this.val$param.roleId);
       }
       if (this.val$activity != null) {
         this.val$activity.runOnUiThread(new ApolloJsPlugin.4.1(this));
       }
       return;
     }
-    this.this$0.callbackError(this.val$callbackId, ajya.a(2131700447));
+    this.this$0.callbackError(this.val$callbackId, alpo.a(2131700816));
   }
 }
 

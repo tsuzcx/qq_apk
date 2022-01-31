@@ -8,9 +8,9 @@ import android.view.GestureDetector;
 import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import spb;
-import spc;
-import spd;
+import tpw;
+import tpx;
+import tpy;
 
 public class PublicAccountImageView
   extends URLImageView
@@ -20,7 +20,7 @@ public class PublicAccountImageView
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   Handler jdField_a_of_type_AndroidOsHandler;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private spd jdField_a_of_type_Spd;
+  private tpy jdField_a_of_type_Tpy;
   public boolean a;
   public float[] a;
   public float b;
@@ -36,9 +36,9 @@ public class PublicAccountImageView
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_ArrayOfFloat = new float[9];
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = new spc(this);
+    paramContext = new tpx(this);
     setOnTouchListener(paramContext);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new spb(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new tpw(this, paramContext));
     setBackgroundColor(-16777216);
     if (paramInt1 == 1) {
       setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -63,9 +63,9 @@ public class PublicAccountImageView
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_ArrayOfFloat = new float[9];
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = new spc(this);
+    paramContext = new tpx(this);
     setOnTouchListener(paramContext);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new spb(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new tpw(this, paramContext));
     setBackgroundColor(-16777216);
     setScaleType(ImageView.ScaleType.MATRIX);
     a();
@@ -97,7 +97,7 @@ public class PublicAccountImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageView
  * JD-Core Version:    0.7.0.1
  */

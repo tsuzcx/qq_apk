@@ -1,66 +1,237 @@
-import android.opengl.GLES20;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-import java.nio.ShortBuffer;
+import android.os.Bundle;
+import android.os.Looper;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.BaseBusinessHandler.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
-public class alkj
+public abstract class alkj
+  extends altl
 {
-  public static final float[] a;
-  public static final short[] a;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  private ShortBuffer jdField_a_of_type_JavaNioShortBuffer;
-  public float[] b;
-  public short[] b;
+  public static final int BG_OBSERVERS = 2;
+  public static final int DEFAULT_OBSERVER = 0;
+  public static final String SEQ_KEY = alkj.class.getName();
+  public static final int UI_OBSERVERS = 1;
+  private static MqqHandler bgHandler = ThreadManager.getSubThreadHandler();
+  private static int notReportedCallNum;
+  private static int reportThreshold = -1;
+  private static MqqHandler uiHandler = new MqqHandler(Looper.getMainLooper());
+  protected Set<String> allowCmdSet;
+  private Map<Long, alkr> bgObserverMap = new HashMap();
+  private long seq;
+  private Map<Long, alkr> uiObserverMap = new HashMap();
   
-  static
+  private void dispatchMessage(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, alkr paramalkr, MqqHandler paramMqqHandler)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
-    jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 2, 3, 0 };
+    paramObject = new BaseBusinessHandler.1(this, paramalkr, paramInt, paramMqqHandler, paramBoolean1, paramObject);
+    if (paramBoolean2)
+    {
+      paramMqqHandler.postAtFrontOfQueue(paramObject);
+      return;
+    }
+    paramMqqHandler.post(paramObject);
   }
   
-  public alkj()
+  protected void addBusinessObserver(ToServiceMsg paramToServiceMsg, alkr paramalkr, boolean paramBoolean)
   {
-    this.jdField_b_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-    this.jdField_b_of_type_ArrayOfShort = jdField_a_of_type_ArrayOfShort;
-    b();
+    if ((paramalkr == null) || (paramBoolean)) {}
+    synchronized (this.bgObserverMap)
+    {
+      ???.put(Long.valueOf(this.seq), paramalkr);
+      paramToServiceMsg = paramToServiceMsg.extraData;
+      paramalkr = SEQ_KEY;
+      long l = this.seq;
+      this.seq = (1L + l);
+      paramToServiceMsg.putLong(paramalkr, l);
+      return;
+      ??? = this.uiObserverMap;
+    }
   }
   
-  public alkj(float[] paramArrayOfFloat, short[] paramArrayOfShort)
+  public ToServiceMsg createToServiceMsg(String paramString)
   {
-    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_b_of_type_ArrayOfShort = paramArrayOfShort;
-    b();
+    return new ToServiceMsg("mobileqq.service", getCurrentAccountUin(), paramString);
   }
   
-  private void b()
+  public ToServiceMsg createToServiceMsg(String paramString, alkr paramalkr)
   {
-    this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat).position(0);
-    this.jdField_a_of_type_JavaNioShortBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfShort.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer();
-    this.jdField_a_of_type_JavaNioShortBuffer.put(this.jdField_b_of_type_ArrayOfShort).position(0);
+    return createToServiceMsg(paramString, paramalkr, false);
   }
   
-  public void a()
+  ToServiceMsg createToServiceMsg(String arg1, alkr paramalkr, boolean paramBoolean)
   {
-    GLES20.glDrawElements(4, 6, 5123, this.jdField_a_of_type_JavaNioShortBuffer);
+    ToServiceMsg localToServiceMsg = createToServiceMsg(???);
+    if ((paramalkr == null) || (paramBoolean)) {}
+    synchronized (this.bgObserverMap)
+    {
+      ???.put(Long.valueOf(this.seq), paramalkr);
+      paramalkr = localToServiceMsg.extraData;
+      String str = SEQ_KEY;
+      long l = this.seq;
+      this.seq = (1L + l);
+      paramalkr.putLong(str, l);
+      return localToServiceMsg;
+      ??? = this.uiObserverMap;
+    }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public final <T> T decodePacket(byte[] paramArrayOfByte, String paramString, T paramT)
   {
-    GLES20.glEnableVertexAttribArray(paramInt1);
-    alkh.a("glEnableVertexAttribArray aPositionHandle");
-    GLES20.glEnableVertexAttribArray(paramInt2);
-    alkh.a("glEnableVertexAttribArray aTextureCoordHandle");
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
-    GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
+    UniPacket localUniPacket = new UniPacket(true);
+    try
+    {
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      return localUniPacket.getByClass(paramString, paramT);
+    }
+    catch (Exception paramArrayOfByte) {}
+    return null;
   }
+  
+  public abstract String getCurrentAccountUin();
+  
+  public abstract List<alkr> getObservers(int paramInt);
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    return false;
+  }
+  
+  public final void notifyUI(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    notifyUI(paramInt, paramBoolean, paramObject, false);
+  }
+  
+  public void notifyUI(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2)
+  {
+    List localList = getObservers(0);
+    Iterator localIterator;
+    Object localObject;
+    if ((localList != null) && (localList.size() > 0)) {
+      try
+      {
+        localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = (alkr)localIterator.next();
+          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass())))
+          {
+            long l = System.currentTimeMillis();
+            ((alkr)localObject).onUpdate(paramInt, paramBoolean1, paramObject);
+            l = System.currentTimeMillis() - l;
+            if ((l > 100L) && (QLog.isColorLevel()))
+            {
+              localObject = new Exception("run too long!");
+              QLog.d("BaseBusinessHandler.notifyUI", 2, "defaultObserver onUpdate cost:" + l, (Throwable)localObject);
+            }
+          }
+        }
+      }
+      finally {}
+    }
+    localList = getObservers(1);
+    if ((localList != null) && (localList.size() > 0)) {
+      try
+      {
+        localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = (alkr)localIterator.next();
+          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
+            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (alkr)localObject, uiHandler);
+          }
+        }
+      }
+      finally {}
+    }
+    localList = getObservers(2);
+    if ((localList != null) && (localList.size() > 0)) {
+      try
+      {
+        localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = (alkr)localIterator.next();
+          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
+            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (alkr)localObject, bgHandler);
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void notifyUI(ToServiceMsg paramToServiceMsg, int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    long l;
+    MqqHandler localMqqHandler;
+    if (paramToServiceMsg.extraData.containsKey(SEQ_KEY))
+    {
+      l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
+      synchronized (this.uiObserverMap)
+      {
+        paramToServiceMsg = (alkr)this.uiObserverMap.remove(Long.valueOf(l));
+        localMqqHandler = uiHandler;
+        if (paramToServiceMsg != null) {}
+      }
+    }
+    for (;;)
+    {
+      synchronized (this.bgObserverMap)
+      {
+        paramToServiceMsg = (alkr)this.bgObserverMap.remove(Long.valueOf(l));
+        localMqqHandler = bgHandler;
+        if (paramToServiceMsg != null)
+        {
+          dispatchMessage(paramInt, paramBoolean, paramObject, false, paramToServiceMsg, localMqqHandler);
+          return;
+          paramToServiceMsg = finally;
+          throw paramToServiceMsg;
+        }
+      }
+      notifyUI(paramInt, paramBoolean, paramObject);
+      return;
+    }
+  }
+  
+  protected abstract Class<? extends alkr> observerClass();
+  
+  public void onDestroy() {}
+  
+  public abstract void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
+  
+  protected alsi removeMessageObserver(ToServiceMsg paramToServiceMsg)
+  {
+    if ((paramToServiceMsg == null) || (!paramToServiceMsg.extraData.containsKey(SEQ_KEY))) {
+      return null;
+    }
+    synchronized (this.uiObserverMap)
+    {
+      long l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
+      if (alsi.class.isInstance((alkr)this.uiObserverMap.get(Long.valueOf(l))))
+      {
+        paramToServiceMsg = (alsi)this.uiObserverMap.remove(Long.valueOf(l));
+        return paramToServiceMsg;
+      }
+    }
+    return null;
+  }
+  
+  public abstract void send(ToServiceMsg paramToServiceMsg);
+  
+  public abstract void sendPbReq(ToServiceMsg paramToServiceMsg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alkj
  * JD-Core Version:    0.7.0.1
  */

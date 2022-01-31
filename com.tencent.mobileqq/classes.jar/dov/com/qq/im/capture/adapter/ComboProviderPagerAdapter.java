@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.adapter;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.view.PagerAdapter;
@@ -8,7 +8,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import bfpt;
+import bhqp;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
@@ -19,16 +19,16 @@ public class ComboProviderPagerAdapter
   extends PagerAdapter
 {
   public static final int a;
-  public static final int b = actj.a(0.0F, BaseApplication.getContext().getResources());
+  public static final int b = aekt.a(0.0F, BaseApplication.getContext().getResources());
   private Context jdField_a_of_type_AndroidContentContext;
   public SparseArray<GridView> a;
-  private bfpt jdField_a_of_type_Bfpt;
+  private bhqp jdField_a_of_type_Bhqp;
   private ArrayList<FilterCategory> jdField_a_of_type_JavaUtilArrayList;
   int c;
   
   static
   {
-    jdField_a_of_type_Int = actj.a(7.0F, BaseApplication.getContext().getResources());
+    jdField_a_of_type_Int = aekt.a(7.0F, BaseApplication.getContext().getResources());
   }
   
   public ComboProviderPagerAdapter(Context paramContext, int paramInt)
@@ -43,9 +43,9 @@ public class ComboProviderPagerAdapter
     return (GridView)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
-  public void a(bfpt parambfpt)
+  public void a(bhqp parambhqp)
   {
-    this.jdField_a_of_type_Bfpt = parambfpt;
+    this.jdField_a_of_type_Bhqp = parambhqp;
   }
   
   public void a(ArrayList<FilterCategory> paramArrayList)
@@ -78,14 +78,14 @@ public class ComboProviderPagerAdapter
       ((GridView)localObject1).setVerticalSpacing(b);
       ((GridView)localObject1).setHorizontalSpacing(b);
       ((GridView)localObject1).setClipToPadding(false);
-      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + actj.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + aekt.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((GridView)localObject1).setVerticalScrollBarEnabled(false);
       localObject2 = new ComboProviderGridAdapter(this.jdField_a_of_type_AndroidContentContext, this.c);
       ((ComboProviderGridAdapter)localObject2).a = ((GridView)localObject1);
       ((ComboProviderGridAdapter)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaUtilList);
       ((GridView)localObject1).setAdapter((ListAdapter)localObject2);
       ((ComboProviderGridAdapter)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int);
-      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bfpt);
+      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bhqp);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
     }
     paramViewGroup.addView((View)localObject1, -1, -1);
@@ -99,7 +99,7 @@ public class ComboProviderPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.adapter.ComboProviderPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

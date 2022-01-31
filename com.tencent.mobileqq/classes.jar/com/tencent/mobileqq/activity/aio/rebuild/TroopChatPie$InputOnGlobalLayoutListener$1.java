@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeuy;
-import akhp;
+import agry;
+import alzf;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class TroopChatPie$InputOnGlobalLayoutListener$1
   implements Runnable
 {
-  public TroopChatPie$InputOnGlobalLayoutListener$1(aeuy paramaeuy) {}
+  public TroopChatPie$InputOnGlobalLayoutListener$1(agry paramagry) {}
   
   public void run()
   {
     String str1 = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((akhp)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a();
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((alzf)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a();
     Object localObject = localTroopBatchAddFriendMgr.a(str1);
     ArrayList localArrayList = new ArrayList();
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
@@ -41,7 +41,7 @@ public class TroopChatPie$InputOnGlobalLayoutListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.InputOnGlobalLayoutListener.1
  * JD-Core Version:    0.7.0.1
  */

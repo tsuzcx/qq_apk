@@ -1,98 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import com.tencent.mobileqq.search.util.VADHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pushdialog.PushDialogDbUtil.1;
+import com.tencent.mobileqq.pushdialog.PushDialogDbUtil.2;
+import com.tencent.mobileqq.pushdialog.PushDialogDbUtil.3;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
 
 public class awur
-  extends awut
 {
-  public awur(GroupSearchEngine paramGroupSearchEngine, awuu paramawuu, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramawuu, paramString, paramInt);
-  }
+  private static volatile awur jdField_a_of_type_Awur;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public awoh a(List<awoi> paramList, String paramString)
+  public static awur a()
   {
-    if (SearchConfigManager.needSeparate) {
-      return null;
-    }
-    return new awns(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
-  
-  public List<awoh> a(awvi paramawvi)
-  {
-    VADHelper.a("voice_search_accurate_cost");
-    List localList = super.a(paramawvi);
-    VADHelper.b("voice_search_accurate_cost");
-    if ((localList != null) && (!localList.isEmpty()))
+    if (jdField_a_of_type_Awur == null) {}
+    try
     {
-      if (paramawvi.a == null) {
-        paramawvi.a = new Bundle();
+      if (jdField_a_of_type_Awur == null) {
+        jdField_a_of_type_Awur = new awur();
       }
-      paramawvi.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
-      if (localList.size() >= 2)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((awoh)localList.get(1)).a().size());
-        }
-        paramawvi.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((awoh)localList.get(1)).a().size());
-      }
-      return localList;
+      return jdField_a_of_type_Awur;
     }
-    paramawvi.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
-    return localList;
+    finally {}
   }
   
-  protected awoh b(List<awoi> paramList, String paramString)
+  public void a(awbw paramawbw, long paramLong, awus paramawus)
   {
-    if (!SearchConfigManager.needSeparate) {
-      return null;
-    }
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      awoi localawoi = (awoi)paramList.next();
-      if (!awwa.a(localawoi)) {
-        localArrayList.add(localawoi);
-      }
-    }
-    if (localArrayList.size() == 0) {
-      return null;
-    }
-    return new awns(localArrayList, paramString, GroupSearchEngine.a(this.a));
+    long l = System.currentTimeMillis() - 86400000L;
+    ThreadManager.post(new PushDialogDbUtil.1(this, paramawbw, new String[] { String.valueOf(paramLong), String.valueOf(l) }, paramLong, l, paramawus), 8, null, false);
   }
   
-  protected awoh c(List<awoi> paramList, String paramString)
+  public void a(awbw paramawbw, PushDialogTemplate paramPushDialogTemplate)
   {
-    if (!SearchConfigManager.needSeparate) {
-      return null;
+    ThreadManager.post(new PushDialogDbUtil.2(this, paramawbw, paramPushDialogTemplate), 8, null, false);
+  }
+  
+  public void b(awbw paramawbw, PushDialogTemplate paramPushDialogTemplate)
+  {
+    if ((paramawbw == null) || (paramPushDialogTemplate == null)) {
+      return;
     }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      awoi localawoi = (awoi)paramList.next();
-      if (awwa.a(localawoi)) {
-        localArrayList.add(localawoi);
-      }
-    }
-    if (localArrayList.size() == 0) {
-      return null;
-    }
-    return new awnu(localArrayList, paramString, GroupSearchEngine.a(this.a));
+    ThreadManager.post(new PushDialogDbUtil.3(this, paramawbw, paramPushDialogTemplate), 2, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awur
  * JD-Core Version:    0.7.0.1
  */

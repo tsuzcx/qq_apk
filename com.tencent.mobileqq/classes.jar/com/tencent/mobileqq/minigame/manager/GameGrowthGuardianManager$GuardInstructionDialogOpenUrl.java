@@ -14,17 +14,17 @@ class GameGrowthGuardianManager$GuardInstructionDialogOpenUrl
   
   protected GameGrowthGuardianManager.DialogAction getNegativeDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131690596, new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl.2(this));
+    return new GameGrowthGuardianManager.DialogAction(2131690648, new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl.2(this));
   }
   
   protected GameGrowthGuardianManager.DialogAction getPositiveDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131693934, new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl.1(this));
+    return new GameGrowthGuardianManager.DialogAction(2131694050, new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameGrowthGuardianManager.GuardInstructionDialogOpenUrl
  * JD-Core Version:    0.7.0.1
  */

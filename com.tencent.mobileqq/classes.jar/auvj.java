@@ -1,18 +1,14 @@
 import android.view.View;
 
-class auvj
-  implements bfph
+public abstract interface auvj
 {
-  auvj(auvh paramauvh) {}
+  public abstract void a(View paramView);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    auvh.a(this.a, paramInt);
-  }
+  public abstract void a(View paramView, auvm paramauvm);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auvj
  * JD-Core Version:    0.7.0.1
  */

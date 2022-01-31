@@ -1,23 +1,19 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class asrr
-  extends GestureDetector.SimpleOnGestureListener
+class asrr
+  implements DialogInterface.OnClickListener
 {
-  public asrr(MultiCardCustomLayout paramMultiCardCustomLayout) {}
+  asrr(asrp paramasrp) {}
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (MultiCardCustomLayout.a(this.a) != null) {
-      MultiCardCustomLayout.a(this.a).onLongClick(this.a);
-    }
+    this.a.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asrr
  * JD-Core Version:    0.7.0.1
  */

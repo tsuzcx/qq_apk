@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
-import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.4;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
 public class bjqy
-  implements DialogInterface.OnCancelListener
+  implements FileFilter
 {
-  public bjqy(LightWeightSoDownloadUnit.4 param4) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public boolean accept(File paramFile)
   {
-    this.a.this$0.a.setCameraPermissionResult(false);
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjqy
  * JD-Core Version:    0.7.0.1
  */

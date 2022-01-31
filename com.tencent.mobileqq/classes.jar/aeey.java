@@ -1,29 +1,19 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import java.util.Comparator;
 
 public class aeey
-  implements adnx
+  implements Comparator<aefa>
 {
-  public aeey(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  private aeey(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void a()
+  public int a(aefa paramaefa1, aefa paramaefa2)
   {
-    UnlimitedBladeWorks.a(this.a).b = true;
-    UnlimitedBladeWorks.a(this.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a) != null)
-    {
-      UnlimitedBladeWorks.a(this.a).a();
-      if (UnlimitedBladeWorks.b(this.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
-        UnlimitedBladeWorks.a(this.a, 0);
-      }
-    }
+    return paramaefa1.f.compareToIgnoreCase(paramaefa2.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeey
  * JD-Core Version:    0.7.0.1
  */

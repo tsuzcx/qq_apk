@@ -1,24 +1,19 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
 public class acql
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Comparator<acqj>
 {
-  public acql(VisitorsActivity paramVisitorsActivity) {}
+  private acql(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onGlobalLayout()
+  public int a(acqj paramacqj1, acqj paramacqj2)
   {
-    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int[] arrayOfInt = new int[2];
-    this.a.b.getLocationInWindow(arrayOfInt);
-    this.a.i = arrayOfInt[1];
+    return paramacqj1.c.compareToIgnoreCase(paramacqj2.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acql
  * JD-Core Version:    0.7.0.1
  */

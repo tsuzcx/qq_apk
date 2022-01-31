@@ -1,85 +1,25 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeMultiPicHeadItemView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
 public class wvu
-  extends SubscribeBannerView.BannerAdapter
+  implements Animation.AnimationListener
 {
-  public wvu(RelativeMultiPicHeadItemView paramRelativeMultiPicHeadItemView) {}
+  public wvu(EditVideoGuide paramEditVideoGuide) {}
   
-  private String a(Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramObject instanceof CertifiedAccountMeta.StImage)) {
-      return ((CertifiedAccountMeta.StImage)paramObject).url.get();
-    }
-    return "";
+    this.a.g();
+    this.a.a.a(0);
   }
   
-  public View a(View paramView, Object paramObject)
-  {
-    String str = a(paramObject);
-    if (((paramObject instanceof CertifiedAccountMeta.StImage)) && (RelativeMultiPicHeadItemView.a(this.a) != 0))
-    {
-      paramObject = (CertifiedAccountMeta.StImage)paramObject;
-      if ((paramObject.width.get() != 0) && (paramObject.height.get() != 0))
-      {
-        float f = paramObject.height.get() / paramObject.width.get();
-        paramObject = paramView.getLayoutParams();
-        int j = (int)(RelativeMultiPicHeadItemView.a(this.a) / f);
-        int i = j;
-        if (j > RelativeMultiPicHeadItemView.b(this.a)) {
-          i = RelativeMultiPicHeadItemView.b(this.a);
-        }
-        paramObject.width = i;
-        paramObject.height = RelativeMultiPicHeadItemView.a(this.a);
-      }
-    }
-    if (str != null) {}
-    try
-    {
-      paramObject = wrq.a(str);
-      if (!TextUtils.isEmpty(paramObject))
-      {
-        paramObject = new File(paramObject);
-        if (paramObject.exists())
-        {
-          ((URLImageView)paramView).setImageURI(Uri.fromFile(paramObject));
-          return paramView;
-        }
-      }
-    }
-    catch (Exception paramObject)
-    {
-      QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!exception:" + paramObject);
-      wil.a(str, (URLImageView)paramView);
-    }
-    return paramView;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected URLImageView a(ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new URLImageView(paramViewGroup.getContext());
-    if (RelativeMultiPicHeadItemView.a(this.a) == 0) {}
-    for (int i = -1;; i = RelativeMultiPicHeadItemView.a(this.a))
-    {
-      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, i));
-      return paramViewGroup;
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvu
  * JD-Core Version:    0.7.0.1
  */

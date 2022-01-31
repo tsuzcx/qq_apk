@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aigf;
+import ajxp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -10,7 +10,7 @@ import java.util.List;
 public class TroopMemberListInnerFrame$7$1
   implements Runnable
 {
-  public TroopMemberListInnerFrame$7$1(aigf paramaigf, List paramList) {}
+  public TroopMemberListInnerFrame$7$1(ajxp paramajxp, List paramList) {}
   
   public void run()
   {
@@ -28,8 +28,8 @@ public class TroopMemberListInnerFrame$7$1
       for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
       {
         QLog.d("TroopMemberListInnerFrame", 2, i);
-        this.jdField_a_of_type_Aigf.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_Aigf.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.jdField_a_of_type_Aigf.a.b, System.currentTimeMillis()).commit();
-        TroopMemberListInnerFrame.a(this.jdField_a_of_type_Aigf.a, this.jdField_a_of_type_Aigf.a.b, this.jdField_a_of_type_JavaUtilList);
+        this.jdField_a_of_type_Ajxp.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_Ajxp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.jdField_a_of_type_Ajxp.a.b, System.currentTimeMillis()).commit();
+        TroopMemberListInnerFrame.a(this.jdField_a_of_type_Ajxp.a, this.jdField_a_of_type_Ajxp.a.b, this.jdField_a_of_type_JavaUtilList);
         return;
       }
       return;
@@ -44,7 +44,7 @@ public class TroopMemberListInnerFrame$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1
  * JD-Core Version:    0.7.0.1
  */

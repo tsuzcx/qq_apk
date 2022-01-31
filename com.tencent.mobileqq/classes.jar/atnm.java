@@ -1,23 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.Bitmap;
 
 class atnm
-  implements Animation.AnimationListener
 {
-  atnm(atnk paramatnk) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.dismiss();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  long jdField_a_of_type_Long;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  long b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atnm
  * JD-Core Version:    0.7.0.1
  */

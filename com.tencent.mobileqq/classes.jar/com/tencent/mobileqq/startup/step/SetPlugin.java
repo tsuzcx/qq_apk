@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import axox;
+import azki;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
 
@@ -9,13 +9,13 @@ public class SetPlugin
 {
   protected boolean doStep()
   {
-    PluginRecoverReceiver.register(BaseApplicationImpl.sApplication, new axox());
+    PluginRecoverReceiver.register(BaseApplicationImpl.sApplication, new azki());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetPlugin
  * JD-Core Version:    0.7.0.1
  */

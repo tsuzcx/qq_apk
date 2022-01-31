@@ -1,123 +1,124 @@
-import PayMQQ.UniPayRequest;
-import PayMQQ.UniPayResponse;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class akiv
-  extends ajtb
 {
-  private ArrayList<akiw> a = new ArrayList();
+  private static akiv jdField_a_of_type_Akiv;
+  private Map<Long, akiw> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<Long, Long> b = new HashMap();
   
-  public akiv(QQAppInterface paramQQAppInterface)
+  public static akiv a()
   {
-    super(paramQQAppInterface);
+    if (jdField_a_of_type_Akiv == null) {
+      jdField_a_of_type_Akiv = new akiv();
+    }
+    return jdField_a_of_type_Akiv;
   }
   
-  private void a()
+  public int a(long paramLong)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((akiw)localIterator.next()).a();
-    }
-  }
-  
-  public void a(akiw paramakiw)
-  {
-    if (paramakiw == null) {}
-    while (this.a.contains(paramakiw)) {
-      return;
-    }
-    this.a.add(paramakiw);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.app == null) {
-      paramString = new UniPayRequest(this.mApp.getCurrentAccountUin(), "android" + paramString);
-    }
-    for (ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.mApp.getCurrentAccountUin(), "VipSTCheckServer.UinPay");; localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "VipSTCheckServer.UinPay"))
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
     {
-      localToServiceMsg.extraData.putSerializable("UniPayRequest", paramString);
-      super.send(localToServiceMsg);
-      return;
-      paramString = new UniPayRequest(this.app.getCurrentAccountUin(), "android" + paramString);
-    }
-  }
-  
-  public void b(akiw paramakiw)
-  {
-    if ((paramakiw != null) && (this.a.contains(paramakiw))) {
-      this.a.remove(paramakiw);
-    }
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {}
-    do
-    {
-      do
+      akiw localakiw = (akiw)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      if (l - localakiw.jdField_a_of_type_Long < 3600000L)
       {
-        return;
-        str1 = paramToServiceMsg.getServiceCmd();
-      } while (TextUtils.isEmpty(str1));
-      if ((str1.compareTo("VipSTCheckServer.UinPay") == 0) && (QLog.isColorLevel())) {
-        QLog.i("UniPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
+        }
+        return localakiw.jdField_a_of_type_Int;
       }
-    } while (str1.compareTo("VipSTCheckServer.UinPay") != 0);
-    paramFromServiceMsg = (UniPayResponse)paramObject;
-    paramToServiceMsg = paramFromServiceMsg.getSUin();
-    int i = paramFromServiceMsg.getIShowOpen();
-    int j = paramFromServiceMsg.getIUniPayType();
-    new HashMap();
-    Object localObject = paramFromServiceMsg.getMapResponse();
-    paramFromServiceMsg = (String)((Map)localObject).get("cur_st");
-    paramObject = (String)((Map)localObject).get("net_mobile_club");
-    String str1 = (String)((Map)localObject).get("open_month");
-    String str2 = (String)((Map)localObject).get("platform");
-    String str3 = (String)((Map)localObject).get("ret");
-    String str4 = (String)((Map)localObject).get("show_open");
-    String str5 = (String)((Map)localObject).get("uin");
-    localObject = (String)((Map)localObject).get("uin_pay_type");
-    if (QLog.isColorLevel()) {
-      QLog.d("UniPayHandler", 2, "sUin==" + paramToServiceMsg + ",isShowOpen==" + i + ",iUniPayType==" + j);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
+      }
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+      return 0;
     }
-    SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences("uniPaySp_" + paramToServiceMsg, 4).edit();
-    localEditor.putString("sUin", paramToServiceMsg);
-    localEditor.putInt("isShowOpen", i);
-    localEditor.putInt("iUinpPayType", j);
-    localEditor.putString("cur_st", paramFromServiceMsg);
-    localEditor.putString("net_mobile_club", paramObject);
-    localEditor.putString("open_month", str1);
-    localEditor.putString("platform", str2);
-    localEditor.putString("ret", str3);
-    localEditor.putString("show_open", str4);
-    localEditor.putString("uin", str5);
-    localEditor.putString("uin_pay_type", (String)localObject);
-    localEditor.commit();
-    a();
+    if (this.b.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
+        }
+        return 0;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
+      }
+      this.b.remove(Long.valueOf(paramLong));
+      return 0;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AntiFraud", 4, "use default value, false");
+    }
+    return 0;
+  }
+  
+  public void a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (this.b.size() > 500) {
+      this.b.clear();
+    }
+    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+    }
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    long l = System.currentTimeMillis();
+    akiw localakiw = new akiw(this);
+    localakiw.jdField_a_of_type_Int = paramInt;
+    localakiw.jdField_a_of_type_Long = l;
+    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localakiw);
+    if (this.b.containsKey(Long.valueOf(paramLong))) {
+      this.b.remove(Long.valueOf(paramLong));
+    }
+  }
+  
+  public boolean a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((akiw)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
+        }
+        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+        return true;
+      }
+      return false;
+    }
+    if (this.b.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
+        }
+        this.b.remove(Long.valueOf(paramLong));
+        return true;
+      }
+      return false;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AntiFraud", 4, "Out of date, use default value, true!");
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akiv
  * JD-Core Version:    0.7.0.1
  */

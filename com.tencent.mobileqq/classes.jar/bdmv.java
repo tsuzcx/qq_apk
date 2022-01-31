@@ -1,163 +1,44 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.Iterator;
-import java.util.List;
-
 public class bdmv
-  implements bdld
 {
-  protected static bdmv a;
-  protected bdmx a;
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
   
-  public static bdmv a()
+  public void a(int paramInt)
   {
-    try
-    {
-      if (jdField_a_of_type_Bdmv == null) {
-        jdField_a_of_type_Bdmv = new bdmv();
-      }
-      bdmv localbdmv = jdField_a_of_type_Bdmv;
-      return localbdmv;
-    }
-    finally {}
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(Looper paramLooper)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Bdmx = new bdmx(paramLooper);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected void a(Message paramMessage)
+  public boolean a()
   {
-    if (this.jdField_a_of_type_Bdmx == null) {
-      this.jdField_a_of_type_Bdmx = new bdmx();
-    }
-    this.jdField_a_of_type_Bdmx.sendMessage(paramMessage);
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void b(String paramString)
   {
-    bdii.a("NoticeDownloadListener", "onInstallSucceed ,appId" + paramString1);
-    paramString1 = bdle.a().b(paramString2);
-    if (paramString1 != null)
-    {
-      paramString2 = this.jdField_a_of_type_Bdmx.obtainMessage();
-      paramString2.what = 6;
-      Bundle localBundle = new Bundle();
-      localBundle.putString(bdlb.b, paramString1.jdField_c_of_type_JavaLangString);
-      paramString2.setData(localBundle);
-      a(paramString2);
-    }
+    this.b = paramString;
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public void c(String paramString)
   {
-    bdii.a("NoticeDownloadListener", "onDownloadError ,downloadInfo" + paramDownloadInfo);
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.b) {
-      return;
-    }
-    Message localMessage = this.jdField_a_of_type_Bdmx.obtainMessage();
-    localMessage.what = -2;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    localMessage.obj = paramString;
-    localMessage.arg2 = paramInt2;
-    a(localMessage);
+    this.c = paramString;
   }
   
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  public String toString()
   {
-    bdii.a("NoticeDownloadListener", "onDownloadFinish ");
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.b) {
-      return;
-    }
-    Message localMessage = this.jdField_a_of_type_Bdmx.obtainMessage();
-    localMessage.what = 4;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    a(localMessage);
+    return super.toString();
   }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {}
-    do
-    {
-      return;
-      bdii.a("NoticeDownloadListener", "onDownloadPause " + paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    } while ((paramDownloadInfo.jdField_c_of_type_Int == 1) || (paramDownloadInfo.b));
-    Message localMessage = this.jdField_a_of_type_Bdmx.obtainMessage();
-    localMessage.what = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    a(localMessage);
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    bdii.a("NoticeDownloadListener", "onDownloadUpdate notify enter infos=" + paramList.size());
-    paramList = paramList.iterator();
-    for (;;)
-    {
-      DownloadInfo localDownloadInfo;
-      if (paramList.hasNext())
-      {
-        localDownloadInfo = (DownloadInfo)paramList.next();
-        if ((localDownloadInfo == null) || (localDownloadInfo.jdField_c_of_type_Int == 1)) {
-          continue;
-        }
-        if (!localDownloadInfo.b) {}
-      }
-      else
-      {
-        return;
-      }
-      Message localMessage = this.jdField_a_of_type_Bdmx.obtainMessage();
-      localMessage.what = 2;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("appId", localDownloadInfo.jdField_c_of_type_JavaLangString);
-      localMessage.setData(localBundle);
-      a(localMessage);
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.b) {
-      return;
-    }
-    Object localObject2 = new StringBuilder().append("onDownloadWait notify enter info.id=");
-    if (paramDownloadInfo == null) {}
-    for (Object localObject1 = "";; localObject1 = paramDownloadInfo.jdField_c_of_type_JavaLangString)
-    {
-      bdii.a("NoticeDownloadListener", (String)localObject1);
-      localObject1 = this.jdField_a_of_type_Bdmx.obtainMessage();
-      ((Message)localObject1).what = 20;
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-      ((Message)localObject1).setData((Bundle)localObject2);
-      a((Message)localObject1);
-      return;
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmv
  * JD-Core Version:    0.7.0.1
  */

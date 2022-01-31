@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import afvq;
+import ahtk;
 import android.os.Handler;
 
 public class QFaceUnlockCameraCaptureUnit$1
   implements Runnable
 {
-  public QFaceUnlockCameraCaptureUnit$1(afvq paramafvq) {}
+  public QFaceUnlockCameraCaptureUnit$1(ahtk paramahtk) {}
   
   public void run()
   {
-    if (afvq.a(this.this$0) != 1) {
+    if (ahtk.a(this.this$0) != 1) {
       return;
     }
-    afvq.b(this.this$0);
-    afvq.a(this.this$0).postDelayed(this, 1000L);
+    ahtk.b(this.this$0);
+    ahtk.a(this.this$0).postDelayed(this, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.1
  * JD-Core Version:    0.7.0.1
  */

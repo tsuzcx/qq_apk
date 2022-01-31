@@ -1,32 +1,34 @@
 import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class atjo
-  implements bfph
+class atjo
+  implements bhqd
 {
-  public atjo(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bfpc parambfpc) {}
+  atjo(atjn paramatjn, bhpy parambhpy, boolean paramBoolean) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_Bhpy.dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bfpc != null) {
-        this.jdField_a_of_type_Bfpc.dismiss();
-      }
+      this.jdField_a_of_type_Atjn.b(false);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+      atii.a(BaseActivity.sTopActivity, this.jdField_a_of_type_Atjn.a().e, this.jdField_a_of_type_Atjn.a().b);
       continue;
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+      this.jdField_a_of_type_Atjn.g();
+      continue;
+      this.jdField_a_of_type_Atjn.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atjo
  * JD-Core Version:    0.7.0.1
  */

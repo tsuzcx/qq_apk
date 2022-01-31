@@ -1,48 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.GridView;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import java.util.List;
 
 public class bcls
-  implements Animation.AnimationListener
 {
-  private bcls(DraggableGridView paramDraggableGridView) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b = 0;
+  public String b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String a(int paramInt)
   {
-    int i = 0;
-    while (i < DraggableGridView.a(this.a).getChildCount())
-    {
-      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
-      if ((paramAnimation instanceof GridView))
-      {
-        paramAnimation = (GridView)paramAnimation;
-        int j = 0;
-        while (j < paramAnimation.getChildCount())
-        {
-          paramAnimation.getChildAt(j).clearAnimation();
-          paramAnimation.getChildAt(j).setPressed(false);
-          paramAnimation.getChildAt(j).setVisibility(0);
-          j += 1;
-        }
-      }
-      i += 1;
+    if ((this.a == null) || (this.a.size() == 0)) {
+      return "";
     }
-    this.a.a();
-    DraggableGridView.b(this.a, false);
-    DraggableGridView.c(this.a, false);
-    DraggableGridView.a(this.a).notifyDataSetChanged();
+    if (paramInt < this.a.size()) {
+      return (String)this.a.get(paramInt);
+    }
+    return (String)this.a.get(this.a.size() - 1);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcls
  * JD-Core Version:    0.7.0.1
  */

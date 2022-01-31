@@ -1,21 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class afrc
-  implements awcf
+  implements View.OnClickListener
 {
-  private afrc(FriendFragment paramFriendFragment) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
-      FriendFragment.a(this.a, 1400L, false);
-    }
+    ThreadManager.post(new MarketFaceItemBuilder.7.1(this), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afrc
  * JD-Core Version:    0.7.0.1
  */

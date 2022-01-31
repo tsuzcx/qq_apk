@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bahf;
-import bahg;
-import baro;
+import bcfr;
+import bcfs;
+import bcqi;
 
 public class AIOAnimationControlManager$10$1
   implements Runnable
 {
-  public AIOAnimationControlManager$10$1(bahg parambahg) {}
+  public AIOAnimationControlManager$10$1(bcfs parambcfs) {}
   
   public void run()
   {
     try
     {
-      if (this.a.jdField_a_of_type_Bahf.jdField_a_of_type_Baro != null) {
-        this.a.jdField_a_of_type_Bahf.jdField_a_of_type_Baro.b();
+      if (this.a.jdField_a_of_type_Bcfr.jdField_a_of_type_Bcqi != null) {
+        this.a.jdField_a_of_type_Bcfr.jdField_a_of_type_Bcqi.b();
       }
       label26:
-      this.a.jdField_a_of_type_Bahf.jdField_a_of_type_Int = 1;
-      this.a.jdField_a_of_type_Bahf.a(this.a.jdField_a_of_type_Boolean);
+      this.a.jdField_a_of_type_Bcfr.jdField_a_of_type_Int = 1;
+      this.a.jdField_a_of_type_Bcfr.a(this.a.jdField_a_of_type_Boolean);
       return;
     }
     catch (Throwable localThrowable)

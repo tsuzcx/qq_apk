@@ -1,42 +1,33 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.QQPermissionCallback;
 
 public class adas
-  implements aybj
+  implements QQPermissionCallback
 {
-  public adas(FriendShipWaveView paramFriendShipWaveView) {}
+  public adas(JumpActivity paramJumpActivity, boolean paramBoolean) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    aybq localaybq = new aybq(500, 0.0F, 1.0F);
-    this.a.d.jdField_a_of_type_Int = 255;
-    this.a.d.a(new aybi[] { localaybq });
-    localaybq.a(new adat(this));
-    this.a.e = new aycm();
-    this.a.e.a(FriendShipWaveView.a(this.a));
-    this.a.e.a(this.a.jdField_a_of_type_Int / 2 + baxn.a(this.a.jdField_a_of_type_AndroidContentContext, 120.0F), this.a.b.d + 30.0F);
-    this.a.a(this.a.e);
-    localaybq = new aybq(500, 0.0F, 1.0F);
-    this.a.e.a(new aybi[] { localaybq });
-    localaybq.a(new adau(this));
-    this.a.f = new aycm();
-    this.a.f.a(FriendShipWaveView.b(this.a));
-    this.a.f.a(this.a.jdField_a_of_type_Int / 2 - baxn.a(this.a.jdField_a_of_type_AndroidContentContext, 142.0F), this.a.c.d - 50.0F);
-    this.a.a(this.a.f);
-    localaybq = new aybq(500, 0.0F, 1.0F);
-    this.a.f.a(new aybi[] { localaybq });
-    localaybq.a(new adav(this));
-    this.a.g = new aycm();
-    this.a.g.a(FriendShipWaveView.c(this.a));
-    this.a.g.a(this.a.jdField_a_of_type_Int / 2 + baxn.a(this.a.jdField_a_of_type_AndroidContentContext, 140.0F), this.a.c.d);
-    this.a.a(this.a.g);
-    localaybq = new aybq(500, 0.0F, 1.0F);
-    this.a.g.a(new aybi[] { localaybq });
-    localaybq.a(new adaw(this));
+    QLog.i("JumpAction", 1, "system share.doShare denied sd grant");
+    bdcd.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, new adat(this));
+    paramArrayOfString = new HashMap();
+    azmz.a(BaseApplication.getContext()).a("", "noSDPermissionShareDeny", true, 0L, 0L, paramArrayOfString, "");
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("JumpAction", 1, "system share.doShare user grant");
+    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_Boolean);
+    paramArrayOfString = new HashMap();
+    azmz.a(BaseApplication.getContext()).a("", "noSDPermissionShareGrant", true, 0L, 0L, paramArrayOfString, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adas
  * JD-Core Version:    0.7.0.1
  */

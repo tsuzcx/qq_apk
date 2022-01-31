@@ -1,48 +1,26 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
 
-public class atab
-  implements BusinessObserver
+class atab
+  implements Callable<Bundle>
 {
-  public atab(NearbyJsInterface paramNearbyJsInterface, String paramString) {}
+  atab(aszx paramaszx, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public Bundle a()
   {
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-          localWebSsoResponseBody.mergeFrom(paramBundle);
-          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.callJs(new JSONObject(this.jdField_a_of_type_JavaLangString).getString("callback"), new String[] { paramBundle.toString() });
-          return;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.w("followUser js api", 2, " no data!");
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("followUser js api", 2, " no data! error");
-        }
-      }
-    }
+    asuy localasuy = new asuy();
+    CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    Bundle[] arrayOfBundle = new Bundle[1];
+    localasuy.a(this.jdField_a_of_type_Aszx.a.c(), this.jdField_a_of_type_JavaLangString, this.b, this.c, new atac(this, localasuy, arrayOfBundle, localCountDownLatch), true, this.d);
+    localCountDownLatch.await();
+    return arrayOfBundle[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atab
  * JD-Core Version:    0.7.0.1
  */

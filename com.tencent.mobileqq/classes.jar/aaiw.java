@@ -1,20 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aaiw
-  implements CompoundButton.OnCheckedChangeListener
+class aaiw
+  implements View.OnClickListener
 {
-  public aaiw(AssistantSettingActivity paramAssistantSettingActivity) {}
+  aaiw(aaiu paramaaiu) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    adjn.a(paramBoolean);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaiw
  * JD-Core Version:    0.7.0.1
  */

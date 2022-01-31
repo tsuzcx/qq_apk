@@ -1,27 +1,32 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
-
 public class agkc
-  implements Animation.AnimationListener
 {
-  public agkc(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String toString()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
+    StringBuffer localStringBuffer = new StringBuffer("UserInfo{");
+    localStringBuffer.append("age=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", sex=").append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", nickName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", province='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", city='").append(this.jdField_c_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", headPic='").append(this.d).append('\'');
+    localStringBuffer.append(", relationShip=").append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", uin='").append(this.e).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkc
  * JD-Core Version:    0.7.0.1
  */

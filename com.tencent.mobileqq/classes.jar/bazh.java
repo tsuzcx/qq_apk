@@ -1,41 +1,40 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.CustomLruCache;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class bazh
+  extends bazi
+  implements View.OnClickListener
 {
-  private CustomLruCache<String, Drawable> jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache;
-  private final HashMap<String, WeakReference<Drawable>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public View a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public bazz a;
   
-  public bazh(int paramInt)
+  public bazh(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
   {
-    paramInt = Math.max(paramInt, 5);
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageCache", 2, "Memory cache size = " + paramInt + "MB");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new bazi(this, paramInt * 1024 * 1024);
+    super(paramTribeVideoListPlayerFragment, paramView);
   }
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.evictAll();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(String paramString, Drawable paramDrawable)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.get(paramString) == null))
+    switch (paramView.getId())
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.put(paramString, paramDrawable);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramDrawable));
+    default: 
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_Bazz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bazh
  * JD-Core Version:    0.7.0.1
  */

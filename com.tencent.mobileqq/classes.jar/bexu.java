@@ -1,258 +1,85 @@
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.os.Build.VERSION;
-import android.support.annotation.RequiresApi;
-import android.util.Log;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.util.HandlerPlus;
+import mqq.observer.BusinessObserver;
 
 public class bexu
+  implements BusinessObserver
 {
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
+  public bexu(AuthorityActivity paramAuthorityActivity, boolean paramBoolean) {}
   
-  @RequiresApi(api=16)
-  private boolean a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityActivity", 2, "getAppInfo observer onReceive isSuccess = " + paramBoolean);
+    }
+    arzy.a("KEY_GET_APP_INFO_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bfmm, paramBoolean);
+    AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bfmm.jdField_a_of_type_JavaLangString.equals(localObject)) {
+      QLog.e("AuthorityActivity", 1, "mAccount.uin != ssoAccount");
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangRunnable);
+    } while (!paramBoolean);
+    GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
     for (;;)
     {
       try
       {
-        if (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount())
-        {
-          MediaFormat localMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
-          String str = localMediaFormat.getString("mime");
-          if (str.startsWith("audio"))
-          {
-            this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
-            this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
-            this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, null, null, 0);
-          }
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        localObject = arrayOfByte;
+        if (!this.jdField_a_of_type_Boolean) {
+          localObject = bfnl.b(arrayOfByte, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Bfmm);
         }
-        else
-        {
-          if (this.jdField_a_of_type_AndroidMediaMediaCodec == null) {
-            return false;
-          }
-          this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-          return true;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return false;
-      }
-      i += 1;
-    }
-  }
-  
-  @RequiresApi(api=16)
-  private boolean a(String paramString)
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(paramString);
-      return true;
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
-  }
-  
-  @RequiresApi(api=23)
-  private boolean a(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(new bexv(this, paramArrayOfByte));
-      return true;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return false;
-  }
-  
-  @RequiresApi(api=16)
-  private byte[] a()
-  {
-    int i = 0;
-    ByteBuffer[] arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-    Object localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-    MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    int k = 0;
-    int j = 0;
-    if ((k != 0) || (j == 0)) {}
-    label438:
-    label441:
-    label444:
-    for (;;)
-    {
-      try
-      {
-        int m = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(2000L);
-        if (m < 0) {
-          break label444;
-        }
-        ByteBuffer localByteBuffer = arrayOfByteBuffer[m];
-        int n = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(localByteBuffer, 0);
-        if (n < 0)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(m, 0, 0, 0L, 4);
-          j = 1;
-          m = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(localBufferInfo, 2000L);
-          if (m < 0) {
-            continue;
-          }
-          if ((localBufferInfo.flags & 0x2) == 0) {
-            continue;
-          }
-          this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(m, false);
+        if (localObject == null) {
           break;
         }
-        long l = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(m, 0, n, l, 0);
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
-        break label444;
-        if (localBufferInfo.size == 0) {
-          break label441;
+        localGetAppinfoResponse.mergeFrom((byte[])localObject);
+        if (!localGetAppinfoResponse.has()) {
+          break;
         }
-        localByteBuffer = localObject1[m];
-        byte[] arrayOfByte = new byte[localBufferInfo.size];
-        localByteBuffer.get(arrayOfByte);
-        i = arrayOfByte.length + i;
-        localByteArrayOutputStream.write(arrayOfByte);
-        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(m, false);
-        if ((localBufferInfo.flags & 0x4) == 0) {
-          break label438;
-        }
-        k = 1;
-        break label447;
-        if (m == -3)
+        paramInt = localGetAppinfoResponse.ret.get();
+        if (paramInt == 0)
         {
-          localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+          localObject = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+          ((Message)localObject).what = 3;
+          ((Message)localObject).obj = localGetAppinfoResponse;
+          this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject);
         }
-        else
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("report_type", "103");
+        ((Bundle)localObject).putString("act_type", "12");
+        if (paramBundle.getBoolean("isShort", false))
         {
-          if (m != -2) {
-            break label450;
-          }
-          this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-          Log.i("AudioDecoder", "output format has changed to " + this.jdField_a_of_type_AndroidMediaMediaFormat);
+          paramBundle = "2";
+          ((Bundle)localObject).putString("intext_3", paramBundle);
+          ((Bundle)localObject).putString("stringext_1", AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_JavaLangString);
+          ((Bundle)localObject).putString("intext_2", "" + paramInt);
+          ((Bundle)localObject).putString("intext_5", "" + AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
+          bfdq.a().a((Bundle)localObject, AuthorityActivity.e, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangString, false);
+          return;
         }
       }
-      catch (Exception localException1)
+      catch (Exception paramBundle)
       {
-        localException1 = localException1;
-        localException1.printStackTrace();
+        QLog.e("AuthorityActivity", 1, "getAppInfoResponse deal exception : " + paramBundle.getMessage());
+        paramBundle.printStackTrace();
+        return;
       }
-      finally
-      {
-        try
-        {
-          localByteArrayOutputStream.close();
-          this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-          this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-          this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-          return null;
-          localObject2 = finally;
-          try
-          {
-            localByteArrayOutputStream.close();
-            this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-            this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-            this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-            throw localObject2;
-          }
-          catch (Exception localException3)
-          {
-            continue;
-          }
-        }
-        catch (Exception localException2)
-        {
-          continue;
-        }
-      }
-      localObject1 = localByteArrayOutputStream.toByteArray();
-      break label447;
+      paramBundle = "1";
     }
-    label447:
-    label450:
-    for (;;)
-    {
-      break;
-    }
-  }
-  
-  @RequiresApi(api=16)
-  public int a()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("sample-rate");
-  }
-  
-  @RequiresApi(api=16)
-  public byte[] a(String paramString)
-  {
-    if ((a(paramString)) && (a())) {
-      return a();
-    }
-    return null;
-  }
-  
-  @RequiresApi(api=23)
-  public byte[] a(byte[] paramArrayOfByte)
-  {
-    if ((a(paramArrayOfByte)) && (a())) {
-      return a();
-    }
-    return null;
-  }
-  
-  @RequiresApi(api=16)
-  public int b()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("channel-count");
-  }
-  
-  @RequiresApi(api=16)
-  public int c()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {
-      return 0;
-    }
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaFormat.containsKey("pcm-encoding")) {}
-      for (int i = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("pcm-encoding"); i == 3; i = 2) {
-        return 8;
-      }
-      return 16;
-    }
-    return this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("bit-width");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
-final class ahow
-  implements Animation.AnimationListener
+public class ahow
+  implements View.OnClickListener
 {
-  ahow(View paramView, Animation paramAnimation) {}
+  public ahow(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    adkx.a(this.a.a, null);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,41 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 
-final class ated
-  implements DialogInterface.OnClickListener
+public class ated
+  extends Handler
 {
-  ated(Activity paramActivity) {}
+  atec a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected ated(atec paramatec)
   {
-    atdy.a(this.a, 10);
+    this.a = paramatec;
+  }
+  
+  protected void a()
+  {
+    this.a = null;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (String)paramMessage.obj;
+      this.a.a(paramMessage);
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ated
  * JD-Core Version:    0.7.0.1
  */

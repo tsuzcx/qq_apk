@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import akft;
+import alxj;
 import com.tencent.mobileqq.data.RoamSetting;
 
 public class RoamSettingManager$2
   implements Runnable
 {
-  public RoamSettingManager$2(akft paramakft, RoamSetting paramRoamSetting) {}
+  public RoamSettingManager$2(alxj paramalxj, RoamSetting paramRoamSetting) {}
   
   public void run()
   {

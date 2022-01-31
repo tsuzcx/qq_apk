@@ -1,12 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-
-public abstract interface rki
-{
-  public abstract void a(BaseData paramBaseData);
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rki
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
-import android.support.v4.app.FragmentActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
-public class qgd
-  implements View.OnClickListener
+class qgd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public qgd(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
+  qgd(qga paramqga, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.getActivity().finish();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setRotation(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qgd
  * JD-Core Version:    0.7.0.1
  */

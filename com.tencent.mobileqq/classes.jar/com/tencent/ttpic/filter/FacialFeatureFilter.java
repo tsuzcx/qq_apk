@@ -10,9 +10,11 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.model.FaceFeatureItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
+import com.tencent.ttpic.openapi.filter.RenderItem;
 import com.tencent.ttpic.openapi.filter.TransformFilter;
 import com.tencent.ttpic.openapi.model.DistortionItem;
 import com.tencent.ttpic.openapi.model.FaceItem;
@@ -20,7 +22,7 @@ import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
-import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,9 +38,10 @@ public class FacialFeatureFilter
   private FaceFeatureItem mFaceFeatureItem;
   private FaceItem mFaceItem;
   Frame mFrame = new Frame();
+  private List<Integer> mGestureCharmList;
   private boolean mIsFirstRender = true;
   Frame mResultFrame;
-  private List<NormalVideoFilter> mStickerFilters;
+  private List<RenderItem> mStickerRenderItems;
   Frame mTFrame = new Frame();
   TransformFilter mTransformFilter;
   private float[] mt4 = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
@@ -118,9 +121,13 @@ public class FacialFeatureFilter
     if (this.mTransformFilter != null) {
       this.mTransformFilter.ApplyGLSLFilter();
     }
-    Iterator localIterator = this.mStickerFilters.iterator();
-    while (localIterator.hasNext()) {
-      ((VideoFilterBase)localIterator.next()).ApplyGLSLFilter();
+    Iterator localIterator = this.mStickerRenderItems.iterator();
+    while (localIterator.hasNext())
+    {
+      RenderItem localRenderItem = (RenderItem)localIterator.next();
+      if ((localRenderItem.filter instanceof NormalVideoFilter)) {
+        ((NormalVideoFilter)localRenderItem.filter).ApplyGLSLFilter();
+      }
     }
   }
   
@@ -143,18 +150,37 @@ public class FacialFeatureFilter
     }
   }
   
+  public void addCharmGesttureType(int paramInt)
+  {
+    if (this.mGestureCharmList == null) {
+      this.mGestureCharmList = new ArrayList();
+    }
+    if (!this.mGestureCharmList.contains(Integer.valueOf(paramInt))) {
+      this.mGestureCharmList.add(Integer.valueOf(paramInt));
+    }
+  }
+  
   public void clearGLSLSelf()
   {
     if (this.mTransformFilter != null) {
       this.mTransformFilter.clearGLSLSelf();
     }
-    Iterator localIterator = this.mStickerFilters.iterator();
-    while (localIterator.hasNext()) {
-      ((NormalVideoFilter)localIterator.next()).clearGLSLSelf();
+    Iterator localIterator = this.mStickerRenderItems.iterator();
+    while (localIterator.hasNext())
+    {
+      RenderItem localRenderItem = (RenderItem)localIterator.next();
+      if ((localRenderItem.filter instanceof NormalVideoFilter)) {
+        ((NormalVideoFilter)localRenderItem.filter).clearGLSLSelf();
+      }
     }
     this.mFrame.clear();
     this.mTFrame.clear();
     super.clearGLSLSelf();
+  }
+  
+  public List<Integer> getCharmGestureTypes()
+  {
+    return this.mGestureCharmList;
   }
   
   public Frame getFrame()
@@ -162,9 +188,9 @@ public class FacialFeatureFilter
     return this.mFrame;
   }
   
-  public List<NormalVideoFilter> getStickerFilters()
+  public List<RenderItem> getStickerRenderItems()
   {
-    return this.mStickerFilters;
+    return this.mStickerRenderItems;
   }
   
   public void initAttribParams()
@@ -180,7 +206,7 @@ public class FacialFeatureFilter
   
   public void initParams()
   {
-    addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", FaceOffUtil.getFaceBitmap(this.mFaceFeatureItem.getDataPath() + File.separator + this.mFaceItem.faceExchangeImage), 33987, true));
+    addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", FaceOffUtil.getFaceBitmap(FileUtils.genSeperateFileDir(this.mFaceFeatureItem.getDataPath()) + this.mFaceItem.faceExchangeImage), 33987, true));
     addParam(new UniformParam.Mat4Param("posMatRotate", this.mt4));
     if (this.mTransformFilter != null) {
       this.mTransformFilter.initParams();
@@ -189,9 +215,13 @@ public class FacialFeatureFilter
   
   public void reset()
   {
-    Iterator localIterator = this.mStickerFilters.iterator();
-    while (localIterator.hasNext()) {
-      ((NormalVideoFilter)localIterator.next()).reset();
+    Iterator localIterator = this.mStickerRenderItems.iterator();
+    while (localIterator.hasNext())
+    {
+      RenderItem localRenderItem = (RenderItem)localIterator.next();
+      if ((localRenderItem.filter instanceof NormalVideoFilter)) {
+        ((NormalVideoFilter)localRenderItem.filter).reset();
+      }
     }
     if (this.mTransformFilter != null) {
       this.mTransformFilter.reset();
@@ -204,19 +234,27 @@ public class FacialFeatureFilter
     if (this.mTransformFilter != null) {
       this.mTransformFilter.setRenderMode(paramInt);
     }
-    Iterator localIterator = this.mStickerFilters.iterator();
-    while (localIterator.hasNext()) {
-      ((NormalVideoFilter)localIterator.next()).setRenderMode(paramInt);
+    Iterator localIterator = this.mStickerRenderItems.iterator();
+    while (localIterator.hasNext())
+    {
+      RenderItem localRenderItem = (RenderItem)localIterator.next();
+      if ((localRenderItem.filter instanceof NormalVideoFilter)) {
+        ((NormalVideoFilter)localRenderItem.filter).setRenderMode(paramInt);
+      }
     }
     return true;
   }
   
-  public void setStickerFilters(List<NormalVideoFilter> paramList)
+  public void setStickerRenderItems(List<RenderItem> paramList)
   {
-    this.mStickerFilters = paramList;
+    this.mStickerRenderItems = paramList;
     paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      ((NormalVideoFilter)paramList.next()).item.support3D = 0;
+    while (paramList.hasNext())
+    {
+      RenderItem localRenderItem = (RenderItem)paramList.next();
+      if ((localRenderItem.filter instanceof NormalVideoFilter)) {
+        ((NormalVideoFilter)localRenderItem.filter).item.support3D = 0;
+      }
     }
   }
   
@@ -238,33 +276,39 @@ public class FacialFeatureFilter
     }
   }
   
-  public void updateStickerFilterList(List<PointF> paramList, float[] paramArrayOfFloat, Frame paramFrame)
+  public void updateStickerFilterList(List<PointF> paramList1, List<PointF> paramList2, List<PointF> paramList3, float[] paramArrayOfFloat, Frame paramFrame)
   {
-    updatePreview(new PTDetectInfo.Builder().facePoints(paramList).faceAngles(paramArrayOfFloat).build());
+    paramList1 = new PTDetectInfo.Builder().facePoints(paramList1).handPoints(paramList2).bodyPoints(paramList3).faceAngles(paramArrayOfFloat).build();
+    updatePreview(paramList1);
     RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, paramFrame.getTextureId(), 0.0D, paramFrame);
-    paramList = this.mStickerFilters.iterator();
-    while (paramList.hasNext())
+    paramList2 = this.mStickerRenderItems.iterator();
+    while (paramList2.hasNext())
     {
-      paramArrayOfFloat = (NormalVideoFilter)paramList.next();
-      if (!paramArrayOfFloat.needLoadImage())
+      paramList3 = (RenderItem)paramList2.next();
+      if ((paramList3.filter instanceof NormalVideoFilter))
       {
-        float f2 = AlgoUtils.getDistance((PointF)this.fullPositions.get(paramArrayOfFloat.item.scalePivots[0]), (PointF)this.fullPositions.get(paramArrayOfFloat.item.scalePivots[1]));
-        float f1 = paramArrayOfFloat.item.dx * f2 / paramArrayOfFloat.item.originalScaleFactor;
-        float f3 = paramArrayOfFloat.item.dy * f2 / paramArrayOfFloat.item.originalScaleFactor;
-        if ((paramArrayOfFloat.item.anchorPoint != null) && (paramArrayOfFloat.item.anchorPoint.length >= 2))
+        paramArrayOfFloat = (NormalVideoFilter)paramList3.filter;
+        if (!paramArrayOfFloat.needLoadImage())
         {
-          paramArrayOfFloat.item.anchorPoint[0] = ((int)(((PointF)this.fullPositions.get(this.mFaceFeatureItem.getMaskAnchorPoint())).x + f1));
-          paramArrayOfFloat.item.anchorPoint[1] = ((int)(((PointF)this.fullPositions.get(this.mFaceFeatureItem.getMaskAnchorPoint())).y + f3));
-        }
-        paramArrayOfFloat.item.width = FRAME_EDGE;
-        paramArrayOfFloat.item.height = FRAME_EDGE;
-        paramFrame = paramArrayOfFloat.item;
-        if (paramArrayOfFloat.item.scale <= 0.0F) {}
-        for (f1 = 1.0F;; f1 = paramArrayOfFloat.item.scale)
-        {
-          paramFrame.scaleFactor = ((int)(f2 / f1));
-          paramArrayOfFloat.updateTextureParam(this.mResultFrame.getTextureId());
-          break;
+          float f2 = AlgoUtils.getDistance((PointF)this.fullPositions.get(paramArrayOfFloat.item.scalePivots[0]), (PointF)this.fullPositions.get(paramArrayOfFloat.item.scalePivots[1]));
+          float f1 = paramArrayOfFloat.item.dx * f2 / paramArrayOfFloat.item.originalScaleFactor;
+          float f3 = paramArrayOfFloat.item.dy * f2 / paramArrayOfFloat.item.originalScaleFactor;
+          if ((paramArrayOfFloat.item.anchorPoint != null) && (paramArrayOfFloat.item.anchorPoint.length >= 2))
+          {
+            paramArrayOfFloat.item.anchorPoint[0] = ((int)(((PointF)this.fullPositions.get(this.mFaceFeatureItem.getMaskAnchorPoint())).x + f1));
+            paramArrayOfFloat.item.anchorPoint[1] = ((int)(((PointF)this.fullPositions.get(this.mFaceFeatureItem.getMaskAnchorPoint())).y + f3));
+          }
+          paramArrayOfFloat.item.width = FRAME_EDGE;
+          paramArrayOfFloat.item.height = FRAME_EDGE;
+          paramFrame = paramArrayOfFloat.item;
+          if (paramArrayOfFloat.item.scale <= 0.0F) {}
+          for (f1 = 1.0F;; f1 = paramArrayOfFloat.item.scale)
+          {
+            paramFrame.scaleFactor = ((int)(f2 / f1));
+            paramList3.updatePreview(paramList1);
+            paramArrayOfFloat.updateTextureParam(this.mResultFrame.getTextureId());
+            break;
+          }
         }
       }
     }
@@ -276,9 +320,13 @@ public class FacialFeatureFilter
     if (this.mTransformFilter != null) {
       this.mTransformFilter.updateVideoSize(FRAME_EDGE, FRAME_EDGE, 1.0D);
     }
-    Iterator localIterator = this.mStickerFilters.iterator();
-    while (localIterator.hasNext()) {
-      ((NormalVideoFilter)localIterator.next()).updateVideoSize(paramInt1, paramInt2, paramDouble);
+    Iterator localIterator = this.mStickerRenderItems.iterator();
+    while (localIterator.hasNext())
+    {
+      RenderItem localRenderItem = (RenderItem)localIterator.next();
+      if ((localRenderItem.filter instanceof NormalVideoFilter)) {
+        ((NormalVideoFilter)localRenderItem.filter).updateVideoSize(paramInt1, paramInt2, paramDouble);
+      }
     }
   }
 }

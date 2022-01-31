@@ -1,43 +1,45 @@
+import android.app.ActivityManager;
+import android.content.ComponentCallbacks2;
 import android.content.Context;
-import android.text.TextUtils;
-import cooperation.qqpim.QQPimTipsInfo;
+import android.content.res.Configuration;
+import android.os.Debug.MemoryInfo;
+import android.os.Process;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-public class bgtl
+class bgtl
+  implements ComponentCallbacks2
 {
-  public static void a(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
+  bgtl(bgtj parambgtj) {}
+  
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
+  
+  public void onLowMemory()
   {
-    if (paramQQPimTipsInfo == null)
-    {
-      bgtj.a(paramContext, "QQPIM_TIPS_CLICK", System.currentTimeMillis());
-      return;
-    }
-    bgtj.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int, paramQQPimTipsInfo.jdField_a_of_type_JavaLangString + ";" + paramQQPimTipsInfo.b + ";" + System.currentTimeMillis());
+    Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)this.a.a().getSystemService("activity")).getProcessMemoryInfo(new int[] { Process.myPid() });
+    QMLog.e("GameRuntime", "onLowMemory!!!!!! Meminfo:dalvikPss[" + arrayOfMemoryInfo[0].dalvikPss + "],nativePss[" + arrayOfMemoryInfo[0].nativePss + "],otherPss[" + arrayOfMemoryInfo[0].otherPss + "],total[" + arrayOfMemoryInfo[0].getTotalPss() + "]");
   }
   
-  public static void b(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
+  public void onTrimMemory(int paramInt)
   {
-    if (paramQQPimTipsInfo == null) {}
-    while (TextUtils.isEmpty(bgtj.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int))) {
-      return;
-    }
-    switch (paramQQPimTipsInfo.jdField_a_of_type_Int)
+    try
     {
-    case 3: 
-    default: 
-      return;
-    case 1: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    case 2: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("level", paramInt);
+      if (this.a.a(1) != null) {
+        this.a.a(1).a("onMemoryWarning", localJSONObject.toString(), -1);
+      }
       return;
     }
-    paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+    catch (Exception localException)
+    {
+      QMLog.e("GameRuntime", "Failed to registerComponentCallback", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgtl
  * JD-Core Version:    0.7.0.1
  */

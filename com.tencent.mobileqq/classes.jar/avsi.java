@@ -1,53 +1,51 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class avsi
-  implements aysc
+public class avsi
+  implements bhqd
 {
-  avsi(avsf paramavsf) {}
+  public avsi(OCRResultFragmentNew paramOCRResultFragmentNew, List paramList, avrj paramavrj) {}
   
-  public void onResp(aysz paramaysz)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = (FilterDesc)paramaysz.jdField_a_of_type_Aysy.a();
-    if (paramaysz.jdField_a_of_type_Int != 0) {
-      lcg.c("CaptureVideoFilterManager", "download file failed. errorCode: " + paramaysz.b + ", errorMsg: " + paramaysz.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (!paramView.equalsIgnoreCase(this.jdField_a_of_type_Avrj.a)) {
+        break label108;
+      }
+      QLog.i("OCRResultFragmentNew", 2, "lanCode equals, return, selectedLan:" + paramView);
     }
     for (;;)
     {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c)))
-      {
-        lcg.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
-        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
-        return;
+      if ((this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.isShowing())) {
+        this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.dismiss();
       }
-      lcg.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a = null;
+      return;
+      label108:
+      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 0, 2131699593, 0).a();
+      avrh.a.a(paramView);
       try
       {
-        localObject = avsf.b;
-        bbdx.a(paramaysz.jdField_a_of_type_Aysy.c, (String)localObject, false);
-        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
-        if ((avsf.a(this.a).decrementAndGet() == 0) && (avsf.a(this.a) != null))
-        {
-          avsf.a(this.a).a(true);
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.i("OCRResultFragmentNew", 2, "requestOcr lan:" + paramView + ", ctx:" + avrh.a.a());
         }
+        OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, avrh.a);
       }
-      catch (IOException paramaysz)
+      catch (Exception paramView)
       {
-        paramaysz.printStackTrace();
-        lcg.c("CaptureVideoFilterManager", "unzip file failed.");
+        paramView.printStackTrace();
       }
     }
   }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avsi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,28 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
 
 public class azkh
 {
-  int jdField_a_of_type_Int;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new azki(this);
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  azmb jdField_a_of_type_Azmb;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View c;
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public azkh(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378556));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378558));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378555));
-    this.c = paramView.findViewById(2131378557);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131378559);
-  }
+  private azkh(MigrateSubscribeDB paramMigrateSubscribeDB) {}
   
-  public void a(Context paramContext, azmb paramazmb, View.OnClickListener paramOnClickListener)
+  public String toString()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    this.jdField_b_of_type_AndroidViewView.setTranslationY(0.0F);
-    this.c.setRotation(0.0F);
-    this.jdField_a_of_type_AndroidViewView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramazmb.b);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramazmb.b);
-    this.jdField_a_of_type_Azmb = paramazmb;
-    if (paramazmb.jdField_a_of_type_Int != 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramazmb.jdField_a_of_type_Int);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (!paramazmb.jdField_a_of_type_Boolean) {
-        break label142;
-      }
-      this.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
-      return;
-      if (paramazmb.jdField_a_of_type_Int == 0) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramazmb.jdField_a_of_type_Int);
-      break;
-      label142:
-      this.c.setVisibility(8);
-    }
+    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azkh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class akeu
-  implements ajte
+class akeu
+  implements View.OnClickListener
 {
-  private Handler a;
+  akeu(akes paramakes, String paramString1, String paramString2) {}
   
-  public akeu(Handler paramHandler)
+  public void onClick(View paramView)
   {
-    this.a = paramHandler;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    int i = 1;
-    if (this.a == null) {}
-    while ((paramInt != 1) && (paramInt != 4) && (paramInt != 5)) {
-      return;
-    }
-    Handler localHandler = this.a;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
-      return;
-      i = 0;
-    }
+    paramView = new Intent(this.jdField_a_of_type_Akes.a, QQBrowserActivity.class).putExtra("url", String.format("https://buluo.qq.com/mobile/detail.html?bid=%s&pid=%s&_wv=1027&webview=1&from=reliao", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+    this.jdField_a_of_type_Akes.a.startActivity(paramView);
+    azmj.b(null, "dc00899", "grp_lbs", "", "hot_room", "clk_tribe_post", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akeu
  * JD-Core Version:    0.7.0.1
  */

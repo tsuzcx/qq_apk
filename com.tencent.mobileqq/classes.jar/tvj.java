@@ -1,34 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.events.QCircleSelectTabEvent;
 
-public final class tvj
-  implements TVK_ICacheMgr.IPreloadCallback
+class tvj
+  implements View.OnClickListener
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
-  {
-    synchronized ()
-    {
-      tvn localtvn = tvh.a();
-      tvh.a().post(new TVKPreloader.2.2(this, localtvn, paramString1, paramInt, paramString2));
-      return;
-    }
-  }
+  tvj(tvi paramtvi) {}
   
-  public void onPreLoadSucess(String arg1, String paramString2)
+  public void onClick(View paramView)
   {
-    synchronized ()
-    {
-      paramString2 = tvh.a();
-      tvh.a().post(new TVKPreloader.2.1(this, paramString2));
-      return;
-    }
+    tyj.a("", 22, 13L);
+    yej.a().a(new QCircleSelectTabEvent(6));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvj
  * JD-Core Version:    0.7.0.1
  */

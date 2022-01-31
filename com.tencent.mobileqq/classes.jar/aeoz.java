@@ -1,23 +1,23 @@
-class aeoz
-  implements acte
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+
+public class aeoz
+  implements azjq
 {
-  aeoz(aeom paramaeom) {}
+  public aeoz(PlusPanel paramPlusPanel, zpa paramzpa) {}
   
-  public void a(aeyt paramaeyt)
+  public void a()
   {
-    ((aruf)this.a.a(32)).a(1, paramaeyt);
-    ((adji)this.a.a(43)).b(1, paramaeyt);
+    PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, this.jdField_a_of_type_Zpa);
   }
   
-  public void b(aeyt paramaeyt)
+  public void b()
   {
-    ((aruf)this.a.a(32)).b(1, paramaeyt);
-    ((adji)this.a.a(43)).a(1, paramaeyt);
+    PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, this.jdField_a_of_type_Zpa);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeoz
  * JD-Core Version:    0.7.0.1
  */

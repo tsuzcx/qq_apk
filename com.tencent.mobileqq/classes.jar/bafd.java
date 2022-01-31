@@ -1,305 +1,191 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.1;
+import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.2;
+import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.3;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
 
 public class bafd
-  implements baez
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  bafa jdField_a_of_type_Bafa;
-  boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private aosy jdField_a_of_type_Aosy;
+  public QQAppInterface a;
   
-  public bafd(bafa parambafa)
+  public bafd(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Bafa = parambafa;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     a();
   }
   
-  public static agas a()
+  private aosy a()
   {
-    agas localagas = new agas();
-    localagas.jdField_a_of_type_JavaLangString = "0";
-    localagas.b = ajya.a(2131711240);
-    localagas.j = ajya.a(2131711243);
-    localagas.g = ajya.a(2131711241);
-    localagas.l = ChnToSpell.a(localagas.j, 1);
-    localagas.k = ChnToSpell.a(localagas.j, 2);
-    return localagas;
-  }
-  
-  public static ArrayList<agas> a(String paramString, List<agas> paramList, QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
-  {
-    paramQQAppInterface = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      agas localagas = (agas)paramList.next();
-      if ((baes.a(localagas.j, paramString)) || (baes.a(localagas.k, paramString)) || (baes.a(localagas.l, paramString)))
-      {
-        localagas.v = localagas.j;
-        localagas.w = localagas.l;
-        localagas.x = localagas.k;
-        paramQQAppInterface.add(localagas);
-      }
-      else if ((baes.a(localagas.m, paramString)) || (baes.a(localagas.n, paramString)) || (baes.a(localagas.o, paramString)))
-      {
-        localagas.v = localagas.m;
-        localagas.w = localagas.o;
-        localagas.x = localagas.n;
-        paramQQAppInterface.add(localagas);
-      }
-      else if ((baes.a(localagas.g, paramString)) || (baes.a(localagas.h, paramString)) || (baes.a(localagas.i, paramString)))
-      {
-        localagas.v = localagas.g;
-        localagas.w = localagas.i;
-        localagas.x = localagas.h;
-        paramQQAppInterface.add(localagas);
-      }
-      else
-      {
-        String str1;
-        String str2;
-        String str3;
-        if (baes.a(localagas.jdField_a_of_type_JavaLangString, paramString))
-        {
-          str1 = baes.c(localagas);
-          str2 = baes.d(localagas);
-          str3 = baes.e(localagas);
-          localagas.v = str1;
-          localagas.w = str3;
-          localagas.x = str2;
-          paramQQAppInterface.add(localagas);
-        }
-        else if (a(localagas, paramString, paramTroopInfo))
-        {
-          str1 = baes.c(localagas);
-          str2 = baes.d(localagas);
-          str3 = baes.e(localagas);
-          localagas.v = str1;
-          localagas.w = str3;
-          localagas.x = str2;
-          paramQQAppInterface.add(localagas);
-        }
-        else if (b(localagas, paramString, paramTroopInfo))
-        {
-          str1 = baes.c(localagas);
-          str2 = baes.d(localagas);
-          str3 = baes.e(localagas);
-          localagas.v = str1;
-          localagas.w = str3;
-          localagas.x = str2;
-          paramQQAppInterface.add(localagas);
-        }
-        else if (c(localagas, paramString, paramTroopInfo))
-        {
-          str1 = baes.c(localagas);
-          str2 = baes.d(localagas);
-          str3 = baes.e(localagas);
-          localagas.v = str1;
-          localagas.w = str3;
-          localagas.x = str2;
-          paramQQAppInterface.add(localagas);
-        }
-      }
+    if (this.jdField_a_of_type_Aosy == null) {
+      this.jdField_a_of_type_Aosy = aotb.a();
     }
-    return paramQQAppInterface;
+    return this.jdField_a_of_type_Aosy;
   }
   
-  public static List<agas> a(QQAppInterface paramQQAppInterface, List<agas> paramList, boolean paramBoolean)
+  private void a()
   {
-    if (!paramBoolean) {
-      return paramList;
-    }
-    paramQQAppInterface = (bamk)paramQQAppInterface.getManager(203);
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      agas localagas = (agas)paramList.next();
-      if (!paramQQAppInterface.b(localagas.jdField_a_of_type_JavaLangString)) {
-        localArrayList.add(localagas);
-      }
-    }
-    return localArrayList;
+    ThreadManager.executeOnSubThread(new ConfigSettingForDataLine.2(this));
   }
   
-  private static boolean a(agas paramagas, String paramString, TroopInfo paramTroopInfo)
+  private void b(aosy paramaosy)
   {
-    boolean bool2 = false;
-    agas localagas = new agas();
-    boolean bool1 = bool2;
-    if (paramTroopInfo != null)
-    {
-      bool1 = bool2;
-      if (paramagas != null)
-      {
-        bool1 = bool2;
-        if (paramTroopInfo.isTroopOwner(paramagas.jdField_a_of_type_JavaLangString))
-        {
-          localagas.b = ajya.a(2131711242);
-          localagas.j = ajya.a(2131711238);
-          localagas.l = ChnToSpell.a(localagas.j, 1);
-          localagas.k = ChnToSpell.a(localagas.j, 2);
-          if ((!baes.a(localagas.j, paramString)) && (!baes.a(localagas.k, paramString)))
-          {
-            bool1 = bool2;
-            if (!baes.a(localagas.l, paramString)) {}
-          }
-          else
-          {
-            bool1 = true;
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public static boolean a(String paramString, agas paramagas)
-  {
-    if (baes.a(paramString, "all")) {}
-    String str1;
-    String str2;
-    do
-    {
-      return true;
-      str1 = baes.c(paramagas);
-      str2 = baes.d(paramagas);
-      paramagas = baes.e(paramagas);
-    } while ((baes.a(str1, paramString)) || (baes.a(str2, paramString)) || (baes.a(paramagas, paramString)));
-    return false;
-  }
-  
-  private static boolean b(agas paramagas, String paramString, TroopInfo paramTroopInfo)
-  {
-    boolean bool2 = false;
-    agas localagas = new agas();
-    boolean bool1 = bool2;
-    if (paramTroopInfo != null)
-    {
-      bool1 = bool2;
-      if (paramagas != null)
-      {
-        bool1 = bool2;
-        if (paramTroopInfo.isTroopAdmin(paramagas.jdField_a_of_type_JavaLangString))
-        {
-          localagas.b = ajya.a(2131711234);
-          localagas.j = ajya.a(2131711237);
-          localagas.l = ChnToSpell.a(localagas.j, 1);
-          localagas.k = ChnToSpell.a(localagas.j, 2);
-          if ((!baes.a(localagas.j, paramString)) && (!baes.a(localagas.k, paramString)))
-          {
-            bool1 = bool2;
-            if (!baes.a(localagas.l, paramString)) {}
-          }
-          else
-          {
-            bool1 = true;
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private static boolean c(agas paramagas, String paramString, TroopInfo paramTroopInfo)
-  {
-    boolean bool2 = false;
-    paramTroopInfo = new agas();
-    boolean bool1 = bool2;
-    if (paramagas != null)
-    {
-      bool1 = bool2;
-      if (paramagas.jdField_a_of_type_Boolean)
-      {
-        paramTroopInfo.b = ajya.a(2131711235);
-        paramTroopInfo.j = ajya.a(2131711239);
-        paramTroopInfo.l = ChnToSpell.a(paramTroopInfo.j, 1);
-        paramTroopInfo.k = ChnToSpell.a(paramTroopInfo.j, 2);
-        if ((!baes.a(paramTroopInfo.j, paramString)) && (!baes.a(paramTroopInfo.k, paramString)))
-        {
-          bool1 = bool2;
-          if (!baes.a(paramTroopInfo.l, paramString)) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  void a()
-  {
-    Bitmap localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841945);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Bafa.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localBitmap);
-  }
-  
-  public void a(View paramView)
-  {
-    boolean bool = false;
-    if ((paramView instanceof TextView))
-    {
-      paramView = (TextView)paramView;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.setText(2131694468);
-        if (this.jdField_a_of_type_Bafa.jdField_a_of_type_Baep != null) {
-          this.jdField_a_of_type_Bafa.jdField_a_of_type_Baep.a();
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          bool = true;
-        }
-        this.jdField_a_of_type_Boolean = bool;
-      }
-    }
-    else
-    {
+    if (paramaosy == null) {
       return;
     }
-    paramView.setText(2131692601);
-    if (this.jdField_a_of_type_Bafa.b) {
-      this.jdField_a_of_type_Bafa.notifyDataSetChanged();
-    }
-    for (;;)
+    try
     {
-      axqy.b(this.jdField_a_of_type_Bafa.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A48F", "0X800A48F", 0, 0, "", "", "", "");
-      break;
-      this.jdField_a_of_type_Bafa.jdField_a_of_type_Baep.a(this.jdField_a_of_type_Bafa.jdField_a_of_type_JavaLangString, true);
+      paramaosy.a(((badd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(122)).a());
+      return;
+    }
+    catch (Exception paramaosy)
+    {
+      QLog.e("ConfigSettingForDataLine", 2, " getTemplateListFromCgi failed :" + paramaosy.toString());
+      paramaosy.printStackTrace();
     }
   }
   
-  void a(ImageView paramImageView)
+  public int a()
   {
-    if (paramImageView != null) {
-      paramImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a(baex parambaex)
+  {
+    if ((parambaex instanceof bafa))
+    {
+      Map localMap = a().a();
+      parambaex = arof.a(parambaex.a());
+      Iterator localIterator = localMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        aosz localaosz = (aosz)localMap.get((String)localIterator.next());
+        String[] arrayOfString = localaosz.jdField_b_of_type_ArrayOfJavaLangString;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (arrayOfString[i].equalsIgnoreCase(parambaex)) {
+            return localaosz.jdField_a_of_type_JavaLangString;
+          }
+          i += 1;
+        }
+      }
     }
+    return "";
   }
   
-  boolean a()
+  public void a(aosy paramaosy)
   {
-    return this.jdField_a_of_type_Bafa.jdField_a_of_type_JavaUtilLinkedHashMap.size() >= 20;
+    if (paramaosy == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aosy = paramaosy;
+    TicketManager localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
+    if (TextUtils.isEmpty(localTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "docs.qq.com")))
+    {
+      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      paramaosy = new bafe(this, paramaosy);
+      localTicketManager.GetPskey(str, 16L, new String[] { "docs.qq.com" }, paramaosy);
+      return;
+    }
+    ThreadManager.excute(new ConfigSettingForDataLine.1(this, paramaosy), 128, null, false);
   }
   
-  void b()
+  public void a(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    bcql.a(BaseApplicationImpl.context, 0, ajya.a(2131711236), 0).a();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Int += 1;
+    ThreadManager.executeOnSubThread(new ConfigSettingForDataLine.3(this));
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_m_str_teamwork_dataline_tips_sp", 0).getLong("file_str_lstat_show_time_local", 0L);
+    if (l - this.jdField_a_of_type_Long > a().b() * 1000) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public String[] a(baex parambaex)
+  {
+    int i = 0;
+    Map localMap = a().a();
+    Object localObject = a().a();
+    if ((parambaex instanceof bafa))
+    {
+      parambaex = arof.a(parambaex.a());
+      localObject = localMap.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        aosz localaosz = (aosz)localMap.get((String)((Iterator)localObject).next());
+        String[] arrayOfString = localaosz.jdField_b_of_type_ArrayOfJavaLangString;
+        int j = arrayOfString.length;
+        i = 0;
+        while (i < j)
+        {
+          if (arrayOfString[i].equalsIgnoreCase(parambaex)) {
+            return localaosz.jdField_a_of_type_ArrayOfJavaLangString;
+          }
+          i += 1;
+        }
+      }
+    }
+    parambaex = new String[((List)localObject).size()];
+    while (i < ((List)localObject).size())
+    {
+      parambaex[i] = ((aota)((List)localObject).get(i)).jdField_a_of_type_JavaLangString;
+      i += 1;
+    }
+    return parambaex;
+    return new String[0];
+  }
+  
+  public String b(baex parambaex)
+  {
+    if ((parambaex instanceof bafa))
+    {
+      Map localMap = a().a();
+      parambaex = arof.a(parambaex.a());
+      Iterator localIterator = localMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        aosz localaosz = (aosz)localMap.get((String)localIterator.next());
+        String[] arrayOfString = localaosz.jdField_b_of_type_ArrayOfJavaLangString;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (arrayOfString[i].equalsIgnoreCase(parambaex)) {
+            return localaosz.jdField_b_of_type_JavaLangString;
+          }
+          i += 1;
+        }
+      }
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bafd
  * JD-Core Version:    0.7.0.1
  */

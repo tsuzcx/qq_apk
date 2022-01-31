@@ -1,21 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
 public class rdj
-  extends oyd
+  extends Handler
 {
-  public rdj(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  private rdj(VideoFeedsGuideView paramVideoFeedsGuideView) {}
   
-  public void a(oxx paramoxx)
+  public void handleMessage(Message paramMessage)
   {
-    paramoxx.a();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    VideoFeedsGuideView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdj
  * JD-Core Version:    0.7.0.1
  */

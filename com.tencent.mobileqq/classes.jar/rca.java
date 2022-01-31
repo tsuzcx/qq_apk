@@ -1,46 +1,51 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-public class rca
-  implements rac
+class rca
+  implements olx
 {
-  public rca(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
+  rca(rby paramrby) {}
   
-  public void a(Bundle paramBundle)
+  public void a()
   {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, str);
-    qee.b(paramBundle);
+    if (rby.a(this.a) != null) {
+      rby.a(this.a).b();
+    }
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    paramString = this.a.a();
-    Intent localIntent;
-    if ((paramBundle != null) && (paramString != null))
-    {
-      localIntent = new Intent();
-      localIntent.putExtras(paramBundle);
-      localIntent.setClass(paramString, KandianVideoUploadService.class);
-    }
-    try
-    {
-      paramString.startService(localIntent);
+    if (paramInt < 0) {
       return;
     }
-    catch (Throwable paramString)
+    rby.a(this.a).e = paramInt;
+    rby.a(this.a).b(rby.a(this.a));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
+      this.a.e();
+      return;
     }
+    this.a.f();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    rby.a(this.a).e();
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rca
  * JD-Core Version:    0.7.0.1
  */

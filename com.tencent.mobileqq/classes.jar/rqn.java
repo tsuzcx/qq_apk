@@ -1,80 +1,45 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public abstract class rqn
-  implements rfm
+class rqn
+  extends rko
 {
-  private static final String a;
-  protected int a;
-  protected Context a;
-  protected SlideActiveAnimController a;
-  protected rqo a;
-  protected rqp a;
-  public xea a;
+  rqn(rqj paramrqj, BaseArticleInfo paramBaseArticleInfo) {}
   
-  static
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    jdField_a_of_type_JavaLangString = rqn.class.getSimpleName();
-  }
-  
-  public rqn(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    if (this.jdField_a_of_type_Rqo != null) {
-      this.jdField_a_of_type_Rqo.a(paramInt1, paramInt2);
+    if (paramBoolean3)
+    {
+      if (paramBoolean4) {
+        this.jdField_a_of_type_Rqj.jdField_a_of_type_Rjg.c();
+      }
+    }
+    else
+    {
+      if (paramBoolean1) {
+        break label77;
+      }
+      this.jdField_a_of_type_Rqj.b = false;
+    }
+    for (;;)
+    {
+      if ((paramBoolean2) && (this.jdField_a_of_type_Rqj.jdField_a_of_type_Rkb != null)) {
+        this.jdField_a_of_type_Rqj.jdField_a_of_type_Rkb.a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, 0L);
+      }
+      return;
+      this.jdField_a_of_type_Rqj.jdField_a_of_type_Rjg.b(2);
+      break;
+      label77:
+      if (this.jdField_a_of_type_Rqj.b)
+      {
+        this.jdField_a_of_type_Rqj.jdField_a_of_type_Rjg.c();
+        this.jdField_a_of_type_Rqj.b = false;
+      }
     }
   }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isDebugVersion()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "onPullRefreshing percent:" + paramInt + " isTopRefreshing:" + paramBoolean);
-    }
-  }
-  
-  public void a(SlideActiveAnimController paramSlideActiveAnimController)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController = paramSlideActiveAnimController;
-  }
-  
-  public void a(rqo paramrqo)
-  {
-    this.jdField_a_of_type_Rqo = paramrqo;
-  }
-  
-  public void a(rqp paramrqp)
-  {
-    this.jdField_a_of_type_Rqp = paramrqp;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Rqp != null) {
-      this.jdField_a_of_type_Rqp.a(paramBoolean);
-    }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rqn
  * JD-Core Version:    0.7.0.1
  */

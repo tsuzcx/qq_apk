@@ -1,25 +1,37 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class mvu
-  implements WtTicketPromise
+final class mvu
+  implements bapw
 {
-  mvu(mvs parammvs) {}
-  
-  public void Done(Ticket paramTicket)
+  public void a(baqv parambaqv, baqw parambaqw)
   {
-    mvs.a(this.a, false);
-    this.a.h();
+    if ((parambaqv == null) || (parambaqw == null)) {}
+    baps localbaps;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambaqv instanceof baps));
+      localbaps = (baps)parambaqv;
+      localbaps.jdField_a_of_type_Long += parambaqw.c;
+      parambaqw.c = 0L;
+      parambaqw = "bytes=" + localbaps.jdField_a_of_type_Long + "-";
+      localbaps.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+      parambaqw = localbaps.jdField_a_of_type_JavaLangString;
+      if (parambaqw.contains("range="))
+      {
+        parambaqw = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
+        localbaps.jdField_a_of_type_JavaLangString = (parambaqw + "range=" + localbaps.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((baps)parambaqv).jdField_a_of_type_JavaLangString + ", offset=" + localbaps.jdField_a_of_type_Long);
   }
-  
-  public void Failed(ErrMsg paramErrMsg) {}
-  
-  public void Timeout(ErrMsg paramErrMsg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvu
  * JD-Core Version:    0.7.0.1
  */

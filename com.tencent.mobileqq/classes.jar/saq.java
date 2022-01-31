@@ -1,21 +1,29 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class saq
-  implements View.OnClickListener
+public class saq
+  implements sai
 {
-  saq(sap paramsap, CertifiedAccountMeta.StUser paramStUser) {}
-  
-  public void onClick(View paramView)
+  public int a(BaseData paramBaseData)
   {
-    wis.a(this.jdField_a_of_type_Sap.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
-    xhb.b("auth_follow", "clk_head", 0, 0, new String[0]);
+    return 11;
+  }
+  
+  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    return new sar(LayoutInflater.from(paramContext).inflate(2131560014, paramViewGroup, false), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.s == 11;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     saq
  * JD-Core Version:    0.7.0.1
  */

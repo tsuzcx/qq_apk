@@ -1,230 +1,303 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class qip
-  extends qef
-  implements qif
+  extends qio
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  public Bundle a;
-  axeq jdField_a_of_type_Axeq = new qit(this);
-  axes jdField_a_of_type_Axes = new qis(this);
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private qid jdField_a_of_type_Qid;
-  private qij jdField_a_of_type_Qij;
-  private qik jdField_a_of_type_Qik = new qiq(this);
-  private long jdField_b_of_type_Long;
-  private QQAppInterface jdField_b_of_type_ComTencentMobileqqAppQQAppInterface;
-  private WeakReference<qeh> jdField_b_of_type_JavaLangRefWeakReference;
-  private qij jdField_b_of_type_Qij;
-  private qik jdField_b_of_type_Qik = new qir(this);
-  private long c;
-  private long jdField_d_of_type_Long;
-  private String jdField_d_of_type_JavaLangString;
-  private long jdField_e_of_type_Long;
-  private String jdField_e_of_type_JavaLangString;
-  private boolean jdField_e_of_type_Boolean;
-  private long jdField_f_of_type_Long;
-  private String jdField_f_of_type_JavaLangString;
-  private boolean jdField_f_of_type_Boolean;
-  private long jdField_g_of_type_Long;
-  private String jdField_g_of_type_JavaLangString;
-  private boolean jdField_g_of_type_Boolean;
-  private long jdField_h_of_type_Long;
-  private String jdField_h_of_type_JavaLangString;
-  private boolean jdField_h_of_type_Boolean;
-  private long jdField_i_of_type_Long;
-  private String jdField_i_of_type_JavaLangString;
+  private static int jdField_a_of_type_Int = 0;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static List<String> jdField_a_of_type_JavaUtilList;
+  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private static String b;
+  private static String c;
   
-  public qip(Context paramContext, qeh paramqeh, Intent paramIntent)
+  public static String a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramqeh);
-    this.jdField_a_of_type_AndroidOsBundle = paramIntent.getExtras();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(this.jdField_a_of_type_AndroidOsBundle);
-    qee.a(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_Qij = new qil(paramContext, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Qik);
-    this.jdField_b_of_type_Qij = new qiu(paramContext, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Qik, this.jdField_d_of_type_JavaLangString);
+    return bduw.a(aljq.aX + ".readInjoy/skin_res/");
   }
   
-  private void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static String a(String paramString)
   {
-    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((qeh)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramInt, qig.a().a(paramString1).b(paramString2).d(paramString4).c(paramString3).e(paramString5).a(this.c).b(this.jdField_d_of_type_Long).a());
-    }
+    return a() + paramString;
   }
   
-  private void a(Bundle paramBundle)
+  public static List<String> a()
   {
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onh.a());
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("mTaskID");
-    this.jdField_e_of_type_Boolean = paramBundle.getBoolean("supportShortVideo", false);
-    this.jdField_f_of_type_Boolean = paramBundle.getBoolean("shortVideoSoReady", false);
-    if (!this.jdField_f_of_type_Boolean) {
-      d();
-    }
-    this.jdField_d_of_type_JavaLangString = paramBundle.getString("arg_video_path");
-    this.jdField_e_of_type_JavaLangString = paramBundle.getString("arg_video_cover");
-    paramBundle.putString("mTaskID", this.jdField_a_of_type_JavaLangString);
-  }
-  
-  private void a(qig paramqig)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putString("compressPath", this.jdField_h_of_type_JavaLangString);
-    a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidOsBundle, paramqig, (qeh)this.jdField_b_of_type_JavaLangRefWeakReference.get());
-  }
-  
-  private void b(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = (50.0F * (1.0F + paramFloat / 100.0F));
-    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (!this.jdField_g_of_type_Boolean)) {
-      ((qeh)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    QLog.d("VideoDeliverController", 1, "transitState: from " + this.jdField_a_of_type_Int + " to " + paramInt);
-    switch (paramInt)
+    Object localObject3 = null;
+    Object localObject2;
+    if (jdField_a_of_type_JavaUtilList != null)
     {
+      localObject2 = jdField_a_of_type_JavaUtilList;
+      return localObject2;
+    }
+    if (jdField_a_of_type_Int == 0) {
+      a();
+    }
+    Object localObject1;
+    if (jdField_a_of_type_Int == 1) {
+      localObject1 = new File(d() + "refreshAnimatePictures" + "/");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-      this.jdField_a_of_type_Qij.a(this.jdField_e_of_type_JavaLangString, true);
-      continue;
-      c(100.0F);
-      if (!this.jdField_g_of_type_Boolean)
+      localObject2 = localObject3;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = localObject3;
+      if (!((File)localObject1).exists()) {
+        break;
+      }
+      localObject2 = localObject3;
+      if (!((File)localObject1).isDirectory()) {
+        break;
+      }
+      localObject1 = ((File)localObject1).listFiles();
+      localObject2 = localObject3;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = new ArrayList();
+      int i = 0;
+      for (;;)
       {
-        this.jdField_b_of_type_Qij.a(this.jdField_h_of_type_JavaLangString, true);
-        continue;
-        b(100.0F);
+        if (i < localObject1.length)
+        {
+          if (localObject1[i].getName().endsWith(".png")) {
+            ((List)localObject2).add(localObject1[i].getName());
+          }
+          i += 1;
+          continue;
+          if (jdField_a_of_type_Int != 2) {
+            break label199;
+          }
+          localObject1 = new File(d() + "refreshRandomPictures" + "/");
+          break;
+        }
+      }
+      jdField_a_of_type_JavaUtilList = (List)localObject2;
+      return localObject2;
+      label199:
+      localObject1 = null;
+    }
+  }
+  
+  public static JSONObject a()
+  {
+    if (jdField_a_of_type_OrgJsonJSONObject == null) {}
+    try
+    {
+      jdField_a_of_type_OrgJsonJSONObject = new JSONObject(bdcs.b(new File(b() + "/colors.json")));
+      return jdField_a_of_type_OrgJsonJSONObject;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        localIOException.printStackTrace();
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
     }
   }
   
-  private void c()
+  public static void a()
   {
-    this.jdField_a_of_type_Qid = new qid((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_e_of_type_Boolean, this.jdField_f_of_type_Boolean, this);
-    this.jdField_a_of_type_Qid.execute(new String[] { this.jdField_d_of_type_JavaLangString });
-    this.jdField_f_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  private void c(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = (50.0F * paramFloat / 100.0F);
-    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (!this.jdField_g_of_type_Boolean)) {
-      ((qeh)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
-    }
-  }
-  
-  private void c(int paramInt)
-  {
-    a(paramInt, null, null, null, null, null);
-  }
-  
-  private void d()
-  {
-    this.jdField_e_of_type_Boolean = VideoEnvironment.c(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_f_of_type_Boolean = VideoEnvironment.e(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (!this.jdField_e_of_type_Boolean)
+    Object localObject = null;
+    try
     {
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", ajya.a(2131707623), null);
+      String str = bdcs.b(new File(d() + "refreshConfig.json"));
+      localObject = str;
+      JSONObject localJSONObject = new JSONObject(str);
+      if (localJSONObject != null)
+      {
+        localObject = str;
+        jdField_a_of_type_Int = localJSONObject.optInt("refresh_type");
+        localObject = str;
+        b = localJSONObject.optString("voice_path");
+        localObject = str;
+        c = localJSONObject.optString("rain_animate_path");
+      }
       return;
     }
-    if (this.jdField_f_of_type_Boolean)
+    catch (IOException localIOException)
     {
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", "短视频插件ready", null);
+      localIOException.printStackTrace();
       return;
     }
-    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", "短视频插件not ready", null);
-    if (bbfj.g(null))
+    catch (JSONException localJSONException)
     {
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", ajya.a(2131707618), null);
-      ShortVideoResourceManager.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Axes);
-      return;
-    }
-    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", ajya.a(2131707616), null);
-  }
-  
-  private void d(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = this.jdField_i_of_type_Long;
-    axrn localaxrn = axrn.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localaxrn.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
-      return;
+      QLog.e("CommonSkinRes", 1, "parseRefreshParaJson error json = " + localIOException);
+      localJSONException.printStackTrace();
     }
   }
   
-  public void a()
+  static void a(String paramString)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_h_of_type_Boolean = false;
-    c();
-    b(1);
-    this.jdField_i_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  public void a(float paramFloat)
-  {
-    c(paramFloat);
-  }
-  
-  public void a(int paramInt, long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
-  {
-    switch (paramInt)
+    if (!jdField_a_of_type_JavaLangString.equals(paramString))
     {
+      jdField_a_of_type_JavaLangString = paramString;
+      b();
     }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return azzp.a(new File(a(paramString)));
+  }
+  
+  public static int b()
+  {
+    if (jdField_a_of_type_Int == 0) {
+      a();
+    }
+    return jdField_a_of_type_Int;
+  }
+  
+  public static String b()
+  {
+    return a(jdField_a_of_type_JavaLangString);
+  }
+  
+  public static String b(String paramString)
+  {
+    return c() + paramString;
+  }
+  
+  private static void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonSkinRes", 2, "clearDataAfterSetSkin()");
+    }
+    jdField_a_of_type_Int = 0;
+    b = null;
+    c = null;
+    jdField_a_of_type_JavaUtilList = null;
+    jdField_a_of_type_OrgJsonJSONObject = null;
+  }
+  
+  public static String c()
+  {
+    return bduw.a(aljq.aX + ".readInjoy/skin_guide/");
+  }
+  
+  public static String d()
+  {
+    return b() + "/" + "refresh" + "/";
+  }
+  
+  public static String e()
+  {
+    if ((TextUtils.isEmpty(b)) && (jdField_a_of_type_Int == 0)) {
+      a();
+    }
+    if (!TextUtils.isEmpty(b)) {
+      return d() + b;
+    }
+    return null;
+  }
+  
+  public static String f()
+  {
+    if ((TextUtils.isEmpty(c)) && (jdField_a_of_type_Int == 0)) {
+      a();
+    }
+    if (!TextUtils.isEmpty(c)) {
+      return d() + c;
+    }
+    return null;
+  }
+  
+  public int a(String paramString)
+  {
+    JSONObject localJSONObject = a();
+    if (localJSONObject == null) {
+      return 0;
+    }
+    return Color.parseColor(localJSONObject.optString(paramString));
+  }
+  
+  public Drawable a(Resources paramResources, String paramString1, String paramString2)
+  {
+    paramResources = new qiq();
+    paramResources.a = a(paramString1);
+    paramResources.b = a(paramString2);
+    paramString1 = paramResources.b;
+    paramResources.addState(new int[] { 16842913 }, paramString1);
+    paramString1 = paramResources.b;
+    paramResources.addState(new int[] { 16842912 }, paramString1);
+    paramString1 = paramResources.a;
+    paramResources.addState(new int[] { -16842919 }, paramString1);
+    return paramResources;
+  }
+  
+  public Drawable a(String paramString)
+  {
+    Object localObject2 = b() + "/" + paramString;
+    Object localObject1 = new File((String)localObject2 + ".gif");
+    paramString = (String)localObject1;
+    if (!((File)localObject1).exists())
+    {
+      localObject1 = new File((String)localObject2 + ".png");
+      paramString = (String)localObject1;
+      if (!((File)localObject1).exists())
+      {
+        paramString = new File((String)localObject2 + ".jpg");
+        if (!paramString.exists()) {
+          break label220;
+        }
+      }
+    }
+    localObject1 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = awgi.a(paramString.getAbsolutePath());
+    localObject2 = new ColorDrawable(0);
+    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
+    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
+    ((URLDrawable.URLDrawableOptions)localObject1).mUseAutoScaleParams = true;
+    ((URLDrawable.URLDrawableOptions)localObject1).mUseMemoryCache = false;
+    label220:
+    label229:
     for (;;)
     {
-      this.jdField_e_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-      this.jdField_b_of_type_Long = paramLong1;
-      this.c = paramLong2;
-      this.jdField_d_of_type_Long = paramLong3;
-      return;
-      c(1);
-      continue;
-      c(2);
-      continue;
-      c(3);
-      d(1003);
-      continue;
-      c(4);
-      d(1005);
-      continue;
-      this.jdField_h_of_type_JavaLangString = paramString1;
-      this.jdField_i_of_type_JavaLangString = paramString2;
-      b(2);
+      try
+      {
+        paramString = paramString.toURL();
+        if (!((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage) {
+          break label229;
+        }
+        paramString = new URL("readinjoy_skin_gif", paramString.getAuthority(), paramString.getFile());
+        paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
+        return paramString;
+      }
+      catch (MalformedURLException paramString)
+      {
+        paramString.printStackTrace();
+      }
+      return new ColorDrawable(0);
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Qij.a();
-    this.jdField_b_of_type_Qij.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qip
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,34 @@
-import KQQ.BatchResponse;
-import KQQ.RespBatchProcess;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.File;
+import java.util.Comparator;
 
 class alqs
-  extends akil
+  implements Comparator<File>
 {
-  alqs(alqq paramalqq) {}
+  alqs(alqr paramalqr) {}
   
-  protected void a(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.a.a().removeObserver(this);
-    TroopInfoData localTroopInfoData = new TroopInfoData();
-    localTroopInfoData.isMember = true;
-    Object localObject;
-    if (QLog.isColorLevel())
+    long l2 = 0L;
+    if (paramFile1 != null) {}
+    for (long l1 = paramFile1.lastModified();; l1 = 0L)
     {
-      localObject = new StringBuilder().append("onBatchGetTroopInfoResp, isSucc=").append(paramBoolean).append(", resp IsNull=");
-      if (paramRespBatchProcess == null)
-      {
-        paramBoolean = true;
-        QLog.d("ark.Troop", 2, paramBoolean);
+      if (paramFile2 != null) {
+        l2 = paramFile2.lastModified();
       }
+      if (l2 >= l1) {
+        break;
+      }
+      return -1;
     }
-    else
-    {
-      if ((paramRespBatchProcess != null) && (paramRespBatchProcess.batch_response_list != null) && (paramRespBatchProcess.batch_response_list.size() != 0)) {
-        break label121;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("ark.Troop", 2, "onBatchGetTroopInfoResp, return");
-      }
+    if (l2 > l1) {
+      return 1;
     }
-    label121:
-    int j;
-    do
-    {
-      return;
-      paramBoolean = false;
-      break;
-      j = paramRespBatchProcess.batch_response_list.size();
-      int i = 0;
-      if (i < j)
-      {
-        localObject = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
-        if ((localObject == null) || (((BatchResponse)localObject).result != 0)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (((BatchResponse)localObject).type == 1)
-          {
-            TroopInfo localTroopInfo = ((TroopManager)this.a.a().getManager(52)).b(this.a.a);
-            this.a.a((BatchResponse)localObject, localTroopInfoData, localTroopInfo);
-          }
-        }
-      }
-    } while (j <= 0);
-    alqq.a(this.a, this.a.a, localTroopInfoData);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alqs
  * JD-Core Version:    0.7.0.1
  */

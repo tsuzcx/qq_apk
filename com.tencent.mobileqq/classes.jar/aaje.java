@@ -1,24 +1,10 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-
-public class aaje
-  implements View.OnClickListener
+public abstract interface aaje
 {
-  public aaje(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("start_from", 2);
-    ColorNoteSettingFragment.a(paramView.getContext(), ColorNoteSettingFragment.class, localBundle);
-  }
+  public abstract void b(aajc paramaajc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaje
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -31,7 +31,6 @@ public class MiniAppTextArea1
   extends EditText
 {
   private static final String TAG = "MiniAppTextArea1";
-  private static volatile boolean isFocused;
   private boolean adjustPosition;
   private boolean autoSize;
   private int confirmHeight = DisplayUtil.dip2px(getContext(), 50.0F);
@@ -42,7 +41,9 @@ public class MiniAppTextArea1
   private String data;
   private boolean disable;
   private boolean hasConfirm;
+  private boolean hasSendKeyboardShowToJs;
   private boolean isFixed;
+  private volatile boolean isFocused;
   private boolean isKeyboardShow;
   private int lastLines = -1;
   private int lastTranslateY;
@@ -95,7 +96,11 @@ public class MiniAppTextArea1
         if (this.textAreaMinHeight != 0) {
           i = Math.max(this.textAreaMinHeight, j);
         }
-        localJSONObject.put("height", i / DisplayUtil.getDensity(getContext()));
+        j = i;
+        if (this.textAreaMaxHeight != 0) {
+          j = Math.min(this.textAreaMaxHeight, i);
+        }
+        localJSONObject.put("height", j / DisplayUtil.getDensity(getContext()));
         localJSONObject.put("lineCount", localEditInfo.getCurLine());
         localJSONObject.put("inputId", this.curInputId);
         this.curWebviewContainer.getPageWebview().evaluateSubcribeJS("onTextAreaHeightChange", localJSONObject.toString(), this.curWebviewContainer.getPageWebview().pageWebviewId);
@@ -160,7 +165,8 @@ public class MiniAppTextArea1
       if ("confirm".equals(paramString)) {
         this.curWebviewContainer.getPageWebview().evaluateSubcribeJS("onKeyboardConfirm", ((JSONObject)localObject).toString(), this.curWebviewContainer.getPageWebview().pageWebviewId);
       }
-      this.curWebviewContainer.getPageWebview().evaluateSubcribeJS("onKeyboardComplete", ((JSONObject)localObject).toString(), this.curWebviewContainer.getPageWebview().pageWebviewId);
+      this.mHandler.postDelayed(new MiniAppTextArea1.5(this), 50L);
+      return;
     }
     catch (Exception paramString)
     {
@@ -169,7 +175,6 @@ public class MiniAppTextArea1
         QLog.e("MiniAppTextArea1", 2, "hideCurrentInput error", paramString);
       }
     }
-    this.mHandler.postDelayed(new MiniAppTextArea1.5(this), 50L);
   }
   
   private void updateStyle(JSONObject paramJSONObject, boolean paramBoolean)
@@ -202,25 +207,29 @@ public class MiniAppTextArea1
       j = this.textAreaHeight;
       i = j;
       if (this.textAreaHeight != 0) {
-        break label616;
+        break label626;
       }
       i = j;
       if (!this.autoSize) {
-        break label616;
+        break label626;
       }
       j = this.textAreaMinHeight;
       i = j;
       if (!paramBoolean) {
-        break label616;
+        break label626;
+      }
+      i = j;
+      if (getLayout() == null) {
+        break label626;
       }
       i = j;
       if (getLayout().getHeight() <= this.textAreaMinHeight) {
-        break label616;
+        break label626;
       }
       i = getLayout().getHeight();
     }
-    label605:
-    label616:
+    label615:
+    label626:
     for (;;)
     {
       j = (int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("left") + 0.5F);
@@ -245,7 +254,7 @@ public class MiniAppTextArea1
       else if (paramJSONObject.has("fontWeight"))
       {
         if (!"bold".equals(paramJSONObject.optString("fontWeight"))) {
-          break label605;
+          break label615;
         }
         setTypeface(Typeface.defaultFromStyle(1));
       }
@@ -286,7 +295,7 @@ public class MiniAppTextArea1
   
   private void updateTextareaHeight()
   {
-    if ((this.autoSize) && (getLayout() != null) && (getLayout().getHeight() > this.textAreaMinHeight))
+    if ((this.autoSize) && (getLayout() != null) && (getLayout().getHeight() > this.textAreaMinHeight) && (getLayout().getHeight() <= this.textAreaMaxHeight))
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)getLayoutParams();
       localLayoutParams.height = getLayout().getHeight();
@@ -336,7 +345,7 @@ public class MiniAppTextArea1
   
   public boolean isTextAreaFocused()
   {
-    return isFocused;
+    return this.isFocused;
   }
   
   public void setAttributes(JSONObject paramJSONObject, boolean paramBoolean)
@@ -360,22 +369,27 @@ public class MiniAppTextArea1
         setInputType(0);
       }
     }
-    if ((paramJSONObject.has("hidden")) && (paramJSONObject.optBoolean("hidden"))) {
-      setVisibility(8);
-    }
     String str;
-    if (paramJSONObject.has("value"))
+    if (paramJSONObject.has("hidden"))
+    {
+      if (paramJSONObject.optBoolean("hidden"))
+      {
+        i = 8;
+        setVisibility(i);
+      }
+    }
+    else if (paramJSONObject.has("value"))
     {
       str = paramJSONObject.optString("value");
       this.curValue = str;
       setText(str);
       if (!TextUtils.isEmpty(str)) {
         if (this.cursorPositation == -1) {
-          break label495;
+          break label502;
         }
       }
     }
-    label495:
+    label502:
     for (int i = this.cursorPositation;; i = str.length())
     {
       QLog.d("miniapp-textarea", 1, "updatevalue set cursor : " + i);
@@ -391,7 +405,7 @@ public class MiniAppTextArea1
       if (paramJSONObject.has("placeholder"))
       {
         str = paramJSONObject.optString("placeholder");
-        if (!bbkk.a(str)) {
+        if (!bdje.a(str)) {
           setHint(str);
         }
       }
@@ -428,6 +442,8 @@ public class MiniAppTextArea1
         updateStyle(paramJSONObject, paramBoolean);
       }
       return;
+      i = 0;
+      break;
     }
   }
   
@@ -443,7 +459,7 @@ public class MiniAppTextArea1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppTextArea1
  * JD-Core Version:    0.7.0.1
  */

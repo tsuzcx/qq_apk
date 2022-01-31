@@ -1,21 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class qat
+class qat
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<DislikeInfo> a;
-  public List<Long> a;
-  public long b;
-  public long c;
-  public long d;
+  qat(qas paramqas) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = this.a.jdField_a_of_type_Rqj.a();
+    if (paramView != null) {
+      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qat
  * JD-Core Version:    0.7.0.1
  */

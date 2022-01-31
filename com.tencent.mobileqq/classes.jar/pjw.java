@@ -1,65 +1,39 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeBiuCommentView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONObject;
 
 public class pjw
-  extends TextBase
 {
-  private final int jdField_a_of_type_Int = -16578534;
-  private NativeBiuCommentView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView;
-  private final int b = 5;
-  
-  public pjw(VafContext paramVafContext)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramVafContext);
-    this.mTextSize = Utils.dp2px(16.0D);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView = new NativeBiuCommentView(paramVafContext.getContext());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.setTextColor(-16578534);
-  }
-  
-  public void a(pau parampau)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.setModel(parampau);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.setTextSize(0, this.mTextSize);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.setIncludeFontPadding(false);
+    JSONObject localJSONObject1 = new JSONObject();
+    pkm.a(paramBaseArticleInfo, localJSONObject1, true);
+    oee.b(paramBaseArticleInfo, localJSONObject1);
+    oee.a(paramBaseArticleInfo, localJSONObject1);
+    pkm.l(paramBaseArticleInfo, localJSONObject1);
+    pkm.e(paramBaseArticleInfo, localJSONObject1);
+    pkm.g(paramBaseArticleInfo, localJSONObject1);
+    pkm.Z(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_ad_triple_img_interact_cell");
+    pkm.a(localJSONObject1, paramBaseArticleInfo);
+    if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))
+    {
+      pkm.d(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject2 = new JSONObject();
+      localJSONObject2.put("article_model", paramBaseArticleInfo);
+      localJSONObject1.put("id_view_AdBanner", localJSONObject2);
+    }
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_model", paramBaseArticleInfo);
+    localJSONObject1.put("id_article_triple_image_interact", localJSONObject2);
+    localJSONObject1.put("id_info_operate_parent", new JSONObject());
+    localJSONObject1.put("id_ad_triple_container", new JSONObject());
+    return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pjw
  * JD-Core Version:    0.7.0.1
  */

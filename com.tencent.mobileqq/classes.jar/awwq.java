@@ -1,18 +1,26 @@
-import android.widget.TextView;
-import java.util.List;
+import android.content.Context;
+import android.widget.ImageView;
+import com.tencent.mobileqq.videoplatform.api.IBaseVideoView;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import com.tencent.mobileqq.videoplatform.api.VideoViewFactory;
 
-public abstract interface awwq
-  extends awws
+public class awwq
 {
-  public abstract TextView a();
+  static {}
   
-  public abstract List<awwr> a();
+  public static IBaseVideoView a(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
+  {
+    return VideoViewFactory.createBaseVideoView(paramContext, paramLong, paramVideoPlayParam, paramImageView);
+  }
   
-  public abstract TextView b();
+  public static IBaseVideoView a(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
+  {
+    return VideoViewFactory.createCropBubbleView(paramContext, paramLong, paramVideoPlayParam, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awwq
  * JD-Core Version:    0.7.0.1
  */

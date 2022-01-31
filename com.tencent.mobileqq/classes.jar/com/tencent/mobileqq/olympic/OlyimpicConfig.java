@@ -3,14 +3,14 @@ package com.tencent.mobileqq.olympic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import auet;
+import avvx;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class OlyimpicConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<OlyimpicConfig> CREATOR = new auet();
+  public static final Parcelable.Creator<OlyimpicConfig> CREATOR = new avvx();
   public long grabInterval = -1L;
   public int id;
   public long reportActiveInterval = -1L;
@@ -60,7 +60,7 @@ public class OlyimpicConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlyimpicConfig
  * JD-Core Version:    0.7.0.1
  */

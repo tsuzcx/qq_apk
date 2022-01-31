@@ -1,23 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class ayfv
-  implements View.OnClickListener
+public class ayfv
+  implements View.OnTouchListener
 {
-  ayfv(ayft paramayft) {}
+  public ayfv(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (ayft.a(this.a).isShowing())
-    {
-      ayft.b(this.a).cancel();
-      ayft.c(this.a).dismiss();
-    }
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayfv
  * JD-Core Version:    0.7.0.1
  */

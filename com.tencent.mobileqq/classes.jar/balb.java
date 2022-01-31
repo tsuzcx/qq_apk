@@ -1,54 +1,29 @@
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class balb
+class balb
+  extends alox
 {
-  public int a;
-  public balc a;
-  public bald a;
-  public bale a;
-  public balf a;
-  public String a;
-  public ArrayList<akih> a;
-  public int b = -1;
+  balb(baky parambaky) {}
   
-  public balb(String paramString, balc parambalc)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Balc = parambalc;
-    this.jdField_a_of_type_Int = 5;
-  }
-  
-  public balb(String paramString, bald parambald)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bald = parambald;
-    this.jdField_a_of_type_Int = 4;
-  }
-  
-  public balb(String paramString, bale parambale)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bale = parambale;
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public balb(String paramString, balf parambalf)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Balf = parambalf;
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public balb(String paramString, ArrayList<akih> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Int = 3;
+    QLog.i("TogetherControlManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
+    {
+      Iterator localIterator = baky.a(this.a).entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((balj)((Map.Entry)localIterator.next()).getValue()).a(paramObject);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     balb
  * JD-Core Version:    0.7.0.1
  */

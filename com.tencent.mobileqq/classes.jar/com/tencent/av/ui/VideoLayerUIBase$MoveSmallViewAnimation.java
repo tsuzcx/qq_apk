@@ -38,7 +38,7 @@ class VideoLayerUIBase$MoveSmallViewAnimation
       }
       this.this$0.a.a().postDelayed(this, 10L);
       return;
-      this.this$0.c((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+      this.this$0.b((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
     }
     label99:
     this.this$0.s();
@@ -47,7 +47,7 @@ class VideoLayerUIBase$MoveSmallViewAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUIBase.MoveSmallViewAnimation
  * JD-Core Version:    0.7.0.1
  */

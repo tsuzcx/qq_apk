@@ -1,60 +1,29 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
 
 public class ptb
-  extends pqq
+  implements Drawable.Callback
 {
-  public ptb(Context paramContext, baxy parambaxy, ram paramram)
+  public ptb(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
+  
+  public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    super(paramContext, parambaxy, paramram);
+    paramDrawable = new ysi(paramDrawable);
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramDrawable, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
   
-  public pqq a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return g().h();
-  }
+  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
   
-  public pqq d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(actj.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
-    if ((this.jdField_a_of_type_Pqp != null) && ((this.jdField_a_of_type_Pqp instanceof ComponentContentBig))) {
-      localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pqp);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public pqq e()
-  {
-    return null;
-  }
-  
-  public pqq g()
-  {
-    this.jdField_a_of_type_Pqp = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public pqq o()
-  {
-    super.o();
-    return this;
-  }
+  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ptb
  * JD-Core Version:    0.7.0.1
  */

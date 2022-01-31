@@ -75,20 +75,22 @@ public class TPMediaCodecManager
   }
   
   @TPMethodCalledByNative
-  public static boolean initAudioMediaCodec(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public static boolean initAudioMediaCodec(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
-    if (localITPMediaCodecDecoder == null) {
+    if (localITPMediaCodecDecoder == null)
+    {
       TPNativeLog.printLog(3, "TPMediaCodecManager", "initAudioMediaCodec failed!");
+      return false;
     }
-    while (!localITPMediaCodecDecoder.initDecoder(paramString, paramInt2, paramInt3)) {
+    if (!localITPMediaCodecDecoder.initDecoder(paramString, paramInt2, paramInt3, paramInt4, paramInt5)) {
       return false;
     }
     return localITPMediaCodecDecoder.startDecoder();
   }
   
   @TPMethodCalledByNative
-  public static boolean initVideoMediaCodec(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, Surface paramSurface)
+  public static boolean initVideoMediaCodec(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, Surface paramSurface, int paramInt5)
   {
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
@@ -96,7 +98,7 @@ public class TPMediaCodecManager
       TPNativeLog.printLog(3, "TPMediaCodecManager", "initVideoMediaCodec failed!");
       return false;
     }
-    if (!localITPMediaCodecDecoder.initDecoder(paramString, paramInt2, paramInt3, paramInt4, paramSurface)) {
+    if (!localITPMediaCodecDecoder.initDecoder(paramString, paramInt2, paramInt3, paramInt4, paramSurface, paramInt5)) {
       return false;
     }
     return localITPMediaCodecDecoder.startDecoder();
@@ -271,7 +273,7 @@ public class TPMediaCodecManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPMediaCodecManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class nkl
-  implements DialogInterface.OnClickListener
+public class nkl
+  implements nhm
 {
-  nkl(nkb paramnkb, JsResult paramJsResult) {}
+  public nkl(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    this.a.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkl
  * JD-Core Version:    0.7.0.1
  */

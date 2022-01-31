@@ -18,7 +18,7 @@ public abstract interface ITPDownloadProxy
   
   public abstract void pushEvent(int paramInt);
   
-  public abstract int removeOfflineDownload(String paramString);
+  public abstract int removeStorageCache(String paramString);
   
   public abstract int resumeDownload(int paramInt);
   
@@ -54,7 +54,7 @@ public abstract interface ITPDownloadProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadProxy
  * JD-Core Version:    0.7.0.1
  */

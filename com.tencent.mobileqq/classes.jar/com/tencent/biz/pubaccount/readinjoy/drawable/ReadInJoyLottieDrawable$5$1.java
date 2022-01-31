@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.drawable;
 
-import bhoh;
+import bjps;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.util.WeakReference;
-import oqb;
-import oqg;
+import out;
+import ouy;
 
 public class ReadInJoyLottieDrawable$5$1
   implements Runnable
 {
-  public ReadInJoyLottieDrawable$5$1(oqg paramoqg) {}
+  public ReadInJoyLottieDrawable$5$1(ouy paramouy) {}
   
   public void run()
   {
-    if (bhoh.b(this.this$0.jdField_a_of_type_JavaIoFile, this.this$0.b)) {}
+    if (bjps.b(this.this$0.jdField_a_of_type_JavaIoFile, this.this$0.b)) {}
     try
     {
-      oqb localoqb = (oqb)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localoqb != null) {
-        oqb.a(localoqb, this.this$0.b);
+      out localout = (out)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (localout != null) {
+        out.a(localout, this.this$0.b);
       }
       this.this$0.jdField_a_of_type_JavaIoFile.delete();
       return;
@@ -33,7 +33,7 @@ public class ReadInJoyLottieDrawable$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.5.1
  * JD-Core Version:    0.7.0.1
  */

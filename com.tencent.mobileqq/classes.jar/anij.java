@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-
-public abstract interface anij
+class anij
+  implements anip
 {
-  public abstract boolean getHasPulledSourceMsg();
+  anij(anid paramanid, anip paramanip) {}
   
-  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
-  
-  public abstract void setPulledSourceMsg();
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Anip.a(paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anij
  * JD-Core Version:    0.7.0.1
  */

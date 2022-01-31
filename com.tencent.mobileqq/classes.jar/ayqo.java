@@ -1,221 +1,50 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
-public class ayqo
+class ayqo
+  implements Comparator<ayjh>
 {
-  static String[] a;
-  static String[] b;
-  private static String[] d;
-  public static String w = "defaultTag";
-  public static String y = "richfile";
-  public String A;
-  public int a;
-  public long a;
-  public aypb a;
-  public ayqp a;
-  public ayqq a;
-  public File a;
-  public InputStream a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public ayqp b;
-  public ayqq b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public ayqp c;
-  public String c;
-  public String[] c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
-  public String e;
-  public int f;
-  public long f;
-  public String f;
-  public int g;
-  public long g;
-  public String g;
-  public int h = -1;
-  public long h;
-  public String h;
-  public int i;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
-  public String o;
-  public String p;
-  public String q;
-  public String r;
-  public String s = "";
-  public String t = "";
-  public String u;
-  public String v = "";
-  public String x = w;
-  public String z = "";
+  ayqo(ayqn paramayqn) {}
   
-  static
+  public int a(ayjh paramayjh1, ayjh paramayjh2)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "up", "down", "down" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "file", "pic", "ptt", "video", "map", "thumbpic", "emo", "multimsg" };
-    jdField_d_of_type_ArrayOfJavaLangString = new String[] { "LogEventSignalSigFinish", "LogEventSignalUrlFinish", "LogEventRetry", "LogEventFlowUp", "LogEventFlowDown" };
-  }
-  
-  public ayqo()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Ayqp = new ayqp();
-    this.jdField_b_of_type_Ayqp = new ayqp();
-    this.jdField_c_of_type_Ayqp = new ayqp();
-    this.jdField_a_of_type_Ayqq = new ayqq();
-    this.jdField_b_of_type_Ayqq = new ayqq();
-    this.jdField_g_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public ayqo(String paramString1, String paramString2, int paramInt)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Ayqp = new ayqp();
-    this.jdField_b_of_type_Ayqp = new ayqp();
-    this.jdField_c_of_type_Ayqp = new ayqp();
-    this.jdField_a_of_type_Ayqq = new ayqq();
-    this.jdField_b_of_type_Ayqq = new ayqq();
-    try
+    int i = -1;
+    paramayjh1 = (aykv)paramayjh1;
+    paramayjh2 = (aykv)paramayjh2;
+    aloz localaloz = (aloz)this.a.a.getManager(51);
+    boolean bool1 = localaloz.b((String)paramayjh1.a());
+    boolean bool2 = localaloz.b((String)paramayjh2.a());
+    if ((!bool1) && (!bool2))
     {
-      this.jdField_g_of_type_Long = System.currentTimeMillis();
-      this.p = paramString1;
-      this.jdField_a_of_type_Int = paramInt;
-      if (paramString2 == null) {
-        return;
+      bool1 = localaloz.d((String)paramayjh1.a());
+      bool2 = localaloz.d((String)paramayjh2.a());
+      if ((!bool1) && (!bool2)) {
+        return paramayjh2.f() - paramayjh1.f();
       }
-      if (paramInt == 0)
+      if (bool1 != bool2)
       {
-        this.jdField_c_of_type_JavaLangString = paramString2;
-        this.jdField_a_of_type_JavaIoFile = new File(this.jdField_c_of_type_JavaLangString);
-        if (this.jdField_a_of_type_JavaIoFile.exists())
-        {
-          this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaIoFile.length();
-          paramInt = paramString2.lastIndexOf(".");
-          if ((paramInt >= 0) && (paramInt < paramString2.length())) {
-            this.jdField_b_of_type_JavaLangString = paramString2.substring(paramInt).toLowerCase();
-          }
+        if (bool2) {
+          return -1;
         }
-        a(paramString2);
-        return;
+        return 1;
       }
+      return paramayjh2.f() - paramayjh1.f();
     }
-    catch (Exception paramString1)
+    if (bool1 != bool2)
     {
-      paramString1.printStackTrace();
-      return;
-    }
-    this.jdField_g_of_type_JavaLangString = paramString2;
-  }
-  
-  public static String a()
-  {
-    try
-    {
-      Thread.sleep(10L);
-      long l1 = System.currentTimeMillis();
-      String str = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(l1));
-      return str;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
+      if (bool2) {}
       for (;;)
       {
-        localInterruptedException.printStackTrace();
+        return i;
+        i = 1;
       }
     }
-    finally {}
-  }
-  
-  private void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaIoInputStream = new FileInputStream(paramString);
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoInputStream != null) {
-        this.jdField_a_of_type_JavaIoInputStream.close();
-      }
-      label14:
-      this.jdField_a_of_type_JavaIoInputStream = null;
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      break label14;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    ayqq localayqq;
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    case 2: 
-      localayqq = this.jdField_a_of_type_Ayqq;
-      localayqq.jdField_b_of_type_Int += 1;
-      return;
-    case 4: 
-      localayqq = this.jdField_a_of_type_Ayqq;
-      localayqq.e += paramInt2;
-      return;
-    case 3: 
-      localayqq = this.jdField_a_of_type_Ayqq;
-      localayqq.d += paramInt2;
-      return;
-    }
-    this.jdField_a_of_type_Ayqq.c = true;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
+    return paramayjh2.f() - paramayjh1.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayqo
  * JD-Core Version:    0.7.0.1
  */

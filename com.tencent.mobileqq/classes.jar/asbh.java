@@ -1,24 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
 public class asbh
+  implements View.OnClickListener
 {
-  private static final asbr<Handler, Void> a = new asbi();
-  private static asbr<TimerTaskManager, Void> b = new asbj();
+  public asbh(LangSettingFragment paramLangSettingFragment) {}
   
-  public static Handler a()
+  public void onClick(View paramView)
   {
-    return (Handler)a.b(null);
-  }
-  
-  public static TimerTaskManager a()
-  {
-    return (TimerTaskManager)b.b(null);
+    LangSettingFragment.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asbh
  * JD-Core Version:    0.7.0.1
  */

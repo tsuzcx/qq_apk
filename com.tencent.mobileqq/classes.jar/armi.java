@@ -1,36 +1,20 @@
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.app.Activity;
 
 class armi
-  extends WtloginListener
+  implements army
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
+  armi(armf paramarmf, Activity paramActivity, int paramInt) {}
   
-  public armi(armg paramarmg, String paramString1, String paramString2, String paramString3, String paramString4)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    armf.a(this.jdField_a_of_type_Armf, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
   }
   
-  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (paramInt2 == 0)
-    {
-      this.jdField_a_of_type_Armg.a(this.jdField_a_of_type_JavaLangString, paramWUserSigInfo, this.b, paramInt1, this.c, this.d);
-      return;
-    }
-    this.jdField_a_of_type_Armg.b(this.b, "getTicket fail code = " + paramInt2);
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armi
  * JD-Core Version:    0.7.0.1
  */

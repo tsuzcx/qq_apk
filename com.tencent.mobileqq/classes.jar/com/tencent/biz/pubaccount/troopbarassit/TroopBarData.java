@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.troopbarassit;
 
-import auko;
-import aulz;
-import aumc;
+import awbv;
+import awdg;
+import awdj;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class TroopBarData
-  extends auko
+  extends awbv
 {
   public boolean mIsSticky;
   public long mLastDraftTime;
   public long mLastMsgTime;
   public long mLastStickyTime;
-  @aulz
+  @awdg
   public MessageRecord mLatestMessage;
-  @aumc
+  @awdj
   public String mUin;
   
   public String getTableName()
@@ -24,7 +24,7 @@ public class TroopBarData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.troopbarassit.TroopBarData
  * JD-Core Version:    0.7.0.1
  */

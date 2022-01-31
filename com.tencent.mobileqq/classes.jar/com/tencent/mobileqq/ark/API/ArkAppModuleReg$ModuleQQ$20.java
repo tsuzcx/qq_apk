@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import alpe;
 import android.content.Intent;
+import anfv;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 public class ArkAppModuleReg$ModuleQQ$20
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$20(alpe paramalpe, int paramInt, boolean paramBoolean, String paramString) {}
+  public ArkAppModuleReg$ModuleQQ$20(anfv paramanfv, int paramInt, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public class ArkAppModuleReg$ModuleQQ$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ.20
  * JD-Core Version:    0.7.0.1
  */

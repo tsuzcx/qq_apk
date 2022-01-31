@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import aslg;
-import asnz;
+import aucf;
+import auey;
 
 class MsgBackupNotifier$10
   implements Runnable
@@ -10,12 +10,12 @@ class MsgBackupNotifier$10
   
   public void run()
   {
-    aslg.a().a().a(this.a, this.b, this.c);
+    aucf.a().a().a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupNotifier.10
  * JD-Core Version:    0.7.0.1
  */

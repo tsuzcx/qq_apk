@@ -1,73 +1,216 @@
-import android.graphics.Bitmap;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
+import java.util.Map;
 
-public class aycz
-  extends aycy
-  implements aybf<SpriteNativeView>
+class aycz
+  implements bhqp
 {
-  private Bitmap a;
-  protected ImageView a;
+  aycz(aycv paramaycv) {}
   
-  public aycz(SpriteNativeView paramSpriteNativeView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
-    this.jdField_a_of_type_AndroidWidgetImageView = a();
-  }
-  
-  protected ImageView a()
-  {
-    return new ImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
-  }
-  
-  public void a(SpriteNativeView paramSpriteNativeView, Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    paramSpriteNativeView = new FrameLayout.LayoutParams(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramSpriteNativeView);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
-  }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-    boolean bool = super.c();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    bdah.a(true);
+    SearchHistory localSearchHistory;
+    label270:
+    int i;
+    if ((paramAdapterView == this.a.jdField_a_of_type_ComTencentWidgetXListView) && (this.a.jdField_a_of_type_Akdv != null))
     {
-      a(this.jdField_a_of_type_Aybh);
-      float f1 = this.jdField_a_of_type_Aybh.a;
-      float f2 = b();
-      float f3 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      float f4 = this.f;
-      float f5 = this.jdField_a_of_type_Aybh.b;
-      float f6 = b();
-      float f7 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      this.jdField_a_of_type_AndroidWidgetImageView.setX(f1 * f2 - f3);
-      this.jdField_a_of_type_AndroidWidgetImageView.setY(f4 - f5 * f6 - f7);
+      ayrd.a("home_page", "clk_history", new String[] { "" + paramInt });
+      paramAdapterView = (aydi)this.a.jdField_a_of_type_Akdv.getItem(paramInt);
+      if (!(paramAdapterView instanceof aycq)) {
+        break label1238;
+      }
+      localSearchHistory = ((aycq)paramAdapterView).a();
+      QLog.d("searchUtils", 2, "on serarch history click, " + localSearchHistory.toString());
+      switch (localSearchHistory.type)
+      {
+      default: 
+        paramInt = 1;
+        if (paramInt != 0)
+        {
+          ayrd.a(aycv.a(this.a), localSearchHistory.displayName, localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type);
+          if (localSearchHistory.type != 1) {
+            break label1163;
+          }
+          i = 2;
+        }
+        break;
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(this.e * b());
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(this.e * b());
-    this.jdField_a_of_type_AndroidWidgetImageView.setRotation(this.g);
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
-    return bool;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    for (;;)
+    {
+      label316:
+      paramInt = 0;
+      if (this.a.b == 2)
+      {
+        paramInt = 3;
+        label331:
+        azmj.b(null, "CliOper", "", "", "Search", "May_find", paramInt, 0, String.valueOf(i), "", "", "");
+        if (localSearchHistory.type != 0) {
+          break label1213;
+        }
+        paramInt = 1;
+      }
+      for (;;)
+      {
+        aynt.a(aycv.a(this.a), 0, SearchEntryFragment.a(this.a.jdField_a_of_type_Int), "0X8009D19", paramInt, 0, null, null);
+        return;
+        paramAdapterView = new ProfileActivity.AllInOne(localSearchHistory.uin, 29);
+        paramAdapterView.k = localSearchHistory.displayName;
+        paramAdapterView.g = 3;
+        ProfileActivity.b(paramView.getContext(), paramAdapterView);
+        paramInt = 1;
+        break label270;
+        paramAdapterView = new ProfileActivity.AllInOne(localSearchHistory.uin, 34);
+        paramAdapterView.k = localSearchHistory.displayName;
+        paramAdapterView.g = 3;
+        ProfileActivity.b(paramView.getContext(), paramAdapterView);
+        paramInt = 1;
+        break label270;
+        paramAdapterView = new ProfileActivity.AllInOne(localSearchHistory.uin, 53);
+        paramAdapterView.k = localSearchHistory.displayName;
+        paramAdapterView.g = 3;
+        ProfileActivity.b(paramView.getContext(), paramAdapterView);
+        paramInt = 1;
+        break label270;
+        paramAdapterView = new ProfileActivity.AllInOne(localSearchHistory.uin, 53);
+        paramAdapterView.k = localSearchHistory.displayName;
+        paramAdapterView.g = 3;
+        ProfileActivity.b(paramView.getContext(), paramAdapterView);
+        paramInt = 1;
+        break label270;
+        ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(localSearchHistory.uin, 33);
+        localAllInOne.a = new ArrayList();
+        localAllInOne.k = localSearchHistory.displayName;
+        if (!TextUtils.isEmpty(localSearchHistory.uin))
+        {
+          String[] arrayOfString = localSearchHistory.uin.split("\\|");
+          if (arrayOfString != null)
+          {
+            paramInt = 0;
+            if (paramInt < arrayOfString.length)
+            {
+              ArrayList localArrayList = localAllInOne.a;
+              StringBuilder localStringBuilder = new StringBuilder().append(alpo.a(2131705862));
+              if (arrayOfString.length > 0) {}
+              for (paramAdapterView = Integer.valueOf(paramInt + 1);; paramAdapterView = "")
+              {
+                localArrayList.add(new ProfileActivity.CardContactInfo(paramAdapterView, arrayOfString[paramInt], null));
+                paramInt += 1;
+                break;
+              }
+            }
+          }
+        }
+        localAllInOne.g = 3;
+        ProfileActivity.b(paramView.getContext(), localAllInOne);
+        paramInt = 1;
+        break label270;
+        paramAdapterView = (aloz)aycv.a(this.a).getManager(51);
+        if (paramAdapterView != null)
+        {
+          paramAdapterView = paramAdapterView.e(localSearchHistory.uin);
+          if (paramAdapterView != null)
+          {
+            ajgm.a = true;
+            ajgm.a(paramView.getContext(), aycv.a(this.a), localSearchHistory.uin, 0, bdbt.a(paramAdapterView), false);
+          }
+          paramInt = 1;
+          break label270;
+        }
+        paramInt = 0;
+        break label270;
+        paramAdapterView = (almv)aycv.a(this.a).getManager(53);
+        if (paramAdapterView != null)
+        {
+          paramAdapterView = paramAdapterView.a(localSearchHistory.troopUin);
+          if (paramAdapterView != null)
+          {
+            paramAdapterView = (DiscussionMemberInfo)paramAdapterView.get(localSearchHistory.uin);
+            if (paramAdapterView != null)
+            {
+              ajgm.a = true;
+              ajgm.a(paramView.getContext(), localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type, paramAdapterView.memberName, false);
+              paramInt = 1;
+              break label270;
+            }
+          }
+        }
+        ajgm.a = true;
+        ajgm.a(paramView.getContext(), localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type, localSearchHistory.displayName, false);
+        paramInt = 1;
+        break label270;
+        ajgm.a = true;
+        boolean bool = false;
+        if ((paramView.getContext() instanceof UniteSearchActivity)) {
+          bool = aydw.a(localSearchHistory.uin);
+        }
+        if (!bool)
+        {
+          ajgm.a(paramView.getContext(), localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type, localSearchHistory.displayName, false);
+          paramInt = 1;
+          break label270;
+        }
+        bcgx.a(paramView.getContext(), null, localSearchHistory.uin);
+        paramInt = 1;
+        break label270;
+        ajgm.a = true;
+        ajgm.a(paramView.getContext(), aycv.a(this.a), localSearchHistory.uin, localSearchHistory.type, localSearchHistory.displayName, false);
+        paramInt = 1;
+        break label270;
+        if (!TextUtils.equals(localSearchHistory.uin, aljq.az)) {
+          break;
+        }
+        nrt.a(null, "CliOper", "", "", "0X800671B", "0X800671B", 0, 0, "", "", "", "", false);
+        nxu.a(paramView.getContext(), null, -1L, 1);
+        paramInt = 1;
+        break label270;
+        nrt.a(null, "CliOper", "", "", "0X800671B", "0X800671B", 0, 0, "", "", "", "", false);
+        nxu.a(aycv.a(this.a), paramView.getContext(), 1, 0);
+        break;
+        label1163:
+        if (localSearchHistory.type != 3000) {
+          break label1243;
+        }
+        i = 3;
+        break label316;
+        if (this.a.b == 10)
+        {
+          paramInt = 2;
+          break label331;
+        }
+        if (this.a.b != 1) {
+          break label331;
+        }
+        paramInt = 1;
+        break label331;
+        label1213:
+        if ((localSearchHistory.type == 1) || (localSearchHistory.type == 3000)) {
+          paramInt = 2;
+        } else {
+          label1238:
+          paramInt = 0;
+        }
+      }
+      label1243:
+      i = 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aycz
  * JD-Core Version:    0.7.0.1
  */

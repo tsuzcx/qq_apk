@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-final class aktq
-  implements DialogInterface.OnDismissListener
+public class aktq
 {
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static String a(boolean paramBoolean)
   {
-    aktp.a(null);
+    if (paramBoolean) {
+      return "apollo_router_game.ltgame_redpkg_plankinfo_linkcmd_check_game";
+    }
+    return "ltgame_redpkg_plankinfo.check_game";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aktq
  * JD-Core Version:    0.7.0.1
  */

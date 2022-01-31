@@ -566,21 +566,22 @@ public class c
   
   private void h()
   {
-    int i1 = 1;
     this.M.clear();
     Object localObject = t.e();
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.SsoListManager", 2, "getIMSI " + (String)localObject);
     }
+    int i1 = 0;
     CopyOnWriteArrayList localCopyOnWriteArrayList = null;
-    if (localObject == null)
+    if ((localObject == null) || (localObject == ""))
     {
+      i1 = 1;
       if (i1 == 0) {
-        break label520;
+        break label526;
       }
       localCopyOnWriteArrayList = a(C);
     }
-    label520:
+    label526:
     for (;;)
     {
       if (QLog.isColorLevel())
@@ -598,24 +599,22 @@ public class c
               if ((((String)localObject).startsWith("46000")) || (((String)localObject).startsWith("46002")) || (((String)localObject).startsWith("46007")))
               {
                 localCopyOnWriteArrayList = a(D);
-                i1 = 0;
                 break;
               }
               if (((String)localObject).startsWith("46001"))
               {
                 localCopyOnWriteArrayList = a(E);
-                i1 = 0;
                 break;
               }
-              if (!((String)localObject).startsWith("46003")) {
+              if (((String)localObject).startsWith("46003"))
+              {
+                localCopyOnWriteArrayList = a(F);
                 break;
               }
-              localCopyOnWriteArrayList = a(F);
-              i1 = 0;
+              i1 = 1;
               break;
             }
             localCopyOnWriteArrayList = a(G);
-            i1 = 0;
             break;
           }
         }

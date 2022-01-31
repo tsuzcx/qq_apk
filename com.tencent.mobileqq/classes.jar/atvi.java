@@ -1,100 +1,132 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.GuideConfigData.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class atvi
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private atut jdField_a_of_type_Atut;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private atut b;
-  private atut c;
-  private atut d;
-  private atut e;
+  public long a;
+  public final String a;
+  public final ArrayList<Integer> a;
+  public boolean a;
+  public atvj[] a;
+  public String b;
+  public boolean b;
   
-  public atvi(QQAppInterface paramQQAppInterface, Context paramContext)
+  public atvi(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_ArrayOfAtvj = new atvj[6];
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfAtvj.length)
+    {
+      this.jdField_a_of_type_ArrayOfAtvj[i] = null;
+      i += 1;
+    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilArrayList = bdcb.a();
+    ThreadManager.post(new CUOpenCardGuideMng.GuideConfigData.1(this), 5, null, false);
   }
   
-  public int a()
+  public void a()
   {
-    return 5;
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      a(BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_JavaLangString, 4).getString("config_content", ""));
+    } while (!QLog.isColorLevel());
+    QLog.i("CUOpenCardGuideMng", 2, "init");
   }
   
-  public int a(atwx paramatwx)
+  public void a(String paramString)
   {
-    if ((paramatwx instanceof atww)) {
-      return 0;
-    }
-    if ((paramatwx instanceof atxa)) {
-      return 1;
-    }
-    if ((paramatwx instanceof atwy)) {
-      return 2;
-    }
-    if ((paramatwx instanceof atwu)) {
-      return 3;
-    }
-    if ((paramatwx instanceof atxb)) {
-      return 4;
-    }
-    return -1;
-  }
-  
-  public atut a(int paramInt)
-  {
-    Object localObject = null;
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Atut != null) {
-        localObject = this.jdField_a_of_type_Atut;
+    int j = 0;
+    int i = 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals(paramString))) {
+      if (QLog.isColorLevel()) {
+        QLog.i("CUOpenCardGuideMng", 2, "parseConfig config not change");
       }
     }
     do
     {
-      return localObject;
-      localObject = new atvg(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Atut = ((atut)localObject);
-      return localObject;
-      if (paramInt == 1)
-      {
-        if (this.b != null) {
-          return this.b;
-        }
-        localObject = new atwq(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.b = ((atut)localObject);
-        return localObject;
+      return;
+      if (!TextUtils.isEmpty(paramString)) {
+        break;
       }
-      if (paramInt == 2)
+      this.jdField_b_of_type_Boolean = false;
+      while (i < this.jdField_a_of_type_ArrayOfAtvj.length)
       {
-        if (this.c != null) {
-          return this.c;
-        }
-        localObject = new atwn(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.c = ((atut)localObject);
-        return localObject;
+        this.jdField_a_of_type_ArrayOfAtvj[i] = null;
+        i += 1;
       }
-      if (paramInt == 3)
+      this.jdField_b_of_type_JavaLangString = "";
+    } while (!QLog.isColorLevel());
+    QLog.i("CUOpenCardGuideMng", 2, "parseConfig config is empty");
+    return;
+    for (;;)
+    {
+      Object localObject;
+      try
       {
-        if (this.d != null) {
-          return this.d;
+        localObject = new JSONObject(paramString);
+        if (!((JSONObject)localObject).has("isNeedShowGuide")) {
+          break label359;
         }
-        localObject = new atvb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.d = ((atut)localObject);
-        return localObject;
+        this.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("isNeedShowGuide");
       }
-    } while (paramInt != 4);
-    if (this.e != null) {
-      return this.e;
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      finally {}
+      if ((i < this.jdField_a_of_type_ArrayOfAtvj.length) && (i < atvg.a.length))
+      {
+        if (((JSONObject)localObject).has(atvg.a[i])) {
+          this.jdField_a_of_type_ArrayOfAtvj[i] = atvj.a(((JSONObject)localObject).getJSONObject(atvg.a[i]));
+        } else {
+          this.jdField_a_of_type_ArrayOfAtvj[i] = null;
+        }
+      }
+      else
+      {
+        this.jdField_b_of_type_JavaLangString = paramString;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localObject = new StringBuilder(300);
+        ((StringBuilder)localObject).append("parseConfig:").append("\n");
+        ((StringBuilder)localObject).append("config: ").append(paramString).append("\n");
+        ((StringBuilder)localObject).append("mIsShowGuide: ").append(this.jdField_b_of_type_Boolean).append("\n");
+        i = j;
+        while ((i < this.jdField_a_of_type_ArrayOfAtvj.length) && (i < atvg.a.length))
+        {
+          ((StringBuilder)localObject).append(atvg.a[i]).append(": ").append(this.jdField_a_of_type_ArrayOfAtvj[i]).append("\n");
+          i += 1;
+        }
+        QLog.i("CUOpenCardGuideMng", 2, ((StringBuilder)localObject).toString());
+        continue;
+        label359:
+        i = 0;
+        continue;
+      }
+      i += 1;
     }
-    localObject = new atws(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.e = ((atut)localObject);
-    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atvi
  * JD-Core Version:    0.7.0.1
  */

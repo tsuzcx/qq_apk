@@ -34,60 +34,58 @@ import RegisterProxySvcPack.SvcRequestPullDisGroupSeq;
 import RegisterProxySvcPack.SvcResponsePullDisGroupSeq;
 import RegisterProxySvcPack.stDisGroupInfo;
 import SharpSvrPack.MultiVideoMsg;
-import aanz;
-import actj;
-import adgc;
-import agvx;
-import ajsd;
-import ajtb;
-import ajte;
-import ajum;
-import ajvg;
-import ajvi;
-import ajxj;
-import ajxl;
-import ajya;
-import ajyi;
-import akal;
-import akam;
-import akan;
-import akao;
-import akap;
-import akaq;
-import akar;
-import akas;
-import akat;
-import akau;
-import akbn;
-import akee;
-import akfl;
-import akgg;
-import aknx;
-import akoe;
-import akog;
-import akoi;
-import akoj;
-import akon;
-import akov;
-import akpb;
-import akpi;
-import akpj;
-import akpn;
-import akpx;
-import akqb;
-import akqe;
-import akqj;
-import akqk;
-import akql;
-import akqs;
-import akqw;
-import akrh;
-import akrj;
-import aksc;
-import aktf;
-import amnr;
-import amom;
-import amon;
+import abnt;
+import abnx;
+import abof;
+import abol;
+import abot;
+import abow;
+import abpg;
+import abph;
+import acex;
+import aekt;
+import aeyf;
+import aipw;
+import aljq;
+import alko;
+import alkr;
+import allz;
+import almt;
+import almv;
+import alox;
+import aloz;
+import alpo;
+import alpw;
+import alsa;
+import alsb;
+import alsc;
+import alsd;
+import alse;
+import alsf;
+import alsg;
+import alsh;
+import alsi;
+import alsj;
+import altc;
+import alvt;
+import alxb;
+import alxw;
+import amfl;
+import amfs;
+import amfu;
+import amfw;
+import amgb;
+import amgc;
+import amgg;
+import amgn;
+import amgr;
+import amgs;
+import amgt;
+import amgw;
+import amha;
+import amhm;
+import amho;
+import amjk;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.app.Notification;
@@ -107,72 +105,76 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.text.TextUtils;
 import android.util.Pair;
-import anvx;
-import aoes;
-import aqfv;
-import aqvb;
-import aqvc;
-import asel;
-import askf;
-import astu;
-import asua;
-import atbr;
-import aukp;
-import aukq;
-import avcj;
-import awgw;
-import awyn;
-import awyp;
-import awzb;
-import awzy;
-import axab;
-import axad;
-import axaf;
-import axaj;
-import axak;
-import axaq;
-import axas;
-import axau;
-import axeb;
-import axqy;
-import axrn;
-import axug;
-import ayaq;
-import ayax;
-import aytn;
-import ayvx;
-import azrb;
-import azrd;
-import bajo;
-import baky;
-import baxi;
-import bazy;
-import bbbr;
-import bbcc;
-import bbcf;
-import bbcz;
-import bbdd;
-import bbdh;
-import bbfj;
-import bbmx;
-import bbzt;
-import bbzu;
-import bdvn;
-import bfnb;
-import bfnl;
-import bgof;
-import bgpj;
-import bldt;
+import aoep;
+import aofk;
+import aofl;
+import apnf;
+import apwu;
+import arzk;
+import aslp;
+import aslq;
+import atvl;
+import aube;
+import aukr;
+import aukx;
+import ausq;
+import awbw;
+import awbx;
+import awtw;
+import ayca;
+import aytq;
+import ayts;
+import ayuf;
+import ayvc;
+import ayvf;
+import ayvh;
+import ayvj;
+import ayvn;
+import ayvo;
+import ayvu;
+import ayvw;
+import ayvy;
+import ayzf;
+import azmj;
+import azmz;
+import azqa;
+import azyl;
+import azyu;
+import bark;
+import batw;
+import bbpk;
+import bbpm;
+import bcic;
+import bcjl;
+import bcwc;
+import bcys;
+import bdal;
+import bdaw;
+import bdaz;
+import bdbt;
+import bdbx;
+import bdcb;
+import bdee;
+import bdlr;
+import bdyu;
+import bdyv;
+import bfvi;
+import bhnv;
+import bhof;
+import bipe;
+import biqi;
+import bnpd;
+import com.tencent.av.VideoConstants;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.automator.step.RegisterProxy;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.AppShareID;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -247,7 +249,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ldd;
 import mqq.app.MobileQQ;
 import mqq.manager.AccountManager;
 import mqq.os.MqqHandler;
@@ -283,16 +284,16 @@ import msf.registerproxy.register_proxy.SvcPbResponsePullDisMsgProxy;
 import msf.registerproxy.register_proxy.SvcRegisterProxyMsgResp;
 import msf.registerproxy.register_proxy.SvcResponseMsgInfo;
 import msf.registerproxy.register_proxy.SvcResponsePbPullGroupMsgProxy;
-import mxf;
-import mxj;
-import nol;
-import npu;
+import mzy;
+import nac;
+import nrt;
+import ntd;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import protocol.KQQConfig.GetResourceReqInfo;
-import sfe;
-import sif;
+import swy;
+import taa;
 import tencent.im.cs.ptt_reserve.ptt_reserve.ReserveStruct;
 import tencent.im.msg.im_receipt.MsgInfo;
 import tencent.im.msg.im_receipt.ReceiptInfo;
@@ -316,11 +317,11 @@ import tencent.im.oidb.qqconnect.ConnectClientInfo;
 import tencent.im.oidb.searcher.oidb_c2c_searcher.Iterator;
 import tencent.im.oidb.searcher.oidb_c2c_searcher.MsgKey;
 import tencent.im.oidb.searcher.oidb_c2c_searcher.ReqBody;
-import wie;
+import xww;
 
 public class MessageHandler
-  extends ajtb
-  implements akqk
+  extends alko
+  implements amgs
 {
   static int jdField_a_of_type_Int = 1;
   public static boolean a;
@@ -329,11 +330,11 @@ public class MessageHandler
   public static int f;
   public static boolean f;
   public long a;
-  private ajxj jdField_a_of_type_Ajxj = new akam(this);
-  akar jdField_a_of_type_Akar;
+  private alox jdField_a_of_type_Alox = new alsb(this);
+  alsg jdField_a_of_type_Alsg;
   private volatile Pair<RegisterPushNotice, Long> jdField_a_of_type_AndroidUtilPair;
-  private aukp jdField_a_of_type_Aukp;
-  public awzy a;
+  private awbw jdField_a_of_type_Awbw;
+  public ayvc a;
   Object jdField_a_of_type_JavaLangObject = new Object();
   private Runnable jdField_a_of_type_JavaLangRunnable;
   private Thread jdField_a_of_type_JavaLangThread;
@@ -341,7 +342,7 @@ public class MessageHandler
   public final HashMap<String, List<msg_comm.Msg>> a;
   private final HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
   protected List<register_proxy.GroupList> a;
-  private Map<String, akon> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private Map<String, abnx> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private ConcurrentHashMap<String, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private final int[] jdField_a_of_type_ArrayOfInt = new int[0];
@@ -359,16 +360,16 @@ public class MessageHandler
   protected int c;
   private long jdField_c_of_type_Long;
   private Object jdField_c_of_type_JavaLangObject = new Object();
-  private ArrayList<akap> jdField_c_of_type_JavaUtilArrayList;
+  private ArrayList<alse> jdField_c_of_type_JavaUtilArrayList;
   private HashMap<String, Boolean> jdField_c_of_type_JavaUtilHashMap = new HashMap();
   public boolean c;
   protected int d;
   private long jdField_d_of_type_Long;
   private final Object jdField_d_of_type_JavaLangObject = new Object();
-  private ArrayList<akap> jdField_d_of_type_JavaUtilArrayList;
+  private ArrayList<alse> jdField_d_of_type_JavaUtilArrayList;
   private final HashMap<Long, SendMessageHandler> jdField_d_of_type_JavaUtilHashMap = new HashMap();
   protected boolean d;
-  private HashMap<String, akao> e;
+  private HashMap<String, alsd> e;
   protected boolean e;
   public int g;
   private boolean g;
@@ -403,11 +404,99 @@ public class MessageHandler
     super(paramQQAppInterface);
     this.jdField_e_of_type_JavaUtilHashMap = new HashMap(10);
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Ajxj, true);
-    this.jdField_a_of_type_Awzy = paramQQAppInterface.a();
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Alox, true);
+    this.jdField_a_of_type_Ayvc = paramQQAppInterface.a();
     paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("mobileQQ", 0);
-    AppSetting.jdField_i_of_type_Boolean = paramQQAppInterface.getBoolean(AppSetting.jdField_b_of_type_JavaLangString, true);
-    AppSetting.jdField_j_of_type_Boolean = paramQQAppInterface.getBoolean("c2c_del_msg_oper_enable", true);
+    AppSetting.jdField_h_of_type_Boolean = paramQQAppInterface.getBoolean(AppSetting.jdField_b_of_type_JavaLangString, true);
+    AppSetting.jdField_i_of_type_Boolean = paramQQAppInterface.getBoolean("c2c_del_msg_oper_enable", true);
+  }
+  
+  private void A(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow.");
+    }
+    long l1 = paramToServiceMsg.extraData.getLong("toUin");
+    paramToServiceMsg = new oidb_0xb31.RspBody();
+    int i1 = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    if (i1 == 0)
+    {
+      if (!paramToServiceMsg.items.has()) {
+        break label478;
+      }
+      paramToServiceMsg = paramToServiceMsg.items.get();
+      if ((paramToServiceMsg == null) || (paramToServiceMsg.isEmpty())) {
+        break label460;
+      }
+      paramToServiceMsg = (oidb_0xb31.SimilarItem)paramToServiceMsg.get(0);
+      if (paramToServiceMsg == null) {
+        break label442;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramFromServiceMsg = new JSONObject();
+        if (paramToServiceMsg.icon_url.has()) {
+          paramFromServiceMsg.put("icon_url", paramToServiceMsg.icon_url.get());
+        }
+        if (paramToServiceMsg.jump_url.has()) {
+          paramFromServiceMsg.put("jump_url", paramToServiceMsg.jump_url.get());
+        }
+        if (paramToServiceMsg.name.has()) {
+          paramFromServiceMsg.put("name", paramToServiceMsg.name.get());
+        }
+        if (paramToServiceMsg.sub_title.has()) {
+          paramFromServiceMsg.put("sub_title", paramToServiceMsg.sub_title.get());
+        }
+        if (paramToServiceMsg.title.has()) {
+          paramFromServiceMsg.put("title", paramToServiceMsg.title.get());
+        }
+        if (paramToServiceMsg.type.has()) {
+          paramFromServiceMsg.put("type", paramToServiceMsg.type.get());
+        }
+        if (paramToServiceMsg.url.has()) {
+          paramFromServiceMsg.put("url", paramToServiceMsg.url.get());
+        }
+        if (paramToServiceMsg.show_both_head.has()) {
+          paramFromServiceMsg.put("show_both_head", paramToServiceMsg.show_both_head.get());
+        }
+        paramFromServiceMsg.put("friend_uin", l1);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow content is: " + paramFromServiceMsg.toString());
+        }
+        ((altc)this.mApp.getManager(34)).b(paramFromServiceMsg.toString(), String.valueOf(l1));
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow exception: " + QLog.getStackTraceString(paramToServiceMsg));
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow. result is: " + i1);
+      }
+      return;
+      label442:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow index == 0 item is null.");
+        continue;
+        label460:
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow items is empty.");
+          continue;
+          label478:
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow items not has.");
+          }
+        }
+      }
+    }
   }
   
   public static int a(int paramInt)
@@ -437,8 +526,10 @@ public class MessageHandler
       return 8010;
     case 1010: 
       return 8012;
+    case 1026: 
+      return 3013;
     }
-    return 3013;
+    return 8043;
   }
   
   private int a(SendMessageHandler paramSendMessageHandler)
@@ -446,21 +537,21 @@ public class MessageHandler
     int i1;
     do
     {
-      i1 = awyp.jdField_a_of_type_Int;
-      awyp.jdField_a_of_type_Int = i1 + 1;
+      i1 = ayts.jdField_a_of_type_Int;
+      ayts.jdField_a_of_type_Int = i1 + 1;
     } while (!a(i1, paramSendMessageHandler));
     return i1;
   }
   
-  private akar a()
+  private alsg a()
   {
-    if (this.jdField_a_of_type_Akar == null) {}
+    if (this.jdField_a_of_type_Alsg == null) {}
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_Akar == null) {
-        this.jdField_a_of_type_Akar = new akar(this, ThreadManager.getSubThreadLooper());
+      if (this.jdField_a_of_type_Alsg == null) {
+        this.jdField_a_of_type_Alsg = new alsg(this, ThreadManager.getSubThreadLooper());
       }
-      return this.jdField_a_of_type_Akar;
+      return this.jdField_a_of_type_Alsg;
     }
   }
   
@@ -472,9 +563,9 @@ public class MessageHandler
     Object localObject;
     if (paramInt == 3000)
     {
-      l1 = this.jdField_a_of_type_Awzy.h(paramString);
-      l2 = this.jdField_a_of_type_Awzy.d(paramString);
-      l3 = this.jdField_a_of_type_Awzy.a(paramString, paramInt);
+      l1 = this.jdField_a_of_type_Ayvc.h(paramString);
+      l2 = this.jdField_a_of_type_Ayvc.d(paramString);
+      l3 = this.jdField_a_of_type_Ayvc.a(paramString, paramInt);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder(128);
@@ -482,14 +573,14 @@ public class MessageHandler
         QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject).toString());
       }
       List localList = this.app.a().b(paramString, paramInt);
-      localObject = akpx.a(localList, false);
+      localObject = abot.a(localList, false);
       l2 = Math.max(l3, l2);
-      boolean bool1 = akpx.a(paramString, paramInt, (List)localObject);
-      boolean bool2 = akpx.c((List)localObject);
+      boolean bool1 = abot.a(paramString, paramInt, (List)localObject);
+      boolean bool2 = abot.c((List)localObject);
       if ((!bool1) && (!bool2)) {
-        break label772;
+        break label767;
       }
-      paramString = akpx.a(localList, false, 25);
+      paramString = abot.a(localList, false, 25);
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "getRePullMsgSeqRange : pull more long msg");
       }
@@ -504,8 +595,8 @@ public class MessageHandler
         return new Pair(Long.valueOf(l1), Long.valueOf(l1));
         if (paramInt == 1)
         {
-          l1 = this.jdField_a_of_type_Awzy.b(paramString);
-          l2 = this.jdField_a_of_type_Awzy.c(paramString);
+          l1 = this.jdField_a_of_type_Ayvc.b(paramString);
+          l2 = this.jdField_a_of_type_Ayvc.c(paramString);
           break;
         }
         return null;
@@ -548,7 +639,7 @@ public class MessageHandler
         QLog.d("Q.msg.MessageHandler", 2, "return lastSeq < lastLocalSeq");
       }
       return new Pair(Long.valueOf(l1), Long.valueOf(l1));
-      label772:
+      label767:
       paramString = (String)localObject;
     }
   }
@@ -558,7 +649,7 @@ public class MessageHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "getPullMsgLowSeq uin = " + paramString + " ,type = " + paramInt + " ,lastSeq = " + paramLong1 + " ,expiredSeq = " + paramLong2 + " ,delSeq = " + paramLong3 + " ,svrSeq = " + paramLong4);
     }
-    paramString = akpx.a(this.app.a().b(paramString, paramInt), false);
+    paramString = abot.a(this.app.a().b(paramString, paramInt), false);
     long l2 = paramLong1;
     long l3 = paramLong4;
     if (paramString != null)
@@ -662,60 +753,60 @@ public class MessageHandler
   }
   
   @NotNull
-  private ToServiceMsg a(MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, long paramLong, int paramInt, ajte paramajte, boolean paramBoolean)
+  private ToServiceMsg a(MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, long paramLong, int paramInt, alkr paramalkr, boolean paramBoolean)
   {
     long l2 = System.currentTimeMillis();
     long l1;
     if (paramMessageRecord.msg == null)
     {
       l1 = 0L;
-      paramajte = createToServiceMsg("MessageSvc.PbSendMsg", paramajte);
-      a(paramMessageRecord, paramajte);
-      int i1 = axaq.b(paramMessageRecord.istroop);
+      paramalkr = createToServiceMsg("MessageSvc.PbSendMsg", paramalkr);
+      a(paramMessageRecord, paramalkr);
+      int i1 = ayvu.b(paramMessageRecord.istroop, this.app);
       long l3 = paramMessageRecord.msgUid;
       int i2 = (short)(int)paramMessageRecord.msgseq;
-      int i3 = axau.a(l3);
+      int i3 = ayvy.a(l3);
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, String.format("<PbSendMsg><S> --->createSendRichTextMsgReq, uint32Seq:%d, random:%d, routingType:%d, %s", new Object[] { Integer.valueOf(0xFFFF & i2), Integer.valueOf(i3), Integer.valueOf(i1), paramMessageRecord.getBaseInfoString() }));
       }
-      paramajte.extraData.putString("uin", paramMessageRecord.frienduin);
-      paramajte.extraData.putLong("msgsize", l1);
-      paramajte.extraData.putLong("uniseq", paramMessageRecord.uniseq);
-      paramajte.extraData.putLong("timeOut", paramLong);
-      paramajte.extraData.putLong("msgSeq", paramMessageRecord.msgseq);
-      paramajte.extraData.putLong("startTime", l2);
-      paramajte.extraData.putInt("retryIndex", paramInt);
-      paramajte.extraData.putInt("uintype", paramMessageRecord.istroop);
-      paramajte.extraData.putInt("msgtype", paramMessageRecord.msgtype);
-      paramajte.extraData.putInt("ROUNTING_TYPE", i1);
-      paramajte.extraData.putInt("send_msg_req_size", paramajte.getWupBuffer().length);
-      paramajte.putWupBuffer(paramPbSendMsgReq.toByteArray());
-      paramajte.setTimeout(paramLong);
-      paramajte.addAttribute("msgtype", Integer.valueOf(paramMessageRecord.msgtype));
-      paramajte.addAttribute("msgSeq", Long.valueOf(paramMessageRecord.msgseq));
-      paramajte.addAttribute("resend_by_user", Boolean.valueOf(paramBoolean));
-      paramajte.addAttribute("retryIndex", Integer.valueOf(paramInt));
+      paramalkr.extraData.putString("uin", paramMessageRecord.frienduin);
+      paramalkr.extraData.putLong("msgsize", l1);
+      paramalkr.extraData.putLong("uniseq", paramMessageRecord.uniseq);
+      paramalkr.extraData.putLong("timeOut", paramLong);
+      paramalkr.extraData.putLong("msgSeq", paramMessageRecord.msgseq);
+      paramalkr.extraData.putLong("startTime", l2);
+      paramalkr.extraData.putInt("retryIndex", paramInt);
+      paramalkr.extraData.putInt("uintype", paramMessageRecord.istroop);
+      paramalkr.extraData.putInt("msgtype", paramMessageRecord.msgtype);
+      paramalkr.extraData.putInt("ROUNTING_TYPE", i1);
+      paramalkr.extraData.putInt("send_msg_req_size", paramalkr.getWupBuffer().length);
+      paramalkr.putWupBuffer(paramPbSendMsgReq.toByteArray());
+      paramalkr.setTimeout(paramLong);
+      paramalkr.addAttribute("msgtype", Integer.valueOf(paramMessageRecord.msgtype));
+      paramalkr.addAttribute("msgSeq", Long.valueOf(paramMessageRecord.msgseq));
+      paramalkr.addAttribute("resend_by_user", Boolean.valueOf(paramBoolean));
+      paramalkr.addAttribute("retryIndex", Integer.valueOf(paramInt));
       if (paramMessageRecord.frienduin != null) {
-        break label424;
+        break label427;
       }
       paramPbSendMsgReq = "";
-      label363:
-      paramajte.addAttribute("uin", paramPbSendMsgReq);
+      label366:
+      paramalkr.addAttribute("uin", paramPbSendMsgReq);
       if (paramMessageRecord.senderuin != null) {
-        break label432;
+        break label435;
       }
     }
-    label424:
-    label432:
+    label427:
+    label435:
     for (paramMessageRecord = "";; paramMessageRecord = paramMessageRecord.senderuin)
     {
-      paramajte.addAttribute("fromUin", paramMessageRecord);
-      paramajte.addAttribute("normal_msg", Boolean.valueOf(true));
-      return paramajte;
+      paramalkr.addAttribute("fromUin", paramMessageRecord);
+      paramalkr.addAttribute("normal_msg", Boolean.valueOf(true));
+      return paramalkr;
       l1 = paramMessageRecord.msg.getBytes().length;
       break;
       paramPbSendMsgReq = paramMessageRecord.frienduin;
-      break label363;
+      break label366;
     }
   }
   
@@ -769,7 +860,7 @@ public class MessageHandler
           localPbGetMsgReq.sync_cookie.set(ByteStringMicro.copyFrom(paramArrayOfByte));
           continue;
           localPbGetMsgReq.msg_req_type.set(2);
-          paramArrayOfByte = this.jdField_a_of_type_Awzy.b();
+          paramArrayOfByte = this.jdField_a_of_type_Ayvc.b();
           if (paramArrayOfByte != null) {
             localPbGetMsgReq.pubaccount_cookie.set(ByteStringMicro.copyFrom(paramArrayOfByte));
           }
@@ -850,7 +941,7 @@ public class MessageHandler
     String str = this.app.getCurrentAccountUin();
     long l1 = System.currentTimeMillis() / 1000L;
     ArrayList localArrayList = new ArrayList();
-    MessageRecord localMessageRecord = axas.a(-2013);
+    MessageRecord localMessageRecord = ayvw.a(-2013);
     localMessageRecord.init(str, paramString2, str, paramString1, l1, 0, paramInt, 0L);
     localMessageRecord.msgtype = -2013;
     localMessageRecord.isread = true;
@@ -858,53 +949,53 @@ public class MessageHandler
     this.app.a().a(localArrayList, String.valueOf(str), false);
   }
   
-  public static void a(akaq paramakaq, QQAppInterface paramQQAppInterface)
+  public static void a(alsf paramalsf, QQAppInterface paramQQAppInterface)
   {
     int i1 = 2;
     Object localObject = new StringBuilder(256);
     if (QLog.isColorLevel())
     {
-      ((StringBuilder)localObject).append("msg send cost per phase--->>").append("send_request:").append(paramakaq.jdField_a_of_type_Long).append(" ,request_reponse:").append(paramakaq.jdField_b_of_type_Long).append(" ,netSend_netRecv:").append(paramakaq.jdField_c_of_type_Long).append(" ,notifyUi_reflash:").append(paramakaq.e).append(" ,mUinType:").append(paramakaq.jdField_a_of_type_Int).append(" ,isCrossOper:").append(paramakaq.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append("msg send cost per phase--->>").append("send_request:").append(paramalsf.jdField_a_of_type_Long).append(" ,request_reponse:").append(paramalsf.jdField_b_of_type_Long).append(" ,netSend_netRecv:").append(paramalsf.jdField_c_of_type_Long).append(" ,notifyUi_reflash:").append(paramalsf.e).append(" ,mUinType:").append(paramalsf.jdField_a_of_type_Int).append(" ,isCrossOper:").append(paramalsf.jdField_a_of_type_Boolean);
       QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject).toString());
     }
     localObject = new HashMap();
-    long l1 = paramakaq.jdField_a_of_type_Long;
-    ((HashMap)localObject).put("param_net", String.valueOf(bbfj.a(BaseApplication.getContext())));
-    ((HashMap)localObject).put("param_send_req", String.valueOf(paramakaq.jdField_a_of_type_Long));
-    ((HashMap)localObject).put("param_req_resp", String.valueOf(paramakaq.jdField_b_of_type_Long));
-    ((HashMap)localObject).put("param_netSend_netRecv", String.valueOf(paramakaq.jdField_c_of_type_Long));
-    ((HashMap)localObject).put("param_notifyUi_reflash", String.valueOf(paramakaq.e));
-    ((HashMap)localObject).put("param_uin_type", String.valueOf(paramakaq.jdField_a_of_type_Int));
-    ((HashMap)localObject).put("param_msg_tag", paramakaq.jdField_a_of_type_JavaLangString);
-    if (paramakaq.jdField_a_of_type_Boolean) {
-      ((HashMap)localObject).put("param_cross_oper", String.valueOf(paramakaq.jdField_a_of_type_Boolean));
+    long l1 = paramalsf.jdField_a_of_type_Long;
+    ((HashMap)localObject).put("param_net", String.valueOf(bdee.a(BaseApplication.getContext())));
+    ((HashMap)localObject).put("param_send_req", String.valueOf(paramalsf.jdField_a_of_type_Long));
+    ((HashMap)localObject).put("param_req_resp", String.valueOf(paramalsf.jdField_b_of_type_Long));
+    ((HashMap)localObject).put("param_netSend_netRecv", String.valueOf(paramalsf.jdField_c_of_type_Long));
+    ((HashMap)localObject).put("param_notifyUi_reflash", String.valueOf(paramalsf.e));
+    ((HashMap)localObject).put("param_uin_type", String.valueOf(paramalsf.jdField_a_of_type_Int));
+    ((HashMap)localObject).put("param_msg_tag", paramalsf.jdField_a_of_type_JavaLangString);
+    if (paramalsf.jdField_a_of_type_Boolean) {
+      ((HashMap)localObject).put("param_cross_oper", String.valueOf(paramalsf.jdField_a_of_type_Boolean));
     }
-    if (paramakaq.jdField_b_of_type_Boolean) {
-      ((HashMap)localObject).put("param_sent_by_xg", String.valueOf(paramakaq.jdField_b_of_type_Boolean));
+    if (paramalsf.jdField_b_of_type_Boolean) {
+      ((HashMap)localObject).put("param_sent_by_xg", String.valueOf(paramalsf.jdField_b_of_type_Boolean));
     }
-    if (paramakaq.jdField_c_of_type_Boolean) {
-      ((HashMap)localObject).put("param_weaknet", String.valueOf(paramakaq.jdField_c_of_type_Boolean));
+    if (paramalsf.jdField_c_of_type_Boolean) {
+      ((HashMap)localObject).put("param_weaknet", String.valueOf(paramalsf.jdField_c_of_type_Boolean));
     }
-    if (paramakaq.jdField_a_of_type_Boolean) {}
+    if (paramalsf.jdField_a_of_type_Boolean) {}
     for (;;)
     {
-      if (paramakaq.jdField_b_of_type_Boolean) {
+      if (paramalsf.jdField_b_of_type_Boolean) {
         i1 = 4;
       }
-      if (paramakaq.jdField_c_of_type_Boolean) {
+      if (paramalsf.jdField_c_of_type_Boolean) {
         i1 = 8;
       }
       ((HashMap)localObject).put("param_FailCode", String.valueOf(i1));
       ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
-      axrn.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "msgSendCostPerPhase", true, l1, 0L, (HashMap)localObject, "");
+      azmz.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "msgSendCostPerPhase", true, l1, 0L, (HashMap)localObject, "");
       return;
       i1 = 0;
     }
   }
   
-  private void a(MessageRecord paramMessageRecord, akat paramakat)
+  private void a(MessageRecord paramMessageRecord, alsi paramalsi)
   {
-    sif.a().a(this.app, paramMessageRecord, paramakat, false);
+    taa.a().a(this.app, paramMessageRecord, paramalsi, false);
   }
   
   private void a(MessageRecord paramMessageRecord, ToServiceMsg paramToServiceMsg)
@@ -932,29 +1023,29 @@ public class MessageHandler
     }
     for (;;)
     {
-      if (akpx.p(paramMessageRecord.msgtype)) {
+      if (abot.q(paramMessageRecord.msgtype)) {
         paramToServiceMsg.extraData.putBoolean("RichNotify", true);
       }
       return;
       if (paramMessageRecord.istroop == 3000) {
         paramToServiceMsg.extraData.putString("uToUin", paramMessageRecord.frienduin);
-      } else if (akpx.a(paramMessageRecord.istroop) == 1032) {
+      } else if (abot.a(paramMessageRecord.istroop) == 1032) {
         paramToServiceMsg.extraData.putInt("key_confess_topicid", paramMessageRecord.getConfessTopicId());
       }
     }
   }
   
-  private void a(MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, long paramLong, int paramInt, ajte paramajte, boolean paramBoolean)
+  private void a(MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, long paramLong, int paramInt, alkr paramalkr, boolean paramBoolean)
   {
     if (paramMessageRecord.istroop == 1026)
     {
       if (QLog.isColorLevel()) {
         QLog.i("Q.msg.MessageHandler", 2, "sendRichTextMessageInner");
       }
-      b(paramMessageRecord, paramPbSendMsgReq, paramLong, paramInt, paramajte, paramBoolean);
+      b(paramMessageRecord, paramPbSendMsgReq, paramLong, paramInt, paramalkr, paramBoolean);
       return;
     }
-    a(a(paramMessageRecord, paramPbSendMsgReq, paramLong, paramInt, paramajte, paramBoolean));
+    a(a(paramMessageRecord, paramPbSendMsgReq, paramLong, paramInt, paramalkr, paramBoolean));
   }
   
   private void a(FromServiceMsg paramFromServiceMsg, int paramInt)
@@ -1006,11 +1097,11 @@ public class MessageHandler
       {
         paramFromServiceMsg = new StringBuilder().append("handleDelRoamResp isSuccess = ").append(bool).append(" , cReplyCode = ");
         if (paramSvcResponseDelRoamMsg != null) {
-          break label85;
+          break label84;
         }
       }
     }
-    label85:
+    label84:
     for (paramToServiceMsg = "null";; paramToServiceMsg = Byte.valueOf(paramSvcResponseDelRoamMsg.cReplyCode))
     {
       QLog.d("Q.msg.MessageHandler", 2, paramToServiceMsg);
@@ -1057,15 +1148,15 @@ public class MessageHandler
       if (paramAdMsgInfo.uMsgType != 9) {
         break label174;
       }
-      paramFromServiceMsg = axas.a(-2003);
+      paramFromServiceMsg = ayvw.a(-2003);
       paramFromServiceMsg.selfuin = this.app.getCurrentAccountUin();
-      paramFromServiceMsg.frienduin = String.valueOf(ajsd.J);
-      paramFromServiceMsg.senderuin = String.valueOf(ajsd.J);
+      paramFromServiceMsg.frienduin = String.valueOf(aljq.J);
+      paramFromServiceMsg.senderuin = String.valueOf(aljq.J);
       paramFromServiceMsg.msg = paramToServiceMsg;
       paramFromServiceMsg.time = l1;
       paramFromServiceMsg.msgtype = -2003;
       paramFromServiceMsg.istroop = 0;
-      if (!akas.a(this.app, paramFromServiceMsg, false))
+      if (!alsh.a(this.app, paramFromServiceMsg, false))
       {
         this.app.a().a(paramFromServiceMsg, this.app.getCurrentAccountUin());
         a("handlePushADMessageResp", 1000, true, "0_" + String.valueOf(paramAdMsgInfo.uSrcUin), 1, true, false, null);
@@ -1080,8 +1171,8 @@ public class MessageHandler
         {
           return;
         } while (paramAdMsgInfo.uMsgType != 513);
-        int i1 = amon.a(paramToServiceMsg);
-        paramFromServiceMsg = amon.a(paramToServiceMsg);
+        int i1 = aofl.a(paramToServiceMsg);
+        paramFromServiceMsg = aofl.a(paramToServiceMsg);
         switch (i1)
         {
         case 1: 
@@ -1090,15 +1181,15 @@ public class MessageHandler
           return;
         }
       } while ((paramFromServiceMsg == null) || ((!paramFromServiceMsg.equals("WAP")) && (!paramFromServiceMsg.equals("WAPI")) && (!paramFromServiceMsg.equals("TMTWAP")) && (!paramFromServiceMsg.equals("TMTWAPI")) && (!paramFromServiceMsg.equals("LOCAL"))));
-      paramFromServiceMsg = axas.a(-2004);
+      paramFromServiceMsg = ayvw.a(-2004);
       paramFromServiceMsg.selfuin = this.app.getCurrentAccountUin();
-      paramFromServiceMsg.frienduin = String.valueOf(ajsd.J);
-      paramFromServiceMsg.senderuin = String.valueOf(ajsd.J);
+      paramFromServiceMsg.frienduin = String.valueOf(aljq.J);
+      paramFromServiceMsg.senderuin = String.valueOf(aljq.J);
       paramFromServiceMsg.msg = paramToServiceMsg;
       paramFromServiceMsg.time = l1;
       paramFromServiceMsg.msgtype = -2004;
       paramFromServiceMsg.istroop = 0;
-    } while (akas.a(this.app, paramFromServiceMsg, false));
+    } while (alsh.a(this.app, paramFromServiceMsg, false));
     this.app.a().a(paramFromServiceMsg, this.app.getCurrentAccountUin());
     a("handlePushADMessageResp", 1000, true, "0_" + String.valueOf(paramAdMsgInfo.uSrcUin), 1, true, false, null);
   }
@@ -1126,7 +1217,7 @@ public class MessageHandler
     {
       if (bool1)
       {
-        paramFromServiceMsg = (ayax)this.app.getManager(61);
+        paramFromServiceMsg = (azyu)this.app.getManager(61);
         localObject1 = paramSvcRequestPushReadedNotify.vC2CReadedNotify.iterator();
         int i1 = 0;
         while (((Iterator)localObject1).hasNext())
@@ -1141,12 +1232,12 @@ public class MessageHandler
           }
           if (i1 != 0)
           {
-            this.app.a().c(str2, 7000, i1);
+            this.app.a().d(str2, 7000, i1);
             if (QLog.isColorLevel()) {
               QLog.d("Q.msg.MessageHandler", 2, "handlePushReadedNotify subUin=" + str2 + "increaseUnread=" + i1);
             }
           }
-          this.app.a().a(new String[] { ajsd.x, str2 });
+          this.app.a().a(new String[] { aljq.x, str2 });
         }
       }
       paramToServiceMsg.addAll(paramSvcRequestPushReadedNotify.vC2CReadedNotify);
@@ -1157,11 +1248,7 @@ public class MessageHandler
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler", 2, "C2CMsgReadedNotify curFriendUin is " + ((C2CMsgReadedNotify)localObject1).lPeerUin + ", lLastReadTime  is " + ((C2CMsgReadedNotify)localObject1).lLastReadTime + " isSubAccount=" + bool1);
         }
-        localObject2 = String.valueOf(((C2CMsgReadedNotify)localObject1).lPeerUin);
-        this.app.a().a((String)localObject2, 0, ((C2CMsgReadedNotify)localObject1).lLastReadTime);
-        if (((C2CMsgReadedNotify)localObject1).lLastReadTime >= 0L) {
-          this.app.a().a.a((String)localObject2, 0);
-        }
+        ((abof)a("c2c_processor")).a((C2CMsgReadedNotify)localObject1);
       }
     }
     if ((paramSvcRequestPushReadedNotify.vGroupReadedNotify != null) && (paramSvcRequestPushReadedNotify.vGroupReadedNotify.size() > 0))
@@ -1181,7 +1268,7 @@ public class MessageHandler
         }
         else
         {
-          ((azrd)a("troop_processor")).a((GroupMsgReadedNotify)localObject1);
+          ((bbpm)a("troop_processor")).a((GroupMsgReadedNotify)localObject1);
         }
       }
     }
@@ -1202,7 +1289,7 @@ public class MessageHandler
         }
         else
         {
-          ((akpi)a("disc_processor")).a(paramSvcRequestPushReadedNotify);
+          ((amgb)a("disc_processor")).a(paramSvcRequestPushReadedNotify);
         }
       }
     }
@@ -1226,13 +1313,13 @@ public class MessageHandler
     }
     if (paramSvcResponsePullDisGroupSeq != null)
     {
-      ajvg localajvg = (ajvg)this.app.a(6);
+      almt localalmt = (almt)this.app.a(6);
       localSvcResponsePullDisMsgSeq = new SvcResponsePullDisMsgSeq();
       localSvcResponsePullDisMsgSeq.cReplyCode = paramSvcResponsePullDisGroupSeq.cReplyCode;
       localSvcResponsePullDisMsgSeq.strResult = paramSvcResponsePullDisGroupSeq.strResult;
       if (paramSvcResponsePullDisGroupSeq.vDisInfo != null)
       {
-        agvx localagvx = (agvx)this.app.getManager(125);
+        aipw localaipw = (aipw)this.app.getManager(125);
         HashMap localHashMap = new HashMap();
         localSvcResponsePullDisMsgSeq.vConfNumInfo = new ArrayList();
         ArrayList localArrayList = new ArrayList();
@@ -1266,12 +1353,12 @@ public class MessageHandler
             {
               localHashMap.put(String.valueOf(localstDisGroupInfo.lDisCode), String.valueOf(localstDisGroupInfo.lRedPackTime));
               continue;
-              localajvg.a(String.valueOf(localstDisGroupInfo.lDisCode));
+              localalmt.a(String.valueOf(localstDisGroupInfo.lDisCode));
             }
           }
         }
-        localagvx.b(localHashMap);
-        localajvg.a(localArrayList);
+        localaipw.b(localHashMap);
+        localalmt.a(localArrayList);
       }
     }
     if ((QLog.isColorLevel()) && (localStringBuilder != null)) {
@@ -1280,14 +1367,14 @@ public class MessageHandler
     l(paramToServiceMsg, paramFromServiceMsg, localSvcResponsePullDisMsgSeq);
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, axaj paramaxaj)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, ayvn paramayvn)
   {
-    if (paramaxaj == null)
+    if (paramayvn == null)
     {
       a(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
-    this.app.a(paramaxaj.a, paramaxaj.b);
+    this.app.a(paramayvn.a, paramayvn.b);
     a(5002, true, null);
   }
   
@@ -1305,7 +1392,7 @@ public class MessageHandler
     {
       localPbGetGroupMsgResp1 = (msg_svc.PbGetGroupMsgResp)localPbGetGroupMsgResp1.mergeFrom((byte[])???);
       if (localPbGetGroupMsgResp1 == null) {
-        axrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "msf.msg.decodeerr", false, 0L, 0L, new HashMap(), "");
+        azmz.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "msf.msg.decodeerr", false, 0L, 0L, new HashMap(), "");
       }
       if ((localPbGetGroupMsgResp1 == null) || (??? == null))
       {
@@ -1325,7 +1412,7 @@ public class MessageHandler
       i1 = paramToServiceMsg.extraData.getInt("doSome", 0);
       bool1 = paramToServiceMsg.extraData.getBoolean("used_register_proxy", false);
       bool2 = paramToServiceMsg.extraData.getBoolean("used_new_register_proxy", false);
-      label189:
+      label188:
       boolean bool3;
       StringBuilder localStringBuilder1;
       if (paramToServiceMsg.getUin() == null)
@@ -1333,7 +1420,7 @@ public class MessageHandler
         paramFromServiceMsg = this.app.getCurrentAccountUin();
         localObject = paramToServiceMsg.extraData.getString("groupuin");
         if (localObject == null) {
-          break label483;
+          break label482;
         }
         l1 = Long.valueOf((String)localObject).longValue();
         bool3 = paramToServiceMsg.extraData.getBoolean("isRefreshHead", false);
@@ -1342,52 +1429,52 @@ public class MessageHandler
           localStringBuilder1 = new StringBuilder(128);
           StringBuilder localStringBuilder2 = localStringBuilder1.append("handleGetPullTroopMsgResp msgStruct.cReplyCode = ");
           if (localPbGetGroupMsgResp2 != null) {
-            break label496;
+            break label495;
           }
           localObject = "null";
-          label240:
+          label239:
           localStringBuilder2.append(localObject).append(" troopUin: ").append(l1).append(",isRefreshHead:").append(bool3).append(", dataHash=").append(???.hashCode()).append(" rtnBeginSeq:").append(localPbGetGroupMsgResp2.return_begin_seq.get()).append(" rtnEndSeq:").append(localPbGetGroupMsgResp2.return_end_seq.get()).append(",doSome:").append(i1);
           if (!paramBoolean) {
-            localStringBuilder1.append(",costTime:").append(System.currentTimeMillis() - azrb.jdField_b_of_type_Long);
+            localStringBuilder1.append(",costTime:").append(System.currentTimeMillis() - bbpk.jdField_b_of_type_Long);
           }
           localStringBuilder1.append(" ThreadId:" + Thread.currentThread().getId());
           if (localPbGetGroupMsgResp2.msg.get() == null) {
-            break label512;
+            break label511;
           }
           localStringBuilder1.append(" msgSize:").append(localPbGetGroupMsgResp2.msg.get().size());
-          label419:
+          label418:
           if (QLog.isColorLevel()) {
             if (!paramBoolean) {
-              break label524;
+              break label523;
             }
           }
         }
       }
-      label512:
-      label524:
+      label523:
       for (??? = "Q.msg.MessageHandler.troop.register_proxy_pull_msg";; ??? = "Q.msg.MessageHandler.trooptroop_pull_msg")
       {
         QLog.d(???, 2, localStringBuilder1.toString());
         synchronized (a(String.valueOf(l1), 1))
         {
           if (!a(paramToServiceMsg, localPbGetGroupMsgResp2)) {
-            break label531;
+            break label530;
           }
           return;
         }
         paramFromServiceMsg = paramToServiceMsg.getUin();
         break;
-        label483:
+        label482:
         l1 = localPbGetGroupMsgResp2.group_code.get();
-        break label189;
-        label496:
+        break label188;
+        label495:
         localObject = Integer.valueOf(localPbGetGroupMsgResp2.result.get());
-        break label240;
+        break label239;
+        label511:
         localStringBuilder1.append(" msg:null.");
-        break label419;
+        break label418;
       }
-      label531:
-      localObject = this.jdField_a_of_type_Awzy.b(l1);
+      label530:
+      localObject = this.jdField_a_of_type_Ayvc.b(l1);
       if (!bool3) {}
     }
     for (;;)
@@ -1395,8 +1482,8 @@ public class MessageHandler
       try
       {
         a("troop_processor").a(1003, new Object[] { paramToServiceMsg, localPbGetGroupMsgResp2, localObject, paramFromServiceMsg });
-        this.jdField_a_of_type_Awzy.b(l1);
-        ((azrd)a("troop_processor")).a("" + l1, localPbGetGroupMsgResp2, i1);
+        this.jdField_a_of_type_Ayvc.b(l1);
+        ((bbpm)a("troop_processor")).a("" + l1, localPbGetGroupMsgResp2, i1);
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler.trooptroop_pull_msg", 2, "handleGetPullGroupMsgResp_PB, cost:" + (System.currentTimeMillis() - l2));
         }
@@ -1416,21 +1503,21 @@ public class MessageHandler
         if (bool2)
         {
           this.jdField_j_of_type_Int += 1;
-          this.jdField_a_of_type_Awzy.a(String.valueOf(l1), 2);
+          this.jdField_a_of_type_Ayvc.a(String.valueOf(l1), 2);
         }
         for (;;)
         {
           if (!bool1) {
-            break label957;
+            break label953;
           }
-          if (!this.jdField_a_of_type_Awzy.b()) {
+          if (!this.jdField_a_of_type_Ayvc.b()) {
             break;
           }
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.MessageHandler", 2, "<--- handleGetPullGroupMsgResp_PB notify NOTIFY_TYPE_GET_TROOP_MSG_FIN ");
           }
           paramToServiceMsg = "" + l1;
-          bfnl.a().g();
+          bhof.a().g();
           notifyUI(4003, true, new String[] { paramToServiceMsg });
           break;
           d(String.valueOf(l1), "handleGetPullGroupMsgResp_PB");
@@ -1446,7 +1533,7 @@ public class MessageHandler
           if (bool2)
           {
             this.jdField_j_of_type_Int += 1;
-            this.jdField_a_of_type_Awzy.a(String.valueOf(l1), 2);
+            this.jdField_a_of_type_Ayvc.a(String.valueOf(l1), 2);
           }
           else
           {
@@ -1459,14 +1546,14 @@ public class MessageHandler
         if (bool2)
         {
           this.jdField_j_of_type_Int += 1;
-          this.jdField_a_of_type_Awzy.a(String.valueOf(l1), 2);
+          this.jdField_a_of_type_Ayvc.a(String.valueOf(l1), 2);
         }
         for (;;)
         {
           throw paramToServiceMsg;
           d(String.valueOf(l1), "handleGetPullGroupMsgResp_PB");
         }
-        label957:
+        label953:
         if (bool2)
         {
           if ((this.jdField_c_of_type_Int != 0) && (this.jdField_j_of_type_Int >= this.jdField_c_of_type_Int))
@@ -1474,7 +1561,7 @@ public class MessageHandler
             if (QLog.isColorLevel()) {
               QLog.d("Q.msg.MessageHandler", 2, "<--- handleGetPullGroupMsgResp_PB notify NOTIFY_TYPE_GET_TROOP_MSG_FIN , troopNum:" + this.jdField_c_of_type_Int + " , recvTroopNum:" + this.jdField_j_of_type_Int);
             }
-            bfnl.a().g();
+            bhof.a().g();
             notifyUI(4003, true, null);
           }
         }
@@ -1527,13 +1614,13 @@ public class MessageHandler
     if ((paramToServiceMsg.extraData != null) && (paramToServiceMsg.extraData.getInt("msgtype") == -2007))
     {
       if (paramToServiceMsg.extraData.getInt("mediaType") == 2) {
-        askf.b(paramString, 7);
+        aube.b(paramString, 7);
       }
     }
     else {
       return;
     }
-    askf.b(paramString, 6);
+    aube.b(paramString, 6);
   }
   
   private void a(ToServiceMsg paramToServiceMsg, msg_svc.PbSendMsgResp paramPbSendMsgResp)
@@ -1553,13 +1640,13 @@ public class MessageHandler
   
   private void a(String paramString, int paramInt, long paramLong, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Awzy.e()) && (this.jdField_a_of_type_Awzy.b(paramString, paramInt, paramLong)))
+    if ((this.jdField_a_of_type_Ayvc.e()) && (this.jdField_a_of_type_Ayvc.b(paramString, paramInt, paramLong)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("revokeMsg", 2, "handleRevokingRichMsgCacheAndNotify, in revoking cache, isSuc:" + paramBoolean);
       }
       if (paramBoolean) {
-        this.jdField_a_of_type_Awzy.f(null);
+        this.jdField_a_of_type_Ayvc.f(null);
       }
       this.app.a().a(paramInt).b();
     }
@@ -1612,8 +1699,8 @@ public class MessageHandler
           ((Integer)paramObject[1]).intValue();
           if (((Integer)paramObject[2]).intValue() == 58)
           {
-            axau.a(this.app, paramString);
-            paramObject = (ajxl)this.app.getManager(51);
+            ayvy.a(this.app, paramString);
+            paramObject = (aloz)this.app.getManager(51);
             if (!paramObject.e(paramString))
             {
               paramMessageRecord = paramObject.e(String.valueOf(paramString));
@@ -1656,8 +1743,8 @@ public class MessageHandler
               }
               QLog.d("notification", 2, "notification size = 0");
               break label103;
-              if ((paramInt1 != 6000) && (paramInt1 != 8002) && (paramInt1 != 7000) && (paramInt1 != 8005) && (paramInt1 != 8006) && (paramInt1 != 6010) && (paramInt1 != 6012) && (paramInt1 != 6013) && (paramInt1 != 8008) && (paramInt1 != 8010) && (paramInt1 != 8012) && (paramInt1 != 8014) && (paramInt1 != 3022) && (paramInt1 != 8035) && (paramInt1 != 8028) && (paramInt1 != 8037) && (paramInt1 != 8032) && (paramInt1 != 8040)) {
-                break label591;
+              if ((paramInt1 != 6000) && (paramInt1 != 8002) && (paramInt1 != 7000) && (paramInt1 != 8005) && (paramInt1 != 8006) && (paramInt1 != 6010) && (paramInt1 != 6012) && (paramInt1 != 6013) && (paramInt1 != 8008) && (paramInt1 != 8010) && (paramInt1 != 8012) && (paramInt1 != 8014) && (paramInt1 != 3022) && (paramInt1 != 8035) && (paramInt1 != 8028) && (paramInt1 != 8037) && (paramInt1 != 8032) && (paramInt1 != 8040) && (paramInt1 != 8041) && (paramInt1 != 8043)) {
+                break label605;
               }
             } while (!(paramObject instanceof Object[]));
             paramString = (Object[])paramObject;
@@ -1665,18 +1752,18 @@ public class MessageHandler
           paramObject = (String)paramString[0];
           paramInt2 = ((Integer)paramString[1]).intValue();
         } while ((((Integer)paramString[2]).intValue() != 55) || (paramInt1 == 8035));
-        ((akgg)this.app.a(18)).a(paramObject, paramInt2);
+        ((alxw)this.app.a(18)).a(paramObject, paramInt2);
         return;
       } while (((paramInt1 != 3002) && (paramInt1 != 3013) && (paramInt1 != 3008)) || (!(paramObject instanceof Object[])));
       paramString = (Object[])paramObject;
     } while ((paramString == null) || (paramString.length <= 2));
-    label591:
+    label605:
     ((Integer)paramString[2]).intValue();
   }
   
   private void a(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    a(akqj.a(paramString)).a(akqj.a(paramString), paramToServiceMsg, paramFromServiceMsg);
+    a(amgr.a(paramString)).a(amgr.a(paramString), paramToServiceMsg, paramFromServiceMsg);
   }
   
   private void a(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, PBBytesField paramPBBytesField)
@@ -1687,7 +1774,7 @@ public class MessageHandler
       paramPBBytesField = paramPBBytesField.get().toByteArray();
       int i1 = paramPBBytesField.length - 4;
       byte[] arrayOfByte = new byte[i1];
-      bbmx.a(arrayOfByte, 0, paramPBBytesField, 4, i1);
+      bdlr.a(arrayOfByte, 0, paramPBBytesField, 4, i1);
       if (QLog.isColorLevel()) {
         QLog.e("Q.msg.MessageHandler", 2, "handleNewRegisterProxyMsg--> decode " + paramString + ", hashCode:" + arrayOfByte.hashCode());
       }
@@ -1703,7 +1790,7 @@ public class MessageHandler
   
   private void a(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    a(akqj.a(paramString)).a(akqj.a(paramString), new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
+    a(amgr.a(paramString)).a(amgr.a(paramString), new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
   }
   
   private void a(String paramString1, String paramString2, byte paramByte, boolean paramBoolean, String paramString3, long paramLong1, long paramLong2, long paramLong3)
@@ -1748,11 +1835,11 @@ public class MessageHandler
     {
       l1 = 0L;
       if (!paramToServiceMsg.extraData.containsKey("msgSeq")) {
-        break label935;
+        break label934;
       }
       localObject = a(paramToServiceMsg.extraData.getLong("msgSeq"));
       if (localObject == null) {
-        break label935;
+        break label934;
       }
       str = ((SendMessageHandler)localObject).toString();
       localHashMap.put("param_retryInfo", str);
@@ -1802,14 +1889,14 @@ public class MessageHandler
         localHashMap.put("isCrossOper", String.valueOf(bool2));
         localHashMap.put("isSentByXG", String.valueOf(bool3));
         localHashMap.put("isWeaknet", String.valueOf(bool4));
-        l2 = paramFromServiceMsg.extraData.getLong(axaf.jdField_b_of_type_JavaLangString, 0L);
-        int i6 = paramFromServiceMsg.extraData.getInt(axaf.jdField_a_of_type_JavaLangString, 0);
+        l2 = paramFromServiceMsg.extraData.getLong(ayvj.jdField_b_of_type_JavaLangString, 0L);
+        int i6 = paramFromServiceMsg.extraData.getInt(ayvj.jdField_a_of_type_JavaLangString, 0);
         if (l2 == 0L) {}
         for (l2 = 0L;; l2 = System.currentTimeMillis() - l2)
         {
           localHashMap.put("pm_queueTime", String.valueOf(l2));
           localHashMap.put("pm_respLen", String.valueOf(i6));
-          axrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), paramString, paramBoolean, l3, paramLong, localHashMap, "");
+          azmz.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), paramString, paramBoolean, l3, paramLong, localHashMap, "");
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.MessageHandler", 2, String.format("Statistics TAG:%s, success:%s, duration:%dms, retryNum:%d, detail:%s, msgSignal [Sum:%d Count:%d, Open:%s msgType:%d netType:%d msfTime:%d reqSize:%d queueHandleTime:%d respWaitLen:%d]", new Object[] { paramString, Boolean.valueOf(paramBoolean), Long.valueOf(l3), Long.valueOf(l4), str, Integer.valueOf(i1), Integer.valueOf(i2), Boolean.valueOf(bool1), Integer.valueOf(i3), Integer.valueOf(i4), Long.valueOf(l1), Integer.valueOf(i5), Long.valueOf(l2), Integer.valueOf(i6) }));
           }
@@ -1818,7 +1905,7 @@ public class MessageHandler
           break;
         }
       }
-      label935:
+      label934:
       str = "";
     }
   }
@@ -1846,19 +1933,19 @@ public class MessageHandler
       {
         if ((paramPbSendMsgResp.errmsg.has()) && ((paramInt2 == 54) || (paramInt2 == 61) || (paramInt2 == 62) || (paramInt2 == 63) || (paramInt2 == 64) || (paramInt2 == 65)))
         {
-          akoi.a(this.app, paramString, paramPbSendMsgResp.errmsg.get(), paramInt1, false, false);
+          amfw.a(this.app, paramString, paramPbSendMsgResp.errmsg.get(), paramInt1, false, false);
           switch (paramInt2)
           {
           default: 
             break;
           case 63: 
-            axqy.b(this.app, "CliOper", "", "", "0X80052A8", "0X80052A8", 0, 0, "", "", "", "");
+            azmj.b(this.app, "CliOper", "", "", "0X80052A8", "0X80052A8", 0, 0, "", "", "", "");
             break;
           case 64: 
-            axqy.b(this.app, "CliOper", "", "", "0X80052A9", "0X80052A9", 0, 0, "", "", "", "");
+            azmj.b(this.app, "CliOper", "", "", "0X80052A9", "0X80052A9", 0, 0, "", "", "", "");
             break;
           case 65: 
-            axqy.b(this.app, "CliOper", "", "", "0X80052AA", "0X80052AA", 0, 0, "", "", "", "");
+            azmj.b(this.app, "CliOper", "", "", "0X80052AA", "0X80052AA", 0, 0, "", "", "", "");
             break;
           }
         }
@@ -1872,7 +1959,7 @@ public class MessageHandler
         {
           if ((paramPbSendMsgResp.errmsg.has()) && ((paramInt2 == 63) || (paramInt2 == 64) || (paramInt2 == 65) || ((paramInt2 >= 10000) && (paramInt2 < 20000))))
           {
-            akoi.a(this.app, paramString, paramPbSendMsgResp.errmsg.get(), paramInt1, false, false);
+            amfw.a(this.app, paramString, paramPbSendMsgResp.errmsg.get(), paramInt1, false, false);
             switch (paramInt2)
             {
             default: 
@@ -1888,13 +1975,13 @@ public class MessageHandler
             label673:
             for (localObject1 = "0";; localObject1 = "1")
             {
-              axqy.b((QQAppInterface)localObject2, "dc00899", "grp_lbs", "", "c2c_tmp", "no_send", 0, 0, (String)localObject1, "" + paramInt2, "", "");
+              azmj.b((QQAppInterface)localObject2, "dc00899", "grp_lbs", "", "c2c_tmp", "no_send", 0, 0, (String)localObject1, "" + paramInt2, "", "");
               break;
-              axqy.b(this.app, "CliOper", "", "", "0X80052A8", "0X80052A8", 0, 0, "", "", "", "");
+              azmj.b(this.app, "CliOper", "", "", "0X80052A8", "0X80052A8", 0, 0, "", "", "", "");
               break label468;
-              axqy.b(this.app, "CliOper", "", "", "0X80052A9", "0X80052A9", 0, 0, "", "", "", "");
+              azmj.b(this.app, "CliOper", "", "", "0X80052A9", "0X80052A9", 0, 0, "", "", "", "");
               break label468;
-              axqy.b(this.app, "CliOper", "", "", "0X80052AA", "0X80052AA", 0, 0, "", "", "", "");
+              azmj.b(this.app, "CliOper", "", "", "0X80052AA", "0X80052AA", 0, 0, "", "", "", "");
               break label468;
               break;
             }
@@ -1905,12 +1992,12 @@ public class MessageHandler
           localObject2 = paramPbSendMsgResp.errmsg.get();
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            localObject1 = ajya.a(2131706638);
+            localObject1 = alpo.a(2131707010);
           }
-          localObject1 = new aqvb(paramString, this.app.getCurrentAccountUin(), (String)localObject1, paramInt1, -5020, 1376257, awzy.a());
+          localObject1 = new aslp(paramString, this.app.getCurrentAccountUin(), (String)localObject1, paramInt1, -5020, 1376257, ayvc.a());
           localObject2 = new MessageForUniteGrayTip();
-          ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(this.app, (aqvb)localObject1);
-          aqvc.a(this.app, (MessageForUniteGrayTip)localObject2);
+          ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(this.app, (aslp)localObject1);
+          aslq.a(this.app, (MessageForUniteGrayTip)localObject2);
         }
       }
     }
@@ -1941,8 +2028,8 @@ public class MessageHandler
           QLog.d("Q.msg.MessageHandler", 2, "handleNewRegisterProxyMsg--> handleDiscussList!");
         }
         paramSvcRegisterProxyMsgResp = paramSvcRegisterProxyMsgResp.discuss_list.get();
-        localObject1 = this.jdField_a_of_type_Awzy;
-        awzy.jdField_a_of_type_Axad.b = paramSvcRegisterProxyMsgResp;
+        localObject1 = this.jdField_a_of_type_Ayvc;
+        ayvc.jdField_a_of_type_Ayvh.b = paramSvcRegisterProxyMsgResp;
         i1 = 0;
         if (i1 < paramSvcRegisterProxyMsgResp.size())
         {
@@ -1953,8 +2040,8 @@ public class MessageHandler
             i1 += 1;
             break;
             localObject2 = String.valueOf(((register_proxy.DiscussList)localObject1).discuss_code.get());
-            Object localObject3 = this.jdField_a_of_type_Awzy.a((String)localObject2);
-            long l3 = this.jdField_a_of_type_Awzy.i((String)localObject2);
+            Object localObject3 = this.jdField_a_of_type_Ayvc.a((String)localObject2);
+            long l3 = this.jdField_a_of_type_Ayvc.i((String)localObject2);
             long l2 = 0L;
             long l1 = l2;
             if (localObject3 != null)
@@ -1971,12 +2058,12 @@ public class MessageHandler
               ((StringBuilder)localObject3).append("handleNewRegisterProxyMsg getDiscussList discussCode=").append(((register_proxy.DiscussList)localObject1).discuss_code.get()).append(" discussSeq=").append(((register_proxy.DiscussList)localObject1).discuss_seq.get()).append(" memberSeq=").append(((register_proxy.DiscussList)localObject1).member_seq.get()).append(" info_seq=").append(((register_proxy.DiscussList)localObject1).info_seq.get()).append(" isHotDiscuss=").append(((register_proxy.DiscussList)localObject1).bHotGroup.get()).append(" localMemberMsgSeq=").append(l1).append(" localLastSeq=").append(l3).append(" redpack_time=").append(((register_proxy.DiscussList)localObject1).redpack_time.get()).append(" hasMsg=").append(((register_proxy.DiscussList)localObject1).has_msg.get());
               QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject3).toString());
             }
-            this.jdField_a_of_type_Awzy.b((String)localObject2, new Object[] { Long.valueOf(((register_proxy.DiscussList)localObject1).member_seq.get()), Long.valueOf(((register_proxy.DiscussList)localObject1).discuss_seq.get()) });
+            this.jdField_a_of_type_Ayvc.b((String)localObject2, new Object[] { Long.valueOf(((register_proxy.DiscussList)localObject1).member_seq.get()), Long.valueOf(((register_proxy.DiscussList)localObject1).discuss_seq.get()) });
             if (((register_proxy.DiscussList)localObject1).member_seq.get() > l1) {
               if (((register_proxy.DiscussList)localObject1).discuss_seq.get() <= l3) {
                 a(5, null, null, localObject1);
               } else {
-                this.jdField_a_of_type_Awzy.b((String)localObject2, 1);
+                this.jdField_a_of_type_Ayvc.b((String)localObject2, 1);
               }
             }
           }
@@ -1987,9 +2074,9 @@ public class MessageHandler
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler", 2, "handleNewRegisterProxyMsg--> handleDiscussList! noDiscussList return...");
         }
-        localObject1 = (ajvi)this.app.getManager(53);
-        paramSvcRegisterProxyMsgResp = (ajvg)this.app.a(6);
-        localObject1 = ((ajvi)localObject1).a();
+        localObject1 = (almv)this.app.getManager(53);
+        paramSvcRegisterProxyMsgResp = (almt)this.app.a(6);
+        localObject1 = ((almv)localObject1).a();
         new ArrayList();
         localObject1 = ((ArrayList)localObject1).iterator();
         i1 = 1;
@@ -2000,8 +2087,8 @@ public class MessageHandler
             QLog.d("Q.msg.MessageHandler", 2, "handleNewRegisterProxyMsg--> should be deleted discussion" + i1 + ":" + ((DiscussionInfo)localObject2).uin);
           }
           paramSvcRegisterProxyMsgResp.a(((DiscussionInfo)localObject2).uin);
-          if (this.jdField_a_of_type_Awzy.b(((DiscussionInfo)localObject2).uin) != null) {
-            this.jdField_a_of_type_Awzy.d(((DiscussionInfo)localObject2).uin);
+          if (this.jdField_a_of_type_Ayvc.b(((DiscussionInfo)localObject2).uin) != null) {
+            this.jdField_a_of_type_Ayvc.d(((DiscussionInfo)localObject2).uin);
           }
           i1 += 1;
         }
@@ -2023,16 +2110,16 @@ public class MessageHandler
       {
         return;
       } while (paramArrayOfByte[0] != 3);
-      long l1 = bbmx.a(paramArrayOfByte, 1);
-      l2 = bbmx.a(paramArrayOfByte, 5);
-      l3 = bbmx.a(paramArrayOfByte, 9);
-      l4 = bbmx.a(paramArrayOfByte, 13);
-      l5 = bbmx.a(paramArrayOfByte, 17);
+      long l1 = bdlr.a(paramArrayOfByte, 1);
+      l2 = bdlr.a(paramArrayOfByte, 5);
+      l3 = bdlr.a(paramArrayOfByte, 9);
+      l4 = bdlr.a(paramArrayOfByte, 13);
+      l5 = bdlr.a(paramArrayOfByte, 17);
       if (QLog.isColorLevel()) {
         QLog.d("Emoticon", 2, "uin:" + l1 + " epId=" + l2 + " expireTime=" + l3 + " flag=" + l4);
       }
-      localObject = (askf)this.app.getManager(14);
-    } while (((askf)localObject).c(Long.toString(l2), 0) != null);
+      localObject = (aube)this.app.getManager(14);
+    } while (((aube)localObject).c(Long.toString(l2), 0) != null);
     paramArrayOfByte = new EmoticonPackage();
     paramArrayOfByte.epId = Long.toString(l2);
     paramArrayOfByte.wordingId = l5;
@@ -2042,11 +2129,11 @@ public class MessageHandler
       paramArrayOfByte.valid = bool;
       paramArrayOfByte.expiretime = l3;
       paramArrayOfByte.aio = true;
-      ((askf)localObject).a(paramArrayOfByte);
-      ((askf)localObject).f(paramArrayOfByte.epId, 0);
-      localObject = (anvx)this.app.getManager(43);
-      ((anvx)localObject).a(paramArrayOfByte.epId, anvx.jdField_c_of_type_Int);
-      ((anvx)localObject).a(paramArrayOfByte);
+      ((aube)localObject).a(paramArrayOfByte);
+      ((aube)localObject).f(paramArrayOfByte.epId, 0);
+      localObject = (apnf)this.app.getManager(43);
+      ((apnf)localObject).a(paramArrayOfByte.epId, apnf.jdField_c_of_type_Int);
+      ((apnf)localObject).a(paramArrayOfByte);
       return;
     }
   }
@@ -2077,12 +2164,12 @@ public class MessageHandler
     }
   }
   
-  private boolean a(MessageRecord paramMessageRecord, akat paramakat)
+  private boolean a(MessageRecord paramMessageRecord, alsi paramalsi)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "the values of disable big data channel is" + sfe.o);
+      QLog.d("Q.msg.MessageHandler", 2, "the values of disable big data channel is" + swy.o);
     }
-    if (sfe.o) {}
+    if (swy.o) {}
     do
     {
       do
@@ -2092,20 +2179,20 @@ public class MessageHandler
           break;
         }
         AbsStructMsg localAbsStructMsg = ((MessageForStructing)paramMessageRecord).structingMsg;
-        if ((localAbsStructMsg != null) && (sif.a(localAbsStructMsg)))
+        if ((localAbsStructMsg != null) && (taa.a(localAbsStructMsg)))
         {
           String str1 = paramMessageRecord.getExtInfoFromExtStr("send_by_struct_long_message");
-          String str2 = sif.a(localAbsStructMsg);
-          String str3 = sif.a(str2);
+          String str2 = taa.a(localAbsStructMsg);
+          String str3 = taa.a(str2);
           if (!"1".equals(str1))
           {
             paramMessageRecord.saveExtInfoToExtStr("send_by_struct_long_message", "1");
-            a(paramMessageRecord, paramakat);
-            nol.a(null, localAbsStructMsg.source_puin, "0X8007A26", "0X8007A26", 0, 0, str3, str2, "", "", false);
+            a(paramMessageRecord, paramalsi);
+            nrt.a(null, localAbsStructMsg.source_puin, "0X8007A26", "0X8007A26", 0, 0, str3, str2, "", "", false);
             return true;
           }
           paramMessageRecord.saveExtInfoToExtStr("send_by_struct_long_message", "0");
-          nol.a(null, localAbsStructMsg.source_puin, "0X8007A27", "0X8007A27", 0, 0, str3, str2, "", "", false);
+          nrt.a(null, localAbsStructMsg.source_puin, "0X8007A27", "0X8007A27", 0, 0, str3, str2, "", "", false);
           return false;
         }
       } while (!QLog.isColorLevel());
@@ -2113,7 +2200,7 @@ public class MessageHandler
       return false;
       if ((paramMessageRecord instanceof MessageForArkApp))
       {
-        aanz.a(this.app, (MessageForArkApp)paramMessageRecord, false);
+        acex.a(this.app, (MessageForArkApp)paramMessageRecord, false);
         return true;
       }
       if ((paramMessageRecord instanceof MessageForArkBabyqReply))
@@ -2123,7 +2210,7 @@ public class MessageHandler
       }
       if ((paramMessageRecord instanceof MessageForReplyText))
       {
-        ((astu)this.app.getManager(166)).a(this.app, paramMessageRecord, true);
+        ((aukr)this.app.getManager(166)).a(this.app, paramMessageRecord, true);
         return true;
       }
     } while (!QLog.isColorLevel());
@@ -2146,7 +2233,7 @@ public class MessageHandler
         localStringBuilder.append("pullNextDisMsg disUin: ").append(l3).append(" res.cReplyCode: ").append(paramPbGetDiscussMsgResp.result.get()).append(" srcBegSeq: ").append(l1).append(" srcEndSeq: ").append(paramToServiceMsg.extraData.getLong("lEndSeq")).append(" res.lReturnBeginSeq: ").append(l2).append(" res.lReturnEndSeq: ").append(paramPbGetDiscussMsgResp.return_end_seq.get()).append(" res.vMsgs.size(): ").append(paramPbGetDiscussMsgResp.msg.get().size());
         QLog.d("Q.msg.MessageHandler", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Awzy.a(l3, paramPbGetDiscussMsgResp.msg.get());
+      this.jdField_a_of_type_Ayvc.a(l3, paramPbGetDiscussMsgResp.msg.get());
       if ((!bool1) && (!bool2) && (l1 <= l2 - 1L) && (paramPbGetDiscussMsgResp.return_begin_seq.get() <= paramPbGetDiscussMsgResp.return_end_seq.get())) {
         return a(l3, l1, l2 - 1L, paramToServiceMsg.extraData.getBoolean("isRefreshHead"), paramToServiceMsg.extraData.getBundle("context"));
       }
@@ -2178,26 +2265,26 @@ public class MessageHandler
           localStringBuilder1 = new StringBuilder(128);
           localStringBuilder2 = localStringBuilder1.append("pullNextTroopMsg troopUin: ").append((String)localObject1).append(" msgStruct.cReplyCode: ").append(paramPbGetGroupMsgResp.result.get()).append(" lBeginSeq: ").append(l1).append(" lEndSeq: ").append(paramToServiceMsg.extraData.getLong("lEndSeq")).append(" res.lReturnBeginSeq: ").append(l2).append(" res.lReturnEndSeq: ").append(paramPbGetGroupMsgResp.return_end_seq.get()).append(" msg.size(): ");
           if (i1 == 0) {
-            break label380;
+            break label379;
           }
         }
       }
-      label380:
+      label379:
       for (localObject2 = Integer.valueOf(paramPbGetGroupMsgResp.msg.get().size());; localObject2 = "null")
       {
         localStringBuilder2.append(localObject2);
         QLog.d("Q.msg.MessageHandler", 2, localStringBuilder1.toString());
-        this.jdField_a_of_type_Awzy.b(paramPbGetGroupMsgResp.group_code.get(), paramPbGetGroupMsgResp.msg.get());
+        this.jdField_a_of_type_Ayvc.b(paramPbGetGroupMsgResp.group_code.get(), paramPbGetGroupMsgResp.msg.get());
         l2 -= 1L;
         if ((bool1) || (bool2) || (l1 > l2) || (paramPbGetGroupMsgResp.return_begin_seq.get() > paramPbGetGroupMsgResp.return_end_seq.get())) {
-          break label388;
+          break label387;
         }
         return a((String)localObject1, l1, l2, paramToServiceMsg.extraData.getBoolean("isRefreshHead"), paramToServiceMsg.extraData.getBundle("context"), paramToServiceMsg.extraData.getInt("doSome"));
         i1 = 0;
         break;
       }
     }
-    label388:
+    label387:
     return false;
   }
   
@@ -2212,7 +2299,7 @@ public class MessageHandler
     {
       paramSvcRegisterProxyMsgResp = new HashMap();
       paramSvcRegisterProxyMsgResp.put("param_FailCode", String.valueOf(i1));
-      axrn.a(BaseApplication.getContext()).a(null, "prxyRegFailCode", true, 0L, 0L, paramSvcRegisterProxyMsgResp, null);
+      azmz.a(BaseApplication.getContext()).a(null, "prxyRegFailCode", true, 0L, 0L, paramSvcRegisterProxyMsgResp, null);
     }
     switch (i1)
     {
@@ -2264,9 +2351,9 @@ public class MessageHandler
     int i1 = 0;
     while (i1 < paramArrayOfString.length)
     {
-      this.jdField_a_of_type_Awzy.a(paramArrayOfString[i1], 0);
-      this.jdField_a_of_type_Awzy.e(paramArrayOfString[i1]);
-      arrayOfLong[i1] = this.jdField_a_of_type_Awzy.j(paramArrayOfString[i1]);
+      this.jdField_a_of_type_Ayvc.a(paramArrayOfString[i1], 0);
+      this.jdField_a_of_type_Ayvc.e(paramArrayOfString[i1]);
+      arrayOfLong[i1] = this.jdField_a_of_type_Ayvc.j(paramArrayOfString[i1]);
       if (QLog.isColorLevel()) {
         localStringBuilder.append(paramArrayOfString[i1]).append(":").append(arrayOfLong[i1]).append(", ");
       }
@@ -2280,7 +2367,7 @@ public class MessageHandler
   
   private Object[] a()
   {
-    Object localObject = ((ajvi)this.mApp.getManager(53)).a();
+    Object localObject = ((almv)this.mApp.getManager(53)).a();
     String[] arrayOfString = new String[((ArrayList)localObject).size()];
     long[] arrayOfLong = new long[((ArrayList)localObject).size()];
     StringBuilder localStringBuilder = new StringBuilder(256);
@@ -2293,10 +2380,10 @@ public class MessageHandler
     {
       String str = ((DiscussionInfo)((Iterator)localObject).next()).uin;
       arrayOfString[i1] = str;
-      arrayOfLong[i1] = this.jdField_a_of_type_Awzy.i(str);
-      this.jdField_a_of_type_Awzy.b(str, 0);
-      this.jdField_a_of_type_Awzy.g(str);
-      this.jdField_a_of_type_Awzy.c(str);
+      arrayOfLong[i1] = this.jdField_a_of_type_Ayvc.i(str);
+      this.jdField_a_of_type_Ayvc.b(str, 0);
+      this.jdField_a_of_type_Ayvc.g(str);
+      this.jdField_a_of_type_Ayvc.c(str);
       if (QLog.isColorLevel()) {
         localStringBuilder.append(str).append(":").append(arrayOfLong[i1]).append(", ");
       }
@@ -2316,15 +2403,16 @@ public class MessageHandler
     return new Object[] { arrayOfString, arrayOfLong, Integer.valueOf(i1) };
   }
   
-  private static int b(int paramInt)
+  private int b(int paramInt)
   {
     switch (paramInt)
     {
-    case 1: 
     case 7: 
     case 9: 
     case 13: 
     default: 
+      return this.app.a().a().a(paramInt).b();
+    case 1: 
       return 3001;
     case 3: 
       return 6000;
@@ -2373,8 +2461,14 @@ public class MessageHandler
       return 3022;
     case 28: 
       return 8037;
+    case 29: 
+      return 8040;
+    case 30: 
+      return 8041;
+    case 31: 
+      return 8042;
     }
-    return 8040;
+    return 8043;
   }
   
   public static String b(FromServiceMsg paramFromServiceMsg)
@@ -2432,7 +2526,7 @@ public class MessageHandler
     }
   }
   
-  private void b(MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, long paramLong, int paramInt, ajte paramajte, boolean paramBoolean)
+  private void b(MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, long paramLong, int paramInt, alkr paramalkr, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "sendHCTopicMessageInner");
@@ -2446,49 +2540,49 @@ public class MessageHandler
       oidb_0xa89.ReqBody localReqBody = new oidb_0xa89.ReqBody();
       localReqBody.bytes_msg_body.set(ByteStringMicro.copyFrom(paramPbSendMsgReq.toByteArray()));
       localReqBody.bytes_poid.set(ByteStringMicro.copyFrom(localHotChatInfo.uuid.getBytes()));
-      paramajte = makeOIDBPkg("OidbSvc.0xa89", 2697, 1, localReqBody.toByteArray(), paramLong, paramajte, false);
-      paramajte.extraData.putString("uin", paramMessageRecord.frienduin);
-      paramajte.extraData.putLong("msgsize", l1);
-      paramajte.extraData.putLong("uniseq", paramMessageRecord.uniseq);
-      paramajte.extraData.putLong("timeOut", paramLong);
-      paramajte.extraData.putLong("msgSeq", paramMessageRecord.msgseq);
-      paramajte.extraData.putLong("startTime", l2);
-      paramajte.extraData.putInt("retryIndex", paramInt);
-      paramajte.extraData.putInt("uintype", paramMessageRecord.istroop);
-      paramajte.extraData.putInt("msgtype", paramMessageRecord.msgtype);
-      paramajte.extraData.putString("groupuin", paramMessageRecord.frienduin);
-      if (akpx.p(paramMessageRecord.msgtype)) {
-        paramajte.extraData.putBoolean("RichNotify", true);
+      paramalkr = makeOIDBPkg("OidbSvc.0xa89", 2697, 1, localReqBody.toByteArray(), paramLong, paramalkr, false);
+      paramalkr.extraData.putString("uin", paramMessageRecord.frienduin);
+      paramalkr.extraData.putLong("msgsize", l1);
+      paramalkr.extraData.putLong("uniseq", paramMessageRecord.uniseq);
+      paramalkr.extraData.putLong("timeOut", paramLong);
+      paramalkr.extraData.putLong("msgSeq", paramMessageRecord.msgseq);
+      paramalkr.extraData.putLong("startTime", l2);
+      paramalkr.extraData.putInt("retryIndex", paramInt);
+      paramalkr.extraData.putInt("uintype", paramMessageRecord.istroop);
+      paramalkr.extraData.putInt("msgtype", paramMessageRecord.msgtype);
+      paramalkr.extraData.putString("groupuin", paramMessageRecord.frienduin);
+      if (abot.q(paramMessageRecord.msgtype)) {
+        paramalkr.extraData.putBoolean("RichNotify", true);
       }
-      paramajte.extraData.putInt("ROUNTING_TYPE", 21);
-      paramajte.extraData.putInt("send_msg_req_size", paramajte.getWupBuffer().length);
-      paramajte.extraData.putLong("msg_request_time", paramMessageRecord.time);
-      paramajte.addAttribute("msgtype", Integer.valueOf(paramMessageRecord.msgtype));
-      paramajte.addAttribute("msgSeq", Long.valueOf(paramMessageRecord.msgseq));
-      paramajte.addAttribute("resend_by_user", Boolean.valueOf(paramBoolean));
-      paramajte.addAttribute("retryIndex", Integer.valueOf(paramInt));
+      paramalkr.extraData.putInt("ROUNTING_TYPE", 21);
+      paramalkr.extraData.putInt("send_msg_req_size", paramalkr.getWupBuffer().length);
+      paramalkr.extraData.putLong("msg_request_time", paramMessageRecord.time);
+      paramalkr.addAttribute("msgtype", Integer.valueOf(paramMessageRecord.msgtype));
+      paramalkr.addAttribute("msgSeq", Long.valueOf(paramMessageRecord.msgseq));
+      paramalkr.addAttribute("resend_by_user", Boolean.valueOf(paramBoolean));
+      paramalkr.addAttribute("retryIndex", Integer.valueOf(paramInt));
       if (paramMessageRecord.frienduin != null) {
-        break label461;
+        break label460;
       }
       paramPbSendMsgReq = "";
-      label396:
-      paramajte.addAttribute("uin", paramPbSendMsgReq);
+      label395:
+      paramalkr.addAttribute("uin", paramPbSendMsgReq);
       if (paramMessageRecord.senderuin != null) {
-        break label469;
+        break label468;
       }
     }
-    label461:
-    label469:
+    label460:
+    label468:
     for (paramMessageRecord = "";; paramMessageRecord = paramMessageRecord.senderuin)
     {
-      paramajte.addAttribute("fromUin", paramMessageRecord);
-      paramajte.addAttribute("normal_msg", Boolean.valueOf(true));
-      a(paramajte);
+      paramalkr.addAttribute("fromUin", paramMessageRecord);
+      paramalkr.addAttribute("normal_msg", Boolean.valueOf(true));
+      a(paramalkr);
       return;
       l1 = paramMessageRecord.msg.getBytes().length;
       break;
       paramPbSendMsgReq = paramMessageRecord.frienduin;
-      break label396;
+      break label395;
     }
   }
   
@@ -2499,7 +2593,7 @@ public class MessageHandler
     {
       paramObject = (msg_onlinepush.PbPushMsg)((msg_onlinepush.PbPushMsg)localObject).mergeFrom((byte[])paramObject);
       if (paramObject == null) {
-        axrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "msf.msg.decodeerr", false, 0L, 0L, new HashMap(), "");
+        azmz.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "msf.msg.decodeerr", false, 0L, 0L, new HashMap(), "");
       }
       if ((paramObject == null) || (!paramObject.msg.has())) {
         if (QLog.isColorLevel())
@@ -2531,7 +2625,7 @@ public class MessageHandler
       localObject = (msg_comm.Msg)paramObject.msg.get();
       int i1 = ((msg_comm.MsgHead)((msg_comm.Msg)localObject).msg_head.get()).msg_type.get();
       if ((paramObject.uint32_general_flag.get() & 0x20) == 32) {
-        bazy.a(true);
+        bcys.a(true);
       }
       for (;;)
       {
@@ -2543,7 +2637,12 @@ public class MessageHandler
         }
         a("c2c_processor").a(2003, new Object[] { localObject, paramFromServiceMsg, paramObject });
         return;
-        bazy.a(false);
+        bcys.a(false);
+      }
+      if ("OnlinePush.PbPushBindUinGroupMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
+      {
+        a().a(4004, new Object[] { localObject, paramFromServiceMsg, paramObject });
+        return;
       }
       switch (i1)
       {
@@ -2553,11 +2652,11 @@ public class MessageHandler
     }
     a("disc_processor").a(1001, new Object[] { localObject, paramFromServiceMsg, paramObject, Boolean.valueOf(true) });
     return;
-    akon localakon = a("troop_processor");
+    abnx localabnx = a("troop_processor");
     if (paramObject.ping_flag.get() == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      localakon.a(1001, new Object[] { localObject, paramFromServiceMsg, paramObject, Boolean.valueOf(bool) });
+      localabnx.a(1001, new Object[] { localObject, paramFromServiceMsg, paramObject, Boolean.valueOf(bool) });
       return;
     }
     a("c2c_processor").a(1001, new Object[] { localObject, paramFromServiceMsg, paramObject });
@@ -2600,9 +2699,9 @@ public class MessageHandler
     this.q = 0;
     ArrayList localArrayList = new ArrayList();
     if (bool) {}
-    for (HashMap localHashMap1 = new HashMap(this.jdField_a_of_type_Awzy.a());; localHashMap1 = null)
+    for (HashMap localHashMap1 = new HashMap(this.jdField_a_of_type_Ayvc.a());; localHashMap1 = null)
     {
-      agvx localagvx = (agvx)this.app.getManager(125);
+      aipw localaipw = (aipw)this.app.getManager(125);
       HashMap localHashMap2 = new HashMap();
       int i1 = 0;
       if (i1 < paramSvcResponsePullGroupMsgSeq.vGroupInfo.size())
@@ -2612,13 +2711,13 @@ public class MessageHandler
         if (((GroupInfo)localObject1).lRedPackTime > 0L) {
           localHashMap2.put(str, String.valueOf(((GroupInfo)localObject1).lRedPackTime));
         }
-        Object localObject2 = this.jdField_a_of_type_Awzy.b(str);
-        long l2 = this.jdField_a_of_type_Awzy.j(str);
+        Object localObject2 = this.jdField_a_of_type_Ayvc.b(str);
+        long l2 = this.jdField_a_of_type_Ayvc.j(str);
         long l1;
         if ((localObject2 != null) && (localObject2.length > 0))
         {
           l1 = ((Long)localObject2[0]).longValue();
-          label295:
+          label294:
           if (QLog.isColorLevel())
           {
             localStringBuilder.setLength(0);
@@ -2626,13 +2725,13 @@ public class MessageHandler
             QLog.d("Q.msg.MessageHandler", 2, localStringBuilder.toString());
           }
           if (!bool) {
-            break label688;
+            break label686;
           }
           if (((((GroupInfo)localObject1).lMask != 2L) && (((GroupInfo)localObject1).lMask != 3L)) || (this.app.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.d())) {
-            break label562;
+            break label560;
           }
           h(str);
-          label448:
+          label446:
           if (localHashMap1 != null) {
             localHashMap1.remove(str);
           }
@@ -2652,35 +2751,35 @@ public class MessageHandler
           i1 += 1;
           break;
           l1 = 0L;
-          break label295;
-          label562:
-          this.jdField_a_of_type_Awzy.c(str, new Object[] { Long.valueOf(((GroupInfo)localObject1).lMemberSeq), Long.valueOf(((GroupInfo)localObject1).lGroupSeq) });
+          break label294;
+          label560:
+          this.jdField_a_of_type_Ayvc.c(str, new Object[] { Long.valueOf(((GroupInfo)localObject1).lMemberSeq), Long.valueOf(((GroupInfo)localObject1).lGroupSeq) });
           if (((GroupInfo)localObject1).lGroupSeq <= l2)
           {
             h(str);
             if (l1 >= ((GroupInfo)localObject1).lMemberSeq) {
-              break label448;
+              break label446;
             }
             if (jdField_f_of_type_Boolean)
             {
               a(4, paramToServiceMsg, paramFromServiceMsg, localObject1);
-              break label448;
+              break label446;
             }
             this.app.a().a(str, 1, ((GroupInfo)localObject1).lMemberSeq);
-            break label448;
+            break label446;
           }
           if (l1 >= ((GroupInfo)localObject1).lMemberSeq) {
-            break label448;
+            break label446;
           }
-          this.jdField_a_of_type_Awzy.a(str, 1);
-          break label448;
-          label688:
-          this.jdField_a_of_type_Awzy.c(str, new Object[] { Long.valueOf(((GroupInfo)localObject1).lMemberSeq), Long.valueOf(((GroupInfo)localObject1).lGroupSeq) });
+          this.jdField_a_of_type_Ayvc.a(str, 1);
+          break label446;
+          label686:
+          this.jdField_a_of_type_Ayvc.c(str, new Object[] { Long.valueOf(((GroupInfo)localObject1).lMemberSeq), Long.valueOf(((GroupInfo)localObject1).lGroupSeq) });
           if (l1 < ((GroupInfo)localObject1).lMemberSeq) {
             this.app.a().a(String.valueOf(((GroupInfo)localObject1).lGroupCode), 1, ((GroupInfo)localObject1).lMemberSeq);
           }
-          l1 = this.jdField_a_of_type_Awzy.a(str, 1);
-          localObject1 = a(str, 1, this.jdField_a_of_type_Awzy.b(str), this.jdField_a_of_type_Awzy.c(str), l1, ((GroupInfo)localObject1).lGroupSeq);
+          l1 = this.jdField_a_of_type_Ayvc.a(str, 1);
+          localObject1 = a(str, 1, this.jdField_a_of_type_Ayvc.b(str), this.jdField_a_of_type_Ayvc.c(str), l1, ((GroupInfo)localObject1).lGroupSeq);
           int i3 = (int)(((Long)((Pair)localObject1).second).longValue() - ((Long)((Pair)localObject1).first).longValue());
           l1 = ((Long)((Pair)localObject1).first).longValue();
           l2 = ((Long)((Pair)localObject1).second).longValue();
@@ -2695,12 +2794,12 @@ public class MessageHandler
               QLog.d("Q.msg.MessageHandler", 2, localStringBuilder.toString());
             }
             if (i3 > 0) {
-              break label969;
+              break label966;
             }
-            ((azrd)a("troop_processor")).a(str, null, i2);
+            ((bbpm)a("troop_processor")).a(str, null, i2);
             break;
           }
-          label969:
+          label966:
           localArrayList.add(str);
           if ((localArrayList != null) && (localArrayList.size() > 0))
           {
@@ -2717,7 +2816,7 @@ public class MessageHandler
           }
         }
       }
-      localagvx.a(localHashMap2);
+      localaipw.a(localHashMap2);
       if (!bool) {
         break;
       }
@@ -2731,7 +2830,7 @@ public class MessageHandler
           h((String)paramToServiceMsg.next());
         }
       }
-      if (!this.jdField_a_of_type_Awzy.b()) {
+      if (!this.jdField_a_of_type_Ayvc.b()) {
         break;
       }
       notifyUI(4003, true, arrayOfString);
@@ -2785,7 +2884,7 @@ public class MessageHandler
   
   private void b(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    a(akqj.a(paramString)).b(akqj.a(paramString), paramToServiceMsg, paramFromServiceMsg);
+    a(amgr.a(paramString)).b(amgr.a(paramString), paramToServiceMsg, paramFromServiceMsg);
   }
   
   private void b(register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
@@ -2894,59 +2993,6 @@ public class MessageHandler
     notifyUI(4016, false, null);
   }
   
-  public static void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    HashMap localHashMap = new HashMap();
-    long l2 = 0L;
-    long l3 = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 0L);
-    int i1;
-    if ((l3 == 10L) || (l3 == 34L))
-    {
-      i1 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
-      paramFromServiceMsg = paramToServiceMsg.extraData.getString("uin");
-      if (paramFromServiceMsg != null) {
-        break label340;
-      }
-      paramFromServiceMsg = "0";
-    }
-    label330:
-    label340:
-    for (;;)
-    {
-      int i2 = paramToServiceMsg.extraData.getInt("send_msg_req_size", 0);
-      localHashMap.put("pm_peer_uin", paramFromServiceMsg);
-      localHashMap.put("pm_route_type", String.valueOf(i1));
-      localHashMap.put("pm_req_size", String.valueOf(i2));
-      localHashMap.put("pm_srv_reply", String.valueOf(l3));
-      long l1 = l2;
-      if (i1 != 13)
-      {
-        l1 = l2;
-        if (i1 != 9)
-        {
-          l1 = paramToServiceMsg.extraData.getLong("startTime", 0L);
-          l2 = System.currentTimeMillis();
-          if (l1 >= 1L) {
-            break label330;
-          }
-        }
-      }
-      for (l1 = 0L;; l1 = l2 - l1)
-      {
-        int i3 = paramToServiceMsg.extraData.getInt("msgtype");
-        int i4 = axaq.a(i1);
-        localHashMap.put("pm_msg_type", String.valueOf(i3));
-        localHashMap.put("pm_uin_type", String.valueOf(i4));
-        paramToServiceMsg = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        axrn.a(BaseApplication.getContext()).a(paramToServiceMsg.getCurrentAccountUin(), "sendMsgTooLargeErrorTag", false, l1, i2, localHashMap, "");
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.MessageHandler", 2, String.format("Statistics TAG:%s, duration:%dms, peerUin:%s, replyCode:%d, routingType:%s, msgReqSize:%d", new Object[] { "sendMsgTooLargeErrorTag", Long.valueOf(l1), paramFromServiceMsg, Long.valueOf(l3), Integer.valueOf(i1), Integer.valueOf(i2) }));
-        }
-        return;
-      }
-    }
-  }
-  
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
   {
     if (paramSvcRegisterProxyMsgResp.group_list.has())
@@ -2954,25 +3000,25 @@ public class MessageHandler
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "handleNewRegisterProxyMsg--> handleTroopList!");
       }
-      bajo localbajo = (bajo)this.app.getManager(132);
+      bcic localbcic = (bcic)this.app.getManager(132);
       paramSvcRegisterProxyMsgResp = paramSvcRegisterProxyMsgResp.group_list.get();
       this.jdField_a_of_type_JavaUtilList = paramSvcRegisterProxyMsgResp;
-      Object localObject1 = this.jdField_a_of_type_Awzy;
-      awzy.jdField_a_of_type_Axad.jdField_a_of_type_JavaUtilList = paramSvcRegisterProxyMsgResp;
+      Object localObject1 = this.jdField_a_of_type_Ayvc;
+      ayvc.jdField_a_of_type_Ayvh.jdField_a_of_type_JavaUtilList = paramSvcRegisterProxyMsgResp;
       int i1 = 0;
       if (i1 < paramSvcRegisterProxyMsgResp.size())
       {
         localObject1 = (register_proxy.GroupList)paramSvcRegisterProxyMsgResp.get(i1);
         if (localObject1 == null) {}
-        label566:
-        label577:
+        label564:
+        label575:
         for (;;)
         {
           i1 += 1;
           break;
           String str = String.valueOf(((register_proxy.GroupList)localObject1).group_code.get());
-          Object localObject2 = this.jdField_a_of_type_Awzy.b(str);
-          long l3 = this.jdField_a_of_type_Awzy.j(str);
+          Object localObject2 = this.jdField_a_of_type_Ayvc.b(str);
+          long l3 = this.jdField_a_of_type_Ayvc.j(str);
           long l2 = 0L;
           long l1 = l2;
           if (localObject2 != null)
@@ -2989,13 +3035,13 @@ public class MessageHandler
             ((StringBuilder)localObject2).append("handleNewRegisterProxyMsg getGroupList groupCode=").append(((register_proxy.GroupList)localObject1).group_code.get()).append(" groupSeq=").append(((register_proxy.GroupList)localObject1).group_seq.get()).append(" memberSeq=").append(((register_proxy.GroupList)localObject1).member_seq.get()).append(" mask=").append(((register_proxy.GroupList)localObject1).mask.get()).append(" localMemberMsgSeq=").append(l1).append(" localLastSeq=").append(l3).append(" redpack_time=").append(((register_proxy.GroupList)localObject1).redpack_time.get()).append(" hasMsg=").append(((register_proxy.GroupList)localObject1).has_msg.get());
             QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject2).toString());
           }
-          if ((((register_proxy.GroupList)localObject1).mask.get() == 1L) || (((register_proxy.GroupList)localObject1).mask.get() == 4L) || ((((register_proxy.GroupList)localObject1).mask.get() == 3L) && (str.equals(localbajo.a()))))
+          if ((((register_proxy.GroupList)localObject1).mask.get() == 1L) || (((register_proxy.GroupList)localObject1).mask.get() == 4L) || ((((register_proxy.GroupList)localObject1).mask.get() == 3L) && (str.equals(localbcic.a()))))
           {
-            this.jdField_a_of_type_Awzy.c(str, new Object[] { Long.valueOf(((register_proxy.GroupList)localObject1).member_seq.get()), Long.valueOf(((register_proxy.GroupList)localObject1).group_seq.get()) });
+            this.jdField_a_of_type_Ayvc.c(str, new Object[] { Long.valueOf(((register_proxy.GroupList)localObject1).member_seq.get()), Long.valueOf(((register_proxy.GroupList)localObject1).group_seq.get()) });
             if (l1 < ((register_proxy.GroupList)localObject1).member_seq.get())
             {
               if (((register_proxy.GroupList)localObject1).group_seq.get() > l3) {
-                break label566;
+                break label564;
               }
               a(4, paramToServiceMsg, paramFromServiceMsg, localObject1);
             }
@@ -3003,7 +3049,7 @@ public class MessageHandler
           for (;;)
           {
             if (((register_proxy.GroupList)localObject1).mask.get() == 0L) {
-              break label577;
+              break label575;
             }
             if (this.jdField_b_of_type_JavaUtilArrayList == null) {
               this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
@@ -3013,7 +3059,7 @@ public class MessageHandler
             ((Setting)localObject2).Value = String.valueOf(((register_proxy.GroupList)localObject1).mask.get());
             this.jdField_b_of_type_JavaUtilArrayList.add(localObject2);
             break;
-            this.jdField_a_of_type_Awzy.a(str, 1);
+            this.jdField_a_of_type_Ayvc.a(str, 1);
           }
         }
       }
@@ -3034,7 +3080,7 @@ public class MessageHandler
     ArrayList localArrayList = new ArrayList();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
-      localArrayList.add(bbcc.a(((Long)paramArrayList.next()).longValue()));
+      localArrayList.add(bdaw.a(((Long)paramArrayList.next()).longValue()));
     }
     a(localArrayList);
   }
@@ -3048,30 +3094,6 @@ public class MessageHandler
     if (this.jdField_c_of_type_Long > 300L) {
       this.jdField_c_of_type_Long = 300L;
     }
-  }
-  
-  private void d(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg.getResultCode() == 1000)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "handleInfoSyncResp request success!");
-      }
-      notifyUI(4004, true, null);
-      return;
-    }
-    if ((paramFromServiceMsg.getResultCode() == 1002) || (paramFromServiceMsg.getResultCode() == 1013))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "handleInfoSyncResp request timeout!");
-      }
-      notifyUI(4004, false, null);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "handleInfoSyncResp request error!");
-    }
-    notifyUI(4004, false, null);
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -3100,20 +3122,20 @@ public class MessageHandler
     int i6 = paramToServiceMsg.extraData.getInt("retryIndex", 0);
     int i5 = paramToServiceMsg.extraData.getInt("msgtype");
     int i7 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
-    int i2 = axaq.a(i7);
+    int i2 = ayvu.a(i7, this.app);
     if (i2 == 1024) {
       i2 = paramToServiceMsg.extraData.getInt("uintype", i2);
     }
-    label539:
-    label939:
-    label1461:
+    label537:
+    label936:
+    label1457:
     for (;;)
     {
-      if (akpx.a(i2) == 1032) {}
+      if (abot.a(i2) == 1032) {}
       boolean bool1;
-      label586:
-      label1487:
-      label2014:
+      label584:
+      label1483:
+      label2011:
       for (int i3 = paramToServiceMsg.extraData.getInt("key_confess_topicid", 0);; i3 = 0)
       {
         bool1 = paramToServiceMsg.extraData.getBoolean("RichNotify", false);
@@ -3134,7 +3156,7 @@ public class MessageHandler
               QLog.e("Q.msg.MessageHandler", 2, "<---handleSendC2CMessageResp_PB : invalid.", localException);
               localStringBuilder = new StringBuilder().append("<---handleSendC2CMessageResp_PB : data:");
               if (paramObject != null) {
-                break label539;
+                break label537;
               }
             }
             for (paramObject = "null";; paramObject = Arrays.toString((byte[])paramObject))
@@ -3157,19 +3179,19 @@ public class MessageHandler
                     continue;
                   }
                 }
-                if (((i2 != 10002) && (i2 != 1001)) || (!atbr.a(i1))) {
-                  break label2014;
+                if (((i2 != 10002) && (i2 != 1001)) || (!ausq.a(i1))) {
+                  break label2011;
                 }
                 if (i1 == 48)
                 {
                   if (i2 != 10002) {
-                    break label1461;
+                    break label1457;
                   }
                   i4 = 1;
                   this.app.a().i(str1, null);
-                  atbr.a(this.app, str1, i4);
+                  ausq.a(this.app, str1, i4);
                 }
-                axqy.b(this.app, "dc00899", "grp_lbs", "", "nearby_chat", "nearby_sig_expire", 0, 0, str1, String.valueOf(i2), String.valueOf(i1), "");
+                azmj.b(this.app, "dc00899", "grp_lbs", "", "nearby_chat", "nearby_sig_expire", 0, 0, str1, String.valueOf(i2), String.valueOf(i1), "");
                 if (QLog.isColorLevel()) {
                   QLog.e("Q.msg.MessageHandlerQ.nearby.nearby_sig", 2, "handleSendC2CMessageResp_PB, 部落、附近的人临时会话因为签名失败, uinType:" + i2 + "|replyCode:" + i1);
                 }
@@ -3204,7 +3226,7 @@ public class MessageHandler
                   {
                     long l5 = paramToServiceMsg.extraData.getLong("msg_request_time", 0L);
                     if ((l5 <= 0L) || (i2 != 0)) {
-                      break label1487;
+                      break label1483;
                     }
                     l1 = 0L;
                     long l2 = l1;
@@ -3224,7 +3246,7 @@ public class MessageHandler
                         }
                       }
                     }
-                    paramObject = new akaq();
+                    paramObject = new alsf();
                     paramObject.jdField_c_of_type_Long = l2;
                     paramObject.jdField_d_of_type_Long = System.currentTimeMillis();
                     paramObject.jdField_b_of_type_Long = (paramObject.jdField_d_of_type_Long - l5);
@@ -3239,7 +3261,7 @@ public class MessageHandler
                   {
                     if (bool1)
                     {
-                      paramObject = new akau();
+                      paramObject = new alsj();
                       paramObject.jdField_c_of_type_Int = (i6 + 1);
                       a(paramToServiceMsg, 5006, true, new Object[] { Long.valueOf(l3), paramObject });
                       a(str1, i2, l3, true);
@@ -3249,25 +3271,25 @@ public class MessageHandler
                     if ((i2 == 1025) || (i2 == 1024))
                     {
                       l1 = localStringBuilder.a(System.currentTimeMillis());
-                      ((bdvn)this.app.a(85)).a(str1, l1);
+                      ((bfvi)this.app.a(85)).a(str1, l1);
                     }
                     b((MessageRecord)localObject2);
                     i3 = 0;
-                    ((astu)this.app.getManager(166)).a(str1, i2, l3, i4, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("startTime", 0L));
-                    npu.a(this.app, i5, str1, i2, l3);
+                    ((aukr)this.app.getManager(166)).a(str1, i2, l3, i4, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("startTime", 0L));
+                    ntd.a(this.app, i5, str1, i2, l3);
                     if (i3 != 0) {
                       break;
                     }
-                    adgc.a().a(this.app, l3);
+                    aeyf.a().a(this.app, l3);
                     return;
                     i4 = 0;
-                    break label586;
+                    break label584;
                     i4 = 0;
                     this.app.a().h(str1, null);
-                    break label664;
+                    break label662;
                     paramObject = "0";
-                    break label939;
-                    if (akpx.a(i2) == 1032) {
+                    break label936;
+                    if (abot.a(i2) == 1032) {
                       notifyUI(8035, true, new Object[] { str1, Integer.valueOf(i2), Long.valueOf(l3), Integer.valueOf(i3) });
                     } else {
                       notifyUI(6003, true, new String[] { str1, l3 + "" });
@@ -3298,13 +3320,13 @@ public class MessageHandler
                   {
                     localObject2[6] = paramObject;
                     a((Object[])localObject2, paramFromServiceMsg.getUin(), i4);
-                    if (akpx.a(i2) == 1032) {
+                    if (abot.a(i2) == 1032) {
                       localObject2[7] = Integer.valueOf(i3);
                     }
                     a(i7, true, localObject2);
                     if (bool1)
                     {
-                      paramObject = new akau();
+                      paramObject = new alsj();
                       paramObject.jdField_b_of_type_Int = 2900;
                       paramObject.jdField_a_of_type_Long = i4;
                       paramObject.jdField_c_of_type_Int = (i6 + 1);
@@ -3327,7 +3349,7 @@ public class MessageHandler
                       }
                     }
                     l1 = localStringBuilder.a(System.currentTimeMillis());
-                    ((bdvn)this.app.a(85)).a(str1, i4, l1);
+                    ((bfvi)this.app.a(85)).a(str1, i4, l1);
                     i3 = i1;
                     break;
                   }
@@ -3358,7 +3380,7 @@ public class MessageHandler
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.MessageHandler", 2, "<PbSendMsg><R><---handleSendC2CMessageResp_PB : ---cmd:" + (String)localObject2 + ",no SendMessageHandler found.");
           }
-          adgc.a().a(this.app, l3);
+          aeyf.a().a(this.app, l3);
         }
       }
     }
@@ -3380,14 +3402,14 @@ public class MessageHandler
   
   private void d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Awzy.a(paramString1, 2);
-    Object localObject = this.jdField_a_of_type_Awzy.a(paramString1);
+    this.jdField_a_of_type_Ayvc.a(paramString1, 2);
+    Object localObject = this.jdField_a_of_type_Ayvc.a(paramString1);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "----------handleTroopMsgResponseFinishedAndNotify troopUin: " + paramString1 + ", funcName:" + paramString2);
     }
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      this.jdField_a_of_type_Awzy.b(paramString1);
+      this.jdField_a_of_type_Ayvc.b(paramString1);
       paramString2 = ((ArrayList)localObject).iterator();
       while (paramString2.hasNext())
       {
@@ -3397,9 +3419,9 @@ public class MessageHandler
         }
       }
     }
-    paramString1 = this.jdField_a_of_type_Awzy.a(paramString1);
+    paramString1 = this.jdField_a_of_type_Ayvc.a(paramString1);
     if (paramString1 != null) {
-      ((azrd)a("troop_processor")).a(paramString1);
+      ((bbpm)a("troop_processor")).a(paramString1);
     }
   }
   
@@ -3434,7 +3456,7 @@ public class MessageHandler
         {
           localObject4 = new StringBuilder().append("<---handleSendTroopMessageRespPB:");
           if (paramObject != null) {
-            break label335;
+            break label331;
           }
         }
         for (paramObject = "null";; paramObject = Arrays.toString((byte[])paramObject))
@@ -3484,12 +3506,12 @@ public class MessageHandler
             if (localObject2 == null) {
               break label1189;
             }
-            ajyi.a(this.app, (HotChatInfo)localObject2);
+            alpw.a(this.app, (HotChatInfo)localObject2);
             bool1 = false;
           }
           for (;;)
           {
-            int i4 = axaq.a(paramToServiceMsg.extraData.getInt("ROUNTING_TYPE"));
+            int i4 = ayvu.a(paramToServiceMsg.extraData.getInt("ROUNTING_TYPE"), this.app);
             long l1;
             long l2;
             if (bool1)
@@ -3532,7 +3554,7 @@ public class MessageHandler
                     }
                   }
                 }
-                paramObject = new akaq();
+                paramObject = new alsf();
                 paramObject.jdField_c_of_type_Long = l2;
                 paramObject.jdField_d_of_type_Long = System.currentTimeMillis();
                 paramObject.jdField_b_of_type_Long = (paramObject.jdField_d_of_type_Long - l5);
@@ -3547,9 +3569,9 @@ public class MessageHandler
                 if (paramToServiceMsg.extraData.getBoolean("RichNotify", false))
                 {
                   i4 = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-                  paramObject = new akau();
+                  paramObject = new alsj();
                   if (!bool1) {
-                    break label1899;
+                    break label1896;
                   }
                   paramObject.jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
                   paramObject.jdField_c_of_type_Int = (i4 + 1);
@@ -3563,32 +3585,32 @@ public class MessageHandler
               d(paramToServiceMsg, paramFromServiceMsg, true);
               a(l3);
               c(paramToServiceMsg, paramFromServiceMsg);
-              ((astu)this.app.getManager(166)).a(paramToServiceMsg.extraData.getString("groupuin"), 1, l4, i1, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("startTime", 0L));
-              npu.a(this.app, i3, str, 1, l4);
+              ((aukr)this.app.getManager(166)).a(paramToServiceMsg.extraData.getString("groupuin"), 1, l4, i1, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("startTime", 0L));
+              ntd.a(this.app, i3, str, 1, l4);
               if (i2 != 0) {
                 break;
               }
-              adgc.a().a(this.app, l4);
+              aeyf.a().a(this.app, l4);
               return;
               i2 = 0;
-              break label382;
+              break label378;
               localObject2 = "";
-              break label506;
+              break label502;
               localObject2 = this.app.a().a();
-              localObject4 = ((aktf)localObject2).a(str, 1);
+              localObject4 = ((amjk)localObject2).a(str, 1);
               if (localObject4 != null) {
-                ((aktf)localObject2).b((RecentUser)localObject4);
+                ((amjk)localObject2).b((RecentUser)localObject4);
               }
               a(1002, true, localObject3);
               a(2001, true, localObject3);
               a(2002, true, localObject3);
               bool1 = false;
-              break label568;
+              break label564;
               if (i1 != 0) {
-                break label1932;
+                break label1929;
               }
               bool1 = true;
-              break label568;
+              break label564;
               switch (i1)
               {
               default: 
@@ -3603,9 +3625,9 @@ public class MessageHandler
               case 103: 
                 ((TroopManager)localObject4).a(str);
                 localObject2 = this.app.a().a();
-                localObject4 = ((aktf)localObject2).a(str, 1);
+                localObject4 = ((amjk)localObject2).a(str, 1);
                 if (localObject4 != null) {
-                  ((aktf)localObject2).b((RecentUser)localObject4);
+                  ((amjk)localObject2).b((RecentUser)localObject4);
                 }
                 a(1002, true, localObject3);
                 a(2001, true, localObject3);
@@ -3615,7 +3637,7 @@ public class MessageHandler
                 paramObject = "0";
                 break label639;
                 notifyUI(6003, true, new String[] { paramToServiceMsg.extraData.getString("groupuin"), String.valueOf(l4) });
-                break label983;
+                break label982;
                 if ((i1 == 10) || (i1 == 34))
                 {
                   i2 = 1;
@@ -3636,7 +3658,7 @@ public class MessageHandler
                   a(l3);
                   this.app.a().a(str, 1, l4);
                   if (localObject2 == null) {
-                    break label1764;
+                    break label1762;
                   }
                   if (QLog.isColorLevel()) {
                     QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail, MessageRecord=" + ((MessageRecord)localObject2).toString());
@@ -3647,11 +3669,11 @@ public class MessageHandler
                 for (;;)
                 {
                   localObject2 = new MessageForUniteGrayTip();
-                  localObject4 = new aqvb(str, str, localObject3[6].toString(), 1, -5040, 131082, l1);
-                  ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(this.app, (aqvb)localObject4);
+                  localObject4 = new aslp(str, str, localObject3[6].toString(), 1, -5040, 131082, l1);
+                  ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(this.app, (aslp)localObject4);
                   ((MessageForUniteGrayTip)localObject2).isread = true;
                   ((MessageForUniteGrayTip)localObject2).shmsgseq = l2;
-                  aqvc.a(this.app, (MessageForUniteGrayTip)localObject2);
+                  aslq.a(this.app, (MessageForUniteGrayTip)localObject2);
                   a(paramToServiceMsg, paramObject);
                   a((Object[])localObject3, paramFromServiceMsg.getUin(), i1);
                   a(3002, false, localObject3);
@@ -3667,7 +3689,7 @@ public class MessageHandler
                   }
                   else
                   {
-                    l1 = awzy.a();
+                    l1 = ayvc.a();
                     l2 = 0L;
                   }
                 }
@@ -3701,9 +3723,9 @@ public class MessageHandler
       }
       localObject1 = a(l3);
       if (localObject1 != null) {
-        break label371;
+        break label367;
       }
-      adgc.a().a(this.app, l4);
+      aeyf.a().a(this.app, l4);
     }
   }
   
@@ -3722,7 +3744,7 @@ public class MessageHandler
     for (;;)
     {
       localHashMap.put("param_retryIndex", Long.toString(l3));
-      axrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "dim.actSendGrpTmpMsg", paramBoolean, l1, l2, localHashMap, "");
+      azmz.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "dim.actSendGrpTmpMsg", paramBoolean, l1, l2, localHashMap, "");
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -3734,7 +3756,7 @@ public class MessageHandler
   
   private void e(String paramString)
   {
-    ((ajxl)this.app.getManager(51)).b(paramString);
+    ((aloz)this.app.getManager(51)).b(paramString);
   }
   
   private void e(String paramString1, String paramString2)
@@ -3749,12 +3771,12 @@ public class MessageHandler
       ((StringBuilder)localObject).append(paramString2);
       QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_Awzy.b(paramString1, 2);
-    paramString2 = this.jdField_a_of_type_Awzy.b(paramString1);
+    this.jdField_a_of_type_Ayvc.b(paramString1, 2);
+    paramString2 = this.jdField_a_of_type_Ayvc.b(paramString1);
     if ((paramString2 != null) && (!paramString2.isEmpty()))
     {
       paramString2 = new ArrayList(paramString2);
-      this.jdField_a_of_type_Awzy.d(paramString1);
+      this.jdField_a_of_type_Ayvc.d(paramString1);
       paramString2 = paramString2.iterator();
       while (paramString2.hasNext())
       {
@@ -3764,9 +3786,9 @@ public class MessageHandler
         }
       }
     }
-    paramString1 = this.jdField_a_of_type_Awzy.a(paramString1);
+    paramString1 = this.jdField_a_of_type_Ayvc.a(paramString1);
     if (paramString1 != null) {
-      ((akpi)a("disc_processor")).a(paramString1);
+      ((amgb)a("disc_processor")).a(paramString1);
     }
   }
   
@@ -3796,8 +3818,8 @@ public class MessageHandler
     int i3 = paramToServiceMsg.extraData.getInt("msgtype");
     int i4 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
     int i1 = paramToServiceMsg.extraData.getInt("retryIndex");
-    int i2 = axaq.a(i4);
-    adgc.a().a(this.app, l1);
+    int i2 = ayvu.a(i4, this.app);
+    aeyf.a().a(this.app, l1);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "<PbSendMsg><E><---handleSendC2CMessageError: ---cmd:" + (String)localObject + " ssoseq:" + paramFromServiceMsg.getRequestSsoSeq() + " appseq:" + paramFromServiceMsg.getAppSeq() + ",sendC2CMessage error : peerUin:" + str + " uniseq:" + l1 + " msgSeq:" + l2 + " msgType:" + i3 + " uinType:" + i2 + " routingType:" + i4 + " retryIndex:" + i1);
     }
@@ -3806,14 +3828,14 @@ public class MessageHandler
     if (localObject != null)
     {
       if (paramFromServiceMsg.getResultCode() != 2901) {
-        break label292;
+        break label295;
       }
       localObject.getClass();
       if (!a((SendMessageHandler)localObject, "msf")) {
-        break label292;
+        break label295;
       }
     }
-    label292:
+    label295:
     while ((480000L != l3) && (!((SendMessageHandler)localObject).a())) {
       return;
     }
@@ -3829,10 +3851,10 @@ public class MessageHandler
     a(i3, false, localObject);
     if (paramToServiceMsg.extraData.getBoolean("RichNotify", false))
     {
-      localObject = new akau();
-      ((akau)localObject).jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
-      ((akau)localObject).jdField_c_of_type_Int = i1;
-      ((akau)localObject).jdField_a_of_type_JavaLangString = a(paramFromServiceMsg);
+      localObject = new alsj();
+      ((alsj)localObject).jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
+      ((alsj)localObject).jdField_c_of_type_Int = i1;
+      ((alsj)localObject).jdField_a_of_type_JavaLangString = a(paramFromServiceMsg);
       a(paramToServiceMsg, 5006, false, new Object[] { Long.valueOf(l1), localObject });
       a(str, i2, l1, false);
     }
@@ -3843,7 +3865,7 @@ public class MessageHandler
   private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i1 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
-    if (akas.a(i1)) {
+    if (alsh.a(i1, this.app)) {
       d(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
     for (;;)
@@ -3877,7 +3899,7 @@ public class MessageHandler
     for (;;)
     {
       localHashMap.put("param_retryIndex", Long.toString(l3));
-      axrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "dim.actSendWpaMsg", paramBoolean, l1, l2, localHashMap, "");
+      azmz.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "dim.actSendWpaMsg", paramBoolean, l1, l2, localHashMap, "");
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -3889,7 +3911,7 @@ public class MessageHandler
   
   private void f(String paramString)
   {
-    ((ajxl)this.app.getManager(51)).c(paramString);
+    ((aloz)this.app.getManager(51)).c(paramString);
   }
   
   private boolean f()
@@ -3905,9 +3927,9 @@ public class MessageHandler
       {
         Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
         if (!localIterator.hasNext()) {
-          break label117;
+          break label116;
         }
-        if (!((akap)localIterator.next()).jdField_a_of_type_Boolean) {
+        if (!((alse)localIterator.next()).jdField_a_of_type_Boolean) {
           continue;
         }
         bool = true;
@@ -3921,7 +3943,7 @@ public class MessageHandler
         }
       }
       return false;
-      label117:
+      label116:
       boolean bool = false;
     }
   }
@@ -3936,24 +3958,24 @@ public class MessageHandler
     int i1 = paramToServiceMsg.extraData.getInt("msgtype");
     int i2 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
     int i3 = paramToServiceMsg.extraData.getInt("retryIndex");
-    int i4 = axaq.a(i2);
+    int i4 = ayvu.a(i2, this.app);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "<PbSendMsg><E><---handleSendGrpMessageError: ---cmd:" + (String)localObject + " ssoseq:" + paramFromServiceMsg.getRequestSsoSeq() + " appseq:" + paramFromServiceMsg.getAppSeq() + ",sendC2CMessage error : peerUin:" + str + " uniseq:" + l3 + " msgSeq:" + l1 + " msgType:" + i1 + " uinType:" + i4 + " routingType:" + i2 + " retryIndex:" + i3);
     }
     b(paramToServiceMsg, paramFromServiceMsg);
-    adgc.a().a(this.app, l3);
+    aeyf.a().a(this.app, l3);
     localObject = a(l1);
     if (localObject != null)
     {
       if (paramFromServiceMsg.getResultCode() != 2901) {
-        break label292;
+        break label295;
       }
       localObject.getClass();
       if (!a((SendMessageHandler)localObject, "msf")) {
-        break label292;
+        break label295;
       }
     }
-    label292:
+    label295:
     while ((480000L != l2) && (!((SendMessageHandler)localObject).a())) {
       return;
     }
@@ -3969,10 +3991,10 @@ public class MessageHandler
     if (paramToServiceMsg.extraData.getBoolean("RichNotify", false))
     {
       i1 = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-      localObject = new akau();
-      ((akau)localObject).jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
-      ((akau)localObject).jdField_c_of_type_Int = i1;
-      ((akau)localObject).jdField_a_of_type_JavaLangString = a(paramFromServiceMsg);
+      localObject = new alsj();
+      ((alsj)localObject).jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
+      ((alsj)localObject).jdField_c_of_type_Int = i1;
+      ((alsj)localObject).jdField_a_of_type_JavaLangString = a(paramFromServiceMsg);
       a(paramToServiceMsg, 5006, false, new Object[] { Long.valueOf(l3), localObject });
     }
     d(paramToServiceMsg, paramFromServiceMsg, false);
@@ -3983,7 +4005,7 @@ public class MessageHandler
   {
     paramObject = paramFromServiceMsg.getWupBuffer();
     byte[] arrayOfByte = new byte[paramObject.length - 4];
-    bbmx.a(arrayOfByte, 0, paramObject, 4, paramObject.length - 4);
+    bdlr.a(arrayOfByte, 0, paramObject, 4, paramObject.length - 4);
     paramObject = new OnlinePushTrans.PbMsgInfo();
     try
     {
@@ -3992,12 +4014,12 @@ public class MessageHandler
       {
         if ((paramObject.uint32_general_flag.get() & 0x20) == 32)
         {
-          bazy.a(true);
+          bcys.a(true);
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.MessageHandler", 2, new Object[] { "PbPushTransMsg muteGeneralFlag:", Integer.valueOf(paramObject.uint32_general_flag.get()) });
           }
           if (paramObject.msg_type.get() != 207) {
-            break label221;
+            break label220;
           }
           a(paramObject.msg_data.get().toByteArray());
         }
@@ -4025,9 +4047,9 @@ public class MessageHandler
         paramObject.printStackTrace();
         paramObject = null;
         continue;
-        bazy.a(false);
+        bcys.a(false);
         continue;
-        label221:
+        label220:
         if ((paramObject.msg_type.get() == 44) || (paramObject.msg_type.get() == 34))
         {
           a().a(3, 1, false);
@@ -4035,11 +4057,11 @@ public class MessageHandler
           long l2;
           if (paramObject.msg_type.get() == 34)
           {
-            paramToServiceMsg = (baky)this.app.getManager(48);
+            paramToServiceMsg = (bcjl)this.app.getManager(48);
             paramToServiceMsg = paramObject.msg_data.get().toByteArray();
-            l1 = bbmx.a(paramToServiceMsg, 0);
+            l1 = bdlr.a(paramToServiceMsg, 0);
             i1 = paramToServiceMsg[4];
-            l2 = bbmx.a(paramToServiceMsg, 5);
+            l2 = bdlr.a(paramToServiceMsg, 5);
             paramObject.from_uin.get();
             ((TroopManager)this.app.getManager(52)).a(String.valueOf(l1), String.valueOf(l2), i1);
             paramToServiceMsg = (OnlinePushTrans.ExtGroupKeyInfo)paramObject.ext_group_key_info.get();
@@ -4055,20 +4077,20 @@ public class MessageHandler
           else if (paramObject.msg_type.get() == 44)
           {
             paramToServiceMsg = paramObject.msg_data.get().toByteArray();
-            long l3 = bbmx.a(paramToServiceMsg, 0);
+            long l3 = bdlr.a(paramToServiceMsg, 0);
             i1 = paramToServiceMsg[4];
             i1 = paramToServiceMsg[5];
             if ((i1 == 0) || (i1 == 1)) {
-              l2 = bbmx.a(paramToServiceMsg, 6);
+              l2 = bdlr.a(paramToServiceMsg, 6);
             }
-            for (l1 = 0L;; l1 = bbmx.a(paramToServiceMsg, 10))
+            for (l1 = 0L;; l1 = bdlr.a(paramToServiceMsg, 10))
             {
               if (QLog.isColorLevel()) {
                 QLog.d(".troop.push_msg", 2, new Object[] { "GroupCode: ", Long.valueOf(l3) });
               }
-              actj.a(".troop.push_msg", this.app, 86, 0, 0, Arrays.asList(new Long[] { Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l1) }), 500);
+              aekt.a(".troop.push_msg", this.app, 86, 0, 0, Arrays.asList(new Long[] { Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l1) }), 500);
               break;
-              l2 = bbmx.a(paramToServiceMsg, 6);
+              l2 = bdlr.a(paramToServiceMsg, 6);
             }
           }
         }
@@ -4198,24 +4220,24 @@ public class MessageHandler
     int i1 = paramToServiceMsg.extraData.getInt("msgtype");
     int i2 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
     int i3 = paramToServiceMsg.extraData.getInt("retryIndex");
-    int i4 = axaq.a(i2);
+    int i4 = ayvu.a(i2, this.app);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "<PbSendMsg><E><---handleSendDisMessageError: ---cmd:" + (String)localObject + " ssoseq:" + paramFromServiceMsg.getRequestSsoSeq() + " appseq:" + paramFromServiceMsg.getAppSeq() + ",sendC2CMessage error : peerUin:" + str + " uniseq:" + l3 + " msgSeq:" + l1 + " msgType:" + i1 + " uinType:" + i4 + " routingType:" + i2 + " retryIndex:" + i3);
     }
-    adgc.a().a(this.app, l3);
+    aeyf.a().a(this.app, l3);
     b(paramToServiceMsg, paramFromServiceMsg);
     localObject = a(l1);
     if (localObject != null)
     {
       if (paramFromServiceMsg.getResultCode() != 2901) {
-        break label292;
+        break label295;
       }
       localObject.getClass();
       if (!a((SendMessageHandler)localObject, "msf")) {
-        break label292;
+        break label295;
       }
     }
-    label292:
+    label295:
     while ((480000L != l2) && (!((SendMessageHandler)localObject).a())) {
       return;
     }
@@ -4231,10 +4253,10 @@ public class MessageHandler
     if (paramToServiceMsg.extraData.getBoolean("RichNotify", false))
     {
       i1 = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-      localObject = new akau();
-      ((akau)localObject).jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
-      ((akau)localObject).jdField_c_of_type_Int = i1;
-      ((akau)localObject).jdField_a_of_type_JavaLangString = a(paramFromServiceMsg);
+      localObject = new alsj();
+      ((alsj)localObject).jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
+      ((alsj)localObject).jdField_c_of_type_Int = i1;
+      ((alsj)localObject).jdField_a_of_type_JavaLangString = a(paramFromServiceMsg);
       a(paramToServiceMsg, 5006, false, new Object[] { Long.valueOf(l3), localObject });
     }
     a(paramToServiceMsg, paramFromServiceMsg, false);
@@ -4252,10 +4274,10 @@ public class MessageHandler
     long l4;
     int i3;
     Object localObject2;
-    label343:
-    label379:
+    label339:
+    label375:
     int i2;
-    label390:
+    label386:
     do
     {
       return;
@@ -4273,7 +4295,7 @@ public class MessageHandler
           {
             localObject2 = new StringBuilder().append("<---handleSendDiscussionMsgRespPB:");
             if (paramObject != null) {
-              break label343;
+              break label339;
             }
           }
           for (paramObject = "null";; paramObject = Arrays.toString((byte[])paramObject))
@@ -4306,9 +4328,9 @@ public class MessageHandler
         }
         localObject2 = a(l4);
         if (localObject2 != null) {
-          break label379;
+          break label375;
         }
-        adgc.a().a(this.app, l3);
+        aeyf.a().a(this.app, l3);
       }
       if (i1 != 255) {
         break label1098;
@@ -4320,13 +4342,13 @@ public class MessageHandler
       localObject2.getClass();
     } while (a((SendMessageHandler)localObject2, "server"));
     boolean bool1;
-    label483:
+    label479:
     int i4;
     switch (i1)
     {
     default: 
       bool1 = false;
-      i4 = axaq.a(paramToServiceMsg.extraData.getInt("ROUNTING_TYPE"));
+      i4 = ayvu.a(paramToServiceMsg.extraData.getInt("ROUNTING_TYPE"), this.app);
       if (bool1)
       {
         localObject2 = this.app.a().b(localException, i4, l3);
@@ -4368,7 +4390,7 @@ public class MessageHandler
               }
             }
           }
-          paramObject = new akaq();
+          paramObject = new alsf();
           paramObject.jdField_c_of_type_Long = l2;
           paramObject.jdField_d_of_type_Long = System.currentTimeMillis();
           paramObject.jdField_b_of_type_Long = (paramObject.jdField_d_of_type_Long - l5);
@@ -4378,16 +4400,16 @@ public class MessageHandler
           paramObject.jdField_b_of_type_Boolean = ((Boolean)paramFromServiceMsg.getAttribute("attr_quick_send_by_xg", Boolean.valueOf(false))).booleanValue();
           paramObject.jdField_c_of_type_Boolean = ((Boolean)paramFromServiceMsg.getAttribute("attr_weaknet_sent_flag", Boolean.valueOf(false))).booleanValue();
           notifyUI(6003, true, new Object[] { paramToServiceMsg.extraData.getString("uToUin"), String.valueOf(l3), paramObject });
-          label902:
+          label901:
           b((MessageRecord)localObject2);
           i2 = 0;
-          label911:
+          label910:
           if (paramToServiceMsg.extraData.getBoolean("RichNotify", false))
           {
             i4 = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-            paramObject = new akau();
+            paramObject = new alsj();
             if (!bool1) {
-              break label1389;
+              break label1388;
             }
             paramObject.jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
             paramObject.jdField_c_of_type_Int = (i4 + 1);
@@ -4403,25 +4425,25 @@ public class MessageHandler
       a(paramToServiceMsg, paramFromServiceMsg, true);
       a(l4);
       c(paramToServiceMsg, paramFromServiceMsg);
-      ((astu)this.app.getManager(166)).a(paramToServiceMsg.extraData.getString("uToUin"), 3000, l3, i1, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("startTime", 0L));
-      npu.a(this.app, i3, localException, 3000, l3);
+      ((aukr)this.app.getManager(166)).a(paramToServiceMsg.extraData.getString("uToUin"), 3000, l3, i1, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("startTime", 0L));
+      ntd.a(this.app, i3, localException, 3000, l3);
       if (i2 != 0) {
         break;
       }
-      adgc.a().a(this.app, l3);
+      aeyf.a().a(this.app, l3);
       return;
       label1098:
       i2 = 0;
-      break label390;
+      break label386;
       bool1 = true;
-      break label483;
+      break label479;
       bool1 = false;
-      break label483;
+      break label479;
       paramObject = "0";
       break label554;
       label1123:
       notifyUI(6003, true, new String[] { paramToServiceMsg.extraData.getString("uToUin"), String.valueOf(l3) });
-      break label902;
+      break label901;
       if ((i1 == 10) || (i1 == 34))
       {
         i2 = 1;
@@ -4447,8 +4469,8 @@ public class MessageHandler
       if ((paramObject != null) && (paramObject.errmsg.has()) && (paramObject.errmsg.get() != null) && (QLog.isColorLevel())) {
         QLog.d("Q.msg.MessageHandler", 2, "send dicussion msg failed: " + paramObject.errmsg.get());
       }
-      break label911;
-      label1389:
+      break label910;
+      label1388:
       paramObject.jdField_b_of_type_Int = 2900;
       paramObject.jdField_c_of_type_Int = (i4 + 1);
       paramObject.jdField_a_of_type_Long = i1;
@@ -4462,7 +4484,7 @@ public class MessageHandler
       QLog.d("Q.msg.MessageHandler", 2, "<<---handleTimeOut serviceCmd:" + paramFromServiceMsg.getServiceCmd());
     }
     String str = paramFromServiceMsg.getServiceCmd();
-    if (akqj.a().containsKey(str)) {
+    if (amgr.a().containsKey(str)) {
       b(str, paramToServiceMsg, paramFromServiceMsg);
     }
     do
@@ -4536,7 +4558,7 @@ public class MessageHandler
       }
       if ("RegPrxySvc.infoSync".equalsIgnoreCase(str))
       {
-        d(paramFromServiceMsg, null);
+        v(paramToServiceMsg, paramFromServiceMsg, null);
         return;
       }
     } while (!"MessageSvc.PbReceiptRead".equalsIgnoreCase(str));
@@ -4570,7 +4592,7 @@ public class MessageHandler
       }
       l2 = l1;
       if (!localRspBody.uint32_sequence.has()) {
-        break label388;
+        break label386;
       }
       i4 = localRspBody.uint32_sequence.get();
       paramFromServiceMsg = null;
@@ -4605,7 +4627,7 @@ public class MessageHandler
         notifyUI(8017, false, new Object[] { Integer.valueOf(i4), Integer.valueOf(i3), paramFromServiceMsg });
         return;
       }
-      label388:
+      label386:
       i1 = 0;
       paramFromServiceMsg = null;
       l1 = l2;
@@ -4615,7 +4637,7 @@ public class MessageHandler
   private void k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     int i1 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
-    if (akas.a(i1)) {
+    if (alsh.a(i1, this.app)) {
       f(paramToServiceMsg, paramFromServiceMsg);
     }
     for (;;)
@@ -4667,14 +4689,14 @@ public class MessageHandler
           bool2 = true;
           bool1 = bool2;
           if (4 > i1) {
-            break label205;
+            break label203;
           }
-          paramToServiceMsg = String.valueOf(bbmx.a(paramToServiceMsg, 0));
+          paramToServiceMsg = String.valueOf(bdlr.a(paramToServiceMsg, 0));
           if (paramToServiceMsg != null)
           {
             bool1 = bool2;
             if (paramToServiceMsg.equals(this.app.getAccount())) {
-              break label205;
+              break label203;
             }
           }
           if (QLog.isColorLevel()) {
@@ -4683,7 +4705,7 @@ public class MessageHandler
         }
       }
     }
-    label205:
+    label203:
     while (!QLog.isColorLevel())
     {
       return;
@@ -4734,7 +4756,7 @@ public class MessageHandler
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "<<---handleGetDiscussionMsgNum add cache " + paramObject.size());
       }
-      this.jdField_a_of_type_Awzy.a(paramObject);
+      this.jdField_a_of_type_Ayvc.a(paramObject);
     }
     if ((paramToServiceMsg != null) && (paramObject != null))
     {
@@ -4754,15 +4776,15 @@ public class MessageHandler
         paramObject = paramToServiceMsg[i1];
         if (!paramFromServiceMsg.contains(paramObject))
         {
-          this.jdField_a_of_type_Awzy.b(paramObject, 2);
-          if (this.jdField_a_of_type_Awzy.b(paramObject) != null) {
-            this.jdField_a_of_type_Awzy.d(paramObject);
+          this.jdField_a_of_type_Ayvc.b(paramObject, 2);
+          if (this.jdField_a_of_type_Ayvc.b(paramObject) != null) {
+            this.jdField_a_of_type_Ayvc.d(paramObject);
           }
         }
         i1 += 1;
       }
     }
-    this.jdField_a_of_type_Awzy.a(paramToServiceMsg);
+    this.jdField_a_of_type_Ayvc.a(paramToServiceMsg);
     u();
   }
   
@@ -4784,7 +4806,7 @@ public class MessageHandler
       localPbGetDiscussMsgResp1 = (msg_svc.PbGetDiscussMsgResp)localPbGetDiscussMsgResp1.mergeFrom((byte[])paramObject);
       if (localPbGetDiscussMsgResp1 == null)
       {
-        axrn.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "msf.msg.decodeerr", false, 0L, 0L, new HashMap(), "");
+        azmz.a(BaseApplication.getContext()).a(this.app.getCurrentAccountUin(), "msf.msg.decodeerr", false, 0L, 0L, new HashMap(), "");
         t(paramToServiceMsg, ???);
         return;
       }
@@ -4808,7 +4830,7 @@ public class MessageHandler
         ??? = new StringBuilder();
         ???.append("handleGetPullDiscussionMsgResp_PB res.cReplyCode = ").append(localPbGetDiscussMsgResp2.result.get()).append(" discussUin: ").append(l1).append(" isRefreshHead: ").append(bool3).append(", dataHash=").append(paramObject.hashCode()).append(" rtnBeginSeq:").append(localPbGetDiscussMsgResp2.return_begin_seq.get()).append(" rtnEndSeq:").append(localPbGetDiscussMsgResp2.return_end_seq.get());
         if (localPbGetDiscussMsgResp2.msg.get() == null) {
-          break label360;
+          break label358;
         }
         ???.append(" msgSize:").append(localPbGetDiscussMsgResp2.msg.get().size());
       }
@@ -4824,11 +4846,11 @@ public class MessageHandler
           }
           return;
         }
-        label360:
+        label358:
         ???.append(" msg:null.");
       }
-      paramObject = this.jdField_a_of_type_Awzy.a(localPbGetDiscussMsgResp2.discuss_uin.get());
-      this.jdField_a_of_type_Awzy.a(String.valueOf(l1), localPbGetDiscussMsgResp2.discuss_info_seq.get(), localPbGetDiscussMsgResp2.last_get_time.get());
+      paramObject = this.jdField_a_of_type_Ayvc.a(localPbGetDiscussMsgResp2.discuss_uin.get());
+      this.jdField_a_of_type_Ayvc.a(String.valueOf(l1), localPbGetDiscussMsgResp2.discuss_info_seq.get(), localPbGetDiscussMsgResp2.last_get_time.get());
       if (!bool3) {}
     }
     for (;;)
@@ -4836,7 +4858,7 @@ public class MessageHandler
       try
       {
         a("disc_processor").a(1003, new Object[] { paramToServiceMsg, paramObject, localPbGetDiscussMsgResp2, str });
-        this.jdField_a_of_type_Awzy.a(localPbGetDiscussMsgResp2.discuss_uin.get());
+        this.jdField_a_of_type_Ayvc.a(localPbGetDiscussMsgResp2.discuss_uin.get());
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -4856,7 +4878,7 @@ public class MessageHandler
             continue;
           }
           this.jdField_k_of_type_Int += 1;
-          this.jdField_a_of_type_Awzy.b(String.valueOf(l1), 2);
+          this.jdField_a_of_type_Ayvc.b(String.valueOf(l1), 2);
         }
         catch (Exception paramToServiceMsg)
         {
@@ -4868,7 +4890,7 @@ public class MessageHandler
             continue;
           }
           this.jdField_k_of_type_Int += 1;
-          this.jdField_a_of_type_Awzy.b(String.valueOf(l1), 2);
+          this.jdField_a_of_type_Ayvc.b(String.valueOf(l1), 2);
           continue;
           e(String.valueOf(l1), "handleGetPullDiscussionMsgResp");
           continue;
@@ -4879,15 +4901,15 @@ public class MessageHandler
             continue;
           }
           this.jdField_k_of_type_Int += 1;
-          this.jdField_a_of_type_Awzy.b(String.valueOf(l1), 2);
+          this.jdField_a_of_type_Ayvc.b(String.valueOf(l1), 2);
           throw paramToServiceMsg;
           e(String.valueOf(l1), "handleGetPullDiscussionMsgResp");
           continue;
         }
-        if ((!bool1) || (!this.jdField_a_of_type_Awzy.c())) {
-          break label726;
+        if ((!bool1) || (!this.jdField_a_of_type_Ayvc.c())) {
+          break label721;
         }
-        bfnl.a().i();
+        bhof.a().i();
         notifyUI(4002, true, null);
         if (!QLog.isColorLevel()) {
           break;
@@ -4896,13 +4918,13 @@ public class MessageHandler
         break;
         e(String.valueOf(l1), "handleGetPullDiscussionMsgResp");
       }
-      label726:
+      label721:
       if ((bool2) && (this.jdField_d_of_type_Int != 0) && (this.jdField_k_of_type_Int >= this.jdField_d_of_type_Int))
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler", 2, "<--- handleGetPullDiscussionMsgResp notify NOTIFY_TYPE_GET_DISCUSSION_MSG_FIN , discussionNum:" + this.jdField_d_of_type_Int + " , recvDiscNum:" + this.jdField_k_of_type_Int);
         }
-        bfnl.a().i();
+        bhof.a().i();
         notifyUI(4002, true, null);
       }
     }
@@ -5015,7 +5037,7 @@ public class MessageHandler
         if (this.jdField_a_of_type_AndroidUtilPair != null)
         {
           this.jdField_a_of_type_AndroidUtilPair = null;
-          if ((l1 == 1L) || (!this.jdField_a_of_type_Awzy.c()) || (!this.jdField_a_of_type_Awzy.b()))
+          if ((l1 == 1L) || (!this.jdField_a_of_type_Ayvc.c()) || (!this.jdField_a_of_type_Ayvc.b()))
           {
             j();
             if (QLog.isColorLevel()) {
@@ -5070,7 +5092,7 @@ public class MessageHandler
     if (paramObject == null) {
       QLog.e("Q.msg.MessageHandler", 1, "doMsgProxyTroopMsgResp_PB return by null data");
     }
-    label218:
+    label213:
     for (;;)
     {
       return;
@@ -5084,14 +5106,14 @@ public class MessageHandler
       for (;;)
       {
         if (localObject1 == null) {
-          break label218;
+          break label213;
         }
         try
         {
           localObject1 = ((register_proxy.SvcResponsePbPullGroupMsgProxy)localObject1).msg_content.get().toByteArray();
           int i1 = localObject1.length - 4;
           byte[] arrayOfByte = new byte[i1];
-          bbmx.a(arrayOfByte, 0, (byte[])localObject1, 4, i1);
+          bdlr.a(arrayOfByte, 0, (byte[])localObject1, 4, i1);
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.MessageHandler", 2, "registerproxy->handleMsgProxyTroopMsgResp_PB. dataHash=" + paramObject.hashCode() + ", newDataHash=" + arrayOfByte.hashCode());
           }
@@ -5139,7 +5161,7 @@ public class MessageHandler
     {
       d(paramFromServiceMsg, "handleGetPullTroopMsgError");
       if (bool2) {
-        if (this.jdField_a_of_type_Awzy.b())
+        if (this.jdField_a_of_type_Ayvc.b())
         {
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgError notify NOTIFY_TYPE_GET_TROOP_MSG_FIN ");
@@ -5158,7 +5180,7 @@ public class MessageHandler
           QLog.w("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgError exception ! ", paramToServiceMsg);
         }
       }
-      this.jdField_a_of_type_Awzy.g();
+      this.jdField_a_of_type_Ayvc.g();
       return;
     }
     notifyUI(4003, false, new String[] { paramFromServiceMsg });
@@ -5182,12 +5204,12 @@ public class MessageHandler
     if (this.jdField_j_of_type_Boolean) {
       return;
     }
-    axqy.b(this.app, "CliOper", "", "", "My_eq", "PC_Online_exp", 0, 0, "", "", "", "");
+    azmj.b(this.app, "CliOper", "", "", "My_eq", "PC_Online_exp", 0, 0, "", "", "", "");
     this.jdField_j_of_type_Boolean = true;
     Object localObject1 = BaseApplication.getContext();
-    Object localObject3 = ((Context)localObject1).getString(2131694741);
-    String str = ((Context)localObject1).getString(2131694741);
-    Object localObject2 = baxi.a(((Context)localObject1).getResources(), 2130843408);
+    Object localObject3 = ((Context)localObject1).getString(2131694898);
+    String str = ((Context)localObject1).getString(2131694898);
+    Object localObject2 = bcwc.a(((Context)localObject1).getResources(), 2130843761);
     QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
     localObject3 = new NotificationCompat.Builder((Context)localObject1).setContentTitle(str).setContentText("").setAutoCancel(true).setSmallIcon(BaseApplication.appnewmsgicon).setTicker((CharSequence)localObject3).setWhen(System.currentTimeMillis());
     if (localObject2 != null) {
@@ -5196,7 +5218,7 @@ public class MessageHandler
     for (;;)
     {
       if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject3).setSmallIcon(2130843409);
+        ((NotificationCompat.Builder)localObject3).setSmallIcon(2130843762);
       }
       localObject2 = new Intent("com.tencent.mobileqq.PCONLINE_CLICK_NOTIFICATION");
       ((Intent)localObject2).setPackage(MobileQQ.getContext().getPackageName());
@@ -5207,13 +5229,13 @@ public class MessageHandler
         break;
       }
       localQQNotificationManager.cancel("Q.msg.MessageHandler_PcOnlineNotifition", 264);
-      bfnb.a(this.app.getApp(), 0, (Notification)localObject1);
+      bhnv.a(this.app.getApp(), 0, (Notification)localObject1);
       QQNotificationManager.addChannelIfNeed((Notification)localObject1, "CHANNEL_ID_OTHER");
       localQQNotificationManager.notify("Q.msg.MessageHandler_PcOnlineNotifition", 264, (Notification)localObject1);
       this.jdField_b_of_type_JavaLangRunnable = new MessageHandler.9(this, localQQNotificationManager);
       ThreadManager.post(this.jdField_b_of_type_JavaLangRunnable, 5, null, false);
       return;
-      ((NotificationCompat.Builder)localObject3).setLargeIcon(baxi.a(((Context)localObject1).getResources(), 2130843408));
+      ((NotificationCompat.Builder)localObject3).setLargeIcon(bcwc.a(((Context)localObject1).getResources(), 2130843761));
     }
   }
   
@@ -5234,7 +5256,7 @@ public class MessageHandler
     {
       paramFromServiceMsg = new StringBuilder().append("handleGetPullDiscussionMsgNumError size = ");
       if (paramToServiceMsg != null) {
-        break label125;
+        break label123;
       }
       i1 = 0;
     }
@@ -5242,11 +5264,11 @@ public class MessageHandler
     {
       QLog.d("Q.msg.MessageHandler", 2, i1);
       if (paramToServiceMsg == null) {
-        break label168;
+        break label165;
       }
       int i2 = paramToServiceMsg.length;
       i1 = 0;
-      label100:
+      label98:
       if (i1 < i2)
       {
         paramFromServiceMsg = paramToServiceMsg[i1];
@@ -5254,8 +5276,8 @@ public class MessageHandler
         {
           e(paramFromServiceMsg, "handleGetPullDiscussionMsgNumError");
           i1 += 1;
-          break label100;
-          label125:
+          break label98;
+          label123:
           i1 = paramToServiceMsg.length;
         }
         catch (Exception paramFromServiceMsg)
@@ -5270,9 +5292,9 @@ public class MessageHandler
         }
       }
     }
-    this.jdField_a_of_type_Awzy.a(paramToServiceMsg);
+    this.jdField_a_of_type_Ayvc.a(paramToServiceMsg);
     u();
-    label168:
+    label165:
     notifyUI(4002, false, null);
   }
   
@@ -5281,7 +5303,7 @@ public class MessageHandler
     if (paramObject == null) {
       QLog.e("Q.msg.MessageHandler", 1, "doMsgProxyDiscussMsgResp_PB return by null data");
     }
-    label201:
+    label197:
     for (;;)
     {
       return;
@@ -5292,14 +5314,14 @@ public class MessageHandler
       for (;;)
       {
         if (localObject1 == null) {
-          break label201;
+          break label197;
         }
         try
         {
           localObject1 = ((register_proxy.SvcPbResponsePullDisMsgProxy)localObject1).msg_content.get().toByteArray();
           int i1 = localObject1.length - 4;
           byte[] arrayOfByte = new byte[i1];
-          bbmx.a(arrayOfByte, 0, (byte[])localObject1, 4, i1);
+          bdlr.a(arrayOfByte, 0, (byte[])localObject1, 4, i1);
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.MessageHandler", 2, "registerproxy->handleMsgProxyDiscussMsgResp_PB. dataHash=" + paramObject.hashCode() + ", newDataHash=" + arrayOfByte.hashCode());
           }
@@ -5333,12 +5355,12 @@ public class MessageHandler
     if (this.jdField_k_of_type_Boolean) {
       return;
     }
-    axqy.b(this.app, "CliOper", "", "", "My_eq", "PC_Online_exp", 0, 0, "", "", "", "");
+    azmj.b(this.app, "CliOper", "", "", "My_eq", "PC_Online_exp", 0, 0, "", "", "", "");
     this.jdField_k_of_type_Boolean = true;
     Object localObject1 = BaseApplication.getContext();
-    Object localObject3 = ((Context)localObject1).getString(2131694737);
-    String str = ((Context)localObject1).getString(2131694737);
-    Object localObject2 = baxi.a(((Context)localObject1).getResources(), 2130843406);
+    Object localObject3 = ((Context)localObject1).getString(2131694894);
+    String str = ((Context)localObject1).getString(2131694894);
+    Object localObject2 = bcwc.a(((Context)localObject1).getResources(), 2130843759);
     QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
     localObject3 = new NotificationCompat.Builder((Context)localObject1).setContentTitle(str).setContentText("").setAutoCancel(true).setSmallIcon(BaseApplication.appnewmsgicon).setTicker((CharSequence)localObject3).setWhen(System.currentTimeMillis());
     if (localObject2 != null) {
@@ -5347,7 +5369,7 @@ public class MessageHandler
     for (;;)
     {
       if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject3).setSmallIcon(2130843407);
+        ((NotificationCompat.Builder)localObject3).setSmallIcon(2130843760);
       }
       localObject2 = new Intent("com.tencent.mobileqq.PCONLINE_CLICK_NOTIFICATION");
       ((Intent)localObject2).setPackage(MobileQQ.getContext().getPackageName());
@@ -5363,7 +5385,7 @@ public class MessageHandler
       this.jdField_a_of_type_JavaLangRunnable = new MessageHandler.10(this, localQQNotificationManager);
       ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, false);
       return;
-      ((NotificationCompat.Builder)localObject3).setLargeIcon(baxi.a(((Context)localObject1).getResources(), 2130843406));
+      ((NotificationCompat.Builder)localObject3).setLargeIcon(bcwc.a(((Context)localObject1).getResources(), 2130843759));
     }
   }
   
@@ -5384,7 +5406,7 @@ public class MessageHandler
     try
     {
       e(String.valueOf(paramFromServiceMsg), "handleGetPullDiscussionMsgError");
-      if (this.jdField_a_of_type_Awzy.c())
+      if (this.jdField_a_of_type_Ayvc.c())
       {
         notifyUI(4002, false, null);
         return;
@@ -5399,7 +5421,7 @@ public class MessageHandler
           QLog.w("Q.msg.MessageHandler", 2, "handleGetPullDiscussionMsgError exception ! ", paramToServiceMsg);
         }
       }
-      this.jdField_a_of_type_Awzy.h();
+      this.jdField_a_of_type_Ayvc.h();
     }
   }
   
@@ -5419,7 +5441,7 @@ public class MessageHandler
         {
           paramObject = (msg_svc.PbUnReadMsgSeqResp)((msg_svc.PbUnReadMsgSeqResp)localObject1).mergeFrom((byte[])paramObject);
           if ((paramObject.group_unread_info.has()) && (paramObject.group_unread_info.get() != null)) {
-            break label91;
+            break label89;
           }
           if (QLog.isColorLevel())
           {
@@ -5432,7 +5454,7 @@ public class MessageHandler
     } while (!QLog.isColorLevel());
     QLog.e("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgNumResp_PB: server did not return a valid response");
     return;
-    label91:
+    label89:
     paramObject = (msg_svc.PbPullGroupMsgSeqResp)paramObject.group_unread_info.get();
     if (paramObject.result.get() != 0)
     {
@@ -5451,31 +5473,31 @@ public class MessageHandler
     }
     this.q = 0;
     int i1 = 0;
-    label249:
+    label245:
     long l2;
     long l1;
-    label340:
+    label336:
     boolean bool;
-    label371:
+    label367:
     long l3;
     if (i1 < paramObject.group_info_resp.get().size())
     {
       localObject1 = (msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)paramObject.group_info_resp.get().get(i1);
       paramFromServiceMsg = String.valueOf(((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).group_code.get());
-      Object localObject2 = this.jdField_a_of_type_Awzy.b(paramFromServiceMsg);
-      l2 = this.jdField_a_of_type_Awzy.j(paramFromServiceMsg);
+      Object localObject2 = this.jdField_a_of_type_Ayvc.b(paramFromServiceMsg);
+      l2 = this.jdField_a_of_type_Ayvc.j(paramFromServiceMsg);
       if ((localObject2 == null) || (localObject2.length <= 0)) {
-        break label859;
+        break label853;
       }
       l1 = ((Long)localObject2[0]).longValue();
       localObject2 = (HotChatManager)this.app.getManager(60);
       if ((localObject2 == null) || (!((HotChatManager)localObject2).b(paramFromServiceMsg))) {
-        break label865;
+        break label859;
       }
       bool = true;
       if (!bool)
       {
-        this.jdField_a_of_type_Awzy.c(paramFromServiceMsg, new Object[] { Long.valueOf(((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).member_seq.get()), Long.valueOf(((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).group_seq.get()) });
+        this.jdField_a_of_type_Ayvc.c(paramFromServiceMsg, new Object[] { Long.valueOf(((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).member_seq.get()), Long.valueOf(((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).group_seq.get()) });
         if (l1 < ((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).member_seq.get()) {
           this.app.a().a(String.valueOf(((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).group_code.get()), 1, ((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).member_seq.get());
         }
@@ -5486,17 +5508,17 @@ public class MessageHandler
         paramToServiceMsg.append("handleGetPullTroopMsgNumResp_PB getGroupMsgMemberSeq groupUin=").append(((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).group_code.get()).append(" ,memberseq=").append(((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).member_seq.get()).append(" ,groupSeq=").append(((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).group_seq.get()).append(" ,localMemberMsgSeq=").append(l1).append(" ,localLastSeq=").append(l2).append(", isHotChat=").append(bool);
         QLog.d("Q.msg.MessageHandler", 2, paramToServiceMsg.toString());
       }
-      l2 = this.jdField_a_of_type_Awzy.a(paramFromServiceMsg, 1);
-      localObject1 = a(paramFromServiceMsg, 1, this.jdField_a_of_type_Awzy.b(paramFromServiceMsg), this.jdField_a_of_type_Awzy.c(paramFromServiceMsg), l2, ((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).group_seq.get());
+      l2 = this.jdField_a_of_type_Ayvc.a(paramFromServiceMsg, 1);
+      localObject1 = a(paramFromServiceMsg, 1, this.jdField_a_of_type_Ayvc.b(paramFromServiceMsg), this.jdField_a_of_type_Ayvc.c(paramFromServiceMsg), l2, ((msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp)localObject1).group_seq.get());
       int i3 = (int)(((Long)((Pair)localObject1).second).longValue() - ((Long)((Pair)localObject1).first).longValue());
       l2 = ((Long)((Pair)localObject1).first).longValue();
       l3 = ((Long)((Pair)localObject1).second).longValue();
       l2 = l3 - (l2 + 1L);
       if (l2 <= 10) {
-        break label871;
+        break label865;
       }
       l2 = l3 - 10 + 1L;
-      label693:
+      label688:
       if (QLog.isColorLevel())
       {
         paramToServiceMsg.setLength(0);
@@ -5511,25 +5533,25 @@ public class MessageHandler
         a(paramFromServiceMsg, l1 - 10L, l1, false, null, i2);
       }
       if (i3 > 0) {
-        break label881;
+        break label875;
       }
-      ((azrd)a("troop_processor")).a(paramFromServiceMsg, null, i2);
+      ((bbpm)a("troop_processor")).a(paramFromServiceMsg, null, i2);
     }
     for (;;)
     {
       i1 += 1;
-      break label249;
+      break label245;
       break;
-      label859:
+      label853:
       l1 = 0L;
-      break label340;
-      label865:
+      break label336;
+      label859:
       bool = false;
-      break label371;
-      label871:
+      break label367;
+      label865:
       l2 = l3 - l2;
-      break label693;
-      label881:
+      break label688;
+      label875:
       a(paramFromServiceMsg, l2, l3, false, null, i2);
     }
   }
@@ -5539,10 +5561,10 @@ public class MessageHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "handleGetPullDiscussionMsgNumberFinish");
     }
-    if (this.jdField_a_of_type_Awzy.a())
+    if (this.jdField_a_of_type_Ayvc.a())
     {
-      localObject2 = this.jdField_a_of_type_Awzy.b();
-      this.jdField_a_of_type_Awzy.a();
+      localObject2 = this.jdField_a_of_type_Ayvc.b();
+      this.jdField_a_of_type_Ayvc.a();
       localStringBuilder = null;
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
@@ -5550,38 +5572,38 @@ public class MessageHandler
           QLog.d("Q.msg.MessageHandler", 2, "handleGetPullDiscussionMsgNumberFinish vConfNumInfo size = " + ((List)localObject2).size());
         }
         localStringBuilder = new StringBuilder();
-        localObject1 = new HashMap(this.jdField_a_of_type_Awzy.c());
+        localObject1 = new HashMap(this.jdField_a_of_type_Ayvc.c());
         localObject2 = ((List)localObject2).iterator();
-        label395:
-        label418:
-        label439:
+        label392:
+        label415:
+        label436:
         while (((Iterator)localObject2).hasNext())
         {
           localstConfNumInfo = (stConfNumInfo)((Iterator)localObject2).next();
           if (localstConfNumInfo != null)
           {
             str = String.valueOf(localstConfNumInfo.lConfUin);
-            arrayOfObject = this.jdField_a_of_type_Awzy.a(str);
-            l2 = this.jdField_a_of_type_Awzy.i(str);
+            arrayOfObject = this.jdField_a_of_type_Ayvc.a(str);
+            l2 = this.jdField_a_of_type_Ayvc.i(str);
             if ((arrayOfObject != null) && (arrayOfObject.length > 0))
             {
               l1 = ((Long)arrayOfObject[0]).longValue();
-              label213:
+              label211:
               if (QLog.isColorLevel())
               {
                 localStringBuilder.setLength(0);
                 localStringBuilder.append("addDisMsgMemberSeq uin = ").append(localstConfNumInfo.lConfUin).append(" memberseq = ").append(localstConfNumInfo.uMemberMsgSeq).append(" confMsgSeq =").append(localstConfNumInfo.uConfMsgSeq).append(" localLastSeq =").append(l2);
                 QLog.d("Q.msg.MessageHandler", 2, localStringBuilder.toString());
               }
-              this.jdField_a_of_type_Awzy.b(String.valueOf(localstConfNumInfo.lConfUin), new Object[] { Long.valueOf(localstConfNumInfo.uMemberMsgSeq), Long.valueOf(localstConfNumInfo.uConfMsgSeq) });
+              this.jdField_a_of_type_Ayvc.b(String.valueOf(localstConfNumInfo.lConfUin), new Object[] { Long.valueOf(localstConfNumInfo.uMemberMsgSeq), Long.valueOf(localstConfNumInfo.uConfMsgSeq) });
               if (localstConfNumInfo.uConfMsgSeq > l2) {
-                break label418;
+                break label415;
               }
               g(str);
               if (l1 < localstConfNumInfo.uMemberMsgSeq)
               {
                 if (!jdField_f_of_type_Boolean) {
-                  break label395;
+                  break label392;
                 }
                 a(5, null, null, localstConfNumInfo);
               }
@@ -5589,16 +5611,16 @@ public class MessageHandler
             for (;;)
             {
               if (localObject1 == null) {
-                break label439;
+                break label436;
               }
               ((HashMap)localObject1).remove(str);
               break;
               l1 = 0L;
-              break label213;
+              break label211;
               this.app.a().a(str, 3000, localstConfNumInfo.uMemberMsgSeq);
               continue;
               if (l1 < localstConfNumInfo.uMemberMsgSeq) {
-                this.jdField_a_of_type_Awzy.b(str, 1);
+                this.jdField_a_of_type_Ayvc.b(str, 1);
               }
             }
           }
@@ -5620,7 +5642,7 @@ public class MessageHandler
           localObject1 = localStringBuilder;
         }
       }
-      if (this.jdField_a_of_type_Awzy.c()) {
+      if (this.jdField_a_of_type_Ayvc.c()) {
         notifyUI(4002, true, null);
       }
     }
@@ -5648,17 +5670,17 @@ public class MessageHandler
     if (paramToServiceMsg != null)
     {
       if (paramFromServiceMsg.getResultCode() != 2901) {
-        break label99;
+        break label98;
       }
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "<ReadReport_All>handleMsgReadedReportError_PB: reqSeq " + l1);
       }
       paramToServiceMsg.getClass();
       if (!a(paramToServiceMsg, "msf")) {
-        break label99;
+        break label98;
       }
     }
-    label99:
+    label98:
     while ((480000L != l2) && (!paramToServiceMsg.a())) {
       return;
     }
@@ -5677,7 +5699,7 @@ public class MessageHandler
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "RequestPushStatus status:" + paramToServiceMsg.cStatus + "supportdataline:" + paramToServiceMsg.cDataLine);
       }
-      paramFromServiceMsg = (akfl)this.app.a(10);
+      paramFromServiceMsg = (alxb)this.app.a(10);
       if (paramToServiceMsg.cStatus == 1)
       {
         if (QLog.isDevelopLevel()) {
@@ -5685,8 +5707,8 @@ public class MessageHandler
         }
         s();
         i1 = 1;
-        if (!((wie)this.app.getManager(335)).a(paramToServiceMsg.vecInstanceList)) {
-          break label269;
+        if (!((xww)this.app.getManager(335)).a(paramToServiceMsg.vecInstanceList)) {
+          break label266;
         }
         i2 = (byte)i2;
         paramFromServiceMsg.b(i1);
@@ -5698,10 +5720,10 @@ public class MessageHandler
         paramFromServiceMsg.c(paramToServiceMsg.nInstanceId);
         paramFromServiceMsg.a(i2);
         paramFromServiceMsg.c();
-        ((ajum)this.app.a(8)).a().a(i1, paramToServiceMsg.cDataLine, paramToServiceMsg.cPrintable, paramToServiceMsg.cViewFile, paramToServiceMsg.nPCVer);
+        ((allz)this.app.a(8)).a().a(i1, paramToServiceMsg.cDataLine, paramToServiceMsg.cPrintable, paramToServiceMsg.cViewFile, paramToServiceMsg.nPCVer);
       }
     }
-    label269:
+    label266:
     while (!QLog.isColorLevel()) {
       for (;;)
       {
@@ -5734,14 +5756,14 @@ public class MessageHandler
     if (localObject != null)
     {
       if (paramFromServiceMsg.getResultCode() != 2901) {
-        break label100;
+        break label99;
       }
       localObject.getClass();
       if (!a((SendMessageHandler)localObject, "msf")) {
-        break label100;
+        break label99;
       }
     }
-    label100:
+    label99:
     while ((480000L != l2) && (!((SendMessageHandler)localObject).a())) {
       return;
     }
@@ -5757,10 +5779,10 @@ public class MessageHandler
     if (paramToServiceMsg.extraData.getBoolean("RichNotify", false))
     {
       int i1 = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-      localObject = new akau();
-      ((akau)localObject).jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
-      ((akau)localObject).jdField_c_of_type_Int = i1;
-      ((akau)localObject).jdField_a_of_type_JavaLangString = a(paramFromServiceMsg);
+      localObject = new alsj();
+      ((alsj)localObject).jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
+      ((alsj)localObject).jdField_c_of_type_Int = i1;
+      ((alsj)localObject).jdField_a_of_type_JavaLangString = a(paramFromServiceMsg);
       a(paramToServiceMsg, 5006, false, new Object[] { Long.valueOf(l3), localObject });
     }
     a(l1);
@@ -5768,43 +5790,27 @@ public class MessageHandler
   
   private void v(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    QLog.d("Q.msg.MessageHandler", 2, "handleNewRegisterProxyMsg begin!");
-    long l1 = System.currentTimeMillis();
-    paramObject = a((byte[])paramObject);
-    if (paramObject == null) {}
-    do
+    if (paramFromServiceMsg.getResultCode() == 1000)
     {
-      do
-      {
-        return;
-      } while (!a(paramObject));
-      if ((!paramObject.flag.has()) || (paramObject.flag.get() == 0)) {
-        break;
-      }
-      int i1 = paramObject.flag.get();
+      paramObject = new Bundle();
+      paramObject.putParcelable("ToServiceMsg", paramToServiceMsg);
+      paramObject.putParcelable("FromServiceMsg", paramFromServiceMsg);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "<---handleNewRegisterProxyMsg flag = " + i1);
+        QLog.d("Q.msg.MessageHandler", 2, "handleInfoSyncResp request success!");
       }
-      awzy localawzy = this.jdField_a_of_type_Awzy;
-      if (awzy.jdField_a_of_type_Axad == null)
-      {
-        localawzy = this.jdField_a_of_type_Awzy;
-        awzy.jdField_a_of_type_Axad = new axad();
+      notifyUI(4004, true, paramObject);
+      return;
+    }
+    if ((paramFromServiceMsg.getResultCode() == 1002) || (paramFromServiceMsg.getResultCode() == 1013))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.MessageHandler", 2, "handleInfoSyncResp request timeout!");
       }
-      b(paramObject);
-      a("c2c_msg", paramToServiceMsg, paramFromServiceMsg, paramObject.c2c_msg);
-      a("pub_account_msg", paramToServiceMsg, paramFromServiceMsg, paramObject.pub_account_msg);
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      a(paramObject);
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      c(i1);
-      a(paramFromServiceMsg, i1);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.MessageHandler", 2, "handleNewRegisterProxyMsg end! cost :" + (System.currentTimeMillis() - l1));
-    return;
+      notifyUI(4004, false, null);
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "<---handleNewRegisterProxyMsg-->flag error!");
+      QLog.d("Q.msg.MessageHandler", 2, "handleInfoSyncResp request error!");
     }
     notifyUI(4004, false, null);
   }
@@ -5824,14 +5830,14 @@ public class MessageHandler
     if (paramToServiceMsg != null)
     {
       if (paramFromServiceMsg.getResultCode() != 2901) {
-        break label219;
+        break label218;
       }
       paramToServiceMsg.getClass();
       if (!a(paramToServiceMsg, "msf")) {
-        break label219;
+        break label218;
       }
     }
-    label219:
+    label218:
     while (!paramToServiceMsg.a()) {
       return;
     }
@@ -5840,6 +5846,49 @@ public class MessageHandler
   }
   
   private void w(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    QLog.d("Q.msg.MessageHandler", 2, "handleNewRegisterProxyMsg begin!");
+    long l1 = System.currentTimeMillis();
+    paramObject = a((byte[])paramObject);
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!a(paramObject));
+      if ((!paramObject.flag.has()) || (paramObject.flag.get() == 0)) {
+        break;
+      }
+      int i1 = paramObject.flag.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.MessageHandler", 2, "<---handleNewRegisterProxyMsg flag = " + i1);
+      }
+      ayvc localayvc = this.jdField_a_of_type_Ayvc;
+      if (ayvc.jdField_a_of_type_Ayvh == null)
+      {
+        localayvc = this.jdField_a_of_type_Ayvc;
+        ayvc.jdField_a_of_type_Ayvh = new ayvh();
+      }
+      b(paramObject);
+      a("c2c_msg", paramToServiceMsg, paramFromServiceMsg, paramObject.c2c_msg);
+      a("pub_account_msg", paramToServiceMsg, paramFromServiceMsg, paramObject.pub_account_msg);
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      a(paramObject);
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      c(i1);
+      a(paramFromServiceMsg, i1);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.msg.MessageHandler", 2, "handleNewRegisterProxyMsg end! cost :" + (System.currentTimeMillis() - l1));
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "<---handleNewRegisterProxyMsg-->flag error!");
+    }
+    notifyUI(4004, false, null);
+  }
+  
+  private void x(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     long l1 = paramToServiceMsg.extraData.getLong("msgSeq");
     if (a(l1) == null) {}
@@ -5870,7 +5919,7 @@ public class MessageHandler
     QLog.e("Q.msg.MessageHandler", 2, "<ReadReport>handleMsgReadedReportResp_PB : server did not return a valid response,reqSeq " + l1);
   }
   
-  private void x(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void y(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "handleSendHotchatTopicMessageRespPB enter");
@@ -5929,7 +5978,7 @@ public class MessageHandler
         Object[] arrayOfObject = null;
         continue;
         int i2;
-        label410:
+        label408:
         boolean bool;
         if (i1 == 255)
         {
@@ -5949,39 +5998,39 @@ public class MessageHandler
           arrayOfObject[4] = Long.valueOf(paramToServiceMsg.extraData.getLong("timeOut"));
           arrayOfObject[5] = Long.valueOf(l5);
           if (localObject1 == null) {
-            break label663;
+            break label662;
           }
           paramObject = ((msg_svc.PbSendMsgResp)localObject1).errmsg.get();
           arrayOfObject[6] = paramObject;
           bool = false;
           if ((i1 != 108) && (i1 != 102)) {
-            break label737;
+            break label736;
           }
           paramObject = ((HotChatManager)this.app.getManager(60)).a(str);
           if (paramObject == null) {
-            break label670;
+            break label669;
           }
-          ajyi.a(this.app, paramObject);
+          alpw.a(this.app, paramObject);
           bool = false;
-          label466:
+          label464:
           if (!bool) {
-            break label748;
+            break label747;
           }
           this.app.a().a(str, 1026, l5);
           long l3 = paramToServiceMsg.extraData.getLong("msg_request_time", 0L);
           notifyUI(6003, true, new String[] { str, String.valueOf(l5) });
           long l2 = l3;
           if (l3 == 0L) {
-            l2 = awzy.a();
+            l2 = ayvc.a();
           }
           a(str, 1026, l5, l1, l2);
-          label558:
+          label556:
           if (paramToServiceMsg.extraData.getBoolean("RichNotify", false))
           {
             i2 = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-            paramObject = new akau();
+            paramObject = new alsj();
             if (!bool) {
-              break label773;
+              break label772;
             }
             paramObject.jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
             paramObject.jdField_c_of_type_Int = (i2 + 1);
@@ -5996,10 +6045,10 @@ public class MessageHandler
           return;
           i2 = 0;
           break;
-          label663:
+          label662:
           paramObject = "";
-          break label410;
-          label670:
+          break label408;
+          label669:
           paramObject = this.app.a().a();
           localObject1 = paramObject.a(str, 1);
           if (localObject1 != null) {
@@ -6009,18 +6058,18 @@ public class MessageHandler
           a(2001, true, arrayOfObject);
           a(2002, true, arrayOfObject);
           bool = false;
-          break label466;
-          label737:
+          break label464;
+          label736:
           if (i1 != 0) {
-            break label466;
+            break label464;
           }
           bool = true;
-          break label466;
-          label748:
+          break label464;
+          label747:
           a(arrayOfObject, paramFromServiceMsg.getUin(), i1);
           a(3013, false, arrayOfObject);
-          break label558;
-          label773:
+          break label556;
+          label772:
           paramObject.jdField_b_of_type_Int = 2900;
           paramObject.jdField_a_of_type_Long = i1;
           paramObject.jdField_c_of_type_Int = (i2 + 1);
@@ -6036,7 +6085,7 @@ public class MessageHandler
     }
   }
   
-  private void y(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void z(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "<PbReceiptRead><R><---handleC2CReceiptMessageResp.");
@@ -6059,10 +6108,10 @@ public class MessageHandler
           QLog.e("Q.msg.MessageHandler", 2, "<---handleC2CReceiptMessageResp : invalid.", localException);
           localStringBuilder = new StringBuilder().append("<---handleC2CReceiptMessageResp : data:");
           if (paramObject != null) {
-            break label323;
+            break label317;
           }
         }
-        label323:
+        label317:
         for (paramObject = "null";; paramObject = Arrays.toString((byte[])paramObject))
         {
           QLog.e("Q.msg.MessageHandler", 2, paramObject);
@@ -6088,20 +6137,20 @@ public class MessageHandler
       b(paramToServiceMsg, paramFromServiceMsg);
       paramFromServiceMsg = a(l1);
       if (paramFromServiceMsg != null) {
-        break label359;
+        break label353;
       }
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "<PbReceiptRead><R><---handleC2CReceiptMessageResp : ---cmd:MessageSvc.PbReceiptRead,no SendMessageHandler found.");
       }
     }
-    label359:
+    label353:
     int i2;
     do
     {
       return;
       StringBuilder localStringBuilder;
       if (i1 != 255) {
-        break label446;
+        break label440;
       }
       i2 = 1;
       if (i2 == 0) {
@@ -6118,101 +6167,13 @@ public class MessageHandler
     {
       a(l1);
       return;
-      label446:
+      label440:
       i2 = 0;
       break;
       a(6015, true, new Long[] { Long.valueOf(i3), Long.valueOf(l1), Long.valueOf(paramObject.receipt_resp.receipt_info.uint64_read_time.get()) });
       continue;
       a(paramToServiceMsg, paramObject);
       a(3021, true, new Long[] { Long.valueOf(i3), Long.valueOf(l1), Long.valueOf(i1) });
-    }
-  }
-  
-  private void z(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow.");
-    }
-    long l1 = paramToServiceMsg.extraData.getLong("toUin");
-    paramToServiceMsg = new oidb_0xb31.RspBody();
-    int i1 = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    if (i1 == 0)
-    {
-      if (!paramToServiceMsg.items.has()) {
-        break label486;
-      }
-      paramToServiceMsg = paramToServiceMsg.items.get();
-      if ((paramToServiceMsg == null) || (paramToServiceMsg.isEmpty())) {
-        break label467;
-      }
-      paramToServiceMsg = (oidb_0xb31.SimilarItem)paramToServiceMsg.get(0);
-      if (paramToServiceMsg == null) {
-        break label448;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramFromServiceMsg = new JSONObject();
-        if (paramToServiceMsg.icon_url.has()) {
-          paramFromServiceMsg.put("icon_url", paramToServiceMsg.icon_url.get());
-        }
-        if (paramToServiceMsg.jump_url.has()) {
-          paramFromServiceMsg.put("jump_url", paramToServiceMsg.jump_url.get());
-        }
-        if (paramToServiceMsg.name.has()) {
-          paramFromServiceMsg.put("name", paramToServiceMsg.name.get());
-        }
-        if (paramToServiceMsg.sub_title.has()) {
-          paramFromServiceMsg.put("sub_title", paramToServiceMsg.sub_title.get());
-        }
-        if (paramToServiceMsg.title.has()) {
-          paramFromServiceMsg.put("title", paramToServiceMsg.title.get());
-        }
-        if (paramToServiceMsg.type.has()) {
-          paramFromServiceMsg.put("type", paramToServiceMsg.type.get());
-        }
-        if (paramToServiceMsg.url.has()) {
-          paramFromServiceMsg.put("url", paramToServiceMsg.url.get());
-        }
-        if (paramToServiceMsg.show_both_head.has()) {
-          paramFromServiceMsg.put("show_both_head", paramToServiceMsg.show_both_head.get());
-        }
-        paramFromServiceMsg.put("friend_uin", l1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow content is: " + paramFromServiceMsg.toString());
-        }
-        ((akbn)this.mApp.getManager(34)).b(paramFromServiceMsg.toString(), String.valueOf(l1));
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow exception: " + QLog.getStackTraceString(paramToServiceMsg));
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow. result is: " + i1);
-      }
-      return;
-      label448:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow index == 0 item is null.");
-        continue;
-        label467:
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow items is empty.");
-          continue;
-          label486:
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.MessageHandler", 2, "handleGetCommonHobbyForAIOShow items not has.");
-          }
-        }
-      }
     }
   }
   
@@ -6242,10 +6203,10 @@ public class MessageHandler
   {
     SvcRequestGetMsgV2 localSvcRequestGetMsgV2 = new SvcRequestGetMsgV2();
     localSvcRequestGetMsgV2.lUin = Long.parseLong(this.app.getCurrentAccountUin());
-    localSvcRequestGetMsgV2.uDateTime = this.jdField_a_of_type_Awzy.a();
+    localSvcRequestGetMsgV2.uDateTime = this.jdField_a_of_type_Ayvc.a();
     localSvcRequestGetMsgV2.cRecivePic = 1;
     localSvcRequestGetMsgV2.shAbility = 15;
-    byte[] arrayOfByte = this.jdField_a_of_type_Awzy.a();
+    byte[] arrayOfByte = this.jdField_a_of_type_Ayvc.a();
     localSvcRequestGetMsgV2.cChannel = 4;
     localSvcRequestGetMsgV2.cInst = 1;
     localSvcRequestGetMsgV2.cChannelEx = 1;
@@ -6255,7 +6216,7 @@ public class MessageHandler
     }
     localSvcRequestGetMsgV2.cRambleFlag = 0;
     localSvcRequestGetMsgV2.lGeneralAbi = 1L;
-    arrayOfByte = this.jdField_a_of_type_Awzy.b();
+    arrayOfByte = this.jdField_a_of_type_Ayvc.b();
     if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
       localSvcRequestGetMsgV2.vPubAccountCookie = arrayOfByte;
     }
@@ -6284,7 +6245,7 @@ public class MessageHandler
         localObject2 = this.jdField_b_of_type_ArrayOfJavaLangString[paramInt];
         localObject3 = new MessageSvcPack.PullDisSeqParam();
         ((MessageSvcPack.PullDisSeqParam)localObject3).lDisCode = Long.parseLong((String)localObject2);
-        ((MessageSvcPack.PullDisSeqParam)localObject3).lLastSeqId = this.jdField_a_of_type_Awzy.i((String)localObject2);
+        ((MessageSvcPack.PullDisSeqParam)localObject3).lLastSeqId = this.jdField_a_of_type_Ayvc.i((String)localObject2);
         localSvcRequestPullDisMsgSeq.vDisInfo.add(localObject3);
         if (QLog.isColorLevel()) {
           ((StringBuilder)localObject1).append((String)localObject2).append(",");
@@ -6298,7 +6259,7 @@ public class MessageHandler
     for (;;)
     {
       return localSvcRequestPullDisMsgSeq;
-      localObject1 = ((ajvi)this.mApp.getManager(53)).a();
+      localObject1 = ((almv)this.mApp.getManager(53)).a();
       if (((ArrayList)localObject1).size() == 0)
       {
         this.jdField_b_of_type_ArrayOfJavaLangString = null;
@@ -6314,7 +6275,7 @@ public class MessageHandler
         localObject3 = (DiscussionInfo)((ArrayList)localObject1).get(paramInt);
         MessageSvcPack.PullDisSeqParam localPullDisSeqParam = new MessageSvcPack.PullDisSeqParam();
         localPullDisSeqParam.lDisCode = Long.parseLong(((DiscussionInfo)localObject3).uin);
-        localPullDisSeqParam.lLastSeqId = this.jdField_a_of_type_Awzy.i(((DiscussionInfo)localObject3).uin);
+        localPullDisSeqParam.lLastSeqId = this.jdField_a_of_type_Ayvc.i(((DiscussionInfo)localObject3).uin);
         this.jdField_b_of_type_ArrayOfJavaLangString[paramInt] = ((DiscussionInfo)localObject3).uin;
         localSvcRequestPullDisMsgSeq.vDisInfo.add(localPullDisSeqParam);
         if (QLog.isColorLevel()) {
@@ -6354,7 +6315,7 @@ public class MessageHandler
       try
       {
         localPullGroupSeqParam.lGroupCode = Long.parseLong(arrayOfString[paramInt]);
-        localPullGroupSeqParam.lLastSeqId = this.jdField_a_of_type_Awzy.j(arrayOfString[paramInt]);
+        localPullGroupSeqParam.lLastSeqId = this.jdField_a_of_type_Ayvc.j(arrayOfString[paramInt]);
         ((SvcRequestPullGroupMsgSeq)localObject).vGroupInfo.add(localPullGroupSeqParam);
         if (QLog.isColorLevel()) {
           localStringBuilder.append("; troopUin=").append(arrayOfString[paramInt]).append(",").append(" lastSeqId=").append(localPullGroupSeqParam.lLastSeqId);
@@ -6383,7 +6344,7 @@ public class MessageHandler
     }
     SvcRequestPullDisGroupSeq localSvcRequestPullDisGroupSeq;
     StringBuilder localStringBuilder;
-    label199:
+    label198:
     do
     {
       return localObject;
@@ -6396,13 +6357,13 @@ public class MessageHandler
       for (;;)
       {
         if (i1 >= i2) {
-          break label199;
+          break label198;
         }
         try
         {
           RegisterProxySvcPack.PullDisSeqParam localPullDisSeqParam = new RegisterProxySvcPack.PullDisSeqParam();
           localPullDisSeqParam.lDisCode = Long.parseLong(this.jdField_b_of_type_ArrayOfJavaLangString[i1]);
-          localPullDisSeqParam.lLastSeqId = this.jdField_a_of_type_Awzy.i(this.jdField_b_of_type_ArrayOfJavaLangString[i1]);
+          localPullDisSeqParam.lLastSeqId = this.jdField_a_of_type_Ayvc.i(this.jdField_b_of_type_ArrayOfJavaLangString[i1]);
           ((ArrayList)localObject).add(localPullDisSeqParam);
           if (QLog.isColorLevel()) {
             localStringBuilder.append(this.jdField_b_of_type_ArrayOfJavaLangString[i1]).append(",");
@@ -6431,7 +6392,7 @@ public class MessageHandler
     return localSvcRequestPullDisGroupSeq;
   }
   
-  public akon a(String paramString)
+  public abnx a(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilMap == null) {
       return null;
@@ -6447,7 +6408,7 @@ public class MessageHandler
         }
         if ("c2c_processor".equals(paramString))
         {
-          localObject = new akov(this.app, this);
+          localObject = new abof(this.app, this);
           if (localObject != null) {
             break label416;
           }
@@ -6456,61 +6417,61 @@ public class MessageHandler
       }
       if ("troop_processor".equals(paramString))
       {
-        localObject = new azrd(this.app, this);
+        localObject = new bbpm(this.app, this);
       }
       else if ("disc_processor".equals(paramString))
       {
-        localObject = new akpi(this.app, this);
+        localObject = new amgb(this.app, this);
       }
       else if ("businessbase_processor".equals(paramString))
       {
-        localObject = new akqe(this.app, this);
+        localObject = new abow(this.app, this);
       }
       else if ("sub_account_processor".equals(paramString))
       {
-        localObject = new akqs(this.app, this);
+        localObject = new amgw(this.app, this);
       }
       else if ("accost_processor".equals(paramString))
       {
-        localObject = new akoe(this.app, this);
+        localObject = new amfs(this.app, this);
       }
       else if ("offlinefile_processor".equals(paramString))
       {
-        localObject = new akqb(this.app, this);
+        localObject = new amgn(this.app, this);
       }
       else if ("system_processor".equals(paramString))
       {
-        localObject = new akqw(this.app, this);
+        localObject = new amha(this.app, this);
       }
       else if ("uncommon_msg_processor".equals(paramString))
       {
-        localObject = new akrh(this.app, this);
+        localObject = new amhm(this.app, this);
       }
       else if ("video_processor".equals(paramString))
       {
-        localObject = new akrj(this.app, this);
+        localObject = new amho(this.app, this);
       }
       else if ("discuss_update_processor".equals(paramString))
       {
-        localObject = new akpi(this.app, this);
+        localObject = new amgb(this.app, this);
       }
       else if ("info_update_processor".equals(paramString))
       {
-        localObject = new akql(this.app, this);
+        localObject = new amgt(this.app, this);
       }
       else if ("slave_master_processor".equals(paramString))
       {
-        localObject = new akpj(this.app, this);
+        localObject = new amgc(this.app, this);
       }
       else if ("hctopic_processor".equals(paramString))
       {
-        localObject = new akpn(this.app, this);
+        localObject = new amgg(this.app, this);
         continue;
         label416:
-        ((akon)localObject).a(this);
+        ((abnx)localObject).a(this);
         this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
         label433:
-        return (akon)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        return (abnx)this.jdField_a_of_type_JavaUtilMap.get(paramString);
       }
       else
       {
@@ -6519,51 +6480,51 @@ public class MessageHandler
     }
   }
   
-  public akqb a()
+  public amgn a()
   {
-    return (akqb)a("offlinefile_processor");
+    return (amgn)a("offlinefile_processor");
   }
   
-  public akqs a()
+  public amgw a()
   {
-    return (akqs)a("sub_account_processor");
+    return (amgw)a("sub_account_processor");
   }
   
-  public akqw a()
+  public amha a()
   {
-    return (akqw)a("system_processor");
+    return (amha)a("system_processor");
   }
   
-  public akrh a()
+  public amhm a()
   {
-    return (akrh)a("uncommon_msg_processor");
+    return (amhm)a("uncommon_msg_processor");
   }
   
-  public aukp a()
+  public awbw a()
   {
-    if ((this.jdField_a_of_type_Aukp == null) || (!this.jdField_a_of_type_Aukp.a())) {}
+    if ((this.jdField_a_of_type_Awbw == null) || (!this.jdField_a_of_type_Awbw.a())) {}
     synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      if ((this.jdField_a_of_type_Aukp == null) || (!this.jdField_a_of_type_Aukp.a())) {
-        this.jdField_a_of_type_Aukp = this.app.getEntityManagerFactory().createEntityManager();
+      if ((this.jdField_a_of_type_Awbw == null) || (!this.jdField_a_of_type_Awbw.a())) {
+        this.jdField_a_of_type_Awbw = this.app.getEntityManagerFactory().createEntityManager();
       }
-      return this.jdField_a_of_type_Aukp;
+      return this.jdField_a_of_type_Awbw;
     }
   }
   
-  public awzy a()
+  public ayvc a()
   {
-    return this.jdField_a_of_type_Awzy;
+    return this.jdField_a_of_type_Ayvc;
   }
   
   public AppShareID a(String paramString)
   {
-    return this.jdField_a_of_type_Awzy.a(paramString);
+    return this.jdField_a_of_type_Ayvc.a(paramString);
   }
   
   public OpenID a(String paramString)
   {
-    return this.jdField_a_of_type_Awzy.a(paramString);
+    return this.jdField_a_of_type_Ayvc.a(paramString);
   }
   
   public SendMessageHandler a(long paramLong)
@@ -6625,13 +6586,13 @@ public class MessageHandler
     }
     if (((paramInt2 != 2) && (!b(paramBoolean3))) || ((paramInt2 == 2) && (!e())))
     {
-      this.jdField_a_of_type_Awzy.a(false);
-      localObject = this.jdField_a_of_type_Awzy.a();
+      this.jdField_a_of_type_Ayvc.a(false);
+      localObject = this.jdField_a_of_type_Ayvc.a();
       if (!paramBoolean1) {
-        break label254;
+        break label252;
       }
     }
-    label254:
+    label252:
     for (byte b1 = 0;; b1 = 1)
     {
       if (QLog.isColorLevel()) {
@@ -6669,11 +6630,11 @@ public class MessageHandler
       arrayOfString1 = (String[])localHashMap.get(Integer.valueOf(1));
       arrayOfString2 = (String[])localHashMap.get(Integer.valueOf(4));
       if (arrayOfString1 == null) {
-        break label332;
+        break label330;
       }
     }
     label168:
-    label332:
+    label330:
     for (int i1 = arrayOfString1.length + 0;; i1 = 0)
     {
       int i2 = i1;
@@ -6697,7 +6658,7 @@ public class MessageHandler
       {
         this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localObject);
         localObject = (String[])localHashMap.get(Integer.valueOf(2));
-        if ((localObject != null) && (localObject.length > 0) && (this.jdField_a_of_type_Awzy != null))
+        if ((localObject != null) && (localObject.length > 0) && (this.jdField_a_of_type_Ayvc != null))
         {
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.MessageHandler", 2, "enableTroopMsgPushCache type=2, 1st uin=" + localObject[0]);
@@ -6705,7 +6666,7 @@ public class MessageHandler
           i1 = 0;
           while (i1 < localObject.length)
           {
-            this.jdField_a_of_type_Awzy.a(localObject[i1], 0);
+            this.jdField_a_of_type_Ayvc.a(localObject[i1], 0);
             i1 += 1;
           }
           break;
@@ -6727,7 +6688,7 @@ public class MessageHandler
   protected void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg arg3, Object paramObject)
   {
     l();
-    paramToServiceMsg = new akap(paramInt, paramToServiceMsg, ???, paramObject);
+    paramToServiceMsg = new alse(paramInt, paramToServiceMsg, ???, paramObject);
     if (paramInt == 1) {
       synchronized (this.jdField_d_of_type_JavaUtilArrayList)
       {
@@ -6747,7 +6708,7 @@ public class MessageHandler
   protected void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg arg3, Object paramObject, boolean paramBoolean)
   {
     l();
-    paramToServiceMsg = new akap(paramInt, paramToServiceMsg, ???, paramObject, paramBoolean);
+    paramToServiceMsg = new alse(paramInt, paramToServiceMsg, ???, paramObject, paramBoolean);
     if (paramInt == 1) {
       synchronized (this.jdField_d_of_type_JavaUtilArrayList)
       {
@@ -6846,16 +6807,16 @@ public class MessageHandler
       l2 = l2 | 0x40 | 0x100 | 0x2;
       l1 = l2;
       if (!paramBoolean1) {
-        break label350;
+        break label349;
       }
       this.jdField_b_of_type_Int = i1;
       l1 = l2;
       if (paramInt != 1) {
-        break label353;
+        break label352;
       }
     }
-    label350:
-    label353:
+    label349:
+    label352:
     for (Object localObject = "RegPrxySvc.infoLogin";; localObject = "RegPrxySvc.getOffMsg")
     {
       localObject = createToServiceMsg((String)localObject);
@@ -6917,12 +6878,12 @@ public class MessageHandler
   
   public void a(long paramLong, int paramInt1, int paramInt2)
   {
-    a(paramLong, paramInt1, paramInt2, null, 1, bbdh.a());
+    a(paramLong, paramInt1, paramInt2, null, 1, bdcb.a());
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2, msg_onlinepush.PbPushMsg paramPbPushMsg)
   {
-    a(paramLong, paramInt1, paramInt2, paramPbPushMsg, 1, bbdh.a());
+    a(paramLong, paramInt1, paramInt2, paramPbPushMsg, 1, bdcb.a());
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2, msg_onlinepush.PbPushMsg paramPbPushMsg, int paramInt3, DeviceInfo paramDeviceInfo)
@@ -6944,13 +6905,13 @@ public class MessageHandler
     send(localToServiceMsg);
   }
   
-  public void a(long paramLong1, String paramString, long paramLong2, mxj parammxj)
+  public void a(long paramLong1, String paramString, long paramLong2, nac paramnac)
   {
     oidb_0xbad.ReqBody localReqBody = new oidb_0xbad.ReqBody();
     localReqBody.bytes_openid.set(ByteStringMicro.copyFromUtf8(paramString));
     localReqBody.uint64_appid.set(paramLong2);
     localReqBody.uint64_uin.set(paramLong1);
-    mxf.a(this.app, parammxj, localReqBody.toByteArray(), "OidbSvc.0xbad", 2989, 0);
+    mzy.a(this.app, paramnac, localReqBody.toByteArray(), "OidbSvc.0xbad", 2989, 0);
   }
   
   public void a(long paramLong, ArrayList<DelMsgInfo> paramArrayList, int paramInt1, int paramInt2, msg_onlinepush.PbPushMsg paramPbPushMsg)
@@ -6986,7 +6947,7 @@ public class MessageHandler
   
   public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt, boolean paramBoolean)
   {
-    Object localObject1 = ((ajxl)this.app.getManager(51)).e(String.valueOf(paramLong2));
+    Object localObject1 = ((aloz)this.app.getManager(51)).e(String.valueOf(paramLong2));
     Object localObject2;
     if (localObject1 != null)
     {
@@ -7058,7 +7019,7 @@ public class MessageHandler
           paramContext = new Intent(BaseApplication.getContext(), LoginInfoActivity.class);
           paramContext.addFlags(268435456);
           BaseApplication.getContext().startActivity(paramContext);
-          axqy.b(this.app, "CliOper", "", "", "My_eq", "PC_Online_notice", 0, 0, "", "", "", "");
+          azmj.b(this.app, "CliOper", "", "", "My_eq", "PC_Online_notice", 0, 0, "", "", "", "");
         }
       }
     }
@@ -7131,21 +7092,21 @@ public class MessageHandler
     }
   }
   
-  public void a(MessageRecord paramMessageRecord, ajte paramajte, boolean paramBoolean)
+  public void a(MessageRecord paramMessageRecord, alkr paramalkr, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, new Object[] { "--->sendRichTextMessageWith_MR : msgseq=", Long.valueOf(paramMessageRecord.msgseq) });
     }
     SendMessageHandler localSendMessageHandler = new SendMessageHandler();
     boolean bool2 = a(paramMessageRecord.msgseq, localSendMessageHandler);
-    msg_svc.PbSendMsgReq localPbSendMsgReq = akas.a(this.app, paramMessageRecord);
+    msg_svc.PbSendMsgReq localPbSendMsgReq = alsh.a(this.app, paramMessageRecord);
     MessageForStructing localMessageForStructing;
     if ((paramMessageRecord instanceof MessageForStructing))
     {
       localMessageForStructing = (MessageForStructing)paramMessageRecord;
       if (localMessageForStructing.structingMsg == null) {}
     }
-    for (boolean bool1 = sif.b(localMessageForStructing.structingMsg);; bool1 = false)
+    for (boolean bool1 = taa.b(localMessageForStructing.structingMsg);; bool1 = false)
     {
       if ((MessageForRichText.class.isInstance(paramMessageRecord)) && (!bool1)) {
         ((MessageForRichText)paramMessageRecord).richText = null;
@@ -7161,14 +7122,14 @@ public class MessageHandler
         do
         {
           return;
-          a(paramMessageRecord, localPbSendMsgReq, 480000L, 0, paramajte, paramBoolean);
+          a(paramMessageRecord, localPbSendMsgReq, 480000L, 0, paramalkr, paramBoolean);
           localSendMessageHandler.postDelayed(new MessageHandler.3(this, paramMessageRecord), jdField_e_of_type_Int);
           if (bool2)
           {
             i1 = 0;
             while (i1 < 8)
             {
-              localSendMessageHandler.a(new MessageHandler.4(this, paramMessageRecord, localPbSendMsgReq, paramajte, paramBoolean));
+              localSendMessageHandler.a(new MessageHandler.4(this, paramMessageRecord, localPbSendMsgReq, paramalkr, paramBoolean));
               i1 += 1;
             }
             i1 = 1;
@@ -7182,11 +7143,11 @@ public class MessageHandler
             }
           }
         } while (paramMessageRecord.istroop != 1);
-        this.jdField_a_of_type_Awzy.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
-        i1 = this.jdField_a_of_type_Awzy.jdField_a_of_type_JavaUtilList.size();
-        paramMessageRecord = this.jdField_a_of_type_Awzy;
-      } while (i1 <= awzy.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Awzy.jdField_a_of_type_JavaUtilList.remove(0);
+        this.jdField_a_of_type_Ayvc.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
+        i1 = this.jdField_a_of_type_Ayvc.jdField_a_of_type_JavaUtilList.size();
+        paramMessageRecord = this.jdField_a_of_type_Ayvc;
+      } while (i1 <= ayvc.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Ayvc.jdField_a_of_type_JavaUtilList.remove(0);
       return;
     }
   }
@@ -7275,7 +7236,7 @@ public class MessageHandler
       QLog.d("Q.msg.MessageHandler", 2, "<<---handleError serviceCmd:" + paramFromServiceMsg.getServiceCmd());
     }
     String str = paramFromServiceMsg.getServiceCmd();
-    if (akqj.a().containsKey(str)) {
+    if (amgr.a().containsKey(str)) {
       a(str, paramToServiceMsg, paramFromServiceMsg);
     }
     do
@@ -7352,7 +7313,7 @@ public class MessageHandler
       }
       if ("RegPrxySvc.infoSync".equalsIgnoreCase(str))
       {
-        d(paramFromServiceMsg, null);
+        v(paramToServiceMsg, paramFromServiceMsg, null);
         return;
       }
       if ("MessageSvc.PbReceiptRead".equalsIgnoreCase(str))
@@ -7362,7 +7323,7 @@ public class MessageHandler
       }
     } while (!"StreamSvr.UploadStreamMsg".equals(str));
     short s1 = paramToServiceMsg.extraData.getShort("PackSeq");
-    notifyUI(3011, false, new Object[] { new axak(paramToServiceMsg.extraData.getString("filepath"), s1, paramToServiceMsg.extraData.getShort("flowLayer"), null, 0) });
+    notifyUI(3011, false, new Object[] { new ayvo(paramToServiceMsg.extraData.getString("filepath"), s1, paramToServiceMsg.extraData.getShort("flowLayer"), null, 0) });
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -7375,7 +7336,7 @@ public class MessageHandler
         int i2 = paramToServiceMsg.vBlackListUin.size();
         if (i2 > 0)
         {
-          paramFromServiceMsg = (ajxl)this.app.getManager(51);
+          paramFromServiceMsg = (aloz)this.app.getManager(51);
           int i1 = 0;
           while (i1 < i2)
           {
@@ -7421,7 +7382,7 @@ public class MessageHandler
     if (!TextUtils.isEmpty(paramString)) {
       synchronized (this.jdField_d_of_type_JavaLangObject)
       {
-        paramString = (akao)this.jdField_e_of_type_JavaUtilHashMap.get(paramString);
+        paramString = (alsd)this.jdField_e_of_type_JavaUtilHashMap.get(paramString);
         if (paramString != null) {
           a(paramString.jdField_b_of_type_JavaLangString, paramString.jdField_c_of_type_JavaLangString, paramString.jdField_a_of_type_Long, paramString.jdField_a_of_type_JavaLangString, paramString.jdField_b_of_type_Long, paramString.jdField_a_of_type_Int, paramString.jdField_b_of_type_Int, paramString.jdField_c_of_type_Long);
         }
@@ -7464,17 +7425,17 @@ public class MessageHandler
   public void a(String paramString, int paramInt, boolean paramBoolean)
   {
     int i2 = 0;
-    if (akpx.a(paramInt) == 1032) {}
+    if (abot.a(paramInt) == 1032) {}
     do
     {
       do
       {
         return;
-      } while (!akpx.a(paramString, paramInt));
+      } while (!abot.b(paramString, paramInt));
       paramString = this.app.a().a(paramString, paramInt, paramBoolean);
     } while ((paramString == null) || (paramString.toByteArray() == null));
-    paramInt = awyn.jdField_a_of_type_Int;
-    awyn.jdField_a_of_type_Int = paramInt + 1;
+    paramInt = aytq.jdField_a_of_type_Int;
+    aytq.jdField_a_of_type_Int = paramInt + 1;
     long l1 = paramInt;
     long l2 = System.currentTimeMillis();
     SendMessageHandler localSendMessageHandler = new SendMessageHandler();
@@ -7510,6 +7471,11 @@ public class MessageHandler
   
   public void a(String paramString, long paramLong1, long paramLong2, long paramLong3, short paramShort, long paramLong4, int paramInt1, byte[] paramArrayOfByte, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2)
   {
+    a(paramString, paramLong1, paramLong2, paramLong3, paramShort, paramLong4, paramInt1, paramArrayOfByte, paramInt2, paramBoolean1, paramInt3, paramBoolean2, true);
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2, long paramLong3, short paramShort, long paramLong4, int paramInt1, byte[] paramArrayOfByte, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, boolean paramBoolean3)
+  {
     Object localObject;
     int i1;
     msg_svc.PbGetRoamMsgReq localPbGetRoamMsgReq;
@@ -7520,7 +7486,8 @@ public class MessageHandler
       if (paramArrayOfByte == null)
       {
         i1 = 0;
-        QLog.d("Q.msg.MessageHandler", 2, i1 + ", fetchMore: " + paramBoolean1 + ", fetchNum: " + paramInt3 + ", isPreloadType: " + paramBoolean2);
+        QLog.d("Q.msg.MessageHandler", 2, i1 + ", fetchMore: " + paramBoolean1 + ", fetchNum: " + paramInt3 + ", isPreloadType: " + paramBoolean2 + ", notify: " + paramBoolean3);
+        QLog.e("Q.msg.MessageHandler", 2, new Exception("getRoamMsgByTime"), new Object[0]);
       }
     }
     else
@@ -7535,19 +7502,20 @@ public class MessageHandler
       ((ToServiceMsg)localObject).extraData.putInt("fetchNum", paramInt3);
       ((ToServiceMsg)localObject).extraData.putString("peerUin", paramString);
       ((ToServiceMsg)localObject).extraData.putBoolean("preloadType", paramBoolean2);
+      ((ToServiceMsg)localObject).extraData.putBoolean("notify", paramBoolean3);
       localPbGetRoamMsgReq = new msg_svc.PbGetRoamMsgReq();
       if ((paramLong4 != 0L) || (paramLong2 != 0L)) {
-        break label452;
+        break label494;
       }
       localPbGetRoamMsgReq.last_msgtime.set(paramLong3);
-      label327:
+      label369:
       localPbGetRoamMsgReq.peer_uin.set(Long.parseLong(paramString));
       localPbGetRoamMsgReq.random.set(paramLong4);
       paramString = localPbGetRoamMsgReq.read_cnt;
       if (paramShort == 0) {
-        break label465;
+        break label507;
       }
-      label360:
+      label402:
       paramString.set(paramShort);
       localPbGetRoamMsgReq.subcmd.set(paramInt1);
       localPbGetRoamMsgReq.begin_msgtime.set(paramLong1);
@@ -7556,7 +7524,7 @@ public class MessageHandler
       if (paramArrayOfByte != null)
       {
         if (paramInt2 != 0) {
-          break label473;
+          break label515;
         }
         localPbGetRoamMsgReq.pwd.set(ByteStringMicro.copyFrom(paramArrayOfByte));
       }
@@ -7568,13 +7536,13 @@ public class MessageHandler
       return;
       i1 = paramArrayOfByte.length;
       break;
-      label452:
+      label494:
       localPbGetRoamMsgReq.last_msgtime.set(paramLong2);
-      break label327;
-      label465:
+      break label369;
+      label507:
       paramShort = 1000;
-      break label360;
-      label473:
+      break label402;
+      label515:
       localPbGetRoamMsgReq.sig.set(ByteStringMicro.copyFrom(paramArrayOfByte));
     }
   }
@@ -7588,9 +7556,9 @@ public class MessageHandler
     Object localObject;
     if (paramLong2 == 0L)
     {
-      localObject = this.jdField_a_of_type_Awzy.b(paramString);
+      localObject = this.jdField_a_of_type_Ayvc.b(paramString);
       if (localObject != null) {
-        break label236;
+        break label234;
       }
       l1 = 0L;
     }
@@ -7601,7 +7569,7 @@ public class MessageHandler
       }
       paramLong2 = paramLong1;
       if (paramLong1 == 0L) {
-        paramLong2 = awzy.a();
+        paramLong2 = ayvc.a();
       }
       localObject = createToServiceMsg("MessageSvc.PbGetOneDayRoamMsg");
       msg_svc.PbGetOneDayRoamMsgReq localPbGetOneDayRoamMsgReq = new msg_svc.PbGetOneDayRoamMsgReq();
@@ -7615,7 +7583,7 @@ public class MessageHandler
       }
       sendPbReq((ToServiceMsg)localObject);
       return;
-      label236:
+      label234:
       paramLong2 = ((Long)((Pair)localObject).second).longValue();
       l1 = paramLong2;
       if (QLog.isColorLevel())
@@ -7630,21 +7598,21 @@ public class MessageHandler
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      ajxl localajxl = (ajxl)this.app.getManager(51);
-      localajxl.a(localajxl.a(paramString1, paramString2));
+      aloz localaloz = (aloz)this.app.getManager(51);
+      localaloz.a(localaloz.a(paramString1, paramString2));
     }
   }
   
-  public void a(String paramString1, String paramString2, byte paramByte, ajte paramajte)
+  public void a(String paramString1, String paramString2, byte paramByte, alkr paramalkr)
   {
     if ((paramString1 == null) || (paramString1.length() <= 0)) {
       return;
     }
-    paramajte = createToServiceMsg("TransService.ReqTmpChatPicDownload", paramajte);
-    paramajte.extraData.putString("selfuin", paramString1);
-    paramajte.extraData.putString("filekey", paramString2);
-    paramajte.extraData.putByte("picscale", paramByte);
-    send(paramajte);
+    paramalkr = createToServiceMsg("TransService.ReqTmpChatPicDownload", paramalkr);
+    paramalkr.extraData.putString("selfuin", paramString1);
+    paramalkr.extraData.putString("filekey", paramString2);
+    paramalkr.extraData.putByte("picscale", paramByte);
+    send(paramalkr);
   }
   
   public void a(String paramString1, String paramString2, byte paramByte, String paramString3, long paramLong1, long paramLong2)
@@ -7678,23 +7646,23 @@ public class MessageHandler
     int i1;
     Object localObject4;
     Object localObject3;
-    if (((ajxl)this.app.getManager(51)).b(paramString1))
+    if (((aloz)this.app.getManager(51)).b(paramString1))
     {
       localObject1 = this.app.a().b(paramString1, 0);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        paramString3 = new aqvb(paramString1, this.app.c(), this.app.getApp().getString(2131690038), 0, -5040, 655362, paramLong2);
+        paramString3 = new aslp(paramString1, this.app.c(), this.app.getApp().getString(2131690085), 0, -5040, 655362, paramLong2);
         localObject1 = new MessageForUniteGrayTip();
         ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.app, paramString3);
-        aqvc.a(this.app, (MessageForUniteGrayTip)localObject1);
-        break label1066;
+        aslq.a(this.app, (MessageForUniteGrayTip)localObject1);
+        break label1063;
         if (i1 == 0) {
-          break label1088;
+          break label1085;
         }
-        localObject1 = ajya.a(2131706641);
-        localObject4 = ajya.a(2131706636);
-        localObject3 = ajya.a(2131706639);
-        paramString3 = new aqvb(paramString1, this.app.c(), (String)localObject1, 0, -5040, 135179, paramLong2);
+        localObject1 = alpo.a(2131707013);
+        localObject4 = alpo.a(2131707008);
+        localObject3 = alpo.a(2131707011);
+        paramString3 = new aslp(paramString1, this.app.c(), (String)localObject1, 0, -5040, 135179, paramLong2);
         paramString3.jdField_c_of_type_JavaLangString = ((String)localObject1);
         Bundle localBundle = new Bundle();
         localBundle.putInt("key_action", 14);
@@ -7708,18 +7676,18 @@ public class MessageHandler
         paramString3.a(((String)localObject1).indexOf((String)localObject3), ((String)localObject1).indexOf((String)localObject3) + ((String)localObject3).length(), (Bundle)localObject4);
         localObject1 = new MessageForUniteGrayTip();
         ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.app, paramString3);
-        aqvc.a(this.app, (MessageForUniteGrayTip)localObject1);
-        break label1088;
+        aslq.a(this.app, (MessageForUniteGrayTip)localObject1);
+        break label1085;
       }
     }
     for (;;)
     {
-      label456:
-      boolean bool = bldt.a(paramInt1);
+      label454:
+      boolean bool = bnpd.a(paramInt1);
       if (i1 != 0)
       {
-        paramString3 = (MessageForGrayTips)axas.a(-1013);
-        paramString3.init(this.app.getCurrentAccountUin(), paramString1, paramString1, this.app.getApp().getString(2131690037), paramLong2, -1013, 3, paramLong2);
+        paramString3 = (MessageForGrayTips)ayvw.a(-1013);
+        paramString3.init(this.app.getCurrentAccountUin(), paramString1, paramString1, this.app.getApp().getString(2131690084), paramLong2, -1013, 3, paramLong2);
         localObject1 = new Bundle();
         ((Bundle)localObject1).putInt("key_action", 14);
         paramString3.addHightlightItem(18, 22, (Bundle)localObject1);
@@ -7728,7 +7696,7 @@ public class MessageHandler
         paramString3.addHightlightItem(23, 27, (Bundle)localObject1);
         paramString3.isread = true;
         a(paramString3);
-        axqy.b(this.app, "dc00898", "", "", "0X8007978", "0X8007978", 0, 0, "", "", "", "");
+        azmj.b(this.app, "dc00898", "", "", "0X8007978", "0X8007978", 0, 0, "", "", "", "");
       }
       if ((bool) && (!TextUtils.isEmpty(paramString2)))
       {
@@ -7740,23 +7708,23 @@ public class MessageHandler
           notifyUI(8030, true, paramString2);
         }
       }
-      aknx.a(this.app, paramString1, paramLong2, paramInt1, paramInt2);
+      amfl.a(this.app, paramString1, paramLong2, paramInt1, paramInt2);
       if (this.jdField_e_of_type_JavaUtilHashMap.get(paramString1) != null) {
         this.jdField_e_of_type_JavaUtilHashMap.remove(paramString1);
       }
       this.jdField_d_of_type_Long = paramLong2;
-      label740:
+      label737:
       return;
-      localObject3 = (MessageForText)axas.a(-1000);
+      localObject3 = (MessageForText)ayvw.a(-1000);
       ((MessageForText)localObject3).frienduin = paramString1;
-      localObject1 = this.app.getApp().getString(2131690040);
+      localObject1 = this.app.getApp().getString(2131690087);
       if (paramLong3 == this.app.getLongAccountUin())
       {
-        paramString3 = ajya.a(2131706631);
-        label797:
+        paramString3 = alpo.a(2131707003);
+        label794:
         localObject4 = this.app.getCurrentAccountUin();
         if (!TextUtils.isEmpty(paramString3)) {
-          break label1110;
+          break label1107;
         }
       }
       for (;;)
@@ -7769,49 +7737,49 @@ public class MessageHandler
         a((MessageRecord)localObject3);
         if ((!TextUtils.isEmpty(paramString3)) && (paramLong3 != this.app.getLongAccountUin()))
         {
-          localObject1 = bbcz.j(this.app, paramString1);
+          localObject1 = bdbt.j(this.app, paramString1);
           paramString3 = (String)localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             paramString3 = paramString1;
           }
-          localObject1 = (MessageForGrayTips)axas.a(-1013);
-          ((MessageForGrayTips)localObject1).init(this.app.getCurrentAccountUin(), paramString1, paramString1, String.format(ajya.a(2131706640), new Object[] { paramString3 }), paramLong2, -1013, 0, paramLong2);
+          localObject1 = (MessageForGrayTips)ayvw.a(-1013);
+          ((MessageForGrayTips)localObject1).init(this.app.getCurrentAccountUin(), paramString1, paramString1, String.format(alpo.a(2131707012), new Object[] { paramString3 }), paramLong2, -1013, 0, paramLong2);
           ((MessageForGrayTips)localObject1).isread = true;
           a((MessageRecord)localObject1);
         }
-        ((akbn)this.app.getManager(34)).a(paramString1);
-        break label1066;
-        localObject1 = new akao();
-        ((akao)localObject1).jdField_b_of_type_JavaLangString = paramString1;
-        ((akao)localObject1).jdField_a_of_type_JavaLangString = paramString3;
-        ((akao)localObject1).jdField_a_of_type_Long = paramLong1;
-        ((akao)localObject1).jdField_b_of_type_Long = paramLong2;
-        ((akao)localObject1).jdField_a_of_type_Int = paramInt1;
-        ((akao)localObject1).jdField_b_of_type_Int = paramInt2;
-        ((akao)localObject1).jdField_c_of_type_JavaLangString = paramString2;
-        ((akao)localObject1).jdField_c_of_type_Long = paramLong3;
+        ((altc)this.app.getManager(34)).a(paramString1);
+        break label1063;
+        localObject1 = new alsd();
+        ((alsd)localObject1).jdField_b_of_type_JavaLangString = paramString1;
+        ((alsd)localObject1).jdField_a_of_type_JavaLangString = paramString3;
+        ((alsd)localObject1).jdField_a_of_type_Long = paramLong1;
+        ((alsd)localObject1).jdField_b_of_type_Long = paramLong2;
+        ((alsd)localObject1).jdField_a_of_type_Int = paramInt1;
+        ((alsd)localObject1).jdField_b_of_type_Int = paramInt2;
+        ((alsd)localObject1).jdField_c_of_type_JavaLangString = paramString2;
+        ((alsd)localObject1).jdField_c_of_type_Long = paramLong3;
         this.jdField_e_of_type_JavaUtilHashMap.put(paramString1, localObject1);
-        break label740;
-        break label797;
-        label1066:
+        break label737;
+        break label794;
+        label1063:
         if ((paramInt1 != 2093) && (paramInt1 != 3093)) {
-          break label1117;
+          break label1114;
         }
         i1 = 1;
         break;
-        label1088:
+        label1085:
         if ((paramInt1 != 3078) && (paramInt1 != 3079)) {
-          break label1123;
+          break label1120;
         }
         i1 = 1;
-        break label456;
-        label1110:
+        break label454;
+        label1107:
         localObject1 = paramString3;
       }
-      label1117:
+      label1114:
       i1 = 0;
       break;
-      label1123:
+      label1120:
       i1 = 0;
     }
   }
@@ -7826,7 +7794,7 @@ public class MessageHandler
     localToServiceMsg.extraData.putString("uin", paramString2);
     localToServiceMsg.extraData.putString("filepath", paramString3);
     localToServiceMsg.extraData.putShort("PackSeq", paramShort);
-    localToServiceMsg.extraData.putShort("flowLayer", axug.a(paramString3));
+    localToServiceMsg.extraData.putShort("flowLayer", azqa.a(paramString3));
     localToServiceMsg.extraData.putInt("msgseq", paramInt);
     localToServiceMsg.extraData.putLong("random", paramLong1);
     localToServiceMsg.extraData.putLong("VoiceType", paramLong2);
@@ -7883,12 +7851,12 @@ public class MessageHandler
         }
       }
       if (localArrayList.size() > 0) {
-        awzb.a(this.app, this.app.getCurrentAccountUin(), localArrayList);
+        ayuf.a(this.app, this.app.getCurrentAccountUin(), localArrayList);
       }
     }
   }
   
-  public void a(ArrayList<akan> paramArrayList, ArrayList<akog> paramArrayList1)
+  public void a(ArrayList<alsc> paramArrayList, ArrayList<amfu> paramArrayList1)
   {
     int i2 = 0;
     ToServiceMsg localToServiceMsg = createToServiceMsg("MessageSvc.DelMsgV2");
@@ -7904,9 +7872,9 @@ public class MessageHandler
       i1 = 0;
       while (i1 < paramArrayList.size())
       {
-        arrayOfLong[i1] = ((akan)paramArrayList.get(i1)).jdField_a_of_type_Long;
-        localObject[i1] = ((akan)paramArrayList.get(i1)).jdField_a_of_type_Int;
-        arrayOfShort[i1] = ((akan)paramArrayList.get(i1)).jdField_a_of_type_Short;
+        arrayOfLong[i1] = ((alsc)paramArrayList.get(i1)).jdField_a_of_type_Long;
+        localObject[i1] = ((alsc)paramArrayList.get(i1)).jdField_a_of_type_Int;
+        arrayOfShort[i1] = ((alsc)paramArrayList.get(i1)).jdField_a_of_type_Short;
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler", 2, "--->>delC2CMessage i: " + i1 + " fromUin:" + arrayOfLong[i1] + " msgTime: " + localObject[i1] + " msgSeq:" + arrayOfShort[i1]);
         }
@@ -7925,10 +7893,10 @@ public class MessageHandler
       i1 = i2;
       while (i1 < paramArrayList1.size())
       {
-        paramArrayList[i1] = ((akog)paramArrayList1.get(i1)).jdField_a_of_type_Long;
-        arrayOfLong[i1] = ((akog)paramArrayList1.get(i1)).jdField_b_of_type_Long;
-        localObject[i1] = ((akog)paramArrayList1.get(i1)).jdField_c_of_type_Long;
-        arrayOfShort[i1] = ((akog)paramArrayList1.get(i1)).jdField_a_of_type_Short;
+        paramArrayList[i1] = ((amfu)paramArrayList1.get(i1)).jdField_a_of_type_Long;
+        arrayOfLong[i1] = ((amfu)paramArrayList1.get(i1)).jdField_b_of_type_Long;
+        localObject[i1] = ((amfu)paramArrayList1.get(i1)).jdField_c_of_type_Long;
+        arrayOfShort[i1] = ((amfu)paramArrayList1.get(i1)).jdField_a_of_type_Short;
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler", 2, "--->>delC2CMessage i: " + i1 + " fromUin:" + paramArrayList[i1] + " msgId: " + localObject[i1] + " msgType:" + arrayOfShort[i1]);
         }
@@ -7963,19 +7931,19 @@ public class MessageHandler
         }
         this.app.a().b(localMessageRecord, 3);
         if (!(localMessageRecord instanceof MessageForStructing)) {
-          break label449;
+          break label448;
         }
         localObject2 = (MessageForStructing)localMessageRecord;
         if (((MessageForStructing)localObject2).structingMsg != null)
         {
           if ((localMessageRecord.isread) || (((MessageForStructing)localObject2).structingMsg.mMsgServiceID != 38) || (TextUtils.isEmpty(((MessageForStructing)localObject2).structingMsg.mResid))) {
-            break label451;
+            break label450;
           }
-          localObject1 = (bbzu)this.app.getManager(76);
-          paramBoolean = ((bbzu)localObject1).a((MessageForStructing)localObject2);
-          localObject2 = ((bbzu)localObject1).a();
-          if ((paramBoolean) && (this.app.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator != null) && (this.app.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.c()) && (localObject2 != null) && (((bbzt)localObject2).jdField_d_of_type_Long == 0L) && (((bbzt)localObject2).jdField_a_of_type_Long != 0L)) {
-            ((bbzu)localObject1).a(((bbzt)localObject2).jdField_a_of_type_Long);
+          localObject1 = (bdyv)this.app.getManager(76);
+          paramBoolean = ((bdyv)localObject1).a((MessageForStructing)localObject2);
+          localObject2 = ((bdyv)localObject1).a();
+          if ((paramBoolean) && (this.app.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator != null) && (this.app.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.c()) && (localObject2 != null) && (((bdyu)localObject2).jdField_d_of_type_Long == 0L) && (((bdyu)localObject2).jdField_a_of_type_Long != 0L)) {
+            ((bdyv)localObject1).a(((bdyu)localObject2).jdField_a_of_type_Long);
           }
         }
       }
@@ -7993,14 +7961,14 @@ public class MessageHandler
       }
       if ((localMessageRecord instanceof MessageForPtt))
       {
-        avcj.a(this.app).a((MessageForPtt)localMessageRecord);
+        awtw.a(this.app).a((MessageForPtt)localMessageRecord);
         int i1 = 4;
         if (localMessageRecord.istroop == 0) {
           i1 = 1;
         }
         for (;;)
         {
-          aytn.a(this.app, i1, false, 3);
+          bark.a(this.app, i1, false, 3);
           break;
           if (localMessageRecord.istroop == 1) {
             i1 = 3;
@@ -8016,7 +7984,7 @@ public class MessageHandler
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           QLog.e("Q.msg.MessageHandler", 1, "LongTextMsg resid is null!");
         }
-        astu.a(this.app, localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq, (String)localObject1);
+        aukr.a(this.app, localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq, (String)localObject1);
         break label66;
       }
       if (!(localMessageRecord instanceof MessageForScribble)) {
@@ -8024,13 +7992,13 @@ public class MessageHandler
       }
       this.app.a().a((MessageForScribble)localMessageRecord);
       break label66;
-      label449:
+      label448:
       break label17;
-      label451:
+      label450:
       if (((MessageForStructing)localObject2).structingMsg.mMsgServiceID == 35) {
-        asua.a().a((MessageForStructing)localObject2, this.app);
+        aukx.a().a((MessageForStructing)localObject2, this.app);
       } else if (((MessageForStructing)localObject2).structingMsg.mMsgServiceID == 107) {
-        asua.a().a((MessageForStructing)localObject2, this.app);
+        aukx.a().a((MessageForStructing)localObject2, this.app);
       }
     }
   }
@@ -8039,14 +8007,14 @@ public class MessageHandler
   {
     if (paramList != null)
     {
-      ajxl localajxl = (ajxl)this.app.getManager(51);
+      aloz localaloz = (aloz)this.app.getManager(51);
       int i1 = 0;
       while (i1 < paramList.size())
       {
         String str = String.valueOf(paramList.get(i1));
         if (!TextUtils.isEmpty(str))
         {
-          boolean bool = localajxl.a(str);
+          boolean bool = localaloz.a(str);
           if (QLog.isColorLevel()) {
             QLog.i("Q.msg.MessageHandler", 2, "removeFriendFromBlackList:" + str + " isBlack:" + bool);
           }
@@ -8113,7 +8081,7 @@ public class MessageHandler
         if (QLog.isColorLevel()) {
           QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv devlock quicklogin push qrcode=" + paramMsgType0x210 + " maintip=" + paramMsg + " smalltip" + str);
         }
-        aoes.a().a(this.app, paramMsgType0x210, paramMsg, str, arrayOfByte);
+        apwu.a().a(this.app, paramMsgType0x210, paramMsg, str, arrayOfByte);
         return;
       }
       catch (Exception paramMsgType0x210) {}
@@ -8149,7 +8117,7 @@ public class MessageHandler
     this.app.a().b();
     this.app.a().b();
     this.app.a().c();
-    asel.a().a(3);
+    atvl.a().a(3);
     notifyUI(6005, paramBoolean, null, true);
   }
   
@@ -8161,7 +8129,7 @@ public class MessageHandler
     a((byte)3, null, 0, paramBoolean, true, false, null, paramInt, null);
   }
   
-  public void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean3, long paramLong3, mxj parammxj)
+  public void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean3, long paramLong3, nac paramnac)
   {
     oidb_0xd55.ReqBody localReqBody = new oidb_0xd55.ReqBody();
     localReqBody.check_app_sign_req.setHasFlag(true);
@@ -8170,7 +8138,7 @@ public class MessageHandler
       localReqBody.check_app_sign_req.client_info.android_package_name.set(paramString2);
     }
     localReqBody.check_app_sign_req.client_info.platform.set(1);
-    paramString2 = aqfv.a(BaseApplicationImpl.getContext(), paramString2);
+    paramString2 = arzk.a(BaseApplicationImpl.getContext(), paramString2);
     if (!TextUtils.isEmpty(paramString2)) {
       localReqBody.check_app_sign_req.client_info.android_signature.set(paramString2);
     }
@@ -8201,7 +8169,7 @@ public class MessageHandler
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       paramString1.set(paramInt1);
-      mxf.a(this.app, parammxj, localReqBody.toByteArray(), "OidbSvc.0xd55", 3413, 0, null, paramLong3);
+      mzy.a(this.app, paramnac, localReqBody.toByteArray(), "OidbSvc.0xd55", 3413, 0, null, paramLong3);
       return;
       i1 = 0;
       break;
@@ -8222,14 +8190,14 @@ public class MessageHandler
       b(false);
       c(false);
       if (!a()) {
-        break label475;
+        break label472;
       }
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "checkBreakPoint getNewPushMsg");
       }
       a(false, 0);
     }
-    label475:
+    label472:
     do
     {
       return;
@@ -8301,14 +8269,14 @@ public class MessageHandler
   
   public boolean a(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean, Bundle paramBundle)
   {
-    long l1 = this.jdField_a_of_type_Awzy.a(String.valueOf(paramLong1), 3000);
+    long l1 = this.jdField_a_of_type_Ayvc.a(String.valueOf(paramLong1), 3000);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "--->>getPullDiscussionMsg uin: " + paramLong1 + " beginSeq: " + paramLong2 + " endSeq: " + paramLong3 + " delSeq: " + l1);
     }
     if ((paramLong2 < 0L) || (paramLong3 < 0L)) {
       return false;
     }
-    Pair localPair = this.jdField_a_of_type_Awzy.a(String.valueOf(paramLong1));
+    Pair localPair = this.jdField_a_of_type_Ayvc.a(String.valueOf(paramLong1));
     if (localPair == null) {
       return false;
     }
@@ -8383,7 +8351,7 @@ public class MessageHandler
   
   public boolean a(String paramString, long paramLong1, long paramLong2, boolean paramBoolean, Bundle paramBundle, int paramInt)
   {
-    long l1 = this.jdField_a_of_type_Awzy.a(paramString, 1);
+    long l1 = this.jdField_a_of_type_Ayvc.a(paramString, 1);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler.trooptroop_pull_msg", 2, "--->>getPullTroopMsg troopUin2: " + paramString + " beginSeq: " + paramLong1 + " endSeq: " + paramLong2 + " delSeq: " + l1 + " pull num : " + (paramLong2 - paramLong1 + 1L) + " doSome:" + paramInt + " ThreadId:" + Thread.currentThread().getId());
     }
@@ -8423,7 +8391,7 @@ public class MessageHandler
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
   {
     if ((!paramBoolean2) && (a(paramBoolean1))) {}
-    for (paramBoolean1 = true; (paramBoolean1) && (paramList != null) && (paramList.size() > 0) && ((akpx.a(this.app, (MessageRecord)paramList.get(0))) || (akpx.b(this.app, (MessageRecord)paramList.get(0))) || (amom.a(this.app, (MessageRecord)paramList.get(0)))); paramBoolean1 = false)
+    for (paramBoolean1 = true; (paramBoolean1) && (paramList != null) && (paramList.size() > 0) && ((abot.a(this.app, (MessageRecord)paramList.get(0))) || (abot.b(this.app, (MessageRecord)paramList.get(0))) || (aofk.a(this.app, (MessageRecord)paramList.get(0)))); paramBoolean1 = false)
     {
       if (QLog.isColorLevel()) {
         QLog.d("OpenTroopDebug", 2, "opentroop and hotchattroop msg not notify.");
@@ -8436,7 +8404,7 @@ public class MessageHandler
   public byte[] a()
   {
     Object localObject = new msg_svc.PbGetMsgReq();
-    byte[] arrayOfByte = this.jdField_a_of_type_Awzy.a();
+    byte[] arrayOfByte = this.jdField_a_of_type_Ayvc.a();
     if (arrayOfByte != null) {
       ((msg_svc.PbGetMsgReq)localObject).sync_cookie.set(ByteStringMicro.copyFrom(arrayOfByte));
     }
@@ -8448,7 +8416,7 @@ public class MessageHandler
     ((msg_svc.PbGetMsgReq)localObject).other_ramble_number.set(3);
     localObject = ((msg_svc.PbGetMsgReq)localObject).toByteArray();
     arrayOfByte = new byte[localObject.length + 4];
-    bbmx.a(arrayOfByte, 4, (byte[])localObject, 0, localObject.length);
+    bdlr.a(arrayOfByte, 4, (byte[])localObject, 0, localObject.length);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "--->>createGetMsgReq");
     }
@@ -8461,7 +8429,7 @@ public class MessageHandler
     byte[] arrayOfByte;
     if (paramBoolean)
     {
-      arrayOfByte = this.jdField_a_of_type_Awzy.b();
+      arrayOfByte = this.jdField_a_of_type_Ayvc.b();
       if (arrayOfByte != null) {
         ((msg_svc.PbGetMsgReq)localObject).pubaccount_cookie.set(ByteStringMicro.copyFrom(arrayOfByte));
       }
@@ -8477,12 +8445,12 @@ public class MessageHandler
       ((msg_svc.PbGetMsgReq)localObject).other_ramble_number.set(3);
       localObject = ((msg_svc.PbGetMsgReq)localObject).toByteArray();
       arrayOfByte = new byte[localObject.length + 4];
-      bbmx.a(arrayOfByte, 4, (byte[])localObject, 0, localObject.length);
+      bdlr.a(arrayOfByte, 4, (byte[])localObject, 0, localObject.length);
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "--->>createGetMsgReq ,isPubAccount:" + paramBoolean);
       }
       return arrayOfByte;
-      arrayOfByte = this.jdField_a_of_type_Awzy.a();
+      arrayOfByte = this.jdField_a_of_type_Ayvc.a();
       if (arrayOfByte != null) {
         ((msg_svc.PbGetMsgReq)localObject).sync_cookie.set(ByteStringMicro.copyFrom(arrayOfByte));
       }
@@ -8564,7 +8532,7 @@ public class MessageHandler
       SendMessageHandler localSendMessageHandler = a(l1);
       if (localSendMessageHandler != null)
       {
-        paramFromServiceMsg = akas.a(paramToServiceMsg, paramFromServiceMsg);
+        paramFromServiceMsg = alsh.a(paramToServiceMsg, paramFromServiceMsg);
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler", 2, "<---TimeConsume---> cmd[" + paramToServiceMsg.getServiceCmd() + "] seq[" + l1 + "] retryIndex[" + i1 + "] " + paramFromServiceMsg[0] + "");
         }
@@ -8580,253 +8548,253 @@ public class MessageHandler
   {
     // Byte code:
     //   0: aload_3
-    //   1: checkcast 1379	[B
-    //   4: checkcast 1379	[B
+    //   1: checkcast 1486	[B
+    //   4: checkcast 1486	[B
     //   7: astore 7
-    //   9: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   12: ifeq +56 -> 68
-    //   15: new 236	java/lang/StringBuilder
+    //   9: invokestatic 201	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   12: ifeq +55 -> 67
+    //   15: new 320	java/lang/StringBuilder
     //   18: dup
-    //   19: invokespecial 336	java/lang/StringBuilder:<init>	()V
-    //   22: ldc_w 5387
-    //   25: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   19: invokespecial 321	java/lang/StringBuilder:<init>	()V
+    //   22: ldc_w 5400
+    //   25: invokevirtual 327	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: aload_2
-    //   29: invokevirtual 1281	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   32: invokevirtual 807	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   35: ldc_w 2185
-    //   38: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 1388	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   32: invokevirtual 925	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   35: ldc_w 2278
+    //   38: invokevirtual 327	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: astore_1
     //   42: aload 7
-    //   44: ifnull +345 -> 389
+    //   44: ifnull +344 -> 388
     //   47: aload 7
     //   49: arraylength
     //   50: istore 4
-    //   52: ldc_w 259
-    //   55: iconst_2
-    //   56: aload_1
-    //   57: iload 4
-    //   59: invokevirtual 248	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 263	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   68: invokestatic 5392	akuz:a	()Lakuz;
-    //   71: astore_3
-    //   72: aload_3
-    //   73: invokevirtual 5395	akuz:a	()Lcom/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper;
-    //   76: astore_1
-    //   77: aload_2
-    //   78: ifnull +335 -> 413
-    //   81: aload_2
-    //   82: invokevirtual 1281	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   85: ifeq +328 -> 413
-    //   88: aload 7
-    //   90: ifnull +323 -> 413
-    //   93: new 3102	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   96: dup
-    //   97: invokespecial 3103	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   100: astore_2
-    //   101: aload_2
-    //   102: aload 7
-    //   104: invokevirtual 3104	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   107: pop
-    //   108: aload_2
-    //   109: getfield 3107	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   112: invokevirtual 716	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   115: ifeq +298 -> 413
-    //   118: aload_2
-    //   119: getfield 3107	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   122: invokevirtual 732	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   125: ifne +288 -> 413
-    //   128: new 5397	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody
-    //   131: dup
-    //   132: invokespecial 5398	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:<init>	()V
-    //   135: astore 7
-    //   137: aload 7
-    //   139: aload_2
-    //   140: getfield 3112	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   143: invokevirtual 1588	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   146: invokevirtual 1589	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   149: invokevirtual 5399	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   152: pop
-    //   153: aload 7
-    //   155: getfield 5402	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   158: invokevirtual 5403	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
-    //   161: ifle +252 -> 413
-    //   164: aload 7
-    //   166: getfield 5402	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   169: iconst_0
-    //   170: invokevirtual 3671	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   173: checkcast 5405	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData
-    //   176: getfield 5408	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:uint32_preload_disable_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   179: invokevirtual 732	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   182: istore 4
-    //   184: aload_1
-    //   185: monitorenter
-    //   186: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   189: ifeq +31 -> 220
-    //   192: ldc_w 5410
-    //   195: iconst_2
-    //   196: new 236	java/lang/StringBuilder
-    //   199: dup
-    //   200: invokespecial 336	java/lang/StringBuilder:<init>	()V
-    //   203: ldc_w 5412
-    //   206: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: iload 4
-    //   211: invokevirtual 248	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   214: invokevirtual 263	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   217: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   220: aload_1
-    //   221: iconst_1
-    //   222: putfield 5415	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_a_of_type_Boolean	Z
-    //   225: iload 4
-    //   227: iconst_1
-    //   228: if_icmpne +191 -> 419
-    //   231: iconst_1
-    //   232: istore 5
-    //   234: aload_1
-    //   235: getfield 5418	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_b_of_type_ProtocolKQQConfigUpgradeInfo	Lprotocol/KQQConfig/UpgradeInfo;
-    //   238: ifnull +210 -> 448
-    //   241: iload 4
-    //   243: ifne +242 -> 485
-    //   246: aload_1
-    //   247: getfield 5419	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_a_of_type_Int	I
-    //   250: iconst_1
-    //   251: if_icmpne +183 -> 434
-    //   254: iconst_1
-    //   255: istore 5
-    //   257: iload 5
-    //   259: istore 6
-    //   261: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   264: ifeq +35 -> 299
-    //   267: ldc_w 5410
-    //   270: iconst_2
-    //   271: new 236	java/lang/StringBuilder
-    //   274: dup
-    //   275: invokespecial 336	java/lang/StringBuilder:<init>	()V
-    //   278: ldc_w 5421
-    //   281: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   284: iload 5
-    //   286: invokevirtual 807	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   289: invokevirtual 263	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   292: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   295: iload 5
-    //   297: istore 6
-    //   299: aload_0
-    //   300: getfield 270	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   303: iload 6
-    //   305: invokestatic 5426	ajud:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Z)V
-    //   308: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   311: ifeq +13 -> 324
-    //   314: ldc_w 5428
-    //   317: iconst_2
-    //   318: ldc_w 5430
-    //   321: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   324: aload_1
-    //   325: getfield 5418	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_b_of_type_ProtocolKQQConfigUpgradeInfo	Lprotocol/KQQConfig/UpgradeInfo;
-    //   328: ifnull +133 -> 461
-    //   331: aload_1
-    //   332: getfield 5433	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig	Lcom/tencent/mobileqq/app/NewUpgradeConfig;
-    //   335: ifnull +126 -> 461
-    //   338: aload_1
-    //   339: getfield 5418	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_b_of_type_ProtocolKQQConfigUpgradeInfo	Lprotocol/KQQConfig/UpgradeInfo;
-    //   342: getfield 5438	protocol/KQQConfig/UpgradeInfo:iUpgradeType	I
-    //   345: ifeq +116 -> 461
-    //   348: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   351: ifeq +13 -> 364
-    //   354: ldc_w 5428
-    //   357: iconst_2
-    //   358: ldc_w 5440
-    //   361: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   364: aload_0
-    //   365: getfield 270	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   368: iconst_4
-    //   369: invokevirtual 1287	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lajtb;
-    //   372: checkcast 5423	ajud
-    //   375: astore_2
-    //   376: aload_3
-    //   377: aload_1
-    //   378: getfield 5418	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_b_of_type_ProtocolKQQConfigUpgradeInfo	Lprotocol/KQQConfig/UpgradeInfo;
-    //   381: aload_2
-    //   382: invokevirtual 5443	akuz:a	(Lprotocol/KQQConfig/UpgradeInfo;Lakvb;)Z
-    //   385: pop
-    //   386: aload_1
-    //   387: monitorexit
-    //   388: return
-    //   389: iconst_m1
-    //   390: istore 4
-    //   392: goto -340 -> 52
-    //   395: astore_2
-    //   396: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   399: ifeq +14 -> 413
-    //   402: ldc_w 259
-    //   405: iconst_2
-    //   406: ldc_w 559
-    //   409: aload_2
-    //   410: invokestatic 5445	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   413: iconst_0
-    //   414: istore 4
-    //   416: goto -232 -> 184
-    //   419: iload 4
-    //   421: iconst_2
-    //   422: if_icmpne +66 -> 488
-    //   425: invokestatic 5392	akuz:a	()Lakuz;
-    //   428: invokevirtual 5446	akuz:b	()V
-    //   431: goto +57 -> 488
-    //   434: aload_1
-    //   435: getfield 5419	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_a_of_type_Int	I
-    //   438: iconst_2
-    //   439: if_icmpne +46 -> 485
-    //   442: iconst_0
-    //   443: istore 5
-    //   445: goto -188 -> 257
-    //   448: aload_1
-    //   449: iload 4
-    //   451: putfield 5447	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_b_of_type_Int	I
-    //   454: iload 5
-    //   456: istore 6
-    //   458: goto -159 -> 299
-    //   461: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   464: ifeq -78 -> 386
-    //   467: ldc_w 5428
-    //   470: iconst_2
-    //   471: ldc_w 5449
-    //   474: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   477: goto -91 -> 386
-    //   480: astore_2
-    //   481: aload_1
-    //   482: monitorexit
-    //   483: aload_2
-    //   484: athrow
-    //   485: goto -228 -> 257
-    //   488: iconst_0
-    //   489: istore 5
-    //   491: goto -257 -> 234
+    //   52: ldc 203
+    //   54: iconst_2
+    //   55: aload_1
+    //   56: iload 4
+    //   58: invokevirtual 357	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 331	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokestatic 208	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   67: invokestatic 5405	amlp:a	()Lamlp;
+    //   70: astore_3
+    //   71: aload_3
+    //   72: invokevirtual 5408	amlp:a	()Lcom/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper;
+    //   75: astore_1
+    //   76: aload_2
+    //   77: ifnull +334 -> 411
+    //   80: aload_2
+    //   81: invokevirtual 1388	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   84: ifeq +327 -> 411
+    //   87: aload 7
+    //   89: ifnull +322 -> 411
+    //   92: new 3170	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   95: dup
+    //   96: invokespecial 3171	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   99: astore_2
+    //   100: aload_2
+    //   101: aload 7
+    //   103: invokevirtual 3172	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   106: pop
+    //   107: aload_2
+    //   108: getfield 3175	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   111: invokevirtual 311	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   114: ifeq +297 -> 411
+    //   117: aload_2
+    //   118: getfield 3175	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   121: invokevirtual 313	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   124: ifne +287 -> 411
+    //   127: new 5410	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody
+    //   130: dup
+    //   131: invokespecial 5411	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:<init>	()V
+    //   134: astore 7
+    //   136: aload 7
+    //   138: aload_2
+    //   139: getfield 3180	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   142: invokevirtual 1688	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   145: invokevirtual 1689	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   148: invokevirtual 5412	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   151: pop
+    //   152: aload 7
+    //   154: getfield 5415	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   157: invokevirtual 5416	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   160: ifle +251 -> 411
+    //   163: aload 7
+    //   165: getfield 5415	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   168: iconst_0
+    //   169: invokevirtual 3754	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   172: checkcast 5418	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData
+    //   175: getfield 5421	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:uint32_preload_disable_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   178: invokevirtual 313	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   181: istore 4
+    //   183: aload_1
+    //   184: monitorenter
+    //   185: invokestatic 201	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   188: ifeq +31 -> 219
+    //   191: ldc_w 5423
+    //   194: iconst_2
+    //   195: new 320	java/lang/StringBuilder
+    //   198: dup
+    //   199: invokespecial 321	java/lang/StringBuilder:<init>	()V
+    //   202: ldc_w 5425
+    //   205: invokevirtual 327	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: iload 4
+    //   210: invokevirtual 357	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   213: invokevirtual 331	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   216: invokestatic 208	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   219: aload_1
+    //   220: iconst_1
+    //   221: putfield 5428	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_a_of_type_Boolean	Z
+    //   224: iload 4
+    //   226: iconst_1
+    //   227: if_icmpne +190 -> 417
+    //   230: iconst_1
+    //   231: istore 5
+    //   233: aload_1
+    //   234: getfield 5431	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_b_of_type_ProtocolKQQConfigUpgradeInfo	Lprotocol/KQQConfig/UpgradeInfo;
+    //   237: ifnull +209 -> 446
+    //   240: iload 4
+    //   242: ifne +241 -> 483
+    //   245: aload_1
+    //   246: getfield 5432	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_a_of_type_Int	I
+    //   249: iconst_1
+    //   250: if_icmpne +182 -> 432
+    //   253: iconst_1
+    //   254: istore 5
+    //   256: iload 5
+    //   258: istore 6
+    //   260: invokestatic 201	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   263: ifeq +35 -> 298
+    //   266: ldc_w 5423
+    //   269: iconst_2
+    //   270: new 320	java/lang/StringBuilder
+    //   273: dup
+    //   274: invokespecial 321	java/lang/StringBuilder:<init>	()V
+    //   277: ldc_w 5434
+    //   280: invokevirtual 327	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   283: iload 5
+    //   285: invokevirtual 925	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   288: invokevirtual 331	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   291: invokestatic 208	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   294: iload 5
+    //   296: istore 6
+    //   298: aload_0
+    //   299: getfield 423	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   302: iload 6
+    //   304: invokestatic 5439	allq:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Z)V
+    //   307: invokestatic 201	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   310: ifeq +13 -> 323
+    //   313: ldc_w 5441
+    //   316: iconst_2
+    //   317: ldc_w 5443
+    //   320: invokestatic 208	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   323: aload_1
+    //   324: getfield 5431	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_b_of_type_ProtocolKQQConfigUpgradeInfo	Lprotocol/KQQConfig/UpgradeInfo;
+    //   327: ifnull +132 -> 459
+    //   330: aload_1
+    //   331: getfield 5446	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig	Lcom/tencent/mobileqq/app/NewUpgradeConfig;
+    //   334: ifnull +125 -> 459
+    //   337: aload_1
+    //   338: getfield 5431	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_b_of_type_ProtocolKQQConfigUpgradeInfo	Lprotocol/KQQConfig/UpgradeInfo;
+    //   341: getfield 5451	protocol/KQQConfig/UpgradeInfo:iUpgradeType	I
+    //   344: ifeq +115 -> 459
+    //   347: invokestatic 201	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   350: ifeq +13 -> 363
+    //   353: ldc_w 5441
+    //   356: iconst_2
+    //   357: ldc_w 5453
+    //   360: invokestatic 208	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   363: aload_0
+    //   364: getfield 423	com/tencent/mobileqq/app/MessageHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   367: iconst_4
+    //   368: invokevirtual 1394	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalko;
+    //   371: checkcast 5436	allq
+    //   374: astore_2
+    //   375: aload_3
+    //   376: aload_1
+    //   377: getfield 5431	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_b_of_type_ProtocolKQQConfigUpgradeInfo	Lprotocol/KQQConfig/UpgradeInfo;
+    //   380: aload_2
+    //   381: invokevirtual 5456	amlp:a	(Lprotocol/KQQConfig/UpgradeInfo;Lamlr;)Z
+    //   384: pop
+    //   385: aload_1
+    //   386: monitorexit
+    //   387: return
+    //   388: iconst_m1
+    //   389: istore 4
+    //   391: goto -339 -> 52
+    //   394: astore_2
+    //   395: invokestatic 201	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   398: ifeq +13 -> 411
+    //   401: ldc 203
+    //   403: iconst_2
+    //   404: ldc_w 690
+    //   407: aload_2
+    //   408: invokestatic 5458	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   411: iconst_0
+    //   412: istore 4
+    //   414: goto -231 -> 183
+    //   417: iload 4
+    //   419: iconst_2
+    //   420: if_icmpne +66 -> 486
+    //   423: invokestatic 5405	amlp:a	()Lamlp;
+    //   426: invokevirtual 5459	amlp:b	()V
+    //   429: goto +57 -> 486
+    //   432: aload_1
+    //   433: getfield 5432	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_a_of_type_Int	I
+    //   436: iconst_2
+    //   437: if_icmpne +46 -> 483
+    //   440: iconst_0
+    //   441: istore 5
+    //   443: goto -187 -> 256
+    //   446: aload_1
+    //   447: iload 4
+    //   449: putfield 5460	com/tencent/mobileqq/app/upgrade/UpgradeDetailWrapper:jdField_b_of_type_Int	I
+    //   452: iload 5
+    //   454: istore 6
+    //   456: goto -158 -> 298
+    //   459: invokestatic 201	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   462: ifeq -77 -> 385
+    //   465: ldc_w 5441
+    //   468: iconst_2
+    //   469: ldc_w 5462
+    //   472: invokestatic 208	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   475: goto -90 -> 385
+    //   478: astore_2
+    //   479: aload_1
+    //   480: monitorexit
+    //   481: aload_2
+    //   482: athrow
+    //   483: goto -227 -> 256
+    //   486: iconst_0
+    //   487: istore 5
+    //   489: goto -256 -> 233
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	494	0	this	MessageHandler
-    //   0	494	1	paramToServiceMsg	ToServiceMsg
-    //   0	494	2	paramFromServiceMsg	FromServiceMsg
-    //   0	494	3	paramObject	Object
-    //   50	400	4	i1	int
-    //   232	258	5	bool1	boolean
-    //   259	198	6	bool2	boolean
-    //   7	158	7	localObject	Object
+    //   0	492	0	this	MessageHandler
+    //   0	492	1	paramToServiceMsg	ToServiceMsg
+    //   0	492	2	paramFromServiceMsg	FromServiceMsg
+    //   0	492	3	paramObject	Object
+    //   50	398	4	i1	int
+    //   231	257	5	bool1	boolean
+    //   258	197	6	bool2	boolean
+    //   7	157	7	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   93	184	395	java/lang/Throwable
-    //   186	220	480	finally
-    //   220	225	480	finally
-    //   234	241	480	finally
-    //   246	254	480	finally
-    //   261	295	480	finally
-    //   299	324	480	finally
-    //   324	364	480	finally
-    //   364	386	480	finally
-    //   386	388	480	finally
-    //   425	431	480	finally
-    //   434	442	480	finally
-    //   448	454	480	finally
-    //   461	477	480	finally
-    //   481	483	480	finally
+    //   92	183	394	java/lang/Throwable
+    //   185	219	478	finally
+    //   219	224	478	finally
+    //   233	240	478	finally
+    //   245	253	478	finally
+    //   260	294	478	finally
+    //   298	323	478	finally
+    //   323	363	478	finally
+    //   363	385	478	finally
+    //   385	387	478	finally
+    //   423	429	478	finally
+    //   432	440	478	finally
+    //   446	452	478	finally
+    //   459	475	478	finally
+    //   479	481	478	finally
   }
   
   public void b(String paramString)
@@ -8845,7 +8813,7 @@ public class MessageHandler
   public void b(String paramString1, String paramString2)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      ((ajxl)this.app.getManager(51)).b(paramString1, paramString2);
+      ((aloz)this.app.getManager(51)).b(paramString1, paramString2);
     }
   }
   
@@ -8872,7 +8840,7 @@ public class MessageHandler
         {
           long l1 = Long.parseLong((String)paramList.get(i1));
           localGroupInfoReq.group_code.set(l1);
-          localGroupInfoReq.last_seq.set(this.jdField_a_of_type_Awzy.j((String)paramList.get(i1)));
+          localGroupInfoReq.last_seq.set(this.jdField_a_of_type_Ayvc.j((String)paramList.get(i1)));
           localPbPullGroupMsgSeqReq.group_info_req.add(localGroupInfoReq);
           i1 += 1;
         }
@@ -8909,16 +8877,16 @@ public class MessageHandler
     {
       localStringBuilder = new StringBuilder().append("saveTroopMsgFilter. troopSettingList size=");
       if (this.jdField_b_of_type_JavaUtilArrayList != null) {
-        break label76;
+        break label75;
       }
     }
-    label76:
+    label75:
     for (int i1 = 0;; i1 = this.jdField_b_of_type_JavaUtilArrayList.size())
     {
       QLog.d("Q.msg.MessageHandler", 2, i1);
       if (this.jdField_b_of_type_JavaUtilArrayList != null)
       {
-        bbdd.a().a(this.jdField_b_of_type_JavaUtilArrayList, this.app);
+        bdbx.a().a(this.jdField_b_of_type_JavaUtilArrayList, this.app);
         this.jdField_b_of_type_JavaUtilArrayList = null;
         bool = true;
       }
@@ -8965,6 +8933,59 @@ public class MessageHandler
     sendPbReq((ToServiceMsg)localObject);
   }
   
+  public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    HashMap localHashMap = new HashMap();
+    long l2 = 0L;
+    long l3 = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 0L);
+    int i1;
+    if ((l3 == 10L) || (l3 == 34L))
+    {
+      i1 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
+      paramFromServiceMsg = paramToServiceMsg.extraData.getString("uin");
+      if (paramFromServiceMsg != null) {
+        break label347;
+      }
+      paramFromServiceMsg = "0";
+    }
+    label337:
+    label347:
+    for (;;)
+    {
+      int i2 = paramToServiceMsg.extraData.getInt("send_msg_req_size", 0);
+      localHashMap.put("pm_peer_uin", paramFromServiceMsg);
+      localHashMap.put("pm_route_type", String.valueOf(i1));
+      localHashMap.put("pm_req_size", String.valueOf(i2));
+      localHashMap.put("pm_srv_reply", String.valueOf(l3));
+      long l1 = l2;
+      if (i1 != 13)
+      {
+        l1 = l2;
+        if (i1 != 9)
+        {
+          l1 = paramToServiceMsg.extraData.getLong("startTime", 0L);
+          l2 = System.currentTimeMillis();
+          if (l1 >= 1L) {
+            break label337;
+          }
+        }
+      }
+      for (l1 = 0L;; l1 = l2 - l1)
+      {
+        int i3 = paramToServiceMsg.extraData.getInt("msgtype");
+        int i4 = ayvu.a(i1, this.app);
+        localHashMap.put("pm_msg_type", String.valueOf(i3));
+        localHashMap.put("pm_uin_type", String.valueOf(i4));
+        paramToServiceMsg = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        azmz.a(BaseApplication.getContext()).a(paramToServiceMsg.getCurrentAccountUin(), "sendMsgTooLargeErrorTag", false, l1, i2, localHashMap, "");
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.MessageHandler", 2, String.format("Statistics TAG:%s, duration:%dms, peerUin:%s, replyCode:%d, routingType:%s, msgReqSize:%d", new Object[] { "sendMsgTooLargeErrorTag", Long.valueOf(l1), paramFromServiceMsg, Long.valueOf(l3), Integer.valueOf(i1), Integer.valueOf(i2) }));
+        }
+        return;
+      }
+    }
+  }
+  
   public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     paramToServiceMsg.extraData.getBoolean("switch", true);
@@ -8989,11 +9010,11 @@ public class MessageHandler
     {
       paramToServiceMsg = paramToServiceMsg.bytes_bodybuffer.get().toByteArray();
       if (4 > paramToServiceMsg.length) {
-        break label169;
+        break label168;
       }
-      paramToServiceMsg = String.valueOf(bbmx.a(paramToServiceMsg, 0));
+      paramToServiceMsg = String.valueOf(bdlr.a(paramToServiceMsg, 0));
       if ((paramToServiceMsg != null) && (paramToServiceMsg.equals(this.app.getAccount()))) {
-        break label169;
+        break label168;
       }
       i1 = 0;
       if ((i1 != 0) && (QLog.isDevelopLevel())) {
@@ -9015,7 +9036,7 @@ public class MessageHandler
     Object localObject = new String[1];
     localObject[0] = paramString;
     long[] arrayOfLong = new long[1];
-    arrayOfLong[0] = this.jdField_a_of_type_Awzy.j(paramString);
+    arrayOfLong[0] = this.jdField_a_of_type_Ayvc.j(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "getPullTroopMsgNumber_PB troopUinArray.length: " + localObject.length + " troopUinArray:" + Arrays.toString((Object[])localObject) + ", lastSeqAry:" + Arrays.toString(arrayOfLong) + ", doSome:" + paramInt);
     }
@@ -9095,7 +9116,7 @@ public class MessageHandler
     localRequestCustomSig.reserved = new byte[0];
     localHashMap.put("RequestCustomSig", localRequestCustomSig);
     localHashMap.put("OpenAppid", paramString);
-    localAccountManager.changeToken(localHashMap, new akal(this, paramString));
+    localAccountManager.changeToken(localHashMap, new alsa(this, paramString));
   }
   
   public void d(boolean paramBoolean)
@@ -9106,8 +9127,8 @@ public class MessageHandler
       ThreadManager.post(new MessageHandler.16(this, paramBoolean), 10, null, false);
       return;
     }
-    amnr.b(this.app, false);
-    amnr.a(this.app, false);
+    aoep.b(this.app, false);
+    aoep.a(this.app, false);
     e(paramBoolean);
   }
   
@@ -9122,7 +9143,7 @@ public class MessageHandler
   
   public void e()
   {
-    this.jdField_a_of_type_Awzy.a(false);
+    this.jdField_a_of_type_Ayvc.a(false);
     b(false);
     b(false);
     c(false);
@@ -9136,8 +9157,8 @@ public class MessageHandler
     if ((localPbMsgReadedReportReq == null) || (localPbMsgReadedReportReq.toByteArray() == null)) {
       return;
     }
-    int i1 = awyn.jdField_a_of_type_Int;
-    awyn.jdField_a_of_type_Int = i1 + 1;
+    int i1 = aytq.jdField_a_of_type_Int;
+    aytq.jdField_a_of_type_Int = i1 + 1;
     long l1 = i1;
     long l2 = System.currentTimeMillis();
     SendMessageHandler localSendMessageHandler = new SendMessageHandler();
@@ -9210,7 +9231,7 @@ public class MessageHandler
     if (paramBoolean) {}
     for (short s1 = 1;; s1 = 2)
     {
-      ((ByteBuffer)localObject).putInt(bbbr.a(l1)).put((byte)0).putShort((short)1).putShort((short)-23463).putShort((short)2).putShort(s1);
+      ((ByteBuffer)localObject).putInt(bdal.a(l1)).put((byte)0).putShort((short)1).putShort((short)-23463).putShort((short)2).putShort(s1);
       localObject = makeOIDBPkg("OidbSvc.0x4ff_42073", 1279, 9, ((ByteBuffer)localObject).array());
       ((ToServiceMsg)localObject).extraData.putBoolean("switch", paramBoolean);
       sendPbReq((ToServiceMsg)localObject);
@@ -9220,23 +9241,23 @@ public class MessageHandler
   
   public void g()
   {
-    Object localObject1 = this.jdField_a_of_type_Awzy;
-    if (awzy.jdField_a_of_type_Axad != null)
+    Object localObject1 = this.jdField_a_of_type_Ayvc;
+    if (ayvc.jdField_a_of_type_Ayvh != null)
     {
       long l1 = System.currentTimeMillis();
-      localObject1 = (agvx)this.app.getManager(125);
-      Object localObject2 = this.jdField_a_of_type_Awzy;
+      localObject1 = (aipw)this.app.getManager(125);
+      Object localObject2 = this.jdField_a_of_type_Ayvc;
       Object localObject3;
       Object localObject4;
       Object localObject5;
-      if (awzy.jdField_a_of_type_Axad.jdField_a_of_type_JavaUtilList != null)
+      if (ayvc.jdField_a_of_type_Ayvh.jdField_a_of_type_JavaUtilList != null)
       {
-        localObject2 = this.jdField_a_of_type_Awzy;
-        if (awzy.jdField_a_of_type_Axad.jdField_a_of_type_JavaUtilList.size() > 0)
+        localObject2 = this.jdField_a_of_type_Ayvc;
+        if (ayvc.jdField_a_of_type_Ayvh.jdField_a_of_type_JavaUtilList.size() > 0)
         {
           localObject2 = new HashMap();
-          localObject3 = this.jdField_a_of_type_Awzy;
-          localObject3 = awzy.jdField_a_of_type_Axad.jdField_a_of_type_JavaUtilList.iterator();
+          localObject3 = this.jdField_a_of_type_Ayvc;
+          localObject3 = ayvc.jdField_a_of_type_Ayvh.jdField_a_of_type_JavaUtilList.iterator();
           while (((Iterator)localObject3).hasNext())
           {
             localObject4 = (register_proxy.GroupList)((Iterator)localObject3).next();
@@ -9249,16 +9270,16 @@ public class MessageHandler
               }
             }
           }
-          ((agvx)localObject1).a((HashMap)localObject2);
+          ((aipw)localObject1).a((HashMap)localObject2);
         }
       }
-      localObject2 = this.jdField_a_of_type_Awzy;
-      if (awzy.jdField_a_of_type_Axad.b != null)
+      localObject2 = this.jdField_a_of_type_Ayvc;
+      if (ayvc.jdField_a_of_type_Ayvh.b != null)
       {
-        localObject2 = this.jdField_a_of_type_Awzy;
-        if (awzy.jdField_a_of_type_Axad.b.size() > 0)
+        localObject2 = this.jdField_a_of_type_Ayvc;
+        if (ayvc.jdField_a_of_type_Ayvh.b.size() > 0)
         {
-          localObject3 = ((ajvi)this.app.getManager(53)).a();
+          localObject3 = ((almv)this.app.getManager(53)).a();
           localObject2 = new ArrayList();
           localObject3 = ((ArrayList)localObject3).iterator();
           int i1 = 1;
@@ -9271,12 +9292,12 @@ public class MessageHandler
             }
             i1 += 1;
           }
-          localObject3 = (ajvg)this.app.a(6);
+          localObject3 = (almt)this.app.a(6);
           localObject4 = new ArrayList();
           localObject5 = new ArrayList();
           HashMap localHashMap = new HashMap();
-          Object localObject6 = this.jdField_a_of_type_Awzy;
-          localObject6 = awzy.jdField_a_of_type_Axad.b.iterator();
+          Object localObject6 = this.jdField_a_of_type_Ayvc;
+          localObject6 = ayvc.jdField_a_of_type_Ayvh.b.iterator();
           while (((Iterator)localObject6).hasNext())
           {
             register_proxy.DiscussList localDiscussList = (register_proxy.DiscussList)((Iterator)localObject6).next();
@@ -9303,7 +9324,7 @@ public class MessageHandler
           i1 = 1;
           if (((ArrayList)localObject4).size() >= 100)
           {
-            ((ajvg)localObject3).f(this.app.getLongAccountUin());
+            ((almt)localObject3).f(this.app.getLongAccountUin());
             i1 = 0;
           }
           if ((!((ArrayList)localObject2).isEmpty()) && (i1 != 0))
@@ -9315,20 +9336,20 @@ public class MessageHandler
             while (((Iterator)localObject2).hasNext())
             {
               localObject6 = (String)((Iterator)localObject2).next();
-              ((ajvg)localObject3).a((String)localObject6);
-              if (this.jdField_a_of_type_Awzy.b((String)localObject6) != null) {
-                this.jdField_a_of_type_Awzy.d((String)localObject6);
+              ((almt)localObject3).a((String)localObject6);
+              if (this.jdField_a_of_type_Ayvc.b((String)localObject6) != null) {
+                this.jdField_a_of_type_Ayvc.d((String)localObject6);
               }
             }
           }
-          notifyUI(1000, ((ajvg)localObject3).a((ArrayList)localObject4, (ArrayList)localObject5), null);
-          ((agvx)localObject1).b(localHashMap);
+          notifyUI(1000, ((almt)localObject3).a((ArrayList)localObject4, (ArrayList)localObject5), null);
+          ((aipw)localObject1).b(localHashMap);
         }
       }
-      localObject1 = this.jdField_a_of_type_Awzy;
-      awzy.jdField_a_of_type_Axad.jdField_a_of_type_JavaUtilList = null;
-      localObject1 = this.jdField_a_of_type_Awzy;
-      awzy.jdField_a_of_type_Axad.b = null;
+      localObject1 = this.jdField_a_of_type_Ayvc;
+      ayvc.jdField_a_of_type_Ayvh.jdField_a_of_type_JavaUtilList = null;
+      localObject1 = this.jdField_a_of_type_Ayvc;
+      ayvc.jdField_a_of_type_Ayvh.b = null;
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "handleRegPrxyCache end! cost:" + (System.currentTimeMillis() - l1));
       }
@@ -9357,7 +9378,7 @@ public class MessageHandler
     long l2;
     Object[] arrayOfObject;
     long l1;
-    label359:
+    label357:
     int i1;
     if ((this.jdField_b_of_type_JavaUtilHashMap != null) && (this.jdField_b_of_type_JavaUtilHashMap.size() > 0))
     {
@@ -9367,13 +9388,13 @@ public class MessageHandler
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        l2 = this.jdField_a_of_type_Awzy.j(str);
-        arrayOfObject = this.jdField_a_of_type_Awzy.b(str);
+        l2 = this.jdField_a_of_type_Ayvc.j(str);
+        arrayOfObject = this.jdField_a_of_type_Ayvc.b(str);
         if ((arrayOfObject != null) && (arrayOfObject.length > 0)) {}
         for (l1 = ((Long)arrayOfObject[1]).longValue();; l1 = 0L)
         {
           if (((!this.app.a().a(false)) && (!((Boolean)this.jdField_b_of_type_JavaUtilHashMap.get(str)).booleanValue())) || (l2 >= l1)) {
-            break label359;
+            break label357;
           }
           if (QLog.isColorLevel())
           {
@@ -9408,17 +9429,17 @@ public class MessageHandler
         localObject2 = new ArrayList();
         i4 = this.jdField_c_of_type_JavaUtilHashMap.size();
         localIterator = this.jdField_c_of_type_JavaUtilHashMap.keySet().iterator();
-        label659:
+        label656:
         while (localIterator.hasNext())
         {
           str = (String)localIterator.next();
-          l2 = this.jdField_a_of_type_Awzy.i(str);
-          arrayOfObject = this.jdField_a_of_type_Awzy.a(str);
+          l2 = this.jdField_a_of_type_Ayvc.i(str);
+          arrayOfObject = this.jdField_a_of_type_Ayvc.a(str);
           if ((arrayOfObject != null) && (arrayOfObject.length > 0)) {}
           for (l1 = ((Long)arrayOfObject[1]).longValue();; l1 = 0L)
           {
             if (((!this.app.a().a(false)) && (!((Boolean)this.jdField_c_of_type_JavaUtilHashMap.get(str)).booleanValue())) || (l2 >= l1)) {
-              break label659;
+              break label656;
             }
             if (QLog.isColorLevel())
             {
@@ -9457,15 +9478,15 @@ public class MessageHandler
           ((HashMap)localObject1).put("param_needpulldisc", String.valueOf(i1));
           ((HashMap)localObject1).put("param_trooptotalnum", String.valueOf(i2));
           ((HashMap)localObject1).put("param_disctotalnum", String.valueOf(i4));
-          localObject2 = axrn.a(BaseApplication.getContext());
+          localObject2 = azmz.a(BaseApplication.getContext());
           if (this.app.a().a(false)) {
-            break label937;
+            break label933;
           }
         }
-        label937:
+        label933:
         for (boolean bool = true;; bool = false)
         {
-          ((axrn)localObject2).a(null, "prxyRegNeedPullGroup", bool, 0L, 0L, (HashMap)localObject1, null);
+          ((azmz)localObject2).a(null, "prxyRegNeedPullGroup", bool, 0L, 0L, (HashMap)localObject1, null);
           this.jdField_c_of_type_Int = 0;
           this.jdField_d_of_type_Int = 0;
           this.jdField_j_of_type_Int = 0;
@@ -9488,7 +9509,7 @@ public class MessageHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "handleGroupMsgAfterSyncMsg");
     }
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_Awzy.b();
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_Ayvc.b();
     Iterator localIterator;
     Object localObject1;
     Object localObject2;
@@ -9509,19 +9530,19 @@ public class MessageHandler
           while (((Iterator)localObject2).hasNext())
           {
             arrayOfObject = (Object[])((Iterator)localObject2).next();
-            this.jdField_a_of_type_Awzy.b((String)localObject1);
+            this.jdField_a_of_type_Ayvc.b((String)localObject1);
             if ((arrayOfObject != null) && (arrayOfObject.length >= 2)) {
               a("troop_processor").a(1001, new Object[] { arrayOfObject, null, Boolean.valueOf(false) });
             }
           }
         }
-        localObject1 = this.jdField_a_of_type_Awzy.a((String)localObject1);
+        localObject1 = this.jdField_a_of_type_Ayvc.a((String)localObject1);
         if (localObject1 != null) {
-          ((azrd)a("troop_processor")).a((GroupMsgReadedNotify)localObject1);
+          ((bbpm)a("troop_processor")).a((GroupMsgReadedNotify)localObject1);
         }
       }
     }
-    localConcurrentHashMap = this.jdField_a_of_type_Awzy.d();
+    localConcurrentHashMap = this.jdField_a_of_type_Ayvc.d();
     if (!localConcurrentHashMap.isEmpty())
     {
       localIterator = localConcurrentHashMap.keySet().iterator();
@@ -9534,7 +9555,7 @@ public class MessageHandler
         localObject2 = (ArrayList)localConcurrentHashMap.get(localObject1);
         if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
         {
-          this.jdField_a_of_type_Awzy.d((String)localObject1);
+          this.jdField_a_of_type_Ayvc.d((String)localObject1);
           localObject2 = ((ArrayList)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
@@ -9544,9 +9565,9 @@ public class MessageHandler
             }
           }
         }
-        localObject1 = this.jdField_a_of_type_Awzy.a((String)localObject1);
+        localObject1 = this.jdField_a_of_type_Ayvc.a((String)localObject1);
         if (localObject1 != null) {
-          ((akpi)a("disc_processor")).a((DisMsgReadedNotify)localObject1);
+          ((amgb)a("disc_processor")).a((DisMsgReadedNotify)localObject1);
         }
       }
     }
@@ -9557,7 +9578,7 @@ public class MessageHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "flushDiscussionAndTroopMsg begin.");
     }
-    ConcurrentHashMap localConcurrentHashMap1 = this.jdField_a_of_type_Awzy.a();
+    ConcurrentHashMap localConcurrentHashMap1 = this.jdField_a_of_type_Ayvc.a();
     ArrayList localArrayList;
     Enumeration localEnumeration;
     String str;
@@ -9571,7 +9592,7 @@ public class MessageHandler
         for (;;)
         {
           if (!localEnumeration.hasMoreElements()) {
-            break label241;
+            break label239;
           }
           str = (String)localEnumeration.nextElement();
           if (((Integer)localConcurrentHashMap1.get(str)).intValue() != 2) {
@@ -9582,7 +9603,7 @@ public class MessageHandler
             localArrayList.add(str);
           }
         }
-        localConcurrentHashMap2 = this.jdField_a_of_type_Awzy.c();
+        localConcurrentHashMap2 = this.jdField_a_of_type_Ayvc.c();
       }
       catch (Exception localException1)
       {
@@ -9591,7 +9612,7 @@ public class MessageHandler
     }
     else
     {
-      label114:
+      label113:
       ConcurrentHashMap localConcurrentHashMap2;
       if ((localConcurrentHashMap2 != null) && (localConcurrentHashMap2.size() > 0)) {
         try
@@ -9606,7 +9627,7 @@ public class MessageHandler
               if (((Integer)localConcurrentHashMap2.get(str)).intValue() == 2)
               {
                 bool = true;
-                label187:
+                label186:
                 if (Boolean.valueOf(bool).booleanValue()) {
                   continue;
                 }
@@ -9628,11 +9649,11 @@ public class MessageHandler
     for (;;)
     {
       QLog.d("Q.msg.MessageHandler", 2, "flushDiscussionAndTroopMsg end.");
-      this.jdField_a_of_type_Awzy.b();
+      this.jdField_a_of_type_Ayvc.b();
       return;
       bool = false;
       break;
-      label241:
+      label239:
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "flushDiscussionAndTroopMsg, troopSize=" + localArrayList.size());
       }
@@ -9640,9 +9661,9 @@ public class MessageHandler
       while (localIterator.hasNext()) {
         d((String)localIterator.next(), "flushDiscussionAndTroopMsg");
       }
-      break label114;
+      break label113;
       bool = false;
-      break label187;
+      break label186;
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "flushDiscussionAndTroopMsg, disSize=" + localArrayList.size());
       }
@@ -9771,6 +9792,7 @@ public class MessageHandler
       this.allowCmdSet.add("PbMessageSvc.PbUnReadMsgSeq");
       this.allowCmdSet.add("MessageSvc.RequestPushStatus");
       this.allowCmdSet.add("OnlinePush.PbPushGroupMsg");
+      this.allowCmdSet.add("OnlinePush.PbPushBindUinGroupMsg");
       this.allowCmdSet.add("OnlinePush.PbPushDisMsg");
       this.allowCmdSet.add("OnlinePush.PbPushC2CMsg");
       this.allowCmdSet.add("OnlinePush.PbC2CMsgSync");
@@ -9837,10 +9859,10 @@ public class MessageHandler
         Iterator localIterator = ((ConcurrentHashMap)((Map.Entry)((Iterator)localObject2).next()).getValue()).entrySet().iterator();
         while (localIterator.hasNext())
         {
-          localObject3 = (axab)((Map.Entry)localIterator.next()).getValue();
-          str = ((axab)localObject3).jdField_a_of_type_JavaLangString;
-          i2 = ((axab)localObject3).jdField_a_of_type_Int;
-          l1 = ((axab)localObject3).jdField_a_of_type_Long;
+          localObject3 = (ayvf)((Map.Entry)localIterator.next()).getValue();
+          str = ((ayvf)localObject3).jdField_a_of_type_JavaLangString;
+          i2 = ((ayvf)localObject3).jdField_a_of_type_Int;
+          l1 = ((ayvf)localObject3).jdField_a_of_type_Long;
           localObject3 = this.app.a().b(str, i2, l1);
           if (localObject3 == null)
           {
@@ -9849,19 +9871,19 @@ public class MessageHandler
           else
           {
             if (!(localObject3 instanceof ChatMessage)) {
-              break label784;
+              break label778;
             }
             ((ChatMessage)localObject3).parse();
             if (!(localObject3 instanceof MessageForStructing)) {
-              break label784;
+              break label778;
             }
             MessageForStructing localMessageForStructing = (MessageForStructing)localObject3;
             if (localMessageForStructing.structingMsg == null) {
-              break label784;
+              break label778;
             }
             int i3 = localMessageForStructing.structingMsg.mMsgServiceID;
             if ((i3 != 35) && (i3 != 107)) {
-              break label784;
+              break label778;
             }
             if (QLog.isColorLevel()) {
               QLog.d("Q.msg.MessageHandler", 2, "current mr is multimsg, uniseq: " + l1);
@@ -9871,11 +9893,11 @@ public class MessageHandler
         }
       }
     }
-    label784:
+    label778:
     for (;;)
     {
       long l2 = ((MessageRecord)localObject3).time;
-      long l3 = awzy.a();
+      long l3 = ayvc.a();
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "msgSending:setMsgSendingInfo, uin:" + str + " istroop:" + i2 + " uniseq:" + l1 + " time:" + l2 + " currentServerTime:" + l3);
       }
@@ -9898,7 +9920,7 @@ public class MessageHandler
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler", 2, "msgSending:resend msg, key =" + ((MessageRecord)localObject3).uniseq + "+" + ((MessageRecord)localObject3).frienduin + "+" + ((MessageRecord)localObject3).istroop);
         }
-        akpx.b((List)localObject1, (MessageRecord)localObject3, true);
+        abot.b((List)localObject1, (MessageRecord)localObject3, true);
       }
       break;
       if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
@@ -9913,7 +9935,7 @@ public class MessageHandler
           }
           this.app.a().a(localObject2);
           if ((((MessageRecord)localObject2).msgtype == -1051) && ((localObject2 instanceof MessageForLongTextMsg)) && (((MessageForLongTextMsg)localObject2).structingMsg == null)) {
-            ((astu)this.app.getManager(166)).a(this.app, (MessageRecord)localObject2, true);
+            ((aukr)this.app.getManager(166)).a(this.app, (MessageRecord)localObject2, true);
           } else {
             a((MessageRecord)localObject2, null, true);
           }
@@ -9927,19 +9949,19 @@ public class MessageHandler
     }
   }
   
-  public Class<? extends ajte> observerClass()
+  public Class<? extends alkr> observerClass()
   {
-    return akat.class;
+    return alsi.class;
   }
   
   public void onDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Ajxj);
+    this.app.removeObserver(this.jdField_a_of_type_Alox);
     this.jdField_l_of_type_Boolean = true;
     d();
     b();
-    this.jdField_a_of_type_Awzy.d();
-    bbcf.a();
+    this.jdField_a_of_type_Ayvc.d();
+    bdaz.a();
     this.jdField_a_of_type_JavaUtilHashSet.clear();
     m();
     synchronized (this.jdField_d_of_type_JavaUtilHashMap)
@@ -9954,10 +9976,10 @@ public class MessageHandler
       }
     }
     this.jdField_d_of_type_JavaUtilHashMap.clear();
-    if ((this.jdField_a_of_type_Aukp != null) && (this.jdField_a_of_type_Aukp.a())) {
-      this.jdField_a_of_type_Aukp.a();
+    if ((this.jdField_a_of_type_Awbw != null) && (this.jdField_a_of_type_Awbw.a())) {
+      this.jdField_a_of_type_Awbw.a();
     }
-    ((akpi)a("disc_processor")).a();
+    ((amgb)a("disc_processor")).a();
     this.jdField_a_of_type_JavaUtilMap.clear();
     ThreadManager.post(new MessageHandler.11(this), 8, null, false);
   }
@@ -9976,11 +9998,11 @@ public class MessageHandler
     if ("OidbSvc.0x4ff_42073".equals(str)) {
       c(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
-    label142:
+    label140:
     do
     {
-      break label142;
-      break label142;
+      break label140;
+      break label140;
       while (msgCmdFilter(str))
       {
         if (QLog.isColorLevel()) {
@@ -10002,7 +10024,7 @@ public class MessageHandler
         return;
       }
     } while (this.jdField_l_of_type_Boolean);
-    if (akqj.a().containsKey(str)) {
+    if (amgr.a().containsKey(str)) {
       a(str, paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
     for (;;)
@@ -10017,7 +10039,7 @@ public class MessageHandler
       {
         l2 = System.currentTimeMillis();
         a(paramToServiceMsg, paramFromServiceMsg, (SvcResponsePullGroupMsgSeq)paramObject);
-        bfnl.a().e(System.currentTimeMillis() - l2);
+        bhof.a().e(System.currentTimeMillis() - l2);
       }
       else if ("RegPrxySvc.PullDisMsgSeq".equalsIgnoreCase(str))
       {
@@ -10027,7 +10049,7 @@ public class MessageHandler
       {
         l2 = System.currentTimeMillis();
         a(paramToServiceMsg, paramFromServiceMsg, (SvcResponsePullDisGroupSeq)paramObject);
-        bfnl.a().d(System.currentTimeMillis() - l2);
+        bhof.a().d(System.currentTimeMillis() - l2);
       }
       else if ("RegPrxySvc.NoticeEnd".equalsIgnoreCase(str))
       {
@@ -10055,18 +10077,18 @@ public class MessageHandler
       }
       else if ("RegPrxySvc.infoSync".equalsIgnoreCase(str))
       {
-        d(paramFromServiceMsg, paramObject);
+        v(paramToServiceMsg, paramFromServiceMsg, paramObject);
       }
       else if ("RegPrxySvc.PbSyncMsg".equalsIgnoreCase(str))
       {
-        v(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        w(paramToServiceMsg, paramFromServiceMsg, paramObject);
       }
       else if ("MessageSvc.PbGetMsg".equalsIgnoreCase(str))
       {
         try
         {
           if (this.app.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.d()) {
-            break label626;
+            break label623;
           }
           n(paramToServiceMsg, paramFromServiceMsg, paramObject);
         }
@@ -10079,7 +10101,7 @@ public class MessageHandler
           c(paramToServiceMsg);
         }
         continue;
-        label626:
+        label623:
         a("c2c_processor").a(1002, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
       }
       else if (!"MessageSvc.DelMsgV2".equalsIgnoreCase(str))
@@ -10123,27 +10145,27 @@ public class MessageHandler
                 a(localRequestPushNotify.lUin, localRequestPushNotify.svrip, paramFromServiceMsg.getRequestSsoSeq());
               }
               if ((localRequestPushNotify.wGeneralFlag & 0x20) != 32) {
-                break label1035;
+                break label1032;
               }
-              bazy.a(true);
-              label873:
+              bcys.a(true);
+              label870:
               localObject = paramToServiceMsg;
               bool2 = bool1;
               if (QLog.isColorLevel()) {
                 if (!bool1) {
-                  break label1042;
+                  break label1039;
                 }
               }
             }
-            label1035:
-            label1042:
+            label1032:
+            label1039:
             for (localObject = "SUB_ACCOUNT";; localObject = "Q.msg.MessageHandler")
             {
               QLog.d((String)localObject, 2, String.format("MessageSvc.PushNotify, notify.wUserActive: %d isSubAccount: %s, cmd: %s, wGeneralFlag:%d, bytesServerBuf: %s, ping_flag%d", new Object[] { Integer.valueOf(localRequestPushNotify.wUserActive), Boolean.valueOf(bool1), localRequestPushNotify.strCmd, Integer.valueOf(localRequestPushNotify.wGeneralFlag), localRequestPushNotify.bytes_server_buf, Long.valueOf(localRequestPushNotify.ping_flag) }));
               bool2 = bool1;
               localObject = paramToServiceMsg;
               if (!bool2) {
-                break label1050;
+                break label1046;
               }
               if (QLog.isColorLevel()) {
                 QLog.d("SUB_ACCOUNT", 2, "subaccount push and start get subaccount msg, subUin=" + (String)localObject);
@@ -10151,12 +10173,12 @@ public class MessageHandler
               if (localObject == null) {
                 break;
               }
-              ayaq.a(this.app, (String)localObject, true);
+              azyl.a(this.app, (String)localObject, true);
               break;
-              bazy.a(false);
-              break label873;
+              bcys.a(false);
+              break label870;
             }
-            label1050:
+            label1046:
             if (this.app.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a()) {
               a(paramFromServiceMsg, paramObject);
             }
@@ -10171,7 +10193,7 @@ public class MessageHandler
           }
           else if ("PbMessageSvc.PbMsgReadedReport".equalsIgnoreCase(str))
           {
-            w(paramToServiceMsg, paramFromServiceMsg, paramObject);
+            x(paramToServiceMsg, paramFromServiceMsg, paramObject);
           }
           else if ("ADMsgSvc.PushMsg".equalsIgnoreCase(str))
           {
@@ -10183,14 +10205,14 @@ public class MessageHandler
           }
           else if ("TransService.ReqGetSign".equalsIgnoreCase(str))
           {
-            a(paramToServiceMsg, paramFromServiceMsg, (axaj)paramObject);
+            a(paramToServiceMsg, paramFromServiceMsg, (ayvn)paramObject);
           }
           else if ("StreamSvr.RespUploadStreamMsg".equalsIgnoreCase(str))
           {
             if (paramObject == null) {
               notifyUI(3011, false, null);
             } else {
-              notifyUI(3011, true, new Object[] { (axak)paramObject });
+              notifyUI(3011, true, new Object[] { (ayvo)paramObject });
             }
           }
           else if ("MessageSvc.PbSendMsg".equalsIgnoreCase(str))
@@ -10199,7 +10221,7 @@ public class MessageHandler
           }
           else if ("OidbSvc.0xa89".equalsIgnoreCase(str))
           {
-            x(paramToServiceMsg, paramFromServiceMsg, paramObject);
+            y(paramToServiceMsg, paramFromServiceMsg, paramObject);
           }
           else if ("StreamSvr.PushStreamMsg".equalsIgnoreCase(str))
           {
@@ -10309,7 +10331,7 @@ public class MessageHandler
                     try
                     {
                       if (!isPbReq(paramToServiceMsg)) {
-                        break label1900;
+                        break label1892;
                       }
                       t(paramToServiceMsg, paramFromServiceMsg, paramObject);
                     }
@@ -10322,7 +10344,7 @@ public class MessageHandler
                       p(paramToServiceMsg, paramFromServiceMsg);
                     }
                     continue;
-                    label1900:
+                    label1892:
                     b(paramToServiceMsg, paramFromServiceMsg, (SvcResponsePullGroupMsgSeq)paramObject);
                   }
                 }
@@ -10373,7 +10395,7 @@ public class MessageHandler
                   if (QLog.isColorLevel()) {
                     QLog.d("Q.msg.MessageHandler", 2, "SvcReqMSFLoginNotify status:" + paramToServiceMsg.cStatus + "iPlatform:" + paramToServiceMsg.iPlatform);
                   }
-                  paramFromServiceMsg = (akfl)this.app.a(10);
+                  paramFromServiceMsg = (alxb)this.app.a(10);
                   int i2 = 0;
                   int i3 = 0;
                   i1 = 0;
@@ -10385,32 +10407,32 @@ public class MessageHandler
                         QLog.d("Q.msg.MessageHandler", 4, "ipad online now");
                       }
                       t();
-                      label2232:
+                      label2220:
                       paramFromServiceMsg.c(i1);
                       if (jdField_a_of_type_Int == 1) {
                         jdField_a_of_type_Int = 1;
                       }
-                      label2249:
-                      if (!((wie)this.app.getManager(335)).a(paramToServiceMsg.vecInstanceList)) {
-                        break label2508;
+                      label2237:
+                      if (!((xww)this.app.getManager(335)).a(paramToServiceMsg.vecInstanceList)) {
+                        break label2493;
                       }
                     }
                   }
-                  label2506:
-                  label2508:
+                  label2491:
+                  label2493:
                   for (i1 = 1;; i1 = 0)
                   {
                     notifyUI(6016, true, new Object[] { Byte.valueOf((byte)i1) });
                     break;
                     if (paramToServiceMsg.cStatus != 2) {
-                      break label2232;
+                      break label2220;
                     }
                     i1 = 0;
                     if (QLog.isDevelopLevel()) {
                       QLog.d("Q.msg.MessageHandler", 4, "ipad offline now");
                     }
                     b(1);
-                    break label2232;
+                    break label2220;
                     if (paramToServiceMsg.iPlatform == 1029L)
                     {
                       if (paramToServiceMsg.cStatus == 1) {
@@ -10419,7 +10441,7 @@ public class MessageHandler
                       for (;;)
                       {
                         if (!QLog.isColorLevel()) {
-                          break label2419;
+                          break label2405;
                         }
                         QLog.d("Q.msg.MessageHandler", 2, "mac online push status:" + i1 + ",cDataline:" + 1);
                         break;
@@ -10428,11 +10450,11 @@ public class MessageHandler
                           i1 = 0;
                         }
                       }
-                      label2419:
-                      break label2249;
+                      label2405:
+                      break label2237;
                     }
                     if (paramToServiceMsg.iClientType != 78082L) {
-                      break label2249;
+                      break label2237;
                     }
                     if (paramToServiceMsg.cStatus == 1) {
                       i1 = 1;
@@ -10440,7 +10462,7 @@ public class MessageHandler
                     for (;;)
                     {
                       if (!QLog.isColorLevel()) {
-                        break label2506;
+                        break label2491;
                       }
                       QLog.d("Q.msg.MessageHandler", 2, "watch online push status:" + i1 + ",cDataline:" + 1);
                       break;
@@ -10449,14 +10471,14 @@ public class MessageHandler
                         i1 = 0;
                       }
                     }
-                    break label2249;
+                    break label2237;
                   }
                 }
                 if (QLog.isColorLevel()) {
                   QLog.d("Q.msg.MessageHandler", 2, "RequestPushStatus ret, but data is null");
                 }
               }
-              else if (("OnlinePush.PbPushGroupMsg".equalsIgnoreCase(str)) || ("OnlinePush.PbPushDisMsg".equalsIgnoreCase(str)) || ("OnlinePush.PbC2CMsgSync".equalsIgnoreCase(str)) || ("OnlinePush.PbPushC2CMsg".equalsIgnoreCase(str)))
+              else if (("OnlinePush.PbPushGroupMsg".equalsIgnoreCase(str)) || ("OnlinePush.PbPushDisMsg".equalsIgnoreCase(str)) || ("OnlinePush.PbC2CMsgSync".equalsIgnoreCase(str)) || ("OnlinePush.PbPushC2CMsg".equalsIgnoreCase(str)) || ("OnlinePush.PbPushBindUinGroupMsg".equalsIgnoreCase(str)))
               {
                 try
                 {
@@ -10471,7 +10493,7 @@ public class MessageHandler
               {
                 if ("MultiVideo.s2c".equalsIgnoreCase(str))
                 {
-                  if (!ldd.jdField_a_of_type_Boolean) {
+                  if (!VideoConstants.jdField_a_of_type_Boolean) {
                     continue;
                   }
                   paramToServiceMsg = (MultiVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "MultiVideoMsg", new MultiVideoMsg());
@@ -10503,7 +10525,7 @@ public class MessageHandler
                 }
                 if ("MultiVideo.c2sack".equalsIgnoreCase(str))
                 {
-                  if (!ldd.jdField_a_of_type_Boolean) {
+                  if (!VideoConstants.jdField_a_of_type_Boolean) {
                     continue;
                   }
                   paramToServiceMsg = (MultiVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "MultiVideoMsg", new MultiVideoMsg());
@@ -10519,9 +10541,9 @@ public class MessageHandler
                 if ("NearFieldTranFileSvr.NotifyList".equalsIgnoreCase(str)) {
                   this.app.a().a((byte[])paramObject);
                 } else if ("MessageSvc.PbReceiptRead".equalsIgnoreCase(str)) {
-                  y(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                } else if ("OidbSvc.0xb31".equalsIgnoreCase(str)) {
                   z(paramToServiceMsg, paramFromServiceMsg, paramObject);
+                } else if ("OidbSvc.0xb31".equalsIgnoreCase(str)) {
+                  A(paramToServiceMsg, paramFromServiceMsg, paramObject);
                 }
               }
             }
@@ -10553,7 +10575,7 @@ public class MessageHandler
         if (i1 < ((JSONArray)localObject1).length())
         {
           if (((JSONArray)localObject1).isNull(i1)) {
-            break label351;
+            break label349;
           }
           Object localObject2 = ((JSONArray)localObject1).getJSONObject(i1);
           String str = ((JSONObject)localObject2).getString("uin");
@@ -10562,12 +10584,12 @@ public class MessageHandler
           this.app.a().d(str, i2, l1);
           localObject2 = this.app.a().b(str, i2, l1);
           if (localObject2 == null) {
-            break label351;
+            break label349;
           }
           this.app.a().d((MessageRecord)localObject2);
           this.app.a().a(localObject2);
           if ((((MessageRecord)localObject2).msgtype != -1035) || (!(localObject2 instanceof MessageForMixedMsg))) {
-            break label351;
+            break label349;
           }
           this.app.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, 32768, ((MessageRecord)localObject2).sendFailCode);
         }
@@ -10581,7 +10603,7 @@ public class MessageHandler
         localSharedPreferences.edit().remove("msgSending").commit();
       }
       return;
-      label351:
+      label349:
       i1 += 1;
     }
   }
@@ -10608,7 +10630,7 @@ public class MessageHandler
       {
         List localList;
         long l1;
-        bajo localbajo;
+        bcic localbcic;
         int i2;
         if (QLog.isColorLevel())
         {
@@ -10619,7 +10641,7 @@ public class MessageHandler
         }
       }
     }
-    localbajo = (bajo)this.app.getManager(132);
+    localbcic = (bcic)this.app.getManager(132);
     i2 = localList.size();
     int i1 = 0;
     for (;;)
@@ -10629,8 +10651,8 @@ public class MessageHandler
         register_proxy.GroupList localGroupList = (register_proxy.GroupList)localList.get(i1);
         String str = String.valueOf(localGroupList.group_code.get());
         long l2 = localGroupList.group_seq.get();
-        if (!str.equals(localbajo.a())) {
-          akpx.a(this.app, str, l2);
+        if (!str.equals(localbcic.a())) {
+          abot.a(this.app, str, l2);
         }
       }
       else

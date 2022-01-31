@@ -1,17 +1,14 @@
-class bikn
-  extends bjch
+import com.tencent.TMG.sdk.AVContext.StartParam;
+
+public class bikn
+  extends AVContext.StartParam
 {
-  bikn(bikl parambikl) {}
-  
-  public void a()
-  {
-    super.a();
-    this.a.j();
-  }
+  public int a;
+  public long a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bikn
  * JD-Core Version:    0.7.0.1
  */

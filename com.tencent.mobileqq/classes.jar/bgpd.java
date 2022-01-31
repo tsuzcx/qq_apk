@@ -1,32 +1,130 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qqdataline.DatalineLeakHelper.2.1;
+import android.util.Log;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.qqmini.sdk.core.widget.media.VideoGestureRelativeLayout;
 
-public final class bgpd
-  implements View.OnClickListener
+public class bgpd
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public void onClick(View paramView)
+  private VideoGestureRelativeLayout b;
+  
+  public bgpd(VideoGestureRelativeLayout paramVideoGestureRelativeLayout1, VideoGestureRelativeLayout paramVideoGestureRelativeLayout2)
   {
-    if (this.a != null) {
-      this.a.dismiss();
+    this.b = paramVideoGestureRelativeLayout2;
+  }
+  
+  public boolean onContextClick(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onContextClick: ");
+    return true;
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onDoubleTap: ");
+    if (VideoGestureRelativeLayout.a(this.a) != null) {
+      VideoGestureRelativeLayout.a(this.a).b(paramMotionEvent);
     }
-    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131702761) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("dataline-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new DatalineLeakHelper.2.1(this));
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onDoubleTapEvent: ");
+    return super.onDoubleTapEvent(paramMotionEvent);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onDown: ");
+    VideoGestureRelativeLayout.a(this.a, false);
+    VideoGestureRelativeLayout.a(this.a, 0);
+    if (VideoGestureRelativeLayout.a(this.a) != null) {
+      VideoGestureRelativeLayout.a(this.a).c(paramMotionEvent);
     }
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    Log.d("gesturetest", "onFling: ");
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onLongPress: ");
+    super.onLongPress(paramMotionEvent);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    Log.d("gesturetest", "onScroll: e1:" + paramMotionEvent1.getX() + "," + paramMotionEvent1.getY());
+    Log.d("gesturetest", "onScroll: e2:" + paramMotionEvent2.getX() + "," + paramMotionEvent2.getY());
+    Log.d("gesturetest", "onScroll: X:" + paramFloat1 + "  Y:" + paramFloat2);
+    switch (VideoGestureRelativeLayout.a(this.a))
+    {
+    default: 
+      return true;
+    case 0: 
+      Log.d("gesturetest", "NONE: ");
+      if (Math.abs(paramFloat1) - Math.abs(paramFloat2) > VideoGestureRelativeLayout.b(this.a))
+      {
+        VideoGestureRelativeLayout.a(this.a, 3);
+        return true;
+      }
+      if (paramMotionEvent1.getX() < this.a.getWidth() / 2)
+      {
+        VideoGestureRelativeLayout.a(this.a, 2);
+        return true;
+      }
+      VideoGestureRelativeLayout.a(this.a, 1);
+      return true;
+    case 1: 
+      if (VideoGestureRelativeLayout.a(this.a) != null) {
+        VideoGestureRelativeLayout.a(this.a).b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      }
+      Log.d("gesturetest", "VOLUME: ");
+      return true;
+    case 2: 
+      if (VideoGestureRelativeLayout.a(this.a) != null) {
+        VideoGestureRelativeLayout.a(this.a).a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      }
+      Log.d("gesturetest", "BRIGHTNESS: ");
+      return true;
+    }
+    if (VideoGestureRelativeLayout.a(this.a) != null) {
+      VideoGestureRelativeLayout.a(this.a).c(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    VideoGestureRelativeLayout.a(this.a, true);
+    Log.d("gesturetest", "FF_REW: ");
+    return true;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onShowPress: ");
+    super.onShowPress(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onSingleTapConfirmed: ");
+    if (VideoGestureRelativeLayout.a(this.a) != null) {
+      VideoGestureRelativeLayout.a(this.a).a(paramMotionEvent);
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onSingleTapUp: ");
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgpd
  * JD-Core Version:    0.7.0.1
  */

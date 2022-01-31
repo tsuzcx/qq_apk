@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.UndealCount.QZoneCountUserInfo;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
 
-public final class bhbn
-  implements Parcelable.Creator<QZoneCountUserInfo>
+class bhbn
+  implements bhay
 {
-  public QZoneCountUserInfo a(Parcel paramParcel)
-  {
-    return new QZoneCountUserInfo(paramParcel);
-  }
+  bhbn(bhbi parambhbi) {}
   
-  public QZoneCountUserInfo[] a(int paramInt)
+  public void onStateChanged()
   {
-    return new QZoneCountUserInfo[paramInt];
+    PageWebview localPageWebview;
+    if (bhbi.a(this.a) != null)
+    {
+      localPageWebview = bhbi.a(this.a);
+      if (this.a.getCurrState() != bhbi.b(this.a)) {
+        break label43;
+      }
+    }
+    label43:
+    for (boolean bool = true;; bool = false)
+    {
+      localPageWebview.setPageJsLoadSucc(bool);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhbn
  * JD-Core Version:    0.7.0.1
  */

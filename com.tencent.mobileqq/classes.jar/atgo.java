@@ -1,28 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
 public class atgo
-  extends Handler
 {
-  public atgo(StoryPlayController paramStoryPlayController) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      StoryPlayController.a(this.a, this.a.a);
-    }
-  }
+  public int a;
+  public long a;
+  public Context a;
+  public QQAppInterface a;
+  public RedTouch a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atgo
  * JD-Core Version:    0.7.0.1
  */

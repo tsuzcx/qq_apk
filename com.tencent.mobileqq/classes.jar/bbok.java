@@ -1,28 +1,20 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bbok
-  extends GridLayoutManager.SpanSizeLookup
+  implements DialogInterface.OnClickListener
 {
-  bbok(bboj parambboj) {}
+  bbok(bboe parambboe, bbnr parambbnr) {}
   
-  public int getSpanSize(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 3;
-    switch (this.a.getItemViewType(paramInt))
-    {
-    default: 
-      i = 1;
-    case 1: 
-    case 2: 
-    case 4: 
-      return i;
-    }
-    return 1;
+    bcil.a(this.jdField_a_of_type_Bboe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bboe.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bbnr);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbok
  * JD-Core Version:    0.7.0.1
  */

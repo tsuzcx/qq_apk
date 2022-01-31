@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richstatus;
 
-import awcx;
+import axya;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SignTextEditFragment$7$1
   implements Runnable
 {
-  public SignTextEditFragment$7$1(awcx paramawcx) {}
+  public SignTextEditFragment$7$1(axya paramaxya) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class SignTextEditFragment$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.7.1
  * JD-Core Version:    0.7.0.1
  */

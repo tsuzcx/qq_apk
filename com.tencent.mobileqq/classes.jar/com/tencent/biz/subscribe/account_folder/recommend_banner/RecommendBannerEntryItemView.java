@@ -10,14 +10,14 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import baxn;
+import bcwh;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import vzl;
-import wis;
-import wjj;
+import xod;
+import xxk;
+import xyb;
 
 public class RecommendBannerEntryItemView
   extends RelativeLayout
@@ -51,19 +51,19 @@ public class RecommendBannerEntryItemView
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131558693, this);
-    setMinimumHeight(baxn.a(paramContext, 213.0F));
-    setPadding(baxn.a(paramContext, 6.0F), baxn.a(paramContext, 10.0F), baxn.a(paramContext, 6.0F), baxn.a(paramContext, 20.0F));
+    inflate(paramContext, 2131558729, this);
+    setMinimumHeight(bcwh.a(paramContext, 213.0F));
+    setPadding(bcwh.a(paramContext, 6.0F), bcwh.a(paramContext, 10.0F), bcwh.a(paramContext, 6.0F), bcwh.a(paramContext, 20.0F));
     setWillNotDraw(false);
     setLayerType(1, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131362938));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131362973));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(7.0F));
-    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131362953));
+    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131362988));
     this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(7.0F));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370816));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371127));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131361895));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371745));
-    setOnClickListener(new wjj(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372063));
+    setOnClickListener(new xyb(this));
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -82,10 +82,10 @@ public class RecommendBannerEntryItemView
     {
       if (!this.jdField_b_of_type_Boolean)
       {
-        i2 = baxn.a(getContext(), 5.0F);
-        localPaint.setShadowLayer(baxn.a(getContext(), 15.0F), 0, i2, 436207616);
+        i2 = bcwh.a(getContext(), 5.0F);
+        localPaint.setShadowLayer(bcwh.a(getContext(), 15.0F), 0, i2, 436207616);
       }
-      int i2 = baxn.a(getContext(), 6.0F);
+      int i2 = bcwh.a(getContext(), 6.0F);
       paramCanvas.drawRoundRect(new RectF(i, j, k - m, n - i1), i2, i2, localPaint);
       super.onDraw(paramCanvas);
       return;
@@ -100,10 +100,10 @@ public class RecommendBannerEntryItemView
       return;
     }
     if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover != null) {
-      vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getWidth(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getHeight(), null, "");
+      xod.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getWidth(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getHeight(), null, "");
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.title.get());
-    if (wis.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.type.get()))
+    if (xxk.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.type.get()))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;
@@ -123,7 +123,7 @@ public class RecommendBannerEntryItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView
  * JD-Core Version:    0.7.0.1
  */

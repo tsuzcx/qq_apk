@@ -1,30 +1,58 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager.4;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-class atth
-  implements amne
+public class atth
+  extends bdvu
 {
-  atth(attg paramattg, IphonePickerView paramIphonePickerView, bfpc parambfpc) {}
+  public atth(PngFrameManager.4 param4, String paramString) {}
   
-  public void a()
+  public void onDone(bdvv parambdvv)
   {
-    if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing()))
-    {
-      attg.a(this.jdField_a_of_type_Attg, this.jdField_a_of_type_Attg.b, false);
-      this.jdField_a_of_type_Bfpc.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameManager", 2, "func onDone.【pngZip】");
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_Attg.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_Attg.b.setText(attg.a(this.jdField_a_of_type_Attg).a(0, paramInt1));
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a != null)
+        {
+          if (parambdvv.a() != 3) {
+            this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(226, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
+          }
+        }
+        else {
+          return;
+        }
+      }
+      try
+      {
+        bdcs.a(this.jdField_a_of_type_JavaLangString, apro.z.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_JavaLangString), false);
+        new File(this.jdField_a_of_type_JavaLangString).delete();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_Afrf.a.a.epId);
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(225, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
+        continue;
+        parambdvv = finally;
+        throw parambdvv;
+      }
+      catch (IOException parambdvv)
+      {
+        for (;;)
+        {
+          parambdvv.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atth
  * JD-Core Version:    0.7.0.1
  */

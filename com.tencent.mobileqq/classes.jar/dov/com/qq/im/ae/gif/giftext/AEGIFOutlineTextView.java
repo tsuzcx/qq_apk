@@ -13,7 +13,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import biry;
+import bkwr;
 
 public class AEGIFOutlineTextView
   extends View
@@ -147,7 +147,7 @@ public class AEGIFOutlineTextView
   
   public void setFontStyle()
   {
-    Typeface localTypeface = biry.a().a("jianqiaohei.ttf");
+    Typeface localTypeface = bkwr.a().a("jianqiaohei.ttf");
     this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
     this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
   }
@@ -202,7 +202,7 @@ public class AEGIFOutlineTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,38 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
+import java.util.UUID;
 
-public class bbti
-  extends bbtc
+public abstract interface bbti
 {
-  public static bbti a = new bbti();
+  public abstract int a();
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bbqp parambbqp, boolean paramBoolean)
-  {
-    a.download(paramQQAppInterface, "qqVipLevel." + paramInt, parambbqp, paramBoolean);
-  }
+  public abstract long a();
   
-  public static boolean a(Context paramContext, int paramInt)
-  {
-    String str = "qqVipLevel." + paramInt;
-    return new File(a.getDir(paramContext, str)).exists();
-  }
+  public abstract String a();
   
-  public long getBID()
-  {
-    return 41L;
-  }
+  public abstract UUID a();
   
-  protected String getRootDir()
-  {
-    return "qqlevel_icon";
-  }
+  public abstract void a(int paramInt);
   
-  protected String getScidPrefix()
-  {
-    return "qqVipLevel.";
-  }
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract String b();
+  
+  public abstract int c();
+  
+  public abstract String c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbti
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,38 @@
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.data.MessageForApollo;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
 
-public abstract interface aizk
+public class aizk
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public aizk(SpecifyGiftView paramSpecifyGiftView, baaa parambaaa, View.OnClickListener paramOnClickListener) {}
   
-  public abstract void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong);
-  
-  public abstract void a(String paramString, int paramInt, List<MessageForApollo> paramList);
-  
-  public abstract void a(String paramString, aenl paramaenl);
-  
-  public abstract void a(String paramString, aizm paramaizm);
-  
-  public abstract void a(String paramString, List<ApolloGameData> paramList);
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2);
-  
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt, long paramLong);
-  
-  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, long paramLong, String paramString2);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt, long paramLong);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void b(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void b(boolean paramBoolean, String paramString, int paramInt, long paramLong);
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d(String paramString);
-  
-  public abstract void e(String paramString);
+  public void onClick(View paramView)
+  {
+    SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).a();
+    if (this.jdField_a_of_type_Baaa != null) {
+      this.jdField_a_of_type_Baaa.a();
+    }
+    QQAppInterface localQQAppInterface = ajaf.a();
+    if (localQQAppInterface != null)
+    {
+      bcfr localbcfr = (bcfr)localQQAppInterface.getManager(223);
+      if (localbcfr != null) {
+        localbcfr.a(SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).frienduin);
+      }
+    }
+    ajaf.a(localQQAppInterface, "212", "only.animation.close");
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aizk
  * JD-Core Version:    0.7.0.1
  */

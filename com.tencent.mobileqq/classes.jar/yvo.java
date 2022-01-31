@@ -1,98 +1,66 @@
-import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListReq;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class yvo
-  implements bdld
+  extends ProtoBufRequest
 {
-  private WeakReference<GdtMvDownloadBtnManager> a;
+  private final CLIENT.StGetStoryFeedListReq a = new CLIENT.StGetStoryFeedListReq();
   
-  public yvo(GdtMvDownloadBtnManager paramGdtMvDownloadBtnManager)
+  public yvo(int paramInt, CLIENT.StUinTime paramStUinTime)
   {
-    this.a = new WeakReference(paramGdtMvDownloadBtnManager);
+    this.a.listType.set(paramInt);
+    this.a.uinTime.set(paramStUinTime);
+    this.a.listNum.set(10);
   }
   
-  public void installSucceed(String paramString1, String paramString2)
+  @Nullable
+  public static CLIENT.StGetStoryFeedListRsp a(byte[] paramArrayOfByte)
   {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramString1, paramString2);
+    if (paramArrayOfByte == null)
+    {
+      a("data is null");
+      return null;
+    }
+    paramArrayOfByte = decode(paramArrayOfByte);
+    if (paramArrayOfByte == null)
+    {
+      a("storyData is null");
+      return null;
+    }
+    CLIENT.StGetStoryFeedListRsp localStGetStoryFeedListRsp = new CLIENT.StGetStoryFeedListRsp();
+    try
+    {
+      localStGetStoryFeedListRsp.mergeFrom(paramArrayOfByte);
+      return localStGetStoryFeedListRsp;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      a("onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  private static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GetMineStoryFeedListRequest", 2, paramString);
     }
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public byte[] getBusiBuf()
   {
-    yxp.a("GdtMvDownloadBtnManager", "onDownloadCancel: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.d(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramDownloadInfo, paramInt1, paramString, paramInt2);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    yxp.a("GdtMvDownloadBtnManager", "onDownloadFinish: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.c(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    yxp.a("GdtMvDownloadBtnManager", "onDownloadPause: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    yxp.a("GdtMvDownloadBtnManager", "onDownloadUpdate: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramList);
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    yxp.a("GdtMvDownloadBtnManager", "onDownloadWait: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.b(paramDownloadInfo);
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.c(paramString1, paramString2);
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.b(paramString1, paramString2);
-    }
+    return this.a.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvo
  * JD-Core Version:    0.7.0.1
  */

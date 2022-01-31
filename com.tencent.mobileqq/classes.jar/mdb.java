@@ -1,23 +1,23 @@
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
 
-class mdb
-  implements View.OnClickListener
+final class mdb
+  extends ClickableSpan
 {
-  mdb(mcz parammcz) {}
+  mdb(mdg parammdg) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.a().a().at = true;
-    muc.a(this.a.a);
-    mcz.b(this.a);
+    View.OnClickListener localOnClickListener = this.a.a();
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdb
  * JD-Core Version:    0.7.0.1
  */

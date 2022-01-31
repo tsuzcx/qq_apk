@@ -1,10 +1,14 @@
-class sju
+import android.view.View;
+
+public abstract interface sju
 {
-  private static final sjs a = new sjs(null);
+  public abstract void a(View paramView, int paramInt, long paramLong);
+  
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sju
  * JD-Core Version:    0.7.0.1
  */

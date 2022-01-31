@@ -1,42 +1,20 @@
 package com.tencent.mobileqq.applets;
 
-import biam;
-import bian;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import mqq.app.AppRuntime;
+import azmj;
 
 public final class PublicAccountEventReport$11
   implements Runnable
 {
-  public PublicAccountEventReport$11(String paramString, int paramInt1, int paramInt2) {}
+  public PublicAccountEventReport$11(String paramString, long paramLong) {}
   
   public void run()
   {
-    bian localbian = new bian();
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str = "";
-    if (localAppRuntime != null) {
-      str = localAppRuntime.getAccount();
-    }
-    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localbian.jdField_e_of_type_JavaLangString = "vab_push";
-    localbian.jdField_f_of_type_JavaLangString = "vab_push";
-    localbian.b = (str + "_" + l);
-    localbian.jdField_a_of_type_Int = 1;
-    localbian.g = this.jdField_a_of_type_JavaLangString;
-    localbian.h = "";
-    localbian.jdField_a_of_type_Long = l;
-    localbian.d = this.jdField_a_of_type_Int;
-    localbian.k = Integer.toString(this.b);
-    localbian.jdField_e_of_type_Int = 1;
-    localbian.jdField_f_of_type_Int = 1;
-    biam.a().a(localbian);
+    azmj.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A306", "0X800A306", 0, 0, "", "", this.jdField_a_of_type_Long + "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.11
  * JD-Core Version:    0.7.0.1
  */

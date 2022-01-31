@@ -1,61 +1,64 @@
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.Map;
 
 public class aclg
-  extends akat
+  extends alox
 {
-  public aclg(TroopRequestActivity paramTroopRequestActivity) {}
+  public aclg(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(String paramString)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    this.a.i();
-    paramString = this.a.getString(2131720004);
-    bcql.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    this.a.a(2130839315, this.a.getString(2131719543));
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
-  {
-    long l2 = aydd.a().b();
-    long l1 = l2;
-    if (!TextUtils.isEmpty(paramString1)) {}
-    try
-    {
-      l1 = Long.parseLong(paramString1);
-      if (!paramBoolean)
-      {
-        this.a.i();
-        if (ayde.a(aydd.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
-          this.a.finish();
-        }
-        return;
-      }
-      this.a.i();
-      this.a.finish();
-      ayde.a(aydd.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
+    super.onSetGenralSettingsTroopFilter(paramBoolean, paramMap);
+    if ((paramMap == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null)) {
       return;
     }
-    catch (Exception paramString1)
+    if (!paramBoolean) {
+      if (paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin) != null) {
+        QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131721089), 0).b(this.a.getTitleBarHeight());
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(17);
+      return;
+      paramMap = (Integer)paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+      if (paramMap != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopmask = paramMap.intValue();
+      }
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
+    try
+    {
+      l = Long.valueOf(paramString).longValue();
+      if (l != 0L) {
+        this.a.a(l);
+      }
+      return;
+    }
+    catch (NumberFormatException paramString)
     {
       for (;;)
       {
-        l1 = l2;
+        paramString.printStackTrace();
+        long l = 0L;
       }
     }
   }
   
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    this.a.a(2130839315, this.a.getString(2131719528));
-  }
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vbx
-  extends QQUIEventReceiver<vba, vbw>
+  extends une
 {
-  public vbx(@NonNull vba paramvba)
-  {
-    super(paramvba);
-  }
+  public List<wkh> a = new ArrayList();
   
-  public void a(@NonNull vba paramvba, @NonNull vbw paramvbw)
+  public vbx(qqstory_group.RspGroupStoryFeedIdList paramRspGroupStoryFeedIdList)
   {
-    paramvba.a(paramvbw);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vbw.class;
+    super(paramRspGroupStoryFeedIdList.result, paramRspGroupStoryFeedIdList.is_end, paramRspGroupStoryFeedIdList.next_cookie);
+    paramRspGroupStoryFeedIdList = paramRspGroupStoryFeedIdList.feed_seq_info_list.get().iterator();
+    while (paramRspGroupStoryFeedIdList.hasNext())
+    {
+      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspGroupStoryFeedIdList.next();
+      this.a.add(new wkh(localFeedSeqInfo));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,26 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-
-class alxa
-  implements ValueAnimator.AnimatorUpdateListener
+public class alxa
+  implements alkr
 {
-  alxa(alww paramalww, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  public void a(boolean paramBoolean) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void b(boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
+    switch (paramInt)
     {
+    default: 
       return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-this.jdField_a_of_type_Alww.d * (1.0F - f));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Alww.g);
-    this.b.setAlpha(f);
+    case 3: 
+      a(paramBoolean);
+      return;
+    }
+    b(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxa
  * JD-Core Version:    0.7.0.1
  */

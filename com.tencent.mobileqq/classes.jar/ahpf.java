@@ -1,91 +1,78 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.widget.CustomImgView;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contacts.fragment.RecommendFriendFragment;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 import java.util.List;
 
 public class ahpf
-  extends BaseAdapter
+  extends alox
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList;
-  private int b;
+  public ahpf(RecommendFriendFragment paramRecommendFriendFragment) {}
   
-  public ahpf(ahpe paramahpe, Context paramContext, int paramInt1, int paramInt2)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  private void a(List<MessageRecord> paramList)
-  {
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onCancelMayKnowRecommend isSuccess:" + paramBoolean);
     }
-    super.notifyDataSetChanged();
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
   }
   
-  public int getCount()
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushAdd isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushDel isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayknowStateChanged isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      int j = i;
-      if (i > this.jdField_a_of_type_Int) {
-        j = this.jdField_a_of_type_Int;
+      if (this.a.jdField_a_of_type_Ahnl != null) {
+        this.a.jdField_a_of_type_Ahnl.notifyDataSetChanged();
       }
-      return j;
-    }
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0; (paramInt > 0) && (paramInt < i); i = this.jdField_a_of_type_JavaUtilList.size()) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560719, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(this.b, this.b));
-    }
-    for (;;)
-    {
-      paramViewGroup = (CustomImgView)paramView;
-      MessageRecord localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.senderuin)))
+      if (this.a.jdField_a_of_type_ComTencentWidgetXListView != null)
       {
-        paramViewGroup.setImageDrawable(this.jdField_a_of_type_Ahpe.a.a(localMessageRecord.istroop, localMessageRecord.senderuin));
-        paramView.setTag(-1, localMessageRecord.senderuin);
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
       }
-      return paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpf
  * JD-Core Version:    0.7.0.1
  */

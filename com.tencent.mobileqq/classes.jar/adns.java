@@ -1,23 +1,29 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-class adns
-  implements View.OnClickListener
+public class adns
+  implements axxl
 {
-  adns(adnq paramadnq) {}
+  public adns(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
   {
-    paramView = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(paramView)) {
-      adnq.a(this.a, paramView);
+    if (this.a.c)
+    {
+      if (paramInt != 100) {
+        this.a.a(2131690719);
+      }
+      this.a.z();
     }
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adns
  * JD-Core Version:    0.7.0.1
  */

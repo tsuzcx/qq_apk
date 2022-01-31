@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.form.GdtFormView;
 
-public final class aaph
-  implements DialogInterface.OnClickListener
+public class aaph
+  implements View.OnClickListener
 {
-  public aaph(QQAppInterface paramQQAppInterface, String paramString) {}
+  public aaph(GdtFormView paramGdtFormView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bbgi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (GdtFormView.a(this.a)) {
+      GdtFormView.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaph
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,148 @@
-import android.content.SharedPreferences;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.biz.JoinGroupHandler.2;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public abstract class myo
+public class myo
 {
-  public SharedPreferences a;
-  public myo a;
+  protected int a;
+  protected long a;
+  protected amab a;
+  protected Context a;
+  public bepp a;
+  protected QQAppInterface a;
+  protected Runnable a;
+  protected String a;
+  protected myr a;
+  protected long b;
   
-  public myo(SharedPreferences paramSharedPreferences, myo parammyo)
+  public myo(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, myr parammyr)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
-    this.jdField_a_of_type_Myo = parammyo;
+    this.jdField_a_of_type_JavaLangRunnable = new JoinGroupHandler.2(this);
+    this.jdField_a_of_type_Amab = new myq(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Myr = parammyr;
   }
   
-  public static boolean a(int paramInt)
+  private void a(int paramInt1, int paramInt2)
   {
-    return (paramInt & 0x1) != 0;
+    new beqa(this.jdField_a_of_type_AndroidContentContext).a(paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914), 0, paramInt2);
   }
   
-  public static boolean b(int paramInt)
+  private void a(TroopInfo paramTroopInfo)
   {
-    return (paramInt & 0x2) != 0;
-  }
-  
-  public abstract int a(String paramString1, String paramString2);
-  
-  public int a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int j = 0;
-    if (paramBoolean1) {}
-    for (int i = 1;; i = 0)
+    if (paramTroopInfo.cGroupOption != 3)
     {
-      if (paramBoolean2) {
-        j = 2;
+      paramTroopInfo = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, paramTroopInfo.troopuin, paramTroopInfo.troopname, paramTroopInfo.cGroupOption, this.jdField_a_of_type_Int, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer, null, this.jdField_a_of_type_JavaLangString, null);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramTroopInfo);
+      this.jdField_a_of_type_Myr.b();
+      return;
+    }
+    a(2131721045, 1);
+    this.jdField_a_of_type_Myr.a();
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing()))
+      {
+        long l1 = System.currentTimeMillis();
+        long l2 = this.b;
+        if ((!paramBoolean) && (l1 - l2 < 1000L))
+        {
+          ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+          return;
+        }
+        this.jdField_a_of_type_Bepp.dismiss();
+        return;
       }
-      return j | i;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
-  public abstract String a();
+  private void b(long paramLong)
+  {
+    try
+    {
+      alzf localalzf = (alzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+      this.jdField_a_of_type_Long = paramLong;
+      localalzf.a(paramLong, 8390784);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      a(2131720539, 0);
+      this.jdField_a_of_type_Myr.a();
+    }
+  }
   
-  public abstract JSONArray a(String paramString);
+  private void c()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Bepp == null)
+      {
+        this.jdField_a_of_type_Bepp = new bepp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
+        this.jdField_a_of_type_Bepp.c(2131695088);
+        this.jdField_a_of_type_Bepp.c(false);
+        this.jdField_a_of_type_Bepp.setOnDismissListener(new myp(this));
+      }
+      this.jdField_a_of_type_Bepp.show();
+      this.b = System.currentTimeMillis();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
   
-  public abstract JSONObject a();
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amab);
+  }
   
-  public abstract boolean a();
+  public void a(long paramLong)
+  {
+    if (!bdee.d(this.jdField_a_of_type_AndroidContentContext))
+    {
+      a(2131694764, 0);
+      this.jdField_a_of_type_Myr.a();
+      return;
+    }
+    if (0L == paramLong)
+    {
+      this.jdField_a_of_type_Myr.a();
+      return;
+    }
+    this.jdField_a_of_type_Long = paramLong;
+    c();
+    b(paramLong);
+  }
   
-  public abstract String b();
-  
-  public abstract String c();
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amab);
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    a(true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myo
  * JD-Core Version:    0.7.0.1
  */

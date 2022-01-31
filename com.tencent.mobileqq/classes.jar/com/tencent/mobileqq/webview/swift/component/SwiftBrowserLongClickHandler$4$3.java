@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bcer;
-import bfpc;
+import beds;
+import bhpy;
 import com.tencent.qphone.base.util.QLog;
-import whj;
+import xwb;
 
 class SwiftBrowserLongClickHandler$4$3
   implements Runnable
@@ -15,18 +15,18 @@ class SwiftBrowserLongClickHandler$4$3
     if (QLog.isColorLevel()) {
       QLog.d("SwiftBrowserLongClickHandler", 2, "showQR Button");
     }
-    if (whj.a(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131693392);
+    if (xwb.a(this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131693493);
     }
-    if (whj.b(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131693391);
+    if (xwb.b(this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131693492);
     }
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.4.3
  * JD-Core Version:    0.7.0.1
  */

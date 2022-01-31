@@ -1,23 +1,60 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.GpsInfo4LocalImage;
+import android.graphics.Bitmap;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+import com.tencent.smtt.export.external.interfaces.WebResourceError;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-public final class bhfe
-  implements Parcelable.Creator<GpsInfo4LocalImage>
+public class bhfe
+  extends WebViewClient
 {
-  public GpsInfo4LocalImage a(Parcel paramParcel)
+  public bhfe(InnerWebView paramInnerWebView) {}
+  
+  public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean)
   {
-    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
+    QMLog.d("ProgressWebView", "doUpdateVisitedHistory " + paramString);
+    if ((InnerWebView.a(this.a) != null) && (paramString != null) && (!paramString.equals("about:blank"))) {
+      InnerWebView.a(this.a).a(new bhff(this, paramString));
+    }
+    super.doUpdateVisitedHistory(paramWebView, paramString, paramBoolean);
   }
   
-  public GpsInfo4LocalImage[] a(int paramInt)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    return null;
+    super.onPageFinished(paramWebView, paramString);
+    QMLog.d("ProgressWebView", "onPageFinished " + paramString);
+    this.a.evaluateJavascript(InnerWebView.a(this.a), new bhfg(this));
+    if ((InnerWebView.a(this.a) != null) && (paramString != null) && (!paramString.equals("about:blank"))) {
+      InnerWebView.a(this.a).a(new bhfh(this, paramString));
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    QMLog.d("ProgressWebView", "onPageStarted " + paramString);
+  }
+  
+  public void onReceivedError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
+  {
+    super.onReceivedError(paramWebView, paramWebResourceRequest, paramWebResourceError);
+    paramWebResourceRequest = paramWebView.getUrl();
+    StringBuilder localStringBuilder = new StringBuilder().append("onReceivedError ").append(paramWebResourceRequest).append("; webResourceError : ");
+    if (paramWebResourceError != null) {}
+    for (paramWebView = paramWebResourceError.getDescription() + " " + paramWebResourceError.getErrorCode();; paramWebView = null)
+    {
+      QMLog.d("ProgressWebView", paramWebView);
+      if ((InnerWebView.a(this.a) != null) && (paramWebResourceRequest != null) && (!paramWebResourceRequest.equals("about:blank"))) {
+        InnerWebView.a(this.a).a(new bhfi(this, paramWebResourceRequest));
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhfe
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.profile;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import auux;
-import bbac;
-import bbwu;
-import bbww;
+import awmj;
+import bcyw;
+import bdvv;
+import bdvx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -13,7 +13,7 @@ import java.io.File;
 public class ProfileCardCheckUpdate$2
   implements Runnable
 {
-  public ProfileCardCheckUpdate$2(auux paramauux, String paramString1, String paramString2) {}
+  public ProfileCardCheckUpdate$2(awmj paramawmj, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -23,14 +23,14 @@ public class ProfileCardCheckUpdate$2
     }
     try
     {
-      Object localObject = bbac.a(this.this$0.a.getApplication());
+      Object localObject = bcyw.a(this.this$0.a.getApplication());
       localObject = new File((String)localObject + ".tmp");
-      bbwu localbbwu = new bbwu(this.a, (File)localObject);
-      localbbwu.f = "profileCardDownload";
-      localbbwu.e = "VIP_profilecard";
-      localbbwu.a = 1;
-      localbbwu.n = true;
-      int j = bbww.a(localbbwu, this.this$0.a);
+      bdvv localbdvv = new bdvv(this.a, (File)localObject);
+      localbdvv.f = "profileCardDownload";
+      localbdvv.e = "VIP_profilecard";
+      localbdvv.a = 1;
+      localbdvv.n = true;
+      int j = bdvx.a(localbdvv, this.this$0.a);
       if (j == 0) {}
       for (;;)
       {
@@ -43,7 +43,7 @@ public class ProfileCardCheckUpdate$2
             QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "ProfileCardCheckUpdate downloadLabelConfigJson update label config  success version=" + this.b);
           }
           this.this$0.a.getPreferences().edit().putString("profileLabelVersion", this.b).commit();
-          auux.a(this.this$0, (File)localObject);
+          awmj.a(this.this$0, (File)localObject);
         }
         return;
         i = 0;
@@ -58,7 +58,7 @@ public class ProfileCardCheckUpdate$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardCheckUpdate.2
  * JD-Core Version:    0.7.0.1
  */

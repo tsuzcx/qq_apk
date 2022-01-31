@@ -1,24 +1,40 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-class wkt
-  implements View.OnClickListener
+public final class wkt
+  extends QQUIEventReceiver<wkp, uyg>
 {
-  wkt(wks paramwks, CertifiedAccountMeta.StUser paramStUser) {}
-  
-  public void onClick(View paramView)
+  public wkt(@NonNull wkp paramwkp)
   {
-    xhb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + wux.a(this.jdField_a_of_type_Wks.a()), "clk_shop", 0, 0, new String[0]);
-    wis.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
+    super(paramwkp);
+  }
+  
+  public void a(@NonNull wkp paramwkp, @NonNull uyg paramuyg)
+  {
+    wsv.a(this.TAG, "receive feature event. %s.", paramuyg.toString());
+    if ((paramuyg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuyg.jdField_a_of_type_JavaUtilList != null))
+    {
+      paramuyg = paramuyg.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramuyg.hasNext())
+      {
+        usu localusu = (usu)paramuyg.next();
+        wkp.a(paramwkp).put(localusu.a, localusu);
+      }
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uyg.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wkt
  * JD-Core Version:    0.7.0.1
  */

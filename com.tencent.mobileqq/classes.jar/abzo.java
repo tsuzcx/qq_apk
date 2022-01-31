@@ -1,25 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abzo
-  implements DialogInterface.OnDismissListener
+  implements affd
 {
-  public abzo(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public abzo(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (this.a.getActivity() != null)
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
+    }
+    Object localObject;
+    boolean bool;
+    if (ArkFullScreenAppActivity.a(this.a) != null)
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Afdt;
+      if (localObject != null)
+      {
+        if ((!((afdt)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
+          break label135;
+        }
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
+        }
+        localObject = this.a.rightViewImg;
+        if (!bool) {
+          break label140;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((ImageView)localObject).setVisibility(i);
+      return;
+      label135:
+      bool = false;
+      break;
+      label140:
+      i = 4;
     }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzo
  * JD-Core Version:    0.7.0.1
  */

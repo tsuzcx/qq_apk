@@ -1,21 +1,21 @@
 package com.tencent.biz.videostory.support;
 
-import xhc;
-import xhe;
+import yvv;
+import yvx;
 
 public class VideoStoryPicToVideo$1
   implements Runnable
 {
-  public VideoStoryPicToVideo$1(xhc paramxhc, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, xhe paramxhe) {}
+  public VideoStoryPicToVideo$1(yvv paramyvv, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, yvx paramyvx) {}
   
   public void run()
   {
-    xhc.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_c_of_type_Int, this.jdField_a_of_type_Xhe);
+    yvv.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_c_of_type_Int, this.jdField_a_of_type_Yvx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.videostory.support.VideoStoryPicToVideo.1
  * JD-Core Version:    0.7.0.1
  */

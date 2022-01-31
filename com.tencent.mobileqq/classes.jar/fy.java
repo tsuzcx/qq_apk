@@ -1,14 +1,17 @@
-import android.widget.TextView;
-
-public class fy
+class fy
+  implements aubq<Void, Void>
 {
-  public TextView a;
+  fy(fx paramfx, aloz paramaloz, String paramString) {}
   
-  public fy(fw paramfw) {}
+  public Void a(Void paramVoid)
+  {
+    this.jdField_a_of_type_Aloz.a(this.jdField_a_of_type_JavaLangString);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     fy
  * JD-Core Version:    0.7.0.1
  */

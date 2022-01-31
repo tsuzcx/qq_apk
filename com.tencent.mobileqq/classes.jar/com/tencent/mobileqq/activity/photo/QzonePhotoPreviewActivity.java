@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.photo;
 
 import NS_MOBILE_OPERATION.PicInfo;
-import agpd;
-import agpe;
-import agpf;
-import agpg;
+import aikd;
+import aike;
+import aikf;
+import aikg;
 import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.graphics.Shader.TileMode;
@@ -16,8 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bbbx;
-import bbll;
+import bdar;
+import bdkf;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.widget.ListView;
 import cooperation.qzone.widget.LocalPhotoLinearGradientView;
@@ -28,14 +29,14 @@ public class QzonePhotoPreviewActivity
   extends PublicBaseFragment
 {
   public int a;
-  protected agpg a;
+  protected aikg a;
   protected TextView a;
   public ListView a;
   protected LocalPhotoLinearGradientView a;
   public ArrayList<String> a;
   protected HashMap<String, PicInfo> a;
   private boolean a;
-  public ArrayList<agpf> b;
+  public ArrayList<aikf> b;
   protected HashMap<String, LocalMediaInfo> b;
   
   public QzonePhotoPreviewActivity()
@@ -50,15 +51,15 @@ public class QzonePhotoPreviewActivity
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_CooperationQzoneWidgetLocalPhotoLinearGradientView = ((LocalPhotoLinearGradientView)paramView.findViewById(2131374627));
-    LinearGradient localLinearGradient = new LinearGradient(0.0F, bbll.a(79.0F), 0.0F, 0.0F, -14869219, 0, Shader.TileMode.CLAMP);
+    this.jdField_a_of_type_CooperationQzoneWidgetLocalPhotoLinearGradientView = ((LocalPhotoLinearGradientView)paramView.findViewById(2131375085));
+    LinearGradient localLinearGradient = new LinearGradient(0.0F, bdkf.a(79.0F), 0.0F, 0.0F, -14869219, 0, Shader.TileMode.CLAMP);
     this.jdField_a_of_type_CooperationQzoneWidgetLocalPhotoLinearGradientView.setShader(localLinearGradient);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramView.findViewById(2131374628));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374626));
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(new agpd(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new agpe(this));
-    this.jdField_a_of_type_Agpg = new agpg(this, getActivity());
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Agpg);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramView.findViewById(2131375086));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375084));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(new aikd(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aike(this));
+    this.jdField_a_of_type_Aikg = new aikg(this, getActivity());
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Aikg);
   }
   
   private void b()
@@ -82,7 +83,7 @@ public class QzonePhotoPreviewActivity
       {
         localObject = (PicInfo)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaUtilArrayList.get(i));
         if ((localObject != null) && (((PicInfo)localObject).picwidth > 0)) {
-          this.jdField_b_of_type_JavaUtilArrayList.add(new agpf(this, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (float)(((PicInfo)localObject).picheight * 1.0D / ((PicInfo)localObject).picwidth)));
+          this.jdField_b_of_type_JavaUtilArrayList.add(new aikf(this, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (float)(((PicInfo)localObject).picheight * 1.0D / ((PicInfo)localObject).picwidth)));
         }
       }
       int j;
@@ -96,7 +97,7 @@ public class QzonePhotoPreviewActivity
       }
       for (int k = ((LocalMediaInfo)localObject).mediaHeight;; k = ((LocalMediaInfo)localObject).mediaWidth)
       {
-        this.jdField_b_of_type_JavaUtilArrayList.add(new agpf(this, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (float)(j * 1.0D / k)));
+        this.jdField_b_of_type_JavaUtilArrayList.add(new aikf(this, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (float)(j * 1.0D / k)));
         i += 1;
         break;
         label256:
@@ -108,7 +109,7 @@ public class QzonePhotoPreviewActivity
   public void a()
   {
     Intent localIntent = a();
-    localIntent.setClass(getActivity(), PhotoListActivity.class);
+    localIntent.setClass(getActivity(), NewPhotoListActivity.class);
     startActivity(localIntent);
     getActivity().finish();
   }
@@ -120,7 +121,7 @@ public class QzonePhotoPreviewActivity
       if (this.jdField_a_of_type_Boolean)
       {
         getActivity().finish();
-        bbbx.a(getActivity(), true, false);
+        bdar.anim(getActivity(), true, false);
         return true;
       }
       a();
@@ -136,7 +137,7 @@ public class QzonePhotoPreviewActivity
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131562054, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131562246, null);
     getActivity().getWindow().addFlags(1024);
     return paramLayoutInflater;
   }
@@ -150,7 +151,7 @@ public class QzonePhotoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

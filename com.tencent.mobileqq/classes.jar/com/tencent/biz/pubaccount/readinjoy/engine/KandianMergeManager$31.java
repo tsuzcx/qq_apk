@@ -1,6 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import bhvy;
+import java.util.Iterator;
+import java.util.List;
+import owr;
 
 class KandianMergeManager$31
   implements Runnable
@@ -9,12 +11,18 @@ class KandianMergeManager$31
   
   public void run()
   {
-    bhvy.n(KandianMergeManager.a(this.this$0), true);
+    if (KandianMergeManager.a(this.this$0) != null)
+    {
+      Iterator localIterator = KandianMergeManager.a(this.this$0).iterator();
+      while (localIterator.hasNext()) {
+        ((owr)localIterator.next()).b();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.31
  * JD-Core Version:    0.7.0.1
  */

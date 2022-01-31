@@ -1,26 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class ogx
-  extends ogz
+  implements ViewBase.IBuilder
 {
-  public ogx(ReadInJoyCommentListView paramReadInJoyCommentListView) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public ViewBase build(VafContext paramVafContext)
   {
-    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    super.onScrollStateChanged(paramAbsListView, paramInt);
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
+    return new ogw(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
 
-public class qfy
-  implements View.OnTouchListener
+class qfy
+  extends oxe
 {
-  public qfy(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  private qfy(qfw paramqfw) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    ReadInJoyUgcSearchTopicFragment.a(this.a);
-    return false;
+    if ((paramBoolean) && (qfw.a(this.a) != null) && (qfw.a(this.a).getVisibility() == 0))
+    {
+      qfw.a(this.a, new qhj(qfw.a(this.a).getContext()));
+      qfw.a(this.a).a(paramString);
+      qfw.a(this.a).a(RIJRedPacketManager.a().d());
+      qfw.a(this.a).showAsDropDown(qfw.a(this.a), 0, bdkf.a(6.0F));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qfy
  * JD-Core Version:    0.7.0.1
  */

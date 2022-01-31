@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class ayeh
-  implements DialogInterface.OnClickListener
+class ayeh
+  implements bhqf
 {
-  ayeh(bbgu parambbgu) {}
+  ayeh(ayef paramayef, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", ayee.a(this.jdField_a_of_type_Ayef.a), 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayeh
  * JD-Core Version:    0.7.0.1
  */

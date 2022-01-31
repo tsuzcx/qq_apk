@@ -16,8 +16,6 @@ import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.facedetect.FaceStatus;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.model.StickerItem;
@@ -28,7 +26,6 @@ public class HairSticker
   private static final String FRAGMENT_SHADER = "precision highp float;\nvarying vec2 canvasCoordinate;\nvarying vec2 maskYYCoordinate;\nvarying vec2 stickerCoordinate;\n\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTextureSticker;\nuniform sampler2D inputImageTextureMask;\nuniform sampler2D inputImageTextureYY;\n\nuniform float isBlack; \nfloat maskYY = 1.0;\n\nuniform int blendMode;\n\nvec4 blendColor(vec4 texColor, vec4 canvasColor)\n {\n     vec3 vOne = vec3(1.0, 1.0, 1.0);\n     vec3 vZero = vec3(0.0, 0.0, 0.0);\n     //revert pre multiply\n     if(texColor.a > 0.0){\n        texColor.rgb = texColor.rgb / texColor.a;\n     }\n     vec3 resultFore = texColor.rgb;\n     if (blendMode <= 1 || blendMode > 12){ //default, since used most, put on top\n\n     } else if (blendMode == 2) {  //multiply\n         resultFore = canvasColor.rgb * texColor.rgb;\n     } else if (blendMode == 3){    //screen\n         resultFore = vOne - (vOne - canvasColor.rgb) * (vOne - texColor.rgb);\n     } else if (blendMode == 4){    //overlay\n         resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n         if (canvasColor.r >= 0.5) {\n             resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n         }\n         if (canvasColor.g >= 0.5) {\n             resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n         }\n         if (canvasColor.b >= 0.5) {\n             resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n         }\n     } else if (blendMode == 5){    //hardlight\n         resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n         if (texColor.r >= 0.5) {\n             resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n         }\n         if (texColor.g >= 0.5) {\n             resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n         }\n         if (texColor.b >= 0.5) {\n             resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n         }\n     } else if (blendMode == 6){    //softlight\n         resultFore = 2.0 * canvasColor.rgb * texColor.rgb + canvasColor.rgb * canvasColor.rgb * (vOne - 2.0 * texColor.rgb);\n         if (texColor.r >= 0.5) {\n             resultFore.r = 2.0 * canvasColor.r * (1.0 - texColor.r) + (2.0 * texColor.r - 1.0) * sqrt(canvasColor.r);\n         }\n         if (texColor.g >= 0.5) {\n             resultFore.g = 2.0 * canvasColor.g * (1.0 - texColor.g) + (2.0 * texColor.g - 1.0) * sqrt(canvasColor.g);\n         }\n         if (texColor.b >= 0.5) {\n             resultFore.b = 2.0 * canvasColor.b * (1.0 - texColor.b) + (2.0 * texColor.b - 1.0) * sqrt(canvasColor.b);\n         }\n     } else if (blendMode == 7){    //divide\n         resultFore = vOne;\n         if (texColor.r > 0.0) {\n             resultFore.r = canvasColor.r / texColor.r;\n         }\n         if (texColor.g > 0.0) {\n             resultFore.g = canvasColor.g / texColor.g;\n         }\n         if (texColor.b > 0.0) {\n             resultFore.b = canvasColor.b / texColor.b;\n         }\n         resultFore = min(vOne, resultFore);\n     } else if (blendMode == 8){    //add\n         resultFore = canvasColor.rgb + texColor.rgb;\n         resultFore = min(vOne, resultFore);\n     } else if (blendMode == 9){    //substract\n         resultFore = canvasColor.rgb - texColor.rgb;\n         resultFore = max(vZero, resultFore);\n     } else if (blendMode == 10){   //diff\n         resultFore = abs(canvasColor.rgb - texColor.rgb);\n     } else if (blendMode == 11){   //darken\n         resultFore = min(canvasColor.rgb, texColor.rgb);\n     } else if (blendMode == 12){   //lighten\n         resultFore = max(canvasColor.rgb, texColor.rgb);\n     }\n     //pre multiply for glBlendFunc\n     vec4 resultColor = vec4(resultFore * texColor.a, texColor.a);\n\n     resultColor = vec4(resultColor.rgb * 1.0 + canvasColor.rgb * (1.0 - resultColor.a), 1.0);\n\n     return resultColor;\n }\n\nvoid main() {\n  vec4 canvasColor = texture2D(inputImageTexture, canvasCoordinate);\n  vec4 newColor = canvasColor;\n  float maskColor = texture2D(inputImageTextureMask, canvasCoordinate).r;\n  \n  if (isBlack < 0.5) {\n    maskYY = texture2D(inputImageTextureYY, maskYYCoordinate).r;\n  } else if (isBlack < 1.5) {\n    maskYY = 1.0 - texture2D(inputImageTextureYY, maskYYCoordinate).r;\n  }\n  \n  \n  \n  if (maskColor > 0.001 && maskYY > 0.001) {\n    vec4 texColor = texture2D(inputImageTextureSticker, stickerCoordinate);\n    newColor = mix(newColor, blendColor(texColor, canvasColor), maskColor * maskYY);\n  }\n\n  gl_FragColor = newColor;\n}\n";
   private static final String VERTEX_SHADER = "attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nattribute vec2 inputGrayTextureCoordinate;\nvarying vec2 canvasCoordinate;\nvarying vec2 maskYYCoordinate;\nvarying vec2 stickerCoordinate;\n\nvoid main(){\n    vec4 framePos = position;\n\n    gl_Position = framePos;\n    canvasCoordinate = vec2(framePos.x * 0.5 + 0.5, framePos.y * 0.5 + 0.5);\n    stickerCoordinate = inputTextureCoordinate;\n    maskYYCoordinate = inputGrayTextureCoordinate;\n}";
   private float YYtype;
-  private boolean isCurTrigged = true;
   private boolean isStickerReady = false;
   private boolean isYYLegal = true;
   private StickerItem item;
@@ -36,7 +33,6 @@ public class HairSticker
   private VideoFilterBase mCopyFilter = new VideoFilterBase(BaseFilter.getFragmentShader(0));
   private String maskYYPath;
   private int[] texture = new int[1];
-  private TriggerCtrlItem triggerCtrlItem;
   
   public HairSticker(StickerItem paramStickerItem, String paramString, float paramFloat)
   {
@@ -44,7 +40,6 @@ public class HairSticker
     this.item = paramStickerItem;
     this.maskYYPath = paramString;
     this.YYtype = paramFloat;
-    this.triggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
     initParams();
   }
   
@@ -73,6 +68,14 @@ public class HairSticker
   public StickerItem getItem()
   {
     return this.item;
+  }
+  
+  public String getItemID()
+  {
+    if (this.item != null) {
+      return this.item.id;
+    }
+    return null;
   }
   
   public int getNextFrame(int paramInt)
@@ -139,7 +142,7 @@ public class HairSticker
   
   public Frame render(Frame paramFrame, PointF[] paramArrayOfPointF1, PointF[] paramArrayOfPointF2, float[] paramArrayOfFloat, int paramInt)
   {
-    if ((this.isCurTrigged) && (this.isStickerReady) && (getYYLegal()))
+    if ((this.isStickerReady) && (getYYLegal()))
     {
       setMask(paramInt);
       Frame localFrame = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
@@ -156,38 +159,30 @@ public class HairSticker
     addParam(new UniformParam.TextureParam("inputImageTextureMask", paramInt, 33987));
   }
   
-  public void updatePreview(PTDetectInfo paramPTDetectInfo, int paramInt)
+  public void stopRender()
   {
-    this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
-    if ((isInCurPart(paramInt)) && (this.triggerCtrlItem.isTriggered()) && ((this.item.genderType == 0) || (this.item.genderType == paramPTDetectInfo.faceStatus.gender))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isCurTrigged = bool;
-      if (this.isCurTrigged) {
-        break;
-      }
-      this.lastIndex = -1;
-      return;
-    }
-    updateTextureParams(paramPTDetectInfo.timestamp);
+    this.lastIndex = -1;
   }
   
-  public void updateTextureParams(long paramLong)
+  public void updatePreview(PTDetectInfo paramPTDetectInfo, int paramInt1, int paramInt2)
   {
-    this.triggerCtrlItem.updateFrameIndex(paramLong);
-    int i = this.triggerCtrlItem.getFrameIndex();
-    if (i == this.lastIndex) {
+    updateTextureParams(paramInt2);
+  }
+  
+  public void updateTextureParams(int paramInt)
+  {
+    if (paramInt == this.lastIndex) {
       return;
     }
-    int j = getNextFrame(i);
-    if (j <= 0)
+    int i = getNextFrame(paramInt);
+    if (i <= 0)
     {
       this.isStickerReady = false;
       return;
     }
     this.isStickerReady = true;
-    addParam(new UniformParam.TextureParam("inputImageTextureSticker", j, 33986));
-    this.lastIndex = i;
+    addParam(new UniformParam.TextureParam("inputImageTextureSticker", i, 33986));
+    this.lastIndex = paramInt;
   }
 }
 

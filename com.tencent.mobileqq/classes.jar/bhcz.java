@@ -1,20 +1,21 @@
-import android.view.animation.Animation;
-import cooperation.qzone.contentbox.PlusMenuContainer;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
 
-public class bhcz
-  extends bfmx
+class bhcz
+  implements BaselibLoader.OnLoadBaselibListener
 {
-  public bhcz(PlusMenuContainer paramPlusMenuContainer) {}
+  bhcz(bhcw parambhcw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
   {
-    this.a.setVisibility(4);
-    PlusMenuContainer.a(this.a, false);
+    if ((paramInt == 0) && (paramBaselibContent != null)) {
+      this.a.a(paramBaselibContent.waServiceJsStr, paramBaselibContent.waServicePath);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhcz
  * JD-Core Version:    0.7.0.1
  */

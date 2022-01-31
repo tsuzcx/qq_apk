@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troopinfo;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bbbr;
+import bdal;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.List;
-import naj;
+import ndd;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupExInfoOnly;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupGeoInfo;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
@@ -338,8 +338,8 @@ public class TroopInfoData
       this.mRichFingerMemo = "";
       break label696;
       label1030:
-      this.mRichFingerMemo = naj.c(this.mRichFingerMemo);
-      this.mRichFingerMemo = naj.b(this.mRichFingerMemo);
+      this.mRichFingerMemo = ndd.c(this.mRichFingerMemo);
+      this.mRichFingerMemo = ndd.b(this.mRichFingerMemo);
       break label714;
       label1055:
       QLog.e("TroopInfoData", 1, "string_long_group_name is empty");
@@ -608,15 +608,15 @@ public class TroopInfoData
       if ((!TroopInfo.hasPayPrivilege(paramTroopInfo.troopPrivilegeFlag, 128)) || (!TroopInfo.hasPayPrivilege(paramTroopInfo.troopPrivilegeFlag, 512))) {
         break label649;
       }
-      this.troopAuthen = paramResources.getString(2131720499);
+      this.troopAuthen = paramResources.getString(2131721038);
       i = 6;
-      if (!bbbr.a(this.troopowneruin, paramTroopInfo.troopowneruin))
+      if (!bdal.a(this.troopowneruin, paramTroopInfo.troopowneruin))
       {
         this.troopowneruin = paramTroopInfo.troopowneruin;
         this.troopOwnerNick = null;
         updateOwnerFlag(paramString);
       }
-      if (!bbbr.a(this.Administrator, paramTroopInfo.Administrator))
+      if (!bdal.a(this.Administrator, paramTroopInfo.Administrator))
       {
         this.Administrator = paramTroopInfo.Administrator;
         updateAdminFlag(paramString);
@@ -638,7 +638,7 @@ public class TroopInfoData
       if (i != 3) {
         break label807;
       }
-      this.inviteModeDescription = paramResources.getString(2131696787);
+      this.inviteModeDescription = paramResources.getString(2131696962);
       this.inviteMode = 4;
       label497:
       if (paramTroopInfo.cAlbumResult != 33) {
@@ -670,7 +670,7 @@ public class TroopInfoData
       return;
       if (paramTroopInfo.isOnlyTroopMemberInviteOption())
       {
-        this.troopAuthen = paramResources.getString(2131720490);
+        this.troopAuthen = paramResources.getString(2131721029);
         this.dwGroupFlagExt |= 0x80;
         break;
       }
@@ -680,25 +680,25 @@ public class TroopInfoData
       default: 
         break;
       case 1: 
-        this.troopAuthen = paramResources.getString(2131720491);
+        this.troopAuthen = paramResources.getString(2131721030);
         break;
       case 2: 
-        this.troopAuthen = paramResources.getString(2131720496);
+        this.troopAuthen = paramResources.getString(2131721035);
         break;
       case 4: 
-        this.troopAuthen = paramResources.getString(2131720493);
+        this.troopAuthen = paramResources.getString(2131721032);
         break;
       case 5: 
-        this.troopAuthen = paramResources.getString(2131720492);
+        this.troopAuthen = paramResources.getString(2131721031);
         break;
       case 3: 
-        this.troopAuthen = paramResources.getString(2131720498);
+        this.troopAuthen = paramResources.getString(2131721037);
         break;
         j = 0;
         break label475;
         if (i == 1)
         {
-          this.inviteModeDescription = paramResources.getString(2131696784);
+          this.inviteModeDescription = paramResources.getString(2131696959);
           this.inviteMode = 5;
           break label497;
         }
@@ -706,7 +706,7 @@ public class TroopInfoData
         {
           if (i == 6)
           {
-            this.inviteModeDescription = paramResources.getString(2131696783);
+            this.inviteModeDescription = paramResources.getString(2131696958);
             this.inviteMode = 6;
             break label497;
           }
@@ -735,10 +735,10 @@ public class TroopInfoData
             break label497;
           }
           this.inviteMode = 8;
-          this.inviteModeDescription = paramResources.getString(2131696786);
+          this.inviteModeDescription = paramResources.getString(2131696961);
           break label497;
         }
-        this.inviteModeDescription = paramResources.getString(2131696788);
+        this.inviteModeDescription = paramResources.getString(2131696963);
         this.inviteMode = 1;
         break label497;
       }
@@ -778,13 +778,13 @@ public class TroopInfoData
       this.hasSetNewTroopHead = paramTroopInfo.hasSetNewTroopHead;
       this.hasSetNewTroopName = paramTroopInfo.hasSetNewTroopName;
       this.isUseClassAvatar = paramTroopInfo.isUseClassAvatar();
-      if ((!QLog.isColorLevel()) || (!bbbr.a(this.troopowneruin, paramTroopInfo.troopowneruin)))
+      if ((!QLog.isColorLevel()) || (!bdal.a(this.troopowneruin, paramTroopInfo.troopowneruin)))
       {
         this.troopowneruin = paramTroopInfo.troopowneruin;
         this.troopOwnerNick = null;
         updateOwnerFlag(paramString);
       }
-      if (!bbbr.a(this.Administrator, paramTroopInfo.Administrator))
+      if (!bdal.a(this.Administrator, paramTroopInfo.Administrator))
       {
         this.Administrator = paramTroopInfo.Administrator;
         updateAdminFlag(paramString);
@@ -823,7 +823,7 @@ public class TroopInfoData
   
   public void updateOwnerFlag(String paramString)
   {
-    this.bOwner = bbbr.a(paramString, this.troopowneruin);
+    this.bOwner = bdal.a(paramString, this.troopowneruin);
   }
   
   public void updateTroopAdmMemberNum(String paramString1, int paramInt, String paramString2, Resources paramResources)
@@ -843,7 +843,7 @@ public class TroopInfoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopinfo.TroopInfoData
  * JD-Core Version:    0.7.0.1
  */

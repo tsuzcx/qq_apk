@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.widget.media;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.util.Log;
-import axhq;
-import baxi;
+import azcw;
+import bcwc;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.qphone.base.util.QLog;
@@ -44,7 +44,7 @@ class MiniAppCamera$2$1
       this.this$1.val$callback.onGetPhoto(null);
       return;
     }
-    localObject2 = baxi.a(this.val$data, 0, this.val$data.length);
+    localObject2 = bcwc.a(this.val$data, 0, this.val$data.length);
     i = ((Bitmap)localObject2).getWidth();
     j = ((Bitmap)localObject2).getHeight();
     localObject3 = new Matrix();
@@ -52,7 +52,7 @@ class MiniAppCamera$2$1
     float f4;
     float f2;
     float f5;
-    if (axhq.d(axhq.g))
+    if (azcw.d(azcw.g))
     {
       if (!this.this$1.this$0.isBackCameraNow) {
         break label682;
@@ -153,7 +153,7 @@ class MiniAppCamera$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppCamera.2.1
  * JD-Core Version:    0.7.0.1
  */

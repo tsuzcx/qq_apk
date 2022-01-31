@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-
 public class abqv
-  implements View.OnClickListener
+  extends abqt
 {
-  public abqv(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
-  
-  public void onClick(View paramView)
+  public String getDescription()
   {
-    bbpo.a(this.a, "settings");
+    return "资料卡背景";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,55 @@
-public abstract class bkzw
-  extends blac
+import android.text.InputFilter;
+import android.text.Spanned;
+
+class bkzw
+  implements InputFilter
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  private int jdField_a_of_type_Int = 32;
   
-  public bkzw()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-  }
+  public bkzw(bkzl parambkzl) {}
   
-  public String a()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    return null;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      a("ShortVideoBaseInfo.check", "reqBusiType invalid, reqBusiType:" + this.jdField_a_of_type_Int);
-      return false;
+    if (paramCharSequence.equals("\n")) {
+      return "";
     }
-    if (this.jdField_b_of_type_Int == -1)
+    for (;;)
     {
-      a("ShortVideoBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
-      return false;
+      char c;
+      if ((paramInt1 <= this.jdField_a_of_type_Int) && (paramInt2 < paramSpanned.length()))
+      {
+        c = paramSpanned.charAt(paramInt2);
+        paramInt1 += bkzl.a(this.jdField_a_of_type_Bkzl, c);
+        paramInt2 += 1;
+      }
+      else
+      {
+        if (paramInt1 > this.jdField_a_of_type_Int) {
+          return paramSpanned.subSequence(0, paramInt2 - 1);
+        }
+        paramInt3 = 0;
+        paramInt2 = paramInt1;
+        paramInt1 = paramInt3;
+        while ((paramInt2 <= this.jdField_a_of_type_Int) && (paramInt1 < paramCharSequence.length()))
+        {
+          c = paramCharSequence.charAt(paramInt1);
+          paramInt2 = bkzl.a(this.jdField_a_of_type_Bkzl, c) + paramInt2;
+          paramInt1 += 1;
+        }
+        paramInt3 = paramInt1;
+        if (paramInt2 > this.jdField_a_of_type_Int) {
+          paramInt3 = paramInt1 - 1;
+        }
+        return paramCharSequence.subSequence(0, paramInt3);
+        paramInt1 = 0;
+        paramInt2 = 0;
+      }
     }
-    if (this.c == null)
-    {
-      a("ShortVideoBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
-      return false;
-    }
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nShortVideoBaseInfo");
-    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("reqBusiType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
-    localStringBuilder.append("\n |-").append("secondId:").append(this.d);
-    localStringBuilder.append("\n |-").append("md5:").append(this.e);
-    localStringBuilder.append("\n |-").append("thumbMD5:").append(this.g);
-    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_Aunr);
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkzw
  * JD-Core Version:    0.7.0.1
  */

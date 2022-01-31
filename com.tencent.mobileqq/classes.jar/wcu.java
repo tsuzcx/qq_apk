@@ -1,23 +1,26 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
 
 public class wcu
-  implements View.OnLongClickListener
+  implements best
 {
-  public wcu(InnerListView paramInnerListView, int paramInt) {}
+  public wcu(QQStoryMainController paramQQStoryMainController) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      return InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
+    if (paramInt == 1) {
+      this.a.jdField_a_of_type_Wcw.a();
     }
-    return false;
+    while (paramInt != 7) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcu
  * JD-Core Version:    0.7.0.1
  */

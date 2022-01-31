@@ -1,32 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import androidx.annotation.NonNull;
+import com.tencent.biz.qqcircle.widgets.QCirclePersonInfoAndStatusWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class ubl
-  extends ubs<StoryVideoItem>
+  extends ClickableSpan
 {
-  public ubl(VideoViewVideoHolder paramVideoViewVideoHolder)
+  public ubl(QCirclePersonInfoAndStatusWidget paramQCirclePersonInfoAndStatusWidget, int paramInt) {}
+  
+  public void onClick(@NonNull View paramView)
   {
-    super(paramVideoViewVideoHolder, null);
+    QLog.d(QCirclePersonInfoAndStatusWidget.a(), 1, "addClickReport click location" + this.jdField_a_of_type_Int);
+    tyj.a(QCirclePersonInfoAndStatusWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget).id.get(), 11, 6L, this.jdField_a_of_type_Int);
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    ved.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePersonInfoAndStatusWidget.getResources().getColor(2131165307));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubl
  * JD-Core Version:    0.7.0.1
  */

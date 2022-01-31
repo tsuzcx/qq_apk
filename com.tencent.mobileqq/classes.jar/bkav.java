@@ -1,18 +1,40 @@
-import android.graphics.Bitmap;
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.4;
 
 public class bkav
-  extends bkbk
+  implements ModuleDownloadListener
 {
-  public bkav(bkau parambkau, String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
+  public bkav(VipARUtils.4 param4) {}
+  
+  public void onDownloadCanceled(String paramString)
   {
-    super(parambkau, paramArrayOfString, paramBitmap, paramPointF, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramBoolean);
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("libTar.so")) {
+      return;
+    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkar.c(), " onDownloadSucceed = ", bkar.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bkar.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkav
  * JD-Core Version:    0.7.0.1
  */

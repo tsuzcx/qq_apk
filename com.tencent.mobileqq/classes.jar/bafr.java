@@ -1,330 +1,219 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0xe0a.cmd0xe0a.App;
-import tencent.im.oidb.cmd0xe0a.cmd0xe0a.ClientInfo;
-import tencent.im.oidb.cmd0xe0a.cmd0xe0a.ReqBody;
-import tencent.im.oidb.cmd0xe0a.cmd0xe0a.RspBody;
-import tencent.im.oidb.cmd0xe0e.Oidb_0xe0e.ReqBody;
-import tencent.im.oidb.cmd0xe0e.Oidb_0xe0e.RspBody;
-import tencent.im.oidb.oidb_0x8c9.oidb_0x8c9.ReqBody;
-import tencent.im.oidb.oidb_0x8c9.oidb_0x8c9.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.Set;
 
 public class bafr
-  extends ajtb
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public bafr(QQAppInterface paramQQAppInterface)
+  public static int a;
+  public static int b;
+  Context jdField_a_of_type_AndroidContentContext;
+  protected View.OnClickListener a;
+  final List<GroupPadTemplateInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private Set<String> b;
+  
+  static
   {
-    super(paramQQAppInterface);
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 2;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public bafr(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    cmd0xe0a.RspBody localRspBody = new cmd0xe0a.RspBody();
-    long l = ((Long)paramToServiceMsg.getAttribute("troopcode", Long.valueOf(0L))).longValue();
-    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    if (i == 0)
+    this.jdField_b_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a(AsyncImageView paramAsyncImageView, GroupPadTemplateInfo paramGroupPadTemplateInfo)
+  {
+    if (paramGroupPadTemplateInfo != null)
     {
-      int j = localRspBody.cache_ts.get();
-      int k = localRspBody.disabled.get();
-      int m = localRspBody.group_disabled.get();
-      int n = localRspBody.redpoint_cache_ts.get();
-      paramToServiceMsg = new ArrayList();
-      paramFromServiceMsg = localRspBody.app.get().iterator();
-      while (paramFromServiceMsg.hasNext()) {
-        paramToServiceMsg.add(bafo.a((cmd0xe0a.App)paramFromServiceMsg.next()));
+      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840071);
+      if (!bhos.a(paramGroupPadTemplateInfo.mobThumbUrl)) {
+        paramAsyncImageView.setImageDrawable(localDrawable);
       }
-      paramToServiceMsg = new bafs(l, j, k, m, n, paramToServiceMsg);
-      ((baft)this.app.getManager(355)).a(Long.valueOf(l), paramToServiceMsg);
-    }
-    if (i == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      notifyUI(2, bool, new Object[] { Long.valueOf(l) });
-      return;
-    }
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    cmd0xe0a.RspBody localRspBody = new cmd0xe0a.RspBody();
-    long l = ((Long)paramToServiceMsg.getAttribute("troopcode", Long.valueOf(0L))).longValue();
-    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    if (i == 0)
-    {
-      int j = localRspBody.cache_ts.get();
-      int k = localRspBody.disabled.get();
-      int m = localRspBody.group_disabled.get();
-      int n = localRspBody.redpoint_cache_ts.get();
-      paramToServiceMsg = new ArrayList();
-      paramFromServiceMsg = localRspBody.app.get().iterator();
-      while (paramFromServiceMsg.hasNext()) {
-        paramToServiceMsg.add(bafo.a((cmd0xe0a.App)paramFromServiceMsg.next()));
-      }
-      paramToServiceMsg = new bafs(l, j, k, m, n, paramToServiceMsg);
-      ((baft)this.app.getManager(355)).b(Long.valueOf(l), paramToServiceMsg);
-    }
-    if (i == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      notifyUI(1, bool, new Object[] { Long.valueOf(l) });
-      return;
-    }
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Oidb_0xe0e.RspBody localRspBody = new Oidb_0xe0e.RspBody();
-    long l1 = ((Long)paramToServiceMsg.getAttribute("troopcode", Long.valueOf(0L))).longValue();
-    long l2 = ((Long)paramToServiceMsg.getAttribute("appid", Long.valueOf(0L))).longValue();
-    int i = ((Integer)paramToServiceMsg.getAttribute("disabled", Integer.valueOf(0))).intValue();
-    int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    if (j == 0) {
-      ((baft)this.app.getManager(355)).a(l1, l2, i);
-    }
-    if (j == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      notifyUI(3, bool, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i) });
-      return;
-    }
-  }
-  
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Oidb_0xe0e.RspBody localRspBody = new Oidb_0xe0e.RspBody();
-    long l = ((Long)paramToServiceMsg.getAttribute("troopcode", Long.valueOf(0L))).longValue();
-    int i = ((Integer)paramToServiceMsg.getAttribute("disabled", Integer.valueOf(0))).intValue();
-    int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    if (j == 0) {
-      ((baft)this.app.getManager(355)).a(l, i);
-    }
-    if (j == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      notifyUI(4, bool, new Object[] { Long.valueOf(l), Integer.valueOf(i) });
-      return;
-    }
-  }
-  
-  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    long l = ((Long)paramToServiceMsg.getAttribute("troopcode", Long.valueOf(0L))).longValue();
-    if (paramFromServiceMsg.getResultCode() == 1000) {}
-    for (;;)
-    {
-      try
+      for (;;)
       {
-        paramToServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
-        if ((paramToServiceMsg == null) || (!paramToServiceMsg.bytes_bodybuffer.has()) || (paramToServiceMsg.bytes_bodybuffer.get() == null)) {
-          break label188;
-        }
-        paramToServiceMsg = paramToServiceMsg.bytes_bodybuffer.get().toByteArray();
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        notifyUI(5, false, new Object[] { Long.valueOf(l) });
         return;
-      }
-      try
-      {
-        paramFromServiceMsg = new oidb_0x8c9.RspBody();
-        paramFromServiceMsg.mergeFrom(paramToServiceMsg);
-        if (!paramFromServiceMsg.rpt_group_app_unread_info.has()) {
-          break label188;
-        }
-        paramToServiceMsg = paramFromServiceMsg.rpt_group_app_unread_info.get();
-        ((baft)this.app.getManager(355)).a(Long.valueOf(l), paramToServiceMsg);
-        bool = true;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        bool = false;
-        continue;
-      }
-      notifyUI(5, bool, new Object[] { Long.valueOf(l) });
-      return;
-      label188:
-      boolean bool = false;
-    }
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    Object localObject = new cmd0xe0a.ReqBody();
-    ((cmd0xe0a.ReqBody)localObject).group_id.set(paramLong);
-    ((cmd0xe0a.ReqBody)localObject).group_type.set(paramInt);
-    cmd0xe0a.ClientInfo localClientInfo = new cmd0xe0a.ClientInfo();
-    localClientInfo.platform.set(2);
-    localClientInfo.version.set("8.3.0");
-    ((cmd0xe0a.ReqBody)localObject).client.set(localClientInfo);
-    localObject = makeOIDBPkg("OidbSvc.0xe0a_1", 3594, 1, ((cmd0xe0a.ReqBody)localObject).toByteArray(), 30000L);
-    ((ToServiceMsg)localObject).addAttribute("troopcode", Long.valueOf(paramLong));
-    ((ToServiceMsg)localObject).addAttribute("trooptype", Integer.valueOf(paramInt));
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    Object localObject2 = ((baft)this.app.getManager(355)).b(Long.valueOf(paramLong1));
-    if (localObject2 == null) {
-      return;
-    }
-    int i = ((bafs)localObject2).a();
-    Object localObject1 = new Oidb_0xe0e.ReqBody();
-    ((Oidb_0xe0e.ReqBody)localObject1).group_id.set(paramLong1);
-    ((Oidb_0xe0e.ReqBody)localObject1).disabled.set(i);
-    Object localObject3 = ((bafs)localObject2).a();
-    localObject2 = new ArrayList();
-    localObject3 = ((ArrayList)localObject3).iterator();
-    while (((Iterator)localObject3).hasNext())
-    {
-      bafo localbafo = (bafo)((Iterator)localObject3).next();
-      if ((localbafo.a() == 1) && (localbafo.a() != paramLong2)) {
-        ((ArrayList)localObject2).add(Long.valueOf(localbafo.a()));
-      }
-    }
-    if (paramInt == 1) {
-      ((ArrayList)localObject2).add(Long.valueOf(paramLong2));
-    }
-    ((Oidb_0xe0e.ReqBody)localObject1).disabled_appids.set((List)localObject2);
-    localObject1 = makeOIDBPkg("OidbSvc.Oxe0e_1", 3598, 0, ((Oidb_0xe0e.ReqBody)localObject1).toByteArray(), 30000L);
-    ((ToServiceMsg)localObject1).addAttribute("troopcode", Long.valueOf(paramLong1));
-    ((ToServiceMsg)localObject1).addAttribute("appid", Long.valueOf(paramLong2));
-    ((ToServiceMsg)localObject1).addAttribute("disabled", Integer.valueOf(paramInt));
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  public void a(Long paramLong, List<Long> paramList)
-  {
-    long l = Long.valueOf(this.app.getCurrentAccountUin()).longValue();
-    Object localObject = new oidb_0x8c9.ReqBody();
-    ((oidb_0x8c9.ReqBody)localObject).opt_uint64_from_uin.set(l);
-    ((oidb_0x8c9.ReqBody)localObject).opt_uint64_group_code.set(paramLong.longValue());
-    ((oidb_0x8c9.ReqBody)localObject).rpt_uint64_appid.set(paramList);
-    paramList = new oidb_sso.OIDBSSOPkg();
-    paramList.uint32_command.set(2249);
-    paramList.uint32_service_type.set(2);
-    paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x8c9.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0x8c9_2.GetPoint");
-    ((ToServiceMsg)localObject).addAttribute("troopcode", paramLong);
-    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void b(long paramLong, int paramInt)
-  {
-    Object localObject = new cmd0xe0a.ReqBody();
-    ((cmd0xe0a.ReqBody)localObject).group_id.set(paramLong);
-    ((cmd0xe0a.ReqBody)localObject).group_type.set(paramInt);
-    cmd0xe0a.ClientInfo localClientInfo = new cmd0xe0a.ClientInfo();
-    localClientInfo.platform.set(2);
-    localClientInfo.version.set("8.3.0");
-    ((cmd0xe0a.ReqBody)localObject).client.set(localClientInfo);
-    localObject = makeOIDBPkg("OidbSvc.0xe0a_2", 3594, 2, ((cmd0xe0a.ReqBody)localObject).toByteArray(), 30000L);
-    ((ToServiceMsg)localObject).addAttribute("troopcode", Long.valueOf(paramLong));
-    ((ToServiceMsg)localObject).addAttribute("trooptype", Integer.valueOf(paramInt));
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void c(long paramLong, int paramInt)
-  {
-    Object localObject2 = ((baft)this.app.getManager(355)).b(Long.valueOf(paramLong));
-    if (localObject2 == null) {
-      return;
-    }
-    Object localObject1 = new Oidb_0xe0e.ReqBody();
-    ((Oidb_0xe0e.ReqBody)localObject1).group_id.set(paramLong);
-    ((Oidb_0xe0e.ReqBody)localObject1).disabled.set(paramInt);
-    Object localObject3 = ((bafs)localObject2).a();
-    localObject2 = new ArrayList();
-    localObject3 = ((ArrayList)localObject3).iterator();
-    while (((Iterator)localObject3).hasNext())
-    {
-      bafo localbafo = (bafo)((Iterator)localObject3).next();
-      if (localbafo.c() == 1) {
-        ((ArrayList)localObject2).add(Long.valueOf(localbafo.a()));
-      }
-    }
-    ((Oidb_0xe0e.ReqBody)localObject1).disabled_appids.set((List)localObject2);
-    localObject1 = makeOIDBPkg("OidbSvc.0xe0e_2", 3598, 0, ((Oidb_0xe0e.ReqBody)localObject1).toByteArray(), 30000L);
-    ((ToServiceMsg)localObject1).addAttribute("troopcode", Long.valueOf(paramLong));
-    ((ToServiceMsg)localObject1).addAttribute("disabled", Integer.valueOf(paramInt));
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return bafu.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramFromServiceMsg == null) || (paramToServiceMsg == null)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopShortcutBar", 2, "TroopShortcutBarHandler onReceive resultCode:" + paramFromServiceMsg.getResultCode() + "errMsg: " + paramFromServiceMsg.getBusinessFailMsg() + "serivceCmd: " + paramToServiceMsg.getServiceCmd());
-      }
-      try
-      {
-        int i = ((oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject)).uint32_result.get();
-        if ((i != 0) && (QLog.isColorLevel())) {
-          QLog.i("TroopShortcutBar", 2, "TroopShortcutBarHandler onReceive return Error result:" + i + "cmd：" + paramToServiceMsg.getServiceCmd());
-        }
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
+        String str = paramGroupPadTemplateInfo.mobThumbUrl;
+        paramGroupPadTemplateInfo = URLDrawable.URLDrawableOptions.obtain();
+        paramGroupPadTemplateInfo.mLoadingDrawable = localDrawable;
+        paramGroupPadTemplateInfo.mFailedDrawable = localDrawable;
+        Object localObject = null;
+        try
         {
-          String str;
-          if (QLog.isColorLevel()) {
-            QLog.i("TroopShortcutBar", 2, "TroopShortcutBarHandler onReceive exception: " + localInvalidProtocolBufferMicroException.getMessage() + "cmd：" + paramToServiceMsg.getServiceCmd());
+          paramGroupPadTemplateInfo = URLDrawable.getDrawable(str, paramGroupPadTemplateInfo);
+          if (paramGroupPadTemplateInfo != null)
+          {
+            if ((paramGroupPadTemplateInfo.getStatus() == 2) && (this.jdField_b_of_type_JavaUtilSet.remove(str))) {
+              paramGroupPadTemplateInfo.restartDownload();
+            }
+            paramGroupPadTemplateInfo.setDownloadListener(new bafs(this, str));
+            paramAsyncImageView.setImageDrawable(paramGroupPadTemplateInfo);
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("GroupPadTemplateAdapter", 2, "loadThumbImage is ok. url: " + str);
           }
         }
-        if (!"OidbSvc.0xe0a_2".equals(localInvalidProtocolBufferMicroException)) {
-          continue;
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            paramGroupPadTemplateInfo = localObject;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("GroupPadTemplateAdapter", 2, localException, new Object[] { "loadThumbImage failed" });
+              paramGroupPadTemplateInfo = localObject;
+            }
+          }
+          paramAsyncImageView.setImageDrawable(localDrawable);
+          return;
         }
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-        if (!"OidbSvc.Oxe0e_1".equals(localInvalidProtocolBufferMicroException)) {
-          continue;
-        }
-        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-        if (!"OidbSvc.0xe0e_2".equals(localInvalidProtocolBufferMicroException)) {
-          continue;
-        }
-        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
       }
-      str = paramToServiceMsg.getServiceCmd();
-      if ("OidbSvc.0xe0a_1".equals(str))
-      {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.0x8c9_2.GetPoint".equals(localInvalidProtocolBufferMicroException));
-    e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    paramAsyncImageView.setImageResource(2130840071);
   }
+  
+  public GroupPadTemplateInfo a()
+  {
+    GroupPadTemplateInfo localGroupPadTemplateInfo = new GroupPadTemplateInfo();
+    localGroupPadTemplateInfo.docOrSheetType = 1;
+    localGroupPadTemplateInfo.templateName = this.jdField_a_of_type_AndroidContentContext.getString(2131693314);
+    return localGroupPadTemplateInfo;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void a(List<GroupPadTemplateInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)paramList.next();
+        if ((localGroupPadTemplateInfo != null) && (localGroupPadTemplateInfo.templateID >= 0)) {
+          this.jdField_a_of_type_JavaUtilList.add(localGroupPadTemplateInfo);
+        }
+      }
+      paramList = a();
+      this.jdField_a_of_type_JavaUtilList.add(paramList);
+    }
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)getItem(paramInt);
+    if (localGroupPadTemplateInfo != null) {
+      return localGroupPadTemplateInfo.templateID;
+    }
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)getItem(paramInt);
+    if (getCount() == paramInt + 1)
+    {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559168, null);
+      paramView = new baft(this);
+      paramView.jdField_a_of_type_Int = jdField_b_of_type_Int;
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131367352));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131367348));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131367346));
+      paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
+      paramViewGroup.setTag(paramView);
+      paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      if (paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo == null) {
+        break label287;
+      }
+      if (paramView.jdField_a_of_type_Int != jdField_a_of_type_Int) {
+        break label264;
+      }
+      a(paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localGroupPadTemplateInfo);
+      label135:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupPadTemplateInfo.templateName);
+    }
+    for (;;)
+    {
+      if (AppSetting.c)
+      {
+        if (localGroupPadTemplateInfo == null) {
+          break label309;
+        }
+        paramViewGroup.setContentDescription(localGroupPadTemplateInfo.templateName);
+      }
+      return paramViewGroup;
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559167, null);
+      paramView = new baft(this);
+      paramView.jdField_a_of_type_Int = jdField_a_of_type_Int;
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131367351));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131367350));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131367345));
+      paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
+      paramViewGroup.setTag(paramView);
+      paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      break;
+      label264:
+      if (paramView.jdField_a_of_type_Int != jdField_b_of_type_Int) {
+        break label135;
+      }
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130840073);
+      break label135;
+      label287:
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130840071);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    }
+    label309:
+    paramViewGroup.setContentDescription("");
+    return paramViewGroup;
+  }
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bafr
  * JD-Core Version:    0.7.0.1
  */

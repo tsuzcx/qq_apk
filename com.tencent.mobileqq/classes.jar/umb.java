@@ -1,31 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class umb
+  implements ulq
 {
-  public int a;
-  public long a;
-  public String a;
+  public umb(StoryVideoUploadTask paramStoryVideoUploadTask, utg paramutg, ulm paramulm) {}
   
-  public umb(uly paramuly, String paramString)
+  public void a(ulp paramulp)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramuly = ((tcm)tcz.a(19)).a(paramString);
-    if (paramuly != null) {
-      a(paramuly);
+    paramulp = this.jdField_a_of_type_Utg;
+    if (this.jdField_a_of_type_Ulm.a == 0) {}
+    for (int i = 2;; i = 3)
+    {
+      paramulp.jdField_b_of_type_Int = i;
+      this.jdField_a_of_type_Utg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Ulm.jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_Utg.c = this.jdField_a_of_type_Ulm.c;
+      return;
     }
-  }
-  
-  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
-  {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     umb
  * JD-Core Version:    0.7.0.1
  */

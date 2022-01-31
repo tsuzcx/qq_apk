@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.olympic.activity;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.text.TextUtils;
 import android.view.View.OnClickListener;
-import auga;
-import augb;
-import bcqf;
-import bfob;
+import avxe;
+import avxf;
+import bepp;
+import bhow;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
@@ -31,10 +31,10 @@ public class OlympicToolBaseActivity
   public static boolean g = true;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new augb(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new auga(this);
-  private bcqf jdField_a_of_type_Bcqf;
-  private bfob jdField_a_of_type_Bfob;
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new avxf(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new avxe(this);
+  private bepp jdField_a_of_type_Bepp;
+  private bhow jdField_a_of_type_Bhow;
   public QQAppInterface a;
   public ARScanAR a;
   public OcrConfig a;
@@ -49,7 +49,7 @@ public class OlympicToolBaseActivity
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.i = NearbyFakeActivity.a();
-    this.jdField_a_of_type_Bfob.removeMessages(0);
+    this.jdField_a_of_type_Bhow.removeMessages(0);
     if (this.i)
     {
       f();
@@ -58,7 +58,7 @@ public class OlympicToolBaseActivity
     this.jdField_a_of_type_Boolean = true;
     i();
     k();
-    this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(0, 5000L);
+    this.jdField_a_of_type_Bhow.sendEmptyMessageDelayed(0, 5000L);
   }
   
   private void i()
@@ -69,14 +69,14 @@ public class OlympicToolBaseActivity
       return;
       try
       {
-        if (this.jdField_a_of_type_Bcqf == null)
+        if (this.jdField_a_of_type_Bepp == null)
         {
-          this.jdField_a_of_type_Bcqf = new bcqf(this, getTitleBarHeight());
-          this.jdField_a_of_type_Bcqf.a(ajya.a(2131707846));
-          this.jdField_a_of_type_Bcqf.c(false);
+          this.jdField_a_of_type_Bepp = new bepp(this, getTitleBarHeight());
+          this.jdField_a_of_type_Bepp.a(alpo.a(2131708218));
+          this.jdField_a_of_type_Bepp.c(false);
         }
         this.h = true;
-        this.jdField_a_of_type_Bcqf.show();
+        this.jdField_a_of_type_Bepp.show();
         return;
       }
       catch (Exception localException) {}
@@ -88,8 +88,8 @@ public class OlympicToolBaseActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing())) {
-        this.jdField_a_of_type_Bcqf.dismiss();
+      if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
+        this.jdField_a_of_type_Bepp.dismiss();
       }
       return;
     }
@@ -146,7 +146,7 @@ public class OlympicToolBaseActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Bfob = new bfob(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_Bhow = new bhow(this.jdField_a_of_type_AndroidOsHandler$Callback);
     this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver = new ScannerResultReceiver(null);
     return true;
   }
@@ -154,8 +154,8 @@ public class OlympicToolBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bcqf != null) {
-      this.jdField_a_of_type_Bcqf.dismiss();
+    if (this.jdField_a_of_type_Bepp != null) {
+      this.jdField_a_of_type_Bepp.dismiss();
     }
   }
   
@@ -205,7 +205,7 @@ public class OlympicToolBaseActivity
   public void f()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bfob.removeMessages(0);
+    this.jdField_a_of_type_Bhow.removeMessages(0);
     j();
     Intent localIntent = new Intent(this, ScanTorchActivity.class);
     localIntent.addFlags(67108864);
@@ -270,7 +270,7 @@ public class OlympicToolBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity
  * JD-Core Version:    0.7.0.1
  */

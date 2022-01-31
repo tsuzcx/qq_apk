@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.dataline.activities.LiteActivity;
-
-public class dg
-  implements DialogInterface.OnClickListener
+class dg
+  extends almg
 {
-  public dg(LiteActivity paramLiteActivity) {}
+  dg(df paramdf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b()
   {
-    this.a.finish();
+    df.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,70 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCollectionViewCount;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class vch
-  extends uyi
+public class vch
+  extends unk<vdq>
 {
-  vch(vcf paramvcf) {}
+  public static final String a;
+  public List<uzy> a;
+  public String b;
   
-  public void a(int paramInt, View paramView, Object paramObject, vap paramvap)
+  static
   {
-    if ((paramView == paramvap.a(2131373294)) || (paramView == paramvap.a(2131373295)) || (paramView == paramvap.a(2131373298))) {
-      if (vcf.a(this.a)) {
-        ved.d("Q.qqstory.home.LocalVideoPushSegment", "now is opening the new page, so ignore the click");
-      }
-    }
-    while (paramView != paramvap.a(2131373293))
+    jdField_a_of_type_JavaLangString = ume.a("StorySvc.get_colleciton_view_count");
+  }
+  
+  public vch()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public unf a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspCollectionViewCount localRspCollectionViewCount = new qqstory_service.RspCollectionViewCount();
+    try
     {
-      return;
-      vcf.a(this.a, true);
-      paramObject = new Bundle();
-      paramObject.putInt("capture_intent_mode", 3);
-      if (vcf.a(this.a) == 1) {
-        paramObject.putString("story_capture_album_id", "default_id");
-      }
+      localRspCollectionViewCount.mergeFrom(paramArrayOfByte);
+      return new vdq(this.b, localRspCollectionViewCount);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
       for (;;)
       {
-        vwj.a().a((Activity)vcf.a(this.a), paramObject, 20000);
-        vei.a("home_page", "clk_smartalbum", 0, 0, new String[] { vcf.a(this.a, vcf.a(this.a)) });
-        return;
-        if (vcf.a(this.a) == 2)
-        {
-          if (vcf.a(this.a) != null) {}
-          for (paramView = String.valueOf(vcf.a(this.a).a());; paramView = "default_id")
-          {
-            paramObject.putString("story_capture_album_id", paramView);
-            break;
-          }
-        }
-        if (vcf.a(this.a) != 3) {}
+        wsv.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
       }
     }
-    this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    this.a.a(null, 4);
-    vei.a("home_page", "close_smartalbum", 0, 0, new String[] { vcf.a(this.a, vcf.a(this.a)) });
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      uzy localuzy = (uzy)localIterator.next();
+      localReqCollectionViewCount.collection_id.add(localuzy.a());
+    }
+    return localReqCollectionViewCount.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "UpdateCollectionViewCountRequest{mIdList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vch
  * JD-Core Version:    0.7.0.1
  */

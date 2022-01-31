@@ -1,101 +1,43 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.1;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.2;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aeuf
-  extends ajsy
+  implements INetInfoHandler
 {
-  public aeuf(TroopChatPie paramTroopChatPie) {}
+  public aeuf(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  protected void a(balb parambalb)
+  public void onNetMobile2None()
   {
-    if ((parambalb.jdField_a_of_type_Int == 2) && (parambalb.jdField_a_of_type_Bale != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("troop_gag", 2, "onTroopGagStatusChange:" + parambalb.jdField_a_of_type_JavaLangString);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(parambalb.jdField_a_of_type_JavaLangString)) {
-        this.a.a(parambalb.jdField_a_of_type_Bale, true);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetMobile2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
     }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.1(this));
   }
   
-  protected void a(Object paramObject)
-  {
-    if (this.a.jdField_a_of_type_Acup != null) {
-      this.a.jdField_a_of_type_Acup.notifyDataSetChanged();
-    }
-  }
+  public void onNetMobile2Wifi(String paramString) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      break label7;
-    }
-    for (;;)
-    {
-      label7:
-      return;
-      if (paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-      {
-        TroopManager localTroopManager = (TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-        TroopInfo localTroopInfo = localTroopManager.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if (localTroopInfo == null) {
-          break;
-        }
-        if (!paramBoolean) {
-          if (!TextUtils.isEmpty(paramString3)) {
-            bcql.a(BaseApplicationImpl.getContext(), 1, paramString3, 0).a();
-          }
-        }
-        while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString1)) && (localTroopInfo != null))
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = localTroopInfo.getTroopName();
-          paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
-          paramString1.putExtra("uinname", localTroopInfo.getTroopName());
-          this.a.b(paramString1);
-          return;
-          localTroopInfo.troopname = paramString2;
-          localTroopInfo.hasSetNewTroopName = true;
-          if ((this.a.v()) && (localTroopInfo.isNewTroop) && (localTroopInfo.hasSetNewTroopName) && (localTroopInfo.hasSetNewTroopHead))
-          {
-            localTroopInfo.isNewTroop = false;
-            banb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopInfo, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, new aeug(this));
-          }
-          localTroopManager.b(localTroopInfo);
-          this.a.bE();
-        }
-      }
-    }
-  }
+  public void onNetNone2Mobile(String paramString) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
   {
-    if (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume()) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetWifi2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
     }
-    if (paramBoolean1)
-    {
-      if (paramBoolean2) {}
-      for (String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131696499);; str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131696411))
-      {
-        bcql.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getApplicationContext(), 2, str, 1).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-        return;
-      }
-    }
-    bcql.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getApplicationContext(), 1, 2131696498, 1).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuf
  * JD-Core Version:    0.7.0.1
  */

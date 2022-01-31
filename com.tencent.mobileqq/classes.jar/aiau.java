@@ -1,12 +1,25 @@
-public abstract interface aiau
+class aiau
+  extends allb
 {
-  public abstract int a(CharSequence paramCharSequence, int paramInt1, int paramInt2);
+  aiau(aiak paramaiak) {}
   
-  public abstract int b(CharSequence paramCharSequence, int paramInt1, int paramInt2);
+  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.a.e();
+    }
+  }
+  
+  protected void onGetSignInInfo(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.e();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiau
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,70 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import mqq.os.MqqHandler;
+import com.tencent.widget.ListView;
 
 public class ahwn
-  implements vub
+  implements bhuy
 {
-  public ahwn(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public ahwn(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void a()
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    QLog.d(QzoneSlideShowPreparingFragment.a(), 2, "createSlideShowNew AblumListener - endMerge.");
-    QzoneSlideShowPreparingFragment.a(this.a).removeCallbacks(QzoneSlideShowPreparingFragment.a(this.a));
-    ThreadManager.getUIHandler().post(new QzoneSlideShowPreparingFragment.4.1(this));
-    if (QzoneSlideShowPreparingFragment.a(this.a) == 18) {
-      LpReportInfo_pf00064.allReport(585, 15, 8);
-    }
-    if (QzoneSlideShowPreparingFragment.a(this.a) != null)
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      Object localObject = (BitmapDrawable)QzoneSlideShowPreparingFragment.a(this.a).getDrawable();
-      if (localObject != null)
-      {
-        localObject = ((BitmapDrawable)localObject).getBitmap();
-        if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-          ((Bitmap)localObject).recycle();
-        }
+      paramView.c(l);
+      return;
+    }
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
+    }
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.a(l);
+      if (!bdee.g(this.a.getActivity())) {
+        break;
       }
+      ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
+      return true;
+    }
+    ChatHistoryTroopFileFragment.a(this.a, 1);
+    bcjk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
+    }
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewNotCompleteVisableAndReleased");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwn
  * JD-Core Version:    0.7.0.1
  */

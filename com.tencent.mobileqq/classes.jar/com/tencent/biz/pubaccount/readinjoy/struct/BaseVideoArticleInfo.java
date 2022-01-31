@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
-import auko;
-import aulz;
+import awbv;
+import awdg;
 import com.tencent.mobileqq.pb.CodedInputStreamMicro;
 import com.tencent.mobileqq.pb.CodedOutputStreamMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -20,25 +20,25 @@ import java.util.Iterator;
 import java.util.List;
 import localpb.readinjoy.Readinjoy.ArticleSummary;
 import localpb.readinjoy.Readinjoy.VideoData;
-import qap;
-import qdx;
-import qul;
+import qkl;
+import qnu;
+import rka;
 
 public class BaseVideoArticleInfo
-  extends auko
+  extends awbv
   implements Parcelable, Cloneable, Comparable<BaseVideoArticleInfo>
 {
-  public static final Parcelable.Creator<BaseVideoArticleInfo> CREATOR = new qap();
+  public static final Parcelable.Creator<BaseVideoArticleInfo> CREATOR = new qkl();
   public static final String TAG = "VideoArticleInfo";
   public int adsJumpType;
   public String adsJumpUrl;
   public long algorithmID;
   public String articleContentUrl;
   public long articleID;
-  @aulz
+  @awdg
   public List<BaseVideoArticleInfo> articleList;
   public byte[] articleListBytes;
-  @aulz
+  @awdg
   public List<Readinjoy.ArticleSummary> articleListObj;
   public int articleStyle;
   public byte[] businessInfo;
@@ -47,7 +47,7 @@ public class BaseVideoArticleInfo
   public int commentCount;
   public int feedsType;
   public boolean isUgc;
-  @aulz
+  @awdg
   public List<SimpleChannelInfo> labelList;
   public String pagePicUrl;
   public String pushContext;
@@ -64,10 +64,10 @@ public class BaseVideoArticleInfo
   public String title;
   public int uptime;
   public int videoCount;
-  @aulz
-  public qdx videoData;
+  @awdg
+  public qnu videoData;
   public byte[] videoDataBytes;
-  @aulz
+  @awdg
   public Readinjoy.VideoData videoDataObj;
   public int videoPlayCount;
   public String videoReportInfo;
@@ -137,7 +137,7 @@ public class BaseVideoArticleInfo
         try
         {
           localVideoData.mergeFrom(this.videoDataBytes);
-          this.videoData = qul.a(localVideoData);
+          this.videoData = rka.a(localVideoData);
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
@@ -193,7 +193,7 @@ public class BaseVideoArticleInfo
     {
       this.videoDataObj.mergeFrom(this.videoDataBytes);
       if (this.videoDataObj != null) {
-        this.videoData = qul.a(this.videoDataObj);
+        this.videoData = rka.a(this.videoDataObj);
       }
       if ((this.articleListBytes != null) && (this.articleListBytes.length > 0))
       {
@@ -219,7 +219,7 @@ public class BaseVideoArticleInfo
         int i = 0;
         while (i < this.articleListObj.size())
         {
-          this.articleList.add(qul.a((Readinjoy.ArticleSummary)this.articleListObj.get(i)));
+          this.articleList.add(rka.a((Readinjoy.ArticleSummary)this.articleListObj.get(i)));
           i += 1;
         }
       }
@@ -238,7 +238,7 @@ public class BaseVideoArticleInfo
   {
     if (this.videoData != null)
     {
-      this.videoDataObj = qul.a(this.videoData);
+      this.videoDataObj = rka.a(this.videoData);
       if (this.videoDataObj != null) {
         this.videoDataBytes = this.videoDataObj.toByteArray();
       }
@@ -253,7 +253,7 @@ public class BaseVideoArticleInfo
       {
         localObject2 = (BaseVideoArticleInfo)((Iterator)localObject1).next();
         if (localObject2 != null) {
-          this.articleListObj.add(qul.a((BaseVideoArticleInfo)localObject2));
+          this.articleListObj.add(rka.a((BaseVideoArticleInfo)localObject2));
         }
       }
       if (!this.articleListObj.isEmpty())
@@ -349,7 +349,7 @@ public class BaseVideoArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo
  * JD-Core Version:    0.7.0.1
  */

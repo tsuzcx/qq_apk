@@ -1,20 +1,66 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController.2;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.teamwork.TenDocWebPreLoadHelper.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class badz
-  implements View.OnClickListener
 {
-  public badz(HomeworkTroopController.2 param2) {}
+  public static volatile String a = "";
   
-  public void onClick(View paramView)
+  public static TouchWebView a(Context paramContext)
   {
-    this.a.this$0.a();
+    baea localbaea = baea.a();
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseApplicationImpl.sApplication;
+    }
+    return localbaea.a((Context)localObject);
+  }
+  
+  public static void a(String paramString)
+  {
+    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preCreateWebViewNoWebProcess ");
+    baea.a().a(paramString);
+  }
+  
+  public static boolean a(Activity paramActivity, String paramString)
+  {
+    if (!aoty.a().a()) {}
+    while ((paramActivity == null) || (TextUtils.isEmpty(paramString)) || ((!(paramActivity instanceof TeamWorkDocEditBrowserActivity)) && (!badt.c(paramString))) || (!baea.a().a()) || ((!paramString.contains(a)) && (a != null))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void b(String paramString)
+  {
+    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preloadTenDocUrl ");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      a = paramString;
+      if (Looper.getMainLooper() != Looper.myLooper()) {
+        break label61;
+      }
+      if ((badt.c(paramString)) && (!baea.a().a(paramString)))
+      {
+        baea.a().a(paramString);
+        baea.a().a(paramString);
+      }
+    }
+    return;
+    label61:
+    new Handler(Looper.getMainLooper()).post(new TenDocWebPreLoadHelper.1(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     badz
  * JD-Core Version:    0.7.0.1
  */

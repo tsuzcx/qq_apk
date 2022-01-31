@@ -1,36 +1,28 @@
-import android.graphics.PointF;
-import com.tencent.qphone.base.util.QLog;
-
 public class ljv
 {
-  long jdField_a_of_type_Long;
-  PointF jdField_a_of_type_AndroidGraphicsPointF = null;
-  boolean jdField_a_of_type_Boolean = false;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c = "";
   
-  public void a()
+  public ljv()
   {
-    QLog.w("ARZimuTask_SpitZimuTask", 1, "MouthLoactionInfo.clear");
-    this.jdField_a_of_type_AndroidGraphicsPointF = null;
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 30;
+    this.jdField_b_of_type_Int = 3;
   }
   
-  public void a(PointF paramPointF)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1500L) {
-      return true;
-    }
-    return false;
+    return "id[" + this.jdField_a_of_type_JavaLangString + "], text[" + this.jdField_b_of_type_JavaLangString + "], date[" + this.jdField_a_of_type_Long + "->" + this.jdField_b_of_type_Long + "], imageUrl[" + this.c + "], callTimeLen[" + this.jdField_a_of_type_Int + "], showTimeLen[" + this.jdField_b_of_type_Int + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljv
  * JD-Core Version:    0.7.0.1
  */

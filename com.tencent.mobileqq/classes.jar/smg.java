@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-public final class smg
-  implements Parcelable.Creator<WSRedDotPushMsg>
+public class smg
+  implements Animation.AnimationListener
 {
-  public WSRedDotPushMsg a(Parcel paramParcel)
+  public smg(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new WSRedDotPushMsg(paramParcel);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(false, this.jdField_a_of_type_Int, 2);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, 2);
   }
   
-  public WSRedDotPushMsg[] a(int paramInt)
-  {
-    return new WSRedDotPushMsg[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smg
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.app.ActivityManager.MemoryInfo;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.StatFs;
-import bhpn;
+import bjqy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -187,7 +187,7 @@ public class QzoneHardwareRestriction
   {
     try
     {
-      int i = new File("/sys/devices/system/cpu/").listFiles(new bhpn()).length;
+      int i = new File("/sys/devices/system/cpu/").listFiles(new bjqy()).length;
       return i;
     }
     catch (Exception localException) {}
@@ -707,7 +707,7 @@ public class QzoneHardwareRestriction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.util.QzoneHardwareRestriction
  * JD-Core Version:    0.7.0.1
  */

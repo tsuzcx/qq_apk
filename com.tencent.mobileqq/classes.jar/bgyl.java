@@ -1,50 +1,59 @@
-import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
-import com.qq.taf.jce.JceStruct;
-import java.util.HashMap;
-import java.util.Map;
+import NS_MINI_INTERFACE.INTERFACE.StCheckSessionReq;
+import NS_MINI_INTERFACE.INTERFACE.StCheckSessionRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgyl
-  extends bgyk
+  extends bgzp
 {
-  newest_feeds_req a = new newest_feeds_req();
+  private INTERFACE.StCheckSessionReq a = new INTERFACE.StCheckSessionReq();
   
-  public bgyl(long paramLong, Map<Long, Long> paramMap)
+  public bgyl(String paramString)
   {
-    this.a.cmd = 4;
-    this.a.login_uin = paramLong;
-    this.a.strQua = bgyi.a();
-    this.a.mapUinTimes = new HashMap();
-    this.a.mapUinTimes.putAll(paramMap);
+    this.a.appid.set(paramString);
   }
   
-  public int a()
+  protected String a()
   {
-    return 1000;
+    return "mini_program_auth";
   }
   
-  public String getCmdString()
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    return "QzoneNewService.getMsgNewestFeeds";
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StCheckSessionRsp localStCheckSessionRsp = new INTERFACE.StCheckSessionRsp();
+    try
+    {
+      localStCheckSessionRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStCheckSessionRsp != null) {
+        return new JSONObject();
+      }
+      QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public JceStruct getReq()
+  public byte[] a()
   {
-    return this.a;
+    return this.a.toByteArray();
   }
   
-  public String toString()
+  protected String b()
   {
-    return String.format("reqetuest ,cmd:%d,loginUin;%d,qua;%s,mapUintimes:%s ", new Object[] { Integer.valueOf(this.a.cmd), Long.valueOf(this.a.login_uin), this.a.strQua, String.valueOf(this.a.mapUinTimes) });
-  }
-  
-  public String uniKey()
-  {
-    return "getMsgNewestFeeds";
+    return "CheckSession";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgyl
  * JD-Core Version:    0.7.0.1
  */

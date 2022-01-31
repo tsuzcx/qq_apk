@@ -1,822 +1,324 @@
-import android.content.pm.ApplicationInfo;
-import android.os.Handler;
-import android.util.Pair;
-import com.tencent.component.network.utils.FileUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.open.downloadnew.DownloadInfo;
 import java.io.File;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class bfjt
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bfji jdField_a_of_type_Bfji;
-  private bfjl jdField_a_of_type_Bfjl;
-  private List<bfjy> jdField_a_of_type_JavaUtilList;
-  private ConcurrentHashMap<Integer, bfjy> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private CopyOnWriteArrayList<bfjx> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 1, 2, 2 };
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { "libhobi.so" };
-  private boolean jdField_b_of_type_Boolean;
-  private final String[] jdField_b_of_type_ArrayOfJavaLangString = { "2.1.3" };
-  
-  public bfjt(bfji parambfji)
+  public static long a()
   {
-    this.jdField_a_of_type_Bfji = parambfji;
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_Bfjl = new bfjl();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new bfjz(this, ThreadManager.getFileThreadLooper());
-    this.jdField_a_of_type_Bfji.a(new bfju(this));
+    return bfio.a(bexd.a().a(), null).a("Common_tips_dialog_interval");
   }
   
-  private int a(int paramInt)
+  public static String a()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      if (paramInt == this.jdField_a_of_type_ArrayOfInt[(i + 1)]) {
-        return i / 4;
-      }
-      i += 4;
-    }
-    return -1;
+    return bfio.a(bexd.a().a(), null).b("Common_myapp_download_url");
   }
   
-  private bfjy a(bfjm parambfjm)
+  public static String a(int paramInt, String paramString)
   {
-    bfjy localbfjy = new bfjy(null);
-    localbfjy.jdField_a_of_type_Int = parambfjm.jdField_a_of_type_Int;
-    localbfjy.jdField_b_of_type_Int = parambfjm.jdField_b_of_type_Int;
-    localbfjy.c = parambfjm.c;
-    localbfjy.jdField_b_of_type_JavaLangString = parambfjm.jdField_b_of_type_JavaLangString;
-    localbfjy.jdField_a_of_type_JavaLangString = parambfjm.jdField_a_of_type_JavaLangString;
-    localbfjy.e = 4;
-    return localbfjy;
-  }
-  
-  private String a()
-  {
-    return BaseApplication.getContext().getApplicationInfo().nativeLibraryDir;
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bfjx localbfjx = (bfjx)localIterator.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QSec", 2, String.format("Notify listener [%d:%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      }
-      localbfjx.a(paramInt1, paramInt2);
-    }
-  }
-  
-  private void a(bfjy parambfjy)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProtect.QSec", 2, String.format("Prepare to unload: %d,%d,%d,%d,%s,%s", new Object[] { Integer.valueOf(parambfjy.jdField_a_of_type_Int), Integer.valueOf(parambfjy.jdField_b_of_type_Int), Integer.valueOf(parambfjy.c), Integer.valueOf(parambfjy.e), parambfjy.jdField_a_of_type_JavaLangString, parambfjy.jdField_b_of_type_JavaLangString }));
-    }
-    if ((parambfjy.c & 0x1) == 0) {}
-    while (parambfjy.e != 1) {
-      return;
-    }
-    parambfjy.e = 3;
-    parambfjy.jdField_a_of_type_Bfkj.b();
-    int i = QSecFramework.a(3L, parambfjy.jdField_a_of_type_Int, 0L, 0L, null, null, null, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProtect.QSec", 2, new Object[] { "Unload ret: %d", Integer.valueOf(i) });
-    }
-    if (i == 0)
-    {
-      parambfjy.e = 4;
-      a(2, parambfjy.jdField_a_of_type_Int);
-      return;
-    }
-    parambfjy.e = 5;
-    parambfjy.d = i;
-  }
-  
-  private void a(bfjy parambfjy, String paramString1, String paramString2)
-  {
-    a(parambfjy);
-    if (parambfjy.e == 4)
-    {
-      if ((parambfjy.jdField_b_of_type_JavaLangString != null) && (!parambfjy.jdField_b_of_type_JavaLangString.equals(paramString2)))
+    if ("biz_src_zf_games".equals(paramString)) {
+      switch (paramInt)
       {
-        FileUtils.delete(parambfjy.jdField_b_of_type_JavaLangString);
-        parambfjy.jdField_b_of_type_JavaLangString = paramString2;
-      }
-      if ((parambfjy.jdField_a_of_type_JavaLangString != null) && (!parambfjy.jdField_a_of_type_JavaLangString.equals(paramString1))) {
-        parambfjy.jdField_a_of_type_JavaLangString = paramString1;
-      }
-      parambfjy.f = 0;
-      c(parambfjy);
-      d(parambfjy);
-    }
-  }
-  
-  private void a(List<Pair<Integer, Byte>> paramList)
-  {
-    if ((paramList == null) || (!this.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject1 = (Pair)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QSec", 2, String.format("cb changed: id(%d), cb(%d)", new Object[] { ((Pair)localObject1).first, ((Pair)localObject1).second }));
-      }
-      Object localObject2 = (bfjy)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(((Pair)localObject1).first);
-      if (localObject2 == null)
-      {
-        localObject2 = this.jdField_a_of_type_Bfjl.a(((Integer)((Pair)localObject1).first).intValue());
-        if (localObject2 != null) {
-          if (((Byte)((Pair)localObject1).second).byteValue() == 1) {
-            e(a((bfjm)localObject2));
-          } else if (((Byte)((Pair)localObject1).second).byteValue() == 2) {
-            localLinkedList.add(localObject2);
-          }
-        }
-      }
-      else if (((Byte)((Pair)localObject1).second).byteValue() == 1)
-      {
-        if (((bfjy)localObject2).e == 4)
-        {
-          c((bfjy)localObject2);
-          if (((bfjy)localObject2).d != 0) {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(((bfjy)localObject2).jdField_a_of_type_Int));
-          }
-          d((bfjy)localObject2);
-        }
-      }
-      else if ((((Byte)((Pair)localObject1).second).byteValue() == 2) && (((bfjy)localObject2).e == 4))
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(((Pair)localObject1).first);
-        localObject1 = this.jdField_a_of_type_Bfjl.a(((Integer)((Pair)localObject1).first).intValue());
-        if (localObject1 != null) {
-          localLinkedList.add(localObject1);
-        }
-      }
-    }
-    if (!localLinkedList.isEmpty()) {
-      b(localLinkedList);
-    }
-    e();
-  }
-  
-  private void b(bfjy parambfjy)
-  {
-    bfhw localbfhw = new bfhw();
-    localbfhw.a(parambfjy.jdField_a_of_type_Int).a(parambfjy.jdField_a_of_type_JavaLangString).a(parambfjy.d);
-    bfht.b(localbfhw.toString(), 104);
-  }
-  
-  private void b(List<bfjm> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      bfjm localbfjm = (bfjm)paramList.next();
-      this.jdField_a_of_type_Bfjl.a(localbfjm.jdField_a_of_type_Int, false);
-      if (localbfjm.jdField_b_of_type_JavaLangString != null)
-      {
-        int i = a(localbfjm.jdField_a_of_type_Int);
-        if (i != -1)
-        {
-          String str = a() + File.separator + this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]];
-          if (localbfjm.jdField_b_of_type_JavaLangString.equals(str)) {}
-        }
-        else
-        {
-          FileUtils.delete(localbfjm.jdField_b_of_type_JavaLangString);
-        }
-      }
-    }
-    this.jdField_a_of_type_Bfjl.a();
-  }
-  
-  private void c()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_b_of_type_Boolean = false;
-    new bfka(new bfjw(this)).a(1);
-  }
-  
-  private void c(bfjx parambfjx)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((bfjy)localEntry.getValue()).e == 1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQProtect.QSec", 2, String.format("Notify listener [%d:%d]", new Object[] { Integer.valueOf(1), localEntry.getKey() }));
-        }
-        parambfjx.a(1, ((Integer)localEntry.getKey()).intValue());
-      }
-    }
-  }
-  
-  private void c(bfjy parambfjy)
-  {
-    parambfjy.e = 2;
-    Object localObject = new bfjv(this);
-    ((bfjv)localObject).a = parambfjy;
-    new bfip(String.format("Lib%d_%s", new Object[] { Integer.valueOf(parambfjy.jdField_a_of_type_Int), parambfjy.jdField_a_of_type_JavaLangString }), 43200000L).a((bfiq)localObject);
-    if (QLog.isColorLevel())
-    {
-      if (parambfjy.jdField_b_of_type_JavaLangString == null)
-      {
-        localObject = "null";
-        QLog.d("QQProtect.QSec", 2, String.format("load: %s ver: %s error: %08X", new Object[] { localObject, bfhs.a(parambfjy.f), Integer.valueOf(parambfjy.d) }));
-      }
-    }
-    else {
-      if (parambfjy.d != 0) {
-        break label140;
-      }
-    }
-    label140:
-    for (int i = 1;; i = 4)
-    {
-      parambfjy.e = i;
-      return;
-      localObject = parambfjy.jdField_b_of_type_JavaLangString;
-      break;
-    }
-  }
-  
-  /* Error */
-  private void d()
-  {
-    // Byte code:
-    //   0: invokestatic 124	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3: ldc_w 391
-    //   6: iconst_0
-    //   7: invokevirtual 395	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   10: astore 11
-    //   12: aload 11
-    //   14: invokeinterface 401 1 0
-    //   19: astore 10
-    //   21: ldc2_w 402
-    //   24: lstore_3
-    //   25: lload_3
-    //   26: lstore 5
-    //   28: getstatic 409	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
-    //   31: aconst_null
-    //   32: invokevirtual 413	mqq/app/MobileQQ:waitAppRuntime	(Lmqq/app/BaseActivity;)Lmqq/app/AppRuntime;
-    //   35: checkcast 415	com/tencent/mobileqq/app/QQAppInterface
-    //   38: astore 9
-    //   40: aload 9
-    //   42: ifnull +496 -> 538
-    //   45: lload_3
-    //   46: lstore 5
-    //   48: aload 9
-    //   50: invokevirtual 418	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   53: astore 12
-    //   55: aload 12
-    //   57: ifnull +481 -> 538
-    //   60: lload_3
-    //   61: lstore 5
-    //   63: aload 9
-    //   65: invokevirtual 418	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   68: invokestatic 422	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   71: istore_1
-    //   72: lload_3
-    //   73: lstore 5
-    //   75: aload_0
-    //   76: getfield 47	bfjt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   79: invokeinterface 242 1 0
-    //   84: astore 12
-    //   86: lload_3
-    //   87: lstore 5
-    //   89: aload 12
-    //   91: invokeinterface 145 1 0
-    //   96: ifeq +436 -> 532
-    //   99: lload_3
-    //   100: lstore 5
-    //   102: aload 12
-    //   104: invokeinterface 149 1 0
-    //   109: checkcast 88	bfjy
-    //   112: astore 13
-    //   114: lload_3
-    //   115: lstore 5
-    //   117: aload 13
-    //   119: getfield 111	bfjy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   122: astore 9
-    //   124: lload_3
-    //   125: lstore 5
-    //   127: aload 13
-    //   129: getfield 233	bfjy:f	I
-    //   132: ifeq +16 -> 148
-    //   135: lload_3
-    //   136: lstore 5
-    //   138: aload 13
-    //   140: getfield 233	bfjy:f	I
-    //   143: invokestatic 385	bfhs:a	(I)Ljava/lang/String;
-    //   146: astore 9
-    //   148: iload_1
-    //   149: ldc_w 423
-    //   152: ixor
-    //   153: istore_2
-    //   154: lload_3
-    //   155: lstore 5
-    //   157: ldc_w 425
-    //   160: iconst_3
-    //   161: anewarray 4	java/lang/Object
-    //   164: dup
-    //   165: iconst_0
-    //   166: aload 13
-    //   168: getfield 97	bfjy:jdField_a_of_type_Int	I
-    //   171: invokestatic 166	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   174: aastore
-    //   175: dup
-    //   176: iconst_1
-    //   177: iload_2
-    //   178: invokestatic 166	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   181: aastore
-    //   182: dup
-    //   183: iconst_2
-    //   184: aload 9
-    //   186: aastore
-    //   187: invokestatic 170	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   190: astore 14
-    //   192: lload_3
-    //   193: lstore 5
-    //   195: ldc_w 427
-    //   198: iconst_3
-    //   199: anewarray 4	java/lang/Object
-    //   202: dup
-    //   203: iconst_0
-    //   204: aload 13
-    //   206: getfield 97	bfjy:jdField_a_of_type_Int	I
-    //   209: invokestatic 166	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   212: aastore
-    //   213: dup
-    //   214: iconst_1
-    //   215: iload_2
-    //   216: invokestatic 166	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   219: aastore
-    //   220: dup
-    //   221: iconst_2
-    //   222: aload 9
-    //   224: aastore
-    //   225: invokestatic 170	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   228: astore 15
-    //   230: lload_3
-    //   231: lstore 5
-    //   233: aload 11
-    //   235: aload 14
-    //   237: iconst_m1
-    //   238: invokeinterface 431 3 0
-    //   243: istore_1
-    //   244: lload_3
-    //   245: lstore 5
-    //   247: aload 11
-    //   249: aload 15
-    //   251: lconst_0
-    //   252: invokeinterface 435 4 0
-    //   257: lstore 7
-    //   259: lload_3
-    //   260: lstore 5
-    //   262: new 437	java/util/Date
-    //   265: dup
-    //   266: invokespecial 438	java/util/Date:<init>	()V
-    //   269: invokevirtual 442	java/util/Date:getTime	()J
-    //   272: lload 7
-    //   274: lsub
-    //   275: lstore 7
-    //   277: lload 7
-    //   279: ldc2_w 402
-    //   282: lcmp
-    //   283: ifge +73 -> 356
-    //   286: lload_3
-    //   287: lstore 5
-    //   289: aload 13
-    //   291: getfield 218	bfjy:d	I
-    //   294: iload_1
-    //   295: if_icmpne +61 -> 356
-    //   298: lload_3
-    //   299: lstore 5
-    //   301: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   304: ifeq +239 -> 543
-    //   307: lload_3
-    //   308: lstore 5
-    //   310: ldc 158
-    //   312: iconst_2
-    //   313: ldc_w 444
-    //   316: iconst_3
-    //   317: anewarray 4	java/lang/Object
-    //   320: dup
-    //   321: iconst_0
-    //   322: aload 13
-    //   324: getfield 97	bfjy:jdField_a_of_type_Int	I
-    //   327: invokestatic 166	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   330: aastore
-    //   331: dup
-    //   332: iconst_1
-    //   333: aload 13
-    //   335: getfield 218	bfjy:d	I
-    //   338: invokestatic 166	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   341: aastore
-    //   342: dup
-    //   343: iconst_2
-    //   344: aload 9
-    //   346: aastore
-    //   347: invokestatic 170	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   350: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   353: goto +190 -> 543
-    //   356: lload_3
-    //   357: lstore 5
-    //   359: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   362: ifeq +49 -> 411
-    //   365: lload_3
-    //   366: lstore 5
-    //   368: ldc 158
-    //   370: iconst_2
-    //   371: ldc_w 446
-    //   374: iconst_3
-    //   375: anewarray 4	java/lang/Object
-    //   378: dup
-    //   379: iconst_0
-    //   380: aload 13
-    //   382: getfield 97	bfjy:jdField_a_of_type_Int	I
-    //   385: invokestatic 166	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   388: aastore
-    //   389: dup
-    //   390: iconst_1
-    //   391: aload 13
-    //   393: getfield 218	bfjy:d	I
-    //   396: invokestatic 166	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   399: aastore
-    //   400: dup
-    //   401: iconst_2
-    //   402: aload 9
-    //   404: aastore
-    //   405: invokestatic 170	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   408: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   411: lload_3
-    //   412: lstore 5
-    //   414: aload 10
-    //   416: aload 14
-    //   418: aload 13
-    //   420: getfield 218	bfjy:d	I
-    //   423: invokeinterface 452 3 0
-    //   428: pop
-    //   429: lload_3
-    //   430: lstore 5
-    //   432: aload 10
-    //   434: aload 15
-    //   436: new 437	java/util/Date
-    //   439: dup
-    //   440: invokespecial 438	java/util/Date:<init>	()V
-    //   443: invokevirtual 442	java/util/Date:getTime	()J
-    //   446: invokeinterface 456 4 0
-    //   451: pop
-    //   452: lload_3
-    //   453: lstore 5
-    //   455: aload_0
-    //   456: aload 13
-    //   458: invokespecial 458	bfjt:b	(Lbfjy;)V
-    //   461: iload_2
-    //   462: istore_1
-    //   463: goto -377 -> 86
-    //   466: astore 9
-    //   468: aload 9
-    //   470: invokevirtual 461	java/lang/Exception:printStackTrace	()V
-    //   473: aload 10
-    //   475: invokeinterface 464 1 0
-    //   480: pop
-    //   481: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   484: ifeq +30 -> 514
-    //   487: ldc 158
-    //   489: iconst_2
-    //   490: new 312	java/lang/StringBuilder
-    //   493: dup
-    //   494: invokespecial 313	java/lang/StringBuilder:<init>	()V
-    //   497: ldc_w 466
-    //   500: invokevirtual 319	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   503: lload 5
-    //   505: invokevirtual 469	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   508: invokevirtual 325	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   511: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   514: invokestatic 472	com/tencent/qqprotect/qsec/QSecFramework:a	()Landroid/os/Handler;
-    //   517: new 474	com/tencent/qqprotect/qsec/QSecLibMgr$3
-    //   520: dup
-    //   521: aload_0
-    //   522: invokespecial 475	com/tencent/qqprotect/qsec/QSecLibMgr$3:<init>	(Lbfjt;)V
-    //   525: lload 5
-    //   527: invokevirtual 481	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   530: pop
-    //   531: return
-    //   532: lload_3
-    //   533: lstore 5
-    //   535: goto -62 -> 473
-    //   538: iconst_0
-    //   539: istore_1
-    //   540: goto -468 -> 72
-    //   543: iload_2
-    //   544: istore_1
-    //   545: lload_3
-    //   546: ldc2_w 402
-    //   549: lload 7
-    //   551: lsub
-    //   552: lcmp
-    //   553: ifle -467 -> 86
-    //   556: ldc2_w 402
-    //   559: lload 7
-    //   561: lsub
-    //   562: lstore_3
-    //   563: iload_2
-    //   564: istore_1
-    //   565: goto -479 -> 86
-    //   568: astore 9
-    //   570: iconst_0
-    //   571: istore_1
-    //   572: goto -500 -> 72
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	575	0	this	bfjt
-    //   71	501	1	i	int
-    //   153	411	2	j	int
-    //   24	539	3	l1	long
-    //   26	508	5	l2	long
-    //   257	303	7	l3	long
-    //   38	365	9	localObject1	Object
-    //   466	3	9	localException	java.lang.Exception
-    //   568	1	9	localNumberFormatException	java.lang.NumberFormatException
-    //   19	455	10	localEditor	android.content.SharedPreferences.Editor
-    //   10	238	11	localSharedPreferences	android.content.SharedPreferences
-    //   53	50	12	localObject2	Object
-    //   112	345	13	localbfjy	bfjy
-    //   190	227	14	str1	String
-    //   228	207	15	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   28	40	466	java/lang/Exception
-    //   48	55	466	java/lang/Exception
-    //   63	72	466	java/lang/Exception
-    //   75	86	466	java/lang/Exception
-    //   89	99	466	java/lang/Exception
-    //   102	114	466	java/lang/Exception
-    //   117	124	466	java/lang/Exception
-    //   127	135	466	java/lang/Exception
-    //   138	148	466	java/lang/Exception
-    //   157	192	466	java/lang/Exception
-    //   195	230	466	java/lang/Exception
-    //   233	244	466	java/lang/Exception
-    //   247	259	466	java/lang/Exception
-    //   262	277	466	java/lang/Exception
-    //   289	298	466	java/lang/Exception
-    //   301	307	466	java/lang/Exception
-    //   310	353	466	java/lang/Exception
-    //   359	365	466	java/lang/Exception
-    //   368	411	466	java/lang/Exception
-    //   414	429	466	java/lang/Exception
-    //   432	452	466	java/lang/Exception
-    //   455	461	466	java/lang/Exception
-    //   63	72	568	java/lang/NumberFormatException
-  }
-  
-  private void d(bfjy parambfjy)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(parambfjy);
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(4));
-  }
-  
-  private void e(bfjy parambfjy)
-  {
-    c(parambfjy);
-    if (parambfjy.d == 0)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(parambfjy.jdField_a_of_type_Int), parambfjy);
-      a(1, parambfjy.jdField_a_of_type_Int);
-    }
-    d(parambfjy);
-  }
-  
-  private void f()
-  {
-    Object localObject1 = this.jdField_a_of_type_Bfjl.a();
-    if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-      return;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = ((List)localObject1).iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject2 = (bfjm)localIterator.next();
-      byte b1 = this.jdField_a_of_type_Bfji.a(((bfjm)localObject2).jdField_a_of_type_Int);
-      int i;
-      int j;
-      int k;
-      String str;
-      if (QLog.isColorLevel())
-      {
-        i = ((bfjm)localObject2).jdField_a_of_type_Int;
-        j = ((bfjm)localObject2).jdField_b_of_type_Int;
-        k = ((bfjm)localObject2).c;
-        str = ((bfjm)localObject2).jdField_a_of_type_JavaLangString;
-        if (((bfjm)localObject2).jdField_b_of_type_JavaLangString != null) {
-          break label201;
-        }
-      }
-      label201:
-      for (localObject1 = "null";; localObject1 = ((bfjm)localObject2).jdField_b_of_type_JavaLangString)
-      {
-        QLog.d("QQProtect.QSec", 2, String.format("%d,%d,%d,%s,%s,%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), str, localObject1, Byte.valueOf(b1) }));
-        if (b1 == 0) {
-          break;
-        }
-        if (2 != b1) {
-          break label211;
-        }
-        localLinkedList.add(localObject2);
-        break;
-      }
-      label211:
-      if (1 == b1)
-      {
-        localObject1 = a((bfjm)localObject2);
-        e((bfjy)localObject1);
-        if (((bfjy)localObject1).d != 0)
-        {
-          i = a(((bfjy)localObject1).jdField_a_of_type_Int);
-          if (i != -1)
-          {
-            localObject2 = a() + File.separator + this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]];
-            if ((((bfjy)localObject1).jdField_b_of_type_JavaLangString == null) || (!((String)localObject2).equals(((bfjy)localObject1).jdField_b_of_type_JavaLangString)))
-            {
-              ((bfjy)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
-              ((bfjy)localObject1).jdField_b_of_type_Int = this.jdField_a_of_type_ArrayOfInt[(i + 2)];
-              ((bfjy)localObject1).c = this.jdField_a_of_type_ArrayOfInt[(i + 3)];
-              ((bfjy)localObject1).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]];
-              ((bfjy)localObject1).f = 0;
-              e((bfjy)localObject1);
-            }
-          }
-        }
-      }
-      else if (-1 == b1)
-      {
-        i = a(((bfjm)localObject2).jdField_a_of_type_Int);
-        if (i != -1)
-        {
-          localObject1 = a((bfjm)localObject2);
-          ((bfjy)localObject1).jdField_b_of_type_JavaLangString = (a() + File.separator + this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]]);
-          e((bfjy)localObject1);
-        }
-      }
-    }
-    if (!localLinkedList.isEmpty()) {
-      b(localLinkedList);
-    }
-    e();
-  }
-  
-  private void g()
-  {
-    new bfka(new bfkb(this, null)).a(1);
-  }
-  
-  private void h()
-  {
-    int i = 0;
-    int j = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      int k = this.jdField_a_of_type_ArrayOfInt[(i + 1)];
-      if (this.jdField_a_of_type_Bfjl.a(k) == null)
-      {
-        bfjm localbfjm = new bfjm();
-        localbfjm.jdField_a_of_type_Int = k;
-        localbfjm.jdField_b_of_type_Int = this.jdField_a_of_type_ArrayOfInt[(i + 2)];
-        localbfjm.c = this.jdField_a_of_type_ArrayOfInt[(i + 3)];
-        localbfjm.jdField_b_of_type_JavaLangString = (a() + File.separator + this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]]);
-        localbfjm.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]];
-        if (QLog.isColorLevel()) {
-          QLog.d("QQProtect.QSec", 2, String.format("Add buildin: %d,%d,%d,%s", new Object[] { Integer.valueOf(localbfjm.jdField_a_of_type_Int), Integer.valueOf(localbfjm.jdField_b_of_type_Int), Integer.valueOf(localbfjm.c), localbfjm.jdField_b_of_type_JavaLangString }));
-        }
-        this.jdField_a_of_type_Bfjl.a(localbfjm, false);
-        j = 1;
-      }
-      i += 4;
-    }
-    if (j != 0) {
-      this.jdField_a_of_type_Bfjl.a();
-    }
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      h();
-      g();
-      f();
-    } while (!this.jdField_b_of_type_Boolean);
-    a();
-  }
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
-  {
-    bfjy localbfjy = (bfjy)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
-    if (localbfjy == null) {
-      if (this.jdField_a_of_type_Bfjl.a(paramInt1) == null) {
-        paramInt2 = 4;
+      default: 
+        paramString = "Common_GC_InstallYYB_Install_Words";
       }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QSec", 2, String.format("dispatch to id: %d, cmd: %d, err: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt2) }));
-      }
-      return paramInt2;
-      paramInt2 = 17;
+      return bfio.a(bexd.a().a(), null).b(paramString);
+      paramString = "Common_GC_InstallYYB_Install_Words";
       continue;
-      if ((paramInt2 != 0) && (paramInt2 != localbfjy.f))
-      {
-        paramInt2 = 32;
-      }
-      else if (localbfjy.jdField_a_of_type_Int != paramInt1)
-      {
-        paramInt2 = 5;
-      }
-      else
-      {
-        int i = this.jdField_a_of_type_Bfji.a(paramInt1);
-        if ((1 != i) && ((i != -1) || (a(paramInt1) == -1)))
+      paramString = "Common_GC_InstallYYB_Update_Words";
+      continue;
+      paramString = "Common_GC_UpdateYYB_Install_Words";
+      continue;
+      paramString = "Common_GC_UpdateYYB_Update_Words";
+      continue;
+      if ("biz_src_jc_update".equals(paramString)) {
+        switch (paramInt)
         {
-          paramInt2 = 6;
+        case 2: 
+        default: 
+          paramString = null;
+          break;
+        case 1: 
+          paramString = "Common_QQUpdate_InstallYYB_Update_Words";
+          break;
+        case 3: 
+          paramString = "Common_QQUpdate_UpdateYYB_Update_Words";
+          break;
         }
-        else if (localbfjy.e != 1)
+      } else {
+        switch (paramInt)
         {
-          paramInt2 = 7;
+        default: 
+          paramString = "Common_InstallYYB_Install_Words";
+          break;
+        case 1: 
+          paramString = "Common_InstallYYB_Install_Words";
+          break;
+        case 2: 
+          paramString = "Common_InstallYYB_Update_Words";
+          break;
+        case 3: 
+          paramString = "Common_UpdateYYB_Install_Words";
+          break;
+        case 4: 
+          paramString = "Common_UpdateYYB_Update_Words";
         }
-        else if (!localbfjy.jdField_a_of_type_Bfkj.a())
+      }
+    }
+  }
+  
+  public static void a()
+  {
+    int i = 1;
+    if (!bfio.a(bexd.a().a(), null).b("Common_Show_Dialog_Flag")) {}
+    SharedPreferences.Editor localEditor;
+    do
+    {
+      return;
+      localObject = bexd.a().a().getSharedPreferences("share_myAppApi", 0);
+      localEditor = ((SharedPreferences)localObject).edit();
+      if (bfio.a(bexd.a().a(), null).a("Common_Dialog_Only_Once_Flag"))
+      {
+        localEditor.putBoolean("SP_Has_shown_Dialog", true);
+        localEditor.commit();
+        return;
+      }
+      j = bfio.a(bexd.a().a(), null).a("Common_Max_Count");
+    } while ((j == -1) || (j == 0));
+    int j = ((SharedPreferences)localObject).getInt("SP_Show_Dialog_Count", 0);
+    Object localObject = ((SharedPreferences)localObject).getString("SP_Show_Dialog_Date", "");
+    String str = new SimpleDateFormat("yyyy年MM月dd日").format(new Date(System.currentTimeMillis()));
+    if (str.equals(localObject)) {
+      i = j + 1;
+    }
+    localEditor.putInt("SP_Show_Dialog_Count", i);
+    localEditor.putString("SP_Show_Dialog_Date", str);
+    localEditor.commit();
+  }
+  
+  public static void a(long paramLong)
+  {
+    SharedPreferences.Editor localEditor = bexd.a().a().getSharedPreferences("share_myAppApi", 0).edit();
+    localEditor.putLong("SP_Lastest_require_time", paramLong);
+    localEditor.commit();
+  }
+  
+  public static boolean a()
+  {
+    return true;
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    SharedPreferences localSharedPreferences = bexd.a().a().getSharedPreferences("share_myAppApi", 0);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    long l = localSharedPreferences.getLong("SP_Lastest_require_time", paramLong);
+    if (paramLong - l >= b())
+    {
+      localEditor.putLong("SP_Lastest_require_time", paramLong);
+      localEditor.commit();
+    }
+    while (paramLong == l) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static long b()
+  {
+    return bfio.a(bexd.a().a(), null).a("Common_require_root_interval");
+  }
+  
+  public static void b()
+  {
+    int i = 0;
+    SharedPreferences localSharedPreferences = bexd.a().a().getSharedPreferences("share_myAppApi", 0);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    int j = localSharedPreferences.getInt("tmast_wake_times", 0);
+    if (!b(localSharedPreferences.getLong("tmast_wake_last_time", 0L))) {}
+    for (;;)
+    {
+      localEditor.putInt("tmast_wake_times", i + 1);
+      localEditor.putLong("tmast_wake_last_time", System.currentTimeMillis());
+      return;
+      i = j;
+    }
+  }
+  
+  public static boolean b()
+  {
+    DownloadInfo localDownloadInfo = bfkb.a().a("1101070898");
+    Object localObject = "";
+    if (localDownloadInfo != null) {
+      localObject = localDownloadInfo.l;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = new File((String)localObject);
+      if ((localObject != null) && (((File)localObject).exists())) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public static boolean b(long paramLong)
+  {
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTime(new Date(System.currentTimeMillis()));
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.setTime(new Date(paramLong));
+    return (localCalendar2.get(1) == localCalendar1.get(1)) && (localCalendar2.get(6) - localCalendar1.get(6) == 0);
+  }
+  
+  public static boolean c()
+  {
+    return bfio.a(bexd.a().a(), null).a("Common_root_autoinstall_flag") <= 0;
+  }
+  
+  public static boolean d()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bfij.a("com.tencent.android.qqdownloader") > 4001126)
+    {
+      bool1 = bool2;
+      if (bfio.a(bexd.a().a(), null).b("Common_QQ_CARRY_IDENTITY")) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean e()
+  {
+    Object localObject = bfio.a(bexd.a().a(), null).b("Common_Release_Control").trim();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    do
+    {
+      do
+      {
+        return true;
+      } while (((String)localObject).equals("-1"));
+      if (((String)localObject).equals("-2")) {
+        return false;
+      }
+      localObject = ((String)localObject).split(";");
+    } while (localObject == null);
+    String str1 = String.valueOf(bexd.a().a());
+    if (str1 == null) {
+      return false;
+    }
+    int j = localObject.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label115;
+      }
+      String str2 = localObject[i];
+      if ((str2.length() == 2) && (str1.endsWith(str2))) {
+        break;
+      }
+      i += 1;
+    }
+    label115:
+    return false;
+  }
+  
+  public static boolean f()
+  {
+    if (!bfio.a(bexd.a().a(), null).b("Common_Show_Dialog_Flag")) {}
+    int i;
+    int j;
+    do
+    {
+      boolean bool;
+      do
+      {
+        return false;
+        localObject = bexd.a().a().getSharedPreferences("share_myAppApi", 0);
+        bool = ((SharedPreferences)localObject).getBoolean("SP_Has_shown_Dialog", false);
+        if (!bfio.a(bexd.a().a(), null).a("Common_Dialog_Only_Once_Flag")) {
+          break;
+        }
+      } while (bool);
+      return true;
+      i = bfio.a(bexd.a().a(), null).a("Common_Max_Count");
+      bfhg.c("OpenConfig-MyAppApi", " maxCount = " + i);
+      if ((i == -1) || (i == 0)) {
+        return true;
+      }
+      j = ((SharedPreferences)localObject).getInt("SP_Show_Dialog_Count", 0);
+      Object localObject = ((SharedPreferences)localObject).getString("SP_Show_Dialog_Date", "");
+      if (!new SimpleDateFormat("yyyy年MM月dd日").format(new Date(System.currentTimeMillis())).equals(localObject)) {
+        break;
+      }
+    } while (j >= i);
+    return true;
+    return true;
+  }
+  
+  public static boolean g()
+  {
+    return bfio.a(bexd.a().a(), null).b("Common_MyAppDownload_Flag");
+  }
+  
+  public static boolean h()
+  {
+    return bfio.a(bexd.a().a(), null).b("Common_Detail_Page");
+  }
+  
+  public static boolean i()
+  {
+    boolean bool2 = false;
+    boolean bool3 = bfio.a(bexd.a().a(), null).c("Common_tmast_wake");
+    long l1 = bfio.a(bexd.a().a(), null).a("Common_wake_limite");
+    long l2 = bfio.a(bexd.a().a(), null).a("Common_wake_interval") * 1000L;
+    SharedPreferences localSharedPreferences = bexd.a().a().getSharedPreferences("share_myAppApi", 0);
+    int i = localSharedPreferences.getInt("tmast_wake_times", 0);
+    long l3 = localSharedPreferences.getLong("tmast_wake_last_time", 0L);
+    boolean bool4 = b(l3);
+    if (!bool4) {
+      i = 0;
+    }
+    bfhg.c("TAMST_WAKE", ">>allowTmastWake allowWake = " + bool3 + " wakeLimit = " + l1 + " wakeInterval = " + l2 + " wakeTimes = " + i + " isToday = " + bool4);
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (i < l1) {
+        if (System.currentTimeMillis() - l3 <= l2)
         {
-          paramInt2 = 7;
+          bool1 = bool2;
+          if (bool4) {}
         }
         else
         {
-          paramInt2 = QSecFramework.a(4L, localbfjy.jdField_a_of_type_Int, paramInt2, paramInt3, null, null, paramArrayOfObject1, paramArrayOfObject2);
-          localbfjy.jdField_a_of_type_Bfkj.a();
+          bool1 = true;
         }
       }
     }
+    return bool1;
   }
   
-  public void a()
+  public static boolean j()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1));
-  }
-  
-  public void a(bfjx parambfjx)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(parambfjx);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(5, parambfjx));
-  }
-  
-  public void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3));
-    }
-  }
-  
-  public void b(bfjx parambfjx)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(parambfjx);
+    return bfio.a(bexd.a().a(), null).b("Common_yyb_wifi_download_Switch");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfjt
  * JD-Core Version:    0.7.0.1
  */

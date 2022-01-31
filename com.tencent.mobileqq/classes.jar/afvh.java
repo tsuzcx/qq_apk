@@ -1,30 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
 class afvh
-  implements View.OnClickListener
+  implements axxj
 {
-  afvh(afvg paramafvg, DialogInterface.OnClickListener paramOnClickListener) {}
+  public WeakReference<afvf> a;
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Afvg, 0);
+    if (this.a.get() != null) {
+      afvf.a((afvf)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
     }
-    try
-    {
-      if (this.jdField_a_of_type_Afvg.isShowing()) {
-        this.jdField_a_of_type_Afvg.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afvh
  * JD-Core Version:    0.7.0.1
  */

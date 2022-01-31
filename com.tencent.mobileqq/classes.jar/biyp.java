@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import cooperation.qzone.CrashGuard;
 
-class biyp
-  implements View.OnClickListener
+public final class biyp
 {
-  biyp(biym parambiym) {}
-  
-  public void onClick(View paramView)
-  {
-    biym.a(this.a).setText(null);
-    this.a.dismiss();
-  }
+  public static CrashGuard a = new CrashGuard();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     biyp
  * JD-Core Version:    0.7.0.1
  */

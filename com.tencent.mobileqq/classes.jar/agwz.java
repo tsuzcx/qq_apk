@@ -1,17 +1,43 @@
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+
 public class agwz
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c = 0;
-  public long c;
+  private Handler a;
+  
+  agwz(Handler paramHandler)
+  {
+    this.a = paramHandler;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    paramInt = paramBundle.getInt("ErrorCode");
+    String str1 = paramBundle.getString("UniqueKey");
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituObserver", 2, agwq.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
+    }
+    String str2 = agwq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (!str2.equals(str1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituObserver", 2, agwq.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
+      }
+    }
+    while (this.a == null) {
+      return;
+    }
+    paramBundle = this.a.obtainMessage(2, paramBundle);
+    this.a.sendMessage(paramBundle);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agwz
  * JD-Core Version:    0.7.0.1
  */

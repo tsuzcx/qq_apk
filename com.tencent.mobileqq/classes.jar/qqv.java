@@ -1,24 +1,32 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.text.Spanned;
+import java.util.Comparator;
 
 public class qqv
-  extends osm
+  implements Comparator<Object>
 {
-  private qqv(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  private Spanned a;
   
-  public void j()
+  public qqv(Spanned paramSpanned)
   {
-    if ((this.a.getActivity() instanceof VideoFeedsPlayActivity))
-    {
-      ((VideoFeedsPlayActivity)this.a.getActivity()).d();
-      this.a.getActivity().overridePendingTransition(0, 0);
+    this.a = paramSpanned;
+  }
+  
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    int i = this.a.getSpanStart(paramObject1);
+    int j = this.a.getSpanStart(paramObject2);
+    if (i > j) {
+      return 1;
     }
+    if (i < j) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqv
  * JD-Core Version:    0.7.0.1
  */

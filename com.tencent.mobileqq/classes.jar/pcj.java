@@ -1,35 +1,31 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-class pcj
-  implements wxt
+public class pcj
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  pcj(pcf parampcf, String paramString) {}
+  public pcj(VideoView paramVideoView) {}
   
-  public void a(Bundle paramBundle)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive setSkinAndSound callback resp:" + paramBundle.toString());
-    }
-    JSONObject localJSONObject = new JSONObject();
     try
     {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
-      this.jdField_a_of_type_Pcf.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      VideoView.a(this.a, 10);
+      if (VideoView.b(this.a)) {
+        VideoView.h(this.a);
+      }
+      if (VideoView.a(this.a) != null) {
+        VideoView.a(this.a).c();
+      }
       return;
     }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Pcf.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
-    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pcj
  * JD-Core Version:    0.7.0.1
  */

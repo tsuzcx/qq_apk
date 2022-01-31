@@ -14,7 +14,7 @@ class RMVideoStateMgr$3
     {
       if (this.this$0.d())
       {
-        this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.b(this.this$0.jdField_a_of_type_Blbi);
+        this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.b(this.this$0.jdField_a_of_type_Bnms);
         this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.f();
         if (QLog.isColorLevel()) {
           QLog.d("RMVideoStateMgr", 2, "[@][closeAudioRecord]");
@@ -29,7 +29,7 @@ class RMVideoStateMgr$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr.3
  * JD-Core Version:    0.7.0.1
  */

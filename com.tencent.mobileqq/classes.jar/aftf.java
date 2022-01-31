@@ -1,46 +1,62 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
+import com.tencent.mobileqq.activity.aio.item.PttAudioChangeView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 
 public class aftf
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends aelt
 {
-  public aftf(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  public aeov a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public VoicePrintUtils.VoicePrintView a;
+  public BreathAnimationLayout a;
+  public PttAudioChangeView a;
+  public PttAudioPlayView a;
+  public PttAudioWaveView a;
+  public StringBuilder a;
+  private boolean a;
+  public ImageView b;
+  public TextView b;
+  public PttAudioChangeView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
   
-  public void onGlobalLayout()
+  public void a()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
     }
-    for (;;)
-    {
-      this.a.b(this.a.e);
-      this.a.c(this.a.e);
-      View localView = this.a.a.getChildAt(this.a.e);
-      if (localView != null)
-      {
-        this.a.h = localView.getLeft();
-        if (localView.getMeasuredWidth() == 0)
-        {
-          this.a.h = (SimpleSlidingIndicator.a(this.a) + (SimpleSlidingIndicator.b(this.a) + SimpleSlidingIndicator.c(this.a)) * this.a.e);
-          if (QLog.isColorLevel()) {
-            QLog.i("SimpleSlidingIndicator", 2, "onGlobalLayout, x[" + this.a.h + "], size[" + this.a.a.getChildCount() + "], left[" + localView.getLeft() + "], width[" + localView.getMeasuredWidth() + "], pos[" + this.a.e + "], CPlr" + SimpleSlidingIndicator.a(this.a) + "]");
-          }
-        }
-        this.a.invalidate();
-      }
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView.a();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aftf
  * JD-Core Version:    0.7.0.1
  */

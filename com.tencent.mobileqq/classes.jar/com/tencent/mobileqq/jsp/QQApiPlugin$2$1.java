@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import arne;
-import bcqf;
+import atdu;
+import bepp;
 
 class QQApiPlugin$2$1
   implements Runnable
@@ -17,7 +17,7 @@ class QQApiPlugin$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.QQApiPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

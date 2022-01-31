@@ -1,36 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import NS_KING_SOCIALIZE_META.stMetaComment;
+import NS_KING_SOCIALIZE_META.stMetaReply;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class tdz
-  implements syq<tea, teb>
+  implements View.OnClickListener
 {
-  private tdz(tdx paramtdx) {}
+  tdz(tdu paramtdu, stMetaComment paramstMetaComment, stMetaReply paramstMetaReply) {}
   
-  public void a(@NonNull tea paramtea, @Nullable teb paramteb, @NonNull ErrorMessage paramErrorMessage)
+  public void onClick(View paramView)
   {
-    if ((paramteb != null) && (paramteb.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
-    {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramteb.jdField_a_of_type_JavaUtilList);
-      ved.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramteb.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramteb.jdField_a_of_type_Boolean), paramteb.jdField_a_of_type_JavaLangString });
-      if ((paramteb.jdField_a_of_type_Boolean) || (paramteb.jdField_a_of_type_JavaUtilList.isEmpty()))
-      {
-        ved.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramteb.b) });
-        this.a.a(true, paramteb.b);
-        return;
-      }
-      this.a.c = paramteb.jdField_a_of_type_JavaLangString;
-      this.a.c();
-      return;
-    }
-    ved.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
-    this.a.a(false, 0);
+    this.jdField_a_of_type_Tdu.a.a().a(tdn.a(this.jdField_a_of_type_Tdu.a), this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply);
+    this.jdField_a_of_type_Tdu.a.a = true;
+    tlo.d("comment", "6 mCommentListChanged:" + this.jdField_a_of_type_Tdu.a.a);
+    tdn.a(this.jdField_a_of_type_Tdu.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdz
  * JD-Core Version:    0.7.0.1
  */

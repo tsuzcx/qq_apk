@@ -1,147 +1,110 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.annotation.TargetApi;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import java.util.HashMap;
 import java.util.Map;
 
+@TargetApi(14)
 public class uja
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean e;
+  public int a;
+  public long a;
+  public baps a;
+  public MessageForShortVideo a;
+  public String a;
+  public Map<String, Object> a;
+  public uit a;
+  public uiz a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g = 1;
   
-  public uja(ViewGroup paramViewGroup)
+  public uja()
   {
-    super(paramViewGroup);
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public String a()
+  public static String a(String paramString, int paramInt)
   {
-    return "UploadStatusVideoInfoWidget";
+    return paramInt + "_" + paramString;
   }
   
-  public void a(View paramView)
+  public static uja a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379120));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379122));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131379121));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379123));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    return a(paramString, null, paramInt, false);
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public static uja a(String paramString, int paramInt, boolean paramBoolean)
   {
-    if (paramStoryVideoItem.isUploadFail())
+    return a(paramString, null, paramInt, paramBoolean);
+  }
+  
+  private static uja a(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  {
+    uja localuja = new uja();
+    StoryVideoItem localStoryVideoItem = ((uro)urr.a(5)).a(paramString1);
+    if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine()))
     {
-      j();
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      switch (paramStoryVideoItem.mUpLoadFailedError)
-      {
-      default: 
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699715);
-      }
-      while (this.e)
-      {
-        this.e = false;
-        vei.a("play_video", "retrypub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699717);
-      }
-      vei.a("play_video", "exp_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
-      return;
-    }
-    if (paramStoryVideoItem.isUploading())
-    {
-      j();
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      int i = svx.a().a(paramStoryVideoItem.mVid);
-      if (i >= 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131715936) + i + "%");
-      }
-      for (;;)
-      {
-        svx.a().a(paramStoryVideoItem.mVid, new ujb(this));
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131715938));
+      localuja.e = ujb.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, false, false);
+      localuja.f = ujb.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, true, false);
+      localuja.jdField_b_of_type_Int = 0;
+      localuja.jdField_b_of_type_JavaLangString = paramString1;
+      localuja.jdField_a_of_type_Int = paramInt;
+      localuja.jdField_a_of_type_JavaLangString = a(paramString1, paramInt);
+      if (!paramBoolean) {
+        break label159;
       }
     }
-    k();
-  }
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new ujc(this), "");
-  }
-  
-  public void a(@NonNull uas paramuas, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    a(paramStoryVideoItem);
-  }
-  
-  public boolean a(@NonNull uas paramuas, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading());
-  }
-  
-  public int b()
-  {
-    return 2131561426;
-  }
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Uas != null) {}
-    for (StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Uas.a(); localStoryVideoItem == null; localStoryVideoItem = null)
+    label159:
+    for (paramString1 = "";; paramString1 = paramString2)
     {
-      ved.d(this.b, "video item not found ,click error..");
-      return;
+      localuja.jdField_c_of_type_JavaLangString = paramString1;
+      if (paramBoolean) {
+        paramString2 = "";
+      }
+      localuja.jdField_d_of_type_JavaLangString = paramString2;
+      localuja.jdField_c_of_type_Boolean = paramBoolean;
+      return localuja;
+      localuja.e = ujb.a(paramString1, paramInt, false, false);
+      localuja.f = ujb.a(paramString1, paramInt, true, false);
+      break;
     }
-    switch (paramView.getId())
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof uja))
     {
-    default: 
-      return;
+      paramObject = (uja)paramObject;
+      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
+        return true;
+      }
     }
-    switch (localStoryVideoItem.mUploadStatus)
-    {
-    case 4: 
-    case 5: 
-    default: 
-      return;
-    }
-    if (!tsr.a(localStoryVideoItem, b())) {
-      vei.a("play_video", "retrypub_fail", 0, 0, new String[0]);
-    }
-    for (;;)
-    {
-      vei.a("play_video", "clk_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from) });
-      ved.b(this.b, "on retry click !");
-      return;
-      this.e = true;
-    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "DownloadTask{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", fileType=" + ugx.a(this.jdField_a_of_type_Int) + ", status=" + this.jdField_b_of_type_Int + ", downloadUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", localPath='" + this.e + '\'' + ", localTmpPath='" + this.f + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uja
  * JD-Core Version:    0.7.0.1
  */

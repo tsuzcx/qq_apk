@@ -1,20 +1,46 @@
-import android.view.View;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.util.SparseIntArray;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
-class avom
-  implements bfph
+public class avom
 {
-  avom(avol paramavol, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, bfpc parambfpc) {}
+  public static final SparseIntArray a = new SparseIntArray(4);
+  public static final SparseIntArray b = new SparseIntArray(4);
   
-  public void OnClick(View paramView, int paramInt)
+  static
   {
-    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
-    this.jdField_a_of_type_Bfpc.dismiss();
+    a.put(1, 0);
+    a.put(2, 5);
+    a.put(3, 3);
+    a.put(4, 4);
+    b.put(0, 1);
+    b.put(5, 2);
+    b.put(3, 3);
+    b.put(4, 4);
+  }
+  
+  public static int a(int paramInt)
+  {
+    if ((paramInt >= 1) && (paramInt <= 4)) {
+      return a.get(paramInt);
+    }
+    return a.get(1);
+  }
+  
+  public static void a(RedTouchItem paramRedTouchItem1, RedTouchItem paramRedTouchItem2)
+  {
+    paramRedTouchItem1.count = paramRedTouchItem2.count;
+    paramRedTouchItem1.receiveTime = paramRedTouchItem2.receiveTime;
+    paramRedTouchItem1.redtouchType = paramRedTouchItem2.redtouchType;
+    paramRedTouchItem1.curSeq = paramRedTouchItem2.curSeq;
+    paramRedTouchItem1.icon = paramRedTouchItem2.icon;
+    paramRedTouchItem1.unReadFlag = paramRedTouchItem2.unReadFlag;
+    paramRedTouchItem1.validTimeRemained = paramRedTouchItem2.validTimeRemained;
+    paramRedTouchItem1.isClosed = paramRedTouchItem2.isClosed;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avom
  * JD-Core Version:    0.7.0.1
  */

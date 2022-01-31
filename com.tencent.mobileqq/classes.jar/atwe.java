@@ -1,51 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_write.DelFeedRsp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.TroopAssistantData;
+import java.util.Comparator;
 
-final class atwe
-  implements athz
+class atwe
+  implements Comparator<TroopAssistantData>
 {
-  atwe(atwh paramatwh, String paramString) {}
+  atwe(atwd paramatwd) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      paramBundle = new ilive_feeds_write.DelFeedRsp();
+    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
+    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
+    if (l1 < l2) {
+      return 1;
     }
-    for (;;)
-    {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramInt = paramBundle.ret.get();
-        if (paramInt == 0)
-        {
-          if (this.jdField_a_of_type_Atwh != null) {
-            this.jdField_a_of_type_Atwh.a(bool, this.jdField_a_of_type_JavaLangString);
-          }
-          return;
-        }
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, ret=" + paramInt + ",msg=" + paramBundle.err_msg.get().toStringUtf8());
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, e=" + paramArrayOfByte.toString());
-        continue;
-      }
-      bool = false;
-      continue;
-      QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
+    if (l1 == l2) {
+      return 0;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atwe
  * JD-Core Version:    0.7.0.1
  */

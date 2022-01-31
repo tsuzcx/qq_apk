@@ -1,163 +1,120 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import mqq.manager.TicketManager;
-import tencent.im.oidb.cmd0xa79.oidb_0xa79.ReqBody;
-import tencent.im.oidb.cmd0xa79.oidb_0xa79.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
-public class axkc
-  extends MSFServlet
+class axkc
+  implements bapx
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  axka jdField_a_of_type_Axka;
+  axkb jdField_a_of_type_Axkb;
+  
+  axkc(axjt paramaxjt, axkb paramaxkb, axka paramaxka)
   {
-    if (paramFromServiceMsg == null) {}
-    byte[] arrayOfByte;
-    int i;
-    for (;;)
+    this.jdField_a_of_type_Axkb = paramaxkb;
+    this.jdField_a_of_type_Axka = paramaxka;
+  }
+  
+  public void onResp(baqw parambaqw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, String.format("SessionResHttpListener respCode[%s], resName[%s], resUrl[%s]", new Object[] { Integer.valueOf(parambaqw.c), this.jdField_a_of_type_Axka.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Axka.c }));
+    }
+    parambaqw = (axka)parambaqw.a.a();
+    if (parambaqw == null) {}
+    label269:
+    label286:
+    do
     {
-      return;
-      arrayOfByte = null;
-      if (paramFromServiceMsg.isSuccess())
+      do
       {
-        arrayOfByte = bbma.b(paramFromServiceMsg.getWupBuffer());
-        i = paramIntent.getIntExtra("action", 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoServlet", 2, new Object[] { "ShortVideoServlet, onReceive action: ", Integer.valueOf(i) });
-        }
-        switch (i)
+        for (;;)
         {
-        default: 
           return;
-        case 1: 
+          if (!parambaqw.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Axka.jdField_a_of_type_JavaLangString)) {
+            break label286;
+          }
+          if (axjt.b(parambaqw.jdField_a_of_type_JavaLangString, parambaqw.jdField_b_of_type_JavaLangString, false)) {}
           try
           {
-            if (paramFromServiceMsg.isSuccess())
+            ndr.a(new File(axjt.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Axka.jdField_a_of_type_JavaLangString), axjt.jdField_a_of_type_JavaLangString);
+            if (parambaqw.jdField_b_of_type_Boolean) {
+              break label269;
+            }
+            parambaqw = (axjx)this.jdField_a_of_type_Axjt.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Axkb.a));
+            if (parambaqw != null)
             {
-              paramIntent = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom(arrayOfByte);
-              if ((paramIntent == null) || (!paramIntent.uint32_result.has())) {
-                break label461;
-              }
-              i = paramIntent.uint32_result.get();
-              if (i == 0)
+              parambaqw = parambaqw.b.iterator();
+              while (parambaqw.hasNext())
               {
-                paramIntent = ByteBuffer.wrap(paramIntent.bytes_bodybuffer.get().toByteArray());
-                paramFromServiceMsg = new oidb_0xa79.RspBody();
-                paramFromServiceMsg.mergeFrom(paramIntent.array());
-                i = paramFromServiceMsg.uint32_real_state.get();
-                int j = paramFromServiceMsg.uint32_bind_num.get();
-                int k = paramFromServiceMsg.uint32_id_level.get();
-                int m = paramFromServiceMsg.enum_upload_cre.get();
-                if (QLog.isColorLevel()) {
-                  QLog.d("ShortVideoServlet", 2, new Object[] { "onReceive, realname check result:", Integer.valueOf(i), " bindNum:", Integer.valueOf(j), " idLevel:", Integer.valueOf(k), " uploadCreStat:", Integer.valueOf(m) });
+                axkb localaxkb = (axkb)parambaqw.next();
+                if (axjt.a(this.jdField_a_of_type_Axjt, localaxkb, this.jdField_a_of_type_Axka)) {
+                  parambaqw.remove();
                 }
-                paramIntent = BaseApplicationImpl.sApplication.getRuntime();
-                if (!(paramIntent instanceof QQAppInterface)) {
-                  continue;
-                }
-                ((akwl)((QQAppInterface)paramIntent).a(118)).notifyUI(1, true, new Object[] { Integer.valueOf(i) });
-                return;
               }
             }
           }
-          catch (Exception paramFromServiceMsg)
+          catch (IOException localIOException)
           {
-            paramIntent = paramFromServiceMsg.getMessage();
-            QLog.e("ShortVideoServlet", 1, "onReceive, ", paramFromServiceMsg);
+            for (;;)
+            {
+              localIOException.printStackTrace();
+            }
           }
         }
-      }
-    }
-    for (;;)
-    {
-      QLog.d("ShortVideoServlet", 1, new Object[] { "onReceive, realname check fail, ", paramIntent });
+      } while (!QLog.isColorLevel());
+      QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[onResp]: BusinessParam=null  kind=" + this.jdField_a_of_type_Axkb.a + " mItem.mName=" + this.jdField_a_of_type_Axka.jdField_a_of_type_JavaLangString);
       return;
-      QLog.e("ShortVideoServlet", 1, new Object[] { "ShortVideoServlet, onReceive failCode:", Integer.valueOf(paramFromServiceMsg.getBusinessFailCode()), " failMsg: %s", paramFromServiceMsg.getBusinessFailMsg() });
-      break;
-      paramIntent = "error ret " + i;
-      continue;
-      paramIntent = "msg fail " + paramFromServiceMsg.getBusinessFailCode();
-      continue;
-      axgo.a().a(paramFromServiceMsg, arrayOfByte);
+      axjt.a(this.jdField_a_of_type_Axjt, this.jdField_a_of_type_Axkb, this.jdField_a_of_type_Axka);
       return;
-      axgo.a().b(paramFromServiceMsg, arrayOfByte);
-      return;
-      label461:
-      if (paramIntent == null) {
-        paramIntent = "no pkg";
-      } else {
-        paramIntent = "no pkg result";
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[onResp]: download information no match current=" + this.jdField_a_of_type_Axka.jdField_a_of_type_JavaLangString + " callback=" + parambaqw.jdField_a_of_type_JavaLangString);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
   {
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    String str = ((AppRuntime)localObject).getAccount();
-    if (str == null) {
-      QLog.d("ShortVideoServlet", 1, "sendRealNameCheckReq, uin is null");
-    }
-    int i;
+    parambaqv = (axka)parambaqv.a();
+    if (parambaqv == null) {}
+    label134:
+    label187:
     do
     {
-      return;
-      i = paramIntent.getIntExtra("action", 0);
-      QLog.d("ShortVideoServlet", 1, new Object[] { "ShortVideoServlet, onSend action: ", Integer.valueOf(i) });
-      switch (i)
+      do
       {
-      default: 
-        return;
-      case 1: 
-        localObject = ((TicketManager)((AppRuntime)localObject).getManager(2)).getSkey(str);
-        if (TextUtils.isEmpty((CharSequence)localObject))
+        for (;;)
         {
-          if (localObject == null) {}
-          for (boolean bool = true;; bool = false)
+          return;
+          if (!parambaqv.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_Axka.jdField_a_of_type_JavaLangString)) {
+            break label187;
+          }
+          Object localObject = (axjx)this.jdField_a_of_type_Axjt.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Axkb.a));
+          if (localObject == null) {
+            break label134;
+          }
+          if (parambaqv.jdField_b_of_type_Boolean) {
+            break;
+          }
+          parambaqv = ((axjx)localObject).b.iterator();
+          while (parambaqv.hasNext())
           {
-            QLog.d("ShortVideoServlet", 1, new Object[] { "sendRealNameCheckReq skey error, skeyIsNull", Boolean.valueOf(bool) });
-            return;
+            localObject = (axkb)parambaqv.next();
+            axjt.a(this.jdField_a_of_type_Axjt, (axkb)localObject, this.jdField_a_of_type_Axka, paramLong1, paramLong2);
           }
         }
-        paramIntent = new oidb_0xa79.ReqBody();
-        paramIntent.bytes_skey.set(ByteStringMicro.copyFromUtf8((String)localObject));
-        localObject = new oidb_sso.OIDBSSOPkg();
-        ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(2681);
-        ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(0);
-        ((oidb_sso.OIDBSSOPkg)localObject).str_client_version.set(AppSetting.f());
-        ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
-        paramIntent = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
-        localObject = ByteBuffer.allocate(paramIntent.length + 4);
-        ((ByteBuffer)localObject).putInt(paramIntent.length + 4);
-        ((ByteBuffer)localObject).put(paramIntent);
-        paramPacket.putSendData(((ByteBuffer)localObject).array());
-        paramPacket.setSSOCommand("OidbSvc.0xa79");
+        axjt.a(this.jdField_a_of_type_Axjt, this.jdField_a_of_type_Axkb, this.jdField_a_of_type_Axka, paramLong1, paramLong2);
         return;
-      case 2: 
-        axgo.a().a(paramPacket, str);
-        return;
-      }
-      i = paramIntent.getIntExtra("key_dance_score", 0);
-    } while (i <= 0);
-    axgo.a().a(paramPacket, str, i);
+      } while (!QLog.isColorLevel());
+      QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[Progress]: BusinessParam=null  kind=" + this.jdField_a_of_type_Axkb.a + " mItem.mName=" + this.jdField_a_of_type_Axka.jdField_a_of_type_JavaLangString);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.e("CapturePtvTemplateManager", 2, "SessionResHttpListener[Progress]: download information no match current=" + this.jdField_a_of_type_Axka.jdField_a_of_type_JavaLangString + " callback=" + parambaqv.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axkc
  * JD-Core Version:    0.7.0.1
  */

@@ -3,21 +3,21 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import athj;
-import athv;
-import athw;
+import auyi;
+import auyu;
+import auyv;
 import java.util.ArrayList;
 
 public class VideoData
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoData> CREATOR = new athw();
+  public static final Parcelable.Creator<VideoData> CREATOR = new auyv();
   public int a;
   public long a;
-  public athv a;
+  public auyu a;
   public LocationInfo a;
   public String a;
-  public ArrayList<athj> a;
+  public ArrayList<auyi> a;
   public boolean a;
   public int b;
   public long b;
@@ -158,7 +158,7 @@ public class VideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.VideoData
  * JD-Core Version:    0.7.0.1
  */

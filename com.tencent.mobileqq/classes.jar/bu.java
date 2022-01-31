@@ -1,68 +1,32 @@
-import com.dataline.activities.DLFilesViewerActivity;
-import com.dataline.activities.DLFilesViewerActivity.2.1;
+import com.dataline.activities.LiteActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class bu
-  extends ajut
+  implements bevo
 {
-  public bu(DLFilesViewerActivity paramDLFilesViewerActivity) {}
+  public bu(LiteActivity paramLiteActivity, DataLineMsgRecord paramDataLineMsgRecord, FileManagerEntity paramFileManagerEntity, String paramString1, String paramString2) {}
   
-  protected void a(long paramLong, float paramFloat)
+  public void a(int paramInt)
   {
-    super.a(paramLong, paramFloat);
-    this.a.runOnUiThread(new DLFilesViewerActivity.2.1(this, paramLong, paramFloat));
-  }
-  
-  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
-  }
-  
-  protected void a(String paramString)
-  {
-    super.a(paramString);
-    Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
-    while (localIterator.hasNext())
+    paramInt = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-      if (paramString.equals(localDataLineMsgRecord.strMoloKey))
-      {
-        localDataLineMsgRecord.nAppStatus = 1;
-        DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-      }
+      armz.b(arni.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692910));
+      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.b, null, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
+      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = localFileManagerEntity.nSessionId;
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(paramInt).c(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
+      return;
     }
-    DLFilesViewerActivity.b(this.a);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.a(paramBoolean, paramLong, paramString);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
-  }
-  
-  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.a(paramBoolean, paramLong, paramString);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
+    armz.b(arni.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692910));
+    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bu
  * JD-Core Version:    0.7.0.1
  */

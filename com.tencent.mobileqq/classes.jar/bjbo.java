@@ -1,95 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.biz.qqcircle.events.QCircleFakeFeed;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.1;
-import java.io.File;
+import eipc.EIPCResult;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StImage;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudMeta.StVideo;
+import feedcloud.FeedCloudWrite.StPublishFeedRsp;
 
-public class bjbo
-  extends bjan
+class bjbo
+  implements yvn<FeedCloudWrite.StPublishFeedRsp>
 {
-  public static Object a;
-  public static String a;
-  public QIMCaptureBannerConfig a;
+  bjbo(bjbk parambjbk, String paramString, int paramInt) {}
   
-  static
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StPublishFeedRsp paramStPublishFeedRsp)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = bjjt.a().getAbsolutePath() + File.separator + "banner_config";
-  }
-  
-  public bjbo()
-  {
-    c();
-  }
-  
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig != null)
+    QLog.d("[QzoneIPCModule_upload2]QCircle", 1, "ACTION_QCIRCLE_PULISH_FEED onReceive isSuccess:" + paramBoolean + " retCode:" + paramLong + " errMsg:" + paramString);
+    if ((paramBoolean) && (paramLong == 0L) && (paramStPublishFeedRsp != null) && (paramStPublishFeedRsp.feed != null) && (paramStPublishFeedRsp.feed.id != null))
     {
-      if (!paramBoolean) {
-        break label36;
-      }
-      if (this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig.update) {
-        QIMCaptureBannerConfig.saveBannerConfig(a(), this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig, jdField_a_of_type_JavaLangString);
-      }
+      localObject = new tvx().a(paramStPublishFeedRsp.feed.id.get()).b(this.jdField_a_of_type_JavaLangString).a(paramStPublishFeedRsp.feed.createTime.get()).f(paramStPublishFeedRsp.feed.poster.id.get()).a(paramStPublishFeedRsp.feed.feedType.get()).g(paramStPublishFeedRsp.feed.video.playUrl.get()).e(paramStPublishFeedRsp.feed.cover.picUrl.get()).b(paramStPublishFeedRsp.feed.cover.width.get()).c(paramStPublishFeedRsp.feed.cover.height.get()).d(paramStPublishFeedRsp.feed.video.duration.get()).a();
+      QLog.d("[QzoneIPCModule_upload2]QCircle", 1, new Object[] { "ACTION_QCIRCLE_PULISH_FEED onReceive feed id:", paramStPublishFeedRsp.feed.id.get(), " clientKey:", this.jdField_a_of_type_JavaLangString });
+      yej.a().a(new QCircleFeedEvent((QCircleFakeFeed)localObject, 2));
     }
-    return;
-    label36:
-    QIMCaptureBannerConfig.saveBannerConfig(a(), this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig, jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(QIMCaptureBannerConfig.BannerItem paramBannerItem)
-  {
-    if ((paramBannerItem == null) || (TextUtils.isEmpty(paramBannerItem.imgMd5))) {}
-    File localFile;
-    do
-    {
-      do
-      {
-        return false;
-        localFile = new File(jdField_a_of_type_JavaLangString, paramBannerItem.imgMd5);
-        if (localFile.exists()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QIMCaptureBannerManager", 2, "isBannerIconUsable|file is not exist -> " + paramBannerItem.imgUrl);
-      return false;
-      try
-      {
-        String str = bbdx.c(localFile.getPath());
-        if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(paramBannerItem.imgMd5))) {
-          break;
-        }
-        return true;
-      }
-      catch (UnsatisfiedLinkError paramBannerItem) {}
-    } while (!QLog.isColorLevel());
-    paramBannerItem.printStackTrace();
-    return false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCaptureBannerManager", 2, "isBannerIconUsable|fileMd5 error " + paramBannerItem.imgUrl);
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putLong("key_return_code", paramLong);
+    ((Bundle)localObject).putString("key_error_msg", paramString);
+    if ((paramStPublishFeedRsp != null) && (paramStPublishFeedRsp.feed != null) && (paramStPublishFeedRsp.feed.id != null)) {
+      ((Bundle)localObject).putString("key_stfeed_id", paramStPublishFeedRsp.feed.id.get());
     }
-    localFile.delete();
-    return false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig = null;
-  }
-  
-  public void c()
-  {
-    ThreadManager.post(new QIMCaptureBannerManager.1(this), 8, null, true);
+    ((Bundle)localObject).putString("key_clientkey", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bjbk.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, (Bundle)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjbo
  * JD-Core Version:    0.7.0.1
  */

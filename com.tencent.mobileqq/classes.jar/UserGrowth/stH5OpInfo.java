@@ -4,11 +4,15 @@ import NS_KING_SOCIALIZE_META.stMetaTag;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class stH5OpInfo
   extends JceStruct
 {
+  static Map<String, String> cache_exp;
   static stMetaTag cache_tag = new stMetaTag();
+  public Map<String, String> exp;
   public String h5Url = "";
   public int id;
   public String maskImgUrl = "";
@@ -17,9 +21,15 @@ public final class stH5OpInfo
   public String text = "";
   public int type;
   
+  static
+  {
+    cache_exp = new HashMap();
+    cache_exp.put("", "");
+  }
+  
   public stH5OpInfo() {}
   
-  public stH5OpInfo(int paramInt1, String paramString1, stMetaTag paramstMetaTag, String paramString2, int paramInt2, String paramString3, String paramString4)
+  public stH5OpInfo(int paramInt1, String paramString1, stMetaTag paramstMetaTag, String paramString2, int paramInt2, String paramString3, String paramString4, Map<String, String> paramMap)
   {
     this.id = paramInt1;
     this.h5Url = paramString1;
@@ -28,6 +38,7 @@ public final class stH5OpInfo
     this.type = paramInt2;
     this.scheme_url = paramString3;
     this.maskImgUrl = paramString4;
+    this.exp = paramMap;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -39,6 +50,7 @@ public final class stH5OpInfo
     this.type = paramJceInputStream.read(this.type, 4, false);
     this.scheme_url = paramJceInputStream.readString(5, false);
     this.maskImgUrl = paramJceInputStream.readString(6, false);
+    this.exp = ((Map)paramJceInputStream.read(cache_exp, 7, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -59,6 +71,9 @@ public final class stH5OpInfo
     }
     if (this.maskImgUrl != null) {
       paramJceOutputStream.write(this.maskImgUrl, 6);
+    }
+    if (this.exp != null) {
+      paramJceOutputStream.write(this.exp, 7);
     }
   }
 }

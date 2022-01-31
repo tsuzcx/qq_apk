@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-
-final class akpy
-  implements Comparator<MessageRecord>
+public abstract interface akpy
 {
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpy
  * JD-Core Version:    0.7.0.1
  */

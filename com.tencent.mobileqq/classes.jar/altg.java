@@ -1,23 +1,51 @@
-public class altg
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
+
+class altg
+  implements aubn
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
+  altg(altc paramaltc) {}
   
-  public altg() {}
-  
-  public altg(String paramString1, String paramString2, String paramString3)
+  public void a(int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
+    }
+    this.a.d();
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
+    }
+    this.a.d();
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
+    }
+    if ((paramInt & 0x1) != 0) {
+      synchronized (altc.a(this.a))
+      {
+        Iterator localIterator = altc.a(this.a).iterator();
+        if (localIterator.hasNext()) {
+          ((alti)localIterator.next()).b();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     altg
  * JD-Core Version:    0.7.0.1
  */

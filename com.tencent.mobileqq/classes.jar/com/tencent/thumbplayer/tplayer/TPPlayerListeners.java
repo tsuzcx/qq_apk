@@ -7,6 +7,7 @@ import com.tencent.thumbplayer.api.ITPPlayerListener.IOnErrorListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnInfoListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnPreparedListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnSeekCompleteListener;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnStateChangeListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnSubtitleDataListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoFrameOutListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoSizeChangedListener;
@@ -15,7 +16,7 @@ import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 
 public class TPPlayerListeners
-  implements ITPPlayerListener.IOnAudioFrameOutputListener, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnSeekCompleteListener, ITPPlayerListener.IOnSubtitleDataListener, ITPPlayerListener.IOnVideoFrameOutListener, ITPPlayerListener.IOnVideoSizeChangedListener
+  implements ITPPlayerListener.IOnAudioFrameOutputListener, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnSeekCompleteListener, ITPPlayerListener.IOnStateChangeListener, ITPPlayerListener.IOnSubtitleDataListener, ITPPlayerListener.IOnVideoFrameOutListener, ITPPlayerListener.IOnVideoSizeChangedListener
 {
   private static String TAG = "TPPlayerListenerS";
   private TPPlayerListeners.TPPlayerListenersEmptyImpl EMPTY_LISTENERS;
@@ -23,6 +24,7 @@ public class TPPlayerListeners
   private ITPPlayerListener.IOnCompletionListener mOnCompletionListener;
   private ITPPlayerListener.IOnErrorListener mOnErrorListener;
   private ITPPlayerListener.IOnInfoListener mOnInfoListener;
+  private ITPPlayerListener.IOnStateChangeListener mOnPlayerStateChangeListener;
   private ITPPlayerListener.IOnPreparedListener mOnPreparedListener;
   private ITPPlayerListener.IOnSeekCompleteListener mOnSeekCompleteListener;
   private ITPPlayerListener.IOnSubtitleDataListener mOnSubtitleDataListener;
@@ -42,6 +44,7 @@ public class TPPlayerListeners
     this.mOnSubtitleDataListener = this.EMPTY_LISTENERS;
     this.mOnVideoFrameOutListener = this.EMPTY_LISTENERS;
     this.mOnAudioFrameOutListener = this.EMPTY_LISTENERS;
+    this.mOnPlayerStateChangeListener = this.EMPTY_LISTENERS;
   }
   
   public void clear()
@@ -55,6 +58,7 @@ public class TPPlayerListeners
     this.mOnSubtitleDataListener = this.EMPTY_LISTENERS;
     this.mOnVideoFrameOutListener = this.EMPTY_LISTENERS;
     this.mOnAudioFrameOutListener = this.EMPTY_LISTENERS;
+    this.mOnPlayerStateChangeListener = this.EMPTY_LISTENERS;
   }
   
   public void onAudioFrameOut(ITPPlayer paramITPPlayer, TPAudioFrameBuffer paramTPAudioFrameBuffer)
@@ -85,6 +89,11 @@ public class TPPlayerListeners
   public void onSeekComplete(ITPPlayer paramITPPlayer)
   {
     this.mOnSeekCompleteListener.onSeekComplete(paramITPPlayer);
+  }
+  
+  public void onStateChange(int paramInt1, int paramInt2)
+  {
+    this.mOnPlayerStateChangeListener.onStateChange(paramInt1, paramInt2);
   }
   
   public void onSubtitleData(ITPPlayer paramITPPlayer, TPSubtitleData paramTPSubtitleData)
@@ -122,6 +131,11 @@ public class TPPlayerListeners
     this.mOnInfoListener = paramIOnInfoListener;
   }
   
+  public void setOnPlayerStateChangeListener(ITPPlayerListener.IOnStateChangeListener paramIOnStateChangeListener)
+  {
+    this.mOnPlayerStateChangeListener = paramIOnStateChangeListener;
+  }
+  
   public void setOnPreparedListener(ITPPlayerListener.IOnPreparedListener paramIOnPreparedListener)
   {
     this.mOnPreparedListener = paramIOnPreparedListener;
@@ -149,7 +163,7 @@ public class TPPlayerListeners
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayerListeners
  * JD-Core Version:    0.7.0.1
  */

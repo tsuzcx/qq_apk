@@ -159,7 +159,7 @@ public class SpeedUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tissue.v8rt.engine.SpeedUtil
  * JD-Core Version:    0.7.0.1
  */

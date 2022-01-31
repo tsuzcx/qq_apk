@@ -1,40 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
 class rbe
-  extends sdq
+  extends GestureDetector.SimpleOnGestureListener
 {
-  rbe(ram paramram) {}
+  rbe(rbd paramrbd) {}
   
-  public void a(sdr paramsdr)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (paramsdr != null)
-    {
-      int j = this.a.a.getHeaderViewsCount();
-      new ArrayList();
-      int i = paramsdr.jdField_a_of_type_Int;
-      while (i <= paramsdr.b)
-      {
-        int k = i - j;
-        if (k >= 0)
-        {
-          BaseArticleInfo localBaseArticleInfo = this.a.b(k);
-          if (localBaseArticleInfo != null)
-          {
-            QLog.d("FeedExposureHelper", 2, "onExposure : " + localBaseArticleInfo + " proteusItemsData : " + localBaseArticleInfo.proteusItemsData);
-            shu.a(localBaseArticleInfo, paramsdr.jdField_a_of_type_Long);
-          }
-        }
-        i += 1;
-      }
+    if ((rbd.a(this.a) != null) && (rbd.a(this.a).a != null)) {
+      this.a.a.a(rbd.a(this.a).a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     }
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((rbd.a(this.a) != null) && (rbd.a(this.a).d != null)) {
+      this.a.a.onClick(rbd.a(this.a).d);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rbe
  * JD-Core Version:    0.7.0.1
  */

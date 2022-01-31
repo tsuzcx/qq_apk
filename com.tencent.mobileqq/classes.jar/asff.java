@@ -1,63 +1,47 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopRemindSettingData;
-import com.tencent.mobileqq.managers.TroopRemindSettingManager.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.MessageForFuDai;
 
 public class asff
+  implements afal, Handler.Callback
 {
-  private static asff a;
+  private BaseChatPie a;
   
-  public static asff a()
+  public asff(BaseChatPie paramBaseChatPie)
   {
-    if (a == null) {
-      a = new asff();
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 12: 
+    case 13: 
+      asfg.e();
+      return;
     }
-    return a;
+    asfg.f();
   }
   
-  public static void a()
+  void a(MessageForFuDai paramMessageForFuDai) {}
+  
+  public int[] a()
   {
-    if (a != null) {
-      a = null;
-    }
+    return new int[] { 2, 11, 12, 13, 14 };
   }
   
-  public void a(aukp paramaukp, QQAppInterface paramQQAppInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("init_troop_remind", false).commit();
-  }
-  
-  public void a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
-    localTroopRemindSettingData.troopUin = paramString;
-    localTroopRemindSettingData.isOpenState = 1;
-    paramQQAppInterface.b(localTroopRemindSettingData);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("init_troop_remind", true);
-  }
-  
-  public boolean a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    paramString = (TroopRemindSettingData)paramQQAppInterface.getEntityManagerFactory().createEntityManager().a(TroopRemindSettingData.class, paramString);
-    return (paramString != null) && (paramString.isOpenState == 0);
-  }
-  
-  public void b(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.post(new TroopRemindSettingManager.1(this, paramQQAppInterface, paramString), 8, null, false);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asff
  * JD-Core Version:    0.7.0.1
  */

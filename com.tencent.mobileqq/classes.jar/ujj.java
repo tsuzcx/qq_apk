@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class ujj
-  implements DialogInterface.OnDismissListener
+public abstract interface ujj
 {
-  ujj(uji paramuji, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt);
+  
+  public abstract void b(String paramString1, String paramString2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujj
  * JD-Core Version:    0.7.0.1
  */

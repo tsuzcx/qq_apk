@@ -1,56 +1,19 @@
-import android.text.TextUtils;
-
-public class afru
+class afru
+  extends aekx
 {
-  public int a;
-  public Object a;
+  public long a;
   public String a;
-  public short a;
-  public boolean a;
   public int b;
   public String b;
-  public boolean b;
+  public int c;
   public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
+  int d;
   
-  public boolean a()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    boolean bool2;
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (bool1) {
-        bool2 = this.c;
-      }
-      if (!bool2) {
-        return bool2;
-      }
-      switch (this.jdField_a_of_type_Int)
-      {
-      default: 
-        if (this.jdField_a_of_type_Short == 0) {
-          break;
-        }
-      case 1: 
-      case 2: 
-      case 3: 
-      case 4: 
-      case 5: 
-        return true;
-      }
-    }
-    return false;
-    return bool2;
-  }
+  afru(afrs paramafrs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afru
  * JD-Core Version:    0.7.0.1
  */

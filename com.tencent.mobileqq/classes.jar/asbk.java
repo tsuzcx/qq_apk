@@ -1,36 +1,31 @@
-import android.util.Log;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
-public class asbk
+class asbk
+  implements View.OnClickListener
 {
-  public static asbc a(String paramString, boolean paramBoolean)
+  asbk(asbj paramasbj, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramString != null) && (paramString.length() >= 0))
+    if (asbj.a(this.jdField_a_of_type_Asbj, this.jdField_a_of_type_Int))
     {
-      if (paramBoolean) {}
-      for (;;)
-      {
-        try
-        {
-          paramString = new asbo(paramString).a();
-          if ((paramString == null) || (paramString.a.size() <= 0)) {
-            break;
-          }
-          return paramString;
-        }
-        catch (Exception paramString)
-        {
-          Log.e("LyricParseHelper", "parse exception:", paramString);
-        }
-        paramString = new asbl(paramString).a();
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localQQAppInterface != null) {
+        azmj.b(localQQAppInterface, "dc00898", "", "", "0X800A612", "0X800A612", 0, 0, "", "", "", "");
       }
     }
-    return null;
+    if (LangSettingFragment.a(this.jdField_a_of_type_Asbj.a) != ((Integer)paramView.getTag()).intValue()) {
+      LangSettingFragment.a(this.jdField_a_of_type_Asbj.a, ((Integer)paramView.getTag()).intValue());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asbk
  * JD-Core Version:    0.7.0.1
  */

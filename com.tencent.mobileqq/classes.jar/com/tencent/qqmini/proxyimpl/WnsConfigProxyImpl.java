@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import amsy;
-import amsz;
+import aoka;
+import aokb;
 import com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy;
 import common.config.service.QzoneConfig;
 import java.util.List;
@@ -11,9 +11,9 @@ public class WnsConfigProxyImpl
 {
   public List<String> getApiReportConfig()
   {
-    amsy localamsy = amsz.a();
-    if (localamsy != null) {
-      return localamsy.a();
+    aoka localaoka = aokb.a();
+    if (localaoka != null) {
+      return localaoka.a();
     }
     return null;
   }
@@ -25,7 +25,7 @@ public class WnsConfigProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.WnsConfigProxyImpl
  * JD-Core Version:    0.7.0.1
  */

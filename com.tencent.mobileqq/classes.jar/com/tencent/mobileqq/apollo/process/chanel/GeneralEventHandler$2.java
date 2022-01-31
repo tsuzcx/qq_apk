@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajac;
-import ajbz;
-import ajcf;
+import akro;
+import aktl;
+import aktr;
 import android.content.Context;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class GeneralEventHandler$2
   implements Runnable
 {
-  public GeneralEventHandler$2(ajbz paramajbz, String paramString) {}
+  public GeneralEventHandler$2(aktl paramaktl, String paramString) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class GeneralEventHandler$2
     {
       Object localObject1 = new JSONObject(this.a);
       int i = ((JSONObject)localObject1).getInt("xyId");
-      if (ajbz.a(this.this$0) == i)
+      if (aktl.a(this.this$0) == i)
       {
         QLog.e("apollochannel_GeneralEventHandler", 1, "startNewGame error mGameId == gameId");
         return;
@@ -30,10 +30,10 @@ public class GeneralEventHandler$2
       Object localObject2 = ((JSONObject)localObject1).optString("extendInfo");
       localObject1 = new CmGameStartChecker.StartCheckParam(i, true, "launch", 0L, 0, 0, 0, 0, "", j, null);
       ((CmGameStartChecker.StartCheckParam)localObject1).extendJson = ((String)localObject2);
-      localObject2 = ajac.a(ajbz.a(this.this$0));
+      localObject2 = akro.a(aktl.a(this.this$0));
       if (localObject2 != null)
       {
-        localObject2 = ((ajcf)localObject2).a();
+        localObject2 = ((aktr)localObject2).a();
         if (localObject2 != null)
         {
           ((CmGameStartChecker.StartCheckParam)localObject1).sessionUin = ((CmGameStartChecker.StartCheckParam)localObject2).sessionUin;
@@ -56,7 +56,7 @@ public class GeneralEventHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.2
  * JD-Core Version:    0.7.0.1
  */

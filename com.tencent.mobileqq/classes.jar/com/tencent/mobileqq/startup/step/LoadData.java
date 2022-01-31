@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahon;
-import axnx;
+import ajfw;
+import azjg;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
-import xop;
+import zdi;
 
 public class LoadData
   extends Step
@@ -15,11 +15,11 @@ public class LoadData
     boolean bool2 = true;
     AppActivity localAppActivity = this.mDirector.a;
     long l = System.currentTimeMillis();
-    xop.a = l;
+    zdi.a = l;
     if (localAppActivity != null)
     {
-      if (xop.a(BaseApplicationImpl.sApplication)) {
-        ahon.a(BaseApplicationImpl.sApplication, true);
+      if (zdi.a(BaseApplicationImpl.sApplication)) {
+        ajfw.a(BaseApplicationImpl.sApplication, true);
       }
     }
     else {
@@ -44,7 +44,7 @@ public class LoadData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadData
  * JD-Core Version:    0.7.0.1
  */

@@ -275,10 +275,13 @@ public class ExpressionDetectorObject
     }
     if (f / 12.0F < 0.5D)
     {
-      this.islipsOccluded[paramInt] = true;
-      return false;
+      if (paramInt < this.islipsOccluded.length)
+      {
+        this.islipsOccluded[paramInt] = true;
+        return false;
+      }
     }
-    if (this.islipsOccluded[paramInt] != 0)
+    else if ((paramInt < this.islipsOccluded.length) && (this.islipsOccluded[paramInt] != 0))
     {
       this.islipsOccluded[paramInt] = false;
       return true;

@@ -1,14 +1,23 @@
-import android.graphics.Bitmap;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface bizb
+final class bizb
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  bizb(Dialog paramDialog, Context paramContext, String paramString) {}
   
-  public abstract void a(Bitmap paramBitmap);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bizb
  * JD-Core Version:    0.7.0.1
  */

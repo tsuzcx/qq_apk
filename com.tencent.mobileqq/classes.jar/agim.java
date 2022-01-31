@@ -1,22 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class agim
-  implements DialogInterface.OnKeyListener
+  extends agij
 {
-  public agim(BaseActivityView paramBaseActivityView) {}
+  public String b;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public agim(String paramString)
   {
-    return (paramInt == 4) && (this.a.a.e()) && (bbfj.d(this.a.getContext()));
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null) {
+      this.b = paramRedPacketInfo.resPath;
+    }
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agim
  * JD-Core Version:    0.7.0.1
  */

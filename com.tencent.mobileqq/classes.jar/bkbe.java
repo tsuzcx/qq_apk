@@ -1,33 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import cooperation.vip.pb.vac_adv_get.DropList;
 
-class bkbe
-  implements ValueAnimator.AnimatorUpdateListener
+public class bkbe
 {
-  bkbe(bkbd parambkbd) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static bkbe a(vac_adv_get.DropList paramDropList)
   {
-    if (this.a.a.b == null) {
-      return;
+    if (paramDropList == null) {
+      return null;
     }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * f);
-    this.a.t = (this.a.e + this.a.g * f);
-    this.a.q = (this.a.b + this.a.h * f);
-    this.a.r = (this.a.c + this.a.i * f);
-    if (this.a.a.a != null) {
-      this.a.a.a.a(f);
-    }
-    if (f == 1.0F) {
-      this.a.a.b(5);
-    }
-    bkba.a(this.a.a);
+    bkbe localbkbe = new bkbe();
+    localbkbe.jdField_a_of_type_Int = paramDropList.action_type.get();
+    localbkbe.b = paramDropList.optext.get();
+    localbkbe.jdField_a_of_type_JavaLangString = paramDropList.iconurl.get();
+    localbkbe.c = paramDropList.jumpurl.get();
+    return localbkbe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkbe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,130 +1,57 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RouterHandler;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar.10;
-import cooperation.troop.TroopFileProxyActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 public class apxz
-  extends AsyncTask<Void, Void, Void>
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public apxz(SendBottomBar.10 param10) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private aqba jdField_a_of_type_Aqba;
   
-  protected Void a(Void... paramVarArgs)
+  public apxz(View paramView, aqba paramaqba)
   {
-    paramVarArgs = SendBottomBar.a(this.a.this$0).a();
-    int i = SendBottomBar.a(this.a.this$0).a();
-    Object localObject1 = SendBottomBar.a(this.a.this$0).b();
-    if (i == 5)
+    super(paramView);
+    this.jdField_a_of_type_Aqba = paramaqba;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379119));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(aqdo.a);
+  }
+  
+  public void a(apxz paramapxz, apyo paramapyo)
+  {
+    String str = "";
+    boolean bool = false;
+    switch (paramapyo.mFooterType)
     {
-      TroopFileProxyActivity.a.addAll(apel.a());
-      return null;
-    }
-    Object localObject2;
-    if (paramVarArgs.equals(ajsd.z))
-    {
-      localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(apel.a());
-      paramVarArgs = (ajum)SendBottomBar.a(this.a.this$0).a(8);
-      paramVarArgs.a((ArrayList)localObject1);
-      localObject1 = apel.b().iterator();
-      i = 0;
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
-        if (((FileManagerEntity)localObject2).nFileType == 13)
-        {
-          int j = i;
-          if (paramVarArgs.a((FileManagerEntity)localObject2) == 0L) {
-            j = i | 0x1;
-          }
-          i = j;
-        }
-      }
+    default: 
+      paramapyo = str;
     }
     for (;;)
     {
-      break;
-      if ((((FileManagerEntity)localObject2).getCloudType() == 2) && (((FileManagerEntity)localObject2).WeiYunFileId != null))
-      {
-        paramVarArgs.a((FileManagerEntity)localObject2);
-      }
-      else if (!paramVarArgs.a().a((FileManagerEntity)localObject2))
-      {
-        i |= 0x4;
-        continue;
-        localObject1 = apel.d().iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          paramVarArgs.a((WeiYunFileInfo)((Iterator)localObject1).next());
-        }
-        if ((i & 0x2) != 0) {}
-        label568:
-        for (;;)
-        {
-          return null;
-          if (i == 6002)
-          {
-            localObject1 = new ArrayList();
-            ((ArrayList)localObject1).addAll(apel.a());
-            ((RouterHandler)SendBottomBar.a(this.a.this$0).a(48)).a((ArrayList)localObject1, null, null, Long.parseLong(paramVarArgs));
-          }
-          else if (i == 9501)
-          {
-            localObject1 = (yer)SendBottomBar.a(this.a.this$0).a(49);
-            localObject2 = new ArrayList();
-            ((ArrayList)localObject2).addAll(apel.a());
-            ((yer)localObject1).a().a(paramVarArgs, (List)localObject2);
-          }
-          else
-          {
-            boolean bool = SendBottomBar.a(this.a.this$0).i();
-            SendBottomBar.a(this.a.this$0).a().a(bool, (String)localObject1, paramVarArgs, i);
-            paramVarArgs = apel.b().iterator();
-            do
-            {
-              if (!paramVarArgs.hasNext()) {
-                break;
-              }
-            } while (((FileManagerEntity)paramVarArgs.next()).nFileType != 13);
-            for (i = 1;; i = 0)
-            {
-              if (i == 0) {
-                break label568;
-              }
-              if (SendBottomBar.a(this.a.this$0) == 3)
-              {
-                axqy.b(SendBottomBar.a(this.a.this$0).app, "dc00898", "", "", "0X800A088", "0X800A088", 0, 0, "", "", "", "");
-                break;
-              }
-              if (SendBottomBar.a(this.a.this$0) != 21) {
-                break;
-              }
-              axqy.b(SendBottomBar.a(this.a.this$0).app, "dc00898", "", "", "0X800A08D", "0X800A08D", 0, 0, "", "", "", "");
-              break;
-            }
-          }
-        }
-      }
+      paramapxz.jdField_a_of_type_AndroidWidgetTextView.setText(paramapyo);
+      paramapxz.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
+      return;
+      paramapyo = alpo.a(2131705090);
+      continue;
+      paramapyo = alpo.a(2131705092);
+      bool = true;
+      continue;
+      paramapyo = alpo.a(2131705091);
     }
   }
   
-  protected void a(Void paramVoid)
+  public void onClick(View paramView)
   {
-    super.onPostExecute(paramVoid);
-    this.a.this$0.d();
-    apel.b();
-    SendBottomBar.d(this.a.this$0);
+    if (this.jdField_a_of_type_Aqba != null) {
+      this.jdField_a_of_type_Aqba.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxz
  * JD-Core Version:    0.7.0.1
  */

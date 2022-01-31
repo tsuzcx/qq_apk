@@ -1,61 +1,63 @@
-import android.graphics.Rect;
-import android.text.Spannable;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.opengl.GLES20;
+import android.opengl.GLES31;
+import android.util.Log;
+import java.nio.ByteBuffer;
 
 public class auam
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public auam(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void onGlobalLayout()
+  @TargetApi(18)
+  public static int a(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    if (OCRResultActivity.d(this.a) != 0) {
-      return;
+    int[] arrayOfInt = new int[1];
+    GLES31.glGenTextures(1, arrayOfInt, 0);
+    GLES31.glBindTexture(3553, arrayOfInt[0]);
+    GLES31.glTexStorage2D(3553, 1, 32856, paramInt1, paramInt2);
+    GLES31.glTexParameteri(3553, 10242, 33071);
+    GLES31.glTexParameteri(3553, 10243, 33071);
+    GLES31.glTexParameteri(3553, 10241, 9728);
+    GLES31.glTexParameteri(3553, 10240, 9728);
+    a("glTexParameter");
+    return arrayOfInt[0];
+  }
+  
+  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    ByteBuffer localByteBuffer = a(paramInt1, paramInt2, paramInt3);
+    Bitmap localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
+    localBitmap.copyPixelsFromBuffer(localByteBuffer);
+    return localBitmap;
+  }
+  
+  private static ByteBuffer a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int[] arrayOfInt1 = new int[1];
+    int[] arrayOfInt2 = new int[1];
+    GLES20.glGetIntegerv(36006, arrayOfInt2, 0);
+    GLES20.glGenFramebuffers(1, arrayOfInt1, 0);
+    GLES20.glBindFramebuffer(36160, arrayOfInt1[0]);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 * paramInt3 * 4);
+    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
+    GLES20.glFinish();
+    GLES20.glBindFramebuffer(36160, arrayOfInt2[0]);
+    GLES20.glDeleteFramebuffers(1, arrayOfInt1, 0);
+    return localByteBuffer;
+  }
+  
+  public static void a(String paramString)
+  {
+    int i = GLES20.glGetError();
+    if (i != 0) {
+      Log.e("GlUtil", paramString + ": glError 0x" + Integer.toHexString(i));
     }
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getRootView().getHeight();
-    if (j - ((Rect)localObject).bottom > j * 0.15D) {
-      try
-      {
-        localObject = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
-        ayks[] arrayOfayks = (ayks[])((Spannable)localObject).getSpans(0, ((Spannable)localObject).length(), ayks.class);
-        if ((arrayOfayks != null) && (arrayOfayks.length > 0))
-        {
-          j = arrayOfayks.length;
-          while (i < j)
-          {
-            ((Spannable)localObject).removeSpan(arrayOfayks[i]);
-            i += 1;
-          }
-        }
-        allt.a(this.a, this.a.d, false, 0);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(OCRResultActivity.a(this.a).ocrContent);
-        return;
-      }
-    }
-    if (OCRResultActivity.a(this.a) != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(new aykk(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), 8, 16));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-    }
-    allt.a(this.a, this.a.d, true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auam
  * JD-Core Version:    0.7.0.1
  */

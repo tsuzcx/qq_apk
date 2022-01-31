@@ -1,97 +1,550 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse.1;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.HotVideoCard;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
+import NS_KING_SOCIALIZE_META.stMetaTag;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
+import UserGrowth.stDevice;
+import UserGrowth.stH5OpInfo;
+import UserGrowth.stReportItem;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import UserGrowth.stWaterFallCardStyle;
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.text.TextUtils;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class tjr
-  extends tbb
+  implements tgt
 {
-  qqstory_group.RspGetGroupHotRankVideo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo;
-  boolean jdField_a_of_type_Boolean = false;
+  private static WifiManager jdField_a_of_type_AndroidNetWifiWifiManager;
+  private static String jdField_a_of_type_JavaLangString;
+  private static String b;
+  private static String c = "";
   
-  public tjr(tjp paramtjp, qqstory_group.RspGetGroupHotRankVideo paramRspGetGroupHotRankVideo, boolean paramBoolean)
+  static
   {
-    super(paramRspGetGroupHotRankVideo.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo = paramRspGetGroupHotRankVideo;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    a();
   }
   
-  public tjr(tjp paramtjp, boolean paramBoolean)
+  public static int a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (jdField_a_of_type_AndroidNetWifiWifiManager == null) {
+      jdField_a_of_type_AndroidNetWifiWifiManager = (WifiManager)paramContext.getSystemService("wifi");
+    }
+    paramContext = jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
+    tlo.b("wifiInfo", paramContext.toString());
+    tlo.b("SSID", "" + paramContext.getIpAddress());
+    return paramContext.getIpAddress();
   }
   
-  public void a()
+  public static stReportItem a()
   {
-    Object localObject = this.jdField_a_of_type_Tjp;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.is_end.get() == 1) {}
-    tjs localtjs;
-    for (boolean bool = true;; bool = false)
+    long l = 0L;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    stReportItem localstReportItem = new stReportItem();
+    localstReportItem.imp_date = ((int)(System.currentTimeMillis() / 1000L));
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      ((tjp)localObject).jdField_a_of_type_Boolean = bool;
-      tjp.a(this.jdField_a_of_type_Tjp, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.next_cookie.get().toStringUtf8());
-      tjp.a(this.jdField_a_of_type_Tjp, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.seq.get());
-      localObject = new ArrayList();
-      localtjs = new tjs();
-      localtjs.jdField_a_of_type_Boolean = this.jdField_a_of_type_Tjp.jdField_a_of_type_Boolean;
-      localtjs.b = this.jdField_a_of_type_Boolean;
-      if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.size() <= 0)) {
-        break label203;
-      }
-      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.get().iterator();
-      while (localIterator.hasNext()) {
-        ((ArrayList)localObject).add(HotSortVideoEntry.convertFrom((qqstory_group.HotVideoCard)localIterator.next()));
+      localstReportItem.uin = l;
+      localstReportItem.network_type = DeviceUtils.getNetworkTypeName(BaseApplicationImpl.getContext()).toLowerCase();
+      localstReportItem.os = ("android" + DeviceUtils.getOSVersion() + " - " + DeviceUtils.getMachineInfo());
+      localstReportItem.city = a();
+      localstReportItem.ip = DeviceUtils.getLocalIpAddress();
+      localstReportItem.qua = bizf.a();
+      localstReportItem.vendor = bdcb.h();
+      localObject = new stDevice();
+      ((stDevice)localObject).encrypted_deviceid = tee.a().e();
+      ((stDevice)localObject).imei = a(BaseApplicationImpl.getContext());
+      ((stDevice)localObject).qimei = b(BaseApplicationImpl.getContext());
+      localstReportItem.device = ((stDevice)localObject);
+      if (!xoo.a(BaseApplicationImpl.getContext())) {
+        break label200;
       }
     }
-    if (!this.jdField_a_of_type_Boolean)
+    label200:
+    for (int i = 2;; i = 1)
     {
-      ThreadManager.post(new GetHotSortVideoHandler.GetHotSortVideoResponse.1(this, (ArrayList)localObject, localtjs), 5, null, true);
+      localstReportItem.exist_weishi = i;
+      return localstReportItem;
+      l = xng.a((String)localObject, 0L);
+      break;
+    }
+  }
+  
+  public static stReportItem a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
+  {
+    stReportItem localstReportItem = a();
+    localstReportItem.upos = (paramInt + 1);
+    if (paramstSimpleMetaFeed == null)
+    {
+      tlo.d("weishi-report", "convertFeedToReport feed == null");
+      return localstReportItem;
+    }
+    localstReportItem.map_pass_back = paramstSimpleMetaFeed.map_pass_back;
+    localstReportItem.authorid = paramstSimpleMetaFeed.poster_id;
+    localstReportItem.feedid = paramstSimpleMetaFeed.id;
+    localstReportItem.title = paramstSimpleMetaFeed.feed_desc;
+    if (paramstSimpleMetaFeed.video != null) {
+      localstReportItem.video_time = paramstSimpleMetaFeed.video.duration;
+    }
+    if (paramstSimpleMetaFeed.poster != null)
+    {
+      localstReportItem.authorid = paramstSimpleMetaFeed.poster.id;
+      localstReportItem.authorname = paramstSimpleMetaFeed.poster.nick;
+    }
+    if ((paramstSimpleMetaFeed.bt_style != null) && (!TextUtils.isEmpty(paramstSimpleMetaFeed.bt_style.title))) {
+      localstReportItem.ext_map = a(paramstSimpleMetaFeed.bt_style.title);
+    }
+    if (paramstSimpleMetaFeed.video_type == 7) {
+      localstReportItem.video_type = 7;
+    }
+    for (;;)
+    {
+      localstReportItem.traceId = paramstSimpleMetaFeed.traceId;
+      localstReportItem.feed_map_ext = paramstSimpleMetaFeed.map_ext;
+      a(localstReportItem, paramstSimpleMetaFeed.waterFallCardStyle);
+      localstReportItem.pool_type = paramstSimpleMetaFeed.videoPoolType;
+      return localstReportItem;
+      if (paramstSimpleMetaFeed.video_type == 6) {
+        localstReportItem.video_type = 6;
+      } else if ((paramstSimpleMetaFeed.h5_op_info != null) && (!TextUtils.isEmpty(paramstSimpleMetaFeed.h5_op_info.h5Url))) {
+        localstReportItem.video_type = 1;
+      } else if (paramstSimpleMetaFeed.video_type == 0) {
+        localstReportItem.video_type = 0;
+      } else {
+        localstReportItem.video_type = paramstSimpleMetaFeed.video_type;
+      }
+    }
+  }
+  
+  private static String a()
+  {
+    if (TextUtils.isEmpty(c)) {
+      c = amkv.a();
+    }
+    if ((c.endsWith(alpo.a(2131716356))) && (c.length() > 1)) {
+      c = c.substring(0, c.length() - 1);
+    }
+    return c;
+  }
+  
+  private static String a(int paramInt1, int paramInt2)
+  {
+    String str = "";
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      switch (paramInt2)
+      {
+      default: 
+        return str;
+        str = alpo.a(2131716352);
+        continue;
+        str = alpo.a(2131716329);
+        continue;
+        str = alpo.a(2131716339);
+        continue;
+        str = alpo.a(2131716346);
+        continue;
+        str = alpo.a(2131716336);
+        continue;
+        str = alpo.a(2131716340);
+        continue;
+        str = alpo.a(2131716355);
+        continue;
+        str = alpo.a(2131716323);
+        continue;
+        str = alpo.a(2131716326);
+        continue;
+        str = alpo.a(2131716331);
+        continue;
+        str = alpo.a(2131716353);
+        continue;
+        str = alpo.a(2131716348);
+        continue;
+        str = alpo.a(2131716342);
+        switch (paramInt2)
+        {
+        default: 
+          break;
+        case 12: 
+          str = alpo.a(2131716318);
+          continue;
+          str = alpo.a(2131716350);
+          continue;
+          str = alpo.a(2131716357);
+          continue;
+          str = alpo.a(2131716330);
+          continue;
+          str = alpo.a(2131716351);
+          continue;
+          str = alpo.a(2131716325);
+          continue;
+          str = alpo.a(2131716321);
+          continue;
+          str = alpo.a(2131716341);
+          continue;
+          str = alpo.a(2131716319);
+          continue;
+          str = alpo.a(2131716345);
+          switch (paramInt2)
+          {
+          default: 
+            break;
+          case 12: 
+            str = alpo.a(2131716333);
+            continue;
+            str = alpo.a(2131716327);
+            switch (paramInt2)
+            {
+            default: 
+              break;
+            case 12: 
+              str = alpo.a(2131716335);
+              continue;
+              str = alpo.a(2131716322);
+              continue;
+              str = alpo.a(2131716332);
+              continue;
+              str = alpo.a(2131716337);
+              switch (paramInt2)
+              {
+              default: 
+                break;
+              case 2: 
+                str = alpo.a(2131716354);
+                break;
+              case 6: 
+                str = alpo.a(2131716343);
+                continue;
+                str = alpo.a(2131716344);
+                switch (paramInt2)
+                {
+                default: 
+                  break;
+                case 2: 
+                  str = alpo.a(2131716347);
+                  break;
+                case 14: 
+                  str = alpo.a(2131716324);
+                  break;
+                case 12: 
+                  str = alpo.a(2131716320);
+                  break;
+                case 6: 
+                  str = alpo.a(2131716328);
+                  continue;
+                  str = alpo.a(2131716334);
+                  switch (paramInt2)
+                  {
+                  case 10: 
+                  case 11: 
+                  default: 
+                    break;
+                  case 9: 
+                    str = "进入H5";
+                    break;
+                  case 12: 
+                    str = alpo.a(2131716349);
+                  }
+                  break;
+                }
+                break;
+              }
+              break;
+            }
+            break;
+          }
+          break;
+        }
+        break;
+      }
+    }
+    return alpo.a(2131716338);
+  }
+  
+  public static String a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return "";
+    }
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {}
+    try
+    {
+      jdField_a_of_type_JavaLangString = bhoi.a("1d76c6");
+      return jdField_a_of_type_JavaLangString;
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        tlo.d("weishi-810", "telephonyManager.getDeviceId encounter error:" + paramContext);
+      }
+    }
+  }
+  
+  private static Map<String, String> a(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("qq_bt_text", paramString);
+    return localHashMap;
+  }
+  
+  public static void a()
+  {
+    stReportItem localstReportItem = a();
+    localstReportItem.pagetype = 1;
+    localstReportItem.optype = 121;
+    a(localstReportItem);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    stReportItem localstReportItem = a();
+    localstReportItem.pagetype = paramInt3;
+    localstReportItem.optype = paramInt1;
+    localstReportItem.cid = paramInt2;
+    localstReportItem.video_type = 4;
+    a(localstReportItem);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    stReportItem localstReportItem = a();
+    localstReportItem.pagetype = paramInt2;
+    localstReportItem.optype = paramInt1;
+    localstReportItem.windowsid = paramInt4;
+    localstReportItem.video_type = paramInt3;
+    a(localstReportItem);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, stReportItem paramstReportItem)
+  {
+    stReportItem localstReportItem = paramstReportItem;
+    if (paramstReportItem == null) {
+      localstReportItem = a();
+    }
+    localstReportItem.pagetype = paramInt2;
+    localstReportItem.optype = paramInt1;
+    localstReportItem.comment_loctaion = paramInt3;
+    a(localstReportItem);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, stSimpleMetaFeed paramstSimpleMetaFeed, String paramString)
+  {
+    paramstSimpleMetaFeed = a(paramstSimpleMetaFeed, paramInt3);
+    paramstSimpleMetaFeed.optype = paramInt2;
+    paramstSimpleMetaFeed.pagetype = paramInt1;
+    if (!TextUtils.isEmpty(paramString)) {
+      paramstSimpleMetaFeed.downloadscene = paramString;
+    }
+    a(paramInt2, paramstSimpleMetaFeed);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, stReportItem paramstReportItem)
+  {
+    stReportItem localstReportItem = paramstReportItem;
+    if (paramstReportItem == null) {
+      localstReportItem = a();
+    }
+    localstReportItem.pagetype = paramInt2;
+    localstReportItem.optype = paramInt1;
+    a(localstReportItem);
+  }
+  
+  public static void a(int paramInt, stReportItem paramstReportItem)
+  {
+    paramstReportItem.optype = paramInt;
+    a(paramstReportItem);
+  }
+  
+  public static void a(int paramInt1, Map<Integer, byte[]> paramMap, String paramString1, int paramInt2, String paramString2, String paramString3, String paramString4, int paramInt3, String paramString5, String paramString6, int paramInt4)
+  {
+    stReportItem localstReportItem = a();
+    if (paramInt1 == 1) {}
+    for (localstReportItem.pagetype = 9;; localstReportItem.pagetype = 14)
+    {
+      localstReportItem.optype = 112;
+      localstReportItem.video_type = 1;
+      localstReportItem.map_pass_back = paramMap;
+      localstReportItem.feedid = paramString1;
+      localstReportItem.video_time = paramInt2;
+      localstReportItem.authorid = paramString2;
+      localstReportItem.authorname = paramString3;
+      localstReportItem.title = paramString4;
+      localstReportItem.upos = (paramInt3 + 1);
+      localstReportItem.tag = paramString5;
+      localstReportItem.cid = paramInt4;
+      localstReportItem.ext_map = a(paramString6);
+      a(localstReportItem);
       return;
-      label203:
-      ved.e("GetHotSortVideoHandler", "GetHotSortVideoResponse Success but video_card_list is empty。");
-    }
-    localtjs.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-    stb.a().dispatch(localtjs);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    paramBundle = new tjs();
-    paramBundle.c = true;
-    stb.a().dispatch(paramBundle);
-    bcql.a(BaseApplication.getContext(), 1, ajya.a(2131705270), 0).a();
-    if (QLog.isColorLevel()) {
-      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public static void a(stReportItem paramstReportItem)
   {
-    tjs localtjs = new tjs();
-    localtjs.c = true;
-    stb.a().dispatch(localtjs);
-    bcql.a(BaseApplication.getContext(), 1, ajya.a(2131705269), 0).a();
-    if (QLog.isColorLevel()) {
-      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    if (paramstReportItem == null)
+    {
+      tlo.d("weishi-report", "report error item = null");
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramstReportItem);
+    a(localArrayList);
+  }
+  
+  private static void a(stReportItem paramstReportItem, stWaterFallCardStyle paramstWaterFallCardStyle)
+  {
+    if (paramstWaterFallCardStyle != null)
+    {
+      paramstReportItem.card_type = paramstWaterFallCardStyle.cardType;
+      paramstReportItem.ratioW = paramstWaterFallCardStyle.ratioW;
+      paramstReportItem.ratioH = paramstWaterFallCardStyle.ratioH;
+      paramstReportItem.isFullSpan = paramstWaterFallCardStyle.isFullSpan;
     }
   }
+  
+  public static void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt1, int paramInt2)
+  {
+    stReportItem localstReportItem = a();
+    localstReportItem.video_type = 0;
+    localstReportItem.pagetype = 1;
+    localstReportItem.optype = paramInt2;
+    localstReportItem.upos = (paramInt1 + 1);
+    localstReportItem.tag = "";
+    if (paramstSimpleMetaFeed != null)
+    {
+      localstReportItem.map_pass_back = paramstSimpleMetaFeed.map_pass_back;
+      localstReportItem.feedid = paramstSimpleMetaFeed.id;
+      localstReportItem.authorid = paramstSimpleMetaFeed.poster_id;
+      if (paramstSimpleMetaFeed.poster == null) {
+        break label133;
+      }
+      str = paramstSimpleMetaFeed.poster.nick;
+      localstReportItem.authorname = str;
+      localstReportItem.title = paramstSimpleMetaFeed.feed_desc;
+      if (paramstSimpleMetaFeed.bt_style != null) {
+        break label139;
+      }
+    }
+    label133:
+    label139:
+    for (String str = "";; str = paramstSimpleMetaFeed.bt_style.title)
+    {
+      localstReportItem.ext_map = a(str);
+      a(localstReportItem, paramstSimpleMetaFeed.waterFallCardStyle);
+      a(localstReportItem);
+      return;
+      str = "";
+      break;
+    }
+  }
+  
+  public static void a(WSRedDotPushMsg paramWSRedDotPushMsg)
+  {
+    IWSPushBaseStrategy localIWSPushBaseStrategy;
+    stReportItem localstReportItem;
+    if (paramWSRedDotPushMsg != null)
+    {
+      localIWSPushBaseStrategy = paramWSRedDotPushMsg.mStrategyInfo;
+      localstReportItem = a();
+      localstReportItem.pagetype = 15;
+      localstReportItem.optype = 112;
+      localstReportItem.pushid = paramWSRedDotPushMsg.mPushId;
+      if (localIWSPushBaseStrategy == null) {
+        break label54;
+      }
+    }
+    label54:
+    for (int i = localIWSPushBaseStrategy.getType();; i = 0)
+    {
+      localstReportItem.policy_type = i;
+      a(localstReportItem);
+      return;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    stReportItem localstReportItem = a();
+    localstReportItem.video_type = 6;
+    localstReportItem.feedid = paramString1;
+    localstReportItem.optype = paramInt2;
+    localstReportItem.pagetype = paramInt3;
+    localstReportItem.play_time = paramInt4;
+    localstReportItem.authorid = paramString2;
+    localstReportItem.authorname = paramString3;
+    localstReportItem.title = paramString4;
+    localstReportItem.upos = (paramInt1 + 1);
+    a(localstReportItem);
+  }
+  
+  public static void a(ArrayList<stReportItem> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0))
+    {
+      tlo.d("weishi-report", "report error items: " + paramArrayList);
+      return;
+    }
+    String str = a(((stReportItem)paramArrayList.get(0)).optype, ((stReportItem)paramArrayList.get(0)).pagetype);
+    Iterator localIterator = paramArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      stReportItem localstReportItem = (stReportItem)localIterator.next();
+      tlo.b("weishi-report", "report " + str + " stReportItem:" + localstReportItem.toString());
+    }
+    paramArrayList = new the(new tkp(paramArrayList), null, new tjs(str), 2001);
+    tgx.a().a(paramArrayList);
+  }
+  
+  public static String b(Context paramContext)
+  {
+    if (TextUtils.isEmpty(b)) {}
+    try
+    {
+      tlo.b("weishi-810", "try get QIMei from UserAction.getQIMEI!");
+      b = UserAction.getQIMEI();
+      if (b == null)
+      {
+        tlo.d("weishi-810", "getImei finally encounter error and return empty");
+        b = "";
+      }
+      return b;
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        tlo.d("weishi-810", "UserAction.getQIMEI encounter error:" + paramContext);
+      }
+    }
+  }
+  
+  public static String c(Context paramContext)
+  {
+    if (jdField_a_of_type_AndroidNetWifiWifiManager == null) {
+      jdField_a_of_type_AndroidNetWifiWifiManager = (WifiManager)paramContext.getSystemService("wifi");
+    }
+    paramContext = jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
+    tlo.b("wifiInfo", paramContext.toString());
+    return paramContext.getSSID().replace("\"", "");
+  }
+  
+  public void a(the paramthe) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjr
  * JD-Core Version:    0.7.0.1
  */

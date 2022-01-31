@@ -1,40 +1,14 @@
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import pb.unite.search.RequestSearchWord.Rcmd;
 
-public class amaq
-  extends amal
+public abstract interface amaq
 {
-  public amaq(RockDownloaderManager.2 param2) {}
-  
-  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(ArrayList<RockDownloadInfo> paramArrayList)
-  {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
-      }
-      boolean bool = amar.b(localRockDownloadInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
-      }
-    }
-  }
+  public abstract void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amaq
  * JD-Core Version:    0.7.0.1
  */

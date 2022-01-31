@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/c3q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/c3q" android:background="@drawable/skin_background_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" layout="@layout/is" />
     <com.tencent.mobileqq.activity.contacts.view.HeaderScrollView android:orientation="vertical" android:id="@id/d50" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ac1" android:layout_below="@id/rlCommenTitle">

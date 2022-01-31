@@ -1,189 +1,93 @@
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class ew
 {
-  private ajut jdField_a_of_type_Ajut;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public ev a;
-  private ez jdField_a_of_type_Ez;
-  private List<ev> jdField_a_of_type_JavaUtilList;
-  private yag jdField_a_of_type_Yag;
+  private boolean a;
+  private boolean b;
   
-  public ew(QQAppInterface paramQQAppInterface)
+  public ew(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Ajut = new ex(this);
-    this.jdField_a_of_type_Yag = new ey(this);
-  }
-  
-  public static DeviceInfo a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    if (paramLong != 0L)
-    {
-      paramQQAppInterface = (yah)paramQQAppInterface.a(51);
-      if (paramQQAppInterface.a())
-      {
-        DeviceInfo[] arrayOfDeviceInfo = paramQQAppInterface.a();
-        if (arrayOfDeviceInfo != null)
-        {
-          int j = arrayOfDeviceInfo.length;
-          int i = 0;
-          while (i < j)
-          {
-            DeviceInfo localDeviceInfo = arrayOfDeviceInfo[i];
-            if ((paramQQAppInterface.c(localDeviceInfo.din)) && (paramQQAppInterface.a(localDeviceInfo.din, 17)) && (paramLong == localDeviceInfo.din)) {
-              return localDeviceInfo;
-            }
-            i += 1;
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
-  private void a(int paramInt)
-  {
-    a();
-    if (this.jdField_a_of_type_Ez != null) {
-      this.jdField_a_of_type_Ez.a(paramInt);
-    }
-  }
-  
-  public ev a()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    str = bbax.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer");
-    a();
-    return b(str);
-  }
-  
-  public ev a(long paramLong)
-  {
-    if ((paramLong != 0L) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ev localev = (ev)localIterator.next();
-        if (localev.jdField_a_of_type_Long == paramLong) {
-          return localev;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public ev a(String paramString)
-  {
-    eu localeu = null;
-    if (paramString != null)
-    {
-      localeu = new eu();
-      localeu.jdField_a_of_type_Int = 1;
-      localeu.jdField_a_of_type_Long = 0L;
-      localeu.jdField_a_of_type_JavaLangString = paramString;
-      localeu.c = true;
-      localeu.b = true;
-      localeu.jdField_a_of_type_Boolean = true;
-    }
-    return localeu;
-  }
-  
-  public List<ev> a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = (ajum)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
-    if (((ajum)localObject).a.jdField_a_of_type_JavaUtilList != null)
-    {
-      localObject = ((ajum)localObject).a.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ev localev = a((String)((Iterator)localObject).next());
-        this.jdField_a_of_type_JavaUtilList.add(localev);
-      }
-    }
-    return this.jdField_a_of_type_JavaUtilList;
+    this.a = paramBoolean1;
+    this.b = paramBoolean2;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajut);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Yag);
-    }
-    this.jdField_a_of_type_Ez = null;
-  }
-  
-  public void a(ez paramez)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajut);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Yag);
-    }
-    this.jdField_a_of_type_Ez = paramez;
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null) {
+      if (!this.a) {
+        this.a = true;
+      }
       return;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    bbax.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer", paramString);
-  }
-  
-  public boolean a()
-  {
-    return ((akfl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10)).a() != 0;
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramString != null)
+    finally
     {
-      int i = apug.a(paramString);
-      if ((i != 3) && (i != 0) && (i != 7) && (i != 6) && (i != 9))
-      {
-        bool1 = bool2;
-        if (i != 10) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
+      localObject = finally;
+      throw localObject;
     }
-    return bool1;
   }
   
-  public ev b(String paramString)
+  /* Error */
+  public boolean a(long paramLong)
   {
-    if ((paramString != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ev localev = (ev)localIterator.next();
-        if (localev.jdField_a_of_type_JavaLangString.equals(paramString)) {
-          return localev;
-        }
-      }
-    }
-    return null;
+    // Byte code:
+    //   0: invokestatic 26	java/lang/System:currentTimeMillis	()J
+    //   3: lstore_3
+    //   4: aload_0
+    //   5: getfield 14	ew:a	Z
+    //   8: ifeq +28 -> 36
+    //   11: aload_0
+    //   12: monitorenter
+    //   13: aload_0
+    //   14: getfield 16	ew:b	Z
+    //   17: ifeq +15 -> 32
+    //   20: aload_0
+    //   21: getfield 14	ew:a	Z
+    //   24: ifeq +8 -> 32
+    //   27: aload_0
+    //   28: iconst_1
+    //   29: putfield 14	ew:a	Z
+    //   32: aload_0
+    //   33: monitorexit
+    //   34: iconst_1
+    //   35: ireturn
+    //   36: lconst_1
+    //   37: invokestatic 32	java/lang/Thread:sleep	(J)V
+    //   40: lload_1
+    //   41: ldc2_w 33
+    //   44: lcmp
+    //   45: ifeq -41 -> 4
+    //   48: invokestatic 26	java/lang/System:currentTimeMillis	()J
+    //   51: lload_3
+    //   52: lsub
+    //   53: lload_1
+    //   54: lcmp
+    //   55: iflt -51 -> 4
+    //   58: iconst_0
+    //   59: ireturn
+    //   60: astore 5
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: aload 5
+    //   66: athrow
+    //   67: astore 5
+    //   69: goto -29 -> 40
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	72	0	this	ew
+    //   0	72	1	paramLong	long
+    //   3	49	3	l	long
+    //   60	5	5	localObject	Object
+    //   67	1	5	localInterruptedException	java.lang.InterruptedException
+    // Exception table:
+    //   from	to	target	type
+    //   13	32	60	finally
+    //   32	34	60	finally
+    //   62	64	60	finally
+    //   36	40	67	java/lang/InterruptedException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ew
  * JD-Core Version:    0.7.0.1
  */

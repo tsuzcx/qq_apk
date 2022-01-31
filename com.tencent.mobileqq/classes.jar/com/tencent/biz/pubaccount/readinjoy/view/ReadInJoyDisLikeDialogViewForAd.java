@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -18,7 +18,7 @@ public class ReadInJoyDisLikeDialogViewForAd
     super.a(paramContext);
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131712785));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131713157));
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
@@ -27,7 +27,7 @@ public class ReadInJoyDisLikeDialogViewForAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogViewForAd
  * JD-Core Version:    0.7.0.1
  */

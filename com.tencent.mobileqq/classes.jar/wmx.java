@@ -1,20 +1,31 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wmx
+public class wmx
+  extends QQUIEventReceiver<wmw, uqu>
 {
-  public COMM.StCommonExt a;
-  public boolean a;
-  public boolean b;
-  
-  public String toString()
+  public wmx(wmw paramwmw1, @NonNull wmw paramwmw2)
   {
-    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get() + '\'' + ", hasResponse='" + this.b + '\'' + '}';
+    super(paramwmw2);
+  }
+  
+  public void a(@NonNull wmw paramwmw, @NonNull uqu paramuqu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
+    }
+    paramwmw.b(paramuqu.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uqu.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmx
  * JD-Core Version:    0.7.0.1
  */

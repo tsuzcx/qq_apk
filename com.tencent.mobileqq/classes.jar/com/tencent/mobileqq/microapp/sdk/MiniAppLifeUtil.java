@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.sdk;
 
 import Wallet.ApkgConfig;
-import ahio;
+import aizx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
@@ -27,7 +27,7 @@ public class MiniAppLifeUtil
     }
     return;
     label31:
-    ahio.a(paramInt, paramMiniAppConfig);
+    aizx.a(paramInt, paramMiniAppConfig);
   }
   
   private static void onBack(QQAppInterface paramQQAppInterface, MiniAppConfig paramMiniAppConfig)
@@ -41,7 +41,7 @@ public class MiniAppLifeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppLifeUtil
  * JD-Core Version:    0.7.0.1
  */

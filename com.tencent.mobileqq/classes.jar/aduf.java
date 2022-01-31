@@ -1,28 +1,38 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aduf
-  implements askq<EmoticonPackage>
+public class aduf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aduf(adue paramadue, adus paramadus, bcqf parambcqf) {}
+  public aduf(SoundAndVibrateActivity paramSoundAndVibrateActivity, String paramString) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    axqy.b(this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ep_mall", "Clk_button_follow", 0, 0, "", "", this.jdField_a_of_type_Adus.a.a.eId, "");
-    if (paramEmoticonPackage == null)
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.getString(2131719109), "qqsetting_lock_screen_whenexit_key", paramBoolean);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app;
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
     {
-      this.jdField_a_of_type_Adue.jdField_a_of_type_Adur.a(107, this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adue.b, this.jdField_a_of_type_Adus.a, this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, adue.a(this.jdField_a_of_type_Adue));
-      anvw.a().a(this.jdField_a_of_type_Adue.jdField_a_of_type_Adur);
-      this.jdField_a_of_type_Adue.jdField_a_of_type_Anvx.a(this.jdField_a_of_type_Adus.a.a.epId, anvx.c);
+      azmj.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, paramCompoundButton, "", "", "");
+      if (QLog.isDevelopLevel()) {
+        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
+      }
+      paramCompoundButton = new HashMap();
+      paramCompoundButton.put("param_ls_setting", paramBoolean + "");
+      azmz.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, paramCompoundButton, "");
       return;
     }
-    adue.a(107, this.jdField_a_of_type_Adue.b, this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Adus.a, this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bcqf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aduf
  * JD-Core Version:    0.7.0.1
  */

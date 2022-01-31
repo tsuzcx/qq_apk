@@ -22,9 +22,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import axqy;
-import bbef;
-import bbkb;
+import azmj;
+import bdda;
+import bdiv;
 import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
 import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 import com.tencent.common.app.AppInterface;
@@ -40,31 +40,31 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import pyu;
-import pyz;
-import pzf;
-import pzx;
-import rqn;
-import rqt;
-import rqu;
-import rqv;
-import xea;
+import qip;
+import qiu;
+import qja;
+import qjs;
+import sgm;
+import sgs;
+import sgt;
+import sgu;
+import yst;
 
 public class ReadInJoySkinAnimManager
-  extends rqn
+  extends sgm
 {
   private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
   private Runnable jdField_a_of_type_JavaLangRunnable = new ReadInJoySkinAnimManager.2(this);
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<rqu> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<sgt> jdField_a_of_type_JavaUtilArrayList;
   private List<String> jdField_a_of_type_JavaUtilList;
-  private rqv jdField_a_of_type_Rqv;
+  private sgu jdField_a_of_type_Sgu;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -2;
   private Context jdField_b_of_type_AndroidContentContext;
   private SoundPool jdField_b_of_type_AndroidMediaSoundPool;
   private String jdField_b_of_type_JavaLangString;
-  private ArrayList<rqu> jdField_b_of_type_JavaUtilArrayList;
+  private ArrayList<sgt> jdField_b_of_type_JavaUtilArrayList;
   private volatile boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -2;
   private String jdField_c_of_type_JavaLangString;
@@ -89,24 +89,24 @@ public class ReadInJoySkinAnimManager
   {
     super(paramContext);
     this.jdField_b_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Rqv = new rqv(this);
+    this.jdField_a_of_type_Sgu = new sgu(this);
     boolean bool;
-    pyz localpyz;
+    qiu localqiu;
     if ((float)Runtime.getRuntime().maxMemory() <= 1.415578E+008F)
     {
       bool = true;
       this.jdField_i_of_type_Boolean = bool;
       if ((paramContext instanceof BaseActivity))
       {
-        localpyz = (pyz)((BaseActivity)paramContext).app.getManager(270);
-        if ((localpyz.a() != 1) || (!localpyz.b())) {
+        localqiu = (qiu)((BaseActivity)paramContext).app.getManager(270);
+        if ((localqiu.a() != 1) || (!localqiu.b())) {
           break label279;
         }
-        this.jdField_a_of_type_JavaUtilList = pzx.a();
-        this.jdField_d_of_type_Int = pzx.a();
-        this.jdField_a_of_type_JavaLangString = pzx.c();
-        this.jdField_b_of_type_JavaLangString = localpyz.a();
-        this.jdField_c_of_type_JavaLangString = pzx.e();
+        this.jdField_a_of_type_JavaUtilList = qjs.a();
+        this.jdField_d_of_type_Int = qjs.a();
+        this.jdField_a_of_type_JavaLangString = qjs.c();
+        this.jdField_b_of_type_JavaLangString = localqiu.a();
+        this.jdField_c_of_type_JavaLangString = qjs.e();
         this.l = 1;
         label179:
         if (this.jdField_b_of_type_Int == -2)
@@ -130,17 +130,17 @@ public class ReadInJoySkinAnimManager
       bool = false;
       break;
       label279:
-      this.jdField_a_of_type_JavaUtilList = pyu.a();
-      this.jdField_d_of_type_Int = pyu.b();
-      this.jdField_a_of_type_JavaLangString = pyu.d();
-      this.jdField_b_of_type_JavaLangString = ((pzf)((BaseActivity)paramContext).app.getManager(261)).a();
-      this.jdField_c_of_type_JavaLangString = pyu.e();
+      this.jdField_a_of_type_JavaUtilList = qip.a();
+      this.jdField_d_of_type_Int = qip.b();
+      this.jdField_a_of_type_JavaLangString = qip.d();
+      this.jdField_b_of_type_JavaLangString = ((qja)((BaseActivity)paramContext).app.getManager(261)).a();
+      this.jdField_c_of_type_JavaLangString = qip.e();
       this.l = 2;
       break label179;
       label338:
       if (this.jdField_d_of_type_Int == 2)
       {
-        if (localpyz.a()) {
+        if (localqiu.a()) {
           this.jdField_c_of_type_Int = ((BaseActivity)paramContext).getWindowManager().getDefaultDisplay().getWidth();
         } else {
           this.jdField_c_of_type_Int = ((int)(((BaseActivity)paramContext).getWindowManager().getDefaultDisplay().getWidth() * 1.0F));
@@ -229,7 +229,7 @@ public class ReadInJoySkinAnimManager
     }
     try
     {
-      paramString = bbef.a(paramString.toString(), localOptions);
+      paramString = bdda.a(paramString.toString(), localOptions);
       int n = a(paramString);
       m = n;
       if (QLog.isColorLevel())
@@ -255,7 +255,7 @@ public class ReadInJoySkinAnimManager
       if ((this.j == -2) && (this.jdField_c_of_type_Int != -2))
       {
         paramString3.inJustDecodeBounds = true;
-        bbef.a(paramString2.toString(), paramString3);
+        bdda.a(paramString2.toString(), paramString3);
         if (this.jdField_d_of_type_Int == 1) {
           this.j = a(paramString3, this.jdField_c_of_type_Int, paramInt1, paramInt2);
         }
@@ -277,7 +277,7 @@ public class ReadInJoySkinAnimManager
     {
       try
       {
-        paramString2 = bbef.a(paramString2.toString(), paramString3);
+        paramString2 = bdda.a(paramString2.toString(), paramString3);
         paramString1 = paramString2;
         if (paramString1 == null) {
           break label333;
@@ -286,7 +286,7 @@ public class ReadInJoySkinAnimManager
       }
       catch (OutOfMemoryError paramString2)
       {
-        axqy.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "decode_bitmap_oom", paramString3.inSampleSize, paramInt1, this.jdField_b_of_type_JavaLangString, String.valueOf(paramString3.outHeight), String.valueOf(paramString3.outWidth), null);
+        azmj.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "decode_bitmap_oom", paramString3.inSampleSize, paramInt1, this.jdField_b_of_type_JavaLangString, String.valueOf(paramString3.outHeight), String.valueOf(paramString3.outWidth), null);
         QLog.e("ReadInJoySkinAnimManager", 1, "getPngDrawable oom = " + paramString2 + " resFolderPath:" + paramString1);
         return null;
       }
@@ -335,7 +335,7 @@ public class ReadInJoySkinAnimManager
           if (this.jdField_e_of_type_Int != n - 1)
           {
             this.jdField_e_of_type_Int = (n - 1);
-            a(((rqu)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_e_of_type_Int)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+            a(((sgt)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_e_of_type_Int)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
           }
         }
         label342:
@@ -350,7 +350,7 @@ public class ReadInJoySkinAnimManager
           int m = 0;
           label117:
           if (m < n) {
-            if (((rqu)this.jdField_a_of_type_JavaUtilArrayList.get(m)).jdField_a_of_type_Int < paramInt) {}
+            if (((sgt)this.jdField_a_of_type_JavaUtilArrayList.get(m)).jdField_a_of_type_Int < paramInt) {}
           }
           for (;;)
           {
@@ -358,7 +358,7 @@ public class ReadInJoySkinAnimManager
               break label342;
             }
             this.jdField_e_of_type_Int = m;
-            a(((rqu)this.jdField_a_of_type_JavaUtilArrayList.get(m)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+            a(((sgt)this.jdField_a_of_type_JavaUtilArrayList.get(m)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
             return;
             m += 1;
             break label117;
@@ -368,21 +368,21 @@ public class ReadInJoySkinAnimManager
               {
                 this.jdField_e_of_type_Int = ((int)Math.floor(Math.random() * n));
                 this.jdField_f_of_type_Int = this.jdField_e_of_type_Int;
-                a(((rqu)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_e_of_type_Int)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+                a(((sgt)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_e_of_type_Int)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
               }
               if (this.jdField_e_of_type_Int == this.jdField_f_of_type_Int) {
                 break;
               }
               this.jdField_e_of_type_Int = this.jdField_f_of_type_Int;
-              a(((rqu)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_e_of_type_Int)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+              a(((sgt)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_e_of_type_Int)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
               return;
             }
             if ((n <= 0) || (this.jdField_d_of_type_Int != 3) || (this.jdField_f_of_type_Boolean)) {
               break;
             }
             this.jdField_f_of_type_Boolean = true;
-            ((SkinPullRefreshHeader)this.jdField_a_of_type_Xea).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-            ((SkinPullRefreshHeader)this.jdField_a_of_type_Xea).post(this.jdField_a_of_type_JavaLangRunnable);
+            ((SkinPullRefreshHeader)this.jdField_a_of_type_Yst).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+            ((SkinPullRefreshHeader)this.jdField_a_of_type_Yst).post(this.jdField_a_of_type_JavaLangRunnable);
             return;
             m = 0;
           }
@@ -395,7 +395,7 @@ public class ReadInJoySkinAnimManager
   
   private void a(Drawable paramDrawable)
   {
-    SkinPullRefreshHeader localSkinPullRefreshHeader = (SkinPullRefreshHeader)this.jdField_a_of_type_Xea;
+    SkinPullRefreshHeader localSkinPullRefreshHeader = (SkinPullRefreshHeader)this.jdField_a_of_type_Yst;
     if (!this.jdField_a_of_type_Boolean) {}
     for (boolean bool = true;; bool = false)
     {
@@ -434,7 +434,7 @@ public class ReadInJoySkinAnimManager
       if (this.jdField_d_of_type_Boolean)
       {
         AppInterface localAppInterface = ((BaseActivity)this.jdField_b_of_type_AndroidContentContext).getAppInterface();
-        if ((localAppInterface != null) && (((bbkb.u(this.jdField_b_of_type_AndroidContentContext, localAppInterface.getCurrentAccountUin())) && (this.l == 2)) || (this.l == 1))) {
+        if ((localAppInterface != null) && (((bdiv.v(this.jdField_b_of_type_AndroidContentContext, localAppInterface.getCurrentAccountUin())) && (this.l == 2)) || (this.l == 1))) {
           j();
         }
       }
@@ -471,7 +471,7 @@ public class ReadInJoySkinAnimManager
       if (localObject != null)
       {
         this.jdField_b_of_type_AndroidMediaSoundPool = ((SoundPool)localObject);
-        this.jdField_a_of_type_Rqv.sendEmptyMessage(2);
+        this.jdField_a_of_type_Sgu.sendEmptyMessage(2);
       }
     }
     else
@@ -487,7 +487,7 @@ public class ReadInJoySkinAnimManager
     {
       localObject = new ArrayList();
       if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 2) || (this.jdField_d_of_type_Int == 3)) {
-        axqy.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "decode_bitmap_times", 0, 0, this.jdField_b_of_type_JavaLangString, null, null, null);
+        azmj.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "decode_bitmap_times", 0, 0, this.jdField_b_of_type_JavaLangString, null, null, null);
       }
       String str2;
       Drawable localDrawable;
@@ -522,7 +522,7 @@ public class ReadInJoySkinAnimManager
           int i3 = b(str2);
           localDrawable = a(str1, "refreshAnimatePictures", str2, localResources, localList.size(), i1);
           if ((i3 != -2) && (localDrawable != null)) {
-            ((ArrayList)localObject).add(new rqu(str2, i3, localDrawable));
+            ((ArrayList)localObject).add(new sgt(str2, i3, localDrawable));
           }
         }
         label366:
@@ -531,7 +531,7 @@ public class ReadInJoySkinAnimManager
           QLog.d("ReadInJoySkinAnimManager", 1, "initResources size = " + ((ArrayList)localObject).size());
         }
         this.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-        this.jdField_a_of_type_Rqv.sendEmptyMessage(1);
+        this.jdField_a_of_type_Sgu.sendEmptyMessage(1);
         return;
       }
       if (this.jdField_d_of_type_Int != 2) {
@@ -545,23 +545,23 @@ public class ReadInJoySkinAnimManager
         str2 = (String)localIterator.next();
         localDrawable = a(str1, "refreshRandomPictures", str2, localResources, localList.size(), i1);
         if (localDrawable != null) {
-          ((ArrayList)localObject).add(new rqu(str2, 0, localDrawable));
+          ((ArrayList)localObject).add(new sgt(str2, 0, localDrawable));
         }
       }
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoySkinAnimManager", 1, "initResources size = " + ((ArrayList)localObject).size());
       }
       this.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-      this.jdField_a_of_type_Rqv.sendEmptyMessage(1);
+      this.jdField_a_of_type_Sgu.sendEmptyMessage(1);
       return;
     }
   }
   
   private void g()
   {
-    if (this.jdField_a_of_type_Xea != null)
+    if (this.jdField_a_of_type_Yst != null)
     {
-      ((SkinPullRefreshHeader)this.jdField_a_of_type_Xea).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      ((SkinPullRefreshHeader)this.jdField_a_of_type_Yst).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_f_of_type_Boolean = false;
     }
   }
@@ -571,14 +571,14 @@ public class ReadInJoySkinAnimManager
     if (this.jdField_a_of_type_JavaUtilArrayList == null)
     {
       this.jdField_a_of_type_JavaUtilArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-      if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_Xea != null))
+      if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_Yst != null))
       {
         if (!this.jdField_h_of_type_Boolean) {
           break label98;
         }
-        a(((rqu)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        ((SkinPullRefreshHeader)this.jdField_a_of_type_Xea).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        ((SkinPullRefreshHeader)this.jdField_a_of_type_Xea).post(this.jdField_a_of_type_JavaLangRunnable);
+        a(((sgt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        ((SkinPullRefreshHeader)this.jdField_a_of_type_Yst).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        ((SkinPullRefreshHeader)this.jdField_a_of_type_Yst).post(this.jdField_a_of_type_JavaLangRunnable);
       }
     }
     for (;;)
@@ -587,7 +587,7 @@ public class ReadInJoySkinAnimManager
       this.k = 3;
       return;
       label98:
-      a(((rqu)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      a(((sgt)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       continue;
       QLog.e("ReadInJoySkinAnimManager", 1, "setPngArray mRefreshPullDownPNGS.size = " + this.jdField_a_of_type_JavaUtilArrayList.size());
     }
@@ -606,7 +606,7 @@ public class ReadInJoySkinAnimManager
       {
         this.jdField_g_of_type_Int = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 0);
         long l1 = System.currentTimeMillis();
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new rqt(this, l1));
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new sgs(this, l1));
       }
       return;
       QLog.e("ReadInJoySkinAnimManager", 1, "setSoundPool mRefreshPullDownPNGS.size != null");
@@ -642,7 +642,7 @@ public class ReadInJoySkinAnimManager
   
   public int a()
   {
-    this.jdField_i_of_type_Int = this.jdField_b_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298637);
+    this.jdField_i_of_type_Int = this.jdField_b_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298665);
     return this.jdField_i_of_type_Int;
   }
   
@@ -652,12 +652,12 @@ public class ReadInJoySkinAnimManager
     Object localObject1;
     AbsListView.LayoutParams localLayoutParams;
     int m;
-    if (this.jdField_a_of_type_Xea == null)
+    if (this.jdField_a_of_type_Yst == null)
     {
-      this.jdField_a_of_type_Xea = ((SkinPullRefreshHeader)LayoutInflater.from(this.jdField_b_of_type_AndroidContentContext).inflate(2131562430, paramViewGroup, false));
-      if (((this.jdField_a_of_type_Xea instanceof RelativeLayout)) && (this.jdField_b_of_type_Int > 0))
+      this.jdField_a_of_type_Yst = ((SkinPullRefreshHeader)LayoutInflater.from(this.jdField_b_of_type_AndroidContentContext).inflate(2131562634, paramViewGroup, false));
+      if (((this.jdField_a_of_type_Yst instanceof RelativeLayout)) && (this.jdField_b_of_type_Int > 0))
       {
-        localObject1 = (RelativeLayout)this.jdField_a_of_type_Xea;
+        localObject1 = (RelativeLayout)this.jdField_a_of_type_Yst;
         localLayoutParams = (AbsListView.LayoutParams)((RelativeLayout)localObject1).getLayoutParams();
         paramViewGroup = null;
         if ((this.jdField_d_of_type_Int != 1) && (this.jdField_d_of_type_Int != 3)) {
@@ -674,7 +674,7 @@ public class ReadInJoySkinAnimManager
         }
         localObject2 = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-        bbef.a(paramViewGroup.toString(), (BitmapFactory.Options)localObject2);
+        bdda.a(paramViewGroup.toString(), (BitmapFactory.Options)localObject2);
         if ((this.jdField_c_of_type_Int == -2) || (((BitmapFactory.Options)localObject2).outWidth == 0)) {
           break label544;
         }
@@ -696,7 +696,7 @@ public class ReadInJoySkinAnimManager
         ((RelativeLayout)localObject1).setLayoutParams(localLayoutParams);
         if (this.jdField_c_of_type_Int != -2)
         {
-          paramViewGroup = (ImageView)((RelativeLayout)localObject1).findViewById(2131375057);
+          paramViewGroup = (ImageView)((RelativeLayout)localObject1).findViewById(2131375538);
           localObject1 = paramViewGroup.getLayoutParams();
           ((ViewGroup.LayoutParams)localObject1).width = this.jdField_c_of_type_Int;
           paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
@@ -706,7 +706,7 @@ public class ReadInJoySkinAnimManager
         }
         if ((this.jdField_b_of_type_AndroidContentContext instanceof BaseActivity))
         {
-          paramViewGroup = (pyz)((BaseActivity)this.jdField_b_of_type_AndroidContentContext).app.getManager(270);
+          paramViewGroup = (qiu)((BaseActivity)this.jdField_b_of_type_AndroidContentContext).app.getManager(270);
           localObject1 = paramViewGroup.a(this.jdField_b_of_type_AndroidContentContext, 0);
           if ((localObject1 == null) || (!((RefreshData)localObject1).isAD)) {
             break label532;
@@ -714,7 +714,7 @@ public class ReadInJoySkinAnimManager
           bool1 = true;
           label456:
           this.jdField_a_of_type_Boolean = bool1;
-          localObject1 = (SkinPullRefreshHeader)this.jdField_a_of_type_Xea;
+          localObject1 = (SkinPullRefreshHeader)this.jdField_a_of_type_Yst;
           if ((paramViewGroup.a() != 1) || (!this.jdField_a_of_type_Boolean)) {
             break label538;
           }
@@ -723,7 +723,7 @@ public class ReadInJoySkinAnimManager
       for (boolean bool1 = bool2;; bool1 = false)
       {
         ((SkinPullRefreshHeader)localObject1).setAdTabVisibility(bool1);
-        return (View)this.jdField_a_of_type_Xea;
+        return (View)this.jdField_a_of_type_Yst;
         label505:
         if (this.jdField_d_of_type_Int != 2) {
           break;
@@ -742,16 +742,16 @@ public class ReadInJoySkinAnimManager
   
   public void a()
   {
-    if (this.jdField_a_of_type_Xea == null) {
+    if (this.jdField_a_of_type_Yst == null) {
       return;
     }
-    this.jdField_a_of_type_Xea.a(0L);
-    if ((this.jdField_a_of_type_Xea instanceof SkinPullRefreshHeader)) {
-      ((SkinPullRefreshHeader)this.jdField_a_of_type_Xea).a(false, "");
+    this.jdField_a_of_type_Yst.a(0L);
+    if ((this.jdField_a_of_type_Yst instanceof SkinPullRefreshHeader)) {
+      ((SkinPullRefreshHeader)this.jdField_a_of_type_Yst).a(false, "");
     }
-    this.jdField_a_of_type_Xea.ao_();
+    this.jdField_a_of_type_Yst.aw_();
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.b())) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a((SkinPullRefreshHeader)this.jdField_a_of_type_Xea);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a((SkinPullRefreshHeader)this.jdField_a_of_type_Yst);
     }
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
     for (int n = this.jdField_a_of_type_JavaUtilArrayList.size();; n = 0)
@@ -764,12 +764,12 @@ public class ReadInJoySkinAnimManager
         if (m >= n) {
           break label291;
         }
-        if (((rqu)this.jdField_a_of_type_JavaUtilArrayList.get(m)).jdField_a_of_type_Int < i1) {}
+        if (((sgt)this.jdField_a_of_type_JavaUtilArrayList.get(m)).jdField_a_of_type_Int < i1) {}
       }
       for (;;)
       {
         this.jdField_e_of_type_Int = m;
-        a(((rqu)this.jdField_a_of_type_JavaUtilArrayList.get(m)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        a(((sgt)this.jdField_a_of_type_JavaUtilArrayList.get(m)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         for (;;)
         {
           this.jdField_c_of_type_Boolean = false;
@@ -780,13 +780,13 @@ public class ReadInJoySkinAnimManager
           {
             this.jdField_e_of_type_Int = ((int)Math.floor(Math.random() * n));
             this.jdField_f_of_type_Int = this.jdField_e_of_type_Int;
-            a(((rqu)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_e_of_type_Int)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+            a(((sgt)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_e_of_type_Int)).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
           }
           else if ((n > 0) && (this.jdField_d_of_type_Int == 3))
           {
             this.jdField_e_of_type_Int = 0;
-            ((SkinPullRefreshHeader)this.jdField_a_of_type_Xea).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-            ((SkinPullRefreshHeader)this.jdField_a_of_type_Xea).post(this.jdField_a_of_type_JavaLangRunnable);
+            ((SkinPullRefreshHeader)this.jdField_a_of_type_Yst).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+            ((SkinPullRefreshHeader)this.jdField_a_of_type_Yst).post(this.jdField_a_of_type_JavaLangRunnable);
           }
         }
         label291:
@@ -797,12 +797,12 @@ public class ReadInJoySkinAnimManager
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Xea == null) {}
+    if (this.jdField_a_of_type_Yst == null) {}
     do
     {
       return;
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.b())) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a((SkinPullRefreshHeader)this.jdField_a_of_type_Xea, paramInt1, paramInt2);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a((SkinPullRefreshHeader)this.jdField_a_of_type_Yst, paramInt1, paramInt2);
       }
       a(paramInt1);
       b(paramInt1);
@@ -811,7 +811,7 @@ public class ReadInJoySkinAnimManager
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       paramInt1 = this.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    axqy.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "refresh_times", this.jdField_d_of_type_Int, paramInt1, this.jdField_b_of_type_JavaLangString, null, null, null);
+    azmj.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "refresh_times", this.jdField_d_of_type_Int, paramInt1, this.jdField_b_of_type_JavaLangString, null, null, null);
     String str = this.jdField_c_of_type_JavaLangString;
     if ((str != null) && (new File(str).exists()))
     {
@@ -819,7 +819,7 @@ public class ReadInJoySkinAnimManager
       if (this.jdField_b_of_type_Boolean) {
         paramInt1 = 2;
       }
-      axqy.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "sound_play_times", paramInt1, 0, this.jdField_b_of_type_JavaLangString, null, null, null);
+      azmj.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "sound_play_times", paramInt1, 0, this.jdField_b_of_type_JavaLangString, null, null, null);
     }
     this.jdField_e_of_type_Boolean = false;
   }
@@ -827,34 +827,34 @@ public class ReadInJoySkinAnimManager
   public void a(int paramInt, boolean paramBoolean)
   {
     super.a(paramInt, paramBoolean);
-    if (this.jdField_a_of_type_Xea == null) {
+    if (this.jdField_a_of_type_Yst == null) {
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Xea.ao_();
+      this.jdField_a_of_type_Yst.aw_();
       return;
     }
-    this.jdField_a_of_type_Xea.c(0L);
+    this.jdField_a_of_type_Yst.c(0L);
   }
   
   public void a(SlideActiveAnimController paramSlideActiveAnimController)
   {
     super.a(paramSlideActiveAnimController);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.b())) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a(this.jdField_b_of_type_JavaLangString, pzx.d(), 261);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a(this.jdField_b_of_type_JavaLangString, qjs.d(), 261);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Xea == null) {
+    if (this.jdField_a_of_type_Yst == null) {
       return;
     }
     this.jdField_h_of_type_Boolean = true;
-    this.jdField_a_of_type_Xea.a(0L);
+    this.jdField_a_of_type_Yst.a(0L);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.b())) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a((SkinPullRefreshHeader)this.jdField_a_of_type_Xea);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a((SkinPullRefreshHeader)this.jdField_a_of_type_Yst);
     }
     int m = 0;
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
@@ -870,20 +870,20 @@ public class ReadInJoySkinAnimManager
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_Xea == null) {
+    if (this.jdField_a_of_type_Yst == null) {
       return;
     }
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      this.jdField_a_of_type_Xea.a(0, paramString);
+      this.jdField_a_of_type_Yst.a(0, paramString);
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Xea.a(0);
+      this.jdField_a_of_type_Yst.a(0);
       return;
     }
-    this.jdField_a_of_type_Xea.a(2);
+    this.jdField_a_of_type_Yst.a(2);
   }
   
   public boolean a()
@@ -983,7 +983,7 @@ public class ReadInJoySkinAnimManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager
  * JD-Core Version:    0.7.0.1
  */

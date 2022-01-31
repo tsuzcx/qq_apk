@@ -1,32 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.gallery.model.video.AIOShortVideoData;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class aqqa
-  implements DialogInterface.OnClickListener
+  implements aqnr
 {
-  aqqa(aqpt paramaqpt, int paramInt, Object paramObject) {}
+  aqqa(aqpz paramaqpz, String paramString, aqqr paramaqqr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      aqmd.a().a().a("AIOGalleryVideoView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2DiscTaskExcuter faild");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
     }
-    do
+    for (;;)
     {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqpz.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Aqpz.jdField_a_of_type_Long, bool2), bool1);
       return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOShortVideoData));
-    paramDialogInterface = (AIOShortVideoData)this.jdField_a_of_type_JavaLangObject;
-    this.jdField_a_of_type_Aqpt.a.a(paramDialogInterface);
-    this.jdField_a_of_type_Aqpt.a.a(paramDialogInterface.jdField_a_of_type_Long, paramDialogInterface.jdField_a_of_type_Int, 2);
-    this.jdField_a_of_type_Aqpt.j();
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "2");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqpz.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqpz.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqpz.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqpz.d);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqpz.e);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqpz.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter success");
+    }
+    this.jdField_a_of_type_Aqqr.a(paramString, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqa
  * JD-Core Version:    0.7.0.1
  */

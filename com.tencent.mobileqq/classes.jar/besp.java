@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.UserAuthScope;
-
-public final class besp
-  implements Parcelable.Creator<UserAuthScope>
+public abstract interface besp
 {
-  public UserAuthScope a(Parcel paramParcel)
-  {
-    return new UserAuthScope(paramParcel);
-  }
+  public abstract void a();
   
-  public UserAuthScope[] a(int paramInt)
-  {
-    return new UserAuthScope[paramInt];
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besp
  * JD-Core Version:    0.7.0.1
  */

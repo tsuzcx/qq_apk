@@ -14,20 +14,20 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import bbdx;
-import bcql;
-import biqw;
-import biym;
-import biys;
-import biyt;
-import biyu;
-import biyv;
-import biyw;
-import bizt;
+import bdcs;
+import bkvm;
+import bldg;
+import bldm;
+import bldn;
+import bldo;
+import bldp;
+import bldq;
+import blen;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.openapi.model.TextWMElement;
 import com.tencent.ttpic.openapi.util.WMTextDrawer;
@@ -46,9 +46,9 @@ public class EditTextViewer
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  private biym jdField_a_of_type_Biym;
-  private biyv jdField_a_of_type_Biyv;
-  private biyw jdField_a_of_type_Biyw;
+  private bldg jdField_a_of_type_Bldg;
+  private bldp jdField_a_of_type_Bldp;
+  private bldq jdField_a_of_type_Bldq;
   private TextWMElement jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement = new TextWMElement();
   private NodeItem jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem = new NodeItem();
   private boolean jdField_a_of_type_Boolean;
@@ -65,9 +65,9 @@ public class EditTextViewer
     this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
     setOnClickListener(this);
     this.jdField_c_of_type_Boolean = true;
-    setBackgroundDrawable(getResources().getDrawable(2130837633));
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)getResources().getDrawable(2130837632));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131367854);
+    setBackgroundDrawable(getResources().getDrawable(2130837638));
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)getResources().getDrawable(2130837637));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131367989);
   }
   
   private String a(Context paramContext, byte[] paramArrayOfByte)
@@ -76,7 +76,7 @@ public class EditTextViewer
       return "";
     }
     paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + "temp.ttf";
-    bbdx.a(paramArrayOfByte, paramContext);
+    bdcs.a(paramArrayOfByte, paramContext);
     return paramContext;
   }
   
@@ -160,12 +160,12 @@ public class EditTextViewer
   {
     if (this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement != null)
     {
-      this.jdField_a_of_type_Biym = new biym(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_Biym.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeTextMaxCount);
-      this.jdField_a_of_type_Biym.a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement, this.jdField_c_of_type_Boolean);
-      this.jdField_a_of_type_Biym.a(new biys(this));
-      this.jdField_a_of_type_Biym.show();
-      this.jdField_a_of_type_Biym.setOnDismissListener(new biyt(this));
+      this.jdField_a_of_type_Bldg = new bldg(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_Bldg.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeTextMaxCount);
+      this.jdField_a_of_type_Bldg.a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement, this.jdField_c_of_type_Boolean);
+      this.jdField_a_of_type_Bldg.a(new bldm(this));
+      this.jdField_a_of_type_Bldg.show();
+      this.jdField_a_of_type_Bldg.setOnDismissListener(new bldn(this));
     }
   }
   
@@ -174,8 +174,8 @@ public class EditTextViewer
     String str1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement.fontName;
     String str2 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement.userValue;
     AppInterface localAppInterface = QQStoryContext.a();
-    localAppInterface.addObserver(new biyu(this, localAppInterface, str2));
-    ((biqw)localAppInterface.getBusinessHandler(3)).a(str1, str2);
+    localAppInterface.addObserver(new bldo(this, localAppInterface, str2));
+    ((bkvm)localAppInterface.getBusinessHandler(3)).a(str1, str2);
   }
   
   private void f()
@@ -192,8 +192,8 @@ public class EditTextViewer
     if (this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap != null) {
       setImageBitmap(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap);
     }
-    if (this.jdField_a_of_type_Biyw != null) {
-      this.jdField_a_of_type_Biyw.b(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+    if (this.jdField_a_of_type_Bldq != null) {
+      this.jdField_a_of_type_Bldq.b(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
     }
     setTextSelected(true);
     this.jdField_c_of_type_Boolean = false;
@@ -201,15 +201,15 @@ public class EditTextViewer
   
   private void h()
   {
-    if (this.jdField_a_of_type_Biyv != null) {
-      this.jdField_a_of_type_Biyv.a();
+    if (this.jdField_a_of_type_Bldp != null) {
+      this.jdField_a_of_type_Bldp.a();
     }
   }
   
   private void i()
   {
-    if (this.jdField_a_of_type_Biyv != null) {
-      this.jdField_a_of_type_Biyv.b();
+    if (this.jdField_a_of_type_Bldp != null) {
+      this.jdField_a_of_type_Bldp.b();
     }
   }
   
@@ -356,7 +356,7 @@ public class EditTextViewer
   public void a(String paramString)
   {
     if (!DeviceUtils.isNetworkAvailable(AEModule.getContext())) {
-      bcql.a(getContext(), 2131689810, 1).a();
+      QQToast.a(getContext(), 2131689852, 1).a();
     }
     label131:
     for (;;)
@@ -377,10 +377,10 @@ public class EditTextViewer
         this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement.userValue;
         f();
         g();
-        if (this.jdField_a_of_type_Biyw == null) {
+        if (this.jdField_a_of_type_Bldq == null) {
           break;
         }
-        this.jdField_a_of_type_Biyw.c(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+        this.jdField_a_of_type_Bldq.c(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
         return;
       }
     }
@@ -416,7 +416,7 @@ public class EditTextViewer
     }
     d();
     setTextSelected(false);
-    bizt.a().f();
+    blen.a().f();
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -501,14 +501,14 @@ public class EditTextViewer
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeTextGroup.copyFrom(paramNodeItem.nodeTextGroup);
   }
   
-  public void setOnDownloadDialogListener(biyv parambiyv)
+  public void setOnDownloadDialogListener(bldp parambldp)
   {
-    this.jdField_a_of_type_Biyv = parambiyv;
+    this.jdField_a_of_type_Bldp = parambldp;
   }
   
-  public void setOnSaveTextInfoListener(biyw parambiyw)
+  public void setOnSaveTextInfoListener(bldq parambldq)
   {
-    this.jdField_a_of_type_Biyw = parambiyw;
+    this.jdField_a_of_type_Bldq = parambldq;
   }
   
   public void setTemplateID(String paramString)
@@ -523,7 +523,7 @@ public class EditTextViewer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.play.EditTextViewer
  * JD-Core Version:    0.7.0.1
  */

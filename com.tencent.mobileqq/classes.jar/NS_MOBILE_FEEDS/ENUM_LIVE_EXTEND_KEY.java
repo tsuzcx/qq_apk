@@ -19,7 +19,7 @@ public final class ENUM_LIVE_EXTEND_KEY
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.ENUM_LIVE_EXTEND_KEY
  * JD-Core Version:    0.7.0.1
  */

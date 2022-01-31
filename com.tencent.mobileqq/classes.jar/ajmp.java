@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class ajmp
-  implements aism
+  implements DialogInterface.OnClickListener
 {
-  public ajmp(ApolloConfigDataReport.1 param1) {}
+  public ajmp(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
-    }
-    if ((paramInt1 == 0) && (paramInt2 == 200)) {
-      ajmo.b();
-    }
+    wta.a("video_shoot", "down_now", 0, 0, new String[0]);
+    asyy.b(null);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmp
  * JD-Core Version:    0.7.0.1
  */

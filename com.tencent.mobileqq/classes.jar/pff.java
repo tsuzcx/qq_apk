@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class pff
-  implements View.OnClickListener
+public class pff
 {
-  pff(pfb parampfb, ram paramram, pau parampau) {}
+  public int a;
+  public long a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public pff(long paramLong, int paramInt)
   {
-    rbr localrbr = this.jdField_a_of_type_Ram.a();
-    if (localrbr != null) {
-      localrbr.a(paramView, this.jdField_a_of_type_Pau.a(), 2);
-    }
+    this(paramLong, paramInt, false);
+  }
+  
+  public pff(long paramLong, int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "BatchFollowModel{followUin=" + this.jdField_a_of_type_Long + ", accountType=" + this.jdField_a_of_type_Int + ", isFollowed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pff
  * JD-Core Version:    0.7.0.1
  */

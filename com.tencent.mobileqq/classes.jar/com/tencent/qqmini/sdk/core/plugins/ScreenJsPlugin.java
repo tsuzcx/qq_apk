@@ -4,36 +4,44 @@ import android.app.Activity;
 import android.provider.Settings.System;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import behq;
-import bekr;
-import bekz;
-import betc;
+import bgho;
+import bgkd;
+import bgkk;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class ScreenJsPlugin
   extends BaseJsPlugin
 {
+  private static final String EVENT_ON_USER_CAPTURE_SCREEN = "onUserCaptureScreen";
   private static final String TAG = "ScreenJsPlugin";
-  private Activity mActivity;
   
   public static float getScreenBrightness(Activity paramActivity)
   {
-    Window localWindow = paramActivity.getWindow();
+    Window localWindow;
     float f1;
-    if (localWindow == null) {
+    if (paramActivity != null)
+    {
+      localWindow = paramActivity.getWindow();
+      if (localWindow != null) {
+        break label26;
+      }
       f1 = -1.0F;
     }
     for (;;)
     {
       return f1;
+      localWindow = null;
+      break;
       try
       {
+        label26:
         f2 = localWindow.getAttributes().screenBrightness;
         f1 = f2;
         if (f2 < 0.0F)
         {
           int i;
-          betc.d("ScreenJsPlugin", paramActivity.getMessage(), paramActivity);
+          QMLog.e("ScreenJsPlugin", paramActivity.getMessage(), paramActivity);
         }
       }
       catch (Exception paramActivity)
@@ -46,12 +54,13 @@ public class ScreenJsPlugin
         catch (Exception paramActivity)
         {
           float f2;
-          break;
+          break label62;
         }
         paramActivity = paramActivity;
         f2 = 0.0F;
       }
     }
+    label62:
     return f2;
   }
   
@@ -85,45 +94,45 @@ public class ScreenJsPlugin
     paramActivity.setAttributes(localLayoutParams);
   }
   
-  public String getScreenBrightness(bekr parambekr)
+  public String getScreenBrightness(bgkd parambgkd)
   {
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("value", getScreenBrightness(this.mActivity));
-      parambekr.a(localJSONObject);
+      localJSONObject.put("value", getScreenBrightness(this.mMiniAppContext.a()));
+      parambgkd.a(localJSONObject);
       return "";
     }
-    catch (Throwable parambekr)
+    catch (Throwable parambgkd)
     {
       for (;;)
       {
-        betc.d("ScreenJsPlugin", parambekr.getMessage(), parambekr);
+        QMLog.e("ScreenJsPlugin", parambgkd.getMessage(), parambgkd);
       }
     }
   }
   
-  public void onCreate(behq parambehq)
+  public void onCreate(bgho parambgho)
   {
-    super.onCreate(parambehq);
-    this.mActivity = parambehq.a();
+    super.onCreate(parambgho);
+    bgkk.a(new ScreenJsPlugin.1(this));
   }
   
-  public String setKeepScreenOn(bekr parambekr)
+  public String setKeepScreenOn(bgkd parambgkd)
   {
-    bekz.a(new ScreenJsPlugin.2(this, parambekr));
+    bgkk.a(new ScreenJsPlugin.3(this, parambgkd));
     return "";
   }
   
-  public String setScreenBrightness(bekr parambekr)
+  public String setScreenBrightness(bgkd parambgkd)
   {
-    bekz.a(new ScreenJsPlugin.1(this, parambekr));
+    bgkk.a(new ScreenJsPlugin.2(this, parambgkd));
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.ScreenJsPlugin
  * JD-Core Version:    0.7.0.1
  */

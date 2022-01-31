@@ -1,6 +1,6 @@
 {
     "ReadInjoy_article_title_cell": {
-        "view_type": "cell",
+        "view_type": "container",
         "direction": "vertical",
         "height": {
             

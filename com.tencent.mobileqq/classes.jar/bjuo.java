@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public final class bjuo
-  implements Parcelable.Creator<EditTakeGifSource>
+class bjuo
+  implements bjup
 {
-  public EditTakeGifSource a(Parcel paramParcel)
-  {
-    return new EditTakeGifSource(paramParcel);
-  }
+  bjuo(bjul parambjul) {}
   
-  public EditTakeGifSource[] a(int paramInt)
+  public void a(JSONObject paramJSONObject, Bundle paramBundle)
   {
-    return new EditTakeGifSource[paramInt];
+    paramJSONObject.put("event_video_album_state", paramBundle.getString("event_video_album_state"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjuo
  * JD-Core Version:    0.7.0.1
  */

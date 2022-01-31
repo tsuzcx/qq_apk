@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import aptx;
-import bcql;
+import armz;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class FMToastUtil$5
   implements Runnable
@@ -11,12 +11,12 @@ public final class FMToastUtil$5
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getContext(), 2, this.a, 1).b(aptx.a());
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 1).b(armz.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FMToastUtil.5
  * JD-Core Version:    0.7.0.1
  */

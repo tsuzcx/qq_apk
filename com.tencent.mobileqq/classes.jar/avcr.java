@@ -1,17 +1,22 @@
-class avcr
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+
+public abstract interface avcr
 {
-  String a;
-  String b;
+  public abstract int a();
   
-  public avcr(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
+  public abstract void a();
+  
+  public abstract void a(Comments.Comment paramComment);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avcr
  * JD-Core Version:    0.7.0.1
  */

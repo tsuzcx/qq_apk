@@ -1,33 +1,18 @@
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 
 public class ahen
-  implements OnCompositionLoadedListener
+  implements ahrf
 {
-  public ahen(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  public ahen(TroopView paramTroopView) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public long a()
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
-    {
-      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
-      agxa.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
-    }
+    return TroopView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahen
  * JD-Core Version:    0.7.0.1
  */

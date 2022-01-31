@@ -1,7 +1,7 @@
 package cooperation.wadl.ipc;
 
-import bdot;
-import bici;
+import bfnq;
+import bkee;
 import com.tencent.qphone.base.util.QLog;
 
 class WadlProxyServiceMonitor$MonitorWorkingThread
@@ -22,7 +22,7 @@ class WadlProxyServiceMonitor$MonitorWorkingThread
         if ((WadlProxyServiceMonitor.b(this.this$0) != 0L) && (l - WadlProxyServiceMonitor.b(this.this$0) > 30000L) && (WadlProxyServiceMonitor.a(this.this$0)) && (WadlProxyServiceMonitor.a(this.this$0) != null))
         {
           if (QLog.isColorLevel()) {
-            bdot.b(WadlProxyServiceMonitor.a(), "##@<<<MonitorWorkingThread: check ipc service status...");
+            bfnq.c(WadlProxyServiceMonitor.a(), "##@<<<MonitorWorkingThread: check ipc service status...");
           }
           WadlProxyServiceMonitor.a(this.this$0).a();
         }
@@ -37,7 +37,7 @@ class WadlProxyServiceMonitor$MonitorWorkingThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.wadl.ipc.WadlProxyServiceMonitor.MonitorWorkingThread
  * JD-Core Version:    0.7.0.1
  */

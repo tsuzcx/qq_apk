@@ -1,106 +1,119 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
+import com.tencent.view.RendererUtils;
 
 public class bkoz
-  extends BaseAdapter
+  extends bkoy
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<bkpe> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private RenderBuffer b;
   
-  public bkoz(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
+  private void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ArrayList<bkpe> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bkpe localbkpe = (bkpe)getItem(paramInt);
-    if (paramView == null)
+    try
     {
-      bkpa localbkpa = new bkpa(this);
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b)
-      {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559000, paramViewGroup, false);
-        localbkpa.b = ((ImageView)paramView.findViewById(2131368375));
-        localbkpa.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368320));
-        localbkpa.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368319));
-        paramView.setTag(localbkpa);
-        paramViewGroup = localbkpa;
-        label100:
-        if (Build.VERSION.SDK_INT < 21) {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbkpe.a);
-        if (paramInt != this.jdField_a_of_type_Int) {
-          break label224;
-        }
-        if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b) {
-          break label202;
-        }
-        paramViewGroup.b.setVisibility(0);
+      if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) {
+        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.e, this.f, 33984);
       }
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+      Object localObject = new float[16];
+      Matrix.setIdentityM((float[])localObject, 0);
+      Matrix.scaleM((float[])localObject, 0, 1.0F, -1.0F, 1.0F);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt1, null, (float[])localObject);
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+      localObject = RendererUtils.saveTexture(this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), paramInt2, paramInt3);
+      if (this.jdField_a_of_type_Bkox != null) {
+        this.jdField_a_of_type_Bkox.a((Bitmap)localObject);
+      }
+      return;
     }
-    for (;;)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      if (localbkpe.b != null) {
-        paramView.setContentDescription(localbkpe.b);
-      }
-      return paramView;
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558999, paramViewGroup, false);
-      break;
-      paramViewGroup = (bkpa)paramView.getTag();
-      break label100;
-      label202:
-      paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getResources().getDrawable(2130844267));
-      continue;
-      label224:
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b) {
-        paramViewGroup.b.setVisibility(4);
-      } else {
-        paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(null);
-      }
+      while (this.jdField_a_of_type_Bkox == null) {}
+      this.jdField_a_of_type_Bkox.b(103);
     }
   }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+  }
+  
+  public void a(float paramFloat) {}
+  
+  protected void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glViewport(0, 0, paramInt2, paramInt3);
+    GLES20.glClearColor(0.92F, 0.93F, 0.96F, 1.0F);
+    GLES20.glClear(16384);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(770, 771);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt1, null, null);
+    GLES20.glDisable(3042);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    super.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public int[] a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if ((this.g == 0) || (this.h == 0)) {
+      return this.jdField_a_of_type_ArrayOfInt;
+    }
+    paramBoolean = this.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.g, this.h, 33984);
+    }
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    int i = this.e;
+    int j = (int)(this.e / this.jdField_b_of_type_Double);
+    float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.g, this.h, i, j);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.k, this.jdField_a_of_type_ArrayOfFloat, arrayOfFloat);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    int k = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
+    a(k, paramInt1, paramInt2);
+    if (paramBoolean)
+    {
+      b(k, i, j);
+      this.jdField_a_of_type_Boolean = false;
+    }
+    this.jdField_a_of_type_ArrayOfInt[0] = k;
+    this.jdField_a_of_type_ArrayOfInt[1] = k;
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+    }
+    if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
+    }
+  }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkoz
  * JD-Core Version:    0.7.0.1
  */

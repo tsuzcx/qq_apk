@@ -1,7 +1,10 @@
 package okio;
 
+import javax.annotation.Nullable;
+
 final class Segment
 {
+  static final int SHARE_MINIMUM = 1024;
   static final int SIZE = 8192;
   final byte[] data;
   int limit;
@@ -18,22 +21,16 @@ final class Segment
     this.shared = false;
   }
   
-  Segment(Segment paramSegment)
-  {
-    this(paramSegment.data, paramSegment.pos, paramSegment.limit);
-    paramSegment.shared = true;
-  }
-  
-  Segment(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  Segment(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.data = paramArrayOfByte;
     this.pos = paramInt1;
     this.limit = paramInt2;
-    this.owner = false;
-    this.shared = true;
+    this.shared = paramBoolean1;
+    this.owner = paramBoolean2;
   }
   
-  public void compact()
+  public final void compact()
   {
     if (this.prev == this) {
       throw new IllegalStateException();
@@ -55,7 +52,8 @@ final class Segment
     }
   }
   
-  public Segment pop()
+  @Nullable
+  public final Segment pop()
   {
     if (this.next != this) {}
     for (Segment localSegment = this.next;; localSegment = null)
@@ -68,7 +66,7 @@ final class Segment
     }
   }
   
-  public Segment push(Segment paramSegment)
+  public final Segment push(Segment paramSegment)
   {
     paramSegment.prev = this;
     paramSegment.next = this.next;
@@ -77,19 +75,38 @@ final class Segment
     return paramSegment;
   }
   
-  public Segment split(int paramInt)
+  final Segment sharedCopy()
+  {
+    this.shared = true;
+    return new Segment(this.data, this.pos, this.limit, true, false);
+  }
+  
+  public final Segment split(int paramInt)
   {
     if ((paramInt <= 0) || (paramInt > this.limit - this.pos)) {
       throw new IllegalArgumentException();
     }
-    Segment localSegment = new Segment(this);
-    localSegment.limit = (localSegment.pos + paramInt);
-    this.pos += paramInt;
-    this.prev.push(localSegment);
-    return localSegment;
+    Segment localSegment;
+    if (paramInt >= 1024) {
+      localSegment = sharedCopy();
+    }
+    for (;;)
+    {
+      localSegment.limit = (localSegment.pos + paramInt);
+      this.pos += paramInt;
+      this.prev.push(localSegment);
+      return localSegment;
+      localSegment = SegmentPool.take();
+      System.arraycopy(this.data, this.pos, localSegment.data, 0, paramInt);
+    }
   }
   
-  public void writeTo(Segment paramSegment, int paramInt)
+  final Segment unsharedCopy()
+  {
+    return new Segment((byte[])this.data.clone(), this.pos, this.limit, false, true);
+  }
+  
+  public final void writeTo(Segment paramSegment, int paramInt)
   {
     if (!paramSegment.owner) {
       throw new IllegalArgumentException();
@@ -113,7 +130,7 @@ final class Segment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.Segment
  * JD-Core Version:    0.7.0.1
  */

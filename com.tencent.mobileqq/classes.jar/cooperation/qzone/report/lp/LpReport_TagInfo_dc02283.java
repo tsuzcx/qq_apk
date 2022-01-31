@@ -42,7 +42,7 @@ public class LpReport_TagInfo_dc02283
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_TagInfo_dc02283
  * JD-Core Version:    0.7.0.1
  */

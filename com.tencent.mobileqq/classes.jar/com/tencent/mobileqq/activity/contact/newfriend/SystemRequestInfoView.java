@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aflr;
-import afls;
-import akat;
-import akqw;
+import ahiw;
+import ahix;
+import alsi;
+import amha;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -13,11 +13,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import axqy;
-import aydc;
-import bbfj;
-import bcqf;
-import bcql;
+import azmj;
+import baaz;
+import bdee;
+import bepp;
 import com.tencent.mobileqq.activity.AddRequestActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListHandler;
@@ -28,6 +27,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import tencent.mobileim.structmsg.structmsg.AddFrdSNInfo;
@@ -42,10 +42,10 @@ public class SystemRequestInfoView
 {
   int jdField_a_of_type_Int;
   public long a;
-  private akat jdField_a_of_type_Akat = new aflr(this);
+  private alsi jdField_a_of_type_Alsi = new ahiw(this);
   private Intent jdField_a_of_type_AndroidContentIntent;
   Button jdField_a_of_type_AndroidWidgetButton;
-  public bcqf a;
+  public bepp a;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public String a;
@@ -70,38 +70,38 @@ public class SystemRequestInfoView
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131298865);
+    return getResources().getDimensionPixelSize(2131298914);
   }
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bcqf == null)
+    if (this.jdField_a_of_type_Bepp == null)
     {
-      this.jdField_a_of_type_Bcqf = new bcqf(getContext(), a());
-      this.jdField_a_of_type_Bcqf.setOnDismissListener(new afls(this));
-      this.jdField_a_of_type_Bcqf.c(paramInt);
-      this.jdField_a_of_type_Bcqf.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bcqf.setCancelable(false);
-      this.jdField_a_of_type_Bcqf.show();
+      this.jdField_a_of_type_Bepp = new bepp(getContext(), a());
+      this.jdField_a_of_type_Bepp.setOnDismissListener(new ahix(this));
+      this.jdField_a_of_type_Bepp.c(paramInt);
+      this.jdField_a_of_type_Bepp.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bepp.setCancelable(false);
+      this.jdField_a_of_type_Bepp.show();
     }
   }
   
   public boolean a()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Bcqf != null)
+    if (this.jdField_a_of_type_Bepp != null)
     {
       bool = true;
-      this.jdField_a_of_type_Bcqf.cancel();
-      this.jdField_a_of_type_Bcqf = null;
+      this.jdField_a_of_type_Bepp.cancel();
+      this.jdField_a_of_type_Bepp = null;
     }
     return bool;
   }
   
   public void onClick(View paramView)
   {
-    if (!bbfj.d(getContext())) {
-      bcql.a(getContext(), getResources().getString(2131694608), 0).b(a());
+    if (!bdee.d(getContext())) {
+      QQToast.a(getContext(), getResources().getString(2131694764), 0).b(a());
     }
     label835:
     for (;;)
@@ -115,7 +115,7 @@ public class SystemRequestInfoView
         {
           ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(0, Long.parseLong(this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, (byte)0, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Long, this.jdField_b_of_type_Long);
           i = 1;
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673B", "0X800673B", 0, 0, "", "", "", "");
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673B", "0X800673B", 0, 0, "", "", "", "");
         }
       }
       for (;;)
@@ -123,10 +123,10 @@ public class SystemRequestInfoView
         if (i == 0) {
           break label835;
         }
-        a(2131719292);
+        a(2131719773);
         return;
-        long l1 = aydc.a().b();
-        paramView = aydc.a().a(Long.valueOf(l1));
+        long l1 = baaz.a().b();
+        paramView = baaz.a().a(Long.valueOf(l1));
         long l2;
         int m;
         int n;
@@ -167,8 +167,8 @@ public class SystemRequestInfoView
         break;
         if (paramView == this.jdField_b_of_type_AndroidWidgetButton)
         {
-          l1 = aydc.a().b();
-          this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = aydc.a().a(Long.valueOf(l1));
+          l1 = baaz.a().b();
+          this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = baaz.a().a(Long.valueOf(l1));
           if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null)
           {
             i = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get();
@@ -187,7 +187,7 @@ public class SystemRequestInfoView
           }
           for (;;)
           {
-            axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673A", "0X800673A", 0, 0, "", "", "", "");
+            azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673A", "0X800673A", 0, 0, "", "", "", "");
             break;
             localObject = new StringBuilder().append("refuse, ");
             if (paramView != null) {}
@@ -207,7 +207,7 @@ public class SystemRequestInfoView
           paramView = new Intent(this.jdField_a_of_type_AndroidContentIntent);
           paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AddRequestActivity.class);
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivityForResult(paramView, 1018);
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673D", "0X800673D", 0, 0, "", "", "", "");
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673D", "0X800673D", 0, 0, "", "", "", "");
           i = k;
         }
       }
@@ -221,7 +221,7 @@ public class SystemRequestInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView
  * JD-Core Version:    0.7.0.1
  */

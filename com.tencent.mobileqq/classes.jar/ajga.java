@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public final class ajga
-  implements Parcelable.Creator<CmShowRenderView.PlayActionConfig>
+class ajga
+  implements DialogInterface.OnDismissListener
 {
-  public CmShowRenderView.PlayActionConfig a(Parcel paramParcel)
-  {
-    return new CmShowRenderView.PlayActionConfig(paramParcel);
-  }
+  ajga(ajfx paramajfx) {}
   
-  public CmShowRenderView.PlayActionConfig[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new CmShowRenderView.PlayActionConfig[paramInt];
+    ajfx.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajga
  * JD-Core Version:    0.7.0.1
  */

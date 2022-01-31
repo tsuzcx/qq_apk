@@ -1,33 +1,47 @@
-import android.content.Context;
-import android.view.View.MeasureSpec;
-import android.widget.FrameLayout;
-import com.tencent.widget.GridView;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
-class aodq
-  extends FrameLayout
+public class aodq
+  implements bhuy
 {
-  public aodq(aodo paramaodo, Context paramContext)
+  public aodq(SearchResultActivity paramSearchResultActivity) {}
+  
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    super(paramContext);
+    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    int i = aodo.a(this.a).getPaddingLeft() + getPaddingLeft();
-    if (i != paramInt1) {
-      offsetLeftAndRight(i - paramInt1);
+    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
+    if (bdee.d(this.a)) {
+      SearchResultActivity.c(this.a);
     }
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    for (;;)
+    {
+      SearchResultActivity.a(this.a, System.currentTimeMillis());
+      return true;
+      SearchResultActivity.a(this.a).a(1);
+      paramView = Message.obtain();
+      paramView.what = 3;
+      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
+    }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void b(int paramInt, View paramView, ListView paramListView)
   {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(aodo.a(this.a).getMeasuredWidth() - aodo.a(this.a).getPaddingLeft() - aodo.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
   }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodq
  * JD-Core Version:    0.7.0.1
  */

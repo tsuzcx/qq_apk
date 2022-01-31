@@ -1,19 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+
 class apcp
-  extends apbu
+  implements DialogInterface.OnClickListener
 {
-  public apcp(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  apcp(apco paramapco) {}
   
-  protected String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "StateUploadoneWhenChangeToOff";
+    apde.a().b(this.a.jdField_a_of_type_Apcg);
+    this.a.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apcp
  * JD-Core Version:    0.7.0.1
  */

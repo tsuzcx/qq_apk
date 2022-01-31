@@ -2,9 +2,9 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhvy;
+import bjxj;
 import com.tencent.qphone.base.util.QLog;
-import onh;
+import ors;
 
 public final class ReadInJoyUtils$9
   implements Runnable
@@ -13,7 +13,7 @@ public final class ReadInJoyUtils$9
   
   public void run()
   {
-    Object localObject = bhvy.a(onh.a(), this.jdField_a_of_type_Boolean, true);
+    Object localObject = bjxj.a(ors.a(), this.jdField_a_of_type_Boolean, true);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -25,7 +25,7 @@ public final class ReadInJoyUtils$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.9
  * JD-Core Version:    0.7.0.1
  */

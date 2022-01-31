@@ -1,44 +1,37 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.TabView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
 
-class myx
-  extends bbwt
+public class myx
+  implements View.OnClickListener
 {
-  myx(myw parammyw) {}
+  public myx(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onDone(bbwu parambbwu)
+  public void onClick(View paramView)
   {
-    if (parambbwu.a == 0) {
-      parambbwu = parambbwu.a().getString("file_path");
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        File localFile = new File(parambbwu);
-        String str = bbdx.b(localFile);
-        if (QLog.isColorLevel()) {
-          QLog.d("CommonConfigBase", 2, "onDone() content =  " + str + ", filePath = " + parambbwu);
-        }
-        localFile.delete();
-        this.a.b(str);
-        this.a.a(str);
-        return;
+    if ((paramView instanceof PoiMapActivity.TabView))
+    {
+      this.a.a(((PoiMapActivity.TabView)paramView).a);
+      this.a.i();
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
       }
-      catch (IOException parambbwu)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(parambbwu));
-        return;
+      if (PoiMapActivity.a(this.a)) {
+        this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
       }
     }
-    QLog.d("CommonConfigBase", 2, "onError(), errorCode = " + parambbwu.a);
+    else
+    {
+      return;
+    }
+    this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myx
  * JD-Core Version:    0.7.0.1
  */

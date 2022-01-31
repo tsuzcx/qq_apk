@@ -9,7 +9,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lig;
+import lkj;
 
 public class MakeupMng$1
   implements Runnable
@@ -17,20 +17,20 @@ public class MakeupMng$1
   public void run()
   {
     long l = AudioHelper.b();
-    Object localObject1 = lig.a(this.this$0).getAccount();
+    Object localObject1 = lkj.a(this.this$0).getAccount();
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences("QAVPreSetting", 0);
     this.this$0.d = localSharedPreferences.getString("makeup_sel_id_" + (String)localObject1, null);
-    lig.a(this.this$0, localSharedPreferences.getString("makeup_value_map_" + (String)localObject1, null));
+    lkj.a(this.this$0, localSharedPreferences.getString("makeup_value_map_" + (String)localObject1, null));
     this.this$0.c = this.this$0.a(this.this$0.d);
     if (!TextUtils.isEmpty(this.this$0.d)) {}
     try
     {
-      lig.a(this.this$0);
+      lkj.a(this.this$0);
       i = 0;
-      if ((lig.a(this.this$0) == null) || (i >= lig.b(this.this$0).size())) {
+      if ((lkj.a(this.this$0) == null) || (i >= lkj.b(this.this$0).size())) {
         break label332;
       }
-      localObject1 = (PendantItem)lig.c(this.this$0).get(i);
+      localObject1 = (PendantItem)lkj.c(this.this$0).get(i);
       if ((localObject1 == null) || (!TextUtils.equals(((PendantItem)localObject1).getId(), this.this$0.d))) {
         break label297;
       }
@@ -64,7 +64,7 @@ public class MakeupMng$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.business.manager.makeup.MakeupMng.1
  * JD-Core Version:    0.7.0.1
  */

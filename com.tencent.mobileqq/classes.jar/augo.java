@@ -1,38 +1,109 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.ViewConfigurationCompat;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 import com.tencent.qphone.base.util.QLog;
 
-class augo
-  implements akyw
+public class augo
+  implements bhsy
 {
-  augo(augl paramaugl, AppInterface paramAppInterface) {}
+  float jdField_a_of_type_Float;
+  final int jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment.getActivity()));
+  float jdField_b_of_type_Float;
+  int jdField_b_of_type_Int;
+  float c;
+  float d;
   
-  public void a() {}
+  public augo(MultiAIOItemFragment paramMultiAIOItemFragment) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    akyn localakyn = this.jdField_a_of_type_Augl.a();
-    if ((localakyn == null) || (!TextUtils.equals(paramString, localakyn.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if (paramInt1 < this.jdField_a_of_type_Augl.jdField_a_of_type_ArrayOfInt.length) {
-      this.jdField_a_of_type_Augl.jdField_a_of_type_ArrayOfInt[paramInt1] = paramInt2;
-    }
-    if ((paramInt2 >= 0) && (paramInt2 <= 99))
+    boolean bool2 = false;
+    boolean bool1;
+    switch (paramMotionEvent.getActionMasked())
     {
-      augl.a(this.jdField_a_of_type_Augl, "onDownloadProgress", true);
-      return;
+    default: 
+      bool1 = bool2;
     }
-    QLog.w(augl.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[" + paramInt1 + "], progress[" + paramInt2 + "]");
-    if ((paramInt2 == 100) && (paramInt1 == 0)) {
-      augl.a(this.jdField_a_of_type_Augl, "onDownloadProgress", this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOItemFragment", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "], intercept = " + bool1);
+      }
+      return bool1;
+      float f1 = paramMotionEvent.getX();
+      this.d = f1;
+      this.jdField_b_of_type_Float = f1;
+      f1 = paramMotionEvent.getY();
+      this.c = f1;
+      this.jdField_a_of_type_Float = f1;
+      this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+      bool1 = bool2;
+      continue;
+      int i = this.jdField_b_of_type_Int;
+      bool1 = bool2;
+      if (i != -1)
+      {
+        i = MotionEventCompat.findPointerIndex(paramMotionEvent, i);
+        bool1 = bool2;
+        if (i >= 0)
+        {
+          bool1 = bool2;
+          if (i <= paramMotionEvent.getPointerCount() - 1)
+          {
+            float f2 = MotionEventCompat.getX(paramMotionEvent, i);
+            f1 = Math.abs(f2 - this.d);
+            float f3 = MotionEventCompat.getY(paramMotionEvent, i) - this.jdField_a_of_type_Float;
+            float f4 = Math.abs(f3);
+            if ((f4 > this.jdField_a_of_type_Int) && (f4 * 0.5F > f1)) {
+              if (f3 > 0.0F)
+              {
+                f1 = this.c + this.jdField_a_of_type_Int;
+                label250:
+                this.jdField_a_of_type_Float = f1;
+                this.jdField_b_of_type_Float = f2;
+                bool1 = false;
+              }
+            }
+            for (;;)
+            {
+              MultiAIOBaseViewPager localMultiAIOBaseViewPager = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+              bool2 = bool1;
+              if (localMultiAIOBaseViewPager != null)
+              {
+                bool2 = bool1;
+                if (localMultiAIOBaseViewPager.a() != MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) {
+                  bool2 = true;
+                }
+              }
+              bool1 = bool2;
+              break;
+              f1 = this.c - this.jdField_a_of_type_Int;
+              break label250;
+              if (f1 > this.jdField_a_of_type_Int)
+              {
+                bool1 = true;
+              }
+              else
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("MultiAIOItemFragment", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "] do nothing");
+                }
+                bool1 = false;
+              }
+            }
+            bool1 = true;
+          }
+        }
+      }
     }
-    augl.a(this.jdField_a_of_type_Augl, "onDownloadProgress2", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augo
  * JD-Core Version:    0.7.0.1
  */

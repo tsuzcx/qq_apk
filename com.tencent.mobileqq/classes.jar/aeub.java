@@ -1,22 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
 public class aeub
-  implements DialogInterface.OnClickListener
+  implements TextView.OnEditorActionListener
 {
-  public aeub(TroopChatPie paramTroopChatPie) {}
+  public aeub(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    new axrc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_cancel").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
-    this.a.H();
+    boolean bool = false;
+    if (paramInt == 4)
+    {
+      azmj.b(null, "dc00898", "", "", "0X800A89F", "0X800A89F", 0, 0, "", "", "", "");
+      VoiceTextEditPanel.a(this.a);
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeub
  * JD-Core Version:    0.7.0.1
  */

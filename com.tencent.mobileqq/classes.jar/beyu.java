@@ -1,133 +1,87 @@
-import android.os.Debug;
-import android.os.Debug.MemoryInfo;
+import android.graphics.Bitmap;
 import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.report.MiniGamePerformanceStatics.1;
-import java.util.Locale;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.open.agent.BindGroupConfirmActivity.2.1;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
+import java.util.List;
 
 public class beyu
+  extends Handler
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private final Debug.MemoryInfo jdField_a_of_type_AndroidOsDebug$MemoryInfo = new Debug.MemoryInfo();
-  private final bffe jdField_a_of_type_Bffe = new bffe();
-  private final bfff jdField_a_of_type_Bfff = new bfff();
-  private final bffg jdField_a_of_type_Bffg = new bffg(200);
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new MiniGamePerformanceStatics.1(this);
-  private long jdField_b_of_type_Long;
-  private final bffe jdField_b_of_type_Bffe = new bffe();
+  public beyu(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  private float a()
+  public void handleMessage(Message paramMessage)
   {
-    Debug.getMemoryInfo(this.jdField_a_of_type_AndroidOsDebug$MemoryInfo);
-    return this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.getTotalPss() / 1024.0F;
-  }
-  
-  private static String a(float paramFloat)
-  {
-    return String.format(Locale.US, "%.1f", new Object[] { Float.valueOf(paramFloat) });
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_Bffe.a();
-    this.jdField_b_of_type_Bffe.a();
-    this.jdField_a_of_type_Bffg.a();
-    this.jdField_a_of_type_Long = beyf.a("-1");
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-  }
-  
-  private void e()
-  {
-    float f2 = 0.0F;
-    MiniAppProxy localMiniAppProxy;
-    float f5;
-    float f6;
-    float f7;
-    float f3;
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null)
+    if (paramMessage == null) {}
+    do
     {
-      long l = SystemClock.uptimeMillis() - this.jdField_b_of_type_Long;
-      if (l < 10000L)
-      {
-        d();
-        return;
-      }
-      localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      f5 = (float)(beyf.a("-1") - this.jdField_a_of_type_Long) / ((float)l / 1000.0F);
-      f6 = this.jdField_a_of_type_Bffe.a();
-      f7 = this.jdField_a_of_type_Bfff.a() - this.jdField_a_of_type_Float;
-      if (!this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.isReportTypeMiniGame()) {
-        break label365;
-      }
-      f3 = this.jdField_b_of_type_Bffe.a();
-      float f4 = this.jdField_a_of_type_Bffg.a();
-      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 629, a(f5), "1");
-      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 631, a(f6), "1");
-      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 643, a(f7), "1");
-      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 630, a(f3), "1");
-      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 642, a(f4), "1");
-      beza.a(f3, f4);
-      f1 = f3;
-      f2 = f4;
-      if (localMiniAppProxy.isDebugVersion())
-      {
-        betc.b("MiniGamePerformance", "cpu:" + f5 + " avgMemory:" + f6 + " memoryGrowth:" + f7 + " avgFps:" + f3 + " fpsVariance:" + f4 + " dalivkPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.dalvikPss + " nativePss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.nativePss + " otherPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.otherPss + " totalPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.getTotalPss());
-        f2 = f4;
-      }
-    }
-    for (float f1 = f3;; f1 = 0.0F)
-    {
-      bezb.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, f5, f6, f7, f1, f2);
-      d();
       return;
-      label365:
-      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 629, a(f5), "0");
-      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 631, a(f6), "0");
-      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 643, a(f7), "0");
-      if (localMiniAppProxy.isDebugVersion()) {
-        betc.b("MiniGamePerformance", "cpu:" + f5 + " avgMemory:" + f6 + " memoryGrowth:" + f7 + " dalivkPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.dalvikPss + " nativePss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.nativePss + " otherPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.otherPss + " totalPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.getTotalPss());
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 3: 
+        paramMessage = (GetAppInfoProto.GetAppinfoResponse)paramMessage.obj;
       }
+    } while (!paramMessage.iconsURL.has());
+    int i = 0;
+    int j = 0;
+    int m = 0;
+    label58:
+    GetAppInfoProto.MsgIconsurl localMsgIconsurl;
+    if (i < paramMessage.iconsURL.get().size()) {
+      localMsgIconsurl = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Float = a();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Bffg.a(paramFloat);
-    this.jdField_b_of_type_Bffe.a(paramFloat);
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
-  }
-  
-  public void b()
-  {
-    d();
-    Handler localHandler = bejn.a();
-    localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    localHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
-  }
-  
-  public void c()
-  {
-    bejn.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    e();
+    for (;;)
+    {
+      try
+      {
+        k = Integer.parseInt(localMsgIconsurl.size.get());
+        if (k >= 100)
+        {
+          paramMessage = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
+          if (paramMessage == null) {
+            break;
+          }
+          ThreadManager.executeOnNetWorkThread(new BindGroupConfirmActivity.2.1(this, paramMessage));
+          return;
+        }
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        int k = 0;
+        continue;
+        int n = m;
+        if (k > m)
+        {
+          j = i;
+          n = k;
+        }
+        i += 1;
+        m = n;
+      }
+      break label58;
+      paramMessage = (Bitmap)paramMessage.obj;
+      Bitmap localBitmap = bfdz.a(this.a, paramMessage, 50, 50);
+      paramMessage.recycle();
+      if (localBitmap == null) {
+        break;
+      }
+      this.a.b.setImageBitmap(localBitmap);
+      return;
+      i = j;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyu
  * JD-Core Version:    0.7.0.1
  */

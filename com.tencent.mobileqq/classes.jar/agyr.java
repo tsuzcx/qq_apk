@@ -1,31 +1,23 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agyr
-  implements PopupWindow.OnDismissListener
+public final class agyr
+  implements DialogInterface.OnClickListener
 {
-  public agyr(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public agyr(boolean paramBoolean, Context paramContext) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RedPacketManager.getInstance().onActiveAccount();
-    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (agyu.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
-    {
-      agyu.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
-      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
-    }
-    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
-      ahiw.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
+    if (this.jdField_a_of_type_Boolean) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agyr
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public final class sso2sns_comm_info$Sso2SnsCommInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.sso2sns.sso2sns_comm_info.Sso2SnsCommInfo
  * JD-Core Version:    0.7.0.1
  */

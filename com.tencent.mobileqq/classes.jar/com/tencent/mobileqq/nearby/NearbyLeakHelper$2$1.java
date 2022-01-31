@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.nearby;
 
-import ataf;
-import atag;
+import abqn;
+import aure;
+import aurf;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zzq;
 
 public class NearbyLeakHelper$2$1
   implements Runnable
 {
-  public NearbyLeakHelper$2$1(atag paramatag) {}
+  public NearbyLeakHelper$2$1(aurf paramaurf) {}
   
   public void run()
   {
-    Object localObject1 = zzq.a("mobile_nearby_leak");
+    Object localObject1 = abqn.a("mobile_nearby_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      ataf.a((String)localObject2);
+      aure.a((String)localObject2);
     }
     try
     {
-      if (!"0".equals("a9855103"))
+      if (!"0".equals("6b98d0b0"))
       {
         localObject1 = new JSONObject();
         JSONObject localJSONObject = new JSONObject();
@@ -45,7 +45,7 @@ public class NearbyLeakHelper$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyLeakHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,13 @@ import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bjhq;
+import bltb;
 
 public class EditTextPreView
   extends ImageView
 {
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private bjhq jdField_a_of_type_Bjhq;
+  private bltb jdField_a_of_type_Bltb;
   private DynamicTextItem jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
   
   public EditTextPreView(Context paramContext)
@@ -68,7 +68,7 @@ public class EditTextPreView
     {
       return super.onTouchEvent(paramMotionEvent);
       return true;
-    } while ((this.jdField_a_of_type_Bjhq == null) || (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem == null));
+    } while ((this.jdField_a_of_type_Bltb == null) || (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem == null));
     int i = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(paramMotionEvent, getWidth(), getHeight(), null, null);
     if (i > -1)
     {
@@ -77,7 +77,7 @@ public class EditTextPreView
       this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(i, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(i));
       this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(i);
     }
-    this.jdField_a_of_type_Bjhq.a(this, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem, i);
+    this.jdField_a_of_type_Bltb.a(this, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem, i);
     return true;
   }
   
@@ -87,9 +87,9 @@ public class EditTextPreView
     throw new UnsupportedOperationException("unSupport normal click listener, use EditTextPreView.OnClickListener instead");
   }
   
-  public void setOnClickListener(@Nullable bjhq parambjhq)
+  public void setOnClickListener(@Nullable bltb parambltb)
   {
-    this.jdField_a_of_type_Bjhq = parambjhq;
+    this.jdField_a_of_type_Bltb = parambltb;
   }
   
   public void setPreViewDrawer(DynamicTextItem paramDynamicTextItem)
@@ -110,7 +110,7 @@ public class EditTextPreView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.text.EditTextPreView
  * JD-Core Version:    0.7.0.1
  */

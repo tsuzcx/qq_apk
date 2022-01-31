@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.leba.core.redtouch;
 
-import arqe;
-import atxe;
+import atgy;
+import avoh;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
 class LebaSpecificRedTouch$1$1
   implements Runnable
 {
-  LebaSpecificRedTouch$1$1(LebaSpecificRedTouch.1 param1, atxe paramatxe) {}
+  LebaSpecificRedTouch$1$1(LebaSpecificRedTouch.1 param1, avoh paramavoh) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.this$0.a(this.jdField_a_of_type_Atxe, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch);
-    arqe.a(this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.this$0, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch);
+    this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a();
+    this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.this$0.a(this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Avoh, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch);
+    atgy.a(this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.this$0, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch);
+    this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$1.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.redtouch.LebaSpecificRedTouch.1.1
  * JD-Core Version:    0.7.0.1
  */

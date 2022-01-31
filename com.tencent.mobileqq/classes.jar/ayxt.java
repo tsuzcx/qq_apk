@@ -1,52 +1,68 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class ayxt
-  extends ayxp
-  implements Handler.Callback
+  extends MSFServlet
 {
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  
-  public ayxt(QQAppInterface paramQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramQQAppInterface, paramString);
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 0) {
-      this.ctrl.a(this);
+    int i;
+    if (paramFromServiceMsg != null)
+    {
+      i = paramFromServiceMsg.getResultCode();
+      if (i != 1000) {
+        break label83;
+      }
+      paramIntent = bjme.a(paramFromServiceMsg.getWupBuffer());
+      if (paramIntent == null) {
+        break label68;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QbossErrorReportServlet", 2, "report qboss success state = " + paramIntent.iRet);
+      }
     }
-    return true;
+    label68:
+    label83:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+        i = -1;
+        break;
+      } while (!QLog.isColorLevel());
+      QLog.d("QbossErrorReportServlet", 2, "report qboss exception fail, decode result is null");
+      return;
+    }
+    QLog.d("QbossErrorReportServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
   }
   
-  protected void realCancel()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  protected void realStart()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, this.jdField_a_of_type_Long);
-  }
-  
-  public String toString()
-  {
-    return super.toString() + "[" + this.jdField_a_of_type_JavaLangRunnable + ", " + this.jdField_a_of_type_Long + "]";
+    long l = paramIntent.getLongExtra("uin", 0L);
+    int i = paramIntent.getIntExtra("appId", 0);
+    int j = paramIntent.getIntExtra("taskId", 0);
+    Object localObject = paramIntent.getStringExtra("message");
+    bjme localbjme = new bjme(l, i, j, paramIntent.getIntExtra("code", 0), (String)localObject);
+    localObject = localbjme.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
+    {
+      QLog.e("QbossErrorReportServlet", 1, "onSend request encode result is null.cmd=" + localbjme.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbjme.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayxt
  * JD-Core Version:    0.7.0.1
  */

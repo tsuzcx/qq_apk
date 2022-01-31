@@ -1,99 +1,31 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class axmp
-  extends axmo
+public final class axmp
+  extends BroadcastReceiver
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  boolean c;
-  public boolean g;
-  public boolean h = false;
+  private axmp(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
-  public axmp(TCProgressBar paramTCProgressBar, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramTCProgressBar);
-    this.jdField_g_of_type_Boolean = false;
-    this.c = paramBoolean;
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    if (this.c)
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = this.jdField_f_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = (this.jdField_f_of_type_Int + this.jdField_g_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_g_of_type_Int);
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.h);
-      super.a(paramCanvas);
-      return;
-    }
-    int i;
-    if (this.jdField_f_of_type_Boolean) {
-      i = this.jdField_g_of_type_Int;
-    }
-    for (;;)
-    {
-      boolean bool = a(this.jdField_a_of_type_Int - 5);
+      axkd.a().b();
+      axkd.a().a(new axmq(this));
+      this.a.b();
       if (QLog.isColorLevel()) {
-        QLog.d("TCProgressBar", 2, "ProgressBlock:hasMorePart=" + this.jdField_a_of_type_Boolean + " bounds=" + bool);
+        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
       }
-      if ((!this.jdField_a_of_type_Boolean) || (!bool)) {
-        break label392;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = this.jdField_f_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.i);
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = (i + this.jdField_f_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.j);
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
-      break;
-      i = this.jdField_g_of_type_Int - this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.l;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = (this.jdField_f_of_type_Int + i);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = (this.jdField_f_of_type_Int + this.jdField_g_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.k);
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
     }
-    label392:
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = this.jdField_f_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = (i + this.jdField_f_of_type_Int);
-    if (this.b) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.j);
-    }
-    for (;;)
-    {
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.i);
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt > this.jdField_f_of_type_Int) && (paramInt < this.jdField_f_of_type_Int + this.jdField_g_of_type_Int - this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.l);
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return (paramInt < this.jdField_f_of_type_Int) || (a(paramInt));
-  }
-  
-  public boolean c(int paramInt)
-  {
-    return (paramInt > this.jdField_f_of_type_Int + this.jdField_g_of_type_Int) || (a(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axmp
  * JD-Core Version:    0.7.0.1
  */

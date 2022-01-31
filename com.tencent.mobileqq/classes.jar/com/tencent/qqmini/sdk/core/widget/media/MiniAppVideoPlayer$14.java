@@ -10,8 +10,11 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bfgl;
+import bgho;
+import bghy;
+import bgij;
 import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.lang.ref.WeakReference;
 
 class MiniAppVideoPlayer$14
@@ -29,24 +32,35 @@ class MiniAppVideoPlayer$14
       do
       {
         return;
-      } while (this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localActivity = (Activity)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (this.this$0.a == null);
+      localActivity = (Activity)this.this$0.a.get();
     } while ((localActivity == null) || (!(this.this$0.getParent() instanceof CoverVideoView)));
     this.this$0.c = true;
     MiniAppVideoPlayer.e(this.this$0).setVisibility(0);
     MiniAppVideoPlayer.d(this.this$0).setVisibility(0);
-    if (this.this$0.jdField_a_of_type_Benc != null) {}
-    MiniAppVideoPlayer.a(this.this$0, ((CoverVideoView)this.this$0.getParent()).getLayoutParams());
-    if (this.this$0.getParent().getParent() != null)
-    {
-      MiniAppVideoPlayer.d(this.this$0, ((ViewGroup)this.this$0.getParent().getParent()).getScrollY());
-      ((ViewGroup)this.this$0.getParent().getParent()).scrollTo(0, 0);
-    }
+    Object localObject;
     int j;
     int k;
     int i;
-    if (MiniAppVideoPlayer.a(this.this$0) != null)
+    if (this.this$0.b != null)
     {
+      localObject = (bgho)this.this$0.b.get();
+      if (localObject != null)
+      {
+        MiniAppVideoPlayer.d(this.this$0, bghy.a((bgho)localObject).b());
+        MiniAppVideoPlayer.e(this.this$0, bghy.a((bgho)localObject).a());
+        bgij.a((bgho)localObject).b(8);
+        bgij.a((bgho)localObject).a(8);
+      }
+      MiniAppVideoPlayer.a(this.this$0, ((CoverVideoView)this.this$0.getParent()).getLayoutParams());
+      if (this.this$0.getParent().getParent() != null)
+      {
+        MiniAppVideoPlayer.f(this.this$0, ((ViewGroup)this.this$0.getParent().getParent()).getScrollY());
+        ((ViewGroup)this.this$0.getParent().getParent()).scrollTo(0, 0);
+      }
+      if (MiniAppVideoPlayer.a(this.this$0) == null) {
+        break label604;
+      }
       j = MiniAppVideoPlayer.a(this.this$0).getVideoWidth();
       k = MiniAppVideoPlayer.a(this.this$0).getVideoHeight();
       if (j != 0)
@@ -59,39 +73,39 @@ class MiniAppVideoPlayer$14
         j = MiniAppVideoPlayer.f(this.this$0);
         i = MiniAppVideoPlayer.g(this.this$0);
       }
-      if ((MiniAppVideoPlayer.h(this.this$0) == 0) || (MiniAppVideoPlayer.h(this.this$0) == 180))
-      {
-        if (j >= i) {
-          break label526;
-        }
-        i = 0;
+      if ((MiniAppVideoPlayer.h(this.this$0) != 0) && (MiniAppVideoPlayer.h(this.this$0) != 180)) {
+        break label504;
       }
+      if (j >= i) {
+        break label604;
+      }
+      i = 0;
     }
     for (;;)
     {
-      j = bfgl.b(this.this$0.getContext());
-      k = bfgl.a(this.this$0.getContext());
+      label339:
+      j = DisplayUtil.getRealHeight(this.this$0.getContext());
+      k = DisplayUtil.getScreenWidth(this.this$0.getContext());
       int m;
-      label296:
-      label300:
-      Object localObject;
       if (i != 0)
       {
         m = j;
+        label368:
         if (i == 0) {
-          break label442;
+          break label520;
         }
-        if (this.this$0.jdField_a_of_type_Benc != null) {
-          break label447;
+        label372:
+        if (this.this$0.b != null) {
+          break label525;
         }
         localObject = new RelativeLayout.LayoutParams(m, k);
         ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
         ((RelativeLayout.LayoutParams)localObject).topMargin = 0;
         ((CoverVideoView)this.this$0.getParent()).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        label349:
+        label421:
         localActivity.getWindow().getDecorView().setSystemUiVisibility(2);
         if (i == 0) {
-          break label489;
+          break label567;
         }
         if (this.this$0.d != -90)
         {
@@ -110,37 +124,40 @@ class MiniAppVideoPlayer$14
         MiniAppVideoPlayer.j(this.this$0);
         MiniAppVideoPlayer.g(this.this$0);
         return;
+        localObject = null;
+        break;
+        label504:
         if (j <= i) {
-          break label526;
+          break label604;
         }
         i = 0;
-        break;
+        break label339;
         m = k;
-        break label296;
-        label442:
+        break label368;
+        label520:
         k = j;
-        break label300;
-        label447:
+        break label372;
+        label525:
         localObject = new FrameLayout.LayoutParams(m, k);
         ((FrameLayout.LayoutParams)localObject).leftMargin = 0;
         ((FrameLayout.LayoutParams)localObject).topMargin = 0;
         ((CoverVideoView)this.this$0.getParent()).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        break label349;
-        label489:
+        break label421;
+        label567:
         if ((this.this$0.d == 180) || (this.this$0.d == -180)) {
           i = 9;
         } else {
           i = 1;
         }
       }
-      label526:
+      label604:
       i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.14
  * JD-Core Version:    0.7.0.1
  */

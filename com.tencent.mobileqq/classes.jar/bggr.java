@@ -1,54 +1,12 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardPluginInstallActivity;
-
-public class bggr
-  implements OnPluginInstallListener
+public abstract interface bggr
 {
-  public bggr(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public IBinder asBinder()
-  {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("BuscardPluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
-    }
-    bcql.a(this.a.getApplicationContext(), 2131695210, 0);
-    BuscardPluginInstallActivity.a(this.a, false);
-    this.a.finish();
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    BuscardPluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("BuscardPluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
-    }
-    boolean bool = BuscardPluginInstallActivity.a(this.a).isPlugininstalled("BuscardPlugin.apk");
-    BuscardPluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
-    if (bool)
-    {
-      BuscardPluginInstallActivity.a(this.a);
-      return;
-    }
-    bcql.a(this.a.getApplicationContext(), 2131695210, 0);
-    BuscardPluginInstallActivity.a(this.a, false);
-    this.a.finish();
-  }
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bggr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,133 +1,74 @@
-import android.text.TextUtils;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afia
-  extends afhw
+public class afia
+  implements View.OnClickListener
 {
-  afia(afhx paramafhx) {}
+  public afia(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  public void a(String paramString1, String paramString2, List<afid> paramList)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onFace2FaceAddContactPush mSessionId:" + afhx.a(this.a) + " sessionId:" + paramString2 + " faceFriends:" + paramList + " currentUin:" + paramString1);
-    }
-    if ((TextUtils.equals(paramString2, afhx.a(this.a))) && (afhx.a(this.a) != null) && (TextUtils.equals(paramString1, afhx.a(this.a).getCurrentAccountUin())) && (paramList != null) && (paramList.size() > 0))
+    long l = SystemClock.uptimeMillis();
+    if (l - FlashPicItemBuilder.a(this.a) < 800L) {}
+    afid localafid;
+    label169:
+    for (;;)
     {
-      afhx.b(this.a);
-      if (afhx.a(this.a) != null) {
-        afhx.a(this.a).a(paramString1, paramList);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onExitFace2FaceAddContact isSuccess:" + paramBoolean + " mSessionId:" + afhx.a(this.a) + " sessionId:" + paramString1 + " errorCode:" + paramInt + " errorMsg:" + paramString2);
-    }
-    afhx.b(this.a);
-    if (afhx.a(this.a) != null) {
-      afhx.a(this.a).a();
-    }
-  }
-  
-  public void a(boolean paramBoolean1, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, boolean paramBoolean2)
-  {
-    if (QLog.isDebugVersion()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onEnterFace2FaceAddContact isSuccess:" + paramBoolean1 + " mSessionId:" + afhx.a(this.a) + " sessionId:" + paramString1 + " errorCode:" + paramInt1 + " errorMsg:" + paramString2 + " securityLevel:" + paramInt2 + " verifyUrl:" + paramString3 + " heartbeatTime:" + paramInt3 + " expireTime:" + paramInt4 + " isEnterAfterVerify:" + paramBoolean2);
-    }
-    if ((paramBoolean1) && (TextUtils.equals(afhx.a(this.a), paramString1)) && (afhx.a(this.a) != null)) {
-      if (paramInt2 == 2) {
-        if (afhx.a(this.a) != null) {
-          afhx.a(this.a).f();
-        }
-      }
-    }
-    while (afhx.a(this.a) == null)
-    {
-      do
+      return;
+      FlashPicItemBuilder.a(this.a, l);
+      localafid = (afid)aekt.a(paramView);
+      if (localafid != null)
       {
-        do
+        Object localObject2 = localafid.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        Object localObject1 = null;
+        paramView = localObject1;
+        if (localObject2 != null)
         {
-          do
+          localObject2 = this.a.a.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
+          paramView = localObject1;
+          if ((localObject2 instanceof MessageForPic)) {
+            paramView = (MessageForPic)localObject2;
+          }
+        }
+        if (paramView != null)
+        {
+          if (alpw.a(paramView)) {}
+          for (boolean bool = alpw.b(paramView);; bool = alnp.b(paramView))
           {
-            do
-            {
-              do
-              {
-                return;
-                if (paramInt2 != 3) {
-                  break;
-                }
-              } while (afhx.a(this.a) == null);
-              afhx.a(this.a).b(paramString3);
-              return;
-              switch (paramInt1)
-              {
-              default: 
-                return;
-              case 0: 
-                afhx.a(this.a, Math.max(paramInt3 * 1000, 10000));
-                afhx.b(this.a, Math.max(paramInt4 * 1000, 10000));
-                if (afhx.a(this.a) != null)
-                {
-                  afhx.a(this.a).a(afhx.a(this.a));
-                  afhx.a(this.a).b(afhx.b(this.a));
-                }
-                afhx.a(this.a);
-                return;
-              }
-            } while (afhx.a(this.a) == null);
-            afhx.a(this.a).g();
+            if (bool) {
+              break label169;
+            }
+            if (localafid.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 0) {
+              break label171;
+            }
+            if (localafid.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted()) {
+              break;
+            }
+            localafid.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
             return;
-          } while (afhx.a(this.a) == null);
-          afhx.a(this.a).c();
-          return;
-        } while (afhx.a(this.a) == null);
-        afhx.a(this.a).d();
-        return;
-      } while (afhx.a(this.a) == null);
-      afhx.a(this.a).e();
-      return;
-    }
-    afhx.a(this.a).e();
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, List<String> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onFace2FaceAddContactHeartBeat isSuccess:" + paramBoolean + " mSessionId:" + afhx.a(this.a) + " sessionId:" + paramString1 + " errorCode:" + paramInt + " errorMsg:" + paramString2 + " missingList:" + paramList);
-    }
-    if ((paramBoolean) && (TextUtils.equals(paramString1, afhx.a(this.a)))) {
-      switch (paramInt)
-      {
+          }
+        }
       }
     }
-    do
+    label171:
+    if (localafid.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (afhx.a(this.a) == null);
-        if ((paramList != null) && (paramList.size() > 0)) {
-          afhx.a(this.a).a(paramList);
-        }
-        afhx.a(this.a).b(afhx.b(this.a));
-        return;
-      } while (afhx.a(this.a) == null);
-      afhx.a(this.a).c();
+      localafid.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
       return;
-    } while (afhx.a(this.a) == null);
-    afhx.a(this.a).d();
+    }
+    FlashPicItemBuilder.a(this.a, paramView, localafid.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder$FlashPicAIOThumbView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afia
  * JD-Core Version:    0.7.0.1
  */

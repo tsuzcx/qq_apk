@@ -1,104 +1,199 @@
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import appoint.define.appoint_define.RichText;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.oidb.cmd0x877.oidb_0x877.FollowInfo;
+import tencent.im.oidb.cmd0x877.oidb_0x877.InteractInfo;
+import tencent.im.oidb.cmd0x877.oidb_0x877.MsgWord;
+import tencent.im.oidb.cmd0x877.oidb_0x877.RspBody;
 
-class apef
-  extends QIPCModule
+public abstract class apef
+  extends nac
 {
-  public apef(apee paramapee, String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg_box.protocol", 2, "UnReadFeedObserver, errorCode=" + paramInt);
+    }
+    oidb_0x877.RspBody localRspBody;
+    if (paramInt == 0) {
+      localRspBody = new oidb_0x877.RspBody();
+    }
+    label723:
+    label981:
+    for (;;)
+    {
+      boolean bool2;
+      int i;
+      long l2;
+      long l1;
+      boolean bool1;
+      try
+      {
+        localRspBody.mergeFrom(paramArrayOfByte);
+        if (!localRspBody.interact_info.has()) {
+          break label792;
+        }
+        bool2 = true;
+        i = 0;
+        l2 = 0L;
+        paramArrayOfByte = new StringBuilder();
+        if (!localRspBody.interact_info.uint32_interact_flag.has()) {
+          break label753;
+        }
+        if (localRspBody.interact_info.uint32_interact_flag.get() != 0) {
+          break label740;
+        }
+        if (!localRspBody.interact_info.interact_word.has()) {
+          break label723;
+        }
+        if (localRspBody.interact_info.interact_word.bytes_from_user.has()) {
+          paramArrayOfByte.append(localRspBody.interact_info.interact_word.bytes_from_user.get().toStringUtf8());
+        }
+        if (localRspBody.interact_info.interact_word.bytes_buluo_word.has())
+        {
+          paramArrayOfByte.append(apei.b(apei.a(localRspBody.interact_info.interact_word.bytes_buluo_word.get().toStringUtf8())));
+          paramInt = localRspBody.interact_info.uint32_interact_count.get();
+          l1 = localRspBody.interact_info.uint64_interact_info_time.get();
+          bool1 = true;
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.msg_box.protocol", 2, "interact_info|needShow=" + bool1 + ",rawcontext=" + paramArrayOfByte.toString() + ",unReadCount=" + paramInt + ",timeStamp=" + l1);
+          }
+          if ((!TextUtils.isEmpty(paramArrayOfByte.toString())) && (l1 != 0L)) {
+            break label981;
+          }
+          bool1 = false;
+          a(true, paramArrayOfByte.toString(), paramInt, l1, bool1, paramBundle);
+          if (!localRspBody.follow_info.has()) {
+            break label946;
+          }
+          bool2 = true;
+          i = 0;
+          l2 = 0L;
+          paramArrayOfByte = new StringBuilder();
+          if (!localRspBody.follow_info.uint32_follow_flag.has()) {
+            break label907;
+          }
+          if (localRspBody.follow_info.uint32_follow_flag.get() != 0) {
+            break label894;
+          }
+          if (!localRspBody.follow_info.follow_word.has()) {
+            break label877;
+          }
+          if (localRspBody.follow_info.follow_word.bytes_from_user.has()) {
+            paramArrayOfByte.append(localRspBody.follow_info.follow_word.bytes_from_user.get().toStringUtf8());
+          }
+          if (!localRspBody.follow_info.follow_word.bytes_buluo_word.has()) {
+            break label805;
+          }
+          paramArrayOfByte.append(apei.b(apei.a(localRspBody.interact_info.interact_word.bytes_buluo_word.get().toStringUtf8())));
+          paramInt = localRspBody.follow_info.uint32_follow_count.get();
+          l1 = localRspBody.follow_info.uint64_follow_info_time.get();
+          bool1 = true;
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.msg_box.protocol", 2, "follow_info|needShow=" + bool1 + ",rawcontext=" + paramArrayOfByte.toString() + ",unReadCount=" + paramInt + ",timeStamp=" + l1);
+          }
+          if ((!TextUtils.isEmpty(paramArrayOfByte.toString())) && (l1 != 0L)) {
+            break label978;
+          }
+          bool1 = false;
+          b(true, paramArrayOfByte.toString(), paramInt, l1, bool1, paramBundle);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.msg_box.protocol", 2, paramArrayOfByte.toString(), paramArrayOfByte);
+        }
+        a(false, null, 0, 0L, false, paramBundle);
+        b(false, null, 0, 0L, false, paramBundle);
+        return;
+      }
+      if (localRspBody.interact_info.interact_word.rich_fresh_word.has())
+      {
+        paramArrayOfByte.append(apei.a((appoint_define.RichText)localRspBody.interact_info.interact_word.rich_fresh_word.get(), 14));
+      }
+      else
+      {
+        paramArrayOfByte.append(localRspBody.interact_info.interact_word.bytes_plain_text.get().toStringUtf8());
+        continue;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("Q.msg_box.protocol", 2, "resp.interact_info.interact_word.has() == false");
+          continue;
+          label740:
+          bool1 = false;
+          paramInt = i;
+          l1 = l2;
+          continue;
+          label753:
+          bool1 = bool2;
+          paramInt = i;
+          l1 = l2;
+          if (QLog.isColorLevel())
+          {
+            QLog.i("Q.msg_box.protocol", 2, "uint32_interact_flag.has()= false");
+            bool1 = bool2;
+            paramInt = i;
+            l1 = l2;
+            continue;
+            a(true, null, 0, 0L, false, paramBundle);
+            continue;
+            if (localRspBody.follow_info.follow_word.rich_fresh_word.has())
+            {
+              paramArrayOfByte.append(apei.a((appoint_define.RichText)localRspBody.follow_info.follow_word.rich_fresh_word.get(), 14));
+            }
+            else
+            {
+              paramArrayOfByte.append(localRspBody.follow_info.follow_word.bytes_plain_text.get().toStringUtf8());
+              continue;
+              label877:
+              if (QLog.isColorLevel())
+              {
+                QLog.i("Q.msg_box.protocol", 2, "resp.follow_info.follow_word.has() == false");
+                continue;
+                label894:
+                bool1 = false;
+                paramInt = i;
+                l1 = l2;
+                continue;
+                bool1 = bool2;
+                paramInt = i;
+                l1 = l2;
+                if (QLog.isColorLevel())
+                {
+                  QLog.i("Q.msg_box.protocol", 2, "uint32_follow_flag.has()= false");
+                  bool1 = bool2;
+                  paramInt = i;
+                  l1 = l2;
+                  continue;
+                  b(true, null, 0, 0L, false, paramBundle);
+                  return;
+                  a(false, null, 0, 0L, false, paramBundle);
+                  b(false, null, 0, 0L, false, paramBundle);
+                  return;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    bdii.c("WeiyunDownloadServiceIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    Object localObject;
-    QQAppInterface localQQAppInterface;
-    if (paramBundle == null)
-    {
-      localObject = null;
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        apee.a = (String)localObject;
-      }
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localQQAppInterface = apee.a(this.a);
-        if (localQQAppInterface != null) {
-          break label103;
-        }
-        bdii.c("WeiyunDownloadServiceIPC", "onCall action but appInterface is null");
-      }
-    }
-    label103:
-    do
-    {
-      do
-      {
-        return null;
-        localObject = paramBundle.getString("process");
-        break;
-        if (((!"WeiyunDownloadServiceIPC_Action__Download".equals(paramString)) && (!"WeiyunDownloadServiceIPC_Action__Resume".equals(paramString))) || (paramBundle == null)) {
-          break label394;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("WeiyunDownloadServiceIPC", 2, "AIDL : start weiyunDownload");
-        }
-        localObject = (String)paramBundle.get("file_id");
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          bdii.c("WeiyunDownloadServiceIPC", "onCall action but file_id is null");
-          return null;
-        }
-        FileManagerEntity localFileManagerEntity = localQQAppInterface.a().c((String)localObject);
-        localObject = localFileManagerEntity;
-        if (localFileManagerEntity != null) {
-          break label213;
-        }
-      } while ("WeiyunDownloadServiceIPC_Action__Resume".equals(paramString));
-      localObject = apug.a(paramBundle);
-      localQQAppInterface.a().b((FileManagerEntity)localObject);
-      paramString = (String)paramBundle.get("downloadId");
-      ((FileManagerEntity)localObject).nOpType = 50;
-      ((FileManagerEntity)localObject).cloudType = 2;
-      ((FileManagerEntity)localObject).miniAppDownloadId = paramString;
-      apee.a(this.a).put(paramString, Long.valueOf(((FileManagerEntity)localObject).nSessionId));
-      if (apug.b(((FileManagerEntity)localObject).getFilePath()))
-      {
-        paramString = new Bundle();
-        paramString.putString("taskId", ((FileManagerEntity)localObject).miniAppDownloadId);
-        paramString.putString("filePath", ((FileManagerEntity)localObject).getFilePath());
-        QIPCServerHelper.getInstance().callClient(apee.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Suc", paramString, null);
-        paramString = new Bundle();
-        paramString.putString("taskId", ((FileManagerEntity)localObject).miniAppDownloadId);
-        paramString.putInt("retCode", 1);
-        paramString.putString("retMsg", "");
-        QIPCServerHelper.getInstance().callClient(apee.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", paramString, null);
-        return null;
-      }
-      localQQAppInterface.a().a((FileManagerEntity)localObject);
-      localQQAppInterface.a().a(((FileManagerEntity)localObject).nSessionId);
-      return null;
-    } while (((!"WeiyunDownloadServiceIPC_Action__Cancel".equals(paramString)) && (!"WeiyunDownloadServiceIPC_Action__Pause".equals(paramString))) || (paramBundle == null));
-    label213:
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiyunDownloadServiceIPC", 2, "AIDL : end weiyunDownload");
-    }
-    label394:
-    paramString = paramBundle.getString("downloadId");
-    localQQAppInterface.a().a(((Long)apee.a(this.a).get(paramString)).longValue());
-    return null;
-  }
+  protected abstract void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle);
+  
+  protected abstract void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apef
  * JD-Core Version:    0.7.0.1
  */

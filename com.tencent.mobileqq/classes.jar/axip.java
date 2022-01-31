@@ -1,19 +1,19 @@
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.VerticalGallery;
+
 public class axip
+  implements bhxx
 {
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static String b = "tag_v";
+  public axip(IosTimepicker paramIosTimepicker) {}
   
-  static
+  public void b(VerticalGallery paramVerticalGallery)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = "captureTest";
+    IosTimepicker.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axip
  * JD-Core Version:    0.7.0.1
  */

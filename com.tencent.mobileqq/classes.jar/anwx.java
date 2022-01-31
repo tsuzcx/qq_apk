@@ -1,174 +1,333 @@
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticon.SogouEmoji.3;
-import com.tencent.mobileqq.emoticon.SogouEmoji.4;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.util.Locale;
 
 public class anwx
+  extends QIPCModule
 {
-  public static String a;
-  public static String b;
-  int jdField_a_of_type_Int = 0;
-  ajvn jdField_a_of_type_Ajvn;
-  ajvo jdField_a_of_type_Ajvo = new anxb(this);
-  public anvx a;
-  public anwl a;
-  public anxc a;
-  public askf a;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  public int b;
+  private static anwx a;
   
-  static
+  private anwx(String paramString)
   {
-    jdField_a_of_type_JavaLangString = "taskId";
-    jdField_b_of_type_JavaLangString = "exprId";
+    super(paramString);
   }
   
-  public anwx(BaseChatPie paramBaseChatPie)
+  public static anwx a()
   {
-    this.jdField_a_of_type_Anwl = new anwy(this);
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func SogouEmoji constructor begins");
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new anwx("CampusCircleIpcServer_Model");
+      }
+      return a;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_Askf = ((askf)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.getManager(14));
-    this.jdField_a_of_type_Anvx = ((anvx)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.getManager(43));
-    this.jdField_a_of_type_Ajvn = ((ajvn)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.a(12));
-    this.jdField_a_of_type_Anxc = new anxc(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func SogouEmoji constructor ends");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.addObserver(this.jdField_a_of_type_Ajvo);
+    finally {}
   }
   
-  private boolean a(String paramString)
+  private EIPCResult a(String paramString, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app == null))
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CampusCircleIpcServer", 2, "isInTroopAIO, app is null");
+        }
+        return null;
+      }
+      boolean bool = aofk.a(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("MedalWallMng", 2, "isInTroopAIO, isInAIO " + bool);
+      }
+      paramString = new EIPCResult();
+      paramString.data = new Bundle();
+      paramString.data.putBoolean("isInTroopAIO", bool);
+      return paramString;
+    }
+  }
+  
+  private EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
+  {
+    Object localObject = null;
+    if ((!"action_get_red_point".equals(paramString)) || (paramBundle == null)) {
+      return null;
+    }
+    paramBundle = new Bundle();
+    EIPCResult localEIPCResult = new EIPCResult();
+    localEIPCResult.data = paramBundle;
+    paramString = localObject;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (paramString == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func" + paramString + " ends, maybe chatActivity is finished.");
+        QLog.d("CampusCircleIpcServer", 2, "getRedPoint, app is null");
       }
-      return false;
+      paramBundle.putBoolean("hasRedTouch", false);
+      paramBundle.putInt("type", -1);
+      paramBundle.putInt("count", 0);
+      paramBundle.putLong("seq", -1L);
+      paramBundle.putInt("code", -1);
+      localEIPCResult.code = -1;
     }
-    return true;
-  }
-  
-  public ArrayList<Emoticon> a(ArrayList<Emoticon> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func getInvalidKeyEmoticon begins");
-    }
-    ArrayList localArrayList = new ArrayList();
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return localArrayList;
-    }
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    for (;;)
     {
-      Emoticon localEmoticon = (Emoticon)paramArrayList.next();
-      if (!localEmoticon.hasEncryptKey()) {
-        localArrayList.add(localEmoticon);
+      return localEIPCResult;
+      paramString = ((avod)paramString.getManager(160)).a(103421);
+      if (paramString != null)
+      {
+        paramBundle.putBoolean("hasRedTouch", paramString.unReadFlag);
+        paramBundle.putInt("type", paramString.redtouchType);
+        paramBundle.putInt("count", paramString.count);
+        paramBundle.putLong("seq", paramString.curSeq);
+        paramBundle.putInt("code", 0);
+        localEIPCResult.code = 0;
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func getInvalidKeyEmoticon ends, size:" + localArrayList.size());
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func SogouEmoji destructor begins");
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() != null))
-    {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app;
-      if (localQQAppInterface != null) {
-        localQQAppInterface.removeObserver(this.jdField_a_of_type_Ajvo);
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CampusCircleIpcServer", 2, "getRedPoint, unreadMsg is null");
+        }
+        paramBundle.putBoolean("hasRedTouch", false);
+        paramBundle.putInt("type", -1);
+        paramBundle.putInt("count", 0);
+        paramBundle.putLong("seq", -1L);
+        paramBundle.putInt("code", -1);
+        localEIPCResult.code = -1;
       }
     }
-    if (this.jdField_a_of_type_Anxc != null) {
-      this.jdField_a_of_type_Anxc.a();
-    }
-    anvw.a().b(this.jdField_a_of_type_Anwl);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func SogouEmoji destructor ends");
-    }
   }
   
-  public void a(int paramInt, String paramString)
+  private EIPCResult b(String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func trySend begins, packId:" + paramInt + ",exprId:" + paramString);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("CampusCircleIpcServer", 4, String.format(Locale.getDefault(), "updateConfessSwitch action: %s", new Object[] { paramString }));
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() != null) && (!bbfj.d(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getApplicationContext())))
+    if (!"action_confess_update_switch".equals(paramString))
     {
-      bcql.a(BaseApplicationImpl.sApplication, 2131694608, 0).a();
-      return;
+      paramString = null;
+      return paramString;
     }
-    this.jdField_a_of_type_Askf.a(Integer.toString(paramInt), paramString, new anwz(this, paramInt, paramString));
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CampusCircleIpcServer", 2, "updateConfessSwitch, app is null");
+        }
+        return null;
+      }
+      int i = paramBundle.getInt("nSwitchValue");
+      paramString = (ahpq)paramString.getManager(295);
+      paramBundle = paramString.a(1);
+      paramString.a(paramBundle, (short)i);
+      paramString.a(paramBundle);
+      paramBundle = new EIPCResult();
+      paramBundle.data = new Bundle();
+      paramBundle.data.putInt("ret", 0);
+      paramString = paramBundle;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("CampusCircleIpcServer", 2, "updateConfessSwitch, nSwitchValue: " + i);
+      return paramBundle;
+    }
   }
   
-  void a(Emoticon paramEmoticon)
+  private EIPCResult b(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ((!"action_report_red_point".equals(paramString)) || (paramBundle == null)) {
+      return null;
+    }
+    long l1 = paramBundle.getLong("seq", -1L);
+    if (l1 < 0L) {
+      QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, webSeq < 0:" + l1);
+    }
+    paramString = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (paramString == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, app is null");
+      }
+      return null;
+    }
+    avod localavod = (avod)paramString.getManager(160);
+    RedTouchItem localRedTouchItem = localavod.a(103421);
+    if (localRedTouchItem == null)
+    {
+      QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, unReadMsg is null, return");
+      paramString = new EIPCResult();
+      paramString.data = null;
+      paramString.code = -1;
+      super.callbackResult(paramInt, paramString);
+      return null;
+    }
+    long l2 = localRedTouchItem.curSeq;
+    if (l1 >= l2) {
+      localavod.a(103421);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, localSeq=" + l2 + ", webSeq=" + l1 + ", unreadMsg=" + localRedTouchItem);
+      }
+      alwx.a(paramString);
+      paramString = new EIPCResult();
+      paramString.data = paramBundle;
+      paramString.code = 0;
+      super.callbackResult(paramInt, paramString);
+      return null;
+      localRedTouchItem.count = ((int)Math.abs(l2 - l1));
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCircleIpcServer", 2, "unreadmsg.coung set to " + localRedTouchItem.count);
+      }
+      localavod.a(103421, true, l1, true, true);
+    }
+  }
+  
+  private EIPCResult c(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "reportMedalRedPoint action: %s", new Object[] { paramString }));
+    }
+    if (!"action_report_medal_red_point".equals(paramString)) {
+      return null;
+    }
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("MedalWallMng", 2, "reportMedalRedPoint, app is null");
+        return null;
+      }
+      ((MedalWallMng)paramString.getManager(250)).a(2, null);
+      paramString = new EIPCResult();
+      paramString.data = paramBundle;
+      paramString.code = 0;
+      super.callbackResult(paramInt, paramString);
+      return null;
+    }
+  }
+  
+  private EIPCResult d(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("CampusCircleIpcServer", 4, String.format(Locale.getDefault(), "reportConfessRedPoint action: %s", new Object[] { paramString }));
+    }
+    if (!"action_confess_clear_red_point".equals(paramString)) {
+      return null;
+    }
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("MedalWallMng", 2, "reportRedPoint_confess, app is null");
+        return null;
+      }
+      if ("frd_rec_confess".equals(paramBundle.getString("tag"))) {
+        aoep.b(paramString, false);
+      }
+      paramString = new EIPCResult();
+      paramString.data = paramBundle;
+      paramString.code = 0;
+      super.callbackResult(paramInt, paramString);
+      return null;
+    }
+  }
+  
+  private EIPCResult e(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("CampusCircleIpcServer", 4, String.format(Locale.getDefault(), "getTroopMembers action: %s", new Object[] { paramString }));
+    }
+    paramBundle = aofk.a(paramBundle.getString("troopUin"));
+    paramString = new EIPCResult();
+    paramString.data = new Bundle();
+    if ((paramBundle != null) && (paramBundle.length == 3))
+    {
+      paramString.code = 0;
+      boolean bool1 = ((Boolean)paramBundle[0]).booleanValue();
+      boolean bool2 = ((Boolean)paramBundle[1]).booleanValue();
+      paramBundle = (ArrayList)paramBundle[2];
+      if (paramBundle != null) {
+        paramString.data.putSerializable("troopUin", paramBundle);
+      }
+      paramString.data.putBoolean("isAdmin", bool1);
+      paramString.data.putBoolean("enableMemInvite", bool2);
+      return paramString;
+    }
+    paramString.code = -1;
+    return paramString;
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func sendEmoji begins, mCurTaskId:" + this.jdField_b_of_type_Int + ",emoticon:" + paramEmoticon);
+      QLog.d("CampusCircleIpcServer", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
     }
-    this.jdField_a_of_type_Anxc.c();
-    this.jdField_a_of_type_Anxc.a(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Anxc.b();
-    if (!a("sendEmoji")) {
-      return;
+    if (paramBundle == null) {
+      QLog.d("CampusCircleIpcServer", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
     }
-    aobp localaobp = new aobp(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.getCurrentAccountUin());
-    localaobp.c = 6;
-    localaobp.a = paramEmoticon;
-    this.jdField_a_of_type_Askf.a(paramEmoticon.epId, new anxa(this, localaobp));
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    paramString1 = new SogouEmoji.3(this, paramString1, paramString2, paramBoolean);
-    ThreadManager.getFileThreadHandler().post(paramString1);
-  }
-  
-  public void a(String paramString, ArrayList<Emoticon> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func getPackEmojiKey begins, packId:" + paramString);
-    }
-    if (!a("getPackEmojiKey")) {}
     do
     {
-      return;
-      String str = Integer.toString(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int += 1;
-      if (anqz.a(paramString)) {
-        this.jdField_a_of_type_Ajvn.a(Integer.parseInt(paramString), paramArrayList, str);
+      return null;
+      if ("action_get_red_point".equals(paramString)) {
+        return a(paramString, paramBundle, paramInt);
+      }
+      if ("action_report_red_point".equals(paramString)) {
+        return b(paramString, paramBundle, paramInt);
+      }
+      if ("action_report_medal_red_point".equals(paramString)) {
+        return c(paramString, paramBundle, paramInt);
+      }
+      if ("action_allpeoplevote_getredpoint".equals(paramString)) {
+        return beij.b(paramString, paramBundle, paramInt);
+      }
+      if ("action_allpeoplevote_clearredpoint".equals(paramString)) {
+        return beij.a(paramString, paramBundle, paramInt);
+      }
+      if ("action_confess_clear_red_point".equals(paramString)) {
+        return d(paramString, paramBundle, paramInt);
+      }
+      if ("action_confess_get_troop_members".equals(paramString)) {
+        return e(paramString, paramBundle, paramInt);
+      }
+      if ("action_confess_is_in_troop_aio".equals(paramString)) {
+        return a(paramString, paramBundle);
+      }
+      if ("action_confess_update_switch".equals(paramString)) {
+        return b(paramString, paramBundle);
       }
     } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func getPackEmojiKey ends");
-  }
-  
-  public void a(List<String> paramList)
-  {
-    paramList = new SogouEmoji.4(this, paramList);
-    ThreadManager.getFileThreadHandler().post(paramList);
+    QLog.d("CampusCircleIpcServer", 1, "onCall, invalid action:" + paramString);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwx
  * JD-Core Version:    0.7.0.1
  */

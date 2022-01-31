@@ -1,85 +1,28 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 class ajbr
-  implements aabi
+  implements View.OnClickListener
 {
-  ajbr(ajbo paramajbo, CmGameInitParams paramCmGameInitParams, long paramLong) {}
+  ajbr(ajbm paramajbm) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[onFailure], code:" + paramInt + ",msg:" + paramString);
-    try
-    {
-      paramString = ajac.a();
-      if (paramString != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("ret", paramInt);
-        localJSONObject.put("type", "failure");
-        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[onPermission], code:" + paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 2;
-    }
-    try
-    {
-      ApolloCmdChannel localApolloCmdChannel = ajac.a();
-      if (localApolloCmdChannel != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("ret", paramInt);
-        localJSONObject.put("type", "unauthorized");
-        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, localThrowable, new Object[0]);
-    }
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
     try
     {
-      ApolloCmdChannel localApolloCmdChannel = ajac.a();
-      if (localApolloCmdChannel != null)
-      {
-        paramJSONObject.put("ret", 0);
-        paramJSONObject.put("type", "success");
-        ajbo.a(this.jdField_a_of_type_Ajbo, paramJSONObject.optString("access_token"));
-        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", paramJSONObject.toString());
-      }
+      bdcd.a(ajbm.a(this.a), 0, null, alpo.a(2131701287), 2131690648, 2131694951, new ajbs(this), new ajbt(this)).show();
       return;
     }
-    catch (Throwable paramJSONObject)
+    catch (Throwable paramView)
     {
-      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramJSONObject, new Object[0]);
+      QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + paramView.getMessage());
     }
   }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbr
  * JD-Core Version:    0.7.0.1
  */

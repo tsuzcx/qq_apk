@@ -1,125 +1,59 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0xc6d.oidb_cmd0xc6d.ModuleInfo;
+import tencent.im.oidb.cmd0xc6d.oidb_cmd0xc6d.TextCardInfo;
 
 public class rzf
-  extends Handler
+  extends oxe
 {
-  private rzf(ViolaVideoView paramViolaVideoView) {}
+  public rzf(FastWebActivity paramFastWebActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(ArrayList<String> paramArrayList, List<oidb_cmd0xc6d.ModuleInfo> paramList, List<oidb_cmd0xc6d.TextCardInfo> paramList1)
   {
-    switch (paramMessage.what)
+    Object localObject = scq.a(23, paramArrayList);
+    if (FastWebActivity.a(this.a) != null) {}
+    for (paramArrayList = FastWebActivity.a(this.a).innerUniqueID;; paramArrayList = "")
     {
-    }
-    do
-    {
-      do
+      if ((TextUtils.isEmpty(paramArrayList)) || (FastWebActivity.a(this.a) == null)) {
+        return;
+      }
+      int i = 0;
+      while (i < ((List)localObject).size())
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        return;
-                        ViolaVideoView.a(this.a).sendEmptyMessageDelayed(0, 3000L);
-                        long l = ViolaVideoView.a(this.a);
-                        l = 3000L - (System.currentTimeMillis() - l);
-                        if (l > 0L)
-                        {
-                          ViolaVideoView.a(this.a).removeMessages(0);
-                          ViolaVideoView.a(this.a).sendEmptyMessageDelayed(0, l);
-                          return;
-                        }
-                      } while (!ViolaVideoView.a(this.a).d());
-                      ViolaVideoView.a(this.a, false);
-                      return;
-                      if (QLog.isColorLevel()) {
-                        QLog.d("ViolaVideoView", 2, "mUiHandler.postDelayed() innerChangePlayButton(MSG_SHOW_LOADING_BTN) mIsNeedShowLoading = " + ViolaVideoView.a(this.a));
-                      }
-                    } while (!ViolaVideoView.a(this.a));
-                    ViolaVideoView.a(this.a, 3, null);
-                    return;
-                  } while (ViolaVideoView.a(this.a).a() == null);
-                  ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130842638));
-                  ViolaVideoView.a(this.a).clearAnimation();
-                  paramMessage = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
-                  paramMessage.setDuration(500L);
-                  paramMessage.setRepeatCount(-1);
-                  paramMessage.setRepeatMode(1);
-                  paramMessage.setStartTime(-1L);
-                  paramMessage.setInterpolator(new LinearInterpolator());
-                  ViolaVideoView.a(this.a).startAnimation(paramMessage);
-                  ViolaVideoView.b(this.a).setVisibility(0);
-                  ViolaVideoView.b(this.a).setText("");
-                  return;
-                } while (ViolaVideoView.a(this.a).a() == null);
-                ViolaVideoView.a(this.a).clearAnimation();
-                ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130842640));
-                ViolaVideoView.b(this.a).setVisibility(0);
-                ViolaVideoView.b(this.a).setText("");
-                return;
-              } while (ViolaVideoView.a(this.a).a() == null);
-              ViolaVideoView.a(this.a).clearAnimation();
-              ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130842640));
-              ViolaVideoView.b(this.a).setVisibility(8);
-              ViolaVideoView.b(this.a).setText("");
-              return;
-            } while (ViolaVideoView.a(this.a).a() == null);
-            ViolaVideoView.a(this.a).clearAnimation();
-            ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130842640));
-            ViolaVideoView.b(this.a).setVisibility(0);
-            ViolaVideoView.b(this.a).setText("");
-            return;
-          } while (ViolaVideoView.a(this.a).a() == null);
-          ViolaVideoView.a(this.a).clearAnimation();
-          ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130842639));
-          ViolaVideoView.b(this.a).setText("");
-          return;
-        } while (ViolaVideoView.a(this.a).a() == null);
-        ViolaVideoView.a(this.a).clearAnimation();
-        ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130842639));
-        ViolaVideoView.b(this.a).setVisibility(8);
-        ViolaVideoView.b(this.a).setText("");
-      } while ((ViolaVideoView.c(this.a).getVisibility() != 0) || (!bbfj.b(this.a.getContext())));
-      ViolaVideoView.a(this.a).setVisibility(0);
-      ViolaVideoView.c(this.a).setVisibility(8);
-      return;
-    } while (ViolaVideoView.a(this.a).a() == null);
-    ViolaVideoView.a(this.a).clearAnimation();
-    ViolaVideoView.a(this.a).setBackgroundDrawable(ViolaVideoView.a(this.a, 2130847683));
-    ViolaVideoView.b(this.a).setVisibility(0);
-    ViolaVideoView.b(this.a).setVisibility(0);
-    TextView localTextView = ViolaVideoView.b(this.a);
-    if (paramMessage.obj != null) {}
-    for (paramMessage = paramMessage.obj.toString();; paramMessage = "")
-    {
-      localTextView.setText(paramMessage);
+        BaseData localBaseData = (BaseData)((List)localObject).get(i);
+        if ((localBaseData instanceof ProteusItemData)) {
+          scq.a(FastWebActivity.a(this.a), (ProteusItemData)localBaseData, 3, this.a.a);
+        }
+        sdi.b(FastWebActivity.a(this.a), localBaseData, FastWebActivity.a(this.a));
+        i += 1;
+      }
+      localObject = owy.a().a();
+      if (localObject != null) {
+        ((pfo)localObject).a(paramArrayList, FastWebActivity.a(this.a));
+      }
+      if (paramList != null) {
+        sca.a(FastWebActivity.a(this.a), FastWebActivity.a(this.a), FastWebActivity.a(this.a), paramList, FastWebActivity.a(this.a), this.a.a);
+      }
+      if (paramList1 != null) {
+        sca.b(FastWebActivity.a(this.a), FastWebActivity.a(this.a), FastWebActivity.a(this.a), paramList1, FastWebActivity.a(this.a), this.a.a);
+      }
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).notifyDataSetChanged();
+      }
+      QLog.d(FastWebActivity.a(this.a), 1, "m0xc6dRespObserver,onHandle0xc6dResp");
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzf
  * JD-Core Version:    0.7.0.1
  */

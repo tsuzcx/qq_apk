@@ -1,22 +1,27 @@
-import com.tencent.map.geolocation.TencentDirectionListener;
+import android.os.AsyncTask;
 
 class aruw
-  implements TencentDirectionListener
+  extends da
 {
-  aruw(arus paramarus) {}
+  aruw(arum paramarum) {}
   
-  public void onDirectionChanged(double paramDouble, int paramInt)
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    if (arus.a(this.a) != null)
+    try
     {
-      arus.a(this.a, 180.0D + paramDouble);
-      arus.a(this.a, false);
+      cx.a(this.a.a, paramAsyncTask, paramInt, new arux(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
+    }
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aruw
  * JD-Core Version:    0.7.0.1
  */

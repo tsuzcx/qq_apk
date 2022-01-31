@@ -8,7 +8,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
-import aucl;
+import avtp;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageRecord;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageTranslateRspResult;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -24,7 +24,7 @@ import java.util.List;
 public class TranslateResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<TranslateResult> CREATOR = new aucl();
+  public static final Parcelable.Creator<TranslateResult> CREATOR = new avtp();
   public int a;
   public String a;
   public List<TranslateResult.Record> a;
@@ -354,7 +354,7 @@ public class TranslateResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.TranslateResult
  * JD-Core Version:    0.7.0.1
  */

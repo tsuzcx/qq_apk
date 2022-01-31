@@ -1,20 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-
-public class abrh
-  implements DialogInterface.OnCancelListener
+public abstract interface abrh
 {
-  public abrh(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrh
  * JD-Core Version:    0.7.0.1
  */

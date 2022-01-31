@@ -44,6 +44,7 @@ public class MethodAddElement
   
   private void dealAddView(VComponentContainer paramVComponentContainer, VComponent paramVComponent)
   {
+    int j = -1;
     if ((paramVComponentContainer.getRealView() instanceof ScrollView)) {
       if (paramVComponentContainer.getRealView().getChildAt(0) == null)
       {
@@ -69,7 +70,19 @@ public class MethodAddElement
         ((ViewGroup)paramVComponent.getRealView().getParent()).removeView(paramVComponent.getRealView());
       }
     } while (paramVComponentContainer.getRealView() == null);
-    paramVComponentContainer.getRealView().addView(paramVComponent.getRealView());
+    int k = this.mAddIndex;
+    int i = k;
+    if (k < -1) {
+      i = -1;
+    }
+    if (i >= paramVComponentContainer.getRealView().getChildCount()) {
+      i = j;
+    }
+    for (;;)
+    {
+      paramVComponentContainer.getRealView().addView(paramVComponent.getRealView(), i);
+      return;
+    }
   }
   
   protected void appendDomToTree(DOMActionContext paramDOMActionContext, DomObject paramDomObject)
@@ -123,6 +136,9 @@ public class MethodAddElement
   public void executeDom(DOMActionContext paramDOMActionContext)
   {
     this.mAddDom = addDomInternal(paramDOMActionContext, this.mData);
+    if (!isAddVInstance()) {
+      paramDOMActionContext.postRenderTask(this);
+    }
     this.mRootRef = paramDOMActionContext.getRootRef();
   }
   
@@ -214,10 +230,23 @@ public class MethodAddElement
       }
     }
   }
+  
+  public String getRef()
+  {
+    return this.mRef;
+  }
+  
+  public boolean isAddVInstance()
+  {
+    if (this.mData == null) {
+      return false;
+    }
+    return "instance".equals(this.mData.optString("type"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodAddElement
  * JD-Core Version:    0.7.0.1
  */

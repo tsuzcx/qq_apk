@@ -1,19 +1,23 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aski
-  implements askr<Pair<String, Integer>, EmoticonPackage>
+public class aski
+  implements aivw
 {
-  aski(askf paramaskf) {}
+  public aski(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath))) {
+      QLog.d("GameWebPage", 1, "loading apng download succ!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aski
  * JD-Core Version:    0.7.0.1
  */

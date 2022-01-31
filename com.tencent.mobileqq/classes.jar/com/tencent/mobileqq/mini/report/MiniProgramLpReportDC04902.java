@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.mini.report;
 
-import akfo;
+import alxe;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import bcyb;
-import beln;
-import bgyi;
+import bexd;
+import bgld;
+import bizf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
-import com.tencent.mobileqq.minigame.manager.GameInfoManager;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,7 +36,7 @@ public class MiniProgramLpReportDC04902
   private static long DC_TABLE_VALUE_MAX_MEM = 0L;
   private static String DC_TABLE_VALUE_NETWORK_GATEWAY_IP;
   private static String DC_TABLE_VALUE_PLATFORM = "Android";
-  private static String DC_TABLE_VALUE_QUA = bgyi.a();
+  private static String DC_TABLE_VALUE_QUA = bizf.a();
   private static String DC_TABLE_VALUE_START_TIME = currentTimeString();
   private static String DC_TABLE_VALUE_TEXTURE_OFFLINE;
   private static final int FRAME_TIME_COUNT = 3;
@@ -84,27 +81,27 @@ public class MiniProgramLpReportDC04902
     return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
   }
   
-  public static void reportGameEnd(float paramFloat1, float paramFloat2)
+  public static void reportGameEnd(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     double d2 = 0.0D;
     DC_TABLE_VALUE_END_TIME = currentTimeString();
     ThreadManager.getSubThreadHandler().removeCallbacks(PERIODICALLY_COLLECT_CPU_MEM_RUNNABLE);
     try
     {
-      DC_TABLE_VALUE_ATTACH_INFO = String.valueOf(GameLoadManager.g().getGameEngine().getTargetFPS());
+      DC_TABLE_VALUE_ATTACH_INFO = String.valueOf(paramFloat3);
       d3 = (lastFrameUpdateTime - startFrameTime) / 1000000.0D / 1000.0D / 60.0D;
       if (d3 < 0.01D)
       {
         i = 1;
         if (i == 0) {
-          break label531;
+          break label521;
         }
         d1 = 0.0D;
         if (i == 0) {
-          break label542;
+          break label532;
         }
         QLog.d("MiniProgramLpReportDC04", 1, "reportGameEnd: minuteFromStart=" + d3 + " jankCount=" + jankCount + " bigJankCount=" + bigJankCount);
-        String str = DC_TABLE_VALUE_APPID + '|' + DC_TABLE_VALUE_QUA + '|' + DC_TABLE_VALUE_START_TIME + '|' + DC_TABLE_VALUE_END_TIME + '|' + DC_TABLE_VALUE_F_20 + '|' + DC_TABLE_VALUE_F_33 + '|' + DC_TABLE_VALUE_F_50 + '|' + DC_TABLE_VALUE_F_100 + '|' + DC_TABLE_VALUE_F_LONG + '|' + DC_TABLE_VALUE_AVG_MEM + '|' + DC_TABLE_VALUE_MAX_MEM + '|' + DC_TABLE_VALUE_AVG_CPU + '|' + DC_TABLE_VALUE_MAX_CPU + '|' + DC_TABLE_VALUE_ATTACH_INFO + '|' + DC_TABLE_VALUE_F_MAX_TIME_MILLIS + '|' + DC_TABLE_VALUE_F_MAX + '|' + (int)paramFloat2 + '|' + (int)paramFloat1 + '|' + DC_TABLE_VALUE_TEXTURE_OFFLINE + '|' + MiniProgramReportHelper.getNetworkType() + '|' + DC_TABLE_VALUE_NETWORK_GATEWAY_IP + '|' + beln.b(bcyb.a().a()) + '|' + DC_TABLE_VALUE_PLATFORM + '|' + Build.MODEL + '|' + Build.VERSION.RELEASE + '|' + d1 + '|' + d2;
+        String str = DC_TABLE_VALUE_APPID + '|' + DC_TABLE_VALUE_QUA + '|' + DC_TABLE_VALUE_START_TIME + '|' + DC_TABLE_VALUE_END_TIME + '|' + DC_TABLE_VALUE_F_20 + '|' + DC_TABLE_VALUE_F_33 + '|' + DC_TABLE_VALUE_F_50 + '|' + DC_TABLE_VALUE_F_100 + '|' + DC_TABLE_VALUE_F_LONG + '|' + DC_TABLE_VALUE_AVG_MEM + '|' + DC_TABLE_VALUE_MAX_MEM + '|' + DC_TABLE_VALUE_AVG_CPU + '|' + DC_TABLE_VALUE_MAX_CPU + '|' + DC_TABLE_VALUE_ATTACH_INFO + '|' + DC_TABLE_VALUE_F_MAX_TIME_MILLIS + '|' + DC_TABLE_VALUE_F_MAX + '|' + (int)paramFloat2 + '|' + (int)paramFloat1 + '|' + DC_TABLE_VALUE_TEXTURE_OFFLINE + '|' + MiniProgramReportHelper.getNetworkType() + '|' + DC_TABLE_VALUE_NETWORK_GATEWAY_IP + '|' + bgld.b(bexd.a().a()) + '|' + DC_TABLE_VALUE_PLATFORM + '|' + Build.MODEL + '|' + Build.VERSION.RELEASE + '|' + d1 + '|' + d2;
         Bundle localBundle = new Bundle();
         localBundle.putStringArray("data", new String[] { str });
         localBundle.putString("log_key", "dc04902");
@@ -122,21 +119,21 @@ public class MiniProgramLpReportDC04902
         continue;
         int i = 0;
         continue;
-        label531:
+        label521:
         double d1 = jankCount / d3;
         continue;
-        label542:
+        label532:
         d2 = bigJankCount / d3;
       }
     }
   }
   
-  public static void reportGameStart()
+  public static void reportGameStart(String paramString)
   {
     if (!hasReportStart)
     {
       hasReportStart = true;
-      DC_TABLE_VALUE_APPID = GameInfoManager.g().getAppId();
+      DC_TABLE_VALUE_APPID = paramString;
       DC_TABLE_VALUE_START_TIME = currentTimeString();
       ThreadManager.getSubThreadHandler().postDelayed(PERIODICALLY_COLLECT_CPU_MEM_RUNNABLE, 1000L);
     }
@@ -149,9 +146,9 @@ public class MiniProgramLpReportDC04902
       Object localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject instanceof QQAppInterface))
       {
-        localObject = (akfo)((QQAppInterface)localObject).a(5);
+        localObject = (alxe)((QQAppInterface)localObject).a(5);
         if (localObject != null) {
-          ((akfo)localObject).a(paramBundle);
+          ((alxe)localObject).a(paramBundle);
         }
       }
     }
@@ -203,7 +200,7 @@ public class MiniProgramLpReportDC04902
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04902
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import avte;
-import bkrf;
+import axld;
+import bncp;
 
 class EditVideoActivity$6
   implements Runnable
@@ -10,13 +10,13 @@ class EditVideoActivity$6
   
   public void run()
   {
-    avte.b();
-    bkrf.a().a(this.this$0.getApplicationContext(), this.this$0, true);
+    axld.b();
+    bncp.a().a(this.this$0.getApplicationContext(), this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,17 @@
+import android.text.InputFilter;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public abstract interface aiva
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public abstract String a(CopyOnWriteArrayList<String> paramCopyOnWriteArrayList, boolean paramBoolean);
   
-  public abstract void a(int paramInt, String paramString);
+  public abstract boolean a(String paramString);
+  
+  public abstract InputFilter[] a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiva
  * JD-Core Version:    0.7.0.1
  */

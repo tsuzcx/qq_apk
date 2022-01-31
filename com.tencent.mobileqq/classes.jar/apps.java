@@ -1,49 +1,32 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class apps
-  implements apjm
+public class apps
+  extends appw
 {
-  apps(appo paramappo) {}
+  public static int b = 165;
+  public int a;
   
-  public void a(boolean paramBoolean)
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Apkr != null)) {
-      this.a.jdField_a_of_type_Apkr.a();
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Apnb.c(), this);
-      appo.d(this.a, true);
-      this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(4);
-      appo.a(this.a);
-      return;
-    }
-    if (appo.d(this.a))
-    {
-      appo.d(this.a, false);
-      if (this.a.d) {
-        this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
-      }
-      appo.e(this.a, true);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
-      if (this.a.jdField_a_of_type_Apkq != null) {
-        this.a.jdField_a_of_type_Apkq.a();
-      }
-    }
-    apjd.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apnb.c(), appo.a(this.a), true);
+    return apnz.a(this.a);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
   {
-    appo.c(this.a, paramBoolean2);
-    appo.a(this.a, paramBoolean1);
+    int i = paramEditText.getSelectionStart();
+    int j = paramEditText.getSelectionEnd();
+    paramEditText.getEditableText().replace(i, j, baiy.a(this.a));
+    paramEditText.requestFocus();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apps
  * JD-Core Version:    0.7.0.1
  */

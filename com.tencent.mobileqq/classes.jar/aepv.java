@@ -1,44 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.support.v4.util.ArraySet;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class aepv
-  implements View.OnTouchListener
+public class aepv
 {
-  aepv(aepe paramaepe) {}
+  private static ArraySet<Long> a = new ArraySet();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a()
   {
-    boolean bool = false;
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Bcjg.a();
-    if (i == 0)
+    a.clear();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
     {
-      this.a.m.setText(ajya.a(2131705146));
-      this.a.m.setTextColor(this.a.r);
-      this.a.jdField_a_of_type_Atch.b();
-      if (paramView != null) {
-        paramView.a(true);
-      }
-      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
-      bool = true;
+      a.add(Long.valueOf(paramMessageRecord.uniseq));
+      azmj.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
     }
-    while ((i != 3) && (i != 1)) {
-      return bool;
-    }
-    this.a.m.setText(ajya.a(2131705085));
-    this.a.m.setTextColor(this.a.q);
-    this.a.jdField_a_of_type_Atch.c();
-    if (paramView != null) {
-      paramView.a(false);
-    }
-    return true;
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    a.add(Long.valueOf(paramMessageRecord.uniseq));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,216 +1,182 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class aulf
-  extends aula
+  extends aukn
 {
-  public aulf()
+  private static final String a;
+  
+  static
   {
-    this.a = 16;
+    jdField_a_of_type_JavaLangString = alpo.a(2131708536);
   }
   
-  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
+  public aulf(QQAppInterface paramQQAppInterface)
   {
-    paramauko = (QQOperationViopTipTask)paramauko;
-    if (paramaukz == null)
-    {
-      paramauko.taskid = paramCursor.getInt(paramCursor.getColumnIndex("taskid"));
-      paramauko.uinType = paramCursor.getInt(paramCursor.getColumnIndex("uinType"));
-      paramauko.tipType = paramCursor.getInt(paramCursor.getColumnIndex("tipType"));
-      paramauko.adwords = paramCursor.getString(paramCursor.getColumnIndex("adwords"));
-      paramauko.clickableWord = paramCursor.getString(paramCursor.getColumnIndex("clickableWord"));
-      paramauko.linkOffset = paramCursor.getInt(paramCursor.getColumnIndex("linkOffset"));
-      paramauko.url = paramCursor.getString(paramCursor.getColumnIndex("url"));
-      paramauko.limitDayAIOCount = paramCursor.getInt(paramCursor.getColumnIndex("limitDayAIOCount"));
-      paramauko.limitDayAIOShowCount = paramCursor.getInt(paramCursor.getColumnIndex("limitDayAIOShowCount"));
-      paramauko.limitTotalAIOCount = paramCursor.getInt(paramCursor.getColumnIndex("limitTotalAIOCount"));
-      paramauko.limitTotalShowCount = paramCursor.getInt(paramCursor.getColumnIndex("limitTotalShowCount"));
-      paramauko.keywordString = paramCursor.getString(paramCursor.getColumnIndex("keywordString"));
-      paramauko.begin = paramCursor.getString(paramCursor.getColumnIndex("begin"));
-      paramauko.end = paramCursor.getString(paramCursor.getColumnIndex("end"));
-      paramauko.frequencyTime = paramCursor.getInt(paramCursor.getColumnIndex("frequencyTime"));
-      paramauko.frequencyMessage = paramCursor.getInt(paramCursor.getColumnIndex("frequencyMessage"));
-      return paramauko;
-    }
-    int i = paramCursor.getColumnIndex("taskid");
-    if (i == -1)
-    {
-      paramaukz.a(new NoColumnError("taskid", Integer.TYPE));
-      i = paramCursor.getColumnIndex("uinType");
-      if (i != -1) {
-        break label871;
-      }
-      paramaukz.a(new NoColumnError("uinType", Integer.TYPE));
-      label370:
-      i = paramCursor.getColumnIndex("tipType");
-      if (i != -1) {
-        break label886;
-      }
-      paramaukz.a(new NoColumnError("tipType", Integer.TYPE));
-      label405:
-      i = paramCursor.getColumnIndex("adwords");
-      if (i != -1) {
-        break label901;
-      }
-      paramaukz.a(new NoColumnError("adwords", String.class));
-      label439:
-      i = paramCursor.getColumnIndex("clickableWord");
-      if (i != -1) {
-        break label916;
-      }
-      paramaukz.a(new NoColumnError("clickableWord", String.class));
-      label473:
-      i = paramCursor.getColumnIndex("linkOffset");
-      if (i != -1) {
-        break label931;
-      }
-      paramaukz.a(new NoColumnError("linkOffset", Integer.TYPE));
-      label508:
-      i = paramCursor.getColumnIndex("url");
-      if (i != -1) {
-        break label946;
-      }
-      paramaukz.a(new NoColumnError("url", String.class));
-      label542:
-      i = paramCursor.getColumnIndex("limitDayAIOCount");
-      if (i != -1) {
-        break label961;
-      }
-      paramaukz.a(new NoColumnError("limitDayAIOCount", Integer.TYPE));
-      label577:
-      i = paramCursor.getColumnIndex("limitDayAIOShowCount");
-      if (i != -1) {
-        break label976;
-      }
-      paramaukz.a(new NoColumnError("limitDayAIOShowCount", Integer.TYPE));
-      label612:
-      i = paramCursor.getColumnIndex("limitTotalAIOCount");
-      if (i != -1) {
-        break label991;
-      }
-      paramaukz.a(new NoColumnError("limitTotalAIOCount", Integer.TYPE));
-      label647:
-      i = paramCursor.getColumnIndex("limitTotalShowCount");
-      if (i != -1) {
-        break label1006;
-      }
-      paramaukz.a(new NoColumnError("limitTotalShowCount", Integer.TYPE));
-      label682:
-      i = paramCursor.getColumnIndex("keywordString");
-      if (i != -1) {
-        break label1021;
-      }
-      paramaukz.a(new NoColumnError("keywordString", String.class));
-      label716:
-      i = paramCursor.getColumnIndex("begin");
-      if (i != -1) {
-        break label1036;
-      }
-      paramaukz.a(new NoColumnError("begin", String.class));
-      label750:
-      i = paramCursor.getColumnIndex("end");
-      if (i != -1) {
-        break label1051;
-      }
-      paramaukz.a(new NoColumnError("end", String.class));
-      label784:
-      i = paramCursor.getColumnIndex("frequencyTime");
-      if (i != -1) {
-        break label1066;
-      }
-      paramaukz.a(new NoColumnError("frequencyTime", Integer.TYPE));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("frequencyMessage");
-      if (i != -1) {
-        break label1081;
-      }
-      paramaukz.a(new NoColumnError("frequencyMessage", Integer.TYPE));
-      return paramauko;
-      paramauko.taskid = paramCursor.getInt(i);
-      break;
-      label871:
-      paramauko.uinType = paramCursor.getInt(i);
-      break label370;
-      label886:
-      paramauko.tipType = paramCursor.getInt(i);
-      break label405;
-      label901:
-      paramauko.adwords = paramCursor.getString(i);
-      break label439;
-      label916:
-      paramauko.clickableWord = paramCursor.getString(i);
-      break label473;
-      label931:
-      paramauko.linkOffset = paramCursor.getInt(i);
-      break label508;
-      label946:
-      paramauko.url = paramCursor.getString(i);
-      break label542;
-      label961:
-      paramauko.limitDayAIOCount = paramCursor.getInt(i);
-      break label577;
-      label976:
-      paramauko.limitDayAIOShowCount = paramCursor.getInt(i);
-      break label612;
-      label991:
-      paramauko.limitTotalAIOCount = paramCursor.getInt(i);
-      break label647;
-      label1006:
-      paramauko.limitTotalShowCount = paramCursor.getInt(i);
-      break label682;
-      label1021:
-      paramauko.keywordString = paramCursor.getString(i);
-      break label716;
-      label1036:
-      paramauko.begin = paramCursor.getString(i);
-      break label750;
-      label1051:
-      paramauko.end = paramCursor.getString(i);
-      break label784;
-      label1066:
-      paramauko.frequencyTime = paramCursor.getInt(i);
-    }
-    label1081:
-    paramauko.frequencyMessage = paramCursor.getInt(i);
-    return paramauko;
+    super(paramQQAppInterface);
   }
   
-  public String a(String paramString)
+  private void a(auld paramauld, MessageRecord paramMessageRecord, ArrayList<awew> paramArrayList, ArrayList<MessageRecord> paramArrayList1, int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,taskid INTEGER ,uinType INTEGER ,tipType INTEGER ,adwords TEXT ,clickableWord TEXT ,linkOffset INTEGER ,url TEXT ,limitDayAIOCount INTEGER ,limitDayAIOShowCount INTEGER ,limitTotalAIOCount INTEGER ,limitTotalShowCount INTEGER ,keywordString TEXT ,begin TEXT ,end TEXT ,frequencyTime INTEGER ,frequencyMessage INTEGER,UNIQUE(taskid) ON CONFLICT REPLACE)");
-    return localStringBuilder.toString();
+    if ((paramMessageRecord instanceof MessageForPic))
+    {
+      paramauld = awes.a(7, (MessageForPic)paramMessageRecord, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      if (paramauld != null) {
+        paramArrayList.add(paramauld);
+      }
+    }
+    label47:
+    label224:
+    do
+    {
+      do
+      {
+        do
+        {
+          Object localObject;
+          do
+          {
+            do
+            {
+              paramArrayList1.add(paramMessageRecord);
+              break label47;
+              break label47;
+              break label47;
+              break label47;
+              for (;;)
+              {
+                return;
+                if (QLog.isColorLevel())
+                {
+                  QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]createForwardPicInfo from MessageForPic failed");
+                  return;
+                  if ((paramMessageRecord instanceof MessageForMixedMsg))
+                  {
+                    paramauld = awes.a(7, (MessageForMixedMsg)paramMessageRecord, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+                    if (paramauld != null)
+                    {
+                      paramArrayList.addAll(paramauld);
+                      paramArrayList1.add(paramMessageRecord);
+                      return;
+                    }
+                    if (!QLog.isColorLevel()) {
+                      break;
+                    }
+                    QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]createForwardPicInfos from MessageForMixedMsg failed");
+                    return;
+                  }
+                  if (paramMessageRecord.msgtype != -1036) {
+                    break label224;
+                  }
+                  paramauld = ((MessageForLongMsg)paramMessageRecord).longMsgFragmentList.iterator();
+                  while (paramauld.hasNext())
+                  {
+                    localObject = (MessageRecord)paramauld.next();
+                    if ((localObject instanceof MessageForMixedMsg))
+                    {
+                      localObject = awes.a(7, (MessageForMixedMsg)localObject, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+                      if (localObject != null)
+                      {
+                        paramArrayList.addAll((Collection)localObject);
+                        paramArrayList1.add(paramMessageRecord);
+                      }
+                    }
+                  }
+                }
+              }
+              if (!(paramMessageRecord instanceof MessageForStructing)) {
+                break;
+              }
+              paramauld = ((MessageForStructing)paramMessageRecord).structingMsg;
+            } while ((paramauld == null) || (!(paramauld instanceof StructMsgForImageShare)));
+            localObject = ((StructMsgForImageShare)paramauld).getFirstImageElement();
+          } while (localObject == null);
+          if (((azsp)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null)
+          {
+            if (((azsp)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
+              ((azsp)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = ((StructMsgForImageShare)paramauld);
+            }
+            ((azsp)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic = ((azsp)localObject).a();
+          }
+          paramauld = awes.a(7, ((azsp)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic, paramInt2, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+          if (paramauld != null)
+          {
+            paramArrayList.add(paramauld);
+            paramArrayList1.add(paramMessageRecord);
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]createForwardPicInfo from MessageForPic failed");
+        return;
+      } while (!(paramMessageRecord instanceof MessageForReplyText));
+      paramMessageRecord = ((MessageForReplyText)paramMessageRecord).getSourceMessage();
+    } while ((paramMessageRecord == null) || ((!(paramMessageRecord instanceof MessageForPic)) && (!(paramMessageRecord instanceof MessageForMixedMsg)) && (!(paramMessageRecord instanceof MessageForStructing)) && (paramMessageRecord.msgtype != -1036)));
+    if (QLog.isColorLevel()) {
+      QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg] MessageForReplyText add to list");
+    }
+    if (paramauld.b == 2) {}
+    for (paramInt1 = 0;; paramInt1 = paramMessageRecord.istroop)
+    {
+      a(paramauld, paramMessageRecord, paramArrayList, paramArrayList1, paramInt1, paramMessageRecord.selfuin, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+      return;
+    }
   }
   
-  public void a(auko paramauko, ContentValues paramContentValues)
+  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap, MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, ArrayList<awew> paramArrayList1, int paramInt, auld paramauld, aukq paramaukq)
   {
-    paramauko = (QQOperationViopTipTask)paramauko;
-    paramContentValues.put("taskid", Integer.valueOf(paramauko.taskid));
-    paramContentValues.put("uinType", Integer.valueOf(paramauko.uinType));
-    paramContentValues.put("tipType", Integer.valueOf(paramauko.tipType));
-    paramContentValues.put("adwords", paramauko.adwords);
-    paramContentValues.put("clickableWord", paramauko.clickableWord);
-    paramContentValues.put("linkOffset", Integer.valueOf(paramauko.linkOffset));
-    paramContentValues.put("url", paramauko.url);
-    paramContentValues.put("limitDayAIOCount", Integer.valueOf(paramauko.limitDayAIOCount));
-    paramContentValues.put("limitDayAIOShowCount", Integer.valueOf(paramauko.limitDayAIOShowCount));
-    paramContentValues.put("limitTotalAIOCount", Integer.valueOf(paramauko.limitTotalAIOCount));
-    paramContentValues.put("limitTotalShowCount", Integer.valueOf(paramauko.limitTotalShowCount));
-    paramContentValues.put("keywordString", paramauko.keywordString);
-    paramContentValues.put("begin", paramauko.begin);
-    paramContentValues.put("end", paramauko.end);
-    paramContentValues.put("frequencyTime", Integer.valueOf(paramauko.frequencyTime));
-    paramContentValues.put("frequencyMessage", Integer.valueOf(paramauko.frequencyMessage));
+    awfc localawfc = awes.a(8, 7);
+    localawfc.a(paramArrayList1);
+    localawfc.a(new aulg(this, paramArrayList, paramHashMap, paramMessageRecord, paramaukq, paramauld));
+    awes.a(localawfc, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public void a(auld paramauld, HashMap<String, ArrayList<MessageRecord>> paramHashMap, aukq paramaukq)
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if (paramauld.b == 2) {}
+    for (int i = 0;; i = paramauld.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
+    {
+      String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+      String str2 = paramauld.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      int j = paramauld.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      Iterator localIterator1 = paramHashMap.keySet().iterator();
+      while (localIterator1.hasNext())
+      {
+        Iterator localIterator2 = ((ArrayList)paramHashMap.get((String)localIterator1.next())).iterator();
+        while (localIterator2.hasNext()) {
+          a(paramauld, (MessageRecord)localIterator2.next(), localArrayList1, localArrayList2, i, str1, str2, j);
+        }
+      }
+    }
+    if ((localArrayList1.size() > 0) && (localArrayList2.size() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]Upload pictures, count is [" + localArrayList1.size() + "], goto requestUploadPics");
+      }
+      a(paramHashMap, paramauld.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, localArrayList2, localArrayList1, paramauld.b, paramauld, paramaukq);
+      return;
+    }
+    paramaukq.a(0, 1, paramauld);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aulf
  * JD-Core Version:    0.7.0.1
  */

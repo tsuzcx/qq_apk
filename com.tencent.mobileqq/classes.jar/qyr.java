@@ -1,127 +1,147 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
 public class qyr
-  extends qym
-  implements qyu
 {
+  private static final String jdField_a_of_type_JavaLangString = "Q.readinjoy.video." + qyr.class.getSimpleName();
+  private static final qyr jdField_a_of_type_Qyr = new qyr();
   private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString = "ReadInjoyPlayer<" + Integer.toHexString(hashCode()) + ">";
-  public qyt a;
-  private String b;
-  private String c;
+  private int b;
   
-  public qyr(int paramInt)
+  private qyr()
   {
-    super(BaseApplicationImpl.getContext());
-    this.jdField_a_of_type_Qyt = new qyt(paramInt, this);
-    a(this.jdField_a_of_type_Qyt);
+    if (a()) {
+      this.jdField_a_of_type_Int = a("entrance_button_day_display_count");
+    }
+    for (this.b = a("entrance_jump_app_display_count");; this.b = 0)
+    {
+      a("EntranceButtonExposureHelper() mDayDisplayCount:" + this.jdField_a_of_type_Int + ",mEntranceDownloadInfoDisplayCount:" + this.b);
+      return;
+      this.jdField_a_of_type_Int = 0;
+    }
   }
   
-  private void a(String paramString, long paramLong)
+  private int a(String paramString)
   {
-    if (paramString == null) {
+    return bjxj.a(ors.a(), true, true).getInt(paramString, 0);
+  }
+  
+  public static qyr a()
+  {
+    return jdField_a_of_type_Qyr;
+  }
+  
+  private static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, paramString);
+    }
+  }
+  
+  private void a(String paramString, int paramInt)
+  {
+    if (bjxj.a(ors.a(), true, true) == null)
+    {
+      a("writeToSP() failed");
       return;
     }
-    a(paramString, 2, paramLong);
+    bjxj.a(paramString, Integer.valueOf(paramInt));
   }
   
-  private void a(String paramString, long paramLong, int paramInt)
+  private static boolean a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    a(paramString, 2, paramLong, paramInt);
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    boolean bool1 = TextUtils.isEmpty(this.b);
-    boolean bool2 = TextUtils.isEmpty(this.c);
-    int i;
-    int j;
-    if ((!bool1) || (!bool2))
+    Object localObject1 = Calendar.getInstance();
+    int i = ((Calendar)localObject1).get(1);
+    int j = ((Calendar)localObject1).get(2);
+    int k = ((Calendar)localObject1).get(5);
+    localObject1 = i + j + k;
+    Object localObject2 = bjxj.a(ors.a(), true, true);
+    if (localObject2 == null)
     {
-      i = 1;
-      if ((!bool1) && (!this.b.equals(paramString1))) {
-        break label89;
-      }
-      j = 1;
-      label49:
-      if ((!bool2) && (!this.c.equals(paramString2))) {
-        break label95;
-      }
+      a("checkIsToday() failed");
+      return false;
     }
-    label89:
-    label95:
-    for (int k = 1;; k = 0)
-    {
-      if ((i == 0) || (j == 0) || (k == 0)) {
-        break label101;
-      }
+    String str = ((SharedPreferences)localObject2).getString("entrance_button_daily", null);
+    a("checkIsToday localDate = " + str);
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(str))) {
       return true;
-      i = 0;
-      break;
-      j = 0;
-      break label49;
     }
-    label101:
+    localObject2 = ((SharedPreferences)localObject2).edit();
+    ((SharedPreferences.Editor)localObject2).putString("entrance_button_daily", (String)localObject1);
+    bjxj.a((SharedPreferences.Editor)localObject2, true);
     return false;
   }
   
-  private void b(String paramString, long paramLong, int paramInt)
+  public int a()
   {
-    if (paramString == null) {
-      return;
+    try
+    {
+      a("getDayDisplayCount() mDayDisplayCount:" + this.jdField_a_of_type_Int);
+      int i = this.jdField_a_of_type_Int;
+      return i;
     }
-    onu.a().a(paramString, "PubAccountArticleCenter.GetUrlByVid", new qys(this, paramString, paramLong, paramInt));
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  private void c(String paramString, long paramLong, int paramInt)
+  public void a(slk paramslk)
   {
-    if (paramString == null) {
-      return;
+    for (;;)
+    {
+      try
+      {
+        boolean bool = a();
+        if (bool)
+        {
+          this.jdField_a_of_type_Int += 1;
+          a("entrance_button_day_display_count", this.jdField_a_of_type_Int);
+          if ((paramslk instanceof VideoInfo.EntranceDownloadInfo))
+          {
+            if (bool)
+            {
+              this.b += 1;
+              a("entrance_jump_app_display_count", this.b);
+            }
+          }
+          else {
+            a("addToCount() mDayDisplayCount:" + this.jdField_a_of_type_Int + "，mEntranceDownloadInfoDisplayCount：" + this.b);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_Int = 0;
+          continue;
+        }
+        this.b = 0;
+      }
+      finally {}
     }
-    a(paramString, paramString, 2, paramLong, paramInt);
   }
   
-  public void a(int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2)
+  public int b()
   {
-    this.b = paramString1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "openByBusiType: vid=" + paramString1 + ", url=" + paramString2 + ", busiType=" + paramInt1);
-    }
-    if ((paramInt1 == 1) || (paramInt1 == 3) || (paramInt1 == 7))
+    try
     {
-      a(paramString1, paramLong);
-      return;
+      int i = this.b;
+      return i;
     }
-    if ((paramInt1 == 2) || ((paramInt1 == 6) && (!TextUtils.isEmpty(paramString1))))
+    finally
     {
-      b(paramString1, paramLong, paramInt2);
-      return;
+      localObject = finally;
+      throw localObject;
     }
-    if (paramInt1 == 5)
-    {
-      c(paramString1, paramLong, paramInt2);
-      return;
-    }
-    a(paramString2, paramLong, paramInt2);
-  }
-  
-  public void a(qbu paramqbu)
-  {
-    paramqbu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramqbu.i = b();
-    paramqbu.j = c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qyr
  * JD-Core Version:    0.7.0.1
  */

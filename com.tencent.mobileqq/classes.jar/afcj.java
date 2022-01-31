@@ -1,48 +1,46 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.util.WeakReference;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
 class afcj
-  extends ajxj
+  implements afcm
 {
   afcj(afci paramafci) {}
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    afci.a(this.a).removeMessages(1);
-    if ((this.a.jdField_a_of_type_Bcqf == null) || (!this.a.jdField_a_of_type_Bcqf.isShowing())) {
-      QLog.e("SeparateForward", 1, new Object[] { "onGetFriendNickBatch timeout, isSuccess:", Boolean.valueOf(paramBoolean) });
+    int j;
+    int i;
+    if (afci.a(this.a) != null)
+    {
+      j = afci.a(this.a).getChildCount();
+      if (j > 0) {
+        i = 0;
+      }
     }
     for (;;)
     {
-      return;
-      this.a.jdField_a_of_type_Bcqf.dismiss();
-      asua.a().b.clear();
-      if ((paramBoolean) && (paramObject != null)) {
-        asua.a().b.putAll((Map)paramObject);
-      }
-      if (asua.a().b.size() == 0)
+      if (i < j)
       {
-        BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-        if (localBaseActivity != null) {
-          bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131698478, 0).b(localBaseActivity.getTitleBarHeight());
+        paramView = afci.a(this.a).getChildAt(i).getTag();
+        if (((paramView instanceof IntimateInfo.MemoryDayInfo)) && (((IntimateInfo.MemoryDayInfo)paramView).dateType == paramMemoryDayInfo.dateType)) {
+          afci.a(this.a).removeViewAt(i);
         }
       }
-      while (QLog.isDevelopLevel())
+      else
       {
-        QLog.d("MultiMsg_TAG", 4, "onGetFriendNickBatch = " + paramObject);
+        if (afci.a(this.a).getChildCount() <= 0) {
+          afci.a(this.a).setVisibility(8);
+        }
         return;
-        this.a.a((Map)paramObject, asua.a().a);
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcj
  * JD-Core Version:    0.7.0.1
  */

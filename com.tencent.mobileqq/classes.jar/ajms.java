@@ -1,204 +1,33 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 
 public class ajms
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static String A;
-  public static String B;
-  public static String C;
-  public static String D;
-  public static String E;
-  public static String F;
-  public static String G;
-  public static String H;
-  public static String I;
-  public static String J;
-  public static String K;
-  public static String L;
-  public static String M;
-  public static String N;
-  public static String O;
-  public static String P;
-  public static String Q;
-  public static String R;
-  public static String S;
-  public static String T;
-  public static String U;
-  public static String V;
-  public static final String W;
-  public static String X;
-  public static String Y;
-  public static String Z;
-  public static int a;
-  public static long a;
-  public static String a;
-  public static final String[] a;
-  public static final String aA;
-  public static final String aB;
-  public static String aC;
-  public static String aD;
-  public static String aE;
-  public static String aF;
-  public static String aG;
-  public static String aH;
-  public static String aa;
-  public static String ab;
-  public static String ac;
-  public static String ad;
-  public static String ae;
-  public static String af;
-  public static String ag;
-  public static String ah;
-  public static String ai;
-  public static String aj;
-  public static String ak;
-  public static String al;
-  public static String am;
-  public static String an;
-  public static String ao;
-  public static String ap;
-  public static String aq;
-  public static String ar;
-  public static String as;
-  public static String at;
-  public static String au;
-  public static String av;
-  public static String aw;
-  public static String ax;
-  public static String ay;
-  public static final String az;
-  public static int b;
-  public static long b;
-  public static String b;
-  public static final String[] b;
-  public static int c;
-  public static String c;
-  public static int d;
-  public static String d;
-  public static int e;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
-  public static String j;
-  public static String k;
-  public static String l;
-  public static String m;
-  public static String n;
-  public static String o;
-  public static String p;
-  public static String q;
-  public static String r;
-  public static String s;
-  public static String t;
-  public static String u;
-  public static String v;
-  public static String w;
-  public static String x;
-  public static String y;
-  public static String z;
+  public ajms(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt1, int paramInt2) {}
   
-  static
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    jdField_a_of_type_JavaLangString = bbvj.a(ajsd.aW + "/.apollo");
-    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/rsc_jsonConfig/";
-    jdField_c_of_type_JavaLangString = BaseApplicationImpl.getApplication().getFilesDir() + "/apollo";
-    jdField_d_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/action/";
-    jdField_e_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/audio/";
-    f = jdField_a_of_type_JavaLangString + "/dress/";
-    g = jdField_a_of_type_JavaLangString + "/role/";
-    h = jdField_a_of_type_JavaLangString + "/room/";
-    if (AppSetting.b) {}
-    for (Object localObject = jdField_a_of_type_JavaLangString + "/shader_code_64/";; localObject = jdField_a_of_type_JavaLangString + "/shader_code/")
-    {
-      i = (String)localObject;
-      j = f + "/face/";
-      k = jdField_a_of_type_JavaLangString + "/image_cache/";
-      l = k + "game/";
-      m = jdField_a_of_type_JavaLangString + "/drawer_action/";
-      n = jdField_d_of_type_JavaLangString + "packages/";
-      o = jdField_a_of_type_JavaLangString + "/ai";
-      p = o + "/audioRecord/";
-      q = o + "/action/";
-      r = o + "/audioFromSvr/";
-      s = jdField_a_of_type_JavaLangString + "/game/";
-      t = jdField_a_of_type_JavaLangString + "/pre_download/";
-      u = "def/role/0/3D/";
-      v = "apollo_dwonload_game_icon.png";
-      w = "action/action.png";
-      x = "action/action.json";
-      y = "action/action.atlas";
-      z = "action_peer/action.png";
-      A = "action_peer/action.json";
-      B = "action_peer/action.atlas";
-      C = "dress.png";
-      D = "dress.json";
-      E = "dress.atlas";
-      F = "Bubble";
-      G = "sayhi";
-      H = "interact";
-      I = "friendcard";
-      J = "ai";
-      K = "drawer";
-      L = "role.png";
-      M = "role.json";
-      N = "role.atlas";
-      O = "config.json";
-      P = "skeleton.bin";
-      Q = "dress.bin";
-      R = "action.bin";
-      jdField_a_of_type_Int = 300000;
-      jdField_a_of_type_ArrayOfJavaLangString = new String[] { "FaceOrnament", "BackSuit", "HeadDress", "FaceSuit", "HairType", "TopSuit", "BottomSuit" };
-      jdField_b_of_type_Int = 31104;
-      jdField_c_of_type_Int = 31105;
-      jdField_d_of_type_Int = 31102;
-      jdField_e_of_type_Int = 31106;
-      jdField_a_of_type_Long = 35001L;
-      jdField_b_of_type_Long = 35019L;
-      S = "https://cmshow.qq.com/apollo/html/direct_pay.html?_wv=1027";
-      T = "https://cmshow.qq.com/apollo/html/actlist.html?_wv=1027";
-      U = "https://cmshow.qq.com/apollo/html/not_support.html?_wv=1027";
-      V = "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326&actionId=";
-      localObject = new StringBuilder("https://cmshow.qq.com/apollo/html/index_v2.html");
-      ((StringBuilder)localObject).append("?client=androidQQ").append("&version=").append("8.3.0.4480").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE);
-      W = ((StringBuilder)localObject).toString();
-      X = "https://cmshow.qq.com/apollo/html/game-platform/index.html?_wv=16777219&_bid=2695&adtag=aio";
-      Y = "https://cmshow.qq.com/apollo/html/game-platform/my-coins.html?_wv=1027&_bid=2695&adtag=aio";
-      Z = "https://cmshow.qq.com/apollo/html/system/mycoins.html?_bid=2536&_wv=1027";
-      aa = "https://cmshow.qq.com/apollo/html/task_658.html?_bid=2345&_wv=1027";
-      ab = "https://cmshow.qq.com/apollo/html/system/task_detail.html?_bid=2536&_wwv=4&_wv=16778243";
-      ac = "https://cmshow.qq.com/apollo/html/island/crystal.html?_wv=1027";
-      ad = "https://cmshow.qq.com/apollo/html/production/machine.html?_wv=3&_bid=2630";
-      ae = "https://cmshow.qq.com/apollo/html/game-platform/my-game.html?_wv=1027&_bid=2695";
-      af = "http://sqimg.qq.com/qq_product_operations/tmg_sdk/QAVOPENSDK_1.9.6.16.zip";
-      ag = "dd3d6659ce42a5face3777902679834b";
-      ar = "https://cmshow.gtimg.cn/client/zip/apollo_drawer_game_box_lottie.zip";
-      as = "https://cmshow.qq.com/apollo/html/game-platform/game-feeds-gc.html?_wv=3&tab=hotplay&from=gamecenter&_bid=3143";
-      av = jdField_a_of_type_JavaLangString + "/script/" + au + "/";
-      jdField_b_of_type_ArrayOfJavaLangString = new String[] { "103100.103200.103201", "103100.103200.103210.103211", "103100.103200.103201.103202", "103100.103200.103220" };
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(103100).append(".").append(103200).append(".").append(103240).append(".").append(103244);
-      aB = ((StringBuilder)localObject).toString();
-      ((StringBuilder)localObject).append(".").append(103245);
-      aA = ((StringBuilder)localObject).toString();
-      ((StringBuilder)localObject).append(".").append(103246);
-      az = ((StringBuilder)localObject).toString();
-      aC = ajya.a(2131700320);
-      aD = ajya.a(2131700319);
-      aE = "https://cmshow.gtimg.cn/client/img/apollo_aio_game_guide2.png";
-      aF = "#FFE746";
-      aG = "https://cmshow.qq.com/apollo/html/game-platform/game-center.html?_wv=16777219&_wwv=4&_bid=2695";
-      aH = ajya.a(2131700318);
-      return;
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramValueAnimator.width = ((int)(this.jdField_a_of_type_Int * f));
+    paramValueAnimator.height = ((int)(this.jdField_a_of_type_Int * f));
+    paramValueAnimator.addRule(13);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
+    paramValueAnimator.width = ((int)(this.b * f));
+    paramValueAnimator.height = ((int)(f * this.b));
+    paramValueAnimator.addRule(13);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajms
  * JD-Core Version:    0.7.0.1
  */

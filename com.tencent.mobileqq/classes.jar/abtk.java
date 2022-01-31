@@ -1,24 +1,40 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class abtk
-  extends aimt
+abstract class abtk
+  extends amle
 {
-  public abti a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  long jdField_a_of_type_Long;
+  absf jdField_a_of_type_Absf;
+  boolean jdField_a_of_type_Boolean;
+  long b;
+  
+  public abtk(absf paramabsf, int paramInt, long paramLong)
+  {
+    super(paramInt, true, true, paramLong, true, false, "Doraemon");
+    this.jdField_a_of_type_Absf = paramabsf;
+    this.b = 10000L;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onConsecutiveFailure: errCode=" + paramInt1 + ", failCount=" + paramInt2);
+    }
+    if ((paramInt2 * 2000 < this.b) || (!this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    abvm.a(this.jdField_a_of_type_Absf, paramInt1, "error " + paramInt1);
+    Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    SosoInterface.b(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abtk
  * JD-Core Version:    0.7.0.1
  */

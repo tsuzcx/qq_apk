@@ -1,14 +1,20 @@
-import java.util.concurrent.ThreadFactory;
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
 
-class bbkx
-  implements ThreadFactory
+final class bbkx
+  implements TextUtils.EllipsizeCallback
 {
-  public Thread newThread(Runnable paramRunnable)
+  bbkx(bbky parambbky, String paramString) {}
+  
+  public void ellipsized(int paramInt1, int paramInt2)
   {
-    bbkw.a();
-    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + bbkw.b());
-    paramRunnable.setDaemon(true);
-    return paramRunnable;
+    if (paramInt1 == paramInt2)
+    {
+      this.jdField_a_of_type_Bbky.c.setText(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
+    this.jdField_a_of_type_Bbky.c.setText(new baig(ndd.b(ndd.c(str + "...")), 3, 14));
   }
 }
 

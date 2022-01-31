@@ -1,10 +1,28 @@
-public abstract interface xey
+import android.view.KeyEvent;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
+class xey
+  implements TextView.OnEditorActionListener
 {
-  public abstract void a();
+  xey(xex paramxex) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 6)
+    {
+      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (paramTextView != null) {
+        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
+      }
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xey
  * JD-Core Version:    0.7.0.1
  */

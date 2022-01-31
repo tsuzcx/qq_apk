@@ -1,114 +1,97 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.Scroller;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout.IndicatorTouchListener.1;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout.IndicatorTouchListener.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class rpd
+  implements View.OnTouchListener
 {
-  rpk<Bitmap> a;
+  private float jdField_a_of_type_Float;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CaptureOperateTouchLayout.IndicatorTouchListener.1(this);
+  private rpc jdField_a_of_type_Rpc;
+  private float jdField_b_of_type_Float;
+  private Runnable jdField_b_of_type_JavaLangRunnable = new CaptureOperateTouchLayout.IndicatorTouchListener.2(this);
+  private float c;
+  private float d;
+  private float e;
+  private float f;
+  private float g;
   
-  public rpd(Bitmap paramBitmap, rpl<Bitmap> paramrpl)
+  public rpd(CaptureOperateTouchLayout paramCaptureOperateTouchLayout, rpc paramrpc)
   {
-    this.a = new rpk(paramBitmap, paramrpl);
-    if (QLog.isColorLevel()) {
-      rpn.a(toString(), "onCreate", true);
-    }
+    this.jdField_a_of_type_Rpc = paramrpc;
   }
   
-  public rpd(rpk<Bitmap> paramrpk)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramrpk.a();
-    this.a = paramrpk;
-    if (QLog.isColorLevel()) {
-      rpn.a(toString(), "createFromClone", true);
-    }
-  }
-  
-  public Bitmap a()
-  {
-    if (this.a != null) {
-      return (Bitmap)this.a.a();
-    }
-    axqy.b(null, "dc01160", "", "", "0X80098F1", "0X80098F1", 0, 1, null, null, "", "");
-    return null;
-  }
-  
-  public rpd a()
-  {
-    try
+    switch (paramMotionEvent.getAction())
     {
-      if (QLog.isColorLevel()) {
-        rpn.a(toString(), "clone", true);
-      }
-      rpd localrpd = new rpd(this.a);
-      return localrpd;
     }
-    finally {}
-  }
-  
-  /* Error */
-  public void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 19	rpd:a	Lrpk;
-    //   6: ifnull +34 -> 40
-    //   9: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   12: ifeq +13 -> 25
-    //   15: aload_0
-    //   16: invokevirtual 29	rpd:toString	()Ljava/lang/String;
-    //   19: ldc 70
-    //   21: iconst_1
-    //   22: invokestatic 36	rpn:a	(Ljava/lang/String;Ljava/lang/String;Z)V
-    //   25: aload_0
-    //   26: getfield 19	rpd:a	Lrpk;
-    //   29: invokevirtual 72	rpk:b	()V
-    //   32: aload_0
-    //   33: aconst_null
-    //   34: putfield 19	rpd:a	Lrpk;
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: return
-    //   40: aload_0
-    //   41: invokevirtual 29	rpd:toString	()Ljava/lang/String;
-    //   44: ldc 74
-    //   46: invokestatic 77	rpn:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   49: goto -12 -> 37
-    //   52: astore_1
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: aload_1
-    //   56: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	57	0	this	rpd
-    //   52	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	25	52	finally
-    //   25	37	52	finally
-    //   37	39	52	finally
-    //   40	49	52	finally
-    //   53	55	52	finally
-  }
-  
-  public boolean a()
-  {
-    return this.a != null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("zimage.closeable@").append(hashCode()).append("_bitmap@");
-    if ((this.a != null) && (this.a.a() != null)) {}
-    for (Integer localInteger = Integer.valueOf(((Bitmap)this.a.a()).hashCode());; localInteger = null) {
-      return localInteger;
+    for (;;)
+    {
+      this.g = paramMotionEvent.getRawX();
+      return true;
+      this.jdField_a_of_type_Float = paramView.getX();
+      this.jdField_b_of_type_Float = paramView.getY();
+      this.c = paramMotionEvent.getRawX();
+      this.d = paramMotionEvent.getRawY();
+      this.e = paramView.getX();
+      this.f = paramView.getY();
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, false);
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).setFinalX((int)CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).getX());
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).postDelayed(this.jdField_b_of_type_JavaLangRunnable, 300L);
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+      continue;
+      if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout))
+      {
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, false);
+        int i = (int)(Math.abs(paramView.getX() - this.e) / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout) * 400.0F);
+        ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramView.getScrollX(), this.e }).setDuration(i);
+        localValueAnimator.addUpdateListener(new rpe(this, paramView));
+        localValueAnimator.start();
+        this.jdField_a_of_type_Rpc.a(true);
+      }
+      for (;;)
+      {
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).abortAnimation();
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, CaptureOperateTouchLayout.b());
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, CaptureOperateTouchLayout.b());
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+        break;
+        this.jdField_a_of_type_Rpc.a(false);
+      }
+      float f2 = this.jdField_a_of_type_Float;
+      float f3 = paramMotionEvent.getRawX();
+      float f4 = this.c;
+      float f1 = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout);
+      f2 = Math.min(Math.max(f2 + (f3 - f4), 0.0F), f1);
+      paramView.setX(f2);
+      f1 = f2 / f1;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.a(f1, CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout));
+      if ((!CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout)) && ((Math.abs(this.e - paramView.getX()) > 10.0F) || (Math.abs(this.f - paramView.getY()) > 10.0F)))
+      {
+        this.e = paramView.getX();
+        this.f = paramView.getY();
+        ThreadManager.getUIHandler().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+        ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        ThreadManager.getUIHandler().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 300L);
+        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+        this.jdField_a_of_type_Rpc.c();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpd
  * JD-Core Version:    0.7.0.1
  */

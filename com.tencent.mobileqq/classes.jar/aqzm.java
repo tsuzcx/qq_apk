@@ -1,25 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aqzm
-  implements DialogInterface.OnClickListener
+class aqzm
+  implements View.OnClickListener
 {
-  public aqzm(HotPicPageView.4.2 param2) {}
+  aqzm(aqzl paramaqzl, ayjl paramayjl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    if (this.a.a.jdField_a_of_type_Aqzt.a == 1) {
-      this.a.a.jdField_a_of_type_Aqzt.a(0);
-    }
-    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
+    this.jdField_a_of_type_Ayjl.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzm
  * JD-Core Version:    0.7.0.1
  */

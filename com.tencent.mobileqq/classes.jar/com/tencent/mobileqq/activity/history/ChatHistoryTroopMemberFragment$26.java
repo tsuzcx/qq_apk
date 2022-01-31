@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import akhp;
+import alzf;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ChatHistoryTroopMemberFragment$26
@@ -10,12 +10,12 @@ class ChatHistoryTroopMemberFragment$26
   
   public void run()
   {
-    ((akhp)this.this$0.b.a(20)).a(this.this$0.c, this.this$0.j, this.this$0.e);
+    ((alzf)this.this$0.b.a(20)).a(this.this$0.c, this.this$0.j, this.this$0.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.26
  * JD-Core Version:    0.7.0.1
  */

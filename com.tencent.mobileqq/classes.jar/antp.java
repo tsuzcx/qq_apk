@@ -1,10 +1,20 @@
-public abstract interface antp
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+
+class antp
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  antp(antn paramantn) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    antn.a(this.a, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     antp
  * JD-Core Version:    0.7.0.1
  */

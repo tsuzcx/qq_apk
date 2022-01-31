@@ -1,49 +1,123 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.search.rich.RichNodeRootLayout;
 
-class ayor
-  implements ITransactionCallback
+public abstract class ayor
+  implements ayoh
 {
-  ayor(ayoq paramayoq) {}
+  private View jdField_a_of_type_AndroidViewView;
+  public ayof a;
+  private RichNodeRootLayout jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
+  private View b;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public ayor(ayof paramayof, Context paramContext)
   {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms");
+    this.jdField_a_of_type_Ayof = paramayof;
+    a(paramContext);
+  }
+  
+  public final View a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
+  }
+  
+  public abstract View a(Context paramContext);
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return null;
+  }
+  
+  public ayof a()
+  {
+    return this.jdField_a_of_type_Ayof;
+  }
+  
+  public String a()
+  {
+    ayof localayof = a();
+    if (localayof != null) {
+      return localayof.a();
     }
-    this.a.jdField_a_of_type_Ayqo.a = paramArrayOfByte;
-    if (this.a.b != -1) {
-      this.a.a(paramInt, "uploadImgError");
+    return null;
+  }
+  
+  public void a(Context paramContext)
+  {
+    View localView = LayoutInflater.from(paramContext).inflate(2131561246, null, false);
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = ((RichNodeRootLayout)localView.findViewById(2131375991));
+    this.b = localView.findViewById(2131365353);
+    this.jdField_a_of_type_AndroidViewView = a(paramContext);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout.addView(this.jdField_a_of_type_AndroidViewView);
     }
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void a(boolean paramBoolean)
   {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms ,fileSize:" + this.a.q);
-    }
-    if (this.a.jdField_a_of_type_Vjx.b.equals(this.a.jdField_a_of_type_Vjz.a))
+    if (this.b != null)
     {
-      this.a.jdField_a_of_type_Vjx.a = this.a.d;
-      if (this.a.b != -1) {
-        this.a.aQ_();
+      if (paramBoolean) {
+        this.b.setVisibility(0);
       }
     }
+    else {
+      return;
+    }
+    this.b.setVisibility(8);
   }
   
-  public void onSwitch2BackupChannel() {}
+  public ImageView b()
+  {
+    return null;
+  }
   
-  public void onTransStart() {}
+  public TextView b()
+  {
+    return null;
+  }
   
-  public void onUpdateProgress(int paramInt) {}
+  public void b(boolean paramBoolean) {}
+  
+  public TextView c()
+  {
+    return null;
+  }
+  
+  public TextView d()
+  {
+    return null;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Ayof = null;
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = null;
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.b = null;
+  }
+  
+  public void f()
+  {
+    d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayor
  * JD-Core Version:    0.7.0.1
  */

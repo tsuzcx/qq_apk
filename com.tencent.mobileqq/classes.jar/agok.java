@@ -1,33 +1,89 @@
-import android.view.SurfaceView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public class agok
-  implements bbvq
+class agok
+  extends alxx
 {
-  public agok(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agok(agoj paramagoj) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    if (paramInt == 1)
+    ChatActivityUtils.b();
+    Object localObject = this.a.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
+    int i;
+    if (paramBoolean)
     {
-      this.a.a.setVisibility(0);
-      this.a.e();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
+      i = 2131720075;
+      QQToast.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.a());
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        break label69;
       }
-      return;
-      this.a.a.setVisibility(8);
-      this.a.f();
     }
+    label69:
+    do
+    {
+      int k;
+      do
+      {
+        return;
+        i = 2131720063;
+        break;
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          k = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bdal.a(String.valueOf(paramList.get(j)), localObject)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
+    } while (!paramBoolean);
+    this.a.m();
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    int k = 0;
+    ChatActivityUtils.b();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    do
+    {
+      do
+      {
+        return;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bdal.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.b();
+    } while (!paramBoolean);
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agok
  * JD-Core Version:    0.7.0.1
  */

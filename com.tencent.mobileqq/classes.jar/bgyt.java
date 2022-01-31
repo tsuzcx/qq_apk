@@ -1,35 +1,66 @@
-import common.config.service.QzoneConfig;
+import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeReq;
+import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeRsp;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.JSONConverter;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bgyt
+  extends bgzp
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
+  private MiniAppStore.StGetFirstPageByTypeReq a = new MiniAppStore.StGetFirstPageByTypeReq();
+  
+  public bgyt(int paramInt)
   {
-    return QzoneConfig.getInstance().getConfig("H5Url", "CoverStore", "https://h5.qzone.qq.com/bgcover/index?_wv=2098179&qua={qua}&_proxy=1").replace("{uin}", paramString3).replace("{hostUin}", paramString4).replace("{qua}", bgyi.a()).replace("{pb}", "").replace("{clicktime}", String.valueOf(System.currentTimeMillis())).replace("{from}", paramString1).replace("{page}", paramString2);
+    this.a.uiPageType.set(paramInt);
   }
   
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  protected String a()
   {
-    return QzoneConfig.getInstance().getConfig("H5Url", "CoverPreview", "https://h5.qzone.qq.com/bgstore/detail/{coverid}?_wv=2098179&from={from}&page={page}&qua={qua}&router=detail&coverid={coverid}&uin={uin}&hostUin={hostUin}&_proxy=1").replace("{qua}", bgyi.a()).replace("{pb}", "").replace("{from}", paramString1).replace("{page}", paramString2).replace("{coverid}", paramString3).replace("{uin}", paramString4).replace("{hostUin}", paramString5);
+    return "store_app_client";
   }
   
-  public static String a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    paramString1 = QzoneConfig.getInstance().getConfig("H5Url", "PhotoWallUrl", "https://h5.qzone.qq.com/bgstore/photoWall?_wv=2098179&uin={uin}&hostUin={hostUin}&from={from}&page=1&qua={qua}&router=photoWall&_proxy=1").replace("{uin}", paramString1).replace("{hostUin}", paramString2).replace("{qua}", bgyi.a());
-    paramString2 = new StringBuilder().append("");
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0) {
-      return paramString1.replace("{isPhotoWall}", i).replace("{clicktime}", String.valueOf(System.currentTimeMillis())).replace("{from}", paramString3);
+    if (paramArrayOfByte == null) {
+      return null;
     }
+    MiniAppStore.StGetFirstPageByTypeRsp localStGetFirstPageByTypeRsp = new MiniAppStore.StGetFirstPageByTypeRsp();
+    try
+    {
+      localStGetFirstPageByTypeRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetFirstPageByTypeRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("data", JSONConverter.convert2JSONArray(localStGetFirstPageByTypeRsp.vecAppInfo.get()).toString());
+        paramArrayOfByte.put("dataType", "string");
+        return paramArrayOfByte;
+      }
+      QMLog.d("GetFirstPageByTypeRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("GetFirstPageByTypeRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public static String b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  protected byte[] a()
   {
-    return QzoneConfig.getInstance().getConfig("H5Url", "MusicCoverPreview", "https://h5.qzone.qq.com/musicCover/preview?id={coverid}&_wv=2098179&from={from}&page={page}&qua={qua}&router=detail&coverid={coverid}&uin={uin}&hostUin={hostUin}&_proxy=1").replace("{qua}", bgyi.a()).replace("{pb}", "").replace("{from}", paramString1).replace("{page}", paramString2).replace("{coverid}", paramString3).replace("{uin}", paramString4).replace("{hostUin}", paramString5);
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetFirstPageByType";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgyt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,9 @@
-public abstract interface bbja
+import android.widget.TextView;
+
+class bbja
 {
-  public abstract void a(avct paramavct, avcu paramavcu);
-  
-  public abstract void b(avct paramavct, avcu paramavcu);
+  public int a;
+  public TextView a;
 }
 
 

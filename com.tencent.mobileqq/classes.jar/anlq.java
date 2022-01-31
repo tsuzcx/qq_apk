@@ -1,21 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class anlq
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public anlq(DataReportViewer paramDataReportViewer) {}
+  public anlq(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    paramView = (bhpy)bhql.a(BaseActivity.sTopActivity, null);
+    paramView.a(BaseActivity.sTopActivity.getString(2131690265));
+    paramView.a(2131690264, 3);
+    paramView.c(2131690266);
+    paramView.setOnDismissListener(new anlr(this, paramView));
+    paramView.a(new anls(this, paramView));
+    if (!paramView.isShowing()) {
+      paramView.show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlq
  * JD-Core Version:    0.7.0.1
  */

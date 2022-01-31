@@ -1,17 +1,21 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface aftk
+class aftk
+  implements View.OnClickListener
 {
-  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
+  aftk(aftj paramaftj) {}
   
-  public abstract void onTouchMoving(CommonRefreshLayout paramCommonRefreshLayout, int paramInt, MotionEvent paramMotionEvent);
-  
-  public abstract int onViewCompleteAfterRefresh(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    paramView = this.a.a(paramView);
+    this.a.a.b(paramView);
+    this.a.a.d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aftk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,272 +1,38 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Looper;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.manager.Manager;
+import NS_MINI_APP_MISC.MISC.StGetFriendPlayListV2Rsp;
+import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONObject;
 
 public class aseg
-  implements Manager
+  implements MiniAppCmdInterface
 {
-  public static final String[] a;
-  final asei a;
+  public aseg(IntimatePlayTogetherMiniGameCardView paramIntimatePlayTogetherMiniGameCardView, MISC.StGetFriendPlayListV2Rsp paramStGetFriendPlayListV2Rsp) {}
   
-  static
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "entry_setting", "entry_aio_video", "entry_file", "entry_chat_audio", "entry_chat_video", "entry_kandian_video" };
-  }
-  
-  public aseg(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Asei = new asei(paramQQAppInterface.getAccount());
-  }
-  
-  public static CharSequence a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
-  {
-    if (paramQQAppInterface != null) {}
-    for (;;)
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-      try
+      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
+      if (paramJSONObject != null)
       {
-        localObject1 = (aseg)paramQQAppInterface.getManager(221);
-        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-          if (((aseg)localObject1).a())
-          {
-            localObject1 = ((aseg)localObject1).a(paramInt);
-            i = 0;
-            j = i;
-            localObject2 = paramString;
-            if (localObject1 != null)
-            {
-              j = i;
-              localObject2 = paramString;
-            }
-          }
+        MiniAppController.preloadPackage(paramJSONObject);
+        paramJSONObject = new MiniAppConfig(paramJSONObject);
+        if (paramJSONObject.launchParam != null) {
+          paramJSONObject.launchParam.scene = 2064;
         }
+        MiniProgramLpReportDC04239.reportAsync(paramJSONObject, "page_view", "expo", null, String.valueOf(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.total.get()));
       }
-      catch (Exception paramQQAppInterface)
-      {
-        Object localObject1;
-        i = 0;
-      }
-      try
-      {
-        if (!TextUtils.isEmpty(((asej)localObject1).jdField_a_of_type_JavaLangString))
-        {
-          j = i;
-          localObject2 = paramString;
-          if (!TextUtils.isEmpty(((asej)localObject1).b))
-          {
-            j = i;
-            localObject2 = paramString;
-            if (((asej)localObject1).jdField_a_of_type_JavaLangString.contains(((asej)localObject1).b))
-            {
-              j = i;
-              localObject2 = paramString;
-              if (!TextUtils.isEmpty(((asej)localObject1).c))
-              {
-                String str = String.format("%s\n%s", new Object[] { paramString, ((asej)localObject1).jdField_a_of_type_JavaLangString });
-                localObject2 = new SpannableString(str);
-                j = str.indexOf(((asej)localObject1).b);
-                int k = ((asej)localObject1).b.length();
-                ((SpannableString)localObject2).setSpan(new aseh(paramContext, ((asej)localObject1).c, paramQQAppInterface.c(), paramInt), j, k + j, 17);
-                j = i;
-              }
-            }
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "getGuideEntry entry: %d retCode: %d context: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext }));
-        }
-        return localObject2;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        break label301;
-      }
-      localObject1 = null;
-      int i = 3;
-      continue;
-      localObject1 = ((aseg)localObject1).a(paramInt);
-      i = 0;
-      continue;
-      label301:
-      int j = i;
-      Object localObject2 = paramString;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("CUOpenCardGuideMng", 2, "getGuideEnty", paramQQAppInterface);
-        j = i;
-        localObject2 = paramString;
-        continue;
-        j = 0;
-        localObject2 = paramString;
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
-  {
-    int i = bbfj.a(BaseApplicationImpl.getApplication().getApplicationContext());
-    Object localObject1 = null;
-    long l2 = 0L;
-    long l1 = 0L;
-    bbwr localbbwr;
-    if (i != 1)
-    {
-      l2 = bbkb.e(paramQQAppInterface.getApp(), paramQQAppInterface.c());
-      l1 = System.currentTimeMillis();
-      localbbwr = bbwq.a(paramString2, true, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("CUOpenCardGuideMng", 2, "WL_DEBUG addCallGrayTip info.mPopUpType = " + localbbwr.jdField_a_of_type_Int + ", info.mGuideJumpUrl = " + localbbwr.jdField_a_of_type_JavaLangString);
-      }
-      paramString2 = (aseg)paramQQAppInterface.getManager(221);
-      if (paramString2 == null) {
-        break label620;
-      }
-      if (!paramBoolean) {
-        break label577;
-      }
-      paramString2 = paramString2.a(4);
-    }
-    for (;;)
-    {
-      String[] arrayOfString2;
-      String[] arrayOfString1;
-      Bundle localBundle;
-      Object localObject3;
-      Object localObject2;
-      if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString2.b)) && (!TextUtils.isEmpty(localbbwr.jdField_a_of_type_JavaLangString)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CUOpenCardGuideMng", 2, "WL_DEBUG addCallGrayTip entry.tip = " + paramString2.jdField_a_of_type_JavaLangString + ", entry.keyWord = " + paramString2.b);
-        }
-        arrayOfString2 = paramString2.jdField_a_of_type_JavaLangString.split("\\|");
-        arrayOfString1 = paramString2.b.split("\\|");
-        localBundle = null;
-        localObject3 = null;
-        localObject1 = localObject3;
-        localObject2 = localBundle;
-        if (arrayOfString2.length >= 2)
-        {
-          localObject1 = localObject3;
-          localObject2 = localBundle;
-          if (arrayOfString1.length >= 2)
-          {
-            if (localbbwr.jdField_a_of_type_Int != 2) {
-              break label588;
-            }
-            localObject2 = arrayOfString2[0];
-            localObject1 = arrayOfString1[0];
-          }
-        }
-      }
-      for (;;)
-      {
-        if ((localObject2 != null) && (localObject1 != null))
-        {
-          localBundle = new Bundle();
-          localBundle.putInt("key_action", 1);
-          localBundle.putString("textColor", "#40A0FF");
-          localBundle.putString("key_action_DATA", localbbwr.jdField_a_of_type_JavaLangString);
-          int j = ((String)localObject2).indexOf((String)localObject1);
-          int k = ((String)localObject1).length();
-          localObject1 = new aqvb(paramString1, paramQQAppInterface.c(), (String)localObject2, paramInt, -5020, 3145729, awzy.a());
-          localObject2 = new MessageForUniteGrayTip();
-          if (j >= 0) {
-            ((aqvb)localObject1).a(j, k + j, localBundle);
-          }
-          ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, (aqvb)localObject1);
-          aqvc.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject2);
-          axqy.b(null, "dc00898", "", "", "0X800812A", "0X800812A", 0, 0, "", "", "", "");
-          bbkb.e(paramQQAppInterface.getApp(), paramQQAppInterface.c(), System.currentTimeMillis());
-        }
-        localObject1 = paramString2;
-        if (QLog.isColorLevel()) {
-          QLog.i("CUOpenCardGuideMng", 2, "addCallGrayTip, friendUin= " + paramString1 + ",isVideoMsg=" + paramBoolean + ",netType=" + i + ",uinType=" + paramInt + ",lastAlertTime=" + l2 + ",currentTime=" + l1 + ",entry=" + localObject1);
-        }
-        return;
-        label577:
-        paramString2 = paramString2.a(3);
-        break;
-        label588:
-        localObject1 = localObject3;
-        localObject2 = localBundle;
-        if (localbbwr.jdField_a_of_type_Int == 3)
-        {
-          localObject2 = arrayOfString2[1];
-          localObject1 = arrayOfString1[1];
-        }
-      }
-      label620:
-      paramString2 = null;
-    }
-  }
-  
-  public asej a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "getGuideEntry entry: %d, isInit: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.jdField_a_of_type_Asei.jdField_a_of_type_Boolean) }));
-    }
-    this.jdField_a_of_type_Asei.a();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Asei.b)
-    {
-      localObject1 = localObject2;
-      if (paramInt >= 0)
-      {
-        localObject1 = localObject2;
-        if (paramInt < this.jdField_a_of_type_Asei.jdField_a_of_type_ArrayOfAsej.length) {
-          localObject1 = this.jdField_a_of_type_Asei.jdField_a_of_type_ArrayOfAsej[paramInt];
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Asei.a();
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "onGetConfig isInit: %b, config: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Asei.jdField_a_of_type_Boolean), paramString }));
-    }
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_Asei.jdField_a_of_type_JavaLangString, 4).edit();
-    paramString.putString("config_content", str);
-    paramString.commit();
-    this.jdField_a_of_type_Asei.a(str);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Asei.jdField_a_of_type_Boolean;
-  }
-  
-  public void onDestroy()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CUOpenCardGuideMng", 2, "onDestroy");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aseg
  * JD-Core Version:    0.7.0.1
  */

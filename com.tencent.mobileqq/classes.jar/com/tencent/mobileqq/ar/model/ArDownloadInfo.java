@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class ArDownloadInfo
-  extends auko
+  extends awbv
 {
   public int dailyRetryCount;
   public long dailyStartTime;
-  @aumc
+  @awdj
   public String md5;
   public int totalRetryCount;
   
@@ -25,7 +25,7 @@ public class ArDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

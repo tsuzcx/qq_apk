@@ -16,9 +16,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
-import auea;
-import aueg;
-import auep;
+import avve;
+import avvk;
+import avvt;
 
 public class GestureFrameLayout
   extends FrameLayout
@@ -47,7 +47,7 @@ public class GestureFrameLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a().a(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a(new auea(this));
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a(new avve(this));
   }
   
   protected static int a(int paramInt1, int paramInt2, int paramInt3)
@@ -100,11 +100,11 @@ public class GestureFrameLayout
   }
   
   @TargetApi(16)
-  public void a(auep paramauep)
+  public void a(avvt paramavvt)
   {
     if ((!isHardwareAccelerated()) || (this.jdField_a_of_type_AndroidViewView == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramauep.a());
+      this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramavvt.a());
       this.jdField_a_of_type_AndroidGraphicsMatrix.invert(this.b);
       if (a().a() != null) {
         a().a().a(this.b);
@@ -116,11 +116,11 @@ public class GestureFrameLayout
       return;
       this.jdField_a_of_type_AndroidViewView.setPivotX(0.0F);
       this.jdField_a_of_type_AndroidViewView.setPivotY(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setScaleX(paramauep.c());
-      this.jdField_a_of_type_AndroidViewView.setScaleY(paramauep.c());
-      this.jdField_a_of_type_AndroidViewView.setTranslationX(paramauep.a());
-      this.jdField_a_of_type_AndroidViewView.setTranslationY(paramauep.b());
-      this.c.set(paramauep.a());
+      this.jdField_a_of_type_AndroidViewView.setScaleX(paramavvt.c());
+      this.jdField_a_of_type_AndroidViewView.setScaleY(paramavvt.c());
+      this.jdField_a_of_type_AndroidViewView.setTranslationX(paramavvt.a());
+      this.jdField_a_of_type_AndroidViewView.setTranslationY(paramavvt.b());
+      this.c.set(paramavvt.a());
       this.c.invert(this.d);
     } while (a().a() == null);
     a().a().a(this.d);
@@ -225,7 +225,7 @@ public class GestureFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout
  * JD-Core Version:    0.7.0.1
  */

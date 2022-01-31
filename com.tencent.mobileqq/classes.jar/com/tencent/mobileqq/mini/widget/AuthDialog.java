@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bavw;
-import bbll;
+import bcuq;
+import bdkf;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +35,7 @@ public class AuthDialog
   
   public AuthDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755222);
+    super(paramContext, 2131755226);
     initView(paramContext);
   }
   
@@ -65,16 +65,16 @@ public class AuthDialog
   
   private void initView(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559248, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559292, null);
     setContentView(paramContext);
-    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131370206));
-    this.mMiniAppName = ((TextView)paramContext.findViewById(2131370219));
-    this.mAuthTitle = ((TextView)paramContext.findViewById(2131362881));
-    this.mUserIcon = ((ImageView)paramContext.findViewById(2131378763));
-    this.mUserName = ((TextView)paramContext.findViewById(2131378791));
-    this.mAuthDesc = ((TextView)paramContext.findViewById(2131362871));
-    this.mLeftBtn = ((TextView)paramContext.findViewById(2131369106));
-    this.mRightBtn = ((TextView)paramContext.findViewById(2131375272));
+    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131370474));
+    this.mMiniAppName = ((TextView)paramContext.findViewById(2131370487));
+    this.mAuthTitle = ((TextView)paramContext.findViewById(2131362916));
+    this.mUserIcon = ((ImageView)paramContext.findViewById(2131379381));
+    this.mUserName = ((TextView)paramContext.findViewById(2131379409));
+    this.mAuthDesc = ((TextView)paramContext.findViewById(2131362906));
+    this.mLeftBtn = ((TextView)paramContext.findViewById(2131369338));
+    this.mRightBtn = ((TextView)paramContext.findViewById(2131375754));
     setCanceledOnTouchOutside(true);
     paramContext = getWindow();
     if (paramContext != null) {
@@ -116,12 +116,12 @@ public class AuthDialog
   {
     this.mIsConfirm = false;
     this.mIsRefuse = false;
-    int i = bbll.b(26.0F);
+    int i = bdkf.b(26.0F);
     paramString1 = getUrlDrawable(paramString1, i);
     if (paramString1 != null)
     {
-      paramString1.setTag(bavw.b(i, i, bbll.b(5.0F)));
-      paramString1.setDecodeHandler(bavw.i);
+      paramString1.setTag(bcuq.b(i, i, bdkf.b(5.0F)));
+      paramString1.setDecodeHandler(bcuq.i);
       this.mMiniAppIcon.setImageDrawable(paramString1);
     }
     this.mMiniAppName.setText(paramString2);
@@ -153,11 +153,11 @@ public class AuthDialog
     {
       show();
       return;
-      paramString1 = getUrlDrawable(paramString4, bbll.b(40.0F));
+      paramString1 = getUrlDrawable(paramString4, bdkf.b(40.0F));
       if (paramString1 != null)
       {
-        paramString1.setTag(bavw.a(i, i));
-        paramString1.setDecodeHandler(bavw.a);
+        paramString1.setTag(bcuq.a(i, i));
+        paramString1.setDecodeHandler(bcuq.a);
         this.mUserIcon.setImageDrawable(paramString1);
       }
       this.mUserIcon.setVisibility(0);
@@ -184,7 +184,7 @@ public class AuthDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.AuthDialog
  * JD-Core Version:    0.7.0.1
  */

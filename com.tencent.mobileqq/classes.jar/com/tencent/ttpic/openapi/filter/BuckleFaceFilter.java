@@ -3,6 +3,7 @@ package com.tencent.ttpic.openapi.filter;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
+import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
@@ -27,6 +28,7 @@ public class BuckleFaceFilter
   private BuckleFaceItem mBuckleItem;
   private boolean needRender;
   private List<NormalVideoFilter> normalFilters;
+  private List<RenderItem> normalRenderItems;
   
   public BuckleFaceFilter(BuckleFaceItem paramBuckleFaceItem, String paramString)
   {
@@ -172,9 +174,9 @@ public class BuckleFaceFilter
     return this.needRender;
   }
   
-  public void setNormalFilters(List<NormalVideoFilter> paramList)
+  public void setNormalRenderItems(List<RenderItem> paramList)
   {
-    this.normalFilters = paramList;
+    this.normalRenderItems = paramList;
   }
   
   public void updatePreview(Object paramObject)
@@ -185,35 +187,39 @@ public class BuckleFaceFilter
     {
       paramObject = (PTDetectInfo)paramObject;
       int i;
-      if (!CollectionUtils.isEmpty(this.normalFilters))
+      if (!CollectionUtils.isEmpty(this.normalRenderItems))
       {
         bool = true;
         this.needRender = bool;
-        if (this.normalFilters == null) {
-          break label168;
+        if (this.normalRenderItems == null) {
+          break label196;
         }
-        Iterator localIterator = this.normalFilters.iterator();
+        Iterator localIterator = this.normalRenderItems.iterator();
         i = 0;
         j = i;
         if (!localIterator.hasNext()) {
-          break label170;
+          break label198;
         }
-        NormalVideoFilter localNormalVideoFilter = (NormalVideoFilter)localIterator.next();
-        localNormalVideoFilter.updatePreview(paramObject);
+        AEFilterI localAEFilterI = ((RenderItem)localIterator.next()).filter;
         j = i;
-        if (!localNormalVideoFilter.getStickerItem().id.equals("bgm"))
+        if ((localAEFilterI instanceof NormalVideoFilter))
         {
+          localAEFilterI.updatePreview(paramObject);
           j = i;
-          if (localNormalVideoFilter.getStickerItem().frameDuration == this.mBuckleItem.frameDuration)
+          if (!((NormalVideoFilter)localAEFilterI).getStickerItem().id.equals("bgm"))
           {
-            j = localNormalVideoFilter.getLastFrameIndex();
-            if ((!this.needRender) || (!localNormalVideoFilter.isRenderReady())) {
-              break label162;
+            j = i;
+            if (((NormalVideoFilter)localAEFilterI).getStickerItem().frameDuration == this.mBuckleItem.frameDuration)
+            {
+              j = ((NormalVideoFilter)localAEFilterI).getLastFrameIndex();
+              if ((!this.needRender) || (!((NormalVideoFilter)localAEFilterI).isRenderReady())) {
+                break label190;
+              }
             }
           }
         }
       }
-      label162:
+      label190:
       for (boolean bool = true;; bool = false)
       {
         this.needRender = bool;
@@ -222,9 +228,9 @@ public class BuckleFaceFilter
         bool = false;
         break;
       }
-      label168:
+      label196:
       j = 0;
-      label170:
+      label198:
       if ((this.needRender) && (!CollectionUtils.indexOutOfBounds(this.mBuckleItem.frameList, j))) {}
     }
     else

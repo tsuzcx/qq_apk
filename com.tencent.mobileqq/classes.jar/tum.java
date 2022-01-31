@@ -1,22 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class tum
-  extends AnimatorListenerAdapter
+class tum
+  implements View.OnClickListener
 {
-  public tum(StoryPlayerActivity paramStoryPlayerActivity) {}
+  tum(tuk paramtuk) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    StoryPlayerActivity.a(this.a);
-    StoryPlayerActivity.a(this.a, 0, 0);
+    tuk.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tum
  * JD-Core Version:    0.7.0.1
  */

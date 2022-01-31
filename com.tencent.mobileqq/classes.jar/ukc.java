@@ -1,125 +1,83 @@
-import android.graphics.Bitmap;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import java.io.File;
 
 public class ukc
-  extends BaseAdapter
+  extends ujt
 {
-  List<QQStoryUserInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public ukc(List<QQStoryUserInfo> paramList)
+  public ukc(@NonNull String[] paramArrayOfString)
   {
-    Collection localCollection;
-    if (localCollection != null)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(localCollection);
-      Collections.sort(this.jdField_a_of_type_JavaUtilList);
-    }
+    super(paramArrayOfString);
   }
   
-  public void a(List<QQStoryUserInfo> paramList)
+  protected void a(String[] paramArrayOfString, uju paramuju)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      Collections.sort(this.jdField_a_of_type_JavaUtilList);
-    }
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity).inflate(2131561363, null);
-      paramViewGroup = new ukd(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365824));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a.widthPixels - actj.a(175.0F, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getResources()));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365001));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
-      paramView.setTag(paramViewGroup);
-      localObject = (QQStoryUserInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((QQStoryUserInfo)localObject).uin;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((QQStoryUserInfo)localObject).nick);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(localObject);
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 2) {
-        break label258;
-      }
-      if (paramInt != 0) {
-        break label225;
-      }
-      paramView.setBackgroundResource(2130839185);
-    }
-    label258:
+    int k = paramArrayOfString.length;
+    int i = 0;
     for (;;)
     {
-      localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.app.a(((QQStoryUserInfo)localObject).uin, true);
-      if (localObject == null) {
-        break label315;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
-      return paramView;
-      paramViewGroup = (ukd)paramView.getTag();
-      break;
-      label225:
-      if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
+      if (i < k)
       {
-        paramView.setBackgroundResource(2130839176);
-      }
-      else
-      {
-        paramView.setBackgroundResource(2130839179);
-        continue;
-        if (this.jdField_a_of_type_JavaUtilList.size() == 2)
+        paramuju = new File(paramArrayOfString[i]).listFiles();
+        if (paramuju == null)
         {
-          if (paramInt == 0) {
-            paramView.setBackgroundResource(2130839185);
-          } else {
-            paramView.setBackgroundResource(2130839176);
-          }
+          i += 1;
         }
-        else if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-          paramView.setBackgroundResource(2130839176);
+        else
+        {
+          int m = paramuju.length;
+          int j = 0;
+          while (j < m)
+          {
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile = paramuju[j];
+              if (a(localFile)) {
+                a(localFile);
+              }
+              j += 1;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                wsv.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
+              }
+            }
+          }
         }
       }
     }
-    label315:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bbef.a());
-    return paramView;
+  }
+  
+  protected boolean a(File paramFile)
+  {
+    if (!paramFile.isDirectory()) {}
+    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
+      return false;
+    }
+    paramFile = paramFile.listFiles();
+    int j = paramFile.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label60;
+      }
+      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
+        break;
+      }
+      i += 1;
+    }
+    label60:
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukc
  * JD-Core Version:    0.7.0.1
  */

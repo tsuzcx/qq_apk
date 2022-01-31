@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import actj;
+import aekt;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
-import vzl;
+import xod;
 
 @TargetApi(14)
 public class FullScreenEmptyView
@@ -22,12 +22,12 @@ public class FullScreenEmptyView
   
   public int a()
   {
-    return vzl.d(super.getContext()) - actj.a(55.0F, super.getResources()) - vzl.e(super.getContext());
+    return xod.d(super.getContext()) - aekt.a(55.0F, super.getResources()) - xod.e(super.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.FullScreenEmptyView
  * JD-Core Version:    0.7.0.1
  */

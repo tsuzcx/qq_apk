@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bekj;
+import bgid;
 import com.tencent.qqmini.sdk.core.widget.NavigationBar;
 
 class AppBrandPage$11
   implements Runnable
 {
-  AppBrandPage$11(AppBrandPage paramAppBrandPage, bekj parambekj) {}
+  AppBrandPage$11(AppBrandPage paramAppBrandPage, bgid parambgid) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ class AppBrandPage$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,18 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class ujc
-  extends QQUIEventReceiver<uja, svv>
+  implements uha
 {
-  public ujc(@NonNull uja paramuja)
-  {
-    super(paramuja);
-  }
+  public String a;
   
-  public void a(@NonNull uja paramuja, @NonNull svv paramsvv)
+  public void copy(Object paramObject)
   {
-    if ((paramuja.a == null) || (paramsvv.a == null) || (!TextUtils.equals(paramuja.a.a, paramsvv.a.mVid))) {}
-    do
-    {
-      return;
-      paramuja.i();
-      paramuja = (uau)paramuja.a(uau.class);
-    } while (paramuja == null);
-    paramuja.d();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return svv.class;
+    if ((paramObject instanceof ujc)) {
+      this.a = ((ujc)paramObject).a;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujc
  * JD-Core Version:    0.7.0.1
  */

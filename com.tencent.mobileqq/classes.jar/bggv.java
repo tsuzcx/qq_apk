@@ -1,39 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qqconnect.wtlogin.Login;
 
-class bggv
-  extends akdn
+public class bggv
+  implements DialogInterface.OnDismissListener
 {
-  bggv(bggt parambggt, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
+  public bggv(Login paramLogin) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("isSuccess", paramBoolean);
-    ((Bundle)localObject).putString("uin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putAll((Bundle)localObject);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("publicAccount.followUin, isSuccess=").append(paramBoolean).append("; result=");
-      if (this.jdField_a_of_type_AndroidOsBundle == null) {
-        break label108;
-      }
-    }
-    label108:
-    for (paramString = this.jdField_a_of_type_AndroidOsBundle.toString();; paramString = "null")
-    {
-      QLog.d("BuscardPluginRemoteCommand", 2, paramString);
-      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
-      }
-      return;
-    }
+    Login.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bggv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,44 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class vxl
-  extends JobSegment<Integer, uvu>
+public class vxl
+  extends QQUIEventReceiver<vwo, uqw>
 {
-  private uvt a;
-  
-  public vxl(@NonNull uvt paramuvt)
+  public vxl(@NonNull vwo paramvwo)
   {
-    this.a = paramuvt;
+    super(paramvwo);
   }
   
-  protected void a(JobContext paramJobContext, Integer paramInteger)
+  public void a(@NonNull vwo paramvwo, @NonNull uqw paramuqw)
   {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((uvu)localObject).a.size() > 0) || (((uvu)localObject).b))
-    {
-      ved.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
-      return;
+    paramvwo.l();
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramvwo.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
     }
-    localObject = new tne();
-    ((tne)localObject).a = this.a.a();
-    syo.a().a((sys)localObject, new vxm(this, paramJobContext, paramInteger));
+    wsv.b(this.TAG, "delete onEvent");
+    if ((!paramuqw.jdField_a_of_type_Boolean) && (paramuqw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+    {
+      if (QLog.isColorLevel()) {
+        wsv.d(this.TAG, "删除失败：%s", new Object[] { paramuqw.a() });
+      }
+      QQToast.a(paramvwo.b(), 1, alpo.a(2131707259), 0).a();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uqw.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxl
  * JD-Core Version:    0.7.0.1
  */

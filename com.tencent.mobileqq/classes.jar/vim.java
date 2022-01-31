@@ -1,22 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import java.util.Comparator;
 
-class vim
-  implements bcpw
+public class vim
+  implements Comparator<QQUserUIItem>
 {
-  vim(vij paramvij) {}
+  public vim(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void a(bcpu parambcpu)
+  public int a(QQUserUIItem paramQQUserUIItem1, QQUserUIItem paramQQUserUIItem2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambcpu);
-    }
+    return allu.a(paramQQUserUIItem1.mComparePartInt, paramQQUserUIItem1.mCompareSpell, paramQQUserUIItem2.mComparePartInt, paramQQUserUIItem2.mCompareSpell);
   }
-  
-  public void a(bcpu parambcpu, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vim
  * JD-Core Version:    0.7.0.1
  */

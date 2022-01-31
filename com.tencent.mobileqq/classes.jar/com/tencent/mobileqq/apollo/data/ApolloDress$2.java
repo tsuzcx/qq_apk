@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.data;
 
-import ajya;
-import bcql;
+import alpo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class ApolloDress$2
   implements Runnable
@@ -11,12 +11,12 @@ public final class ApolloDress$2
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131700331) + this.a + " 装扮不足7件", 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131700700) + this.a + " 装扮不足7件", 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.data.ApolloDress.2
  * JD-Core Version:    0.7.0.1
  */

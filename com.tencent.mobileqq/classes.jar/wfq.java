@@ -1,38 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wfq
-  implements View.OnClickListener
+class wfq
+  implements upu
 {
-  public wfq(QRCardActivity paramQRCardActivity) {}
+  wfq(wfn paramwfn, CommentEntry paramCommentEntry, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Integer)) {
-      if (((Integer)localObject).intValue() != 0) {
-        break label101;
-      }
-    }
-    label101:
-    for (String str = (String)((TextView)paramView.findViewById(2131364691)).getText();; str = null)
-    {
-      if (((Integer)localObject).intValue() == 1)
-      {
-        this.a.a((String)this.a.a.d.get(this.a.h));
-        return;
-      }
-      QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
-      return;
+    a(-1, alpo.a(2131714790));
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131714787), 0).a();
+    wsv.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+  }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    if (!wfn.a(this.jdField_a_of_type_Wfn).get()) {
+      wfn.a(this.jdField_a_of_type_Wfn, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
     }
   }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wfq
  * JD-Core Version:    0.7.0.1
  */

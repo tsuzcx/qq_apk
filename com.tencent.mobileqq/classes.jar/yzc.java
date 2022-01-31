@@ -1,21 +1,29 @@
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.ShapeDrawable.ShaderFactory;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-final class yzc
-  extends ShapeDrawable.ShaderFactory
+class yzc
 {
-  yzc(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int[] paramArrayOfInt) {}
+  yzc(yzb paramyzb, String paramString) {}
   
-  public Shader resize(int paramInt1, int paramInt2)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    return new LinearGradient(paramInt1 * this.jdField_a_of_type_Float, paramInt2 * this.b, paramInt1 * this.c, paramInt2 * this.d, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP);
+    this.jdField_a_of_type_Yzb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    amkv.a(new yzd(this, "webview"));
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationPlugin", 2, "SosoInterface.startLocation");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzc
  * JD-Core Version:    0.7.0.1
  */

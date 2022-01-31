@@ -1,118 +1,93 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.ad.tangram.analysis.AdAnalysis;
-import com.tencent.ad.tangram.analysis.AdAnalysisAdapter;
-import com.tencent.ad.tangram.canvas.AdCanvas;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter;
-import com.tencent.ad.tangram.device.AdImei;
-import com.tencent.ad.tangram.device.AdImeiAdapter;
-import com.tencent.ad.tangram.dialog.AdProgressDialog;
-import com.tencent.ad.tangram.dialog.AdProgressDialogAdapter;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Adapter;
-import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.log.AdLogAdapter;
-import com.tencent.ad.tangram.mini.AdQQMINIProgram;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.ad.tangram.process.AdProcessManagerAdapter;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
-import com.tencent.ad.tangram.toast.AdToast;
-import com.tencent.ad.tangram.toast.AdToastAdapter;
-import com.tencent.ad.tangram.videoceiling.AdVideoCeiling;
-import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter;
-import com.tencent.ad.tangram.videoceiling.AdVideoSplice;
-import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
-import com.tencent.ad.tangram.web.AdBrowser;
-import com.tencent.ad.tangram.web.AdBrowserAdapter;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class yyt
+class yyt
+  extends BroadcastReceiver
 {
-  private static volatile yyt jdField_a_of_type_Yyt;
-  private AdAnalysisAdapter jdField_a_of_type_ComTencentAdTangramAnalysisAdAnalysisAdapter = new yry();
-  private AdCanvasAdapter jdField_a_of_type_ComTencentAdTangramCanvasAdCanvasAdapter = new ysa();
-  private AdImeiAdapter jdField_a_of_type_ComTencentAdTangramDeviceAdImeiAdapter = new ysb();
-  private AdProgressDialogAdapter jdField_a_of_type_ComTencentAdTangramDialogAdProgressDialogAdapter = new ysf();
-  private AdIPCManager.Adapter jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Adapter = new ysc();
-  private AdLogAdapter jdField_a_of_type_ComTencentAdTangramLogAdLogAdapter = new ysd();
-  private AdQQMINIProgramAdapter jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter = new ysg();
-  private AdProcessManagerAdapter jdField_a_of_type_ComTencentAdTangramProcessAdProcessManagerAdapter = new yse();
-  private AdThreadManagerAdapter jdField_a_of_type_ComTencentAdTangramThreadAdThreadManagerAdapter = new ysi();
-  private AdToastAdapter jdField_a_of_type_ComTencentAdTangramToastAdToastAdapter = new ysj();
-  private AdVideoCeilingAdapter jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoCeilingAdapter = new ysk();
-  private AdVideoSpliceAdapter jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter = new ysl();
-  private AdBrowserAdapter jdField_a_of_type_ComTencentAdTangramWebAdBrowserAdapter = new yrz();
-  private volatile boolean jdField_a_of_type_Boolean;
+  public int a;
+  public String a;
+  public String b;
   
-  public static yyt a()
+  private yyt(yyr paramyyr) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (jdField_a_of_type_Yyt == null) {}
-    try
-    {
-      if (jdField_a_of_type_Yyt == null) {
-        jdField_a_of_type_Yyt = new yyt();
+    int i = paramIntent.getIntExtra("bc_seq", -1);
+    if (i < 0) {
+      if (QLog.isColorLevel()) {
+        QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence = " + i + "| wrong seq");
       }
-      return jdField_a_of_type_Yyt;
     }
-    finally {}
-  }
-  
-  private void b(Context paramContext, yyu paramyyu)
-  {
-    AdIPCManager.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Adapter));
-    AdLog.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramLogAdLogAdapter));
-    AdAnalysis.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramAnalysisAdAnalysisAdapter));
-    AdProcessManager.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramProcessAdProcessManagerAdapter));
-    AdThreadManager.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramThreadAdThreadManagerAdapter));
-    AdBrowser.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramWebAdBrowserAdapter));
-    AdCanvas.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramCanvasAdCanvasAdapter));
-    AdVideoCeiling.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoCeilingAdapter));
-    AdQQMINIProgram.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter));
-    AdVideoSplice.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter));
-    AdToast.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramToastAdToastAdapter));
-    AdProgressDialog.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramDialogAdProgressDialogAdapter));
-    AdImei.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramDeviceAdImeiAdapter));
-  }
-  
-  private void c(Context paramContext, yyu paramyyu)
-  {
-    AdAnalysis.INSTANCE.init(paramContext);
-  }
-  
-  private void d(Context paramContext, yyu paramyyu)
-  {
-    yyp.a(paramContext);
-  }
-  
-  private void e(Context paramContext, yyu paramyyu)
-  {
-    yul.a().a(paramContext);
-  }
-  
-  public void a(Context paramContext, yyu paramyyu)
-  {
-    yxp.b("GdtManager", String.format("init %b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    try
+    byte[] arrayOfByte;
+    do
     {
-      if (this.jdField_a_of_type_Boolean) {
+      do
+      {
+        return;
+        if (i == this.jdField_a_of_type_Int) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence != seq | miss hit");
+      return;
+      paramContext = paramIntent.getExtras();
+      arrayOfByte = paramContext.getByteArray("bc_data");
+      i = paramIntent.getIntExtra("portal_type_key", -1);
+      if (arrayOfByte != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive data = null");
+    return;
+    if (QLog.isColorLevel())
+    {
+      if (i != 1009) {
+        break label286;
+      }
+      paramContext = "REQ_TYPE_GET_HEAD returned";
+    }
+    for (;;)
+    {
+      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceiver.onReceive | " + i + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + paramContext);
+      switch (i)
+      {
+      default: 
         return;
       }
+      this.jdField_a_of_type_Yyr.a(this.jdField_a_of_type_Int);
+      paramIntent = awiz.b(arrayOfByte);
+      paramContext = paramIntent;
+      if (paramIntent == null) {
+        paramContext = new JSONObject();
+      }
+      try
+      {
+        paramContext.put("errorCode", -1);
+        paramContext = paramContext.toString();
+        this.jdField_a_of_type_Yyr.a(this.jdField_a_of_type_JavaLangString, new String[] { paramContext });
+        return;
+        label286:
+        paramContext = paramContext.toString();
+      }
+      catch (JSONException paramContext)
+      {
+        for (;;)
+        {
+          paramContext.printStackTrace();
+          paramContext = paramIntent;
+        }
+      }
     }
-    finally {}
-    this.jdField_a_of_type_Boolean = true;
-    b(paramContext, paramyyu);
-    c(paramContext, paramyyu);
-    d(paramContext, paramyyu);
-    e(paramContext, paramyyu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yyt
  * JD-Core Version:    0.7.0.1
  */

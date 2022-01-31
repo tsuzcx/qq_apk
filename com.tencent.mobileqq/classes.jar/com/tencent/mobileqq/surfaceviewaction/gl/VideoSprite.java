@@ -10,17 +10,17 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.Surface;
-import aybh;
-import aycd;
-import aycf;
-import aycm;
-import aycn;
-import aycq;
-import aycr;
-import aycs;
-import aycu;
-import aycv;
-import aydb;
+import azze;
+import baaa;
+import baac;
+import baaj;
+import baak;
+import baao;
+import baap;
+import baaq;
+import baar;
+import baas;
+import baay;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -29,19 +29,19 @@ import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 
 public class VideoSprite
-  extends aycm
-  implements SurfaceTexture.OnFrameAvailableListener, aycf, aycn, Runnable
+  extends baaj
+  implements SurfaceTexture.OnFrameAvailableListener, baac, baak, Runnable
 {
   protected static final short[] b;
   protected SurfaceTexture a;
   public MediaPlayer a;
   public Handler a;
   protected Surface a;
-  public aycd a;
-  protected aycu a;
-  public aycv a;
+  public baaa a;
+  protected baaq a;
+  public baar a;
   protected int[] a;
-  protected aybh b;
+  protected azze b;
   public SpriteGLView b;
   protected String b;
   protected ShortBuffer b;
@@ -85,7 +85,7 @@ public class VideoSprite
     this.jdField_a_of_type_ArrayOfInt = new int[1];
     this.jdField_f_of_type_ArrayOfFloat = new float[16];
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_b_of_type_Aybh = new aybh(0.0F, 0.0F);
+    this.jdField_b_of_type_Azze = new azze(0.0F, 0.0F);
     this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_f_of_type_Boolean = paramBoolean;
@@ -96,10 +96,10 @@ public class VideoSprite
       this.jdField_d_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, this.jdField_h_of_type_Float, 0.0F, 0.0F, 1.0F, this.jdField_h_of_type_Float, 1.0F, 0.0F, 1.0F };
       this.jdField_e_of_type_ArrayOfFloat = new float[] { this.jdField_h_of_type_Float, 1.0F, 0.0F, 1.0F, this.jdField_h_of_type_Float, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
       this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new aycq(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new aycr(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new baao(this, null));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new baap(this, null));
       paramSpriteGLView.a(this);
-      paramSpriteGLView.b(new VideoSprite.3(this));
+      paramSpriteGLView.b(new VideoSprite.1(this));
       return;
     }
   }
@@ -175,7 +175,7 @@ public class VideoSprite
   
   protected String a()
   {
-    return aydb.a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), "troop" + File.separator + "shaders" + File.separator + "VertexShaderVideo.glsl");
+    return baay.a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), "troop" + File.separator + "shaders" + File.separator + "VertexShaderVideo.glsl");
   }
   
   public void a()
@@ -184,6 +184,8 @@ public class VideoSprite
     try
     {
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(null);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(null);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(null);
     }
     catch (Exception localException2)
     {
@@ -200,9 +202,9 @@ public class VideoSprite
             this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
             this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
             this.jdField_h_of_type_Boolean = false;
-            this.jdField_a_of_type_Aycd = null;
-            this.jdField_a_of_type_Aycu = null;
-            this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new VideoSprite.7(this));
+            this.jdField_a_of_type_Baaa = null;
+            this.jdField_a_of_type_Baaq = null;
+            this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new VideoSprite.4(this));
             this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(this);
             this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
             return;
@@ -264,18 +266,18 @@ public class VideoSprite
         }
       }
       f4 = paramInt1 / this.jdField_h_of_type_Float / f3 * f2 * f4 / paramInt2;
-      a(this.jdField_b_of_type_Aybh);
+      a(this.jdField_b_of_type_Azze);
       if (!this.jdField_c_of_type_Boolean) {
         break label356;
       }
-      f1 = this.jdField_b_of_type_Aybh.jdField_a_of_type_Float * b() / this.jdField_h_of_type_Float / paramInt1;
+      f1 = this.jdField_b_of_type_Azze.jdField_a_of_type_Float * b() / this.jdField_h_of_type_Float / paramInt1;
       label171:
       if (!this.jdField_c_of_type_Boolean) {
         break label385;
       }
     }
     label385:
-    for (float f3 = this.jdField_b_of_type_Aybh.jdField_b_of_type_Float * b() / this.jdField_h_of_type_Float / paramInt2;; f3 = (this.jdField_b_of_type_Aybh.jdField_b_of_type_Float * b() - paramInt2 / 2) / this.jdField_h_of_type_Float / paramInt2)
+    for (float f3 = this.jdField_b_of_type_Azze.jdField_b_of_type_Float * b() / this.jdField_h_of_type_Float / paramInt2;; f3 = (this.jdField_b_of_type_Azze.jdField_b_of_type_Float * b() - paramInt2 / 2) / this.jdField_h_of_type_Float / paramInt2)
     {
       this.jdField_c_of_type_ArrayOfFloat[0] = (-f2 + f1);
       this.jdField_c_of_type_ArrayOfFloat[1] = (f4 + f3);
@@ -297,24 +299,24 @@ public class VideoSprite
       f1 = this.jdField_e_of_type_Float * b() * (this.jdField_h_of_type_Float * f3) / paramInt1;
       break label62;
       label356:
-      f1 = (this.jdField_b_of_type_Aybh.jdField_a_of_type_Float * b() - paramInt1 / 2) / this.jdField_h_of_type_Float / paramInt1;
+      f1 = (this.jdField_b_of_type_Azze.jdField_a_of_type_Float * b() - paramInt1 / 2) / this.jdField_h_of_type_Float / paramInt1;
       break label171;
     }
   }
   
-  public void a(aycd paramaycd)
+  public void a(baaa parambaaa)
   {
-    this.jdField_a_of_type_Aycd = paramaycd;
+    this.jdField_a_of_type_Baaa = parambaaa;
   }
   
-  public void a(aycu paramaycu)
+  public void a(baaq parambaaq)
   {
-    this.jdField_a_of_type_Aycu = paramaycu;
+    this.jdField_a_of_type_Baaq = parambaaq;
   }
   
-  public void a(aycv paramaycv)
+  public void a(baar parambaar)
   {
-    this.jdField_a_of_type_Aycv = paramaycv;
+    this.jdField_a_of_type_Baar = parambaar;
   }
   
   public void a(String paramString, int paramInt)
@@ -322,7 +324,7 @@ public class VideoSprite
     if (QLog.isColorLevel()) {
       QLog.d("VideoSprite", 2, "playVideo with seek: " + paramString);
     }
-    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new VideoSprite.5(this, paramString, paramInt));
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new VideoSprite.2(this, paramString, paramInt));
   }
   
   public void a(boolean paramBoolean)
@@ -332,7 +334,7 @@ public class VideoSprite
   
   protected String b()
   {
-    return aydb.a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShaderVideo.glsl");
+    return baay.a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShaderVideo.glsl");
   }
   
   public void b()
@@ -423,7 +425,7 @@ public class VideoSprite
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 291	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_h_of_type_Boolean	Z
+    //   3: getfield 297	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_h_of_type_Boolean	Z
     //   6: ifne +6 -> 12
     //   9: aload_0
     //   10: monitorexit
@@ -431,44 +433,44 @@ public class VideoSprite
     //   12: aload_0
     //   13: monitorexit
     //   14: aload_0
-    //   15: getfield 412	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:m	I
-    //   18: invokestatic 415	android/opengl/GLES20:glUseProgram	(I)V
+    //   15: getfield 418	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:m	I
+    //   18: invokestatic 421	android/opengl/GLES20:glUseProgram	(I)V
     //   21: aload_0
     //   22: monitorenter
     //   23: aload_0
-    //   24: getfield 417	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_e_of_type_Boolean	Z
+    //   24: getfield 423	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_e_of_type_Boolean	Z
     //   27: istore 9
     //   29: iload 9
     //   31: ifeq +54 -> 85
     //   34: aload_0
-    //   35: getfield 213	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_a_of_type_AndroidGraphicsSurfaceTexture	Landroid/graphics/SurfaceTexture;
-    //   38: invokevirtual 420	android/graphics/SurfaceTexture:updateTexImage	()V
+    //   35: getfield 215	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_a_of_type_AndroidGraphicsSurfaceTexture	Landroid/graphics/SurfaceTexture;
+    //   38: invokevirtual 426	android/graphics/SurfaceTexture:updateTexImage	()V
     //   41: aload_0
-    //   42: getfield 213	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_a_of_type_AndroidGraphicsSurfaceTexture	Landroid/graphics/SurfaceTexture;
+    //   42: getfield 215	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_a_of_type_AndroidGraphicsSurfaceTexture	Landroid/graphics/SurfaceTexture;
     //   45: aload_0
     //   46: getfield 68	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_f_of_type_ArrayOfFloat	[F
-    //   49: invokevirtual 424	android/graphics/SurfaceTexture:getTransformMatrix	([F)V
+    //   49: invokevirtual 430	android/graphics/SurfaceTexture:getTransformMatrix	([F)V
     //   52: aload_0
     //   53: iconst_0
-    //   54: putfield 417	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_e_of_type_Boolean	Z
+    //   54: putfield 423	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_e_of_type_Boolean	Z
     //   57: aload_0
-    //   58: getfield 426	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_i_of_type_Boolean	Z
+    //   58: getfield 432	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_i_of_type_Boolean	Z
     //   61: ifeq +24 -> 85
     //   64: aload_0
-    //   65: getfield 295	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_a_of_type_Aycu	Laycu;
+    //   65: getfield 301	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_a_of_type_Baaq	Lbaaq;
     //   68: ifnull +17 -> 85
     //   71: aload_0
     //   72: iconst_0
-    //   73: putfield 426	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_i_of_type_Boolean	Z
+    //   73: putfield 432	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_i_of_type_Boolean	Z
     //   76: aload_0
-    //   77: getfield 295	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_a_of_type_Aycu	Laycu;
-    //   80: invokeinterface 430 1 0
+    //   77: getfield 301	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:jdField_a_of_type_Baaq	Lbaaq;
+    //   80: invokeinterface 436 1 0
     //   85: aload_0
     //   86: monitorexit
     //   87: aload_0
     //   88: iload_1
     //   89: iload_2
-    //   90: invokevirtual 432	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:b	(II)V
+    //   90: invokevirtual 438	com/tencent/mobileqq/surfaceviewaction/gl/VideoSprite:b	(II)V
     //   93: return
     //   94: astore 8
     //   96: aload_0
@@ -476,13 +478,13 @@ public class VideoSprite
     //   98: aload 8
     //   100: athrow
     //   101: astore 8
-    //   103: invokestatic 237	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   103: invokestatic 239	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   106: ifeq -54 -> 52
-    //   109: ldc 239
+    //   109: ldc 241
     //   111: iconst_2
     //   112: aload 8
-    //   114: invokestatic 243	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   117: invokestatic 265	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   114: invokestatic 245	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   117: invokestatic 267	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   120: goto -68 -> 52
     //   123: astore 8
     //   125: aload_0
@@ -539,7 +541,7 @@ public class VideoSprite
           {
             this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
             this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-            this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new aycs(this));
+            this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new baas(this, null));
             this.jdField_b_of_type_JavaLangString = paramString;
             return;
             localException1 = localException1;
@@ -561,8 +563,8 @@ public class VideoSprite
             if (QLog.isColorLevel()) {
               QLog.e("VideoSprite", 2, "playVideo Exception: " + QLog.getStackTraceString(localException3));
             }
-            if (this.jdField_a_of_type_Aycd != null) {
-              this.jdField_a_of_type_Aycd.a();
+            if (this.jdField_a_of_type_Baaa != null) {
+              this.jdField_a_of_type_Baaa.a();
             }
           }
         }
@@ -637,7 +639,7 @@ public class VideoSprite
     if (QLog.isColorLevel()) {
       QLog.d("VideoSprite", 2, "playVideo");
     }
-    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new VideoSprite.6(this));
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new VideoSprite.3(this));
   }
   
   protected void i()
@@ -646,7 +648,7 @@ public class VideoSprite
     String str2 = b();
     try
     {
-      this.m = aydb.a(str1, str2);
+      this.m = baay.a(str1, str2);
       GLES20.glUseProgram(this.m);
       this.jdField_g_of_type_Int = GLES20.glGetUniformLocation(this.m, "texture");
       this.jdField_h_of_type_Int = GLES20.glGetAttribLocation(this.m, "vTexCoordinate");
@@ -700,7 +702,7 @@ public class VideoSprite
   public void run()
   {
     int i2;
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_Aycv != null))
+    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_Baar != null))
     {
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 33L);
       i2 = 0;
@@ -708,7 +710,7 @@ public class VideoSprite
     try
     {
       i1 = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-      this.jdField_a_of_type_Aycv.a(i1);
+      this.jdField_a_of_type_Baar.a(i1);
       return;
     }
     catch (Exception localException)
@@ -727,7 +729,7 @@ public class VideoSprite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite
  * JD-Core Version:    0.7.0.1
  */

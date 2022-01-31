@@ -1,153 +1,43 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
 
 public class augh
+  extends auhr
 {
-  static final String jdField_a_of_type_JavaLangString = akyx.jdField_a_of_type_JavaLangString + "_Guide";
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private augk jdField_a_of_type_Augk;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  boolean jdField_a_of_type_Boolean = false;
-  
-  public augh(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131379508));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131379509));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131379507));
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Augk == null) || ((this.jdField_a_of_type_Augk != null) && (!this.jdField_a_of_type_Augk.a()));
-  }
+  public augh(MultiAIOFragment paramMultiAIOFragment) {}
   
   public void a(int paramInt)
   {
-    int i = 1;
-    if (a())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "showText, isDestroyed, textIndex[" + paramInt + "]");
-      return;
-    }
-    if (this.jdField_a_of_type_Augk == null)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "showText, mPromotionRes为null, textIndex[" + paramInt + "]");
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_Augk.a();
-    if (localObject != null)
-    {
-      localObject = ((akyn)localObject).a(paramInt);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      }
-    }
-    for (paramInt = i;; paramInt = 0)
-    {
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (paramInt != 0) {}
-      for (i = 0;; i = 8)
-      {
-        ((TextView)localObject).setVisibility(i);
-        if (paramInt == 0) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-        return;
-      }
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(this.jdField_a_of_type_AndroidWidgetImageView.getVisibility());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
     }
   }
   
-  public void a(akyn paramakyn)
+  public void b(int paramInt)
   {
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "loadRes, hadLoad[" + this.jdField_a_of_type_Boolean + "]");
-    if (a()) {}
-    while (this.jdField_a_of_type_Boolean) {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
+      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
+      return;
+    case 1: 
+      MultiAIOFragment.b(this.a);
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getResources();
-    int i = ((Resources)localObject).getDisplayMetrics().densityDpi;
-    int j = ((Resources)localObject).getDisplayMetrics().densityDpi;
-    localObject = akyt.b(paramakyn);
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "PromotionGuide, path is null");
-      return;
-    }
-    if (!new File((String)localObject).exists())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "PromotionGuide, file not exist");
-      return;
-    }
-    paramakyn = (String)localObject + "guide.json";
-    localObject = new augi(this, (String)localObject, i, j);
-    try
-    {
-      LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidAppActivity, new FileInputStream(paramakyn), (OnCompositionLoadedListener)localObject);
-      return;
-    }
-    catch (Exception paramakyn)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadWorldCupGuideAnimation failed. err = " + paramakyn.getMessage());
-    }
-  }
-  
-  public void a(augk paramaugk)
-  {
-    this.jdField_a_of_type_Augk = paramaugk;
-  }
-  
-  public void a(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      if (!paramBoolean) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(this.jdField_a_of_type_AndroidWidgetTextView.getVisibility());
+    MultiAIOFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augh
  * JD-Core Version:    0.7.0.1
  */

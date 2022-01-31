@@ -1,28 +1,39 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
 
 public class aqiw
-  implements CompoundButton.OnCheckedChangeListener
+  extends aqnl
 {
-  public aqiw(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  public aqiw(VerifyPwdView paramVerifyPwdView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(int paramInt, String paramString)
   {
-    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131695322), "qqsetting_auto_receive_pic_key", paramBoolean);
-    paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    armz.a(paramString);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
     {
-      axqy.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      VerifyPwdView.a(this.a);
       return;
     }
+    VerifyPwdView.b(this.a);
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    armz.a(paramString);
+    VerifyPwdView.c(this.a);
+  }
+  
+  protected void e()
+  {
+    VerifyPwdView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqiw
  * JD-Core Version:    0.7.0.1
  */

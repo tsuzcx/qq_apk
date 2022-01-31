@@ -1,49 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import java.util.List;
 
-public class bafm
+class bafm
+  implements bhqd
 {
-  private static bafm jdField_a_of_type_Bafm = new bafm();
-  String jdField_a_of_type_JavaLangString;
+  bafm(bafj parambafj, List paramList, bagp parambagp, bhpy parambhpy) {}
   
-  public static bafm a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return jdField_a_of_type_Bafm;
-  }
-  
-  public void a() {}
-  
-  public void a(BaseChatPie paramBaseChatPie) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, bafn parambafn) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return true;
-  }
-  
-  public void b() {}
-  
-  public boolean b(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return false;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView = (bagq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (bafj.a(this.jdField_a_of_type_Bafj) != null) {
+        bafj.a(this.jdField_a_of_type_Bafj).a(paramView.b(), this.jdField_a_of_type_Bagp);
+      }
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
     }
-    return paramString.equals(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bhpy.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bafm
  * JD-Core Version:    0.7.0.1
  */

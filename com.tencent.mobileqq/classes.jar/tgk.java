@@ -1,61 +1,45 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 
 public class tgk
-  extends syn
 {
-  public String a;
-  public ArrayList<tff> a;
-  public boolean a;
-  public boolean b;
-  public String c;
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public tgk(qqstory_service.RspMsgTabNodeList paramRspMsgTabNodeList)
+  private IMiniMsgUnreadCallback a()
   {
-    super(paramRspMsgTabNodeList.result);
-    this.jdField_a_of_type_JavaLangString = paramRspMsgTabNodeList.list_seq.get().toStringUtf8();
-    this.c = paramRspMsgTabNodeList.next_cookie.get().toStringUtf8();
-    if (paramRspMsgTabNodeList.is_animate.get() > 0) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.jdField_a_of_type_Boolean = bool1;
-      if (paramRspMsgTabNodeList.is_end.has())
-      {
-        bool1 = bool2;
-        if (paramRspMsgTabNodeList.is_end.get() != 1) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      this.b = bool1;
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRspMsgTabNodeList.node_list.size());
-      paramRspMsgTabNodeList = paramRspMsgTabNodeList.node_list.get().iterator();
-      while (paramRspMsgTabNodeList.hasNext())
-      {
-        qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramRspMsgTabNodeList.next();
-        tff localtff = new tff();
-        localtff.a(localMsgTabNodeInfo);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localtff);
-      }
-    }
+    return new tgl(this);
   }
   
-  public String toString()
+  public MiniMsgUserParam a()
   {
-    return "MsgTabNodeListResponse{shouldAnimate=" + this.jdField_a_of_type_Boolean + ", seq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cookie='" + this.c + '\'' + ", isEnd=" + this.b + ", nodeList=" + this.jdField_a_of_type_JavaUtilArrayList + "} " + super.toString();
+    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
+    localMiniMsgUserParam.businessName = 6;
+    localMiniMsgUserParam.accessType = 2;
+    localMiniMsgUserParam.filterMsgType = 0;
+    localMiniMsgUserParam.unreadCallback = a();
+    return localMiniMsgUserParam;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(MiniMsgUser paramMiniMsgUser)
+  {
+    if ((this.jdField_a_of_type_Int > 0) && (paramMiniMsgUser != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      paramMiniMsgUser.onClick(this.jdField_a_of_type_AndroidViewView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,86 +1,52 @@
-import com.tencent.av.ui.ConferenceFlyTicketActivity;
+import android.content.Context;
+import android.view.Display;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
 import com.tencent.qphone.base.util.QLog;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class mca
-  extends mui
+class mca
+  extends mef
 {
-  public mca(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity)
+  public mca(mbw parammbw, Context paramContext, int paramInt)
   {
-    SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+    super(paramContext, paramInt);
   }
   
-  public void a(mum parammum)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    String str3 = "";
-    if (parammum.a.jdField_a_of_type_Boolean) {}
-    for (;;)
+    int j = 0;
+    try
     {
-      try
+      i = (this.a.jdField_a_of_type_AndroidViewDisplay.getRotation() * 90 + paramInt) % 360;
+      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null) {
+        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.b(i);
+      }
+      if (this.a.jdField_a_of_type_Mcb != null) {
+        this.a.jdField_a_of_type_Mcb.a(paramInt, paramBoolean);
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils != null) {
+        this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(paramInt);
+      }
+      this.a.g = paramInt;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        String str1 = new String(parammum.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
-        if (str1 != null)
+        int i = j;
+        if (QLog.isColorLevel())
         {
-          try
-          {
-            JSONObject localJSONObject = new JSONObject(str1);
-            i = localJSONObject.getInt("retcode");
-            if (QLog.isColorLevel()) {
-              QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnAfterCreateDiscussionAsyncTask.onPostDownloadComplete : retcode = " + i);
-            }
-            str1 = str3;
-            if (localJSONObject.has("result"))
-            {
-              localJSONObject = localJSONObject.getJSONObject("result");
-              str1 = str3;
-              if (localJSONObject.has("result_code")) {
-                str1 = localJSONObject.getString("result_code");
-              }
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            Object localObject;
-            if (!QLog.isColorLevel()) {
-              break label368;
-            }
-            QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete : result_code = " + "" + ",retcode = " + -2);
-            str2 = "";
-            i = -2;
-            continue;
-            this.a.jdField_a_of_type_Ajvg.c(Long.parseLong(this.a.h));
-            this.a.a(1, 0);
-            return;
-          }
-          QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "OnAfterCreateDiscussionAsyncTask, IsSucc[" + parammum.a.jdField_a_of_type_Boolean + "], retcode[" + i + "], result_code[" + str1 + "], mDiscID[" + this.a.h + "]");
-          if ((i == 0) && (str1.equals("0")))
-          {
-            this.a.jdField_a_of_type_Ajvg.a(Long.parseLong(this.a.h), this.a.c);
-            this.a.a(this.a.h, this.a.c);
-            this.a.finish();
-            return;
-          }
+          QLog.e("SmallScreenVideoController", 2, "onVideoOrientationChanged e = " + localException);
+          i = j;
         }
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete :" + localException.toString());
-        }
-        localObject = null;
-        continue;
-      }
-      label368:
-      String str2 = "";
-      int i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mca
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,65 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class uum
-  extends wco
+class uum
+  implements vhe
 {
-  public static final String KEY = "MemoriesVideoListEmptySegment";
+  uum(uuk paramuuk, List paramList) {}
   
-  public uum(Context paramContext, int paramInt, String paramString)
+  public void a()
   {
-    super(paramContext);
+    QLog.e("Q.qqstory.msgTab.jobPullBasicInfo", 1, "pull video info failed");
+    uuk.b(this.jdField_a_of_type_Uuk, new ErrorMessage(102, "pull video info failed"));
   }
   
-  private void f()
+  public void a(ArrayList<StoryVideoItem> paramArrayList)
   {
-    wco localwco = a().a("MemoriesVideoListSegment");
-    if ((localwco != null) && (localwco.a() == 0))
+    if (paramArrayList == null)
     {
-      this.jdField_a_of_type_Boolean = true;
+      wsv.e("Q.qqstory.msgTab.jobPullBasicInfo", "video list empty !");
+      uuk.a(this.jdField_a_of_type_Uuk, new ErrorMessage(102, "video list empty !"));
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void R_()
-  {
-    f();
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return 1;
+    HashMap localHashMap = new HashMap();
+    paramArrayList = paramArrayList.iterator();
+    Object localObject;
+    while (paramArrayList.hasNext())
+    {
+      localObject = (StoryVideoItem)paramArrayList.next();
+      localHashMap.put(((StoryVideoItem)localObject).mVid, localObject);
     }
-    return 0;
-  }
-  
-  public View a(int paramInt, vap paramvap, ViewGroup paramViewGroup)
-  {
-    paramInt = vzl.d(this.jdField_a_of_type_AndroidContentContext);
-    int i = vzl.e(this.jdField_a_of_type_AndroidContentContext);
-    int j = vzl.a(this.jdField_a_of_type_AndroidContentContext, 225.0F);
-    int k = vzl.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
-    paramvap.a().getLayoutParams().height = (paramInt - i - j - k);
-    return paramvap.a();
-  }
-  
-  public String a()
-  {
-    return "MemoriesVideoListEmptySegment";
-  }
-  
-  public vap a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new vap(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561294, paramViewGroup, false));
-  }
-  
-  protected void c()
-  {
-    f();
+    paramArrayList = new ArrayList();
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    if (i < j)
+    {
+      localObject = (vhg)this.jdField_a_of_type_JavaUtilList.get(i);
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)localHashMap.get(((vhg)localObject).b);
+      if (localStoryVideoItem == null) {
+        wsv.e("Q.qqstory.msgTab.jobPullBasicInfo", "not found video!");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((vhg)localObject).a = localStoryVideoItem;
+        paramArrayList.add(localObject);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info succeed, info");
+    }
+    uuk.a(this.jdField_a_of_type_Uuk, paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uum
  * JD-Core Version:    0.7.0.1
  */

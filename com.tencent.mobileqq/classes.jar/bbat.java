@@ -1,22 +1,21 @@
-import android.animation.AnimatorSet;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import mqq.app.QQPermissionCallback;
 
-final class bbat
-  implements DialogInterface.OnDismissListener
+public class bbat
+  implements QQPermissionCallback
 {
-  bbat(AnimatorSet paramAnimatorSet) {}
+  public bbat(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.a.isRunning()) {
-      this.a.end();
-    }
+    this.a.a(this.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbat
  * JD-Core Version:    0.7.0.1
  */

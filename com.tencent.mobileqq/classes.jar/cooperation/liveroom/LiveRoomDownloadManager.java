@@ -1,9 +1,9 @@
 package cooperation.liveroom;
 
 import android.os.Bundle;
-import bbwu;
-import bbww;
-import bbwz;
+import bdvv;
+import bdvx;
+import bdwa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import java.io.File;
@@ -27,8 +27,8 @@ public class LiveRoomDownloadManager
   
   public void download(List<String> paramList, Map<String, File> paramMap, boolean paramBoolean, LiveRoomDownloadManager.DownloadCallback paramDownloadCallback)
   {
-    bbwz localbbwz = ((bbww)((BrowserAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web")).getManager(47)).a(1);
-    if (localbbwz != null)
+    bdwa localbdwa = ((bdvx)((BrowserAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web")).getManager(47)).a(1);
+    if (localbdwa != null)
     {
       Bundle localBundle = new Bundle();
       paramDownloadCallback = new LiveRoomDownloadManager.1(this, paramDownloadCallback);
@@ -38,22 +38,22 @@ public class LiveRoomDownloadManager
         while (paramList.hasNext())
         {
           Object localObject = (String)paramList.next();
-          localObject = new bbwu((String)localObject, (File)paramMap.get(localObject));
-          ((bbwu)localObject).j = true;
-          ((bbwu)localObject).p = false;
-          localbbwz.a((bbwu)localObject, paramDownloadCallback, localBundle);
+          localObject = new bdvv((String)localObject, (File)paramMap.get(localObject));
+          ((bdvv)localObject).j = true;
+          ((bdvv)localObject).p = false;
+          localbdwa.a((bdvv)localObject, paramDownloadCallback, localBundle);
         }
       }
-      paramList = new bbwu(paramList, paramMap, "LiveRoomDownloadManager");
+      paramList = new bdvv(paramList, paramMap, "LiveRoomDownloadManager");
       paramList.j = true;
       paramList.p = false;
-      localbbwz.a(paramList, paramDownloadCallback, localBundle);
+      localbdwa.a(paramList, paramDownloadCallback, localBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomDownloadManager
  * JD-Core Version:    0.7.0.1
  */

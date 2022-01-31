@@ -1,37 +1,54 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import eipc.EIPCResult;
+import java.util.List;
 
 class akri
-  implements akop
+  implements bdpz
 {
-  akri(akrh paramakrh, MessageRecord paramMessageRecord, boolean paramBoolean, msg_svc.PbSendMsgReq paramPbSendMsgReq) {}
+  akri(akrg paramakrg, List paramList, String paramString1, String paramString2, int paramInt) {}
   
-  public ToServiceMsg a()
+  public boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
   {
-    long l = System.currentTimeMillis();
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akrh.a.createToServiceMsg("MessageSvc.PbMultiMsgSend");
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    localToServiceMsg.extraData.putInt("msgtype", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype);
-    localToServiceMsg.extraData.putBoolean(axaf.h, this.jdField_a_of_type_Boolean);
-    localToServiceMsg.extraData.putLong("key_msg_info_time_start", l);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.setTimeout(15000L);
-    localToServiceMsg.setEnableFastResend(true);
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_JavaUtilList.remove(paramString);
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onGetBaseInfo uin:" + ApolloUtil.d(paramString));
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      int i = axau.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid);
-      QLog.d("Q.msg.UncommonMessageProcessor", 2, "sendBlessMsg,  mr_uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + " msgSeq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq + " mr_shMsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + " mr_msgUid:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid + " random:" + i + " isRedBagVideo:" + this.jdField_a_of_type_Boolean);
+      int i = akji.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
+      int j = akji.a(ApolloUtil.a(), this.b, true);
+      paramString = new Bundle();
+      paramString.putInt("selfUinStatus", i);
+      paramString.putInt("friendUinStatus", j);
+      paramString = EIPCResult.createSuccessResult(paramString);
+      this.jdField_a_of_type_Akrg.callbackResult(this.jdField_a_of_type_Int, paramString);
+      return true;
     }
-    return localToServiceMsg;
+    return false;
+  }
+  
+  public boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  {
+    this.jdField_a_of_type_JavaUtilList.remove(paramString);
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onDressUpdated uin:" + ApolloUtil.d(paramString));
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      int i = akji.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
+      int j = akji.a(ApolloUtil.a(), this.b, true);
+      paramString = new Bundle();
+      paramString.putInt("selfUinStatus", i);
+      paramString.putInt("friendUinStatus", j);
+      paramString = EIPCResult.createSuccessResult(paramString);
+      this.jdField_a_of_type_Akrg.callbackResult(this.jdField_a_of_type_Int, paramString);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akri
  * JD-Core Version:    0.7.0.1
  */

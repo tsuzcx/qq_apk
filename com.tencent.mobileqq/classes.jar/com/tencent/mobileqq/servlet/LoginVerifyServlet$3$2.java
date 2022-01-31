@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.servlet;
 
-import axce;
+import ayxi;
 
 class LoginVerifyServlet$3$2
   implements Runnable
@@ -19,7 +19,7 @@ class LoginVerifyServlet$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.LoginVerifyServlet.3.2
  * JD-Core Version:    0.7.0.1
  */

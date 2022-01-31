@@ -3,12 +3,12 @@ package cooperation.qzone.feed;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhdu;
+import bjfe;
 
 public class CertifiedFakeFeed
   implements Parcelable
 {
-  public static final Parcelable.Creator<CertifiedFakeFeed> CREATOR = new bhdu();
+  public static final Parcelable.Creator<CertifiedFakeFeed> CREATOR = new bjfe();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
@@ -115,7 +115,7 @@ public class CertifiedFakeFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.feed.CertifiedFakeFeed
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
+import android.widget.TextView;
+
 public class aefc
+  extends akee
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public aefa a;
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefc
  * JD-Core Version:    0.7.0.1
  */

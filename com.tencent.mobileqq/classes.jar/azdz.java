@@ -1,21 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.hardware.Camera;
+import android.view.TextureView.SurfaceTextureListener;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
+@TargetApi(14)
 public class azdz
-  implements DialogInterface.OnClickListener
+  extends PreviewContext
+  implements TextureView.SurfaceTextureListener, azdm
 {
-  public azdz(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azdz(azdf paramazdf, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    super(paramazdf, paramInt1, paramInt2);
   }
+  
+  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    getPreviewFrame(paramArrayOfByte, paramCamera);
+  }
+  
+  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    this.mCamera.a();
+    this.mCamera.a(0, paramInt1, paramInt2);
+    this.mCamera.a(paramSurfaceTexture, null, this, true);
+  }
+  
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  {
+    if (this.mCamera != null)
+    {
+      this.mCamera.b();
+      this.mCamera.b(true);
+      if (this.mActivtiyDestory) {
+        this.mCamera = null;
+      }
+    }
+    return true;
+  }
+  
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azdz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.tablequery;
 
-import aydg;
+import babd;
 
 public class TableQueryController$1
   implements Runnable
 {
-  public TableQueryController$1(aydg paramaydg) {}
+  public TableQueryController$1(babd parambabd) {}
   
   public void run()
   {
-    aydg.a(false);
+    babd.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.tablequery.TableQueryController.1
  * JD-Core Version:    0.7.0.1
  */

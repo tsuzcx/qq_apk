@@ -30,7 +30,7 @@ public class LabelViewItem
   
   private void a(Context paramContext)
   {
-    setBackgroundResource(2130844720);
+    setBackgroundResource(2130845084);
     setTextSize(2, 11.0F);
     setTextColor(Color.parseColor("#ffaf4efb"));
     int i = a(8.0F);
@@ -46,7 +46,7 @@ public class LabelViewItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem
  * JD-Core Version:    0.7.0.1
  */

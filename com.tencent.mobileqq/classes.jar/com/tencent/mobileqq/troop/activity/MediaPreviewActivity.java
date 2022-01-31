@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
-import actj;
-import ajsd;
+import aekt;
+import aljq;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -14,21 +14,20 @@ import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azds;
-import azdt;
-import azdu;
-import azdv;
-import azdw;
-import azdx;
-import azdy;
-import azdz;
-import azea;
-import baoh;
-import bbdj;
-import bbgu;
-import bcql;
-import bfpc;
-import bfpp;
+import bbbr;
+import bbbs;
+import bbbt;
+import bbbu;
+import bbbv;
+import bbbw;
+import bbbx;
+import bbby;
+import bbbz;
+import bcmu;
+import bdcd;
+import bdfq;
+import bhpy;
+import bhql;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
 import com.tencent.image.QQLiveImage;
@@ -38,12 +37,13 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.Gallery;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import lze;
+import mbt;
 
 public class MediaPreviewActivity
   extends BaseActivity
@@ -54,7 +54,7 @@ public class MediaPreviewActivity
   protected View a;
   protected FrameLayout a;
   public TextView a;
-  public baoh a;
+  public bcmu a;
   protected Gallery a;
   protected Runnable a;
   protected ArrayList<MediaPreviewInfo> a;
@@ -65,33 +65,33 @@ public class MediaPreviewActivity
   {
     if (this.jdField_a_of_type_ComTencentWidgetGallery == null)
     {
-      bcql.a(this, getString(2131693235), 0).a();
+      QQToast.a(this, getString(2131693336), 0).a();
       return;
     }
     Object localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
     if (localObject == null)
     {
-      bcql.a(this, getString(2131693235), 0).a();
+      QQToast.a(this, getString(2131693336), 0).a();
       return;
     }
-    localObject = ((ImageView)((View)localObject).findViewById(2131367776)).getDrawable();
+    localObject = ((ImageView)((View)localObject).findViewById(2131367910)).getDrawable();
     if ((localObject == null) || (!(localObject instanceof URLDrawable)))
     {
-      bcql.a(this, getString(2131693235), 0).a();
+      QQToast.a(this, getString(2131693336), 0).a();
       return;
     }
     localObject = (URLDrawable)localObject;
     if (((URLDrawable)localObject).getStatus() != 1)
     {
-      bcql.a(this, getString(2131693235), 0).a();
+      QQToast.a(this, getString(2131693336), 0).a();
       return;
     }
-    bfpc localbfpc = (bfpc)bfpp.a(this, null);
-    localbfpc.a(2131693384, 1);
-    localbfpc.a(2131693394, 1);
-    localbfpc.c(2131690596);
-    localbfpc.a(new azdx(this, localbfpc, (URLDrawable)localObject));
-    localbfpc.show();
+    bhpy localbhpy = (bhpy)bhql.a(this, null);
+    localbhpy.a(2131693485, 1);
+    localbhpy.a(2131693495, 1);
+    localbhpy.c(2131690648);
+    localbhpy.a(new bbbw(this, localbhpy, (URLDrawable)localObject));
+    localbhpy.show();
   }
   
   public void a()
@@ -108,7 +108,7 @@ public class MediaPreviewActivity
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new azdt(this));
+    localAnimationSet.setAnimationListener(new bbbs(this));
     if (this.jdField_a_of_type_JavaLangRunnable == null) {
       this.jdField_a_of_type_JavaLangRunnable = new MediaPreviewActivity.11(this);
     }
@@ -119,7 +119,7 @@ public class MediaPreviewActivity
   
   protected void a(Bundle paramBundle)
   {
-    Intent localIntent = actj.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = aekt.a(new Intent(this, SplashActivity.class), null);
     localIntent.putExtras(new Bundle(paramBundle));
     startActivity(localIntent);
     finish();
@@ -132,8 +132,8 @@ public class MediaPreviewActivity
     for (;;)
     {
       return;
-      new File(ajsd.bc).mkdirs();
-      str = ajsd.bc + Utils.Crc64String(paramURLDrawable.getURL().toString());
+      new File(aljq.bd).mkdirs();
+      str = aljq.bd + Utils.Crc64String(paramURLDrawable.getURL().toString());
       File localFile = new File(str);
       if (!localFile.exists()) {
         try
@@ -146,22 +146,22 @@ public class MediaPreviewActivity
         }
         catch (IOException paramURLDrawable)
         {
-          bcql.a(this, getString(2131695190), 0).a();
+          QQToast.a(this, getString(2131695348), 0).a();
           return;
         }
       }
     }
-    bbdj.a(this, 230).setTitle(getString(2131718848)).setMessage(getString(2131695183)).setPositiveButton(getString(2131718724), new azdz(this, paramURLDrawable, str)).setNegativeButton(getString(2131694648), new azdy(this)).show();
+    bdcd.a(this, 230).setTitle(getString(2131719323)).setMessage(getString(2131695341)).setPositiveButton(getString(2131719197), new bbby(this, paramURLDrawable, str)).setNegativeButton(getString(2131694804), new bbbx(this)).show();
   }
   
   public void a(URLDrawable paramURLDrawable, String paramString)
   {
-    new azdw(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new bbbv(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   public void b(URLDrawable paramURLDrawable, String paramString)
   {
-    new azea(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new bbbz(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   public boolean doOnCreate(Bundle arg1)
@@ -182,29 +182,29 @@ public class MediaPreviewActivity
         return false;
       }
     }
-    setContentView(2131559139);
+    setContentView(2131559182);
     ??? = getIntent().getExtras();
     this.jdField_a_of_type_Int = ???.getInt("index", -1);
     this.jdField_a_of_type_JavaUtilArrayList = ???.getParcelableArrayList("mediaInfoList");
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131375496));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131375984));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131366897));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367010));
     this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377032));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377552));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362998);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363034);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-    this.jdField_a_of_type_Baoh = new baoh(this, this.jdField_a_of_type_ComTencentWidgetGallery);
-    this.jdField_a_of_type_Baoh.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Baoh);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297009));
+    this.jdField_a_of_type_Bcmu = new bcmu(this, this.jdField_a_of_type_ComTencentWidgetGallery);
+    this.jdField_a_of_type_Bcmu.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Bcmu);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297026));
     this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new azds(this));
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new azdu(this));
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new azdv(this));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new bbbr(this));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new bbbt(this));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new bbbu(this));
     ThreadManager.post(new MediaPreviewActivity.4(this), 8, null, true);
     return true;
   }
@@ -251,8 +251,8 @@ public class MediaPreviewActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Baoh != null) {
-      this.jdField_a_of_type_Baoh.a();
+    if (this.jdField_a_of_type_Bcmu != null) {
+      this.jdField_a_of_type_Bcmu.a();
     }
     QQLiveImage.releaseAll(this);
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -265,7 +265,7 @@ public class MediaPreviewActivity
   public void onPause()
   {
     super.onPause();
-    lze.a(this, false);
+    mbt.a(this, false);
     AbstractGifImage.pauseAll();
     QQLiveImage.pauseAll(this);
     ApngImage.pauseAll();
@@ -274,7 +274,7 @@ public class MediaPreviewActivity
   public void onResume()
   {
     super.onResume();
-    lze.a(this, true);
+    mbt.a(this, true);
     AbstractGifImage.resumeAll();
     QQLiveImage.resumeAll(this);
     ApngImage.resumeAll();

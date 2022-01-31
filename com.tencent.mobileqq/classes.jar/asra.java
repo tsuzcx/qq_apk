@@ -1,48 +1,38 @@
-import android.os.SystemClock;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
 import com.tencent.qphone.base.util.QLog;
 
 public class asra
-  implements View.OnClickListener
+  implements asrd
 {
-  public asra(TabPageIndicator paramTabPageIndicator) {}
+  public asra(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
-    }
-    TabPageIndicator.a(this.a, SystemClock.uptimeMillis());
-    paramView = paramView.getTag();
-    if ((paramView instanceof asrd)) {}
-    for (paramView = (asrd)paramView;; paramView = null)
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_Asrg != null))
     {
-      if (paramView == null) {}
-      int j;
-      do
-      {
-        return;
-        int i = TabPageIndicator.a(this.a).a();
-        j = paramView.jdField_a_of_type_Int;
-        this.a.setCurrentItem(j);
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        TabPageIndicator.a(this.a).setCurrentItem(j);
-        if ((i == j) && (TabPageIndicator.a(this.a) != null)) {
-          TabPageIndicator.a(this.a).a(j);
-        }
-      } while (TabPageIndicator.a(this.a) == null);
-      TabPageIndicator.a(this.a).a(j);
+      this.a.jdField_a_of_type_Asrg.a(0, paramView);
       return;
+    }
+    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_Asrg != null)) {
+      this.a.jdField_a_of_type_Asrg.a(4, paramView);
+    }
+    for (;;)
+    {
+      QLog.d("HotVideoRelativeLayout", 2, "click base view");
+      return;
+      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_Asrg != null)) {
+        this.a.jdField_a_of_type_Asrg.a(1, paramView);
+      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_Asrg != null)) {
+        this.a.jdField_a_of_type_Asrg.a(2, paramView);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asra
  * JD-Core Version:    0.7.0.1
  */

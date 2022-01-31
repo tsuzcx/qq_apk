@@ -1,25 +1,27 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.EditText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class auiv
-  extends Editable.Factory
+  extends AnimatorListenerAdapter
 {
-  public auiv(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public auiv(MultiCardFragment paramMultiCardFragment) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramCharSequence instanceof ayku)) {
-      return (Editable)paramCharSequence;
-    }
-    return new ayku(paramCharSequence, 3, (int)(AutoReplyEditActivity.a(this.a).getTextSize() / AutoReplyEditActivity.a(this.a).getPaint().density));
+    super.onAnimationCancel(paramAnimator);
+    MultiCardFragment.c(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    MultiCardFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auiv
  * JD-Core Version:    0.7.0.1
  */

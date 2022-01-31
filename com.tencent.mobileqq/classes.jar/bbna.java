@@ -1,37 +1,17 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import org.json.JSONObject;
 
-public class bbna
+class bbna
+  implements bcgo
 {
-  public static boolean a()
-  {
-    return (a("meizu", null, null)) && (Build.VERSION.SDK_INT > 20);
-  }
+  bbna(bbmz parambbmz, bcic parambcic, int paramInt) {}
   
-  public static boolean a(String paramString1, String paramString2, String paramString3)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    boolean bool1 = false;
-    if (!TextUtils.isEmpty(paramString1)) {
-      bool1 = paramString1.equalsIgnoreCase(Build.MANUFACTURER);
+    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
+      this.jdField_a_of_type_Bcic.a(this.jdField_a_of_type_Bbmz.a.a.a, 0, this.jdField_a_of_type_Int);
     }
-    boolean bool2;
-    if (!bool1) {
-      bool2 = bool1;
-    }
-    do
-    {
-      do
-      {
-        return bool2;
-        if (!TextUtils.isEmpty(paramString2)) {
-          bool1 = paramString2.equalsIgnoreCase(Build.BRAND);
-        }
-        bool2 = bool1;
-      } while (!bool1);
-      bool2 = bool1;
-    } while (TextUtils.isEmpty(paramString3));
-    return paramString3.equalsIgnoreCase(Build.MODEL);
   }
 }
 

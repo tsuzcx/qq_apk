@@ -1,31 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
 
 public class uzg
-  implements syq<uzi, uzj>
+  extends ugz
 {
-  private WeakReference<uzf> a;
+  private vdn a;
+  public boolean a;
   
-  public uzg(uzf paramuzf)
+  public uzg(ErrorMessage paramErrorMessage)
   {
-    this.a = new WeakReference(paramuzf);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
   
-  public void a(@NonNull uzi paramuzi, @Nullable uzj paramuzj, @NonNull ErrorMessage paramErrorMessage)
+  public uzg(boolean paramBoolean)
   {
-    ved.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
-    uzf localuzf = (uzf)this.a.get();
-    if (localuzf == null) {
-      return;
-    }
-    localuzf.a(paramuzi, paramuzj, paramErrorMessage);
+    this(new ErrorMessage());
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public vdn a()
+  {
+    return this.jdField_a_of_type_Vdn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uzg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,484 +1,334 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.os.Handler;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt.2;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt.3;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import org.json.JSONException;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter.1;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter.2;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Timer;
+import java.util.TimerTask;
 import org.json.JSONObject;
 
 public class sfh
-  implements bbiy
 {
-  private static double jdField_a_of_type_Double;
-  private static int jdField_a_of_type_Int;
-  private static String c = "";
-  private static String d = "";
-  private static String e = "";
-  private static String f = "";
-  private static String g = "";
-  public Activity a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  bbly jdField_a_of_type_Bbly;
-  private bblz jdField_a_of_type_Bblz = new sfi(this);
-  bcdp jdField_a_of_type_Bcdp;
-  private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
-  private File jdField_a_of_type_JavaIoFile;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString = "PublicAccountH5AbilityForPtt";
-  private int jdField_b_of_type_Int = 60000;
-  private String jdField_b_of_type_JavaLangString;
+  public static String a;
+  private static volatile sfh jdField_a_of_type_Sfh;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  private static volatile int f;
+  public int a;
+  public long a;
+  final Object jdField_a_of_type_JavaLangObject = new Object();
+  Timer jdField_a_of_type_JavaUtilTimer = null;
+  TimerTask jdField_a_of_type_JavaUtilTimerTask = null;
+  public sfi a;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long = -1L;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int = 2;
+  private long jdField_c_of_type_Long;
+  private int d;
+  private int e;
+  private int g;
   
-  public sfh() {}
-  
-  public sfh(Activity paramActivity, String paramString, bcdp parambcdp)
+  static
   {
-    this.jdField_a_of_type_Bcdp = parambcdp;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    jdField_a_of_type_JavaLangString = "readinjoy_report";
+    jdField_b_of_type_JavaLangString = "readinjoy_entertime";
+    jdField_c_of_type_JavaLangString = "readinjoy_folderstatus";
+    jdField_d_of_type_JavaLangString = "readinjoy_kandianmode";
+    jdField_e_of_type_JavaLangString = "readinjoy_hearttime";
   }
   
-  public static String a()
+  public sfh()
   {
-    return c;
+    this.jdField_a_of_type_Sfi = null;
   }
   
-  public static int b()
+  public static sfh a()
   {
-    return jdField_a_of_type_Int;
-  }
-  
-  public static String b()
-  {
-    return d;
-  }
-  
-  public static int c()
-  {
-    if (jdField_a_of_type_Double != 0.0D) {
-      return QQRecorder.a(jdField_a_of_type_Double);
-    }
-    return 0;
-  }
-  
-  public static String c()
-  {
-    return e;
-  }
-  
-  public static void c(String paramString)
-  {
-    c = paramString;
-  }
-  
-  public static void d(String paramString)
-  {
-    g = paramString;
-  }
-  
-  private void j()
-  {
-    SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_AndroidAppActivity.getString(2131698555));
-    bbdj.a(this.jdField_a_of_type_AndroidAppActivity, ajya.a(2131708810), localSpannableString, 0, 2131720422, null, null, new sfj(this)).show();
-  }
-  
-  public int a()
-  {
-    JSONObject localJSONObject = new JSONObject();
+    if (jdField_a_of_type_Sfh == null) {}
     try
     {
-      localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", "startRecord");
-      if (this.jdField_a_of_type_Bcdp.a() != null) {
-        this.jdField_a_of_type_Bcdp.a().callJs(sfk.c, new String[] { localJSONObject.toString() });
+      if (jdField_a_of_type_Sfh == null) {
+        jdField_a_of_type_Sfh = new sfh();
       }
-      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, 0, "1", "", "", "");
-      i();
-      return 0;
+      return jdField_a_of_type_Sfh;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    finally {}
   }
   
-  public int a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  public static boolean a()
   {
-    return this.jdField_b_of_type_Int;
+    return jdField_a_of_type_Sfh != null;
   }
   
-  public String a(String paramString)
+  public static void b(int paramInt)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = g;
-    }
-    paramString = str.split("/");
-    str = paramString[(paramString.length - 1)];
-    paramString = "";
-    if (str.length() >= 21) {
-      paramString = str.substring(0, str.length() - 4);
-    }
-    return paramString;
+    f = paramInt;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString)
+  public long a(QQAppInterface paramQQAppInterface)
   {
-    axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+    long l = -1L;
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface, 0);
+    if (paramQQAppInterface != null) {
+      l = paramQQAppInterface.getLong(jdField_e_of_type_JavaLangString, -1L);
+    }
+    return l;
   }
   
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  public void a()
   {
-    if (a(ajsd.aW + "c2bPTT/"))
-    {
-      this.jdField_a_of_type_JavaIoFile = new File(paramString);
-      if (this.jdField_a_of_type_JavaIoFile.exists()) {
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_a_of_type_JavaIoFile);
-        this.jdField_a_of_type_JavaIoFileOutputStream.write("#!AMR\n".getBytes());
-        return;
-      }
-      catch (FileNotFoundException paramString)
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        paramString.printStackTrace();
-        return;
-      }
-      catch (IOException paramString)
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyGlobalReporter", 2, "report time is =" + this.jdField_b_of_type_Long + ",isWeishi:" + this.jdField_b_of_type_Boolean);
     }
-    paramString = new JSONObject();
-    try
-    {
-      paramString.put("retCode", -1);
-      paramString.put("msg", "no sdCard");
-      if (this.jdField_a_of_type_Bcdp.a() != null) {
-        this.jdField_a_of_type_Bcdp.a().callJs(sfk.c, new String[] { paramString.toString() });
-      }
-      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+    if (NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long < 3000L) {}
+    while (this.jdField_a_of_type_Boolean) {
       return;
     }
-    catch (JSONException paramRecorderParam)
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    try
+    {
+      localJSONObject = new JSONObject();
+      localJSONObject.put("folder_status", this.jdField_b_of_type_Int);
+      localJSONObject.put("kandian_mode", "" + this.jdField_a_of_type_Int);
+      localJSONObject.put("kandian_mode_new", ntd.a());
+      if (!pew.a()) {
+        break label262;
+      }
+      str = "1";
+      localJSONObject.put("is_requesting_articles", str);
+      localJSONObject.put("articles_request_type", pew.a());
+      if (!pew.b()) {
+        break label312;
+      }
+      i = 1;
+    }
+    catch (Exception localException)
     {
       for (;;)
       {
-        paramRecorderParam.printStackTrace();
+        JSONObject localJSONObject;
+        String str;
+        label262:
+        continue;
+        int i = 0;
       }
     }
-  }
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
-  {
-    jdField_a_of_type_Double = paramDouble;
-    paramString = new JSONObject();
+    localJSONObject.put("hit_preload_cache", i);
+    localJSONObject.put("os", 1);
+    localJSONObject.put("version", ntd.jdField_a_of_type_JavaLangString);
+    localJSONObject.put("channel_id", f);
+    if (this.jdField_b_of_type_Boolean) {
+      nrt.a(null, "", "0X8009296", "0X8009296", 0, 0, String.valueOf((NetConnInfoCenter.getServerTimeMillis() - this.jdField_b_of_type_Long) / 1000.0D), "", "", localJSONObject.toString(), false);
+    }
     for (;;)
     {
-      try
-      {
-        if (jdField_a_of_type_Double == this.jdField_b_of_type_Int)
-        {
-          paramString.put("retCode", 0);
-          paramString.put("msg", ajya.a(2131708790));
-          paramString.put("localId", d());
-          if (this.jdField_a_of_type_Bcdp.a() != null) {
-            this.jdField_a_of_type_Bcdp.a().callJs(sfk.g, new String[] { paramString.toString() });
-          }
-          axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2B", "0X8005D2B", 0, 0, "1", "", "", "");
-          return;
-        }
-        if (this.jdField_a_of_type_JavaIoFile.exists())
-        {
-          paramString.put("retCode", 0);
-          paramString.put("msg", ajya.a(2131708756) + d());
-          paramString.put("localId", d());
-          axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, 0, "1", "", "", "");
-          if (this.jdField_a_of_type_Bcdp.a() == null) {
-            break;
-          }
-          this.jdField_a_of_type_Bcdp.a().callJs(sfk.d, new String[] { paramString.toString() });
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      paramString.put("retCode", -1);
-      paramString.put("msg", ajya.a(2131708816));
-      paramString.put("localId", d());
-      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, -1, "1", "", "", "");
-    }
-  }
-  
-  public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
-  {
-    paramString1 = new JSONObject();
-    try
-    {
-      paramString1.put("retCode", -1);
-      paramString1.put("msg", "onRecorderError");
-      if (this.jdField_a_of_type_Bcdp.a() != null) {
-        this.jdField_a_of_type_Bcdp.a().callJs(sfk.c, new String[] { paramString1.toString() });
-      }
-      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      pew.a(false);
+      pew.i();
       return;
-    }
-    catch (JSONException paramRecorderParam)
-    {
-      for (;;)
-      {
-        paramRecorderParam.printStackTrace();
-      }
+      str = "0";
+      break;
+      nrt.a(null, "", "0X80089D1", "0X80089D1", 0, 0, String.valueOf((NetConnInfoCenter.getServerTimeMillis() - this.jdField_b_of_type_Long) / 1000.0D), "", "", localJSONObject.toString(), false);
     }
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
+  public void a(int paramInt)
   {
-    try
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  protected void a(QQAppInterface arg1)
+  {
+    c();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {
-        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, 0, paramInt1);
+      if (this.jdField_a_of_type_JavaUtilTimerTask == null) {
+        this.jdField_a_of_type_JavaUtilTimerTask = new ReadInJoyGlobalReporter.1(this);
+      }
+      if (this.jdField_a_of_type_JavaUtilTimer == null)
+      {
+        this.jdField_a_of_type_JavaUtilTimer = new Timer();
+        this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 1000L, 10000L);
       }
       return;
     }
-    catch (IOException paramString) {}
   }
   
-  public boolean a()
+  public void a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b());
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyGlobalReporter", 2, "setEnterTime(QQAppInterface app , long time) , time =" + paramLong + ",isWeishi:" + this.jdField_b_of_type_Boolean);
+    }
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = false;
+    c(paramQQAppInterface, paramLong, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    a(paramQQAppInterface);
+    d();
   }
   
-  boolean a(String paramString)
+  public void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
   {
-    paramString = new File(paramString);
-    return (paramString.exists()) || (paramString.mkdirs());
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyGlobalReporter", 2, "setEnterTime(QQAppInterface app , long time , int mode , int status) , time =" + paramLong + "   local time = " + System.currentTimeMillis() + ",isWeishi:" + this.jdField_b_of_type_Boolean);
+    }
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public String b(String paramString)
+  public void a(boolean paramBoolean)
   {
-    return ajsd.aW + "c2bPTT/" + paramString + ".amr";
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface, 0);
+    if (paramQQAppInterface != null)
+    {
+      this.jdField_c_of_type_Long = paramQQAppInterface.getLong(jdField_b_of_type_JavaLangString, -1L);
+      this.jdField_d_of_type_Int = paramQQAppInterface.getInt(jdField_d_of_type_JavaLangString, -1);
+      this.jdField_e_of_type_Int = paramQQAppInterface.getInt(jdField_c_of_type_JavaLangString, -1);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyGlobalReporter", 2, "Load report time from sharedpreferences, time =" + this.jdField_c_of_type_Long);
+    }
+    return this.jdField_c_of_type_Long != -1L;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(this.jdField_a_of_type_AndroidAppActivity);
-    }
-    f = ajsd.aW + "c2bPTT/" + ayqo.a() + ".amr";
-    bbcf.a(this.jdField_a_of_type_AndroidAppActivity, true);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b(f);
+    c();
+    e();
   }
   
-  public void b(String paramString)
+  public void b(QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Bbly == null) || (this.jdField_a_of_type_AndroidOsHandler == null) || ((this.jdField_a_of_type_Bbly != null) && (this.jdField_a_of_type_Bbly.a() != 3)))
-      {
-        this.jdField_a_of_type_AndroidOsHandler = new Handler();
-        this.jdField_a_of_type_Bbly = new bbly(paramString, this.jdField_a_of_type_AndroidOsHandler);
-      }
-      this.jdField_a_of_type_Bbly.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_Bbly.b();
-      this.jdField_a_of_type_Bbly.a(this.jdField_a_of_type_Bblz);
-      if (this.jdField_a_of_type_Bbly.a() == 1)
-      {
-        this.jdField_a_of_type_Bbly.c();
-        return;
-      }
-    } while (this.jdField_a_of_type_Bbly.a() != 3);
-    this.jdField_a_of_type_Bbly.d();
+    b();
+    c(paramQQAppInterface, -1L, -1, -1);
+    b(paramQQAppInterface, -1L);
+    jdField_a_of_type_Sfh = null;
+    this.jdField_b_of_type_Boolean = false;
   }
   
-  public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  public void b(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    d(paramString, paramRecorderParam);
-    paramString = new JSONObject();
     try
     {
-      paramString.put("retCode", -1);
-      paramString.put("msg", "onRecorderAbnormal");
-      if (this.jdField_a_of_type_Bcdp.a() != null) {
-        this.jdField_a_of_type_Bcdp.a().callJs(sfk.c, new String[] { paramString.toString() });
-      }
-      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+      paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface, 0).edit();
+      paramQQAppInterface.putLong(jdField_e_of_type_JavaLangString, paramLong);
+      paramQQAppInterface.commit();
       return;
     }
-    catch (JSONException paramRecorderParam)
+    catch (Exception paramQQAppInterface)
     {
-      for (;;)
-      {
-        paramRecorderParam.printStackTrace();
-      }
+      paramQQAppInterface.printStackTrace();
     }
   }
   
-  public boolean b()
+  public void b(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
   {
-    return (this.jdField_a_of_type_Bbly != null) && (this.jdField_a_of_type_Bbly.a() == 2);
+    a(paramQQAppInterface, paramLong, paramInt1, paramInt2);
+    if (a(paramQQAppInterface))
+    {
+      paramLong = a(paramQQAppInterface);
+      if (QLog.isColorLevel()) {
+        QLog.i("ReadInJoyGlobalReporter", 2, "Last heart time =" + paramLong + "  currect time=" + NetConnInfoCenter.getServerTimeMillis() + "  last entertime=" + this.jdField_b_of_type_Long);
+      }
+      if ((paramLong == -1L) || (Math.abs(NetConnInfoCenter.getServerTimeMillis() - paramLong) >= 15000L)) {
+        break label191;
+      }
+      this.jdField_b_of_type_Long = this.jdField_c_of_type_Long;
+      this.jdField_b_of_type_Int = this.jdField_e_of_type_Int;
+      this.jdField_a_of_type_Int = this.jdField_d_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.i("ReadInJoyGlobalReporter", 2, "quite error,set enter time =" + this.jdField_b_of_type_Long);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      a(paramQQAppInterface);
+      c(paramQQAppInterface, this.jdField_b_of_type_Long, paramInt1, paramInt2);
+      d();
+      return;
+      label191:
+      if (QLog.isColorLevel()) {
+        QLog.i("ReadInJoyGlobalReporter", 2, "report error , time is out ");
+      }
+    }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = null;
-    }
-    d();
-    bbcf.a(this.jdField_a_of_type_AndroidAppActivity, false);
-  }
-  
-  public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    d(paramString, paramRecorderParam);
-    paramString = new JSONObject();
-    try
-    {
-      paramString.put("retCode", -1);
-      paramString.put("msg", "onInitFailed");
-      if (this.jdField_a_of_type_Bcdp.a() != null) {
-        this.jdField_a_of_type_Bcdp.a().callJs(sfk.c, new String[] { paramString.toString() });
+      if (this.jdField_a_of_type_JavaUtilTimerTask != null)
+      {
+        this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+        this.jdField_a_of_type_JavaUtilTimerTask = null;
       }
-      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      if (this.jdField_a_of_type_JavaUtilTimer != null)
+      {
+        this.jdField_a_of_type_JavaUtilTimer.cancel();
+        this.jdField_a_of_type_JavaUtilTimer = null;
+      }
       return;
     }
-    catch (JSONException paramRecorderParam)
-    {
-      for (;;)
-      {
-        paramRecorderParam.printStackTrace();
-      }
-    }
   }
   
-  public String d()
+  public void c(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
   {
-    Object localObject1 = f.split("/");
-    Object localObject2 = localObject1[(localObject1.length - 1)];
-    localObject1 = "";
-    if (localObject2.length() >= 21) {
-      localObject1 = localObject2.substring(0, localObject2.length() - 4);
-    }
-    return localObject1;
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface, 0).edit();
+    paramQQAppInterface.putLong(jdField_b_of_type_JavaLangString, paramLong);
+    paramQQAppInterface.putInt(jdField_c_of_type_JavaLangString, paramInt2);
+    paramQQAppInterface.putInt(jdField_d_of_type_JavaLangString, paramInt1);
+    paramQQAppInterface.commit();
   }
   
   public void d()
   {
-    try
+    if (this.jdField_a_of_type_Sfi == null) {
+      this.jdField_a_of_type_Sfi = new sfi(this, null);
+    }
+    ReadInJoyGlobalReporter.2 local2 = new ReadInJoyGlobalReporter.2(this);
+    if (AppSetting.e)
     {
-      if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-      }
-      label14:
-      this.jdField_a_of_type_JavaIoFileOutputStream = null;
+      ThreadManager.executeOnSubThread(local2, true);
       return;
     }
-    catch (IOException localIOException)
-    {
-      break label14;
-    }
-  }
-  
-  public void d(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new PublicAccountH5AbilityForPtt.3(this));
+    local2.run();
   }
   
   public void e()
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_Bbly != null)
+    ReadInJoyGlobalReporter.3 local3 = new ReadInJoyGlobalReporter.3(this);
+    if (AppSetting.e)
     {
-      this.jdField_a_of_type_Bbly.f();
-      this.jdField_a_of_type_Bbly = null;
-      this.jdField_a_of_type_AndroidOsHandler = null;
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", ajya.a(2131708759) + d() + ajya.a(2131708827));
-      localJSONObject.put("localId", d());
-      if (this.jdField_a_of_type_Bcdp.a() != null) {
-        this.jdField_a_of_type_Bcdp.a().callJs(sfk.f, new String[] { localJSONObject.toString() });
-      }
+      ThreadManager.executeOnSubThread(local3, true);
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
-  
-  public void f()
-  {
-    if (b()) {
-      e();
-    }
-    c();
-  }
-  
-  public void g()
-  {
-    if ((this.jdField_a_of_type_Bbly != null) && (this.jdField_a_of_type_Bbly.a() == 2)) {
-      this.jdField_a_of_type_Bbly.e();
-    }
-  }
-  
-  public void h()
-  {
-    try
-    {
-      File localFile = new File(f);
-      if (localFile.exists())
-      {
-        d = bfko.a(localFile);
-        jdField_a_of_type_Int = (int)localFile.length();
-        e = d;
-      }
-      return;
-    }
-    catch (IOException localIOException) {}
-  }
-  
-  public void i()
-  {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new PublicAccountH5AbilityForPtt.2(this));
+    local3.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,22 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import java.util.ArrayList;
+import com.tencent.gdtad.aditem.GdtAd;
 
-public class aaiy
-  implements View.OnClickListener
+class aaiy
+  implements aanz
 {
-  public aaiy(AssistantSettingActivity paramAssistantSettingActivity, ArrayList paramArrayList) {}
+  aaiy(aaiu paramaaiu) {}
   
-  public void onClick(View paramView)
+  public void reportImpression(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
-    paramView.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(paramView);
+    paramView = paramView.getTag(2131379911);
+    if ((paramView != null) && ((paramView instanceof GdtAd))) {
+      aaob.a(((GdtAd)paramView).getUrlForImpression());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaiy
  * JD-Core Version:    0.7.0.1
  */

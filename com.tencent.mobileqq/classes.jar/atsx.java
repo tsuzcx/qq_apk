@@ -1,16 +1,25 @@
-class atsx
-  implements bfpj
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+
+public class atsx
+  extends Handler
 {
-  atsx(atsc paramatsc) {}
-  
-  public void onDismiss()
+  public atsx(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
   {
-    atsc.a(this.a, this.a.c, false);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.requestLayout();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsx
  * JD-Core Version:    0.7.0.1
  */

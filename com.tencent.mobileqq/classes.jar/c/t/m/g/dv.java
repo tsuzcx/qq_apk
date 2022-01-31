@@ -1,177 +1,63 @@
 package c.t.m.g;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build.VERSION;
-import android.util.Pair;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public final class dv
-  implements ev
 {
-  private byte[] a = new byte[512];
+  public float a = -1.0F;
+  public float b;
+  public long c = -1L;
+  public double d = -1.0D;
+  public double e = -1.0D;
+  public double f = -1.0D;
+  public double g;
+  public double h = 0.0D;
+  public double i = 0.0D;
   
-  public static SharedPreferences a(String paramString)
+  @Deprecated
+  @SuppressLint({"MissingPermission"})
+  public static dv.a a(Context paramContext)
   {
-    String str = do.a().getPackageName();
-    int i = 0;
-    if ("com.tencent.mobileqq".equals(str)) {
-      i = 4;
-    }
-    return do.a().getSharedPreferences(paramString, i);
-  }
-  
-  public static void a(SharedPreferences paramSharedPreferences, String paramString, Object paramObject)
-  {
-    paramSharedPreferences = paramSharedPreferences.edit();
-    if ((paramObject instanceof String)) {
-      paramSharedPreferences.putString(paramString, (String)paramObject);
-    }
-    while (Build.VERSION.SDK_INT >= 9)
+    try
     {
-      paramSharedPreferences.apply();
-      return;
-      if ((paramObject instanceof Integer)) {
-        paramSharedPreferences.putInt(paramString, ((Integer)paramObject).intValue());
-      } else if ((paramObject instanceof Boolean)) {
-        paramSharedPreferences.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
-      } else if ((paramObject instanceof Float)) {
-        paramSharedPreferences.putFloat(paramString, ((Float)paramObject).floatValue());
-      } else if ((paramObject instanceof Long)) {
-        paramSharedPreferences.putLong(paramString, ((Long)paramObject).longValue());
-      } else {
-        paramSharedPreferences.putString(paramString, paramObject.toString());
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      if (localConnectivityManager == null) {}
+      for (paramContext = null; (paramContext == null) || (!paramContext.isConnected()); paramContext = localConnectivityManager.getActiveNetworkInfo()) {
+        return dv.a.a;
       }
-    }
-    paramSharedPreferences.commit();
-  }
-  
-  public static void a(String paramString1, String paramString2, Object paramObject)
-  {
-    a(a(paramString1), paramString2, paramObject);
-  }
-  
-  private byte[] a(InputStream paramInputStream)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(256);
-    for (;;)
-    {
-      int i = paramInputStream.read(this.a);
-      if (i == -1) {
-        break;
-      }
-      localByteArrayOutputStream.write(this.a, 0, i);
-    }
-    paramInputStream.close();
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  public static Object b(SharedPreferences paramSharedPreferences, String paramString, Object paramObject)
-  {
-    if ((paramObject instanceof String)) {
-      return paramSharedPreferences.getString(paramString, (String)paramObject);
-    }
-    if ((paramObject instanceof Integer)) {
-      return Integer.valueOf(paramSharedPreferences.getInt(paramString, ((Integer)paramObject).intValue()));
-    }
-    if ((paramObject instanceof Boolean)) {
-      return Boolean.valueOf(paramSharedPreferences.getBoolean(paramString, ((Boolean)paramObject).booleanValue()));
-    }
-    if ((paramObject instanceof Float)) {
-      return Float.valueOf(paramSharedPreferences.getFloat(paramString, ((Float)paramObject).floatValue()));
-    }
-    if ((paramObject instanceof Long)) {
-      return Long.valueOf(paramSharedPreferences.getLong(paramString, ((Long)paramObject).longValue()));
-    }
-    return null;
-  }
-  
-  public static Object b(String paramString1, String paramString2, Object paramObject)
-  {
-    return b(a(paramString1), paramString2, paramObject);
-  }
-  
-  private static String b(String paramString)
-  {
-    String str2 = "GBK";
-    String str1 = str2;
-    int j;
-    int i;
-    if (paramString != null)
-    {
-      paramString = paramString.split(";");
-      j = paramString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      str1 = str2;
-      if (i < j)
+      if (Build.VERSION.SDK_INT >= 16)
       {
-        str1 = paramString[i].trim();
-        int k = str1.indexOf("charset=");
-        if (-1 != k) {
-          str1 = str1.substring(k + 8, str1.length());
+        if (localConnectivityManager.isActiveNetworkMetered()) {
+          return dv.a.b;
         }
+        return dv.a.c;
       }
-      else
-      {
-        return str1;
+      if (1 == paramContext.getType()) {
+        return dv.a.c;
       }
-      i += 1;
+      paramContext = dv.a.b;
+      return paramContext;
     }
+    catch (Throwable paramContext) {}
+    return dv.a.a;
   }
   
-  public final Pair<byte[], String> a(String paramString, byte[] paramArrayOfByte)
+  public final void a()
   {
-    paramString = (HttpURLConnection)new URL(paramString).openConnection();
-    for (;;)
-    {
-      try
-      {
-        paramString.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
-        paramString.setRequestMethod("POST");
-        paramString.setConnectTimeout(10000);
-        paramString.setDoOutput(true);
-        paramString.setFixedLengthStreamingMode(paramArrayOfByte.length);
-        localObject = paramString.getOutputStream();
-        ((OutputStream)localObject).write(paramArrayOfByte);
-        ((OutputStream)localObject).flush();
-        ((OutputStream)localObject).close();
-        int i = paramString.getResponseCode();
-        switch (i)
-        {
-        case 200: 
-          throw new IOException("net sdk error: ".concat(String.valueOf(i)));
-        }
-      }
-      finally
-      {
-        paramString.disconnect();
-      }
-      paramArrayOfByte = b(paramString.getHeaderField("content-type"));
-      Object localObject = a(paramString.getInputStream());
-      if ((localObject == null) || (localObject.length == 0))
-      {
-        paramArrayOfByte = Pair.create("{}".getBytes(), "utf-8");
-        paramString.disconnect();
-        return paramArrayOfByte;
-      }
-      paramArrayOfByte = Pair.create(localObject, paramArrayOfByte);
-      paramString.disconnect();
-      return paramArrayOfByte;
-    }
+    this.f = -1.0D;
+    this.a = -1.0F;
+    this.c = -1L;
+    this.h = 0.0D;
+    this.i = 0.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dv
  * JD-Core Version:    0.7.0.1
  */

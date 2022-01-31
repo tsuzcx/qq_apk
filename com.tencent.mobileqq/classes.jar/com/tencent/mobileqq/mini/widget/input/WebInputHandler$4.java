@@ -1,47 +1,53 @@
 package com.tencent.mobileqq.mini.widget.input;
 
-import android.animation.ObjectAnimator;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
-import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class WebInputHandler$4
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements TextView.OnEditorActionListener
 {
-  WebInputHandler$4(WebInputHandler paramWebInputHandler, WebEditText paramWebEditText) {}
+  WebInputHandler$4(WebInputHandler paramWebInputHandler, WebEditText paramWebEditText, PageWebview paramPageWebview) {}
   
-  public void onGlobalLayout()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((this.val$webEditText.isFocused()) && (WebInputHandler.access$200(this.this$0)))
+    boolean bool = true;
+    switch (paramInt)
     {
-      localObject = new int[2];
-      this.val$webEditText.getLocationOnScreen((int[])localObject);
-      i = localObject[1];
-      i = DisplayUtil.getRealHeight(this.val$webEditText.getContext()) - (i + this.val$webEditText.getHeight()) - this.val$webEditText.getMarginBottom();
-      if ((WebInputHandler.access$300(this.this$0) > i) && (this.val$webEditText.isAdjustPosition()) && (WebInputHandler.access$200(this.this$0)) && (WebInputHandler.access$400(this.this$0) != null) && (WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer() != null))
+    default: 
+      bool = false;
+    }
+    for (;;)
+    {
+      return bool;
+      try
       {
-        localObject = ObjectAnimator.ofFloat(WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer(), "translationY", new float[] { 0.0F, -(WebInputHandler.access$300(this.this$0) - i) });
-        ((ObjectAnimator)localObject).setDuration(200L);
-        ((ObjectAnimator)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-        ((ObjectAnimator)localObject).start();
+        paramTextView = new JSONObject();
+        paramTextView.put("inputId", WebInputHandler.access$100(this.this$0));
+        paramTextView.put("value", this.val$webEditText.getText().toString());
+        this.val$pageWebview.evaluateSubcribeJS("onKeyboardConfirm", paramTextView.toString(), this.val$pageWebview.pageWebviewId);
+        if (this.val$webEditText.isConfirmHold()) {
+          continue;
+        }
+        this.this$0.hideCurrentInput(true);
+        return true;
+      }
+      catch (JSONException paramTextView)
+      {
+        for (;;)
+        {
+          paramTextView.printStackTrace();
+        }
       }
     }
-    while ((WebInputHandler.access$200(this.this$0)) || (WebInputHandler.access$400(this.this$0) == null) || (WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer() == null))
-    {
-      int i;
-      return;
-    }
-    Object localObject = ObjectAnimator.ofFloat(WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer(), "translationY", new float[] { WebInputHandler.access$400(this.this$0).getCurrentWebviewContainer().getTranslationY(), 0.0F });
-    ((ObjectAnimator)localObject).setDuration(200L);
-    ((ObjectAnimator)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-    ((ObjectAnimator)localObject).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.input.WebInputHandler.4
  * JD-Core Version:    0.7.0.1
  */

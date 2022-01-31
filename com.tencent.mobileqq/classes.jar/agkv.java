@@ -1,25 +1,28 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class agkv
-  implements MessageQueue.IdleHandler
+class agkv
+  implements View.OnClickListener
 {
-  public agkv(AlbumListActivity paramAlbumListActivity, int paramInt1, int paramInt2) {}
+  agkv(agkt paramagkt, String paramString) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListActivity", 2, "load Scroll Position,index:" + this.jdField_a_of_type_Int + " top:" + this.b);
+    if ((agkt.a(this.jdField_a_of_type_Agkt) != null) && (agkt.a(this.jdField_a_of_type_Agkt).isShowing())) {
+      agkt.a(this.jdField_a_of_type_Agkt).dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
-    return false;
+    if ((this.jdField_a_of_type_Agkt.a != null) && (this.jdField_a_of_type_Agkt.a.isShowing()))
+    {
+      this.jdField_a_of_type_Agkt.a.dismiss();
+      this.jdField_a_of_type_Agkt.a = null;
+    }
+    agkt.a(this.jdField_a_of_type_Agkt, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkv
  * JD-Core Version:    0.7.0.1
  */

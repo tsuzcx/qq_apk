@@ -1,30 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
-public class tzl
-  extends QQUIEventReceiver<tzj, tkm>
+class tzl
+  implements yvn<FeedCloudRead.StGetFeedListRsp>
 {
-  public tzl(@NonNull tzj paramtzj)
-  {
-    super(paramtzj);
-  }
+  tzl(tzk paramtzk, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
   
-  public void a(@NonNull tzj paramtzj, @NonNull tkm paramtkm)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    ved.b("InteractWidgetPageHolder", "receive poll info event.");
-    if (paramtzj.d()) {
-      paramtzj.a(paramtzj.jdField_a_of_type_Int, paramtzj.b, paramtzj.jdField_a_of_type_Uas, paramtzj.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tkm.class;
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCircleTagPageViewModel", 1, "requestTagPageData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
+    this.jdField_a_of_type_Tzk.a(paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tzl
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,16 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import axpy;
-import bcfo;
-import bcfq;
+import azlj;
+import beep;
+import beer;
 import java.net.URLEncoder;
-import mvs;
+import myl;
 
 public class SwiftBrowserStatistics$3
   implements Runnable
 {
-  public SwiftBrowserStatistics$3(bcfo parambcfo, String paramString, int paramInt) {}
+  public SwiftBrowserStatistics$3(beep parambeep, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class SwiftBrowserStatistics$3
         if (TextUtils.isEmpty(str1)) {
           return;
         }
-        if ((!this.this$0.q) && (!mvs.a().m(str1))) {
+        if ((!this.this$0.q) && (!myl.a().m(str1))) {
           return;
         }
         str1 = URLEncoder.encode(this.jdField_a_of_type_JavaLangString);
@@ -55,7 +55,7 @@ public class SwiftBrowserStatistics$3
         ((StringBuilder)localObject).append(str1).append("|");
         ((StringBuilder)localObject).append(str1).append("|");
         ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-        axpy.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
+        azlj.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
         return;
       }
     }
@@ -63,7 +63,7 @@ public class SwiftBrowserStatistics$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.3
  * JD-Core Version:    0.7.0.1
  */

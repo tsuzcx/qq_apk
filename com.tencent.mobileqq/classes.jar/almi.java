@@ -1,54 +1,33 @@
+import android.content.Intent;
 import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.app.DataMigrationService;
 
 public class almi
-  implements alld
+  extends Handler
 {
-  public almi(ARScanEntryView paramARScanEntryView) {}
+  public almi(DataMigrationService paramDataMigrationService) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onAsyncFaceResDownLoadComplete " + this.a.m);
-    if (!this.a.m) {
-      return;
-    }
-    ARScanEntryView.b(this.a, 100);
-    if ((ARScanEntryView.a(this.a).a != null) && (ARScanEntryView.a(this.a).a.a != null)) {
-      ARScanEntryView.a(this.a).a.a.a();
-    }
-    if (ARScanEntryView.a(this.a) != null)
+    int i = paramMessage.arg1;
+    paramMessage = (Intent)paramMessage.obj;
+    if (paramMessage == null)
     {
-      ARScanEntryView.a(this.a).removeMessages(324);
-      ARScanEntryView.a(this.a).sendEmptyMessage(324);
+      this.a.stopSelf(i);
+      return;
     }
-    if ((ARScanEntryView.b(this.a)) && (this.a.a.a().a()))
+    if ("com.tencent.mobileqq.action.MIGRATION_DATA".equals(paramMessage.getAction()))
     {
-      ARScanEntryView.b(this.a);
-      QLog.d("AREngine_ARScanEntryView", 1, "everything is ready,so quit update resources");
+      DataMigrationService.a(this.a, paramMessage, i);
       return;
     }
-    this.a.k();
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("AREngine_ARScanEntryView", 1, "onAsyncFaceResUpdateProgress " + paramInt + ";" + this.a.m);
-    if (!this.a.m) {
-      return;
-    }
-    ARScanEntryView.b(this.a, paramInt);
-    ARScanEntryView.a(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.k();
+    this.a.stopSelf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     almi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
 
 public class bfmb
-  implements AVFilterResource
+  implements View.OnClickListener
 {
-  public String getFilterResPath()
+  public bfmb(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  
+  public void onClick(View paramView)
   {
-    if (bfma.a) {
-      return bkuv.b;
-    }
-    return avsf.b;
+    ApkFileDownloadFragment.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfmb
  * JD-Core Version:    0.7.0.1
  */

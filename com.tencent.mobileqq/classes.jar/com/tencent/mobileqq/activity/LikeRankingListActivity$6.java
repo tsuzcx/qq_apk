@@ -11,12 +11,12 @@ class LikeRankingListActivity$6
   public void run()
   {
     this.this$0.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.this$0.b.setImageResource(2130844897);
+    this.this$0.b.setImageResource(2130845261);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.6
  * JD-Core Version:    0.7.0.1
  */

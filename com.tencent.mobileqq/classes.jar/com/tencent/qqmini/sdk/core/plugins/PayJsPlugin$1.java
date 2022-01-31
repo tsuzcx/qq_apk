@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Intent;
-import bejc;
-import bejd;
-import bekr;
+import bgjd;
+import bgje;
+import bgkd;
 
 class PayJsPlugin$1
-  implements bejd
+  implements bgje
 {
-  PayJsPlugin$1(PayJsPlugin paramPayJsPlugin, bekr parambekr) {}
+  PayJsPlugin$1(PayJsPlugin paramPayJsPlugin, bgkd parambgkd) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -17,7 +17,7 @@ class PayJsPlugin$1
       if (paramInt2 == 0) {
         PayJsPlugin.access$000(this.this$0, this.val$req, null);
       }
-      bejc.a().b(this);
+      bgjd.a().b(this);
       return true;
     }
     return false;
@@ -25,7 +25,7 @@ class PayJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.PayJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

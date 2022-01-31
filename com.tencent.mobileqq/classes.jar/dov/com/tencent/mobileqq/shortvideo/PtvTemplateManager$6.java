@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import muc;
+import mww;
 
 class PtvTemplateManager$6
   implements Runnable
@@ -26,7 +26,7 @@ class PtvTemplateManager$6
         continue;
       }
       localObject1 = new ArrayList();
-      int i = muc.a();
+      int i = mww.a();
       if (QLog.isColorLevel()) {
         QLog.d("PtvTemplateManager", 2, "cur version:" + i);
       }
@@ -74,7 +74,7 @@ class PtvTemplateManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.6
  * JD-Core Version:    0.7.0.1
  */

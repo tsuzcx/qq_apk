@@ -1,63 +1,100 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pwy
-  extends ClickableSpan
-  implements rfp
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  boolean jdField_a_of_type_Boolean;
+  private JSONObject a;
   
-  public pwy(ComponentHeaderNewSocial paramComponentHeaderNewSocial, ArticleInfo paramArticleInfo, int paramInt)
+  public pwy()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new JSONObject();
+    a();
   }
   
-  public void a(boolean paramBoolean)
+  public pwy(String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        this.a = new JSONObject(paramString);
+        a();
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("PTSReport", 1, "e = " + paramString);
+        this.a = new JSONObject();
+        a();
+        return;
+      }
     }
+    this.a = new JSONObject();
+    a();
   }
   
-  public void onClick(View paramView)
+  private void a()
   {
-    if (ram.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+    for (;;)
     {
-      onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 5, false);
-      ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a.a.e());
-      return;
+      try
+      {
+        this.a.put("os", "1");
+        this.a.put("version", "8.3.3");
+        this.a.put("pts_engine_version", pvy.a().a());
+        this.a.put("pts_app_version", pvw.a().a());
+        this.a.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
+        JSONObject localJSONObject = this.a;
+        if (!TextUtils.isEmpty(Build.BRAND))
+        {
+          String str1 = Build.BRAND;
+          localJSONObject.put("device_brand", str1);
+          localJSONObject = this.a;
+          if (!TextUtils.isEmpty(Build.MODEL))
+          {
+            str1 = Build.MODEL;
+            localJSONObject.put("device_model", str1);
+            this.a.put("is_debug", "0");
+            return;
+          }
+          str1 = "";
+          continue;
+        }
+        String str2 = "";
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("PTSReport", 1, "[initCommonField], e = " + localJSONException);
+        return;
+      }
     }
-    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public String a()
   {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    return this.a.toString();
+  }
+  
+  public pwy a(String paramString1, String paramString2)
+  {
+    try
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(actj.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getResources()));
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
+      this.a.put(paramString1, paramString2);
+      return this;
     }
+    catch (JSONException paramString1)
+    {
+      QLog.e("PTSReport", 1, "[addString], e = " + paramString1);
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwy
  * JD-Core Version:    0.7.0.1
  */

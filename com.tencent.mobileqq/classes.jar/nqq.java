@@ -1,28 +1,32 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.smtt.sdk.WebView;
 
-class nqq
-  implements baxz
+public class nqq
+  implements DialogInterface.OnClickListener
 {
-  nqq(nqn paramnqn) {}
+  public nqq(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
+    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
+    if (paramDialogInterface == null) {}
+    do
     {
-      Intent localIntent = new Intent("action_decode_finish");
-      localIntent.putExtra("bitmap", paramBitmap);
-      localIntent.putExtra("uin", paramString);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
-    }
+      return;
+      if (paramInt == 0)
+      {
+        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (paramInt != 1);
+    paramDialogInterface.loadUrl("javascript:" + this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nqq
  * JD-Core Version:    0.7.0.1
  */

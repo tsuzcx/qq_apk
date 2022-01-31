@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/lja" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/lj9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/ljb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/lj_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hw6" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>

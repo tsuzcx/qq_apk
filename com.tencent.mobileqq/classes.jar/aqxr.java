@@ -1,114 +1,90 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class aqxr
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public int a;
+  public long a;
+  public final String a;
+  public boolean a;
+  public long b;
+  public final String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
+  public String e;
+  public long f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  String m = null;
   
-  public aqxr(HiBoomPanelView paramHiBoomPanelView)
+  public aqxr(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(-1));
+    this.jdField_a_of_type_JavaLangString = "FilePreviewDataReporter<FileAssistant>";
+    this.jdField_b_of_type_JavaLangString = "actFilePreview";
+    this.m = paramString;
   }
   
-  public int a(int paramInt)
+  private HashMap<String, String> a()
   {
-    return ((Integer)this.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
-  }
-  
-  public void a(List<Integer> paramList1, List<Integer> paramList2, List<Integer> paramList3)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramList1 != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList1);
-    }
-    if ((paramList2 != null) && (paramList2.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList2);
-    }
-    if ((paramList3 != null) && (paramList3.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList3);
-    }
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(-1));
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (a(paramInt) == -2) {
-      return 2;
-    }
-    return 1;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof aqxs))
+    HashMap localHashMap = new HashMap();
+    if (!bdee.d(BaseApplication.getContext()))
     {
-      paramViewHolder = (aqxs)paramViewHolder;
-      paramViewHolder.jdField_a_of_type_Int = paramInt;
-      if (paramViewHolder.jdField_a_of_type_Boolean) {}
+      this.jdField_e_of_type_JavaLangString = String.valueOf(9004);
+      this.i += "_NotNetWork";
     }
-    else
-    {
-      return;
-    }
-    paramInt = a(paramInt);
-    ViewGroup.LayoutParams localLayoutParams = paramViewHolder.itemView.getLayoutParams();
-    localLayoutParams.height = HiBoomPanelView.jdField_a_of_type_Int;
-    localLayoutParams.width = HiBoomPanelView.b;
-    paramViewHolder.itemView.setPadding(0, 0, HiBoomPanelView.c, HiBoomPanelView.c);
-    localLayoutParams = paramViewHolder.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.getLayoutParams();
-    localLayoutParams.width = (HiBoomPanelView.b - HiBoomPanelView.c - HiBoomPanelView.d * 2);
-    localLayoutParams.height = localLayoutParams.width;
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.a(paramViewHolder, paramInt);
+    localHashMap.put("param_serverip", String.valueOf(this.jdField_c_of_type_JavaLangString));
+    localHashMap.put("param_uuid", String.valueOf(this.jdField_d_of_type_JavaLangString));
+    localHashMap.put("param_FailCode", String.valueOf(this.jdField_e_of_type_JavaLangString));
+    localHashMap.put("param_fsizeo", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("param_url", String.valueOf(this.jdField_f_of_type_JavaLangString));
+    localHashMap.put("param_key", String.valueOf(this.g));
+    localHashMap.put("param_retry", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_errMsg", String.valueOf(this.i));
+    localHashMap.put("param_fileName", String.valueOf(this.h));
+    localHashMap.put("param_fileExt", String.valueOf(this.j));
+    localHashMap.put("param_source", String.valueOf(this.k));
+    localHashMap.put("param_stage", String.valueOf(this.l));
+    localHashMap.put("param_stagetimelen", String.valueOf(this.jdField_c_of_type_Long));
+    localHashMap.put("param_staytimelen", String.valueOf(this.jdField_d_of_type_Long));
+    this.i = "";
+    return localHashMap;
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public void a()
   {
-    Object localObject = null;
-    boolean bool = true;
-    switch (paramInt)
+    HashMap localHashMap = a();
+    if (QLog.isDevelopLevel())
     {
-    default: 
-      return null;
-    }
-    try
-    {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2131562604, paramViewGroup, false);
-      localObject = paramViewGroup;
-      if (paramViewGroup == null) {
-        localObject = new View(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext());
-      }
-      return new aqxs(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView, (View)localObject, bool);
-    }
-    catch (Exception paramViewGroup)
-    {
-      for (;;)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doReport:bSuccess[" + this.jdField_a_of_type_Boolean + "],");
+      localStringBuilder.append("strReportUin[" + this.m + "],");
+      localStringBuilder.append("startTime[" + this.jdField_e_of_type_Long + "],");
+      localStringBuilder.append("endTime[" + this.jdField_f_of_type_Long + "],");
+      Iterator localIterator = localHashMap.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        QLog.e("HiBoomFont.HiBoomPanelView", 1, "inflate hiboom item error: ", paramViewGroup);
-        bool = false;
-        paramViewGroup = (ViewGroup)localObject;
+        String str = (String)localIterator.next();
+        localStringBuilder.append(str + "[" + (String)localHashMap.get(str) + "]");
       }
+      QLog.i("FilePreviewDataReporter<FileAssistant>", 4, "doReport:" + localStringBuilder.toString());
     }
+    azmz.a(BaseApplication.getContext()).a(this.m, "actFilePreview", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxr
  * JD-Core Version:    0.7.0.1
  */

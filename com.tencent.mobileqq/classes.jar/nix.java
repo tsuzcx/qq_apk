@@ -1,55 +1,41 @@
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.1;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.2;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
 
-public class nix
-  implements TVK_IMediaPlayer.OnCompletionListener
+class nix
+  extends amni
 {
-  public nix(VideoCoverFragment paramVideoCoverFragment) {}
+  nix(niw paramniw) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public int a()
   {
-    VideoCoverFragment.a(this.a);
-    int i = this.a.a();
-    if ((i > 1) && (VideoCoverFragment.a(this.a) != null))
-    {
-      if (VideoCoverFragment.a(this.a) != i - 1) {
-        break label209;
-      }
-      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.1(this));
-    }
-    for (;;)
-    {
-      paramTVK_IMediaPlayer = ((nit)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).b;
-      axqy.a(null, "dc00898", "", VideoCoverFragment.a(this.a).jdField_a_of_type_Niu.a, "0X8008F65", "0X8008F65", 0, 0, VideoCoverFragment.a(this.a).jdField_a_of_type_Niu.c, "", paramTVK_IMediaPlayer, VideoCoverFragment.a(this.a).jdField_a_of_type_Niu.b);
-      Integer localInteger = (Integer)PublicAccountAdvertisementActivity.a.get(paramTVK_IMediaPlayer);
-      i = (int)(((nit)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).a.a / 1000L);
-      if (localInteger == null) {
-        break;
-      }
-      PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(localInteger.intValue() + i));
-      return;
-      label209:
-      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.2(this));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverFragment", 2, "current time = null");
-    }
-    PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(i));
+    return 7;
   }
+  
+  public void a(Object paramObject)
+  {
+    nin.b(this.a.a, this.a.a.jdField_a_of_type_Int);
+    if (this.a.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      this.a.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("setting_status_" + this.a.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.a.jdField_a_of_type_Int).apply();
+    }
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailGroupListContainer", 2, "New 0xc76 onGetRecvMsgState isSuccess = " + paramBoolean);
+    }
+  }
+  
+  public void b(Object paramObject) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nix
  * JD-Core Version:    0.7.0.1
  */

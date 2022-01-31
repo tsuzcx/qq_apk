@@ -1,29 +1,61 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class aics
-  implements View.OnClickListener
+class aics
+  implements bhqp
 {
-  public aics(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  aics(aicl paramaicl) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.c) {
-      axqy.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
     }
-    for (;;)
+    if ((this.a.jdField_a_of_type_Ahzr.getCount() <= 0) || (paramInt <= 0)) {}
+    do
     {
-      axqy.b(this.a.app, "dc00899", "Grp_create_new", "", "suc_create", "clk_cancel", 0, 0, "", "" + this.a.h, "", "");
-      this.a.finish();
       return;
-      axqy.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+      paramAdapterView = (aicu)this.a.jdField_a_of_type_Ahzr.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
     }
+    try
+    {
+      paramAdapterView = bbig.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
+      if (paramAdapterView == null) {
+        break label214;
+      }
+      paramAdapterView = (TroopLinkElement)paramAdapterView;
+    }
+    catch (Exception paramAdapterView)
+    {
+      for (;;)
+      {
+        paramAdapterView = null;
+        continue;
+        paramAdapterView = null;
+      }
+    }
+    if (paramAdapterView != null)
+    {
+      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", paramAdapterView.url);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    }
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aics
  * JD-Core Version:    0.7.0.1
  */

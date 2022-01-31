@@ -1,72 +1,125 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
 
-public class avys
+class avys
+  extends alsi
 {
-  public final int a;
-  public final long a;
-  private List<avxs> a;
-  private int b;
-  public final long b;
-  private int c;
+  avys(avyo paramavyo) {}
   
-  public avys(int paramInt, long paramLong1, long paramLong2)
+  public void a(boolean paramBoolean, String paramString, azyw paramazyw)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-  }
-  
-  private void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((avxs)localIterator.next()).b();
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  private void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((avxs)localIterator.next()).c();
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public int a(float paramFloat)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i >= 6)
+    if (avyo.a(this.a, paramBoolean, paramString, paramazyw)) {}
+    for (;;)
     {
-      avxs localavxs1 = (avxs)this.jdField_a_of_type_JavaUtilList.get(0);
-      avxs localavxs2 = (avxs)this.jdField_a_of_type_JavaUtilList.get(i - 1);
-      float f = (float)(localavxs2.b() - localavxs1.b()) * 1000.0F / (i - 1);
-      paramFloat = (float)(Math.abs(localavxs2.a()) - Math.abs(localavxs1.a())) / ((i - 1) * paramFloat);
-      f = 1.1F * f;
-      if (f < paramFloat) {
-        return 1;
+      return;
+      if (avyo.a(this.a))
+      {
+        if (paramBoolean) {
+          avyo.c(this.a, true);
+        }
+        if (avyo.b(this.a) > 0) {
+          avyo.c(this.a);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountPanel", 2, "onSubAccountThirdQQUnreadMsgNum() mRequestNum = " + avyo.b(this.a));
+        }
+        if (avyo.b(this.a) == 0)
+        {
+          avyo.b(this.a, false);
+          if (avyo.b(this.a)) {
+            avyo.a(this.a);
+          }
+        }
       }
-      i = (int)Math.floor(f / (f - paramFloat));
-      ved.a("FlowEdit_VideoFlowDecodeTask", "averageDecodeTime = %.1f us, averagePlayTime = %.1f us, dropRate = %d", Float.valueOf(f), Float.valueOf(paramFloat), Integer.valueOf(i));
-      return Math.min(8, i);
+      else if ((paramBoolean) && (avyo.a(this.a) != null))
+      {
+        int j = avyo.a(this.a).getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          paramString = avyo.a(this.a).getChildAt(i);
+          if ((!TextUtils.isEmpty((String)paramString.getTag(2131361879))) && ((paramString.getTag() instanceof avzd)))
+          {
+            paramString = (avzd)paramString.getTag();
+            if (paramString.jdField_a_of_type_Int == 1) {
+              paramString.a(0, false);
+            }
+          }
+          i += 1;
+        }
+      }
     }
-    return 1;
   }
   
-  public String toString()
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    return "DecodeSegmentInfo{Index=" + this.jdField_a_of_type_Int + ", StartUs=" + this.jdField_a_of_type_Long + ", EndUs=" + this.jdField_b_of_type_Long + ", Size=" + this.jdField_a_of_type_JavaUtilList.size() + ", Decoding=" + this.jdField_b_of_type_Int + '}';
+    if ((TextUtils.isEmpty(paramString1)) || (avyo.a(this.a) == null)) {
+      return;
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("AccountPanel onSubAccountMsgNumConfirm isSuccess=").append(paramBoolean).append(" subUin=").append(paramString1).append(" set need2ConfirmMsgNum=");
+      if (paramBoolean) {
+        break label127;
+      }
+    }
+    label127:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("AccountPanel", 2, paramBoolean + " nextAction=" + paramString2);
+      if (paramString1.equals(avyo.a(this.a).getUin())) {
+        this.a.a(avyo.a(this.a));
+      }
+      avyo.a(this.a, null);
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean, String paramString, azyv paramazyv)
+  {
+    if (avyo.a(this.a, paramString, paramazyv)) {
+      QLog.d("AccountPanel", 1, String.format("onGetSubAccountMsg return, isSuccess: %s, subAccount: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (!avyo.a(this.a)) {
+              break;
+            }
+            if (paramBoolean) {
+              avyo.c(this.a, true);
+            }
+            if (avyo.b(this.a) > 0) {
+              avyo.c(this.a);
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("AccountPanel", 2, "onGetSubAccountMsg() mRequestNum=" + avyo.b(this.a));
+            }
+          } while (avyo.b(this.a) != 0);
+          avyo.b(this.a, false);
+        } while (!avyo.b(this.a));
+        avyo.a(this.a);
+        return;
+      } while (!paramBoolean);
+      paramazyv = avyo.a(this.a, paramString);
+    } while (paramazyv == null);
+    paramString = azyl.a(avyo.a(this.a), paramString);
+    paramazyv.a(paramString.jdField_a_of_type_Int, paramString.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avys
  * JD-Core Version:    0.7.0.1
  */

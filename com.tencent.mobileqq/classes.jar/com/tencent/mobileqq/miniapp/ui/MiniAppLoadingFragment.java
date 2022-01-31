@@ -24,13 +24,13 @@ public class MiniAppLoadingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = paramLayoutInflater.inflate(2131558452, paramViewGroup, false);
-    paramLayoutInflater.findViewById(2131363500).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131363541).setOnClickListener(this);
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.ui.MiniAppLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

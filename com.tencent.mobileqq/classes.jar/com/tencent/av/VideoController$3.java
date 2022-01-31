@@ -1,7 +1,7 @@
 package com.tencent.av;
 
-import ldt;
-import msb;
+import lfw;
+import muv;
 
 class VideoController$3
   implements Runnable
@@ -10,13 +10,13 @@ class VideoController$3
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Msc = new ldt(this.this$0);
-    this.this$0.jdField_a_of_type_Msb = new msb(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_Msc);
+    this.this$0.jdField_a_of_type_Muw = new lfw(this.this$0);
+    this.this$0.jdField_a_of_type_Muv = new muv(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_Muw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.VideoController.3
  * JD-Core Version:    0.7.0.1
  */

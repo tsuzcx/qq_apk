@@ -1,38 +1,48 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONArray;
 
-public class alaw
-  extends alag
+class alaw
+  implements aklp
 {
-  public ArCloudConfigInfo a;
-  public String b;
-  public String c;
-  public String d;
+  alaw(alap paramalap, int[] paramArrayOfInt, JSONArray paramJSONArray, String paramString) {}
   
-  public alaw(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void a(boolean paramBoolean, String paramString1, List<aklm> paramList, String paramString2)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
-    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    int i = 0;
+    if (i < this.jdField_a_of_type_ArrayOfInt.length)
+    {
+      paramString1 = akll.a().a(8, this.jdField_a_of_type_ArrayOfInt[i]);
+      int j;
+      if (paramString1 != null)
+      {
+        paramList = this.jdField_a_of_type_Alap;
+        int k = paramString1.b;
+        if (paramString1.a())
+        {
+          j = 0;
+          label79:
+          paramString1 = alap.a(paramList, 8, String.valueOf(k), j);
+          this.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        j = 2;
+        break label79;
+        paramString1 = alap.a(this.jdField_a_of_type_Alap, 8, String.valueOf(this.jdField_a_of_type_ArrayOfInt[i]), 2);
+        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+      }
+    }
+    this.jdField_a_of_type_Alap.a(this.jdField_a_of_type_JavaLangString, alpo.a(2131700882), this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alaw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,77 +1,107 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.ark.open.security.ArkAppUrlChecker;
+import com.tencent.mobileqq.ark.ArkAppCenterEvent;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
-import tencent.nearby.now.nearby_now_anchor.RspBatchGetAnchorStatus;
 
-public abstract class anna
-  extends mxj
+final class anna
+  implements ark.ApplicationCallback
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void AppCreate(ark.Application paramApplication)
   {
-    boolean bool4 = false;
-    boolean bool3 = false;
-    Object localObject = null;
-    nearby_now_anchor.RspBatchGetAnchorStatus localRspBatchGetAnchorStatus;
-    boolean bool1;
-    if (paramInt == 0)
+    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
+  }
+  
+  public void AppDestroy(ark.Application paramApplication)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppCenterEvent.a(1, paramApplication, null);
+    annd.a(paramApplication);
+  }
+  
+  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
+    boolean bool1 = true;
+    int j;
+    int i;
+    boolean bool2;
+    if (localArkAppUrlChecker != null)
     {
-      localRspBatchGetAnchorStatus = new nearby_now_anchor.RspBatchGetAnchorStatus();
-      bool1 = bool4;
+      j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
+      i = 0;
+      if (j != 0) {
+        break label279;
+      }
+      bool1 = true;
+      boolean bool3 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication);
+      boolean bool4 = anjs.a();
+      if ((!bool3) || (bool4)) {
+        break label285;
+      }
+      bool2 = true;
+      label69:
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMultiProcUtil", 2, new Object[] { "ArkSafe.UrlCheck.CheckUrlLegalityCallback,appname=", paramApplication, ", enableCheck=", Boolean.valueOf(bool2), ", appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4) });
+      }
+      if (bool1) {
+        break label291;
+      }
+      i = 1;
+      if (bool2) {
+        break label291;
+      }
+      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback , isValid set=true, appName=", paramApplication, ",appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4), ",url=", ndq.b(paramString, new String[0]) });
+      bool1 = true;
+      i = 2;
+    }
+    label279:
+    label285:
+    label291:
+    for (;;)
+    {
+      annd.a(paramApplication, paramString, j, i, "");
+      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.EngineCallback appName=", paramApplication, ",url=", ndq.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool1) });
+      return bool1;
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label69;
+    }
+  }
+  
+  public void OutputScriptError(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      paramString1 = "";
     }
     for (;;)
     {
-      try
-      {
-        localRspBatchGetAnchorStatus.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = localObject;
-        bool2 = bool3;
-        bool1 = bool4;
-        if (localRspBatchGetAnchorStatus.uint32_result.has())
-        {
-          paramArrayOfByte = localObject;
-          bool2 = bool3;
-          bool1 = bool4;
-          if (localRspBatchGetAnchorStatus.uint32_result.get() == 0)
-          {
-            bool1 = true;
-            bool2 = true;
-            paramArrayOfByte = localRspBatchGetAnchorStatus.msg_anchor_stats.get();
-          }
-        }
+      if (paramString2 == null) {
+        paramString2 = "";
       }
-      catch (Exception localException)
+      for (;;)
       {
-        paramArrayOfByte = localObject;
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.e("ArkApp.ArkMultiProcUtil", 1, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
         }
-        QLog.w("Q.msg_box.protocol", 2, localException.toString());
-        paramArrayOfByte = localObject;
-        bool2 = bool1;
-        continue;
-      }
-      a(bool2, paramArrayOfByte, paramBundle);
-      return;
-      paramArrayOfByte = localObject;
-      boolean bool2 = bool3;
-      if (QLog.isColorLevel())
-      {
-        QLog.w("Q.msg_box.protocol", 2, "getNowState failed, errorCode=" + paramInt);
-        paramArrayOfByte = localObject;
-        bool2 = bool3;
+        anjv.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
+        return;
       }
     }
   }
   
-  public abstract void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle);
+  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
+  {
+    anfp.a(paramModuleRegister, paramApplication);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anna
  * JD-Core Version:    0.7.0.1
  */

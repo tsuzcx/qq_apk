@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.phone;
 
-import agkn;
-import ajya;
+import aiiq;
+import alpo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import aneh;
-import aumg;
-import axqy;
-import bbcz;
+import aovo;
+import awdn;
+import azmj;
+import bdbt;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class PhoneLaunchActivity
@@ -18,7 +18,7 @@ public class PhoneLaunchActivity
   implements View.OnClickListener
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
-  public aumg a;
+  public awdn a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   private boolean c;
@@ -27,7 +27,7 @@ public class PhoneLaunchActivity
   
   private void b()
   {
-    bbcz.a(2);
+    bdbt.a(2);
     Intent localIntent = new Intent(this, BindNumberActivity.class);
     if (getIntent().getIntExtra("kSrouce", -1) == 8) {
       localIntent.putExtra("kSrouce", 8);
@@ -38,8 +38,8 @@ public class PhoneLaunchActivity
   public void a()
   {
     PhoneLaunchActivity.1 local1 = new PhoneLaunchActivity.1(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new agkn(this));
-    aneh.a(this, this.app, local1, localDenyRunnable);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this, new aiiq(this));
+    aovo.a(this, this.app, local1, localDenyRunnable);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -74,20 +74,20 @@ public class PhoneLaunchActivity
     }
     if (!this.jdField_a_of_type_Boolean) {
       if (getIntent().getStringExtra("leftViewText") == null) {
-        getIntent().putExtra("leftViewText", ajya.a(2131708016));
+        getIntent().putExtra("leftViewText", alpo.a(2131708388));
       }
     }
     for (;;)
     {
-      setContentView(2131559374);
-      setTitle(ajya.a(2131708012));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371425));
+      setContentView(2131559426);
+      setTitle(alpo.a(2131708384));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371741));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (getIntent().getBooleanExtra("k_start_number", false)) {
         b();
       }
       return true;
-      getIntent().putExtra("leftViewText", ajya.a(2131708018));
+      getIntent().putExtra("leftViewText", alpo.a(2131708390));
     }
   }
   
@@ -95,7 +95,7 @@ public class PhoneLaunchActivity
   {
     super.finish();
     if (!this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130771990, 2130772280);
+      overridePendingTransition(2130771990, 2130772294);
     }
   }
   
@@ -110,7 +110,7 @@ public class PhoneLaunchActivity
       for (;;)
       {
         if (this.d) {
-          axqy.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
+          azmj.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
         }
         return;
         if (i == 5)
@@ -126,7 +126,7 @@ public class PhoneLaunchActivity
         }
         else
         {
-          a(ajya.a(2131708014), ajya.a(2131708013));
+          a(alpo.a(2131708386), alpo.a(2131708385));
         }
       }
     }
@@ -135,7 +135,7 @@ public class PhoneLaunchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneLaunchActivity
  * JD-Core Version:    0.7.0.1
  */

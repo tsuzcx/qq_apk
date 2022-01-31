@@ -1,48 +1,23 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-class sjd
-  implements aabi
+public class sjd
+  implements AdapterView.OnItemClickListener
 {
-  sjd(sjc paramsjc) {}
+  public sjd(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    snb.d("WSQQConnectAuthManager", "getOpenIdAndAccessToken onFailure: " + paramInt + " , " + paramString);
-    sjc.a(this.a, false);
-    if (paramInt == 1) {
-      sjc.a(this.a);
+    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.a) != null)) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
   }
-  
-  public void onPermission(int paramInt)
-  {
-    snb.b("WSQQConnectAuthManager", "getOpenIdAndAccessToken onPermission: " + paramInt);
-    sjc.a(this.a, false);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    sjc.a(this.a);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    sjc.a(this.a, false);
-    if (paramJSONObject != null)
-    {
-      snb.b("WSQQConnectAuthManager", "getOpenIdAndAccessToken onSuccess: " + paramJSONObject.toString());
-      sjc.a(this.a, paramJSONObject);
-    }
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sjd
  * JD-Core Version:    0.7.0.1
  */

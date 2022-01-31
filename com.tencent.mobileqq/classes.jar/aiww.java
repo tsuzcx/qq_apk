@@ -1,28 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class aiww
-  implements Animation.AnimationListener
+class aiww
+  implements aivw
 {
-  public aiww(CmGameDebugView paramCmGameDebugView) {}
+  aiww(aiwv paramaiwv, File paramFile, AtomicBoolean paramAtomicBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onResult(int paramInt, PreloadManager.PathResult arg2)
   {
-    CmGameDebugView.a(this.a).setVisibility(8);
-    CmGameDebugView.b(this.a).setVisibility(8);
-    CmGameDebugView.a(this.a).clearAnimation();
+    if ((paramInt == 0) && (!TextUtils.isEmpty(???.filePath))) {}
+    synchronized (this.jdField_a_of_type_JavaIoFile)
+    {
+      this.jdField_a_of_type_JavaIoFile.notify();
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      return;
+      QLog.e("QWalletPicDownloader", 2, "downloadImage file not succeed, pathRes=" + ???);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiww
  * JD-Core Version:    0.7.0.1
  */

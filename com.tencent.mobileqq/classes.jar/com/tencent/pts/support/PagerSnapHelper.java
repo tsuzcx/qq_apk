@@ -175,13 +175,13 @@ public class PagerSnapHelper
   
   private void setupCallbacks()
   {
-    if (this.recyclerView.getOnFlingListener() != null) {
+    if (this.recyclerView.getOnFlingListenerCompat() != null) {
       throw new IllegalStateException("An instance of OnFlingListener already set.");
     }
     this.touchEventProcessor = new PagerSnapHelper.TouchEventProcessor(this, null);
     this.onLayoutChangedListener = new PagerSnapHelper.OnLayoutChangedListenerImpl(this, null);
     this.recyclerView.addOnScrollListener(this.touchEventProcessor);
-    this.recyclerView.setOnFlingListener(this.touchEventProcessor);
+    this.recyclerView.setOnFlingListenerCompat(this.touchEventProcessor);
     this.recyclerView.addOnLayoutChangeListener(this.onLayoutChangedListener);
     this.recyclerView.getAdapter().registerAdapterDataObserver(new PagerSnapHelper.1(this));
   }
@@ -462,7 +462,7 @@ public class PagerSnapHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.support.PagerSnapHelper
  * JD-Core Version:    0.7.0.1
  */

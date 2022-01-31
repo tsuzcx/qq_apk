@@ -1,21 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class qfx
-  implements View.OnClickListener
+class qfx
+  implements qft
 {
-  public qfx(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  qfx(qfw paramqfw, rjk paramrjk, rjn paramrjn) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.getActivity().finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJVideoRedPacketManager", 2, "onShouldDoTaskTimingCallback: shouldDoTaskTiming=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      qfw.a(this.jdField_a_of_type_Qfw).a(this.jdField_a_of_type_Rjk.a.innerUniqueID, (int)this.jdField_a_of_type_Rjn.b(), 2, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qfx
  * JD-Core Version:    0.7.0.1
  */

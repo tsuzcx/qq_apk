@@ -2,7 +2,7 @@ package com.tencent.biz.widgets;
 
 import android.os.HandlerThread;
 import android.os.Process;
-import bdsx;
+import bfru;
 import com.tencent.qphone.base.util.QLog;
 
 class ScannerView$DecodeThread
@@ -23,7 +23,7 @@ class ScannerView$DecodeThread
     }
     try
     {
-      bdsx.b();
+      bfru.b();
       return super.quit();
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -42,12 +42,12 @@ class ScannerView$DecodeThread
     Process.setThreadPriority(-20);
     try
     {
-      int i = bdsx.b(0, "ANY", "UTF-8");
+      int i = bfru.b(0, "ANY", "UTF-8");
       Object localObject = new int[2];
       localObject[0] = 2;
       localObject[1] = 1;
-      int j = bdsx.b((int[])localObject, localObject.length);
-      localObject = bdsx.a();
+      int j = bfru.b((int[])localObject, localObject.length);
+      localObject = bfru.a();
       if (QLog.isDevelopLevel())
       {
         QLog.d("ScannerView", 4, "init for camera init_result1:" + i + ",init_result2:" + j);
@@ -68,7 +68,7 @@ class ScannerView$DecodeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.widgets.ScannerView.DecodeThread
  * JD-Core Version:    0.7.0.1
  */

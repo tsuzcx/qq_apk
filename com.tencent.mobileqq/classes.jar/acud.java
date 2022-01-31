@@ -1,92 +1,86 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class acud
-  implements View.OnLongClickListener
+  extends amab
 {
-  public acud(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  public acud(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public boolean onLongClick(View paramView)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    switch (paramView.getId())
-    {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a();
+      }
     }
-    Object localObject1;
-    Object localObject2;
     do
     {
       do
       {
-        return false;
-        localObject1 = paramView.getContext();
-        if (!(localObject1 instanceof FragmentActivity)) {
-          return true;
-        }
-        localObject2 = (FragmentActivity)localObject1;
-        localObject1 = (String)paramView.getTag(2131364118);
-        paramView = (ChatMessage)paramView.getTag();
-        if (paramView == null) {
+        return;
+        if (paramInt1 != 2) {
           break;
         }
-        localObject2 = ((FragmentActivity)localObject2).getChatFragment();
-      } while (localObject2 == null);
-      localObject2 = ((ChatFragment)localObject2).a();
-    } while (localObject2 == null);
-    if ((localObject2 instanceof aeqb))
-    {
-      HotChatManager localHotChatManager = (HotChatManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60);
-      HotChatInfo localHotChatInfo = localHotChatManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((localHotChatInfo != null) && (localHotChatInfo.isGameRoom)) {
-        return true;
-      }
-      bamk localbamk = (bamk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(203);
-      if ((localHotChatInfo != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localHotChatInfo.ownerUin)) || (((localHotChatInfo.isOwnerOrAdmin(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) || (localHotChatManager.b())) && (!localHotChatInfo.isOwnerOrAdmin(paramView.senderuin)) && ((!localHotChatInfo.isRobotHotChat) || (!localbamk.b(paramView.senderuin)))))) {
-        ((aeqb)localObject2).a(paramView, (String)localObject1);
-      }
+      } while (paramInt2 != 0);
+      this.a.a();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.a();
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    for (;;)
-    {
-      return true;
-      ((aeqb)localObject2).a(paramView.senderuin, (String)localObject1, false, 1);
-      continue;
-      if ((localObject2 instanceof TroopChatPie))
-      {
-        ((TroopChatPie)localObject2).a(paramView.senderuin, (String)localObject1, false, 1);
-      }
-      else if ((localObject2 instanceof aeoc))
-      {
-        if (bbcz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.frienduin)) {
-          return true;
-        }
-        ((aeoc)localObject2).a(paramView.senderuin, (String)localObject1, false);
-        axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006210", "0X8006210", 0, 0, "", "", "", "");
-      }
-      else if ((localObject2 instanceof aeom))
-      {
-        ((BaseChatPie)localObject2).bn();
-        axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A010", "0X800A010", 0, 0, "", "", "", "");
-      }
-      else if (((localObject2 instanceof aetq)) || ((localObject2 instanceof aerj)) || ((localObject2 instanceof aert)))
-      {
-        ((BaseChatPie)localObject2).bn();
-        axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A011", "0X800A011", 0, 0, "", "", "", "");
-      }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().postDelayed(new ForwardTroopListFragment.MyTroopObserver.1(this), 500L);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acud
  * JD-Core Version:    0.7.0.1
  */

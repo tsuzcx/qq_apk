@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bata;
-import batb;
+import bcru;
+import bcrv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,17 +14,17 @@ class TroopRequestActivity$3
   
   public void run()
   {
-    bata localbata = batb.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
-    if (localbata != null)
+    bcru localbcru = bcrv.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
+    if (localbcru != null)
     {
-      this.this$0.i = localbata.a();
+      this.this$0.i = localbcru.a();
       ThreadManager.getUIHandler().post(new TroopRequestActivity.3.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRequestActivity.3
  * JD-Core Version:    0.7.0.1
  */

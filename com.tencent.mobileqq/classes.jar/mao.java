@@ -1,97 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.share.AVSchema;
 
-public abstract class mao
+public class mao
+  implements DialogInterface.OnDismissListener
 {
-  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface)
-  {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    QLog.w("NewTipsManager", 1, "hideAllTips, seq[" + paramLong + "]");
-    ((ljf)paramVideoAppInterface.a(11)).b();
-  }
+  public mao(AVSchema paramAVSchema) {}
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramVideoAppInterface == null) {
-      return;
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
-    ((ljf)paramVideoAppInterface.a(11)).c();
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((ljf)paramVideoAppInterface.a(11)).a(paramInt);
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, boolean paramBoolean) {}
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((ljf)paramVideoAppInterface.a(11)).a(paramInt);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return a(paramVideoAppInterface, paramInt1, paramVideoAppInterface.getApp().getString(paramInt2));
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((ljf)paramVideoAppInterface.a(11)).a(paramInt, paramLong);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((ljf)paramVideoAppInterface.a(11)).a(paramInt, paramString);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((ljf)paramVideoAppInterface.a(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((ljf)paramVideoAppInterface.a(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
-  }
-  
-  public static void b(VideoAppInterface paramVideoAppInterface)
-  {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((ljf)paramVideoAppInterface.a(11)).d();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mao
  * JD-Core Version:    0.7.0.1
  */

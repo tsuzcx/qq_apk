@@ -1,18 +1,14 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-
-public class ajrm
+public abstract interface ajrm
 {
-  View jdField_a_of_type_AndroidViewView;
-  public ImageView a;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public abstract int a(int paramInt1, int paramInt2, ajrf paramajrf);
   
-  public ajrm(ajrl paramajrl) {}
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajrm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,43 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Map;
 
-public class wfy
-  implements AdapterView.OnItemClickListener
+public final class wfy
+  extends QQUIEventReceiver<wfn, urw>
 {
-  public wfy(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public wfy(@NonNull wfn paramwfn)
   {
-    QRDisplayActivity.a(this.a).b();
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131720917;
-      }
+    super(paramwfn);
+  }
+  
+  public void a(@NonNull wfn paramwfn, @NonNull urw paramurw)
+  {
+    if (wfn.a(paramwfn) == null) {
+      wsv.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramurw.toString());
     }
-    for (;;)
+    do
     {
-      if (i != -1)
+      do
       {
-        bcql.a(this.a, this.a.getString(i), 0).b(this.a.getTitleBarHeight());
-        if (this.a.jdField_c_of_type_Int == 2) {
-          if (paramLong != 2L) {
-            break label165;
-          }
-        }
-        label165:
-        for (paramAdapterView = "qr_wechat";; paramAdapterView = "qr_circle")
-        {
-          bbbp.a("Grp_share", "grpData_admin", paramAdapterView, 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
-          this.a.h = -1;
-          return;
-          if (WXShareHelper.a().b()) {
-            break label230;
-          }
-          i = 2131720918;
-          break;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-      }
-      this.a.h = ((int)paramLong);
-      QRDisplayActivity.a(this.a);
-      return;
-      label230:
-      i = -1;
-    }
+        return;
+      } while (!paramurw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      wsv.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramurw.toString());
+      paramurw = (vbc)paramurw.jdField_a_of_type_JavaUtilMap.get(wfn.a(paramwfn));
+    } while (paramurw == null);
+    paramurw = ((uru)urr.a(27)).a(wfn.a(paramwfn).a(), paramurw.a);
+    wfn.a(paramwfn).b(paramurw, true);
+    paramwfn.a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return urw.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wfy
  * JD-Core Version:    0.7.0.1
  */

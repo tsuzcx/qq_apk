@@ -1,36 +1,86 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import java.util.Map;
 
 class biku
-  implements Animator.AnimatorListener
+  implements bikz
 {
-  biku(bikt parambikt) {}
+  biku(biko parambiko) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
+    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
+    if (this.a.jdField_a_of_type_Bggp != null) {
+      this.a.jdField_a_of_type_Bggp.a();
     }
-    if (bikt.a(this.a) != null)
-    {
-      bikt.a(this.a).setAlpha(1.0F);
-      bikt.a(this.a).setVisibility(4);
-      bikt.a(this.a).b().a(Boolean.valueOf(false));
-    }
-    bikt.b(this.a);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void a(int paramInt, String paramString)
+  {
+    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
+    if (this.a.jdField_a_of_type_Bggp != null) {
+      this.a.jdField_a_of_type_Bggp.c(paramInt, paramString);
+    }
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(int paramInt, String[] paramArrayOfString)
+  {
+    int k = paramArrayOfString.length;
+    int j = 0;
+    String str;
+    if (j < k)
+    {
+      str = paramArrayOfString[j];
+      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
+      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+        break label237;
+      }
+    }
+    label237:
+    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
+    {
+      switch (paramInt)
+      {
+      default: 
+        label116:
+        if (i != 0) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
+        }
+        break;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        i |= 0x20;
+        break label116;
+        i &= 0xFFFFFFDF;
+        break label116;
+        i |= 0x1;
+        break label116;
+        i &= 0xFFFFFFFE;
+        break label116;
+        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
+        }
+      }
+      if (this.a.jdField_a_of_type_Bggp != null) {
+        this.a.jdField_a_of_type_Bggp.a(paramInt, paramArrayOfString);
+      }
+      return;
+    }
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
+    if (this.a.jdField_a_of_type_Bggp != null) {
+      this.a.jdField_a_of_type_Bggp.a(paramArrayOfString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biku
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.sdk.core.utils.thread.internel.ArrayDeque;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-class bgmj
-  implements DialogInterface.OnClickListener
+public class bgmj
+  implements Iterator<E>
 {
-  private String jdField_a_of_type_JavaLangString;
+  private int jdField_a_of_type_Int = ArrayDeque.access$300(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
+  private int b = ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
+  private int c = -1;
   
-  private bgmj(bgmh parambgmh, String paramString)
+  private bgmj(ArrayDeque paramArrayDeque) {}
+  
+  public boolean hasNext()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.jdField_a_of_type_Int != this.b;
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public E next()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (this.jdField_a_of_type_Int == this.b) {
+      throw new NoSuchElementException();
     }
-    this.jdField_a_of_type_Bgmh.cancelInstall(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int - 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque).length - 1);
+    Object localObject = ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque)[this.jdField_a_of_type_Int];
+    if ((ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque) != this.b) || (localObject == null)) {
+      throw new ConcurrentModificationException();
+    }
+    this.c = this.jdField_a_of_type_Int;
+    return localObject;
+  }
+  
+  public void remove()
+  {
+    if (this.c < 0) {
+      throw new IllegalStateException();
+    }
+    if (!ArrayDeque.access$500(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque, this.c))
+    {
+      this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int + 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque).length - 1);
+      this.b = ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
+    }
+    this.c = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgmj
  * JD-Core Version:    0.7.0.1
  */

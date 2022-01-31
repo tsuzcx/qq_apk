@@ -1,198 +1,190 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.MonitorTimeExecutor;
-import com.tencent.biz.pubaccount.readinjoy.preload.FeedsPreloadManager.2;
-import com.tencent.biz.pubaccount.readinjoy.preload.FeedsPreloadManager.3;
-import com.tencent.biz.pubaccount.readinjoy.preload.FeedsPreloadManager.4;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import mqq.os.MqqHandler;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import tencent.im.oidb.cmd0xda2.content_vidurl_svr.GetVid2UrlsReq;
+import tencent.im.oidb.cmd0xda2.content_vidurl_svr.GetVid2UrlsRsp;
+import tencent.im.oidb.cmd0xda2.content_vidurl_svr.UrlInfo;
+import tencent.im.oidb.cmd0xda2.oidb_cmd0xda2.ReqBody;
+import tencent.im.oidb.cmd0xda2.oidb_cmd0xda2.RspBody;
 
 public class pcs
+  extends pgp
+  implements pcq
 {
-  private static volatile pcs jdField_a_of_type_Pcs;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
-  private otf jdField_a_of_type_Otf = new pct(this);
+  private static pcs jdField_a_of_type_Pcs = new pcs();
+  private final String jdField_a_of_type_JavaLangString = "gifvideo.KandianShortContentGifStrategy";
+  private ConcurrentHashMap<Integer, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  
+  public pcs()
+  {
+    super(null, null, null, puz.a(), null);
+  }
+  
+  private Object a(Integer paramInteger)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramInteger);
+  }
   
   public static pcs a()
   {
-    if (jdField_a_of_type_Pcs == null) {}
-    try
-    {
-      if (jdField_a_of_type_Pcs == null) {
-        jdField_a_of_type_Pcs = new pcs();
-      }
-      return jdField_a_of_type_Pcs;
-    }
-    finally {}
+    return jdField_a_of_type_Pcs;
   }
   
-  private void a(pcr parampcr, long paramLong)
+  private void a(Integer paramInteger, Object paramObject)
   {
-    parampcr = new FeedsPreloadManager.4(this, parampcr, paramLong);
-    onh.b().post(parampcr);
-  }
-  
-  private void c()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)onh.a();
-    KandianMergeManager localKandianMergeManager = (KandianMergeManager)localQQAppInterface.getManager(162);
-    if (localKandianMergeManager == null)
-    {
-      QLog.d("FeedsPreloadManager", 1, "preloadFeedsImp, km is null.");
+    if (paramObject == null) {
       return;
     }
-    long l1 = 0L;
-    long l2 = 0L;
-    String str = null;
-    int i = -1;
-    Object localObject = localKandianMergeManager.a();
-    if ((localObject != null) && (((List)localObject).size() > 2))
-    {
-      l1 = ((Long)((List)localObject).get(((List)localObject).size() - 2)).longValue();
-      l2 = ((Long)((List)localObject).get(((List)localObject).size() - 1)).longValue();
-      localObject = ((List)localObject).subList(0, ((List)localObject).size() - 2);
-      i = 1;
-      str = localKandianMergeManager.a();
-    }
-    for (;;)
-    {
-      ((osl)localQQAppInterface.getManager(163)).a().a(0, (List)localObject, i, true, false, 1, null, -1L, null, 0, l1, l2, str, 1, false, null, 256);
-      if ((localObject != null) && (((List)localObject).size() > 0)) {}
-      for (localObject = (Serializable)((List)localObject).get(0);; localObject = "")
-      {
-        QLog.d("FeedsPreloadManager", 1, new Object[] { "preloadFeedsImp, algorithmID = ", Long.valueOf(l1), ", strategyID = ", Long.valueOf(l2), ", articleID = ", localObject, ", articleListFrom = ", Integer.valueOf(i), ", pushContext = ", str });
-        return;
-      }
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramInteger, paramObject);
   }
   
-  public pcr a(pow parampow)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool2 = false;
-    pcq localpcq = pcq.a();
-    if (localpcq != null)
+    Object localObject1 = new oidb_cmd0xda2.RspBody();
+    Object localObject2 = (Boolean)paramToServiceMsg.getAttribute("compressFlag");
+    if (localObject2 != null) {}
+    for (boolean bool = ((Boolean)localObject2).booleanValue();; bool = false)
     {
-      pcr localpcr = localpcq.a(parampow);
-      localpcq.b();
-      if (localpcr != null)
+      QLog.d("gifvideo.KandianShortContentGifStrategy", 1, new Object[] { "convertVidToUrl resp result code ", Integer.valueOf(ork.a(paramToServiceMsg, paramFromServiceMsg, paramObject, (MessageMicro)localObject1, bool)) });
+      if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp != null) && (((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_code.has()))
       {
-        QLog.d("FeedsPreloadManager", 1, "getFeedsPreloadCache, hit cache.");
-        if (localpcr.jdField_a_of_type_JavaUtilList != null) {}
-        for (int i = localpcr.jdField_a_of_type_JavaUtilList.size();; i = 0)
+        int i = ((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_code.get();
+        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "ret code is " + i);
+        if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp == null) || (!((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_msg.has())) {
+          break label449;
+        }
+        paramFromServiceMsg = ((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_msg.get();
+        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "ret msg is " + paramFromServiceMsg);
+        label183:
+        if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp == null) || (!((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.urls.has())) {
+          break label555;
+        }
+        paramObject = (ArrayList)((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.urls.get();
+        localObject1 = new StringBuilder().append("urls result: ");
+        if (paramObject == null) {
+          break label460;
+        }
+      }
+      label449:
+      label460:
+      for (paramFromServiceMsg = paramObject.toString();; paramFromServiceMsg = "null")
+      {
+        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, paramFromServiceMsg);
+        if ((paramObject == null) || (paramObject.size() <= 0)) {
+          break label545;
+        }
+        paramFromServiceMsg = new ArrayList();
+        localObject1 = new ArrayList();
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
         {
-          boolean bool1 = bool2;
-          if (parampow.b != null)
+          localObject2 = (content_vidurl_svr.UrlInfo)paramObject.next();
+          if (localObject2 != null)
           {
-            bool1 = bool2;
-            if (parampow.b.size() > 0) {
-              bool1 = true;
-            }
+            paramFromServiceMsg.add(((content_vidurl_svr.UrlInfo)localObject2).url.get());
+            ((List)localObject1).add(((content_vidurl_svr.UrlInfo)localObject2).vid.get());
+            QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "update vid: " + ((content_vidurl_svr.UrlInfo)localObject2).vid.get() + " url: " + ((content_vidurl_svr.UrlInfo)localObject2).url.get());
+            osl localosl = new osl();
+            localosl.b = ((content_vidurl_svr.UrlInfo)localObject2).vid.get();
+            localosl.jdField_a_of_type_JavaLangString = ((content_vidurl_svr.UrlInfo)localObject2).url.get();
+            osf.a(localosl);
           }
-          pcu.a(bool1, i);
-          return localpcr;
         }
+        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no ret code");
+        break;
+        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no ret msg");
+        break label183;
       }
-      QLog.d("FeedsPreloadManager", 1, "getFeedsPreloadCache, cache is null.");
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)onh.a();
-    if ((localQQAppInterface == null) || (!localQQAppInterface.isLogin()))
-    {
-      QLog.d("FeedsPreloadManager", 1, "app is null or not login, don't do feeds preload.");
-      return;
-    }
-    QLog.d("FeedsPreloadManager", 1, "start, feeds preload.");
-    a(false);
-    ThreadManager.getSubThreadHandler().postDelayed(new FeedsPreloadManager.2(this), 3000L);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) || (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isTerminated()))
-    {
-      QLog.d("FeedsPreloadManager", 1, "runOnSingleThreadPool, executorService is not available, init a new one.");
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(paramRunnable);
-  }
-  
-  public void a(pcr parampcr)
-  {
-    boolean bool2 = false;
-    QLog.d("FeedsPreloadManager", 1, new Object[] { "handleFeedsPreloadRequest, cache = ", parampcr });
-    long l;
-    int i;
-    if (parampcr != null)
-    {
-      Object localObject = parampcr.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-      l = 0L;
-      localObject = (Long)((ToServiceMsg)localObject).getAttribute("recPackageSize");
-      if (localObject != null) {
-        l = ((Long)localObject).longValue();
-      }
-      a(parampcr, l);
-      pcw.b();
-      if (parampcr.jdField_a_of_type_JavaUtilList == null) {
-        break label135;
-      }
-      i = parampcr.jdField_a_of_type_JavaUtilList.size();
-      if (parampcr.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg == null) {
-        break label140;
-      }
-    }
-    label135:
-    label140:
-    for (parampcr = (List)parampcr.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("SubscriptionArticles");; parampcr = null)
-    {
-      boolean bool1 = bool2;
-      if (parampcr != null)
+      paramToServiceMsg = (pcr)a(Integer.valueOf(((Integer)paramToServiceMsg.getAttribute("vidToUrlSeq")).intValue()));
+      if (paramToServiceMsg != null)
       {
-        bool1 = bool2;
-        if (parampcr.size() > 0) {
-          bool1 = true;
-        }
-      }
-      pcu.a(bool1, i, l);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    a(new FeedsPreloadManager.3(this, paramBoolean));
-  }
-  
-  public void b()
-  {
-    QLog.d("FeedsPreloadManager", 1, "reset, feeds preload.");
-    if (jdField_a_of_type_Pcs != null) {
-      try
-      {
-        jdField_a_of_type_Pcs.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdownNow();
-        jdField_a_of_type_Pcs.jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
-        QLog.d("FeedsPreloadManager", 1, "remove foreground, background callback.");
-        ota.b(this.jdField_a_of_type_Otf);
+        QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "has callback");
+        paramToServiceMsg.a((String[])((List)localObject1).toArray(new String[((List)localObject1).size()]), (String[])paramFromServiceMsg.toArray(new String[paramFromServiceMsg.size()]));
+        label545:
         return;
       }
-      finally {}
+      QLog.d("gifvideo.KandianShortContentGifStrategy", 2, " call back is null");
+      return;
+      label555:
+      QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no urls");
+      return;
+    }
+  }
+  
+  public void a(String paramString, pcr parampcr)
+  {
+    a(new String[] { paramString }, parampcr);
+  }
+  
+  public void a(String[] paramArrayOfString, pcr parampcr)
+  {
+    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
+    {
+      content_vidurl_svr.GetVid2UrlsReq localGetVid2UrlsReq = new content_vidurl_svr.GetVid2UrlsReq();
+      Object localObject = bdcb.c();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localGetVid2UrlsReq.app_version.set((String)localObject);
+      }
+      localGetVid2UrlsReq.appid.set("143193");
+      localGetVid2UrlsReq.app_name.set("");
+      localObject = pco.a(BaseApplicationImpl.getContext());
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localGetVid2UrlsReq.client_ip.set((String)localObject);
+      }
+      localObject = ors.f();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localGetVid2UrlsReq.imei.set((String)localObject);
+      }
+      localGetVid2UrlsReq.net_type.set(bewy.a(null));
+      localGetVid2UrlsReq.system.set(1);
+      localGetVid2UrlsReq.timestamp.set(System.currentTimeMillis() / 1000L + "");
+      if (ors.a() != null) {}
+      for (localObject = ors.a().getAccount();; localObject = "")
+      {
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          localGetVid2UrlsReq.uid.set((String)localObject);
+        }
+        int j = paramArrayOfString.length;
+        i = 0;
+        while (i < j)
+        {
+          localObject = paramArrayOfString[i];
+          localGetVid2UrlsReq.vids.add(localObject);
+          i += 1;
+        }
+      }
+      localObject = MD5.toMD5(localGetVid2UrlsReq.appid.get() + "|" + localGetVid2UrlsReq.timestamp.get() + "|" + localGetVid2UrlsReq.uid.get() + "|" + localGetVid2UrlsReq.system.get() + "|" + localGetVid2UrlsReq.app_name.get() + "|" + localGetVid2UrlsReq.app_version.get() + "|" + "MTQzMTkzYWRhZmdkaGg=");
+      localGetVid2UrlsReq.sign.set((String)localObject);
+      localObject = new oidb_cmd0xda2.ReqBody();
+      ((oidb_cmd0xda2.ReqBody)localObject).msg_get_vid_to_url_req.set(localGetVid2UrlsReq);
+      ((oidb_cmd0xda2.ReqBody)localObject).uint32_req_type.set(1);
+      localObject = pvb.a("OidbSvc.0xda2", 3490, 0, ((oidb_cmd0xda2.ReqBody)localObject).toByteArray());
+      QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "request vids " + paramArrayOfString);
+      int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      ((ToServiceMsg)localObject).addAttribute("vidToUrlSeq", Integer.valueOf(i));
+      a(Integer.valueOf(i), parampcr);
+      a((ToServiceMsg)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pcs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,30 @@
-import NS_QQ_STORY_META.META.StStoryFeed;
-import NS_QQ_STORY_META.META.StUser;
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.StStoryFeedUtil;
-import java.io.Serializable;
-import java.util.ArrayList;
+import android.view.Window;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-class adkm
-  implements View.OnClickListener
+public class adkm
+  implements DialogInterface.OnDismissListener
 {
-  adkm(adkl paramadkl, MessageForAIOStoryVideo paramMessageForAIOStoryVideo) {}
+  public adkm(PublicAccountListActivity paramPublicAccountListActivity, int paramInt, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    long l = System.currentTimeMillis();
-    paramView = (acuo)this.jdField_a_of_type_Adkl.a.getManager(282);
-    if (paramView != null) {
-      paramView.a(4, 7);
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForAIOStoryVideo.mStStoryFeed;
-    if ((localObject != null) && (((META.StStoryFeed)localObject).postUser != null))
-    {
-      paramView = new Bundle();
-      paramView.putLong("key_launch_time", l);
-      paramView.putLong("key_current_feeduin", ((META.StStoryFeed)localObject).postUser.uin.get());
-      paramView.putInt("key_request_from", 3);
-      paramView.putInt("key_weishi_entrance_type", 19);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(localObject);
-      localObject = StStoryFeedUtil.getConvertDataList(localArrayList);
-      paramView.putInt("key_video_story_jump_position", 0);
-      paramView.putSerializable("key_video_story_tranparent_story_feed", (Serializable)localObject);
-      paramView.putInt("key_request_business_type", 7);
-      bbeg.a(paramView);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.d.setTag("");
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getWindow().peekDecorView().getWindowToken(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkm
  * JD-Core Version:    0.7.0.1
  */

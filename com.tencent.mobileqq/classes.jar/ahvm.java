@@ -1,28 +1,29 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
 
 public class ahvm
-  implements axhy
+  extends ahvn
 {
-  public ahvm(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public static final int[] a = { 2131690782, 2131690787, 2131690784, 2131690785, 2131690789, 2131690786, 2131690783 };
+  public static final int[] b = { 2131364147, 2131364152, 2131364149, 2131364150, 2131364153, 2131364151, 2131364148 };
   
-  public void a(Exception paramException)
+  public ahvm(FragmentActivity paramFragmentActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
-    }
+    super(paramFragmentActivity);
   }
   
-  public void a(RuntimeException paramRuntimeException)
+  protected int[] a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
-    }
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvm
  * JD-Core Version:    0.7.0.1
  */

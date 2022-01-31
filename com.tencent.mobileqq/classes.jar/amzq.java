@@ -1,53 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-public class amzq
-  extends amyp<amzp>
+public abstract interface amzq
 {
-  public int a()
-  {
-    return 76;
-  }
+  public abstract void a();
   
-  @NonNull
-  public amzp a()
-  {
-    return new amzp();
-  }
+  public abstract void a(int paramInt);
   
-  @NonNull
-  public amzp a(amph[] paramArrayOfamph)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    paramArrayOfamph = paramArrayOfamph[0].a;
-    bbwo.a().a(localQQAppInterface.getApplication(), paramArrayOfamph, localQQAppInterface.getCurrentAccountUin());
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipKeywordsProcessor", 2, "receiveAllConfigs|type: 76,content: " + paramArrayOfamph);
-    }
-    return new amzp();
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public Class<amzp> a()
-  {
-    return amzp.class;
-  }
-  
-  @NonNull
-  public amzp b()
-  {
-    return new amzp();
-  }
-  
-  public boolean c()
-  {
-    return false;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzq
  * JD-Core Version:    0.7.0.1
  */

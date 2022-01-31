@@ -1,42 +1,36 @@
-import org.json.JSONObject;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class ajaz
-  implements ajbn
+class ajaz
+  implements WtTicketPromise
 {
-  private int a;
+  ajaz(ajat paramajat, ajba paramajba) {}
   
-  public ajaz()
+  public void Done(Ticket paramTicket)
   {
-    int i = ajbm.a;
-    ajbm.a = i + 1;
-    this.a = i;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public JSONObject a(ajbm paramajbm, JSONObject paramJSONObject)
-  {
-    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
+    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
     {
-      paramJSONObject = new ajam(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
-      if (paramajbm != null) {
-        paramajbm.a(paramJSONObject);
-      }
+      paramTicket = new String(paramTicket._sig);
+      this.jdField_a_of_type_Ajba.a(paramTicket);
+      return;
     }
-    return null;
+    this.jdField_a_of_type_Ajat.c("get skey is null");
   }
   
-  public int c()
+  public void Failed(ErrMsg paramErrMsg)
   {
-    return this.a;
+    this.jdField_a_of_type_Ajat.c("get skey failed");
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_Ajat.c("get skey time out");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajaz
  * JD-Core Version:    0.7.0.1
  */

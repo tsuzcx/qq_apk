@@ -1,22 +1,26 @@
-import android.widget.ImageView;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import java.io.File;
+import android.view.View;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class beor
-  implements beok
+  implements bjyn
 {
-  public beor(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  public beor(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
   
-  public void a(File paramFile)
+  public void a(int paramInt)
   {
-    if ((MiniAppVideoPlayer.c(this.a) != null) && (paramFile != null)) {
-      MiniAppVideoPlayer.c(this.a).setImageBitmap(beli.a(paramFile.getAbsolutePath()));
+    if (paramInt == 0)
+    {
+      this.a.g = true;
+      View localView = this.a.a("map_key_troop_mem_recent_said");
+      if (localView != null) {
+        ProfileCardMoreInfoView.a(localView, this.a.a);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beor
  * JD-Core Version:    0.7.0.1
  */

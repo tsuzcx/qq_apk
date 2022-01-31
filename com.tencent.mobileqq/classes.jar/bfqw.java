@@ -1,25 +1,20 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.widget.DynamicGridView;
-
-public class bfqw
-  implements TypeEvaluator<Rect>
+public abstract interface bfqw
 {
-  public bfqw(DynamicGridView paramDynamicGridView) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public int a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
-  }
+  public abstract void a(byte[] paramArrayOfByte);
   
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
-  {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
-  }
+  public abstract void b(byte[] paramArrayOfByte);
+  
+  public abstract void c(byte[] paramArrayOfByte);
+  
+  public abstract void d(byte[] paramArrayOfByte);
+  
+  public abstract void e(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfqw
  * JD-Core Version:    0.7.0.1
  */

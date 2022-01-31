@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.specify;
 
-import ahfh;
-import aycd;
+import aizl;
+import baaa;
 
 public class SpecifyRedPacketAnimMsg$2
   implements Runnable
 {
-  public SpecifyRedPacketAnimMsg$2(ahfh paramahfh, aycd paramaycd) {}
+  public SpecifyRedPacketAnimMsg$2(aizl paramaizl, baaa parambaaa) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class SpecifyRedPacketAnimMsg$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg.2
  * JD-Core Version:    0.7.0.1
  */

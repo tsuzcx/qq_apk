@@ -1,16 +1,27 @@
-import android.view.View;
-import com.tencent.widget.ListView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
-public abstract interface rek
-  extends bfub
+class rek
+  extends alox
 {
-  public abstract void a(int paramInt1, View paramView, ListView paramListView, int paramInt2);
+  rek(reh paramreh, QQAppInterface paramQQAppInterface) {}
   
-  public abstract void a(View paramView, ListView paramListView, int paramInt);
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("VALUE_USER_UIN_TO_GET_NICK_NAME", paramString);
+      localBundle.putString("VALUE_USER_NICK_NAME", bdbt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, true));
+      QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_GET_NICK_NAME_BY_UIN", localBundle, null);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rek
  * JD-Core Version:    0.7.0.1
  */

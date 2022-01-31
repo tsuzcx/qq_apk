@@ -4,18 +4,18 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnItemTouchListener;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.MotionEvent;
-import bfyi;
+import bhzf;
 
 public abstract class OnRecyclerItemClickListener
   implements RecyclerView.OnItemTouchListener
 {
-  private bfyi mGestureDetector;
+  private bhzf mGestureDetector;
   private DragRecyclerView recyclerView;
   
   public OnRecyclerItemClickListener(DragRecyclerView paramDragRecyclerView)
   {
     this.recyclerView = paramDragRecyclerView;
-    this.mGestureDetector = new bfyi(paramDragRecyclerView.getContext(), new OnRecyclerItemClickListener.ItemTouchHelperGestureListener(this, null));
+    this.mGestureDetector = new bhzf(paramDragRecyclerView.getContext(), new OnRecyclerItemClickListener.ItemTouchHelperGestureListener(this, null));
   }
   
   public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
@@ -40,7 +40,7 @@ public abstract class OnRecyclerItemClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.OnRecyclerItemClickListener
  * JD-Core Version:    0.7.0.1
  */

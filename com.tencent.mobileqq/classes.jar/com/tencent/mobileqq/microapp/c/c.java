@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.c;
 
 import android.content.res.AssetManager;
 import android.text.TextUtils;
-import bbkk;
+import bdje;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.microapp.apkg.q;
 import com.tencent.mobileqq.microapp.apkg.r;
@@ -532,7 +532,7 @@ public final class c
   
   public String c(String paramString)
   {
-    if (bbkk.a(paramString)) {
+    if (bdje.a(paramString)) {
       return "";
     }
     String str2 = a.c(paramString);
@@ -580,7 +580,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.c.c
  * JD-Core Version:    0.7.0.1
  */

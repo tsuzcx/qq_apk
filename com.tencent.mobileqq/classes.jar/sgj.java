@@ -1,39 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
-final class sgj
-  implements DialogInterface.OnClickListener
+public class sgj
 {
-  sgj(Activity paramActivity, ProfileParams paramProfileParams, QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public final HashMap<String, String> a;
+  public ovb a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public sgj()
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        aqfd.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
-      } while ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()));
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
-    } while (sgg.a == null);
-    sgg.a.dismiss();
-    sgg.a = null;
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    sgg.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+    this.jdField_a_of_type_Int = 1002;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Ovb = new ovb();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgj
  * JD-Core Version:    0.7.0.1
  */

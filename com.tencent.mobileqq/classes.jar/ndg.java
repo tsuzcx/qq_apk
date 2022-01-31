@@ -1,28 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-public class ndg
+final class ndg
+  implements HostnameVerifier
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  String b;
+  ndg(String paramString) {}
   
-  ndg(nde paramnde)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long;
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a, paramSSLSession);
+    QLog.d("Q.share.sdk", 1, new Object[] { "uploadImageWithHttps|verify hostname=", paramString, ", host=", this.a, ", verify=", Boolean.valueOf(bool) });
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ndg
  * JD-Core Version:    0.7.0.1
  */

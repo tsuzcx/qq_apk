@@ -1,249 +1,90 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.util.SparseArray;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Toast;
+import android.view.View.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class arbp
+final class arbp
+  implements View.OnClickListener
 {
-  public static int a;
-  public static SparseArray<WeakReference<arbp>> a;
-  long jdField_a_of_type_Long = -1L;
-  Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private View jdField_a_of_type_AndroidViewView;
-  private arbz jdField_a_of_type_Arbz;
-  public TVK_IMediaPlayer a;
-  TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  private boolean b;
-  public int c;
-  private boolean c;
+  arbp(FileManagerEntity paramFileManagerEntity, Activity paramActivity, boolean paramBoolean) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    jdField_a_of_type_Int = -1;
-  }
-  
-  private arbp(Context paramContext, int paramInt)
-  {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public static View a(Context paramContext)
-  {
-    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    if (localTVK_IProxyFactory != null)
+    TeamWorkFileImportInfo localTeamWorkFileImportInfo;
+    label96:
+    boolean bool2;
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (this.jdField_a_of_type_AndroidAppActivity != null))
     {
-      if (Build.VERSION.SDK_INT >= 16) {
-        return (View)localTVK_IProxyFactory.createVideoView_Scroll(paramContext);
+      paramView = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bafi.a(null, "0X800A21D");
+        localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
+        localTeamWorkFileImportInfo.c = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath;
+        localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
+        localTeamWorkFileImportInfo.jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label232;
+        }
+        localTeamWorkFileImportInfo.jdField_d_of_type_Int = 8;
+        localTeamWorkFileImportInfo.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+        if (!(this.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity)) {
+          break label401;
+        }
+        bool2 = ((FileBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).f();
+        if ((!((FileBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).b()) || (bool2)) {
+          break label241;
+        }
+        bool1 = true;
+        label148:
+        localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = bool1;
       }
-      return (View)localTVK_IProxyFactory.createVideoView(paramContext);
     }
-    return null;
-  }
-  
-  public static arbp a(Context paramContext, int paramInt)
-  {
-    paramContext = new arbp(paramContext, paramInt);
-    jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, new WeakReference(paramContext));
-    return paramContext;
-  }
-  
-  private void b()
-  {
-    ((IVideoViewBase)this.jdField_a_of_type_AndroidViewView).addViewCallBack(new arbq(this));
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    label401:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = null;
-      this.jdField_a_of_type_AndroidViewView = null;
-      this.jdField_c_of_type_Boolean = false;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-    }
-    return -1L;
-  }
-  
-  public arca a()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
-    {
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-      this.jdField_c_of_type_Int = 3;
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-      QLog.d("VideoBaseItem", 2, " you have paused Mediaplayer");
-    }
-    return new arca(this, this.jdField_c_of_type_Int, this.jdField_a_of_type_Long);
-  }
-  
-  public void a()
-  {
-    c();
-    this.jdField_c_of_type_Int = 5;
-    this.jdField_a_of_type_Arbz = null;
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (this.jdField_c_of_type_Int == 4) {
-      a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0L, paramLong, paramBoolean);
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    b();
-    this.jdField_c_of_type_Int = 1;
-  }
-  
-  public void a(arbz paramarbz)
-  {
-    this.jdField_a_of_type_Arbz = paramarbz;
-  }
-  
-  public void a(arca paramarca)
-  {
-    if (this.jdField_c_of_type_Int != 3) {
-      QLog.d("VideoBaseItem", 2, "you should check thi status.Have you stopped Mediaplayer");
-    }
-    while ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
+      if ((bool1) && (!bdcs.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())))
+      {
+        QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131720670), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298914));
+        return;
+        azmj.b(paramView, "dc00898", "", "", "0X8009063", "0X8009063", 0, 0, "", "", "", "");
+        break;
+        label232:
+        localTeamWorkFileImportInfo.jdField_d_of_type_Int = 5;
+        break label96;
+        label241:
+        bool1 = false;
+        break label148;
+      }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin))
+      {
+        localTeamWorkFileImportInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
+        localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
+        localTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
+        localTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
+        localTeamWorkFileImportInfo.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
+        localTeamWorkFileImportInfo.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq;
+        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status != 16) {
+          localTeamWorkFileImportInfo.jdField_a_of_type_Boolean = true;
+        }
+      }
+      bacb.a(localTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidAppActivity, paramView, localTeamWorkFileImportInfo.jdField_d_of_type_Int);
+      return;
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131720665), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298914));
       return;
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo((int)this.jdField_a_of_type_Long);
-    }
-    this.jdField_c_of_type_Int = 2;
-    QLog.d("VideoBaseItem", 2, "you restart mediaplayer");
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    if (this.jdField_c_of_type_Int < 1)
-    {
-      QLog.d("VideoBaseItem", 2, "you should check video staus! this function only call be calld after VideoStatusRecord.ITEM_BIND_VIEW");
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      Toast.makeText(this.jdField_a_of_type_AndroidContentContext, "video view is empty,please check,you shold bind TencentSdkView", 0).show();
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory == null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    }
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) && (this.jdField_a_of_type_AndroidViewView != null))
-    {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(BaseApplicationImpl.getApplication(), (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new arbr(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new arbs(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new arbt(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new arbu(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new arbv(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnNetVideoInfoListener(new arbw(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparingListener(new arbx(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(new arby(this));
-    }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(paramBoolean);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    String str = araw.a(paramString2);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", "shouq_hotpic_online_video");
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-    File localFile = new File(str);
-    if (araw.a(paramString2, paramLong2))
-    {
-      this.jdField_b_of_type_Boolean = true;
-      localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-      localTVK_PlayerVideoInfo.setPlayType(4);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(BaseApplicationImpl.getContext(), localFile.getAbsolutePath(), paramLong1, 0L, localTVK_PlayerVideoInfo);
-      QLog.d("VideoBaseItem", 2, "huanxxiao test file have been cached");
-      return;
-    }
-    this.jdField_b_of_type_Boolean = false;
-    localTVK_PlayerVideoInfo.setConfigMap("file_dir", str);
-    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", "20161009");
-    localTVK_PlayerVideoInfo.setPlayMode("cache_extend_video");
-    localTVK_PlayerVideoInfo.setVid(bdik.d(paramString1));
-    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(BaseApplicationImpl.getContext(), paramString1, paramLong1, 0L, localTVK_PlayerVideoInfo);
-    QLog.d("VideoBaseItem", 2, "huanxxiao test open with url ok");
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute();
-    }
-    return true;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
-      return -1;
-    }
-    return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getBufferPercent();
-  }
-  
-  public long b()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
-      return -1L;
-    }
-    return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbp
  * JD-Core Version:    0.7.0.1
  */

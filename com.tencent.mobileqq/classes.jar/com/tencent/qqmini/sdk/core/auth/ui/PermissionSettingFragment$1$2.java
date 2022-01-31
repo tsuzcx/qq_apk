@@ -1,22 +1,21 @@
 package com.tencent.qqmini.sdk.core.auth.ui;
 
 import android.app.ProgressDialog;
-import beim;
 
-public class PermissionSettingFragment$1$2
+class PermissionSettingFragment$1$2
   implements Runnable
 {
-  public PermissionSettingFragment$1$2(beim parambeim) {}
+  PermissionSettingFragment$1$2(PermissionSettingFragment.1 param1) {}
   
   public void run()
   {
-    PermissionSettingFragment.a(this.a.jdField_a_of_type_ComTencentQqminiSdkCoreAuthUiPermissionSettingFragment, this.a.jdField_a_of_type_JavaLangString);
-    PermissionSettingFragment.a(this.a.jdField_a_of_type_ComTencentQqminiSdkCoreAuthUiPermissionSettingFragment).dismiss();
+    PermissionSettingFragment.access$000(this.this$1.this$0, this.this$1.val$appName);
+    PermissionSettingFragment.access$100(this.this$1.this$0).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.auth.ui.PermissionSettingFragment.1.2
  * JD-Core Version:    0.7.0.1
  */

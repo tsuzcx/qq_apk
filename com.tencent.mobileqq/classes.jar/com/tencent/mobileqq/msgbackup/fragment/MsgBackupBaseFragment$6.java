@@ -2,7 +2,7 @@ package com.tencent.mobileqq.msgbackup.fragment;
 
 import android.os.Message;
 import android.os.SystemClock;
-import asnz;
+import auey;
 import mqq.os.MqqHandler;
 
 class MsgBackupBaseFragment$6
@@ -12,7 +12,7 @@ class MsgBackupBaseFragment$6
   
   public void run()
   {
-    if (!asnz.a().b())
+    if (!auey.a().b())
     {
       if (SystemClock.elapsedRealtime() - this.this$0.jdField_b_of_type_Long > 30000L)
       {
@@ -29,7 +29,7 @@ class MsgBackupBaseFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment.6
  * JD-Core Version:    0.7.0.1
  */

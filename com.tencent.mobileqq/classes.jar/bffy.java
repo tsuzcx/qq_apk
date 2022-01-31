@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.ui.MoreItem;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.open.applist.QZoneAppListActivity;
+import com.tencent.open.applist.QZoneAppListActivity.1.1;
 
-public final class bffy
-  implements Parcelable.Creator<MoreItem>
+public class bffy
+  extends OnPluginInstallListener.Stub
 {
-  public MoreItem a(Parcel paramParcel)
+  public bffy(QZoneAppListActivity paramQZoneAppListActivity) {}
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    return new MoreItem(paramParcel);
+    this.a.a(paramInt1 / paramInt2 * 100);
   }
   
-  public MoreItem[] a(int paramInt)
+  public void onInstallError(String paramString, int paramInt)
   {
-    return new MoreItem[paramInt];
+    this.a.runOnUiThread(new QZoneAppListActivity.1.1(this));
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    QZoneAppListActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bffy
  * JD-Core Version:    0.7.0.1
  */

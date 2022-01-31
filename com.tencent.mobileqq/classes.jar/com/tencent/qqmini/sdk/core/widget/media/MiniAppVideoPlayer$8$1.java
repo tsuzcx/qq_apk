@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.widget.media;
 
-import beou;
+import bgox;
 
 public class MiniAppVideoPlayer$8$1
   implements Runnable
 {
-  public MiniAppVideoPlayer$8$1(beou parambeou) {}
+  public MiniAppVideoPlayer$8$1(bgox parambgox) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class MiniAppVideoPlayer$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,117 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-class axgx
-  extends BroadcastReceiver
+public class axgx
+  extends RecyclerView.Adapter<axha>
+  implements bcwt
 {
-  axgx(axgw paramaxgw) {}
+  private int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new axgy(this);
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private bcws jdField_a_of_type_Bcws;
+  private List<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_a_of_type_JavaUtilList;
+  private Map<String, Bitmap> jdField_a_of_type_JavaUtilMap;
   
-  public void onReceive(Context arg1, Intent paramIntent)
+  private axgx(Context paramContext, bcws parambcws, RecyclerView paramRecyclerView)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    for (;;)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bcws = parambcws;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bdda.a();
+    this.jdField_a_of_type_Bcws.a(this);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    paramRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
+  }
+  
+  private Bitmap a(String paramString)
+  {
+    return a(paramString, 1, (byte)0);
+  }
+  
+  private Bitmap a(String paramString, int paramInt, byte paramByte)
+  {
+    Bitmap localBitmap = this.jdField_a_of_type_Bcws.a(paramInt, paramString);
+    if (localBitmap != null) {
+      return localBitmap;
+    }
+    if (!this.jdField_a_of_type_Bcws.a()) {
+      this.jdField_a_of_type_Bcws.a(paramString, paramInt, true, paramByte);
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  private void a()
+  {
+    int j = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount();
+    int i = 0;
+    while (i < j)
     {
-      return;
-      if (!"tencent.video.gesturemgr.notify".equals(paramIntent.getAction())) {
-        continue;
+      Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(i);
+      localObject = (axha)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get(axha.a((axha)localObject));
+      if (localBitmap != null) {
+        axha.a((axha)localObject).setImageBitmap(localBitmap);
       }
-      int i = paramIntent.getIntExtra("Event_Progress", 0);
-      if ((i == 100) || (i < 0))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-        int j = this.a.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_Int = axgy.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-        boolean bool;
-        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
-        {
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("QavGesture", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGesture[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
-          }
-          paramIntent = new ArrayList();
-        }
-        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-        {
-          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-          ??? = paramIntent.iterator();
-          while (???.hasNext()) {
-            ((axgs)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
-          }
-          bool = false;
-        }
+      i += 1;
+    }
+  }
+  
+  public axha a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new axha(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562518, paramViewGroup, false), null);
+  }
+  
+  public void a(axha paramaxha, int paramInt)
+  {
+    ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    axha.a(paramaxha, localMemberInfo.a);
+    axha.a(paramaxha).setText(localMemberInfo.b);
+    axha.a(paramaxha).setImageBitmap(a(localMemberInfo.a));
+  }
+  
+  public void a(List<ReceiptMessageReadMemberListFragment.MemberInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramBitmap);
+    if (paramInt1 <= 0)
+    {
+      if (this.jdField_a_of_type_Int == 0) {
+        a();
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
-      }
-      paramIntent = new ArrayList();
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        ??? = paramIntent.iterator();
-        if (!???.hasNext()) {
-          continue;
-        }
-        ((axgs)???.next()).a(i);
-      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axgx
  * JD-Core Version:    0.7.0.1
  */

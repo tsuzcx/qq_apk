@@ -1,106 +1,68 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.util.WeakReference;
+import mqq.observer.SubAccountObserver;
 
 class alyq
-  implements aysc
+  extends SubAccountObserver
 {
-  alyq(alyp paramalyp) {}
+  alyq(alyp paramalyp, azyv paramazyv, azyu paramazyu, boolean paramBoolean) {}
   
-  public void onResp(aysz arg1)
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject1;
-    boolean bool;
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if ((paramString3 == null) || (paramString2 == null) || (paramString1 == null))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack key is null or ? happen 0 ? =>");
+        if (paramString3 != null) {
+          break label107;
+        }
+        bool1 = true;
+        paramString3 = localStringBuilder.append(bool1);
+        if (paramString2 != null) {
+          break label113;
+        }
+      }
+      label107:
+      label113:
+      for (bool1 = true;; bool1 = false)
+      {
+        paramString2 = paramString3.append(bool1);
+        bool1 = bool2;
+        if (paramString1 == null) {
+          bool1 = true;
+        }
+        QLog.e("SUB_ACCOUNT", 2, bool1);
+        this.jdField_a_of_type_Alyp.notifyUI(2, true, this.jdField_a_of_type_Azyv);
+        return;
+        bool1 = false;
+        break;
+      }
+    }
+    if ((this.jdField_a_of_type_Alyp.app != null) && (paramString2.equalsIgnoreCase(this.jdField_a_of_type_Azyv.c)) && (paramString1.equalsIgnoreCase(this.jdField_a_of_type_Alyp.app.getAccount())))
+    {
+      this.jdField_a_of_type_Azyu.a(paramString2, paramString3, this.jdField_a_of_type_Boolean);
+      azyl.a(this.jdField_a_of_type_Alyp.app, (byte)1, paramString2);
+      this.jdField_a_of_type_Azyv.b = true;
+      this.jdField_a_of_type_Alyp.notifyUI(2, true, this.jdField_a_of_type_Azyv);
+      return;
+    }
     if (QLog.isColorLevel())
     {
-      localObject1 = new StringBuilder().append("onResp reqUrl: resp is null: ");
-      if (??? == null)
-      {
-        bool = true;
-        QLog.i("Q.dynamicAvatar", 2, bool);
+      paramString3 = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack error happen 1 ? =>app:");
+      if (this.jdField_a_of_type_Alyp.app == null) {
+        bool1 = true;
       }
+      QLog.d("SUB_ACCOUNT", 2, bool1 + " subUin:" + paramString2.equalsIgnoreCase(this.jdField_a_of_type_Azyv.c) + " mainAccount:" + paramString1.equalsIgnoreCase(this.jdField_a_of_type_Alyp.app.getAccount()));
     }
-    else
-    {
-      if (??? != null) {
-        break label51;
-      }
-    }
-    label51:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      localObject1 = ((ayrx)???.jdField_a_of_type_Aysy).jdField_a_of_type_JavaLangString;
-      int i = ???.jdField_a_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.dynamicAvatar", 2, "onResp reqUrl: " + (String)localObject1 + " mResult: " + i + ",httpCode:" + ???.c + ",errDesc:" + ???.jdField_a_of_type_JavaLangString);
-      }
-      for (;;)
-      {
-        synchronized (alyp.a(this.a))
-        {
-          if (alyp.a(this.a).isEmpty()) {
-            break;
-          }
-          Iterator localIterator = alyp.a(this.a).iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          Object localObject3 = (WeakReference)localIterator.next();
-          if ((localObject3 == null) || (((WeakReference)localObject3).get() == null)) {
-            continue;
-          }
-          localObject3 = (alyr)((WeakReference)localObject3).get();
-          if (i == 0)
-          {
-            bool = true;
-            ((alyr)localObject3).a((String)localObject1, bool, false);
-          }
-        }
-        bool = false;
-      }
-      alyp.a(this.a).remove(localObject2);
-    } while ((!bbfj.g(BaseApplicationImpl.getContext())) || (bbfj.h(BaseApplicationImpl.getContext())));
-    alyp.a(this.a);
-  }
-  
-  public void onUpdateProgeress(aysy arg1, long paramLong1, long paramLong2)
-  {
-    if ((!alyp.a(this.a).isEmpty()) && ((??? instanceof ayrx))) {
-      if (paramLong2 <= 0L) {
-        break label148;
-      }
-    }
-    label148:
-    for (int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);; i = 0)
-    {
-      String str = ((ayrx)???).jdField_a_of_type_JavaLangString;
-      synchronized (alyp.a(this.a))
-      {
-        if (!alyp.a(this.a).isEmpty())
-        {
-          Iterator localIterator = alyp.a(this.a).iterator();
-          while (localIterator.hasNext())
-          {
-            WeakReference localWeakReference = (WeakReference)localIterator.next();
-            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((alyr)localWeakReference.get()).a(str, i);
-            }
-          }
-        }
-      }
-      return;
-    }
+    this.jdField_a_of_type_Alyp.notifyUI(2, true, this.jdField_a_of_type_Azyv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,28 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 import com.tencent.qphone.base.util.QLog;
 
-class ajkx
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
+public class ajkx
+  implements azde
 {
-  ajkx(ajks paramajks) {}
+  public ajkx(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void a(Exception paramException)
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "[onCameraException]", paramException);
+    }
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkx
  * JD-Core Version:    0.7.0.1
  */

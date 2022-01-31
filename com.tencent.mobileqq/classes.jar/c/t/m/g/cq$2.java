@@ -18,7 +18,7 @@ final class cq$2
         co.a("file " + this.a.getName() + " is empty, then delete.");
         return;
       }
-      ct.i.a(this.b, arrayOfByte, new cq.2.1(this));
+      cu.j.a(this.b, arrayOfByte, new cq.2.1(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -29,7 +29,7 @@ final class cq$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.cq.2
  * JD-Core Version:    0.7.0.1
  */

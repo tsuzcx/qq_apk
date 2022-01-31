@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import actj;
+import aekt;
 import android.widget.EditText;
 
 class BusinessCardEditActivity$2
@@ -11,12 +11,12 @@ class BusinessCardEditActivity$2
   public void run()
   {
     this.a.requestFocusFromTouch();
-    actj.a(this.a);
+    aekt.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.2
  * JD-Core Version:    0.7.0.1
  */

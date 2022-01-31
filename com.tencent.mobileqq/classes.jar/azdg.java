@@ -1,27 +1,20 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-
-public class azdg
-  implements InputFilter
+class azdg
+  implements azbg
 {
-  public azdg(AbsPublishActivity paramAbsPublishActivity) {}
+  azdg(azdf paramazdf, azdk paramazdk) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramCharSequence != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if (bajf.a(paramCharSequence, '\n') + bajf.a(paramSpanned.toString(), '\n') > 100) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
+    if ((paramInt == 1) && (this.jdField_a_of_type_Azdk != null)) {
+      this.jdField_a_of_type_Azdk.a(paramBoolean, true);
     }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azdg
  * JD-Core Version:    0.7.0.1
  */

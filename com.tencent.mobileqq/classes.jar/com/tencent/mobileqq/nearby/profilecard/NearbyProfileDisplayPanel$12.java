@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import atpk;
+import avgk;
 import com.tencent.image.URLDrawable;
 
 public class NearbyProfileDisplayPanel$12
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$12(atpk paramatpk, URLDrawable paramURLDrawable) {}
+  public NearbyProfileDisplayPanel$12(avgk paramavgk, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class NearbyProfileDisplayPanel$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.12
  * JD-Core Version:    0.7.0.1
  */

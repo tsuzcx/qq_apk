@@ -1,27 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import mqq.app.QQPermissionCallback;
 
 public class acxc
-  implements ValueAnimator.AnimatorUpdateListener
+  implements QQPermissionCallback
 {
-  public acxc(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
+  public acxc(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f < 0.5F)
-    {
-      this.a.c.setAlpha(1.0F - f * 2.0F);
-      return;
-    }
-    this.a.c.setAlpha(f * 2.0F - 1.0F);
+    bdcd.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    FriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxc
  * JD-Core Version:    0.7.0.1
  */

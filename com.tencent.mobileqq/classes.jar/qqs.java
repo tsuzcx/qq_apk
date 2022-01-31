@@ -1,70 +1,41 @@
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 
 public class qqs
-  implements qmy
+  extends qqt
 {
-  private qqs(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
-  
-  public void a(boolean paramBoolean)
+  public qqs(@NonNull Context paramContext, int paramInt)
   {
-    boolean bool2 = true;
-    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
-    if (VideoFeedsRecommendFragment.a(this.a) != null)
-    {
-      VideoFeedsRecommendFragment.a(this.a).a.d(paramBoolean);
-      if ((!VideoFeedsRecommendFragment.a(this.a).b) && ((VideoFeedsRecommendFragment.a(this.a).itemView.getParent() instanceof VideoFeedsRecyclerView)))
-      {
-        localVideoFeedsRecyclerView = (VideoFeedsRecyclerView)VideoFeedsRecommendFragment.a(this.a).itemView.getParent();
-        if (paramBoolean) {
-          break label201;
-        }
-        bool1 = true;
-        localVideoFeedsRecyclerView.setScrollable(bool1);
-      }
-    }
-    if (paramBoolean)
-    {
-      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
-      label112:
-      if (!VideoFeedsRecommendFragment.b(this.a))
-      {
-        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
-        if (paramBoolean) {
-          break label223;
-        }
-      }
-    }
-    label201:
-    label223:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localVideoFeedsRecyclerView.setScrollable(bool1);
-      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
-      {
-        VideoFeedsRecommendFragment.a(this.a).a();
-        VideoFeedsRecommendFragment.a(this.a, false);
-      }
-      if (VideoFeedsRecommendFragment.a(this.a) != null) {
-        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
-      }
-      return;
-      bool1 = false;
-      break;
-      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
-      break label112;
-    }
+    super(paramContext, paramInt);
   }
   
-  public void b()
+  public boolean a()
   {
-    this.a.b(true);
+    return getCount() == 5;
+  }
+  
+  public boolean a(@NonNull TagInfo paramTagInfo)
+  {
+    int i = getCount();
+    super.a(paramTagInfo);
+    return i != getCount();
+  }
+  
+  @NonNull
+  public View getView(int paramInt, @Nullable View paramView, @NonNull ViewGroup paramViewGroup)
+  {
+    paramView = super.getView(paramInt, paramView, paramViewGroup);
+    paramView.setSelected(true);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqs
  * JD-Core Version:    0.7.0.1
  */

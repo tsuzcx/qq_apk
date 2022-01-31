@@ -1,30 +1,73 @@
-import com.tencent.widget.AbsListView;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
-class bjyp
-  implements bfos
+public class bjyp
 {
-  int jdField_a_of_type_Int = 0;
+  private static bjyp jdField_a_of_type_Bjyp;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.homeworkCfg.name();
+  private int jdField_a_of_type_Int = 22;
+  private almm jdField_a_of_type_Almm = new bjyq(this);
   
-  bjyp(bjyn parambjyn) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  private bjyp()
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    DeviceProfileManager.a(this.jdField_a_of_type_Almm);
+    a();
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public static bjyp a()
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == bjyn.a(this.jdField_a_of_type_Bjyn, bjyn.a(this.jdField_a_of_type_Bjyn)).a().size()) && (!bjyn.a(this.jdField_a_of_type_Bjyn, bjyn.a(this.jdField_a_of_type_Bjyn)).a()))
+    if (jdField_a_of_type_Bjyp == null) {}
+    try
     {
-      paramAbsListView = bjyn.a(this.jdField_a_of_type_Bjyn);
-      bjyn.a(this.jdField_a_of_type_Bjyn, bjyn.a(this.jdField_a_of_type_Bjyn)).b(paramAbsListView);
+      if (jdField_a_of_type_Bjyp == null) {
+        jdField_a_of_type_Bjyp = new bjyp();
+      }
+      return jdField_a_of_type_Bjyp;
     }
+    finally {}
+  }
+  
+  public void a()
+  {
+    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    String[] arrayOfString;
+    if (!TextUtils.isEmpty(str))
+    {
+      arrayOfString = str.split("\\|");
+      if (arrayOfString.length < 1) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("HomeworkDpcCfg", 2, String.format("loadConfig, mUseNewApiLevel: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("HomeworkDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
+        this.jdField_a_of_type_Int = 22;
+        continue;
+      }
+      this.jdField_a_of_type_Int = 22;
+    }
+  }
+  
+  public boolean a()
+  {
+    QLog.d("HomeworkDpcCfg", 1, String.format("hwUseNewAPI thisVer=%d cfgVer=%d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    return Build.VERSION.SDK_INT <= this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,112 +1,104 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.AntiphingToast.3;
+import java.util.Timer;
 
-public final class beis
+public class beis
 {
-  private final beiu jdField_a_of_type_Beiu;
-  private boolean jdField_a_of_type_Boolean;
-  private final boolean[] jdField_a_of_type_ArrayOfBoolean;
-  private boolean b;
+  private int jdField_a_of_type_Int;
+  private Resources jdField_a_of_type_AndroidContentResResources;
+  public Handler a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View jdField_a_of_type_AndroidViewView;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString = "AntiPhing";
+  private boolean jdField_a_of_type_Boolean = true;
   
-  private beis(beip parambeip, beiu parambeiu)
+  public beis()
   {
-    this.jdField_a_of_type_Beiu = parambeiu;
-    if (beiu.a(parambeiu)) {}
-    for (parambeip = null;; parambeip = new boolean[beip.a(parambeip)])
-    {
-      this.jdField_a_of_type_ArrayOfBoolean = parambeip;
-      return;
-    }
+    this.jdField_a_of_type_AndroidOsHandler = new beit(this, Looper.getMainLooper());
   }
   
-  public OutputStream a(int paramInt)
+  public void a(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    if ((paramInt < 0) || (paramInt >= beip.a(this.jdField_a_of_type_Beip))) {
-      throw new IllegalArgumentException("Expected index " + paramInt + " to be greater than 0 and less than the maximum value count of " + beip.a(this.jdField_a_of_type_Beip));
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, paramFloat1, paramFloat2);
+    localTranslateAnimation.setFillAfter(true);
+    localTranslateAnimation.setDuration(700L);
+    localTranslateAnimation.setStartOffset(20L);
+    if (paramBoolean == true) {
+      localTranslateAnimation.setAnimationListener(new beiu(this));
     }
-    synchronized (this.jdField_a_of_type_Beip)
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.startAnimation(localTranslateAnimation);
+  }
+  
+  public void a(int paramInt)
+  {
+    a(this.jdField_a_of_type_AndroidContentResResources.getString(paramInt));
+  }
+  
+  public void a(int paramInt1, int paramInt2, FrameLayout paramFrameLayout)
+  {
+    a(paramFrameLayout);
+    a(paramInt1);
+    b(paramInt2);
+  }
+  
+  public void a(FrameLayout paramFrameLayout)
+  {
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
+    this.jdField_a_of_type_AndroidContentResResources = paramFrameLayout.getContext().getResources();
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)) {
+      return false;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViewsInLayout();
+    if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+      this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());
+    }
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      if (beiu.a(this.jdField_a_of_type_Beiu) != this) {
-        throw new IllegalStateException();
-      }
-    }
-    if (!beiu.a(this.jdField_a_of_type_Beiu)) {
-      this.jdField_a_of_type_ArrayOfBoolean[paramInt] = true;
-    }
-    File localFile = this.jdField_a_of_type_Beiu.b(paramInt);
-    try
-    {
-      Object localObject2 = new FileOutputStream(localFile);
-      localObject2 = new beit(this, (OutputStream)localObject2, null);
-      return localObject2;
-    }
-    catch (FileNotFoundException localFileNotFoundException1)
-    {
-      for (;;)
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561654, null);
+      if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        beip.a(this.jdField_a_of_type_Beip).mkdirs();
-        try
-        {
-          FileOutputStream localFileOutputStream = new FileOutputStream(localFile);
-        }
-        catch (FileNotFoundException localFileNotFoundException2)
-        {
-          OutputStream localOutputStream = beip.a();
-          return localOutputStream;
+        TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362592);
+        if ((localTextView != null) && (paramString != null)) {
+          localTextView.setText(paramString);
         }
       }
     }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setFocusable(false);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
+    a(-80.0F, 0.0F, false);
+    new Timer().schedule(new AntiphingToast.3(this), this.jdField_a_of_type_Int + 700);
+    return true;
   }
   
-  public void a()
+  public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      beip.a(this.jdField_a_of_type_Beip, this, false);
-      this.jdField_a_of_type_Beip.a(beiu.a(this.jdField_a_of_type_Beiu));
-    }
-    for (;;)
-    {
-      this.b = true;
-      return;
-      beip.a(this.jdField_a_of_type_Beip, this, true);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    try
-    {
-      OutputStreamWriter localOutputStreamWriter = new OutputStreamWriter(a(paramInt), beiw.b);
-      beiw.a(localOutputStreamWriter);
-    }
-    finally
-    {
-      try
-      {
-        localOutputStreamWriter.write(paramString);
-        beiw.a(localOutputStreamWriter);
-        return;
-      }
-      finally {}
-      paramString = finally;
-      localOutputStreamWriter = null;
-    }
-    throw paramString;
-  }
-  
-  public void b()
-  {
-    beip.a(this.jdField_a_of_type_Beip, this, false);
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beis
  * JD-Core Version:    0.7.0.1
  */

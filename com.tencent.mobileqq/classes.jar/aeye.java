@@ -1,211 +1,175 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.1;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.2;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.3;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class aeye
-  implements aeyt, View.OnClickListener
+abstract class aeye
 {
-  private long jdField_a_of_type_Long;
-  private aeyv jdField_a_of_type_Aeyv;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public String a;
-  private boolean jdField_a_of_type_Boolean = true;
-  public String b;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  String jdField_a_of_type_JavaLangString;
+  HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  Set<Long> jdField_a_of_type_JavaUtilSet;
+  Set<Long> b;
   
-  public aeye(QQAppInterface paramQQAppInterface, aeyv paramaeyv, SessionInfo paramSessionInfo, Activity paramActivity)
+  long a(Set<Long> paramSet)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aeyv = paramaeyv;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    ThreadManager.post(new LightalkBlueTipsBar.1(this), 5, null, true);
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = false;
-    if (aeyf.a() != null) {
-      bool = true;
+    if ((paramSet != null) && (paramSet.size() > 0))
+    {
+      paramSet = paramSet.toArray();
+      if ((paramSet != null) && (paramSet.length > 0))
+      {
+        paramSet = paramSet[0];
+        if ((paramSet instanceof Long)) {
+          return ((Long)paramSet).longValue();
+        }
+      }
     }
-    return bool;
+    return 0L;
   }
   
-  public int a()
+  aeye a(SessionInfo paramSessionInfo, String paramString, List<Long> paramList, int paramInt)
   {
-    return 45;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilSet = new HashSet(paramList);
+      this.b = new HashSet(paramList);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOrderManager", 2, "Forward order onPreForward mChatMsgListAfter.size() -> " + this.jdField_a_of_type_JavaUtilSet.size() + ", mChatMsgListBefore.size() -> " + this.b.size() + ", ForwardID -> " + paramInt);
+      }
+    }
+    return this;
   }
   
-  public View a(Object... paramVarArgs)
+  void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LightalkBlueTipsBar", 2, "getBarView()");
+      QLog.d("ForwardOrderManager", 2, "ForwardOrder onDestroy forward id -> " + this.jdField_a_of_type_Int);
     }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
+    if (this.jdField_a_of_type_JavaUtilSet != null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558558, null);
-      paramVarArgs = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369168);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null)
-      {
-        paramVarArgs.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-        paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369171);
-        if (this.jdField_a_of_type_JavaLangString == null) {
-          break label322;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("LightalkBlueTipsBar", 2, "getBarView() mTextWording =" + this.jdField_a_of_type_JavaLangString);
-        }
-        paramVarArgs.setText(this.jdField_a_of_type_JavaLangString);
-        paramVarArgs.setContentDescription(this.jdField_a_of_type_JavaLangString + ajya.a(2131706029));
-        paramVarArgs.setOnClickListener(this);
-        paramVarArgs = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369170);
-        if (AppSetting.d) {
-          paramVarArgs.setContentDescription(ajya.a(2131706028));
-        }
-        paramVarArgs.setOnClickListener(this);
+      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.jdField_a_of_type_JavaUtilSet = null;
+    }
+    if (this.b != null)
+    {
+      this.b.clear();
+      this.b = null;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
+    }
+  }
+  
+  void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "ForwardOrder msgIDToSend id -> " + paramLong);
+    }
+    if (this.jdField_a_of_type_JavaUtilSet != null)
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOrderManager", 2, "ForwardOrder mChatMsgListAfter add id -> " + paramLong);
       }
     }
-    for (;;)
+    if (this.b != null)
     {
-      for (;;)
+      this.b.add(Long.valueOf(paramLong));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOrderManager", 2, "ForwardOrder mChatMsgListBefore add id -> " + paramLong);
+      }
+    }
+  }
+  
+  abstract void a(long paramLong1, long paramLong2);
+  
+  void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    try
+    {
+      if ((this.b != null) && (this.b.size() > 0))
       {
-        return this.jdField_a_of_type_AndroidViewView;
-        File localFile = new File(aeyf.c);
-        if ((localFile != null) && (localFile.exists())) {}
-        try
-        {
-          this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources(), baxi.a(aeyf.c));
-          if (QLog.isDevelopLevel()) {
-            QLog.i("LightalkBlueTipsBar", 4, "load icon to bitmap ");
-          }
-          if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) {
-            paramVarArgs.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+        Iterator localIterator = this.b.iterator();
+        while (localIterator.hasNext()) {
+          if (((Long)localIterator.next()).longValue() == paramLong) {
+            localIterator.remove();
           }
         }
-        catch (Throwable localThrowable)
+        if ((this.b.size() <= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
         {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("LightalkBlueTipsBar", 2, "decodeFile Failed!", localThrowable);
-            }
-            this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130844028));
-            localThrowable.printStackTrace();
+          paramQQAppInterface = acex.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaLangString = "";
+          if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
+            this.jdField_a_of_type_Long = paramQQAppInterface[0];
           }
         }
       }
-      return null;
-      label322:
-      return null;
-      this.jdField_a_of_type_Boolean = false;
+      return;
     }
+    finally {}
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  abstract void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord);
+  
+  boolean a(long paramLong, Set<Long> paramSet)
   {
-    if (paramInt != 1000) {}
-    label7:
-    do
+    if (paramSet != null) {}
+    try
     {
-      do
+      if (!paramSet.isEmpty())
       {
-        do
-        {
-          String str;
-          do
-          {
-            do
-            {
-              break label7;
-              break label7;
-              break label7;
-              do
-              {
-                return;
-              } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0);
-              if (QLog.isColorLevel()) {
-                QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW");
-              }
-              paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-            } while (!paramVarArgs.getBoolean("lightalk_tip_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false));
-            str = paramVarArgs.getString("Lightalk_tips_frdUin", null);
-          } while ((str == null) || (!str.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-          paramInt = paramVarArgs.getInt("LT_tip_show_times" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-          if (QLog.isColorLevel()) {
-            QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====> tipsum = " + paramInt);
+        paramSet = paramSet.iterator();
+        while (paramSet.hasNext()) {
+          if (((Long)paramSet.next()).longValue() == paramLong) {
+            return true;
           }
-          if (paramInt < 3) {
-            break;
-          }
-        } while (!(this.jdField_a_of_type_Aeyv.a() instanceof aeye));
-        this.jdField_a_of_type_Aeyv.a();
-        return;
-      } while (!this.jdField_a_of_type_Aeyv.a(this, new Object[0]));
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800510F", "0X800510F", 0, 0, "" + (paramInt + 1), "", "", "");
-    } while (!this.jdField_a_of_type_Boolean);
-    ThreadManager.getSubThreadHandler().post(new LightalkBlueTipsBar.2(this));
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 12;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
+        }
+      }
+      return false;
     }
-    for (;;)
+    finally {}
+  }
+  
+  abstract boolean a(long paramLong, boolean paramBoolean);
+  
+  abstract boolean a(QQAppInterface paramQQAppInterface, long paramLong);
+  
+  void b(long paramLong1, long paramLong2)
+  {
+    if ((this.jdField_a_of_type_JavaUtilSet != null) && (this.jdField_a_of_type_JavaUtilSet.size() > 0) && (this.jdField_a_of_type_JavaUtilSet.contains(Long.valueOf(paramLong1))))
     {
-      this.jdField_a_of_type_Aeyv.a();
-      ThreadManager.getSubThreadHandler().post(new LightalkBlueTipsBar.3(this));
-      long l;
-      do
-      {
-        return;
-        l = System.currentTimeMillis();
-      } while (l - this.jdField_a_of_type_Long < 200L);
-      this.jdField_a_of_type_Long = l;
-      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      paramView.putExtra("hide_more_button", true);
-      paramView.putExtra("url", this.b);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005111", "0X8005111", 0, 0, "", "", "", "");
-      continue;
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005110", "0X8005110", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_JavaUtilSet.remove(Long.valueOf(paramLong1));
+      this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong2));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOrderManager", 2, "Forward order replaceOriginChatMsg mChatMsgListAfter.size() -> " + this.jdField_a_of_type_JavaUtilSet.size() + ", mChatMsgListAfter remove uniSeq -> " + paramLong1 + ", mChatMsgListAfter add uniSeq -> " + paramLong2 + ", ForwardID -> " + this.jdField_a_of_type_Int);
+      }
+    }
+    if ((this.b != null) && (this.b.size() > 0) && (this.b.contains(Long.valueOf(paramLong1))))
+    {
+      this.b.remove(Long.valueOf(paramLong1));
+      this.b.add(Long.valueOf(paramLong2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeye
  * JD-Core Version:    0.7.0.1
  */

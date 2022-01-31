@@ -1,63 +1,48 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import java.util.HashMap;
 
 public class baqw
-  extends BaseAdapter
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  public int a;
+  public long a;
+  public baqv a;
+  public String a;
+  public HashMap<String, String> a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
+  long e = 0L;
+  long f;
+  public long g;
+  public long h;
+  public long i;
+  public long j;
   
-  public baqw(WheelPickerLayout paramWheelPickerLayout, int paramInt1, int paramInt2)
+  public baqw(baqv parambaqv)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramWheelPickerLayout.getResources().getDisplayMetrics()));
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Baqv = parambaqv;
+    this.f = System.currentTimeMillis();
   }
   
-  public int getCount()
+  public void a(int paramInt1, int paramInt2, String paramString, HashMap<String, String> paramHashMap)
   {
-    return WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-    }
-    for (;;)
-    {
-      paramViewGroup = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(1, WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).b);
-      localWheelTextView.setTextColor(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).c);
-      localWheelTextView.setGravity(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).d);
-      localWheelTextView.setText(paramViewGroup);
-      return paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.putAll(paramHashMap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baqw
  * JD-Core Version:    0.7.0.1
  */

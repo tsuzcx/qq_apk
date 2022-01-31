@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import ajum;
+import allz;
 
 public class DataLineHandler$15
   implements Runnable
 {
-  public DataLineHandler$15(ajum paramajum, long paramLong, int paramInt) {}
+  public DataLineHandler$15(allz paramallz, long paramLong, int paramInt) {}
   
   public void run()
   {
-    ajum.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    allz.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

@@ -40,7 +40,7 @@ class MediaApiPlugin$5
     //   50: iload_1
     //   51: invokevirtual 60	java/lang/String:substring	(I)Ljava/lang/String;
     //   54: iconst_0
-    //   55: invokestatic 66	bbco:decode	(Ljava/lang/String;I)[B
+    //   55: invokestatic 66	bdbi:decode	(Ljava/lang/String;I)[B
     //   58: astore_2
     //   59: aload_2
     //   60: ifnonnull +82 -> 142
@@ -192,7 +192,7 @@ class MediaApiPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.MediaApiPlugin.5
  * JD-Core Version:    0.7.0.1
  */

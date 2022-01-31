@@ -1,26 +1,23 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import java.util.List;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.open.agent.CardContainer;
 
-class bezg
-  implements AsyncResult
+public class bezg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bezg(bezf parambezf, List paramList) {}
+  public bezg(CardContainer paramCardContainer, ImageView paramImageView) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramBoolean)
-    {
-      betc.a("MiniProgramReporter", "onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
-      return;
-    }
-    betc.d("MiniProgramReporter", "performReportViaSSO onDcReport: sso command failed, try again");
-    this.jdField_a_of_type_Bezf.a(this.jdField_a_of_type_JavaUtilList);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezg
  * JD-Core Version:    0.7.0.1
  */

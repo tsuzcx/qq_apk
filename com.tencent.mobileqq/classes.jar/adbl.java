@@ -1,28 +1,35 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class adbl
-  extends AccessibilityDelegateCompat
+  extends avqu
 {
-  public adbl(ListenPanel paramListenPanel) {}
+  public adbl(Leba paramLeba) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (ListenPanel.a(this.a) < 1000.0D) {}
-    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
+    }
+    if (QLog.isColorLevel())
     {
-      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131691104));
-      return;
+      if ((paramLong >>> 17 & 1L) != 0L) {
+        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
+      }
+      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
+    }
+    if (paramBoolean1)
+    {
+      Leba.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbl
  * JD-Core Version:    0.7.0.1
  */

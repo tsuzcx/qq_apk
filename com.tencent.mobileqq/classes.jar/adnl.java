@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
-class adnl
-  implements DialogInterface.OnClickListener
+public class adnl
+  implements adnj
 {
-  adnl(adnk paramadnk) {}
+  public adnl(QQSettingCleanActivity.ScanSpaceTask paramScanSpaceTask) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.this$0.a.setPercent(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnl
  * JD-Core Version:    0.7.0.1
  */

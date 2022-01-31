@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.search;
 
 import android.text.TextUtils;
-import awhn;
+import aycr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
-import naj;
+import ndd;
 
 public class FunctionModuleConfigManager$3
   implements Runnable
 {
-  public FunctionModuleConfigManager$3(awhn paramawhn, String paramString) {}
+  public FunctionModuleConfigManager$3(aycr paramaycr, String paramString) {}
   
   public void run()
   {
     try
     {
-      Object localObject = naj.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.a), "GET", null, null);
+      Object localObject = ndd.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.a), "GET", null, null);
       if (localObject != null)
       {
-        localObject = awhn.a(this.this$0, (byte[])localObject);
+        localObject = aycr.a(this.this$0, (byte[])localObject);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           this.this$0.a((String)localObject);
@@ -38,7 +38,7 @@ public class FunctionModuleConfigManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.FunctionModuleConfigManager.3
  * JD-Core Version:    0.7.0.1
  */

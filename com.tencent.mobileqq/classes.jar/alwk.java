@@ -1,29 +1,41 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import android.os.Handler;
+import android.os.Message;
 
 public class alwk
-  implements CompoundButton.OnCheckedChangeListener
+  implements alkr
 {
-  public alwk(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
+  private Handler a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public alwk(Handler paramHandler)
   {
-    paramCompoundButton = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
-    String str1 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      alpe.a(paramCompoundButton, str1, str2, i);
+    this.a = paramHandler;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    int i = 1;
+    if (this.a == null) {}
+    while ((paramInt != 1) && (paramInt != 4) && (paramInt != 5)) {
       return;
+    }
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwk
  * JD-Core Version:    0.7.0.1
  */

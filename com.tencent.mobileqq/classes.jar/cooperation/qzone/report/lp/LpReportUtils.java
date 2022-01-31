@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import ajya;
+import alpo;
 import android.os.Build;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -17,10 +17,10 @@ import mqq.app.AppRuntime;
 
 public class LpReportUtils
 {
-  public static final String ALL_REPORT = ajya.a(2131706408);
-  public static final String CLICK_MESSAGE = ajya.a(2131706410);
-  public static final String NOT_HIT = ajya.a(2131706407);
-  public static final String SAMPLE_REPORT = ajya.a(2131706409);
+  public static final String ALL_REPORT = alpo.a(2131706780);
+  public static final String CLICK_MESSAGE = alpo.a(2131706782);
+  public static final String NOT_HIT = alpo.a(2131706779);
+  public static final String SAMPLE_REPORT = alpo.a(2131706781);
   private static final String TAG = "LpReport.LpReportUtils";
   private static boolean isSampled;
   private static long sampleValidEndTime;
@@ -182,7 +182,7 @@ public class LpReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportUtils
  * JD-Core Version:    0.7.0.1
  */

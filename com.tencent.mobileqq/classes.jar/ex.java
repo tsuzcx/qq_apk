@@ -1,16 +1,23 @@
-class ex
-  extends ajut
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.dataline.util.file.DLFileInfo;
+
+public final class ex
+  implements Parcelable.Creator<DLFileInfo>
 {
-  ex(ew paramew) {}
-  
-  protected void b()
+  public DLFileInfo a(Parcel paramParcel)
   {
-    ew.a(this.a, 1);
+    return new DLFileInfo(paramParcel, null);
+  }
+  
+  public DLFileInfo[] a(int paramInt)
+  {
+    return new DLFileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ex
  * JD-Core Version:    0.7.0.1
  */

@@ -1,84 +1,128 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class amvf
-  extends ampa<amve>
+class amvf
+  implements amvd
 {
-  public static amve a()
+  private IBinder a;
+  
+  amvf(IBinder paramIBinder)
   {
-    return (amve)ampl.a().a(441);
+    this.a = paramIBinder;
   }
   
-  public int a()
+  public void a()
   {
-    return 441;
-  }
-  
-  @NonNull
-  public amve a(int paramInt)
-  {
-    return new amve();
-  }
-  
-  @Nullable
-  public amve a(amph[] paramArrayOfamph)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onParsed ");
-    }
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      new amve();
-      return amve.a(paramArrayOfamph);
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    return null;
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
-  
-  public Class<amve> a()
-  {
-    return amve.class;
-  }
-  
-  public void a() {}
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onReqFailed " + paramInt);
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
-  public void a(amve paramamve)
+  public void a(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onUpdate " + paramamve.toString());
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      localParcel1.writeLong(paramLong1);
+      localParcel1.writeLong(paramLong2);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
-  public boolean a()
+  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
   {
-    return true;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+        if (paramArConfigInfo != null)
+        {
+          localParcel1.writeInt(1);
+          paramArConfigInfo.writeToParcel(localParcel1, 0);
+          if (paramArEffectConfig != null)
+          {
+            localParcel1.writeInt(1);
+            paramArEffectConfig.writeToParcel(localParcel1, 0);
+            if (paramARCommonConfigInfo == null) {
+              break label131;
+            }
+            localParcel1.writeInt(1);
+            paramARCommonConfigInfo.writeToParcel(localParcel1, 0);
+            this.a.transact(4, localParcel1, localParcel2, 0);
+            localParcel2.readException();
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        localParcel1.writeInt(0);
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+      continue;
+      label131:
+      localParcel1.writeInt(0);
+    }
   }
   
-  public int b()
+  public IBinder asBinder()
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvf
  * JD-Core Version:    0.7.0.1
  */

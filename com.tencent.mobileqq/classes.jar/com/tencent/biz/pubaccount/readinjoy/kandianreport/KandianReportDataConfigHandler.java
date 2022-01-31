@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import bhvy;
+import bjxj;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import oof;
+import osq;
 
 public class KandianReportDataConfigHandler
   implements AladdinConfigHandler
@@ -19,7 +19,7 @@ public class KandianReportDataConfigHandler
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
     QLog.d("kandianreport.KandianReportDataConfigHandler", 2, "[onReceiveConfig] " + paramInt1 + " " + paramString);
-    Map localMap = oof.a(paramString);
+    Map localMap = osq.a(paramString);
     Iterator localIterator = localMap.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -31,7 +31,7 @@ public class KandianReportDataConfigHandler
         if (TextUtils.equals(str2, "1")) {}
         for (paramInt2 = 1;; paramInt2 = 0)
         {
-          bhvy.a("kandianreport_ON", Integer.valueOf(paramInt2));
+          bjxj.a("kandianreport_ON", Integer.valueOf(paramInt2));
           Aladdin.getConfig(paramInt1).update(paramString);
           break;
         }
@@ -43,12 +43,12 @@ public class KandianReportDataConfigHandler
   public void onWipeConfig(int paramInt)
   {
     QLog.d("kandianreport.KandianReportDataConfigHandler", 2, "wipeConfig: " + paramInt);
-    bhvy.a("kandianreport_ON", Integer.valueOf(-1));
+    bjxj.a("kandianreport_ON", Integer.valueOf(-1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.KandianReportDataConfigHandler
  * JD-Core Version:    0.7.0.1
  */

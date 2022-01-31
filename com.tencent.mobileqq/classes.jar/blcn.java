@@ -1,23 +1,26 @@
-import android.opengl.EGLContext;
+import android.graphics.Bitmap;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
 
 public class blcn
+  implements bldv
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  public blcy a;
-  private Object jdField_a_of_type_JavaLangObject;
+  public blcn(AETemplateInfoFragment paramAETemplateInfoFragment, boolean[] paramArrayOfBoolean, String paramString) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
-      return;
-    }
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
+    BitmapUtils.saveBitmap(paramBitmap, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blcn
  * JD-Core Version:    0.7.0.1
  */

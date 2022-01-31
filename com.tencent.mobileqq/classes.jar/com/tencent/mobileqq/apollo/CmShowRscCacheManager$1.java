@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo;
 
-import aitz;
+import akll;
 
 public class CmShowRscCacheManager$1
   implements Runnable
 {
-  public CmShowRscCacheManager$1(aitz paramaitz) {}
+  public CmShowRscCacheManager$1(akll paramakll) {}
   
   public void run()
   {
-    aitz.a(this.this$0);
+    akll.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.CmShowRscCacheManager.1
  * JD-Core Version:    0.7.0.1
  */

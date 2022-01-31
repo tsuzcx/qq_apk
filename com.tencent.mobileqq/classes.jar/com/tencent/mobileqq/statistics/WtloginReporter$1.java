@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.statistics;
 
 import android.text.TextUtils;
-import axrn;
+import azmz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -70,7 +70,7 @@ public final class WtloginReporter$1
             if (l2 > 1000L) {
               ((HashMap)localObject2).put("warnCost", "1");
             }
-            axrn.a(BaseApplicationImpl.getContext()).a(this.a, "wtloginCost", true, 0L, 0L, (HashMap)localObject2, "");
+            azmz.a(BaseApplicationImpl.getContext()).a(this.a, "wtloginCost", true, 0L, 0L, (HashMap)localObject2, "");
             if (QLog.isColorLevel()) {
               QLog.d("WtloginReporter", 2, "wtlogin report cost");
             }
@@ -118,7 +118,7 @@ public final class WtloginReporter$1
               localHashMap.put("uin", this.a);
               localHashMap.put("recordTime", String.valueOf(l1));
               localHashMap.put("backTrace", localObject3);
-              axrn.a(BaseApplicationImpl.getContext()).a(this.a, "wtloginCostTrace", true, 0L, 0L, localHashMap, "");
+              azmz.a(BaseApplicationImpl.getContext()).a(this.a, "wtloginCostTrace", true, 0L, 0L, localHashMap, "");
               if (QLog.isColorLevel()) {
                 QLog.d("WtloginReporter", 2, "wtlogin report cost back trace");
               }
@@ -140,7 +140,7 @@ public final class WtloginReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.WtloginReporter.1
  * JD-Core Version:    0.7.0.1
  */

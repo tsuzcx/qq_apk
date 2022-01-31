@@ -1,26 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-class ajrc
-  implements DialogInterface.OnClickListener
+public class ajrc
+  implements MediaPlayer.OnCompletionListener
 {
-  ajrc(ajra paramajra) {}
+  public ajrc(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    paramDialogInterface.dismiss();
-    if (ajra.a(this.a))
+    if (this.a.a != null)
     {
-      ajra.a(this.a, 1);
-      ajra.a(this.a);
-      this.a.a.r();
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajrc
  * JD-Core Version:    0.7.0.1
  */

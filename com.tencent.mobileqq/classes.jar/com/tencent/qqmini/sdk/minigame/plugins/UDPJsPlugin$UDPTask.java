@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bell;
-import bemj;
-import bemk;
+import bglb;
+import bglz;
+import bgma;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.Inet4Address;
@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class UDPJsPlugin$UDPTask
-  implements bemk
+  implements bgma
 {
   private final DatagramChannel channel;
   private final ByteBuffer receiveBuffer;
@@ -47,7 +47,7 @@ class UDPJsPlugin$UDPTask
     try
     {
       this.channel.socket().bind(null);
-      bemj.a().a(this.channel, 1, this);
+      bglz.a().a(this.channel, 1, this);
       onListening();
       int i = this.channel.socket().getLocalPort();
       return i;
@@ -134,7 +134,7 @@ class UDPJsPlugin$UDPTask
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("udpTaskId", this.taskId);
       localJSONObject.put("event", "message");
-      bell.a(UDPJsPlugin.access$400(this.this$0), paramArrayOfByte, 0, paramInt, bell.a, "message", localJSONObject);
+      bglb.a(UDPJsPlugin.access$400(this.this$0), paramArrayOfByte, 0, paramInt, bglb.a, "message", localJSONObject);
       paramArrayOfByte = new JSONObject();
       InetAddress localInetAddress;
       if ((paramSocketAddress instanceof InetSocketAddress))
@@ -172,7 +172,7 @@ class UDPJsPlugin$UDPTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.plugins.UDPJsPlugin.UDPTask
  * JD-Core Version:    0.7.0.1
  */

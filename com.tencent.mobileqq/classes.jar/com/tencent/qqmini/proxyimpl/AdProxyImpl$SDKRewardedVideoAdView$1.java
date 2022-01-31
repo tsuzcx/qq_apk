@@ -1,5 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
+import aail;
 import android.text.TextUtils;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
@@ -9,7 +10,6 @@ import com.tencent.qqmini.sdk.core.proxy.AdProxy.ICmdListener;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IRewardVideoAdListener;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ysu;
 
 class AdProxyImpl$SDKRewardedVideoAdView$1
   implements AdProxy.ICmdListener
@@ -63,7 +63,7 @@ class AdProxyImpl$SDKRewardedVideoAdView$1
           paramJSONObject = new GdtAd(paramJSONObject);
           if (paramJSONObject.isValid())
           {
-            ysu.a().a(paramJSONObject);
+            aail.a().a(paramJSONObject);
             AdProxyImpl.SDKRewardedVideoAdView localSDKRewardedVideoAdView = this.this$1;
             i = j;
             if (this.this$1.mDeviceOrientation == 90) {
@@ -100,7 +100,7 @@ class AdProxyImpl$SDKRewardedVideoAdView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKRewardedVideoAdView.1
  * JD-Core Version:    0.7.0.1
  */

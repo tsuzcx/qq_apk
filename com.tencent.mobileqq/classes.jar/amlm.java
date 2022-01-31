@@ -1,19 +1,12 @@
-class amlm
-  implements angt
+public abstract interface amlm
 {
-  amlm(amlk paramamlk) {}
+  public abstract void a(int paramInt);
   
-  public long a()
-  {
-    if (amlk.a(this.a) != null) {
-      return amlk.a(this.a).a();
-    }
-    return 0L;
-  }
+  public abstract boolean a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlm
  * JD-Core Version:    0.7.0.1
  */

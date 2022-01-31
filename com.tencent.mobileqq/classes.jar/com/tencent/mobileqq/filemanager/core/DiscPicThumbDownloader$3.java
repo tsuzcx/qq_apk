@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aoyy;
-import aoza;
-import apuy;
+import aqrw;
+import aqry;
+import aroa;
 
 public class DiscPicThumbDownloader$3
   implements Runnable
 {
-  public DiscPicThumbDownloader$3(aoyy paramaoyy, aoza paramaoza) {}
+  public DiscPicThumbDownloader$3(aqrw paramaqrw, aqry paramaqry) {}
   
   public void run()
   {
-    apuy.b(this.a.a);
+    aroa.b(this.a.a);
   }
 }
 

@@ -1,46 +1,28 @@
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.common.app.AppInterface;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 
-public abstract interface ajeo
+public class ajeo
+  extends ajff
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract void a(ajen paramajen);
-  
-  public abstract void a(Context paramContext, AppInterface paramAppInterface);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void b(ajen paramajen);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
+  public View a(int paramInt, Object paramObject, ajfa paramajfa, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajgx paramajgx)
+  {
+    paramObject = paramView;
+    if (paramView == null) {
+      paramObject = LayoutInflater.from(paramContext).inflate(2131558856, null);
+    }
+    paramObject.setOnClickListener(paramOnClickListener);
+    paramObject.setOnLongClickListener(paramOnLongClickListener);
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    return paramObject;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajeo
  * JD-Core Version:    0.7.0.1
  */

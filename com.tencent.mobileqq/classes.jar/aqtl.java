@@ -1,55 +1,351 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.view.QQGameStatusView;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
 public class aqtl
-  implements View.OnClickListener
+  implements aqtr, bdlq
 {
-  public aqtl(QQGameStatusView paramQQGameStatusView) {}
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private aqtq jdField_a_of_type_Aqtq;
+  private bdlo jdField_a_of_type_Bdlo;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private final byte[] jdField_a_of_type_ArrayOfByte;
+  private final int jdField_b_of_type_Int;
+  private final long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private final byte[] jdField_b_of_type_ArrayOfByte;
   
-  public void onClick(View paramView)
+  private aqtl(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, String paramString1, String paramString2, long paramLong2, boolean paramBoolean, String paramString3)
   {
-    if ((QQGameStatusView.a(this.a) == null) || (QQGameStatusView.a(this.a))) {}
-    do
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(paramString1);
+    this.jdField_b_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(paramString2);
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString3;
+  }
+  
+  public static aqtl a(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, String paramString1, String paramString2, long paramLong2, boolean paramBoolean, String paramString3)
+  {
+    if (paramString1 == null)
     {
-      do
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strCheckSum is null");
+      }
+      return null;
+    }
+    if (paramString1.length() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strCheckSum is empty");
+      }
+      return null;
+    }
+    if (paramString2 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strSHA is null");
+      }
+      return null;
+    }
+    if (paramString2.length() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strSHA is empty");
+      }
+      return null;
+    }
+    return new aqtl(paramQQAppInterface, paramLong1, paramInt1, paramInt2, paramString1, paramString2, paramLong2, paramBoolean, paramString3);
+  }
+  
+  private void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
+    DataInputStream localDataInputStream = new DataInputStream(paramArrayOfByte);
+    try
+    {
+      localDataInputStream.skip(4L);
+      if (localDataInputStream.readInt() != 0) {
+        this.jdField_a_of_type_Aqtq.a(9001, "httpServer retCode!=0");
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
       {
-        return;
-        if (QQGameStatusView.a(this.a) == 1)
+        int i;
+        long l1;
+        long l2;
+        localIOException.printStackTrace();
+        QLog.e("FtnHttpUploader<FileAssistant>", 1, "unPackageData exception:" + localIOException.toString());
+        this.jdField_a_of_type_Aqtq.a(9001, "httpServer flag!=0 flag!=1");
+        try
         {
-          QQGameStatusView.a(this.a).b(QQGameStatusView.a(this.a));
+          paramArrayOfByte.close();
+          localDataInputStream.close();
           return;
         }
-        if (QQGameStatusView.a(this.a) == 2)
+        catch (Exception paramArrayOfByte)
         {
-          QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a));
           return;
         }
-        if (QQGameStatusView.a(this.a) == 3)
-        {
-          QQGameStatusView.a(this.a).c(QQGameStatusView.a(this.a));
-          return;
-        }
-        if (QQGameStatusView.a(this.a) == 5)
-        {
-          QQGameStatusView.a(this.a).d(QQGameStatusView.a(this.a));
-          return;
-        }
-      } while (QQGameStatusView.a(this.a) != 6);
-      if (!TextUtils.isEmpty(QQGameStatusView.b(this.a)))
+        this.jdField_a_of_type_Aqtq.a(9001, "httpServer flag!=0 flag!=1");
+      }
+    }
+    finally
+    {
+      try
       {
-        QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a), QQGameStatusView.b(this.a));
+        paramArrayOfByte.close();
+        localDataInputStream.close();
+        throw localObject;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        break label232;
+      }
+    }
+    try
+    {
+      paramArrayOfByte.close();
+      localDataInputStream.close();
+      return;
+    }
+    catch (Exception paramArrayOfByte) {}
+    localDataInputStream.skip(8L);
+    i = localDataInputStream.readByte();
+    if (i == 0)
+    {
+      i = localDataInputStream.readInt();
+      l1 = localDataInputStream.readInt();
+      l2 = i;
+      this.jdField_a_of_type_Aqtq.a(l1 << 32 | l2, null);
+    }
+    for (;;)
+    {
+      try
+      {
+        paramArrayOfByte.close();
+        localDataInputStream.close();
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQGameStatusView", 1, "downloadFilePath is null,install faile");
+      catch (Exception paramArrayOfByte)
+      {
+        return;
+      }
+      if (i != 1) {
+        break;
+      }
+      this.jdField_a_of_type_Aqtq.b();
+    }
+    label232:
+  }
+  
+  private byte[] a(long paramLong, byte[] paramArrayOfByte)
+  {
+    int i = this.jdField_a_of_type_ArrayOfByte.length + 2 + 2 + this.jdField_b_of_type_ArrayOfByte.length + 20 + paramArrayOfByte.length;
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(i + 16);
+    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
+    try
+    {
+      localDataOutputStream.writeInt(-1412589450);
+      localDataOutputStream.writeInt(1007);
+      localDataOutputStream.writeInt(0);
+      localDataOutputStream.writeInt(i);
+      localDataOutputStream.writeShort(this.jdField_a_of_type_ArrayOfByte.length);
+      localDataOutputStream.write(this.jdField_a_of_type_ArrayOfByte);
+      localDataOutputStream.writeShort(this.jdField_b_of_type_ArrayOfByte.length);
+      localDataOutputStream.write(this.jdField_b_of_type_ArrayOfByte);
+      localDataOutputStream.writeInt((int)(this.jdField_b_of_type_Long & 0xFFFFFFFF));
+      localDataOutputStream.writeInt((int)(paramLong & 0xFFFFFFFF));
+      localDataOutputStream.writeInt(paramArrayOfByte.length);
+      localDataOutputStream.writeInt((int)(this.jdField_b_of_type_Long >> 32));
+      localDataOutputStream.writeInt((int)(paramLong >> 32));
+      localDataOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+      label255:
+      return paramArrayOfByte;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      paramArrayOfByte = paramArrayOfByte;
+      paramArrayOfByte.printStackTrace();
+      QLog.e("FtnHttpUploader<FileAssistant>", 1, "packageData exception:" + paramArrayOfByte.toString());
+      try
+      {
+        localByteArrayOutputStream.close();
+        localDataOutputStream.close();
+        return null;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        return null;
+      }
+    }
+    finally
+    {
+      try
+      {
+        localByteArrayOutputStream.close();
+        localDataOutputStream.close();
+        throw paramArrayOfByte;
+      }
+      catch (Exception localException1)
+      {
+        break label255;
+      }
+    }
+  }
+  
+  protected HttpCommunicator a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Bdlo != null)
+    {
+      a().a(this.jdField_a_of_type_Bdlo);
+      this.jdField_a_of_type_Bdlo = null;
+    }
+  }
+  
+  public void a(aqtq paramaqtq)
+  {
+    this.jdField_a_of_type_Aqtq = paramaqtq;
+  }
+  
+  public void a(bdlo parambdlo1, bdlo parambdlo2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if (QLog.isColorLevel()) {
+        QLog.e("##########", 2, "nSessionID[" + String.valueOf(this.jdField_a_of_type_Long) + "]已经结束,返回");
+      }
+    }
+    do
+    {
+      return;
+      if (parambdlo1 == this.jdField_a_of_type_Bdlo) {
+        break;
+      }
+      if ((parambdlo1 != null) && (this.jdField_a_of_type_Bdlo != null))
+      {
+        QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],Req Serial[" + String.valueOf(parambdlo1.a()) + "], curRequest Serial[" + String.valueOf(this.jdField_a_of_type_Bdlo.a()) + "]");
+        return;
+      }
+      if (parambdlo1 != null)
+      {
+        QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],Req Serial[" + String.valueOf(parambdlo1.a()) + "]");
+        return;
+      }
+    } while (this.jdField_a_of_type_Bdlo == null);
+    QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],curRequest Serial[" + String.valueOf(this.jdField_a_of_type_Bdlo.a()) + "]");
+    return;
+    if (parambdlo2.c() == 200) {
+      if (parambdlo2.a("User-ReturnCode") == null) {
+        break label373;
+      }
+    }
+    label373:
+    for (long l = Long.parseLong(parambdlo2.a("User-ReturnCode"));; l = 0L)
+    {
+      if (0L != l)
+      {
+        this.jdField_a_of_type_Aqtq.a(parambdlo2.f, parambdlo2.d(), parambdlo2.d);
+        return;
+      }
+      a(parambdlo2.a());
+      return;
+      QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],decode but response Code [" + parambdlo2.c() + "] is not 200");
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Aqtq.a(paramString);
+  }
+  
+  public boolean a(bdlo parambdlo1, bdlo parambdlo2, int paramInt)
+  {
+    return true;
+  }
+  
+  public boolean a(String paramString, long paramLong, byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = a(paramLong, paramArrayOfByte);
+    if (paramArrayOfByte == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "sendData packageData return null");
+      }
+      return false;
+    }
+    this.jdField_a_of_type_Bdlo = new bdlo(paramString, paramArrayOfByte, this);
+    this.jdField_a_of_type_Bdlo.b(false);
+    this.jdField_a_of_type_Bdlo.a("cache-control", "no-cache");
+    paramArrayOfByte = "gprs";
+    if (bdee.b(BaseApplication.getContext()) == 1) {
+      paramArrayOfByte = "wifi";
+    }
+    this.jdField_a_of_type_Bdlo.a("Net-type", paramArrayOfByte);
+    this.jdField_a_of_type_Bdlo.b("POST");
+    this.jdField_a_of_type_Bdlo.b(1);
+    if (this.jdField_a_of_type_Aqtq != null) {
+      this.jdField_a_of_type_Aqtq.a(this.jdField_a_of_type_Bdlo);
+    }
+    this.jdField_a_of_type_Bdlo.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Bdlo.c = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Bdlo.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Long);
+    paramArrayOfByte = "";
+    if (paramString != null) {
+      paramArrayOfByte = paramString.toLowerCase();
+    }
+    if ((this.jdField_b_of_type_Boolean) && (paramArrayOfByte.startsWith("https")))
+    {
+      this.jdField_a_of_type_Bdlo.j = true;
+      this.jdField_a_of_type_Bdlo.k = aqto.a(paramString);
+      this.jdField_a_of_type_Bdlo.e = this.jdField_a_of_type_JavaLangString;
+    }
+    this.jdField_a_of_type_Bdlo.jdField_a_of_type_Bash = arni.a();
+    a().a(this.jdField_a_of_type_Bdlo);
+    return true;
+  }
+  
+  public void b(bdlo parambdlo1, bdlo parambdlo2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (parambdlo2 != null)
+    {
+      this.jdField_a_of_type_Aqtq.a(parambdlo2.f, parambdlo2.d(), parambdlo2.d);
+      return;
+    }
+    this.jdField_a_of_type_Aqtq.a(0, "null", "null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtl
  * JD-Core Version:    0.7.0.1
  */

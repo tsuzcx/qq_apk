@@ -1,42 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
+import com.tencent.widget.XEditTextEx;
 
-class azlx
-  extends AnimatorListenerAdapter
+public class azlx
+  implements DialogInterface.OnClickListener
 {
-  azlx(azlv paramazlv, boolean paramBoolean, View paramView, int paramInt) {}
+  public azlx(LocalCrashCollector.3 param3) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (!this.jdField_a_of_type_Boolean)
+    try
     {
-      paramAnimator = new int[2];
-      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
-      i = vzl.d(this.jdField_a_of_type_Azlv.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
-      if (i >= this.jdField_a_of_type_Int) {}
-    }
-    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
-    {
-      if (this.jdField_a_of_type_Azlv.jdField_a_of_type_Azlz != null)
-      {
-        paramAnimator = this.jdField_a_of_type_Azlv.jdField_a_of_type_Azlz;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool = true;
-        }
-        paramAnimator.a(bool, i);
-      }
+      LocalCrashCollector.a(this.a.this$0).a.setText("");
+      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
+      paramDialogInterface.dismiss();
       return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azlx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.DeviceCapabilityExamination;
 
-public class lgt
-  extends lgs
+class lgt
+  implements mxk
 {
-  static long b;
+  lgt(lgs paramlgs, lgx paramlgx, int paramInt1, String paramString, int paramInt2, int paramInt3) {}
   
-  public lgt(AppInterface paramAppInterface)
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    super(paramAppInterface);
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, String paramString1, long paramLong, String paramString2, boolean paramBoolean)
-  {
-    int i;
-    long l1;
-    if (((liz)paramVideoAppInterface.a(5)).a(0, "750") == 1)
-    {
-      i = 1;
-      l1 = AudioHelper.a();
-      if (i == 0) {
-        break label214;
-      }
-      i = 12;
-      localObject = (lgs)paramVideoAppInterface.a(1);
+    this.jdField_a_of_type_Lgx.j = paramInt;
+    this.jdField_a_of_type_Lgx.i = paramString2;
+    DeviceCapabilityExamination.a(this.jdField_a_of_type_Lgx, this.jdField_a_of_type_Lgs.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Lgs.jdField_a_of_type_Lgq != null) {
+      this.jdField_a_of_type_Lgs.jdField_a_of_type_Lgq.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(paramInt));
     }
-    for (Object localObject = paramString2 + "|" + ((lgs)localObject).a() + "|" + paramLong + "|" + l1;; localObject = paramString2)
-    {
-      long l2 = b;
-      b = l1;
-      QLog.w("AudioTransClientInfoHandler", 1, "sendZimuCmd, id[" + paramString2 + "], cmdInfo[" + (String)localObject + "], autoDetect[" + true + "], from[" + paramString1 + "], seq[" + paramLong + "], sendTime[" + l1 + "], sendInterval[" + (l1 - l2) + "]");
-      paramVideoAppInterface.a().a(i, (String)localObject);
-      return;
-      i = 0;
-      break;
-      label214:
-      i = 7;
-    }
-  }
-  
-  int a()
-  {
-    int i = 100;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 2;
-    }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return i;
-    }
-    switch (AppNetConnInfo.getMobileInfo())
-    {
-    default: 
-      return 100;
-    case 1: 
-      return 4;
-    case 2: 
-      return 3;
-    }
-    return 5;
-  }
-  
-  void a(long paramLong1, long paramLong2)
-  {
-    VideoAppInterface localVideoAppInterface = (VideoAppInterface)this.mApp;
-    ZimuItem localZimuItem = (ZimuItem)((ljp)localVideoAppInterface.a(0)).a();
-    if ((localZimuItem != null) && (!TextUtils.isEmpty(localZimuItem.getId()))) {
-      a(localVideoAppInterface, "sendToPeer", paramLong1, localZimuItem.getId(), true);
-    }
-  }
-  
-  int b()
-  {
-    return muc.b();
-  }
-  
-  String b()
-  {
-    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
-    if ((localVideoController != null) && (localVideoController.a() != null)) {
-      return localVideoController.a().d;
-    }
-    return "";
-  }
-  
-  boolean b()
-  {
-    return ((ljp)((VideoAppInterface)this.mApp).a(0)).b();
-  }
-  
-  boolean c()
-  {
-    return ((lgv)this.mApp.getBusinessHandler(0)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lgt
  * JD-Core Version:    0.7.0.1
  */

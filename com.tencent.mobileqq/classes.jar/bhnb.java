@@ -1,40 +1,47 @@
-import java.util.Random;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sveffects.Logger;
 
 public class bhnb
-  extends bhnl
+  implements Logger
 {
-  protected int a;
-  protected Random a;
-  
-  public bhnb(int paramInt)
+  public void d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-    this.jdField_a_of_type_Int = 1;
-    a(paramInt);
+    QLog.d(paramString1, 2, paramString2);
   }
   
-  public int a()
+  public void e(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_Int;
+    QLog.e(paramString1, 2, paramString2);
   }
   
-  public void a(int paramInt)
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    int i = paramInt;
-    if (paramInt < 1) {
-      i = 1;
-    }
-    this.jdField_a_of_type_Int = i;
+    QLog.e(paramString1, 2, paramString2, paramThrowable);
   }
   
-  public boolean a()
+  public void e(String paramString, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int) < 1;
+    QLog.e(paramString, 2, paramThrowable, new Object[0]);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 2, paramString2);
+  }
+  
+  public boolean isEnable()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 2, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhnb
  * JD-Core Version:    0.7.0.1
  */

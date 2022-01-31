@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
 import android.util.SparseArray;
-import aukp;
+import awbw;
 import com.tencent.mobileqq.apollo.data.ApolloGameRedDot;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.List;
 final class ApolloGameUtil$3
   implements Runnable
 {
-  ApolloGameUtil$3(aukp paramaukp) {}
+  ApolloGameUtil$3(awbw paramawbw) {}
   
   public void run()
   {
@@ -80,7 +80,7 @@ final class ApolloGameUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.3
  * JD-Core Version:    0.7.0.1
  */

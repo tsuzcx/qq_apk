@@ -1,83 +1,28 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import protocol.KQQConfig.GetResourceReqInfo;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class acyo
-  extends ajud
-  implements axay
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private ToServiceMsg a;
+  public acyo(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public acyo(QQAppInterface paramQQAppInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 7;
-  }
-  
-  public ReqItem a(int paramInt)
-  {
-    Object localObject2 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("AioAnimationConfigCheckUpdateItem", 2, "getCheckUpdateItemData:");
-    }
-    a(null, new GetResourceReqInfo[] { a() });
-    Object localObject1 = localObject2;
-    if (this.a != null)
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      xom localxom = this.app.a.a(this.a.getServiceCmd());
-      localObject1 = localObject2;
-      if (localxom != null)
-      {
-        UniPacket localUniPacket = new UniPacket(true);
-        localUniPacket.setEncodeName("utf-8");
-        localObject1 = localObject2;
-        if (localxom.a(this.a, localUniPacket))
-        {
-          localObject1 = new ReqItem();
-          ((ReqItem)localObject1).eServiceID = 120;
-          ((ReqItem)localObject1).vecParam = localUniPacket.encode();
-        }
-      }
+      azmj.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131719878), "qqsetting_notify_icon_key", paramBoolean);
+      return;
     }
-    return localObject1;
-  }
-  
-  public void a(RespItem paramRespItem)
-  {
-    if (paramRespItem != null)
-    {
-      int i = paramRespItem.cResult;
-      Object localObject = paramRespItem.vecUpdate;
-      if (QLog.isColorLevel()) {
-        QLog.d("AioAnimationConfigCheckUpdateItem", 2, "handleCheckUpdateItemData: item.cResult = " + i + ", dataLen = " + localObject.length);
-      }
-      if ((paramRespItem.eServiceID == 120) && (paramRespItem.cResult == 2))
-      {
-        localObject = new FromServiceMsg(this.app.getAccount(), "ResourceConfig.GetResourceReq");
-        ((FromServiceMsg)localObject).setMsgSuccess();
-        ((FromServiceMsg)localObject).putWupBuffer(paramRespItem.vecUpdate);
-        this.app.a(this.a, (FromServiceMsg)localObject);
-      }
-    }
-  }
-  
-  public void send(ToServiceMsg paramToServiceMsg)
-  {
-    this.a = paramToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyo
  * JD-Core Version:    0.7.0.1
  */

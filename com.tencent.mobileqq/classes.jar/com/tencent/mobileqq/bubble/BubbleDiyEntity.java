@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
 public class BubbleDiyEntity
-  extends auko
+  extends awbv
 {
   public String bottomLeftId;
   public String bottomRightId;
   public String diyText = "";
   public String topLeftId;
   public String topRightId;
-  @aumc
+  @awdj
   public String uinAndDiyId;
   
   public static void parsePasterMap(BubbleDiyEntity paramBubbleDiyEntity, HashMap<String, String> paramHashMap)
@@ -61,7 +61,7 @@ public class BubbleDiyEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyEntity
  * JD-Core Version:    0.7.0.1
  */

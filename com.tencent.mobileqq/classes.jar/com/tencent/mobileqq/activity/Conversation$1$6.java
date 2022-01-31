@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aavu;
-import bbfr;
+import acms;
+import bdem;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class Conversation$1$6
   implements Runnable
 {
-  public Conversation$1$6(aavu paramaavu) {}
+  public Conversation$1$6(acms paramacms) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class Conversation$1$6
     do
     {
       return;
-      if (bbfr.a(this.a.a.a.getApp(), "com.tencent.tim"))
+      if (bdem.a(this.a.a.a.getApp(), "com.tencent.tim"))
       {
         this.a.a.a(1134058, 0L, true);
         return;
@@ -34,7 +34,7 @@ public class Conversation$1$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.1.6
  * JD-Core Version:    0.7.0.1
  */

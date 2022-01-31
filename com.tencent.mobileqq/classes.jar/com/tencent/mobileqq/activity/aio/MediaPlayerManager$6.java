@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio;
 
-import actj;
-import acxf;
+import aekt;
+import aeor;
 import android.view.View;
-import bfxe;
+import bhyb;
 import com.tencent.widget.XListView;
 
 class MediaPlayerManager$6
@@ -13,11 +13,11 @@ class MediaPlayerManager$6
   
   public void run()
   {
-    acxf localacxf;
+    aeor localaeor;
     float f;
     if (MediaPlayerManager.a(this.this$0) != null)
     {
-      localacxf = MediaPlayerManager.a(this.this$0, MediaPlayerManager.a(this.this$0));
+      localaeor = MediaPlayerManager.a(this.this$0, MediaPlayerManager.a(this.this$0));
       long l = MediaPlayerManager.a(this.this$0).a();
       f = 0.0F;
       if (l > 0L) {
@@ -26,8 +26,8 @@ class MediaPlayerManager$6
       if (MediaPlayerManager.a(this.this$0) != null) {
         break label100;
       }
-      if (localacxf != null) {
-        localacxf.a(MediaPlayerManager.a(this.this$0), -1, null, MediaPlayerManager.a(this.this$0), this.a, f);
+      if (localaeor != null) {
+        localaeor.a(MediaPlayerManager.a(this.this$0), -1, null, MediaPlayerManager.a(this.this$0), this.a, f);
       }
     }
     label100:
@@ -37,13 +37,13 @@ class MediaPlayerManager$6
       return;
       i = MediaPlayerManager.a(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0));
     } while (i > MediaPlayerManager.a(this.this$0).getCount());
-    View localView = actj.a(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0).getHeaderViewsCount() + i);
-    localacxf.a(MediaPlayerManager.a(this.this$0), i, localView, MediaPlayerManager.a(this.this$0), this.a, f);
+    View localView = aekt.a(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0).getHeaderViewsCount() + i);
+    localaeor.a(MediaPlayerManager.a(this.this$0), i, localView, MediaPlayerManager.a(this.this$0), this.a, f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.MediaPlayerManager.6
  * JD-Core Version:    0.7.0.1
  */

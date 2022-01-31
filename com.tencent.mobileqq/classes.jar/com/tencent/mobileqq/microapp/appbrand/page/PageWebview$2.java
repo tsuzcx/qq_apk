@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.appbrand.page;
 
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
@@ -18,7 +18,7 @@ class PageWebview$2
     if (QLog.isColorLevel()) {
       QLog.d(PageWebview.access$100(), 2, "---finish loadHtml---");
     }
-    if (bbkk.a(PageWebview.access$300(this.this$0))) {
+    if (bdje.a(PageWebview.access$300(this.this$0))) {
       PageWebview.access$302(this.this$0, this.this$0.apkgInfo.f());
     }
     this.this$0.evaluteJs(PageWebview.access$300(this.this$0), new PageWebview.2.1(this));
@@ -155,7 +155,7 @@ class PageWebview$2
     //   263: aload_0
     //   264: getfield 10	com/tencent/mobileqq/microapp/appbrand/page/PageWebview$2:this$0	Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;
     //   267: invokestatic 161	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:access$200	(Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;)Ljava/lang/String;
-    //   270: invokestatic 46	bbkk:a	(Ljava/lang/String;)Z
+    //   270: invokestatic 46	bdje:a	(Ljava/lang/String;)Z
     //   273: ifeq +19 -> 292
     //   276: aload 5
     //   278: astore_2
@@ -437,7 +437,7 @@ class PageWebview$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.PageWebview.2
  * JD-Core Version:    0.7.0.1
  */

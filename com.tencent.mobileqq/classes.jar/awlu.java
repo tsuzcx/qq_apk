@@ -1,34 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
 
-public abstract class awlu
-  implements awuu<awlx>
+public final class awlu
+  implements Parcelable.Creator<PersonalityLabelZan>
 {
-  protected QQAppInterface a;
-  
-  public awlu(QQAppInterface paramQQAppInterface)
+  public PersonalityLabelZan a(Parcel paramParcel)
   {
-    this.a = paramQQAppInterface;
+    return new PersonalityLabelZan(paramParcel);
   }
   
-  public void a() {}
-  
-  public abstract void a(String paramString, List<FTSEntity> paramList);
-  
-  public void b() {}
-  
-  public abstract void b(awvi paramawvi, awuv<awlw> paramawuv);
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
+  public PersonalityLabelZan[] a(int paramInt)
+  {
+    return new PersonalityLabelZan[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awlu
  * JD-Core Version:    0.7.0.1
  */

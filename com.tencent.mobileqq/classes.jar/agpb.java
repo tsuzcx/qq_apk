@@ -1,12 +1,30 @@
-import android.view.MotionEvent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract interface agpb
+class agpb
+  implements Animation.AnimationListener
 {
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  agpb(agot paramagot) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.W = false;
+    this.a.s = 0;
+    this.a.X = false;
+    this.a.ag = false;
+    this.a.af = false;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a(this.a.o, agot.b(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agpb
  * JD-Core Version:    0.7.0.1
  */

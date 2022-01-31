@@ -1,78 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class aloj
-  implements bich
+public class aloj
+  implements View.OnClickListener
 {
-  aloj(aloa paramaloa) {}
+  public aloj(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity) {}
   
-  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
+  public void onClick(View paramView)
   {
-    if ((QLog.isColorLevel()) && (paramArrayList != null)) {
-      QLog.i("ark.download.module", 2, "onQueryCallback:" + paramArrayList.toString());
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
+    if (SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, "pcactive_config", false)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startPCActivePolling(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "logout");
     }
-    if (aloa.a(this.a) != null)
-    {
-      yoa.a(paramArrayList);
-      aloa.a(this.a).a(paramArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if ((FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) != null) && (FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).isShowing())) {
+      FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).dismiss();
     }
-  }
-  
-  public void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList)
-  {
-    if ((QLog.isColorLevel()) && (paramArrayList != null)) {
-      QLog.i("ark.download.module", 2, "onQueryCallbackVia:" + paramArrayList.toString());
-    }
-    if (aloa.a(this.a) != null)
-    {
-      yoa.a(paramArrayList);
-      aloa.a(this.a).a(paramArrayList);
-    }
-  }
-  
-  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
-  {
-    if (aloa.a(this.a) != null)
-    {
-      yoa.a(paramWadlResult);
-      aloa.a(this.a).a(paramWadlResult);
-      if (paramWadlResult != null) {}
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ark.download.module", 2, "onWadlTaskStatusChanged:" + paramWadlResult.toString());
-    }
-    if (paramWadlResult.a != null) {}
-    for (String str = paramWadlResult.a.a;; str = "") {
-      switch (paramWadlResult.b)
-      {
-      case 8: 
-      case 10: 
-      case 11: 
-      case 12: 
-      case 13: 
-      default: 
-        return;
-      case 6: 
-        axqy.a(null, "dc00898", "", "", "0X8009E14", "0X8009E14", 0, 0, "", "", str, "");
-        return;
-      }
-    }
-    axqy.a(null, "dc00898", "", "", "0X8009E15", "0X8009E15", 0, 0, "", "", str, "");
-    return;
-    axqy.a(null, "dc00898", "", "", "0X8009E17", "0X8009E17", 0, 0, "", "", str, "");
-    return;
-    axqy.a(null, "dc00898", "", "", "0X8009E18", "0X8009E18", 0, 0, "", "", str, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aloj
  * JD-Core Version:    0.7.0.1
  */

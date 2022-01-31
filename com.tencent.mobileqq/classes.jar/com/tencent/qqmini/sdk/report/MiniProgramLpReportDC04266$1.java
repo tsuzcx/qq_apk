@@ -1,14 +1,15 @@
 package com.tencent.qqmini.sdk.report;
 
 import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
-import bela;
-import betc;
-import beyw;
-import beze;
-import bezf;
-import bezi;
-import bfhk;
+import android.text.TextUtils;
+import bgkl;
+import bgxr;
+import bgxz;
+import bgya;
+import bgyd;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 import java.util.List;
 
 public final class MiniProgramLpReportDC04266$1
@@ -18,45 +19,55 @@ public final class MiniProgramLpReportDC04266$1
   
   public void run()
   {
-    beze.a(this.jdField_a_of_type_Int);
+    bgxz.a(this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 1)
     {
-      beze.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+      bgxz.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
       if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null) {
-        bezf.a().a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId, beze.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo));
+        bgya.a().a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId, bgxz.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo));
       }
     }
     if ((this.jdField_a_of_type_Int == 611) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null))
     {
-      localObject = bezf.a().a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
-      String str = beze.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-      if ((localObject != null) && (((String)localObject).equals(str))) {
-        bezf.a().a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
+      str1 = bgya.a().a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
+      str2 = bgxz.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+      if ((str1 != null) && (str1.equals(str2))) {
+        bgya.a().a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
       }
     }
-    Object localObject = beze.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    if (betc.b()) {
-      betc.a("MiniProgramLpReportDC04266", "MiniReportManager  reportEventType() called with: eventType = [" + this.jdField_a_of_type_Int + "]" + bezi.a(this.jdField_a_of_type_Int) + "  retCode:" + this.jdField_b_of_type_Int + "  attachInfo: " + this.jdField_a_of_type_JavaLangString + "  timestamp: " + this.jdField_a_of_type_Long + "  launchId: " + (String)localObject + " timecost: " + this.jdField_b_of_type_Long);
-    }
-    localObject = beze.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bela.a(this.jdField_b_of_type_JavaLangString), bezi.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.c, String.valueOf(this.jdField_b_of_type_Int), this.d, String.valueOf(this.jdField_b_of_type_Long), this.e, String.valueOf(this.jdField_a_of_type_Long), (String)localObject, this.f, this.g, this.h, this.i, this.j);
-    if (!bfhk.a()) {
-      ((List)localObject).addAll(beze.a());
-    }
-    if (bfhk.a()) {}
-    for (int k = 3;; k = 13)
+    String str1 = bgxz.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    String str2 = bgyd.a(this.jdField_a_of_type_Int);
+    if (QMLog.isDebugEnabled())
     {
-      localObject = beze.a(k, (List)localObject, null);
-      bezf.a().a((APP_REPORT_TRANSFER.SingleDcData)localObject);
-      if (beyw.a(this.jdField_a_of_type_Int)) {
-        bezf.a().b();
+      if (TextUtils.isEmpty(str2))
+      {
+        QMLog.e("MiniProgramLpReportDC04266", "eventName not found!");
+        throw new AssertionError("MiniProgramLpReportDC04266 eventName not found!");
       }
-      return;
+      QMLog.d("MiniProgramLpReportDC04266", "MiniReportManager  reportEventType() called with: eventType = [" + this.jdField_a_of_type_Int + "]" + str2 + "  retCode:" + this.jdField_b_of_type_Int + "  attachInfo: " + this.jdField_a_of_type_JavaLangString + "  timestamp: " + this.jdField_a_of_type_Long + "  launchId: " + str1 + " timecost: " + this.jdField_b_of_type_Long);
+    }
+    Object localObject = bgxz.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bgkl.a(this.jdField_b_of_type_JavaLangString), str2, this.jdField_a_of_type_JavaLangString, this.c, String.valueOf(this.jdField_b_of_type_Int), this.d, String.valueOf(this.jdField_b_of_type_Long), this.e, String.valueOf(this.jdField_a_of_type_Long), str1, this.f, this.g, this.h, this.i, this.j);
+    if (!QUAUtil.isQQApp()) {
+      ((List)localObject).addAll(bgxz.a());
+    }
+    APP_REPORT_TRANSFER.SingleDcData localSingleDcData = bgxz.a(bgxr.a(), (List)localObject, null);
+    bgya.a().a(localSingleDcData);
+    if (bgyd.a(this.d, str2, this.i))
+    {
+      localObject = bgxz.a(bgxr.b(), (List)localObject, null);
+      bgya.a().a((APP_REPORT_TRANSFER.SingleDcData)localObject);
+      if (QMLog.isDebugEnabled()) {
+        QMLog.d("MiniProgramLpReportDC04266", "MiniReportManager  [5332] reportEventType() called with: eventType = [" + this.jdField_a_of_type_Int + "]" + str2 + "  retCode:" + this.jdField_b_of_type_Int + "  attachInfo: " + this.jdField_a_of_type_JavaLangString + "  timestamp: " + this.jdField_a_of_type_Long + "  launchId: " + str1 + " timecost: " + this.jdField_b_of_type_Long);
+      }
+    }
+    if (bgxr.a(this.jdField_a_of_type_Int)) {
+      bgya.a().b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04266.1
  * JD-Core Version:    0.7.0.1
  */

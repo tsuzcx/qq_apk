@@ -1,86 +1,33 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop.MyTroopObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class aifr
-  extends akil
+  implements View.OnClickListener
 {
-  public aifr(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  public aifr(AvatarPendantActivity paramAvatarPendantActivity, int paramInt, String paramString1, String paramString2) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.c();
+    bdqe.a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, "mvip.gxh.android.faceaddon_nati_dft", this.jdField_a_of_type_Int, "1450000515", this.jdField_a_of_type_JavaLangString, this.b, "");
+    paramView = "0";
+    if (!TextUtils.isEmpty(this.b)) {
+      if (!"QQ会员".equals(this.b)) {
+        break label84;
       }
     }
-    do
+    label84:
+    for (paramView = "0";; paramView = "1")
     {
-      do
-      {
-        return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.c();
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, paramView, "", "", "");
       return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.c();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (TroopDiscussionTroop.a(this.a) != null) {
-      TroopDiscussionTroop.a(this.a).a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDiscussionTroop", 2, "onUpdateTroopList " + paramBoolean);
-    }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().postDelayed(new TroopDiscussionTroop.MyTroopObserver.1(this), 500L);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifr
  * JD-Core Version:    0.7.0.1
  */

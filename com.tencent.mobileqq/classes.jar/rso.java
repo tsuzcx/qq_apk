@@ -1,26 +1,23 @@
 import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-class rso
-  implements bfph
+public class rso
+  implements View.OnLongClickListener
 {
-  rso(rsj paramrsj, bfpc parambfpc) {}
+  public rso(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_Bfpc.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while ((!rsj.b(this.jdField_a_of_type_Rsj)) || (!rsj.a(this.jdField_a_of_type_Rsj, "deleteFeeds")));
-    rmr.a(rsj.a(this.jdField_a_of_type_Rsj), rsj.a(this.jdField_a_of_type_Rsj));
+    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rso
  * JD-Core Version:    0.7.0.1
  */

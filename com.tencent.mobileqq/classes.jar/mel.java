@@ -1,33 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.SeekBar;
+import com.tencent.av.ui.BeautyToolbar;
 
 public class mel
-  extends lgg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public mel(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public mel(BeautyToolbar paramBeautyToolbar) {}
   
-  protected void a(long paramLong, int paramInt, String paramString)
+  public void onGlobalLayout()
   {
-    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "], seq[" + paramLong + "]");
-    if (TextUtils.equals(this.a.c, paramString))
+    if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
     {
-      this.a.b("VideoObserver_onClose");
-      this.a.a(paramLong, paramInt);
-    }
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
-    if (TextUtils.equals(this.a.c, paramString)) {
-      this.a.b("VideoObserver_onDestroyUI");
+      this.a.mIs1stShow = false;
+      this.a.updateTip(this.a.mSeek.getProgress());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mel
  * JD-Core Version:    0.7.0.1
  */

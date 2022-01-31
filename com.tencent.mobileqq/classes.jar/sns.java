@@ -1,36 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 class sns
-  extends akws
+  implements OnCompositionLoadedListener
 {
-  sns(snn paramsnn) {}
+  sns(snr paramsnr) {}
   
-  public int a()
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    return 0;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+    if (paramLottieComposition != null)
+    {
+      this.a.a.setComposition(paramLottieComposition);
+      this.a.a.playAnimation();
     }
-    this.a.a = true;
-    snn.a(this.a);
   }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    snn.a(this.a, 2131695569);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sns
  * JD-Core Version:    0.7.0.1
  */

@@ -1,77 +1,57 @@
-import com.tencent.mobileqq.intervideo.shadow.PluginProcessKiller;
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import android.content.res.Resources;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import java.util.HashMap;
+import java.util.Map;
 
-public class areq
+class areq
+  implements arnz
 {
-  private static areq jdField_a_of_type_Areq = new areq();
-  private PluginProcessKiller jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller;
-  private DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
-  private String jdField_a_of_type_JavaLangString;
+  areq(arep paramarep, long paramLong, boolean paramBoolean, String paramString1, String paramString2, short paramShort, String paramString3) {}
   
-  public static areq a()
+  public void a(boolean paramBoolean)
   {
-    return jdField_a_of_type_Areq;
-  }
-  
-  private void a(String paramString, DynamicPluginManager paramDynamicPluginManager, PluginProcessKiller paramPluginProcessKiller)
-  {
-    int j = 1;
-    int i;
-    if ((paramString != null) && (paramString.equals("Now")))
+    if (paramBoolean)
     {
-      i = 1;
-      if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals("Now"))) {
-        break label55;
-      }
-    }
-    for (;;)
-    {
-      if ((i == 0) && (j == 0)) {
-        break label61;
-      }
+      localObject1 = new HashMap();
+      ((Map)localObject1).put("shouq_bus_type", "bus_type_video_file");
+      localObject2 = new TVK_PlayerVideoInfo();
+      ((TVK_PlayerVideoInfo)localObject2).setReportInfoMap((Map)localObject1);
+      ((TVK_PlayerVideoInfo)localObject2).setPlayType(4);
+      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("RawVideoPlay", "true");
+      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("keep_last_frame", "true");
+      this.jdField_a_of_type_Arep.jdField_a_of_type_Aqtd.aK_();
       return;
-      i = 0;
-      break;
-      label55:
-      j = 0;
     }
-    label61:
-    if ((paramString != null) && (!paramString.equals(this.jdField_a_of_type_JavaLangString)))
+    if (this.jdField_a_of_type_Long == -100001L) {}
+    while ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.length() == 0))
     {
-      if (this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager != null)
-      {
-        PluginProcessKiller localPluginProcessKiller = (PluginProcessKiller)this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.getManagerImpl();
-        if (localPluginProcessKiller != null) {
-          localPluginProcessKiller.onKillPluginProcess();
-        }
+      long l = 9360L;
+      if (this.jdField_a_of_type_Long == 0L) {
+        l = 9048L;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller != null) {
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller.onKillPluginProcess();
+      this.jdField_a_of_type_Arep.jdField_a_of_type_Aqtd.a((int)l, BaseApplication.getContext().getResources().getString(2131690975));
+      return;
+      if ((this.jdField_a_of_type_Long == -25081L) || (this.jdField_a_of_type_Long == -6101L) || (this.jdField_a_of_type_Long == -7003L))
+      {
+        this.jdField_a_of_type_Arep.jdField_a_of_type_Areo.a(true);
+        this.jdField_a_of_type_Arep.jdField_a_of_type_Aqtd.a((int)this.jdField_a_of_type_Long, BaseApplication.getContext().getResources().getString(2131692971));
+        return;
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Arep.jdField_a_of_type_Aqtd.a((int)9045L, BaseApplication.getContext().getResources().getString(2131690975));
+        return;
       }
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller = paramPluginProcessKiller;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(String paramString, PluginProcessKiller paramPluginProcessKiller)
-  {
-    a(paramString, null, paramPluginProcessKiller);
-  }
-  
-  public void a(String paramString, DynamicPluginManager paramDynamicPluginManager)
-  {
-    a(paramString, paramDynamicPluginManager, null);
+    Object localObject1 = this.b;
+    Object localObject2 = "http://" + this.jdField_a_of_type_JavaLangString + ":" + String.valueOf(this.jdField_a_of_type_Short) + this.c;
+    this.jdField_a_of_type_Arep.jdField_a_of_type_Aqtd.a((String)localObject2, (String)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     areq
  * JD-Core Version:    0.7.0.1
  */

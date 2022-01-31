@@ -1,65 +1,148 @@
-import android.util.Log;
-import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.AppRuntime;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class slo
+class slo
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static slo jdField_a_of_type_Slo;
-  private String jdField_a_of_type_JavaLangString = "WeishiNewService";
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final Map<Character, Integer> jdField_a_of_type_JavaUtilMap;
+  private final char[] jdField_a_of_type_ArrayOfChar;
   
-  public static slo a()
+  slo(String paramString)
   {
-    if (jdField_a_of_type_Slo == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if (paramString.contains(Character.toString('\000'))) {
+      throw new IllegalArgumentException("You cannot include TickerUtils.EMPTY_CHAR in the character list.");
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    paramString = paramString.toCharArray();
+    int k = paramString.length;
+    this.jdField_a_of_type_Int = k;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap(k);
+    int i = 0;
+    while (i < k)
     {
-      if (jdField_a_of_type_Slo == null) {
-        jdField_a_of_type_Slo = new slo();
-      }
-      return jdField_a_of_type_Slo;
+      this.jdField_a_of_type_JavaUtilMap.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
+      i += 1;
+    }
+    this.jdField_a_of_type_ArrayOfChar = new char[k * 2 + 1];
+    this.jdField_a_of_type_ArrayOfChar[0] = '\000';
+    i = j;
+    while (i < k)
+    {
+      this.jdField_a_of_type_ArrayOfChar[(i + 1)] = paramString[i];
+      this.jdField_a_of_type_ArrayOfChar[(k + 1 + i)] = paramString[i];
+      i += 1;
     }
   }
   
-  public int a(slp paramslp, slg paramslg)
+  private int a(char paramChar)
   {
-    if (paramslp == null) {}
+    if (paramChar == 0) {
+      return 0;
+    }
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Character.valueOf(paramChar))) {
+      return ((Integer)this.jdField_a_of_type_JavaUtilMap.get(Character.valueOf(paramChar))).intValue() + 1;
+    }
+    return -1;
+  }
+  
+  String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  Set<Character> a()
+  {
+    return this.jdField_a_of_type_JavaUtilMap.keySet();
+  }
+  
+  slp a(char paramChar1, char paramChar2, int paramInt)
+  {
+    int j = a(paramChar1);
+    int k = a(paramChar2);
+    if ((j < 0) || (k < 0)) {
+      return null;
+    }
+    int i;
+    switch (paramInt)
+    {
+    default: 
+      i = j;
+      paramInt = k;
+    }
     for (;;)
     {
-      return 1000004;
-      paramslp.a(paramslg);
-      paramslp.a = System.currentTimeMillis();
-      try
+      return new slp(this, i, paramInt);
+      if (paramChar2 == 0)
       {
-        WeishiIntent localWeishiIntent = new WeishiIntent(BaseApplication.getContext(), slr.class);
-        localWeishiIntent.setWithouLogin(true);
-        localWeishiIntent.a = ((sls)paramslg);
-        if ((localWeishiIntent.a != null) && (localWeishiIntent.a.a != null))
+        paramInt = this.jdField_a_of_type_ArrayOfChar.length;
+        i = j;
+      }
+      else
+      {
+        paramInt = k;
+        i = j;
+        if (k < j)
         {
-          paramslg = BaseApplicationImpl.getApplication().getRuntime();
-          if (paramslg != null)
+          paramInt = k + this.jdField_a_of_type_Int;
+          i = j;
+          continue;
+          paramInt = k;
+          i = j;
+          if (j < k)
           {
-            paramslg.startServlet(localWeishiIntent);
-            Log.i("weishi", "cmd=" + paramslp.uniKey() + ", pkgId=" + paramslp.a() + " submit to MSF, isLogin: " + paramslg.isLogin());
-          }
-          else
-          {
-            Log.e("weishi", "app is null");
+            i = j + this.jdField_a_of_type_Int;
+            paramInt = k;
+            continue;
+            paramInt = k;
+            i = j;
+            if (paramChar1 != 0)
+            {
+              paramInt = k;
+              i = j;
+              if (paramChar2 != 0) {
+                if (k < j)
+                {
+                  paramInt = k;
+                  i = j;
+                  if (this.jdField_a_of_type_Int - j + k < j - k)
+                  {
+                    paramInt = k + this.jdField_a_of_type_Int;
+                    i = j;
+                  }
+                }
+                else
+                {
+                  paramInt = k;
+                  i = j;
+                  if (j < k)
+                  {
+                    paramInt = k;
+                    i = j;
+                    if (this.jdField_a_of_type_Int - k + j < k - j)
+                    {
+                      i = j + this.jdField_a_of_type_Int;
+                      paramInt = k;
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
-      catch (Exception paramslp)
-      {
-        Log.e("weishi", "WeishiProtocolService occur exception. stack=" + paramslp.getLocalizedMessage());
-      }
     }
-    return 0;
+  }
+  
+  char[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfChar;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slo
  * JD-Core Version:    0.7.0.1
  */

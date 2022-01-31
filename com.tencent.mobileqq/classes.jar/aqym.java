@@ -1,76 +1,79 @@
-import android.annotation.TargetApi;
-import android.graphics.Matrix;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Interpolator;
-import android.view.animation.Transformation;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class aqym
-  extends Animation
+public class aqym
+  implements ayru
 {
-  public float a;
-  public int a;
-  public PathMeasure a;
-  public View a;
-  public Interpolator a;
-  public aqyl a;
-  public aqyn a;
-  public float b;
+  protected int a;
+  protected View a;
+  protected ImageView a;
+  protected TextView a;
+  protected TextView b;
   
-  @TargetApi(11)
-  public aqym(Path paramPath, float paramFloat, View paramView1, View paramView2, aqyl paramaqyl)
+  public aqym() {}
+  
+  public aqym(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(paramPath, false);
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
-    this.jdField_a_of_type_AndroidViewView = paramView2;
-    this.jdField_b_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Aqyl = paramaqyl;
-    paramView1.setLayerType(2, null);
+    this.jdField_a_of_type_Int = 2131562593;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
   }
   
-  private static float a(int paramInt, float paramFloat)
+  public View a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return (float)Math.pow(paramFloat, 2.0D);
-    case 1: 
-      if (paramFloat < 0.8D) {
-        return 0.0F;
-      }
-      return 5.0F * paramFloat - 4.0F;
-    }
-    return 0.5F * paramFloat + 0.5F;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  @TargetApi(11)
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public View a(String paramString)
   {
-    Object localObject = paramTransformation.getMatrix();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getMatrix(this.jdField_a_of_type_Float * paramFloat, (Matrix)localObject, 1);
-    float f;
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      f = this.jdField_b_of_type_Float;
-      aqyl localaqyl = this.jdField_a_of_type_Aqyl;
-      ((View)localObject).setRotation(f * paramFloat * aqyl.jdField_b_of_type_Float);
-    }
-    if (this.jdField_a_of_type_Aqyl.jdField_b_of_type_Boolean)
-    {
-      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
-      this.jdField_a_of_type_AndroidViewView.setScaleX(this.jdField_a_of_type_Aqyl.c * f);
-      this.jdField_a_of_type_AndroidViewView.setScaleY(f * this.jdField_a_of_type_Aqyl.c);
-    }
-    paramTransformation.setAlpha(1.0F - a(this.jdField_a_of_type_Int, paramFloat));
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367910));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377884));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(baiq.a);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365127));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131377956).setVisibility(8);
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqym
  * JD-Core Version:    0.7.0.1
  */

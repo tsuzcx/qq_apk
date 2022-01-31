@@ -3,6 +3,7 @@ package com.tencent.ad.tangram.protocol;
 public final class qq_ad_get$QQAdGetRsp$AdInfo$DisplayInfo$VideoInfo
 {
   public int media_duration = 0;
+  public boolean no_auto_play = false;
   public String tencent_video_id;
   public int video_file_size = 0;
   public String video_url;

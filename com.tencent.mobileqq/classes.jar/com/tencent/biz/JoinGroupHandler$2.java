@@ -1,12 +1,12 @@
 package com.tencent.biz;
 
-import bcqf;
-import mvv;
+import bepp;
+import myo;
 
 public class JoinGroupHandler$2
   implements Runnable
 {
-  public JoinGroupHandler$2(mvv parammvv) {}
+  public JoinGroupHandler$2(myo parammyo) {}
   
   public void run()
   {

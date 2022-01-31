@@ -2,13 +2,13 @@ package com.tencent.av.ui;
 
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import mgs;
-import mhr;
+import mjk;
+import mkj;
 
 public class QAVPtvTemplateAdapter$5
   implements Runnable
 {
-  public QAVPtvTemplateAdapter$5(mgs parammgs, String paramString, boolean paramBoolean, long paramLong) {}
+  public QAVPtvTemplateAdapter$5(mjk parammjk, String paramString, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
@@ -18,11 +18,11 @@ public class QAVPtvTemplateAdapter$5
     Object localObject1;
     if (i < this.this$0.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localObject1 = (mhr)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localObject1 != null) && (((mhr)localObject1).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
+      localObject1 = (mkj)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if ((localObject1 != null) && (((mkj)localObject1).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
       {
-        ((mhr)localObject1).b = false;
-        ((mhr)localObject1).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+        ((mkj)localObject1).b = false;
+        ((mkj)localObject1).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
         j = i;
         if (i >= k)
         {
@@ -59,11 +59,11 @@ public class QAVPtvTemplateAdapter$5
         {
           localObject1 = localObject2;
           if (j != -1) {
-            localObject1 = (mhr)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(j);
+            localObject1 = (mkj)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(j);
           }
         }
         if (localObject1 != null) {
-          this.this$0.a(this.jdField_a_of_type_Long, (mhr)localObject1);
+          this.this$0.a(this.jdField_a_of_type_Long, (mkj)localObject1);
         }
       }
       return;
@@ -77,7 +77,7 @@ public class QAVPtvTemplateAdapter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.QAVPtvTemplateAdapter.5
  * JD-Core Version:    0.7.0.1
  */

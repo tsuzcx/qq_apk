@@ -1,65 +1,113 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.os.SystemClock;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-class aznr
-  implements Comparator<MessageRecord>
+public class aznr
 {
-  aznr(aznq paramaznq) {}
+  public static LinkedList<azns> a = new LinkedList();
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public static azns a(Class paramClass, int paramInt)
   {
-    int j = 0;
-    long l1 = paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq;
-    int i;
-    if (l1 == 0L) {
-      if ((paramMessageRecord1.msgtype == -1012) || (paramMessageRecord1.msgtype == -5021))
+    if (paramClass == null) {
+      return null;
+    }
+    int i = a.size() - 1;
+    while (i >= 0)
+    {
+      azns localazns = (azns)a.get(i);
+      if ((paramClass == localazns.jdField_a_of_type_JavaLangClass) && (paramInt == localazns.jdField_a_of_type_Long))
       {
-        i = 1;
-        if ((paramMessageRecord2.msgtype == -1012) || (paramMessageRecord2.msgtype == -5021)) {
-          j = 1;
+        a.remove(i);
+        return localazns;
+      }
+      i -= 1;
+    }
+    return null;
+  }
+  
+  public static void a(long paramLong)
+  {
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext())
+    {
+      azns localazns = (azns)localIterator.next();
+      localazns.b += paramLong;
+    }
+  }
+  
+  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString, int paramInt2)
+  {
+    a(paramAppInterface, paramClass, paramInt1, paramString, paramInt2, "");
+  }
+  
+  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString1, int paramInt2, String paramString2)
+  {
+    if (paramClass == null) {
+      return;
+    }
+    int i = a.size();
+    if (i > 0)
+    {
+      i -= 1;
+      if (i >= 0)
+      {
+        azns localazns = (azns)a.get(i);
+        if (localazns.jdField_a_of_type_JavaLangClass == paramClass)
+        {
+          if (!(paramAppInterface instanceof QQAppInterface)) {
+            break label123;
+          }
+          azmj.b((QQAppInterface)paramAppInterface, "CliOper", "", "", localazns.jdField_a_of_type_JavaLangString, localazns.jdField_a_of_type_JavaLangString, localazns.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localazns.b), "", "");
         }
-        if (i == 0) {
-          break label111;
+        for (;;)
+        {
+          a.remove(i);
+          i -= 1;
+          break;
+          label123:
+          if (paramAppInterface != null) {
+            paramAppInterface.reportClickEvent("CliOper", "", "", localazns.jdField_a_of_type_JavaLangString, localazns.jdField_a_of_type_JavaLangString, localazns.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localazns.b), "", "");
+          } else {
+            azmj.b(null, "CliOper", "", "", localazns.jdField_a_of_type_JavaLangString, localazns.jdField_a_of_type_JavaLangString, localazns.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localazns.b), "", "");
+          }
         }
-        if (j == 0) {
-          break label105;
-        }
-        l1 = paramMessageRecord1.time - paramMessageRecord2.time;
       }
     }
-    for (;;)
+    paramAppInterface = new azns();
+    paramAppInterface.jdField_a_of_type_JavaLangClass = paramClass;
+    paramAppInterface.jdField_a_of_type_Long = paramInt1;
+    paramAppInterface.b = SystemClock.elapsedRealtime();
+    paramAppInterface.jdField_a_of_type_JavaLangString = paramString1;
+    paramAppInterface.jdField_a_of_type_Int = paramInt2;
+    a.add(paramAppInterface);
+  }
+  
+  public static void a(Class<?> paramClass, int paramInt1, int paramInt2, String paramString)
+  {
+    if ((paramClass == null) || (paramString == null)) {
+      return;
+    }
+    if (paramString.contains("/qunactivity/")) {}
+    for (String str = "0X8004EC8";; str = null)
     {
-      label86:
-      long l2;
-      if (l1 > 0L) {
-        l2 = 1L;
-      }
-      for (;;)
+      if (paramString.contains("/hotchat/"))
       {
-        return (int)l2;
-        i = 0;
-        break;
-        label105:
-        l1 = 1L;
-        break label86;
-        label111:
-        if (j != 0)
-        {
-          l1 = -1L;
-          break label86;
-        }
-        break label86;
-        l2 = l1;
-        if (l1 < 0L) {
-          l2 = -1L;
-        }
+        str = "0X8004410";
+        paramInt2 = 2;
       }
+      if (str == null) {
+        break;
+      }
+      a(null, paramClass, paramInt1, str, paramInt2);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aznr
  * JD-Core Version:    0.7.0.1
  */

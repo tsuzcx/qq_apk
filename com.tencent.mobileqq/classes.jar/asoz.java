@@ -1,40 +1,61 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 
 public class asoz
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public asoz(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
+  public static float b;
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public float c;
+  public int c;
+  public int d = 10;
+  public int e = 8;
+  public int f = 150;
+  public int g = 300;
+  public int h = 32;
+  public int i = 27;
+  public int j = 3000;
+  public int k;
+  public int l;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  static
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((this.b - this.jdField_a_of_type_Int) * f1));
-    paramValueAnimator.topMargin = (this.c + Math.round((this.d - this.c) * f1));
-    paramValueAnimator.width = (this.e + Math.round((this.f - this.e) * f1));
-    int i = this.g;
-    int j = MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getHeight() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingTop() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingBottom();
-    if (j > 0) {
-      i = j;
-    }
-    for (;;)
-    {
-      j = this.h;
-      paramValueAnimator.height = (Math.round((i - this.h) * f1) + j);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
-      this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
-      return;
-    }
+    jdField_b_of_type_Float = 1.0F;
+  }
+  
+  private asoz()
+  {
+    this.jdField_a_of_type_Int = 250;
+    this.jdField_c_of_type_Int = 20;
+    this.jdField_c_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public asoz(HeartLayout paramHeartLayout)
+  {
+    this.jdField_a_of_type_Int = 250;
+    this.jdField_c_of_type_Int = 20;
+    this.jdField_c_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = paramHeartLayout.getContext().getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_Int = ((int)((paramHeartLayout.getWidth() - this.jdField_a_of_type_Float * 32.0F) / 2.0F));
+    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 27.0F));
+    this.h = ((int)(this.jdField_a_of_type_Float * 32.0F));
+    this.i = ((int)(this.jdField_a_of_type_Float * 27.0F));
+    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float * 20.0F));
+    this.d = ((int)(this.jdField_a_of_type_Float * 10.0F));
+    this.f = ((int)(this.jdField_a_of_type_Float * 150.0F));
+    this.g = ((int)(this.jdField_a_of_type_Float * 300.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asoz
  * JD-Core Version:    0.7.0.1
  */

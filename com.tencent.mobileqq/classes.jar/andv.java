@@ -1,16 +1,22 @@
-class andv
-  implements bjjg
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ar.view.ViewfinderView;
+
+public class andv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  andv(andt paramandt) {}
+  public andv(ViewfinderView paramViewfinderView, Rect paramRect) {}
   
-  public void a(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bjck.a(paramString);
+    ViewfinderView.a(this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.postInvalidate(this.jdField_a_of_type_AndroidGraphicsRect.left - 6, this.jdField_a_of_type_AndroidGraphicsRect.top - 6, this.jdField_a_of_type_AndroidGraphicsRect.right + 6, this.jdField_a_of_type_AndroidGraphicsRect.bottom + 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andv
  * JD-Core Version:    0.7.0.1
  */

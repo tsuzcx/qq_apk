@@ -3,14 +3,14 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import athp;
+import auyo;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MedalInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MedalInfo> CREATOR = new athp();
+  public static final Parcelable.Creator<MedalInfo> CREATOR = new auyo();
   public int a;
   public List<MedalItem> a;
   public int b;
@@ -53,7 +53,7 @@ public class MedalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.MedalInfo
  * JD-Core Version:    0.7.0.1
  */

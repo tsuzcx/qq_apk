@@ -1,34 +1,75 @@
-import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.CacheMap;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class afyj
 {
-  public ArrayList<afyk> a;
-  public int[] a;
-  public String[] a;
+  private static final String jdField_a_of_type_JavaLangString = afyj.class.getSimpleName();
+  private StructingMsgItemBuilder.CacheMap jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap = new StructingMsgItemBuilder.CacheMap(null);
+  private StructingMsgItemBuilder.CacheMap b = new StructingMsgItemBuilder.CacheMap(null);
   
-  public afyj()
+  private afyk a(String paramString, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    Iterator localIterator = this.b.get(paramString).iterator();
+    while (localIterator.hasNext())
+    {
+      paramString = (afyk)localIterator.next();
+      if (paramString != null) {
+        paramString.a(paramViewGroup);
+      }
+    }
+    for (;;)
+    {
+      this.b.remove(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(paramString);
+      return paramString;
+      paramString = null;
+    }
   }
   
-  public void a(Context paramContext, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  public View a(String paramString, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
-    String[] arrayOfString = new String[paramArrayOfInt2.length];
-    int i = 0;
-    while (i < paramArrayOfInt2.length)
-    {
-      arrayOfString[i] = paramContext.getString(paramArrayOfInt2[i]);
-      this.jdField_a_of_type_JavaUtilArrayList.add(new afyk(paramArrayOfInt1[i], arrayOfString[i]));
-      i += 1;
+    a(paramString, paramViewGroup);
+    paramString = a(paramString, paramViewGroup);
+    if (paramString != null) {
+      return paramString.a();
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString;
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.clear();
+    this.b.clear();
+  }
+  
+  public void a(String paramString, View paramView, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new afyk(paramString, paramView, paramViewGroup));
+  }
+  
+  public void a(String paramString, ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup == null) {}
+    afyk localafyk;
+    do
+    {
+      return;
+      while (!paramString.hasNext()) {
+        paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(paramString).iterator();
+      }
+      localafyk = (afyk)paramString.next();
+    } while ((localafyk == null) || (localafyk.a() == null) || (localafyk.a() != paramViewGroup));
+    localafyk.a().removeAllViews();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localafyk);
+    this.b.add(localafyk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afyj
  * JD-Core Version:    0.7.0.1
  */

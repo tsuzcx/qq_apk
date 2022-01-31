@@ -1,36 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class afid
+  extends aelt
 {
-  public int a;
-  public String a;
-  public String b;
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int != 1;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof afid))
-    {
-      paramObject = (afid)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-    }
-    return super.equals(paramObject);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
-  }
+  public ImageView a;
+  public TextView a;
+  public URLDrawable a;
+  public FlashPicItemBuilder.FlashPicAIOThumbView a;
+  public BubbleImageView a;
+  public boolean a;
+  public boolean b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afid
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,8 @@ package com.tencent.open.agent;
 
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import aysh;
+import baqe;
+import com.tencent.image.URLDrawable;
 
 class OpenCardContainer$5
   implements Runnable
@@ -11,16 +12,18 @@ class OpenCardContainer$5
   
   public void run()
   {
-    String str = this.this$0.a();
-    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(aysh.a(str));
-    if (this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
+    Object localObject = this.this$0.a();
+    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(baqe.a((String)localObject));
+    if (this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       Message.obtain(this.this$0.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
-      return;
     }
-    Message localMessage = Message.obtain(this.this$0.jdField_a_of_type_AndroidOsHandler, 10002);
-    localMessage.obj = str;
-    localMessage.sendToTarget();
+    do
+    {
+      return;
+      localObject = OpenCardContainer.a(this.this$0, (String)localObject);
+    } while ((localObject == null) || (((URLDrawable)localObject).getStatus() != 1));
+    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject);
+    Message.obtain(this.this$0.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
   }
 }
 

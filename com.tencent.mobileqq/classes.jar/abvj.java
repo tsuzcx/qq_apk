@@ -1,26 +1,26 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.TMG.utils.QLog;
 
-public class abvj
+class abvj
   implements View.OnClickListener
 {
-  public abvj(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  abvj(abvh paramabvh, View.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
+    {
+      QLog.e("SdkAuthDialog", 1, "negativeListener is null");
+      return;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
-    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    azmj.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "2", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvj
  * JD-Core Version:    0.7.0.1
  */

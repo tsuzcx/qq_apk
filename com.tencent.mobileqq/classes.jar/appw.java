@@ -1,37 +1,50 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 
-class appw
-  implements AudioManager.OnAudioFocusChangeListener
+public class appw
+  extends apsj
 {
-  appw(appt paramappt) {}
+  public EmojiStickerManager.StickerInfo a;
+  public boolean a;
+  public int c = -1;
+  public int d;
+  public int e;
+  public int f = 0;
+  public int g;
+  public String i;
+  public String j;
   
-  public void onAudioFocusChange(int paramInt)
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    if (paramInt == -2) {
-      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
-        appt.a(this.a);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt != 1) {
-          break;
-        }
-      } while ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()) || (this.a.jdField_a_of_type_AndroidAppActivity == null) || (!(this.a.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity)) || (!((FileBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).isResume()));
-      appt.b(this.a);
-      return;
-    } while ((paramInt != -1) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()));
-    appt.a(this.a);
+    return baiy.a(paramContext.getResources(), this.e);
+  }
+  
+  public Drawable a(Context paramContext, float paramFloat, int paramInt1, int paramInt2)
+  {
+    return baiy.a(paramContext.getResources(), this.e);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
+  
+  public Drawable b(Context paramContext, float paramFloat)
+  {
+    return a(paramContext, paramFloat);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "EmoticonInfo[type: " + this.c + "  action: " + this.i + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appw
  * JD-Core Version:    0.7.0.1
  */

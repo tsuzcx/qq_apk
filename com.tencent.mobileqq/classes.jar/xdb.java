@@ -1,133 +1,190 @@
-import android.annotation.TargetApi;
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.text.InputFilter;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog.5;
-import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog.6;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.widget.InputMethodLinearLayout;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.PointF;
+import android.opengl.GLES20;
+import com.tencent.aekit.openrender.UniformParam.Float2fParam;
+import com.tencent.aekit.openrender.UniformParam.Float3fParam;
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+import com.tencent.aekit.openrender.UniformParam.Mat4Param;
+import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.aekit.openrender.util.GlUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.baseutils.io.FileUtils;
+import com.tencent.ttpic.openapi.model.DoodleItem;
+import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
+import com.tencent.ttpic.openapi.shader.ShaderManager;
+import com.tencent.ttpic.openapi.util.MatrixUtil;
+import com.tencent.ttpic.util.AlgoUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class xdb
-  implements View.OnClickListener, bcnh
+  extends VideoFilterBase
 {
-  protected Dialog a;
-  protected EditText a;
-  protected TextView a;
-  protected TextView b;
+  int jdField_a_of_type_Int;
+  Point jdField_a_of_type_AndroidGraphicsPoint;
+  protected UniformParam.TextureBitmapParam a;
+  DoodleItem jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem;
+  private String jdField_a_of_type_JavaLangString = "doodle_image";
+  List<List<PointF>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  public int b;
+  List<Bitmap> b;
+  public int c = 480;
+  public int d = 1080;
+  public int e = 1440;
   
-  @TargetApi(11)
-  public xdb(TroopGiftPanel paramTroopGiftPanel, Context paramContext)
+  public xdb(DoodleItem paramDoodleItem, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(paramContext, 2131755160);
-    Window localWindow = this.jdField_a_of_type_AndroidAppDialog.getWindow();
-    localWindow.setSoftInputMode(16);
-    View localView = localWindow.getDecorView();
-    if (localView != null) {
-      localView.setPadding(0, 0, 0, 0);
-    }
-    localWindow.setGravity(80);
-    localWindow.setLayout(-1, -2);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560338, null);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(paramContext);
-    this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
-    paramContext = (InputMethodLinearLayout)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367084);
-    paramContext.setOnSizeChangedListenner(this);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364615));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363857));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367090));
-    if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setCustomSelectionActionModeCallback(new xdc(this, paramTroopGiftPanel));
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new xdd(this, paramTroopGiftPanel));
-    this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    paramContext.setOnClickListener(new xde(this, paramTroopGiftPanel));
+    super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_Int = 320;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem = paramDoodleItem;
+    initParams();
+    a(paramString);
   }
   
-  public void a()
+  private double a(PointF paramPointF1, PointF paramPointF2)
   {
-    this.jdField_a_of_type_AndroidAppDialog.setOnShowListener(new xdf(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new xda(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, 5) });
-    this.jdField_a_of_type_AndroidAppDialog.show();
+    return Math.sqrt((paramPointF1.x - paramPointF2.x) * (paramPointF1.x - paramPointF2.x) + (paramPointF1.y - paramPointF2.y) * (paramPointF1.y - paramPointF2.y));
   }
   
-  public void a(boolean paramBoolean)
+  private void a()
   {
-    if (!paramBoolean) {
-      b();
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xdi.a();
-    }
-    for (;;)
+    Object localObject = this.jdField_b_of_type_JavaUtilList;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    localObject = (Bitmap)((List)localObject).get(i % this.jdField_b_of_type_JavaUtilList.size());
+    if (this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam != null)
     {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.swapTextureBitmap((Bitmap)localObject);
       return;
-      ((BaseChatPie)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).n(false);
     }
+    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam = new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject, 33986, false);
+    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.initialParams(super.getProgramIds());
+    super.addParam(this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam);
   }
   
-  public void c()
+  private void a(String paramString)
   {
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method");
-    View localView = this.jdField_a_of_type_AndroidAppDialog.getWindow().peekDecorView();
-    if ((localView != null) && (localView.getWindowToken() != null)) {
-      localInputMethodManager.hideSoftInputFromWindow(localView.getWindowToken(), 0);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (myb.a().a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a())) {}
-    for (int i = 2;; i = 1) {
-      switch (paramView.getId())
+    int i = 0;
+    this.jdField_a_of_type_Int = 0;
+    if (i < this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.count)
+    {
+      Bitmap localBitmap = BitmapUtils.decodeSampledBitmapFromFile(FileUtils.getRealPath(paramString + "/" + this.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_JavaLangString + "_" + i + ".png"), 80, 80);
+      if (BitmapUtils.isLegal(localBitmap)) {
+        this.jdField_b_of_type_JavaUtilList.add(localBitmap);
+      }
+      for (;;)
       {
-      default: 
-        return;
+        i += 1;
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("Personality", 2, "PersonalityImageFilter unlegal bitmap " + i);
+        }
       }
     }
-    c();
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.postDelayed(new TroopGiftPanel.GiftNumInputDialog.5(this), 100L);
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+  }
+  
+  public void ApplyGLSLFilter()
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      akbj.a("gift_store", "cancel_num", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
+      this.jdField_a_of_type_Boolean = true;
+      super.ApplyGLSLFilter();
+    }
+  }
+  
+  public void a(List<PointF> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
+    if (this.jdField_b_of_type_JavaUtilList.size() < 1) {
       return;
     }
-    axqy.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numcancel", i, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_JavaLangString, "" + mua.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
-    return;
-    c();
-    paramView = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
-    if (!TextUtils.isEmpty(paramView)) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(paramView);
-    }
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.postDelayed(new TroopGiftPanel.GiftNumInputDialog.6(this), 100L);
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      akbj.a("gift_store", "sure_num", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
-      return;
+      PointF localPointF = (PointF)paramList.next();
+      localArrayList.add(new PointF(localPointF.x + this.jdField_a_of_type_AndroidGraphicsPoint.x, localPointF.y + this.jdField_a_of_type_AndroidGraphicsPoint.y));
     }
-    axqy.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", i, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_JavaLangString, "" + mua.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    this.jdField_a_of_type_JavaUtilList.add(localArrayList);
+  }
+  
+  public void initAttribParams()
+  {
+    setPositions(GlUtil.ORIGIN_POSITION_COORDS);
+    setTexCords(new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F });
+  }
+  
+  public void initParams()
+  {
+    super.addParam(new UniformParam.IntParam("texNeedTransform", 1));
+    super.addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
+    super.addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
+    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
+    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
+    super.addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
+    super.addParam(new UniformParam.IntParam("blendMode", this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.blendMode));
+    super.addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
+    super.addParam(new UniformParam.FloatParam("alpha", 1.0F));
+  }
+  
+  public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1) || (((List)this.jdField_a_of_type_JavaUtilList.get(0)).size() < 1)) {
+      return false;
+    }
+    this.jdField_a_of_type_Int = 0;
+    Object localObject = null;
+    paramInt2 = 0;
+    while (paramInt2 < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramInt3 = 0;
+      if (paramInt3 < ((List)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).size())
+      {
+        PointF localPointF = (PointF)((List)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).get(paramInt3);
+        if ((localObject != null) && (a(localPointF, (PointF)localObject) <= Math.max(this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width, this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height) * 1.2D)) {}
+        for (;;)
+        {
+          paramInt3 += 1;
+          break;
+          a();
+          float f1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width * this.width / this.d * 1.5F;
+          float f2 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height * this.height / this.e * 1.5F;
+          float f3 = localPointF.x - f1 / 2.0F;
+          float f4 = this.height - localPointF.y + f2 / 2.0F;
+          super.setPositions(AlgoUtils.calPositions(f3, f4, f1 + f3, f4 - f2, this.width, this.height));
+          super.addParam(new UniformParam.Float2fParam("texAnchor", -this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y));
+          super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
+          super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
+          GLES20.glFlush();
+          super.OnDrawFrameGLSL();
+          super.renderTexture(paramInt1, this.width, this.height);
+          localObject = localPointF;
+        }
+      }
+      paramInt2 += 1;
+    }
+    return true;
+  }
+  
+  public void updatePreview(Object paramObject) {}
+  
+  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
+  {
+    super.updateVideoSize(paramInt1, paramInt2, paramDouble);
+    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramInt1 / 2, paramInt2 / 2);
+    super.addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdb
  * JD-Core Version:    0.7.0.1
  */

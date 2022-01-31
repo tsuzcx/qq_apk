@@ -1,20 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SigCommentListActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 
 public class accf
-  implements View.OnClickListener
+  extends Handler
 {
-  public accf(SigCommentListActivity paramSigCommentListActivity) {}
+  public accf(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a(true, true);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131721199);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accf
  * JD-Core Version:    0.7.0.1
  */

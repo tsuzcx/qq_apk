@@ -1,48 +1,41 @@
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 public class acpw
-  implements View.OnClickListener
+  implements bhqd
 {
-  public acpw(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, auww paramauww, int paramInt) {}
+  public acpw(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bhpy parambhpy) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = 1;
-    int j;
-    int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
+    switch (paramInt)
     {
-      j = 1;
-      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
-        break label136;
-      }
-      if (!((ataj)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(207)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
-        break label131;
-      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_Auww, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
+      if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
+      {
+        this.jdField_a_of_type_Bhpy.dismiss();
+        this.jdField_a_of_type_Bhpy.cancel();
+      }
       return;
-      j = 0;
-      break;
-      label131:
-      i = 0;
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b();
       continue;
-      label136:
-      i = k;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.uin;
+      Bundle localBundle = yzg.a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
+      yzg.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), "", "", paramView, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 22001, null, localBundle);
+      bdaj.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), bdaj.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
+      continue;
+      DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpw
  * JD-Core Version:    0.7.0.1
  */

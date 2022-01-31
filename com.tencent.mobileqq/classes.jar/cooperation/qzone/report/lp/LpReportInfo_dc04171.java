@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
 import android.os.Build;
-import bgyh;
+import bize;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +53,7 @@ public class LpReportInfo_dc04171
     LpReportUtils.safePut(localHashMap, "os_type", "Android");
     LpReportUtils.safePut(localHashMap, "app_name", "QQ");
     LpReportUtils.safePut(localHashMap, "device_name", Build.MODEL);
-    LpReportUtils.safePut(localHashMap, "imei", bgyh.a().a());
+    LpReportUtils.safePut(localHashMap, "imei", bize.a().a());
     LpReportUtils.safePut(localHashMap, "guid", this.mGuid);
     LpReportUtils.safePut(localHashMap, "url", this.mUrl);
     LpReportUtils.safePut(localHashMap, "qq_pf_to", this.mQQPfTo);
@@ -68,7 +68,7 @@ public class LpReportInfo_dc04171
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc04171
  * JD-Core Version:    0.7.0.1
  */

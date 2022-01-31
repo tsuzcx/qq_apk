@@ -1,23 +1,17 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class rdr
-  extends oyd
+final class rdr
+  implements DialogInterface.OnClickListener
 {
-  public rdr(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramString);
-  }
-  
-  public void a(oxx paramoxx)
-  {
-    paramoxx.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdr
  * JD-Core Version:    0.7.0.1
  */

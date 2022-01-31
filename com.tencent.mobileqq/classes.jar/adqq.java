@@ -1,28 +1,28 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
 public class adqq
-  extends acuj
+  implements Handler.Callback
 {
-  float jdField_a_of_type_Float;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  UnlimitedBladeWorks jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  ImageView b;
-  public View c;
-  ImageView c;
+  public adqq(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public adqq(adqe paramadqe) {}
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      paramMessage = new adqr(this);
+      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqq
  * JD-Core Version:    0.7.0.1
  */

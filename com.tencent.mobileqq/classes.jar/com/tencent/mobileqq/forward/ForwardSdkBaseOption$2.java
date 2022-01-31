@@ -2,10 +2,10 @@ package com.tencent.mobileqq.forward;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqes;
-import aqgj;
-import bdes;
-import bdin;
+import aryh;
+import arzy;
+import bfdq;
+import bfhl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -18,8 +18,8 @@ public class ForwardSdkBaseOption$2
   public void run()
   {
     long l = System.currentTimeMillis();
-    aqes.a(this.this$0, "KEY_STAGE_1_CHANGE_IMG_URL");
-    Object localObject1 = bdin.a(this.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    aryh.a(this.this$0, "KEY_STAGE_1_CHANGE_IMG_URL");
+    Object localObject1 = bfhl.a(this.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
     int i = ((Integer)localObject1[0]).intValue();
     boolean bool2 = ((Boolean)localObject1[1]).booleanValue();
     String str = (String)localObject1[2];
@@ -32,7 +32,7 @@ public class ForwardSdkBaseOption$2
     }
     for (;;)
     {
-      aqgj.a("KEY_STAGE_1_CHANGE_IMG_URL", (String)localObject2, (HashMap)localObject1, bool1);
+      arzy.a("KEY_STAGE_1_CHANGE_IMG_URL", (String)localObject2, (HashMap)localObject1, bool1);
       l = System.currentTimeMillis() - l;
       QLog.d("ForwardSdkBaseOption", 1, new Object[] { "changeRemoteUrl|ret=", Integer.valueOf(i), ",needRich=", Boolean.valueOf(bool2), ",url=", str, ",cost=", Long.valueOf(l) });
       localObject2 = new Bundle();
@@ -46,18 +46,18 @@ public class ForwardSdkBaseOption$2
         ((Bundle)localObject2).putString("intext_3", "0");
         ((Bundle)localObject2).putString("intext_5", "" + l);
         ((Bundle)localObject2).putString("stringext_2", this.a);
-        bdes.a().a((Bundle)localObject2, "" + this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false);
+        bfdq.a().a((Bundle)localObject2, "" + this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false);
         if ((i != 0) || (TextUtils.isEmpty(str))) {}
       }
       try
       {
         this.this$0.jdField_a_of_type_AndroidOsBundle.putByte("struct_share_key_image_url_status", (byte)3);
-        bdin.a(false, this.a, this.a, str);
+        bfhl.a(false, this.a, this.a, str);
         this.this$0.jdField_a_of_type_AndroidOsBundle.putString("image_url_remote", str);
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
         {
           this.this$0.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.updateCover(str);
-          aqes.a(this.this$0).sendEmptyMessage(2);
+          aryh.a(this.this$0).sendEmptyMessage(2);
         }
         return;
         bool1 = false;
@@ -78,7 +78,7 @@ public class ForwardSdkBaseOption$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.2
  * JD-Core Version:    0.7.0.1
  */

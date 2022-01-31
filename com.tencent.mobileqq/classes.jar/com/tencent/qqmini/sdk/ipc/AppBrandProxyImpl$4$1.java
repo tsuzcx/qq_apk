@@ -7,8 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import betc;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class AppBrandProxyImpl$4$1
   extends ResultReceiver
@@ -37,19 +38,19 @@ class AppBrandProxyImpl$4$1
           this.a.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
           return;
         }
-        MiniAppEnv.g().getContext().startActivity(localIntent);
+        AppLoaderFactory.g().getMiniAppEnv().getContext().startActivity(localIntent);
         return;
       }
       catch (Throwable paramBundle)
       {
-        betc.d("minisdk-start_AppBrandProxy", "startMiniApp startActivity exception!", paramBundle);
+        QMLog.e("minisdk-start_AppBrandProxy", "startMiniApp startActivity exception!", paramBundle);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ipc.AppBrandProxyImpl.4.1
  * JD-Core Version:    0.7.0.1
  */

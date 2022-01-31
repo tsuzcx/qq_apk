@@ -1,59 +1,49 @@
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDK;
+import com.tencent.qapmsdk.base.listener.IInspectorListener;
+import com.tencent.qapmsdk.common.util.InspectUUID;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class azpf
-  extends DefaultHandler
+  implements IInspectorListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  protected String e;
+  public void onCheckingLeaked(int paramInt, @NotNull String paramString) {}
   
-  public azpf(azpc paramazpc) {}
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  public boolean onFilter(@NotNull Object paramObject)
   {
-    if (this.e != null)
-    {
-      paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-      if (!this.e.equals("title")) {
-        break label46;
-      }
-      if (bbkk.a(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
-      }
-    }
-    label46:
-    while (!this.e.equals("summary")) {
-      return;
-    }
-    this.c = paramArrayOfChar;
+    return InitMagnifierSDK.a(paramObject);
   }
   
-  public void endElement(String paramString1, String paramString2, String paramString3)
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
   {
-    this.e = null;
+    InitMagnifierSDK.a(paramBoolean, paramString1, paramString2);
   }
   
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  public boolean onLeaked(@NotNull InspectUUID paramInspectUUID)
   {
-    if (paramString2.equals("picture")) {
-      this.b = paramAttributes.getValue("cover");
-    }
-    for (;;)
+    LeakInspector.InspectUUID localInspectUUID = null;
+    if (paramInspectUUID != null)
     {
-      this.e = paramString2;
-      return;
-      if (paramString2.equals("msg")) {
-        this.d = paramAttributes.getValue("url");
-      }
+      localInspectUUID = new LeakInspector.InspectUUID();
+      localInspectUUID.classname = paramInspectUUID.className;
+      localInspectUUID.digest = paramInspectUUID.digest;
+      localInspectUUID.weakObj = paramInspectUUID.weakObj;
+      localInspectUUID.uuid = paramInspectUUID.uuid;
+      localInspectUUID.digest = paramInspectUUID.digest;
     }
+    return InitMagnifierSDK.a(localInspectUUID);
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    return InitMagnifierSDK.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azpf
  * JD-Core Version:    0.7.0.1
  */

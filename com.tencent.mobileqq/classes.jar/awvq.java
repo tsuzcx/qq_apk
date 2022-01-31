@@ -1,21 +1,81 @@
-import java.util.Comparator;
+import android.content.Context;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.List;
 
-class awvq
-  implements Comparator<String>
+public class awvq
+  extends BaseAdapter
 {
-  awvq(awvp paramawvp) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<PhoneContact> jdField_a_of_type_JavaUtilList;
   
-  public int a(String paramString1, String paramString2)
+  public awvq(Context paramContext, List<PhoneContact> paramList)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  private View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560856, null);
+    awvs localawvs = new awvs(null);
+    localawvs.a = ((TextView)paramViewGroup.findViewById(2131373441));
+    localawvs.b = ((TextView)paramViewGroup.findViewById(2131373440));
+    paramViewGroup.setTag(localawvs);
+    return paramViewGroup;
+  }
+  
+  private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (awvs)paramView.getTag();
+    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramInt = localPhoneContact.type;
+    paramView = null;
+    if (paramInt == 0) {
+      paramView = localPhoneContact.label;
     }
-    return paramString2.length() - paramString1.length();
+    paramView = (String)ContactsContract.CommonDataKinds.Phone.getTypeLabel(this.jdField_a_of_type_AndroidContentContext.getResources(), paramInt, paramView);
+    paramViewGroup.a.setText(paramView);
+    paramViewGroup.b.setText(localPhoneContact.mobileNo);
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i > 20) {
+      return 20;
+    }
+    return i;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = a(paramInt, paramViewGroup);
+    }
+    a(paramInt, localView, paramViewGroup);
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awvq
  * JD-Core Version:    0.7.0.1
  */

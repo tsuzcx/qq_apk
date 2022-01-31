@@ -1,39 +1,46 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.ImageShakeAnimView;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import java.util.ArrayList;
 
 public class auqv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ymm
 {
-  public auqv(FormalView paramFormalView) {}
+  public auqv(NearbyJsInterface paramNearbyJsInterface) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void callback(Bundle paramBundle)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
+    Object localObject;
+    Intent localIntent;
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
+    {
+      localObject = paramBundle.getStringArrayList("uins");
+      paramBundle.getStringArrayList("tinyIds");
+      paramBundle = (String)((ArrayList)localObject).get(0);
+      localObject = this.a.mRuntime.a();
+      localIntent = new Intent((Context)localObject, ChatActivity.class);
+      localIntent.putExtra("PREVIOUS_UIN", paramBundle);
+      localIntent.putExtra("uin", paramBundle);
+      if (NearbyJsInterface.a(this.a) != 1) {
+        break label125;
+      }
+    }
+    label125:
+    for (int i = 10002;; i = 1001)
+    {
+      localIntent.putExtra("uintype", i);
+      localIntent.putExtra("gender", 1);
+      localIntent.addFlags(67108864);
+      ((Context)localObject).startActivity(localIntent);
       return;
     }
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    int i = -(int)(FormalView.a(this.a) * f);
-    int j = -(int)((1.0F - f) * FormalView.b(this.a));
-    ((RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams()).topMargin = j;
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
-    paramValueAnimator.leftMargin = i;
-    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.b(this.a).getLayoutParams();
-    paramValueAnimator.rightMargin = i;
-    FormalView.b(this.a).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
-    paramValueAnimator.topMargin = ((int)((1.0F - f) * FormalView.c(this.a)));
-    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auqv
  * JD-Core Version:    0.7.0.1
  */

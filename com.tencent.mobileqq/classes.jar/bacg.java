@@ -1,40 +1,60 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-
 public class bacg
-  extends bacc<bach, babj>
+  implements alkr
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
+  public void a(int paramInt) {}
   
-  public bacg(XMediaEditor paramXMediaEditor, Context paramContext)
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 2);
+                a((String)paramObject[0], (String)paramObject[1]);
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 4);
+            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
-  
-  public bach a(ViewGroup paramViewGroup)
-  {
-    return new bach(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(View paramView, bach parambach) {}
-  
-  public void a(bach parambach, babj parambabj, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bacg
  * JD-Core Version:    0.7.0.1
  */

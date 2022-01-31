@@ -1,35 +1,32 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.OpenID;
 
 class bcfd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends ndm
 {
-  bcfd(bcfc parambcfc, View paramView) {}
+  bcfd(bcfc parambcfc) {}
   
-  public void onGlobalLayout()
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.height();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "heightDiff:" + i);
-    }
-    if (i > 150)
+    if ((bcfc.a(this.a) == null) || (bcfc.a(this.a) == null) || (bcfc.a(this.a) == null)) {}
+    do
     {
-      this.jdField_a_of_type_Bcfc.c = true;
-      this.jdField_a_of_type_Bcfc.a(false, 0);
-    }
-    while (!this.jdField_a_of_type_Bcfc.c) {
-      return;
-    }
-    this.jdField_a_of_type_Bcfc.c = false;
+      do
+      {
+        return;
+      } while ((bcfc.a(this.a).isFinishing()) || (bcfc.a(this.a)));
+      bcfc.a(this.a).d();
+      if (bcfc.a(this.a) != null) {
+        bcfc.a(this.a).removeCallbacksAndMessages(null);
+      }
+    } while ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null) || (paramOpenID.openID.equals(bcfc.a(this.a))));
+    bcfc.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcfd
  * JD-Core Version:    0.7.0.1
  */

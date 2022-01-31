@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import osj;
+import oxb;
 
 class ArticleInfoModule$19$1
   implements Runnable
@@ -10,12 +10,12 @@ class ArticleInfoModule$19$1
   
   public void run()
   {
-    osj.a().b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule$19.a, this.jdField_a_of_type_JavaUtilList, true);
+    oxb.a().b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule$19.a, this.jdField_a_of_type_JavaUtilList, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.19.1
  * JD-Core Version:    0.7.0.1
  */

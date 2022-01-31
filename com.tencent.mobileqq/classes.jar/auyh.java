@@ -1,25 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-class auyh
-  implements URLDrawable.URLDrawableListener
+public final class auyh
+  implements Parcelable.Creator<Comments.Comment>
 {
-  auyh(auyb paramauyb) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Comments.Comment a(Parcel paramParcel)
   {
-    this.a.notifyDataSetChanged();
+    return new Comments.Comment(paramParcel);
+  }
+  
+  public Comments.Comment[] a(int paramInt)
+  {
+    return new Comments.Comment[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auyh
  * JD-Core Version:    0.7.0.1
  */

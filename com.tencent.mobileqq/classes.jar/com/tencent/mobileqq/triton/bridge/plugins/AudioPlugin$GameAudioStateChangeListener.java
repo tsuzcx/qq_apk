@@ -34,14 +34,29 @@ public class AudioPlugin$GameAudioStateChangeListener
         localJSONObject.put("audioId", this.audioId);
         localJSONObject.put("state", "error");
         localJSONObject.put("errCode", i);
-        this.this$0.evaluateSubscribeJs(this.jsRuntime, "onAudioStateChange", localJSONObject.toString());
-        return;
+        if ((i == 10001) || (i == -1))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          if (i == 10001)
+          {
+            str = "系统错误";
+            localJSONObject.put("errMsg", str + ", 请复用InnerAudioContext实例、及时释放无用实例");
+          }
+        }
+        else
+        {
+          this.this$0.evaluateSubscribeJs(this.jsRuntime, "onAudioStateChange", localJSONObject.toString());
+          return;
+        }
+        String str = "未知错误";
+        continue;
+        i = 10002;
       }
       catch (Throwable localThrowable)
       {
         TTLog.e("[audio] AudioPlugin", "evaluateAudioError exception:", localThrowable);
+        return;
       }
-      i = 10002;
       continue;
       i = 10001;
       continue;
@@ -122,7 +137,7 @@ public class AudioPlugin$GameAudioStateChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.bridge.plugins.AudioPlugin.GameAudioStateChangeListener
  * JD-Core Version:    0.7.0.1
  */

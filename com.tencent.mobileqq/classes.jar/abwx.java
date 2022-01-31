@@ -1,61 +1,49 @@
-import android.graphics.Rect;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.widget.FixedBounceScrollView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class abwx
-  extends Handler
+  extends AccountObserver
 {
-  public abwx(QQSettingMe paramQQSettingMe, Looper paramLooper)
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public abwx(AccountManageActivity paramAccountManageActivity, String paramString, boolean paramBoolean)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onDeleteAccount(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      paramMessage = new Rect();
-      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[3];
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.offsetDescendantRectToMyCoords((View)localObject, paramMessage);
-      localObject = new Rect();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.getDrawingRect((Rect)localObject);
-      boolean bool = ((Rect)localObject).contains(paramMessage);
-      if (!bool) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.scrollTo(this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.getScrollX(), paramMessage.top);
-      }
-      if (bool) {}
-      for (long l = 0L;; l = 50L)
-      {
-        sendEmptyMessageDelayed(1, l);
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
     }
-    paramMessage = new Rect();
-    Object localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[3];
-    ((View)localObject).getHitRect(paramMessage);
-    localObject = ((View)localObject).findViewById(2131368385);
-    paramMessage.offset(((View)localObject).getLeft() + actj.a(34.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), ((View)localObject).getTop() - actj.a(18.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()));
-    localObject = (FrameLayout.LayoutParams)QQSettingMe.b(this.a).getLayoutParams();
-    ((FrameLayout.LayoutParams)localObject).leftMargin = paramMessage.left;
-    ((FrameLayout.LayoutParams)localObject).topMargin = paramMessage.top;
-    QQSettingMe.b(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-    QQSettingMe.b(this.a).setPadding(actj.a(6.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), actj.a(4.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), actj.a(6.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), actj.a(8.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()));
-    QQSettingMe.b(this.a).setVisibility(0);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity;
+    if (Build.VERSION.SDK_INT > 10) {}
+    for (int i = 4;; i = 0)
+    {
+      localObject = ((AccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
+      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
+      {
+        ((SharedPreferences)localObject).edit().remove("uin").commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("Switch_Account", 2, "delete Last_Login");
+        }
+      }
+      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwx
  * JD-Core Version:    0.7.0.1
  */

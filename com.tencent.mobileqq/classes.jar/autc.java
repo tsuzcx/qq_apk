@@ -1,94 +1,262 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
-import mqq.util.WeakReference;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
 
 public class autc
-  extends aywb
+  implements alkr
 {
-  public static String a;
-  WeakReference<autd> a;
+  public void a() {}
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "PLTransProcessorHandler";
-  }
+  protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString) {}
   
-  public autc(autd paramautd, Looper paramLooper)
-  {
-    super(paramLooper);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramautd);
-  }
+  protected void a(String paramString, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, List<InterestTagInfo> paramList1, List<InterestTagInfo> paramList2, String paramString1, int paramInt3, int paramInt4, String paramString2) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1) {}
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, int paramInt1, int paramInt2) {}
+  
+  public void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3, byte[] paramArrayOfByte, String paramString) {}
+  
+  protected void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2) {}
+  
+  public void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString, mobile_sub_get_cover_rsp parammobile_sub_get_cover_rsp) {}
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2) {}
+  
+  public void a(boolean paramBoolean, String paramString1, List<auwl> paramList, String paramString2, int paramInt1, int paramInt2) {}
+  
+  protected void a(boolean paramBoolean, ArrayList<auro> paramArrayList, int paramInt) {}
+  
+  protected void a(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  protected void a(boolean paramBoolean, UpdatePhotoList.HeadInfo paramHeadInfo) {}
+  
+  protected void b(boolean paramBoolean) {}
+  
+  protected void b(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2) {}
+  
+  protected void b(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ayqo localayqo = (ayqo)paramMessage.obj;
-    if (localayqo.b != 56) {}
-    label460:
-    for (;;)
+    Object localObject1;
+    switch (paramInt)
     {
-      return;
-      autd localautd = (autd)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localautd == null)
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 9: 
+    case 61: 
+    case 60: 
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, "PLUploadManager is null");
+        do
+        {
+          return;
+          paramObject = (Object[])paramObject;
+          a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), (List)paramObject[2], (List)paramObject[3], (String)paramObject[4], ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), (String)paramObject[7]);
+          return;
+          paramObject = (Object[])paramObject;
+          a();
+          return;
+          paramObject = (Object[])paramObject;
+          a(paramBoolean, (NearbyPeopleCard)paramObject[0], ((Boolean)paramObject[1]).booleanValue(), (String)paramObject[2]);
+          return;
+          paramObject = (Object[])paramObject;
+          a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
+          return;
+          Object localObject2 = (Object[])paramObject;
+          if ((paramBoolean) && (localObject2 != null) && (localObject2.length == 6))
+          {
+            long l = ((Long)localObject2[0]).longValue();
+            boolean bool1 = ((Boolean)localObject2[1]).booleanValue();
+            boolean bool2 = ((Boolean)localObject2[2]).booleanValue();
+            paramObject = (byte[])localObject2[3];
+            localObject1 = (String)localObject2[4];
+            localObject2 = (String)localObject2[5];
+            a(paramBoolean, l, bool1, bool2, paramObject, (String)localObject1);
+            apds.a = (String)localObject2;
+            return;
+          }
+          a(false, 0L, false, false, null, null);
+          return;
+        } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
+        paramObject = (Object[])paramObject;
+        a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), (String)paramObject[8]);
+        return;
+      } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
+      paramObject = (Object[])paramObject;
+      a(((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), (String)paramObject[7]);
+      return;
+    case 47: 
+      if (paramObject != null)
+      {
+        a(paramBoolean, (UpdatePhotoList.HeadInfo)paramObject);
+        return;
+      }
+      a(false, null);
+      return;
+    case 49: 
+      a(paramBoolean);
+      return;
+    case 51: 
+      if ((paramBoolean) && ((paramObject instanceof Object[])))
+      {
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (NearbyPeopleCard)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
+        return;
+      }
+      a(paramBoolean, (NearbyPeopleCard)paramObject, false);
+      return;
+    case 46: 
+      b(paramBoolean);
+      return;
+    case 48: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length == 5)) {
+        if (!(paramObject[1] instanceof Integer)) {
+          break label1408;
         }
       }
-      else
+      break;
+    }
+    label1408:
+    for (paramInt = ((Integer)paramObject[1]).intValue();; paramInt = -1)
+    {
+      if ((paramObject[2] instanceof Integer)) {}
+      for (int i = ((Integer)paramObject[2]).intValue();; i = -1)
       {
-        Object localObject = localayqo.jdField_a_of_type_JavaLangString;
-        if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg key:" + (String)localObject);
-        }
-        int i = 0;
-        label93:
-        if (i < localautd.jdField_a_of_type_JavaUtilVector.size()) {
-          if (!((aute)localautd.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Aywc.a().equals(localObject)) {}
-        }
-        for (localObject = (aute)localautd.jdField_a_of_type_JavaUtilVector.get(i);; localObject = null)
+        if ((paramObject[3] instanceof Integer)) {}
+        for (int j = ((Integer)paramObject[3]).intValue();; j = -1)
         {
-          if (localObject == null) {
-            break label460;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg find:" + ((aute)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq);
-          }
-          switch (paramMessage.what)
+          if ((paramObject[4] instanceof Integer)) {}
+          for (int k = ((Integer)paramObject[4]).intValue();; k = -1)
           {
-          }
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg. state:" + ((aute)localObject).b + " " + ((aute)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq);
-            }
-            if ((((aute)localObject).b == 4) && (QLog.isColorLevel())) {
-              QLog.i(jdField_a_of_type_JavaLangString, 2, "personality_label handlemsg url:" + ((aute)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.url);
-            }
-            if (localautd.jdField_a_of_type_Autf == null) {
-              break;
-            }
-            localautd.jdField_a_of_type_Autf.a(((aute)localObject).jdField_a_of_type_Long, (aute)localObject);
+            a(paramBoolean, (ArrayList)paramObject[0], paramInt, i, j, k);
             return;
-            i += 1;
-            break label93;
-            ((aute)localObject).c = 0;
-            ((aute)localObject).b = 1;
-            continue;
-            ((aute)localObject).b = 4;
-            ((aute)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.fileId = localayqo.d;
-            ((aute)localObject).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.url = localayqo.i;
-            if (((aute)localObject).c < 100) {
-              ((aute)localObject).c = 100;
+            a(false, null, -1, -1, -1, -1);
+            return;
+            if (paramObject != null)
+            {
+              paramObject = (Object[])paramObject;
+              if ((paramObject == null) || (paramObject.length != 5)) {
+                break label1376;
+              }
+              if (!(paramObject[1] instanceof Integer)) {
+                break label1371;
+              }
+              paramInt = ((Integer)paramObject[1]).intValue();
+              label921:
+              if (!(paramObject[2] instanceof Integer)) {
+                break label1365;
+              }
+              i = ((Integer)paramObject[2]).intValue();
+              label941:
+              if (!(paramObject[3] instanceof Integer)) {
+                break label1359;
+              }
+              j = ((Integer)paramObject[3]).intValue();
+              label961:
+              if (!(paramObject[4] instanceof Integer)) {
+                break label1353;
+              }
+              k = ((Integer)paramObject[4]).intValue();
             }
-            localautd.jdField_a_of_type_JavaUtilVector.remove(localObject);
-            continue;
-            ((aute)localObject).b = 3;
-            continue;
-            ((aute)localObject).b = 2;
-            ((aute)localObject).c = ((int)(localayqo.e * 100L / localayqo.jdField_a_of_type_Long));
+            for (;;)
+            {
+              b(paramBoolean, (ArrayList)paramObject[0], paramInt, i, j, k);
+              return;
+              b(false, null, -1, -1, -1, -1);
+              return;
+              if (paramObject == null) {
+                break;
+              }
+              paramObject = (Object[])paramObject;
+              a(paramBoolean, (String)paramObject[0], (mobile_sub_get_cover_rsp)paramObject[1]);
+              return;
+              if (!(paramObject instanceof Bundle)) {
+                break;
+              }
+              paramObject = (Bundle)paramObject;
+              if ((paramObject.getInt("favoriteSource") == 43) || (paramObject.getInt("favoriteSource") == 51))
+              {
+                b(paramBoolean, paramObject.getString("selfUin"), paramObject.getString("targetUin"), paramObject.getInt("toplist_type"), paramObject.getInt("iCount", 0));
+                return;
+              }
+              a(paramBoolean, paramObject.getString("selfUin"), paramObject.getString("targetUin"), paramObject.getInt("iCount", 0), paramObject.getInt("from", 0));
+              return;
+              if (!(paramObject instanceof Object[])) {
+                break;
+              }
+              paramObject = (Object[])paramObject;
+              paramInt = ((Integer)paramObject[0]).intValue();
+              localObject1 = (List)paramObject[1];
+              if (paramObject.length >= 3)
+              {
+                a(paramBoolean, paramInt, (List)localObject1, (List)paramObject[2]);
+                return;
+              }
+              a(paramBoolean, paramInt, (List)localObject1, null);
+              return;
+              if ((!paramBoolean) || (paramObject == null)) {
+                break;
+              }
+              paramObject = (Object[])paramObject;
+              a(paramBoolean, ((Long)paramObject[0]).longValue(), (String)paramObject[1], ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+              return;
+              if ((paramObject instanceof String)) {}
+              for (paramObject = (String)paramObject;; paramObject = "")
+              {
+                a(paramBoolean, paramObject);
+                return;
+                if (!(paramObject instanceof Object[])) {
+                  break;
+                }
+                paramObject = (Object[])paramObject;
+                a(paramBoolean, (ArrayList)paramObject[0], ((Integer)paramObject[1]).intValue());
+                return;
+                if (!(paramObject instanceof Object[])) {
+                  break;
+                }
+                paramObject = (Object[])paramObject;
+                a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
+                return;
+              }
+              label1353:
+              k = -1;
+              continue;
+              label1359:
+              j = -1;
+              break label961;
+              label1365:
+              i = -1;
+              break label941;
+              label1371:
+              paramInt = -1;
+              break label921;
+              label1376:
+              k = -1;
+              j = -1;
+              i = -1;
+              paramInt = -1;
+            }
           }
         }
       }
@@ -97,7 +265,7 @@ public class autc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     autc
  * JD-Core Version:    0.7.0.1
  */

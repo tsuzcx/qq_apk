@@ -39,7 +39,7 @@ public class LeftRedDotRadioButton
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849297);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849728);
     }
     invalidate();
   }
@@ -75,7 +75,7 @@ public class LeftRedDotRadioButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.LeftRedDotRadioButton
  * JD-Core Version:    0.7.0.1
  */

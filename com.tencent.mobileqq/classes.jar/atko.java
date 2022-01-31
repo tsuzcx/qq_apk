@@ -1,366 +1,452 @@
-import android.content.Context;
-import android.os.Handler;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class atko
+  implements atkn
 {
-  public int a;
-  long jdField_a_of_type_Long = 0L;
-  protected Context a;
-  protected Handler a;
-  protected ImageView a;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  atib jdField_a_of_type_Atib;
-  atjh jdField_a_of_type_Atjh;
-  public atkx a;
-  protected atkz a;
-  protected QQAppInterface a;
-  private VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
-  public String a;
-  public boolean a;
-  private final int jdField_b_of_type_Int = 1024;
-  long jdField_b_of_type_Long = 0L;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private final int jdField_c_of_type_Int = -2147483648;
-  long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private final int jdField_d_of_type_Int = 2025;
-  private long jdField_d_of_type_Long = -1L;
-  private boolean jdField_d_of_type_Boolean;
-  private final int e = 2026;
+  static bapw jdField_a_of_type_Bapw = new atkr();
+  private static File jdField_a_of_type_JavaIoFile;
+  private static Comparator<File> jdField_a_of_type_JavaUtilComparator = new atkp();
+  private bapv jdField_a_of_type_Bapv;
+  private bapx jdField_a_of_type_Bapx = new atkq(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<String, List<atks>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ConcurrentHashMap<String, baps> b;
   
-  public atko(Context paramContext, QQAppInterface paramQQAppInterface)
+  public atko(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Atkz = a();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Atib = new atib(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public static TVK_ICacheMgr a()
-  {
-    if (!TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) {
-      a(BaseApplicationImpl.getContext());
-    }
-    if (TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) {
-      return TVK_SDKMgr.getProxyFactory().getCacheMgr(BaseApplicationImpl.getContext());
-    }
-    return null;
-  }
-  
-  public static String a(File paramFile)
-  {
-    if (paramFile.exists())
-    {
-      String str3 = paramFile.getParentFile().getAbsolutePath();
-      String str2 = paramFile.getName();
-      String str1 = str2;
-      if (str2.endsWith(".tmp")) {
-        str1 = str2.substring(0, str2.length() - ".tmp".length());
-      }
-      str1 = str3 + "/" + str1;
-      paramFile.renameTo(new File(str1));
-      return str1;
-    }
-    return "";
+    this.jdField_a_of_type_Bapv = paramQQAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.b = new ConcurrentHashMap();
   }
   
   public static String a(String paramString)
   {
-    return MD5.toMD5(paramString);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    TVK_SDKMgr.setOnLogListener(new atkw(null));
-    TVK_SDKMgr.initSdk(paramContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "startPreloadVideo");
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
-    TVK_ICacheMgr localTVK_ICacheMgr = a();
-    if (localTVK_ICacheMgr == null) {
-      QLog.w("VideoPlayerView", 1, "preloadVideo failed , cacheMgr==null!");
-    }
-    Object localObject = ajsd.aW + ".now_video/" + "vid_" + a(paramString) + ".mp4";
-    if (new File((String)localObject).exists())
+    if (jdField_a_of_type_JavaIoFile == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayerView", 2, "file.exists ! use local file");
-      }
-      return;
+      jdField_a_of_type_JavaIoFile = new File(athm.jdField_a_of_type_JavaLangString);
+      QLog.d("ListenTogether.downloader", 1, new Object[] { "init getCacheFilePath=", jdField_a_of_type_JavaIoFile });
     }
-    localObject = atlf.a(sui.a("vid_" + a(paramString), 0), (String)localObject + ".tmp", 0L);
-    ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_duration", "5");
-    paramString = ayxg.b(paramString.replace("https://", "http://"), 1012);
-    localTVK_ICacheMgr.setPreloadCallback(new atkp());
-    localTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, (TVK_PlayerVideoInfo)localObject);
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Atkz.a();
-  }
-  
-  public atkz a()
-  {
-    if (!TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext)) {
-      a(this.jdField_a_of_type_AndroidContentContext);
-    }
-    if (TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext)) {
-      return new atlf(this.jdField_a_of_type_AndroidContentContext);
-    }
-    QLog.w("VideoPlayerView", 1, "use VideoViewTextureImpl!");
-    return new atlm(this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "pause");
-    }
-    this.jdField_a_of_type_Atkz.c();
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_c_of_type_Long = a();
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368543));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365314));
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    if (!jdField_a_of_type_JavaIoFile.exists())
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2026);
+      boolean bool = jdField_a_of_type_JavaIoFile.mkdir();
+      QLog.d("ListenTogether.downloader", 1, "mkdir cache dir, result: " + bool);
     }
-    this.jdField_a_of_type_AndroidOsHandler = new atkq(this, this.jdField_a_of_type_AndroidContentContext.getMainLooper());
+    return new File(athm.jdField_a_of_type_JavaLangString, bfhi.d(paramString)).getAbsolutePath();
   }
   
-  public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, atjh paramatjh)
+  private void a(MusicInfo paramMusicInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
-    a(paramRelativeLayout);
-    a(paramVideoData);
-  }
-  
-  public void a(atkx paramatkx)
-  {
-    this.jdField_a_of_type_Atkx = paramatkx;
-  }
-  
-  public void a(VideoData paramVideoData)
-  {
-    String str = paramVideoData.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    boolean bool2 = c();
-    this.jdField_a_of_type_JavaLangString = str;
-    this.jdField_b_of_type_JavaLangString = str;
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "play(String videoPath)! path is: " + str + "play stack is: " + Log.getStackTraceString(new Throwable()));
-    }
-    if (this.jdField_a_of_type_Atkz != null) {
-      this.jdField_a_of_type_Atkz.a();
-    }
-    if ((this.jdField_a_of_type_Atkz != null) && (this.jdField_a_of_type_Atkz.a() != null) && (this.jdField_a_of_type_Atkz.a().getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_Atkz.a().getParent()).removeView(this.jdField_a_of_type_Atkz.a());
-    }
-    this.jdField_a_of_type_Atkz = a();
-    Object localObject;
-    if ((this.jdField_a_of_type_Atkz instanceof atlf))
-    {
-      localObject = (atlf)this.jdField_a_of_type_Atkz;
-      if (paramVideoData.k >= paramVideoData.l) {
-        break label225;
-      }
-    }
-    label225:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      ((atlf)localObject).a(bool1);
-      if (this.jdField_a_of_type_Atkz != null) {
-        break;
-      }
-      QLog.e("VideoPlayerView", 1, "mPlayer == null!");
-      return;
-    }
-    if ((this.jdField_a_of_type_Atkz != null) && (this.jdField_a_of_type_Atkz.a() != null) && (this.jdField_a_of_type_Atkz.a().getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_Atkz.a().getParent()).removeView(this.jdField_a_of_type_Atkz.a());
-    }
-    if (this.jdField_a_of_type_Atkz != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Atkz.a(), 0, new RelativeLayout.LayoutParams(-1, -1));
-    }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
-    this.jdField_a_of_type_Int = 1;
-    atix.jdField_a_of_type_Int = 0;
-    atix.jdField_a_of_type_Long = System.currentTimeMillis();
-    atix.c = paramVideoData.jdField_a_of_type_JavaLangString;
-    atix.d = String.valueOf(paramVideoData.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Atkx != null) {
-      this.jdField_a_of_type_Atkx.d();
-    }
+    if (paramMusicInfo != null) {}
+    int i;
+    label116:
+    Object localObject1;
     for (;;)
     {
       try
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_Atkz.a(new atkr(this));
-        this.jdField_a_of_type_Atkz.a(new atks(this));
-        this.jdField_a_of_type_Atkz.a(new atkt(this));
-        this.jdField_a_of_type_Atkz.a(new atku(this, paramVideoData));
-        localObject = ajsd.aW + ".now_video/" + "vid_" + a(str) + ".mp4";
-        localFile = new File((String)localObject);
-        if (localFile.exists())
+        if (TextUtils.isEmpty(paramMusicInfo.jdField_a_of_type_JavaLangString))
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("VideoPlayerView", 2, "file.exists ! use local file");
-          }
-          this.jdField_a_of_type_Long = localFile.length();
-          this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-          this.jdField_a_of_type_Atkz.a("vid_" + a(str), (String)localObject, str, paramVideoData.f);
-          this.jdField_a_of_type_Atkz.a(new atkv(this, paramVideoData, bool2));
-          if (QLog.isColorLevel()) {
-            QLog.i("VideoPlayerView", 2, "player start!");
-          }
-          this.jdField_c_of_type_Boolean = false;
+          QLog.d("ListenTogether.downloader", 1, "musicInfo or id is empty");
           return;
         }
+        if (!a(athn.a().b)) {
+          continue;
+        }
+        i = athn.a().jdField_a_of_type_Int;
+        if (i <= 0)
+        {
+          QLog.d("ListenTogether.downloader", 2, String.format("download, maxCacheCount <= 0: %s", new Object[] { Integer.valueOf(i) }));
+          c();
+          b();
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          break label116;
+        }
       }
-      catch (Exception paramVideoData)
+      finally {}
+      QLog.d("ListenTogether.downloader", 2, String.format("download, musicId: %s", new Object[] { paramMusicInfo.jdField_a_of_type_JavaLangString }));
+      if (a(paramMusicInfo.jdField_a_of_type_JavaLangString))
       {
-        Log.e("VideoPlayerView", paramVideoData.toString());
-        return;
+        QLog.d("ListenTogether.downloader", 1, "download, cache file is exist");
       }
-      File localFile = new File((String)localObject + ".tmp");
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayerView", 2, "use remote file,tmp's exsit=" + localFile.exists());
+      else
+      {
+        localObject2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramMusicInfo.jdField_a_of_type_JavaLangString);
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          break label320;
+        }
+        localObject1 = localObject2;
+        if (paramMusicInfo.b != null)
+        {
+          localObject1 = localObject2;
+          if (paramMusicInfo.b.size() > 0)
+          {
+            localObject1 = new ArrayList();
+            localObject2 = paramMusicInfo.b.iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              str = (String)((Iterator)localObject2).next();
+              if (!TextUtils.isEmpty(str)) {
+                ((List)localObject1).add(new atks(paramMusicInfo.jdField_a_of_type_JavaLangString, str));
+              }
+            }
+          }
+        }
+        label263:
+        if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
+          break;
+        }
+        QLog.d("ListenTogether.downloader", 1, "musicReqInfoList is empty!, " + paramMusicInfo);
       }
-      this.jdField_a_of_type_Atkz.a("vid_" + a(str), (String)localObject + ".tmp", str, paramVideoData.f);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramMusicInfo.jdField_a_of_type_JavaLangString, localObject1);
+    label320:
+    Iterator localIterator = null;
+    String str = null;
+    Object localObject2 = localIterator;
+    if (localObject1 != null)
+    {
+      localObject2 = localIterator;
+      if (((List)localObject1).size() > 0)
+      {
+        localIterator = ((List)localObject1).iterator();
+        localObject1 = str;
+      }
+    }
+    label402:
+    label583:
+    label593:
+    label595:
+    for (;;)
+    {
+      localObject2 = localObject1;
+      boolean bool;
+      if (localIterator.hasNext())
+      {
+        localObject2 = (atks)localIterator.next();
+        if (((atks)localObject2).jdField_a_of_type_Int == 1)
+        {
+          bool = true;
+          break label583;
+        }
+      }
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label593;
+        }
+        QLog.d("ListenTogether.downloader", 2, String.format("musicReqInfo not found, isDownloading: %s", new Object[] { Boolean.valueOf(bool) }));
+        break;
+        if ((((atks)localObject2).jdField_a_of_type_Int == 0) && (localObject1 == null))
+        {
+          localObject1 = localObject2;
+          break label595;
+        }
+        do
+        {
+          if (!b(i))
+          {
+            QLog.d("ListenTogether.downloader", 1, "download, over cache count");
+            break;
+          }
+          localObject2 = new baps();
+          ((baps)localObject2).jdField_a_of_type_Bapx = this.jdField_a_of_type_Bapx;
+          ((baps)localObject2).jdField_a_of_type_JavaLangString = ((atks)localObject1).b;
+          ((baps)localObject2).jdField_a_of_type_Int = 0;
+          ((baps)localObject2).c = ((atks)localObject1).d;
+          ((baps)localObject2).e = 1;
+          ((baps)localObject2).a(new Object[] { paramMusicInfo, localObject1 });
+          ((baps)localObject2).jdField_a_of_type_Bapw = jdField_a_of_type_Bapw;
+          this.jdField_a_of_type_Bapv.a((baqv)localObject2);
+          ((atks)localObject1).jdField_a_of_type_Int = 1;
+          break;
+          break label595;
+          bool = false;
+          localObject1 = localObject2;
+          break label583;
+          break label263;
+          if (bool) {
+            break label402;
+          }
+        } while (localObject1 != null);
+      }
+      break;
     }
   }
   
-  public boolean a()
+  private boolean a(int paramInt)
   {
-    return this.jdField_a_of_type_Atkz.a();
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_c_of_type_Boolean)
+    int i = bewy.a(BaseApplicationImpl.getContext());
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    }
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayerView", 2, "resume");
+        QLog.d("ListenTogether.downloader", 2, String.format("netTypeNeedDownload, requestNetType: %s, netType: %s, needDownload: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Boolean.valueOf(bool) }));
       }
-      this.jdField_a_of_type_Atkz.b();
-      this.jdField_a_of_type_Atkz.a(this.jdField_c_of_type_Long);
+      return bool;
+      if (paramInt == 1)
+      {
+        if (i == 1) {
+          bool = true;
+        }
+      }
+      else if (paramInt == 2)
+      {
+        if ((i == 1) || (i == 4)) {
+          bool = true;
+        }
+      }
+      else if (paramInt == 3)
+      {
+        if ((i == 1) || (i == 4) || (i == 3)) {
+          bool = true;
+        }
+      }
+      else if ((paramInt == 4) && ((i == 1) || (i == 4) || (i == 3) || (i == 2)))
+      {
+        bool = true;
+        continue;
+      }
+      bool = false;
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.w("VideoPlayerView", 2, "!not paused no resume!");
   }
   
-  public boolean b()
+  public static boolean a(String paramString)
   {
-    atix.jdField_a_of_type_Int += 1;
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "restart");
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString;
-    if (c()) {}
-    for (int i = 1;; i = 2)
+    return new File(a(paramString)).exists();
+  }
+  
+  public static void b()
+  {
+    long l = System.currentTimeMillis();
+    Object localObject1 = new File(athm.jdField_a_of_type_JavaLangString);
+    if (((File)localObject1).exists())
     {
-      atiy.a(str, i, "0", "0");
-      atiy.a(2);
-      atiy.d();
-      this.jdField_a_of_type_Atkz.d();
-      return true;
+      localObject1 = ((File)localObject1).listFiles();
+      if ((localObject1 != null) && (localObject1.length > 0))
+      {
+        int j = localObject1.length;
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          if (localObject2.isFile())
+          {
+            String str1 = a(QQMusicPlayService.a());
+            String str2 = localObject2.getAbsolutePath();
+            if ((TextUtils.isEmpty(str1)) || (!str1.equals(str2))) {
+              break label128;
+            }
+            QLog.d("ListenTogether.downloader", 1, String.format("removeAllCacheFiles, %s is playing", new Object[] { str2 }));
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            label128:
+            localObject2.delete();
+          }
+        }
+      }
     }
+    QLog.d("ListenTogether.downloader", 1, "removeAllCacheFiles, costTime: " + (System.currentTimeMillis() - l));
   }
   
-  public long c()
+  private boolean b(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
+    boolean bool = false;
+    String str = a(QQMusicPlayService.a());
+    File localFile1 = new File(athm.jdField_a_of_type_JavaLangString);
     Object localObject;
-    do
+    int i;
+    if (localFile1.exists())
     {
-      return 0L;
-      localObject = ajsd.aW + ".now_video/" + "vid_" + a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_JavaLangString) + ".mp4";
-      if (new File((String)localObject).exists()) {
-        return ((String)localObject).length();
-      }
-      localObject = new File(ajsd.aW + ".now_video/" + "vid_" + a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_JavaLangString) + ".mp4.tmp");
-    } while (!((File)localObject).exists());
-    return ((File)localObject).length();
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "stop");
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2026);
-    }
-    if (this.jdField_d_of_type_Boolean) {
-      this.jdField_d_of_type_Boolean = false;
-    }
-    if ((this.jdField_a_of_type_Atkz != null) && (this.jdField_a_of_type_Atkz.a() != null) && (this.jdField_a_of_type_Atkz.a().getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_Atkz.a().getParent()).removeView(this.jdField_a_of_type_Atkz.a());
-    }
-    this.jdField_a_of_type_Atkz.a();
-    this.jdField_a_of_type_Atjh = null;
-  }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
-    do
-    {
-      return false;
-      if (new File(ajsd.aW + ".now_video/" + "vid_" + a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_JavaLangString) + ".mp4").exists()) {
+      localObject = localFile1.listFiles();
+      if ((localObject == null) || (localObject.length < paramInt)) {
         return true;
       }
-    } while ((this.jdField_b_of_type_Long < this.jdField_a_of_type_Long) || (this.jdField_b_of_type_Long == 0L));
-    return true;
+      localObject = Arrays.asList((Object[])localObject);
+      Collections.sort((List)localObject, jdField_a_of_type_JavaUtilComparator);
+      i = ((List)localObject).size() - paramInt + 1;
+      if (i <= ((List)localObject).size()) {
+        break label286;
+      }
+      i = ((List)localObject).size();
+    }
+    label286:
+    for (;;)
+    {
+      int j = 0;
+      if (j < i)
+      {
+        File localFile2 = (File)((List)localObject).get(j);
+        if ((!TextUtils.isEmpty(str)) && (str.equals(localFile2.getAbsolutePath()))) {
+          QLog.d("ListenTogether.downloader", 1, "checkCacheStorage, " + str + " is playing...");
+        }
+        for (;;)
+        {
+          j += 1;
+          break;
+          localFile2.delete();
+          QLog.d("ListenTogether.downloader", 1, String.format("checkCacheStorage, del index: %s, file: %s", new Object[] { Integer.valueOf(j), localFile2.getAbsolutePath() }));
+        }
+      }
+      if (localFile1.listFiles() != null) {}
+      for (i = localFile1.listFiles().length;; i = 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ListenTogether.downloader", 2, String.format("checkCacheCount, %s / %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) }));
+        }
+        if (i < paramInt) {
+          bool = true;
+        }
+        return bool;
+      }
+    }
   }
   
-  public void d() {}
+  private void c()
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      Iterator localIterator = this.b.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (baqv)((Map.Entry)localIterator.next()).getValue();
+        this.jdField_a_of_type_Bapv.b((baqv)localObject2);
+        if ((localObject2 instanceof baps))
+        {
+          localObject2 = (baps)localObject2;
+          if (QLog.isColorLevel()) {
+            QLog.d("ListenTogether.downloader", 2, String.format("cancelAllRequests, cancel req url: %s", new Object[] { ((baps)localObject2).jdField_a_of_type_JavaLangString }));
+          }
+        }
+      }
+      if (!QLog.isColorLevel()) {
+        break label123;
+      }
+    }
+    finally {}
+    QLog.d("ListenTogether.downloader", 2, "cancelAllRequests...");
+    label123:
+  }
+  
+  public void a()
+  {
+    c();
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogether.downloader", 2, "destroy");
+    }
+  }
+  
+  /* Error */
+  public void a(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: invokestatic 67	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: ifeq +15 -> 21
+    //   9: ldc 83
+    //   11: iconst_1
+    //   12: ldc_w 354
+    //   15: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: return
+    //   21: aload_0
+    //   22: getfield 59	atko:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   25: aload_1
+    //   26: invokevirtual 357	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   29: checkcast 344	baqv
+    //   32: astore_2
+    //   33: aload_2
+    //   34: ifnull +13 -> 47
+    //   37: aload_0
+    //   38: getfield 52	atko:jdField_a_of_type_Bapv	Lbapv;
+    //   41: aload_2
+    //   42: invokeinterface 346 2 0
+    //   47: aload_0
+    //   48: getfield 57	atko:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   51: aload_1
+    //   52: invokevirtual 357	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   55: pop
+    //   56: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   59: ifeq -41 -> 18
+    //   62: ldc 83
+    //   64: iconst_2
+    //   65: new 100	java/lang/StringBuilder
+    //   68: dup
+    //   69: invokespecial 101	java/lang/StringBuilder:<init>	()V
+    //   72: ldc_w 359
+    //   75: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: aload_1
+    //   79: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   88: goto -70 -> 18
+    //   91: astore_1
+    //   92: aload_0
+    //   93: monitorexit
+    //   94: aload_1
+    //   95: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	96	0	this	atko
+    //   0	96	1	paramString	String
+    //   32	10	2	localbaqv	baqv
+    // Exception table:
+    //   from	to	target	type
+    //   2	18	91	finally
+    //   21	33	91	finally
+    //   37	47	91	finally
+    //   47	88	91	finally
+  }
+  
+  public void a(List<MusicInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      QLog.d("ListenTogether.downloader", 1, "downloadMusicRes, musicList is empty!");
+    }
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        a((MusicInfo)paramList.next());
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atko
  * JD-Core Version:    0.7.0.1
  */

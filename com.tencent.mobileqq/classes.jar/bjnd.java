@@ -1,412 +1,69 @@
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.editipc.PeakIpcModuleServer.1;
-import dov.com.qq.im.editipc.PeakIpcModuleServer.2;
-import dov.com.qq.im.editipc.PeakIpcModuleServer.3;
-import eipc.EIPCResult;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bjnd
-  extends QIPCModule
+  implements TextWatcher
 {
-  private static bjnd a;
+  public bjnd(QZoneShareActivity paramQZoneShareActivity) {}
   
-  private bjnd(String paramString)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramString);
+    if (((paramInt2 == 1) || (paramInt2 == 2)) && (paramInt3 == 0)) {
+      try
+      {
+        QZoneShareActivity.b(this.a, QZoneShareActivity.a(this.a, paramCharSequence, paramInt1 + paramInt2));
+        if (QZoneShareActivity.b(this.a) == -1)
+        {
+          QZoneShareActivity.g(this.a);
+          return;
+        }
+        QZoneShareActivity.c(this.a, paramInt1);
+        QZoneShareActivity.a(this.a, paramCharSequence.toString().substring(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a) + paramInt2));
+        return;
+      }
+      catch (Exception paramCharSequence)
+      {
+        QZoneShareActivity.g(this.a);
+      }
+    }
   }
   
-  /* Error */
-  public static bjnd a()
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 14	bjnd:a	Lbjnd;
-    //   6: ifnonnull +27 -> 33
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 14	bjnd:a	Lbjnd;
-    //   15: ifnonnull +15 -> 30
-    //   18: new 2	bjnd
-    //   21: dup
-    //   22: ldc 16
-    //   24: invokespecial 17	bjnd:<init>	(Ljava/lang/String;)V
-    //   27: putstatic 14	bjnd:a	Lbjnd;
-    //   30: ldc 2
-    //   32: monitorexit
-    //   33: getstatic 14	bjnd:a	Lbjnd;
-    //   36: astore_0
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_0
-    //   41: areturn
-    //   42: astore_0
-    //   43: ldc 2
-    //   45: monitorexit
-    //   46: aload_0
-    //   47: athrow
-    //   48: astore_0
-    //   49: ldc 2
-    //   51: monitorexit
-    //   52: aload_0
-    //   53: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   36	5	0	localbjnd	bjnd
-    //   42	5	0	localObject1	Object
-    //   48	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	30	42	finally
-    //   30	33	42	finally
-    //   43	46	42	finally
-    //   3	12	48	finally
-    //   33	37	48	finally
-    //   46	48	48	finally
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleServer", 2, "[onCall]action= " + paramString);
-    }
-    Object localObject1 = BaseApplicationImpl.sApplication.getRuntime();
-    if (!(localObject1 instanceof QQAppInterface))
+    this.a.a.removeTextChangedListener(this);
+    if (paramCharSequence == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PeakIpcModuleServer", 2, "[onCall] get app failed.");
-      }
-      return null;
+      this.a.a.addTextChangedListener(this);
+      QZoneShareActivity.g(this.a);
+      return;
     }
-    Bundle localBundle = new Bundle();
-    Object localObject2;
-    boolean bool1;
-    if ("action_start_send".equals(paramString))
+    if ((paramInt3 == 1) && (paramInt2 == 0) && (paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@")))
     {
-      paramBundle = (Intent)paramBundle.getParcelable("key_intent");
-      if (paramBundle != null)
-      {
-        paramString = (QQAppInterface)localObject1;
-        localObject1 = paramBundle.getStringExtra("thumbfile_send_path");
-        localObject2 = paramBundle.getStringExtra("thumbfile_md5");
-        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
-          ThreadManager.post(new PeakIpcModuleServer.1(this, (String)localObject2, (String)localObject1), 5, null, false);
-        }
-        localObject1 = axdq.a(3, 0);
-        localObject2 = axdq.a(0, paramBundle, (axei)localObject1);
-        ((axdv)localObject2).c = true;
-        ((axei)localObject1).a((axdv)localObject2);
-        axdq.a((axei)localObject1, paramString);
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder().append("sendVideo intent= ");
-        if (paramBundle != null)
-        {
-          paramString = paramBundle.getExtras();
-          QLog.d("PeakIpcModuleServer", 2, paramString);
-        }
-      }
-      else
-      {
-        if (paramBundle == null) {
-          break label266;
-        }
-      }
-      label266:
-      for (bool1 = true;; bool1 = false)
-      {
-        localBundle.putBoolean("key_result", bool1);
-        paramString = EIPCResult.createSuccessResult(localBundle);
-        callbackResult(paramInt, paramString);
-        return null;
-        paramString = "";
-        break;
-      }
+      this.a.a(false);
+      this.a.g = true;
+      paramCharSequence = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
+      paramCharSequence.putExtra("param_only_friends", true);
+      paramCharSequence.putExtra("param_min", 1);
+      this.a.startActivityForResult(paramCharSequence, 1000);
     }
-    int i;
-    long l2;
-    long l1;
-    if ("action_cancel_send".equals(paramString))
-    {
-      localObject2 = paramBundle.getString("uin");
-      i = paramBundle.getInt("uintype");
-      l2 = paramBundle.getLong("key_uinsequence");
-      paramBundle = (QQAppInterface)localObject1;
-      localObject1 = paramBundle.a().a((String)localObject2, i, l2);
-      paramString = paramBundle.a().a((String)localObject2, l2);
-      if (localObject1 != null)
-      {
-        l1 = ((MessageRecord)localObject1).uniseq;
-        label350:
-        if ((!(paramString instanceof ayuw)) || (((ayuw)paramString).q)) {
-          break label570;
-        }
-        ((ayuw)paramString).c();
-        bool1 = true;
-        paramString = "forwardVideo";
-      }
+    if (QZoneShareActivity.a(this.a, QZoneShareActivity.a(this.a), false)) {
+      this.a.a.getEditableText().delete(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a));
     }
-    for (;;)
-    {
-      label380:
-      boolean bool3;
-      if (bool1)
-      {
-        bool3 = paramBundle.a().a((String)localObject2 + l2);
-        awap.a(paramBundle, (String)localObject2, l2);
-        bool2 = bool3;
-        if (localObject1 != null) {
-          ThreadManager.post(new PeakIpcModuleServer.2(this, paramBundle, (MessageRecord)localObject1), 8, null, true);
-        }
-      }
-      for (boolean bool2 = bool3;; bool2 = false)
-      {
-        for (;;)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("PeakIpcModuleServer", 2, "cancelInfo, uinseq:" + (String)localObject2 + ", uinType:" + i + ", sequence:" + l2 + ", msgSequence" + l1 + ", cancel:" + bool1 + ", removeProcess:" + bool2 + ", tips:" + paramString);
-            }
-            localBundle.putBoolean("key_result", bool1);
-            paramString = EIPCResult.createSuccessResult(localBundle);
-            break;
-            l1 = -1L;
-            break label350;
-            label570:
-            if (((paramString instanceof aypl)) && (!((aypl)paramString).b))
-            {
-              ((aypl)paramString).c();
-              bool1 = true;
-              paramString = "C2CPic";
-              break label380;
-            }
-            if ((!(paramString instanceof ayrf)) || (((ayrf)paramString).q)) {
-              break label1809;
-            }
-            ((ayrf)paramString).c();
-            bool1 = true;
-            paramString = "GroupPic";
-            break label380;
-            Object localObject3;
-            if ("action_pic_start_send".equals(paramString))
-            {
-              paramBundle.setClassLoader(getClass().getClassLoader());
-              paramString = paramBundle.getString("key_file_path");
-              localObject2 = (SessionInfo)paramBundle.getParcelable("key_session");
-              paramBundle = paramBundle.getString("widgetinfo", "");
-              if (!TextUtils.isEmpty(paramString))
-              {
-                localObject3 = new Intent();
-                ((Intent)localObject3).putExtra("key_story_photo_to_recent", true);
-                if (!TextUtils.isEmpty(paramBundle)) {
-                  ((Intent)localObject3).putExtra("widgetinfo", paramBundle);
-                }
-                ForwardUtils.a((Intent)localObject3, (SessionInfo)localObject2, paramString, (QQAppInterface)localObject1);
-                localBundle.putBoolean("key_result", true);
-              }
-              for (bool1 = true;; bool1 = false)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PeakIpcModuleServer", 2, "sendPic success:" + bool1 + ", photoPath：" + paramString);
-                }
-                paramString = EIPCResult.createSuccessResult(localBundle);
-                break;
-                localBundle.putBoolean("key_result", false);
-              }
-            }
-            if ("action_re_send".equals(paramString))
-            {
-              localObject2 = paramBundle.getString("uin");
-              i = paramBundle.getInt("uintype");
-              l1 = paramBundle.getLong("key_uinsequence");
-              paramString = (QQAppInterface)localObject1;
-              paramBundle = paramString.a().a((String)localObject2, i, l1);
-              bool2 = false;
-              if ((paramBundle instanceof MessageForShortVideo))
-              {
-                localObject1 = (MessageForShortVideo)paramBundle;
-                if ((bbdx.b(ShortVideoUtils.a(((MessageForShortVideo)localObject1).thumbMD5, "jpg"))) && (!TextUtils.isEmpty(((MessageForShortVideo)localObject1).videoFileName)) && (((MessageForShortVideo)localObject1).isStoryVideo))
-                {
-                  ((awap)paramString.getManager(326)).a(((MessageForShortVideo)localObject1).frienduin, (MessageRecord)localObject1, ((MessageForShortVideo)localObject1).videoFileName);
-                  localObject1 = axdq.a(4, 0);
-                  localObject2 = axdq.a(0, paramBundle, (axei)localObject1);
-                  ((axdv)localObject2).c = true;
-                  ((axei)localObject1).a((axdv)localObject2);
-                  axdq.a((axei)localObject1, paramString);
-                  bool1 = true;
-                  label991:
-                  if (QLog.isColorLevel())
-                  {
-                    localObject1 = new StringBuilder().append("reSend success:").append(bool1).append(", message：");
-                    if (paramBundle == null) {
-                      break label1422;
-                    }
-                  }
-                }
-              }
-              label1422:
-              for (paramString = paramBundle.toString();; paramString = "")
-              {
-                QLog.d("PeakIpcModuleServer", 2, paramString);
-                localBundle.putBoolean("key_result", bool1);
-                paramString = EIPCResult.createSuccessResult(localBundle);
-                break;
-                ((MessageForShortVideo)localObject1).videoFileStatus = 1005;
-                bool1 = false;
-                break label991;
-                bool1 = bool2;
-                if (!(paramBundle instanceof MessageForPic)) {
-                  break label991;
-                }
-                localObject1 = (MessageForPic)paramBundle;
-                bool1 = bool2;
-                if (!bbdx.b(((MessageForPic)localObject1).path)) {
-                  break label991;
-                }
-                bool1 = bool2;
-                if (!((MessageForPic)localObject1).isStoryPhoto) {
-                  break label991;
-                }
-                ThreadManager.post(new PeakIpcModuleServer.3(this, paramString, (MessageForPic)localObject1), 5, null, false);
-                if (((MessageForPic)localObject1).isSendFromLocal()) {
-                  paramString.a().a(paramString.a().a(((MessageForPic)localObject1).frienduin, ((MessageForPic)localObject1).uniseq));
-                }
-                localObject2 = new auoe();
-                ((auoe)localObject2).a(((MessageForPic)localObject1).path);
-                ((auoe)localObject2).d(5);
-                ((auoe)localObject2).d(((MessageForPic)localObject1).frienduin);
-                if (((MessageForPic)localObject1).fileSizeFlag == 1) {
-                  ((auoe)localObject2).c(ayvw.e);
-                }
-                for (;;)
-                {
-                  ((auoe)localObject2).e(((MessageForPic)localObject1).senderuin);
-                  ((auoe)localObject2).c(((MessageForPic)localObject1).selfuin);
-                  ((auoe)localObject2).e(((MessageForPic)localObject1).istroop);
-                  ((auoe)localObject2).l(((MessageForPic)localObject1).getConfessTopicId());
-                  ((auoe)localObject2).jdField_i_of_type_Int = ((MessageForPic)localObject1).extLong;
-                  ((auoe)localObject2).jdField_i_of_type_JavaLangString = ((MessageForPic)localObject1).extStr;
-                  ((auoe)localObject2).b(true);
-                  localObject3 = new auof();
-                  ((auof)localObject3).a = ((MessageForPic)localObject1).msgseq;
-                  ((auof)localObject3).b = ((MessageForPic)localObject1).shmsgseq;
-                  ((auof)localObject3).c = ((MessageForPic)localObject1).msgUid;
-                  ((auoe)localObject2).a((auof)localObject3);
-                  ((auoe)localObject2).b(((MessageForPic)localObject1).uniseq);
-                  ((awap)paramString.getManager(326)).a(((MessageForPic)localObject1).frienduin, ((MessageForPic)localObject1).uniseq);
-                  localObject3 = aunl.a(4, 5);
-                  ((aunv)localObject3).a(((auoe)localObject2).a());
-                  ((aunv)localObject3).a = ((MessageForPic)localObject1).picExtraData;
-                  aunl.a((aunv)localObject3, paramString);
-                  bool1 = true;
-                  break;
-                  ((auoe)localObject2).c(ayvw.d);
-                }
-              }
-            }
-            if ("action_get_troop_member_name".equals(paramString))
-            {
-              paramString = paramBundle.getString("troop_uin");
-              paramBundle = paramBundle.getString("uin");
-              try
-              {
-                localObject1 = (TroopManager)((QQAppInterface)localObject1).getManager(52);
-                paramString = ((TroopManager)localObject1).a(((TroopManager)localObject1).b(paramString), paramBundle);
-                localBundle.putBoolean("key_result", true);
-                localBundle.putString("uinname", paramString);
-                paramString = EIPCResult.createSuccessResult(localBundle);
-              }
-              catch (Exception paramString)
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("PeakIpcModuleServer", 2, "getTroopMemberName exception = " + paramString.getMessage());
-                  }
-                  paramString.printStackTrace();
-                  paramString = "";
-                }
-              }
-            }
-          }
-          if ("action_get_troop_info".equals(paramString))
-          {
-            paramString = paramBundle.getString("troop_uin");
-            try
-            {
-              paramBundle = (TroopManager)((QQAppInterface)localObject1).getManager(52);
-              paramString = paramBundle.a(paramBundle.b(paramString), true);
-              if (paramString != null)
-              {
-                localBundle.putBoolean("key_result", true);
-                localBundle.putBoolean("troop_owner", paramString.isDisband());
-                if ((paramString.isNewTroop()) && (!paramString.hasSetTroopHead())) {}
-                for (bool1 = true;; bool1 = false)
-                {
-                  localBundle.putBoolean("troop_code", bool1);
-                  paramString = EIPCResult.createSuccessResult(localBundle);
-                  return paramString;
-                }
-              }
-            }
-            catch (Exception paramString)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PeakIpcModuleServer", 2, "ACTION_GET_TROOP_INFO exception = " + paramString.getMessage());
-              }
-              paramString.printStackTrace();
-              paramString = null;
-            }
-          }
-        }
-        if ("action_get_name".equals(paramString))
-        {
-          paramString = paramBundle.getString("uin");
-          try
-          {
-            paramString = bbcz.b((QQAppInterface)localObject1, paramString);
-            localBundle.putBoolean("key_result", true);
-            localBundle.putString("uinname", paramString);
-            paramString = EIPCResult.createSuccessResult(localBundle);
-            return paramString;
-          }
-          catch (Exception paramString)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("PeakIpcModuleServer", 2, "ACTION_GET_NAME exception = " + paramString.getMessage());
-            }
-            paramString.printStackTrace();
-          }
-        }
-        paramString = null;
-        break;
-      }
-      label1809:
-      paramString = "";
-      bool1 = false;
-    }
+    QZoneShareActivity.g(this.a);
+    this.a.i();
+    this.a.a.addTextChangedListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjnd
  * JD-Core Version:    0.7.0.1
  */

@@ -2,23 +2,23 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import bekr;
-import beld;
-import bene;
+import bgkd;
+import bgkp;
+import bgmu;
 
 class InternalJSPlugin$5
   implements Runnable
 {
-  InternalJSPlugin$5(InternalJSPlugin paramInternalJSPlugin, Activity paramActivity, String paramString1, String paramString2, PackageManager paramPackageManager, String paramString3, bekr parambekr) {}
+  InternalJSPlugin$5(InternalJSPlugin paramInternalJSPlugin, Activity paramActivity, String paramString1, String paramString2, PackageManager paramPackageManager, String paramString3, bgkd parambgkd) {}
   
   public void run()
   {
-    beld.a(this.val$activity, 230, null, String.format("即将离开QQ，打开「%s」", new Object[] { this.val$appName }), "取消", "允许", new InternalJSPlugin.5.1(this), new InternalJSPlugin.5.2(this)).show();
+    bgkp.a(this.val$activity, 230, null, String.format("即将离开QQ，打开「%s」", new Object[] { this.val$appName }), "取消", "允许", new InternalJSPlugin.5.1(this), new InternalJSPlugin.5.2(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.InternalJSPlugin.5
  * JD-Core Version:    0.7.0.1
  */

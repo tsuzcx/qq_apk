@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import amap;
+import anro;
 import com.tencent.qphone.base.util.QLog;
 
 public class RockDownloaderManager$1
   implements Runnable
 {
-  public RockDownloaderManager$1(amap paramamap) {}
+  public RockDownloaderManager$1(anro paramanro) {}
   
   public void run()
   {
     try
     {
-      amap.a(this.this$0);
+      anro.a(this.this$0);
       return;
     }
     catch (Exception localException)
@@ -24,7 +24,7 @@ public class RockDownloaderManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.1
  * JD-Core Version:    0.7.0.1
  */

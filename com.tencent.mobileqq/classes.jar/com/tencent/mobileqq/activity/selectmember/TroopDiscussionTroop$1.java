@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aifk;
+import ajwu;
 
 class TroopDiscussionTroop$1
   implements Runnable
@@ -14,7 +14,7 @@ class TroopDiscussionTroop$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop.1
  * JD-Core Version:    0.7.0.1
  */

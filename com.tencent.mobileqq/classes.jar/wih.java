@@ -1,60 +1,49 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
 public class wih
+  extends QQUIEventReceiver<wic, ukn>
 {
-  public static int a(int paramInt)
+  public wih(wic paramwic)
   {
-    int i = 3;
-    if (paramInt == 65793) {
-      i = 1;
+    super(paramwic);
+  }
+  
+  public void a(@NonNull wic paramwic, @NonNull ukn paramukn)
+  {
+    if (paramukn.a.isSuccess())
+    {
+      if (!paramukn.a()) {
+        break label25;
+      }
+      wsv.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
     }
+    label25:
     do
     {
-      return i;
-      if (paramInt == 5) {
-        return 2;
-      }
-    } while (paramInt == 3);
-    if (b(paramInt)) {
-      return 5;
-    }
-    if (paramInt == 77313) {
-      return 6;
-    }
-    return 0;
+      do
+      {
+        return;
+        if (paramukn.c())
+        {
+          wsv.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramukn.toString());
+          return;
+        }
+      } while (!paramukn.b());
+      wsv.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramukn.toString());
+    } while (paramukn.b == null);
+    wic.a(paramwic, true);
   }
   
-  public static boolean a(int paramInt)
+  public Class acceptEventClass()
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return (paramLong == 65793L) || (paramLong == 77313L) || (paramLong == 66831L) || (paramLong == 66818L);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 4) || (paramInt == 7) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11) || (paramInt == 12) || (paramInt == 14) || (paramInt == 16) || ((paramInt >= 100) && (paramInt < 200));
-  }
-  
-  public static boolean b(long paramLong)
-  {
-    return (paramLong == 72194L) || (paramLong == 68361L) || (paramLong == 65805L) || (paramLong == 68104L);
-  }
-  
-  public static boolean c(long paramLong)
-  {
-    return (paramLong == 78082L) || (paramLong == 78096L) || (paramLong == 75023L);
+    return ukn.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wih
  * JD-Core Version:    0.7.0.1
  */

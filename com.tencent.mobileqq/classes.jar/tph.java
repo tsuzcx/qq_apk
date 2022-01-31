@@ -1,36 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class tph
-  implements tpg
+  implements Animation.AnimationListener
 {
-  public void a() {}
+  public tph(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 6) {
-      bcql.a(BaseApplicationImpl.getContext(), 2131690042, 0).a();
-    }
+    paramAnimation = (ImageView)this.a.findViewById(2131379373);
+    ImageView localImageView = (ImageView)this.a.findViewById(2131379374);
+    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
   
-  public void b() {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(int paramInt) {}
-  
-  public void c() {}
-  
-  public void c(int paramInt)
-  {
-    bcql.a(BaseApplication.getContext(), ajya.a(2131707852), 0).a();
-  }
-  
-  public void d() {}
-  
-  public void d(int paramInt) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tph
  * JD-Core Version:    0.7.0.1
  */

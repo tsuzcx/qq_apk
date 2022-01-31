@@ -25,9 +25,19 @@ public class PTSNodeAttribute
     return PTSValueConvertUtil.getString(get("id"));
   }
   
-  public String getClickEvent()
+  public String getEventBindTap()
   {
     return PTSValueConvertUtil.getString(get("bindtap"));
+  }
+  
+  public String getEventPtsOnExposure()
+  {
+    return PTSValueConvertUtil.getString(get("pts:on-exposure"));
+  }
+  
+  public String getEventPtsOnTap()
+  {
+    return PTSValueConvertUtil.getString(get("pts:on-tap"));
   }
   
   public String getImageURL()
@@ -47,7 +57,7 @@ public class PTSNodeAttribute
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.ui.PTSNodeAttribute
  * JD-Core Version:    0.7.0.1
  */

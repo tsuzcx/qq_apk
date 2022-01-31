@@ -1,49 +1,32 @@
-import ProfileLogic.QC.setUserProfileRsp;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
 import com.tencent.qphone.base.util.QLog;
 
 public class amee
-  extends akfy
+  extends almw
 {
-  public amee(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  private amee(UpdateDiscuss paramUpdateDiscuss) {}
   
-  public void e(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && ((paramObject instanceof setUserProfileRsp)))
-    {
-      i = ((setUserProfileRsp)paramObject).ret;
-      if (QLog.isColorLevel()) {
-        QLog.d("qqBaseActivity", 2, "mSvipObserver: [setUserProfileRsp] ret=" + i);
-      }
-      if (i == 0)
-      {
-        if (this.a.app != null)
-        {
-          paramObject = new ProfileActivity.AllInOne(this.a.app.getCurrentAccountUin(), 0);
-          paramObject.g = 1;
-          paramObject.h = 8;
-          ProfileActivity.b(this.a, paramObject);
-          bcql.a(this.a, 0, 2131720547, 0).a();
-        }
-        this.a.finish();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
     }
-    while (!"profilelogic.setUserProfile".equals(paramObject))
+    if (!paramBoolean)
     {
-      int i;
-      return;
-      bcql.a(this.a, 1, 2131720544, 0).a();
+      this.a.a(6);
       return;
     }
-    bcql.a(this.a, 1, 2131720544, 0).a();
+    this.a.a.a.edit().putBoolean("isDiscussionlistok", true).commit();
+    this.a.a.notifyUI(3, true, Integer.valueOf(3));
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amee
  * JD-Core Version:    0.7.0.1
  */

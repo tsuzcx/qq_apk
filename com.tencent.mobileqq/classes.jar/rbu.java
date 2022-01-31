@@ -1,38 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
 
 public class rbu
-  implements rbs
+  implements Animation.AnimationListener
 {
-  public rbu(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
+  public rbu(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (omz.a(omz.a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-      if ((this.a.c == 0) && ((!shu.a(this.a.d)) || (!this.a.b)))
-      {
-        this.a.a(4);
-        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
-      }
-    } while ((shu.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
-    this.a.a(4);
-    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
+    VideoFeedsAioGuideView.a(this.a).setStartOffset(360L);
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rbu
  * JD-Core Version:    0.7.0.1
  */

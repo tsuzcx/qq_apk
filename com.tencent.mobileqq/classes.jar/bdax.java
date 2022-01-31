@@ -1,41 +1,39 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdax
-  implements bfpt
+public final class bdax
+  extends BroadcastReceiver
 {
-  public bdax(FriendChooser paramFriendChooser) {}
+  public bdax(BaseApplicationImpl paramBaseApplicationImpl) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_Bdek.a(paramAdapterView.a))) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_Bdek.c() >= this.a.jdField_a_of_type_Int)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    int i;
+    do
     {
-      this.a.h();
-      return;
-    }
-    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
-    this.a.b.add(paramAdapterView);
-    this.a.jdField_a_of_type_Bdek.a(paramAdapterView.a);
-    this.a.e();
-    paramView.g();
-    this.a.b(false);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+      do
+      {
+        return;
+      } while (!"tencent.video.q2v.debug".equals(paramIntent.getAction()));
+      i = paramIntent.getIntExtra("_debug_Event_index", -1);
+      int j = paramIntent.getIntExtra("_debug_Event_value", -1);
+      if ((i >= 0) && (i < 35))
+      {
+        AudioHelper.a[i] = j;
+        QLog.w("AudioHelper", 1, "ReceiverDebugValue, [" + i + "]=[" + j + "]");
+      }
+    } while (i != 2);
+    AudioHelper.a(this.a.getApplicationContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdax
  * JD-Core Version:    0.7.0.1
  */

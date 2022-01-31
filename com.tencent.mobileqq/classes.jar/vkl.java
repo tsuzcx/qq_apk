@@ -1,50 +1,23 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
 
-public final class vkl
-  extends vlg
+class vkl
+  implements View.OnClickListener
 {
-  public vkl(DoodleView paramDoodleView)
+  vkl(vkk paramvkk, vkj paramvkj) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramDoodleView);
-  }
-  
-  public String a()
-  {
-    return "EmptyLayer";
-  }
-  
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    ved.b("EmptyLayer", "EmptyLayer handle touch event.");
-    return false;
-  }
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
+    if (VideoCoverListBar.a(this.jdField_a_of_type_Vkk.jdField_a_of_type_Vkj.a) != null) {
+      VideoCoverListBar.a(this.jdField_a_of_type_Vkk.jdField_a_of_type_Vkj.a).a(vkk.a(this.jdField_a_of_type_Vkk));
+    }
+    wta.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", vkk.a(this.jdField_a_of_type_Vkk) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vkl
  * JD-Core Version:    0.7.0.1
  */

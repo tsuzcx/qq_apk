@@ -1,107 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
 
 public class ahft
-  extends ahfm<ahfs>
+  implements nar
 {
-  public int a()
-  {
-    return 539;
-  }
-  
-  @NonNull
-  public ahfs a(int paramInt)
-  {
-    super.a(paramInt);
-    return new ahfs();
-  }
-  
-  protected ahfs a(amph[] paramArrayOfamph)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfamph != null)
-    {
-      localObject1 = localObject2;
-      if (paramArrayOfamph.length > 0)
-      {
-        paramArrayOfamph = paramArrayOfamph[0].a;
-        if (QLog.isColorLevel()) {
-          QLog.i("springHb_SpringFestivalRedpacketPreloadConfProcessor", 2, "onParsed " + paramArrayOfamph);
-        }
-        localObject1 = ahfs.a(paramArrayOfamph);
-      }
-    }
-    return localObject1;
-  }
-  
-  public Class<ahfs> a()
-  {
-    return ahfs.class;
-  }
+  public ahft(GroupSearchRecommendView paramGroupSearchRecommendView) {}
   
   public void a()
   {
-    super.a();
-    ahia.a();
-  }
-  
-  public void a(ahfs paramahfs)
-  {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface != null)
-      {
-        PreloadManager localPreloadManager = (PreloadManager)localQQAppInterface.getManager(151);
-        if (localPreloadManager != null)
-        {
-          localPreloadManager.a(paramahfs.a, 2);
-          localPreloadManager.b();
-          localPreloadManager.b(true);
-        }
-        ahia.a();
-        if ((paramahfs.a != null) && (paramahfs.a.length() > 0)) {
-          ahia.a(localQQAppInterface, 1, 0, a(), ahia.a(a()), ampl.a().a(a(), localQQAppInterface.getCurrentAccountUin()), true, ahia.a(a()));
-        }
-      }
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
       return;
     }
-    catch (Throwable paramahfs)
-    {
-      QLog.e("springHb_SpringFestivalRedpacketPreloadConfProcessor", 1, QLog.getStackTraceString(paramahfs));
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void b()
+  {
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
     }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  @Nullable
-  public ahfs b(amph[] paramArrayOfamph)
-  {
-    return (ahfs)super.b(paramArrayOfamph);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahft
  * JD-Core Version:    0.7.0.1
  */

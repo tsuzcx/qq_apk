@@ -3,30 +3,36 @@ package com.tencent.map.geolocation;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
+import android.util.Pair;
 import c.t.m.g.co;
-import c.t.m.g.do;
-import c.t.m.g.dr;
-import c.t.m.g.dx;
-import c.t.m.g.ee;
-import c.t.m.g.eh;
+import c.t.m.g.dp;
+import c.t.m.g.dy;
+import c.t.m.g.ea;
+import c.t.m.g.eb;
 import c.t.m.g.ei;
-import c.t.m.g.ez;
-import c.t.m.g.fm;
+import c.t.m.g.el;
+import c.t.m.g.em;
+import c.t.m.g.fc;
+import c.t.m.g.fp;
 
 public final class TencentLocationManager
 {
   public static final int COORDINATE_TYPE_GCJ02 = 1;
   public static final int COORDINATE_TYPE_WGS84 = 0;
+  public static final String TYPE_OAID = "oaId";
+  public static final String TYPE_QIMEI = "qImei";
   private static TencentLocationManager d;
   private final byte[] a = new byte[0];
-  private final dx b;
-  private final eh c;
+  private final ea b;
+  private final el c;
   
   private TencentLocationManager(Context paramContext)
   {
-    do.a(paramContext);
-    this.b = dx.a(paramContext);
-    this.c = new eh(this.b);
+    dp.a(paramContext);
+    dp.b();
+    this.b = ea.a(paramContext);
+    this.c = new el(this.b);
   }
   
   public static TencentLocationManager getInstance(Context paramContext)
@@ -60,9 +66,9 @@ public final class TencentLocationManager
   
   public final String getBuild()
   {
-    dr localdr = this.b.e();
-    if (localdr != null) {
-      return localdr.e();
+    eb localeb = this.b.e();
+    if (localeb != null) {
+      return localeb.e();
     }
     return "None";
   }
@@ -74,25 +80,25 @@ public final class TencentLocationManager
   
   public final String getKey()
   {
-    return co.d(this.b.b.g);
+    return co.e(this.b.b.g);
   }
   
   public final TencentLocation getLastKnownLocation()
   {
-    eh localeh = this.c;
-    if (localeh.m == 0)
+    el localel = this.c;
+    if (localel.m == 0)
     {
-      localeh.a(localeh.l);
-      return localeh.l;
+      localel.a(localel.l);
+      return localel.l;
     }
     return null;
   }
   
   public final int getPedometerData()
   {
-    eh localeh = this.c;
-    if (localeh.c != null) {
-      return localeh.c.h;
+    el localel = this.c;
+    if (localel.c != null) {
+      return localel.c.h;
     }
     return -1;
   }
@@ -104,9 +110,9 @@ public final class TencentLocationManager
   
   public final String getVersion()
   {
-    dr localdr = this.b.e();
-    if (localdr != null) {
-      return localdr.d();
+    eb localeb = this.b.e();
+    if (localeb != null) {
+      return localeb.d();
     }
     return "None";
   }
@@ -156,14 +162,28 @@ public final class TencentLocationManager
     if ((paramInt == 1) || (paramInt == 0)) {
       synchronized (this.a)
       {
-        eh localeh = this.c;
-        if (localeh.a != paramInt) {
-          localeh.a = paramInt;
+        el localel = this.c;
+        if (localel.a != paramInt) {
+          localel.a = paramInt;
         }
         return;
       }
     }
     throw new IllegalArgumentException("unknown coordinate type: ".concat(String.valueOf(paramInt)));
+  }
+  
+  public final void setDeviceID(Pair<String, String> paramPair)
+  {
+    if (paramPair == null) {
+      throw new IllegalArgumentException("deviceID is null!");
+    }
+    if (((!((String)paramPair.first).equals("qImei")) && (!((String)paramPair.first).equals("oaId")) && (!((String)paramPair.first).matches("^[a-z0-9A-Z]{6,32}$"))) || (TextUtils.isEmpty((CharSequence)paramPair.second))) {
+      throw new IllegalArgumentException("your deviceID is illegal!");
+    }
+    eb localeb = this.b.b;
+    dy.a("LocationSDK", "location_device_id_type", paramPair.first);
+    dy.a("LocationSDK", "location_device_id", paramPair.second);
+    localeb.p = paramPair;
   }
   
   public final void setKey(String paramString)
@@ -182,7 +202,7 @@ public final class TencentLocationManager
     if (paramLooper == null) {
       throw new NullPointerException("looper is null");
     }
-    eh localeh = this.c;
+    el localel = this.c;
     int i;
     if ((paramTencentDirectionListener == null) || (paramLooper == null)) {
       i = -1;
@@ -191,15 +211,15 @@ public final class TencentLocationManager
     do
     {
       return i;
-      if (localeh.b == null) {
+      if (localel.b == null) {
         return -2;
       }
-      localeh.b.a();
+      localel.b.a();
       paramLooper = new Handler(paramLooper);
-      j = localeh.b.a(paramLooper, paramTencentDirectionListener);
+      j = localel.b.a(paramLooper, paramTencentDirectionListener);
       i = j;
     } while (j != 0);
-    localeh.b.a = true;
+    localel.b.a = true;
     return j;
   }
   
@@ -211,27 +231,27 @@ public final class TencentLocationManager
     }
     synchronized (this.a)
     {
-      eh localeh = this.c;
-      if (localeh.d == null) {}
+      el localel = this.c;
+      if (localel.d == null) {}
       for (;;)
       {
         return i;
-        if (!localeh.e) {
+        if (!localel.e) {
           break;
         }
         i = 2;
       }
-      localeh.e = true;
-      localeh.k = paramTencentDistanceListener;
+      localel.e = true;
+      localel.k = paramTencentDistanceListener;
       i = 0;
     }
   }
   
   public final void stopDirectionUpdate()
   {
-    eh localeh = this.c;
-    if (localeh.b != null) {
-      localeh.b.a();
+    el localel = this.c;
+    if (localel.b != null) {
+      localel.b.a();
     }
   }
   
@@ -239,25 +259,25 @@ public final class TencentLocationManager
   {
     synchronized (this.a)
     {
-      eh localeh = this.c;
-      localeh.k = null;
-      localeh.f = 0.0D;
-      localeh.e = false;
-      localeh.j = null;
-      ez localez = new ez();
-      localez.a = (fm.a((localeh.g + 1) / (localeh.i + 1), 4) * 100.0D);
-      localez.b = localeh.g;
-      localez.c = localeh.h;
-      localeh.g = 0;
-      localeh.h = 0;
-      localeh.i = 0;
-      return localez;
+      el localel = this.c;
+      localel.k = null;
+      localel.f = 0.0D;
+      localel.e = false;
+      localel.j = null;
+      fc localfc = new fc();
+      localfc.a = (fp.a((localel.g + 1) / (localel.i + 1), 4) * 100.0D);
+      localfc.b = localel.g;
+      localfc.c = localel.h;
+      localel.g = 0;
+      localel.h = 0;
+      localel.i = 0;
+      return localfc;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.geolocation.TencentLocationManager
  * JD-Core Version:    0.7.0.1
  */

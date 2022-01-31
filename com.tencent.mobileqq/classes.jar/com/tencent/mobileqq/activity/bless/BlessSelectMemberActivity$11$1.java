@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.bless;
 
-import afbh;
-import ajya;
+import agym;
+import alpo;
 import android.content.res.Resources;
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class BlessSelectMemberActivity$11$1
   implements Runnable
 {
-  public BlessSelectMemberActivity$11$1(afbh paramafbh) {}
+  public BlessSelectMemberActivity$11$1(agym paramagym) {}
   
   public void run()
   {
-    bcql.a(this.a.a, ajya.a(2131701163), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298865));
+    QQToast.a(this.a.a, alpo.a(2131701532), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298914));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity.11.1
  * JD-Core Version:    0.7.0.1
  */

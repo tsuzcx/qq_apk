@@ -1,14 +1,12 @@
-import java.util.HashMap;
-
-public class biak
+public abstract interface biak
 {
-  public int a;
-  public HashMap<String, String> a;
-  public int b;
+  public abstract boolean a(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.view.View;
-import auti;
+import awku;
 import mqq.util.WeakReference;
 
 class PersonalityLabelBoard$2
@@ -17,13 +17,13 @@ class PersonalityLabelBoard$2
       }
     }
     label62:
-    for (auti localauti = null;; localauti = (auti)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get())
+    for (awku localawku = null;; localawku = (awku)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get())
     {
-      if (localauti != null)
+      if (localawku != null)
       {
         int i = this.this$0.jdField_a_of_type_AndroidViewView.getTop();
         if (i >= 0) {
-          localauti.e(i);
+          localawku.e(i);
         }
       }
       return;
@@ -32,7 +32,7 @@ class PersonalityLabelBoard$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelBoard.2
  * JD-Core Version:    0.7.0.1
  */

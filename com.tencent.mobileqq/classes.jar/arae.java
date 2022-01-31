@@ -1,81 +1,127 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicTab;
-import com.tencent.mobileqq.hotpic.HotPicTagInfo;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import java.util.Set;
 
 public class arae
-  extends BaseAdapter
 {
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
-  public List<HotPicTagInfo> a;
-  boolean jdField_a_of_type_Boolean;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private String b;
+  private String c;
+  private String d;
   
-  public arae(List<HotPicTagInfo> paramList, ArrayList<Integer> paramArrayList, boolean paramBoolean)
+  public long a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramBoolean.clone());
-    boolean bool;
-    this.jdField_a_of_type_Boolean = bool;
+    return this.jdField_a_of_type_Long;
   }
   
-  public int getCount()
+  public String a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public Object getItem(int paramInt)
+  public List<ExcitingTransferHostInfo> a()
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public long getItemId(int paramInt)
+  public void a(long paramLong)
   {
-    return paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(String paramString)
   {
-    if (paramView == null)
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(List<ExcitingTransferHostInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      paramViewGroup = new arag(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab);
-      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2131558556, null);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131367629));
-      paramView.setTag(paramViewGroup);
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFilePath is null");
+      return false;
     }
-    for (;;)
+    if (0L == this.jdField_a_of_type_Long)
     {
-      String str = ((HotPicTagInfo)getItem(paramInt)).tagName;
-      paramViewGroup = paramViewGroup.a;
-      paramViewGroup.setText(str);
-      paramViewGroup.setTextSize(2, HotPicTab.b());
-      paramViewGroup.setTextColor(HotPicTab.c());
-      paramViewGroup.setPadding(0, 0, 0, 0);
-      paramViewGroup.setFocusable(true);
-      paramViewGroup.setGravity(17);
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
-      paramView.setContentDescription(str);
-      paramView.setFocusable(true);
-      paramView.setOnHoverListener(new araf(this));
-      if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
-      {
-        axqy.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, paramInt + "", "", str, "");
-        HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
-      }
-      return paramView;
-      paramViewGroup = (arag)paramView.getTag();
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFileSize is 0");
+      return false;
     }
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "hostList is null");
+      return false;
+    }
+    if (TextUtils.isEmpty(this.b))
+    {
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "serverPath is null");
+      return false;
+    }
+    if (TextUtils.isEmpty(this.c))
+    {
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "strCookie is null");
+      return false;
+    }
+    return true;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public void c(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public String d()
+  {
+    return this.d;
+  }
+  
+  public void d(String paramString)
+  {
+    this.d = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arae
  * JD-Core Version:    0.7.0.1
  */

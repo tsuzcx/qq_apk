@@ -21,8 +21,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import bbfe;
-import bcnl;
+import bddz;
+import bemn;
 import com.tencent.qphone.base.util.QLog;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -43,7 +43,7 @@ public class MessageProgressView
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   public Drawable a;
   AccelerateDecelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator;
-  public bcnl a;
+  public bemn a;
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat;
   public float b;
@@ -265,9 +265,7 @@ public class MessageProgressView
   
   protected void a(Canvas paramCanvas)
   {
-    if (this.jdField_e_of_type_Int < 0) {
-      super.draw(paramCanvas);
-    }
+    if (this.jdField_e_of_type_Int < 0) {}
     while (this.jdField_e_of_type_Int >= 100) {
       return;
     }
@@ -308,7 +306,7 @@ public class MessageProgressView
   
   public void a(String paramString)
   {
-    paramString = bbfe.a().a(paramString);
+    paramString = bddz.a().a(paramString);
     if (paramString != null) {
       paramString.a(this);
     }
@@ -316,7 +314,7 @@ public class MessageProgressView
   
   public boolean a(String paramString)
   {
-    return bbfe.a().a(paramString) != null;
+    return bddz.a().a(paramString) != null;
   }
   
   protected void b(Canvas paramCanvas)
@@ -334,7 +332,7 @@ public class MessageProgressView
   
   public void b(String paramString)
   {
-    bbfe.a().a(paramString);
+    bddz.a().a(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("MessageProgressView", 2, " stopAnim  key=" + paramString);
     }
@@ -388,9 +386,7 @@ public class MessageProgressView
   
   protected void c(Canvas paramCanvas)
   {
-    if (this.jdField_e_of_type_Int < 0) {
-      super.draw(paramCanvas);
-    }
+    if (this.jdField_e_of_type_Int < 0) {}
     while (this.jdField_e_of_type_Int >= 100) {
       return;
     }
@@ -580,12 +576,12 @@ public class MessageProgressView
     MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable;
     if (this.jdField_d_of_type_Int == 1)
     {
-      localRefreshProgressRunnable = bbfe.a().a(paramString);
+      localRefreshProgressRunnable = bddz.a().a(paramString);
       if (localRefreshProgressRunnable != null) {
         break label96;
       }
       localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString);
-      bbfe.a().a(paramString, localRefreshProgressRunnable);
+      bddz.a().a(paramString, localRefreshProgressRunnable);
       ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       if (QLog.isColorLevel()) {
         QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString + " progress=" + paramInt);
@@ -603,12 +599,12 @@ public class MessageProgressView
     MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable;
     if (this.jdField_d_of_type_Int == 1)
     {
-      localRefreshProgressRunnable = bbfe.a().a(paramString2);
+      localRefreshProgressRunnable = bddz.a().a(paramString2);
       if (localRefreshProgressRunnable != null) {
         break label96;
       }
       localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString2);
-      bbfe.a().a(paramString2, localRefreshProgressRunnable);
+      bddz.a().a(paramString2, localRefreshProgressRunnable);
       ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       if (QLog.isColorLevel()) {
         QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString2 + " progress=" + paramString1);
@@ -619,9 +615,9 @@ public class MessageProgressView
     localRefreshProgressRunnable.a(this);
   }
   
-  public void setAnimRunnableListener(bcnl parambcnl)
+  public void setAnimRunnableListener(bemn parambemn)
   {
-    this.jdField_a_of_type_Bcnl = parambcnl;
+    this.jdField_a_of_type_Bemn = parambemn;
   }
   
   public void setBreathingCircleRadius(float paramFloat)

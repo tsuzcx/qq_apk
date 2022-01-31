@@ -1,60 +1,49 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Handler;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoForward;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class xlj
-  extends WebViewPlugin
+  extends naa
 {
-  public xlj()
-  {
-    this.mPluginNameSpace = "openToAppDetail";
-  }
+  xlj(xli paramxli) {}
   
-  public void a(String paramString1, String paramString2)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    a(paramString1, paramString2, null);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", this.mRuntime.a().getCurrentAccountUin());
-    localBundle.putString("sid", this.mRuntime.a().getIntent().getStringExtra("vkey"));
-    localBundle.putString("via", "ANDROIDQQ.STORE.APPDETAIL.SHARE2QQ");
-    if ((paramString2 != null) && (paramString2.equals("true"))) {
-      localBundle.putBoolean("autoDownload", true);
-    }
-    if (paramString3 != null) {
-      localBundle.putString("packageName", paramString3);
-    }
-    bdfk.a(this.mRuntime.a(), paramString1, 2470, localBundle);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"openToAppDetail".equals(paramString2)) {}
-    do
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      do
+      paramBundle = new qqstory_group.RspGroupVideoForward();
+      try
       {
-        return false;
-      } while (!"openAppDetailPage".equals(paramString3));
-      if (paramVarArgs.length == 2)
-      {
-        a(paramVarArgs[0], paramVarArgs[1]);
-        return true;
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
+        if ((paramArrayOfByte.error_code.has()) && (paramArrayOfByte.error_code.get() == 0))
+        {
+          ThreadManager.executeOnSubThread(new TroopStoryForwardTask.2.1(this, paramBundle.story_id.get().toStringUtf8()));
+          return paramArrayOfByte;
+        }
       }
-    } while (paramVarArgs.length != 3);
-    a(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
-    return true;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.qqstory.troopstory.share", 2, "parse RspGroupVideoForward error", paramArrayOfByte);
+        }
+      }
+    }
+    this.a.a.sendEmptyMessage(5);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xlj
  * JD-Core Version:    0.7.0.1
  */

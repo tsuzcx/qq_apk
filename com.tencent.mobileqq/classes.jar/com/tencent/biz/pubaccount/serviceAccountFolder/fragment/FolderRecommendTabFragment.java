@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bbax;
+import bczr;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.component.base.ComponentPageView;
@@ -14,10 +14,10 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import mqq.app.AppRuntime;
-import sbi;
-import wit;
-import wlg;
-import xhb;
+import ssy;
+import xxl;
+import xzz;
+import yvu;
 
 public class FolderRecommendTabFragment
   extends FolderBaseTabFragment
@@ -44,7 +44,7 @@ public class FolderRecommendTabFragment
   {
     try
     {
-      long l = Long.valueOf(bbax.a(BaseApplicationImpl.getContext(), "subscribe_recommend_banner_unlike_timestamp_" + this.jdField_c_of_type_JavaLangString)).longValue();
+      long l = Long.valueOf(bczr.a(BaseApplicationImpl.getContext(), "subscribe_recommend_banner_unlike_timestamp_" + this.jdField_c_of_type_JavaLangString)).longValue();
       return l;
     }
     catch (NumberFormatException localNumberFormatException) {}
@@ -54,10 +54,10 @@ public class FolderRecommendTabFragment
   protected void a()
   {
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131558670, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131558706, null);
     }
     this.jdField_c_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    this.jdField_b_of_type_Boolean = wit.a();
+    this.jdField_b_of_type_Boolean = xxl.a();
     if ((getActivity() != null) && (getActivity().getIntent() != null))
     {
       ExtraTypeInfo localExtraTypeInfo2 = (ExtraTypeInfo)getActivity().getIntent().getSerializableExtra("key_subscribe_intent_extra_type_info");
@@ -79,42 +79,42 @@ public class FolderRecommendTabFragment
       if ((a()) && (!this.jdField_c_of_type_Boolean))
       {
         this.jdField_c_of_type_Boolean = true;
-        xhb.a("auth_discover", "reco_exp", 0, 0, new String[0]);
+        yvu.a("auth_discover", "reco_exp", 0, 0, new String[0]);
       }
     }
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView = ((ComponentPageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375228));
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView = ((ComponentPageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375710));
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setParentFragment(this);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setLayoutManagerType(3, 2);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setEnableLoadMore(true);
     if (a()) {
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(new sbi(this, null));
+      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(new ssy(this, null));
     }
-    wlg localwlg = new wlg(null);
-    localwlg.b(0);
-    localwlg.c(this.jdField_b_of_type_Boolean);
-    localwlg.b(false);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(localwlg);
+    xzz localxzz = new xzz(null);
+    localxzz.b(0);
+    localxzz.c(this.jdField_b_of_type_Boolean);
+    localxzz.b(false);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(localxzz);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setExtraTypeInfo(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setEnableRefresh(true);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.d();
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.e();
   }
   
   public void c()
   {
     long l = System.currentTimeMillis() / 1000L;
-    bbax.a(BaseApplicationImpl.getContext(), "subscribe_recommend_banner_unlike_timestamp_" + this.jdField_c_of_type_JavaLangString, String.valueOf(l));
+    bczr.a(BaseApplicationImpl.getContext(), "subscribe_recommend_banner_unlike_timestamp_" + this.jdField_c_of_type_JavaLangString, String.valueOf(l));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131558670, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131558706, null);
     }
-    this.jdField_b_of_type_Boolean = wit.a();
+    this.jdField_b_of_type_Boolean = xxl.a();
     if (this.jdField_b_of_type_Boolean) {
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
     }
@@ -130,13 +130,13 @@ public class FolderRecommendTabFragment
   {
     super.onDestroy();
     if (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.c();
+      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment
  * JD-Core Version:    0.7.0.1
  */

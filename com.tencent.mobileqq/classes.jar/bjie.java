@@ -1,275 +1,417 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.text.InputFilter;
-import android.text.TextPaint;
+import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_RSP;
+import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.QzoneModuleConst;
+import cooperation.qzone.networkedmodule.QzoneModuleRecordFactory;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjie
-  extends DynamicTextItem
 {
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private InputFilter jdField_a_of_type_AndroidTextInputFilter;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_b_of_type_Int;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_c_of_type_Int;
-  private ArrayList<ArrayList<Integer>> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_d_of_type_Int;
-  private ArrayList<Integer> jdField_d_of_type_JavaUtilArrayList = new ArrayList();
+  private static volatile bjie jdField_a_of_type_Bjie;
+  private Map<String, bjif> jdField_a_of_type_JavaUtilMap = a(LocalMultiProcConfig.getString("Qz_setting", "NetworkedModuleConfig_cur", ""));
+  private Map<String, bjif> b = new ConcurrentHashMap();
   
-  public bjie(int paramInt, @NonNull List<String> paramList, Typeface paramTypeface1, Typeface paramTypeface2, Bitmap paramBitmap)
+  public static bjie a()
   {
-    super(paramInt, paramList);
-    a(BaseApplicationImpl.getContext(), paramTypeface1, paramTypeface2, paramBitmap);
-    if (!paramList.isEmpty()) {
-      a(0, (String)paramList.get(0));
-    }
-  }
-  
-  private int a(float paramFloat)
-  {
-    return (int)(this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * paramFloat);
-  }
-  
-  private int a(ArrayList<Integer> paramArrayList)
-  {
-    int i = this.jdField_c_of_type_Int;
-    paramArrayList = paramArrayList.iterator();
-    i *= 2;
-    if (paramArrayList.hasNext())
+    if (jdField_a_of_type_Bjie == null) {}
+    try
     {
-      Integer localInteger = (Integer)paramArrayList.next();
-      if (localInteger.intValue() <= i) {
-        break label51;
+      if (jdField_a_of_type_Bjie == null) {
+        jdField_a_of_type_Bjie = new bjie();
       }
-      i = localInteger.intValue();
+      return jdField_a_of_type_Bjie;
     }
-    label51:
+    finally {}
+  }
+  
+  private bjif a(UPDATE_INFO paramUPDATE_INFO)
+  {
+    String str3 = paramUPDATE_INFO.id;
+    String str4 = paramUPDATE_INFO.md5;
+    Object localObject1 = "";
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QzoneModuleConfigManager", 1, "id:" + str3);
+    }
+    String str5 = paramUPDATE_INFO.ver;
+    String str6 = paramUPDATE_INFO.mainVersion;
+    Object localObject3 = "";
+    Object localObject4 = "";
+    String str2;
+    String str1;
+    String[] arrayOfString;
+    if (paramUPDATE_INFO.plugin_info != null)
+    {
+      str2 = (String)paramUPDATE_INFO.plugin_info.get(Integer.valueOf(2));
+      str1 = (String)paramUPDATE_INFO.plugin_info.get(Integer.valueOf(0));
+      paramUPDATE_INFO = (String)paramUPDATE_INFO.plugin_info.get(Integer.valueOf(1));
+      localObject1 = str2;
+      localObject3 = str1;
+      localObject4 = paramUPDATE_INFO;
+      if (!TextUtils.isEmpty(paramUPDATE_INFO))
+      {
+        arrayOfString = paramUPDATE_INFO.split("#");
+        localObject1 = str2;
+        localObject3 = str1;
+        localObject4 = paramUPDATE_INFO;
+        if (arrayOfString.length < 2) {}
+      }
+    }
     for (;;)
     {
-      break;
-      return i;
-    }
-  }
-  
-  private void a(Context paramContext, Typeface paramTypeface1, Typeface paramTypeface2, Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    a(paramTypeface2, paramTypeface1);
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-  }
-  
-  private void a(Typeface paramTypeface1, Typeface paramTypeface2)
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface2);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#ffffff"));
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(79.5F));
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
-    this.jdField_c_of_type_Int = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(ajya.a(2131705993)));
-    this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(paramTypeface1);
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#ffffff"));
-    this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(a(14.0F));
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    this.jdField_d_of_type_Int = ((int)(this.jdField_c_of_type_Int * 1.3F));
-  }
-  
-  public float a()
-  {
-    return this.jdField_b_of_type_Int + 10;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public InputFilter a()
-  {
-    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
-      this.jdField_a_of_type_AndroidTextInputFilter = new bjig(this, 20);
-    }
-    return this.jdField_a_of_type_AndroidTextInputFilter;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    super.a(paramInt, paramString);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_d_of_type_JavaUtilArrayList.clear();
-    paramString = super.a(paramInt, new bjif(this)).split("\n");
-    int i = paramString.length;
-    paramInt = 0;
-    if (paramInt < i)
-    {
-      Object localObject = paramString[paramInt];
-      if ((((String)localObject).length() == 6) && (i == 1))
+      Object localObject2;
+      try
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)));
+        i = Integer.parseInt(arrayOfString[0]);
+        localObject4 = arrayOfString[1];
+        paramUPDATE_INFO = str2;
+        localObject3 = str1;
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneModuleConfigManager", 1, "id:" + str3 + " ,md5:" + str4 + ",url:" + (String)localObject3 + " ,keyClassName:" + paramUPDATE_INFO + ",version:" + str5 + ",mainVersion:" + str6 + ",classIds:" + (String)localObject4 + ",classIDsCount:" + i);
+        }
+        if ((TextUtils.isEmpty(str3)) || (TextUtils.isEmpty((CharSequence)localObject3)) || (TextUtils.isEmpty(str4))) {
+          break;
+        }
+        localObject1 = new bjig();
+        ((bjig)localObject1).a(str3).b(str5).c(str6).d((String)localObject3).e(str4).f(paramUPDATE_INFO).g((String)localObject4).a(i).a(0L);
+        return ((bjig)localObject1).a();
       }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        QLog.e("QzoneModuleConfigManager", 1, "catch an exception: ", localNumberFormatException);
+        localObject4 = paramUPDATE_INFO;
+        localObject3 = str1;
+        localObject2 = str2;
+      }
+      paramUPDATE_INFO = localObject2;
+      int i = 0;
+    }
+    return null;
+  }
+  
+  static String a(Map<String, bjif> paramMap)
+  {
+    if ((paramMap != null) && (paramMap.size() > 0))
+    {
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONArray localJSONArray = new JSONArray();
+      Iterator localIterator = paramMap.keySet().iterator();
       for (;;)
       {
-        paramInt += 1;
-        break;
-        String str;
-        if (((String)localObject).length() > 15)
+        if (localIterator.hasNext())
         {
-          str = ((String)localObject).substring(0, 5);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
-          str = ((String)localObject).substring(5, 10);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
-          str = ((String)localObject).substring(10, 15);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
-          localObject = ((String)localObject).substring(15, ((String)localObject).length());
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)));
+          Object localObject = (String)localIterator.next();
+          JSONObject localJSONObject2 = new JSONObject();
+          localObject = (bjif)paramMap.get(localObject);
+          try
+          {
+            localJSONObject2.put("module_id", ((bjif)localObject).jdField_a_of_type_JavaLangString);
+            localJSONObject2.put("module_md5", ((bjif)localObject).e);
+            localJSONObject2.put("module_url", ((bjif)localObject).d);
+            localJSONObject2.put("module_version", ((bjif)localObject).b);
+            localJSONObject2.put("module_main_version", ((bjif)localObject).c);
+            localJSONObject2.put("module_key_class_name", ((bjif)localObject).f);
+            localJSONObject2.put("module_class_ids", ((bjif)localObject).h);
+            localJSONObject2.put("module_class_ids_count", ((bjif)localObject).jdField_a_of_type_Int);
+            localJSONObject2.put("module_file_length", ((bjif)localObject).jdField_a_of_type_Long);
+            localJSONArray.put(localJSONObject2);
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
         }
-        else if (((String)localObject).length() > 10)
+      }
+      try
+      {
+        localJSONObject1.put("qzone_networked_modules", localJSONArray);
+        paramMap = localJSONObject1.toString();
+        return paramMap;
+      }
+      catch (JSONException paramMap)
+      {
+        paramMap.printStackTrace();
+      }
+    }
+    return "";
+  }
+  
+  static Map<String, bjif> a(String paramString)
+  {
+    localConcurrentHashMap = new ConcurrentHashMap();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("qzone_networked_modules");
+        if (paramString != null)
         {
-          str = ((String)localObject).substring(0, 5);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
-          str = ((String)localObject).substring(5, 10);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
-          localObject = ((String)localObject).substring(10, ((String)localObject).length());
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)));
+          int j = paramString.length();
+          int i = 0;
+          while (i < j)
+          {
+            Object localObject2 = paramString.getJSONObject(i);
+            Object localObject1 = ((JSONObject)localObject2).optString("module_id");
+            String str1 = ((JSONObject)localObject2).optString("module_md5");
+            String str2 = ((JSONObject)localObject2).optString("module_url");
+            String str3 = ((JSONObject)localObject2).optString("module_version");
+            String str4 = ((JSONObject)localObject2).optString("module_main_version");
+            String str5 = ((JSONObject)localObject2).optString("module_key_class_name");
+            String str6 = ((JSONObject)localObject2).optString("module_class_ids");
+            int k = ((JSONObject)localObject2).optInt("module_class_ids_count");
+            long l = ((JSONObject)localObject2).optLong("module_file_length");
+            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)))
+            {
+              localObject2 = new bjig();
+              ((bjig)localObject2).a((String)localObject1).b(str3).c(str4).d(str2).e(str1).f(str5).g(str6).a(k).a(l);
+              localObject1 = ((bjig)localObject2).a();
+              localConcurrentHashMap.put(((bjif)localObject1).jdField_a_of_type_JavaLangString, localObject1);
+            }
+            i += 1;
+          }
         }
-        else if (((String)localObject).length() > 5)
+        return localConcurrentHashMap;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+        QLog.e("QzoneModuleConfigManager", 1, paramString, new Object[0]);
+      }
+    }
+  }
+  
+  public bjif a(String paramString)
+  {
+    boolean bool = true;
+    label386:
+    for (;;)
+    {
+      try
+      {
+        bjif localbjif1 = (bjif)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        bjif localbjif2 = (bjif)this.b.get(paramString);
+        Object localObject = localbjif2;
+        if (localbjif2 == null)
         {
-          str = ((String)localObject).substring(0, 5);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
-          localObject = ((String)localObject).substring(5, ((String)localObject).length());
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)));
+          localbjif2 = QzoneModuleRecordFactory.getInstance().createRecord(paramString);
+          localObject = new StringBuilder().append("try to create record locally,success ? : ");
+          if (localbjif2 == null) {
+            continue;
+          }
+          QLog.i("QzoneModuleConfigManager", 2, String.valueOf(bool));
+          localObject = localbjif2;
+          if (localbjif2 != null)
+          {
+            this.b.put(paramString, localbjif2);
+            localObject = localbjif2;
+          }
+        }
+        if (localbjif1 != null)
+        {
+          localbjif1.jdField_a_of_type_Bjif = ((bjif)localObject);
+          paramString = localbjif1;
+          localObject = paramString;
+          if (paramString != null)
+          {
+            if ((paramString.jdField_a_of_type_Bjif != null) && (!TextUtils.isEmpty(paramString.jdField_a_of_type_Bjif.g)) && (!bizf.a().equalsIgnoreCase(paramString.jdField_a_of_type_Bjif.g)))
+            {
+              QLog.i("QzoneModuleConfigManager", 1, "mNewVersion.mQua=" + paramString.jdField_a_of_type_Bjif.g + " is not equal QUA=" + bizf.a());
+              paramString.jdField_a_of_type_Bjif = null;
+            }
+            localObject = paramString;
+            if (!TextUtils.isEmpty(paramString.g))
+            {
+              localObject = paramString;
+              if (!bizf.a().equalsIgnoreCase(paramString.g))
+              {
+                QLog.i("QzoneModuleConfigManager", 1, "curRecord.mQua=" + paramString.g + " is not equal QUA=" + bizf.a());
+                if ((paramString.jdField_a_of_type_Bjif == null) || (!paramString.e.equalsIgnoreCase(paramString.jdField_a_of_type_Bjif.e))) {
+                  continue;
+                }
+                localObject = paramString.jdField_a_of_type_Bjif;
+                a((bjif)localObject);
+                QLog.i("QzoneModuleConfigManager", 1, "curRecord and updateRecord has the same md5,so needn't to download again,just call updateConfigAfterDownloaded to update cur configs");
+              }
+            }
+          }
+          return localObject;
+          bool = false;
         }
         else
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)));
+          paramString = localbjif1;
+          if (localObject == null) {
+            continue;
+          }
+          ((bjif)localObject).jdField_a_of_type_Bjif = ((bjif)localObject);
+          if (!TextUtils.equals(((bjif)localObject).e, ((bjif)localObject).e)) {
+            break label386;
+          }
+          ((bjif)localObject).jdField_a_of_type_Long = ((bjif)localObject).jdField_a_of_type_Long;
+          break label386;
         }
+        localObject = paramString.jdField_a_of_type_Bjif;
+        continue;
+        paramString = (String)localObject;
       }
+      finally {}
     }
-    this.jdField_b_of_type_Int = a(this.jdField_d_of_type_JavaUtilArrayList);
   }
   
-  public void a(Canvas paramCanvas)
+  public ArrayList<UPDATE_INFO> a()
   {
-    if (super.b(0)) {
-      paramCanvas.drawRoundRect(new RectF(5.0F, 5.0F, a() - 5.0F, b() - 5.0F), 6.0F, 6.0F, a());
-    }
-    paramCanvas.save();
-    paramCanvas.translate(this.jdField_b_of_type_Int - a(77.0F), this.jdField_d_of_type_Int - a(78.0F));
-    Object localObject1 = new RectF();
-    ((RectF)localObject1).set(0.0F, 0.0F, a(45.0F), a(45.0F));
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, (RectF)localObject1, null);
-    paramCanvas.restore();
-    int i = this.jdField_d_of_type_Int;
-    int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int j = 0;
-    while (j < i1)
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = QzoneModuleConst.QZONE_MODULES_QBOSS.iterator();
+    if (localIterator.hasNext())
     {
-      int n = (this.jdField_b_of_type_Int - ((Integer)this.jdField_d_of_type_JavaUtilArrayList.get(j)).intValue()) / 2;
-      String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      int k = 0;
-      int m = 0;
-      if (m < str.length())
+      String str = (String)localIterator.next();
+      UPDATE_INFO localUPDATE_INFO = new UPDATE_INFO();
+      localUPDATE_INFO.id = str;
+      bjif localbjif = (bjif)this.jdField_a_of_type_JavaUtilMap.get(str);
+      if (localbjif != null) {}
+      for (localUPDATE_INFO.ver = localbjif.b;; localUPDATE_INFO.ver = "0")
       {
-        Object localObject2 = str.substring(m, m + 1);
-        label242:
-        int i3;
-        int i2;
-        if (bjiw.a(((String)localObject2).charAt(0)) == 3)
+        localArrayList.add(localUPDATE_INFO);
+        QLog.i("QzoneModuleConfigManager", 1, "getUpdateInfo:" + str);
+        break;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a(SQ_CLIENT_UPDATE_RSP paramSQ_CLIENT_UPDATE_RSP)
+  {
+    for (;;)
+    {
+      try
+      {
+        QLog.i("QzoneModuleConfigManager", 1, "handleModuleRsp:");
+        if ((paramSQ_CLIENT_UPDATE_RSP == null) || (paramSQ_CLIENT_UPDATE_RSP.vModule == null) || (paramSQ_CLIENT_UPDATE_RSP.vModule.size() <= 0)) {
+          break label505;
+        }
+        QLog.i("QzoneModuleConfigManager", 1, "handleModuleRsp:" + paramSQ_CLIENT_UPDATE_RSP.vModule.size());
+        paramSQ_CLIENT_UPDATE_RSP = paramSQ_CLIENT_UPDATE_RSP.vModule;
+        i = 0;
+        paramSQ_CLIENT_UPDATE_RSP = paramSQ_CLIENT_UPDATE_RSP.iterator();
+        if (paramSQ_CLIENT_UPDATE_RSP.hasNext())
         {
-          localObject1 = localObject2;
-          Rect localRect = new Rect();
-          this.jdField_a_of_type_AndroidTextTextPaint.getTextBounds((String)localObject2, 0, 1, localRect);
-          i3 = Math.abs(localRect.top - localRect.bottom) + 20;
-          i2 = Math.abs(localRect.right - localRect.left) + 20;
-          paramCanvas.drawText((String)localObject2, n, i - 0.085F * this.jdField_d_of_type_Int, this.jdField_a_of_type_AndroidTextTextPaint);
-          float f1 = n;
-          float f2 = i - this.jdField_d_of_type_Int + (this.jdField_d_of_type_Int - i3) / 2;
-          float f3 = n + i2;
-          int i4 = this.jdField_d_of_type_Int;
-          localObject2 = new RectF(f1, f2, f3, (i3 + this.jdField_d_of_type_Int) / 2 + (i - i4));
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          UPDATE_INFO localUPDATE_INFO = (UPDATE_INFO)paramSQ_CLIENT_UPDATE_RSP.next();
+          Object localObject = a(localUPDATE_INFO);
+          if (localObject != null) {
+            this.b.put(((bjif)localObject).jdField_a_of_type_JavaLangString, localObject);
+          }
+          if (localUPDATE_INFO.actype == 4)
           {
-            localRect = new Rect();
-            this.jdField_b_of_type_AndroidTextTextPaint.getTextBounds((String)localObject1, 0, ((String)localObject1).length(), localRect);
-            i3 = localRect.right - localRect.left;
-            if (k % 2 != 0) {
-              break label510;
+            QLog.w("QzoneModuleConfigManager", 1, "clear module config:" + localUPDATE_INFO.id);
+            localObject = (bjif)this.jdField_a_of_type_JavaUtilMap.get(localUPDATE_INFO.id);
+            if (localObject == null) {
+              break label508;
             }
-            paramCanvas.drawText((String)localObject1, (i2 - i3) / 2 + n, ((RectF)localObject2).top, this.jdField_b_of_type_AndroidTextTextPaint);
+            localObject = new File(QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), (bjif)localObject));
+            if (((File)localObject).exists()) {
+              ((File)localObject).delete();
+            }
+            this.jdField_a_of_type_JavaUtilMap.remove(localUPDATE_INFO.id);
+            i = 1;
+            if (this.b.containsKey(localUPDATE_INFO.id)) {
+              this.b.remove(localUPDATE_INFO.id);
+            }
+            QzoneModuleConst.clearLastCrashCount(localUPDATE_INFO.id);
+            continue;
+          }
+          if (localUPDATE_INFO.actype == 0) {
+            continue;
+          }
+          QLog.w("QzoneModuleConfigManager", 1, "force update module config:" + localUPDATE_INFO.id);
+          bjif localbjif = (bjif)this.jdField_a_of_type_JavaUtilMap.get(localUPDATE_INFO.id);
+          if (localbjif == null) {
+            continue;
+          }
+          this.jdField_a_of_type_JavaUtilMap.remove(localUPDATE_INFO.id);
+          if (!localbjif.e.equalsIgnoreCase(localUPDATE_INFO.md5))
+          {
+            localObject = new File(QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), localbjif));
+            if (((File)localObject).exists()) {
+              ((File)localObject).delete();
+            }
+            QLog.w("QzoneModuleConfigManager", 1, "force update module md5 is not same,so just delete local file and config:" + localUPDATE_INFO.id);
+          }
+          else if (localObject != null)
+          {
+            this.jdField_a_of_type_JavaUtilMap.put(localUPDATE_INFO.id, localObject);
+            QLog.w("QzoneModuleConfigManager", 1, "force update module md5 is same,so just update config:" + localUPDATE_INFO.id);
+            QzoneModuleConst.clearLastCrashCount(localUPDATE_INFO.id);
           }
         }
-        for (;;)
-        {
-          n += i2;
-          m += 1;
-          k += 1;
-          break;
-          localObject1 = ChnToSpell.a((String)localObject2, 1).a;
-          break label242;
-          label510:
-          paramCanvas.drawText((String)localObject1, (i2 - i3) / 2 + n, ((RectF)localObject2).bottom + 30.0F, this.jdField_b_of_type_AndroidTextTextPaint);
-        }
       }
-      k = this.jdField_d_of_type_Int;
-      j += 1;
-      i += k;
+      finally {}
+      if (i != 0) {
+        LocalMultiProcConfig.putString("Qz_setting", "NetworkedModuleConfig_cur", a(this.jdField_a_of_type_JavaUtilMap));
+      }
+      label505:
+      return;
+      label508:
+      continue;
+      int i = 1;
     }
   }
   
-  public boolean a()
+  public void a(bjif parambjif)
   {
-    return true;
+    if (parambjif != null) {}
+    try
+    {
+      this.b.remove(parambjif.jdField_a_of_type_JavaLangString);
+      Object localObject = (bjif)this.jdField_a_of_type_JavaUtilMap.get(parambjif.jdField_a_of_type_JavaLangString);
+      if ((localObject != null) && (!((bjif)localObject).e.equalsIgnoreCase(parambjif.e)))
+      {
+        localObject = new File(QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), (bjif)localObject));
+        if (((File)localObject).exists()) {
+          ((File)localObject).delete();
+        }
+      }
+      localObject = new File(QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), parambjif));
+      if (((File)localObject).exists()) {
+        parambjif.jdField_a_of_type_Long = ((File)localObject).length();
+      }
+      this.jdField_a_of_type_JavaUtilMap.put(parambjif.jdField_a_of_type_JavaLangString, parambjif);
+      LocalMultiProcConfig.putString("Qz_setting", "NetworkedModuleConfig_cur", a(this.jdField_a_of_type_JavaUtilMap));
+      QzoneModuleConst.clearLastCrashCount(parambjif.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    finally {}
   }
   
-  public float b()
+  public void b(bjif parambjif)
   {
-    int j = this.jdField_d_of_type_Int;
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {}
-    for (int i = 1;; i = this.jdField_a_of_type_JavaUtilArrayList.size()) {
-      return i * j + 10;
+    try
+    {
+      this.b.put(parambjif.jdField_a_of_type_JavaLangString, parambjif);
+      return;
+    }
+    finally
+    {
+      parambjif = finally;
+      throw parambjif;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjie
  * JD-Core Version:    0.7.0.1
  */

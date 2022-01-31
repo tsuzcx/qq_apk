@@ -25,7 +25,7 @@ public class ComponentContentPgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559865, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559960, this, true);
   }
   
   /* Error */
@@ -35,17 +35,17 @@ public class ComponentContentPgcVideo
     //   0: iconst_0
     //   1: istore 5
     //   3: aload_0
-    //   4: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Puy	Lpuy;
-    //   7: getfield 40	puy:a	Lpau;
+    //   4: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Qbs	Lqbs;
+    //   7: getfield 40	qbs:a	Lpgd;
     //   10: ifnull +314 -> 324
     //   13: aload_0
-    //   14: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Puy	Lpuy;
-    //   17: getfield 40	puy:a	Lpau;
+    //   14: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Qbs	Lqbs;
+    //   17: getfield 40	qbs:a	Lpgd;
     //   20: invokeinterface 45 1 0
     //   25: ifnull +299 -> 324
     //   28: aload_0
-    //   29: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Puy	Lpuy;
-    //   32: getfield 40	puy:a	Lpau;
+    //   29: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Qbs	Lqbs;
+    //   32: getfield 40	qbs:a	Lpgd;
     //   35: invokeinterface 45 1 0
     //   40: astore 7
     //   42: aload 7
@@ -101,7 +101,7 @@ public class ComponentContentPgcVideo
     //   156: ldc 116
     //   158: aload_0
     //   159: invokevirtual 94	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:getResources	()Landroid/content/res/Resources;
-    //   162: invokestatic 121	actj:a	(FLandroid/content/res/Resources;)I
+    //   162: invokestatic 121	aekt:a	(FLandroid/content/res/Resources;)I
     //   165: istore 4
     //   167: aload_0
     //   168: getfield 124	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView	Lcom/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView;
@@ -109,7 +109,7 @@ public class ComponentContentPgcVideo
     //   174: astore 8
     //   176: iload_2
     //   177: iload_1
-    //   178: invokestatic 132	onh:a	(II)Z
+    //   178: invokestatic 132	ors:a	(II)Z
     //   181: ifne +6 -> 187
     //   184: iconst_1
     //   185: istore 5
@@ -199,7 +199,7 @@ public class ComponentContentPgcVideo
     //   356: iload_3
     //   357: aload_0
     //   358: invokevirtual 94	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:getResources	()Landroid/content/res/Resources;
-    //   361: invokestatic 201	omr:a	(ILandroid/content/res/Resources;)I
+    //   361: invokestatic 201	orc:a	(ILandroid/content/res/Resources;)I
     //   364: istore_1
     //   365: ldc 134
     //   367: iconst_2
@@ -293,7 +293,7 @@ public class ComponentContentPgcVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcVideo
  * JD-Core Version:    0.7.0.1
  */

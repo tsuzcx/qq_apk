@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class acod
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public auko a;
-  public String a;
+  public acod(Conversation paramConversation) {}
   
-  public acod(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, auko paramauko)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Auko = paramauko;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
+    }
+    Conversation.k(this.a);
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acod
  * JD-Core Version:    0.7.0.1
  */

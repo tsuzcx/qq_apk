@@ -1,241 +1,233 @@
-import android.content.Context;
+import UserGrowth.stSimpleMetaFeed;
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.1;
+import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.2;
+import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.3;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.utils.preference.PreferenceManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class oye
-  extends oxx
+  implements Manager
 {
-  private oyo jdField_a_of_type_Oyo;
-  private boolean jdField_a_of_type_Boolean;
+  private QQAppInterface a;
   
-  private BaseArticleInfo a(int paramInt)
+  public oye(QQAppInterface paramQQAppInterface)
   {
-    return a().b(paramInt);
+    this.a = paramQQAppInterface;
   }
   
-  public static void a(Context paramContext, ImageView paramImageView, qtv paramqtv)
+  private MessageRecord a(MessageRecord paramMessageRecord, String paramString, long paramLong)
   {
-    if (paramImageView == null) {
-      return;
-    }
-    ViewGroup.LayoutParams localLayoutParams = paramImageView.getLayoutParams();
-    localLayoutParams.width = ((int)omr.a(paramContext, paramqtv));
-    paramImageView.setLayoutParams(localLayoutParams);
-  }
-  
-  private static BaseArticleInfo b(oye paramoye, View paramView)
-  {
-    if ((paramoye == null) || (paramView == null) || (!(paramView.getTag() instanceof oyi))) {
+    if (paramMessageRecord == null) {
       return null;
     }
-    paramView = (oyi)paramView.getTag();
-    if (paramView != null) {
-      return paramoye.a(paramView.a());
+    MessageRecord localMessageRecord = ayvw.a(-1000);
+    MessageRecord.copyMessageRecordBaseField(localMessageRecord, paramMessageRecord);
+    localMessageRecord.msgtype = -1000;
+    a(localMessageRecord, paramString, paramLong);
+    return localMessageRecord;
+  }
+  
+  private void a(MessageRecord paramMessageRecord, String paramString, long paramLong)
+  {
+    paramMessageRecord.issend = 1;
+    paramMessageRecord.isread = true;
+    paramMessageRecord.frienduin = aljq.aQ;
+    paramMessageRecord.senderuin = aljq.aQ;
+    paramMessageRecord.istroop = 1008;
+    paramMessageRecord.msg = paramString;
+    paramMessageRecord.time = paramLong;
+    paramMessageRecord.createMessageUniseq();
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {
+      return false;
+    }
+    return TextUtils.equals(paramMessageRecord.frienduin, aljq.aQ);
+  }
+  
+  public WeishiRedDotInfo a()
+  {
+    if ((this.a == null) || (this.a.a() == null) || (this.a.a() == null)) {
+      return null;
+    }
+    if (this.a.a().a().a(aljq.aQ, 1008) > 0)
+    {
+      MessageRecord localMessageRecord = this.a.a().b(aljq.aQ, 1008);
+      if ((localMessageRecord instanceof MessageForStructing)) {
+        return new WeishiRedDotInfo((MessageForStructing)localMessageRecord);
+      }
     }
     return null;
   }
   
-  private static oyi b(View paramView)
+  public MessageForStructing a()
   {
-    if ((paramView == null) || (!(paramView.getTag() instanceof oyi))) {
+    if ((this.a == null) || (this.a.a() == null) || (this.a.a().a() == null)) {
       return null;
     }
-    return (oyi)paramView.getTag();
+    MessageRecord localMessageRecord = this.a.a().b(aljq.aQ, 1008);
+    if ((localMessageRecord instanceof MessageForStructing)) {
+      return (MessageForStructing)localMessageRecord;
+    }
+    return null;
   }
   
-  private static void b(oye paramoye, BaseArticleInfo paramBaseArticleInfo, VideoColumnInfo paramVideoColumnInfo, int paramInt, String paramString)
+  public MessageRecord a(String paramString, long paramLong)
   {
-    int k = paramoye.a().a();
-    String str = onh.c(paramBaseArticleInfo);
-    int i;
-    if (((ArticleInfo)paramBaseArticleInfo).hasChannelInfo())
-    {
-      i = paramBaseArticleInfo.mChannelInfoId;
-      if (!TextUtils.isEmpty(paramBaseArticleInfo.mArticleFriendLikeText)) {
-        break label217;
-      }
+    if (this.a == null) {
+      return null;
     }
-    label217:
-    for (int j = 0;; j = 1)
-    {
-      paramoye = new qzb(onh.a(paramBaseArticleInfo.mAlgorithmID, onh.a(paramBaseArticleInfo), 0, i, j, bbfj.h(paramoye.a()), str, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, onh.e(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
-      paramoye.h(paramBaseArticleInfo.innerUniqueID).a(k).e(paramBaseArticleInfo.mStrategyId).h(npu.a).i(409409).k(paramBaseArticleInfo.mVideoAdsJumpType).l(paramBaseArticleInfo.mVideoAdsSource).a(Boolean.valueOf(onh.w(paramBaseArticleInfo))).a(paramBaseArticleInfo.videoReportInfo).S(paramInt).r(paramString).f(paramBaseArticleInfo);
-      if (paramVideoColumnInfo != null) {
-        paramoye.ab(paramVideoColumnInfo.a);
-      }
-      nol.a(null, "", "0X8007625", "0X8007625", 0, 0, "2", "", "", paramoye.a().a(), false);
-      return;
-      i = 0;
-      break;
-    }
+    MessageRecord localMessageRecord = ayvw.a(-1000);
+    localMessageRecord.selfuin = this.a.getCurrentAccountUin();
+    a(localMessageRecord, paramString, paramLong);
+    return localMessageRecord;
   }
   
-  public int a()
+  public String a()
   {
-    return 0;
+    Object localObject = a();
+    if (localObject != null)
+    {
+      localObject = ((MessageForStructing)localObject).structingMsg;
+      if ((localObject != null) && (!TextUtils.isEmpty(((AbsStructMsg)localObject).mMsgActionData))) {
+        return ((AbsStructMsg)localObject).mMsgActionData;
+      }
+    }
+    return "";
   }
   
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public List<Long> a()
   {
-    int i = a(paramInt).intValue();
-    Object localObject;
-    rfk localrfk;
-    if ((paramView == null) || (!(paramView.getTag() instanceof oyp)))
-    {
-      localObject = a(paramInt, paramView, paramViewGroup, i);
-      paramView = ((oyp)localObject).a(paramInt, paramViewGroup);
-      ((oyp)localObject).f = paramView;
-      ((oyp)localObject).a = paramInt;
-      paramView.setTag(localObject);
-      paramView.setTag(2131368790, a());
-      paramViewGroup = new pdl(a(), a().a(), a(), a(), a().a(), a().a());
-      paramView.setTag(2131379215, paramViewGroup);
-      localrfk = new rfk(paramView);
-      paramView.setTag(2131379218, localrfk);
-      paramView.addOnAttachStateChangeListener(new oyf(this, (oyp)localObject));
+    ArrayList localArrayList = new ArrayList();
+    if ((this.a == null) || (this.a.a() == null) || (this.a.a().a() == null)) {
+      return null;
     }
-    BaseArticleInfo localBaseArticleInfo;
-    for (;;)
+    Object localObject = this.a.a().b(aljq.aQ, 1008);
+    if ((localObject instanceof MessageForStructing))
     {
-      localBaseArticleInfo = a(paramInt);
-      ((oyp)localObject).a(a());
-      if (localBaseArticleInfo != null) {
-        break;
-      }
-      QLog.w("ReadInJoyBaseAdapter", 2, "article is null, return");
-      return localrfk.a();
-      localObject = (oyp)paramView.getTag();
-      ((oyp)localObject).a = paramInt;
-      paramViewGroup = (pcx)paramView.getTag(2131379215);
-      localrfk = (rfk)paramView.getTag(2131379218);
-    }
-    long l;
-    if (i == 46)
-    {
-      l = System.currentTimeMillis();
-      a().a((oyk)localObject, localBaseArticleInfo);
-      saf.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configTwoItemVideo", System.currentTimeMillis() - l);
-    }
-    for (;;)
-    {
-      localObject = null;
-      if (paramInt < d() - 1) {
-        localObject = (ArticleInfo)a(paramInt + 1);
-      }
-      localObject = new pbf(a(), (ArticleInfo)localBaseArticleInfo, i, b(), c(), paramInt, a(), d(), (ArticleInfo)localObject, a());
-      paramView.setTag(2131379213, localObject);
-      paramViewGroup.a(localrfk, (pau)localObject, i);
-      return localrfk.a();
-      if (i == 4)
+      localObject = (MessageForStructing)localObject;
+      if ((((MessageForStructing)localObject).structingMsg != null) && (!TextUtils.isEmpty(((MessageForStructing)localObject).structingMsg.mArticleIds)))
       {
-        l = System.currentTimeMillis();
-        a().a((oyl)localObject, localBaseArticleInfo, paramInt);
-        saf.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configVideoItemUI", System.currentTimeMillis() - l);
-        if ((a() != null) && (a().a() != null) && (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo)))
+        localObject = ((MessageForStructing)localObject).structingMsg.mArticleIds.split("\\|");
+        int i = 0;
+        while (i < localObject.length)
         {
-          localObject = (AdvertisementInfo)localBaseArticleInfo;
-          a().a().a((AdvertisementInfo)localObject, a().a());
+          localArrayList.add(Long.valueOf(localObject[i]));
+          i += 1;
         }
       }
-      else if (i == 70)
-      {
-        l = System.currentTimeMillis();
-        a().a((oyr)localObject, localBaseArticleInfo, paramInt);
-        saf.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configWeishiGridTwoItemUI", System.currentTimeMillis() - l);
-      }
-      else if (i == 118)
-      {
-        a().a((oyj)localObject, localBaseArticleInfo, paramInt);
-      }
-      else if (i == 119)
-      {
-        a().a((oyl)localObject, localBaseArticleInfo, paramInt);
-        localObject = (oym)localObject;
-        ((oym)localObject).a(localBaseArticleInfo.mVideoColumnInfo);
-        ((oym)localObject).a(localBaseArticleInfo);
-        oym.a((oym)localObject).setTag(localObject);
-        oym.a((oym)localObject).setTag(localObject);
-      }
-      else if (i == 6)
-      {
-        a().a((oyh)localObject, localBaseArticleInfo, paramInt);
-      }
-      else if (i == 128)
-      {
-        a().a((oyg)localObject, localBaseArticleInfo, paramInt);
-      }
+    }
+    return localArrayList;
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    String str1 = paramstSimpleMetaFeed.id;
+    String str2 = paramstSimpleMetaFeed.feed_desc;
+    paramstSimpleMetaFeed = paramstSimpleMetaFeed.map_pass_back;
+    QLog.d("WeishiManager", 2, "id:" + str1 + ",feed_desc:" + str2);
+    QQMessageFacade localQQMessageFacade = this.a.a();
+    long l = NetConnInfoCenter.getServerTime();
+    if (localQQMessageFacade != null) {
+      ThreadManager.post(new WeishiManager.3(this, str2, l, localQQMessageFacade, str1, paramstSimpleMetaFeed), 10, null, false);
     }
   }
   
-  public Boolean a()
+  public void a(Activity paramActivity)
   {
-    if ((a().a() != null) && (a().a().a() != null) && (a().a().a().a()))
+    if (this.a == null) {}
+    Object localObject;
+    do
     {
-      a().a().a().g();
-      return Boolean.valueOf(true);
-    }
-    return super.a();
+      do
+      {
+        return;
+        localObject = this.a.a();
+      } while (localObject == null);
+      localObject = ((QQMessageFacade)localObject).a();
+    } while ((localObject == null) || (((abol)localObject).a(aljq.aQ, 1008) <= 0));
+    ThreadManager.post(new WeishiManager.1(this, paramActivity), 8, null, false);
   }
   
-  public oyp a(int paramInt1, View paramView, ViewGroup paramViewGroup, int paramInt2)
+  public void a(String paramString, long paramLong)
   {
-    paramView = a();
-    switch (paramInt2)
+    if ((TextUtils.isEmpty(paramString)) || (this.a == null)) {}
+    QQMessageFacade localQQMessageFacade;
+    do
     {
-    default: 
-      return new oyl(paramView, this);
-    case 4: 
-      return new oyl(paramView, this);
-    case 46: 
-      return new oyk(paramView, this);
-    case 70: 
-      return new oyr(paramView, this);
-    case 118: 
-      return new oyj(paramView, this);
-    case 119: 
-      return new oym(paramView, this);
-    case 6: 
-      return new oyh(paramView, this);
+      return;
+      localQQMessageFacade = this.a.a();
+    } while (localQQMessageFacade == null);
+    ThreadManager.post(new WeishiManager.2(this, localQQMessageFacade, paramString, paramLong), 10, null, false);
+  }
+  
+  public String b()
+  {
+    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_recommend_mappassback";
+  }
+  
+  public String c()
+  {
+    try
+    {
+      long l = Long.parseLong(this.a.getCurrentAccountUin());
+      String str = PreferenceManager.getDefaultPreference(this.a.getApplication(), l).getString("key_weishi_newest_feed_id", "");
+      return str;
     }
-    return new oyg(paramView, this);
-  }
-  
-  public void a(View paramView, ListView paramListView)
-  {
-    this.jdField_a_of_type_Oyo = new oyo(this, null);
-    this.jdField_a_of_type_Boolean = bhvy.d();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt == 4) || (paramInt == 46) || (paramInt == 70) || (paramInt == 118) || (paramInt == 119) || (paramInt == 6) || (paramInt == 128);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return (onh.a(a(paramInt1))) && (b() == 56) && (this.jdField_a_of_type_Boolean) && (paramInt2 == 4);
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Oyo != null) {
-      this.jdField_a_of_type_Oyo.removeCallbacksAndMessages(null);
+    catch (Exception localException)
+    {
+      localException = localException;
+      QLog.d("WeishiManager", 2, localException.getMessage(), localException);
+      return "";
     }
+    finally {}
+    return "";
+  }
+  
+  public String d()
+  {
+    try
+    {
+      long l = Long.parseLong(this.a.getCurrentAccountUin());
+      String str = PreferenceManager.getDefaultPreference(this.a.getApplication(), l).getString("key_weishi_newest_feed_desc", "");
+      return str;
+    }
+    catch (Exception localException)
+    {
+      localException = localException;
+      QLog.d("WeishiManager", 2, localException.getMessage(), localException);
+      return "";
+    }
+    finally {}
+    return "";
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oye
  * JD-Core Version:    0.7.0.1
  */

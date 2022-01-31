@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aukp;
-import aukq;
+import awbw;
+import awbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopAIONotifyItem;
 import com.tencent.qphone.base.util.QLog;
@@ -17,9 +17,9 @@ public final class TroopAioNotifyManager$2
     {
       try
       {
-        aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        int i = localaukp.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopAIONotifyItem.getTableName(), "id=?", new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopAIONotifyItem.id });
-        localaukp.a();
+        awbw localawbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+        int i = localawbw.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopAIONotifyItem.getTableName(), "id=?", new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopAIONotifyItem.id });
+        localawbw.a();
         if (QLog.isColorLevel()) {
           QLog.d(".troop.notify_feeds.data", 2, "setNotifyItemReaded, id=" + this.jdField_a_of_type_ComTencentMobileqqDataTroopAIONotifyItem.id + ", ret=" + i);
         }

@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import auko;
-import aumc;
-import tff;
+import awbv;
+import awdj;
+import utx;
 
 public class MsgTabHaloEntity
-  extends auko
+  extends awbv
 {
   public String headUrl;
   public String jumpUrl;
@@ -17,9 +17,9 @@ public class MsgTabHaloEntity
   public long recommendId;
   public long reqTimeStamp;
   public String title;
-  @aumc
+  @awdj
   public long uid;
-  @aumc
+  @awdj
   public String unionId;
   public String videoCover;
   public String videoInfoList;
@@ -29,9 +29,9 @@ public class MsgTabHaloEntity
     return "uid=?";
   }
   
-  public static String[] getSelectionArgs(tff paramtff)
+  public static String[] getSelectionArgs(utx paramutx)
   {
-    return new String[] { String.valueOf(paramtff.b) };
+    return new String[] { String.valueOf(paramutx.b) };
   }
   
   public String toString()
@@ -57,7 +57,7 @@ public class MsgTabHaloEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabHaloEntity
  * JD-Core Version:    0.7.0.1
  */

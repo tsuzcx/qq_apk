@@ -1,32 +1,52 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.av.gaudio.BaseGaInvite;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class lnq
-  implements lnr
 {
-  public lnq(BaseGaInvite paramBaseGaInvite) {}
+  static String jdField_a_of_type_JavaLangString = "smartdevice::sharp";
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+  lnp jdField_a_of_type_Lnp = null;
+  lnr jdField_a_of_type_Lnr = null;
   
-  public boolean a(Bitmap paramBitmap, String paramString)
+  public lnq(lnp paramlnp, VideoAppInterface paramVideoAppInterface)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    this.jdField_a_of_type_Lnp = paramlnp;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Lnr = new lnr(this);
+    paramlnp = new IntentFilter();
+    paramlnp.addAction("SmartDevice_ReceiveSharpMsg");
+    paramlnp.addAction("SmartDevice_ReceiveSharpAckMsg");
+    paramlnp.addAction("SmartDevice_DeviceUnBindRst");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Lnr, paramlnp, "com.tencent.smartdevice.permission.broadcast", null);
+  }
+  
+  void a(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "send broadcast : smartdevice send sharp msg");
     }
-    for (boolean bool = true;; bool = false)
-    {
-      if (this.a.jdField_b_of_type_AndroidWidgetTextView != null)
-      {
-        paramBitmap = BaseGaInvite.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.jdField_b_of_type_AndroidWidgetTextView, paramString, this.a.jdField_b_of_type_Int, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_ArrayOfLong);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBitmap);
-      }
-      return bool;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("size", paramArrayOfByte.length);
+    localBundle.putLong("uin", paramLong);
+    localBundle.putByteArray("value", paramArrayOfByte);
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.putExtra("msgData", localBundle);
+    paramArrayOfByte.setAction("SmartDevice_SendSharpMsg");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramArrayOfByte, "com.tencent.smartdevice.permission.broadcast");
+  }
+  
+  public void b(byte[] paramArrayOfByte, long paramLong)
+  {
+    a(paramArrayOfByte, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnq
  * JD-Core Version:    0.7.0.1
  */

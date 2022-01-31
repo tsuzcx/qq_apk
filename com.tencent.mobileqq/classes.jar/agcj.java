@@ -1,37 +1,32 @@
-import android.os.Handler;
+import android.os.Handler.Callback;
 import android.os.Message;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.widget.ListView;
+import com.tencent.widget.XPanelContainer;
 
-class agcj
-  implements agce
+public class agcj
+  implements Handler.Callback
 {
-  agcj(agcf paramagcf) {}
+  public agcj(PEPanel paramPEPanel) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-  }
-  
-  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
-  {
-    boolean bool = true;
-    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    ((Message)localObject).obj = paramRedTypeInfo;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-    localObject = osx.a();
-    if (paramRedTypeInfo != null) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      ((osx)localObject).b(bool);
-      return;
-      bool = false;
+    default: 
+      return false;
     }
+    PEPanel.a(this.a).setVisibility(0);
+    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
+    paramMessage.setDuration(200L);
+    PEPanel.a(this.a).startAnimation(paramMessage);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcj
  * JD-Core Version:    0.7.0.1
  */

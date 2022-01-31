@@ -1,51 +1,38 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.13;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.13.1;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class atpo
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public atpo(NearbyProfileDisplayPanel.13.1 param1) {}
+  public atpo(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (TextUtils.isEmpty(atpk.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel$13.this$0).strGodJumpUrl)) {
-      return;
+    PoiSlideBottomPanel.c(this.a, false);
+    if (PoiSlideBottomPanel.e(this.a) != null) {
+      PoiSlideBottomPanel.f(this.a).displayPanelFinish();
     }
-    paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel$13.this$0.a, QQBrowserActivity.class);
-    Object localObject = new StringBuilder().append(atpk.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel$13.this$0).strGodJumpUrl).append("&gender=");
-    int i;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null)
-    {
-      i = 0;
-      paramView.putExtra("url", i);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel$13.this$0.a.startActivity(paramView);
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel$13.this$0.a.app;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel$13.this$0.a.e != 2) {
-        break label202;
-      }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.b(this.a, false);
+    if (PoiSlideBottomPanel.c(this.a) != null) {
+      PoiSlideBottomPanel.d(this.a).displayPanelFinish();
     }
-    label202:
-    for (paramView = "1";; paramView = "2")
-    {
-      axqy.b((QQAppInterface)localObject, "dc00899", "grp_lbs", "", "rank_list", "clk_icon", 0, 0, paramView, "", "", "");
-      return;
-      i = this.a.jdField_a_of_type_ComTencentMobileqqDataCard.shGender + 1;
-      break;
-    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atpo
  * JD-Core Version:    0.7.0.1
  */

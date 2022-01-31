@@ -1,38 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ajit
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animator.AnimatorListener
 {
-  public ajit(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
+  public ajit(LoginView paramLoginView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
-        break label42;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajiq.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-    }
-    label42:
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajiq.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajiq.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+    LoginView.c(this.a, false);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    LoginView.c(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajit
  * JD-Core Version:    0.7.0.1
  */

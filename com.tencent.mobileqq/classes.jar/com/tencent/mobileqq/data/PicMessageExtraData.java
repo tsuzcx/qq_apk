@@ -21,6 +21,7 @@ public class PicMessageExtraData
   public String iconUrl;
   public int imageBizType;
   public String mTemplateId;
+  public String mTemplateName;
   public String packageName;
   public String source;
   public EmojiStickerManager.StickerInfo stickerInfo;
@@ -46,6 +47,7 @@ public class PicMessageExtraData
     this.iconUrl = paramResvAttr.string_emoji_iconUrl.get();
     this.packageName = paramResvAttr.string_emoji_marketFaceName.get();
     this.mTemplateId = paramResvAttr.string_camera_capture_templateinfo.get();
+    this.mTemplateName = paramResvAttr.string_camera_capture_materialname.get();
   }
   
   public PicMessageExtraData(NotOnlineImageExtPb.ResvAttr paramResvAttr)
@@ -64,6 +66,7 @@ public class PicMessageExtraData
     this.iconUrl = paramResvAttr.string_emoji_iconUrl.get();
     this.packageName = paramResvAttr.string_emoji_marketFaceName.get();
     this.mTemplateId = paramResvAttr.string_camera_capture_templateinfo.get();
+    this.mTemplateName = paramResvAttr.string_camera_capture_materialname.get();
   }
   
   public CustomFaceExtPb.ResvAttr getCustomFaceResvAttr()
@@ -110,6 +113,9 @@ public class PicMessageExtraData
     if (!TextUtils.isEmpty(this.mTemplateId)) {
       localResvAttr.string_camera_capture_templateinfo.set(this.mTemplateId);
     }
+    if (!TextUtils.isEmpty(this.mTemplateName)) {
+      localResvAttr.string_camera_capture_materialname.set(this.mTemplateName);
+    }
     return localResvAttr;
   }
   
@@ -154,6 +160,9 @@ public class PicMessageExtraData
     if (!TextUtils.isEmpty(this.mTemplateId)) {
       localResvAttr.string_camera_capture_templateinfo.set(this.mTemplateId);
     }
+    if (!TextUtils.isEmpty(this.mTemplateName)) {
+      localResvAttr.string_camera_capture_materialname.set(this.mTemplateName);
+    }
     return localResvAttr;
   }
   
@@ -189,7 +198,7 @@ public class PicMessageExtraData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PicMessageExtraData
  * JD-Core Version:    0.7.0.1
  */

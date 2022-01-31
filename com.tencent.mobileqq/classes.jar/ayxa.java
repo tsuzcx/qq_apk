@@ -1,36 +1,18 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayxa
-  extends aywx
-  implements ayww
+class ayxa
+  implements aadk
 {
-  String a;
+  ayxa(aywz paramaywz, int paramInt) {}
   
-  public ayxa(String paramString)
+  public void a(int paramInt, String paramString)
   {
-    this.a = paramString;
-  }
-  
-  public Bitmap a(Bitmap paramBitmap)
-  {
-    int i = aywm.a(this.a);
-    if (i == 0) {
-      return b(paramBitmap);
-    }
-    Object localObject = new Matrix();
-    ((Matrix)localObject).setRotate(i, paramBitmap.getWidth() / 2.0F, paramBitmap.getHeight() / 2.0F);
-    localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
-    if ((localObject == null) || (localObject == paramBitmap)) {
-      throw new OutOfMemoryError("OOM");
-    }
-    paramBitmap.recycle();
-    return b((Bitmap)localObject);
+    QLog.i("Q.lebatab.GameCenterManagerImp", 1, "on push code=" + paramInt + " cmd=" + this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayxa
  * JD-Core Version:    0.7.0.1
  */

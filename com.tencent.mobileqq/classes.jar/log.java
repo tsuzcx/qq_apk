@@ -1,45 +1,126 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.av.doodle.DoodleSurfaceView;
 
 public class log
-  extends BroadcastReceiver
 {
-  public log(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public static boolean a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
+  }
+  
+  public static int a(int[] paramArrayOfInt, float paramFloat)
+  {
+    if (paramFloat <= 0.0F) {
+      return paramArrayOfInt[0];
+    }
+    if (paramFloat >= 1.0F) {
+      return paramArrayOfInt[(paramArrayOfInt.length - 1)];
+    }
+    paramFloat = (paramArrayOfInt.length - 1) * paramFloat;
+    int j = (int)paramFloat;
+    paramFloat -= j;
+    int i = paramArrayOfInt[j];
+    j = paramArrayOfInt[(j + 1)];
+    return Color.argb(a(Color.alpha(i), Color.alpha(j), paramFloat), a(Color.red(i), Color.red(j), paramFloat), a(Color.green(i), Color.green(j), paramFloat), a(Color.blue(i), Color.blue(j), paramFloat));
+  }
+  
+  public static DoodleSurfaceView a(ViewGroup paramViewGroup)
+  {
+    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131372598);
+    Object localObject1 = localObject2;
+    View localView;
+    if (localObject2 == null)
     {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (paramContext.equals("homekey")))
-      {
-        axqy.b(null, "CliOper", "", "", "0X8004210", "0X8004210", 0, 0, "", "", "", "");
-        this.a.c(-1038L);
+      localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
+      localObject2 = new ViewGroup.LayoutParams(-1, -1);
+      localView = paramViewGroup.findViewById(2131372891);
+      if (localView == null) {
+        break label67;
       }
     }
-    boolean bool;
-    do
+    label67:
+    for (int i = paramViewGroup.indexOfChild(localView);; i = -1)
     {
-      do
-      {
-        return;
-      } while (!paramContext.equals("android.intent.action.SCREEN_OFF"));
-      bool = VideoController.a(this.a);
-      if (bool) {
-        axqy.b(null, "CliOper", "", "", "0X800420C", "0X800420C", 0, 0, "", "", "", "");
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w(this.a.b, 1, "ACTION_SCREEN_OFF, isScreenLocked[" + bool + "]");
+      paramViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
+      return localObject1;
+    }
+  }
+  
+  public static lob a(int paramInt)
+  {
+    Object localObject;
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      localObject = new loh();
+    }
+    for (;;)
+    {
+      ((lob)localObject).a = paramInt;
+      return localObject;
+      localObject = new loh();
+      continue;
+      localObject = new lom(2130968654);
+    }
+  }
+  
+  public static void a(ViewGroup paramViewGroup)
+  {
+    View localView = paramViewGroup.findViewById(2131372598);
+    if (localView != null) {
+      paramViewGroup.removeView(localView);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    azmj.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static boolean a()
+  {
+    if (a) {
+      return true;
+    }
+    if (!b()) {
+      return false;
+    }
+    a = true;
+    return a;
+  }
+  
+  public static boolean b()
+  {
+    int i = lnz.e();
+    if (i < 4)
+    {
+      lek.c("DoodleUtils", "isSupportOfDevice error cpucount = " + i);
+      return false;
+    }
+    long l = lnz.d();
+    if (l < 1400000L)
+    {
+      lek.c("DoodleUtils", "isSupportOfDevice error cpuFrequency = " + l);
+      return false;
+    }
+    l = bdcb.d();
+    if (l < 1073741824L)
+    {
+      lek.c("DoodleUtils", "isSupportOfDevice error memory = " + l);
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     log
  * JD-Core Version:    0.7.0.1
  */

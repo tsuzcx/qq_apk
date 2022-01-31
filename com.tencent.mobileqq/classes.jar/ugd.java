@@ -1,31 +1,28 @@
-import android.graphics.drawable.Drawable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-final class ugd
-  implements URLDrawable.URLDrawableListener
+class ugd
+  implements Animation.AnimationListener
 {
-  ugd(ImageView paramImageView, Drawable paramDrawable) {}
+  ugd(ugc paramugc) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ved.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.b.setVisibility(8);
+    this.a.d.setVisibility(8);
+    this.a.g.setVisibility(8);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,84 +1,34 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONObject;
 
-class pkj
-  extends LinearLayout
+public class pkj
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g = -16777216;
-  
-  public pkj(Context paramContext)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramContext);
-    setWillNotDraw(false);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.e = paramInt;
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Int != 0)
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      VirtualViewUtils.drawBackground(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
-    }
-    super.onDraw(paramCanvas);
-    if (this.f > 0)
-    {
-      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      }
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
-      VirtualViewUtils.drawBorder(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
-    }
-  }
-  
-  public void setBackgroundColor(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    JSONObject localJSONObject1 = new JSONObject();
+    pkm.v(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_summary_wrapper", new JSONObject());
+    localJSONObject1.put("id_info_wrapper", new JSONObject());
+    pkm.b(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_multi_image", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", alpo.a(2131713407));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    pkm.a(paramBaseArticleInfo, localJSONObject1, true);
+    pkm.e(paramBaseArticleInfo, localJSONObject1);
+    pkm.l(paramBaseArticleInfo, localJSONObject1);
+    pkm.B(paramBaseArticleInfo, localJSONObject1);
+    pkm.C(paramBaseArticleInfo, localJSONObject1);
+    pkm.b(localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_multi_cell");
+    return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pkj
  * JD-Core Version:    0.7.0.1
  */

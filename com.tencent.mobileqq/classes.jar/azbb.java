@@ -1,27 +1,44 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.hardware.Camera.PreviewCallback;
+import android.media.Image;
+import android.media.Image.Plane;
+import android.media.ImageReader;
+import android.media.ImageReader.OnImageAvailableListener;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import java.nio.ByteBuffer;
 
 public class azbb
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements ImageReader.OnImageAvailableListener
 {
-  public azbb(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public azbb(Camera2Control paramCamera2Control) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onImageAvailable(ImageReader paramImageReader)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onError");
+    try
+    {
+      paramImageReader = paramImageReader.acquireNextImage();
+      if (paramImageReader != null)
+      {
+        Camera.PreviewCallback localPreviewCallback = Camera2Control.a(this.a);
+        if (localPreviewCallback != null)
+        {
+          ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
+          byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
+          localByteBuffer.get(arrayOfByte);
+          localPreviewCallback.onPreviewFrame(arrayOfByte, null);
+        }
+        paramImageReader.close();
+      }
+      return;
     }
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.1(this));
-    return false;
+    catch (Exception paramImageReader)
+    {
+      azbl.a(1, "[Camera2] onImageAvailable mPreviewReader exception:" + paramImageReader);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azbb
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,6 @@
             <ImageButton android:layout_gravity="center_vertical" android:id="@id/ai3" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/cce" android:scaleType="fitXY" android:contentDescription="@string/a78" />
             <Button android:textSize="@dimen/aze" android:textStyle="bold" android:textColor="@color/ahm" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/aiz" android:background="@null" android:layout_width="40.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/a7_" android:singleLine="true" android:imeOptions="actionSend" />
         </LinearLayout>
-        <com.tencent.biz.subscribe.comment.EmoView android:id="@id/bul" android:background="@color/al3" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="230.0dip" />
+        <include android:id="@id/bul" layout="@layout/n0" />
     </LinearLayout>
 </ScrollView>

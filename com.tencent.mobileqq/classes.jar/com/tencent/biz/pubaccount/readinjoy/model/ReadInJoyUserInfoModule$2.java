@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pbj;
+import pgu;
 
 class ReadInJoyUserInfoModule$2
   implements Runnable
@@ -27,7 +27,7 @@ class ReadInJoyUserInfoModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.2
  * JD-Core Version:    0.7.0.1
  */

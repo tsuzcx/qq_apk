@@ -1,45 +1,62 @@
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryUploadProgressView.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import mqq.os.MqqHandler;
 
 public class wpo
-  extends StaggeredGridLayoutManager
+  implements ukr
 {
-  public wpo(int paramInt1, int paramInt2)
+  public MessageProgressView a;
+  private String a;
+  
+  public wpo(MessageProgressView paramMessageProgressView)
   {
-    super(paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
   }
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  private void b(String paramString, int paramInt)
   {
-    try
-    {
-      super.onLayoutChildren(paramRecycler, paramState);
-      return;
-    }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(xod.a(this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getContext(), 8.0F), false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(paramInt);
+  }
+  
+  public void a(bemn parambemn)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(parambemn);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    b(paramString, paramInt);
+    if (paramInt >= 100) {
+      ThreadManager.getUIHandler().postDelayed(new StoryUploadProgressView.1(this), 500L);
     }
   }
   
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public boolean a()
   {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-    return 0;
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(this.jdField_a_of_type_JavaLangString + "_" + hashCode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpo
  * JD-Core Version:    0.7.0.1
  */

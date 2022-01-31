@@ -20,6 +20,32 @@ public class TriggerUtil
   public static final int ABSOLUTE_LOCATION = 1;
   public static final int BODY_LOCATION = 5;
   public static final int FACE_LOCATION = 2;
+  private static final float HAND_LABEL_FINGER_CONF_VALUE = 0.0F;
+  
+  private static float calAngle(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3)
+  {
+    float f1 = 0.0F;
+    float f2 = paramPointF2.x - paramPointF1.x;
+    float f3 = paramPointF2.y - paramPointF1.y;
+    float f4 = paramPointF3.x - paramPointF1.x;
+    float f5 = paramPointF3.y - paramPointF1.y;
+    float f6 = (f2 * f2 + f3 * f3) * (f4 * f4 + f5 * f5);
+    if (f6 == 0.0F) {}
+    do
+    {
+      do
+      {
+        return f1;
+        f2 = (float)((f2 * f4 + f3 * f5) / Math.sqrt(f6));
+      } while (f2 >= 1.0D);
+      if (f2 <= -1.0D) {
+        return 180.0F;
+      }
+      f2 = (float)Math.acos(f2) / 3.141593F * 180.0F;
+      f1 = f2;
+    } while (f2 <= 180.0D);
+    return 360.0F - f2;
+  }
   
   private static boolean hasOverlay(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
   {
@@ -52,21 +78,170 @@ public class TriggerUtil
     }
   }
   
-  public static boolean isGestureTriggered(PTHandAttr paramPTHandAttr, int paramInt)
+  private static boolean isAllFingerTriggered(List<PointF> paramList, float paramFloat)
   {
-    return isGestureTriggered(paramPTHandAttr, paramInt, 0, null, null);
-  }
-  
-  public static boolean isGestureTriggered(PTHandAttr paramPTHandAttr, int paramInt1, int paramInt2, ArrayList<StickerItem.TriggerArea> paramArrayList, AIAttr paramAIAttr)
-  {
-    if (paramPTHandAttr == null) {}
-    for (;;)
+    int i = 1;
+    while (i <= 5)
     {
-      return false;
-      if ((paramArrayList != null) && (paramArrayList.size() > 0)) {}
-      for (int i = 1; ((i == 0) || (isHotAreaTriggered(paramAIAttr, paramInt2, paramArrayList))) && (((200 <= paramInt1) && (paramInt1 <= 212) && (paramPTHandAttr.getHandType() == paramInt1)) || ((paramPTHandAttr.getHandPointList() != null) && (paramPTHandAttr.getHandPointList().size() != 0) && (paramInt1 == 200)) || (paramInt1 == PTFaceAttr.PTExpression.ALWAYS.value)); i = 0) {
+      if (isSingleFingerTriggered(i, paramList, paramFloat)) {
         return true;
       }
+      i += 1;
+    }
+    return false;
+  }
+  
+  private static boolean isFinger4Point(float paramFloat, int paramInt, PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
+  {
+    float f3;
+    float f2;
+    float f1;
+    if (paramFloat >= 0.0F)
+    {
+      paramFloat = calAngle(paramPointF1, paramPointF2, paramPointF3);
+      f3 = calAngle(paramPointF1, paramPointF3, paramPointF4);
+      f2 = calAngle(paramPointF2, paramPointF3, paramPointF4);
+      f1 = calAngle(paramPointF1, paramPointF2, paramPointF4);
+      if (0.0F >= paramFloat) {
+        break label113;
+      }
+    }
+    for (;;)
+    {
+      if (paramFloat < f3) {
+        paramFloat = f3;
+      }
+      for (;;)
+      {
+        if (paramFloat < f2) {
+          paramFloat = f2;
+        }
+        for (;;)
+        {
+          if (paramFloat < f1) {
+            paramFloat = f1;
+          }
+          for (;;)
+          {
+            if ((paramInt == 2) && (paramFloat > 10.0F)) {}
+            while (paramFloat > 20.0F) {
+              return true;
+            }
+            return false;
+            return false;
+          }
+        }
+      }
+      label113:
+      paramFloat = 0.0F;
+    }
+  }
+  
+  private static boolean isFingerTriggerd(int paramInt, PTHandAttr paramPTHandAttr)
+  {
+    if ((paramPTHandAttr == null) || (paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() == 0)) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while ((!isHandBoxValid(paramPTHandAttr)) || (isHandBoxLeftOutOfRange(paramPTHandAttr)) || (isHandBoxRightOutOfRange(paramPTHandAttr)));
+      if (paramInt == 0) {
+        return isAllFingerTriggered(paramPTHandAttr.getHandPointList(), paramPTHandAttr.getConfidence());
+      }
+    } while ((paramInt <= 0) || (paramInt > 5));
+    return isSingleFingerTriggered(paramInt, paramPTHandAttr.getHandPointList(), paramPTHandAttr.getConfidence());
+  }
+  
+  public static boolean isGestureTriggered(PTHandAttr paramPTHandAttr, int paramInt)
+  {
+    return isGestureTriggered(paramPTHandAttr, paramInt, 0, 0, null, null);
+  }
+  
+  public static boolean isGestureTriggered(PTHandAttr paramPTHandAttr, int paramInt1, int paramInt2, int paramInt3, ArrayList<StickerItem.TriggerArea> paramArrayList, AIAttr paramAIAttr)
+  {
+    if (paramPTHandAttr == null) {}
+    label57:
+    do
+    {
+      for (;;)
+      {
+        return false;
+        if ((paramArrayList != null) && (paramArrayList.size() > 0)) {}
+        for (int i = 1; (i == 0) || (isHotAreaTriggered(paramAIAttr, paramInt2, paramArrayList)); i = 0)
+        {
+          if (paramInt1 != 220) {
+            break label57;
+          }
+          return isFingerTriggerd(paramInt3, paramPTHandAttr);
+        }
+      }
+    } while (((200 > paramInt1) || (paramInt1 > 212) || (paramPTHandAttr.getHandType() != paramInt1)) && ((paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() == 0) || (paramInt1 != 200)) && (paramInt1 != PTFaceAttr.PTExpression.ALWAYS.value));
+    return true;
+  }
+  
+  private static boolean isHandBoxLeftOutOfRange(PTHandAttr paramPTHandAttr)
+  {
+    if ((paramPTHandAttr == null) || (paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() < 30)) {
+      return false;
+    }
+    float f2 = ((PointF)paramPTHandAttr.getHandPointList().get(1)).x;
+    float f1 = 10000.0F;
+    int i = 9;
+    if (i < 30)
+    {
+      if (((PointF)paramPTHandAttr.getHandPointList().get(i)).x >= f1) {
+        break label114;
+      }
+      f1 = ((PointF)paramPTHandAttr.getHandPointList().get(i)).x;
+    }
+    label114:
+    for (;;)
+    {
+      i += 1;
+      break;
+      return f1 - f2 < 5.0F;
+    }
+  }
+  
+  private static boolean isHandBoxRightOutOfRange(PTHandAttr paramPTHandAttr)
+  {
+    if ((paramPTHandAttr == null) || (paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() < 30)) {
+      return false;
+    }
+    float f2 = ((PointF)paramPTHandAttr.getHandPointList().get(8)).x;
+    float f1 = 0.0F;
+    int i = 9;
+    if (i < 30)
+    {
+      if (((PointF)paramPTHandAttr.getHandPointList().get(i)).x <= f1) {
+        break label114;
+      }
+      f1 = ((PointF)paramPTHandAttr.getHandPointList().get(i)).x;
+    }
+    label114:
+    for (;;)
+    {
+      i += 1;
+      break;
+      return f2 - f1 < 5.0F;
+    }
+  }
+  
+  private static boolean isHandBoxValid(PTHandAttr paramPTHandAttr)
+  {
+    if ((paramPTHandAttr == null) || (paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() < 30)) {}
+    float f1;
+    float f2;
+    do
+    {
+      return false;
+      f1 = ((PointF)paramPTHandAttr.getHandPointList().get(8)).x - ((PointF)paramPTHandAttr.getHandPointList().get(1)).x;
+      f2 = ((PointF)paramPTHandAttr.getHandPointList().get(8)).y - ((PointF)paramPTHandAttr.getHandPointList().get(1)).y;
+    } while ((f1 <= 0.01F) || (f2 <= 0.01F));
+    if ((f1 / f2 >= 0.5F) && (f2 / f1 >= 0.5F)) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
   
@@ -355,6 +530,52 @@ public class TriggerUtil
       paramAIAttr = (AIAttr)localObject1;
       localObject1 = localObject2;
     }
+  }
+  
+  private static boolean isSingleFingerTriggered(int paramInt, List<PointF> paramList, float paramFloat)
+  {
+    if (paramList == null) {}
+    while ((paramList.size() < 30) || (paramInt < 1) || (paramInt > 5)) {
+      return false;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 1: 
+      return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(10), (PointF)paramList.get(11), (PointF)paramList.get(12), (PointF)paramList.get(13));
+    case 2: 
+      return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(14), (PointF)paramList.get(15), (PointF)paramList.get(16), (PointF)paramList.get(17));
+    case 3: 
+      return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(18), (PointF)paramList.get(19), (PointF)paramList.get(20), (PointF)paramList.get(21));
+    case 4: 
+      return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(22), (PointF)paramList.get(23), (PointF)paramList.get(24), (PointF)paramList.get(25));
+    }
+    return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(26), (PointF)paramList.get(27), (PointF)paramList.get(28), (PointF)paramList.get(29));
+  }
+  
+  public static boolean isTouchAreaTriggered(ArrayList<StickerItem.TriggerArea> paramArrayList, PointF paramPointF)
+  {
+    if (paramArrayList == null) {
+      return false;
+    }
+    if (paramArrayList.size() < 1) {
+      return false;
+    }
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      float[] arrayOfFloat = ((StickerItem.TriggerArea)paramArrayList.next()).rect;
+      if ((arrayOfFloat != null) && (arrayOfFloat.length >= 4) && (arrayOfFloat[0] <= paramPointF.x) && (paramPointF.x <= arrayOfFloat[0] + arrayOfFloat[2]) && (arrayOfFloat[1] <= paramPointF.y))
+      {
+        float f1 = paramPointF.y;
+        float f2 = arrayOfFloat[1];
+        if (f1 <= arrayOfFloat[3] + f2) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }
 

@@ -11,12 +11,12 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
-import baww;
-import bcks;
-import bckt;
-import bcku;
-import bckv;
-import bckw;
+import bcvq;
+import bejt;
+import beju;
+import bejv;
+import bejw;
+import bejx;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
@@ -28,9 +28,9 @@ public class ConfigClearableEditText
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   public Drawable a;
-  bcku jdField_a_of_type_Bcku;
-  private bckv jdField_a_of_type_Bckv;
-  public bckw a;
+  bejv jdField_a_of_type_Bejv;
+  private bejw jdField_a_of_type_Bejw;
+  public bejx a;
   public boolean a;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -60,8 +60,8 @@ public class ConfigClearableEditText
     try
     {
       a(paramContext, paramAttributeSet);
-      this.jdField_a_of_type_Bcku = new bcku(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bcku);
+      this.jdField_a_of_type_Bejv = new bejv(this, this);
+      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bejv);
       ViewCompat.setImportantForAccessibility(this, 1);
       return;
     }
@@ -76,8 +76,8 @@ public class ConfigClearableEditText
   
   private int a()
   {
-    if (this.jdField_a_of_type_Bckv != null) {
-      return getWidth() - this.jdField_a_of_type_Bckv.a();
+    if (this.jdField_a_of_type_Bejw != null) {
+      return getWidth() - this.jdField_a_of_type_Bejw.a();
     }
     return getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
   }
@@ -100,7 +100,7 @@ public class ConfigClearableEditText
       this.j = paramContext.getBoolean(4, false);
       paramContext.recycle();
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839266);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839355);
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
@@ -112,8 +112,8 @@ public class ConfigClearableEditText
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         setClearButtonVisible(false);
       }
-      setOnTouchListener(new bcks(this));
-      addTextChangedListener(new bckt(this));
+      setOnTouchListener(new bejt(this));
+      addTextChangedListener(new beju(this));
       return;
     }
     finally
@@ -164,14 +164,14 @@ public class ConfigClearableEditText
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
     if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getX() > a())) {
-      return this.jdField_a_of_type_Bcku.dispatchHoverEvent(paramMotionEvent);
+      return this.jdField_a_of_type_Bejv.dispatchHoverEvent(paramMotionEvent);
     }
     return super.dispatchHoverEvent(paramMotionEvent);
   }
   
   public void onDetachedFromWindow()
   {
-    if ((QLog.isColorLevel()) && (AppSetting.e))
+    if ((QLog.isColorLevel()) && (AppSetting.d))
     {
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("onDetachedFromWindow ");
@@ -236,16 +236,16 @@ public class ConfigClearableEditText
     if (paramBoolean)
     {
       localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (this.jdField_a_of_type_Bckv == null) {
+      if (this.jdField_a_of_type_Bejw == null) {
         break label97;
       }
-      this.jdField_a_of_type_Bckv.a(paramBoolean);
+      this.jdField_a_of_type_Bejw.a(paramBoolean);
       setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
     }
     for (;;)
     {
       if (this.jdField_b_of_type_Boolean != paramBoolean) {
-        baww.a(this);
+        bcvq.a(this);
       }
       this.jdField_b_of_type_Boolean = paramBoolean;
       return;
@@ -258,7 +258,7 @@ public class ConfigClearableEditText
   
   public void setCursorVisible(boolean paramBoolean)
   {
-    if ((QLog.isColorLevel()) && (AppSetting.e) && (this.jdField_a_of_type_Boolean))
+    if ((QLog.isColorLevel()) && (AppSetting.d) && (this.jdField_a_of_type_Boolean))
     {
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("setCursorVisible=");
@@ -274,14 +274,14 @@ public class ConfigClearableEditText
     super.setCursorVisible(paramBoolean);
   }
   
-  public void setCustomClearButtonCallback(bckv parambckv)
+  public void setCustomClearButtonCallback(bejw parambejw)
   {
-    this.jdField_a_of_type_Bckv = parambckv;
+    this.jdField_a_of_type_Bejw = parambejw;
   }
   
-  public void setTextClearedListener(bckw parambckw)
+  public void setTextClearedListener(bejx parambejx)
   {
-    this.jdField_a_of_type_Bckw = parambckw;
+    this.jdField_a_of_type_Bejx = parambejx;
   }
 }
 

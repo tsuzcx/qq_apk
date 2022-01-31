@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.widget.TextView;
-import auhk;
-import bbpm;
+import avyo;
+import bdog;
 import com.tencent.qphone.base.util.QLog;
 
 public class AccountPanel$17
   implements Runnable
 {
-  public AccountPanel$17(auhk paramauhk, TextView paramTextView) {}
+  public AccountPanel$17(avyo paramavyo, TextView paramTextView) {}
   
   public void run()
   {
-    this.a.setText(bbpm.a().a());
+    this.a.setText(bdog.a().a());
     if (QLog.isDevelopLevel()) {
       QLog.d("CustomOnlineStatusManager", 4, "panel -> updateCustomOnlineStatus text");
     }
@@ -20,7 +20,7 @@ public class AccountPanel$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.17
  * JD-Core Version:    0.7.0.1
  */

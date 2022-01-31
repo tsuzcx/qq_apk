@@ -1,30 +1,103 @@
 import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class afio
-  implements mxx
+class afio
+  extends bdqc
 {
-  public afio(GroupSearchRecommendView paramGroupSearchRecommendView) {}
+  afio(afij paramafij) {}
   
-  public void a()
+  protected void onPokeAuth(boolean paramBoolean, Object paramObject)
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+    Object localObject = (Bundle)paramObject;
+    if (1 != ((Bundle)localObject).getInt("fromType")) {
       return;
     }
-    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
-  }
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
+    int j = ((Bundle)localObject).getInt("id");
+    int i = ((Bundle)localObject).getInt("feeType");
+    String str1 = "free";
+    if (4 == i)
+    {
+      str1 = "vip";
+      label48:
+      if (!paramBoolean) {
+        break label161;
+      }
+      paramObject = ((Bundle)localObject).getString("name");
+      localObject = ((Bundle)localObject).getString("minVersion");
+      acex.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 126, j, paramObject, (String)localObject);
+      if (true == afsw.a) {
+        afsw.a = false;
+      }
+      label107:
+      if (!paramBoolean) {
+        break label422;
+      }
     }
-    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
+    label161:
+    label420:
+    label422:
+    for (i = 0;; i = 1)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (5 != i) {
+        break label48;
+      }
+      str1 = "svip";
+      break label48;
+      long l = ((Bundle)localObject).getLong("result");
+      localObject = ((Bundle)localObject).getString("msg");
+      paramObject = (Bundle)paramObject;
+      this.a.c = paramObject.getInt("id", 0);
+      String str2 = alpo.a(2131705656);
+      if (l == 0L)
+      {
+        this.a.d = 1;
+        if (true != afsw.a) {
+          break;
+        }
+        afsw.a = false;
+        return;
+      }
+      if (l == 4002L)
+      {
+        this.a.d = 2;
+        paramObject = alpo.a(2131705661);
+        localObject = str2;
+      }
+      for (;;)
+      {
+        if (l == 0L) {
+          break label420;
+        }
+        afsw.a(this.a.b, (Activity)this.a.jdField_a_of_type_AndroidContentContext, paramObject, (String)localObject, this.a.c, this.a.d);
+        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+        break;
+        if (l == 5002L)
+        {
+          this.a.d = 4;
+          paramObject = alpo.a(2131705660);
+          localObject = str2;
+        }
+        else
+        {
+          this.a.d = 1;
+          str2 = alpo.a(2131705659);
+          QLog.e("GivingHeart", 1, "vas poke auth fail, result: " + l);
+          paramObject = localObject;
+          localObject = str2;
+        }
+      }
+      break label107;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afio
  * JD-Core Version:    0.7.0.1
  */

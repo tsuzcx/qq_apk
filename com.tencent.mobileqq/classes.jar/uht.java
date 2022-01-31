@@ -1,21 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
 public class uht
-  extends uaf
 {
-  public uht(uhs paramuhs) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public static Dispatcher a()
   {
-    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
-      this.a.a.b().finish();
-    }
+    return Dispatchers.get(ThreadManager.getSubThreadLooper());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uht
  * JD-Core Version:    0.7.0.1
  */

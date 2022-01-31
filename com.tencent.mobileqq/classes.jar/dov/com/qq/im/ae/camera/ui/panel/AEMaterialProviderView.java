@@ -8,17 +8,17 @@ import android.view.LayoutInflater;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnScrollChangedListener;
 import android.widget.FrameLayout;
-import axgl;
-import bios;
-import biot;
-import bira;
-import birb;
-import bire;
-import bjal;
-import bjav;
-import bjdt;
-import bjlq;
-import bjlr;
+import azbr;
+import bktm;
+import bktn;
+import bkvq;
+import bkvr;
+import bkvu;
+import bllv;
+import blmf;
+import blpe;
+import blxa;
+import blxb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQViewPager;
@@ -28,50 +28,50 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.os.MqqHandler;
-import vzw;
+import xoo;
 
 public class AEMaterialProviderView
   extends FrameLayout
-  implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnScrollChangedListener, axgl, bjlq
+  implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnScrollChangedListener, azbr, blxa
 {
   private int jdField_a_of_type_Int = 1;
-  private bios jdField_a_of_type_Bios;
-  private birb jdField_a_of_type_Birb;
-  public bjdt a;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bjal.a();
+  private bktm jdField_a_of_type_Bktm;
+  private bkvr jdField_a_of_type_Bkvr;
+  public blpe a;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bllv.a();
   private QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   private AEMaterialTabAdapter jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter;
   private QIMSlidingTabView jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView;
-  private List<bira> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private List<bkvq> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b;
   
-  public AEMaterialProviderView(Context paramContext, bios parambios)
+  public AEMaterialProviderView(Context paramContext, bktm parambktm)
   {
     super(paramContext);
-    this.jdField_a_of_type_Bjdt = new biot(this);
-    this.jdField_a_of_type_Bios = parambios;
+    this.jdField_a_of_type_Blpe = new bktn(this);
+    this.jdField_a_of_type_Bktm = parambktm;
     c();
   }
   
-  private ArrayList<bjlr> a()
+  private ArrayList<blxb> a()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      bira localbira = (bira)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localbira == null) {}
+      bkvq localbkvq = (bkvq)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localbkvq == null) {}
       for (;;)
       {
         i += 1;
         break;
-        if (-1 == localbira.jdField_a_of_type_Int) {
+        if (-1 == localbkvq.jdField_a_of_type_Int) {
           this.jdField_a_of_type_Int = i;
         }
-        bjlr localbjlr = new bjlr();
-        localbjlr.a = localbira.b;
-        localArrayList.add(localbjlr);
+        blxb localblxb = new blxb();
+        localblxb.a = localbkvq.b;
+        localArrayList.add(localblxb);
       }
     }
     return localArrayList;
@@ -79,18 +79,18 @@ public class AEMaterialProviderView
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131558489, this);
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)findViewById(2131377585));
+    LayoutInflater.from(getContext()).inflate(2131558491, this);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)findViewById(2131378122));
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.getViewTreeObserver().addOnScrollChangedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131379152));
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter = new AEMaterialTabAdapter(getContext(), this.jdField_a_of_type_Bios);
-    this.jdField_a_of_type_Birb = ((birb)bjav.a(18));
-    this.jdField_a_of_type_Birb.e();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131379848));
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter = new AEMaterialTabAdapter(getContext(), this.jdField_a_of_type_Bktm);
+    this.jdField_a_of_type_Bkvr = ((bkvr)blmf.a(18));
+    this.jdField_a_of_type_Bkvr.e();
     this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter.a(new ArrayList());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bjdt);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Blpe);
     a(true);
   }
   
@@ -101,8 +101,8 @@ public class AEMaterialProviderView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Birb != null) {
-      this.jdField_a_of_type_Birb.g();
+    if (this.jdField_a_of_type_Bkvr != null) {
+      this.jdField_a_of_type_Bkvr.g();
     }
   }
   
@@ -135,9 +135,9 @@ public class AEMaterialProviderView
     int i = 0;
     int j;
     if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-      if ((paramString1 != null) && (paramString1.equals(((bira)this.jdField_a_of_type_JavaUtilList.get(i)).b)))
+      if ((paramString1 != null) && (paramString1.equals(((bkvq)this.jdField_a_of_type_JavaUtilList.get(i)).b)))
       {
-        paramString1 = (bira)this.jdField_a_of_type_JavaUtilList.get(i);
+        paramString1 = (bkvq)this.jdField_a_of_type_JavaUtilList.get(i);
         j = i;
       }
     }
@@ -153,8 +153,8 @@ public class AEMaterialProviderView
       label167:
       if (i < paramString1.jdField_a_of_type_JavaUtilList.size())
       {
-        localObject = (bire)paramString1.jdField_a_of_type_JavaUtilList.get(i);
-        if (!((bire)localObject).a.equals(paramString2)) {}
+        localObject = (bkvu)paramString1.jdField_a_of_type_JavaUtilList.get(i);
+        if (!((bkvu)localObject).a.equals(paramString2)) {}
       }
       for (paramString1 = (String)localObject;; paramString1 = null)
       {
@@ -167,7 +167,7 @@ public class AEMaterialProviderView
         }
         if (paramString1.a())
         {
-          vzw.a(getContext(), paramString1);
+          xoo.a(getContext(), paramString1);
           return;
           i += 1;
           break label167;
@@ -183,7 +183,7 @@ public class AEMaterialProviderView
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(this.jdField_a_of_type_Birb.a(paramBoolean));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(this.jdField_a_of_type_Bkvr.a(paramBoolean));
     int j = this.jdField_a_of_type_Int;
     int i = j;
     if (!paramBoolean)
@@ -198,16 +198,16 @@ public class AEMaterialProviderView
             break label340;
           }
           i = this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem();
-          bira localbira1 = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter.a(i);
-          if (localbira1 == null) {
+          bkvq localbkvq1 = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter.a(i);
+          if (localbkvq1 == null) {
             break label340;
           }
           i = 0;
           if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
             break label340;
           }
-          bira localbira2 = (bira)this.jdField_a_of_type_JavaUtilList.get(i);
-          if ((localbira2 == null) || (TextUtils.isEmpty(localbira2.b)) || (!localbira2.b.equals(localbira1.b))) {
+          bkvq localbkvq2 = (bkvq)this.jdField_a_of_type_JavaUtilList.get(i);
+          if ((localbkvq2 == null) || (TextUtils.isEmpty(localbkvq2.b)) || (!localbkvq2.b.equals(localbkvq1.b))) {
             break label333;
           }
         }
@@ -255,15 +255,15 @@ public class AEMaterialProviderView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Birb != null)
+    if (this.jdField_a_of_type_Bkvr != null)
     {
-      this.jdField_a_of_type_Birb.b(null, false);
-      this.jdField_a_of_type_Birb.a(111);
-      this.jdField_a_of_type_Birb.a(113);
-      this.jdField_a_of_type_Birb.a(112);
+      this.jdField_a_of_type_Bkvr.b(null, false);
+      this.jdField_a_of_type_Bkvr.a(111);
+      this.jdField_a_of_type_Bkvr.a(113);
+      this.jdField_a_of_type_Bkvr.a(112);
     }
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bjdt);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Blpe);
     }
   }
   
@@ -285,7 +285,7 @@ public class AEMaterialProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView
  * JD-Core Version:    0.7.0.1
  */

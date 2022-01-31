@@ -1,25 +1,36 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcxi
-  extends bcxh
+  implements bcxj
 {
-  public bcxi(Bundle paramBundle)
+  public String a;
+  
+  bcxi(bcxd parambcxd, bcxb parambcxb)
   {
-    super(paramBundle);
+    if ((parambcxb != null) && (parambcxb.a != null)) {
+      this.jdField_a_of_type_JavaLangString = parambcxb.a.jdField_a_of_type_JavaLangString;
+    }
   }
   
-  public String a(String paramString1, String paramString2)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    paramString1 = this.a.getBundle(paramString1);
-    if (paramString1 != null) {
-      return paramString1.getString(paramString2);
+    if (paramBoolean2) {
+      this.jdField_a_of_type_Bcxd.a(paramBoolean1, 113, paramString, this.jdField_a_of_type_Bcxd.a);
     }
-    return null;
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 113);
+      }
+      return;
+      this.jdField_a_of_type_Bcxd.a(paramBoolean1, 113, paramString, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcxi
  * JD-Core Version:    0.7.0.1
  */

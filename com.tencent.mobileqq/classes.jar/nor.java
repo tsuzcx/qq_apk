@@ -1,251 +1,172 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.biz.pubaccount.AccountDetail.jce.GetRecvMsgStateReq;
-import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateReq;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.util.ADNativeArticleAppDownloadManager.1;
+import com.tencent.biz.pubaccount.NativeAd.util.ADNativeArticleAppDownloadManager.2;
+import com.tencent.biz.pubaccount.readinjoy.ad.soft_ad.ReadInJoyCommonSoftAdBar;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoRequest;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.widget.ListView;
+import cooperation.wadl.ipc.WadlParams;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.Iterator;
+import java.util.List;
 
 public class nor
-  extends MSFServlet
+  extends nop
 {
-  private String a = "com.tencent.biz.pubaccount.PublicAccountServlet";
+  private ReadInJoyCommonSoftAdBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar;
+  private ListView jdField_a_of_type_ComTencentWidgetListView;
   
-  public static void a(Intent paramIntent)
+  public nor(Context paramContext, ListView paramListView, ReadInJoyCommonSoftAdBar paramReadInJoyCommonSoftAdBar)
   {
-    paramIntent.putExtra("need_handler", true);
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar = paramReadInJoyCommonSoftAdBar;
   }
   
-  protected byte[] a(FromServiceMsg paramFromServiceMsg)
+  public ogy a(qyj paramqyj)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFromServiceMsg != null)
-    {
-      localObject1 = localObject2;
-      if (paramFromServiceMsg.isSuccess()) {
-        localObject1 = bbma.b(paramFromServiceMsg.getWupBuffer());
-      }
+    if ((this.jdField_a_of_type_ComTencentWidgetListView == null) || (paramqyj == null)) {
+      return null;
     }
-    return localObject1;
+    int i = 0;
+    while (i < this.jdField_a_of_type_ComTencentWidgetListView.getChildCount())
+    {
+      View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
+      if ((localView != null) && ((localView instanceof Container)))
+      {
+        Object localObject = localView.getTag(2131362036);
+        if ((localObject != null) && ((localObject instanceof AdData)))
+        {
+          AdData localAdData = (AdData)localObject;
+          localObject = "";
+          try
+          {
+            if (localAdData.a != null)
+            {
+              localObject = localAdData.a.c;
+              localObject = localAdData.a.b;
+            }
+            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(paramqyj.d)))
+            {
+              localAdData.j = paramqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j;
+              localAdData.k = paramqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.k;
+              localAdData.Q = paramqyj.i;
+              localObject = ((Container)localView).getVirtualView().findViewBaseByName("id_view_AdDownloadView");
+              if ((localObject instanceof ogy))
+              {
+                localObject = (ogy)localObject;
+                return localObject;
+              }
+            }
+          }
+          catch (Exception localException)
+          {
+            if (QLog.isColorLevel())
+            {
+              localException.printStackTrace();
+              QLog.d("ADFeedsVideoAppDownlodManager", 1, "updateUIState exception :" + localException.toString());
+            }
+          }
+        }
+      }
+      i += 1;
+    }
+    return null;
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void a(DownloadInfo paramDownloadInfo, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onReceive");
-    }
-    byte[] arrayOfByte = a(paramFromServiceMsg);
-    seg.a(paramFromServiceMsg);
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putByteArray("data", arrayOfByte);
-    ((Bundle)localObject).putInt("respones_code", paramFromServiceMsg.getBusinessFailCode());
-    ((Bundle)localObject).putInt("type", paramIntent.getIntExtra("type", 0));
-    if (paramIntent.getBooleanExtra("need_handler", false))
+    super.a(paramDownloadInfo, paramInt);
+    try
     {
-      localObject = (PublicAccountHandler)((QQAppInterface)super.getAppRuntime()).a(11);
-      if (localObject != null) {
-        ((PublicAccountHandler)localObject).a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "onReceive exit");
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        qyj localqyj = (qyj)localIterator.next();
+        if ((localqyj.jdField_a_of_type_JavaLangString != null) && (localqyj.d != null) && (localqyj.d.equals(paramDownloadInfo.e)) && (localqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null))
+        {
+          localqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.k = paramInt;
+          localqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j = paramDownloadInfo.f;
+          a(localqyj, paramInt, paramDownloadInfo.f);
+        }
       }
       return;
-      super.notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject, null);
+    }
+    catch (Exception paramDownloadInfo)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramDownloadInfo.getMessage());
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(WadlResult paramWadlResult, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onSend");
-    }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    Object localObject = paramIntent.getStringExtra("cmd");
-    seg.a(arrayOfByte, (String)localObject);
-    if (((String)localObject).equals("get_business_recommend"))
+    super.a(paramWadlResult, paramInt);
+    try
     {
-      paramPacket.setSSOCommand("PubAccBusiRecSvc." + (String)localObject);
-      paramIntent = arrayOfByte;
-    }
-    for (;;)
-    {
-      if (paramIntent != null) {
-        paramPacket.putSendData(bbma.a(paramIntent));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "onSend exit");
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        qyj localqyj = (qyj)localIterator.next();
+        if ((localqyj.jdField_a_of_type_JavaLangString != null) && (localqyj.d != null) && (localqyj.jdField_a_of_type_JavaLangString.equals(paramWadlResult.a.jdField_a_of_type_JavaLangString)) && (localqyj.d.equals(paramWadlResult.a.j)) && (localqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null))
+        {
+          localqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.k = a(paramWadlResult);
+          localqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j = paramWadlResult.d;
+          if (!TextUtils.isEmpty(paramWadlResult.b)) {
+            localqyj.i = paramWadlResult.b;
+          }
+          a(localqyj, paramInt, paramWadlResult.d);
+        }
       }
       return;
-      if (((String)localObject).equals("post_punchcard_info"))
-      {
-        paramPacket.setSSOCommand("PubAccountSSOProxySvc." + (String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if ((((String)localObject).equals("PubAccountFollowSvc.follow")) || (((String)localObject).equals("PubAccountFollowSvc.subscribe")))
-      {
-        paramPacket.setTimeout(10000L);
-        paramPacket.setSSOCommand((String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if (((String)localObject).equals("PubAccountAdSvc.recent_list_report"))
-      {
-        paramPacket.setSSOCommand((String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if ((((String)localObject).equals("PubAccountArticleCenter.GetUrlByVid")) || (((String)localObject).equals("PubAccountArticleCenter.GetVidByUrl")) || (((String)localObject).equals("SQQShopAdSvr.GetUrlByVid")))
-      {
-        paramPacket.setTimeout(15000L);
-        paramPacket.setSSOCommand((String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if (((String)localObject).equals("PubAccountAdSvc."))
-      {
-        paramPacket.setSSOCommand("PubAccountAdSvc.ad_report");
-        paramIntent = arrayOfByte;
-      }
-      else if ((((String)localObject).equals("PubAccountSvc.net_connect_info")) || (((String)localObject).equals("PubAccountArticleCenter.GetRecommendPubAccount")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_report")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_native")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_report_new")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_report_test")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_fetch")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_create")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_delete")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_like")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_report")) || (((String)localObject).equals("MQUpdateSvc_com_qq_kandian.web.firstCommentRead.getNewestList")) || (((String)localObject).equals("FeedsContentCenter.QualityReport")))
-      {
-        paramPacket.setTimeout(15000L);
-        paramPacket.setSSOCommand((String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if (((String)localObject).equals("getGuideFriends"))
-      {
-        paramPacket.setSSOCommand("KandianSvc_biu_guide." + (String)localObject);
-        paramIntent = arrayOfByte;
-      }
-      else if (((String)localObject).equals("ConfigSvc.getRecvMsgState"))
-      {
-        try
-        {
-          localObject = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getName());
-          paramIntent = ((ToServiceMsg)localObject).getServiceCmd();
-          localObject = (GetRecvMsgStateReq)((ToServiceMsg)localObject).getAttribute("GetRecvMsgStateReq");
-          paramPacket.setServantName("QQMP.ConfigServer.ConfigObj");
-          paramPacket.setFuncName("getRecvMsgState");
-          paramPacket.addRequestPacket("req", (JceStruct)localObject);
-          paramPacket.setSSOCommand(paramIntent);
-          paramPacket.setTimeout(15000L);
-          paramIntent = arrayOfByte;
-        }
-        catch (Exception paramIntent)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(this.a, 2, "onSend exception");
-          }
-          paramIntent = arrayOfByte;
-        }
-      }
-      else
-      {
-        if (!((String)localObject).equals("ConfigSvc.setRecvMsgState")) {
-          break;
-        }
-        try
-        {
-          localObject = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getName());
-          paramIntent = ((ToServiceMsg)localObject).getServiceCmd();
-          localObject = (SetRecvMsgStateReq)((ToServiceMsg)localObject).getAttribute("SetRecvMsgStateReq");
-          paramPacket.setServantName("QQMP.ConfigServer.ConfigObj");
-          paramPacket.setFuncName("setRecvMsgState");
-          paramPacket.addRequestPacket("req", (JceStruct)localObject);
-          paramPacket.setSSOCommand(paramIntent);
-          paramPacket.setTimeout(15000L);
-          paramIntent = arrayOfByte;
-        }
-        catch (Exception paramIntent)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(this.a, 2, "onSend exception");
-          }
-          paramIntent = arrayOfByte;
-        }
-      }
     }
-    if ("CertifiedAccountSvc.certified_account_read.GetFollowList".equals(localObject))
+    catch (Exception paramWadlResult)
     {
-      paramPacket.setSSOCommand((String)localObject);
-      paramPacket.setTimeout(30000L);
-      paramPacket.autoResend = true;
-      label718:
-      if (!((String)localObject).equals("get_detail_info")) {
-        break label1082;
-      }
-      localObject = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramWadlResult.getMessage());
     }
-    label1082:
-    label1088:
-    for (;;)
+  }
+  
+  public void a(qyj paramqyj, int paramInt1, int paramInt2)
+  {
+    super.a(paramqyj, paramInt1, paramInt2);
+    if ((paramqyj == null) || (paramqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData == null)) {}
+    do
     {
-      try
-      {
-        ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).mergeFrom(arrayOfByte);
-        oidb_cmd0xcf8.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new oidb_cmd0xcf8.GetPublicAccountDetailInfoRequest();
-        long l = ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).uin.get();
-        if (l >= 0L) {
-          break label1088;
-        }
-        l = -(-2147483648L - l) + 2147483647L + 1L;
-        if ((paramIntent.getBooleanExtra("useNewProtocol", false)) || (((super.getAppRuntime() instanceof QQAppInterface)) && (sgg.a((QQAppInterface)super.getAppRuntime(), l + "") != -4)))
-        {
-          paramIntent.putExtra("type", 1);
-          localGetPublicAccountDetailInfoRequest.luin.set(l);
-          localGetPublicAccountDetailInfoRequest.seqno.set(((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).seqno.get());
-          localGetPublicAccountDetailInfoRequest.version.set(((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).version.get());
-          localGetPublicAccountDetailInfoRequest.versionInfo.set(((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).versionInfo.get());
-          paramIntent = new oidb_sso.OIDBSSOPkg();
-          paramIntent.uint32_command.set(3320);
-          paramIntent.uint32_result.set(0);
-          paramIntent.uint32_service_type.set(1);
-          paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localGetPublicAccountDetailInfoRequest.toByteArray()));
-          paramIntent = paramIntent.toByteArray();
-          paramPacket.setSSOCommand("OidbSvc.0xcf8");
-          break;
-          if ("get_follow_list".equals(localObject))
-          {
-            paramPacket.autoResend = true;
-            paramPacket.setSSOCommand("PubAccountSvc." + (String)localObject);
-            break label718;
-          }
-          if (("CertifiedAccountSvc.certified_account_read.GetAccountMenu".equals(localObject)) || ("CertifiedAccountSvc.certified_account_write.SendMenuEvent".equals(localObject)))
-          {
-            paramPacket.setSSOCommand((String)localObject);
-            break label718;
-          }
-          paramPacket.setSSOCommand("PubAccountSvc." + (String)localObject);
-        }
+      return;
+      ogy localogy = a(paramqyj);
+      if (localogy != null) {
+        this.b.post(new ADNativeArticleAppDownloadManager.1(this, localogy, paramInt1, paramInt2));
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-        continue;
-      }
-      paramIntent = arrayOfByte;
-      break;
+    } while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar == null) || (!paramqyj.d.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar.a.d)));
+    this.b.post(new ADNativeArticleAppDownloadManager.2(this, paramInt1, paramInt2));
+  }
+  
+  protected boolean b(qyj paramqyj)
+  {
+    if ((paramqyj != null) && (paramqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null) && (odv.a(paramqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)) && (!TextUtils.isEmpty(paramqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.p))) {
+      return false;
     }
+    return super.b(paramqyj);
+  }
+  
+  protected boolean c(qyj paramqyj)
+  {
+    if ((paramqyj != null) && (paramqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null) && (odv.a(paramqyj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData))) {
+      return false;
+    }
+    return super.c(paramqyj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nor
  * JD-Core Version:    0.7.0.1
  */

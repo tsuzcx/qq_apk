@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import auko;
+import awbv;
 
 public class ChannelTopCookie
-  extends auko
+  extends awbv
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleInfo.class.getSimpleName();
@@ -26,7 +26,7 @@ public class ChannelTopCookie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie
  * JD-Core Version:    0.7.0.1
  */

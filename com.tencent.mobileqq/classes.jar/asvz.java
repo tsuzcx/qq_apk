@@ -1,23 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public final class asvz
-  implements Parcelable.Creator<SongInfo>
+class asvz
+  implements INetEventHandler
 {
-  public SongInfo a(Parcel paramParcel)
-  {
-    return new SongInfo(paramParcel, null);
-  }
+  asvz(asvu paramasvu) {}
   
-  public SongInfo[] a(int paramInt)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    return new SongInfo[paramInt];
+    if (asvu.a(this.a) == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + asvu.a(this.a).e);
+      }
+    } while (!paramBoolean);
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asvz
  * JD-Core Version:    0.7.0.1
  */

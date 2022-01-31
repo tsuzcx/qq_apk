@@ -1,131 +1,100 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Looper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.1.1;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter.2;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Observable;
+import mqq.os.MqqHandler;
 
 public class aqse
-  extends bbri
+  extends Observable
 {
-  public aqse(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  public QQAppInterface a;
+  MqqHandler a;
   
-  protected void onGetGameCenterPubAccountFeeds(boolean paramBoolean, Object paramObject)
+  public aqse(QQAppInterface paramQQAppInterface)
   {
-    super.onGetGameCenterPubAccountFeeds(paramBoolean, paramObject);
-    Object localObject2;
-    long l;
-    Object localObject1;
-    String str1;
-    if ((paramBoolean) && (paramObject != null))
+    this.jdField_a_of_type_MqqOsMqqHandler = new aqsf(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
+  }
+  
+  private void b(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
+  {
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("averageSpeed", String.valueOf(0.0F));
+    ((HashMap)localObject).put("peerUin", String.valueOf(paramFileManagerEntity.peerUin));
+    ((HashMap)localObject).put("fileType", arof.a(paramFileManagerEntity.fileName));
+    switch (paramInt)
     {
-      localObject2 = (Object[])paramObject;
-      l = ((Long)localObject2[0]).longValue();
-      localObject1 = (String)localObject2[5];
-      str1 = (String)localObject2[6];
-      paramBoolean = ((Boolean)localObject2[1]).booleanValue();
-      paramObject = (List)localObject2[2];
-      JSONObject localJSONObject = (JSONObject)localObject2[3];
-      if (localJSONObject != null)
-      {
-        aqsu.a = localJSONObject.optInt("video_count");
-        aqsu.b = localJSONObject.optInt("video_time") * 1000;
-        aqsu.c = localJSONObject.optInt("layer_duration") * 1000;
-        SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("game_center_sp", 0);
-        String str2 = "sp_key_game_center_feeds_float_condition" + QQGamePubAccountFragment.a(this.a).getCurrentAccountUin();
-        localSharedPreferences.edit().putString(str2, localJSONObject.toString()).commit();
-      }
-      localObject2 = (FeedsItemData.TopCardInfo)localObject2[4];
-      if (paramBoolean) {
-        if (paramObject.size() == 0)
-        {
-          yoa.a(ajac.a(), "769", "205353", str1, "76901", "1", "160", new String[] { localObject1, "", "20" });
-          QQGamePubAccountFragment.a(this.a).a(false, false);
-        }
-      }
+    default: 
+      QLog.e("FileManagerNotifyCenter<FileAssistant>", 1, "what type is report?!nSessionId[" + String.valueOf(paramFileManagerEntity.nSessionId) + "],may be not report!");
+      return;
+    case 5: 
+      return;
+    case 6: 
+      localObject = "actFileOf2Of";
     }
     for (;;)
     {
-      QQGamePubAccountFragment.a(this.a, false);
+      arni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, (String)localObject, 1L, paramString, paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, 0L, 0L, paramFileManagerEntity.fileSize, 0, null);
       return;
-      localObject1 = (List)QQGamePubAccountFragment.a(this.a).get(Long.valueOf(l));
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        ((List)localObject1).addAll(paramObject);
-        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), localObject1);
-      }
-      for (;;)
-      {
-        i = this.a.a.getCurrentItem();
-        if ((QQGamePubAccountFragment.a(this.a) == null) || (i >= QQGamePubAccountFragment.a(this.a).size()) || (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq != l)) {
-          break;
-        }
-        QQGamePubAccountFragment.a(this.a).c();
-        QQGamePubAccountFragment.a(this.a).a(paramObject);
-        break;
-        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), paramObject);
-      }
-      QQGamePubAccountFragment.b(this.a).put(Long.valueOf(l), localObject2);
-      int i = this.a.a.getCurrentItem();
-      if (paramObject.size() == 0) {
-        if (localObject2 == null)
-        {
-          this.a.a(true);
-          label495:
-          QQGamePubAccountFragment.a(this.a).a(false, false);
-          QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), aqsv.b);
-          yoa.a(ajac.a(), "769", "205353", str1, "76901", "1", "160", new String[] { localObject1, "", "20" });
-        }
-      }
-      for (;;)
-      {
-        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), paramObject);
-        if ((QQGamePubAccountFragment.a(this.a) == null) || (i >= QQGamePubAccountFragment.a(this.a).size()) || (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq != l)) {
-          break;
-        }
-        QQGamePubAccountFragment.a(this.a).a(paramObject, (FeedsItemData.TopCardInfo)localObject2);
-        ThreadManagerV2.getUIHandlerV2().post(new QQGamePubAccountFragment.1.1(this, (FeedsItemData.TopCardInfo)localObject2));
-        break;
-        this.a.a(false);
-        break label495;
-        QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), aqsv.a);
-        QQGamePubAccountFragment.a(this.a).a(false, false);
-      }
-      if (paramObject != null)
-      {
-        localObject1 = (Object[])paramObject;
-        l = ((Long)localObject1[0]).longValue();
-        paramObject = (String)localObject1[5];
-        localObject1 = (String)localObject1[6];
-        yoa.a(ajac.a(), "769", "205353", (String)localObject1, "76901", "1", "160", new String[] { paramObject, "", "20" });
-        QLog.e("QQGamePubAccountFragment", 1, "[onGetGameCenterPubAccountFeeds] get feeds fail.");
-        i = this.a.a.getCurrentItem();
-        if ((i < QQGamePubAccountFragment.a(this.a).size()) && (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq == l))
-        {
-          QQGamePubAccountFragment.a(this.a).a(false, false);
-          QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), aqsv.b);
-          this.a.a(false);
-        }
-      }
-      if (this.a.getActivity() != null) {
-        bcql.a(this.a.getActivity(), ajya.a(2131710311), 0).a();
-      }
+      localObject = "actFileOf2Wy";
+      continue;
+      localObject = "actFileWy2Of";
+      continue;
+      localObject = "actFileDisc2Of";
+      continue;
+      localObject = "actFileDisc2Disc";
+      continue;
+      localObject = "actFileTroop2Of";
+      continue;
+      localObject = "actFileTroop2Disc";
+    }
+  }
+  
+  public void a()
+  {
+    a(true, 3, null);
+  }
+  
+  public void a(long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, Object paramObject, int paramInt3, String paramString2)
+  {
+    setChanged();
+    if (paramObject == null)
+    {
+      notifyObservers(new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), paramString2 });
+      return;
+    }
+    notifyObservers(new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString1, Integer.valueOf(paramInt1), paramObject });
+  }
+  
+  public void a(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
+  {
+    b(paramFileManagerEntity, paramInt, paramString);
+    ThreadManager.executeOnSubThread(new FileManagerNotifyCenter.2(this, paramFileManagerEntity, paramInt));
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, Object paramObject)
+  {
+    try
+    {
+      setChanged();
+      notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramObject });
+      return;
+    }
+    finally
+    {
+      paramObject = finally;
+      throw paramObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqse
  * JD-Core Version:    0.7.0.1
  */

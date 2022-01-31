@@ -1,22 +1,53 @@
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-class aoqx
-  implements aptw
+public class aoqx
+  extends aopw<aoqw>
 {
-  aoqx(aoqv paramaoqv, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void a()
+  public int a()
   {
-    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_Aoqv.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    return 76;
   }
   
-  public void b() {}
+  @NonNull
+  public aoqw a()
+  {
+    return new aoqw();
+  }
+  
+  @NonNull
+  public aoqw a(aogf[] paramArrayOfaogf)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramArrayOfaogf = paramArrayOfaogf[0].a;
+    bdvp.a().a(localQQAppInterface.getApplication(), paramArrayOfaogf, localQQAppInterface.getCurrentAccountUin());
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipKeywordsProcessor", 2, "receiveAllConfigs|type: 76,content: " + paramArrayOfaogf);
+    }
+    return new aoqw();
+  }
+  
+  public Class<aoqw> a()
+  {
+    return aoqw.class;
+  }
+  
+  @NonNull
+  public aoqw b()
+  {
+    return new aoqw();
+  }
+  
+  public boolean c()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqx
  * JD-Core Version:    0.7.0.1
  */

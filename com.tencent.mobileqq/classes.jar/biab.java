@@ -1,14 +1,12 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.view.View;
 
-public class biab
-  implements BusinessObserver
+public abstract interface biab
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public abstract void a(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biab
  * JD-Core Version:    0.7.0.1
  */

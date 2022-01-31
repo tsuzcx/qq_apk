@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.MotionEvent;
-import bjpk;
+import bmau;
 
 public class LWMotionEvent
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<LWMotionEvent> CREATOR = new bjpk();
+  public static final Parcelable.Creator<LWMotionEvent> CREATOR = new bmau();
   public float a;
   public int a;
   public float b;
@@ -70,7 +70,7 @@ public class LWMotionEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ptv.LWMotionEvent
  * JD-Core Version:    0.7.0.1
  */

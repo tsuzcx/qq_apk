@@ -1,115 +1,107 @@
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aopl
-  implements baic
+  extends aofy<aopk>
 {
-  public aopl(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, List paramList, String paramString1, FileManagerEntity paramFileManagerEntity, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3, String paramString4, short paramShort, String paramString5, int paramInt, String paramString6, xax paramxax) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramJSONObject != null) {}
-    try
-    {
-      apqk localapqk;
-      if (!paramJSONObject.isNull("dirs"))
+    return 555;
+  }
+  
+  @NonNull
+  public aopk a(int paramInt)
+  {
+    return new aopk();
+  }
+  
+  @Nullable
+  public aopk a(aogf[] paramArrayOfaogf)
+  {
+    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed");
+    if (paramArrayOfaogf != null) {
+      try
       {
-        paramBundle = paramJSONObject.getJSONArray("dirs");
-        paramInt = 0;
-        while (paramInt < paramBundle.length())
+        if (paramArrayOfaogf.length > 0)
         {
-          localapqk = new apqk();
-          localapqk.jdField_a_of_type_Boolean = true;
-          localapqk.jdField_a_of_type_JavaLangString = paramBundle.getString(paramInt);
-          this.jdField_a_of_type_JavaUtilList.add(localapqk);
-          paramInt += 1;
+          paramArrayOfaogf = (aopk)aogt.a(paramArrayOfaogf[0].a, aopk.class);
+          return paramArrayOfaogf;
         }
       }
-      if ((paramJSONObject != null) && (!paramJSONObject.isNull("files")))
+      catch (QStorageInstantiateException paramArrayOfaogf)
       {
-        paramBundle = paramJSONObject.getJSONArray("files");
-        paramInt = 0;
-        if (paramInt < paramBundle.length())
-        {
-          localapqk = new apqk();
-          paramJSONObject = paramBundle.getJSONObject(paramInt);
-          localapqk.jdField_a_of_type_JavaLangString = paramJSONObject.getString("filename");
-          localapqk.jdField_a_of_type_Long = paramJSONObject.getLong("size");
-          label186:
-          FileManagerEntity localFileManagerEntity;
-          if (this.jdField_a_of_type_JavaLangString.equals("/"))
-          {
-            paramJSONObject = "/" + localapqk.jdField_a_of_type_JavaLangString;
-            localFileManagerEntity = new FileManagerEntity();
-            localFileManagerEntity.fileName = localapqk.jdField_a_of_type_JavaLangString;
-            localFileManagerEntity.nRelatedSessionId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-            localFileManagerEntity.fileSize = localapqk.jdField_a_of_type_Long;
-            localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-            localFileManagerEntity.nSessionId = apug.a().longValue();
-            if (this.jdField_a_of_type_Boolean)
-            {
-              localFileManagerEntity.WeiYunFileId = this.jdField_b_of_type_JavaLangString;
-              localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-              localFileManagerEntity.nRelatedSessionId = apug.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-            }
-            localFileManagerEntity.zipFileId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-            if (localFileManagerEntity.mContext == null) {
-              QLog.i("IphoneTitleBarActivity", 1, "zip list file content is empty. zipSessionId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] zipIsWeiyunFile[" + this.jdField_a_of_type_Boolean + "] zipCouldType[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType + "] fileSessionId[" + localFileManagerEntity.nSessionId + "]");
-            }
-            if ((this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean) || (TextUtils.isEmpty(this.c))) {
-              break label691;
-            }
-            localFileManagerEntity.strServerPath = ("https://" + this.d + ":" + this.jdField_a_of_type_Short + "/ftn_compress_getfile/rkey=" + this.e + "&filetype=" + this.jdField_a_of_type_Int + "&path=" + bfnx.a(paramJSONObject) + "&");
-            localFileManagerEntity.httpsDomain = this.c;
-          }
-          for (;;)
-          {
-            localFileManagerEntity.zipFileId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-            localFileManagerEntity.zipInnerPath = paramJSONObject;
-            localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-            localFileManagerEntity.peerUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-            localFileManagerEntity.peerType = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
-            localFileManagerEntity.busId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
-            localFileManagerEntity.cloudType = 1;
-            localFileManagerEntity.isZipInnerFile = true;
-            localFileManagerEntity.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-            localFileManagerEntity.zipType = this.jdField_a_of_type_Int;
-            localFileManagerEntity.TroopUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
-            localapqk.b = localFileManagerEntity.nSessionId;
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app.a().a(localFileManagerEntity);
-            this.jdField_a_of_type_JavaUtilList.add(localapqk);
-            paramInt += 1;
-            break;
-            paramJSONObject = this.jdField_a_of_type_JavaLangString + "/" + localapqk.jdField_a_of_type_JavaLangString;
-            break label186;
-            label691:
-            localFileManagerEntity.strServerPath = ("http://" + this.d + ":" + this.f + "/ftn_compress_getfile/rkey=" + this.e + "&filetype=" + this.jdField_a_of_type_Int + "&path=" + bfnx.a(paramJSONObject) + "&");
-          }
+        QLog.e("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaogf.getMessage());
+      }
+    }
+    return null;
+  }
+  
+  public Class<aopk> a()
+  {
+    return aopk.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public void a(aopk paramaopk)
+  {
+    if (paramaopk != null)
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label152;
+      }
+    }
+    label152:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        if (TextUtils.isEmpty(paramaopk.a)) {
+          paramaopk.a = "{}";
+        }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("groupfile_excitingdownload_" + ((QQAppInterface)localObject).c(), 0).edit();
+        localEditor.putString("qfile_groupfile_excitingdownload", paramaopk.a);
+        localEditor.apply();
+        QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Download config [" + paramaopk.a + "]");
+        localObject = (aqpu)((QQAppInterface)localObject).getManager(317);
+        if (localObject != null) {
+          ((aqpu)localObject).a(paramaopk);
         }
       }
       return;
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-      if (this.jdField_a_of_type_Xax != null) {
-        this.jdField_a_of_type_Xax.a(this.jdField_a_of_type_JavaUtilList);
-      }
-    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopl
  * JD-Core Version:    0.7.0.1
  */

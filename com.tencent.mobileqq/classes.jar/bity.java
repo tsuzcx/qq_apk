@@ -1,40 +1,41 @@
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimBridgeActivity;
 
-class bity
-  implements View.OnClickListener
+public class bity
+  implements biug
 {
-  bity(bitx parambitx, int paramInt, bitz parambitz) {}
+  public bity(QQPimBridgeActivity paramQQPimBridgeActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_Int != bitx.a(this.jdField_a_of_type_Bitx))
-    {
-      paramView = (bitz)bitx.a(this.jdField_a_of_type_Bitx).findViewHolderForAdapterPosition(bitx.a(this.jdField_a_of_type_Bitx));
-      if (paramView == null) {
-        break label94;
-      }
-      paramView.a(false);
+    if (QLog.isColorLevel()) {
+      QLog.i(bitz.a, 2, "QQPimBridgeActivity.hasInstalled()");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bitz.a(true);
-      this.jdField_a_of_type_Bitx.a(this.jdField_a_of_type_Int);
-      if (bitx.a(this.jdField_a_of_type_Bitx) != null) {
-        bitx.a(this.jdField_a_of_type_Bitx).setTextColor(Color.parseColor(bitx.a(this.jdField_a_of_type_Bitx)));
-      }
-      return;
-      label94:
-      this.jdField_a_of_type_Bitx.notifyDataSetChanged();
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(bitz.a, 2, "QQPimBridgeActivity.downloadError()");
     }
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    localMessage.arg1 = paramInt;
+    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bity
  * JD-Core Version:    0.7.0.1
  */

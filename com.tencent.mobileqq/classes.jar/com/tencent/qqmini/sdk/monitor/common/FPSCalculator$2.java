@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.monitor.common;
 import android.annotation.TargetApi;
 import android.os.Handler;
 import android.view.Choreographer;
-import betc;
-import beyc;
+import bgwx;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 public class FPSCalculator$2
   implements Runnable
 {
-  public FPSCalculator$2(beyc parambeyc) {}
+  public FPSCalculator$2(bgwx parambgwx) {}
   
   @TargetApi(16)
   public void run()
@@ -18,29 +18,29 @@ public class FPSCalculator$2
     {
       try
       {
-        if (beyc.a(this.this$0) == null) {
+        if (bgwx.a(this.this$0) == null) {
           continue;
         }
-        beyc.a(this.this$0).removeFrameCallback(beyc.a(this.this$0));
-        beyc.a(this.this$0).postFrameCallback(beyc.a(this.this$0));
+        bgwx.a(this.this$0).removeFrameCallback(bgwx.a(this.this$0));
+        bgwx.a(this.this$0).postFrameCallback(bgwx.a(this.this$0));
       }
       catch (Exception localException)
       {
-        if (!betc.a()) {
+        if (!QMLog.isColorLevel()) {
           continue;
         }
-        betc.a("FPSCalculator", "Choreographer.getInstance", localException);
+        QMLog.d("FPSCalculator", "Choreographer.getInstance", localException);
         continue;
       }
-      beyc.a(this.this$0).removeCallbacks(beyc.a(this.this$0));
+      bgwx.a(this.this$0).removeCallbacks(bgwx.a(this.this$0));
       return;
-      beyc.a(this.this$0, Choreographer.getInstance());
+      bgwx.a(this.this$0, Choreographer.getInstance());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.common.FPSCalculator.2
  * JD-Core Version:    0.7.0.1
  */

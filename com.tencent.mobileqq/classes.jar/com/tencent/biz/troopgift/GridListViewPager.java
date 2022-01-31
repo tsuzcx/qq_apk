@@ -1,6 +1,6 @@
 package com.tencent.biz.troopgift;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -11,8 +11,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import java.util.ArrayList;
-import xbt;
-import xbv;
+import yqm;
+import yqo;
 
 public class GridListViewPager
   extends absMultiViewPager
@@ -54,23 +54,23 @@ public class GridListViewPager
   
   public View a(int paramInt, ArrayList<Object> paramArrayList)
   {
-    xbv localxbv = new xbv(this, getContext());
-    localxbv.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    localxbv.setVerticalSpacing(0);
-    localxbv.setHorizontalSpacing(10);
-    localxbv.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
-    localxbv.setNumColumns(this.b);
+    yqo localyqo = new yqo(this, getContext());
+    localyqo.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    localyqo.setVerticalSpacing(0);
+    localyqo.setHorizontalSpacing(10);
+    localyqo.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
+    localyqo.setNumColumns(this.b);
     Object localObject = getContext().getResources();
-    localxbv.setPadding(actj.a(5.0F, (Resources)localObject), actj.a(1.0F, (Resources)localObject), actj.a(5.0F, (Resources)localObject), actj.a(1.0F, (Resources)localObject));
-    localxbv.setGravity(1);
-    localxbv.setSelector(new ColorDrawable(0));
-    localObject = new xbt(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
-    ((xbt)localObject).a(paramArrayList);
-    ((xbt)localObject).a(this.jdField_a_of_type_JavaLangString);
-    localxbv.setAdapter((ListAdapter)localObject);
-    localxbv.setOnItemClickListener(this);
-    ((xbt)localObject).notifyDataSetChanged();
-    return localxbv;
+    localyqo.setPadding(aekt.a(5.0F, (Resources)localObject), aekt.a(1.0F, (Resources)localObject), aekt.a(5.0F, (Resources)localObject), aekt.a(1.0F, (Resources)localObject));
+    localyqo.setGravity(1);
+    localyqo.setSelector(new ColorDrawable(0));
+    localObject = new yqm(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
+    ((yqm)localObject).a(paramArrayList);
+    ((yqm)localObject).a(this.jdField_a_of_type_JavaLangString);
+    localyqo.setAdapter((ListAdapter)localObject);
+    localyqo.setOnItemClickListener(this);
+    ((yqm)localObject).notifyDataSetChanged();
+    return localyqo;
   }
   
   public ArrayList<Object> a(int paramInt)
@@ -87,7 +87,7 @@ public class GridListViewPager
     int i = 0;
     while (i < localArrayList.size())
     {
-      ((xbt)((GridView)localArrayList.get(i)).getAdapter()).notifyDataSetChanged();
+      ((yqm)((GridView)localArrayList.get(i)).getAdapter()).notifyDataSetChanged();
       i += 1;
     }
   }
@@ -120,7 +120,7 @@ public class GridListViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.troopgift.GridListViewPager
  * JD-Core Version:    0.7.0.1
  */

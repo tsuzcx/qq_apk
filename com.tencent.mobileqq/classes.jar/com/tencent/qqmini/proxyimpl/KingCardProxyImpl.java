@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,9 +10,8 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import bbwq;
-import bbxx;
-import besz;
+import bdvr;
+import bdwy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
@@ -25,6 +24,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.KingCardProxy;
 import com.tencent.qqmini.sdk.launcher.model.AppMode;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniRuntime;
 import mqq.app.AppRuntime;
 
 public class KingCardProxyImpl
@@ -32,7 +32,7 @@ public class KingCardProxyImpl
 {
   private String KINGCARD_GUIDE_KEY_PREFFIX = "mini_app_kingcard_guide_";
   private final String TAG = "KingCardProxyImpl";
-  private bbxx lottieLoader;
+  private bdwy lottieLoader;
   private String mKingCardText;
   
   private boolean hasKingCardGuideShowed()
@@ -55,13 +55,13 @@ public class KingCardProxyImpl
       QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip network type is wifi + " + AppNetConnInfo.isWifiConn());
       return false;
     }
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.h)) {}
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.isWangKa)) {}
     for (int i = 1; i == 0; i = 0)
     {
       QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip， not wangka app");
       return false;
     }
-    i = bbwq.a();
+    i = bdvr.a();
     QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip， king card status = " + i);
     if (i == 1) {}
     for (;;)
@@ -74,15 +74,15 @@ public class KingCardProxyImpl
   public ImageView getCapsuleButtonMoreView(Context paramContext)
   {
     if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {}
-    for (Object localObject = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; localObject = paramContext.getResources().getString(2131694274))
+    for (Object localObject = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; localObject = paramContext.getResources().getString(2131694413))
     {
       this.mKingCardText = ((String)localObject);
-      this.lottieLoader = new bbxx(null, paramContext);
+      this.lottieLoader = new bdwy(null, paramContext);
       int i = (int)(MemoryManager.a() / 2L);
       this.lottieLoader.a(i);
       localObject = new DiniFlyAnimationView(paramContext);
       ((DiniFlyAnimationView)localObject).setVisibility(0);
-      ((DiniFlyAnimationView)localObject).setContentDescription(ajya.a(2131701353));
+      ((DiniFlyAnimationView)localObject).setContentDescription(alpo.a(2131701726));
       paramContext = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(paramContext, 40.0F), -1);
       paramContext.addRule(9, -1);
       ((DiniFlyAnimationView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -91,18 +91,18 @@ public class KingCardProxyImpl
     }
   }
   
-  public boolean showKingCardTips(besz parambesz, ImageView paramImageView)
+  public boolean showKingCardTips(IMiniRuntime paramIMiniRuntime, ImageView paramImageView)
   {
     QLog.i("KingCardProxyImpl", 1, "showKingCardTips trigger");
-    Activity localActivity = parambesz.a();
+    Activity localActivity = paramIMiniRuntime.getAttachedActivity();
     if ((localActivity == null) || (localActivity.isFinishing())) {
       return false;
     }
     if (!(paramImageView instanceof DiniFlyAnimationView)) {
       return false;
     }
-    parambesz = parambesz.a();
-    if (parambesz == null) {
+    paramIMiniRuntime = paramIMiniRuntime.getMiniAppInfo();
+    if (paramIMiniRuntime == null) {
       return false;
     }
     DiniFlyAnimationView localDiniFlyAnimationView = (DiniFlyAnimationView)paramImageView;
@@ -111,7 +111,7 @@ public class KingCardProxyImpl
       QLog.i("KingCardProxyImpl", 1, "showKingCardTips 小程序官方模式下是 GONE状态，不需要展示");
       return false;
     }
-    if ((paramImageView != null) && (localActivity != null) && (!localActivity.isFinishing()) && (shouldShowKingCardTip(parambesz))) {
+    if ((paramImageView != null) && (localActivity != null) && (!localActivity.isFinishing()) && (shouldShowKingCardTip(paramIMiniRuntime))) {
       AppBrandTask.runTaskOnUiThreadIfNot(new KingCardProxyImpl.1(this, localActivity, localDiniFlyAnimationView));
     }
     return true;
@@ -119,7 +119,7 @@ public class KingCardProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.KingCardProxyImpl
  * JD-Core Version:    0.7.0.1
  */

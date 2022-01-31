@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import actj;
+import aekt;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,17 +10,17 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Adapter;
-import bfps;
+import bhqo;
 import com.tencent.widget.AdapterView;
-import rcs;
+import rsp;
 
 public class ReadInJoyFlowLayout
   extends AdapterView
 {
   private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int = actj.a(8.0F, getResources());
+  private final int jdField_a_of_type_Int = aekt.a(8.0F, getResources());
   private Adapter jdField_a_of_type_AndroidWidgetAdapter;
-  private bfps jdField_a_of_type_Bfps = new rcs(this);
+  private bhqo jdField_a_of_type_Bhqo = new rsp(this);
   private float b;
   
   public ReadInJoyFlowLayout(Context paramContext)
@@ -363,14 +363,14 @@ public class ReadInJoyFlowLayout
   
   public void setAdapter(Adapter paramAdapter)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetAdapter != null) && (this.jdField_a_of_type_Bfps != null)) {
-      this.jdField_a_of_type_AndroidWidgetAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Bfps);
+    if ((this.jdField_a_of_type_AndroidWidgetAdapter != null) && (this.jdField_a_of_type_Bhqo != null)) {
+      this.jdField_a_of_type_AndroidWidgetAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Bhqo);
     }
     this.jdField_a_of_type_AndroidWidgetAdapter = paramAdapter;
     if (this.jdField_a_of_type_AndroidWidgetAdapter != null)
     {
       this.mItemCount = this.jdField_a_of_type_AndroidWidgetAdapter.getCount();
-      this.jdField_a_of_type_AndroidWidgetAdapter.registerDataSetObserver(this.jdField_a_of_type_Bfps);
+      this.jdField_a_of_type_AndroidWidgetAdapter.registerDataSetObserver(this.jdField_a_of_type_Bhqo);
       a();
     }
   }
@@ -398,7 +398,7 @@ public class ReadInJoyFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout
  * JD-Core Version:    0.7.0.1
  */

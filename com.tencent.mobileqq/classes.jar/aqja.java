@@ -1,29 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.ExpandableListView;
 
-public class aqja
-  implements CompoundButton.OnCheckedChangeListener
+class aqja
+  implements View.OnClickListener
 {
-  public aqja(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  aqja(aqiz paramaqiz, int paramInt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    bfna.a(false, paramBoolean);
-    paramCompoundButton = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (aqiz.a(this.jdField_a_of_type_Aqiz).c(this.jdField_a_of_type_Int))
     {
-      axqy.b(null, "CliOper", "", paramCompoundButton, "0X800A6E4", "0X800A6E4", 0, i, "", "", "", "");
+      aqiz.a(this.jdField_a_of_type_Aqiz).b(this.jdField_a_of_type_Int);
       return;
     }
+    aqiz.a(this.jdField_a_of_type_Aqiz).a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqja
  * JD-Core Version:    0.7.0.1
  */

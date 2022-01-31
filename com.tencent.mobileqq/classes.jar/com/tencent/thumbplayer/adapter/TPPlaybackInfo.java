@@ -11,7 +11,7 @@ public class TPPlaybackInfo
   private long audioBitRate;
   private String audioCodec;
   private int audioProfile;
-  private int bufferPercent;
+  private long bufferMs;
   private int channels;
   private String containerFormat;
   private int currentPlayClipNo;
@@ -31,56 +31,64 @@ public class TPPlaybackInfo
     if (TextUtils.isEmpty(paramString)) {
       return new TPPlaybackInfo();
     }
-    Object localObject = paramString.split("\n");
-    paramString = new HashMap();
+    String[] arrayOfString = paramString.split("\n");
+    HashMap localHashMap = new HashMap();
     int i = 0;
-    if (i < localObject.length)
+    if (i < arrayOfString.length)
     {
-      if (localObject[i].startsWith("#")) {}
+      if (arrayOfString[i].startsWith("#")) {}
       for (;;)
       {
         i += 1;
         break;
-        if (localObject[i].contains("="))
+        if (arrayOfString[i].contains("="))
         {
-          String[] arrayOfString = localObject[i].split("=");
-          if ((arrayOfString != null) && (arrayOfString.length >= 2)) {
-            paramString.put(arrayOfString[0], arrayOfString[1]);
-          } else {
-            TPLogUtil.i(TAG, "parseInfo, " + arrayOfString[0] + "is empty");
+          paramString = arrayOfString[i].split("=");
+          if ((paramString == null) || (paramString.length < 2)) {
+            break label102;
           }
+          localHashMap.put(paramString[0], paramString[1]);
         }
       }
+      label102:
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder().append("parseInfo, ");
+      if ((paramString != null) && (paramString.length >= 1)) {}
+      for (paramString = paramString[0];; paramString = "param null, ")
+      {
+        TPLogUtil.i(str, paramString + "is empty");
+        break;
+      }
     }
-    localObject = new TPPlaybackInfo();
-    if (paramString.containsKey("ContainerFormat")) {
-      ((TPPlaybackInfo)localObject).setContainerFormat((String)paramString.get("ContainerFormat"));
+    paramString = new TPPlaybackInfo();
+    if (localHashMap.containsKey("ContainerFormat")) {
+      paramString.setContainerFormat((String)localHashMap.get("ContainerFormat"));
     }
-    if (paramString.containsKey("VideoCodec")) {
-      ((TPPlaybackInfo)localObject).setVideoCodec((String)paramString.get("VideoCodec"));
+    if (localHashMap.containsKey("VideoCodec")) {
+      paramString.setVideoCodec((String)localHashMap.get("VideoCodec"));
     }
-    if (paramString.containsKey("AudioCodec")) {
-      ((TPPlaybackInfo)localObject).setAudioCodec((String)paramString.get("AudioCodec"));
+    if (localHashMap.containsKey("AudioCodec")) {
+      paramString.setAudioCodec((String)localHashMap.get("AudioCodec"));
     }
-    if (paramString.containsKey("Width")) {
-      ((TPPlaybackInfo)localObject).setWidth(Long.valueOf((String)paramString.get("Width")).longValue());
+    if (localHashMap.containsKey("Width")) {
+      paramString.setWidth(Long.valueOf((String)localHashMap.get("Width")).longValue());
     }
-    if (paramString.containsKey("Height")) {
-      ((TPPlaybackInfo)localObject).setHeight(Long.valueOf((String)paramString.get("Height")).longValue());
+    if (localHashMap.containsKey("Height")) {
+      paramString.setHeight(Long.valueOf((String)localHashMap.get("Height")).longValue());
     }
-    if (paramString.containsKey("VideoBitRate")) {
-      ((TPPlaybackInfo)localObject).setVideoBitRate(Long.valueOf((String)paramString.get("VideoBitRate")).longValue());
+    if (localHashMap.containsKey("VideoBitRate")) {
+      paramString.setVideoBitRate(Long.valueOf((String)localHashMap.get("VideoBitRate")).longValue());
     }
-    if (paramString.containsKey("AudioBitRate")) {
-      ((TPPlaybackInfo)localObject).setAudioBitRate(Long.valueOf((String)paramString.get("AudioBitRate")).longValue());
+    if (localHashMap.containsKey("AudioBitRate")) {
+      paramString.setAudioBitRate(Long.valueOf((String)localHashMap.get("AudioBitRate")).longValue());
     }
-    if (paramString.containsKey("SampleRate")) {
-      ((TPPlaybackInfo)localObject).setSampleRate(Long.valueOf((String)paramString.get("SampleRate")).longValue());
+    if (localHashMap.containsKey("SampleRate")) {
+      paramString.setSampleRate(Long.valueOf((String)localHashMap.get("SampleRate")).longValue());
     }
-    if (paramString.containsKey("Channels")) {
-      ((TPPlaybackInfo)localObject).setChannels(Integer.valueOf((String)paramString.get("Channels")).intValue());
+    if (localHashMap.containsKey("Channels")) {
+      paramString.setChannels(Integer.valueOf((String)localHashMap.get("Channels")).intValue());
     }
-    return localObject;
+    return paramString;
   }
   
   public void clear()
@@ -100,7 +108,7 @@ public class TPPlaybackInfo
     this.videoLevel = 0;
     this.currentPositionMs = 0L;
     this.durationMs = 0L;
-    this.bufferPercent = 0;
+    this.bufferMs = 0L;
     this.currentPlayClipNo = 0;
   }
   
@@ -119,9 +127,9 @@ public class TPPlaybackInfo
     return this.audioProfile;
   }
   
-  public int getBufferPercent()
+  public long getBufferMs()
   {
-    return this.bufferPercent;
+    return this.bufferMs;
   }
   
   public int getChannels()
@@ -204,9 +212,9 @@ public class TPPlaybackInfo
     this.audioProfile = paramInt;
   }
   
-  public void setBufferPercent(int paramInt)
+  public void setBufferMs(long paramLong)
   {
-    this.bufferPercent = paramInt;
+    this.bufferMs = paramLong;
   }
   
   public void setChannels(int paramInt)
@@ -276,7 +284,7 @@ public class TPPlaybackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlaybackInfo
  * JD-Core Version:    0.7.0.1
  */

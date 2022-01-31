@@ -4,16 +4,16 @@ import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import ozy;
+import pfg;
 
 public class ChannelCoverInfoModule$5
   implements Runnable
 {
-  public ChannelCoverInfoModule$5(ozy paramozy, int paramInt) {}
+  public ChannelCoverInfoModule$5(pfg parampfg, int paramInt) {}
   
   public void run()
   {
-    List localList = ozy.a(this.this$0, this.a);
+    List localList = pfg.a(this.this$0, this.a);
     if ((localList != null) && (localList.size() > 0))
     {
       StringBuilder localStringBuilder = new StringBuilder("loadChannelCoverListFromDB size = " + localList.size() + "\n");
@@ -43,7 +43,7 @@ public class ChannelCoverInfoModule$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.5
  * JD-Core Version:    0.7.0.1
  */

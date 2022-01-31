@@ -1,37 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.widget.Switch;
 
-public class akex
-  extends ajtb
+class akex
+  implements View.OnClickListener
 {
-  public akex(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  akex(akev paramakev, RedTouch paramRedTouch, aovj paramaovj) {}
   
-  protected Class<? extends ajte> observerClass()
+  public void onClick(View paramView)
   {
-    return akey.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("QzoneService.GetNewAndUnread".equals(paramToServiceMsg.getServiceCmd()))
+    Switch localSwitch;
+    if (AppSetting.c)
     {
-      if (paramObject == null) {
-        notifyUI(1, false, null);
+      localSwitch = (Switch)paramView.findViewById(2131363726);
+      if (localSwitch != null) {
+        if (localSwitch.isChecked()) {
+          break label59;
+        }
       }
     }
-    else {
+    label59:
+    for (boolean bool = true;; bool = false)
+    {
+      localSwitch.setChecked(bool);
+      akev.a(this.jdField_a_of_type_Akev, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Aovj, localSwitch.isChecked());
+      paramView.sendAccessibilityEvent(1);
       return;
     }
-    notifyUI(1, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akex
  * JD-Core Version:    0.7.0.1
  */

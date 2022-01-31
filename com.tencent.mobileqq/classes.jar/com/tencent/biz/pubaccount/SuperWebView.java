@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import acsz;
+import aekj;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -53,7 +53,7 @@ public abstract class SuperWebView
   
   public void loadUrl(String paramString)
   {
-    acsz.a(this.mIntent, paramString);
+    aekj.a(this.mIntent, paramString);
     if (this.mReadyForLoadJs) {
       if ((Build.VERSION.SDK_INT >= 19) && (paramString != null) && (paramString.startsWith("javascript:"))) {
         super.evaluateJavascript(paramString.substring("javascript:".length()), null);
@@ -125,7 +125,7 @@ public abstract class SuperWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.SuperWebView
  * JD-Core Version:    0.7.0.1
  */

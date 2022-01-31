@@ -1,109 +1,34 @@
-import android.os.Message;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.transfile.C2CPttDownloadProcessor;
-import com.tencent.mobileqq.transfile.GroupPttDownloadProcessor;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class ayqr
-  implements bbmw
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private aywb jdField_a_of_type_Aywb = new ayqs(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
+  public static final String a = alpo.a(2131703177);
+  public static final String b = alpo.a(2131703204);
+  public static final String c = alpo.a(2131703176);
+  public static final String d = alpo.a(2131703175);
   
-  public ayqr(long paramLong1, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong2, int paramInt2)
+  public static String a(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString5;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.e = paramString4;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Aywb.addFilter(new Class[] { ayph.class, aypl.class, GroupPttDownloadProcessor.class, C2CPttDownloadProcessor.class });
-    paramQQAppInterface.a().a(this.jdField_a_of_type_Aywb);
-  }
-  
-  private void b()
-  {
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_Long);
-    Message localMessage = new Message();
-    localMessage.what = 1005;
-    ayqo localayqo = new ayqo(this.jdField_b_of_type_JavaLangString, this.c, 0);
-    localayqo.jdField_b_of_type_Int = 1;
-    localayqo.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-    localMessage.obj = localayqo;
-    localMessage.arg1 = 0;
-    aypb.a(localMessage, ayqr.class, 0L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.e, this.d, this.jdField_b_of_type_Long, this.jdField_b_of_type_Int);
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_Long);
-    if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 1001) || (this.jdField_a_of_type_Int == 10002) || (this.jdField_a_of_type_Int == 3000))
-    {
-      if (this.jdField_a_of_type_Int == 1001) {}
-      for (long l = AppSetting.c;; l = ayxe.b())
-      {
-        int i = (int)l;
-        if (new File(this.c).length() > i)
-        {
-          bbef.a(-1L, this.jdField_a_of_type_Int, true, "group_compress", "ForwardImageProcessor.uploadImage");
-          this.c = bbef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.c, i);
-        }
-        if (bbef.a(null, this.c, 5, null, "ForwardImageProcessor.handleMessage.compress")) {
-          break;
-        }
-        return;
-      }
+    long l = System.currentTimeMillis() / 1000L - paramLong;
+    if ((l >= 0L) && (l < 60L)) {
+      return a;
     }
-    aywc localaywc = new aywc();
-    localaywc.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    localaywc.c = this.jdField_b_of_type_JavaLangString;
-    localaywc.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localaywc.jdField_b_of_type_Int = 1;
-    localaywc.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localaywc.jdField_a_of_type_Boolean = true;
-    localaywc.e = 1009;
-    localaywc.i = this.c;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaywc);
+    if ((l >= 60L) && (l < 3600L)) {
+      return l / 60L + b;
+    }
+    if ((l >= 3600L) && (l < 86400L)) {
+      return l / 3600L + c;
+    }
+    if ((l >= 86400L) && (l < 432000L)) {
+      return l / 86400L + d;
+    }
+    return new SimpleDateFormat("yyyy-MM-dd").format(Long.valueOf(paramLong * 1000L));
   }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Aywb);
-  }
-  
-  public void a(bbmu parambbmu1, bbmu parambbmu2) {}
-  
-  public void a(String paramString) {}
-  
-  public boolean a(bbmu parambbmu1, bbmu parambbmu2, int paramInt)
-  {
-    return false;
-  }
-  
-  public void b(bbmu parambbmu1, bbmu parambbmu2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayqr
  * JD-Core Version:    0.7.0.1
  */

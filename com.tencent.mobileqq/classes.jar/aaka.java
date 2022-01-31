@@ -1,36 +1,51 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialAd.IPCHandlerForClose.1;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
+import java.lang.ref.WeakReference;
 
-public class aaka
-  implements bfph
+public final class aaka
+  implements aamg
 {
-  public aaka(AssociatedAccountActivity paramAssociatedAccountActivity, bfpc parambfpc) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public aami a(aamh paramaamh)
   {
-    switch (paramInt)
+    String str2 = null;
+    aami localaami = new aami();
+    if (paramaamh == null) {
+      if (paramaamh == null) {
+        break label179;
+      }
+    }
+    label179:
+    for (String str1 = paramaamh.a();; str1 = null)
     {
-    default: 
-      return;
+      if (paramaamh != null) {
+        str2 = paramaamh.b();
+      }
+      aanp.b("GdtInterstitialAd", String.format("IPCHandlerForClose.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localaami.a) }));
+      return localaami;
+      if ((!paramaamh.a()) || (paramaamh.a == null)) {
+        break;
+      }
+      str1 = paramaamh.a.getString("TRACE_ID");
+      if (paramaamh.a == null) {
+        break;
+      }
+      WeakReference localWeakReference = aakb.a().a(str1);
+      if ((localWeakReference == null) || (localWeakReference.get() == null)) {
+        break;
+      }
+      aakc.c(BaseApplicationImpl.getContext(), ((GdtInterstitialFragment)localWeakReference.get()).a(), ((GdtInterstitialFragment)localWeakReference.get()).a());
+      localaami.a = true;
+      AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialAd.IPCHandlerForClose.1(this, str1), 0, 2000L);
+      break;
     }
-    this.jdField_a_of_type_Bfpc.cancel();
-    paramView = (ayax)this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app.getManager(61);
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a.iterator();
-    while (localIterator.hasNext()) {
-      paramView.c(((SubAccountInfo)localIterator.next()).subuin);
-    }
-    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690809));
-    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaka
  * JD-Core Version:    0.7.0.1
  */

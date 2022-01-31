@@ -2,8 +2,8 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.content.Context;
 import android.view.View;
-import asgn;
-import asgr;
+import atxn;
+import atxr;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenManager;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
@@ -21,9 +21,9 @@ public class IVFloatingScreenManagerInterfaceImpl
     return sInstance;
   }
   
-  int abandonMediaFocus(asgr paramasgr)
+  int abandonMediaFocus(atxr paramatxr)
   {
-    return asgn.a().a(paramasgr);
+    return atxn.a().a(paramatxr);
   }
   
   int enterFloatingScreen(Context paramContext, View paramView)
@@ -37,9 +37,9 @@ public class IVFloatingScreenManagerInterfaceImpl
     FloatingScreenManager.getInstance().quitFloatingScreen();
   }
   
-  int requestMediaFocus(int paramInt, asgr paramasgr)
+  int requestMediaFocus(int paramInt, atxr paramatxr)
   {
-    return asgn.a().a(paramInt, paramasgr);
+    return atxn.a().a(paramInt, paramatxr);
   }
   
   IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)

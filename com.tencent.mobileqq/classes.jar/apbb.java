@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteQuery;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 
 public class apbb
-  extends aoyv
+  implements SQLiteDatabase.CursorFactory
 {
-  int a;
-  int b;
+  private apbb(QQEntityManagerFactory paramQQEntityManagerFactory) {}
   
-  public apbb(FileManagerEntity paramFileManagerEntity)
+  public Cursor newCursor(SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
   {
-    super(paramFileManagerEntity);
+    return new apbc(this, paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
   }
 }
 

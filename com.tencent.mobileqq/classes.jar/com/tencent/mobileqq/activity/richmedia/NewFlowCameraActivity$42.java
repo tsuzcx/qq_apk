@@ -13,11 +13,11 @@ class NewFlowCameraActivity$42
   {
     if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 3) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 4))
     {
-      if (this.this$0.k) {
+      if (this.this$0.j) {
         if (this.this$0.f >= 60000)
         {
           i = 10000;
-          if (!this.this$0.D) {
+          if (!this.this$0.C) {
             break label142;
           }
           this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(i * 1.0F / (this.this$0.p * 10));
@@ -42,7 +42,7 @@ class NewFlowCameraActivity$42
       label181:
       CircleProgress localCircleProgress = this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress;
       float f = i;
-      if (this.this$0.i) {}
+      if (this.this$0.h) {}
       for (int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.c() + 1;; i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.c())
       {
         localCircleProgress.setProgress(1.0F * f / i);
@@ -54,7 +54,7 @@ class NewFlowCameraActivity$42
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.42
  * JD-Core Version:    0.7.0.1
  */

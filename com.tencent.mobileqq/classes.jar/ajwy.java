@@ -1,52 +1,29 @@
-import android.os.Vibrator;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajwy
-  implements View.OnLongClickListener
+  extends aljr
 {
-  public ajwy(FrameHelperActivity paramFrameHelperActivity) {}
+  public ajwy(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public boolean onLongClick(View paramView)
+  protected void a(int paramInt)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {
-      return true;
-    }
-    if (!ayaq.c(this.a.getActivity().app, false)) {
-      return true;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.b())) {
-      return true;
-    }
-    if ((paramView == this.a.b) && (this.a.jdField_a_of_type_Auhk != null) && (!this.a.jdField_a_of_type_Auhk.isShowing()))
+    switch (paramInt)
     {
-      if ((this.a.getActivity().app != null) && (this.a.getActivity().app.getApp() != null))
-      {
-        paramView = (Vibrator)this.a.getActivity().app.getApp().getSystemService("vibrator");
-        if (paramView != null) {
-          paramView.vibrate(new long[] { 0L, 1L, 20L, 21L }, -1);
-        }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
       }
-      this.a.jdField_a_of_type_Auhk.show();
-      axqy.b(this.a.getActivity().app, "dc00898", "", "", "0X800A999", "0X800A999", 1, 0, "", "", "", "");
-      axqy.b(this.a.getActivity().app, "dc00898", "", "", "0X8009E84", "0X8009E84", 0, 0, "", "", "", "");
-    }
-    if (this.a.jdField_a_of_type_Ajxc != null) {
-      this.a.jdField_a_of_type_Ajxc.a();
-    }
-    this.a.o();
-    axqy.b(this.a.getActivity().app, "CliOper", "", "", "0X80072D1", "0X80072D1", 0, 0, "", "", "", "");
-    return true;
+    } while (TroopDiscussionTroop.a(this.a) == null);
+    TroopDiscussionTroop.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwy
  * JD-Core Version:    0.7.0.1
  */

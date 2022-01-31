@@ -1,24 +1,35 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ajcp
-  implements Comparator<ajcr>
+  implements View.OnClickListener
 {
-  ajcp(ajco paramajco) {}
+  ajcp(ajbm paramajbm) {}
   
-  public int a(ajcr paramajcr1, ajcr paramajcr2)
+  public void onClick(View paramView)
   {
-    if (paramajcr1.a == paramajcr2.a) {
-      return 0;
+    ajbm.a(this.a).app.getPreferences();
+    amlp.a().a();
+    if (amlp.a().a() == 4)
+    {
+      amlp.a().a(ajbm.a(this.a));
+      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, amlo.b(), amlp.b(), amlp.a(), "1");
     }
-    if (paramajcr1.a > paramajcr2.a) {
-      return 1;
+    for (;;)
+    {
+      this.a.a(-1, null);
+      return;
+      UpgradeDetailActivity.a(ajbm.a(this.a), amlp.a().a(), true, true, true);
+      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, amlo.b(), amlp.b(), amlp.a(), "1");
     }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajcp
  * JD-Core Version:    0.7.0.1
  */

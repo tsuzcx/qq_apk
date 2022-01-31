@@ -1,20 +1,13 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
+import PersonalState.UserProfile;
+import java.util.List;
 
-public class axxk
+public abstract interface axxk
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public SingleLineTextView a;
-  
-  axxk(axxj paramaxxj) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, List<UserProfile> paramList, boolean paramBoolean3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxk
  * JD-Core Version:    0.7.0.1
  */

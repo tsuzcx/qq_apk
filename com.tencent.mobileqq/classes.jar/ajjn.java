@@ -1,38 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class ajjn
-  implements aiud
+public class ajjn
+  implements DialogInterface.OnClickListener
 {
-  ajjn(ajjd paramajjd, String paramString, File paramFile, int paramInt) {}
+  public ajjn(LoginView paramLoginView) {}
   
-  public void a(boolean paramBoolean, String paramString1, List<aiua> paramList, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
-    paramString1 = ajjd.a(this.jdField_a_of_type_JavaLangString);
-    if (TextUtils.isEmpty(paramString1))
+    azmj.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
+    try
     {
-      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.dismiss();
       return;
     }
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Ajjd.a(paramString1, 0, this.jdField_a_of_type_Int + ajya.a(2131700497));
-        return;
-      }
-      this.jdField_a_of_type_Ajjd.a(paramString1, 2, this.jdField_a_of_type_Int + ajya.a(2131700496));
-      return;
-    }
-    this.jdField_a_of_type_Ajjd.a(paramString1, 2, this.jdField_a_of_type_Int + ajya.a(2131700491));
+    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjn
  * JD-Core Version:    0.7.0.1
  */

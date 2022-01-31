@@ -1,29 +1,44 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
 public class upl
-  extends JobSegment<String, upp>
+  implements appt
 {
-  private tlw jdField_a_of_type_Tlw = new tlw();
+  public upl(StoryInputBarView paramStoryInputBarView) {}
   
-  public upl(upk paramupk, @NonNull String paramString)
+  public void a(appw paramappw)
   {
-    this.jdField_a_of_type_Tlw.a = new ArrayList();
-    paramupk = new uvp(paramString, 0, "", "");
-    this.jdField_a_of_type_Tlw.a.add(paramupk);
+    if (((paramappw instanceof apur)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+      ((apur)paramappw).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
+    }
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
+  
+  public boolean a(appw paramappw)
   {
-    syo.a().a(this.jdField_a_of_type_Tlw, new upm(this, paramJobContext));
+    return false;
   }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      baiy.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    }
+  }
+  
+  public void b(appw paramappw) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upl
  * JD-Core Version:    0.7.0.1
  */

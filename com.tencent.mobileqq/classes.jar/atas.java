@@ -1,168 +1,175 @@
-import android.util.Base64;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.NumRedInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.NumRedPath;
+import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
-import tencent.im.s2c.msgtype0x210.submsgtype0x69.Submsgtype0x69;
-import tencent.im.s2c.msgtype0x210.submsgtype0x89.Submsgtype0x89.NumRedBusiInfo;
+import javax.annotation.Nullable;
 
 public class atas
+  implements baln
 {
-  private static atas a = new atas();
+  private QQAppInterface a;
   
-  public static atas a()
+  public atas(QQAppInterface paramQQAppInterface)
   {
-    return a;
+    this.a = paramQQAppInterface;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2)
+  public int a()
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "parsePushRedPointInfo: appid = " + paramInt + ", path = " + paramString1 + ", content = " + paramString2);
-    }
-    if ((paramString2 != null) && (paramString2.length() > 0) && (paramString1 != null) && (paramString1.length() > 0))
+    return 9;
+  }
+  
+  public int a(int paramInt1, String paramString, Context paramContext, int paramInt2, Map<String, balk> paramMap, Bundle paramBundle)
+  {
+    Object localObject = (baky)this.a.getManager(339);
+    int i;
+    if (paramInt2 == 4)
     {
-      try
+      azmj.b(this.a, "dc00899", "c2c_AIO", "", "sing_tab", "clk_join_suc", 0, 1, paramString, "", "", "");
+      localObject = "4_" + paramInt1 + "_" + paramString;
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA=" + (String)localObject + " from=" + paramInt2);
+      }
+      if (paramInt1 != 2) {
+        break label289;
+      }
+      i = 2080;
+    }
+    for (;;)
+    {
+      if (((paramInt2 == 4) || (paramInt2 == 1) || (paramInt2 == 9) || (paramInt2 == 8)) && (paramMap != null) && (paramMap.get(localObject) != null))
       {
-        paramString2 = new JSONObject(paramString2).getString("_red_ext_0x69");
-        Object localObject = new Submsgtype0x69();
-        ((Submsgtype0x69)localObject).mergeFrom(Base64.decode(paramString2, 0));
-        paramString2 = new oidb_0x791.RedDotInfo();
-        paramString2.uint32_appid.set(((Submsgtype0x69)localObject).uint32_appid.get());
-        paramString2.bool_display_reddot.set(((Submsgtype0x69)localObject).bool_display_reddot.get());
-        avps localavps = (avps)paramQQAppInterface.getManager(36);
-        if ((!paramString1.equals("7719.771901")) && (!paramString1.equals("7719.771903")))
+        paramMap = (SingTogetherSession)paramMap.get(localObject);
+        if (!TextUtils.isEmpty(paramMap.b))
         {
-          paramInt = i;
-          if (!paramString1.equals("7719.771904")) {}
-        }
-        else
-        {
-          paramInt = localavps.a(paramString1, 0);
-          paramInt = localavps.a(paramString1, 1) + paramInt;
+          MiniAppLauncher.startMiniApp(paramContext, paramMap.b, i, null);
+          return 1;
+          if (paramInt2 == 9)
+          {
+            azmj.b(this.a, "dc00899", "c2c_AIO", "", "sing_tab", "clk_singark_suc", 0, 1, paramString, "", "", "");
+            break;
+          }
+          if (paramInt2 == 1)
+          {
+            ((baky)localObject).a("sing_tab", "clk_join_suc", 0, paramString);
+            break;
+          }
+          if (paramInt2 != 8) {
+            break;
+          }
+          ((baky)localObject).a("sing_tab", "clk_setsing_suc", 0, paramString);
+          break;
+          label289:
+          i = 2081;
+          continue;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "parsePushRedPointInfo: num = " + paramInt);
+          QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA is empty");
         }
-        paramString2.uint32_number.set(paramInt);
-        paramString2.uint32_reason.set(((Submsgtype0x69)localObject).uint32_reason.get());
-        paramString2.uint32_last_time.set(((Submsgtype0x69)localObject).uint32_last_time.get());
-        paramString2.uint64_cmd_uin.set(((Submsgtype0x69)localObject).uint64_cmd_uin.get());
-        paramString2.str_face_url.set(((Submsgtype0x69)localObject).bytes_face_url.get());
-        paramString2.str_custom_buffer.set(((Submsgtype0x69)localObject).bytes_custom_buffer.get());
-        paramString2.uint32_expire_time.set(((Submsgtype0x69)localObject).uint32_expire_time.get());
-        paramString2.uint32_cmd_uin_type.set(((Submsgtype0x69)localObject).uint32_cmd_uin_type.get());
-        paramString2.uint32_report_type.set(((Submsgtype0x69)localObject).uint32_report_type.get());
-        paramString1 = (mxu)paramQQAppInterface.getManager(70);
-        if ((paramString2.uint32_appid.get() != 38) && (paramString2.uint32_appid.get() != 42) && (paramString2.uint32_appid.get() != 59) && (paramString2.uint32_appid.get() != 60)) {
-          return;
-        }
-        localObject = paramString1.a(paramString2.uint32_appid.get());
-        if ((localObject != null) && (((oidb_0x791.RedDotInfo)localObject).uint32_number.get() == paramInt))
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "parsePushRedPointInfo: unread num not change, just return");
-          return;
-        }
-        paramString1.a(true);
-        paramString1.a(paramString2);
-        new axrc(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("nearby_push_red_tmp").a(new String[] { paramString2.uint32_appid.get() + "" }).a();
-        if (paramString2.uint32_appid.get() == 59)
-        {
-          new axrc(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("like_exp_red").a();
-          return;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        return;
-      }
-      if (paramString2.uint32_appid.get() == 60)
-      {
-        if (paramString2.uint64_cmd_uin.get() == 1822701914L)
-        {
-          new axrc(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("assist_exp_red").a();
-          return;
-        }
-        new axrc(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("c2c_exp_red").a();
-        return;
-      }
-      if (paramString2.uint32_appid.get() == 61) {
-        new axrc(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("paried_exp_red").a();
       }
     }
+    if (TextUtils.isEmpty(""))
+    {
+      localObject = ((aone)aogj.a().a(551)).a(4);
+      if ((localObject != null) && (((aonf)localObject).c != 1))
+      {
+        boolean bool = TextUtils.isEmpty(((aonf)localObject).a);
+        if (bool)
+        {
+          paramMap = "mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc";
+          if (!bool) {
+            break label448;
+          }
+          paramInt2 = 2;
+        }
+        for (;;)
+        {
+          if ((paramInt1 == 2) && (((aonf)localObject).d > 0))
+          {
+            paramString = ((atal)this.a.getManager(348)).a(Long.parseLong(paramString), ((aonf)localObject).d, true);
+            if (TextUtils.isEmpty(paramString))
+            {
+              Toast.makeText(paramContext, "加载中，请稍后再试。", 1).show();
+              return 0;
+              paramMap = ((aonf)localObject).a;
+              break;
+              label448:
+              paramInt2 = ((aonf)localObject).b;
+              continue;
+            }
+            paramBundle.putString("TOGETHER_BUNDLE_KEY_C2C_FRIEND_OPENID", paramString);
+          }
+        }
+        ball.a(this.a, paramInt2, paramMap, null, paramBundle, paramInt1);
+        return 2;
+      }
+      if (paramInt1 == 2)
+      {
+        paramString = ((atal)this.a.getManager(348)).a(Long.parseLong(paramString), 1109995692L, true);
+        if (TextUtils.isEmpty(paramString))
+        {
+          Toast.makeText(paramContext, "加载中，请稍后再试。", 1).show();
+          return 0;
+        }
+        paramBundle.putString("TOGETHER_BUNDLE_KEY_C2C_FRIEND_OPENID", paramString);
+      }
+      if (paramInt1 == 1) {}
+      for (paramString = ball.a("mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc", paramBundle);; paramString = ball.b("mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc", paramBundle))
+      {
+        MiniAppLauncher.startMiniApp(paramContext, paramString, i, null);
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA=" + paramString);
+        }
+        return 3;
+      }
+    }
+    return -1;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, List<BusinessInfoCheckUpdate.NumRedInfo> paramList)
+  public bdfq a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "queryNearbyMsgInfos");
-    }
-    if (paramList.size() > 0)
-    {
-      ArrayList localArrayList = new ArrayList();
-      Object localObject1 = new HashMap();
-      paramList = paramList.iterator();
-      Object localObject2;
-      while (paramList.hasNext())
-      {
-        localObject2 = (BusinessInfoCheckUpdate.NumRedInfo)paramList.next();
-        if ((((BusinessInfoCheckUpdate.NumRedInfo)localObject2).appid.get() == 7719) && (((BusinessInfoCheckUpdate.NumRedInfo)localObject2).num_red_path.get().size() > 0))
-        {
-          localObject2 = ((BusinessInfoCheckUpdate.NumRedInfo)localObject2).num_red_path.get().iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            BusinessInfoCheckUpdate.NumRedPath localNumRedPath1 = (BusinessInfoCheckUpdate.NumRedPath)((Iterator)localObject2).next();
-            if (((Map)localObject1).containsKey(localNumRedPath1.str_path.get()))
-            {
-              BusinessInfoCheckUpdate.NumRedPath localNumRedPath2 = (BusinessInfoCheckUpdate.NumRedPath)((Map)localObject1).get(localNumRedPath1.str_path.get());
-              if (localNumRedPath1.uint32_expire_time.get() > localNumRedPath2.uint32_expire_time.get()) {
-                ((Map)localObject1).put(localNumRedPath1.str_path.get(), localNumRedPath1);
-              }
-            }
-            else
-            {
-              ((Map)localObject1).put(localNumRedPath1.str_path.get(), localNumRedPath1);
-            }
-          }
-        }
-      }
-      paramList = ((Map)localObject1).entrySet().iterator();
-      while (paramList.hasNext())
-      {
-        localObject1 = (Map.Entry)paramList.next();
-        localObject2 = new Submsgtype0x89.NumRedBusiInfo();
-        ((Submsgtype0x89.NumRedBusiInfo)localObject2).uint64_msgid.set(((BusinessInfoCheckUpdate.NumRedPath)((Map.Entry)localObject1).getValue()).uint64_msgid.get());
-        ((Submsgtype0x89.NumRedBusiInfo)localObject2).uint32_android_app_id.set(7719);
-        ((Submsgtype0x89.NumRedBusiInfo)localObject2).str_android_path.set(((BusinessInfoCheckUpdate.NumRedPath)((Map.Entry)localObject1).getValue()).str_path.get());
-        localArrayList.add(localObject2);
-      }
-      ((avpo)paramQQAppInterface.getManager(65)).a(localArrayList, "nearby_num_red_dot", new atat(this, paramQQAppInterface));
-    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return "一起K歌";
+  }
+  
+  public void a() {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, balk> paramMap, @Nullable Bundle paramBundle) {}
+  
+  public void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt) {}
+  
+  public void a(balk parambalk, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
+  
+  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, balk> paramMap, @Nullable Bundle paramBundle)
+  {
+    a(paramInt1, paramString, paramContext, paramInt2, paramMap, paramBundle);
+    return false;
+  }
+  
+  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, balk> paramMap, @Nullable Bundle paramBundle)
+  {
+    return true;
+  }
+  
+  public boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, balk> paramMap, @Nullable Bundle paramBundle)
+  {
+    a(paramInt1, paramString, paramContext, paramInt2, paramMap, paramBundle);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atas
  * JD-Core Version:    0.7.0.1
  */

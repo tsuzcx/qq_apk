@@ -17,7 +17,7 @@ public final class Common$SeatsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.hotchat.Common.SeatsInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-class adzh
-  implements View.OnClickListener
+public class adzh
+  implements DialogInterface.OnClickListener
 {
-  adzh(adzf paramadzf) {}
+  public adzh(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof MessageForShortVideo))
-    {
-      localObject = (MessageForShortVideo)localObject;
-      axdy.a(paramView.getContext(), this.a.a.a, ((MessageForShortVideo)localObject).msgTailType);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzh
  * JD-Core Version:    0.7.0.1
  */

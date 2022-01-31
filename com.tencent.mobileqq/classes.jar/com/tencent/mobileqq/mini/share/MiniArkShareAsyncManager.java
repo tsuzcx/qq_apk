@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.mini.share;
 
-import alsz;
-import alwl;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import aukp;
-import aukq;
-import ayou;
-import ayvx;
-import aywb;
-import aywc;
-import bcyb;
+import anjs;
+import anni;
+import awbw;
+import awbx;
+import bamp;
+import batw;
+import baua;
+import baub;
+import bexd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -75,7 +75,7 @@ public class MiniArkShareAsyncManager
       }
     }
     label262:
-    for (String str1 = alsz.a(str3, str2);; str1 = str2)
+    for (String str1 = anjs.a(str3, str2);; str1 = str2)
     {
       Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject1 instanceof QQAppInterface))
@@ -86,7 +86,7 @@ public class MiniArkShareAsyncManager
         {
           localObject2 = ((ArkAppCenter)localObject2).a();
           if (localObject2 != null) {
-            ((alwl)localObject2).a(str3, new MiniArkShareAsyncPreprocessor(paramBundle));
+            ((anni)localObject2).a(str3, new MiniArkShareAsyncPreprocessor(paramBundle));
           }
         }
         if (i != 0)
@@ -131,25 +131,25 @@ public class MiniArkShareAsyncManager
       if ((localObject instanceof QQAppInterface))
       {
         localObject = (QQAppInterface)localObject;
-        aywc localaywc = new aywc();
-        localaywc.jdField_a_of_type_Boolean = true;
-        localaywc.i = paramString;
-        localaywc.jdField_c_of_type_Int = 62;
-        localaywc.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-        localaywc.jdField_c_of_type_JavaLangString = "0";
-        localaywc.jdField_b_of_type_JavaLangString = String.valueOf(bcyb.a().a());
-        localaywc.jdField_b_of_type_Int = 24;
-        localaywc.jdField_a_of_type_JavaLangString = "miniAppArkShareUploadPicHit";
+        baub localbaub = new baub();
+        localbaub.jdField_a_of_type_Boolean = true;
+        localbaub.i = paramString;
+        localbaub.jdField_c_of_type_Int = 62;
+        localbaub.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
+        localbaub.jdField_c_of_type_JavaLangString = "0";
+        localbaub.jdField_b_of_type_JavaLangString = String.valueOf(bexd.a().a());
+        localbaub.jdField_b_of_type_Int = 24;
+        localbaub.jdField_a_of_type_JavaLangString = "miniAppArkShareUploadPicHit";
         paramString = new Bdh_extinfo.CommFileExtReq();
         paramString.uint32_action_type.set(0);
         paramString.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-        localaywc.jdField_a_of_type_ArrayOfByte = paramString.toByteArray();
+        localbaub.jdField_a_of_type_ArrayOfByte = paramString.toByteArray();
         paramString = new MiniArkShareAsyncTransProcessorHandler(ThreadManagerV2.getFileThreadLooper(), paramCmdCallback);
-        paramString.addFilter(new Class[] { ayou.class });
+        paramString.addFilter(new Class[] { bamp.class });
         if (((QQAppInterface)localObject).a() != null)
         {
           ((QQAppInterface)localObject).a().a(paramString);
-          ((QQAppInterface)localObject).a().a(localaywc);
+          ((QQAppInterface)localObject).a().a(localbaub);
         }
       }
     }
@@ -180,7 +180,7 @@ public class MiniArkShareAsyncManager
         localObject = ((ArkAppCenter)localObject).a();
         if (localObject != null)
         {
-          ((alwl)localObject).a("com.tencent.miniapp", new MiniArkShareAsyncPreprocessor(new Bundle()));
+          ((anni)localObject).a("com.tencent.miniapp", new MiniArkShareAsyncPreprocessor(new Bundle()));
           QLog.d("MiniArkShareAsyncManage", 2, "registerMiniArkShareMessageProcessorAfterProcessRestart");
         }
       }
@@ -199,7 +199,7 @@ public class MiniArkShareAsyncManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniArkShareAsyncManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 final class AudioHelper$3
   implements Runnable
@@ -10,14 +10,14 @@ final class AudioHelper$3
   
   public void run()
   {
-    bcql localbcql = bcql.a(BaseApplicationImpl.getContext(), "de:" + this.a, 1);
-    localbcql.a();
-    localbcql.a();
+    QQToast localQQToast = QQToast.a(BaseApplicationImpl.getContext(), "de:" + this.a, 1);
+    localQQToast.a();
+    localQQToast.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AudioHelper.3
  * JD-Core Version:    0.7.0.1
  */

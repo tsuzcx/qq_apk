@@ -1,22 +1,26 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
+import java.util.List;
 
-class omf
-  implements ViewBase.OnClickListener
+public class omf
+  implements ood
 {
-  omf(olt paramolt) {}
+  public omf(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<omt> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
+  
+  public void onCommentStateError(int paramInt)
   {
-    shq.a((Activity)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_Pau.a(), this.a.jdField_a_of_type_Pau.e(), false);
+    if (paramInt == 1002) {
+      ReadInJoySecondCommentListFragment.a(this.a, true);
+    }
+    if (paramInt == 1003) {
+      xxb.a(1, 2131718776);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     omf
  * JD-Core Version:    0.7.0.1
  */

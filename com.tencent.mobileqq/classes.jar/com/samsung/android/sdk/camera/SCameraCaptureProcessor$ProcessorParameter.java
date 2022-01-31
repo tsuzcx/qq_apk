@@ -16,7 +16,7 @@ public final class SCameraCaptureProcessor$ProcessorParameter<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.samsung.android.sdk.camera.SCameraCaptureProcessor.ProcessorParameter
  * JD-Core Version:    0.7.0.1
  */

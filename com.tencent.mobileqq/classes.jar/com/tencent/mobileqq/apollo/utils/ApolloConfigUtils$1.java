@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajmu;
+import aleh;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ApolloConfigUtils$1
@@ -10,15 +10,15 @@ public final class ApolloConfigUtils$1
   
   public void run()
   {
-    ajmu localajmu = (ajmu)this.a.getManager(155);
-    if (localajmu.a) {
-      localajmu.a(false);
+    aleh localaleh = (aleh)this.a.getManager(155);
+    if (localaleh.a) {
+      localaleh.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloConfigUtils.1
  * JD-Core Version:    0.7.0.1
  */

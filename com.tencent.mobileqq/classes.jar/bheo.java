@@ -1,36 +1,96 @@
-import NS_USER_ACTION_REPORT.ActionInfo;
+import com.tencent.oskplayer.util.QLog;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bheo
+public class bheo
+  implements QLog
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private long b;
+  private static ConcurrentHashMap<String, String> a;
   
-  public bheo(long paramLong, int paramInt)
+  private static String a(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    if (a == null) {
+      a = new ConcurrentHashMap();
+    }
+    if (!a.containsKey(paramString)) {
+      a.put(paramString, "VIDEO_LOG/" + paramString);
+    }
+    return (String)a.get(paramString);
   }
   
-  public bheo(long paramLong1, int paramInt, long paramLong2)
+  public int d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
+    QMLog.d(a(paramString1), paramString2);
+    return 0;
   }
   
-  public ActionInfo a()
+  public int d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    ActionInfo localActionInfo = new ActionInfo();
-    localActionInfo.oper_time = this.jdField_a_of_type_Long;
-    localActionInfo.action_id = this.jdField_a_of_type_Int;
-    localActionInfo.action_value = this.b;
-    return localActionInfo;
+    QMLog.d(a(paramString1), paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QMLog.e(a(paramString1), paramString2);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QMLog.e(a(paramString1), paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    QMLog.i(a(paramString1), paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QMLog.i(a(paramString1), paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QMLog.isColorLevel()) {
+      QMLog.i(a(paramString1), paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QMLog.isColorLevel()) {
+      QMLog.i(a(paramString1), paramString2, paramThrowable);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    QMLog.w(a(paramString1), paramString2);
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QMLog.w(a(paramString1), paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int w(String paramString, Throwable paramThrowable)
+  {
+    QMLog.w(a(paramString), paramThrowable.getMessage());
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bheo
  * JD-Core Version:    0.7.0.1
  */

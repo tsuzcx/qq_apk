@@ -31,13 +31,13 @@ public class QWalletFullWindowActivity
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    if (findViewById(2131363418) != null) {}
+    if (findViewById(2131363457) != null) {}
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity
  * JD-Core Version:    0.7.0.1
  */

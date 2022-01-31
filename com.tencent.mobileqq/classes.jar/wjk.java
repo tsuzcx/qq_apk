@@ -1,24 +1,87 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelAllMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class wjk
-  implements wkk
+  extends naa
 {
-  public wjk(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
+  public wjk(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  public void a()
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (RecommendBannerFeedItemView.a(this.a) == null) {
-      return;
+    int j = -1;
+    paramBundle = new qqstory_struct.ErrorInfo();
+    qqstory_710_del_message.RspDelAllMessage localRspDelAllMessage;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      localRspDelAllMessage = new qqstory_710_del_message.RspDelAllMessage();
     }
-    xhb.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
+    for (;;)
+    {
+      int m;
+      int k;
+      try
+      {
+        localRspDelAllMessage.mergeFrom(paramArrayOfByte);
+        if (!localRspDelAllMessage.errinfo.error_code.has()) {
+          break label239;
+        }
+        i = localRspDelAllMessage.errinfo.error_code.get();
+        j = i;
+        if (j == 0) {
+          i = 1;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        m = 0;
+        k = j;
+      }
+      try
+      {
+        paramBundle.error_code.set(localRspDelAllMessage.errinfo.error_code.get());
+        paramBundle.error_desc.set(localRspDelAllMessage.errinfo.error_desc.get());
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.msgList", 2, "receive delete all msg, code=" + paramInt + " bizCode=" + j);
+        }
+        if (i == 0) {
+          QQToast.a(this.a.getApplicationContext(), 1, alpo.a(2131714893), 0).a();
+        }
+        return paramBundle;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          k = j;
+          m = i;
+        }
+      }
+      int i = 0;
+      continue;
+      j = k;
+      i = m;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelAllMessage", paramArrayOfByte);
+        j = k;
+        i = m;
+        continue;
+        label239:
+        i = 0;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,22 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
-class beuo
-  implements DialogInterface.OnClickListener
+public class beuo
+  implements anoi
 {
-  beuo(beum parambeum) {}
+  public beuo(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (((this.a.a() instanceof Activity)) && (this.a.a() != null))
-    {
-      paramDialogInterface = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      Activity localActivity = (Activity)this.a.a();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("url", this.a.a().url.get());
-      paramDialogInterface.startBrowserActivity(localActivity, localIntent);
+    if (paramBitmap == null) {
+      return;
     }
+    ShareActionSheetV2.a(this.a, paramString1, paramString2, paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beuo
  * JD-Core Version:    0.7.0.1
  */

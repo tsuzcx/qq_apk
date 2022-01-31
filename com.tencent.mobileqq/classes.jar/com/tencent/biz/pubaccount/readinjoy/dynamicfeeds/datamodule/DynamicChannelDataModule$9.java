@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import orh;
+import ovz;
 
 public class DynamicChannelDataModule$9
   implements Runnable
 {
-  public DynamicChannelDataModule$9(orh paramorh, DynamicChannelDataModel paramDynamicChannelDataModel) {}
+  public DynamicChannelDataModule$9(ovz paramovz, DynamicChannelDataModel paramDynamicChannelDataModel) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class DynamicChannelDataModule$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DynamicChannelDataModule.9
  * JD-Core Version:    0.7.0.1
  */

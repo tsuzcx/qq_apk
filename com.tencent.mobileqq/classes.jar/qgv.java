@@ -1,11 +1,7 @@
-import java.util.List;
-
-public abstract interface qgv<T>
-  extends List<T>
-{}
+public abstract interface qgv {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qgv
  * JD-Core Version:    0.7.0.1
  */

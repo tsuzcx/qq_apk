@@ -1,177 +1,398 @@
 package c.t.m.g;
 
-import android.os.SystemClock;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.text.TextUtils;
-import com.tencent.map.geolocation.internal.TencentLogImpl;
-import com.tencent.tencentmap.lbssdk.service.e;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.LinkedList;
 
-final class em
+public final class em
+  implements SensorEventListener, ef
 {
-  final LinkedBlockingQueue<em.a> a;
-  final dx b;
-  long c;
-  long d;
-  long e;
-  long f;
-  volatile boolean g;
-  long h;
+  static Context f;
+  static SharedPreferences i;
+  private static volatile em j;
+  du a = new du();
+  SensorManager b;
+  Sensor c;
+  Sensor d;
+  Sensor e;
+  HandlerThread g;
+  public int h = 0;
+  private long k = 0L;
+  private long l = 0L;
+  private double m = 0.0D;
+  private boolean n = false;
+  private String o = "unknown";
+  private int p = 0;
+  private int q = 0;
   
-  em(dx paramdx)
+  private void a(boolean paramBoolean)
   {
-    this.b = paramdx;
-    this.a = new LinkedBlockingQueue(3);
-  }
-  
-  static String a(byte[] paramArrayOfByte, int paramInt)
-  {
-    if ((!TencentLogImpl.isDebugEnabled()) && (paramArrayOfByte != null)) {}
+    if ((!this.n) || (this.b != null)) {}
     try
     {
-      if (e.o(paramArrayOfByte, 1) < 0) {
-        return ed.a(paramInt, 0);
+      this.b.unregisterListener(this, this.c);
+      this.b.unregisterListener(this, this.d);
+      try
+      {
+        label38:
+        if ((Build.VERSION.SDK_INT >= 19) && (this.e != null)) {
+          this.b.unregisterListener(this, this.e);
+        }
+        label65:
+        this.k = 0L;
+        this.l = 0L;
+        if (paramBoolean) {}
+        for (this.o = "vehicle";; this.o = "unknown")
+        {
+          this.n = false;
+          return;
+        }
       }
-      paramArrayOfByte = ed.a(paramInt, 1);
-      return paramArrayOfByte;
+      catch (Throwable localThrowable1)
+      {
+        break label65;
+      }
     }
-    catch (UnsatisfiedLinkError paramArrayOfByte) {}
-    return null;
+    catch (Throwable localThrowable2)
+    {
+      break label38;
+    }
   }
   
-  /* Error */
-  private static byte[] a(byte[] paramArrayOfByte)
+  public static em b()
   {
-    // Byte code:
-    //   0: new 59	java/io/ByteArrayOutputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: arraylength
-    //   6: invokespecial 60	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   9: astore_1
-    //   10: new 62	java/util/zip/GZIPOutputStream
-    //   13: dup
-    //   14: aload_1
-    //   15: invokespecial 65	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   18: astore_2
-    //   19: aload_2
-    //   20: aload_0
-    //   21: invokevirtual 69	java/util/zip/GZIPOutputStream:write	([B)V
-    //   24: aload_2
-    //   25: invokevirtual 72	java/util/zip/GZIPOutputStream:close	()V
-    //   28: aload_1
-    //   29: invokevirtual 76	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   32: astore_0
-    //   33: aload_1
-    //   34: invokevirtual 77	java/io/ByteArrayOutputStream:close	()V
-    //   37: aload_0
-    //   38: areturn
-    //   39: astore_1
-    //   40: aconst_null
-    //   41: astore_0
-    //   42: aload_1
-    //   43: invokevirtual 80	java/lang/Exception:printStackTrace	()V
-    //   46: aload_0
-    //   47: areturn
-    //   48: astore_1
-    //   49: aconst_null
-    //   50: astore_0
-    //   51: aload_1
-    //   52: invokevirtual 81	java/lang/Error:printStackTrace	()V
-    //   55: aload_0
-    //   56: areturn
-    //   57: astore_1
-    //   58: goto -7 -> 51
-    //   61: astore_1
-    //   62: goto -20 -> 42
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	65	0	paramArrayOfByte	byte[]
-    //   9	25	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   39	4	1	localException1	Exception
-    //   48	4	1	localError1	Error
-    //   57	1	1	localError2	Error
-    //   61	1	1	localException2	Exception
-    //   18	7	2	localGZIPOutputStream	java.util.zip.GZIPOutputStream
-    // Exception table:
-    //   from	to	target	type
-    //   0	33	39	java/lang/Exception
-    //   0	33	48	java/lang/Error
-    //   33	37	57	java/lang/Error
-    //   33	37	61	java/lang/Exception
-  }
-  
-  private void b()
-  {
-    this.c = 0L;
-    this.d = 0L;
-    this.e = 0L;
-    this.f = 0L;
+    if (j == null) {
+      j = new em();
+    }
+    return j;
   }
   
   public final void a()
   {
-    if (!this.g) {
-      return;
-    }
-    this.g = false;
-    this.a.clear();
-    this.a.offer(em.a.d);
-    this.h = 0L;
-    if (this.f != 0L)
-    {
-      long l1 = SystemClock.elapsedRealtime();
-      long l2 = this.f;
-      String.format(Locale.ENGLISH, "shutdown: duration=%ds, sent=%dB, recv=%dB, reqCount=%d", new Object[] { Long.valueOf((l1 - l2) / 1000L), Long.valueOf(this.d), Long.valueOf(this.e), Long.valueOf(this.c) });
-    }
-    b();
+    this.l = System.currentTimeMillis();
+    this.h += 1;
+    this.p += 1;
   }
   
-  final void a(em.a parama)
+  public final void a(int paramInt, double paramDouble1, double paramDouble2, long paramLong)
   {
-    em.a.d(parama);
-    Iterator localIterator = this.a.iterator();
-    do
+    new StringBuilder("speedType:").append(paramInt).append("speed:").append(paramDouble1).append(",").append(paramDouble2).append(",").append(paramLong);
+    if (paramLong > this.m)
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (em.a.c((em.a)localIterator.next()) != em.a.c(parama));
-    for (int i = 1;; i = 0)
-    {
-      if ((em.a.e(parama) > 0) && (i == 0) && (em.a.c(parama) != 2))
+      this.m = paramLong;
+      if (paramInt == 2)
       {
-        new StringBuilder("retryIfNeed: times=").append(em.a.e(parama));
-        this.a.offer(parama);
+        if ((paramDouble2 <= 4.0D) || (paramDouble1 <= 4.0D)) {
+          break label151;
+        }
+        this.o = "vehicle";
+      }
+      if (paramInt == 1) {
+        if ((paramDouble2 <= 8.0D) || (paramDouble1 <= 8.0D)) {
+          break label160;
+        }
+      }
+    }
+    label151:
+    label160:
+    for (this.o = "vehicle";; this.o = "unknown")
+    {
+      if (this.o.equalsIgnoreCase("vehicle")) {
+        a(true);
+      }
+      if (!this.o.equalsIgnoreCase("vehicle")) {
+        d();
       }
       return;
+      this.o = "unknown";
+      break;
     }
   }
   
-  public final void a(String paramString)
+  public final void c()
   {
+    if (this.g != null)
+    {
+      this.g.quit();
+      this.g = null;
+    }
+    a(false);
+    this.h = 0;
+  }
+  
+  @TargetApi(19)
+  final void d()
+  {
+    if (!this.n) {
+      this.k = System.currentTimeMillis();
+    }
     try
     {
-      if (TextUtils.isEmpty(paramString)) {
-        return;
+      Handler localHandler = new Handler(this.g.getLooper());
+      if (!this.b.registerListener(this, this.c, 1, localHandler)) {
+        this.h = -1;
       }
-      Object localObject = a(paramString.getBytes("UTF-8"));
-      e.o((byte[])localObject, 2);
-      localObject = new em.a(2, (byte[])localObject, "https://ue.indoorloc.map.qq.com/", null);
-      ((em.a)localObject).b = paramString;
-      if (em.a.a((em.a)localObject) != null)
+      this.b.registerListener(this, this.d, 3, localHandler);
+      if ((Build.VERSION.SDK_INT >= 19) && (this.e != null)) {
+        this.b.registerListener(this, this.e, 3, localHandler);
+      }
+      this.n = true;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      this.n = false;
+    }
+  }
+  
+  public final String e()
+  {
+    if ((this.o.equals("vehicle")) && (this.m > 0.0D) && (System.currentTimeMillis() - this.m > 30000.0D))
+    {
+      this.o = "unknown";
+      this.m = 0.0D;
+    }
+    if (this.o.equals("vehicle"))
+    {
+      this.p = 0;
+      return "vehicle";
+    }
+    if (this.o.equals("static"))
+    {
+      this.p = 0;
+      return "static";
+    }
+    if ((this.l > 0L) && (System.currentTimeMillis() - this.l > 20000L))
+    {
+      this.p = 0;
+      return "static";
+    }
+    if ((this.k > 0L) && (this.l == 0L) && (System.currentTimeMillis() - this.k > 20000L))
+    {
+      this.p = 0;
+      return "static";
+    }
+    if ((this.l > 0L) && (System.currentTimeMillis() - this.l < 10000L) && (this.p >= 2)) {
+      return "pedestrian";
+    }
+    this.p = 0;
+    return "unknown";
+  }
+  
+  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public final void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    Object localObject;
+    long l1;
+    float f1;
+    float f2;
+    float f3;
+    long l2;
+    label138:
+    int i2;
+    int i1;
+    label242:
+    int i3;
+    switch (paramSensorEvent.sensor.getType())
+    {
+    default: 
+    case 1: 
+      do
       {
-        this.a.offer(localObject);
         return;
+      } while ((paramSensorEvent == null) || (paramSensorEvent.values.length != 3));
+      localObject = this.a;
+      float[] arrayOfFloat = paramSensorEvent.values;
+      l1 = paramSensorEvent.timestamp;
+      f1 = arrayOfFloat[0];
+      f2 = arrayOfFloat[1];
+      f3 = arrayOfFloat[2];
+      l2 = System.currentTimeMillis();
+      if (((du)localObject).b == null)
+      {
+        ((du)localObject).b = new fn(l2, l1, f1, f2, f3);
+        ((du)localObject).d = ((du)localObject).b.a();
+        if ((((du)localObject).d != 0.0F) && (((du)localObject).e != 0.0F))
+        {
+          paramSensorEvent = new dy(((du)localObject).d, ((du)localObject).e, ((du)localObject).b.a(), l1);
+          ((du)localObject).a.add(paramSensorEvent);
+        }
+        if (((du)localObject).f == 0L) {
+          ((du)localObject).f = l1;
+        }
+        if ((float)(l1 - ((du)localObject).f) < 6.0E+008F) {
+          break label603;
+        }
+        if (!((du)localObject).g) {
+          break label633;
+        }
+        i2 = 0;
+        i1 = 0;
+        if (i1 >= ((du)localObject).a.size()) {
+          break label504;
+        }
+        paramSensorEvent = (dy)((du)localObject).a.get(i1);
+        if ((paramSensorEvent.a < 0.0F) || (paramSensorEvent.b > 0.0F)) {
+          break label498;
+        }
+        i3 = 1;
+        label290:
+        if ((i3 == 0) || (((du)localObject).h >= Math.abs(((dy)((du)localObject).a.get(i1)).c - ((dy)((du)localObject).a.get(0)).c))) {
+          break label1280;
+        }
+        ((du)localObject).h = Math.abs(((dy)((du)localObject).a.get(i1)).c - ((dy)((du)localObject).a.get(0)).c);
+        i2 = i1;
+      }
+      break;
+    }
+    label1280:
+    for (;;)
+    {
+      i1 += 1;
+      break label242;
+      ((du)localObject).b = new fn(l2, l1, ((du)localObject).b.a * 0.9F + 0.1F * f1, ((du)localObject).b.b * 0.9F + 0.1F * f2, ((du)localObject).b.c * 0.9F + 0.1F * f3);
+      if (((du)localObject).c == null) {
+        break label138;
+      }
+      ((du)localObject).d = (((du)localObject).b.a() - ((du)localObject).c.a());
+      break label138;
+      label498:
+      i3 = 0;
+      break label290;
+      label504:
+      if ((i2 > 0) && (i2 < ((du)localObject).a.size()))
+      {
+        ((du)localObject).f = ((dy)((du)localObject).a.get(i2)).d;
+        i1 = 0;
+        while (i1 < i2)
+        {
+          ((du)localObject).a.removeFirst();
+          i1 += 1;
+        }
+        if (((du)localObject).h > 1.0F) {
+          ((du)localObject).i.a();
+        }
+        ((du)localObject).h = 0.0F;
+        ((du)localObject).g = false;
+      }
+      for (;;)
+      {
+        label603:
+        ((du)localObject).c = ((du)localObject).b;
+        ((du)localObject).e = ((du)localObject).d;
+        return;
+        ((du)localObject).f = 0L;
+      }
+      label633:
+      i2 = 0;
+      i1 = 0;
+      label639:
+      if (i1 < ((du)localObject).a.size())
+      {
+        paramSensorEvent = (dy)((du)localObject).a.get(i1);
+        if ((paramSensorEvent.a <= 0.0F) && (paramSensorEvent.b >= 0.0F))
+        {
+          i3 = 1;
+          if ((i3 == 0) || (((du)localObject).h >= Math.abs(((dy)((du)localObject).a.get(i1)).c - ((dy)((du)localObject).a.get(0)).c))) {
+            break label1277;
+          }
+          ((du)localObject).h = Math.abs(((dy)((du)localObject).a.get(i1)).c - ((dy)((du)localObject).a.get(0)).c);
+          i2 = i1;
+        }
+      }
+      label687:
+      label1277:
+      for (;;)
+      {
+        i1 += 1;
+        break label639;
+        i3 = 0;
+        break label687;
+        if ((i2 > 0) && (i2 < ((du)localObject).a.size()))
+        {
+          ((du)localObject).f = ((dy)((du)localObject).a.get(i2)).d;
+          i1 = 0;
+          while (i1 < i2)
+          {
+            ((du)localObject).a.removeFirst();
+            i1 += 1;
+          }
+          ((du)localObject).h = 0.0F;
+          ((du)localObject).g = true;
+          break label603;
+        }
+        ((du)localObject).f = 0L;
+        break label603;
+        if ((paramSensorEvent == null) || (paramSensorEvent.values.length != 3)) {
+          break;
+        }
+        double d1 = paramSensorEvent.values[0] * paramSensorEvent.values[0] + paramSensorEvent.values[1] * paramSensorEvent.values[1] + paramSensorEvent.values[2] * paramSensorEvent.values[2];
+        if (d1 < 0.1D)
+        {
+          this.q += 1;
+          if (this.q <= 5) {
+            break;
+          }
+          this.o = "static";
+          return;
+        }
+        if ((d1 > 0.1D) && (d1 < 1.0D))
+        {
+          this.q -= 1;
+          if (this.q > 1) {
+            break;
+          }
+          this.o = "unknown";
+          return;
+        }
+        if (d1 <= 3.0D) {
+          break;
+        }
+        this.q = -5;
+        this.o = "unknown";
+        return;
+        if (paramSensorEvent.values[0] > 2.147484E+009F)
+        {
+          new StringBuilder("Sensor: probably not a real value: ").append(paramSensorEvent.values[0]);
+          return;
+        }
+        if ((int)paramSensorEvent.values[0] <= 0) {
+          break;
+        }
+        localObject = (String)dy.b(i, "stepStr", "");
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          paramSensorEvent = paramSensorEvent.values[0] + "," + System.currentTimeMillis() + ",0";
+          dy.a(i, "stepStr", paramSensorEvent);
+          return;
+        }
+        localObject = ((String)localObject).split(",");
+        f1 = Float.valueOf(localObject[0]).floatValue();
+        f2 = Float.valueOf(localObject[2]).floatValue();
+        if (f1 > paramSensorEvent.values[0]) {}
+        for (f1 = f2 + paramSensorEvent.values[0];; f1 = f2 + (paramSensorEvent.values[0] - f1))
+        {
+          paramSensorEvent = paramSensorEvent.values[0] + "," + System.currentTimeMillis() + "," + f1;
+          dy.a(i, "stepStr", paramSensorEvent);
+          return;
+        }
       }
     }
-    catch (Exception paramString) {}catch (Error paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.em
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import anox;
-import apug;
-import aywm;
+import apge;
+import arni;
+import baul;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import gt;
+import fc;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -68,7 +68,7 @@ public class AsyncImageView
       }
       String str2;
       String str1;
-      if (apug.a(paramString) == 2)
+      if (arni.a(paramString) == 2)
       {
         str2 = "videothumb";
         str1 = paramString;
@@ -134,7 +134,7 @@ public class AsyncImageView
     {
       paramString = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
       setImageDrawable(paramString);
-      paramString.setURLDrawableListener(new gt(this));
+      paramString.setURLDrawableListener(new fc(this));
       return;
       if (this.jdField_b_of_type_Boolean)
       {
@@ -165,17 +165,17 @@ public class AsyncImageView
     int i = this.jdField_a_of_type_Int;
     int j = this.jdField_b_of_type_Int;
     Resources localResources = getResources();
-    if ((aywm.b() instanceof SkinnableBitmapDrawable))
+    if ((baul.b() instanceof SkinnableBitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new anox(localResources, ((SkinnableBitmapDrawable)aywm.b()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new apge(localResources, ((SkinnableBitmapDrawable)baul.b()).getBitmap(), i, j, -921103);
       return;
     }
-    if ((aywm.b() instanceof BitmapDrawable))
+    if ((baul.b() instanceof BitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new anox(localResources, ((BitmapDrawable)aywm.b()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new apge(localResources, ((BitmapDrawable)baul.b()).getBitmap(), i, j, -921103);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = aywm.b();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = baul.b();
   }
   
   public void setImageDrawableDefault()
@@ -190,7 +190,7 @@ public class AsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.util.widget.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
-class ahcf
-  implements EIPClientConnectListener
+public class ahcf
+  implements View.OnClickListener
 {
-  ahcf(ahcd paramahcd, long paramLong) {}
+  public ahcf(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void connectFailed()
+  public void onClick(View paramView)
   {
-    ahcd.a(this.jdField_a_of_type_Ahcd, false);
-    ahcd.b(this.jdField_a_of_type_Ahcd, false);
-    synchronized (ahcd.a(this.jdField_a_of_type_Ahcd))
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) || (this.a.f == ClassificationSearchActivity.d))
     {
-      ahcd.a(this.jdField_a_of_type_Ahcd).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + ahcd.a(this.jdField_a_of_type_Ahcd));
-      }
+      ClassificationSearchActivity.a(this.a);
       return;
     }
-  }
-  
-  public void connectSuccess(EIPCConnection arg1)
-  {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      ahcd.a(this.jdField_a_of_type_Ahcd, ???.procName);
-    }
-    ahcd.a(this.jdField_a_of_type_Ahcd, true);
-    ahcd.b(this.jdField_a_of_type_Ahcd, false);
-    synchronized (ahcd.a(this.jdField_a_of_type_Ahcd))
-    {
-      ahcd.a(this.jdField_a_of_type_Ahcd).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + ahcd.a(this.jdField_a_of_type_Ahcd) + "|" + (l - this.jdField_a_of_type_Long));
-      }
-      return;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahcf
  * JD-Core Version:    0.7.0.1
  */

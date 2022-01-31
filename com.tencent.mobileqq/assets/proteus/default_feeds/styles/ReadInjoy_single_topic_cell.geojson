@@ -1,6 +1,6 @@
 {
   "ReadInjoy_single_topic_cell": {
-    "view_type": "cell",
+    "view_type": "container",
     "layout_type": "layout_relative",
     "height": {
       "type": "relative",

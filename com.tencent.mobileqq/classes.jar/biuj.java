@@ -1,26 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqpim.QQPimTipsInfo;
 
-class biuj
-  implements EIPCResultCallback
+public final class biuj
+  implements Parcelable.Creator<QQPimTipsInfo>
 {
-  biuj(biua parambiua) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public QQPimTipsInfo a(Parcel paramParcel)
   {
-    QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
-    if (paramEIPCResult.code == 0)
-    {
-      QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
-      return;
-    }
-    QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
+    return new QQPimTipsInfo(paramParcel, null);
+  }
+  
+  public QQPimTipsInfo[] a(int paramInt)
+  {
+    return new QQPimTipsInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biuj
  * JD-Core Version:    0.7.0.1
  */

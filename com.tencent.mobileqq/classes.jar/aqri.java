@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class aqri
-  implements View.OnClickListener
+  implements bevo
 {
-  aqri(aqrf paramaqrf) {}
+  aqri(aqrg paramaqrg) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    aqrf.e(this.a);
-    this.a.a(true);
+    arni.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aqrg.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqri
  * JD-Core Version:    0.7.0.1
  */

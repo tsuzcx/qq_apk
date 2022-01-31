@@ -1,10 +1,13 @@
-public abstract interface awrd<M extends awog, V extends awws>
+import android.widget.ToggleButton;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+
+public abstract interface awrd
 {
-  public abstract void a(M paramM, V paramV);
+  public abstract void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awrd
  * JD-Core Version:    0.7.0.1
  */

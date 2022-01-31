@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.apollo.ApolloTicker.NativeDrawTask;
-import java.util.Timer;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
-public class aiwr
+class aiwr
+  implements aith
 {
-  public int a;
-  public ApolloTicker.NativeDrawTask a;
-  public Timer a;
+  aiwr(aiwk paramaiwk, ResultReceiver paramResultReceiver) {}
+  
+  public void a(String paramString1, String paramString2, aitb paramaitb)
+  {
+    paramString1 = new Bundle();
+    paramString1.putString("res", paramString2);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwr
  * JD-Core Version:    0.7.0.1
  */

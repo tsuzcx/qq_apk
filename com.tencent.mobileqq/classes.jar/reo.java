@@ -1,27 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
-public class reo
-  implements bfos
+class reo
+  implements View.OnClickListener
 {
-  public reo(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  reo(rem paramrem) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.a.a(new req(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    this.a.a(new rep(this, "onScrollStateChanged", paramAbsListView, paramInt));
-    if ((onh.a()) && (paramInt != 0)) {
-      zzz.a().a("proteus_family_feeds");
+    rdm.a(rem.a(this.a), rem.a(this.a).a);
+    paramView = new JSONObject();
+    try
+    {
+      paramView.put("uin", rem.a(this.a).getCurrentAccountUin());
+      label45:
+      nrt.a(null, null, "0X8009BF2", "0X8009BF2", 0, 0, "", "", "", ntd.a(null, null, rem.a(this.a).a.a.a, rem.a(this.a).a.a.g, paramView), false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label45;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     reo
  * JD-Core Version:    0.7.0.1
  */

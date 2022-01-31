@@ -1,42 +1,65 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.config.ConfigInfo;
+import com.tencent.av.so.DownloadInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class mce
-  extends BroadcastReceiver
+public class mce
 {
-  mce(mcd parammcd) {}
+  private static volatile mce jdField_a_of_type_Mce;
+  mcg jdField_a_of_type_Mcg = null;
+  mcj jdField_a_of_type_Mcj = null;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static mce a()
   {
-    paramIntent = paramIntent.getAction();
-    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
+    if (jdField_a_of_type_Mce == null) {}
+    try
     {
-      if (!mcd.a(this.a))
+      if (jdField_a_of_type_Mce == null)
       {
-        mcd.a(this.a, true);
-        if (mcd.b(this.a)) {
-          mcd.a(this.a);
-        }
+        mce localmce = new mce();
+        localmce.b();
+        jdField_a_of_type_Mce = localmce;
       }
-      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
-      lvy.a().a("update", i);
+      return jdField_a_of_type_Mce;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (mcd.b(this.a)));
-      mcd.b(this.a, true);
-    } while (!mcd.a(this.a));
-    mcd.a(this.a);
+    finally {}
+  }
+  
+  public static void a()
+  {
+    mce localmce = a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavSo", 4, String.format("onDownloadRequest, mStatusSo[%s]", new Object[] { Integer.valueOf(localmce.jdField_a_of_type_Mcj.a) }));
+    }
+    mcg.a();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Mcj = new mcj();
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      this.jdField_a_of_type_Mcg = new mcg();
+    }
+  }
+  
+  public DownloadInfo a()
+  {
+    return this.jdField_a_of_type_Mcj.a();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Mcj.a();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Mcj.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mce
  * JD-Core Version:    0.7.0.1
  */

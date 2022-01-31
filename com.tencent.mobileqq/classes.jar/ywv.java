@@ -1,31 +1,38 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.jsbridge.GdtDeviceInfoJsCallHandler.1;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
 public class ywv
-  implements yxe
+  extends AnimatorListenerAdapter
 {
-  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
+  public ywv(SingleLyricView paramSingleLyricView, String paramString) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Object localObject = null;
-    WeakReference localWeakReference = new WeakReference(paramywk);
-    AdThreadManager.INSTANCE.post(new GdtDeviceInfoJsCallHandler.1(this, localWeakReference, paramVarArgs, paramString), 4);
-    if (paramywk != null) {}
-    for (paramString = paramywk.a();; paramString = null)
-    {
-      paramVarArgs = localObject;
-      if (paramywk != null) {
-        paramVarArgs = paramywk.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "getDeviceInfo", paramVarArgs);
-      return false;
+    super.onAnimationCancel(paramAnimator);
+    if (SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView) != null) {
+      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setText(this.jdField_a_of_type_JavaLangString);
     }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView) != null)
+    {
+      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setText(this.jdField_a_of_type_JavaLangString);
+      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setAlpha(0.3F);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ywv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.activity;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.os.Handler;
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 class LoadingFragment$6$3
   implements Runnable
@@ -12,13 +12,13 @@ class LoadingFragment$6$3
   
   public void run()
   {
-    bcql.a(this.this$1.this$0.getActivity().getApplicationContext(), ajya.a(2131706246), 0).a();
+    QQToast.a(this.this$1.this$0.getActivity().getApplicationContext(), alpo.a(2131706618), 0).a();
     this.this$1.this$0.uiHandler.postDelayed(new LoadingFragment.6.3.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.LoadingFragment.6.3
  * JD-Core Version:    0.7.0.1
  */

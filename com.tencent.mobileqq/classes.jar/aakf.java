@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-
-public class aakf
-  implements View.OnClickListener
+class aakf
+  implements aamd
 {
-  public aakf(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  aakf(aake paramaake) {}
   
-  public void onClick(View paramView)
+  public void a(aamh paramaamh, aami paramaami)
   {
-    this.a.onBackEvent();
+    if (paramaami != null) {}
+    for (boolean bool = paramaami.a;; bool = false)
+    {
+      aanp.b("GdtInterstitialPreDownloader", String.format("predownload.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aakf
  * JD-Core Version:    0.7.0.1
  */

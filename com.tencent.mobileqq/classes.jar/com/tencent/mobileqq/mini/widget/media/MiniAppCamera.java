@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.widget.media;
 
-import ajya;
+import alpo;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -25,7 +25,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wab;
+import xot;
 
 @SuppressLint({"ViewConstructor"})
 public class MiniAppCamera
@@ -43,7 +43,7 @@ public class MiniAppCamera
   private static WeakReference<WebviewContainer> sContainer;
   private static String videoPath;
   private int cameraId;
-  private volatile wab ffmpeg;
+  private volatile xot ffmpeg;
   private CameraSurfaceView.CameraSurfaceViewCallBack mCallback;
   protected WeakReference<WebviewContainer> mWcRef;
   
@@ -68,9 +68,9 @@ public class MiniAppCamera
   private void execCommand(String paramString1, String paramString2, String paramString3, WebviewContainer paramWebviewContainer, String paramString4, int paramInt)
   {
     if (this.ffmpeg == null) {
-      this.ffmpeg = wab.a(BaseApplicationImpl.getApplication());
+      this.ffmpeg = xot.a(BaseApplicationImpl.getApplication());
     }
-    paramWebviewContainer.showLoading(ajya.a(2131706791));
+    paramWebviewContainer.showLoading(alpo.a(2131707163));
     paramString1 = paramString1.split(" ");
     mExecutor.execute(new MiniAppCamera.6(this, paramString2, paramString1, paramWebviewContainer, paramString4, paramInt, paramString3));
   }
@@ -231,7 +231,7 @@ public class MiniAppCamera
     //   62: getstatic 41	com/tencent/mobileqq/mini/widget/media/MiniAppCamera:cameraWidth	I
     //   65: getstatic 43	com/tencent/mobileqq/mini/widget/media/MiniAppCamera:cameraHeight	I
     //   68: iload_3
-    //   69: invokestatic 416	bbef:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   69: invokestatic 416	bdda:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   72: astore_0
     //   73: aload 5
     //   75: ifnull +8 -> 83
@@ -529,7 +529,7 @@ public class MiniAppCamera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppCamera
  * JD-Core Version:    0.7.0.1
  */

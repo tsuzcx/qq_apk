@@ -1,42 +1,23 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aiio
-  implements aijc
+  extends awdn
 {
-  public aiio(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  public aiio(PhoneInnerFrame paramPhoneInnerFrame) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (;;)
+    if (this.a.a)
     {
-      try
-      {
-        QQSpecialCareSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
-      }
+      this.a.b().a().unRegistObserver(this);
+      this.a.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiio
  * JD-Core Version:    0.7.0.1
  */

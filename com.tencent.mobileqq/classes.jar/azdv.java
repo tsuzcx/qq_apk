@@ -1,29 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.widget.AdapterView;
-
 public class azdv
-  implements bfpu
 {
-  public azdv(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public static Object a;
+  public static String a;
+  public static volatile boolean a;
+  public static String b = "tag_v";
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  static
   {
-    if (this.a.a != null)
-    {
-      paramAdapterView = this.a.a.a(paramInt);
-      if ((paramAdapterView == null) || (paramAdapterView.a != 1)) {
-        return false;
-      }
-    }
-    MediaPreviewActivity.a(this.a);
-    return true;
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaLangString = "captureTest";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azdv
  * JD-Core Version:    0.7.0.1
  */

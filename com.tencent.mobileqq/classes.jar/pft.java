@@ -1,50 +1,19 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-public class pft
-  implements php
+public abstract interface pft
 {
-  private BaseTemplateFactory a;
+  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
   
-  public pft(VafContext paramVafContext)
-  {
-    this.a = paramVafContext.getTemplateFactory();
-  }
+  public abstract void a(int paramInt);
   
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    if (this.a != null) {
-      return this.a.getTemplateBean(paramJSONObject);
-    }
-    return null;
-  }
+  public abstract void a(int paramInt, pfu parampfu);
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return new pdm().N(paramBaseArticleInfo).C(paramBaseArticleInfo).a();
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_proteus_collection_view");
-    if ((paramContainer instanceof pno)) {
-      ((pno)paramContainer).a(parampau);
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
-  {
-    return false;
-  }
+  public abstract int[] a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pft
  * JD-Core Version:    0.7.0.1
  */

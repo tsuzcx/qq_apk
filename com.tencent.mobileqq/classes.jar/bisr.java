@@ -1,32 +1,18 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.1;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.2;
-import mqq.os.MqqHandler;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class bisr
-  implements birh
+  implements aobg
 {
-  bisr(bisp parambisp) {}
+  public bisr(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public void a(MetaMaterial paramMetaMaterial)
+  public void onColorNoteAnimFinish()
   {
-    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.1(this, paramMetaMaterial));
-  }
-  
-  public void a(MetaMaterial paramMetaMaterial, int paramInt)
-  {
-    bisp.a(this.a).a(new birm(paramMetaMaterial, 1, paramInt));
-  }
-  
-  public void b(MetaMaterial paramMetaMaterial)
-  {
-    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.2(this, paramMetaMaterial));
+    this.a.superFinish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bisr
  * JD-Core Version:    0.7.0.1
  */

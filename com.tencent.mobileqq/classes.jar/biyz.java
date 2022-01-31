@@ -1,40 +1,33 @@
-import android.graphics.Bitmap;
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qzone.LeakHelper.2.1;
 
-public class biyz
+public final class biyz
+  implements View.OnClickListener
 {
-  public final int a;
-  public final Bitmap a;
-  public final String a;
-  public final Throwable a;
-  public final boolean a;
-  
-  private biyz(boolean paramBoolean, int paramInt, String paramString, Throwable paramThrowable, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  private static biyz b(int paramInt, String paramString)
-  {
-    return new biyz(false, paramInt, paramString, null, null);
-  }
-  
-  private static biyz b(Bitmap paramBitmap)
-  {
-    return new biyz(true, 0, null, null, paramBitmap);
-  }
-  
-  public String toString()
-  {
-    return "ChangeFaceResult{isSuccess=" + this.jdField_a_of_type_Boolean + ", errCode=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", exception=" + this.jdField_a_of_type_JavaLangThrowable + ", data=" + this.jdField_a_of_type_AndroidGraphicsBitmap + '}';
+    if (this.a != null) {
+      this.a.dismiss();
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131706379) + "/Tencent/MobileQQ/log/", 1).a();
+    paramView = ThreadManager.newFreeHandlerThread("qzone-leaker", 10);
+    paramView.start();
+    paramView = paramView.getLooper();
+    if (paramView != null) {
+      new Handler(paramView).post(new LeakHelper.2.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biyz
  * JD-Core Version:    0.7.0.1
  */

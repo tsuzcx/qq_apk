@@ -1,46 +1,32 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class ahng
-  extends ahno
+class ahng
+  implements View.OnTouchListener
 {
-  public ahng()
-  {
-    this.jdField_a_of_type_Int = 2131562323;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  ahng(ahnd paramahnd, TextView paramTextView) {}
   
-  private void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ahnp localahnp = null;
-    if ((paramView.getTag() instanceof ahnp)) {
-      localahnp = (ahnp)paramView.getTag();
+    switch (paramMotionEvent.getAction())
+    {
     }
-    if ((localahnp == null) || (localahnp.a == null) || (paramRecentBaseData == null)) {
-      return;
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
     }
-    awgd.a(paramContext, localahnp.a, paramRecentBaseData.a());
-  }
-  
-  public View a(int paramInt, Object paramObject, ahnr paramahnr, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpo paramahpo)
-  {
-    return super.a(paramInt, paramObject, paramahnr, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramahpo);
-  }
-  
-  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
-  {
-    super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
-    a(paramView, paramRecentBaseData, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahng
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bctl;
+import besu;
 import com.tencent.image.URLImageView;
 
 public class PressEffectURLImageView
@@ -26,10 +26,10 @@ public class PressEffectURLImageView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bctl.a(this);
+      besu.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bctl.b(this);
+      besu.b(this);
     }
   }
 }

@@ -1,41 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
-class agdd
-  extends atzn
+public abstract interface agdd
 {
-  agdd(agcf paramagcf) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
-      }
-    }
-    switch (paramInt)
-    {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      this.a.g();
-      return;
-    case 1: 
-      this.a.g();
-      return;
-    case 4: 
-      this.a.g();
-      return;
-    }
-    this.a.g();
-    this.a.e();
-    this.a.f();
-  }
+  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdd
  * JD-Core Version:    0.7.0.1
  */

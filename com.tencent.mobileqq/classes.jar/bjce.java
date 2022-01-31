@@ -1,20 +1,24 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
-public abstract interface bjce
+public class bjce
+  implements View.OnClickListener
 {
-  public abstract void a(bjcq parambjcq);
+  public bjce(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public abstract void a(bjcq parambjcq, boolean paramBoolean, int paramInt, Bundle paramBundle);
-  
-  public abstract void a(bjct parambjct, boolean paramBoolean, int paramInt, Bundle paramBundle);
-  
-  public abstract void a(bjda parambjda, boolean paramBoolean, int paramInt, Bundle paramBundle);
-  
-  public abstract void a(bkrg parambkrg);
+  public void onClick(View paramView)
+  {
+    if (!QzoneVerticalVideoDownloadActivity.access$200(this.a))
+    {
+      QzoneVerticalVideoDownloadActivity.access$300(this.a, false, false);
+      QzoneVerticalVideoDownloadActivity.access$400(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjce
  * JD-Core Version:    0.7.0.1
  */

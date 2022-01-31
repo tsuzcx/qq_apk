@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ajya;
-import akvt;
+import alpo;
+import ammj;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -12,13 +12,12 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.view.Window;
-import anqq;
-import anqu;
-import axqy;
-import bbef;
-import bbqd;
-import bcdp;
-import bcql;
+import aphy;
+import apic;
+import azmj;
+import bdda;
+import bdox;
+import becq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -27,6 +26,7 @@ import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -238,7 +238,7 @@ public class ChatBackgroundJsPlugin
     //   329: aload 14
     //   331: astore_2
     //   332: aload_3
-    //   333: invokestatic 139	bhsc:a	(Ljava/lang/String;)Lbhsf;
+    //   333: invokestatic 139	bjtn:a	(Ljava/lang/String;)Lbjtq;
     //   336: astore 14
     //   338: aload 14
     //   340: ifnonnull +280 -> 620
@@ -377,7 +377,7 @@ public class ChatBackgroundJsPlugin
     //   620: aload_0
     //   621: iload_1
     //   622: aload 14
-    //   624: invokestatic 173	bhso:a	(Landroid/content/Context;ILbhsf;)D
+    //   624: invokestatic 173	bjtz:a	(Landroid/content/Context;ILbjtq;)D
     //   627: dstore 8
     //   629: dload 8
     //   631: dconst_0
@@ -385,26 +385,26 @@ public class ChatBackgroundJsPlugin
     //   633: ifle +33 -> 666
     //   636: aload 14
     //   638: aload 14
-    //   640: getfield 177	bhsf:a	I
+    //   640: getfield 177	bjtq:a	I
     //   643: i2d
     //   644: dload 8
     //   646: ddiv
     //   647: d2i
-    //   648: putfield 177	bhsf:a	I
+    //   648: putfield 177	bjtq:a	I
     //   651: aload 14
     //   653: aload 14
-    //   655: getfield 180	bhsf:b	I
+    //   655: getfield 180	bjtq:b	I
     //   658: i2d
     //   659: dload 8
     //   661: ddiv
     //   662: d2i
-    //   663: putfield 180	bhsf:b	I
+    //   663: putfield 180	bjtq:b	I
     //   666: aload_3
     //   667: aload 14
-    //   669: getfield 177	bhsf:a	I
+    //   669: getfield 177	bjtq:a	I
     //   672: aload 14
-    //   674: getfield 180	bhsf:b	I
-    //   677: invokestatic 183	bhsc:a	(Ljava/lang/String;II)Ljava/lang/String;
+    //   674: getfield 180	bjtq:b	I
+    //   677: invokestatic 183	bjtn:a	(Ljava/lang/String;II)Ljava/lang/String;
     //   680: iconst_2
     //   681: invokestatic 189	android/util/Base64:decode	(Ljava/lang/String;I)[B
     //   684: astore 14
@@ -650,7 +650,7 @@ public class ChatBackgroundJsPlugin
   
   private String getCustomImageFilePath()
   {
-    return ThemeDiyStyleLogic.getDataDIYDir() + akvt.a(this.browserApp.getAccount()) + "/" + System.currentTimeMillis() + ".jpg";
+    return ThemeDiyStyleLogic.getDataDIYDir() + ammj.a(this.browserApp.getAccount()) + "/" + System.currentTimeMillis() + ".jpg";
   }
   
   private void handleCustomPic(Intent paramIntent)
@@ -677,8 +677,8 @@ public class ChatBackgroundJsPlugin
       localIntent.putExtra("effectId", paramInt2);
       localIntent.putExtra("uinType", paramInt1);
       this.browserApp.getApp().sendBroadcast(localIntent);
-      bcql.a(this.mRuntime.a(), 2131695347, 0).a();
-      axqy.b(null, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "1", "", "", "");
+      QQToast.a(this.mRuntime.a(), 2131695505, 0).a();
+      azmj.b(null, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "1", "", "", "");
     }
   }
   
@@ -747,7 +747,7 @@ public class ChatBackgroundJsPlugin
     }
     for (;;)
     {
-      super.sendRemoteReq(anqu.a(paramJsBridgeListener, paramVarArgs, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+      super.sendRemoteReq(apic.a(paramJsBridgeListener, paramVarArgs, this.mOnRemoteResp.key, this.mReqBundle), false, true);
       return true;
       if ("startDownload".equals(paramString3)) {}
       try
@@ -891,11 +891,11 @@ public class ChatBackgroundJsPlugin
       {
         paramJsBridgeListener = new Intent();
         paramJsBridgeListener.putExtra("bg_replace_entrance", 8);
-        paramJsBridgeListener.putExtra("selfSet_leftViewText", this.mRuntime.a().getString(2131690572));
+        paramJsBridgeListener.putExtra("selfSet_leftViewText", this.mRuntime.a().getString(2131690623));
         paramJsBridgeListener.putExtra("hide_left_button", false);
         paramJsBridgeListener.putExtra("show_right_close_button", false);
         paramJsBridgeListener.putExtra("startOpenPageTime", System.currentTimeMillis());
-        VasWebviewUtil.openQQBrowserWithoutAD(this.mRuntime.a(), bbqd.a(this.mRuntime.a(), "background", ""), 33554432L, paramJsBridgeListener, false, -1);
+        VasWebviewUtil.openQQBrowserWithoutAD(this.mRuntime.a(), bdox.a(this.mRuntime.a(), "background", ""), 33554432L, paramJsBridgeListener, false, -1);
         paramJsBridgeListener = new JSONObject();
         paramJsBridgeListener.put("result", 0);
         super.callJs(paramVarArgs, new String[] { paramJsBridgeListener.toString() });
@@ -973,7 +973,7 @@ public class ChatBackgroundJsPlugin
       }
       str3 = new String(Base64.decode(str3, 2));
       str4 = getCustomImageFilePath();
-      i = bbef.b(str3);
+      i = bdda.b(str3);
       bool = compressBitmapToFile(this.mRuntime.a(), Integer.parseInt(paramString2), BitmapFactory.decodeFile(str3), str4, Float.parseFloat(str1), Float.parseFloat((String)localObject2), Float.parseFloat((String)localObject1), i);
       if (bool) {
         handleCustomPic(paramJsBridgeListener, Integer.parseInt(str2), str4, Integer.parseInt(paramString3), true);
@@ -989,7 +989,7 @@ public class ChatBackgroundJsPlugin
       {
         paramString2.put("code", paramJsBridgeListener);
         if (!bool) {
-          paramString2.put("msg", ajya.a(2131701584));
+          paramString2.put("msg", alpo.a(2131701957));
         }
       }
       catch (JSONException paramJsBridgeListener)

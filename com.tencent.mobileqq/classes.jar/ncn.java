@@ -1,94 +1,75 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import java.util.HashMap;
 
 class ncn
-  implements ajte
+  implements ITMAssistantDownloadClientListener
 {
   ncn(ncm paramncm) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
+    if (paramTMAssistantDownloadClient == null) {}
+    do
     {
       return;
-      paramObject = (Bundle)paramObject;
-      if (paramObject == null) {
-        continue;
-      }
-      paramInt = paramObject.getInt("reqCode");
-      if (paramInt == 10000)
-      {
-        str1 = paramObject.getString("name");
-        String str2 = paramObject.getString("callback");
-        String str3 = paramObject.getString("msg");
-        long l = paramObject.getLong("uiResId");
-        this.a.a = str2;
-        ncm.a(this.a, 1, l, str1, str3);
-        return;
-      }
-      if (paramInt != 10002) {
-        continue;
-      }
-      paramBoolean = paramObject.getBoolean("isOpen");
-      String str1 = paramObject.getString("callback");
-      boolean bool = paramObject.getBoolean("has");
-      paramObject = new JSONObject();
-      if (bool) {
-        if (paramBoolean) {
-          paramInt = 1;
-        }
-      }
-      try
-      {
-        label153:
-        paramObject.put("isOpen", paramInt);
-        while (!TextUtils.isEmpty(str1))
-        {
-          this.a.callJs(str1, new String[] { paramObject.toString() });
-          return;
-          paramInt = 0;
-          break label153;
-          paramObject.put("isOpen", 1);
-        }
-      }
-      catch (JSONException localJSONException2)
-      {
-        for (;;)
-        {
-          localJSONException2.printStackTrace();
-        }
-      }
-      paramObject = new JSONObject();
-      if (paramBoolean) {}
-      try
-      {
-        paramObject.put("userOption", 1);
-        while (!TextUtils.isEmpty(this.a.a))
-        {
-          this.a.callJs(this.a.a, new String[] { paramObject.toString() });
-          this.a.a = null;
-          return;
-          paramObject.put("userOption", 0);
-        }
-      }
-      catch (JSONException localJSONException1)
-      {
-        for (;;)
-        {
-          localJSONException1.printStackTrace();
-        }
-      }
-    }
+      paramTMAssistantDownloadClient = (nch)ncm.a().get(paramString);
+    } while ((paramTMAssistantDownloadClient == null) || (paramTMAssistantDownloadClient.a == null));
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    paramTMAssistantDownloadClient.a.progress(i);
   }
+  
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OfflineDownload", 2, "task onDownloadSDKTaskStateChanged + url = " + paramString1 + ", state = " + paramInt1 + ", errorCode = " + paramInt2);
+    }
+    if (paramTMAssistantDownloadClient == null) {
+      this.a.a(null, paramString1, null, -1, "client is null, " + paramString2);
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramString2 = (nch)ncm.a().get(paramString1);
+          if ((paramString2 == null) || (paramString2.a == null))
+          {
+            this.a.a(null, paramString1, null, -1, "download info is null or callback is null");
+            return;
+          }
+          switch (paramInt1)
+          {
+          default: 
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("OfflineDownload", 2, "task downloading + url = " + paramString1);
+        return;
+        this.a.a(paramTMAssistantDownloadClient, paramString2, paramString1);
+        return;
+        this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
+        try
+        {
+          this.a.a.cancelDownloadTask(paramString1);
+          return;
+        }
+        catch (Exception paramTMAssistantDownloadClient) {}
+      } while (!QLog.isDevelopLevel());
+      QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("OfflineDownload", 2, "task paused + url = " + paramString1);
+  }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncn
  * JD-Core Version:    0.7.0.1
  */

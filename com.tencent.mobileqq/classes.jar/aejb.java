@@ -1,60 +1,35 @@
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import mqq.util.WeakReference;
 
-public abstract interface aejb
-  extends IInterface
+public class aejb
+  implements View.OnClickListener
 {
-  public abstract int a(long paramLong, int paramInt);
+  public aejb(PositionActivatePage paramPositionActivatePage) {}
   
-  public abstract Intent a(long paramLong, int paramInt);
-  
-  public abstract Intent a(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract MessageForShortVideo a(long paramLong);
-  
-  public abstract String a(String paramString1, String paramString2);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, int paramInt);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong, int paramInt, Bundle paramBundle);
-  
-  public abstract void a(aeje paramaeje);
-  
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(long[] paramArrayOfLong);
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void b(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void b(String paramString, int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void c(long paramLong);
-  
-  public abstract void d(long paramLong);
-  
-  public abstract void e(long paramLong);
+  public void onClick(View paramView)
+  {
+    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
+    {
+      paramView = new Intent((Context)PositionActivatePage.a(this.a).get(), SendBirthdayWishesActivity.class);
+      paramView.putExtra("key_msg_type", 1);
+      paramView.putExtra("key_friend_list", this.a.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a());
+      paramView.putExtra("key_roam_city", this.a.jdField_a_of_type_JavaLangString);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivityForResult(paramView, 1000);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771979, 2130771990);
+      azmj.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E06", "0X8004E06", 0, 0, "", "", "", "");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejb
  * JD-Core Version:    0.7.0.1
  */

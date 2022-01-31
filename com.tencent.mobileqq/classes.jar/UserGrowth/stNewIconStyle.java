@@ -3,10 +3,14 @@ package UserGrowth;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class stNewIconStyle
   extends JceStruct
 {
+  static Map<String, String> cache_exp = new HashMap();
+  public Map<String, String> exp;
   public String h5_url = "";
   public String iconUrl = "";
   public int id;
@@ -15,9 +19,14 @@ public final class stNewIconStyle
   public int tag_type;
   public String title = "";
   
+  static
+  {
+    cache_exp.put("", "");
+  }
+  
   public stNewIconStyle() {}
   
-  public stNewIconStyle(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2)
+  public stNewIconStyle(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, Map<String, String> paramMap)
   {
     this.title = paramString1;
     this.tag_type = paramInt1;
@@ -26,6 +35,7 @@ public final class stNewIconStyle
     this.h5_url = paramString4;
     this.schema_url = paramString5;
     this.id = paramInt2;
+    this.exp = paramMap;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -37,6 +47,7 @@ public final class stNewIconStyle
     this.h5_url = paramJceInputStream.readString(4, false);
     this.schema_url = paramJceInputStream.readString(5, false);
     this.id = paramJceInputStream.read(this.id, 6, false);
+    this.exp = ((Map)paramJceInputStream.read(cache_exp, 7, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -58,6 +69,9 @@ public final class stNewIconStyle
       paramJceOutputStream.write(this.schema_url, 5);
     }
     paramJceOutputStream.write(this.id, 6);
+    if (this.exp != null) {
+      paramJceOutputStream.write(this.exp, 7);
+    }
   }
 }
 

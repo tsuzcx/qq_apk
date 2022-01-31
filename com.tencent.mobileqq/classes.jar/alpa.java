@@ -1,42 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendsManager.1.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
-final class alpa
-  implements alvn
+public class alpa
+  extends AccountObserver
 {
-  public void a()
+  alpa(aloz paramaloz) {}
+  
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp", 2, "ArkSafe.report onDisableReport");
-    }
-    alvj.a().a(null);
+    ThreadManager.executeOnSubThread(new FriendsManager.1.1(this, paramString2, paramString1));
   }
   
-  public void a(String paramString)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArkApp", 2, new Object[] { "ArkSafe.report onReportUrlCheck content=", paramString });
+      QLog.d("Q.contacttab.friend", 2, "onOnlineStatusChanged isSuccess = " + paramBoolean1 + " ,curStatus =  , isUserSet = " + paramStatus + " ,isFriendListChang = " + paramBoolean3 + " ,timeStamp = " + paramLong + " ,isGatherListChange = " + paramBoolean4);
     }
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    aloz.a(this.a).a.a(paramBoolean3, paramLong, paramBoolean4);
+    if (!paramBoolean3)
     {
-      if (localObject != null)
-      {
-        localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(121)).a();
-        if (localObject != null) {
-          ((alsb)localObject).a(paramString);
-        }
-      }
-      return;
+      paramStatus = new alwi(aloz.a(this.a));
+      aloz.a(this.a).a.a(101, paramStatus);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alpa
  * JD-Core Version:    0.7.0.1
  */

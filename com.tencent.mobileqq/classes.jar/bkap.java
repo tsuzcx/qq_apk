@@ -1,20 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.support.annotation.NonNull;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
 
-class bkap
-  implements ValueAnimator.AnimatorUpdateListener
+public class bkap
 {
-  bkap(bkao parambkao) {}
+  public int a;
+  public String a;
+  public EGLConfig a;
+  public EGLContext a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bkap()
   {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.k();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return " width = " + this.jdField_a_of_type_Int + " height = " + this.jdField_b_of_type_Int + " isNeedOffScreen = " + this.jdField_a_of_type_Boolean + " resUrl = " + this.jdField_a_of_type_JavaLangString + " resFilePath = " + this.jdField_b_of_type_JavaLangString + " resMD5 = " + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkap
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,42 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.annotation.TargetApi;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class aozk
-  implements apag
+public class aozk
+  implements ArkViewImplement.LoadCallback
 {
-  aozk(aozi paramaozi, FileManagerEntity paramFileManagerEntity) {}
+  public aozk(ArkBabyqCardInfo paramArkBabyqCardInfo, ankl paramankl, ankh paramankh, afds paramafds, int paramInt) {}
   
-  public void a() {}
-  
-  public void b()
+  @TargetApi(14)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
-    for (Object localObject = new apls(this.jdField_a_of_type_Aozi.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new aplp(this.jdField_a_of_type_Aozi.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
+    onLoadState(paramInt1);
+  }
+  
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
+    }
+    if (paramInt == 1)
     {
-      apab.a((apll)localObject);
+      this.jdField_a_of_type_Ankl.b.setVisibility(0);
+      this.jdField_a_of_type_Ankh.a(this.jdField_a_of_type_Ankl, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Ankh.a(this.jdField_a_of_type_Afds, this.jdField_a_of_type_Int);
       return;
+      this.jdField_a_of_type_Ankl.b.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozk
  * JD-Core Version:    0.7.0.1
  */

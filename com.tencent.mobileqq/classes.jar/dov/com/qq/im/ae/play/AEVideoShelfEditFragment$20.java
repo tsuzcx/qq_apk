@@ -3,7 +3,7 @@ package dov.com.qq.im.ae.play;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import bizn;
+import bleh;
 
 class AEVideoShelfEditFragment$20
   implements Runnable
@@ -24,14 +24,14 @@ class AEVideoShelfEditFragment$20
         int i = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
         localObject = AEVideoShelfEditFragment.a(this.this$0).getChildAt(this.a - i);
       } while (localObject == null);
-      localObject = (bizn)AEVideoShelfEditFragment.a(this.this$0).getChildViewHolder((View)localObject);
+      localObject = (bleh)AEVideoShelfEditFragment.a(this.this$0).getChildViewHolder((View)localObject);
     } while (localObject == null);
-    ((bizn)localObject).a();
+    ((bleh)localObject).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoShelfEditFragment.20
  * JD-Core Version:    0.7.0.1
  */

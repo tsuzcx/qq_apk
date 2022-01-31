@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bbdx;
+import bdcs;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -17,7 +17,7 @@ final class ProteusJsHelper$2
       if (!((File)localObject).exists()) {
         return;
       }
-      localObject = bbdx.b((File)localObject);
+      localObject = bdcs.b((File)localObject);
       if (KandianReportSoLoader.isSoFiledLoad())
       {
         ProteusJsHelper.access$000((String)localObject, this.val$bid);
@@ -41,7 +41,7 @@ final class ProteusJsHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.ProteusJsHelper.2
  * JD-Core Version:    0.7.0.1
  */

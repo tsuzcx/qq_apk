@@ -1,44 +1,30 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity.3;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class nxg
-  implements baic
+  extends bhnr
 {
-  public nxg(ReadInJoyUploadAvatarActivity.3 param3) {}
+  public nxg(ReadInJoyNaviController.1 param1, View paramView) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyUploadAvatarActivity.a, 2, "uploadImage->onResult");
-    }
-    if (paramJSONObject != null)
-    {
-      paramInt = paramJSONObject.optInt("retcode");
-      if (paramJSONObject.optJSONObject("result") != null) {}
-      for (paramJSONObject = paramJSONObject.optJSONObject("result").optString("url");; paramJSONObject = null)
-      {
-        paramBundle = new Message();
-        if ((paramInt == 0) && (!TextUtils.isEmpty(paramJSONObject)))
-        {
-          paramBundle.what = 1003;
-          paramBundle.obj = paramJSONObject;
-        }
-        this.a.a.sendMessage(paramBundle);
-        return;
-      }
-    }
-    this.a.a.sendMessage(new Message());
+    paramAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0.e, 0.0F);
+    paramAnimation.setDuration(30L);
+    paramAnimation.setAnimationListener(new nxh(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    nxf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0).setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxg
  * JD-Core Version:    0.7.0.1
  */

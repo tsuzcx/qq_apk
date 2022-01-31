@@ -1,27 +1,36 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ahxi
-  implements tbz<tbu>
+  implements View.OnClickListener
 {
-  public ahxi(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  public ahxi(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void a(boolean paramBoolean, tbu paramtbu)
+  public void onClick(View paramView)
   {
-    ved.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
-    if ((paramBoolean) && (paramtbu != null))
+    xmh.a(this.a.jdField_a_of_type_Ahys);
+    xmh.a(this.a.jdField_a_of_type_JavaUtilList);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
     {
-      ved.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramtbu);
-      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramtbu));
-      return;
+      paramView.add(((ahyq)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      i += 1;
     }
-    ved.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.getActivity().setResult(-1, localIntent);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxi
  * JD-Core Version:    0.7.0.1
  */

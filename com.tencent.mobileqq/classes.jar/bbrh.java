@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
 class bbrh
-  implements INetInfoHandler
+  implements View.OnLongClickListener
 {
-  public void onNetMobile2None() {}
+  bbrh(bbrf parambbrf) {}
   
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
+  public boolean onLongClick(View paramView)
   {
-    bbrg.a();
+    return this.a.a(paramView);
   }
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    bbrg.a();
-  }
-  
-  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbrh
  * JD-Core Version:    0.7.0.1
  */

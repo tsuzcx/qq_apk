@@ -1,44 +1,41 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
 
-class alla
-  extends Handler
+public abstract class alla
+  extends nac
 {
-  public alla(alkz paramalkz, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList);
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
+    if (paramArrayOfByte == null) {
+      a(-1, null);
     }
     do
     {
       return;
-      alkz.a(this.a);
-      return;
-      if (alkz.a(this.a))
-      {
-        alkz.a(this.a, false);
-        alju.a();
-      }
       try
       {
-        alkz.b(this.a);
+        paramBundle = new NowLiveGallary.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = paramBundle.photo_info_list.get();
+        a(paramBundle.errCode.get(), paramArrayOfByte);
         return;
       }
-      catch (Throwable paramMessage) {}
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
     } while (!QLog.isColorLevel());
-    QLog.i("QRSession", 2, paramMessage.getMessage(), paramMessage);
+    QLog.d("CardHandler", 2, "getNowOnliveGallary exception, e:" + paramArrayOfByte.getStackTrace());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alla
  * JD-Core Version:    0.7.0.1
  */

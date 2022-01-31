@@ -1,17 +1,17 @@
 package com.tencent.open.applist;
 
-import ajya;
+import alpo;
 import android.widget.TextView;
-import bdha;
+import bffy;
 
 public class QZoneAppListActivity$1$1
   implements Runnable
 {
-  public QZoneAppListActivity$1$1(bdha parambdha) {}
+  public QZoneAppListActivity$1$1(bffy parambffy) {}
   
   public void run()
   {
-    QZoneAppListActivity.a(this.a.a).setText(ajya.a(2131711609));
+    QZoneAppListActivity.a(this.a.a).setText(alpo.a(2131711981));
   }
 }
 

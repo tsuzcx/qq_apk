@@ -1,22 +1,58 @@
-import android.hardware.Camera.ShutterCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.memory.QLogReporter.1;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class amfr
-  implements Camera.ShutterCallback
 {
-  private final amfh jdField_a_of_type_Amfh;
-  private final amfi jdField_a_of_type_Amfi;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private static volatile amfr a;
+  public static final SimpleDateFormat a;
   
-  public void onShutter()
+  static
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd");
+  }
+  
+  public static amfr a()
+  {
+    if (jdField_a_of_type_Amfr == null) {}
+    try
+    {
+      if (jdField_a_of_type_Amfr == null) {
+        jdField_a_of_type_Amfr = new amfr();
+      }
+      return jdField_a_of_type_Amfr;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (new GregorianCalendar().get(11) < 2) {}
+    SharedPreferences localSharedPreferences;
+    long l1;
+    Calendar localCalendar;
+    String str;
+    do
+    {
+      return;
+      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
+      l1 = System.currentTimeMillis();
+      long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
+      localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(l2);
+      str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
+      localCalendar.setTimeInMillis(l1);
+    } while (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime())));
+    ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfr
  * JD-Core Version:    0.7.0.1
  */

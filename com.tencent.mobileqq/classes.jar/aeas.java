@@ -1,24 +1,31 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aeas
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public aeas(SixCombolEffectView paramSixCombolEffectView) {}
+  public aeas(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.a) {
-      return;
+    this.a.c = false;
+    this.a.t = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
     }
-    this.a.b();
+    if (this.a.jdField_a_of_type_Aecg != null) {
+      this.a.jdField_a_of_type_Aecg.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeas
  * JD-Core Version:    0.7.0.1
  */

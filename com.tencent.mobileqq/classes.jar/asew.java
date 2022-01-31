@@ -1,32 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-
-class asew
-  implements DialogInterface.OnClickListener
+public final class asew
 {
-  asew(aseu paramaseu, BaseChatPie paramBaseChatPie, short paramShort) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString = "word";
+  private int c = 1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asew(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public final String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public final String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("(" + this.jdField_a_of_type_JavaLangString + "," + this.jdField_a_of_type_Int + "," + this.jdField_b_of_type_Int);
+    if (!this.jdField_b_of_type_JavaLangString.equals("word")) {
+      localStringBuffer.append(",type=" + this.jdField_b_of_type_JavaLangString);
     }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_Aseu.a(this.jdField_a_of_type_Short, true, true);
-        axqy.b(aseu.a(this.jdField_a_of_type_Aseu), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Aseu.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Aseu.a(this.jdField_a_of_type_Short), "", "", "", "");
-      }
+    if (this.c != 1) {
+      localStringBuffer.append(",posIncr=" + this.c);
     }
+    localStringBuffer.append(")");
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asew
  * JD-Core Version:    0.7.0.1
  */

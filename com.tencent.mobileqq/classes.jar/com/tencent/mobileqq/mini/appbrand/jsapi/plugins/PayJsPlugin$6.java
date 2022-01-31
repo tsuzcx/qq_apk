@@ -1,65 +1,48 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayRsp;
-import ajya;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import adky;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivityForTool;
+import com.tencent.mobileqq.mini.app.AppLoaderFactory;
+import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.minigame.ui.MiniGamePayFragment;
 
 class PayJsPlugin$6
-  implements MiniAppCmdInterface
+  implements Runnable
 {
-  PayJsPlugin$6(PayJsPlugin paramPayJsPlugin, int paramInt, String paramString) {}
+  PayJsPlugin$6(PayJsPlugin paramPayJsPlugin, String paramString1, String paramString2, boolean paramBoolean, int paramInt, String paramString3, Activity paramActivity) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void run()
   {
-    if (paramJSONObject == null)
+    Bundle localBundle = new Bundle();
+    localBundle.putString("payparmas_callback_sn", this.val$callbackSn);
+    localBundle.putString("payparmas_json", PayJsPlugin.access$300(this.this$0, this.val$payJson));
+    localBundle.putInt("payparmas_paytype", 1);
+    localBundle.putLong("payparmas_h5_start", System.currentTimeMillis());
+    if (this.val$toolConsume)
     {
-      paramJSONObject = new JSONObject();
-      try
-      {
-        paramJSONObject.put("resultCode", -4);
-        paramJSONObject.put("resultMsg", ajya.a(2131707914));
-        PayJsPlugin.access$200(this.this$0, this.val$seq, this.val$event, paramJSONObject, "");
-        return;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        QLog.e("PayJsPlugin", 1, "invokeMidasConsume JSONException ", paramJSONObject);
-        return;
-      }
+      MiniAppController.getInstance().setActivityResultListener(new PayJsPlugin.6.1(this));
+      localIntent = new Intent();
+      localIntent.putExtras(localBundle);
+      localIntent.putExtra("mini_event_seq", this.val$seq);
+      localIntent.putExtra("mini_event_name", this.val$eventName);
+      adky.a(this.val$activity, localIntent, PublicTransFragmentActivityForTool.class, MiniGamePayFragment.class, 3002);
     }
-    QLog.d("PayJsPlugin", 1, "invokeMidasConsume receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
-    try
+    while (PayBridgeActivity.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface(), this.val$activity, this.this$0.payRecevicer, 6, localBundle).getInt("retCode", -1) == 0)
     {
-      MiniAppMidasPay.StGamePayRsp localStGamePayRsp = (MiniAppMidasPay.StGamePayRsp)paramJSONObject.get("response");
-      int i = paramJSONObject.getInt("resultCode");
-      paramJSONObject = paramJSONObject.getString("errMsg");
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      JSONObject localJSONObject3 = new JSONObject(new HashMap());
-      localJSONObject2.put("attachInfo", localStGamePayRsp.extInfo.attachInfo.get());
-      localJSONObject2.put("mapInfo", localJSONObject3);
-      localJSONObject1.put("resultCode", i);
-      localJSONObject1.put("extInfo", localJSONObject2);
-      localJSONObject1.put("resultMsg", paramJSONObject);
-      QLog.d("PayJsPlugin", 1, "invokeMidasConsume receive isSuc= " + paramBoolean + " resObj=" + localJSONObject1.toString());
-      PayJsPlugin.access$400(this.this$0, this.val$seq, this.val$event, localJSONObject1);
+      Intent localIntent;
       return;
     }
-    catch (Throwable paramJSONObject)
-    {
-      QLog.e("PayJsPlugin", 1, "invokeMidasConsume JSONException ", paramJSONObject);
-    }
+    PayJsPlugin.access$200(this.this$0, this.val$seq, this.val$eventName, null, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.PayJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,22 @@
-import android.os.Bundle;
-import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract class avpk
+class avpk
+  implements View.OnClickListener
 {
-  protected static SparseArray<Class<?>> a = new SparseArray();
-  protected static SparseArray<Class<?>> b = new SparseArray();
+  avpk(avpi paramavpi, avpd paramavpd) {}
   
-  static
+  public void onClick(View paramView)
   {
-    a.put(1, avpm.class);
+    this.jdField_a_of_type_Avpi.dismiss();
+    if (this.jdField_a_of_type_Avpd.a != null) {
+      this.jdField_a_of_type_Avpd.a.onClick(paramView);
+    }
   }
-  
-  public abstract int a();
-  
-  public void a(Bundle paramBundle)
-  {
-    paramBundle.putInt("redpoint.fromReceiverIPCCode", a());
-  }
-  
-  public void b(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avpk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 class aqgm
-  implements View.OnClickListener
+  extends akee
 {
-  aqgm(aqgk paramaqgk) {}
-  
-  public void onClick(View paramView)
-  {
-    aqgk.a(this.a);
-  }
+  TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgm
  * JD-Core Version:    0.7.0.1
  */

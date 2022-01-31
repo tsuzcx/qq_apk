@@ -1,160 +1,152 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Build.VERSION;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
 
 public class amjl
-  extends RecyclerView.Adapter<amjn>
-  implements Animator.AnimatorListener
 {
-  float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  ViewPropertyAnimator jdField_a_of_type_AndroidViewViewPropertyAnimator;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b = -1;
-  
-  public amjl(QQAppInterface paramQQAppInterface)
+  public static awdf a(Class<FTSMessage> paramClass, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return new awdf(a(paramString), paramClass, new String[] { paramString }, false, 1);
   }
   
-  public amjn a(ViewGroup paramViewGroup, int paramInt)
+  public static awdf a(String[] paramArrayOfString1, String[] paramArrayOfString2, Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new amjn(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558814, paramViewGroup, false));
+    paramArrayOfString1 = new awdf(a(paramArrayOfString1, paramArrayOfString2, paramBoolean1, paramBoolean2), paramClass, paramArrayOfString2, paramBoolean1, 1);
+    paramArrayOfString1.jdField_b_of_type_Boolean = paramBoolean2;
+    return paramArrayOfString1;
   }
   
-  public void a(amjn paramamjn, int paramInt)
+  public static awdf a(String[] paramArrayOfString1, String[] paramArrayOfString2, Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    label179:
-    View localView;
-    switch (((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue() & 0xFFFF0000)
+    paramArrayOfString1 = new awdf(a(paramArrayOfString1, paramArrayOfString2, paramBoolean1, paramBoolean2), paramClass, paramArrayOfString2, paramBoolean1, 1);
+    paramArrayOfString1.jdField_b_of_type_Boolean = paramBoolean2;
+    paramArrayOfString1.c = paramInt;
+    return paramArrayOfString1;
+  }
+  
+  public static awdf a(String[] paramArrayOfString1, String[] paramArrayOfString2, Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  {
+    paramArrayOfString1 = new awdf(a(paramArrayOfString1, paramArrayOfString2, paramBoolean1, paramBoolean2, paramInt, paramString), paramClass, paramArrayOfString2, paramBoolean1, 1);
+    paramArrayOfString1.jdField_b_of_type_Boolean = paramBoolean2;
+    paramArrayOfString1.jdField_b_of_type_Int = paramInt;
+    paramArrayOfString1.jdField_b_of_type_JavaLangString = paramString;
+    return paramArrayOfString1;
+  }
+  
+  private static String a(int paramInt1, int paramInt2, String paramString)
+  {
+    StringBuffer localStringBuffer = new StringBuffer("SELECT DISTINCT type, oid, content, ext1, ext2, ext3, ext4, ext5, ext6, ext7, ext8, ext9, exts FROM IndexContent WHERE IndexContent MATCH 'type:");
+    localStringBuffer.append(paramInt1);
+    switch (paramInt2)
     {
-    default: 
-      if ((paramInt != this.jdField_a_of_type_Int) || (Build.VERSION.SDK_INT <= 19)) {
-        break label463;
-      }
-      if ((this.jdField_a_of_type_AndroidViewViewPropertyAnimator == null) || (this.b == -1) || (this.b == this.jdField_a_of_type_Int)) {
-        this.jdField_a_of_type_AndroidViewViewPropertyAnimator = paramamjn.jdField_a_of_type_AndroidViewView.animate();
-      }
-      if (paramamjn.jdField_a_of_type_AndroidViewView.getMeasuredWidth() == 0) {
-        break label454;
-      }
-      if ((this.b == -1) || (this.b == this.jdField_a_of_type_Int))
+    }
+    for (;;)
+    {
+      localStringBuffer.append("';");
+      return localStringBuffer.toString();
+      localStringBuffer.append(" ");
+      localStringBuffer.append("ext1:");
+      localStringBuffer.append(paramString);
+      continue;
+      localStringBuffer.append(" ");
+      localStringBuffer.append("ext2:");
+      localStringBuffer.append(paramString);
+      continue;
+      localStringBuffer.append(" ");
+      localStringBuffer.append("ext3:");
+      localStringBuffer.append(paramString);
+    }
+  }
+  
+  private static String a(String paramString)
+  {
+    return a(1, 2, String.valueOf(paramString));
+  }
+  
+  private static String a(String[] paramArrayOfString1, String[] paramArrayOfString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, String paramString)
+  {
+    paramArrayOfString2 = new StringBuilder(256);
+    paramArrayOfString2.append("SELECT DISTINCT type, oid, content, ext1, ext2, ext3, ext4, ext5, ext6, ext7, ext8, ext9, exts FROM IndexContent WHERE contentindex MATCH '");
+    paramInt1 = 0;
+    if (paramInt1 < paramArrayOfString1.length - 1)
+    {
+      paramArrayOfString2.append("\"");
+      paramString = paramArrayOfString1[paramInt1].split(" ");
+      paramInt2 = 0;
+      if (paramInt2 < paramString.length - 1)
       {
-        f = this.jdField_a_of_type_Float;
-        this.jdField_a_of_type_Float = f;
-        localView = paramamjn.jdField_a_of_type_AndroidViewView;
-        if (this.jdField_a_of_type_Float != 0.0F) {
-          break label446;
+        if ((paramString[paramInt2].length() == 1) || ((paramString[paramInt2].charAt(0) >= '0') && (paramString[paramInt2].charAt(0) <= '9')) || ((paramString[paramInt2].charAt(0) >= 'a') && (paramString[paramInt2].charAt(0) <= 'z')))
+        {
+          paramArrayOfString2.append(paramString[paramInt2]);
+          paramArrayOfString2.append("*");
+        }
+        for (;;)
+        {
+          paramArrayOfString2.append(" ");
+          paramInt2 += 1;
+          break;
+          paramArrayOfString2.append(paramString[paramInt2]);
         }
       }
-      break;
-    }
-    label446:
-    for (float f = -paramamjn.jdField_a_of_type_AndroidViewView.getMeasuredWidth();; f = this.jdField_a_of_type_Float)
-    {
-      localView.setTranslationX(f);
-      this.jdField_a_of_type_AndroidViewViewPropertyAnimator.setDuration((int)((paramamjn.jdField_a_of_type_AndroidViewView.getMeasuredWidth() - Math.abs(this.jdField_a_of_type_Float)) / paramamjn.jdField_a_of_type_AndroidViewView.getMeasuredWidth()) * 200).translationX(0.0F).setListener(this).setUpdateListener(new amjm(this)).start();
-      return;
-      paramamjn.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramamjn.jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable);
-      paramamjn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramamjn.jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable.a(300);
-      paramamjn.b.setBackgroundResource(0);
-      paramamjn.b.setVisibility(8);
-      break;
-      paramamjn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramamjn.b.setBackgroundResource(2130838970);
-      paramamjn.b.setVisibility(0);
-      break;
-      paramamjn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramamjn.b.setBackgroundResource(2130838973);
-      paramamjn.b.setVisibility(0);
-      break;
-      paramamjn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramamjn.b.setBackgroundResource(2130838979);
-      paramamjn.b.setVisibility(0);
-      break;
-      paramamjn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramamjn.b.setBackgroundResource(2130838982);
-      paramamjn.b.setVisibility(0);
-      break;
-      f = 0.0F;
-      break label179;
-    }
-    label454:
-    paramamjn.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
-    return;
-    label463:
-    paramamjn.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
-  }
-  
-  public void a(List<ColorNote> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Int = -1;
-    int i = 0;
-    if (i < paramList.size())
-    {
-      ColorNote localColorNote = (ColorNote)paramList.get(i);
-      if (localColorNote.isOpen()) {}
+      if ((paramString[(paramString.length - 1)].length() == 1) || ((paramString[(paramString.length - 1)].charAt(0) >= '0') && (paramString[(paramString.length - 1)].charAt(0) <= '9')) || ((paramString[(paramString.length - 1)].charAt(0) >= 'a') && (paramString[(paramString.length - 1)].charAt(0) <= 'z')))
+      {
+        paramArrayOfString2.append(paramString[(paramString.length - 1)]);
+        paramArrayOfString2.append("*");
+      }
       for (;;)
       {
-        i += 1;
+        paramArrayOfString2.append("\"");
+        paramArrayOfString2.append(" OR ");
+        paramInt1 += 1;
         break;
-        if ((localColorNote.animate) && (this.jdField_a_of_type_Int == -1)) {
-          this.jdField_a_of_type_Int = i;
-        }
-        int j = localColorNote.getServiceType();
-        this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j & 0xFFFF0000));
+        paramArrayOfString2.append(paramString[(paramString.length - 1)]);
       }
     }
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return super.getItemViewType(paramInt);
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    paramAnimator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a().iterator();
-    while (paramAnimator.hasNext()) {
-      ((ColorNote)paramAnimator.next()).animate = false;
+    paramArrayOfString2.append("\"");
+    paramArrayOfString1 = paramArrayOfString1[(paramArrayOfString1.length - 1)].split(" ");
+    paramInt1 = 0;
+    if (paramInt1 < paramArrayOfString1.length - 1)
+    {
+      if ((paramArrayOfString1[paramInt1].length() == 1) || ((paramArrayOfString1[paramInt1].charAt(0) >= '0') && (paramArrayOfString1[paramInt1].charAt(0) <= '9')) || ((paramArrayOfString1[paramInt1].charAt(0) >= 'a') && (paramArrayOfString1[paramInt1].charAt(0) <= 'z')))
+      {
+        paramArrayOfString2.append(paramArrayOfString1[paramInt1]);
+        paramArrayOfString2.append("*");
+      }
+      for (;;)
+      {
+        paramArrayOfString2.append(" ");
+        paramInt1 += 1;
+        break;
+        paramArrayOfString2.append(paramArrayOfString1[paramInt1]);
+      }
     }
-    this.jdField_a_of_type_Float = 0.0F;
+    if ((paramArrayOfString1[(paramArrayOfString1.length - 1)].length() == 1) || ((paramArrayOfString1[(paramArrayOfString1.length - 1)].charAt(0) >= '0') && (paramArrayOfString1[(paramArrayOfString1.length - 1)].charAt(0) <= '9')) || ((paramArrayOfString1[(paramArrayOfString1.length - 1)].charAt(0) >= 'a') && (paramArrayOfString1[(paramArrayOfString1.length - 1)].charAt(0) <= 'z')))
+    {
+      paramArrayOfString2.append(paramArrayOfString1[(paramArrayOfString1.length - 1)]);
+      paramArrayOfString2.append("*");
+    }
+    for (;;)
+    {
+      paramArrayOfString2.append("\"");
+      paramArrayOfString2.append("'");
+      paramArrayOfString2.append(";");
+      return paramArrayOfString2.toString();
+      paramArrayOfString2.append(paramArrayOfString1[(paramArrayOfString1.length - 1)]);
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  private static String a(String[] paramArrayOfString1, String[] paramArrayOfString2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return a(paramArrayOfString1, paramArrayOfString2, 1, paramBoolean1, paramBoolean2, 0, null);
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  private static String a(String[] paramArrayOfString1, String[] paramArrayOfString2, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  {
+    return a(paramArrayOfString1, paramArrayOfString2, 1, paramBoolean1, paramBoolean2, paramInt, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjl
  * JD-Core Version:    0.7.0.1
  */

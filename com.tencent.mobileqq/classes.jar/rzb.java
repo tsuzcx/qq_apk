@@ -1,32 +1,25 @@
-public abstract interface rzb
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class rzb
+  implements scc
 {
-  public abstract void a(rza paramrza, int paramInt);
+  public rzb(FastWebActivity paramFastWebActivity) {}
   
-  public abstract void a(rza paramrza, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(rza paramrza, long paramLong);
-  
-  public abstract void a(rza paramrza, boolean paramBoolean);
-  
-  public abstract void b(rza paramrza);
-  
-  public abstract void b(rza paramrza, int paramInt);
-  
-  public abstract void c(rza paramrza);
-  
-  public abstract void d(rza paramrza);
-  
-  public abstract void e(rza paramrza);
-  
-  public abstract void f(rza paramrza);
-  
-  public abstract void g(rza paramrza);
-  
-  public abstract void h(rza paramrza);
+  public void a(scd paramscd)
+  {
+    ArticleInfo localArticleInfo = paramscd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    int i = FastWebActivity.e(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i(FastWebActivity.a(this.a), 2, "articleInfo" + localArticleInfo);
+    }
+    sdn.a(localArticleInfo, FastWebActivity.f(this.a), i, paramscd.jdField_a_of_type_Boolean, this.a.b, FastWebActivity.g(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzb
  * JD-Core Version:    0.7.0.1
  */

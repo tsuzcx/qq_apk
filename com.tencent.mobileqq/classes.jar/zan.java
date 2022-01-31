@@ -1,18 +1,27 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
 class zan
-  extends AdHttp.Params
+  implements Animation.AnimationListener
 {
-  public int a = -2147483648;
+  zan(zal paramzal, URLImageView paramURLImageView, URLDrawable paramURLDrawable, ScaleAnimation paramScaleAnimation) {}
   
-  public boolean isSuccess()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return (super.isSuccess()) && (this.responseData != null);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zan
  * JD-Core Version:    0.7.0.1
  */

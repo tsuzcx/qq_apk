@@ -4,10 +4,10 @@ import android.os.Parcel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rno;
+import ors;
+import sdn;
 
 public final class ReportUtil$1
   implements Runnable
@@ -45,7 +45,7 @@ public final class ReportUtil$1
         break label148;
       }
     }
-    JSONObject localJSONObject = onh.a(localBaseActivity, localArticleInfo, (int)localArticleInfo.mChannelID, "2");
+    JSONObject localJSONObject = ors.a(localBaseActivity, localArticleInfo, (int)localArticleInfo.mChannelID, "2");
     label148:
     for (;;)
     {
@@ -53,7 +53,7 @@ public final class ReportUtil$1
       {
         localJSONObject.put("rowkey", localArticleInfo.innerUniqueID);
         localJSONObject.put("duration", l1 - l2);
-        rno.a(localArticleInfo, "0X800A732", localJSONObject.toString());
+        sdn.a(localArticleInfo, "0X800A732", localJSONObject.toString());
         return;
       }
       catch (JSONException localJSONException)
@@ -65,7 +65,7 @@ public final class ReportUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

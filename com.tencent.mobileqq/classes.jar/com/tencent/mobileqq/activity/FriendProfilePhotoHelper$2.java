@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abgw;
+import acxw;
 
 public class FriendProfilePhotoHelper$2
   implements Runnable
 {
-  public FriendProfilePhotoHelper$2(abgw paramabgw) {}
+  public FriendProfilePhotoHelper$2(acxw paramacxw) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class FriendProfilePhotoHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfilePhotoHelper.2
  * JD-Core Version:    0.7.0.1
  */

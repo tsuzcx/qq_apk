@@ -1,11 +1,11 @@
 package cooperation.hce;
 
-import akui;
+import amky;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 final class HceDataProxy$1
-  extends akui
+  extends amky
 {
   HceDataProxy$1(String paramString, HceDataProxy.GetLocationListener paramGetLocationListener)
   {
@@ -24,7 +24,7 @@ final class HceDataProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.hce.HceDataProxy.1
  * JD-Core Version:    0.7.0.1
  */

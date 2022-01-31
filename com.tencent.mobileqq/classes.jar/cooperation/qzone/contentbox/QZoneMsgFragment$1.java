@@ -1,7 +1,7 @@
 package cooperation.qzone.contentbox;
 
 import android.app.Activity;
-import bhby;
+import bjdh;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QzonePluginProxyActivity;
 
@@ -16,8 +16,8 @@ class QZoneMsgFragment$1
     try
     {
       QzonePluginProxyActivity.a(this.a);
-      bhby.b(this.a, this.this$0.a);
-      bhby.a(this.a, this.this$0.a);
+      bjdh.b(this.a, this.this$0.a);
+      bjdh.a(this.a, this.this$0.a);
       return;
     }
     catch (Throwable localThrowable)
@@ -28,7 +28,7 @@ class QZoneMsgFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.1
  * JD-Core Version:    0.7.0.1
  */

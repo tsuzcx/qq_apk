@@ -1,30 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback.1;
-
-public abstract class syr<Request extends sys, Respond extends syn>
-  implements syq<Request, Respond>
+class syr
+  implements swd
 {
-  public static Handler a = new Handler(Looper.getMainLooper());
+  syr(syq paramsyq) {}
   
-  public void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if (Thread.currentThread() == a.getLooper().getThread())
-    {
-      b(paramRequest, paramRespond, paramErrorMessage);
-      return;
-    }
-    a.post(new CmdTaskManger.UIThreadCallback.1(this, paramRequest, paramRespond, paramErrorMessage));
-  }
+  public void a() {}
   
-  public abstract void b(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     syr
  * JD-Core Version:    0.7.0.1
  */

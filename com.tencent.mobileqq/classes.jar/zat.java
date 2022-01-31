@@ -1,18 +1,15 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
+import java.util.List;
 
-class zat
-  extends AdHttp.Params
+public class zat
 {
-  public int a = -2147483648;
-  
-  public boolean isSuccess()
-  {
-    return (super.isSuccess()) && (this.responseData != null);
-  }
+  public int a;
+  public String a;
+  public List<zas> a;
+  public List<String> b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zat
  * JD-Core Version:    0.7.0.1
  */

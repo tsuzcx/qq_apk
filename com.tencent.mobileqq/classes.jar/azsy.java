@@ -1,19 +1,22 @@
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.widget.LinearLayout;
 
-class azsy
-  implements View.OnLongClickListener
+public class azsy
 {
-  azsy(azsw paramazsw) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    return this.a.a(paramView);
-  }
+  public Bundle a;
+  public View a;
+  public LinearLayout a;
+  public boolean a;
+  public View b;
+  public LinearLayout b;
+  public View c;
+  public View d;
+  public View e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azsy
  * JD-Core Version:    0.7.0.1
  */

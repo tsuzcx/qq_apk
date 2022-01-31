@@ -1,27 +1,28 @@
-import com.tencent.mobileqq.activity.qwallet.emoj.IBaseRecognizer;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.6.1;
-import mqq.os.MqqHandler;
+import cooperation.buscard.BuscardPluginInstallActivity;
 
 public class bihq
-  implements IBaseRecognizer
+  extends BroadcastReceiver
 {
-  bihq(bihj parambihj) {}
+  private bihq(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
   
-  public void OnInitResultCallback(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "init recoginzer result =" + paramBoolean);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("BuscardPluginInstallActivity", 4, "BuscardPluginOnResumeReceiver->onReceive, intent:" + paramIntent);
     }
-    if (!paramBoolean) {
-      ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.6.1(this));
+    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
+      return;
     }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bihq
  * JD-Core Version:    0.7.0.1
  */

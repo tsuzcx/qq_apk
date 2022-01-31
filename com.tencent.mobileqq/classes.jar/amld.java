@@ -1,39 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public final class amld
-  implements Parcelable.Creator<DanmuItemBean>
+  extends amle
 {
-  public DanmuItemBean a(Parcel paramParcel)
+  public amld(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    boolean bool = true;
-    DanmuItemBean localDanmuItemBean = new DanmuItemBean();
-    localDanmuItemBean.jdField_a_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.jdField_b_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.d = paramParcel.readLong();
-    localDanmuItemBean.jdField_c_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localDanmuItemBean.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
-    {
-      localDanmuItemBean.jdField_a_of_type_Boolean = bool;
-      localDanmuItemBean.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localDanmuItemBean.jdField_a_of_type_Int = paramParcel.readInt();
-      return localDanmuItemBean;
-      bool = false;
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public DanmuItemBean[] a(int paramInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
   {
-    return new DanmuItemBean[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("SOSO.LBS", 2, "onLocationFinish() lock.notifyAll()");
+    }
+    synchronized (SosoInterface.a())
+    {
+      SosoInterface.a().notifyAll();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amld
  * JD-Core Version:    0.7.0.1
  */

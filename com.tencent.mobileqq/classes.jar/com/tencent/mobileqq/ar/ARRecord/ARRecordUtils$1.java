@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import ajya;
-import akzh;
-import akzk;
-import bbdj;
-import bbgu;
+import alpo;
+import ampx;
+import amqa;
+import bdcd;
+import bdfq;
 
 public final class ARRecordUtils$1
   implements Runnable
@@ -15,7 +15,7 @@ public final class ARRecordUtils$1
   {
     try
     {
-      bbdj.a(akzk.a().a(), 230, this.a, this.b, "", ajya.a(2131700738), new akzh(this), null).show();
+      bdcd.a(amqa.a().a(), 230, this.a, this.b, "", alpo.a(2131701107), new ampx(this), null).show();
       return;
     }
     catch (Exception localException)
@@ -26,7 +26,7 @@ public final class ARRecordUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,13 @@ package com.tencent.biz.subscribe.utils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
-import bbcw;
+import bdbq;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import wsq;
+import yhi;
 
 public final class MergeBitmapBlurUtil$1
   implements Runnable
@@ -20,10 +20,10 @@ public final class MergeBitmapBlurUtil$1
   {
     try
     {
-      Object localObject = bbcw.a(this.jdField_a_of_type_JavaLangString);
+      Object localObject = bdbq.a(this.jdField_a_of_type_JavaLangString);
       if (localObject != null)
       {
-        wsq.a((Bitmap)localObject, this.jdField_a_of_type_AndroidWidgetImageView);
+        yhi.a((Bitmap)localObject, this.jdField_a_of_type_AndroidWidgetImageView);
         return;
       }
       localObject = new URL(this.jdField_a_of_type_JavaLangString).openConnection();
@@ -34,7 +34,7 @@ public final class MergeBitmapBlurUtil$1
       Bitmap localBitmap = BitmapFactory.decodeStream(localBufferedInputStream);
       localBufferedInputStream.close();
       ((InputStream)localObject).close();
-      wsq.a(this.jdField_a_of_type_JavaLangString, localBitmap, this.jdField_a_of_type_AndroidWidgetImageView);
+      yhi.a(this.jdField_a_of_type_JavaLangString, localBitmap, this.jdField_a_of_type_AndroidWidgetImageView);
       return;
     }
     catch (Exception localException)
@@ -45,7 +45,7 @@ public final class MergeBitmapBlurUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.1
  * JD-Core Version:    0.7.0.1
  */

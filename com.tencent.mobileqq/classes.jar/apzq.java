@@ -1,86 +1,90 @@
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCodec;
-import io.flutter.plugin.common.StandardMethodCodec;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.pb.profilecard.EditExtendFriendInfo.SchoolInfo;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xdb1.oidb_0xdb1.SchoolInfo;
 
-public abstract class apzq
-  implements MethodChannel.MethodCallHandler
+public class apzq
+  extends apxc
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  public apzq(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  protected abstract void a(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Integer paramInteger, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  protected abstract void c(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void c(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  protected void a(int paramInt)
   {
-    String str = paramMethodCall.method;
-    if ("setSpecialCare".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isSpecialCare"), paramResult);
-      return;
+    atwl.a(ExtendFriendFragment.a(this.a), ExtendFriendFragment.a(this.a).app);
+    Intent localIntent = new Intent("match_chat_notify_update");
+    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt)
+  {
+    int i = ExtendFriendFragment.a(this.a).c();
+    String str1 = ExtendFriendFragment.a(this.a).f();
+    String str2 = ExtendFriendFragment.a(this.a).g();
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendFragment", 2, "onUpdateCampusCertificateStatus,isSuccess + " + paramBoolean + ",scene + " + paramInt + ",verifyStatus + " + i + ",serverSuggestSchoolName + " + str1);
     }
-    if ("setQzoneNotify".equals(str))
+    if ((paramBoolean) && (paramInt == 1))
     {
-      b((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isQzoneNotify"), paramResult);
-      return;
+      if (((i == 0) || (i == 3)) && (!aqcq.a(ExtendFriendFragment.a(this.a))) && (TextUtils.isEmpty(str2)))
+      {
+        aqcq.a(ExtendFriendFragment.a(this.a), str1);
+        aqcq.a(ExtendFriendFragment.a(this.a));
+      }
+      Object localObject = ExtendFriendFragment.a(this.a).a();
+      str2 = ExtendFriendFragment.a(this.a).g();
+      if ((!TextUtils.isEmpty(str2)) && (localObject != null) && (!ExtendFriendFragment.a(this.a).isFinishing()))
+      {
+        if (!((oidb_0xdb1.SchoolInfo)localObject).str_school_name.has()) {
+          break label307;
+        }
+        str1 = ((oidb_0xdb1.SchoolInfo)localObject).str_school_name.get();
+        apwv localapwv = (apwv)ExtendFriendFragment.a(this.a).a(127);
+        localObject = aqcq.a((oidb_0xdb1.SchoolInfo)localObject);
+        aqcq.a(ExtendFriendFragment.a(this.a), localapwv, str1, (EditExtendFriendInfo.SchoolInfo)localObject);
+      }
+      if (TextUtils.isEmpty(str2)) {
+        break label314;
+      }
+      paramInt = 1;
+      label276:
+      if (paramInt == 0) {
+        break label319;
+      }
     }
-    if ("getSCFSwitchs".equals(str))
+    label307:
+    label314:
+    label319:
+    for (paramInt = 1;; paramInt = 2)
     {
-      a((String)paramMethodCall.argument("uin"), paramResult);
+      azmj.b(null, "dc00898", "", "", "0X800ADD7", "0X800ADD7", paramInt, 0, "", "", "", "");
       return;
+      str1 = "";
+      break;
+      paramInt = 0;
+      break label276;
     }
-    if ("getSpecialRing".equals(str))
-    {
-      b((String)paramMethodCall.argument("uin"), paramResult);
-      return;
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendFragment", 2, "onUpdateExtendFriendCampusSchoolInfo isSuccess = " + paramBoolean);
     }
-    if ("openSpecialRingMall".equals(str))
-    {
-      c((String)paramMethodCall.argument("uin"), paramResult);
-      return;
+    if (paramBoolean) {
+      QQToast.a(ExtendFriendFragment.a(this.a), 2, 2131699253, 0).b(ExtendFriendFragment.a(this.a).getTitleBarHeight());
     }
-    if ("onPageShowReport".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onBellShowReport".equals(str))
-    {
-      b((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onBellClickReport".equals(str))
-    {
-      c((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onSpecialCareSwitchReport".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), (Boolean)paramMethodCall.argument("isChecked"), paramResult);
-      return;
-    }
-    paramResult.notImplemented();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzq
  * JD-Core Version:    0.7.0.1
  */

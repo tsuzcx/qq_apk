@@ -1,15 +1,15 @@
 package com.tencent.open.appstore.dl;
 
-import ajya;
-import bdhk;
-import bdii;
+import alpo;
+import bfgi;
+import bfhg;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
 public class DownloadManagerV2$10
   implements Runnable
 {
-  public DownloadManagerV2$10(bdhk parambdhk, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$10(bfgi parambfgi, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -17,16 +17,16 @@ public class DownloadManagerV2$10
     if (localTMAssistantDownloadTaskInfo != null) {
       this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
     }
-    this.a.j = bdhk.a(this.this$0, this.a);
+    this.a.j = bfgi.a(this.this$0, this.a);
     if (this.a.j != 0)
     {
-      bdii.b("DownloadManagerV2", ajya.a(2131703499));
+      bfhg.b("DownloadManagerV2", alpo.a(2131703871));
       this.a.a(-2);
       this.a.f = 100;
-      bdhk.a(this.this$0, this.a, this.a.j, null);
+      bfgi.a(this.this$0, this.a, this.a.j, null);
       return;
     }
-    bdii.a("DownloadManagerV2", ajya.a(2131703518));
+    bfhg.a("DownloadManagerV2", alpo.a(2131703890));
     this.a.a(4);
     this.a.f = 100;
     this.this$0.a(this.a);

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import askv;
-import asnz;
-import asoi;
+import aubu;
+import auey;
+import aufh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -10,14 +10,14 @@ import com.tencent.qphone.base.util.QLog;
 public class MsgBackupTransportProcessor$1
   implements Runnable
 {
-  public MsgBackupTransportProcessor$1(asnz paramasnz, String paramString) {}
+  public MsgBackupTransportProcessor$1(auey paramauey, String paramString) {}
   
   public void run()
   {
     try
     {
       BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-      asnz.a(this.this$0, localBaseApplication);
+      auey.a(this.this$0, localBaseApplication);
       this.this$0.jdField_a_of_type_Int = 1;
       this.this$0.jdField_a_of_type_Long = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.createSession(1, Long.parseLong(this.a), this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupNotifier);
       if (this.this$0.a())
@@ -35,9 +35,9 @@ public class MsgBackupTransportProcessor$1
         this.this$0.b = new MsgBackupEndPoint();
         int i = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.start(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint, this.this$0.b);
         if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup", 2, "after start as client called with ret = " + i + ", ipv4 = " + asoi.a(this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.ipv4) + ", udpport = " + this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.port + ", tcpport = " + this.this$0.b.port);
+          QLog.d("MsgBackup", 2, "after start as client called with ret = " + i + ", ipv4 = " + aufh.a(this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.ipv4) + ", udpport = " + this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupEndPoint.port + ", tcpport = " + this.this$0.b.port);
         }
-        askv.a().a();
+        aubu.a().a();
         return;
       }
     }
@@ -49,7 +49,7 @@ public class MsgBackupTransportProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportProcessor.1
  * JD-Core Version:    0.7.0.1
  */

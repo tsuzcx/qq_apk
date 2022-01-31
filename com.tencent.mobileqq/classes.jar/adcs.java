@@ -1,36 +1,79 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import QQService.SvcDevLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-class adcs
-  implements wxt
+public class adcs
+  extends alox
 {
-  adcs(adcr paramadcr) {}
+  public adcs(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void a(Bundle paramBundle)
+  protected void onGetLoginDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
   {
-    boolean bool;
-    if (paramBundle.getInt("type") == 73)
+    LoginInfoActivity.d(this.a);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
     {
-      bool = paramBundle.getBoolean("isSuccess");
-      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
-    }
-    else
-    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult success");
+      }
+      LoginInfoActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo);
+      if (QLog.isColorLevel())
+      {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
+        paramSvcRspGetDevLoginInfo = LoginInfoActivity.a(this.a).iterator();
+        while (paramSvcRspGetDevLoginInfo.hasNext())
+        {
+          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
+          if (localSvcDevLoginInfo != null) {
+            QLog.d("LoginInfoActivity.AccDevSec", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
+          }
+        }
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
+      }
+      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
       return;
     }
-    if (Boolean.valueOf(bool).booleanValue())
+    if (QLog.isColorLevel())
     {
-      bcql.a(BaseApplicationImpl.getApplication(), 2, 2131720410, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult fail isSuccess=" + paramBoolean);
+      if (paramSvcRspGetDevLoginInfo != null) {
+        break label288;
+      }
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data is null");
+    }
+    for (;;)
+    {
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131692210), 0).b(this.a.getTitleBarHeight());
+      return;
+      label288:
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+    }
+  }
+  
+  protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onKickOutDevFResult isSuccess=" + paramBoolean + " appid=" + paramLong + " result=" + paramInt1 + " index=" + paramInt2);
+    }
+    LoginInfoActivity.d(this.a);
+    if (paramBoolean)
+    {
+      if ((paramInt1 == 0) && (paramInt2 >= 1) && (paramInt2 < LoginInfoActivity.a(this.a).size()))
+      {
+        LoginInfoActivity.a(this.a).remove(paramInt2);
+        LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      }
       return;
     }
-    bcql.a(BaseApplicationImpl.getApplication(), 1, 2131720407, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131694646), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcs
  * JD-Core Version:    0.7.0.1
  */

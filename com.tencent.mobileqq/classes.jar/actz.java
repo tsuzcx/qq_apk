@@ -1,90 +1,49 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.BabyQAIOPanel;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class actz
-  extends BaseAdapter
+  implements aylz
 {
-  public actz(BabyQAIOPanel paramBabyQAIOPanel) {}
+  public actz(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public actx a(int paramInt)
+  public void a(View paramView)
   {
-    if ((paramInt >= 0) && (paramInt < BabyQAIOPanel.a(this.a).size())) {
-      return (actx)BabyQAIOPanel.a(this.a).get(paramInt);
-    }
-    return new actx();
-  }
-  
-  public int getCount()
-  {
-    return BabyQAIOPanel.a(this.a).size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
-    {
-      localObject = new acty();
-      paramView = LayoutInflater.from(BabyQAIOPanel.a(this.a)).inflate(2131558531, paramViewGroup, false);
-      ((acty)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368344));
-      ((acty)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367700));
-      ((acty)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377046));
-      ((acty)localObject).b = ((ImageView)paramView.findViewById(2131370762));
-      paramView.setTag(localObject);
-      paramViewGroup = (ViewGroup)localObject;
-      localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      if (paramInt % 2 == 0) {
-        break label249;
-      }
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = baxn.a(this.a.getContext(), 8.0F);
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = baxn.a(this.a.getContext(), 12.0F);
-      label148:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = a(paramInt);
-      paramViewGroup.jdField_a_of_type_Int = ((actx)localObject).jdField_a_of_type_Int;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((actx)localObject).jdField_a_of_type_JavaLangString);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((actx)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      if (!((actx)localObject).jdField_a_of_type_Boolean) {
-        break label286;
-      }
-      paramViewGroup.b.setVisibility(0);
-    }
+    int i = 1;
+    ayjh localayjh = (ayjh)paramView.getTag(2131379913);
+    if (localayjh == null) {}
     for (;;)
     {
-      paramView.setOnClickListener(this.a);
-      if (AppSetting.d) {
-        paramView.setContentDescription(((actx)localObject).jdField_a_of_type_JavaLangString);
+      return;
+      String str1 = localayjh.b();
+      String str2 = localayjh.a().toString();
+      paramView = "-1";
+      if ((localayjh instanceof ayhv))
+      {
+        paramView = ((ayhv)localayjh).e();
+        i = 3000;
       }
-      return paramView;
-      paramViewGroup = (acty)paramView.getTag();
-      break;
-      label249:
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = baxn.a(this.a.getContext(), 12.0F);
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = baxn.a(this.a.getContext(), 8.0F);
-      break label148;
-      label286:
-      paramViewGroup.b.setVisibility(8);
+      while ((i != -1) && (ForwardTroopListFragment.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
+      {
+        this.a.a.notifyDataSetChanged();
+        return;
+        if ((localayjh instanceof ayib)) {
+          paramView = ((ayib)localayjh).a;
+        } else if ((localayjh instanceof ayig)) {
+          paramView = ((ayig)localayjh).a().troopuin;
+        } else if ((localayjh instanceof ayhw)) {
+          i = 0;
+        } else {
+          i = -1;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     actz
  * JD-Core Version:    0.7.0.1
  */

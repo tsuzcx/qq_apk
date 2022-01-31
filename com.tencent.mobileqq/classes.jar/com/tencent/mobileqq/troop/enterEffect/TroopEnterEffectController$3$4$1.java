@@ -2,13 +2,13 @@ package com.tencent.mobileqq.troop.enterEffect;
 
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import azrn;
-import azru;
+import bbpw;
+import bbqd;
 
 public class TroopEnterEffectController$3$4$1
   implements Runnable
 {
-  public TroopEnterEffectController$3$4$1(azru paramazru) {}
+  public TroopEnterEffectController$3$4$1(bbqd parambbqd) {}
   
   public void run()
   {

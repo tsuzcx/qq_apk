@@ -1,19 +1,12 @@
-import android.os.Handler;
-
-class aemn
-  extends akat
+public class aemn
 {
-  aemn(aemh paramaemh) {}
-  
-  protected void f(boolean paramBoolean)
-  {
-    super.f(paramBoolean);
-    this.a.a.sendEmptyMessage(0);
-  }
+  public int a;
+  public String a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemn
  * JD-Core Version:    0.7.0.1
  */

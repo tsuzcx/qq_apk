@@ -1,52 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.tissue.v8rt.engine.SpeedUtil;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.open.agent.OpenCardContainer;
 
 public class bfbm
-  extends bfbq
+  extends AnimatorListenerAdapter
 {
-  private bfbq jdField_a_of_type_Bfbq;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public bfbm(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
   
-  public bfbm(bfbl parambfbl, int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    super(parambfbl, Integer.valueOf(paramInt));
-  }
-  
-  public bfbm a(bfbq parambfbq)
-  {
-    this.jdField_a_of_type_Bfbq = parambfbq;
-    return this;
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_Bfbl.a(bfbl.a);
-      return;
-    }
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.contains("QLogic.js"))) {
-      SpeedUtil.DEFAULT.event("runQLogicJs start " + this.jdField_a_of_type_Bfbl);
-    }
-    this.jdField_a_of_type_Bfbl.a(this.jdField_a_of_type_JavaLangString, new bfbn(this), this.b);
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, null);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setBackgroundColor(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbm
  * JD-Core Version:    0.7.0.1
  */

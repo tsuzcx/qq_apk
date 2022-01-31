@@ -1,97 +1,57 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.text.SpannableString;
 
-public class bcdd
-  implements MiniMsgUser.IMiniMsgActionCallback
+class bcdd
 {
-  public bcdd(WebViewFragment paramWebViewFragment) {}
+  public final int a;
+  public final SpannableString a;
   
-  public void a(String paramString, JSONObject paramJSONObject)
+  public bcdd(int paramInt, SpannableString paramSpannableString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("action", paramString);
-      localJSONObject.put("options", paramJSONObject);
-      paramString = "javascript:mqq.dispatchEvent(\"miniAIOEvent\"," + localJSONObject.toString() + ");";
-      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.d("WebLog_WebViewFragment", 1, paramString, new Object[0]);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
   }
   
-  public void onFromMiniAIOToAIO()
+  public boolean equals(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "onFromMiniAIOToAIO ");
-    }
-    a("fromMiniAIOToAIO", new JSONObject());
-  }
-  
-  public void onGoToConversation()
-  {
-    try
+    if (this == paramObject) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "onGoToConversation ");
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-      a("returnMsgList", new JSONObject());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
+      paramObject = (bcdd)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+      if (this.jdField_a_of_type_AndroidTextSpannableString != null) {
+        return this.jdField_a_of_type_AndroidTextSpannableString.equals(paramObject.jdField_a_of_type_AndroidTextSpannableString);
+      }
+    } while (paramObject.jdField_a_of_type_AndroidTextSpannableString == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_AndroidTextSpannableString != null) {}
+    for (int i = this.jdField_a_of_type_AndroidTextSpannableString.hashCode();; i = 0) {
+      return i + j * 31;
     }
   }
   
-  public void onOpenMiniAIOCallback()
+  public String toString()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser == null) {
-      return;
-    }
-    WebViewFragment localWebViewFragment = this.a;
-    Object localObject1 = localWebViewFragment.r;
-    if (TextUtils.isEmpty(localWebViewFragment.r)) {
-      localObject1 = localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.getTitle();
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = localObject1;
-      if (!"‎".equals(localObject1)) {}
-    }
-    else
-    {
-      localObject2 = ajya.a(2131716904);
-    }
-    localObject1 = new Bundle();
-    ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
-    Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.getParam();
-    ((MiniMsgUserParam)localObject2).backConversationIntent = localWebViewFragment.a((Bundle)localObject1);
-    bcgq.a(((MiniMsgUserParam)localObject2).backConversationIntent);
-    try
-    {
-      a("entryClicked", new JSONObject());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
-    }
+    StringBuilder localStringBuilder = new StringBuilder("AtTag{");
+    localStringBuilder.append("startIndex=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", atSpan=").append(this.jdField_a_of_type_AndroidTextSpannableString);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcdd
  * JD-Core Version:    0.7.0.1
  */

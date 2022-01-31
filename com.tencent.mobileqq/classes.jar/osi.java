@@ -1,18 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-
-class osi
-  implements qed<TabChannelCoverInfo>
+public abstract interface osi
 {
-  osi(osg paramosg) {}
-  
-  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
-  {
-    return (paramTabChannelCoverInfo != null) && (paramTabChannelCoverInfo.reason != 4);
-  }
+  public abstract void a(osl paramosl);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osi
  * JD-Core Version:    0.7.0.1
  */

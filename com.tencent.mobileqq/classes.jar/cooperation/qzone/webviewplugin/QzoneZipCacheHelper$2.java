@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
-import apvd;
-import bhci;
-import bhpi;
+import arof;
+import bjds;
+import bjqt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -56,9 +56,9 @@ final class QzoneZipCacheHelper$2
         if (!bool1)
         {
           bool3 = bool1;
-          localObject2 = bhpi.b(this.c);
+          localObject2 = bjqt.b(this.c);
           bool3 = bool1;
-          bool1 = bhpi.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2, (File)???);
+          bool1 = bjqt.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2, (File)???);
           if (!bool1) {
             continue;
           }
@@ -79,7 +79,7 @@ final class QzoneZipCacheHelper$2
         if (((File)???).exists())
         {
           bool3 = bool2;
-          apvd.a((File)???);
+          arof.a((File)???);
         }
       }
       catch (Throwable localThrowable)
@@ -123,7 +123,7 @@ final class QzoneZipCacheHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneZipCacheHelper.2
  * JD-Core Version:    0.7.0.1
  */

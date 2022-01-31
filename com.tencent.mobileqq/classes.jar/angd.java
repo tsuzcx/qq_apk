@@ -1,10 +1,39 @@
-public abstract interface angd
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
+
+class angd
+  implements WtTicketPromise
 {
-  public abstract void a(anga paramanga);
+  angd(anfv paramanfv, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, long paramLong) {}
+  
+  public void Done(Ticket paramTicket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp", 2, "--- pskey async done---  ");
+    }
+    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+    anfv.a(this.jdField_a_of_type_Anfv, this.jdField_a_of_type_Long, true, paramTicket);
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.e("ArkApp", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
+    anfv.a(this.jdField_a_of_type_Anfv, this.jdField_a_of_type_Long, false, null);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.e("ArkApp", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
+    anfv.a(this.jdField_a_of_type_Anfv, this.jdField_a_of_type_Long, false, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angd
  * JD-Core Version:    0.7.0.1
  */

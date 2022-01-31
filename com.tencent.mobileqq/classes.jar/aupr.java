@@ -1,14 +1,12 @@
-public final class aupr
-  extends auph
+public abstract class aupr
 {
-  protected int c()
-  {
-    return 508;
-  }
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(aups paramaups) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aupr
  * JD-Core Version:    0.7.0.1
  */

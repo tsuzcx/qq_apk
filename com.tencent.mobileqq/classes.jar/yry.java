@@ -1,30 +1,22 @@
-import com.tencent.ad.tangram.analysis.AdAnalysisAdapter;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-public class yry
-  implements AdAnalysisAdapter
+class yry
+  implements DialogInterface.OnShowListener
 {
-  public String getAppVersion()
-  {
-    return yxs.a();
-  }
+  yry(yru paramyru) {}
   
-  public String getUIN()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    do
-    {
-      return null;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    } while (localObject == null);
-    return ((AppRuntime)localObject).getAccount();
+    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yry
  * JD-Core Version:    0.7.0.1
  */

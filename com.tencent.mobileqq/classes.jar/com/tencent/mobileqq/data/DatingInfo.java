@@ -1,47 +1,47 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import anmg;
-import anmk;
-import anml;
-import auko;
-import aulz;
-import aumc;
+import apdn;
+import apdr;
+import apds;
+import awbv;
+import awdg;
+import awdj;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatingInfo
-  extends auko
+  extends awbv
 {
-  @aulz
+  @awdg
   private static final int FLAG_MASK_COMMENT_NEW_OVER = 32;
-  @aulz
+  @awdg
   private static final int FLAG_MASK_STRANGER_NEW_OVER = 8;
-  @aulz
+  @awdg
   private static final int FLAG_MASK_VISIT_NEW_OVER = 2;
-  @aulz
+  @awdg
   public static final int TYPE_COMMENT = 1;
-  @aulz
-  private List<anmg> commentList = new ArrayList(20);
+  @awdg
+  private List<apdn> commentList = new ArrayList(20);
   public String commentPacked;
-  @aumc
+  @awdj
   public String datingId;
   public int datingSubject;
   public long datingTime;
-  @aulz
+  @awdg
   public boolean isInit;
-  @aulz
+  @awdg
   public long lastUpdateTime;
-  @aulz
+  @awdg
   private int nPrivateFlag;
   public int owner;
-  @aulz
+  @awdg
   public String strDatingTime;
-  @aulz
-  private List<anmk> strangerInfos = new ArrayList(20);
+  @awdg
+  private List<apdr> strangerInfos = new ArrayList(20);
   public String strangerInfosPacked;
-  @aulz
-  private List<anmk> visitorInfos = new ArrayList(20);
+  @awdg
+  private List<apdr> visitorInfos = new ArrayList(20);
   public String visitorInfosPacked;
   
   public boolean equals(Object paramObject)
@@ -72,13 +72,13 @@ public class DatingInfo
   public void init()
   {
     if (this.datingTime == 0L) {}
-    for (this.strDatingTime = "";; this.strDatingTime = anml.a(this.datingTime, this.datingSubject, false))
+    for (this.strDatingTime = "";; this.strDatingTime = apds.a(this.datingTime, this.datingSubject, false))
     {
-      anmk.a(this.visitorInfos, this.visitorInfosPacked);
+      apdr.a(this.visitorInfos, this.visitorInfosPacked);
       this.nPrivateFlag |= 0x2;
-      anmg.a(this.commentList, this.commentPacked);
+      apdn.a(this.commentList, this.commentPacked);
       this.nPrivateFlag |= 0x20;
-      anmk.a(this.strangerInfos, this.strangerInfosPacked);
+      apdr.a(this.strangerInfos, this.strangerInfosPacked);
       this.nPrivateFlag |= 0x8;
       return;
     }
@@ -101,11 +101,11 @@ public class DatingInfo
       {
         if ((this.nPrivateFlag & 0x8) == 8)
         {
-          this.strangerInfosPacked = anmk.a(this.strangerInfos);
+          this.strangerInfosPacked = apdr.a(this.strangerInfos);
           synchronized (this.visitorInfos)
           {
             if ((this.nPrivateFlag & 0x2) == 2) {
-              this.visitorInfosPacked = anmk.a(this.visitorInfos);
+              this.visitorInfosPacked = apdr.a(this.visitorInfos);
             }
           }
         }
@@ -114,7 +114,7 @@ public class DatingInfo
       {
         if ((this.nPrivateFlag & 0x8) == 8)
         {
-          this.commentPacked = anmg.a(this.commentList);
+          this.commentPacked = apdn.a(this.commentList);
           return;
           this.strangerInfosPacked = "";
           continue;
@@ -132,7 +132,7 @@ public class DatingInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.DatingInfo
  * JD-Core Version:    0.7.0.1
  */

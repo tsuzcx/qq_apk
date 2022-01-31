@@ -1,22 +1,22 @@
 package cooperation.qzone.remote.logic;
 
 import android.os.Bundle;
-import bhlc;
-import bhle;
+import bjmn;
+import bjmp;
 
 public class RemoteRequestSender$1
   implements Runnable
 {
-  public RemoteRequestSender$1(bhle parambhle, Bundle paramBundle) {}
+  public RemoteRequestSender$1(bjmp parambjmp, Bundle paramBundle) {}
   
   public void run()
   {
-    bhle.a(this.this$0).a("cmd.gdtreport.webview", this.a, false);
+    bjmp.a(this.this$0).a("cmd.gdtreport.webview", this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.remote.logic.RemoteRequestSender.1
  * JD-Core Version:    0.7.0.1
  */

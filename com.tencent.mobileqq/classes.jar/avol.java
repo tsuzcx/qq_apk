@@ -1,35 +1,15 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import java.util.List;
 
-public class avol
-  implements View.OnLongClickListener
+abstract interface avol
 {
-  private WeakReference<ReceiptMessageDetailFragment> a;
+  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
   
-  private avol(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
-  {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    paramView = (ReceiptMessageDetailFragment)this.a.get();
-    if ((paramView == null) || (!paramView.isAdded())) {
-      return false;
-    }
-    bfpc localbfpc = bfpc.a(paramView.getActivity());
-    localbfpc.b(2131691303);
-    localbfpc.c(2131690596);
-    localbfpc.a(new avom(this, paramView, localbfpc));
-    localbfpc.show();
-    return true;
-  }
+  public abstract void a(List<RedTouchItem> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avol
  * JD-Core Version:    0.7.0.1
  */

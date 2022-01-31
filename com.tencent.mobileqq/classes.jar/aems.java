@@ -1,72 +1,69 @@
-import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class aems
-  implements BusinessObserver
+public class aems
+  implements aemo
 {
-  aems(aemh paramaemh) {}
+  public aitd a;
+  public PreloadManager a;
+  private QQAppInterface a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aems(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.A(2131695569);
-    }
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
+    this.jdField_a_of_type_Aitd = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      ChatActivityUtils.b();
-      return;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-          localFollowResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            ((FriendListHandler)this.a.a.a(1)).a(true, false);
-            paramBundle = (ajvp)this.a.a.a(21);
-            if (paramBundle != null) {
-              paramBundle.a(SystemClock.uptimeMillis());
-            }
-          }
-          else if (paramInt == 58)
-          {
-            this.a.A(2131695566);
-          }
-          else if (paramInt == 65)
-          {
-            this.a.A(2131695539);
-          }
-          else if (paramInt == 20)
-          {
-            this.a.A(2131695540);
-          }
-          else
-          {
-            this.a.A(2131695569);
-          }
-        }
-      }
-      catch (Exception paramBundle) {}
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+      this.jdField_a_of_type_Aitd = ((aitd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
     }
+  }
+  
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    ThreadManager.post(new CustomizeStrategyFactory.SkinRedPacketStrategy.1(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agij paramagij)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      if (!(paramagij instanceof agin)) {
+        break label74;
+      }
+      paramagij = (agin)paramagij;
+      paramRedPacketInfo.background = paramagij.b;
+      paramRedPacketInfo.corner = paramagij.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramRedPacketInfo.animInfo = paramagij.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+      paramRedPacketInfo.title = paramagij.c;
+      paramRedPacketInfo.icon = paramagij.a(paramRedPacketInfo);
+      paramRedPacketInfo.isHideTitle = paramagij.jdField_a_of_type_Int;
+      paramRedPacketInfo.resPath = paramagij.d;
+    }
+    label74:
+    do
+    {
+      return;
+      if ((paramagij instanceof agik))
+      {
+        paramagij = (agik)paramagij;
+        paramRedPacketInfo.specailBackgroundAnimInfo = paramagij.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+        paramRedPacketInfo.specialBackground = paramagij.jdField_a_of_type_AndroidGraphicsBitmap;
+        return;
+      }
+    } while (!(paramagij instanceof agim));
+    paramRedPacketInfo.resPath = ((agim)paramagij).b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aems
  * JD-Core Version:    0.7.0.1
  */

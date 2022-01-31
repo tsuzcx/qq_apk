@@ -1,43 +1,70 @@
-import android.os.Build;
-import android.os.Build.VERSION;
 import com.tencent.av.app.VideoAppInterface;
 
-public abstract class lja
+public class lja
 {
-  protected int a;
-  protected long a;
-  protected VideoAppInterface a;
-  protected String a;
-  protected int b;
-  protected long b;
+  private alko[] a = new alko[4];
   
-  public lja(VideoAppInterface paramVideoAppInterface)
+  private alko b(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    Object localObject = null;
+    long l1 = System.currentTimeMillis();
+    switch (paramInt)
+    {
+    }
+    for (paramVideoAppInterface = localObject;; paramVideoAppInterface = new lio(paramVideoAppInterface))
+    {
+      lek.c("BusinessHandlerFactory", "createHandler unknown name");
+      for (;;)
+      {
+        long l2 = System.currentTimeMillis();
+        lek.c("BusinessHandlerFactory", "createHandler,cost time:" + (l2 - l1));
+        return paramVideoAppInterface;
+        paramVideoAppInterface = new liz(paramVideoAppInterface);
+        continue;
+        paramVideoAppInterface = new liw(paramVideoAppInterface);
+        continue;
+        paramVideoAppInterface = new lwb(paramVideoAppInterface);
+      }
+    }
   }
   
-  public abstract int a(String paramString);
-  
-  public void a()
+  public alko a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = Build.MODEL.toLowerCase();
-    this.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-    this.jdField_a_of_type_Long = llw.c();
-    this.jdField_b_of_type_Int = llw.e();
-    this.jdField_b_of_type_Long = bbdh.d();
+    Object localObject = this.a[paramInt];
+    if (localObject != null) {
+      return localObject;
+    }
+    synchronized (this.a)
+    {
+      alko localalko = this.a[paramInt];
+      localObject = localalko;
+      if (localalko == null)
+      {
+        paramVideoAppInterface = b(paramVideoAppInterface, paramInt);
+        localObject = paramVideoAppInterface;
+        if (paramVideoAppInterface != null)
+        {
+          this.a[paramInt] = paramVideoAppInterface;
+          localObject = paramVideoAppInterface;
+        }
+      }
+      return localObject;
+    }
   }
   
-  public abstract boolean a(int paramInt, String paramString);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void a(lil paramlil)
+  {
+    paramlil.a("TransInfoCreate.CreateSession", new int[] { 1 });
+    paramlil.a("TransInfo.JoinSession", new int[] { 0 });
+    paramlil.a("TransInfo.ExitSession", new int[] { 0 });
+    paramlil.a("TransInfo.ChangeSession", new int[] { 0 });
+    paramlil.a("TransInfo.RawData", new int[] { 0 });
+    paramlil.a("OidbSvc.0xa75", new int[] { 2 });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lja
  * JD-Core Version:    0.7.0.1
  */

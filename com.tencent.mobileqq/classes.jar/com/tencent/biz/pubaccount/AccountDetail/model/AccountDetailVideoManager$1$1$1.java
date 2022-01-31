@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
 import com.tencent.qphone.base.util.QLog;
-import nfg;
-import nfh;
-import nfm;
+import nic;
+import nid;
+import nii;
 
 class AccountDetailVideoManager$1$1$1
   implements Runnable

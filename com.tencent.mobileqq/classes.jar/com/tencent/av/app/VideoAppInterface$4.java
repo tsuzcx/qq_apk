@@ -2,7 +2,7 @@ package com.tencent.av.app;
 
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.qphone.base.util.QLog;
-import lpn;
+import lrq;
 
 class VideoAppInterface$4
   implements Runnable
@@ -25,7 +25,7 @@ class VideoAppInterface$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.app.VideoAppInterface.4
  * JD-Core Version:    0.7.0.1
  */

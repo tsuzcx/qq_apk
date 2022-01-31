@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.webso;
 
 import android.os.SystemClock;
-import bchc;
+import begd;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -14,7 +14,7 @@ public class HybridWebReporter
   private static HybridWebReporter jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   public static String a;
-  private static ArrayList<bchc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<begd> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Random jdField_a_of_type_JavaUtilRandom;
   
   public static HybridWebReporter a()
@@ -57,9 +57,9 @@ public class HybridWebReporter
     return true;
   }
   
-  public void a(bchc parambchc)
+  public void a(begd parambegd)
   {
-    if (parambchc == null) {}
+    if (parambegd == null) {}
     for (;;)
     {
       return;
@@ -68,25 +68,25 @@ public class HybridWebReporter
       int j = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchInterval", 600);
       int k = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchCount", 10);
       if (QLog.isColorLevel()) {
-        QLog.d("HybridWebReporter", 2, "add report, isreported(" + parambchc.jdField_d_of_type_Boolean + "), url: " + parambchc.a);
+        QLog.d("HybridWebReporter", 2, "add report, isreported(" + parambegd.jdField_d_of_type_Boolean + "), url: " + parambegd.a);
       }
-      if ((parambchc.f == 0) || (parambchc.jdField_d_of_type_Boolean)) {
+      if ((parambegd.f == 0) || (parambegd.jdField_d_of_type_Boolean)) {
         continue;
       }
-      parambchc.jdField_d_of_type_Boolean = true;
-      if (parambchc.f < 0) {
-        parambchc.f = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatDefaultSampling", 20);
+      parambegd.jdField_d_of_type_Boolean = true;
+      if (parambegd.f < 0) {
+        parambegd.f = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatDefaultSampling", 20);
       }
       try
       {
-        i = Integer.valueOf(parambchc.jdField_d_of_type_JavaLangString).intValue();
-        if (((parambchc.b != 1000) && (parambchc.b != 0)) || (i < 100) || (i > 400)) {
-          parambchc.f = 1;
+        i = Integer.valueOf(parambegd.jdField_d_of_type_JavaLangString).intValue();
+        if (((parambegd.b != 1000) && (parambegd.b != 0)) || (i < 100) || (i > 400)) {
+          parambegd.f = 1;
         }
         if (QLog.isColorLevel()) {
-          parambchc.f = 1;
+          parambegd.f = 1;
         }
-        if (!a(parambchc.f)) {
+        if (!a(parambegd.f)) {
           continue;
         }
       }
@@ -94,7 +94,7 @@ public class HybridWebReporter
       {
         synchronized (jdField_a_of_type_JavaUtilArrayList)
         {
-          jdField_a_of_type_JavaUtilArrayList.add(parambchc);
+          jdField_a_of_type_JavaUtilArrayList.add(parambegd);
           if ((jdField_a_of_type_JavaUtilArrayList.size() < k) && ((l1 - l2 < j * 1000) || (jdField_a_of_type_JavaUtilArrayList.size() <= 0))) {
             continue;
           }
@@ -109,7 +109,7 @@ public class HybridWebReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HybridWebReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,10 @@
-import android.support.annotation.NonNull;
-
-public class asoe
+public abstract interface asoe
 {
-  public int a;
-  public int b;
-  public int c;
-  
-  @NonNull
-  public String toString()
-  {
-    return "[errorCode = " + this.a + ", fileType = " + this.b + ", fileTrivial = " + this.c + "]";
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asoe
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,9 @@ package okio;
 
 import java.io.EOFException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import javax.annotation.Nullable;
 
 final class RealBufferedSource
   implements BufferedSource
@@ -14,14 +16,9 @@ final class RealBufferedSource
   RealBufferedSource(Source paramSource)
   {
     if (paramSource == null) {
-      throw new IllegalArgumentException("source == null");
+      throw new NullPointerException("source == null");
     }
     this.source = paramSource;
-  }
-  
-  private boolean rangeEquals(long paramLong, ByteString paramByteString)
-  {
-    return (request(paramByteString.size() + paramLong)) && (this.buffer.rangeEquals(paramLong, paramByteString));
   }
   
   public Buffer buffer()
@@ -49,28 +46,41 @@ final class RealBufferedSource
   
   public long indexOf(byte paramByte)
   {
-    return indexOf(paramByte, 0L);
+    return indexOf(paramByte, 0L, 9223372036854775807L);
   }
   
   public long indexOf(byte paramByte, long paramLong)
   {
+    return indexOf(paramByte, paramLong, 9223372036854775807L);
+  }
+  
+  public long indexOf(byte paramByte, long paramLong1, long paramLong2)
+  {
     if (this.closed) {
       throw new IllegalStateException("closed");
     }
-    while (paramLong >= this.buffer.size) {
-      if (this.source.read(this.buffer, 8192L) == -1L) {
+    if ((paramLong1 < 0L) || (paramLong2 < paramLong1))
+    {
+      throw new IllegalArgumentException(String.format("fromIndex=%s toIndex=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+      Object localObject;
+      paramLong1 = Math.max(paramLong1, localObject);
+    }
+    for (;;)
+    {
+      if (paramLong1 < paramLong2)
+      {
+        long l = this.buffer.indexOf(paramByte, paramLong1, paramLong2);
+        if (l != -1L) {
+          return l;
+        }
+        l = this.buffer.size;
+        if ((l < paramLong2) && (this.source.read(this.buffer, 8192L) != -1L)) {
+          break;
+        }
         return -1L;
       }
+      return -1L;
     }
-    do
-    {
-      paramLong = this.buffer.indexOf(paramByte, paramLong);
-      if (paramLong != -1L) {
-        return paramLong;
-      }
-      paramLong = this.buffer.size;
-    } while (this.source.read(this.buffer, 8192L) != -1L);
-    return -1L;
   }
   
   public long indexOf(ByteString paramByteString)
@@ -80,18 +90,20 @@ final class RealBufferedSource
   
   public long indexOf(ByteString paramByteString, long paramLong)
   {
-    if (paramByteString.size() == 0) {
-      throw new IllegalArgumentException("bytes is empty");
+    if (this.closed) {
+      throw new IllegalStateException("closed");
     }
     do
     {
-      paramLong += 1L;
-      paramLong = indexOf(paramByteString.getByte(0), paramLong);
-      if (paramLong == -1L) {
-        return -1L;
+      Object localObject;
+      paramLong = Math.max(paramLong, localObject - paramByteString.size() + 1L);
+      long l = this.buffer.indexOf(paramByteString, paramLong);
+      if (l != -1L) {
+        return l;
       }
-    } while (!rangeEquals(paramLong, paramByteString));
-    return paramLong;
+      l = this.buffer.size;
+    } while (this.source.read(this.buffer, 8192L) != -1L);
+    return -1L;
   }
   
   public long indexOfElement(ByteString paramByteString)
@@ -104,18 +116,15 @@ final class RealBufferedSource
     if (this.closed) {
       throw new IllegalStateException("closed");
     }
-    while (paramLong >= this.buffer.size) {
-      if (this.source.read(this.buffer, 8192L) == -1L) {
-        return -1L;
-      }
-    }
     do
     {
-      paramLong = this.buffer.indexOfElement(paramByteString, paramLong);
-      if (paramLong != -1L) {
-        return paramLong;
+      Object localObject;
+      paramLong = Math.max(paramLong, localObject);
+      long l = this.buffer.indexOfElement(paramByteString, paramLong);
+      if (l != -1L) {
+        return l;
       }
-      paramLong = this.buffer.size;
+      l = this.buffer.size;
     } while (this.source.read(this.buffer, 8192L) != -1L);
     return -1L;
   }
@@ -123,6 +132,48 @@ final class RealBufferedSource
   public InputStream inputStream()
   {
     return new RealBufferedSource.1(this);
+  }
+  
+  public boolean isOpen()
+  {
+    return !this.closed;
+  }
+  
+  public boolean rangeEquals(long paramLong, ByteString paramByteString)
+  {
+    return rangeEquals(paramLong, paramByteString, 0, paramByteString.size());
+  }
+  
+  public boolean rangeEquals(long paramLong, ByteString paramByteString, int paramInt1, int paramInt2)
+  {
+    if (this.closed) {
+      throw new IllegalStateException("closed");
+    }
+    if ((paramLong < 0L) || (paramInt1 < 0) || (paramInt2 < 0) || (paramByteString.size() - paramInt1 < paramInt2)) {
+      return false;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= paramInt2) {
+        break label105;
+      }
+      long l = i + paramLong;
+      if ((!request(1L + l)) || (this.buffer.getByte(l) != paramByteString.getByte(paramInt1 + i))) {
+        break;
+      }
+      i += 1;
+    }
+    label105:
+    return true;
+  }
+  
+  public int read(ByteBuffer paramByteBuffer)
+  {
+    if ((this.buffer.size == 0L) && (this.source.read(this.buffer, 8192L) == -1L)) {
+      return -1;
+    }
+    return this.buffer.read(paramByteBuffer);
   }
   
   public int read(byte[] paramArrayOfByte)
@@ -164,25 +215,22 @@ final class RealBufferedSource
       throw new IllegalArgumentException("sink == null");
     }
     long l1 = 0L;
-    for (;;)
+    while (this.source.read(this.buffer, 8192L) != -1L)
     {
-      if (this.source.read(this.buffer, 8192L) == -1L)
-      {
-        l2 = l1;
-        if (this.buffer.size() > 0L)
-        {
-          l2 = l1 + this.buffer.size();
-          paramSink.write(this.buffer, this.buffer.size());
-        }
-        return l2;
-      }
-      long l2 = this.buffer.completeSegmentByteCount();
+      l2 = this.buffer.completeSegmentByteCount();
       if (l2 > 0L)
       {
         l1 += l2;
         paramSink.write(this.buffer, l2);
       }
     }
+    long l2 = l1;
+    if (this.buffer.size() > 0L)
+    {
+      l2 = l1 + this.buffer.size();
+      paramSink.write(this.buffer, this.buffer.size());
+    }
+    return l2;
   }
   
   public byte readByte()
@@ -219,21 +267,19 @@ final class RealBufferedSource
   {
     require(1L);
     int i = 0;
-    for (;;)
+    while (request(i + 1))
     {
-      if (!request(i + 1)) {}
-      byte b;
-      do
+      byte b = this.buffer.getByte(i);
+      if (((b < 48) || (b > 57)) && ((i != 0) || (b != 45)))
       {
-        return this.buffer.readDecimalLong();
-        b = this.buffer.getByte(i);
-        if (((b >= 48) && (b <= 57)) || ((i == 0) && (b == 45))) {
+        if (i != 0) {
           break;
         }
-      } while (i != 0);
-      throw new NumberFormatException(String.format("Expected leading [0-9] or '-' character but was %#x", new Object[] { Byte.valueOf(b) }));
+        throw new NumberFormatException(String.format("Expected leading [0-9] or '-' character but was %#x", new Object[] { Byte.valueOf(b) }));
+      }
       i += 1;
     }
+    return this.buffer.readDecimalLong();
   }
   
   public void readFully(Buffer paramBuffer, long paramLong)
@@ -253,7 +299,6 @@ final class RealBufferedSource
   
   public void readFully(byte[] paramArrayOfByte)
   {
-    int i;
     try
     {
       require(paramArrayOfByte.length);
@@ -262,18 +307,16 @@ final class RealBufferedSource
     }
     catch (EOFException localEOFException)
     {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (this.buffer.size <= 0L) {
-        throw localEOFException;
+      int i = 0;
+      while (this.buffer.size > 0L)
+      {
+        int j = this.buffer.read(paramArrayOfByte, i, (int)this.buffer.size);
+        if (j == -1) {
+          throw new AssertionError();
+        }
+        i += j;
       }
-      int j = this.buffer.read(paramArrayOfByte, i, (int)this.buffer.size);
-      if (j == -1) {
-        throw new AssertionError();
-      }
-      i += j;
+      throw localEOFException;
     }
   }
   
@@ -281,21 +324,19 @@ final class RealBufferedSource
   {
     require(1L);
     int i = 0;
-    for (;;)
+    while (request(i + 1))
     {
-      if (!request(i + 1)) {}
-      byte b;
-      do
+      byte b = this.buffer.getByte(i);
+      if (((b < 48) || (b > 57)) && ((b < 97) || (b > 102)) && ((b < 65) || (b > 70)))
       {
-        return this.buffer.readHexadecimalUnsignedLong();
-        b = this.buffer.getByte(i);
-        if (((b >= 48) && (b <= 57)) || ((b >= 97) && (b <= 102)) || ((b >= 65) && (b <= 70))) {
+        if (i != 0) {
           break;
         }
-      } while (i != 0);
-      throw new NumberFormatException(String.format("Expected leading [0-9a-fA-F] character but was %#x", new Object[] { Byte.valueOf(b) }));
+        throw new NumberFormatException(String.format("Expected leading [0-9a-fA-F] character but was %#x", new Object[] { Byte.valueOf(b) }));
+      }
       i += 1;
     }
+    return this.buffer.readHexadecimalUnsignedLong();
   }
   
   public int readInt()
@@ -382,6 +423,7 @@ final class RealBufferedSource
     }
   }
   
+  @Nullable
   public String readUtf8Line()
   {
     long l = indexOf((byte)10);
@@ -397,14 +439,29 @@ final class RealBufferedSource
   
   public String readUtf8LineStrict()
   {
-    long l = indexOf((byte)10);
-    if (l == -1L)
-    {
-      Buffer localBuffer = new Buffer();
-      this.buffer.copyTo(localBuffer, 0L, Math.min(32L, this.buffer.size()));
-      throw new EOFException("\\n not found: size=" + this.buffer.size() + " content=" + localBuffer.readByteString().hex() + "...");
+    return readUtf8LineStrict(9223372036854775807L);
+  }
+  
+  public String readUtf8LineStrict(long paramLong)
+  {
+    if (paramLong < 0L) {
+      throw new IllegalArgumentException("limit < 0: " + paramLong);
     }
-    return this.buffer.readUtf8Line(l);
+    if (paramLong == 9223372036854775807L) {}
+    for (long l1 = 9223372036854775807L;; l1 = paramLong + 1L)
+    {
+      long l2 = indexOf((byte)10, 0L, l1);
+      if (l2 == -1L) {
+        break;
+      }
+      return this.buffer.readUtf8Line(l2);
+    }
+    if ((l1 < 9223372036854775807L) && (request(l1)) && (this.buffer.getByte(l1 - 1L) == 13) && (request(1L + l1)) && (this.buffer.getByte(l1) == 10)) {
+      return this.buffer.readUtf8Line(l1);
+    }
+    Buffer localBuffer = new Buffer();
+    this.buffer.copyTo(localBuffer, 0L, Math.min(32L, this.buffer.size()));
+    throw new EOFException("\\n not found: limit=" + Math.min(this.buffer.size(), paramLong) + " content=" + localBuffer.readByteString().hex() + '…');
   }
   
   public boolean request(long paramLong)
@@ -430,20 +487,43 @@ final class RealBufferedSource
     }
   }
   
+  public int select(Options paramOptions)
+  {
+    if (this.closed) {
+      throw new IllegalStateException("closed");
+    }
+    int i;
+    do
+    {
+      i = this.buffer.selectPrefix(paramOptions, true);
+      if (i == -1) {
+        return -1;
+      }
+      if (i != -2) {
+        break;
+      }
+    } while (this.source.read(this.buffer, 8192L) != -1L);
+    return -1;
+    int j = paramOptions.byteStrings[i].size();
+    this.buffer.skip(j);
+    return i;
+  }
+  
   public void skip(long paramLong)
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
     }
-    while (paramLong > 0L)
+    do
     {
-      if ((this.buffer.size == 0L) && (this.source.read(this.buffer, 8192L) == -1L)) {
-        throw new EOFException();
-      }
       long l = Math.min(paramLong, this.buffer.size());
       this.buffer.skip(l);
       paramLong -= l;
-    }
+      if (paramLong <= 0L) {
+        break;
+      }
+    } while ((this.buffer.size != 0L) || (this.source.read(this.buffer, 8192L) != -1L));
+    throw new EOFException();
   }
   
   public Timeout timeout()
@@ -458,7 +538,7 @@ final class RealBufferedSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.RealBufferedSource
  * JD-Core Version:    0.7.0.1
  */

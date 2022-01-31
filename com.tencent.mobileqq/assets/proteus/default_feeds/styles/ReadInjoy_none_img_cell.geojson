@@ -1,7 +1,7 @@
 {
     "ReadInjoy_none_img_cell":
     {
-        "view_type":"cell",
+        "view_type":"container",
         "direction":"vertical",
         "height":{
             "type":"wrap_content"
@@ -49,13 +49,13 @@
             },
             {"$includeComponet":"componet/article_main_body.geojson"},
             {"$includeComponet":"componet/info_bar.geojson"},
-
+            
             {
                 "view_type":"UIView",
                 "view_id":"id_separator",
                 "margin_left":"6",
                 "margin_top":"6.5",
-
+                
                 "height":{
                     "type":"absolutely","value":"0.5"
                 },
@@ -68,7 +68,7 @@
                     "setBackgroundColorString:":"#E5E5E5"
                 }
             }
-
+            
         ]
     }
 }

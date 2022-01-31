@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.out.nativePlugins.foundation;
 
-import com.tencent.mobileqq.mini.out.nativePlugins.TenpayPlugin;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +19,8 @@ public class NativePluginManager
     pluginList.add(new NativePluginManager.PluginInfo("checkin_uploadRes", "com.tencent.mobileqq.mini.out.nativePlugins.GroupCheckInUploadPlugin"));
     initTroopAlbumPlugin();
     pluginList.add(new NativePluginManager.PluginInfo("tdoc_channel", "com.tencent.mobileqq.mini.out.nativePlugins.TenDocChannelPlugin"));
-    pluginList.add(new NativePluginManager.PluginInfo("openTenpayView", TenpayPlugin.class.getName()));
+    pluginList.add(new NativePluginManager.PluginInfo("openTenpayView", "com.tencent.mobileqq.mini.out.nativePlugins.TenpayPlugin"));
+    pluginList.add(new NativePluginManager.PluginInfo("qWalletBridge", "com.tencent.mobileqq.mini.out.nativePlugins.TenpayPlugin"));
     initQQPublicAccountPlugin();
     pluginList.add(new NativePluginManager.PluginInfo("tim_space", "com.tencent.mobileqq.mini.out.nativePlugins.TimTeamPlugin"));
   }
@@ -53,7 +53,7 @@ public class NativePluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePluginManager
  * JD-Core Version:    0.7.0.1
  */

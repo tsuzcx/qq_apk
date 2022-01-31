@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
-class beue
-  implements DialogInterface.OnDismissListener
+public class beue
+  implements MediaPlayer.OnCompletionListener
 {
-  beue(beub parambeub) {}
+  public beue(VideoTextureView paramVideoTextureView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (beub.a(this.a) != null) {
-      beub.a(this.a).onDismiss(paramDialogInterface);
+    if (VideoTextureView.a() != null) {
+      VideoTextureView.a().onVideoComplete(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beue
  * JD-Core Version:    0.7.0.1
  */

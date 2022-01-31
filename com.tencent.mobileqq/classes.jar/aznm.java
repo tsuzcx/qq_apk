@@ -1,21 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
+import android.os.FileObserver;
+import com.tencent.qphone.base.util.QLog;
 
 class aznm
-  extends Handler
+  extends FileObserver
 {
-  aznm(aznl paramaznl) {}
-  
-  public void handleMessage(Message paramMessage)
+  public aznm(String paramString, int paramInt)
   {
-    if ((paramMessage.what == aznl.j) && (aznl.e == this.a.k)) {
-      aznl.a(this.a);
+    super(paramString, paramInt);
+  }
+  
+  public void onEvent(int paramInt, String arg2)
+  {
+    QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces onEvent " + ???);
+    synchronized (aznl.a())
+    {
+      notifyAll();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aznm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-
-class agei
-  implements View.OnClickListener
+public class agei
 {
-  agei(ageg paramageg) {}
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
+  boolean e = false;
+  boolean f = false;
   
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-  }
+  public agei(agdi paramagdi) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agei
  * JD-Core Version:    0.7.0.1
  */

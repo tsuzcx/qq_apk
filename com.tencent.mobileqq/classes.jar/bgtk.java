@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqpim.QQPimTipsInfo;
+import android.os.Handler;
+import com.tencent.mobileqq.triton.sdk.FPSCallback;
+import com.tencent.qqmini.sdk.minigame.GameRuntime.1.1;
 
-public final class bgtk
-  implements Parcelable.Creator<QQPimTipsInfo>
+public class bgtk
+  implements FPSCallback
 {
-  public QQPimTipsInfo a(Parcel paramParcel)
-  {
-    return new QQPimTipsInfo(paramParcel, null);
-  }
+  bgtk(bgtj parambgtj) {}
   
-  public QQPimTipsInfo[] a(int paramInt)
+  public void onFPSChange(float paramFloat)
   {
-    return new QQPimTipsInfo[paramInt];
+    bgtj.a(this.a).a(paramFloat);
+    bgtj.a(this.a).post(new GameRuntime.1.1(this, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgtk
  * JD-Core Version:    0.7.0.1
  */

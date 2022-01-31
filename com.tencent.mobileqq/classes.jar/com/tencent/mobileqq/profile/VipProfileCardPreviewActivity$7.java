@@ -150,7 +150,7 @@ class VipProfileCardPreviewActivity$7
     //   292: aload 7
     //   294: astore 6
     //   296: aload 8
-    //   298: invokestatic 167	bbbr:a	(Landroid/graphics/Bitmap;)I
+    //   298: invokestatic 167	bdal:a	(Landroid/graphics/Bitmap;)I
     //   301: istore_2
     //   302: aload 7
     //   304: astore 6
@@ -453,7 +453,7 @@ class VipProfileCardPreviewActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.7
  * JD-Core Version:    0.7.0.1
  */

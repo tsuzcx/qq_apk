@@ -2,6 +2,7 @@ package com.tencent.viola.bridge;
 
 import android.text.TextUtils;
 import com.tencent.viola.core.ViolaBridge;
+import com.tencent.viola.utils.ViolaLogUtils;
 
 class ViolaBridgeManager$5
   implements Runnable
@@ -10,6 +11,7 @@ class ViolaBridgeManager$5
   
   public void run()
   {
+    ViolaLogUtils.e(ViolaBridgeManager.TAG, "violaInstance createInstanceImpl ViolaJSBridgeThread post start!");
     ViolaBridge localViolaBridge = ViolaBridgeManager.access$100(this.this$0);
     String str2 = this.val$instanceId;
     byte[] arrayOfByte = this.val$template.getBytes();
@@ -24,7 +26,7 @@ class ViolaBridgeManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.bridge.ViolaBridgeManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,134 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
+import ActionMsg.MsgBody;
+import com.qq.taf.jce.HexUtil;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
 
 public class bdao
-  implements InputFilter
 {
-  public bdao(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public static MsgBody a(String paramString)
   {
-    paramInt3 = 12 - (paramSpanned.length() - (paramInt4 - paramInt3));
-    if (paramInt3 <= 0)
+    MsgBody localMsgBody = new MsgBody();
+    try
     {
-      CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
-      return "";
+      JceInputStream localJceInputStream = new JceInputStream(HexUtil.hexStr2Bytes(paramString));
+      localJceInputStream.setServerEncoding("utf-8");
+      localMsgBody.readFrom(localJceInputStream);
+      return localMsgBody;
     }
-    if (paramInt3 >= paramInt2 - paramInt1) {
-      return null;
-    }
-    paramInt3 += paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    catch (Exception localException)
     {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1)
+      QLog.w("ActionMsgUtil", 2, "decode error msg = " + paramString);
+      QLog.w("ActionMsgUtil", 2, localException.toString());
+      localMsgBody.msg = "";
+      localMsgBody.action = "";
+      localMsgBody.shareAppID = 0L;
+      localMsgBody.actMsgContentValue = "";
+    }
+    return localMsgBody;
+  }
+  
+  public static bdap a(byte[] paramArrayOfByte)
+  {
+    bdap localbdap = new bdap();
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
+    for (;;)
+    {
+      try
       {
-        CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
-        return "";
+        paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
+        localbdap.jdField_a_of_type_Int = paramArrayOfByte.get();
+        if (paramArrayOfByte.get() != 0) {
+          continue;
+        }
+        i = -3004;
+        localbdap.b = i;
+        if (paramArrayOfByte.hasRemaining())
+        {
+          i = paramArrayOfByte.get();
+          byte[] arrayOfByte = new byte[paramArrayOfByte.getShort()];
+          paramArrayOfByte.get(arrayOfByte);
+          localbdap.c = i;
+          localbdap.jdField_a_of_type_JavaLangString = new String(arrayOfByte);
+          if (QLog.isColorLevel()) {
+            QLog.d("ActionMsgUtil", 2, "decodeAppShareCookie succes appShareCookie.buissnessType =" + localbdap.jdField_a_of_type_Int + "appShareCookie.action" + localbdap.b + "appShareCookie.actionType" + localbdap.c + "appShareCookie.actionValue" + localbdap.jdField_a_of_type_JavaLangString);
+          }
+        }
       }
+      catch (Exception paramArrayOfByte)
+      {
+        int i;
+        paramArrayOfByte.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("ActionMsgUtil", 2, "decodeAppShareCookie", paramArrayOfByte);
+      }
+      return localbdap;
+      i = -3005;
     }
-    CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    return localbdap;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2, 0L, null);
+  }
+  
+  public static String a(String paramString1, String paramString2, long paramLong, String paramString3)
+  {
+    String str = paramString1;
+    if (paramString1 == null)
+    {
+      str = "";
+      QLog.w("ActionMsgUtil", 2, "encode msg is null");
+    }
+    paramString1 = paramString2;
+    if (paramString2 == null)
+    {
+      paramString1 = "";
+      QLog.w("ActionMsgUtil", 2, "encode action is null");
+    }
+    paramString2 = new MsgBody();
+    paramString2.msg = str;
+    paramString2.action = paramString1;
+    paramString2.shareAppID = paramLong;
+    paramString2.actMsgContentValue = paramString3;
+    paramString1 = new JceOutputStream();
+    paramString1.setServerEncoding("utf-8");
+    paramString2.writeTo(paramString1);
+    return HexUtil.bytes2HexStr(paramString1.toByteArray());
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == -3000) || (paramInt == -3004) || (paramInt == -3005);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == -2009) || (paramInt == -3012);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return paramInt == -2016;
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    return paramInt == -2007;
+  }
+  
+  public static boolean e(int paramInt)
+  {
+    return paramInt == -2039;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdao
  * JD-Core Version:    0.7.0.1
  */

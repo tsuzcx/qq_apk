@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class ahxp
-  extends ahxr
+  implements View.OnTouchListener
 {
-  public void a()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.r();
-    }
-  }
+  public ahxp(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, InputMethodManager paramInputMethodManager) {}
   
-  public void b()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    RMVideoStateMgr.a().a(2);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxp
  * JD-Core Version:    0.7.0.1
  */

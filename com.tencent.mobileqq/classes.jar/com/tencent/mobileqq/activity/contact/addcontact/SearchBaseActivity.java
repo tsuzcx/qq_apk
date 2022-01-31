@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import affy;
-import affz;
-import afga;
-import afgb;
-import afgc;
-import ajya;
+import ahdd;
+import ahde;
+import ahdf;
+import ahdg;
+import ahdh;
+import alpo;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -33,7 +33,7 @@ public class SearchBaseActivity
   public static final Pattern b = Pattern.compile("[^0-9]");
   public static final Pattern c = Pattern.compile("^1[0-9]{2}\\d{8}$");
   private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new afgc(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new ahdh(this);
   public Button a;
   public EditText a;
   public ImageButton a;
@@ -91,34 +91,34 @@ public class SearchBaseActivity
   
   protected void c()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363479));
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131166862));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new affy(this));
-    if (AppSetting.d) {
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363520));
+    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131166909));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahdd(this));
+    if (AppSetting.c) {
       this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidWidgetButton.getText());
     }
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365763));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(getResources().getString(2131689715));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365849));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(getResources().getString(2131689716));
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(64) });
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0, getResources().getDimension(2131298822));
+    this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0, getResources().getDimension(2131298850));
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
     this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new affz(this));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131367678));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new afga(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368507));
-    if (AppSetting.d) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131713615));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new ahde(this));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131367807));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new ahdf(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368697));
+    if (AppSetting.c) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131713987));
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new afgb(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ahdg(this));
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561054);
-    paramBundle = super.findViewById(2131375493);
+    super.setContentView(2131561240);
+    paramBundle = super.findViewById(2131375981);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       paramBundle.setFitsSystemWindows(true);
     }
@@ -137,7 +137,7 @@ public class SearchBaseActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.setArguments(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.jdField_a_of_type_AndroidOsHandler);
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131364656, this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment);
+    paramBundle.replace(2131364735, this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment);
     paramBundle.commit();
     return true;
   }
@@ -151,7 +151,7 @@ public class SearchBaseActivity
   public void doOnResume()
   {
     super.doOnResume();
-    setContentBackgroundResource(2130838515);
+    setContentBackgroundResource(2130838592);
   }
   
   public void requestWindowFeature(Intent paramIntent)
@@ -161,7 +161,7 @@ public class SearchBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity
  * JD-Core Version:    0.7.0.1
  */

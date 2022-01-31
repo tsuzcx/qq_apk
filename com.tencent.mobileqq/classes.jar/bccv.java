@@ -1,39 +1,24 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.webview.swift.UnVisibleWebViewFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class bccv
-  implements View.OnLongClickListener
+class bccv
+  implements View.OnClickListener
 {
-  public bccv(UnVisibleWebViewFragment paramUnVisibleWebViewFragment) {}
+  bccv(bccu parambccu) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (!this.a.jdField_a_of_type_Bcfg.a("web_view_long_click", true))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
-      }
-      return true;
-    }
-    if (!this.a.jdField_a_of_type_Bcfg.a("image_long_click", false))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
-    }
-    bcer localbcer = (bcer)this.a.jdField_a_of_type_Bcee.a(8);
-    if ((localbcer != null) && (localbcer.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    paramView = new Intent(bccu.a(this.a), QQBrowserActivity.class);
+    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    bccu.a(this.a).startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccv
  * JD-Core Version:    0.7.0.1
  */

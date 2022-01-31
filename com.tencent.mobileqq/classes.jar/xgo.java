@@ -1,69 +1,94 @@
-import java.io.InputStream;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-public abstract class xgo
+public class xgo
+  extends xgl
 {
-  protected static int a;
-  protected static ArrayList<String[]> a;
+  private boolean c;
   
-  static
+  public xgo(Context paramContext, String paramString, int paramInt)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramContext, paramString, paramInt);
   }
   
-  public String a(String paramString)
+  public int a()
   {
-    return sdp.b(paramString);
+    return 1;
   }
   
-  public abstract xgp a(String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(String paramString);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract boolean a(String paramString, InputStream paramInputStream);
-  
-  public abstract boolean a(String paramString1, String paramString2);
-  
-  public void b()
+  public int a(int paramInt)
   {
+    return 0;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561506, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131364032);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131364027);
+    TextView localTextView = (TextView)paramView.findViewById(2131364029);
+    paramView = paramView.findViewById(2131364023);
+    localTextView.setText(this.jdField_a_of_type_JavaLangString);
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 10002: 
+    case 10003: 
+    default: 
+      if (this.jdField_a_of_type_Boolean) {
+        localImageView1.setVisibility(0);
+      }
+      break;
+    }
     for (;;)
     {
-      try
-      {
-        int i = jdField_a_of_type_Int;
-        if (i >= 1) {
-          return;
-        }
-        jdField_a_of_type_Int += 1;
-        if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
-        {
-          String[] arrayOfString = (String[])jdField_a_of_type_JavaUtilArrayList.remove(0);
-          a(arrayOfString[0], arrayOfString[1]);
-          try
-          {
-            Thread.sleep(100L);
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
-        else
-        {
-          jdField_a_of_type_Int -= 1;
-        }
+      if (!this.c) {
+        break label177;
       }
-      finally {}
+      paramInt = -2170912;
+      QQStoryContext.a();
+      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        paramInt = -16444373;
+      }
+      paramView.setBackgroundColor(paramInt);
+      paramView.setVisibility(0);
+      return;
+      localImageView2.setImageResource(2130846183);
+      break;
+      localImageView2.setImageResource(2130846179);
+      break;
+      localImageView2.setImageResource(2130846182);
+      break;
+      localImageView1.setVisibility(4);
     }
+    label177:
+    paramView.setVisibility(4);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgo
  * JD-Core Version:    0.7.0.1
  */

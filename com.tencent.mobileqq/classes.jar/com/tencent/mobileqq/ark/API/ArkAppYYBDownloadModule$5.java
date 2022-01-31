@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark.API;
 
-import alqk;
+import anhb;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppYYBDownloadModule$5
   implements Runnable
 {
-  public ArkAppYYBDownloadModule$5(alqk paramalqk, long paramLong, String paramString) {}
+  public ArkAppYYBDownloadModule$5(anhb paramanhb, long paramLong, String paramString) {}
   
   public void run()
   {
@@ -35,13 +35,13 @@ public class ArkAppYYBDownloadModule$5
     }
     catch (Exception localException)
     {
-      QLog.e("ArkApp.downloadyyb.module", 1, "QUERRY_PACKAGE_INSTALL  : " + localException);
+      QLog.e("ArkApp.downloadyyb.module", 1, "QUERRY_PACKAGE_EXIST  : " + localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.5
  * JD-Core Version:    0.7.0.1
  */

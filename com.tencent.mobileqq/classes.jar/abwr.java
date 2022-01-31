@@ -1,73 +1,91 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.31.1;
-import com.tencent.mobileqq.activity.QQSettingMe.31.2;
-import com.tencent.mobileqq.activity.QQSettingMe.31.3;
-import com.tencent.mobileqq.activity.QQSettingMe.31.4;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.4.1;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import mqq.os.MqqHandler;
 
 public class abwr
-  extends ajto
+  implements View.OnClickListener
 {
-  public abwr(QQSettingMe paramQQSettingMe) {}
+  public abwr(AccountManageActivity paramAccountManageActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (!this.a.b) {
       return;
-      if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ((paramObject instanceof Card)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.31.1(this));
-        ThreadManager.post(new QQSettingMe.31.2(this), 5, null, true);
-        return;
+    }
+    paramView = this.a;
+    boolean bool;
+    label102:
+    int i;
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      bool = true;
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label214;
       }
-    } while ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!(paramObject instanceof Card)) || (this.a.c) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)));
-    ThreadManager.post(new QQSettingMe.31.3(this, (Card)paramObject), 5, null, true);
-  }
-  
-  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.c)) {
-      QQSettingMe.a(this.a, false);
+      this.a.rightViewText.setVisibility(8);
+      this.a.rightHighLView.setVisibility(0);
+      this.a.rightViewText.setText(2131692680);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131166981));
+      if (AccountManageActivity.a(this.a) != null)
+      {
+        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((paramView instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)paramView).f();
+        }
+        AccountManageActivity.a(this.a).a();
+        AccountManageActivity.a(this.a, null);
+      }
+      int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      i = 0;
+      label173:
+      if (i >= j) {
+        break label321;
+      }
+      paramView = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if ((paramView != null) && (paramView.getTag() != null)) {
+        break label274;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, String.format("onGetMedal [%b, %b] medalSwitchDisable= ", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.a.c), Boolean.valueOf(paramBoolean2) }));
+    for (;;)
+    {
+      i += 1;
+      break label173;
+      bool = false;
+      break;
+      label214:
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightHighLView.setVisibility(8);
+      this.a.rightViewText.setText(2131692016);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131166909));
+      break label102;
+      label274:
+      paramView = paramView.findViewById(2131370961);
+      if (paramView != null)
+      {
+        ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) * AccountManageActivity.b(this.a)));
+        paramView.setLayoutParams(localLayoutParams);
+      }
     }
-  }
-  
-  protected void onGetSignInInfo(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new QQSettingMe.31.4(this));
-    }
-  }
-  
-  protected void onSetMedal(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a.c)) {
-      QQSettingMe.a(this.a, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, String.format("onSetMedal [%b %b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.a.c) }));
-    }
-  }
-  
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bbbr.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.b(paramString);
-    }
+    label321:
+    this.a.b();
+    this.a.a(this.a.jdField_a_of_type_Boolean);
+    this.a.b = false;
+    AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.4.1(this), 400L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class amri
-  implements ampc<String>
+  extends amqw
 {
-  public boolean a = true;
-  public boolean b = true;
+  public amuo a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(String paramString)
+  public amri(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, amuo paramamuo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("ark_app_manage_panel_disable", 1) != 0)
-      {
-        bool = true;
-        this.a = bool;
-        alqx.a = this.a;
-        if (paramString.optInt("ark_download_by_yyb_disable", 1) == 0) {
-          break label115;
-        }
-      }
-      label115:
-      for (boolean bool = true;; bool = false)
-      {
-        this.b = bool;
-        alqx.f = this.b;
-        QLog.i("ArkMsgAIDisableConfig", 1, "onParse " + ", ark_app_manage_panel_disable=" + this.a + ", ark_download_by_yyb_disable =" + this.b);
-        return;
-        bool = false;
-        break;
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("ArkMsgAIDisableConfig", 1, "handleArkMsgAIDisableConfig parse config_content exception=" + paramString);
-    }
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Amuo = paramamuo;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
+    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
+    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Amuo).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amri
  * JD-Core Version:    0.7.0.1
  */

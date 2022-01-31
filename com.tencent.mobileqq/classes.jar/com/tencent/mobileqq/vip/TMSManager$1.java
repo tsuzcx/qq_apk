@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vip;
 
-import bbxl;
-import bbxm;
+import bdwm;
+import bdwn;
 
 public class TMSManager$1
   implements Runnable
 {
-  public TMSManager$1(bbxl parambbxl, bbxm parambbxm) {}
+  public TMSManager$1(bdwm parambdwm, bdwn parambdwn) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class TMSManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.TMSManager.1
  * JD-Core Version:    0.7.0.1
  */

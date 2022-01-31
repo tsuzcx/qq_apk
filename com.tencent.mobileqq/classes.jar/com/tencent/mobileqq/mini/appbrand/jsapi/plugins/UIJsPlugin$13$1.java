@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bfpj;
+import bhqf;
 
 class UIJsPlugin$13$1
-  implements bfpj
+  implements bhqf
 {
   UIJsPlugin$13$1(UIJsPlugin.13 param13) {}
   
@@ -14,7 +14,7 @@ class UIJsPlugin$13$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UIJsPlugin.13.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,21 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity;
 
-public class bexx
-  extends benb
+class bexx
+  implements DialogInterface.OnClickListener
 {
-  public bexx(behq parambehq)
-  {
-    super(parambehq);
-  }
+  bexx(bexw parambexw) {}
   
-  private void c()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = this.a.a();
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
-    {
-      if (!((Activity)localObject).moveTaskToBack(true))
-      {
-        betc.d("GameCapsuleButton", "moveTaskToBack failed, finish the activity.");
-        ((Activity)localObject).finish();
-      }
-      this.a.a(bekc.a(60));
-    }
-    if (this.a.e())
-    {
-      localObject = this.a.a();
-      if ((localObject != null) && (((MiniAppInfo)localObject).launchParam != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.f))) {
-        belm.a(((MiniAppInfo)localObject).launchParam.f);
-      }
-    }
-    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonCloseClick(new behr(this.a));
-  }
-  
-  public void a()
-  {
-    betc.b("GameCapsuleButton", "on close click");
-    if ((!bevu.b(this.a, new bexy(this))) && (!bevu.a(this.a, new bexz(this)))) {
-      c();
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.b(110405, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexx
  * JD-Core Version:    0.7.0.1
  */

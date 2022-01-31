@@ -1,140 +1,139 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
+import android.app.PendingIntent;
+import android.app.PendingIntent.CanceledException;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLoadDelegate;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 public class qzo
+  implements ajdh
 {
-  private static qzo jdField_a_of_type_Qzo;
-  private int jdField_a_of_type_Int = 0;
-  private int b = 0;
+  @Nullable
+  private ajdj jdField_a_of_type_Ajdj;
+  @NonNull
+  private final PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
+  String jdField_a_of_type_JavaLangString;
+  @NonNull
+  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  boolean jdField_a_of_type_Boolean;
+  String b;
+  String c;
+  String d;
   
-  private qzo()
+  public qzo(@NonNull PendingIntent paramPendingIntent, @NonNull QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(218);
-    if (localAladdinConfig != null)
-    {
-      this.jdField_a_of_type_Int = localAladdinConfig.getIntegerFromString("daily_diandian_icon_mode_pure", 0);
-      this.b = localAladdinConfig.getIntegerFromString("daily_diandian_icon_mode_mix", 0);
-      QLog.d("DailyFeedsDiandianEntranceManager", 1, "Daily entry pure : " + this.jdField_a_of_type_Int + ", mix : " + this.b);
-    }
+    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private String a()
+  public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent, PendingIntent paramPendingIntent, String paramString1, String paramString2)
   {
-    int i = -1;
-    int j = a();
-    if (j == 2) {
-      i = 5;
-    }
-    for (;;)
+    int i = paramIntent.getIntExtra("banner_iconIdx", -1);
+    if ((paramPendingIntent == null) || (i < 0) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      try
-      {
-        Object localObject = new JSONObject();
-        ((JSONObject)localObject).put("diandianfeeds_type", i);
-        ((JSONObject)localObject).put("trigger_src", 1);
-        ((JSONObject)localObject).put("channel_id", olj.b());
-        localObject = ((JSONObject)localObject).toString();
-        return localObject;
+      QLog.e("ReadInjoyVideoInteract", 1, "invalid intent extra from ReadinjoyVideo, " + paramString1 + " / " + paramString2 + " / " + paramPendingIntent + " / " + i);
+      return;
+    }
+    String str1 = paramIntent.getStringExtra("banner_readinjoy_puin");
+    String str2 = paramIntent.getStringExtra("banner_readinjoy_vid");
+    String str3 = paramIntent.getStringExtra("banner_readinjoy_md5");
+    paramIntent = new qzo(paramPendingIntent, paramQQAppInterface, str1, paramIntent.getStringExtra("banner_readinjoy_article_id"), str2, str3, paramIntent.getBooleanExtra("banner_readinjoy_is_weishi_mode", false));
+    paramQQAppInterface = ajbm.a(paramQQAppInterface, i, paramString1, paramString2, paramIntent);
+    paramIntent.a();
+    paramIntent.a(paramQQAppInterface);
+  }
+  
+  private void a(String paramString)
+  {
+    ron localron;
+    QQAppInterface localQQAppInterface;
+    String str2;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    {
+      localron = new ron(this.d, this.jdField_a_of_type_JavaLangString, this.c, this.b);
+      localron.h(this.b);
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      str2 = this.jdField_a_of_type_JavaLangString;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label96;
       }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-      if (j == 3) {
-        i = 6;
-      } else if (j == 1) {
-        i = RecommendFeedsDiandianEntranceManager.a().a();
-      }
     }
-    return "";
-  }
-  
-  public static qzo a()
-  {
-    if (jdField_a_of_type_Qzo == null) {}
-    try
+    label96:
+    for (String str1 = "1";; str1 = "0")
     {
-      if (jdField_a_of_type_Qzo == null) {
-        jdField_a_of_type_Qzo = new qzo();
-      }
-      return jdField_a_of_type_Qzo;
+      nrt.a(localQQAppInterface, str2, paramString, paramString, 0, 0, str1, "", "", localron.a().a(), false);
+      return;
     }
-    finally {}
-  }
-  
-  public static rux a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getParcelable("daily_bottom_entry_data");
-    if ((paramBundle instanceof rux)) {
-      return (rux)paramBundle;
-    }
-    return null;
-  }
-  
-  public static boolean a(Bundle paramBundle)
-  {
-    return paramBundle.containsKey("daily_bottom_entry_data");
-  }
-  
-  public int a()
-  {
-    if (!bhvy.i())
-    {
-      QLog.d("DailyFeedsDiandianEntranceManager", 1, "getEntryMode | hide mode");
-      return 0;
-    }
-    if (oou.a(oou.b()))
-    {
-      QLog.d("DailyFeedsDiandianEntranceManager", 1, "getEntryMode |  entryModeInNormalDaily : " + this.jdField_a_of_type_Int);
-      return this.jdField_a_of_type_Int;
-    }
-    QLog.d("DailyFeedsDiandianEntranceManager", 1, "getEntryMode |  entryModeInMixDaily : " + this.b);
-    return this.b;
-  }
-  
-  public View.OnClickListener a(Activity paramActivity, View paramView, ntr paramntr)
-  {
-    switch (a())
-    {
-    case 1: 
-    default: 
-      return new qzr(this, paramActivity);
-    case 3: 
-      return new qzp(this, paramntr);
-    case 0: 
-      return null;
-    }
-    return new qzq(this, paramActivity);
   }
   
   public void a()
   {
-    if (a() != 0) {
-      nol.a(null, "CliOper", "", "", "0X80094FE", "0X80094FE", 0, 0, "", "", "", a(), false);
+    a("0X80097F8");
+  }
+  
+  public void a(@Nullable ajdj paramajdj)
+  {
+    this.jdField_a_of_type_Ajdj = paramajdj;
+  }
+  
+  public boolean isNeedAutoCloseWhenAccountChange()
+  {
+    return true;
+  }
+  
+  public void onClose()
+  {
+    if (this.jdField_a_of_type_Ajdj == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    ajbm.a(localQQAppInterface, this.jdField_a_of_type_Ajdj);
+    VideoFeedsLoadDelegate.a(this.jdField_a_of_type_AndroidAppPendingIntent);
+    a("0X80097FA");
+  }
+  
+  public void onEnter()
+  {
+    if (this.jdField_a_of_type_Ajdj == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    try
+    {
+      this.jdField_a_of_type_AndroidAppPendingIntent.send();
+      ajbm.a(localQQAppInterface, this.jdField_a_of_type_Ajdj);
+      a("0X80097F9");
+      return;
+    }
+    catch (PendingIntent.CanceledException localCanceledException)
+    {
+      for (;;)
+      {
+        QLog.e("ReadInjoyVideoInteract", 1, "send pending intent fail with " + this.jdField_a_of_type_AndroidAppPendingIntent + "\r\n" + localCanceledException);
+      }
     }
   }
   
-  public boolean a()
-  {
-    return a() != 0;
-  }
-  
-  public void b()
-  {
-    nol.a(null, "CliOper", "", "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", a(), false);
-  }
+  public void onOverride() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qzo
  * JD-Core Version:    0.7.0.1
  */

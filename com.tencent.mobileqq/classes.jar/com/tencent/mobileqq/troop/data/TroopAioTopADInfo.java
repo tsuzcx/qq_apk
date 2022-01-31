@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 public class TroopAioTopADInfo
-  extends auko
+  extends awbv
 {
   public int adId;
   public String backgroundUrl;
@@ -16,7 +16,7 @@ public class TroopAioTopADInfo
   public String picUrl;
   public int showType;
   public String strWord;
-  @aumc
+  @awdj
   public String troopUin;
   public String uiUrl;
   public long validTime;

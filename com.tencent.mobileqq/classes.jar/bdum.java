@@ -1,121 +1,76 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.QidianExternalInfo;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
-public class bdum
-  implements View.OnClickListener
+class bdum
+  implements Handler.Callback
 {
-  private long jdField_a_of_type_Long;
+  bdum(bduj parambduj) {}
   
-  public bdum(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramView == null) {}
-    do
+    if (paramMessage.what == 1)
     {
-      do
+      paramMessage = bduj.a();
+      int i = paramMessage.getInt("timer2_interval", 0);
+      int m = paramMessage.getInt("timer2_retry_times", 0);
+      int j = paramMessage.getInt("timer2_start_hour", 0);
+      int k = paramMessage.getInt("timer2_end_hour", 0);
+      if ((bdug.a == 0L) || (NetConnInfoCenter.getServerTimeMillis() - bdug.a < i))
       {
-        do
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i);
+        return true;
+      }
+      if (this.a.jdField_a_of_type_Int >= m)
+      {
+        QLog.i("SportManager", 2, "retry time enough cancel task.");
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        return true;
+      }
+      paramMessage = Calendar.getInstance();
+      paramMessage.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+      m = paramMessage.get(11);
+      if (m >= j)
+      {
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Int += 1;
+        this.a.a("timer2 callback report1");
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i + 2000);
+        return true;
+        if (m >= k) {
+          break;
+        }
+        paramMessage.set(11, 0);
+        paramMessage.set(12, 0);
+        paramMessage.set(13, 0);
+        paramMessage.set(14, 0);
+        if (bdug.a - paramMessage.getTimeInMillis() > 0L)
         {
-          do
-          {
-            do
-            {
-              return;
-              l = System.currentTimeMillis();
-            } while (Math.abs(l - this.jdField_a_of_type_Long) < 1000L);
-            this.jdField_a_of_type_Long = l;
-            paramView = (ausw)paramView.getTag();
-            switch (paramView.jdField_a_of_type_Int)
-            {
-            default: 
-              return;
-            case 4: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.b(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 7: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f();
-              return;
-            case 20: 
-              axqy.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "1", "1", "", "");
-              if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 6)
-              {
-                ChatActivityUtils.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, 1024, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.nickname, null, true, null, true, true, null, "from_internal");
-                return;
-              }
-              FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuy);
-              return;
-            case 55: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-              return;
-            case 8: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d(((Integer)paramView.jdField_a_of_type_JavaLangObject).intValue());
-              return;
-            case 52: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 47: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 48: 
-              localObject = (String[])paramView.jdField_a_of_type_JavaLangObject;
-              paramView = localObject[0];
-              localObject = localObject[1];
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(paramView, (String)localObject);
-              return;
-            case 49: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 50: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a((bdvs)paramView.jdField_a_of_type_JavaLangObject);
-              return;
-            case 51: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 53: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d();
-              return;
-            case 54: 
-              paramView = bbex.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-            }
-          } while (paramView == null);
-          paramView.c();
-          return;
-          QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-          return;
-          paramView = String.valueOf(paramView.jdField_a_of_type_JavaLangObject);
-        } while ((TextUtils.isEmpty(paramView)) || (!paramView.contains("|")));
-        paramView = paramView.split("\\|");
-      } while ((paramView == null) || (paramView.length != 2));
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, paramView[0], paramView[1]);
-      return;
-    } while (QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity));
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, true);
-    if ((this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuy != null) && (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqDataCard != null))
-    {
-      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
-      return;
+          QLog.i("SportManager", 2, "already report cancel task.");
+          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+          return true;
+        }
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Int += 1;
+        this.a.a("timer2 callback report2");
+      }
+      QLog.i("SportManager", 2, "over time cancel task.");
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      return true;
     }
-    this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(2131695620);
-    paramView = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Ajti;
-    Object localObject = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentAccountUin();
-    String str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
-    long l = ProfileActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, false);
-    paramView.a((String)localObject, str, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", l, 10004, new byte[] { 0 }, (byte)0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdum
  * JD-Core Version:    0.7.0.1
  */

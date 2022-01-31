@@ -1,35 +1,10 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-
-public class afli
-  extends Handler
+abstract interface afli
 {
-  public afli(SystemMsgListView paramSystemMsgListView) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (SystemMsgListView.a(this.a) == null);
-      this.a.i();
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
-      return;
-    }
-    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131719992);
-    bcql.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afli
  * JD-Core Version:    0.7.0.1
  */

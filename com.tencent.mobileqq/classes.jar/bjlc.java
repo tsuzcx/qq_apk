@@ -1,40 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import cooperation.qzone.plugin.PluginRecord;
+import java.io.File;
 
-public class bjlc
-  extends AnimatorListenerAdapter
+class bjlc
+  implements bjlg
 {
-  public bjlc(QIMCircleProgress paramQIMCircleProgress) {}
+  bjlc(bjlb parambjlb) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean a(PluginRecord paramPluginRecord, File paramFile)
   {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
-    }
+    return bjlb.a(this.a, paramPluginRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjlc
  * JD-Core Version:    0.7.0.1
  */

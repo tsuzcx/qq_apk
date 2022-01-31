@@ -1,33 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView;
 
-class bkbh
-  extends AnimatorListenerAdapter
+public class bkbh
+  extends bkbf
 {
-  bkbh(bkbd parambkbd) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public bkbh(String paramString, View paramView)
   {
-    ved.b(bkba.a, "scaleAnimator cancel!");
+    super(paramString, paramView);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void a(String paramString)
   {
-    ved.b(bkba.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.j = false;
-    this.a.a.k();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ved.b(bkba.a, "scaleAnimator start!");
-    this.a.j = true;
+    ((ImageView)this.a).setBackgroundColor(Color.parseColor(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkbh
  * JD-Core Version:    0.7.0.1
  */

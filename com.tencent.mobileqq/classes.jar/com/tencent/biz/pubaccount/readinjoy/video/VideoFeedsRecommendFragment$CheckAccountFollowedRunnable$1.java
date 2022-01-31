@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
-import qlp;
+import raw;
 
 class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable$1
   implements Runnable
@@ -40,7 +40,7 @@ class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.1
  * JD-Core Version:    0.7.0.1
  */

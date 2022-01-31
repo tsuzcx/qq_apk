@@ -1,33 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class apmo
-  implements View.OnClickListener
+  implements aekb
 {
-  apmo(apmi paramapmi, int paramInt) {}
+  apmo(aply paramaply) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_Apmi.a != null)
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label79;
-      }
-      axqy.b(null, "dc00898", "", "", "0X800A745", "0X800A745", apvm.c(this.jdField_a_of_type_Apmi.e()), 0, "", "", "", "");
-      if (this.jdField_a_of_type_Apmi.a.c()) {
-        this.jdField_a_of_type_Apmi.a.b();
-      }
-    }
-    label79:
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    this.jdField_a_of_type_Apmi.a.f();
+    QLog.i("MessengerService$IncomingHandler", 2, "@qqnotify delete faield ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apmo
  * JD-Core Version:    0.7.0.1
  */

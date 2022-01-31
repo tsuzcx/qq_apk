@@ -1,32 +1,54 @@
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
-class aykh
-  extends aykj
+public class aykh
+  extends ayju
 {
-  private aykr a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
+  public boolean b;
   
-  aykh(@NonNull String paramString, int paramInt1, int paramInt2)
+  public aykh(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    super(2, paramString);
-    this.a = new aykr(paramInt1, paramInt2, 1);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  float a(@NonNull Paint paramPaint)
+  public aykh(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    float f = this.a.a().getBounds().width();
-    if (QLog.isColorLevel()) {
-      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    for (boolean bool = true;; bool = false) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_JavaLangCharSequence = ayrd.a(paramString.optJSONArray("leftText"));
+        this.jdField_b_of_type_JavaLangCharSequence = ayrd.a(paramString.optJSONArray("rightText"));
+        this.jdField_a_of_type_JavaLangString = paramString.optString("bgColor");
+        if (paramString.optInt("needCenter") == 1)
+        {
+          this.jdField_b_of_type_Boolean = bool;
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(c, 0, paramString.toString());
+      }
     }
-    return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aykh
  * JD-Core Version:    0.7.0.1
  */

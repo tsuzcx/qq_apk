@@ -1,58 +1,57 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.Manager;
+import java.io.File;
+import java.util.List;
 
 public class blad
-  implements Manager
+  extends bmag
 {
-  public static long a;
-  public QQAppInterface a;
-  Timer a;
-  public PriorityBlockingQueue<blae> a;
-  public AtomicBoolean a;
+  private bmab<bkxw> a = new bmab();
+  private bmab<String> b = new bmab();
+  private bmab<blam> c = new bmab();
   
-  static
+  public bmab<bkxw> a()
   {
-    jdField_a_of_type_Long = 86400000L;
+    return this.a;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a()
   {
-    if (QLog.isColorLevel())
-    {
-      String str = paramString2;
-      if (paramString2 == null) {
-        str = "";
-      }
-      QLog.d("ShortVideoPreDownloader", 2, paramString1 + "(): " + str);
-    }
+    this.a.a(new bkxw("#ccffffff", "#000000"));
+    this.b.a("");
   }
   
-  public void a(blae paramblae)
+  public void a(String paramString, int paramInt)
   {
-    bkzy.a(paramblae, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "launchRequest:" + paramblae.a.busiType);
-    }
+    this.b.a(paramString);
+    this.a.a(bkxv.a.get(paramInt));
   }
   
-  public void onDestroy()
+  public void a(String paramString1, String paramString2)
   {
-    a("onDestroy", null);
-    if (this.jdField_a_of_type_JavaUtilTimer != null)
-    {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-      this.jdField_a_of_type_JavaUtilTimer.purge();
+    blam localblam = new blam();
+    String[] arrayOfString = new File(paramString2).list();
+    String str = paramString2 + File.separator + "snapshot.png";
+    if (arrayOfString.length != 0) {
+      bkkd.a(paramString2 + File.separator + arrayOfString[0], 320, 320, str);
     }
+    localblam.a = paramString2;
+    localblam.b = paramString1;
+    localblam.c = str;
+    this.c.a(localblam);
+  }
+  
+  public bmab<String> b()
+  {
+    return this.b;
+  }
+  
+  public bmab<blam> c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blad
  * JD-Core Version:    0.7.0.1
  */

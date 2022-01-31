@@ -7,14 +7,14 @@ class GameActivity$18
   
   public void run()
   {
-    if (GameActivity.access$600(this.this$0) == null) {
-      GameActivity.access$800(this.this$0);
+    if (GameActivity.access$900(this.this$0) == null) {
+      this.this$0.tryStartGameWhenReady();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.18
  * JD-Core Version:    0.7.0.1
  */

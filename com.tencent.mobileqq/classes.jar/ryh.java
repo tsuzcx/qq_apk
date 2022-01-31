@@ -1,20 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-class ryh
-  extends BroadcastReceiver
+public class ryh
+  implements oma
 {
-  ryh(ryg paramryg) {}
+  public ryh(FastWebActivity paramFastWebActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a() {}
+  
+  public void onClick(View paramView)
   {
-    this.a.a(paramContext, paramIntent);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.a.a(false, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryh
  * JD-Core Version:    0.7.0.1
  */

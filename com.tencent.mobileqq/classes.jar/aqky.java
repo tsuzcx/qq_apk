@@ -1,27 +1,29 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+
 public class aqky
+  extends Handler
 {
-  public String a;
-  public boolean a;
-  public String b;
-  @Deprecated
-  public boolean b;
-  
-  public aqky(String paramString1, String paramString2, boolean paramBoolean)
+  public aqky(FileAssistantActivity paramFileAssistantActivity, Looper paramLooper)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramLooper);
   }
   
-  public String toString()
+  public void handleMessage(Message paramMessage)
   {
-    return "MatchKey{column='" + this.jdField_a_of_type_JavaLangString + '\'' + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", or=" + this.jdField_a_of_type_Boolean + '}';
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    FileAssistantActivity.f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqky
  * JD-Core Version:    0.7.0.1
  */

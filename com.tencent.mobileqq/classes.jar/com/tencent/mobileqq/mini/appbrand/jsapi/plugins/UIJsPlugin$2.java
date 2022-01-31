@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import benn;
+import bgnf;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
@@ -40,15 +40,15 @@ class UIJsPlugin$2
       {
         try
         {
-          benn localbenn = new benn(this.this$0.jsPluginEngine.getActivityContext());
+          bgnf localbgnf = new bgnf(this.this$0.jsPluginEngine.getActivityContext());
           if (TextUtils.isEmpty(this.val$imagePath)) {
             break label232;
           }
-          localbenn.a(new BitmapDrawable(this.val$imagePath));
-          localbenn.a(this.val$title);
-          localbenn.c(this.val$duration);
-          localbenn.a();
-          UIJsPlugin.access$102(this.this$0, localbenn);
+          localbgnf.a(new BitmapDrawable(this.val$imagePath));
+          localbgnf.a(this.val$title);
+          localbgnf.c(this.val$duration);
+          localbgnf.a();
+          UIJsPlugin.access$102(this.this$0, localbgnf);
         }
         catch (Throwable localThrowable)
         {
@@ -79,7 +79,7 @@ class UIJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UIJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,21 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager.4;
-import java.io.File;
-import java.io.IOException;
-
-public class bkzq
-  implements aysc
+class bkzq
+  implements bkzx
 {
-  public bkzq(QIMPtvTemplateManager.4 param4) {}
+  bkzq(bkzl parambkzl) {}
   
-  public void onResp(aysz paramaysz)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + paramaysz.c);
-    }
-    this.a.a.usable = this.a.this$0.a(this.a.a);
-    if (this.a.a.usable) {}
-    try
+    if (bkzl.a(this.a))
     {
-      nav.a(new File(bkzp.a(), this.a.a.name), bkzp.a);
-      if (this.a.this$0.a() != null) {
-        this.a.this$0.a().notifyObservers(bjdt.class, 3, true, null);
-      }
+      bkzl.a(this.a, paramBoolean1, paramBoolean2);
       return;
     }
-    catch (IOException paramaysz)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          paramaysz.printStackTrace();
-        }
-      }
-    }
+    bkzl.b(this.a, paramBoolean1, paramBoolean2);
   }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkzq
  * JD-Core Version:    0.7.0.1
  */

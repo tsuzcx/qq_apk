@@ -1,74 +1,79 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper.1;
+import android.content.Intent;
+import android.os.Build;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.activity.registerGuideLogin.RegisterGuideView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class ajil
 {
-  private double jdField_a_of_type_Double = 2147483647.0D;
-  private int jdField_a_of_type_Int;
-  private WeakReference<ApolloTextureView> jdField_a_of_type_JavaLangRefWeakReference;
-  private int b;
-  private int c;
-  private int d = -1;
+  public static final String[] a = { "H60-L02", "H60-L01" };
   
-  private void b(double paramDouble)
+  private static int a(Intent paramIntent)
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
-      return;
+    boolean bool1 = paramIntent.getBooleanExtra("from_register_guide", false);
+    boolean bool2 = paramIntent.getBooleanExtra("isActionSend", false);
+    boolean bool3 = paramIntent.getBooleanExtra("from_register_choose", false);
+    if ((!bool1) && (!bool2) && (!bool3))
+    {
+      paramIntent = BaseApplicationImpl.sApplication.getAllAccounts();
+      if ((paramIntent == null) || (paramIntent.isEmpty())) {
+        return 101;
+      }
     }
-    localApolloTextureView.getRender().mIsFrameMode = true;
-    localApolloTextureView.getRender().mDuration = paramDouble;
-    localApolloTextureView.getRenderImpl().a(0L);
-    String[] arrayOfString2 = ajki.a(13, this.jdField_a_of_type_Int, this.b, true);
-    String[] arrayOfString1 = null;
-    if (this.c == 1) {
-      arrayOfString1 = ajki.a(13, this.jdField_a_of_type_Int, this.b, false);
-    }
-    localApolloTextureView.getRenderImpl().a(this.jdField_a_of_type_Int, 0, arrayOfString2, arrayOfString1);
+    return 102;
   }
   
-  public void a()
+  public static GuideBaseFragment a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Double = 2147483647.0D;
+    switch (a(paramBaseActivity.getIntent()))
+    {
+    default: 
+      return new LoginView(paramQQAppInterface);
+    case 102: 
+      return new LoginView(paramQQAppInterface);
+    }
+    return new RegisterGuideView(paramQQAppInterface);
   }
   
-  public void a(double paramDouble)
+  public static boolean a(String[] paramArrayOfString)
   {
+    boolean bool2 = false;
+    String str = Build.MODEL;
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloVoiceDIYHelper", 2, "[renderFrame], curSec:" + paramDouble + ",lastDur:" + this.jdField_a_of_type_Double);
+      QLog.d("GuideHandler", 2, "isKeyBoardBlackList model=" + str);
     }
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
-      return;
-    }
-    if (paramDouble <= this.jdField_a_of_type_Double) {
-      b(paramDouble);
+    boolean bool1 = bool2;
+    int j;
+    int i;
+    if (str != null)
+    {
+      j = paramArrayOfString.length;
+      i = 0;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Double = paramDouble;
-      return;
-      localApolloTextureView.queueEvent(new ApolloVoiceDIYHelper.1(this, localApolloTextureView, paramDouble - this.jdField_a_of_type_Double));
+      bool1 = bool2;
+      if (i < j)
+      {
+        if (str.equals(paramArrayOfString[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
-  }
-  
-  public void a(ApolloTextureView paramApolloTextureView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloTextureView);
-    if (paramInt1 != this.d) {
-      a();
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = this.jdField_a_of_type_Int;
-    this.b = paramInt2;
-    this.c = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajil
  * JD-Core Version:    0.7.0.1
  */

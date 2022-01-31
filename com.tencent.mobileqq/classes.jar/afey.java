@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afey
-  implements View.OnClickListener
+class afey
+  implements DialogInterface.OnClickListener
 {
-  public afey(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  afey(afew paramafew) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = (InputMethodManager)this.a.getSystemService("input_method");
-    if ((paramView != null) && (paramView.isActive())) {
-      paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    this.a.setResult(1);
-    this.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afey
  * JD-Core Version:    0.7.0.1
  */

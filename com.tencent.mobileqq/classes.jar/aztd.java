@@ -1,387 +1,454 @@
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout20.1;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SingleLineTextView;
+import java.io.ObjectInput;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import org.json.JSONObject;
 
 public class aztd
+  extends azqk
 {
-  private static volatile aztd a;
-  protected List<awii> a;
-  protected List<aztf> b;
+  String S;
+  String T;
+  String U;
+  String V;
+  boolean a;
   
-  public static final int a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  View a(View paramView, Context paramContext, String paramString)
   {
-    if (paramString1 == null) {}
-    for (paramString1 = ""; TextUtils.isEmpty(paramString1); paramString1 = paramString1.trim().toLowerCase()) {
-      return 0;
-    }
-    if (paramString3 == null)
-    {
-      paramString3 = null;
-      if (paramString4 != null) {
-        break label106;
-      }
-      paramString4 = null;
-      label39:
-      if (paramString5 != null) {
-        break label117;
-      }
-      paramString5 = null;
-      label47:
-      if (paramString6 != null) {
-        break label130;
-      }
-      paramString6 = null;
-      label55:
-      if (paramString7 != null) {
-        break label143;
-      }
-      paramString7 = null;
-      label63:
-      if (paramString8 != null) {
-        break label156;
-      }
-      paramString8 = null;
-      label71:
-      if (paramString2 != null) {
-        break label169;
-      }
-    }
-    label130:
-    label143:
-    label156:
-    label169:
-    for (paramString2 = null;; paramString2 = paramString2.trim().toLowerCase())
-    {
-      if ((TextUtils.isEmpty(paramString2)) || (!paramString2.contains(paramString1))) {
-        break label180;
-      }
-      return 7;
-      paramString3 = paramString3.trim().toLowerCase();
-      break;
-      label106:
-      paramString4 = paramString4.trim().toLowerCase();
-      break label39;
-      label117:
-      paramString5 = paramString5.trim().toLowerCase();
-      break label47;
-      paramString6 = paramString6.trim().toLowerCase();
-      break label55;
-      paramString7 = paramString7.trim().toLowerCase();
-      break label63;
-      paramString8 = paramString8.trim().toLowerCase();
-      break label71;
-    }
-    label180:
-    if ((!TextUtils.isEmpty(paramString6)) && (paramString6.contains(paramString1))) {
-      return 4;
-    }
-    if ((!TextUtils.isEmpty(paramString3)) && (paramString3.contains(paramString1))) {
-      return 1;
-    }
-    if ((!TextUtils.isEmpty(paramString7)) && (paramString7.contains(paramString1))) {
-      return 5;
-    }
-    if ((!TextUtils.isEmpty(paramString8)) && (paramString8.contains(paramString1))) {
-      return 6;
-    }
-    if (((!TextUtils.isEmpty(paramString4)) && (paramString4.contains(paramString1))) || ((!TextUtils.isEmpty(paramString5)) && (paramString5.contains(paramString1)))) {
-      return 2;
-    }
-    if (((!TextUtils.isEmpty(paramString4)) && (paramString4.contains(paramString1))) || ((!TextUtils.isEmpty(paramString5)) && (paramString5.contains(paramString1)))) {
-      return 3;
-    }
-    return 0;
-  }
-  
-  public static aztd a()
-  {
-    if (jdField_a_of_type_Aztd == null) {}
+    azte localazte2;
     try
     {
-      if (jdField_a_of_type_Aztd == null) {
-        jdField_a_of_type_Aztd = new aztd();
+      i = Integer.parseInt(this.S);
+      if (paramView == null)
+      {
+        azte localazte1 = new azte(this);
+        paramView = View.inflate(paramContext, 2131561682, null);
+        localazte1.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131370958));
+        localazte1.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
+        localazte1.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366620));
+        localazte1.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369748);
+        paramView.setTag(localazte1);
+        localazte1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramString);
+        if (i != 1) {
+          break label331;
+        }
+        localazte1.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        localazte1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(Color.parseColor("#777777"));
+        localazte1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextSize(14.0F);
+        localazte1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+        localazte1.jdField_a_of_type_AndroidWidgetTextView.setText(this.U);
+        localazte1.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+        localazte1.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130839143));
+        paramView.setTag(2131373955, this.b);
+        localazte1.jdField_a_of_type_AndroidWidgetTextView.setTag(2131373955, this.b);
+        i = aekt.a(17.0F, paramContext.getResources());
+        int j = aekt.a(16.0F, paramContext.getResources());
+        localazte1.jdField_a_of_type_AndroidWidgetTextView.setPadding(j, 0, j, 0);
+        localazte1.jdField_a_of_type_AndroidWidgetTextView.post(new StructMsgItemLayout20.1(this, i, localazte1));
+        paramView.setOnClickListener(this);
+        localazte1.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+        return paramView;
       }
-      return jdField_a_of_type_Aztd;
     }
-    finally {}
-  }
-  
-  public static final String a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if (paramInt == 1) {}
-    while ((paramInt == 2) || (paramInt == 3)) {
-      return paramString2;
-    }
-    if (paramInt == 4) {
-      return paramString3;
-    }
-    if (paramInt == 5) {
-      return paramString3;
-    }
-    if (paramInt == 6) {
-      return paramString3;
-    }
-    if (paramInt == 7) {
-      return paramString1;
-    }
-    return null;
-  }
-  
-  public static ArrayList<Long> a(List<? extends awij> paramList)
-  {
-    ArrayList localArrayList = null;
-    int j;
-    int i;
-    if (paramList != null)
+    catch (Exception localException)
     {
-      j = paramList.size();
-      localArrayList = new ArrayList();
-      i = 0;
+      label331:
+      do
+      {
+        for (;;)
+        {
+          QLog.e("StructMsgItemLayout20", 1, "content type:" + this.S);
+          i = 0;
+          continue;
+          localazte2 = (azte)paramView.getTag();
+        }
+      } while (i != 0);
+      localazte2.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramString = paramContext.getResources().getDrawable(2130840084);
+      if (TextUtils.isEmpty(this.T)) {
+        break label639;
+      }
+    }
+    int i = aekt.a(40.0F, paramContext.getResources());
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = paramString;
+    localURLDrawableOptions.mFailedDrawable = paramString;
+    paramString = URLDrawable.getDrawable(this.T, localURLDrawableOptions);
+    if (paramString.getStatus() == 2) {
+      paramString.restartDownload();
+    }
+    paramString.setTag(bcuq.b(i, i, i / 2));
+    paramString.setDecodeHandler(bcuq.c);
+    localazte2.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    label446:
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramString = paramContext.getResources().getDrawable(2130841431);
+      localazte2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding(aekt.a(3.0F, paramContext.getResources()));
+      paramString.setBounds(0, 0, aekt.a(15.0F, paramContext.getResources()), aekt.a(15.0F, paramContext.getResources()));
+      localazte2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, paramString);
+      localazte2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(Color.parseColor("#000000"));
+      localazte2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextSize(17.0F);
+      localazte2.jdField_a_of_type_AndroidWidgetTextView.setTag(localazte2);
+      if (!((aluw)((BaseActivity)paramContext).app.getManager(56)).a(Long.valueOf(Long.parseLong(this.V)))) {
+        break label664;
+      }
+      localazte2.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+      localazte2.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131714974));
+      localazte2.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
     }
     for (;;)
     {
-      if (i < j)
-      {
-        Object localObject = (awij)paramList.get(i);
-        if ((localObject instanceof awhl))
-        {
-          localObject = (awhl)localObject;
-          try
-          {
-            if ((((awhl)localObject).a() == 0) || (((awhl)localObject).a() == 3)) {
-              break label116;
-            }
-            localArrayList.add(Long.valueOf(Long.parseLong(((awhl)localObject).d())));
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            localNumberFormatException.printStackTrace();
-          }
-          catch (NullPointerException localNullPointerException)
-          {
-            localNullPointerException.printStackTrace();
-          }
-        }
-      }
-      else
-      {
-        return localArrayList;
-      }
-      label116:
-      i += 1;
-    }
-  }
-  
-  public final awhl a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return null;
-    }
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < j)
-    {
-      awii localawii = (awii)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (((localawii instanceof awhl)) && (paramString.equals(localawii.d()))) {
-        return (awhl)localawii;
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    long l1 = System.currentTimeMillis();
-    int i;
-    int j;
-    if (this.b == null)
-    {
-      i = 0;
-      j = 0;
-      label17:
-      if (j >= i) {
-        break label152;
-      }
-      localObject = (aztf)this.b.get(j);
-      if (!((aztf)localObject).a.equals(paramString2)) {
-        break label143;
-      }
-    }
-    label143:
-    label152:
-    for (Object localObject = aztf.a(paramString1, (aztf)localObject);; localObject = null)
-    {
-      long l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopFileSearchManager", 2, "getFriendsSearchedSet() time cost = " + (l2 - l1) + " , hanzi = " + (String)localObject + ", input = " + paramString1 + ", uin = " + paramString2);
-      }
-      return localObject;
-      i = this.b.size();
+      label514:
+      paramView.setTag(2131373957, this.V);
+      localazte2.jdField_a_of_type_AndroidWidgetTextView.setTag(2131373957, this.V);
       break;
-      j += 1;
-      break label17;
+      label639:
+      localazte2.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+      break label446;
+      localazte2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+      break label514;
+      label664:
+      localazte2.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130839143));
+      localazte2.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131714980));
+      localazte2.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
     }
   }
   
-  @SuppressLint({"UseSparseArrays"})
-  public List<awii> a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  void a()
   {
-    long l1 = System.currentTimeMillis();
-    ArrayList localArrayList1 = new ArrayList();
-    ExecutorService localExecutorService = Executors.newFixedThreadPool(1);
-    ArrayList localArrayList2 = new ArrayList();
-    localArrayList2.add(localExecutorService.submit(new azte(this, paramContext, paramQQAppInterface, awii.E, paramInt)));
-    paramInt = 0;
     try
     {
-      while (paramInt < localArrayList2.size())
+      JSONObject localJSONObject = new JSONObject(this.h);
+      this.S = localJSONObject.optString("contentType");
+      if (localJSONObject.optInt("isCert") == 1) {}
+      for (boolean bool = true;; bool = false)
       {
-        paramContext = (List)((Future)localArrayList2.get(paramInt)).get();
-        localArrayList1.addAll(paramContext);
-        paramContext.clear();
-        paramInt += 1;
+        this.jdField_a_of_type_Boolean = bool;
+        this.T = localJSONObject.optString("faceUrl");
+        this.U = localJSONObject.optString("btnText");
+        this.V = localJSONObject.optString("puin");
+        return;
       }
-      localArrayList2.clear();
-      localExecutorService.shutdown();
+      return;
     }
-    catch (InterruptedException paramContext)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        long l2;
-        paramContext.printStackTrace();
-      }
+      QLog.e("StructMsgItemLayout20", 1, "Exception:" + localException);
     }
-    catch (ExecutionException paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
-    }
-    l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopFileSearchManager", 2, "initSearchData() time cost = " + (l2 - l1) + " , size = " + localArrayList1.size());
-    }
-    return localArrayList1;
   }
   
-  @SuppressLint({"UseSparseArrays"})
-  public List<awii> a(Context paramContext, QQAppInterface paramQQAppInterface, long paramLong, boolean paramBoolean)
+  public void a(ObjectInput paramObjectInput)
   {
-    long l = System.currentTimeMillis();
-    ArrayList localArrayList = new ArrayList();
-    ajxl localajxl = (ajxl)paramQQAppInterface.getManager(51);
+    super.a(paramObjectInput);
+    a();
+  }
+  
+  public boolean a(azsa paramazsa)
+  {
+    super.a(paramazsa);
+    a();
+    return true;
+  }
+  
+  protected int b()
+  {
+    return 20;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
     Object localObject;
-    if (localajxl != null)
+    if ((paramView != null) && ((paramView instanceof LinearLayout)) && (((LinearLayout)paramView).getChildCount() == this.jdField_a_of_type_JavaUtilArrayList.size()))
     {
-      localObject = localajxl.b();
-      if (localObject != null)
+      paramBundle = (LinearLayout)paramView;
+      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      int i = 0;
+      for (;;)
       {
-        Iterator localIterator1 = ((List)localObject).iterator();
-        while (localIterator1.hasNext())
+        if (((Iterator)localObject).hasNext())
         {
-          Groups localGroups = (Groups)localIterator1.next();
-          localObject = localajxl.a(String.valueOf(localGroups.group_id));
-          if (localObject != null)
+          azqj localazqj = (azqj)((Iterator)localObject).next();
+          localazqj.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          if ("content".equals(localazqj.jdField_a_of_type_JavaLangString))
           {
-            Iterator localIterator2 = ((List)localObject).iterator();
-            label105:
-            Friends localFriends;
-            if (localIterator2.hasNext())
-            {
-              localFriends = (Friends)localIterator2.next();
-              if (localFriends.gathtertype != 1) {
-                break label176;
-              }
-            }
-            label176:
-            for (localObject = paramContext.getResources().getString(2131720649);; localObject = localGroups.group_name)
-            {
-              localArrayList.add(new awhl(paramContext, paramQQAppInterface, localFriends, (String)localObject, 0L, paramLong));
-              break label105;
-              break;
-            }
+            localObject = ((azsl)localazqj).Y;
+            a(((LinearLayout)paramView).getChildAt(i), paramContext, (String)localObject);
           }
         }
-      }
-    }
-    if (paramBoolean)
-    {
-      localObject = new Friends();
-      ((Friends)localObject).uin = paramQQAppInterface.getCurrentAccountUin();
-      ((Friends)localObject).name = paramQQAppInterface.getCurrentNickname();
-      localArrayList.add(new awhl(paramContext, paramQQAppInterface, (Friends)localObject, paramContext.getResources().getString(2131720649), 0L, paramLong));
-    }
-    paramLong = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopFileSearchManager", 2, "getFriends() time cost = " + (paramLong - l) + " , size = " + localArrayList.size());
-    }
-    return localArrayList;
-  }
-  
-  public List<aztf> a(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    long l1 = System.currentTimeMillis();
-    ArrayList localArrayList = new ArrayList();
-    ajxl localajxl = (ajxl)paramQQAppInterface.getManager(51);
-    if (localajxl != null)
-    {
-      Object localObject1 = localajxl.b();
-      if (localObject1 != null)
-      {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
+        else
         {
-          Object localObject2 = localajxl.a(String.valueOf(((Groups)((Iterator)localObject1).next()).group_id));
-          if (localObject2 != null)
-          {
-            localObject2 = ((List)localObject2).iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              Friends localFriends = (Friends)((Iterator)localObject2).next();
-              localArrayList.add(new aztf(paramContext, localFriends.uin, localFriends.name, localFriends.remark));
-            }
-          }
+          return paramBundle;
         }
+        i += 1;
       }
     }
-    if (paramBoolean) {
-      localArrayList.add(new aztf(paramContext, paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentNickname(), null));
+    paramView = new LinearLayout(paramContext);
+    paramBundle = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramBundle.hasNext())
+    {
+      localObject = (azqj)paramBundle.next();
+      ((azqj)localObject).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (("content".equals(((azqj)localObject).jdField_a_of_type_JavaLangString)) && ((localObject instanceof azsl))) {
+        paramView.addView(a(null, paramContext, ((azsl)localObject).Y), new LinearLayout.LayoutParams(-1, -2));
+      }
     }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopFileSearchManager", 2, "getFriendsSearchedSet() time cost = " + (l2 - l1) + " , size = " + localArrayList.size());
-    }
-    return localArrayList;
+    return paramView;
   }
   
-  public void a()
+  public String b()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    if (this.b != null) {
-      this.b.clear();
-    }
+    return "Layout20";
+  }
+  
+  /* Error */
+  public void onClick(View paramView)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 21	aztd:S	Ljava/lang/String;
+    //   4: invokestatic 27	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   7: istore_2
+    //   8: aload_1
+    //   9: invokevirtual 394	android/view/View:getContext	()Landroid/content/Context;
+    //   12: astore 5
+    //   14: aload 5
+    //   16: instanceof 396
+    //   19: ifne +4 -> 23
+    //   22: return
+    //   23: aload 5
+    //   25: checkcast 396	android/support/v4/app/FragmentActivity
+    //   28: astore 4
+    //   30: aload 5
+    //   32: checkcast 396	android/support/v4/app/FragmentActivity
+    //   35: invokevirtual 400	android/support/v4/app/FragmentActivity:getChatFragment	()Lcom/tencent/mobileqq/activity/ChatFragment;
+    //   38: astore_3
+    //   39: aload_3
+    //   40: ifnull +151 -> 191
+    //   43: aload_3
+    //   44: invokevirtual 405	com/tencent/mobileqq/activity/ChatFragment:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   47: astore_3
+    //   48: aload_3
+    //   49: ifnull -27 -> 22
+    //   52: aload_3
+    //   53: bipush 88
+    //   55: invokevirtual 408	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalko;
+    //   58: checkcast 410	nup
+    //   61: astore 6
+    //   63: iload_2
+    //   64: iconst_1
+    //   65: if_icmpne +148 -> 213
+    //   68: aload_1
+    //   69: ldc 121
+    //   71: invokevirtual 413	android/view/View:getTag	(I)Ljava/lang/Object;
+    //   74: checkcast 360	java/lang/String
+    //   77: astore_1
+    //   78: aload_1
+    //   79: invokestatic 187	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   82: ifne -60 -> 22
+    //   85: new 415	android/content/Intent
+    //   88: dup
+    //   89: aload 5
+    //   91: ldc_w 417
+    //   94: invokespecial 420	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   97: astore 4
+    //   99: aload 4
+    //   101: ldc_w 422
+    //   104: aload_1
+    //   105: invokevirtual 426	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   108: pop
+    //   109: aload 4
+    //   111: ldc_w 428
+    //   114: invokestatic 434	java/lang/System:currentTimeMillis	()J
+    //   117: invokevirtual 437	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
+    //   120: pop
+    //   121: aload 4
+    //   123: ldc_w 439
+    //   126: ldc_w 441
+    //   129: invokevirtual 426	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   132: pop
+    //   133: aload 5
+    //   135: aload 4
+    //   137: invokevirtual 445	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   140: aload_0
+    //   141: getfield 448	aztd:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   144: ifnull -122 -> 22
+    //   147: new 450	nug
+    //   150: dup
+    //   151: invokespecial 451	nug:<init>	()V
+    //   154: astore_1
+    //   155: aload_1
+    //   156: bipush 6
+    //   158: putfield 454	nug:a	I
+    //   161: aload_1
+    //   162: aload_0
+    //   163: getfield 448	aztd:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   166: getfield 460	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   169: invokestatic 465	nud:a	(Lnug;Lcom/tencent/mobileqq/data/MessageRecord;)Lnug;
+    //   172: astore_1
+    //   173: aload_3
+    //   174: sipush 139
+    //   177: invokevirtual 408	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalko;
+    //   180: checkcast 462	nud
+    //   183: aload_1
+    //   184: aconst_null
+    //   185: invokevirtual 468	nud:a	(Lnug;Ljava/lang/String;)V
+    //   188: return
+    //   189: astore_1
+    //   190: return
+    //   191: invokestatic 474	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   194: invokevirtual 478	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   197: astore_3
+    //   198: aload_3
+    //   199: instanceof 254
+    //   202: ifeq +214 -> 416
+    //   205: aload_3
+    //   206: checkcast 254	com/tencent/mobileqq/app/QQAppInterface
+    //   209: astore_3
+    //   210: goto -162 -> 48
+    //   213: iload_2
+    //   214: ifne -192 -> 22
+    //   217: aload_1
+    //   218: ldc_w 282
+    //   221: invokevirtual 413	android/view/View:getTag	(I)Ljava/lang/Object;
+    //   224: checkcast 360	java/lang/String
+    //   227: astore 5
+    //   229: aload_1
+    //   230: invokevirtual 481	android/view/View:getId	()I
+    //   233: ldc_w 482
+    //   236: if_icmpne +71 -> 307
+    //   239: new 415	android/content/Intent
+    //   242: dup
+    //   243: invokespecial 483	android/content/Intent:<init>	()V
+    //   246: astore_1
+    //   247: aload_1
+    //   248: ldc_w 485
+    //   251: bipush 115
+    //   253: invokevirtual 488	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   256: pop
+    //   257: aload_1
+    //   258: aload_3
+    //   259: aload 4
+    //   261: aload 5
+    //   263: bipush 251
+    //   265: invokestatic 493	syb:a	(Landroid/content/Intent;Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;Ljava/lang/String;I)V
+    //   268: aload 6
+    //   270: ldc_w 494
+    //   273: aload_0
+    //   274: getfield 448	aztd:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   277: getfield 497	com/tencent/mobileqq/structmsg/AbsStructMsg:uin	Ljava/lang/String;
+    //   280: aload_0
+    //   281: getfield 448	aztd:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   284: getfield 460	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   287: ldc_w 499
+    //   290: invokevirtual 504	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   293: aconst_null
+    //   294: aconst_null
+    //   295: aload 5
+    //   297: invokestatic 268	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   300: iconst_0
+    //   301: invokevirtual 507	nup:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JZ)V
+    //   304: return
+    //   305: astore_1
+    //   306: return
+    //   307: aload_1
+    //   308: invokevirtual 481	android/view/View:getId	()I
+    //   311: ldc 56
+    //   313: if_icmpne -291 -> 22
+    //   316: aload_1
+    //   317: invokevirtual 178	android/view/View:getTag	()Ljava/lang/Object;
+    //   320: checkcast 29	azte
+    //   323: astore_1
+    //   324: aload_1
+    //   325: getfield 61	azte:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   328: iconst_4
+    //   329: invokevirtual 508	android/widget/TextView:setVisibility	(I)V
+    //   332: aload_1
+    //   333: getfield 65	azte:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   336: iconst_0
+    //   337: invokevirtual 509	android/view/View:setVisibility	(I)V
+    //   340: aload_3
+    //   341: aload 4
+    //   343: aload 5
+    //   345: new 511	aztf
+    //   348: dup
+    //   349: aload_0
+    //   350: aload_1
+    //   351: invokespecial 514	aztf:<init>	(Laztd;Lazte;)V
+    //   354: iconst_1
+    //   355: iconst_3
+    //   356: invokestatic 517	syb:a	(Lcom/tencent/common/app/AppInterface;Landroid/content/Context;Ljava/lang/String;Lalvc;ZI)V
+    //   359: new 450	nug
+    //   362: dup
+    //   363: invokespecial 451	nug:<init>	()V
+    //   366: astore_1
+    //   367: aload_1
+    //   368: iconst_5
+    //   369: putfield 454	nug:a	I
+    //   372: aload_1
+    //   373: aload 5
+    //   375: invokestatic 268	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   378: putfield 520	nug:b	J
+    //   381: aload_1
+    //   382: aload_0
+    //   383: getfield 448	aztd:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   386: getfield 460	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   389: invokestatic 465	nud:a	(Lnug;Lcom/tencent/mobileqq/data/MessageRecord;)Lnug;
+    //   392: astore_1
+    //   393: aload_3
+    //   394: sipush 139
+    //   397: invokevirtual 408	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalko;
+    //   400: checkcast 462	nud
+    //   403: aload_1
+    //   404: aconst_null
+    //   405: invokevirtual 468	nud:a	(Lnug;Ljava/lang/String;)V
+    //   408: return
+    //   409: astore_1
+    //   410: return
+    //   411: astore 4
+    //   413: goto -32 -> 381
+    //   416: aconst_null
+    //   417: astore_3
+    //   418: goto -370 -> 48
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	421	0	this	aztd
+    //   0	421	1	paramView	View
+    //   7	207	2	i	int
+    //   38	380	3	localObject1	Object
+    //   28	314	4	localObject2	Object
+    //   411	1	4	localException	Exception
+    //   12	362	5	localObject3	Object
+    //   61	208	6	localnup	nup
+    // Exception table:
+    //   from	to	target	type
+    //   140	188	189	java/lang/Exception
+    //   268	304	305	java/lang/Exception
+    //   359	372	409	java/lang/Exception
+    //   381	408	409	java/lang/Exception
+    //   372	381	411	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aztd
  * JD-Core Version:    0.7.0.1
  */

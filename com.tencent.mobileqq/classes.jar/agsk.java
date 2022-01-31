@@ -1,18 +1,33 @@
-class agsk
-  implements bcwm
+public class agsk
 {
-  agsk(agsj paramagsj, Runnable paramRunnable) {}
+  public double a;
+  public double b;
   
-  public void a(int paramInt)
+  public agsk(double paramDouble1, double paramDouble2)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public agsk(agsk paramagsk)
+  {
+    a(paramagsk);
+  }
+  
+  public void a(agsk paramagsk)
+  {
+    this.a = paramagsk.a;
+    this.b = paramagsk.b;
+  }
+  
+  public String toString()
+  {
+    return "Acceleration{ax=" + this.a + ", ay=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsk
  * JD-Core Version:    0.7.0.1
  */

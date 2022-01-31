@@ -1,56 +1,52 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.5.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class smx
+  implements srk
 {
-  public static Intent a(String paramString1, String paramString2)
+  public smx(ViolaFragment paramViolaFragment) {}
+  
+  public void a()
   {
-    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramString1.setPackage(paramString2);
+    this.a.a.b();
+    this.a.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage success!");
     }
-    paramString1.setFlags(536870912);
-    paramString1.putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
-    return paramString1;
   }
   
-  public static boolean a(Activity paramActivity)
+  public void a(int paramInt)
   {
-    if (paramActivity == null) {
-      snb.d("AppMarketUtils", "tryGoAppMarket:activity = null");
-    }
-    String str1;
-    String str2;
-    do
+    if (this.a.getActivity() != null) {}
+    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
     {
-      return false;
-      str1 = sjy.a().b();
-      str2 = sjy.a().a();
-      snb.b("AppMarketUtils", "goAppMarket:\nappStorePackageName = " + str2 + "\nappStoreVendorId =" + sjy.a().d() + "\nappStoreScheme =" + str1);
-    } while ((TextUtils.isEmpty(str1)) || (str1.startsWith("http")));
-    return a(paramActivity, str1, str2);
+      new Handler(localLooper).postDelayed(new ViolaFragment.5.1(this), 1000L);
+      if (QLog.isColorLevel()) {
+        QLog.e("ViolaFragment", 2, "reloadPage error,error code=" + paramInt);
+      }
+      return;
+    }
   }
   
-  private static boolean a(Activity paramActivity, String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void b(int paramInt)
   {
-    snb.b("AppMarketUtils", "goAppMarket :\npackageName = " + paramString2 + "\nurl = " + paramString1);
-    try
-    {
-      paramActivity.startActivity(a(paramString1, paramString2));
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage process,process code=" + paramInt);
     }
-    catch (Exception paramActivity)
-    {
-      snb.d("AppMarketUtils", "goAppMarket error messaage = " + paramActivity.getMessage());
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smx
  * JD-Core Version:    0.7.0.1
  */

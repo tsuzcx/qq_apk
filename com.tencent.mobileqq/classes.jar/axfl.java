@@ -1,37 +1,31 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.qphone.base.util.QLog;
 
 class axfl
-  implements axlr
+  extends AnimatorListenerAdapter
 {
+  boolean jdField_a_of_type_Boolean = false;
+  
   axfl(axfj paramaxfj) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onStop!");
+    QLog.i("QzoneGiftManager", 1, "onAnimationEnd");
+    if (this.jdField_a_of_type_Boolean) {
+      axfj.a(this.jdField_a_of_type_Axfj, 8);
     }
   }
   
-  public void a(Process paramProcess)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.a = paramProcess;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer Start!");
-    }
-  }
-  
-  public void b()
-  {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onDestroy!");
-    }
+    QLog.i("QzoneGiftManager", 1, "onAnimationStart");
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axfl
  * JD-Core Version:    0.7.0.1
  */

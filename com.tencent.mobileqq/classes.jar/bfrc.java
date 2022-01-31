@@ -1,26 +1,20 @@
-import android.view.ViewTreeObserver;
-import com.tencent.widget.DynamicGridView;
-
-public class bfrc
-  implements bfrl
+public abstract interface bfrc
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public abstract int a(bfqs parambfqs);
   
-  public bfrc(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
-  {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
+  public abstract void a();
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new bfrd(this, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView), paramInt1, paramInt2));
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfrc
  * JD-Core Version:    0.7.0.1
  */

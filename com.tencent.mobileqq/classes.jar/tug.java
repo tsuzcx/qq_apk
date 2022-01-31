@@ -1,20 +1,35 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
+import com.tencent.biz.subscribe.comment.CommentEditText;
 
 public class tug
-  implements View.OnClickListener
+  extends tzr
 {
-  public tug(QQStoryWarningActivity paramQQStoryWarningActivity) {}
-  
-  public void onClick(View paramView)
+  public tug(Activity paramActivity)
   {
-    this.a.superFinish();
+    super(paramActivity);
+  }
+  
+  protected int a()
+  {
+    return 2131560519;
+  }
+  
+  protected void a(View paramView)
+  {
+    if (this.a != null) {
+      this.a.a();
+    }
+  }
+  
+  protected void b()
+  {
+    super.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tug
  * JD-Core Version:    0.7.0.1
  */

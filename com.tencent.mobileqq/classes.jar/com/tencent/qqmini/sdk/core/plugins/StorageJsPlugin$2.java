@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beix;
-import bekr;
-import betc;
+import bgiy;
+import bgkd;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class StorageJsPlugin$2
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$2(StorageJsPlugin paramStorageJsPlugin, String paramString, bekr parambekr) {}
+  StorageJsPlugin$2(StorageJsPlugin paramStorageJsPlugin, String paramString, bgkd parambgkd) {}
   
   public String run()
   {
@@ -32,13 +32,13 @@ class StorageJsPlugin$2
     }
     catch (Exception localException)
     {
-      betc.d("StorageJsPlugin", this.val$req.a + " result error." + localException);
+      QMLog.e("StorageJsPlugin", this.val$req.a + " result error." + localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.StorageJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,66 @@
+import android.os.Bundle;
+import android.os.Message;
+import android.os.Messenger;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
 
 public class apls
-  extends aplp
+  extends bdyp
 {
-  private final String a;
+  public apls(MessengerService paramMessengerService) {}
   
-  public apls(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super(paramQQAppInterface, paramFileManagerEntity);
-    this.jdField_a_of_type_JavaLangString = "VideoForDisc<QFile>";
-  }
-  
-  public void a(apaf paramapaf)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, new aplt(this, paramapaf));
+    for (;;)
+    {
+      try
+      {
+        paramObject = (Bundle)paramObject;
+        if (paramObject == null)
+        {
+          QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver.onUpdate dataBundle=null");
+          return;
+        }
+        int i = paramObject.getInt("result", -1);
+        if (!QLog.isColorLevel()) {
+          break label206;
+        }
+        QLog.d("Q.emoji.web.MessengerService", 2, "fcObserver.onUpdate ret=" + i + ", type=" + paramInt + ", isSuccess=" + paramBoolean);
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Err:" + paramObject.getMessage());
+        return;
+      }
+      QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Error type=" + paramInt);
+      paramObject = (QQAppInterface)MessengerService.a(this.a);
+      if (paramObject != null)
+      {
+        Object localObject = (bdyt)paramObject.a(46);
+        paramObject.removeObserver(this);
+        return;
+        if (this.a.a != null)
+        {
+          localObject = Message.obtain(null, 5);
+          ((Message)localObject).setData(paramObject);
+          this.a.a.send((Message)localObject);
+        }
+      }
+      else
+      {
+        return;
+        label206:
+        switch (paramInt)
+        {
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apls
  * JD-Core Version:    0.7.0.1
  */

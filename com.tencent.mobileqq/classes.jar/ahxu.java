@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-public class ahxu
+class ahxu
+  implements View.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  ahxu(ahxt paramahxt) {}
   
-  private ahxu(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
+    this.a.a.g = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.a.jdField_d_of_type_Int != 22) {
+      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131368613));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
+    if (this.a.a.jdField_a_of_type_Ahys != null) {
+      this.a.a.jdField_a_of_type_Ahys.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxu
  * JD-Core Version:    0.7.0.1
  */

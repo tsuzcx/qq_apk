@@ -1,14 +1,22 @@
-public abstract interface qeh
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+
+public class qeh
+  implements phj
 {
-  public abstract void a(String paramString, float paramFloat);
+  public qeh(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public abstract void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4);
-  
-  public abstract void a(String paramString, int paramInt, qig paramqig);
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (paramInt == 2)) {
+      ThreadManager.post(new ComponentHeaderTopicRecommend.4.1(this), 5, null, true);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qeh
  * JD-Core Version:    0.7.0.1
  */

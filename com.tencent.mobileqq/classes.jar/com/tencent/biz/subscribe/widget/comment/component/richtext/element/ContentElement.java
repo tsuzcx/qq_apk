@@ -2,12 +2,12 @@ package com.tencent.biz.subscribe.widget.comment.component.richtext.element;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import wvf;
+import yjy;
 
 public class ContentElement
   extends RichTextElement
 {
-  public static final Parcelable.Creator<ContentElement> CREATOR = new wvf();
+  public static final Parcelable.Creator<ContentElement> CREATOR = new yjy();
   public String a;
   
   public ContentElement()
@@ -29,7 +29,7 @@ public class ContentElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement
  * JD-Core Version:    0.7.0.1
  */

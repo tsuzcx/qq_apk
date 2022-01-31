@@ -1,121 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.os.Handler;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import mqq.app.AppRuntime;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.qphone.base.util.QLog;
 
-public class avbv
-  implements ajuz, Manager
+class avbv
+  implements avce
 {
-  private QQAppInterface a;
+  avbv(avbo paramavbo, VideoData paramVideoData, boolean paramBoolean) {}
   
-  public avbv(QQAppInterface paramQQAppInterface)
+  public void a(avbz paramavbz)
   {
-    this.a = paramQQAppInterface;
-    String str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.SilkCfg.name(), "null");
-    if (!"null".equalsIgnoreCase(str))
-    {
-      bbjg.a(paramQQAppInterface, str);
-      bbjg.a(paramQQAppInterface, true);
-      str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.StreamCfg.name(), "null");
-      if ("null".equalsIgnoreCase(str)) {
-        break label161;
-      }
-      avcd.a(paramQQAppInterface, str);
-      avcd.a(paramQQAppInterface, true);
+    if (this.jdField_a_of_type_Avbo.jdField_a_of_type_Avbx != null) {
+      this.jdField_a_of_type_Avbo.jdField_a_of_type_Avbx.c();
     }
-    for (;;)
+    auzx localauzx;
+    if (((this.jdField_a_of_type_Avbo.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) && (((BaseActivity)this.jdField_a_of_type_Avbo.jdField_a_of_type_AndroidContentContext).isResume()))
     {
-      paramQQAppInterface = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
-      if (paramQQAppInterface.length > 13)
-      {
-        boolean bool = "1".equals(paramQQAppInterface[12]);
-        SyncService.b(BaseApplicationImpl.sApplication, bool);
-        if (paramQQAppInterface.length > 14)
-        {
-          bool = "1".equals(paramQQAppInterface[13]);
-          axqi.a(BaseApplicationImpl.sApplication, bool);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoPlayerView", 2, "player truly start! app=" + this.jdField_a_of_type_Avbo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      DeviceProfileManager.a(this);
+      this.jdField_a_of_type_Avbo.jdField_a_of_type_Auza.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, null);
+      if (this.jdField_a_of_type_Avbo.jdField_a_of_type_Avah != null) {
+        this.jdField_a_of_type_Avbo.jdField_a_of_type_Avah.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 100, 0, "");
+      }
+      ((avms)this.jdField_a_of_type_Avbo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
+      localauzx = new auzx().i("video_view").h("video");
+      if (!this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Boolean) {
+        break label367;
+      }
+    }
+    label367:
+    for (paramavbz = "0";; paramavbz = "1")
+    {
+      localauzx.g(paramavbz).b().f(auzx.a + "").a(this.jdField_a_of_type_Avbo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Avbo.jdField_a_of_type_Avbz.b();
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        long l = this.jdField_a_of_type_Avbo.b();
+        double d = this.jdField_a_of_type_Avbo.c() / l;
+        auzy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 1, String.valueOf(d), String.valueOf(l), String.valueOf(this.jdField_a_of_type_Avbo.c()), String.valueOf(auzy.a()), true);
+      }
+      this.jdField_a_of_type_Avbo.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+      this.jdField_a_of_type_Avbo.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
+      this.jdField_a_of_type_Avbo.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2026, 300L);
       return;
-      bbjg.a(paramQQAppInterface, false);
-      break;
-      label161:
-      avcd.a(paramQQAppInterface, false);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    QQAppInterface localQQAppInterface = this.a;
-    ayta.a();
-    if (localQQAppInterface != null)
-    {
-      avcd.b(localQQAppInterface, paramString);
-      avcd.b(localQQAppInterface, true);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Object localObject = this.a;
-    if ((localObject != null) && (paramBoolean))
-    {
-      bbjg.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.SilkCfg.name(), ""));
-      bbjg.a((QQAppInterface)localObject, true);
-      avcd.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.StreamCfg.name(), ""));
-      avcd.a((QQAppInterface)localObject, true);
-      localObject = DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
-      if (localObject.length > 13)
-      {
-        paramBoolean = "1".equals(localObject[12]);
-        SyncService.b(BaseApplicationImpl.sApplication, paramBoolean);
-        if (localObject.length > 14)
-        {
-          paramBoolean = "1".equals(localObject[13]);
-          axqi.a(BaseApplicationImpl.sApplication, paramBoolean);
-        }
-      }
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    QQAppInterface localQQAppInterface = this.a;
-    if (localQQAppInterface != null)
-    {
-      avbx.a(localQQAppInterface, paramString);
-      avbx.a(localQQAppInterface, true);
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    ayta.a();
-    QQAppInterface localQQAppInterface = this.a;
-    if (localQQAppInterface != null)
-    {
-      avcm.a(localQQAppInterface, paramString);
-      avcm.a(localQQAppInterface, true);
-    }
-  }
-  
-  public void onDestroy()
-  {
-    avcm.a();
-    DeviceProfileManager.b(this);
-    bbjg.a();
-    avcd.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avbv
  * JD-Core Version:    0.7.0.1
  */

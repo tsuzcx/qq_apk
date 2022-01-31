@@ -1,32 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acpd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public acpd(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public acpd(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-    if ((paramView == null) || (paramView.length() == 0)) {
-      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131692083), 0).show();
-    }
-    while (paramView == null) {
-      return;
-    }
-    this.a.a(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    VerifyCodeActivity.b(this.a, false);
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList conform to setting.");
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse("package:" + this.a.getPackageName()));
+    this.a.startActivity(paramDialogInterface);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpd
  * JD-Core Version:    0.7.0.1
  */

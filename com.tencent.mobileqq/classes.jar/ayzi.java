@@ -1,17 +1,18 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
 
-public class ayzi
-  extends ayzr
+class ayzi
+  implements SDKInitListener
 {
-  public int a;
-  public String a;
-  public ArrayList<ayuq> a = new ArrayList();
-  public boolean a;
-  public String b;
+  ayzi(ayzh paramayzh, ayzo paramayzo) {}
+  
+  public void onSDKInited(boolean paramBoolean)
+  {
+    ayzh.b(this.jdField_a_of_type_Ayzh, this.jdField_a_of_type_Ayzo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayzi
  * JD-Core Version:    0.7.0.1
  */

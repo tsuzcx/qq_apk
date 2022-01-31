@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.utils;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 final class ShareUtils$5
   implements Runnable
@@ -11,12 +11,12 @@ final class ShareUtils$5
   
   public void run()
   {
-    bcql.a(this.val$activity, 0, 2131720918, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131298865));
+    QQToast.a(this.val$activity, 0, 2131721479, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131298914));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.ShareUtils.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import azjs;
-import azjt;
-import azju;
-import azjy;
+import bbib;
+import bbic;
+import bbid;
+import bbih;
 import com.tencent.qphone.base.util.QLog;
 
 public class AioGroupAppsManager$1
   implements Runnable
 {
-  public AioGroupAppsManager$1(azjs paramazjs) {}
+  public AioGroupAppsManager$1(bbib parambbib) {}
   
   public void run()
   {
-    azjs.a(this.this$0).b();
-    azjs.a(this.this$0).a();
+    bbib.a(this.this$0).b();
+    bbib.a(this.this$0).a();
     if (QLog.isColorLevel()) {
-      QLog.i("AioGroupAppsManager", 2, "login fullList from db " + azjy.a(this.this$0.a));
+      QLog.i("AioGroupAppsManager", 2, "login fullList from db " + bbih.a(this.this$0.a));
     }
     this.this$0.c();
   }

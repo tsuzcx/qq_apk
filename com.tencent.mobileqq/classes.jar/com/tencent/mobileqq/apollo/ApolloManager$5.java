@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import airx;
-import ajms;
+import akji;
+import alef;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class ApolloManager$5
   implements Runnable
 {
-  public ApolloManager$5(airx paramairx) {}
+  public ApolloManager$5(akji paramakji) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class ApolloManager$5
           if (localObject1 == null) {
             break label464;
           }
-          localObject1 = new File(ajms.a);
+          localObject1 = new File(alef.a);
           ((File)localObject1).mkdirs();
           File localFile = new File((File)localObject1, "apollo_res_version_info.json");
           if (localFile.exists()) {
@@ -204,7 +204,7 @@ public class ApolloManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloManager.5
  * JD-Core Version:    0.7.0.1
  */

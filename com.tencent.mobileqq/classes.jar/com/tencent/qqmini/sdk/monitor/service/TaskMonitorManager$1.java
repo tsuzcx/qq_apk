@@ -1,31 +1,31 @@
 package com.tencent.qqmini.sdk.monitor.service;
 
-import beyf;
-import beyk;
+import bgxa;
+import bgxf;
 
 public class TaskMonitorManager$1
   implements Runnable
 {
-  public TaskMonitorManager$1(beyk parambeyk) {}
+  public TaskMonitorManager$1(bgxf parambgxf) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_Long = this.this$0.c;
-    this.this$0.c = beyf.a("-1");
+    this.this$0.c = bgxa.a("-1");
     long l2 = this.this$0.c;
     long l3 = this.this$0.jdField_a_of_type_Long;
     if (this.this$0.jdField_b_of_type_Boolean)
     {
       this.this$0.jdField_b_of_type_Long = this.this$0.d;
-      this.this$0.d = beyf.a("-2");
+      this.this$0.d = bgxa.a("-2");
     }
     for (long l1 = this.this$0.d - this.this$0.jdField_b_of_type_Long;; l1 = 0L)
     {
-      beyk localbeyk = this.this$0;
+      bgxf localbgxf = this.this$0;
       if ((this.this$0.d > 0L) && (l1 > 0L)) {}
       for (boolean bool = true;; bool = false)
       {
-        localbeyk.jdField_b_of_type_Boolean = bool;
+        localbgxf.jdField_b_of_type_Boolean = bool;
         if (!this.this$0.jdField_b_of_type_Boolean) {
           break;
         }
@@ -39,7 +39,7 @@ public class TaskMonitorManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.service.TaskMonitorManager.1
  * JD-Core Version:    0.7.0.1
  */

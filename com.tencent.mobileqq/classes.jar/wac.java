@@ -1,53 +1,37 @@
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wac
-  extends waa
+public class wac
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, uyb>
 {
-  wac(wab paramwab, waj paramwaj) {}
-  
-  public void onFailure(String paramString)
+  public wac(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_a_of_type_Waj.onFailure(paramString);
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void onFinish(boolean paramBoolean)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull uyb paramuyb)
   {
-    wab localwab;
-    if (this.jdField_a_of_type_Wab.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-    {
-      localwab = this.jdField_a_of_type_Wab;
-      if (!paramBoolean) {
-        break label44;
-      }
-    }
-    label44:
-    for (int i = 1;; i = 0)
-    {
-      localwab.jdField_a_of_type_Int = i;
-      wab.jdField_a_of_type_Wab = null;
-      this.jdField_a_of_type_Waj.onFinish(paramBoolean);
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramuyb.jdField_a_of_type_JavaLangString)) {}
+    while ((paramuyb.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramuyb.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramuyb.toString());
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramuyb);
   }
   
-  public void onProgress(String paramString)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_Waj.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Waj.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Waj.onSuccess(paramString);
+    return uyb.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wac
  * JD-Core Version:    0.7.0.1
  */

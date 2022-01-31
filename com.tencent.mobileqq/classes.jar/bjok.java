@@ -1,61 +1,21 @@
-import android.support.annotation.NonNull;
-import java.util.Map.Entry;
+import android.net.Proxy;
 
-class bjok<K, V>
-  implements Map.Entry<K, V>
+final class bjok
+  extends bjoj
 {
-  bjok<K, V> jdField_a_of_type_Bjok;
-  @NonNull
-  final K jdField_a_of_type_JavaLangObject;
-  bjok<K, V> jdField_b_of_type_Bjok;
-  @NonNull
-  final V jdField_b_of_type_JavaLangObject;
-  
-  bjok(@NonNull K paramK, @NonNull V paramV)
+  public int a()
   {
-    this.a = paramK;
-    this.b = paramV;
+    return Proxy.getDefaultPort();
   }
   
-  public boolean equals(Object paramObject)
+  public String a()
   {
-    if (paramObject == this) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof bjok)) {
-        return false;
-      }
-      paramObject = (bjok)paramObject;
-    } while ((this.a.equals(paramObject.a)) && (this.b.equals(paramObject.b)));
-    return false;
-  }
-  
-  @NonNull
-  public K getKey()
-  {
-    return this.a;
-  }
-  
-  @NonNull
-  public V getValue()
-  {
-    return this.b;
-  }
-  
-  public V setValue(V paramV)
-  {
-    throw new UnsupportedOperationException("An entry modification is not supported");
-  }
-  
-  public String toString()
-  {
-    return this.a + "=" + this.b;
+    return Proxy.getDefaultHost();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjok
  * JD-Core Version:    0.7.0.1
  */

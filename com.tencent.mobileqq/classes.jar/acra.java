@@ -1,67 +1,63 @@
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_dc00518;
+import ColorNick.QC.GroupNickEmoji;
+import ColorNick.QC.GroupNickItem;
+import ColorNick.QC.readItemInfoRsp;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class acra
-  implements bfph
+  extends alxo
 {
-  public acra(ActivateFriendActivity paramActivateFriendActivity, bfpc parambfpc) {}
+  public acra(EditInfoActivity paramEditInfoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    int i = 1;
-    switch (paramInt)
+    Object localObject1;
+    if ((paramBoolean) && ((paramObject instanceof readItemInfoRsp)))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      if (ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity) == null) {
-        ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity, (akjv)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app.getManager(85));
-      }
-      if (bbfj.d(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity))
+      paramObject = (readItemInfoRsp)paramObject;
+      EditInfoActivity.a(this.a, paramObject.index);
+      localObject1 = paramObject.urlprefix;
+      Iterator localIterator;
+      Object localObject2;
+      if ((paramObject.emojilist != null) && (paramObject.emojilist.size() > 0) && (EditInfoActivity.a(this.a).size() == 0))
       {
-        paramView = ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity);
-        boolean bool;
-        if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity))
+        localIterator = paramObject.emojilist.iterator();
+        while (localIterator.hasNext())
         {
-          bool = true;
-          label92:
-          paramView.a(bool, true);
-          paramInt = i;
-          if (ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {
-            paramInt = 2;
-          }
-          LpReportInfo_dc00518.report(100, paramInt, paramInt);
-          if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {
-            break label202;
-          }
+          localObject2 = (GroupNickEmoji)localIterator.next();
+          EditInfoActivity.a(this.a).add(Integer.valueOf(((GroupNickEmoji)localObject2).itemid));
         }
-        label202:
-        for (paramView = "QQnotice.aio.detail.seton";; paramView = "QQnotice.aio.detail.setoff")
+        this.a.a.sendEmptyMessage(260);
+      }
+      if ((paramObject.itemlist != null) && (paramObject.itemlist.size() > 0))
+      {
+        localIterator = paramObject.itemlist.iterator();
+        while (localIterator.hasNext())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("ActivateFriends.MainActivity", 2, "do report: " + paramView);
-          }
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app, "P_CliOper", "QQnotice", "", "", paramView, 0, 0, "", "", "", "");
-          break;
-          bool = false;
-          break label92;
+          localObject2 = (GroupNickItem)localIterator.next();
+          String str = (String)localObject1 + ((GroupNickItem)localObject2).url;
+          localObject2 = new bdnf(3, null, ((GroupNickItem)localObject2).itemid, str);
+          EditInfoActivity.b(this.a).add(localObject2);
+        }
+        localObject1 = this.a;
+        if (paramObject.left != 1) {
+          break label257;
         }
       }
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity != null)) {
-        bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity, 1, this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.getResources().getString(2131694610), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.getTitleBarHeight());
-      }
+    }
+    label257:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      EditInfoActivity.a((EditInfoActivity)localObject1, paramBoolean);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acra
  * JD-Core Version:    0.7.0.1
  */

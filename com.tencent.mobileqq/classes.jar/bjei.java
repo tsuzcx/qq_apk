@@ -1,31 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import cooperation.qzone.contentbox.MsgPhotoView.WeakVipResourcesListener.1;
+import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import java.lang.ref.WeakReference;
 
-final class bjei
-  implements waj
+public class bjei
+  implements VipResourcesListener
 {
-  public void onFailure(String paramString)
+  private int jdField_a_of_type_Int;
+  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private WeakReference<ImageView> b;
+  
+  public bjei(Handler paramHandler, ImageView paramImageView, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed showFFmpegFormats. message = " + paramString);
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
+    this.b = new WeakReference(paramImageView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onFinish(boolean paramBoolean) {}
+  public void onFailed() {}
   
-  public void onProgress(String paramString) {}
-  
-  public void onStart() {}
-  
-  public void onSuccess(String paramString)
+  public void onLoaded(Drawable paramDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onSuccess: invoked. Message: message: showFFmpegFormats ok. " + paramString);
+    Handler localHandler = (Handler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((paramDrawable != null) && (localHandler != null)) {
+      localHandler.post(new MsgPhotoView.WeakVipResourcesListener.1(this, paramDrawable));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjei
  * JD-Core Version:    0.7.0.1
  */

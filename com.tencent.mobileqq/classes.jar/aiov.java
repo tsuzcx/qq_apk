@@ -1,73 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.widget.Button;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 class aiov
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aiov(aiot paramaiot) {}
+  aiov(aior paramaior) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!aiot.a(this.a)) {
-      bbdj.a(aiot.a(this.a), 230, "", ajya.a(2131713489), new aiow(this), null).show();
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    do
-    {
-      return;
-      localObject = paramView.getTag();
-    } while ((localObject == null) || (!(localObject instanceof String)));
-    if ((paramView instanceof Button))
-    {
-      paramView = (Button)paramView;
-      if (paramView != null) {
-        paramView.setEnabled(false);
-      }
-    }
-    Object localObject = (String)localObject;
-    for (;;)
-    {
-      try
-      {
-        l1 = Long.parseLong(aiot.a(this.a));
-      }
-      catch (Exception paramView)
-      {
-        try
-        {
-          l2 = Long.parseLong((String)localObject);
-          aiot.a(this.a).add(localObject);
-          ((akhp)aiot.a(this.a).a(20)).c(l1, l2);
-          if (aiot.a(this.a) == null) {
-            break;
-          }
-          axqy.b(aiot.a(this.a).app, "dc00898", "", "", "", "0X8009FA0", 0, 0, (String)localObject, "", "", "");
-          return;
-        }
-        catch (Exception paramView)
-        {
-          long l1;
-          long l2;
-          break label189;
-        }
-        paramView = paramView;
-        l1 = 0L;
-      }
-      label189:
-      if (QLog.isColorLevel()) {
-        QLog.d("RobotAdapter", 2, "parseLong err", paramView);
-      }
-      l2 = 0L;
+    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiov
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,48 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqWatchVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import UserGrowth.stSimpleGetFeedDetailRsp;
+import java.util.ArrayList;
+import java.util.List;
 
-public class tnr
-  extends sys<tpa>
+class tnr
+  implements tgt
 {
-  public static final String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  tnr(tnq paramtnq, tmr paramtmr) {}
   
-  static
+  public void a(the paramthe)
   {
-    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.video_watch_no_expired");
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public tpa a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspWatchVideo localRspWatchVideo = new qqstory_service.RspWatchVideo();
-    try
+    if (!paramthe.a())
     {
-      localRspWatchVideo.mergeFrom(paramArrayOfByte);
-      return new tpa(localRspWatchVideo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqWatchVideo localReqWatchVideo = new qqstory_service.ReqWatchVideo();
-    localReqWatchVideo.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqWatchVideo.to_union_id.set(ByteStringMicro.copyFromUtf8(a(this.jdField_c_of_type_JavaLangString)));
-    PBUInt32Field localPBUInt32Field = localReqWatchVideo.is_live_video;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBUInt32Field.set(i);
-      localReqWatchVideo.source.set(this.jdField_c_of_type_Int);
-      if (this.jdField_b_of_type_Long > 0L) {
-        localReqWatchVideo.create_time.set(this.jdField_b_of_type_Long / 1000L);
+      tlo.d("WSVerticalForMiniAppPresenter", "GetFeedDetailRequest onTaskResponse failed code:" + paramthe.jdField_a_of_type_Int + ", msg:" + paramthe.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Tmr != null) {
+        this.jdField_a_of_type_Tmr.a(paramthe.jdField_a_of_type_Int, paramthe.jdField_a_of_type_JavaLangString);
       }
-      if (this.d > 0) {
-        localReqWatchVideo.vid_type.set(this.d);
-      }
-      return localReqWatchVideo.toByteArray();
     }
-  }
-  
-  public String toString()
-  {
-    return "WatchVideoRequest{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoUid=" + this.jdField_c_of_type_JavaLangString + '}';
+    do
+    {
+      Object localObject;
+      do
+      {
+        do
+        {
+          return;
+          if (!(paramthe.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedDetailRsp)) {
+            break;
+          }
+          paramthe = ((stSimpleGetFeedDetailRsp)paramthe.jdField_a_of_type_JavaLangObject).feed;
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(paramthe);
+          paramthe = tms.a().a((ArrayList)localObject);
+        } while ((this.jdField_a_of_type_Tnq.a == null) || (this.jdField_a_of_type_Tnq.a.a() == null) || (this.jdField_a_of_type_Tnq.a.a().a() == null));
+        localObject = this.jdField_a_of_type_Tnq.a.a().a().a;
+      } while (!(localObject instanceof tnk));
+      ((tnk)localObject).b((tmv)paramthe.get(0));
+      return;
+    } while (this.jdField_a_of_type_Tmr == null);
+    this.jdField_a_of_type_Tmr.a(paramthe.b, paramthe.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tnr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
 
 public class agzj
-  extends ahaa
+  implements bhrf
 {
-  public agzj(BaseHbUIFragment paramBaseHbUIFragment) {}
+  public agzj(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    this.a.a();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agzj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 class qup
-  implements DialogInterface.OnDismissListener
+  implements qoo
 {
-  qup(quo paramquo) {}
+  qup(qun paramqun, List paramList) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if (paramBoolean)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        UgcVideo localUgcVideo = (UgcVideo)localIterator.next();
+        this.jdField_a_of_type_Qun.a(localUgcVideo, true);
+      }
     }
-    if (quo.a(this.a) != null) {
-      quo.a(this.a).a(quo.a(this.a), quo.b(this.a), false, false);
-    }
-    quo.a(this.a, true);
-    quo.b(this.a, false);
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,93 +1,33 @@
-import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
-public class aysy
+class aysy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public long a;
-  public aysb a;
-  public aysc a;
-  public aysd a;
-  public aysz a;
-  public OutputStream a;
-  public Object a;
-  public HashMap<String, String> a;
-  public List<ayuq> a;
-  public byte[] a;
-  int jdField_b_of_type_Int = 1;
-  public long b;
-  private Object jdField_b_of_type_JavaLangObject;
-  public int c;
-  public long c;
-  public String c;
-  public int d = 5;
-  public String d;
-  public int e = 1;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public boolean i;
-  public boolean j = true;
-  public boolean k;
-  public boolean l = true;
-  public boolean m = true;
-  public boolean n = true;
-  public boolean o;
+  aysy(aysx paramaysx) {}
   
-  public aysy()
+  public void onGlobalLayout()
   {
-    this.jdField_c_of_type_Long = 480000L;
-    this.jdField_c_of_type_Int = 8;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public Object a()
-  {
-    try
+    if (aysx.a(this.a) != null)
     {
-      Object localObject1 = this.jdField_b_of_type_JavaLangObject;
-      return localObject1;
+      if (Build.VERSION.SDK_INT >= 16) {
+        aysx.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
+      ViewGroup.LayoutParams localLayoutParams = aysx.a(this.a).getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.height = ((int)(aysx.a(this.a).getWidth() / 2.3F));
+        aysx.a(this.a).requestLayout();
+      }
     }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
-    }
-  }
-  
-  public void a(Object paramObject)
-  {
-    try
-    {
-      this.jdField_b_of_type_JavaLangObject = paramObject;
-      return;
-    }
-    finally
-    {
-      paramObject = finally;
-      throw paramObject;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_c_of_type_JavaLangString != null) || (this.jdField_a_of_type_JavaIoOutputStream != null);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_c_of_type_JavaLangString != null;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_JavaIoOutputStream != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aysy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
-public abstract interface mno
+import com.tencent.av.ui.VideoLayerUI;
+
+public class mno
+  implements luv
 {
-  public abstract void a(int paramInt, Throwable paramThrowable);
+  public mno(VideoLayerUI paramVideoLayerUI) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public void a()
+  {
+    mth.a("switch_camera", "onAnimationEnd", 2, new Object[0]);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mno
  * JD-Core Version:    0.7.0.1
  */

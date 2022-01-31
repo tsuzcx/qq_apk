@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import ajxl;
+import aloz;
 
 public class FriendsManager$5
   implements Runnable
 {
-  public FriendsManager$5(ajxl paramajxl) {}
+  public FriendsManager$5(aloz paramaloz) {}
   
   public void run()
   {

@@ -1,7 +1,7 @@
 package com.tencent.biz.qrcode;
 
 import android.os.Bundle;
-import wfc;
+import xtu;
 
 class CodeMaskManager$PrepareBundleTask$1
   implements Runnable
@@ -26,7 +26,7 @@ class CodeMaskManager$PrepareBundleTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.CodeMaskManager.PrepareBundleTask.1
  * JD-Core Version:    0.7.0.1
  */

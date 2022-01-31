@@ -1,24 +1,24 @@
 package com.tencent.biz.webviewplugin;
 
-import ajya;
-import bcqf;
-import bcql;
+import alpo;
+import bepp;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import xko;
+import yzh;
 
 public class NewReportPlugin$1$1
   implements Runnable
 {
-  public NewReportPlugin$1$1(xko paramxko) {}
+  public NewReportPlugin$1$1(yzh paramyzh) {}
   
   public void run()
   {
     try
     {
-      if (this.this$0.jdField_a_of_type_Bcqf.isShowing()) {
-        this.this$0.jdField_a_of_type_Bcqf.dismiss();
+      if (this.this$0.jdField_a_of_type_Bepp.isShowing()) {
+        this.this$0.jdField_a_of_type_Bepp.dismiss();
       }
-      bcql.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, ajya.a(2131707569), 0).a();
+      QQToast.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, alpo.a(2131707941), 0).a();
       return;
     }
     catch (Exception localException)
@@ -30,7 +30,7 @@ public class NewReportPlugin$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

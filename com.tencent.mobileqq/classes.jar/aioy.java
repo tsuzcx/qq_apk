@@ -1,25 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
 class aioy
-  extends akil
+  implements aeza
 {
-  aioy(aiot paramaiot) {}
+  aioy(aiox paramaiox) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  public void a()
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(aiot.a(this.a))))
-    {
-      aiot.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
-      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
-      return;
-    }
-    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + aiot.a(this.a));
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aioy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,31 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class adat
-  implements aybj
+  implements azjq
 {
   adat(adas paramadas) {}
   
   public void a()
   {
-    aybp localaybp = new aybp(3000, 360, 0);
-    localaybp.a = true;
-    this.a.a.d.a(new aybi[] { localaybp });
+    QLog.i("JumpAction", 1, "system share.doShare show self dialog grant");
+    HashMap localHashMap = new HashMap();
+    azmz.a(BaseApplication.getContext()).a("", "noSDPermissionShareSelftGrant", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public void b()
+  {
+    QLog.i("JumpAction", 1, "system share.doShare show self dialog denied");
+    HashMap localHashMap = new HashMap();
+    azmz.a(BaseApplication.getContext()).a("", "noSDPermissionShareSelftDeny", true, 0L, 0L, localHashMap, "");
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adat
  * JD-Core Version:    0.7.0.1
  */

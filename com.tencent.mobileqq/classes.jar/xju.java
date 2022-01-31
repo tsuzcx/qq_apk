@@ -1,48 +1,64 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class xju
-  implements SensorEventListener
+class xju
 {
-  protected byte a;
-  protected String a;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
   
-  public xju(xjt paramxjt, byte paramByte, String paramString)
+  public xju(View paramView)
   {
-    this.jdField_a_of_type_Byte = paramByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377373));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377395));
+    this.b = ((TextView)paramView.findViewById(2131377364));
+    this.c = ((TextView)paramView.findViewById(2131377363));
+    this.d = ((TextView)paramView.findViewById(2131377397));
   }
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  private void a(TextView paramTextView, String paramString)
   {
-    switch (this.jdField_a_of_type_Byte)
+    if (TextUtils.isEmpty(paramString))
     {
-    }
-    do
-    {
+      paramTextView.setVisibility(8);
       return;
-      float[] arrayOfFloat = new float[4];
-      if (Build.VERSION.SDK_INT >= 9)
-      {
-        SensorManager localSensorManager = this.jdField_a_of_type_Xjt.a;
-        SensorManager.getQuaternionFromVector(arrayOfFloat, paramSensorEvent.values);
-        xjt.a(this.jdField_a_of_type_Xjt)[0] = arrayOfFloat[1];
-        xjt.a(this.jdField_a_of_type_Xjt)[1] = arrayOfFloat[2];
-        xjt.a(this.jdField_a_of_type_Xjt)[2] = arrayOfFloat[3];
-        xjt.a(this.jdField_a_of_type_Xjt)[3] = arrayOfFloat[0];
+    }
+    paramTextView.setVisibility(0);
+    paramTextView.setText(paramString);
+  }
+  
+  public void a(xjv paramxjv1, xjv paramxjv2)
+  {
+    a(this.jdField_a_of_type_AndroidWidgetTextView, paramxjv1.jdField_a_of_type_Xjw.jdField_a_of_type_JavaLangString);
+    a(this.b, paramxjv1.jdField_a_of_type_Xjw.b);
+    if (paramxjv1.jdField_a_of_type_Int <= 0) {
+      this.c.setVisibility(8);
+    }
+    for (;;)
+    {
+      a(this.d, paramxjv1.jdField_a_of_type_JavaLangString);
+      if (!paramxjv1.equals(paramxjv2)) {
+        break;
       }
-    } while ((!xjt.a()) || (!xjt.b()));
-    this.jdField_a_of_type_Xjt.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(xjt.a(this.jdField_a_of_type_Xjt)[0]), String.valueOf(xjt.a(this.jdField_a_of_type_Xjt)[1]), String.valueOf(xjt.a(this.jdField_a_of_type_Xjt)[2]), String.valueOf(xjt.a(this.jdField_a_of_type_Xjt)[3]) });
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846320);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFA34B"));
+      return;
+      a(this.c, paramxjv1.jdField_a_of_type_Int + alpo.a(2131711436));
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846324);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xju
  * JD-Core Version:    0.7.0.1
  */

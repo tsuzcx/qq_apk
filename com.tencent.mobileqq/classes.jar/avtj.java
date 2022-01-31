@@ -1,255 +1,137 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.Window;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.OcrItem;
+import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.YoutuOcrDetail;
+import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.YoutuOcrRsp;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class avtj
-  implements DialogInterface.OnDismissListener, avvv
 {
-  public static final int[] a;
-  ahwj a;
-  public View a;
-  public AppInterface a;
-  public CaptureVideoFilterViewPager a;
-  public EffectsCameraCaptureView a;
+  public avtk a;
   
-  static
+  public static avtk a(YoutuOcr.YoutuOcrRsp paramYoutuOcrRsp)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 25, 43, 60, 78, 95 };
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView != null) && (paramInt >= 0) && (paramInt <= 5))
+    avtk localavtk = new avtk();
+    int i;
+    Object localObject;
+    if (paramYoutuOcrRsp.youtu_ocr_errorcode.has())
     {
-      BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putInt("sv_beauty_level", paramInt).commit();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setBeauty(jdField_a_of_type_ArrayOfInt[paramInt]);
-      if (QLog.isColorLevel()) {
-        QLog.d("sv_beauty_level", 2, "beauty level : " + jdField_a_of_type_ArrayOfInt[paramInt]);
+      i = paramYoutuOcrRsp.youtu_ocr_errorcode.get();
+      localavtk.jdField_a_of_type_Int = i;
+      if (!paramYoutuOcrRsp.youtu_ocr_errormsg.has()) {
+        break label215;
       }
-      avtd.b(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    SubtitleLayout localSubtitleLayout = (SubtitleLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376707);
-    if (localSubtitleLayout != null)
-    {
-      ahzf.a().c = ahya.a(paramInt);
-      if (paramInt == 0)
+      localObject = paramYoutuOcrRsp.youtu_ocr_errormsg.get();
+      label49:
+      localavtk.jdField_a_of_type_JavaLangString = ((String)localObject);
+      if (paramYoutuOcrRsp.youtu_orc_detail.has())
       {
-        localSubtitleLayout.setAnimType(0, null, null, 0, 0);
-        localSubtitleLayout.setVisibility(8);
-      }
-    }
-    else
-    {
-      return;
-    }
-    localSubtitleLayout.setVisibility(0);
-    localSubtitleLayout.setAnimType(paramInt, paramString, null, 0, 0);
-  }
-  
-  public void a(FilterCategoryItem paramFilterCategoryItem)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.setCurrentItem(paramFilterCategoryItem);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFilter(paramFilterCategoryItem);
-    }
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo)
-  {
-    if (paramPtvTemplateInfo == null) {
-      return;
-    }
-    axqy.b(null, "dc00898", "", "", "0X800859F", "0X800859F", 1, 0, "", "", paramPtvTemplateInfo.id, "");
-    if (paramPtvTemplateInfo.popup)
-    {
-      boolean bool = a(paramPtvTemplateInfo.androidopenurlheader);
-      if (bool) {}
-      for (String str = "1";; str = "0")
-      {
-        axqy.b(null, "dc00898", "", "", "0X80085A0", "0X80085A0", 1, 0, str, "", "", "");
-        if (!bool) {
-          break;
+        localObject = (YoutuOcr.YoutuOcrDetail)paramYoutuOcrRsp.youtu_orc_detail.get();
+        if (!((YoutuOcr.YoutuOcrDetail)localObject).errorcode.has()) {
+          break label221;
         }
-        a(paramPtvTemplateInfo.popupimgurl, paramPtvTemplateInfo.popupcontent, paramPtvTemplateInfo.popupbtn, paramPtvTemplateInfo.androidopenurlheader, paramPtvTemplateInfo.openurl, paramPtvTemplateInfo.storeurl, paramPtvTemplateInfo.buttonbgcolor, 1, bool);
-        return;
-      }
-      a(paramPtvTemplateInfo.popupimgurl, paramPtvTemplateInfo.popupcontent2, paramPtvTemplateInfo.popupbtn2, paramPtvTemplateInfo.androidopenurlheader, paramPtvTemplateInfo.openurl, paramPtvTemplateInfo.storeurl, paramPtvTemplateInfo.buttonbgcolor, 1, bool);
-      return;
-    }
-    a(paramPtvTemplateInfo.androidopenurlheader, paramPtvTemplateInfo.openurl, paramPtvTemplateInfo.storeurl);
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString)
-  {
-    EffectsCameraCaptureView localEffectsCameraCaptureView;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView != null)
-    {
-      avrv.a();
-      if (axjs.a(avrv.a))
-      {
-        localEffectsCameraCaptureView = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView;
-        if (paramPtvTemplateInfo.funcType != PtvTemplateManager.PtvTemplateInfo.FUNC_REDBAG_GET) {
-          break label53;
+        i = ((YoutuOcr.YoutuOcrDetail)localObject).errorcode.get();
+        label93:
+        localavtk.jdField_b_of_type_Int = i;
+        if (!((YoutuOcr.YoutuOcrDetail)localObject).errormsg.has()) {
+          break label226;
+        }
+        paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).errormsg.get();
+        label116:
+        localavtk.jdField_b_of_type_JavaLangString = paramYoutuOcrRsp;
+        if (((YoutuOcr.YoutuOcrDetail)localObject).language.has()) {
+          localavtk.e = ((YoutuOcr.YoutuOcrDetail)localObject).language.get();
+        }
+        if (((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.has())
+        {
+          localavtk.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          localavtk.jdField_a_of_type_JavaUtilArrayList.addAll(((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.get());
+        }
+        if (!((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.has()) {
+          break label232;
         }
       }
     }
-    label53:
-    for (boolean bool = true;; bool = false)
+    label215:
+    label221:
+    label226:
+    label232:
+    for (paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.get();; paramYoutuOcrRsp = null)
     {
-      localEffectsCameraCaptureView.g(bool);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect(paramString);
-      return;
-    }
-  }
-  
-  void a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_AndroidViewView.getContext() != null)) {}
-    try
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidViewView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      this.jdField_a_of_type_AndroidViewView.getContext().startActivity(localIntent);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("EffectsListenerController", 1, "start QQBrowserActivity catch an Exception.", paramString);
-    }
-  }
-  
-  void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      if (!bbkk.a(paramString2)) {}
-      for (paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString2)); paramString1 != null; paramString1 = this.jdField_a_of_type_AndroidViewView.getContext().getPackageManager().getLaunchIntentForPackage(paramString1))
-      {
-        paramString1.addCategory("android.intent.category.DEFAULT");
-        this.jdField_a_of_type_AndroidViewView.getContext().startActivity(paramString1);
-        return;
+      if (paramYoutuOcrRsp != null) {
+        localavtk.d = a(paramYoutuOcrRsp);
       }
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("EffectsListenerController", 1, "TryJumpToQIM catch an Exception.", paramString1);
-      new bcqr(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp()).a(ajya.a(2131703998), 100, 0, 1);
-    }
-  }
-  
-  void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (a(paramString1))
-    {
-      a(paramString1, paramString2);
-      return;
-    }
-    a(paramString3);
-  }
-  
-  void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Ahwj == null))
-    {
-      ahwj localahwj = new ahwj(this.jdField_a_of_type_AndroidViewView.getContext());
-      this.jdField_a_of_type_Ahwj = localahwj;
-      localahwj.a(paramString1, paramString2, paramString3, paramString7);
-      localahwj.a(new avtk(this, paramInt, paramBoolean, paramString4, paramString5, paramString6));
-      localahwj.a();
-      this.jdField_a_of_type_Ahwj.setOnDismissListener(this);
-      this.jdField_a_of_type_Ahwj.show();
-      paramString1 = this.jdField_a_of_type_Ahwj.getWindow().getAttributes();
-      paramString1.width = -1;
-      paramString1.height = -1;
-      this.jdField_a_of_type_Ahwj.getWindow().setAttributes(paramString1);
+      return localavtk;
+      i = 0;
+      break;
+      localObject = "";
+      break label49;
+      i = -1;
+      break label93;
+      paramYoutuOcrRsp = "";
+      break label116;
     }
   }
   
-  public boolean a(String paramString)
+  private static String a(List<YoutuOcr.OcrItem> paramList)
   {
-    QLog.d("EffectsListenerController", 1, "start CheckJumpAPPisInstall appPackageName is " + paramString);
-    if (bbkk.a(paramString)) {}
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      QLog.d("Q.ocr", 1, "typeSetting regoc items is null");
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      String str = ((YoutuOcr.OcrItem)paramList.next()).itemstring.get();
+      if (!TextUtils.isEmpty(str)) {
+        localStringBuilder.append(str).append("\n");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public OcrRecogResult a()
+  {
+    Object localObject;
+    if ((this.a == null) || (TextUtils.isEmpty(this.a.d))) {
+      localObject = null;
+    }
+    OcrRecogResult localOcrRecogResult;
     do
     {
-      return false;
-      try
+      return localObject;
+      localOcrRecogResult = new OcrRecogResult();
+      if (this.a != null)
       {
-        paramString = this.jdField_a_of_type_AndroidViewView.getContext().getPackageManager().getPackageInfo(paramString, 1);
-        if (paramString == null)
-        {
-          QLog.d("EffectsListenerController", 1, "CheckJumpAPPisInstall PackageInfo is null");
-          return false;
-        }
+        localOcrRecogResult.language = this.a.e;
+        localOcrRecogResult.ocrContent = this.a.d;
+        localOcrRecogResult.ocr_languages = this.a.jdField_a_of_type_JavaUtilArrayList;
       }
-      catch (Exception paramString)
-      {
-        QLog.e("EffectsListenerController", 1, "CheckJumpAPPisInstall catch an Exception.", paramString);
-        return false;
-      }
-      paramString = paramString.activities[0].name;
-      QLog.d("EffectsListenerController", 1, "start CheckJumpAPPisInstall qqAppActivity is " + paramString);
-    } while (paramString == null);
-    return true;
+      localObject = localOcrRecogResult;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.ocr", 2, "getUIData " + localOcrRecogResult);
+    return localOcrRecogResult;
   }
   
-  public void b(FilterCategoryItem paramFilterCategoryItem)
+  public String toString()
   {
-    if (paramFilterCategoryItem == null) {
-      return;
-    }
-    axqy.b(null, "dc00898", "", "", "0X800859F", "0X800859F", 2, 0, "", "", paramFilterCategoryItem.a, "");
-    if (paramFilterCategoryItem.b)
-    {
-      boolean bool = a(paramFilterCategoryItem.g);
-      if (bool) {}
-      for (String str = "1";; str = "0")
-      {
-        axqy.b(null, "dc00898", "", "", "0X80085A0", "0X80085A0", 2, 0, str, "", "", "");
-        if (!bool) {
-          break;
-        }
-        a(paramFilterCategoryItem.k, paramFilterCategoryItem.l, paramFilterCategoryItem.m, paramFilterCategoryItem.g, paramFilterCategoryItem.h, paramFilterCategoryItem.i, paramFilterCategoryItem.p, 2, bool);
-        return;
-      }
-      a(paramFilterCategoryItem.k, paramFilterCategoryItem.n, paramFilterCategoryItem.o, paramFilterCategoryItem.g, paramFilterCategoryItem.h, paramFilterCategoryItem.i, paramFilterCategoryItem.p, 2, bool);
-      return;
-    }
-    a(paramFilterCategoryItem.g, paramFilterCategoryItem.h, paramFilterCategoryItem.i);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_Ahwj = null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mOcrResult:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avtj
  * JD-Core Version:    0.7.0.1
  */

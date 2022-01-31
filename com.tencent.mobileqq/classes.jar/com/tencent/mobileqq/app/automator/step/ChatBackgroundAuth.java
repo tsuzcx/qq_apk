@@ -2,18 +2,15 @@ package com.tencent.mobileqq.app.automator.step;
 
 import QC.Hamlet;
 import QC.UniBusinessItem;
-import ajxl;
-import akfv;
-import akld;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import aloz;
+import alxl;
+import amct;
 import android.text.TextUtils;
-import bbtn;
+import bdsk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,15 +47,15 @@ public class ChatBackgroundAuth
     return null;
   }
   
-  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, ajxl paramajxl, int paramInt1, int paramInt2)
+  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, aloz paramaloz, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    a(paramajxl, paramHashMap1, localArrayList, paramInt1);
-    a(paramajxl, paramHashMap2, localArrayList, paramInt2);
+    a(paramaloz, paramHashMap1, localArrayList, paramInt1);
+    a(paramaloz, paramHashMap2, localArrayList, paramInt2);
     return localArrayList;
   }
   
-  private void a(ajxl paramajxl, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
+  private void a(aloz paramaloz, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
   {
     Iterator localIterator = paramHashMap.keySet().iterator();
     Object localObject3;
@@ -105,7 +102,7 @@ public class ChatBackgroundAuth
       {
         ((Hamlet)localObject1).itemlist.add(localUniBusinessItem);
         break;
-        if (paramajxl.b((String)localObject1))
+        if (paramaloz.b((String)localObject1))
         {
           i = 2;
           break label115;
@@ -140,21 +137,15 @@ public class ChatBackgroundAuth
   
   public int a()
   {
-    SharedPreferences localSharedPreferences = this.a.app.getApp().getSharedPreferences("mobileQQ", 0);
-    long l = localSharedPreferences.getLong("lastChabgAuthTime", 0L);
-    if (System.currentTimeMillis() - l > 86400000L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQInitHandler", 2, "doStep start auth");
-      }
-      Object localObject = (ChatBackgroundManager)this.a.app.getManager(63);
-      HashMap localHashMap = ((ChatBackgroundManager)localObject).a();
-      localObject = ((ChatBackgroundManager)localObject).c();
-      ((akfv)this.a.app.a(13)).a(a(localHashMap, (HashMap)localObject, (ajxl)this.a.app.getManager(51), 8, 35), new akld(this.a.app), true);
-      localSharedPreferences.edit().putLong("lastChabgAuthTime", System.currentTimeMillis()).apply();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "doStep start auth");
     }
-    if (!bbtn.a.a(this.a.app, "namePlate_UrlConfig")) {
-      bbtn.a.download(null, "namePlate_UrlConfig", null, false);
+    Object localObject = (ChatBackgroundManager)this.a.app.getManager(63);
+    HashMap localHashMap = ((ChatBackgroundManager)localObject).a();
+    localObject = ((ChatBackgroundManager)localObject).c();
+    ((alxl)this.a.app.a(13)).a(a(localHashMap, (HashMap)localObject, (aloz)this.a.app.getManager(51), 8, 35), new amct(this.a.app), true);
+    if (!bdsk.a.a(this.a.app, "namePlate_UrlConfig")) {
+      bdsk.a.download(null, "namePlate_UrlConfig", null, false);
     }
     return 7;
   }

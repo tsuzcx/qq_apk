@@ -1,22 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class bjft
-  implements bjfu
 {
-  bjft(bjfr parambjfr) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<bjfi> jdField_a_of_type_JavaLangRefWeakReference;
+  int b;
   
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, bkgd parambkgd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + parambkgd.toString());
-    }
-  }
+  private bjft(bjfl parambjfl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjft
  * JD-Core Version:    0.7.0.1
  */

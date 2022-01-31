@@ -1,32 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Set;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-class arjz
-  extends ajxj
+public class arjz
+  implements bhqd
 {
-  arjz(arjx paramarjx) {}
+  public arjz(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bhpy parambhpy) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.i("FetchOpenIdManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if ((paramBoolean) && (paramObject != null))
+    switch (paramInt)
     {
-      long l = ((Long)paramObject).longValue();
-      paramObject = arjx.a(this.a).keySet().toArray();
-      int i = paramObject.length - 1;
-      while (i >= 0)
-      {
-        Long localLong = (Long)paramObject[i];
-        this.a.a(localLong.longValue(), l);
-        i -= 1;
-      }
+    default: 
+      return;
     }
+    bacb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    this.jdField_a_of_type_Bhpy.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,158 @@
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatShare.2;
+import com.tencent.mobileqq.app.HotChatShare.3;
+import com.tencent.mobileqq.app.HotChatShare.4;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class alqh
-  implements alqd
 {
-  public void a(String paramString)
+  public int a;
+  private alox jdField_a_of_type_Alox = new alqi(this);
+  public bepp a;
+  public BaseActivity a;
+  public QQAppInterface a;
+  public HotChatInfo a;
+  String jdField_a_of_type_JavaLangString = null;
+  public String b = null;
+  
+  public alqh(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, HotChatInfo paramHotChatInfo)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    ArkAppCenter.a().postToMainThread(new ArkAppSchemeCenter.TelSchemeHandler.1(this, paramString));
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = paramHotChatInfo;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alox);
+    ThreadManager.post(new HotChatShare.2(this, paramQQAppInterface), 8, null, true);
   }
   
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  private void d()
   {
-    ArkAppCenter.a().send(paramString3, new ArkAppSchemeCenter.TelSchemeHandler.2(this, paramString3, paramString1, paramLong, paramString2));
-    return true;
+    int i;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.joinUrl != null)
+    {
+      i = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.joinUrl.indexOf("hotnamecode=");
+      if (i == -1) {}
+    }
+    for (String str1 = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.joinUrl.substring(i + 12);; str1 = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("HotChatShare", 2, "handleHotChatShare.mTroop.joinUrl=" + this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.joinUrl + ",hotnamecode=" + str1);
+      }
+      if (TextUtils.isEmpty(str1)) {
+        return;
+      }
+      String str3 = alpw.a(str1, this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.userCreate);
+      if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.userCreate != 1)
+      {
+        alpw.a(2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.name, this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin, str3, str1, alpo.a(2131705976) + this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.name + alpo.a(2131705971), alpo.a(2131705973), null, null);
+        return;
+      }
+      String str2 = alpo.a(2131705970);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        str2 = alpo.a(2131705974) + this.jdField_a_of_type_JavaLangString + alpo.a(2131705975);
+      }
+      String str4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(32, this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin, 200);
+      alpw.a(2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.name, this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin, str3, str1, alpo.a(2131705969) + this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.name + alpo.a(2131705972), str2, this.b, str4);
+      return;
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alox);
+    }
+  }
+  
+  public void a(HotChatInfo paramHotChatInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = paramHotChatInfo;
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "handleShare.info=" + paramHotChatInfo);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.userCreate != 1)
+    {
+      d();
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = bdbt.q(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Int = 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "handleShare.ownerNickname=" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.b))
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label193;
+      }
+      this.jdField_a_of_type_Int = 2;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("HotChatShare", 2, "handleShare.ownerHeadUrl=" + this.b);
+      }
+      if (this.jdField_a_of_type_Int != 3) {
+        break;
+      }
+      d();
+      return;
+      label193:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Int = 3;
+      }
+    }
+    b();
+    ThreadManager.post(new HotChatShare.3(this), 8, null, false);
+    new Handler().postDelayed(new HotChatShare.4(this), 30000L);
+  }
+  
+  public void b()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Bepp == null)
+      {
+        this.jdField_a_of_type_Bepp = new bepp(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        this.jdField_a_of_type_Bepp.c(2131695088);
+      }
+      this.jdField_a_of_type_Bepp.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("HotChatShare", 2, localException.toString());
+    }
+  }
+  
+  public void c()
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
+        this.jdField_a_of_type_Bepp.dismiss();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("HotChatShare", 2, localException.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alqh
  * JD-Core Version:    0.7.0.1
  */

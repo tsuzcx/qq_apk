@@ -1,33 +1,21 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-class aegb
-  implements URLDrawable.URLDrawableListener
+public class aegb
+  implements DialogInterface.OnClickListener
 {
-  aegb(aega paramaega, String paramString) {}
+  public aegb(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
-    }
-    aega.a(this.jdField_a_of_type_Aega).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+    azmj.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, amlo.b(), String.valueOf(0), amlp.a(), "0");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegb
  * JD-Core Version:    0.7.0.1
  */

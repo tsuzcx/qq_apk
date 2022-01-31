@@ -1,18 +1,26 @@
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.QCircleFolderFollowTabFragment;
 
-class twc
-  implements uqc
+public class twc
+  extends RecyclerView.OnScrollListener
 {
-  twc(twb paramtwb, List paramList) {}
+  public twc(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  public void a(uqd paramuqd)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    twb.a(this.jdField_a_of_type_Twb, this.jdField_a_of_type_JavaUtilList, paramuqd);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      abqw.a().a("qcircle_follow_tab_page", false);
+      return;
+    }
+    abqw.a().a("qcircle_follow_tab_page");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twc
  * JD-Core Version:    0.7.0.1
  */

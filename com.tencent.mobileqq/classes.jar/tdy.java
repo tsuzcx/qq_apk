@@ -1,81 +1,28 @@
-import java.io.File;
-import java.util.Map;
+import NS_KING_SOCIALIZE_META.stMetaReply;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class tdy
-  extends tez
+  implements View.OnClickListener
 {
-  tdy(tdx paramtdx, stw paramstw)
-  {
-    super(paramstw);
-  }
+  tdy(tdu paramtdu, stMetaReply paramstMetaReply) {}
   
-  protected tfc a(tfb... paramVarArgs)
+  public void onClick(View paramView)
   {
-    tfc localtfc = super.a(paramVarArgs);
-    paramVarArgs = paramVarArgs[0];
-    String str;
-    if (localtfc.jdField_a_of_type_Int == 0) {
-      str = paramVarArgs.b.substring(0, paramVarArgs.b.length() - 4);
-    }
-    try
+    paramView = (ClipboardManager)tdn.a(this.jdField_a_of_type_Tdu.a).getSystemService("clipboard");
+    if (paramView != null)
     {
-      vyf.d(str);
-      label42:
-      int i = nav.a(paramVarArgs.b, str);
-      if (i == 0)
-      {
-        if (tdx.a(str, false)) {
-          try
-          {
-            paramVarArgs = this.a.a(new File(str, "config.json"));
-            if (paramVarArgs != null)
-            {
-              ved.d("FileDownloadTask", "parse config file success !");
-              this.a.a.put(str, paramVarArgs);
-              return localtfc;
-            }
-          }
-          catch (Exception paramVarArgs)
-          {
-            for (;;)
-            {
-              ved.c("FileDownloadTask", "parse config failed", paramVarArgs);
-              paramVarArgs = null;
-            }
-            ved.e("FileDownloadTask", "parse config failed : %s, %s", new Object[] { str, "config.json" });
-            return new tfc(localtfc.jdField_a_of_type_Tfb, -1, "illegal config file");
-          }
-        }
-        ved.e("FileDownloadTask", "unzip success, but this is an illegal filter folder : %s", new Object[] { str });
-        return new tfc(localtfc.jdField_a_of_type_Tfb, -1, "illegal folder");
-      }
-      ved.e("FileDownloadTask", "download success, but unzip failed : %d", new Object[] { Integer.valueOf(i) });
-      return new tfc(localtfc.jdField_a_of_type_Tfb, i, "unzip failed");
-    }
-    catch (Exception localException)
-    {
-      break label42;
-    }
-  }
-  
-  protected void a(tfc arg1)
-  {
-    ved.a("FileDownloadTask", "downloadConfigFile onPostExecute : %s", ???);
-    if (???.jdField_a_of_type_Int == 0) {
-      ved.d("FileDownloadTask", "get filter resource success : %s", new Object[] { ???.jdField_a_of_type_Tfb.jdField_a_of_type_JavaLangString });
-    }
-    synchronized (this.a.b)
-    {
-      tdx.a(this.a, null);
-      this.a.d();
-      return;
-      ved.d("FileDownloadTask", "get filter resource failed : %d : %s : %s", new Object[] { Integer.valueOf(???.jdField_a_of_type_Int), ???.jdField_a_of_type_JavaLangString, ???.jdField_a_of_type_Tfb.jdField_a_of_type_JavaLangString });
+      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply.wording));
+      tdn.a(this.jdField_a_of_type_Tdu.a).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdy
  * JD-Core Version:    0.7.0.1
  */

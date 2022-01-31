@@ -1,44 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-
-public class rjd
-  implements INetInfoHandler
+public abstract interface rjd
 {
-  public rjd(FastWebActivity paramFastWebActivity) {}
+  public abstract void a(qyp paramqyp1, qyp paramqyp2, int paramInt, boolean paramBoolean);
   
-  public void onNetMobile2None()
-  {
-    FastWebActivity.n(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    FastWebActivity.n(this.a);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    FastWebActivity.n(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    FastWebActivity.n(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    FastWebActivity.n(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    FastWebActivity.n(this.a);
-  }
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjd
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.thumbplayer.tplayer.plugins.report;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.thumbplayer.utils.TPLogUtil;
-import com.tencent.tvkbeacon.event.UserAction;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,10 +58,8 @@ public class TPBeaconReportWrapper
   public static void init(Context paramContext)
   {
     TPLogUtil.i("TPBeaconReportWrapper", "Beacon sdk init.");
-    UserAction.setCollectMAC(false);
-    UserAction.initUserAction(paramContext.getApplicationContext(), true, 0L, new TPBeaconReportWrapper.1(), null);
-    UserAction.setLogAble(false, false);
-    UserAction.setAppKey("00000GODBG3702Y1");
+    BeaconAdapter.setLogAble(false, false);
+    BeaconAdapter.registerTunnel("00000GODBG3702Y1", "", "");
   }
   
   public static void reportEvent(ITPReportProperties paramITPReportProperties)
@@ -78,9 +75,7 @@ public class TPBeaconReportWrapper
         if (!TextUtils.isEmpty(paramITPReportProperties))
         {
           TPLogUtil.i("TPBeaconReportWrapper", "reportEvent: eventId = " + paramITPReportProperties);
-          if (!UserAction.onUserAction(paramITPReportProperties, true, -1L, -1L, localHashMap, true, true)) {
-            TPLogUtil.w("TPBeaconReportWrapper", "reportEvent: failed! eventId = " + paramITPReportProperties);
-          }
+          BeaconAdapter.onUserActionToTunnel("00000GODBG3702Y1", paramITPReportProperties, true, -1L, -1L, localHashMap, true, true);
         }
       }
     }
@@ -88,7 +83,7 @@ public class TPBeaconReportWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPBeaconReportWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,19 @@
-public abstract interface vji
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+
+class vji
+  extends AnimatorListenerAdapter
 {
-  public abstract void i();
+  vji(vjh paramvjh) {}
   
-  public abstract void l();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vji
  * JD-Core Version:    0.7.0.1
  */

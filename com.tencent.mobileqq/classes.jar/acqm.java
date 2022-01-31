@@ -1,60 +1,78 @@
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.List;
 
 public class acqm
-  implements View.OnTouchListener
+  extends aked
 {
-  public acqm(VisitorsActivity paramVisitorsActivity) {}
+  private List<acqj> jdField_a_of_type_JavaUtilList;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public acqm(List<acqj> paramList)
   {
-    switch (paramMotionEvent.getAction())
+    super(paramList, paramList.app, paramList.a, 1, true);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    acqj localacqj;
+    if (paramView == null)
     {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getLayoutInflater().inflate(2131559030, paramViewGroup, false);
+      paramViewGroup = new acqo(null);
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131368782));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378839));
+      paramView.setTag(paramViewGroup);
+      localacqj = (acqj)getItem(paramInt);
+      if (localacqj != null)
+      {
+        if ((localacqj.b != null) && (!"".equals(localacqj.b.trim()))) {
+          break label149;
+        }
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacqj.jdField_a_of_type_JavaLangString);
+      }
     }
     for (;;)
     {
-      return true;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-        this.a.b.setAlpha(127);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-          this.a.b.setAlpha(255);
-        }
-        axqy.b(this.a.app, "dc00898", "", "", "0X8007611", "0X8007611", 0, 0, "", "", "", "");
-        paramView = new Intent(this.a, LikeRankingListActivity.class);
-        this.a.startActivity(paramView);
-        this.a.d.setVisibility(8);
-        this.a.f.clearAnimation();
-        this.a.c = 0;
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-          this.a.b.setAlpha(255);
-        }
-      }
+      paramViewGroup.jdField_a_of_type_JavaLangString = localacqj.jdField_a_of_type_JavaLangString;
+      paramViewGroup.c.setImageBitmap(a(1, localacqj.jdField_a_of_type_JavaLangString));
+      return paramView;
+      paramViewGroup = (acqo)paramView.getTag();
+      break;
+      label149:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacqj.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqm
  * JD-Core Version:    0.7.0.1
  */

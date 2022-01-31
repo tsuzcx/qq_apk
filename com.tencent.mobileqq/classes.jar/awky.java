@@ -1,18 +1,20 @@
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+
 public class awky
+  implements bepr
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
+  public awky(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  
+  public void a()
+  {
+    if (!this.a.e) {
+      this.a.e = true;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awky
  * JD-Core Version:    0.7.0.1
  */

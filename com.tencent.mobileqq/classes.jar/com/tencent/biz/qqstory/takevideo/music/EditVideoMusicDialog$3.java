@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.music;
 
-import stx;
-import vrj;
+import uip;
+import xgb;
 
 class EditVideoMusicDialog$3
   implements Runnable
@@ -10,8 +10,8 @@ class EditVideoMusicDialog$3
   
   public void run()
   {
-    String str = vrj.a(this.a);
-    this.this$0.a = new stx();
+    String str = xgb.a(this.a);
+    this.this$0.a = new uip();
     this.this$0.a.a(1);
     this.this$0.a.a(this.this$0);
     this.this$0.a.a(this.a, str, 0L);
@@ -19,7 +19,7 @@ class EditVideoMusicDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog.3
  * JD-Core Version:    0.7.0.1
  */

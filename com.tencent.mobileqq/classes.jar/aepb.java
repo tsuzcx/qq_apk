@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
-class aepb
-  implements View.OnClickListener
+public class aepb
+  implements DialogInterface.OnClickListener
 {
-  aepb(aeom paramaeom) {}
+  public aepb(PlusPanel paramPlusPanel) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bbpo.a(this.a.a, "aio");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepb
  * JD-Core Version:    0.7.0.1
  */

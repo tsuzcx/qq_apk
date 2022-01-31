@@ -1,57 +1,130 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.text.TextUtils;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
+import com.google.gson.Gson;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class bkvk
-  extends AnimatorListenerAdapter
 {
-  public bkvk(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  private static bmab<Boolean> a = new bmab();
+  private static bmab<Boolean> b = new bmab();
+  private static bmab<Boolean> c = new bmab();
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public static bmab<Boolean> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
+    return a;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static GetCategoryMaterialRsp a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", mActionUpAnimator:" + this.a.b.get());
+    Object localObject = bdcs.a(new File(bkku.a));
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      try
+      {
+        localObject = (GetCategoryMaterialRsp)new Gson().fromJson((String)localObject, GetCategoryMaterialRsp.class);
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
-    if (!this.a.b.get())
-    {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      this.a.d();
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+    return new GetCategoryMaterialRsp();
+  }
+  
+  public static String a(Context paramContext)
+  {
+    paramContext = blev.a().a("CameraModuleSvc.GetCameraConfig", "", 4);
+    if (!TextUtils.isEmpty(paramContext)) {
+      return paramContext;
     }
+    return "";
+  }
+  
+  public static bmab<Boolean> b()
+  {
+    return b;
+  }
+  
+  public static String b(Context paramContext)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    String str1 = "";
     for (;;)
     {
-      this.a.b.set(false);
-      this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout.setVisibility(0);
-      return;
-      this.a.e();
-      this.a.a(1.0F);
+      try
+      {
+        paramContext = paramContext.getAssets().open("camera_story_default_template.json");
+        localObject1 = paramContext;
+        localObject2 = paramContext;
+        String str2 = ndq.a(paramContext);
+        localObject1 = str2;
+        localObject2 = localObject1;
+      }
+      catch (Throwable paramContext)
+      {
+        localObject2 = localObject1;
+        paramContext.printStackTrace();
+        localObject2 = str1;
+        if (localObject1 == null) {
+          continue;
+        }
+        try
+        {
+          ((InputStream)localObject1).close();
+          return "";
+        }
+        catch (IOException paramContext)
+        {
+          paramContext.printStackTrace();
+          return "";
+        }
+      }
+      finally
+      {
+        if (localObject2 == null) {
+          break label88;
+        }
+      }
+      try
+      {
+        paramContext.close();
+        localObject2 = localObject1;
+        return localObject2;
+      }
+      catch (IOException paramContext)
+      {
+        paramContext.printStackTrace();
+        return localObject1;
+      }
+    }
+    try
+    {
+      ((InputStream)localObject2).close();
+      label88:
+      throw paramContext;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        localIOException.printStackTrace();
+      }
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public static bmab<Boolean> c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    return c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkvk
  * JD-Core Version:    0.7.0.1
  */

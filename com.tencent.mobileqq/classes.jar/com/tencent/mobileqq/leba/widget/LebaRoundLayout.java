@@ -81,41 +81,32 @@ public class LebaRoundLayout
   {
     if ((this.jdField_a_of_type_Int == 0) || (this.b == 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("LebaRoundLayout", 2, "dispatchDraw ignore");
-      }
       super.dispatchDraw(paramCanvas);
-    }
-    do
-    {
       return;
-      int i = getMeasuredWidth();
-      int j = getMeasuredHeight();
-      i = paramCanvas.saveLayer(0.0F, 0.0F, i, j, null, 31);
-      super.dispatchDraw(paramCanvas);
-      try
-      {
-        a(paramCanvas);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.i("LebaRoundLayout", 1, "checkPathChanged", localException);
-          paramCanvas.restoreToCount(i);
-        }
-      }
-      finally
-      {
-        paramCanvas.restoreToCount(i);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("LebaRoundLayout", 2, "dispatchDraw saveLayer");
+    }
+    int i = getMeasuredWidth();
+    int j = getMeasuredHeight();
+    i = paramCanvas.saveLayer(0.0F, 0.0F, i, j, null, 31);
+    super.dispatchDraw(paramCanvas);
+    try
+    {
+      a(paramCanvas);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.i("LebaRoundLayout", 1, "checkPathChanged", localException);
+      return;
+    }
+    finally
+    {
+      paramCanvas.restoreToCount(i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.leba.widget.LebaRoundLayout
  * JD-Core Version:    0.7.0.1
  */

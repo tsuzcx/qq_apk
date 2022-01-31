@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajmu;
-import ajol;
+import aleh;
+import alfy;
 
 public class ApolloRecentManager$1
   implements Runnable
@@ -13,15 +13,15 @@ public class ApolloRecentManager$1
     }
     if (this.a == null)
     {
-      ajmu.a(this.this$0.a, this.b);
+      aleh.a(this.this$0.a, this.b);
       return;
     }
-    ajmu.a(this.this$0.a, this.b, this.a);
+    aleh.a(this.this$0.a, this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloRecentManager.1
  * JD-Core Version:    0.7.0.1
  */

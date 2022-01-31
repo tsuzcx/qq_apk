@@ -1,30 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
 
 public class acwx
-  implements Animator.AnimatorListener
+  implements bhqp
 {
-  public acwx(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
+  public acwx(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    onAnimationEnd(paramAnimator);
+    this.a.b();
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.c.setAlpha(1.0F);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwx
  * JD-Core Version:    0.7.0.1
  */

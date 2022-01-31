@@ -1,68 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.Map;
 
-class athy
-  extends mxi
+public class athy
+  extends alox
 {
-  athy(athx paramathx) {}
+  public athy(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    QLog.i("ListenTogether.Manager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
     {
-      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
-      try
+      String str = atii.a(2, String.valueOf(paramObject));
+      if (ListenTogetherManager.a(this.a).equals(str))
       {
-        localRspBody.mergeFrom(paramArrayOfByte);
-        QLog.i("QQ_NOW_TASK", 2, "err_msg:   " + localRspBody.err_msg.get());
-        if (!localRspBody.busi_buf.has()) {
-          break label202;
-        }
-        if ((this.a.jdField_a_of_type_Athz != null) && (paramInt == 0))
-        {
-          this.a.jdField_a_of_type_Athz.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
-          return;
-        }
-        QLog.i("QQ_NOW_TASK", 1, "err_msg1:   " + localRspBody.err_msg.get());
-        if (this.a.jdField_a_of_type_Atia == null) {
-          return;
-        }
-        this.a.jdField_a_of_type_Atia.a(paramInt, paramArrayOfByte);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        QLog.i("QQ_NOW_TASK", 1, "err_msg3:   ");
-        if (this.a.jdField_a_of_type_Atia == null) {
-          return;
-        }
-      }
-      this.a.jdField_a_of_type_Atia.a(paramInt, null);
-      return;
-      label202:
-      QLog.i("QQ_NOW_TASK", 1, "err_msg2:   ");
-      if (this.a.jdField_a_of_type_Atia != null) {
-        this.a.jdField_a_of_type_Atia.a(paramInt, null);
-      }
-    }
-    else
-    {
-      QLog.i("QQ_NOW_TASK", 1, "err_msg4:   ");
-      if (this.a.jdField_a_of_type_Atia != null) {
-        this.a.jdField_a_of_type_Atia.a(paramInt, null);
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
+        athl.b(ListenTogetherManager.a(this.a), String.valueOf(paramObject), false);
+        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
+        this.a.a(2, String.valueOf(paramObject), false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     athy
  * JD-Core Version:    0.7.0.1
  */

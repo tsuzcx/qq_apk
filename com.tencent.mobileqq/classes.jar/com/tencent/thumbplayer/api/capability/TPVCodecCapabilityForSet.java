@@ -9,7 +9,7 @@ public class TPVCodecCapabilityForSet
   private int upperboundHeight;
   private int upperboundWidth;
   
-  public void TPVCodecCapabilityForSet(int paramInt1, int paramInt2)
+  public TPVCodecCapabilityForSet(int paramInt1, int paramInt2)
   {
     this.upperboundWidth = paramInt1;
     this.upperboundHeight = paramInt2;
@@ -19,7 +19,7 @@ public class TPVCodecCapabilityForSet
     this.level = -1;
   }
   
-  public void TPVCodecCapabilityForSet(int paramInt1, int paramInt2, int paramInt3)
+  public TPVCodecCapabilityForSet(int paramInt1, int paramInt2, int paramInt3)
   {
     this.upperboundWidth = paramInt1;
     this.upperboundHeight = paramInt2;
@@ -29,7 +29,7 @@ public class TPVCodecCapabilityForSet
     this.level = -1;
   }
   
-  public void TPVCodecCapabilityForSet(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public TPVCodecCapabilityForSet(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     this.upperboundWidth = paramInt1;
     this.upperboundHeight = paramInt2;
@@ -71,7 +71,7 @@ public class TPVCodecCapabilityForSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.capability.TPVCodecCapabilityForSet
  * JD-Core Version:    0.7.0.1
  */

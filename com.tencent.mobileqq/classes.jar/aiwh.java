@@ -1,103 +1,68 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
 
-public abstract class aiwh
-  implements aiwj
+public class aiwh
 {
-  private AppInterface mApp;
-  private final boolean mInMainProcess;
+  private static volatile aiwh jdField_a_of_type_Aiwh;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public aiwh(AppInterface paramAppInterface, boolean paramBoolean)
+  public static aiwh a()
   {
-    this.mApp = paramAppInterface;
-    this.mInMainProcess = paramBoolean;
-  }
-  
-  public void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
-      QLog.e("cmgame_process.CmGameStartChecker", 1, "onDownloadGameResDown startCheckParam == null");
-    }
-    do
+    if (jdField_a_of_type_Aiwh == null) {}
+    try
     {
-      return;
-      if (!this.mInMainProcess) {
-        break;
+      if (jdField_a_of_type_Aiwh == null) {
+        jdField_a_of_type_Aiwh = new aiwh();
       }
-    } while (!(this.mApp instanceof QQAppInterface));
-    ApolloGameUtil.b((QQAppInterface)this.mApp, paramStartCheckParam);
-    return;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("StartCheckParam", paramStartCheckParam);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "onDownloadGameResDown", localBundle, null);
+      return jdField_a_of_type_Aiwh;
+    }
+    finally {}
   }
   
-  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
-  
-  public void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt) {}
-  
-  public void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
-  
-  public void onGameCheckRetry(int paramInt) {}
-  
-  public void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  private void b()
   {
-    if (paramStartCheckParam == null) {
-      QLog.e("cmgame_process.CmGameStartChecker", 1, "onGameCheckStart startCheckParam == null");
+    this.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "begin connect:");
     }
-    do
-    {
-      return;
-      if (!this.mInMainProcess) {
-        break;
-      }
-    } while (!(this.mApp instanceof QQAppInterface));
-    ApolloGameUtil.a((QQAppInterface)this.mApp, paramStartCheckParam);
-    return;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("StartCheckParam", paramStartCheckParam);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "onGameCheckStart", localBundle, null);
+    QIPCClientHelper.getInstance().getClient().addListener(new aiwi(this));
+    long l = System.currentTimeMillis();
+    QIPCClientHelper.getInstance().getClient().connect(new aiwj(this, l));
   }
   
-  public void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong) {}
-  
-  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
-  
-  public void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString)
+  public void a()
   {
-    if (paramStartCheckParam == null) {
-      QLog.e("cmgame_process.CmGameStartChecker", 1, "onSsoCmdRuleRsp startCheckParam == null");
+    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+      b();
     }
-    Object localObject;
-    do
-    {
-      return;
-      if (this.mInMainProcess)
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        localObject = new Bundle();
-        ((Bundle)localObject).putSerializable("StartCheckParam", paramStartCheckParam);
-        ((Bundle)localObject).putString("rule", paramString);
-        paramStartCheckParam.mSSORule = paramString;
-        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_set_sso_rule", (Bundle)localObject, null);
-        return;
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {}
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject.wait(500L);
+          return;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
       }
-      localObject = ajac.a();
-    } while (localObject == null);
-    ((ajco)localObject).a(paramStartCheckParam.gameId, paramString);
+    }
   }
-  
-  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwh
  * JD-Core Version:    0.7.0.1
  */

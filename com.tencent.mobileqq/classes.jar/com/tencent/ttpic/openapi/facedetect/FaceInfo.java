@@ -19,6 +19,7 @@ public class FaceInfo
   public float pitch;
   public List<PointF> points;
   public Float[] pointsVis;
+  public float[] rect = new float[4];
   public float roll;
   public float scale;
   public float[] transform;

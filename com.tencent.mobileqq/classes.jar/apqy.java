@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3;
+import android.view.View;
 
-class apqy
-  implements ayei
+public abstract interface apqy
 {
-  apqy(apqx paramapqx) {}
-  
-  public void a(bcqf parambcqf)
-  {
-    SimpleFileViewer.a(this.a.a.this$0, parambcqf);
-  }
+  public abstract boolean a(View paramView, appw paramappw);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apqy
  * JD-Core Version:    0.7.0.1
  */

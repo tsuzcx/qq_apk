@@ -1,19 +1,38 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aybz
+public class aybz
+  implements Comparable<aybz>
 {
-  public abstract int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint);
+  public int a;
+  public MessageForScribble a;
   
-  public abstract String a(aybf paramaybf, String paramString);
+  aybz(MessageForScribble paramMessageForScribble, int paramInt)
+  {
+    this.jdField_a_of_type_Int = 200;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = paramMessageForScribble;
+    if (paramInt >= 200)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+    }
+    QLog.e("ScribbleDownloadInfo", 1, "err priority");
+  }
   
-  public abstract void a(int paramInt, String paramString, Paint paramPaint);
-  
-  public abstract boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint);
+  public int a(aybz paramaybz)
+  {
+    if (this.jdField_a_of_type_Int < paramaybz.jdField_a_of_type_Int) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_Int > paramaybz.jdField_a_of_type_Int) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aybz
  * JD-Core Version:    0.7.0.1
  */

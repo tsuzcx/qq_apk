@@ -13,7 +13,7 @@ public final class group_effect_commu$TSetSwitchOthersRsp0x40
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.qun.group_effect.group_effect_commu.TSetSwitchOthersRsp0x40
  * JD-Core Version:    0.7.0.1
  */

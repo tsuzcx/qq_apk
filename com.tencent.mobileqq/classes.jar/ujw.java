@@ -1,31 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class ujw
-  extends mxj
+  extends SimpleJob<Void>
 {
-  ujw(uju paramuju, boolean paramBoolean) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  ujw(ujv paramujv, String paramString)
   {
-    if (paramInt != 0)
-    {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(2, bool);
-        this.a.a(0, this.a.a.getString(2131720544));
-        return;
-      }
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    boolean bool = xmx.a(500L);
+    if (this.a.a(bool)) {
+      ujv.a(this.a, bool);
     }
-    ((sst)this.a.a.app.getManager(181)).a(this.b);
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujw
  * JD-Core Version:    0.7.0.1
  */

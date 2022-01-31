@@ -1,33 +1,25 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class uhm
-  extends ste<uhg, tae>
+class uhm
+  extends SimpleJob<Object>
 {
-  public uhm(uhg paramuhg)
+  uhm(uhl paramuhl, String paramString, boolean paramBoolean)
   {
-    super(paramuhg);
+    super(paramString);
   }
   
-  public void a(@NonNull uhg paramuhg, @NonNull tae paramtae)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if ((paramuhg.a != null) && (TextUtils.equals(paramuhg.a.b, paramtae.a)))
-    {
-      ved.a(this.TAG, "receive feed info change event. %s.", paramtae.toString());
-      paramuhg.i();
-    }
+    this.jdField_a_of_type_Uhl.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
-  
-  public Class acceptEventClass()
-  {
-    return tae.class;
-  }
-  
-  public void b(@NonNull uhg paramuhg, @NonNull tae paramtae) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhm
  * JD-Core Version:    0.7.0.1
  */

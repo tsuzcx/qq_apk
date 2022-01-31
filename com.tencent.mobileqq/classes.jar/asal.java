@@ -1,33 +1,21 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class asal
-  implements URLDrawable.URLDrawableListener
+class asal
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public asal(LoginWelcomeManager paramLoginWelcomeManager) {}
+  asal(asak paramasak) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public int getSpanSize(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "tryToShowCGLayer drawable onLoadSuccessed");
+    if (this.a.getItemViewType(paramInt) == asag.b) {
+      return 5;
     }
-    if (this.a.a != null) {
-      this.a.a.a(paramURLDrawable);
-    }
-    this.a.g();
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asal
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,26 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.app.ThreadManager;
-
-public class balz
+class balz
+  implements bama
 {
-  private static Handler a;
+  balz(baly parambaly, bamb parambamb) {}
   
-  public static void a(Runnable paramRunnable)
+  public void a()
   {
-    if (a == null)
-    {
-      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("TroopMemberDBThread", 0);
-      localHandlerThread.start();
-      a = new Handler(localHandlerThread.getLooper());
-    }
-    a.post(paramRunnable);
+    this.jdField_a_of_type_Bamb.a.d();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bamb.a.c();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Bamb.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     balz
  * JD-Core Version:    0.7.0.1
  */

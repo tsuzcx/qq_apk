@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.navigate;
 
-import aefs;
+import agch;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
@@ -12,17 +12,17 @@ public final class TroopDNANavBar$3
   public void run()
   {
     Object localObject = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication());
-    if ((localObject == null) || (((SharedPreferences)localObject).getInt(aefs.a(null), 0) >= 3)) {
+    if ((localObject == null) || (((SharedPreferences)localObject).getInt(agch.a(null), 0) >= 3)) {
       return;
     }
     localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt(aefs.a(null), 3).commit();
+    ((SharedPreferences.Editor)localObject).putInt(agch.a(null), 3).commit();
     ((SharedPreferences.Editor)localObject).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.TroopDNANavBar.3
  * JD-Core Version:    0.7.0.1
  */

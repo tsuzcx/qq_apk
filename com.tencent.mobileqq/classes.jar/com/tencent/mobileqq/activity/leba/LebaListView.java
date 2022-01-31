@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.leba;
 
-import agbx;
+import aiaa;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bfub;
+import bhuy;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
 import com.tencent.widget.ListView.OverscrollViewContainer;
 
 public class LebaListView
   extends FPSXListView
 {
-  private agbx jdField_a_of_type_Agbx;
+  private aiaa jdField_a_of_type_Aiaa;
   private boolean jdField_a_of_type_Boolean;
   
   public LebaListView(Context paramContext)
@@ -32,7 +32,7 @@ public class LebaListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Agbx != null) && (this.jdField_a_of_type_Agbx.a(this, paramMotionEvent))) {}
+    if ((this.jdField_a_of_type_Aiaa != null) && (this.jdField_a_of_type_Aiaa.a(this, paramMotionEvent))) {}
     for (boolean bool = true;; bool = false)
     {
       if (paramMotionEvent.getAction() == 0) {
@@ -134,14 +134,14 @@ public class LebaListView
     }
   }
   
-  public void setEventDispatchEventListener(agbx paramagbx)
+  public void setEventDispatchEventListener(aiaa paramaiaa)
   {
-    this.jdField_a_of_type_Agbx = paramagbx;
+    this.jdField_a_of_type_Aiaa = paramaiaa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.leba.LebaListView
  * JD-Core Version:    0.7.0.1
  */

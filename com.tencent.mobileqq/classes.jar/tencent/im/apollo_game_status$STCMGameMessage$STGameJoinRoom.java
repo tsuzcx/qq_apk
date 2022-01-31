@@ -24,7 +24,7 @@ public final class apollo_game_status$STCMGameMessage$STGameJoinRoom
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.apollo_game_status.STCMGameMessage.STGameJoinRoom
  * JD-Core Version:    0.7.0.1
  */

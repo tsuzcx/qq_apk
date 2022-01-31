@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.18.1;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
 public class auht
-  extends AccountObserver
+  extends GestureDetector.SimpleOnGestureListener
 {
-  auht(auhk paramauhk) {}
+  public auht(MultiAIOViewPager paramMultiAIOViewPager) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if ((paramBoolean1) && (auhk.a(this.a) != null)) {
-      auhk.a(this.a).a(paramStatus);
+    if (MultiAIOViewPager.a(this.a) != null) {
+      this.a.performClick();
     }
-    if (!paramBoolean2) {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new AccountPanel.18.1(this, paramBoolean1, paramStatus));
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auht
  * JD-Core Version:    0.7.0.1
  */

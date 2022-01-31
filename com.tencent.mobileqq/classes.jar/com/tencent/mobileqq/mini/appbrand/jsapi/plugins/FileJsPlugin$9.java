@@ -5,7 +5,7 @@ import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -39,12 +39,12 @@ class FileJsPlugin$9
         JSONObject localJSONObject = new JSONObject();
         if ((this.this$0.isGameRuntime) && ((localObject instanceof byte[])))
         {
-          NativeBuffer.packNativeBuffer((byte[])localObject, NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject, FileJsPlugin.access$600(this.this$0).getNativeBufferPool());
+          NativeBuffer.packNativeBuffer((byte[])localObject, NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject, (ITNativeBufferPool)this.this$0.jsPluginEngine.getNativeBufferPool());
           QLog.d("[mini] FileJsPlugin", 1, "readFile succeed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], aboFilePath:" + str);
           return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, localJSONObject, this.val$callbackId);
         }
         if ((!this.this$0.isGameRuntime) && ((localObject instanceof byte[]))) {
-          NativeBuffer.packNativeBuffer((byte[])localObject, NativeBuffer.TYPE_BUFFER_BASE64, "data", localJSONObject, FileJsPlugin.access$600(this.this$0).getNativeBufferPool());
+          NativeBuffer.packNativeBuffer((byte[])localObject, NativeBuffer.TYPE_BUFFER_BASE64, "data", localJSONObject, null);
         } else {
           localJSONObject.put("data", localObject);
         }
@@ -59,7 +59,7 @@ class FileJsPlugin$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.FileJsPlugin.9
  * JD-Core Version:    0.7.0.1
  */

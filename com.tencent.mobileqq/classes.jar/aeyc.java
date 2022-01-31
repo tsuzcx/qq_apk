@@ -1,93 +1,58 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.ListView;
 
 public class aeyc
-  implements aeyt, View.OnClickListener
+  implements afal
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  View jdField_a_of_type_AndroidViewView;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private String jdField_a_of_type_JavaLangString;
+  private aeyd jdField_a_of_type_Aeyd;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private boolean jdField_a_of_type_Boolean;
   
-  public aeyc(Activity paramActivity, SessionInfo paramSessionInfo, String paramString)
+  public aeyc(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public int a()
+  private ListView a()
   {
-    return 58;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agnz)) {
+      return ((agnz)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a();
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
   }
   
-  public View a(Object... paramVarArgs)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560360, null);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    }
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(@NonNull aeyv paramaeyv, boolean paramBoolean)
-  {
-    boolean bool = a(paramaeyv);
-    if (QLog.isColorLevel()) {
-      QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show() isShowing=", Boolean.valueOf(bool), ", show=", Boolean.valueOf(paramBoolean) });
-    }
-    if (paramBoolean) {
-      if (!bool)
+    default: 
+    case 2: 
+    case 6: 
+    case 17: 
+      do
       {
-        paramaeyv.a(this, new Object[0]);
-        bbbp.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString });
-      }
-    }
-    while (!bool) {
+        return;
+        this.jdField_a_of_type_Aeyd = new aeyd();
+        return;
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Aeyd.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Aeyd.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
       return;
     }
-    paramaeyv.a();
-  }
-  
-  public boolean a(@NonNull aeyv paramaeyv)
-  {
-    int i = paramaeyv.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("HomeworkTroopTipsBar", 2, new Object[] { "show cur type=", Integer.valueOf(i) });
-    }
-    return i == b();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Aeyd = null;
   }
   
   public int[] a()
   {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 19;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HomeworkTroopTipsBar", 2, "click tips, jump to web");
-    }
-    bahy.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "aioTip");
-    bbbp.a("Grp_edu", "Grp_AIO", "mberinfotopGuidebar_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString });
+    return new int[] { 2, 6, 11, 17 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyc
  * JD-Core Version:    0.7.0.1
  */

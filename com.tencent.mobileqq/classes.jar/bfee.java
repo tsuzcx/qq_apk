@@ -1,22 +1,53 @@
-import android.content.Context;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.tmassistant.common.ProtocolPackage;
+import com.tencent.tmassistant.common.jce.ReqHead;
+import com.tencent.tmassistant.common.jce.Request;
+import com.tencent.tmassistant.common.jce.SdkInfo;
+import com.tencent.tmassistant.common.jce.Ticket;
+import com.tencent.tmassistant.common.jce.TicketWtLogin;
+import com.tencent.tmassistantbase.network.PostHttpRequest;
 
-@behk(a="PreloadFlagTask")
-public class bfee
-  extends bffh
+public abstract class bfee
+  extends PostHttpRequest
 {
-  public bfee(Context paramContext, beqm parambeqm)
+  public int a(JceStruct paramJceStruct)
   {
-    super(paramContext, parambeqm);
-  }
-  
-  public void a()
-  {
-    c();
+    try
+    {
+      paramJceStruct = ProtocolPackage.buildRequest(paramJceStruct);
+      if (paramJceStruct == null) {
+        return -1;
+      }
+    }
+    catch (Throwable paramJceStruct)
+    {
+      for (;;)
+      {
+        paramJceStruct = null;
+      }
+      Object localObject = new SdkInfo();
+      ((SdkInfo)localObject).versionCode = 1;
+      ((SdkInfo)localObject).versionName = bexd.a().c();
+      ((SdkInfo)localObject).name = "AppNews";
+      ((SdkInfo)localObject).channel = "";
+      ((SdkInfo)localObject).builderNum = "";
+      paramJceStruct.head.sdkInfo = ((SdkInfo)localObject);
+      localObject = new TicketWtLogin();
+      ((TicketWtLogin)localObject).uin = bexd.a().a();
+      ((TicketWtLogin)localObject).A2 = bexd.a().b().getBytes();
+      Ticket localTicket = new Ticket();
+      localTicket.value = ProtocolPackage.jceStructToUTF8Byte((JceStruct)localObject);
+      localTicket.type = 1;
+      paramJceStruct.head.ticket = localTicket;
+      int i = paramJceStruct.head.requestId;
+      sendRequest(ProtocolPackage.buildPostData(paramJceStruct));
+      return i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfee
  * JD-Core Version:    0.7.0.1
  */

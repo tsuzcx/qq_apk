@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class abzp
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public abzp(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public abzp(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a(this.a.a);
+    this.a.finish();
+    this.a.overridePendingTransition(2130771997, 2130772001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzp
  * JD-Core Version:    0.7.0.1
  */

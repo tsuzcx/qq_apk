@@ -1,72 +1,32 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class amzm
-  extends amyp<amzl>
 {
-  public static amzl c()
+  public int a;
+  public long a;
+  public baps a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
+  
+  public amzm()
   {
-    amzl localamzl2 = (amzl)ampl.a().a(469);
-    amzl localamzl1 = localamzl2;
-    if (localamzl2 == null) {
-      localamzl1 = new amzl();
-    }
-    return localamzl1;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public int a()
+  public String toString()
   {
-    return 469;
-  }
-  
-  @NonNull
-  public amzl a()
-  {
-    return new amzl();
-  }
-  
-  @NonNull
-  public amzl a(amph[] paramArrayOfamph)
-  {
-    boolean bool = true;
-    localamzl = new amzl();
-    paramArrayOfamph = paramArrayOfamph[0].jdField_a_of_type_JavaLangString;
-    try
-    {
-      paramArrayOfamph = new JSONObject(paramArrayOfamph);
-      if (paramArrayOfamph.optInt("is_show_recover_entry", 1) == 1) {}
-      for (;;)
-      {
-        localamzl.jdField_a_of_type_Boolean = bool;
-        localamzl.jdField_a_of_type_JavaLangString = paramArrayOfamph.optString("recover_text", localamzl.jdField_a_of_type_JavaLangString);
-        localamzl.b = paramArrayOfamph.optString("recover_url", localamzl.b);
-        localamzl.c = paramArrayOfamph.optString("recoveryHomePageUrl", localamzl.c);
-        return localamzl;
-        bool = false;
-      }
-      return localamzl;
-    }
-    catch (JSONException paramArrayOfamph)
-    {
-      ved.e("QVipFriendTag2Processor", "QVipFriendTag2Config onParsed exception :" + paramArrayOfamph.getMessage());
-    }
-  }
-  
-  public Class<amzl> a()
-  {
-    return amzl.class;
-  }
-  
-  @NonNull
-  public amzl b()
-  {
-    return new amzl();
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzm
  * JD-Core Version:    0.7.0.1
  */

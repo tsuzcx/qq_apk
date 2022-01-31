@@ -1,36 +1,35 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.adapter.ILogAdapter;
 
 public class rws
-  implements ILogAdapter
+  implements DialogInterface.OnClickListener
 {
-  public void callLog(String paramString1, int paramInt, String paramString2)
+  public rws(ReadinjoyTabFrame paramReadinjoyTabFrame, SelectPositionModule.PositionData paramPositionData) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d(paramString1, 2, paramString2);
-      }
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change confirm");
     }
-    do
-    {
-      do
-      {
-        return;
-        QLog.e(paramString1, 2, paramString2);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i(paramString1, 2, paramString2);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.w(paramString1, 2, paramString2);
+    paramDialogInterface = owy.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData);
+    }
+    paramDialogInterface = owy.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b(41695);
+    }
+    owy.a().a(41695, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.city);
+    oxb.a().g(41695);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rws
  * JD-Core Version:    0.7.0.1
  */

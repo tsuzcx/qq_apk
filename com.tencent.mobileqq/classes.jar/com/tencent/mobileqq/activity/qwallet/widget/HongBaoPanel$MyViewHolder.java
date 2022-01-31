@@ -28,13 +28,13 @@ class HongBaoPanel$MyViewHolder
       paramOnHolderItemClickListener = paramView.getLayoutParams();
       paramOnHolderItemClickListener.height += paramHongBaoPanel.itemTopMargin + 5;
     }
-    this.hongbaoPic = ((ImageView)paramView.findViewById(2131367332));
-    this.hongbaoText = ((TextView)paramView.findViewById(2131367350));
+    this.hongbaoPic = ((ImageView)paramView.findViewById(2131367462));
+    this.hongbaoText = ((TextView)paramView.findViewById(2131367480));
     if (HongBaoPanel.access$700(paramHongBaoPanel)) {
       this.hongbaoText.setTextColor(HongBaoPanel.access$800(paramHongBaoPanel));
     }
-    this.hbRedPointContainer = ((RelativeLayout)paramView.findViewById(2131367341));
-    this.imgFlag = ((ImageView)paramView.findViewById(2131367959));
+    this.hbRedPointContainer = ((RelativeLayout)paramView.findViewById(2131367471));
+    this.imgFlag = ((ImageView)paramView.findViewById(2131368095));
   }
   
   public void onClick(View paramView)
@@ -46,7 +46,7 @@ class HongBaoPanel$MyViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

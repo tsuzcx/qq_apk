@@ -1,27 +1,43 @@
-import android.os.Bundle;
-import com.tencent.biz.subscribe.event.SimpleEventBus.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class wpu
-  extends QIPCModule
+class wpu
+  implements INetInfoHandler
 {
-  wpu(wpt paramwpt, String paramString)
+  wpu(wps paramwps) {}
+  
+  public void onNetMobile2None()
   {
-    super(paramString);
+    wps.b(this.a, wps.a(3));
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onNetMobile2Wifi(String paramString)
   {
-    ThreadManager.getUIHandler().post(new SimpleEventBus.1.1(this, paramString, paramBundle));
-    return null;
+    wps.b(this.a, wps.a(1));
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    wps.b(this.a, wps.a(2));
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    wps.b(this.a, wps.a(1));
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    wps.b(this.a, wps.a(2));
+  }
+  
+  public void onNetWifi2None()
+  {
+    wps.b(this.a, wps.a(3));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpu
  * JD-Core Version:    0.7.0.1
  */

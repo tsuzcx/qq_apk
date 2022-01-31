@@ -1,81 +1,58 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.extendfriend.bean.GroupInfo.Label;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.widget.RoundBGTextView;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoht
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  extends aoho
 {
-  private List<GroupInfo.Label> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public aoht(List<GroupInfo.Label> paramList)
+  public int a()
   {
-    Collection localCollection;
-    if (localCollection != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(localCollection);
-    }
+    return 380;
   }
   
-  public aohu a(ViewGroup paramViewGroup, int paramInt)
+  public aohi a(String paramString)
   {
-    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560745, paramViewGroup, false);
-    return new aohu(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment, paramViewGroup);
-  }
-  
-  public void a(List<GroupInfo.Label> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    paramViewHolder = (aohu)paramViewHolder;
-    Object localObject = (GroupInfo.Label)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((((GroupInfo.Label)localObject).labelType == 2001) || ((((GroupInfo.Label)localObject).labelType >= 1000) && (((GroupInfo.Label)localObject).labelType < 2000))) {}
-    for (paramInt = 1; paramInt != 0; paramInt = 0)
+    QLog.d("ArkPlatformConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    try
     {
-      paramViewHolder.a.setVisibility(8);
-      return;
+      aoih localaoih = (aoih)aogt.a(paramString, aoih.class);
+      return new aohn(paramString, localaoih);
     }
-    paramViewHolder.a.setVisibility(0);
-    paramViewHolder.a.setTextColor(((GroupInfo.Label)localObject).textColor);
-    paramViewHolder.a.setBgColor(((GroupInfo.Label)localObject).bgColor);
-    if (((GroupInfo.Label)localObject).labelType == 1)
+    catch (QStorageInstantiateException localQStorageInstantiateException)
     {
-      localObject = new SpannableString("[icon]" + " " + ((GroupInfo.Label)localObject).labelName);
-      if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.getResources().getDrawable(2130843244);
+      for (;;)
+      {
+        QLog.i("ArkPlatformConfProcessor", 1, "readJsonOrXml:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
       }
-      paramInt = (int)(paramViewHolder.a.a() * 0.8D + 0.5D);
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a.setBounds(0, 0, paramInt, paramInt);
-      ((SpannableString)localObject).setSpan(new ImageSpan(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a, 1), 0, "[icon]".length(), 17);
-      paramViewHolder.a.setText((CharSequence)localObject);
+    }
+  }
+  
+  public void a(aohi paramaohi)
+  {
+    super.a(paramaohi);
+    if (paramaohi == null) {
+      QLog.i("ArkPlatformConfProcessor", 1, "newConf is null");
+    }
+    do
+    {
+      return;
+      QLog.d("ArkPlatformConfProcessor", 1, "[onUpdate] type=" + a() + ", content = " + paramaohi.a());
+      paramaohi = paramaohi.a();
+      anju.a();
+    } while ((paramaohi == null) || (paramaohi.a() == null));
+    paramaohi = paramaohi.a();
+    if (paramaohi == null)
+    {
+      QLog.i("ArkPlatformConfProcessor", 2, "ArkSafe.updateUrlCheckAndCleanAppUpdateTime error config is null");
       return;
     }
-    paramViewHolder.a.setText(((GroupInfo.Label)localObject).labelName);
+    ArkAppConfigMgr.getInstance().updateUrlCheckAndCleanAppUpdateTime(paramaohi.jdField_a_of_type_Boolean, paramaohi.b, paramaohi.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoht
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.av.service;
 
 import com.tencent.qphone.base.util.QLog;
-import lwe;
+import lyt;
 
 public class AVServiceForQQ$AVServiceForQQStub$1
   implements Runnable
 {
-  public AVServiceForQQ$AVServiceForQQStub$1(lwe paramlwe) {}
+  public AVServiceForQQ$AVServiceForQQStub$1(lyt paramlyt) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class AVServiceForQQ$AVServiceForQQStub$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.service.AVServiceForQQ.AVServiceForQQStub.1
  * JD-Core Version:    0.7.0.1
  */

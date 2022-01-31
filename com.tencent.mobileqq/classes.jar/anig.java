@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.data.CardProfile;
-import java.util.Comparator;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anig
-  implements Comparator<CardProfile>
+class anig
+  implements anip
 {
-  public int a(CardProfile paramCardProfile1, CardProfile paramCardProfile2)
+  anig(anid paramanid, anin paramanin, anip paramanip) {}
+  
+  public void a(boolean paramBoolean)
   {
-    return paramCardProfile2.lTime - paramCardProfile1.lTime;
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Anin.a }));
+    if (paramBoolean) {}
+    this.jdField_a_of_type_Anip.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anig
  * JD-Core Version:    0.7.0.1
  */

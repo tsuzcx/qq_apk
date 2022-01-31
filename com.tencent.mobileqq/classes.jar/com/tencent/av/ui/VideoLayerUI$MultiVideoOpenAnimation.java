@@ -3,7 +3,7 @@ package com.tencent.av.ui;
 import android.graphics.Rect;
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import mdz;
+import mgp;
 
 public class VideoLayerUI$MultiVideoOpenAnimation
   implements Runnable
@@ -15,7 +15,7 @@ public class VideoLayerUI$MultiVideoOpenAnimation
   public VideoLayerUI$MultiVideoOpenAnimation(VideoLayerUI paramVideoLayerUI, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    paramVideoLayerUI = paramVideoLayerUI.jdField_a_of_type_ArrayOfMdz[this.jdField_a_of_type_Int];
+    paramVideoLayerUI = paramVideoLayerUI.jdField_a_of_type_ArrayOfMgp[this.jdField_a_of_type_Int];
     Rect localRect = paramVideoLayerUI.b();
     this.jdField_a_of_type_Float = (localRect.width() / 10.0F);
     paramInt = localRect.right;
@@ -36,18 +36,18 @@ public class VideoLayerUI$MultiVideoOpenAnimation
         this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 30L);
       }
       return;
-      mdz localmdz = this.this$0.jdField_a_of_type_ArrayOfMdz[this.jdField_a_of_type_Int];
-      Rect localRect = localmdz.b();
+      mgp localmgp = this.this$0.jdField_a_of_type_ArrayOfMgp[this.jdField_a_of_type_Int];
+      Rect localRect = localmgp.b();
       int i = (int)(localRect.left - this.jdField_a_of_type_Float);
       int j = localRect.width();
-      localmdz.b(i, localRect.top, j + i, localRect.bottom);
-      localmdz.b();
+      localmgp.b(i, localRect.top, j + i, localRect.bottom);
+      localmgp.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI.MultiVideoOpenAnimation
  * JD-Core Version:    0.7.0.1
  */

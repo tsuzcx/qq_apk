@@ -11,7 +11,7 @@ import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.service.MsfService;
-import com.tencent.mobileqq.msf.service.q;
+import com.tencent.mobileqq.msf.service.t;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -70,7 +70,7 @@ class ag$a
     {
       paramFromServiceMsg = paramFromServiceMsg.getServiceCmd();
       if ((!TextUtils.isEmpty(paramFromServiceMsg)) && (paramFromServiceMsg.equals("SharpSvr.s2c"))) {
-        q.a("MSF:VideoPush", 3000L);
+        t.a("MSF:VideoPush", 3000L);
       }
       return;
     }
@@ -1179,7 +1179,7 @@ class ag$a
   {
     if (paramArrayOfByte == null)
     {
-      QLog.d(tag, 1, "MSF.C.CodecWarpper onSSOPingResponse error, data null");
+      QLog.d(tag, 1, "MSF.C.CodecWarpper onSSOPingResponse error, data null, connId = " + paramInt);
       return -1;
     }
     if (paramArrayOfByte.length <= 4)
@@ -1233,8 +1233,8 @@ class ag$a
       paramArrayOfByte.printStackTrace();
       QLog.d(tag, 1, "MSF.C.CodecWarpper onSSOPingResponse error, exception : ", paramArrayOfByte);
     }
-    label874:
-    label891:
+    label926:
+    label943:
     for (;;)
     {
       ((ByteBuffer)localObject1).position(((ByteBuffer)localObject1).get() + ((ByteBuffer)localObject1).position() - 1);
@@ -1248,6 +1248,9 @@ class ag$a
           byte[] arrayOfByte = new byte[24];
           ((ByteBuffer)localObject1).get(arrayOfByte, 0, 24);
           ag.N = arrayOfByte;
+          if (QLog.isColorLevel()) {
+            QLog.d(tag, 2, "MSF.C.CodecWarpper onSSOPingResponse sGwV4Sec:" + ag.N);
+          }
         }
       }
       if (QLog.isColorLevel()) {
@@ -1281,14 +1284,14 @@ class ag$a
         l2 = SystemClock.elapsedRealtime() - ((Long)((ToServiceMsg)localObject1).getAttribute("__timestamp_msf2net")).longValue();
         l1 = l2;
         if (l2 >= 0L) {
-          break label874;
+          break label926;
         }
         l1 = 0L;
       }
       for (;;)
       {
         if (localObject1 == null) {
-          break label891;
+          break label943;
         }
         com.tencent.mobileqq.a.a.a.a().a(((ToServiceMsg)localObject1).getRequestSsoSeq(), l2);
         localObject2 = new StringBuilder();

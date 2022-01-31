@@ -1,40 +1,23 @@
-import java.io.PrintStream;
+import android.view.View;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aybp
-  extends aybi
+  implements aybi
 {
-  private int f;
-  private int g;
+  public aybp(ScreenShotFragment paramScreenShotFragment) {}
   
-  public aybp(int paramInt1, int paramInt2, int paramInt3)
+  public void a(View paramView, int paramInt)
   {
-    super(paramInt1, 8, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
-  }
-  
-  protected void a(int paramInt, float paramFloat)
-  {
-    System.out.println("time = " + paramInt + ", percent = " + paramFloat);
-    this.b = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.b >= this.g) {
-        this.b = this.g;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotFragment", 2, "ScreenShotInnerAdapter OnItemClickListener : position = " + paramInt + ", view = " + paramView);
     }
-    for (;;)
-    {
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.b <= this.g) {
-        this.b = this.g;
-      }
-    }
+    ScreenShotFragment.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aybp
  * JD-Core Version:    0.7.0.1
  */

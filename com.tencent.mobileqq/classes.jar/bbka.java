@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.createNewTroop.RelationFriendsTroopViewHelper.4.1;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
-class bbka
-  implements View.OnClickListener
+public class bbka
+  implements bbmt
 {
   bbka(bbjz parambbjz) {}
   
-  public void onClick(View paramView)
+  public void a(ArrayList<awbv> paramArrayList)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
+    if (this.a.a != null) {
+      this.a.a.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
     }
   }
 }

@@ -10,6 +10,8 @@ public abstract interface IFooterCallBack
   
   public abstract void onFingerRelease();
   
+  public abstract void onFooterReachEnd();
+  
   public abstract void onMove(int paramInt);
   
   public abstract void onReleaseToLoadMore();
@@ -24,7 +26,7 @@ public abstract interface IFooterCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.view.refresh.listener.IFooterCallBack
  * JD-Core Version:    0.7.0.1
  */

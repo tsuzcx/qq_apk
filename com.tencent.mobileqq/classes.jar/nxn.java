@@ -1,36 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class nxn
-  implements Comparator<nxs>
+class nxn
+  extends Handler
 {
-  public nxn(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  private WeakReference<nxl> a;
   
-  public int a(nxs paramnxs1, nxs paramnxs2)
+  public nxn(nxl paramnxl)
   {
-    int j = 2147483647;
-    int i;
-    if (TextUtils.isEmpty(nxs.a(paramnxs1)))
-    {
-      i = 2147483647;
-      if (!TextUtils.isEmpty(nxs.a(paramnxs2))) {
-        break label44;
-      }
+    this.a = new WeakReference(paramnxl);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    nxl localnxl = (nxl)this.a.get();
+    if ((localnxl == null) || (!localnxl.b())) {
+      return;
     }
-    for (;;)
+    switch (paramMessage.what)
     {
-      return i - j;
-      i = nxs.a(paramnxs1).codePointAt(0);
-      break;
-      label44:
-      j = nxs.a(paramnxs2).codePointAt(0);
+    default: 
+      return;
     }
+    localnxl.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxn
  * JD-Core Version:    0.7.0.1
  */

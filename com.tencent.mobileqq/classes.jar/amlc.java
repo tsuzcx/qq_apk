@@ -1,279 +1,467 @@
-import android.content.Intent;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.map.geolocation.internal.TencentExtraKeys;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.3.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.3.2;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.List;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import tencent.im.oidb.oidb_0xdea.GetBarrageListReqBody;
-import tencent.im.oidb.oidb_0xdea.GetBarrageListRspBody;
-import tencent.im.oidb.oidb_0xdea.ReqBody;
-import tencent.im.oidb.oidb_0xdea.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-public class amlc
-  extends MSFServlet
+public final class amlc
+  implements TencentLocationListener
 {
-  private oidb_0xdea.GetBarrageListRspBody a(FromServiceMsg paramFromServiceMsg)
+  public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
   {
-    Object localObject = paramFromServiceMsg.getWupBuffer();
-    if ((localObject == null) || (localObject.length == 0)) {
-      return null;
-    }
-    paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-    localObject = ByteBuffer.wrap((byte[])localObject);
-    byte[] arrayOfByte = new byte[((ByteBuffer)localObject).getInt() - 4];
-    ((ByteBuffer)localObject).get(arrayOfByte);
-    try
+    if (paramTencentLocation == null) {}
+    int k;
+    do
     {
-      paramFromServiceMsg.mergeFrom(arrayOfByte);
-      int i = paramFromServiceMsg.uint32_result.get();
-      localObject = paramFromServiceMsg.str_error_msg.get();
+      return;
+      k = paramTencentLocation.getExtra().getInt("qq_level");
+      if ((3 != k) || (paramInt != 0)) {
+        break label202;
+      }
+      if (!TextUtils.isEmpty(paramTencentLocation.getCityCode())) {
+        break;
+      }
+      SosoInterface.a(SosoInterface.a() + 1);
+      if (SosoInterface.a() >= 12)
+      {
+        paramTencentLocation = new HashMap();
+        paramTencentLocation.put("level_3_no_citycode", String.valueOf(SosoInterface.a()));
+        paramString = apgj.a();
+        azmz.a(BaseApplicationImpl.getContext()).a(paramString, "actSoSoNoCityCodeTimeout", true, 0L, 0L, paramTencentLocation, "");
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("SOSO.LBS", 2, "onLocationChanged level is 3, adcode is null");
+    return;
+    Object localObject1;
+    Object localObject2;
+    if (SosoInterface.a() > 0)
+    {
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("level_3_no_citycode", String.valueOf(SosoInterface.a()));
+      localObject2 = apgj.a();
+      azmz.a(BaseApplicationImpl.getContext()).a((String)localObject2, "actSoSoNoCityCode", true, 0L, 0L, (HashMap)localObject1, "");
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS", 2, "onLocationChanged level is 3, adcode is null, count : " + SosoInterface.a());
+      }
+    }
+    label202:
+    SosoInterface.a(0);
+    SosoInterface.a().removeMessages(1001);
+    boolean bool2;
+    long l;
+    String str;
+    boolean bool1;
+    boolean bool3;
+    boolean bool4;
+    Object localObject5;
+    label346:
+    Object localObject3;
+    label385:
+    int i;
+    label447:
+    label504:
+    int m;
+    TencentLocation localTencentLocation;
+    Object localObject8;
+    Object localObject6;
+    Object localObject7;
+    Object localObject4;
+    Object localObject9;
+    if (paramInt == 0)
+    {
+      bool2 = true;
+      SosoInterface.b(paramInt);
+      l = SystemClock.elapsedRealtime() - SosoInterface.a() - SosoInterface.b();
+      SosoInterface.a(SystemClock.elapsedRealtime());
+      SosoInterface.c(SosoInterface.a);
+      str = paramTencentLocation.getExtra().getString("qq_caller");
+      localObject2 = paramTencentLocation.getExtra().getString("qq_caller_route");
+      bool1 = paramTencentLocation.getExtra().getBoolean("qq_goonListener");
+      bool3 = paramTencentLocation.getExtra().getBoolean("qq_reqLocation");
+      bool4 = paramTencentLocation.getExtra().getBoolean("qq_allowGps");
+      localObject5 = TencentExtraKeys.getRawData(paramTencentLocation);
+      SosoInterface.a(paramInt);
+      if (bool3)
+      {
+        if (!bool2) {
+          break label934;
+        }
+        SosoInterface.d(0);
+      }
       if (QLog.isColorLevel())
       {
-        localObject = " oidbHeader: " + i + " errorStr: " + (String)localObject;
-        QLog.d("DanmuDataHolder", 2, "parseDanmuRspBody, errorStr:" + (String)localObject);
+        localObject3 = new StringBuilder().append("onLocationChanged() err=").append(paramInt);
+        if ((paramString != null) && (paramString.length() != 0)) {
+          break label941;
+        }
+        localObject1 = "";
+        localObject1 = ((StringBuilder)localObject3).append((String)localObject1).append(" caller=").append(str).append(" level=").append(k).append(" reqLocation=").append(bool3).append(" consume=").append(l).append(" rawData=");
+        if (localObject5 != null) {
+          break label966;
+        }
+        i = 0;
+        localObject1 = ((StringBuilder)localObject1).append(i).append(" isGoonCallback=").append(bool1).append(" failInt=").append(SosoInterface.d()).append(" caller rote: ").append((String)localObject2).append(" verify key length:");
+        if (paramTencentLocation.getVerifyKey() != null) {
+          break label974;
+        }
+        i = 0;
+        QLog.d("SOSO.LBS", 2, i + " source:" + paramTencentLocation.getSourceProvider() + " adcode :" + paramTencentLocation.getCityCode() + " lon*lat :" + (int)(paramTencentLocation.getLongitude() * paramTencentLocation.getLatitude()));
       }
-      paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
-      return null;
+      m = 0;
+      bool1 = false;
+      localTencentLocation = null;
+      localObject8 = null;
+      localObject6 = null;
+      localObject1 = null;
+      localObject7 = null;
+      localObject3 = null;
+      localObject4 = null;
+      localObject2 = null;
+      localObject9 = SosoInterface.a();
+      if ((paramInt == 0) && (!bool3)) {}
     }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+    int j;
+    for (;;)
     {
       try
       {
-        localObject = new oidb_0xdea.RspBody();
-        ((oidb_0xdea.RspBody)localObject).mergeFrom(paramFromServiceMsg);
-        paramFromServiceMsg = (oidb_0xdea.GetBarrageListRspBody)((oidb_0xdea.RspBody)localObject).get_barrage_list_rsp.get();
-        return paramFromServiceMsg;
+        SosoInterface.a(k, paramTencentLocation, str);
+        if ((localObject5 != null) && (localObject5.length > 0)) {
+          SosoInterface.a(paramTencentLocation.getProvider(), (byte[])localObject5);
+        }
+        if (SosoInterface.a().size() <= 0) {
+          break label1411;
+        }
+        if (bool3)
+        {
+          localObject5 = SosoInterface.a(k, true);
+          j = SosoInterface.a().size() - 1;
+          paramTencentLocation = localObject8;
+          localObject4 = localObject2;
+          localObject7 = localObject3;
+          localObject6 = localObject1;
+          localTencentLocation = paramTencentLocation;
+          m = bool1;
+          if (j < 0) {
+            break label1411;
+          }
+          localObject4 = (amle)SosoInterface.a().get(j);
+          if ((((amle)localObject4).reqLocation == bool3) && ((!((amle)localObject4).reqLocation) || (((amle)localObject4).level <= k)))
+          {
+            if (!((amle)localObject4).uiThread) {
+              continue;
+            }
+            SosoInterface.a((amle)localObject4, paramInt, (SosoInterface.SosoLbsInfo)localObject5);
+            if (!TextUtils.isEmpty(str)) {
+              break label1014;
+            }
+            i = 0;
+            label774:
+            if (i == 0) {
+              break label1033;
+            }
+            SosoInterface.a(bool2, bool3, l, paramInt, str, paramString, bool4, k, true);
+            if (!((amle)localObject4).goonListener) {
+              break label1054;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("SOSO.LBS", 2, "onLocationChanged() lis=" + ((amle)localObject4).tag + " goon...");
+            }
+          }
+          if (amle.access$1500((amle)localObject4)) {
+            break label1820;
+          }
+          if (!((amle)localObject4).goonListener) {
+            break label1135;
+          }
+          if (localObject3 != null) {
+            break label1115;
+          }
+          localObject3 = localObject4;
+          label872:
+          if (!amle.access$1600((amle)localObject4)) {
+            break label1814;
+          }
+          localObject2 = localObject4;
+          label884:
+          if (SosoInterface.d() <= 0) {
+            break label1801;
+          }
+          ((amle)localObject4).onConsecutiveFailure(paramInt, SosoInterface.d());
+          localObject4 = localObject1;
+          localObject1 = paramTencentLocation;
+          paramTencentLocation = (TencentLocation)localObject4;
+          label909:
+          j -= 1;
+          localObject4 = localObject1;
+          localObject1 = paramTencentLocation;
+          paramTencentLocation = (TencentLocation)localObject4;
+          continue;
+          bool2 = false;
+          break;
+          label934:
+          SosoInterface.c();
+          break label346;
+          label941:
+          localObject1 = " reason=" + paramString;
+          break label385;
+          label966:
+          i = localObject5.length;
+          break label447;
+          label974:
+          i = paramTencentLocation.getVerifyKey().length();
+          break label504;
+        }
+        localObject5 = SosoInterface.a(true);
+        continue;
+        ((amle)localObject4).onLocationFinish(paramInt, (SosoInterface.SosoLbsInfo)localObject5);
+        continue;
+        if (str.equals(((amle)localObject4).tag)) {
+          break label1833;
+        }
       }
-      catch (Exception paramFromServiceMsg)
-      {
-        QLog.d("DanmuDataHolder", 1, "parseDanmuRspBody, e: " + paramFromServiceMsg);
-      }
-      paramFromServiceMsg = paramFromServiceMsg;
-      QLog.d("DanmuDataHolder", 1, "parseDanmuRspBody: mergeFrom:" + paramFromServiceMsg);
-      return null;
-    }
-  }
-  
-  private void a(amkw paramamkw, oidb_0xdea.GetBarrageListRspBody paramGetBarrageListRspBody)
-  {
-    int i = paramGetBarrageListRspBody.int32_ret_code.get();
-    String str1 = paramGetBarrageListRspBody.str_err_msg.get();
-    String str2 = paramGetBarrageListRspBody.str_wording.get();
-    boolean bool = paramGetBarrageListRspBody.bool_is_end.get();
-    int j = paramGetBarrageListRspBody.uint32_total_count.get();
-    int k = paramGetBarrageListRspBody.uint32_next_start_index.get();
-    List localList1 = paramGetBarrageListRspBody.rpt_comment_list.get();
-    List localList2 = paramGetBarrageListRspBody.rpt_recall_del_seq_list.get();
-    int m = paramGetBarrageListRspBody.uint32_last_update_time.get();
-    int n = paramGetBarrageListRspBody.uint32_time_interval.get();
-    if (QLog.isColorLevel())
-    {
-      paramGetBarrageListRspBody = "lastUpdateTime:" + m + ", intervalTime:" + n + ", retCode:" + i + ", errInfo:" + str1 + ", errInfoShow:" + str2 + ", isFinish:" + bool + ", totalCount:" + j + ", nextStartIdx:" + k + ", danmuItemListSize:" + localList1.size() + ", recallDeleteList:" + localList2.toString();
-      QLog.d("DanmuDataHolder", 2, "handleDanmuRspPack barrInfo:" + paramGetBarrageListRspBody);
-    }
-    paramamkw.a(amkv.a().a(localList1, paramamkw.jdField_a_of_type_Amku.b)).b(localList2).a(m).b(n).c(k).a(bool).a();
-  }
-  
-  void a(amkw paramamkw)
-  {
-    if (paramamkw == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DanmuDataHolder", 2, "request called, reqHolder null");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DanmuDataHolder", 2, "request called, param:" + paramamkw.a());
-    }
-    Object localObject = new oidb_0xdea.GetBarrageListReqBody();
-    ((oidb_0xdea.GetBarrageListReqBody)localObject).uint64_group_code.set(paramamkw.jdField_a_of_type_Amku.b);
-    ((oidb_0xdea.GetBarrageListReqBody)localObject).uint64_barrage_seq.set(paramamkw.jdField_a_of_type_Amku.jdField_a_of_type_Long);
-    ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_last_update_time.set(paramamkw.jdField_a_of_type_Int);
-    ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_start_index.set(paramamkw.e);
-    ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_barrage_count.set(paramamkw.f);
-    int i;
-    if ((paramamkw.jdField_a_of_type_Amku.jdField_a_of_type_Int == 2) || (paramamkw.jdField_a_of_type_Amku.jdField_a_of_type_Int == 4))
-    {
+      finally {}
+      label1014:
       i = 1;
-      if (i == 0) {
-        break label327;
-      }
-      ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_video_start_time.set(paramamkw.jdField_c_of_type_Int);
-      ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_video_end_time.set(paramamkw.jdField_d_of_type_Int);
-      label180:
-      ((oidb_0xdea.GetBarrageListReqBody)localObject).terminal.set(0);
-      switch (paramamkw.jdField_a_of_type_Amku.jdField_a_of_type_Int)
+      continue;
+      label1033:
+      SosoInterface.a(bool2, bool3, l, paramInt, str, paramString, bool4, k, false);
+      continue;
+      label1054:
+      SosoInterface.a().remove(j);
+      amle.access$1502((amle)localObject4, true);
+      if (QLog.isColorLevel())
       {
+        QLog.d("SOSO.LBS", 2, "onLocationChanged() lis=" + ((amle)localObject4).tag + " removed normally.");
+        continue;
+        label1115:
+        if (((amle)localObject3).level >= ((amle)localObject4).level) {
+          break label1817;
+        }
+        localObject3 = localObject4;
+      }
+    }
+    label1135:
+    if (SystemClock.elapsedRealtime() - ((amle)localObject4).sTime > 30000L)
+    {
+      SosoInterface.a().remove(j);
+      amle.access$1502((amle)localObject4, true);
+      if (((amle)localObject4).reqLocation)
+      {
+        localObject6 = SosoInterface.a(((amle)localObject4).level, true);
+        break label1839;
+        ((amle)localObject4).onLocationFinish(i, (SosoInterface.SosoLbsInfo)localObject6);
+        if (!QLog.isColorLevel()) {
+          break label1852;
+        }
+        QLog.d("SOSO.LBS", 2, "lis=" + ((amle)localObject4).tag + " err_timeout.reqRaw=" + ((amle)localObject4).reqLocation + ". Force 2 remove it.");
+        break label1852;
+      }
+      else
+      {
+        localObject6 = SosoInterface.a(true);
+      }
+    }
+    else if (((amle)localObject4).reqLocation)
+    {
+      if (localObject1 == null)
+      {
+        localObject6 = localObject4;
+        localObject1 = paramTencentLocation;
+        paramTencentLocation = (TencentLocation)localObject6;
       }
     }
     for (;;)
     {
-      oidb_0xdea.ReqBody localReqBody = new oidb_0xdea.ReqBody();
-      localReqBody.get_barrage_list_req.set((MessageMicro)localObject);
-      localObject = amkv.a().a();
-      NewIntent localNewIntent = new NewIntent(((QQAppInterface)localObject).getApp(), amlc.class);
-      localNewIntent.putExtra("KEY_SEND_DATA", localReqBody.toByteArray());
-      localNewIntent.putExtra("KEY_GROUP_UIN", paramamkw.jdField_a_of_type_Amku.b);
-      localNewIntent.putExtra("KEY_TOPIC_UIN", paramamkw.jdField_a_of_type_Amku.jdField_a_of_type_Long);
-      ((QQAppInterface)localObject).startServlet(localNewIntent);
-      return;
-      i = 0;
-      break;
-      label327:
-      ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_video_start_time.set(0);
-      ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_video_end_time.set(0);
-      break label180;
-      ((oidb_0xdea.GetBarrageListReqBody)localObject).entrance.set(4);
-      continue;
-      ((oidb_0xdea.GetBarrageListReqBody)localObject).entrance.set(3);
-      continue;
-      ((oidb_0xdea.GetBarrageListReqBody)localObject).entrance.set(2);
-      continue;
-      ((oidb_0xdea.GetBarrageListReqBody)localObject).entrance.set(1);
+      label1189:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("SOSO.LBS", 2, "onLocationChanged() lis=" + ((amle)localObject4).tag + " goon=" + ((amle)localObject4).goonListener + " reqLocation=" + ((amle)localObject4).reqLocation + " hasReqRaw=" + bool1);
+        break label1871;
+        if (((amle)localObject1).level < ((amle)localObject4).level)
+        {
+          localObject1 = localObject4;
+          localObject6 = paramTencentLocation;
+          paramTencentLocation = (TencentLocation)localObject1;
+          localObject1 = localObject6;
+          continue;
+          if (paramTencentLocation == null) {
+            break label1874;
+          }
+          if (!((amle)localObject4).askGPS) {
+            break label1877;
+          }
+          break label1874;
+          if (SosoInterface.a().size() == 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("SOSO.LBS", 4, "listener is empty.");
+            }
+            SosoInterface.d();
+            return;
+          }
+          if (m != 0)
+          {
+            if (QLog.isColorLevel())
+            {
+              paramString = new StringBuilder().append("onLocationChanged()");
+              if (localObject7 != null) {
+                break label1544;
+              }
+            }
+            for (paramTencentLocation = "";; paramTencentLocation = " goonLis been truncated:" + localObject7.tag)
+            {
+              QLog.d("SOSO.LBS", 2, paramTencentLocation + " start:reqRawData");
+              if (localObject4 != null) {
+                amle.access$1602((amle)localObject4, false);
+              }
+              if (localTencentLocation != null)
+              {
+                SosoInterface.a().tag = localTencentLocation.tag;
+                SosoInterface.a().askGPS = localTencentLocation.askGPS;
+              }
+              SosoInterface.d();
+              SosoInterface.a(SosoInterface.a());
+              return;
+            }
+          }
+          if (localObject6 != null)
+          {
+            if (QLog.isColorLevel())
+            {
+              paramString = new StringBuilder().append("onLocationChanged()");
+              if (localObject7 != null) {
+                break label1660;
+              }
+            }
+            label1660:
+            for (paramTencentLocation = "";; paramTencentLocation = " goonLis been truncated:" + localObject7.tag)
+            {
+              QLog.d("SOSO.LBS", 2, paramTencentLocation + " start:" + ((amle)localObject6).tag);
+              if (localObject4 != null) {
+                amle.access$1602((amle)localObject4, false);
+              }
+              SosoInterface.d();
+              ((amle)localObject6).maxCacheInterval = 0L;
+              SosoInterface.a((amle)localObject6);
+              return;
+            }
+          }
+          if (localObject7 == null) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("SOSO.LBS", 2, "onLocationChanged() goonLis goon after 1000ms:" + localObject7.tag);
+          }
+          if ((localObject4 != null) && (localObject4 != localObject7)) {
+            amle.access$1602((amle)localObject4, false);
+          }
+          if ((amle.access$1600(localObject7)) || (amle.access$1500(localObject7))) {
+            break;
+          }
+          SosoInterface.d();
+          ThreadManager.getSubThreadHandler().postDelayed(new SosoInterface.3.2(this, localObject7), 2000L);
+          return;
+        }
+        localObject6 = paramTencentLocation;
+        paramTencentLocation = (TencentLocation)localObject1;
+        localObject1 = localObject6;
+        continue;
+        localObject4 = paramTencentLocation;
+        paramTencentLocation = (TencentLocation)localObject1;
+        localObject1 = localObject4;
+        break label909;
+        break label884;
+        break label872;
+        localObject4 = paramTencentLocation;
+        paramTencentLocation = (TencentLocation)localObject1;
+        localObject1 = localObject4;
+        break label909;
+        label1833:
+        i = 0;
+        break label774;
+        label1839:
+        if (localObject6 == null)
+        {
+          i = -10000;
+          break label1189;
+          label1852:
+          localObject4 = paramTencentLocation;
+          paramTencentLocation = (TencentLocation)localObject1;
+          localObject1 = localObject4;
+          break label909;
+        }
+        i = 0;
+        break label1189;
+      }
+      label1411:
+      label1544:
+      label1801:
+      label1814:
+      label1817:
+      label1820:
+      label1871:
+      break label909;
+      label1874:
+      paramTencentLocation = (TencentLocation)localObject4;
+      label1877:
+      localObject6 = paramTencentLocation;
+      bool1 = true;
+      paramTencentLocation = (TencentLocation)localObject1;
+      localObject1 = localObject6;
     }
   }
   
-  public void onCreate()
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2)
   {
-    super.onCreate();
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
     if (QLog.isColorLevel()) {
-      QLog.d("DanmuDataHolder", 2, "onReceive:" + paramFromServiceMsg);
+      QLog.d("SOSO.LBS", 2, "onStatusUpdate name: " + paramString1 + " status: " + paramInt + " desc: " + paramString2);
     }
-    int i = paramFromServiceMsg.getResultCode();
-    long l1 = paramIntent.getLongExtra("KEY_TOPIC_UIN", 0L);
-    long l2 = paramIntent.getLongExtra("KEY_GROUP_UIN", 0L);
-    if ((l1 == 0L) || (l2 == 0L))
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DanmuDataHolder", 2, "onReceive, topicUin:0, groupUin:0");
-      }
-      if (i == 1000) {}
-      for (;;)
+      int i;
+      amle localamle;
+      synchronized (SosoInterface.a())
       {
-        amle.a(bool1, i, -1, false, "onReceive, topicUin:0, groupUin:0");
-        return;
-        bool1 = false;
+        if (SosoInterface.a().isEmpty()) {
+          return;
+        }
+        i = SosoInterface.a().size() - 1;
+        if (i < 0) {
+          break label157;
+        }
+        localamle = (amle)SosoInterface.a().get(i);
+        if (localamle == null) {
+          break label161;
+        }
+        if (localamle.uiThread) {
+          ThreadManager.getUIHandler().post(new SosoInterface.3.1(this, localamle, paramString1, paramInt, paramString2));
+        }
       }
+      localamle.onStatusUpdate(paramString1, paramInt, paramString2);
+      break label161;
+      label157:
+      return;
+      label161:
+      i -= 1;
     }
-    paramIntent = amkv.a().a(l2, l1);
-    amkw localamkw = amkv.a().a(paramIntent);
-    if (localamkw == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DanmuDataHolder", 2, "onReceive, holder null");
-      }
-      if (i == 1000) {}
-      for (bool1 = bool2;; bool1 = false)
-      {
-        amle.a(bool1, i, -1, false, "onReceive, holder null");
-        return;
-      }
-    }
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
-    {
-      paramIntent = a(paramFromServiceMsg);
-      if (paramIntent != null) {
-        a(localamkw, paramIntent);
-      }
-    }
-    for (bool1 = true;; bool1 = false)
-    {
-      if (i == 1000)
-      {
-        bool2 = true;
-        int j = localamkw.jdField_a_of_type_Amku.jdField_a_of_type_Int;
-        if (!bool1) {
-          break label379;
-        }
-        paramIntent = "DanmuRsp Valid";
-        label246:
-        amle.a(bool2, i, j, bool1, paramIntent);
-        if (!bool1) {
-          break label395;
-        }
-        paramFromServiceMsg = localamkw.jdField_a_of_type_Amla;
-        amku localamku = localamkw.jdField_a_of_type_Amku;
-        bool2 = localamkw.jdField_a_of_type_Boolean;
-        i = localamkw.b;
-        if (!localamkw.jdField_a_of_type_Amku.jdField_a_of_type_Boolean) {
-          break label386;
-        }
-        paramIntent = localamkw.jdField_c_of_type_JavaUtilList;
-        label305:
-        paramFromServiceMsg.a(localamku, true, bool2, i, (ArrayList)paramIntent, localamkw.jdField_a_of_type_JavaUtilList);
-        localamkw.jdField_a_of_type_Amku.jdField_a_of_type_Boolean = true;
-      }
-      for (;;)
-      {
-        if ((!bool1) || (localamkw.jdField_a_of_type_Boolean)) {
-          break label424;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("DanmuDataHolder", 2, "onReceive, 没有结束，接力拉取");
-        }
-        a(localamkw);
-        return;
-        bool2 = false;
-        break;
-        label379:
-        paramIntent = "DanmuRsp Null";
-        break label246;
-        label386:
-        paramIntent = localamkw.jdField_d_of_type_JavaUtilList;
-        break label305;
-        label395:
-        localamkw.jdField_a_of_type_Amla.a(localamkw.jdField_a_of_type_Amku, false, localamkw.jdField_a_of_type_Boolean, localamkw.b, null, null);
-      }
-      label424:
-      break;
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    paramIntent = paramIntent.getByteArrayExtra("KEY_SEND_DATA");
-    Object localObject = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(3562);
-    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(1);
-    ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent));
-    ((oidb_sso.OIDBSSOPkg)localObject).str_client_version.set(AppSetting.f());
-    paramIntent = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
-    localObject = new byte[paramIntent.length + 4];
-    bbmx.a((byte[])localObject, 0, paramIntent.length + 4);
-    bbmx.a((byte[])localObject, 4, paramIntent, paramIntent.length);
-    paramPacket.setSSOCommand("OidbSvc.0xdea");
-    paramPacket.putSendData((byte[])localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlc
  * JD-Core Version:    0.7.0.1
  */

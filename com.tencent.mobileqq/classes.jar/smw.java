@@ -1,20 +1,22 @@
-import UserGrowth.stReportItem;
-import UserGrowth.stWeishiReportReq;
-import UserGrowth.stWeishiReportRsp;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class smw
-  extends slp<stWeishiReportRsp>
+  implements TopGestureLayout.OnGestureListener
 {
-  public smw(ArrayList<stReportItem> paramArrayList)
+  public smw(ViolaFragment paramViolaFragment, ViewGroup paramViewGroup) {}
+  
+  public void flingLToR()
   {
-    super("WeishiReport");
-    this.a = new stWeishiReportReq(paramArrayList);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.a.a(this.jdField_a_of_type_AndroidViewViewGroup, true);
   }
+  
+  public void flingRToL() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smw
  * JD-Core Version:    0.7.0.1
  */

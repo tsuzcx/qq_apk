@@ -63,7 +63,7 @@ public class GdtCgiReportRunnable
     //   79: aastore
     //   80: invokestatic 60	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   83: aload_3
-    //   84: invokestatic 66	betc:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   84: invokestatic 66	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   87: aload_2
     //   88: ifnull -31 -> 57
     //   91: aload_2
@@ -106,7 +106,7 @@ public class GdtCgiReportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.GdtCgiReportRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,23 @@
 package c.t.m.g;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Context;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Timer;
 
 public class cz
-  implements Observer
 {
-  protected static volatile String a = "";
-  protected static volatile String b = "";
-  protected static volatile String c = "";
-  private static final HashMap<String, String> e = new HashMap();
-  private static volatile cz f = null;
-  volatile ConcurrentHashMap<String, List<ds.a>> d = null;
-  private HashMap<Class<?>, Object> g = new HashMap();
-  private volatile ConcurrentHashMap<String, String> h = null;
-  private volatile boolean i = false;
+  private static volatile cz b = null;
+  private static Context c = null;
+  private volatile boolean a = true;
+  private volatile boolean d = false;
+  private volatile df e = df.a;
+  private Timer f = null;
   
   private cz()
   {
-    this.g.put(String.class, "");
-    this.g.put(Integer.class, Integer.valueOf(-2147483648));
-    this.g.put(Float.class, Float.valueOf(1.4E-45F));
-    this.g.put(Double.class, Double.valueOf(4.9E-324D));
-    this.g.put(Long.class, Long.valueOf(-9223372036854775808L));
-    this.g.put(Boolean.class, Boolean.FALSE);
-    c();
+    if ((c == null) || (c.getApplicationContext() == null)) {
+      throw new IllegalStateException("Please invoke initial(context,...) first when app started!");
+    }
   }
   
   /* Error */
@@ -40,265 +26,249 @@ public class cz
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 43	c/t/m/g/cz:f	Lc/t/m/g/cz;
-    //   6: ifnonnull +19 -> 25
+    //   3: getstatic 19	c/t/m/g/cz:b	Lc/t/m/g/cz;
+    //   6: ifnonnull +25 -> 31
     //   9: ldc 2
     //   11: monitorenter
-    //   12: new 2	c/t/m/g/cz
-    //   15: dup
-    //   16: invokespecial 105	c/t/m/g/cz:<init>	()V
-    //   19: putstatic 43	c/t/m/g/cz:f	Lc/t/m/g/cz;
-    //   22: ldc 2
-    //   24: monitorexit
-    //   25: getstatic 43	c/t/m/g/cz:f	Lc/t/m/g/cz;
-    //   28: astore_0
-    //   29: ldc 2
-    //   31: monitorexit
-    //   32: aload_0
-    //   33: areturn
+    //   12: getstatic 19	c/t/m/g/cz:b	Lc/t/m/g/cz;
+    //   15: ifnonnull +13 -> 28
+    //   18: new 2	c/t/m/g/cz
+    //   21: dup
+    //   22: invokespecial 52	c/t/m/g/cz:<init>	()V
+    //   25: putstatic 19	c/t/m/g/cz:b	Lc/t/m/g/cz;
+    //   28: ldc 2
+    //   30: monitorexit
+    //   31: getstatic 19	c/t/m/g/cz:b	Lc/t/m/g/cz;
     //   34: astore_0
     //   35: ldc 2
     //   37: monitorexit
     //   38: aload_0
-    //   39: athrow
+    //   39: areturn
     //   40: astore_0
     //   41: ldc 2
     //   43: monitorexit
     //   44: aload_0
     //   45: athrow
+    //   46: astore_0
+    //   47: ldc 2
+    //   49: monitorexit
+    //   50: aload_0
+    //   51: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   28	5	0	localcz	cz
-    //   34	5	0	localObject1	Object
-    //   40	5	0	localObject2	Object
+    //   34	5	0	localcz	cz
+    //   40	5	0	localObject1	Object
+    //   46	5	0	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   12	25	34	finally
-    //   35	38	34	finally
-    //   3	12	40	finally
-    //   25	29	40	finally
-    //   38	40	40	finally
+    //   12	28	40	finally
+    //   28	31	40	finally
+    //   41	44	40	finally
+    //   3	12	46	finally
+    //   31	35	46	finally
+    //   44	46	46	finally
   }
   
-  private final Object a(String paramString, Class<?> paramClass)
+  private void a(long paramLong)
   {
-    if (!this.i) {
-      c();
-    }
-    if (!this.g.containsKey(paramClass)) {
-      throw new IllegalStateException("The property \"" + paramString + "\" don't support class type \"" + paramClass.toString() + "\"");
-    }
-    Object localObject2 = (String)this.h.get(paramString);
-    Object localObject1;
-    if (localObject2 != null)
+    if (this.f != null)
     {
-      localObject1 = localObject2;
-      if (((String)localObject2).length() != 0) {}
-    }
-    else
-    {
-      localObject1 = (String)e.get(paramString);
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = "";
-    }
-    try
-    {
-      localObject1 = b((String)localObject2, paramClass);
-      return localObject1;
-    }
-    catch (Throwable localThrowable)
-    {
-      try
-      {
-        paramString = b((String)e.get(paramString), paramClass);
-        return paramString;
+      Timer localTimer = this.f;
+      cz.a locala = new cz.a(this);
+      long l = paramLong;
+      if (paramLong < 0L) {
+        l = 0L;
       }
-      catch (Throwable paramString) {}
-    }
-    return this.g.get(paramClass);
-  }
-  
-  protected static void a(String paramString)
-  {
-    b = paramString;
-  }
-  
-  protected static void a(String paramString1, String paramString2)
-  {
-    a = paramString1;
-    c = paramString2;
-    b("app_version", paramString2);
-  }
-  
-  protected static void a(HashMap<String, String> paramHashMap)
-  {
-    b("cc_version", "-1");
-    b("cc_req_interval", "10800000");
-    b("last_pull_time", "0");
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      b(str, (String)paramHashMap.get(str));
+      localTimer.schedule(locala, l);
     }
   }
   
-  private static Object b(String paramString, Class<?> paramClass)
+  public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    Object localObject;
-    if (paramClass == Integer.class) {
-      localObject = Integer.valueOf(Integer.parseInt(paramString));
+    if ((paramContext == null) || (paramContext.getApplicationContext() == null)) {
+      throw new NullPointerException("context cannot be null!");
     }
-    do
-    {
-      return localObject;
-      if (paramClass == Long.class) {
-        return Long.valueOf(Long.parseLong(paramString));
-      }
-      if (paramClass == Boolean.class) {
-        return Boolean.valueOf(Boolean.parseBoolean(paramString));
-      }
-      if (paramClass == Float.class) {
-        return Float.valueOf(Float.parseFloat(paramString));
-      }
-      localObject = paramString;
-    } while (paramClass != Double.class);
-    return Double.valueOf(Double.parseDouble(paramString));
+    paramContext = paramContext.getApplicationContext();
+    c = paramContext;
+    dp.a(paramContext);
+    db.a(paramString1);
+    da.a(paramString1, paramString2);
+    new cz.1("th_CC_init").start();
   }
   
-  private static void b(String paramString1, String paramString2)
+  public static void a(String paramString)
   {
-    e.put(paramString1, paramString2);
+    da.a(paramString);
   }
   
-  private void c()
+  public static void a(HashMap<String, String> paramHashMap)
   {
-    try
-    {
-      d();
-      b();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      co.a(localThrowable.getMessage(), localThrowable);
-    }
+    da.a(paramHashMap);
   }
   
-  private static void d()
+  private void a(boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = da.a().b();
-    if (localSharedPreferences == null) {}
-    String str;
-    do
-    {
-      return;
-      str = (String)dv.b(localSharedPreferences, "app_version", "");
-    } while ((c.length() <= 0) || (c.equals(str)));
-    co.a("clear sp > pre:" + str + ",now:" + c);
-    localSharedPreferences.edit().clear().apply();
-    dv.a(localSharedPreferences, "app_version", c);
-  }
-  
-  private void f(String paramString)
-  {
-    if (e.get(paramString) == null) {}
     for (;;)
     {
-      return;
       try
       {
-        SharedPreferences localSharedPreferences = da.a().b();
-        if (localSharedPreferences != null)
+        int i = da.a().b("cc_version");
+        if (i == -1)
         {
-          this.h.put(paramString, localSharedPreferences.getString(paramString, g(paramString)));
-          return;
+          if (paramBoolean)
+          {
+            l = 5000L;
+            co.a("schedule : first[" + paramBoolean + "],locVer[" + i + "],delayTime[" + l + "]");
+            a(l);
+          }
         }
+        else
+        {
+          l = e();
+          continue;
+        }
+        long l = 10800000L;
       }
-      catch (Throwable paramString)
+      catch (Throwable localThrowable)
       {
-        co.b(paramString.toString());
+        co.b(localThrowable.toString());
+        return;
       }
     }
   }
   
-  private static String g(String paramString)
+  private static long e()
   {
-    if (!e.containsKey(paramString)) {
-      throw new NullPointerException("Not exists property name \"" + paramString + "\"");
-    }
-    return (String)e.get(paramString);
-  }
-  
-  public final int b(String paramString)
-  {
-    return ((Integer)a(paramString, Integer.class)).intValue();
-  }
-  
-  protected final void b()
-  {
-    if (da.a().b() == null)
-    {
-      co.a("---> read xml: failed,not init finish!");
-      return;
-    }
-    Iterator localIterator = e.keySet().iterator();
-    while (localIterator.hasNext()) {
-      f((String)localIterator.next());
-    }
-    this.i = true;
-    co.a("---> read xml:" + this.h.toString());
-  }
-  
-  public final long c(String paramString)
-  {
-    return ((Long)a(paramString, Long.class)).longValue();
-  }
-  
-  public final boolean d(String paramString)
-  {
-    return ((Boolean)a(paramString, Boolean.class)).booleanValue();
-  }
-  
-  public final String e(String paramString)
-  {
-    return (String)a(paramString, String.class);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    if (paramObject == null)
-    {
-      paramObservable = null;
-      if ((paramObservable != null) && (paramObservable.length() != 0)) {
-        break label26;
-      }
-    }
+    long l1 = 86400000L;
+    long l2 = da.a().c("cc_req_interval");
+    if (l2 > 86400000L) {}
     for (;;)
     {
-      return;
-      paramObservable = (String)paramObject;
-      break;
-      label26:
-      paramObject = "update [" + paramObservable + "] : " + (String)this.h.get(paramObservable) + " --> ";
-      f(paramObservable);
-      co.a(paramObject + (String)this.h.get(paramObservable));
-      paramObservable = (List)this.d.get(paramObservable);
-      if ((paramObservable != null) && (!paramObservable.isEmpty()))
-      {
-        paramObservable = paramObservable.iterator();
-        while (paramObservable.hasNext()) {
-          paramObservable.next();
-        }
+      if (l1 < 3600000L) {
+        return 3600000L;
       }
+      return l1;
+      l1 = l2;
     }
+  }
+  
+  /* Error */
+  public final void b()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 29	c/t/m/g/cz:d	Z
+    //   6: istore_1
+    //   7: iload_1
+    //   8: ifeq +6 -> 14
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: return
+    //   14: aload_0
+    //   15: iconst_1
+    //   16: putfield 29	c/t/m/g/cz:d	Z
+    //   19: ldc 167
+    //   21: invokestatic 142	c/t/m/g/co:a	(Ljava/lang/String;)V
+    //   24: aload_0
+    //   25: new 60	java/util/Timer
+    //   28: dup
+    //   29: ldc 169
+    //   31: invokespecial 170	java/util/Timer:<init>	(Ljava/lang/String;)V
+    //   34: putfield 37	c/t/m/g/cz:f	Ljava/util/Timer;
+    //   37: aload_0
+    //   38: iconst_1
+    //   39: invokespecial 155	c/t/m/g/cz:a	(Z)V
+    //   42: goto -31 -> 11
+    //   45: astore_2
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: aload_2
+    //   49: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	50	0	this	cz
+    //   6	2	1	bool	boolean
+    //   45	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	45	finally
+    //   14	42	45	finally
+  }
+  
+  /* Error */
+  public final void c()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 29	c/t/m/g/cz:d	Z
+    //   6: istore_1
+    //   7: iload_1
+    //   8: ifne +6 -> 14
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: return
+    //   14: aload_0
+    //   15: iconst_0
+    //   16: putfield 29	c/t/m/g/cz:d	Z
+    //   19: invokestatic 104	c/t/m/g/da:a	()Lc/t/m/g/da;
+    //   22: getfield 173	c/t/m/g/da:d	Ljava/util/concurrent/ConcurrentHashMap;
+    //   25: invokevirtual 178	java/util/concurrent/ConcurrentHashMap:clear	()V
+    //   28: ldc 180
+    //   30: invokestatic 142	c/t/m/g/co:a	(Ljava/lang/String;)V
+    //   33: aload_0
+    //   34: lconst_0
+    //   35: invokespecial 144	c/t/m/g/cz:a	(J)V
+    //   38: aload_0
+    //   39: getfield 37	c/t/m/g/cz:f	Ljava/util/Timer;
+    //   42: ifnull -31 -> 11
+    //   45: aload_0
+    //   46: getfield 37	c/t/m/g/cz:f	Ljava/util/Timer;
+    //   49: astore_2
+    //   50: aload_0
+    //   51: aconst_null
+    //   52: putfield 37	c/t/m/g/cz:f	Ljava/util/Timer;
+    //   55: aload_2
+    //   56: new 182	c/t/m/g/cz$2
+    //   59: dup
+    //   60: aload_0
+    //   61: aload_2
+    //   62: invokespecial 185	c/t/m/g/cz$2:<init>	(Lc/t/m/g/cz;Ljava/util/Timer;)V
+    //   65: ldc2_w 186
+    //   68: invokevirtual 64	java/util/Timer:schedule	(Ljava/util/TimerTask;J)V
+    //   71: goto -60 -> 11
+    //   74: astore_2
+    //   75: ldc 189
+    //   77: aload_2
+    //   78: invokestatic 192	c/t/m/g/co:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   81: goto -70 -> 11
+    //   84: astore_2
+    //   85: aload_0
+    //   86: monitorexit
+    //   87: aload_2
+    //   88: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	89	0	this	cz
+    //   6	2	1	bool	boolean
+    //   49	13	2	localTimer	Timer
+    //   74	4	2	localThrowable	Throwable
+    //   84	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   19	71	74	java/lang/Throwable
+    //   2	7	84	finally
+    //   14	19	84	finally
+    //   19	71	84	finally
+    //   75	81	84	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.cz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,58 @@
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 class avxk
-  implements avzm
+  implements ImageAssetDelegate
 {
-  avxk(avxj paramavxj, int[] paramArrayOfInt) {}
+  avxk(avxj paramavxj) {}
   
-  public void a()
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
-  }
-  
-  public void a(String arg1)
-  {
-    vei.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
-    synchronized (avxj.a(this.jdField_a_of_type_Avxj))
+    Object localObject = (ImageView)PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable).get();
+    int i;
+    int j;
+    if (localObject != null)
     {
-      avxj.a(this.jdField_a_of_type_Avxj, true);
-      avxj.a(this.jdField_a_of_type_Avxj).notifyAll();
-      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
-      return;
-    }
-  }
-  
-  public void a_(int paramInt, Throwable arg2)
-  {
-    String str;
-    if (??? != null) {
-      str = ???.getMessage();
+      paramLottieImageAsset = paramLottieImageAsset.getFileName();
+      i = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
+      j = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
+      localObject = this.a.jdField_a_of_type_JavaLangString + "entry_images" + File.separator + paramLottieImageAsset;
     }
     for (;;)
     {
-      vei.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
-      ved.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
-      avxj.a(this.jdField_a_of_type_Avxj, paramInt);
-      synchronized (avxj.a(this.jdField_a_of_type_Avxj))
+      try
       {
-        avxj.a(this.jdField_a_of_type_Avxj, true);
-        avxj.a(this.jdField_a_of_type_Avxj).notifyAll();
-        return;
-        str = "UNKNOWN ERROR";
+        paramLottieImageAsset = msp.a((String)localObject, i, j);
+        localObject = paramLottieImageAsset;
+        if (paramLottieImageAsset == null) {
+          localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
+        }
+        return localObject;
       }
+      catch (Exception paramLottieImageAsset)
+      {
+        if (AudioHelper.e()) {
+          QLog.w(PromotionEntry.jdField_a_of_type_JavaLangString, 1, "UpdateOperateBtnStatusRunnable Exception, imagePath[" + (String)localObject + "]", paramLottieImageAsset);
+        }
+      }
+      paramLottieImageAsset = null;
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avxk
  * JD-Core Version:    0.7.0.1
  */

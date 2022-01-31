@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class arzg
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  arzg(arzc paramarzc, View.OnClickListener paramOnClickListener) {}
+  arzg(arzf paramarzf, bdfq parambdfq) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
-    this.jdField_a_of_type_Arzc.b();
+    this.jdField_a_of_type_Bdfq.dismiss();
+    this.jdField_a_of_type_Arzf.a.setResult(-1);
+    this.jdField_a_of_type_Arzf.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arzg
  * JD-Core Version:    0.7.0.1
  */

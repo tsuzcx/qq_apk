@@ -1,37 +1,21 @@
-import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class asit
+public class asit
+  extends abor
 {
-  public asiw a;
-  public MiniAppActivity a;
-  
-  public asit(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  public asit(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager, aboq paramaboq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = paramMiniAppActivity;
-  }
-  
-  public abstract void a();
-  
-  public void a(asiw paramasiw)
-  {
-    this.jdField_a_of_type_Asiw = paramasiw;
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.jdField_a_of_type_Asiw = paramasiw;
+    super(paramQQAppInterface, paramProxyManager, paramaboq);
+    if (QLog.isColorLevel()) {
+      QLog.d("TinyIdMsgProxy", 2, "TinyIdMsgProxy() called with: _app = [" + paramQQAppInterface + "], pm = [" + paramProxyManager + "], msgPool = [" + paramaboq + "]");
     }
-  }
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asit
  * JD-Core Version:    0.7.0.1
  */

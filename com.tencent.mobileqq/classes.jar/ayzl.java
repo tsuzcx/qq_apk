@@ -1,33 +1,20 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
 
-public class ayzl
-  extends ayzr
+class ayzl
+  implements SDKInitListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<ayuq> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
+  ayzl(ayzk paramayzk) {}
   
-  public ayzl()
+  public void onSDKInited(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" fileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    ayzk.a(this.a);
+    BaseShortVideoOprerator.a(this.a.a.a, ayzk.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayzl
  * JD-Core Version:    0.7.0.1
  */

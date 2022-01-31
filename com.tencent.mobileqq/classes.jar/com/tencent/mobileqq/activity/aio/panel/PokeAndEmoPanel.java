@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.panel;
 
-import actj;
-import adwj;
-import ajya;
+import aekt;
+import afsw;
+import alpo;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.StateListDrawable;
@@ -58,7 +58,7 @@ public class PokeAndEmoPanel
   public ImageView a(int paramInt1, int paramInt2, String paramString)
   {
     ImageButton localImageButton = new ImageButton(getContext());
-    localImageButton.setLayoutParams(new LinearLayout.LayoutParams(actj.a(50.0F, getResources()), -1));
+    localImageButton.setLayoutParams(new LinearLayout.LayoutParams(aekt.a(50.0F, getResources()), -1));
     localImageButton.setId(paramInt1);
     localImageButton.setImageResource(paramInt2);
     StateListDrawable localStateListDrawable = new StateListDrawable();
@@ -84,30 +84,30 @@ public class PokeAndEmoPanel
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131371339));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131371655));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376834));
-    this.jdField_b_of_type_AndroidViewView = a(2131376818, 2130838015, getContext().getString(2131698505));
-    this.jdField_a_of_type_AndroidViewView = a(2131376817, 2130838016, getContext().getString(2131698504));
-    if (AppSetting.d)
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377348));
+    this.jdField_b_of_type_AndroidViewView = a(2131377331, 2130838071, getContext().getString(2131698800));
+    this.jdField_a_of_type_AndroidViewView = a(2131377330, 2130838072, getContext().getString(2131698799));
+    if (AppSetting.c)
     {
-      this.jdField_b_of_type_AndroidViewView.setContentDescription(ajya.a(2131708329));
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(ajya.a(2131708330));
+      this.jdField_b_of_type_AndroidViewView.setContentDescription(alpo.a(2131708701));
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(alpo.a(2131708702));
     }
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel = ((PokePanel)View.inflate(getContext(), 2131558569, null));
-    String str = adwj.a(paramBaseChatPie.a());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel = ((PokePanel)View.inflate(getContext(), 2131558600, null));
+    String str = afsw.a(paramBaseChatPie.a());
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a(paramBaseChatPie, paramSessionInfo, str);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a(str);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel = new PEPanel(getContext());
-    str = adwj.a(paramBaseChatPie.a(), 8);
+    str = afsw.a(paramBaseChatPie.a(), 8);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a(paramBaseChatPie, paramSessionInfo);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a(str);
     paramSessionInfo = new ArrayList();
-    int i = adwj.b(paramBaseChatPie.a(), 4);
-    int j = adwj.b(paramBaseChatPie.a(), 11);
-    if ((i == 1) && (adwj.b))
+    int i = afsw.b(paramBaseChatPie.a(), 4);
+    int j = afsw.b(paramBaseChatPie.a(), 11);
+    if ((i == 1) && (afsw.b))
     {
       this.jdField_a_of_type_Int = 1;
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidViewView);
@@ -127,7 +127,7 @@ public class PokeAndEmoPanel
       if (paramSessionInfo.size() <= 1) {
         break label587;
       }
-      this.jdField_b_of_type_Int = adwj.jdField_a_of_type_Int;
+      this.jdField_b_of_type_Int = afsw.jdField_a_of_type_Int;
       if (this.jdField_b_of_type_Int == -1) {
         this.jdField_b_of_type_Int = ((this.jdField_a_of_type_Int + 1) % 2);
       }
@@ -149,7 +149,7 @@ public class PokeAndEmoPanel
       paramSessionInfo.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel);
       this.jdField_a_of_type_AndroidViewView.setSelected(true);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);
-      if ((j != 1) && (adwj.b)) {
+      if ((j != 1) && (afsw.b)) {
         break;
       }
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
@@ -169,7 +169,7 @@ public class PokeAndEmoPanel
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.b();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.b();
-    adwj.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    afsw.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
   }
   
   public void c()
@@ -190,7 +190,7 @@ public class PokeAndEmoPanel
     {
     default: 
       return;
-    case 2131376817: 
+    case 2131377330: 
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.jdField_a_of_type_Int, true);
       paramView.setSelected(true);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);
@@ -222,7 +222,7 @@ public class PokeAndEmoPanel
     for (;;)
     {
       this.jdField_b_of_type_Int = paramInt;
-      adwj.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+      afsw.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
       return;
       this.jdField_b_of_type_AndroidViewView.setSelected(true);
       this.jdField_a_of_type_AndroidViewView.setSelected(false);
@@ -235,7 +235,7 @@ public class PokeAndEmoPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PokeAndEmoPanel
  * JD-Core Version:    0.7.0.1
  */

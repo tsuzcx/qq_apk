@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public final class ahzl
-  implements Parcelable.Creator<WordingItem>
+class ahzl
+  implements View.OnClickListener
 {
-  public WordingItem a(Parcel paramParcel)
-  {
-    return new WordingItem(paramParcel);
-  }
+  ahzl(ahzk paramahzk, ahzn paramahzn) {}
   
-  public WordingItem[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new WordingItem[paramInt];
+    paramView = String.valueOf(this.jdField_a_of_type_Ahzn.a.getText());
+    ahzk.a(this.jdField_a_of_type_Ahzk, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzl
  * JD-Core Version:    0.7.0.1
  */

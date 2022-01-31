@@ -8,6 +8,8 @@ import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForCanvas;
+import java.lang.ref.WeakReference;
 import java.nio.charset.Charset;
 import org.json.JSONObject;
 
@@ -21,6 +23,18 @@ public enum AdSettingsUtil
   private volatile long loadSettingsTimeMillis = -2147483648L;
   
   private AdSettingsUtil() {}
+  
+  public static int getQueueLength(WeakReference<Context> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {
+      return -2147483648;
+    }
+    paramWeakReference = INSTANCE.getSettingsCache((Context)paramWeakReference.get());
+    if (paramWeakReference != null) {
+      return paramWeakReference.settingsForCanvas.queueLength;
+    }
+    return -2147483648;
+  }
   
   private static boolean isValid(gdt_settings.Settings paramSettings)
   {
@@ -128,7 +142,7 @@ public enum AdSettingsUtil
       return;
       i = 1800000;
       break;
-      str = "https://i.gtimg.cn/ams-web/public/tangram-report/settings-android-qq-8-2-8.json";
+      str = "https://i.gtimg.cn/ams-web/public/tangram-report/settings-android-qq-8-3-3.json";
       break label30;
       try
       {

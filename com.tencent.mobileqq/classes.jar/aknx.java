@@ -1,423 +1,254 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.data.ApolloDress.1;
+import com.tencent.mobileqq.apollo.data.ApolloDress.2;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.icebreaking.IceBreakingUtil.1;
-import com.tencent.mobileqq.app.icebreaking.IceBreakingUtil.2;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aknx
+  implements Cloneable
 {
-  static int[] a = { -1034, -2062, -2060, -2015, -2065, -2061, -5040, -5021, -2050, -2018, -2023, -2074 };
-  static int[] b = { 0, 1000, 1004, 1020, 1006, 1001, 1003, 1021, 1022 };
+  public static final Map<String, Integer> a;
+  public static final String[] a;
+  public int a;
+  public long a;
+  public String a;
+  public HashMap<Integer, akny> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  private static String a()
+  static
   {
-    StringBuilder localStringBuilder = new StringBuilder(a.length * 8);
-    localStringBuilder.append("msgtype not in (");
-    int i = 0;
-    if (i < a.length)
+    jdField_a_of_type_JavaUtilMap = new ApolloDress.1();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { alpo.a(2131700705), alpo.a(2131700702), alpo.a(2131700698), alpo.a(2131700704), alpo.a(2131700703), alpo.a(2131700699), alpo.a(2131700701) };
+  }
+  
+  public static aknx a(String paramString)
+  {
+    boolean bool = true;
+    aknx localaknx = new aknx();
+    for (;;)
     {
-      localStringBuilder.append(a[i]);
-      if (i == a.length - 1) {
-        localStringBuilder.append(")");
-      }
-      for (;;)
+      try
       {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        Object localObject1 = localJSONObject.getJSONObject("role");
+        localaknx.jdField_a_of_type_Int = ((JSONObject)localObject1).getInt("id");
+        if (((JSONObject)localObject1).optInt("aiFlag", 0) == 1)
+        {
+          localaknx.jdField_a_of_type_Boolean = bool;
+          localaknx.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("ts");
+          localaknx.c = ((JSONObject)localObject1).optInt("feeType");
+          localaknx.d = ((JSONObject)localObject1).optInt("tag");
+          localaknx.b = localJSONObject.optInt("sex");
+          localaknx.e = localJSONObject.optInt("belongCombId");
+          localaknx.f = localJSONObject.optInt("combIsCollected");
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloDress", 2, "parseApolloDress data:" + paramString);
+          }
+          paramString = localJSONObject.getJSONArray("dresslist");
+          int i = 0;
+          if (i < paramString.length())
+          {
+            Object localObject2 = paramString.getJSONObject(i);
+            localObject1 = new akny();
+            ((akny)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("id");
+            ((akny)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("ts");
+            ((akny)localObject1).b = ((JSONObject)localObject2).optInt("feeType");
+            ((akny)localObject1).c = ((JSONObject)localObject2).optInt("tag");
+            ((akny)localObject1).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+            localObject2 = ((JSONObject)localObject2).getJSONArray("parts");
+            int j = 0;
+            if (j < ((JSONArray)localObject2).length())
+            {
+              ((akny)localObject1).jdField_a_of_type_JavaUtilArrayList.add(((JSONArray)localObject2).getString(j));
+              j += 1;
+              continue;
+            }
+            if (localaknx.jdField_a_of_type_JavaUtilHashMap == null) {
+              localaknx.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+            }
+            localaknx.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((akny)localObject1).jdField_a_of_type_Int), localObject1);
+            i += 1;
+            continue;
+          }
+          if ((localaknx.jdField_a_of_type_JavaUtilHashMap == null) || (localaknx.jdField_a_of_type_JavaUtilHashMap.size() < 7))
+          {
+            QLog.e("ApolloDress", 2, "parseApolloDress role dress do not complete :" + localJSONObject.toString());
+            if (QLog.isColorLevel())
+            {
+              i = localaknx.jdField_a_of_type_Int;
+              ThreadManager.getUIHandler().post(new ApolloDress.2(i));
+            }
+          }
+          return localaknx;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ApolloDress", 2, "parseApolloDress failed", paramString);
+        }
+        return null;
+      }
+      bool = false;
+    }
+  }
+  
+  public static aknx a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    while ((!paramJSONObject.has("role")) || (!paramJSONObject.has("dresslist"))) {
+      return null;
+    }
+    aknx localaknx = new aknx();
+    localaknx.b = paramJSONObject.optInt("sex");
+    Object localObject1 = paramJSONObject.optJSONObject("role");
+    if (localObject1 != null)
+    {
+      localaknx.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("id");
+      localaknx.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("ts");
+    }
+    localObject1 = paramJSONObject.optJSONArray("dresslist");
+    if (localObject1 != null)
+    {
+      int i = 0;
+      while (i < ((JSONArray)localObject1).length())
+      {
+        Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+        akny localakny = new akny();
+        localakny.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id");
+        localakny.jdField_a_of_type_Long = ((JSONObject)localObject2).optLong("ts");
+        localakny.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        localObject2 = ((JSONObject)localObject2).optJSONArray("parts");
+        int j = 0;
+        while ((localObject2 != null) && (j < ((JSONArray)localObject2).length()))
+        {
+          localakny.jdField_a_of_type_JavaUtilArrayList.add(((JSONArray)localObject2).optString(j));
+          j += 1;
+        }
+        if (localaknx.jdField_a_of_type_JavaUtilHashMap == null) {
+          localaknx.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        }
+        localaknx.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localakny.jdField_a_of_type_Int), localakny);
         i += 1;
-        break;
-        localStringBuilder.append(",");
+      }
+    }
+    localaknx.jdField_a_of_type_JavaLangString = paramJSONObject.optString("faceData");
+    return localaknx;
+  }
+  
+  public static aknx b(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).optJSONArray("petList");
+      if ((paramString != null) && (paramString.length() > 0))
+      {
+        paramString = a(paramString.getJSONObject(0).toString());
+        return paramString;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ApolloPet", 2, "parseApolloPetDress failed", paramString);
+      }
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_Int + "|");
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      Iterator localIterator = new TreeSet(this.jdField_a_of_type_JavaUtilHashMap.keySet()).iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(localIterator.next()).append("|");
       }
     }
     return localStringBuilder.toString();
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public int[] a()
   {
-    paramQQAppInterface = (aknu)paramQQAppInterface.getManager(285);
-    boolean bool = paramQQAppInterface.d(paramString);
-    if ((paramQQAppInterface.e(paramString)) && (QLog.isColorLevel())) {
-      QLog.i("IceBreak.IceBreakingUtil", 2, String.format(Locale.getDefault(), "clearIceBreakingFlag onDelFrd uin: %s %b", new Object[] { paramString, Boolean.valueOf(bool) }));
+    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.keySet().size() == 0)) {
+      return akzg.a(this.jdField_a_of_type_Int);
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, MessageForPoke paramMessageForPoke)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)) || (paramMessageForPoke == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.IceBreakingUtil", 2, "addBreakingIceGrayMsgTwo invalidate params uin: " + paramString);
-      }
-    }
-    long l;
-    do
-    {
-      do
-      {
-        return;
-        localObject = ((ajxl)paramQQAppInterface.getManager(51)).b(paramString);
-        if (localObject != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("IceBreak.IceBreakingUtil", 2, "addBreakingIceGrayMsgTwo friends is null,  uin: " + paramString);
-      return;
-      l = paramMessageForPoke.time;
-      Object localObject = String.format(Locale.getDefault(), ajya.a(2131705699), new Object[] { ((Friends)localObject).getFriendNickWithAlias() });
-      paramMessageForPoke = new aqvb(paramString, paramQQAppInterface.c(), (String)localObject, paramInt, -5040, 655379, l);
-      paramMessageForPoke.c = ((String)localObject);
-      localObject = new MessageForUniteGrayTip();
-      ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramMessageForPoke);
-      ((MessageForUniteGrayTip)localObject).isread = true;
-      ((MessageForUniteGrayTip)localObject).issend = 1;
-      aqvc.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
-      axqy.b(paramQQAppInterface, "dc00898", "", "", "0X8009891", "0X8009891", 0, 0, "", "", "", "");
-    } while (!QLog.isColorLevel());
-    QLog.i("IceBreak.IceBreakingUtil", 2, String.format(Locale.getDefault(), "addBreakingIceGrayMsgTwo [uin: %s, uinType: %s, time: %s]", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(l) }));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, MessageRecord paramMessageRecord)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)) || (paramMessageRecord == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.IceBreakingUtil", 2, "clearIceBreakingFlag invalidate params uin: " + paramString);
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramString.length() < 5) || (axau.a(paramMessageRecord.msgtype)) || (akpx.i(paramMessageRecord.msgtype)) || (a(paramMessageRecord.msgtype)));
-        paramQQAppInterface = (aknu)paramQQAppInterface.getManager(285);
-        if (paramInt == 1)
-        {
-          paramQQAppInterface.f(paramString);
-          return;
-        }
-      } while (!paramQQAppInterface.e(paramString));
-      paramQQAppInterface.d(paramString);
-    } while (!QLog.isColorLevel());
-    QLog.i("IceBreak.IceBreakingUtil", 2, String.format(Locale.getDefault(), "clearIceBreakingFlag uin: %s msgtype: %s", new Object[] { paramString, Integer.valueOf(paramMessageRecord.msgtype) }));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt1, int paramInt2)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.IceBreakingUtil", 2, "onAddFrdSuc invalidate params uin: " + paramString);
-      }
-    }
-    ajxl localajxl;
-    Object localObject;
-    Friends localFriends;
-    do
-    {
-      return;
-      localajxl = (ajxl)paramQQAppInterface.getManager(51);
-      localObject = (aknu)paramQQAppInterface.getManager(285);
-      localFriends = localajxl.b(paramString);
-    } while ((localFriends == null) || (!localFriends.isFriend()));
-    if (aexb.a(paramQQAppInterface).b()) {
-      if (((aknu)localObject).a(true))
-      {
-        if (!((aknu)localObject).c(paramString)) {
-          break label227;
-        }
-        ((aknu)localObject).a(paramString);
-        if (QLog.isColorLevel()) {
-          QLog.i("IceBreak.IceBreakingUtil", 2, "has matchChat show. uin: " + paramString);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("IceBreak.IceBreakingUtil", 2, "onAddFrdSuc uin: " + paramString);
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject = localajxl.a(paramString, true);
-      paramQQAppInterface = (QQAppInterface)localObject;
-      if (localObject == null)
-      {
-        paramQQAppInterface = new ExtensionInfo();
-        paramQQAppInterface.uin = paramString;
-      }
-      paramQQAppInterface.makeFrdsTs = System.currentTimeMillis();
-      localajxl.a(paramQQAppInterface);
-      return;
-      label227:
-      ((aknu)localObject).a(paramString, true);
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.IceBreakingUtil", 2, "onAddFrdSuc emotionRec switch is off");
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean, int paramInt)
-  {
-    ThreadManager.post(new IceBreakingUtil.1(paramInt, paramQQAppInterface, paramString, paramBoolean), 5, null, true);
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool2 = false;
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet();
+    int[] arrayOfInt = new int[((Set)localObject).size()];
+    localObject = ((Set)localObject).iterator();
     int i = 0;
-    for (;;)
+    while (((Iterator)localObject).hasNext())
     {
-      boolean bool1 = bool2;
-      if (i < a.length)
-      {
-        if (paramInt == a[i]) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
+      arrayOfInt[i] = ((Integer)((Iterator)localObject).next()).intValue();
       i += 1;
     }
+    return arrayOfInt;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  protected Object clone()
   {
-    if (((b(paramInt)) || (c(paramInt)) || (d(paramInt))) && (!bbbr.b(paramString)) && (!bail.b(paramQQAppInterface, paramString))) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject = null;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("IceBreak.IceBreakingUtil", 2, String.format("canShowIceBreak, type: %s, uin: %s, canShow: %s", new Object[] { Integer.valueOf(paramInt), paramString, Boolean.valueOf(bool) }));
-      }
-      return bool;
+      aknx localaknx = (aknx)super.clone();
+      localObject = localaknx;
     }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt, MessageRecord paramMessageRecord)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)) || (paramMessageRecord == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.IceBreakingUtil", 2, "checkAndAddGrayTip invalidate params uin: " + paramString);
-      }
-    }
-    do
+    catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      do
+      for (;;)
       {
-        return;
-      } while ((paramMessageRecord.msgtype != -5012) || (!(paramMessageRecord instanceof MessageForPoke)) || ((((MessageForPoke)paramMessageRecord).flag & 0x8) == 0));
-      MessageForPoke localMessageForPoke = (MessageForPoke)paramMessageRecord;
-      if (!paramMessageRecord.isSend()) {
-        ThreadManager.excute(new IceBreakingUtil.2(paramQQAppInterface, paramString, paramInt, localMessageForPoke), 16, null, false);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("IceBreak.IceBreakingUtil", 2, String.format(Locale.getDefault(), "checkAndAddGrayTip send: %s, time: %s", new Object[] { Integer.valueOf(paramMessageRecord.issend), Long.valueOf(paramMessageRecord.time) }));
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)) || (paramString.length() < 5)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.IceBreakingUtil", 2, "checkNeedShowIceBreak invalidate params uin: " + paramString);
+        localCloneNotSupportedException.printStackTrace();
       }
     }
-    label549:
-    label699:
-    label751:
-    for (;;)
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      localObject.jdField_a_of_type_JavaUtilHashMap = ((HashMap)this.jdField_a_of_type_JavaUtilHashMap.clone());
+    }
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ApolloDress{");
+    localStringBuffer.append("roleId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mRoleGender=").append(this.b);
+    localStringBuffer.append(", roleTimeStamp=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", feeType=").append(this.c);
+    localStringBuffer.append(", tag=").append(this.d);
+    localStringBuffer.append(", isAIRole=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(", belongCombId=").append(this.e);
+    localStringBuffer.append(", combIsCollected=").append(this.f);
+    localStringBuffer.append(", faceData='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.IceBreakingUtil", 2, String.format("checkNeedShowIceBreak uin=%s forceLocal=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+      Object localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet();
+      localStringBuffer.append(",ids [");
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localStringBuffer.append((Integer)((Iterator)localObject).next()).append(",");
       }
-      if (!aexb.a(paramQQAppInterface).b())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("IceBreak.IceBreakingUtil", 2, "checkNeedShowIceBreak emotionRec switch is off");
-        }
-      }
-      else
-      {
-        aknu localaknu = (aknu)paramQQAppInterface.getManager(285);
-        if (!localaknu.a(false))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("IceBreak.IceBreakingUtil", 2, "checkNeedShowIceBreak switch is off");
-          }
-        }
-        else
-        {
-          if (localaknu.a(paramString))
-          {
-            QLog.i("IceBreak.IceBreakingUtil", 2, "checkNeedShowIceBreak entered c2c");
-            return;
-          }
-          ajxl localajxl = (ajxl)paramQQAppInterface.getManager(51);
-          Object localObject1 = localajxl.b(paramString);
-          if ((localObject1 == null) || (!((Friends)localObject1).isFriend()))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("IceBreak.IceBreakingUtil", 2, "checkNeedShowIceBreak not friend");
-            }
-          }
-          else if (localaknu.e(paramString))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("IceBreak.IceBreakingUtil", 2, "checkNeedShowIceBreak already in break list");
-            }
-          }
-          else
-          {
-            float f = localaknu.a();
-            Object localObject2 = localajxl.a(paramString, true);
-            if ((localObject2 != null) && (((ExtensionInfo)localObject2).makeFrdsTs > 0L) && ((float)(System.currentTimeMillis() - ((ExtensionInfo)localObject2).makeFrdsTs) < 86400000.0F * f))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("IceBreak.IceBreakingUtil", 2, String.format("checkNeedShowIceBreak new make friends duration=%d nDay=%.3f", new Object[] { Long.valueOf(System.currentTimeMillis() - ((ExtensionInfo)localObject2).makeFrdsTs), Float.valueOf(f) }));
-              }
-            }
-            else
-            {
-              int i = 0;
-              localObject1 = localObject2;
-              if (localObject2 == null)
-              {
-                localObject1 = new ExtensionInfo();
-                ((ExtensionInfo)localObject1).uin = paramString;
-                i = 1;
-              }
-              long l2 = NetConnInfoCenter.getServerTimeMillis();
-              if ((float)Math.abs(l2 - ((ExtensionInfo)localObject1).lastIceBreakChatTs) < 86400000.0F * f)
-              {
-                if (i != 0) {
-                  localajxl.a((ExtensionInfo)localObject1);
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.i("IceBreak.IceBreakingUtil", 2, String.format("checkNeedShowIceBreak lastChatTs within nDays=%.3f", new Object[] { Float.valueOf(f) }));
-                }
-              }
-              else
-              {
-                localObject2 = paramQQAppInterface.a().b(paramString, 0, a());
-                if (localObject2 == null) {}
-                for (long l1 = 0L;; l1 = ((MessageRecord)localObject2).time * 1000L)
-                {
-                  if (l1 > ((ExtensionInfo)localObject1).lastIceBreakChatTs)
-                  {
-                    ((ExtensionInfo)localObject1).lastIceBreakChatTs = l1;
-                    i = 1;
-                  }
-                  if ((float)Math.abs(l2 - l1) >= 86400000.0F * f) {
-                    break label549;
-                  }
-                  if (i != 0) {
-                    localajxl.a((ExtensionInfo)localObject1);
-                  }
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.i("IceBreak.IceBreakingUtil", 2, String.format("checkNeedShowIceBreak last msg within nDays=%.3f", new Object[] { Float.valueOf(f) }));
-                  return;
-                }
-                l1 = SystemClock.elapsedRealtime();
-                boolean bool;
-                int j;
-                if ((!paramBoolean) && ((((ExtensionInfo)localObject1).lastIceBreakCheckTs == 0L) || (Math.abs(((ExtensionInfo)localObject1).lastIceBreakCheckTs - l1) > 86400000L)))
-                {
-                  bool = true;
-                  if (QLog.isColorLevel()) {
-                    QLog.i("IceBreak.IceBreakingUtil", 2, String.format("checkNeedShowIceBreak reqServer=%b lastCheckTs=%d nDays=%.3f", new Object[] { Boolean.valueOf(bool), Long.valueOf(((ExtensionInfo)localObject1).lastIceBreakCheckTs), Float.valueOf(f) }));
-                  }
-                  if (!bool) {
-                    break label699;
-                  }
-                  j = i;
-                  if (AppNetConnInfo.isNetSupport())
-                  {
-                    ((ExtensionInfo)localObject1).lastIceBreakCheckTs = l1;
-                    j = 1;
-                    ((FriendListHandler)paramQQAppInterface.a(1)).b(paramString, (int)Math.ceil(f));
-                  }
-                }
-                for (;;)
-                {
-                  if (j == 0) {
-                    break label751;
-                  }
-                  localajxl.a((ExtensionInfo)localObject1);
-                  return;
-                  bool = false;
-                  break;
-                  j = i;
-                  if (paramBoolean)
-                  {
-                    if (QLog.isColorLevel()) {
-                      QLog.i("IceBreak.IceBreakingUtil", 2, "checkNeedShowIceBreak add_to_breaklist on forceLocal " + paramString);
-                    }
-                    localaknu.a(paramString, false);
-                    j = i;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      localStringBuffer.append("]");
     }
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    boolean bool2 = false;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < b.length)
-      {
-        if (paramInt == b[i]) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return paramInt == 1;
-  }
-  
-  private static void d(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    ((aknu)paramQQAppInterface.getManager(285)).h(paramString);
-  }
-  
-  public static boolean d(int paramInt)
-  {
-    return arqp.b(paramInt);
-  }
-  
-  private static void e(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    ((aknu)paramQQAppInterface.getManager(285)).i(paramString);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknx
  * JD-Core Version:    0.7.0.1
  */

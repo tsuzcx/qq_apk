@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi;
 
-import ajya;
+import alpo;
 import java.util.HashMap;
 
 public class PluginConst$AdConst
@@ -23,7 +23,7 @@ public class PluginConst$AdConst
   public static final String ERROR_MSG_NO_AD;
   public static final String ERROR_MSG_PARAM_ERROR;
   public static final String ERROR_MSG_REJECTED;
-  public static final String ERROR_MSG_SERVICE_FAIL = ajya.a(2131708268);
+  public static final String ERROR_MSG_SERVICE_FAIL = alpo.a(2131708640);
   public static final int KErrAdDeleted = -100100002;
   public static final int KErrAdGdtNoData = -100100008;
   public static final int KErrAdNotFound = -100100007;
@@ -35,14 +35,14 @@ public class PluginConst$AdConst
   
   static
   {
-    ERROR_MSG_PARAM_ERROR = ajya.a(2131708274);
-    ERROR_MSG_INVALID_ADUNITID = ajya.a(2131708272);
-    ERROR_MSG_INNER_ERROR = ajya.a(2131708275);
-    ERROR_MSG_NO_AD = ajya.a(2131708271);
-    ERROR_MSG_IN_REVIEW = ajya.a(2131708269);
-    ERROR_MSG_REJECTED = ajya.a(2131708270);
-    ERROR_MSG_BANNED = ajya.a(2131708273);
-    ERROR_MSG_CLOSED = ajya.a(2131708267);
+    ERROR_MSG_PARAM_ERROR = alpo.a(2131708646);
+    ERROR_MSG_INVALID_ADUNITID = alpo.a(2131708644);
+    ERROR_MSG_INNER_ERROR = alpo.a(2131708647);
+    ERROR_MSG_NO_AD = alpo.a(2131708643);
+    ERROR_MSG_IN_REVIEW = alpo.a(2131708641);
+    ERROR_MSG_REJECTED = alpo.a(2131708642);
+    ERROR_MSG_BANNED = alpo.a(2131708645);
+    ERROR_MSG_CLOSED = alpo.a(2131708639);
   }
   
   public static int getRetCodeByServerResult(int paramInt)
@@ -70,7 +70,7 @@ public class PluginConst$AdConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst
  * JD-Core Version:    0.7.0.1
  */

@@ -82,684 +82,700 @@ final class RegionBitmap$WorkHandler
     //   115: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   118: ifeq +16 -> 134
     //   121: aload 9
-    //   123: ifnonnull +1305 -> 1428
+    //   123: ifnonnull +12 -> 135
     //   126: ldc 113
     //   128: iconst_2
     //   129: ldc 115
     //   131: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   134: return
-    //   135: astore 9
-    //   137: aload_2
-    //   138: aconst_null
-    //   139: putfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
-    //   142: new 121	java/lang/StringBuilder
-    //   145: dup
-    //   146: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   149: astore 10
-    //   151: aload 10
-    //   153: new 121	java/lang/StringBuilder
-    //   156: dup
-    //   157: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   160: aload_0
-    //   161: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
-    //   164: invokestatic 72	com/tencent/image/RegionBitmap:access$000	(Lcom/tencent/image/RegionBitmap;)Landroid/graphics/BitmapRegionDecoder;
-    //   167: invokevirtual 126	android/graphics/BitmapRegionDecoder:getWidth	()I
-    //   170: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   173: ldc 132
-    //   175: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: aload_0
-    //   179: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
-    //   182: invokestatic 72	com/tencent/image/RegionBitmap:access$000	(Lcom/tencent/image/RegionBitmap;)Landroid/graphics/BitmapRegionDecoder;
-    //   185: invokevirtual 138	android/graphics/BitmapRegionDecoder:getHeight	()I
-    //   188: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   191: ldc 140
-    //   193: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   199: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: pop
-    //   203: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   206: ifeq +16 -> 222
-    //   209: ldc 113
-    //   211: iconst_1
-    //   212: aload 10
-    //   214: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   217: aload 9
-    //   219: invokestatic 148	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   222: aload_2
-    //   223: getfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
-    //   226: astore 9
-    //   228: aload_2
-    //   229: aload_1
-    //   230: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   233: putfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
-    //   236: aload 9
-    //   238: ifnull +35 -> 273
-    //   241: aload 9
-    //   243: invokevirtual 91	android/graphics/Bitmap:isRecycled	()Z
-    //   246: ifne +27 -> 273
-    //   249: aload_0
-    //   250: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
-    //   253: invokestatic 95	com/tencent/image/RegionBitmap:access$200	(Lcom/tencent/image/RegionBitmap;)Ljava/lang/ref/WeakReference;
-    //   256: invokevirtual 101	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   259: checkcast 103	com/tencent/image/RegionBitmap$OnUpdateCallback
-    //   262: astore_1
-    //   263: aload_1
-    //   264: ifnull +9 -> 273
-    //   267: aload_1
-    //   268: invokeinterface 106 1 0
-    //   273: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   276: ifeq -142 -> 134
-    //   279: aload 9
-    //   281: ifnonnull +593 -> 874
-    //   284: goto -158 -> 126
-    //   287: astore 9
-    //   289: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   292: ifeq +31 -> 323
-    //   295: ldc 113
-    //   297: iconst_2
-    //   298: new 121	java/lang/StringBuilder
-    //   301: dup
-    //   302: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   305: ldc 150
-    //   307: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   310: aload_1
-    //   311: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   314: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   317: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   320: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   323: invokestatic 155	java/lang/System:gc	()V
-    //   326: aload_1
-    //   327: aload_1
-    //   328: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   331: iconst_1
-    //   332: ishl
-    //   333: putfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   336: aload_2
-    //   337: aload_0
-    //   338: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
-    //   341: invokestatic 72	com/tencent/image/RegionBitmap:access$000	(Lcom/tencent/image/RegionBitmap;)Landroid/graphics/BitmapRegionDecoder;
-    //   344: aload 8
-    //   346: aload_1
-    //   347: invokevirtual 78	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   350: putfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
-    //   353: aload_2
-    //   354: getfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
-    //   357: astore 9
-    //   359: aload_2
-    //   360: aload_1
-    //   361: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   364: putfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
-    //   367: aload 9
-    //   369: ifnull +35 -> 404
-    //   372: aload 9
-    //   374: invokevirtual 91	android/graphics/Bitmap:isRecycled	()Z
-    //   377: ifne +27 -> 404
-    //   380: aload_0
-    //   381: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
-    //   384: invokestatic 95	com/tencent/image/RegionBitmap:access$200	(Lcom/tencent/image/RegionBitmap;)Ljava/lang/ref/WeakReference;
-    //   387: invokevirtual 101	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   390: checkcast 103	com/tencent/image/RegionBitmap$OnUpdateCallback
-    //   393: astore_1
-    //   394: aload_1
-    //   395: ifnull +9 -> 404
-    //   398: aload_1
-    //   399: invokeinterface 106 1 0
-    //   404: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   407: ifeq -273 -> 134
-    //   410: aload 9
-    //   412: ifnonnull +650 -> 1062
-    //   415: goto -289 -> 126
-    //   418: astore 9
-    //   420: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   423: ifeq -70 -> 353
-    //   426: ldc 113
-    //   428: iconst_1
-    //   429: new 121	java/lang/StringBuilder
-    //   432: dup
-    //   433: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   436: ldc 157
-    //   438: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   441: aload_1
-    //   442: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   445: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   448: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   451: aload 9
-    //   453: invokestatic 148	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   456: goto -103 -> 353
-    //   459: astore 9
-    //   461: aload_2
-    //   462: getfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
-    //   465: astore 10
-    //   467: aload_2
-    //   468: aload_1
-    //   469: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   472: putfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
-    //   475: aload 10
-    //   477: ifnull +35 -> 512
-    //   480: aload 10
-    //   482: invokevirtual 91	android/graphics/Bitmap:isRecycled	()Z
-    //   485: ifne +27 -> 512
-    //   488: aload_0
-    //   489: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
-    //   492: invokestatic 95	com/tencent/image/RegionBitmap:access$200	(Lcom/tencent/image/RegionBitmap;)Ljava/lang/ref/WeakReference;
-    //   495: invokevirtual 101	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   498: checkcast 103	com/tencent/image/RegionBitmap$OnUpdateCallback
-    //   501: astore_1
-    //   502: aload_1
-    //   503: ifnull +9 -> 512
-    //   506: aload_1
-    //   507: invokeinterface 106 1 0
-    //   512: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   515: ifeq +16 -> 531
-    //   518: aload 10
-    //   520: ifnonnull +166 -> 686
-    //   523: ldc 113
-    //   525: iconst_2
-    //   526: ldc 115
-    //   528: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   531: aload 9
-    //   533: athrow
-    //   534: astore 9
-    //   536: aload_2
-    //   537: aconst_null
-    //   538: putfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
-    //   541: new 121	java/lang/StringBuilder
-    //   544: dup
-    //   545: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   548: astore 10
-    //   550: aload 10
-    //   552: new 121	java/lang/StringBuilder
-    //   555: dup
-    //   556: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   559: aload_0
-    //   560: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
-    //   563: invokestatic 72	com/tencent/image/RegionBitmap:access$000	(Lcom/tencent/image/RegionBitmap;)Landroid/graphics/BitmapRegionDecoder;
-    //   566: invokevirtual 126	android/graphics/BitmapRegionDecoder:getWidth	()I
-    //   569: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   572: ldc 132
-    //   574: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   577: aload_0
-    //   578: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
-    //   581: invokestatic 72	com/tencent/image/RegionBitmap:access$000	(Lcom/tencent/image/RegionBitmap;)Landroid/graphics/BitmapRegionDecoder;
-    //   584: invokevirtual 138	android/graphics/BitmapRegionDecoder:getHeight	()I
-    //   587: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   590: ldc 140
-    //   592: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   595: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   598: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   601: pop
-    //   602: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   605: ifeq +16 -> 621
-    //   608: ldc 113
-    //   610: iconst_1
-    //   611: aload 10
-    //   613: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   616: aload 9
-    //   618: invokestatic 148	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   621: aload_2
-    //   622: getfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
-    //   625: astore 9
-    //   627: aload_2
-    //   628: aload_1
-    //   629: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   632: putfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
-    //   635: aload 9
-    //   637: ifnull +35 -> 672
-    //   640: aload 9
-    //   642: invokevirtual 91	android/graphics/Bitmap:isRecycled	()Z
-    //   645: ifne +27 -> 672
-    //   648: aload_0
-    //   649: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
-    //   652: invokestatic 95	com/tencent/image/RegionBitmap:access$200	(Lcom/tencent/image/RegionBitmap;)Ljava/lang/ref/WeakReference;
-    //   655: invokevirtual 101	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   658: checkcast 103	com/tencent/image/RegionBitmap$OnUpdateCallback
-    //   661: astore_1
-    //   662: aload_1
-    //   663: ifnull +9 -> 672
-    //   666: aload_1
-    //   667: invokeinterface 106 1 0
-    //   672: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   675: ifeq -541 -> 134
-    //   678: aload 9
-    //   680: ifnonnull +565 -> 1245
-    //   683: goto -557 -> 126
-    //   686: invokestatic 34	android/os/SystemClock:uptimeMillis	()J
-    //   689: lstore 6
-    //   691: new 121	java/lang/StringBuilder
-    //   694: dup
-    //   695: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   698: astore_1
-    //   699: aload_1
-    //   700: new 121	java/lang/StringBuilder
-    //   703: dup
-    //   704: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   707: ldc 159
-    //   709: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   712: lload 6
-    //   714: lload 4
-    //   716: lsub
-    //   717: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   720: ldc 164
-    //   722: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   725: iload_3
-    //   726: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   729: ldc 140
-    //   731: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   734: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   737: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   740: pop
-    //   741: aload_1
-    //   742: new 121	java/lang/StringBuilder
-    //   745: dup
-    //   746: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   749: ldc 166
-    //   751: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   754: aload 8
-    //   756: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   759: ldc 140
-    //   761: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   764: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   767: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   770: pop
-    //   771: aload_1
-    //   772: new 121	java/lang/StringBuilder
-    //   775: dup
-    //   776: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   779: ldc 171
-    //   781: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   784: aload_2
-    //   785: getfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
-    //   788: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   791: ldc 173
-    //   793: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   796: aload_2
-    //   797: getfield 52	com/tencent/image/RegionBitmap$DrawData:mDrawRect	Landroid/graphics/Rect;
-    //   800: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   803: ldc 140
-    //   805: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   808: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   811: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   814: pop
-    //   815: aload_1
-    //   816: new 121	java/lang/StringBuilder
-    //   819: dup
-    //   820: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   823: ldc 175
-    //   825: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   828: aload 8
-    //   830: invokevirtual 178	android/graphics/Rect:width	()I
-    //   833: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   836: ldc 180
-    //   838: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   841: aload 8
-    //   843: invokevirtual 183	android/graphics/Rect:height	()I
-    //   846: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   849: ldc 140
-    //   851: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   854: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   857: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   860: pop
-    //   861: ldc 113
-    //   863: iconst_2
-    //   864: aload_1
-    //   865: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   868: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   871: goto -340 -> 531
-    //   874: invokestatic 34	android/os/SystemClock:uptimeMillis	()J
-    //   877: lstore 6
-    //   879: new 121	java/lang/StringBuilder
-    //   882: dup
-    //   883: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   886: astore_1
-    //   887: aload_1
-    //   888: new 121	java/lang/StringBuilder
-    //   891: dup
-    //   892: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   895: ldc 159
-    //   897: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   900: lload 6
-    //   902: lload 4
-    //   904: lsub
-    //   905: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   908: ldc 164
-    //   910: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   913: iload_3
-    //   914: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   917: ldc 140
-    //   919: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   922: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   925: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   928: pop
-    //   929: aload_1
-    //   930: new 121	java/lang/StringBuilder
-    //   933: dup
-    //   934: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   937: ldc 166
-    //   939: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   942: aload 8
-    //   944: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   947: ldc 140
-    //   949: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   952: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   955: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   958: pop
-    //   959: aload_1
-    //   960: new 121	java/lang/StringBuilder
-    //   963: dup
-    //   964: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   967: ldc 171
-    //   969: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   972: aload_2
-    //   973: getfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
-    //   976: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   979: ldc 173
-    //   981: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   984: aload_2
-    //   985: getfield 52	com/tencent/image/RegionBitmap$DrawData:mDrawRect	Landroid/graphics/Rect;
-    //   988: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   991: ldc 140
-    //   993: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   996: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   999: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokestatic 34	android/os/SystemClock:uptimeMillis	()J
+    //   138: lstore 6
+    //   140: new 121	java/lang/StringBuilder
+    //   143: dup
+    //   144: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   147: astore_1
+    //   148: aload_1
+    //   149: new 121	java/lang/StringBuilder
+    //   152: dup
+    //   153: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   156: ldc 124
+    //   158: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: lload 6
+    //   163: lload 4
+    //   165: lsub
+    //   166: invokevirtual 131	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   169: ldc 133
+    //   171: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: iload_3
+    //   175: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   178: ldc 138
+    //   180: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: pop
+    //   190: aload_1
+    //   191: new 121	java/lang/StringBuilder
+    //   194: dup
+    //   195: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   198: ldc 144
+    //   200: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: aload 8
+    //   205: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   208: ldc 138
+    //   210: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   213: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   216: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: pop
+    //   220: aload_1
+    //   221: new 121	java/lang/StringBuilder
+    //   224: dup
+    //   225: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   228: ldc 149
+    //   230: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: aload_2
+    //   234: getfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
+    //   237: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   240: ldc 151
+    //   242: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: aload_2
+    //   246: getfield 52	com/tencent/image/RegionBitmap$DrawData:mDrawRect	Landroid/graphics/Rect;
+    //   249: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   252: ldc 138
+    //   254: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   260: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   263: pop
+    //   264: aload_1
+    //   265: new 121	java/lang/StringBuilder
+    //   268: dup
+    //   269: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   272: ldc 153
+    //   274: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   277: aload 8
+    //   279: invokevirtual 157	android/graphics/Rect:width	()I
+    //   282: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   285: ldc 159
+    //   287: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: aload 8
+    //   292: invokevirtual 162	android/graphics/Rect:height	()I
+    //   295: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   298: ldc 138
+    //   300: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   303: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   306: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   309: pop
+    //   310: ldc 113
+    //   312: iconst_2
+    //   313: aload_1
+    //   314: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   317: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   320: return
+    //   321: astore 9
+    //   323: aload_2
+    //   324: aconst_null
+    //   325: putfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
+    //   328: new 121	java/lang/StringBuilder
+    //   331: dup
+    //   332: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   335: astore 10
+    //   337: aload 10
+    //   339: new 121	java/lang/StringBuilder
+    //   342: dup
+    //   343: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   346: aload_0
+    //   347: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
+    //   350: invokestatic 72	com/tencent/image/RegionBitmap:access$000	(Lcom/tencent/image/RegionBitmap;)Landroid/graphics/BitmapRegionDecoder;
+    //   353: invokevirtual 165	android/graphics/BitmapRegionDecoder:getWidth	()I
+    //   356: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   359: ldc 167
+    //   361: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   364: aload_0
+    //   365: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
+    //   368: invokestatic 72	com/tencent/image/RegionBitmap:access$000	(Lcom/tencent/image/RegionBitmap;)Landroid/graphics/BitmapRegionDecoder;
+    //   371: invokevirtual 170	android/graphics/BitmapRegionDecoder:getHeight	()I
+    //   374: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   377: ldc 138
+    //   379: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   382: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   385: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   388: pop
+    //   389: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   392: ifeq +16 -> 408
+    //   395: ldc 113
+    //   397: iconst_1
+    //   398: aload 10
+    //   400: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   403: aload 9
+    //   405: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   408: aload_2
+    //   409: getfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
+    //   412: astore 9
+    //   414: aload_2
+    //   415: aload_1
+    //   416: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   419: putfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
+    //   422: aload 9
+    //   424: ifnull +35 -> 459
+    //   427: aload 9
+    //   429: invokevirtual 91	android/graphics/Bitmap:isRecycled	()Z
+    //   432: ifne +27 -> 459
+    //   435: aload_0
+    //   436: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
+    //   439: invokestatic 95	com/tencent/image/RegionBitmap:access$200	(Lcom/tencent/image/RegionBitmap;)Ljava/lang/ref/WeakReference;
+    //   442: invokevirtual 101	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   445: checkcast 103	com/tencent/image/RegionBitmap$OnUpdateCallback
+    //   448: astore_1
+    //   449: aload_1
+    //   450: ifnull +9 -> 459
+    //   453: aload_1
+    //   454: invokeinterface 106 1 0
+    //   459: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   462: ifeq -328 -> 134
+    //   465: aload 9
+    //   467: ifnonnull +12 -> 479
+    //   470: ldc 113
+    //   472: iconst_2
+    //   473: ldc 115
+    //   475: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   478: return
+    //   479: invokestatic 34	android/os/SystemClock:uptimeMillis	()J
+    //   482: lstore 6
+    //   484: new 121	java/lang/StringBuilder
+    //   487: dup
+    //   488: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   491: astore_1
+    //   492: aload_1
+    //   493: new 121	java/lang/StringBuilder
+    //   496: dup
+    //   497: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   500: ldc 124
+    //   502: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   505: lload 6
+    //   507: lload 4
+    //   509: lsub
+    //   510: invokevirtual 131	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   513: ldc 133
+    //   515: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   518: iload_3
+    //   519: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   522: ldc 138
+    //   524: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   527: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   530: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   533: pop
+    //   534: aload_1
+    //   535: new 121	java/lang/StringBuilder
+    //   538: dup
+    //   539: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   542: ldc 144
+    //   544: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   547: aload 8
+    //   549: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   552: ldc 138
+    //   554: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   557: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   560: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   563: pop
+    //   564: aload_1
+    //   565: new 121	java/lang/StringBuilder
+    //   568: dup
+    //   569: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   572: ldc 149
+    //   574: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   577: aload_2
+    //   578: getfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
+    //   581: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   584: ldc 151
+    //   586: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   589: aload_2
+    //   590: getfield 52	com/tencent/image/RegionBitmap$DrawData:mDrawRect	Landroid/graphics/Rect;
+    //   593: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   596: ldc 138
+    //   598: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   601: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   604: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   607: pop
+    //   608: aload_1
+    //   609: new 121	java/lang/StringBuilder
+    //   612: dup
+    //   613: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   616: ldc 153
+    //   618: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   621: aload 8
+    //   623: invokevirtual 157	android/graphics/Rect:width	()I
+    //   626: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   629: ldc 159
+    //   631: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   634: aload 8
+    //   636: invokevirtual 162	android/graphics/Rect:height	()I
+    //   639: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   642: ldc 138
+    //   644: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   647: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   650: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   653: pop
+    //   654: ldc 113
+    //   656: iconst_2
+    //   657: aload_1
+    //   658: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   661: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   664: return
+    //   665: astore 9
+    //   667: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   670: ifeq +31 -> 701
+    //   673: ldc 113
+    //   675: iconst_2
+    //   676: new 121	java/lang/StringBuilder
+    //   679: dup
+    //   680: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   683: ldc 176
+    //   685: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   688: aload_1
+    //   689: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   692: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   695: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   698: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   701: invokestatic 181	java/lang/System:gc	()V
+    //   704: aload_1
+    //   705: aload_1
+    //   706: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   709: iconst_1
+    //   710: ishl
+    //   711: putfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   714: aload_2
+    //   715: aload_0
+    //   716: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
+    //   719: invokestatic 72	com/tencent/image/RegionBitmap:access$000	(Lcom/tencent/image/RegionBitmap;)Landroid/graphics/BitmapRegionDecoder;
+    //   722: aload 8
+    //   724: aload_1
+    //   725: invokevirtual 78	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   728: putfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
+    //   731: aload_2
+    //   732: getfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
+    //   735: astore 9
+    //   737: aload_2
+    //   738: aload_1
+    //   739: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   742: putfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
+    //   745: aload 9
+    //   747: ifnull +35 -> 782
+    //   750: aload 9
+    //   752: invokevirtual 91	android/graphics/Bitmap:isRecycled	()Z
+    //   755: ifne +27 -> 782
+    //   758: aload_0
+    //   759: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
+    //   762: invokestatic 95	com/tencent/image/RegionBitmap:access$200	(Lcom/tencent/image/RegionBitmap;)Ljava/lang/ref/WeakReference;
+    //   765: invokevirtual 101	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   768: checkcast 103	com/tencent/image/RegionBitmap$OnUpdateCallback
+    //   771: astore_1
+    //   772: aload_1
+    //   773: ifnull +9 -> 782
+    //   776: aload_1
+    //   777: invokeinterface 106 1 0
+    //   782: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   785: ifeq -651 -> 134
+    //   788: aload 9
+    //   790: ifnonnull +128 -> 918
+    //   793: ldc 113
+    //   795: iconst_2
+    //   796: ldc 115
+    //   798: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   801: return
+    //   802: astore 9
+    //   804: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   807: ifeq -76 -> 731
+    //   810: ldc 113
+    //   812: iconst_1
+    //   813: new 121	java/lang/StringBuilder
+    //   816: dup
+    //   817: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   820: ldc 183
+    //   822: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   825: aload_1
+    //   826: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   829: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   832: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   835: aload 9
+    //   837: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   840: goto -109 -> 731
+    //   843: astore 9
+    //   845: aload_2
+    //   846: getfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
+    //   849: astore 10
+    //   851: aload_2
+    //   852: aload_1
+    //   853: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   856: putfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
+    //   859: aload 10
+    //   861: ifnull +35 -> 896
+    //   864: aload 10
+    //   866: invokevirtual 91	android/graphics/Bitmap:isRecycled	()Z
+    //   869: ifne +27 -> 896
+    //   872: aload_0
+    //   873: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
+    //   876: invokestatic 95	com/tencent/image/RegionBitmap:access$200	(Lcom/tencent/image/RegionBitmap;)Ljava/lang/ref/WeakReference;
+    //   879: invokevirtual 101	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   882: checkcast 103	com/tencent/image/RegionBitmap$OnUpdateCallback
+    //   885: astore_1
+    //   886: aload_1
+    //   887: ifnull +9 -> 896
+    //   890: aload_1
+    //   891: invokeinterface 106 1 0
+    //   896: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   899: ifeq +16 -> 915
+    //   902: aload 10
+    //   904: ifnonnull +544 -> 1448
+    //   907: ldc 113
+    //   909: iconst_2
+    //   910: ldc 115
+    //   912: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   915: aload 9
+    //   917: athrow
+    //   918: invokestatic 34	android/os/SystemClock:uptimeMillis	()J
+    //   921: lstore 6
+    //   923: new 121	java/lang/StringBuilder
+    //   926: dup
+    //   927: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   930: astore_1
+    //   931: aload_1
+    //   932: new 121	java/lang/StringBuilder
+    //   935: dup
+    //   936: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   939: ldc 124
+    //   941: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   944: lload 6
+    //   946: lload 4
+    //   948: lsub
+    //   949: invokevirtual 131	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   952: ldc 133
+    //   954: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   957: iload_3
+    //   958: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   961: ldc 138
+    //   963: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   966: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   969: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   972: pop
+    //   973: aload_1
+    //   974: new 121	java/lang/StringBuilder
+    //   977: dup
+    //   978: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   981: ldc 144
+    //   983: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   986: aload 8
+    //   988: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   991: ldc 138
+    //   993: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   996: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   999: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1002: pop
     //   1003: aload_1
     //   1004: new 121	java/lang/StringBuilder
     //   1007: dup
     //   1008: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1011: ldc 175
-    //   1013: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1016: aload 8
-    //   1018: invokevirtual 178	android/graphics/Rect:width	()I
-    //   1021: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1024: ldc 180
-    //   1026: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1029: aload 8
-    //   1031: invokevirtual 183	android/graphics/Rect:height	()I
-    //   1034: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1037: ldc 140
-    //   1039: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1042: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1045: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1048: pop
-    //   1049: aload_1
-    //   1050: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1053: astore_1
-    //   1054: ldc 113
-    //   1056: iconst_2
-    //   1057: aload_1
-    //   1058: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1061: return
-    //   1062: invokestatic 34	android/os/SystemClock:uptimeMillis	()J
-    //   1065: lstore 6
-    //   1067: new 121	java/lang/StringBuilder
-    //   1070: dup
-    //   1071: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1074: astore_1
-    //   1075: aload_1
-    //   1076: new 121	java/lang/StringBuilder
-    //   1079: dup
-    //   1080: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1083: ldc 159
-    //   1085: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1088: lload 6
-    //   1090: lload 4
-    //   1092: lsub
-    //   1093: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1096: ldc 164
-    //   1098: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1101: iload_3
-    //   1102: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1105: ldc 140
-    //   1107: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1110: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1113: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1116: pop
-    //   1117: aload_1
-    //   1118: new 121	java/lang/StringBuilder
-    //   1121: dup
-    //   1122: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1125: ldc 166
-    //   1127: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1130: aload 8
-    //   1132: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1135: ldc 140
-    //   1137: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1140: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1143: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1146: pop
-    //   1147: aload_1
-    //   1148: new 121	java/lang/StringBuilder
-    //   1151: dup
-    //   1152: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1155: ldc 171
-    //   1157: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1160: aload_2
-    //   1161: getfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
-    //   1164: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1167: ldc 173
-    //   1169: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1172: aload_2
-    //   1173: getfield 52	com/tencent/image/RegionBitmap$DrawData:mDrawRect	Landroid/graphics/Rect;
-    //   1176: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1179: ldc 140
-    //   1181: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1184: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1187: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1190: pop
-    //   1191: aload_1
-    //   1192: new 121	java/lang/StringBuilder
-    //   1195: dup
-    //   1196: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1199: ldc 175
-    //   1201: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1204: aload 8
-    //   1206: invokevirtual 178	android/graphics/Rect:width	()I
-    //   1209: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1212: ldc 180
-    //   1214: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1217: aload 8
-    //   1219: invokevirtual 183	android/graphics/Rect:height	()I
-    //   1222: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1225: ldc 140
-    //   1227: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1230: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1233: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1236: pop
-    //   1237: aload_1
-    //   1238: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1241: astore_1
-    //   1242: goto -188 -> 1054
-    //   1245: invokestatic 34	android/os/SystemClock:uptimeMillis	()J
-    //   1248: lstore 6
-    //   1250: new 121	java/lang/StringBuilder
-    //   1253: dup
-    //   1254: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1257: astore_1
-    //   1258: aload_1
-    //   1259: new 121	java/lang/StringBuilder
-    //   1262: dup
-    //   1263: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1266: ldc 159
-    //   1268: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1271: lload 6
-    //   1273: lload 4
-    //   1275: lsub
-    //   1276: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1279: ldc 164
-    //   1281: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1284: iload_3
-    //   1285: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1288: ldc 140
-    //   1290: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1293: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1296: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1299: pop
-    //   1300: aload_1
-    //   1301: new 121	java/lang/StringBuilder
-    //   1304: dup
-    //   1305: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1308: ldc 166
-    //   1310: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1313: aload 8
-    //   1315: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1318: ldc 140
-    //   1320: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1323: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1326: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1329: pop
-    //   1330: aload_1
-    //   1331: new 121	java/lang/StringBuilder
-    //   1334: dup
-    //   1335: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1338: ldc 171
-    //   1340: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1343: aload_2
-    //   1344: getfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
-    //   1347: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1350: ldc 173
-    //   1352: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1355: aload_2
-    //   1356: getfield 52	com/tencent/image/RegionBitmap$DrawData:mDrawRect	Landroid/graphics/Rect;
-    //   1359: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1362: ldc 140
-    //   1364: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1367: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1370: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1373: pop
-    //   1374: aload_1
-    //   1375: new 121	java/lang/StringBuilder
-    //   1378: dup
-    //   1379: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1382: ldc 175
-    //   1384: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1387: aload 8
-    //   1389: invokevirtual 178	android/graphics/Rect:width	()I
-    //   1392: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1395: ldc 180
-    //   1397: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1400: aload 8
-    //   1402: invokevirtual 183	android/graphics/Rect:height	()I
-    //   1405: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1408: ldc 140
-    //   1410: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1413: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1416: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1419: pop
-    //   1420: aload_1
-    //   1421: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1424: astore_1
-    //   1425: goto -371 -> 1054
-    //   1428: invokestatic 34	android/os/SystemClock:uptimeMillis	()J
-    //   1431: lstore 6
-    //   1433: new 121	java/lang/StringBuilder
-    //   1436: dup
-    //   1437: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1440: astore_1
-    //   1441: aload_1
-    //   1442: new 121	java/lang/StringBuilder
-    //   1445: dup
-    //   1446: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1449: ldc 159
-    //   1451: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1454: lload 6
-    //   1456: lload 4
-    //   1458: lsub
-    //   1459: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1462: ldc 164
-    //   1464: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1467: iload_3
-    //   1468: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1471: ldc 140
-    //   1473: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1476: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1479: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1482: pop
-    //   1483: aload_1
-    //   1484: new 121	java/lang/StringBuilder
-    //   1487: dup
-    //   1488: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1491: ldc 166
-    //   1493: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1496: aload 8
-    //   1498: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1501: ldc 140
-    //   1503: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1506: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1509: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1512: pop
-    //   1513: aload_1
-    //   1514: new 121	java/lang/StringBuilder
-    //   1517: dup
-    //   1518: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1521: ldc 171
-    //   1523: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1526: aload_2
-    //   1527: getfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
-    //   1530: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1533: ldc 173
-    //   1535: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1538: aload_2
-    //   1539: getfield 52	com/tencent/image/RegionBitmap$DrawData:mDrawRect	Landroid/graphics/Rect;
-    //   1542: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1545: ldc 140
-    //   1547: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1550: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1553: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1556: pop
-    //   1557: aload_1
-    //   1558: new 121	java/lang/StringBuilder
-    //   1561: dup
-    //   1562: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   1565: ldc 175
-    //   1567: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1570: aload 8
-    //   1572: invokevirtual 178	android/graphics/Rect:width	()I
-    //   1575: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1578: ldc 180
-    //   1580: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1583: aload 8
-    //   1585: invokevirtual 183	android/graphics/Rect:height	()I
-    //   1588: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1591: ldc 140
-    //   1593: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1596: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1599: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1602: pop
-    //   1603: aload_1
-    //   1604: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1607: astore_1
-    //   1608: goto -554 -> 1054
+    //   1011: ldc 149
+    //   1013: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1016: aload_2
+    //   1017: getfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
+    //   1020: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1023: ldc 151
+    //   1025: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1028: aload_2
+    //   1029: getfield 52	com/tencent/image/RegionBitmap$DrawData:mDrawRect	Landroid/graphics/Rect;
+    //   1032: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1035: ldc 138
+    //   1037: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1040: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1043: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1046: pop
+    //   1047: aload_1
+    //   1048: new 121	java/lang/StringBuilder
+    //   1051: dup
+    //   1052: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1055: ldc 153
+    //   1057: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1060: aload 8
+    //   1062: invokevirtual 157	android/graphics/Rect:width	()I
+    //   1065: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1068: ldc 159
+    //   1070: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1073: aload 8
+    //   1075: invokevirtual 162	android/graphics/Rect:height	()I
+    //   1078: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1081: ldc 138
+    //   1083: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1086: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1089: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1092: pop
+    //   1093: ldc 113
+    //   1095: iconst_2
+    //   1096: aload_1
+    //   1097: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1100: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1103: return
+    //   1104: astore 9
+    //   1106: aload_2
+    //   1107: aconst_null
+    //   1108: putfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
+    //   1111: new 121	java/lang/StringBuilder
+    //   1114: dup
+    //   1115: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1118: astore 10
+    //   1120: aload 10
+    //   1122: new 121	java/lang/StringBuilder
+    //   1125: dup
+    //   1126: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1129: aload_0
+    //   1130: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
+    //   1133: invokestatic 72	com/tencent/image/RegionBitmap:access$000	(Lcom/tencent/image/RegionBitmap;)Landroid/graphics/BitmapRegionDecoder;
+    //   1136: invokevirtual 165	android/graphics/BitmapRegionDecoder:getWidth	()I
+    //   1139: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1142: ldc 167
+    //   1144: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1147: aload_0
+    //   1148: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
+    //   1151: invokestatic 72	com/tencent/image/RegionBitmap:access$000	(Lcom/tencent/image/RegionBitmap;)Landroid/graphics/BitmapRegionDecoder;
+    //   1154: invokevirtual 170	android/graphics/BitmapRegionDecoder:getHeight	()I
+    //   1157: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1160: ldc 138
+    //   1162: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1165: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1168: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1171: pop
+    //   1172: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1175: ifeq +16 -> 1191
+    //   1178: ldc 113
+    //   1180: iconst_1
+    //   1181: aload 10
+    //   1183: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1186: aload 9
+    //   1188: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1191: aload_2
+    //   1192: getfield 82	com/tencent/image/RegionBitmap$DrawData:mBitmap	Landroid/graphics/Bitmap;
+    //   1195: astore 9
+    //   1197: aload_2
+    //   1198: aload_1
+    //   1199: getfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   1202: putfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
+    //   1205: aload 9
+    //   1207: ifnull +35 -> 1242
+    //   1210: aload 9
+    //   1212: invokevirtual 91	android/graphics/Bitmap:isRecycled	()Z
+    //   1215: ifne +27 -> 1242
+    //   1218: aload_0
+    //   1219: getfield 10	com/tencent/image/RegionBitmap$WorkHandler:this$0	Lcom/tencent/image/RegionBitmap;
+    //   1222: invokestatic 95	com/tencent/image/RegionBitmap:access$200	(Lcom/tencent/image/RegionBitmap;)Ljava/lang/ref/WeakReference;
+    //   1225: invokevirtual 101	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   1228: checkcast 103	com/tencent/image/RegionBitmap$OnUpdateCallback
+    //   1231: astore_1
+    //   1232: aload_1
+    //   1233: ifnull +9 -> 1242
+    //   1236: aload_1
+    //   1237: invokeinterface 106 1 0
+    //   1242: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1245: ifeq -1111 -> 134
+    //   1248: aload 9
+    //   1250: ifnonnull +12 -> 1262
+    //   1253: ldc 113
+    //   1255: iconst_2
+    //   1256: ldc 115
+    //   1258: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1261: return
+    //   1262: invokestatic 34	android/os/SystemClock:uptimeMillis	()J
+    //   1265: lstore 6
+    //   1267: new 121	java/lang/StringBuilder
+    //   1270: dup
+    //   1271: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1274: astore_1
+    //   1275: aload_1
+    //   1276: new 121	java/lang/StringBuilder
+    //   1279: dup
+    //   1280: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1283: ldc 124
+    //   1285: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1288: lload 6
+    //   1290: lload 4
+    //   1292: lsub
+    //   1293: invokevirtual 131	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1296: ldc 133
+    //   1298: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1301: iload_3
+    //   1302: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1305: ldc 138
+    //   1307: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1310: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1313: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1316: pop
+    //   1317: aload_1
+    //   1318: new 121	java/lang/StringBuilder
+    //   1321: dup
+    //   1322: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1325: ldc 144
+    //   1327: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1330: aload 8
+    //   1332: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1335: ldc 138
+    //   1337: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1340: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1343: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1346: pop
+    //   1347: aload_1
+    //   1348: new 121	java/lang/StringBuilder
+    //   1351: dup
+    //   1352: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1355: ldc 149
+    //   1357: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1360: aload_2
+    //   1361: getfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
+    //   1364: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1367: ldc 151
+    //   1369: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1372: aload_2
+    //   1373: getfield 52	com/tencent/image/RegionBitmap$DrawData:mDrawRect	Landroid/graphics/Rect;
+    //   1376: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1379: ldc 138
+    //   1381: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1384: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1387: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1390: pop
+    //   1391: aload_1
+    //   1392: new 121	java/lang/StringBuilder
+    //   1395: dup
+    //   1396: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1399: ldc 153
+    //   1401: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1404: aload 8
+    //   1406: invokevirtual 157	android/graphics/Rect:width	()I
+    //   1409: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1412: ldc 159
+    //   1414: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1417: aload 8
+    //   1419: invokevirtual 162	android/graphics/Rect:height	()I
+    //   1422: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1425: ldc 138
+    //   1427: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1430: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1433: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1436: pop
+    //   1437: ldc 113
+    //   1439: iconst_2
+    //   1440: aload_1
+    //   1441: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1444: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1447: return
+    //   1448: invokestatic 34	android/os/SystemClock:uptimeMillis	()J
+    //   1451: lstore 6
+    //   1453: new 121	java/lang/StringBuilder
+    //   1456: dup
+    //   1457: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1460: astore_1
+    //   1461: aload_1
+    //   1462: new 121	java/lang/StringBuilder
+    //   1465: dup
+    //   1466: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1469: ldc 124
+    //   1471: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1474: lload 6
+    //   1476: lload 4
+    //   1478: lsub
+    //   1479: invokevirtual 131	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1482: ldc 133
+    //   1484: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1487: iload_3
+    //   1488: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1491: ldc 138
+    //   1493: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1496: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1499: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1502: pop
+    //   1503: aload_1
+    //   1504: new 121	java/lang/StringBuilder
+    //   1507: dup
+    //   1508: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1511: ldc 144
+    //   1513: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1516: aload 8
+    //   1518: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1521: ldc 138
+    //   1523: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1526: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1529: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1532: pop
+    //   1533: aload_1
+    //   1534: new 121	java/lang/StringBuilder
+    //   1537: dup
+    //   1538: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1541: ldc 149
+    //   1543: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1546: aload_2
+    //   1547: getfield 85	com/tencent/image/RegionBitmap$DrawData:mDecodeSample	I
+    //   1550: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1553: ldc 151
+    //   1555: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1558: aload_2
+    //   1559: getfield 52	com/tencent/image/RegionBitmap$DrawData:mDrawRect	Landroid/graphics/Rect;
+    //   1562: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1565: ldc 138
+    //   1567: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1570: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1573: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1576: pop
+    //   1577: aload_1
+    //   1578: new 121	java/lang/StringBuilder
+    //   1581: dup
+    //   1582: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   1585: ldc 153
+    //   1587: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1590: aload 8
+    //   1592: invokevirtual 157	android/graphics/Rect:width	()I
+    //   1595: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1598: ldc 159
+    //   1600: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1603: aload 8
+    //   1605: invokevirtual 162	android/graphics/Rect:height	()I
+    //   1608: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1611: ldc 138
+    //   1613: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1616: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1619: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1622: pop
+    //   1623: ldc 113
+    //   1625: iconst_2
+    //   1626: aload_1
+    //   1627: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1630: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1633: goto -718 -> 915
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1611	0	this	WorkHandler
-    //   0	1611	1	paramRegionDrawableData	RegionDrawableData
-    //   0	1611	2	paramDrawData	RegionBitmap.DrawData
-    //   0	1611	3	paramInt	int
-    //   3	1454	4	l1	long
-    //   689	766	6	l2	long
-    //   12	1572	8	localRect	Rect
+    //   0	1636	0	this	WorkHandler
+    //   0	1636	1	paramRegionDrawableData	RegionDrawableData
+    //   0	1636	2	paramDrawData	RegionBitmap.DrawData
+    //   0	1636	3	paramInt	int
+    //   3	1474	4	l1	long
+    //   138	1337	6	l2	long
+    //   12	1592	8	localRect	Rect
     //   68	54	9	localBitmap1	android.graphics.Bitmap
-    //   135	83	9	localIllegalArgumentException	java.lang.IllegalArgumentException
-    //   226	54	9	localBitmap2	android.graphics.Bitmap
-    //   287	1	9	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   357	54	9	localBitmap3	android.graphics.Bitmap
-    //   418	34	9	localException	Exception
-    //   459	73	9	localObject1	Object
-    //   534	83	9	localRuntimeException	RuntimeException
-    //   625	54	9	localBitmap4	android.graphics.Bitmap
-    //   149	463	10	localObject2	Object
+    //   321	83	9	localIllegalArgumentException	java.lang.IllegalArgumentException
+    //   412	54	9	localBitmap2	android.graphics.Bitmap
+    //   665	1	9	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   735	54	9	localBitmap3	android.graphics.Bitmap
+    //   802	34	9	localException	Exception
+    //   843	73	9	localObject1	Object
+    //   1104	83	9	localRuntimeException	RuntimeException
+    //   1195	54	9	localBitmap4	android.graphics.Bitmap
+    //   335	847	10	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   47	64	135	java/lang/IllegalArgumentException
-    //   47	64	287	java/lang/OutOfMemoryError
-    //   323	353	418	java/lang/Exception
-    //   47	64	459	finally
-    //   137	222	459	finally
-    //   289	323	459	finally
-    //   323	353	459	finally
-    //   420	456	459	finally
-    //   536	621	459	finally
-    //   47	64	534	java/lang/RuntimeException
+    //   47	64	321	java/lang/IllegalArgumentException
+    //   47	64	665	java/lang/OutOfMemoryError
+    //   701	731	802	java/lang/Exception
+    //   47	64	843	finally
+    //   323	408	843	finally
+    //   667	701	843	finally
+    //   701	731	843	finally
+    //   804	840	843	finally
+    //   1106	1191	843	finally
+    //   47	64	1104	java/lang/RuntimeException
   }
   
   private void initRegionDecoder()

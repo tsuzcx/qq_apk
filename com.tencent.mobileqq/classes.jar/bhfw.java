@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiPictureUrl;
-
-public final class bhfw
-  implements Parcelable.Creator<WeishiPictureUrl>
+public abstract interface bhfw
 {
-  public WeishiPictureUrl a(Parcel paramParcel)
-  {
-    return new WeishiPictureUrl(paramParcel);
-  }
+  public abstract void onTimeCancel();
   
-  public WeishiPictureUrl[] a(int paramInt)
-  {
-    return new WeishiPictureUrl[paramInt];
-  }
+  public abstract void onTimeConfirm(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhfw
  * JD-Core Version:    0.7.0.1
  */

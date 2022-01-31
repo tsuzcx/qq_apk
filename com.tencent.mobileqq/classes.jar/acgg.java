@@ -1,49 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class acgg
-  implements View.OnClickListener
+public final class acgg
+  implements acgx
 {
-  public acgg(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public acgg(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {
-      try
-      {
-        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-        switch (paramView.getId())
-        {
-        case 2131377737: 
-          TroopStoryMainActivity.a(this.a);
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:http://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
-          }
-          if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          }
-          vei.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
-          return;
-        }
-      }
-      catch (Exception paramView)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + paramView.toString());
-          return;
-        }
-      }
+    AudioHelper.b("发起音视频_获取会议id_rsp");
+    Bundle localBundle2 = this.jdField_a_of_type_AndroidOsBundle;
+    Bundle localBundle1 = localBundle2;
+    if (localBundle2 == null) {
+      localBundle1 = new Bundle();
     }
+    localBundle1.putInt("ConfAppID", paramInt1);
+    localBundle1.putInt("MeetingConfID", paramInt2);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localBundle1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acgg
  * JD-Core Version:    0.7.0.1
  */

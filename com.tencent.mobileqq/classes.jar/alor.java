@@ -1,28 +1,41 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-class alor
-  implements SensorEventListener
+public final class alor
+  implements avze
 {
-  alor(aloo paramaloo) {}
+  private WeakReference<FrameHelperActivity> a;
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public alor(FrameHelperActivity paramFrameHelperActivity)
   {
-    if (paramSensorEvent.sensor.getType() == 1) {
-      aloo.a(this.a, paramSensorEvent);
-    }
-    while (paramSensorEvent.sensor.getType() != 3) {
-      return;
-    }
-    aloo.b(this.a, paramSensorEvent);
+    this.a = new WeakReference(paramFrameHelperActivity);
+  }
+  
+  public void a()
+  {
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity == null) {}
+    FragmentActivity localFragmentActivity;
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
+      {
+        return;
+        localFragmentActivity = localFrameHelperActivity.getActivity();
+      } while ((localFragmentActivity == null) || (localFragmentActivity.getAppInterface() == null));
+      localQQAppInterface = localFragmentActivity.app;
+    } while ((!awdr.a().a(localQQAppInterface, localFragmentActivity)) || ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())));
+    FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localFragmentActivity);
+    azmj.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alor
  * JD-Core Version:    0.7.0.1
  */

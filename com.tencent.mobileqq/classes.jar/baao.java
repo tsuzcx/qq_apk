@@ -1,65 +1,42 @@
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
-import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
-import java.util.List;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.CompletionListener.1;
+import mqq.util.WeakReference;
 
-class baao
-  extends Handler
+public class baao
+  implements MediaPlayer.OnCompletionListener
 {
-  baao(baan parambaan, Looper paramLooper)
+  private WeakReference<VideoSprite> a;
+  
+  private baao(VideoSprite paramVideoSprite)
   {
-    super(paramLooper);
+    this.a = new WeakReference(paramVideoSprite);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (this.a.jdField_a_of_type_Baaq == null) {}
-    WordInfo localWordInfo;
+    paramMediaPlayer = (VideoSprite)this.a.get();
+    if (paramMediaPlayer == null) {}
     do
     {
       return;
-      switch (paramMessage.what)
+      if (paramMediaPlayer.j)
       {
-      default: 
+        paramMediaPlayer.b.b(new VideoSprite.CompletionListener.1(this, paramMediaPlayer));
         return;
-      case 0: 
-        localWordInfo = (WordInfo)paramMessage.obj;
-        this.a.jdField_a_of_type_Baaq.a(localWordInfo);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo == null) {
-          this.a.a(localWordInfo);
-        }
-        break;
       }
-    } while ((!localWordInfo.isDetected) || (localWordInfo.paragraphPos != this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size() - 1));
-    paramMessage = ((ParagraphInfo)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(localWordInfo.paragraphPos)).generateOrGetWordInfoList(localWordInfo.paragraphPos);
-    int i = localWordInfo.wordPos + 1;
-    label148:
-    if (i < paramMessage.size())
-    {
-      localWordInfo = (WordInfo)paramMessage.get(i);
-      if ((localWordInfo == null) || (!localWordInfo.isNormalWord())) {}
-    }
-    for (i = 0; i != 0; i = 1)
-    {
-      this.a.b();
-      return;
-      i += 1;
-      break label148;
-      this.a.jdField_a_of_type_Baaq.g();
-      return;
-      this.a.jdField_a_of_type_Baaq.a(this.a.jdField_a_of_type_Int, this.a.b, this.a.c);
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.c = 0;
-      return;
-    }
+      paramMediaPlayer.g = false;
+      paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    } while (paramMediaPlayer.jdField_a_of_type_Baaa == null);
+    paramMediaPlayer.jdField_a_of_type_Baaa.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baao
  * JD-Core Version:    0.7.0.1
  */

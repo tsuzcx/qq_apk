@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahtz;
-import ahvw;
-import ahvz;
-import ahwr;
+import ajlj;
+import ajng;
+import ajnj;
+import ajob;
 import com.tencent.qphone.base.util.QLog;
 
 class NewFlowCameraActivity$7
@@ -15,7 +15,7 @@ class NewFlowCameraActivity$7
   {
     String str = this.this$0.e;
     NewFlowCameraActivity.a(this.this$0);
-    ahwr.a(str, ahvw.a);
+    ajob.a(str, ajng.a);
     this.this$0.q = 0;
     if (QLog.isColorLevel()) {
       QLog.d(".photo", 2, "shot photo with capture from video");
@@ -24,14 +24,14 @@ class NewFlowCameraActivity$7
     if (this.this$0.a == null) {}
     for (str = "";; str = this.this$0.a.a())
     {
-      ahtz.a("", "0X80075BE", str, "", "", "");
+      ajlj.a("", "0X80075BE", str, "", "", "");
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,130 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
 
 public class ajyb
 {
-  private static ajyb jdField_a_of_type_Ajyb;
-  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.headDpcCfg.name();
-  private int jdField_a_of_type_Int = 1;
-  private ajuz jdField_a_of_type_Ajuz = new ajyc(this);
-  
-  private ajyb()
+  public static int a(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
   {
-    DeviceProfileManager.a(this.jdField_a_of_type_Ajuz);
-    a();
-  }
-  
-  public static ajyb a()
-  {
-    if (jdField_a_of_type_Ajyb == null) {}
-    try
+    int i = 0;
+    if ((paramPublishVideoEntry == null) || (paramPublishVideoEntry.videoMaxrate <= 0)) {
+      i = -1;
+    }
+    do
     {
-      if (jdField_a_of_type_Ajyb == null) {
-        jdField_a_of_type_Ajyb = new ajyb();
+      for (;;)
+      {
+        return i;
+        double d = paramPublishVideoEntry.recordTime / 1000.0D;
+        int j = paramPublishVideoEntry.videoMaxrate;
+        try
+        {
+          j = bjrq.a(new String[] { "-threads", "1", "-ss", "0.0", "-accurate_seek", "-i", paramString1, "-t", String.valueOf(d), "-vf", "null", "-metadata:s", "rotate=0", "-acodec", "aac", "-vcodec", "libx264", "-movflags", "faststart", "-preset", "veryfast", "-tune", "psnr", "-profile:v", "high", "-level", "3.0", "-b:v", String.valueOf(j), "-y", paramString2 });
+          return j;
+        }
+        catch (Exception paramString1)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: ", paramString1);
+            return 0;
+          }
+        }
+        catch (Error paramString1) {}
       }
-      return jdField_a_of_type_Ajyb;
-    }
-    finally {}
+    } while (!QLog.isColorLevel());
+    QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: error", paramString1);
+    return 0;
   }
   
-  public void a()
+  public static ajyc a(String paramString)
   {
-    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
-    String[] arrayOfString;
-    if (!TextUtils.isEmpty(str))
-    {
-      arrayOfString = str.split("\\|");
-      if (arrayOfString.length < 1) {}
-    }
-    for (;;)
-    {
+    if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("HeadDpcCfg", 2, String.format("loadConfig, mDualStackPrefIpv6: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+        Object localObject = new File(paramString);
+        ajyc localajyc = new ajyc();
+        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+        {
+          String str = a((File)localObject);
+          localObject = b((File)localObject);
+          if (TextUtils.isEmpty(str)) {
+            return null;
+          }
+          localajyc.a = str;
+          localajyc.b = ((String)localObject);
+          localajyc.c = paramString;
+          return localajyc;
         }
-        return;
       }
-      catch (Exception localException)
+      catch (Exception paramString)
       {
-        QLog.d("HeadDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
-        this.jdField_a_of_type_Int = 1;
-        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i("EncodeVideoUtil", 2, "getVideoInfoByPath error", paramString);
+        }
       }
-      this.jdField_a_of_type_Int = 1;
     }
+    return null;
   }
   
-  public boolean a()
+  @NonNull
+  private static String a(File paramFile)
   {
-    QLog.d("HeadDpcCfg", 1, String.format("preferIpv6 mDualStackPrefIpv6=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-    return this.jdField_a_of_type_Int != 0;
+    paramFile = paramFile.listFiles();
+    if ((paramFile != null) && (paramFile.length > 0))
+    {
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramFile[i];
+        if (localObject.getName().endsWith(".mp4")) {
+          return localObject.getAbsolutePath();
+        }
+        i += 1;
+      }
+    }
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      paramString = ShortVideoUtils.a(new File(paramString).getParentFile());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QZLog.i("EncodeVideoUtil", 1, "get target path error encode error", paramString);
+    }
+    return null;
+  }
+  
+  @NonNull
+  private static String b(File paramFile)
+  {
+    paramFile = new File(paramFile.getAbsolutePath() + File.separator + "audio_data_cache");
+    if ((paramFile.exists()) && (paramFile.isDirectory()))
+    {
+      paramFile = paramFile.listFiles();
+      if ((paramFile != null) && (paramFile.length > 0)) {
+        return paramFile[0].getAbsolutePath();
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyb
  * JD-Core Version:    0.7.0.1
  */

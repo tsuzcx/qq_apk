@@ -1,49 +1,65 @@
-import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.data.ChatBackgroundInfo;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
 
-class aplt
-  extends aowi
+public class aplt
+  extends bdwb
 {
-  aplt(apls paramapls, apaf paramapaf) {}
+  public aplt(MessengerService paramMessengerService) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
+  public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    QLog.i("VideoForDisc<QFile>", 2, "[" + this.jdField_a_of_type_Apls.a.nSessionId + "],[getOnlinePlay Url]  ID[" + paramLong2 + "] OnDiscDownloadInfo");
-    if (paramLong1 == -100001L) {}
-    while ((paramString3 == null) || (paramString3.length() == 0))
+    if (this.a.a != null) {}
+    try
     {
-      paramLong2 = 9360L;
-      if (paramLong1 == 0L) {
-        paramLong2 = 9048L;
+      Message localMessage = Message.obtain(null, 5);
+      if ((paramBundle.get("chatbgInfo") instanceof ChatBackgroundInfo))
+      {
+        ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramBundle.get("chatbgInfo");
+        paramBundle.putString("name", localChatBackgroundInfo.name);
+        paramBundle.putString("url", localChatBackgroundInfo.url);
       }
-      this.jdField_a_of_type_Apaf.a((int)paramLong2, BaseApplication.getContext().getResources().getString(2131690922));
+      paramBundle.putInt("type", 2);
+      paramBundle.putInt("id", (int)paramLong);
+      paramBundle.putInt("result", paramInt);
+      localMessage.setData(paramBundle);
+      this.a.a.send(localMessage);
       return;
-      if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L))
-      {
-        this.jdField_a_of_type_Apls.a(true);
-        this.jdField_a_of_type_Apaf.a((int)paramLong1, BaseApplication.getContext().getResources().getString(2131692889));
-        return;
-      }
-      if (!paramBoolean)
-      {
-        this.jdField_a_of_type_Apls.a(false);
-        this.jdField_a_of_type_Apaf.a((int)0L, BaseApplication.getContext().getResources().getString(2131690922));
-        return;
-      }
     }
-    paramString1 = "http://" + paramString3 + ":" + String.valueOf(paramInt1) + "/ftn_handler/" + paramString4;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoForDisc<QFile>", 1, paramString1);
+    catch (Exception paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
     }
-    this.jdField_a_of_type_Apaf.a(paramString1, paramString5);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    Message localMessage;
+    if (this.a.a != null)
+    {
+      localMessage = Message.obtain(null, 5);
+      localMessage.setData(paramBundle);
+    }
+    try
+    {
+      this.a.a.send(localMessage);
+      return;
+    }
+    catch (RemoteException paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aplt
  * JD-Core Version:    0.7.0.1
  */

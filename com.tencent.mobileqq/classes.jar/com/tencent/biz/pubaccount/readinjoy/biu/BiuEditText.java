@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import rqz;
-import rra;
+import sgy;
+import sgz;
 
 public class BiuEditText
   extends EditText
@@ -25,7 +25,7 @@ public class BiuEditText
   
   private void a()
   {
-    addTextChangedListener(new rra());
+    addTextChangedListener(new sgz());
   }
   
   public boolean onPrivateIMECommand(String paramString, Bundle paramBundle)
@@ -44,16 +44,16 @@ public class BiuEditText
     {
       return;
       Editable localEditable = getEditableText();
-      rqz[] arrayOfrqz = (rqz[])localEditable.getSpans(paramInt1, paramInt2, rqz.class);
-      if ((arrayOfrqz != null) && (arrayOfrqz.length > 0))
+      sgy[] arrayOfsgy = (sgy[])localEditable.getSpans(paramInt1, paramInt2, sgy.class);
+      if ((arrayOfsgy != null) && (arrayOfsgy.length > 0))
       {
-        int i = arrayOfrqz.length;
+        int i = arrayOfsgy.length;
         paramInt2 = 0;
         while (paramInt2 < i)
         {
-          rqz localrqz = arrayOfrqz[paramInt2];
-          int j = localEditable.getSpanStart(localrqz);
-          int k = localEditable.getSpanEnd(localrqz);
+          sgy localsgy = arrayOfsgy[paramInt2];
+          int j = localEditable.getSpanStart(localsgy);
+          int k = localEditable.getSpanEnd(localsgy);
           if ((j >= 0) && (k >= j) && (paramInt1 > j) && (paramInt1 < k))
           {
             setSelection(k);
@@ -67,7 +67,7 @@ public class BiuEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText
  * JD-Core Version:    0.7.0.1
  */

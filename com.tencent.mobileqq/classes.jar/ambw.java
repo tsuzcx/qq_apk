@@ -1,60 +1,39 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
+import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ambw
-  extends AnimatorListenerAdapter
+public class ambw
+  extends ambt
 {
-  ambw(ambv paramambv) {}
+  public ambw(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString)
   {
-    this.a.a("animator set end!");
-    if (this.a.c != null)
-    {
-      ambv.a(this.a).removeView(this.a.c);
-      this.a.c = null;
-      if (this.a.d == null) {
-        break label186;
-      }
-      ambv.b(this.a).removeView(this.a.d);
-      this.a.d = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("BlockedListFragment", 2, "onGetAddFriendBlockedList, success=" + paramBoolean);
     }
-    for (;;)
-    {
-      if (this.a.e != null)
-      {
-        this.a.e.setVisibility(0);
-        paramAnimator = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-        paramAnimator.a = -1L;
-        paramAnimator.b();
-      }
-      if (this.a.jdField_b_of_type_AndroidViewView != null) {
-        this.a.jdField_b_of_type_AndroidViewView.invalidate();
-      }
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.a(true);
+    if ((!paramBoolean) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a).isFinishing()) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a) == null)) {
       return;
-      this.a.a("something wrong, bubble view is null!");
-      break;
-      label186:
-      this.a.a("something wrong, pendview is null!");
     }
+    this.a.a.removeMessages(1);
+    this.a.a.sendEmptyMessage(1);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    this.a.a("animator set start!");
-    this.a.a(false);
+    if (paramBoolean)
+    {
+      this.a.a.removeMessages(1);
+      this.a.a.sendEmptyMessage(1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ambw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import attg;
-import auos;
-import ayvx;
-import aywc;
-import bbkk;
+import avkg;
+import awga;
+import batw;
+import baub;
+import bdje;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 import com.tencent.mobileqq.pic.CompressInfo;
@@ -14,27 +14,27 @@ import java.util.LinkedList;
 public class NearbyProfileEditTribePanel$16
   implements Runnable
 {
-  public NearbyProfileEditTribePanel$16(attg paramattg) {}
+  public NearbyProfileEditTribePanel$16(avkg paramavkg) {}
   
   public void run()
   {
-    attg.a(this.this$0, (PicInfo)this.this$0.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (attg.a(this.this$0) == null) {
+    avkg.a(this.this$0, (PicInfo)this.this$0.jdField_a_of_type_JavaUtilLinkedList.poll());
+    if (avkg.a(this.this$0) == null) {
       return;
     }
-    CompressInfo localCompressInfo = new CompressInfo(attg.a(this.this$0).c, 0);
+    CompressInfo localCompressInfo = new CompressInfo(avkg.a(this.this$0).c, 0);
     localCompressInfo.f = 0;
-    auos.a(localCompressInfo);
+    awga.a(localCompressInfo);
     if (QLog.isColorLevel()) {
       QLog.d("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..uploadPhoto(), img_path = " + localCompressInfo.e);
     }
-    if (!bbkk.a(localCompressInfo.e))
+    if (!bdje.a(localCompressInfo.e))
     {
-      aywc localaywc = new aywc();
-      localaywc.a = true;
-      localaywc.i = localCompressInfo.e;
-      localaywc.b = 8;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localaywc);
+      baub localbaub = new baub();
+      localbaub.a = true;
+      localbaub.i = localCompressInfo.e;
+      localbaub.b = 8;
+      this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localbaub);
       return;
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.runOnUiThread(new NearbyProfileEditTribePanel.16.1(this));
@@ -42,7 +42,7 @@ public class NearbyProfileEditTribePanel$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.16
  * JD-Core Version:    0.7.0.1
  */

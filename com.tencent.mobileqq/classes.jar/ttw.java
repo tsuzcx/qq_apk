@@ -1,24 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
 
-public class ttw
-  extends uyi
+class ttw
+  implements yfu<Object>
 {
-  public ttw(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  ttw(ttv paramttv, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, vap paramvap)
+  public void a(Object... paramVarArgs)
   {
-    if ((paramObject instanceof QQUserUIItem))
-    {
-      paramView = (QQUserUIItem)paramObject;
-      sxm.a(this.a.a, 10, paramView.uid);
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      ttv.a(this.jdField_a_of_type_Ttv, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetCommentListRsp)paramVarArgs[3], this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,121 +1,74 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.1;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.2;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
+import java.util.Iterator;
+import java.util.List;
 
 public class bhbe
+  implements bgln
 {
-  private static bhbe a;
-  public bgyg<String> a;
-  public bgyg<String> b = new bgyg(10);
-  public bgyg<String> c = new bgyg(10);
+  public bhbe(AppBrandPageContainer paramAppBrandPageContainer) {}
   
-  private bhbe()
+  public void onSoftKeyboardClosed()
   {
-    this.jdField_a_of_type_Bgyg = new bgyg(5);
-  }
-  
-  public static bhbe a()
-  {
-    try
+    QMLog.e("minisdk-start-AppBrandPageContainer", "onSoftKeyboardClosed ");
+    if ((AppBrandPageContainer.a(this.a) != null) && (AppBrandPageContainer.a(this.a).size() > 0))
     {
-      if (jdField_a_of_type_Bhbe == null) {
-        jdField_a_of_type_Bhbe = new bhbe();
-      }
-      bhbe localbhbe = jdField_a_of_type_Bhbe;
-      return localbhbe;
-    }
-    finally {}
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("activityNameQueue:\n");
-    if (this.jdField_a_of_type_Bgyg != null) {
-      localStringBuilder.append(this.jdField_a_of_type_Bgyg).append("\n");
-    }
-    localStringBuilder.append(" \n activityEventQueue:\n");
-    if (this.b != null) {
-      localStringBuilder.append(this.b);
-    }
-    localStringBuilder.append(" \n userActionQueue:\n");
-    if (this.c != null) {
-      localStringBuilder.append(this.c);
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public void a(String paramString)
-  {
-    if ((paramString != null) && (this.jdField_a_of_type_Bgyg != null))
-    {
-      if (this.jdField_a_of_type_Bgyg.a()) {
-        this.jdField_a_of_type_Bgyg.a();
-      }
-      this.jdField_a_of_type_Bgyg.a(paramString);
-    }
-  }
-  
-  public void a(String paramString, View paramView)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[Actvity] ").append(paramString);
-    if (paramView != null) {
-      localStringBuilder.append("  click view  id:0x").append(Integer.toHexString(paramView.getId()));
-    }
-    c(localStringBuilder.toString());
-  }
-  
-  public void a(String paramString, ViewGroup paramViewGroup, View paramView, int paramInt, long paramLong)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[Actvity] ").append(paramString);
-    if (paramViewGroup != null) {
-      localStringBuilder.append("parent id: ").append(paramViewGroup.getId());
-    }
-    if (paramView != null) {
-      localStringBuilder.append("view id: ").append(paramView.getId());
-    }
-    localStringBuilder.append(" onItemclick view  position:0x").append(Integer.toHexString(paramInt));
-    localStringBuilder.append(" id").append(paramLong);
-    a().c(localStringBuilder.toString());
-  }
-  
-  public void b(String paramString)
-  {
-    if ((paramString != null) && (this.b != null))
-    {
-      if (this.b.a()) {
-        this.b.a();
-      }
-      this.b.a(paramString);
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    if (paramString != null) {}
-    try
-    {
-      if (this.c != null)
+      Iterator localIterator = AppBrandPageContainer.a(this.a).iterator();
+      while (localIterator.hasNext())
       {
-        if (this.c.a()) {
-          this.c.a();
+        bgln localbgln = (bgln)localIterator.next();
+        if (localbgln != null) {
+          localbgln.onSoftKeyboardClosed();
         }
-        this.c.a(paramString);
       }
-      return;
     }
-    catch (Exception paramString)
+    ThreadManager.a().postDelayed(new AppBrandPageContainer.1.2(this), 50L);
+  }
+  
+  public void onSoftKeyboardOpened(int paramInt)
+  {
+    QMLog.e("minisdk-start-AppBrandPageContainer", "onSoftKeyboardOpened " + paramInt);
+    if (AppBrandPageContainer.a(this.a) != null) {}
+    int i;
+    for (Object localObject = AppBrandPageContainer.a(this.a).a();; localObject = null)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("RDMEtraMsgCollector", 2, "", paramString);
+      i = paramInt;
+      if (localObject != null)
+      {
+        i = paramInt;
+        if (DisplayUtil.hasNavBar((Context)localObject))
+        {
+          i = paramInt;
+          if (DisplayUtil.isNavigationBarExist((Activity)localObject)) {
+            i = paramInt - DisplayUtil.getNavigationBarHeight((Context)localObject);
+          }
+        }
+      }
+      if ((AppBrandPageContainer.a(this.a) == null) || (AppBrandPageContainer.a(this.a).size() <= 0)) {
+        break;
+      }
+      localObject = AppBrandPageContainer.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        bgln localbgln = (bgln)((Iterator)localObject).next();
+        if (localbgln != null) {
+          localbgln.onSoftKeyboardOpened(i);
+        }
+      }
     }
+    ThreadManager.a().postDelayed(new AppBrandPageContainer.1.1(this, i), 50L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhbe
  * JD-Core Version:    0.7.0.1
  */

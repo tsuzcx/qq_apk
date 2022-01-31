@@ -1,21 +1,26 @@
-import android.content.Intent;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class aren
+  extends arel
 {
-  public long a;
-  public Intent a;
-  public String a;
-  public String b = "";
-  public String c = "";
-  
-  public aren(arek paramarek)
+  public aren(ardq paramardq)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    super(paramardq);
+  }
+  
+  public boolean a(String paramString)
+  {
+    FileManagerEntity localFileManagerEntity = this.a.a();
+    if (localFileManagerEntity == null) {}
+    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aren
  * JD-Core Version:    0.7.0.1
  */

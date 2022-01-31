@@ -1,69 +1,28 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
+import com.tencent.biz.JoinGroupTransitActivity;
 
 public class mys
-  extends ajtb
+  implements myr
 {
-  public mys(QQAppInterface paramQQAppInterface)
+  public mys(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
+  
+  public void a()
   {
-    super(paramQQAppInterface);
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void b()
   {
-    boolean bool2 = false;
-    if (paramObject == null)
-    {
-      notifyUI(1001, false, null);
-      return;
-    }
-    int i = ((Bundle)paramObject).getInt("result");
-    paramToServiceMsg = (BmqqUserSimpleInfo)((Bundle)paramObject).getParcelable("info");
-    boolean bool1 = bool2;
-    if (i == 0)
-    {
-      bool1 = bool2;
-      if (paramToServiceMsg != null)
-      {
-        ((bduf)this.mApp.getManager(165)).a(paramToServiceMsg);
-        bool1 = true;
-      }
-    }
-    notifyUI(1001, bool1, paramToServiceMsg);
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
   }
   
-  public void a(String paramString)
+  public void c()
   {
-    if (!myv.a(this.app.getApplication(), paramString)) {
-      return;
-    }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("hrtxformqq.service", this.app.getCurrentAccountUin(), "hrtxformqq.getUsrSimpleInfo");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("uin", Long.valueOf(paramString));
-    localToServiceMsg.setAttributes(localHashMap);
-    send(localToServiceMsg);
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return myt.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("hrtxformqq.getUsrSimpleInfo".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mys
  * JD-Core Version:    0.7.0.1
  */

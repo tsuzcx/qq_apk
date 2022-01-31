@@ -1,41 +1,57 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import java.util.List;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class atqv
-  extends FragmentPagerAdapter
+final class atqv
+  extends Handler
 {
-  private List<Fragment> jdField_a_of_type_JavaUtilList;
-  
-  atqv(FragmentManager paramFragmentManager, List<Fragment> paramList)
+  atqv(Looper paramLooper)
   {
-    super(paramList);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    super(paramLooper);
   }
   
-  Fragment a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (paramMessage.what == 10000001)
+    {
+      paramMessage = (ProgressBar)atqu.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131366685);
+      localDrawable = atqu.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130839404);
+      paramMessage.setIndeterminateDrawable(localDrawable);
+      paramMessage.setBackgroundDrawable(localDrawable);
+      ((TextView)atqu.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131365231)).setText(2131719760);
+      atqu.a().sendEmptyMessageDelayed(10000002, 2000L);
     }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    while ((paramMessage.what != 10000002) || (atqu.jdField_a_of_type_AndroidAppProgressDialog == null))
+    {
+      Drawable localDrawable;
+      return;
+    }
+    try
+    {
+      atqu.jdField_a_of_type_Boolean = false;
+      atqu.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+      return;
+    }
+    finally
+    {
+      atqu.jdField_a_of_type_AndroidAppProgressDialog = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atqv
  * JD-Core Version:    0.7.0.1
  */

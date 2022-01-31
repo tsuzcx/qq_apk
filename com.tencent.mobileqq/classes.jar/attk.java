@@ -1,50 +1,19 @@
-import java.util.Calendar;
-
-class attk
-  implements amnf
+public class attk
 {
-  attk(attg paramattg) {}
+  public int a;
+  public long a;
+  public afrf a;
+  public atti a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
   
-  public int a()
-  {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + ajya.a(2131707310);
-    case 1: 
-      return paramInt2 + 1 + ajya.a(2131707302);
-    }
-    return paramInt2 + 1 + ajya.a(2131707290);
-  }
+  public attk(atte paramatte) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     attk
  * JD-Core Version:    0.7.0.1
  */

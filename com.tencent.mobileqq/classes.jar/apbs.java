@@ -1,34 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class apbs
-  extends apbm
+public class apbs
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public apbs(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  public apbs(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  protected String a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return "StateChangeToOffWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    apbi.b(this.jdField_a_of_type_Apbi, 9, 11);
-    apbi.c(this.jdField_a_of_type_Apbi, 9, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateUploadingWhenRecv)");
-    this.jdField_a_of_type_Apbm = new apco(this.jdField_a_of_type_Apbi);
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(amid.a, 0).edit().putBoolean(amid.c, paramBoolean).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apbs
  * JD-Core Version:    0.7.0.1
  */

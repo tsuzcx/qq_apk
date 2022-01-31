@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import auko;
+import awbv;
 
 public class BubbleEntity
-  extends auko
+  extends awbv
 {
   public int bubble_id;
   public long expire;
@@ -36,7 +36,7 @@ public class BubbleEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.BubbleEntity
  * JD-Core Version:    0.7.0.1
  */

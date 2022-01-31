@@ -3,7 +3,8 @@ package com.tencent.mobileqq.mini.webview;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build.VERSION;
-import bgyh;
+import bdcb;
+import bize;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -83,7 +84,7 @@ public class BaseAppBrandWebview
       paramContext.setMixedContentMode(0);
     }
     paramContext.setMediaPlaybackRequiresUserGesture(false);
-    this.userAgent = (paramContext.getUserAgentString() + " QQ/MiniApp");
+    this.userAgent = (paramContext.getUserAgentString() + " QQ/MiniApp QQ/" + bdcb.c());
     paramContext.setUserAgent(this.userAgent);
     if (Build.VERSION.SDK_INT >= 11)
     {
@@ -108,7 +109,7 @@ public class BaseAppBrandWebview
           this.enableEmbeddedVideo = paramContext.registerEmbeddedWidget(new String[] { "video" }, localEmbeddedWidgetClientFactory);
           QLog.d("miniapp-embedded", 1, "registerEmbeddedWidget : " + this.enableEmbeddedVideo + "; " + (System.currentTimeMillis() - l));
           if ((!this.enableEmbeddedVideo) || (!enableEmbeddedVideoConfiog)) {
-            break label322;
+            break label328;
           }
           paramBoolean = true;
           this.enableEmbeddedVideo = paramBoolean;
@@ -130,7 +131,7 @@ public class BaseAppBrandWebview
       {
         QLog.e(TAG, 1, "BaseAppBrandWebview init exception!", paramContext);
         continue;
-        label322:
+        label328:
         paramBoolean = false;
       }
     }
@@ -230,9 +231,9 @@ public class BaseAppBrandWebview
     return false;
   }
   
-  public void initJSDefaultConfig()
+  public void initJSDefaultConfig(ValueCallback paramValueCallback)
   {
-    evaluteJs(getJsDefaultConfig(true), new BaseAppBrandWebview.4(this));
+    evaluteJs(getJsDefaultConfig(true), new BaseAppBrandWebview.4(this, paramValueCallback));
   }
   
   public void initJSGlobalConfig()
@@ -265,7 +266,7 @@ public class BaseAppBrandWebview
           }
         }
       }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bgyh.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { this.apkgInfo.mConfigStr, localJSONObject.toString() });
+      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bize.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { this.apkgInfo.mConfigStr, localJSONObject.toString() });
       str1 = str2;
       if (StorageUtil.getPreference().getBoolean(this.apkgInfo.appId + "_debug", false)) {
         str1 = str2 + "__qqConfig.debug=true;";
@@ -283,6 +284,8 @@ public class BaseAppBrandWebview
   }
   
   public void initService(ApkgInfo paramApkgInfo, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener) {}
+  
+  public void initService(ApkgInfo paramApkgInfo, String paramString, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener) {}
   
   public void initWAServiceJS(String paramString) {}
   
@@ -367,7 +370,7 @@ public class BaseAppBrandWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.webview.BaseAppBrandWebview
  * JD-Core Version:    0.7.0.1
  */

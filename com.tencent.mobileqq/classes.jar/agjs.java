@@ -1,133 +1,42 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class agjs
-  extends BaseAdapter
+class agjs
+  extends alsi
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<agjq> jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
+  agjs(agjp paramagjp) {}
   
-  private agjs(CountryActivity paramCountryActivity) {}
-  
-  private int a(agjq paramagjq)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (paramagjq.a) {
-      return 0;
-    }
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals(""))) {
-      return 0;
-    }
-    String str2 = paramagjq.c;
-    String str3 = paramagjq.b;
-    String str1 = paramagjq.d;
-    paramagjq = str1;
-    if (str1 != null) {
-      paramagjq = str1.toLowerCase();
-    }
-    str1 = ChnToSpell.a(str3, 1);
-    String str4 = ChnToSpell.a(str3, 2);
-    if ((str2.equals(this.jdField_a_of_type_JavaLangString)) || (str3.equals(this.jdField_a_of_type_JavaLangString)) || (str1.equals(this.jdField_a_of_type_JavaLangString)) || (str4.equals(this.jdField_a_of_type_JavaLangString)) || ((paramagjq != null) && (paramagjq.equals(this.jdField_a_of_type_JavaLangString)))) {
-      return 3;
-    }
-    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || ((paramagjq != null) && (paramagjq.indexOf(this.jdField_a_of_type_JavaLangString) == 0))) {
-      return 2;
-    }
-    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) > 0)) {
-      return 1;
-    }
-    return 0;
+    a(paramBoolean, paramString, paramLong, null);
   }
   
-  public void a(String paramString)
+  protected void a(boolean paramBoolean, String paramString, long paramLong, alsf paramalsf)
   {
-    int j = 0;
-    Object localObject = paramString.toLowerCase();
-    paramString = (String)localObject;
-    if (((String)localObject).equals("hk")) {
-      paramString = "xianggang";
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.a.a)) {
+      return;
     }
-    localObject = paramString;
-    if (paramString.equals("uk")) {
-      localObject = "united kingdom";
-    }
-    int i;
-    label81:
-    agjq localagjq;
-    int k;
-    if (((String)localObject).startsWith(this.jdField_a_of_type_JavaLangString))
-    {
-      paramString = this.jdField_a_of_type_JavaUtilArrayList;
-      this.jdField_a_of_type_JavaLangString = ((String)localObject);
-      localObject = new ArrayList(8);
-      paramString = paramString.iterator();
-      i = 0;
-      if (!paramString.hasNext()) {
-        break label181;
-      }
-      localagjq = (agjq)paramString.next();
-      k = a(localagjq);
-      if (k != 3) {
-        break label141;
-      }
-      ((ArrayList)localObject).add(j, localagjq);
-      j += 1;
-    }
-    for (;;)
-    {
-      break label81;
-      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
-      break;
-      label141:
-      if (k == 2)
-      {
-        ((ArrayList)localObject).add(i + j, localagjq);
-        i += 1;
-      }
-      else if (k == 1)
-      {
-        ((ArrayList)localObject).add(localagjq);
-      }
-    }
-    label181:
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-    notifyDataSetChanged();
+    this.a.u = true;
+    this.a.a(262144, paramalsf, paramLong);
   }
   
-  public int getCount()
+  public void b(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
-    {
-      localView = CountryActivity.a(paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getLayoutInflater(), true);
-      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
     }
-    CountryActivity.a(localView, (agjq)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-    return localView;
+    this.a.e(131072);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.e(65536);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agjs
  * JD-Core Version:    0.7.0.1
  */

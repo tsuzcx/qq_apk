@@ -1,16 +1,12 @@
-import org.json.JSONArray;
+import android.view.View;
 
 public abstract interface bejs
 {
-  public abstract void onInterrupt(int paramInt, String paramString);
-  
-  public abstract void onRoomMemberChange(JSONArray paramJSONArray);
-  
-  public abstract void onRoomMemberSpeaking(JSONArray paramJSONArray);
+  public abstract void a(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bejs
  * JD-Core Version:    0.7.0.1
  */

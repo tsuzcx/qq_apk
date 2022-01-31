@@ -1,52 +1,27 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ResolveInfo;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aslu
+  implements asmc
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  public aslu(JefsClass paramJefsClass, Context paramContext, Intent paramIntent, String paramString, int paramInt) {}
   
-  public aslu(String paramString1, String paramString2, String paramString3, MsgBackupUserData paramMsgBackupUserData, int paramInt)
+  public void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupGetQrRsp--");
-    localStringBuilder.append(",qr_sig:").append(this.jdField_a_of_type_JavaLangString).append(",token:").append(this.b).append(",encryptKey:").append(this.c).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("TeleScreen|JefsClass", 2, "checkAndDo() ]");
+    }
+    JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, paramString1, paramString2, paramString3, paramList, paramCancelableRunnable, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aslu
  * JD-Core Version:    0.7.0.1
  */

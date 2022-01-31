@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 
 class adaw
-  implements aybj
+  implements bdzz
 {
-  adaw(adas paramadas) {}
+  adaw(adav paramadav, JumpActivity paramJumpActivity) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    aybp localaybp = new aybp(3000, 360, 0);
-    localaybp.a = true;
-    this.a.a.g.a(new aybi[] { localaybp });
+    this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.a();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("extra_key_jump_src", 1);
+    ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, 1, localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adaw
  * JD-Core Version:    0.7.0.1
  */

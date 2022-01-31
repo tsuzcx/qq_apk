@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1.1.1;
-import com.tencent.mobileqq.widget.AnimationView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import java.lang.ref.WeakReference;
 
-public class agxg
-  extends bctf
+class agxg
 {
-  public agxg(RedPacketKSongFragment.10.1 param1) {}
-  
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!this.a.a.a.c())
-    {
-      if (paramBoolean) {
-        this.a.a.a.a.post(new RedPacketKSongFragment.10.1.1.1(this));
-      }
-    }
-    else {
-      return;
-    }
-    this.a.a.a.g();
-  }
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  WeakReference<agxh> jdField_a_of_type_JavaLangRefWeakReference;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agxg
  * JD-Core Version:    0.7.0.1
  */

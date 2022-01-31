@@ -1,18 +1,14 @@
 public abstract interface bkoe
 {
-  public abstract void a(int paramInt);
+  public abstract void a(boolean paramBoolean, String paramString);
   
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void b();
   
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkoe
  * JD-Core Version:    0.7.0.1
  */

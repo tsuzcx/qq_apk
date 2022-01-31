@@ -1,21 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
-final class apvr
-  implements aptw
+public class apvr
 {
-  apvr(Activity paramActivity, Intent paramIntent) {}
+  public ImageView a;
+  public URLImageView a;
+  public ImageView b;
   
-  public void a()
-  {
-    aqbe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
-  }
-  
-  public void b() {}
+  public apvr(apvp paramapvp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvr
  * JD-Core Version:    0.7.0.1
  */

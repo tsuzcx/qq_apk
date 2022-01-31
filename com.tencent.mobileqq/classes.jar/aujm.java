@@ -1,73 +1,49 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.support.annotation.NonNull;
+import android.os.SystemClock;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPagerAdapter;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPanel;
-import com.tencent.mobileqq.widget.QQViewPager;
-import mqq.app.AppRuntime.Status;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class aujm
+  implements View.OnClickListener
 {
-  private OnlineStatusPanel a;
+  public aujm(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  public aujm(@NonNull Context paramContext, @NonNull ViewGroup paramViewGroup, aujk paramaujk, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a = ((OnlineStatusPanel)View.inflate(paramContext, 2131558824, null));
-    this.a.a(paramInt);
-    this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a(paramaujk);
-    paramViewGroup.addView(this.a);
-  }
-  
-  public aujj a()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a;
-  }
-  
-  public void a()
-  {
-    boolean bool = true;
-    QQViewPager localQQViewPager = this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.getCount() > 1) {}
-    for (;;)
-    {
-      localQQViewPager.b(bool);
-      return;
-      bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
     }
-  }
-  
-  public void a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    a(paramStatus, paramLong, null);
-  }
-  
-  public void a(AppRuntime.Status paramStatus, long paramLong, aujn paramaujn)
-  {
-    aujj localaujj = aujc.a().a(paramStatus, paramLong);
-    if (localaujj != null)
+    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
+    paramView = paramView.getTag();
+    if ((paramView instanceof aujp)) {}
+    for (paramView = (aujp)paramView;; paramView = null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a = localaujj;
-      this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.notifyDataSetChanged();
-      if (paramaujn != null)
+      if (paramView == null) {}
+      int j;
+      do
       {
-        paramStatus = new aujj(paramStatus);
-        paramStatus.a = paramLong;
-        paramaujn.a(paramStatus);
-      }
+        return;
+        int i = MultiCardPageIndicator.a(this.a).a();
+        j = paramView.jdField_a_of_type_Int;
+        this.a.setCurrentItem(j);
+        azmj.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
+        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
+      } while (MultiCardPageIndicator.a(this.a) == null);
+      MultiCardPageIndicator.a(this.a).a(j);
+      return;
     }
-  }
-  
-  void b()
-  {
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aujm
  * JD-Core Version:    0.7.0.1
  */

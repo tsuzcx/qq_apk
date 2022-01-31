@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import axcx;
-import bbzt;
-import bbzu;
+import ayyb;
+import bdyu;
+import bdyv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -13,25 +13,25 @@ public class VipCheckGift
 {
   public int a()
   {
-    Object localObject = (bbzu)this.a.app.getManager(76);
-    bbzt localbbzt = ((bbzu)localObject).a();
-    if (localbbzt != null)
+    Object localObject = (bdyv)this.a.app.getManager(76);
+    bdyu localbdyu = ((bdyv)localObject).a();
+    if (localbdyu != null)
     {
-      if ((localbbzt.d != 0L) || (localbbzt.a == 0L)) {
+      if ((localbdyu.d != 0L) || (localbdyu.a == 0L)) {
         break label54;
       }
-      ((bbzu)localObject).a(localbbzt.a);
+      ((bdyv)localObject).a(localbdyu.a);
     }
     for (;;)
     {
       return 7;
       label54:
-      if (localbbzt.d == 2L)
+      if (localbdyu.d == 2L)
       {
-        localObject = new NewIntent(this.a.app.getApplication(), axcx.class);
+        localObject = new NewIntent(this.a.app.getApplication(), ayyb.class);
         ((NewIntent)localObject).setAction("gif_ui_show");
         ((NewIntent)localObject).putExtra("gif_ui_show_bid", 0);
-        ((NewIntent)localObject).putExtra("gif_ui_show_seq", localbbzt.a);
+        ((NewIntent)localObject).putExtra("gif_ui_show_seq", localbdyu.a);
         this.a.app.startServlet((NewIntent)localObject);
       }
     }

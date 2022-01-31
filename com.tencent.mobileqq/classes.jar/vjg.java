@@ -1,21 +1,28 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vjg
-  implements ufk
+  extends QQUIEventReceiver<StoryPlayerActivity, vjf>
 {
-  public vjg(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
-  
-  public boolean a(ufh paramufh, int paramInt1, int paramInt2)
+  public vjg(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
+    super(paramStoryPlayerActivity);
+  }
+  
+  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull vjf paramvjf)
+  {
+    paramStoryPlayerActivity.b = paramvjf.a;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vjf.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjg
  * JD-Core Version:    0.7.0.1
  */

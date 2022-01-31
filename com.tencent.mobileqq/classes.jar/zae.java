@@ -1,162 +1,255 @@
-import com.tencent.gdtad.views.form.GdtFormData;
-import com.tencent.gdtad.views.form.framework.GdtFormItemData;
-import com.tencent.gdtad.views.form.framework.GdtFormTableData;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
-import com.tencent.gdtad.views.xijing.GdtButtonData;
-import com.tencent.gdtad.views.xijing.GdtTextData;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.ClipData;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
 
 public class zae
+  extends WebViewPlugin
 {
-  public static GdtFormData a(JSONObject paramJSONObject, int paramInt)
+  private android.content.ClipboardManager jdField_a_of_type_AndroidContentClipboardManager;
+  private android.text.ClipboardManager jdField_a_of_type_AndroidTextClipboardManager;
+  private bdfp jdField_a_of_type_Bdfp;
+  bhpy jdField_a_of_type_Bhpy = null;
+  String jdField_a_of_type_JavaLangString = null;
+  
+  public zae()
   {
-    int i = 0;
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
-    {
-      yxp.d("GdtFormDataBuilder", "getFormComponent error");
-      return null;
-    }
-    GdtFormData localGdtFormData = new GdtFormData();
-    Object localObject;
-    try
-    {
-      localGdtFormData.formId = paramJSONObject.getLong("formId");
-      localGdtFormData.padding = yzb.b(paramInt, 60);
-      localGdtFormData.backgroundColor = yzb.a(paramJSONObject.getString("backgroundColor"), 0);
-      localObject = paramJSONObject.getJSONObject("title");
-      if (((JSONObject)localObject).getBoolean("visible"))
-      {
-        localGdtFormData.title = new GdtTextData();
-        localGdtFormData.title.text = ((JSONObject)localObject).getString("text");
-        localGdtFormData.title.color = yzb.a(((JSONObject)localObject).getString("fontColor"), 0);
-        localGdtFormData.title.size = yzb.b(paramInt, ((JSONObject)localObject).getInt("fontSize"));
-      }
-      localObject = paramJSONObject.getJSONObject("submitButton");
-      localGdtFormData.button.text.text = ((JSONObject)localObject).getString("text");
-      localGdtFormData.button.text.color = yzb.a(((JSONObject)localObject).getString("fontColor"), 0);
-      localGdtFormData.button.text.size = yzb.b(paramInt, 40);
-      localGdtFormData.button.borderCornerRadius = yzb.b(paramInt, 6);
-      localGdtFormData.button.backgroundColor = yzb.a(((JSONObject)localObject).getString("backgroundColor"), 0);
-      localGdtFormData.buttonHeight = yzb.b(paramInt, 124);
-      localGdtFormData.table.borderCornerRadius = yzb.b(paramInt, 6);
-      localGdtFormData.table.borderWidth = yzb.b(paramInt, 3);
-      localGdtFormData.table.borderColor = yzb.a("#EAEAEB", 0);
-      localGdtFormData.table.borderColorError = yzb.a("#FE6C6C", 0);
-      paramJSONObject = paramJSONObject.getJSONArray("items");
-      if (paramJSONObject.length() <= 0)
-      {
-        yxp.d("GdtFormDataBuilder", "getFormComponent error");
-        return null;
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      yxp.d("GdtFormDataBuilder", "getFormComponent", paramJSONObject);
-      return null;
-    }
-    while (i < paramJSONObject.length())
-    {
-      localObject = a(paramJSONObject.getJSONObject(i), paramInt);
-      if (!localGdtFormData.table.addItem((GdtFormItemData)localObject)) {
-        yxp.d("GdtFormDataBuilder", "getFormComponent error");
-      }
-      i += 1;
-    }
-    return localGdtFormData;
+    this.mPluginNameSpace = "mail";
   }
   
-  private static GdtFormItemData a(JSONObject paramJSONObject, int paramInt)
+  private void a(String paramString1, String paramString2)
   {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
+    paramString1 = new Intent(paramString1);
+    paramString1.setType(paramString2);
+    paramString1.putExtra("phone", this.jdField_a_of_type_JavaLangString);
+    this.mRuntime.a().startActivity(paramString1);
+  }
+  
+  private void b()
+  {
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      yxp.d("GdtFormDataBuilder", "getFormItem error");
-      return null;
-    }
-    int i;
-    try
-    {
-      i = paramJSONObject.getInt("type");
-      switch (i)
+      Activity localActivity = this.mRuntime.a();
+      if ((localActivity instanceof AppActivity))
       {
-      default: 
-        yxp.d("GdtFormDataBuilder", "getFormItem error");
-        return null;
+        if (((AppActivity)localActivity).checkSelfPermission("android.permission.CALL_PHONE") != 0) {
+          ((AppActivity)localActivity).requestPermissions(new zag(this), 1, new String[] { "android.permission.CALL_PHONE" });
+        }
+      }
+      else {
+        return;
+      }
+      c();
+      return;
+    }
+    c();
+  }
+  
+  private void c()
+  {
+    azmj.b(null, "CliOper", "", "", "0X8004B43", "0X8004B43", 0, 0, "", "", "", "");
+    this.mRuntime.a().startActivity(new Intent("android.intent.action.DIAL", Uri.parse(String.format("tel:%s", new Object[] { this.jdField_a_of_type_JavaLangString }))));
+    if (QLog.isColorLevel()) {
+      QLog.d("PubAccountMailJsPlugin", 2, String.format("Dial %s success", new Object[] { this.jdField_a_of_type_JavaLangString }));
+    }
+  }
+  
+  private void d()
+  {
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      Activity localActivity = this.mRuntime.a();
+      if ((localActivity instanceof AppActivity))
+      {
+        if (((AppActivity)localActivity).checkSelfPermission("android.permission.SEND_SMS") != 0) {
+          ((AppActivity)localActivity).requestPermissions(new zah(this), 1, new String[] { "android.permission.SEND_SMS" });
+        }
+      }
+      else {
+        return;
+      }
+      e();
+      return;
+    }
+    e();
+  }
+  
+  private void e()
+  {
+    azmj.b(null, "CliOper", "", "", "0X8004B44", "0X8004B44", 0, 0, "", "", "", "");
+    Intent localIntent = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
+    this.mRuntime.a().startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("PubAccountMailJsPlugin", 2, String.format("Send SMS to %s success", new Object[] { this.jdField_a_of_type_JavaLangString }));
+    }
+  }
+  
+  private void f()
+  {
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      Activity localActivity = this.mRuntime.a();
+      if ((localActivity instanceof AppActivity))
+      {
+        if (((AppActivity)localActivity).checkSelfPermission("android.permission.WRITE_CONTACTS") != 0) {
+          ((AppActivity)localActivity).requestPermissions(new zai(this), 1, new String[] { "android.permission.WRITE_CONTACTS" });
+        }
+      }
+      else {
+        return;
+      }
+      g();
+      return;
+    }
+    g();
+  }
+  
+  private void g()
+  {
+    Activity localActivity = this.mRuntime.a();
+    if (this.jdField_a_of_type_Bdfp == null)
+    {
+      bdkz localbdkz = new bdkz();
+      localbdkz.a(1, localActivity.getString(2131700006));
+      localbdkz.a(2, localActivity.getString(2131700007));
+      localbdkz.a(String.format(localActivity.getString(2131700005), new Object[] { this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Bdfp = bdcd.a(localActivity, localbdkz, new zaj(this));
+      if (this.jdField_a_of_type_Bdfp != null) {}
+    }
+    else
+    {
+      this.jdField_a_of_type_Bdfp.setTitle(String.format(localActivity.getString(2131700005), new Object[] { this.jdField_a_of_type_JavaLangString }));
+    }
+    this.jdField_a_of_type_Bdfp.show();
+  }
+  
+  @TargetApi(11)
+  private void h()
+  {
+    if (Build.VERSION.SDK_INT < 11)
+    {
+      if (this.jdField_a_of_type_AndroidTextClipboardManager == null) {
+        this.jdField_a_of_type_AndroidTextClipboardManager = ((android.text.ClipboardManager)this.mRuntime.a().getSystemService("clipboard"));
+      }
+      this.jdField_a_of_type_AndroidTextClipboardManager.setText(this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMailJsPlugin", 2, String.format("Copy %s success", new Object[] { this.jdField_a_of_type_JavaLangString }));
+      }
+      return;
+      if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
+        this.jdField_a_of_type_AndroidContentClipboardManager = ((android.content.ClipboardManager)this.mRuntime.a().getSystemService("clipboard"));
+      }
+      ClipData localClipData = ClipData.newPlainText("qqMailTel", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidContentClipboardManager.setPrimaryClip(localClipData);
+    }
+  }
+  
+  private void i()
+  {
+    azmj.b(null, "CliOper", "", "", "0X8004B45", "0X8004B45", 0, 0, "", "", "", "");
+    a("android.intent.action.INSERT", "vnd.android.cursor.dir/contact");
+  }
+  
+  private void j()
+  {
+    azmj.b(null, "CliOper", "", "", "0X8004B46", "0X8004B46", 0, 0, "", "", "", "");
+    a("android.intent.action.INSERT_OR_EDIT", "vnd.android.cursor.item/person");
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bhpy == null)
+    {
+      this.jdField_a_of_type_Bhpy = bhpy.a(this.mRuntime.a());
+      this.jdField_a_of_type_Bhpy.c(String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131691699), this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Bhpy.b(2131700008);
+      this.jdField_a_of_type_Bhpy.b(2131700005);
+      this.jdField_a_of_type_Bhpy.b(2131691360);
+      this.jdField_a_of_type_Bhpy.c(2131690648);
+      this.jdField_a_of_type_Bhpy.a(new zaf(this));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.show();
+      return;
+      this.jdField_a_of_type_Bhpy.a(0, String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131691699), this.jdField_a_of_type_JavaLangString }));
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.e("PubAccountMailJsPlugin", 2, "handleJsRequest url: " + paramString1 + "pkgName:" + paramString2 + "method:" + paramString3);
+    }
+    if ((TextUtils.isEmpty(paramString2)) || (!paramString2.startsWith("mail"))) {
+      if (QLog.isColorLevel()) {
+        QLog.e("PubAccountMailJsPlugin", 2, "pkgName is null");
       }
     }
-    catch (JSONException paramJSONObject)
+    do
     {
-      yxp.d("GdtFormDataBuilder", "getFormItem", paramJSONObject);
-      return null;
-    }
-    return a(paramJSONObject, paramInt, i);
-  }
-  
-  private static GdtFormItemTextBoxData a(JSONObject paramJSONObject, int paramInt1, int paramInt2)
-  {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
-    {
-      yxp.d("GdtFormDataBuilder", "getFormItemTextBox error");
-      return null;
-    }
-    GdtFormItemTextBoxData localGdtFormItemTextBoxData = new GdtFormItemTextBoxData();
-    if (!a(paramJSONObject, paramInt1, localGdtFormItemTextBoxData, paramInt2))
-    {
-      yxp.d("GdtFormDataBuilder", "getFormItemTextBox error");
-      return null;
-    }
-    localGdtFormItemTextBoxData.regexType = paramJSONObject.optInt("regexType", -2147483648);
-    localGdtFormItemTextBoxData.content.color = yzb.a("#333333", 0);
-    localGdtFormItemTextBoxData.content.size = yzb.b(paramInt1, 40);
-    localGdtFormItemTextBoxData.content.lengthMax = paramJSONObject.optInt("maxLength", -2147483648);
-    return localGdtFormItemTextBoxData;
-  }
-  
-  private static boolean a(JSONObject paramJSONObject, int paramInt1, GdtFormItemData paramGdtFormItemData, int paramInt2)
-  {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL) || (paramGdtFormItemData == null))
-    {
-      yxp.d("GdtFormDataBuilder", "initFormItem error");
-      return false;
-    }
-    try
-    {
-      if (paramJSONObject.getInt("type") != paramInt2)
+      do
       {
-        yxp.d("GdtFormDataBuilder", "initFormItem type error");
         return false;
+        if (!TextUtils.isEmpty(paramString3)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("PubAccountMailJsPlugin", 2, "method is null");
+      return false;
+      if ((paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("PubAccountMailJsPlugin", 2, "args is empty");
+    return false;
+    paramJsBridgeListener = paramVarArgs[0];
+    if (QLog.isColorLevel()) {
+      QLog.d("PubAccountMailJsPlugin", 2, String.format("Params phone is %s", new Object[] { paramJsBridgeListener }));
+    }
+    if (!TextUtils.isEmpty(paramJsBridgeListener))
+    {
+      if (!paramString3.equals("showMenu")) {
+        break label274;
+      }
+      if (((this.jdField_a_of_type_Bhpy == null) || (!this.jdField_a_of_type_Bhpy.isShowing())) && ((this.jdField_a_of_type_Bdfp == null) || (!this.jdField_a_of_type_Bdfp.isShowing())))
+      {
+        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener;
+        a();
       }
     }
-    catch (JSONException paramJSONObject)
+    for (;;)
     {
-      yxp.d("GdtFormDataBuilder", "initFormItem", paramJSONObject);
-      return false;
+      return bool;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PubAccountMailJsPlugin", 2, "mSheet or mDialog is showing, so ignore request");
+        bool = false;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.e("PubAccountMailJsPlugin", 2, "Phone is empty");
+        }
+      }
+      label274:
+      bool = false;
     }
-    paramGdtFormItemData.paddingTop = yzb.b(paramInt1, 60);
-    paramGdtFormItemData.paddingBottom = yzb.b(paramInt1, 60);
-    paramGdtFormItemData.backgroundColor = yzb.a("#FDFEFF", 0);
-    paramGdtFormItemData.required = paramJSONObject.getBoolean("require");
-    paramGdtFormItemData.title.text = paramJSONObject.getString("name");
-    paramGdtFormItemData.title.color = yzb.a("#333333", 0);
-    paramGdtFormItemData.title.size = yzb.b(paramInt1, 40);
-    paramGdtFormItemData.titlePaddingLeft = yzb.b(paramInt1, 60);
-    paramGdtFormItemData.titlePaddingRight = yzb.b(paramInt1, 15);
-    paramGdtFormItemData.contentPaddingLeft = yzb.b(paramInt1, 15);
-    paramGdtFormItemData.contentPaddingRight = yzb.b(paramInt1, 60);
-    if (paramJSONObject.has("placeholder"))
-    {
-      paramGdtFormItemData.placeholder = new GdtTextData();
-      paramGdtFormItemData.placeholder.text = paramJSONObject.optString("placeholder");
-      paramGdtFormItemData.placeholder.color = yzb.a("#B9BDC2", 0);
-      paramGdtFormItemData.placeholder.size = yzb.b(paramInt1, 40);
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zae
  * JD-Core Version:    0.7.0.1
  */

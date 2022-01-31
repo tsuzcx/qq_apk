@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
-import ajya;
-import akat;
-import akgk;
+import alpo;
+import alsi;
+import alya;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
@@ -11,47 +11,46 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.text.TextUtils;
-import aung;
-import auoq;
-import auor;
-import avwu;
-import awap;
-import axdq;
-import axey;
-import axjs;
-import axrn;
-import ayoz;
-import aypa;
-import aypd;
-import aypg;
-import ayqo;
-import ayqp;
-import ayqq;
-import ayuc;
-import ayva;
-import ayvb;
-import ayvd;
-import ayve;
-import ayvf;
-import ayvi;
-import ayvx;
-import aywc;
-import ayyp;
-import ayzd;
-import ayze;
-import ayzu;
-import ayzv;
-import bbfb;
-import bbfj;
+import awen;
+import awfy;
+import awfz;
+import axot;
+import axso;
+import ayyu;
+import azae;
+import azey;
+import azmz;
+import bamu;
+import bamv;
+import bamy;
+import banb;
+import baoj;
+import baok;
+import baol;
+import basb;
+import basz;
+import bata;
+import batc;
+import batd;
+import bate;
+import bath;
+import batw;
+import baub;
+import bawo;
+import baxc;
+import baxd;
+import baxt;
+import baxu;
+import bddw;
+import bdee;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForBlessPTV;
 import com.tencent.mobileqq.data.MessageForDanceMachine;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -93,7 +92,7 @@ import tencent.im.msg.im_msg_body.Text;
 import tencent.im.msg.im_msg_body.VideoFile;
 
 public class ShortVideoUploadProcessor
-  extends aypg
+  extends banb
 {
   public static boolean a;
   private volatile int A = 0;
@@ -104,8 +103,8 @@ public class ShortVideoUploadProcessor
   private int F;
   protected int a;
   protected long a;
-  akat jdField_a_of_type_Akat = new ayvi(this);
-  protected akgk a;
+  alsi jdField_a_of_type_Alsi = new bath(this);
+  protected alya a;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   public QQAppInterface a;
   public Bdh_extinfo.PicInfo a;
@@ -119,7 +118,7 @@ public class ShortVideoUploadProcessor
   protected RandomAccessFile b;
   private String jdField_b_of_type_JavaLangString;
   private ArrayList<String> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  public HashMap<Integer, aypd> b;
+  public HashMap<Integer, bamy> b;
   public List<Bdh_extinfo.VideoInfo> b;
   public AtomicBoolean b;
   boolean jdField_b_of_type_Boolean = false;
@@ -130,7 +129,7 @@ public class ShortVideoUploadProcessor
   public long d;
   protected byte[] d;
   public long e;
-  public aypd e;
+  public bamy e;
   private byte[] e;
   private long jdField_f_of_type_Long = 480000L;
   private byte[] jdField_f_of_type_ArrayOfByte;
@@ -142,99 +141,99 @@ public class ShortVideoUploadProcessor
   int y;
   private int z = 1;
   
-  public ShortVideoUploadProcessor(ayvx paramayvx, aywc paramaywc)
+  public ShortVideoUploadProcessor(batw parambatw, baub parambaub)
   {
-    super(paramayvx, paramaywc);
+    super(parambatw, parambaub);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_c_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_e_of_type_Aypd = new aypd();
+    this.jdField_e_of_type_Bamy = new bamy();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.a);
     jdField_a_of_type_Boolean = VideoUpConfigInfo.sIsPreSendSignal;
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG>is preSendAckToBDHServer :" + jdField_a_of_type_Boolean);
     }
-    if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForShortVideo))) {}
-    for (this.x = ((MessageForShortVideo)this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).busiType;; this.x = 0)
+    if ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForShortVideo))) {}
+    for (this.x = ((MessageForShortVideo)this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).busiType;; this.x = 0)
     {
-      if (!this.jdField_a_of_type_Aywc.jdField_i_of_type_Boolean)
+      if (!this.jdField_a_of_type_Baub.jdField_i_of_type_Boolean)
       {
-        paramayvx = this.jdField_a_of_type_Aywc.jdField_i_of_type_JavaLangString;
-        paramaywc = paramayvx.split("QQ_&_MoblieQQ_&_QQ");
-        if (4 == paramaywc.length) {
+        parambatw = this.jdField_a_of_type_Baub.jdField_i_of_type_JavaLangString;
+        parambaub = parambatw.split("QQ_&_MoblieQQ_&_QQ");
+        if (4 == parambaub.length) {
           break;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "path was not set correctlly------path = " + paramayvx);
+          QLog.d("ShortVideoUploadProcessor", 2, "path was not set correctlly------path = " + parambatw);
         }
-        b(9304, "path =" + paramayvx);
+        b(9304, "path =" + parambatw);
         d();
         this.o = true;
       }
       return;
     }
-    this.jdField_a_of_type_Aywc.jdField_i_of_type_JavaLangString = paramaywc[0];
-    this.jdField_a_of_type_JavaLangString = paramaywc[1];
-    this.jdField_c_of_type_Int = Integer.parseInt(paramaywc[2]);
+    this.jdField_a_of_type_Baub.jdField_i_of_type_JavaLangString = parambaub[0];
+    this.jdField_a_of_type_JavaLangString = parambaub[1];
+    this.jdField_c_of_type_Int = Integer.parseInt(parambaub[2]);
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoUploadProcessor", 2, "Init params videoTime : " + this.jdField_c_of_type_Int);
     }
-    this.jdField_d_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(paramaywc[3]);
+    this.jdField_d_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(parambaub[3]);
   }
   
-  private ayzd a()
+  private baxc a()
   {
     int j = 1;
-    ayzd localayzd = new ayzd();
-    localayzd.jdField_c_of_type_Int = ((int)this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
-    localayzd.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Aywc.jdField_b_of_type_JavaLangString;
+    baxc localbaxc = new baxc();
+    localbaxc.jdField_c_of_type_Int = ((int)this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
+    localbaxc.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_b_of_type_JavaLangString;
     String str;
     int i;
-    if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForBlessPTV)))
+    if ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForBlessPTV)))
     {
-      Object localObject = (MessageForBlessPTV)this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      Object localObject = (MessageForBlessPTV)this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
       if (((MessageForBlessPTV)localObject).uinList != null)
       {
         str = (String)((MessageForBlessPTV)localObject).uinList.get(0);
-        localayzd.jdField_d_of_type_JavaLangString = str;
-        localayzd.k = 1;
+        localbaxc.jdField_d_of_type_JavaLangString = str;
+        localbaxc.k = 1;
         if (((MessageForBlessPTV)localObject).uinList == null) {
           break label462;
         }
         i = ((MessageForBlessPTV)localObject).uinList.size();
         label123:
-        localayzd.l = i;
+        localbaxc.l = i;
         label129:
-        localayzd.f = this.jdField_a_of_type_Aywc.jdField_a_of_type_Int;
-        localayzd.i = 0;
-        if ((localayzd.f != 0) && (1008 != localayzd.f)) {
+        localbaxc.f = this.jdField_a_of_type_Baub.jdField_a_of_type_Int;
+        localbaxc.i = 0;
+        if ((localbaxc.f != 0) && (1008 != localbaxc.f)) {
           break label547;
         }
-        localayzd.jdField_b_of_type_JavaLangString = null;
+        localbaxc.jdField_b_of_type_JavaLangString = null;
         label172:
-        if (localayzd.f != 0) {
+        if (localbaxc.f != 0) {
           break label562;
         }
-        localayzd.jdField_a_of_type_Int = 0;
+        localbaxc.jdField_a_of_type_Int = 0;
         label186:
-        localayzd.jdField_b_of_type_Int = 2;
-        localObject = new File(this.jdField_a_of_type_Aywc.jdField_i_of_type_JavaLangString);
+        localbaxc.jdField_b_of_type_Int = 2;
+        localObject = new File(this.jdField_a_of_type_Baub.jdField_i_of_type_JavaLangString);
         str = ((File)localObject).getName();
-        localayzd.jdField_a_of_type_JavaLangString = str;
-        localayzd.jdField_a_of_type_Long = ((File)localObject).length();
-        localayzd.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-        localayzd.jdField_b_of_type_ArrayOfByte = this.jdField_d_of_type_ArrayOfByte;
-        localayzd.jdField_e_of_type_Int = this.jdField_a_of_type_Int;
-        localayzd.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
-        localayzd.h = this.jdField_c_of_type_Int;
-        localayzd.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-        localObject = this.jdField_a_of_type_Ayqo;
-        long l = localayzd.jdField_a_of_type_Long + this.jdField_a_of_type_Long;
+        localbaxc.jdField_a_of_type_JavaLangString = str;
+        localbaxc.jdField_a_of_type_Long = ((File)localObject).length();
+        localbaxc.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+        localbaxc.jdField_b_of_type_ArrayOfByte = this.jdField_d_of_type_ArrayOfByte;
+        localbaxc.jdField_e_of_type_Int = this.jdField_a_of_type_Int;
+        localbaxc.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
+        localbaxc.h = this.jdField_c_of_type_Int;
+        localbaxc.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+        localObject = this.jdField_a_of_type_Baoj;
+        long l = localbaxc.jdField_a_of_type_Long + this.jdField_a_of_type_Long;
         this.jdField_q_of_type_Long = l;
-        ((ayqo)localObject).jdField_a_of_type_Long = l;
+        ((baoj)localObject).jdField_a_of_type_Long = l;
         str = str.substring(str.lastIndexOf(".") + 1);
         if (!"avi".equals(str)) {
           break label609;
@@ -245,46 +244,46 @@ public class ShortVideoUploadProcessor
     for (;;)
     {
       label344:
-      localayzd.g = i;
+      localbaxc.g = i;
       this.jdField_a_of_type_JavaUtilHashMap.put("param_fileFormat", String.valueOf(i));
       this.jdField_a_of_type_JavaUtilHashMap.put("param_picResLength", String.valueOf(this.jdField_b_of_type_Int));
       this.jdField_a_of_type_JavaUtilHashMap.put("param_picResWidth", String.valueOf(this.jdField_a_of_type_Int));
-      if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForShortVideo))) {}
-      for (localayzd.jdField_j_of_type_Int = ((MessageForShortVideo)this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).busiType;; localayzd.jdField_j_of_type_Int = 0)
+      if ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForShortVideo))) {}
+      for (localbaxc.jdField_j_of_type_Int = ((MessageForShortVideo)this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).busiType;; localbaxc.jdField_j_of_type_Int = 0)
       {
-        this.x = localayzd.jdField_j_of_type_Int;
-        return localayzd;
+        this.x = localbaxc.jdField_j_of_type_Int;
+        return localbaxc;
         str = "0";
         break;
         label462:
         i = 1;
         break label123;
-        if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (((MessageForShortVideo)this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).CheckIsHotVideo()))
+        if ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (((MessageForShortVideo)this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).CheckIsHotVideo()))
         {
-          localayzd.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString;
-          localayzd.k = 0;
-          localayzd.l = 1;
+          localbaxc.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString;
+          localbaxc.k = 0;
+          localbaxc.l = 1;
           break label129;
         }
-        localayzd.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString;
-        localayzd.k = 0;
-        localayzd.l = 1;
+        localbaxc.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString;
+        localbaxc.k = 0;
+        localbaxc.l = 1;
         break label129;
         label547:
-        localayzd.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString;
+        localbaxc.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString;
         break label172;
         label562:
-        if (1 == localayzd.f)
+        if (1 == localbaxc.f)
         {
-          localayzd.jdField_a_of_type_Int = 1;
+          localbaxc.jdField_a_of_type_Int = 1;
           break label186;
         }
-        if (3000 == localayzd.f)
+        if (3000 == localbaxc.f)
         {
-          localayzd.jdField_a_of_type_Int = 2;
+          localbaxc.jdField_a_of_type_Int = 2;
           break label186;
         }
-        localayzd.jdField_a_of_type_Int = 3;
+        localbaxc.jdField_a_of_type_Int = 3;
         break label186;
         label609:
         if ("mp4".equals(str))
@@ -360,10 +359,10 @@ public class ShortVideoUploadProcessor
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideoUploadProcessor", 2, "mResid uuid=" + this.jdField_f_of_type_JavaLangString);
         }
-        if (!(this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForShortVideo)) {
-          break label1064;
+        if (!(this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForShortVideo)) {
+          break label1095;
         }
-        Object localObject1 = (MessageForShortVideo)this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        Object localObject1 = (MessageForShortVideo)this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
         if (localObject1 != null)
         {
           localVideoFile.bytes_source.set(ByteStringMicro.copyFromUtf8(((MessageForShortVideo)localObject1).fileSource));
@@ -375,7 +374,7 @@ public class ShortVideoUploadProcessor
           localResvAttr = new videoFile.ResvAttr();
           localResvAttr.uint32_msg_tail_type.set(((MessageForShortVideo)localObject1).msgTailType);
           if ((localObject1 == null) || (!((MessageForShortVideo)localObject1).CheckIsHotVideo())) {
-            break label964;
+            break label995;
           }
           if (QLog.isColorLevel()) {
             QLog.d("ShortVideoUploadProcessor", 2, "constructRichText MessageForHotVideo ");
@@ -389,7 +388,7 @@ public class ShortVideoUploadProcessor
           {
             localVideoFile.bytes_file_uuid.set(ByteStringMicro.copyFromUtf8(this.jdField_l_of_type_JavaLangString));
             if ((this.jdField_c_of_type_JavaLangString == null) || (this.jdField_c_of_type_JavaLangString.length() <= 0)) {
-              break label928;
+              break label959;
             }
             localVideoFile.bytes_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(this.jdField_c_of_type_JavaLangString)));
             if ((((MessageForShortVideo)localObject1).md5 == null) || (((MessageForShortVideo)localObject1).md5.length() == 0)) {
@@ -409,21 +408,30 @@ public class ShortVideoUploadProcessor
             }
             if ((((MessageForShortVideo)localObject1).videoFileName == null) || (((MessageForShortVideo)localObject1).videoFileName.length() == 0))
             {
-              StringBuilder localStringBuilder = new StringBuilder();
+              localObject4 = new StringBuilder();
               if (this.jdField_c_of_type_JavaLangString != null) {
-                break label956;
+                break label987;
               }
               localObject3 = "HotVideo";
               ((MessageForShortVideo)localObject1).videoFileName = ((String)localObject3 + ".mp4");
             }
             localVideoFile.bytes_file_name.set(ByteStringMicro.copyFromUtf8(((MessageForShortVideo)localObject1).videoFileName));
-            if (!TextUtils.isEmpty(((MessageForShortVideo)localObject1).templateId)) {
-              localResvAttr.bytes_camera_templateid.set(ByteStringMicro.copyFromUtf8(((MessageForShortVideo)localObject1).templateId));
+            Object localObject4 = localResvAttr.bytes_camera_templateid;
+            if (((MessageForShortVideo)localObject1).templateId == null) {
+              break label1100;
             }
+            localObject3 = ((MessageForShortVideo)localObject1).templateId;
+            ((PBBytesField)localObject4).set(ByteStringMicro.copyFromUtf8((String)localObject3));
+            localObject4 = localResvAttr.bytes_camera_templateName;
+            if (((MessageForShortVideo)localObject1).templateName == null) {
+              break label1107;
+            }
+            localObject3 = ((MessageForShortVideo)localObject1).templateName;
+            ((PBBytesField)localObject4).set(ByteStringMicro.copyFromUtf8((String)localObject3));
             localResvAttr.uint32_long_video_kandian_type.set(this.F);
             localObject3 = "unknown";
             if (!this.jdField_q_of_type_Boolean) {
-              break label1025;
+              break label1056;
             }
             i = 7;
             localObject1 = "favorite";
@@ -448,7 +456,7 @@ public class ShortVideoUploadProcessor
           localVideoFile.uint32_to_chat_type.set(-1);
           localObject3 = new im_msg_body.Text();
           ((im_msg_body.Text)localObject3).setHasFlag(true);
-          ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFromUtf8(ajya.a(2131714100)));
+          ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFromUtf8(alpo.a(2131714472)));
           localObject1 = new im_msg_body.Elem();
           ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject3);
           localObject3 = new im_msg_body.Elem();
@@ -474,20 +482,20 @@ public class ShortVideoUploadProcessor
         localException.printStackTrace();
         return null;
       }
-      label928:
+      label959:
       localVideoFile.bytes_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(localException.md5)));
       continue;
-      label956:
+      label987:
       Object localObject3 = this.jdField_c_of_type_JavaLangString;
       continue;
-      label964:
+      label995:
       if (localException.CheckIsDanceVideo()) {
         localResvAttr.uint32_special_video_type.set(localException.specialVideoType);
       }
-      localVideoFile.bytes_file_name.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Aywc.jdField_i_of_type_JavaLangString));
-      localVideoFile.bytes_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(this.jdField_a_of_type_Aywc.jdField_f_of_type_JavaLangString)));
+      localVideoFile.bytes_file_name.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Baub.jdField_i_of_type_JavaLangString));
+      localVideoFile.bytes_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(this.jdField_a_of_type_Baub.jdField_f_of_type_JavaLangString)));
       continue;
-      label1025:
+      label1056:
       Object localObject2;
       if (localException.busiType == 0)
       {
@@ -503,61 +511,67 @@ public class ShortVideoUploadProcessor
         i = 6;
         localObject2 = localObject3;
         continue;
-        label1064:
+        label1095:
         localObject2 = null;
+        continue;
+        label1100:
+        localObject3 = "";
+        continue;
+        label1107:
+        localObject3 = "";
       }
     }
   }
   
   private void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    if (!ayvd.b(this.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString)) {}
-    while (!ayvd.a()) {
+    if (!batc.b(this.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString)) {}
+    while (!batc.a()) {
       return;
     }
     for (;;)
     {
       int i;
-      synchronized (ayvd.jdField_a_of_type_JavaLangObject)
+      synchronized (batc.jdField_a_of_type_JavaLangObject)
       {
-        QLog.d("ShortVideoUploadProcessor", 2, "VideoABTest : uinSeq" + this.jdField_a_of_type_Aywc.jdField_a_of_type_Long + " Switcher:" + this.z + " videoTime:" + this.jdField_c_of_type_Int);
+        QLog.d("ShortVideoUploadProcessor", 2, "VideoABTest : uinSeq" + this.jdField_a_of_type_Baub.jdField_a_of_type_Long + " Switcher:" + this.z + " videoTime:" + this.jdField_c_of_type_Int);
         this.jdField_e_of_type_Long = SystemClock.uptimeMillis();
-        ayve localayve = ayvd.a(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
-        localayve.jdField_e_of_type_Int = this.C;
-        localayve.jdField_f_of_type_Long = (this.jdField_a_of_type_Aypd.jdField_b_of_type_Long - this.jdField_a_of_type_Aypd.jdField_a_of_type_Long);
-        localayve.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
-        localayve.g = (this.jdField_e_of_type_Long - this.jdField_c_of_type_Long);
-        localayve.j = (this.jdField_e_of_type_Long - this.jdField_d_of_type_Long);
-        localayve.jdField_k_of_type_Long = this.jdField_a_of_type_Aywc.jdField_a_of_type_Long;
+        batd localbatd = batc.a(this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
+        localbatd.jdField_e_of_type_Int = this.C;
+        localbatd.jdField_f_of_type_Long = (this.jdField_a_of_type_Bamy.jdField_b_of_type_Long - this.jdField_a_of_type_Bamy.jdField_a_of_type_Long);
+        localbatd.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
+        localbatd.g = (this.jdField_e_of_type_Long - this.jdField_c_of_type_Long);
+        localbatd.j = (this.jdField_e_of_type_Long - this.jdField_d_of_type_Long);
+        localbatd.jdField_k_of_type_Long = this.jdField_a_of_type_Baub.jdField_a_of_type_Long;
         if (paramBoolean)
         {
           i = 0;
-          localayve.jdField_c_of_type_Int = i;
-          localayve.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
-          localayve.jdField_a_of_type_Int = this.jdField_a_of_type_Aywc.jdField_a_of_type_Int;
-          localayve.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString;
-          localayve.jdField_d_of_type_JavaLangString = paramString;
-          localayve.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-          localayve.jdField_q_of_type_Long = this.jdField_c_of_type_Int;
-          localayve.m = paramLong;
-          localayve.o = this.jdField_q_of_type_Long;
+          localbatd.jdField_c_of_type_Int = i;
+          localbatd.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
+          localbatd.jdField_a_of_type_Int = this.jdField_a_of_type_Baub.jdField_a_of_type_Int;
+          localbatd.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString;
+          localbatd.jdField_d_of_type_JavaLangString = paramString;
+          localbatd.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+          localbatd.jdField_q_of_type_Long = this.jdField_c_of_type_Int;
+          localbatd.m = paramLong;
+          localbatd.o = this.jdField_q_of_type_Long;
           if (this.z != 3)
           {
-            localayve.jdField_e_of_type_Long = ayvd.jdField_a_of_type_Long;
-            localayve.jdField_c_of_type_Long = ayvd.jdField_b_of_type_Long;
-            localayve.i = ayvd.jdField_c_of_type_Long;
-            localayve.h = ayvd.jdField_d_of_type_Long;
+            localbatd.jdField_e_of_type_Long = batc.jdField_a_of_type_Long;
+            localbatd.jdField_c_of_type_Long = batc.jdField_b_of_type_Long;
+            localbatd.i = batc.jdField_c_of_type_Long;
+            localbatd.h = batc.jdField_d_of_type_Long;
           }
-          localayve.jdField_c_of_type_JavaLangString = (this.jdField_a_of_type_Aypd.a(1) + ";" + this.jdField_b_of_type_Aypd.a(2) + ";");
+          localbatd.jdField_c_of_type_JavaLangString = (this.jdField_a_of_type_Bamy.a(1) + ";" + this.jdField_b_of_type_Bamy.a(2) + ";");
           paramString = new StringBuilder();
           i = 0;
           if (i < this.jdField_b_of_type_JavaUtilList.size() + 1)
           {
-            localObject1 = (aypd)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+            localObject1 = (bamy)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
             if (localObject1 == null) {
               break label537;
             }
-            paramString.append(String.valueOf(((aypd)localObject1).a()));
+            paramString.append(String.valueOf(((bamy)localObject1).a()));
             paramString.append("_");
             break label537;
           }
@@ -572,8 +586,8 @@ public class ShortVideoUploadProcessor
         if (((String)localObject1).length() > 0) {
           paramString = ((String)localObject1).substring(0, ((String)localObject1).length() - 1);
         }
-        localayve.jdField_e_of_type_JavaLangString = paramString;
-        ayvd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Aywc.jdField_a_of_type_Long, this.z);
+        localbatd.jdField_e_of_type_JavaLangString = paramString;
+        batc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baub.jdField_a_of_type_Long, this.z);
         return;
       }
       label537:
@@ -583,24 +597,24 @@ public class ShortVideoUploadProcessor
   
   private void v()
   {
-    this.jdField_a_of_type_Ayqo.jdField_a_of_type_Ayqp.a();
-    this.jdField_a_of_type_Ayqo.b.a();
-    this.jdField_a_of_type_Ayqo.jdField_a_of_type_Ayqq.a();
-    this.jdField_a_of_type_Ayqo.c.a();
-    ayqo localayqo = this.jdField_a_of_type_Ayqo;
+    this.jdField_a_of_type_Baoj.jdField_a_of_type_Baok.a();
+    this.jdField_a_of_type_Baoj.b.a();
+    this.jdField_a_of_type_Baoj.jdField_a_of_type_Baol.a();
+    this.jdField_a_of_type_Baoj.c.a();
+    baoj localbaoj = this.jdField_a_of_type_Baoj;
     long l = System.nanoTime();
-    localayqo.g = l;
+    localbaoj.g = l;
     this.jdField_k_of_type_Long = l;
-    this.jdField_a_of_type_Ayqo.h = 0L;
+    this.jdField_a_of_type_Baoj.h = 0L;
   }
   
   private void w()
   {
-    if (this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {}
-    for (MessageRecord localMessageRecord = this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;; localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_a_of_type_Aywc.jdField_a_of_type_Long))
+    if (this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {}
+    for (MessageRecord localMessageRecord = this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;; localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Long))
     {
       if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForShortVideo)) && (((MessageForShortVideo)localMessageRecord).redBagType == LocalMediaInfo.REDBAG_TYPE_GET)) {
-        axjs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        azey.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
       return;
     }
@@ -625,36 +639,36 @@ public class ShortVideoUploadProcessor
       if (this.jdField_d_of_type_ArrayOfByte != null) {
         this.jdField_a_of_type_JavaUtilHashMap.put("param_thumbMd5", HexUtil.bytes2HexStr(this.jdField_d_of_type_ArrayOfByte));
       }
-      localObject1 = ayva.a(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
-      localObject2 = this.jdField_a_of_type_Aypd.a(1) + ";" + this.jdField_e_of_type_Aypd.a(2) + ";" + this.jdField_c_of_type_Aypd.a(3);
+      localObject1 = basz.a(this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
+      localObject2 = this.jdField_a_of_type_Bamy.a(1) + ";" + this.jdField_e_of_type_Bamy.a(2) + ";" + this.jdField_c_of_type_Bamy.a(3);
       this.jdField_a_of_type_JavaUtilHashMap.put("param_cost_c_trans", localObject2);
       if (this.z != 3) {
         break label535;
       }
-      if ((this.jdField_e_of_type_Aypd.jdField_b_of_type_Long > 0L) && (((ayvb)localObject1).jdField_a_of_type_Long > 0L) && (this.jdField_e_of_type_Aypd.jdField_b_of_type_Long / 1000000L - ((ayvb)localObject1).jdField_a_of_type_Long > 0L))
+      if ((this.jdField_e_of_type_Bamy.jdField_b_of_type_Long > 0L) && (((bata)localObject1).jdField_a_of_type_Long > 0L) && (this.jdField_e_of_type_Bamy.jdField_b_of_type_Long / 1000000L - ((bata)localObject1).jdField_a_of_type_Long > 0L))
       {
-        l1 = this.jdField_e_of_type_Aypd.jdField_b_of_type_Long / 1000000L;
-        l2 = ((ayvb)localObject1).jdField_a_of_type_Long;
+        l1 = this.jdField_e_of_type_Bamy.jdField_b_of_type_Long / 1000000L;
+        l2 = ((bata)localObject1).jdField_a_of_type_Long;
         this.jdField_a_of_type_JavaUtilHashMap.put("param_cost_c_wait", String.valueOf(l1 - l2 - 400L));
       }
       label296:
-      if ((this.z == 3) && (((ayvb)localObject1).jdField_b_of_type_Long > 0L)) {
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_cost_c_comp", String.valueOf(((ayvb)localObject1).jdField_b_of_type_Long));
+      if ((this.z == 3) && (((bata)localObject1).jdField_b_of_type_Long > 0L)) {
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_cost_c_comp", String.valueOf(((bata)localObject1).jdField_b_of_type_Long));
       }
-      if ((((ayvb)localObject1).jdField_a_of_type_Long <= 0L) || (((ayvb)localObject1).jdField_c_of_type_Long <= 0L)) {
+      if ((((bata)localObject1).jdField_a_of_type_Long <= 0L) || (((bata)localObject1).jdField_c_of_type_Long <= 0L)) {
         break label665;
       }
     }
     label514:
     label535:
     label665:
-    for (long l1 = ((ayvb)localObject1).jdField_a_of_type_Long - ((ayvb)localObject1).jdField_c_of_type_Long;; l1 = 0L)
+    for (long l1 = ((bata)localObject1).jdField_a_of_type_Long - ((bata)localObject1).jdField_c_of_type_Long;; l1 = 0L)
     {
       this.jdField_a_of_type_JavaUtilHashMap.put("param_timeBeforeSend", String.valueOf(l1));
-      if (((ayvb)localObject1).jdField_a_of_type_Int > 0) {
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_recordTimes", String.valueOf(((ayvb)localObject1).jdField_a_of_type_Int));
+      if (((bata)localObject1).jdField_a_of_type_Int > 0) {
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_recordTimes", String.valueOf(((bata)localObject1).jdField_a_of_type_Int));
       }
-      ayva.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long));
+      basz.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long));
       if (this.z == 3)
       {
         localObject1 = new StringBuilder();
@@ -663,10 +677,10 @@ public class ShortVideoUploadProcessor
         {
           if (i < this.jdField_b_of_type_JavaUtilList.size() + 1)
           {
-            localObject2 = (aypd)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+            localObject2 = (bamy)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
             if (localObject2 != null)
             {
-              ((StringBuilder)localObject1).append(String.valueOf(((aypd)localObject2).a()));
+              ((StringBuilder)localObject1).append(String.valueOf(((bamy)localObject2).a()));
               ((StringBuilder)localObject1).append("_");
             }
             i += 1;
@@ -675,11 +689,11 @@ public class ShortVideoUploadProcessor
             break;
             this.jdField_a_of_type_JavaUtilHashMap.put("param_rollback", String.valueOf(this.C));
             break label78;
-            if ((this.jdField_b_of_type_Aypd.jdField_b_of_type_Long <= 0L) || (ayva.jdField_b_of_type_Long <= 0L) || (this.jdField_b_of_type_Aypd.jdField_b_of_type_Long / 1000000L - ayva.jdField_b_of_type_Long <= 0L)) {
+            if ((this.jdField_b_of_type_Bamy.jdField_b_of_type_Long <= 0L) || (basz.jdField_b_of_type_Long <= 0L) || (this.jdField_b_of_type_Bamy.jdField_b_of_type_Long / 1000000L - basz.jdField_b_of_type_Long <= 0L)) {
               break label296;
             }
-            l1 = this.jdField_b_of_type_Aypd.jdField_b_of_type_Long / 1000000L;
-            l2 = ayva.jdField_b_of_type_Long;
+            l1 = this.jdField_b_of_type_Bamy.jdField_b_of_type_Long / 1000000L;
+            l2 = basz.jdField_b_of_type_Long;
             this.jdField_a_of_type_JavaUtilHashMap.put("param_cost_c_wait", String.valueOf(l1 - l2 - 400L));
             break label296;
           }
@@ -703,15 +717,15 @@ public class ShortVideoUploadProcessor
     {
       return;
       this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      bbfb.a(String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long), "rollback", "rollBackToSendFileByBDH RollBack with reason:" + this.C + ",mCancelCode = " + this.y);
+      bddw.a(String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long), "rollback", "rollBackToSendFileByBDH RollBack with reason:" + this.C + ",mCancelCode = " + this.y);
       s();
-    } while ((this.jdField_a_of_type_Ayoz == null) || (this.jdField_a_of_type_Ayoz.a == null));
-    this.jdField_a_of_type_Ayoz.a.post(new ShortVideoUploadProcessor.10(this));
+    } while ((this.jdField_a_of_type_Bamu == null) || (this.jdField_a_of_type_Bamu.a == null));
+    this.jdField_a_of_type_Bamu.a.post(new ShortVideoUploadProcessor.10(this));
   }
   
   public void a(long paramLong, Bdh_extinfo.PicInfo paramPicInfo, List<Bdh_extinfo.VideoInfo> paramList)
   {
-    bbfb.a(String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long), "svrcomp_s", "<BDH_LOG><ShortVideoUploadProcessor>sendAckToBDHServer videoInfos.size : " + paramList.size());
+    bddw.a(String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long), "svrcomp_s", "<BDH_LOG><ShortVideoUploadProcessor>sendAckToBDHServer videoInfos.size : " + paramList.size());
     u();
     Bdh_extinfo.ShortVideoReqExtInfo localShortVideoReqExtInfo = new Bdh_extinfo.ShortVideoReqExtInfo();
     localShortVideoReqExtInfo.uint32_cmd.set(3);
@@ -724,27 +738,27 @@ public class ShortVideoUploadProcessor
     {
       localShortVideoReqExtInfo.bool_is_merge_cmd_before_data.set(true);
       localShortVideoSureReqInfo = new Bdh_extinfo.ShortVideoSureReqInfo();
-      paramLong = Long.parseLong(this.jdField_a_of_type_Aywc.jdField_b_of_type_JavaLangString);
-      l = Long.parseLong(this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString);
+      paramLong = Long.parseLong(this.jdField_a_of_type_Baub.jdField_b_of_type_JavaLangString);
+      l = Long.parseLong(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString);
       localShortVideoSureReqInfo.uint64_fromuin.set(paramLong);
       localShortVideoSureReqInfo.uint64_touin.set(l);
-      if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_Int != 0) && (1008 != this.jdField_a_of_type_Aywc.jdField_a_of_type_Int)) {
+      if ((this.jdField_a_of_type_Baub.jdField_a_of_type_Int != 0) && (1008 != this.jdField_a_of_type_Baub.jdField_a_of_type_Int)) {
         break label390;
       }
       localShortVideoSureReqInfo.uint64_group_code.set(0L);
-      if (this.jdField_a_of_type_Aywc.jdField_a_of_type_Int != 0) {
+      if (this.jdField_a_of_type_Baub.jdField_a_of_type_Int != 0) {
         break label403;
       }
       i = 0;
       label184:
-      if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (!(this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForShortVideo))) {
+      if ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (!(this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForShortVideo))) {
         break label445;
       }
     }
     label390:
     label403:
     label445:
-    for (int j = ((MessageForShortVideo)this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).busiType;; j = 0)
+    for (int j = ((MessageForShortVideo)this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).busiType;; j = 0)
     {
       this.x = j;
       localShortVideoSureReqInfo.uint32_chat_type.set(i);
@@ -754,10 +768,10 @@ public class ShortVideoUploadProcessor
       localShortVideoSureReqInfo.rpt_msg_merge_videoinfo.set(paramList);
       localShortVideoReqExtInfo.msg_shortvideo_sure_req.set(localShortVideoSureReqInfo);
       paramPicInfo = new Cryptor().encrypt(localShortVideoReqExtInfo.toByteArray(), this.jdField_e_of_type_ArrayOfByte);
-      if (ayvd.a()) {
+      if (batc.a()) {
         this.jdField_d_of_type_Long = SystemClock.uptimeMillis();
       }
-      paramList = new ayvf(this);
+      paramList = new bate(this);
       paramPicInfo = new RequestAck(String.valueOf(paramLong), 16, this.jdField_f_of_type_ArrayOfByte, 30000L, paramList, paramPicInfo, this.jdField_d_of_type_ArrayOfByte, this.D);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().SubmitAckRequest(paramPicInfo);
       this.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck = paramPicInfo;
@@ -766,12 +780,12 @@ public class ShortVideoUploadProcessor
       break;
       localShortVideoSureReqInfo.uint64_group_code.set(l);
       break label171;
-      if (1 == this.jdField_a_of_type_Aywc.jdField_a_of_type_Int)
+      if (1 == this.jdField_a_of_type_Baub.jdField_a_of_type_Int)
       {
         i = 1;
         break label184;
       }
-      if (3000 == this.jdField_a_of_type_Aywc.jdField_a_of_type_Int)
+      if (3000 == this.jdField_a_of_type_Baub.jdField_a_of_type_Int)
       {
         i = 2;
         break label184;
@@ -781,34 +795,34 @@ public class ShortVideoUploadProcessor
     }
   }
   
-  public void a(ayyp paramayyp, ayze paramayze)
+  public void a(bawo parambawo, baxd parambaxd)
   {
-    this.jdField_a_of_type_Ayyp = null;
-    if (paramayze != null)
+    this.jdField_a_of_type_Bawo = null;
+    if (parambaxd != null)
     {
       int i = 0;
-      if (i < paramayze.jdField_a_of_type_JavaUtilList.size())
+      if (i < parambaxd.jdField_a_of_type_JavaUtilList.size())
       {
-        paramayyp = (ayzu)paramayze.jdField_a_of_type_JavaUtilList.get(i);
+        parambawo = (baxt)parambaxd.jdField_a_of_type_JavaUtilList.get(i);
         if (QLog.isColorLevel()) {
-          b("procUrl", paramayyp.toString());
+          b("procUrl", parambawo.toString());
         }
-        a(this.jdField_a_of_type_Aypd, paramayyp);
+        a(this.jdField_a_of_type_Bamy, parambawo);
         if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "onBusiProtoResp()------response.result = " + paramayyp.jdField_c_of_type_Int);
+          QLog.d("ShortVideoUploadProcessor", 2, "onBusiProtoResp()------response.result = " + parambawo.jdField_c_of_type_Int);
         }
-        this.jdField_f_of_type_JavaLangString = paramayyp.jdField_a_of_type_JavaLangString;
-        if (paramayyp.jdField_c_of_type_Int == 0)
+        this.jdField_f_of_type_JavaLangString = parambawo.jdField_a_of_type_JavaLangString;
+        if (parambawo.jdField_c_of_type_Int == 0)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoUploadProcessor", 2, "onBusiProtoResp()------response.isExist = " + paramayyp.jdField_a_of_type_Boolean);
+            QLog.d("ShortVideoUploadProcessor", 2, "onBusiProtoResp()------response.isExist = " + parambawo.jdField_a_of_type_Boolean);
           }
-          this.E = paramayyp.jdField_a_of_type_Int;
-          this.F = paramayyp.jdField_b_of_type_Int;
+          this.E = parambawo.jdField_a_of_type_Int;
+          this.F = parambawo.jdField_b_of_type_Int;
           if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoUploadProcessor", 2, "onBusiProtoResp()------response.videoAttr = " + paramayyp.jdField_a_of_type_Int + ", response.videoKandianType = " + paramayyp.jdField_b_of_type_Int);
+            QLog.d("ShortVideoUploadProcessor", 2, "onBusiProtoResp()------response.videoAttr = " + parambawo.jdField_a_of_type_Int + ", response.videoKandianType = " + parambawo.jdField_b_of_type_Int);
           }
-          if (paramayyp.jdField_a_of_type_Boolean)
+          if (parambawo.jdField_a_of_type_Boolean)
           {
             this.jdField_b_of_type_Boolean = true;
             d(1007);
@@ -819,7 +833,7 @@ public class ShortVideoUploadProcessor
         {
           i += 1;
           break;
-          this.jdField_r_of_type_Long = paramayyp.jdField_a_of_type_Long;
+          this.jdField_r_of_type_Long = parambawo.jdField_a_of_type_Long;
           d("<BDH_LOG> onBusiProtoResp() send by bdh");
           this.w = 1;
           r();
@@ -879,7 +893,7 @@ public class ShortVideoUploadProcessor
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG>sendVideoThumbByBDH  filePath:" + paramString + " index :" + 0 + " md5:" + HexUtil.bytes2HexStr(paramArrayOfByte3) + " fileSize:" + paramInt);
     }
-    this.jdField_e_of_type_Aypd.a();
+    this.jdField_e_of_type_Bamy.a();
     Bdh_extinfo.ShortVideoReqExtInfo localShortVideoReqExtInfo = new Bdh_extinfo.ShortVideoReqExtInfo();
     localShortVideoReqExtInfo.uint32_cmd.set(1);
     localShortVideoReqExtInfo.uint64_session_id.set(paramLong);
@@ -907,16 +921,16 @@ public class ShortVideoUploadProcessor
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: new 1128	ayvj
+    //   2: new 1130	bati
     //   5: dup
     //   6: aload_0
-    //   7: invokespecial 1129	ayvj:<init>	(Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;)V
+    //   7: invokespecial 1131	bati:<init>	(Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;)V
     //   10: astore 8
-    //   12: new 1131	com/tencent/mobileqq/highway/transaction/Transaction
+    //   12: new 1133	com/tencent/mobileqq/highway/transaction/Transaction
     //   15: dup
     //   16: aload_0
     //   17: getfield 130	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   20: invokevirtual 1134	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   20: invokevirtual 1136	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   23: bipush 16
     //   25: aload_1
     //   26: iconst_0
@@ -924,26 +938,26 @@ public class ShortVideoUploadProcessor
     //   28: aload_3
     //   29: aload 8
     //   31: aload 4
-    //   33: invokespecial 1137	com/tencent/mobileqq/highway/transaction/Transaction:<init>	(Ljava/lang/String;ILjava/lang/String;I[B[BLcom/tencent/mobileqq/highway/api/ITransactionCallback;[B)V
+    //   33: invokespecial 1139	com/tencent/mobileqq/highway/transaction/Transaction:<init>	(Ljava/lang/String;ILjava/lang/String;I[B[BLcom/tencent/mobileqq/highway/api/ITransactionCallback;[B)V
     //   36: astore_1
     //   37: aload_0
-    //   38: getfield 780	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:D	I
+    //   38: getfield 782	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:D	I
     //   41: ifeq +11 -> 52
     //   44: aload_1
     //   45: aload_0
-    //   46: getfield 780	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:D	I
-    //   49: putfield 1140	com/tencent/mobileqq/highway/transaction/Transaction:cacheIp	I
+    //   46: getfield 782	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:D	I
+    //   49: putfield 1142	com/tencent/mobileqq/highway/transaction/Transaction:cacheIp	I
     //   52: aload 8
     //   54: aload_1
-    //   55: putfield 1143	ayvj:jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction	Lcom/tencent/mobileqq/highway/transaction/Transaction;
+    //   55: putfield 1145	bati:jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction	Lcom/tencent/mobileqq/highway/transaction/Transaction;
     //   58: aload 8
     //   60: iload 5
-    //   62: putfield 1144	ayvj:jdField_a_of_type_Int	I
+    //   62: putfield 1146	bati:jdField_a_of_type_Int	I
     //   65: aload_0
     //   66: getfield 130	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   69: invokevirtual 1005	com/tencent/mobileqq/app/QQAppInterface:getHwEngine	()Lcom/tencent/mobileqq/highway/HwEngine;
+    //   69: invokevirtual 1007	com/tencent/mobileqq/app/QQAppInterface:getHwEngine	()Lcom/tencent/mobileqq/highway/HwEngine;
     //   72: aload_1
-    //   73: invokevirtual 1148	com/tencent/mobileqq/highway/HwEngine:submitTransactionTask	(Lcom/tencent/mobileqq/highway/transaction/Transaction;)I
+    //   73: invokevirtual 1150	com/tencent/mobileqq/highway/HwEngine:submitTransactionTask	(Lcom/tencent/mobileqq/highway/transaction/Transaction;)I
     //   76: istore 7
     //   78: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   81: ifeq +83 -> 164
@@ -952,62 +966,62 @@ public class ShortVideoUploadProcessor
     //   87: new 149	java/lang/StringBuilder
     //   90: dup
     //   91: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   94: ldc_w 1150
+    //   94: ldc_w 1152
     //   97: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   100: iload 7
     //   102: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   105: ldc_w 1152
+    //   105: ldc_w 1154
     //   108: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: aload_1
-    //   112: invokevirtual 1155	com/tencent/mobileqq/highway/transaction/Transaction:getTransationId	()I
+    //   112: invokevirtual 1157	com/tencent/mobileqq/highway/transaction/Transaction:getTransationId	()I
     //   115: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   118: ldc_w 1157
+    //   118: ldc_w 1159
     //   121: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: aload_0
-    //   125: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   128: getfield 236	aywc:jdField_a_of_type_Long	J
-    //   131: invokevirtual 681	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   134: ldc_w 1159
+    //   125: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   128: getfield 236	baub:jdField_a_of_type_Long	J
+    //   131: invokevirtual 683	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   134: ldc_w 1161
     //   137: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   140: aload_1
-    //   141: getfield 1162	com/tencent/mobileqq/highway/transaction/Transaction:filePath	Ljava/lang/String;
+    //   141: getfield 1164	com/tencent/mobileqq/highway/transaction/Transaction:filePath	Ljava/lang/String;
     //   144: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: ldc_w 1164
+    //   147: ldc_w 1166
     //   150: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   153: bipush 16
     //   155: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   158: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   161: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   164: aload_0
-    //   165: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   168: getfield 236	aywc:jdField_a_of_type_Long	J
-    //   171: invokestatic 755	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   174: ldc_w 1166
+    //   165: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   168: getfield 236	baub:jdField_a_of_type_Long	J
+    //   171: invokestatic 757	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   174: ldc_w 1168
     //   177: new 149	java/lang/StringBuilder
     //   180: dup
     //   181: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   184: ldc_w 1168
+    //   184: ldc_w 1170
     //   187: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   190: iload 5
     //   192: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   195: ldc_w 1170
+    //   195: ldc_w 1172
     //   198: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   201: aload 6
-    //   203: invokestatic 843	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   203: invokestatic 845	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   206: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: ldc_w 1172
+    //   209: ldc_w 1174
     //   212: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   215: aload_1
-    //   216: invokevirtual 1155	com/tencent/mobileqq/highway/transaction/Transaction:getTransationId	()I
+    //   216: invokevirtual 1157	com/tencent/mobileqq/highway/transaction/Transaction:getTransationId	()I
     //   219: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   222: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   225: invokestatic 899	bbfb:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   228: new 88	aypd
+    //   225: invokestatic 901	bddw:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   228: new 88	bamy
     //   231: dup
-    //   232: invokespecial 89	aypd:<init>	()V
+    //   232: invokespecial 89	bamy:<init>	()V
     //   235: astore_2
     //   236: aload_2
-    //   237: invokevirtual 1119	aypd:a	()V
+    //   237: invokevirtual 1121	bamy:a	()V
     //   240: aload_0
     //   241: getfield 86	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   244: iload 5
@@ -1022,7 +1036,7 @@ public class ShortVideoUploadProcessor
     //   262: new 149	java/lang/StringBuilder
     //   265: dup
     //   266: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   269: ldc_w 1174
+    //   269: ldc_w 1176
     //   272: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   275: iload 5
     //   277: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1036,7 +1050,7 @@ public class ShortVideoUploadProcessor
     //   293: aload_0
     //   294: getfield 81	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_c_of_type_JavaUtilList	Ljava/util/List;
     //   297: aload_1
-    //   298: invokeinterface 1098 2 0
+    //   298: invokeinterface 1100 2 0
     //   303: pop
     //   304: goto -14 -> 290
     //   307: astore_1
@@ -1054,7 +1068,7 @@ public class ShortVideoUploadProcessor
     //   0	312	5	paramInt	int
     //   0	312	6	paramArrayOfByte4	byte[]
     //   76	185	7	i	int
-    //   10	49	8	localayvj	ayvj
+    //   10	49	8	localbati	bati
     // Exception table:
     //   from	to	target	type
     //   2	52	307	finally
@@ -1066,7 +1080,7 @@ public class ShortVideoUploadProcessor
   
   public void a(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (ayuc.b(this.jdField_j_of_type_Int))) {}
+    if ((!paramBoolean) && (basb.b(this.jdField_j_of_type_Int))) {}
     long l;
     label252:
     do
@@ -1082,12 +1096,12 @@ public class ShortVideoUploadProcessor
       {
         i = 2;
         this.jdField_m_of_type_Int = (i | j);
-        if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Aywc.jdField_a_of_type_Int == 3000)) {
-          this.jdField_a_of_type_JavaUtilHashMap.put("param_grpUin", this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString);
+        if ((this.jdField_a_of_type_Baub.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Baub.jdField_a_of_type_Int == 3000)) {
+          this.jdField_a_of_type_JavaUtilHashMap.put("param_grpUin", this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString);
         }
         this.jdField_l_of_type_Long = System.currentTimeMillis();
         l = (System.nanoTime() - this.jdField_k_of_type_Long) / 1000000L;
-        localObject1 = this.jdField_a_of_type_Aypd.a(1) + ";" + this.jdField_b_of_type_Aypd.a(2) + ";" + this.jdField_c_of_type_Aypd.a(3);
+        localObject1 = this.jdField_a_of_type_Bamy.a(1) + ";" + this.jdField_b_of_type_Bamy.a(2) + ";" + this.jdField_c_of_type_Bamy.a(3);
         this.jdField_a_of_type_JavaUtilHashMap.put("param_step", localObject1);
         this.jdField_a_of_type_JavaUtilHashMap.put("param_busiType", this.x + "");
         localObject2 = this.jdField_a_of_type_JavaUtilHashMap;
@@ -1096,36 +1110,36 @@ public class ShortVideoUploadProcessor
         }
         localObject1 = this.jdField_l_of_type_JavaLangString;
         ((HashMap)localObject2).put("param_uuid", localObject1);
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_toUin", this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString);
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_toUin", this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString);
         this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.jdField_q_of_type_Long));
         this.jdField_a_of_type_JavaUtilHashMap.put("param_thumbSize", String.valueOf(this.jdField_a_of_type_Long));
         this.jdField_a_of_type_JavaUtilHashMap.put("param_isSecondTrans", this.jdField_b_of_type_Boolean + "");
-        if (this.jdField_a_of_type_Aywc.jdField_e_of_type_Int == 0) {
+        if (this.jdField_a_of_type_Baub.jdField_e_of_type_Int == 0) {
           this.jdField_a_of_type_JavaUtilHashMap.put("param_BDHExistBeforeVideoUpload", String.valueOf(this.jdField_a_of_type_JavaLangBoolean));
         }
         if (this.z != 3) {
           this.jdField_a_of_type_JavaUtilHashMap.put("param_videoDuration", String.valueOf(this.jdField_c_of_type_Int));
         }
         x();
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_fileMd5", this.jdField_a_of_type_Aywc.jdField_f_of_type_JavaLangString);
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_fileMd5", this.jdField_a_of_type_Baub.jdField_f_of_type_JavaLangString);
         this.jdField_a_of_type_JavaUtilHashMap.put("param_BDH_Cache_Diff", String.valueOf(this.jdField_r_of_type_Boolean));
         if (!paramBoolean) {
           break label664;
         }
-        axrn.a(BaseApplication.getContext()).a(null, b(), true, l, this.jdField_q_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
+        b(true, l);
+        azmz.a(BaseApplication.getContext()).a(null, b(), true, l, this.jdField_q_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
       }
       for (;;)
       {
-        b(paramBoolean, l);
         l();
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideoUploadProcessor", 2, "AutoMonitor_fragment MineFragment onAttach");
         }
-        if (((MessageForShortVideo)this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).busiType == 0) {
-          ThreadManager.post(new ShortVideoUploadProcessor.5(this, this.jdField_a_of_type_Aywc.jdField_i_of_type_JavaLangString), 5, null, true);
+        if (((MessageForShortVideo)this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).busiType == 0) {
+          ThreadManager.post(new ShortVideoUploadProcessor.5(this, this.jdField_a_of_type_Baub.jdField_i_of_type_JavaLangString), 5, null, true);
         }
         if (!QLog.isColorLevel()) {
-          break label791;
+          break label798;
         }
         localObject1 = new StringBuilder();
         localObject2 = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
@@ -1149,22 +1163,23 @@ public class ShortVideoUploadProcessor
         }
         this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_j_of_type_Int));
         this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.jdField_j_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_uinType", String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Int));
-        axrn.a(BaseApplication.getContext()).a(null, b(), false, l, this.jdField_q_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_uinType", String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Int));
+        b(false, l);
+        azmz.a(BaseApplication.getContext()).a(null, b(), false, l, this.jdField_q_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
       }
-      bbfb.a(String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long), "report", ((StringBuilder)localObject1).toString());
+      bddw.a(String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long), "report", ((StringBuilder)localObject1).toString());
     } while ((this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction == null) || (this.w != 1) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine() == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().getCurrentConfig().segNum <= 32L));
     label655:
     label664:
+    label798:
     Object localObject1 = new HashMap();
-    label791:
     ((HashMap)localObject1).put("segNum", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().getCurrentConfig().segNum));
     ((HashMap)localObject1).put("param_FailCode", String.valueOf(this.jdField_j_of_type_Int));
-    axrn.a(BaseApplication.getContext()).a(null, "tempVideoUploadBDH", paramBoolean, l, this.jdField_q_of_type_Long, (HashMap)localObject1, "");
+    azmz.a(BaseApplication.getContext()).a(null, "tempVideoUploadBDH", paramBoolean, l, this.jdField_q_of_type_Long, (HashMap)localObject1, "");
   }
   
   /* Error */
-  public void aR_()
+  public void aS_()
   {
     // Byte code:
     //   0: aload_0
@@ -1172,14 +1187,14 @@ public class ShortVideoUploadProcessor
     //   4: ifeq +4 -> 8
     //   7: return
     //   8: aload_0
-    //   9: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   12: getfield 174	aywc:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   9: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   12: getfield 174	baub:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
     //   15: checkcast 176	com/tencent/mobileqq/data/MessageForShortVideo
     //   18: getfield 179	com/tencent/mobileqq/data/MessageForShortVideo:busiType	I
     //   21: ifne +39 -> 60
     //   24: aload_0
-    //   25: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   28: getfield 174	aywc:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   25: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   28: getfield 174	baub:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
     //   31: checkcast 176	com/tencent/mobileqq/data/MessageForShortVideo
     //   34: getfield 1315	com/tencent/mobileqq/data/MessageForShortVideo:isPause	Z
     //   37: ifeq +23 -> 60
@@ -1199,10 +1214,10 @@ public class ShortVideoUploadProcessor
     //   69: ldc_w 1321
     //   72: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   75: aload_0
-    //   76: invokespecial 1323	aypg:aR_	()V
+    //   76: invokespecial 1323	banb:aS_	()V
     //   79: aload_0
-    //   80: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   83: getfield 174	aywc:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   80: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   83: getfield 174	baub:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
     //   86: checkcast 176	com/tencent/mobileqq/data/MessageForShortVideo
     //   89: invokevirtual 350	com/tencent/mobileqq/data/MessageForShortVideo:CheckIsHotVideo	()Z
     //   92: ifeq +143 -> 235
@@ -1213,17 +1228,17 @@ public class ShortVideoUploadProcessor
     //   104: ldc_w 1325
     //   107: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   110: aload_0
-    //   111: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   114: getfield 1326	aywc:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   111: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   114: getfield 1326	baub:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   117: ifnull +16 -> 133
     //   120: aload_0
-    //   121: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   124: getfield 1326	aywc:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   121: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   124: getfield 1326	baub:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   127: instanceof 1328
     //   130: ifeq +92 -> 222
     //   133: aload_0
-    //   134: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   137: getfield 174	aywc:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   134: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   137: getfield 174	baub:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
     //   140: checkcast 176	com/tencent/mobileqq/data/MessageForShortVideo
     //   143: astore_2
     //   144: aload_2
@@ -1262,41 +1277,41 @@ public class ShortVideoUploadProcessor
     //   219: putfield 227	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_d_of_type_ArrayOfByte	[B
     //   222: aload_0
     //   223: sipush 1001
-    //   226: invokevirtual 1050	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:d	(I)V
+    //   226: invokevirtual 1052	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:d	(I)V
     //   229: aload_0
     //   230: iconst_0
-    //   231: invokevirtual 1052	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:b	(Z)V
+    //   231: invokevirtual 1054	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:b	(Z)V
     //   234: return
     //   235: aload_0
-    //   236: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   239: getfield 1326	aywc:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   236: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   239: getfield 1326	baub:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   242: ifnull +33 -> 275
     //   245: aload_0
-    //   246: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   249: getfield 1326	aywc:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   246: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   249: getfield 1326	baub:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   252: instanceof 1333
     //   255: ifeq +20 -> 275
     //   258: aload_0
     //   259: aload_0
-    //   260: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   263: getfield 1326	aywc:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   266: checkcast 1333	axey
-    //   269: getfield 1334	axey:jdField_i_of_type_Boolean	Z
+    //   260: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   263: getfield 1326	baub:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   266: checkcast 1333	azae
+    //   269: getfield 1334	azae:jdField_i_of_type_Boolean	Z
     //   272: putfield 549	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_q_of_type_Boolean	Z
     //   275: aload_0
     //   276: sipush 1001
-    //   279: invokevirtual 1050	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:d	(I)V
+    //   279: invokevirtual 1052	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:d	(I)V
     //   282: aload_0
-    //   283: getfield 306	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Ayqo	Layqo;
-    //   286: invokevirtual 1335	ayqo:a	()V
-    //   289: invokestatic 673	ayvd:a	()Z
+    //   283: getfield 306	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baoj	Lbaoj;
+    //   286: invokevirtual 1335	baoj:a	()V
+    //   289: invokestatic 675	batc:a	()Z
     //   292: ifeq +10 -> 302
     //   295: aload_0
-    //   296: invokestatic 690	android/os/SystemClock:uptimeMillis	()J
-    //   299: putfield 708	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_c_of_type_Long	J
+    //   296: invokestatic 692	android/os/SystemClock:uptimeMillis	()J
+    //   299: putfield 710	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_c_of_type_Long	J
     //   302: aload_0
-    //   303: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   306: getfield 182	aywc:jdField_i_of_type_Boolean	Z
+    //   303: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   306: getfield 182	baub:jdField_i_of_type_Boolean	Z
     //   309: ifeq +144 -> 453
     //   312: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   315: ifeq +12 -> 327
@@ -1309,13 +1324,13 @@ public class ShortVideoUploadProcessor
     //   329: putfield 132	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:z	I
     //   332: aload_0
     //   333: aload_0
-    //   334: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   337: getfield 1338	aywc:jdField_j_of_type_JavaLangString	Ljava/lang/String;
+    //   334: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   337: getfield 1338	baub:jdField_j_of_type_JavaLangString	Ljava/lang/String;
     //   340: putfield 206	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   343: aload_0
     //   344: aload_0
-    //   345: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   348: getfield 1340	aywc:k	Ljava/lang/String;
+    //   345: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   348: getfield 1340	baub:k	Ljava/lang/String;
     //   351: invokestatic 225	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
     //   354: putfield 227	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_d_of_type_ArrayOfByte	[B
     //   357: aload_0
@@ -1369,26 +1384,26 @@ public class ShortVideoUploadProcessor
     //   449: invokevirtual 1357	java/io/IOException:printStackTrace	()V
     //   452: return
     //   453: aload_0
-    //   454: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   457: getfield 656	aywc:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   460: invokestatic 537	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   454: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   457: getfield 656	baub:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   460: invokestatic 1363	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   463: ifne +40 -> 503
     //   466: aload_0
     //   467: aload_0
-    //   468: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   471: getfield 656	aywc:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   468: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   471: getfield 656	baub:jdField_f_of_type_JavaLangString	Ljava/lang/String;
     //   474: invokestatic 225	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
     //   477: putfield 288	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ArrayOfByte	[B
     //   480: aload_0
-    //   481: getfield 306	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Ayqo	Layqo;
+    //   481: getfield 306	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baoj	Lbaoj;
     //   484: astore_2
     //   485: aload_0
-    //   486: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   489: getfield 656	aywc:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   486: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   489: getfield 656	baub:jdField_f_of_type_JavaLangString	Ljava/lang/String;
     //   492: astore_3
     //   493: aload_2
     //   494: aload_3
-    //   495: putfield 1358	ayqo:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   495: putfield 1364	baoj:jdField_f_of_type_JavaLangString	Ljava/lang/String;
     //   498: aload_0
     //   499: aload_3
     //   500: putfield 494	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_c_of_type_JavaLangString	Ljava/lang/String;
@@ -1396,85 +1411,85 @@ public class ShortVideoUploadProcessor
     //   504: getfield 288	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ArrayOfByte	[B
     //   507: ifnonnull +15 -> 522
     //   510: aload_0
-    //   511: invokevirtual 1360	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:j	()Z
+    //   511: invokevirtual 1366	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:h	()Z
     //   514: ifne +8 -> 522
     //   517: aload_0
     //   518: invokevirtual 201	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:d	()V
     //   521: return
     //   522: aload_0
-    //   523: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   526: getfield 184	aywc:jdField_i_of_type_JavaLangString	Ljava/lang/String;
-    //   529: invokestatic 1365	bbdx:b	(Ljava/lang/String;)Z
+    //   523: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   526: getfield 184	baub:jdField_i_of_type_JavaLangString	Ljava/lang/String;
+    //   529: invokestatic 1371	bdcs:b	(Ljava/lang/String;)Z
     //   532: ifne +18 -> 550
     //   535: aload_0
     //   536: sipush 9042
-    //   539: ldc_w 1367
+    //   539: ldc_w 1373
     //   542: invokevirtual 199	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:b	(ILjava/lang/String;)V
     //   545: aload_0
     //   546: invokevirtual 201	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:d	()V
     //   549: return
     //   550: aload_0
-    //   551: getfield 1369	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   551: getfield 1375	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   554: ifnonnull +59 -> 613
     //   557: aload_0
-    //   558: new 1371	java/io/RandomAccessFile
+    //   558: new 1377	java/io/RandomAccessFile
     //   561: dup
     //   562: aload_0
-    //   563: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   566: getfield 184	aywc:jdField_i_of_type_JavaLangString	Ljava/lang/String;
-    //   569: ldc_w 1372
-    //   572: invokespecial 1374	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   575: putfield 1369	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   563: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   566: getfield 184	baub:jdField_i_of_type_JavaLangString	Ljava/lang/String;
+    //   569: ldc_w 1378
+    //   572: invokespecial 1380	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   575: putfield 1375	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   578: aload_0
-    //   579: getfield 1369	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   579: getfield 1375	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   582: ifnonnull +31 -> 613
     //   585: aload_0
     //   586: sipush 9303
-    //   589: ldc_w 1376
+    //   589: ldc_w 1382
     //   592: invokevirtual 199	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:b	(ILjava/lang/String;)V
     //   595: aload_0
     //   596: invokevirtual 201	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:d	()V
     //   599: return
     //   600: astore_2
     //   601: aload_2
-    //   602: invokevirtual 1377	java/io/FileNotFoundException:printStackTrace	()V
+    //   602: invokevirtual 1383	java/io/FileNotFoundException:printStackTrace	()V
     //   605: aload_0
     //   606: aconst_null
-    //   607: putfield 1369	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   607: putfield 1375	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   610: goto -32 -> 578
     //   613: aload_0
-    //   614: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   617: getfield 174	aywc:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   614: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   617: getfield 174	baub:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
     //   620: checkcast 176	com/tencent/mobileqq/data/MessageForShortVideo
     //   623: getfield 179	com/tencent/mobileqq/data/MessageForShortVideo:busiType	I
     //   626: iconst_1
     //   627: if_icmpne +43 -> 670
-    //   630: getstatic 1380	com/tencent/mobileqq/highway/utils/VideoUpConfigInfo:sSwitch	I
+    //   630: getstatic 1386	com/tencent/mobileqq/highway/utils/VideoUpConfigInfo:sSwitch	I
     //   633: iconst_2
     //   634: if_icmpne +8 -> 642
     //   637: aload_0
     //   638: iconst_2
     //   639: putfield 132	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:z	I
-    //   642: getstatic 1381	ayva:jdField_a_of_type_Long	J
+    //   642: getstatic 1387	basz:jdField_a_of_type_Long	J
     //   645: lconst_0
     //   646: lcmp
     //   647: ifle -286 -> 361
     //   650: aload_0
     //   651: getfield 330	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   654: ldc_w 864
-    //   657: getstatic 1381	ayva:jdField_a_of_type_Long	J
-    //   660: invokestatic 755	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   654: ldc_w 866
+    //   657: getstatic 1387	basz:jdField_a_of_type_Long	J
+    //   660: invokestatic 757	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   663: invokevirtual 338	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   666: pop
     //   667: goto -306 -> 361
     //   670: aload_0
-    //   671: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   674: getfield 174	aywc:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   671: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   674: getfield 174	baub:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
     //   677: checkcast 176	com/tencent/mobileqq/data/MessageForShortVideo
     //   680: getfield 179	com/tencent/mobileqq/data/MessageForShortVideo:busiType	I
     //   683: iconst_2
     //   684: if_icmpne -42 -> 642
-    //   687: getstatic 1384	com/tencent/mobileqq/highway/utils/PTVUpConfigInfo:sSwitch	I
+    //   687: getstatic 1390	com/tencent/mobileqq/highway/utils/PTVUpConfigInfo:sSwitch	I
     //   690: iconst_2
     //   691: if_icmpne -49 -> 642
     //   694: aload_0
@@ -1486,22 +1501,22 @@ public class ShortVideoUploadProcessor
     //   706: aload_3
     //   707: invokevirtual 1356	java/io/FileInputStream:close	()V
     //   710: aload_0
-    //   711: getfield 1386	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   711: getfield 1392	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   714: ifnonnull +125 -> 839
     //   717: aload_0
-    //   718: new 1371	java/io/RandomAccessFile
+    //   718: new 1377	java/io/RandomAccessFile
     //   721: dup
     //   722: aload_0
     //   723: getfield 206	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   726: ldc_w 1372
-    //   729: invokespecial 1374	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   732: putfield 1386	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   726: ldc_w 1378
+    //   729: invokespecial 1380	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   732: putfield 1392	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   735: aload_0
-    //   736: getfield 1386	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   736: getfield 1392	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   739: ifnonnull +100 -> 839
     //   742: aload_0
     //   743: sipush 9303
-    //   746: ldc_w 1388
+    //   746: ldc_w 1394
     //   749: invokevirtual 199	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:b	(ILjava/lang/String;)V
     //   752: aload_0
     //   753: invokevirtual 201	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:d	()V
@@ -1522,7 +1537,7 @@ public class ShortVideoUploadProcessor
     //   777: astore_2
     //   778: aload_0
     //   779: aload 4
-    //   781: invokevirtual 1391	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:a	(Ljava/io/IOException;)V
+    //   781: invokevirtual 1397	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:a	(Ljava/io/IOException;)V
     //   784: aload_3
     //   785: astore_2
     //   786: aload_0
@@ -1551,10 +1566,10 @@ public class ShortVideoUploadProcessor
     //   823: goto -7 -> 816
     //   826: astore_2
     //   827: aload_2
-    //   828: invokevirtual 1377	java/io/FileNotFoundException:printStackTrace	()V
+    //   828: invokevirtual 1383	java/io/FileNotFoundException:printStackTrace	()V
     //   831: aload_0
     //   832: aconst_null
-    //   833: putfield 1386	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   833: putfield 1392	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   836: goto -101 -> 735
     //   839: aload_0
     //   840: new 274	java/io/File
@@ -1567,93 +1582,93 @@ public class ShortVideoUploadProcessor
     //   857: aload_0
     //   858: aload_0
     //   859: getfield 206	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   862: invokevirtual 1393	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:b	(Ljava/lang/String;)V
-    //   865: ldc_w 1395
+    //   862: invokevirtual 1399	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:b	(Ljava/lang/String;)V
+    //   865: ldc_w 1401
     //   868: monitorenter
     //   869: aload_0
-    //   870: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   873: getfield 239	aywc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   876: invokestatic 1399	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   879: invokevirtual 1402	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
+    //   870: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   873: getfield 239	baub:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   876: invokestatic 1405	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
+    //   879: invokevirtual 1408	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
     //   882: ifnull +48 -> 930
     //   885: aload_0
-    //   886: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   889: getfield 239	aywc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   892: invokestatic 1399	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   895: invokevirtual 1402	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
+    //   886: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   889: getfield 239	baub:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   892: invokestatic 1405	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
+    //   895: invokevirtual 1408	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
     //   898: arraylength
     //   899: istore_1
     //   900: aload_0
     //   901: iload_1
     //   902: newarray byte
-    //   904: putfield 775	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_f_of_type_ArrayOfByte	[B
+    //   904: putfield 777	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_f_of_type_ArrayOfByte	[B
     //   907: aload_0
-    //   908: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   911: getfield 239	aywc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   914: invokestatic 1399	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   917: invokevirtual 1402	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
+    //   908: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   911: getfield 239	baub:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   914: invokestatic 1405	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
+    //   917: invokevirtual 1408	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
     //   920: iconst_0
     //   921: aload_0
-    //   922: getfield 775	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_f_of_type_ArrayOfByte	[B
+    //   922: getfield 777	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_f_of_type_ArrayOfByte	[B
     //   925: iconst_0
     //   926: iload_1
-    //   927: invokestatic 1406	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   927: invokestatic 1412	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   930: aload_0
-    //   931: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   934: getfield 239	aywc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   937: invokestatic 1399	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   940: invokevirtual 1409	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
+    //   931: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   934: getfield 239	baub:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   937: invokestatic 1405	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
+    //   940: invokevirtual 1415	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
     //   943: ifnull +48 -> 991
     //   946: aload_0
-    //   947: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   950: getfield 239	aywc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   953: invokestatic 1399	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   956: invokevirtual 1409	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
+    //   947: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   950: getfield 239	baub:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   953: invokestatic 1405	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
+    //   956: invokevirtual 1415	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
     //   959: arraylength
     //   960: istore_1
     //   961: aload_0
     //   962: iload_1
     //   963: newarray byte
-    //   965: putfield 778	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_e_of_type_ArrayOfByte	[B
+    //   965: putfield 780	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_e_of_type_ArrayOfByte	[B
     //   968: aload_0
-    //   969: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   972: getfield 239	aywc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   975: invokestatic 1399	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   978: invokevirtual 1409	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
+    //   969: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   972: getfield 239	baub:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   975: invokestatic 1405	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
+    //   978: invokevirtual 1415	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
     //   981: iconst_0
     //   982: aload_0
-    //   983: getfield 778	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_e_of_type_ArrayOfByte	[B
+    //   983: getfield 780	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_e_of_type_ArrayOfByte	[B
     //   986: iconst_0
     //   987: iload_1
-    //   988: invokestatic 1406	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   991: ldc_w 1395
+    //   988: invokestatic 1412	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   991: ldc_w 1401
     //   994: monitorexit
     //   995: aload_0
-    //   996: getfield 775	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_f_of_type_ArrayOfByte	[B
+    //   996: getfield 777	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_f_of_type_ArrayOfByte	[B
     //   999: ifnull +26 -> 1025
     //   1002: aload_0
-    //   1003: getfield 775	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_f_of_type_ArrayOfByte	[B
+    //   1003: getfield 777	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_f_of_type_ArrayOfByte	[B
     //   1006: arraylength
     //   1007: ifeq +18 -> 1025
     //   1010: aload_0
-    //   1011: getfield 778	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_e_of_type_ArrayOfByte	[B
+    //   1011: getfield 780	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_e_of_type_ArrayOfByte	[B
     //   1014: ifnull +11 -> 1025
     //   1017: aload_0
-    //   1018: getfield 778	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_e_of_type_ArrayOfByte	[B
+    //   1018: getfield 780	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_e_of_type_ArrayOfByte	[B
     //   1021: arraylength
     //   1022: ifne +67 -> 1089
     //   1025: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1028: ifeq +12 -> 1040
     //   1031: ldc 147
     //   1033: iconst_2
-    //   1034: ldc_w 1411
-    //   1037: invokestatic 1113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1034: ldc_w 1417
+    //   1037: invokestatic 1115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1040: aload_0
     //   1041: getfield 130	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1044: aload_0
-    //   1045: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   1048: getfield 239	aywc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1051: invokestatic 1417	com/tencent/mobileqq/highway/config/HwServlet:getConfig	(Lmqq/app/AppRuntime;Ljava/lang/String;)V
+    //   1045: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   1048: getfield 239	baub:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1051: invokestatic 1423	com/tencent/mobileqq/highway/config/HwServlet:getConfig	(Lmqq/app/AppRuntime;Ljava/lang/String;)V
     //   1054: aload_0
     //   1055: getfield 132	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:z	I
     //   1058: iconst_3
@@ -1665,7 +1680,7 @@ public class ShortVideoUploadProcessor
     //   1066: putfield 72	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:B	I
     //   1069: aload_0
     //   1070: iconst_3
-    //   1071: putfield 697	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:C	I
+    //   1071: putfield 699	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:C	I
     //   1074: aload_0
     //   1075: monitorexit
     //   1076: return
@@ -1675,7 +1690,7 @@ public class ShortVideoUploadProcessor
     //   1080: aload_2
     //   1081: athrow
     //   1082: astore_2
-    //   1083: ldc_w 1395
+    //   1083: ldc_w 1401
     //   1086: monitorexit
     //   1087: aload_2
     //   1088: athrow
@@ -1684,7 +1699,7 @@ public class ShortVideoUploadProcessor
     //   1092: new 149	java/lang/StringBuilder
     //   1095: dup
     //   1096: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   1099: ldc_w 1419
+    //   1099: ldc_w 1425
     //   1102: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1105: aload_0
     //   1106: getfield 132	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:z	I
@@ -1694,19 +1709,19 @@ public class ShortVideoUploadProcessor
     //   1118: aload_0
     //   1119: getfield 132	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:z	I
     //   1122: tableswitch	default:+22 -> 1144, 2:+27->1149, 3:+37->1159
-    //   1145: invokevirtual 1421	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:g	()V
+    //   1145: invokevirtual 1427	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:g	()V
     //   1148: return
     //   1149: aload_0
     //   1150: iconst_1
-    //   1151: putfield 1061	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:w	I
+    //   1151: putfield 1063	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:w	I
     //   1154: aload_0
-    //   1155: invokevirtual 1063	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:r	()V
+    //   1155: invokevirtual 1065	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:r	()V
     //   1158: return
     //   1159: aload_0
     //   1160: aload_0
-    //   1161: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   1164: getfield 236	aywc:jdField_a_of_type_Long	J
-    //   1167: putfield 837	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_Long	J
+    //   1161: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   1164: getfield 236	baub:jdField_a_of_type_Long	J
+    //   1167: putfield 839	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_Long	J
     //   1170: aload_0
     //   1171: aload_0
     //   1172: getfield 206	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -1714,17 +1729,17 @@ public class ShortVideoUploadProcessor
     //   1176: getfield 301	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Long	J
     //   1179: l2i
     //   1180: aload_0
-    //   1181: getfield 775	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_f_of_type_ArrayOfByte	[B
+    //   1181: getfield 777	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_f_of_type_ArrayOfByte	[B
     //   1184: aload_0
-    //   1185: getfield 778	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_e_of_type_ArrayOfByte	[B
+    //   1185: getfield 780	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_e_of_type_ArrayOfByte	[B
     //   1188: aload_0
     //   1189: getfield 227	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_d_of_type_ArrayOfByte	[B
     //   1192: aload_0
-    //   1193: getfield 837	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_Long	J
-    //   1196: invokevirtual 1423	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:a	(Ljava/lang/String;I[B[B[BJ)V
+    //   1193: getfield 839	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_Long	J
+    //   1196: invokevirtual 1429	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:a	(Ljava/lang/String;I[B[B[BJ)V
     //   1199: aload_0
     //   1200: iconst_1
-    //   1201: putfield 1061	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:w	I
+    //   1201: putfield 1063	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:w	I
     //   1204: return
     //   1205: astore_3
     //   1206: goto -398 -> 808
@@ -1736,7 +1751,7 @@ public class ShortVideoUploadProcessor
     //   899	89	1	i	int
     //   143	291	2	localObject1	Object
     //   447	2	2	localIOException1	java.io.IOException
-    //   484	10	2	localayqo	ayqo
+    //   484	10	2	localbaoj	baoj
     //   600	2	2	localFileNotFoundException1	java.io.FileNotFoundException
     //   757	2	2	localIOException2	java.io.IOException
     //   770	16	2	localObject2	Object
@@ -1797,14 +1812,14 @@ public class ShortVideoUploadProcessor
       this.jdField_j_of_type_JavaLangString = "";
       v();
       d(1001);
-      this.jdField_a_of_type_Ayoz.a.post(new ShortVideoUploadProcessor.1(this));
+      this.jdField_a_of_type_Bamu.a.post(new ShortVideoUploadProcessor.1(this));
     }
     return 0;
   }
   
   public String b()
   {
-    if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Aywc.jdField_a_of_type_Int == 3000))
+    if ((this.jdField_a_of_type_Baub.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Baub.jdField_a_of_type_Int == 3000))
     {
       if (this.w == 1) {
         return "actShortVideoDiscussgroupUploadBDH";
@@ -1840,10 +1855,10 @@ public class ShortVideoUploadProcessor
       return;
     }
     Object localObject2;
-    if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_Aywc.jdField_a_of_type_JavaLangObject instanceof axey)))
+    if ((this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangObject instanceof azae)))
     {
-      localObject2 = (axey)this.jdField_a_of_type_Aywc.jdField_a_of_type_JavaLangObject;
-      this.jdField_s_of_type_Boolean = ((axey)localObject2).jdField_g_of_type_Boolean;
+      localObject2 = (azae)this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangObject;
+      this.jdField_s_of_type_Boolean = ((azae)localObject2).jdField_g_of_type_Boolean;
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoUploadProcessor", 2, "sendMsg() start, mNeedSyncStory = " + this.jdField_s_of_type_Boolean);
       }
@@ -1853,36 +1868,36 @@ public class ShortVideoUploadProcessor
       if (localObject2 != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "sendMsg() start, isHotVideo = " + ((axey)localObject2).jdField_e_of_type_Boolean);
+          QLog.d("ShortVideoUploadProcessor", 2, "sendMsg() start, isHotVideo = " + ((azae)localObject2).jdField_e_of_type_Boolean);
         }
-        if (((axey)localObject2).jdField_e_of_type_Boolean)
+        if (((azae)localObject2).jdField_e_of_type_Boolean)
         {
-          this.jdField_l_of_type_JavaLangString = ((axey)localObject2).jdField_a_of_type_JavaLangString;
-          this.jdField_c_of_type_JavaLangString = ((axey)localObject2).jdField_e_of_type_JavaLangString;
-          this.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(((axey)localObject2).jdField_e_of_type_JavaLangString);
-          this.jdField_q_of_type_Long = (((axey)localObject2).jdField_e_of_type_Int + ((axey)localObject2).jdField_b_of_type_Long);
-          this.jdField_c_of_type_Int = ((axey)localObject2).f;
-          this.jdField_a_of_type_Long = ((axey)localObject2).jdField_b_of_type_Long;
-          this.jdField_d_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(((axey)localObject2).jdField_g_of_type_JavaLangString);
-          this.jdField_b_of_type_Int = ((axey)localObject2).jdField_d_of_type_Int;
-          this.jdField_a_of_type_Int = ((axey)localObject2).jdField_c_of_type_Int;
+          this.jdField_l_of_type_JavaLangString = ((azae)localObject2).jdField_a_of_type_JavaLangString;
+          this.jdField_c_of_type_JavaLangString = ((azae)localObject2).jdField_e_of_type_JavaLangString;
+          this.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(((azae)localObject2).jdField_e_of_type_JavaLangString);
+          this.jdField_q_of_type_Long = (((azae)localObject2).jdField_e_of_type_Int + ((azae)localObject2).jdField_b_of_type_Long);
+          this.jdField_c_of_type_Int = ((azae)localObject2).f;
+          this.jdField_a_of_type_Long = ((azae)localObject2).jdField_b_of_type_Long;
+          this.jdField_d_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(((azae)localObject2).jdField_g_of_type_JavaLangString);
+          this.jdField_b_of_type_Int = ((azae)localObject2).jdField_d_of_type_Int;
+          this.jdField_a_of_type_Int = ((azae)localObject2).jdField_c_of_type_Int;
         }
       }
       if (!this.jdField_c_of_type_Boolean) {
         break;
       }
-      bbfb.a(String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long), "message", "sendMsg() start.");
-      this.jdField_c_of_type_Aypd.a();
+      bddw.a(String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long), "message", "sendMsg() start.");
+      this.jdField_c_of_type_Bamy.a();
       Object localObject3 = a();
       if (localObject3 == null)
       {
-        a(9368, "constructpberror", null, this.jdField_c_of_type_Aypd);
+        a(9368, "constructpberror", null, this.jdField_c_of_type_Bamy);
         d();
         return;
       }
-      if (this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq != null)
+      if (this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy != null)
       {
-        localObject1 = this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq.a((im_msg_body.RichText)localObject3);
+        localObject1 = this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy.a((im_msg_body.RichText)localObject3);
         if ((localObject1 != null) && ((localObject1 instanceof MessageForShortVideo))) {
           break label508;
         }
@@ -1894,15 +1909,15 @@ public class ShortVideoUploadProcessor
       label479:
       for (Object localObject1 = "null";; localObject1 = "" + ((MessageRecord)localObject1).msgtype)
       {
-        a(9368, "msgtypeError", (String)localObject1, this.jdField_c_of_type_Aypd);
+        a(9368, "msgtypeError", (String)localObject1, this.jdField_c_of_type_Bamy);
         d();
         return;
-        if (this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+        if (this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
         {
-          localObject1 = this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          localObject1 = this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
           break;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
         break;
       }
       label508:
@@ -1910,7 +1925,7 @@ public class ShortVideoUploadProcessor
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoUploadProcessor", 2, "sendMsg() start, subBusiType = " + ((MessageForShortVideo)localObject1).subBusiType);
       }
-      if ((this.jdField_a_of_type_Aywc.jdField_e_of_type_Int == 1010) && (this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq != null))
+      if ((this.jdField_a_of_type_Baub.jdField_e_of_type_Int == 1010) && (this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy != null))
       {
         e();
         return;
@@ -1919,28 +1934,28 @@ public class ShortVideoUploadProcessor
       {
         ((MessageForBlessPTV)localObject1).uuid = this.jdField_f_of_type_JavaLangString;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, true, ((MessageRecord)localObject1).frienduin);
-        aung.a("ShortVideoUploadProcessor", "updataMessageDataBaseContent", "notifyUI bless ptv data send finished");
+        awen.a("ShortVideoUploadProcessor", "updataMessageDataBaseContent", "notifyUI bless ptv data send finished");
         return;
       }
       if ((localObject1 instanceof MessageForDanceMachine))
       {
         ((MessageForDanceMachine)localObject1).uuid = this.jdField_f_of_type_JavaLangString;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(8034, true, localObject1);
-        aung.a("ShortVideoUploadProcessor", "updataMessageDataBaseContent", "notifyUI dance machine data send finished");
+        awen.a("ShortVideoUploadProcessor", "updataMessageDataBaseContent", "notifyUI dance machine data send finished");
         return;
       }
       if (!e())
       {
-        a(9366, "illegal app", null, this.jdField_c_of_type_Aypd);
+        a(9366, "illegal app", null, this.jdField_c_of_type_Bamy);
         d();
         return;
       }
-      bbfb.a(String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long), "message", "sendMsg() []. mr = " + ((MessageRecord)localObject1).toString());
-      ((awap)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(326)).a((MessageRecord)localObject1, this.jdField_a_of_type_Akat);
+      bddw.a(String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long), "message", "sendMsg() []. mr = " + ((MessageRecord)localObject1).toString());
+      ((axso)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(326)).a((MessageRecord)localObject1, this.jdField_a_of_type_Alsi);
       if (localObject2 == null) {
         break;
       }
-      localObject3 = new avwu(BaseApplication.getContext());
+      localObject3 = new axot(BaseApplication.getContext());
       int i = j;
       switch (((MessageForShortVideo)localObject1).busiType)
       {
@@ -1949,10 +1964,10 @@ public class ShortVideoUploadProcessor
       }
       for (;;)
       {
-        if ((((axey)localObject2).jdField_i_of_type_JavaLangString == null) || (((axey)localObject2).jdField_i_of_type_JavaLangString.length() <= 0)) {
-          ((axey)localObject2).jdField_i_of_type_JavaLangString = ((axey)localObject2).h;
+        if ((((azae)localObject2).jdField_i_of_type_JavaLangString == null) || (((azae)localObject2).jdField_i_of_type_JavaLangString.length() <= 0)) {
+          ((azae)localObject2).jdField_i_of_type_JavaLangString = ((azae)localObject2).h;
         }
-        ((avwu)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((axey)localObject2).jdField_i_of_type_JavaLangString, i, ((MessageRecord)localObject1).istroop, ((MessageRecord)localObject1).frienduin, false, paramBoolean, -1, null, ((axey)localObject2).f, ((axey)localObject2).jdField_e_of_type_JavaLangString);
+        ((axot)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((azae)localObject2).jdField_i_of_type_JavaLangString, i, ((MessageRecord)localObject1).istroop, ((MessageRecord)localObject1).frienduin, false, paramBoolean, -1, null, ((azae)localObject2).f, ((azae)localObject2).jdField_e_of_type_JavaLangString);
         return;
         i = 2001;
         continue;
@@ -1964,7 +1979,7 @@ public class ShortVideoUploadProcessor
   
   public int c()
   {
-    if ((this.jdField_a_of_type_Aywc != null) && (this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (((MessageForShortVideo)this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).busiType == 0)) {
+    if ((this.jdField_a_of_type_Baub != null) && (this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (((MessageForShortVideo)this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).busiType == 0)) {
       this.jdField_m_of_type_Boolean = true;
     }
     return 0;
@@ -1979,18 +1994,18 @@ public class ShortVideoUploadProcessor
         b("pause", "");
       }
       d(1004);
-      if ((this.jdField_a_of_type_Aywc.jdField_e_of_type_Int == 1010) && (this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq != null))
+      if ((this.jdField_a_of_type_Baub.jdField_e_of_type_Int == 1010) && (this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy != null))
       {
-        auor localauor = new auor();
-        localauor.jdField_a_of_type_Int = -1;
-        localauor.jdField_b_of_type_Int = 9037;
-        localauor.jdField_a_of_type_JavaLangString = "cancel";
-        this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq.b(localauor);
+        awfz localawfz = new awfz();
+        localawfz.jdField_a_of_type_Int = -1;
+        localawfz.jdField_b_of_type_Int = 9037;
+        localawfz.jdField_a_of_type_JavaLangString = "cancel";
+        this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy.b(localawfz);
       }
-      if (this.jdField_a_of_type_Ayyp != null)
+      if (this.jdField_a_of_type_Bawo != null)
       {
-        ayzv.b(this.jdField_a_of_type_Ayyp);
-        this.jdField_a_of_type_Ayyp = null;
+        baxu.b(this.jdField_a_of_type_Bawo);
+        this.jdField_a_of_type_Bawo = null;
       }
     }
     switch (this.w)
@@ -2031,12 +2046,12 @@ public class ShortVideoUploadProcessor
     }
     super.d();
     if ((this.z == 3) && (this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.length() > 0)) {
-      if (this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) {
+      if (this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) {
         break label417;
       }
     }
     label417:
-    for (Object localObject2 = this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;; localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_a_of_type_Aywc.jdField_a_of_type_Long))
+    for (Object localObject2 = this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;; localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Long))
     {
       if ((localObject2 != null) && ((localObject2 instanceof MessageForShortVideo))) {
         ((MessageForShortVideo)localObject2).md5 = this.jdField_c_of_type_JavaLangString;
@@ -2047,24 +2062,24 @@ public class ShortVideoUploadProcessor
         QLog.d("ShortVideoUploadProcessor", 2, "onError()---- errCode:" + this.jdField_j_of_type_Int);
         QLog.d("ShortVideoUploadProcessor", 2, "onError()---- errDesc:" + this.jdField_j_of_type_JavaLangString);
       }
-      if (this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq != null)
+      if (this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy != null)
       {
-        localObject2 = new auor();
-        ((auor)localObject2).jdField_a_of_type_Int = -1;
-        ((auor)localObject2).jdField_b_of_type_Int = this.jdField_j_of_type_Int;
-        ((auor)localObject2).jdField_a_of_type_JavaLangString = this.jdField_j_of_type_JavaLangString;
-        this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq.b((auor)localObject2);
+        localObject2 = new awfz();
+        ((awfz)localObject2).jdField_a_of_type_Int = -1;
+        ((awfz)localObject2).jdField_b_of_type_Int = this.jdField_j_of_type_Int;
+        ((awfz)localObject2).jdField_a_of_type_JavaLangString = this.jdField_j_of_type_JavaLangString;
+        this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy.b((awfz)localObject2);
       }
-      if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForBlessPTV)))
+      if ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForBlessPTV)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, false, this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
-        aung.a("ShortVideoUploadProcessor", "onError", "notifyUI bless ptv send error");
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(999, false, this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
+        awen.a("ShortVideoUploadProcessor", "onError", "notifyUI bless ptv send error");
       }
-      if ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForDanceMachine)))
+      if ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForDanceMachine)))
       {
-        ((MessageForDanceMachine)this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).errorCode = 1;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(8034, false, this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-        aung.a("ShortVideoUploadProcessor", "onError", "notifyUI dance machine send error");
+        ((MessageForDanceMachine)this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).errorCode = 1;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(8034, false, this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        awen.a("ShortVideoUploadProcessor", "onError", "notifyUI dance machine send error");
       }
       return;
     }
@@ -2079,15 +2094,15 @@ public class ShortVideoUploadProcessor
     if ((this.jdField_k_of_type_Boolean) && (1004 != paramInt)) {
       return;
     }
-    axdq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ayqo, this.jdField_a_of_type_Aywc);
+    ayyu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Baoj, this.jdField_a_of_type_Baub);
   }
   
   public void d(boolean paramBoolean)
   {
     MessageRecord localMessageRecord;
-    if (this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+    if (this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
     {
-      localMessageRecord = this.jdField_a_of_type_Aywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localMessageRecord = this.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
       if (localMessageRecord != null) {
         break label78;
       }
@@ -2097,7 +2112,7 @@ public class ShortVideoUploadProcessor
     while (!(localMessageRecord instanceof MessageForShortVideo))
     {
       return;
-      localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
+      localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
       b("updateDb", "findmsgbyMsgId,need fix");
       break;
     }
@@ -2111,7 +2126,7 @@ public class ShortVideoUploadProcessor
       localMessageForShortVideo.videoAttr = this.E;
       localMessageForShortVideo.videoKandianType = this.F;
       localMessageForShortVideo.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Aywc.jdField_a_of_type_Int, localMessageRecord.uniseq, localMessageForShortVideo.msgData);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baub.jdField_a_of_type_Int, localMessageRecord.uniseq, localMessageForShortVideo.msgData);
       return;
     }
   }
@@ -2119,33 +2134,33 @@ public class ShortVideoUploadProcessor
   public void e()
   {
     super.e();
-    if (this.jdField_a_of_type_Akgk != null) {
-      this.jdField_a_of_type_Akgk.a(this.jdField_a_of_type_Aywc.jdField_f_of_type_JavaLangString + this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString + this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_Alya != null) {
+      this.jdField_a_of_type_Alya.a(this.jdField_a_of_type_Baub.jdField_f_of_type_JavaLangString + this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString + this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
     }
     String str;
-    if (this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq != null)
+    if (this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy != null)
     {
-      auor localauor = new auor();
-      localauor.jdField_a_of_type_Int = 0;
-      localauor.jdField_a_of_type_Long = (this.jdField_q_of_type_Long - this.jdField_a_of_type_Long);
-      localauor.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+      awfz localawfz = new awfz();
+      localawfz.jdField_a_of_type_Int = 0;
+      localawfz.jdField_a_of_type_Long = (this.jdField_q_of_type_Long - this.jdField_a_of_type_Long);
+      localawfz.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
       if (this.jdField_f_of_type_JavaLangString == null)
       {
         str = this.jdField_l_of_type_JavaLangString;
-        localauor.jdField_c_of_type_JavaLangString = str;
-        localauor.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
-        localauor.jdField_c_of_type_Int = this.E;
-        localauor.jdField_d_of_type_Int = this.F;
-        this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq.b(localauor);
+        localawfz.jdField_c_of_type_JavaLangString = str;
+        localawfz.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
+        localawfz.jdField_c_of_type_Int = this.E;
+        localawfz.jdField_d_of_type_Int = this.F;
+        this.jdField_a_of_type_Baub.jdField_a_of_type_Awfy.b(localawfz);
         if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "onSuccess uuid = " + localauor.jdField_c_of_type_JavaLangString);
+          QLog.d("ShortVideoUploadProcessor", 2, "onSuccess uuid = " + localawfz.jdField_c_of_type_JavaLangString);
         }
       }
     }
     for (;;)
     {
       d(1003);
-      if (this.jdField_a_of_type_Aywc.jdField_e_of_type_Int == 2) {
+      if (this.jdField_a_of_type_Baub.jdField_e_of_type_Int == 2) {
         w();
       }
       if (QLog.isColorLevel()) {
@@ -2200,7 +2215,7 @@ public class ShortVideoUploadProcessor
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> handleBDHActError mVideoPreUpStatus = " + this.B + " mVideoRecordStatus = " + this.A);
         }
-        bbfb.a(String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long), "handleBDHActError", "mVideoPreUpStatus = " + this.B + " mVideoRecordStatus = " + this.A);
+        bddw.a(String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long), "handleBDHActError", "mVideoPreUpStatus = " + this.B + " mVideoRecordStatus = " + this.A);
         y();
       }
       return;
@@ -2210,25 +2225,25 @@ public class ShortVideoUploadProcessor
   
   void g()
   {
-    this.jdField_a_of_type_Aypd.a();
-    ayyp localayyp = new ayyp();
+    this.jdField_a_of_type_Bamy.a();
+    bawo localbawo = new bawo();
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoUploadProcessor", 2, "sendGetUrlReq()----busiReq.seq : " + this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
+      QLog.d("ShortVideoUploadProcessor", 2, "sendGetUrlReq()----busiReq.seq : " + this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
     }
-    ayzd localayzd = a();
-    localayyp.jdField_a_of_type_Ayzw = this;
-    localayyp.jdField_a_of_type_JavaLangString = "short_video_up";
-    localayyp.jdField_a_of_type_JavaUtilList.add(localayzd);
-    localayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
+    baxc localbaxc = a();
+    localbawo.jdField_a_of_type_Baxv = this;
+    localbawo.jdField_a_of_type_JavaLangString = "short_video_up";
+    localbawo.jdField_a_of_type_JavaUtilList.add(localbaxc);
+    localbawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
     if (!e())
     {
-      a(9366, "illegal app", null, this.jdField_a_of_type_Aypd);
+      a(9366, "illegal app", null, this.jdField_a_of_type_Bamy);
       d();
     }
     do
     {
       return;
-      if (localayzd.jdField_a_of_type_Long == 0L)
+      if (localbaxc.jdField_a_of_type_Long == 0L)
       {
         b(9303, "video filesize is 0");
         d();
@@ -2240,13 +2255,13 @@ public class ShortVideoUploadProcessor
         d();
         return;
       }
-      if ((localayzd.jdField_j_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().mConnManager.getCurrentConnNum() > 0)) {
+      if ((localbaxc.jdField_j_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().mConnManager.getCurrentConnNum() > 0)) {
         this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
       }
-      b("requestStart", localayyp.toString());
+      b("requestStart", localbawo.toString());
     } while (!f());
-    this.jdField_a_of_type_Ayyp = localayyp;
-    ayzv.a(localayyp);
+    this.jdField_a_of_type_Bawo = localbawo;
+    baxu.a(localbawo);
   }
   
   void h()
@@ -2272,7 +2287,7 @@ public class ShortVideoUploadProcessor
       b(false);
       return;
     }
-    aR_();
+    aS_();
   }
   
   /* Error */
@@ -2288,20 +2303,20 @@ public class ShortVideoUploadProcessor
     //   12: new 149	java/lang/StringBuilder
     //   15: dup
     //   16: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 1793
+    //   19: ldc_w 1799
     //   22: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: aload_0
-    //   26: invokevirtual 1796	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 1802	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   29: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   32: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   35: aload_0
-    //   36: getfield 743	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_Aypd	Laypd;
-    //   39: invokevirtual 1119	aypd:a	()V
+    //   36: getfield 745	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_Bamy	Lbamy;
+    //   39: invokevirtual 1121	bamy:a	()V
     //   42: aload_0
     //   43: getfield 1293	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction	Lcom/tencent/mobileqq/highway/transaction/Transaction;
     //   46: ifnull +4 -> 50
     //   49: return
-    //   50: invokestatic 690	android/os/SystemClock:uptimeMillis	()J
+    //   50: invokestatic 692	android/os/SystemClock:uptimeMillis	()J
     //   53: lstore_3
     //   54: aload_0
     //   55: getfield 227	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_d_of_type_ArrayOfByte	[B
@@ -2320,7 +2335,7 @@ public class ShortVideoUploadProcessor
     //   77: aload_0
     //   78: getfield 227	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_d_of_type_ArrayOfByte	[B
     //   81: arraylength
-    //   82: invokestatic 1406	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   82: invokestatic 1412	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   85: aload_0
     //   86: getfield 288	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ArrayOfByte	[B
     //   89: iconst_0
@@ -2331,25 +2346,25 @@ public class ShortVideoUploadProcessor
     //   97: aload_0
     //   98: getfield 288	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ArrayOfByte	[B
     //   101: arraylength
-    //   102: invokestatic 1406	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   102: invokestatic 1412	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   105: new 149	java/lang/StringBuilder
     //   108: dup
-    //   109: invokestatic 1798	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	()Ljava/lang/String;
-    //   112: invokespecial 1799	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   109: invokestatic 1804	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	()Ljava/lang/String;
+    //   112: invokespecial 1805	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   115: aload 10
-    //   117: invokestatic 843	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   117: invokestatic 845	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   120: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: ldc_w 1801
+    //   123: ldc_w 1807
     //   126: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   132: astore 15
-    //   134: invokestatic 690	android/os/SystemClock:uptimeMillis	()J
+    //   134: invokestatic 692	android/os/SystemClock:uptimeMillis	()J
     //   137: lstore 5
     //   139: new 274	java/io/File
     //   142: dup
     //   143: aload 15
     //   145: invokespecial 277	java/io/File:<init>	(Ljava/lang/String;)V
-    //   148: invokevirtual 1804	java/io/File:delete	()Z
+    //   148: invokevirtual 1810	java/io/File:delete	()Z
     //   151: pop
     //   152: new 274	java/io/File
     //   155: dup
@@ -2357,30 +2372,30 @@ public class ShortVideoUploadProcessor
     //   158: invokespecial 277	java/io/File:<init>	(Ljava/lang/String;)V
     //   161: astore 10
     //   163: aload 10
-    //   165: invokevirtual 1807	java/io/File:exists	()Z
+    //   165: invokevirtual 1813	java/io/File:exists	()Z
     //   168: istore 9
     //   170: iload 9
     //   172: ifne +9 -> 181
     //   175: aload 10
-    //   177: invokevirtual 1810	java/io/File:createNewFile	()Z
+    //   177: invokevirtual 1816	java/io/File:createNewFile	()Z
     //   180: pop
-    //   181: new 1812	java/io/FileOutputStream
+    //   181: new 1818	java/io/FileOutputStream
     //   184: dup
     //   185: aload 10
-    //   187: invokespecial 1815	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   187: invokespecial 1821	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   190: astore 10
-    //   192: new 1817	java/io/BufferedOutputStream
+    //   192: new 1823	java/io/BufferedOutputStream
     //   195: dup
     //   196: aload 10
-    //   198: invokespecial 1820	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   198: invokespecial 1826	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   201: astore 12
     //   203: aload 10
     //   205: astore 13
     //   207: aload 12
     //   209: astore 11
     //   211: aload_0
-    //   212: getfield 1386	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
-    //   215: invokevirtual 1821	java/io/RandomAccessFile:length	()J
+    //   212: getfield 1392	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   215: invokevirtual 1827	java/io/RandomAccessFile:length	()J
     //   218: l2i
     //   219: newarray byte
     //   221: astore 14
@@ -2389,9 +2404,9 @@ public class ShortVideoUploadProcessor
     //   227: aload 12
     //   229: astore 11
     //   231: aload_0
-    //   232: getfield 1386	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   232: getfield 1392	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   235: aload 14
-    //   237: invokevirtual 1825	java/io/RandomAccessFile:read	([B)I
+    //   237: invokevirtual 1831	java/io/RandomAccessFile:read	([B)I
     //   240: pop
     //   241: aload 10
     //   243: astore 13
@@ -2399,12 +2414,12 @@ public class ShortVideoUploadProcessor
     //   247: astore 11
     //   249: aload 12
     //   251: aload 14
-    //   253: invokevirtual 1829	java/io/BufferedOutputStream:write	([B)V
+    //   253: invokevirtual 1835	java/io/BufferedOutputStream:write	([B)V
     //   256: aload 10
     //   258: astore 13
     //   260: aload 12
     //   262: astore 11
-    //   264: ldc_w 1830
+    //   264: ldc_w 1836
     //   267: newarray byte
     //   269: astore 14
     //   271: aload 10
@@ -2412,9 +2427,9 @@ public class ShortVideoUploadProcessor
     //   275: aload 12
     //   277: astore 11
     //   279: aload_0
-    //   280: getfield 1369	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   280: getfield 1375	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   283: aload 14
-    //   285: invokevirtual 1825	java/io/RandomAccessFile:read	([B)I
+    //   285: invokevirtual 1831	java/io/RandomAccessFile:read	([B)I
     //   288: istore_1
     //   289: iload_1
     //   290: iconst_m1
@@ -2427,7 +2442,7 @@ public class ShortVideoUploadProcessor
     //   304: aload 14
     //   306: iconst_0
     //   307: iload_1
-    //   308: invokevirtual 1833	java/io/BufferedOutputStream:write	([BII)V
+    //   308: invokevirtual 1839	java/io/BufferedOutputStream:write	([BII)V
     //   311: goto -40 -> 271
     //   314: astore 13
     //   316: aload 12
@@ -2435,175 +2450,175 @@ public class ShortVideoUploadProcessor
     //   320: aload 13
     //   322: astore 12
     //   324: aload 12
-    //   326: invokevirtual 1377	java/io/FileNotFoundException:printStackTrace	()V
+    //   326: invokevirtual 1383	java/io/FileNotFoundException:printStackTrace	()V
     //   329: aload 11
     //   331: ifnull +8 -> 339
     //   334: aload 11
-    //   336: invokevirtual 1834	java/io/BufferedOutputStream:close	()V
+    //   336: invokevirtual 1840	java/io/BufferedOutputStream:close	()V
     //   339: aload 10
     //   341: ifnull +8 -> 349
     //   344: aload 10
-    //   346: invokevirtual 1835	java/io/FileOutputStream:close	()V
+    //   346: invokevirtual 1841	java/io/FileOutputStream:close	()V
     //   349: aload_0
-    //   350: invokespecial 1744	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:a	()Layzd;
+    //   350: invokespecial 1750	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:a	()Lbaxc;
     //   353: astore 10
-    //   355: new 1837	pttcenterservice/PttShortVideo$PttShortVideoUploadReq
+    //   355: new 1843	pttcenterservice/PttShortVideo$PttShortVideoUploadReq
     //   358: dup
-    //   359: invokespecial 1838	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:<init>	()V
+    //   359: invokespecial 1844	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:<init>	()V
     //   362: astore 11
     //   364: aload 11
     //   366: iconst_1
-    //   367: invokevirtual 1839	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:setHasFlag	(Z)V
+    //   367: invokevirtual 1845	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:setHasFlag	(Z)V
     //   370: aload 11
-    //   372: getfield 1840	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint64_fromuin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   372: getfield 1846	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint64_fromuin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   375: aload 10
-    //   377: getfield 241	ayzd:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   380: invokestatic 948	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   383: invokevirtual 938	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   377: getfield 241	baxc:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   380: invokestatic 950	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   383: invokevirtual 940	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   386: aload 11
-    //   388: getfield 1841	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint64_touin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   388: getfield 1847	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint64_touin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   391: aload 10
-    //   393: getfield 252	ayzd:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   396: invokestatic 948	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   399: invokevirtual 938	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   393: getfield 252	baxc:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   396: invokestatic 950	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   399: invokevirtual 940	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   402: aload 11
-    //   404: getfield 1842	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint32_chat_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   404: getfield 1848	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint32_chat_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   407: aload 10
-    //   409: getfield 270	ayzd:jdField_a_of_type_Int	I
+    //   409: getfield 270	baxc:jdField_a_of_type_Int	I
     //   412: invokevirtual 421	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   415: aload 11
-    //   417: getfield 1843	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint32_client_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   417: getfield 1849	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint32_client_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   420: aload 10
-    //   422: getfield 272	ayzd:jdField_b_of_type_Int	I
+    //   422: getfield 272	baxc:jdField_b_of_type_Int	I
     //   425: invokevirtual 421	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   428: aload 10
-    //   430: getfield 269	ayzd:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   430: getfield 269	baxc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   433: ifnull +747 -> 1180
     //   436: aload 11
-    //   438: getfield 1844	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint64_group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   438: getfield 1850	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint64_group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   441: aload 10
-    //   443: getfield 269	ayzd:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   446: invokestatic 948	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   449: invokevirtual 938	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   443: getfield 269	baxc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   446: invokestatic 950	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   449: invokevirtual 940	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   452: aload 11
-    //   454: getfield 1847	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint32_agent_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   454: getfield 1853	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint32_agent_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   457: aload 10
-    //   459: getfield 268	ayzd:i	I
+    //   459: getfield 268	baxc:i	I
     //   462: invokevirtual 421	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   465: aload 11
-    //   467: getfield 1848	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint32_business_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   467: getfield 1854	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint32_business_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   470: aload 10
-    //   472: getfield 345	ayzd:jdField_j_of_type_Int	I
+    //   472: getfield 345	baxc:jdField_j_of_type_Int	I
     //   475: invokevirtual 421	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   478: aload 11
-    //   480: getfield 1851	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint32_flag_support_large_size	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   480: getfield 1857	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint32_flag_support_large_size	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   483: iconst_1
     //   484: invokevirtual 421	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   487: new 1853	pttcenterservice/PttShortVideo$PttShortVideoFileInfo
+    //   487: new 1859	pttcenterservice/PttShortVideo$PttShortVideoFileInfo
     //   490: dup
-    //   491: invokespecial 1854	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:<init>	()V
+    //   491: invokespecial 1860	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:<init>	()V
     //   494: astore 12
     //   496: aload 12
-    //   498: getfield 1858	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:str_file_name	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   498: getfield 1864	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:str_file_name	Lcom/tencent/mobileqq/pb/PBStringField;
     //   501: aload 10
-    //   503: getfield 281	ayzd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   506: invokevirtual 1862	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   503: getfield 281	baxc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   506: invokevirtual 1868	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   509: aload 12
-    //   511: getfield 1863	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:bytes_file_md5	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   511: getfield 1869	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:bytes_file_md5	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   514: aload 10
-    //   516: getfield 289	ayzd:jdField_a_of_type_ArrayOfByte	[B
+    //   516: getfield 289	baxc:jdField_a_of_type_ArrayOfByte	[B
     //   519: invokestatic 503	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   522: invokevirtual 404	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
     //   525: aload 12
-    //   527: getfield 1864	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:bytes_thumb_file_md5	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   527: getfield 1870	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:bytes_thumb_file_md5	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   530: aload 10
-    //   532: getfield 291	ayzd:jdField_b_of_type_ArrayOfByte	[B
+    //   532: getfield 291	baxc:jdField_b_of_type_ArrayOfByte	[B
     //   535: invokestatic 503	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   538: invokevirtual 404	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
     //   541: aload 12
-    //   543: getfield 1867	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint64_file_size	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   543: getfield 1873	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint64_file_size	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   546: aload 10
-    //   548: getfield 286	ayzd:jdField_a_of_type_Long	J
-    //   551: invokevirtual 938	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   548: getfield 286	baxc:jdField_a_of_type_Long	J
+    //   551: invokevirtual 940	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   554: aload 12
-    //   556: getfield 1870	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint32_file_res_length	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   556: getfield 1876	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint32_file_res_length	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   559: aload 10
-    //   561: getfield 297	ayzd:jdField_d_of_type_Int	I
+    //   561: getfield 297	baxc:jdField_d_of_type_Int	I
     //   564: invokevirtual 421	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   567: aload 12
-    //   569: getfield 1873	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint32_file_res_width	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   569: getfield 1879	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint32_file_res_width	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   572: aload 10
-    //   574: getfield 294	ayzd:jdField_e_of_type_Int	I
+    //   574: getfield 294	baxc:jdField_e_of_type_Int	I
     //   577: invokevirtual 421	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   580: aload 12
-    //   582: getfield 1874	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint32_file_format	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   582: getfield 1880	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint32_file_format	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   585: aload 10
-    //   587: getfield 328	ayzd:g	I
+    //   587: getfield 328	baxc:g	I
     //   590: invokevirtual 421	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   593: aload 12
-    //   595: getfield 1875	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint32_file_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   595: getfield 1881	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint32_file_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   598: aload 10
-    //   600: getfield 300	ayzd:h	I
+    //   600: getfield 300	baxc:h	I
     //   603: invokevirtual 421	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   606: aload 12
-    //   608: getfield 1878	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint64_thumb_file_size	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   608: getfield 1884	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:uint64_thumb_file_size	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   611: aload 10
-    //   613: getfield 303	ayzd:jdField_b_of_type_Long	J
-    //   616: invokevirtual 938	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   613: getfield 303	baxc:jdField_b_of_type_Long	J
+    //   616: invokevirtual 940	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   619: aload 11
-    //   621: getfield 1882	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:msg_PttShortVideoFileInfo	Lpttcenterservice/PttShortVideo$PttShortVideoFileInfo;
+    //   621: getfield 1888	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:msg_PttShortVideoFileInfo	Lpttcenterservice/PttShortVideo$PttShortVideoFileInfo;
     //   624: aload 12
-    //   626: invokevirtual 1883	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   626: invokevirtual 1889	pttcenterservice/PttShortVideo$PttShortVideoFileInfo:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   629: aload 11
-    //   631: invokevirtual 1884	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:toByteArray	()[B
+    //   631: invokevirtual 1890	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:toByteArray	()[B
     //   634: astore 11
-    //   636: new 1886	ayvg
+    //   636: new 1892	batf
     //   639: dup
     //   640: aload_0
     //   641: lload_3
     //   642: aload 15
-    //   644: invokespecial 1889	ayvg:<init>	(Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;JLjava/lang/String;)V
+    //   644: invokespecial 1895	batf:<init>	(Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;JLjava/lang/String;)V
     //   647: astore 12
     //   649: bipush 12
     //   651: istore_1
     //   652: aload 10
-    //   654: getfield 345	ayzd:jdField_j_of_type_Int	I
+    //   654: getfield 345	baxc:jdField_j_of_type_Int	I
     //   657: ifne +6 -> 663
     //   660: bipush 25
     //   662: istore_1
     //   663: aload_0
-    //   664: new 1131	com/tencent/mobileqq/highway/transaction/Transaction
+    //   664: new 1133	com/tencent/mobileqq/highway/transaction/Transaction
     //   667: dup
     //   668: aload_0
     //   669: getfield 130	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   672: invokevirtual 1134	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   672: invokevirtual 1136	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   675: iload_1
     //   676: aload 15
     //   678: aload_0
-    //   679: getfield 1055	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_r_of_type_Long	J
+    //   679: getfield 1057	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_r_of_type_Long	J
     //   682: l2i
     //   683: aload_0
     //   684: getfield 288	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ArrayOfByte	[B
     //   687: aload 12
     //   689: aload 11
     //   691: iconst_1
-    //   692: invokespecial 1892	com/tencent/mobileqq/highway/transaction/Transaction:<init>	(Ljava/lang/String;ILjava/lang/String;I[BLcom/tencent/mobileqq/highway/api/ITransactionCallback;[BZ)V
+    //   692: invokespecial 1898	com/tencent/mobileqq/highway/transaction/Transaction:<init>	(Ljava/lang/String;ILjava/lang/String;I[BLcom/tencent/mobileqq/highway/api/ITransactionCallback;[BZ)V
     //   695: putfield 1293	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction	Lcom/tencent/mobileqq/highway/transaction/Transaction;
-    //   698: new 1894	ayvh
+    //   698: new 1900	batg
     //   701: dup
     //   702: aload_0
-    //   703: invokespecial 1895	ayvh:<init>	(Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;)V
+    //   703: invokespecial 1901	batg:<init>	(Lcom/tencent/mobileqq/transfile/ShortVideoUploadProcessor;)V
     //   706: astore 10
     //   708: aload_0
     //   709: getfield 1293	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction	Lcom/tencent/mobileqq/highway/transaction/Transaction;
     //   712: aload 10
-    //   714: putfield 1899	com/tencent/mobileqq/highway/transaction/Transaction:cbForReport	Lcom/tencent/mobileqq/highway/api/ITransCallbackForReport;
+    //   714: putfield 1905	com/tencent/mobileqq/highway/transaction/Transaction:cbForReport	Lcom/tencent/mobileqq/highway/api/ITransCallbackForReport;
     //   717: aload_0
     //   718: getfield 130	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   721: invokevirtual 1005	com/tencent/mobileqq/app/QQAppInterface:getHwEngine	()Lcom/tencent/mobileqq/highway/HwEngine;
+    //   721: invokevirtual 1007	com/tencent/mobileqq/app/QQAppInterface:getHwEngine	()Lcom/tencent/mobileqq/highway/HwEngine;
     //   724: aload_0
     //   725: getfield 1293	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction	Lcom/tencent/mobileqq/highway/transaction/Transaction;
-    //   728: invokevirtual 1148	com/tencent/mobileqq/highway/HwEngine:submitTransactionTask	(Lcom/tencent/mobileqq/highway/transaction/Transaction;)I
+    //   728: invokevirtual 1150	com/tencent/mobileqq/highway/HwEngine:submitTransactionTask	(Lcom/tencent/mobileqq/highway/transaction/Transaction;)I
     //   731: istore_2
     //   732: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   735: ifeq +113 -> 848
@@ -2612,39 +2627,39 @@ public class ShortVideoUploadProcessor
     //   741: new 149	java/lang/StringBuilder
     //   744: dup
     //   745: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   748: ldc_w 1901
+    //   748: ldc_w 1907
     //   751: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   754: iload_2
     //   755: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   758: ldc_w 1152
+    //   758: ldc_w 1154
     //   761: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   764: aload_0
     //   765: getfield 1293	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction	Lcom/tencent/mobileqq/highway/transaction/Transaction;
-    //   768: invokevirtual 1155	com/tencent/mobileqq/highway/transaction/Transaction:getTransationId	()I
+    //   768: invokevirtual 1157	com/tencent/mobileqq/highway/transaction/Transaction:getTransationId	()I
     //   771: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   774: ldc_w 1157
+    //   774: ldc_w 1159
     //   777: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   780: aload_0
-    //   781: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Aywc	Laywc;
-    //   784: getfield 236	aywc:jdField_a_of_type_Long	J
-    //   787: invokevirtual 681	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   790: ldc_w 1903
+    //   781: getfield 169	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_Baub	Lbaub;
+    //   784: getfield 236	baub:jdField_a_of_type_Long	J
+    //   787: invokevirtual 683	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   790: ldc_w 1909
     //   793: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   796: aload_0
     //   797: getfield 494	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   800: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   803: ldc_w 1905
+    //   803: ldc_w 1911
     //   806: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   809: aload_0
     //   810: getfield 493	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_l_of_type_JavaLangString	Ljava/lang/String;
     //   813: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   816: ldc_w 1159
+    //   816: ldc_w 1161
     //   819: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   822: aload_0
     //   823: getfield 1293	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction	Lcom/tencent/mobileqq/highway/transaction/Transaction;
-    //   826: getfield 1162	com/tencent/mobileqq/highway/transaction/Transaction:filePath	Ljava/lang/String;
+    //   826: getfield 1164	com/tencent/mobileqq/highway/transaction/Transaction:filePath	Ljava/lang/String;
     //   829: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   832: ldc_w 1907
+    //   832: ldc_w 1913
     //   835: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   838: iload_1
     //   839: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -2654,11 +2669,11 @@ public class ShortVideoUploadProcessor
     //   849: ifeq -800 -> 49
     //   852: aload_0
     //   853: iload_2
-    //   854: ldc_w 1909
-    //   857: ldc_w 1196
+    //   854: ldc_w 1915
+    //   857: ldc_w 662
     //   860: aload_0
-    //   861: getfield 743	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_Aypd	Laypd;
-    //   864: invokevirtual 1499	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:a	(ILjava/lang/String;Ljava/lang/String;Laypd;)V
+    //   861: getfield 745	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_b_of_type_Bamy	Lbamy;
+    //   864: invokevirtual 1505	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:a	(ILjava/lang/String;Ljava/lang/String;Lbamy;)V
     //   867: aload_0
     //   868: invokevirtual 201	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:d	()V
     //   871: return
@@ -2678,7 +2693,7 @@ public class ShortVideoUploadProcessor
     //   900: astore 13
     //   902: aload 12
     //   904: astore 11
-    //   906: invokestatic 690	android/os/SystemClock:uptimeMillis	()J
+    //   906: invokestatic 692	android/os/SystemClock:uptimeMillis	()J
     //   909: lstore 7
     //   911: aload 10
     //   913: astore 13
@@ -2686,21 +2701,21 @@ public class ShortVideoUploadProcessor
     //   917: astore 11
     //   919: aload_0
     //   920: getfield 330	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   923: ldc_w 1911
+    //   923: ldc_w 1917
     //   926: lload 7
     //   928: lload 5
     //   930: lsub
-    //   931: invokestatic 755	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   931: invokestatic 757	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   934: invokevirtual 338	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   937: pop
     //   938: aload 12
     //   940: ifnull +8 -> 948
     //   943: aload 12
-    //   945: invokevirtual 1834	java/io/BufferedOutputStream:close	()V
+    //   945: invokevirtual 1840	java/io/BufferedOutputStream:close	()V
     //   948: aload 10
     //   950: ifnull -601 -> 349
     //   953: aload 10
-    //   955: invokevirtual 1835	java/io/FileOutputStream:close	()V
+    //   955: invokevirtual 1841	java/io/FileOutputStream:close	()V
     //   958: goto -609 -> 349
     //   961: astore 10
     //   963: aload 10
@@ -2732,11 +2747,11 @@ public class ShortVideoUploadProcessor
     //   1022: aload 12
     //   1024: ifnull +8 -> 1032
     //   1027: aload 12
-    //   1029: invokevirtual 1834	java/io/BufferedOutputStream:close	()V
+    //   1029: invokevirtual 1840	java/io/BufferedOutputStream:close	()V
     //   1032: aload 10
     //   1034: ifnull -685 -> 349
     //   1037: aload 10
-    //   1039: invokevirtual 1835	java/io/FileOutputStream:close	()V
+    //   1039: invokevirtual 1841	java/io/FileOutputStream:close	()V
     //   1042: goto -693 -> 349
     //   1045: astore 10
     //   1047: aload 10
@@ -2756,15 +2771,15 @@ public class ShortVideoUploadProcessor
     //   1077: aload 12
     //   1079: astore 11
     //   1081: aload 14
-    //   1083: invokevirtual 1912	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   1083: invokevirtual 1918	java/lang/OutOfMemoryError:printStackTrace	()V
     //   1086: aload 12
     //   1088: ifnull +8 -> 1096
     //   1091: aload 12
-    //   1093: invokevirtual 1834	java/io/BufferedOutputStream:close	()V
+    //   1093: invokevirtual 1840	java/io/BufferedOutputStream:close	()V
     //   1096: aload 10
     //   1098: ifnull -749 -> 349
     //   1101: aload 10
-    //   1103: invokevirtual 1835	java/io/FileOutputStream:close	()V
+    //   1103: invokevirtual 1841	java/io/FileOutputStream:close	()V
     //   1106: goto -757 -> 349
     //   1109: astore 10
     //   1111: aload 10
@@ -2782,11 +2797,11 @@ public class ShortVideoUploadProcessor
     //   1137: aload 11
     //   1139: ifnull +8 -> 1147
     //   1142: aload 11
-    //   1144: invokevirtual 1834	java/io/BufferedOutputStream:close	()V
+    //   1144: invokevirtual 1840	java/io/BufferedOutputStream:close	()V
     //   1147: aload 10
     //   1149: ifnull +8 -> 1157
     //   1152: aload 10
-    //   1154: invokevirtual 1835	java/io/FileOutputStream:close	()V
+    //   1154: invokevirtual 1841	java/io/FileOutputStream:close	()V
     //   1157: aload 12
     //   1159: athrow
     //   1160: astore 11
@@ -2798,9 +2813,9 @@ public class ShortVideoUploadProcessor
     //   1174: invokevirtual 1357	java/io/IOException:printStackTrace	()V
     //   1177: goto -20 -> 1157
     //   1180: aload 11
-    //   1182: getfield 1844	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint64_group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1182: getfield 1850	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:uint64_group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   1185: lconst_0
-    //   1186: invokevirtual 938	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   1186: invokevirtual 940	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   1189: goto -737 -> 452
     //   1192: astore 12
     //   1194: aconst_null
@@ -2949,7 +2964,7 @@ public class ShortVideoUploadProcessor
   
   void s()
   {
-    if (bbfj.h(BaseApplication.getContext())) {
+    if (bdee.h(BaseApplication.getContext())) {
       return;
     }
     Object localObject = BaseApplication.getContext();
@@ -2967,7 +2982,7 @@ public class ShortVideoUploadProcessor
         ((SharedPreferences)localObject).edit().putLong("key_video_rollback_time", l2).commit();
       }
       ((SharedPreferences)localObject).edit().putInt("key_video_rollback_counts", i + 1).commit();
-      bbfb.a(String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long), "rollback", "recordRollbackCounts ：" + String.valueOf(i + 1));
+      bddw.a(String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long), "rollback", "recordRollbackCounts ：" + String.valueOf(i + 1));
       return;
     }
   }
@@ -2998,7 +3013,7 @@ public class ShortVideoUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.thumbplayer.api.ITPModuleLoader;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
-class bbwj
-  implements ITPModuleLoader
+public class bbwj
+  implements View.OnClickListener
 {
-  bbwj(bbwh parambbwh) {}
+  public bbwj(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, bhpy parambhpy) {}
   
-  public void loadLibrary(@NotNull String paramString1, @NotNull String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("[VideoPlatForm]VideoPlaySDKManager", 2, "loadLibrary, libName = " + paramString1 + " , apkSoVer = " + paramString2);
-    }
+    this.jdField_a_of_type_Bhpy.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbwj
  * JD-Core Version:    0.7.0.1
  */

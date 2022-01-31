@@ -1,31 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
 
-public class nus
-  implements wxt
+public final class nus
+  implements Parcelable.Creator<RecentShopParcel>
 {
-  public nus(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
-  
-  public void a(Bundle paramBundle)
+  public RecentShopParcel a(Parcel paramParcel)
   {
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
-      }
-      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
-        this.a.jdField_a_of_type_JavaLangString = null;
-      }
-      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
-    }
+    return new RecentShopParcel(paramParcel);
+  }
+  
+  public RecentShopParcel[] a(int paramInt)
+  {
+    return new RecentShopParcel[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nus
  * JD-Core Version:    0.7.0.1
  */

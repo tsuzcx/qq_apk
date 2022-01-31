@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aemb;
-import ajya;
-import bcql;
+import agis;
+import alpo;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ArkDebugChatPie$1$2
   implements Runnable
@@ -11,12 +11,12 @@ class ArkDebugChatPie$1$2
   
   public void run()
   {
-    bcql.a(this.a.this$0.a, ajya.a(2131700660), 0).a();
+    QQToast.a(this.a.this$0.a, alpo.a(2131701029), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.2
  * JD-Core Version:    0.7.0.1
  */

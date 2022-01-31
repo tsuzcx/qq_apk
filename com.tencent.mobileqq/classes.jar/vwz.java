@@ -1,21 +1,26 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
 
-public abstract interface vwz
+class vwz
+  extends Job<Object, Object, Object>
 {
-  public abstract void a();
+  vwz(vwy paramvwy, String paramString, uqw paramuqw)
+  {
+    super(paramString);
+  }
   
-  public abstract void a(int paramInt, View paramView);
-  
-  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
-  
-  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
-  
-  public abstract boolean a(View paramView, int paramInt);
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    uht.a().dispatch(this.jdField_a_of_type_Uqw);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwz
  * JD-Core Version:    0.7.0.1
  */

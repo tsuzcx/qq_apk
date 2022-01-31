@@ -1,88 +1,70 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.util.file.DLFileInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.text.style.DynamicDrawableSpan;
+import com.etrump.mixlayout.AnimatedImageDrawable;
+import com.etrump.mixlayout.AnimatedImageSpan.1;
 
-class ff
-  implements View.OnClickListener
+public class ff
+  extends DynamicDrawableSpan
 {
-  ff(fd paramfd) {}
+  private Drawable a;
   
-  public void onClick(View paramView)
+  public ff(Drawable paramDrawable)
   {
-    boolean bool = true;
-    Object localObject = (fh)paramView.getTag();
-    int i = DataLineMsgRecord.getDevTypeBySeId(((fh)localObject).a.jdField_a_of_type_Long);
-    paramView = fd.a(this.a).a().a(i).a(((fh)localObject).a.jdField_a_of_type_Long);
-    if (paramView == null) {
-      return;
+    this.a = paramDrawable;
+    paramDrawable = new Handler();
+    paramDrawable.post(new AnimatedImageSpan.1(this, paramDrawable));
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = this.a;
+    if ((paramCharSequence instanceof AnimatedImageDrawable)) {
+      paramCharSequence = ((AnimatedImageDrawable)this.a).a();
     }
-    DLFileInfo localDLFileInfo = ((fh)localObject).a;
-    switch (localDLFileInfo.jdField_a_of_type_Int)
+    for (;;)
     {
-    default: 
-      return;
-    case 0: 
-    case 3: 
-      localObject = (ajum)fd.a(this.a).a(8);
-      if ((paramView.strMoloKey != null) && (!paramView.isReportPause))
-      {
-        paramView.isReportPause = true;
-        fc.m(fd.a(this.a));
-      }
-      ((ajum)localObject).a(paramView.groupId, paramView.sessionid, false);
-      if (paramView.isSendFromLocal())
-      {
-        localDLFileInfo.jdField_a_of_type_Int = 1;
+      if (paramCharSequence == null) {
         return;
       }
-      break;
-    case 1: 
-    case 2: 
-    case 4: 
-      if (bbfj.d(fd.a(this.a)))
-      {
-        if ((apug.a()) && (localDLFileInfo.b > 3145728L))
-        {
-          if (localDLFileInfo.jdField_a_of_type_Int == 1) {}
-          for (;;)
-          {
-            apug.a(bool, fd.a(this.a), new fg(this, paramView, (fh)localObject));
-            return;
-            bool = false;
-          }
-        }
-        i = DataLineMsgRecord.getDevTypeBySeId(paramView.sessionid);
-        DataLineMsgSet localDataLineMsgSet = fd.a(this.a).a(i).a(paramView.sessionid);
-        if (localDataLineMsgSet != null) {
-          localDataLineMsgSet.setPaused(false);
-        }
-        if (localDLFileInfo.jdField_a_of_type_Int != 1)
-        {
-          if ((paramView.fileMsgStatus == 1L) && (paramView.strMoloKey != null)) {
-            fc.e(fd.a(this.a));
-          }
-          fd.a(this.a, (fh)localObject, paramView);
-          return;
-        }
-        fd.b(this.a, (fh)localObject, paramView);
-        return;
+      paramCanvas.save();
+      paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
+      paramInt1 = paramInt2;
+      if (this.mVerticalAlignment == 1) {
+        paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
       }
-      aptx.a(2131694673);
-      return;
-    case 5: 
-      fd.a(this.a, paramView);
+      paramCanvas.translate(paramFloat, paramInt1);
+      paramCharSequence.draw(paramCanvas);
+      paramCanvas.restore();
       return;
     }
-    localDLFileInfo.jdField_a_of_type_Int = 4;
+  }
+  
+  public Drawable getDrawable()
+  {
+    return this.a;
+  }
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    paramPaint = getDrawable().getBounds();
+    if (paramFontMetricsInt != null)
+    {
+      paramFontMetricsInt.ascent = (-paramPaint.bottom);
+      paramFontMetricsInt.descent = 0;
+      paramFontMetricsInt.top = paramFontMetricsInt.ascent;
+      paramFontMetricsInt.bottom = 0;
+    }
+    return paramPaint.right;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ff
  * JD-Core Version:    0.7.0.1
  */

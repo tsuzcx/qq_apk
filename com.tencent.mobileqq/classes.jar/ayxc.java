@@ -1,39 +1,114 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import KQQ.PluginInfo;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class ayxc
+  extends MSFServlet
 {
-  public static int a = -1;
+  private long a;
+  private long b;
   
-  public static void a(int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).edit();
-    localEditor.putInt("SP_KEY_EXIF_Info_Switch_VALUE", paramInt);
-    localEditor.commit();
-    a = paramInt;
     if (QLog.isColorLevel()) {
-      QLog.d("PicUploadExifInfoSwitch", 2, "setSwitch:" + paramInt);
+      QLog.d("Q.lebatab.GameCenterServlet", 2, "recieve flag from server.");
+    }
+    paramIntent = (QQAppInterface)getAppRuntime();
+    this.b = System.currentTimeMillis();
+    Object localObject;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
+      localObject = ayuu.a(paramFromServiceMsg.getWupBuffer());
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        paramFromServiceMsg = (aywz)paramIntent.getManager(12);
+        if (paramFromServiceMsg != null)
+        {
+          paramFromServiceMsg.a((List)localObject);
+          paramFromServiceMsg = new Bundle();
+          paramFromServiceMsg.putBoolean("new", ((PluginInfo)((List)localObject).get(0)).Flag);
+          paramFromServiceMsg.putInt("gc_notify_type", 2);
+          notifyObserver(null, 10000, true, paramFromServiceMsg, avqr.class);
+          QLog.e("Q.lebatab.GameCenterServlet", 2, "[red dot] 1");
+          if (paramIntent != null)
+          {
+            paramFromServiceMsg = new HashMap();
+            azmz.a(paramIntent.getApp()).a(paramIntent.getCurrentAccountUin(), "actPluginUnread", true, this.b - this.a, 0L, paramFromServiceMsg, "");
+          }
+        }
+      }
+      else if (paramIntent != null)
+      {
+        paramFromServiceMsg = "|wufbuf: " + bdcv.a(paramFromServiceMsg.getWupBuffer());
+        localObject = new HashMap();
+        ((HashMap)localObject).put("param_FailCode", String.valueOf(9045));
+        ((HashMap)localObject).put("param_errorDesc", paramFromServiceMsg);
+        azmz.a(paramIntent.getApp()).a(paramIntent.getCurrentAccountUin(), "actPluginUnread", false, this.b - this.a, 0L, (HashMap)localObject, "");
+      }
+    }
+    for (;;)
+    {
+      paramIntent = new Bundle();
+      paramIntent.putInt("gc_notify_type", 2);
+      notifyObserver(null, 10000, false, paramIntent, avqr.class);
+      return;
+      if (paramIntent != null)
+      {
+        paramFromServiceMsg = "|resultcode: " + paramFromServiceMsg.getResultCode() + "|reason: " + MessageHandler.a(paramFromServiceMsg);
+        localObject = new HashMap();
+        ((HashMap)localObject).put("param_FailCode", String.valueOf(9311));
+        ((HashMap)localObject).put("param_errorDesc", paramFromServiceMsg);
+        azmz.a(paramIntent.getApp()).a(paramIntent.getCurrentAccountUin(), "actPluginUnread", false, this.b - this.a, 0L, (HashMap)localObject, "");
+      }
     }
   }
   
-  public static boolean a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (aqwf.a().g()) {}
-    do
+    String str = paramIntent.getAction();
+    paramIntent = (ArrayList)paramIntent.getSerializableExtra("gc_pluginid_list");
+    if ((str != null) && (str.equals("gc_get_newandunreadmsg"))) {
+      ayuu.a(paramPacket, paramIntent);
+    }
+    this.a = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.lebatab.GameCenterServlet", 2, "send get flag request.");
+    }
+  }
+  
+  public void service(Intent paramIntent)
+  {
+    String str = paramIntent.getAction();
+    if ((str != null) && ("gc_refresh_ui".equals(str)))
     {
-      return true;
-      if (a < 0) {
-        a = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).getInt("SP_KEY_EXIF_Info_Switch_VALUE", 0);
+      int i = paramIntent.getIntExtra("gc_notify_type", 0);
+      paramIntent = new Bundle();
+      paramIntent.putBoolean("new", true);
+      paramIntent.putInt("gc_notify_type", i);
+      notifyObserver(null, 10000, true, paramIntent, avqr.class);
+      paramIntent = new Intent("com.tencent.redpoint.broadcast.push.av");
+      BaseApplication.getContext().sendBroadcast(paramIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.lebatab.GameCenterServlet", 2, "[red dot] game center send broadcast");
       }
-    } while (a == 1);
-    return false;
+      return;
+    }
+    super.service(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayxc
  * JD-Core Version:    0.7.0.1
  */

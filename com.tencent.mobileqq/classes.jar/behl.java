@@ -1,17 +1,13 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.TYPE})
-public @interface behl
+public abstract interface behl
+  extends bebx
 {
-  String[] a();
+  public abstract int b();
+  
+  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     behl
  * JD-Core Version:    0.7.0.1
  */

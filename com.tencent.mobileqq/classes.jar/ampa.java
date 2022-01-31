@@ -1,54 +1,82 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class ampa<T>
+public class ampa
 {
-  public abstract int a();
+  amur jdField_a_of_type_Amur = null;
+  private amvg jdField_a_of_type_Amvg;
+  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = null;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public abstract Class<T> a();
-  
-  @NonNull
-  public abstract T a(int paramInt);
-  
-  public void a()
+  void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + a());
+    try
+    {
+      if (this.jdField_a_of_type_Amur != null)
+      {
+        if (this.jdField_a_of_type_Amvg != null)
+        {
+          this.jdField_a_of_type_Amur.b(this.jdField_a_of_type_Amvg);
+          this.jdField_a_of_type_Amvg = null;
+        }
+        if (this.jdField_a_of_type_AndroidContentServiceConnection != null)
+        {
+          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+          this.jdField_a_of_type_AndroidContentServiceConnection = null;
+        }
+        this.jdField_a_of_type_Amur = null;
+      }
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.w(ampn.a, 1, "DownloadDependRes.clean, Exception", localException);
     }
   }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(T paramT);
-  
-  public boolean a()
+  void a(AppInterface paramAppInterface)
   {
-    return true;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    if (!ArConfigService.e(BaseApplicationImpl.getApplication().getRuntime()))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w(ampn.a, 1, "tryDownload, so未准备");
+      }
+      b();
+    }
   }
   
-  public abstract int b();
-  
-  public int b(int paramInt)
+  void b()
   {
-    return paramInt;
-  }
-  
-  @Nullable
-  public abstract T b(amph[] paramArrayOfamph);
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
-  
-  public boolean d()
-  {
-    return false;
+    if (this.jdField_a_of_type_Amur != null) {
+      try
+      {
+        this.jdField_a_of_type_Amur.c();
+        return;
+      }
+      catch (Exception localException)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(ampn.a, 2, "downloadArSo Exception", localException);
+        return;
+      }
+    }
+    this.jdField_a_of_type_Amvg = new ampb(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new ampc(this);
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ArConfigService.class);
+    boolean bool = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+    QLog.w(ampn.a, 1, "bindServer, ret[" + bool + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
+import java.lang.ref.WeakReference;
 
-public class aajg
-  extends Handler
+class aajg
+  extends LinearLayout
 {
-  public aajg(AssistantSettingActivity paramAssistantSettingActivity) {}
+  private aapv jdField_a_of_type_Aapv;
+  private aapx jdField_a_of_type_Aapx = new aajh(this);
   
-  public void handleMessage(Message paramMessage)
+  public aajg(Context paramContext, String paramString)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
+    super(paramContext);
+    setGravity(17);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setStroke(1, Color.parseColor("#EFEFEF"));
+    if (Build.VERSION.SDK_INT >= 16) {
+      setBackground(localGradientDrawable);
     }
-    do
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
+      aanp.d("GdtBannerImageView", "constructor");
       return;
-      if (!this.a.isFinishing())
-      {
-        this.a.jdField_a_of_type_Bcqf.a(this.a.getString(2131690809));
-        this.a.jdField_a_of_type_Bcqf.d(2130848623);
-        this.a.jdField_a_of_type_Bcqf.b(false);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_Bcqf == null) || (!this.a.jdField_a_of_type_Bcqf.isShowing()));
-    this.a.jdField_a_of_type_Bcqf.cancel();
-    this.a.jdField_a_of_type_Bcqf.a(this.a.getString(2131690811));
-    this.a.jdField_a_of_type_Bcqf.c(true);
-    this.a.jdField_a_of_type_Bcqf.a(false);
-    this.a.jdField_a_of_type_Bcqf.b(true);
+    }
+    paramContext = new URLImageView(paramContext);
+    addView(paramContext);
+    this.jdField_a_of_type_Aapv = new aapv(paramString, new WeakReference(this.jdField_a_of_type_Aapx));
+    this.jdField_a_of_type_Aapv.a();
+    paramContext.setImageDrawable(this.jdField_a_of_type_Aapv.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aajg
  * JD-Core Version:    0.7.0.1
  */

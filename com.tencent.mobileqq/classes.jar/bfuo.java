@@ -1,15 +1,25 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
+import android.view.View.OnLongClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public abstract interface bfuo
+public class bfuo
+  implements View.OnLongClickListener
 {
-  public abstract void a();
+  public bfuo(QidianProfileCardActivity paramQidianProfileCardActivity, Drawable paramDrawable, bfvn parambfvn) {}
   
-  public abstract void a(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView, View paramView, int paramInt);
+  public boolean onLongClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) {
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Bfvn.b);
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfuo
  * JD-Core Version:    0.7.0.1
  */

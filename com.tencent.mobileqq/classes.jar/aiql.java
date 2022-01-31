@@ -1,29 +1,33 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.contact.SimpleTextView;
-import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-public class aiql
-  extends aiqp
+class aiql
+  implements ThreadExcutor.IThreadListener
 {
-  public LinearLayout a;
-  public URLImageView a;
-  public SimpleTextView a;
-  public MutualMarkIconsView a;
-  public OnlineStatusView a;
-  public StringBuilder a;
-  public boolean a;
-  public ImageView b;
-  public URLImageView b;
-  public boolean b;
-  public ImageView c;
-  public ImageView d;
+  aiql(aiqi paramaiqi, List paramList, Map paramMap, Bundle paramBundle) {}
+  
+  public void onAdded() {}
+  
+  public void onPostRun()
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      bdvv localbdvv = new bdvv(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
+      localbdvv.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_Aiqi.a != null) {
+        this.jdField_a_of_type_Aiqi.a.a(localbdvv, aiqi.a(this.jdField_a_of_type_Aiqi), null);
+      }
+    }
+  }
+  
+  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiql
  * JD-Core Version:    0.7.0.1
  */

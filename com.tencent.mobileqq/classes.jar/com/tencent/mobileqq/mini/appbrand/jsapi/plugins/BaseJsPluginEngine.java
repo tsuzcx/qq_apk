@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajya;
+import alpo;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -66,6 +66,10 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
   private final String KEY_EVENT_NAME = "key_event_name";
   private final String KEY_JOB_INFO = "key_job_info";
   private final String KEY_PARAMS = "key_params";
+  private final int SUBSCRIBE_CODE_FAIL_OTHER = -2;
+  private final int SUBSCRIBE_CODE_REJECT = -1;
+  private final int SUBSCRIBE_CODE_REJECT_FIRST = 0;
+  private final int SUBSCRIBE_CODE_SUC = 1;
   private final int WHAT_NOTIFY_QUEUE = 1;
   private final int WHAT_NOTIFY_SYS_QUEUE = 4;
   private final int WHAT_SHOW_AUTH_DIALOG = 2;
@@ -81,6 +85,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
   private HashMap<String, Integer> firstApiMap;
   private boolean isCreated;
   private boolean isDestory;
+  private boolean isFirstTimeRequestAuth;
   private boolean isPause;
   public ConcurrentLinkedQueue<BaseJsPluginEngine.NativeJobInfo> jobQueue;
   private final HashMap<String, IJsPlugin> mPluginEventMap = new HashMap();
@@ -162,9 +167,9 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         if (this.appBrandRuntime != null)
         {
           str = this.appBrandRuntime.appId;
-          label122:
+          label124:
           if (!isAuthWhiteAppId(str)) {
-            break label299;
+            break label301;
           }
         }
       }
@@ -179,8 +184,8 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         i = 2;
       }
     }
-    label299:
-    label340:
+    label301:
+    label343:
     for (;;)
     {
       if (QLog.isColorLevel()) {
@@ -200,14 +205,14 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         this.uiHandler.obtainMessage(1).sendToTarget();
         return str;
         str = null;
-        break label122;
+        break label124;
         if (paramBoolean)
         {
           i = 2;
           continue;
         }
         if (!this.authorizeCenter.shouldAskEveryTime(paramString1, paramString2)) {
-          break label340;
+          break label343;
         }
         i = 1;
         continue;
@@ -461,20 +466,12 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     if (QLog.isColorLevel()) {
       QLog.d("BaseJsPluginEngine", 2, "reqGrantSubscribeApiPermission authFlag=" + i + ",isPause=" + this.isPause);
     }
-    Object localObject;
     try
     {
-      localObject = new JSONObject(paramString).opt("subscribe");
-      if (!(localObject instanceof Boolean)) {
-        break label300;
-      }
-      boolean bool = ((Boolean)localObject).booleanValue();
-      localObject = new BaseJsPluginEngine.3(this, paramJsRuntime, paramInt);
-      if (!bool) {
-        break label282;
-      }
+      Object localObject = new BaseJsPluginEngine.3(this, paramJsRuntime, paramInt);
       if (i == 1)
       {
+        this.isFirstTimeRequestAuth = true;
         localObject = new BaseJsPluginEngine.NativeJobInfo(this, "subscribeAppMsg", paramString, paramJsRuntime, paramInt);
         this.jobQueue.offer(localObject);
         if ((this.isPause) || ((this.authDialog != null) && (this.authDialog.isShowing()))) {
@@ -490,25 +487,33 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
       }
       if (i == 2)
       {
+        this.isFirstTimeRequestAuth = false;
         this.authorizeCenter.setAuthorize(AuthorizeCenter.getScopeName("subscribeAppMsg", paramString), true, (MiniAppCmdInterface)localObject);
         return;
       }
     }
     catch (JSONException paramString)
     {
-      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, ajya.a(2131701010), paramInt);
+      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, alpo.a(2131701379), paramInt);
       paramString.printStackTrace();
       return;
     }
     if (i == 4)
     {
-      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, "no permission", paramInt);
-      return;
-      label282:
-      this.authorizeCenter.setAuthorize(AuthorizeCenter.getScopeName("subscribeAppMsg", paramString), false, (MiniAppCmdInterface)localObject);
-      return;
-      label300:
-      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, ajya.a(2131701009), paramInt);
+      if (this.isFirstTimeRequestAuth)
+      {
+        paramString = new JSONObject();
+        paramString.put("SubscribeAppMsgCode", 0);
+        callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", paramString, "no permission", paramInt);
+      }
+      for (;;)
+      {
+        this.isFirstTimeRequestAuth = false;
+        return;
+        paramString = new JSONObject();
+        paramString.put("SubscribeAppMsgCode", -1);
+        callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", paramString, "no permission", paramInt);
+      }
     }
   }
   
@@ -572,6 +577,11 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     return (IJsPlugin)this.mPluginEventMap.get(paramString);
   }
   
+  public <T> T getNativeBufferPool()
+  {
+    return null;
+  }
+  
   public String getPkgName()
   {
     return "";
@@ -627,7 +637,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         String str1 = (String)AuthorizeCenter.scopeDescMap.get(localObject1);
         paramMessage = (String)AuthorizeCenter.negativeButtonDesMap.get(localObject1);
         if (TextUtils.isEmpty(paramMessage)) {
-          paramMessage = ajya.a(2131701013);
+          paramMessage = alpo.a(2131701382);
         }
         Object localObject3;
         String str2;
@@ -640,15 +650,15 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
           str2 = ((ApkgInfo)localObject3).iconUrl;
           localObject3 = ((ApkgInfo)localObject3).apkgName;
           if (!"scope.userInfo".equals(localObject1)) {
-            break label303;
+            break label305;
           }
           MiniAppCmdUtil.getInstance().getUserInfo(this.appBrandRuntime.appId, false, "en", new BaseJsPluginEngine.5(this, str2, (String)localObject3, (String)localObject2, str1));
           break;
         }
-        label303:
+        label305:
         if ((this.authDialog != null) && (!this.isPause))
         {
-          this.authDialog.show(str2, (String)localObject3, (String)localObject2, null, null, str1, paramMessage, new BaseJsPluginEngine.6(this), ajya.a(2131701011), new BaseJsPluginEngine.7(this));
+          this.authDialog.show(str2, (String)localObject3, (String)localObject2, null, null, str1, paramMessage, new BaseJsPluginEngine.6(this), alpo.a(2131701380), new BaseJsPluginEngine.7(this));
           continue;
           localObject1 = this.sysPermissionQueue.iterator();
           if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 2))
@@ -682,7 +692,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
               if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 2))
               {
                 paramMessage = (String)paramMessage.obj;
-                if (!TextUtils.isEmpty(paramMessage))
+                if ((!TextUtils.isEmpty(paramMessage)) && (!paramMessage.equals("setting.appMsgSubscribed")))
                 {
                   if (paramMessage.equals("scope.camera")) {
                     getServiceRuntime().evaluateSubcribeJS("onCameraNeedAuthCancel", null, 0);
@@ -759,39 +769,39 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
       {
         localObject = this.appBrandRuntime.activity;
         if ((localObject == null) || (!(localObject instanceof BaseActivity))) {
-          break label386;
+          break label391;
         }
         localObject = (BaseActivity)localObject;
-        label307:
+        label311:
         if (localObject != null)
         {
           str2 = AuthorizeCenter.getSystemPermission(paramString1, paramString2);
-          if (bbkk.a(str2)) {
-            break label436;
+          if (bdje.a(str2)) {
+            break label441;
           }
           if (((BaseActivity)localObject).checkSelfPermission(str2) != 0) {
-            break label392;
+            break label397;
           }
         }
       }
-      label386:
-      label392:
+      label391:
+      label397:
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
-          break label398;
+          break label403;
         }
         ((BaseActivity)localObject).requestPermissions(new BaseJsPluginEngine.1(this, paramString1, paramString2, paramJsRuntime, paramInt, str2, (BaseActivity)localObject), 1, new String[] { str2 });
         return "";
         localObject = null;
         break;
         localObject = null;
-        break label307;
+        break label311;
       }
-      label398:
+      label403:
       QLog.d("BaseJsPluginEngine", 2, str2 + " has granted permission!!!");
       return handleNativeRequestInner(paramString1, paramString2, paramJsRuntime, paramInt, false);
-      label436:
+      label441:
       return handleNativeRequestInner(paramString1, paramString2, paramJsRuntime, paramInt, false);
     }
     return handleNativeRequestInner(paramString1, paramString2, paramJsRuntime, paramInt, false);
@@ -995,7 +1005,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine
  * JD-Core Version:    0.7.0.1
  */

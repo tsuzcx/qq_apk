@@ -27,6 +27,7 @@ public final class TPReportKeys$Common
   public static final String COMMON_PLAYER_TYPE = "playertype";
   public static final String COMMON_PLAYER_VERSION = "playerver";
   public static final String COMMON_PLAY_NO = "playno";
+  public static final String COMMON_PLAY_TYPE = "playtype";
   public static final String COMMON_QQ_OPEN_ID = "QQopenid";
   public static final String COMMON_SCENES_ID = "scenesid";
   public static final String COMMON_SEQ = "seq";
@@ -40,7 +41,7 @@ public final class TPReportKeys$Common
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportKeys.Common
  * JD-Core Version:    0.7.0.1
  */

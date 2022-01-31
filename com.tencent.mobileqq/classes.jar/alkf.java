@@ -1,47 +1,75 @@
-import android.text.TextUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class alkf
+  extends BroadcastReceiver
 {
-  public static alkd a(alkg paramalkg, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramalkg == null) {
-      throw new RuntimeException("params can not be null!");
-    }
-    Object localObject;
-    switch (paramalkg.jdField_a_of_type_Int)
-    {
-    default: 
-      localObject = new alki(paramInt);
+    int j = 0;
+    int i = 0;
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, paramIntent.getAction());
+      }
     }
     for (;;)
     {
-      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramalkg.toString());
-      return localObject;
-      localObject = new aljx(paramInt);
-      continue;
-      localObject = new alkk(paramInt);
-      continue;
-      localObject = new alkb(paramInt);
-      continue;
-      localObject = new alkc(paramInt);
-      continue;
-      if (TextUtils.isEmpty(paramalkg.jdField_a_of_type_JavaLangString)) {
-        break;
+      return;
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+      {
+        if ((localBaseActivity.mStopFlag == 0) && (localBaseActivity.mCanLock) && (GesturePWDUtils.getGesturePWDState(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 2) && (GesturePWDUtils.getGesturePWDMode(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 21) && (!(localBaseActivity instanceof GesturePWDUnlockActivity)) && (!(localBaseActivity instanceof LoginActivity)) && (!GesturePWDUtils.getGestureLocking(localBaseActivity)))
+        {
+          BaseActivity.mAppForground = false;
+          GesturePWDUtils.setAppForground(paramContext, BaseActivity.mAppForground);
+          BaseActivity.isUnLockSuccess = false;
+          if (BaseActivity.access$300() == null) {
+            continue;
+          }
+          if (SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131695442), "qqsetting_screenshot_key", false)) {
+            break label169;
+          }
+        }
+        for (;;)
+        {
+          if (i == 0) {
+            break label172;
+          }
+          localBaseActivity.turnOffShake();
+          return;
+          localBaseActivity.receiveScreenOff();
+          break;
+          label169:
+          i = 1;
+        }
       }
-      localObject = new aljy(paramInt, paramalkg.jdField_a_of_type_JavaLangString);
+      else
+      {
+        label172:
+        if ((paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) && (BaseActivity.access$300() == null))
+        {
+          if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131695442), "qqsetting_screenshot_key", false)) {}
+          for (i = j; i != 0; i = 1)
+          {
+            localBaseActivity.turnOnShake();
+            return;
+          }
+        }
+      }
     }
-    throw new RuntimeException("fragmentShader can not be empty!");
-  }
-  
-  public static alkg a(int paramInt)
-  {
-    return new alkg(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alkf
  * JD-Core Version:    0.7.0.1
  */

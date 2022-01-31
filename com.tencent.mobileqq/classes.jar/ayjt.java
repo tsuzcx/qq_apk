@@ -1,27 +1,73 @@
-import android.text.format.Time;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import java.io.File;
-import java.io.FilenameFilter;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class ayjt
-  implements FilenameFilter
+  extends ayju
 {
-  public ayjt(ShareAppLogHelper paramShareAppLogHelper) {}
+  public static final String a;
+  public int a;
+  public CharSequence a;
+  public CharSequence b;
+  public String b;
+  public CharSequence c;
   
-  public boolean accept(File paramFile, String paramString)
+  static
   {
-    if (!paramString.endsWith(".log")) {}
-    do
+    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + ayjt.class.getSimpleName();
+  }
+  
+  public ayjt(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public ayjt(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
     {
-      return false;
-      paramFile = ShareAppLogHelper.a(this.a, paramString);
-    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
+    default: 
+      i = 1;
+    }
+    return i;
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.i = paramString.optString("leftImageURL");
+      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
+      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_JavaLangString = ayrd.a(paramString.optString("leftImageTagText"));
+      this.jdField_a_of_type_JavaLangCharSequence = ayrd.a(paramString.optString("firstLineText"));
+      this.jdField_b_of_type_JavaLangCharSequence = ayrd.a(paramString.optString("secondLineText"));
+      this.c = ayrd.a(paramString.optJSONArray("thirdLineText"));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean b()
+  {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayjt
  * JD-Core Version:    0.7.0.1
  */

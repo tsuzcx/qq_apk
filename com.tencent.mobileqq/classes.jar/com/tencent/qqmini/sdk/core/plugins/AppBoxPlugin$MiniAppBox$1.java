@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import betc;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBoxAdView;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class AppBoxPlugin$MiniAppBox$1
   implements Runnable
@@ -18,14 +18,14 @@ class AppBoxPlugin$MiniAppBox$1
     }
     catch (Throwable localThrowable)
     {
-      betc.d("SDK_MiniAppBox", "adBox show Exception:", localThrowable);
+      QMLog.e("SDK_MiniAppBox", "adBox show Exception:", localThrowable);
       AppBoxPlugin.MiniAppBox.access$100(this.this$1, false, "operateAppBox", this.val$compId, 1003, this.val$callbackId);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.AppBoxPlugin.MiniAppBox.1
  * JD-Core Version:    0.7.0.1
  */

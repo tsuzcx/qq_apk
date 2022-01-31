@@ -1,25 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-final class bdky
-  implements DialogInterface.OnClickListener
+public class bdky
 {
-  bdky(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static SharedPreferences a(String paramString1, String paramString2, String paramString3)
   {
-    bdkx.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
-    axqy.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
-    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bdlb.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdlb.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdlb.d);
-    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
-    bdfh.a().a(25, paramDialogInterface);
+    if ((AudioHelper.d()) && (TextUtils.isEmpty(paramString2)))
+    {
+      paramString2 = " getSP, 获取配置需要UIN, uin[" + paramString2 + "], spName[" + paramString3 + "]";
+      QLog.w(paramString1, 1, paramString2, new Throwable("打印调用栈"));
+      throw new IllegalArgumentException(paramString1 + paramString2);
+    }
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject != null)
+    {
+      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences(paramString3 + paramString2, 4);
+      if ((localObject == null) && (AudioHelper.d())) {
+        QLog.w(paramString1, 1, "getSP, sp为null, uin[" + paramString2 + "], spName[" + paramString3 + "]", new Throwable("打印调用栈"));
+      }
+      return localObject;
+    }
+    if (AudioHelper.d()) {
+      QLog.w(paramString1, 1, "getSP, BaseApplicationImpl为null, uin[" + paramString2 + "], spName[" + paramString3 + "]", new Throwable("打印调用栈"));
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdky
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,59 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForTribeShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aecu
-  extends bbwt
+  implements View.OnClickListener
 {
-  public aecu(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, aecx paramaecx, MessageForTribeShortVideo paramMessageForTribeShortVideo) {}
+  public aecu(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onDone(bbwu parambbwu)
+  public void onClick(View paramView)
   {
-    String str = parambbwu.a().getString("filePath");
-    if (parambbwu.a == 0)
+    long l = System.currentTimeMillis();
+    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
+      return;
+    }
+    TroopRequestActivity.c = l;
+    if (((aloz)this.a.app.getManager(51)).b(this.a.l)) {
+      paramView = new ProfileActivity.AllInOne(this.a.l, 1);
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("TribeShortVideoItemBuilder", 2, "download video success! videoFile:" + str);
+      azmj.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, paramView);
+      return;
+      if ((this.a.a.msg.group_msg_type.get() != 2) || (this.a.a.msg.sub_type.get() != 3)) {
+        break;
       }
-      this.jdField_a_of_type_Aecx.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Aecx.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
-      this.jdField_a_of_type_Aecx.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Aecx.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, str);
+      paramView = new ProfileActivity.AllInOne(this.a.l, 26);
+      paramView.d = 1;
+    }
+    paramView = new ProfileActivity.AllInOne(this.a.l, 24);
+    bclo.a(this.a.a, paramView);
+    switch (this.a.b)
+    {
+    }
+    for (;;)
+    {
+      break;
+      paramView.l = 3;
+      break;
+      paramView.l = 1;
+      break;
+      paramView.l = 2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,30 @@
-import android.graphics.Bitmap;
+import com.tencent.av.ui.VideoNetStateBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class moc
+  extends lhe
 {
-  int jdField_a_of_type_Int;
-  Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
-  int b;
-  int c;
+  public moc(VideoNetStateBar paramVideoNetStateBar) {}
   
-  public moc(Bitmap[] paramArrayOfBitmap, int paramInt1, int paramInt2, int paramInt3)
+  protected void a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = paramArrayOfBitmap;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
+    }
+    this.a.i();
+  }
+  
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong2);
+    }
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     moc
  * JD-Core Version:    0.7.0.1
  */

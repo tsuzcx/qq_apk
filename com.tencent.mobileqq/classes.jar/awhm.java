@@ -1,80 +1,57 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SearchHistory;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class awhm
-  extends awii
+  extends aofy<awhn>
 {
-  private SearchHistory a;
-  
-  public awhm(QQAppInterface paramQQAppInterface, SearchHistory paramSearchHistory)
+  public int a()
   {
-    this.a = paramSearchHistory;
+    return 495;
   }
   
-  public Drawable a()
+  @NonNull
+  public awhn a(int paramInt)
   {
-    return null;
+    return new awhn();
   }
   
-  public SearchHistory a()
+  @Nullable
+  public awhn a(aogf[] paramArrayOfaogf)
   {
-    return this.a;
+    awhn localawhn = new awhn();
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null)) {
+      awhn.a(localawhn, paramArrayOfaogf[0].a);
+    }
+    return localawhn;
   }
   
-  public String a()
+  public Class<awhn> a()
   {
-    return this.a.extralInfo;
+    return awhn.class;
   }
   
-  public void a(String paramString) {}
+  public void a(int paramInt) {}
+  
+  public void a(awhn paramawhn) {}
   
   public int b()
   {
     return 0;
   }
   
-  public String b()
+  public boolean b()
   {
-    return null;
+    return false;
   }
   
-  public int c()
+  public boolean c()
   {
-    switch (this.a.type)
-    {
-    default: 
-    case 3000: 
-    case 1: 
-    case 1006: 
-    case 56938: 
-    case 1008: 
-      do
-      {
-        return 1;
-        return 101;
-        return 4;
-        return 11;
-      } while (!TextUtils.equals(this.a.uin, ajsd.az));
-      return 110;
-    }
-    return 111;
-  }
-  
-  public String c()
-  {
-    return this.a.displayName;
-  }
-  
-  public String d()
-  {
-    return this.a.uin;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awhm
  * JD-Core Version:    0.7.0.1
  */

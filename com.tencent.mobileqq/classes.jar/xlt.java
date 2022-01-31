@@ -1,6 +1,6 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
 class xlt
   implements View.OnClickListener
@@ -9,12 +9,14 @@ class xlt
   
   public void onClick(View paramView)
   {
-    this.a.b.setClickable(false);
+    if (this.a.a.a != null) {
+      this.a.a.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xlt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
+import aajy;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
@@ -10,7 +11,6 @@ import com.tencent.qqmini.sdk.core.proxy.AdProxy.InterstitialADLisener;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yuh;
 
 class AdProxyImpl$SDKInterstitialAdView$1
   implements AdProxy.ICmdListener
@@ -65,7 +65,7 @@ class AdProxyImpl$SDKInterstitialAdView$1
     {
       localGdtInterstitialParams.jdField_a_of_type_Int = i;
       localGdtInterstitialParams.jdField_a_of_type_Boolean = true;
-      this.this$1.mInterstitialAdView = new yuh(this.val$activity, localGdtInterstitialParams);
+      this.this$1.mInterstitialAdView = new aajy(this.val$activity, localGdtInterstitialParams);
       if (this.this$1.mInterstitialAdView != null)
       {
         if (this.this$1.mInterstitialAdListener != null) {
@@ -95,7 +95,7 @@ class AdProxyImpl$SDKInterstitialAdView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKInterstitialAdView.1
  * JD-Core Version:    0.7.0.1
  */

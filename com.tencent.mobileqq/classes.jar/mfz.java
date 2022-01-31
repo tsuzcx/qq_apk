@@ -1,38 +1,32 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.FaceToolbar;
+import com.tencent.av.ui.FaceToolbar.1.1;
 
 public class mfz
-  implements mru
+  extends BroadcastReceiver
 {
-  public mfz(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public mfz(FaceToolbar paramFaceToolbar) {}
   
-  private void b()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().aa) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().ab)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoMsgTools.a(this.a, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g), bool, false);
+    if (this.a.mApp == null) {
       return;
     }
-  }
-  
-  public void a() {}
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "MultiVideoMembersClickListener , Uin = " + paramLong + " , videoScr = " + paramInt1 + " , isNeedRequest " + paramBoolean + " , positon = " + paramInt2);
-    }
-    if ((paramInt2 == 7) && (paramBoolean)) {
-      b();
+    if (paramIntent.getAction().equalsIgnoreCase("tencent.video.q2v.ptusoDownloadRet")) {}
+    for (int i = 0;; i = 1)
+    {
+      this.a.mApp.a().postDelayed(new FaceToolbar.1.1(this, i), 2000L);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfz
  * JD-Core Version:    0.7.0.1
  */

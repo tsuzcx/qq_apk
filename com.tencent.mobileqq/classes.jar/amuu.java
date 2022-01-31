@@ -1,18 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.IInterface;
 
-class amuu
-  implements bjjg
+public abstract interface amuu
+  extends IInterface
 {
-  amuu(amut paramamut) {}
+  public abstract void a(int paramInt);
   
-  public void a(String paramString)
-  {
-    bkrf.a(BaseApplicationImpl.getContext(), paramString);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuu
  * JD-Core Version:    0.7.0.1
  */

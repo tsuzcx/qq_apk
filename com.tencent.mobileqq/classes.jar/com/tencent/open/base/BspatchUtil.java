@@ -1,7 +1,7 @@
 package com.tencent.open.base;
 
 import android.text.TextUtils;
-import bdii;
+import bfhg;
 
 public class BspatchUtil
 {
@@ -20,14 +20,14 @@ public class BspatchUtil
     }
     catch (Throwable localThrowable)
     {
-      bdii.e(jdField_a_of_type_JavaLangString, "load bspatch error : " + localThrowable.toString());
+      bfhg.e(jdField_a_of_type_JavaLangString, "load bspatch error : " + localThrowable.toString());
       jdField_a_of_type_Boolean = false;
     }
   }
   
   public static boolean a(String paramString1, String paramString2, String paramString3)
   {
-    bdii.b(jdField_a_of_type_JavaLangString, "srcFile = " + paramString1 + "\npatchFile = " + paramString2 + "\ndstFile = " + paramString3 + "\nisSupport = " + String.valueOf(jdField_a_of_type_Boolean));
+    bfhg.b(jdField_a_of_type_JavaLangString, "srcFile = " + paramString1 + "\npatchFile = " + paramString2 + "\ndstFile = " + paramString3 + "\nisSupport = " + String.valueOf(jdField_a_of_type_Boolean));
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (!jdField_a_of_type_Boolean)) {
       return false;
     }
@@ -38,7 +38,7 @@ public class BspatchUtil
     }
     catch (Throwable paramString1)
     {
-      bdii.e(jdField_a_of_type_JavaLangString, "patch error : " + paramString1.toString());
+      bfhg.e(jdField_a_of_type_JavaLangString, "patch error : " + paramString1.toString());
     }
     return false;
   }

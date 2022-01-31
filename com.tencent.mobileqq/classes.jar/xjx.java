@@ -1,33 +1,22 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.GamePartyPlugin;
-
 public class xjx
-  extends anqq
 {
-  public xjx(GamePartyPlugin paramGamePartyPlugin) {}
+  protected int a = 48000;
+  protected int b = 1;
+  protected int c = 1;
+  protected int d = 48000;
+  protected int e = 1;
+  protected int f = 1;
   
-  public void onBindedToClient() {}
+  public void a() {}
   
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public byte[] a(int paramInt1, int paramInt2)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey") == GamePartyPlugin.a(this.a).key) && ("batchGetUserInfo".equals(paramBundle.getString("cmd"))))
-    {
-      String str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response").getString("result");
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle))) {
-        this.a.callJs(str, new String[] { paramBundle });
-      }
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,25 @@
-class aoew
-  extends aoez
+public class aoew
 {
-  aoew(aoeu paramaoeu) {}
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public int c;
   
-  protected void b(boolean paramBoolean)
+  public aoew(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, float paramFloat)
   {
-    if (paramBoolean) {
-      aoeu.a(this.a);
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoew
  * JD-Core Version:    0.7.0.1
  */

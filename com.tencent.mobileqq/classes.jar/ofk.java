@@ -1,19 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class ofk
-  implements ViewBase.OnClickListener
+  implements Handler.Callback
 {
-  ofk(ofb paramofb) {}
+  ofk(ofi paramofi) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_Ohs.c(this.a.jdField_a_of_type_Oif);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      if (System.currentTimeMillis() - ofi.a(this.a) > 1500L)
+      {
+        ofi.a(this.a, false);
+        QLog.d("KandianAdPandent", 2, "time up do not update volume");
+      }
+      if (ofi.b(this.a))
+      {
+        ofi.a(this.a).sendEmptyMessageDelayed(1, 300L);
+        this.a.d();
+        return false;
+      }
+      ofi.a(this.a).removeMessages(1);
+      return false;
+    }
+    ofi.a(this.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofk
  * JD-Core Version:    0.7.0.1
  */

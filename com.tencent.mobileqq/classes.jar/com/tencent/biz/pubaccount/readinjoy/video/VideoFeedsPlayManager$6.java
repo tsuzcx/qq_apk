@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qty;
+import rjn;
 
 class VideoFeedsPlayManager$6
   implements Runnable
 {
-  VideoFeedsPlayManager$6(VideoFeedsPlayManager paramVideoFeedsPlayManager, qty paramqty) {}
+  VideoFeedsPlayManager$6(VideoFeedsPlayManager paramVideoFeedsPlayManager, rjn paramrjn) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ class VideoFeedsPlayManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.6
  * JD-Core Version:    0.7.0.1
  */

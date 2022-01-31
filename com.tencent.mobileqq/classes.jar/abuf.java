@@ -1,29 +1,55 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class abuf
-  implements avtu
+  extends absj
 {
-  public abuf(QQIdentiferActivity paramQQIdentiferActivity) {}
-  
-  public void a(float paramFloat)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull absf paramabsf)
   {
-    if (paramFloat < 0.0F)
+    paramString = this.a.a();
+    if ((paramString == null) || (paramString.isFinishing()))
     {
-      this.a.a(this.a.getString(2131694421));
-      return;
+      QLog.e("NavigateModule", 1, "execute activity is null or finish");
+      return false;
     }
-    if (paramFloat > 175.0F)
+    Intent localIntent;
+    switch (paramInt)
     {
-      this.a.a(this.a.getString(2131694420));
-      return;
+    default: 
+      return false;
+    case 19: 
+      paramJSONObject = paramJSONObject.optString("action", "");
+      if ((paramJSONObject != null) && (paramJSONObject.startsWith("mqqapi:")))
+      {
+        localIntent = new Intent(paramString, JumpActivity.class);
+        localIntent.setData(Uri.parse(paramJSONObject));
+        paramString.startActivity(localIntent);
+        abvm.a(paramabsf, absh.a);
+      }
+      break;
     }
-    QQIdentiferActivity.a(this.a).setText("");
+    for (;;)
+    {
+      return true;
+      paramJSONObject = paramJSONObject.optString("url", "");
+      localIntent = new Intent(paramString, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramJSONObject);
+      paramString.startActivity(localIntent);
+      abvm.a(paramabsf, absh.a);
+      continue;
+      abvm.a(paramabsf, -1, "scheme not support");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abuf
  * JD-Core Version:    0.7.0.1
  */

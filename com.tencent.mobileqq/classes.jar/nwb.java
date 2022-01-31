@@ -1,19 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class nwb
-  extends osm
+class nwb
+  implements ViewBase.OnClickListener
 {
-  public nwb(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
+  nwb(nvz paramnvz) {}
   
-  public void a_(List<sda> paramList)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.a(paramList);
+    if (paramViewBase.getEventAttachedData() == null) {
+      return;
+    }
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramViewBase.getEventAttachedData()));
+    paramViewBase.getNativeView().getContext().startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,25 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileFilter;
-import org.json.JSONObject;
+import android.content.Context;
 
-class akvj
-  implements FileFilter
+public abstract class akvj
 {
-  akvj(akvi paramakvi, SparseArray paramSparseArray) {}
+  abstract int a(Context paramContext);
   
-  public boolean accept(File paramFile)
+  abstract String a();
+  
+  abstract void a();
+  
+  void a(String paramString1, String paramString2, akvk paramakvk)
   {
-    Object localObject = new File(paramFile, "config.json");
-    if ((((File)localObject).exists()) && (((File)localObject).isFile())) {
-      localObject = bbdx.a((File)localObject);
-    }
-    try
+    if (("destroy".equals(paramString2)) && (paramakvk != null))
     {
-      int i = Integer.parseInt(paramFile.getName());
-      long l = new JSONObject((String)localObject).optLong("version");
-      this.jdField_a_of_type_AndroidUtilSparseArray.append(i, Long.valueOf(l));
-      QLog.i("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo roleId: " + i + ", ver: " + l / 1000L);
-      return false;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo failed role: " + paramFile.getAbsolutePath());
-        }
-      }
+      a();
+      paramakvk.a(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvj
  * JD-Core Version:    0.7.0.1
  */

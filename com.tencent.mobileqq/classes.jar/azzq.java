@@ -1,24 +1,18 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-
-public class azzq
-  extends CountDownTimer
+class azzq
+  implements baae
 {
-  public azzq(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
-  {
-    super(paramLong1, paramLong2);
-  }
+  azzq(azzp paramazzp, azzb paramazzb, String paramString) {}
   
-  public void onFinish()
+  public void a(baaj parambaaj)
   {
-    ReciteRecordLayout.a(this.a);
+    if (azzp.a(this.jdField_a_of_type_Azzp) != null) {
+      azzp.a(this.jdField_a_of_type_Azzp).a(this.jdField_a_of_type_Azzb, parambaaj, this.jdField_a_of_type_JavaLangString);
+    }
   }
-  
-  public void onTick(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azzq
  * JD-Core Version:    0.7.0.1
  */

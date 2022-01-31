@@ -1,32 +1,89 @@
-import android.content.Intent;
-import android.view.View;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
+import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 final class arkr
-  implements bfph
+  implements UploadManager.IUploadStatusListener
 {
-  arkr(Intent paramIntent, bfpc parambfpc) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<arko> jdField_a_of_type_MqqUtilWeakReference;
   
-  public void OnClick(View paramView, int paramInt)
+  private arkr(arko paramarko, String paramString)
   {
-    switch (paramInt)
+    if (paramarko == null) {}
+    for (paramarko = null;; paramarko = new WeakReference(paramarko))
     {
-    default: 
+      this.jdField_a_of_type_MqqUtilWeakReference = paramarko;
+      this.jdField_a_of_type_JavaLangString = paramString;
       return;
     }
-    axqy.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_opener", 0, 0, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("cur_uin"), paramInt + "", "", "");
-    paramView = arkv.a();
-    if (paramInt == 0) {}
-    for (paramInt = 2;; paramInt = 1)
+  }
+  
+  public void onUploadJobAdded(String paramString, long paramLong) {}
+  
+  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  {
+    arko localarko;
+    if (this.jdField_a_of_type_MqqUtilWeakReference == null)
     {
-      paramView.a(paramInt);
-      this.jdField_a_of_type_Bfpc.dismiss();
+      localarko = null;
+      if ((localarko != null) && (!arko.a(localarko))) {
+        break label39;
+      }
+    }
+    label39:
+    while (arko.a(localarko) == null)
+    {
       return;
+      localarko = (arko)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      break;
+    }
+    if (paramBoolean)
+    {
+      switch (paramStatusInfo.state)
+      {
+      default: 
+        label80:
+        paramString = null;
+      }
+      while (paramString != null)
+      {
+        arko.a(localarko).sendMessage(paramString);
+        return;
+        if (paramStatusInfo.errorCode == 1810002)
+        {
+          if (!QLog.isColorLevel()) {
+            break label80;
+          }
+          QLog.i("WeiyunShareProcessController<FileAssistant>", 2, "upload is canceled, for file:" + this.jdField_a_of_type_JavaLangString);
+          paramString = null;
+          continue;
+        }
+        paramString = new Message();
+        paramString.what = 3;
+        paramString.obj = new Object[] { Integer.valueOf(paramStatusInfo.errorCode), paramStatusInfo.errorMsg };
+        continue;
+        paramString = new Message();
+        paramString.what = 2;
+        paramString.obj = new Object[] { paramStatusInfo, this.jdField_a_of_type_JavaLangString };
+      }
+    }
+    if (paramStatusInfo.totalSize <= 0L) {}
+    for (float f = 0.0F;; f = (float)paramStatusInfo.currSize / (float)paramStatusInfo.totalSize)
+    {
+      paramString = new Message();
+      paramString.what = 4;
+      paramString.obj = new Object[] { Float.valueOf(f) };
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arkr
  * JD-Core Version:    0.7.0.1
  */

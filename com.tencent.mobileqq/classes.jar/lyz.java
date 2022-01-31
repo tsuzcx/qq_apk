@@ -1,20 +1,42 @@
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public abstract interface lyz
+class lyz
+  implements lyx
 {
-  public abstract int a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  private IBinder a;
   
-  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  lyz(IBinder paramIBinder)
+  {
+    this.a = paramIBinder;
+  }
   
-  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceCallback");
+      localParcel.writeInt(paramInt1);
+      localParcel.writeInt(paramInt2);
+      localParcel.writeInt(paramInt3);
+      this.a.transact(1, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
   
-  public abstract boolean a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
-  
-  public abstract int b(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyz
  * JD-Core Version:    0.7.0.1
  */

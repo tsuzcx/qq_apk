@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.ViewGroup;
-import asrq;
+import auin;
 import com.tencent.mobileqq.multiaio.widget.MultiAIOPagerAdapter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -14,7 +14,7 @@ public class MultiCardPagerAdapter
   extends MultiAIOPagerAdapter
 {
   private FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
-  private asrq jdField_a_of_type_Asrq;
+  private auin jdField_a_of_type_Auin;
   
   public MultiCardPagerAdapter(FragmentManager paramFragmentManager)
   {
@@ -24,7 +24,7 @@ public class MultiCardPagerAdapter
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentManager == null) || (this.jdField_a_of_type_Asrq == null)) {}
+    if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentManager == null) || (this.jdField_a_of_type_Auin == null)) {}
     for (;;)
     {
       return;
@@ -40,7 +40,7 @@ public class MultiCardPagerAdapter
             localObject2 = (MultiCardItemFragment)localObject2;
             int i = ((MultiCardItemFragment)localObject2).a();
             if (i < getCount()) {
-              ((MultiCardItemFragment)localObject2).a(this.jdField_a_of_type_Asrq.a(i));
+              ((MultiCardItemFragment)localObject2).a(this.jdField_a_of_type_Auin.a(i));
             }
           }
         }
@@ -48,9 +48,9 @@ public class MultiCardPagerAdapter
     }
   }
   
-  public void a(asrq paramasrq)
+  public void a(auin paramauin)
   {
-    this.jdField_a_of_type_Asrq = paramasrq;
+    this.jdField_a_of_type_Auin = paramauin;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -63,17 +63,17 @@ public class MultiCardPagerAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Asrq == null) {
+    if (this.jdField_a_of_type_Auin == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Asrq.a();
+    return this.jdField_a_of_type_Auin.a();
   }
   
   public Fragment getItem(int paramInt)
   {
     MultiCardItemFragment localMultiCardItemFragment = new MultiCardItemFragment();
-    if (this.jdField_a_of_type_Asrq != null) {
-      localMultiCardItemFragment.a(this.jdField_a_of_type_Asrq.a, paramInt, this.jdField_a_of_type_Asrq.a(paramInt), this.jdField_a_of_type_Asrq.a());
+    if (this.jdField_a_of_type_Auin != null) {
+      localMultiCardItemFragment.a(this.jdField_a_of_type_Auin.a, paramInt, this.jdField_a_of_type_Auin.a(paramInt), this.jdField_a_of_type_Auin.a());
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("KEY_POSITION", paramInt);
@@ -99,7 +99,7 @@ public class MultiCardPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

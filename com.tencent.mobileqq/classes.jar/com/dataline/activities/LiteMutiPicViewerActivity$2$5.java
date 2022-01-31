@@ -1,11 +1,11 @@
 package com.dataline.activities;
 
-import ec;
+import cl;
 
 public class LiteMutiPicViewerActivity$2$5
   implements Runnable
 {
-  public LiteMutiPicViewerActivity$2$5(ec paramec) {}
+  public LiteMutiPicViewerActivity$2$5(cl paramcl) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class LiteMutiPicViewerActivity$2$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.activities.LiteMutiPicViewerActivity.2.5
  * JD-Core Version:    0.7.0.1
  */

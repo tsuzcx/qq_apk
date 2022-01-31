@@ -1,130 +1,255 @@
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashSet;
-import java.util.Set;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aumo
-  extends aumn
+  extends auml
 {
-  private static final Set<Integer> a;
-  protected int a;
+  public aumo(QQPlayerService paramQQPlayerService) {}
   
-  static
+  public int a()
   {
-    jdField_a_of_type_JavaUtilSet = new HashSet();
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1042));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(5));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1030));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1047));
-  }
-  
-  public aumo(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public aumo(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static aump a(MessageRecord paramMessageRecord, aywc paramaywc)
-  {
-    if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramaywc.e))) {
-      try
-      {
-        long l = Long.valueOf(paramMessageRecord.getExtInfoFromExtStr("quick_send_original_size")).longValue();
-        paramaywc = paramMessageRecord.getExtInfoFromExtStr("quick_send_original_md5");
-        if ((l > 0L) && (!paramaywc.equals("")))
-        {
-          aump localaump = new aump();
-          localaump.jdField_a_of_type_JavaLangString = paramaywc;
-          localaump.jdField_a_of_type_Long = l;
-          localaump.b = paramMessageRecord.getExtInfoFromExtStr("quick_send_thumb_md5");
-          return localaump;
-        }
-      }
-      catch (Exception paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayState");
     }
-    return null;
+    return QQPlayerService.a();
   }
   
-  public static void a(MessageRecord paramMessageRecord, aump paramaump)
+  public Intent a()
   {
-    if ((paramaump != null) && (paramMessageRecord != null))
-    {
-      paramMessageRecord.saveExtInfoToExtStr("quick_send_original_md5", paramaump.jdField_a_of_type_JavaLangString);
-      paramMessageRecord.saveExtInfoToExtStr("quick_send_original_size", String.valueOf(paramaump.jdField_a_of_type_Long));
-      paramMessageRecord.saveExtInfoToExtStr("quick_send_thumb_md5", paramaump.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayBarIntent ");
     }
+    return QQPlayerService.a();
   }
   
-  public auod a(Intent paramIntent)
+  public Bundle a()
   {
-    auod localauod = super.a(paramIntent);
-    if ((paramIntent != null) && (localauod != null))
-    {
-      aump localaump = new aump();
-      localaump.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("quick_send_original_md5");
-      localaump.jdField_a_of_type_Long = paramIntent.getLongExtra("quick_send_original_size", 0L);
-      localaump.b = paramIntent.getStringExtra("quick_send_thumb_md5");
-      localauod.a = localaump;
-      localauod.r = paramIntent.getIntExtra("key_emotion_source_from", 0);
-      localauod.n = paramIntent.getStringExtra("key_emotion_source_info");
-      localauod.o = paramIntent.getStringExtra("key_emotion_source_weburl");
-      localauod.p = paramIntent.getStringExtra("key_emotion_source_iconurl");
-      localauod.q = paramIntent.getStringExtra("key_emotion_source_packagename");
-      localauod.s = paramIntent.getIntExtra("key_emotion_source_epid", 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getExtras ");
     }
-    return localauod;
+    return QQPlayerService.a();
   }
   
-  protected void a(MessageForPic paramMessageForPic)
+  public SongInfo a()
   {
-    if (paramMessageForPic.imageType == 2000) {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSong");
+    }
+    return QQPlayerService.b();
+  }
+  
+  public String a()
+  {
+    return QQPlayerService.a();
+  }
+  
+  public String a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : generateToken : callerType=" + paramInt + ",id=" + paramString);
+    }
+    return QQPlayerService.a(paramInt, paramString);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : pause");
+    }
+    QQPlayerService.a(this.a);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setPlayMode");
+    }
+    QQPlayerService.a(paramInt);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setPlayBarIntent: " + paramIntent.toString());
+    }
+    QQPlayerService.a(paramIntent);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setExtras ");
+    }
+    QQPlayerService.a(paramBundle);
+  }
+  
+  public void a(aumh paramaumh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : registerCallback");
+    }
+    if (paramaumh == null) {
       return;
     }
-    super.a(paramMessageForPic);
-  }
-  
-  protected void a(MessageForPic paramMessageForPic, auod paramauod)
-  {
-    super.a(paramMessageForPic, paramauod);
-    a(paramMessageForPic, paramauod.a);
-    Object localObject = paramMessageForPic.picExtraData;
-    paramauod = (auod)localObject;
-    if (localObject == null) {
-      paramauod = new PicMessageExtraData();
-    }
-    if (this.jdField_a_of_type_Int == 1042)
+    if (QQPlayerService.a(this.a) == null) {}
+    try
     {
-      paramauod.imageBizType = 2;
-      paramauod.textSummary = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691289);
-      paramMessageForPic.picExtraData = paramauod;
-    }
-    while (this.jdField_a_of_type_Int != 1047) {
+      if (QQPlayerService.a(this.a) == null) {
+        QQPlayerService.a(this.a, new RemoteCallbackList());
+      }
+      QQPlayerService.a(this.a).register(paramaumh);
       return;
     }
-    paramauod.imageBizType = 7;
-    localObject = aexb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      paramauod.textSummary = ("[" + (String)localObject + "]");
+    finally {}
+  }
+  
+  public void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : startPlay sCallback = " + QQPlayerService.a() + ",startIndex" + paramInt);
     }
-    paramMessageForPic.picExtraData = paramauod;
+    if (QQPlayerService.a() != null)
+    {
+      QQPlayerService.a(QQPlayerService.a());
+      QQPlayerService.b(null);
+    }
+    QQPlayerService.a(this.a, paramString, paramArrayOfSongInfo, paramInt);
+  }
+  
+  public boolean a()
+  {
+    return QQPlayerService.a();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : isPlayingMySong : token=" + paramString);
+    }
+    return QQPlayerService.a(paramString);
+  }
+  
+  public SongInfo[] a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayList");
+    }
+    return QQPlayerService.a();
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayMode");
+    }
+    return QQPlayerService.b();
+  }
+  
+  public SongInfo b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getNextSong");
+    }
+    return QQPlayerService.c();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : resume");
+    }
+    QQPlayerService.b(this.a);
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : seekTo " + paramInt);
+    }
+    QQPlayerService.b(paramInt);
+  }
+  
+  public void b(aumh paramaumh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : unRegisterCallback");
+    }
+    if ((paramaumh != null) && (QQPlayerService.a(this.a) != null)) {
+      QQPlayerService.a(this.a).unregister(paramaumh);
+    }
+  }
+  
+  public int c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getDuration");
+    }
+    return QQPlayerService.d();
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : stop");
+    }
+    QQPlayerService.c(this.a);
+  }
+  
+  public int d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongPosition");
+    }
+    return QQPlayerService.e();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : playNext");
+    }
+    QQPlayerService.b(this.a);
+  }
+  
+  public int e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongIndex");
+    }
+    return QQPlayerService.g();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : playPrev");
+    }
+    QQPlayerService.a(this.a);
+  }
+  
+  public int f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayListCount");
+    }
+    return QQPlayerService.c();
+  }
+  
+  public int g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentPlayPosition");
+    }
+    return QQPlayerService.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aumo
  * JD-Core Version:    0.7.0.1
  */

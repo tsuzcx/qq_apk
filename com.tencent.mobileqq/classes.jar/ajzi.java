@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class ajzi
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ajzi(IphoneTitleBarActivity paramIphoneTitleBarActivity) {}
+  public ajzi(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.onBackEvent();
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzi
  * JD-Core Version:    0.7.0.1
  */

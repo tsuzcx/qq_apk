@@ -2,28 +2,28 @@ package com.tencent.biz.subscribe.utils;
 
 import android.text.TextUtils;
 import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.mm.vfs.VFSFile;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.utils.Md5Utils;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import see;
-import wsw;
-import wta;
+import svx;
+import yho;
+import yhs;
 
 public class SubscribeDraftManager$2
   implements Runnable
 {
-  public SubscribeDraftManager$2(wsw paramwsw, String paramString, wta paramwta) {}
+  public SubscribeDraftManager$2(yho paramyho, String paramString, yhs paramyhs) {}
   
   public void run()
   {
-    Object localObject1 = new VFSFile(wsw.a(this.this$0) + Md5Utils.getMD5(this.jdField_a_of_type_JavaLangString));
-    if ((((VFSFile)localObject1).exists()) && (((VFSFile)localObject1).isDirectory()))
+    Object localObject1 = new File(yho.a(this.this$0) + Md5Utils.getMD5(this.jdField_a_of_type_JavaLangString));
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
-      localObject1 = ((VFSFile)localObject1).listFiles();
-      QLog.d(wsw.jdField_a_of_type_JavaLangString, 4, "qureyAllSimpleDraft count:" + localObject1.length);
+      localObject1 = ((File)localObject1).listFiles();
+      QLog.d(yho.jdField_a_of_type_JavaLangString, 4, "qureyAllSimpleDraft count:" + localObject1.length);
       localArrayList = new ArrayList();
       j = localObject1.length;
       i = 0;
@@ -35,10 +35,10 @@ public class SubscribeDraftManager$2
         localObject2 = localObject1[i];
         try
         {
-          localObject2 = wsw.a(this.this$0, ((VFSFile)localObject2).getAbsolutePath());
+          localObject2 = yho.a(this.this$0, ((File)localObject2).getAbsolutePath());
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
-            localObject2 = (SubscribeDraftBean)see.a().a((String)localObject2, SubscribeDraftBean.class);
+            localObject2 = (SubscribeDraftBean)svx.a().a((String)localObject2, SubscribeDraftBean.class);
             if (localObject2 != null) {
               localArrayList.add(localObject2);
             }
@@ -48,7 +48,7 @@ public class SubscribeDraftManager$2
         {
           for (;;)
           {
-            QLog.d(wsw.jdField_a_of_type_JavaLangString, 4, "readString failed:");
+            QLog.d(yho.jdField_a_of_type_JavaLangString, 4, "readString failed:");
           }
         }
         i += 1;
@@ -56,12 +56,12 @@ public class SubscribeDraftManager$2
       label181:
       Collections.sort(localArrayList);
       if (!localArrayList.isEmpty()) {
-        if (this.jdField_a_of_type_Wta != null) {
-          this.jdField_a_of_type_Wta.a(4, true, "", new Object[] { localArrayList });
+        if (this.jdField_a_of_type_Yhs != null) {
+          this.jdField_a_of_type_Yhs.a(4, true, "", new Object[] { localArrayList });
         }
       }
     }
-    while (this.jdField_a_of_type_Wta == null)
+    while (this.jdField_a_of_type_Yhs == null)
     {
       ArrayList localArrayList;
       int j;
@@ -70,16 +70,16 @@ public class SubscribeDraftManager$2
       do
       {
         return;
-      } while (this.jdField_a_of_type_Wta == null);
-      this.jdField_a_of_type_Wta.a(4, false, "", null);
+      } while (this.jdField_a_of_type_Yhs == null);
+      this.jdField_a_of_type_Yhs.a(4, false, "", null);
       return;
     }
-    this.jdField_a_of_type_Wta.a(4, false, "", null);
+    this.jdField_a_of_type_Yhs.a(4, false, "", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.SubscribeDraftManager.2
  * JD-Core Version:    0.7.0.1
  */

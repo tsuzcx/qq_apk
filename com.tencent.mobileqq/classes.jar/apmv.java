@@ -1,21 +1,37 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
+
 class apmv
-  implements apli
+  extends BroadcastReceiver
 {
-  apmv(apmt paramapmt) {}
+  apmv(aply paramaply, MessengerService paramMessengerService, Bundle paramBundle) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a(false, aptd.a(this.a.a.a()), this.a.c(), new apmw(this));
-  }
-  
-  public void b()
-  {
-    apmt.b(this.a);
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {
+      return;
+    }
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext();
+    if (paramContext != null) {
+      paramContext.unregisterReceiver(this);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.emoji.web.MessengerService", 2, "openDevLock unregisterReceiver context: " + paramContext);
+    }
+    paramContext = new Bundle(paramIntent.getExtras());
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apmv
  * JD-Core Version:    0.7.0.1
  */

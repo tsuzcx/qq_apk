@@ -1,30 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class anuw
-  implements ajic
+public class anuw
+  implements View.OnClickListener
 {
-  anuw(anuq paramanuq, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public anuw(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onClick(View paramView)
   {
-    paramString = new Bundle();
-    if (paramBoolean)
+    paramView = (anva)paramView.getTag();
+    if (!((aloz)this.a.app.getManager(51)).b(paramView.a)) {}
+    for (int i = 35;; i = 1)
     {
-      paramString.putInt("apollo_result", 0);
-      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      paramView = new ProfileActivity.AllInOne(paramView.a, i);
+      ProfileActivity.a(this.a, paramView, 1016);
       return;
     }
-    paramString.putInt("apollo_result", 1);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anuw
  * JD-Core Version:    0.7.0.1
  */

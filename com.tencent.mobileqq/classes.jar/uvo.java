@@ -1,42 +1,66 @@
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class uvo
+class uvo
+  extends SimpleObserver<List<vhg>>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  uvo(uvn paramuvn, uvr paramuvr, utx paramutx) {}
   
-  public uvo(String paramString1, int paramInt, @Nullable String paramString2)
+  public void a(List<vhg> paramList)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    super.onNext(paramList);
+    ArrayList localArrayList;
+    int i;
+    vhg localvhg;
+    if (this.jdField_a_of_type_Uvr != null)
+    {
+      localArrayList = new ArrayList();
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        Collections.sort(paramList, new uvp(this));
+        paramList = paramList.iterator();
+        i = 0;
+        if (paramList.hasNext())
+        {
+          localvhg = (vhg)paramList.next();
+          if (i < uvn.a(this.jdField_a_of_type_Uvn)) {
+            break label100;
+          }
+        }
+      }
+      this.jdField_a_of_type_Uvr.a(this.jdField_a_of_type_Utx, localArrayList);
+    }
+    else
+    {
+      return;
+    }
+    label100:
+    if ((localvhg != null) && (!localvhg.jdField_a_of_type_Boolean) && (localvhg.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+    {
+      localArrayList.add(localvhg.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      i += 1;
+    }
+    for (;;)
+    {
+      break;
+    }
   }
   
-  public uvo(String paramString1, int paramInt1, @Nullable String paramString2, int paramInt2)
+  public void onError(@NonNull Error paramError)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int != 0));
-  }
-  
-  public String toString()
-  {
-    return "FeedCommentSync{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNextCookie='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mSource=" + this.jdField_a_of_type_Int + '}';
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Uvr != null) {
+      this.jdField_a_of_type_Uvr.a(this.jdField_a_of_type_Utx, paramError);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uvo
  * JD-Core Version:    0.7.0.1
  */

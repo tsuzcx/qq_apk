@@ -5,7 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.webkit.JavascriptInterface;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.apkg.r;
 import com.tencent.mobileqq.microapp.apkg.t;
@@ -68,7 +68,7 @@ public class PageWebview
   
   private void onWebViewReady(f paramf)
   {
-    if (bbkk.a(this.wxssJsStr))
+    if (bdje.a(this.wxssJsStr))
     {
       String str = paramf.g(this.mRouteUrl);
       if (!TextUtils.isEmpty(str)) {
@@ -161,7 +161,7 @@ public class PageWebview
   
   public void loadPageWebviewJs(f paramf)
   {
-    if (bbkk.a(this.mRouteUrl)) {}
+    if (bdje.a(this.mRouteUrl)) {}
     while ((this.hasFLoad) || (!this.hasLoadHtmlFinish)) {
       return;
     }
@@ -196,7 +196,7 @@ public class PageWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.PageWebview
  * JD-Core Version:    0.7.0.1
  */

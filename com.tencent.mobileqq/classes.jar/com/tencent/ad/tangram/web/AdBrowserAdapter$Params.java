@@ -17,7 +17,7 @@ public final class AdBrowserAdapter$Params
   
   public boolean isValid()
   {
-    return (this.activity != null) && (this.activity.get() != null) && (this.ad != null) && (this.ad.isValid()) && (!TextUtils.isEmpty(this.url));
+    return (this.activity != null) && (this.activity.get() != null) && (!TextUtils.isEmpty(this.url)) && (this.ad != null) && (this.ad.isValid());
   }
 }
 

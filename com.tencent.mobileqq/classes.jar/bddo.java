@@ -1,28 +1,40 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.open.widget.MaxHeightScrollView;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Hashtable;
 
-public class bddo
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bddo
+  extends alox
 {
-  public bddo(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  private final bddb b;
   
-  public void onGlobalLayout()
+  bddo(bddb parambddb1, bddb parambddb2)
   {
-    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
+    this.b = parambddb2;
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (bddb.a(this.a) == null) || (!bddb.a(this.a).containsKey(paramString))) {}
+    do
     {
-      int i = QuickLoginAuthorityActivity.a(this.a).a();
-      int j = DisplayUtil.getNavigationBarHeight(this.a);
-      QuickLoginAuthorityActivity.a(this.a).setMaxHeight(i - j);
-    }
-    QuickLoginAuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      return;
+      bddb.a(this.a).remove(paramString);
+      if (bddb.a(this.a).size() == 0) {
+        bddb.a(this.a).removeObserver(bddb.a(this.a));
+      }
+      Object localObject = Uri.parse(bddb.a(this.a) + "&uin=" + paramString);
+      localObject = new Intent(this.b.h, (Uri)localObject);
+      this.a.a.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+    } while (!QLog.isColorLevel());
+    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + this.b.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bddo
  * JD-Core Version:    0.7.0.1
  */

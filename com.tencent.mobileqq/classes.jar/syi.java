@@ -1,36 +1,41 @@
-import android.content.Intent;
-import android.util.SparseIntArray;
-import mqq.app.MSFServlet;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public class syi
+final class syi
+  extends amni
 {
-  public static void a(SparseIntArray paramSparseIntArray)
+  syi(alvc paramalvc, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
+  
+  public int a()
   {
-    int[][] arrayOfInt = sxy.a;
-    int j = arrayOfInt.length;
-    int i = 0;
-    if (i < j)
-    {
-      int[] arrayOfInt1 = arrayOfInt[i];
-      int k = arrayOfInt1[0];
-      int m = arrayOfInt1[1];
-      if (k != -1) {
-        paramSparseIntArray.put(sxm.a(k), m);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        paramSparseIntArray.put(m, m);
-      }
+    return 4;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Alvc != null) {
+      this.jdField_a_of_type_Alvc.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    }
+    syb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Alvc != null) {
+      this.jdField_a_of_type_Alvc.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
     }
   }
   
-  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean) {}
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     syi
  * JD-Core Version:    0.7.0.1
  */

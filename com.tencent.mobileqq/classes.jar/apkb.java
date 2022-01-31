@@ -1,30 +1,56 @@
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.ReqBody;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule.1;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
 public class apkb
+  extends QIPCModule
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  private static apkb a;
+  
+  private apkb(String paramString)
   {
-    return "http://" + paramString1 + "/ftn_handler/" + paramString2 + "/?fname=" + bbea.b(paramString3) + paramString5;
+    super(paramString);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, apkd paramapkd)
+  public static apkb a()
   {
-    if (paramLong < 0L) {
-      return;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new apkb("EmoticonIPCModule");
+      }
+      return a;
     }
-    oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
-    localReqBody.uint64_group_code.set(paramLong);
-    localReqBody.str_app_src.set("android");
-    localReqBody.str_version.set("8.3.0");
-    mxf.b(paramQQAppInterface, new apkc(paramapkd), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonIPCModule", 2, "onCall action = " + paramString);
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonIPCModule", 2, "cannot get QQAppInterface.");
+      }
+      return null;
+    }
+    ThreadManager.post(new EmoticonIPCModule.1(this, paramBundle, paramString, ((bdqa)((QQAppInterface)localAppRuntime).getManager(235)).a, paramInt), 5, null, true);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apkb
  * JD-Core Version:    0.7.0.1
  */

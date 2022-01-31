@@ -13,8 +13,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import bbdv;
-import bjls;
+import bdcq;
+import blxc;
 import com.tencent.qphone.base.util.QLog;
 
 public class QimMusicSeekView
@@ -30,7 +30,7 @@ public class QimMusicSeekView
   float a;
   protected Paint a;
   protected Rect a;
-  protected bjls a;
+  protected blxc a;
   protected boolean a;
   protected Paint b;
   protected Paint c;
@@ -62,34 +62,34 @@ public class QimMusicSeekView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Float = 0.0F;
-    this.p = ((int)bbdv.a(paramContext, 8.0F));
-    this.n = ((int)bbdv.a(paramContext, 2.0F));
-    this.o = ((int)bbdv.a(paramContext, 2.0F));
-    this.r = ((int)bbdv.a(paramContext, 3.0F));
-    jdField_b_of_type_Int = (int)bbdv.a(paramContext, 4.0F);
-    jdField_d_of_type_Int = (int)bbdv.a(paramContext, 50.0F);
-    jdField_c_of_type_Int = (int)bbdv.a(paramContext, 36.0F);
+    this.p = ((int)bdcq.a(paramContext, 8.0F));
+    this.n = ((int)bdcq.a(paramContext, 2.0F));
+    this.o = ((int)bdcq.a(paramContext, 2.0F));
+    this.r = ((int)bdcq.a(paramContext, 3.0F));
+    jdField_b_of_type_Int = (int)bdcq.a(paramContext, 4.0F);
+    jdField_d_of_type_Int = (int)bdcq.a(paramContext, 50.0F);
+    jdField_c_of_type_Int = (int)bdcq.a(paramContext, 36.0F);
     int i1 = 0;
     while (i1 < jdField_a_of_type_Int)
     {
-      jdField_b_of_type_ArrayOfInt[i1] = ((int)bbdv.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
+      jdField_b_of_type_ArrayOfInt[i1] = ((int)bdcq.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
       i1 += 1;
     }
     paramContext = paramContext.getResources();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131165473));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131165508));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166155));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166202));
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131167139));
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131167197));
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_d_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_d_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131165375));
+    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131165410));
     this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -256,8 +256,8 @@ public class QimMusicSeekView
     this.k = ((this.l - this.g) / 2);
     paramInt1 = (this.m - jdField_d_of_type_Int) / 2;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.k, paramInt1, this.k + this.g, jdField_d_of_type_Int + paramInt1);
-    if (this.jdField_a_of_type_Bjls != null) {
-      this.jdField_a_of_type_Bjls.a(this.k, this.g);
+    if (this.jdField_a_of_type_Blxc != null) {
+      this.jdField_a_of_type_Blxc.a(this.k, this.g);
     }
     if (QLog.isColorLevel()) {
       QLog.d("zivonchen", 2, "onMeasure() mViewWidth: " + this.l + ", mViewHeight = " + this.m + ", mVideoViewOffsetX = " + this.k + ", mMusicMaxWidth = " + this.h);
@@ -280,10 +280,10 @@ public class QimMusicSeekView
         return bool1;
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        if (this.jdField_a_of_type_Bjls == null) {
+        if (this.jdField_a_of_type_Blxc == null) {
           break;
         }
-        this.jdField_a_of_type_Bjls.a(this.h, this.g, this.i);
+        this.jdField_a_of_type_Blxc.a(this.h, this.g, this.i);
         break;
         this.jdField_a_of_type_Boolean = true;
         f1 = paramMotionEvent.getX();
@@ -306,8 +306,8 @@ public class QimMusicSeekView
             this.i = (this.h - this.g);
           }
           super.invalidate();
-          if (this.jdField_a_of_type_Bjls != null) {
-            this.jdField_a_of_type_Bjls.b(this.h, this.g, this.i);
+          if (this.jdField_a_of_type_Blxc != null) {
+            this.jdField_a_of_type_Blxc.b(this.h, this.g, this.i);
           }
           this.jdField_a_of_type_Float = f1;
           break;
@@ -315,8 +315,8 @@ public class QimMusicSeekView
       }
       this.jdField_a_of_type_Boolean = false;
       super.invalidate();
-      if (this.jdField_a_of_type_Bjls != null) {
-        this.jdField_a_of_type_Bjls.c(this.h, this.g, this.i);
+      if (this.jdField_a_of_type_Blxc != null) {
+        this.jdField_a_of_type_Blxc.c(this.h, this.g, this.i);
       }
     }
   }
@@ -329,9 +329,9 @@ public class QimMusicSeekView
     this.h = (jdField_b_of_type_Int * this.f + (this.f - 1) * this.n);
   }
   
-  public void setOnSeekListener(bjls parambjls)
+  public void setOnSeekListener(blxc paramblxc)
   {
-    this.jdField_a_of_type_Bjls = parambjls;
+    this.jdField_a_of_type_Blxc = paramblxc;
   }
   
   public void setPlayedPosition(int paramInt)
@@ -342,7 +342,7 @@ public class QimMusicSeekView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QimMusicSeekView
  * JD-Core Version:    0.7.0.1
  */

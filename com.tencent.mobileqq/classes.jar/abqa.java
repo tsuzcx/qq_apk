@@ -1,38 +1,37 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class abqa
-  implements View.OnClickListener
 {
-  public abqa(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public abqa(abpy paramabpy) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    paramView = new Intent(this.a, SpecailCareListActivity.class);
-    this.a.startActivity(paramView);
-    axqy.b(this.a.app, "CliOper", "", "", "0X80050E3", "0X80050E3", 0, 0, "1", "", "", "");
-    axqy.b(this.a.app, "CliOper", "", "", "Special_remind", "Clk_special_remind", 80, 0, "", "", "", "");
-    if (this.a.app != null)
+    try
     {
-      this.a.app.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 0).edit().putBoolean("spcial_care_qq_setting", false).commit();
-      NotifyPushSettingActivity.b(this.a).setRightIcon(null);
-      return;
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("hookpoint_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("hookpoint_lib_name").trim();
+      this.b = paramJSONObject.getString("hookpoint_func_name").trim();
+      return true;
     }
-    QLog.d("IphoneTitleBarActivity", 1, "App is null, can't display 'new' flag for SpecialCare(onClick)");
+    catch (Exception paramJSONObject)
+    {
+      abpt.a("KingKongNativePatch", "Parse HookPoint error!");
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqa
  * JD-Core Version:    0.7.0.1
  */

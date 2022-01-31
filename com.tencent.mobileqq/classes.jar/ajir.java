@@ -1,54 +1,31 @@
-import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajir
-  implements Comparable<ajir>
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public short b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e = -1;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 0;
-  public String g;
-  public int h;
+  public ajir(LoginView paramLoginView) {}
   
-  public int a(ajir paramajir)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramajir == null) {}
-    do
-    {
-      return -1;
-      if (this.jdField_a_of_type_Boolean == paramajir.jdField_a_of_type_Boolean) {
-        return -(int)(this.c - paramajir.c);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return 0;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.LoginView", 2, "mScrollRootView.setOnTouch action=" + paramMotionEvent.getAction() + " im:" + LoginView.a(this.a));
+    }
+    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
+      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajir
  * JD-Core Version:    0.7.0.1
  */

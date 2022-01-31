@@ -1,44 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class pop
-  implements URLDrawable.DownloadListener
+public class pop
+  implements ViewBase.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
   
-  pop(pom parampom, String paramString, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
-  
-  public void onFileDownloadFailed(int paramInt)
+  public pop(BaseArticleInfo paramBaseArticleInfo, Context paramContext)
   {
-    paramInt = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (paramInt + 1);
-    if (paramInt < 3) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
-    }
-    for (;;)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if (AdvertisementInfo.class.isInstance(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))
     {
-      QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadFailed :" + this.jdField_a_of_type_JavaLangString + "  reTry: " + this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(false, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramViewBase = (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+      if (paramViewBase.mLocalInfo != null)
+      {
+        String str = paramViewBase.mLocalInfo.b;
+        if (!TextUtils.isEmpty(str))
+        {
+          ors.d(this.jdField_a_of_type_AndroidContentContext, str);
+          noy.a(new obk().a(this.jdField_a_of_type_AndroidContentContext).a(noy.a).b(noy.Z).a(paramViewBase).d(noy.aN).a());
+        }
+      }
     }
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadStarted :" + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadSucceed :" + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pop
  * JD-Core Version:    0.7.0.1
  */

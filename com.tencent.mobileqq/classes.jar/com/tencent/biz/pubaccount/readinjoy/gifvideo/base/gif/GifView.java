@@ -18,9 +18,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicLong;
-import omr;
-import owp;
-import owq;
+import orc;
+import pbu;
+import pbv;
 
 public class GifView
   extends FrameLayout
@@ -30,7 +30,7 @@ public class GifView
   private Context jdField_a_of_type_AndroidContentContext;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private String jdField_a_of_type_JavaLangString;
+  protected String a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
@@ -60,23 +60,30 @@ public class GifView
   private static Drawable a()
   {
     if (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841297);
+      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841377);
     }
     return jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
   private void a(URLDrawable paramURLDrawable)
   {
-    if (paramURLDrawable == null) {
+    if (paramURLDrawable == null) {}
+    AtomicLong localAtomicLong1;
+    AtomicLong localAtomicLong2;
+    long l;
+    AtomicLong localAtomicLong3;
+    AtomicLong localAtomicLong4;
+    do
+    {
       return;
-    }
-    AtomicLong localAtomicLong1 = new AtomicLong(0L);
-    AtomicLong localAtomicLong2 = new AtomicLong(0L);
-    long l = System.currentTimeMillis();
-    AtomicLong localAtomicLong3 = new AtomicLong(l);
-    AtomicLong localAtomicLong4 = new AtomicLong(0L);
-    paramURLDrawable.setDownloadListener(new owp(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
-    paramURLDrawable.setURLDrawableListener(new owq(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, paramURLDrawable));
+      localAtomicLong1 = new AtomicLong(0L);
+      localAtomicLong2 = new AtomicLong(0L);
+      l = System.currentTimeMillis();
+      localAtomicLong3 = new AtomicLong(l);
+      localAtomicLong4 = new AtomicLong(0L);
+      paramURLDrawable.setDownloadListener(new pbu(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
+    } while (this.jdField_a_of_type_ComTencentImageURLImageView == null);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(new pbv(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, paramURLDrawable));
   }
   
   private boolean b()
@@ -118,7 +125,7 @@ public class GifView
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
@@ -129,7 +136,7 @@ public class GifView
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramInt2;
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramInt1;
       }
-      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+      localObject = URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
       if (((URLDrawable)localObject).getStatus() == 1) {
         f();
       }
@@ -157,11 +164,11 @@ public class GifView
   
   public void setCoverUrl(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) {}
     try
     {
-      omr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_b_of_type_JavaLangString), getContext());
+      orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_a_of_type_JavaLangString), getContext());
       d();
       return;
     }
@@ -181,7 +188,7 @@ public class GifView
   
   public void setGifUrl(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = paramString;
     d();
   }
   
@@ -207,7 +214,7 @@ public class GifView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView
  * JD-Core Version:    0.7.0.1
  */

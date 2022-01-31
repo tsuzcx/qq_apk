@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import java.io.Serializable;
 
 public class TempMsgInfo
-  extends auko
+  extends awbv
   implements Serializable
 {
   public long timeStamp;
-  @aumc
+  @awdj
   public String typeWithUin;
   
   public TempMsgInfo() {}
@@ -22,7 +22,7 @@ public class TempMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TempMsgInfo
  * JD-Core Version:    0.7.0.1
  */

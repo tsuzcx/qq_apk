@@ -115,127 +115,127 @@ public abstract class TbsBaseConfig
     //   73: new 102	java/util/Properties
     //   76: dup
     //   77: invokespecial 103	java/util/Properties:<init>	()V
-    //   80: astore 5
-    //   82: aload_2
-    //   83: astore_1
-    //   84: aload 5
-    //   86: aload_2
-    //   87: invokevirtual 106	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   90: aload_2
-    //   91: astore_1
-    //   92: aload 5
-    //   94: invokevirtual 110	java/util/Properties:stringPropertyNames	()Ljava/util/Set;
-    //   97: invokeinterface 116 1 0
-    //   102: astore 4
-    //   104: aload_2
-    //   105: astore_1
-    //   106: aload 4
-    //   108: invokeinterface 121 1 0
-    //   113: ifeq +64 -> 177
-    //   116: aload_2
-    //   117: astore_1
-    //   118: aload 4
-    //   120: invokeinterface 125 1 0
-    //   125: checkcast 127	java/lang/String
-    //   128: astore_3
-    //   129: aload_2
-    //   130: astore_1
-    //   131: aload_0
-    //   132: getfield 50	com/tencent/smtt/sdk/TbsBaseConfig:mSyncMap	Ljava/util/Map;
+    //   80: astore_3
+    //   81: aload_2
+    //   82: astore_1
+    //   83: aload_3
+    //   84: aload_2
+    //   85: invokevirtual 106	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   88: aload_2
+    //   89: astore_1
+    //   90: aload_3
+    //   91: invokevirtual 110	java/util/Properties:stringPropertyNames	()Ljava/util/Set;
+    //   94: invokeinterface 116 1 0
+    //   99: astore 5
+    //   101: aload_2
+    //   102: astore_1
+    //   103: aload 5
+    //   105: invokeinterface 121 1 0
+    //   110: ifeq +66 -> 176
+    //   113: aload_2
+    //   114: astore_1
+    //   115: aload 5
+    //   117: invokeinterface 125 1 0
+    //   122: checkcast 127	java/lang/String
+    //   125: astore 4
+    //   127: aload_2
+    //   128: astore_1
+    //   129: aload_0
+    //   130: getfield 50	com/tencent/smtt/sdk/TbsBaseConfig:mSyncMap	Ljava/util/Map;
+    //   133: aload 4
     //   135: aload_3
-    //   136: aload 5
-    //   138: aload_3
-    //   139: invokevirtual 131	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   142: invokeinterface 135 3 0
-    //   147: pop
-    //   148: goto -44 -> 104
-    //   151: astore_3
-    //   152: aload_2
-    //   153: astore_1
-    //   154: aload_3
-    //   155: invokevirtual 136	java/lang/Throwable:printStackTrace	()V
-    //   158: aload_2
-    //   159: ifnull -129 -> 30
-    //   162: aload_2
-    //   163: invokevirtual 139	java/io/BufferedInputStream:close	()V
-    //   166: goto -136 -> 30
-    //   169: astore_1
-    //   170: aload_1
-    //   171: invokevirtual 90	java/lang/Exception:printStackTrace	()V
-    //   174: goto -144 -> 30
-    //   177: aload_2
-    //   178: ifnull -148 -> 30
-    //   181: aload_2
-    //   182: invokevirtual 139	java/io/BufferedInputStream:close	()V
-    //   185: goto -155 -> 30
-    //   188: astore_1
-    //   189: aload_1
-    //   190: invokevirtual 90	java/lang/Exception:printStackTrace	()V
-    //   193: goto -163 -> 30
-    //   196: astore_2
-    //   197: aconst_null
-    //   198: astore_1
-    //   199: aload_1
-    //   200: ifnull +7 -> 207
-    //   203: aload_1
-    //   204: invokevirtual 139	java/io/BufferedInputStream:close	()V
-    //   207: aload_2
-    //   208: athrow
-    //   209: astore_1
-    //   210: aload_1
-    //   211: invokevirtual 90	java/lang/Exception:printStackTrace	()V
-    //   214: goto -7 -> 207
-    //   217: astore_2
-    //   218: goto -19 -> 199
-    //   221: astore_3
-    //   222: aconst_null
-    //   223: astore_2
-    //   224: goto -72 -> 152
+    //   136: aload 4
+    //   138: invokevirtual 131	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   141: invokeinterface 135 3 0
+    //   146: pop
+    //   147: goto -46 -> 101
+    //   150: astore_3
+    //   151: aload_2
+    //   152: astore_1
+    //   153: aload_3
+    //   154: invokevirtual 136	java/lang/Throwable:printStackTrace	()V
+    //   157: aload_2
+    //   158: ifnull -128 -> 30
+    //   161: aload_2
+    //   162: invokevirtual 139	java/io/BufferedInputStream:close	()V
+    //   165: goto -135 -> 30
+    //   168: astore_1
+    //   169: aload_1
+    //   170: invokevirtual 90	java/lang/Exception:printStackTrace	()V
+    //   173: goto -143 -> 30
+    //   176: aload_2
+    //   177: ifnull -147 -> 30
+    //   180: aload_2
+    //   181: invokevirtual 139	java/io/BufferedInputStream:close	()V
+    //   184: goto -154 -> 30
+    //   187: astore_1
+    //   188: aload_1
+    //   189: invokevirtual 90	java/lang/Exception:printStackTrace	()V
+    //   192: goto -162 -> 30
+    //   195: astore_2
+    //   196: aconst_null
+    //   197: astore_1
+    //   198: aload_1
+    //   199: ifnull +7 -> 206
+    //   202: aload_1
+    //   203: invokevirtual 139	java/io/BufferedInputStream:close	()V
+    //   206: aload_2
+    //   207: athrow
+    //   208: astore_1
+    //   209: aload_1
+    //   210: invokevirtual 90	java/lang/Exception:printStackTrace	()V
+    //   213: goto -7 -> 206
+    //   216: astore_2
+    //   217: goto -19 -> 198
+    //   220: astore_3
+    //   221: aconst_null
+    //   222: astore_2
+    //   223: goto -72 -> 151
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	227	0	this	TbsBaseConfig
-    //   0	227	1	paramContext	Context
-    //   70	112	2	localBufferedInputStream	java.io.BufferedInputStream
-    //   196	12	2	localObject1	Object
-    //   217	1	2	localObject2	Object
-    //   223	1	2	localObject3	Object
-    //   128	11	3	str	String
-    //   151	4	3	localThrowable1	java.lang.Throwable
-    //   221	1	3	localThrowable2	java.lang.Throwable
-    //   102	17	4	localIterator	java.util.Iterator
-    //   80	57	5	localProperties	java.util.Properties
+    //   0	226	0	this	TbsBaseConfig
+    //   0	226	1	paramContext	Context
+    //   70	111	2	localBufferedInputStream	java.io.BufferedInputStream
+    //   195	12	2	localObject1	Object
+    //   216	1	2	localObject2	Object
+    //   222	1	2	localObject3	Object
+    //   80	56	3	localProperties	java.util.Properties
+    //   150	4	3	localThrowable1	java.lang.Throwable
+    //   220	1	3	localThrowable2	java.lang.Throwable
+    //   125	12	4	str	String
+    //   99	17	5	localIterator	java.util.Iterator
     // Exception table:
     //   from	to	target	type
     //   22	30	33	java/lang/Exception
     //   22	30	41	finally
     //   34	38	41	finally
-    //   162	166	41	finally
-    //   170	174	41	finally
-    //   181	185	41	finally
-    //   189	193	41	finally
-    //   203	207	41	finally
-    //   207	209	41	finally
-    //   210	214	41	finally
-    //   73	82	151	java/lang/Throwable
-    //   84	90	151	java/lang/Throwable
-    //   92	104	151	java/lang/Throwable
-    //   106	116	151	java/lang/Throwable
-    //   118	129	151	java/lang/Throwable
-    //   131	148	151	java/lang/Throwable
-    //   162	166	169	java/lang/Exception
-    //   181	185	188	java/lang/Exception
-    //   2	14	196	finally
-    //   46	71	196	finally
-    //   203	207	209	java/lang/Exception
-    //   73	82	217	finally
-    //   84	90	217	finally
-    //   92	104	217	finally
-    //   106	116	217	finally
-    //   118	129	217	finally
-    //   131	148	217	finally
-    //   154	158	217	finally
-    //   2	14	221	java/lang/Throwable
-    //   46	71	221	java/lang/Throwable
+    //   161	165	41	finally
+    //   169	173	41	finally
+    //   180	184	41	finally
+    //   188	192	41	finally
+    //   202	206	41	finally
+    //   206	208	41	finally
+    //   209	213	41	finally
+    //   73	81	150	java/lang/Throwable
+    //   83	88	150	java/lang/Throwable
+    //   90	101	150	java/lang/Throwable
+    //   103	113	150	java/lang/Throwable
+    //   115	127	150	java/lang/Throwable
+    //   129	147	150	java/lang/Throwable
+    //   161	165	168	java/lang/Exception
+    //   180	184	187	java/lang/Exception
+    //   2	14	195	finally
+    //   46	71	195	finally
+    //   202	206	208	java/lang/Exception
+    //   73	81	216	finally
+    //   83	88	216	finally
+    //   90	101	216	finally
+    //   103	113	216	finally
+    //   115	127	216	finally
+    //   129	147	216	finally
+    //   153	157	216	finally
+    //   2	14	220	java/lang/Throwable
+    //   46	71	220	java/lang/Throwable
   }
   
   /* Error */
@@ -256,8 +256,8 @@ public abstract class TbsBaseConfig
     //   18: aload_0
     //   19: invokevirtual 84	com/tencent/smtt/sdk/TbsBaseConfig:getConfigFileName	()Ljava/lang/String;
     //   22: invokestatic 86	com/tencent/smtt/sdk/TbsBaseConfig:getTbsFile	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-    //   25: astore 7
-    //   27: aload 7
+    //   25: astore 6
+    //   27: aload 6
     //   29: ifnonnull +51 -> 80
     //   32: iconst_0
     //   33: ifeq +11 -> 44
@@ -291,7 +291,7 @@ public abstract class TbsBaseConfig
     //   83: dup
     //   84: new 94	java/io/FileInputStream
     //   87: dup
-    //   88: aload 7
+    //   88: aload 6
     //   90: invokespecial 97	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   93: invokespecial 100	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   96: astore_2
@@ -315,20 +315,20 @@ public abstract class TbsBaseConfig
     //   141: aload_1
     //   142: invokeinterface 125 1 0
     //   147: checkcast 127	java/lang/String
-    //   150: astore 8
+    //   150: astore 7
     //   152: aload_0
     //   153: getfield 50	com/tencent/smtt/sdk/TbsBaseConfig:mSyncMap	Ljava/util/Map;
-    //   156: aload 8
+    //   156: aload 7
     //   158: invokeinterface 155 2 0
-    //   163: astore 6
+    //   163: astore 8
     //   165: aload 5
-    //   167: aload 8
+    //   167: aload 7
     //   169: new 157	java/lang/StringBuilder
     //   172: dup
     //   173: invokespecial 158	java/lang/StringBuilder:<init>	()V
     //   176: ldc 160
     //   178: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   181: aload 6
+    //   181: aload 8
     //   183: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   186: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   189: invokevirtual 174	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
@@ -339,11 +339,11 @@ public abstract class TbsBaseConfig
     //   199: invokespecial 158	java/lang/StringBuilder:<init>	()V
     //   202: ldc 176
     //   204: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: aload 8
+    //   207: aload 7
     //   209: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: ldc 178
     //   214: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: aload 6
+    //   217: aload 8
     //   219: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   222: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   225: invokestatic 147	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
@@ -375,7 +375,7 @@ public abstract class TbsBaseConfig
     //   280: dup
     //   281: new 183	java/io/FileOutputStream
     //   284: dup
-    //   285: aload 7
+    //   285: aload 6
     //   287: invokespecial 184	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   290: invokespecial 187	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   293: astore_1
@@ -450,12 +450,12 @@ public abstract class TbsBaseConfig
     //   414: astore_2
     //   415: goto -178 -> 237
     //   418: astore_3
-    //   419: aload_1
+    //   419: aload_2
     //   420: astore 4
-    //   422: aload_2
-    //   423: astore_1
+    //   422: aload_1
+    //   423: astore_2
     //   424: aload 4
-    //   426: astore_2
+    //   426: astore_1
     //   427: goto -190 -> 237
     // Local variable table:
     //   start	length	slot	name	signature
@@ -470,13 +470,13 @@ public abstract class TbsBaseConfig
     //   336	2	1	localException5	java.lang.Exception
     //   344	20	1	localObject3	Object
     //   381	7	1	localObject4	Object
-    //   391	33	1	localObject5	Object
+    //   391	36	1	localObject5	Object
     //   96	210	2	localObject6	Object
     //   328	2	2	localException6	java.lang.Exception
     //   346	6	2	localObject7	Object
     //   365	2	2	localException7	java.lang.Exception
     //   373	29	2	localException8	java.lang.Exception
-    //   405	22	2	localObject8	Object
+    //   405	19	2	localObject8	Object
     //   1	1	3	localObject9	Object
     //   231	129	3	localThrowable1	java.lang.Throwable
     //   388	1	3	localObject10	Object
@@ -488,9 +488,9 @@ public abstract class TbsBaseConfig
     //   385	5	4	localObject14	Object
     //   397	28	4	localObject15	Object
     //   104	191	5	localProperties	java.util.Properties
-    //   163	55	6	localObject16	Object
-    //   25	261	7	localFile	File
-    //   150	58	8	str	String
+    //   25	261	6	localFile	File
+    //   150	58	7	str	String
+    //   163	55	8	localObject16	Object
     // Exception table:
     //   from	to	target	type
     //   36	44	59	java/lang/Exception
@@ -536,7 +536,7 @@ public abstract class TbsBaseConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsBaseConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.util;
 
-import akdh;
+import aluw;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import auko;
-import aukp;
-import aukq;
+import awbv;
+import awbw;
+import awbx;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -16,15 +16,15 @@ import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
-import saz;
-import sgg;
-import sgh;
+import ssp;
+import syb;
+import syc;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
 public class PublicAccountUtil$10$1
   implements Runnable
 {
-  public PublicAccountUtil$10$1(sgh paramsgh, boolean paramBoolean, Bundle paramBundle) {}
+  public PublicAccountUtil$10$1(syc paramsyc, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
@@ -79,23 +79,23 @@ public class PublicAccountUtil$10$1
                   if (localObject4 != null)
                   {
                     j = i1;
-                    ((aukp)localObject4).b((auko)localObject3);
+                    ((awbw)localObject4).b((awbv)localObject3);
                     if (localObject3 != null)
                     {
                       j = i1;
-                      localObject4 = (akdh)this.this$0.a.getManager(56);
+                      localObject4 = (aluw)this.this$0.a.getManager(56);
                       if (localObject4 != null)
                       {
                         j = i1;
-                        ((akdh)localObject4).a((AccountDetail)localObject3);
+                        ((aluw)localObject4).a((AccountDetail)localObject3);
                         j = i1;
-                        if (((akdh)localObject4).b(((AccountDetail)localObject3).uin) == null)
+                        if (((aluw)localObject4).b(((AccountDetail)localObject3).uin) == null)
                         {
                           j = i1;
                           if (((AccountDetail)localObject3).followType == 1)
                           {
                             j = i1;
-                            ((akdh)localObject4).a(PublicAccountInfo.createPublicAccount((AccountDetail)localObject3, 0L));
+                            ((aluw)localObject4).a(PublicAccountInfo.createPublicAccount((AccountDetail)localObject3, 0L));
                           }
                         }
                       }
@@ -120,16 +120,16 @@ public class PublicAccountUtil$10$1
       }
       try
       {
-        if (sgg.a != null)
+        if (syb.a != null)
         {
           j = n;
-          sgg.a.sendEmptyMessage(36);
+          syb.a.sendEmptyMessage(36);
           i = 1;
           j = i;
-          if (sgg.a() != null)
+          if (syb.a() != null)
           {
             j = i;
-            if (sgg.a().get() != null)
+            if (syb.a().get() != null)
             {
               j = i;
               if (localGetPublicAccountDetailInfoResponse.uin.has())
@@ -141,7 +141,7 @@ public class PublicAccountUtil$10$1
                 j = i;
                 ((Message)localObject4).what = 200;
                 j = i;
-                ((Handler)sgg.a().get()).sendMessage((Message)localObject4);
+                ((Handler)syb.a().get()).sendMessage((Message)localObject4);
               }
             }
           }
@@ -154,7 +154,7 @@ public class PublicAccountUtil$10$1
             if (localObject3 != null)
             {
               j = i;
-              saz.a().a(this.this$0.a, (AccountDetail)localObject3);
+              ssp.a().a(this.this$0.a, (AccountDetail)localObject3);
               k = i;
             }
           }
@@ -165,14 +165,14 @@ public class PublicAccountUtil$10$1
       finally {}
       try
       {
-        if (sgg.a != null) {
-          sgg.a.sendEmptyMessage(36);
+        if (syb.a != null) {
+          syb.a.sendEmptyMessage(36);
         }
         return;
       }
       finally {}
       j = i1;
-      bool = sgg.a((byte[])localObject3, (oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse)localObject4, localGetPublicAccountDetailInfoResponse);
+      bool = syb.a((byte[])localObject3, (oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse)localObject4, localGetPublicAccountDetailInfoResponse);
       continue;
       j = n;
       localObject4 = this.this$0.a.getHandler(Conversation.class);
@@ -188,7 +188,7 @@ public class PublicAccountUtil$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountUtil.10.1
  * JD-Core Version:    0.7.0.1
  */

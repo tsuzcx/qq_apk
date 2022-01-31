@@ -1,22 +1,10 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
-
-public class ayzy
-  extends ayyd
+public abstract interface ayzy
 {
-  protected void a(aytk paramaytk)
-  {
-    paramaytk.a = "LongConn.SharePic2Wechat";
-  }
-  
-  protected void a(cmd0x352.TryUpImgReq paramTryUpImgReq)
-  {
-    paramTryUpImgReq.uint32_bu_type.set(96);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayzy
  * JD-Core Version:    0.7.0.1
  */

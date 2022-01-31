@@ -3,8 +3,8 @@ package com.tencent.ttpic.filter;
 import android.graphics.PointF;
 import android.text.TextUtils;
 import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.PTHandAttr;
 import com.tencent.filter.BaseFilter;
@@ -17,8 +17,6 @@ import com.tencent.ttpic.openapi.filter.FabbyMvPart;
 import com.tencent.ttpic.openapi.filter.MaskStickerFilter.BrushMaskFilter;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.util.TriggerUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.util.FrameUtil;
 import java.io.File;
@@ -29,15 +27,19 @@ import java.util.Map;
 import java.util.Set;
 
 public class FabbyFilters
+  implements AEFilterI
 {
+  private final int ACTION_TRIGGER_TIMESTAMP_MS = 1000;
   private final String audioFile;
   private final String dataPath;
   private List<FabbyMvFilter> fabbyMvFilters = new ArrayList();
   private PTHandAttr handAttr = null;
+  private boolean isCurrentTriggered = false;
   private boolean mAudioPause;
   private List<Long> mBaseOffsetTimeList = new ArrayList();
   private BrushMaskFilter mBrushMaskFilter;
   private BaseFilter mCopyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private int mCurMvPartTriggerDelay = 1;
   private Frame mDoodlerMaskFrame = new Frame();
   private int mDoodlerMaskRenderId = 0;
   private int mLastRenderPartIndex;
@@ -85,6 +87,11 @@ public class FabbyFilters
     return (localFabbyMvFilter.mvPart.transitionItem != null) && (Integer.valueOf(localFabbyMvFilter.mvPart.transitionItem.getTriggerTypeInt()).intValue() > 1);
   }
   
+  private boolean isRightTimeInActionTrigger(long paramLong)
+  {
+    return paramLong - this.mLastTriggerTime > this.mCurMvPartTriggerDelay * 1000;
+  }
+  
   private void reset(long paramLong)
   {
     this.mStartTime = paramLong;
@@ -110,104 +117,65 @@ public class FabbyFilters
   
   private void updateCurrentPartIndex(Set<Integer> paramSet, long paramLong, AIAttr paramAIAttr)
   {
-    boolean bool = true;
+    int k = 1;
     int j = 0;
-    FabbyMvFilter localFabbyMvFilter;
-    int k;
-    PTHandAttr localPTHandAttr;
+    boolean bool;
     int i;
     if (isCurrentPartActionTrigger())
     {
-      localFabbyMvFilter = (FabbyMvFilter)this.fabbyMvFilters.get(this.mMvPartIndex);
-      k = localFabbyMvFilter.mvPart.transitionItem.getTriggerTypeInt();
-      if ((localFabbyMvFilter.mvPart.transitionItem.triggerArea != null) && (localFabbyMvFilter.mvPart.transitionItem.triggerArea.size() > 0)) {}
-      for (j = 1; k == PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value; j = 0)
-      {
-        bool = paramSet.contains(Integer.valueOf(k));
-        if (bool)
-        {
-          this.mLastTriggerTime = paramLong;
-          this.mOffsetTimeFromTrigger = (paramLong - (((Long)this.mBaseOffsetTimeList.get(this.mMvPartIndex)).longValue() + this.mStartTime));
-          updateTransitionParam(localFabbyMvFilter.mvPart.transitionDuration + paramLong);
-          this.mMvPartIndex = ((this.mMvPartIndex + 1) % this.fabbyMvFilters.size());
-          if (this.mMvPartIndex == 0) {
-            reset(paramLong);
-          }
-        }
-        this.mLastRenderPartIndex = this.mMvPartIndex;
-        return;
+      paramSet = (FabbyMvFilter)this.fabbyMvFilters.get(this.mMvPartIndex);
+      bool = this.isCurrentTriggered;
+      i = paramSet.mvPart.transitionItem.getTriggerTypeInt();
+      this.mCurMvPartTriggerDelay = paramSet.mvPart.triggerDelay;
+      if (i == PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value) {
+        break label354;
       }
-      localPTHandAttr = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
-      if (localPTHandAttr == null) {
-        break label575;
-      }
-      if (localPTHandAttr.getHandType() == k) {
-        i = 1;
-      }
+      if ((!bool) || (!isRightTimeInActionTrigger(paramLong))) {}
     }
     for (;;)
     {
-      if (VideoMaterialUtil.isFaceTriggerType(k))
+      if (k != 0)
       {
-        if ((paramSet.contains(Integer.valueOf(k))) && (paramLong - this.mLastTriggerTime > 1000L)) {
-          break;
-        }
-        bool = false;
-        break;
-        i = 0;
-        continue;
-      }
-      if (VideoMaterialUtil.isGestureTriggerType(k))
-      {
-        if (j != 0)
-        {
-          bool = TriggerUtil.isGestureTriggered(localPTHandAttr, k, localFabbyMvFilter.mvPart.transitionItem.triggerHandPoint, localFabbyMvFilter.mvPart.transitionItem.triggerArea, paramAIAttr);
-          break;
-        }
-        if ((i != 0) && (paramLong - this.mLastTriggerTime > 1000L)) {
-          break;
-        }
-        bool = false;
-        break;
-      }
-      if (VideoMaterialUtil.isTouchTriggerType(k))
-      {
-        if ((paramSet.contains(Integer.valueOf(k))) && (paramLong - this.mLastTriggerTime > 1000L)) {
-          break;
-        }
-        bool = false;
-        break;
-        long l1 = this.mStartTime;
-        long l2 = this.mOffsetTimeFromTrigger;
-        i = 0;
-        label413:
-        if (i < this.fabbyMvFilters.size()) {
-          if (((Long)this.mBaseOffsetTimeList.get(i)).longValue() >= paramLong - l1 - l2) {
-            this.mMvPartIndex = i;
-          }
-        }
-        for (i = j;; i = 1)
-        {
-          if (i != 0)
-          {
-            reset(paramLong);
-            break;
-            i += 1;
-            break label413;
-          }
-          if (this.mMvPartIndex == this.mLastRenderPartIndex) {
-            break;
-          }
-          paramLong = this.mStartTime;
-          l1 = ((Long)this.mBaseOffsetTimeList.get(this.mLastRenderPartIndex)).longValue();
-          updateTransitionParam(((FabbyMvFilter)this.fabbyMvFilters.get(this.mLastRenderPartIndex)).mvPart.transitionDuration + (paramLong + l1) + this.mOffsetTimeFromTrigger);
-          break;
+        this.mLastTriggerTime = paramLong;
+        this.mOffsetTimeFromTrigger = (paramLong - (((Long)this.mBaseOffsetTimeList.get(this.mMvPartIndex)).longValue() + this.mStartTime));
+        updateTransitionParam(paramSet.mvPart.transitionDuration + paramLong);
+        this.mMvPartIndex = ((this.mMvPartIndex + 1) % this.fabbyMvFilters.size());
+        if (this.mMvPartIndex == 0) {
+          reset(paramLong);
         }
       }
-      bool = false;
-      break;
-      label575:
+      this.mLastRenderPartIndex = this.mMvPartIndex;
+      return;
+      k = 0;
+      continue;
+      long l1 = this.mStartTime;
+      long l2 = this.mOffsetTimeFromTrigger;
       i = 0;
+      label198:
+      if (i < this.fabbyMvFilters.size()) {
+        if (((Long)this.mBaseOffsetTimeList.get(i)).longValue() >= paramLong - l1 - l2) {
+          this.mMvPartIndex = i;
+        }
+      }
+      for (i = j;; i = 1)
+      {
+        if (i != 0)
+        {
+          reset(paramLong);
+          break;
+          i += 1;
+          break label198;
+        }
+        if (this.mMvPartIndex == this.mLastRenderPartIndex) {
+          break;
+        }
+        paramLong = this.mStartTime;
+        l1 = ((Long)this.mBaseOffsetTimeList.get(this.mLastRenderPartIndex)).longValue();
+        updateTransitionParam(((FabbyMvFilter)this.fabbyMvFilters.get(this.mLastRenderPartIndex)).mvPart.transitionDuration + (paramLong + l1) + this.mOffsetTimeFromTrigger);
+        break;
+      }
+      label354:
+      k = bool;
     }
   }
   
@@ -237,6 +205,11 @@ public class FabbyFilters
     if (this.mBrushMaskFilter != null) {
       this.mBrushMaskFilter.ApplyGLSLFilter();
     }
+  }
+  
+  public Frame RenderProcess(Frame paramFrame)
+  {
+    return paramFrame;
   }
   
   public void clear()
@@ -354,6 +327,11 @@ public class FabbyFilters
     this.mTouchPoints = paramList;
   }
   
+  public void setTriggered(boolean paramBoolean)
+  {
+    this.isCurrentTriggered = paramBoolean;
+  }
+  
   public Frame updateAndRender(Frame paramFrame, Map<Integer, Frame> paramMap, Map<Integer, FaceActionCounter> paramMap1, Set<Integer> paramSet, long paramLong)
   {
     paramMap1 = (FabbyMvFilter)this.fabbyMvFilters.get(this.mMvPartIndex);
@@ -390,6 +368,8 @@ public class FabbyFilters
   {
     this.handAttr = paramPTHandAttr;
   }
+  
+  public void updatePreview(Object paramObject) {}
   
   public void updateTextureParam(Map<Integer, FaceActionCounter> paramMap, Set<Integer> paramSet, long paramLong, AIAttr paramAIAttr)
   {

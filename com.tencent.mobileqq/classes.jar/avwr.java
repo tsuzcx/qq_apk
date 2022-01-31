@@ -1,64 +1,23 @@
-import android.content.Context;
-import android.os.SystemClock;
-import com.tencent.mobileqq.richmedia.dc.DataReport;
-import com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class avwr
-  extends avxd
+class avwr
+  implements View.OnClickListener
 {
-  private avwt a;
-  private boolean b;
+  avwr(avwn paramavwn, avxc paramavxc) {}
   
-  public avwr(Context paramContext)
+  public void onClick(View paramView)
   {
-    super(paramContext);
-  }
-  
-  public void a()
-  {
-    if ((this.a != null) && (!this.b))
-    {
-      DataReport.ReportTask localReportTask = new DataReport.ReportTask("Pic.AioPreview.Progressive", this.a.a("Pic.AioPreview.Progressive"));
-      DataReport.a().a(localReportTask);
-      this.b = true;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((this.a == null) && (!this.b))
-    {
-      avwt localavwt = new avwt(null);
-      avwt.a(localavwt, paramBoolean);
-      avwt.a(localavwt, SystemClock.uptimeMillis());
-      this.a = localavwt;
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.a != null) && (!this.b)) {
-      avwt.b(this.a, SystemClock.uptimeMillis());
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.a != null) && (!this.b)) {
-      avwt.c(this.a, SystemClock.uptimeMillis());
-    }
-  }
-  
-  public void d()
-  {
-    if ((this.a != null) && (!this.b)) {
-      avwt.b(this.a, true);
-    }
+    avwn.a(this.jdField_a_of_type_Avwn).removeMessages(101);
+    avwn.a(this.jdField_a_of_type_Avwn).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Avxc.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avwr
  * JD-Core Version:    0.7.0.1
  */

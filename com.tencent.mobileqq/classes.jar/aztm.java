@@ -1,20 +1,28 @@
-import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
-public abstract interface aztm
+class aztm
 {
-  public abstract void a(long paramLong1, long paramLong2);
+  public View a;
+  public TextView a;
+  public TextView b;
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void d();
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    if (this.b != null) {
+      this.b.setVisibility(8);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aztm
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.util.Log;
-import com.tencent.secprotocol.utils.ByteCodeCrashProtector;
 import com.tencent.secprotocol.utils.QPDirUtils;
 import com.tencent.secprotocol.utils.QPMiscUtils;
 import com.tencent.secprotocol.utils.VerifyFileUtil;
@@ -63,15 +62,29 @@ public class ByteData
   
   public static ByteData getInstance()
   {
-    return ByteData.ByteDataHolder.access$500();
+    return ByteData.ByteDataHolder.access$100();
   }
   
   private void initLoadlibrary()
   {
-    if (this.mPoxyInit) {
+    if (this.mPoxyInit) {}
+    while (this.mPoxyNativeLoaded) {
       return;
     }
-    new ByteCodeCrashProtector(this.mContext, this.mSp, "loader_key", 86400000L).runProtectedMethod(new ByteData.1(this));
+    try
+    {
+      if (!loadUpgradedLibrary()) {
+        System.loadLibrary("poxy");
+      }
+      this.mPoxyNativeLoaded = true;
+      this.mPoxyInit = true;
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      this.status[1] = 1;
+      localUnsatisfiedLinkError.printStackTrace();
+    }
   }
   
   private boolean loadUpgradedLibrary()
@@ -120,21 +133,21 @@ public class ByteData
     //   28: astore_3
     //   29: aload_3
     //   30: monitorenter
-    //   31: new 163	com/tencent/secprotocol/utils/ByteCodeCrashProtector
+    //   31: new 206	com/tencent/secprotocol/utils/ByteCodeCrashProtector
     //   34: dup
     //   35: aload_0
     //   36: getfield 72	com/tencent/secprotocol/ByteData:mContext	Landroid/content/Context;
     //   39: aload_0
-    //   40: getfield 165	com/tencent/secprotocol/ByteData:mSp	Landroid/content/SharedPreferences;
+    //   40: getfield 208	com/tencent/secprotocol/ByteData:mSp	Landroid/content/SharedPreferences;
     //   43: ldc 17
     //   45: ldc2_w 25
-    //   48: invokespecial 168	com/tencent/secprotocol/utils/ByteCodeCrashProtector:<init>	(Landroid/content/Context;Landroid/content/SharedPreferences;Ljava/lang/String;J)V
-    //   51: new 223	com/tencent/secprotocol/ByteData$2
+    //   48: invokespecial 211	com/tencent/secprotocol/utils/ByteCodeCrashProtector:<init>	(Landroid/content/Context;Landroid/content/SharedPreferences;Ljava/lang/String;J)V
+    //   51: new 213	com/tencent/secprotocol/ByteData$1
     //   54: dup
     //   55: aload_0
     //   56: aload_1
-    //   57: invokespecial 225	com/tencent/secprotocol/ByteData$2:<init>	(Lcom/tencent/secprotocol/ByteData;Ljava/lang/Object;)V
-    //   60: invokevirtual 177	com/tencent/secprotocol/utils/ByteCodeCrashProtector:runProtectedMethod	(Lcom/tencent/secprotocol/utils/ByteCodeCrashProtector$IProtectedMethod;)V
+    //   57: invokespecial 215	com/tencent/secprotocol/ByteData$1:<init>	(Lcom/tencent/secprotocol/ByteData;Ljava/lang/Object;)V
+    //   60: invokevirtual 219	com/tencent/secprotocol/utils/ByteCodeCrashProtector:runProtectedMethod	(Lcom/tencent/secprotocol/utils/ByteCodeCrashProtector$IProtectedMethod;)V
     //   63: aload_3
     //   64: monitorexit
     //   65: goto -43 -> 22
@@ -223,7 +236,7 @@ public class ByteData
     //   8: ifne +26 -> 34
     //   11: aload_0
     //   12: aload 12
-    //   14: invokevirtual 267	com/tencent/secprotocol/ByteData:checkObject	(Ljava/lang/Object;)Z
+    //   14: invokevirtual 261	com/tencent/secprotocol/ByteData:checkObject	(Ljava/lang/Object;)Z
     //   17: ifne +17 -> 34
     //   20: aload_0
     //   21: getfield 84	com/tencent/secprotocol/ByteData:mPoxyNativeLoaded	Z
@@ -242,22 +255,22 @@ public class ByteData
     //   46: lload_3
     //   47: putfield 74	com/tencent/secprotocol/ByteData:mUin	J
     //   50: iconst_1
-    //   51: anewarray 263	[B
+    //   51: anewarray 257	[B
     //   54: astore 13
     //   56: getstatic 57	com/tencent/secprotocol/ByteData:getBytelock	Ljava/lang/Object;
     //   59: astore 14
     //   61: aload 14
     //   63: monitorenter
-    //   64: new 163	com/tencent/secprotocol/utils/ByteCodeCrashProtector
+    //   64: new 206	com/tencent/secprotocol/utils/ByteCodeCrashProtector
     //   67: dup
     //   68: aload_0
     //   69: getfield 72	com/tencent/secprotocol/ByteData:mContext	Landroid/content/Context;
     //   72: aload_0
-    //   73: getfield 165	com/tencent/secprotocol/ByteData:mSp	Landroid/content/SharedPreferences;
+    //   73: getfield 208	com/tencent/secprotocol/ByteData:mSp	Landroid/content/SharedPreferences;
     //   76: ldc 8
     //   78: ldc2_w 25
-    //   81: invokespecial 168	com/tencent/secprotocol/utils/ByteCodeCrashProtector:<init>	(Landroid/content/Context;Landroid/content/SharedPreferences;Ljava/lang/String;J)V
-    //   84: new 269	com/tencent/secprotocol/ByteData$3
+    //   81: invokespecial 211	com/tencent/secprotocol/utils/ByteCodeCrashProtector:<init>	(Landroid/content/Context;Landroid/content/SharedPreferences;Ljava/lang/String;J)V
+    //   84: new 263	com/tencent/secprotocol/ByteData$2
     //   87: dup
     //   88: aload_0
     //   89: aload 13
@@ -269,8 +282,8 @@ public class ByteData
     //   99: aload 10
     //   101: aload 11
     //   103: aload 12
-    //   105: invokespecial 272	com/tencent/secprotocol/ByteData$3:<init>	(Lcom/tencent/secprotocol/ByteData;[[BJJJJLjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
-    //   108: invokevirtual 177	com/tencent/secprotocol/utils/ByteCodeCrashProtector:runProtectedMethod	(Lcom/tencent/secprotocol/utils/ByteCodeCrashProtector$IProtectedMethod;)V
+    //   105: invokespecial 266	com/tencent/secprotocol/ByteData$2:<init>	(Lcom/tencent/secprotocol/ByteData;[[BJJJJLjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   108: invokevirtual 219	com/tencent/secprotocol/utils/ByteCodeCrashProtector:runProtectedMethod	(Lcom/tencent/secprotocol/utils/ByteCodeCrashProtector$IProtectedMethod;)V
     //   111: aload 13
     //   113: iconst_0
     //   114: aaload
@@ -346,8 +359,8 @@ public class ByteData
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: invokestatic 277	com/tencent/secprotocol/ByteData:getInstance	()Lcom/tencent/secprotocol/ByteData;
-    //   6: invokespecial 184	com/tencent/secprotocol/ByteData:getContext	()Landroid/content/Context;
+    //   3: invokestatic 271	com/tencent/secprotocol/ByteData:getInstance	()Lcom/tencent/secprotocol/ByteData;
+    //   6: invokespecial 170	com/tencent/secprotocol/ByteData:getContext	()Landroid/content/Context;
     //   9: if_acmpeq +14 -> 23
     //   12: aload_0
     //   13: getfield 86	com/tencent/secprotocol/ByteData:mPoxyInit	Z
@@ -355,33 +368,33 @@ public class ByteData
     //   19: aload_1
     //   20: ifnonnull +16 -> 36
     //   23: aload_0
-    //   24: ldc_w 279
-    //   27: ldc_w 281
-    //   30: invokevirtual 285	com/tencent/secprotocol/ByteData:logCat	(Ljava/lang/String;Ljava/lang/String;)V
+    //   24: ldc_w 273
+    //   27: ldc_w 275
+    //   30: invokevirtual 279	com/tencent/secprotocol/ByteData:logCat	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: aload_0
     //   34: monitorexit
     //   35: return
-    //   36: invokestatic 277	com/tencent/secprotocol/ByteData:getInstance	()Lcom/tencent/secprotocol/ByteData;
+    //   36: invokestatic 271	com/tencent/secprotocol/ByteData:getInstance	()Lcom/tencent/secprotocol/ByteData;
     //   39: aload_1
-    //   40: invokespecial 287	com/tencent/secprotocol/ByteData:setContext	(Landroid/content/Context;)V
+    //   40: invokespecial 281	com/tencent/secprotocol/ByteData:setContext	(Landroid/content/Context;)V
     //   43: aload_0
     //   44: aload_0
     //   45: getfield 72	com/tencent/secprotocol/ByteData:mContext	Landroid/content/Context;
-    //   48: new 181	java/lang/StringBuilder
+    //   48: new 167	java/lang/StringBuilder
     //   51: dup
-    //   52: invokespecial 182	java/lang/StringBuilder:<init>	()V
-    //   55: ldc_w 289
-    //   58: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokespecial 168	java/lang/StringBuilder:<init>	()V
+    //   55: ldc_w 283
+    //   58: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: aload_0
     //   62: getfield 72	com/tencent/secprotocol/ByteData:mContext	Landroid/content/Context;
-    //   65: invokestatic 292	com/tencent/secprotocol/utils/QPMiscUtils:getProcessName	(Landroid/content/Context;)Ljava/lang/String;
-    //   68: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   65: invokestatic 286	com/tencent/secprotocol/utils/QPMiscUtils:getProcessName	(Landroid/content/Context;)Ljava/lang/String;
+    //   68: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   74: iconst_0
-    //   75: invokevirtual 245	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   78: putfield 165	com/tencent/secprotocol/ByteData:mSp	Landroid/content/SharedPreferences;
+    //   75: invokevirtual 239	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   78: putfield 208	com/tencent/secprotocol/ByteData:mSp	Landroid/content/SharedPreferences;
     //   81: aload_0
-    //   82: invokespecial 294	com/tencent/secprotocol/ByteData:initLoadlibrary	()V
+    //   82: invokespecial 288	com/tencent/secprotocol/ByteData:initLoadlibrary	()V
     //   85: goto -52 -> 33
     //   88: astore_1
     //   89: aload_1
@@ -440,7 +453,7 @@ public class ByteData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.secprotocol.ByteData
  * JD-Core Version:    0.7.0.1
  */

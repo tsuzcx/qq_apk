@@ -1,16 +1,13 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-
-public class lnl
+class lnl
 {
-  public long a;
-  String jdField_a_of_type_JavaLangString = null;
-  public boolean a;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
   
-  public lnl(AVNotifyCenter paramAVNotifyCenter) {}
+  lnl(lnf paramlnf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnl
  * JD-Core Version:    0.7.0.1
  */

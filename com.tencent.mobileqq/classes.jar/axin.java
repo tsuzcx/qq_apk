@@ -1,45 +1,35 @@
+import android.view.View;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.AdapterView;
+
 public class axin
+  implements bhqr
 {
-  public int a;
-  private int b;
-  private int c;
+  public axin(IosTimepicker paramIosTimepicker) {}
   
-  public int a()
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = this.b;
-    this.b = (i + 1);
-    return i;
+    IosTimepicker.a(this.a, paramView, 1);
+    if (paramView.getTag() != null)
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt) {
+          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+        }
+        paramInt += 1;
+      }
+    }
   }
   
-  public void a()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int b()
-  {
-    int i = this.c;
-    this.c = (i + 1);
-    return i;
-  }
-  
-  public void b()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axin
  * JD-Core Version:    0.7.0.1
  */

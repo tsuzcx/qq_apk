@@ -1,50 +1,24 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class arhy
+class arhy
+  implements View.OnClickListener
 {
-  public long a;
-  private DownloaderTask a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "now_for_qq";
-  public String e = "now_appid_2";
-  public String f = "now";
-  public String g;
-  public String h;
+  arhy(arhu paramarhu) {}
   
-  public static arhy a(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    arhy localarhy = new arhy();
-    localarhy.jdField_a_of_type_JavaLangString = "2";
-    localarhy.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
-    localarhy.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
-    localarhy.b = paramString1;
-    localarhy.c = paramString2;
-    localarhy.jdField_a_of_type_Long = System.currentTimeMillis();
-    QLog.i("NowDownloadTaskInfo", 4, localarhy.toString());
-    return localarhy;
-  }
-  
-  public DownloaderTask a()
-  {
-    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
-  }
-  
-  public void a(DownloaderTask paramDownloaderTask)
-  {
-    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
-  }
-  
-  public String toString()
-  {
-    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
+    int i = aroo.b(this.a.a.e());
+    azmj.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+    paramView = this.a.a.a();
+    if (paramView != null) {
+      paramView.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhy
  * JD-Core Version:    0.7.0.1
  */

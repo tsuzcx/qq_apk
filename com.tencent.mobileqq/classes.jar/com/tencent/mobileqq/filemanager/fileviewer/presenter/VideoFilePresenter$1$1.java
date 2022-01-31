@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import appt;
-import appu;
+import aris;
+import arit;
 
 public class VideoFilePresenter$1$1
   implements Runnable
 {
-  public VideoFilePresenter$1$1(appu paramappu) {}
+  public VideoFilePresenter$1$1(arit paramarit) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class VideoFilePresenter$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.1.1
  * JD-Core Version:    0.7.0.1
  */

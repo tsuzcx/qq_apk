@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgnc;
+import biob;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<RecvMsg> CREATOR = new bgnc();
+  public static final Parcelable.Creator<RecvMsg> CREATOR = new biob();
   public int a;
   public Bundle a;
   public String a;
@@ -135,7 +135,7 @@ public class RecvMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qappcenter.remote.RecvMsg
  * JD-Core Version:    0.7.0.1
  */

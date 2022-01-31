@@ -1,23 +1,31 @@
-class aysj
-  extends akat
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
+public class aysj
+  extends aysb
 {
-  aysj(aysi paramaysi) {}
+  private LinearLayout a;
   
-  public void a(boolean paramBoolean, long paramLong, akau paramakau)
+  public aysj(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramakau);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.a = ((LinearLayout)a(this.c).findViewById(2131369588));
+  }
+  
+  public View b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aysj
  * JD-Core Version:    0.7.0.1
  */

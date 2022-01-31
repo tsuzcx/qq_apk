@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import auzq;
-import auzr;
-import axqy;
+import awrd;
+import awre;
+import azmj;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import com.tencent.widget.CirclePageIndicator;
 import java.util.List;
@@ -22,7 +22,7 @@ public class ProfileLabelPanel
   protected ViewPager a;
   protected View a;
   protected TextView a;
-  protected auzr a;
+  protected awre a;
   protected ProfileLabelPanelAdapter a;
   protected CirclePageIndicator a;
   protected List<ProfileLabelTypeInfo> a;
@@ -38,26 +38,26 @@ public class ProfileLabelPanel
     super(paramContext, paramAttributeSet);
   }
   
-  public ProfileLabelPanel(Context paramContext, auzr paramauzr, List<ProfileLabelTypeInfo> paramList, auzq paramauzq)
+  public ProfileLabelPanel(Context paramContext, awre paramawre, List<ProfileLabelTypeInfo> paramList, awrd paramawrd)
   {
     this(paramContext);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131561618, this);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131561809, this);
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Auzr = paramauzr;
-    a(paramContext, paramauzq);
+    this.jdField_a_of_type_Awre = paramawre;
+    a(paramContext, paramawrd);
   }
   
-  protected void a(Context paramContext, auzq paramauzq)
+  protected void a(Context paramContext, awrd paramawrd)
   {
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376837));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376840));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377351));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377354));
     this.b.setText(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(0)).typeInfo);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(0)).typeName);
-    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131371215));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131379152));
+    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131371527));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131379848));
     this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter = new ProfileLabelPanelAdapter(paramContext, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.a(paramauzq);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.a(this.jdField_a_of_type_Auzr);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.a(paramawrd);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.a(this.jdField_a_of_type_Awre);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
     this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
@@ -70,7 +70,7 @@ public class ProfileLabelPanel
   
   public void onPageSelected(int paramInt)
   {
-    axqy.b(null, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "3", "", "", "");
+    azmj.b(null, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "3", "", "", "");
     ProfileLabelTypeInfo localProfileLabelTypeInfo = (ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     this.b.setText(localProfileLabelTypeInfo.typeInfo);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(localProfileLabelTypeInfo.typeName);
@@ -78,7 +78,7 @@ public class ProfileLabelPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ProfileLabelPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -118,6 +118,7 @@ public final class WebInputHandler
             ((JSONObject)localObject).put("inputId", i);
             ((JSONObject)localObject).put("value", str);
             ((JSONObject)localObject).put("cursor", str.length());
+            QLog.d("WebInputHandler", 1, "onKeyboardComplete : " + ((JSONObject)localObject).toString());
             localPageWebview.evaluateSubcribeJS("onKeyboardComplete", ((JSONObject)localObject).toString(), localPageWebview.pageWebviewId);
             if (this.scrollListener != null) {
               localPageWebview.removeWebviewScrollListener(this.scrollListener);
@@ -319,9 +320,10 @@ public final class WebInputHandler
         paramJsRuntime.setPageWebview(localPageWebview);
         this.mShowingInput.put(Integer.valueOf(this.inputId), paramJsRuntime);
         paramJsRuntime.showSoftInput();
-        paramJsRuntime.addTextChangedListener(new WebInputHandler.2(this, paramString, paramBaseJsPluginEngine, localPageWebview));
-        paramJsRuntime.setOnEditorActionListener(new WebInputHandler.3(this, paramJsRuntime, localPageWebview));
-        paramJsRuntime.getViewTreeObserver().addOnGlobalLayoutListener(new WebInputHandler.4(this, paramJsRuntime));
+        paramJsRuntime.setOnFocusChangeListener(new WebInputHandler.2(this));
+        paramJsRuntime.addTextChangedListener(new WebInputHandler.3(this, paramString, paramBaseJsPluginEngine, localPageWebview));
+        paramJsRuntime.setOnEditorActionListener(new WebInputHandler.4(this, paramJsRuntime, localPageWebview));
+        paramJsRuntime.getViewTreeObserver().addOnGlobalLayoutListener(new WebInputHandler.5(this, paramJsRuntime));
         paramBaseJsPluginEngine = ApiUtil.wrapCallbackOk("showKeyboard", null);
         paramBaseJsPluginEngine.put("inputId", this.inputId);
         localPageWebview.evaluateCallbackJs(paramInt, paramBaseJsPluginEngine.toString());
@@ -371,15 +373,15 @@ public final class WebInputHandler
     //   21: new 233	org/json/JSONObject
     //   24: dup
     //   25: aload_1
-    //   26: invokespecial 352	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   26: invokespecial 354	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   29: astore 10
     //   31: aload_0
     //   32: getfield 55	com/tencent/mobileqq/mini/widget/input/WebInputHandler:mShowingInput	Ljava/util/Map;
     //   35: aload 10
     //   37: ldc 235
-    //   39: invokevirtual 356	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   39: invokevirtual 358	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   42: invokestatic 227	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   45: invokeinterface 363 2 0
+    //   45: invokeinterface 365 2 0
     //   50: checkcast 108	com/tencent/mobileqq/mini/widget/input/WebEditText
     //   53: astore_1
     //   54: aload_1
@@ -389,28 +391,28 @@ public final class WebInputHandler
     //   61: goto -45 -> 16
     //   64: aload 10
     //   66: ldc 241
-    //   68: invokevirtual 527	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   68: invokevirtual 538	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   71: ifeq +27 -> 98
     //   74: aload 10
     //   76: ldc 241
-    //   78: invokevirtual 378	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   78: invokevirtual 380	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   81: astore 11
     //   83: aload_1
     //   84: aload 11
-    //   86: invokevirtual 385	com/tencent/mobileqq/mini/widget/input/WebEditText:setText	(Ljava/lang/CharSequence;)V
+    //   86: invokevirtual 387	com/tencent/mobileqq/mini/widget/input/WebEditText:setText	(Ljava/lang/CharSequence;)V
     //   89: aload_1
     //   90: aload 11
     //   92: invokevirtual 251	java/lang/String:length	()I
-    //   95: invokevirtual 388	com/tencent/mobileqq/mini/widget/input/WebEditText:setSelection	(I)V
+    //   95: invokevirtual 390	com/tencent/mobileqq/mini/widget/input/WebEditText:setSelection	(I)V
     //   98: aload 10
-    //   100: ldc_w 529
+    //   100: ldc_w 540
     //   103: iconst_m1
-    //   104: invokevirtual 532	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   104: invokevirtual 543	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   107: istore_3
     //   108: aload 10
-    //   110: ldc_w 534
+    //   110: ldc_w 545
     //   113: iconst_m1
-    //   114: invokevirtual 532	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   114: invokevirtual 543	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   117: istore 4
     //   119: iload_3
     //   120: iconst_m1
@@ -424,118 +426,118 @@ public final class WebInputHandler
     //   136: aload_1
     //   137: iload_3
     //   138: iload 4
-    //   140: invokevirtual 537	com/tencent/mobileqq/mini/widget/input/WebEditText:setSelection	(II)V
+    //   140: invokevirtual 548	com/tencent/mobileqq/mini/widget/input/WebEditText:setSelection	(II)V
     //   143: aload 10
     //   145: ldc 246
     //   147: iconst_m1
-    //   148: invokevirtual 532	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   148: invokevirtual 543	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   151: istore_3
     //   152: iload_3
     //   153: ifle +8 -> 161
     //   156: aload_1
     //   157: iload_3
-    //   158: invokevirtual 388	com/tencent/mobileqq/mini/widget/input/WebEditText:setSelection	(I)V
+    //   158: invokevirtual 390	com/tencent/mobileqq/mini/widget/input/WebEditText:setSelection	(I)V
     //   161: aload 10
-    //   163: ldc_w 539
-    //   166: invokevirtual 543	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   163: ldc_w 550
+    //   166: invokevirtual 554	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   169: astore 10
     //   171: aload 10
     //   173: ifnull +173 -> 346
     //   176: aload 10
-    //   178: ldc_w 545
-    //   181: invokevirtual 356	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   178: ldc_w 556
+    //   181: invokevirtual 358	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   184: istore 6
     //   186: aload 10
-    //   188: ldc_w 547
-    //   191: invokevirtual 356	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   188: ldc_w 558
+    //   191: invokevirtual 358	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   194: istore 5
     //   196: aload 10
-    //   198: ldc_w 549
-    //   201: invokevirtual 356	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   198: ldc_w 560
+    //   201: invokevirtual 358	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   204: istore_3
     //   205: aload 10
-    //   207: ldc_w 551
-    //   210: invokevirtual 356	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   207: ldc_w 562
+    //   210: invokevirtual 358	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   213: istore 4
     //   215: aload_1
     //   216: invokevirtual 212	com/tencent/mobileqq/mini/widget/input/WebEditText:getContext	()Landroid/content/Context;
-    //   219: invokestatic 555	com/tencent/mobileqq/mini/util/DisplayUtil:getDensity	(Landroid/content/Context;)F
+    //   219: invokestatic 566	com/tencent/mobileqq/mini/util/DisplayUtil:getDensity	(Landroid/content/Context;)F
     //   222: fstore_2
     //   223: iload_3
     //   224: i2f
     //   225: fload_2
     //   226: fmul
-    //   227: ldc_w 556
+    //   227: ldc_w 567
     //   230: fadd
     //   231: fconst_0
-    //   232: invokestatic 562	java/lang/Math:max	(FF)F
+    //   232: invokestatic 573	java/lang/Math:max	(FF)F
     //   235: f2i
     //   236: istore_3
     //   237: iload 4
     //   239: i2f
     //   240: fload_2
     //   241: fmul
-    //   242: ldc_w 556
+    //   242: ldc_w 567
     //   245: fadd
     //   246: fconst_0
-    //   247: invokestatic 562	java/lang/Math:max	(FF)F
+    //   247: invokestatic 573	java/lang/Math:max	(FF)F
     //   250: f2i
     //   251: istore 4
     //   253: iload 6
     //   255: i2f
     //   256: fload_2
     //   257: fmul
-    //   258: ldc_w 556
+    //   258: ldc_w 567
     //   261: fadd
     //   262: f2i
     //   263: istore 6
     //   265: aload_0
     //   266: iconst_0
-    //   267: putfield 425	com/tencent/mobileqq/mini/widget/input/WebInputHandler:navbarHeight	I
+    //   267: putfield 427	com/tencent/mobileqq/mini/widget/input/WebInputHandler:navbarHeight	I
     //   270: iload 5
     //   272: i2f
     //   273: fload_2
     //   274: fmul
-    //   275: ldc_w 556
+    //   275: ldc_w 567
     //   278: fadd
     //   279: f2i
     //   280: istore 5
     //   282: aload_0
-    //   283: getfield 82	com/tencent/mobileqq/mini/widget/input/WebInputHandler:mPage	Lcom/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage;
-    //   286: invokevirtual 441	com/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage:getCurrentPageWebview	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
-    //   289: getfield 454	com/tencent/mobileqq/mini/appbrand/page/PageWebview:scrollY	I
+    //   283: getfield 65	com/tencent/mobileqq/mini/widget/input/WebInputHandler:mPage	Lcom/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage;
+    //   286: invokevirtual 443	com/tencent/mobileqq/mini/appbrand/page/AbsAppBrandPage:getCurrentPageWebview	()Lcom/tencent/mobileqq/mini/appbrand/page/PageWebview;
+    //   289: getfield 456	com/tencent/mobileqq/mini/appbrand/page/PageWebview:scrollY	I
     //   292: istore 7
     //   294: aload_0
-    //   295: getfield 425	com/tencent/mobileqq/mini/widget/input/WebInputHandler:navbarHeight	I
+    //   295: getfield 427	com/tencent/mobileqq/mini/widget/input/WebInputHandler:navbarHeight	I
     //   298: istore 8
     //   300: aload_1
-    //   301: invokevirtual 566	com/tencent/mobileqq/mini/widget/input/WebEditText:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
-    //   304: checkcast 568	android/widget/FrameLayout$LayoutParams
+    //   301: invokevirtual 577	com/tencent/mobileqq/mini/widget/input/WebEditText:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   304: checkcast 579	android/widget/FrameLayout$LayoutParams
     //   307: astore 10
     //   309: aload 10
     //   311: iload_3
-    //   312: putfield 570	android/widget/FrameLayout$LayoutParams:width	I
+    //   312: putfield 581	android/widget/FrameLayout$LayoutParams:width	I
     //   315: aload 10
     //   317: iload 4
-    //   319: putfield 572	android/widget/FrameLayout$LayoutParams:height	I
+    //   319: putfield 583	android/widget/FrameLayout$LayoutParams:height	I
     //   322: aload 10
     //   324: iload 6
-    //   326: putfield 575	android/widget/FrameLayout$LayoutParams:leftMargin	I
+    //   326: putfield 586	android/widget/FrameLayout$LayoutParams:leftMargin	I
     //   329: aload 10
     //   331: iload 8
     //   333: iload 5
     //   335: iload 7
     //   337: isub
     //   338: iadd
-    //   339: putfield 578	android/widget/FrameLayout$LayoutParams:topMargin	I
+    //   339: putfield 589	android/widget/FrameLayout$LayoutParams:topMargin	I
     //   342: aload_1
-    //   343: invokevirtual 581	com/tencent/mobileqq/mini/widget/input/WebEditText:requestLayout	()V
+    //   343: invokevirtual 592	com/tencent/mobileqq/mini/widget/input/WebEditText:requestLayout	()V
     //   346: iconst_1
     //   347: istore 9
     //   349: goto -333 -> 16
     //   352: astore_1
     //   353: aload_1
-    //   354: invokevirtual 584	java/lang/Exception:printStackTrace	()V
+    //   354: invokevirtual 595	java/lang/Exception:printStackTrace	()V
     //   357: iconst_0
     //   358: istore 9
     //   360: goto -344 -> 16
@@ -586,7 +588,7 @@ public final class WebInputHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.input.WebInputHandler
  * JD-Core Version:    0.7.0.1
  */

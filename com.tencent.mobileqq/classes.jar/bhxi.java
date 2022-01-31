@@ -1,14 +1,23 @@
-public abstract interface bhxi
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.TCWDatePicker.SavedState;
+
+public final class bhxi
+  implements Parcelable.Creator<TCWDatePicker.SavedState>
 {
-  public abstract void a(int paramInt);
+  public TCWDatePicker.SavedState a(Parcel paramParcel)
+  {
+    return new TCWDatePicker.SavedState(paramParcel, null);
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void b(int paramInt);
+  public TCWDatePicker.SavedState[] a(int paramInt)
+  {
+    return new TCWDatePicker.SavedState[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhxi
  * JD-Core Version:    0.7.0.1
  */

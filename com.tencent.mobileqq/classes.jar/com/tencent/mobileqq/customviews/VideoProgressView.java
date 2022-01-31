@@ -4,7 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
-import bbfe;
+import bddz;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
 
@@ -85,12 +85,12 @@ public class VideoProgressView
       this.a = bool;
       if (this.d == 1)
       {
-        localRefreshProgressRunnable = bbfe.a().a(paramString);
+        localRefreshProgressRunnable = bddz.a().a(paramString);
         if (localRefreshProgressRunnable != null) {
           break;
         }
         localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString);
-        bbfe.a().a(paramString, localRefreshProgressRunnable);
+        bddz.a().a(paramString, localRefreshProgressRunnable);
         ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       }
       return;
@@ -105,7 +105,7 @@ public class VideoProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.VideoProgressView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-
-public class absq
-  implements DialogInterface.OnClickListener
+class absq
+  implements abte
 {
-  public absq(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  absq(absp paramabsp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(atzw paramatzw, int paramInt)
   {
-    ProfileLabelEditorActivity.a(this.a);
+    this.a.a = paramatzw;
+    absp.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.report;
 
-import betc;
-import bezl;
+import bgyg;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public final class SDKMiniProgramLpReportDC04239$7
@@ -22,13 +22,13 @@ public final class SDKMiniProgramLpReportDC04239$7
     label106:
     for (String str1 = this.jdField_a_of_type_OrgJsonJSONObject.toString();; str1 = "empty")
     {
-      betc.a("MiniProgramLpReportDC04239", str1);
+      QMLog.d("MiniProgramLpReportDC04239", str1);
       if (this.jdField_a_of_type_OrgJsonJSONObject != null)
       {
         str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("actiontype");
         localObject = this.jdField_a_of_type_OrgJsonJSONObject.optString("sub_actiontype");
         String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("reserves_action");
-        bezl.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, "1", null, str1, (String)localObject, str2);
+        bgyg.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, "1", null, str1, (String)localObject, str2);
       }
       return;
     }
@@ -36,7 +36,7 @@ public final class SDKMiniProgramLpReportDC04239$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.7
  * JD-Core Version:    0.7.0.1
  */

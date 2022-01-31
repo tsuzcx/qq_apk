@@ -1,112 +1,87 @@
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.content.ClipDescription;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.NewDiscFileUploader.2;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.Executor;
+import mqq.manager.Manager;
 
 public class aowk
-  implements apgw
+  implements Manager
 {
-  long jdField_a_of_type_Long = apug.a().longValue();
-  aowm jdField_a_of_type_Aowm;
-  apgr jdField_a_of_type_Apgr = new apgr();
-  public apgs a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean = true;
-  long b;
+  private ClipboardManager jdField_a_of_type_AndroidContentClipboardManager;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public aowk(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, long paramLong, String paramString3, int paramInt1, boolean paramBoolean, String paramString4, int paramInt2, String paramString5, String paramString6, aowm paramaowm)
+  public aowk(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aowm = paramaowm;
-    this.b = paramLong;
-    paramQQAppInterface = new apgu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "actDiscussFileUp");
-    this.jdField_a_of_type_Apgr.a(paramString1, paramString2, paramLong, new aowl(this, paramaowm));
-    this.jdField_a_of_type_Apgs = new apgs(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramQQAppInterface, paramString3, paramInt1, paramString5, this.jdField_a_of_type_Long, this.jdField_a_of_type_Apgr, paramBoolean, paramString4, paramString6);
   }
   
-  public int a()
+  private ClipboardManager a()
   {
-    return 41;
+    if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
+      this.jdField_a_of_type_AndroidContentClipboardManager = ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getSystemService("clipboard"));
+    }
+    return this.jdField_a_of_type_AndroidContentClipboardManager;
   }
   
-  public long a()
+  private SharedPreferences a()
   {
-    return this.b;
-  }
-  
-  public FileManagerEntity a()
-  {
-    return null;
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
+      this.jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    }
+    return this.jdField_a_of_type_AndroidContentSharedPreferences;
   }
   
   public String a()
   {
-    return null;
-  }
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    QLog.e("FileMultiMsg", 1, "sendDiscFile faild errCode" + paramInt);
-    this.jdField_a_of_type_Aowm.a(false);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void aw_()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    apus.a().execute(new NewDiscFileUploader.2(this));
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public void b()
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    if (Build.VERSION.SDK_INT >= 26)
     {
-      this.jdField_a_of_type_Boolean = true;
-      QLog.e("FileMultiMsg", 1, "sendDiscFile faild:clearTask");
-      this.jdField_a_of_type_Aowm.a(false);
+      long l1 = a().getLong("KEY_LAST_COPY_TIME", 0L);
+      Object localObject = a().getPrimaryClipDescription();
+      if (localObject != null)
+      {
+        long l2 = ((ClipDescription)localObject).getTimestamp();
+        long l3 = System.currentTimeMillis();
+        if ((l2 != l1) && (l3 - l2 < 180000L))
+        {
+          a().edit().putLong("KEY_LAST_COPY_TIME", l2).apply();
+          if ((a().hasPrimaryClip()) && (a().getPrimaryClip() != null) && (a().getPrimaryClip().getItemCount() > 0))
+          {
+            localObject = a().getPrimaryClip().getItemAt(0);
+            if (QLog.isColorLevel()) {
+              QLog.d("CopyPromptManager", 2, "origin copy data : " + localObject);
+            }
+            if (localObject != null)
+            {
+              localObject = ((ClipData.Item)localObject).getText();
+              if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+                return String.valueOf(localObject);
+              }
+            }
+          }
+        }
+      }
     }
+    return "";
   }
   
-  public int c()
+  public void onDestroy()
   {
-    return 0;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    QLog.e("FileMultiMsg", 1, "sendDiscFile faild:networkBroken");
-    this.jdField_a_of_type_Aowm.a(false);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    QLog.e("FileMultiMsg", 1, "sendDiscFile faild:userCancel");
-    this.jdField_a_of_type_Aowm.a(false);
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    QLog.e("FileMultiMsg", 1, "sendDiscFile faild:exceptBroken");
-    this.jdField_a_of_type_Aowm.a(false);
+    this.jdField_a_of_type_AndroidContentSharedPreferences = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowk
  * JD-Core Version:    0.7.0.1
  */

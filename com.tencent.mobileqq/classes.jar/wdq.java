@@ -1,23 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.ArrayList;
+import java.util.List;
 
-class wdq
-  implements Animation.AnimationListener
+public class wdq
+  extends uxs
 {
-  wdq(wdo paramwdo) {}
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public wdq(ErrorMessage paramErrorMessage, String paramString, int paramInt)
   {
-    this.a.dismiss();
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    return "GetFeedCommentEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mType=" + this.jdField_a_of_type_Int + ", mSource=" + this.c + ", mCommentEntries=" + this.jdField_a_of_type_JavaUtilList.size() + ", mTotalCount=" + this.b + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdq
  * JD-Core Version:    0.7.0.1
  */

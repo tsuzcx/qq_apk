@@ -1,7 +1,7 @@
 package com.tencent.biz.tribe;
 
-import axqy;
-import bbfj;
+import azmj;
+import bdee;
 import com.tencent.mobileqq.app.BaseActivity;
 import java.lang.ref.WeakReference;
 
@@ -27,14 +27,14 @@ class TribeVideoPlugin$TechReportRunnable
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = 1;; i = 0)
     {
-      axqy.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(bbfj.b(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
+      azmj.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(bdee.b(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.tribe.TribeVideoPlugin.TechReportRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,187 +1,43 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aqsw
+class aqsw
+  implements aqsy
 {
-  public static ahbr a;
-  public static String a;
+  private bica jdField_a_of_type_Bica = new bica();
   
-  static
+  public aqsw(aqsv paramaqsv)
   {
-    jdField_a_of_type_Ahbr = new aqsx();
-    jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/channel/imglib/201909/upload_368e2679238424e3f9df9be7353e26f8.zip";
+    this.jdField_a_of_type_Bica.a();
   }
   
-  public static int a(RecyclerView paramRecyclerView)
+  public int a(long paramLong1, long paramLong2)
   {
-    if (paramRecyclerView == null) {
-      return -1;
-    }
-    int i = ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findFirstVisibleItemPosition();
-    paramRecyclerView = paramRecyclerView.getLayoutManager().findViewByPosition(i);
-    if (paramRecyclerView != null) {
-      return i * paramRecyclerView.getHeight() - paramRecyclerView.getTop();
-    }
-    return -1;
-  }
-  
-  public static long a()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    return localBaseApplicationImpl.getSharedPreferences("game_center_sp", 0).getLong(localBaseApplicationImpl.getRuntime().getAccount() + "fullpop_time", 0L);
-  }
-  
-  public static FullPopData a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return null;
-    }
-    try
+    int j = this.jdField_a_of_type_Bica.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bicd.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
     {
-      if (((!(paramMessageRecord instanceof MessageForArkApp)) && (!(paramMessageRecord instanceof MessageForPubAccount)) && (!(paramMessageRecord instanceof MessageForStructing))) || (TextUtils.isEmpty(paramMessageRecord.extStr))) {
-        break label147;
-      }
-      paramMessageRecord = new JSONObject(paramMessageRecord.extStr).optString("report_key_bytes_oac_msg_extend", "");
-      if (TextUtils.isEmpty(paramMessageRecord)) {
-        break label147;
-      }
-      paramMessageRecord = new JSONObject(paramMessageRecord).optString("game_extra", "");
-      if (TextUtils.isEmpty(paramMessageRecord)) {
-        break label147;
-      }
-      paramMessageRecord = new JSONObject(paramMessageRecord).optJSONObject("full_pop");
-      paramMessageRecord = new FullPopData(paramMessageRecord.optString("url"), paramMessageRecord.optString("jump_url"), paramMessageRecord.optLong("begin_time"), paramMessageRecord.optLong("end_time"), paramMessageRecord.optString("id", ""));
+      i = j;
+      if (k != 2) {}
     }
-    catch (Throwable paramMessageRecord)
+    else
     {
-      for (;;)
-      {
-        paramMessageRecord.printStackTrace();
-        paramMessageRecord = null;
+      i = j;
+      if (j > 16384) {
+        i = 16384;
       }
     }
-    return paramMessageRecord;
+    return i;
   }
   
-  public static String a()
+  public void a()
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    return localBaseApplicationImpl.getSharedPreferences("game_center_sp", 0).getString(localBaseApplicationImpl.getRuntime().getAccount() + "fullpop_id", "");
-  }
-  
-  public static void a(long paramLong)
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    SharedPreferences localSharedPreferences = ((BaseApplicationImpl)localObject).getSharedPreferences("game_center_sp", 0);
-    localObject = ((BaseApplicationImpl)localObject).getRuntime().getAccount() + "fullpop_time";
-    localSharedPreferences.edit().putLong((String)localObject, paramLong).commit();
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString, ahbr paramahbr, boolean paramBoolean)
-  {
-    int i = bbfj.a(paramAppInterface.getApplication());
-    if (((i == 1) || (i == 4)) && (!TextUtils.isEmpty(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQGameHelper", 1, "---->dowloadFullPopRes");
-      }
-      paramAppInterface = new DownloadParam();
-      paramAppInterface.url = paramString;
-      paramAppInterface.isPreDownload = paramBoolean;
-      PreloadManager.a().a(paramAppInterface, paramahbr);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    SharedPreferences localSharedPreferences = ((BaseApplicationImpl)localObject).getSharedPreferences("game_center_sp", 0);
-    localObject = ((BaseApplicationImpl)localObject).getRuntime().getAccount() + "fullpop_id";
-    localSharedPreferences.edit().putString((String)localObject, paramString).commit();
-  }
-  
-  public static void a(List<MessageRecord> paramList)
-  {
-    if (paramList != null) {}
-    ArrayList localArrayList;
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          if (paramList.size() > 0)
-          {
-            localArrayList = new ArrayList();
-            paramList = paramList.iterator();
-            if (!paramList.hasNext()) {
-              break;
-            }
-            localObject = (MessageRecord)paramList.next();
-            if (!"2747277822".equals(((MessageRecord)localObject).frienduin)) {
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("QQGameHelper", 1, "enter qqgame message handle");
-            }
-            localObject = QQGameMsgInfo.parseMessageRecord((MessageRecord)localObject);
-            if (localObject != null)
-            {
-              localArrayList.add(localObject);
-              continue;
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        catch (Throwable paramList)
-        {
-          paramList.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.d("QQGameHelper", 1, "send qqgame message fail by:" + paramList.getMessage());
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QQGameHelper", 1, "parse qqgame message fail");
-        }
-      }
-    } while (localArrayList.size() <= 0);
-    paramList = new Intent("action_qgame_tool_messgae");
-    paramList.setPackage(BaseApplicationImpl.getApplication().getPackageName());
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putSerializable("key_get_msg", localArrayList);
-    paramList.putExtras((Bundle)localObject);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramList);
+    this.jdField_a_of_type_Bica.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqsw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 
-class baat
-  implements myy
+public class baat
+  extends baaw
+  implements azza
 {
-  baat(baas parambaas) {}
+  protected String b;
   
-  public void loaded(String paramString, int paramInt)
+  public baat(SpriteNativeView paramSpriteNativeView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
-    }
-    if (paramInt == 0) {}
-    while (baas.a(baas.a(this.a), baas.b(this.a)))
-    {
-      do
-      {
-        String str;
-        try
-        {
-          paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
-          str = paramString.optString("url");
-          paramInt = paramString.optInt("filesize");
-          if ((str != null) && (str.endsWith("patch")))
-          {
-            bbdx.a(mzh.a(baas.a(this.a)) + baas.a(this.a));
-            baas.a(this.a);
-            return;
-          }
-        }
-        catch (Exception paramString)
-        {
-          do
-          {
-            paramString.printStackTrace();
-          } while (baas.a(baas.a(this.a), baas.b(this.a)));
-          baas.b(this.a);
-          return;
-        }
-        if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
-        {
-          baas.a(this.a, paramString);
-          return;
-        }
-      } while (baas.a(baas.a(this.a), baas.b(this.a)));
-      baas.b(this.a);
-      return;
-    }
-    baas.b(this.a);
+    super(paramSpriteNativeView);
+    this.b = paramString;
   }
   
-  public void progress(int paramInt) {}
+  protected ImageView a()
+  {
+    return new PressEffectImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
+  }
+  
+  public String a()
+  {
+    return this.b;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baat
  * JD-Core Version:    0.7.0.1
  */

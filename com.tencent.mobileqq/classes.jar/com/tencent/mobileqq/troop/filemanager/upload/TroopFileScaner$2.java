@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import azur;
+import bbta;
 
 public class TroopFileScaner$2
   implements Runnable
 {
-  public TroopFileScaner$2(azur paramazur, long paramLong) {}
+  public TroopFileScaner$2(bbta parambbta, long paramLong) {}
   
   public void run()
   {
-    azur.a(this.this$0, this.a);
-    azur.a(this.this$0);
+    bbta.a(this.this$0, this.a);
+    bbta.a(this.this$0);
   }
 }
 

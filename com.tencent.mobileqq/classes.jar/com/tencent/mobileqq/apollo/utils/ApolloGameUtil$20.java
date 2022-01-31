@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajya;
-import bcql;
+import alpo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 final class ApolloGameUtil$20
   implements Runnable
@@ -14,22 +14,22 @@ final class ApolloGameUtil$20
     switch (this.a)
     {
     default: 
-      bcql.a(BaseApplicationImpl.getApplication(), 1, ajya.a(2131700369), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, alpo.a(2131700738), 0).a();
     case 1: 
       return;
     case 0: 
-      bcql.a(BaseApplicationImpl.getApplication(), 2, ajya.a(2131700345), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, alpo.a(2131700714), 0).a();
       return;
     case 2: 
-      bcql.a(BaseApplicationImpl.getApplication(), 1, ajya.a(2131700357), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, alpo.a(2131700726), 0).a();
       return;
     }
-    bcql.a(BaseApplicationImpl.getApplication(), 2, ajya.a(2131700361), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 2, alpo.a(2131700730), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.20
  * JD-Core Version:    0.7.0.1
  */

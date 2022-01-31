@@ -1,228 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.LocalWtTicketPromise.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.lang.ref.WeakReference;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class bafe
+  implements WtTicketPromise
 {
-  public int a;
-  private LinkedHashMap<String, List<agas>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private List<agas> jdField_a_of_type_JavaUtilList;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-  public int b;
-  private List<agas> b;
-  public int c;
-  private List<agas> c;
+  private aosy jdField_a_of_type_Aosy;
+  private WeakReference<bafd> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bafe(List<agas> paramList)
+  public bafe(bafd parambafd, aosy paramaosy)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambafd);
+    this.jdField_a_of_type_Aosy = paramaosy;
   }
   
-  private baff a(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo, String paramString, baff parambaff, boolean paramBoolean)
+  public void Done(Ticket paramTicket)
   {
-    if (((baes.a(paramQQAppInterface, paramTroopInfo)) || (baes.b(paramQQAppInterface, paramTroopInfo))) && (!paramBoolean))
+    if ((paramTicket != null) && (paramTicket._pskey_map != null))
     {
-      paramQQAppInterface = bafd.a();
-      if ((TextUtils.isEmpty(paramString)) || (bafd.a(paramString, paramQQAppInterface))) {
-        parambaff.jdField_a_of_type_JavaUtilList.add(0, paramQQAppInterface);
-      }
+      ThreadManager.excute(new ConfigSettingForDataLine.LocalWtTicketPromise.1(this), 128, null, false);
+      return;
     }
-    return parambaff;
+    if (this.jdField_a_of_type_Aosy != null) {
+      this.jdField_a_of_type_Aosy.a(false);
+    }
+    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket is null");
   }
   
-  private baff a(String paramString, boolean paramBoolean, TroopInfo paramTroopInfo)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    paramTroopInfo = a(paramString, paramTroopInfo);
-    if (paramTroopInfo.length >= 3)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramTroopInfo[0]);
-      this.jdField_a_of_type_ArrayOfInt = ((int[])paramTroopInfo[1]);
-    }
-    for (this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])paramTroopInfo[2]);; this.jdField_a_of_type_ArrayOfJavaLangString = new String[0])
-    {
-      this.jdField_c_of_type_JavaUtilList = a(this.jdField_a_of_type_JavaUtilLinkedHashMap);
-      paramTroopInfo = new baff();
-      paramTroopInfo.jdField_a_of_type_JavaLangString = paramString;
-      paramTroopInfo.jdField_a_of_type_Boolean = paramBoolean;
-      paramTroopInfo.jdField_a_of_type_ArrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      paramTroopInfo.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      paramTroopInfo.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
-      return paramTroopInfo;
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-      this.jdField_a_of_type_ArrayOfInt = new int[0];
+    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket failed");
+    if (this.jdField_a_of_type_Aosy != null) {
+      this.jdField_a_of_type_Aosy.a(false);
     }
   }
   
-  private List<agas> a(LinkedHashMap<String, List<agas>> paramLinkedHashMap)
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramLinkedHashMap = paramLinkedHashMap.entrySet().iterator();
-    while (paramLinkedHashMap.hasNext()) {
-      localArrayList.addAll((Collection)((Map.Entry)paramLinkedHashMap.next()).getValue());
+    if (this.jdField_a_of_type_Aosy != null) {
+      this.jdField_a_of_type_Aosy.a(false);
     }
-    return localArrayList;
-  }
-  
-  private Object[] a(String paramString, TroopInfo paramTroopInfo)
-  {
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    Object localObject1;
-    Object localObject2;
-    int i;
-    for (;;)
-    {
-      agas localagas;
-      try
-      {
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_c_of_type_Int = 0;
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localagas = (agas)localIterator.next();
-        if ((localagas.jdField_a_of_type_Boolean) || ((!TextUtils.isEmpty(paramString)) && (baes.a(localagas.jdField_a_of_type_JavaLangString, paramTroopInfo)))) {
-          break label664;
-        }
-        if ((TextUtils.isEmpty(paramString)) || (!baes.b(localagas.jdField_a_of_type_JavaLangString, paramTroopInfo))) {
-          break label228;
-        }
-      }
-      finally {}
-      localObject2 = localObject1;
-      if (((String)localObject1).length() == 1)
-      {
-        i = ((String)localObject1).charAt(0);
-        localObject2 = localObject1;
-        if (!((String)localObject1).equals("★"))
-        {
-          if ((65 > i) || (i > 90)) {
-            break label671;
-          }
-          label160:
-          localObject2 = ((String)localObject1).toUpperCase();
-        }
-      }
-      label167:
-      if (localLinkedHashMap.get(localObject2) == null) {
-        localLinkedHashMap.put(localObject2, new ArrayList());
-      }
-      this.jdField_b_of_type_Int += 1;
-      ((List)localLinkedHashMap.get(localObject2)).add(localagas);
-      continue;
-      label228:
-      localObject1 = localagas.x;
-      if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
-        break label688;
-      }
-      localObject1 = ((String)localObject1).substring(0, 1);
-    }
-    paramTroopInfo = new baew(paramTroopInfo);
-    paramString = new LinkedHashMap();
-    long l = System.currentTimeMillis();
-    if (localLinkedHashMap.get("★") != null)
-    {
-      this.jdField_a_of_type_Int += 1;
-      Collections.sort((List)localLinkedHashMap.get("★"), paramTroopInfo);
-      paramString.put("★", localLinkedHashMap.get("★"));
-    }
-    for (;;)
-    {
-      if (c1 <= 'Z')
-      {
-        if (localLinkedHashMap.get(String.valueOf(c1)) != null)
-        {
-          this.jdField_a_of_type_Int += 1;
-          Collections.sort((List)localLinkedHashMap.get(String.valueOf(c1)), paramTroopInfo);
-          paramString.put(String.valueOf(c1), localLinkedHashMap.get(String.valueOf(c1)));
-        }
-      }
-      else
-      {
-        if (localLinkedHashMap.get("#") != null)
-        {
-          this.jdField_a_of_type_Int += 1;
-          Collections.sort((List)localLinkedHashMap.get("#"), paramTroopInfo);
-          paramString.put("#", localLinkedHashMap.get("#"));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("SearchTask", 2, "constructHashStruct-sort: invoked.  cost: " + (System.currentTimeMillis() - l));
-        }
-        localLinkedHashMap.clear();
-        paramTroopInfo = new int[paramString.keySet().size()];
-        localObject1 = new String[paramTroopInfo.length];
-        localObject2 = paramString.keySet().iterator();
-        if (paramTroopInfo.length == 0) {
-          return new Object[0];
-        }
-        paramTroopInfo[0] = 0;
-        i = 1;
-        while (i < paramTroopInfo.length)
-        {
-          int j = paramTroopInfo[i];
-          int k = paramTroopInfo[(i - 1)];
-          paramTroopInfo[i] = (((List)paramString.get(((Iterator)localObject2).next())).size() + k + j);
-          i += 1;
-        }
-        localObject2 = paramString.keySet().iterator();
-        i = 0;
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject1[i] = ((String)((Iterator)localObject2).next());
-          i += 1;
-        }
-        return new Object[] { paramString, paramTroopInfo, localObject1 };
-        label664:
-        localObject1 = "★";
-        break;
-        label671:
-        if ((97 <= i) && (i <= 122))
-        {
-          break label160;
-          label688:
-          localObject1 = "#";
-          break;
-        }
-        localObject2 = "#";
-        break label167;
-        c1 = 'A';
-        continue;
-      }
-      char c1 = (char)(c1 + '\001');
-    }
-  }
-  
-  public baff a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean1, SessionInfo paramSessionInfo, boolean paramBoolean2)
-  {
-    TroopInfo localTroopInfo = null;
-    if (paramSessionInfo != null)
-    {
-      paramSessionInfo = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramSessionInfo);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    for (this.jdField_b_of_type_JavaUtilList = bafd.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilList, paramBoolean1);; this.jdField_b_of_type_JavaUtilList = new ArrayList(bafd.a(paramString, bafd.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilList, paramBoolean1), paramQQAppInterface, localTroopInfo))) {
-      return a(paramQQAppInterface, localTroopInfo, paramString, a(paramString, paramBoolean1, localTroopInfo), paramBoolean2);
-    }
+    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket time oiut");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bafe
  * JD-Core Version:    0.7.0.1
  */

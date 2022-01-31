@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class ReadinjoyFollowingUserBriefInfo
-  extends auko
+  extends awbv
 {
   public int followed = 0;
-  @aumc
+  @awdj
   public long uin;
   
   public ReadinjoyFollowingUserBriefInfo()
@@ -23,7 +23,7 @@ public class ReadinjoyFollowingUserBriefInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyFollowingUserBriefInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-class adlh
-  extends acuj
+public class adlh
+  implements aobg
 {
-  public LinearLayout a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public adlh(QQBrowserActivity paramQQBrowserActivity) {}
   
-  adlh(adlg paramadlg) {}
+  public void onColorNoteAnimFinish()
+  {
+    QQBrowserActivity.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlh
  * JD-Core Version:    0.7.0.1
  */

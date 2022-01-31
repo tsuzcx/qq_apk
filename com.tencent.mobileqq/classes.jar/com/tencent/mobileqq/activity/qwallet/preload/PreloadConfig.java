@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
 import Wallet.ResInfo;
-import ahbt;
-import ahiw;
-import ampl;
+import aivy;
+import ajaf;
 import android.text.TextUtils;
+import aogj;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.InvalidClassException;
@@ -74,10 +74,10 @@ public class PreloadConfig
   
   public static PreloadConfig readConfig(String paramString, AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = ahbt.a(paramAppRuntime, paramString);
+    paramAppRuntime = aivy.a(paramAppRuntime, paramString);
     try
     {
-      paramString = (PreloadConfig)ahiw.a(paramAppRuntime);
+      paramString = (PreloadConfig)ajaf.a(paramAppRuntime);
       if (paramString == null)
       {
         paramString = new PreloadConfig();
@@ -97,7 +97,7 @@ public class PreloadConfig
         if (QLog.isColorLevel()) {
           QLog.d("PreloadManager", 2, "preload config update should delete local config");
         }
-        ampl.a().a(68, 0);
+        aogj.a().a(68, 0);
         paramString = null;
       }
     }
@@ -265,7 +265,7 @@ public class PreloadConfig
         localIterator2 = localPreloadModule.getResList().iterator();
       }
       localPreloadResource = (PreloadResource)localIterator2.next();
-    } while (!ahiw.c(localPreloadResource.mResId, paramString));
+    } while (!ajaf.c(localPreloadResource.mResId, paramString));
     return localPreloadResource.getResInfo(localPreloadModule);
     return null;
   }
@@ -330,7 +330,7 @@ public class PreloadConfig
         }
         localIterator2 = ((PreloadModule)localIterator1.next()).getResList().iterator();
       }
-    } while (!ahiw.c(((PreloadResource)localIterator2.next()).mResId, paramPreloadResource.mResId));
+    } while (!ajaf.c(((PreloadResource)localIterator2.next()).mResId, paramPreloadResource.mResId));
     return true;
     return false;
   }
@@ -416,7 +416,7 @@ public class PreloadConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,358 +1,238 @@
-import android.widget.Button;
-import android.widget.PopupMenu;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.Display;
+import android.view.KeyCharacterMap;
+import android.view.ViewConfiguration;
+import android.view.WindowManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.List;
 
 public class augl
 {
-  static final String jdField_a_of_type_JavaLangString = akyx.jdField_a_of_type_JavaLangString + "_Res";
-  long jdField_a_of_type_Long = 0L;
-  private akyn jdField_a_of_type_Akyn;
-  private akyw jdField_a_of_type_Akyw;
-  private augq jdField_a_of_type_Augq;
-  private axgs jdField_a_of_type_Axgs;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ScanTorchActivity jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity;
-  private boolean jdField_a_of_type_Boolean;
-  int[] jdField_a_of_type_ArrayOfInt = { 100, 100, 100, 100, 100 };
+  private static List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static boolean jdField_a_of_type_Boolean = true;
   
-  public augl(ScanTorchActivity paramScanTorchActivity)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity = paramScanTorchActivity;
+    jdField_a_of_type_JavaUtilList.clear();
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(3000));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1004));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1000));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1022));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1001));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(10002));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1006));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1005));
+    jdField_a_of_type_JavaUtilList.add(Integer.valueOf(10008));
   }
   
-  private void a(AppInterface paramAppInterface, akyn paramakyn)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt, Activity paramActivity)
   {
-    if ((paramakyn != null) && ((!paramakyn.jdField_a_of_type_Boolean) || (paramakyn.a() != null)))
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAIOHelper", 2, "cropAIOFromDecorView() called with: input = [" + paramBitmap + "], contentHeight = [" + paramInt + "], activity = [" + paramActivity + "]");
+    }
+    if (paramBitmap == null) {
+      return null;
+    }
+    int j = paramBitmap.getWidth();
+    int i = paramBitmap.getHeight();
+    a(paramActivity);
+    if ((paramInt > 0) && (paramInt < i)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Akyn = paramakyn;
-      d(paramAppInterface);
-      akyx.a(paramAppInterface).a(paramAppInterface, paramakyn.jdField_a_of_type_JavaLangString);
-      a(paramAppInterface, this.jdField_a_of_type_Augq.c());
-      return;
+      i = ImmersiveUtils.getStatusBarHeight(paramActivity);
+      paramInt -= i;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiAIOHelper", 2, "cropAIOFromDecorView() statusBarHeight = " + i + ", width =" + j + ", finalHeight = " + paramInt);
+        }
+        paramBitmap = Bitmap.createBitmap(paramBitmap, 0, i, j, paramInt);
+        return paramBitmap;
+      }
+      catch (Throwable paramBitmap)
+      {
+        QLog.e("MultiAIOHelper", 1, "cropAIOFromDecorView: ", paramBitmap);
+        augy.a();
+        return null;
+      }
+      paramInt = i;
     }
-    a("onGetTransferDoorConfig", paramAppInterface, true);
   }
   
-  private void a(AppInterface paramAppInterface, boolean paramBoolean)
+  public static List<RecentBaseData> a(FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    boolean bool = a(paramAppInterface);
-    if (this.jdField_a_of_type_ArrayOfInt[0] == 100) {
-      a("tryDownload", paramAppInterface);
+    ArrayList localArrayList = new ArrayList();
+    ProxyManager localProxyManager = paramQQAppInterface.a();
+    if (localProxyManager == null) {
+      return localArrayList;
     }
-    if (bool)
+    try
     {
-      a("tryDownload", paramAppInterface, false);
-      return;
+      if (localProxyManager.a().a(false).size() > 0) {
+        localArrayList.addAll(ajeu.a().jdField_a_of_type_JavaUtilList);
+      }
+      return a(paramFragmentActivity, paramQQAppInterface, localArrayList, paramString1, paramInt, paramString2, paramString3);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    a("tryDownload", true);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("MultiAIOHelper", 1, "getRecentUser error.", localException);
+      }
+    }
   }
   
-  private void a(String paramString, AppInterface paramAppInterface)
+  private static List<RecentBaseData> a(FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface, List<RecentBaseData> paramList, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    boolean bool1 = false;
-    if (d()) {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkEntryRes, scanTorchActivity为空");
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    if (TextUtils.equals(paramString1, "conversation_tab_bottom")) {
+      while (localIterator.hasNext())
+      {
+        paramFragmentActivity = (RecentBaseData)localIterator.next();
+        if ((a(paramFragmentActivity)) && (!b(paramFragmentActivity))) {
+          localArrayList.add(paramFragmentActivity);
+        }
+      }
     }
+    int i = 0;
+    int j = -1;
+    if (i < paramList.size())
+    {
+      paramString1 = (RecentBaseData)paramList.get(i);
+      int k = j;
+      if (a(paramString1))
+      {
+        if ((paramString1.a() != paramInt) || (!TextUtils.equals(paramString2, paramString1.a()))) {
+          break label151;
+        }
+        k = i;
+      }
+      for (;;)
+      {
+        i += 1;
+        j = k;
+        break;
+        label151:
+        k = j;
+        if (!b(paramString1))
+        {
+          localArrayList.add(paramString1);
+          k = j;
+        }
+      }
+    }
+    if (j == -1)
+    {
+      paramFragmentActivity = ajdp.a(new RecentUser(paramString2, paramInt), paramQQAppInterface, paramFragmentActivity);
+      if (paramFragmentActivity != null) {
+        if (paramString3 == null) {
+          break label228;
+        }
+      }
+      for (;;)
+      {
+        paramFragmentActivity.mTitleName = paramString3;
+        localArrayList.add(0, paramFragmentActivity);
+        return localArrayList;
+        label228:
+        paramString3 = paramFragmentActivity.b();
+      }
+    }
+    localArrayList.add(0, paramList.get(j));
+    return localArrayList;
+  }
+  
+  public static void a() {}
+  
+  public static void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOHelper", 2, "updateMultiAIOSwitchStatusLocal() called switch is " + paramBoolean);
+      }
+      localObject = (QQAppInterface)localObject;
+      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("multiaio_switch_sp" + ((QQAppInterface)localObject).getCurrentAccountUin(), 0).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean("key_multiaio_switch", paramBoolean);
+      ((SharedPreferences.Editor)localObject).apply();
+    }
+  }
+  
+  public static boolean a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOHelper", 2, "getMultiAioSwitchStatusLocal() called load from sp");
+      }
+      localObject = (QQAppInterface)localObject;
+      jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("multiaio_switch_sp" + ((QQAppInterface)localObject).getCurrentAccountUin(), 0).getBoolean("key_multiaio_switch", true);
+    }
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt));
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      paramActivity = paramActivity.getWindowManager().getDefaultDisplay();
+      Point localPoint1 = new Point();
+      Point localPoint2 = new Point();
+      paramActivity.getSize(localPoint1);
+      paramActivity.getRealSize(localPoint2);
+      if (localPoint2.y == localPoint1.y) {}
+    }
+    boolean bool1;
     boolean bool2;
     do
     {
-      return;
-      paramAppInterface = a();
-      if (paramAppInterface == null)
-      {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "checkEntryRes, promotion为空");
-        return;
-      }
-      bool2 = this.jdField_a_of_type_Augq.b();
-      if (this.jdField_a_of_type_ArrayOfInt[0] == 100) {
-        bool1 = true;
-      }
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkEntryRes, from[" + paramString + "], isReadyShowEntry[" + bool2 + "], isEntryReady[" + bool1 + "], promotionItem[" + paramAppInterface + "]");
-    } while ((!bool2) || (!bool1));
-    this.jdField_a_of_type_Augq.a(paramAppInterface);
-  }
-  
-  private void a(String paramString, AppInterface paramAppInterface, boolean paramBoolean)
-  {
-    if (d()) {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, scanTorchActivity为空, from[" + paramString + "], notify[" + paramBoolean + "]");
-    }
-    do
-    {
-      return;
-      paramAppInterface = a();
-      if (paramAppInterface != null) {
-        break;
-      }
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, promotionItem为空, from[" + paramString + "], notify[" + paramBoolean + "]");
-    } while (!paramBoolean);
-    this.jdField_a_of_type_Augq.a(paramAppInterface, false);
-    return;
-    a("checkAllRes", true);
-    if (a())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, 还在下载中, from[" + paramString + "], notify[" + paramBoolean + "]");
-      return;
-    }
-    if (b())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, 下载失败, from[" + paramString + "], notify[" + paramBoolean + "]");
-      this.jdField_a_of_type_Augq.a(paramAppInterface, false);
-      return;
-    }
-    if (!this.jdField_a_of_type_Augq.a())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, ArEngine未准备好, from[" + paramString + "], notify[" + paramBoolean + "]");
-      return;
-    }
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, all ready, from[" + paramString + "], notify[" + paramBoolean + "]");
-    a();
-    this.jdField_a_of_type_Augq.a(paramAppInterface, true);
-  }
-  
-  private void a(String paramString, boolean paramBoolean)
-  {
-    if (d()) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Long == 0L)
-      {
-        this.jdField_a_of_type_Long = (System.currentTimeMillis() + 1500L);
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "showDownloadProgress, 忽略1, from[" + paramString + "], progress[" + paramBoolean + "]");
-        return;
-      }
-      if (this.jdField_a_of_type_Long > System.currentTimeMillis())
-      {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "showDownloadProgress, 忽略2, from[" + paramString + "], progress[" + paramBoolean + "]");
-        return;
-      }
-    } while ((!paramBoolean) || (!c()));
-    this.jdField_a_of_type_Augq.a("PromotionRes_" + paramString, 0);
-  }
-  
-  private boolean d()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.c);
-  }
-  
-  public int a()
-  {
-    int i = 0;
-    int j = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      j += this.jdField_a_of_type_ArrayOfInt[i];
-      i += 1;
-    }
-    return j / this.jdField_a_of_type_ArrayOfInt.length;
-  }
-  
-  public akyn a()
-  {
-    return this.jdField_a_of_type_Akyn;
-  }
-  
-  void a()
-  {
-    if (AudioHelper.a(5) != 1) {}
-    Button localButton;
-    do
-    {
-      return;
-      localButton = (Button)this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.findViewById(2131364937);
-      localButton.setVisibility(0);
-    } while (localButton.getTag() != null);
-    localButton.setTag(new Object());
-    localButton.setOnClickListener(new augp(this));
-  }
-  
-  public void a(augq paramaugq)
-  {
-    this.jdField_a_of_type_Augq = paramaugq;
-  }
-  
-  public void a(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  public void a(AppInterface paramAppInterface, PopupMenu paramPopupMenu) {}
-  
-  public void a(AppInterface paramAppInterface, String paramString)
-  {
-    if (this.jdField_a_of_type_Augq.c())
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "getRes,  需要显示穿越门进度条");
-      this.jdField_a_of_type_Boolean = true;
-    }
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "getRes, activityID[" + paramString + "], TotalProgress[" + a() + "]");
-    akyx.a(paramAppInterface).a(paramAppInterface, new augm(this, paramString, paramAppInterface));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < this.jdField_a_of_type_ArrayOfInt.length)
-      {
-        if ((this.jdField_a_of_type_ArrayOfInt[i] >= 0) && (this.jdField_a_of_type_ArrayOfInt[i] <= 99))
-        {
-          QLog.w(jdField_a_of_type_JavaLangString, 1, "isDownloading, index[" + i + "], Progress[" + this.jdField_a_of_type_ArrayOfInt[i] + "]");
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public boolean a(AppInterface paramAppInterface)
-  {
-    Object localObject1 = a();
-    if (localObject1 == null)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isResReady no promotion Item so reay");
       return true;
-    }
-    localObject1 = ((akyn)localObject1).a();
-    int i = ((TreeMap)localObject1).size();
-    Object localObject2;
-    if (i + 1 > this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      localObject2 = "checkRes, zip数目不对, itemCount[" + i + "]";
-      QLog.w(jdField_a_of_type_JavaLangString, 1, (String)localObject2);
-      if (AudioHelper.d()) {
-        throw new IllegalStateException((String)localObject2);
-      }
-    }
-    localObject1 = ((TreeMap)localObject1).entrySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (akyo)((Map.Entry)((Iterator)localObject1).next()).getValue();
-      if (akyu.a(paramAppInterface.getCurrentAccountUin(), (akyo)localObject2)) {
-        this.jdField_a_of_type_ArrayOfInt[localObject2.a] = 100;
-      } else {
-        this.jdField_a_of_type_ArrayOfInt[localObject2.a] = 0;
-      }
-    }
-    if (axjg.b())
-    {
-      this.jdField_a_of_type_ArrayOfInt[3] = 100;
-      int j = a();
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkRes, itemCount[" + i + "], Progress0[" + this.jdField_a_of_type_ArrayOfInt[0] + "], Progress1[" + this.jdField_a_of_type_ArrayOfInt[1] + "], Progress2[" + this.jdField_a_of_type_ArrayOfInt[2] + "], Progress3[" + this.jdField_a_of_type_ArrayOfInt[3] + "], TotalProgress[" + j + "]");
-      if (j != 100) {
-        break label324;
-      }
-    }
-    label324:
-    for (boolean bool = true;; bool = false)
-    {
-      return bool;
-      this.jdField_a_of_type_ArrayOfInt[3] = 0;
-      break;
-    }
-  }
-  
-  public void b(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity = null;
-    if (this.jdField_a_of_type_Akyw != null)
-    {
-      akyx.a(paramAppInterface).b(this.jdField_a_of_type_Akyw);
-      this.jdField_a_of_type_Akyw = null;
-    }
-    if (this.jdField_a_of_type_Axgs != null) {
-      axgr.a().a(false, this.jdField_a_of_type_Axgs);
-    }
-    this.jdField_a_of_type_Akyn = null;
-  }
-  
-  public boolean b()
-  {
-    if (a()) {}
-    for (;;)
-    {
       return false;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfInt.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfInt[i] < 0)
-        {
-          QLog.w(jdField_a_of_type_JavaLangString, 1, "isDownloadError, index[" + i + "], errCode[" + this.jdField_a_of_type_ArrayOfInt[i] + "]");
-          return true;
-        }
-        i += 1;
-      }
-    }
+      bool1 = ViewConfiguration.get(paramActivity).hasPermanentMenuKey();
+      bool2 = KeyCharacterMap.deviceHasKey(4);
+    } while ((!bool1) && (!bool2));
+    return false;
   }
   
-  public void c(AppInterface paramAppInterface)
+  private static boolean a(RecentBaseData paramRecentBaseData)
   {
-    akyn localakyn = a();
-    boolean bool2 = a();
-    boolean bool1 = false;
-    if (!bool2) {
-      bool1 = b();
-    }
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "reTry, promotionItem[" + localakyn + "], isDownloading[" + bool2 + "], isDownloadError[" + bool1 + "], needShowDownloadProgress[" + this.jdField_a_of_type_Boolean + "], TotalProgress[" + a() + "]");
-    this.jdField_a_of_type_Boolean = true;
-    if (localakyn == null) {}
-    while (bool2) {
-      return;
-    }
-    akyx.a(paramAppInterface).a(paramAppInterface, localakyn.jdField_a_of_type_JavaLangString);
-    a(paramAppInterface, this.jdField_a_of_type_Augq.c());
+    return a(paramRecentBaseData.a());
   }
   
-  public boolean c()
+  private static boolean b(RecentBaseData paramRecentBaseData)
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  void d(AppInterface paramAppInterface)
-  {
-    if (this.jdField_a_of_type_Akyw != null) {
-      return;
-    }
-    this.jdField_a_of_type_Axgs = new augn(this, paramAppInterface);
-    axgr.a().a(true, this.jdField_a_of_type_Axgs);
-    this.jdField_a_of_type_Akyw = new augo(this, paramAppInterface);
-    akyx.a(paramAppInterface).a(this.jdField_a_of_type_Akyw);
-  }
-  
-  public void e(AppInterface paramAppInterface)
-  {
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "onAREngineReady");
-    a("onAREngineReady", paramAppInterface, false);
-  }
-  
-  public void f(AppInterface paramAppInterface)
-  {
-    a("onAREngineReady", paramAppInterface);
+    return paramRecentBaseData.mUnreadFlag == 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,25 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment.1.1;
+import android.database.DataSetObserver;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
 
 public class qqo
-  implements qjh
+  extends DataSetObserver
 {
-  public qqo(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  public qqo(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void a()
+  public void onChanged()
   {
-    if ((VideoFeedsRecommendFragment.a(this.a)) && (VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a.a != null) && (VideoFeedsRecommendFragment.a(this.a) != null)) {
-      if ((oaq.e(VideoFeedsRecommendFragment.a(this.a).a.a.a)) && (!VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c)))
-      {
-        localVideoInfo = VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c);
-        if (localVideoInfo != null)
-        {
-          i = VideoFeedsRecommendFragment.a(this.a).getAdapterPosition() - 1;
-          j = VideoFeedsRecommendFragment.a(this.a).c;
-          VideoFeedsRecommendFragment.a(this.a).a(i, j, localVideoInfo);
-          oag.a(this.a.getActivity(), 50, true);
-        }
-      }
-    }
-    while ((VideoFeedsRecommendFragment.a(this.a) == null) || (VideoFeedsRecommendFragment.a(this.a) == null))
+    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
     {
-      VideoInfo localVideoInfo;
-      int i;
-      int j;
-      VideoFeedsRecommendFragment.a(this.a).postDelayed(new VideoFeedsRecommendFragment.1.1(this, i + 1), 0L);
-      do
-      {
-        return;
-      } while (VideoFeedsRecommendFragment.a(this.a) == null);
-      VideoFeedsRecommendFragment.a(this.a).c();
+      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
       return;
     }
-    VideoFeedsRecommendFragment.a(this.a).c(VideoFeedsRecommendFragment.a(this.a).a);
+    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqo
  * JD-Core Version:    0.7.0.1
  */

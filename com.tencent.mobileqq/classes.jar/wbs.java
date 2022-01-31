@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
-class wbs
-  implements View.OnClickListener
+public class wbs
+  implements DialogInterface.OnClickListener
 {
-  wbs(wbr paramwbr) {}
+  public wbs(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbs
  * JD-Core Version:    0.7.0.1
  */

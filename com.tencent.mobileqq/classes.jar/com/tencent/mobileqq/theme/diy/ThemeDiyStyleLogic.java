@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.theme.diy;
 
-import ajsd;
+import aljq;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aymw;
-import bbvj;
+import baks;
+import bduw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -44,7 +44,7 @@ public class ThemeDiyStyleLogic
   QQAppInterface app;
   Context mContext;
   public HashMap<Integer, String> reportMap = new HashMap();
-  public aymw saveDealCallBack;
+  public baks saveDealCallBack;
   public int styleState;
   
   public ThemeDiyStyleLogic(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -90,8 +90,8 @@ public class ThemeDiyStyleLogic
     if (!TextUtils.isEmpty(paramString))
     {
       str = paramString;
-      if (paramString.startsWith(ajsd.aW + "custom_background/")) {
-        str = bbvj.a(paramString);
+      if (paramString.startsWith(aljq.aX + "custom_background/")) {
+        str = bduw.a(paramString);
       }
     }
     return str;
@@ -107,7 +107,7 @@ public class ThemeDiyStyleLogic
   
   public static String getSdcardDIYDir()
   {
-    return bbvj.a(ajsd.aW + "custom_background/");
+    return bduw.a(aljq.aX + "custom_background/");
   }
   
   static ThemeUtil.ThemeInfo getThemeInfoByDensity(Context paramContext, ResSuitData.StyleSuit paramStyleSuit)
@@ -218,7 +218,7 @@ public class ThemeDiyStyleLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic
  * JD-Core Version:    0.7.0.1
  */

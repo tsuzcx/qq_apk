@@ -1,102 +1,94 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class ayav
-  implements Manager
+  extends ayap
 {
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
-  private static byte[] jdField_c_of_type_ArrayOfByte = new byte[0];
-  private akhb jdField_a_of_type_Akhb = new ayaw(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SubAccountProtocManager.2(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  
-  public ayav(QQAppInterface paramQQAppInterface)
+  public ayav(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.d = false;
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Akhb);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountProtocManager", 2, "SubAccountProtocManager: manager init");
-    }
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.e = 0;
   }
   
-  public void a()
+  public View a(RichStatus paramRichStatus)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
+    paramRichStatus = super.a(paramRichStatus);
+    l();
+    return paramRichStatus;
+  }
+  
+  protected CharSequence a(RichStatus paramRichStatus, ayay paramayay, int paramInt)
+  {
+    if (paramRichStatus == null) {
+      paramayay = "";
     }
-    synchronized (jdField_c_of_type_ArrayOfByte)
+    do
     {
-      if (this.jdField_c_of_type_Boolean) {
-        return;
-      }
+      return paramayay;
+      localObject1 = paramRichStatus.toSpannableStringWithoutAction(paramayay);
+      paramayay = (ayay)localObject1;
+    } while (TextUtils.isEmpty(paramRichStatus.actionText));
+    Object localObject2 = paramRichStatus.actionText;
+    paramayay = (ayay)localObject2;
+    if (!TextUtils.isEmpty(paramRichStatus.dataText)) {
+      paramayay = (String)localObject2 + paramRichStatus.dataText;
     }
-    this.jdField_c_of_type_Boolean = true;
-    ((akgz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a();
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    synchronized (jdField_b_of_type_ArrayOfByte)
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848974);
+    localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
+    ((SpannableStringBuilder)localObject2).insert(0, "[S] ");
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848967);
+    String str = axzn.a().a(paramRichStatus.actionId);
+    paramRichStatus = (RichStatus)localObject1;
+    if (!TextUtils.isEmpty(str))
     {
-      if (this.jdField_b_of_type_Boolean) {
-        return;
-      }
+      paramRichStatus = URLDrawable.URLDrawableOptions.obtain();
+      paramRichStatus.mLoadingDrawable = ((Drawable)localObject1);
+      paramRichStatus.mFailedDrawable = ((Drawable)localObject1);
+      paramRichStatus.mRequestWidth = paramInt;
+      paramRichStatus.mRequestHeight = paramInt;
+      paramRichStatus = URLDrawable.getDrawable(str, paramRichStatus);
+      paramRichStatus.setCallback(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
     }
-    this.jdField_b_of_type_Boolean = true;
-    ((akgz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    paramRichStatus.setBounds(0, 0, paramInt, paramInt);
+    int i = Color.parseColor("#ffa8a8a8");
+    if ((Build.VERSION.SDK_INT >= 4) && (Build.VERSION.SDK_INT != 20)) {}
+    for (paramRichStatus = new axye(paramRichStatus, 1, paramayay, i, localDrawable, paramInt);; paramRichStatus = new axye(paramRichStatus, 0, paramayay, i, localDrawable, paramInt))
     {
-      if (this.jdField_a_of_type_Boolean) {
-        return;
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
-    ((akgz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a(paramString1, paramString2, paramString3);
-  }
-  
-  public boolean a()
-  {
-    synchronized (jdField_c_of_type_ArrayOfByte)
-    {
-      boolean bool = this.d;
-      return bool;
+      ((SpannableStringBuilder)localObject2).setSpan(paramRichStatus, 0, "[S]".length(), 17);
+      return localObject2;
     }
   }
   
-  public void onDestroy()
+  protected boolean b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akhb);
-    if (ThreadManager.getSubThreadHandler() != null) {
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    }
+    return false;
+  }
+  
+  protected boolean d()
+  {
+    return false;
+  }
+  
+  protected void e()
+  {
+    int i = jdField_a_of_type_ArrayOfInt[6];
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(i, i, i, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayav
  * JD-Core Version:    0.7.0.1
  */

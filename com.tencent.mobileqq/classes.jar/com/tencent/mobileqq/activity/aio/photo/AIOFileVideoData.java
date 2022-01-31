@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aegd;
-import aege;
-import aejb;
-import agqv;
-import agra;
+import agct;
+import agcu;
+import agft;
+import ailt;
+import ailz;
 import android.content.Context;
 import android.os.Parcel;
 import android.text.TextUtils;
 import android.view.View;
-import aptt;
-import apug;
-import apvd;
-import apvm;
+import armv;
+import arni;
+import arof;
+import aroo;
 import java.io.File;
 
 public class AIOFileVideoData
@@ -26,9 +26,11 @@ public class AIOFileVideoData
   public long b;
   public String b;
   public boolean b;
+  public int c;
   public long c;
   public String c;
   public boolean c;
+  public int d;
   public String d;
   public boolean d;
   public String e;
@@ -36,7 +38,10 @@ public class AIOFileVideoData
   public String f;
   private boolean f;
   public String g;
-  private String h;
+  public String h;
+  public String i;
+  public String j;
+  private String k;
   
   public AIOFileVideoData() {}
   
@@ -45,10 +50,10 @@ public class AIOFileVideoData
     this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  private void a(Context paramContext, agqv paramagqv)
+  private void a(Context paramContext, ailt paramailt)
   {
-    paramagqv = new aegd(this, paramContext, paramagqv);
-    aptt.a(paramContext, paramContext.getString(2131692673), paramContext.getString(2131692675), paramagqv);
+    paramailt = new agct(this, paramContext, paramailt);
+    armv.a(paramContext, paramContext.getString(2131692752), paramContext.getString(2131692754), paramailt);
   }
   
   private boolean c()
@@ -59,7 +64,7 @@ public class AIOFileVideoData
       do
       {
         return false;
-      } while (!apug.a());
+      } while (!arni.a());
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_h_of_type_Long > 0L) && (this.jdField_h_of_type_Long > this.jdField_a_of_type_Long)) {
         return true;
       }
@@ -67,33 +72,33 @@ public class AIOFileVideoData
     return true;
   }
   
-  public agra a(boolean paramBoolean)
+  public ailz a(boolean paramBoolean)
   {
     boolean bool = false;
-    agra localagra = new agra();
-    localagra.jdField_a_of_type_ArrayOfJavaLangString = new String[] { this.d };
-    localagra.jdField_b_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+    ailz localailz = new ailz();
+    localailz.jdField_a_of_type_ArrayOfJavaLangString = new String[] { this.jdField_d_of_type_JavaLangString };
+    localailz.jdField_b_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
     if (!a()) {
       bool = true;
     }
-    localagra.jdField_a_of_type_Boolean = bool;
-    if (localagra.jdField_a_of_type_Boolean) {}
+    localailz.jdField_a_of_type_Boolean = bool;
+    if (localailz.jdField_a_of_type_Boolean) {}
     for (String str = this.jdField_f_of_type_JavaLangString;; str = this.jdField_c_of_type_JavaLangString)
     {
-      localagra.jdField_a_of_type_JavaLangString = str;
-      localagra.jdField_c_of_type_Long = this.jdField_c_of_type_Long;
-      localagra.jdField_b_of_type_Boolean = true;
-      localagra.jdField_b_of_type_Long = this.jdField_h_of_type_Long;
-      localagra.jdField_a_of_type_Long = this.jdField_f_of_type_Long;
-      localagra.jdField_b_of_type_Int = this.jdField_f_of_type_Int;
-      localagra.jdField_e_of_type_Boolean = paramBoolean;
-      return localagra;
+      localailz.jdField_a_of_type_JavaLangString = str;
+      localailz.jdField_c_of_type_Long = this.jdField_c_of_type_Long;
+      localailz.jdField_b_of_type_Boolean = true;
+      localailz.jdField_b_of_type_Long = this.jdField_h_of_type_Long;
+      localailz.jdField_a_of_type_Long = this.jdField_f_of_type_Long;
+      localailz.jdField_b_of_type_Int = this.jdField_f_of_type_Int;
+      localailz.jdField_e_of_type_Boolean = paramBoolean;
+      return localailz;
     }
   }
   
   public File a(int paramInt)
   {
-    if (!apvd.b(this.jdField_b_of_type_JavaLangString)) {
+    if (!arof.b(this.jdField_b_of_type_JavaLangString)) {
       return null;
     }
     return new File(this.jdField_b_of_type_JavaLangString);
@@ -101,7 +106,7 @@ public class AIOFileVideoData
   
   public String a()
   {
-    return this.jdField_h_of_type_JavaLangString;
+    return this.k;
   }
   
   public String a(int paramInt)
@@ -138,32 +143,37 @@ public class AIOFileVideoData
     for (;;)
     {
       this.jdField_c_of_type_Boolean = bool;
+      this.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      this.jdField_c_of_type_Int = paramParcel.readInt();
+      this.jdField_d_of_type_Int = paramParcel.readInt();
+      this.i = paramParcel.readString();
+      this.j = paramParcel.readString();
       return;
       bool = false;
     }
   }
   
-  public void a(View paramView, agqv paramagqv)
+  public void a(View paramView, ailt paramailt)
   {
     if (c())
     {
-      if (apvm.a(paramView.getContext(), false, new aege(this, paramagqv, paramView))) {
-        a(paramView.getContext(), paramagqv);
+      if (aroo.a(paramView.getContext(), false, new agcu(this, paramailt, paramView))) {
+        a(paramView.getContext(), paramailt);
       }
       return;
     }
     if (this.jdField_f_of_type_Boolean)
     {
       this.jdField_f_of_type_Boolean = false;
-      paramagqv.a(paramView, a(false));
+      paramailt.a(paramView, a(false));
     }
-    paramagqv.b();
-    paramagqv.f();
+    paramailt.b();
+    paramailt.f();
   }
   
   public void a(String paramString)
   {
-    this.jdField_h_of_type_JavaLangString = paramString;
+    this.k = paramString;
   }
   
   public boolean a()
@@ -181,22 +191,22 @@ public class AIOFileVideoData
   
   public boolean a(int paramInt)
   {
-    return apvd.b(this.jdField_b_of_type_JavaLangString);
+    return arof.b(this.jdField_b_of_type_JavaLangString);
   }
   
-  public boolean a(aejb paramaejb)
+  public boolean a(agft paramagft)
   {
     if (a()) {}
-    while ((!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))) {
+    while ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))) {
       return false;
     }
-    paramaejb.a(this.jdField_f_of_type_Long, this.jdField_f_of_type_Int, 16842753);
+    paramagft.a(this.jdField_f_of_type_Long, this.jdField_f_of_type_Int, 16842753);
     return true;
   }
   
   public boolean b()
   {
-    return !TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString);
+    return !TextUtils.isEmpty(this.k);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -212,13 +222,18 @@ public class AIOFileVideoData
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
+      paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
+      paramParcel.writeInt(this.jdField_c_of_type_Int);
+      paramParcel.writeInt(this.jdField_d_of_type_Int);
+      paramParcel.writeString(this.i);
+      paramParcel.writeString(this.j);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData
  * JD-Core Version:    0.7.0.1
  */

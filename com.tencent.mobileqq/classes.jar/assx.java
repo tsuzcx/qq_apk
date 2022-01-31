@@ -1,35 +1,88 @@
-import android.os.Message;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.QQIdentiferLegacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+import java.util.concurrent.atomic.AtomicBoolean;
+import tencent.im.oidb.oidb_0x5e1.RspBody;
+import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class assx
-  extends MqqHandler
 {
-  public assx(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, long paramLong, astb paramastb)
   {
-    switch (paramMessage.what)
+    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
+    YTAGReflectLiveCheckInterface.getLiveCheckType(paramContext.getApplicationContext(), new assz(localAtomicBoolean, paramString1, paramString2, paramString3, paramLong, paramastb));
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, oidb_0x5e1.RspBody paramRspBody, FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse, Runnable paramRunnable)
+  {
+    if (((oidb_0x5e1.UdcUinData)paramRspBody.rpt_msg_uin_data.get(0)).user_login_guard_face.get() == 0)
     {
+      if ((paramSecureCheckResponse == null) || (!paramSecureCheckResponse.bool_sec_pass.get()))
+      {
+        if (System.currentTimeMillis() - AuthDevVerifyCodeActivity.a >= 60000L)
+        {
+          ayxe.b(paramQQAppInterface, new assy(paramActivity, paramString, paramRunnable));
+          return;
+        }
+        paramRspBody = new Intent(paramActivity, AuthDevVerifyCodeActivity.class);
+        paramRspBody.putExtra("k_from", "f_SetFaceData");
+        paramQQAppInterface = paramString;
+        if (paramString == null) {
+          paramQQAppInterface = "";
+        }
+        paramRspBody.putExtra("phone_num", paramQQAppInterface);
+        paramActivity.startActivityForResult(paramRspBody, 11);
+        return;
+      }
+      paramQQAppInterface = new Intent(paramActivity, QQIdentiferLegacyActivity.class);
+      paramQQAppInterface.putExtra("platformAppId", 101810106);
+      paramQQAppInterface.putExtra("srcAppId", 101810106);
+      paramQQAppInterface.putExtra("srcOpenId", paramSecureCheckResponse.str_openid.get());
+      paramQQAppInterface.putExtra("key", paramSecureCheckResponse.str_tmpkey.get());
+      paramQQAppInterface.putExtra("method", "setFaceData");
+      paramQQAppInterface.putExtra("serviceType", 2);
+      paramActivity.startActivityForResult(paramQQAppInterface, 21);
+      return;
     }
-    do
+    PublicFragmentActivity.a(paramActivity, DeleteFaceFragment.class, 12);
+  }
+  
+  private static void b(int paramInt, String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, astb paramastb)
+  {
+    QLog.d("FaceLoginHelper", 1, new Object[] { "start sendPacket appid : ", Integer.valueOf(paramInt) });
+    if (paramInt != 0)
     {
-      return;
-      MultiCardRecommendFragment.e(this.a);
-      sendEmptyMessageDelayed(3, 500L);
-      return;
-      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
-      MultiCardRecommendFragment.e(this.a);
-      return;
-      MultiCardRecommendFragment.d(this.a);
-      return;
-    } while (MultiCardRecommendFragment.a(this.a) == null);
-    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("srcAppId", paramInt);
+      localBundle.putString("key", paramString1);
+      localBundle.putString("lightInfo", paramString4);
+      localBundle.putString("method", paramString2);
+      localBundle.putString("uin", paramString3);
+      localBundle.putLong("nonce", paramLong);
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceLoginHelper", 1, "sendPacket" + paramString4);
+      }
+      QIPCClientHelper.getInstance().callServer("IdentificationIpcServer_Model", "action_app_conf", localBundle, new asta(paramastb));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     assx
  * JD-Core Version:    0.7.0.1
  */

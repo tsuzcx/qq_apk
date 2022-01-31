@@ -28,7 +28,7 @@ class BaseJsPluginEngine$2
     }
     if ("0".equals(str))
     {
-      this.this$0.callbackJsEventFail(this.val$webview, this.val$eventName, new JSONObject(), this.this$0.getActivityContext().getString(2131694273), this.val$callbackId);
+      this.this$0.callbackJsEventFail(this.val$webview, this.val$eventName, new JSONObject(), this.this$0.getActivityContext().getString(2131694412), this.val$callbackId);
       return;
     }
     this.this$0.callbackJsEventFail(this.val$webview, this.val$eventName, paramJSONObject, this.val$callbackId);
@@ -36,7 +36,7 @@ class BaseJsPluginEngine$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine.2
  * JD-Core Version:    0.7.0.1
  */

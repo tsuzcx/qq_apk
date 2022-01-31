@@ -4,9 +4,9 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import tzj;
-import ucg;
-import ved;
+import vob;
+import vqy;
+import wsv;
 
 class VideoViewVideoHolder$VideoStartSegment$1$1
   implements Runnable
@@ -16,33 +16,33 @@ class VideoViewVideoHolder$VideoStartSegment$1$1
   public void run()
   {
     if (this.a.a.isCanceled()) {}
-    tzj localtzj;
+    vob localvob;
     do
     {
       return;
       if ((!this.a.a.this$0.c()) || (this.a.a.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder == null)) {
         break;
       }
-      ved.d(this.a.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, wait first not-black frame");
+      wsv.d(this.a.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, wait first not-black frame");
       this.a.a.this$0.a().setVisibility(8);
       this.a.a.this$0.b().setVisibility(8);
       this.a.a.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.a(true, true);
-      VideoViewVideoHolder.a(this.a.a.this$0).b(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Ucz);
+      VideoViewVideoHolder.a(this.a.a.this$0).b(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Vrr);
       VideoViewVideoHolder.a(this.a.a.this$0, 12);
       this.a.a.a = SystemClock.uptimeMillis();
       VideoViewVideoHolder.a(this.a.a.this$0).removeCallbacksAndMessages(null);
       VideoViewVideoHolder.a(this.a.a.this$0).post(this.a.a);
-      localtzj = (tzj)this.a.a.this$0.a(tzj.class);
-    } while (localtzj == null);
-    localtzj.a.setVisibility(0);
+      localvob = (vob)this.a.a.this$0.a(vob.class);
+    } while (localvob == null);
+    localvob.a.setVisibility(0);
     return;
-    ved.e(this.a.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, do not wait first not-black frame");
+    wsv.e(this.a.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, do not wait first not-black frame");
     VideoViewVideoHolder.VideoStartSegment.a(this.a.a, new ErrorMessage(0, "onPrepared, is not on foreground"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoStartSegment.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,21 @@
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-public abstract interface adkd
+public class adkd
+  implements View.OnClickListener
 {
-  public abstract void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo);
+  public adkd(PublicAccountListActivity paramPublicAccountListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkd
  * JD-Core Version:    0.7.0.1
  */

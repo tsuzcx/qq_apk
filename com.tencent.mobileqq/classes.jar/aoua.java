@@ -1,49 +1,61 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aoua
-  extends apvf
+  extends aofy<aotz>
 {
-  public aoua(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
-  
-  public void a()
+  public static aotz a()
   {
-    this.a.a.a().b();
+    return (aotz)aogj.a().a(451);
   }
   
-  public void b()
+  public int a()
   {
-    this.a.a.a().p();
+    return 451;
   }
   
-  public void c()
+  @NonNull
+  public aotz a(int paramInt)
   {
-    this.a.a.a().q();
+    return new aotz();
   }
   
-  public void d()
+  @Nullable
+  public aotz a(aogf[] paramArrayOfaogf)
   {
-    this.a.a.a().r();
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aotz.a(paramArrayOfaogf);
+    }
+    return null;
   }
   
-  public void e()
+  public Class<aotz> a()
   {
-    this.a.a.a().s();
+    return aotz.class;
   }
   
-  public void f()
+  public void a(int paramInt) {}
+  
+  public void a(aotz paramaotz) {}
+  
+  public int b()
   {
-    this.a.a.a().t();
+    return 0;
   }
   
-  public void g()
+  public boolean b()
   {
-    this.a.a.a().G();
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoua
  * JD-Core Version:    0.7.0.1
  */

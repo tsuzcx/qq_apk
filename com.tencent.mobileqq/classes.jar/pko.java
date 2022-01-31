@@ -1,18 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import org.json.JSONObject;
 
 public class pko
-  implements ViewBase.IBuilder
+  implements poa
 {
-  public ViewBase build(VafContext paramVafContext)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    return new pkn(paramVafContext);
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return pjr.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    if ((parampgd != null) && (parampgd.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampgd.a())))
+    {
+      Object localObject = paramContainer.findViewBaseByName("id_view_AdDownloadView");
+      if ((localObject != null) && ((localObject instanceof oft)))
+      {
+        localObject = (oft)localObject;
+        ((oft)localObject).a(paramInt1);
+        ((oft)localObject).a(parampgd, true);
+      }
+      paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
+      if ((paramContainer != null) && ((paramContainer instanceof ogr))) {
+        ((ogr)paramContainer).a(parampgd);
+      }
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pko
  * JD-Core Version:    0.7.0.1
  */

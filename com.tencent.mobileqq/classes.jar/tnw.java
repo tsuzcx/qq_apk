@@ -1,16 +1,10 @@
-public class tnw
-  extends syn
+public abstract interface tnw
 {
-  public final byte[] a;
-  
-  public tnw(byte[] paramArrayOfByte)
-  {
-    this.a = paramArrayOfByte;
-  }
+  public abstract int a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tnw
  * JD-Core Version:    0.7.0.1
  */

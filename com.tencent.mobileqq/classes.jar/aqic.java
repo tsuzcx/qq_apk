@@ -1,24 +1,10 @@
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
-import java.io.File;
-import java.io.FileFilter;
-
-public class aqic
-  implements FileFilter
+public abstract interface aqic
 {
-  public aqic(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
-  
-  public boolean accept(File paramFile)
-  {
-    if (paramFile.getName().endsWith(".png")) {}
-    while (paramFile.getName().endsWith(".jpg")) {
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqic
  * JD-Core Version:    0.7.0.1
  */

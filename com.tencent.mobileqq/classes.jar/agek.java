@@ -1,92 +1,92 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 
 class agek
   implements View.OnClickListener
 {
-  agek(ageg paramageg) {}
+  agek(agej paramagej) {}
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onClick, id = " + i);
-    }
-    switch (i)
+    if (paramView == this.a.a)
     {
-    default: 
-    case 2131364824: 
-    case 2131366632: 
+      paramView = paramView.getTag();
+      if ((paramView instanceof StructMsgForImageShare)) {}
+    }
+    do
+    {
       do
       {
+        Object localObject2;
         do
         {
           do
           {
             return;
-          } while (this.a.jdField_a_of_type_Agep == null);
-          ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Agep.a.msg);
-          return;
-        } while (this.a.jdField_a_of_type_Agep == null);
-        paramView = this.a.jdField_a_of_type_Agep.a;
-      } while (!(paramView instanceof MessageForText));
-    }
-    for (paramView = (MessageForText)paramView;; paramView = null)
-    {
-      try
-      {
-        paramView = azjx.a(paramView.msgData);
-        if (paramView == null) {
-          continue;
-        }
-        paramView = (TroopLinkElement)paramView;
-        Object localObject = new Bundle();
-        if (paramView != null)
+            if (agej.a(((StructMsgForImageShare)paramView).mMsgActionData))
+            {
+              this.a.b((StructMsgForImageShare)paramView, "5");
+              return;
+            }
+          } while (!agej.b(((StructMsgForImageShare)paramView).mMsgActionData));
+          agej.a(this.a, (StructMsgForImageShare)paramView);
+          localObject2 = agej.b(((StructMsgForImageShare)paramView).mMsgActionData);
+        } while ((localObject2 == null) || (localObject2.length <= 2));
+        paramView = "";
+        Object localObject1 = Uri.parse(localObject2[1]);
+        try
         {
-          ((Bundle)localObject).putString("image_url_remote", paramView.url);
-          ((Bundle)localObject).putString("detail_url", paramView.iconUrl);
-          ((Bundle)localObject).putString("title", paramView.title);
-          ((Bundle)localObject).putString("desc", paramView.title);
-          ((Bundle)localObject).putString("req_create_time", paramView.timeSecond);
+          localObject1 = ((Uri)localObject1).getQueryParameter("article_id");
+          paramView = (View)localObject1;
         }
-        paramView = axva.a((Bundle)localObject);
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("forward_type", -3);
-        ((Intent)localObject).putExtra("stuctmsg_bytes", paramView.getBytes());
-        aqbe.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+          }
+        }
+        localObject1 = paramView;
+        if (paramView == null) {
+          localObject1 = "";
+        }
+        paramView = "";
+        if (localObject2.length > 3)
+        {
+          localObject2 = localObject2[3];
+          if (localObject2 != null)
+          {
+            paramView = (View)localObject2;
+            if (((String)localObject2).equals("1")) {}
+          }
+          else
+          {
+            paramView = "";
+          }
+        }
+        nrt.a(null, "", "0X800712E", "0X800712E", 0, 0, (String)localObject1, paramView, "", "");
+        nrt.a("0X800712E", "", (String)localObject1, paramView, "", "");
         return;
-      }
-      catch (Exception paramView)
-      {
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("LinkMessageSearchDialog", 2, "OnClickListener, setMessageItems");
-      }
-      this.a.c = false;
-      ageg.a(this.a).setVisibility(8);
-      ageg.a(this.a, 0, null);
-      this.a.jdField_a_of_type_Agbo.a(ageg.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_Agbo.notifyDataSetChanged();
-      this.a.b = 1;
+        if (paramView != this.a.b) {
+          break;
+        }
+        paramView = paramView.getTag();
+      } while (!(paramView instanceof StructMsgForImageShare));
+      this.a.c((StructMsgForImageShare)paramView, "5");
       return;
+    } while (paramView != this.a.c);
+    paramView = paramView.getTag();
+    if ((paramView instanceof StructMsgForImageShare)) {
+      paramView = (StructMsgForImageShare)paramView;
     }
+    this.a.c(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agek
  * JD-Core Version:    0.7.0.1
  */

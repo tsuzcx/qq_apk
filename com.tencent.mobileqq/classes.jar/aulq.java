@@ -1,58 +1,26 @@
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aulq
 {
-  private ConcurrentHashMap<String, Boolean> a;
-  public boolean a;
-  
-  public aulq()
+  public static void a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    QQToast.a(paramContext, paramContext.getString(2131719309), 0).a();
   }
   
-  public void a(String paramString)
+  public static void b(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
+    QQToast.a(paramContext, paramContext.getString(2131719304), 0).a();
   }
   
-  public void a(String[] paramArrayOfString)
+  public static void c(Context paramContext)
   {
-    if (paramArrayOfString == null) {
-      return;
-    }
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramArrayOfString[i];
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Boolean.valueOf(true));
-      i += 1;
-    }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-  }
-  
-  public String[] a()
-  {
-    Set localSet = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet();
-    String[] arrayOfString = new String[localSet.size()];
-    localSet.toArray(arrayOfString);
-    return arrayOfString;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    QQToast.a(paramContext, paramContext.getString(2131719321), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aulq
  * JD-Core Version:    0.7.0.1
  */

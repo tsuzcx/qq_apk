@@ -1,41 +1,58 @@
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
+import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
 
-final class avds
-  extends ayxp
+public class avds
+  implements GestureDetector.OnDoubleTapListener
 {
-  avds(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
-  {
-    super(paramQQAppInterface, paramString1);
-  }
+  avds(avcw paramavcw) {}
   
-  protected void realCancel()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "ctrl realCancel");
-  }
-  
-  protected void realStart()
-  {
-    QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes adid" + this.jdField_a_of_type_JavaLangString);
-    avdu.a(this.b + ".splashtemp");
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("qbossSplashresAppid", this.jdField_a_of_type_JavaLangString);
-    avdr.a("qbossSplashrequest", (HashMap)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("QSplash@QbossSplashDownloadManager", 2, "qboss_ad_res_png realStart, key  " + this.jdField_a_of_type_JavaLangString + "_" + this.b);
+    if (System.currentTimeMillis() - avcw.a(this.a) >= 500L)
+    {
+      int i = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
+        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369410)).a(i, j);
+      }
+      if (!avcw.a(this.a)) {
+        break label98;
+      }
     }
-    localObject = new ayrx();
-    ((ayrx)localObject).jdField_a_of_type_Aysc = new avdt(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b + ".splashtemp", this.c, this.d);
-    ((ayrx)localObject).jdField_a_of_type_JavaLangString = this.d;
-    ((ayrx)localObject).jdField_a_of_type_Int = 0;
-    ((ayrx)localObject).c = (this.b + ".splashtemp");
-    ((aytb)this.app.getNetEngine(0)).a((aysy)localObject);
+    for (;;)
+    {
+      avcw.a(this.a, System.currentTimeMillis());
+      return true;
+      label98:
+      if ((!avcw.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369410).getVisibility() == 0))
+      {
+        avcw.a(this.a, false);
+        this.a.c(null);
+        new auzx().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (auqc)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
+      }
+    }
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avds
  * JD-Core Version:    0.7.0.1
  */

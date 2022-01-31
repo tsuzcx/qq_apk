@@ -18,14 +18,14 @@ class UnlimitedBladeWorks$7
     do
     {
       return;
-      localView = ((ViewGroup)this.a.getWindow().getDecorView()).getChildAt(0).findViewById(2131362188);
+      localView = ((ViewGroup)this.a.getWindow().getDecorView()).getChildAt(0).findViewById(2131362208);
     } while (localView == null);
     localView.clearAnimation();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.7
  * JD-Core Version:    0.7.0.1
  */

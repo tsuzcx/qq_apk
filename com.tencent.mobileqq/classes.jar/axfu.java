@@ -1,47 +1,54 @@
-import android.media.Image;
-import android.media.Image.Plane;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
-import java.nio.ByteBuffer;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 
 public class axfu
-  implements ImageReader.OnImageAvailableListener
 {
-  public axfu(Camera2Control paramCamera2Control) {}
+  public float a;
+  public int a;
+  public long a;
+  public Bitmap a;
+  public boolean a;
+  public float b;
+  public int b;
+  public long b;
+  public float c;
+  public float d = 1.0F;
   
-  public void onImageAvailable(ImageReader paramImageReader)
+  public axfu()
   {
-    try
-    {
-      axgf.a(1, "[Camera2]Image Capture cost:" + (float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
-      axge.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
-      paramImageReader = paramImageReader.acquireNextImage();
-      if (paramImageReader != null)
-      {
-        ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
-        byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
-        localByteBuffer.get(arrayOfByte);
-        if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
-        {
-          Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
-          Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
-        }
-        paramImageReader.close();
-      }
+    this.jdField_a_of_type_Int = 255;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint, Matrix paramMatrix)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
       return;
     }
-    catch (Exception paramImageReader)
-    {
-      axgf.a(1, "[Camera2] onImageAvailable mImageReader exception:" + paramImageReader);
+    int i = (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.d);
+    int j = (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.d);
+    Matrix localMatrix = paramMatrix;
+    if (paramMatrix == null) {
+      localMatrix = new Matrix();
     }
+    paramPaint.setAlpha(this.jdField_a_of_type_Int);
+    localMatrix.reset();
+    localMatrix.setScale(this.d, this.d);
+    localMatrix.postRotate(this.c, i / 2, j / 2);
+    localMatrix.postTranslate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localMatrix, paramPaint);
+  }
+  
+  public String toString()
+  {
+    return " mDx = " + this.jdField_a_of_type_Float + " mDy = " + this.jdField_b_of_type_Float + " mScale = " + this.d + " mRotation = " + this.c + " mDuration = " + this.jdField_b_of_type_Long + " mAlpha = " + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axfu
  * JD-Core Version:    0.7.0.1
  */

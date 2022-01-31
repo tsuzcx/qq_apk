@@ -1,39 +1,26 @@
-import com.tencent.open.model.AppInfo;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdno
-  implements ajte
+class bdno
+  extends apnt
 {
-  protected void a(boolean paramBoolean, List<AppInfo> paramList) {}
+  bdno(bdnm parambdnm) {}
   
-  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (paramBoolean)
-      {
-        a(paramBoolean, (List)paramObject, null);
-        return;
-      }
-      a(paramBoolean, null, (String)paramObject);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNick", 2, "emotion onJsonComplete id = " + paramEmoticonPackage.epId + " resultCode = " + paramInt);
     }
-    if (paramBoolean)
-    {
-      a(paramBoolean, (List)paramObject);
-      return;
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(257);
     }
-    a(paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdno
  * JD-Core Version:    0.7.0.1
  */

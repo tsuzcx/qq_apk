@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import java.lang.ref.WeakReference;
 
-public class aahv
-  implements ajte
+class aahv
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<AddFriendVerifyActivity> jdField_a_of_type_MqqUtilWeakReference;
+  aahv(aahu paramaahu, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
   
-  public aahv(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAddFriendVerifyActivity);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    AddFriendVerifyActivity localAddFriendVerifyActivity = (AddFriendVerifyActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localAddFriendVerifyActivity != null) && (!localAddFriendVerifyActivity.isFinishing()))
-    {
-      localAddFriendVerifyActivity.a(paramInt, paramBoolean, paramObject, this.jdField_a_of_type_Int);
-      return;
-    }
-    QLog.e("AddFriendVerifyActivity", 1, "onUpdate: activity is null, type=" + paramInt);
+    aanp.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahv
  * JD-Core Version:    0.7.0.1
  */

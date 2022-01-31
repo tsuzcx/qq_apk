@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.proxy.engine;
 
-import belq;
-import betc;
+import bglg;
 import com.tencent.qqmini.sdk.core.plugins.IJsPlugin;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,7 +31,7 @@ public class ProxyServiceEngine
     String str = (String)this.mProxyServicesMap.get(paramString);
     if (str == null)
     {
-      betc.c("ProxyServiceEngine", "Can NOT find service class by proxy name: " + paramString);
+      QMLog.w("ProxyServiceEngine", "Can NOT find service class by proxy name: " + paramString);
       return null;
     }
     Object localObject = this.mActivatedServices.get(str);
@@ -44,15 +44,15 @@ public class ProxyServiceEngine
     {
       try
       {
-        paramString = belq.a(str);
+        paramString = bglg.a(str);
         if (paramString == null)
         {
-          betc.d("ProxyServiceEngine", "Failed to create the service object of " + str);
+          QMLog.e("ProxyServiceEngine", "Failed to create the service object of " + str);
           return paramString;
         }
       }
       finally {}
-      betc.b("ProxyServiceEngine", "Create a new proxy service object of " + str);
+      QMLog.i("ProxyServiceEngine", "Create a new proxy service object of " + str);
       this.mActivatedServices.put(str, paramString);
     }
   }
@@ -63,7 +63,7 @@ public class ProxyServiceEngine
     for (;;)
     {
       return;
-      betc.b("ProxyServiceEngine", "injectPluginService " + paramMap.values() + " to plugin " + paramIJsPlugin);
+      QMLog.i("ProxyServiceEngine", "injectPluginService " + paramMap.values() + " to plugin " + paramIJsPlugin);
       Iterator localIterator = paramMap.keySet().iterator();
       while (localIterator.hasNext())
       {
@@ -91,7 +91,7 @@ public class ProxyServiceEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.engine.ProxyServiceEngine
  * JD-Core Version:    0.7.0.1
  */

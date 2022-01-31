@@ -1,23 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class vxe
-  implements View.OnClickListener
+public final class vxe
+  extends QQUIEventReceiver<vwo, wku>
 {
-  vxe(vxd paramvxd, TroopStoryItemInfo paramTroopStoryItemInfo) {}
-  
-  public void onClick(View paramView)
+  public vxe(@NonNull vwo paramvwo)
   {
-    paramView = ((tcw)tcz.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
-    if (paramView != null) {
-      ((svl)tcz.a().b(3)).a(paramView);
+    super(paramvwo);
+  }
+  
+  public void a(@NonNull vwo paramvwo, @NonNull wku paramwku)
+  {
+    if ((paramwku.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwku.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramvwo.a != null) && (TextUtils.equals(paramwku.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramvwo.a.b)))
+    {
+      wsv.a(paramvwo.b, "refresh feed item , feed id :%s", paramvwo.a.b);
+      paramvwo.i();
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wku.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxe
  * JD-Core Version:    0.7.0.1
  */

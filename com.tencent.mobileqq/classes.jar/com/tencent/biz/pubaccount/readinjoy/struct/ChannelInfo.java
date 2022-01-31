@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import auko;
+import awbv;
 
 public class ChannelInfo
-  extends auko
+  extends awbv
   implements Cloneable
 {
   public static final int GIF_CHANNEL_TYPE = 4;
@@ -59,7 +59,7 @@ public class ChannelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,10 @@
-import android.content.Context;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
-
-public final class biat
-  extends bhmt<QzoneHuangzuanVipIconShow, Context>
+public abstract interface biat
 {
-  protected QzoneHuangzuanVipIconShow a(Context paramContext)
-  {
-    return new QzoneHuangzuanVipIconShow(paramContext);
-  }
+  public abstract boolean a(float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biat
  * JD-Core Version:    0.7.0.1
  */

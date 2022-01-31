@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ahaa;
+import aitx;
 import android.text.Editable;
 import android.widget.EditText;
 
 class EmojiFragment$1
-  extends ahaa
+  extends aitx
 {
   EmojiFragment$1(EmojiFragment paramEmojiFragment) {}
   
@@ -18,7 +18,7 @@ class EmojiFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiFragment.1
  * JD-Core Version:    0.7.0.1
  */

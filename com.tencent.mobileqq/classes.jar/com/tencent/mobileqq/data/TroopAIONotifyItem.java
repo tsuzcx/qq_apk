@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
 import android.text.format.DateFormat;
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class TroopAIONotifyItem
-  extends auko
+  extends awbv
 {
   public static final int HIDE_AFTER_CLICK = 2;
   public static final int HIDE_AFTER_SHOW = 1;
@@ -15,7 +15,7 @@ public class TroopAIONotifyItem
   public long expireTime;
   public int hideMode;
   public String icon;
-  @aumc
+  @awdj
   public String id;
   public String summary;
   public String title;
@@ -51,7 +51,7 @@ public class TroopAIONotifyItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopAIONotifyItem
  * JD-Core Version:    0.7.0.1
  */

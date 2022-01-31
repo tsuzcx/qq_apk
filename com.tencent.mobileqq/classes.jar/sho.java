@@ -1,19 +1,20 @@
-import android.os.Bundle;
+import android.graphics.RectF;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView;
 
-class sho
-  implements wxt
+public class sho
+  implements shr
 {
-  sho(shn paramshn, shm paramshm) {}
+  public sho(UCropView paramUCropView) {}
   
-  public void a(Bundle paramBundle)
+  public void a(RectF paramRectF)
   {
-    boolean bool = paramBundle.getBoolean("isSuccess");
-    shh.a(this.jdField_a_of_type_Shn.a, this.jdField_a_of_type_Shm.a, bool);
+    UCropView.a(this.a).setCropRect(paramRectF);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sho
  * JD-Core Version:    0.7.0.1
  */

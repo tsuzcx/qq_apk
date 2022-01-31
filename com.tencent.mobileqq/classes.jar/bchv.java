@@ -1,20 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
 
-public abstract interface bchv
-  extends bccw
+public class bchv
 {
-  public abstract void a(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
-  
-  public abstract boolean c();
-  
-  public abstract String d();
-  
-  public abstract String e();
+  public int a;
+  public AudioInfo a;
+  public TroopBarPOI a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public String b;
+  public ArrayList<TroopBarPOI> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bchv
  * JD-Core Version:    0.7.0.1
  */

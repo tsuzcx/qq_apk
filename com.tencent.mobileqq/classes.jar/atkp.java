@@ -1,22 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.io.File;
+import java.util.Comparator;
 
 final class atkp
-  implements TVK_ICacheMgr.IPreloadCallback
+  implements Comparator<File>
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public int a(File paramFile1, File paramFile2)
   {
-    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
+    if (paramFile1.lastModified() < paramFile2.lastModified()) {
+      return -1;
+    }
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,25 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ProgressBar;
+import com.tencent.qqmini.sdk.launcher.AppUIProxy.LoadingUI;
 
-final class bgqe
-  implements View.OnClickListener
+public class bgqe
+  implements Animation.AnimationListener
 {
-  bgqe(Dialog paramDialog) {}
+  public bgqe(AppUIProxy.LoadingUI paramLoadingUI) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
+    AppUIProxy.LoadingUI.a(this.a).setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgqe
  * JD-Core Version:    0.7.0.1
  */

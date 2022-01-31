@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acqf
-  implements bcsc
+  implements View.OnClickListener
 {
-  public acqf(VisitorsActivity paramVisitorsActivity) {}
+  public acqf(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a.a(paramInt2);
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqf
  * JD-Core Version:    0.7.0.1
  */

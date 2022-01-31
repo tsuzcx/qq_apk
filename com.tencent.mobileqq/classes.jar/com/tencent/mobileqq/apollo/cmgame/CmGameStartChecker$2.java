@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.cmgame;
 
-import aiwg;
-import ajac;
-import ajce;
-import ajms;
+import akns;
+import akro;
+import aktq;
+import alef;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bbdh;
+import bdcb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -44,13 +44,13 @@ class CmGameStartChecker$2
         localObject1 = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject1).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject1).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject1).mqqver.set("8.3.0");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject1).mqqver.set("8.3.3");
         localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject1);
         localJSONObject = new JSONObject();
         if (CmGameStartChecker.a(this.this$0).gameId == 4698)
         {
-          localObject1 = ajce.a(CmGameStartChecker.a(this.this$0).isWhiteUsr);
+          localObject1 = aktq.a(CmGameStartChecker.a(this.this$0).isWhiteUsr);
           localJSONObject.put("cmd", localObject1);
           if (!TextUtils.isEmpty(CmGameStartChecker.a(this.this$0).from)) {
             break label842;
@@ -99,7 +99,7 @@ class CmGameStartChecker$2
         }
         try
         {
-          bool = new File(ajms.s + CmGameStartChecker.a(this.this$0).gameId + ".zip").exists();
+          bool = new File(alef.s + CmGameStartChecker.a(this.this$0).gameId + ".zip").exists();
           if (bool) {
             continue;
           }
@@ -123,18 +123,18 @@ class CmGameStartChecker$2
         localJSONObject.put("skey", localObject2);
       }
       this.this$0.b = System.currentTimeMillis();
-      j = ajac.b(CmGameStartChecker.a(this.this$0).gameId);
+      j = akro.b(CmGameStartChecker.a(this.this$0).gameId);
       localJSONObject.put("pkgMode", j);
-      localJSONObject.put("pModel", bbdh.i());
+      localJSONObject.put("pModel", bdcb.i());
       localUniSsoServerReq.reqdata.set(localJSONObject.toString());
-      localObject2 = new NewIntent(localAppInterface.getApp(), aiwg.class);
+      localObject2 = new NewIntent(localAppInterface.getApp(), akns.class);
       ((NewIntent)localObject2).putExtra("key1", String.valueOf(this.a));
       ((NewIntent)localObject2).putExtra("cmd", (String)localObject1);
       ((NewIntent)localObject2).putExtra("data", localUniSsoServerReq.toByteArray());
       ((NewIntent)localObject2).putExtra("timeout", 5000L);
       ((NewIntent)localObject2).setObserver(this.this$0);
       localAppInterface.startServlet((NewIntent)localObject2);
-      ajac.a(new Object[] { "[checkGame], checkGameWay:", Integer.valueOf(this.a), ", localVersion:", Integer.valueOf(i), ", rscType:", Integer.valueOf(j) });
+      akro.a(new Object[] { "[checkGame], checkGameWay:", Integer.valueOf(this.a), ", localVersion:", Integer.valueOf(i), ", rscType:", Integer.valueOf(j) });
       QLog.i("cmgame_process.CmGameStartChecker", 1, "[checkGame] req gameId:" + CmGameStartChecker.a(this.this$0).gameId + ",checkGameWay:" + this.a + ",ver:" + i + ",src:" + CmGameStartChecker.a(this.this$0).src + ",rscType:" + j);
       return;
       str1 = "apollo_aio_game.check_game_v2";
@@ -148,7 +148,7 @@ class CmGameStartChecker$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.2
  * JD-Core Version:    0.7.0.1
  */

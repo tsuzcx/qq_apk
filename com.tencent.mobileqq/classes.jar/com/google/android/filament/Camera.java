@@ -1,8 +1,8 @@
 package com.google.android.filament;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.Size;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.Size;
 
 public class Camera
 {
@@ -196,7 +196,7 @@ public class Camera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.Camera
  * JD-Core Version:    0.7.0.1
  */

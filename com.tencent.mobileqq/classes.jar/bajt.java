@@ -1,312 +1,149 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Handler;
-import android.os.Looper;
+import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileError.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.4;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.MobileQQ;
 
 public class bajt
+  extends bajx
 {
-  public static WeakReference<bajx> a = new WeakReference(null);
+  private static bajt jdField_a_of_type_Bajt;
+  private int jdField_a_of_type_Int;
+  alkr jdField_a_of_type_Alkr = new bajv(this);
+  private View jdField_a_of_type_AndroidViewView;
+  azia jdField_a_of_type_Azia = new baju(this);
+  private bdpj jdField_a_of_type_Bdpj = new bajw(this);
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private boolean c;
   
-  private static String a(QQAppInterface paramQQAppInterface, int paramInt)
+  public static bajt a()
   {
-    return paramQQAppInterface.getApplication().getResources().getString(paramInt);
-  }
-  
-  private static String a(QQAppInterface paramQQAppInterface, int paramInt, Object... paramVarArgs)
-  {
-    return String.format(a(paramQQAppInterface, paramInt), paramVarArgs);
-  }
-  
-  private static void a(Context paramContext, long paramLong)
-  {
-    baju localbaju = new baju(paramLong);
-    bbdj.a(paramContext, 230, paramContext.getResources().getString(2131697861), paramContext.getResources().getString(2131697862), 2131697914, 2131697550, localbaju, localbaju).show();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, 0);
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    int i;
+    if (jdField_a_of_type_Bajt == null) {}
     try
     {
-      i = paramContext.getResources().getDimensionPixelSize(2131298865);
-      if (Looper.getMainLooper() != Looper.myLooper())
+      if (jdField_a_of_type_Bajt == null)
       {
-        new Handler(Looper.getMainLooper()).post(new TroopFileError.1(paramContext, paramInt, paramString, i));
-        return;
+        jdField_a_of_type_Bajt = new bajt();
+        ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(jdField_a_of_type_Bajt.jdField_a_of_type_Alkr);
+        ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(jdField_a_of_type_Bajt.jdField_a_of_type_Azia);
       }
+      return jdField_a_of_type_Bajt;
     }
-    catch (Exception paramContext)
-    {
-      QLog.e("TroopFileError", 1, "showTipsToast error!", paramContext);
-      return;
-    }
-    bcql.a(paramContext, paramInt, paramString, 0).b(i);
+    finally {}
   }
   
-  public static void a(bajv parambajv, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext)
+  public void a()
   {
-    if ((parambajv == null) || (paramContext == null)) {
-      return;
+    bdpx localbdpx = (bdpx)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a(71);
+    if (localbdpx != null) {
+      localbdpx.f();
     }
-    if (!TextUtils.isEmpty(parambajv.jdField_b_of_type_JavaLangString))
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt > 0)
     {
-      a(paramContext, parambajv.jdField_b_of_type_JavaLangString, 1);
-      return;
+      this.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_Boolean = true;
+      bdsc.a.download(null, this.jdField_b_of_type_Int, this.jdField_a_of_type_Bdpj, false);
     }
-    String str = bakx.a(parambajv.jdField_a_of_type_JavaLangString);
-    int i;
-    switch (parambajv.jdField_a_of_type_Int)
+    do
     {
-    default: 
-      str = null;
-      i = 0;
+      return;
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_Boolean = false;
+      a(null);
+    } while (this.jdField_a_of_type_AndroidViewView == null);
+    ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.4(this));
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(View paramView, String paramString, int paramInt)
+  {
+    if ((paramView == null) || (azib.b())) {}
+    do
+    {
+      return;
+      a();
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_b_of_type_JavaLangString = paramString;
+      if (this.jdField_a_of_type_Boolean) {
+        b(paramView);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("FloatViewSkin", 2, "enter uin:" + this.jdField_b_of_type_JavaLangString + "  type:" + this.jdField_a_of_type_Int + " mIsUserSkin:" + this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    BaseApplicationImpl.sImageCache.evictAll();
+    if (TextUtils.isEmpty(paramString))
+    {
+      a(paramString);
+      this.jdField_a_of_type_Boolean = false;
     }
     for (;;)
     {
-      if ((parambajv.jdField_a_of_type_Int != 602) && (parambajv.jdField_a_of_type_Int != 604) && (parambajv.jdField_a_of_type_Int != 605)) {
-        break label1264;
-      }
-      if (BaseActivity.sTopActivity == null) {
-        break;
-      }
-      bidv.a(paramQQAppInterface, BaseActivity.sTopActivity, BaseActivity.sTopActivity.getTitleBarHeight());
+      b(this.jdField_a_of_type_AndroidViewView);
       return;
-      str = a(paramQQAppInterface, 2131697938);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697863);
-      i = 0;
-      continue;
-      a(paramContext, paramLong);
-      str = null;
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698028, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698026, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698027);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698025);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131698029);
-      i = 2;
-      continue;
-      str = a(paramQQAppInterface, 2131697566, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697564);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697565);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131698021);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131698049);
-      axqy.b(paramQQAppInterface, "P_CliOper", "Grp_files", "", "power", "nopower_upload", 0, 0, String.format("%d", new Object[] { Long.valueOf(paramLong) }), "2", "", "");
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698047, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698042, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697985, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698044, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698043, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697938);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697622);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697623);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697583);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697579);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697581, new Object[] { str });
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697582, new Object[] { str });
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697580, new Object[] { str });
-      i = 0;
-      continue;
-      if (azpj.a(parambajv.jdField_b_of_type_Int))
-      {
-        str = a(paramQQAppInterface, 2131698041, new Object[] { str });
-        i = 1;
-      }
-      else
-      {
-        str = a(paramQQAppInterface, 2131697578, new Object[] { str });
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131698021);
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131697636);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697637);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697640);
-        i = 2;
-        continue;
-        str = a(paramQQAppInterface, 2131697641);
-        i = 1;
-        continue;
-        str = parambajv.jdField_b_of_type_JavaLangString;
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697642);
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131697644);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697643);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697645);
-        i = 1;
-        continue;
-        if (!TextUtils.isEmpty(parambajv.jdField_b_of_type_JavaLangString))
-        {
-          str = parambajv.jdField_b_of_type_JavaLangString;
-          i = 0;
-        }
-        else
-        {
-          str = a(paramQQAppInterface, 2131697646);
-          i = 0;
-          continue;
-          str = a(paramQQAppInterface, 2131697639);
-          i = 2;
-          continue;
-          str = a(paramQQAppInterface, 2131697638);
-          i = 0;
-        }
-      }
+      a(paramString);
+      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
     }
-    label1264:
-    if ((parambajv.jdField_a_of_type_Int == 601) || (parambajv.jdField_a_of_type_Int == 605) || (parambajv.jdField_a_of_type_Int == 802) || (parambajv.jdField_a_of_type_Int == 604) || (parambajv.jdField_a_of_type_Int == 702))
-    {
-      a(paramQQAppInterface, paramContext, str, i);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Int > 0;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      b(this.jdField_a_of_type_AndroidViewView);
+    }
+    this.jdField_a_of_type_AndroidViewView = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("FloatViewSkin", 2, "leave uin:" + this.jdField_b_of_type_JavaLangString + "  type:" + this.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void b(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FloatViewSkin", 2, "setMusicBarSkin uin:" + this.jdField_b_of_type_JavaLangString + "  type:" + this.jdField_a_of_type_Int + " mIsUserSkin:" + this.jdField_a_of_type_Boolean);
+    }
+    QLog.i("FloatViewSkin", 1, "setMusicBarSkin mIsShowSkin:" + this.c + "  mIsUserSkin:" + this.jdField_a_of_type_Boolean);
+    if ((paramView == null) || (!this.c)) {
       return;
     }
-    a(paramContext, str, i);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
-  {
-    a(paramQQAppInterface, paramLong, 7, paramInt);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
-  {
-    a(paramQQAppInterface, paramLong, null, paramInt1, paramInt2);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramQQAppInterface == null) || (paramInt2 == 0)) {}
-    do
+    if (azib.b()) {}
+    for (this.jdField_b_of_type_Boolean = false;; this.jdField_b_of_type_Boolean = true)
     {
+      paramView = paramView.getRootView();
+      a(paramView, 2131370886, 2130844330, "qq_aio_listentogether_lyrics_music_point@3x.png");
+      b(paramView, 2131370856, 2130844327, "qq_aio_listentogether_lyrics_music_bg@3x.png");
+      b(paramView, 2131370892, 2130844329, "qq_aio_listentogether_lyrics_music_dot@3x.png");
+      b(paramView, 2131364341, 2130844328, "qq_aio_listentogether_lyrics_music_close@3x.png");
       return;
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder("reportSimpleError==> troopUin:");
-        localStringBuilder.append(paramLong).append(",filename:").append(paramString).append(",status:").append(paramInt1).append(",errorCode:").append(paramInt2);
-        QLog.e("TroopFileError", 2, localStringBuilder.toString());
-      }
-      paramQQAppInterface = (ajsx)paramQQAppInterface.a(22);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.b(new bajv(paramString, paramLong, paramInt1, paramInt2));
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
-  {
-    if (bicz.a())
-    {
-      if (bicz.b()) {
-        bicz.a(paramQQAppInterface);
-      }
-    }
-    else {
-      return;
-    }
-    a(paramContext, paramString, paramInt);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, bajv parambajv)
-  {
-    if ((paramQQAppInterface == null) || (parambajv == null) || (parambajv.jdField_a_of_type_Int == 0)) {}
-    do
-    {
-      return;
-      paramQQAppInterface = (ajsx)paramQQAppInterface.a(22);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.b(parambajv);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, bajx parambajx)
-  {
-    if ((a != null) && (a.get() != null))
-    {
-      paramQQAppInterface.removeObserver((ajte)a.get());
-      a = null;
-    }
-    a = new WeakReference(parambajx);
-    paramQQAppInterface.addObserver(parambajx);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, bajx parambajx)
-  {
-    paramQQAppInterface.removeObserver(parambajx);
-    if ((a != null) && (a.get() == parambajx)) {
-      a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bajt
  * JD-Core Version:    0.7.0.1
  */

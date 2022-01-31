@@ -1,23 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public class bdco
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public bdco(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdco
  * JD-Core Version:    0.7.0.1
  */

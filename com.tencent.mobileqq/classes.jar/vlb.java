@@ -1,20 +1,29 @@
-import android.graphics.PointF;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface vlb
+public class vlb
 {
-  public abstract void a();
+  public ErrorMessage a;
+  public List<vle> a;
+  public boolean a;
+  public ErrorMessage b;
+  public boolean b;
+  public boolean c;
   
-  public abstract void a(float paramFloat);
+  public vlb()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
   
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
-  
-  public abstract boolean a(vlc paramvlc);
-  
-  public abstract void b();
+  public String toString()
+  {
+    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vlb
  * JD-Core Version:    0.7.0.1
  */

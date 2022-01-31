@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-
-public final class alea
-  implements Parcelable.Creator<ArEffectConfig>
+public abstract interface alea
 {
-  public ArEffectConfig a(Parcel paramParcel)
-  {
-    return new ArEffectConfig(paramParcel);
-  }
-  
-  public ArEffectConfig[] a(int paramInt)
-  {
-    return new ArEffectConfig[paramInt];
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alea
  * JD-Core Version:    0.7.0.1
  */

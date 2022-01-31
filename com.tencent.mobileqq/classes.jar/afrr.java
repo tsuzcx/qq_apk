@@ -1,33 +1,15 @@
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import java.util.Map;
+import android.widget.TextView;
 
-public class afrr
-  extends ajxj
+class afrr
+  extends aekx
 {
-  public afrr(TroopFragment paramTroopFragment) {}
+  TextView b;
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.h();
-    }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.h();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
-  }
+  afrr(afrq paramafrq) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afrr
  * JD-Core Version:    0.7.0.1
  */

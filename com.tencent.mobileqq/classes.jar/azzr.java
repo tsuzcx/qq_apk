@@ -1,47 +1,21 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class azzr
-  implements INetInfoHandler
+class azzr
+  implements View.OnClickListener
 {
-  public azzr(ReciteRecordLayout paramReciteRecordLayout) {}
+  azzr(azzp paramazzp, azzb paramazzb, azyx paramazyx, String paramString) {}
   
-  public void onNetMobile2None()
+  public void onClick(View paramView)
   {
-    this.a.b.cancel();
-    this.a.b.start();
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.b.cancel();
-    this.a.b.start();
+    if (azzp.a(this.jdField_a_of_type_Azzp) != null) {
+      azzp.a(this.jdField_a_of_type_Azzp).a(this.jdField_a_of_type_Azzb, (azzc)this.jdField_a_of_type_Azyx, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azzr
  * JD-Core Version:    0.7.0.1
  */

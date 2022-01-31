@@ -1,27 +1,16 @@
-public final class aiar
-  implements aiau
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+
+class aiar
+  implements DialogInterface.OnCancelListener
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
-  }
+  aiar(aiap paramaiap) {}
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiar
  * JD-Core Version:    0.7.0.1
  */

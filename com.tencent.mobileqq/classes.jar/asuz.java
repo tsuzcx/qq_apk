@@ -1,80 +1,42 @@
 import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class asuz
-  extends auoo
+  extends WtloginListener
 {
-  asuz(asuw paramasuw, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString1, String paramString2) {}
+  asuz(asuy paramasuy, String paramString) {}
   
-  public void a(int paramInt, aunw paramaunw)
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    int i = 1;
+    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
     if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadRawImage id = " + this.jdField_a_of_type_Long + ", result = " + paramInt);
+      QLog.i("XProxy", 2, "获取Now结合版A1票据返回异常，cmd = " + paramInt + " errmsg = " + paramErrMsg.getMessage());
     }
-    asus localasus = this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_JavaLangString);
-    if ((localasus != null) && (!localasus.jdField_a_of_type_Boolean))
-    {
-      localasus.jdField_a_of_type_Int = paramInt;
-      if (paramInt != 0) {
-        break label226;
-      }
-      paramInt = 1;
-      localasus.jdField_a_of_type_Asur.jdField_a_of_type_Int = 1;
-      if (paramaunw == null) {
-        break label236;
-      }
-      localasus.jdField_a_of_type_Int = paramaunw.jdField_a_of_type_Int;
-      if ((paramaunw.jdField_a_of_type_Int != 0) && (paramaunw.jdField_a_of_type_Aunr != null))
-      {
-        localasus.jdField_b_of_type_Int = paramaunw.jdField_a_of_type_Aunr.jdField_a_of_type_Int;
-        localasus.jdField_a_of_type_JavaLangString = paramaunw.jdField_a_of_type_Aunr.jdField_b_of_type_JavaLangString;
-      }
-      if (paramaunw.jdField_a_of_type_Int != 0) {
-        break label231;
-      }
-      paramInt = i;
-    }
-    label152:
-    label226:
-    label231:
-    label236:
-    for (boolean bool = paramaunw.jdField_a_of_type_Boolean;; bool = false)
-    {
-      localasus.jdField_a_of_type_Asvj = new asvj(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_JavaLangString, bool);
-      this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_JavaLangString, localasus);
-      asuw.a(this.jdField_a_of_type_Asuw, localasus.jdField_a_of_type_Asur, 0, localasus.jdField_b_of_type_Int, localasus.jdField_a_of_type_JavaLangString);
-      return;
-      paramInt = 2;
-      break;
-      paramInt = 2;
-      break label152;
-    }
+    asuy.a(this.jdField_a_of_type_Asuy, this.jdField_a_of_type_JavaLangString, false, paramInt);
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    if (this.jdField_a_of_type_Asuw.a != null) {
-      this.jdField_a_of_type_Asuw.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
-    }
-    asus localasus = this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_JavaLangString);
-    if ((localasus != null) && (!localasus.jdField_a_of_type_Boolean))
+    if (paramInt2 == 0)
     {
-      if (asuw.a(this.jdField_a_of_type_Asuw)) {
-        asuw.a(this.jdField_a_of_type_Asuw, localasus.jdField_a_of_type_Asur, paramInt);
-      }
-    }
-    else {
+      this.jdField_a_of_type_Asuy.jdField_a_of_type_Asvb.a = this.jdField_a_of_type_Asuy.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
+      this.jdField_a_of_type_Asuy.jdField_a_of_type_Long = System.currentTimeMillis();
+      asuy.a(this.jdField_a_of_type_Asuy, this.jdField_a_of_type_JavaLangString, true, 0);
       return;
     }
-    paramInt /= 100;
-    localasus.c = paramInt;
-    this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_JavaLangString, localasus);
-    asuw.b(this.jdField_a_of_type_Asuw, localasus, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("XProxy", 2, "获取Now结合版A1票据返回失败，retCode = " + paramInt2);
+    }
+    asuy.a(this.jdField_a_of_type_Asuy, this.jdField_a_of_type_JavaLangString, false, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asuz
  * JD-Core Version:    0.7.0.1
  */

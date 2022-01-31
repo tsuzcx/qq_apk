@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
-import axqy;
-import azcb;
+import azmj;
+import bbaa;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -51,15 +51,15 @@ public class TribeVideoListPlayerFragment$TribeWebViewFragment
       QLog.d("TribeVideoListPlayerFragment", 2, "onReceivedError: errorCode=" + paramInt + "descrip=" + paramString1 + "failingUrl" + paramString2);
     }
     this.c = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0) instanceof azcb)) {
-      if (((azcb)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h == 0) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0) instanceof bbaa)) {
+      if (((bbaa)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h == 0) {
         break label161;
       }
     }
     label161:
-    for (paramWebView = "" + ((azcb)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h;; paramWebView = "")
+    for (paramWebView = "" + ((bbaa)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h;; paramWebView = "")
     {
-      axqy.b(null, "dc00899", "Grp_tribe", "", "video_player", "webview_fail", 0, 0, "", "", paramWebView, "");
+      azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "webview_fail", 0, 0, "", "", paramWebView, "");
       return;
     }
   }
@@ -116,7 +116,7 @@ public class TribeVideoListPlayerFragment$TribeWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.TribeWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

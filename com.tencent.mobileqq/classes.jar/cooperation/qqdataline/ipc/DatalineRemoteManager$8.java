@@ -2,9 +2,9 @@ package cooperation.qqdataline.ipc;
 
 import android.content.Context;
 import android.content.Intent;
-import apel;
-import apug;
-import bgpj;
+import aqxj;
+import arni;
+import biqi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -16,7 +16,7 @@ import mqq.app.MobileQQ;
 public class DatalineRemoteManager$8
   implements Runnable
 {
-  public DatalineRemoteManager$8(bgpj parambgpj, FileManagerEntity paramFileManagerEntity, ForwardFileInfo paramForwardFileInfo) {}
+  public DatalineRemoteManager$8(biqi parambiqi, FileManagerEntity paramFileManagerEntity, ForwardFileInfo paramForwardFileInfo) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class DatalineRemoteManager$8
     Object localObject;
     if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 1))
     {
-      if (!apug.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
+      if (!arni.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
         break label163;
       }
       localObject = new FileInfo();
@@ -34,7 +34,7 @@ public class DatalineRemoteManager$8
       ((FileInfo)localObject).e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a());
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localObject);
-      apel.a(localArrayList);
+      aqxj.a(localArrayList);
       localIntent.putExtra("clicked_file_hashcode", ((FileInfo)localObject).hashCode());
     }
     for (;;)
@@ -51,7 +51,7 @@ public class DatalineRemoteManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.8
  * JD-Core Version:    0.7.0.1
  */

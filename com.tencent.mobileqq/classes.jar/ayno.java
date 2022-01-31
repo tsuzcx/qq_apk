@@ -1,87 +1,51 @@
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class ayno
-  implements Cloneable
+class ayno
+  implements View.OnClickListener
 {
-  public long c;
-  public int d;
-  public long d;
-  public int e;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  @Nullable
-  public String g;
-  public int h;
-  public String h = "";
-  public int i;
-  public int j;
-  public int k = 0;
+  ayno(aynf paramaynf, Context paramContext, aykk paramaykk) {}
   
-  public ayno()
+  public void onClick(View paramView)
   {
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_f_of_type_JavaLangString = "";
-  }
-  
-  public int a()
-  {
-    return bfwr.b;
-  }
-  
-  public String a()
-  {
-    return "";
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "";
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return bbcz.p(paramQQAppInterface, paramString);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    return bbcz.h(paramQQAppInterface, paramString1, paramString2);
-  }
-  
-  public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
-  {
-    return "";
-  }
-  
-  public boolean a()
-  {
-    return ((this.jdField_e_of_type_Int == 2) || (this.jdField_e_of_type_Int == 1)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString));
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public String b(QQAppInterface paramQQAppInterface)
-  {
-    return "";
-  }
-  
-  public int d()
-  {
-    return 2131699608;
+    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    ayrd.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aykk.a.jdField_a_of_type_JavaLangString);
+    aydx localaydx;
+    JSONObject localJSONObject;
+    if (aydw.b.containsKey(this.jdField_a_of_type_Aykk))
+    {
+      localaydx = (aydx)aydw.b.get(this.jdField_a_of_type_Aykk);
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("project", aynt.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localaydx.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "web");
+      aynt.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localaydx.jdField_a_of_type_Long + "").obj2(localaydx.b).ver1(localaydx.jdField_a_of_type_JavaLangString).ver2(aynt.a(this.jdField_a_of_type_Aykk.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + aydw.jdField_a_of_type_Long));
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayno
  * JD-Core Version:    0.7.0.1
  */

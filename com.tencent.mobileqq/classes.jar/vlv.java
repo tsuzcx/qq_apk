@@ -1,28 +1,27 @@
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class vlv
-  extends vme
+  implements uni<vbi, vbj>
 {
-  vlv(vls paramvls, vlr paramvlr)
-  {
-    super(paramvlr);
-  }
+  vlv(vlu paramvlu, vlj paramvlj) {}
   
-  protected void a(@Nullable vlr arg1)
+  public void a(@NonNull vbi paramvbi, @Nullable vbj paramvbj, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.onResult(???);
-    ved.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    if ((paramErrorMessage.isFail()) || (paramvbj == null))
     {
-      this.a.jdField_a_of_type_Vlr = null;
-      this.a.c();
+      wsv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Vlj.a(paramErrorMessage, null, false);
       return;
     }
+    this.jdField_a_of_type_Vlu.a.a(paramvbj.jdField_a_of_type_JavaUtilList, paramvbj.jdField_a_of_type_JavaLangString, paramvbj.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Vlj.a(paramErrorMessage, vkr.b(paramvbj.jdField_a_of_type_JavaUtilList), paramvbj.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vlv
  * JD-Core Version:    0.7.0.1
  */

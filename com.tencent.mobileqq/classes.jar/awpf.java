@@ -1,42 +1,47 @@
-import com.tencent.TMG.utils.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class awpf
-  extends awor
+public final class awpf
+  implements appt
 {
-  public String a;
+  public awpf(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public awpf(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public void a(appw paramappw)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public awpf(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
+    if (paramappw != null) {}
     try
     {
-      this.a = new JSONObject(paramString).optString("title");
+      paramappw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
       return;
     }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(c, 0, paramString.toString());
-    }
+    catch (Throwable paramappw) {}
   }
+  
+  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
+  
+  public boolean a(appw paramappw)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    baiy.a(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void b(appw paramappw) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awpf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class FeedIdListEntry
-  extends auko
+  extends awbv
 {
-  @aumc
+  @awdj
   public String feedId;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.FeedIdListEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,21 @@
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class xbq
+final class xbq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public String a;
-  public List<xbr> a;
+  xbq(xbs paramxbs) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (this.a != null) {
+      this.a.a(paramValueAnimator);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.limitchat;
 
-import aoet;
+import apwv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 
@@ -11,15 +11,15 @@ public final class LimitChatUtil$2
   
   public void run()
   {
-    aoet localaoet = (aoet)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
-    if (localaoet != null) {
-      localaoet.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    apwv localapwv = (apwv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127);
+    if (localapwv != null) {
+      localapwv.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.limitchat.LimitChatUtil.2
  * JD-Core Version:    0.7.0.1
  */

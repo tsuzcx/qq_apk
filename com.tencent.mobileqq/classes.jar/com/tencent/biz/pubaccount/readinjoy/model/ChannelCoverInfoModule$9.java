@@ -6,13 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ozy;
-import qdg;
+import pfg;
+import qnc;
 
 public class ChannelCoverInfoModule$9
   implements Runnable
 {
-  public ChannelCoverInfoModule$9(ozy paramozy, List paramList1, List paramList2) {}
+  public ChannelCoverInfoModule$9(pfg parampfg, List paramList1, List paramList2) {}
   
   public void run()
   {
@@ -51,7 +51,7 @@ public class ChannelCoverInfoModule$9
         continue;
         if (QLog.isColorLevel())
         {
-          localObject = ozy.a(this.this$0);
+          localObject = pfg.a(this.this$0);
           if (localObject != null)
           {
             QLog.i("ChannelCoverInfoModule", 2, "now channels in db are:\n");
@@ -73,7 +73,7 @@ public class ChannelCoverInfoModule$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.9
  * JD-Core Version:    0.7.0.1
  */

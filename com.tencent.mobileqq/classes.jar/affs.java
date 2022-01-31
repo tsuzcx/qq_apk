@@ -1,46 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class affs
-  extends Handler
+class affs
+  extends aekx
 {
-  private WeakReference<PublicView> a;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View d;
   
-  public affs(PublicView paramPublicView)
-  {
-    this.a = new WeakReference(paramPublicView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    PublicView localPublicView = (PublicView)this.a.get();
-    if (localPublicView == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      return;
-    case 2: 
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      PublicView.a(localPublicView, 1, 2131719799);
-      return;
-    case 3: 
-      PublicView.a(localPublicView, true);
-      return;
-    }
-    PublicView.b(localPublicView);
-  }
+  affs(affr paramaffr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     affs
  * JD-Core Version:    0.7.0.1
  */

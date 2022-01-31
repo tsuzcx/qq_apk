@@ -1,20 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import com.tencent.qphone.base.util.QLog;
 
-public class aibh
-  implements ValueAnimator.AnimatorUpdateListener
+class aibh
+  extends amks
 {
-  public aibh(RotationSeekBar paramRotationSeekBar) {}
+  aibh(aiak paramaiak) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
+      this.a.g();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class bdbb
-  implements Comparator<Friend>
+final class bdbb
+  implements MediaPlayer.OnCompletionListener
 {
-  public bdbb(FriendChooser paramFriendChooser) {}
-  
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    return paramFriend1.g.compareToIgnoreCase(paramFriend2.g);
+    paramMediaPlayer.release();
+    bdaz.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdbb
  * JD-Core Version:    0.7.0.1
  */

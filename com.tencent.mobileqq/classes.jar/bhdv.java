@@ -1,83 +1,25 @@
-import cooperation.qzone.feed.CertifiedFakeFeed;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bhdv
+class bhdv
+  implements bgjk
 {
-  private CertifiedFakeFeed a = new CertifiedFakeFeed(null);
+  bhdv(bhdu parambhdu, MiniAppInfo paramMiniAppInfo) {}
   
-  public bhdv a(int paramInt)
+  public void a(bgjw parambgjw, int paramInt, String paramString)
   {
-    CertifiedFakeFeed.a(this.a, paramInt);
-    return this;
-  }
-  
-  public bhdv a(long paramLong)
-  {
-    CertifiedFakeFeed.a(this.a, paramLong);
-    return this;
-  }
-  
-  public bhdv a(String paramString)
-  {
-    CertifiedFakeFeed.a(this.a, paramString);
-    return this;
-  }
-  
-  public CertifiedFakeFeed a()
-  {
-    return this.a;
-  }
-  
-  public bhdv b(int paramInt)
-  {
-    CertifiedFakeFeed.b(this.a, paramInt);
-    return this;
-  }
-  
-  public bhdv b(String paramString)
-  {
-    CertifiedFakeFeed.b(this.a, paramString);
-    return this;
-  }
-  
-  public bhdv c(int paramInt)
-  {
-    CertifiedFakeFeed.c(this.a, paramInt);
-    return this;
-  }
-  
-  public bhdv c(String paramString)
-  {
-    CertifiedFakeFeed.c(this.a, paramString);
-    return this;
-  }
-  
-  public bhdv d(int paramInt)
-  {
-    CertifiedFakeFeed.d(this.a, paramInt);
-    return this;
-  }
-  
-  public bhdv d(String paramString)
-  {
-    CertifiedFakeFeed.d(this.a, paramString);
-    return this;
-  }
-  
-  public bhdv e(String paramString)
-  {
-    CertifiedFakeFeed.e(this.a, paramString);
-    return this;
-  }
-  
-  public bhdv f(String paramString)
-  {
-    CertifiedFakeFeed.f(this.a, paramString);
-    return this;
+    if ((paramInt == 0) && (parambgjw != null))
+    {
+      bhdu.a(this.jdField_a_of_type_Bhdu, parambgjw);
+      bhdu.a(this.jdField_a_of_type_Bhdu, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+      this.jdField_a_of_type_Bhdu.c();
+      return;
+    }
+    this.jdField_a_of_type_Bhdu.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhdv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,14 @@
-import android.view.View;
-import com.tencent.widget.ExpandableListView;
-
-public abstract interface bfrt
+public class bfrt
 {
-  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong);
+  public int a;
+  public String a;
+  public byte[] a;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfrt
  * JD-Core Version:    0.7.0.1
  */

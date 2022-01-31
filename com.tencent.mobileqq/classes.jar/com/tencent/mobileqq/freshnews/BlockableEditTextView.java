@@ -6,9 +6,9 @@ import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.ContextMenu;
 import android.widget.EditText;
-import aqjy;
-import aqjz;
-import aqka;
+import asdn;
+import asdo;
+import asdp;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class BlockableEditTextView
@@ -41,9 +41,9 @@ public class BlockableEditTextView
   {
     setEditableFactory(TroopBarPublishUtils.a);
     if (Build.VERSION.SDK_INT >= 11) {
-      setCustomSelectionActionModeCallback(new aqjy(this));
+      setCustomSelectionActionModeCallback(new asdn(this));
     }
-    addTextChangedListener(new aqjz(this));
+    addTextChangedListener(new asdo(this));
   }
   
   private boolean a()
@@ -53,11 +53,11 @@ public class BlockableEditTextView
     if (getEditableText() == null) {
       return false;
     }
-    aqka[] arrayOfaqka = (aqka[])getEditableText().getSpans(i, j, aqka.class);
-    if ((arrayOfaqka != null) && (arrayOfaqka.length > 0) && ((arrayOfaqka[0] instanceof aqka)))
+    asdp[] arrayOfasdp = (asdp[])getEditableText().getSpans(i, j, asdp.class);
+    if ((arrayOfasdp != null) && (arrayOfasdp.length > 0) && ((arrayOfasdp[0] instanceof asdp)))
     {
-      i = getEditableText().getSpanEnd(arrayOfaqka[0]);
-      j = getEditableText().getSpanStart(arrayOfaqka[0]);
+      i = getEditableText().getSpanEnd(arrayOfasdp[0]);
+      j = getEditableText().getSpanStart(arrayOfasdp[0]);
       if ((j >= 0) && (i > j)) {
         return false;
       }
@@ -84,14 +84,14 @@ public class BlockableEditTextView
       {
         do
         {
-          aqka[] arrayOfaqka;
+          asdp[] arrayOfasdp;
           do
           {
             return;
-            arrayOfaqka = (aqka[])getEditableText().getSpans(paramInt1, paramInt2, aqka.class);
-          } while ((arrayOfaqka == null) || (arrayOfaqka.length <= 0));
-          i = getEditableText().getSpanEnd(arrayOfaqka[0]);
-          j = getEditableText().getSpanStart(arrayOfaqka[0]);
+            arrayOfasdp = (asdp[])getEditableText().getSpans(paramInt1, paramInt2, asdp.class);
+          } while ((arrayOfasdp == null) || (arrayOfasdp.length <= 0));
+          i = getEditableText().getSpanEnd(arrayOfasdp[0]);
+          j = getEditableText().getSpanStart(arrayOfasdp[0]);
         } while ((i <= j) || (j < 0));
         if ((paramInt1 == j) && (paramInt2 == j) && (this.jdField_a_of_type_Boolean))
         {
@@ -130,7 +130,7 @@ public class BlockableEditTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.BlockableEditTextView
  * JD-Core Version:    0.7.0.1
  */

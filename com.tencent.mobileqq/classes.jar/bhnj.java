@@ -1,17 +1,29 @@
-final class bhnj
-  extends bhni
+import android.graphics.Point;
+import java.util.ArrayList;
+
+public final class bhnj
 {
-  public int a(String paramString, int paramInt)
+  ArrayList<Point> a;
+  
+  public int a()
   {
-    if ((paramString == null) || (paramString.length() == 0) || (paramInt < 1)) {
-      return -1;
+    return this.a.size();
+  }
+  
+  public int a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 > this.a.size() - 1) && (paramInt1 < 0)) {
+      return 0;
     }
-    return 0;
+    if (paramInt2 == 0) {
+      return ((Point)this.a.get(paramInt1)).x;
+    }
+    return ((Point)this.a.get(paramInt1)).y;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhnj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import com.tencent.qphone.base.util.QLog;
 
 class aqvj
-  implements DialogInterface.OnClickListener
+  extends aquk
 {
-  aqvj(aqvi paramaqvi) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqvj(aqug paramaqug)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable.a(2);
-    JefsClass.a(this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+    super(paramaqug);
+  }
+  
+  protected String a()
+  {
+    return "StateSenderCancelSendWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    aqug.b(this.jdField_a_of_type_Aqug, 11, 8);
+    aqug.c(this.jdField_a_of_type_Aqug, 11, 8);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateSenderCancelSend)");
+    this.jdField_a_of_type_Aquk = new aqvh(this.jdField_a_of_type_Aqug);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvj
  * JD-Core Version:    0.7.0.1
  */

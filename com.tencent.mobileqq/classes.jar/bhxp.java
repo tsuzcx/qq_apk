@@ -1,25 +1,16 @@
-import android.app.Activity;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Canvas;
 
-public class bhxp
-  implements QQPermissionCallback
+public abstract interface bhxp
 {
-  public bhxp(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
+  public abstract void a_(Canvas paramCanvas);
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbdj.b(this.jdField_a_of_type_AndroidAppActivity);
-  }
+  public abstract int getHeight();
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b(this.jdField_a_of_type_Int);
-  }
+  public abstract int getWidth();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhxp
  * JD-Core Version:    0.7.0.1
  */

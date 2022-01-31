@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 
 class MessageHandler$12
   implements Runnable

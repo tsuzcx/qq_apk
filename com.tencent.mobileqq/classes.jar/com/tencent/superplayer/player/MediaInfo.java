@@ -1,13 +1,13 @@
 package com.tencent.superplayer.player;
 
 import android.text.TextUtils;
-import com.tencent.superplayer.utils.SPlayerLogUtil;
+import com.tencent.superplayer.utils.LogUtil;
 import java.io.ByteArrayInputStream;
 import java.util.Properties;
 
 public class MediaInfo
 {
-  private static final String FILENAME = "FCCListenerManager.java";
+  private static final String FILENAME = "MediaInfo.java";
   private String TAG;
   private long audioBitRate;
   private String audioCodec;
@@ -28,12 +28,12 @@ public class MediaInfo
   
   public MediaInfo()
   {
-    this.TAG = "MediaPlayerMgr_FCCListenerManager.java";
+    this.TAG = "MediaPlayerMgr_MediaInfo.java";
   }
   
   public MediaInfo(String paramString)
   {
-    this.TAG = (paramString + "_" + "FCCListenerManager.java");
+    this.TAG = (paramString + "_" + "MediaInfo.java");
   }
   
   public static MediaInfo obtainMediaInfoFromString(String paramString1, String paramString2)
@@ -59,7 +59,7 @@ public class MediaInfo
     }
     catch (Exception paramString2)
     {
-      SPlayerLogUtil.e("MediaPlayerMgr", paramString2);
+      LogUtil.e("MediaPlayerMgr", paramString2);
     }
     return paramString1;
   }
@@ -258,7 +258,7 @@ public class MediaInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.superplayer.player.MediaInfo
  * JD-Core Version:    0.7.0.1
  */

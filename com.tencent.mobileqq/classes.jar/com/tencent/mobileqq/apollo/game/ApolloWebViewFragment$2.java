@@ -2,7 +2,7 @@ package com.tencent.mobileqq.apollo.game;
 
 import android.app.Activity;
 import android.view.View;
-import bcfx;
+import beey;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 class ApolloWebViewFragment$2
@@ -28,7 +28,7 @@ class ApolloWebViewFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloWebViewFragment.2
  * JD-Core Version:    0.7.0.1
  */

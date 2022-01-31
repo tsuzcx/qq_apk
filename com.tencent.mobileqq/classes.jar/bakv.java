@@ -1,55 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.effect.engine.QEffectData;
 
 public class bakv
+  implements OnCompositionLoadedListener
 {
-  public static bakv a;
-  public ajsy a;
-  public QQAppInterface a;
+  public bakv(QEffectLottieImageView paramQEffectLottieImageView) {}
   
-  public bakv()
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.jdField_a_of_type_Ajsy = new bakw(this);
-  }
-  
-  public static bakv a(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_a_of_type_Bakv == null) {
-      b(paramQQAppInterface);
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: composition= " + paramLottieComposition);
     }
-    for (;;)
+    if (paramLottieComposition == null) {
+      return;
+    }
+    if (QEffectLottieImageView.a(this.a))
     {
-      return jdField_a_of_type_Bakv;
-      if (jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
-      {
-        if (jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-          jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(jdField_a_of_type_Bakv.jdField_a_of_type_Ajsy);
-        }
-        jdField_a_of_type_Bakv = null;
-        b(paramQQAppInterface);
-      }
+      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
+      return;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((jdField_a_of_type_Bakv != null) && (jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == paramQQAppInterface))
-    {
-      paramQQAppInterface.removeObserver(jdField_a_of_type_Bakv.jdField_a_of_type_Ajsy);
-      jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-      jdField_a_of_type_Bakv = null;
-    }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface)
-  {
-    jdField_a_of_type_Bakv = new bakv();
-    jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.addObserver(jdField_a_of_type_Bakv.jdField_a_of_type_Ajsy);
+    this.a.cancelAnimation();
+    this.a.setComposition(paramLottieComposition);
+    this.a.setProgress(0.0F);
+    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
+    this.a.setVisibility(0);
+    this.a.playAnimation();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bakv
  * JD-Core Version:    0.7.0.1
  */

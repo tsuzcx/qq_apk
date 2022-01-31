@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.videoview;
 
-import bcuq;
+import betz;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenManager;
 
 public class TVKVideoController$2
   implements Runnable
 {
-  public TVKVideoController$2(bcuq parambcuq) {}
+  public TVKVideoController$2(betz parambetz) {}
   
   public void run()
   {

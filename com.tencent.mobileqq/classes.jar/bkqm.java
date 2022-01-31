@@ -1,19 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditVideoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public class bkqm
-  implements vub
+class bkqm
+  implements DialogInterface.OnClickListener
 {
-  public bkqm(QzoneEditVideoActivity paramQzoneEditVideoActivity) {}
+  bkqm(bkqk parambkqk) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d(QzoneEditVideoActivity.a(), 2, "QzoneEditVideoActivity doOnActivityResult reCreateDone");
+    bkqk.a(this.a).smoothScrollToPosition(bkqk.a);
+    bkqk.b = bkqk.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkqm
  * JD-Core Version:    0.7.0.1
  */

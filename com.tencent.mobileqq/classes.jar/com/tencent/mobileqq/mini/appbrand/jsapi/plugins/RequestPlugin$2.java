@@ -14,7 +14,7 @@ import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +57,7 @@ class RequestPlugin$2
   
   public void httpCallBack(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
   {
-    localObject2 = (RequestTask.Request)RequestPlugin.access$400(this.this$0).remove(Integer.valueOf(this.val$request.mTaskId));
+    localObject2 = (RequestTask.Request)RequestPlugin.access$300(this.this$0).remove(Integer.valueOf(this.val$request.mTaskId));
     long l2;
     Object localObject3;
     Object localObject1;
@@ -66,7 +66,7 @@ class RequestPlugin$2
       l2 = SystemClock.elapsedRealtime() - ((RequestTask.Request)localObject2).mRequestCreatedMillis;
       localObject3 = new StringBuilder().append("[request httpCallBack][minigame timecost=").append(l2).append("ms],[code=").append(paramInt).append("][url=").append(this.val$request.mUrl).append("][callbackId=").append(this.val$callbackId).append("][params=");
       if ((this.val$jsonParams == null) || (this.val$jsonParams.length() <= 1024)) {
-        break label545;
+        break label541;
       }
       localObject1 = this.val$jsonParams.substring(0, 1024);
     }
@@ -85,7 +85,7 @@ class RequestPlugin$2
           MiniReportManager.reportEventType(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, 628, null, null, null, paramInt, (String)localObject1, l2, (String)localObject2);
           localObject1 = this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig;
           if (paramArrayOfByte == null) {
-            break label562;
+            break label558;
           }
           l1 = paramArrayOfByte.length;
           label297:
@@ -93,7 +93,7 @@ class RequestPlugin$2
           localObject1 = this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig;
           localObject2 = this.val$url;
           if (paramArrayOfByte == null) {
-            break label568;
+            break label564;
           }
           l1 = paramArrayOfByte.length;
           label340:
@@ -121,12 +121,12 @@ class RequestPlugin$2
           if (paramArrayOfByte != null)
           {
             if (!"arraybuffer".equals(this.val$request.mResponseType)) {
-              break label701;
+              break label686;
             }
             if (!this.this$0.isGameRuntime) {
-              break label574;
+              break label570;
             }
-            NativeBuffer.packNativeBuffer(paramArrayOfByte, NativeBuffer.TYPE_BUFFER_NATIVE, "data", (JSONObject)localObject2, RequestPlugin.access$200(this.this$0).getNativeBufferPool());
+            NativeBuffer.packNativeBuffer(paramArrayOfByte, NativeBuffer.TYPE_BUFFER_NATIVE, "data", (JSONObject)localObject2, (ITNativeBufferPool)((BaseJsPluginEngine)localObject3).getNativeBufferPool());
           }
         }
         for (;;)
@@ -134,19 +134,19 @@ class RequestPlugin$2
           ((JSONObject)localObject1).put("res", localObject2);
           this.val$jsRuntime.evaluateSubcribeJS("onRequestTaskStateChange", ((JSONObject)localObject2).toString(), 0);
           return;
-          label545:
+          label541:
           localObject1 = this.val$jsonParams;
           break;
           localObject1 = "0";
           break label238;
-          label562:
+          label558:
           l1 = 0L;
           break label297;
-          label568:
+          label564:
           l1 = 0L;
           break label340;
-          label574:
-          NativeBuffer.packNativeBuffer(paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "data", (JSONObject)localObject2, RequestPlugin.access$200(this.this$0).getNativeBufferPool());
+          label570:
+          NativeBuffer.packNativeBuffer(paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "data", (JSONObject)localObject2, null);
           continue;
           try
           {
@@ -184,7 +184,7 @@ class RequestPlugin$2
           }
           catch (Throwable paramMap)
           {
-            break label690;
+            break label675;
           }
         }
       }
@@ -196,7 +196,7 @@ class RequestPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.RequestPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,132 +1,189 @@
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
+import java.util.Vector;
 
-public abstract class awkg<M extends awof, V extends awwp>
-  extends awkf<M, V>
+public class awkg
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
-  private String jdField_a_of_type_JavaLangString;
-  private List<awol> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d;
-  private int e;
+  public awkg(CustomCoverFragment paramCustomCoverFragment) {}
   
-  public awkg(ListView paramListView, baxy parambaxy, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
+  private void a(awke paramawke)
   {
-    super(paramListView, parambaxy);
-    try
+    if (CustomCoverFragment.c(this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem = paramSearchResultItem;
-      this.jdField_a_of_type_JavaLangString = paramSearchResultItem.user.uin;
-      this.e = paramSearchResultItem.user.getType();
-      this.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      paramawke.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849409);
+      paramawke.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
+      paramawke.jdField_a_of_type_AndroidWidgetButton.setText(2131695403);
       return;
     }
-    catch (NullPointerException paramListView)
+    if ((paramawke.jdField_a_of_type_Int == CustomCoverFragment.a(this.a)) && (CustomCoverFragment.a(this.a)))
     {
-      for (;;)
-      {
-        QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, new Object[] { "BaseMvpMessageAdapter init e:", paramListView.toString() });
-      }
+      paramawke.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849409);
+      paramawke.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
+      paramawke.jdField_a_of_type_AndroidWidgetButton.setText(2131719851);
+      return;
+    }
+    paramawke.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849429);
+    paramawke.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
+    paramawke.jdField_a_of_type_AndroidWidgetButton.setText(2131695403);
+  }
+  
+  public awmm a(int paramInt)
+  {
+    if ((CustomCoverFragment.a(this.a) != null) && (paramInt > 0) && (paramInt - 1 < CustomCoverFragment.a(this.a).size()) && (CustomCoverFragment.a(this.a) != null))
+    {
+      paramInt = ((Integer)CustomCoverFragment.a(this.a).get(paramInt - 1)).intValue();
+      return CustomCoverFragment.a(this.a).a(paramInt, false);
+    }
+    return null;
+  }
+  
+  public int getItemCount()
+  {
+    if (CustomCoverFragment.a(this.a) == null) {}
+    for (int i = 0;; i = CustomCoverFragment.a(this.a).size()) {
+      return i + 2;
     }
   }
   
-  private void a(MessageRecord paramMessageRecord)
+  public int getItemViewType(int paramInt)
   {
-    if (paramMessageRecord.msgtype == -2011)
-    {
-      AbsStructMsg localAbsStructMsg = axva.a(paramMessageRecord.msgData);
-      if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg)))
-      {
-        paramMessageRecord.msg = ((AbsShareMsg)localAbsStructMsg).mContentTitle;
-        if ((TextUtils.isEmpty(paramMessageRecord.msg)) && ((localAbsStructMsg instanceof AbsStructMsg))) {
-          paramMessageRecord.msg = ((AbsShareMsg)localAbsStructMsg).mMsgBrief;
-        }
-      }
+    if (paramInt == 0) {
+      return 0;
     }
+    if ((CustomCoverFragment.a(this.a) != null) && (paramInt > CustomCoverFragment.a(this.a).size())) {
+      return 2;
+    }
+    return 1;
   }
   
-  private void b()
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if ((this.d - this.c == this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Int == 0)) {
-      a();
-    }
-  }
-  
-  public void a()
-  {
-    label177:
-    for (;;)
+    awmm localawmm;
+    if ((paramViewHolder instanceof awke))
     {
-      try
+      paramViewHolder = (awke)paramViewHolder;
+      localawmm = a(paramInt);
+      if (localawmm != null)
       {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        int i;
-        if (j + 50 < this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size())
+        paramViewHolder.jdField_a_of_type_Int = localawmm.jdField_a_of_type_Int;
+        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localawmm.jdField_a_of_type_JavaLangString);
+        if (TextUtils.isEmpty(localawmm.b))
         {
-          i = j + 50;
-          if (j < i)
-          {
-            MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.e, ((Long)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.get(j)).longValue());
-            if (localMessageRecord == null) {
-              break label177;
-            }
-            a(localMessageRecord);
-            if (localMessageRecord.msg == null) {
-              break label177;
-            }
-            this.jdField_a_of_type_JavaUtilList.add(new awol(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user, localMessageRecord));
-            break label177;
-          }
+          paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(CustomCoverFragment.a(this.a));
+          paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(localawmm.jdField_a_of_type_Int));
+          paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(localawmm.jdField_a_of_type_Int));
+          label93:
+          a(paramViewHolder);
         }
-        else
-        {
-          i = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size();
-          continue;
-        }
-        j += 1;
       }
-      catch (NullPointerException localNullPointerException)
+    }
+    do
+    {
+      do
       {
-        QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, new Object[] { "initData e:", localNullPointerException.toString() });
-        super.a(this.jdField_a_of_type_JavaUtilList);
+        return;
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = CustomCoverFragment.f(this.a);
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = CustomCoverFragment.e(this.a);
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = CustomCoverFragment.a(this.a);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = CustomCoverFragment.a(this.a);
+        localObject = URLDrawable.getDrawable(localawmm.b, (URLDrawable.URLDrawableOptions)localObject);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        break;
+        paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(0));
+        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(0));
+        break label93;
+      } while (!(paramViewHolder instanceof awkf));
+      paramViewHolder = (awkf)paramViewHolder;
+      if (CustomCoverFragment.c(this.a) == 0)
+      {
+        CustomCoverFragment.c(this.a, 3);
+        CustomCoverFragment.a(this.a);
+      }
+      if (CustomCoverFragment.c(this.a) == 3)
+      {
+        paramViewHolder.itemView.setVisibility(0);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131689555);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramViewHolder.itemView.setBackgroundResource(2131166248);
         return;
       }
+      if (CustomCoverFragment.c(this.a) == 1)
+      {
+        paramViewHolder.itemView.setVisibility(0);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131165650));
+        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131690670);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramViewHolder.itemView.setBackgroundResource(2131167192);
+        return;
+      }
+    } while (CustomCoverFragment.c(this.a) != 2);
+    paramViewHolder.itemView.setVisibility(8);
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    awkd localawkd = null;
+    if (paramInt == 0)
+    {
+      paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131561795, paramViewGroup, false);
+      localawkd = new awkd(this.a, paramViewGroup);
     }
+    do
+    {
+      return localawkd;
+      if (paramInt == 1)
+      {
+        paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131561796, paramViewGroup, false);
+        paramViewGroup = new awke(this.a, paramViewGroup);
+        ((awke)paramViewGroup).jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = CustomCoverFragment.e(this.a);
+        return paramViewGroup;
+      }
+    } while (paramInt != 2);
+    paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131561676, paramViewGroup, false);
+    return new awkf(this.a, paramViewGroup);
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
   {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    super.onScrollStateChanged(paramAbsListView, paramInt);
-    b();
+    boolean bool = true;
+    super.onViewAttachedToWindow(paramViewHolder);
+    Object localObject = paramViewHolder.itemView.getLayoutParams();
+    if ((localObject != null) && ((localObject instanceof StaggeredGridLayoutManager.LayoutParams)))
+    {
+      localObject = (StaggeredGridLayoutManager.LayoutParams)localObject;
+      if (getItemViewType(paramViewHolder.getLayoutPosition()) == 1) {
+        break label49;
+      }
+    }
+    for (;;)
+    {
+      ((StaggeredGridLayoutManager.LayoutParams)localObject).setFullSpan(bool);
+      return;
+      label49:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awkg
  * JD-Core Version:    0.7.0.1
  */

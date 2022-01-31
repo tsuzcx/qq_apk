@@ -1,30 +1,30 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import betc;
+import bgkd;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class AuthJsPlugin$2
   implements AsyncResult
 {
-  AuthJsPlugin$2(AuthJsPlugin paramAuthJsPlugin, bekr parambekr) {}
+  AuthJsPlugin$2(AuthJsPlugin paramAuthJsPlugin, bgkd parambgkd) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      betc.a("AuthJsPlugin", "call API_REFRESH_SESSION success.");
+      QMLog.d("AuthJsPlugin", "call API_REFRESH_SESSION success.");
       this.val$req.a(paramJSONObject);
       return;
     }
-    betc.a("AuthJsPlugin", "call API_REFRESH_SESSION success.");
+    QMLog.d("AuthJsPlugin", "call API_REFRESH_SESSION success.");
     this.val$req.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.AuthJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

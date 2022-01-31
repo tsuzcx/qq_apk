@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.forward;
 
 import android.graphics.drawable.Drawable;
-import aqbe;
-import bbgu;
+import arum;
+import bdfq;
 
 public class ForwardBaseOption$7
   implements Runnable
 {
-  public ForwardBaseOption$7(aqbe paramaqbe, Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
+  public ForwardBaseOption$7(arum paramarum, Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
   
   public void run()
   {

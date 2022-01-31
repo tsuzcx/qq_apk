@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import osb;
+import owt;
 
 public class KandianSubscribeManager$2$1
   implements Runnable
 {
-  public KandianSubscribeManager$2$1(osb paramosb) {}
+  public KandianSubscribeManager$2$1(owt paramowt) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class KandianSubscribeManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager.2.1
  * JD-Core Version:    0.7.0.1
  */

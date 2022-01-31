@@ -528,37 +528,38 @@ public class TTAudioPlayerManager
     try
     {
       boolean bool = URLUtil.isNetworkUrl(paramString);
-      if (bool) {}
+      if (bool) {
+        paramMiniGameInfo = paramString;
+      }
       for (;;)
       {
-        paramMiniGameInfo = (TTAudioPlayerManager.InnerAudioStateChangeHandler)this.stateChangeHandlerMap.get(Integer.valueOf(paramInt));
-        if (paramMiniGameInfo != null) {
-          paramMiniGameInfo.setPath(paramString);
+        Object localObject = (TTAudioPlayerManager.InnerAudioStateChangeHandler)this.stateChangeHandlerMap.get(Integer.valueOf(paramInt));
+        if (localObject != null) {
+          ((TTAudioPlayerManager.InnerAudioStateChangeHandler)localObject).setPath(paramString, paramMiniGameInfo);
         }
-        paramMiniGameInfo = (IAudioPlayer)this.playerMap.get(Integer.valueOf(paramInt));
-        if (paramMiniGameInfo != null) {
-          paramMiniGameInfo.setAudioPath(paramString);
+        paramString = (IAudioPlayer)this.playerMap.get(Integer.valueOf(paramInt));
+        if (paramString != null) {
+          paramString.setAudioPath(paramMiniGameInfo);
         }
         return 0;
         paramMiniGameInfo = this.mTritonEngine.getQQEnv().getResPath(paramString, "", paramMiniGameInfo);
         if (!TextUtils.isEmpty(paramMiniGameInfo))
         {
-          File localFile = new File(paramMiniGameInfo);
-          if (localFile.exists())
+          localObject = new File(paramMiniGameInfo);
+          if (((File)localObject).exists())
           {
-            paramMiniGameInfo = localFile.getPath();
-            paramString = paramMiniGameInfo;
+            paramMiniGameInfo = ((File)localObject).getPath();
           }
           else
           {
             TTLog.e("[audio] TTAudioPlayerManager", "setMusicPath musicPath:" + paramString + ", localPath:" + paramMiniGameInfo + ", file not found");
-            paramString = null;
+            paramMiniGameInfo = null;
           }
         }
         else
         {
           TTLog.e("[audio] TTAudioPlayerManager", "setMusicPath musicPath:" + paramString + ", localPath:" + paramMiniGameInfo + " file path empty error");
-          paramString = null;
+          paramMiniGameInfo = null;
         }
       }
       return -1;
@@ -601,7 +602,7 @@ public class TTAudioPlayerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.audio.TTAudioPlayerManager
  * JD-Core Version:    0.7.0.1
  */

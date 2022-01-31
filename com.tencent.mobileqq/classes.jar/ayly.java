@@ -1,18 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class ayly
-  extends axmu
+  implements View.OnClickListener
 {
-  ayly(aylx paramaylx) {}
+  ayly(aylv paramaylv) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public void onClick(View paramView)
   {
-    if (aylx.a(this.a) != null) {
-      this.a.b(aylx.a(this.a));
-    }
+    aylv.a(this.a).a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayly
  * JD-Core Version:    0.7.0.1
  */

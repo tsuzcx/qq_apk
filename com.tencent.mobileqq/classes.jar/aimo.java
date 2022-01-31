@@ -1,26 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class aimo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aimo(aimm paramaimm) {}
+  aimo(aiml paramaiml) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof aimr)) {}
-    do
-    {
-      return;
-      paramView = (aimr)paramView;
-    } while ((paramView.a == null) || (this.a.a == null));
-    this.a.a.a(paramView.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aimo
  * JD-Core Version:    0.7.0.1
  */

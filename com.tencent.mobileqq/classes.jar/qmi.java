@@ -1,26 +1,23 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
 
-public class qmi
-  extends qmd
+public final class qmi
+  implements Parcelable.Creator<SocializeFeedsInfo.JumpInfo>
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)this.itemView.findViewById(2131369500);
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = (ProgressBar)this.itemView.findViewById(2131369506);
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.itemView.findViewById(2131369509);
-  
-  public qmi(View paramView, int paramInt)
+  public SocializeFeedsInfo.JumpInfo a(Parcel paramParcel)
   {
-    super(paramView, paramInt);
+    return new SocializeFeedsInfo.JumpInfo(paramParcel);
   }
   
-  public void a(qlp paramqlp, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean) {}
+  public SocializeFeedsInfo.JumpInfo[] a(int paramInt)
+  {
+    return new SocializeFeedsInfo.JumpInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmi
  * JD-Core Version:    0.7.0.1
  */

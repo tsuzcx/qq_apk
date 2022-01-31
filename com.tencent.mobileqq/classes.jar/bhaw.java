@@ -1,31 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import android.text.TextUtils;
+import android.webkit.ValueCallback;
+import com.tencent.tissue.v8rt.engine.SpeedUtil;
 
-public class bhaw
-  implements URLDrawable.URLDrawableListener
+class bhaw
+  implements ValueCallback
 {
-  public bhaw(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  bhaw(bhav parambhav) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onReceiveValue(Object paramObject)
   {
-    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QzoneVerticalVideoDownloadActivity.access$100(this.a).setImageDrawable(paramURLDrawable);
+    if ((!TextUtils.isEmpty(bhav.a(this.a))) && (bhav.a(this.a).contains("QLogic.js"))) {
+      SpeedUtil.DEFAULT.event("runQLogicJs finish " + this.a.a);
+    }
+    this.a.a.a(bhau.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhaw
  * JD-Core Version:    0.7.0.1
  */

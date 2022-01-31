@@ -1,16 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-public class orx
-  extends bhwj
+final class orx
+  implements INetEventHandler
 {
-  protected void a(String paramString)
+  orx(Context paramContext) {}
+  
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    TaskManager.getInstance().accept(paramString);
+    if (paramBoolean)
+    {
+      ors.b(this.a);
+      return;
+    }
+    ors.j("");
+    ors.k("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     orx
  * JD-Core Version:    0.7.0.1
  */

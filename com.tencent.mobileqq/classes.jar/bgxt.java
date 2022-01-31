@@ -1,54 +1,69 @@
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_req;
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import NS_COMM.COMM.Entry;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
 public class bgxt
-  extends QzoneExternalRequest
 {
-  mobile_get_qzone_public_msg_req a;
-  
-  public bgxt(long paramLong, Map<String, String> paramMap)
+  private static List<COMM.Entry> a(MiniAppInfo paramMiniAppInfo)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.a = new mobile_get_qzone_public_msg_req(paramLong, paramMap);
-  }
-  
-  public static mobile_get_qzone_public_msg_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    do
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(bgxz.a("platform", "Android"));
+    localArrayList.add(bgxz.a("uin", String.valueOf(bgte.a().a())));
+    if (paramMiniAppInfo != null)
     {
-      return paramArrayOfByte;
-      paramArrayOfInt = (mobile_get_qzone_public_msg_rsp)decode(paramArrayOfByte, "getQzonePublicMsg", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
+      localArrayList.add(bgxz.a("appid", paramMiniAppInfo.appId));
+      localArrayList.add(bgxz.a("appname", paramMiniAppInfo.name));
+    }
+    return localArrayList;
   }
   
-  public String getCmdString()
+  private static List<COMM.Entry> a(JSONObject paramJSONObject)
   {
-    return "QzoneNewService." + uniKey();
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONObject != null)
+    {
+      localArrayList.add(bgxz.a("pos_id", String.valueOf(paramJSONObject.optInt("pos_id"))));
+      localArrayList.add(bgxz.a("opt_type", String.valueOf(paramJSONObject.optInt("opt_type"))));
+      localArrayList.add(bgxz.a("activ_web", paramJSONObject.optString("activ_web")));
+    }
+    return localArrayList;
   }
   
-  public JceStruct getReq()
+  public static void a(MiniAppInfo paramMiniAppInfo, JSONObject paramJSONObject)
   {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getQzonePublicMsg";
+    StringBuilder localStringBuilder;
+    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())
+    {
+      localStringBuilder = new StringBuilder().append("report mobile game ad with args: ");
+      if (paramJSONObject == null) {
+        break label111;
+      }
+    }
+    label111:
+    for (Object localObject = paramJSONObject.toString();; localObject = "empty")
+    {
+      QMLog.d("MiniProgramLpReportDC04682", (String)localObject);
+      localObject = new ArrayList();
+      ((List)localObject).addAll(a(paramMiniAppInfo));
+      ((List)localObject).addAll(a(paramJSONObject));
+      if (!QUAUtil.isQQApp()) {
+        ((List)localObject).addAll(bgxz.a());
+      }
+      paramMiniAppInfo = bgxz.a(7, (List)localObject, null);
+      bgya.a().a(paramMiniAppInfo);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgxt
  * JD-Core Version:    0.7.0.1
  */

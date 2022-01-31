@@ -1,20 +1,22 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
+import android.support.v4.util.ArraySet;
 
-public class ateh
-  extends DataSetObserver
+class ateh
+  implements anrf
 {
-  public ateh(PlayerInvitePanel paramPlayerInvitePanel) {}
+  ateh(ateg paramateg, String paramString) {}
   
-  public void onChanged()
+  public void a(int paramInt1, int paramInt2)
   {
-    super.onChanged();
-    this.a.a();
+    if (ateg.a(this.jdField_a_of_type_Ateg) != null) {
+      ateg.a(this.jdField_a_of_type_Ateg).remove(Integer.valueOf(paramInt1));
+    }
+    anrt.a().a(paramInt1);
+    this.jdField_a_of_type_Ateg.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"openresult\":" + paramInt2 + "}" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ateh
  * JD-Core Version:    0.7.0.1
  */

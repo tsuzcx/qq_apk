@@ -1,28 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
 class uav
-  implements tvq
+  implements DialogInterface.OnClickListener
 {
-  uav(uau paramuau) {}
+  uav(uau paramuau, int paramInt) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    while (i < this.a.a.size())
-    {
-      if (TextUtils.equals(paramString, ((uas)this.a.a.get(i)).a)) {
-        ((StoryPlayerGroupHolder)this.a.a()).a.setCurrentItem(i);
-      }
-      i += 1;
-    }
+    QCircleFeedCommentWidget.a(this.jdField_a_of_type_Uau.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.jdField_a_of_type_Uau.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Uau.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Uau.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uav
  * JD-Core Version:    0.7.0.1
  */

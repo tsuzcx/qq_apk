@@ -5,10 +5,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Parcel;
 import android.text.TextUtils;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
 import com.tencent.component.network.downloader.UrlKeyGenerator;
 import com.tencent.component.network.downloader.common.Utils;
 import com.tencent.component.network.downloader.strategy.ResumeTransfer;
@@ -16,7 +12,6 @@ import com.tencent.component.network.module.base.QDLog;
 import com.tencent.component.network.module.cache.file.FileCacheService;
 import com.tencent.component.network.utils.Base64;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -27,6 +22,10 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
+import okhttp3.MediaType;
+import okhttp3.Request.Builder;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -133,16 +132,16 @@ public class QzoneResumeTransfer
               {
                 l1 = ((ResponseBody)localObject).contentLength();
               }
-              catch (IOException localIOException)
+              catch (Throwable localThrowable)
               {
-                localIOException.printStackTrace();
+                localThrowable.printStackTrace();
               }
             }
           }
         }
         l1 = 0L;
         break;
-        paramHttpResponse = localIOException;
+        paramHttpResponse = localThrowable;
         if (paramResponse == null) {
           break label105;
         }
@@ -632,7 +631,7 @@ public class QzoneResumeTransfer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.strategy.QzoneResumeTransfer
  * JD-Core Version:    0.7.0.1
  */

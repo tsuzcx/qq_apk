@@ -1,38 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class adsi
-  implements bfph
+  implements DialogInterface.OnClickListener
 {
-  adsi(adsh paramadsh, bfpc parambfpc) {}
+  adsi(adsd paramadsd) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bfpc.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.jdField_a_of_type_Adsh.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_Adsh.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-      paramView = (ajsx)this.jdField_a_of_type_Adsh.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      if (paramView != null) {
-        paramView.a(l);
-      }
-      axqy.b(this.jdField_a_of_type_Adsh.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Adsh.jdField_a_of_type_Int), "", "");
-      return;
-    }
-    catch (NumberFormatException paramView) {}
+    this.a.a.show();
+    this.a.b = false;
+    adsd.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsi
  * JD-Core Version:    0.7.0.1
  */

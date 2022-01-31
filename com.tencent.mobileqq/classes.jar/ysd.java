@@ -1,40 +1,28 @@
-import com.tencent.ad.tangram.log.AdLogAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.troopplugin.PluginJumpManager;
 
-public final class ysd
-  implements AdLogAdapter
+public class ysd
+  implements nbs
 {
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  public ysd(PluginJumpManager paramPluginJumpManager) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
+    if (paramInt == 0) {
+      nbv.a("urlplugin.cfg", this.a.mContext, "1007", new yse(this));
     }
+    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
+      return;
+    }
+    this.a.loadConfigFromFile();
   }
   
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysd
  * JD-Core Version:    0.7.0.1
  */

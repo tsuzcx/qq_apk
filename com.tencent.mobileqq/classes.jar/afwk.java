@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.AudioAnimationView;
+import com.tencent.mobileqq.widget.CircleProgressView;
 
 public class afwk
-  extends akte
+  extends aelt
 {
-  public afwk(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  afwh jdField_a_of_type_Afwh;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  AudioAnimationView jdField_a_of_type_ComTencentMobileqqWidgetAudioAnimationView;
+  CircleProgressView jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView;
   
-  public void a()
-  {
-    this.a.a.sendEmptyMessage(41);
-  }
+  public afwk(afwe paramafwe) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afwk
  * JD-Core Version:    0.7.0.1
  */

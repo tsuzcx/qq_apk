@@ -1,279 +1,267 @@
-import android.animation.ValueAnimator;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Path.Direction;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
+import android.content.Context;
+import android.opengl.GLES20;
 import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qg.sdk.QGJNIBridge;
+import com.tencent.qg.sdk.QGRenderer.QGEventListener;
+import com.tencent.qg.sdk.invoke.ModuleEngine;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.controller.VipQGThreeController.1;
+import cooperation.vip.ar.controller.VipQGThreeController.2;
+import cooperation.vip.ar.controller.VipQGThreeController.3;
+import cooperation.vip.ar.widget.VipQGGLSurfaceView;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bkal
-  extends bkao
+public class bkal
+  extends bkak
+  implements bkac, QGRenderer.QGEventListener
 {
-  public int a;
-  public Path a;
-  public StaticLayout a;
-  public final String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  private volatile int jdField_a_of_type_Int = 1;
+  private amqp jdField_a_of_type_Amqp;
+  private bfsy jdField_a_of_type_Bfsy = new bkam(this);
+  private bkan jdField_a_of_type_Bkan;
+  private bkap jdField_a_of_type_Bkap;
+  private VipQGGLSurfaceView jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new VipQGThreeController.3(this);
+  private volatile boolean jdField_a_of_type_Boolean;
+  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
+  private volatile boolean jdField_b_of_type_Boolean;
+  private boolean c = true;
   
-  public bkal(bkak parambkak, @NonNull Drawable paramDrawable, @NonNull bkas parambkas, String paramString1, String paramString2, String paramString3, int paramInt)
+  public bkal(Context paramContext, ViewGroup paramViewGroup)
   {
-    super(parambkak, paramDrawable, parambkas, paramString1, paramString2, paramString3, paramInt);
-    this.jdField_a_of_type_JavaLangString = "...";
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_Int = parambkas.jdField_d_of_type_Int;
-    this.jdField_b_of_type_Int = parambkas.jdField_c_of_type_Int;
-    a(parambkas.jdField_a_of_type_JavaLangString);
-    this.jdField_b_of_type_Boolean = true;
+    super(paramContext, paramViewGroup);
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369243));
+    }
+    b();
   }
   
-  public bkal(bkak parambkak, @NonNull Drawable paramDrawable, @NonNull bkas parambkas, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  private String a(float[] paramArrayOfFloat)
   {
-    this(parambkak, paramDrawable, parambkas, paramString1, paramString2, paramString3, paramInt1);
-    this.jdField_f_of_type_Int = paramInt2;
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    int i = 0;
+    while (i < paramArrayOfFloat.length)
+    {
+      localStringBuilder.append(paramArrayOfFloat[i]);
+      if (i != paramArrayOfFloat.length - 1) {
+        localStringBuilder.append(",");
+      }
+      i += 1;
+    }
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
-  public String a()
+  private boolean a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_b_of_type_AndroidViewViewGroup == null) || (this.jdField_a_of_type_Bkap == null) || (!bfsz.b.get()))
+    {
+      QZLog.i("VipARQGThreeController", 1, "checkInValid mVipQGViewConfig = " + this.jdField_a_of_type_Bkap + " so status = " + bfsz.b.get());
+      return true;
+    }
+    return false;
+  }
+  
+  private void b()
+  {
+    ThreadManager.executeOnFileThread(new VipQGThreeController.1(this));
   }
   
   public void a()
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
-    localValueAnimator.setDuration(1000L);
-    localValueAnimator.setRepeatCount(2);
-    localValueAnimator.setRepeatMode(2);
-    localValueAnimator.addUpdateListener(new bkam(this));
-    localValueAnimator.addListener(new bkan(this));
-    localValueAnimator.start();
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    if ((this.jdField_d_of_type_Boolean) && (this.jdField_k_of_type_Boolean))
-    {
-      if (this.g) {
-        paramCanvas.drawColor(Color.parseColor("#66000000"));
-      }
-      if ((this.g) && (this.jdField_h_of_type_Boolean))
-      {
-        float f1 = this.l;
-        float f2 = this.j;
-        float f3 = this.m;
-        float f4 = this.jdField_k_of_type_Float;
-        float f5 = this.jdField_b_of_type_AndroidGraphicsPointF.x;
-        float f6 = this.s;
-        float f7 = this.jdField_b_of_type_AndroidGraphicsPointF.y;
-        paramCanvas.drawLine(f2 + f1, f4 + f3, f6 + f5, this.t + f7, this.jdField_a_of_type_Bkak.e);
-      }
-    }
-    paramCanvas.save();
-    paramCanvas.concat(this.jdField_a_of_type_Bkak.jdField_a_of_type_Bkim.a(this));
-    bkik.a();
-    paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() == 1) {
-      paramCanvas.translate(0.0F, this.jdField_c_of_type_Int);
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidGraphicsRectF.height());
-    paramCanvas.save();
-    paramCanvas.translate(6.0F, 16.0F);
-    this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    paramCanvas.restore();
-    paramCanvas.save();
-    paramCanvas.translate(0.0F, 10.0F);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Bkak.d.setAlpha(this.jdField_d_of_type_Int);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_Bkak.d);
-    }
-    paramCanvas.restore();
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 32);
-    this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.u, 6);
-    this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restore();
-    int i;
-    if (this.jdField_k_of_type_Boolean)
-    {
-      paramCanvas.save();
-      if (this.jdField_k_of_type_Int != 0) {
-        break label455;
-      }
-      i = 2130843818;
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isDataLocked()) {
-        break label487;
-      }
-      if (this.jdField_k_of_type_Int != 0) {
-        break label463;
-      }
-      i = 2130843826;
-    }
-    label406:
-    label419:
-    label455:
-    label463:
-    label479:
-    label487:
-    for (;;)
-    {
-      int j;
-      if (this.jdField_k_of_type_Int == 1)
-      {
-        j = 2130843816;
-        if (this.jdField_k_of_type_Int != 2) {
-          break label479;
-        }
-      }
-      for (int k = 2130843823;; k = 2130843822)
-      {
-        bkik.a(paramCanvas, this.jdField_a_of_type_Bkak.jdField_a_of_type_Bkim, this, i, j, k);
-        paramCanvas.restore();
-        return;
-        i = 2130843817;
-        break;
-        i = 2130843824;
-        break label406;
-        j = 2130843815;
-        break label419;
-      }
-    }
-  }
-  
-  public void a(Canvas paramCanvas, boolean paramBoolean)
-  {
-    float f2 = this.u;
-    float f1 = this.v;
-    if (f2 * this.q < 200.0F) {
-      f2 = 200.0F / this.q;
-    }
-    if (this.q * f1 < 200.0F) {
-      f1 = 200.0F / this.q;
-    }
-    if (this.jdField_f_of_type_Boolean) {
-      paramCanvas.drawColor(Color.parseColor("#66000000"));
-    }
-    paramCanvas.save();
-    paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() == 1) {
-      paramCanvas.translate(0.0F, this.jdField_c_of_type_Int);
-    }
-    if ((this.jdField_f_of_type_Boolean) && (this.jdField_h_of_type_Int == 0))
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = bkak.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap.extractAlpha(this.jdField_a_of_type_Bkak.g, null), null, new Rect((int)-this.p, (int)-this.p, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + (int)this.p, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() + (int)this.p), this.jdField_a_of_type_Bkak.g);
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidGraphicsRectF.height());
-    paramCanvas.save();
-    paramCanvas.translate(6.0F, 16.0F);
-    this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    paramCanvas.restore();
-    if (paramBoolean)
-    {
-      paramCanvas.save();
-      paramCanvas.translate(0.0F, 10.0F);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Bkak.d.setAlpha(this.jdField_d_of_type_Int);
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_Bkak.d);
-      }
-      paramCanvas.restore();
-    }
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 32);
-    this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.u, 6);
-    this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = paramTroopBarPOI;
-    if (paramTroopBarPOI != null)
-    {
-      a(paramTroopBarPOI.a());
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (a()) {
       return;
     }
-    a(null);
-    this.jdField_a_of_type_Long = -1L;
+    ThreadManager.getUIHandler().post(new VipQGThreeController.2(this));
+  }
+  
+  public void a(bkap parambkap)
+  {
+    this.jdField_a_of_type_Bkap = parambkap;
+    if ((this.jdField_a_of_type_Bkap != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bkap.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("VipARQGThreeController", 2, " setVipQGViewConfig config = " + parambkap.toString());
+      }
+      localObject = new aonx();
+      ((aonx)localObject).b = parambkap.jdField_a_of_type_JavaLangString;
+      ((aonx)localObject).c = parambkap.c;
+      bkax.a().a((aonx)localObject, this);
+      return;
+    }
+    Object localObject = new StringBuilder().append("setVipQGViewConfig config = null or resUrl = null , config == null : ");
+    if (parambkap == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.e("VipARQGThreeController", 1, bool);
+      return;
+    }
   }
   
   public void a(String paramString)
   {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString))
-    {
-      ved.e(bkak.jdField_a_of_type_JavaLangString, "text is empty.");
-      str = "";
+    if (this.jdField_a_of_type_Bkap != null) {
+      this.jdField_a_of_type_Bkap.b = paramString;
     }
-    ved.b(bkak.jdField_a_of_type_JavaLangString, "text:" + str);
-    this.jdField_c_of_type_JavaLangString = str;
-    this.jdField_b_of_type_JavaLangString = str;
-    int j = (int)(this.u - 12.0F);
-    int i = j;
-    if (j < 0)
+    QZLog.i("VipARQGThreeController", 1, "qg resources load success path = " + paramString + " soStatus = " + bfsz.b.get());
+  }
+  
+  public void a(String paramString, float[] paramArrayOfFloat)
+  {
+    if ((this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView == null) || (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getQGBridge() == null) || (paramArrayOfFloat == null))
     {
-      QLog.d(bkak.jdField_a_of_type_JavaLangString, 2, "faceItem setText width < 0");
-      i = 0;
+      QZLog.e("VipARQGThreeController", 1, new Object[] { "dispatchQGJSEvent float[] error" });
+      return;
     }
-    this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidTextTextPaint, i, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() > 2)
+    this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getQGBridge().dispatchJSEvent(paramString, paramArrayOfFloat);
+  }
+  
+  public void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3)
+  {
+    if ((this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView == null) || (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getQGBridge() == null))
     {
-      j = this.jdField_a_of_type_AndroidTextStaticLayout.getLineEnd(1);
-      paramString = this.jdField_c_of_type_JavaLangString.substring(0, j);
-      ved.b(bkak.jdField_a_of_type_JavaLangString, "subString : " + this.jdField_c_of_type_JavaLangString + " -> " + paramString);
-      this.jdField_c_of_type_JavaLangString = paramString;
-      j = this.jdField_c_of_type_JavaLangString.length();
-      this.jdField_c_of_type_JavaLangString += "...";
-      this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidTextTextPaint, i, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
-      j -= 1;
-      while ((j > 0) && (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() > 2))
+      QZLog.e("VipARQGThreeController", 1, new Object[] { "dispatchQGJSEvent error" });
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("modelMatrix", a(paramArrayOfFloat1));
+      localJSONObject.put("viewMatrix", a(paramArrayOfFloat2));
+      localJSONObject.put("projectionMatrix", a(paramArrayOfFloat3));
+      this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getQGBridge().dispatchJSEvent("onRenderFrame", localJSONObject);
+      return;
+    }
+    catch (JSONException paramArrayOfFloat1)
+    {
+      for (;;)
       {
-        paramString = this.jdField_c_of_type_JavaLangString.substring(0, j) + "...";
-        ved.b(bkak.jdField_a_of_type_JavaLangString, "delete last char : " + this.jdField_c_of_type_JavaLangString + " -> " + paramString);
-        this.jdField_c_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bkak.jdField_a_of_type_AndroidTextTextPaint, i, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
-        j -= 1;
-      }
-      if (j == 0) {
-        ved.e(bkak.jdField_a_of_type_JavaLangString, "text size is too large :" + this.jdField_a_of_type_Int);
+        paramArrayOfFloat1.printStackTrace();
       }
     }
-    ved.b(bkak.jdField_a_of_type_JavaLangString, "final text : " + this.jdField_c_of_type_JavaLangString + " , original text : " + this.jdField_b_of_type_JavaLangString);
-    paramString = new Rect();
-    this.jdField_a_of_type_AndroidTextStaticLayout.getLineBounds(0, paramString);
-    this.jdField_c_of_type_Int = paramString.height();
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, this.u, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 12), 4.0F, 4.0F, Path.Direction.CCW);
+  }
+  
+  public void b(String paramString)
+  {
+    QZLog.i("VipARQGThreeController", 1, "qg resources load fail error = " + paramString + " soStatus = " + bfsz.b.get());
+    if (this.jdField_a_of_type_Bkap != null) {
+      this.jdField_a_of_type_Bkap.b = "";
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView != null) {
+      this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.onPause();
+    }
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView != null) {
+      this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.onResume();
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if ((this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView != null) && (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getModuleEngine() != null))
+    {
+      this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getModuleEngine().unRegisterJsModule(this.jdField_a_of_type_Bkan);
+      this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.b();
+    }
+    if (this.jdField_a_of_type_Amqp != null) {
+      this.jdField_a_of_type_Amqp.c();
+    }
+  }
+  
+  public void onCanvasCreated()
+  {
+    QZLog.i("VipARQGThreeController", 1, "qg view onCanvasCreated");
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void onDrawFrame()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onDrawFrame(GL10 paramGL10)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+              } while (!bfsz.b.get());
+              QZLog.e("VipARQGThreeController", 2, new Object[] { "onDrawFrame status SO_LOAD success next status CREATE_QGVIEW" });
+              this.jdField_a_of_type_Int = 2;
+              return;
+            } while (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView != null);
+            a();
+            this.jdField_a_of_type_Int = 5;
+            return;
+          } while ((this.jdField_a_of_type_Bkap == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Bkap.b)) || (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView == null));
+          QZLog.e("VipARQGThreeController", 2, new Object[] { "onDrawFrame status JS_MODEL_LOAD success next status DRAW_FRAME mIsQGReady = " + this.jdField_b_of_type_Boolean + " mIsQGStartDraw = " + this.jdField_a_of_type_Boolean });
+        } while (!this.jdField_b_of_type_Boolean);
+        this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.queueEvent(this.jdField_a_of_type_JavaLangRunnable);
+      } while (!this.jdField_a_of_type_Bkap.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Int = 4;
+      return;
+    } while ((this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView == null) || (!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Amqp == null) || (paramGL10 == null));
+    int i = this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getCanvasTexture("offScreen");
+    if (i != 0)
+    {
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(1, 771);
+      this.jdField_a_of_type_Amqp.a(i, null, null);
+      if (this.c)
+      {
+        bkar.a("ar_qg_show", "1");
+        this.c = false;
+      }
+    }
+    this.jdField_a_of_type_Int = 4;
+  }
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Amqp != null) {
+      this.jdField_a_of_type_Amqp.a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  {
+    this.jdField_a_of_type_Amqp = new amqp();
+    this.jdField_a_of_type_Amqp.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkal
  * JD-Core Version:    0.7.0.1
  */

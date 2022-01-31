@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aylm;
-import aymg;
-import aymn;
+import baji;
+import bakc;
+import bakj;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.diy.ThemeDiyModule;
 
 class ThemeJsPlugin$10
-  implements aylm
+  implements baji
 {
   ThemeJsPlugin$10(ThemeJsPlugin paramThemeJsPlugin, String paramString) {}
   
   public void onCancel()
   {
     if (!ThemeUtil.isFixTheme(this.val$themeId)) {
-      aymn.a(this.this$0.app, this.val$themeId, "20000000");
+      bakj.a(this.this$0.app, this.val$themeId, "20000000");
     }
     new ThemeJsPlugin.ThemeSwitchListener(this.this$0, this.val$themeId, false).postSwitch(0);
   }
@@ -22,7 +22,7 @@ class ThemeJsPlugin$10
   public void onConfirm()
   {
     ThemeJsPlugin.access$300(this.this$0).setSpThemeBackground();
-    aymg.a(this.val$themeId, new ThemeJsPlugin.ThemeSwitchListener(this.this$0, this.val$themeId, true));
+    bakc.a(this.val$themeId, new ThemeJsPlugin.ThemeSwitchListener(this.this$0, this.val$themeId, true));
   }
 }
 

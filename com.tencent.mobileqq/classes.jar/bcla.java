@@ -1,27 +1,43 @@
-import android.content.Context;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public class bcla
-  implements View.OnClickListener
+class bcla
+  extends alox
 {
-  public bcla(ContextMenuTextView paramContextMenuTextView) {}
+  bcla(bckx parambckx) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (paramView.getId() == 2131364824)
-    {
-      paramView = ContextMenuTextView.a(this.a);
-      ContextMenuTextView.a(this.a);
-      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
+    if (!this.a.b(paramString)) {}
+    while (!paramBoolean1) {
+      return;
     }
+    bckx.a(this.a, paramString);
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = "" + paramObject;
+    if (!this.a.b(paramObject)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramBoolean);
+      bckx.a(this.a, paramObject);
+    } while (!(this.a.a instanceof QQAppInterface));
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a;
+    ((aloz)this.a.a.getManager(51)).d(paramObject);
+    amfl.a(localQQAppInterface, paramObject);
+    localQQAppInterface.a().a().a(paramObject, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcla
  * JD-Core Version:    0.7.0.1
  */

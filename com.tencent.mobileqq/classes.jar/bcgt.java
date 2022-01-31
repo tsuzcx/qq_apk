@@ -1,11 +1,16 @@
 public class bcgt
 {
-  public static String a;
-  public static boolean a;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcgt
  * JD-Core Version:    0.7.0.1
  */

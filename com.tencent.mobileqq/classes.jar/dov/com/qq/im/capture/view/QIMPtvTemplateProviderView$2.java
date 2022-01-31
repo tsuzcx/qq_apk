@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.view;
 
 import android.widget.ListAdapter;
-import bjbe;
+import blmo;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
@@ -20,15 +20,15 @@ class QIMPtvTemplateProviderView$2
     if (localGridView != null)
     {
       localListAdapter = localGridView.a();
-      if ((localListAdapter instanceof bjbe))
+      if ((localListAdapter instanceof blmo))
       {
-        i = ((bjbe)localListAdapter).a(this.a);
-        ((bjbe)localListAdapter).a(this.a, i);
+        i = ((blmo)localListAdapter).a(this.a);
+        ((blmo)localListAdapter).a(this.a, i);
         localGridView.requestFocusFromTouch();
         localGridView.setFocusableInTouchMode(true);
         localGridView.setSelection(i);
         localGridView.smoothScrollToPosition(i / localGridView.c());
-        ((bjbe)localListAdapter).notifyDataSetChanged();
+        ((blmo)localListAdapter).notifyDataSetChanged();
       }
     }
     while (!QLog.isColorLevel())
@@ -42,7 +42,7 @@ class QIMPtvTemplateProviderView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMPtvTemplateProviderView.2
  * JD-Core Version:    0.7.0.1
  */

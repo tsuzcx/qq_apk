@@ -1,151 +1,256 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare.1.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.util.BinderWarpper;
+import java.io.File;
+import mqq.app.AccountNotMatchException;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
 
-public class azrl
+public final class azrl
+  implements View.OnClickListener
 {
-  private static final String d;
-  public int a;
-  public String a;
-  public ArrayList<azrm> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public ArrayList<Integer> b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  
-  static
+  public void onClick(View paramView)
   {
-    jdField_d_of_type_JavaLangString = ajya.a(2131715315);
-  }
-  
-  public azrl()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  private void a()
-  {
-    while (this.jdField_a_of_type_JavaLangString.indexOf('[') > 0)
+    Object localObject1 = paramView.findViewById(2131377085);
+    if (localObject1 == null) {}
+    do
     {
-      int k = this.jdField_a_of_type_JavaLangString.indexOf('[');
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replaceFirst("\\[", "");
-      int j = this.jdField_a_of_type_JavaLangString.indexOf(']', k);
-      int i = j;
-      if (j > 0)
+      return;
+      paramView = ((View)localObject1).getTag(2131377085);
+    } while (!(paramView instanceof StructMsgForImageShare));
+    StructMsgForImageShare localStructMsgForImageShare = (StructMsgForImageShare)paramView;
+    Context localContext = ((View)localObject1).getContext();
+    label392:
+    Intent localIntent;
+    try
+    {
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(localStructMsgForImageShare.currentAccountUin);
+      AbsShareMsg.doReport(paramView, localStructMsgForImageShare);
+      if (localStructMsgForImageShare.msgId > 0L)
       {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replaceFirst("]", "");
-        i = j - 1;
+        azmj.b(paramView, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(localStructMsgForImageShare.msgId), "");
+        ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForImageShare.1.1(this, localStructMsgForImageShare, paramView), 0L);
       }
-      if ((i < this.jdField_a_of_type_JavaLangString.length() - 1) && (this.jdField_a_of_type_JavaLangString.charAt(i + 1) == '('))
+      if ((localStructMsgForImageShare.getFirstImageElement() != null) && (localStructMsgForImageShare.getFirstImageElement().a()))
       {
-        j = i + 2;
-        int m = this.jdField_a_of_type_JavaLangString.indexOf(')', j);
-        if (m > 0)
-        {
-          String str = this.jdField_a_of_type_JavaLangString.substring(j, m);
-          this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString.substring(0, j - 1) + this.jdField_a_of_type_JavaLangString.substring(m + 1, this.jdField_a_of_type_JavaLangString.length()));
-          azrm localazrm = new azrm();
-          localazrm.jdField_a_of_type_Int = k;
-          localazrm.jdField_b_of_type_Int = (i + 1);
-          localazrm.jdField_a_of_type_JavaLangString = str;
-          this.jdField_a_of_type_JavaUtilArrayList.add(localazrm);
+        azmj.b(null, "dc00898", "", "", "0X800A28", "0X800A28", 0, 0, "", "4", Long.toString(localStructMsgForImageShare.mSourceAppid), ForwardUtils.b(localStructMsgForImageShare.uinType));
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsg", 2, "大图点击=0X800A28, appid=" + localStructMsgForImageShare.mSourceAppid + ", fileType=4");
         }
       }
     }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    if (paramJSONObject == null)
+    catch (AccountNotMatchException paramView)
     {
-      QLog.e("TroopEnterEffect.GrayTips", 1, "mergeFromJson error grayTipsObj == null");
-      return;
-    }
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("id");
-    if (paramJSONObject.optInt("isValid") == 1)
-    {
-      bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("priority");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("wording");
-      a();
-      if (paramJSONObject.optInt("noLongerPrompt") != 1) {
-        break label236;
-      }
-    }
-    for (boolean bool = true;; bool = false) {
       for (;;)
       {
-        this.jdField_b_of_type_Boolean = bool;
-        if (this.jdField_b_of_type_Boolean) {
-          this.jdField_a_of_type_JavaLangString += jdField_d_of_type_JavaLangString;
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsg", 2, paramView.getStackTrace().toString());
         }
-        this.jdField_c_of_type_Int = paramJSONObject.optInt("linkType");
-        this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("serviceCode");
-        this.jdField_d_of_type_Int = paramJSONObject.optInt("hardType");
-        this.e = paramJSONObject.optInt("openMonth");
-        this.f = paramJSONObject.optInt("hardMonth");
-        this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("aidAndroid");
-        try
-        {
-          JSONArray localJSONArray = paramJSONObject.optJSONArray("vipType");
-          if ((localJSONArray == null) || (localJSONArray.length() <= 0)) {
-            break label272;
-          }
-          while (i < localJSONArray.length())
+      }
+      if ((paramView.getStatus() != 0) || (paramView.isDownloadStarted())) {
+        break label392;
+      }
+      paramView.startDownload();
+      return;
+      localIntent = new Intent(localContext, AIOGalleryActivity.class);
+      localIntent.putExtra("curType", localStructMsgForImageShare.uinType);
+      localIntent.putExtra("_id", localStructMsgForImageShare.uniseq);
+      localIntent.putExtra("appid", localStructMsgForImageShare.mSourceAppid);
+      localIntent.putExtra("image_share_by_server", ((azsp)localObject2).a());
+      localIntent.putExtra("urlAtServer", ((azsp)localObject2).T);
+      localIntent.putExtra("KEY_FILE_ID", ((azsp)localObject2).c);
+      localIntent.putExtra("picMD5", ((azsp)localObject2).U);
+      localIntent.putExtra("url", ((azsp)localObject2).S);
+      localIntent.putExtra("friendUin", localStructMsgForImageShare.uin);
+      localIntent.putExtra("KEY_MSG_VERSION_CODE", localStructMsgForImageShare.messageVersion);
+      localIntent.putExtra("isSend", localStructMsgForImageShare.mIsSend);
+      localIntent.putExtra("KEY_BUSI_TYPE", 1030);
+      localIntent.putExtra("IS_FROMOTHER_TERMINAL_KEY", bdec.c(localStructMsgForImageShare.mIsSend));
+      localIntent.putExtra("uin", localStructMsgForImageShare.uin);
+      if (localStructMsgForImageShare.mIsSend != 1) {
+        break label1351;
+      }
+    }
+    azmj.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, localStructMsgForImageShare.mMsgServiceID + "", "", "", "");
+    azmj.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+    int i = 0;
+    Object localObject2 = localStructMsgForImageShare.getFirstImageElement();
+    if (localObject2 != null)
+    {
+      if ((!bdec.b(localStructMsgForImageShare.mIsSend)) && (((azsp)localObject2).a != null))
+      {
+        paramView = afsf.a(localContext, ((azsp)localObject2).a);
+        if (paramView != null) {
+          if (paramView.getStatus() == 2)
           {
-            this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(localJSONArray.getInt(i)));
-            i += 1;
+            paramView.restartDownload();
+            return;
           }
-          bool = false;
         }
-        catch (Exception localException)
+      }
+      paramView = localStructMsgForImageShare.currentAccountUin;
+      localIntent.putExtra("KEY_TROOP_CODE", paramView);
+      localIntent.putExtra("fileSize", ((azsp)localObject2).d);
+      localIntent.putExtra("KEY_TIME", ((azsp)localObject2).e);
+      localIntent.putExtra("KEY_SUB_VERSION", 5);
+      localIntent.putExtra("KEY_FILE_SIZE_FLAG", 0);
+      localIntent.putExtra("uniSeq", localStructMsgForImageShare.uniseq);
+      localIntent.putExtra("KEY_THUMBNAL_BOUND", zen.a((View)localObject1));
+      localObject2 = ((azsp)localObject2).a;
+      if (localObject2 != null)
+      {
+        localIntent.addFlags(603979776);
+        paramView = ((MessageForPic)localObject2).selfuin;
+        if (!((MessageForPic)localObject2).isMultiMsg) {
+          break label1603;
+        }
+      }
+    }
+    label1603:
+    for (;;)
+    {
+      try
+      {
+        localObject3 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+        localObject1 = paramView;
+        if ((localObject3 instanceof QQAppInterface)) {
+          localObject1 = ((AppRuntime)localObject3).getAccount();
+        }
+        paramView = (View)localObject1;
+      }
+      catch (Exception localException)
+      {
+        Object localObject3;
+        AIOImageData localAIOImageData;
+        int j;
+        label1351:
+        continue;
+        if ((!localObject2[7].equals("scrawl_link")) || (localObject2.length < 9)) {
+          continue;
+        }
+        String str = localObject2[8];
+        continue;
+        if ((localStructMsgForImageShare.mMsgActionData == null) || (!localStructMsgForImageShare.mMsgActionData.startsWith("ScreenShotShare"))) {
+          continue;
+        }
+        localAIOImageData.jdField_b_of_type_Int = 2;
+        localAIOImageData.a = localStructMsgForImageShare.getBytes();
+        if ((!bdec.b(((MessageForPic)localObject2).issend)) || (TextUtils.isEmpty(((MessageForPic)localObject2).path)) || (!new File(((MessageForPic)localObject2).path).exists())) {
+          continue;
+        }
+        localAIOImageData.jdField_b_of_type_JavaLangString = ((MessageForPic)localObject2).path;
+        continue;
+        if (localStructMsgForImageShare.mImageBizType != 2) {
+          continue;
+        }
+        if ((!bdec.b(((MessageForPic)localObject2).issend)) || (TextUtils.isEmpty(((MessageForPic)localObject2).path)) || (!TextUtils.isEmpty(((MessageForPic)localObject2).md5)) || (!new File(((MessageForPic)localObject2).path).exists())) {
+          continue;
+        }
+        localAIOImageData.jdField_b_of_type_JavaLangString = ((MessageForPic)localObject2).path;
+        localAIOImageData.jdField_b_of_type_Int = 4;
+        continue;
+        paramView.putBoolean("extra.FROM_AIO", true);
+        paramView.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ((Activity)localContext).getClass().getName());
+        continue;
+        str = "";
+        continue;
+      }
+      localObject3 = new AIOImageProviderService(paramView, ((MessageForPic)localObject2).frienduin, ((MessageForPic)localObject2).istroop, (ChatMessage)localObject2);
+      localAIOImageData = agem.a((MessageForPic)localObject2);
+      if (localStructMsgForImageShare.message != null)
+      {
+        localAIOImageData.g = localStructMsgForImageShare.message.time;
+        localAIOImageData.i = localStructMsgForImageShare.message.shmsgseq;
+      }
+      if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("comic_plugin.apk")))
+      {
+        localAIOImageData.jdField_b_of_type_Int = 1;
+        localAIOImageData.a = localStructMsgForImageShare.getBytes();
+        localObject2 = agej.a(localStructMsgForImageShare);
+        localAIOImageData.d = agej.a((String[])localObject2);
+        if ((localObject2 != null) && (localObject2.length >= 8))
         {
-          label236:
-          QLog.e("TroopEnterEffect.GrayTips", 1, "mergeFromJson error: " + localException.getMessage());
-          this.g = paramJSONObject.optInt("settingStatus");
+          if (localObject2[7].equals("link"))
+          {
+            localObject1 = localObject2[4];
+            biiv.a(null, paramView, localContext, "3009", "2", "40054", localObject2[0], new String[] { localObject2[2], localObject2[4], localObject1 });
+          }
+        }
+        else
+        {
+          paramView = new Bundle();
+          paramView.putParcelable("extra.IMAGE_PROVIDER", new BinderWarpper(((AIOImageProviderService)localObject3).asBinder()));
+          paramView.putParcelable("extra.EXTRA_CURRENT_IMAGE", localAIOImageData);
+          paramView.putInt("forward_source_uin_type", localStructMsgForImageShare.uinType);
+          if (((localContext instanceof SplashActivity)) || ((localContext instanceof ChatActivity)) || ((localContext instanceof ChatHistoryActivity)) || ((localContext instanceof PublicFragmentActivity)) || ((localContext instanceof ChatHistory)))
+          {
+            if (!(localContext instanceof MultiForwardActivity)) {
+              continue;
+            }
+            localObject1 = ((BaseActivity)localContext).getAppInterface();
+            if ((localObject1 instanceof QQAppInterface))
+            {
+              paramView.putBoolean("extra.FROM_AIO", true);
+              paramView.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
+              paramView.putString("uin", ((MultiForwardActivity)localContext).getChatFragment().a().a().a);
+              localObject2 = paramView.getString("extra.GROUP_UIN");
+              if ((localObject2 != null) && (((QQAppInterface)localObject1).b((String)localObject2) == 2)) {
+                paramView.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ChatActivity.class.getName());
+              }
+            }
+          }
+          localIntent.putExtras(paramView);
+          localContext.startActivity(localIntent);
+          i = 1;
+          j = 0;
+          if (i != 0) {
+            j = 1;
+          }
+          azmj.b(null, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "0X80055C7", "0X80055C7", 0, j, "" + localStructMsgForImageShare.msgId, "" + localStructMsgForImageShare.templateIDForPortal, "", localStructMsgForImageShare.mMsgUrl);
+          paramView = new StringBuilder().append("MSGID=").append(Long.toString(localStructMsgForImageShare.msgId)).append(";TEPLATEID=").append(localStructMsgForImageShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(azqj.a(localStructMsgForImageShare.mMsgUrl));
+          azmj.b(null, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "0X8005D49", "0X8005D49", 0, j, paramView.toString(), "", "", "");
+          return;
+          paramView = localStructMsgForImageShare.uin;
+          break;
         }
       }
     }
-    label272:
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramInt1 != this.g)
-      {
-        bool1 = bool2;
-        if (this.g != 0) {}
-      }
-      else if (!this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt2)))
-      {
-        bool1 = bool2;
-        if (!this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(0))) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azrl
  * JD-Core Version:    0.7.0.1
  */

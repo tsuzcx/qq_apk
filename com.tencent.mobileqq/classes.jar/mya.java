@@ -1,210 +1,166 @@
-import NearbyGroup.Color;
-import NearbyGroup.GroupInfo;
-import NearbyGroup.GroupLabel;
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.data.ShowExternalTroop;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.pb.addcontacts.AccountSearchPb.Color;
-import com.tencent.pb.addcontacts.AccountSearchPb.Label;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.group.group_label.GroupLabel.Color;
-import tencent.im.group.group_label.GroupLabel.Label;
-import tencent.im.oidb.cmd0x935.oidb_0x935.RgroupInfo;
-import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Color;
-import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Label;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 
 public class mya
 {
-  public static String a = mya.class.getSimpleName();
+  private static float jdField_a_of_type_Float = 0.4F;
+  private static final float[] jdField_a_of_type_ArrayOfFloat;
+  private static float jdField_b_of_type_Float = 1.0F - jdField_a_of_type_Float;
+  private static float c;
+  private static float d = 1.0F / a(1.0F);
+  private int jdField_a_of_type_Int;
+  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
+  private final myb jdField_a_of_type_Myb;
+  private final boolean jdField_a_of_type_Boolean;
+  private final myb jdField_b_of_type_Myb;
   
-  public static View a(Context paramContext, ViewGroup paramViewGroup, int paramInt1, boolean paramBoolean, int paramInt2)
+  static
   {
-    paramContext = azmn.a(paramContext, paramViewGroup, paramInt2);
-    paramViewGroup = (azmp)paramContext.getTag();
-    paramViewGroup.a.setMaxLabelCount(paramInt1);
-    paramViewGroup.a.setmIsNeedPriority(paramBoolean);
-    return paramContext;
+    jdField_a_of_type_ArrayOfFloat = new float[101];
+    float f1 = 0.0F;
+    int i = 0;
+    if (i <= 100)
+    {
+      float f4 = i / 100.0F;
+      float f2 = 1.0F;
+      for (;;)
+      {
+        float f3 = (f2 - f1) / 2.0F + f1;
+        float f5 = 3.0F * f3 * (1.0F - f3);
+        float f6 = ((1.0F - f3) * jdField_a_of_type_Float + jdField_b_of_type_Float * f3) * f5 + f3 * f3 * f3;
+        if (Math.abs(f6 - f4) < 1.E-005D)
+        {
+          jdField_a_of_type_ArrayOfFloat[i] = (f3 * f3 * f3 + f5);
+          i += 1;
+          break;
+        }
+        if (f6 > f4) {
+          f2 = f3;
+        } else {
+          f1 = f3;
+        }
+      }
+    }
+    jdField_a_of_type_ArrayOfFloat[100] = 1.0F;
+    c = 8.0F;
+    d = 1.0F;
   }
   
-  public static ArrayList<GroupLabel> a(RecommendTroopItem paramRecommendTroopItem)
+  public mya(Context paramContext)
   {
-    if (paramRecommendTroopItem == null) {}
+    this(paramContext, null);
+  }
+  
+  public mya(Context paramContext, Interpolator paramInterpolator)
+  {
+    this(paramContext, paramInterpolator, true);
+  }
+  
+  public mya(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Myb = new myb();
+    this.jdField_b_of_type_Myb = new myb();
+    myb.a(paramContext);
+  }
+  
+  public static float a(float paramFloat)
+  {
+    paramFloat = c * paramFloat;
+    if (paramFloat < 1.0F) {}
+    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
+      return paramFloat * d;
+    }
+  }
+  
+  public final int a()
+  {
+    return myb.a(this.jdField_a_of_type_Myb);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Myb.a();
+    this.jdField_b_of_type_Myb.a();
+  }
+  
+  public final void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Myb.a(paramFloat);
+    this.jdField_b_of_type_Myb.a(paramFloat);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!a()))
+    {
+      float f1 = myb.a(this.jdField_a_of_type_Myb);
+      float f2 = myb.a(this.jdField_b_of_type_Myb);
+      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
+      {
+        paramInt3 = (int)(f1 + paramInt3);
+        paramInt4 = (int)(paramInt4 + f2);
+      }
+    }
     for (;;)
     {
-      return null;
-      Object localObject;
-      if ((paramRecommendTroopItem.labelList == null) && (paramRecommendTroopItem.x935RgroupInfo != null)) {
-        localObject = new oidb_0x935.RgroupInfo();
-      }
-      try
-      {
-        ((oidb_0x935.RgroupInfo)localObject).mergeFrom(paramRecommendTroopItem.x935RgroupInfo);
-        if (((oidb_0x935.RgroupInfo)localObject).rpt_group_label.has()) {
-          paramRecommendTroopItem.labelList = akfc.a(((oidb_0x935.RgroupInfo)localObject).rpt_group_label.get());
-        }
-        if ((paramRecommendTroopItem.labelList == null) || (paramRecommendTroopItem.labelList.size() <= 0)) {
-          continue;
-        }
-        localObject = new ArrayList();
-        paramRecommendTroopItem = paramRecommendTroopItem.labelList.iterator();
-        while (paramRecommendTroopItem.hasNext())
-        {
-          oidb_0x9fb.Label localLabel = (oidb_0x9fb.Label)paramRecommendTroopItem.next();
-          GroupLabel localGroupLabel = new GroupLabel();
-          Color localColor = new Color();
-          localColor.R = localLabel.edging_color.uint32_r.get();
-          localColor.G = localLabel.edging_color.uint32_g.get();
-          localColor.B = localLabel.edging_color.uint32_b.get();
-          localGroupLabel.edging_color = localColor;
-          localColor = new Color();
-          localColor.R = localLabel.text_color.uint32_r.get();
-          localColor.G = localLabel.text_color.uint32_g.get();
-          localColor.B = localLabel.text_color.uint32_b.get();
-          localGroupLabel.text_color = localColor;
-          localGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
-          localGroupLabel.type = localLabel.uint32_label_attr.get();
-          ((ArrayList)localObject).add(localGroupLabel);
-        }
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          localInvalidProtocolBufferMicroException.printStackTrace();
-        }
-        return localInvalidProtocolBufferMicroException;
-      }
-    }
-  }
-  
-  public static void a(View paramView, Context paramContext, ShowExternalTroop paramShowExternalTroop)
-  {
-    if (paramShowExternalTroop == null) {
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_Myb.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9, paramInt11);
+      this.jdField_b_of_type_Myb.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10, paramInt12);
       return;
     }
-    GroupInfo localGroupInfo = new GroupInfo();
-    try
-    {
-      localGroupInfo.lCode = Long.valueOf(paramShowExternalTroop.troopUin).longValue();
-      localGroupInfo.strName = paramShowExternalTroop.troopName;
-      if (!TextUtils.isEmpty(paramShowExternalTroop.troopDesText)) {
-        localGroupInfo.strIntro = paramShowExternalTroop.troopDesText;
-      }
-      if ((paramShowExternalTroop.labelList != null) && (paramShowExternalTroop.labelList.size() != 0))
-      {
-        ArrayList localArrayList = new ArrayList();
-        paramShowExternalTroop = paramShowExternalTroop.labelList.iterator();
-        while (paramShowExternalTroop.hasNext())
-        {
-          GroupLabel.Label localLabel = (GroupLabel.Label)paramShowExternalTroop.next();
-          GroupLabel localGroupLabel = new GroupLabel();
-          Color localColor = new Color();
-          localColor.R = localLabel.edging_color.uint32_r.get();
-          localColor.G = localLabel.edging_color.uint32_g.get();
-          localColor.B = localLabel.edging_color.uint32_b.get();
-          localGroupLabel.edging_color = localColor;
-          localColor = new Color();
-          localColor.R = localLabel.text_color.uint32_r.get();
-          localColor.G = localLabel.text_color.uint32_g.get();
-          localColor.B = localLabel.text_color.uint32_b.get();
-          localGroupLabel.text_color = localColor;
-          localGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
-          localGroupLabel.type = localLabel.uint32_label_attr.get();
-          localArrayList.add(localGroupLabel);
-        }
-      }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(a, 2, "fillCustomView NumberFormatException");
-        }
-      }
-      localGroupInfo.labels = localNumberFormatException;
-      azmn.a(paramView, localGroupInfo, paramContext, false);
-    }
   }
   
-  public static void a(View paramView, Context paramContext, AccountSearchPb.record paramrecord)
+  public final boolean a()
   {
-    if (paramrecord == null) {
-      return;
-    }
-    GroupInfo localGroupInfo = new GroupInfo();
-    try
-    {
-      localGroupInfo.lCode = paramrecord.code.get();
-      localGroupInfo.strName = paramrecord.name.get();
-      if ((paramrecord.brief.has()) && (!TextUtils.isEmpty(paramrecord.brief.get()))) {
-        localGroupInfo.strIntro = paramrecord.brief.get();
-      }
-      if ((paramrecord.msg_group_labels.has()) && (!paramrecord.msg_group_labels.isEmpty()))
-      {
-        ArrayList localArrayList = new ArrayList();
-        paramrecord = paramrecord.msg_group_labels.get().iterator();
-        while (paramrecord.hasNext())
-        {
-          AccountSearchPb.Label localLabel = (AccountSearchPb.Label)paramrecord.next();
-          GroupLabel localGroupLabel = new GroupLabel();
-          Color localColor = new Color();
-          localColor.R = localLabel.edging_color.uint32_r.get();
-          localColor.G = localLabel.edging_color.uint32_g.get();
-          localColor.B = localLabel.edging_color.uint32_b.get();
-          localGroupLabel.edging_color = localColor;
-          localColor = new Color();
-          localColor.R = localLabel.text_color.uint32_r.get();
-          localColor.G = localLabel.text_color.uint32_g.get();
-          localColor.B = localLabel.text_color.uint32_b.get();
-          localGroupLabel.text_color = localColor;
-          localGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
-          localGroupLabel.type = localLabel.uint32_label_attr.get();
-          localArrayList.add(localGroupLabel);
-        }
-      }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(a, 2, "fillCustomView NumberFormatException");
-        }
-      }
-      localGroupInfo.labels = localNumberFormatException;
-      azmn.a(paramView, localGroupInfo, paramContext, false);
-    }
+    return (myb.a(this.jdField_a_of_type_Myb)) && (myb.a(this.jdField_b_of_type_Myb));
   }
   
-  public static View b(Context paramContext, ViewGroup paramViewGroup, int paramInt1, boolean paramBoolean, int paramInt2)
+  public boolean b()
   {
-    paramContext = azmn.a(paramContext, paramViewGroup, paramInt2, 2131561063);
-    paramViewGroup = (azmp)paramContext.getTag();
-    paramViewGroup.a.setMaxLabelCount(paramInt1);
-    paramViewGroup.a.setmIsNeedPriority(paramBoolean);
-    paramViewGroup.b = 1;
-    return paramContext;
+    if (a()) {
+      return false;
+    }
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      long l = AnimationUtils.currentAnimationTimeMillis() - myb.a(this.jdField_a_of_type_Myb);
+      int i = myb.b(this.jdField_a_of_type_Myb);
+      if (l < i)
+      {
+        float f = (float)l / i;
+        if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
+        for (f = a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
+        {
+          if (!myb.a(this.jdField_a_of_type_Myb)) {
+            this.jdField_a_of_type_Myb.b(f);
+          }
+          if (myb.a(this.jdField_b_of_type_Myb)) {
+            break;
+          }
+          this.jdField_b_of_type_Myb.b(f);
+          break;
+        }
+      }
+      a();
+      continue;
+      if ((!myb.a(this.jdField_a_of_type_Myb)) && (!this.jdField_a_of_type_Myb.b()) && (!this.jdField_a_of_type_Myb.a())) {
+        this.jdField_a_of_type_Myb.a();
+      }
+      if ((!myb.a(this.jdField_b_of_type_Myb)) && (!this.jdField_b_of_type_Myb.b()) && (!this.jdField_b_of_type_Myb.a())) {
+        this.jdField_b_of_type_Myb.a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mya
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,58 @@
-import android.text.TextUtils;
+import android.os.FileObserver;
+import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
-import java.security.KeyFactory;
-import java.security.Signature;
-import java.security.spec.X509EncodedKeySpec;
 
 public class ajov
+  extends FileObserver
 {
-  private String a;
-  private String b;
+  private boolean a;
   
-  public ajov(String paramString1, String paramString2)
+  private void a()
   {
-    this.b = paramString1;
-    this.a = paramString2;
+    if (!this.a)
+    {
+      this.a = true;
+      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
+    }
   }
   
-  public static boolean a(byte[] paramArrayOfByte1, String paramString, byte[] paramArrayOfByte2)
+  public void onEvent(int paramInt, String paramString)
   {
-    if ((paramArrayOfByte1 == null) || (TextUtils.isEmpty(paramString)) || (paramArrayOfByte2 == null) || (paramArrayOfByte2.length == 0) || (paramArrayOfByte1.length == 0)) {}
+    if ((paramInt & 0x20) == 32) {
+      if (QLog.isColorLevel()) {
+        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
+      }
+    }
     do
     {
-      return false;
-      try
+      return;
+      if ((paramInt & 0x400) == 1024)
       {
-        paramString = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(bbco.decode(paramString.getBytes("UTF-8"), 0)));
-        Signature localSignature = Signature.getInstance("SHA1WithRSA");
-        localSignature.initVerify(paramString);
-        localSignature.update(paramArrayOfByte1);
-        boolean bool = localSignature.verify(paramArrayOfByte2);
-        return bool;
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
+        }
+        a();
+        return;
       }
-      catch (Throwable paramArrayOfByte1) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("RSAVerify", 2, "verify failed");
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool = true;
-    try
-    {
-      if ((bbdx.a(this.a)) && (bbdx.a(this.b)))
+      if ((paramInt & 0x200) == 512)
       {
-        byte[] arrayOfByte1 = bbdx.a(this.a);
-        byte[] arrayOfByte2 = bbdx.a(this.b);
-        if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0) || (arrayOfByte2 == null) || (arrayOfByte2.length == 0)) {
-          break label104;
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
         }
-        if (paramInt == 0) {
-          return a(arrayOfByte1, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq8i/7++SDj/syS1oKlYdNJXuRQo1IxcizuFBwq9Ohi9q9u0GInkVFi/3mRU6opILNqNVUoVncxnvfrBrrzxXgPkOow4TFTfo0f2wQRxsuVud/Fjtiz256JKFvIXHdTJ+ZAFIHLtcJMrDhvTUgIIfv5uDZIXARy2KFSzUhqoEwZt3I3Uv9beVecgYofjQ/N/YtG2uWb5dpHMXfsq6JpEpfKxbbFPYJLnrMol0ngsgDrF1h3C28R6l28jFL1nzkxBNt1dIrmitveA0dXbZhYWpRDjg7Ywwt96c1Qq85rs+TL6pNKAYt7aJy/6+PGfMcbkRrtsL72eokicKHnMKVC84fQIDAQAB", arrayOfByte2);
-        }
-        if (1 != paramInt) {
-          break label102;
-        }
-        bool = a(arrayOfByte1, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ZRiTq5kd+Bsb7Rsvrk/8kF3jRPEAln7kLVAKRi4+jb/gdKEAI9y5jhuyobFq9jLMqKCYKJKb8v/KaGjX0LFZg5+FnC/duF829s7lWPKXNggne+hQOwhWFiamCwf8r8Hzi3YmrKPR4iA/bJUwTbey9T0hKpYbB9QA7IpIQAmGd4cn1ylq/2vblqNwpVV53+SCSg5XRqIXwPYRL9siMZEJAtXbjbpHw8B18zYUGlh2XRJssZyNtgtHOQIvwmdUOGTVRTt7sBZy7adUnq3cpH6/qpdLlAVUAFq/WLwUHNviC+uW47884PSdwqHg8NdeIhitfbcdtOmCNt3OJUvf91L/QIDAQAB", arrayOfByte2);
-        return bool;
+        a();
+        return;
       }
+    } while ((paramInt & 0x8) != 8);
+    if (QLog.isColorLevel()) {
+      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      return false;
-    }
-    catch (Throwable localThrowable)
-    {
-      return false;
-    }
-    bool = false;
-    label102:
-    return bool;
-    label104:
-    return false;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajov
  * JD-Core Version:    0.7.0.1
  */

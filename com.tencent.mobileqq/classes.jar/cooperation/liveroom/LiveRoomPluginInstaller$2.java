@@ -1,11 +1,11 @@
 package cooperation.liveroom;
 
-import bglh;
+import bimg;
 
 class LiveRoomPluginInstaller$2
   implements Runnable
 {
-  LiveRoomPluginInstaller$2(LiveRoomPluginInstaller paramLiveRoomPluginInstaller, bglh parambglh, String paramString) {}
+  LiveRoomPluginInstaller$2(LiveRoomPluginInstaller paramLiveRoomPluginInstaller, bimg parambimg, String paramString) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class LiveRoomPluginInstaller$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomPluginInstaller.2
  * JD-Core Version:    0.7.0.1
  */

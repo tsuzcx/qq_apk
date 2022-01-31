@@ -1,35 +1,39 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.graphics.Rect;
+import java.util.Arrays;
 
-class ansg
-  implements View.OnClickListener
+public class ansg
 {
-  ansg(ansf paramansf, Dialog paramDialog) {}
+  public int a;
+  public Rect a;
+  public anrz a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c = 50;
+  public int d = -1;
+  public int e = 1;
   
-  public void onClick(View paramView)
+  public ansg()
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    paramView = (answ)this.jdField_a_of_type_Ansf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
-    CustomEmotionData localCustomEmotionData = this.jdField_a_of_type_Ansf.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
-    aoaz localaoaz = new aoaz();
-    localaoaz.jdField_c_of_type_Int = 4;
-    localaoaz.jdField_d_of_type_JavaLangString = paramView.a(localCustomEmotionData);
-    localaoaz.jdField_d_of_type_Int = 2;
-    localaoaz.jdField_c_of_type_JavaLangString = localCustomEmotionData.eId;
-    localaoaz.e = localCustomEmotionData.url;
-    localaoaz.jdField_g_of_type_JavaLangString = localCustomEmotionData.RomaingType;
-    localaoaz.jdField_g_of_type_Int = localCustomEmotionData.emoId;
-    localaoaz.f = localCustomEmotionData.resid;
-    AIOEmotionFragment.a(this.jdField_a_of_type_Ansf.jdField_a_of_type_AndroidContentContext, localaoaz, null);
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "CommonAttrs [key=" + this.jdField_b_of_type_JavaLangString + ", mRect=" + this.jdField_a_of_type_AndroidGraphicsRect + ", count=" + this.jdField_a_of_type_Int + ", duration=" + this.c + ", align=" + this.d + ", mBigImgPath=" + this.jdField_a_of_type_JavaLangString + ", repeatCount=" + this.jdField_b_of_type_Int + ", mAnimationPath=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansg
  * JD-Core Version:    0.7.0.1
  */

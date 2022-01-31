@@ -190,7 +190,7 @@ class AbsListView$PositionScroller
     case 3: 
     case 2: 
     case 4: 
-      label875:
+      label944:
       do
       {
         do
@@ -287,7 +287,10 @@ class AbsListView$PositionScroller
               } while (k <= m);
               this.this$0.smoothScrollBy(k - m, this.e);
               return;
-            } while (k == this.d);
+              if (QLog.isColorLevel()) {
+                QLog.d("XListView", 2, new Object[] { " MOVE_UP_POS:firstPos=", Integer.valueOf(k), " mLastSeenPos=", Integer.valueOf(this.d), " mTargetPos", Integer.valueOf(this.b) });
+              }
+            } while ((k == this.d) && (k <= this.b));
             if ((AbsListView.access$3000(this.this$0)) && (this.b == 0))
             {
               m = this.this$0.getChildCount();
@@ -327,7 +330,7 @@ class AbsListView$PositionScroller
               break;
             }
             if (Build.VERSION.SDK_INT < 16) {
-              break label875;
+              break label944;
             }
             this.this$0.postOnAnimation(this);
             return;
@@ -390,7 +393,7 @@ class AbsListView$PositionScroller
     {
       f1 = Math.min(Math.abs(i / j), 1.0F);
       if (m >= k) {
-        break label1223;
+        break label1292;
       }
       this.this$0.smoothScrollBy((int)(f1 * -this.this$0.getHeight()), this.e);
       if (Build.VERSION.SDK_INT < 16) {
@@ -404,7 +407,7 @@ class AbsListView$PositionScroller
     }
     this.this$0.post(this);
     return;
-    label1223:
+    label1292:
     if (m > n)
     {
       this.this$0.smoothScrollBy((int)(f1 * this.this$0.getHeight()), this.e);

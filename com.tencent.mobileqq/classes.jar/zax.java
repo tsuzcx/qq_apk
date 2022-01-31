@@ -1,175 +1,127 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.gdtad.views.image.GdtDrawableLoader.2;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.lang.ref.WeakReference;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.webviewplugin.QzonePlugin.1;
+import com.tencent.biz.webviewplugin.QzonePlugin.2;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.WebView;
+import java.util.Map;
 
 public class zax
+  extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private WeakReference<zaz> jdField_a_of_type_JavaLangRefWeakReference;
-  private URL jdField_a_of_type_JavaNetURL;
+  public static final String a;
+  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   private boolean jdField_a_of_type_Boolean;
+  private String b;
+  private String c = "";
+  private String d;
   
-  public zax(String paramString, WeakReference<zaz> paramWeakReference)
+  static
   {
-    try
+    jdField_a_of_type_JavaLangString = zax.class.getSimpleName();
+  }
+  
+  public zax()
+  {
+    this.mPluginNameSpace = jdField_a_of_type_JavaLangString;
+  }
+  
+  private void a()
+  {
+    new Handler().post(new QzonePlugin.2(this));
+  }
+  
+  private void a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (this.d == null)) {}
+    while ((this.d != null) && (this.c != null) && (this.c.equals(this.d))) {
+      return;
+    }
+    new Handler().post(new QzonePlugin.1(this, paramArrayOfByte));
+    this.c = this.d;
+  }
+  
+  public boolean a(String paramString)
+  {
+    Intent localIntent = this.mRuntime.a().getIntent();
+    Bundle localBundle = localIntent.getExtras();
+    byte[] arrayOfByte = localBundle.getByteArray("post_data");
+    boolean bool = localBundle.getBoolean("UrlorData", true);
+    this.d = paramString;
+    if (localBundle.getString("originalURL") != null) {
+      this.d = localBundle.getString("originalURL");
+    }
+    if (arrayOfByte == null)
     {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_JavaNetURL = new URL(paramString);
-        this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+      if (bool) {
+        return false;
       }
-      return;
+      a();
+      return true;
     }
-    catch (MalformedURLException paramWeakReference)
-    {
-      yxp.d("GdtDrawableLoader", "GdtDrawableLoader error " + paramString, paramWeakReference);
-    }
-  }
-  
-  private URLDrawable.URLDrawableListener a()
-  {
-    return new zay(this);
-  }
-  
-  private String a()
-  {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getURL() != null)) {
-      return this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
-    }
-    if (b()) {
-      return this.jdField_a_of_type_JavaNetURL.toString();
-    }
-    return null;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return;
-    }
-    yxp.b("GdtDrawableLoader", "notify " + paramBoolean + " " + a());
-    this.jdField_a_of_type_Boolean = true;
-    if (paramBoolean)
-    {
-      ((zaz)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      return;
-    }
-    ((zaz)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b(this.jdField_a_of_type_ComTencentImageURLDrawable);
-  }
-  
-  private boolean a()
-  {
-    if ((!b()) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null) || (this.jdField_a_of_type_Int >= 3)) {
-      return false;
-    }
-    yxp.b("GdtDrawableLoader", "retry " + a());
-    this.jdField_a_of_type_Int += 1;
-    this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+    a(arrayOfByte);
+    localIntent.removeExtra("post_data");
     return true;
   }
   
-  private void b()
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    int j = 1;
-    if ((!b()) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null)) {
-      yxp.b("GdtDrawableLoader", "update error " + a());
-    }
-    for (;;)
+    if ((paramLong == 8589934601L) && (this.b != null) && (!"".equals(this.b)))
     {
-      return;
-      int i;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 0)
+      paramString = new Intent();
+      paramString.setAction(this.b);
+      paramString.putExtra("key_qzone_vip_open_back_need_check_vipinfo", this.jdField_a_of_type_Boolean);
+      if ("com.tencent.mobileqq.opencenter.vipInfo".equals(this.b))
       {
-        yxp.b("GdtDrawableLoader", "drawable status is loading " + a());
-        i = j;
-        if (!this.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted())
-        {
-          this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload(true);
-          i = j;
+        paramMap = this.mRuntime.a(this.mRuntime.a());
+        if ((paramMap != null) && ((paramMap instanceof begy))) {
+          paramString.putExtra("key_pay_action_result", ((begy)paramMap).e());
         }
       }
-      while ((i != 0) && (!this.jdField_a_of_type_Boolean))
-      {
-        new Handler(Looper.getMainLooper()).postDelayed(new GdtDrawableLoader.2(this), 100L);
-        return;
-        if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 4)
-        {
-          yxp.b("GdtDrawableLoader", "drawable status is file downloaded " + a());
-          i = j;
-        }
-        else if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
-        {
-          yxp.b("GdtDrawableLoader", "drawable status is successed " + a());
-          a(true);
-          i = 0;
-        }
-        else if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2)
-        {
-          yxp.d("GdtDrawableLoader", "drawable status is failed " + a());
-          i = j;
-          if (!a())
-          {
-            a(false);
-            i = 0;
-          }
-        }
-        else if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 3)
-        {
-          yxp.d("GdtDrawableLoader", "drawable status is cancled " + a());
-          a(false);
-          i = 0;
-        }
-        else
-        {
-          yxp.d("GdtDrawableLoader", "drawable status is " + this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() + " " + a());
-          i = 0;
-        }
-      }
+      this.mRuntime.a().sendBroadcast(paramString);
     }
+    return false;
   }
   
-  private boolean b()
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaNetURL != null;
-  }
-  
-  public URLDrawable a()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLDrawable;
-  }
-  
-  public void a()
-  {
-    if (!b())
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equalsIgnoreCase("pay://requestQzoneOpenVip")))
     {
-      yxp.d("GdtDrawableLoader", "load error");
-      return;
+      this.jdField_a_of_type_Boolean = true;
+      return true;
     }
-    yxp.b("GdtDrawableLoader", "load " + a());
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mPlayGifImage = true;
-    localURLDrawableOptions.mUseMemoryCache = true;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaNetURL, localURLDrawableOptions);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable == null)
-    {
-      yxp.d("GdtDrawableLoader", "load error " + a());
-      return;
+    if ((this.mRuntime.a().getIntent().getBooleanExtra("fromQZone", false)) && ((paramString2.equals("http")) || (paramString2.equals("https")))) {
+      return a(paramString1);
     }
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(a());
-    b();
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = null;
+  }
+  
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  {
+    super.onWebViewCreated(paramCustomWebView);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
+    if (this.mRuntime.a().getIntent() != null) {
+      this.b = this.mRuntime.a().getIntent().getStringExtra("broadcastAction");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zax
  * JD-Core Version:    0.7.0.1
  */

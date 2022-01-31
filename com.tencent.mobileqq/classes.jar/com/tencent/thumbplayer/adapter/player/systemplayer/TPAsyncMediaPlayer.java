@@ -30,7 +30,7 @@ public class TPAsyncMediaPlayer
   private MediaPlayer.OnSeekCompleteListener mOnSeekCompleteListenerInner = new TPAsyncMediaPlayer.1(this);
   private final Object mReleaseCondition = new Object();
   private final Object mResetCondition = new Object();
-  private Object mStateLock = new Object();
+  private final Object mStateLock = new Object();
   private final Object mStopCondition = new Object();
   
   public TPAsyncMediaPlayer()
@@ -388,7 +388,7 @@ public class TPAsyncMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPAsyncMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,76 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tms
-  extends sys
 {
-  public String a;
-  
-  public String a()
+  public static tms a()
   {
-    return sxm.a("StorySvc.get_profile_year_node_info");
+    return tmu.a();
   }
   
-  public syn a(byte[] paramArrayOfByte)
+  public List<tmv> a(ArrayList paramArrayList)
   {
-    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
-    try
+    ArrayList localArrayList = new ArrayList();
+    if (!CollectionUtils.isEmpty(paramArrayList))
     {
-      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
-      return new tmt(localRspProfileYearNodeList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+      int i = 0;
+      while (i < paramArrayList.size())
       {
-        paramArrayOfByte.printStackTrace();
+        if ((paramArrayList.get(i) instanceof stSimpleMetaFeed))
+        {
+          stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramArrayList.get(i);
+          tmv localtmv = new tmv();
+          localtmv.a(localstSimpleMetaFeed);
+          localArrayList.add(localtmv);
+        }
+        i += 1;
       }
     }
+    return localArrayList;
   }
   
-  protected byte[] a()
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, WSRedDotPushMsg paramWSRedDotPushMsg, List<stSimpleMetaFeed> paramList, tmr paramtmr)
   {
-    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
-    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqProfileYearNodeList.toByteArray();
+    ArrayList localArrayList = new ArrayList();
+    String str = "";
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        localArrayList.add(((stSimpleMetaFeed)paramList.next()).id);
+      }
+    }
+    paramList = str;
+    if (paramWSRedDotPushMsg != null) {
+      paramList = paramWSRedDotPushMsg.mMsgData;
+    }
+    paramWSRedDotPushMsg = new tmt(this, paramtmr);
+    byte b1;
+    if (paramBoolean1)
+    {
+      b1 = 1;
+      if (!paramBoolean2) {
+        break label155;
+      }
+    }
+    label155:
+    for (byte b2 = 1;; b2 = 0)
+    {
+      paramWSRedDotPushMsg = new the(new tkn("", b1, b2, localArrayList, paramInt, "", "", "", paramList), null, paramWSRedDotPushMsg, 1001);
+      tgx.a().a(paramWSRedDotPushMsg);
+      return;
+      b1 = 0;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tms
  * JD-Core Version:    0.7.0.1
  */

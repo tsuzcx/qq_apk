@@ -3,6 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include android:id="@id/e6t" layout="@layout/aw0" />
     <include android:id="@id/qzone_feed_entry" layout="@layout/m4" />
+    <include android:id="@id/mn3" android:visibility="gone" layout="@layout/c5w" />
     <FrameLayout android:id="@id/fcs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:orientation="vertical" android:id="@id/gm3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/mpf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" />
 </LinearLayout>

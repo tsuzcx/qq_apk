@@ -1,26 +1,34 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aopo
-  implements aptw
+public class aopo
+  implements aoga<String>
 {
-  aopo(aopn paramaopn) {}
+  public boolean a;
   
-  public void a()
+  public void a(String paramString)
   {
-    UniformDownloadActivity.a(this.a.a);
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
-  }
-  
-  public void b()
-  {
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("QFileIPv6ConfigBean", 1, "receiveAllConfigs|type: 449configContent is empty");
+      return;
+    }
+    try
+    {
+      this.a = new JSONObject(paramString).getJSONObject("ipv6Config").getBoolean("allSwitch");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileIPv6ConfigBean", 1, paramString, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopo
  * JD-Core Version:    0.7.0.1
  */

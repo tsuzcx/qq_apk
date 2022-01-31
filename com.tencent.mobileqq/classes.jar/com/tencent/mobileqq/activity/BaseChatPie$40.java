@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import acup;
-import aibs;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 class BaseChatPie$40
   implements Runnable
 {
-  BaseChatPie$40(BaseChatPie paramBaseChatPie, aibs paramaibs) {}
+  BaseChatPie$40(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    if ((!this.a.b()) && (this.this$0.a != null)) {
-      this.this$0.a.d();
-    }
+    this.this$0.a.showOverScrollHeader();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.40
  * JD-Core Version:    0.7.0.1
  */

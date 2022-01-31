@@ -1,23 +1,20 @@
-import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class nki
-  implements DialogInterface.OnClickListener
+public class nki
+  implements DialogInterface.OnDismissListener
 {
-  nki(nkb paramnkb, JsResult paramJsResult, Context paramContext) {}
+  public nki(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    this.a.o = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nki
  * JD-Core Version:    0.7.0.1
  */

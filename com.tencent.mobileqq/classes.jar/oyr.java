@@ -1,52 +1,29 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
+import com.tencent.common.app.AppInterface;
+import java.util.HashMap;
 
 public class oyr
-  extends oyp
+  implements View.OnClickListener
 {
-  public TextView a;
-  public BaseArticleInfo a;
-  public KandianUrlImageView a;
-  public TextView b;
-  public BaseArticleInfo b;
-  public KandianUrlImageView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
+  public oyr(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
   
-  public oyr(Context paramContext, oye paramoye)
+  public void onClick(View paramView)
   {
-    super(paramContext, paramoye);
-  }
-  
-  public View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560102, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367163));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369128));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369131));
-    this.c = ((TextView)paramViewGroup.findViewById(2131369108));
-    this.d = ((TextView)paramViewGroup.findViewById(2131369127));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367166));
-    this.e = ((TextView)paramViewGroup.findViewById(2131375293));
-    this.f = ((TextView)paramViewGroup.findViewById(2131375297));
-    this.g = ((TextView)paramViewGroup.findViewById(2131375274));
-    this.h = ((TextView)paramViewGroup.findViewById(2131375292));
-    paramViewGroup.setTag(this);
-    return paramViewGroup;
+    this.a.f();
+    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {
+      return;
+    }
+    ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
+    paramView = new HashMap();
+    paramView.put("stat_src", "5");
+    noy.a(new obk().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(noy.t).b(noy.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(noy.a(paramView)).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oyr
  * JD-Core Version:    0.7.0.1
  */

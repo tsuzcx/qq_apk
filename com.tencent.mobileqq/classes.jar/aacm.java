@@ -1,24 +1,11 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.TextView;
 
 public class aacm
-  extends aabm
 {
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull aabi paramaabi)
+  public static void a(Context paramContext, TextView paramTextView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 7: 
-      SosoInterface.a(new aacp(paramaabi, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
-    }
-    for (;;)
-    {
-      return true;
-      SosoInterface.a(new aaco(paramaabi, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
-    }
+    if ((paramContext != null) && (paramTextView == null)) {}
   }
 }
 

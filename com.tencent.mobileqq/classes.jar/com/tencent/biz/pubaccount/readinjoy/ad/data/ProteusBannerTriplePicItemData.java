@@ -6,12 +6,12 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
-import oac;
-import oai;
+import odm;
+import odv;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rpr;
-import sfa;
+import sfq;
+import swu;
 
 public class ProteusBannerTriplePicItemData
   extends AdData
@@ -24,8 +24,8 @@ public class ProteusBannerTriplePicItemData
   private JSONObject a()
   {
     JSONObject localJSONObject1 = new JSONObject();
-    if (oai.a(this)) {
-      return oac.a(localJSONObject1, this);
+    if (odv.a(this)) {
+      return odm.a(localJSONObject1, this);
     }
     try
     {
@@ -41,9 +41,9 @@ public class ProteusBannerTriplePicItemData
       }
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 2))
       {
-        Object localObject3 = sfa.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), 4);
-        Object localObject2 = sfa.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(1), 4);
-        localObject1 = sfa.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(2), 4);
+        Object localObject3 = swu.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), 4);
+        Object localObject2 = swu.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(1), 4);
+        localObject1 = swu.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(2), 4);
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("multi_img_url1", ((URL)localObject3).toString());
         localJSONObject1.put("id_multi_img_1", localJSONObject2);
@@ -96,13 +96,13 @@ public class ProteusBannerTriplePicItemData
   public void a()
   {
     localObject3 = null;
-    this.b = a();
+    this.c = a();
     try
     {
-      rpr localrpr = rpr.a("native_article", true);
+      sfq localsfq = sfq.a("native_article", true);
       localObject1 = localObject3;
-      if (localrpr != null) {
-        localObject1 = localrpr.getTemplateBean(this.b);
+      if (localsfq != null) {
+        localObject1 = localsfq.getTemplateBean(this.c);
       }
     }
     catch (JSONException localJSONException)
@@ -121,7 +121,7 @@ public class ProteusBannerTriplePicItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData
  * JD-Core Version:    0.7.0.1
  */

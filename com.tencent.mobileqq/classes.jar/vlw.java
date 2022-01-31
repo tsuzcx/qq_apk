@@ -1,47 +1,61 @@
-import android.location.Location;
-import android.location.LocationListener;
-import android.os.Bundle;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-class vlw
-  implements LocationListener
+public class vlw
+  extends vli
 {
-  vlw(vls paramvls) {}
+  private ShareFromMemoryPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo;
+  private String jdField_a_of_type_JavaLangString = "";
+  private vld jdField_a_of_type_Vld;
   
-  public void onLocationChanged(Location paramLocation)
+  public vlw(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo)
   {
-    if (paramLocation != null)
-    {
-      ved.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
-      if (this.a.b.size() >= 10)
-      {
-        this.a.b.remove(0);
-        ved.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
-      }
-      this.a.b.add(new Location(paramLocation));
-      return;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo = paramShareFromMemoryPlayInfo;
+    this.jdField_a_of_type_Vld = new vld(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
+  }
+  
+  public List<vlk> a(List<vld> paramList)
+  {
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new vlx(this, (vld)paramList.next()));
     }
-    ved.d("DoodleEmojiManager", "onLocationChanged, location is null.");
+    return localArrayList;
   }
   
-  public void onProviderDisabled(String paramString)
+  public vlg a()
   {
-    ved.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.videoListOrder == 0)
+    {
+      localObject = ((wkv)urr.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId, 1);
+      if ((localObject == null) || (((FeedVideoInfo)localObject).mVideoItemList.size() <= 0)) {}
+    }
+    for (Object localObject = ((StoryVideoItem)((FeedVideoInfo)localObject).mVideoItemList.get(0)).mVid;; localObject = null)
+    {
+      wsv.d("Q.qqstory.player.data.ShareFromMemoryPlayPageLoader", "getStartInfo GroupId=" + this.jdField_a_of_type_Vld + ",vid=" + (String)localObject + ",feedId=" + this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
+      return new vlg(this.jdField_a_of_type_Vld, (String)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
+    }
   }
   
-  public void onProviderEnabled(String paramString)
+  public void a() {}
+  
+  public void a(int paramInt, vlj paramvlj)
   {
-    ved.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
+    paramvlj.a(new ErrorMessage(), Collections.singletonList(this.jdField_a_of_type_Vld), true);
   }
   
-  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
-  {
-    ved.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vlw
  * JD-Core Version:    0.7.0.1
  */

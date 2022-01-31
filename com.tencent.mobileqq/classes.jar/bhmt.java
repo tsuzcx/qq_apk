@@ -1,25 +1,10 @@
-public abstract class bhmt<T, P>
+public abstract interface bhmt
 {
-  private volatile T a;
-  
-  protected abstract T a(P paramP);
-  
-  public final T b(P paramP)
-  {
-    if (this.a == null) {}
-    try
-    {
-      if (this.a == null) {
-        this.a = a(paramP);
-      }
-      return this.a;
-    }
-    finally {}
-  }
+  public abstract void a(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhmt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,32 @@
+import GROUP.MessageRemindRsp;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
-class agqy
-  implements agqw
+public class agqy
+  extends alxo
 {
-  agqy(agqx paramagqx) {}
+  public agqy(TroopChatPie paramTroopChatPie) {}
   
-  public void a(long paramLong, float paramFloat, String paramString)
+  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp)
   {
-    agqx.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
-    agqx.a(this.a).a(paramLong, paramFloat, paramString);
-  }
-  
-  public void b(long paramLong)
-  {
-    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
-    agqx.a(this.a).b(paramLong);
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("vip_pretty." + this.a.jdField_a_of_type_JavaLangString, 2, "SVIPObserver.onGetBigTroopExpiredInfo, troopUin: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + " iFreezedType=" + paramMessageRemindRsp.iFreezedType + " iLhGroupExpiredTime=" + paramMessageRemindRsp.iLhGroupExpiredTime + " iGroupType=" + paramMessageRemindRsp.iGroupType);
+      }
+      ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramMessageRemindRsp);
+      TroopManager.a(paramMessageRemindRsp, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidContentContext, this.a, TroopChatPie.b(this.a));
+      return;
+    }
+    QLog.e("vip_pretty." + this.a.jdField_a_of_type_JavaLangString, 2, String.format("SVIPObserver.onGetBigTroopExpiredInfo, troopUin: %s, isSuccess: false", new Object[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqy
  * JD-Core Version:    0.7.0.1
  */

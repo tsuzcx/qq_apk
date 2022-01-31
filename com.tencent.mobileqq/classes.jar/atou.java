@@ -1,28 +1,26 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class atou
-  extends ajyr
+class atou
+  implements View.OnClickListener
 {
-  public atou(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  atou(atop paramatop, atof paramatof) {}
   
-  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
+    if (this.jdField_a_of_type_Atop.jdField_a_of_type_Atof.a()) {}
+    while (paramView.isSelected()) {
+      return;
     }
-    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
-    {
-      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
-      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
-    }
+    this.jdField_a_of_type_Atop.a(paramView);
+    this.jdField_a_of_type_Atop.jdField_a_of_type_Int = 3;
+    atof.a(this.jdField_a_of_type_Atop.jdField_a_of_type_Atof, Integer.valueOf(3));
+    azmj.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atou
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import mqq.os.MqqHandler;
 
-public abstract interface oks
-  extends ViewBase.OnClickListener
+public class oks
+  implements asry
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public oks(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  
+  public void a(HotPicData paramHotPicData)
+  {
+    this.a.a = paramHotPicData;
+    ReadInJoyCommentComponentFragment.a(this.a, null);
+    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.8.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oks
  * JD-Core Version:    0.7.0.1
  */

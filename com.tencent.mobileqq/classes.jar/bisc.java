@@ -1,24 +1,31 @@
-import com.tencent.common.app.AppInterface;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1;
 
-class bisc
-  extends biqy
+public class bisc
+  implements ServiceConnection
 {
-  bisc(bisb parambisb, AppInterface paramAppInterface) {}
-  
-  public void a(boolean paramBoolean, bist parambist)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
-    if (paramBoolean)
+    this.a.jdField_a_of_type_Biry = birz.a(paramIBinder);
+    if (this.a.jdField_a_of_type_Biry != null)
     {
-      bisb.a(this.jdField_a_of_type_Bisb).a(parambist);
-      return;
+      paramComponentName = new QfavRemoteProxyForQQ.2.1(this);
+      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
+      paramComponentName.start();
     }
-    bisb.a(this.jdField_a_of_type_Bisb).a(new bist());
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.jdField_a_of_type_Biry = null;
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bisc
  * JD-Core Version:    0.7.0.1
  */

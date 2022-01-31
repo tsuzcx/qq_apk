@@ -1,23 +1,29 @@
 package com.tencent.luan.ioc.index;
 
+import com.tencent.luan.core.Utility;
 import com.tencent.luan.ioc.InjectAnalysisService;
 import com.tencent.luan.ioc.InjectConstructor;
 import com.tencent.luan.ioc.InjectMethod;
 import com.tencent.luan.ioc.ProvideMethod;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class IndexInjectAnalysisService
   implements InjectAnalysisService
 {
-  private List<IndexInjectInfoService> indexInfos = new CopyOnWriteArrayList();
-  private volatile boolean isOpen = true;
+  private final List<IndexInjectInfoService> indexInfos;
   
-  public void addIndexInfo(IndexInjectInfoService paramIndexInjectInfoService)
+  public IndexInjectAnalysisService(List<IndexInjectInfoService> paramList)
   {
-    this.indexInfos.add(paramIndexInjectInfoService);
+    Utility.makeSureNotNull(paramList, "indexInfos");
+    this.indexInfos = paramList;
+  }
+  
+  public List<IndexInjectInfoService> getIndexInfos()
+  {
+    return new LinkedList(this.indexInfos);
   }
   
   public InjectConstructor<?> getInjectConstructor(Class<?> paramClass)
@@ -48,7 +54,7 @@ public class IndexInjectAnalysisService
     return null;
   }
   
-  public List<ProvideMethod> getProvideMethods(Class<?> paramClass)
+  public List<ProvideMethod<?>> getProvideMethods(Class<?> paramClass)
   {
     Iterator localIterator = this.indexInfos.iterator();
     while (localIterator.hasNext())
@@ -63,17 +69,12 @@ public class IndexInjectAnalysisService
   
   public boolean isValid()
   {
-    return (this.isOpen) && (this.indexInfos.size() > 0);
-  }
-  
-  public void setOpen(boolean paramBoolean)
-  {
-    this.isOpen = paramBoolean;
+    return this.indexInfos.size() > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.luan.ioc.index.IndexInjectAnalysisService
  * JD-Core Version:    0.7.0.1
  */

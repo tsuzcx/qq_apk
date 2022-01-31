@@ -1,54 +1,42 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.PluginProcessService;
+import com.tencent.shadow.dynamic.host.PpsController;
+import java.util.concurrent.CountDownLatch;
 
 class aswk
-  extends Handler
+  implements ServiceConnection
 {
-  aswk(aswg paramaswg, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aswk(aswi paramaswi, CountDownLatch paramCountDownLatch) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    Object localObject = paramMessage.getData();
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
+    QLog.i("HuayangPluginNewDownloader", 2, "onServiceConnected ");
+    aswi.a(this.jdField_a_of_type_Aswi).unbindService(this);
+    paramComponentName = PluginProcessService.wrapBinder(paramIBinder);
+    try
     {
-      paramMessage = (Bitmap)paramMessage.obj;
-      if ((paramMessage != null) && (localObject != null))
+      paramComponentName.exit();
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      for (;;)
       {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-      }
-      try
-      {
-        localObject = new FileOutputStream((File)localObject);
-        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
-        ((FileOutputStream)localObject).flush();
-        ((FileOutputStream)localObject).close();
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
+        QLog.d("HuayangPluginNewDownloader", 2, "exit over", paramComponentName);
       }
     }
   }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aswk
  * JD-Core Version:    0.7.0.1
  */

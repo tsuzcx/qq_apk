@@ -1,25 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aonz
-  extends BroadcastReceiver
 {
-  public aonz(FMActivity paramFMActivity) {}
+  public int a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static aonz a(String paramString)
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    aonz localaonz = new aonz();
+    try
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      localaonz.a = new JSONObject(paramString).optInt("preloadPskey", 0);
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localaonz.toString());
+      return localaonz;
     }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    }
+    return localaonz;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("preloadPskey:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonz
  * JD-Core Version:    0.7.0.1
  */

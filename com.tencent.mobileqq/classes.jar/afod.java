@@ -1,47 +1,23 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afod
-  extends RecyclerView.OnScrollListener
+class afod
+  extends afpq
 {
-  public afod(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  afod(aflj paramaflj)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 0)
-    {
-      paramRecyclerView = paramRecyclerView.getLayoutManager();
-      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopSuspiciousFragment.a(this.a).getItemCount())) {
-        TroopSuspiciousFragment.a(this.a);
-      }
-    }
-    if (this.a.jdField_a_of_type_Baxy != null)
-    {
-      if (paramInt == 0) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_Baxy.a();
-      this.a.jdField_a_of_type_Baxy.c();
-    }
-    label94:
-    while (!this.a.jdField_a_of_type_Baxy.a()) {
-      return;
-    }
-    this.a.jdField_a_of_type_Baxy.b();
+    super(paramaflj, null);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    return new LightVideoItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afod
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,35 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
-
-public class uhe
-  extends ste<uhc, tli>
+public abstract class uhe<T>
+  implements uhf<T>
 {
-  public uhe(uhc paramuhc)
-  {
-    super(paramuhc);
-  }
+  private uhg<T> a;
   
-  public void a(@NonNull uhc paramuhc, @NonNull tli paramtli)
+  public void a()
   {
-    if (uhc.a(paramuhc) != 1) {}
-    label149:
-    label209:
-    label218:
-    for (;;)
+    Object localObject = this.a.a();
+    if (localObject != null)
     {
+      a(localObject);
+      wsv.a("Q.qqstory.home.data.Producer", "start one consumer:%s", localObject);
       return;
-      int i = 0;
-      StoryVideoItem localStoryVideoItem;
-      if (i < paramtli.a.size())
-      {
-        localStoryVideoItem = (StoryVideoItem)paramtli.a.get(i);
-        if (!localStoryVideoItem.mVid.equals(uhc.a(paramuhc))) {}
-      }
-      for (paramtli = localStoryVideoItem;; paramtli = null)
-      {
-        if ((paramtli == null) || (paramtli.mErrorCode != 0)) {
-          break label218;
-        }
-        localStoryVideoItem = uhc.a(paramuhc).a();
-        i = localStoryVideoItem.comparedLevel;
-        int j = uhc.a(paramuhc).a.jdField_a_of_type_Int;
-        String str = uhc.a(paramuhc).a.jdField_a_of_type_JavaLangString;
-        uhc.a(paramuhc, uhc.a(paramuhc), str, false, i, j);
-        paramuhc = ((tdl)tcz.a(2)).b(paramtli.mOwnerUid);
-        if ((paramuhc != null) && (paramuhc.isVip))
-        {
-          i = 1;
-          if (i == 0) {
-            break label209;
-          }
-        }
-        for (paramuhc = "2";; paramuhc = "1")
-        {
-          vei.a("play_video", "multishoot_entry_clk", 0, j, new String[] { paramuhc, paramtli.mVid, paramtli.mOwnerUid, localStoryVideoItem.mVid });
-          return;
-          i += 1;
-          break;
-          i = 0;
-          break label149;
-        }
-      }
     }
+    wsv.d("Q.qqstory.home.data.Producer", "no data return");
   }
   
-  public Class acceptEventClass()
+  public abstract void a(T paramT);
+  
+  public void a(uhg<T> paramuhg)
   {
-    return tli.class;
+    this.a = paramuhg;
   }
   
-  public void b(@NonNull uhc paramuhc, @NonNull tli paramtli) {}
+  public void b()
+  {
+    a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhe
  * JD-Core Version:    0.7.0.1
  */

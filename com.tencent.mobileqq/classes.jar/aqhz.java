@@ -1,21 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.view.View;
 
-public class aqhz
-  implements Handler.Callback
+class aqhz
+  implements bhrf
 {
-  public aqhz(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  aqhz(aqhx paramaqhx, View paramView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a()
   {
-    MsgBackupSettingFragment.a(this.a, paramMessage);
-    return false;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhz
  * JD-Core Version:    0.7.0.1
  */

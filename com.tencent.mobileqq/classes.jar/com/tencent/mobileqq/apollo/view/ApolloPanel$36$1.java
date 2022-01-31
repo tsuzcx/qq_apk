@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajqw;
+import alij;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ApolloPanel$36$1
   implements Runnable
 {
-  public ApolloPanel$36$1(ajqw paramajqw) {}
+  public ApolloPanel$36$1(alij paramalij) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class ApolloPanel$36$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloPanel.36.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.text.TextUtils;
-import aukp;
-import bbkb;
+import awbw;
+import bdiv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -48,8 +48,8 @@ class ShortVideoTravellerManager$2
         return;
       }
       label140:
-      String str = bbkb.r(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
-      int i = bbkb.aG(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
+      String str = bdiv.s(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
+      int i = bdiv.aH(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
       if (!TextUtils.isEmpty(str)) {
         this.this$0.a(str, i);
       }
@@ -59,7 +59,7 @@ class ShortVideoTravellerManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager.2
  * JD-Core Version:    0.7.0.1
  */

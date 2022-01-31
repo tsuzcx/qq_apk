@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import actj;
+import aekt;
 import android.content.Context;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -15,7 +15,7 @@ class AIOLongShotHelper$6
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mPlayGifImage = true;
-    int i = actj.a(248.0F, AIOLongShotHelper.a(this.this$0).a.getResources());
+    int i = aekt.a(248.0F, AIOLongShotHelper.a(this.this$0).a.getResources());
     int j = (int)(i * 420.0F / 472.0F);
     localURLDrawableOptions.mRequestWidth = i;
     localURLDrawableOptions.mRequestHeight = j;
@@ -24,7 +24,7 @@ class AIOLongShotHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper.6
  * JD-Core Version:    0.7.0.1
  */

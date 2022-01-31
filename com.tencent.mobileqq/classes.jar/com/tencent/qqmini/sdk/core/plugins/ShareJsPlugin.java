@@ -2,28 +2,29 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import behq;
-import behr;
-import bejl;
-import bekg;
-import beki;
-import bekp;
-import bekr;
-import bekz;
-import bely;
-import berl;
-import besj;
-import besl;
-import betc;
-import bfhk;
-import bfhp;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import bgho;
+import bgia;
+import bgic;
+import bgjm;
+import bgjw;
+import bgkc;
+import bgkd;
+import bgkk;
+import bglo;
+import bhih;
+import com.tencent.qqmini.sdk.core.model.InnerShareData;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.ShareProxy;
+import com.tencent.qqmini.sdk.launcher.model.AppConfigInfo;
 import com.tencent.qqmini.sdk.launcher.model.EntryModel;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
+import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.ui.MoreItem;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+import com.tencent.qqmini.sdk.utils.WnsUtil;
 import java.io.File;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,13 +34,8 @@ public class ShareJsPlugin
   extends BaseJsPlugin
 {
   private static final int ACTION_SHEET_DEFAULT_TYPE = 0;
-  public static final int Custom_Ark = 2;
-  public static final int MiniApp = 0;
-  public static final int MiniGame = 1;
   public static final int NEED_HIDE = 0;
   public static final int NEED_SHOW = 1;
-  public static final int QQ_ARK = 0;
-  public static final int QQ_Qzone = 1;
   public static final String SHARE_ITEM_QQ = "qq";
   public static final String SHARE_ITEM_QZONE = "qzone";
   public static final String SHARE_ITEM_WECHAT_FRIEND = "wechatFriends";
@@ -49,51 +45,52 @@ public class ShareJsPlugin
   public static final int SHARE_MENU_STATE_UNDEFINED = -1;
   private static final String TAG = "ShareJsPlugin";
   public static final int UNDEFINED = -1;
-  public static final int Weixin_Aio = 3;
-  public static final int Weixin_pengyouquan = 4;
   private final int ACTION_SHEET_SHARE_PANEL_TYPE = 1;
-  private MiniAppProxy mMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
   private ShareProxy mShareProxy = (ShareProxy)ProxyManager.get(ShareProxy.class);
   
-  public void hideShareMenu(bekr parambekr)
+  public void hideShareMenu(bgkd parambgkd)
   {
     int i = -1;
-    int m = 0;
+    int k = 0;
     for (;;)
     {
       int j;
-      int k;
       int n;
+      int m;
       try
       {
-        localObject = (JSONArray)new JSONObject(parambekr.jdField_b_of_type_JavaLangString).opt("hideShareItems");
+        localObject = (JSONArray)new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).opt("hideShareItems");
         if (localObject != null) {
-          break label192;
+          break label200;
         }
-        j = -1;
-        k = 0;
-        localObject = (besl)this.mMiniAppContext.a(beki.a());
+        j = 0;
+        n = 0;
+        m = 0;
+        i = k;
+        k = n;
+        localObject = bgic.a(this.mMiniAppContext);
         if (m == 0) {
-          ((besl)localObject).e = false;
+          ((ShareState)localObject).withShareQQ = false;
         }
         if (k == 0) {
-          ((besl)localObject).d = false;
+          ((ShareState)localObject).withShareQzone = false;
         }
         if (j == 0) {
-          ((besl)localObject).f = false;
+          ((ShareState)localObject).withShareWeChatFriend = false;
         }
         if (i == 0) {
-          ((besl)localObject).g = false;
+          ((ShareState)localObject).withShareWeChatMoment = false;
         }
-        parambekr.a();
+        ((ShareState)localObject).withShareOthers = false;
+        parambgkd.a();
         return;
       }
-      catch (JSONException parambekr)
+      catch (JSONException parambgkd)
       {
         Object localObject;
         String str;
         boolean bool;
-        parambekr.printStackTrace();
+        parambgkd.printStackTrace();
         return;
       }
       if (n < ((JSONArray)localObject).length())
@@ -106,18 +103,18 @@ public class ShareJsPlugin
           k = 0;
         }
         if (str.equalsIgnoreCase("wechatFriends")) {
-          j = 1;
+          j = 0;
         }
         bool = str.equalsIgnoreCase("wechatMoment");
         if (bool) {
-          i = 1;
+          i = 0;
         }
         n += 1;
       }
       else
       {
         continue;
-        label192:
+        label200:
         n = 0;
         j = -1;
         k = -1;
@@ -126,117 +123,108 @@ public class ShareJsPlugin
     }
   }
   
-  public void shareAppMessage(bekr parambekr)
+  public void shareAppMessage(bgkd parambgkd)
   {
     int k;
     int j;
-    besl localbesl;
+    ShareState localShareState;
     Object localObject2;
     int i;
-    label69:
+    label61:
+    label116:
+    label122:
     String str1;
-    label130:
-    label136:
-    String str5;
-    label235:
-    besj localbesj;
     for (;;)
     {
       Object localObject3;
       try
       {
-        if (!"shareAppMessageDirectly".equals(parambekr.jdField_a_of_type_JavaLangString)) {
-          break label1127;
+        if (!"shareAppMessageDirectly".equals(parambgkd.a)) {
+          break label1057;
         }
         k = 1;
-        localObject3 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
+        localObject3 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
         j = ((JSONObject)localObject3).optInt("shareTarget", -1);
         localObject1 = null;
-        localbesl = (besl)this.mMiniAppContext.a(beki.a());
+        localShareState = bgic.a(this.mMiniAppContext);
         if (j != 0) {
-          break label1134;
+          break label1064;
         }
         localObject1 = null;
         localObject2 = null;
         i = 0;
-        String str3 = ((JSONObject)localObject3).optString("shareTemplateId");
-        String str4 = ((JSONObject)localObject3).optString("shareTemplateData");
-        if (!"shareAppMessageDirectly".equals(parambekr.jdField_a_of_type_JavaLangString)) {
-          break label1111;
+        String str2 = ((JSONObject)localObject3).optString("shareTemplateId");
+        String str3 = ((JSONObject)localObject3).optString("shareTemplateData");
+        if (!"shareAppMessageDirectly".equals(parambgkd.a)) {
+          break label1041;
         }
         if (i != -1) {
-          break label1100;
+          break label1030;
         }
         i = this.mShareProxy.getDefaultShareTarget();
-        if ((i < 100) || (i > 200)) {
-          break label1174;
+        if (!MoreItem.a(i)) {
+          break label1104;
         }
         j = 6;
-        localbesl.jdField_b_of_type_Int = j;
-        localbesl.jdField_a_of_type_JavaLangString = parambekr.jdField_a_of_type_JavaLangString;
-        localbesl.c = parambekr.jdField_b_of_type_Int;
-        String str2 = ((JSONObject)localObject3).optString("path");
-        str1 = str2;
-        if (TextUtils.isEmpty(str2)) {
-          str1 = ((JSONObject)localObject3).optString("query");
+        localShareState.fromShareMenuBtn = j;
+        localShareState.shareEvent = parambgkd.a;
+        localShareState.shareCallbackId = parambgkd.jdField_b_of_type_Int;
+        if (TextUtils.isEmpty(localShareState.stagingJsonParams)) {
+          break label1027;
         }
-        str2 = ((JSONObject)localObject3).optString("title");
-        str5 = ((JSONObject)localObject3).optString("imageUrl");
+        localObject3 = new JSONObject(localShareState.stagingJsonParams);
+        localShareState.stagingJsonParams = null;
+        label171:
+        str1 = ((JSONObject)localObject3).optString("path");
+        parambgkd = str1;
+        if (TextUtils.isEmpty(str1)) {
+          parambgkd = ((JSONObject)localObject3).optString("query");
+        }
+        String str4 = ((JSONObject)localObject3).optString("title");
+        str1 = ((JSONObject)localObject3).optString("imageUrl");
         localObject3 = ((JSONObject)localObject3).optString("generalWebpageUrl");
-        if (!TextUtils.isEmpty(str1)) {
-          break label1097;
+        if (!TextUtils.isEmpty(parambgkd)) {
+          break label1024;
         }
-        if (!this.mMiniAppContext.e()) {
-          break label659;
+        if (!this.mMiniAppContext.b()) {
+          break label667;
         }
-        str1 = "miniGamePath";
-        parambekr = new ShareJsPlugin.1(this, parambekr);
-        localbesj = new besj();
-        localbesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = this.mMiniAppContext.a();
+        parambgkd = "miniGamePath";
+        label248:
+        bgkc localbgkc = new bgkc();
         if (k == 0) {
-          break label1181;
+          break label1111;
         }
         j = 11;
-        label276:
-        localbesj.jdField_a_of_type_Int = j;
-        localbesj.jdField_b_of_type_Int = i;
-        localbesj.jdField_a_of_type_AndroidAppActivity = this.mMiniAppContext.a();
-        localbesj.jdField_a_of_type_JavaLangString = str2;
-        localbesj.c = str1;
-        localbesj.d = ((String)localObject3);
-        localbesj.e = str3;
-        localbesj.f = str4;
-        localbesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel = ((EntryModel)localObject2);
-        localbesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel = ((ShareChatModel)localObject1);
-        localbesj.jdField_b_of_type_Boolean = localbesl.h;
-        if (localbesl.jdField_b_of_type_Int != 1) {
-          break label737;
+        label265:
+        parambgkd = localbgkc.a(j).b(i).a(this.mMiniAppInfo.name).b(str4).d(parambgkd).e((String)localObject3).f(str2).g(str3).a((EntryModel)localObject2).a((ShareChatModel)localObject1).c(localShareState.withShareTicket).a(this.mMiniAppInfo).a(this.mMiniAppContext.a()).b(localShareState.isShareInMiniProcess);
+        if (localShareState.fromShareMenuBtn != 1) {
+          break label733;
         }
-        if ((!str5.startsWith("http")) && (!str5.startsWith("https"))) {
+        if ((!str1.startsWith("http")) && (!str1.startsWith("https"))) {
           break;
         }
-        localbesj.jdField_b_of_type_JavaLangString = str5;
-        this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
+        parambgkd.c(str1).a().a();
         return;
       }
-      catch (JSONException parambekr)
+      catch (JSONException parambgkd)
       {
-        label410:
-        betc.d("ShareJsPlugin", parambekr.getMessage(), parambekr);
-        parambekr.printStackTrace();
+        label398:
+        QMLog.e("ShareJsPlugin", parambgkd.getMessage(), parambgkd);
+        parambgkd.printStackTrace();
         return;
       }
       if (j == 2)
       {
         localObject2 = this.mMiniAppInfo;
         str1 = ((JSONObject)localObject3).optString("entryDataHash");
-        if ((str1 != null) && (((MiniAppInfo)localObject2).launchParam.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel != null) && (str1.equals(((MiniAppInfo)localObject2).launchParam.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel.a())))
+        if ((str1 != null) && (((MiniAppInfo)localObject2).launchParam.entryModel != null) && (str1.equals(((MiniAppInfo)localObject2).launchParam.entryModel.getEntryHash())))
         {
-          localObject1 = ((MiniAppInfo)localObject2).launchParam.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel;
-          break label1150;
+          localObject1 = ((MiniAppInfo)localObject2).launchParam.entryModel;
+          break label1080;
         }
-        betc.d("ShareJsPlugin", "shareAppMessageDirectly fail, entryDataHash is no match:" + str1);
-        break label1150;
+        QMLog.e("ShareJsPlugin", "shareAppMessageDirectly fail, entryDataHash is no match:" + str1);
+        break label1080;
       }
       if (j == 3)
       {
@@ -255,369 +243,364 @@ public class ShareJsPlugin
         if (j == 5)
         {
           localObject2 = ((JSONObject)localObject3).optString("chatDataHash");
-          localObject1 = localbesl.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel;
-          if ((localObject1 != null) && (((ShareChatModel)localObject1).a().equals(localObject2))) {
-            break label1166;
+          localObject1 = localShareState.shareChatModel;
+          if ((localObject1 != null) && (((ShareChatModel)localObject1).getEntryHash().equals(localObject2))) {
+            break label1096;
           }
-          betc.d("ShareJsPlugin", "shareAppMessageDirectly fail, entryDataHash is no match:" + null);
+          QMLog.e("ShareJsPlugin", "shareAppMessageDirectly fail, entryDataHash is no match:" + null);
           localObject1 = null;
-          break label1166;
+          break label1096;
         }
-        if ((j != 6) || (!"shareAppMessageDirectlyToFriendList".equals(parambekr.jdField_a_of_type_JavaLangString))) {
-          break label1116;
+        if ((j == 6) && ("shareAppMessageDirectlyToFriendList".equals(parambgkd.a)))
+        {
+          localObject1 = null;
+          localObject2 = null;
+          i = 0;
         }
-        localObject1 = null;
-        localObject2 = null;
-        i = 0;
-        continue;
-        label659:
-        str1 = this.mApkgInfo.a().jdField_a_of_type_JavaLangString;
+        else
+        {
+          if (!MoreItem.a(j)) {
+            break label1046;
+          }
+          localObject1 = null;
+          localObject2 = null;
+          i = 6;
+          continue;
+          label667:
+          parambgkd = this.mApkgInfo.a().entryPagePath;
+        }
       }
     }
-    Object localObject1 = bejl.a().a(str5);
-    if (!bely.a((String)localObject1))
+    Object localObject1 = bgjm.a().a(str1);
+    if (!bglo.a((String)localObject1))
     {
-      localbesj.jdField_b_of_type_JavaLangString = ((String)localObject1);
-      this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
+      parambgkd.c((String)localObject1).a(true).a().a();
       return;
     }
-    this.mMiniAppContext.a(bekg.a(new ShareJsPlugin.2(this, localbesj, parambekr)));
+    bgia.a(this.mMiniAppContext, new ShareJsPlugin.1(this, parambgkd));
     return;
-    label737:
-    if (localbesl.jdField_b_of_type_Int == 3)
+    label733:
+    if ((localShareState.fromShareMenuBtn == 3) || (localShareState.fromShareMenuBtn == 4))
     {
-      localbesj.jdField_b_of_type_JavaLangString = this.mMiniAppInfo.iconUrl;
-      this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
+      parambgkd.c(this.mMiniAppInfo.iconUrl).a().a();
       return;
     }
-    if (localbesl.jdField_b_of_type_Int == 4)
+    if (!URLUtil.isHttpUrl(str1))
     {
-      localbesj.jdField_b_of_type_JavaLangString = this.mMiniAppInfo.iconUrl;
-      this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
-      return;
-    }
-    if (!URLUtil.isHttpUrl(str5))
-    {
-      if (!URLUtil.isHttpsUrl(str5)) {
-        break label1193;
+      if (!URLUtil.isHttpsUrl(str1)) {
+        break label1123;
       }
-      break label1187;
-      label824:
-      if ((TextUtils.isEmpty(str5)) || (!new File(bejl.a().a(str5)).exists())) {
-        break label1199;
+      break label1117;
+      label788:
+      if ((TextUtils.isEmpty(str1)) || (!new File(bgjm.a().a(str1)).exists())) {
+        break label1129;
       }
     }
-    label1166:
-    label1174:
-    label1181:
-    label1187:
-    label1193:
-    label1199:
+    label1024:
+    label1027:
+    label1030:
+    label1041:
+    label1046:
+    label1057:
+    label1064:
+    label1080:
+    label1096:
+    label1104:
+    label1111:
+    label1117:
+    label1123:
+    label1129:
     for (boolean bool2 = true;; bool2 = false)
     {
-      if ((bely.a(str5)) || ((!bool1) && (!bool2)))
+      if ((bglo.a(str1)) || ((!bool1) && (!bool2)))
       {
-        if (this.mMiniAppContext.e())
+        if (this.mMiniAppContext.b())
         {
-          localbesj.jdField_b_of_type_JavaLangString = bfhp.a();
-          this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
-          betc.d("ShareJsPlugin", "shareAppMessageDirectly fail, [isNetworkImageUrl=" + bool1 + "] [isLocalResourceExists=" + bool2 + "] [imageUrl=" + str5 + "], use default share image");
+          parambgkd.c(WnsUtil.defaultShareImg()).a().a();
+          QMLog.e("ShareJsPlugin", "shareAppMessageDirectly fail, [isNetworkImageUrl=" + bool1 + "] [isLocalResourceExists=" + bool2 + "] [imageUrl=" + str1 + "], use default share image");
           return;
         }
-        if (this.mMiniAppContext.a(beki.a()) != null)
+        if (bgic.a(this.mMiniAppContext) != null)
         {
-          if (((besl)this.mMiniAppContext.a(beki.a())).i)
+          if (bgic.a(this.mMiniAppContext).isGettingScreenShot)
           {
-            betc.d("ShareJsPlugin", "getScreenshot isGettingScreenShot now, return directly !");
+            QMLog.e("ShareJsPlugin", "getScreenshot isGettingScreenShot now, return directly !");
             return;
           }
-          this.mMiniAppContext.a(bekg.a(new ShareJsPlugin.3(this, localbesj, parambekr)));
+          bgia.a(this.mMiniAppContext, new ShareJsPlugin.2(this, parambgkd));
         }
       }
       else
       {
-        if ((str5.startsWith("http")) || (str5.startsWith("https")))
+        if ((str1.startsWith("http")) || (str1.startsWith("https")))
         {
-          localbesj.jdField_b_of_type_JavaLangString = str5;
-          this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
+          parambgkd.c(str1).a().a();
           return;
         }
-        localbesj.jdField_b_of_type_JavaLangString = bejl.a().a(str5);
-        this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
+        parambgkd.c(bgjm.a().a(str1)).a(true).a().a();
         return;
-        label1097:
-        break label235;
-        label1100:
+        break label248;
+        break label171;
         int m = i;
         i = j;
         j = m;
-        break label130;
-        label1111:
+        break label116;
         i = j;
-        break label136;
-        label1116:
+        break label122;
         localObject1 = null;
         localObject2 = null;
         i = -1;
-        break label69;
-        label1127:
+        break label61;
         k = 0;
         break;
       }
       return;
-      label1134:
       if (j != 1) {
-        break label410;
+        break label398;
       }
       localObject1 = null;
       localObject2 = null;
       i = 1;
-      break label69;
-      label1150:
+      break label61;
       str1 = null;
       localObject2 = localObject1;
       i = 0;
       localObject1 = str1;
-      break label69;
+      break label61;
       localObject2 = null;
       i = 0;
-      break label69;
+      break label61;
       j = 0;
       i = 0;
-      break label130;
+      break label116;
       j = 12;
-      break label276;
+      break label265;
       boolean bool1 = true;
-      break label824;
+      break label788;
       bool1 = false;
-      break label824;
+      break label788;
     }
   }
   
-  public void shareAppMessageDirectly(bekr parambekr)
+  public void shareAppMessageDirectly(bgkd parambgkd)
   {
-    if (bfhk.a())
+    if (QUAUtil.isQQApp())
     {
-      shareAppMessage(parambekr);
+      shareAppMessage(parambgkd);
       return;
     }
-    this.mMiniAppProxy.onCapsuleButtonMoreClick(new behr(this.mMiniAppContext));
+    bgic.a(this.mMiniAppContext).stagingJsonParams = parambgkd.jdField_b_of_type_JavaLangString;
+    bhih.a(this.mMiniAppContext);
   }
   
-  public void shareAppPictureMessage(bekr parambekr)
+  public void shareAppPictureMessage(bgkd parambgkd)
   {
     int i = 3;
-    Object localObject1;
-    Object localObject2;
-    int j;
+    int m = 1;
+    ShareState localShareState;
+    int k;
     try
     {
-      localObject1 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
-      k = ((JSONObject)localObject1).optInt("shareTarget", -1);
-      if (k != 0) {
-        break label507;
+      localObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      j = ((JSONObject)localObject).optInt("shareTarget", -1);
+      if (j != 0) {
+        break label446;
       }
       i = 0;
-      localObject2 = (besl)this.mMiniAppContext.a(beki.a());
-      j = k;
-      if ("shareAppPictureMessageDirectly".equals(parambekr.jdField_a_of_type_JavaLangString))
+      localShareState = bgic.a(this.mMiniAppContext);
+      k = j;
+      if ("shareAppPictureMessageDirectly".equals(parambgkd.a))
       {
-        j = k;
         k = i;
         if (i == -1)
         {
           j = this.mShareProxy.getDefaultShareTarget();
-          if ((j < 100) || (j > 200)) {
-            break label546;
+          if (!MoreItem.a(j)) {
+            break label481;
           }
           k = 6;
         }
-        label103:
-        ((besl)localObject2).jdField_b_of_type_Int = k;
+        label87:
+        localShareState.fromShareMenuBtn = k;
+        k = j;
       }
-      i = ((besl)localObject2).jdField_b_of_type_Int;
-      ((besl)localObject2).jdField_a_of_type_JavaLangString = parambekr.jdField_a_of_type_JavaLangString;
-      ((besl)localObject2).c = parambekr.jdField_b_of_type_Int;
-      parambekr = new ShareJsPlugin.4(this, parambekr);
-      this.mMiniAppContext.a();
-      localObject2 = this.mApkgInfo;
-      localObject2 = ((JSONObject)localObject1).optString("title");
-      str1 = ((JSONObject)localObject1).optString("imageUrl");
-      if (URLUtil.isHttpUrl(str1)) {
-        break label501;
+      i = localShareState.fromShareMenuBtn;
+      localShareState.shareEvent = parambgkd.a;
+      localShareState.shareCallbackId = parambgkd.jdField_b_of_type_Int;
+      parambgkd = ((JSONObject)localObject).optString("title");
+      localObject = ((JSONObject)localObject).optString("imageUrl");
+      if (URLUtil.isHttpUrl((String)localObject)) {
+        break label440;
       }
-      if (!URLUtil.isHttpsUrl(str1)) {
-        break label554;
+      if (!URLUtil.isHttpsUrl((String)localObject)) {
+        break label489;
       }
     }
-    catch (JSONException parambekr)
+    catch (JSONException parambgkd)
     {
-      String str1;
-      label197:
-      parambekr.printStackTrace();
+      Object localObject;
+      label157:
+      parambgkd.printStackTrace();
       return;
     }
-    String str2 = bejl.a().a(str1);
-    if ((!TextUtils.isEmpty(str1)) && (new File(str2).exists())) {}
-    for (int k = 1;; k = 0)
+    String str = bgjm.a().a((String)localObject);
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (new File(str).exists())) {}
+    for (int j = m;; j = 0)
     {
-      localObject1 = new besj();
-      ((besj)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = this.mMiniAppInfo;
-      ((besj)localObject1).jdField_a_of_type_Int = 11;
-      ((besj)localObject1).jdField_b_of_type_Int = j;
-      ((besj)localObject1).jdField_a_of_type_AndroidAppActivity = this.mMiniAppContext.a();
-      ((besj)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject2);
+      parambgkd = new bgkc().a(11).b(k).a(this.mMiniAppInfo.name).b(parambgkd).a(this.mMiniAppContext.a()).a(this.mMiniAppInfo).a(this.mMiniAppContext.a()).b(localShareState.isShareInMiniProcess);
       if (i != 0)
       {
-        ((besj)localObject1).jdField_b_of_type_JavaLangString = str1;
-        ((besj)localObject1).jdField_a_of_type_Boolean = false;
-        this.mShareProxy.onJsShareAppPictureMessage(localObject1, parambekr);
+        parambgkd.c((String)localObject).a().b();
         return;
       }
-      if ((bely.a(str1)) || ((i == 0) && (k == 0)))
-      {
-        if (this.mMiniAppContext.e())
-        {
-          if (this.mMiniAppInfo != null)
-          {
-            ((besj)localObject1).jdField_b_of_type_JavaLangString = this.mMiniAppInfo.iconUrl;
-            ((besj)localObject1).jdField_a_of_type_Boolean = false;
-            this.mShareProxy.onJsShareAppPictureMessage(localObject1, parambekr);
-            return;
-          }
-          betc.d("ShareJsPlugin", "startShareNetworkPicMessage with iconUrl failed, mini app info is null");
-          return;
-        }
-        localObject2 = (besl)this.mMiniAppContext.a(beki.a());
-        if (localObject2 != null)
-        {
-          if (((besl)localObject2).i)
-          {
-            betc.d("ShareJsPlugin", "sharePicMessage getScreenshot isGettingScreenShot now, return directly !");
-            return;
-          }
-          this.mMiniAppContext.a(bekg.a(new ShareJsPlugin.5(this, (besj)localObject1, parambekr)));
-        }
-      }
-      else if ((i == 0) && (k != 0))
-      {
-        ((besj)localObject1).jdField_b_of_type_JavaLangString = str2;
-        ((besj)localObject1).jdField_a_of_type_Boolean = true;
-        this.mShareProxy.onJsShareAppPictureMessage(localObject1, parambekr);
-        return;
-      }
-      label501:
-      label507:
+      label440:
+      label445:
+      label446:
       do
       {
+        if (MoreItem.a(j))
+        {
+          i = 6;
+          break;
+          if ((bglo.a((String)localObject)) || ((i == 0) && (j == 0)))
+          {
+            if (this.mMiniAppContext.b())
+            {
+              if (this.mMiniAppInfo != null)
+              {
+                parambgkd.c(this.mMiniAppInfo.iconUrl).a().b();
+                return;
+              }
+              QMLog.e("ShareJsPlugin", "startShareNetworkPicMessage with iconUrl failed, mini app info is null");
+              return;
+            }
+            localShareState = bgic.a(this.mMiniAppContext);
+            if (localShareState == null) {
+              break label445;
+            }
+            if (localShareState.isGettingScreenShot)
+            {
+              QMLog.e("ShareJsPlugin", "sharePicMessage getScreenshot isGettingScreenShot now, return directly !");
+              return;
+            }
+            bgia.a(this.mMiniAppContext, new ShareJsPlugin.3(this, parambgkd));
+            return;
+          }
+          if ((i != 0) || (j == 0)) {
+            break label445;
+          }
+          parambgkd.c(str).a(true).a().b();
+          return;
+        }
         i = -1;
         break;
         i = 1;
-        break label197;
+        break label157;
         return;
-        if (k == 1)
+        if (j == 1)
         {
           i = 1;
           break;
         }
-        if (k == 2)
+        if (j == 2)
         {
           i = 0;
           break;
         }
-        if (k == 3) {
+        if (j == 3) {
           break;
         }
-      } while (k != 4);
+      } while (j != 4);
       i = 4;
       break;
-      label546:
+      label481:
       k = 0;
       j = 0;
-      break label103;
-      label554:
+      break label87;
+      label489:
       i = 0;
-      break label197;
+      break label157;
     }
   }
   
-  public void shareAppPictureMessageDirectly(bekr parambekr)
+  public void shareAppPictureMessageDirectly(bgkd parambgkd)
   {
-    if (bfhk.a())
+    if (QUAUtil.isQQApp())
     {
-      shareAppPictureMessage(parambekr);
+      shareAppPictureMessage(parambgkd);
       return;
     }
-    this.mMiniAppProxy.onCapsuleButtonMoreClick(new behr(this.mMiniAppContext));
+    bhih.a(this.mMiniAppContext);
   }
   
-  public void showActionSheet(bekr parambekr)
+  public void showActionSheet(bgkd parambgkd)
   {
-    bekz.a(new ShareJsPlugin.6(this, parambekr));
+    bgkk.a(new ShareJsPlugin.4(this, parambgkd));
   }
   
-  public void showShareMenu(bekr parambekr)
+  public void showShareMenu(bgkd parambgkd)
   {
-    boolean bool3 = true;
-    boolean bool1;
+    boolean bool3 = false;
+    int n;
     Object localObject;
-    if ((parambekr.jdField_b_of_type_JavaLangString == null) || ("null".equals(parambekr.jdField_b_of_type_JavaLangString)) || ("{}".equals(parambekr.jdField_b_of_type_JavaLangString)))
+    if ((parambgkd.jdField_b_of_type_JavaLangString == null) || ("null".equals(parambgkd.jdField_b_of_type_JavaLangString)) || ("{}".equals(parambgkd.jdField_b_of_type_JavaLangString)))
     {
       i = 1;
-      j = 1;
+      n = 1;
       k = 1;
-      m = 1;
+      j = 1;
       bool1 = false;
-      localObject = (besl)this.mMiniAppContext.a(beki.a());
-      if (m != 1) {
-        break label434;
-      }
-      bool2 = true;
-      label75:
-      ((besl)localObject).e = bool2;
-      if (k != 1) {
-        break label440;
-      }
-      bool2 = true;
-      label91:
-      ((besl)localObject).d = bool2;
+      localObject = bgic.a(this.mMiniAppContext);
       if (j != 1) {
-        break label446;
+        break label431;
       }
       bool2 = true;
-      label106:
-      ((besl)localObject).f = bool2;
-      if (i != 1) {
-        break label452;
+      label66:
+      ((ShareState)localObject).withShareQQ = bool2;
+      if (k != 1) {
+        break label437;
+      }
+      bool2 = true;
+      label82:
+      ((ShareState)localObject).withShareQzone = bool2;
+      if (n != 1) {
+        break label443;
       }
     }
-    label274:
-    label290:
-    label434:
-    label440:
-    label446:
-    label452:
-    for (boolean bool2 = bool3;; bool2 = false)
+    label267:
+    label283:
+    label431:
+    label437:
+    label443:
+    for (bool2 = true;; bool2 = false)
     {
-      ((besl)localObject).g = bool2;
-      ((besl)localObject).h = bool1;
-      parambekr.a();
+      ((ShareState)localObject).withShareWeChatFriend = bool2;
+      bool2 = bool3;
+      if (i == 1) {
+        bool2 = true;
+      }
+      ((ShareState)localObject).withShareWeChatMoment = bool2;
+      ((ShareState)localObject).withShareOthers = true;
+      ((ShareState)localObject).withShareTicket = bool1;
+      parambgkd.a();
       return;
       for (;;)
       {
+        int i3;
         for (;;)
         {
-          int n;
+          int m;
           try
           {
-            localObject = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
-            bool1 = ((JSONObject)localObject).optBoolean("withShareTicket", false);
+            localObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+            bool2 = ((JSONObject)localObject).optBoolean("withShareTicket", false);
           }
           catch (JSONException localJSONException1)
           {
+            String str;
             int i1;
             int i2;
-            String str;
+            label341:
             m = -1;
             k = -1;
             j = -1;
@@ -630,12 +613,10 @@ public class ShareJsPlugin
             if (localObject == null)
             {
               i = 1;
+              n = 1;
               k = 1;
-              i1 = 1;
-              i2 = 1;
-              m = i2;
-              j = k;
-              k = i1;
+              j = 1;
+              bool1 = bool2;
               break;
             }
             n = 0;
@@ -652,6 +633,7 @@ public class ShareJsPlugin
               k = -1;
               j = -1;
               i = -1;
+              bool1 = bool2;
             }
           }
         }
@@ -662,8 +644,8 @@ public class ShareJsPlugin
             if (n < ((JSONArray)localObject).length())
             {
               str = ((JSONArray)localObject).getString(n);
-              bool2 = str.equalsIgnoreCase("qq");
-              if (!bool2) {
+              bool1 = str.equalsIgnoreCase("qq");
+              if (!bool1) {
                 continue;
               }
               j = 1;
@@ -671,110 +653,113 @@ public class ShareJsPlugin
           }
           catch (JSONException localJSONException3)
           {
-            break label397;
+            bool1 = bool2;
+            break label400;
             break;
           }
           try
           {
-            bool2 = str.equalsIgnoreCase("qzone");
-            if (!bool2) {
+            bool1 = str.equalsIgnoreCase("qzone");
+            if (!bool1) {
               continue;
             }
             k = 1;
           }
           catch (JSONException localJSONException4)
           {
-            break label397;
-            break label274;
+            bool1 = bool2;
+            break label400;
+            break label267;
           }
           try
           {
-            bool2 = str.equalsIgnoreCase("wechatFriends");
-            if (!bool2) {
+            bool1 = str.equalsIgnoreCase("wechatFriends");
+            if (!bool1) {
               continue;
             }
             i = 1;
           }
           catch (JSONException localJSONException5)
           {
-            break label397;
-            break label290;
+            bool1 = bool2;
+            break label400;
+            break label283;
           }
-        }
-        try
-        {
-          bool2 = str.equalsIgnoreCase("wechatMoment");
-          if (bool2) {
-            m = 1;
+          try
+          {
+            bool1 = str.equalsIgnoreCase("wechatMoment");
+            if (bool1) {
+              m = 1;
+            }
+            n += 1;
           }
-          n += 1;
-        }
-        catch (JSONException localJSONException6)
-        {
-          break label397;
-          i3 = i;
-          continue;
-        }
-        n = j;
-        if (j == -1) {
-          n = 0;
-        }
-        j = k;
-        if (k == -1) {
-          j = 0;
-        }
-        if (i != -1) {
-          break label493;
-        }
-        i3 = 0;
-        k = i3;
-        i = m;
-        i1 = j;
-        i2 = n;
-        if (m == -1)
-        {
-          i = 0;
-          k = i3;
-          i1 = j;
-          i2 = n;
+          catch (JSONException localJSONException6)
+          {
+            bool1 = bool2;
+            break label400;
+            i3 = i;
+            break label341;
+          }
         }
       }
-      localJSONException1.printStackTrace();
-      betc.d("ShareJsPlugin", localJSONException1.getMessage(), localJSONException1);
-      parambekr.b();
-      n = j;
-      j = i;
+      i1 = j;
+      if (j == -1) {
+        i1 = 0;
+      }
+      i2 = k;
+      if (k == -1) {
+        i2 = 0;
+      }
+      if (i != -1) {
+        break label504;
+      }
+      i3 = 0;
+      n = i3;
       i = m;
-      m = n;
+      k = i2;
+      j = i1;
+      bool1 = bool2;
+      if (m != -1) {
+        break;
+      }
+      i = 0;
+      n = i3;
+      k = i2;
+      j = i1;
+      bool1 = bool2;
+      break;
+      localJSONException1.printStackTrace();
+      QMLog.e("ShareJsPlugin", localJSONException1.getMessage(), localJSONException1);
+      parambgkd.b();
+      n = i;
+      i = m;
       break;
       bool2 = false;
-      break label75;
+      break label66;
       bool2 = false;
-      break label91;
-      bool2 = false;
-      break label106;
+      break label82;
     }
   }
   
-  public void updateShareMenuShareTicket(bekr parambekr)
+  public void updateShareMenuShareTicket(bgkd parambgkd)
   {
     try
     {
-      boolean bool = new JSONObject(parambekr.jdField_b_of_type_JavaLangString).optBoolean("withShareTicket", false);
-      ((besl)this.mMiniAppContext.a(beki.a())).h = bool;
-      parambekr.a();
+      boolean bool = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString).optBoolean("withShareTicket", false);
+      bgic.a(this.mMiniAppContext).withShareTicket = bool;
+      parambgkd.a();
       return;
     }
-    catch (JSONException parambekr)
+    catch (JSONException parambgkd)
     {
-      betc.d("ShareJsPlugin", parambekr.getMessage(), parambekr);
-      parambekr.printStackTrace();
+      QMLog.e("ShareJsPlugin", parambgkd.getMessage(), parambgkd);
+      parambgkd.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.ShareJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,23 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
-public abstract interface besz
+public class besz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract Activity a();
+  public besz(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
   
-  public abstract besl a();
-  
-  public abstract MiniAppInfo a();
-  
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besz
  * JD-Core Version:    0.7.0.1
  */

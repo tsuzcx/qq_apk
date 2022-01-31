@@ -1,16 +1,45 @@
-public abstract interface vmn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
+public class vmn
+  implements View.OnClickListener
 {
-  public abstract void a();
+  vmn(vml paramvml) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean, vlp paramvlp);
-  
-  public abstract void b(int paramInt);
+  public void onClick(View paramView)
+  {
+    if ((vml.a(this.a) != null) && (vml.a(this.a).a()))
+    {
+      vml.a(this.a).c();
+      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.2.1(this), 200L);
+      if (!this.a.a()) {
+        break label109;
+      }
+      paramView = "2";
+      label64:
+      if (!this.a.b()) {
+        break label115;
+      }
+    }
+    label109:
+    label115:
+    for (String str = "2";; str = "1")
+    {
+      wta.a("play_video", "close_reply", 0, 1, new String[] { paramView, str });
+      return;
+      this.a.a();
+      break;
+      paramView = "1";
+      break label64;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmn
  * JD-Core Version:    0.7.0.1
  */

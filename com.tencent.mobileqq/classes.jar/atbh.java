@@ -1,23 +1,21 @@
-public class atbh
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+final class atbh
+  implements EIPCResultCallback
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  
-  public String toString()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mTinyID:").append(this.jdField_a_of_type_Long).append(",mPosition:").append(this.jdField_a_of_type_Int).append(",mAlgotithmID:").append(this.b).append(",mEnterCount:").append(this.c).append(",mProfileCardDuration:").append(this.d).append(",mVisitPhotoCount:").append(this.e).append(",mOpflag:").append(this.f).append("|").append(Integer.toBinaryString(this.f));
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
+    }
+    if (paramEIPCResult.code != 0) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbh
  * JD-Core Version:    0.7.0.1
  */

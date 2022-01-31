@@ -1,117 +1,28 @@
-import android.content.ContentProviderOperation;
-import android.content.ContentProviderOperation.Builder;
-import android.content.ContentValues;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.provider.ContactsContract.Data;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6.3.1;
 
 public class anel
+  implements anfk
 {
-  private static String jdField_a_of_type_JavaLangString = anek.jdField_a_of_type_JavaLangString;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ContentValues jdField_a_of_type_AndroidContentContentValues;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<ContentProviderOperation> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  public anel(ArkAppDeviceModule.ObserverMethod.6.3.1 param1) {}
   
-  private anel(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContentValues = new ContentValues();
-  }
-  
-  private anel(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, long paramLong)
-  {
-    this(paramQQAppInterface, paramList);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private anel(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
-  {
-    this(paramQQAppInterface, paramList);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramList.size();
-    paramQQAppInterface = ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("caller_is_syncadapter", "true").build()).withValue("aggregation_mode", Integer.valueOf(0)).withValue("account_type", "com.tencent.mobileqq.account").withValue("account_name", paramString1).withValue("sourceid", paramString2).withValue("sync1", paramString3).withValue("sync2", paramString4).withValue("sync3", Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_JavaUtilList.add(paramQQAppInterface.build());
-  }
-  
-  private static ContentProviderOperation.Builder a()
-  {
-    return ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI.buildUpon().appendQueryParameter("caller_is_syncadapter", jdField_a_of_type_JavaLangString).build()).withYieldAllowed(true);
-  }
-  
-  private static ContentProviderOperation.Builder a(Uri paramUri)
-  {
-    return ContentProviderOperation.newUpdate(paramUri.buildUpon().appendQueryParameter("caller_is_syncadapter", jdField_a_of_type_JavaLangString).build()).withYieldAllowed(true);
-  }
-  
-  public static anel a(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, long paramLong)
-  {
-    return new anel(paramQQAppInterface, paramList, paramLong);
-  }
-  
-  public static anel a(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
-  {
-    return new anel(paramQQAppInterface, paramList, paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2);
-  }
-  
-  private void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidContentContentValues.put("raw_contact_id", Long.valueOf(this.jdField_a_of_type_Long));
+    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Andz.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    ContentProviderOperation.Builder localBuilder = a();
-    localBuilder.withValues(this.jdField_a_of_type_AndroidContentContentValues);
-    if (this.jdField_a_of_type_Boolean) {
-      localBuilder.withValueBackReference("raw_contact_id", this.jdField_a_of_type_Int);
-    }
-    this.jdField_a_of_type_JavaUtilList.add(localBuilder.build());
   }
   
-  private void a(Uri paramUri)
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    paramUri = a(paramUri);
-    paramUri.withValues(this.jdField_a_of_type_AndroidContentContentValues);
-    this.jdField_a_of_type_JavaUtilList.add(paramUri.build());
-  }
-  
-  public anel a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("mimetype", "vnd.android.cursor.item/name");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    a();
-    return this;
-  }
-  
-  public anel a(String paramString, Uri paramUri)
-  {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    a(paramUri);
-    return this;
-  }
-  
-  public anel b(String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mobileqq.voicecall.profile");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    this.jdField_a_of_type_AndroidContentContentValues.put("data2", "QQ");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data3", ajya.a(2131702522));
-    a();
-    return this;
+    andw.a(this.a.a.a.jdField_a_of_type_Andz.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,20 @@
-public abstract interface vff
-  extends vhl
+import java.util.HashMap;
+
+class vff
+  extends vem
 {
-  public abstract void Z_();
+  vff(vez paramvez, vgd paramvgd) {}
   
-  public abstract void a(viu paramviu);
-  
-  public abstract void b();
-  
-  public abstract void f();
+  public boolean b()
+  {
+    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
+    this.jdField_a_of_type_Vgd.a = ((String)localHashMap.get(this.jdField_a_of_type_Vgd.a));
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vff
  * JD-Core Version:    0.7.0.1
  */

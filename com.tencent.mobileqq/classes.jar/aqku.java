@@ -1,66 +1,82 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.ThemeImageView;
+import android.content.Intent;
+import android.os.Bundle;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import cooperation.weiyun.AlbumBackupProxyActivity;
 
 public class aqku
-  extends RecyclerView.ViewHolder
+  implements bhvu
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
-  private TextView b;
-  private TextView c;
+  public aqku(FileAssistantActivity paramFileAssistantActivity) {}
   
-  aqku(View paramView)
+  public void a(bhvt parambhvt)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368248));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368250));
-    this.b = ((TextView)paramView.findViewById(2131368253));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368246));
-    this.c = ((TextView)paramView.findViewById(2131368252));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368251));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368247);
-  }
-  
-  View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
-  TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  URLImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
-  }
-  
-  public ThemeImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetThemeImageView;
-  }
-  
-  TextView b()
-  {
-    return this.c;
+    switch (parambhvt.a)
+    {
+    default: 
+      return;
+    case 0: 
+      parambhvt = new Intent(this.a.getApplicationContext(), LiteActivity.class);
+      if (this.a.j) {
+        arng.a("0X8005534");
+      }
+      for (;;)
+      {
+        try
+        {
+          Bundle localBundle = new Bundle();
+          localBundle.putLong("category", 12);
+          parambhvt.putExtra("bundle", localBundle);
+          parambhvt.putExtra("from", "FileAssistant");
+          this.a.startActivityForResult(parambhvt, 101);
+          return;
+        }
+        catch (Exception parambhvt)
+        {
+          parambhvt.printStackTrace();
+          return;
+        }
+        arng.a("0X800681A");
+      }
+    case 1: 
+      if (this.a.j) {
+        arng.a("0X8005535");
+      }
+      for (;;)
+      {
+        FileAssistantActivity.b(this.a);
+        return;
+        arng.a("0X800681B");
+      }
+    case 2: 
+      if (this.a.j) {
+        arng.a("0X8005536");
+      }
+      for (;;)
+      {
+        AlbumBackupProxyActivity.a(this.a, this.a.app.getCurrentAccountUin(), "source_qfile_assistant", 10001);
+        FileAssistantActivity.a(this.a, this.a.c, "100160.100162");
+        return;
+        arng.a("0X800681C");
+      }
+    case 3: 
+      arng.a("0X800A15F");
+      parambhvt = new Bundle();
+      parambhvt.putString("url", "https://docs.qq.com/desktop/m/templates_list.html?padtype=0&_wv=2&_wwv=512");
+      parambhvt.putString("tdsourcetag", "s_qq_myfile_menu_create");
+      TeamWorkDocEditBrowserActivity.a(this.a, parambhvt, false);
+      return;
+    }
+    arng.a("0X8005532");
+    arni.a(this.a.app, this.a, "_is_from_qfile_shortcut", this.a.getString(2131692504), 2130843882);
+    armz.b(2131692548);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqku
  * JD-Core Version:    0.7.0.1
  */

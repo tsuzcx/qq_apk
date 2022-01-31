@@ -67,7 +67,7 @@ public class DebugUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.DebugUtil
  * JD-Core Version:    0.7.0.1
  */

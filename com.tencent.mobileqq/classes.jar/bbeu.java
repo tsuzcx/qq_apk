@@ -1,50 +1,34 @@
-import QQWalletPay.RespCheckChangePwdAuth;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
 
-class bbeu
-  extends Handler
+public class bbeu
+  implements View.OnClickListener
 {
-  private bbeu(bbeg parambbeg) {}
+  public bbeu(TroopBarPublishActivity.16 param16) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what != 1) {
+    paramView = new Intent();
+    paramView.putExtra("path", this.a.a);
+    PublicFragmentActivity.a(this.a.this$0, paramView, TribeVideoPreviewFragment.class);
+    this.a.this$0.overridePendingTransition(2130772321, 2130772322);
+    if ((this.a.this$0.b != null) && (this.a.this$0.b.getVisibility() == 0)) {}
+    for (int i = 2;; i = 1)
+    {
+      azmj.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
       return;
     }
-    if (bbeg.a(this.a) != null)
-    {
-      bbeg.a(this.a).a();
-      bbeg.a(this.a).removeObserver(bbeg.a(this.a));
-    }
-    if (paramMessage.arg1 != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "msf return error ");
-      }
-      bbeg.a(this.a, 1);
-      return;
-    }
-    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
-    {
-      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
-      if (paramMessage.retCode == 0)
-      {
-        bbeg.b(this.a);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
-      }
-    }
-    bbeg.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbeu
  * JD-Core Version:    0.7.0.1
  */

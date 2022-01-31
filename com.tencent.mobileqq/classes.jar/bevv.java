@@ -1,22 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import MConch.SCPullConchs;
+import MWIFI.SCGet3rdCloudCheck;
 
-final class bevv
-  implements DialogInterface.OnClickListener
+public class bevv
 {
-  bevv(DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
-    }
-  }
+  public SCPullConchs a;
+  public SCGet3rdCloudCheck a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevv
  * JD-Core Version:    0.7.0.1
  */

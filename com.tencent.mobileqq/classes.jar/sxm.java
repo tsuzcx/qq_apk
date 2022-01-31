@@ -1,78 +1,54 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class sxm
+class sxm
+  implements ymm
 {
-  public static int a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
-  }
+  sxm(sxe paramsxe, String paramString, boolean paramBoolean) {}
   
-  public static Boolean a(int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
-  }
-  
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
-  {
-    return sxz.a(paramClass, paramVarArgs);
-  }
-  
-  public static String a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
-  }
-  
-  public static String a(int paramInt, Object... paramVarArgs)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  public static <T extends Activity> sxv<T> a(Class<? extends sxv<T>> paramClass, Class<sxv<T>> paramClass1, Object... paramVarArgs)
-  {
-    return (sxv)sxz.a(paramClass, paramClass1, paramVarArgs);
-  }
-  
-  public static wco a(Context paramContext, int paramInt)
-  {
-    return syc.a(paramContext, paramInt);
-  }
-  
-  public static void a(Context paramContext, int paramInt, long paramLong)
-  {
-    syf.a(paramContext, paramInt, paramLong);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    syf.a(paramContext, paramInt, paramString);
-  }
-  
-  public static void a(Object paramObject)
-  {
-    syd.a(paramObject);
-  }
-  
-  public static boolean a()
-  {
-    return sye.a();
-  }
-  
-  public static String[] a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
+    if (paramBundle != null)
+    {
+      if (this.jdField_a_of_type_Sxe.a != null) {
+        this.jdField_a_of_type_Sxe.l();
+      }
+      String str = paramBundle.getString("pic_server_id");
+      this.jdField_a_of_type_Sxe.a(paramBundle);
+      if ("-1".equals(str)) {
+        paramBundle = new JSONObject();
+      }
+    }
+    else
+    {
+      try
+      {
+        paramBundle.put("retCode", -1);
+        paramBundle.put("msg", "fail");
+        this.jdField_a_of_type_Sxe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+        if (this.jdField_a_of_type_Boolean)
+        {
+          nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+        azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
+        return;
+      }
+    }
+    this.jdField_a_of_type_Sxe.a(localJSONException, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxm
  * JD-Core Version:    0.7.0.1
  */

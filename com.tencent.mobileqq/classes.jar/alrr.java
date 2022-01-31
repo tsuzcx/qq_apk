@@ -1,16 +1,30 @@
-class alrr
-  implements alrx
+import com.tencent.mobileqq.app.MayknowRecommendManager.3.1;
+import com.tencent.mobileqq.app.MayknowRecommendManager.3.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
+public class alrr
+  extends alox
 {
-  alrr(alrl paramalrl, alrx paramalrx) {}
+  alrr(alro paramalro) {}
   
-  public void a(boolean paramBoolean)
+  protected void onAddFriend(String paramString)
   {
-    this.jdField_a_of_type_Alrx.a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("MayknowRecommendManager", 2, "onAddFriend " + paramString);
+    }
+    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.1(this, paramString));
+  }
+  
+  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.2(this, paramBoolean, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alrr
  * JD-Core Version:    0.7.0.1
  */

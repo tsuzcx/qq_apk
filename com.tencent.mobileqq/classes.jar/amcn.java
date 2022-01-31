@@ -1,175 +1,88 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopStatisticsInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class amcn
-  extends amcl
+public class amcn
+  extends amch
 {
-  public int c;
-  public String c;
-  public int d;
-  public int e;
-  
-  public amcn()
+  public amcn(QQAppInterface paramQQAppInterface, amcg paramamcg)
   {
-    this.jdField_c_of_type_Int = -1;
-  }
-  
-  public static amcl a(JSONObject paramJSONObject)
-  {
-    amcn localamcn = new amcn();
-    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    localamcn.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align");
-    localamcn.d = (baxn.c(localContext, paramJSONObject.optInt("text_size") / 2) + 1);
-    localamcn.jdField_c_of_type_JavaLangString = paramJSONObject.optString("text_align");
-    String str = paramJSONObject.optString("text_color");
-    Object localObject = str;
-    if (str.startsWith("0x")) {
-      localObject = str.substring(2);
-    }
-    try
-    {
-      localamcn.jdField_c_of_type_Int = Color.parseColor("#" + (String)localObject);
-      if (paramJSONObject.has("rect"))
-      {
-        localObject = paramJSONObject.optJSONArray("rect");
-        localamcn.jdField_a_of_type_ArrayOfInt = new int[4];
-        int i = 0;
-        while (i < ((JSONArray)localObject).length())
-        {
-          localamcn.jdField_a_of_type_ArrayOfInt[i] = baxn.a(localContext, ((JSONArray)localObject).optInt(i) / 2);
-          i += 1;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("DiyBubbleConfig", 2, "diy text_color invalid");
-        }
-      }
-      localamcn.e = paramJSONObject.optInt("text_max_count");
-      if (QLog.isColorLevel()) {
-        QLog.d("DiyBubbleConfig", 2, "Resolve DiyBubbleTextConfig json->" + paramJSONObject);
-      }
-    }
-    return localamcn;
-  }
-  
-  @TargetApi(11)
-  public Rect a(amcy paramamcy, Canvas paramCanvas, Paint paramPaint)
-  {
-    float f1 = 0.0F;
-    paramCanvas = paramamcy.getBounds();
-    Object localObject = BaseApplicationImpl.getContext().getResources();
-    if (b == -1) {
-      b = actj.a(48.0F, (Resources)localObject);
-    }
-    float f4 = 1.0F;
-    float f3 = this.jdField_a_of_type_ArrayOfInt[3];
-    int i;
-    if (paramCanvas.height() < b)
-    {
-      i = actj.a(2.0F, (Resources)localObject);
-      int j = actj.a(9.0F, (Resources)localObject);
-      int k = actj.a(7.0F, (Resources)localObject);
-      f4 = (paramCanvas.height() - k * 2) * 1.0F / (b - j * 2);
-      f3 = this.jdField_a_of_type_ArrayOfInt[3] * f4;
-    }
+    super(paramQQAppInterface, paramamcg, TroopStatisticsInfo.class);
+    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    long l = System.currentTimeMillis();
+    if (l - awez.a(awfo.b, 0L) > 604800000L) {}
     for (;;)
     {
-      float f2;
-      if (this.jdField_a_of_type_JavaLangString.startsWith("T")) {
-        f2 = this.jdField_a_of_type_ArrayOfInt[1] - i;
-      }
-      for (;;)
+      try
       {
-        label162:
-        float f5;
-        if (this.jdField_a_of_type_JavaLangString.endsWith("L"))
-        {
-          f1 = this.jdField_a_of_type_ArrayOfInt[0];
-          i = this.jdField_a_of_type_ArrayOfInt[2];
-          if (this.d != 0) {
-            paramPaint.setTextSize(f4 * this.d);
-          }
-          paramPaint.setAntiAlias(true);
-          paramPaint.setFakeBoldText(true);
-          localObject = ambe.a().a(paramamcy, paramamcy.jdField_a_of_type_JavaLangString);
-          Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
-          f4 = amcl.a(paramPaint, (String)localObject);
-          f5 = f2 + f3 / 2.0F - (localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.top;
-          if (!this.jdField_c_of_type_JavaLangString.equals("center")) {
-            break label403;
-          }
-          f2 = f1 + (i - f4) / 2.0F;
+        awez.a(awfo.b, l);
+        paramQQAppInterface.a(TroopStatisticsInfo.class);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.db.Cache.TroopStatisticsCache", 2, "doInit record time over 7 days, drop table");
         }
-        for (;;)
+        return;
+        paramamcg = paramQQAppInterface.a(TroopStatisticsInfo.class);
+        if (paramamcg != null)
         {
-          if (!paramamcy.b) {
-            break label433;
-          }
-          f1 = paramCanvas.width() - f2 - f4;
-          return new Rect((int)f1, (int)f5, (int)(i + f1), (int)(f3 + f5));
-          if (!this.jdField_a_of_type_JavaLangString.startsWith("B")) {
-            break label460;
-          }
-          f2 = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height();
-          f2 = i + (f2 - f3);
-          break;
-          if (!this.jdField_a_of_type_JavaLangString.endsWith("R")) {
-            break label162;
-          }
-          f1 = this.jdField_a_of_type_ArrayOfInt[0] + paramCanvas.width();
-          break label162;
-          label403:
-          f2 = f1;
-          if (this.jdField_c_of_type_JavaLangString.equals("right")) {
-            f2 = f1 + i - f4;
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+          localObject = paramamcg.iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            TroopStatisticsInfo localTroopStatisticsInfo = (TroopStatisticsInfo)((Iterator)localObject).next();
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(a(localTroopStatisticsInfo), localTroopStatisticsInfo);
+            continue;
           }
         }
-        label433:
-        return new Rect((int)f2, (int)f5, (int)(i + f2), (int)(f3 + f5));
-        label460:
-        f2 = 0.0F;
       }
-      i = 0;
+      catch (Exception paramamcg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.db.Cache.TroopStatisticsCache", 2, paramamcg.getMessage());
+        }
+        return;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        Object localObject = new StringBuilder().append("doInit size = ");
+        if (paramamcg == null)
+        {
+          i = 0;
+          QLog.d("Q.db.Cache.TroopStatisticsCache", 2, i);
+          continue;
+        }
+      }
+      finally
+      {
+        paramQQAppInterface.a();
+      }
+      int i = paramamcg.size();
     }
   }
   
-  public void a(amcy paramamcy, Canvas paramCanvas)
+  public TroopStatisticsInfo a(String paramString)
   {
-    if ((paramCanvas == null) || (paramamcy == null)) {}
-    String str;
-    do
-    {
-      return;
-      str = ambe.a().a(paramamcy, paramamcy.jdField_a_of_type_JavaLangString);
-    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)));
-    Paint localPaint = new Paint();
-    if (this.jdField_c_of_type_Int != -1) {
-      localPaint.setColor(this.jdField_c_of_type_Int);
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (paramString == null)) {
+      return null;
     }
-    paramamcy = a(paramamcy, paramCanvas, localPaint);
-    paramCanvas.drawText(str, paramamcy.left, paramamcy.top, localPaint);
+    return (TroopStatisticsInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
   }
+  
+  protected String a(awbv paramawbv)
+  {
+    return ((TroopStatisticsInfo)paramawbv).troopUin;
+  }
+  
+  protected void a() {}
+  
+  protected void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcn
  * JD-Core Version:    0.7.0.1
  */

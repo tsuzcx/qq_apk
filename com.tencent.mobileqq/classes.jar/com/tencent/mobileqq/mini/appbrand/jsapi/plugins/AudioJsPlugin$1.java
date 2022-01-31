@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-import asvn;
-import asvo;
+import aumk;
+import auml;
 import com.tencent.qphone.base.util.QLog;
 
 class AudioJsPlugin$1
@@ -14,7 +14,7 @@ class AudioJsPlugin$1
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    AudioJsPlugin.access$2102(this.this$0, asvo.a(paramIBinder));
+    AudioJsPlugin.access$2102(this.this$0, auml.a(paramIBinder));
     try
     {
       if (AudioJsPlugin.access$2100(this.this$0) != null) {
@@ -51,7 +51,7 @@ class AudioJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

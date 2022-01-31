@@ -1,19 +1,12 @@
-import com.tribe.async.dispatch.Dispatcher;
-import dov.com.qq.im.capture.mode.CaptureModeController;
-
-public class bjdd
-  implements avum
+public abstract interface bjdd
 {
-  public bjdd(CaptureModeController paramCaptureModeController) {}
+  public abstract void a();
   
-  public void a()
-  {
-    stb.a().dispatch(new bjrq(2, true));
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjdd
  * JD-Core Version:    0.7.0.1
  */

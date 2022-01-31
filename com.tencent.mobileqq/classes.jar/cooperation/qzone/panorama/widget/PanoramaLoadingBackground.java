@@ -63,7 +63,7 @@ public class PanoramaLoadingBackground
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.d = paramContext.getResources().getColor(2131165285);
+    this.d = paramContext.getResources().getColor(2131165320);
   }
   
   private void a(Canvas paramCanvas)
@@ -137,7 +137,7 @@ public class PanoramaLoadingBackground
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaLoadingBackground
  * JD-Core Version:    0.7.0.1
  */

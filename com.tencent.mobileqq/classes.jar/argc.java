@@ -1,28 +1,32 @@
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
+import java.net.URL;
 
-public class argc
-  implements argg
+public abstract interface argc
 {
-  public argc(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
+  public abstract int a();
   
-  public void a(int paramInt)
-  {
-    Intent localIntent = new Intent(arfy.d(HuayangLoadbackgroudActivity.a(this.a)));
-    localIntent.putExtra("key_state", 4);
-    localIntent.putExtra("key_progress", paramInt);
-    localIntent.putExtra("key_totalSize", 100L);
-    this.a.sendBroadcast(localIntent);
-  }
+  public abstract String a();
   
-  public void a(boolean paramBoolean, Throwable paramThrowable)
-  {
-    this.a.finish();
-  }
+  public abstract URL a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argc
  * JD-Core Version:    0.7.0.1
  */

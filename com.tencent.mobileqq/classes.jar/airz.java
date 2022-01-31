@@ -1,73 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class airz
-  implements ajic
+public class airz
+  extends BroadcastReceiver
 {
-  airz(airx paramairx) {}
+  public airz(SendHbActivity paramSendHbActivity) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean) {
-      if ((paramInt1 > 0) && (!ApolloUtil.d(paramInt1))) {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, "role rsc NOT complete.");
-        }
-      }
+    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
+      this.a.finish();
     }
-    label96:
-    do
-    {
-      bbrd localbbrd;
-      do
-      {
-        return;
-        if (paramArrayOfInt != null)
-        {
-          paramInt1 = 0;
-          for (;;)
-          {
-            if (paramInt1 >= paramArrayOfInt.length) {
-              break label96;
-            }
-            if (!ApolloUtil.c(paramArrayOfInt[paramInt1]))
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("ApolloManager", 2, "dress rsc NOT complete, id:" + paramArrayOfInt[paramInt1]);
-              return;
-            }
-            paramInt1 += 1;
-          }
-        }
-        paramArrayOfInt = new ArrayList(1);
-        paramArrayOfInt.add(paramString);
-        localbbrd = (bbrd)this.a.a.a(71);
-        localbbrd.notifyUI(2, true, paramArrayOfInt);
-        aizu.a().a(paramArrayOfInt);
-        localbbrd.a(paramString, null);
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloManager", 2, "apollo dress download ok notifyUI uin: " + ApolloUtil.d(paramString));
-      return;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramArrayOfInt = new ArrayList(1);
-        paramArrayOfInt.add(paramString);
-        localbbrd = (bbrd)this.a.a.a(71);
-        localbbrd.notifyUI(2, false, paramArrayOfInt);
-        localbbrd.a(paramString, null);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloManager", 2, "apollo dress download failed " + ApolloUtil.d(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airz
  * JD-Core Version:    0.7.0.1
  */

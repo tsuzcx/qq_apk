@@ -1,21 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class bkvn
-  implements View.OnTouchListener
+class bkvn
+  implements bldv
 {
-  public bkvn(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  bkvn(bkvm parambkvm, ToServiceMsg paramToServiceMsg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    return this.a.a(paramView, paramMotionEvent);
+    bkvm.a(this.jdField_a_of_type_Bkvm, null, null);
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      paramBitmap = bkvm.a(this.jdField_a_of_type_Bkvm.mApp.getApp(), paramBitmap);
+      if ((paramBitmap == null) || (paramBitmap.length() < 1))
+      {
+        bkvm.a(this.jdField_a_of_type_Bkvm, null, null);
+        return;
+      }
+      bkvm.a(this.jdField_a_of_type_Bkvm, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, paramBitmap);
+      return;
+    }
+    bkvm.a(this.jdField_a_of_type_Bkvm, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkvn
  * JD-Core Version:    0.7.0.1
  */

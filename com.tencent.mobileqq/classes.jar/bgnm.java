@@ -1,24 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
-class bgnm
-  extends BroadcastReceiver
+public abstract interface bgnm
 {
-  bgnm(bgnk parambgnk) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (bgnk.a(this.a) != null))
-    {
-      bgnk.a(this.a).dismiss();
-      bgnk.a(this.a, null);
-    }
-  }
+  public abstract boolean a(bgnj parambgnj, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgnm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.conditionsearch.data;
 
-import ajya;
+import alpo;
 import android.text.TextUtils;
-import bbkk;
+import bdje;
 import com.tencent.common.app.AppInterface;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -14,7 +14,7 @@ public class AddressData
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajya.a(2131699879);
+    jdField_a_of_type_JavaLangString = alpo.a(2131700248);
   }
   
   public AddressData()
@@ -79,7 +79,7 @@ public class AddressData
     if (paramString.startsWith(jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    Object localObject2 = bbkk.a(paramString, '|');
+    Object localObject2 = bdje.a(paramString, '|');
     if ((paramString.startsWith("#")) || (localObject2.length < 2)) {
       return true;
     }
@@ -156,7 +156,7 @@ public class AddressData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.data.AddressData
  * JD-Core Version:    0.7.0.1
  */

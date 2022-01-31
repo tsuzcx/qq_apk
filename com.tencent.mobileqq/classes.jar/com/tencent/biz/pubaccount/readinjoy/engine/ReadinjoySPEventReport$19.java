@@ -5,7 +5,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import sgg;
+import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$19
@@ -57,7 +57,7 @@ public final class ReadinjoySPEventReport$19
         localAttributeList.att_value.set(this.b + "");
         localArrayList.add(localAttributeList);
       }
-      sgg.a(70, localArrayList);
+      syb.a(70, localArrayList);
       return;
       label385:
       localAttributeList.att_value.set("1");
@@ -66,7 +66,7 @@ public final class ReadinjoySPEventReport$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.19
  * JD-Core Version:    0.7.0.1
  */

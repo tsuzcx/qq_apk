@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class MsgTabNodeEntity
-  extends auko
+  extends awbv
 {
   public long cacheSeq;
   public boolean firstExp = true;
@@ -23,7 +23,7 @@ public class MsgTabNodeEntity
   public long reqTimeStamp;
   public String title;
   public long uid;
-  @aumc
+  @awdj
   public String unionId;
   public String videoCover;
   public int videoCoverType;
@@ -36,7 +36,7 @@ public class MsgTabNodeEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.MsgTabNodeEntity
  * JD-Core Version:    0.7.0.1
  */

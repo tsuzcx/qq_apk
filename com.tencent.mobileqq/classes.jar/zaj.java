@@ -1,46 +1,43 @@
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.form.GdtFormData;
-import com.tencent.gdtad.views.form.framework.GdtFormCommitUtil.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class zaj
+class zaj
+  implements DialogInterface.OnClickListener
 {
-  public static void a(GdtAd paramGdtAd, GdtFormData paramGdtFormData, WeakReference<zai> paramWeakReference)
-  {
-    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
-      ((zai)paramWeakReference.get()).a();
-    }
-    ThreadManager.post(new GdtFormCommitUtil.1(paramGdtAd, paramGdtFormData, paramWeakReference), 5, null, true);
-  }
+  zaj(zae paramzae) {}
   
-  private static zaf b(GdtAd paramGdtAd, GdtFormData paramGdtFormData)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject;
-    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtAd.actionSetId == -2147483648L) || (paramGdtFormData == null) || (!paramGdtFormData.isValid()))
+    if (!TextUtils.isEmpty(this.a.a))
     {
-      yxp.d("GdtFormCommitUtil", "commit error");
-      localObject = new zaf(4, -1, null);
-    }
-    zaf localzaf;
-    do
-    {
-      do
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMailJsPlugin", 2, String.format("Contact menu dialog click phone = %s, which = %d", new Object[] { this.a.a, Integer.valueOf(paramInt) }));
+      }
+      switch (paramInt)
       {
-        return localObject;
-        zal.a(paramGdtAd, paramGdtFormData);
-        localzaf = zar.a(paramGdtFormData);
-        localObject = localzaf;
-      } while (localzaf == null);
-      localObject = localzaf;
-    } while (localzaf.a != 1);
-    zcc.a(paramGdtAd, paramGdtFormData);
-    return localzaf;
+      default: 
+        if (QLog.isColorLevel()) {
+          QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow contact button %d", new Object[] { Integer.valueOf(paramInt) }));
+        }
+        break;
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      zae.h(this.a);
+      return;
+      zae.i(this.a);
+      return;
+    }
+    QLog.d("PubAccountMailJsPlugin", 2, "phone is empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zaj
  * JD-Core Version:    0.7.0.1
  */

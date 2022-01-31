@@ -5,37 +5,32 @@ import com.tencent.secprotocol.utils.ByteCodeCrashProtector.IProtectedMethod;
 class ByteData$1
   implements ByteCodeCrashProtector.IProtectedMethod
 {
-  ByteData$1(ByteData paramByteData) {}
+  ByteData$1(ByteData paramByteData, Object paramObject) {}
   
   public void onCrashDetected()
   {
-    this.this$0.logCat("poxy_java", "Something wrong when load native so.");
+    this.this$0.logCat("poxy_java", "Something wrong when putbyte .");
   }
   
   public void run()
   {
-    if (ByteData.access$000(this.this$0)) {
-      return;
-    }
     try
     {
-      if (!ByteData.access$100(this.this$0)) {
-        System.loadLibrary("poxy");
+      int i = ByteData.access$400(this.this$0, null, 1L, 0L, 0L, 0L, this.val$obj, "", null, null);
+      if (i != 0) {
+        this.this$0.logCat("poxy_java", "report log err！ ret: " + i);
       }
-      ByteData.access$002(this.this$0, true);
-      ByteData.access$202(this.this$0, true);
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    catch (Exception localException)
     {
-      ByteData.access$300(this.this$0)[1] = 1;
-      localUnsatisfiedLinkError.printStackTrace();
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.secprotocol.ByteData.1
  * JD-Core Version:    0.7.0.1
  */

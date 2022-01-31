@@ -1,10 +1,19 @@
-public abstract interface ude
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class ude
+  implements View.OnClickListener
 {
-  public abstract void a_(ucz paramucz);
+  ude(udd paramudd) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ude
  * JD-Core Version:    0.7.0.1
  */

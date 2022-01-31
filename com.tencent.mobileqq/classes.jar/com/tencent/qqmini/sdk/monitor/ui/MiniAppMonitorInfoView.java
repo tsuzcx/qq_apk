@@ -7,11 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bejn;
-import beyc;
-import beyk;
-import beym;
-import beyn;
+import bghl;
+import bgqg;
+import bgwx;
+import bgxf;
+import bgxh;
+import bgxi;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
 
 public class MiniAppMonitorInfoView
   extends FrameLayout
@@ -19,10 +22,10 @@ public class MiniAppMonitorInfoView
   public static long a;
   public static long b;
   private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler = bejn.c();
+  private Handler jdField_a_of_type_AndroidOsHandler = ThreadManager.c();
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private beyn jdField_a_of_type_Beyn;
+  private bgxi jdField_a_of_type_Bgxi;
   private Runnable jdField_a_of_type_JavaLangRunnable = new MiniAppMonitorInfoView.1(this);
   private volatile boolean jdField_a_of_type_Boolean;
   private TextView b;
@@ -43,19 +46,28 @@ public class MiniAppMonitorInfoView
   public MiniAppMonitorInfoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559309, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370378));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370377));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370366));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370375));
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370374));
-    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370368));
-    this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370367));
-    this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370363));
-    this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370364));
-    this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370365));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559359, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370683));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370682));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370671));
+    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370680));
+    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370679));
+    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370673));
+    this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370672));
+    this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370668));
+    this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370669));
+    this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370670));
     setMiniAppType(paramInt);
     c();
+  }
+  
+  private bghl a()
+  {
+    bgqg localbgqg = AppRuntimeLoaderManager.g().getCurrentRunTimeLoader();
+    if (localbgqg == null) {
+      return null;
+    }
+    return localbgqg.getRuntime();
   }
   
   public void a()
@@ -73,10 +85,10 @@ public class MiniAppMonitorInfoView
       return;
       if (this.jdField_a_of_type_Int == 0)
       {
-        if (this.jdField_a_of_type_Beyn == null) {
-          this.jdField_a_of_type_Beyn = new beyn(this, null);
+        if (this.jdField_a_of_type_Bgxi == null) {
+          this.jdField_a_of_type_Bgxi = new bgxi(this, null);
         }
-        beyc.a().a(this.jdField_a_of_type_Beyn);
+        bgwx.a().a(this.jdField_a_of_type_Bgxi);
       }
     }
   }
@@ -87,7 +99,7 @@ public class MiniAppMonitorInfoView
     {
       String str = "帧率: " + String.format("%.0f", new Object[] { Double.valueOf(paramDouble) }) + "fps";
       this.f.setText(str);
-      beyk.a().a(paramDouble);
+      bgxf.a().a(paramDouble);
     }
   }
   
@@ -99,8 +111,8 @@ public class MiniAppMonitorInfoView
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       }
-      if (this.jdField_a_of_type_Beyn != null) {
-        beyc.a().b(this.jdField_a_of_type_Beyn);
+      if (this.jdField_a_of_type_Bgxi != null) {
+        bgwx.a().b(this.jdField_a_of_type_Bgxi);
       }
       this.jdField_a_of_type_Boolean = false;
       return;
@@ -124,51 +136,62 @@ public class MiniAppMonitorInfoView
   
   protected void d()
   {
-    String str = "";
-    beym localbeym = beyk.a().a();
-    if (localbeym != null) {
-      str = "" + "切换页面耗时: " + localbeym.d + "ms";
+    Object localObject = "";
+    bgxh localbgxh = bgxf.a().a();
+    if (localbgxh != null) {
+      localObject = "" + "切换页面耗时: " + localbgxh.d + "ms";
     }
+    long l;
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      if (localbeym != null)
+      if (localbgxh != null)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       }
     }
     else if (this.g != null)
     {
       if (this.jdField_a_of_type_Int != 1) {
-        break label231;
+        break label280;
       }
+      localObject = a();
+      if (localObject == null) {
+        break label275;
+      }
+      l = ((bghl)localObject).a();
+      label107:
+      this.g.setText("drawCall: " + l);
       this.g.setVisibility(0);
     }
     for (;;)
     {
-      str = beyk.a().a();
+      localObject = bgxf.a().a();
       if (this.h != null)
       {
-        this.h.setText(str);
+        this.h.setText((CharSequence)localObject);
         this.h.setVisibility(0);
       }
-      str = beyk.a().b();
+      localObject = bgxf.a().b();
       if (this.i != null)
       {
-        this.i.setText(str);
+        this.i.setText((CharSequence)localObject);
         this.i.setVisibility(0);
       }
-      str = "内存 使用率: " + beyk.a().a() + "%";
+      localObject = "内存 使用率: " + bgxf.a().a() + "%";
       if (this.j != null)
       {
-        this.j.setText(str);
+        this.j.setText((CharSequence)localObject);
         this.j.setVisibility(0);
       }
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setText("切换页面耗时: 无页面切换");
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       break;
-      label231:
+      label275:
+      l = 0L;
+      break label107;
+      label280:
       this.g.setVisibility(8);
     }
   }
@@ -186,7 +209,7 @@ public class MiniAppMonitorInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.ui.MiniAppMonitorInfoView
  * JD-Core Version:    0.7.0.1
  */

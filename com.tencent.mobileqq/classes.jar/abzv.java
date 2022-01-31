@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.RiskInfoItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
-public final class abzv
-  implements Parcelable.Creator<RiskInfoItem>
+public class abzv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public RiskInfoItem a(Parcel paramParcel)
-  {
-    return new RiskInfoItem(paramParcel, null);
-  }
+  public abzv(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public RiskInfoItem[] a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new RiskInfoItem[paramInt];
+    augl.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzv
  * JD-Core Version:    0.7.0.1
  */

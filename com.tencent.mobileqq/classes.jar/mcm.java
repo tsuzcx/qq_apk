@@ -1,170 +1,48 @@
-import android.os.Looper;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
 
 public class mcm
 {
-  private final int jdField_a_of_type_Int = 1000;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private mcn jdField_a_of_type_Mcn = new mcn(this, Looper.getMainLooper());
-  private volatile mco jdField_a_of_type_Mco;
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private final int jdField_b_of_type_Int = 256;
-  private boolean jdField_b_of_type_Boolean;
+  public short a;
+  public byte[] a;
+  public short b = 240;
+  public short c;
+  public short d;
   
-  public mcm(VideoAppInterface paramVideoAppInterface)
+  public mcm(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-  }
-  
-  private String a()
-  {
-    if ((this.jdField_a_of_type_Mco != null) && (this.jdField_a_of_type_Mco.a())) {
-      return this.jdField_a_of_type_Mco.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Short = 320;
+    paramArrayOfByte = lre.a(paramArrayOfByte);
+    lrd locallrd = (lrd)paramArrayOfByte.get(4);
+    if (locallrd != null) {
+      this.jdField_a_of_type_ArrayOfByte = locallrd.a();
     }
-    return "";
-  }
-  
-  private void a(ViewGroup paramViewGroup, TextView paramTextView)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (int i = 1; i != 0; i = 0)
+    if (this.jdField_a_of_type_ArrayOfByte != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-  }
-  
-  private void f()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Mco != null) && (this.jdField_a_of_type_Mco.a())) {}
-    for (int i = 1;; i = 0)
-    {
-      a(a());
-      if ((this.jdField_a_of_type_Mcn != null) && (i != 0) && (!this.jdField_a_of_type_Mcn.hasMessages(256))) {
-        this.jdField_a_of_type_Mcn.sendEmptyMessageDelayed(256, 1000L);
+      paramArrayOfByte = (lrd)paramArrayOfByte.get(3);
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte = paramArrayOfByte.a();
+        this.b = ((short)(paramArrayOfByte[0] << 8 | paramArrayOfByte[1] & 0xFF));
+        this.jdField_a_of_type_Short = ((short)(paramArrayOfByte[2] << 8 | paramArrayOfByte[3] & 0xFF));
+        this.c = ((short)(paramArrayOfByte[4] << 8 | paramArrayOfByte[5] & 0xFF));
+        int i = paramArrayOfByte[6];
+        this.d = ((short)(paramArrayOfByte[7] & 0xFF | i << 8));
       }
-      return;
     }
   }
   
-  public String a(int paramInt)
+  public String toString()
   {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 0: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690266);
-    case 1: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690257);
-    case 2: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690267);
-    case 3: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690258);
-    case 4: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695763);
-    case 5: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690259);
-    case 6: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690261);
-    }
-    return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690260);
-  }
-  
-  public void a()
-  {
-    if (AudioHelper.e()) {
-      QLog.w("DeviceTipsController", 1, "attach, isAttach[" + this.jdField_b_of_type_Boolean + "]");
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      b();
-    }
-    if (!this.jdField_b_of_type_Boolean) {
-      ((ljf)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11)).a(this);
-    }
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {}
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    mco localmco = new mco();
-    localmco.jdField_a_of_type_Long = System.currentTimeMillis();
-    localmco.b = paramLong;
-    localmco.jdField_a_of_type_JavaLangString = a(paramInt);
-    a(localmco);
-  }
-  
-  public void a(View paramView)
-  {
-    a((ViewGroup)paramView.findViewById(2131372508), (TextView)paramView.findViewById(2131372238));
-  }
-  
-  public void a(mco parammco)
-  {
-    this.jdField_a_of_type_Mco = parammco;
-    if (this.jdField_a_of_type_Mcn != null)
-    {
-      this.jdField_a_of_type_Mcn.removeMessages(256);
-      this.jdField_a_of_type_Mcn.sendEmptyMessage(256);
-    }
-  }
-  
-  public void b()
-  {
-    if (AudioHelper.e()) {
-      QLog.w("DeviceTipsController", 1, "detach, isAttach[" + this.jdField_b_of_type_Boolean + "]");
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      ((ljf)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11)).a(null);
-    }
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public void c()
-  {
-    a();
-  }
-  
-  public void d() {}
-  
-  public void e()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      b();
-    }
-    this.jdField_a_of_type_Mco = null;
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Mcn != null) {
-      this.jdField_a_of_type_Mcn.removeMessages(256);
+    StringBuilder localStringBuilder = new StringBuilder().append("SwitchFaceItem face.length = ");
+    if (this.jdField_a_of_type_ArrayOfByte != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
+      return i + ", width = " + this.jdField_a_of_type_Short + ", height = " + this.b + ", fameWidth = " + this.c + ", frameHeight = " + this.d;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mcm
  * JD-Core Version:    0.7.0.1
  */

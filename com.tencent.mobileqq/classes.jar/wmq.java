@@ -1,21 +1,35 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 
 class wmq
-  implements xgu<CertifiedAccountWrite.StDoCommentRsp>
+  extends LruCache<wms, Drawable>
 {
-  wmq(wmn paramwmn, CertifiedAccountMeta.StComment paramStComment) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoCommentRsp paramStDoCommentRsp)
+  wmq(wmp paramwmp, int paramInt)
   {
-    stb.a().dispatch(this.jdField_a_of_type_Wmn.a(new Object[] { Integer.valueOf(3), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get(), Integer.valueOf(this.jdField_a_of_type_Wmn.hashCode()) }));
+    super(paramInt);
+  }
+  
+  protected int a(wms paramwms, Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        wnb.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramwms, " size=", Integer.valueOf(i) });
+        return i;
+      }
+    }
+    return 524288;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmq
  * JD-Core Version:    0.7.0.1
  */

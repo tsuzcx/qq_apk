@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.structmsg;
 
-import aany;
-import acxj;
-import adgc;
-import akpx;
-import amnr;
+import abot;
+import acew;
+import aeov;
+import aeyf;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -19,36 +18,37 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
-import aumo;
-import aump;
-import auoc;
-import auoq;
-import awyn;
-import axas;
-import axqy;
-import axuo;
-import axup;
-import axuq;
-import axuz;
-import axvr;
-import axwg;
-import axws;
-import axwv;
-import axzj;
-import ayoi;
-import ayvx;
-import aywc;
-import aywm;
-import bbdx;
-import bbef;
+import aoep;
+import awdv;
+import awdw;
+import awfj;
+import awfy;
+import aytq;
+import ayvw;
+import azmj;
+import azqi;
+import azqj;
+import azqk;
+import azqt;
+import azrl;
+import azsa;
+import azsm;
+import azsp;
+import azvd;
+import bame;
+import batw;
+import baub;
+import baul;
+import bdcs;
+import bdda;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawable;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.activity.photo.ImageInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
@@ -63,13 +63,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nam;
+import ndi;
 
 public class StructMsgForImageShare
   extends AbsShareMsg
 {
   public static final int SHARE_IMAGE_FREVIEW_MAX_SZIE = 140;
-  private static View.OnClickListener a = new axvr();
+  private static View.OnClickListener a = new azrl();
   public String bigUrl;
   public int height;
   public int mImageBizType;
@@ -94,16 +94,16 @@ public class StructMsgForImageShare
       return;
     }
     this.mMsgServiceID = 5;
-    axuq localaxuq = axuz.a(0);
-    localaxuq.b(paramBundle.getString("image_url"));
-    this.mStructMsgItemLists.add(localaxuq);
+    azqk localazqk = azqt.a(0);
+    localazqk.b(paramBundle.getString("image_url"));
+    this.mStructMsgItemLists.add(localazqk);
     this.thumbWidth = paramBundle.getInt("struct_share_key_thumb_width", 0);
     this.thumbHeight = paramBundle.getInt("struct_share_key_thumb_height", 0);
   }
   
-  public StructMsgForImageShare(axwg paramaxwg)
+  public StructMsgForImageShare(azsa paramazsa)
   {
-    super(paramaxwg);
+    super(paramazsa);
   }
   
   public static boolean resendAndUploadImageShare(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, StructMsgForImageShare paramStructMsgForImageShare)
@@ -120,18 +120,18 @@ public class StructMsgForImageShare
     QLog.d("StructMsg", 2, "handleAppShareAction firstImageElement NULL!!!");
     return false;
     String str = paramQQAppInterface.getCurrentAccountUin();
-    MessageRecord localMessageRecord = axas.a(paramMessageRecord);
+    MessageRecord localMessageRecord = ayvw.a(paramMessageRecord);
     paramQQAppInterface.a().a(localMessageRecord, str);
-    aywc localaywc = new aywc();
-    localaywc.jdField_b_of_type_JavaLangString = str;
-    localaywc.c = paramMessageRecord.frienduin;
-    localaywc.jdField_a_of_type_Int = paramMessageRecord.istroop;
-    localaywc.jdField_b_of_type_Int = 1;
-    localaywc.jdField_a_of_type_Long = localMessageRecord.uniseq;
-    localaywc.jdField_a_of_type_Boolean = true;
-    localaywc.jdField_e_of_type_Int = 1030;
-    localaywc.i = paramStructMsgForImageShare.S;
-    paramQQAppInterface.a().a(localaywc, localMessageRecord);
+    baub localbaub = new baub();
+    localbaub.jdField_b_of_type_JavaLangString = str;
+    localbaub.c = paramMessageRecord.frienduin;
+    localbaub.jdField_a_of_type_Int = paramMessageRecord.istroop;
+    localbaub.jdField_b_of_type_Int = 1;
+    localbaub.jdField_a_of_type_Long = localMessageRecord.uniseq;
+    localbaub.jdField_a_of_type_Boolean = true;
+    localbaub.jdField_e_of_type_Int = 1030;
+    localbaub.i = paramStructMsgForImageShare.S;
+    paramQQAppInterface.a().a(localbaub, localMessageRecord);
     return true;
   }
   
@@ -196,7 +196,7 @@ public class StructMsgForImageShare
         str1 = str2;
         str2 = AbsStructMsg.ah + System.currentTimeMillis() + ".jpg";
         str1 = str2;
-        bool = bbef.a(4, paramContext, paramString, str2, true, paramImageInfo, paramInt);
+        bool = bdda.a(4, paramContext, paramString, str2, true, paramImageInfo, paramInt);
         paramContext = str2;
         if (!bool) {
           paramContext = paramString;
@@ -230,7 +230,7 @@ public class StructMsgForImageShare
     return sendAndUploadImageShare(paramQQAppInterface, paramStructMsgForImageShare, paramString1, paramInt1, paramString2, paramInt2, null, false);
   }
   
-  public static boolean sendAndUploadImageShare(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, String paramString1, int paramInt1, String paramString2, int paramInt2, auoq paramauoq, boolean paramBoolean)
+  public static boolean sendAndUploadImageShare(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, String paramString1, int paramInt1, String paramString2, int paramInt2, awfy paramawfy, boolean paramBoolean)
   {
     if (paramStructMsgForImageShare == null) {
       return false;
@@ -242,16 +242,16 @@ public class StructMsgForImageShare
       }
       return false;
     }
-    axwv localaxwv = paramStructMsgForImageShare.getFirstImageElement();
-    if (localaxwv == null)
+    azsp localazsp = paramStructMsgForImageShare.getFirstImageElement();
+    if (localazsp == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StructMsg", 2, "handleAppShareAction firstImageElement NULL!!!");
       }
       return false;
     }
-    int i = awyn.jdField_a_of_type_Int;
-    awyn.jdField_a_of_type_Int = i + 1;
+    int i = aytq.jdField_a_of_type_Int;
+    aytq.jdField_a_of_type_Int = i + 1;
     long l = i;
     String str = paramQQAppInterface.getCurrentAccountUin();
     if (((paramInt1 != 1000) && (paramInt1 != 1020) && (paramInt1 != 1004)) || (TextUtils.isEmpty(paramString2))) {
@@ -259,18 +259,18 @@ public class StructMsgForImageShare
     }
     for (;;)
     {
-      localaxwv.d = 0L;
-      paramString2 = axas.a(paramQQAppInterface, str, paramString1, paramString2, paramInt1, l, paramStructMsgForImageShare);
-      adgc.a().a(paramString2.uniseq, paramStructMsgForImageShare.uniseq, paramStructMsgForImageShare.forwardID);
-      if (akpx.a(paramInt1) == 1032) {
-        amnr.a(paramQQAppInterface, paramString2, paramString1, paramInt1, paramInt2);
+      localazsp.d = 0L;
+      paramString2 = ayvw.a(paramQQAppInterface, str, paramString1, paramString2, paramInt1, l, paramStructMsgForImageShare);
+      aeyf.a().a(paramString2.uniseq, paramStructMsgForImageShare.uniseq, paramStructMsgForImageShare.forwardID);
+      if (abot.a(paramInt1) == 1032) {
+        aoep.a(paramQQAppInterface, paramString2, paramString1, paramInt1, paramInt2);
       }
       if (!paramStructMsgForImageShare.checkImageSharePic(paramQQAppInterface.getApp())) {
         return false;
       }
-      if (bbdx.c(localaxwv.S))
+      if (bdcs.c(localazsp.S))
       {
-        paramStructMsgForImageShare = HexUtil.bytes2HexStr(MD5.getFileMd5(localaxwv.S));
+        paramStructMsgForImageShare = HexUtil.bytes2HexStr(MD5.getFileMd5(localazsp.S));
         if (paramStructMsgForImageShare == null)
         {
           if (QLog.isColorLevel()) {
@@ -278,19 +278,19 @@ public class StructMsgForImageShare
           }
           return false;
         }
-        localaxwv.U = paramStructMsgForImageShare;
-        paramStructMsgForImageShare = aywm.a(paramStructMsgForImageShare, 1);
+        localazsp.U = paramStructMsgForImageShare;
+        paramStructMsgForImageShare = baul.a(paramStructMsgForImageShare, 1);
         if (paramStructMsgForImageShare != null) {
           break label362;
         }
         paramStructMsgForImageShare = null;
-        if (!ayoi.b(paramStructMsgForImageShare))
+        if (!bame.b(paramStructMsgForImageShare))
         {
-          paramStructMsgForImageShare = ayoi.d(paramStructMsgForImageShare);
-          bbdx.d(localaxwv.S, paramStructMsgForImageShare);
+          paramStructMsgForImageShare = bame.d(paramStructMsgForImageShare);
+          bdcs.d(localazsp.S, paramStructMsgForImageShare);
         }
       }
-      paramStructMsgForImageShare = new aywc();
+      paramStructMsgForImageShare = new baub();
       paramStructMsgForImageShare.jdField_b_of_type_JavaLangString = str;
       paramStructMsgForImageShare.c = paramString1;
       paramStructMsgForImageShare.jdField_a_of_type_Int = paramInt1;
@@ -298,8 +298,8 @@ public class StructMsgForImageShare
       paramStructMsgForImageShare.jdField_a_of_type_Long = paramString2.uniseq;
       paramStructMsgForImageShare.jdField_a_of_type_Boolean = true;
       paramStructMsgForImageShare.jdField_e_of_type_Int = 1030;
-      paramStructMsgForImageShare.i = localaxwv.S;
-      paramStructMsgForImageShare.jdField_a_of_type_Auoq = paramauoq;
+      paramStructMsgForImageShare.i = localazsp.S;
+      paramStructMsgForImageShare.jdField_a_of_type_Awfy = paramawfy;
       if (paramBoolean)
       {
         paramStructMsgForImageShare.jdField_e_of_type_Boolean = false;
@@ -317,7 +317,7 @@ public class StructMsgForImageShare
     }
   }
   
-  public static boolean sendAndUploadImageShareHotPic(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, String paramString1, int paramInt1, String paramString2, aump paramaump, int paramInt2)
+  public static boolean sendAndUploadImageShareHotPic(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, String paramString1, int paramInt1, String paramString2, awdw paramawdw, int paramInt2)
   {
     if (paramStructMsgForImageShare == null) {
       return false;
@@ -329,16 +329,16 @@ public class StructMsgForImageShare
       }
       return false;
     }
-    axwv localaxwv = paramStructMsgForImageShare.getFirstImageElement();
-    if (localaxwv == null)
+    azsp localazsp = paramStructMsgForImageShare.getFirstImageElement();
+    if (localazsp == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StructMsg", 2, "handleAppShareAction firstImageElement NULL!!!");
       }
       return false;
     }
-    int i = awyn.jdField_a_of_type_Int;
-    awyn.jdField_a_of_type_Int = i + 1;
+    int i = aytq.jdField_a_of_type_Int;
+    aytq.jdField_a_of_type_Int = i + 1;
     long l = i;
     String str = paramQQAppInterface.getCurrentAccountUin();
     if (((paramInt1 != 1000) && (paramInt1 != 1020) && (paramInt1 != 1004)) || (TextUtils.isEmpty(paramString2))) {
@@ -346,16 +346,16 @@ public class StructMsgForImageShare
     }
     for (;;)
     {
-      localaxwv.d = 0L;
-      paramString2 = axas.a(paramQQAppInterface, str, paramString1, paramString2, paramInt1, l, paramStructMsgForImageShare);
-      aumo.a(paramString2, paramaump);
-      if (akpx.a(paramInt1) == 1032) {
-        amnr.a(paramQQAppInterface, paramString2, paramString1, paramInt1, paramInt2);
+      localazsp.d = 0L;
+      paramString2 = ayvw.a(paramQQAppInterface, str, paramString1, paramString2, paramInt1, l, paramStructMsgForImageShare);
+      awdv.a(paramString2, paramawdw);
+      if (abot.a(paramInt1) == 1032) {
+        aoep.a(paramQQAppInterface, paramString2, paramString1, paramInt1, paramInt2);
       }
       paramQQAppInterface.a().a(paramString2, str);
-      if (bbdx.c(localaxwv.S))
+      if (bdcs.c(localazsp.S))
       {
-        paramStructMsgForImageShare = HexUtil.bytes2HexStr(MD5.getFileMd5(localaxwv.S));
+        paramStructMsgForImageShare = HexUtil.bytes2HexStr(MD5.getFileMd5(localazsp.S));
         if (paramStructMsgForImageShare == null)
         {
           if (QLog.isColorLevel()) {
@@ -363,7 +363,7 @@ public class StructMsgForImageShare
           }
           return false;
         }
-        paramStructMsgForImageShare = aywm.a(paramStructMsgForImageShare, 1);
+        paramStructMsgForImageShare = baul.a(paramStructMsgForImageShare, 1);
         if (paramStructMsgForImageShare != null) {
           break label323;
         }
@@ -371,12 +371,12 @@ public class StructMsgForImageShare
       label323:
       for (paramStructMsgForImageShare = null;; paramStructMsgForImageShare = paramStructMsgForImageShare.toString())
       {
-        if (!ayoi.b(paramStructMsgForImageShare))
+        if (!bame.b(paramStructMsgForImageShare))
         {
-          paramStructMsgForImageShare = ayoi.d(paramStructMsgForImageShare);
-          bbdx.d(localaxwv.S, paramStructMsgForImageShare);
+          paramStructMsgForImageShare = bame.d(paramStructMsgForImageShare);
+          bdcs.d(localazsp.S, paramStructMsgForImageShare);
         }
-        paramStructMsgForImageShare = new aywc();
+        paramStructMsgForImageShare = new baub();
         paramStructMsgForImageShare.jdField_b_of_type_JavaLangString = str;
         paramStructMsgForImageShare.c = paramString1;
         paramStructMsgForImageShare.jdField_a_of_type_Int = paramInt1;
@@ -384,7 +384,7 @@ public class StructMsgForImageShare
         paramStructMsgForImageShare.jdField_a_of_type_Long = paramString2.uniseq;
         paramStructMsgForImageShare.jdField_a_of_type_Boolean = true;
         paramStructMsgForImageShare.jdField_e_of_type_Int = 1030;
-        paramStructMsgForImageShare.i = localaxwv.S;
+        paramStructMsgForImageShare.i = localazsp.S;
         paramQQAppInterface.a().a(paramStructMsgForImageShare, paramString2);
         return true;
       }
@@ -393,18 +393,18 @@ public class StructMsgForImageShare
   
   public boolean checkImageSharePic(Context paramContext)
   {
-    axwv localaxwv = getFirstImageElement();
-    if (localaxwv != null)
+    azsp localazsp = getFirstImageElement();
+    if (localazsp != null)
     {
-      if (localaxwv.a == null) {
-        localaxwv.a = this;
+      if (localazsp.a == null) {
+        localazsp.a = this;
       }
-      Object localObject2 = localaxwv.a();
+      Object localObject2 = localazsp.a();
       URLDrawable localURLDrawable = ForwardUtils.a(paramContext, (MessageForPic)localObject2);
       if (new File(((MessageForPic)localObject2).path).exists())
       {
-        localaxwv.S = ((MessageForPic)localObject2).path;
-        if (TextUtils.isEmpty(localaxwv.S))
+        localazsp.S = ((MessageForPic)localObject2).path;
+        if (TextUtils.isEmpty(localazsp.S))
         {
           if (QLog.isColorLevel()) {
             QLog.d("StructMsg", 2, "StructingMsgItemBuilder onMenuItemClicked forward imageElement.mShareImageUrl is null!!!");
@@ -416,9 +416,9 @@ public class StructMsgForImageShare
       {
         Object localObject1 = null;
         paramContext = localURLDrawable.getURL().toString();
-        if (ayoi.b(paramContext))
+        if (bame.b(paramContext))
         {
-          localObject2 = ayoi.a(paramContext);
+          localObject2 = bame.a(paramContext);
           paramContext = localObject1;
           if (localObject2 != null)
           {
@@ -430,9 +430,9 @@ public class StructMsgForImageShare
         }
         for (;;)
         {
-          localaxwv.S = paramContext;
+          localazsp.S = paramContext;
           break;
-          localObject2 = ayoi.a(aywm.a((auoc)localObject2, 65537).toString());
+          localObject2 = bame.a(baul.a((awfj)localObject2, 65537).toString());
           paramContext = localObject1;
           if (localObject2 != null)
           {
@@ -443,7 +443,7 @@ public class StructMsgForImageShare
           }
         }
       }
-      if (!ayoi.b(localURLDrawable.getURL().toString())) {
+      if (!bame.b(localURLDrawable.getURL().toString())) {
         localURLDrawable.startDownload();
       }
       return true;
@@ -454,25 +454,25 @@ public class StructMsgForImageShare
     return false;
   }
   
-  public axwv getFirstImageElement()
+  public azsp getFirstImageElement()
   {
     if (this.mStructMsgItemLists != null)
     {
       int i = 0;
       while (i < this.mStructMsgItemLists.size())
       {
-        Object localObject = (axup)this.mStructMsgItemLists.get(i);
-        if ((localObject instanceof axuq))
+        Object localObject = (azqj)this.mStructMsgItemLists.get(i);
+        if ((localObject instanceof azqk))
         {
-          localObject = (axuq)localObject;
-          if (((axuq)localObject).a != null)
+          localObject = (azqk)localObject;
+          if (((azqk)localObject).a != null)
           {
             int j = 0;
-            while (j < ((axuq)localObject).a.size())
+            while (j < ((azqk)localObject).a.size())
             {
-              axup localaxup = (axup)((axuq)localObject).a.get(j);
-              if ((localaxup != null) && ((localaxup instanceof axwv))) {
-                return (axwv)localaxup;
+              azqj localazqj = (azqj)((azqk)localObject).a.get(j);
+              if ((localazqj != null) && ((localazqj instanceof azsp))) {
+                return (azsp)localazqj;
               }
               j += 1;
             }
@@ -502,20 +502,20 @@ public class StructMsgForImageShare
     ((LinearLayout.LayoutParams)localObject2).gravity = 17;
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     paramView.setMinimumHeight(i * 120);
-    if (aany.S) {
-      paramView.setContentDescription(paramContext.getString(2131718210));
+    if (acew.S) {
+      paramView.setContentDescription(paramContext.getString(2131718585));
     }
-    paramContext = ((Resources)localObject1).getDrawable(2130849353);
+    paramContext = ((Resources)localObject1).getDrawable(2130849786);
     localObject1 = getFirstImageElement();
-    if ((localObject1 != null) && (((axwv)localObject1).S != null))
+    if ((localObject1 != null) && (((azsp)localObject1).S != null))
     {
-      localObject2 = ((axwv)localObject1).S;
+      localObject2 = ((azsp)localObject1).S;
       if ((!((String)localObject2).startsWith("http://")) && (!((String)localObject2).startsWith("https://")))
       {
-        localObject2 = nam.a(((axwv)localObject1).S, i * 140);
+        localObject2 = ndi.a(((azsp)localObject1).S, i * 140);
         if (localObject2 != null)
         {
-          paramView.setImageBitmap(bbef.a((Bitmap)localObject2, new File(((axwv)localObject1).S)));
+          paramView.setImageBitmap(bdda.a((Bitmap)localObject2, new File(((azsp)localObject1).S)));
           return paramView;
         }
         paramView.setImageDrawable(paramContext);
@@ -528,27 +528,27 @@ public class StructMsgForImageShare
     return paramView;
   }
   
-  public View getView(Context paramContext, View paramView, acxj paramacxj, Bundle paramBundle)
+  public View getView(Context paramContext, View paramView, aeov paramaeov, Bundle paramBundle)
   {
     if (this.mMsgException)
     {
-      paramContext = getVersionExceptionView(paramContext, paramView, paramacxj, paramBundle);
-      paramContext.setId(2131376585);
-      paramContext.setTag(2131376585, this);
+      paramContext = getVersionExceptionView(paramContext, paramView, paramaeov, paramBundle);
+      paramContext.setId(2131377085);
+      paramContext.setTag(2131377085, this);
       return paramContext;
     }
-    paramacxj = (ViewGroup)super.getView(paramContext, paramView, paramacxj, paramBundle);
-    axwv localaxwv = getFirstImageElement();
-    if (localaxwv != null)
+    paramaeov = (ViewGroup)super.getView(paramContext, paramView, paramaeov, paramBundle);
+    azsp localazsp = getFirstImageElement();
+    if (localazsp != null)
     {
-      localaxwv.a = this;
-      if ((paramacxj.getChildCount() == 1) && ((paramacxj.getChildAt(0) instanceof BubbleImageView)) && (localaxwv.a())) {
-        localaxwv.a(paramContext, paramacxj.getChildAt(0), paramBundle);
+      localazsp.a = this;
+      if ((paramaeov.getChildCount() == 1) && ((paramaeov.getChildAt(0) instanceof BubbleImageView)) && (localazsp.a())) {
+        localazsp.a(paramContext, paramaeov.getChildAt(0), paramBundle);
       }
     }
     else
     {
-      paramContext = paramacxj.getLayoutParams();
+      paramContext = paramaeov.getLayoutParams();
       if (paramContext != null) {
         break label168;
       }
@@ -556,12 +556,12 @@ public class StructMsgForImageShare
     }
     for (;;)
     {
-      paramacxj.setLayoutParams(paramContext);
-      paramacxj.setBackgroundDrawable(null);
-      paramacxj.setId(2131376585);
-      paramacxj.setTag(2131376585, this);
-      return paramacxj;
-      paramacxj.addView(localaxwv.a(paramContext, paramView, paramBundle));
+      paramaeov.setLayoutParams(paramContext);
+      paramaeov.setBackgroundDrawable(null);
+      paramaeov.setId(2131377085);
+      paramaeov.setTag(2131377085, this);
+      return paramaeov;
+      paramaeov.addView(localazsp.a(paramContext, paramView, paramBundle));
       break;
       label168:
       paramContext.height = -2;
@@ -569,40 +569,40 @@ public class StructMsgForImageShare
     }
   }
   
-  protected boolean parseContentNode(axwg paramaxwg)
+  protected boolean parseContentNode(azsa paramazsa)
   {
     boolean bool2 = false;
     boolean bool1;
-    if (paramaxwg == null)
+    if (paramazsa == null)
     {
       bool1 = true;
       return bool1;
     }
-    if ("item".equals(paramaxwg.jdField_b_of_type_JavaLangString)) {}
-    for (Object localObject = paramaxwg.a("layout");; localObject = axuz.a(paramaxwg.jdField_b_of_type_JavaLangString))
+    if ("item".equals(paramazsa.jdField_b_of_type_JavaLangString)) {}
+    for (Object localObject = paramazsa.a("layout");; localObject = azqt.a(paramazsa.jdField_b_of_type_JavaLangString))
     {
       try
       {
         if (!TextUtils.isEmpty((CharSequence)localObject)) {}
         for (int i = Integer.parseInt((String)localObject);; i = 0)
         {
-          localObject = axuz.a(i);
+          localObject = azqt.a(i);
           bool1 = bool2;
           if (localObject == null) {
             break;
           }
           bool1 = bool2;
-          if (!((axup)localObject).a(paramaxwg)) {
+          if (!((azqj)localObject).a(paramazsa)) {
             break;
           }
-          addItem((axup)localObject);
+          addItem((azqj)localObject);
           return true;
         }
         if (!QLog.isColorLevel()) {
           break;
         }
       }
-      catch (NumberFormatException paramaxwg)
+      catch (NumberFormatException paramazsa)
       {
         bool1 = bool2;
       }
@@ -637,11 +637,11 @@ public class StructMsgForImageShare
           this.mContentCover = paramObjectInput.readUTF();
           this.mContentTitle = paramObjectInput.readUTF();
           this.mContentSummary = paramObjectInput.readUTF();
-          localObject = axuz.a(this.mContentLayout);
-          ((axuq)localObject).a(new axws(this.mContentCover));
-          ((axuq)localObject).a(new StructMsgItemTitle(this.mContentTitle));
-          ((axuq)localObject).a(new axzj(this.mContentSummary));
-          addItem((axup)localObject);
+          localObject = azqt.a(this.mContentLayout);
+          ((azqk)localObject).a(new azsm(this.mContentCover));
+          ((azqk)localObject).a(new StructMsgItemTitle(this.mContentTitle));
+          ((azqk)localObject).a(new azvd(this.mContentSummary));
+          addItem((azqj)localObject);
           this.mSourceAppid = paramObjectInput.readLong();
           this.mSourceIcon = paramObjectInput.readUTF();
           this.mSourceName = paramObjectInput.readUTF();
@@ -675,33 +675,33 @@ public class StructMsgForImageShare
           localObject = paramObjectInput.readUTF();
           if ("item".equals(localObject))
           {
-            localObject = axuz.a(paramObjectInput.readInt());
+            localObject = azqt.a(paramObjectInput.readInt());
             j = i;
             if (localObject == null) {
               break label1000;
             }
-            ((axup)localObject).a(paramObjectInput);
+            ((azqj)localObject).a(paramObjectInput);
             j = i;
-            if (!TextUtils.isEmpty(((axup)localObject).c))
+            if (!TextUtils.isEmpty(((azqj)localObject).c))
             {
-              ((axup)localObject).Q = String.valueOf(i);
+              ((azqj)localObject).Q = String.valueOf(i);
               j = i + 1;
             }
-            ((axup)localObject).R = this.uin;
-            addItem((axup)localObject);
+            ((azqj)localObject).R = this.uin;
+            addItem((azqj)localObject);
             break label1000;
           }
-          axup localaxup = axuz.a((String)localObject);
-          localObject = localaxup;
-          if (localaxup == null) {
+          azqj localazqj = azqt.a((String)localObject);
+          localObject = localazqj;
+          if (localazqj == null) {
             continue;
           }
-          localObject = localaxup;
-          if (!axuq.class.isInstance(localaxup)) {
+          localObject = localazqj;
+          if (!azqk.class.isInstance(localazqj)) {
             continue;
           }
           paramObjectInput.readInt();
-          localObject = localaxup;
+          localObject = localazqj;
           continue;
         }
         this.mSourceAppid = paramObjectInput.readLong();
@@ -736,9 +736,9 @@ public class StructMsgForImageShare
         i = m;
         while (i < this.mStructMsgItemLists.size())
         {
-          localObject = (axup)this.mStructMsgItemLists.get(i);
-          ((axup)localObject).jdField_a_of_type_Long = this.msgId;
-          ((axup)localObject).j = this.mPromotionType;
+          localObject = (azqj)this.mStructMsgItemLists.get(i);
+          ((azqj)localObject).jdField_a_of_type_Long = this.msgId;
+          ((azqj)localObject).j = this.mPromotionType;
           i += 1;
         }
         if (n >= 5)
@@ -787,24 +787,24 @@ public class StructMsgForImageShare
   
   public void report(Object paramObject)
   {
-    axwv localaxwv = getFirstImageElement();
-    if ((localaxwv == null) || (!localaxwv.a())) {}
+    azsp localazsp = getFirstImageElement();
+    if ((localazsp == null) || (!localazsp.a())) {}
     do
     {
       do
       {
         return;
       } while (!(paramObject instanceof Long));
-      axqy.b(null, "dc00898", "", "", "0X800A26", "0X800A26", 0, 0, "", "", paramObject.toString(), ForwardUtils.b(this.uinType));
+      azmj.b(null, "dc00898", "", "", "0X800A26", "0X800A26", 0, 0, "", "", paramObject.toString(), ForwardUtils.b(this.uinType));
     } while (!QLog.isColorLevel());
     QLog.d("StructMsg", 2, "大图曝光=0X800A26, appid=" + paramObject);
   }
   
-  protected void toContentXml(axuo paramaxuo)
+  protected void toContentXml(azqi paramazqi)
   {
     Iterator localIterator = iterator();
     while (localIterator.hasNext()) {
-      ((axup)localIterator.next()).a(paramaxuo);
+      ((azqj)localIterator.next()).a(paramazqi);
     }
   }
   
@@ -856,7 +856,7 @@ public class StructMsgForImageShare
       paramObjectOutput.writeInt(getItemCount());
       localObject = iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((axup)((Iterator)localObject).next()).a(paramObjectOutput);
+        ((azqj)((Iterator)localObject).next()).a(paramObjectOutput);
       }
       localObject = this.mMsgAction;
       break;
@@ -1046,7 +1046,7 @@ public class StructMsgForImageShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForImageShare
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,44 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchFragment;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.doutu.DoutuData;
+import java.util.HashMap;
 
-public class apfl
-  extends awkf<awoi, awwr>
+class apfl
+  implements URLDrawableDownListener
 {
-  public apfl(ListView paramListView, baxy parambaxy, List<awoi> paramList, String paramString, QQAppInterface paramQQAppInterface)
+  apfl(apfk paramapfk) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    super(parambaxy, paramList);
-    if (paramString == null) {
-      return;
-    }
-    if (paramString.size() == 1)
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof apfm)))
     {
-      paramListView = (apfi)paramString.get(0);
-      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
-      {
-        parambaxy = new ArrayList();
-        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramList.hasNext())
-        {
-          paramString = (FileManagerEntity)paramList.next();
-          paramQQAppInterface = new apfi();
-          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
-          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
-          parambaxy.add(paramQQAppInterface);
-        }
-        a(parambaxy);
-        return;
+      paramView = (apfm)paramView;
+      if (paramView.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+      }
+      if (this.a.a == null) {
+        this.a.a = new HashMap();
+      }
+      if ((paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5 != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url != null)) {
+        this.a.a.put(paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5, paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url);
       }
     }
-    a(paramString);
-  }
-  
-  protected awrd<awoi, awwr> a(int paramInt)
-  {
-    return new apfn(FileSearchFragment.a(this.a));
-  }
-  
-  protected awws a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new apfo(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apfl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeza;
+import agwf;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ class TroopChatPie$8
     try
     {
       Thread.sleep(700L);
-      if ((!this.this$0.aj) && (!this.a) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && ((this.this$0.jdField_a_of_type_Aeza == null) || (!this.this$0.jdField_a_of_type_Aeza.a())))
+      if ((!this.this$0.aj) && (!this.a) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && ((this.this$0.jdField_a_of_type_Agwf == null) || (!this.this$0.jdField_a_of_type_Agwf.a())))
       {
         this.this$0.aj = true;
         TroopChatPie.a(this.this$0).post(new TroopChatPie.8.1(this));
@@ -36,7 +36,7 @@ class TroopChatPie$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.8
  * JD-Core Version:    0.7.0.1
  */

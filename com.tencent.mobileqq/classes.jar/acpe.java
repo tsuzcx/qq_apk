@@ -1,29 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acpe
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public acpe(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public acpe(DialogActivity paramDialogActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramEditable.length() >= 4)
-    {
-      VerifyCodeActivity.c(this.a, true);
-      return;
-    }
-    VerifyCodeActivity.d(this.a, false);
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpe
  * JD-Core Version:    0.7.0.1
  */

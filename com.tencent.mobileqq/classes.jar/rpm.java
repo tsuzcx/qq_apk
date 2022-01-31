@@ -1,29 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
-import com.tencent.image.URLDrawableHandler;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class rpm
-  implements URLDrawableHandler
+class rpm
+  implements View.OnClickListener
 {
-  public rpm(RunningJob paramRunningJob) {}
+  rpm(rpk paramrpk, Activity paramActivity) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void onClick(View paramView)
   {
-    return false;
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to recommend feeds");
+      rry.a(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772305);
+      this.jdField_a_of_type_Rpk.b();
+    }
   }
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpm
  * JD-Core Version:    0.7.0.1
  */

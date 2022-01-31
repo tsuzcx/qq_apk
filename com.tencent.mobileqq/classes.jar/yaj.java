@@ -1,58 +1,141 @@
-import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.ArrayList;
 
-class yaj
-  extends aywb
+public class yaj
+  extends ydp<SubscribeDraftBean>
+  implements yel
 {
-  yaj(yah paramyah, Looper paramLooper)
+  public static int a;
+  public static String a;
+  private int jdField_b_of_type_Int = ImmersiveUtils.a(19.0F);
+  private String jdField_b_of_type_JavaLangString;
+  private int c = ImmersiveUtils.a(3.0F);
+  
+  static
   {
-    super(paramLooper);
+    jdField_a_of_type_JavaLangString = "SubscribeDraftAdapter";
+    jdField_a_of_type_Int = ImmersiveUtils.a(4.0F);
   }
   
-  public void handleMessage(Message paramMessage)
+  public yaj(Bundle paramBundle)
   {
-    Object localObject = (ayqo)paramMessage.obj;
-    if ((localObject == null) || (((ayqo)localObject).jdField_b_of_type_Int != 24)) {}
-    while (((ayqo)localObject).c != 7) {
-      return;
+    super(paramBundle);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public ArrayList<Class> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(SubDraftChangeEvent.class);
+    return localArrayList;
+  }
+  
+  protected void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0) {
+      paramRect.left = jdField_a_of_type_Int;
     }
-    switch (paramMessage.what)
+    for (paramRect.right = (this.c / 2);; paramRect.right = jdField_a_of_type_Int)
     {
-    case 1001: 
-    case 1002: 
-    case 1004: 
-    default: 
+      paramRect.bottom = this.jdField_b_of_type_Int;
       return;
-    case 1003: 
-      paramMessage = new Intent();
-      paramMessage.setAction("onFaceTransferComplete");
-      localBundle = new Bundle();
-      localBundle.putLong("uniseq", ((ayqo)localObject).jdField_b_of_type_Long);
-      localBundle.putString("fileUrl", ((ayqo)localObject).i);
-      localObject = ((ayqo)localObject).i;
-      if (localObject != null)
-      {
-        localObject = ((String)localObject).split("/");
-        localBundle.putString("uuId", localObject[(localObject.length - 2)]);
+      paramRect.left = (this.c / 2);
+    }
+  }
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((paramSimpleBaseEvent instanceof SubDraftChangeEvent)) {
+      b();
+    }
+  }
+  
+  public void a(yeb paramyeb)
+  {
+    if ((paramyeb.d()) || (paramyeb.c())) {
+      b();
+    }
+  }
+  
+  public void b()
+  {
+    if ((a() != null) && (a() != null) && (((PublicFragmentActivity)a()).app != null))
+    {
+      this.jdField_b_of_type_JavaLangString = ((PublicFragmentActivity)a()).app.getAccount();
+      if (yho.a().a(this.jdField_b_of_type_JavaLangString)) {
+        yho.a().a(this.jdField_b_of_type_JavaLangString, new yak(this));
       }
-      paramMessage.putExtras(localBundle);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
+    }
+    else
+    {
       return;
     }
-    paramMessage = new Intent();
-    paramMessage.setAction("onFaceTransferError");
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uniseq", ((ayqo)localObject).jdField_b_of_type_Long);
-    paramMessage.putExtras(localBundle);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
+    a();
+    notifyDataSetChanged();
+  }
+  
+  public boolean d_()
+  {
+    return true;
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((paramViewHolder instanceof yal)) {
+      ((yal)paramViewHolder).a((SubscribeDraftBean)b().get(paramInt));
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new yal(this, new SubScribeDraftItemView(paramViewGroup.getContext(), this));
+  }
+  
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onDetachedFromRecyclerView(paramRecyclerView);
+    yej.a().b(this);
+  }
+  
+  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewAttachedToWindow(paramViewHolder);
+    yej.a().a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yaj
  * JD-Core Version:    0.7.0.1
  */

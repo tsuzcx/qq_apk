@@ -1,25 +1,17 @@
-import java.util.ArrayList;
-
-class alrb
-  implements admt
+public class alrb
 {
-  alrb(alqz paramalqz) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void a()
+  public String toString()
   {
-    boolean bool = ((adli)alqz.a(this.a).get(alqz.a(this.a))).checkShare();
-    if (bool != alqz.a(this.a))
-    {
-      alqz.a(this.a, bool);
-      alqz.a(this.a, alqz.a(this.a));
-    }
+    return "GroupInfo：" + this.jdField_a_of_type_Long + "|" + this.jdField_a_of_type_Int + "|" + this.b;
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alrb
  * JD-Core Version:    0.7.0.1
  */

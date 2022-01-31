@@ -1,39 +1,14 @@
-import com.tencent.mobileqq.gallery.model.pic.AIOFilePicData;
-import com.tencent.widget.Gallery;
-
-class aqou
-  implements aptw
+abstract class aqou
 {
-  aqou(aqot paramaqot, AIOFilePicData paramAIOFilePicData) {}
+  aqou(aqnw paramaqnw) {}
   
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_Aqot.j();
-      this.jdField_a_of_type_Aqot.a.b(this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOFilePicData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOFilePicData.jdField_a_of_type_Int, 20);
-      if (this.jdField_a_of_type_Aqot.a.a() != null)
-      {
-        this.jdField_a_of_type_Aqot.a.a().b(true);
-        this.jdField_a_of_type_Aqot.a.a().a(true);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      aqmd.a().a().a("AIOGalleryFilePicView", 4, "showFlowDialog exception = " + localException.getMessage());
-    }
-  }
+  abstract void a(String paramString, int paramInt);
   
-  public void b()
-  {
-    this.jdField_a_of_type_Aqot.j();
-    this.jdField_a_of_type_Aqot.e(true);
-  }
+  abstract void a(String paramString, int paramInt, aqot paramaqot);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqou
  * JD-Core Version:    0.7.0.1
  */

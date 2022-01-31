@@ -1,55 +1,56 @@
-import android.os.Handler;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.2;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.3;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.4;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.5;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class apfv
-  extends awke<awoi, awwr>
 {
-  public apfv(FileSelectorSearchFragment paramFileSelectorSearchFragment) {}
+  public apfw a;
+  public String a;
   
-  protected awrd<awoi, awwr> a(int paramInt)
+  public JSONObject a()
   {
-    apgb localapgb = new apgb();
-    localapgb.a(new apfw(this));
-    return localapgb;
-  }
-  
-  protected awws a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new apge(paramViewGroup);
-  }
-  
-  public void a(List<awoi> paramList)
-  {
-    super.a(paramList);
-    if ((paramList != null) && (paramList.size() > 0))
+    JSONObject localJSONObject1 = new JSONObject();
+    try
     {
-      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.2(this));
-      return;
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("user_id", this.jdField_a_of_type_Apfw.jdField_a_of_type_JavaLangString);
+      localJSONObject2.put("source_md5", this.jdField_a_of_type_Apfw.jdField_b_of_type_JavaLangString);
+      localJSONObject2.put("source_url", this.jdField_a_of_type_Apfw.c);
+      localJSONArray = new JSONArray();
+      localIterator = this.jdField_a_of_type_Apfw.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put((String)localIterator.next());
+      }
+      localException.put("expose_md5s", localJSONArray);
     }
-    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.3(this));
-  }
-  
-  public void a(List<awoi> paramList, boolean paramBoolean)
-  {
-    super.a(paramList, paramBoolean);
-    if ((paramList != null) && (paramList.size() > 0))
+    catch (Exception localException)
     {
-      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.4(this));
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("DoutuReportData", 2, "convert error:" + localException);
+      }
+      return localJSONObject1;
     }
-    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.5(this));
+    JSONArray localJSONArray = new JSONArray();
+    Iterator localIterator = this.jdField_a_of_type_Apfw.jdField_b_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localJSONArray.put((String)localIterator.next());
+    }
+    localException.put("expose_urls", localJSONArray);
+    localException.put("click_md5", this.jdField_a_of_type_Apfw.d);
+    localException.put("click_url", this.jdField_a_of_type_Apfw.e);
+    localException.put("aio_type", this.jdField_a_of_type_Apfw.f);
+    localException.put("mobile_type", this.jdField_a_of_type_Apfw.g);
+    localException.put("to_user_id", this.jdField_a_of_type_Apfw.h);
+    localJSONObject1.put("dcId", this.jdField_a_of_type_JavaLangString);
+    localJSONObject1.put("data", localException);
+    return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apfv
  * JD-Core Version:    0.7.0.1
  */

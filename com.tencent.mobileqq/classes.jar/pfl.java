@@ -1,17 +1,25 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.Comparator;
+
 class pfl
-  implements pvo
+  implements Comparator<ChannelInfo>
 {
-  pfl(pfj parampfj, pau parampau, ram paramram) {}
+  pfl(pfi parampfi) {}
   
-  public void a()
+  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
   {
-    onh.a = this.jdField_a_of_type_Pau.a();
-    onh.a(this.jdField_a_of_type_Ram.a(), this.jdField_a_of_type_Pau.a(), 2);
+    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
+      return 0;
+    }
+    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfl
  * JD-Core Version:    0.7.0.1
  */

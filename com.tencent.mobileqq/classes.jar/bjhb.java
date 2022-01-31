@@ -1,50 +1,23 @@
-import android.text.Spanned;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiBasicInfo;
 
-class bjhb
-  extends bkda
+public final class bjhb
+  implements Parcelable.Creator<WeishiBasicInfo>
 {
-  bjhb(bjha parambjha, int paramInt)
+  public WeishiBasicInfo a(Parcel paramParcel)
   {
-    super(paramInt);
+    return new WeishiBasicInfo(paramParcel);
   }
   
-  public int a(CharSequence paramCharSequence)
+  public WeishiBasicInfo[] a(int paramInt)
   {
-    return 0;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    int j = 0;
-    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
-    int i;
-    if (paramInt2 - paramInt1 != str.length())
-    {
-      i = 1;
-      if (i == 0) {
-        break label92;
-      }
-      paramInt2 = str.length();
-      paramInt1 = j;
-      paramCharSequence = str;
-    }
-    label92:
-    for (;;)
-    {
-      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      if ((paramSpanned == null) && (i != 0))
-      {
-        return paramCharSequence;
-        i = 0;
-        break;
-      }
-      return paramSpanned;
-    }
+    return new WeishiBasicInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjhb
  * JD-Core Version:    0.7.0.1
  */

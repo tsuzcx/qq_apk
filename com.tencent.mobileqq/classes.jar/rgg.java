@@ -1,16 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public abstract interface rgg
+public class rgg
+  extends qyp
 {
-  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, int paramInt);
+  private VideoInfo a;
   
-  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, boolean paramBoolean);
+  public VideoInfo a()
+  {
+    return this.a;
+  }
   
-  public abstract void m();
+  public String a()
+  {
+    return this.a.g;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgg
  * JD-Core Version:    0.7.0.1
  */

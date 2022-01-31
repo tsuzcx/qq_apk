@@ -1,35 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
 class tya
-  extends szr
+  implements yvn<FeedCloudRead.StGetFeedListRsp>
 {
-  tya(txy paramtxy) {}
+  tya(txz paramtxz, yft paramyft) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    ved.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!txt.b(this.a.a)) {
-      txt.a(this.a.a).p();
+    if (this.jdField_a_of_type_Yft != null) {
+      this.jdField_a_of_type_Yft.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedListRsp });
     }
-  }
-  
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
-  {
-    tbw localtbw = (tbw)tcz.a(17);
-    localtbw.a(paramCommentEntry.commentId);
-    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
-    paramCommentEntry.status = 0;
-    localtbw.a(paramCommentEntry);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tya
  * JD-Core Version:    0.7.0.1
  */

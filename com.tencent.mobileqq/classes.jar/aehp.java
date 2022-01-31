@@ -1,22 +1,18 @@
-import android.app.Activity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class aehp
-  implements EIPCResultCallback
+public class aehp
+  implements berl
 {
-  aehp(aeho paramaeho) {}
+  public aehp(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    if (-102 == paramEIPCResult.code) {
-      aegs.n(this.a.a).finish();
-    }
+    this.a.a(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehp
  * JD-Core Version:    0.7.0.1
  */

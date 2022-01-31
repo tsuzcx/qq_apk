@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.model;
 
-import askf;
+import aube;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonManager$8
   implements Runnable
 {
-  public EmoticonManager$8(askf paramaskf, EmoticonPackage paramEmoticonPackage) {}
+  public EmoticonManager$8(aube paramaube, EmoticonPackage paramEmoticonPackage) {}
   
   public void run()
   {
-    if (!askf.a(this.this$0, this.a)) {
+    if (!aube.a(this.this$0, this.a)) {
       QLog.e("EmoticonManager", 1, "saveEmoticonPackage fail epId = " + this.a.epId);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ayji
-  implements View.OnClickListener
+public abstract interface ayji
+  extends ayjj
 {
-  ayji(ayjh paramayjh) {}
+  public abstract String b();
   
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayji
  * JD-Core Version:    0.7.0.1
  */

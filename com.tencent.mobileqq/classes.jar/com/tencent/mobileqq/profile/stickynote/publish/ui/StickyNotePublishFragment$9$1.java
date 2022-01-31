@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profile.stickynote.publish.ui;
 
-import auxx;
+import awpj;
 import com.tencent.widget.XEditTextEx;
 
 public class StickyNotePublishFragment$9$1
   implements Runnable
 {
-  public StickyNotePublishFragment$9$1(auxx paramauxx) {}
+  public StickyNotePublishFragment$9$1(awpj paramawpj) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class StickyNotePublishFragment$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.9.1
  * JD-Core Version:    0.7.0.1
  */

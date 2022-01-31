@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.app;
 
-import akaa;
+import alro;
 import com.tencent.mobileqq.app.automator.Automator;
 import mqq.os.MqqHandler;
 
 public class MayknowRecommendManager$2
   implements Runnable
 {
-  public MayknowRecommendManager$2(akaa paramakaa) {}
+  public MayknowRecommendManager$2(alro paramalro) {}
   
   public void run()
   {
-    if (akaa.a(this.this$0).a.a() == 1)
+    if (alro.a(this.this$0).a.a() == 1)
     {
-      akaa.b(this.this$0);
+      alro.b(this.this$0);
       return;
     }
-    synchronized (akaa.a(this.this$0))
+    synchronized (alro.a(this.this$0))
     {
-      if (!akaa.a(this.this$0)) {
-        akaa.a(this.this$0).postDelayed(this, 5000L);
+      if (!alro.a(this.this$0)) {
+        alro.a(this.this$0).postDelayed(this, 5000L);
       }
       return;
     }

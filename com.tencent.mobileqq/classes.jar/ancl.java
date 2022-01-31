@@ -1,65 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ancl
-  extends ampa<anch>
+  implements View.OnTouchListener
 {
-  public static anch a()
-  {
-    return (anch)ampl.a().a(525);
-  }
+  public ancl(ARScanEntryView paramARScanEntryView) {}
   
-  public int a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return 525;
-  }
-  
-  @NonNull
-  public anch a(int paramInt)
-  {
-    return new anch();
-  }
-  
-  @Nullable
-  public anch a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return anch.a(paramArrayOfamph);
+    switch (paramMotionEvent.getAction())
+    {
     }
-    return null;
-  }
-  
-  public Class<anch> a()
-  {
-    return anch.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocLocalCooperationProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(anch paramanch) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancl
  * JD-Core Version:    0.7.0.1
  */

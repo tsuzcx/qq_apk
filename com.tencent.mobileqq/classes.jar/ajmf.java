@@ -1,26 +1,6 @@
-public class ajmf
-{
-  public long a;
-  public String a;
-  public long b;
-  
-  public ajmf(String paramString, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
-    return localStringBuilder.toString();
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmf
  * JD-Core Version:    0.7.0.1
  */

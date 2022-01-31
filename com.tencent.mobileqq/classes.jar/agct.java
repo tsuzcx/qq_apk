@@ -1,29 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
 
-class agct
-  extends akfk
+public class agct
+  implements army
 {
-  agct(agcf paramagcf) {}
+  public agct(AIOFileVideoData paramAIOFileVideoData, Context paramContext, ailt paramailt) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
+      this.jdField_a_of_type_Ailt.b();
+      this.jdField_a_of_type_Ailt.f();
     }
-    this.a.e();
   }
   
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
-    }
-    this.a.g();
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agct
  * JD-Core Version:    0.7.0.1
  */

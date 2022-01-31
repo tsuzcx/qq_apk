@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.businessCard.data;
 
-import ameq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import anvq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.json.JSONException;
 public class CardOCRInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardOCRInfo> CREATOR = new ameq();
+  public static final Parcelable.Creator<CardOCRInfo> CREATOR = new anvq();
   public float a;
   public int a;
   public String a;
@@ -116,7 +116,7 @@ public class CardOCRInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.data.CardOCRInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adup
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public void onClick(View paramView)
+  public adup(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.post(new MarketFaceItemBuilder.7.1(this), 5, null, true);
+    QQSettingCleanActivity.a(this.a);
+    azmj.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adup
  * JD-Core Version:    0.7.0.1
  */

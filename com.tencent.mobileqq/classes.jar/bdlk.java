@@ -1,33 +1,49 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadManager.5.1;
-import com.tencent.open.downloadnew.DownloadManager.5.2;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import mqq.os.MqqHandler;
+import android.util.Pair;
 
 public class bdlk
-  implements ITMAssistantDownloadClientListener
 {
-  bdlk(bdle parambdle) {}
+  public int a;
+  public Pair<CharSequence, CharSequence> a;
+  public String a;
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public bdlk(String paramString, int paramInt, Pair<CharSequence, CharSequence> paramPair)
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.2(this, paramLong1, paramLong2, paramString));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidUtilPair = paramPair;
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public String toString()
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.1(this, paramTMAssistantDownloadClient, paramInt1, paramString1, paramInt2, paramString2));
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    bdii.e("DownloadManager_", "OnDwonloadSDKServiceInvalid");
+    StringBuilder localStringBuilder1 = new StringBuilder().append("MsgSearchContactInfo{uin='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", uinType=").append(this.jdField_a_of_type_Int).append(", matchTitle=[");
+    if (this.jdField_a_of_type_AndroidUtilPair == null)
+    {
+      localObject = "null";
+      return (String)localObject + "]" + '}';
+    }
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    if (this.jdField_a_of_type_AndroidUtilPair.first == null)
+    {
+      localObject = "null";
+      label92:
+      localStringBuilder2 = localStringBuilder2.append(localObject).append(", ");
+      if (this.jdField_a_of_type_AndroidUtilPair.second != null) {
+        break label142;
+      }
+    }
+    label142:
+    for (Object localObject = "null";; localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.second)
+    {
+      localObject = localObject;
+      break;
+      localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.first;
+      break label92;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdlk
  * JD-Core Version:    0.7.0.1
  */

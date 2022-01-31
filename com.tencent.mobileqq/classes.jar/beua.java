@@ -1,29 +1,37 @@
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 
 class beua
+  implements IVideoInnerStatusListener
 {
-  private final int jdField_a_of_type_Int;
-  private final DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  beua(betz parambetz) {}
   
-  beua(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  public void notifyVideoClose(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+    this.a.b();
   }
   
-  int a()
+  public void notifyVideoSeek(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    if (betz.a(this.a) != null)
+    {
+      paramInt = (int)(paramInt * betz.a(this.a).c() / 100.0D);
+      betz.a(this.a, paramInt);
+    }
   }
   
-  public DialogInterface.OnClickListener a()
+  public void notifyVideoStart()
   {
-    return this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    betz.a(this.a);
+  }
+  
+  public void notifyVideoStop()
+  {
+    betz.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beua
  * JD-Core Version:    0.7.0.1
  */

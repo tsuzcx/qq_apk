@@ -1,26 +1,50 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aoqy
-  implements aptw
+public class aoqy
 {
-  aoqy(aoqv paramaoqv, WeiYunFileInfo paramWeiYunFileInfo) {}
+  private int a = 1;
   
-  public void a()
+  @NonNull
+  public static aoqy a()
   {
-    FileManagerEntity localFileManagerEntity = apug.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
-    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Aoqv.a).a().b(localFileManagerEntity);
-    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Aoqv.a).a().a(localFileManagerEntity);
-    this.jdField_a_of_type_Aoqv.a.a(localFileManagerEntity);
+    return new aoqy();
   }
   
-  public void b() {}
+  @NonNull
+  public static aoqy a(@Nullable String paramString)
+  {
+    aoqy localaoqy = new aoqy();
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        localaoqy.a = new JSONObject(paramString).getInt("use_apm");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localaoqy.toString());
+      }
+      return localaoqy;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "QVipPerfLevelConfig{use_apm=" + this.a + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqy
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import behp;
-import benc;
+import bghn;
+import bgho;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
@@ -38,16 +38,6 @@ public class CoverVideoView
     this.a.b(paramJSONObject);
   }
   
-  public boolean a()
-  {
-    if (!this.a.c())
-    {
-      this.a.a();
-      return true;
-    }
-    return false;
-  }
-  
   public boolean a(int paramInt)
   {
     return this.a.a(paramInt);
@@ -65,7 +55,7 @@ public class CoverVideoView
   
   public boolean b()
   {
-    if (this.a.c())
+    if (!this.a.c())
     {
       this.a.a();
       return true;
@@ -80,12 +70,22 @@ public class CoverVideoView
   
   public boolean c()
   {
-    return this.a.a();
+    if (this.a.c())
+    {
+      this.a.a();
+      return true;
+    }
+    return false;
   }
   
   public void d()
   {
     this.a.d();
+  }
+  
+  public boolean d()
+  {
+    return this.a.a();
   }
   
   public void setAtyRef(WeakReference<Activity> paramWeakReference)
@@ -103,14 +103,19 @@ public class CoverVideoView
     super.setLayoutParams(paramLayoutParams);
   }
   
+  public void setMiniAppContext(bgho parambgho)
+  {
+    this.a.b = new WeakReference(parambgho);
+  }
+  
   public void setPageWebviewId(int paramInt)
   {
     this.a.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setServiceWebview(behp parambehp)
+  public void setServiceWebview(bghn parambghn)
   {
-    this.a.jdField_a_of_type_Behp = parambehp;
+    this.a.jdField_a_of_type_Bghn = parambghn;
   }
   
   public void setVideoPath(String paramString)
@@ -122,15 +127,10 @@ public class CoverVideoView
   {
     this.a.jdField_a_of_type_Long = paramInt;
   }
-  
-  public void setWebviewContainer(benc parambenc)
-  {
-    this.a.jdField_a_of_type_Benc = parambenc;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.media.CoverVideoView
  * JD-Core Version:    0.7.0.1
  */

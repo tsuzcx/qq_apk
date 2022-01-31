@@ -1,35 +1,35 @@
 package com.tencent.biz.troop.feeds;
 
 import android.os.Handler;
-import axqy;
-import azpg;
-import bame;
+import azmj;
+import bbnp;
+import bckr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import wzt;
+import yom;
 
 public class TroopNewGuidePopWindow$4
   implements Runnable
 {
-  public TroopNewGuidePopWindow$4(wzt paramwzt, JSONObject paramJSONObject, boolean paramBoolean, int paramInt) {}
+  public TroopNewGuidePopWindow$4(yom paramyom, JSONObject paramJSONObject, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
     int j = 1;
-    this.this$0.jdField_a_of_type_Azpg = azpg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    this.this$0.jdField_a_of_type_Bbnp = bbnp.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.jdField_a_of_type_OrgJsonJSONObject);
     this.this$0.g = this.jdField_a_of_type_Boolean;
     String str1;
-    if (this.this$0.jdField_a_of_type_Azpg != null)
+    if (this.this$0.jdField_a_of_type_Bbnp != null)
     {
-      boolean bool = bame.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.this$0.jdField_a_of_type_Azpg.i);
-      bame.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
+      boolean bool = bckr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.this$0.jdField_a_of_type_Bbnp.i);
+      bckr.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
       if (QLog.isColorLevel()) {
-        QLog.d("TroopTipsPopWindow", 2, "initViewInThread, isRead = " + bool + ", mTroopNotify. mTroopNotify.isShowTipWindow = " + this.this$0.jdField_a_of_type_Azpg.b + ", isRemindNotice = " + this.jdField_a_of_type_Boolean);
+        QLog.d("TroopTipsPopWindow", 2, "initViewInThread, isRead = " + bool + ", mTroopNotify. mTroopNotify.isShowTipWindow = " + this.this$0.jdField_a_of_type_Bbnp.b + ", isRemindNotice = " + this.jdField_a_of_type_Boolean);
       }
-      if ((!this.this$0.jdField_a_of_type_Azpg.g.equals(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) && (((this.this$0.jdField_a_of_type_Azpg.b) && (!bool)) || (this.jdField_a_of_type_Boolean)))
+      if ((!this.this$0.jdField_a_of_type_Bbnp.g.equals(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) && (((this.this$0.jdField_a_of_type_Bbnp.b) && (!bool)) || (this.jdField_a_of_type_Boolean)))
       {
         localObject = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
         str1 = "";
@@ -46,13 +46,13 @@ public class TroopNewGuidePopWindow$4
       }
       localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       String str2 = this.this$0.b;
-      if (this.this$0.jdField_a_of_type_Azpg.c) {}
+      if (this.this$0.jdField_a_of_type_Bbnp.c) {}
       for (int i = 2;; i = 1)
       {
         if (this.this$0.g) {
           j = 2;
         }
-        axqy.b((QQAppInterface)localObject, "dc00898", "", "", "0X800AAC7", "0X800AAC7", 0, 0, str2, str1, String.valueOf(i), String.valueOf(j));
+        azmj.b((QQAppInterface)localObject, "dc00898", "", "", "0X800AAC7", "0X800AAC7", 0, 0, str2, str1, String.valueOf(i), String.valueOf(j));
         if (QLog.isColorLevel()) {
           QLog.d("TroopTipsPopWindow", 2, "initViewInThread showing popup window for troopNotice");
         }
@@ -62,14 +62,14 @@ public class TroopNewGuidePopWindow$4
       if (QLog.isColorLevel()) {
         QLog.d("TroopTipsPopWindow", 2, "initViewInThread, mTroopNotify is null!");
       }
-      bame.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
+      bckr.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.troop.feeds.TroopNewGuidePopWindow.4
  * JD-Core Version:    0.7.0.1
  */

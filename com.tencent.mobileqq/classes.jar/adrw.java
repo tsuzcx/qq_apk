@@ -1,28 +1,26 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
-class adrw
-  implements bfph
+public class adrw
+  implements TextWatcher
 {
-  adrw(adrs paramadrs, bfpc parambfpc) {}
+  public adrw(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Bfpc.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(paramEditable);
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Adrs.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
-    axqy.b(this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adrw
  * JD-Core Version:    0.7.0.1
  */

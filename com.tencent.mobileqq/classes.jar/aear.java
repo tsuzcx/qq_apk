@@ -1,47 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aear
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public aear(SixCombolEffectView paramSixCombolEffectView) {}
+  public aear(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-        SixCombolEffectView.jdField_a_of_type_Int = 4;
-        if (QLog.isColorLevel()) {
-          QLog.w("SixCombolEffectView", 2, "Animation 4 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
-        }
-      } while (SixCombolEffectView.a(this.a) == null);
-      paramAnimator = SixCombolEffectView.a(this.a);
-    } while (paramAnimator == null);
-    SixCombolEffectView.a(this.a).a(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
-      return;
-      SixCombolEffectView.jdField_a_of_type_Int = 3;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 3 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    TroopMemberListActivity.b(this.a);
+    new azmo(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aear
  * JD-Core Version:    0.7.0.1
  */

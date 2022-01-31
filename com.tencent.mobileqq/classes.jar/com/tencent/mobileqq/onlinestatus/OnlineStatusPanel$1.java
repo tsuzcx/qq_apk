@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.app.Activity;
-import aujc;
+import awaf;
 import java.util.ArrayList;
 
 class OnlineStatusPanel$1
@@ -11,13 +11,13 @@ class OnlineStatusPanel$1
   
   public void run()
   {
-    ArrayList localArrayList = aujc.a().a();
+    ArrayList localArrayList = awaf.a().a();
     ((Activity)this.this$0.getContext()).runOnUiThread(new OnlineStatusPanel.1.1(this, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusPanel.1
  * JD-Core Version:    0.7.0.1
  */

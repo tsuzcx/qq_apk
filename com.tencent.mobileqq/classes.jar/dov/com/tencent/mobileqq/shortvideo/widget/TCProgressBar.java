@@ -12,11 +12,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.TouchDelegate;
 import android.view.View;
-import blcq;
-import bldo;
-import bldp;
-import bldq;
-import blds;
+import bnoa;
+import bnoy;
+import bnoz;
+import bnpa;
+import bnpc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -31,16 +31,16 @@ public class TCProgressBar
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
   Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   TouchDelegate jdField_a_of_type_AndroidViewTouchDelegate = new TouchDelegate(this.jdField_a_of_type_AndroidGraphicsRect, this);
-  bldo jdField_a_of_type_Bldo = new bldo(this);
-  public bldp a;
-  bldq jdField_a_of_type_Bldq = new bldq(this);
-  blds jdField_a_of_type_Blds = new blds(this, true);
-  ArrayList<blds> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  bnoy jdField_a_of_type_Bnoy = new bnoy(this);
+  public bnoz a;
+  bnpa jdField_a_of_type_Bnpa = new bnpa(this);
+  bnpc jdField_a_of_type_Bnpc = new bnpc(this, true);
+  ArrayList<bnpc> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
   boolean jdField_a_of_type_Boolean;
   public int b;
   public Bitmap b;
   public Rect b;
-  ArrayList<blds> jdField_b_of_type_JavaUtilArrayList = new ArrayList(10);
+  ArrayList<bnpc> jdField_b_of_type_JavaUtilArrayList = new ArrayList(10);
   boolean jdField_b_of_type_Boolean = false;
   public int c;
   int d = 1000;
@@ -51,9 +51,9 @@ public class TCProgressBar
   public int i = -16737062;
   public int j = -65536;
   public int k = -15000805;
-  public int l = blcq.a(1.0F);
+  public int l = bnoa.a(1.0F);
   public int m = -1;
-  int n = blcq.a(5.0F);
+  int n = bnoa.a(5.0F);
   int o = 0;
   
   public TCProgressBar(Context paramContext, AttributeSet paramAttributeSet)
@@ -66,8 +66,8 @@ public class TCProgressBar
     this.jdField_a_of_type_Int = 3;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130845163);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130845162);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130845528);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130845527);
       this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TCProgressBar.TimerRefresh(this), this.d);
       return;
@@ -104,12 +104,12 @@ public class TCProgressBar
     int i1 = 0;
     while (i1 < i5 - 1)
     {
-      localblds = (blds)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if (localblds.d)
+      localbnpc = (bnpc)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+      if (localbnpc.d)
       {
-        localblds.jdField_f_of_type_Int = a(localblds.jdField_c_of_type_Int - localblds.jdField_b_of_type_Int, i4);
-        localblds.jdField_g_of_type_Int = a(localblds.jdField_b_of_type_Int, i4);
-        localblds.jdField_a_of_type_Boolean = false;
+        localbnpc.jdField_f_of_type_Int = a(localbnpc.jdField_c_of_type_Int - localbnpc.jdField_b_of_type_Int, i4);
+        localbnpc.jdField_g_of_type_Int = a(localbnpc.jdField_b_of_type_Int, i4);
+        localbnpc.jdField_a_of_type_Boolean = false;
       }
       i1 += 1;
     }
@@ -117,29 +117,29 @@ public class TCProgressBar
     i1 = 0;
     while (i1 < i8)
     {
-      localblds = (blds)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
-      if (localblds.d)
+      localbnpc = (bnpc)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
+      if (localbnpc.d)
       {
-        localblds.jdField_f_of_type_Int = a(localblds.jdField_c_of_type_Int - localblds.jdField_b_of_type_Int, i4);
-        localblds.jdField_g_of_type_Int = a(localblds.jdField_b_of_type_Int, i4);
-        localblds.jdField_a_of_type_Boolean = false;
+        localbnpc.jdField_f_of_type_Int = a(localbnpc.jdField_c_of_type_Int - localbnpc.jdField_b_of_type_Int, i4);
+        localbnpc.jdField_g_of_type_Int = a(localbnpc.jdField_b_of_type_Int, i4);
+        localbnpc.jdField_a_of_type_Boolean = false;
       }
       i1 += 1;
     }
     if (i5 > 0)
     {
-      localblds = (blds)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
-      localblds.jdField_f_of_type_Boolean = true;
-      localblds.jdField_a_of_type_Boolean = false;
-      if (!localblds.jdField_g_of_type_Boolean)
+      localbnpc = (bnpc)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
+      localbnpc.jdField_f_of_type_Boolean = true;
+      localbnpc.jdField_a_of_type_Boolean = false;
+      if (!localbnpc.jdField_g_of_type_Boolean)
       {
-        localblds.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-        localblds.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - this.o);
+        localbnpc.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
+        localbnpc.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - this.o);
       }
-      if (localblds.d)
+      if (localbnpc.d)
       {
-        localblds.jdField_f_of_type_Int = a(localblds.jdField_c_of_type_Int - localblds.jdField_b_of_type_Int, i4);
-        localblds.jdField_g_of_type_Int = a(localblds.jdField_b_of_type_Int, i4);
+        localbnpc.jdField_f_of_type_Int = a(localbnpc.jdField_c_of_type_Int - localbnpc.jdField_b_of_type_Int, i4);
+        localbnpc.jdField_g_of_type_Int = a(localbnpc.jdField_b_of_type_Int, i4);
       }
     }
     int i2;
@@ -149,113 +149,113 @@ public class TCProgressBar
     {
       i2 = i4;
       i1 = 0;
-      if ((this.jdField_a_of_type_Bldo.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Bldo.d))
+      if ((this.jdField_a_of_type_Bnoy.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Bnoy.d))
       {
-        this.jdField_a_of_type_Bldo.jdField_f_of_type_Int = i1;
-        this.jdField_a_of_type_Bldo.jdField_g_of_type_Int = this.n;
+        this.jdField_a_of_type_Bnoy.jdField_f_of_type_Int = i1;
+        this.jdField_a_of_type_Bnoy.jdField_g_of_type_Int = this.n;
       }
-      i9 = this.jdField_a_of_type_Bldq.a();
+      i9 = this.jdField_a_of_type_Bnpa.a();
       i3 = i5;
-      if (this.jdField_a_of_type_Bldq.jdField_e_of_type_Boolean)
+      if (this.jdField_a_of_type_Bnpa.jdField_e_of_type_Boolean)
       {
         i3 = i5;
-        if (this.jdField_a_of_type_Bldq.d)
+        if (this.jdField_a_of_type_Bnpa.d)
         {
-          this.jdField_a_of_type_Bldq.jdField_g_of_type_Int = this.jdField_e_of_type_Int;
-          if (!this.jdField_a_of_type_Bldq.jdField_c_of_type_Boolean) {
+          this.jdField_a_of_type_Bnpa.jdField_g_of_type_Int = this.jdField_e_of_type_Int;
+          if (!this.jdField_a_of_type_Bnpa.jdField_c_of_type_Boolean) {
             break label877;
           }
-          this.jdField_a_of_type_Bldq.jdField_f_of_type_Int = (i1 - 3);
+          this.jdField_a_of_type_Bnpa.jdField_f_of_type_Int = (i1 - 3);
         }
       }
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Bldq.jdField_f_of_type_Int < 0) && (this.jdField_a_of_type_Bldq.jdField_c_of_type_Boolean)) {
-        this.jdField_a_of_type_Bldq.jdField_f_of_type_Int = 0;
+      if ((this.jdField_a_of_type_Bnpa.jdField_f_of_type_Int < 0) && (this.jdField_a_of_type_Bnpa.jdField_c_of_type_Boolean)) {
+        this.jdField_a_of_type_Bnpa.jdField_f_of_type_Int = 0;
       }
-      if (this.jdField_a_of_type_Bldq.jdField_f_of_type_Int + this.jdField_a_of_type_Bldq.jdField_g_of_type_Int + 1 >= i7) {
-        this.jdField_a_of_type_Bldq.jdField_f_of_type_Int = (i7 - this.jdField_a_of_type_Bldq.jdField_g_of_type_Int);
+      if (this.jdField_a_of_type_Bnpa.jdField_f_of_type_Int + this.jdField_a_of_type_Bnpa.jdField_g_of_type_Int + 1 >= i7) {
+        this.jdField_a_of_type_Bnpa.jdField_f_of_type_Int = (i7 - this.jdField_a_of_type_Bnpa.jdField_g_of_type_Int);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("TCProgressBar", 2, "layout:delete.requestLayout" + this.jdField_a_of_type_Bldq.jdField_c_of_type_Boolean);
+        QLog.d("TCProgressBar", 2, "layout:delete.requestLayout" + this.jdField_a_of_type_Bnpa.jdField_c_of_type_Boolean);
       }
       i3 = i5;
-      if (!this.jdField_a_of_type_Bldq.jdField_c_of_type_Boolean)
+      if (!this.jdField_a_of_type_Bnpa.jdField_c_of_type_Boolean)
       {
         i5 = this.jdField_a_of_type_JavaUtilArrayList.size();
         if (i5 > 0)
         {
-          localblds = (blds)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
-          localblds.jdField_f_of_type_Boolean = false;
-          if (localblds.a(i9))
+          localbnpc = (bnpc)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
+          localbnpc.jdField_f_of_type_Boolean = false;
+          if (localbnpc.a(i9))
           {
             if (QLog.isColorLevel()) {
               QLog.d("TCProgressBar", 2, "layout:progress.checkBounds=true");
             }
-            localblds.jdField_a_of_type_Int = (this.jdField_a_of_type_Bldq.jdField_f_of_type_Int + 3);
-            localblds.jdField_a_of_type_Boolean = true;
+            localbnpc.jdField_a_of_type_Int = (this.jdField_a_of_type_Bnpa.jdField_f_of_type_Int + 3);
+            localbnpc.jdField_a_of_type_Boolean = true;
           }
         }
         i3 = i5;
         if (i8 > 0)
         {
-          localblds = (blds)this.jdField_b_of_type_JavaUtilArrayList.get(i8 - 1);
+          localbnpc = (bnpc)this.jdField_b_of_type_JavaUtilArrayList.get(i8 - 1);
           i3 = i5;
-          if (localblds.a(i9))
+          if (localbnpc.a(i9))
           {
             if (QLog.isColorLevel()) {
               QLog.d("TCProgressBar", 2, "layout:deletedList.checkBounds=true");
             }
-            localblds.jdField_a_of_type_Int = (this.jdField_a_of_type_Bldq.jdField_f_of_type_Int + 3);
-            localblds.jdField_a_of_type_Boolean = true;
+            localbnpc.jdField_a_of_type_Int = (this.jdField_a_of_type_Bnpa.jdField_f_of_type_Int + 3);
+            localbnpc.jdField_a_of_type_Boolean = true;
             i3 = i5;
           }
         }
       }
       if (i3 > 0)
       {
-        localblds = (blds)this.jdField_a_of_type_JavaUtilArrayList.get(i3 - 1);
-        if (localblds.h) {
-          localblds.jdField_g_of_type_Int = (i4 - localblds.jdField_f_of_type_Int);
+        localbnpc = (bnpc)this.jdField_a_of_type_JavaUtilArrayList.get(i3 - 1);
+        if (localbnpc.h) {
+          localbnpc.jdField_g_of_type_Int = (i4 - localbnpc.jdField_f_of_type_Int);
         }
       }
       if (i8 > 0)
       {
-        localblds = (blds)this.jdField_b_of_type_JavaUtilArrayList.get(0);
-        if (localblds.h) {
-          localblds.jdField_g_of_type_Int = (i7 - localblds.jdField_f_of_type_Int);
+        localbnpc = (bnpc)this.jdField_b_of_type_JavaUtilArrayList.get(0);
+        if (localbnpc.h) {
+          localbnpc.jdField_g_of_type_Int = (i7 - localbnpc.jdField_f_of_type_Int);
         }
-        i1 = localblds.jdField_f_of_type_Int + localblds.jdField_g_of_type_Int;
+        i1 = localbnpc.jdField_f_of_type_Int + localbnpc.jdField_g_of_type_Int;
         i2 = i4 - i1;
       }
-      if (this.jdField_a_of_type_Blds.d)
+      if (this.jdField_a_of_type_Bnpc.d)
       {
-        this.jdField_a_of_type_Blds.jdField_f_of_type_Int = i1;
-        this.jdField_a_of_type_Blds.jdField_g_of_type_Int = i2;
-        if (this.jdField_a_of_type_Blds.jdField_g_of_type_Int > 1) {
+        this.jdField_a_of_type_Bnpc.jdField_f_of_type_Int = i1;
+        this.jdField_a_of_type_Bnpc.jdField_g_of_type_Int = i2;
+        if (this.jdField_a_of_type_Bnpc.jdField_g_of_type_Int > 1) {
           break label917;
         }
-        this.jdField_a_of_type_Blds.jdField_e_of_type_Boolean = false;
+        this.jdField_a_of_type_Bnpc.jdField_e_of_type_Boolean = false;
       }
       return;
-      localblds = (blds)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
-      i2 = localblds.jdField_f_of_type_Int + localblds.jdField_g_of_type_Int;
+      localbnpc = (bnpc)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
+      i2 = localbnpc.jdField_f_of_type_Int + localbnpc.jdField_g_of_type_Int;
       i1 = i2;
       i2 = i4 - i2;
       break;
       label877:
       if ((i8 == 0) && (i9 > i1))
       {
-        this.jdField_a_of_type_Bldq.jdField_f_of_type_Int = (i1 - 3);
-        this.jdField_a_of_type_Bldq.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Bldq.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_Bnpa.jdField_f_of_type_Int = (i1 - 3);
+        this.jdField_a_of_type_Bnpa.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Bnpa.jdField_c_of_type_Boolean = true;
       }
     }
     label917:
-    this.jdField_a_of_type_Blds.jdField_e_of_type_Boolean = true;
-    blds localblds = this.jdField_a_of_type_Blds;
-    localblds.jdField_g_of_type_Int += i6;
+    this.jdField_a_of_type_Bnpc.jdField_e_of_type_Boolean = true;
+    bnpc localbnpc = this.jdField_a_of_type_Bnpc;
+    localbnpc.jdField_g_of_type_Int += i6;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -271,7 +271,7 @@ public class TCProgressBar
       int i4 = i3 / 7;
       int i5 = i4 * 3;
       a();
-      this.jdField_a_of_type_Bldq.jdField_e_of_type_Int = i3;
+      this.jdField_a_of_type_Bnpa.jdField_e_of_type_Int = i3;
       this.jdField_b_of_type_AndroidGraphicsRect.left = 0;
       this.jdField_b_of_type_AndroidGraphicsRect.right = i1;
       this.jdField_b_of_type_AndroidGraphicsRect.top = 0;
@@ -286,12 +286,12 @@ public class TCProgressBar
       this.jdField_b_of_type_AndroidGraphicsRect.bottom = (i5 + i4);
       i3 = this.jdField_a_of_type_JavaUtilArrayList.size();
       i1 = 0;
-      blds localblds;
+      bnpc localbnpc;
       while (i1 < i3)
       {
-        localblds = (blds)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if ((localblds.d) && (localblds.jdField_e_of_type_Boolean)) {
-          localblds.a(paramCanvas);
+        localbnpc = (bnpc)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+        if ((localbnpc.d) && (localbnpc.jdField_e_of_type_Boolean)) {
+          localbnpc.a(paramCanvas);
         }
         i1 += 1;
       }
@@ -299,20 +299,20 @@ public class TCProgressBar
       i1 = i2;
       while (i1 < i3)
       {
-        localblds = (blds)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
-        if ((localblds.d) && (localblds.jdField_e_of_type_Boolean)) {
-          localblds.a(paramCanvas);
+        localbnpc = (bnpc)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
+        if ((localbnpc.d) && (localbnpc.jdField_e_of_type_Boolean)) {
+          localbnpc.a(paramCanvas);
         }
         i1 += 1;
       }
-      if ((this.jdField_a_of_type_Blds.d) && (this.jdField_a_of_type_Blds.jdField_e_of_type_Boolean)) {
-        this.jdField_a_of_type_Blds.a(paramCanvas);
+      if ((this.jdField_a_of_type_Bnpc.d) && (this.jdField_a_of_type_Bnpc.jdField_e_of_type_Boolean)) {
+        this.jdField_a_of_type_Bnpc.a(paramCanvas);
       }
-      if ((this.jdField_a_of_type_Bldo.d) && (this.jdField_a_of_type_Bldo.jdField_e_of_type_Boolean)) {
-        this.jdField_a_of_type_Bldo.a(paramCanvas);
+      if ((this.jdField_a_of_type_Bnoy.d) && (this.jdField_a_of_type_Bnoy.jdField_e_of_type_Boolean)) {
+        this.jdField_a_of_type_Bnoy.a(paramCanvas);
       }
-    } while ((!this.jdField_a_of_type_Bldq.d) || (!this.jdField_a_of_type_Bldq.jdField_e_of_type_Boolean));
-    this.jdField_a_of_type_Bldq.a(paramCanvas);
+    } while ((!this.jdField_a_of_type_Bnpa.d) || (!this.jdField_a_of_type_Bnpa.jdField_e_of_type_Boolean));
+    this.jdField_a_of_type_Bnpa.a(paramCanvas);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -349,25 +349,25 @@ public class TCProgressBar
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
       this.jdField_f_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.size();
       this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Bldq.a(f1))
+      if (this.jdField_a_of_type_Bnpa.a(f1))
       {
-        this.jdField_a_of_type_Bldq.a(paramMotionEvent);
+        this.jdField_a_of_type_Bnpa.a(paramMotionEvent);
         continue;
         if (QLog.isColorLevel()) {
           QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_MOVE count=" + i1 + " X=" + f1);
         }
-        if (this.jdField_a_of_type_Bldq.jdField_b_of_type_Boolean)
+        if (this.jdField_a_of_type_Bnpa.jdField_b_of_type_Boolean)
         {
-          this.jdField_a_of_type_Bldq.a(paramMotionEvent);
-          if (this.jdField_a_of_type_Bldq.a())
+          this.jdField_a_of_type_Bnpa.a(paramMotionEvent);
+          if (this.jdField_a_of_type_Bnpa.a())
           {
-            i2 = this.jdField_a_of_type_Bldq.a();
-            if (this.jdField_a_of_type_Bldq.jdField_c_of_type_Int < 0)
+            i2 = this.jdField_a_of_type_Bnpa.a();
+            if (this.jdField_a_of_type_Bnpa.jdField_c_of_type_Int < 0)
             {
               i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
               while (i1 >= 0)
               {
-                paramMotionEvent = (blds)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+                paramMotionEvent = (bnpc)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
                 if (!paramMotionEvent.b(i2)) {
                   break;
                 }
@@ -383,7 +383,7 @@ public class TCProgressBar
             i1 = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
             while (i1 >= 0)
             {
-              paramMotionEvent = (blds)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
+              paramMotionEvent = (bnpc)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
               if (!paramMotionEvent.c(i2)) {
                 break;
               }
@@ -400,10 +400,10 @@ public class TCProgressBar
             if (QLog.isColorLevel()) {
               QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_UP count=" + i1 + " X=" + f1);
             }
-            if (this.jdField_a_of_type_Bldq.jdField_b_of_type_Boolean)
+            if (this.jdField_a_of_type_Bnpa.jdField_b_of_type_Boolean)
             {
-              this.jdField_a_of_type_Bldq.a(paramMotionEvent);
-              if (this.jdField_a_of_type_Bldq.a(f1))
+              this.jdField_a_of_type_Bnpa.a(paramMotionEvent);
+              if (this.jdField_a_of_type_Bnpa.a(f1))
               {
                 if (QLog.isColorLevel()) {
                   QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_UP[checkBounds:true] count=" + i1 + " X=" + f1);
@@ -413,7 +413,7 @@ public class TCProgressBar
                   i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
                   if (i1 > 0)
                   {
-                    paramMotionEvent = (blds)this.jdField_a_of_type_JavaUtilArrayList.remove(i1 - 1);
+                    paramMotionEvent = (bnpc)this.jdField_a_of_type_JavaUtilArrayList.remove(i1 - 1);
                     paramMotionEvent.jdField_b_of_type_Boolean = true;
                     this.jdField_b_of_type_JavaUtilArrayList.add(paramMotionEvent);
                     if (QLog.isColorLevel()) {
@@ -423,38 +423,38 @@ public class TCProgressBar
                 }
               }
               if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0) {}
-              for (this.jdField_a_of_type_Bldq.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_Bldq.jdField_a_of_type_Boolean = true)
+              for (this.jdField_a_of_type_Bnpa.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_Bnpa.jdField_a_of_type_Boolean = true)
               {
                 invalidate();
                 if (QLog.isColorLevel()) {
-                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_Bldq.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_Bldq.d);
+                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_Bnpa.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_Bnpa.d);
                 }
                 i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
                 if (this.jdField_f_of_type_Int - i1 > 0) {
                   this.jdField_b_of_type_Boolean = true;
                 }
-                if (this.jdField_a_of_type_Bldp == null) {
+                if (this.jdField_a_of_type_Bnoz == null) {
                   break;
                 }
-                this.jdField_a_of_type_Bldp.a(this.jdField_b_of_type_Boolean);
+                this.jdField_a_of_type_Bnoz.a(this.jdField_b_of_type_Boolean);
                 break;
               }
               if (QLog.isColorLevel()) {
                 QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_CANCEL count=" + i1 + " X=" + f1);
               }
-              if (this.jdField_a_of_type_Bldq.jdField_b_of_type_Boolean)
+              if (this.jdField_a_of_type_Bnpa.jdField_b_of_type_Boolean)
               {
-                this.jdField_a_of_type_Bldq.a(paramMotionEvent);
+                this.jdField_a_of_type_Bnpa.a(paramMotionEvent);
                 invalidate();
                 if (QLog.isColorLevel()) {
-                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_Bldq.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_Bldq.d);
+                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_Bnpa.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_Bnpa.d);
                 }
                 i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
                 if (this.jdField_f_of_type_Int - i1 > 0) {
                   this.jdField_b_of_type_Boolean = true;
                 }
-                if (this.jdField_a_of_type_Bldp != null) {
-                  this.jdField_a_of_type_Bldp.a(this.jdField_b_of_type_Boolean);
+                if (this.jdField_a_of_type_Bnoz != null) {
+                  this.jdField_a_of_type_Bnoz.a(this.jdField_b_of_type_Boolean);
                 }
               }
             }
@@ -490,7 +490,7 @@ public class TCProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar
  * JD-Core Version:    0.7.0.1
  */

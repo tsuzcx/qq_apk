@@ -1,22 +1,27 @@
-import com.tencent.av.service.AVRedPacketConfig;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public class moy
+class moy
+  implements View.OnKeyListener
 {
-  public AVRedPacketConfig a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = true;
-  public boolean c;
+  moy(mov parammov) {}
   
-  public String toString()
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return "AVRedBagConfig, mMainSwitch[" + this.a + "], mResReady[" + this.c + "]";
+    if (paramKeyEvent.getAction() == 0) {}
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    mov.b(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     moy
  * JD-Core Version:    0.7.0.1
  */

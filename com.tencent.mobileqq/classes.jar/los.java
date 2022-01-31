@@ -1,24 +1,29 @@
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import java.nio.ByteBuffer;
+import java.io.BufferedReader;
 
 public class los
+  extends lor
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public MediaFormat a;
-  public ByteBuffer a;
-  public boolean a;
+  private float a;
+  private float b;
   
-  public los(lor paramlor)
+  public float a()
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-    this.jdField_a_of_type_Boolean = true;
+    return this.jdField_a_of_type_Float + (this.b - this.jdField_a_of_type_Float) * loj.a();
+  }
+  
+  public void a(BufferedReader paramBufferedReader)
+  {
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Float = loo.a(paramBufferedReader, "lowMin");
+    this.b = loo.a(paramBufferedReader, "lowMax");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     los
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,21 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
 
-public abstract interface twt
+public class twt
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<twl> paramList);
+  QCircleContentImage jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage;
   
-  public abstract void a(List<twm> paramList, boolean paramBoolean);
+  public twt(tws paramtws, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage = ((QCircleContentImage)paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twt
  * JD-Core Version:    0.7.0.1
  */

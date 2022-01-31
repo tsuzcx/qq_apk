@@ -1,22 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class okd
-  implements ViewFactory.FoundClickableViewListener
+final class okd
+  implements DialogInterface.OnClickListener
 {
-  okd(okb paramokb) {}
+  okd(omg paramomg, omt paramomt) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
-      return;
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Omg != null)
+      {
+        paramDialogInterface = this.jdField_a_of_type_Omg.a();
+        if (paramDialogInterface != null)
+        {
+          paramDialogInterface.a(this.jdField_a_of_type_Omt);
+          this.jdField_a_of_type_Omg.notifyDataSetChanged();
+        }
+      }
+      bjxj.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
     }
-    paramViewBase.setOnClickListener(new oke(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okd
  * JD-Core Version:    0.7.0.1
  */

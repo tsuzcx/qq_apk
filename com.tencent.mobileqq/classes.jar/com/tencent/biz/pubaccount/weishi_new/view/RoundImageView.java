@@ -13,12 +13,18 @@ import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ImageView.ScaleType;
 import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class RoundImageView
   extends ResizeURLImageView
+  implements Handler.Callback
 {
   private static final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
   private static final ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.CENTER_CROP;
@@ -29,6 +35,7 @@ public class RoundImageView
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 0;
@@ -108,6 +115,11 @@ public class RoundImageView
     invalidate();
   }
   
+  private void a(Drawable paramDrawable)
+  {
+    ThreadManager.post(new RoundImageView.1(this, paramDrawable), 8, null, true);
+  }
+  
   private void b()
   {
     float f1 = 0.0F;
@@ -136,6 +148,17 @@ public class RoundImageView
   public ImageView.ScaleType getScaleType()
   {
     return jdField_a_of_type_AndroidWidgetImageView$ScaleType;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    while ((paramMessage.what != 101) || (!(paramMessage.obj instanceof Bitmap))) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)paramMessage.obj);
+    a();
+    return false;
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -182,15 +205,13 @@ public class RoundImageView
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(paramDrawable);
-    a();
+    a(paramDrawable);
   }
   
   public void setImageResource(int paramInt)
   {
     super.setImageResource(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(getDrawable());
-    a();
+    a(getDrawable());
   }
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
@@ -202,7 +223,7 @@ public class RoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RoundImageView
  * JD-Core Version:    0.7.0.1
  */

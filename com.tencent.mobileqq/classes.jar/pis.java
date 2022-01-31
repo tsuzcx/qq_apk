@@ -1,130 +1,168 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
 
 public class pis
-  implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private ram jdField_a_of_type_Ram;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  private volatile pit jdField_a_of_type_Pit;
   
-  public pis(ArticleInfo paramArticleInfo, Context paramContext, ram paramram)
+  public pis(ExecutorService paramExecutorService)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Ram = paramram;
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
   }
   
-  private void a()
+  public static pis a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_AndroidContentContext == null)) {}
-    label210:
+    Object localObject = (QQAppInterface)ors.a();
+    if (localObject != null)
+    {
+      localObject = ((oxd)((QQAppInterface)localObject).getManager(163)).a();
+      if (localObject != null) {
+        return ((owy)localObject).a();
+      }
+    }
+    return null;
+  }
+  
+  private boolean a(List<Long> paramList1, List<Long> paramList2)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramList1 == null) || (paramList2 == null)) {
+      if (paramList1 == paramList2) {
+        bool1 = true;
+      }
+    }
     do
     {
-      return;
-      QLog.d("OnReadArticleClickListener", 2, "jumpToArticle. ");
-      int i = ram.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      if ((35 == i) || (34 == i) || (85 == i))
+      for (;;)
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl))
-        {
-          if (!onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-            break label210;
-          }
-          a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-        }
-        for (;;)
-        {
-          b();
-          if ((onh.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (onh.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))) {
-            nol.a(null, onh.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X8008A62", "0X8008A62", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Integer.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessId + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), false);
-          }
-          c();
-          return;
-          onh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl);
-        }
+        return bool1;
+        bool1 = false;
       }
-      if (onh.k(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
-      {
-        pjb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
-        ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-        c();
-        return;
-      }
-      if (onh.l(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
-      {
-        str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qde.f;
-        onh.a(this.jdField_a_of_type_AndroidContentContext, str, null);
-        QLog.i("OnReadArticleClickListener", 2, "click readArticle answerUrl +" + str);
-        ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-        c();
-        return;
-      }
-      if (ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
-      {
-        onh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 4, false, 7, false);
-        ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId);
-        return;
-      }
-      if (ram.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
-      {
-        onh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, false, 6, false);
-        ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-        return;
-      }
-    } while ((!ram.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (ram.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)));
-    String str = ((qds)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qdq.a.get(0)).b;
-    if (!TextUtils.isEmpty(str)) {
-      onh.a(this.jdField_a_of_type_AndroidContentContext, str);
-    }
-    onh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Ram, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-  }
-  
-  private void a(ArticleInfo paramArticleInfo)
-  {
-    rnu.b("fast_web_show_light_house_1");
-    osg.a().a().a(paramArticleInfo.mArticleContentUrl, String.valueOf(paramArticleInfo.innerUniqueID), paramArticleInfo.mSubscribeID, 1, null);
-    a(paramArticleInfo, null);
-  }
-  
-  private void a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    onh.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramArticleInfo);
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
+      bool1 = bool2;
+    } while (paramList1.size() != paramList2.size());
+    int i = 0;
+    for (;;)
     {
-      ram.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      if (i >= paramList1.size()) {
+        break label93;
+      }
+      bool1 = bool2;
+      if (!((Long)paramList1.get(i)).equals(paramList2.get(i))) {
+        break;
+      }
+      i += 1;
+    }
+    label93:
+    return true;
+  }
+  
+  pit a(pve parampve)
+  {
+    if (parampve != null) {}
+    for (;;)
+    {
+      try
+      {
+        if ((this.jdField_a_of_type_Pit != null) && (this.jdField_a_of_type_Pit.a != null))
+        {
+          Object localObject = this.jdField_a_of_type_Pit.a;
+          Long localLong1 = (Long)((ToServiceMsg)localObject).getAttribute(pgp.d);
+          Long localLong2 = (Long)((ToServiceMsg)localObject).getAttribute(pgp.e);
+          long l1;
+          if (localLong1 != null)
+          {
+            l1 = localLong1.longValue();
+            if (localLong2 != null)
+            {
+              l2 = localLong2.longValue();
+              QLog.d("FeedsPreloadDataModule", 1, new Object[] { "isReqEqual: ", "cache bSeq = ", Long.valueOf(l1), ", request bSeq = ", Long.valueOf(parampve.a), "\n", "cache eSeq = ", Long.valueOf(l2), ", request eSeq = ", Long.valueOf(parampve.jdField_b_of_type_Long) });
+              if ((l1 == parampve.a) && (l2 == parampve.jdField_b_of_type_Long)) {
+                continue;
+              }
+              QLog.d("FeedsPreloadDataModule", 1, "getCache, the seq is not equal.");
+              parampve = null;
+              return parampve;
+            }
+          }
+          else
+          {
+            l1 = -1L;
+            continue;
+          }
+          long l2 = -1L;
+          continue;
+          parampve = parampve.jdField_b_of_type_JavaUtilList;
+          localObject = (List)((ToServiceMsg)localObject).getAttribute("SubscriptionArticles");
+          if ((parampve != null) && (parampve.size() > 0))
+          {
+            if (a(parampve, (List)localObject))
+            {
+              QLog.d("FeedsPreloadDataModule", 1, "two subscriptionLists are the same.");
+              parampve = this.jdField_a_of_type_Pit.a();
+              continue;
+            }
+            QLog.d("FeedsPreloadDataModule", 1, "two subscriptionList are different.");
+          }
+          else
+          {
+            if ((localObject == null) || (((List)localObject).size() == 0))
+            {
+              QLog.d("FeedsPreloadDataModule", 1, "two subscriptionLists both are empty.");
+              parampve = this.jdField_a_of_type_Pit.a();
+              continue;
+            }
+            QLog.d("FeedsPreloadDataModule", 1, "cache subscriptionList is not empty.");
+          }
+        }
+      }
+      finally {}
+      parampve = null;
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Pit = null;
+  }
+  
+  public void a(pit parampit)
+  {
+    if (parampit != null) {}
+    try
+    {
+      this.jdField_a_of_type_Pit = parampit;
       return;
     }
-    QLog.d("Q.readinjoy.ui", 1, "ComponentAccountSummary report click read article data, articleInfo is null!");
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-      shu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    finally
+    {
+      parampit = finally;
+      throw parampit;
     }
   }
   
-  public void onClick(ViewBase paramViewBase)
+  void b()
   {
-    a();
+    try
+    {
+      QLog.d("FeedsPreloadDataModule", 2, "clearCache.");
+      this.jdField_a_of_type_Pit = null;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pis
  * JD-Core Version:    0.7.0.1
  */

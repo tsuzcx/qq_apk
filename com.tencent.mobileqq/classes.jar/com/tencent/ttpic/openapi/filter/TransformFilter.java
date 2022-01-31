@@ -16,10 +16,7 @@ import com.tencent.ttpic.baseutils.device.DeviceInstance;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.model.FaceMeshItem;
 import com.tencent.ttpic.model.MeshDistortionType;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
-import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
 import com.tencent.ttpic.openapi.model.DistortionItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
@@ -53,6 +50,7 @@ public class TransformFilter
   float anotherStrength = 1.0F;
   private String dataPath;
   private float[] flatMesh = new float[480];
+  private int frameIndex = 0;
   private List<DistortionItem> items;
   private float[] mFaceAngle;
   private FaceMeshItem mFaceMeshItem;
@@ -63,7 +61,6 @@ public class TransformFilter
   private float screenRatioX = 1.0F;
   private float screenRatioY = 1.0F;
   private List<StickerItem> stickerItems;
-  private TriggerCtrlItem triggerCtrlItem;
   
   static
   {
@@ -78,7 +75,6 @@ public class TransformFilter
     this.mFaceMeshItem = paramFaceMeshItem;
     this.dataPath = paramString;
     this.items = EMPTY;
-    this.triggerCtrlItem = new TriggerCtrlItem(this.mFaceMeshItem);
     setRenderMode(1);
     initParams();
   }
@@ -88,7 +84,6 @@ public class TransformFilter
     super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.TRANSFORM));
     this.items = paramList;
     this.stickerItems = paramList1;
-    this.triggerCtrlItem = new TriggerCtrlItem();
     setRenderMode(1);
     initParams();
   }
@@ -165,15 +160,9 @@ public class TransformFilter
     return (float)((3.0D - paramFloat1 * 2.0D) * d);
   }
   
-  private TRIGGERED_STATUS updateActionTriggered(Set<Integer> paramSet, long paramLong)
-  {
-    paramSet = new PTDetectInfo.Builder().triggeredExpression(paramSet).timestamp(paramLong).build();
-    return this.triggerCtrlItem.getTriggeredStatus(paramSet);
-  }
-  
   private void updateMeshParam()
   {
-    int i = this.triggerCtrlItem.getFrameIndex();
+    int i = this.frameIndex;
     if (i == this.mLastMeshIndex) {
       return;
     }
@@ -256,24 +245,27 @@ public class TransformFilter
     }
   }
   
-  public void reset()
+  public boolean isNeedStop()
   {
-    this.triggerCtrlItem.reset();
+    return this.dataPath != null;
   }
+  
+  public void reset() {}
   
   public void setDistortionItems(List<DistortionItem> paramList)
   {
     this.items = paramList;
   }
   
-  public void setRenderForBitmap(boolean paramBoolean)
+  public void setFrameIndex(int paramInt)
   {
-    this.triggerCtrlItem.setRenderForBitmap(paramBoolean);
+    this.frameIndex = paramInt;
   }
   
-  public void setTriggerWords(String paramString)
+  public void stopTransform()
   {
-    this.triggerCtrlItem.setTriggerWords(paramString);
+    this.items = EMPTY;
+    this.mLastMeshIndex = -1;
   }
   
   public void updateFaceFeatures(List<PointF> paramList)
@@ -792,23 +784,11 @@ public class TransformFilter
       paramObject[1] = (-localPTDetectInfo.faceAngles[0]);
       paramObject[2] = localPTDetectInfo.faceAngles[2];
     }
-    if (this.dataPath != null)
-    {
-      updateActionTriggered(localPTDetectInfo.triggeredExpression, localPTDetectInfo.timestamp);
-      if (this.triggerCtrlItem.isTriggered()) {
-        break label141;
-      }
-      this.items = EMPTY;
-      this.mLastMeshIndex = -1;
-    }
-    for (;;)
-    {
-      updateParams(localPTDetectInfo.facePoints, localPTDetectInfo.triggeredExpression, this.mFaceDetScale, paramObject);
-      this.mFaceAngle = localPTDetectInfo.faceAngles;
-      return;
-      label141:
+    if (this.dataPath != null) {
       updateMeshParam();
     }
+    updateParams(localPTDetectInfo.facePoints, localPTDetectInfo.triggeredExpression, this.mFaceDetScale, paramObject);
+    this.mFaceAngle = localPTDetectInfo.faceAngles;
   }
   
   public void updateStrength(float paramFloat)

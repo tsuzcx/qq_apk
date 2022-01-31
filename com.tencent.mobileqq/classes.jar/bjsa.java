@@ -1,20 +1,34 @@
-class bjsa
-  implements vpi
+import android.text.TextUtils;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class bjsa
+  extends JSONObject
 {
-  bjsa(bjry parambjry) {}
+  public bjsa(QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo) {}
   
-  public void a() {}
-  
-  public void b()
+  public bjsa a(String paramString1, String paramString2)
   {
-    vei.a("textEdit", "pasteText", bjry.b(this.a), 0, new String[0]);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return this;
+    }
+    try
+    {
+      put(paramString1, paramString2);
+      return this;
+    }
+    catch (JSONException paramString1)
+    {
+      QZLog.d(QzoneVerticalVideoTopicInfo.a(this.a), 2, "put JSON error", paramString1);
+    }
+    return this;
   }
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjsa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bbfj;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class Conversation$25
   implements Runnable
@@ -11,30 +10,16 @@ class Conversation$25
   
   public void run()
   {
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.this$0.g)
-    {
-      Conversation.a(this.this$0, 800L);
-      boolean bool = bbfj.d(BaseApplication.getContext());
-      if (this.this$0.a != null)
-      {
-        localPullRefreshHeader = this.this$0.a;
-        if (!bool) {
-          break label57;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "delayUpdateMayKnowRecommendRunnable");
     }
-    label57:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      return;
-    }
+    Conversation.i(this.this$0);
+    this.this$0.a.sendEmptyMessage(1009);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.25
  * JD-Core Version:    0.7.0.1
  */

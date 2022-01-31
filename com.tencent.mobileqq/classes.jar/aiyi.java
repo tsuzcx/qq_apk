@@ -1,21 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
-
-public class aiyi
-  implements DialogInterface.OnClickListener
+public abstract interface aiyi
 {
-  public aiyi(ApolloWebGameActivity paramApolloWebGameActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ApolloWebGameActivity.a(this.a).dismiss();
-    ApolloWebGameActivity.b(this.a);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyi
  * JD-Core Version:    0.7.0.1
  */

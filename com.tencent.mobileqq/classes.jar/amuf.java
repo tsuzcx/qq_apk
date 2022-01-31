@@ -1,72 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
 
 public class amuf
-  extends ampa<amue>
+  implements View.OnTouchListener
 {
-  public int a()
-  {
-    return 442;
-  }
+  public amuf(ScanningSurfaceView paramScanningSurfaceView) {}
   
-  @NonNull
-  public amue a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new amue();
-  }
-  
-  @Nullable
-  public amue a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
+    switch (paramMotionEvent.getAction())
     {
-      amue localamue = amue.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttAutoChangeProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
-      }
-      return localamue;
     }
-    return null;
-  }
-  
-  public Class<amue> a()
-  {
-    return amue.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amue paramamue)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttAutoChangeProcessor", 2, "onUpdate " + paramamue.toString());
+    for (;;)
+    {
+      return true;
+      ScanningSurfaceView.a(this.a, paramMotionEvent);
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuf
  * JD-Core Version:    0.7.0.1
  */

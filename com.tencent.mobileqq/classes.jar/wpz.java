@@ -1,23 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wpz
-  implements amki
+class wpz
+  extends SimpleJob<Object>
 {
-  public wpz(SubscribeBaseFragment paramSubscribeBaseFragment) {}
-  
-  public void onColorNoteAnimFinish()
+  wpz(wpy paramwpy, String paramString1, String paramString2)
   {
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    wps.a(this.jdField_a_of_type_Wpy.a.a).a(this.jdField_a_of_type_JavaLangString);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpz
  * JD-Core Version:    0.7.0.1
  */

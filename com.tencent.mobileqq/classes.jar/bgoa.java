@@ -1,22 +1,10 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class bgoa
-  implements View.OnClickListener
+public class bgoa
 {
-  bgoa(Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
-  }
+  public int a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgoa
  * JD-Core Version:    0.7.0.1
  */

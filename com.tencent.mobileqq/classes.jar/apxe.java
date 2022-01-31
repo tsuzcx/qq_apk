@@ -1,18 +1,15 @@
-public abstract interface apxe
+class apxe
+  implements bapx
 {
-  public abstract void loadFinish(int paramInt1, int paramInt2, String paramString);
+  apxe(apxd paramapxd) {}
   
-  public abstract void loadFinish(int paramInt1, boolean paramBoolean, int paramInt2, String paramString);
+  public void onResp(baqw parambaqw) {}
   
-  public abstract void openFile(String paramString1, String paramString2, long paramLong, boolean paramBoolean);
-  
-  public abstract void updatePage(int paramInt1, int paramInt2);
-  
-  public abstract void webLog(String paramString);
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxe
  * JD-Core Version:    0.7.0.1
  */

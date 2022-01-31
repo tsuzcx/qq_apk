@@ -1,19 +1,12 @@
-final class wsh
-  implements bfpj
+public abstract interface wsh
 {
-  wsh(bfpc parambfpc, wsm paramwsm) {}
+  public abstract void X_();
   
-  public void onDismiss()
-  {
-    this.jdField_a_of_type_Bfpc.dismiss();
-    if (this.jdField_a_of_type_Wsm != null) {
-      this.jdField_a_of_type_Wsm.a(true);
-    }
-  }
+  public abstract void Y_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsh
  * JD-Core Version:    0.7.0.1
  */

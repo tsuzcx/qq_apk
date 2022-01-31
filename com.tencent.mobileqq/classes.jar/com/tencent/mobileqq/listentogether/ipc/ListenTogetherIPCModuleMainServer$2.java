@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.listentogether.ipc;
 
-import arsh;
-import auxb;
+import atjc;
+import awon;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
@@ -9,19 +9,19 @@ import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 public class ListenTogetherIPCModuleMainServer$2
   implements Runnable
 {
-  public ListenTogetherIPCModuleMainServer$2(arsh paramarsh) {}
+  public ListenTogetherIPCModuleMainServer$2(atjc paramatjc) {}
   
   public void run()
   {
-    auxb localauxb = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if ((localauxb != null) && (localauxb.a())) {
-      localauxb.d(false);
+    awon localawon = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if ((localawon != null) && (localawon.a())) {
+      localawon.d(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,26 @@
-import android.view.SurfaceHolder;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class aitt
+  implements aiqm
 {
-  public int a;
-  public SurfaceHolder a;
-  public int b;
-  public int c;
+  public aitt(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public String toString()
+  public void a() {}
+  
+  public void a(Object paramObject)
   {
-    StringBuffer localStringBuffer = new StringBuffer("SurfaceCallBackData{");
-    localStringBuffer.append("holder=").append(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-    localStringBuffer.append(", format=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", w=").append(this.b);
-    localStringBuffer.append(", h=").append(this.c);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if ((paramObject instanceof Bitmap))
+    {
+      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
+      paramObject.what = 102;
+      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitt
  * JD-Core Version:    0.7.0.1
  */

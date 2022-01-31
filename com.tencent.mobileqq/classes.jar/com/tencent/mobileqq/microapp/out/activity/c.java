@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.microapp.out.activity;
 
 import android.view.View;
-import bfpt;
+import bhqp;
 import com.tencent.widget.AdapterView;
 
 final class c
-  implements bfpt
+  implements bhqp
 {
   c(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
@@ -21,7 +21,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.out.activity.c
  * JD-Core Version:    0.7.0.1
  */

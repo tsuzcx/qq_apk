@@ -1,129 +1,30 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.model.HotWordSearchSpecialDataModel.TopicItem;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.StrokeTextView;
 
 public class awig
-  extends BaseAdapter
+  extends bhnr
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<HotWordSearchSpecialDataModel.TopicItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public awig(FormalView paramFormalView, View paramView) {}
   
-  public awig(awie paramawie, Context paramContext, LayoutInflater paramLayoutInflater)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.c();
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
   }
   
-  public int a(Context paramContext)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return paramContext.getResources().getDisplayMetrics().widthPixels;
-  }
-  
-  public List<HotWordSearchSpecialDataModel.TopicItem> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(List<HotWordSearchSpecialDataModel.TopicItem> paramList)
-  {
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
+      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
     }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    HotWordSearchSpecialDataModel.TopicItem localTopicItem;
-    awie localawie;
-    String str2;
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560583, null);
-      paramViewGroup = new awih(this.jdField_a_of_type_Awie);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131378383));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131378378));
-      paramView.setTag(paramViewGroup);
-      localTopicItem = (HotWordSearchSpecialDataModel.TopicItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (!TextUtils.isEmpty(localTopicItem.title)) {
-        paramViewGroup.a.setText(localTopicItem.title);
-      }
-      boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-      str1 = awie.a(this.jdField_a_of_type_Awie, localTopicItem.titleColor, "#262626");
-      if (!TextUtils.isEmpty(str1)) {
-        paramViewGroup.a.setTextColor(Color.parseColor(str1));
-      }
-      if ((bool) && (TextUtils.isEmpty(localTopicItem.titleColor))) {
-        paramViewGroup.a.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166854));
-      }
-      localawie = this.jdField_a_of_type_Awie;
-      str2 = localTopicItem.configColor;
-      if (!bool) {
-        break label367;
-      }
-    }
-    label367:
-    for (String str1 = "#5F6062";; str1 = "#737373")
-    {
-      str1 = awie.a(localawie, str2, str1);
-      if (!TextUtils.isEmpty(str1)) {
-        paramViewGroup.b.setTextColor(Color.parseColor(str1));
-      }
-      if (TextUtils.isEmpty(localTopicItem.configTime)) {
-        break label374;
-      }
-      float f = awwa.a(paramViewGroup.b, localTopicItem.configTime);
-      paramInt = (a(this.jdField_a_of_type_AndroidContentContext) - actj.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
-      i = actj.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      int j = actj.a(f / 2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.a.setMaxWidth(paramInt - i - j);
-      paramViewGroup.b.setWidth((int)f);
-      paramViewGroup.b.setVisibility(0);
-      paramViewGroup.b.setText(localTopicItem.configTime);
-      return paramView;
-      paramViewGroup = (awih)paramView.getTag();
-      break;
-    }
-    label374:
-    paramInt = (a(this.jdField_a_of_type_AndroidContentContext) - actj.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
-    int i = actj.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramViewGroup.a.setMaxWidth(paramInt - i);
-    paramViewGroup.b.setVisibility(8);
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awig
  * JD-Core Version:    0.7.0.1
  */

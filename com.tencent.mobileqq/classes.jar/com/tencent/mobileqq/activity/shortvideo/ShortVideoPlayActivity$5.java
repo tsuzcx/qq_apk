@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.shortvideo;
 
 import android.widget.SeekBar;
 import android.widget.TextView;
-import axrn;
+import azmz;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -46,7 +46,7 @@ class ShortVideoPlayActivity$5
           }
           localObject = new HashMap();
           ((HashMap)localObject).put("param_timeCost", String.valueOf(ShortVideoPlayActivity.b(this.this$0)));
-          axrn.a(BaseApplication.getContext()).a(null, "videoMCFFTimeCost", true, ShortVideoPlayActivity.b(this.this$0), 0L, (HashMap)localObject, "");
+          azmz.a(BaseApplication.getContext()).a(null, "videoMCFFTimeCost", true, ShortVideoPlayActivity.b(this.this$0), 0L, (HashMap)localObject, "");
         }
       }
     }
@@ -85,7 +85,7 @@ class ShortVideoPlayActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.5
  * JD-Core Version:    0.7.0.1
  */

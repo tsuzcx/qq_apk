@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.os.Handler;
-import axqy;
-import azap;
-import azca;
+import azmj;
+import bayo;
+import bazz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.util.ArrayList;
-import naj;
+import ndd;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
@@ -19,7 +19,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public class TribeVideoListPlayerFragment$12$1
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$12$1(azap paramazap) {}
+  public TribeVideoListPlayerFragment$12$1(bayo parambayo) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class TribeVideoListPlayerFragment$12$1
     {
       try
       {
-        HttpResponse localHttpResponse = naj.a(BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_Azca.h, null, "GET", null, null);
+        HttpResponse localHttpResponse = ndd.a(BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_Bazz.h, null, "GET", null, null);
         if ((localHttpResponse != null) && (localHttpResponse.getStatusLine().getStatusCode() == 200)) {
           TribeVideoListPlayerFragment.jdField_a_of_type_AndroidOsHandler.post(new TribeVideoListPlayerFragment.12.1.1(this));
         }
@@ -41,7 +41,7 @@ public class TribeVideoListPlayerFragment$12$1
       }
       try
       {
-        axqy.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_dislike_suc", this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.e, 0, "" + this.a.jdField_a_of_type_Azca.a.report_info.trace_info.aid.get(), "" + (this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.indexOf(this.a.jdField_a_of_type_Azca) + 1), "", "");
+        azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "ad_dislike_suc", this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.e, 0, "" + this.a.jdField_a_of_type_Bazz.a.report_info.trace_info.aid.get(), "" + (this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.indexOf(this.a.jdField_a_of_type_Bazz) + 1), "", "");
         return;
       }
       catch (Exception localException)
@@ -57,7 +57,7 @@ public class TribeVideoListPlayerFragment$12$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.12.1
  * JD-Core Version:    0.7.0.1
  */

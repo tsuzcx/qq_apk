@@ -1,124 +1,30 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector.2;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector.3;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-public class qju
+class qju
+  extends NativeGifImage
 {
-  public static final String a;
-  private int jdField_a_of_type_Int = 1;
-  private volatile OrientationEventListener jdField_a_of_type_AndroidViewOrientationEventListener;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<Integer, Long> jdField_a_of_type_JavaUtilHashMap;
-  private volatile qjx jdField_a_of_type_Qjx;
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
+  qju(qjt paramqjt, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
   {
-    jdField_a_of_type_JavaLangString = "Q.readinjoy.video." + qju.class.getSimpleName();
+    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
   }
   
-  public qju(Activity paramActivity, qjw paramqjw)
+  public void executeNewTask()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener = new qjv(this, paramActivity, new WeakReference(paramqjw));
-      ThreadManager.executeOnSubThread(new OrientationDetector.2(this, paramActivity));
+    if (this.mCurrentLoop == 1) {
       return;
     }
+    super.executeNewTask();
   }
   
-  private void a(boolean paramBoolean)
+  public void reset()
   {
-    ThreadManager.executeOnSubThread(new OrientationDetector.3(this, paramBoolean));
-  }
-  
-  private boolean a(int paramInt)
-  {
-    if ((paramInt >= 70) && (paramInt <= 110)) {
-      paramInt = 1;
-    }
-    for (;;)
-    {
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), Long.valueOf(l));
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      Map.Entry localEntry;
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localEntry = (Map.Entry)localIterator.next();
-      } while ((((Integer)localEntry.getKey()).intValue() == paramInt) || (l - ((Long)localEntry.getValue()).longValue() >= 200L));
-      return false;
-      if ((paramInt >= 250) && (paramInt <= 290)) {
-        paramInt = 2;
-      } else {
-        paramInt = 0;
-      }
-    }
-    return true;
-  }
-  
-  public Context a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    a(false);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener = null;
-      if (this.jdField_a_of_type_Qjx != null)
-      {
-        this.jdField_a_of_type_Qjx.b();
-        this.jdField_a_of_type_Qjx = null;
-      }
-      return;
-    }
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidViewOrientationEventListener == null) {}
-    do
-    {
-      return false;
-      if (!paramBoolean) {
-        break;
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        a(true);
-        return true;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w(jdField_a_of_type_JavaLangString, 2, "mRotateSettingSwitch is false : enable failure");
-    return false;
-    a(false);
-    return true;
+    super.reset();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qju
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package cooperation.qzone.video;
 
-import bcgp;
-import bhus;
+import befq;
+import bjwd;
 import com.tencent.qphone.base.util.QLog;
 
 final class QzoneLiveVideoInterface$3
   implements Runnable
 {
-  QzoneLiveVideoInterface$3(bhus parambhus) {}
+  QzoneLiveVideoInterface$3(bjwd parambjwd) {}
   
   public void run()
   {
@@ -21,10 +21,10 @@ final class QzoneLiveVideoInterface$3
         if (!QzoneLiveVideoInterface.isBestPerformanceDevice()) {
           break;
         }
-        if (!bcgp.a())
+        if (!befq.a())
         {
           long l = System.currentTimeMillis();
-          bcgp.b();
+          befq.b();
           QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator init cost " + (System.currentTimeMillis() - l));
           if (this.a == null) {
             break;
@@ -44,7 +44,7 @@ final class QzoneLiveVideoInterface$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.video.QzoneLiveVideoInterface.3
  * JD-Core Version:    0.7.0.1
  */

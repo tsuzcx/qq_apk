@@ -1,69 +1,18 @@
-import com.tencent.mobileqq.confess.ConfessInfo;
-import com.tencent.util.Pair;
-import java.util.concurrent.ConcurrentHashMap;
-
-public class amni
+public abstract class amni
 {
-  public static final Object a;
-  Pair<String, Boolean> jdField_a_of_type_ComTencentUtilPair = new Pair("", Boolean.valueOf(false));
-  ConcurrentHashMap<String, ConfessInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public abstract int a();
   
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
+  public abstract void a(Object paramObject);
   
-  public ConfessInfo a(String arg1, int paramInt1, int paramInt2)
-  {
-    Object localObject1 = amnr.a(???, paramInt1, paramInt2);
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      localObject1 = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject1);
-      return localObject1;
-    }
-  }
+  public abstract void a(boolean paramBoolean, Object paramObject);
   
-  public ConfessInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, String paramString4, long paramLong)
-  {
-    ConfessInfo localConfessInfo = new ConfessInfo();
-    localConfessInfo.reset();
-    localConfessInfo.topicId = paramInt2;
-    localConfessInfo.confessorSex = paramInt3;
-    localConfessInfo.confessorNick = paramString3;
-    try
-    {
-      localConfessInfo.confessorUin = Long.parseLong(paramString2);
-      label44:
-      localConfessInfo.confessorUinStr = paramString2;
-      localConfessInfo.confessTime = paramLong;
-      if (paramString4 != null) {
-        localConfessInfo.topic = paramString4;
-      }
-      a(paramString1, paramInt1, localConfessInfo);
-      return localConfessInfo;
-    }
-    catch (Exception paramString3)
-    {
-      break label44;
-    }
-  }
+  public abstract void b(Object paramObject);
   
-  public void a(String arg1, int paramInt, ConfessInfo paramConfessInfo)
-  {
-    String str = amnr.a(???, paramInt, paramConfessInfo.topicId);
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      ConfessInfo localConfessInfo = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-      if ((localConfessInfo == null) || (!localConfessInfo.equals(paramConfessInfo))) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramConfessInfo);
-      }
-      return;
-    }
-  }
+  public abstract void b(boolean paramBoolean, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amni
  * JD-Core Version:    0.7.0.1
  */

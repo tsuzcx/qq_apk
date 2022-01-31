@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import axas;
-import axva;
-import ayvx;
+import ayvw;
+import azqu;
+import batw;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -24,7 +24,7 @@ public final class ChatActivityFacade$23
       if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSendFromLocal()) {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq));
       }
-      AbsStructMsg localAbsStructMsg = axva.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
+      AbsStructMsg localAbsStructMsg = azqu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
       if ((localAbsStructMsg instanceof StructMsgForImageShare))
       {
@@ -42,13 +42,13 @@ public final class ChatActivityFacade$23
       QLog.e("ChatActivityFacade", 1, "resendStructMessage error :", localRuntimeException);
       throw localRuntimeException;
     }
-    MessageRecord localMessageRecord = axas.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    MessageRecord localMessageRecord = ayvw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.23
  * JD-Core Version:    0.7.0.1
  */

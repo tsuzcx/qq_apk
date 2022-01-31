@@ -1,303 +1,914 @@
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
+import android.content.pm.Signature;
+import android.content.res.AssetManager;
+import android.content.res.XmlResourceParser;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.util.Pair;
+import android.widget.Toast;
+import com.tencent.commonsdk.zip.QZipFile;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
-import org.xmlpull.v1.XmlPullParser;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Method;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.zip.ZipEntry;
+import org.xmlpull.v1.XmlPullParserException;
 
-final class bfij
+public class bfij
 {
-  private bfik jdField_a_of_type_Bfik;
-  private File jdField_a_of_type_JavaIoFile;
+  protected static Map<String, String> a = new HashMap();
   
-  public bfij(File paramFile, bfik parambfik)
+  public static int a()
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Bfik = parambfik;
+    int j = 1;
+    Object localObject = new String[5];
+    localObject[0] = "/system/xbin/";
+    localObject[1] = "/system/bin/";
+    localObject[2] = "/system/sbin/";
+    localObject[3] = "/sbin/";
+    localObject[4] = "/vendor/bin/";
+    int i = 0;
+    try
+    {
+      while (i < localObject.length)
+      {
+        String str = localObject[i] + "su";
+        File localFile = new File(str);
+        if ((localFile != null) && (localFile.exists()))
+        {
+          localObject = a(new String[] { "ls", "-l", str });
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            int k = ((String)localObject).indexOf("root");
+            int m = ((String)localObject).lastIndexOf("root");
+            i = j;
+            if (k != m) {}
+          }
+          else
+          {
+            i = 0;
+          }
+          return i;
+        }
+        i += 1;
+      }
+      return 2;
+    }
+    catch (Exception localException) {}
   }
   
-  private Pair<String, bfjd> a(XmlPullParser paramXmlPullParser)
+  public static int a(String paramString)
+  {
+    PackageManager localPackageManager = bexd.a().a().getPackageManager();
+    try
+    {
+      paramString = localPackageManager.getPackageInfo(paramString, 1);
+      if (paramString != null)
+      {
+        int i = paramString.versionCode;
+        return i;
+      }
+    }
+    catch (Exception paramString)
+    {
+      bfhg.b("AppUtil", "getApkVersonCode>>>", paramString);
+    }
+    return 0;
+  }
+  
+  public static Intent a(Context paramContext, String paramString)
+  {
+    Intent localIntent = new Intent("android.intent.action.MAIN", null);
+    localIntent.addCategory("android.intent.category.LAUNCHER");
+    localIntent.addFlags(1073741824);
+    if (!a.containsKey(paramString))
+    {
+      paramContext = paramContext.getPackageManager().queryIntentActivities(localIntent, 0).iterator();
+      while (paramContext.hasNext())
+      {
+        ResolveInfo localResolveInfo = (ResolveInfo)paramContext.next();
+        if (!a.containsKey(localResolveInfo.activityInfo.applicationInfo.packageName)) {
+          a.put(localResolveInfo.activityInfo.applicationInfo.packageName, localResolveInfo.activityInfo.name);
+        }
+      }
+    }
+    paramContext = (String)a.get(paramString);
+    if (paramContext != null)
+    {
+      localIntent.setComponent(new ComponentName(paramString, paramContext));
+      return localIntent;
+    }
+    return null;
+  }
+  
+  public static Bitmap a(String paramString)
   {
     try
     {
-      String str = paramXmlPullParser.getAttributeValue(null, "Key");
-      if (TextUtils.isEmpty(str)) {
-        return null;
+      PackageManager localPackageManager = bexd.a().a().getPackageManager();
+      paramString = localPackageManager.getPackageInfo(paramString, 1);
+      if ((paramString != null) && (paramString.applicationInfo != null))
+      {
+        paramString = paramString.applicationInfo.loadIcon(localPackageManager);
+        if (paramString != null)
+        {
+          paramString = bfhe.b(paramString);
+          return paramString;
+        }
       }
-      bfjd localbfjd = new bfjd();
-      localbfjd.jdField_a_of_type_Int = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "AttrType"));
-      localbfjd.b = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "Category"));
-      localbfjd.c = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "SubCategory"));
-      localbfjd.d = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "Action"));
-      localbfjd.jdField_a_of_type_Long = Long.parseLong(paramXmlPullParser.getAttributeValue(null, "ExpireTime"));
-      paramXmlPullParser = paramXmlPullParser.getAttributeValue(null, "ExtraInfo");
-      if (!TextUtils.isEmpty(paramXmlPullParser)) {
-        localbfjd.jdField_a_of_type_ArrayOfByte = Base64.decode(paramXmlPullParser, 0);
-      }
-      paramXmlPullParser = new Pair(str, localbfjd);
-      return paramXmlPullParser;
     }
-    catch (Exception paramXmlPullParser)
+    catch (PackageManager.NameNotFoundException paramString)
     {
-      paramXmlPullParser.printStackTrace();
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static java.lang.Process a()
+  {
+    Object localObject = new ProcessBuilder(new String[] { "su" });
+    ((ProcessBuilder)localObject).redirectErrorStream(false);
+    try
+    {
+      localObject = ((ProcessBuilder)localObject).start();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static String a(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
+      return paramContext;
+    }
+    catch (Exception paramContext) {}
+    return "";
+  }
+  
+  public static String a(Context paramContext, String paramString)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 64);
+      if (paramContext != null)
+      {
+        paramContext = paramContext.signatures;
+        if ((paramContext != null) && (paramContext.length > 0))
+        {
+          paramContext = bfhi.d(paramContext[(paramContext.length - 1)].toCharsString());
+          return paramContext;
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+      return "";
+    }
+    return "";
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        paramString = bexd.a().a().getPackageManager().getPackageArchiveInfo(paramString, 1);
+        if (paramString != null)
+        {
+          paramString = paramString.applicationInfo.packageName;
+          return paramString;
+        }
+      }
+      catch (Exception paramString)
+      {
+        bfhg.c("AppUtil", "getApkName>>>", paramString);
+      }
     }
     return null;
   }
   
   /* Error */
-  public void a()
+  public static String a(String[] paramArrayOfString)
   {
     // Byte code:
-    //   0: new 99	javax/crypto/spec/IvParameterSpec
+    //   0: new 213	java/lang/ProcessBuilder
     //   3: dup
-    //   4: invokestatic 104	bfif:a	()[B
-    //   7: invokespecial 107	javax/crypto/spec/IvParameterSpec:<init>	([B)V
-    //   10: astore 5
-    //   12: new 109	javax/crypto/spec/SecretKeySpec
-    //   15: dup
-    //   16: invokestatic 111	bfif:b	()[B
-    //   19: ldc 113
-    //   21: invokespecial 116	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
-    //   24: astore 6
-    //   26: ldc 118
-    //   28: invokestatic 124	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
-    //   31: astore 7
-    //   33: aload 7
-    //   35: iconst_2
-    //   36: aload 6
-    //   38: aload 5
-    //   40: invokevirtual 128	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
-    //   43: new 130	javax/crypto/CipherInputStream
-    //   46: dup
-    //   47: new 132	java/io/BufferedInputStream
-    //   50: dup
-    //   51: new 134	java/io/FileInputStream
-    //   54: dup
-    //   55: aload_0
-    //   56: getfield 14	bfij:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   59: invokespecial 137	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   62: invokespecial 140	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   65: aload 7
-    //   67: invokespecial 143	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
-    //   70: astore 7
-    //   72: invokestatic 149	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
-    //   75: astore 8
-    //   77: aload 8
-    //   79: aload 7
-    //   81: ldc 151
-    //   83: invokeinterface 155 3 0
-    //   88: aload 8
-    //   90: invokeinterface 159 1 0
-    //   95: istore_3
-    //   96: iconst_0
-    //   97: istore_1
-    //   98: aconst_null
-    //   99: astore 5
-    //   101: iload_3
-    //   102: iconst_1
-    //   103: if_icmpeq +46 -> 149
-    //   106: iload_3
-    //   107: iconst_2
-    //   108: if_icmpne +116 -> 224
-    //   111: aload 8
-    //   113: invokeinterface 163 1 0
-    //   118: astore 6
-    //   120: aload 6
-    //   122: ldc 165
-    //   124: invokevirtual 171	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   127: ifeq +72 -> 199
-    //   130: aload 8
-    //   132: aconst_null
-    //   133: ldc 173
-    //   135: invokeinterface 28 3 0
-    //   140: invokestatic 45	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   143: istore_1
-    //   144: iload_1
-    //   145: iconst_1
-    //   146: if_icmpeq +28 -> 174
-    //   149: aload 7
-    //   151: ifnull +8 -> 159
-    //   154: aload 7
-    //   156: invokevirtual 178	java/io/InputStream:close	()V
-    //   159: aload_0
-    //   160: getfield 16	bfij:jdField_a_of_type_Bfik	Lbfik;
-    //   163: ifnull +10 -> 173
-    //   166: aload_0
-    //   167: getfield 16	bfij:jdField_a_of_type_Bfik	Lbfik;
-    //   170: invokevirtual 182	bfik:a	()V
-    //   173: return
-    //   174: iconst_1
-    //   175: istore_1
-    //   176: iload_1
-    //   177: istore_2
-    //   178: aload 5
-    //   180: astore 6
-    //   182: aload 8
-    //   184: invokeinterface 185 1 0
-    //   189: istore_3
-    //   190: aload 6
-    //   192: astore 5
-    //   194: iload_2
-    //   195: istore_1
-    //   196: goto -95 -> 101
-    //   199: iload_1
-    //   200: ifeq +240 -> 440
-    //   203: aload 6
-    //   205: ldc 187
-    //   207: invokevirtual 171	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   210: ifeq +230 -> 440
-    //   213: aload_0
-    //   214: aload 8
-    //   216: invokespecial 189	bfij:a	(Lorg/xmlpull/v1/XmlPullParser;)Lcom/tencent/util/Pair;
-    //   219: astore 5
-    //   221: goto -45 -> 176
-    //   224: aload 5
-    //   226: astore 6
-    //   228: iload_1
-    //   229: istore_2
-    //   230: iload_3
-    //   231: iconst_3
-    //   232: if_icmpne -50 -> 182
-    //   235: aload 5
-    //   237: astore 6
-    //   239: iload_1
-    //   240: istore_2
-    //   241: ldc 187
-    //   243: aload 8
-    //   245: invokeinterface 163 1 0
-    //   250: invokevirtual 171	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   253: ifeq -71 -> 182
-    //   256: aload 5
-    //   258: astore 6
-    //   260: iload_1
-    //   261: istore_2
-    //   262: aload 5
-    //   264: ifnull -82 -> 182
-    //   267: aload_0
-    //   268: getfield 16	bfij:jdField_a_of_type_Bfik	Lbfik;
-    //   271: ifnull +33 -> 304
-    //   274: aload_0
-    //   275: getfield 16	bfij:jdField_a_of_type_Bfik	Lbfik;
-    //   278: aload 5
-    //   280: getfield 193	com/tencent/util/Pair:first	Ljava/lang/Object;
-    //   283: checkcast 167	java/lang/String
-    //   286: aload 5
-    //   288: getfield 196	com/tencent/util/Pair:second	Ljava/lang/Object;
-    //   291: checkcast 36	bfjd
-    //   294: invokevirtual 199	bfik:a	(Ljava/lang/String;Lbfjd;)Z
-    //   297: istore 4
-    //   299: iload 4
-    //   301: ifeq -152 -> 149
-    //   304: aconst_null
-    //   305: astore 6
-    //   307: iload_1
-    //   308: istore_2
-    //   309: goto -127 -> 182
-    //   312: astore 5
-    //   314: aload 5
-    //   316: invokevirtual 200	java/io/IOException:printStackTrace	()V
-    //   319: goto -160 -> 159
-    //   322: astore 6
-    //   324: aconst_null
-    //   325: astore 5
-    //   327: aload 6
-    //   329: invokevirtual 93	java/lang/Exception:printStackTrace	()V
-    //   332: aload 5
-    //   334: ifnull +8 -> 342
-    //   337: aload 5
-    //   339: invokevirtual 178	java/io/InputStream:close	()V
-    //   342: aload_0
-    //   343: getfield 16	bfij:jdField_a_of_type_Bfik	Lbfik;
-    //   346: ifnull -173 -> 173
-    //   349: aload_0
-    //   350: getfield 16	bfij:jdField_a_of_type_Bfik	Lbfik;
-    //   353: invokevirtual 182	bfik:a	()V
-    //   356: return
-    //   357: astore 5
-    //   359: aload 5
-    //   361: invokevirtual 200	java/io/IOException:printStackTrace	()V
-    //   364: goto -22 -> 342
-    //   367: astore 5
-    //   369: aconst_null
-    //   370: astore 6
-    //   372: aload 6
-    //   374: ifnull +8 -> 382
-    //   377: aload 6
-    //   379: invokevirtual 178	java/io/InputStream:close	()V
-    //   382: aload_0
-    //   383: getfield 16	bfij:jdField_a_of_type_Bfik	Lbfik;
-    //   386: ifnull +10 -> 396
-    //   389: aload_0
-    //   390: getfield 16	bfij:jdField_a_of_type_Bfik	Lbfik;
-    //   393: invokevirtual 182	bfik:a	()V
-    //   396: aload 5
-    //   398: athrow
-    //   399: astore 6
-    //   401: aload 6
-    //   403: invokevirtual 200	java/io/IOException:printStackTrace	()V
-    //   406: goto -24 -> 382
-    //   409: astore 5
-    //   411: aload 7
-    //   413: astore 6
-    //   415: goto -43 -> 372
-    //   418: astore 7
-    //   420: aload 5
-    //   422: astore 6
-    //   424: aload 7
-    //   426: astore 5
-    //   428: goto -56 -> 372
-    //   431: astore 6
-    //   433: aload 7
-    //   435: astore 5
-    //   437: goto -110 -> 327
-    //   440: goto -264 -> 176
+    //   4: aload_0
+    //   5: invokespecial 216	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
+    //   8: astore_0
+    //   9: aload_0
+    //   10: iconst_0
+    //   11: invokevirtual 220	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
+    //   14: pop
+    //   15: aload_0
+    //   16: invokevirtual 223	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
+    //   19: astore_1
+    //   20: new 259	java/io/DataOutputStream
+    //   23: dup
+    //   24: aload_1
+    //   25: invokevirtual 265	java/lang/Process:getOutputStream	()Ljava/io/OutputStream;
+    //   28: invokespecial 268	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   31: astore_2
+    //   32: new 270	java/io/DataInputStream
+    //   35: dup
+    //   36: aload_1
+    //   37: invokevirtual 274	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   40: invokespecial 277	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   43: astore_0
+    //   44: aload_0
+    //   45: ifnull +88 -> 133
+    //   48: aload_2
+    //   49: ifnull +84 -> 133
+    //   52: aload_0
+    //   53: invokevirtual 280	java/io/DataInputStream:readLine	()Ljava/lang/String;
+    //   56: astore_0
+    //   57: aload_2
+    //   58: ldc_w 282
+    //   61: invokevirtual 285	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   64: aload_2
+    //   65: invokevirtual 288	java/io/DataOutputStream:flush	()V
+    //   68: aload_1
+    //   69: invokevirtual 291	java/lang/Process:waitFor	()I
+    //   72: pop
+    //   73: aload_0
+    //   74: astore_2
+    //   75: aload_1
+    //   76: ifnull +9 -> 85
+    //   79: aload_1
+    //   80: invokevirtual 294	java/lang/Process:destroy	()V
+    //   83: aload_0
+    //   84: astore_2
+    //   85: aload_2
+    //   86: areturn
+    //   87: astore_0
+    //   88: aconst_null
+    //   89: astore_1
+    //   90: ldc 233
+    //   92: astore_0
+    //   93: aload_0
+    //   94: astore_2
+    //   95: aload_1
+    //   96: ifnull -11 -> 85
+    //   99: aload_1
+    //   100: invokevirtual 294	java/lang/Process:destroy	()V
+    //   103: aload_0
+    //   104: areturn
+    //   105: astore_0
+    //   106: aconst_null
+    //   107: astore_1
+    //   108: aload_1
+    //   109: ifnull +7 -> 116
+    //   112: aload_1
+    //   113: invokevirtual 294	java/lang/Process:destroy	()V
+    //   116: aload_0
+    //   117: athrow
+    //   118: astore_0
+    //   119: goto -11 -> 108
+    //   122: astore_0
+    //   123: ldc 233
+    //   125: astore_0
+    //   126: goto -33 -> 93
+    //   129: astore_2
+    //   130: goto -37 -> 93
+    //   133: ldc 233
+    //   135: astore_0
+    //   136: goto -79 -> 57
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	443	0	this	bfij
-    //   97	211	1	i	int
-    //   177	132	2	j	int
-    //   95	138	3	k	int
-    //   297	3	4	bool	boolean
-    //   10	277	5	localObject1	Object
-    //   312	3	5	localIOException1	java.io.IOException
-    //   325	13	5	localObject2	Object
-    //   357	3	5	localIOException2	java.io.IOException
-    //   367	30	5	localObject3	Object
-    //   409	12	5	localObject4	Object
-    //   426	10	5	localObject5	Object
-    //   24	282	6	localObject6	Object
-    //   322	6	6	localException1	Exception
-    //   370	8	6	localObject7	Object
-    //   399	3	6	localIOException3	java.io.IOException
-    //   413	10	6	localObject8	Object
-    //   431	1	6	localException2	Exception
-    //   31	381	7	localObject9	Object
-    //   418	16	7	localObject10	Object
-    //   75	169	8	localXmlPullParser	XmlPullParser
+    //   0	139	0	paramArrayOfString	String[]
+    //   19	94	1	localProcess	java.lang.Process
+    //   31	64	2	localObject	Object
+    //   129	1	2	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   154	159	312	java/io/IOException
-    //   0	72	322	java/lang/Exception
-    //   337	342	357	java/io/IOException
-    //   0	72	367	finally
-    //   377	382	399	java/io/IOException
-    //   72	96	409	finally
-    //   111	144	409	finally
-    //   182	190	409	finally
-    //   203	221	409	finally
-    //   241	256	409	finally
-    //   267	299	409	finally
-    //   327	332	418	finally
-    //   72	96	431	java/lang/Exception
-    //   111	144	431	java/lang/Exception
-    //   182	190	431	java/lang/Exception
-    //   203	221	431	java/lang/Exception
-    //   241	256	431	java/lang/Exception
-    //   267	299	431	java/lang/Exception
+    //   0	20	87	java/lang/Exception
+    //   0	20	105	finally
+    //   20	44	118	finally
+    //   52	57	118	finally
+    //   57	73	118	finally
+    //   20	44	122	java/lang/Exception
+    //   52	57	122	java/lang/Exception
+    //   57	73	129	java/lang/Exception
+  }
+  
+  public static List<PackageInfo> a(Context paramContext)
+  {
+    return null;
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "");
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    try
+    {
+      Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1);
+      localIntent.putExtra("platformId", "qzone_m");
+      bfhg.c("add", ">>has add platformid=qzone_m");
+      paramContext.startActivity(localIntent);
+      return;
+    }
+    catch (Exception localException)
+    {
+      new Intent();
+      paramString1 = a(paramContext, paramString1);
+      if (paramString1 != null)
+      {
+        paramString1.setAction("android.intent.action.MAIN");
+        paramString1.putExtra("platformId", "qzone_m");
+        paramString1.putExtra("big_brother_source_key", paramString2);
+        bfhg.c("add", ">>has add platformid=qzone_m");
+        try
+        {
+          paramContext.startActivity(paramString1);
+          return;
+        }
+        catch (Exception paramString1)
+        {
+          paramString1.printStackTrace();
+          Toast.makeText(paramContext, alpo.a(2131701002), 0).show();
+          return;
+        }
+      }
+      Toast.makeText(paramContext, alpo.a(2131701003), 0).show();
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString2);
+    paramString1 = localIntent;
+    if (localIntent == null)
+    {
+      paramString1 = new Intent(paramString2);
+      paramString1.addCategory("android.intent.category.DEFAULT");
+    }
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1.putExtra("appCustom", paramString3);
+      bfhg.c("add", ">>has add appCustom=" + paramString3);
+    }
+    paramString1.putExtra("platformId", "qzone_m");
+    bfhg.c("add", ">>has add platformid=qzone_m");
+    try
+    {
+      if (!(paramContext instanceof Activity)) {
+        paramString1.addFlags(268435456);
+      }
+      paramContext.startActivity(paramString1);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      Toast.makeText(paramContext, alpo.a(2131701004), 0).show();
+    }
+  }
+  
+  /* Error */
+  public static void a(QZipFile paramQZipFile, ZipEntry paramZipEntry, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: sipush 4096
+    //   3: newarray byte
+    //   5: astore 5
+    //   7: aconst_null
+    //   8: astore 4
+    //   10: aload_0
+    //   11: aload_1
+    //   12: invokevirtual 364	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   15: astore_0
+    //   16: iload_2
+    //   17: ifeq +27 -> 44
+    //   20: aload_0
+    //   21: astore 4
+    //   23: aload_0
+    //   24: aload 5
+    //   26: invokevirtual 370	java/io/InputStream:read	([B)I
+    //   29: istore_3
+    //   30: iconst_m1
+    //   31: iload_3
+    //   32: if_icmpne -12 -> 20
+    //   35: aload_0
+    //   36: ifnull +7 -> 43
+    //   39: aload_0
+    //   40: invokevirtual 373	java/io/InputStream:close	()V
+    //   43: return
+    //   44: aload_0
+    //   45: astore 4
+    //   47: aload_0
+    //   48: aload 5
+    //   50: invokevirtual 370	java/io/InputStream:read	([B)I
+    //   53: pop
+    //   54: goto -19 -> 35
+    //   57: astore_0
+    //   58: aload 4
+    //   60: ifnull +8 -> 68
+    //   63: aload 4
+    //   65: invokevirtual 373	java/io/InputStream:close	()V
+    //   68: aload_0
+    //   69: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	70	0	paramQZipFile	QZipFile
+    //   0	70	1	paramZipEntry	ZipEntry
+    //   0	70	2	paramBoolean	boolean
+    //   29	4	3	i	int
+    //   8	56	4	localQZipFile	QZipFile
+    //   5	44	5	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   10	16	57	finally
+    //   23	30	57	finally
+    //   47	54	57	finally
+  }
+  
+  public static void a(String paramString)
+  {
+    i = 0;
+    try
+    {
+      long l1 = new File(paramString).length();
+      localQZipFile = new QZipFile(paramString);
+      try
+      {
+        paramString = localQZipFile.entries();
+        j = 0;
+        do
+        {
+          if (!paramString.hasMoreElements()) {
+            break;
+          }
+          localZipEntry = (ZipEntry)paramString.nextElement();
+        } while (localZipEntry.isDirectory());
+        l2 = localZipEntry.getCompressedSize();
+        l3 = localZipEntry.getSize();
+        if ((l2 >= -1L) && (l2 <= l1) && (l3 >= -1L) && (l3 <= 1500L * l2)) {
+          break label137;
+        }
+        throw new RuntimeException("Invalid entry size!");
+      }
+      finally {}
+    }
+    finally
+    {
+      for (;;)
+      {
+        ZipEntry localZipEntry;
+        long l2;
+        long l3;
+        QZipFile localQZipFile = null;
+        continue;
+        int k = i;
+        i = j;
+        int j = k;
+      }
+    }
+    if (localQZipFile != null) {
+      localQZipFile.close();
+    }
+    throw paramString;
+    label137:
+    if ((localZipEntry.getName() != null) && (localZipEntry.getName().contains("AndroidManifest.xml")))
+    {
+      if ((l2 == 0L) || (l3 == 0L)) {
+        throw new RuntimeException("Invalid AndroidManifest!");
+      }
+      a(localQZipFile, localZipEntry, false);
+      k = 1;
+      i = j;
+      j = k;
+      label198:
+      if ((i == 0) || (j == 0)) {
+        break label256;
+      }
+      if (localQZipFile != null) {
+        localQZipFile.close();
+      }
+    }
+    label256:
+    do
+    {
+      return;
+      if ((localZipEntry.getName() == null) || (!localZipEntry.getName().contains("classes.dex"))) {
+        break label283;
+      }
+      a(localQZipFile, localZipEntry, false);
+      k = 1;
+      j = i;
+      i = k;
+      break label198;
+      k = j;
+      j = i;
+      i = k;
+      break;
+    } while (localQZipFile == null);
+    localQZipFile.close();
+  }
+  
+  public static boolean a()
+  {
+    try
+    {
+      Object localObject = new ProcessBuilder(new String[] { "su" });
+      ((ProcessBuilder)localObject).redirectErrorStream(false);
+      localObject = ((ProcessBuilder)localObject).start();
+      DataOutputStream localDataOutputStream = new DataOutputStream(((java.lang.Process)localObject).getOutputStream());
+      DataInputStream localDataInputStream = new DataInputStream(((java.lang.Process)localObject).getInputStream());
+      if ((localDataInputStream != null) && (localDataOutputStream != null))
+      {
+        localDataOutputStream.flush();
+        localDataOutputStream.writeBytes("id\n");
+        localDataOutputStream.flush();
+        localDataOutputStream.writeBytes("exit\n");
+        localDataOutputStream.flush();
+        ((java.lang.Process)localObject).waitFor();
+        localObject = localDataInputStream.readLine();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          boolean bool = ((String)localObject).contains("uid=0");
+          if (bool) {
+            return true;
+          }
+        }
+        return false;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (paramContext == null)
+    {
+      bfhg.e("AppUtil", "isPackageScanAllowed context is null");
+      return true;
+    }
+    try
+    {
+      boolean bool = bexd.a().a().getSharedPreferences("package_scan", 0).getBoolean("qqsetting_package_scan_flag", true);
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return true;
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "");
+  }
+  
+  public static boolean a(Context paramContext, String paramString, Bundle paramBundle, int paramInt)
+  {
+    Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
+    if (localIntent == null)
+    {
+      localIntent = new Intent(paramString);
+      localIntent.addCategory("android.intent.category.DEFAULT");
+      try
+      {
+        for (;;)
+        {
+          localIntent.addFlags(paramInt);
+          localIntent.putExtras(paramBundle);
+          try
+          {
+            ((alyh)((BaseActivity)paramContext).app.a(23)).b(paramString.trim(), paramContext, localIntent);
+            return true;
+          }
+          catch (Exception paramBundle)
+          {
+            for (;;)
+            {
+              try
+              {
+                new alyh((QQAppInterface)null).a(paramString.trim(), paramContext, localIntent);
+              }
+              catch (Exception paramString)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("AppStartedHandler", 2, "<-- StartAppCheckHandler Failed!");
+                }
+                paramContext.startActivity(localIntent);
+              }
+            }
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        Toast.makeText(paramContext, alpo.a(2131701005), 0).show();
+        return false;
+      }
+    }
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2)
+  {
+    return a(paramContext, paramString1, paramString2, "");
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return false;
+      }
+      if (new File(paramString1).exists())
+      {
+        TMAssistantDownloadManager.getInstance(paramContext.getApplicationContext()).hookAM4Install();
+        paramString1 = FileProvider7Helper.openApkIntent(paramContext, paramString1);
+        if (GlobalUtil.isVivo()) {
+          paramString1.putExtra("installDir", true);
+        }
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          bfhg.b("AppUtil", "installApp>>> put source " + paramString2);
+          paramString1.putExtra("big_brother_source_key", paramString2);
+        }
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          bfhg.b("AppUtil", "installApp>>> put ref id " + paramString3);
+          paramString1.putExtra("big_brother_ref_source_key", paramString3);
+        }
+        paramContext.startActivity(paramString1);
+        return true;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      bfhg.c("AppUtil", "installApp>>>", paramContext);
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return bdem.a(bexd.a().a(), paramString);
+  }
+  
+  public static int b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return 0;
+      try
+      {
+        paramString = bexd.a().a().getPackageManager().getPackageArchiveInfo(paramString, 1);
+        if (paramString != null)
+        {
+          int i = paramString.versionCode;
+          return i;
+        }
+      }
+      catch (Exception paramString)
+      {
+        bfhg.c("AppUtil", "getApkVersonCodeFromApkFile>>>", paramString);
+      }
+    }
+    return 0;
+  }
+  
+  public static String b(Context paramContext)
+  {
+    try
+    {
+      int i = android.os.Process.myPid();
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+      while (paramContext.hasNext())
+      {
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if (localRunningAppProcessInfo.pid == i)
+        {
+          paramContext = localRunningAppProcessInfo.processName;
+          return paramContext;
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      bfhg.b("AppUtil", "getCurProcessName err", paramContext);
+    }
+    return null;
+  }
+  
+  public static boolean b(Context paramContext, String paramString)
+  {
+    try
+    {
+      paramContext.startActivity(new Intent("android.intent.action.DELETE", Uri.parse("package:" + paramString)));
+      return true;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    java.lang.Process localProcess = a();
+    if (localProcess == null) {}
+    for (;;)
+    {
+      return bool2;
+      try
+      {
+        DataOutputStream localDataOutputStream = new DataOutputStream(localProcess.getOutputStream());
+        Object localObject = new BufferedReader(new InputStreamReader(localProcess.getInputStream(), "UTF-8"));
+        boolean bool1 = bool3;
+        int i;
+        if (localObject != null)
+        {
+          bool1 = bool3;
+          if (localDataOutputStream != null)
+          {
+            File localFile = new File(paramString);
+            String str1 = localFile.getParent();
+            String str2 = new File(str1).getParent();
+            String str3 = new File(str2).getParent();
+            localDataOutputStream.write(("chmod 777 " + localFile.getAbsolutePath() + "\n").getBytes());
+            localDataOutputStream.flush();
+            localDataOutputStream.writeBytes("chmod 777 " + str1 + "\n");
+            localDataOutputStream.flush();
+            localDataOutputStream.writeBytes("chmod 777 " + str2 + "\n");
+            localDataOutputStream.flush();
+            localDataOutputStream.writeBytes("chmod 777 " + str3 + "\n");
+            localDataOutputStream.flush();
+            localDataOutputStream.write(("LD_LIBRARY_PATH=/vendor/lib:/system/lib pm install -r " + paramString + "\n").getBytes());
+            localDataOutputStream.flush();
+            localDataOutputStream.close();
+            paramString = new char[1024];
+            i = ((BufferedReader)localObject).read(paramString);
+            localObject = new StringBuilder();
+            if (i == -1) {
+              break label399;
+            }
+          }
+        }
+        for (paramString = ((StringBuilder)localObject).append(paramString, 0, i).toString();; paramString = new String(paramString, 0, localProcess.getErrorStream().read(paramString)))
+        {
+          bool1 = bool3;
+          if (!TextUtils.isEmpty(paramString))
+          {
+            boolean bool4 = paramString.toLowerCase().contains("success");
+            bool1 = bool3;
+            if (bool4) {
+              bool1 = true;
+            }
+          }
+          bool2 = bool1;
+          return bool1;
+          label399:
+          paramString = new byte[1024];
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return false;
+      }
+      finally
+      {
+        if (localProcess != null) {
+          localProcess.destroy();
+        }
+      }
+    }
+  }
+  
+  public static int c(String paramString)
+  {
+    bfhg.b("AppUtil", "getAppVersionCode: " + paramString);
+    localObject1 = null;
+    try
+    {
+      a(paramString);
+      Object localObject2 = (AssetManager)AssetManager.class.newInstance();
+      Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
+      localMethod.setAccessible(true);
+      localMethod.invoke(localObject2, new Object[] { paramString });
+      localObject2 = ((AssetManager)localObject2).openXmlResourceParser("AndroidManifest.xml");
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        bfhg.e("AppUtil", "openManifest failed: " + localException.getMessage());
+      }
+    }
+    if (localObject1 == null) {
+      return 0;
+    }
+    for (;;)
+    {
+      try
+      {
+        i = localObject1.getEventType();
+      }
+      catch (XmlPullParserException paramString)
+      {
+        String str;
+        bfhg.e("AppUtil", "error: " + paramString.getMessage());
+        localObject1.close();
+        return 0;
+      }
+      catch (IOException paramString)
+      {
+        bfhg.e("AppUtil", "error: " + paramString.getMessage());
+        continue;
+      }
+      catch (Exception paramString)
+      {
+        int i;
+        bfhg.e("AppUtil", "error: " + paramString.getMessage());
+        continue;
+        if (i == 1) {
+          continue;
+        }
+        switch (i)
+        {
+        }
+        continue;
+      }
+      i = localObject1.nextToken();
+      continue;
+      str = localObject1.getName();
+      if ((!TextUtils.isEmpty(str)) && (str.equals("manifest")))
+      {
+        i = 0;
+        if (i < localObject1.getAttributeCount())
+        {
+          if (localObject1.getAttributeName(i).equals("versionCode"))
+          {
+            str = localObject1.getAttributeValue(i);
+            localObject1.close();
+            bfhg.b("AppUtil", "apkPath:" + paramString + ",versionCode:" + str);
+            i = Integer.parseInt(str);
+            return i;
+          }
+          i += 1;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfij
  * JD-Core Version:    0.7.0.1
  */

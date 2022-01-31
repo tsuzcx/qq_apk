@@ -4,11 +4,14 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class stNotificationRsp
   extends JceStruct
 {
-  static stGlobalConfig cache_config = new stGlobalConfig();
+  static stGlobalConfig cache_config;
+  static Map<String, String> cache_map_ext;
   static ArrayList<stSimpleMetaPerson> cache_persons;
   static int cache_type = 0;
   static ArrayList<String> cache_vtFeedid;
@@ -17,9 +20,11 @@ public final class stNotificationRsp
   public String h5Url = "";
   public String imgurl = "";
   public String jump_url = "";
+  public Map<String, String> map_ext;
   public ArrayList<stSimpleMetaPerson> persons;
   public String scheme_url = "";
   public String text = "";
+  public String trace_id = "";
   public int type;
   public ArrayList<String> vtFeedid;
   
@@ -30,11 +35,14 @@ public final class stNotificationRsp
     cache_persons.add(localstSimpleMetaPerson);
     cache_vtFeedid = new ArrayList();
     cache_vtFeedid.add("");
+    cache_config = new stGlobalConfig();
+    cache_map_ext = new HashMap();
+    cache_map_ext.put("", "");
   }
   
   public stNotificationRsp() {}
   
-  public stNotificationRsp(int paramInt1, String paramString1, String paramString2, ArrayList<stSimpleMetaPerson> paramArrayList, String paramString3, ArrayList<String> paramArrayList1, stGlobalConfig paramstGlobalConfig, String paramString4, String paramString5, int paramInt2)
+  public stNotificationRsp(int paramInt1, String paramString1, String paramString2, ArrayList<stSimpleMetaPerson> paramArrayList, String paramString3, ArrayList<String> paramArrayList1, stGlobalConfig paramstGlobalConfig, String paramString4, String paramString5, int paramInt2, String paramString6, Map<String, String> paramMap)
   {
     this.type = paramInt1;
     this.imgurl = paramString1;
@@ -46,6 +54,8 @@ public final class stNotificationRsp
     this.h5Url = paramString4;
     this.scheme_url = paramString5;
     this.cid = paramInt2;
+    this.trace_id = paramString6;
+    this.map_ext = paramMap;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -60,6 +70,8 @@ public final class stNotificationRsp
     this.h5Url = paramJceInputStream.readString(7, false);
     this.scheme_url = paramJceInputStream.readString(8, false);
     this.cid = paramJceInputStream.read(this.cid, 9, false);
+    this.trace_id = paramJceInputStream.readString(10, false);
+    this.map_ext = ((Map)paramJceInputStream.read(cache_map_ext, 11, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -90,6 +102,12 @@ public final class stNotificationRsp
       paramJceOutputStream.write(this.scheme_url, 8);
     }
     paramJceOutputStream.write(this.cid, 9);
+    if (this.trace_id != null) {
+      paramJceOutputStream.write(this.trace_id, 10);
+    }
+    if (this.map_ext != null) {
+      paramJceOutputStream.write(this.map_ext, 11);
+    }
   }
 }
 

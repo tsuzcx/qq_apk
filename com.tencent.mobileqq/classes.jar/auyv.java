@@ -1,22 +1,23 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class auyv
-  implements bble<Rect>
+public final class auyv
+  implements Parcelable.Creator<VideoData>
 {
-  public auyv(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
-  
-  public void a(bbky<Rect> parambbky, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public VideoData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate();
+    return new VideoData(paramParcel);
+  }
+  
+  public VideoData[] a(int paramInt)
+  {
+    return new VideoData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auyv
  * JD-Core Version:    0.7.0.1
  */

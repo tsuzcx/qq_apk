@@ -31,13 +31,13 @@ public class TabBarView$ItemHolder
   public static ItemHolder getItemHolder(View paramView, TabBarInfo.ButtonInfo paramButtonInfo, TabBarInfo paramTabBarInfo)
   {
     ItemHolder localItemHolder = new ItemHolder();
-    localItemHolder.txt = ((TextView)paramView.findViewById(2131377032));
-    localItemHolder.icon = ((ImageView)paramView.findViewById(2131367679));
-    localItemHolder.topBorder = paramView.findViewById(2131377546);
-    localItemHolder.bottomBorder = paramView.findViewById(2131363329);
-    localItemHolder.bottomSelectedBorder = paramView.findViewById(2131363334);
-    localItemHolder.redDot = paramView.findViewById(2131375027);
-    localItemHolder.badge = ((TextView)paramView.findViewById(2131363015));
+    localItemHolder.txt = ((TextView)paramView.findViewById(2131377552));
+    localItemHolder.icon = ((ImageView)paramView.findViewById(2131367808));
+    localItemHolder.topBorder = paramView.findViewById(2131378083);
+    localItemHolder.bottomBorder = paramView.findViewById(2131363367);
+    localItemHolder.bottomSelectedBorder = paramView.findViewById(2131363372);
+    localItemHolder.redDot = paramView.findViewById(2131375497);
+    localItemHolder.badge = ((TextView)paramView.findViewById(2131363051));
     localItemHolder.badge.setEllipsize(TextUtils.TruncateAt.END);
     localItemHolder.badge.setMaxEms(3);
     localItemHolder.badge.setSingleLine();
@@ -153,7 +153,7 @@ public class TabBarView$ItemHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.TabBarView.ItemHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,32 @@
-public class amny
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+
+class amny
+  implements ServiceConnection
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
-  public int c;
+  amny(amnx paramamnx) {}
   
-  public amny(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, float paramFloat)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Float = paramFloat;
+    amnx.a(this.a, amuy.a(paramIBinder));
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + amnx.a(this.a));
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    amnx.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + amnx.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amny
  * JD-Core Version:    0.7.0.1
  */

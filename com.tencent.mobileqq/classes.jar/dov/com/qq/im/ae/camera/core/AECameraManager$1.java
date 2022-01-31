@@ -1,46 +1,46 @@
 package dov.com.qq.im.ae.camera.core;
 
-import ahvw;
-import axhz;
-import bika;
-import biwu;
-import bjah;
+import ajng;
+import azdf;
+import bkoi;
+import blbo;
+import blfg;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
 
 public class AECameraManager$1
   implements Runnable
 {
-  public AECameraManager$1(bika parambika) {}
+  public AECameraManager$1(bkoi parambkoi) {}
   
   public void run()
   {
     boolean bool = true;
-    bjah.b("AECameraManager", "openCamera---cameraCreated=" + bika.a(this.this$0));
-    if (bika.a(this.this$0)) {
+    blfg.b("AECameraManager", "openCamera---cameraCreated=" + bkoi.a(this.this$0));
+    if (bkoi.a(this.this$0)) {
       return;
     }
-    bika.a(this.this$0, false);
-    bika.a(this.this$0, 0);
-    bika.b(this.this$0, 0);
-    bika.a().a(this.this$0);
-    bika.a().b(bika.a(this.this$0));
-    bika.b(this.this$0, true);
-    if (bika.a(this.this$0) != null) {
-      bika.a(this.this$0).f();
+    bkoi.a(this.this$0, false);
+    bkoi.a(this.this$0, 0);
+    bkoi.b(this.this$0, 0);
+    bkoi.a().a(this.this$0);
+    bkoi.a().b(bkoi.a(this.this$0));
+    bkoi.b(this.this$0, true);
+    if (bkoi.a(this.this$0) != null) {
+      bkoi.a(this.this$0).f();
     }
-    ahvw localahvw;
-    if (bika.a(this.this$0) != null)
+    ajng localajng;
+    if (bkoi.a(this.this$0) != null)
     {
-      localahvw = bika.a(this.this$0);
-      if (bika.a(this.this$0) != 1) {
+      localajng = bkoi.a(this.this$0);
+      if (bkoi.a(this.this$0) != 1) {
         break label175;
       }
     }
     for (;;)
     {
-      localahvw.a(bool);
-      ahty.a = bika.a(this.this$0);
-      biwu.a().a("openCamera-end");
+      localajng.a(bool);
+      ajli.a = bkoi.a(this.this$0);
+      blbo.a().a("openCamera-end");
       return;
       label175:
       bool = false;
@@ -49,7 +49,7 @@ public class AECameraManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraManager.1
  * JD-Core Version:    0.7.0.1
  */

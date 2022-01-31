@@ -1,41 +1,56 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class adqh
-  implements aefb
+public class adqh
+  extends awdn
 {
-  adqh(adqe paramadqe, adqq paramadqq, MessageForPoke paramMessageForPoke) {}
+  public adqh(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 1");
+      QLog.d("RegisterQQNumberActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
     }
-    adwf.a().a(20);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageMatrix(null);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Adqq.b == adqe.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Adqe.a instanceof ChatHistoryActivity)) && (!adqe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Adqq.c.setVisibility(0);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
     }
-    for (;;)
+    if (paramBoolean1)
     {
-      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      if (paramBoolean2)
+      {
+        RegisterQQNumberActivity.a(this.a, true);
+        RegisterQQNumberActivity.b(this.a);
+        return;
+      }
+      if ((paramBoolean3) && (!TextUtils.isEmpty(paramString)))
+      {
+        RegisterQQNumberActivity.a(this.a);
+        Intent localIntent = new Intent(this.a, VerifyPhoneNumActivity.class);
+        localIntent.putExtra("phonenum", this.a.a);
+        localIntent.putExtra("key", this.a.b);
+        localIntent.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+        localIntent.putExtra("key_register_sign", RegisterQQNumberActivity.a(this.a));
+        localIntent.putExtra("key_register_binduin", paramString);
+        this.a.startActivity(localIntent);
+        this.a.finish();
+        return;
+      }
+      RegisterQQNumberActivity.b(this.a);
       return;
-      this.jdField_a_of_type_Adqq.c.setVisibility(8);
     }
+    RegisterQQNumberActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqh
  * JD-Core Version:    0.7.0.1
  */

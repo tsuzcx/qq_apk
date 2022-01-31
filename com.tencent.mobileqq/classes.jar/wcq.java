@@ -1,118 +1,48 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class wcq
-  extends ImageSpan
+public final class wcq
+  implements View.OnClickListener
 {
-  private WeakReference<Drawable> a;
+  public wcq(wco paramwco, Activity paramActivity, String paramString) {}
   
-  public wcq(Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    this(paramDrawable, 4);
-  }
-  
-  public wcq(Drawable paramDrawable, int paramInt)
-  {
-    super(paramDrawable, paramInt);
-  }
-  
-  private Drawable a()
-  {
-    Object localObject = this.a;
-    Drawable localDrawable = null;
-    if (localObject != null) {
-      localDrawable = (Drawable)((WeakReference)localObject).get();
-    }
-    localObject = localDrawable;
-    if (localDrawable == null)
+    wsv.d("QQStoryMainController", "top right button on click:" + this.jdField_a_of_type_Wco);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Wco.c)) && (ndd.a(this.jdField_a_of_type_Wco.c)))
     {
-      localObject = getDrawable();
-      this.a = new WeakReference(localObject);
-    }
-    return localObject;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    paramPaint = paramCharSequence.getBounds();
-    float f;
-    switch (this.mVerticalAlignment)
-    {
-    case 2: 
-    default: 
-      f = paramInt5 - paramPaint.height();
-    }
-    for (;;)
-    {
-      paramCanvas.save();
-      paramCanvas.translate(paramFloat, f);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
-      f = paramInt4 - paramPaint.height();
-      continue;
-      f = (paramInt5 - paramInt3 - paramPaint.height()) / 2 + paramInt3;
-      continue;
-      f = paramInt3;
-    }
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    paramCharSequence = a().getBounds();
-    float f1;
-    float f2;
-    float f3;
-    float f4;
-    if (paramFontMetricsInt != null)
-    {
-      paramPaint = paramPaint.getFontMetrics();
-      f1 = paramPaint.top - paramPaint.ascent;
-      f2 = paramPaint.bottom - paramPaint.descent;
-      f3 = paramPaint.descent;
-      f4 = paramPaint.ascent;
-      paramInt1 = paramCharSequence.height();
-      switch (this.mVerticalAlignment)
-      {
-      case 2: 
-      default: 
-        f2 = paramPaint.descent - paramInt1;
-        paramFontMetricsInt.ascent = ((int)f2);
-        paramFontMetricsInt.top = ((int)(f2 + f1));
+      paramView = this.jdField_a_of_type_Wco.c;
+      if (this.jdField_a_of_type_Wco.a != 1) {
+        break label172;
       }
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
     }
     for (;;)
     {
-      return paramCharSequence.right;
-      f4 = paramPaint.descent - (f3 - f4) / 2.0F;
-      f3 = f4 - paramInt1 / 2;
-      f4 += paramInt1 / 2;
-      paramFontMetricsInt.ascent = ((int)f3);
-      paramFontMetricsInt.top = ((int)(f1 + f3));
-      paramFontMetricsInt.descent = ((int)f4);
-      paramFontMetricsInt.bottom = ((int)(f4 + f2));
-      continue;
-      f2 = -paramInt1;
-      paramFontMetricsInt.ascent = (-paramInt1);
-      paramFontMetricsInt.top = ((int)(f2 + f1));
-      continue;
-      f1 = paramInt1;
-      f1 = paramPaint.ascent + f1;
-      paramFontMetricsInt.descent = ((int)f1);
-      paramFontMetricsInt.bottom = ((int)(f1 + f2));
+      wta.a("hall", "exp", 0, 0, new String[] { "" });
+      if (!"troopStoryHallConfig".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label197;
+      }
+      wta.a("story_grp", "clk_find_left", 0, 0, new String[] { "", "", "", "" });
+      return;
+      paramView = "https://story.now.qq.com/mobile/find.html?_wv=3&_bid=2542";
+      break;
+      label172:
+      if ((this.jdField_a_of_type_Wco.a == 2) || (this.jdField_a_of_type_Wco.a != 3)) {}
     }
+    label197:
+    wta.a("home_page", "clk_find_entry", 0, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcq
  * JD-Core Version:    0.7.0.1
  */

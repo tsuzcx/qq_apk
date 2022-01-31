@@ -357,6 +357,11 @@ public class NowLive
     ExtSdkBizAbilityImpl.getInstance().setCustomizedOpenLiveHall(paramCustomizedOpenLiveHall);
   }
   
+  public static void setCustomizedOpenWxMiniProgram(CustomizedOpenWxMiniProgram paramCustomizedOpenWxMiniProgram)
+  {
+    CustomInterfaceLogic.getsInstance().setCustomizedOpenWxMiniProgram(paramCustomizedOpenWxMiniProgram);
+  }
+  
   public static void setCustomizedPay(CustomizedPayment paramCustomizedPayment)
   {
     CustomInterfaceLogic.getsInstance().setCustomizedPay(paramCustomizedPayment);
@@ -479,7 +484,7 @@ public class NowLive
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.NowLive
  * JD-Core Version:    0.7.0.1
  */

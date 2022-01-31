@@ -1,22 +1,41 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.dataline.activities.LiteActivity;
-import com.tencent.widget.XEditTextEx;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.dataline.mpfile.MpfileTaskInfo;
 
-public class dj
-  implements ValueAnimator.AnimatorUpdateListener
+public final class dj
+  implements Parcelable.Creator<MpfileTaskInfo>
 {
-  public dj(LiteActivity paramLiteActivity) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public MpfileTaskInfo a(Parcel paramParcel)
   {
-    this.a.a.getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.requestLayout();
+    MpfileTaskInfo localMpfileTaskInfo = new MpfileTaskInfo();
+    localMpfileTaskInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localMpfileTaskInfo.jdField_g_of_type_Int = paramParcel.readInt();
+    localMpfileTaskInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.h = paramParcel.readString();
+    localMpfileTaskInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_d_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_e_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_f_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_g_of_type_Long = paramParcel.readLong();
+    return localMpfileTaskInfo;
+  }
+  
+  public MpfileTaskInfo[] a(int paramInt)
+  {
+    return new MpfileTaskInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dj
  * JD-Core Version:    0.7.0.1
  */

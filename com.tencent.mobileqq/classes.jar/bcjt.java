@@ -1,23 +1,43 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-class bcjt
-  implements Animation.AnimationListener
+public abstract class bcjt
 {
-  bcjt(bcjr parambcjr) {}
+  public void a(int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    bcjr.a(this.a, true);
-  }
+  public void a(int paramInt1, int paramInt2, String paramString, List<bcke> paramList) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt, String paramString) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody) {}
+  
+  public void a(long paramLong) {}
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(SparseArray<bckg> paramSparseArray) {}
+  
+  public void a(TroopGiftBagInfo paramTroopGiftBagInfo) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString1, int paramInt, String paramString2) {}
+  
+  public void a(List<bckf> paramList, yqx paramyqx) {}
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3) {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(int paramInt, String paramString) {}
+  
+  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcjt
  * JD-Core Version:    0.7.0.1
  */

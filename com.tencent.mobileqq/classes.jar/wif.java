@@ -1,21 +1,21 @@
-import java.util.Comparator;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import java.util.List;
 
-class wif
-  implements Comparator<wid>
+public class wif
+  extends ugz
 {
-  wif(wie paramwie) {}
+  public List<MomeriesYearNode> a;
+  public boolean a;
   
-  public int a(wid paramwid1, wid paramwid2)
+  public wif(wic paramwic, ErrorMessage paramErrorMessage)
   {
-    if (paramwid1.d > paramwid2.d) {
-      return 1;
-    }
-    return -1;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wif
  * JD-Core Version:    0.7.0.1
  */

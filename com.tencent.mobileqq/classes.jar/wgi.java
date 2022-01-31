@@ -1,58 +1,46 @@
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 public class wgi
-  implements bfph
+  implements View.OnTouchListener
 {
-  public wgi(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.f) {
-      return;
-    }
-    this.a.f = true;
-    switch (paramInt)
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
     {
-    }
-    for (;;)
-    {
-      this.a.b.dismiss();
-      return;
-      if (!this.a.jdField_a_of_type_Boolean)
+      Object localObject = ((TextView)paramView).getText();
+      localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
+      paramView = (TextView)paramView;
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramView.getTotalPaddingLeft();
+      int n = paramView.getTotalPaddingTop();
+      int i1 = paramView.getScrollX();
+      int i2 = paramView.getScrollY();
+      paramMotionEvent = paramView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length != 0)
       {
-        this.a.e();
-        if ((this.a.g & 0x1) != 0)
-        {
-          axqy.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
-          continue;
-          if (!this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.f();
-            if ((this.a.g & 0x1) != 0)
-            {
-              axqy.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
-              continue;
-              if (!this.a.jdField_a_of_type_Boolean)
-              {
-                this.a.d();
-                if ((this.a.g & 0x1) != 0) {
-                  axqy.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
-                }
-                if (this.a.jdField_c_of_type_Int == 2) {
-                  axqy.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
-                }
-              }
-            }
-          }
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramView);
         }
+        return true;
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgi
  * JD-Core Version:    0.7.0.1
  */

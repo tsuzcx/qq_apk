@@ -12,8 +12,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import osx;
-import sgg;
+import oxp;
+import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$2
@@ -23,14 +23,14 @@ public final class ReadinjoySPEventReport$2
   {
     ArrayList localArrayList;
     oidb_cmd0x80a.AttributeList localAttributeList;
-    if (osx.b(8))
+    if (oxp.b(8))
     {
       localArrayList = new ArrayList();
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(1);
       localAttributeList.att_name.set("DTHasRed");
       PBStringField localPBStringField = localAttributeList.att_value;
-      if (!osx.b()) {
+      if (!oxp.b()) {
         break label189;
       }
       localObject = String.valueOf(1);
@@ -62,8 +62,8 @@ public final class ReadinjoySPEventReport$2
         localAttributeList.att_name.set("tab");
         localAttributeList.att_value.set((String)localObject);
         localArrayList.add(localAttributeList);
-        sgg.a(8, localArrayList);
-        osx.b(System.currentTimeMillis());
+        syb.a(8, localArrayList);
+        oxp.b(System.currentTimeMillis());
         return;
         label189:
         localObject = String.valueOf(0);
@@ -84,7 +84,7 @@ public final class ReadinjoySPEventReport$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.2
  * JD-Core Version:    0.7.0.1
  */

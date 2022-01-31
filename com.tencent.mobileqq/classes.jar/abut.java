@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
-
-public class abut
-  implements Comparator<ChatMessage>
+public abstract interface abut
 {
-  public abut(QQLSActivity paramQQLSActivity) {}
+  public abstract void a(abuu paramabuu);
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
-  {
-    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
-      return 0;
-    }
-    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(String paramString1, int paramInt, String paramString2);
+  
+  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abut
  * JD-Core Version:    0.7.0.1
  */

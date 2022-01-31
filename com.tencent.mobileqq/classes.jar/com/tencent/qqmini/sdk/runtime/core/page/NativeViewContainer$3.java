@@ -2,9 +2,9 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.content.Context;
 import android.view.inputmethod.InputMethodManager;
-import bekj;
-import betc;
-import bfda;
+import bgid;
+import bhcq;
+import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
 import java.util.Map;
 import org.json.JSONObject;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 class NativeViewContainer$3
   implements Runnable
 {
-  NativeViewContainer$3(NativeViewContainer paramNativeViewContainer, bekj parambekj) {}
+  NativeViewContainer$3(NativeViewContainer paramNativeViewContainer, bgid parambgid) {}
   
   public void run()
   {
@@ -45,13 +45,13 @@ class NativeViewContainer$3
     }
     catch (Throwable localThrowable)
     {
-      betc.d("NativeViewContainer", "EVENT_HIDE_KEYBOARD error.", localThrowable);
+      QMLog.e("NativeViewContainer", "EVENT_HIDE_KEYBOARD error.", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer.3
  * JD-Core Version:    0.7.0.1
  */

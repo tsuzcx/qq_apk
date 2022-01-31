@@ -1,17 +1,20 @@
-import android.graphics.Canvas;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
 
-public abstract interface ves
-  extends vhl
+public class ves
+  extends vfx
 {
-  public abstract int a(int paramInt);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  public ves(@NonNull BannerFeedItem paramBannerFeedItem)
+  {
+    this.a = paramBannerFeedItem.shareInfo.a;
+    this.b = paramBannerFeedItem.shareInfo.b;
+    this.c = paramBannerFeedItem.shareInfo.d;
+    this.d = paramBannerFeedItem.shareInfo.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ves
  * JD-Core Version:    0.7.0.1
  */

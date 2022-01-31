@@ -1,22 +1,27 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.3.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import mqq.os.MqqHandler;
+
 public class avci
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public int a;
-  public final avcn a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  avci(avcf paramavcf) {}
   
-  public avci(int paramInt)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_Avcn = new avcn();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Avcn.jdField_a_of_type_Int = -2147483648;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoViewTVKImpl", 2, "onInfo what=" + paramInt + "  ex:" + paramObject);
+    }
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt, paramObject));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avci
  * JD-Core Version:    0.7.0.1
  */

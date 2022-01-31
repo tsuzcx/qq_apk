@@ -1,17 +1,14 @@
-public class orn
+final class orn
+  implements qoc<String>
 {
-  public int a;
-  public String a;
-  public String b;
-  
-  public String toString()
+  public boolean a(String paramString)
   {
-    return "styleID = " + this.jdField_a_of_type_JavaLangString + ", proteusData = " + this.b + ", rankWeight = " + this.jdField_a_of_type_Int;
+    return (paramString.toLowerCase().contains("readinjoy")) && (!paramString.contains("readinjoy_local_reset_config_version")) && (!paramString.contains("readinjoy_remote_reset_config_version"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     orn
  * JD-Core Version:    0.7.0.1
  */

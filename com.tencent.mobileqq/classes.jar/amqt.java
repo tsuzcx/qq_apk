@@ -1,35 +1,25 @@
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class amqt
-  extends amqq
+public abstract interface amqt
 {
-  public int a()
-  {
-    return 250;
-  }
+  public abstract void a();
   
-  public amqk a(String paramString)
-  {
-    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
-    try
-    {
-      amre localamre = (amre)ampv.a(paramString, amre.class);
-      return new amqn(paramString, localamre);
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
-      {
-        QLog.i("ArkConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
-      }
-    }
-  }
+  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, amqu paramamqu);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c(String paramString, int paramInt);
+  
+  public abstract void d(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqt
  * JD-Core Version:    0.7.0.1
  */

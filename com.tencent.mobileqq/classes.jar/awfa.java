@@ -1,29 +1,62 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View.OnClickListener;
+import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.pic.PicPreDownloader.ScreenBroadcastReceiver.1;
 
-public abstract class awfa
-  extends ClickableSpan
-  implements View.OnClickListener
+public class awfa
+  extends BroadcastReceiver
 {
-  private int a;
+  public String a;
   
-  public awfa(int paramInt)
+  public awfa(String paramString)
   {
-    this.a = paramInt;
+    this.a = paramString;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public boolean a(Context paramContext)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.a);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.clearShadowLayer();
+    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    boolean bool = false;
+    paramIntent = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(paramIntent))
+    {
+      PicPreDownloader.b = PicPreDownloader.a;
+      if (!a(paramContext)) {
+        bool = true;
+      }
+      PicPreDownloader.a = bool;
+    }
+    for (;;)
+    {
+      awen.a("PIC_TAG_PRELOAD", "onReceive", "isScreenOn:" + PicPreDownloader.a + ",lastScreenOnState:" + PicPreDownloader.b);
+      if ((PicPreDownloader.b != PicPreDownloader.a) || (PicPreDownloader.a)) {
+        break;
+      }
+      return;
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
+      {
+        PicPreDownloader.b = PicPreDownloader.a;
+        PicPreDownloader.a = false;
+      }
+      else if ("android.intent.action.USER_PRESENT".equals(paramIntent))
+      {
+        PicPreDownloader.b = PicPreDownloader.a;
+        PicPreDownloader.a = true;
+      }
+    }
+    ThreadManager.post(new PicPreDownloader.ScreenBroadcastReceiver.1(this), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awfa
  * JD-Core Version:    0.7.0.1
  */

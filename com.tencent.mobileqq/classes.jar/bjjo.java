@@ -1,17 +1,18 @@
+import cooperation.qzone.panorama.widget.PanoramaView;
+
 public class bjjo
+  implements bjiv
 {
-  public int a;
-  public int b;
+  public bjjo(PanoramaView paramPanoramaView) {}
   
-  public bjjo(int paramInt1, int paramInt2)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.a.a(paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjjo
  * JD-Core Version:    0.7.0.1
  */

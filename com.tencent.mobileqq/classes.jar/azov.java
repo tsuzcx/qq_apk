@@ -1,52 +1,77 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.data.TroopFeedItem;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class azov
   extends azow
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  
+  public azov()
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {}
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+  }
+  
+  public String a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.jdField_b_of_type_Long).append("|");
+    localStringBuilder.append(this.i).append("|");
+    localStringBuilder.append(this.j).append("|");
+    localStringBuilder.append(this.k).append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Int).append("|");
+    if (paramInt == 0) {
+      localStringBuilder.append("${count_unknown}").append("|");
+    }
     for (;;)
     {
-      return null;
-      localTroopFeedItem.type = 99;
-      try
-      {
-        localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
-        if (paramJSONObject.has("app_id"))
-        {
-          localTroopFeedItem.ex_1 = ("" + paramJSONObject.getLong("app_id"));
-          if ((!sst.i()) && (localTroopFeedItem.isStoryType()))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, "当前系统api：" + Build.VERSION.SDK_INT + ",低于14");
-            return null;
-          }
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
-      }
+      localStringBuilder.append(this.jdField_a_of_type_Long).append("|");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.d).append("|");
+      localStringBuilder.append(this.e).append("|");
+      localStringBuilder.append(this.f).append("|");
+      localStringBuilder.append(this.g).append("|");
+      localStringBuilder.append(this.h).append("|");
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_c_of_type_Int).append("|");
     }
-    paramJSONObject = paramJSONObject.getJSONObject("content");
-    localTroopFeedItem.content = paramJSONObject.getString("body");
-    localTroopFeedItem.title = paramJSONObject.getString("title");
-    localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
-    return localTroopFeedItem;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.jdField_b_of_type_Long).append("|");
+    localStringBuffer.append(this.i).append("|");
+    localStringBuffer.append(this.j).append("|");
+    localStringBuffer.append(this.k).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_b_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_c_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Long).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.jdField_c_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    localStringBuffer.append(this.h).append("|");
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azov
  * JD-Core Version:    0.7.0.1
  */

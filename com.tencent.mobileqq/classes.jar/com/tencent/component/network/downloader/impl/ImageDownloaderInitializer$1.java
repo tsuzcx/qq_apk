@@ -1,11 +1,11 @@
 package com.tencent.component.network.downloader.impl;
 
-import com.squareup.okhttp.Request.Builder;
 import com.tencent.component.network.downloader.Downloader;
 import com.tencent.component.network.downloader.strategy.DownloadPreprocessStrategy;
 import com.tencent.component.network.downloader.strategy.DownloadPreprocessStrategy.DownloadPool;
 import com.tencent.component.network.downloader.strategy.KeepAliveStrategy;
 import com.tencent.component.network.module.base.Config;
+import okhttp3.Request.Builder;
 import org.apache.http.HttpRequest;
 
 final class ImageDownloaderInitializer$1
@@ -42,7 +42,7 @@ final class ImageDownloaderInitializer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.ImageDownloaderInitializer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package cooperation.weiyun.upload;
 
-import bift;
-import bifv;
+import bkhp;
+import bkhr;
 import com.tencent.weiyun.uploader.IReporter;
 import com.tencent.weiyun.uploader.IUploader;
 import com.tencent.weiyun.uploader.IUploader.IUploadListener;
@@ -26,9 +26,9 @@ public class WyUploadJob
     return this.jdField_a_of_type_Int;
   }
   
-  bift a(UploadRequest paramUploadRequest)
+  bkhp a(UploadRequest paramUploadRequest)
   {
-    return new bifv(paramUploadRequest, this);
+    return new bkhr(paramUploadRequest, this);
   }
   
   UploadResponse a(int paramInt)
@@ -163,7 +163,7 @@ public class WyUploadJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.upload.WyUploadJob
  * JD-Core Version:    0.7.0.1
  */

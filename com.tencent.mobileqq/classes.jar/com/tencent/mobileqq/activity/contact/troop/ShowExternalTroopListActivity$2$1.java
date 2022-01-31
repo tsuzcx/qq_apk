@@ -12,12 +12,12 @@ class ShowExternalTroopListActivity$2$1
   public void run()
   {
     BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$2.this$0.a.findViewById(2131375493).setBackgroundDrawable(localBitmapDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$2.this$0.a.findViewById(2131375981).setBackgroundDrawable(localBitmapDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

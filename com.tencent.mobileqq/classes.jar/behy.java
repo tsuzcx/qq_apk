@@ -1,19 +1,10 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONObject;
-
-class behy
-  implements AsyncResult
+public abstract interface behy<T>
 {
-  behy(behw parambehw) {}
-  
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    betc.d("AuthState", "updateUserSetting() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
-  }
+  public abstract void a(int paramInt, T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     behy
  * JD-Core Version:    0.7.0.1
  */

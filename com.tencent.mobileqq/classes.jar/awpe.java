@@ -1,54 +1,20 @@
-import com.tencent.TMG.utils.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
 
 public class awpe
-  extends awor
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public CharSequence a;
-  public String a;
-  public CharSequence b;
-  public boolean b;
+  public awpe(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public awpe(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public awpe(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    for (boolean bool = true;; bool = false) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_JavaLangCharSequence = awwa.a(paramString.optJSONArray("leftText"));
-        this.jdField_b_of_type_JavaLangCharSequence = awwa.a(paramString.optJSONArray("rightText"));
-        this.jdField_a_of_type_JavaLangString = paramString.optString("bgColor");
-        if (paramString.optInt("needCenter") == 1)
-        {
-          this.jdField_b_of_type_Boolean = bool;
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(c, 0, paramString.toString());
-      }
-    }
+    StickyNotePublishFragment.a(this.a, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awpe
  * JD-Core Version:    0.7.0.1
  */

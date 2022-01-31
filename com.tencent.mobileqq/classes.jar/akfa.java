@@ -1,26 +1,10 @@
-public class akfa
-  implements ajte
+public abstract interface akfa
 {
-  public void a(Object paramObject) {}
-  
-  public void b(Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1000: 
-      a(paramObject);
-      return;
-    }
-    b(paramObject);
-  }
+  public abstract void a(aovj paramaovj);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfa
  * JD-Core Version:    0.7.0.1
  */

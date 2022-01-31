@@ -1,18 +1,21 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-final class pas
-  extends CharacterStyle
+public class pas
+  extends AnimatorListenerAdapter
 {
-  public void updateDrawState(TextPaint paramTextPaint)
+  public pas(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramTextPaint.setColor(Color.parseColor("#FF3DB8FF"));
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pas
  * JD-Core Version:    0.7.0.1
  */

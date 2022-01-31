@@ -1,110 +1,56 @@
 import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import java.net.URLEncoder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class yya
+class yya
+  implements nbs
 {
-  public static String a(int paramInt)
-  {
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
-      ((JSONObject)localObject).put("ps", String.valueOf(1));
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
+  yya(yxy paramyxy, QQAppInterface paramQQAppInterface) {}
   
-  public static String a(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    int k = 1;
-    int i;
-    if ((paramLong1 >= 0L) && (paramLong2 == 0L)) {
-      i = 4;
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
     }
-    for (;;)
+    if (paramInt == 0)
     {
-      long l = paramLong1;
-      if (paramLong1 <= -1L)
-      {
-        i = 4;
-        l = 0L;
-      }
-      if (l >= paramLong2) {
-        i = 4;
-      }
+      String str;
       try
       {
-        Object localObject = new JSONObject();
-        ((JSONObject)localObject).put("bt", l + "");
-        ((JSONObject)localObject).put("et", paramLong2 + "");
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (l > 0L)
+        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
+        str = paramString.optString("url");
+        paramInt = paramString.optInt("filesize");
+        if ((str != null) && (str.endsWith("patch")))
         {
-          j = 0;
-          ((JSONObject)localObject).put("bf", j + "");
-          localStringBuilder = new StringBuilder();
-          if (!paramBoolean) {
-            break label249;
-          }
+          bdcs.a(ncb.a(this.jdField_a_of_type_Yxy.a) + this.jdField_a_of_type_Yxy.a);
+          this.jdField_a_of_type_Yxy.b();
+          return;
         }
-        label249:
-        for (int j = k;; j = 0)
-        {
-          ((JSONObject)localObject).put("ef", j + "");
-          ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
-          ((JSONObject)localObject).put("pa", i + "");
-          localObject = ((JSONObject)localObject).toString();
-          return localObject;
-          j = 1;
-          break;
-        }
-        i = 0;
       }
-      catch (Exception localException)
+      catch (Exception paramString)
       {
-        return null;
+        paramString.printStackTrace();
+        this.jdField_a_of_type_Yxy.a();
+        return;
       }
+      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
+      {
+        this.jdField_a_of_type_Yxy.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        return;
+      }
+      this.jdField_a_of_type_Yxy.a();
+      return;
     }
+    this.jdField_a_of_type_Yxy.a();
   }
   
-  public static void a(GdtAd paramGdtAd, String paramString)
-  {
-    if ((paramGdtAd == null) || (TextUtils.isEmpty(paramGdtAd.getUrlForImpression()))) {
-      return;
-    }
-    a(paramGdtAd.getUrlForImpression(), paramString);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    yyb.a(paramString);
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      yyb.a(paramString1);
-      return;
-      paramString1 = paramString1 + "&" + "video" + "=" + URLEncoder.encode(paramString2);
-    }
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yya
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,10 @@
-import com.tencent.widget.AbsListView;
-
 class rcx
-  extends oyd
 {
-  rcx(rcv paramrcv, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramString);
-  }
-  
-  public void a(oxx paramoxx)
-  {
-    paramoxx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
-  }
+  private static final rcp a = new rcp(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rcx
  * JD-Core Version:    0.7.0.1
  */

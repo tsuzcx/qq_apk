@@ -326,11 +326,11 @@ public class VerifyFileUtil
     //   3: aconst_null
     //   4: astore 8
     //   6: iconst_0
-    //   7: istore 4
+    //   7: istore 5
     //   9: aload_0
     //   10: invokevirtual 255	java/io/File:exists	()Z
     //   13: ifne +6 -> 19
-    //   16: iload 4
+    //   16: iload 5
     //   18: ireturn
     //   19: new 208	java/io/DataInputStream
     //   22: dup
@@ -514,23 +514,23 @@ public class VerifyFileUtil
     //   372: getfield 224	com/tencent/secprotocol/utils/VerifyFileUtil$QSecSigData:signature	[B
     //   375: aload_1
     //   376: invokestatic 288	com/tencent/secprotocol/utils/VerifyFileUtil:verifyStream	(Ljava/io/DataInputStream;I[BLjava/security/PublicKey;)Z
-    //   379: istore 5
+    //   379: istore 4
     //   381: aload 6
     //   383: ifnull +8 -> 391
     //   386: aload 6
     //   388: invokevirtual 269	java/io/DataInputStream:close	()V
-    //   391: iload 5
-    //   393: istore 4
+    //   391: iload 4
+    //   393: istore 5
     //   395: aload_0
     //   396: ifnull -380 -> 16
     //   399: aload_0
     //   400: invokevirtual 269	java/io/DataInputStream:close	()V
-    //   403: iload 5
+    //   403: iload 4
     //   405: ireturn
     //   406: astore_0
     //   407: aload_0
     //   408: invokevirtual 229	java/io/IOException:printStackTrace	()V
-    //   411: iload 5
+    //   411: iload 4
     //   413: ireturn
     //   414: astore_1
     //   415: aload_1
@@ -623,8 +623,8 @@ public class VerifyFileUtil
     //   0	568	1	paramString	String
     //   41	222	2	i	int
     //   153	110	3	j	int
-    //   7	387	4	bool1	boolean
-    //   379	33	5	bool2	boolean
+    //   379	33	4	bool1	boolean
+    //   7	387	5	bool2	boolean
     //   34	353	6	localDataInputStream	DataInputStream
     //   422	8	6	localIOException1	IOException
     //   469	11	6	localObject1	Object
@@ -716,7 +716,7 @@ public class VerifyFileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.secprotocol.utils.VerifyFileUtil
  * JD-Core Version:    0.7.0.1
  */

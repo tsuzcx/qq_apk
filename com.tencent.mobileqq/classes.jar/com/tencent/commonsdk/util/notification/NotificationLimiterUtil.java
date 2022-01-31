@@ -1,5 +1,7 @@
 package com.tencent.commonsdk.util.notification;
 
+import com.tencent.qphone.base.util.QLog;
+
 public class NotificationLimiterUtil
 {
   static NotificationLimiter s_notificationLimiter;
@@ -11,10 +13,14 @@ public class NotificationLimiterUtil
   
   public static boolean shouldNotify(int paramInt)
   {
-    if (s_notificationLimiter != null) {
-      return s_notificationLimiter.shouldNotify(paramInt);
+    if (s_notificationLimiter != null) {}
+    for (boolean bool = s_notificationLimiter.shouldNotify(paramInt);; bool = true)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQNotification", 2, "studymode_fight notify id:" + paramInt + ",s_notificationLimiter " + s_notificationLimiter + ",result = " + bool);
+      }
+      return bool;
     }
-    return true;
   }
 }
 

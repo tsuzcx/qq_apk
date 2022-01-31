@@ -1,93 +1,55 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class bfnq
 {
-  private static int jdField_a_of_type_Int;
-  public static final Object a;
-  private static String jdField_a_of_type_JavaLangString = "";
-  
-  static
+  private static String a(String paramString)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (!paramString.startsWith("##@")) {
+        str = "##@" + paramString;
+      }
+    }
+    return str;
   }
   
-  public static String a()
+  public static void a(String paramString1, int paramInt, String paramString2)
   {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-    {
-      Object localObject = BaseApplicationImpl.getContext();
-      if (localObject == null) {
-        break label95;
-      }
-      localObject = ((Context)localObject).getFilesDir();
-      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-      {
-        jdField_a_of_type_JavaLangString = ((File)localObject).getParent() + "/txlib/" + "cmshow/";
-        if (AppSetting.b) {
-          jdField_a_of_type_JavaLangString += "arm64-v8a/";
-        }
-      }
-    }
-    for (;;)
-    {
-      return jdField_a_of_type_JavaLangString;
-      label95:
-      QLog.w("ApolloSoLoader_preLoader", 2, "getSoLibPath but context is null");
-    }
+    paramString2 = "step" + paramInt + "-->" + paramString2;
+    QLog.d("WadlStep." + paramString1, 2, paramString2);
   }
   
-  public static String a(int paramInt)
+  public static void a(String paramString1, String paramString2)
   {
-    a();
-    String str = jdField_a_of_type_JavaLangString;
-    if (paramInt == 0) {
-      str = jdField_a_of_type_JavaLangString + "jsc_temp_dir" + "/";
-    }
-    while (1 != paramInt) {
-      return str;
-    }
-    return jdField_a_of_type_JavaLangString + "sava_temp_dir" + "/";
+    QLog.e(paramString1, 1, a(paramString2));
   }
   
-  public static boolean a(String paramString, int paramInt)
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      a();
-      String str;
-      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-        str = a(paramInt);
-      }
-      try
-      {
-        jdField_a_of_type_Int = 1;
-        bbdx.a(paramString, str, false);
-        jdField_a_of_type_Int = 0;
-        QLog.i("ApolloSoLoader_preLoader", 1, "succeed to unzip so.");
-        if (jdField_a_of_type_Int == 0) {
-          return true;
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          jdField_a_of_type_Int = 2;
-          QLog.e("ApolloSoLoader_preLoader", 1, paramString, new Object[0]);
-        }
-      }
-    }
-    return false;
+    QLog.e(paramString1, 1, a(paramString2), paramThrowable);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, a(paramString2));
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, 1, a(paramString2), paramThrowable);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 1, a(paramString2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfnq
  * JD-Core Version:    0.7.0.1
  */

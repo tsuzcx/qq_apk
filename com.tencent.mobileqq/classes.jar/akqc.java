@@ -1,50 +1,35 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import android.os.Handler;
+import com.tencent.TMG.utils.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class akqc
-  implements akop
+  implements EIPCResultCallback
 {
-  akqc(akqb paramakqb, String paramString, FMTransC2CMsgInfo paramFMTransC2CMsgInfo, int paramInt, byte[] paramArrayOfByte) {}
+  akqc(akqb paramakqb) {}
   
-  public ToServiceMsg a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akqb.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.createToServiceMsg("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uniseq);
-    localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
-    localToServiceMsg.extraData.putString("uuid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uuid);
-    localToServiceMsg.extraData.putByte("cmd", (byte)0);
-    localToServiceMsg.extraData.putByte("keyType", (byte)0);
-    localToServiceMsg.extraData.putInt("busiType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.busiType);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("queueSeq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.queueSeq);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.sessionId);
-    localToServiceMsg.extraData.putInt("random", axau.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq));
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_a_of_type_Int);
-    axax localaxax = new axax();
-    localaxax.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.subCmd;
-    localaxax.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    msg_svc.PbSendMsgReq localPbSendMsgReq = axaq.a(this.jdField_a_of_type_Akqb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 13, this.jdField_a_of_type_JavaLangString, localaxax, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq, axau.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
-    akqb.a(this.jdField_a_of_type_Akqb, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
-    akqb.a(this.jdField_a_of_type_Akqb, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo, localaxax);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity != null) {
-      localToServiceMsg.extraData.putLong("tmpSessionType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity.tmpSessionType);
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
+      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + akqb.a(this.a));
+      if (!akqb.a(this.a).equals(paramEIPCResult))
+      {
+        akqb.a(this.a).removeMessages(1);
+        akqb.a(this.a).sendEmptyMessage(1);
+      }
+      return;
     }
-    localToServiceMsg.putWupBuffer(localPbSendMsgReq.toByteArray());
-    localToServiceMsg.extraData.putLong(aowi.class.getName(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.observerSeq);
-    return localToServiceMsg;
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
+    akqb.a(this.a).removeMessages(1);
+    akqb.a(this.a).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-class ptm
-  implements View.OnClickListener
+public class ptm
+  implements tpv
 {
-  ptm(ptl paramptl) {}
+  public void a(URL paramURL, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, sfc paramsfc)
   {
-    paramView = this.a.jdField_a_of_type_Ram.a();
-    if (paramView != null) {
-      paramView.a(null, ((pau)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
+    QLog.d("NativeReadInjoyImageView", 2, "setImageDrawable: url is " + paramURL);
+    paramsfc.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ptm
  * JD-Core Version:    0.7.0.1
  */

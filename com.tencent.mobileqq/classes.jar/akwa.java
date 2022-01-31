@@ -1,32 +1,48 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import android.content.Context;
+import android.view.View;
+import com.tencent.common.app.AppInterface;
 
-public class akwa
+public abstract interface akwa
 {
-  public static Object a(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
-  }
+  public abstract int a();
   
-  public static byte[] a(Serializable paramSerializable)
-  {
-    if (paramSerializable == null) {
-      return null;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    new ObjectOutputStream(localByteArrayOutputStream).writeObject(paramSerializable);
-    return localByteArrayOutputStream.toByteArray();
-  }
+  public abstract long a();
+  
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(akvz paramakvz);
+  
+  public abstract void a(akvz paramakvz, long paramLong);
+  
+  public abstract void a(Context paramContext, AppInterface paramAppInterface);
+  
+  public abstract void a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(akvz paramakvz);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwa
  * JD-Core Version:    0.7.0.1
  */

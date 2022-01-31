@@ -1,32 +1,30 @@
-import com.tencent.biz.subscribe.SubscribeUtils.1;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class wiu
-  implements aysc
 {
-  public wiu(SubscribeUtils.1 param1) {}
+  public StoryVideoItem a;
+  public String a;
+  public boolean a;
+  public boolean b = true;
   
-  public void onResp(aysz paramaysz)
+  public wiu(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + paramaysz.c);
-    try
-    {
-      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
-      nav.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
-      gp.a(this.a.jdField_a_of_type_JavaIoFile);
-      return;
-    }
-    catch (Exception paramaysz)
-    {
-      QLog.i("DownLoadZipFile", 1, "unzip file failed" + paramaysz);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof wiu)) {
+      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((wiu)paramObject).jdField_a_of_type_JavaLangString);
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wiu
  * JD-Core Version:    0.7.0.1
  */

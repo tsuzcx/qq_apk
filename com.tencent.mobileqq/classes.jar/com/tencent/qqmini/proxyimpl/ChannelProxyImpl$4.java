@@ -1,24 +1,40 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import bkch;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.log.QMLog;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import org.json.JSONObject;
 
-final class ChannelProxyImpl$4
-  implements MiniAppCmdInterface
+class ChannelProxyImpl$4
+  implements bkch
 {
-  ChannelProxyImpl$4(AsyncResult paramAsyncResult) {}
+  ChannelProxyImpl$4(ChannelProxyImpl paramChannelProxyImpl, AsyncResult paramAsyncResult) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    if (this.val$result != null) {
-      this.val$result.onReceiveResult(paramBoolean, paramJSONObject);
+    JSONObject localJSONObject;
+    if (this.val$asyncResult != null) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("response", paramGetAdsRsp);
+      this.val$asyncResult.onReceiveResult(paramBoolean, localJSONObject);
+      return;
+    }
+    catch (Throwable paramGetAdsRsp)
+    {
+      for (;;)
+      {
+        QMLog.e("ChannelProxyImpl", "tianshuRequestAdv", paramGetAdsRsp);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.4
  * JD-Core Version:    0.7.0.1
  */

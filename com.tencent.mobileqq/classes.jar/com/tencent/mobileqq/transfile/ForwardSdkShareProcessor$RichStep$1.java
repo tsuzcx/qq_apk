@@ -2,15 +2,15 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import axau;
-import ayqt;
-import ayra;
-import aywc;
-import bdes;
-import bdin;
+import ayvy;
+import baoo;
+import baov;
+import baub;
+import bfdq;
+import bfhl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -20,12 +20,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ForwardSdkShareProcessor$RichStep$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$RichStep$1(ayra paramayra) {}
+  public ForwardSdkShareProcessor$RichStep$1(baov parambaov) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "RichStep|run|retry=" + ayra.a(this.a));
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "RichStep|run|retry=" + baov.a(this.a));
     }
     if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
@@ -37,18 +37,18 @@ public class ForwardSdkShareProcessor$RichStep$1
     ((Bundle)localObject1).putString("act_type", "53");
     ((Bundle)localObject1).putString("intext_4", "1");
     ((Bundle)localObject1).putString("intext_3", "0");
-    ((Bundle)localObject1).putString("intext_2", "" + ayqt.a(this.a.jdField_b_of_type_Ayqt));
-    ((Bundle)localObject1).putString("stringext_1", ayqt.e(this.a.jdField_b_of_type_Ayqt));
-    bdes.a().a((Bundle)localObject1, "", this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+    ((Bundle)localObject1).putString("intext_2", "" + baoo.a(this.a.jdField_b_of_type_Baoo));
+    ((Bundle)localObject1).putString("stringext_1", baoo.e(this.a.jdField_b_of_type_Baoo));
+    bfdq.a().a((Bundle)localObject1, "", this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
     long l = System.currentTimeMillis();
     int j = -1;
-    int n = ayqt.a(this.a.jdField_b_of_type_Ayqt);
+    int n = baoo.a(this.a.jdField_b_of_type_Baoo);
     int i = j;
     for (;;)
     {
       try
       {
-        Object localObject3 = bdin.a(this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_AndroidContentContext, ayqt.e(this.a.jdField_b_of_type_Ayqt), this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        Object localObject3 = bfhl.a(this.a.jdField_b_of_type_Baoo.jdField_a_of_type_AndroidContentContext, baoo.e(this.a.jdField_b_of_type_Baoo), this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         i = j;
         int m = ((Integer)localObject3[0]).intValue();
         if (m != 0) {
@@ -74,12 +74,12 @@ public class ForwardSdkShareProcessor$RichStep$1
       {
         try
         {
-          if (TextUtils.isEmpty(ayqt.d(this.a.jdField_b_of_type_Ayqt)))
+          if (TextUtils.isEmpty(baoo.d(this.a.jdField_b_of_type_Baoo)))
           {
             i = j;
-            ayqt.a(this.a.jdField_b_of_type_Ayqt, ayqt.a(this.a.jdField_b_of_type_Ayqt) & 0xFFFFFFFB);
+            baoo.a(this.a.jdField_b_of_type_Baoo, baoo.a(this.a.jdField_b_of_type_Baoo) & 0xFFFFFFFB);
             i = j;
-            ayqt.a(this.a.jdField_b_of_type_Ayqt, (String)localObject1);
+            baoo.a(this.a.jdField_b_of_type_Baoo, (String)localObject1);
             k = j;
           }
           j = k;
@@ -89,12 +89,12 @@ public class ForwardSdkShareProcessor$RichStep$1
             k |= 0x2;
             j = k;
             i = k;
-            if (TextUtils.isEmpty(ayqt.c(this.a.jdField_b_of_type_Ayqt)))
+            if (TextUtils.isEmpty(baoo.c(this.a.jdField_b_of_type_Baoo)))
             {
               i = k;
-              ayqt.a(this.a.jdField_b_of_type_Ayqt, ayqt.a(this.a.jdField_b_of_type_Ayqt) & 0xFFFFFFFD);
+              baoo.a(this.a.jdField_b_of_type_Baoo, baoo.a(this.a.jdField_b_of_type_Baoo) & 0xFFFFFFFD);
               i = k;
-              ayqt.b(this.a.jdField_b_of_type_Ayqt, (String)localObject2);
+              baoo.b(this.a.jdField_b_of_type_Baoo, (String)localObject2);
               j = k;
             }
           }
@@ -105,24 +105,24 @@ public class ForwardSdkShareProcessor$RichStep$1
             j |= 0x1;
             k = j;
             i = j;
-            if (TextUtils.isEmpty(ayqt.a(this.a.jdField_b_of_type_Ayqt)))
+            if (TextUtils.isEmpty(baoo.a(this.a.jdField_b_of_type_Baoo)))
             {
               k = j;
               i = j;
-              if (TextUtils.isEmpty(ayqt.b(this.a.jdField_b_of_type_Ayqt)))
+              if (TextUtils.isEmpty(baoo.b(this.a.jdField_b_of_type_Baoo)))
               {
                 i = j;
-                ayqt.a(this.a.jdField_b_of_type_Ayqt, ayqt.a(this.a.jdField_b_of_type_Ayqt) & 0xFFFFFFFE);
+                baoo.a(this.a.jdField_b_of_type_Baoo, baoo.a(this.a.jdField_b_of_type_Baoo) & 0xFFFFFFFE);
                 i = j;
-                ayqt.c(this.a.jdField_b_of_type_Ayqt, (String)localObject3);
+                baoo.c(this.a.jdField_b_of_type_Baoo, (String)localObject3);
                 k = j;
               }
             }
           }
           i = k;
-          ayra.a(this.a).set(false);
+          baov.a(this.a).set(false);
           i = k;
-          localObject1 = this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.c, this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
+          localObject1 = this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.c, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Long);
           if (localObject1 != null)
           {
             i = k;
@@ -134,23 +134,23 @@ public class ForwardSdkShareProcessor$RichStep$1
                 i = k;
                 localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
                 i = k;
-                if (ayqt.d(this.a.jdField_b_of_type_Ayqt) != null)
+                if (baoo.d(this.a.jdField_b_of_type_Baoo) != null)
                 {
                   i = k;
-                  axau.a(ayqt.d(this.a.jdField_b_of_type_Ayqt), false);
+                  ayvy.a(baoo.d(this.a.jdField_b_of_type_Baoo), false);
                 }
                 i = k;
-                if (ayqt.c(this.a.jdField_b_of_type_Ayqt) != null)
+                if (baoo.c(this.a.jdField_b_of_type_Baoo) != null)
                 {
                   i = k;
-                  axau.a(ayqt.c(this.a.jdField_b_of_type_Ayqt), false);
+                  ayvy.a(baoo.c(this.a.jdField_b_of_type_Baoo), false);
                 }
                 i = k;
-                ((AbsShareMsg)localObject1).updateTitleSummaryAndCover(ayqt.d(this.a.jdField_b_of_type_Ayqt), ayqt.c(this.a.jdField_b_of_type_Ayqt), ayqt.a(this.a.jdField_b_of_type_Ayqt));
+                ((AbsShareMsg)localObject1).updateTitleSummaryAndCover(baoo.d(this.a.jdField_b_of_type_Baoo), baoo.c(this.a.jdField_b_of_type_Baoo), baoo.a(this.a.jdField_b_of_type_Baoo));
                 i = k;
-                this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.c, this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Long, ((AbsShareMsg)localObject1).getBytes());
+                this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.c, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Int, this.a.jdField_b_of_type_Baoo.jdField_a_of_type_Baub.jdField_a_of_type_Long, ((AbsShareMsg)localObject1).getBytes());
                 i = k;
-                this.a.jdField_b_of_type_Ayqt.d(1002);
+                this.a.jdField_b_of_type_Baoo.d(1002);
               }
             }
           }
@@ -174,21 +174,21 @@ public class ForwardSdkShareProcessor$RichStep$1
           ((Bundle)localObject1).putString("intext_2", "" + n);
           ((Bundle)localObject1).putString("intext_4", "" + m);
           if (k != 0) {
-            ((Bundle)localObject1).putString("stringext_1", ayqt.e(this.a.jdField_b_of_type_Ayqt));
+            ((Bundle)localObject1).putString("stringext_1", baoo.e(this.a.jdField_b_of_type_Baoo));
           }
-          bdes.a().a((Bundle)localObject1, "", this.a.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+          bfdq.a().a((Bundle)localObject1, "", this.a.jdField_b_of_type_Baoo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
           if (QLog.isColorLevel())
           {
-            localObject1 = "RichStep|run|ret=" + k + ",lack=" + ayqt.a(this.a.jdField_b_of_type_Ayqt) + ",cost=" + l;
+            localObject1 = "RichStep|run|ret=" + k + ",lack=" + baoo.a(this.a.jdField_b_of_type_Baoo) + ",cost=" + l;
             if ((k == 0) && (l <= 3000L)) {
               continue;
             }
             QLog.e("BaseTransProcessor", 2, (String)localObject1);
           }
-          if (!ayra.a(this.a).get()) {
+          if (!baov.a(this.a).get()) {
             continue;
           }
-          if ((k != -1) || (ayra.a(this.a).getAndIncrement() >= 2)) {
+          if ((k != -1) || (baov.a(this.a).getAndIncrement() >= 2)) {
             continue;
           }
           ThreadManager.post(this, 8, null, true);
@@ -216,8 +216,8 @@ public class ForwardSdkShareProcessor$RichStep$1
         continue;
         QLog.d("BaseTransProcessor", 2, localException1);
         continue;
-        ayra.a(this.a).set(false);
-        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "RichStep|rich fail,lack=" + ayqt.a(this.a.jdField_b_of_type_Ayqt) + ",cost=" + l);
+        baov.a(this.a).set(false);
+        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "RichStep|rich fail,lack=" + baoo.a(this.a.jdField_b_of_type_Baoo) + ",cost=" + l);
         this.a.a = true;
         this.a.b();
         return;
@@ -230,7 +230,7 @@ public class ForwardSdkShareProcessor$RichStep$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.RichStep.1
  * JD-Core Version:    0.7.0.1
  */

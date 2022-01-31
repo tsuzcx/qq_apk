@@ -1,33 +1,23 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import java.util.Map;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afor
-  extends ajxj
+class afor
+  extends afpq
 {
-  public afor(TroopView paramTroopView) {}
-  
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  afor(aflj paramaflj)
   {
-    if (paramBoolean1) {
-      this.a.j();
-    }
+    super(paramaflj, null);
   }
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    this.a.j();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.j();
-    }
+    return new FlashPicItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afor
  * JD-Core Version:    0.7.0.1
  */

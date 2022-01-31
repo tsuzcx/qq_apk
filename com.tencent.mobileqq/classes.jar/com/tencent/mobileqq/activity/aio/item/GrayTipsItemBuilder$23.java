@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adqw;
+import afjb;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -10,7 +10,7 @@ import mqq.app.MobileQQ;
 public class GrayTipsItemBuilder$23
   implements Runnable
 {
-  public GrayTipsItemBuilder$23(adqw paramadqw, String paramString1, int paramInt, long paramLong, String paramString2) {}
+  public GrayTipsItemBuilder$23(afjb paramafjb, String paramString1, int paramInt, long paramLong, String paramString2) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class GrayTipsItemBuilder$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.23
  * JD-Core Version:    0.7.0.1
  */

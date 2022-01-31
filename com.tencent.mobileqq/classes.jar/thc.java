@@ -1,19 +1,10 @@
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.mobileqq.widget.MessageProgressView;
-
-public class thc
-  implements bcnl
+public abstract interface thc<T extends tgr>
 {
-  public thc(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
-  
-  public void a(String paramString)
-  {
-    this.a.a.setVisibility(4);
-  }
+  public abstract void a(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thc
  * JD-Core Version:    0.7.0.1
  */

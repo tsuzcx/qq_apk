@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
-import ajvg;
+import almt;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
@@ -9,15 +9,15 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdvn;
+import bfvi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.manager.TicketManager;
-import wfi;
-import wgl;
-import wij;
+import xua;
+import xvd;
+import xxb;
 
 class QRDisplayActivity$3
   implements Runnable
@@ -57,10 +57,10 @@ class QRDisplayActivity$3
         localObject1 = this.this$0.getIntent().getStringExtra("url");
         this.this$0.a(this.this$0.jdField_c_of_type_JavaLangString, this.this$0.jdField_c_of_type_Int, (String)localObject1);
       }
-      if (this.this$0.jdField_a_of_type_Ij == null) {
-        this.this$0.jdField_a_of_type_Ij = this.this$0.a(this.this$0.jdField_c_of_type_JavaLangString, this.this$0.jdField_c_of_type_Int, -1);
+      if (this.this$0.jdField_a_of_type_Gs == null) {
+        this.this$0.jdField_a_of_type_Gs = this.this$0.a(this.this$0.jdField_c_of_type_JavaLangString, this.this$0.jdField_c_of_type_Int, -1);
       }
-      if (this.this$0.jdField_a_of_type_Ij == null) {
+      if (this.this$0.jdField_a_of_type_Gs == null) {
         break label540;
       }
       this.this$0.f();
@@ -93,7 +93,7 @@ class QRDisplayActivity$3
       if (this.this$0.jdField_c_of_type_Boolean)
       {
         localObject1 = ((Intent)localObject2).getStringExtra("groupOwner");
-        ((bdvn)this.this$0.app.a(85)).b(this.this$0.jdField_c_of_type_JavaLangString, (String)localObject1);
+        ((bfvi)this.this$0.app.a(85)).b(this.this$0.jdField_c_of_type_JavaLangString, (String)localObject1);
         return;
       }
       Object localObject3 = (TicketManager)this.this$0.app.getManager(2);
@@ -101,11 +101,11 @@ class QRDisplayActivity$3
       localObject3 = ((TicketManager)localObject3).getSkey((String)localObject1);
       String str = ((Intent)localObject2).getStringExtra("uin");
       i = ((Intent)localObject2).getIntExtra("type", 1);
-      localObject2 = new wgl(null);
-      ((wgl)localObject2).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.this$0);
-      ((wgl)localObject2).jdField_a_of_type_Int = i;
-      ((wgl)localObject2).jdField_a_of_type_JavaLangString = str;
-      wij.a(this.this$0.app, this.this$0, str, i, (String)localObject1, (String)localObject3, (wfi)localObject2);
+      localObject2 = new xvd(null);
+      ((xvd)localObject2).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.this$0);
+      ((xvd)localObject2).jdField_a_of_type_Int = i;
+      ((xvd)localObject2).jdField_a_of_type_JavaLangString = str;
+      xxb.a(this.this$0.app, this.this$0, str, i, (String)localObject1, (String)localObject3, (xua)localObject2);
       continue;
       label732:
       localObject1 = this.this$0.getSharedPreferences("qrcode", 0);
@@ -115,24 +115,24 @@ class QRDisplayActivity$3
       if (this.this$0.jdField_b_of_type_Long - System.currentTimeMillis() / 1000L > 0L) {
         i = 1;
       }
-      this.this$0.findViewById(2131373435).setOnClickListener(this.this$0);
+      this.this$0.findViewById(2131373884).setOnClickListener(this.this$0);
       if ((this.this$0.jdField_d_of_type_JavaLangString == null) || (this.this$0.jdField_e_of_type_JavaLangString == null) || (i == 0)) {
         break label980;
       }
-      ((TextView)this.this$0.findViewById(2131372615)).setText(this.this$0.jdField_d_of_type_JavaLangString);
-      this.this$0.jdField_a_of_type_Ij = wij.a(this.this$0.jdField_d_of_type_JavaLangString, -1);
+      ((TextView)this.this$0.findViewById(2131372971)).setText(this.this$0.jdField_d_of_type_JavaLangString);
+      this.this$0.jdField_a_of_type_Gs = xxb.a(this.this$0.jdField_d_of_type_JavaLangString, -1);
       this.this$0.f();
     }
     label980:
     if (QLog.isDevelopLevel()) {
       QLog.d("QRDisplayActivity", 4, "qrcode url not valid");
     }
-    this.this$0.jdField_a_of_type_Ajvg.a(Long.parseLong(this.this$0.jdField_c_of_type_JavaLangString), true);
+    this.this$0.jdField_a_of_type_Almt.a(Long.parseLong(this.this$0.jdField_c_of_type_JavaLangString), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.3
  * JD-Core Version:    0.7.0.1
  */

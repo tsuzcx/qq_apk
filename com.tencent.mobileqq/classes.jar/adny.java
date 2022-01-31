@@ -1,65 +1,22 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-public final class adny
-  extends Drawable.ConstantState
+public class adny
+  extends alls
 {
-  public int a;
-  public final Paint a;
-  public ArrayList<adob> a;
-  public boolean a;
-  public int b;
-  public ArrayList<Bitmap> b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
+  public adny(QQSettingMe paramQQSettingMe) {}
   
-  public adny()
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 160;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return 0;
-  }
-  
-  @NonNull
-  public Drawable newDrawable()
-  {
-    return new CustomFrameAnimationDrawable(this, null, null);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new CustomFrameAnimationDrawable(this, paramResources, null);
+    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
+    if (this.a.c) {
+      this.a.o();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adny
  * JD-Core Version:    0.7.0.1
  */

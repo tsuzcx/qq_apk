@@ -1,38 +1,41 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class nlg
-  implements bfph
+  implements ViewPager.OnPageChangeListener
 {
-  public nlg(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public nlg(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (ReadInJoyNativeAdFragment.a(this.a)) {
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
       return;
     }
-    ReadInJoyNativeAdFragment.a(this.a, true);
-    paramView = "";
-    switch (paramInt)
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt2 != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-    }
-    for (;;)
-    {
-      ReadInJoyNativeAdFragment.a(this.a).dismiss();
-      bcql.a(this.a.getActivity(), 2, paramView, 0).b(0);
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
       return;
-      nmc.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
-      paramView = this.a.getString(2131718493);
-      continue;
-      nmc.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
-      paramView = this.a.getString(2131718495);
     }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    PublicAccountAdvertisementActivity.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nlg
  * JD-Core Version:    0.7.0.1
  */

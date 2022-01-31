@@ -1,31 +1,25 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 
 class bann
-  extends RecyclerView.ViewHolder
+  implements ITransCallbackForReport
 {
-  protected ImageView a;
-  protected TextView a;
-  protected String a;
-  protected ImageView b;
-  protected TextView b;
-  protected ImageView c;
+  bann(bank parambank) {}
   
-  public bann(banm parambanm, View paramView)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    super(paramView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364936));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367376));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367394));
-    this.c = ((ImageView)paramView.findViewById(2131375030));
+    bank localbank = this.a;
+    String str2 = this.a.c;
+    if (this.a.f == null) {}
+    for (String str1 = this.a.l;; str1 = this.a.f)
+    {
+      localbank.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, str2, str1, null);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bann
  * JD-Core Version:    0.7.0.1
  */

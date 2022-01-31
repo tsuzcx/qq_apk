@@ -1,39 +1,63 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class zbf
-  extends BroadcastReceiver
+class zbf
+  extends aphy
 {
-  private zbf(GdtVideoCommonView paramGdtVideoCommonView) {}
+  zbf(zbe paramzbe) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
     int i;
-    if (("android.intent.action.HEADSET_PLUG".equals(paramIntent.getAction())) && (paramIntent.hasExtra("state")))
+    Object localObject;
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == zbe.a(this.a).key))
     {
-      i = paramIntent.getIntExtra("state", 0);
-      if (i != 1) {
-        break label42;
+      i = paramBundle.getInt("failcode");
+      localObject = paramBundle.getBundle("request");
+      if (i == 1000) {
+        break label80;
       }
-      yxp.a("GdtVideoCommonView", "ACTION_HEADSET_PLUG HEADSET on");
+      QLog.e("SSOWebviewPlugin", 2, "IPC failed ! failcode: " + i + "  reqParams: " + localObject);
     }
-    label42:
-    do
+    for (;;)
     {
-      do
+      return;
+      label80:
+      String str = paramBundle.getString("cmd");
+      paramBundle = paramBundle.getBundle("response");
+      if (("ipc_cmd_certified_account_web_plugin_follow".equals(str)) && (localObject != null) && (paramBundle != null))
       {
-        return;
-      } while (i != 0);
-      yxp.a("GdtVideoCommonView", "ACTION_HEADSET_PLUG HEADSET off " + this.a.a);
-    } while (!this.a.a);
-    GdtVideoCommonView.d(this.a);
+        localObject = ((Bundle)localObject).getString("callback");
+        i = paramBundle.getInt("retCode");
+        paramBundle = new JSONObject();
+        try
+        {
+          paramBundle.put("retCode", i);
+          this.a.callJs((String)localObject, new String[] { paramBundle.toString() });
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SSOWebviewPlugin", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW return! retCode: " + i);
+            return;
+          }
+        }
+        catch (Throwable paramBundle)
+        {
+          QLog.e("SSOWebviewPlugin", 2, "sso.PublicFollow failed! " + QLog.getStackTraceString(paramBundle));
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbf
  * JD-Core Version:    0.7.0.1
  */

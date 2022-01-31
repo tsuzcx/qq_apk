@@ -1,22 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.net.Uri;
 
-final class arvn
-  implements DialogInterface.OnClickListener
+class arvn
+  implements asmp
 {
-  arvn(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2) {}
+  arvn(arvk paramarvk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Uri paramUri) {}
+  
+  public void a(String paramString1, String paramString2, long paramLong)
   {
-    aryf.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-    axqy.b(null, "CliOper", "", "", "0X800A970", "0X800A970", 0, 0, "0", "0", "0", "");
+    this.a.a = arvk.a(this.a, paramString2, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arvn
  * JD-Core Version:    0.7.0.1
  */

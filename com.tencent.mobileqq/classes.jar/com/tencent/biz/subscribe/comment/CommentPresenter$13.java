@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
 import android.widget.ListView;
-import wni;
+import ybx;
 
 public class CommentPresenter$13
   implements Runnable
 {
-  public CommentPresenter$13(wni paramwni) {}
+  public CommentPresenter$13(ybx paramybx) {}
   
   public void run()
   {
-    wni.b(this.this$0);
+    ybx.b(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.setSelection(0);
     }
@@ -18,7 +18,7 @@ public class CommentPresenter$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentPresenter.13
  * JD-Core Version:    0.7.0.1
  */

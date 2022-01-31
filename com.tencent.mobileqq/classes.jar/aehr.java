@@ -1,58 +1,33 @@
-import android.app.Activity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-final class aehr
-  implements URLDrawable.URLDrawableListener
+public class aehr
+  extends bhnr
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  public aehr(VisitorsActivity paramVisitorsActivity) {}
   
-  aehr(aegs paramaegs) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadCanceled URL():" + paramURLDrawable.getURL());
+    if (this.a.c > 0)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
+      return;
     }
-    this.a.a(false);
-    this.a.jdField_a_of_type_Aehr = null;
+    this.a.f.setVisibility(4);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadFialed URL():" + paramURLDrawable.getURL());
-    }
-    bcql.a(aegs.b(this.a), aegs.c(this.a).getString(2131695341), 0).a();
-    this.a.c(true);
-    this.a.a(false);
-    this.a.jdField_a_of_type_Aehr = null;
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadSuccessed URL():" + paramURLDrawable.getURL());
-    }
-    this.a.c(false);
-    this.a.a(false);
-    this.a.jdField_a_of_type_Aeic.b.b = paramURLDrawable.getExifOrientation();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(paramURLDrawable, aegs.c(this.a).getSelectedItemPosition());
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.notifyDataSetChanged();
-    aegs.d(this.a).e();
-    this.a.jdField_a_of_type_Aehr = null;
+    paramAnimation = this.a;
+    paramAnimation.c -= 1;
+    this.a.f.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehr
  * JD-Core Version:    0.7.0.1
  */

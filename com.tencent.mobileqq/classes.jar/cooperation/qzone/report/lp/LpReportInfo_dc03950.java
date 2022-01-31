@@ -1,8 +1,10 @@
 package cooperation.qzone.report.lp;
 
+import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bgyi;
+import bizf;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +42,8 @@ public class LpReportInfo_dc03950
   public static final String LOVE_UNKNOWN = "0";
   public static final List<String> LOVE_ZONE_SETTING_ME_RESERVES_LIST = Arrays.asList(new String[] { "168604", "171624", "171621", "171620", "171617", "171629" });
   public static final String LOVE_ZONE_STATIONARY_ADDRESS = "25";
+  public static final String REPORT_USER_TYPE_LOVE = "1";
+  public static final String REPORT_USER_TYPE_SINGLE = "2";
   public static String TAG = "LpReport.LpReportInfo_dc03950";
   public String actiontype;
   public HashMap<String, String> extraInfoMap;
@@ -50,6 +54,7 @@ public class LpReportInfo_dc03950
   public String reserves;
   public String subactiontype;
   public long uin;
+  public String usertype;
   
   public LpReportInfo_dc03950(String paramString1, String paramString2)
   {
@@ -72,10 +77,34 @@ public class LpReportInfo_dc03950
     this.operation_type = paramString4;
   }
   
+  public LpReportInfo_dc03950(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this(paramString1, paramString2);
+    this.reserves = paramString3;
+    this.operation_type = paramString4;
+    this.usertype = paramString5;
+  }
+  
   public LpReportInfo_dc03950(String paramString1, String paramString2, String paramString3, HashMap<String, String> paramHashMap)
   {
     this(paramString1, paramString2, paramString3);
     this.extraInfoMap = paramHashMap;
+  }
+  
+  public static String getReportUserType(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null)
+    {
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
+      if (localSharedPreferences != null)
+      {
+        if (localSharedPreferences.getInt("love_state_for_current_uin" + paramQQAppInterface.c(), 0) == 1) {
+          return "1";
+        }
+        return "2";
+      }
+    }
+    return "2";
   }
   
   public static void report(LpReportInfo_dc03950 paramLpReportInfo_dc03950)
@@ -91,7 +120,7 @@ public class LpReportInfo_dc03950
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    LpReportUtils.safePut(localHashMap, "qua", bgyi.a());
+    LpReportUtils.safePut(localHashMap, "qua", bizf.a());
     if (this.uin == 0L) {}
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {
@@ -99,6 +128,7 @@ public class LpReportInfo_dc03950
       LpReportUtils.safePut(localHashMap, "actiontype", this.actiontype);
       LpReportUtils.safePut(localHashMap, "subactiontype", this.subactiontype);
       LpReportUtils.safePut(localHashMap, "reserves", this.reserves);
+      LpReportUtils.safePut(localHashMap, "usertype", this.usertype);
       if (!TextUtils.isEmpty(this.operation_type)) {
         LpReportUtils.safePut(localHashMap, "operationtype", this.operation_type);
       }
@@ -111,7 +141,7 @@ public class LpReportInfo_dc03950
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc03950
  * JD-Core Version:    0.7.0.1
  */

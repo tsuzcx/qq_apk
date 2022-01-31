@@ -1,38 +1,32 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class afjg
-  extends ajxj
+class afjg
+  implements DialogInterface.OnClickListener
 {
-  public afjg(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment) {}
+  afjg(afje paramafje) {}
   
-  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddRequestSuspiciousMsgFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt + " " + paramLong);
+    if (!bdee.g(this.a.a.jdField_a_of_type_AndroidContentContext)) {
+      bfhq.a().a(2131691612);
     }
-    if ((AddRequestSuspiciousMsgFragment.a(this.a) != null) && (AddRequestSuspiciousMsgFragment.a(this.a).uin == paramLong))
-    {
-      AddRequestSuspiciousMsgFragment.a(this.a);
-      if (paramBoolean)
-      {
-        bcql.a(this.a.getActivity(), ajya.a(2131699877), 0).a();
-        AddRequestSuspiciousMsgFragment.b(this.a);
-        this.a.getActivity().finish();
-      }
-    }
-    else
+    do
     {
       return;
-    }
-    bcql.a(this.a.getActivity(), ajya.a(2131699878), 0).a();
+      paramDialogInterface = (zpa)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+      paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, 1, 0);
+      paramDialogInterface = paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+    } while (paramDialogInterface == null);
+    aabm.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afjg
  * JD-Core Version:    0.7.0.1
  */

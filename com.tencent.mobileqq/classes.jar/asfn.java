@@ -1,98 +1,61 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.ThemeImageView;
-
 public class asfn
-  extends ahnw
 {
-  int a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public View a(int paramInt, Object paramObject, ahnr paramahnr, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpo paramahpo)
+  public String a()
   {
-    paramOnClickListener = paramContext.getResources();
-    if (paramView == null)
-    {
-      paramahnr = null;
-      if ((paramView == null) || (!(paramView.getTag() instanceof asfo))) {
-        break label179;
-      }
-      paramahnr = (asfo)paramahnr;
-      label35:
-      paramInt = paramViewGroup.getMeasuredHeight() - this.a;
-      if (paramInt >= 0) {
-        break label382;
-      }
-      paramInt = (int)(this.a * 1.5F);
-    }
-    label81:
-    label382:
-    for (;;)
-    {
-      if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams))
-      {
-        paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
-        paramViewGroup.width = -1;
-        paramViewGroup.height = paramInt;
-        paramView.setLayoutParams(paramViewGroup);
-        if ((paramObject instanceof Integer))
-        {
-          paramInt = ((Integer)paramObject).intValue();
-          if (paramInt != 20) {
-            break label292;
-          }
-          paramahnr.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageResource(2130839144);
-          if ((paramahnr.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable() instanceof Animatable)) {
-            ((Animatable)paramahnr.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable()).start();
-          }
-          paramahnr.jdField_a_of_type_AndroidWidgetTextView.setText(2131699115);
-        }
-      }
-      while (paramInt != 21)
-      {
-        return paramView;
-        paramahnr = paramView.getTag();
-        break;
-        paramView = LayoutInflater.from(paramContext).inflate(2131560753, null);
-        paramahnr = new asfo();
-        paramahnr.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368899));
-        paramahnr.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131367679));
-        paramahnr.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378436));
-        paramView.setTag(paramahnr);
-        this.a = (paramOnClickListener.getDimensionPixelSize(2131298087) + paramOnClickListener.getDimensionPixelSize(2131298089) + paramOnClickListener.getDimensionPixelSize(2131298088));
-        break label35;
-        paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
-        break label81;
-      }
-      if ((paramahnr.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable() instanceof Animatable)) {
-        ((Animatable)paramahnr.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable()).stop();
-      }
-      paramObject = baxi.a(paramContext.getResources(), 2130844283);
-      if (paramObject != null)
-      {
-        paramahnr.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageBitmap(paramObject);
-        paramahnr.jdField_a_of_type_ComTencentWidgetThemeImageView.setMaskShape(bfwr.b);
-      }
-      for (;;)
-      {
-        paramahnr.jdField_a_of_type_AndroidWidgetTextView.setText(2131699114);
-        return paramView;
-        QLog.e("MatchEmptyItemBuilder", 1, "image qq_extend_friend_empty_normal decode failed.");
-      }
-    }
+    return "OCRReqContext{chatType=" + this.jdField_a_of_type_Int + ", imagePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", compressPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", oriMd5='" + this.d + '\'' + ", comMd5='" + this.e + '\'' + ", hasCrop=" + this.jdField_a_of_type_Boolean + '\'' + ", comWidth=" + this.jdField_b_of_type_Int + '\'' + ", comHeiht=" + this.jdField_c_of_type_Int + '\'' + ", serverUrl=" + this.f + '\'' + ", seqNumber=" + this.jdField_b_of_type_Long + '\'' + '}';
+  }
+  
+  public void a()
+  {
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.f = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.d = "";
+    this.e = "";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0) && (bdcs.b(this.jdField_c_of_type_JavaLangString));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asfn
  * JD-Core Version:    0.7.0.1
  */

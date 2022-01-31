@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae.gif;
 
-import bisp;
-import bisq;
+import bkxi;
+import bkxj;
 
 public class AEVideoStoryGIFTplViewModel$2$1
   implements Runnable
 {
-  public AEVideoStoryGIFTplViewModel$2$1(bisq parambisq) {}
+  public AEVideoStoryGIFTplViewModel$2$1(bkxj parambkxj) {}
   
   public void run()
   {
-    bisp.a(this.a.a);
+    bkxi.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,9 @@ import android.util.AttributeSet;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import avnz;
-import avoa;
-import avob;
+import axfu;
+import axfv;
+import axfw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -35,9 +35,9 @@ public abstract class ParticleTextureView
   protected Handler a;
   protected HandlerThread a;
   private Surface jdField_a_of_type_AndroidViewSurface;
-  protected avoa a;
+  protected axfv a;
   public final Object a;
-  public ArrayList<avnz> a;
+  public ArrayList<axfu> a;
   protected Random a;
   public volatile boolean a;
   protected int b;
@@ -134,11 +134,11 @@ public abstract class ParticleTextureView
   public void d()
   {
     long l = System.currentTimeMillis();
-    avnz localavnz2 = null;
+    axfu localaxfu2 = null;
     Canvas localCanvas = null;
     Object localObject6 = this.jdField_a_of_type_JavaLangObject;
     Object localObject4 = localCanvas;
-    avnz localavnz1 = localavnz2;
+    axfu localaxfu1 = localaxfu2;
     try
     {
       Surface localSurface = this.jdField_a_of_type_AndroidViewSurface;
@@ -160,7 +160,7 @@ public abstract class ParticleTextureView
         finally {}
       }
       localObject4 = localCanvas;
-      Object localObject2 = localavnz2;
+      Object localObject2 = localaxfu2;
       localCanvas = this.jdField_a_of_type_AndroidViewSurface.lockCanvas(this.jdField_a_of_type_AndroidGraphicsRect);
       if (localCanvas != null)
       {
@@ -182,11 +182,11 @@ public abstract class ParticleTextureView
                 break;
               }
               localObject2 = localCanvas;
-              localavnz2 = (avnz)((Iterator)localObject4).next();
-              if (localavnz2 != null)
+              localaxfu2 = (axfu)((Iterator)localObject4).next();
+              if (localaxfu2 != null)
               {
                 localObject2 = localCanvas;
-                localavnz2.a(localCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsMatrix);
+                localaxfu2.a(localCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsMatrix);
               }
             }
             try
@@ -254,8 +254,8 @@ public abstract class ParticleTextureView
           QLog.e("ParticleTextureView", 1, "onCanvasDraw unlockCanvasAndPost has a exception e: " + localThrowable4);
         }
       }
-      if (this.jdField_a_of_type_Avoa != null) {
-        this.jdField_a_of_type_Avoa.a();
+      if (this.jdField_a_of_type_Axfv != null) {
+        this.jdField_a_of_type_Axfv.a();
       }
     }
   }
@@ -269,7 +269,7 @@ public abstract class ParticleTextureView
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, paramInt1, paramInt2);
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Particle-Texture-Thread" + UUID.randomUUID());
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new avob(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new axfw(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
@@ -282,14 +282,14 @@ public abstract class ParticleTextureView
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
   
-  public void setParticleListener(avoa paramavoa)
+  public void setParticleListener(axfv paramaxfv)
   {
-    this.jdField_a_of_type_Avoa = paramavoa;
+    this.jdField_a_of_type_Axfv = paramaxfv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.particle.ParticleTextureView
  * JD-Core Version:    0.7.0.1
  */

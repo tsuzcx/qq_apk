@@ -1,99 +1,91 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.pic.PicShareToWX;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
 
 public class awgo
-  implements bfpt
+  implements Comparable<awgo>
 {
-  public awgo(ScreenShotFragment paramScreenShotFragment) {}
+  public int a;
+  public Drawable a;
+  public String a;
+  public int[] a;
+  public int b;
+  public Drawable b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int a(awgo paramawgo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "OnItemClickListener : position = " + paramInt + ", view = " + paramView + ", id = " + paramLong);
+    if (paramawgo != null) {
+      return this.c - paramawgo.c;
     }
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
-    }
-    int i = ((awgr)paramAdapterView).a.c;
-    paramAdapterView = null;
-    switch (i)
+    return 0;
+  }
+  
+  public Drawable a()
+  {
+    try
     {
-    default: 
-      if ((ScreenShotFragment.a(this.a)) && (paramAdapterView != null)) {
-        awgs.a("0X800A9A9", paramAdapterView, "1");
-      }
-      if ((i != 9) && (i != 10)) {
-        break label300;
-      }
-      paramInt = -1;
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131720917;
-      }
-      break;
-    }
-    for (;;)
-    {
-      if (paramInt == -1) {
-        break label300;
-      }
-      bcql.a(this.a.getActivity(), this.a.getActivity().getString(paramInt), 0).b(this.a.getActivity().getResources().getDimensionPixelSize(2131298865));
-      return;
-      awgs.a("0X8009FF0", 0);
-      paramAdapterView = "1";
-      break;
-      awgs.a("0X8009FF1", 0);
-      paramAdapterView = "2";
-      break;
-      awgs.a("0X8009FF2", 0);
-      paramAdapterView = "3";
-      break;
-      awgs.a("0X8009FF3", 0);
-      paramAdapterView = "4";
-      break;
-      awgs.a("0X800A77D", 0);
-      paramAdapterView = "5";
-      break;
-      if (!WXShareHelper.a().b()) {
-        paramInt = 2131720918;
-      }
-    }
-    switch (i)
-    {
-    default: 
-      return;
-    case 2: 
-      ScreenShotFragment.a(this.a.getActivity(), ScreenShotFragment.a(this.a));
-      return;
-    case 3: 
-      ScreenShotFragment.a(this.a, this.a.getActivity(), ScreenShotFragment.a(this.a));
-      return;
-    case 9: 
-      if ((PicShareToWX.a().a()) && (PicShareToWX.a().a(ScreenShotFragment.a(this.a))))
+      if ((this.a == null) && (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)))
       {
-        PicShareToWX.a().a(this.a.getActivity(), ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a), 3);
-        axqy.b(null, "dc00898", "", "", "0X800A505", "0X800A505", 0, 0, "", "", "", "");
-        return;
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.e, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.f, (URLDrawable.URLDrawableOptions)localObject);
+        StateListDrawable localStateListDrawable = new StateListDrawable();
+        localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
+        localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
+        this.a = localStateListDrawable;
       }
-      ScreenShotFragment.a(this.a, ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a));
-      return;
-    case 10: 
-      label300:
-      ScreenShotFragment.b(this.a, ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a));
-      return;
+      return this.a;
     }
-    ScreenShotFragment.a(this.a, ScreenShotFragment.a(this.a));
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
+      }
+    }
+  }
+  
+  public Drawable b()
+  {
+    try
+    {
+      if ((this.b == null) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.h)))
+      {
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.g, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.h, (URLDrawable.URLDrawableOptions)localObject);
+        StateListDrawable localStateListDrawable = new StateListDrawable();
+        localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
+        localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
+        this.b = localStateListDrawable;
+      }
+      return this.b;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awgo
  * JD-Core Version:    0.7.0.1
  */

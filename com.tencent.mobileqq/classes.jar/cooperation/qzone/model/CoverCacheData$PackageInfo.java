@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhfb;
+import bjgl;
 
 public class CoverCacheData$PackageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PackageInfo> CREATOR = new bhfb();
+  public static final Parcelable.Creator<PackageInfo> CREATOR = new bjgl();
   public int a;
   public String a;
   public int b;
@@ -40,7 +40,7 @@ public class CoverCacheData$PackageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.CoverCacheData.PackageInfo
  * JD-Core Version:    0.7.0.1
  */

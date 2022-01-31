@@ -1,12 +1,12 @@
 package com.tencent.open.agent;
 
-import bcyu;
+import bexw;
 import com.tencent.qphone.base.util.QLog;
 
 public class AuthorityActivity$8$7
   implements Runnable
 {
-  public AuthorityActivity$8$7(bcyu parambcyu) {}
+  public AuthorityActivity$8$7(bexw parambexw) {}
   
   public void run()
   {

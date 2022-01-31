@@ -1,37 +1,37 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bcky
-  implements bfvo
+class bcky
+  extends nac
 {
-  public bcky(ContainerView paramContainerView) {}
+  bcky(bckx parambckx, bclf parambclf) {}
   
-  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramInt)
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramBoolean) && (!ContainerView.b(this.a)));
-      paramScrollView = aibn.a();
-      if ((paramScrollView.c()) && (!paramScrollView.a())) {
-        paramScrollView.a();
-      }
-      ContainerView.b(this.a, false);
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bclf.a(paramInt, paramBundle);
       return;
-      ContainerView.b(this.a, true);
-      paramScrollView = aibn.a();
-    } while ((!paramScrollView.c()) || (!paramScrollView.a()));
-    paramScrollView.b();
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcky
  * JD-Core Version:    0.7.0.1
  */

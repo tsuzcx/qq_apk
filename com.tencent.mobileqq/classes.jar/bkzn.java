@@ -1,10 +1,19 @@
-public abstract interface bkzn
+import com.tencent.common.app.AppInterface;
+
+class bkzn
+  extends bkvo
 {
-  public abstract void a();
+  bkzn(bkzl parambkzl, AppInterface paramAppInterface) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    bkzl.a(this.jdField_a_of_type_Bkzl).a(paramBoolean1, paramBoolean2);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkzn
  * JD-Core Version:    0.7.0.1
  */

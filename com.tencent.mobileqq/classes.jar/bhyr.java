@@ -1,32 +1,18 @@
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
 
-public class bhyr
-  extends BaseJsModule
+public abstract interface bhyr
 {
-  public bhyr(bhyp parambhyp) {}
+  public abstract View a(int paramInt);
   
-  public String getModuleName()
-  {
-    return "VipQGModel";
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
-  {
-    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
-    {
-      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
-      this.a.a("getDeviceSize", new float[] { bbll.a(), bbll.b() });
-      return true;
-    }
-    return false;
-  }
+  public abstract boolean a(int paramInt);
+  
+  public abstract void s();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhyr
  * JD-Core Version:    0.7.0.1
  */

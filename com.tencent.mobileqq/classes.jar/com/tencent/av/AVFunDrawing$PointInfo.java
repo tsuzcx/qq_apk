@@ -16,7 +16,7 @@ public final class AVFunDrawing$PointInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.AVFunDrawing.PointInfo
  * JD-Core Version:    0.7.0.1
  */

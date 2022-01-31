@@ -1,32 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
-class ahmc
-  implements View.OnClickListener
+public class ahmc
+  extends RecyclerView.OnScrollListener
 {
-  private ahma jdField_a_of_type_Ahma;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public ahmc(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  ahmc(ahma paramahma, MqqHandler paramMqqHandler)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_Ahma = paramahma;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if ((paramRecyclerView instanceof LinearLayoutManager)) {
+        ((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition();
+      }
+    }
+    if (this.a.jdField_a_of_type_Bcws != null)
+    {
+      if (paramInt == 0) {
+        break label73;
+      }
+      this.a.jdField_a_of_type_Bcws.a();
+      this.a.jdField_a_of_type_Bcws.c();
+    }
+    label73:
+    while (!this.a.jdField_a_of_type_Bcws.a()) {
+      return;
+    }
+    this.a.jdField_a_of_type_Bcws.b();
   }
   
-  public void onClick(View paramView)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Ahma.jdField_a_of_type_JavaLangString + " on enter");
-    }
-    this.jdField_a_of_type_Ahma.jdField_a_of_type_Ahly.onEnter();
-    axqy.a(null, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahmc
  * JD-Core Version:    0.7.0.1
  */

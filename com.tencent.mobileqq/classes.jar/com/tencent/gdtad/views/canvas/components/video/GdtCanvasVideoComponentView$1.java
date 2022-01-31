@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.canvas.components.video;
 
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasPageView;
+import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasPageView;
 
 class GdtCanvasVideoComponentView$1
   implements Runnable
@@ -14,7 +14,7 @@ class GdtCanvasVideoComponentView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.video.GdtCanvasVideoComponentView.1
  * JD-Core Version:    0.7.0.1
  */

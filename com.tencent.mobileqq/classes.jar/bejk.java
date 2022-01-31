@@ -1,58 +1,65 @@
-import android.app.Activity;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
 import android.view.View;
-import android.view.ViewGroup;
-import java.lang.ref.WeakReference;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bejk
+  extends ExploreByTouchHelper
 {
-  private static volatile bejk jdField_a_of_type_Bejk;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<ViewGroup> b;
-  
-  public static bejk a()
+  public bejk(ClearableEditText paramClearableEditText, View paramView)
   {
-    if (jdField_a_of_type_Bejk == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bejk == null) {
-        jdField_a_of_type_Bejk = new bejk();
-      }
-      return jdField_a_of_type_Bejk;
-    }
-    finally {}
+    super(paramView);
   }
   
-  public void a(Activity paramActivity, ViewGroup paramViewGroup)
+  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramViewGroup);
+    if ((ClearableEditText.c(this.a)) && (paramFloat1 > this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth())) {
+      return 0;
+    }
+    return -1;
   }
   
-  public void a(View paramView)
+  public void getVisibleVirtualViews(List<Integer> paramList)
   {
-    ViewGroup localViewGroup = (ViewGroup)this.b.get();
-    if (localViewGroup == null)
-    {
-      betc.d("GameVideoPlayerManager", "removePlayerView error: parent == null");
-      return;
+    if (ClearableEditText.c(this.a)) {
+      paramList.add(Integer.valueOf(0));
     }
-    localViewGroup.removeView(paramView);
   }
   
-  public void a(ViewGroup paramViewGroup)
+  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (this.b != null) {}
-    for (ViewGroup localViewGroup = (ViewGroup)this.b.get(); localViewGroup == null; localViewGroup = null)
-    {
-      betc.d("GameVideoPlayerManager", "addPlayerView error: parent == null");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
     }
-    localViewGroup.addView(paramViewGroup);
+    return false;
+  }
+  
+  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (paramInt == 0) {
+      paramAccessibilityEvent.setContentDescription(alpo.a(2131702317));
+    }
+  }
+  
+  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    if (paramInt == 0)
+    {
+      paramAccessibilityNodeInfoCompat.setContentDescription(alpo.a(2131702316));
+      paramAccessibilityNodeInfoCompat.addAction(16);
+      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth(), this.a.getPaddingTop(), this.a.getWidth() - this.a.getPaddingRight(), this.a.getHeight() - this.a.getPaddingBottom()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bejk
  * JD-Core Version:    0.7.0.1
  */

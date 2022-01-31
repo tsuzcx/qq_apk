@@ -6,53 +6,98 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import behn;
-import behp;
-import beln;
-import benn;
-import beqb;
-import beqf;
-import beqm;
-import beqp;
-import beqy;
-import besv;
-import betc;
-import beuy;
-import bevk;
-import bewz;
-import bexa;
-import bexg;
-import bexh;
-import bexm;
-import beyq;
-import bezi;
-import bezl;
+import bghl;
+import bghn;
+import bgld;
+import bgnf;
+import bgqg;
+import bgqj;
+import bgtj;
+import bgud;
+import bgut;
+import bgvn;
+import bgvo;
+import bgvy;
+import bgvz;
+import bgxl;
+import bgyd;
+import bgyg;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
+import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.minigame.GameRuntimeLoader;
+import com.tencent.qqmini.sdk.utils.GameWnsUtils;
 
 public class GameUIProxy
-  extends beqp
+  extends bgqj
 {
   private long mBeginOnCreate;
-  private bexh mBroadcastWatcher;
+  private bgvz mBroadcastWatcher;
+  private bgvn mGameRuntimeStateObserver;
   private boolean mHasReportStepOnResume;
   private LoadingUI mLoadingUI;
   private boolean mPkgDownloadFlag;
+  private int mStartMode = 3;
+  
+  private void createGameActivityStatusWatcher(Activity paramActivity)
+  {
+    this.mBroadcastWatcher = new bgvz(paramActivity);
+    this.mBroadcastWatcher.a(new bgvo(this));
+    this.mBroadcastWatcher.a();
+  }
+  
+  private void createGameRuntimeStateObserver()
+  {
+    this.mGameRuntimeStateObserver = new bgvn(this);
+    this.mGameRuntimeStateObserver.a();
+    AppRuntimeLoaderManager.g().addAppEventObserver(this.mGameRuntimeStateObserver);
+  }
+  
+  private void destroyGameActivityStatusWatcher()
+  {
+    try
+    {
+      this.mBroadcastWatcher.b();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  private void destroyGameRuntimeStateObserver()
+  {
+    AppRuntimeLoaderManager.g().deleteAppEventObserver(this.mGameRuntimeStateObserver);
+  }
   
   private static boolean isValidABI(MiniAppInfo paramMiniAppInfo)
   {
-    if (bexg.b)
+    if (bgvy.b)
     {
       if (paramMiniAppInfo != null)
       {
-        bezl.a(paramMiniAppInfo, "1", null, "load_fail", "system_version_limit_fail");
-        beyq.a("2launch_fail", "system_version_limit_fail", null, paramMiniAppInfo);
+        bgyg.a(paramMiniAppInfo, "1", null, "load_fail", "system_version_limit_fail");
+        bgxl.a("2launch_fail", "system_version_limit_fail", null, paramMiniAppInfo);
       }
       return false;
     }
     return true;
+  }
+  
+  private void resetQuery()
+  {
+    if (this.mRuntime != null)
+    {
+      bgut localbgut = ((bgtj)this.mRuntime).a();
+      if (localbgut != null) {
+        localbgut.a();
+      }
+    }
   }
   
   public Activity getActivity()
@@ -60,7 +105,15 @@ public class GameUIProxy
     return this.mActivity;
   }
   
-  public behp getJsService()
+  public bgtj getGameRuntime()
+  {
+    if (this.mRuntime != null) {
+      return (bgtj)getRuntime();
+    }
+    return null;
+  }
+  
+  public bghn getJsService()
   {
     if (this.mRuntime != null) {
       return this.mRuntime.a();
@@ -68,9 +121,22 @@ public class GameUIProxy
     return null;
   }
   
+  public String getLaunchMsg()
+  {
+    if (this.mPkgDownloadFlag) {
+      return "firstLaunch" + this.mStartMode;
+    }
+    return "twiceLaunch" + this.mStartMode;
+  }
+  
   public LoadingUI getLoadingUI()
   {
     return this.mLoadingUI;
+  }
+  
+  public int getStatMode()
+  {
+    return this.mStartMode;
   }
   
   public void hideLoading()
@@ -83,72 +149,67 @@ public class GameUIProxy
   
   public boolean onBackPressed(Activity paramActivity)
   {
-    beqf.a().a(2053, new Object[0]);
+    AppRuntimeLoaderManager.g().notifyRuntimeEvent(2053, new Object[0]);
     return super.onBackPressed(paramActivity);
   }
   
   public void onCreate(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
   {
     this.mBeginOnCreate = System.currentTimeMillis();
-    this.mBroadcastWatcher = new bexh(paramActivity);
-    this.mBroadcastWatcher.a(new bexa(this));
-    this.mBroadcastWatcher.a();
     Intent localIntent;
-    long l1;
-    label66:
+    long l;
+    label32:
     MiniAppInfo localMiniAppInfo;
-    label83:
-    long l2;
     if (paramActivity != null)
     {
       localIntent = paramActivity.getIntent();
       if (localIntent == null) {
-        break label182;
+        break label172;
       }
-      l1 = localIntent.getLongExtra("startDuration", 0L);
+      l = localIntent.getLongExtra("startDuration", 0L);
       if (localIntent == null) {
-        break label188;
+        break label178;
       }
       localMiniAppInfo = (MiniAppInfo)localIntent.getParcelableExtra("KEY_APPINFO");
-      int i = localIntent.getIntExtra("start_mode", 3);
-      l2 = this.mBeginOnCreate;
-      if (localMiniAppInfo != null) {
-        bezi.a(localMiniAppInfo, 1030, null, null, null, i, "1", l2 - l1, null);
+      label49:
+      this.mStartMode = localIntent.getIntExtra("start_mode", 3);
+      l = this.mBeginOnCreate - l;
+      if (localMiniAppInfo != null)
+      {
+        bgyd.a(localMiniAppInfo, 1030, null, String.valueOf(this.mStartMode), null, 0, "1", l, null);
+        QMLog.e("[minigame][timecost] ", "step[startActivity] cost time: " + l + " startMode: " + this.mStartMode);
       }
-      this.mLoadingUI = new LoadingUI(paramActivity);
-      super.onCreate(paramActivity, paramBundle, paramViewGroup);
-      if (isValidABI(getMiniAppInfo())) {
-        break label194;
+      if (isValidABI(localMiniAppInfo)) {
+        break label184;
       }
-      benn.a(this.mActivity, "小游戏不支持该设备", 1).a();
+      bgnf.a(this.mActivity, "小游戏不支持该设备", 1).a();
       this.mActivity.finish();
     }
-    label182:
-    label188:
-    label194:
+    label172:
+    label178:
+    label184:
     do
     {
       return;
       localIntent = null;
       break;
-      l1 = 0L;
-      break label66;
+      l = 0L;
+      break label32;
       localMiniAppInfo = null;
-      break label83;
-      beqf.a().a(1, new Object[0]);
-      beqy.a().a(paramActivity);
-      beqy.a().a(getMiniAppInfo());
-      paramActivity = new bewz(this);
-      beqf.a().a(paramActivity);
-      l1 = System.currentTimeMillis();
-      l2 = this.mBeginOnCreate;
+      break label49;
+      createGameRuntimeStateObserver();
+      createGameActivityStatusWatcher(paramActivity);
+      this.mLoadingUI = new LoadingUI(paramActivity);
+      super.onCreate(paramActivity, paramBundle, paramViewGroup);
+      l = System.currentTimeMillis() - this.mBeginOnCreate;
     } while (localMiniAppInfo == null);
-    bezi.a(localMiniAppInfo, 1031, null, null, null, 0, "1", l1 - l2, null);
+    bgyd.a(localMiniAppInfo, 1031, null, String.valueOf(this.mStartMode), null, 0, "1", l, null);
+    QMLog.e("[minigame][timecost] ", "step[doOnCreate] cost time: " + l);
   }
   
   public void onDestroy(Activity paramActivity)
   {
-    betc.b("UIProxy", "onDestroy");
+    QMLog.i("UIProxy", "onDestroy");
     if (this.mActivity == paramActivity)
     {
       this.mActivity = null;
@@ -158,61 +219,79 @@ public class GameUIProxy
         this.mRuntime.e();
         this.mRuntime.a(paramActivity);
       }
-      beqf.a().a(this.mActivatedRuntimeLoader);
+      AppRuntimeLoaderManager.g().removeRuntimeLoader(this.mActivatedRuntimeLoader);
     }
-    beqf.a().a(62, new Object[0]);
-    this.mBroadcastWatcher.b();
+    AppRuntimeLoaderManager.g().notifyRuntimeEvent(62, new Object[0]);
+    destroyGameActivityStatusWatcher();
+    destroyGameRuntimeStateObserver();
   }
   
   public void onPause(Activity paramActivity)
   {
+    AppRuntimeLoaderManager.g().notifyRuntimeEvent(2052, new Object[0]);
+    resetQuery();
     super.onPause(paramActivity);
-    beqf.a().a(2052, new Object[0]);
   }
   
   public void onResume(Activity paramActivity)
   {
-    long l1 = System.currentTimeMillis();
-    super.onResume(paramActivity);
-    if ((this.mActivatedRuntimeLoader != null) && (!this.mActivatedRuntimeLoader.isLoadSucceed())) {
-      this.mActivatedRuntimeLoader.notifyRuntimeEvent(2041, new Object[0]);
-    }
-    long l2 = System.currentTimeMillis();
-    if (!this.mHasReportStepOnResume)
+    long l = System.currentTimeMillis();
+    if ((this.mActivatedRuntimeLoader != null) && (this.mActivatedRuntimeLoader.isLoadSucceed()))
     {
-      this.mHasReportStepOnResume = true;
-      bezi.a(this.mMiniAppInfo, 1035, null, null, null, 0, "1", l2 - l1, null);
+      QMLog.d("UIProxy", "onResume(). runtime is loaded. warm boot. " + this.mMiniAppInfo);
+      this.mActivatedRuntimeLoader.notifyRuntimeEvent(2051, new Object[0]);
+    }
+    for (;;)
+    {
+      super.onResume(paramActivity);
+      l = System.currentTimeMillis() - l;
+      if (!this.mHasReportStepOnResume)
+      {
+        this.mHasReportStepOnResume = true;
+        bgyd.a(this.mMiniAppInfo, 1035, null, String.valueOf(this.mStartMode), null, 0, "1", l, null);
+        QMLog.e("[minigame][timecost] ", "step[onResume] cost time: " + l);
+      }
+      return;
+      QMLog.d("UIProxy", "onResume(). runtime is loading. cold boot. " + this.mMiniAppInfo);
+      if (this.mActivatedRuntimeLoader != null)
+      {
+        QMLog.d("UIProxy", "onResume(). Start " + this.mActivatedRuntimeLoader);
+        this.mActivatedRuntimeLoader.start();
+      }
     }
   }
   
   public void onRuntimeReady()
   {
-    betc.b("UIProxy", "GameRuntime onRuntimeReady. Here we go, start the runtime lifecycle");
+    QMLog.i("UIProxy", "GameRuntime onRuntimeReady. Here we go, start the runtime lifecycle");
     this.mMiniAppInfo = this.mActivatedRuntimeLoader.getMiniAppInfo();
     this.mRuntime = this.mActivatedRuntimeLoader.getRuntime();
-    if (this.mRuntime != null) {
-      ((beuy)this.mRuntime).b(this.mPkgDownloadFlag);
+    if (this.mRuntime != null)
+    {
+      bgtj localbgtj = (bgtj)this.mRuntime;
+      localbgtj.a(this.mPkgDownloadFlag);
+      localbgtj.a(this.mStartMode);
     }
     if (((this.mActivatedRuntimeLoader instanceof GameRuntimeLoader)) && (!((GameRuntimeLoader)this.mActivatedRuntimeLoader).isGameReadyStart(this.mMiniAppInfo)))
     {
-      bezl.a(this.mMiniAppInfo, "1", null, "load_fail", "not_ready");
-      beyq.a("2launch_fail", "not_ready", null, this.mMiniAppInfo);
+      bgyg.a(this.mMiniAppInfo, "1", null, "load_fail", "not_ready");
+      bgxl.a("2launch_fail", "not_ready", null, this.mMiniAppInfo);
       return;
     }
-    if (beln.a(getActivity()) == 0)
+    if (bgld.a(getActivity()) == 0)
     {
       if ((this.mMiniAppInfo != null) && (!this.mMiniAppInfo.isSupportOffline))
       {
-        bezl.a(this.mMiniAppInfo, "1", null, "load_fail", "offline_not_support");
-        beyq.a("2launch_fail", "offline_not_support", null, this.mMiniAppInfo);
-        benn.a(getActivity(), "此游戏暂不支持离线模式", 0).a();
+        bgyg.a(this.mMiniAppInfo, "1", null, "load_fail", "offline_not_support");
+        bgxl.a("2launch_fail", "offline_not_support", null, this.mMiniAppInfo);
+        bgnf.a(getActivity(), "此游戏暂不支持离线模式", 0).a();
         return;
       }
-      if ((this.mMiniAppInfo != null) && (!bevk.a(this.mMiniAppInfo)))
+      if ((this.mMiniAppInfo != null) && (!bgud.a(this.mMiniAppInfo)))
       {
-        bezl.a(this.mMiniAppInfo, "1", null, "load_fail", "offline_not_ready");
-        beyq.a("2launch_fail", "offline_not_ready", null, this.mMiniAppInfo);
-        benn.a(getActivity(), "游戏资源未加载完成，请联网后重试", 0).a();
+        bgyg.a(this.mMiniAppInfo, "1", null, "load_fail", "offline_not_ready");
+        bgxl.a("2launch_fail", "offline_not_ready", null, this.mMiniAppInfo);
+        bgnf.a(getActivity(), "游戏资源未加载完成，请联网后重试", 0).a();
         return;
       }
     }
@@ -224,15 +303,15 @@ public class GameUIProxy
     if (getRuntime() != null) {
       getRuntime().d();
     }
-    beqb.a().a().onAppBackground(getMiniAppInfo(), null);
-    beqf.a().a(22, new Object[0]);
+    AppLoaderFactory.g().getAppBrandProxy().onAppBackground(getMiniAppInfo(), null);
+    AppRuntimeLoaderManager.g().notifyRuntimeEvent(22, new Object[0]);
   }
   
   public void setPackageDownloadFlag(boolean paramBoolean)
   {
     this.mPkgDownloadFlag = paramBoolean;
     if (this.mRuntime != null) {
-      ((beuy)this.mRuntime).b(paramBoolean);
+      ((bgtj)this.mRuntime).a(paramBoolean);
     }
   }
   
@@ -249,7 +328,7 @@ public class GameUIProxy
     Object localObject1 = "";
     try
     {
-      Object localObject3 = bexm.b();
+      Object localObject3 = GameWnsUtils.getQQUpdateUrl();
       String str = "";
       localObject1 = localObject3;
       if (getMiniAppInfo() != null)
@@ -270,7 +349,7 @@ public class GameUIProxy
         }
       }
       localObject1 = localObject2;
-      betc.b("UIProxy", "showUpdateMobileQQDialog jump to upgrate page:" + (String)localObject2);
+      QMLog.i("UIProxy", "showUpdateMobileQQDialog jump to upgrate page:" + (String)localObject2);
       localObject1 = localObject2;
       localObject3 = new Intent();
       localObject1 = localObject2;
@@ -285,13 +364,13 @@ public class GameUIProxy
     }
     catch (Throwable localThrowable)
     {
-      betc.d("minisdk-start", "jump to upgrate page exception! url=" + (String)localObject1, localThrowable);
+      QMLog.e("minisdk-start", "jump to upgrate page exception! url=" + (String)localObject1, localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.ui.GameUIProxy
  * JD-Core Version:    0.7.0.1
  */

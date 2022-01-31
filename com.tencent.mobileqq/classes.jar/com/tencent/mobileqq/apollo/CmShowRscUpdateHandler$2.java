@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import aiue;
-import aiuh;
+import aklq;
+import aklt;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.SparseArray;
@@ -25,7 +25,7 @@ import java.util.List;
 public class CmShowRscUpdateHandler$2
   implements Runnable
 {
-  public CmShowRscUpdateHandler$2(aiue paramaiue, CmShowContentUpdate.STContUpdRsp paramSTContUpdRsp, boolean paramBoolean, int paramInt) {}
+  public CmShowRscUpdateHandler$2(aklq paramaklq, CmShowContentUpdate.STContUpdRsp paramSTContUpdRsp, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
@@ -69,14 +69,14 @@ public class CmShowRscUpdateHandler$2
         localObject4 = (CmShowContentUpdate.STVerInfo)((Iterator)localObject2).next();
         if (localObject4 != null)
         {
-          localObject3 = new aiuh();
-          ((aiuh)localObject3).jdField_a_of_type_Long = ((CmShowContentUpdate.STVerInfo)localObject4).item_id.get();
-          ((aiuh)localObject3).jdField_a_of_type_Int = ((CmShowContentUpdate.STVerInfo)localObject4).biz_id.get();
-          ((aiuh)localObject3).jdField_a_of_type_JavaLangString = ((CmShowContentUpdate.STVerInfo)localObject4).name.get().toStringUtf8();
-          ((aiuh)localObject3).jdField_b_of_type_Int = ((CmShowContentUpdate.STVerInfo)localObject4).ver.get();
-          ((aiuh)localObject3).jdField_f_of_type_Int = ((CmShowContentUpdate.STVerInfo)localObject4).domain_id.get();
-          ((aiuh)localObject3).jdField_e_of_type_JavaLangString = ((CmShowContentUpdate.STVerInfo)localObject4).down_file.get().toStringUtf8();
-          ((aiuh)localObject3).jdField_b_of_type_JavaLangString = aiuh.a((String)localException.get(((aiuh)localObject3).jdField_f_of_type_Int), ((aiuh)localObject3).jdField_a_of_type_Long, ((aiuh)localObject3).jdField_b_of_type_Int, ((aiuh)localObject3).jdField_e_of_type_JavaLangString);
+          localObject3 = new aklt();
+          ((aklt)localObject3).jdField_a_of_type_Long = ((CmShowContentUpdate.STVerInfo)localObject4).item_id.get();
+          ((aklt)localObject3).jdField_a_of_type_Int = ((CmShowContentUpdate.STVerInfo)localObject4).biz_id.get();
+          ((aklt)localObject3).jdField_a_of_type_JavaLangString = ((CmShowContentUpdate.STVerInfo)localObject4).name.get().toStringUtf8();
+          ((aklt)localObject3).jdField_b_of_type_Int = ((CmShowContentUpdate.STVerInfo)localObject4).ver.get();
+          ((aklt)localObject3).jdField_f_of_type_Int = ((CmShowContentUpdate.STVerInfo)localObject4).domain_id.get();
+          ((aklt)localObject3).jdField_e_of_type_JavaLangString = ((CmShowContentUpdate.STVerInfo)localObject4).down_file.get().toStringUtf8();
+          ((aklt)localObject3).jdField_b_of_type_JavaLangString = aklt.a((String)localException.get(((aklt)localObject3).jdField_f_of_type_Int), ((aklt)localObject3).jdField_a_of_type_Long, ((aklt)localObject3).jdField_b_of_type_Int, ((aklt)localObject3).jdField_e_of_type_JavaLangString);
           if (((CmShowContentUpdate.STVerInfo)localObject4).is_patch.get() != 1) {
             break label760;
           }
@@ -86,45 +86,45 @@ public class CmShowRscUpdateHandler$2
     label760:
     for (boolean bool = true;; bool = false)
     {
-      ((aiuh)localObject3).jdField_a_of_type_Boolean = bool;
-      ((aiuh)localObject3).jdField_c_of_type_Int = this.this$0.a(((aiuh)localObject3).jdField_a_of_type_Int, ((aiuh)localObject3).jdField_a_of_type_Long, ((aiuh)localObject3).jdField_a_of_type_JavaLangString);
-      ((aiuh)localObject3).jdField_d_of_type_JavaLangString = ((CmShowContentUpdate.STVerInfo)localObject4).md5.get().toStringUtf8();
+      ((aklt)localObject3).jdField_a_of_type_Boolean = bool;
+      ((aklt)localObject3).jdField_c_of_type_Int = this.this$0.a(((aklt)localObject3).jdField_a_of_type_Int, ((aklt)localObject3).jdField_a_of_type_Long, ((aklt)localObject3).jdField_a_of_type_JavaLangString);
+      ((aklt)localObject3).jdField_d_of_type_JavaLangString = ((CmShowContentUpdate.STVerInfo)localObject4).md5.get().toStringUtf8();
       localObject4 = (CmShowContentUpdate.STPatchInfo)((CmShowContentUpdate.STVerInfo)localObject4).patch_info.get();
       if (localObject4 != null)
       {
-        ((aiuh)localObject3).jdField_c_of_type_Int = ((CmShowContentUpdate.STPatchInfo)localObject4).base_ver.get();
+        ((aklt)localObject3).jdField_c_of_type_Int = ((CmShowContentUpdate.STPatchInfo)localObject4).base_ver.get();
         if ((((CmShowContentUpdate.STPatchInfo)localObject4).patch_data != null) && (((CmShowContentUpdate.STPatchInfo)localObject4).patch_data.get() != null) && (!((CmShowContentUpdate.STPatchInfo)localObject4).patch_data.get().isEmpty()))
         {
-          ((aiuh)localObject3).jdField_a_of_type_ArrayOfByte = ((CmShowContentUpdate.STPatchInfo)localObject4).patch_data.get().toByteArray();
-          ((aiuh)localObject3).jdField_b_of_type_Long = ((CmShowContentUpdate.STPatchInfo)localObject4).patch_size.get();
+          ((aklt)localObject3).jdField_a_of_type_ArrayOfByte = ((CmShowContentUpdate.STPatchInfo)localObject4).patch_data.get().toByteArray();
+          ((aklt)localObject3).jdField_b_of_type_Long = ((CmShowContentUpdate.STPatchInfo)localObject4).patch_size.get();
         }
-        ((aiuh)localObject3).jdField_f_of_type_JavaLangString = ((CmShowContentUpdate.STPatchInfo)localObject4).down_patch_file.get().toStringUtf8();
-        ((aiuh)localObject3).jdField_c_of_type_JavaLangString = aiuh.a((String)localException.get(((aiuh)localObject3).jdField_f_of_type_Int), ((aiuh)localObject3).jdField_a_of_type_Long, ((aiuh)localObject3).jdField_b_of_type_Int, ((aiuh)localObject3).jdField_f_of_type_JavaLangString);
+        ((aklt)localObject3).jdField_f_of_type_JavaLangString = ((CmShowContentUpdate.STPatchInfo)localObject4).down_patch_file.get().toStringUtf8();
+        ((aklt)localObject3).jdField_c_of_type_JavaLangString = aklt.a((String)localException.get(((aklt)localObject3).jdField_f_of_type_Int), ((aklt)localObject3).jdField_a_of_type_Long, ((aklt)localObject3).jdField_b_of_type_Int, ((aklt)localObject3).jdField_f_of_type_JavaLangString);
       }
-      ((aiuh)localObject3).jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentPbClubcontentCmShowContentUpdate$STContUpdRsp.intervals_ts.get();
-      ((aiuh)localObject3).jdField_b_of_type_Boolean = this.jdField_a_of_type_Boolean;
-      ((aiuh)localObject3).jdField_e_of_type_Int = this.jdField_a_of_type_Int;
+      ((aklt)localObject3).jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentPbClubcontentCmShowContentUpdate$STContUpdRsp.intervals_ts.get();
+      ((aklt)localObject3).jdField_b_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      ((aklt)localObject3).jdField_e_of_type_Int = this.jdField_a_of_type_Int;
       ((List)localObject1).add(localObject3);
       break label164;
-      aiue.a(this.this$0).edit().putLong("last_json_content_update_ts", System.currentTimeMillis()).commit();
+      aklq.a(this.this$0).edit().putLong("last_json_content_update_ts", System.currentTimeMillis()).commit();
       if (QLog.isColorLevel()) {
         QLog.d("rscContent_CmShowRscUpdateHandler", 2, "checkResults:" + localObject1);
       }
       if (this.jdField_a_of_type_Boolean)
       {
-        aiue.a(this.this$0, new ArrayList());
-        aiue.a(this.this$0).addAll((Collection)localObject1);
+        aklq.a(this.this$0, new ArrayList());
+        aklq.a(this.this$0).addAll((Collection)localObject1);
       }
       if (!((List)localObject1).isEmpty())
       {
-        aiue.a(this.this$0, this.jdField_a_of_type_Int, (List)localObject1);
+        aklq.a(this.this$0, this.jdField_a_of_type_Int, (List)localObject1);
         return;
       }
-      aiue.a(this.this$0, this.jdField_a_of_type_Int);
-      if ((!this.jdField_a_of_type_Boolean) || (!aiue.a(this.this$0).isEmpty())) {
+      aklq.a(this.this$0, this.jdField_a_of_type_Int);
+      if ((!this.jdField_a_of_type_Boolean) || (!aklq.a(this.this$0).isEmpty())) {
         break;
       }
-      aiue.a(this.this$0).edit().putLong("last_json_content_update_ts", System.currentTimeMillis()).commit();
+      aklq.a(this.this$0).edit().putLong("last_json_content_update_ts", System.currentTimeMillis()).commit();
       QLog.i("rscContent_CmShowRscUpdateHandler", 1, "no need update");
       return;
     }
@@ -132,7 +132,7 @@ public class CmShowRscUpdateHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.CmShowRscUpdateHandler.2
  * JD-Core Version:    0.7.0.1
  */

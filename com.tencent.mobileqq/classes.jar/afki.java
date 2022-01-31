@@ -1,36 +1,21 @@
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 class afki
-  extends bfwg
+  implements arnx
 {
-  afki(afkg paramafkg, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  afki(afjb paramafjb) {}
   
-  public void a(int paramInt, Object paramObject, bfwf[] paramArrayOfbfwf)
+  public void onClick(View paramView)
   {
-    paramInt = 0;
-    if ((paramArrayOfbfwf == null) || (paramArrayOfbfwf.length <= 0)) {}
-    for (;;)
-    {
-      return;
-      if (paramArrayOfbfwf.length < 0)
-      {
-        paramArrayOfbfwf[0].b = 0;
-        paramArrayOfbfwf[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbfwf.length)
-      {
-        paramArrayOfbfwf[paramInt].b = -1;
-        paramArrayOfbfwf[paramInt].a = -1;
-        paramInt += 1;
-      }
-    }
+    arni.b((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afki
  * JD-Core Version:    0.7.0.1
  */

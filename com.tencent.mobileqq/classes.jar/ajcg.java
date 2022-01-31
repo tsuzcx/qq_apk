@@ -1,44 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.Pair;
 
 class ajcg
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  ajcg(ajcf paramajcf) {}
+  ajcg(ajbm paramajbm) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (ajcf.a(this.a) == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if ("android.intent.action.SCREEN_ON".equals(paramIntent.getAction()))
-        {
-          if (ajcf.a(this.a))
-          {
-            ajcf.a(this.a).runRenderTask(ajcf.a(this.a));
-            return;
-          }
-          ajcf.a(this.a);
-          return;
-        }
-      } while (!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()));
-      if (!ajcf.a(this.a)) {
-        break;
-      }
-    } while (ajcf.a(this.a) == null);
-    ajcf.a(this.a).runRenderTask(ajcf.b(this.a));
-    return;
-    ajcf.b(this.a);
+    Intent localIntent = new Intent(ajbm.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("uin", ((QQAppInterface)ajbm.a(this.a).getAppRuntime()).getCurrentAccountUin());
+    paramView = (Pair)paramView.getTag();
+    if (paramView != null) {
+      ajbm.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)paramView.first).longValue() + "&deviceRemark=" + (String)paramView.second));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajcg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,279 +1,276 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
 import android.os.Build.VERSION;
-import android.text.ClipboardManager;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.biz.widgets.ElasticHorScrView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.view.QPhoneShare.2;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.RequiresApi;
+import android.util.Log;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public class bgwm
-  implements AdapterView.OnItemClickListener
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 4;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bfpc jdField_a_of_type_Bfpc;
-  private ElasticHorScrView jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public xmq a;
-  private ElasticHorScrView b;
+  private int jdField_a_of_type_Int = -1;
+  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
+  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
+  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
+  private bgwo jdField_a_of_type_Bgwo;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public bgwm(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
+  @RequiresApi(api=16)
+  private boolean a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    if ((this.jdField_a_of_type_Xmq == null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    int i = 0;
+    for (;;)
     {
-      this.jdField_a_of_type_Xmq = new xmq(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_Xmq.a(this.jdField_a_of_type_AndroidAppActivity);
+      try
+      {
+        if (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount())
+        {
+          MediaFormat localMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
+          String str = localMediaFormat.getString("mime");
+          if (str.startsWith("audio"))
+          {
+            this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
+            this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
+            this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, null, null, 0);
+          }
+        }
+        else
+        {
+          if (this.jdField_a_of_type_AndroidMediaMediaCodec == null) {
+            return false;
+          }
+          this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+          return true;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return false;
+      }
+      i += 1;
     }
   }
   
-  @SuppressLint({"InflateParams"})
-  @TargetApi(9)
-  protected View a()
+  @RequiresApi(api=16)
+  private boolean a(String paramString)
   {
-    View localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2131559044, null);
-    this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131375664));
-    this.b = ((ElasticHorScrView)localView.findViewById(2131375665));
-    GridView localGridView2 = (GridView)localView.findViewById(2131367168);
-    GridView localGridView1 = (GridView)localView.findViewById(2131367169);
-    Object localObject1 = (TextView)localView.findViewById(2131361926);
-    ((TextView)localObject1).setText(2131690596);
-    ((TextView)localObject1).setOnClickListener(new bgwn(this));
-    if (Build.VERSION.SDK_INT >= 9)
+    try
     {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
-      this.b.setOverScrollMode(2);
+      this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(paramString);
+      return true;
     }
-    localGridView1.setSmoothScrollbarEnabled(false);
-    Object localObject2 = a();
-    if (localObject2.length > 0)
+    catch (IOException paramString)
     {
-      localObject1 = localObject2[0];
-      if (localObject2.length <= 1) {
-        break label373;
+      paramString.printStackTrace();
+    }
+    return false;
+  }
+  
+  @RequiresApi(api=23)
+  private boolean a(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(new bgwn(this, paramArrayOfByte));
+      return true;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return false;
+  }
+  
+  @RequiresApi(api=16)
+  private byte[] a()
+  {
+    int k = 0;
+    int i = 0;
+    ByteBuffer[] arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
+    Object localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+    MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    int j = 0;
+    if ((k != 0) || (j == 0)) {}
+    label493:
+    label496:
+    label499:
+    for (;;)
+    {
+      try
+      {
+        int m = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(2000L);
+        if (m < 0) {
+          break label499;
+        }
+        ByteBuffer localByteBuffer = arrayOfByteBuffer[m];
+        int n = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(localByteBuffer, 0);
+        if (n < 0)
+        {
+          this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(m, 0, 0, 0L, 4);
+          j = 1;
+          m = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(localBufferInfo, 2000L);
+          if (m < 0) {
+            continue;
+          }
+          if ((localBufferInfo.flags & 0x2) == 0) {
+            continue;
+          }
+          this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(m, false);
+          break;
+        }
+        long l = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
+        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(m, 0, n, l, 0);
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+        break label499;
+        if (localBufferInfo.size == 0) {
+          break label496;
+        }
+        localByteBuffer = localObject1[m];
+        byte[] arrayOfByte = new byte[localBufferInfo.size];
+        localByteBuffer.get(arrayOfByte);
+        if (this.jdField_a_of_type_Bgwo != null)
+        {
+          this.jdField_a_of_type_Bgwo.a(arrayOfByte, this.jdField_a_of_type_AndroidMediaMediaFormat, this.jdField_a_of_type_Boolean, false);
+          this.jdField_a_of_type_Boolean = false;
+        }
+        i = arrayOfByte.length + i;
+        localByteArrayOutputStream.write(arrayOfByte);
+        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(m, false);
+        if ((localBufferInfo.flags & 0x4) == 0) {
+          break label493;
+        }
+        k = 1;
+        break label502;
+        if (m == -3)
+        {
+          localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+        }
+        else
+        {
+          if (m != -2) {
+            break label505;
+          }
+          this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+          Log.i("AudioDecoder", "output format has changed to " + this.jdField_a_of_type_AndroidMediaMediaFormat);
+        }
       }
+      catch (Exception localException1)
+      {
+        localException1 = localException1;
+        localException1.printStackTrace();
+      }
+      finally
+      {
+        try
+        {
+          localByteArrayOutputStream.close();
+          this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+          this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+          this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+          return null;
+          localObject2 = finally;
+          try
+          {
+            localByteArrayOutputStream.close();
+            this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+            this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+            this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+            throw localObject2;
+          }
+          catch (Exception localException3)
+          {
+            continue;
+          }
+        }
+        catch (Exception localException2)
+        {
+          continue;
+        }
+      }
+      if (this.jdField_a_of_type_Bgwo != null) {
+        this.jdField_a_of_type_Bgwo.a(null, this.jdField_a_of_type_AndroidMediaMediaFormat, false, true);
+      }
+      localObject1 = localByteArrayOutputStream.toByteArray();
+      break label502;
     }
-    label373:
-    for (localObject2 = localObject2[1];; localObject2 = new ArrayList(0))
+    label502:
+    label505:
+    for (;;)
     {
-      int i = ((List)localObject1).size();
-      localGridView2.setNumColumns(i);
-      ViewGroup.LayoutParams localLayoutParams = localGridView2.getLayoutParams();
-      localLayoutParams.width = ((int)(((i - 1) * 10 + i * 75 + 3) * this.jdField_a_of_type_Float));
-      localGridView2.setLayoutParams(localLayoutParams);
-      localGridView2.setAdapter(new nna(this.jdField_a_of_type_AndroidContentContext, 0, (List)localObject1));
-      localGridView2.setSelector(new ColorDrawable(0));
-      localGridView2.setOnItemClickListener(this);
-      i = localLayoutParams.width;
-      int j = ((List)localObject2).size();
-      localObject1 = localGridView1.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).width = ((int)((j * 75 + (j - 1) * 10 + 3) * this.jdField_a_of_type_Float));
-      localGridView1.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localGridView1.setNumColumns(j);
-      localGridView1.setAdapter(new nna(this.jdField_a_of_type_AndroidContentContext, 0, (List)localObject2));
-      localGridView1.setSelector(new ColorDrawable(0));
-      localGridView1.setOnItemClickListener(this);
-      localView.post(new QPhoneShare.2(this, i, ((ViewGroup.LayoutParams)localObject1).width));
-      return localView;
-      localObject1 = new ArrayList(0);
       break;
     }
   }
   
-  public xmq a()
+  @RequiresApi(api=16)
+  public int a()
   {
-    return this.jdField_a_of_type_Xmq;
+    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("sample-rate");
   }
   
-  public void a()
+  public void a(bgwo parambgwo)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Bfpc == null)
-      {
-        this.jdField_a_of_type_Bfpc = ((bfpc)bfpp.a(this.jdField_a_of_type_AndroidAppActivity, null));
-        View localView = a();
-        this.jdField_a_of_type_Bfpc.a(localView, null);
-      }
-    } while (this.jdField_a_of_type_Bfpc.isShowing());
-    this.jdField_a_of_type_Bfpc.show();
+    this.jdField_a_of_type_Bgwo = parambgwo;
   }
   
-  protected List<nmz>[] a()
+  @RequiresApi(api=16)
+  public byte[] a(String paramString, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    nmz localnmz;
-    if ((this.jdField_a_of_type_Int & 0x8) == 0)
-    {
-      localnmz = new nmz();
-      localnmz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696696);
-      localnmz.jdField_a_of_type_Int = 2130838754;
-      localnmz.jdField_a_of_type_Boolean = true;
-      localnmz.jdField_b_of_type_Int = 2;
-      localnmz.jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localnmz);
+    this.jdField_a_of_type_Int = paramInt;
+    if ((a(paramString)) && (a())) {
+      return a();
     }
-    if ((this.jdField_a_of_type_Int & 0x10) == 0)
-    {
-      localnmz = new nmz();
-      localnmz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696709);
-      localnmz.jdField_a_of_type_Int = 2130838755;
-      localnmz.jdField_a_of_type_Boolean = true;
-      localnmz.jdField_b_of_type_Int = 3;
-      localnmz.jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localnmz);
-    }
-    if ((this.jdField_a_of_type_Int & 0x4000) == 0)
-    {
-      localnmz = new nmz();
-      localnmz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696716);
-      localnmz.jdField_a_of_type_Int = 2130838758;
-      localnmz.jdField_b_of_type_Int = 9;
-      localnmz.jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localnmz);
-    }
-    if ((this.jdField_a_of_type_Int & 0x8000) == 0)
-    {
-      localnmz = new nmz();
-      localnmz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696699);
-      localnmz.jdField_a_of_type_Int = 2130838752;
-      localnmz.jdField_b_of_type_Int = 10;
-      localnmz.jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localnmz);
-    }
-    if ((this.jdField_a_of_type_Int & 0x1) == 0)
-    {
-      localnmz = new nmz();
-      localnmz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696688);
-      localnmz.jdField_a_of_type_Int = 2130838750;
-      localnmz.jdField_a_of_type_Boolean = true;
-      localnmz.jdField_b_of_type_Int = 1;
-      localnmz.jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localnmz);
-    }
-    return (List[])new ArrayList[] { localArrayList };
+    return null;
   }
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  @RequiresApi(api=23)
+  public byte[] a(byte[] paramArrayOfByte, int paramInt)
   {
-    paramAdapterView = paramView.getTag();
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      paramView = new StringBuilder().append("onItemClick, tag = ");
-      if (paramAdapterView != null)
-      {
-        bool = true;
-        QLog.d("QPhoneShare", 2, bool);
-      }
+    this.jdField_a_of_type_Int = paramInt;
+    if ((a(paramArrayOfByte)) && (a())) {
+      return a();
     }
-    else
-    {
-      if (paramAdapterView != null) {
-        break label59;
-      }
+    return null;
+  }
+  
+  @RequiresApi(api=16)
+  public int b()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {
+      return 0;
     }
-    label59:
-    int i;
-    label118:
-    do
-    {
-      do
-      {
-        return;
-        bool = false;
-        break;
-        if (this.jdField_a_of_type_Bfpc.isShowing()) {
-          this.jdField_a_of_type_Bfpc.dismiss();
-        }
-        i = ((nnb)paramAdapterView).a.jdField_b_of_type_Int;
-        if (i != 2) {
-          break label118;
-        }
-      } while (TextUtils.isEmpty(this.jdField_a_of_type_Xmq.p));
-      this.jdField_a_of_type_Xmq.a(null, 1, false);
-      return;
-      if (i != 3) {
-        break label148;
-      }
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_Xmq.p));
-    this.jdField_a_of_type_Xmq.a(null, 2, false);
-    return;
-    label148:
-    if ((i == 9) || (i == 10)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131720917;
-      }
+    return this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("channel-count");
+  }
+  
+  @RequiresApi(api=16)
+  public int c()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {
+      return 0;
     }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 24)
     {
-      if (paramInt != -1)
-      {
-        wij.a(0, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131720918;
-        }
+      if (this.jdField_a_of_type_AndroidMediaMediaFormat.containsKey("pcm-encoding")) {}
+      for (int i = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("pcm-encoding"); i == 3; i = 2) {
+        return 8;
       }
-      else
-      {
-        if (i == 9)
-        {
-          if (TextUtils.isEmpty(this.jdField_a_of_type_Xmq.p)) {
-            break;
-          }
-          this.jdField_a_of_type_Xmq.a(null, 3, true);
-          return;
-        }
-        if (TextUtils.isEmpty(this.jdField_a_of_type_Xmq.p)) {
-          break;
-        }
-        this.jdField_a_of_type_Xmq.a(null, 4, true);
-        return;
-        if (i != 1) {
-          break;
-        }
-        paramAdapterView = bgwk.a(this.jdField_a_of_type_Xmq.a());
-        paramView = (ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard");
-        if (paramView == null) {
-          break;
-        }
-        paramView.setText(paramAdapterView);
-        Toast.makeText(this.jdField_a_of_type_AndroidContentContext, "复制成功", 0).show();
-        return;
-      }
-      paramInt = -1;
+      return 16;
     }
+    return this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("bit-width");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgwm
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bfwr;
-import bfws;
+import bhxo;
+import bhxp;
 
 public class ThemeImageView
   extends ImageView
-  implements bfws
+  implements bhxp
 {
-  public bfwr a;
+  public bhxo a;
   
   public ThemeImageView(Context paramContext)
   {
@@ -36,7 +36,7 @@ public class ThemeImageView
     setSupportMaskView(true);
   }
   
-  public void a(Canvas paramCanvas)
+  public void a_(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
@@ -63,7 +63,7 @@ public class ThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bfwr();
+        this.a = new bhxo();
       }
       this.a.a(true);
     }
@@ -75,7 +75,7 @@ public class ThemeImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.ThemeImageView
  * JD-Core Version:    0.7.0.1
  */

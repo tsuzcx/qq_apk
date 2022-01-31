@@ -1,21 +1,29 @@
-import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-final class aigv
+public class aigv
   implements DialogInterface.OnClickListener
 {
-  aigv(Context paramContext) {}
+  public aigv(BindNumberActivity paramBindNumberActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((Activity)this.a).finish();
+    BindNumberActivity.a(this.a);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.getIntent();
+    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
+      this.a.a("CliOper", "0X8005DE9", 1);
+    }
+    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
+      this.a.a("CliOper", "0X8005DE9", 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigv
  * JD-Core Version:    0.7.0.1
  */

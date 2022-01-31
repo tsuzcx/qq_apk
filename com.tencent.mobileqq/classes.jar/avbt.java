@@ -1,152 +1,48 @@
-import java.io.ByteArrayOutputStream;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
-public final class avbt
+class avbt
+  implements avcb
 {
-  private static int jdField_a_of_type_Int = 4000;
-  private static final Map<String, avbu> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
+  avbt(avbo paramavbo) {}
   
-  private static void a(avbu paramavbu, boolean paramBoolean)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    if ((paramavbu != null) && (paramavbu.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
-    {
-      File localFile;
-      if (paramavbu.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
-      {
-        if (paramavbu.jdField_a_of_type_JavaIoFile == null)
-        {
-          localFile = new File(paramavbu.jdField_a_of_type_JavaLangString + "~tmp");
-          if (!localFile.exists()) {
-            localFile.createNewFile();
-          }
-          paramavbu.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-          paramavbu.jdField_a_of_type_JavaIoFile = localFile;
-        }
-        paramavbu.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(paramavbu.jdField_a_of_type_JavaIoFileOutputStream);
-      }
-      if (paramBoolean)
-      {
-        if (paramavbu.jdField_a_of_type_JavaIoFileOutputStream != null)
-        {
-          paramavbu.jdField_a_of_type_JavaIoFileOutputStream.flush();
-          paramavbu.jdField_a_of_type_JavaIoFileOutputStream.close();
-          paramavbu.jdField_a_of_type_JavaIoFileOutputStream = null;
-        }
-        if (paramavbu.jdField_a_of_type_JavaIoFile != null)
-        {
-          localFile = new File(paramavbu.jdField_a_of_type_JavaLangString);
-          if (localFile.exists()) {
-            localFile.delete();
-          }
-          if (!paramavbu.jdField_a_of_type_JavaIoFile.renameTo(localFile))
-          {
-            bbdx.a(paramavbu.jdField_a_of_type_JavaIoFile, localFile);
-            paramavbu.jdField_a_of_type_JavaIoFile.delete();
-          }
-          paramavbu.jdField_a_of_type_JavaIoFile = null;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
+    }
+    if (this.a.jdField_a_of_type_Avah != null) {
+      this.a.jdField_a_of_type_Avah.a(paramString1, 199, paramInt, "use sdk download error");
     }
   }
   
-  public static void a(String paramString)
+  public void a(String paramString1, String paramString2, long paramLong)
   {
-    a(paramString, true);
+    this.a.jdField_a_of_type_Long = paramLong;
   }
   
-  private static void a(String paramString, boolean paramBoolean)
+  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    avbu localavbu = (avbu)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localavbu == null) || (localavbu.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      localavbu.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-      label31:
-      if (localavbu.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-      try
-      {
-        localavbu.jdField_a_of_type_JavaIoFileOutputStream.close();
-        label45:
-        localavbu.jdField_a_of_type_JavaIoFileOutputStream = null;
-        if ((paramBoolean) && (localavbu.jdField_a_of_type_JavaIoFile != null))
-        {
-          localavbu.jdField_a_of_type_JavaIoFile.delete();
-          localavbu.jdField_a_of_type_JavaIoFile = null;
-        }
-        jdField_a_of_type_JavaUtilMap.remove(paramString);
-        return;
-      }
-      catch (Exception localException1)
-      {
-        break label45;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
     }
-    catch (Exception localException2)
-    {
-      break label31;
+    this.a.jdField_a_of_type_Long = paramLong1;
+    if (paramLong2 > this.a.b) {
+      this.a.b = paramLong2;
     }
   }
   
-  public static boolean a(String paramString)
+  public void a(String paramString1, String paramString2, File paramFile)
   {
-    if ((avbu)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
-    {
-      avbu localavbu = new avbu();
-      localavbu.jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_JavaUtilMap.put(paramString, localavbu);
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
     }
-    return true;
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    paramString = (avbu)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null)
-    {
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
-        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
-      }
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
-    }
-    try
-    {
-      a(paramString, false);
-      label66:
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      return true;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      break label66;
-    }
-  }
-  
-  public static boolean b(String paramString)
-  {
-    avbu localavbu = (avbu)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localavbu != null) && (localavbu.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      a(localavbu, true);
-      label29:
-      localavbu.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      a(paramString, true);
-      return true;
-    }
-    catch (IOException localIOException)
-    {
-      break label29;
-    }
+    avbo.a(paramFile);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avbt
  * JD-Core Version:    0.7.0.1
  */

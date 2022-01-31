@@ -1,53 +1,48 @@
-import Wallet.BroadCastInfo;
-import Wallet.GetBroadCastHbIdiomRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import mqq.observer.BusinessObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class agwb
-  implements BusinessObserver
+  implements Animation.AnimationListener
 {
   agwb(agwa paramagwa) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 28)
+    try
     {
-      paramBundle = (GetBroadCastHbIdiomRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null) {
-        break label21;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label21:
-      if (paramBoolean)
+      if ((this.a.jdField_b_of_type_AndroidViewAnimationAnimation != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAnimation))
       {
-        this.a.jdField_a_of_type_Agvx.a = false;
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          BroadCastInfo localBroadCastInfo = (BroadCastInfo)paramBundle.sendlistIdiomInfoDict.get(str);
-          if ((this.a.jdField_a_of_type_Agvx.a(str) != null) && (localBroadCastInfo != null)) {
-            if (localBroadCastInfo.isFinished == 1) {
-              this.a.jdField_a_of_type_Agvx.a(str);
-            } else {
-              this.a.jdField_a_of_type_Agvx.a(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY);
-            }
-          }
-        }
+        paramAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2130772256);
+        paramAnimation.setInterpolator(new LinearInterpolator());
+        this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366601));
+        this.a.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366602));
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+        return;
+      }
+      if ((paramAnimation == this.a.c) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout) != -1))
+      {
+        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+        return;
       }
     }
+    catch (Throwable paramAnimation) {}
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agwb
  * JD-Core Version:    0.7.0.1
  */

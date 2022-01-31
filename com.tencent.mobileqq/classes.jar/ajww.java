@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ajww
-  implements DialogInterface.OnDismissListener
+class ajww
+  implements View.OnClickListener
 {
-  public ajww(FrameHelperActivity paramFrameHelperActivity) {}
+  ajww(ajwu paramajwu) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    FrameHelperActivity.a(this.a, null);
+    ajwu.a(this.a).onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajww
  * JD-Core Version:    0.7.0.1
  */

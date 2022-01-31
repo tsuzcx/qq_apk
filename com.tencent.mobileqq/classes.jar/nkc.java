@@ -1,20 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class nkc
-  implements DialogInterface.OnClickListener
+public class nkc
+  implements bhqd
 {
-  nkc(nkb paramnkb, JsResult paramJsResult) {}
+  public nkc(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
+      continue;
+      this.a.G();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkc
  * JD-Core Version:    0.7.0.1
  */

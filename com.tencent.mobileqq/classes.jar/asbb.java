@@ -1,21 +1,37 @@
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+
 public class asbb
+  implements View.OnClickListener
 {
-  public final int a;
-  public final long a;
-  public final int b;
-  public final long b;
+  public asbb(DeleteFaceFragment paramDeleteFaceFragment) {}
   
-  public asbb(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    azmj.b(null, "dc00898", "", "", "0X800A320", "0X800A320", 0, 0, "", "", "", "");
+    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
+      DeleteFaceFragment.a(this.a).dismiss();
+    }
+    if (!bdee.d(this.a.getActivity()))
+    {
+      QQToast.a(this.a.getActivity(), this.a.getString(2131692397), 0).b(this.a.a());
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DeleteFaceFragment", 2, "user confirm delete");
+    }
+    this.a.a();
+    ayxe.a(this.a.getActivity().app, new asbc(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asbb
  * JD-Core Version:    0.7.0.1
  */

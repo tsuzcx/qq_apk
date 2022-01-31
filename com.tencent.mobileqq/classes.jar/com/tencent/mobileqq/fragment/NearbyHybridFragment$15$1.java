@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import aqih;
+import asbw;
 
 public class NearbyHybridFragment$15$1
   implements Runnable
 {
-  public NearbyHybridFragment$15$1(aqih paramaqih) {}
+  public NearbyHybridFragment$15$1(asbw paramasbw) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class NearbyHybridFragment$15$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.15.1
  * JD-Core Version:    0.7.0.1
  */

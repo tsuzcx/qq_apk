@@ -1,39 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import java.util.Comparator;
 
 public class bagm
-  implements Animation.AnimationListener
+  implements Comparator<PadInfo>
 {
-  public bagm(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  public bagm(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(PadInfo paramPadInfo1, PadInfo paramPadInfo2)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      return;
+    long l = paramPadInfo2.lastEditTime - paramPadInfo1.lastEditTime;
+    if (l > 0L) {
+      return 1;
     }
-    if (paramAnimation == this.a.b) {
-      VisitorTroopCardFragment.a(this.a, false);
+    if (l < 0L) {
+      return -1;
     }
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
-    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)) {
-      VisitorTroopCardFragment.a(this.a, true);
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bagm
  * JD-Core Version:    0.7.0.1
  */

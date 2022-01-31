@@ -2,7 +2,7 @@ package com.tencent.mobileqq.minigame.ui;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
-import ajya;
+import alpo;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ class MiniGamePayFragment$1
       try
       {
         localJSONObject.put("resultCode", -1);
-        localJSONObject.put("errMsg", ajya.a(2131706858));
+        localJSONObject.put("errMsg", alpo.a(2131707230));
         if (localJSONObject != null) {}
         for (paramJSONObject = localJSONObject.toString(); paramJSONObject != null; paramJSONObject = "")
         {
@@ -49,7 +49,7 @@ class MiniGamePayFragment$1
             try
             {
               localJSONObject.put("resultCode", -3);
-              localJSONObject.put("errMsg", ajya.a(2131706857));
+              localJSONObject.put("errMsg", alpo.a(2131707229));
             }
             catch (JSONException paramJSONObject)
             {
@@ -73,13 +73,13 @@ class MiniGamePayFragment$1
       MiniGamePayFragment.access$000(this.this$0, this.val$event, localJSONObject.toString(), this.val$seq);
       return;
       localJSONObject.put("resultCode", -3);
-      localJSONObject.put("errMsg", ajya.a(2131706859));
+      localJSONObject.put("errMsg", alpo.a(2131707231));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGamePayFragment.1
  * JD-Core Version:    0.7.0.1
  */

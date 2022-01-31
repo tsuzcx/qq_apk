@@ -1,25 +1,61 @@
-import android.graphics.Bitmap;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-
 public class lwy
-  implements baxz
+  extends lwt
 {
-  public lwy(QQServiceForAV paramQQServiceForAV) {}
+  public boolean a;
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "onDecodeTaskCompleted");
+    paramLong -= this.jdField_a_of_type_Long;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if (paramLong <= 500L)
+    {
+      i = 0;
+      f1 = f2;
     }
-    new lxq(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lwz(this, paramString, paramBitmap));
+    for (;;)
+    {
+      a(i);
+      b(f1);
+      return;
+      if ((paramLong > 500L) && (paramLong < 1167L))
+      {
+        i = (int)(255L * (paramLong - 500L) / 667L);
+        f1 = (0.5F * (float)(paramLong + 1167L) - 500.0F) / 667.0F;
+      }
+      else if (((paramLong >= 1167L) && (paramLong <= 2167L)) || (!this.jdField_a_of_type_Boolean))
+      {
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 2167L)
+        {
+          f1 = f2;
+          i = j;
+          if (paramLong < 2500L)
+          {
+            i = (int)((paramLong - 2500L) * 255L / -333L);
+            f1 = f2;
+          }
+        }
+      }
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwy
  * JD-Core Version:    0.7.0.1
  */

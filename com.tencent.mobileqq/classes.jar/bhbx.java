@@ -1,28 +1,29 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.view.ViewGroup;
-import cooperation.qzone.contentbox.model.MQMsg;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
 
-public abstract interface bhbx
-  extends bfos
+public class bhbx
+  implements Animator.AnimatorListener
 {
-  public abstract void a();
+  public bhbx(PageWebviewContainer paramPageWebviewContainer, bgid parambgid) {}
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Bgid.b();
+  }
   
-  public abstract void a(Handler paramHandler);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Bgid.a();
+  }
   
-  public abstract boolean a(ViewGroup paramViewGroup, MQMsg paramMQMsg);
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhbx
  * JD-Core Version:    0.7.0.1
  */

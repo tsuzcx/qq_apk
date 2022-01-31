@@ -1,25 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController.4.1;
 
 public class rxr
-  implements rwe
+  implements View.OnClickListener
 {
-  public rxr(BridgeModule paramBridgeModule, String paramString) {}
+  public rxr(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, null);
+    this.a.d = true;
+    SlideActiveAnimController.a(this.a, new SlideActiveAnimController.4.1(this));
+    SlideActiveAnimController.a(this.a).postDelayed(SlideActiveAnimController.a(this.a), 5000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxr
  * JD-Core Version:    0.7.0.1
  */

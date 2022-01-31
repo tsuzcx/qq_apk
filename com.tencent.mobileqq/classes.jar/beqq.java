@@ -1,23 +1,18 @@
-class beqq
-  implements beqo
+import android.view.View;
+
+public abstract interface beqq
 {
-  beqq(beqp parambeqp) {}
+  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
   
-  public void a(int paramInt, String paramString, beqm parambeqm)
-  {
-    if ((paramInt == 0) && (parambeqm != null))
-    {
-      if (this.a.isRuntimeLoaderValid(parambeqm)) {
-        this.a.onRuntimeReady();
-      }
-      return;
-    }
-    this.a.onRuntimeFail(paramInt, paramString);
-  }
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void b(View paramView, float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beqq
  * JD-Core Version:    0.7.0.1
  */

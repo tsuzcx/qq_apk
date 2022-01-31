@@ -1,64 +1,52 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.CheckBox;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.ExpandableListView;
+import java.util.List;
 
-class qvi
-  extends aywb
+public class qvi
+  extends qvp
 {
-  qvi(qvh paramqvh) {}
+  private qvz a;
   
-  public void handleMessage(Message paramMessage)
+  public qvi(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean, qvz paramqvz)
   {
-    Object localObject = (ayqo)paramMessage.obj;
-    if ((localObject == null) || ((((ayqo)localObject).jdField_b_of_type_Int != 24) && (((ayqo)localObject).jdField_b_of_type_Int != 32))) {}
-    while ((((ayqo)localObject).jdField_b_of_type_Int == 24) && (((ayqo)localObject).c != 54)) {
+    super(paramContext, paramQQAppInterface, paramExpandableListView, paramBoolean);
+    this.jdField_a_of_type_Qvz = paramqvz;
+  }
+  
+  protected void a()
+  {
+    if ((this.jdField_a_of_type_Qvz != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Qvz.b()))
+    {
+      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719014, new Object[] { String.valueOf(this.jdField_a_of_type_Qvz.c()) });
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, str, 0).a();
       return;
     }
-    switch (paramMessage.what)
-    {
-    case 1001: 
-    case 1002: 
-    case 1004: 
-    case 1005: 
-    case 2001: 
-    case 2003: 
-    default: 
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719008), 0).a();
+  }
+  
+  protected void a(qvx paramqvx, Friends paramFriends)
+  {
+    if ((paramFriends == null) || (this.jdField_a_of_type_Qvz == null) || (this.jdField_a_of_type_Qvz.a() == null) || (this.jdField_a_of_type_Qvz.a().isEmpty())) {
       return;
     }
-    paramMessage = (Bundle)this.a.b.remove(Long.valueOf(((ayqo)localObject).jdField_b_of_type_Long));
-    paramMessage.putLong("uniseq", ((ayqo)localObject).jdField_b_of_type_Long);
-    paramMessage.putString("pic_server_id", ((ayqo)localObject).i);
-    qqstory_bhd_upload_pic.RspStoryVideo localRspStoryVideo = new qqstory_bhd_upload_pic.RspStoryVideo();
-    try
+    paramqvx.a.setBackgroundResource(2130848829);
+    if (this.jdField_a_of_type_Qvz.a().contains(paramFriends.uin))
     {
-      localRspStoryVideo.mergeFrom(((ayqo)localObject).a);
-      if (localRspStoryVideo.retcode.get() == 0)
-      {
-        localObject = localRspStoryVideo.cdn_url.get().toStringUtf8();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramMessage.putString("cdn_url", (String)localObject);
-        }
-      }
-      label214:
-      this.a.a.a(83, paramMessage);
+      paramqvx.a.setEnabled(false);
       return;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      break label214;
-    }
+    paramqvx.a.setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qvi
  * JD-Core Version:    0.7.0.1
  */

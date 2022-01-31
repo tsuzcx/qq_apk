@@ -1,23 +1,29 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+import com.tencent.biz.pubaccount.QualityReporter.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
 
-class nse
-  implements View.OnClickListener
+public class nse
 {
-  nse(nsc paramnsc, String paramString) {}
-  
-  public void onClick(View paramView)
+  public static void a(qlq paramqlq)
   {
-    if ((nsc.a(this.jdField_a_of_type_Nsc) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      onh.a(nsc.a(this.jdField_a_of_type_Nsc).getContext(), this.jdField_a_of_type_JavaLangString);
-    }
+    ThreadManager.excute(new QualityReporter.1(paramqlq), 16, null, true);
+  }
+  
+  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
+  {
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), nrz.class);
+    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
+    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
+    localNewIntent.setObserver(new nsf(localNewIntent));
+    ors.a().startServlet(localNewIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nse
  * JD-Core Version:    0.7.0.1
  */

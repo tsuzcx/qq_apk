@@ -1,51 +1,62 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
-class upf
-  implements syq<tmg, tmh>
+public class upf
+  extends uoe
 {
-  upf(upe paramupe, JobContext paramJobContext, uvo paramuvo) {}
+  ShareGroupItem jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public void a(@NonNull tmg paramtmg, @Nullable tmh paramtmh, @NonNull ErrorMessage paramErrorMessage)
+  public upf(uok paramuok, ShareGroupItem paramShareGroupItem)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
-      return;
+    super(paramuok);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
+    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isOwner();
+    this.b = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic();
+  }
+  
+  protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
+      super.a(paramView, paramCommentEntry, paramInt);
     }
-    if ((paramtmh == null) || (paramErrorMessage.isFail()))
-    {
-      ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for comment request");
-      upe.a(this.jdField_a_of_type_Upe, paramErrorMessage);
-      return;
-    }
-    if (this.jdField_a_of_type_Uvo.b == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
-    {
-      ((tbw)tcz.a(17)).a(paramtmh.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Uvo.jdField_a_of_type_JavaLangString, bool1, true);
-      boolean bool3 = paramtmh.jdField_a_of_type_Boolean;
-      boolean bool2 = bool3;
-      if (!paramtmh.jdField_a_of_type_Boolean)
+    paramView = QQStoryContext.a().b();
+    bhpy localbhpy = bhpy.a(this.jdField_a_of_type_Uok.a);
+    if (paramCommentEntry.authorUnionId.equals(paramView)) {
+      if (paramCommentEntry.status == 2)
       {
-        bool2 = bool3;
-        if (paramtmh.jdField_a_of_type_JavaUtilList.size() == 0)
-        {
-          ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "comment pull should be end!!!!!!!!!!!!");
-          bool2 = true;
-        }
+        localbhpy.c(alpo.a(2131714315));
+        localbhpy.a(alpo.a(2131714309), 3);
       }
-      paramtmg = new upb(bool1, paramtmh.jdField_a_of_type_JavaUtilList, paramtmh.b, bool2, paramtmh.jdField_a_of_type_JavaLangString);
-      upe.a(this.jdField_a_of_type_Upe, paramtmg);
+    }
+    for (;;)
+    {
+      localbhpy.d(alpo.a(2131714291));
+      localbhpy.a(new uoh(this, localbhpy, paramCommentEntry, paramInt));
+      localbhpy.show();
       return;
+      localbhpy.c(alpo.a(2131714292));
+      break;
+      if ((this.b) && (this.jdField_a_of_type_Boolean))
+      {
+        localbhpy.c(alpo.a(2131714303));
+        localbhpy.a(alpo.a(2131714312), 3);
+        localbhpy.c(alpo.a(2131714319));
+      }
+      else
+      {
+        localbhpy.c(alpo.a(2131714302));
+        localbhpy.c(alpo.a(2131714310));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upf
  * JD-Core Version:    0.7.0.1
  */

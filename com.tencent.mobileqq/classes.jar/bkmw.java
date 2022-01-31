@@ -1,38 +1,13 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.view.View;
+import android.widget.CheckBox;
 
-public class bkmw
-  implements Animator.AnimatorListener
+public abstract interface bkmw
 {
-  public bkmw(SlideBottomPanel paramSlideBottomPanel) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Bkmg != null) {
-      this.a.jdField_a_of_type_Bkmg.displayPanelFinish();
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Bkmg != null) {
-      this.a.jdField_a_of_type_Bkmg.displayPanelFinish();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = true;
-  }
+  public abstract void a(View paramView, int paramInt, CheckBox paramCheckBox);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmw
  * JD-Core Version:    0.7.0.1
  */

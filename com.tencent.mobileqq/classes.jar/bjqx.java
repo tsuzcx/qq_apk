@@ -1,33 +1,121 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
-import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.4;
+import android.text.TextUtils;
+import com.tencent.component.network.downloader.common.Utils;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.QZLog;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class bjqx
-  implements DialogInterface.OnClickListener
 {
-  public bjqx(LightWeightSoDownloadUnit.4 param4) {}
+  private static final String a = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneApkBanDomainList", "douyin.com,huoshan.com,changba.com,toutiao.com,xiguaapp.cn,xiguashipin.cn,365yg.com,snssdk.com,ixigua.com,toutiaocdn.net,music.163.com");
+  private static String b = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneCallAppUrlList", "['https?://intent\\.music\\.163\\.com.+orpheus.*']");
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static boolean a(String paramString)
   {
-    paramDialogInterface = bjqw.a(this.a.this$0).a();
-    if (paramInt == 1)
+    if (TextUtils.isEmpty(paramString)) {}
+    String[] arrayOfString;
+    do
     {
-      this.a.this$0.a.setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
-      return;
+      do
+      {
+        return false;
+        paramString = Utils.getDomin(paramString);
+      } while (TextUtils.isEmpty(paramString));
+      paramString = paramString.toLowerCase();
+      arrayOfString = a();
+    } while ((arrayOfString == null) || (arrayOfString.length == 0));
+    int j = arrayOfString.length;
+    int i = 0;
+    label44:
+    String str;
+    if (i < j)
+    {
+      str = arrayOfString[i];
+      if (!TextUtils.isEmpty(str)) {
+        break label69;
+      }
     }
-    paramDialogInterface.finish();
+    label69:
+    do
+    {
+      i += 1;
+      break label44;
+      break;
+      str = str.toLowerCase();
+      if (paramString.endsWith("." + str)) {
+        return true;
+      }
+    } while (!paramString.equals(str));
+    return true;
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    while (TextUtils.isEmpty(paramString2)) {
+      return false;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramString2 = new JSONArray(paramString2);
+        i = 0;
+        if (i >= paramString2.length()) {
+          break;
+        }
+        String str = paramString2.optString(i);
+        if (!TextUtils.isEmpty(str))
+        {
+          boolean bool = bjra.a(paramString1, str);
+          if (bool) {
+            return true;
+          }
+        }
+      }
+      catch (JSONException paramString1)
+      {
+        QZLog.e("QzoneBanApkDownloadHelper", "isUrlInRegList json error.", paramString1);
+        return false;
+      }
+      i += 1;
+    }
+  }
+  
+  private static String[] a()
+  {
+    Object localObject = a;
+    if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    do
+    {
+      return null;
+      localObject = ((String)localObject).split(",");
+    } while (localObject == null);
+    int i = 0;
+    if (i < localObject.length)
+    {
+      if (TextUtils.isEmpty(localObject[i])) {
+        localObject[i] = "";
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localObject[i] = localObject[i].trim();
+      }
+    }
+    return localObject;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    return a(paramString, b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjqx
  * JD-Core Version:    0.7.0.1
  */

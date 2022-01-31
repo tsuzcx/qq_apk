@@ -1,40 +1,27 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wqp
-  extends wps
+  extends QQUIEventReceiver<wps, wqo>
 {
-  public wqp(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, Bundle paramBundle)
+  public wqp(@NonNull wps paramwps)
   {
-    super(paramBundle);
+    super(paramwps);
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, woz paramwoz)
+  public void a(@NonNull wps paramwps, @NonNull wqo paramwqo)
   {
-    return SubscribePersonalDetailFragment.a(this.a);
+    paramwps.a(paramwqo);
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public void a(wpk paramwpk)
+  public Class acceptEventClass()
   {
-    if ((paramwpk.c()) || (paramwpk.d()))
-    {
-      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).b() == 1))
-      {
-        SubDraftChangeEvent localSubDraftChangeEvent = new SubDraftChangeEvent();
-        wpt.a().a(localSubDraftChangeEvent);
-      }
-      SubscribePersonalDetailFragment.a(this.a, paramwpk);
-    }
+    return wqo.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqp
  * JD-Core Version:    0.7.0.1
  */

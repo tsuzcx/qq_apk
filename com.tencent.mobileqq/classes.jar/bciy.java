@@ -1,48 +1,93 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.TextView;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 public class bciy
-  extends Handler
+  extends yps
 {
-  public bciy()
-  {
-    super(Looper.getMainLooper());
-  }
+  public bciy(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (String[])paramMessage.obj;
-    Object localObject = paramMessage[0];
-    CharSequence localCharSequence = paramMessage[1];
-    WeakReference localWeakReference = (WeakReference)bciq.a.remove(localObject);
-    if ((localWeakReference != null) && (localWeakReference.get() != null))
+    long l = paramBundle.getLong("troopUin");
+    try
     {
-      if (!(((TextView)localWeakReference.get()).getTag() instanceof String[])) {
-        break label142;
+      paramString1 = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
+      if (paramString1 == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
+        }
+        return;
       }
-      paramMessage = (String[])((TextView)localWeakReference.get()).getTag();
-    }
-    for (;;)
-    {
-      if ((paramMessage != null) && (paramMessage.length == 2) && (paramMessage[0].equals(localObject))) {}
+      paramString3 = paramBundle.getString("itemKey");
+      if (paramString3 == null) {
+        return;
+      }
+      paramBundle = UUID.fromString(paramString3);
       try
       {
-        ((TextView)localWeakReference.get()).setText(String.format(paramMessage[1], new Object[] { localCharSequence }));
-        ((TextView)localWeakReference.get()).setText(localCharSequence);
-        return;
-        label142:
-        paramMessage = null;
+        paramString2 = (TroopFileTransferManager.Item)paramString1.a.get(paramBundle);
+        if (paramString2 == null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("TroopFileTransferManager", 4, "bad item key" + paramString3);
+          }
+          return;
+        }
       }
-      catch (Exception paramMessage)
-      {
+      finally {}
+    }
+    finally {}
+    if (paramBoolean)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.e("TroopFileTransferManager", 4, String.format("onCopyToResult - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
+      }
+      if (paramString2.BusId == 25) {
+        label445:
         for (;;)
         {
-          ((TextView)localWeakReference.get()).setText(localCharSequence);
+          try
+          {
+            bkev.a(paramInt1);
+            if (paramInt1 == 0)
+            {
+              this.a.b.remove(paramBundle);
+              if (this.a.b.size() != 0) {
+                break label330;
+              }
+              paramString3 = new bcii(paramString2.FileName, this.a.e, 5, 604);
+              this.a.a(paramString2, 5, paramString3);
+              return;
+            }
+          }
+          finally {}
+          this.a.b.put(paramBundle, Integer.valueOf(paramInt1));
+          continue;
+          label330:
+          paramString3 = this.a.b.keySet().iterator();
+          do
+          {
+            if (!paramString3.hasNext()) {
+              break;
+            }
+            paramBundle = (UUID)paramString3.next();
+          } while (((Integer)this.a.b.get(paramBundle)).intValue() != 2147483647);
+          for (paramInt1 = 0;; paramInt1 = 1)
+          {
+            if (paramInt1 == 0) {
+              break label445;
+            }
+            paramString3 = new bcii(paramString2.FileName, this.a.e, 5, 605);
+            this.a.a(paramString2, 5, paramString3);
+            break;
+          }
         }
       }
     }
@@ -50,7 +95,7 @@ public class bciy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bciy
  * JD-Core Version:    0.7.0.1
  */

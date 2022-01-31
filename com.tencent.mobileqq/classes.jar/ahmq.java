@@ -1,30 +1,23 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.widget.FixSizeImageView;
 
-public class ahmq
+class ahmq
+  extends RecyclerView.ViewHolder
 {
-  public String a;
-  public String b;
-  public String c;
+  public FixSizeImageView a;
+  public FixSizeImageView b;
   
-  public void a(boolean paramBoolean)
+  public ahmq(ahmo paramahmo, View paramView)
   {
-    if (QZLog.isColorLevel()) {
-      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      return false;
-    }
-    return apvd.a(this.c);
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131367506));
+    this.b = ((FixSizeImageView)paramView.findViewById(2131370067));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahmq
  * JD-Core Version:    0.7.0.1
  */

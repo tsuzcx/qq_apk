@@ -15,21 +15,21 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import bbdv;
-import bbll;
+import bdcq;
+import bdkf;
 import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
 import java.util.Iterator;
 import java.util.List;
-import rfb;
-import rfc;
+import rux;
+import ruy;
 
 public class ReadInJoySearchTipsContainer
   extends ViewGroup
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = bbll.a(260.0F);
+  private int jdField_a_of_type_Int = bdkf.a(260.0F);
   private List<ReadInJoySearchTipsContainer.TipsInfo> jdField_a_of_type_JavaUtilList;
-  public rfc a;
+  public ruy a;
   private int jdField_b_of_type_Int = 5;
   private List<SearchProtocol.WordItem> jdField_b_of_type_JavaUtilList;
   
@@ -56,12 +56,12 @@ public class ReadInJoySearchTipsContainer
       return;
     }
     Button localButton = new Button(getContext());
-    localButton.setBackgroundResource(2130848476);
+    localButton.setBackgroundResource(2130848901);
     GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
     if (paramInt2 != 0)
     {
       localGradientDrawable.setStroke(1, paramInt2);
-      localButton.setPadding(bbll.a(15.0F), bbll.a(5.0F), bbll.a(15.0F), bbll.a(6.0F));
+      localButton.setPadding(bdkf.a(15.0F), bdkf.a(5.0F), bdkf.a(15.0F), bdkf.a(6.0F));
       localButton.setText(paramString1);
       localButton.setTextSize(14.0F);
       localButton.setSingleLine();
@@ -90,12 +90,12 @@ public class ReadInJoySearchTipsContainer
   
   protected int a(int paramInt)
   {
-    int i6 = (int)bbdv.a(getContext(), 7.0F);
-    int i1 = (int)bbdv.a(getContext(), 10.0F);
-    int i7 = (int)bbdv.a(getContext(), 10.0F);
-    int i8 = (int)bbdv.a(getContext(), 4.0F);
-    int m = (int)bbdv.a(getContext(), 12.0F);
-    int i9 = (int)bbdv.a(getContext(), 12.0F);
+    int i6 = (int)bdcq.a(getContext(), 7.0F);
+    int i1 = (int)bdcq.a(getContext(), 10.0F);
+    int i7 = (int)bdcq.a(getContext(), 10.0F);
+    int i8 = (int)bdcq.a(getContext(), 4.0F);
+    int m = (int)bdcq.a(getContext(), 12.0F);
+    int i9 = (int)bdcq.a(getContext(), 12.0F);
     int i10 = getChildCount();
     int n = 0;
     int k = m;
@@ -167,19 +167,19 @@ public class ReadInJoySearchTipsContainer
   
   public void onClick(View paramView)
   {
-    rfb localrfb = new rfb(this, Looper.getMainLooper());
-    Message localMessage = localrfb.obtainMessage();
+    rux localrux = new rux(this, Looper.getMainLooper());
+    Message localMessage = localrux.obtainMessage();
     localMessage.obj = paramView.getTag();
-    localrfb.sendMessage(localMessage);
+    localrux.sendMessage(localMessage);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i2 = (int)bbdv.a(getContext(), 7.0F);
-    int k = (int)bbdv.a(getContext(), 10.0F);
-    int i3 = (int)bbdv.a(getContext(), 4.0F);
-    paramInt4 = (int)bbdv.a(getContext(), 12.0F);
-    int i4 = (int)bbdv.a(getContext(), 12.0F);
+    int i2 = (int)bdcq.a(getContext(), 7.0F);
+    int k = (int)bdcq.a(getContext(), 10.0F);
+    int i3 = (int)bdcq.a(getContext(), 4.0F);
+    paramInt4 = (int)bdcq.a(getContext(), 12.0F);
+    int i4 = (int)bdcq.a(getContext(), 12.0F);
     int i5 = getChildCount();
     int i = 0;
     int j = 1;
@@ -247,9 +247,9 @@ public class ReadInJoySearchTipsContainer
     }
   }
   
-  public void setOnTipsClickListener(rfc paramrfc)
+  public void setOnTipsClickListener(ruy paramruy)
   {
-    this.jdField_a_of_type_Rfc = paramrfc;
+    this.jdField_a_of_type_Ruy = paramruy;
   }
   
   public void setmMaxLines(int paramInt)
@@ -259,7 +259,7 @@ public class ReadInJoySearchTipsContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer
  * JD-Core Version:    0.7.0.1
  */

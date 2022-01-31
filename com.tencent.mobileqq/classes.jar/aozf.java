@@ -1,26 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.1;
-
 public class aozf
-  extends BroadcastReceiver
 {
-  public aozf(FileManagerDataCenter.1 param1) {}
+  private float a;
+  private float b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aozf(float paramFloat1, float paramFloat2)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
-    {
-      paramContext = paramIntent.getBundleExtra("extraBundle");
-      aoze.a(this.a.this$0, paramContext);
-    }
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  public float a()
+  {
+    return this.a;
+  }
+  
+  public float b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozf
  * JD-Core Version:    0.7.0.1
  */

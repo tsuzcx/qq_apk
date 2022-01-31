@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.Comparator;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.widget.AbsListView;
 
 public class aigg
-  implements Comparator<TroopMemberInfo>
+  extends aigl
 {
-  private aigg(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
-  
-  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
+  public aigg(AvatarPendantActivity paramAvatarPendantActivity)
   {
-    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
-      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+    super(paramAvatarPendantActivity);
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.e == AvatarPendantActivity.d) {}
+    while (Build.VERSION.SDK_INT < 14) {
+      return;
     }
-    return 0;
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigg
  * JD-Core Version:    0.7.0.1
  */

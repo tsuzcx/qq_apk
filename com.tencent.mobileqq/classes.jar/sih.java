@@ -1,48 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 public class sih
+  extends AnimatorListenerAdapter
 {
-  private ajut jdField_a_of_type_Ajut;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  public sih(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public sih(AppInterface paramAppInterface)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Ajut = new sii(this);
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Ajut);
-    }
+    ReadInJoyDynamicGridView.b(this.a, false);
+    ReadInJoyDynamicGridView.a(this.a);
   }
   
-  public void a()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Ajut);
-    }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    ajum localajum;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
-      localajum = (ajum)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(8);
-    } while (localajum == null);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    localajum.a(paramString, 0);
+    ReadInJoyDynamicGridView.b(this.a, true);
+    ReadInJoyDynamicGridView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sih
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acvo;
-import acvp;
+import aemy;
+import aemz;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class CustomizeStrategyFactory$ThemeCustomizeStrategy$1
   implements Runnable
 {
-  public CustomizeStrategyFactory$ThemeCustomizeStrategy$1(acvo paramacvo, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public CustomizeStrategyFactory$ThemeCustomizeStrategy$1(aemy paramaemy, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
@@ -18,13 +18,13 @@ public class CustomizeStrategyFactory$ThemeCustomizeStrategy$1
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy");
       }
-      if ((acvo.a(this.this$0) == null) || (TextUtils.isEmpty(this.a.templateId)))
+      if ((aemy.a(this.this$0) == null) || (TextUtils.isEmpty(this.a.templateId)))
       {
         CustomizeStrategyFactory.a().a(this.a);
         return;
       }
       String str = this.a.templateId + ".png";
-      acvo.a(this.this$0).b(str, new acvp(this));
+      aemy.a(this.this$0).b(str, new aemz(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -35,7 +35,7 @@ public class CustomizeStrategyFactory$ThemeCustomizeStrategy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeCustomizeStrategy.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,131 +1,88 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.PlayerGestureGroupHolder.OnViewPagerGestureListener.1;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class voo
-  extends voe
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public static final int a;
-  public float a;
-  public Paint a;
-  voa a;
-  public von a;
-  public float b;
-  public int b;
-  public Paint b;
-  public int c = actj.a(6.0F, BaseApplicationImpl.getContext().getResources());
+  private voo(vom paramvom) {}
   
-  static
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_Int = vvu.a[8];
-  }
-  
-  public voo(voa paramvoa)
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Voa = paramvoa;
-  }
-  
-  private void a(Paint paramPaint, von paramvon)
-  {
-    paramPaint.setXfermode(null);
-    paramPaint.setColor(paramvon.jdField_b_of_type_Int);
-    paramPaint.setStrokeWidth(paramvon.c);
-    paramPaint.setShader(null);
-  }
-  
-  public Paint a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(Canvas paramCanvas, vob paramvob, Paint paramPaint)
-  {
-    if ((paramvob instanceof von))
-    {
-      paramvob = (von)paramvob;
-      a(paramPaint, paramvob);
-      paramCanvas.drawPath(paramvob.a, paramPaint);
+    int i = 0;
+    Object localObject = (StoryPlayerGroupHolder)this.a.a();
+    if (((StoryPlayerGroupHolder)localObject).a() == null) {
+      return super.onDoubleTap(paramMotionEvent);
     }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    localObject = (vvc)((StoryPlayerGroupHolder)localObject).b(vvc.class);
+    if ((localObject != null) && (((vvc)localObject).d()))
     {
+      try
+      {
+        localObject = (AnimationDrawable)this.a.a().getResources().getDrawable(2130846408);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        ((AnimationDrawable)localObject).start();
+        int j = 0;
+        while (i < ((AnimationDrawable)localObject).getNumberOfFrames())
+        {
+          j += ((AnimationDrawable)localObject).getDuration(i);
+          i += 1;
+        }
+        ThreadManager.getUIHandler().postDelayed(new PlayerGestureGroupHolder.OnViewPagerGestureListener.1(this, (AnimationDrawable)localObject), j);
+      }
+      catch (OutOfMemoryError paramMotionEvent)
+      {
+        azlf.a(paramMotionEvent);
+        return false;
+      }
+      wsv.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap handle");
     }
     for (;;)
     {
-      return true;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_a_of_type_Von = new von(new Path(), 101, this.jdField_a_of_type_AndroidGraphicsPaint.getColor(), this.c);
-      if (this.jdField_a_of_type_Voa != null) {
-        this.jdField_a_of_type_Voa.a(this.jdField_a_of_type_Von);
-      }
-      DoodleLayout.a("use_graffiti");
-      this.jdField_a_of_type_Von.a.reset();
-      this.jdField_a_of_type_Von.a.moveTo(f1, f2);
-      this.jdField_a_of_type_Von.a.lineTo(f1 + 1.0F, f2 + 1.0F);
-      continue;
-      if ((this.jdField_a_of_type_Von != null) && (this.jdField_a_of_type_Von.a != null)) {
-        this.jdField_a_of_type_Von.a.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, (this.jdField_a_of_type_Float + f1) / 2.0F, (this.jdField_b_of_type_Float + f2) / 2.0F);
-      }
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
+      return super.onDoubleTap(paramMotionEvent);
+      wsv.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap not handle");
     }
   }
   
-  public Paint b()
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_AndroidGraphicsPaint;
+    super.onLongPress(paramMotionEvent);
   }
   
-  public void b()
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Von = null;
+    paramMotionEvent = (StoryPlayerGroupHolder)this.a.a();
+    VideoViewVideoHolder localVideoViewVideoHolder = paramMotionEvent.a();
+    if (localVideoViewVideoHolder != null) {
+      switch (localVideoViewVideoHolder.a())
+      {
+      }
+    }
+    for (;;)
+    {
+      wsv.c(this.a.jdField_a_of_type_JavaLangString, "onSingleTapConfirmed");
+      return true;
+      paramMotionEvent.a(true, true);
+      wta.a("play_video", "clk_video", 0, 0, new String[] { "", "2", "", "" });
+      continue;
+      paramMotionEvent.a(false, true);
+      wta.a("play_video", "clk_video", 0, 0, new String[] { "", "1", "", "" });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     voo
  * JD-Core Version:    0.7.0.1
  */

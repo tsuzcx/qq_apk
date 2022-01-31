@@ -21,7 +21,7 @@ class UIJsPlugin$3
     {
       if (UIJsPlugin.access$000(this.this$0) == null)
       {
-        ViewGroup localViewGroup2 = (ViewGroup)this.this$0.jsPluginEngine.getActivityContext().findViewById(2131370269);
+        ViewGroup localViewGroup2 = (ViewGroup)this.this$0.jsPluginEngine.getActivityContext().findViewById(2131370566);
         ViewGroup localViewGroup1 = localViewGroup2;
         if (localViewGroup2 == null) {
           localViewGroup1 = (ViewGroup)this.this$0.jsPluginEngine.getActivityContext().findViewById(16908290);
@@ -52,7 +52,7 @@ class UIJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UIJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

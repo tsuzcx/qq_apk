@@ -1,29 +1,24 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class awqi
-  extends awqb
+  implements Animation.AnimationListener
 {
-  awoh a(afgv paramafgv, List<awoi> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  public awqi(BreatheEffectView paramBreatheEffectView, awqn paramawqn) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    awvz.a(80);
-    return new awnn(paramafgv, paramList, paramString1, paramBoolean);
+    this.jdField_a_of_type_Awqn.a();
   }
   
-  awoi a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
-  {
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  awoi a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
-  {
-    return new awno(paramrecord, paramString, paramCharSequence);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awqi
  * JD-Core Version:    0.7.0.1
  */

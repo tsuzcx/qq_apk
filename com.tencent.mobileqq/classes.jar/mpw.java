@@ -1,57 +1,72 @@
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.Context;
+import android.os.Environment;
+import android.os.StatFs;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
 
 public class mpw
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
-  public String i = "---";
+  public static String a = ".mp4";
   
-  public mpw(String paramString1, String paramString2, VideoAppInterface paramVideoAppInterface)
+  public static long a()
   {
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_e_of_type_JavaLangString = "-9999";
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Boolean = TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramVideoAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_Long = AudioHelper.b();
+    File localFile = Environment.getExternalStorageDirectory();
+    try
+    {
+      StatFs localStatFs = new StatFs(localFile.getPath());
+      long l1 = localStatFs.getBlockSize();
+      long l2 = localStatFs.getAvailableBlocks();
+      if (QLog.isColorLevel()) {
+        QLog.d("FileSwapHelper", 2, "getStorageLeft left=" + l1 * l2);
+      }
+      return l1 * l2;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("FileSwapHelper", 1, "getSpaceLeft exception:" + localThrowable + ", path=" + localFile, localThrowable);
+    }
+    return 2147483647L;
   }
   
-  public boolean a()
+  public static long a(File paramFile)
   {
-    return (this.jdField_f_of_type_Int == 1) || (this.jdField_f_of_type_Int == 2) || ((this.jdField_a_of_type_Int == 0) && (this.jdField_f_of_type_Int == 0));
+    if (paramFile.exists())
+    {
+      paramFile = new FileInputStream(paramFile);
+      long l = paramFile.available();
+      paramFile.close();
+      return l;
+    }
+    QLog.e("FileSwapHelper", 1, new Object[] { "获取文件大小", "文件不存在!" });
+    return 0L;
   }
   
-  public boolean b()
+  public static String a()
   {
-    return (this.jdField_a_of_type_Int != 0) && (this.jdField_f_of_type_Int == 0);
+    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
+    str = str + "/QQVideo/";
+    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
+    str = str + a;
+    File localFile = new File(str).getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return str;
   }
   
-  public String toString()
+  public static void a(String paramString, Context paramContext)
   {
-    return "mSeq(" + this.jdField_a_of_type_Long + "), mStartUin(" + this.jdField_a_of_type_JavaLangString + "), mPlayUin(" + this.jdField_b_of_type_JavaLangString + "), mStarter(" + this.jdField_b_of_type_Boolean + "), mRedbagId(" + this.c + "), SucAboutGame(" + this.jdField_a_of_type_Boolean + "), ExceptionType(" + this.jdField_f_of_type_Int + "), ErrorType(" + this.jdField_e_of_type_Int + "), ResultCode(" + this.jdField_e_of_type_JavaLangString + "), ResultState(" + this.jdField_f_of_type_JavaLangString + ")";
+    if (QLog.isColorLevel()) {
+      QLog.d("FileSwapHelper", 2, "notifyMp4Saved=" + paramString);
+    }
+    xmx.a(paramContext, new File(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpw
  * JD-Core Version:    0.7.0.1
  */

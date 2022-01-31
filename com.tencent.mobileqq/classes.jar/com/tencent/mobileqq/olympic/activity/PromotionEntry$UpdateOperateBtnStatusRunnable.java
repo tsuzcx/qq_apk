@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.olympic.activity;
 
-import akyn;
-import akyt;
+import ampd;
+import ampj;
 import android.animation.ObjectAnimator;
 import android.widget.ImageView;
-import augf;
+import avxj;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
@@ -16,7 +16,7 @@ import java.lang.ref.WeakReference;
 public class PromotionEntry$UpdateOperateBtnStatusRunnable
   implements Runnable
 {
-  akyn jdField_a_of_type_Akyn = null;
+  ampd jdField_a_of_type_Ampd = null;
   public ObjectAnimator a;
   public LottieDrawable a;
   OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = null;
@@ -48,13 +48,13 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
     do
     {
       return;
-      if (this.jdField_a_of_type_Akyn == null)
+      if (this.jdField_a_of_type_Ampd == null)
       {
         QLog.w(PromotionEntry.a, 1, "createShowOperateBtnAnim, promotionItem为空");
         return;
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null);
-    Object localObject = akyt.a(this.jdField_a_of_type_Akyn);
+    Object localObject = ampj.a(this.jdField_a_of_type_Ampd);
     a((String)localObject);
     try
     {
@@ -70,7 +70,7 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new augf(this, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new avxj(this, paramString);
   }
   
   public void run()
@@ -109,7 +109,7 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable
  * JD-Core Version:    0.7.0.1
  */

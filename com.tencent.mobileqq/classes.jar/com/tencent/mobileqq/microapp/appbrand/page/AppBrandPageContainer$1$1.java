@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.appbrand.page;
 
-import bcqf;
-import bcql;
+import bepp;
+import com.tencent.mobileqq.widget.QQToast;
 import java.lang.ref.WeakReference;
 
 class AppBrandPageContainer$1$1
@@ -40,14 +40,14 @@ class AppBrandPageContainer$1$1
       {
         localAppBrandPageContainer.launch(this.this$1.val$url, "reLaunch");
         continue;
-        bcql.a(this.this$1.val$dialog.getContext(), "页面不存在，请稍后重试", 1).a();
+        QQToast.a(this.this$1.val$dialog.getContext(), "页面不存在，请稍后重试", 1).a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer.1.1
  * JD-Core Version:    0.7.0.1
  */

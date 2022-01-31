@@ -6,7 +6,7 @@ import android.view.View;
 @Keep
 public abstract interface AdImageViewAdapter
 {
-  public abstract View getImageView(AdImageViewAdapter.Params paramParams);
+  public abstract View buildImageView(AdImageViewAdapter.Params paramParams);
 }
 
 

@@ -29,120 +29,84 @@ class TPPlayer$EventHandler
   
   public void handleMessage(Message paramMessage)
   {
-    TPLogUtil.d(TPPlayer.access$500(this.this$0), "mTransformHandler msg : " + paramMessage.what);
-    TPPlayerListeners localTPPlayerListeners = TPPlayer.access$800(this.this$0);
+    TPLogUtil.d(TPPlayer.access$700(this.this$0), "mTransformHandler msg : " + paramMessage.what);
+    TPPlayerListeners localTPPlayerListeners = TPPlayer.access$1000(this.this$0);
     if (localTPPlayerListeners == null) {}
     do
     {
+      TPThreadSwitchCommons.TPSwitchCommonParams localTPSwitchCommonParams;
       do
       {
         do
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                TPThreadSwitchCommons.TPSwitchCommonParams localTPSwitchCommonParams;
-                                do
-                                {
-                                  do
-                                  {
-                                    do
-                                    {
-                                      do
-                                      {
-                                        return;
-                                        switch (paramMessage.what)
-                                        {
-                                        case 258: 
-                                        case 259: 
-                                        default: 
-                                          return;
-                                        }
-                                      } while (localTPPlayerListeners == null);
-                                      localTPPlayerListeners.onPrepared(this.mPlayer);
-                                      return;
-                                    } while (localTPPlayerListeners == null);
-                                    localTPPlayerListeners.onCompletion(this.mPlayer);
-                                    return;
-                                    localTPSwitchCommonParams = (TPThreadSwitchCommons.TPSwitchCommonParams)paramMessage.obj;
-                                    if ((localTPSwitchCommonParams != null) && (localTPPlayerListeners != null) && (!TPPlayer.access$000(this.this$0).hasWaitDefTask()))
-                                    {
-                                      localTPPlayerListeners.onInfo(this.mPlayer, paramMessage.arg1, localTPSwitchCommonParams.arg1, localTPSwitchCommonParams.arg2, localTPSwitchCommonParams.extraObject);
-                                      return;
-                                    }
-                                  } while ((localTPSwitchCommonParams == null) || (localTPPlayerListeners == null));
-                                  localTPPlayerListeners.onInfo(this.mPlayer, paramMessage.arg1, localTPSwitchCommonParams.arg1, localTPSwitchCommonParams.arg2, localTPSwitchCommonParams.extraObject);
-                                  return;
-                                  localTPSwitchCommonParams = (TPThreadSwitchCommons.TPSwitchCommonParams)paramMessage.obj;
-                                } while ((localTPSwitchCommonParams == null) || (localTPPlayerListeners == null));
-                                localTPPlayerListeners.onError(this.mPlayer, paramMessage.arg1, paramMessage.arg2, localTPSwitchCommonParams.arg1, localTPSwitchCommonParams.arg2);
-                                return;
-                              } while (localTPPlayerListeners == null);
-                              localTPPlayerListeners.onSeekComplete(this.mPlayer);
-                              return;
-                              paramMessage = (TPThreadSwitchCommons.TPSwitchCommonParams)paramMessage.obj;
-                            } while ((paramMessage == null) || (localTPPlayerListeners == null));
-                            localTPPlayerListeners.onVideoSizeChanged(this.mPlayer, paramMessage.arg1, paramMessage.arg2);
-                            return;
-                          } while (localTPPlayerListeners == null);
-                          localTPPlayerListeners.onSubtitleData(this.mPlayer, (TPSubtitleData)paramMessage.obj);
-                          return;
-                        } while (localTPPlayerListeners == null);
-                        localTPPlayerListeners.onVideoFrameOut(this.mPlayer, (TPVideoFrameBuffer)paramMessage.obj);
-                        return;
-                      } while (localTPPlayerListeners == null);
-                      localTPPlayerListeners.onAudioFrameOut(this.mPlayer, (TPAudioFrameBuffer)paramMessage.obj);
-                      return;
-                    } while (localTPPlayerListeners == null);
-                    localTPPlayerListeners.onError(this.mPlayer, paramMessage.arg1, paramMessage.arg2, 0L, 0L);
-                    return;
-                  } while (localTPPlayerListeners == null);
-                  localTPPlayerListeners.onInfo(this.mPlayer, 1002, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
-                  return;
-                } while (localTPPlayerListeners == null);
-                localTPPlayerListeners.onInfo(this.mPlayer, 1003, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
-                return;
-              } while (localTPPlayerListeners == null);
-              localTPPlayerListeners.onInfo(this.mPlayer, 1001, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
-              return;
-            } while (localTPPlayerListeners == null);
-            localTPPlayerListeners.onInfo(this.mPlayer, 1004, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
-            return;
-          } while (localTPPlayerListeners == null);
-          localTPPlayerListeners.onInfo(this.mPlayer, 1005, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
           return;
-        } while (localTPPlayerListeners == null);
-        localTPPlayerListeners.onInfo(this.mPlayer, 1006, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+          switch (paramMessage.what)
+          {
+          case 258: 
+          case 259: 
+          default: 
+            return;
+          case 257: 
+            TPLogUtil.i(TPPlayer.access$700(this.this$0), "onPrepared");
+            localTPPlayerListeners.onPrepared(this.mPlayer);
+            return;
+          case 260: 
+            localTPPlayerListeners.onCompletion(this.mPlayer);
+            return;
+          case 261: 
+            localTPSwitchCommonParams = (TPThreadSwitchCommons.TPSwitchCommonParams)paramMessage.obj;
+            if ((localTPSwitchCommonParams != null) && (!TPPlayer.access$000(this.this$0).hasWaitDefTask()))
+            {
+              localTPPlayerListeners.onInfo(this.mPlayer, paramMessage.arg1, localTPSwitchCommonParams.arg1, localTPSwitchCommonParams.arg2, localTPSwitchCommonParams.extraObject);
+              return;
+            }
+            break;
+          }
+        } while (localTPSwitchCommonParams == null);
+        localTPPlayerListeners.onInfo(this.mPlayer, paramMessage.arg1, localTPSwitchCommonParams.arg1, localTPSwitchCommonParams.arg2, localTPSwitchCommonParams.extraObject);
         return;
-      } while (localTPPlayerListeners == null);
-      localTPPlayerListeners.onInfo(this.mPlayer, 1007, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+        localTPSwitchCommonParams = (TPThreadSwitchCommons.TPSwitchCommonParams)paramMessage.obj;
+      } while (localTPSwitchCommonParams == null);
+      localTPPlayerListeners.onError(this.mPlayer, paramMessage.arg1, paramMessage.arg2, localTPSwitchCommonParams.arg1, localTPSwitchCommonParams.arg2);
       return;
-    } while (localTPPlayerListeners == null);
+      localTPPlayerListeners.onSeekComplete(this.mPlayer);
+      return;
+      paramMessage = (TPThreadSwitchCommons.TPSwitchCommonParams)paramMessage.obj;
+    } while (paramMessage == null);
+    localTPPlayerListeners.onVideoSizeChanged(this.mPlayer, paramMessage.arg1, paramMessage.arg2);
+    return;
+    localTPPlayerListeners.onSubtitleData(this.mPlayer, (TPSubtitleData)paramMessage.obj);
+    return;
+    localTPPlayerListeners.onVideoFrameOut(this.mPlayer, (TPVideoFrameBuffer)paramMessage.obj);
+    return;
+    localTPPlayerListeners.onAudioFrameOut(this.mPlayer, (TPAudioFrameBuffer)paramMessage.obj);
+    return;
+    localTPPlayerListeners.onError(this.mPlayer, paramMessage.arg1, paramMessage.arg2, 0L, 0L);
+    return;
+    localTPPlayerListeners.onInfo(this.mPlayer, 1002, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    return;
+    localTPPlayerListeners.onInfo(this.mPlayer, 1003, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    return;
+    localTPPlayerListeners.onInfo(this.mPlayer, 1001, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    return;
+    localTPPlayerListeners.onInfo(this.mPlayer, 1004, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    return;
+    localTPPlayerListeners.onInfo(this.mPlayer, 1005, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    return;
+    localTPPlayerListeners.onInfo(this.mPlayer, 1006, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    return;
+    localTPPlayerListeners.onInfo(this.mPlayer, 1007, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    return;
     localTPPlayerListeners.onInfo(this.mPlayer, 1008, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    return;
+    localTPPlayerListeners.onInfo(this.mPlayer, 1010, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    return;
+    localTPPlayerListeners.onStateChange(paramMessage.arg1, paramMessage.arg2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer.EventHandler
  * JD-Core Version:    0.7.0.1
  */

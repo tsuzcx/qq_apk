@@ -1,203 +1,175 @@
-import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Paint;
-import android.text.InputFilter;
-import android.text.InputFilter.LengthFilter;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentHelperCallback.1;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class vmq
-  extends Dialog
-  implements View.OnClickListener
+  implements wfa
 {
-  public final int a;
-  public ViewGroup a;
-  public ViewTreeObserver.OnGlobalLayoutListener a;
-  public ClipboardEditText a;
-  public String a;
-  public vlp a;
-  public vmu a;
-  public int b;
-  public int c = -1;
-  public int d = 1000;
-  public int e;
-  public int f;
-  public int g;
+  private vmq(vml paramvml) {}
   
-  public vmq(Context paramContext)
+  public void V_()
   {
-    super(paramContext, 2131755177);
-    this.jdField_a_of_type_Int = 420;
-    this.jdField_a_of_type_Vlp = new vlp();
+    int i = vml.a(this.a).b();
+    vml.a(this.a).setSelectionFromBottom(i, 0);
   }
   
-  private void a()
+  public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131561382, null));
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new vmw(this, null);
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new vmv(this, null));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText = ((ClipboardEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377120));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setBackgroundColor(super.getContext().getResources().getColor(2131166327));
-    if (vla.jdField_a_of_type_Int > vpm.b(getContext(), 14.0F)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setPadding(vla.jdField_a_of_type_Int, vpm.b(getContext(), 5.0F), vla.jdField_a_of_type_Int, vpm.b(getContext(), 5.0F));
+    vml.a(this.a).p();
+  }
+  
+  public void a(CommentEntry paramCommentEntry)
+  {
+    wkp localwkp = (wkp)urr.a(11);
+    uqo localuqo = (uqo)urr.a(17);
+    boolean bool = vml.a(this.a).a();
+    if ((!vml.a(this.a).a(bool)) && (vml.a(this.a).a(bool) == null))
+    {
+      CommentEntry localCommentEntry = wew.a(vml.a(this.a).a(bool) - vml.a(this.a).a(bool).size());
+      vml.a(this.a).c(localCommentEntry, bool);
+      vml.a(this.a).a(localCommentEntry, bool);
+    }
+    vml.a(this.a).a(paramCommentEntry, bool);
+    wsv.b("Q.qqstory.player.CommentFloatDialog", "after add comment. mCommentCount = %d, mFanCommentCount = %d, mFanCommentCount = %d.", Integer.valueOf(vml.a(this.a).a.mCommentCount), Integer.valueOf(vml.a(this.a).a.mFanCommentCount), Integer.valueOf(vml.a(this.a).a.mFriendCommentCount));
+    int i;
+    if (vml.a(this.a).a.mDenyComment == 1)
+    {
+      i = 1;
+      if (i != 0)
+      {
+        QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131702550), 0).a();
+        paramCommentEntry.status = 2;
+      }
+      vml.a(this.a).p();
+      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.OnCommentHelperCallback.1(this), 50L);
+      vml.a(this.a).a = ((CommentLikeFeedItem)localwkp.a(vml.a(this.a).a));
+      if (!vml.a(this.a).a()) {
+        break label347;
+      }
+      if (!bool) {
+        break label334;
+      }
+      paramCommentEntry.type = 4;
+      paramCommentEntry.pbType = 1;
+      label313:
+      localuqo.a(paramCommentEntry);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.requestFocus();
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setCursorVisible(false);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.addTextChangedListener(new vmr(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setOnTouchListener(new vms(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setOnFocusChangeListener(new vmt(this));
+      if (i == 0) {
+        b(paramCommentEntry);
+      }
       return;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setPadding(vpm.b(getContext(), 14.0F), vpm.b(getContext(), 5.0F), vpm.b(getContext(), 14.0F), vpm.b(getContext(), 5.0F));
-    }
-  }
-  
-  private void b()
-  {
-    Window localWindow = super.getWindow();
-    if (localWindow != null)
-    {
-      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-      localLayoutParams.width = -1;
-      localLayoutParams.flags |= 0x20;
-      localLayoutParams.gravity = 80;
-      localWindow.setAttributes(localLayoutParams);
-    }
-  }
-  
-  protected int a()
-  {
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getTop();
-    int j = b();
-    TextPaint localTextPaint = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getPaint();
-    return (int)(i + j + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBaseline() + localTextPaint.ascent());
-  }
-  
-  public int a(String paramString)
-  {
-    int i = 0;
-    int k = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    int m;
-    int j;
-    do
-    {
-      return k;
-      paramString = paramString.toCharArray();
-      m = paramString.length;
-      j = 0;
-      k = i;
-    } while (j >= m);
-    if (bbkk.c(paramString[j])) {
-      i += 3;
-    }
-    for (;;)
-    {
-      j += 1;
+      i = 0;
       break;
-      i += 1;
+      label334:
+      paramCommentEntry.type = 3;
+      paramCommentEntry.pbType = 0;
+      break label313;
+      label347:
+      paramCommentEntry.pbType = vml.a(this.a).a.getCommentLikeType();
+      localuqo.b(paramCommentEntry);
     }
   }
   
-  public void a(int paramInt)
+  public void b(int paramInt)
   {
-    this.d = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
-  }
-  
-  public void a(vlp paramvlp)
-  {
-    String str2 = paramvlp.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramvlp.jdField_a_of_type_JavaLangString = str1;
-    this.jdField_a_of_type_JavaLangString = str1;
-    this.e = paramvlp.jdField_a_of_type_Int;
-    this.f = paramvlp.d;
-    this.jdField_a_of_type_Vlp.a(paramvlp);
-    ved.b("EditTextDialog", "setTextInfo:" + this.jdField_a_of_type_Vlp.toString());
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setTextSize(vpm.c(getContext(), this.jdField_a_of_type_Vlp.b));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setText(this.jdField_a_of_type_Vlp.jdField_a_of_type_JavaLangString);
-    int j = this.jdField_a_of_type_Vlp.jdField_a_of_type_JavaLangString.length();
-    paramvlp = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText;
-    int i = j;
-    if (this.d < j) {
-      i = this.d;
-    }
-    paramvlp.setSelection(i);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setCursorVisible(true);
-    if (this.jdField_a_of_type_Vlp.c == 2) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setBackgroundColor(super.getContext().getResources().getColor(2131166327));
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-  }
-  
-  public void a(vmu paramvmu)
-  {
-    this.jdField_a_of_type_Vmu = paramvmu;
-  }
-  
-  public void a(vpi paramvpi)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setClipboardCallBack(paramvpi);
-    }
-  }
-  
-  protected int b()
-  {
-    return this.g;
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (InputMethodManager)getContext().getSystemService("input_method");
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText != null) && (paramView.isActive())) {
-      paramView.toggleSoftInput(1, 2);
-    }
-    super.dismiss();
-  }
-  
-  public void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Vmu == null) {
+    boolean bool = vml.a(this.a).a();
+    Object localObject = vml.a(this.a).a(bool);
+    if ((paramInt < 0) || (paramInt >= ((List)localObject).size()))
+    {
+      wsv.d("Q.qqstory.player.CommentFloatDialog", "delete comment error , IndexOutOfBoundsException , need index = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(((List)localObject).size()) });
       return;
     }
-    String str2 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getText().toString();
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
+    localObject = (CommentEntry)vml.a(this.a).a(bool).get(paramInt);
+    if (((CommentEntry)localObject).status != 0)
+    {
+      vml.a(this.a).a((CommentEntry)localObject, bool);
+      return;
     }
-    this.jdField_a_of_type_Vlp.jdField_a_of_type_JavaLangString = str1;
-    this.jdField_a_of_type_Vmu.a(false, this.jdField_a_of_type_Vlp);
+    if (!bdee.d(this.a.getContext()))
+    {
+      QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131702551), 0).a();
+      wsv.d("Q.qqstory.player.CommentFloatDialog", "delete comment failed. invalidate network.");
+      return;
+    }
+    ((CommentEntry)localObject).status = 1;
+    unw.a((CommentEntry)localObject, new vmr(this, (CommentEntry)localObject, bool));
   }
   
-  public void setContentView(int paramInt)
+  public void b(CommentEntry paramCommentEntry)
   {
-    this.b = actj.a(100.0F, getContext().getResources());
-    b();
-    a();
-    super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
+    uok.a(vml.a(this.a).a, paramCommentEntry, vml.c(this.a), vml.a(this.a), new vms(this));
+  }
+  
+  public void c()
+  {
+    Object localObject = vml.a(this.a).a("CommentFloatDialog");
+    if (localObject != null) {
+      ((xrt)localObject).a(false);
+    }
+    localObject = vml.a(this.a).getLayoutParams();
+    if (localObject == null) {
+      localObject = new ViewGroup.LayoutParams(-1, this.a.getContext().getResources().getDimensionPixelOffset(2131298802));
+    }
+    for (;;)
+    {
+      vml.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
+      ((ViewGroup.LayoutParams)localObject).height = this.a.getContext().getResources().getDimensionPixelOffset(2131298804);
+    }
+  }
+  
+  public void d()
+  {
+    boolean bool = false;
+    Object localObject = vml.a(this.a).a("CommentFloatDialog");
+    if (localObject != null)
+    {
+      if (vml.a(this.a) != null)
+      {
+        if (!vml.a(this.a).a(vml.a(this.a).a())) {
+          bool = true;
+        }
+        ((xrt)localObject).a(bool);
+      }
+    }
+    else
+    {
+      localObject = vml.a(this.a).getLayoutParams();
+      if (localObject != null) {
+        break label119;
+      }
+      localObject = new ViewGroup.LayoutParams(-1, this.a.getContext().getResources().getDimensionPixelOffset(2131298802));
+    }
+    for (;;)
+    {
+      vml.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
+      ((xrt)localObject).a(false);
+      break;
+      label119:
+      ((ViewGroup.LayoutParams)localObject).height = this.a.getContext().getResources().getDimensionPixelOffset(2131298802);
+    }
+  }
+  
+  public void h_(int paramInt)
+  {
+    vml.a(this.a).setSelectionFromBottom(vml.a(this.a).a() + paramInt, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmq
  * JD-Core Version:    0.7.0.1
  */

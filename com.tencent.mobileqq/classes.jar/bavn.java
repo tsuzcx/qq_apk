@@ -1,60 +1,55 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import android.content.res.Resources;
+import java.io.IOException;
+import org.xmlpull.v1.XmlPullParserException;
 
 public class bavn
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private static bavm jdField_a_of_type_Bavm;
+  private static boolean jdField_a_of_type_Boolean;
+  
+  private static bavm a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReportServlet", 2, "onReceive");
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bbmx.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
-      localBundle.putByteArray("extra_data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
-    }
+    a(paramContext);
+    return jdField_a_of_type_Bavm;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static String a(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReportServlet", 2, "onSend");
+    String str = paramString;
+    if (paramString != null) {
+      str = paramString.toLowerCase();
     }
-    Object localObject = paramIntent.getStringExtra("extra_cmd");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
+    return a(paramContext).a(str);
+  }
+  
+  private static void a(Context paramContext)
+  {
+    bavl localbavl;
+    if (!jdField_a_of_type_Boolean)
     {
+      localbavl = new bavl();
+      paramContext = paramContext.getResources().getXml(2131886084);
+    }
+    try
+    {
+      jdField_a_of_type_Bavm = localbavl.a(paramContext);
+      jdField_a_of_type_Boolean = true;
       return;
-      paramIntent = paramIntent.getByteArrayExtra("extra_data");
-      paramPacket.setSSOCommand((String)localObject);
-    } while (paramIntent == null);
-    localObject = new byte[paramIntent.length + 4];
-    bbmx.a((byte[])localObject, 0, paramIntent.length + 4);
-    bbmx.a((byte[])localObject, 4, paramIntent, paramIntent.length);
-    paramPacket.putSendData((byte[])localObject);
+    }
+    catch (XmlPullParserException paramContext)
+    {
+      throw new RuntimeException("PreselectedChannelsActivity: XmlPullParserException");
+    }
+    catch (IOException paramContext)
+    {
+      throw new RuntimeException("PreselectedChannelsActivity: IOException");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bavn
  * JD-Core Version:    0.7.0.1
  */

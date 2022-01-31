@@ -1,202 +1,331 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryPic;
-import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.msg.im_msg_body.ApolloActMsg;
+import tencent.im.msg.im_msg_body.ArkAppElem;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.CrmElem;
+import tencent.im.msg.im_msg_body.CustomFace;
+import tencent.im.msg.im_msg_body.DeliverGiftMsg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.GeneralFlags;
+import tencent.im.msg.im_msg_body.GroupFile;
+import tencent.im.msg.im_msg_body.GroupPubAccountInfo;
+import tencent.im.msg.im_msg_body.LifeOnlineAccount;
+import tencent.im.msg.im_msg_body.LightAppElem;
+import tencent.im.msg.im_msg_body.MarketFace;
+import tencent.im.msg.im_msg_body.MarketTrans;
+import tencent.im.msg.im_msg_body.NearByMessageType;
+import tencent.im.msg.im_msg_body.NotOnlineImage;
+import tencent.im.msg.im_msg_body.QQWalletMsg;
+import tencent.im.msg.im_msg_body.RichMsg;
+import tencent.im.msg.im_msg_body.ShakeWindow;
+import tencent.im.msg.im_msg_body.SourceMsg;
+import tencent.im.msg.im_msg_body.TipsInfo;
+import tencent.im.msg.im_msg_body.TransElem;
+import tencent.im.msg.im_msg_body.VideoFile;
+import tencent.im.msg.im_msg_body.WorkflowNotifyMsg;
 
-class ayvq
-  implements ITransactionCallback
+public class ayvq
 {
-  ayvq(ayvp paramayvp, long paramLong) {}
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = ;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  protected static int a(ArrayList<String> paramArrayList)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = vyo.a((String)paramHashMap.get("upFlow_WiFi"), -1L);
-    long l3 = vyo.a((String)paramHashMap.get("dwFlow_WiFi"), -1L);
-    long l4 = vyo.a((String)paramHashMap.get("upFlow_Xg"), -1L);
-    long l5 = vyo.a((String)paramHashMap.get("dwFlow_Xg"), -1L);
-    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    ved.c(ayvp.jdField_a_of_type_JavaLangString, "Transaction End : Failed. take time:" + (l1 - this.jdField_a_of_type_Long) + "ms");
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Ayvp.a(l2, l3, l4, l5);
-    this.jdField_a_of_type_Ayvp.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Ayvp.jdField_b_of_type_Aypd);
-    this.jdField_a_of_type_Ayvp.d();
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    String str1 = (String)paramHashMap.get("tc_p:");
-    String str2 = (String)paramHashMap.get("rep_bdhTrans");
-    String str3 = (String)paramHashMap.get("segspercnt");
-    String str4 = (String)paramHashMap.get("param_conf_segSize");
-    String str5 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    ved.c(ayvp.jdField_a_of_type_JavaLangString, "Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.jdField_a_of_type_Long + " transInfo:" + str2);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", str1);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str2);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str3);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str4);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str5);
-    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Ayvp.jdField_b_of_type_Aypd.b();
-    this.jdField_a_of_type_Ayvp.jdField_b_of_type_Aypd.a = 1;
-    this.jdField_a_of_type_Ayvp.s = this.jdField_a_of_type_Ayvp.q;
-    ved.c(ayvp.jdField_a_of_type_JavaLangString, "ITransactionCallback.onSuccess()");
-    if (paramArrayOfByte == null) {
-      this.jdField_a_of_type_Ayvp.d();
-    }
-    for (;;)
+    if (jdField_a_of_type_JavaUtilHashMap == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      this.jdField_a_of_type_Ayvp.a(l2, l3, l4, l5);
-      this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.a();
-      return;
-      int i;
-      if (this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.b == 196610)
-      {
-        paramHashMap = new qqstory_bhd_upload_pic.RspStoryPic();
-        try
-        {
-          paramHashMap.mergeFrom(paramArrayOfByte);
-          i = paramHashMap.retcode.get();
-          if (i != 0) {
-            break label567;
-          }
-          this.jdField_a_of_type_Ayvp.jdField_b_of_type_JavaLangString = paramHashMap.url.get().toStringUtf8();
-          ved.a(ayvp.jdField_a_of_type_JavaLangString, "upload file %s return url %s", this.jdField_a_of_type_Ayvp.d, this.jdField_a_of_type_Ayvp.jdField_b_of_type_JavaLangString);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_Ayvp.jdField_b_of_type_JavaLangString)) {
-            break label557;
-          }
-          this.jdField_a_of_type_Ayvp.jdField_j_of_type_Int = 940010;
-          this.jdField_a_of_type_Ayvp.jdField_j_of_type_JavaLangString = String.format("return illegal arg url:%s", new Object[] { this.jdField_a_of_type_Ayvp.jdField_b_of_type_JavaLangString });
-          this.jdField_a_of_type_Ayvp.d();
-          paramHashMap = bbea.a(paramArrayOfByte);
-          str1 = ayvp.jdField_a_of_type_JavaLangString;
-          paramArrayOfByte = paramHashMap;
-          if (paramHashMap == null) {
-            paramArrayOfByte = "";
-          }
-          ved.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          ved.d(ayvp.jdField_a_of_type_JavaLangString, "parser buffer exception");
-          this.jdField_a_of_type_Ayvp.d();
-        }
-        continue;
-        label557:
-        this.jdField_a_of_type_Ayvp.e();
-        continue;
-        label567:
-        this.jdField_a_of_type_Ayvp.jdField_j_of_type_Int = i;
-        this.jdField_a_of_type_Ayvp.jdField_j_of_type_JavaLangString = paramHashMap.msg.get().toStringUtf8();
-        this.jdField_a_of_type_Ayvp.d();
+      if (jdField_a_of_type_JavaUtilHashMap == null) {
+        jdField_a_of_type_JavaUtilHashMap = a();
       }
-      else if ((this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.b == 196609) || (this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.b == 327681))
-      {
-        paramHashMap = new qqstory_bhd_upload_pic.RspStoryVideo();
-        try
-        {
-          paramHashMap.mergeFrom(paramArrayOfByte);
-          i = paramHashMap.retcode.get();
-          if (i != 0) {
-            break label872;
-          }
-          this.jdField_a_of_type_Ayvp.jdField_o_of_type_JavaLangString = paramHashMap.cdn_url.get().toStringUtf8();
-          if (this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.b == 196609) {
-            this.jdField_a_of_type_Ayvp.jdField_o_of_type_JavaLangString = vzl.a(this.jdField_a_of_type_Ayvp.jdField_o_of_type_JavaLangString, "authkey");
-          }
-          this.jdField_a_of_type_Ayvp.n = paramHashMap.file_key.get().toStringUtf8();
-          if ((!TextUtils.isEmpty(this.jdField_a_of_type_Ayvp.jdField_o_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Ayvp.n))) {
-            break label862;
-          }
-          this.jdField_a_of_type_Ayvp.jdField_j_of_type_Int = 940010;
-          this.jdField_a_of_type_Ayvp.jdField_j_of_type_JavaLangString = String.format("return illegal arg vid:%s, url:%s", new Object[] { this.jdField_a_of_type_Ayvp.n, this.jdField_a_of_type_Ayvp.jdField_o_of_type_JavaLangString });
-          this.jdField_a_of_type_Ayvp.d();
-          paramHashMap = bbea.a(paramArrayOfByte);
-          str1 = ayvp.jdField_a_of_type_JavaLangString;
-          paramArrayOfByte = paramHashMap;
-          if (paramHashMap == null) {
-            paramArrayOfByte = "";
-          }
-          ved.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          ved.d(ayvp.jdField_a_of_type_JavaLangString, "parser buffer exception");
-          this.jdField_a_of_type_Ayvp.d();
-        }
-        continue;
-        label862:
-        this.jdField_a_of_type_Ayvp.e();
-        continue;
-        label872:
-        this.jdField_a_of_type_Ayvp.jdField_j_of_type_Int = i;
-        this.jdField_a_of_type_Ayvp.jdField_j_of_type_JavaLangString = paramHashMap.msg.get().toStringUtf8();
-        this.jdField_a_of_type_Ayvp.d();
-      }
-      else
-      {
-        this.jdField_a_of_type_Ayvp.d(1005);
-        this.jdField_a_of_type_Ayvp.d();
+      if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
+        return 0;
       }
     }
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
-  {
-    ved.a(ayvp.jdField_a_of_type_JavaLangString, "onTransStart %s", this.jdField_a_of_type_Ayvp.jdField_a_of_type_Aywc.i);
-    long l1 = System.currentTimeMillis();
-    long l2 = ayvp.a(this.jdField_a_of_type_Ayvp);
-    String str2 = vei.a(BaseApplication.getContext());
-    if (this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.b == 196610) {}
-    for (String str1 = "pic";; str1 = "video")
+    ??? = paramArrayList.iterator();
+    while (((Iterator)???).hasNext())
     {
-      vei.b("publish_story", "publish_bdh", 0, 0, new String[] { "", String.valueOf(l1 - l2), str2, str1 });
-      this.jdField_a_of_type_Ayvp.jdField_b_of_type_Aypd.a();
-      ayvp.a(this.jdField_a_of_type_Ayvp, System.currentTimeMillis());
-      return;
+      String str = (String)((Iterator)???).next();
+      if ((jdField_a_of_type_JavaUtilHashMap != null) && (jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
+        return ((Integer)jdField_a_of_type_JavaUtilHashMap.get(str)).intValue();
+      }
     }
+    if (paramArrayList.contains("nearbyGift")) {
+      return 26;
+    }
+    if (paramArrayList.contains("richMsg")) {
+      return 17;
+    }
+    if (paramArrayList.contains("marketFace")) {
+      return 18;
+    }
+    if ((paramArrayList.contains("notOnlineImage")) || (paramArrayList.contains("customFace"))) {
+      return 19;
+    }
+    if (paramArrayList.contains("srcMsg")) {
+      return 20;
+    }
+    if (paramArrayList.contains("flashchat")) {
+      return 30;
+    }
+    if (paramArrayList.contains("troopConfessMsg")) {
+      return 34;
+    }
+    if (paramArrayList.contains("textMsg")) {
+      return 21;
+    }
+    return 0;
   }
   
-  public void onUpdateProgress(int paramInt)
+  protected static ArrayList<String> a(List<im_msg_body.Elem> paramList)
   {
-    ayvp localayvp = this.jdField_a_of_type_Ayvp;
-    ayqo localayqo = this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo;
-    long l = paramInt;
-    localayqo.e = l;
-    localayvp.s = l;
-    if ((paramInt <= this.jdField_a_of_type_Ayvp.q) && (!this.jdField_a_of_type_Ayvp.jdField_o_of_type_Boolean) && (!this.jdField_a_of_type_Ayvp.k)) {
-      this.jdField_a_of_type_Ayvp.i();
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      im_msg_body.Elem localElem = (im_msg_body.Elem)paramList.next();
+      if (localElem.shake_window.has())
+      {
+        localArrayList.add("shakeWindow");
+      }
+      else if (localElem.deliver_gift_msg.has())
+      {
+        localArrayList.add("deliverGift");
+      }
+      else if (localElem.apollo_msg.has())
+      {
+        localArrayList.add("apolloMsg");
+      }
+      else if (localElem.group_file.has())
+      {
+        localArrayList.add("groupFile");
+      }
+      else if (localElem.ark_app.has())
+      {
+        localArrayList.add("arkApp");
+      }
+      else if (localElem.light_app.has())
+      {
+        localArrayList.add("lightApp");
+      }
+      else if (localElem.market_trans.has())
+      {
+        localArrayList.add("marketTrans");
+      }
+      else if (localElem.video_file.has())
+      {
+        localArrayList.add("videoFile");
+      }
+      else if (localElem.life_online.has())
+      {
+        localArrayList.add("lifeOnline");
+      }
+      else if (localElem.tips_info.has())
+      {
+        localArrayList.add("tipsInfo");
+      }
+      else if (localElem.msg_workflow_notify.has())
+      {
+        localArrayList.add("msgWorkFolwNotify");
+      }
+      else if ((localElem.group_pub_acc_info.has()) && (localElem.group_pub_acc_info.uint64_pub_account.has()))
+      {
+        localArrayList.add("groupPubAcc");
+      }
+      else if (localElem.trans_elem_info.has())
+      {
+        localArrayList.add("transElemInfo");
+      }
+      else if (localElem.qqwallet_msg.has())
+      {
+        localArrayList.add("qqWalletMsg");
+      }
+      else if ((localElem.common_elem.has()) && (1 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("troopReward");
+      }
+      else if ((localElem.common_elem.has()) && (2 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("pokeMsg");
+      }
+      else if ((localElem.common_elem.has()) && (3 == localElem.common_elem.uint32_service_type.get()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("flashs", 2, "pbdecodeConfig getElemStrs ==FlashPicMsg");
+        }
+        localArrayList.add("FlashPicMsg");
+      }
+      else if ((localElem.common_elem.has()) && (4 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("qqStoryMsg");
+      }
+      else if ((localElem.common_elem.has()) && (5 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("qqStoryCommentMsg");
+      }
+      else if ((localElem.common_elem.has()) && (15 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("troopStoryCommentMsg");
+      }
+      else if ((localElem.common_elem.has()) && (8 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("nearbyGift");
+      }
+      else if ((localElem.common_elem.has()) && (14 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("flashchat");
+      }
+      else if ((localElem.common_elem.has()) && (19 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("arkBabyqMsg");
+      }
+      else if ((localElem.common_elem.has()) && (20 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("arkSdkStructMsg");
+      }
+      else if (localElem.rich_msg.has())
+      {
+        localArrayList.add("richMsg");
+      }
+      else if (localElem.market_face.has())
+      {
+        localArrayList.add("marketFace");
+      }
+      else if (localElem.not_online_image.has())
+      {
+        localArrayList.add("notOnlineImage");
+      }
+      else if (localElem.custom_face.has())
+      {
+        localArrayList.add("customFace");
+      }
+      else if (localElem.hc_flash_pic.has())
+      {
+        localArrayList.add("hcFlashPic");
+      }
+      else if (localElem.src_msg.has())
+      {
+        localArrayList.add("srcMsg");
+      }
+      else if (ayvr.a(localElem).booleanValue())
+      {
+        localArrayList.add("textMsg");
+      }
+      else if (localElem.near_by_msg.has())
+      {
+        localArrayList.add("nearByMsg");
+      }
+      else if (localElem.general_flags.has())
+      {
+        localArrayList.add("generalFlags");
+      }
+      else if (localElem.crm_elem.has())
+      {
+        localArrayList.add("crmElemFlags");
+      }
+      else if ((localElem.common_elem.has()) && (13 == localElem.common_elem.uint32_service_type.get()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("updateavatar", 2, "pb decode hummer_commelem == UpdateStrangerAvatar");
+        }
+        localArrayList.add("updateAvatar");
+      }
+      else if ((localElem.common_elem.has()) && (16 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("troopStoryMsg");
+      }
+      else if ((localElem.common_elem.has()) && (18 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("goldMsg");
+      }
+      else if ((localElem.common_elem.has()) && (11 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("scribbleMsg");
+      }
+      else if ((localElem.common_elem.has()) && (21 == localElem.common_elem.uint32_service_type.get()) && (3 == localElem.common_elem.uint32_business_type.get()))
+      {
+        localArrayList.add("troopConfessMsg");
+      }
+      else if ((localElem.common_elem.has()) && (21 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("confessMsg");
+      }
+      else if ((localElem.common_elem.has()) && (23 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("pokeEmoMsg");
+      }
+      else if ((localElem.common_elem.has()) && (24 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("LimitchatConfirmMsg");
+      }
+      else if ((localElem.common_elem.has()) && (27 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("lightVideoMsg");
+      }
+      else if ((localElem.common_elem.has()) && (31 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("LbsShareMsg");
+      }
+      else if ((localElem.common_elem.has()) && (29 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("LuckyBagMsg");
+      }
+      else if ((localElem.common_elem.has()) && (34 == localElem.common_elem.uint32_service_type.get()))
+      {
+        localArrayList.add("GameInterComm");
+      }
     }
+    return localArrayList;
+  }
+  
+  protected static HashMap<String, Integer> a()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("shakeWindow", Integer.valueOf(1));
+    localHashMap.put("deliverGift", Integer.valueOf(2));
+    localHashMap.put("lolaMsg", Integer.valueOf(3));
+    localHashMap.put("apolloMsg", Integer.valueOf(4));
+    localHashMap.put("groupFile", Integer.valueOf(5));
+    localHashMap.put("arkApp", Integer.valueOf(6));
+    localHashMap.put("lightApp", Integer.valueOf(6));
+    localHashMap.put("marketTrans", Integer.valueOf(7));
+    localHashMap.put("videoFile", Integer.valueOf(8));
+    localHashMap.put("tipsInfo", Integer.valueOf(10));
+    localHashMap.put("msgWorkFolwNotify", Integer.valueOf(11));
+    localHashMap.put("groupPubAcc", Integer.valueOf(12));
+    localHashMap.put("transElemInfo", Integer.valueOf(13));
+    localHashMap.put("qqWalletMsg", Integer.valueOf(14));
+    localHashMap.put("troopReward", Integer.valueOf(15));
+    localHashMap.put("pokeMsg", Integer.valueOf(16));
+    localHashMap.put("hcFlashPic", Integer.valueOf(22));
+    localHashMap.put("FlashPicMsg", Integer.valueOf(23));
+    localHashMap.put("qqStoryMsg", Integer.valueOf(24));
+    localHashMap.put("qqStoryCommentMsg", Integer.valueOf(25));
+    localHashMap.put("troopStoryCommentMsg", Integer.valueOf(27));
+    localHashMap.put("troopStoryMsg", Integer.valueOf(28));
+    localHashMap.put("scribbleMsg", Integer.valueOf(29));
+    localHashMap.put("arkBabyqMsg", Integer.valueOf(31));
+    localHashMap.put("arkSdkStructMsg", Integer.valueOf(32));
+    localHashMap.put("pokeEmoMsg", Integer.valueOf(33));
+    localHashMap.put("LimitchatConfirmMsg", Integer.valueOf(35));
+    localHashMap.put("lightVideoMsg", Integer.valueOf(36));
+    localHashMap.put("LbsShareMsg", Integer.valueOf(37));
+    return localHashMap;
+  }
+  
+  protected static boolean a(ArrayList<String> paramArrayList)
+  {
+    return (paramArrayList.contains("lifeOnline")) || (paramArrayList.contains("nearByMsg")) || (paramArrayList.contains("generalFlags")) || (paramArrayList.contains("crmElemFlags")) || (paramArrayList.contains("updateAvatar")) || (paramArrayList.contains("goldMsg")) || (paramArrayList.contains("confessMsg")) || (paramArrayList.contains("GameInterComm"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayvq
  * JD-Core Version:    0.7.0.1
  */

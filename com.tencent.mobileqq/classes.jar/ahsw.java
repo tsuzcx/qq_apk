@@ -1,30 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class ahsw
-  implements DialogInterface.OnDismissListener
+class ahsw
+  implements QQPermissionCallback
 {
-  public ahsw(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ahsw(ahsh paramahsh) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
-    }
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
-    }
-    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
-      EditLocalVideoActivity.a(this.a, false);
-    }
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
+    bdcd.a(ahsh.a(this.a), new ahsx(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
+    ahsh.a(this.a, ahsh.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsw
  * JD-Core Version:    0.7.0.1
  */

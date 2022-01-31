@@ -1,73 +1,141 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+
 public class bilc
 {
-  private static final char jdField_a_of_type_Char = (char)Integer.parseInt("00000011", 2);
-  private static final char[] jdField_a_of_type_ArrayOfChar = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
-  private static final char b = (char)Integer.parseInt("00001111", 2);
-  private static final char c = (char)Integer.parseInt("00111111", 2);
-  private static final char d = (char)Integer.parseInt("11111100", 2);
-  private static final char e = (char)Integer.parseInt("11110000", 2);
-  private static final char f = (char)Integer.parseInt("11000000", 2);
+  private static bilc jdField_a_of_type_Bilc;
+  bilb jdField_a_of_type_Bilb;
+  bild jdField_a_of_type_Bild = new bild();
+  bilf jdField_a_of_type_Bilf;
   
-  public static String a(byte[] paramArrayOfByte)
+  static SharedPreferences a()
   {
-    int k = 0;
-    StringBuilder localStringBuilder = new StringBuilder((int)(paramArrayOfByte.length * 1.34D) + 3);
-    int i = 0;
-    int j = 0;
-    while (k < paramArrayOfByte.length)
-    {
-      j %= 8;
-      int m = i;
-      if (j < 8)
-      {
-        i = m;
-        switch (j)
-        {
-        default: 
-          i = m;
-        }
-        for (;;)
-        {
-          localStringBuilder.append(jdField_a_of_type_ArrayOfChar[i]);
-          j += 6;
-          m = i;
-          break;
-          i = (char)((char)(paramArrayOfByte[k] & d) >>> '\002');
-          continue;
-          i = (char)(paramArrayOfByte[k] & c);
-          continue;
-          m = (char)((char)(paramArrayOfByte[k] & b) << '\002');
-          i = m;
-          if (k + 1 < paramArrayOfByte.length)
-          {
-            i = (char)(m | (paramArrayOfByte[(k + 1)] & f) >>> 6);
-            continue;
-            m = (char)((char)(paramArrayOfByte[k] & jdField_a_of_type_Char) << '\004');
-            i = m;
-            if (k + 1 < paramArrayOfByte.length) {
-              i = (char)(m | (paramArrayOfByte[(k + 1)] & e) >>> 4);
-            }
-          }
-        }
-      }
-      k += 1;
-      i = m;
+    return BaseApplication.getContext().getSharedPreferences("config_qq.android.gme_sdk", 4);
+  }
+  
+  static bilc a()
+  {
+    if (jdField_a_of_type_Bilc == null) {
+      jdField_a_of_type_Bilc = new bilc();
     }
-    if (localStringBuilder.length() % 4 != 0)
+    return jdField_a_of_type_Bilc;
+  }
+  
+  public static String a()
+  {
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
     {
-      i = 4 - localStringBuilder.length() % 4;
-      while (i > 0)
+      if (QLog.isColorLevel()) {
+        QLog.i("TMG_Downloader", 2, "getFilesDir is null");
+      }
+      localObject = "";
+    }
+    String str;
+    File localFile;
+    do
+    {
+      return localObject;
+      str = ((File)localObject).getParent() + "/txlib/gme_sdk/";
+      localFile = new File(str);
+      localObject = str;
+    } while (localFile.exists());
+    localFile.mkdirs();
+    return str;
+  }
+  
+  public static String a(bilb parambilb)
+  {
+    return a() + "gme_sdk_" + parambilb.a + "_" + parambilb.b + ".zip";
+  }
+  
+  public static void a()
+  {
+    ArrayList localArrayList = bdcs.a(a());
+    if (localArrayList != null)
+    {
+      int i = 0;
+      while (i < localArrayList.size())
       {
-        localStringBuilder.append("=");
-        i -= 1;
+        QLog.e("TMG_Downloader", 1, String.format("ListSoDirs file i=" + i + ", name=" + (String)localArrayList.get(i), new Object[0]));
+        i += 1;
       }
     }
-    return localStringBuilder.toString();
+  }
+  
+  static void a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putString("gme_sdk_download_md5", paramString);
+    localEditor.commit();
+  }
+  
+  static String b()
+  {
+    return a().getString("gme_sdk_download_md5", null);
+  }
+  
+  public static boolean b(bilb parambilb)
+  {
+    String str1 = parambilb.b;
+    parambilb = a(parambilb);
+    String str2 = b();
+    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TMG_Downloader", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
+      }
+    }
+    do
+    {
+      return false;
+      if (bdcs.a(parambilb)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("TMG_Downloader", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { parambilb }));
+    return false;
+    a();
+    return true;
+  }
+  
+  boolean a(bilb parambilb)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
+    {
+      if (((QQAppInterface)localAppRuntime).getManager(21) == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TMG_Downloader", 4, "innerDownload, getNetEngine 为空");
+        }
+        return false;
+      }
+    }
+    else if (QLog.isDevelopLevel()) {
+      QLog.d("TMG_Downloader", 4, "appRuntime 不是 QQAppInterface");
+    }
+    this.jdField_a_of_type_Bilb = parambilb;
+    return this.jdField_a_of_type_Bild.a(parambilb, this.jdField_a_of_type_Bilf);
+  }
+  
+  boolean a(bilb parambilb, bilf parambilf)
+  {
+    this.jdField_a_of_type_Bilf = parambilf;
+    return a(parambilb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bilc
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bhdq;
-import bhdr;
+import bjfa;
+import bjfb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.app.common.ParcelableWrapper;
 import com.tencent.component.app.common.SmartParcelable;
@@ -25,7 +25,7 @@ import java.util.Set;
 public class ExoticEvent
   implements Parcelable
 {
-  public static final Parcelable.Creator<ExoticEvent> CREATOR = new bhdq();
+  public static final Parcelable.Creator<ExoticEvent> CREATOR = new bjfa();
   private static final String TAG = "ExoticEvent";
   private static final int TYPE_BYTE_ARRAY = 5;
   private static final int TYPE_CHAR_ARRAY = 6;
@@ -87,12 +87,12 @@ public class ExoticEvent
     }
   }
   
-  private ExoticEvent(bhdr parambhdr, int paramInt, String paramString)
+  private ExoticEvent(bjfb parambjfb, int paramInt, String paramString)
   {
-    this.mTypes = bhdr.a(parambhdr);
+    this.mTypes = bjfb.a(parambjfb);
     this.what = paramInt;
     this.sourceName = paramString;
-    this.param = bhdr.a(parambhdr);
+    this.param = bjfb.a(parambjfb);
   }
   
   private static Object foreachReadFromParcel(Parcel paramParcel, List<Integer> paramList, ClassLoader paramClassLoader)
@@ -297,17 +297,17 @@ public class ExoticEvent
     }
   }
   
-  private static boolean foreachType(bhdr parambhdr)
+  private static boolean foreachType(bjfb parambjfb)
   {
-    int i = getType(bhdr.b(parambhdr));
-    bhdr.a(parambhdr).add(Integer.valueOf(i));
+    int i = getType(bjfb.b(parambjfb));
+    bjfb.a(parambjfb).add(Integer.valueOf(i));
     switch (i)
     {
     }
     for (;;)
     {
-      return bhdr.a(parambhdr);
-      Object localObject1 = (Object[])bhdr.b(parambhdr);
+      return bjfb.a(parambjfb);
+      Object localObject1 = (Object[])bjfb.b(parambjfb);
       Object localObject2 = new Object[localObject1.length];
       i = 0;
       Object localObject3;
@@ -316,19 +316,19 @@ public class ExoticEvent
         if (i >= localObject1.length) {
           break label147;
         }
-        localObject3 = new bhdr(parambhdr, localObject1[i]);
-        if (!foreachType((bhdr)localObject3))
+        localObject3 = new bjfb(parambjfb, localObject1[i]);
+        if (!foreachType((bjfb)localObject3))
         {
-          bhdr.a(parambhdr, false);
+          bjfb.a(parambjfb, false);
           break;
         }
-        localObject2[i] = bhdr.a((bhdr)localObject3);
+        localObject2[i] = bjfb.a((bjfb)localObject3);
         i += 1;
       }
       label147:
-      bhdr.a(parambhdr, localObject2);
+      bjfb.a(parambjfb, localObject2);
       continue;
-      localObject2 = (List)bhdr.b(parambhdr);
+      localObject2 = (List)bjfb.b(parambjfb);
       localObject1 = new ArrayList(((List)localObject2).size());
       localObject2 = ((List)localObject2).iterator();
       for (;;)
@@ -336,18 +336,18 @@ public class ExoticEvent
         if (!((Iterator)localObject2).hasNext()) {
           break label242;
         }
-        localObject3 = new bhdr(parambhdr, ((Iterator)localObject2).next());
-        if (!foreachType((bhdr)localObject3))
+        localObject3 = new bjfb(parambjfb, ((Iterator)localObject2).next());
+        if (!foreachType((bjfb)localObject3))
         {
-          bhdr.a(parambhdr, false);
+          bjfb.a(parambjfb, false);
           break;
         }
-        ((List)localObject1).add(bhdr.a((bhdr)localObject3));
+        ((List)localObject1).add(bjfb.a((bjfb)localObject3));
       }
       label242:
-      bhdr.a(parambhdr, localObject1);
+      bjfb.a(parambjfb, localObject1);
       continue;
-      localObject2 = (Set)bhdr.b(parambhdr);
+      localObject2 = (Set)bjfb.b(parambjfb);
       localObject1 = new LinkedHashSet();
       localObject2 = ((Set)localObject2).iterator();
       for (;;)
@@ -355,18 +355,18 @@ public class ExoticEvent
         if (!((Iterator)localObject2).hasNext()) {
           break label331;
         }
-        localObject3 = new bhdr(parambhdr, ((Iterator)localObject2).next());
-        if (!foreachType((bhdr)localObject3))
+        localObject3 = new bjfb(parambjfb, ((Iterator)localObject2).next());
+        if (!foreachType((bjfb)localObject3))
         {
-          bhdr.a(parambhdr, false);
+          bjfb.a(parambjfb, false);
           break;
         }
-        ((Set)localObject1).add(bhdr.a((bhdr)localObject3));
+        ((Set)localObject1).add(bjfb.a((bjfb)localObject3));
       }
       label331:
-      bhdr.a(parambhdr, localObject1);
+      bjfb.a(parambjfb, localObject1);
       continue;
-      localObject2 = (Map)bhdr.b(parambhdr);
+      localObject2 = (Map)bjfb.b(parambjfb);
       localObject1 = new LinkedHashMap();
       localObject2 = ((Map)localObject2).entrySet().iterator();
       for (;;)
@@ -379,20 +379,20 @@ public class ExoticEvent
         localObject4 = ((Map.Entry)localObject4).getValue();
         if ((localObject3 != null) && (localObject4 != null))
         {
-          localObject3 = new bhdr(parambhdr, localObject3);
-          localObject4 = new bhdr(parambhdr, localObject4);
-          if ((!foreachType((bhdr)localObject3)) || (!foreachType((bhdr)localObject4)))
+          localObject3 = new bjfb(parambjfb, localObject3);
+          localObject4 = new bjfb(parambjfb, localObject4);
+          if ((!foreachType((bjfb)localObject3)) || (!foreachType((bjfb)localObject4)))
           {
-            bhdr.a(parambhdr, false);
+            bjfb.a(parambjfb, false);
             break;
           }
-          ((Map)localObject1).put(bhdr.a((bhdr)localObject3), bhdr.a((bhdr)localObject4));
+          ((Map)localObject1).put(bjfb.a((bjfb)localObject3), bjfb.a((bjfb)localObject4));
         }
       }
       label485:
-      bhdr.a(parambhdr, localObject1);
+      bjfb.a(parambjfb, localObject1);
       continue;
-      bhdr.a(parambhdr, false);
+      bjfb.a(parambjfb, false);
     }
   }
   
@@ -621,7 +621,7 @@ public class ExoticEvent
     for (;;)
     {
       return null;
-      paramObject = new bhdr(paramObject, null);
+      paramObject = new bjfb(paramObject, null);
       try
       {
         bool = foreachType(paramObject);
@@ -656,7 +656,7 @@ public class ExoticEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.event.ExoticEvent
  * JD-Core Version:    0.7.0.1
  */

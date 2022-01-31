@@ -2,12 +2,12 @@ package com.tencent.biz.webviewplugin;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
-import xlb;
+import yzu;
 
 public class OfflinePlugin$5
   implements Runnable
 {
-  public OfflinePlugin$5(xlb paramxlb) {}
+  public OfflinePlugin$5(yzu paramyzu) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class OfflinePlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.5
  * JD-Core Version:    0.7.0.1
  */

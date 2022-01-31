@@ -1,95 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
-public class pnb
+class pnb
+  implements View.OnClickListener
 {
-  private List<rib> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<URL> b = new ArrayList();
+  pnb(pna parampna, Container paramContainer, pgd parampgd, int paramInt) {}
   
-  public pnb(NativeGridImageView paramNativeGridImageView, ArticleInfo paramArticleInfo)
+  public void onClick(View paramView)
   {
-    int i;
-    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a.size() > 0))
-    {
-      paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a.a;
-      i = 0;
+    pna.a(this.jdField_a_of_type_Pna, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pgd, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("PgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pgd.a() + " position = " + this.jdField_a_of_type_Int);
     }
-    for (;;)
-    {
-      if (i < paramArticleInfo.size()) {}
-      try
-      {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        if (j >= 9)
-        {
-          if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-            ((rib)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
-          }
-          return;
-        }
-        if ((((qcw)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null) || (((qcw)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString != null))
-        {
-          Object localObject;
-          label255:
-          int k;
-          if (((qcw)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null)
-          {
-            paramNativeGridImageView = ((qcw)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            localObject = new URL(paramNativeGridImageView);
-            if (((qcw)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString == null) {
-              break label374;
-            }
-            paramNativeGridImageView = ((qcw)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            paramNativeGridImageView = new URL(paramNativeGridImageView);
-            this.b.add(localObject);
-            localObject = this.jdField_a_of_type_JavaUtilList;
-            j = ((qcw)paramArticleInfo.get(i)).a;
-            k = ((qcw)paramArticleInfo.get(i)).jdField_b_of_type_Int;
-            if (((qcw)paramArticleInfo.get(i)).jdField_c_of_type_Int != 1) {
-              break label391;
-            }
-          }
-          label391:
-          for (boolean bool = true;; bool = false)
-          {
-            ((List)localObject).add(new rib(j, k, paramNativeGridImageView, bool));
-            break label410;
-            paramNativeGridImageView = ((qcw)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            break;
-            label374:
-            paramNativeGridImageView = ((qcw)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            break label255;
-          }
-        }
-      }
-      catch (Exception paramNativeGridImageView)
-      {
-        paramNativeGridImageView.printStackTrace();
-        QLog.d("Proteus.NativeGridImageView", 1, "GridImageModel exception.");
-        label410:
-        i += 1;
-      }
-    }
-  }
-  
-  public List<rib> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public List<URL> b()
-  {
-    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pnb
  * JD-Core Version:    0.7.0.1
  */

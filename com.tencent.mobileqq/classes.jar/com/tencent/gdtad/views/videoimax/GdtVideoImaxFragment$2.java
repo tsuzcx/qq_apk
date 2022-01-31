@@ -1,8 +1,8 @@
 package com.tencent.gdtad.views.videoimax;
 
+import aanp;
 import android.os.ResultReceiver;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import yxp;
 
 class GdtVideoImaxFragment$2
   implements Runnable
@@ -11,7 +11,7 @@ class GdtVideoImaxFragment$2
   
   public void run()
   {
-    yxp.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
+    aanp.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
     if (GdtVideoImaxFragment.a(this.this$0))
     {
       GdtVideoImaxFragment.a(this.this$0).setBackgroundColor(-16777216);
@@ -22,7 +22,7 @@ class GdtVideoImaxFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.2
  * JD-Core Version:    0.7.0.1
  */

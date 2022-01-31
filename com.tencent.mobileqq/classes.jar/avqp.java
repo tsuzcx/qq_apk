@@ -1,35 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
 
 public class avqp
-  implements bfpv
+  extends avqe
 {
-  public avqp(IosTimepicker paramIosTimepicker) {}
+  public QIMNotifyAddFriend a;
   
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public avqp(QIMNotifyAddFriend paramQIMNotifyAddFriend)
   {
-    IosTimepicker.a(this.a, paramView, 1);
-    if (paramView.getTag() != null)
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt) {
-          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-        }
-        paramInt += 1;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
+    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
+  }
+  
+  public String a()
+  {
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.uin);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return "getMessage";
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avqp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
-public class yon
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class yon
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "-1";
-  public int c;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "0";
+  yon(yom paramyom) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a.deleteObserver(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yon
  * JD-Core Version:    0.7.0.1
  */

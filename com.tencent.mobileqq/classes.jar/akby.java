@@ -1,28 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.PeakAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akby
-  extends BroadcastReceiver
+class akby
+  implements DialogInterface.OnClickListener
 {
-  public akby(PeakAppInterface paramPeakAppInterface) {}
+  akby(akbw paramakbw) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent != null) && ("tencent.peak.q2v.AudioTransPush".equals(paramIntent.getAction())))
-    {
-      int i = paramIntent.getIntExtra("rsptype", 0);
-      paramContext = paramIntent.getByteArrayExtra("rspbody");
-      QLog.d("PeakAppInterface", 2, "ACTION_AUDIO_TRANS_PUSH rsptype=" + i + "|" + paramContext.length);
-      ((awbj)this.a.a(0)).a(i, paramContext);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akby
  * JD-Core Version:    0.7.0.1
  */

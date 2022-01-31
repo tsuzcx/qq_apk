@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import akzf;
-import akzg;
-import akzj;
-import akzs;
-import akzt;
-import akzv;
-import akzw;
-import akzx;
-import akzy;
-import aldm;
+import ampv;
+import ampw;
+import ampz;
+import amqi;
+import amqj;
+import amql;
+import amqm;
+import amqn;
+import amqo;
+import amuc;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,28 +22,28 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.Surface;
-import apvd;
-import avyy;
-import avza;
+import arof;
+import axqx;
+import axqz;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.TextureRender;
 import java.io.File;
-import mnc;
+import mpw;
 
 public class VideoRecordController
-  implements akzj, akzt, Handler.Callback
+  implements ampz, amqj, Handler.Callback
 {
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private akzs jdField_a_of_type_Akzs;
-  private akzw jdField_a_of_type_Akzw;
-  private akzx jdField_a_of_type_Akzx;
-  private akzy jdField_a_of_type_Akzy;
+  private amqi jdField_a_of_type_Amqi;
+  private amqm jdField_a_of_type_Amqm;
+  private amqn jdField_a_of_type_Amqn;
+  private amqo jdField_a_of_type_Amqo;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private Surface jdField_a_of_type_AndroidViewSurface;
-  private avza jdField_a_of_type_Avza;
+  private axqz jdField_a_of_type_Axqz;
   private AudioRecordController jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController;
   private VideoRecordController.State jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.IDLE;
   private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
@@ -76,7 +76,7 @@ public class VideoRecordController
   {
     try
     {
-      File localFile = new File(akzv.b());
+      File localFile = new File(amql.b());
       if ((this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists()))
       {
         boolean bool = this.jdField_a_of_type_JavaIoFile.renameTo(localFile);
@@ -96,7 +96,7 @@ public class VideoRecordController
   {
     QLog.d("VideoRecordController", 2, String.format("loadWaterMarkTexture screenWidth=%s screenHeight=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     if (this.jdField_b_of_type_Int == -1) {
-      this.jdField_b_of_type_Int = 2130838471;
+      this.jdField_b_of_type_Int = 2130838537;
     }
     try
     {
@@ -154,7 +154,7 @@ public class VideoRecordController
       localMessage.arg1 = paramInt;
       localMessage.obj = paramString;
       localMessage.sendToTarget();
-      akzf.a().a(paramInt, paramLong);
+      ampv.a().a(paramInt, paramLong);
     }
   }
   
@@ -196,7 +196,7 @@ public class VideoRecordController
       Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(105);
       localMessage.arg1 = paramInt;
       localMessage.sendToTarget();
-      akzf.a().a(paramInt);
+      ampv.a().a(paramInt);
     }
   }
   
@@ -242,11 +242,11 @@ public class VideoRecordController
             this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController = null;
             this.jdField_a_of_type_JavaLangString = null;
           }
-          if (this.jdField_a_of_type_Akzs != null)
+          if (this.jdField_a_of_type_Amqi != null)
           {
-            this.jdField_a_of_type_Akzs.a();
+            this.jdField_a_of_type_Amqi.a();
             this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.STOPPING;
-            this.jdField_a_of_type_Akzs = null;
+            this.jdField_a_of_type_Amqi = null;
             if (this.jdField_a_of_type_AndroidViewSurface != null)
             {
               this.jdField_a_of_type_AndroidViewSurface.release();
@@ -290,7 +290,7 @@ public class VideoRecordController
     long l1 = System.currentTimeMillis();
     long l2 = this.jdField_b_of_type_Long;
     long l3 = this.jdField_c_of_type_Long;
-    long l4 = mnc.a();
+    long l4 = mpw.a();
     if (l1 - l2 - l3 >= 60000L)
     {
       this.f = true;
@@ -355,15 +355,15 @@ public class VideoRecordController
         return;
       }
       this.jdField_a_of_type_Long = l;
-      if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Akzs != null) && (!this.j))
+      if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Amqi != null) && (!this.j))
       {
         l = this.jdField_c_of_type_Long;
         paramLong -= l;
       }
       try
       {
-        this.jdField_a_of_type_Akzw.b();
-        GLES20.glViewport(0, 0, this.jdField_a_of_type_Avza.jdField_a_of_type_Int, this.jdField_a_of_type_Avza.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Amqm.b();
+        GLES20.glViewport(0, 0, this.jdField_a_of_type_Axqz.jdField_a_of_type_Int, this.jdField_a_of_type_Axqz.jdField_b_of_type_Int);
         GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
         GLES20.glClear(16640);
         GLES20.glDepthMask(false);
@@ -373,13 +373,13 @@ public class VideoRecordController
         {
           GLES20.glEnable(3042);
           GLES20.glBlendFunc(1, 771);
-          this.jdField_a_of_type_Akzy.a(3553, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
+          this.jdField_a_of_type_Amqo.a(3553, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
           GLES20.glDisable(3042);
         }
-        this.jdField_a_of_type_Akzw.a(paramLong);
-        this.jdField_a_of_type_Akzw.c();
-        this.jdField_a_of_type_Akzw.a();
-        this.jdField_a_of_type_Akzs.a(paramLong);
+        this.jdField_a_of_type_Amqm.a(paramLong);
+        this.jdField_a_of_type_Amqm.c();
+        this.jdField_a_of_type_Amqm.a();
+        this.jdField_a_of_type_Amqi.a(paramLong);
       }
       catch (Exception paramArrayOfFloat1)
       {
@@ -395,13 +395,13 @@ public class VideoRecordController
   
   public void a(long paramLong) {}
   
-  public void a(akzx paramakzx)
+  public void a(amqn paramamqn)
   {
-    QLog.d("VideoRecordController", 2, String.format("setVideoRecordListener listener=%s", new Object[] { paramakzx }));
-    this.jdField_a_of_type_Akzx = paramakzx;
+    QLog.d("VideoRecordController", 2, String.format("setVideoRecordListener listener=%s", new Object[] { paramamqn }));
+    this.jdField_a_of_type_Amqn = paramamqn;
   }
   
-  public void a(avyy paramavyy, int paramInt1, int paramInt2)
+  public void a(axqx paramaxqx, int paramInt1, int paramInt2)
   {
     QLog.d("VideoRecordController", 2, String.format("doStartRecord mState=%s mIsRecording=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State, Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -412,23 +412,23 @@ public class VideoRecordController
       {
         try
         {
-          String str = akzv.a();
+          String str = amql.a();
           this.jdField_a_of_type_JavaIoFile = new File(str);
           paramInt2 = (int)(540 / paramInt1 * paramInt2) / 16;
           if (!Build.MODEL.equalsIgnoreCase("CAM-TL00")) {
             continue;
           }
           paramInt1 = 1024000;
-          this.jdField_a_of_type_Avza = new avza(str, 540, paramInt2 * 16, paramInt1, 1, false, 0);
-          this.jdField_a_of_type_Avza.a(EGL14.eglGetCurrentContext());
-          this.jdField_a_of_type_Akzs = new akzs();
-          this.jdField_a_of_type_Akzs.a(this.jdField_a_of_type_Avza, this);
-          this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_Akzs.a();
-          this.jdField_a_of_type_Akzw = new akzw(paramavyy, this.jdField_a_of_type_AndroidViewSurface);
+          this.jdField_a_of_type_Axqz = new axqz(str, 540, paramInt2 * 16, paramInt1, 1, false, 0);
+          this.jdField_a_of_type_Axqz.a(EGL14.eglGetCurrentContext());
+          this.jdField_a_of_type_Amqi = new amqi();
+          this.jdField_a_of_type_Amqi.a(this.jdField_a_of_type_Axqz, this);
+          this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_Amqi.a();
+          this.jdField_a_of_type_Amqm = new amqm(paramaxqx, this.jdField_a_of_type_AndroidViewSurface);
           this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-          this.jdField_a_of_type_Akzy = new akzy();
-          a(this.jdField_a_of_type_Avza.jdField_a_of_type_Int, this.jdField_a_of_type_Avza.jdField_b_of_type_Int);
-          if (!apvd.a(this.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_Amqo = new amqo();
+          a(this.jdField_a_of_type_Axqz.jdField_a_of_type_Int, this.jdField_a_of_type_Axqz.jdField_b_of_type_Int);
+          if (!arof.a(this.jdField_a_of_type_JavaLangString)) {
             continue;
           }
           this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController = new PcmRecordController(this, this.jdField_a_of_type_JavaLangString);
@@ -436,9 +436,9 @@ public class VideoRecordController
           f();
           this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.STARTED;
         }
-        catch (Exception paramavyy)
+        catch (Exception paramaxqx)
         {
-          QLog.e("VideoRecordController", 1, "doStartRecord fail.", paramavyy);
+          QLog.e("VideoRecordController", 1, "doStartRecord fail.", paramaxqx);
           b(1);
           continue;
         }
@@ -454,9 +454,9 @@ public class VideoRecordController
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       long l = this.jdField_c_of_type_Long;
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Akzs != null) && (!this.j))
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Amqi != null) && (!this.j))
       {
-        this.jdField_a_of_type_Akzs.a(paramArrayOfByte, paramLong - l);
+        this.jdField_a_of_type_Amqi.a(paramArrayOfByte, paramLong - l);
         this.jdField_c_of_type_Boolean = true;
       }
       return;
@@ -482,7 +482,7 @@ public class VideoRecordController
   public boolean a(boolean paramBoolean, String paramString)
   {
     boolean bool = true;
-    if (!aldm.a().d)
+    if (!amuc.a().d)
     {
       QLog.w("VideoRecordController", 2, "startVideoRecord record is disable.");
       return false;
@@ -506,7 +506,7 @@ public class VideoRecordController
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 4000L);
       }
-      akzf.a().a();
+      ampv.a().a();
       paramBoolean = bool;
     }
     for (;;)
@@ -518,14 +518,14 @@ public class VideoRecordController
         this.jdField_b_of_type_Long = System.currentTimeMillis();
         f();
         h();
-        akzf.a().a(true);
+        ampv.a().a(true);
         paramBoolean = bool;
       }
       else if (c())
       {
         this.jdField_b_of_type_Long = System.currentTimeMillis();
         g();
-        akzf.a().a(false);
+        ampv.a().a(false);
         paramBoolean = bool;
         if (this.jdField_a_of_type_AndroidOsHandler != null)
         {
@@ -544,7 +544,7 @@ public class VideoRecordController
   public boolean a(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = true;
-    if (!aldm.a().d)
+    if (!amuc.a().d)
     {
       QLog.w("VideoRecordController", 2, "stopVideoRecord record is disable.");
       return false;
@@ -626,7 +626,7 @@ public class VideoRecordController
         }
         String str = ((File)???).getAbsolutePath();
         if (!this.h) {
-          akzg.a((File)???);
+          ampw.a((File)???);
         }
         QLog.d("VideoRecordController", 2, String.format("onEncodeFinish filePath=%s", new Object[] { str }));
         if (this.f) {
@@ -646,20 +646,20 @@ public class VideoRecordController
   public void d()
   {
     QLog.d("VideoRecordController", 2, "releaseGLResource");
-    if (this.jdField_a_of_type_Akzw != null)
+    if (this.jdField_a_of_type_Amqm != null)
     {
-      this.jdField_a_of_type_Akzw.d();
-      this.jdField_a_of_type_Akzw = null;
+      this.jdField_a_of_type_Amqm.d();
+      this.jdField_a_of_type_Amqm = null;
     }
     if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
     {
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
     }
-    if (this.jdField_a_of_type_Akzy != null)
+    if (this.jdField_a_of_type_Amqo != null)
     {
-      this.jdField_a_of_type_Akzy.a();
-      this.jdField_a_of_type_Akzy = null;
+      this.jdField_a_of_type_Amqo.a();
+      this.jdField_a_of_type_Amqo = null;
     }
     if (this.jdField_a_of_type_Int > 0)
     {
@@ -692,23 +692,23 @@ public class VideoRecordController
             return true;
             g();
             return true;
-          } while ((this.jdField_a_of_type_Akzx == null) || (this.jdField_b_of_type_Boolean));
-          this.jdField_a_of_type_Akzx.h();
+          } while ((this.jdField_a_of_type_Amqn == null) || (this.jdField_b_of_type_Boolean));
+          this.jdField_a_of_type_Amqn.h();
           return true;
-        } while ((this.jdField_a_of_type_Akzx == null) || (this.jdField_b_of_type_Boolean));
-        this.jdField_a_of_type_Akzx.a(paramMessage.arg1, paramMessage.arg2);
+        } while ((this.jdField_a_of_type_Amqn == null) || (this.jdField_b_of_type_Boolean));
+        this.jdField_a_of_type_Amqn.a(paramMessage.arg1, paramMessage.arg2);
         return true;
-      } while ((this.jdField_a_of_type_Akzx == null) || (this.jdField_b_of_type_Boolean));
-      this.jdField_a_of_type_Akzx.a(paramMessage.arg1, (String)paramMessage.obj);
+      } while ((this.jdField_a_of_type_Amqn == null) || (this.jdField_b_of_type_Boolean));
+      this.jdField_a_of_type_Amqn.a(paramMessage.arg1, (String)paramMessage.obj);
       return true;
-    } while ((this.jdField_a_of_type_Akzx == null) || (this.jdField_b_of_type_Boolean));
-    this.jdField_a_of_type_Akzx.c(paramMessage.arg1);
+    } while ((this.jdField_a_of_type_Amqn == null) || (this.jdField_b_of_type_Boolean));
+    this.jdField_a_of_type_Amqn.c(paramMessage.arg1);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.VideoRecordController
  * JD-Core Version:    0.7.0.1
  */

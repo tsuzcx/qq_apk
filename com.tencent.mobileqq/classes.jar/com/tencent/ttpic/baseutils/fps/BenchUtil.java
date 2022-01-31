@@ -113,16 +113,18 @@ public class BenchUtil
       localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
       totalTimeMap.put(paramString, localCopyOnWriteArrayList1);
     }
-    long l = System.currentTimeMillis() - localLong.longValue();
-    localCopyOnWriteArrayList1.add(Long.valueOf(l));
-    if (localCopyOnWriteArrayList1.size() >= 10)
+    long l1 = System.currentTimeMillis() - localLong.longValue();
+    localCopyOnWriteArrayList1.add(Long.valueOf(l1));
+    long l2 = getTotalTimeFPS(localCopyOnWriteArrayList1);
+    int i = localCopyOnWriteArrayList1.size();
+    if (i >= 10)
     {
-      float f = (float)(getTotalTimeFPS(localCopyOnWriteArrayList1) / localCopyOnWriteArrayList1.size());
+      float f = (float)(l2 / i);
       LogUtils.d(TAG, "[time]" + paramString + ": " + f + "ms");
       lastTimeMap.put(paramString, Float.valueOf(f));
       localCopyOnWriteArrayList1.clear();
     }
-    return l;
+    return l1;
   }
   
   public static long benchEndTotal(String paramString)

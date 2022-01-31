@@ -1,34 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.28.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class rix
-  implements bfxm
+class rix
+  extends Handler
 {
-  public rix(FastWebActivity paramFastWebActivity) {}
-  
-  public void a()
+  rix(riw paramriw, Looper paramLooper)
   {
-    if (FastWebActivity.f(this.a))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).getWidth());
-      FastWebActivity.e(this.a, false);
-      FastWebActivity.i(this.a);
-      FastWebActivity.a(this.a, new rkb(FastWebActivity.a(this.a), FastWebActivity.a(this.a).getFirstVisiblePosition(), FastWebActivity.a(this.a).getLastVisiblePosition()));
-      long l = rnu.a("FastWebActivity.show");
-      rnu.b("fast_web_show_light_house_draw_finish");
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(FastWebActivity.a(this.a));
-      ThreadManager.post(new FastWebActivity.28.1(this, l, localArrayList), 5, null, false);
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + riw.a(this.a));
+      }
+    } while (!riw.a(this.a));
+    this.a.a(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rix
  * JD-Core Version:    0.7.0.1
  */

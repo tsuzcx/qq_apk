@@ -1,75 +1,67 @@
-import android.content.Context;
 import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 
-class mtv
-  extends RelativeLayout
+public class mtv
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
-  
-  public mtv(Context paramContext, int paramInt, CharSequence paramCharSequence)
+  public static Drawable a(Resources paramResources, int paramInt)
   {
-    super(paramContext);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(paramContext.getResources().getDimensionPixelSize(2131297745), 0, 0, 0);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(9, -1);
-    this.b = new ImageView(paramContext);
-    this.b.setImageResource(paramInt);
-    this.b.setLayoutParams(localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, 0, paramContext.getResources().getDimensionPixelSize(2131297745), 0);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(11, -1);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841764);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(14, -1);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, paramContext.getResources().getDimension(2131298839));
-    addView(this.b);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    setBackgroundResource(2130837556);
-    setId(2131368910);
-    setMinimumHeight(paramContext.getResources().getDimensionPixelSize(2131296598));
+    return a(paramResources, paramInt, 2131165944, true, 2130841638, 2131165947, null);
   }
   
-  public void a(int paramInt)
+  private static Drawable a(Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4, Drawable paramDrawable)
   {
-    this.b.setImageResource(paramInt);
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
+    Drawable localDrawable = paramResources.getDrawable(paramInt1);
+    Object localObject;
+    if (paramBoolean)
     {
-      localImageView.setVisibility(i);
-      return;
+      localObject = mwj.a(paramResources, paramInt1, paramInt2);
+      ((Drawable)localObject).setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      localDrawable = paramResources.getDrawable(paramInt3);
+      paramResources = mwj.a(paramResources, paramInt3, paramInt4);
+      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      if (paramDrawable != null) {
+        break label138;
+      }
+      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject });
+      paramResources.setLayerInset(0, 0, 0, 0, 0);
+      paramResources.setLayerInset(1, 0, 0, 0, 0);
     }
+    for (;;)
+    {
+      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      return paramResources;
+      localObject = localDrawable;
+      break;
+      label138:
+      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject, paramDrawable });
+      paramResources.setLayerInset(0, 0, 0, 0, 0);
+      paramResources.setLayerInset(1, 0, 0, 0, 0);
+      paramResources.setLayerInset(2, 0, 0, 0, 0);
+    }
+  }
+  
+  public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable, boolean paramBoolean)
+  {
+    return a(paramResources, paramInt, 2131165944, paramBoolean, 2130841638, 2131165947, paramDrawable);
+  }
+  
+  public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
+  {
+    return a(paramResources, paramInt, 2131165944, paramBoolean, 2130841638, 2131165947, null);
+  }
+  
+  public static Drawable b(Resources paramResources, int paramInt)
+  {
+    Drawable localDrawable = paramResources.getDrawable(paramInt);
+    paramResources = mwj.a(paramResources, paramInt, 2131165944);
+    paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+    return paramResources;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtv
  * JD-Core Version:    0.7.0.1
  */

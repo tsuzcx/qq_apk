@@ -1,40 +1,44 @@
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.widget.ScrollView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class xek
+public abstract class xek<T extends xej>
 {
-  private static final String jdField_a_of_type_JavaLangString = xek.class.getSimpleName();
-  private float jdField_a_of_type_Float;
-  public int a;
-  public bfuc a;
-  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
-  public boolean a;
+  protected int a;
+  public final View a;
+  public T a;
   
-  public xek(ScrollView paramScrollView, TouchWebView paramTouchWebView)
+  protected xek(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_ComTencentWidgetScrollView == null) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
-    while ((this.jdField_a_of_type_Float <= 0.0F) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canScrollVertically(-1)) || (paramInt != 0) || (!this.jdField_a_of_type_ComTencentWidgetScrollView.canScrollVertically(-1))) {
-      return;
+    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new NullPointerException("onCreateView can not return null");
     }
-    this.jdField_a_of_type_ComTencentWidgetScrollView.fling((int)-this.jdField_a_of_type_Float);
+  }
+  
+  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Xej = null;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Xej = paramT;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Xej != null) && (this.jdField_a_of_type_Xej.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xek
  * JD-Core Version:    0.7.0.1
  */

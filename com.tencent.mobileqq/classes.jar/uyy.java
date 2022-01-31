@@ -1,113 +1,87 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.Arrays;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.IconInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UsrIcon;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
-public class uyy
-  implements syq<tmi, tof>, uzy
+class uyy
+  extends SimpleJob<Void>
 {
-  protected uzb a;
-  protected uzz a;
-  protected vaa a;
-  
-  public Object a()
+  uyy(uyx paramuyx, String paramString)
   {
-    return this.jdField_a_of_type_Uzb;
+    super(paramString);
   }
   
-  public String a()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return getClass().getSimpleName();
-  }
-  
-  public void a()
-  {
-    ved.c("GetMyStoryFeatureDataStep", "GetMyStoryFeatureDataStep");
-    if ((this.jdField_a_of_type_Uzb == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Uzb.jdField_a_of_type_JavaLangString)))
-    {
-      if (this.jdField_a_of_type_Vaa != null)
-      {
-        this.jdField_a_of_type_Vaa.a(a());
-        return;
-      }
-      ved.d("GetMyStoryFeatureDataStep", "finish callBack is null");
-      return;
-    }
-    tmi localtmi = new tmi();
-    localtmi.a = Arrays.asList(new String[] { this.jdField_a_of_type_Uzb.jdField_a_of_type_JavaLangString });
-    syo.a().a(localtmi, this);
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_Uzb = ((uzb)paramObject);
-  }
-  
-  public void a(@NonNull tmi paramtmi, @Nullable tof paramtof, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if ((paramtof != null) && (paramErrorMessage.isSuccess()) && (paramtof.a != null) && (paramtof.a.size() > 0))
-    {
-      this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec = ((tec)paramtof.a.get(0));
-      paramtmi = (tcs)tcz.a(10);
-      paramtmi.b("qqstory_key_story_latest_feed_feature_feed_id", this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec.jdField_a_of_type_JavaLangString);
-      paramtmi.b("qqstory_key_story_latest_feed_feature_total_like_count", Integer.valueOf(this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec.jdField_a_of_type_Int));
-      paramtmi.b("qqstory_key_story_latest_feed_feature_total_comment_count", Integer.valueOf(this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec.b));
-      paramtmi.b("qqstory_key_story_latest_feed_feature_total_view_count", Integer.valueOf(this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec.c));
-      if (this.jdField_a_of_type_Vaa != null)
-      {
-        this.jdField_a_of_type_Vaa.a(a());
-        return;
-      }
-      ved.d("GetMyStoryFeatureDataStep", "finish callBack is null");
-      return;
-    }
-    int i = paramErrorMessage.errorCode;
-    if (paramtof == null) {
-      paramtmi = "rsp is null";
-    }
+    paramJobContext = this.a.a.icon_info.get();
+    HashMap localHashMap = new HashMap();
+    usd localusd = (usd)urr.a(2);
+    Iterator localIterator = paramJobContext.iterator();
+    String str;
+    QQUserUIItem localQQUserUIItem;
     for (;;)
     {
-      ved.e("GetMyStoryFeatureDataStep", "请求Features失败 errorCode: %d %s", new Object[] { Integer.valueOf(i), paramtmi });
-      this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec = new tec();
-      this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Uzb.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_Vaa == null) {
-        break;
-      }
-      this.jdField_a_of_type_Vaa.a(a());
-      return;
-      if (paramtof.a == null) {
-        paramtmi = "features is null";
-      } else {
-        paramtmi = "invalid rsp";
+      if (localIterator.hasNext())
+      {
+        paramJobContext = (qqstory_struct.IconInfo)localIterator.next();
+        str = paramJobContext.union_id.get().toStringUtf8();
+        localQQUserUIItem = localusd.b(str);
+        if (localQQUserUIItem != null) {
+          if ((paramJobContext.err_code.get() == 0) && (paramJobContext.usr_icon_list.has()) && (paramJobContext.usr_icon_list.size() > 0))
+          {
+            paramVarArgs = (qqstory_struct.UsrIcon)paramJobContext.usr_icon_list.get(0);
+            paramJobContext = paramVarArgs.icon_postfix.get().toStringUtf8();
+            paramVarArgs = paramVarArgs.jmp_postfix.get().toStringUtf8();
+            if (TextUtils.isEmpty(paramJobContext)) {
+              break label309;
+            }
+            paramJobContext = "http://pub.idqqimg.com/pc/misc/qqstory_icon/" + paramJobContext;
+          }
+        }
       }
     }
-    ved.d("GetMyStoryFeatureDataStep", "finish callBack is null");
+    label309:
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramVarArgs)) {
+        paramVarArgs = "https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031" + paramVarArgs;
+      }
+      for (;;)
+      {
+        localHashMap.put(str, new String[] { paramJobContext, paramVarArgs });
+        localQQUserUIItem.setUserIcon(paramJobContext, paramVarArgs);
+        for (;;)
+        {
+          localQQUserUIItem.iconUrlCacheTime = System.currentTimeMillis();
+          localusd.a(localQQUserUIItem);
+          break;
+          localHashMap.put(str, new String[] { "", "" });
+          localQQUserUIItem.setUserIcon("", "");
+        }
+        paramJobContext = new uyz();
+        paramJobContext.a = localHashMap;
+        uht.a().dispatch(paramJobContext);
+        return null;
+      }
+    }
   }
-  
-  public void a(uzz paramuzz)
-  {
-    this.jdField_a_of_type_Uzz = paramuzz;
-  }
-  
-  public void a(vaa paramvaa)
-  {
-    this.jdField_a_of_type_Vaa = paramvaa;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyy
  * JD-Core Version:    0.7.0.1
  */

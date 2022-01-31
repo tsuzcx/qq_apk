@@ -1,24 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.RotateableView;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
 public class bcrd
-  extends Handler
+  implements baaa
 {
-  public bcrd(RotateableView paramRotateableView) {}
+  public bcrd(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, baaa parambaaa) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    RotateableView.a(this.a, RotateableView.a(this.a) + 8.0F);
-    if (RotateableView.a(this.a) >= 360.0F) {
-      RotateableView.a(this.a, RotateableView.a(this.a) - 360.0F);
-    }
-    this.a.invalidate();
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bcre(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcrd
  * JD-Core Version:    0.7.0.1
  */

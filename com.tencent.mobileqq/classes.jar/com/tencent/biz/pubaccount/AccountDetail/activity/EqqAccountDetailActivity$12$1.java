@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.AccountDetail.activity;
 
-import ndq;
+import ngm;
 
 public class EqqAccountDetailActivity$12$1
   implements Runnable
 {
-  public EqqAccountDetailActivity$12$1(ndq paramndq) {}
+  public EqqAccountDetailActivity$12$1(ngm paramngm) {}
   
   public void run()
   {

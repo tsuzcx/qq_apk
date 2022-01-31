@@ -1,44 +1,42 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.1;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.2;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask;
 import com.tencent.qphone.base.util.QLog;
 
-public final class badc
-  implements bhxi
+public class badc
+  implements URLDrawableHandler
 {
-  public babi a;
+  public badc(TeamWorkForceShare.ImageRequestTask paramImageRequestTask) {}
   
-  public badc(HWReciteItem paramHWReciteItem, babi parambabi)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    this.jdField_a_of_type_Babi = parambabi;
+    return false;
   }
   
-  public void a(int paramInt)
+  public void onFileDownloadFailed(int paramInt)
   {
-    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.1(this));
+    QLog.d(TeamWorkForceShare.a(), 1, "download failed, code = " + paramInt + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
   }
   
-  public void a(String paramString)
+  public void onFileDownloadStarted()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HWReciteItem", 2, "upload onComplete " + this.jdField_a_of_type_Babi.b);
-    }
-    this.jdField_a_of_type_Babi.b(paramString);
-    this.jdField_a_of_type_Babi.g = 3;
+    QLog.d(TeamWorkForceShare.a(), 1, "start download, url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
   }
   
-  public void b(int paramInt)
+  public void onFileDownloadSucceed(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("HWReciteItem", 2, "onError errorCode = " + paramInt);
-    }
-    this.jdField_a_of_type_Babi.g = 2;
-    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.2(this));
+    QLog.d(TeamWorkForceShare.a(), 1, "download success, size = " + paramLong + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
   }
+  
+  public void publishProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     badc
  * JD-Core Version:    0.7.0.1
  */

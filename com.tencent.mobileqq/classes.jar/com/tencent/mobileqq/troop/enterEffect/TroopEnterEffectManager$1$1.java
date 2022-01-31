@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import azry;
+import bbqh;
 
 class TroopEnterEffectManager$1$1
   implements Runnable

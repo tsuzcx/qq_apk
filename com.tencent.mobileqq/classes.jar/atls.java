@@ -1,59 +1,28 @@
+import android.util.Pair;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.qphone.base.util.QLog;
 
-public class atls
-  implements atlr
+class atls
+  implements atly
 {
-  private int jdField_a_of_type_Int;
-  private atgx jdField_a_of_type_Atgx;
-  private atje jdField_a_of_type_Atje;
-  private VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
+  atls(atln paramatln, int paramInt, String paramString) {}
   
-  public atls(atje paramatje, VideoData paramVideoData, QQAppInterface paramQQAppInterface)
+  public Pair<Integer, String> a()
   {
-    this.jdField_a_of_type_Atje = paramatje;
-    this.jdField_a_of_type_Atgx = new athb(paramVideoData, paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
+    return new Pair(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
   }
   
-  public int a()
+  public atlf a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    b();
-  }
-  
-  public void a(Comments.Comment paramComment)
-  {
-    this.jdField_a_of_type_Atgx.a(paramComment, new atlu(this));
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Atje != null) {
-      this.jdField_a_of_type_Atje.a();
+    if (atln.a(this.jdField_a_of_type_Atln) == null) {
+      QLog.d("LocationHandler", 1, "[LocationManager] getLocation: invoked. location null detected");
     }
-    this.jdField_a_of_type_Atgx.a(this.jdField_a_of_type_Int, new atlt(this));
-  }
-  
-  public void b(Comments.Comment paramComment)
-  {
-    this.jdField_a_of_type_Atgx.a(paramComment, new atlv(this));
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Atje = null;
+    return new atlf(this.jdField_a_of_type_Atln.app.c(), atln.a(this.jdField_a_of_type_Atln), atln.a(this.jdField_a_of_type_Atln));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atls
  * JD-Core Version:    0.7.0.1
  */

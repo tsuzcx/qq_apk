@@ -1,15 +1,50 @@
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class bija
+class bija
+  implements awfy
 {
-  public static final String a = biir.b + File.separator + "playshow";
-  public static final String b = a + File.separator + "crazyface_tmp";
-  public static final String c = a + File.separator + "qudong_tmp";
-  public static final String d = a + File.separator + "web_tmp";
+  bija(biiz parambiiz) {}
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void a(awfz paramawfz) {}
+  
+  public void b(awfz paramawfz)
+  {
+    if ((paramawfz == null) || (this.a.a == null)) {
+      return;
+    }
+    if (paramawfz.jdField_a_of_type_Int == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicEmoticonUploader", 2, "Upload finish, id=" + paramawfz.c);
+      }
+      localBundle = new Bundle();
+      localBundle.putInt("result", 0);
+      localBundle.putString("id", paramawfz.c);
+      this.a.a.onInvokeFinish(localBundle);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicEmoticonUploader", 2, "Upload error");
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 1);
+    localBundle.putInt("errCode", paramawfz.b);
+    localBundle.putString("errMsg", paramawfz.jdField_a_of_type_JavaLangString);
+    this.a.a.onInvokeFinish(localBundle);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bija
  * JD-Core Version:    0.7.0.1
  */

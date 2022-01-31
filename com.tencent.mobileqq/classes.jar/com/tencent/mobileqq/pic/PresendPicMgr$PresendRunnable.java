@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.pic;
 
-import aung;
-import auoi;
+import awen;
+import awfq;
 
 class PresendPicMgr$PresendRunnable
   implements Runnable
 {
-  private auoi a;
+  private awfq a;
   
-  public PresendPicMgr$PresendRunnable(PresendPicMgr paramPresendPicMgr, auoi paramauoi)
+  public PresendPicMgr$PresendRunnable(PresendPicMgr paramPresendPicMgr, awfq paramawfq)
   {
-    this.a = paramauoi;
+    this.a = paramawfq;
   }
   
   public void run()
   {
-    aung.a("PresendPicMgr", "PresendRunnable.run", "PresendReq is " + this.a);
+    awen.a("PresendPicMgr", "PresendRunnable.run", "PresendReq is " + this.a);
     this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PresendPicMgr.PresendRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,38 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.1;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.2;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.3;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.4;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.5;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class aegh
-  extends aejf
+  extends WebChromeClient
 {
-  aegh(aegg paramaegg) {}
+  private aegh(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
-  public void a()
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.4(this));
+    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
   }
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onProgressChanged: " + paramInt + "%");
+    }
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onReceivedTitle:" + paramString);
+    }
+    this.a.setTitle(paramString);
   }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3)
-  {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
-  }
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
-  {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.3(this, paramArrayOfAIORichMediaData, paramInt));
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegh
  * JD-Core Version:    0.7.0.1
  */

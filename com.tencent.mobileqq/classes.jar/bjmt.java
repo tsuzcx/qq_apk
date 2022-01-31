@@ -1,307 +1,358 @@
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.util.Log;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import NS_MOBILE_FEEDS.mobile_online_report_item;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.report.QzoneOnlineTimeCollectRptService.1;
+import cooperation.qzone.report.QzoneOnlineTimeCollectRptService.2;
+import cooperation.qzone.report.QzoneOnlineTimeCollectRptService.3;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.os.MqqHandler;
 
 public class bjmt
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF(-1.0F, 1.0F, 1.0F, -1.0F);
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(this.jdField_a_of_type_ArrayOfFloat);
-  private final float[] jdField_a_of_type_ArrayOfFloat = { 1.0F, -1.0F, 0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 1.0F, 0.0F, -1.0F, 1.0F, 0.0F };
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF(-1.0F, 1.0F, 1.0F, -1.0F);
-  private FloatBuffer jdField_b_of_type_JavaNioFloatBuffer;
-  private final float[] jdField_b_of_type_ArrayOfFloat = { 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F };
-  private int jdField_c_of_type_Int;
-  private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF(-1.0F, 1.0F, 1.0F, -1.0F);
-  private final float[] jdField_c_of_type_ArrayOfFloat = new float[16];
-  private int jdField_d_of_type_Int;
-  private final float[] jdField_d_of_type_ArrayOfFloat = new float[16];
-  private int jdField_e_of_type_Int;
-  private float[] jdField_e_of_type_ArrayOfFloat = new float[16];
-  private int jdField_f_of_type_Int;
-  private final float[] jdField_f_of_type_ArrayOfFloat = new float[16];
-  private int g;
-  private int h;
-  private int i;
-  private int j;
-  private int k;
+  private static bjmt jdField_a_of_type_Bjmt;
+  int jdField_a_of_type_Int = 0;
+  public long a;
+  private mobile_online_report_item jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new QzoneOnlineTimeCollectRptService.3(this);
+  private String jdField_a_of_type_JavaLangString = "QZonlinetime";
+  private ArrayList<mobile_online_report_item> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private volatile boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 10000;
+  private long jdField_b_of_type_Long = 0L;
+  private String jdField_b_of_type_JavaLangString = "QZonlinetimeLastRecord";
+  private ArrayList<mobile_online_report_item> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   
-  public bjmt()
+  private bjmt()
   {
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    this.jdField_b_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(this.jdField_b_of_type_ArrayOfFloat);
-    this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  private void a(RectF paramRectF, float paramFloat1, float paramFloat2)
+  public static final bjmt a()
   {
-    paramFloat1 = (paramRectF.right - paramRectF.left) * (paramFloat1 - 1.0F);
-    paramFloat2 = (paramRectF.bottom - paramRectF.top) * (paramFloat2 - 1.0F);
-    paramRectF.top -= paramFloat2 / 2.0F;
-    float f1 = paramRectF.bottom;
-    paramRectF.bottom = (paramFloat2 / 2.0F + f1);
-    paramRectF.left -= paramFloat1 / 2.0F;
-    paramFloat2 = paramRectF.right;
-    paramRectF.right = (paramFloat1 / 2.0F + paramFloat2);
-  }
-  
-  private void b()
-  {
-    Log.d("RenderFilter", "initMatrix videoWidth: " + this.j + ", videoHeight: " + this.k + ", screenWidth: " + this.h + ", screenHeight: " + this.i);
-    float f4;
-    if ((this.j > 0) && (this.k > 0) && (this.h > 0) && (this.i > 0))
-    {
-      Matrix.setIdentityM(this.jdField_d_of_type_ArrayOfFloat, 0);
-      Matrix.setIdentityM(this.jdField_f_of_type_ArrayOfFloat, 0);
-      Matrix.multiplyMM(this.jdField_d_of_type_ArrayOfFloat, 0, this.jdField_f_of_type_ArrayOfFloat, 0, this.jdField_c_of_type_ArrayOfFloat, 0);
-      float f1 = this.j / this.k;
-      float f2 = this.h / this.i;
-      Matrix.orthoM(this.jdField_c_of_type_ArrayOfFloat, 0, -1.0F, 1.0F, -f1 / f2, f1 / f2, -1.0F, 1.0F);
-      this.jdField_c_of_type_AndroidGraphicsRectF.set(-1.0F, f2 / f1, 1.0F, -f2 / f1);
-      float f3 = this.jdField_a_of_type_AndroidGraphicsRectF.right / this.jdField_a_of_type_AndroidGraphicsRectF.top;
-      f4 = this.jdField_b_of_type_Float / this.jdField_a_of_type_Float;
-      if (f1 <= f3 * f2) {
-        break label307;
-      }
+    if (jdField_a_of_type_Bjmt == null) {
+      jdField_a_of_type_Bjmt = new bjmt();
     }
-    label307:
-    for (this.jdField_a_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRectF.top / this.jdField_c_of_type_AndroidGraphicsRectF.top);; this.jdField_a_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRectF.right / this.jdField_c_of_type_AndroidGraphicsRectF.right))
+    return jdField_a_of_type_Bjmt;
+  }
+  
+  private void a(ArrayList<mobile_online_report_item> paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float * f4);
-      b(this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, 1.0F);
-      Log.d("RenderFilter", "initMatrix rectTexture: " + this.jdField_c_of_type_AndroidGraphicsRectF + ", rectTemp: " + this.jdField_b_of_type_AndroidGraphicsRectF);
+      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      paramArrayList = new ArrayList(paramArrayList);
+      NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getContext(), bjmu.class);
+      localNewIntent.putExtra("list", paramArrayList);
+      BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
       return;
     }
+    QLog.e("QzoneOnlineTimeCollectRptService", 1, "There is no record to report!");
   }
   
-  public int a()
+  private boolean a()
   {
-    float f1 = this.jdField_f_of_type_ArrayOfFloat[0] * this.h / this.j;
-    return (int)(Math.abs(this.jdField_a_of_type_AndroidGraphicsRectF.right - this.jdField_a_of_type_AndroidGraphicsRectF.left) * this.h / 2.0F / f1);
+    boolean bool1 = false;
+    boolean bool2 = true;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    if (this.jdField_b_of_type_Long != 0L)
+    {
+      if ((System.currentTimeMillis() / 1000L - this.jdField_b_of_type_Long > localQzoneConfig.getConfig("ClientReport", "OnlineReportInterval", 3600)) || (this.jdField_a_of_type_JavaUtilArrayList.size() >= localQzoneConfig.getConfig("ClientReport", "OnlineReportFrequency", 1))) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= localQzoneConfig.getConfig("ClientReport", "OnlineReportFrequency", 1)) {}
+    for (bool1 = bool2;; bool1 = false) {
+      return bool1;
+    }
   }
   
-  public Rect a()
+  private void e()
   {
-    float f1 = this.jdField_f_of_type_ArrayOfFloat[0] * this.h / this.j;
-    float f6 = this.jdField_b_of_type_AndroidGraphicsRectF.left;
-    float f9 = this.jdField_f_of_type_ArrayOfFloat[12];
-    float f7 = this.jdField_b_of_type_AndroidGraphicsRectF.top;
-    float f8 = this.jdField_f_of_type_ArrayOfFloat[13];
-    float f4 = this.jdField_b_of_type_AndroidGraphicsRectF.right;
-    float f5 = this.jdField_f_of_type_ArrayOfFloat[12];
-    float f2 = this.jdField_b_of_type_AndroidGraphicsRectF.bottom;
-    float f3 = this.jdField_f_of_type_ArrayOfFloat[13];
-    f6 = Math.abs(this.jdField_a_of_type_AndroidGraphicsRectF.left - (f6 + f9)) * this.h / 2.0F;
-    f7 = Math.abs(this.jdField_a_of_type_AndroidGraphicsRectF.top - (f7 + f8)) * this.i / 2.0F;
-    f4 = Math.abs(this.jdField_a_of_type_AndroidGraphicsRectF.right - (f4 + f5)) * this.h / 2.0F;
-    f2 = Math.abs(this.jdField_a_of_type_AndroidGraphicsRectF.bottom - (f2 + f3)) * this.i / 2.0F;
-    return new Rect((int)(f6 / f1), (int)(f7 / f1), (int)(f4 / f1), (int)(f2 / f1));
+    if (this.jdField_a_of_type_Long == 0L) {
+      return;
+    }
+    long l1 = this.jdField_a_of_type_Long;
+    String str = LocalMultiProcConfig.getString(this.jdField_a_of_type_JavaLangString + "_" + l1, "");
+    Object localObject2 = LocalMultiProcConfig.getString(this.jdField_b_of_type_JavaLangString + "_" + l1, "");
+    long l2 = LocalMultiProcConfig.getLong("key_sp_qzone_crash_time_" + l1, 0L);
+    QLog.d("QzoneOnlineTimeCollectRptService", 1, "sp:" + this.jdField_a_of_type_JavaLangString + " lost time:" + (String)localObject2 + " sp:" + this.jdField_b_of_type_JavaLangString + " crash time:" + l2);
+    Object localObject1;
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localObject1 = localObject2;
+      if (l2 != 0L)
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_JavaLangString.equals("QZonlinetime")) {
+          localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf(";")) + ";" + l2;
+        }
+      }
+      localObject2 = localObject1;
+      if (!TextUtils.isEmpty(str)) {
+        localObject2 = str + ";" + (String)localObject1;
+      }
+      LocalMultiProcConfig.putString(this.jdField_a_of_type_JavaLangString + "_" + l1, (String)localObject2);
+      LocalMultiProcConfig.putString(this.jdField_b_of_type_JavaLangString + "_" + l1, "");
+    }
+    for (;;)
+    {
+      LocalMultiProcConfig.putLong("key_sp_qzone_crash_time_" + l1, 0L);
+      QLog.d("QzoneOnlineTimeCollectRptService", 1, "s:" + (String)localObject2);
+      localObject1 = ((String)localObject2).split(";");
+      if ((localObject1 == null) || (localObject1.length <= 1)) {
+        break;
+      }
+      int i = 0;
+      try
+      {
+        while (i < localObject1.length)
+        {
+          localObject2 = new mobile_online_report_item(l1, Long.parseLong(localObject1[i]), Long.parseLong(localObject1[(i + 1)]));
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+          i += 2;
+        }
+        localObject2 = str;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("QzoneOnlineTimeCollectRptService", 1, "e:" + localException.toString());
+        if ((this.jdField_a_of_type_JavaUtilArrayList.size() >= 1) && (this.jdField_a_of_type_JavaUtilArrayList.get(0) != null)) {
+          this.jdField_b_of_type_Long = ((mobile_online_report_item)this.jdField_a_of_type_JavaUtilArrayList.get(0)).uptime;
+        }
+        g();
+        return;
+      }
+    }
+  }
+  
+  private void f()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        mobile_online_report_item localmobile_online_report_item = (mobile_online_report_item)localIterator.next();
+        if (localmobile_online_report_item != null) {
+          localStringBuilder.append(localmobile_online_report_item.uptime + ";" + localmobile_online_report_item.downtime + ";");
+        }
+      }
+      if (localStringBuilder.length() == 0) {
+        break label252;
+      }
+      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      LocalMultiProcConfig.putString(this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Long, localStringBuilder.toString());
+      QLog.d("QzoneOnlineTimeCollectRptService", 1, "saveData mReportItems size:" + this.jdField_a_of_type_JavaUtilArrayList.size() + " mLastReportTime:" + this.jdField_b_of_type_Long + " re:" + localStringBuilder.toString());
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    }
+    for (;;)
+    {
+      LocalMultiProcConfig.putString(this.jdField_b_of_type_JavaLangString + "_" + this.jdField_a_of_type_Long, "");
+      return;
+      label252:
+      QLog.w("QzoneOnlineTimeCollectRptService", 1, "re length:0");
+    }
+  }
+  
+  private void g()
+  {
+    try
+    {
+      if (a())
+      {
+        if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
+          this.jdField_b_of_type_JavaUtilArrayList.clear();
+        }
+        this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        if (this.jdField_a_of_type_Long != 0L) {
+          a(this.jdField_b_of_type_JavaUtilArrayList);
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Int = bfnr.a("attribute vec4 aPosition;\nattribute vec4 aTexCoord;\nvarying vec2 vTexCoord;\nuniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nvoid main() {\n    vTexCoord = (uSTMatrix * aTexCoord).xy;\n    gl_Position = uMVPMatrix * aPosition;\n}", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTexCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n    gl_FragColor = texture2D(sTexture, vTexCoord);\n}");
-    this.jdField_c_of_type_Int = GLES20.glGetAttribLocation(this.jdField_b_of_type_Int, "aPosition");
-    this.jdField_e_of_type_Int = GLES20.glGetAttribLocation(this.jdField_b_of_type_Int, "aTexCoord");
-    this.jdField_f_of_type_Int = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "uMVPMatrix");
-    this.g = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "uSTMatrix");
-    this.jdField_d_of_type_Int = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "sTexture");
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    this.jdField_a_of_type_Int = arrayOfInt[0];
-    GLES20.glBindTexture(36197, this.jdField_a_of_type_Int);
-    bfnr.a("glBindTexture mTextureID");
-    GLES20.glTexParameterf(36197, 10241, 9728.0F);
-    GLES20.glTexParameterf(36197, 10240, 9729.0F);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    paramFloat1 /= this.h;
-    paramFloat2 /= -this.i;
-    Matrix.translateM(this.jdField_f_of_type_ArrayOfFloat, 0, paramFloat1, paramFloat2, paramFloat3);
-    if ((this.jdField_b_of_type_AndroidGraphicsRectF.left < this.jdField_a_of_type_AndroidGraphicsRectF.left) && (this.jdField_b_of_type_AndroidGraphicsRectF.right > this.jdField_a_of_type_AndroidGraphicsRectF.right)) {
-      if (this.jdField_f_of_type_ArrayOfFloat[12] > 0.0F)
-      {
-        if (this.jdField_f_of_type_ArrayOfFloat[12] + this.jdField_b_of_type_AndroidGraphicsRectF.left > this.jdField_a_of_type_AndroidGraphicsRectF.left) {
-          this.jdField_f_of_type_ArrayOfFloat[12] = (this.jdField_a_of_type_AndroidGraphicsRectF.left - this.jdField_b_of_type_AndroidGraphicsRectF.left);
-        }
-        if ((this.jdField_b_of_type_AndroidGraphicsRectF.bottom >= this.jdField_a_of_type_AndroidGraphicsRectF.bottom) || (this.jdField_b_of_type_AndroidGraphicsRectF.top <= this.jdField_a_of_type_AndroidGraphicsRectF.top)) {
-          break label638;
-        }
-        if (this.jdField_f_of_type_ArrayOfFloat[13] <= 0.0F) {
-          break label575;
-        }
-        if (this.jdField_f_of_type_ArrayOfFloat[13] + this.jdField_b_of_type_AndroidGraphicsRectF.bottom > this.jdField_a_of_type_AndroidGraphicsRectF.bottom) {
-          this.jdField_f_of_type_ArrayOfFloat[13] = (this.jdField_a_of_type_AndroidGraphicsRectF.bottom - this.jdField_b_of_type_AndroidGraphicsRectF.bottom);
-        }
-      }
-    }
-    for (;;)
-    {
-      Matrix.multiplyMM(this.jdField_d_of_type_ArrayOfFloat, 0, this.jdField_f_of_type_ArrayOfFloat, 0, this.jdField_c_of_type_ArrayOfFloat, 0);
-      Log.d("RenderFilter", "translate rectTemp: " + this.jdField_b_of_type_AndroidGraphicsRectF);
-      return;
-      if ((this.jdField_f_of_type_ArrayOfFloat[12] >= 0.0F) || (this.jdField_f_of_type_ArrayOfFloat[12] + this.jdField_b_of_type_AndroidGraphicsRectF.right >= this.jdField_a_of_type_AndroidGraphicsRectF.right)) {
-        break;
-      }
-      this.jdField_f_of_type_ArrayOfFloat[12] = (this.jdField_a_of_type_AndroidGraphicsRectF.right - this.jdField_b_of_type_AndroidGraphicsRectF.right);
-      break;
-      if (((this.jdField_b_of_type_AndroidGraphicsRectF.left < this.jdField_a_of_type_AndroidGraphicsRectF.left) && (this.jdField_b_of_type_AndroidGraphicsRectF.right < this.jdField_a_of_type_AndroidGraphicsRectF.right)) || ((this.jdField_b_of_type_AndroidGraphicsRectF.left > this.jdField_a_of_type_AndroidGraphicsRectF.left) && (this.jdField_b_of_type_AndroidGraphicsRectF.right > this.jdField_a_of_type_AndroidGraphicsRectF.right))) {
-        break;
-      }
-      if ((this.jdField_b_of_type_AndroidGraphicsRectF.left > this.jdField_a_of_type_AndroidGraphicsRectF.left) && (this.jdField_b_of_type_AndroidGraphicsRectF.right < this.jdField_a_of_type_AndroidGraphicsRectF.right))
-      {
-        if (this.jdField_f_of_type_ArrayOfFloat[12] > 0.0F)
-        {
-          if (this.jdField_f_of_type_ArrayOfFloat[12] + this.jdField_b_of_type_AndroidGraphicsRectF.right <= this.jdField_a_of_type_AndroidGraphicsRectF.right) {
-            break;
-          }
-          this.jdField_f_of_type_ArrayOfFloat[12] = (this.jdField_a_of_type_AndroidGraphicsRectF.right - this.jdField_b_of_type_AndroidGraphicsRectF.right);
-          break;
-        }
-        if ((this.jdField_f_of_type_ArrayOfFloat[12] >= 0.0F) || (this.jdField_f_of_type_ArrayOfFloat[12] + this.jdField_b_of_type_AndroidGraphicsRectF.left >= this.jdField_a_of_type_AndroidGraphicsRectF.left)) {
-          break;
-        }
-        this.jdField_f_of_type_ArrayOfFloat[12] = (this.jdField_a_of_type_AndroidGraphicsRectF.left - this.jdField_b_of_type_AndroidGraphicsRectF.left);
-        break;
-      }
-      this.jdField_f_of_type_ArrayOfFloat[12] = 0.0F;
-      break;
-      label575:
-      if ((this.jdField_f_of_type_ArrayOfFloat[13] < 0.0F) && (this.jdField_f_of_type_ArrayOfFloat[13] + this.jdField_b_of_type_AndroidGraphicsRectF.top < this.jdField_a_of_type_AndroidGraphicsRectF.top))
-      {
-        this.jdField_f_of_type_ArrayOfFloat[13] = (this.jdField_a_of_type_AndroidGraphicsRectF.top - this.jdField_b_of_type_AndroidGraphicsRectF.top);
-        continue;
-        label638:
-        if (((this.jdField_b_of_type_AndroidGraphicsRectF.bottom >= this.jdField_a_of_type_AndroidGraphicsRectF.bottom) || (this.jdField_b_of_type_AndroidGraphicsRectF.top >= this.jdField_a_of_type_AndroidGraphicsRectF.top)) && ((this.jdField_b_of_type_AndroidGraphicsRectF.bottom <= this.jdField_a_of_type_AndroidGraphicsRectF.bottom) || (this.jdField_b_of_type_AndroidGraphicsRectF.top <= this.jdField_a_of_type_AndroidGraphicsRectF.top))) {
-          if ((this.jdField_b_of_type_AndroidGraphicsRectF.bottom > this.jdField_a_of_type_AndroidGraphicsRectF.bottom) && (this.jdField_b_of_type_AndroidGraphicsRectF.top < this.jdField_a_of_type_AndroidGraphicsRectF.top))
-          {
-            if (this.jdField_f_of_type_ArrayOfFloat[13] > 0.0F)
-            {
-              if (this.jdField_f_of_type_ArrayOfFloat[13] + this.jdField_b_of_type_AndroidGraphicsRectF.top > this.jdField_a_of_type_AndroidGraphicsRectF.top) {
-                this.jdField_f_of_type_ArrayOfFloat[13] = (this.jdField_a_of_type_AndroidGraphicsRectF.top - this.jdField_b_of_type_AndroidGraphicsRectF.top);
-              }
-            }
-            else if ((this.jdField_f_of_type_ArrayOfFloat[13] < 0.0F) && (this.jdField_f_of_type_ArrayOfFloat[13] + this.jdField_b_of_type_AndroidGraphicsRectF.bottom < this.jdField_a_of_type_AndroidGraphicsRectF.bottom)) {
-              this.jdField_f_of_type_ArrayOfFloat[13] = (this.jdField_a_of_type_AndroidGraphicsRectF.bottom - this.jdField_b_of_type_AndroidGraphicsRectF.bottom);
-            }
-          }
-          else {
-            this.jdField_f_of_type_ArrayOfFloat[13] = 0.0F;
-          }
-        }
-      }
-    }
+    ThreadManager.getSubThreadHandler().post(new QzoneOnlineTimeCollectRptService.2(this));
   }
   
   public void a(int paramInt)
   {
-    GLES20.glClear(16640);
-    GLES20.glUseProgram(this.jdField_b_of_type_Int);
-    GLES20.glUniformMatrix4fv(this.jdField_f_of_type_Int, 1, false, this.jdField_d_of_type_ArrayOfFloat, 0);
-    GLES20.glUniformMatrix4fv(this.g, 1, false, this.jdField_e_of_type_ArrayOfFloat, 0);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    GLES20.glEnableVertexAttribArray(this.jdField_c_of_type_Int);
-    GLES20.glVertexAttribPointer(this.jdField_c_of_type_Int, 3, 5126, false, 12, this.jdField_a_of_type_JavaNioFloatBuffer);
-    this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
-    GLES20.glEnableVertexAttribArray(this.jdField_e_of_type_Int);
-    GLES20.glVertexAttribPointer(this.jdField_e_of_type_Int, 2, 5126, false, 8, this.jdField_b_of_type_JavaNioFloatBuffer);
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(36197, paramInt);
-    GLES20.glUniform1i(this.jdField_d_of_type_Int, 0);
-    GLES20.glDrawArrays(5, 0, 4);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Log.d("RenderFilter", "updateProjection width: " + paramInt1 + ", height: " + paramInt2 + ", screenWidth: " + this.h + ", screenHeight: " + this.i);
-    if ((this.j != paramInt1) || (this.k != paramInt2))
+    switch (paramInt)
     {
-      this.j = paramInt1;
-      this.k = paramInt2;
-      b();
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_JavaLangString = "QZonlinetime";
+      this.jdField_b_of_type_JavaLangString = "QZonlinetimeLastRecord";
+      return;
+    case 1: 
+      this.jdField_a_of_type_JavaLangString = "QZonlinetime_web";
+      this.jdField_b_of_type_JavaLangString = "QZonlinetimeLastRecord_web";
+      return;
+    case 3: 
+      this.jdField_a_of_type_JavaLangString = "QZonlinetime_picture";
+      this.jdField_b_of_type_JavaLangString = "QZonlinetimeLastRecord_picture";
+      return;
     }
+    this.jdField_a_of_type_JavaLangString = "QZonlinetime_video";
+    this.jdField_b_of_type_JavaLangString = "QZonlinetimeLastRecord_video";
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(mobile_online_report_item parammobile_online_report_item)
   {
-    Log.d("RenderFilter", "setEdge left: " + paramInt1 + ", top: " + paramInt2 + ", right: " + paramInt3 + ", bottom: " + paramInt4);
-    float f4 = this.h / 2;
-    float f3 = this.i / 2;
-    float f1 = paramInt1 / f4;
-    float f2 = paramInt2 / f3;
-    f4 = paramInt3 / f4;
-    f3 = paramInt4 / f3;
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(f1 - 1.0F, 1.0F - f2, f4 - 1.0F, 1.0F - f3);
-    Log.d("RenderFilter", "setEdge rectEdge: " + this.jdField_a_of_type_AndroidGraphicsRectF);
-  }
-  
-  public void a(float[] paramArrayOfFloat)
-  {
-    this.jdField_e_of_type_ArrayOfFloat = paramArrayOfFloat;
-  }
-  
-  public int b()
-  {
-    float f1 = this.jdField_f_of_type_ArrayOfFloat[0] * this.h / this.j;
-    return (int)(Math.abs(this.jdField_a_of_type_AndroidGraphicsRectF.bottom - this.jdField_a_of_type_AndroidGraphicsRectF.top) * this.i / 2.0F / f1);
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.jdField_b_of_type_Float = paramFloat;
-  }
-  
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    Matrix.scaleM(this.jdField_f_of_type_ArrayOfFloat, 0, paramFloat1, paramFloat2, paramFloat3);
-    if (this.jdField_f_of_type_ArrayOfFloat[0] < this.jdField_a_of_type_Float) {
-      this.jdField_f_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_Float;
+    if ((parammobile_online_report_item != null) && (parammobile_online_report_item.uptime != 0L) && (parammobile_online_report_item.downtime != 0L)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(parammobile_online_report_item);
     }
-    if (this.jdField_f_of_type_ArrayOfFloat[5] < this.jdField_a_of_type_Float) {
-      this.jdField_f_of_type_ArrayOfFloat[5] = this.jdField_a_of_type_Float;
-    }
-    if (this.jdField_f_of_type_ArrayOfFloat[0] > this.jdField_b_of_type_Float) {
-      this.jdField_f_of_type_ArrayOfFloat[0] = this.jdField_b_of_type_Float;
-    }
-    if (this.jdField_f_of_type_ArrayOfFloat[5] > this.jdField_b_of_type_Float) {
-      this.jdField_f_of_type_ArrayOfFloat[5] = this.jdField_b_of_type_Float;
-    }
-    Matrix.multiplyMM(this.jdField_d_of_type_ArrayOfFloat, 0, this.jdField_f_of_type_ArrayOfFloat, 0, this.jdField_c_of_type_ArrayOfFloat, 0);
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRectF);
-    a(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_f_of_type_ArrayOfFloat[0], this.jdField_f_of_type_ArrayOfFloat[5]);
-    Log.d("RenderFilter", "scale rectTemp: " + this.jdField_b_of_type_AndroidGraphicsRectF);
+    g();
   }
   
-  public void b(int paramInt1, int paramInt2)
+  /* Error */
+  public void b()
   {
-    Log.d("RenderFilter", "adjustSize width: " + paramInt1 + ", height: " + paramInt2 + ", videoWidth: " + this.j + ", videoHeight: " + this.k);
-    if ((this.h != paramInt1) || (this.i != paramInt2))
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 328	bjmt:jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item	LNS_MOBILE_FEEDS/mobile_online_report_item;
+    //   6: ifnonnull +31 -> 37
+    //   9: aload_0
+    //   10: new 225	NS_MOBILE_FEEDS/mobile_online_report_item
+    //   13: dup
+    //   14: invokespecial 329	NS_MOBILE_FEEDS/mobile_online_report_item:<init>	()V
+    //   17: putfield 328	bjmt:jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item	LNS_MOBILE_FEEDS/mobile_online_report_item;
+    //   20: aload_0
+    //   21: getfield 328	bjmt:jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item	LNS_MOBILE_FEEDS/mobile_online_report_item;
+    //   24: invokestatic 71	java/lang/System:currentTimeMillis	()J
+    //   27: ldc2_w 126
+    //   30: ldiv
+    //   31: putfield 247	NS_MOBILE_FEEDS/mobile_online_report_item:uptime	J
+    //   34: aload_0
+    //   35: monitorexit
+    //   36: return
+    //   37: aload_0
+    //   38: getfield 328	bjmt:jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item	LNS_MOBILE_FEEDS/mobile_online_report_item;
+    //   41: lconst_0
+    //   42: putfield 266	NS_MOBILE_FEEDS/mobile_online_report_item:downtime	J
+    //   45: aload_0
+    //   46: getfield 328	bjmt:jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item	LNS_MOBILE_FEEDS/mobile_online_report_item;
+    //   49: lconst_0
+    //   50: putfield 332	NS_MOBILE_FEEDS/mobile_online_report_item:loginuin	J
+    //   53: aload_0
+    //   54: getfield 328	bjmt:jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item	LNS_MOBILE_FEEDS/mobile_online_report_item;
+    //   57: lconst_0
+    //   58: putfield 247	NS_MOBILE_FEEDS/mobile_online_report_item:uptime	J
+    //   61: goto -41 -> 20
+    //   64: astore_1
+    //   65: aload_0
+    //   66: monitorexit
+    //   67: aload_1
+    //   68: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	69	0	this	bjmt
+    //   64	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	20	64	finally
+    //   20	34	64	finally
+    //   37	61	64	finally
+  }
+  
+  public void b(int paramInt)
+  {
+    a(paramInt);
+    ThreadManager.getSubThreadHandler().post(new QzoneOnlineTimeCollectRptService.1(this));
+  }
+  
+  public void c()
+  {
+    try
     {
-      this.h = paramInt1;
-      this.i = paramInt2;
-      GLES20.glViewport(0, 0, this.h, this.i);
-      b();
+      if (this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item != null)
+      {
+        this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.downtime = (System.currentTimeMillis() / 1000L);
+        this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.loginuin = this.jdField_a_of_type_Long;
+        a(this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item);
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    if (paramInt != 1000)
+    {
+      QLog.w("QzoneOnlineTimeCollectRptService", 1, "QzoneOnlineTimeCollectRptService report failure resultCode:" + paramInt + " RetryTimes:" + this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Int < 2)
+      {
+        a(this.jdField_b_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_Int += 1;
+      }
+      return;
+    }
+    QLog.d("QzoneOnlineTimeCollectRptService", 1, "QzoneOnlineTimeCollectRptService task succeed!");
+    this.jdField_a_of_type_Int = 0;
+    if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0))
+    {
+      paramInt = 0;
+      while (paramInt < this.jdField_b_of_type_JavaUtilArrayList.size())
+      {
+        QLog.d("QzoneOnlineTimeCollectRptService", 1, "sp:" + this.jdField_a_of_type_JavaLangString + " report uptime:" + ((mobile_online_report_item)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt)).uptime + " downtime:" + ((mobile_online_report_item)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt)).downtime);
+        paramInt += 1;
+      }
+      this.jdField_b_of_type_JavaUtilArrayList.clear();
+    }
+    LocalMultiProcConfig.putString(this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Long, "");
+    LocalMultiProcConfig.putString(this.jdField_b_of_type_JavaLangString + "_" + this.jdField_a_of_type_Long, "");
+  }
+  
+  public void d()
+  {
+    mobile_online_report_item localmobile_online_report_item;
+    if (this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item != null)
+    {
+      if (this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.uptime <= 0L) {
+        break label185;
+      }
+      this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.downtime = (System.currentTimeMillis() / 1000L);
+      if (this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.uptime == this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.downtime) {
+        localmobile_online_report_item = this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item;
+      }
+    }
+    for (localmobile_online_report_item.downtime += 1L;; this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.downtime = (this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.uptime + 1L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneOnlineTimeCollectRptService", 2, "update sp:" + this.jdField_b_of_type_JavaLangString + " last time:" + this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.downtime);
+      }
+      LocalMultiProcConfig.putString(this.jdField_b_of_type_JavaLangString + "_" + this.jdField_a_of_type_Long, this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.uptime + ";" + this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.downtime);
+      return;
+      label185:
+      this.jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item.uptime = (System.currentTimeMillis() / 1000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjmt
  * JD-Core Version:    0.7.0.1
  */

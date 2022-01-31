@@ -1,37 +1,101 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
+import org.jetbrains.annotations.NotNull;
 
 public class qhg
-  implements TextWatcher
+  implements qgw
 {
-  public qhg(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public int a()
   {
-    if (paramEditable.length() > 0)
-    {
-      if (!ReadInJoySelectMemberFragment.a(this.a).isVisible()) {
-        this.a.getChildFragmentManager().beginTransaction().add(2131366671, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
-      }
-      ReadInJoySelectMemberFragment.a(this.a).a(paramEditable.toString());
-    }
-    while (ReadInJoySelectMemberFragment.a(this.a).isDetached()) {
-      return;
-    }
-    this.a.getChildFragmentManager().popBackStackImmediate();
+    return qig.a().a();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public String a()
+  {
+    return qig.a().a();
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(int paramInt)
+  {
+    qig.a().a(paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    qig.a().a(paramString);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    qig.a().a(paramString, paramInt1, paramInt2, new qhh(this));
+  }
+  
+  public boolean a()
+  {
+    return qig.a().c();
+  }
+  
+  public boolean a(@NotNull String paramString)
+  {
+    return qig.a().a(paramString);
+  }
+  
+  public int b()
+  {
+    return qig.a().b();
+  }
+  
+  public String b()
+  {
+    return qig.a().b();
+  }
+  
+  public void b(int paramInt)
+  {
+    qig.a().b(paramInt);
+  }
+  
+  public int c()
+  {
+    return qig.a().c();
+  }
+  
+  public void c(int paramInt)
+  {
+    qig.a().d(paramInt);
+  }
+  
+  public int d()
+  {
+    return qig.a().d();
+  }
+  
+  public void d(int paramInt)
+  {
+    qig.a().c(paramInt);
+  }
+  
+  public int e()
+  {
+    return qig.a().h();
+  }
+  
+  public int f()
+  {
+    return qig.a().e();
+  }
+  
+  public int g()
+  {
+    return qig.a().f();
+  }
+  
+  public int h()
+  {
+    return qig.a().g();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qhg
  * JD-Core Version:    0.7.0.1
  */

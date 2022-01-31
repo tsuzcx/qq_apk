@@ -1,7 +1,8 @@
 package cooperation.qqreader.host.advertisement;
 
+import aaik;
 import android.text.TextUtils;
-import bbfr;
+import bdem;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -14,7 +15,6 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
-import yst;
 
 public class ReaderAdWrapper
 {
@@ -151,7 +151,7 @@ public class ReaderAdWrapper
   
   public boolean isAdAppInstalled()
   {
-    return bbfr.a(BaseApplicationImpl.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAppPackageName());
+    return bdem.a(BaseApplicationImpl.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAppPackageName());
   }
   
   public boolean isAppType()
@@ -196,7 +196,7 @@ public class ReaderAdWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderAdWrapper
  * JD-Core Version:    0.7.0.1
  */

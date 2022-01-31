@@ -1,23 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
+import android.view.View;
+import android.widget.FrameLayout;
 
-public final class berv
-  implements Parcelable.Creator<MiniAppBaseInfo>
+public class berv
 {
-  public MiniAppBaseInfo a(Parcel paramParcel)
+  private static long jdField_a_of_type_Long = 400L;
+  private static boolean jdField_a_of_type_Boolean;
+  
+  public static void a()
   {
-    return new MiniAppBaseInfo(paramParcel);
+    jdField_a_of_type_Boolean = false;
   }
   
-  public MiniAppBaseInfo[] a(int paramInt)
+  public static void a(FrameLayout paramFrameLayout)
   {
-    return new MiniAppBaseInfo[paramInt];
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    jdField_a_of_type_Boolean = true;
+    paramFrameLayout.invalidate();
+    View localView = paramFrameLayout.getChildAt(1);
+    paramFrameLayout = paramFrameLayout.getChildAt(0);
+    beke localbeke = new beke(localView);
+    localbeke.setDuration(jdField_a_of_type_Long);
+    localbeke.setFillAfter(true);
+    bekf localbekf = new bekf(paramFrameLayout);
+    localbekf.setDuration(jdField_a_of_type_Long);
+    localbekf.setFillAfter(true);
+    localView.startAnimation(localbeke);
+    paramFrameLayout.startAnimation(localbekf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     berv
  * JD-Core Version:    0.7.0.1
  */

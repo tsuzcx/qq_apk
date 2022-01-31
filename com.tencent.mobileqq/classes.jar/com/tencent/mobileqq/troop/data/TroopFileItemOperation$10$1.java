@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.troop.data;
 
 import android.app.Activity;
-import azpi;
-import azpv;
-import azpx;
-import azpy;
-import bakx;
-import bbdj;
-import bbgu;
+import bbnr;
+import bboe;
+import bbog;
+import bboh;
+import bcjk;
+import bdcd;
+import bdfq;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class TroopFileItemOperation$10$1
   implements Runnable
 {
-  public TroopFileItemOperation$10$1(azpx paramazpx) {}
+  public TroopFileItemOperation$10$1(bbog parambbog) {}
   
   public void run()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.a.jdField_a_of_type_Azpi.a);
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.a.jdField_a_of_type_Bbnr.a);
     if ((localObject != null) && (((TroopFileTransferManager.Item)localObject).ErrorCode == -136))
     {
-      this.a.jdField_a_of_type_Azpv.a(this.a.jdField_a_of_type_Azpi, this.a.jdField_a_of_type_Azpv.a.getString(2131698014), this.a.jdField_a_of_type_Azpv.a.getString(2131698015));
+      this.a.jdField_a_of_type_Bboe.a(this.a.jdField_a_of_type_Bbnr, this.a.jdField_a_of_type_Bboe.a.getString(2131698191), this.a.jdField_a_of_type_Bboe.a.getString(2131698192));
       return;
     }
-    int i = azpv.a(this.a.jdField_a_of_type_Azpv, false);
-    azpy localazpy = new azpy(this);
+    int i = bboe.a(this.a.jdField_a_of_type_Bboe, false);
+    bboh localbboh = new bboh(this);
     if (i == 1) {}
-    for (localObject = azpv.a(2131697652, new Object[] { bakx.a(this.a.jdField_a_of_type_Azpi.c), this.a.jdField_a_of_type_Azpi.a() });; localObject = azpv.a(2131697951, new Object[] { bakx.a(this.a.jdField_a_of_type_Azpi.c) }))
+    for (localObject = bboe.a(2131697827, new Object[] { bcjk.a(this.a.jdField_a_of_type_Bbnr.c), this.a.jdField_a_of_type_Bbnr.a() });; localObject = bboe.a(2131698128, new Object[] { bcjk.a(this.a.jdField_a_of_type_Bbnr.c) }))
     {
-      bbdj.a(this.a.jdField_a_of_type_Azpv.a, 230, azpv.a(2131697953), (String)localObject, 2131690596, 2131697952, localazpy, localazpy).show();
+      bdcd.a(this.a.jdField_a_of_type_Bboe.a, 230, bboe.a(2131698130), (String)localObject, 2131690648, 2131698129, localbboh, localbboh).show();
       return;
     }
   }

@@ -1,7 +1,7 @@
 package cooperation.vip.ar.util;
 
 import android.text.TextUtils;
-import axqn;
+import azly;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Properties;
@@ -22,7 +22,7 @@ public final class VipARUtils$5
       {
         Properties localProperties = new Properties();
         localProperties.put(this.b, this.c);
-        axqn.a(BaseApplicationImpl.getContext()).reportTimeKVEvent(this.jdField_a_of_type_JavaLangString, localProperties, this.jdField_a_of_type_Int);
+        azly.a(BaseApplicationImpl.getContext()).reportTimeKVEvent(this.jdField_a_of_type_JavaLangString, localProperties, this.jdField_a_of_type_Int);
       }
       return;
     }
@@ -34,7 +34,7 @@ public final class VipARUtils$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.vip.ar.util.VipARUtils.5
  * JD-Core Version:    0.7.0.1
  */

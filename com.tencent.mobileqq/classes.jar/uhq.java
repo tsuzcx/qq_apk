@@ -1,32 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.FutureListener.SimpleFutureListener;
+import com.tribe.async.async.JobController.DoneEvent;
+import com.tribe.async.async.Worker;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class uhq
-  extends QQUIEventReceiver<uhg, tkk>
+class uhq
+  extends FutureListener.SimpleFutureListener<Progress, Result>
 {
-  public uhq(@NonNull uhg paramuhg)
-  {
-    super(paramuhg);
-  }
+  uhq(uhp paramuhp, Worker paramWorker) {}
   
-  public void a(@NonNull uhg paramuhg, @NonNull tkk paramtkk)
+  public void onFutureDone(@Nullable Result paramResult)
   {
-    if (paramtkk.a.isSuccess())
-    {
-      ved.a(paramuhg.b, "receive user info event. %s.", paramtkk.toString());
-      paramuhg.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tkk.class;
+    uht.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhq
  * JD-Core Version:    0.7.0.1
  */

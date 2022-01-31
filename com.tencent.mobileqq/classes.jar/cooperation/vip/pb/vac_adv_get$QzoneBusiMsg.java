@@ -17,7 +17,7 @@ public final class vac_adv_get$QzoneBusiMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.vip.pb.vac_adv_get.QzoneBusiMsg
  * JD-Core Version:    0.7.0.1
  */

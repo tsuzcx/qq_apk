@@ -1,37 +1,35 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class aqfl
-  extends mxj
+  implements Animation.AnimationListener
 {
-  aqfl(aqfd paramaqfd) {}
+  aqfl(aqfk paramaqfk) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.j)) {}
-    do
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.removeView(this.a.jdField_a_of_type_AndroidViewView);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getWindow().setBackgroundDrawable(null);
+    Face2FaceAddFriendActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.n = true;
+    if (aqgc.a >= aqgc.b)
     {
+      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(aqgc.a, aqgc.b);
       return;
-      this.a.x();
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      }
-      if (paramInt == 16)
-      {
-        this.a.L();
-        return;
-      }
-    } while (!aqfd.a(this.a));
-    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aqau.e.intValue());
-    this.a.l();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(aqgc.a, 0L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfl
  * JD-Core Version:    0.7.0.1
  */

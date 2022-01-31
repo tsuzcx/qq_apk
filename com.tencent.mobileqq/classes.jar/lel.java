@@ -1,14 +1,29 @@
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+
 public class lel
 {
-  @Deprecated
-  public static boolean a(int paramInt1, int paramInt2)
+  private static bapv jdField_a_of_type_Bapv;
+  private static bdlp jdField_a_of_type_Bdlp = new lem();
+  
+  public static bapv a()
   {
-    return (paramInt2 == 2) || (paramInt2 == 3) || (paramInt1 == 25) || (paramInt1 == 26);
+    if (jdField_a_of_type_Bapv == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bapv == null)
+      {
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bdlp, 128);
+        localHttpCommunicator.a();
+        jdField_a_of_type_Bapv = new baqy(localHttpCommunicator, true);
+      }
+      return jdField_a_of_type_Bapv;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lel
  * JD-Core Version:    0.7.0.1
  */

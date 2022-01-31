@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import akta;
-import asen;
-import bbdd;
+import amjf;
+import atvn;
+import bdbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 
@@ -19,9 +19,9 @@ class AssociatedAccountManageActivity$7
       if (localProxyManager != null)
       {
         localProxyManager.d();
-        akta.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, true);
-        new asen().a(this.jdField_a_of_type_JavaLangString);
-        bbdd.a().a(this.this$0.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
+        amjf.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, true);
+        new atvn().a(this.jdField_a_of_type_JavaLangString);
+        bdbx.a().a(this.this$0.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
       }
     }
     this.this$0.runOnUiThread(new AssociatedAccountManageActivity.7.1(this));
@@ -29,7 +29,7 @@ class AssociatedAccountManageActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.7
  * JD-Core Version:    0.7.0.1
  */

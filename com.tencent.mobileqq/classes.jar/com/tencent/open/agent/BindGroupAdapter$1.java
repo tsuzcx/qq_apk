@@ -1,12 +1,12 @@
 package com.tencent.open.agent;
 
-import bczp;
+import beyr;
 import java.util.List;
 
 public class BindGroupAdapter$1
   implements Runnable
 {
-  public BindGroupAdapter$1(bczp parambczp, List paramList) {}
+  public BindGroupAdapter$1(beyr parambeyr, List paramList) {}
   
   public void run()
   {

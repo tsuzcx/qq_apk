@@ -1,22 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
-class tbi
-  implements View.OnClickListener
+public class tbi
+  implements tob
 {
-  tbi(tbh paramtbh, tbg paramtbg) {}
+  public tbi(WSHomeFragment paramWSHomeFragment) {}
   
-  public void onClick(View paramView)
+  public void a(toa paramtoa)
   {
-    int i = this.jdField_a_of_type_Tbg.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Tbh.a.a(this.jdField_a_of_type_Tbg.itemView, i);
+    if (paramtoa != null) {}
+    switch (paramtoa.a)
+    {
+    default: 
+      return;
+    case 2131721473: 
+      WSPublicAccReport.getInstance().reportNotificationClick();
+      WSHomeFragment.b(this.a);
+      ((tij)this.a.b()).a(this.a.getActivity(), 602);
+      return;
     }
+    WSPublicAccReport.getInstance().reportPersonHomeClick();
+    ((tij)this.a.b()).a(this.a.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbi
  * JD-Core Version:    0.7.0.1
  */

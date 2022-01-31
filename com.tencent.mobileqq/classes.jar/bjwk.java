@@ -1,86 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build.VERSION;
+import android.util.LruCache;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.widget.FastAnimationDrawable;
+import java.lang.ref.SoftReference;
+import java.util.Set;
 
 public class bjwk
-  implements View.OnTouchListener
+  extends LruCache<Integer, BitmapDrawable>
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private bjwj jdField_a_of_type_Bjwj;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 5;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  private boolean jdField_b_of_type_Boolean;
-  
-  public bjwk(bjwj parambjwj)
+  public bjwk(FastAnimationDrawable paramFastAnimationDrawable, int paramInt)
   {
-    this.jdField_a_of_type_Bjwj = parambjwj;
+    super(paramInt);
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, Integer paramInteger, BitmapDrawable paramBitmapDrawable1, BitmapDrawable paramBitmapDrawable2)
   {
-    if (this.jdField_a_of_type_Bjwj == null) {}
-    do
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      do
-      {
-        float f;
-        do
-        {
-          do
-          {
-            return true;
-            f = paramMotionEvent.getY();
-            switch (paramMotionEvent.getAction() & 0xFF)
-            {
-            case 3: 
-            case 4: 
-            default: 
-              return true;
-            case 0: 
-              this.jdField_a_of_type_Int = ((int)f);
-              this.jdField_a_of_type_Boolean = false;
-              this.jdField_b_of_type_Boolean = false;
-              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-              return true;
-            }
-          } while (paramMotionEvent.getPointerCount() > 2);
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Bjwj.a(paramMotionEvent);
-            return true;
-          }
-          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Bjwj.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
-        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
-        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
-        return true;
-        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
-          this.jdField_a_of_type_Boolean = true;
-        }
-      } while (!this.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_Bjwj.a(paramMotionEvent);
-      return true;
-    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
-    this.jdField_a_of_type_Bjwj.a(paramMotionEvent);
-    return true;
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bjwj.onClick(paramView);
+      FastAnimationDrawable.a(this.a).add(new SoftReference(paramBitmapDrawable1.getBitmap()));
+      if (QLog.isColorLevel()) {
+        QLog.d("FastAnimationDrawable", 2, "remove key:" + paramInteger + " bitmap:" + paramBitmapDrawable1.getBitmap());
+      }
     }
-    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
-      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
-    }
-    this.jdField_a_of_type_Bjwj.a(paramMotionEvent);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjwk
  * JD-Core Version:    0.7.0.1
  */

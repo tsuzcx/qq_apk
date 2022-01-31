@@ -1,24 +1,14 @@
-class wzp
-  extends wzr
+import android.graphics.Bitmap;
+
+public abstract interface wzp
 {
-  public wzp(wyt paramwyt, wzs paramwzs, String paramString)
-  {
-    super(paramwyt, paramwzs, paramString);
-  }
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
   
-  public void a()
-  {
-    this.jdField_a_of_type_Wyt.a.a();
-    wzd localwzd = a();
-    this.jdField_a_of_type_Wyt.a.a(localwzd.e, localwzd.jdField_a_of_type_JavaLangString, localwzd.jdField_a_of_type_Int, new wzq(this));
-    this.jdField_a_of_type_Wzs.b(this);
-    this.jdField_a_of_type_Wzr = new wzc(this.jdField_a_of_type_Wyt, this.jdField_a_of_type_Wzs, this.c);
-    b();
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzp
  * JD-Core Version:    0.7.0.1
  */

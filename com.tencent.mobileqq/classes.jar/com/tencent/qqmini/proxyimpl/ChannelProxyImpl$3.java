@@ -1,9 +1,9 @@
 package com.tencent.qqmini.proxyimpl;
 
 import NS_MINI_INTERFACE.INTERFACE.StReportExecuteRsp;
-import betc;
 import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class ChannelProxyImpl$3
@@ -27,14 +27,14 @@ class ChannelProxyImpl$3
     {
       for (;;)
       {
-        betc.d("ChannelProxyImpl", "tianshuRequestAdv", paramStReportExecuteRsp);
+        QMLog.e("ChannelProxyImpl", "tianshuRequestAdv", paramStReportExecuteRsp);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.3
  * JD-Core Version:    0.7.0.1
  */

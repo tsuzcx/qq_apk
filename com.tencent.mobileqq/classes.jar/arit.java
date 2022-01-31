@@ -1,30 +1,24 @@
-import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.1.1;
 
-class arit
-  implements ActionCallback
+public class arit
+  implements aqte
 {
-  arit(arik paramarik, arjc paramarjc) {}
+  arit(aris paramaris) {}
   
-  public void onResult(String paramString)
+  public void a()
   {
-    try
-    {
-      i = Integer.parseInt(paramString);
-      this.jdField_a_of_type_Arjc.a(i, "");
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
-    }
+    this.a.n();
+  }
+  
+  public void b()
+  {
+    this.a.a.runOnUiThread(new VideoFilePresenter.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arit
  * JD-Core Version:    0.7.0.1
  */

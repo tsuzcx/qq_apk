@@ -1,10 +1,9 @@
-public abstract interface bgmf
-{
-  public abstract void a(String paramString1, String paramString2, long paramLong);
-}
+public class bgmf
+  implements bgme
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgmf
  * JD-Core Version:    0.7.0.1
  */

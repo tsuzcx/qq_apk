@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import tpf;
-import tqh;
-import trm;
+import vdx;
+import vez;
+import vge;
 
 public class ShareModeBase$24
   implements Runnable
 {
-  public ShareModeBase$24(tqh paramtqh, trm paramtrm) {}
+  public ShareModeBase$24(vez paramvez, vge paramvge) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class ShareModeBase$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.24
  * JD-Core Version:    0.7.0.1
  */

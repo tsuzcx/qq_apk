@@ -1,51 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-class pfq
-  implements ViewBase.OnClickListener
+public class pfq
 {
-  pfq(pfp parampfp, int paramInt, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2, pau parampau) {}
+  public void a(int paramInt, String paramString) {}
   
-  public void onClick(ViewBase paramViewBase)
-  {
-    ArticleInfo localArticleInfo1;
-    String str;
-    ArticleInfo localArticleInfo2;
-    Object localObject;
-    if (this.jdField_a_of_type_Int == 1120)
-    {
-      localArticleInfo1 = (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-      str = this.b.innerUniqueID;
-      localArticleInfo2 = localArticleInfo1;
-      localObject = this.jdField_a_of_type_Pau.a().mProteusTemplateBean;
-      if (localObject != null)
-      {
-        paramViewBase = pfp.a(this.jdField_a_of_type_Pfp, (TemplateBean)localObject, paramViewBase);
-        localObject = this.jdField_a_of_type_Pau.a();
-        if (this.jdField_a_of_type_Int != 1120) {
-          break label130;
-        }
-      }
-    }
-    label130:
-    for (boolean bool = true;; bool = false)
-    {
-      ((ram)localObject).a(bool, localArticleInfo1, localArticleInfo2, str, paramViewBase);
-      return;
-      localArticleInfo1 = (ArticleInfo)this.b;
-      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
-      localArticleInfo2 = (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-      localArticleInfo1.isTwoItem = true;
-      break;
-    }
-  }
+  public void a(long paramLong, String paramString) {}
+  
+  public void a(FastWebArticleInfo paramFastWebArticleInfo, int paramInt, String paramString) {}
+  
+  public void a(FastWebArticleInfo paramFastWebArticleInfo, String paramString) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(boolean paramBoolean, int paramInt, scw paramscw) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfq
  * JD-Core Version:    0.7.0.1
  */

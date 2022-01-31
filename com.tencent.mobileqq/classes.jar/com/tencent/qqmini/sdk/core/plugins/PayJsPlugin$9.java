@@ -1,39 +1,63 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import android.app.Activity;
-import android.os.Bundle;
-import bekr;
-import com.tencent.qqmini.sdk.core.proxy.PayProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import android.text.TextUtils;
+import bgkd;
+import bgkz;
+import com.tencent.qqmini.sdk.core.proxy.PayProxy.IPayResultCallBack;
+import com.tencent.qqmini.sdk.core.proxy.PayProxy.PayResponse;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class PayJsPlugin$9
-  implements Runnable
+  implements PayProxy.IPayResultCallBack
 {
-  PayJsPlugin$9(PayJsPlugin paramPayJsPlugin, String paramString1, String paramString2, Activity paramActivity, bekr parambekr, boolean paramBoolean) {}
+  PayJsPlugin$9(PayJsPlugin paramPayJsPlugin, bgkd parambgkd) {}
   
-  public void run()
+  public void onPayCallBack(PayProxy.PayResponse paramPayResponse)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("payparmas_callback_sn", this.val$callbackSn);
-    localBundle.putString("payparmas_json", PayJsPlugin.access$400(this.this$0, this.val$payJson));
-    localBundle.putInt("payparmas_paytype", 1);
-    localBundle.putLong("payparmas_h5_start", System.currentTimeMillis());
-    localBundle.putInt("payparmas_request_code", 6);
-    localBundle.putString("payparmas_sdk_pf", PayJsPlugin.access$500(this.this$0));
-    localBundle = ((PayProxy)ProxyManager.get(PayProxy.class)).midasPay(this.val$activity, PayJsPlugin.access$400(this.this$0, this.val$payJson), new PayJsPlugin.9.1(this), localBundle);
-    if (localBundle != null) {}
-    for (int i = localBundle.getInt("retCode", 0);; i = 0)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      if ((localBundle != null) && (i != 0)) {
-        PayJsPlugin.access$200(this.this$0, this.val$req, null, "");
+      localJSONObject.put("resultCode", paramPayResponse.getResultCode());
+      String str = paramPayResponse.getExtendInfo();
+      if ((!TextUtils.isEmpty(str)) && (bgkz.a(str))) {
+        localJSONObject.put("data", new JSONObject(str).optJSONObject("data"));
       }
-      return;
+      label58:
+      if ((paramPayResponse.getResultCode() == 0) && (paramPayResponse.getPayState() == 0)) {
+        PayJsPlugin.access$300(this.this$0, this.val$req, localJSONObject);
+      }
+      for (;;)
+      {
+        QMLog.i("PayJsPlugin", "handleMidasGoodsPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
+        return;
+        if ((paramPayResponse.getResultCode() == 2) || (paramPayResponse.getPayState() == 1))
+        {
+          PayJsPlugin.access$000(this.this$0, this.val$req, localJSONObject);
+        }
+        else
+        {
+          str = paramPayResponse.getResultMsg();
+          PayJsPlugin.access$200(this.this$0, this.val$req, localJSONObject, str);
+        }
+      }
     }
+    catch (JSONException localJSONException)
+    {
+      break label58;
+    }
+  }
+  
+  public void payNeedLogin()
+  {
+    QMLog.e("PayJsPlugin", "handleMidasMonthCardPay payNeedLogin");
+    PayJsPlugin.access$200(this.this$0, this.val$req, null, "payNeedLogin");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.PayJsPlugin.9
  * JD-Core Version:    0.7.0.1
  */

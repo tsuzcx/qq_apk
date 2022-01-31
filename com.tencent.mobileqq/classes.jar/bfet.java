@@ -1,28 +1,26 @@
-import android.widget.DatePicker;
-import android.widget.DatePicker.OnDateChangedListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class bfet
-  implements DatePicker.OnDateChangedListener
+public class bfet
 {
-  bfet(bfes parambfes) {}
+  public static ArrayList<String> a;
+  public static HashMap<String, Class<?>> a;
   
-  public void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    if (paramDatePicker != null)
-    {
-      bfes.a(this.a, paramDatePicker.getYear());
-      bfes.b(this.a, paramDatePicker.getMonth());
-      bfes.c(this.a, paramDatePicker.getDayOfMonth());
-      return;
-    }
-    bfes.a(this.a, paramInt1);
-    bfes.b(this.a, paramInt2);
-    bfes.c(this.a, paramInt3);
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilArrayList.add("getQueryDownloadAction");
+    jdField_a_of_type_JavaUtilArrayList.add("checkUpdate");
+    jdField_a_of_type_JavaUtilArrayList.add("picUpload");
+    jdField_a_of_type_JavaUtilArrayList.add("gSetPackageScanSetting");
+    jdField_a_of_type_JavaUtilArrayList.add("getAllSDKDownloadInfos");
+    jdField_a_of_type_JavaUtilArrayList.add("queryInstalledAppInfo");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfet
  * JD-Core Version:    0.7.0.1
  */

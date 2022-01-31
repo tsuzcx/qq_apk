@@ -1,26 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
 
-class nsl
-  implements QQPermissionCallback
+public final class nsl
+  implements Parcelable.Creator<VideoInfo.ChannelInfo>
 {
-  nsl(nsc paramnsc, Runnable paramRunnable) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public VideoInfo.ChannelInfo a(Parcel paramParcel)
   {
-    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
-    nsc.a(this.jdField_a_of_type_Nsc, 3);
+    return new VideoInfo.ChannelInfo(paramParcel);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public VideoInfo.ChannelInfo[] a(int paramInt)
   {
-    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    return new VideoInfo.ChannelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsl
  * JD-Core Version:    0.7.0.1
  */

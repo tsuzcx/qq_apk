@@ -1,53 +1,32 @@
-import android.graphics.Rect;
-
-public class luz
-  extends lva
+class luz
 {
-  public luv a;
-  public int b;
-  public int c;
+  public long a;
+  public final String a;
+  public long b;
+  public long c;
   
-  public luz(luv paramluv)
+  public luz(String paramString, long paramLong)
   {
-    this.jdField_b_of_type_Long = 1800L;
-    this.a = paramluv;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
+    this.c = paramLong;
   }
   
   public void a(long paramLong)
   {
-    super.a(paramLong);
-    Rect localRect = this.a.a();
-    int i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
-    int j = (localRect.top + localRect.bottom - this.c) / 2;
-    int k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
-    int m = localRect.top;
-    a(i, j, k, (localRect.bottom + m + this.c) / 2);
-    if (this.a.a != null) {
-      a(this.a.a());
+    if (this.jdField_a_of_type_Long < paramLong) {
+      this.jdField_a_of_type_Long = paramLong;
     }
-    for (;;)
-    {
-      b(this.a.a());
-      return;
-      a(0);
+    if (this.b > paramLong) {
+      this.b = paramLong;
     }
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.a = null;
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = (paramInt1 * 152 / 160);
-    this.c = (paramInt1 * 152 / 160);
+    this.c = ((this.c + paramLong) / 2L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     luz
  * JD-Core Version:    0.7.0.1
  */

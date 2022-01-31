@@ -1,31 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.VideoData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastVideoViewCreator.VideoViewHolder.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class rlr
-  implements onn
+class rlr
+  extends Handler
 {
-  rlr(rlq paramrlq, VideoData paramVideoData) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  rlr(rlo paramrlo, Looper paramLooper)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_JavaLangString, paramString1)))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_JavaLangString = paramString2;
-      if ((paramInt1 > 0) && (paramInt2 > 0))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_Int = paramInt2;
-      }
-      ThreadManager.getUIHandler().post(new WebFastVideoViewCreator.VideoViewHolder.1.1(this));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideofeedsUserGuideController", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlr
  * JD-Core Version:    0.7.0.1
  */

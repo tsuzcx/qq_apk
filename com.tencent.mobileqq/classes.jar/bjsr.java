@@ -1,27 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.PressDarkImageButton;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 class bjsr
-  implements View.OnClickListener
+  implements bjbi
 {
-  bjsr(bjsq parambjsq) {}
+  bjsr(bjsq parambjsq, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (bjsq.a(this.a))
+    if (this.jdField_a_of_type_Bjsq.a != null)
     {
-      bjsq.a(this.a, false);
-      bjsq.a(this.a).setChecked(false);
-      return;
+      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playAnimationFinish:1})";
+      this.jdField_a_of_type_Bjsq.a.callJs(str);
     }
-    bjsq.a(this.a, true);
-    bjsq.a(this.a).setChecked(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjsr
  * JD-Core Version:    0.7.0.1
  */

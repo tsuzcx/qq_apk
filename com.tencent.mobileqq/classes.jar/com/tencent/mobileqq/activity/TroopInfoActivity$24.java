@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bbcz;
-import bbdd;
+import bdbt;
+import bdbx;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.mobileqq.data.TroopMemberInfo;
@@ -17,7 +17,7 @@ class TroopInfoActivity$24
   
   public void run()
   {
-    Object localObject1 = bbcz.j(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+    Object localObject1 = bdbt.j(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin)))
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
@@ -30,10 +30,10 @@ class TroopInfoActivity$24
       }
       return;
       Object localObject2 = null;
-      Object localObject3 = bbdd.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+      Object localObject3 = bdbx.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
       if (localObject3 == null)
       {
-        localObject3 = bbdd.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+        localObject3 = bdbx.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
         localObject1 = localObject2;
         if (localObject3 != null)
         {
@@ -81,7 +81,7 @@ class TroopInfoActivity$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInfoActivity.24
  * JD-Core Version:    0.7.0.1
  */

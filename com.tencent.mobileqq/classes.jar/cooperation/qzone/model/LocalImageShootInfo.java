@@ -7,7 +7,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bhfh;
+import bjgr;
 import com.tencent.image.JpegExifReader;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -18,7 +18,7 @@ import java.util.Date;
 public class LocalImageShootInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<LocalImageShootInfo> CREATOR = new bhfh();
+  public static final Parcelable.Creator<LocalImageShootInfo> CREATOR = new bjgr();
   public long a;
   public GpsInfo4LocalImage a;
   public String a;
@@ -292,7 +292,7 @@ public class LocalImageShootInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.LocalImageShootInfo
  * JD-Core Version:    0.7.0.1
  */

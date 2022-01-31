@@ -1,84 +1,92 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Handler;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class azth
+  extends azqk
 {
-  private akil jdField_a_of_type_Akil = new azti(this);
-  public Context a;
-  public Handler a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public String a;
-  
-  public azth(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, Handler paramHandler)
+  private LinearLayout a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    int i = aekt.a(12.0F, paramContext.getResources());
+    localLinearLayout.setPadding(i, i, i, i);
+    localLinearLayout.setLayoutParams(localLayoutParams);
+    return localLinearLayout;
   }
   
-  private String a(String paramString)
+  protected int b()
   {
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    if (localTroopManager != null)
+    return 22;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Iterator localIterator;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      paramString = localTroopManager.b(paramString);
-      if (paramString != null) {
-        return paramString.troopcode;
-      }
+      paramView = (LinearLayout)paramView;
+      paramView.removeAllViews();
+      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akil);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.e("RefreshMemberList", 4, "Prepare refreshMemberListFromServer");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    String str;
-    do
+    for (;;)
     {
-      return;
-      str = a(this.jdField_a_of_type_JavaLangString);
-    } while (TextUtils.isEmpty(str));
-    long l1 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("last_update_time", 4).getLong("key_last_update_time" + str, 0L);
-    long l2 = System.currentTimeMillis();
-    if ((paramBoolean) || (l1 == 0L) || ((l1 > 0L) && (l2 - l1 > 300000L)))
-    {
-      ((akhp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(true, this.jdField_a_of_type_JavaLangString, str, 5);
-      if (l1 == 0L)
+      if (!localIterator.hasNext()) {
+        return paramView;
+      }
+      Object localObject1 = (azqj)localIterator.next();
+      Object localObject2 = ((azqj)localObject1).jdField_a_of_type_JavaLangString;
+      ((azqj)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ("title".equals(localObject2))
       {
-        QLog.e("RefreshMemberList", 4, "Not refresh now, will refresh.");
-        return;
+        localObject2 = (StructMsgItemTitle)localObject1;
+        ((StructMsgItemTitle)localObject2).a(a(), this.l);
+        localObject1 = (TextView)((azqj)localObject1).a(paramContext, null, paramBundle);
+        ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
+        ((TextView)localObject1).setMaxLines(2);
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).c())) {
+          ((TextView)localObject1).setTextSize(18.0F);
+        }
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).d())) {
+          ((TextView)localObject1).setTextColor(Color.parseColor("#000000"));
+        }
+        localObject2 = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
+        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+        ((LinearLayout.LayoutParams)localObject2).rightMargin = aekt.a(12.0F, paramContext.getResources());
+        paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        continue;
+        paramView = a(paramContext);
+        break;
       }
-      QLog.e("RefreshMemberList", 4, "> 5min, will refresh.");
-      return;
+      if ("picture".equals(localObject2))
+      {
+        localObject1 = ((azqj)localObject1).a(paramContext, null, paramBundle);
+        int i = aekt.a(50.0F, paramContext.getResources());
+        paramView.addView((View)localObject1, new LinearLayout.LayoutParams(i, i));
+      }
     }
-    QLog.e("RefreshMemberList", 4, "< 5min, Will not refresh.");
+    return paramView;
   }
   
-  public void b()
+  public String b()
   {
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akil);
+    return "layout22";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azth
  * JD-Core Version:    0.7.0.1
  */

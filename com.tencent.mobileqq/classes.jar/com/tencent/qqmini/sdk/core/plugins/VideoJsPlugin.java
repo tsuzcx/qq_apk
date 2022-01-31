@@ -5,16 +5,16 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.ViewGroup;
-import behp;
-import bejk;
-import bejn;
-import bekr;
-import bely;
-import betc;
-import bfgh;
-import bfgl;
+import bghn;
+import bgjl;
+import bgkd;
+import bglo;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import com.tencent.qqmini.sdk.core.widget.media.CoverVideoView;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.ColorUtils;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.lang.ref.WeakReference;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,20 +31,20 @@ public class VideoJsPlugin
   private float density;
   private SparseArray<CoverView> mCoverViewSparseArray = new SparseArray();
   
-  private void insertVideoPlayer(Activity paramActivity, behp parambehp, int paramInt, JSONObject paramJSONObject)
+  private void insertVideoPlayer(Activity paramActivity, bghn parambghn, int paramInt, JSONObject paramJSONObject)
   {
-    betc.b("VideoPlugin", "insertVideoPlayer: " + paramJSONObject);
+    QMLog.i("VideoPlugin", "insertVideoPlayer: " + paramJSONObject);
     Object localObject = (CoverView)this.mCoverViewSparseArray.get(paramInt);
     if (localObject == null)
     {
       localObject = new CoverVideoView(paramActivity);
       ((CoverVideoView)localObject).setAtyRef(new WeakReference(paramActivity));
       ((CoverVideoView)localObject).setData(paramJSONObject.optString("data"));
-      ((CoverVideoView)localObject).setServiceWebview(parambehp);
+      ((CoverVideoView)localObject).setServiceWebview(parambghn);
       ((CoverVideoView)localObject).setVideoPlayerId(paramInt);
       ((CoverVideoView)localObject).setParentId(paramInt);
       this.mCoverViewSparseArray.put(paramInt, localObject);
-      bejk.a().a((ViewGroup)localObject);
+      bgjl.a().a((ViewGroup)localObject);
     }
     for (paramActivity = (Activity)localObject;; paramActivity = (Activity)localObject)
     {
@@ -71,7 +71,7 @@ public class VideoJsPlugin
         if (localCoverView1.a() != 0) {
           break label72;
         }
-        bejk.a().a(localCoverView1);
+        bgjl.a().a(localCoverView1);
       }
       for (;;)
       {
@@ -93,7 +93,7 @@ public class VideoJsPlugin
       return;
     }
     removeCoverChildView(paramInt);
-    bejk.a().a(localCoverView);
+    bgjl.a().a(localCoverView);
   }
   
   private void updateVideoPlayer(int paramInt, JSONObject paramJSONObject)
@@ -106,49 +106,49 @@ public class VideoJsPlugin
         ((CoverVideoView)localCoverView).setVisibility(0);
       }
       paramJSONObject = paramJSONObject.optString("src");
-      if (!bely.a(paramJSONObject)) {
+      if (!bglo.a(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }
   }
   
-  public String insertVideoPlayer(bekr parambekr)
+  public String insertVideoPlayer(bgkd parambgkd)
   {
     if (this.density <= 0.0F) {
-      this.density = bfgl.a(this.mContext);
+      this.density = DisplayUtil.getDensity(this.mContext);
     }
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambekr.b);
+      JSONObject localJSONObject1 = new JSONObject(parambgkd.b);
       int i = localJSONObject1.optInt("videoPlayerId");
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("containerId", i);
-      bejn.c().post(new VideoJsPlugin.1(this, parambekr, i, localJSONObject1, localJSONObject2));
+      ThreadManager.c().post(new VideoJsPlugin.1(this, parambgkd, i, localJSONObject1, localJSONObject2));
       return "{}";
     }
     catch (Throwable localThrowable)
     {
-      betc.d("VideoPlugin", parambekr.a + " error.", localThrowable);
+      QMLog.e("VideoPlugin", parambgkd.a + " error.", localThrowable);
     }
     return "{}";
   }
   
-  public String operateVideoPlayer(bekr parambekr)
+  public String operateVideoPlayer(bgkd parambgkd)
   {
     if (this.density <= 0.0F) {
-      this.density = bfgl.a(this.mContext);
+      this.density = DisplayUtil.getDensity(this.mContext);
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambekr.b);
+      JSONObject localJSONObject = new JSONObject(parambgkd.b);
       String str = localJSONObject.optString("type");
       int i = localJSONObject.optInt("videoPlayerId");
-      bejn.c().post(new VideoJsPlugin.3(this, i, str, parambekr));
+      ThreadManager.c().post(new VideoJsPlugin.3(this, i, str, parambgkd));
       return "{}";
     }
     catch (Throwable localThrowable)
     {
-      betc.d("VideoPlugin", parambekr.a + " error.", localThrowable);
+      QMLog.e("VideoPlugin", parambgkd.a + " error.", localThrowable);
     }
     return "{}";
   }
@@ -162,12 +162,12 @@ public class VideoJsPlugin
       return false;
       if ("play".equals(paramString1))
       {
-        ((CoverVideoView)localCoverView).a();
+        ((CoverVideoView)localCoverView).b();
         return true;
       }
       if ("pause".equals(paramString1))
       {
-        ((CoverVideoView)localCoverView).b();
+        ((CoverVideoView)localCoverView).c();
         return true;
       }
       if ("stop".equals(paramString1))
@@ -186,26 +186,26 @@ public class VideoJsPlugin
         {
           for (;;)
           {
-            betc.d("VideoPlugin", "wrong seek pram. " + paramString2, paramString1);
+            QMLog.e("VideoPlugin", "wrong seek pram. " + paramString2, paramString1);
             boolean bool = false;
           }
         }
       }
       if (("playbackRate".equals(paramString1)) && (!TextUtils.isEmpty(paramString2)))
       {
-        betc.d("VideoPlugin", "playbackRate is not support.");
+        QMLog.e("VideoPlugin", "playbackRate is not support.");
         return true;
       }
       if ("requestFullScreen".equals(paramString1))
       {
-        if (!((CoverVideoView)localCoverView).c()) {
+        if (!((CoverVideoView)localCoverView).d()) {
           ((CoverVideoView)localCoverView).a();
         }
         return true;
       }
       if ("exitFullScreen".equals(paramString1))
       {
-        if (((CoverVideoView)localCoverView).c()) {
+        if (((CoverVideoView)localCoverView).d()) {
           ((CoverVideoView)localCoverView).b();
         }
         return true;
@@ -219,7 +219,7 @@ public class VideoJsPlugin
         if (paramString2.length() == 2)
         {
           paramString1 = paramString2.getString(0);
-          paramInt = bfgh.a(paramString2.getString(1));
+          paramInt = ColorUtils.parseColor(paramString2.getString(1));
           ((CoverVideoView)localCoverView).a(paramString1, paramInt);
           return true;
         }
@@ -233,60 +233,60 @@ public class VideoJsPlugin
       }
       catch (Exception paramString1)
       {
-        betc.d("VideoPlugin", "sendDanmu error.", paramString1);
+        QMLog.e("VideoPlugin", "sendDanmu error.", paramString1);
         return false;
       }
       paramInt = 0;
     }
   }
   
-  public String removeVideoPlayer(bekr parambekr)
+  public String removeVideoPlayer(bgkd parambgkd)
   {
     if (this.density <= 0.0F) {
-      this.density = bfgl.a(this.mContext);
+      this.density = DisplayUtil.getDensity(this.mContext);
     }
     try
     {
-      int i = new JSONObject(parambekr.b).optInt("videoPlayerId");
+      int i = new JSONObject(parambgkd.b).optInt("videoPlayerId");
       CoverView localCoverView = (CoverView)this.mCoverViewSparseArray.get(i);
       if ((localCoverView instanceof CoverVideoView))
       {
-        ((CoverVideoView)localCoverView).b();
+        ((CoverVideoView)localCoverView).c();
         ((CoverVideoView)localCoverView).c();
         ((CoverVideoView)localCoverView).d();
       }
-      bejn.c().post(new VideoJsPlugin.4(this, i, parambekr));
+      ThreadManager.c().post(new VideoJsPlugin.4(this, i, parambgkd));
       return "{}";
     }
     catch (Throwable localThrowable)
     {
-      betc.d("VideoPlugin", parambekr.a + " error.", localThrowable);
+      QMLog.e("VideoPlugin", parambgkd.a + " error.", localThrowable);
     }
     return "{}";
   }
   
-  public String updateVideoPlayer(bekr parambekr)
+  public String updateVideoPlayer(bgkd parambgkd)
   {
     if (this.density <= 0.0F) {
-      this.density = bfgl.a(this.mContext);
+      this.density = DisplayUtil.getDensity(this.mContext);
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambekr.b);
+      JSONObject localJSONObject = new JSONObject(parambgkd.b);
       int i = localJSONObject.optInt("videoPlayerId");
-      bejn.c().post(new VideoJsPlugin.2(this, i, localJSONObject, parambekr));
+      ThreadManager.c().post(new VideoJsPlugin.2(this, i, localJSONObject, parambgkd));
       return "{}";
     }
     catch (Throwable localThrowable)
     {
-      betc.d("VideoPlugin", parambekr.a + " error.", localThrowable);
+      QMLog.e("VideoPlugin", parambgkd.a + " error.", localThrowable);
     }
     return "{}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.VideoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

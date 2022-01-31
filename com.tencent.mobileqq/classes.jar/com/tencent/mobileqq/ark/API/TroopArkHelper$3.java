@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.API;
 
-import alqq;
+import anhi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.data.TroopInfo;
 public class TroopArkHelper$3
   implements Runnable
 {
-  public TroopArkHelper$3(alqq paramalqq, TroopInfo paramTroopInfo) {}
+  public TroopArkHelper$3(anhi paramanhi, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class TroopArkHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.TroopArkHelper.3
  * JD-Core Version:    0.7.0.1
  */

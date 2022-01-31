@@ -1,72 +1,105 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager.RunnableShowForKey;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.HashMap;
 
-class athu
-  implements atii
+public class athu
+  implements atkd
 {
-  athu(atht paramatht) {}
+  public athu(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(String paramString, int paramInt)
   {
-    boolean bool = true;
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i(atht.a(this.a), 2, "errorCode:   " + paramInt);
-    }
-    if (paramArrayOfByte != null) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    try
+    QLog.d("ListenTogether.Manager", 1, new Object[] { "onPlayStateChanged: " + atjy.a(paramInt), " songId:", paramString, " curSongID:", QQMusicPlayService.a().a() });
+    HashMap localHashMap = new HashMap();
+    if (paramInt == 8)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i(atht.a(this.a), 2, "err_msg:   " + paramBundle.err_msg.get());
+      ListenTogetherManager.a(this.a);
+      if (paramInt != 2) {
+        break label289;
       }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new FeedsProtocol.GetMediaDetailRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i(atht.a(this.a), 2, "GetMediaDetailRsp  error_code:   " + paramArrayOfByte.err_code.get() + ",err_msg:     " + paramArrayOfByte.err_msg.get().toStringUtf8() + ",total:  " + paramArrayOfByte.total.get());
-        }
-        paramBundle = this.a;
-        if (paramArrayOfByte.is_end.get() == 0) {
-          break label309;
-        }
+      ListenTogetherManager.a(this.a).k();
+      ListenTogetherManager.a(this.a).m();
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      localHashMap.put("status", String.valueOf(paramInt));
+      label177:
+      if (paramInt != 2) {
+        break label368;
       }
-      for (;;)
-      {
-        paramBundle.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
-        atht.a(this.a, paramArrayOfByte);
-        atht.a(this.a, atht.a(this.a) + 10);
-        paramBundle = this.a.jdField_a_of_type_Athg;
-        paramInt = i;
-        if (paramArrayOfByte.err_code.has()) {
-          paramInt = paramArrayOfByte.err_code.get();
-        }
-        paramBundle.a(1, paramInt);
-        return;
-        label309:
-        bool = false;
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, athn.a().a);
+    }
+    for (;;)
+    {
+      ListenTogetherManager.a(this.a, paramString, paramInt);
+      if (!localHashMap.isEmpty()) {
+        azmz.a(BaseApplication.getContext()).a("", "listen_together_player_status", true, 0L, 0L, localHashMap, "");
+      }
+      if (QQMusicPlayService.a() != null) {
+        awar.a().a(paramInt);
       }
       return;
+      if ((paramInt != 5) && (paramInt != 7)) {
+        break;
+      }
+      localHashMap.put("status", String.valueOf(paramInt));
+      break;
+      label289:
+      if ((paramInt != 4) && (paramInt != 5) && (paramInt != 7)) {
+        break label177;
+      }
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      break label177;
+      label368:
+      ListenTogetherManager.a(this.a).removeMessages(1001);
     }
-    catch (Exception paramArrayOfByte)
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.i("ListenTogether.Manager", 1, "onNetChanged: " + paramBoolean);
+    if (paramBoolean) {
+      ListenTogetherManager.b(this.a);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    QLog.i("ListenTogether.Manager", 1, "onFocusChanged: " + paramBoolean1 + " isTransient:" + paramBoolean2);
+    ListenTogetherManager.a(this.a, paramBoolean1);
+    if (paramBoolean1)
     {
-      paramArrayOfByte.printStackTrace();
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a, 0L);
+      return;
     }
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+    if (paramBoolean2)
+    {
+      ListenTogetherManager.a(this.a, 0L);
+      return;
+    }
+    ListenTogetherManager.a(this.a, SystemClock.elapsedRealtime());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     athu
  * JD-Core Version:    0.7.0.1
  */

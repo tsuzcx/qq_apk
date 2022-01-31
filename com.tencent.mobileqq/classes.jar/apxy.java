@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-
-public class apxy
-  implements View.OnClickListener
+class apxy
+  implements bdrl
 {
-  public apxy(SendBottomBar paramSendBottomBar) {}
+  apxy(apxx paramapxx) {}
   
-  public void onClick(View paramView)
+  public void load(bdpm parambdpm)
   {
-    if (this.a.a.isShowing()) {
-      return;
-    }
-    this.a.a.show();
+    this.a.a(parambdpm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork;
 
-import ajya;
+import alpo;
 import android.os.Handler;
 import android.os.Message;
-import apvd;
-import axqy;
-import ayeq;
-import ayfj;
-import ayhm;
+import arof;
+import azmj;
+import bacn;
+import badg;
+import bafi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class TeamWorkFileImportHandler$11
   implements Runnable
 {
-  public TeamWorkFileImportHandler$11(ayeq paramayeq, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, JSONObject paramJSONObject, int paramInt) {}
+  public TeamWorkFileImportHandler$11(bacn parambacn, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, JSONObject paramJSONObject, int paramInt) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class TeamWorkFileImportHandler$11
       return;
     }
     long l1 = System.currentTimeMillis();
-    Object localObject1 = ayfj.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.this$0.app.getCurrentAccountUin());
+    Object localObject1 = badg.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.this$0.app.getCurrentAccountUin());
     long l2 = System.currentTimeMillis();
     if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_k_of_type_Int != this.jdField_a_of_type_Int)
     {
@@ -64,7 +64,7 @@ public class TeamWorkFileImportHandler$11
           }
         }
       }
-      localObject1 = ajya.a(2131714816);
+      localObject1 = alpo.a(2131715188);
       if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.e == 3)
       {
         localObject1 = "word";
@@ -74,12 +74,12 @@ public class TeamWorkFileImportHandler$11
           break label364;
         }
         i = 1;
-        axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l1 + "", "", (String)localObject1, (String)localObject3);
-        ayhm.a("TeamWorkFileImportHandler", "http duration", String.valueOf(l1), this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_k_of_type_JavaLangString);
+        azmj.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l1 + "", "", (String)localObject1, (String)localObject3);
+        bafi.a("TeamWorkFileImportHandler", "http duration", String.valueOf(l1), this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_k_of_type_JavaLangString);
         if (bool) {
           break;
         }
-        if (!apvd.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)) {
+        if (!arof.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)) {
           break label369;
         }
         this.this$0.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
@@ -89,19 +89,19 @@ public class TeamWorkFileImportHandler$11
         return;
       }
       label369:
-      if (ayeq.a(this.this$0) == null) {
+      if (bacn.a(this.this$0) == null) {
         break;
       }
-      Object localObject2 = ayeq.a(this.this$0).obtainMessage(8002);
+      Object localObject2 = bacn.a(this.this$0).obtainMessage(8002);
       ((Message)localObject2).obj = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
-      ayeq.a(this.this$0).sendMessage((Message)localObject2);
+      bacn.a(this.this$0).sendMessage((Message)localObject2);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler.11
  * JD-Core Version:    0.7.0.1
  */

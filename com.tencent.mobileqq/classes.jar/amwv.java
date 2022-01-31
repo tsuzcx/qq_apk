@@ -1,72 +1,60 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class amwv
-  extends ampa<amwu>
+  extends amyj
 {
-  public int a()
+  public float a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  
+  public amwv()
   {
-    return 158;
+    this.jdField_b_of_type_Long = 64L;
   }
   
-  @NonNull
-  public amwu a(int paramInt)
+  public static boolean a(amwv paramamwv)
   {
-    return new amwu();
-  }
-  
-  @Nullable
-  public amwu a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramamwv != null)
     {
-      amwu localamwu = amwu.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVSecurityConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      bool1 = bool2;
+      if (paramamwv.a())
+      {
+        bool1 = bool2;
+        if (paramamwv.b()) {
+          bool1 = true;
+        }
       }
-      return localamwu;
     }
-    return null;
-  }
-  
-  public Class<amwu> a()
-  {
-    return amwu.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amwu paramamwu)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("WVSecurityConfProcessor", 2, "onUpdate " + paramamwu.toString());
+      QLog.d("ARCloudPreOcrResult", 2, "isRecogSuccess result = " + bool1);
     }
+    return bool1;
   }
   
   public boolean a()
   {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
+    return (this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0);
   }
   
   public boolean b()
   {
-    return false;
+    return this.jdField_c_of_type_Int == 1;
   }
   
-  public boolean c()
+  public String toString()
   {
-    return true;
+    return "ARCloudPreOcrResult{recogType = " + this.jdField_b_of_type_Long + ", recogSvrRetCode = " + this.jdField_a_of_type_Int + ", recogSvrRetMsg = " + this.jdField_a_of_type_JavaLangString + ", sessionId = " + this.jdField_b_of_type_JavaLangString + ", arWordDetectRetCode = " + this.jdField_b_of_type_Int + ", arWordDetectRetMsg = " + this.jdField_c_of_type_JavaLangString + ", wordType = " + this.jdField_c_of_type_Int + ", confidence = " + this.jdField_a_of_type_Float + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwv
  * JD-Core Version:    0.7.0.1
  */

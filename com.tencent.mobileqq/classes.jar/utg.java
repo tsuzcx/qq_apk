@@ -1,126 +1,173 @@
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.List;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class utg
-  extends SimpleJob<Object>
+public class utg
 {
-  utg(ute paramute, String paramString, VideoCollectionItem paramVideoCollectionItem)
+  @xnb(a="type")
+  public int a;
+  @xnb(a="linkUrl")
+  public String a;
+  @xnb(a="capture")
+  public utc a;
+  @xnb(a="comp")
+  public utd a;
+  @xnb(a="gameinfo")
+  public ute a;
+  @xnb(a="game")
+  public utf a;
+  @xnb(a="videoShare")
+  public uth a;
+  @xnb(a="parseState")
+  public int b;
+  @xnb(a="title")
+  public String b;
+  @xnb(a="body")
+  public String c;
+  @xnb(a="picUrl")
+  public String d;
+  @xnb(a="app")
+  public String e;
+  
+  @Nullable
+  public static utg a(String paramString)
   {
-    super(paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = (utg)JsonORM.a(new JSONObject(paramString), utg.class);
+      return paramString;
+    }
+    catch (JsonORM.JsonParseException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public static utg a(String paramString1, String paramString2, String paramString3, @Nullable String paramString4, @Nullable String paramString5)
   {
-    long l = System.currentTimeMillis();
-    paramJobContext = (tcm)tcz.a(19);
-    MemoryInfoEntry localMemoryInfoEntry = paramJobContext.a(tjf.a(this.jdField_a_of_type_Ute.jdField_b_of_type_JavaLangString));
-    boolean bool1;
-    boolean bool2;
-    label56:
-    List localList;
-    if ((localMemoryInfoEntry != null) && (localMemoryInfoEntry.isEnd == 1))
+    utg localutg = new utg();
+    localutg.jdField_a_of_type_JavaLangString = paramString1;
+    localutg.jdField_b_of_type_JavaLangString = paramString2;
+    localutg.c = paramString3;
+    localutg.d = paramString4;
+    localutg.e = paramString5;
+    localutg.jdField_a_of_type_Int = 1;
+    localutg.jdField_b_of_type_Int = 2;
+    return localutg;
+  }
+  
+  public static utg a(String paramString1, boolean paramBoolean, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    utg localutg = new utg();
+    localutg.jdField_a_of_type_JavaLangString = paramString1;
+    localutg.d = paramString2;
+    localutg.e = paramString3;
+    if (paramBoolean) {}
+    for (localutg.jdField_b_of_type_Int = 0;; localutg.jdField_b_of_type_Int = 2)
     {
-      bool1 = true;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label250;
+      localutg.jdField_a_of_type_Int = 1;
+      return localutg;
+    }
+  }
+  
+  public String a()
+  {
+    String str3 = this.jdField_a_of_type_JavaLangString;
+    String str2 = str3;
+    if (bdeo.d.matcher(str3).find())
+    {
+      String str1 = null;
+      int i = str3.lastIndexOf("#");
+      if (i > 0) {
+        str1 = str3.substring(i);
       }
-      bool2 = true;
-      if (this.jdField_a_of_type_Ute.jdField_b_of_type_Boolean) {
-        break label414;
-      }
-      localList = paramJobContext.a(this.jdField_a_of_type_Ute.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem, 10L);
-      paramVarArgs = new tjj(this.jdField_a_of_type_Ute.c, new ErrorMessage());
-      paramVarArgs.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Ute.jdField_b_of_type_JavaLangString;
-      paramVarArgs.jdField_b_of_type_Boolean = true;
-      paramVarArgs.c = bool2;
-      paramVarArgs.e = true;
-      paramVarArgs.jdField_a_of_type_Boolean = bool1;
-      paramVarArgs.jdField_a_of_type_JavaUtilList = localList;
-      if (localList.size() <= 0) {
-        break label256;
-      }
-      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
-      label177:
-      if (paramJobContext != null) {
-        break label285;
-      }
-      this.jdField_a_of_type_Ute.jdField_b_of_type_Boolean = true;
-      if (!bool2) {
-        break label261;
-      }
-      this.jdField_a_of_type_Ute.a.a(null, 0);
-      label206:
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label274;
+      str3 = URLUtil.guessUrl(str3);
+      str2 = str3;
+      if (str1 != null) {
+        return str3 + str1;
       }
     }
-    label256:
-    label261:
-    label274:
-    for (paramJobContext = "null";; paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key)
+    return str2;
+  }
+  
+  public String a(boolean paramBoolean)
+  {
+    try
     {
-      ved.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , not found in db , start get from net , spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
-      return null;
-      bool1 = false;
+      Object localObject = JsonORM.a(this);
+      if (paramBoolean) {
+        ((JSONObject)localObject).remove("parseState");
+      }
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JsonORM.JsonParseException localJsonParseException)
+    {
+      wsv.b("Q.qqstory.tag", "VideoLinkInfo", localJsonParseException);
+    }
+    return "";
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_Uth != null);
+  }
+  
+  public String b()
+  {
+    String str1;
+    String str2;
+    label30:
+    String str3;
+    if (this.jdField_b_of_type_JavaLangString != null)
+    {
+      str1 = this.jdField_b_of_type_JavaLangString.trim();
+      if (this.c == null) {
+        break label57;
+      }
+      str2 = this.c.trim();
+      if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) {
+        break label63;
+      }
+      str3 = this.jdField_a_of_type_JavaLangString;
+    }
+    label57:
+    label63:
+    do
+    {
+      return str3;
+      str1 = "";
       break;
-      label250:
-      bool2 = false;
-      break label56;
-      paramJobContext = null;
-      break label177;
-      this.jdField_a_of_type_Ute.a.c();
-      break label206;
-    }
-    label285:
-    if ((localMemoryInfoEntry != null) && (paramJobContext.dbIndex >= localMemoryInfoEntry.maxCollectionIndex))
-    {
-      paramVarArgs.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_Ute.jdField_b_of_type_Boolean = true;
-      label317:
-      stb.a().dispatch(paramVarArgs);
-      this.jdField_a_of_type_Ute.a(localList, false);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label397;
+      str2 = "";
+      break label30;
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
+        return String.format("%s-%s", new Object[] { str1, str2 });
       }
-      paramJobContext = "null";
-      label346:
-      if (!paramVarArgs.jdField_a_of_type_Boolean) {
-        break label408;
-      }
-    }
-    label397:
-    label408:
-    for (paramVarArgs = "true";; paramVarArgs = "false")
-    {
-      ved.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , isEnd = %s ,spend time = %d", new Object[] { paramJobContext, paramVarArgs, Long.valueOf(System.currentTimeMillis() - l) });
-      break;
-      paramVarArgs.jdField_a_of_type_Boolean = false;
-      break label317;
-      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key;
-      break label346;
-    }
-    label414:
-    if (bool2) {
-      this.jdField_a_of_type_Ute.a.a(null, 0);
-    }
-    for (;;)
-    {
-      ved.d("Q.qqstory.memories:MemoryDataPuller", String.format("Req from net ,  spend time = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-      break;
-      this.jdField_a_of_type_Ute.a.c();
-    }
+      str3 = str1;
+    } while (!TextUtils.isEmpty(str1));
+    return str2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utg
  * JD-Core Version:    0.7.0.1
  */

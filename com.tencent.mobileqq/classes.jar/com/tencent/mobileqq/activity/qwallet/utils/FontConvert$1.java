@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.utils;
 
-import ahiq;
+import aizz;
 
 public class FontConvert$1
   implements Runnable
 {
-  public FontConvert$1(ahiq paramahiq) {}
+  public FontConvert$1(aizz paramaizz) {}
   
   /* Error */
   public void run()
@@ -14,8 +14,8 @@ public class FontConvert$1
     //   0: iconst_1
     //   1: istore_2
     //   2: aload_0
-    //   3: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Lahiq;
-    //   6: invokevirtual 27	ahiq:a	()Ljava/lang/String;
+    //   3: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Laizz;
+    //   6: invokevirtual 27	aizz:a	()Ljava/lang/String;
     //   9: astore 5
     //   11: aload 5
     //   13: invokestatic 33	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -34,9 +34,9 @@ public class FontConvert$1
     //   40: invokevirtual 39	java/lang/Exception:printStackTrace	()V
     //   43: return
     //   44: aload_0
-    //   45: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Lahiq;
+    //   45: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Laizz;
     //   48: iconst_1
-    //   49: invokestatic 42	ahiq:a	(Lahiq;Z)Z
+    //   49: invokestatic 42	aizz:a	(Laizz;Z)Z
     //   52: pop
     //   53: new 44	java/lang/StringBuilder
     //   56: dup
@@ -139,18 +139,18 @@ public class FontConvert$1
     //   263: aload 6
     //   265: astore 5
     //   267: aload_0
-    //   268: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Lahiq;
+    //   268: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Laizz;
     //   271: aload 8
     //   273: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   276: invokestatic 87	ahiq:a	(Lahiq;Ljava/lang/String;)Ljava/lang/String;
+    //   276: invokestatic 87	aizz:a	(Laizz;Ljava/lang/String;)Ljava/lang/String;
     //   279: pop
     //   280: aload 6
     //   282: astore 5
     //   284: aload_0
-    //   285: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Lahiq;
+    //   285: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Laizz;
     //   288: aload 7
     //   290: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: invokestatic 90	ahiq:b	(Lahiq;Ljava/lang/String;)Ljava/lang/String;
+    //   293: invokestatic 90	aizz:b	(Laizz;Ljava/lang/String;)Ljava/lang/String;
     //   296: pop
     //   297: aload 6
     //   299: astore 5
@@ -166,8 +166,8 @@ public class FontConvert$1
     //   321: ldc 100
     //   323: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   326: aload_0
-    //   327: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Lahiq;
-    //   330: invokestatic 103	ahiq:a	(Lahiq;)Ljava/lang/String;
+    //   327: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Laizz;
+    //   330: invokestatic 103	aizz:a	(Laizz;)Ljava/lang/String;
     //   333: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   336: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   339: invokestatic 107	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -181,8 +181,8 @@ public class FontConvert$1
     //   356: ldc 109
     //   358: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   361: aload_0
-    //   362: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Lahiq;
-    //   365: invokestatic 111	ahiq:b	(Lahiq;)Ljava/lang/String;
+    //   362: getfield 12	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:this$0	Laizz;
+    //   365: invokestatic 111	aizz:b	(Laizz;)Ljava/lang/String;
     //   368: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   371: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   374: invokestatic 107	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -267,7 +267,7 @@ public class FontConvert$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.utils.FontConvert.1
  * JD-Core Version:    0.7.0.1
  */

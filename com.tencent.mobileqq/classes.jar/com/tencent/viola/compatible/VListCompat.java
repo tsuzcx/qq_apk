@@ -1,7 +1,10 @@
 package com.tencent.viola.compatible;
 
+import android.graphics.PointF;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import com.tencent.viola.ui.adapter.VRecyclerViewAdapter.VH;
+import com.tencent.viola.ui.component.VCell;
 import com.tencent.viola.ui.component.VRecyclerList;
 import com.tencent.viola.ui.dom.Attr;
 import com.tencent.viola.ui.dom.DomObject;
@@ -36,12 +39,12 @@ public class VListCompat
   
   private void fireScrollEvent()
   {
-    fireEvent("kdScroll", getScrollParam());
+    fireEvent("kdScroll", getScrollParam(-1));
   }
   
   private JSONObject getDragParam()
   {
-    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject1 = getScrollParam(-1);
     JSONObject localJSONObject2 = new JSONObject();
     VRecyclerView localVRecyclerView = (VRecyclerView)getHostView();
     if (localVRecyclerView == null) {
@@ -65,42 +68,73 @@ public class VListCompat
     }
   }
   
-  private JSONObject getScrollParam()
+  private PointF getPositionInList(RecyclerView paramRecyclerView, View paramView)
+  {
+    PointF localPointF = new PointF();
+    paramRecyclerView = paramRecyclerView.getChildViewHolder(paramView);
+    if (!(paramRecyclerView instanceof VRecyclerViewAdapter.VH)) {
+      return localPointF;
+    }
+    paramRecyclerView = ((VRecyclerViewAdapter.VH)paramRecyclerView).mVCell;
+    if (paramRecyclerView == null) {
+      return localPointF;
+    }
+    localPointF.x = ViolaUtils.getLayoutXInList(getInstanceId(), paramRecyclerView.getRef());
+    localPointF.y = ViolaUtils.getLayoutYInList(getInstanceId(), paramRecyclerView.getRef());
+    return localPointF;
+  }
+  
+  private JSONObject getScrollParam(int paramInt)
   {
     JSONObject localJSONObject = new JSONObject();
     VRecyclerView localVRecyclerView = (VRecyclerView)getHostView();
     if (localVRecyclerView == null) {
       return localJSONObject;
     }
+    boolean bool = ((VRecyclerList)this.component).isVertical();
     int j;
     int i;
-    if (((VRecyclerList)this.component).isVertical())
+    if (bool)
     {
       j = -localVRecyclerView.getContentOffsetY();
       i = localVRecyclerView.getHeight() + j;
     }
-    try
+    for (;;)
     {
-      for (;;)
+      if (paramInt != -1)
       {
-        int k = localVRecyclerView.getFirstVisibleItemPosition();
-        int m = localVRecyclerView.getLastVisibleItemPosition();
-        localJSONObject.put("startEdgePos", px2dp(j));
-        localJSONObject.put("endEdgePos", px2dp(i));
-        localJSONObject.put("firstVisibleRowIndex", k);
-        localJSONObject.put("lastVisibleRowIndex", m);
-        localJSONObject.put("scrollState", this.scrollState);
-        localJSONObject.put("visibleRowFrames", getVisibleRowFrames(localVRecyclerView));
-        return localJSONObject;
-        j = -localVRecyclerView.getContentOffsetX();
-        i = localVRecyclerView.getWidth();
+        j = -paramInt;
+        if (!bool) {
+          break label184;
+        }
+        i = localVRecyclerView.getHeight() + j;
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
       {
-        ViolaLogUtils.d("VListCompat", "getScrollParam error: " + localException.getMessage());
+        for (;;)
+        {
+          paramInt = localVRecyclerView.getFirstVisibleItemPosition();
+          int k = localVRecyclerView.getLastVisibleItemPosition();
+          localJSONObject.put("startEdgePos", px2dp(j));
+          localJSONObject.put("endEdgePos", px2dp(i));
+          localJSONObject.put("firstVisibleRowIndex", paramInt);
+          localJSONObject.put("lastVisibleRowIndex", k);
+          localJSONObject.put("scrollState", this.scrollState);
+          localJSONObject.put("visibleRowFrames", getVisibleRowFrames(localVRecyclerView));
+          return localJSONObject;
+          j = -localVRecyclerView.getContentOffsetX();
+          i = localVRecyclerView.getWidth() + j;
+          break;
+          label184:
+          i = localVRecyclerView.getWidth() + j;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ViolaLogUtils.d("VListCompat", "getScrollParam error: " + localException.getMessage());
+        }
       }
     }
   }
@@ -118,8 +152,9 @@ public class VListCompat
         JSONObject localJSONObject = new JSONObject();
         try
         {
-          localJSONObject.put("x", px2dp(localView.getX()));
-          localJSONObject.put("y", px2dp(localView.getY()));
+          PointF localPointF = getPositionInList(paramRecyclerView, localView);
+          localJSONObject.put("x", px2dp(localPointF.x));
+          localJSONObject.put("y", px2dp(localPointF.y));
           localJSONObject.put("width", px2dp(localView.getWidth()));
           localJSONObject.put("height", px2dp(localView.getHeight()));
           localJSONArray.put(localJSONObject);
@@ -195,7 +230,7 @@ public class VListCompat
   private void tryFireExposedEvent()
   {
     if (isContainEvent("kdExposureReport")) {
-      fireEvent("kdExposureReport", getScrollParam());
+      fireEvent("kdExposureReport", getScrollParam(-1));
     }
   }
   
@@ -206,6 +241,11 @@ public class VListCompat
       return;
     }
     localView.post(new VListCompat.1(this));
+  }
+  
+  public void fireScrollEvent(int paramInt)
+  {
+    fireEvent("kdScroll", getScrollParam(paramInt));
   }
   
   public void onFooterFingerRelease()
@@ -225,9 +265,28 @@ public class VListCompat
     this.lastFooterOffset = paramInt;
   }
   
+  public void onFooterReachEnd()
+  {
+    this.isInStickState = false;
+    if (this.scrollState != 0)
+    {
+      this.scrollState = 0;
+      tryFireExposedEvent();
+    }
+  }
+  
   public void onHeaderFingerRelease()
   {
     onFingerRelease();
+  }
+  
+  public void onOverScroll(int paramInt1, int paramInt2)
+  {
+    if ((needFireScroll()) && (isContainEvent("kdScroll")))
+    {
+      this.lastScrollTs = System.currentTimeMillis();
+      fireScrollEvent(paramInt1);
+    }
   }
   
   public void onRefreshMove(int paramInt)
@@ -281,7 +340,7 @@ public class VListCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.compatible.VListCompat
  * JD-Core Version:    0.7.0.1
  */

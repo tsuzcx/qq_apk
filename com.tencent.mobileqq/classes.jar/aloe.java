@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.4;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class aloe
-  implements DialogInterface.OnClickListener
+  implements alvh
 {
-  public aloe(ArkAppDownloadModule.4 param4) {}
+  public aloe(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
     }
+    this.a.a.sendEmptyMessage(17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aloe
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqbe;
-import axqy;
-import axup;
-import axuq;
-import axva;
-import axws;
-import axyf;
-import axyg;
-import axyy;
-import axzd;
-import axzj;
+import arum;
+import azmj;
+import azqj;
+import azqk;
+import azqu;
+import azsm;
+import aztz;
+import azua;
+import azus;
+import azux;
+import azvd;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -24,7 +24,7 @@ import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import set;
+import swn;
 
 class StructingMsgItemBuilder$4
   implements Runnable
@@ -51,14 +51,14 @@ class StructingMsgItemBuilder$4
         if ((!(localAbsShareMsg instanceof StructMsgForGeneralShare)) || (!((StructMsgForGeneralShare)localAbsShareMsg).mIsPAVideoStructMsg)) {
           break label272;
         }
-        localObject1 = (StructMsgForGeneralShare)axva.a(localAbsShareMsg.getBytes());
-        set.a((StructMsgForGeneralShare)localObject1);
+        localObject1 = (StructMsgForGeneralShare)azqu.a(localAbsShareMsg.getBytes());
+        swn.a((StructMsgForGeneralShare)localObject1);
         ((StructMsgForGeneralShare)localObject1).mSourceAction = "web";
         localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        ((StructMsgForGeneralShare)localObject1).mSourceUrl = set.a((String)localObject2);
+        ((StructMsgForGeneralShare)localObject1).mSourceUrl = swn.a((String)localObject2);
         ((StructMsgForGeneralShare)localObject1).mSourceName = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
         ((StructMsgForGeneralShare)localObject1).source_puin = ((String)localObject2);
-        ((StructMsgForGeneralShare)localObject1).mSourceIcon = "http://post.mp.qq.com/kan/video/201197226-1955dc60def689ah-j0032zp3bhx.html?_wv=2281701505&sig=2556997e505f84ff05decf79e0d001af&time=1573267470&iid=MzczOTc1NDQ5OQ==&sourcefrom=0";
+        ((StructMsgForGeneralShare)localObject1).mSourceIcon = "http://pub.idqqimg.com/pc/misc/files/20191114/1014c7cfd33e4333b818ceecc0885938.png";
         ((StructMsgForGeneralShare)localObject1).setFlag(0);
         localObject2 = new Bundle();
         ((Bundle)localObject2).putInt("forward_type", -3);
@@ -66,7 +66,7 @@ class StructingMsgItemBuilder$4
         ((Bundle)localObject2).putByteArray("stuctmsg_bytes", ((StructMsgForGeneralShare)localObject1).getBytes());
         localObject1 = new Intent();
         ((Intent)localObject1).putExtras((Bundle)localObject2);
-        aqbe.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (Intent)localObject1, 21);
+        arum.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (Intent)localObject1, 21);
       }
     }
     return;
@@ -98,7 +98,7 @@ class StructingMsgItemBuilder$4
         if (i < localAbsShareMsg.getItemCount())
         {
           localObject1 = localAbsShareMsg.getItemByIndex(i);
-          if ((TextUtils.isEmpty(((axup)localObject1).Q)) || (Integer.valueOf(((axup)localObject1).Q).intValue() != StructingMsgItemBuilder.c) || ((!(localObject1 instanceof axyf)) && (!(localObject1 instanceof axyg)))) {}
+          if ((TextUtils.isEmpty(((azqj)localObject1).Q)) || (Integer.valueOf(((azqj)localObject1).Q).intValue() != StructingMsgItemBuilder.c) || ((!(localObject1 instanceof aztz)) && (!(localObject1 instanceof azua)))) {}
         }
       }
     }
@@ -106,23 +106,23 @@ class StructingMsgItemBuilder$4
     {
       if (localObject1 != null)
       {
-        if (!(localObject1 instanceof axuq)) {
+        if (!(localObject1 instanceof azqk)) {
           break label1801;
         }
-        localObject1 = (axuq)localObject1;
-        localObject9 = ((axuq)localObject1).a;
-        localObject6 = ((axuq)localObject1).c;
-        localObject8 = ((axuq)localObject1).b;
-        localObject11 = ((axuq)localObject1).d;
-        localObject10 = ((axuq)localObject1).e;
-        localObject7 = ((axuq)localObject1).f;
-        localObject5 = ((axuq)localObject1).g;
+        localObject1 = (azqk)localObject1;
+        localObject9 = ((azqk)localObject1).a;
+        localObject6 = ((azqk)localObject1).c;
+        localObject8 = ((azqk)localObject1).b;
+        localObject11 = ((azqk)localObject1).d;
+        localObject10 = ((azqk)localObject1).e;
+        localObject7 = ((azqk)localObject1).f;
+        localObject5 = ((azqk)localObject1).g;
         i = 0;
         localObject1 = localObject12;
         label529:
         if (i < ((ArrayList)localObject9).size())
         {
-          localObject4 = (axup)((ArrayList)localObject9).get(i);
+          localObject4 = (azqj)((ArrayList)localObject9).get(i);
           if ((localObject4 instanceof StructMsgItemTitle))
           {
             localObject4 = ((StructMsgItemTitle)localObject4).b();
@@ -142,19 +142,19 @@ class StructingMsgItemBuilder$4
             break label529;
             i += 1;
             break;
-            if ((localObject4 instanceof axzj))
+            if ((localObject4 instanceof azvd))
             {
-              localObject4 = ((axzj)localObject4).b();
+              localObject4 = ((azvd)localObject4).b();
               localObject3 = localObject1;
               localObject1 = localObject2;
               localObject2 = localObject4;
             }
             else
             {
-              if (!(localObject4 instanceof axws)) {
+              if (!(localObject4 instanceof azsm)) {
                 break label1782;
               }
-              localObject4 = ((axws)localObject4).S;
+              localObject4 = ((azsm)localObject4).S;
               localObject2 = localObject3;
               localObject3 = localObject1;
               localObject1 = localObject4;
@@ -173,13 +173,13 @@ class StructingMsgItemBuilder$4
       {
         localObject10 = localMessageForStructing.senderuin;
         localObject11 = Long.toString(localAbsShareMsg.msgId);
-        axqy.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, (String)localObject10, (String)localObject1, (String)localObject11, "");
+        azmj.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, (String)localObject10, (String)localObject1, (String)localObject11, "");
         if ((str1 == null) || ("".equals(str1)))
         {
           localObject10 = "http://url.cn/JS8oE7";
           label785:
           this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject9, (String)localObject8, (String)localObject7, str2, (String)localObject1, (String)localObject10, (String)localObject6, (String)localObject2, localObject3, (String)localObject4, (String)localObject5, l, str3);
-          axqy.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, str3, "" + l, "" + StructingMsgItemBuilder.c, "android");
+          azmj.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, str3, "" + l, "" + StructingMsgItemBuilder.c, "android");
           return;
           i = 0;
           localObject1 = localObject13;
@@ -190,20 +190,20 @@ class StructingMsgItemBuilder$4
             break label1665;
           }
           localObject10 = localAbsShareMsg.getItemByIndex(i);
-          if ((localObject10 instanceof axuq))
+          if ((localObject10 instanceof azqk))
           {
-            localObject12 = (axuq)localObject10;
-            localObject11 = ((axuq)localObject12).a;
-            if ((((axuq)localObject12).c == null) || ("".equals(((axuq)localObject12).c)) || ((localObject9 != null) && (!"".equals(localObject9)))) {
+            localObject12 = (azqk)localObject10;
+            localObject11 = ((azqk)localObject12).a;
+            if ((((azqk)localObject12).c == null) || ("".equals(((azqk)localObject12).c)) || ((localObject9 != null) && (!"".equals(localObject9)))) {
               break label1662;
             }
-            localObject9 = ((axuq)localObject12).c;
+            localObject9 = ((azqk)localObject12).c;
             label1005:
             localObject10 = localObject4;
-            if (((axuq)localObject12).b != null)
+            if (((azqk)localObject12).b != null)
             {
               localObject10 = localObject4;
-              if (!"".equals(((axuq)localObject12).b)) {
+              if (!"".equals(((azqk)localObject12).b)) {
                 if (localObject4 != null)
                 {
                   localObject10 = localObject4;
@@ -211,36 +211,36 @@ class StructingMsgItemBuilder$4
                 }
                 else
                 {
-                  localObject10 = ((axuq)localObject12).b;
+                  localObject10 = ((azqk)localObject12).b;
                 }
               }
             }
-            if ((((axuq)localObject12).d == null) || ("".equals(((axuq)localObject12).d)) || ((localObject7 != null) && (!"".equals(localObject7)))) {
+            if ((((azqk)localObject12).d == null) || ("".equals(((azqk)localObject12).d)) || ((localObject7 != null) && (!"".equals(localObject7)))) {
               break label1655;
             }
-            localObject4 = ((axuq)localObject12).d;
+            localObject4 = ((azqk)localObject12).d;
             label1107:
-            if ((((axuq)localObject12).e == null) || (!"".equals(((axuq)localObject12).e)) || ((localObject6 != null) && (!"".equals(localObject6)))) {
+            if ((((azqk)localObject12).e == null) || (!"".equals(((azqk)localObject12).e)) || ((localObject6 != null) && (!"".equals(localObject6)))) {
               break label1652;
             }
-            localObject6 = ((axuq)localObject12).e;
+            localObject6 = ((azqk)localObject12).e;
             label1152:
-            if ((((axuq)localObject12).f == null) || (!"".equals(((axuq)localObject12).f)) || ((localObject5 != null) && (!"".equals(localObject5)))) {
+            if ((((azqk)localObject12).f == null) || (!"".equals(((azqk)localObject12).f)) || ((localObject5 != null) && (!"".equals(localObject5)))) {
               break label1649;
             }
-            localObject5 = ((axuq)localObject12).f;
+            localObject5 = ((azqk)localObject12).f;
             label1197:
-            if ((((axuq)localObject12).g == null) || (!"".equals(((axuq)localObject12).g)) || ((localObject8 != null) && (!"".equals(localObject8)))) {
+            if ((((azqk)localObject12).g == null) || (!"".equals(((azqk)localObject12).g)) || ((localObject8 != null) && (!"".equals(localObject8)))) {
               break label1642;
             }
-            localObject7 = ((axuq)localObject12).g;
+            localObject7 = ((azqk)localObject12).g;
             label1242:
             int j = 0;
             if (j >= ((ArrayList)localObject11).size()) {
               break label1735;
             }
-            localObject8 = (axup)((ArrayList)localObject11).get(j);
-            if (("title".equals(((axup)localObject8).a)) && (localObject1 == null))
+            localObject8 = (azqj)((ArrayList)localObject11).get(j);
+            if (("title".equals(((azqj)localObject8).a)) && (localObject1 == null))
             {
               if (!(localObject8 instanceof StructMsgItemTitle)) {
                 break label1720;
@@ -257,40 +257,40 @@ class StructingMsgItemBuilder$4
               localObject3 = localObject1;
               localObject1 = localObject8;
               break;
-              if (("summary".equals(((axup)localObject8).a)) && (localObject2 == null))
+              if (("summary".equals(((azqj)localObject8).a)) && (localObject2 == null))
               {
-                if (!(localObject8 instanceof axzj)) {
+                if (!(localObject8 instanceof azvd)) {
                   break label1720;
                 }
-                localObject2 = ((axzj)localObject8).b();
+                localObject2 = ((azvd)localObject8).b();
                 localObject8 = localObject1;
                 localObject1 = localObject3;
                 localObject3 = localObject8;
               }
-              else if (("picture".equals(((axup)localObject8).a)) && (localObject3 == null))
+              else if (("picture".equals(((azqj)localObject8).a)) && (localObject3 == null))
               {
-                if (!(localObject8 instanceof axws)) {
+                if (!(localObject8 instanceof azsm)) {
                   break label1720;
                 }
-                localObject8 = ((axws)localObject8).S;
+                localObject8 = ((azsm)localObject8).S;
                 localObject3 = localObject1;
                 localObject1 = localObject8;
               }
-              else if (("pavideo".equals(((axup)localObject8).a)) && (localObject3 == null))
+              else if (("pavideo".equals(((azqj)localObject8).a)) && (localObject3 == null))
               {
-                if (!(localObject8 instanceof axzd)) {
+                if (!(localObject8 instanceof azux)) {
                   break label1720;
                 }
-                localObject8 = ((axzd)localObject8).S;
+                localObject8 = ((azux)localObject8).S;
                 localObject3 = localObject1;
                 localObject1 = localObject8;
               }
               else
               {
-                if ((!"paaudio".equals(((axup)localObject8).a)) || (localObject3 != null) || (!(localObject8 instanceof axyy))) {
+                if ((!"paaudio".equals(((azqj)localObject8).a)) || (localObject3 != null) || (!(localObject8 instanceof azus))) {
                   break label1720;
                 }
-                localObject8 = ((axyy)localObject8).S;
+                localObject8 = ((azus)localObject8).S;
                 localObject3 = localObject1;
                 localObject1 = localObject8;
               }
@@ -399,7 +399,7 @@ class StructingMsgItemBuilder$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

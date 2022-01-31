@@ -2,7 +2,6 @@ package com.tencent.pts.ui;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView.Adapter;
-import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 import com.tencent.pts.core.PTSAppInstance;
@@ -11,7 +10,6 @@ import com.tencent.pts.utils.PTSAnimationUtil.AnimationInfo;
 import com.tencent.pts.utils.PTSLog;
 import com.tencent.pts.utils.PTSTimeCostUtil;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -51,58 +49,7 @@ public class PTSRecyclerViewAdapter
   
   private void bindNodeInfo(PTSRecyclerViewAdapter.PTSViewHolder paramPTSViewHolder, PTSNodeInfo paramPTSNodeInfo, PTSAppInstance paramPTSAppInstance)
   {
-    HashMap localHashMap1 = PTSRecyclerViewAdapter.PTSViewHolder.access$000(paramPTSViewHolder);
-    HashMap localHashMap2 = new HashMap(localHashMap1);
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(paramPTSNodeInfo);
-    if (!localLinkedList.isEmpty())
-    {
-      paramPTSNodeInfo = (PTSNodeInfo)localLinkedList.remove();
-      String str = paramPTSNodeInfo.getAttributes().getViewID();
-      paramPTSViewHolder = (PTSNodeVirtual)localHashMap1.get(str);
-      localHashMap2.remove(str);
-      if (paramPTSViewHolder == null)
-      {
-        paramPTSViewHolder = PTSNodeFactory.buildVirtualNodeBFS(paramPTSNodeInfo, paramPTSAppInstance, localHashMap1);
-        if (paramPTSViewHolder != null) {
-          paramPTSViewHolder.bindNodeInfo(paramPTSNodeInfo);
-        }
-        str = paramPTSNodeInfo.getParentID();
-        Iterator localIterator = localHashMap1.values().iterator();
-        while (localIterator.hasNext())
-        {
-          PTSNodeVirtual localPTSNodeVirtual = (PTSNodeVirtual)localIterator.next();
-          if ((localPTSNodeVirtual.getNodeInfo() != null) && (TextUtils.equals(localPTSNodeVirtual.getNodeInfo().getUniqueID(), str)))
-          {
-            localPTSNodeVirtual.addChild(paramPTSViewHolder);
-            if (PTSLog.isDebug()) {
-              PTSLog.d("PTSRecyclerViewAdapter", "[bindNodeInfo], has found parent node.");
-            }
-          }
-        }
-        if ((paramPTSViewHolder != null) && (!TextUtils.isEmpty(paramPTSViewHolder.getViewID()))) {
-          localHashMap1.put(paramPTSViewHolder.getViewID(), paramPTSViewHolder);
-        }
-      }
-      for (;;)
-      {
-        if (paramPTSViewHolder != null) {
-          paramPTSViewHolder.showNode();
-        }
-        if (!paramPTSNodeInfo.isContainer()) {
-          break;
-        }
-        localLinkedList.addAll(paramPTSNodeInfo.getChildren());
-        break;
-        PTSLog.e("PTSRecyclerViewAdapter", "[bindNodeInfo], currentNode is null or viewID is null.");
-        continue;
-        paramPTSViewHolder.bindNodeInfo(paramPTSNodeInfo);
-      }
-    }
-    paramPTSViewHolder = localHashMap2.values().iterator();
-    while (paramPTSViewHolder.hasNext()) {
-      ((PTSNodeVirtual)paramPTSViewHolder.next()).hideNode();
-    }
+    PTSNodeFactory.bindData(paramPTSAppInstance, paramPTSNodeInfo, PTSRecyclerViewAdapter.PTSViewHolder.access$000(paramPTSViewHolder));
   }
   
   private PTSNodeInfo getNodeInfoByID(String paramString)
@@ -207,7 +154,7 @@ public class PTSRecyclerViewAdapter
       {
         PTSNodeInfo localPTSNodeInfo2 = (PTSNodeInfo)localList.get(i);
         if (!localPTSNodeInfo2.equals(paramPTSNodeInfo)) {
-          break label83;
+          break label82;
         }
         paramPTSNodeInfo.addChildren(localPTSNodeInfo2.getChildren());
         localPTSNodeInfo1.setChild(i, paramPTSNodeInfo);
@@ -218,7 +165,7 @@ public class PTSRecyclerViewAdapter
     for (;;)
     {
       return;
-      label83:
+      label82:
       i += 1;
       break;
       i = 0;
@@ -299,7 +246,7 @@ public class PTSRecyclerViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.ui.PTSRecyclerViewAdapter
  * JD-Core Version:    0.7.0.1
  */

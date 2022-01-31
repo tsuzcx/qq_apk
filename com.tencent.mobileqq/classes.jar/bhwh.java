@@ -1,48 +1,89 @@
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class bhwh
 {
-  private static bhwh jdField_a_of_type_Bhwh = new bhwh();
-  private bhwi jdField_a_of_type_Bhwi;
-  bhwj jdField_a_of_type_Bhwj;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private ArrayList<Point> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int b;
+  private int c;
+  private int d;
   
-  public static bhwh a()
+  public bhwh(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return jdField_a_of_type_Bhwh;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.jdField_a_of_type_Int = paramInt4;
+    this.jdField_a_of_type_JavaUtilArrayList = a(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void a()
+  public int a()
   {
-    this.jdField_a_of_type_Bhwi = null;
+    return (int)((this.c - this.b) / (this.jdField_a_of_type_Int - 1.0F));
   }
   
-  public void a(bhwi parambhwi)
+  public ArrayList<Point> a()
   {
-    this.jdField_a_of_type_Bhwi = parambhwi;
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  public void a(bhwj parambhwj)
+  public ArrayList<Point> a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Bhwj = parambhwj;
-  }
-  
-  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Bhwi == null) {
-      return;
+    ArrayList localArrayList = new ArrayList(paramInt4);
+    int j = (int)((paramInt2 - paramInt1) / (paramInt4 - 1.0F));
+    int i = 0;
+    paramInt2 = paramInt1;
+    paramInt1 = i;
+    if (paramInt1 < paramInt4)
+    {
+      if (paramInt1 == 0) {}
+      for (i = 0;; i = j)
+      {
+        Point localPoint = new Point(i + paramInt2, paramInt3);
+        localArrayList.add(localPoint);
+        paramInt2 = localPoint.x;
+        paramInt1 += 1;
+        break;
+      }
     }
-    this.jdField_a_of_type_Bhwi.a(paramString, paramLong1, paramArrayOfLong, paramLong2);
+    return localArrayList;
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a(float paramFloat)
   {
-    bhwj localbhwj = this.jdField_a_of_type_Bhwj;
-    if ((localbhwj != null) && (!"0X8009831".equals(paramString1)) && (!"0X8009830".equals(paramString1)) && (!"0X800982E".equals(paramString1)) && (!"0X800982F".equals(paramString1))) {
-      localbhwj.a(paramString2);
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint, bhwc parambhwc)
+  {
+    int i = paramPaint.getColor();
+    float f1 = paramPaint.getStrokeWidth();
+    paramPaint.setColor(parambhwc.b);
+    paramPaint.setStrokeWidth(parambhwc.e);
+    paramCanvas.drawLine(this.b, this.d, this.c, this.d, paramPaint);
+    parambhwc = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (parambhwc.hasNext())
+    {
+      Point localPoint = (Point)parambhwc.next();
+      float f2 = localPoint.x;
+      float f3 = localPoint.y;
+      float f4 = this.jdField_a_of_type_Float / 2.0F;
+      float f5 = localPoint.x;
+      float f6 = localPoint.y;
+      paramCanvas.drawLine(f2, f3 - f4, f5, this.jdField_a_of_type_Float / 2.0F + f6, paramPaint);
     }
+    paramPaint.setColor(i);
+    paramPaint.setStrokeWidth(f1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhwh
  * JD-Core Version:    0.7.0.1
  */

@@ -6,13 +6,13 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import mvs;
-import mvt;
+import myl;
+import mym;
 
 public class AuthorizeConfig$2$1$1
   implements Runnable
 {
-  public AuthorizeConfig$2$1$1(mvt parammvt, mobileqq_mp.WebviewWhiteListResponse paramWebviewWhiteListResponse) {}
+  public AuthorizeConfig$2$1$1(mym parammym, mobileqq_mp.WebviewWhiteListResponse paramWebviewWhiteListResponse) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class AuthorizeConfig$2$1$1
       {
         try
         {
-          localObject2 = mvs.a(localObject1);
+          localObject2 = myl.a(localObject1);
           localObject1 = localObject2;
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
@@ -53,7 +53,7 @@ public class AuthorizeConfig$2$1$1
           if (TextUtils.isEmpty(localObject1)) {
             return;
           }
-          this.jdField_a_of_type_Mvt.a.this$0.a(localObject1, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.version.get(), "lastVersion");
+          this.jdField_a_of_type_Mym.a.this$0.a(localObject1, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.version.get(), "lastVersion");
           return;
         }
         catch (Exception localException)

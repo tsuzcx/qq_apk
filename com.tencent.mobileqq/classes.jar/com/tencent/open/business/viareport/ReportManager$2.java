@@ -1,17 +1,17 @@
 package com.tencent.open.business.viareport;
 
-import bdii;
-import bdkg;
+import bfhg;
+import bfjd;
 
 public class ReportManager$2
   implements Runnable
 {
-  public ReportManager$2(bdkg parambdkg, String paramString) {}
+  public ReportManager$2(bfjd parambfjd, String paramString) {}
   
   public void run()
   {
     if (this.this$0.a) {
-      bdii.b("viareport", "isUploading ---return");
+      bfhg.b("viareport", "isUploading ---return");
     }
     while (!this.this$0.a(this.a)) {
       return;

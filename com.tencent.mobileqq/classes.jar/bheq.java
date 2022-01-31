@@ -1,82 +1,98 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Pattern;
 
-class bheq
+public class bheq
 {
-  final String a;
-  final String b;
-  final String c;
-  final String d;
+  private static Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[\\w\\d+_]+://");
+  private String jdField_a_of_type_JavaLangString;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private String b;
+  private String c;
   
-  private bheq(String paramString1, String paramString2, String paramString3, String paramString4)
+  public bheq(String paramString)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-  }
-  
-  public static bheq a(@NonNull BusinessInfoCheckUpdate.AppInfo paramAppInfo)
-  {
-    String str1 = "0";
-    str2 = "";
-    String str3 = paramAppInfo.buffer.get();
-    localObject = str2;
-    paramAppInfo = str1;
-    if (!TextUtils.isEmpty(str3)) {
-      paramAppInfo = str1;
-    }
-    try
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      localObject = new JSONObject(str3);
-      paramAppInfo = str1;
-      str1 = ((JSONObject)localObject).getString("ad_id");
-      paramAppInfo = str1;
-      localObject = ((JSONObject)localObject).getString("pos_id");
-      paramAppInfo = str1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      return;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      Object localObject = paramString;
+      if (paramString.contains("://")) {
+        localObject = paramString.replaceFirst("^.*://", "");
+      }
+      if (!((String)localObject).contains("?"))
       {
-        localException.printStackTrace();
-        localObject = str2;
+        this.b = ((String)localObject);
+        return;
+      }
+      paramString = ((String)localObject).split("\\?");
+      this.b = paramString[0];
+      this.c = paramString[1];
+      localObject = this.c.split("&");
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramString = localObject[i];
+        if (paramString.contains("="))
+        {
+          String[] arrayOfString = paramString.split("=");
+          String str = arrayOfString[0];
+          paramString = "";
+          if (arrayOfString.length > 1) {
+            paramString = arrayOfString[1];
+          }
+          this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
+        }
+        i += 1;
       }
     }
-    return new bheq("vab_red", (String)localObject, paramAppInfo, "5");
+  }
+  
+  public bheq(String paramString, Map<String, String> paramMap)
+  {
+    this.b = paramString;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.c = "";
+    if (paramMap != null)
+    {
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        this.c = (this.c + str + "=" + (String)paramMap.get(str) + "&");
+      }
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (!TextUtils.isEmpty(this.c))
+    {
+      this.c = this.c.substring(0, this.c.length() - 1);
+      this.jdField_a_of_type_JavaLangString = (paramString + "?" + this.c);
+    }
   }
   
   public String a()
   {
-    Object localObject = new JSONObject();
-    try
-    {
-      ((JSONObject)localObject).put("appid", this.a);
-      ((JSONObject)localObject).put("page_id", this.b);
-      ((JSONObject)localObject).put("item_id", this.c);
-      ((JSONObject)localObject).put("item_type", this.d);
-      localObject = "" + ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("MobileReport.Manager", 1, "parse json exception " + localException);
-    }
-    return "";
+    return this.b;
   }
   
-  public String toString()
+  public Map<String, String> a()
   {
-    return "ReportKey{appid=" + this.a + ", pageId=" + this.b + ", mItemId=" + this.c + ", mItemType=" + this.d + '}';
+    return this.jdField_a_of_type_JavaUtilMap;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bheq
  * JD-Core Version:    0.7.0.1
  */

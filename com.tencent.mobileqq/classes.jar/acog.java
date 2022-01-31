@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acog
-  implements DialogInterface.OnClickListener
+  implements azwv
 {
-  public acog(UpgradeActivity paramUpgradeActivity) {}
+  public acog(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    UpgradeActivity.a(this.a);
-    this.a.finish();
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acog
  * JD-Core Version:    0.7.0.1
  */

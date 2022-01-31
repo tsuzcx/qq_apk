@@ -1,54 +1,90 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class tlu
-  extends syn
 {
-  public List<tlv> a;
+  public static final int a = azgq.a(4.0F);
+  private static final int b = azgq.e(BaseApplicationImpl.getApplication());
+  private static final int c = azgq.c(BaseApplicationImpl.getApplication());
+  private static int d;
+  private static int e;
+  private static int f;
+  private static int g;
+  private static int h;
+  private static int i;
   
-  public tlu(ErrorMessage paramErrorMessage)
+  public static int a()
   {
-    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (f == 0) {
+      f = azgq.a(16.0F);
+    }
+    return f;
   }
   
-  public tlu(qqstory_service.RspBatchFeedLike paramRspBatchFeedLike)
+  public static int a(Activity paramActivity)
   {
-    super(paramRspBatchFeedLike.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspBatchFeedLike = paramRspBatchFeedLike.feed_like_info_list.get().iterator();
-    while (paramRspBatchFeedLike.hasNext())
-    {
-      Object localObject = (qqstory_struct.FeedLikeInfo)paramRspBatchFeedLike.next();
-      tlv localtlv = new tlv();
-      localtlv.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
-      localtlv.b = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
-      localtlv.jdField_a_of_type_Int = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
-      localtlv.jdField_a_of_type_JavaUtilList = new ArrayList();
-      localObject = ((qqstory_struct.FeedLikeInfo)localObject).like_list.get().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)((Iterator)localObject).next());
-        localLikeEntry.feedId = localtlv.jdField_a_of_type_JavaLangString;
-        localtlv.jdField_a_of_type_JavaUtilList.add(localLikeEntry);
-      }
-      this.jdField_a_of_type_JavaUtilList.add(localtlv);
+    if (d == 0) {
+      d = bngs.b(paramActivity);
     }
+    return d;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return Pattern.compile("^#([0-9a-fA-F]{8}|[0-9a-fA-F]{6})$").matcher(paramString).matches();
+  }
+  
+  public static int b()
+  {
+    if (g == 0) {
+      g = azgq.a(41.0F);
+    }
+    return g;
+  }
+  
+  public static int b(Activity paramActivity)
+  {
+    if (e == 0) {
+      e = a(paramActivity) + azgq.a(4.5F);
+    }
+    return e;
+  }
+  
+  public static int c()
+  {
+    if (h == 0) {
+      h = azgq.a(14.0F);
+    }
+    return h;
+  }
+  
+  public static int d()
+  {
+    if (i == 0) {
+      i = azgq.a(2.0F);
+    }
+    return i;
+  }
+  
+  public static int e()
+  {
+    return b;
+  }
+  
+  public static int f()
+  {
+    return c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlu
  * JD-Core Version:    0.7.0.1
  */

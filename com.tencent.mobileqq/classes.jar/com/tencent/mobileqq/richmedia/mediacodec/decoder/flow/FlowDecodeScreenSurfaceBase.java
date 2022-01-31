@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import avxz;
-import avyd;
-import avye;
+import axpy;
+import axqc;
+import axqd;
 import java.lang.ref.WeakReference;
 import javax.microedition.khronos.egl.EGLContext;
-import ved;
+import wsv;
 
 public class FlowDecodeScreenSurfaceBase
 {
   protected int a;
-  private avyd jdField_a_of_type_Avyd;
-  private avye jdField_a_of_type_Avye = new avxz(this);
+  private axqc jdField_a_of_type_Axqc;
+  private axqd jdField_a_of_type_Axqd = new axpy(this);
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   protected int b;
   private int c = 2;
@@ -31,22 +31,22 @@ public class FlowDecodeScreenSurfaceBase
   
   public void a()
   {
-    ved.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
-    this.jdField_a_of_type_Avyd.b();
-    this.jdField_a_of_type_Avyd.c();
+    wsv.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
+    this.jdField_a_of_type_Axqc.b();
+    this.jdField_a_of_type_Axqc.c();
   }
   
   public void c()
   {
-    ved.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
-    this.jdField_a_of_type_Avyd = new avyd(new WeakReference(this.jdField_a_of_type_Avye));
-    this.jdField_a_of_type_Avyd.a();
-    this.jdField_a_of_type_Avyd.a(this.jdField_a_of_type_Int, this.b);
+    wsv.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
+    this.jdField_a_of_type_Axqc = new axqc(new WeakReference(this.jdField_a_of_type_Axqd));
+    this.jdField_a_of_type_Axqc.a();
+    this.jdField_a_of_type_Axqc.a(this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase
  * JD-Core Version:    0.7.0.1
  */

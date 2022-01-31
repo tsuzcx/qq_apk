@@ -1,21 +1,13 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import android.net.Uri;
 
-public class birm
+public abstract interface birm
 {
-  public int a;
-  public MetaMaterial a;
-  public int b;
-  
-  public birm(MetaMaterial paramMetaMaterial, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = paramMetaMaterial;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public static final Uri a = Uri.parse("content://qq.favorites/biz_related");
+  public static final Uri b = Uri.parse("content://qq.favorites/global_search");
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     birm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,67 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class azee
-  extends akuo
 {
-  public azee(QLifeCommentActivity paramQLifeCommentActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  double a;
+  
+  azee(double paramDouble)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.a = paramDouble;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean a(int[][] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QLifeCommentActivity", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if (paramSosoLbsInfo != null)
+    double d2 = 0.0D;
+    int k = paramArrayOfInt.length;
+    int m = paramArrayOfInt[0].length;
+    double[] arrayOfDouble1 = new double[k];
+    double[] arrayOfDouble2 = new double[m];
+    double d1 = 0.0D;
+    int i = 0;
+    int j;
+    while (i < k)
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
+      j = 0;
+      while (j < m)
+      {
+        arrayOfDouble1[i] += paramArrayOfInt[i][j];
+        d1 += paramArrayOfInt[i][j];
+        j += 1;
+      }
+      i += 1;
     }
-    QLifeCommentActivity.a(this.a, this.a.a, this.a.b);
+    i = 0;
+    while (i < m)
+    {
+      j = 0;
+      while (j < k)
+      {
+        arrayOfDouble2[i] += paramArrayOfInt[j][i];
+        j += 1;
+      }
+      i += 1;
+    }
+    i = 0;
+    while (i < k)
+    {
+      j = 0;
+      while (j < m)
+      {
+        double d4 = 1.0D * arrayOfDouble1[i] * arrayOfDouble2[j] / d1;
+        double d5 = paramArrayOfInt[i][j];
+        double d3 = d2;
+        if (d4 > 0.0D) {
+          d3 = d2 + (d4 - d5) * (d4 - d5) / d4;
+        }
+        j += 1;
+        d2 = d3;
+      }
+      i += 1;
+    }
+    return d2 > this.a + 1.0E-008D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azee
  * JD-Core Version:    0.7.0.1
  */

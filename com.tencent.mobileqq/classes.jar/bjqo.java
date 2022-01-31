@@ -1,32 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
+import java.util.Comparator;
 
-public class bjqo
-  extends AnimatorListenerAdapter
+final class bjqo
+  implements Comparator<ShareAppLogHelper.LogFile>
 {
-  public bjqo(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  170ms end");
-    }
-    this.a.c.setImageResource(2130843624);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
-    }
+    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjqo
  * JD-Core Version:    0.7.0.1
  */

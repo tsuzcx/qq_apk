@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.poi;
 
-import bjgi;
+import blrt;
 import com.tencent.widget.XListView;
 
 public class FacePoiUI$4
   implements Runnable
 {
-  public FacePoiUI$4(bjgi parambjgi) {}
+  public FacePoiUI$4(blrt paramblrt) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class FacePoiUI$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.poi.FacePoiUI.4
  * JD-Core Version:    0.7.0.1
  */

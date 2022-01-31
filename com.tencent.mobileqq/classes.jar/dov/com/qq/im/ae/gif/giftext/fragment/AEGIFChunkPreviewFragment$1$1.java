@@ -1,24 +1,24 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import bitj;
-import biua;
-import biub;
+import bkyc;
+import bkyt;
+import bkyu;
 
 public class AEGIFChunkPreviewFragment$1$1
   implements Runnable
 {
-  public AEGIFChunkPreviewFragment$1$1(biub parambiub, int paramInt) {}
+  public AEGIFChunkPreviewFragment$1$1(bkyu parambkyu, int paramInt) {}
   
   public void run()
   {
-    if (biua.a(this.jdField_a_of_type_Biub.a) != null) {
-      biua.a(this.jdField_a_of_type_Biub.a).notifyItemChanged(this.jdField_a_of_type_Int);
+    if (bkyt.a(this.jdField_a_of_type_Bkyu.a) != null) {
+      bkyt.a(this.jdField_a_of_type_Bkyu.a).notifyItemChanged(this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,53 @@
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-public final class axpj
-  implements TVK_IMediaPlayer.OnCompletionListener
+class axpj
+  implements axrl
 {
-  public axpj(axnx paramaxnx) {}
+  axpj(axpi paramaxpi, int[] paramArrayOfInt) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a()
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "video finish");
-    this.a.a(15, 1, 0L);
+    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
   }
+  
+  public void a(String arg1)
+  {
+    wta.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
+    synchronized (axpi.a(this.jdField_a_of_type_Axpi))
+    {
+      axpi.a(this.jdField_a_of_type_Axpi, true);
+      axpi.a(this.jdField_a_of_type_Axpi).notifyAll();
+      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
+      return;
+    }
+  }
+  
+  public void a_(int paramInt, Throwable arg2)
+  {
+    String str;
+    if (??? != null) {
+      str = ???.getMessage();
+    }
+    for (;;)
+    {
+      wta.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
+      wsv.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
+      axpi.a(this.jdField_a_of_type_Axpi, paramInt);
+      synchronized (axpi.a(this.jdField_a_of_type_Axpi))
+      {
+        axpi.a(this.jdField_a_of_type_Axpi, true);
+        axpi.a(this.jdField_a_of_type_Axpi).notifyAll();
+        return;
+        str = "UNKNOWN ERROR";
+      }
+    }
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axpj
  * JD-Core Version:    0.7.0.1
  */

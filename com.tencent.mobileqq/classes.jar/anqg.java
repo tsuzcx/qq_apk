@@ -1,150 +1,79 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ViolaLibData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class anqg
-  extends anpn
+  implements View.OnTouchListener
 {
-  public static final String a;
-  public static final String[] a;
+  public anqg(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject;
-    if (AppSetting.b)
-    {
-      localObject = "android.qq.readinjoy.viola64_820";
-      jdField_a_of_type_JavaLangString = (String)localObject;
-      if (!AppSetting.b) {
-        break label45;
-      }
-      localObject = new String[2];
-      localObject[0] = "libc++_shared.so";
-      localObject[1] = "libviola_jsc.so";
+    boolean bool = true;
+    if (!this.a.jdField_c_of_type_Boolean) {
+      bool = false;
     }
-    for (;;)
-    {
-      jdField_a_of_type_ArrayOfJavaLangString = (String[])localObject;
-      return;
-      localObject = "android.qq.readinjoy.viola_795";
-      break;
-      label45:
-      localObject = new String[2];
-      localObject[0] = "libgnustl_shared.so";
-      localObject[1] = "libjsc.so";
-    }
-  }
-  
-  public anqg(QQAppInterface paramQQAppInterface)
-  {
-    super(jdField_a_of_type_JavaLangString, paramQQAppInterface);
-  }
-  
-  public static void a()
-  {
-    if (i()) {}
     do
     {
-      return;
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
+      return bool;
+      if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress)) {}
+      switch (paramMotionEvent.getAction())
       {
-        localObject = (anpc)((QQAppInterface)localObject).getManager(77);
-        if (localObject != null)
+      case 2: 
+      default: 
+        return false;
+      case 0: 
+        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.d.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
+        this.a.e.setVisibility(4);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+        if (this.a.jdField_b_of_type_Int == 1) {}
+        for (int i = 0;; i = 1)
         {
-          localObject = (anqg)((anpc)localObject).a(jdField_a_of_type_JavaLangString);
-          if (localObject != null)
-          {
-            ((anqg)localObject).a(true);
-            QLog.i("viola.ViolaLibHandler", 1, "restartDownloadLib");
-          }
+          azmj.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
+          return true;
         }
       }
-    } while (anqf.i());
-    anqf.a();
-  }
-  
-  public static boolean i()
-  {
-    String str = osw.a();
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      File localFile = new File(str, jdField_a_of_type_ArrayOfJavaLangString[i]);
-      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
-        return false;
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a()) {
+        break;
       }
-      i += 1;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
     return true;
-  }
-  
-  public int a()
-  {
-    return 10071;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return ViolaLibData.class;
-  }
-  
-  public String a()
-  {
-    return "viola.ViolaLibHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("viola.ViolaLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
-    XmlData localXmlData = a();
-    if (localXmlData != null) {
-      QLog.i("viola.ViolaLibHandler", 1, "version:" + localXmlData.Version);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
     }
-    if (new File(paramString).exists())
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
     {
-      if (osw.a(paramString)) {
-        break label124;
-      }
-      if (localXmlData != null)
-      {
-        localXmlData.loadState = 0;
-        localXmlData.Version = 0;
-        anpb.a(localXmlData, new String[] { "loadState", "Version" });
-      }
-      QLog.e("viola.ViolaLibHandler", 1, "[doOnDownloadSuccess],unzip readinjoy_viola lib failed!");
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d();
+      DynamicAvatarRecordActivity.a(this.a);
+      return true;
     }
-    label124:
-    do
-    {
-      return;
-      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
-      if (paramString != null) {
-        paramString.edit().putString("res_name", jdField_a_of_type_JavaLangString).commit();
-      }
-    } while (!anqf.i());
-    osq.a("jsc doOnDownloadSuccess");
-  }
-  
-  public boolean a()
-  {
+    DynamicAvatarRecordActivity.b(this.a);
     return true;
-  }
-  
-  public String b()
-  {
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqg
  * JD-Core Version:    0.7.0.1
  */

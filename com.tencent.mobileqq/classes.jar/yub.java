@@ -1,100 +1,133 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.SmoothScroller;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import android.view.ViewGroup.MarginLayoutParams;
 
-final class yub
-  extends LinearLayout
-  implements yts
+public class yub
 {
-  private int jdField_a_of_type_Int = -2147483648;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ytp jdField_a_of_type_Ytp;
-  private int jdField_b_of_type_Int = -2147483648;
-  private ytp jdField_b_of_type_Ytp;
-  private ytp c;
+  private RecyclerView.LayoutManager a;
   
-  public yub(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4)
+  public yub(@NonNull RecyclerView.LayoutManager paramLayoutManager)
   {
-    super(paramContext);
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramInt1 < 0) || (paramInt2 < 0))
-    {
-      yxp.d("GdtBannerViewForCreativeSize285", "constructor");
-      return;
-    }
-    setOrientation(1);
-    setGravity(1);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    LinearLayout localLinearLayout = new LinearLayout(paramContext);
-    localLinearLayout.setOrientation(0);
-    addView(localLinearLayout, localLayoutParams);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Ytp = new ytp(paramContext, paramString1);
-    this.jdField_a_of_type_Ytp.setId(2131366951);
-    localLinearLayout.addView(this.jdField_a_of_type_Ytp);
-    this.jdField_b_of_type_Ytp = new ytp(paramContext, paramString2);
-    this.jdField_b_of_type_Ytp.setId(2131366952);
-    localLinearLayout.addView(this.jdField_b_of_type_Ytp);
-    this.c = new ytp(paramContext, paramString3);
-    this.c.setId(2131366953);
-    localLinearLayout.addView(this.c);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366954);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString4);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.a = paramLayoutManager;
   }
   
-  public View a()
+  public int a()
   {
-    return this;
+    return this.a.getChildCount();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a(View paramView)
   {
-    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Ytp == null) || (this.jdField_b_of_type_Ytp == null) || (this.c == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
-    {
-      yxp.d("GdtBannerViewForCreativeSize285", "setSize error");
-      return;
-    }
-    ytx localytx = new ytx(getContext(), paramInt1, paramInt2);
-    paramInt2 = Double.valueOf((paramInt1 - localytx.jdField_a_of_type_Int * 2) * 1.0D / 3.0D).intValue();
-    int i = Double.valueOf((paramInt2 - localytx.jdField_b_of_type_Int * 2) * 1.0D / this.jdField_a_of_type_Int * this.jdField_b_of_type_Int + localytx.jdField_b_of_type_Int * 2).intValue();
-    paramInt1 = Double.valueOf(0.839285714285714D * paramInt1).intValue();
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt2, i);
-    localLayoutParams.leftMargin = 0;
-    this.jdField_a_of_type_Ytp.setPadding(localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Ytp.setLayoutParams(localLayoutParams);
-    localLayoutParams = new LinearLayout.LayoutParams(paramInt2, i);
-    localLayoutParams.leftMargin = localytx.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Ytp.setPadding(localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int);
-    this.jdField_b_of_type_Ytp.setLayoutParams(localLayoutParams);
-    localLayoutParams = new LinearLayout.LayoutParams(paramInt2, i);
-    localLayoutParams.leftMargin = localytx.jdField_a_of_type_Int;
-    this.c.setPadding(localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int);
-    this.c.setLayoutParams(localLayoutParams);
-    localLayoutParams = new LinearLayout.LayoutParams(paramInt1, -2);
-    localLayoutParams.topMargin = localytx.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localytx.d);
+    return this.a.getPosition(paramView);
   }
   
-  public void a(Context paramContext) {}
+  public View a(int paramInt)
+  {
+    return this.a.getChildAt(paramInt);
+  }
   
-  public void b(Context paramContext) {}
+  public View a(int paramInt, RecyclerView.Recycler paramRecycler)
+  {
+    paramRecycler = paramRecycler.getViewForPosition(paramInt);
+    this.a.addView(paramRecycler);
+    this.a.measureChildWithMargins(paramRecycler, 0, 0);
+    return paramRecycler;
+  }
   
-  public void c(Context paramContext) {}
+  public void a()
+  {
+    this.a.requestLayout();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.offsetChildrenHorizontal(paramInt);
+  }
+  
+  public void a(RecyclerView.Recycler paramRecycler)
+  {
+    this.a.detachAndScrapAttachedViews(paramRecycler);
+  }
+  
+  public void a(RecyclerView.SmoothScroller paramSmoothScroller)
+  {
+    this.a.startSmoothScroll(paramSmoothScroller);
+  }
+  
+  public void a(View paramView)
+  {
+    this.a.attachView(paramView);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    this.a.layoutDecorated(paramView, localLayoutParams.leftMargin + paramInt1, localLayoutParams.topMargin + paramInt2, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
+  }
+  
+  public void a(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    this.a.detachAndScrapView(paramView, paramRecycler);
+  }
+  
+  public int b()
+  {
+    return this.a.getItemCount();
+  }
+  
+  public int b(View paramView)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    int i = this.a.getDecoratedMeasuredWidth(paramView);
+    int j = localMarginLayoutParams.leftMargin;
+    return localMarginLayoutParams.rightMargin + (i + j);
+  }
+  
+  public void b()
+  {
+    this.a.removeAllViews();
+  }
+  
+  public void b(RecyclerView.Recycler paramRecycler)
+  {
+    this.a.removeAndRecycleAllViews(paramRecycler);
+  }
+  
+  public void b(View paramView)
+  {
+    this.a.detachView(paramView);
+  }
+  
+  public void b(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    paramRecycler.recycleView(paramView);
+  }
+  
+  public int c()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int c(View paramView)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    int i = this.a.getDecoratedMeasuredHeight(paramView);
+    int j = localMarginLayoutParams.topMargin;
+    return localMarginLayoutParams.bottomMargin + (i + j);
+  }
+  
+  public int d()
+  {
+    return this.a.getHeight();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yub
  * JD-Core Version:    0.7.0.1
  */

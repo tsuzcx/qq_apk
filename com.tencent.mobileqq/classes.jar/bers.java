@@ -1,26 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.FirstPageInfo;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-public final class bers
-  implements Parcelable.Creator<FirstPageInfo>
+public class bers
+  extends Dialog
 {
-  public FirstPageInfo a(Parcel paramParcel)
+  private TextView a;
+  
+  public bers(Context paramContext)
   {
-    FirstPageInfo localFirstPageInfo = new FirstPageInfo();
-    localFirstPageInfo.a = paramParcel.readString();
-    localFirstPageInfo.b = paramParcel.readString();
-    return localFirstPageInfo;
+    super(paramContext, 2131755164);
+    getWindow().setFlags(16, 16);
+    getWindow().setFlags(8, 8);
+    getWindow().setGravity(17);
+    setContentView(2131561321);
+    this.a = ((TextView)findViewById(2131378059));
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+      this.a.setTextColor(Color.parseColor("#FF737373"));
+    }
+    setCancelable(false);
   }
   
-  public FirstPageInfo[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new FirstPageInfo[paramInt];
+    this.a.setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bers
  * JD-Core Version:    0.7.0.1
  */

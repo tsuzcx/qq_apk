@@ -1,25 +1,55 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bbeg;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import bdbi;
+import bdcs;
+import bddb;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.HashMap;
 
 public class JumpAction$20
   implements Runnable
 {
-  public JumpAction$20(bbeg parambbeg) {}
+  public JumpAction$20(bddb parambddb, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (bbeg.a(this.this$0) == null) {}
-    String str;
-    do
+    Object localObject = new StringBuffer();
+    String[] arrayOfString = this.a.split(";");
+    int i = 0;
+    while (i < arrayOfString.length)
     {
+      String str = URLDecoder.decode(arrayOfString[i]);
+      if (!TextUtils.isEmpty(str))
+      {
+        str = bdcs.a(this.this$0.jdField_a_of_type_AndroidContentContext, str, "opensdk_tmp");
+        if (!TextUtils.isEmpty(str))
+        {
+          ((StringBuffer)localObject).append(URLEncoder.encode(str));
+          if (i != arrayOfString.length - 1) {
+            ((StringBuffer)localObject).append(";");
+          }
+        }
+      }
+      i += 1;
+    }
+    try
+    {
+      localObject = new String(bdbi.encode(((StringBuffer)localObject).toString().getBytes("UTF-8"), 0));
+      this.this$0.jdField_a_of_type_JavaUtilHashMap.put("image_url", localObject);
+      bddb.a(this.this$0, this.b, false);
       return;
-      str = bbeg.a(this.this$0).getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.c(str, System.currentTimeMillis());
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
+      {
+        QLog.i("JumpAction", 1, "gotoShareMsgCheck put exception:", localUnsupportedEncodingException);
+      }
+    }
   }
 }
 

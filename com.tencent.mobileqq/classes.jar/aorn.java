@@ -1,20 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import java.util.HashMap;
 
 public class aorn
-  implements View.OnClickListener
 {
-  public aorn(QfileCloudFileTabView paramQfileCloudFileTabView) {}
-  
-  public void onClick(View paramView)
-  {
-    QfileCloudFileTabView.a(this.a, paramView, false);
-  }
+  public HashMap<String, aoro> a = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aorn
  * JD-Core Version:    0.7.0.1
  */

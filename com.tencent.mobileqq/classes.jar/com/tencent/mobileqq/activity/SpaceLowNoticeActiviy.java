@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import acdf;
-import acdg;
-import acdh;
+import aduo;
+import adup;
+import aduq;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,8 +10,8 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import bbdj;
-import bbgu;
+import bdcd;
+import bdfq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,7 +20,7 @@ import mqq.manager.ServerConfigManager.ConfigType;
 public class SpaceLowNoticeActiviy
   extends BaseActivity
 {
-  private bbgu a;
+  private bdfq a;
   
   public static long a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
@@ -63,15 +63,15 @@ public class SpaceLowNoticeActiviy
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559347);
+    super.setContentView(2131559399);
     if ((this.a != null) && (this.a.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
-    this.a = bbdj.a(this, 230);
-    this.a.setContentView(2131558883);
-    this.a.setTitle(getString(2131698935)).setMessage(getString(2131698936)).setPositiveButton(2131699414, new acdg(this)).setNegativeButton(2131690596, new acdf(this));
-    this.a.setOnKeyListener(new acdh(this));
+    this.a = bdcd.a(this, 230);
+    this.a.setContentView(2131558920);
+    this.a.setTitle(getString(2131699233)).setMessage(getString(2131699234)).setPositiveButton(2131699765, new adup(this)).setNegativeButton(2131690648, new aduo(this));
+    this.a.setOnKeyListener(new aduq(this));
     this.a.show();
     return false;
   }
@@ -89,7 +89,7 @@ public class SpaceLowNoticeActiviy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SpaceLowNoticeActiviy
  * JD-Core Version:    0.7.0.1
  */

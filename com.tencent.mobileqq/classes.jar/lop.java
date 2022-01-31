@@ -1,77 +1,87 @@
-import android.app.Notification;
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import java.io.BufferedReader;
 
-public abstract class lop
-  extends Binder
-  implements loo
+public class lop
+  extends lor
 {
-  public static loo a(IBinder paramIBinder)
+  private static float[] b;
+  float[] a;
+  private float[] c = { 1.0F, 1.0F, 1.0F };
+  
+  static
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-    if ((localIInterface != null) && ((localIInterface instanceof loo))) {
-      return (loo)localIInterface;
-    }
-    return new loq(paramIBinder);
+    jdField_b_of_type_ArrayOfFloat = new float[4];
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public lop()
   {
-    switch (paramInt1)
+    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F };
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(BufferedReader paramBufferedReader)
+  {
+    int j = 0;
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (;;)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.gvideo.IGVServiceForQQ");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      a(lwj.a(paramParcel1.readStrongBinder()));
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      a(paramParcel1.createByteArray());
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      boolean bool;
-      if (paramParcel1.readInt() != 0)
+      return;
+      this.c = new float[loo.a(paramBufferedReader, "colorsCount")];
+      int i = 0;
+      while (i < this.c.length)
       {
-        bool = true;
-        if (paramParcel1.readInt() == 0) {
-          break label168;
-        }
+        this.c[i] = loo.a(paramBufferedReader, "colors" + i);
+        i += 1;
       }
-      for (paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      this.jdField_a_of_type_ArrayOfFloat = new float[loo.a(paramBufferedReader, "timelineCount")];
+      i = j;
+      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
       {
-        a(bool, paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-        bool = false;
+        this.jdField_a_of_type_ArrayOfFloat[i] = loo.a(paramBufferedReader, "timeline" + i);
+        i += 1;
+      }
+    }
+  }
+  
+  public float[] a(float paramFloat)
+  {
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    int k = arrayOfFloat.length;
+    int i = 1;
+    int j = 0;
+    if (i < k) {
+      if (arrayOfFloat[i] <= paramFloat) {}
+    }
+    for (;;)
+    {
+      float f4 = arrayOfFloat[j];
+      j *= 3;
+      float f1 = this.c[j];
+      float f2 = this.c[(j + 1)];
+      float f3 = this.c[(j + 2)];
+      if (i == -1)
+      {
+        jdField_b_of_type_ArrayOfFloat[0] = f1;
+        jdField_b_of_type_ArrayOfFloat[1] = f2;
+        jdField_b_of_type_ArrayOfFloat[2] = f3;
+        return jdField_b_of_type_ArrayOfFloat;
+        j = i;
+        i += 1;
         break;
       }
-    case 4: 
-      label168:
-      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
+      paramFloat = (paramFloat - f4) / (arrayOfFloat[i] - f4);
+      i *= 3;
+      jdField_b_of_type_ArrayOfFloat[0] = ((this.c[i] - f1) * paramFloat + f1);
+      jdField_b_of_type_ArrayOfFloat[1] = ((this.c[(i + 1)] - f2) * paramFloat + f2);
+      jdField_b_of_type_ArrayOfFloat[2] = ((this.c[(i + 2)] - f3) * paramFloat + f3);
+      return jdField_b_of_type_ArrayOfFloat;
+      i = -1;
     }
-    paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
-    a();
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lop
  * JD-Core Version:    0.7.0.1
  */

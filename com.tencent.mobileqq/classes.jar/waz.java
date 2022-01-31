@@ -1,24 +1,29 @@
-import java.io.IOException;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
 
-class waz
+public class waz
+  implements xrv
 {
-  Process a(String[] paramArrayOfString)
+  public waz(ShareGroupInnerListView paramShareGroupInnerListView) {}
+  
+  public void a()
   {
-    try
-    {
-      Process localProcess = Runtime.getRuntime().exec(paramArrayOfString);
-      return localProcess;
+    if ((this.a.jdField_a_of_type_Wba != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
+      this.a.jdField_a_of_type_Wba.a(this.a.jdField_a_of_type_JavaLangString);
     }
-    catch (IOException localIOException)
-    {
-      ved.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Wba != null) {
+      return this.a.jdField_a_of_type_Wba.a(this.a.jdField_a_of_type_JavaLangString);
     }
-    return null;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     waz
  * JD-Core Version:    0.7.0.1
  */

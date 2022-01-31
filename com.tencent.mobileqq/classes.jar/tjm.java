@@ -1,25 +1,17 @@
-import java.util.ArrayList;
+import UserGrowth.stNotificationRsp;
+import UserGrowth.stSimpleMetaFeed;
+import java.util.List;
 
-public class tjm
-  extends ssh
+public abstract interface tjm
+  extends tiv<List<stSimpleMetaFeed>>
 {
-  public final int a;
-  public ArrayList<tjl> a;
+  public abstract void a(int paramInt, String paramString);
   
-  public tjm(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
-  }
+  public abstract void a(stNotificationRsp paramstNotificationRsp, tgu paramtgu);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aanz;
-import ajsd;
+import acex;
+import aljq;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -15,10 +15,10 @@ class KandianMergeManager$19
   
   public void run()
   {
-    KandianMergeManager.a(this.this$0).a().a(ajsd.aA, 7220, false, false);
+    KandianMergeManager.a(this.this$0).a().a(aljq.aA, 7220, false, false);
     if (this.a.extInt == 2)
     {
-      KandianMergeManager.a(this.this$0).a().b(ajsd.aA, 7220, this.a.uniseq);
+      this.a.isValid = false;
       if (KandianMergeManager.a(this.this$0).get() > 0) {
         this.this$0.c(2);
       }
@@ -29,18 +29,19 @@ class KandianMergeManager$19
       if (this.a.extInt == 1)
       {
         SessionInfo localSessionInfo = new SessionInfo();
-        localSessionInfo.jdField_a_of_type_JavaLangString = ajsd.az;
+        localSessionInfo.jdField_a_of_type_JavaLangString = aljq.az;
         localSessionInfo.jdField_a_of_type_Int = 1008;
-        aanz.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+        acex.a(KandianMergeManager.a(this.this$0), localSessionInfo);
         return;
       }
     } while (this.a.extInt != 5);
-    KandianMergeManager.a(this.this$0).a().b(ajsd.aA, 7220, this.a.uniseq);
+    this.a.isValid = false;
+    KandianMergeManager.a(this.this$0).a().b(aljq.aA, 7220, this.a.uniseq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.19
  * JD-Core Version:    0.7.0.1
  */

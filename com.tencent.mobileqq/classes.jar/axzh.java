@@ -1,100 +1,43 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ProgressBar;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
+import java.util.List;
 
-public class axzh
-  extends axup
+class axzh
+  implements ayaj
 {
-  private int k;
+  axzh(axze paramaxze, HistorySignItem paramHistorySignItem) {}
   
-  public axzh()
+  public void a(int paramInt, View paramView)
   {
-    this.a = "progress";
-  }
-  
-  public axzh(int paramInt)
-  {
-    this.k = paramInt;
-    this.a = "progress";
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {}
-    for (paramContext = (ProgressBar)paramView;; paramContext = paramView)
+    if (SignatureHistoryFragment.b(this.jdField_a_of_type_Axze.a)) {}
+    Object localObject;
+    ayab localayab;
+    do
     {
-      paramContext.setTag(this);
-      paramContext.setProgress(this.k);
-      if (this.k == paramContext.getMax()) {
-        paramContext.setVisibility(8);
-      }
-      return paramContext;
-      paramView = new ProgressBar(paramContext, null, 16842872);
-      paramView.setId(2131376564);
-      paramView.setMax(100);
-      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130837727));
-    }
-  }
-  
-  public String a()
-  {
-    return "Progress";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.k = paramObjectInput.readInt();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.k);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "progress");
-    paramXmlSerializer.text(String.valueOf(this.k));
-    paramXmlSerializer.endTag(null, "progress");
-  }
-  
-  public boolean a(axwg paramaxwg)
-  {
-    paramaxwg = axva.a(paramaxwg);
-    try
-    {
-      this.k = Integer.valueOf(paramaxwg).intValue();
-      return true;
-    }
-    catch (NumberFormatException paramaxwg)
-    {
-      for (;;)
+      do
       {
-        this.k = 0;
-      }
+        return;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusHistorySignItem.commentItemList;
+      } while ((localObject == null) || (((List)localObject).size() <= paramInt));
+      localObject = (CommentItem)((List)localObject).get(paramInt);
+      localayab = ((CommentItem)localObject).user;
+    } while ((localayab == null) || (TextUtils.isEmpty(localayab.a)));
+    paramView.setSelected(true);
+    bdkz localbdkz = new bdkz();
+    SignatureHistoryFragment.a(this.jdField_a_of_type_Axze.a, (CommentItem)localObject);
+    localbdkz.a(2131364910, this.jdField_a_of_type_Axze.a.getString(2131691360), 0);
+    if ((localayab.a.equals(SignatureHistoryFragment.b(this.jdField_a_of_type_Axze.a))) || (bdal.a(SignatureHistoryFragment.b(this.jdField_a_of_type_Axze.a), SignatureHistoryFragment.a(this.jdField_a_of_type_Axze.a)))) {
+      localbdkz.a(2131365069, this.jdField_a_of_type_Axze.a.getString(2131692820), 0);
     }
-  }
-  
-  public int b()
-  {
-    return this.k;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.k = paramInt;
+    bdbk.a(paramView, localbdkz, this.jdField_a_of_type_Axze.a, new axzi(this, paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axzh
  * JD-Core Version:    0.7.0.1
  */

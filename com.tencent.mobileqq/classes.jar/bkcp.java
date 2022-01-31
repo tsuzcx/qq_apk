@@ -1,30 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.content.Context;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
 
-class bkcp
-  implements View.OnClickListener
+public final class bkcp
+  extends bjoe<QzoneHuangzuanVipIconShow, Context>
 {
-  bkcp(bkcm parambkcm) {}
-  
-  public void onClick(View paramView)
+  protected QzoneHuangzuanVipIconShow a(Context paramContext)
   {
-    if (this.a.jdField_b_of_type_DovComQqImCaptureTextDynamicTextItem != null)
-    {
-      bkcm.a(this.a, false);
-      this.a.a = this.a.jdField_b_of_type_DovComQqImCaptureTextDynamicTextItem;
-      this.a.a.a(bkcm.a(this.a), this.a.jdField_b_of_type_JavaLangString);
-      this.a.a.c(this.a.i);
-      if ((this.a.a instanceof bjij)) {
-        ((bjij)this.a.a).a(this.a.h);
-      }
-      this.a.a(false);
-    }
+    return new QzoneHuangzuanVipIconShow(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkcp
  * JD-Core Version:    0.7.0.1
  */

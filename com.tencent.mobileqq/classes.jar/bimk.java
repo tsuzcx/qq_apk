@@ -1,18 +1,22 @@
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-class bimk
-  implements xez
+final class bimk
+  implements bimn
 {
-  bimk(bima parambima) {}
-  
-  public void a()
+  public void a(boolean paramBoolean, Context paramContext, bimp parambimp)
   {
-    bima.a(this.a).setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      bimg.e(paramContext, parambimp);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bimk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import android.content.Context;
 
-public class aooy
-  implements DialogInterface.OnCancelListener
+public abstract interface aooy
 {
-  public aooy(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
-  }
+  public abstract void a(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aooy
  * JD-Core Version:    0.7.0.1
  */

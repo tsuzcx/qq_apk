@@ -1,32 +1,56 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Toast;
+import android.graphics.RectF;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class beno
-  implements View.OnTouchListener
+public final class beno
 {
-  beno(benn parambenn, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  public baig a;
+  private List<RectF> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<baig> b = new ArrayList();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private beno(baig parambaig)
   {
-    boolean bool = true;
-    if (paramMotionEvent.getAction() == 0)
+    this.jdField_a_of_type_Baig = parambaig;
+  }
+  
+  private void a(RectF paramRectF, baig parambaig)
+  {
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      betc.a("QQToast", "start to cancel toast");
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
-      benn.a(this.jdField_a_of_type_Benn, true);
-      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      int i = 0;
+      j = i;
+      if (!localIterator.hasNext()) {
+        break label63;
       }
-      return bool;
+      if (!paramRectF.equals((RectF)localIterator.next())) {
+        break label91;
+      }
+      i = 1;
     }
-    return false;
+    label63:
+    label91:
+    for (;;)
+    {
+      break;
+      j = 0;
+      if (j == 0)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(paramRectF);
+        this.b.add(parambaig);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beno
  * JD-Core Version:    0.7.0.1
  */

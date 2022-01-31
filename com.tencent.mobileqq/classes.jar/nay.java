@@ -1,28 +1,14 @@
-import android.view.View;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class nay
-  extends ayks
 {
-  public nay(nax paramnax, String paramString)
-  {
-    super(paramnax, paramString);
-  }
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
-  {
-    if (naz.a.matcher(this.jdField_a_of_type_JavaLangString).find())
-    {
-      nax.a(paramView, this.jdField_a_of_type_Nax.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nax.b, this.jdField_a_of_type_Nax.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-    }
-    super.onClick(paramView);
-  }
+  public nay(nav paramnav) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nay
  * JD-Core Version:    0.7.0.1
  */

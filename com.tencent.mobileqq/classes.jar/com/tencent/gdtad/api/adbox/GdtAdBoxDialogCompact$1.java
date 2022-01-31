@@ -1,11 +1,11 @@
 package com.tencent.gdtad.api.adbox;
 
-import ytj;
+import aaja;
 
 public class GdtAdBoxDialogCompact$1
   implements Runnable
 {
-  public GdtAdBoxDialogCompact$1(ytj paramytj) {}
+  public GdtAdBoxDialogCompact$1(aaja paramaaja) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class GdtAdBoxDialogCompact$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.adbox.GdtAdBoxDialogCompact.1
  * JD-Core Version:    0.7.0.1
  */

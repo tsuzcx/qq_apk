@@ -1,112 +1,183 @@
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicLikePopWindow;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import qqcircle.QQCircleBase.UserCircleInfo;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
-public abstract class tqg
-  extends tqh
+public class tqg
 {
-  protected int a;
-  protected StoryVideoItem a;
-  protected int b = -1;
-  protected int c = -1;
-  protected String c;
-  protected int d;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
-  protected String h;
-  protected String i;
-  protected String j;
-  protected String k;
+  private static volatile FeedCloudMeta.StUser jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+  private static FeedCloudRead.StGetMainPageRsp jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp;
+  private static final String jdField_a_of_type_JavaLangString = tqg.class.getSimpleName();
+  private static volatile ArrayList<QQCircleBase.UserCircleInfo> jdField_a_of_type_JavaUtilArrayList;
+  private static HashMap<String, FeedCloudMeta.StFeed> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static List<QQCircleFeedBase.StPolyLike> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static String jdField_b_of_type_JavaLangString = "";
+  private static volatile ArrayList<QQCircleBase.UserCircleInfo> jdField_b_of_type_JavaUtilArrayList;
   
-  public tqg()
+  static
   {
-    this.jdField_d_of_type_Int = 1;
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public final void a(trl paramtrl)
+  public static FeedCloudMeta.StFeed a(String paramString)
   {
-    super.a(paramtrl);
-    paramtrl.a = a(6);
+    return (FeedCloudMeta.StFeed)jdField_a_of_type_JavaUtilHashMap.get(paramString);
   }
   
-  public final void a(trn paramtrn)
+  public static FeedCloudMeta.StUser a()
   {
-    super.a(paramtrn);
-    paramtrn.b = 0;
-    paramtrn.jdField_d_of_type_JavaLangString = this.k;
-    paramtrn.a = this.a.mVideoThumbnailUrl;
-    paramtrn.jdField_e_of_type_JavaLangString = this.a.mVid;
-    paramtrn.h = a(1);
-    if (this.b != -1) {
-      paramtrn.jdField_d_of_type_Int = this.b;
-    }
-    if (this.c != -1) {
-      paramtrn.jdField_e_of_type_Int = this.c;
-    }
-  }
-  
-  public final void a(tro paramtro)
-  {
-    super.a(paramtro);
-    paramtro.a = this.a.mVideoThumbnailUrl;
-    paramtro.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    paramtro.jdField_d_of_type_JavaLangString = this.i;
-    paramtro.jdField_e_of_type_JavaLangString = a(2);
-  }
-  
-  public final void a(trp paramtrp)
-  {
-    super.a(paramtrp);
-    paramtrp.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramtrp.jdField_d_of_type_JavaLangString = this.a.mVideoLocalThumbnailPath;
-    if (TextUtils.isEmpty(paramtrp.jdField_d_of_type_JavaLangString)) {
-      paramtrp.jdField_d_of_type_JavaLangString = trx.a(paramtrp.jdField_e_of_type_JavaLangString);
-    }
-    paramtrp.jdField_c_of_type_JavaLangString = a(5);
-    paramtrp.a = this.j;
-  }
-  
-  public void a(trq paramtrq)
-  {
-    super.a(paramtrq);
-    paramtrq.jdField_c_of_type_JavaLangString = this.i;
-    paramtrq.a = this.jdField_e_of_type_JavaLangString;
-    paramtrq.jdField_d_of_type_JavaLangString = a(3);
-    paramtrq.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramtrq.jdField_c_of_type_Boolean = true;
-  }
-  
-  protected void a_(trm paramtrm)
-  {
-    ved.b("Q.qqstory.share.ShareModeBase", "prepareCommonShareData");
-    super.a_(paramtrm);
-    if (this.a.isPollVideo()) {
-      paramtrm.a("vote", "1");
-    }
-    for (;;)
+    try
     {
-      paramtrm.a = this.a;
-      return;
-      if (this.a.isInteractVideo()) {
-        paramtrm.a("grade", "1");
+      if (jdField_a_of_type_FeedcloudFeedCloudMeta$StUser == null)
+      {
+        if (VSNetworkHelper.a() != null) {
+          VSNetworkHelper.a().a(new QCircleGetMainPageRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount()), new tqh());
+        }
+        FeedCloudMeta.StUser localStUser = b();
+        return localStUser;
       }
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
   }
   
-  public void b(trq paramtrq)
+  public static String a()
   {
-    super.b(paramtrq);
-    paramtrq.jdField_c_of_type_JavaLangString = this.i;
-    paramtrq.a = this.jdField_d_of_type_JavaLangString;
-    paramtrq.jdField_d_of_type_JavaLangString = a(4);
-    paramtrq.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramtrq.jdField_c_of_type_Boolean = true;
+    return BaseApplicationImpl.getApplication().getRuntime().getAccount();
+  }
+  
+  public static ArrayList<QQCircleBase.UserCircleInfo> a()
+  {
+    return jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public static List<QQCircleFeedBase.StPolyLike> a()
+  {
+    if (jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      Iterator localIterator = QCirclePolymorphicLikePopWindow.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = "qcircle_stpoly_" + (String)localIterator.next();
+        localObject = bczr.a(BaseApplicationImpl.getApplication(), (String)localObject);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          try
+          {
+            localObject = (QQCircleFeedBase.StPolyLike)new QQCircleFeedBase.StPolyLike().mergeFrom(((String)localObject).getBytes());
+            jdField_a_of_type_JavaUtilList.add(localObject);
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+          {
+            localInvalidProtocolBufferMicroException.printStackTrace();
+          }
+        }
+      }
+    }
+    return jdField_a_of_type_JavaUtilList;
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = null;
+      jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp = null;
+      txt.a().a();
+      txu.a().a();
+      tpz.a();
+      jdField_a_of_type_JavaUtilHashMap.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public static void a(String paramString, FeedCloudMeta.StFeed paramStFeed)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramStFeed != null)) {
+      jdField_a_of_type_JavaUtilHashMap.put(paramString, paramStFeed);
+    }
+  }
+  
+  public static void a(List<QQCircleFeedBase.StPolyLike> paramList)
+  {
+    jdField_a_of_type_JavaUtilList.clear();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      QQCircleFeedBase.StPolyLike localStPolyLike1 = (QQCircleFeedBase.StPolyLike)paramList.next();
+      QQCircleFeedBase.StPolyLike localStPolyLike2 = tra.a(localStPolyLike1);
+      jdField_a_of_type_JavaUtilList.add(localStPolyLike2);
+      if (!TextUtils.isEmpty(localStPolyLike2.polySource.get())) {
+        tvt.a().a(localStPolyLike2.polySource.get(), null);
+      }
+      bczr.a(BaseApplicationImpl.getApplication(), "qcircle_stpoly_" + localStPolyLike2.polyLikeID.get(), new String(localStPolyLike1.toByteArray()));
+    }
+  }
+  
+  public static void a(List<QQCircleBase.UserCircleInfo> paramList1, List<QQCircleBase.UserCircleInfo> paramList2)
+  {
+    if (paramList1 != null) {
+      jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList1);
+    }
+    if (paramList2 != null) {
+      jdField_b_of_type_JavaUtilArrayList = new ArrayList(paramList2);
+    }
+  }
+  
+  public static FeedCloudMeta.StUser b()
+  {
+    FeedCloudMeta.StUser localStUser = new FeedCloudMeta.StUser();
+    localStUser.id.set(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    return localStUser;
+  }
+  
+  public static String b()
+  {
+    return jdField_b_of_type_JavaLangString;
+  }
+  
+  public static ArrayList<QQCircleBase.UserCircleInfo> b()
+  {
+    return jdField_b_of_type_JavaUtilArrayList;
+  }
+  
+  public static void b()
+  {
+    QCircleGetTabListRequest localQCircleGetTabListRequest = new QCircleGetTabListRequest(null);
+    VSNetworkHelper.a().a(localQCircleGetTabListRequest, new tqi());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqg
  * JD-Core Version:    0.7.0.1
  */

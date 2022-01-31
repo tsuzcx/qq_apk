@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo;
 
-import aiuz;
-import ajki;
-import bbdh;
+import akml;
+import albu;
+import bdcb;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloRender$5
@@ -17,14 +17,14 @@ class ApolloRender$5
   
   public void run()
   {
-    if ((ApolloRender.getRenderViewByThreadId() instanceof aiuz)) {}
-    for (int i = ((aiuz)ApolloRender.getRenderViewByThreadId()).getInitHeight();; i = 0)
+    if ((ApolloRender.getRenderViewByThreadId() instanceof akml)) {}
+    for (int i = ((akml)ApolloRender.getRenderViewByThreadId()).getInitHeight();; i = 0)
     {
       int j = i;
       if (i == 0) {
-        j = (int)bbdh.j();
+        j = (int)bdcb.j();
       }
-      String str = ajki.b(this.a, this.b, j);
+      String str = albu.b(this.a, this.b, j);
       ApolloRender.access$300(this.this$0).a(str);
       if (QLog.isColorLevel()) {
         QLog.d("sava_ApolloRender", 2, new Object[] { "addOnCommonScript:", str });
@@ -35,7 +35,7 @@ class ApolloRender$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.5
  * JD-Core Version:    0.7.0.1
  */

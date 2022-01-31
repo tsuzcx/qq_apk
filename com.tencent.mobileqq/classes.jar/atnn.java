@@ -1,55 +1,35 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem;
-import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
-import java.util.List;
+import android.app.Dialog;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import mqq.app.QQPermissionCallback;
 
 public class atnn
-  extends BaseAdapter
+  implements QQPermissionCallback
 {
-  public atnn(TopicLabelListView paramTopicLabelListView) {}
+  public atnn(LocationPickFragment paramLocationPickFragment, BaseActivity paramBaseActivity) {}
   
-  public int getCount()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
+    paramArrayOfString = bdcd.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (paramArrayOfString != null) {
+      paramArrayOfString.setOnDismissListener(new atno(this));
     }
-    return TopicLabelListView.a(this.a).size();
+    paramArrayOfInt = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
+    paramArrayOfString = paramArrayOfInt.getStringExtra("uin");
+    paramInt = paramArrayOfInt.getIntExtra("uintype", -1);
+    paramArrayOfInt = atln.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+    paramArrayOfInt.a(paramInt, paramArrayOfString, paramArrayOfInt.a(), 1);
   }
   
-  public Object getItem(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = new atno(this.a, null);
-      paramView = new LabelViewItem(TopicLabelListView.a(this.a));
-      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
-      ((LabelViewItem)paramView).setText(paramViewGroup.a);
-      return paramView;
-      paramViewGroup = (atno)paramView.getTag();
-    }
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atnn
  * JD-Core Version:    0.7.0.1
  */

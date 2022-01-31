@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
 import android.content.res.AssetManager;
-import axjl;
-import axjm;
+import azer;
+import azes;
 
 public class GameplayEngine
 {
   private long jdField_a_of_type_Long = 0L;
-  private axjl jdField_a_of_type_Axjl = new axjl(new Game3DNativeEvent());
+  private azer jdField_a_of_type_Azer = new azer(new Game3DNativeEvent());
   
   private native int createEngineContext(AssetManager paramAssetManager);
   
@@ -19,14 +19,14 @@ public class GameplayEngine
   
   private native int onSurfaceOperateNative(long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
-  public void a(axjm paramaxjm)
+  public void a(azes paramazes)
   {
-    this.jdField_a_of_type_Axjl.a(paramaxjm, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Azer.a(paramazes, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine
  * JD-Core Version:    0.7.0.1
  */

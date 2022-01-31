@@ -1,22 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import java.util.concurrent.Callable;
 
-final class atai
-  implements View.OnClickListener
+public class atai
+  implements Callable<asux>
 {
-  atai(Dialog paramDialog, String paramString) {}
+  public atai(ODLoadingActivity paramODLoadingActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public asux a()
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    return asvg.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity, this.jdField_a_of_type_JavaLangString, localQQAppInterface.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atai
  * JD-Core Version:    0.7.0.1
  */

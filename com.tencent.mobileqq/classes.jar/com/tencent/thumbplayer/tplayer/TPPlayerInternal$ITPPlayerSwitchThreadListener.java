@@ -8,13 +8,14 @@ import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.TPVideoInfo;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
+import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import java.util.Map;
 
 public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
 {
-  public abstract void handleAddAudioSource(String paramString1, String paramString2);
+  public abstract void handleAddAudioSource(String paramString1, String paramString2, TPDownloadParamData paramTPDownloadParamData);
   
-  public abstract void handleAddSubTitle(String paramString1, String paramString2, String paramString3);
+  public abstract void handleAddSubTitle(String paramString1, String paramString2, String paramString3, TPDownloadParamData paramTPDownloadParamData);
   
   public abstract void handleDeselectTrack(int paramInt, long paramLong);
   
@@ -98,9 +99,9 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   
   public abstract void handleStop();
   
-  public abstract void handleSwitchDef(ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo);
+  public abstract void handleSwitchDef(ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt);
   
-  public abstract void handleSwitchDef(String paramString, long paramLong, TPVideoInfo paramTPVideoInfo);
+  public abstract void handleSwitchDef(String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt);
   
   public abstract void handlerCaptureVideo(TPCaptureParams paramTPCaptureParams, TPCaptureCallBack paramTPCaptureCallBack);
   
@@ -108,7 +109,7 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayerInternal.ITPPlayerSwitchThreadListener
  * JD-Core Version:    0.7.0.1
  */

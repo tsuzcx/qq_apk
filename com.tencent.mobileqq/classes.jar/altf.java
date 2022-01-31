@@ -1,192 +1,75 @@
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.ark.ArkAppPanelReport.ReqBody;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.NewFriendManager.3.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.Proto.EchoRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Map;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class altf
-  extends ajtb
+  extends alox
 {
-  private static final int[] a = { 95 };
+  altf(altc paramaltc) {}
   
-  public altf(QQAppInterface paramQQAppInterface)
+  protected void onAddFriend(String paramString)
   {
-    super(paramQQAppInterface);
-  }
-  
-  private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    try
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      paramToServiceMsg = new String((byte[])paramObject, "UTF-8");
-      paramFromServiceMsg = paramToServiceMsg;
-      if (paramToServiceMsg == null) {
-        paramFromServiceMsg = "";
-      }
-      return paramFromServiceMsg;
-    }
-    catch (Exception paramToServiceMsg)
+      return;
+      localObject = this.a.b();
+    } while (((ArrayList)localObject).isEmpty());
+    Object localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      for (;;)
+      avqe localavqe = (avqe)((Iterator)localObject).next();
+      if ((localavqe instanceof avpz))
       {
-        ArkAppCenter.c("ArkApp.BusinessHandler", String.format("onReceive_AppMsg, fail convert data to string", new Object[0]));
-        paramToServiceMsg = null;
-      }
-    }
-  }
-  
-  private void a(String paramString, boolean paramBoolean, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ajte paramajte)
-  {
-    paramajte = super.createToServiceMsg(paramString, paramajte);
-    paramajte.addAttribute("SendTime", Long.valueOf(System.currentTimeMillis()));
-    paramajte.addAttribute("IsGenericCmd", Boolean.valueOf(paramBoolean));
-    paramajte.addAttribute("IsPanelRequest", Boolean.valueOf(false));
-    paramajte.addAttribute("NotifyType", Integer.valueOf(paramInt2));
-    paramajte.putWupBuffer(paramArrayOfByte);
-    if (paramInt1 > 0) {
-      paramajte.setTimeout(paramInt1);
-    }
-    if (!ajtu.a().containsKey(paramString)) {
-      ajtu.a(paramString, a);
-    }
-    super.sendPbReq(paramajte);
-  }
-  
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    for (;;)
-    {
-      try
-      {
-        paramToServiceMsg = (Proto.EchoRsp)new Proto.EchoRsp().mergeFrom((byte[])paramObject);
-        if (paramToServiceMsg == null) {
-          return null;
-        }
-        if (paramToServiceMsg.msg.has())
+        int i = ((avpz)localavqe).a.structMsg.msg.sub_type.get();
+        String str = ((avpz)localavqe).a.senderuin;
+        if ((i == 13) && (paramString.equals(str)))
         {
-          paramToServiceMsg = paramToServiceMsg.msg.get();
-          paramFromServiceMsg = paramToServiceMsg;
-          if (paramToServiceMsg == null) {
-            paramFromServiceMsg = "";
-          }
-          return paramFromServiceMsg;
+          ((Iterator)localObject).remove();
+          altc.a(this.a).a().b(aljq.M, 0, ((avpz)localavqe).a.uniseq, false);
         }
       }
-      catch (Exception paramToServiceMsg)
-      {
-        return null;
-      }
-      paramToServiceMsg = null;
+    }
+    altc.a(this.a).sendEmptyMessage(2);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (altc.a(this.a) != null)) {
+      altc.a(this.a).sendEmptyMessage(2);
     }
   }
   
-  public boolean a(String paramString)
+  protected void onGetPushRecommend(boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    if ((paramBoolean) && (altc.a(this.a) != null)) {
+      altc.a(this.a).sendEmptyMessage(2);
     }
-    ArkAppPanelReport.ReqBody localReqBody = new ArkAppPanelReport.ReqBody();
-    localReqBody.bytes_app_name.set(ByteStringMicro.copyFromUtf8(paramString));
-    ArkAppCenter.a("ArkApp.BusinessHandler", String.format("reportArkAppPanelIconClick appName=%s", new Object[] { paramString }));
-    paramString = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "ArkAppPanel.Report");
-    paramString.putWupBuffer(localReqBody.toByteArray());
-    paramString.setNeedCallback(false);
-    sendPbReq(paramString);
-    return true;
   }
   
-  public boolean a(String paramString, int paramInt1, int paramInt2, ajte paramajte)
+  protected void onMayknowStateChanged(boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramajte == null)) {
-      return false;
-    }
-    paramajte = super.createToServiceMsg(paramString, paramajte);
-    paramajte.addAttribute("SendTime", Long.valueOf(System.currentTimeMillis()));
-    paramajte.addAttribute("IsGenericCmd", Boolean.valueOf(true));
-    paramajte.addAttribute("IsPanelRequest", Boolean.valueOf(true));
-    paramajte.addAttribute("NotifyType", Integer.valueOf(paramInt2));
-    if (paramInt1 > 0) {
-      paramajte.setTimeout(paramInt1);
-    }
-    if (!ajtu.a().containsKey(paramString)) {
-      ajtu.a(paramString, a);
-    }
-    super.sendPbReq(paramajte);
-    return true;
+    altc.a(this.a).runOnUiThread(new NewFriendManager.3.1(this, paramBoolean));
   }
   
-  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, ajte paramajte)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramajte == null)) {
-      return false;
-    }
-    String str = paramString2;
-    if (paramString2 == null) {
-      str = "";
-    }
-    try
-    {
-      paramString2 = str.getBytes("UTF-8");
-      a(paramString1, true, paramString2, paramInt1, paramInt2, paramajte);
-      return true;
-    }
-    catch (Exception paramString2)
-    {
-      ArkAppCenter.c("ArkApp.BusinessHandler", String.format("sendAppMsg, fail convert content to bytes array, cmd=%s, content=%s", new Object[] { paramString1, str }));
-    }
-    return false;
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool1 = paramFromServiceMsg.isSuccess();
-    long l1 = ((Long)paramToServiceMsg.getAttribute("SendTime")).longValue();
-    long l2 = System.currentTimeMillis();
-    boolean bool2 = ((Boolean)paramToServiceMsg.getAttribute("IsGenericCmd")).booleanValue();
-    boolean bool3 = ((Boolean)paramToServiceMsg.getAttribute("IsPanelRequest")).booleanValue();
-    int i = ((Integer)paramToServiceMsg.getAttribute("NotifyType")).intValue();
-    String str = paramFromServiceMsg.getServiceCmd();
-    ArkAppCenter.c("ArkApp.BusinessHandler", String.format("onReceive, cmd=%s, app-msg=%s, panelRequest=%s, suc=%s, delay=%d, ", new Object[] { str, Boolean.toString(bool2), Boolean.toString(bool3), Boolean.toString(bool1), Long.valueOf(l2 - l1) }));
-    if (bool1) {
-      if (bool2) {
-        if (!bool3) {}
-      }
-    }
-    for (;;)
-    {
-      if (paramObject != null)
-      {
-        super.notifyUI(paramToServiceMsg, i, true, paramObject);
-        return;
-        paramObject = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        continue;
-        if (str.equalsIgnoreCase("ArkAppSvc.Echo")) {
-          paramObject = b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        }
-      }
-      else
-      {
-        super.notifyUI(paramToServiceMsg, i, false, null);
-        return;
-      }
-      paramObject = null;
+    if ((paramBoolean) && (altc.a(this.a) != null)) {
+      altc.a(this.a).sendEmptyMessage(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     altf
  * JD-Core Version:    0.7.0.1
  */

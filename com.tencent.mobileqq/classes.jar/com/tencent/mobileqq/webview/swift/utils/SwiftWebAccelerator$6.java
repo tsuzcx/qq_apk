@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import bbqd;
-import bcgn;
-import bcgq;
+import bdox;
+import befo;
+import befr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.log.VipWebViewReportLog;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import mqq.app.AppRuntime;
 public class SwiftWebAccelerator$6
   implements Runnable
 {
-  public SwiftWebAccelerator$6(bcgn parambcgn, long paramLong) {}
+  public SwiftWebAccelerator$6(befo parambefo, long paramLong) {}
   
   public void run()
   {
@@ -25,16 +25,16 @@ public class SwiftWebAccelerator$6
     }
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load http core data config, cost " + (System.currentTimeMillis() - l) + "ms.");
     l = System.currentTimeMillis();
-    bcgq.a();
+    befr.a();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load cdn cache config, cost " + (System.currentTimeMillis() - l) + "ms.");
     l = System.currentTimeMillis();
-    bbqd.a(BaseApplicationImpl.sApplication.getRuntime());
+    bdox.a(BaseApplicationImpl.sApplication.getRuntime());
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load Individuation url config, cost " + (System.currentTimeMillis() - l) + "ms.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.6
  * JD-Core Version:    0.7.0.1
  */

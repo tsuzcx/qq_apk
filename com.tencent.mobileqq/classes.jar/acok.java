@@ -1,33 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeActivity.15.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acok
-  implements DialogInterface.OnClickListener
+  implements Handler.Callback
 {
-  public acok(UpgradeActivity paramUpgradeActivity) {}
+  public acok(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    bdii.b("qqBaseActivity", bdfj.a(10010, 1, 3, 200));
-    bdfh.a().a(17, bdfj.a(10010, 1, 3, 200));
-    if (!bdlr.a().b()) {
-      bdis.a().a(ajya.a(2131715921));
-    }
-    for (;;)
+    atvl.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
     {
-      ThreadManager.getSubThreadHandler().postDelayed(new UpgradeActivity.15.1(this), 500L);
-      return;
-      bbfk.a(this.a);
+      this.a.a(1134013, 0L, false);
+      return true;
     }
+    this.a.d(true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acok
  * JD-Core Version:    0.7.0.1
  */

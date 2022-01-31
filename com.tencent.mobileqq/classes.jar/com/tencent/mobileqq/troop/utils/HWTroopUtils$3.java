@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import asks;
+import aubr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -19,8 +19,8 @@ public final class HWTroopUtils$3
   
   public void run()
   {
-    asks localasks = (asks)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
-    Object localObject = localasks.a(this.jdField_a_of_type_JavaLangString);
+    aubr localaubr = (aubr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
+    Object localObject = localaubr.a(this.jdField_a_of_type_JavaLangString);
     if (localObject != null) {
       try
       {
@@ -43,7 +43,7 @@ public final class HWTroopUtils$3
             {
               localAppInfo.push_red_point.set(0);
               localRspBody.infos.set((List)localObject);
-              localasks.a(this.jdField_a_of_type_JavaLangString, localRspBody.toByteArray());
+              localaubr.a(this.jdField_a_of_type_JavaLangString, localRspBody.toByteArray());
               return;
             }
           }

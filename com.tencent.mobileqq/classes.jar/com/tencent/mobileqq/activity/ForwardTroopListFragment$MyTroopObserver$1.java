@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abde;
+import acud;
 
 public class ForwardTroopListFragment$MyTroopObserver$1
   implements Runnable
 {
-  public ForwardTroopListFragment$MyTroopObserver$1(abde paramabde) {}
+  public ForwardTroopListFragment$MyTroopObserver$1(acud paramacud) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ForwardTroopListFragment$MyTroopObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1
  * JD-Core Version:    0.7.0.1
  */

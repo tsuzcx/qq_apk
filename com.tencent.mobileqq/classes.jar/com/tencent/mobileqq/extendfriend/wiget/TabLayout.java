@@ -11,14 +11,14 @@ import android.view.ViewParent;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aolq;
+import aqeo;
 
 public class TabLayout
   extends HorizontalScrollView
 {
   protected float a;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private aolq jdField_a_of_type_Aolq;
+  private aqeo jdField_a_of_type_Aqeo;
   protected float b;
   protected float c;
   protected float d;
@@ -55,14 +55,14 @@ public class TabLayout
     return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
   
-  public void a(aolq paramaolq)
+  public void a(aqeo paramaqeo)
   {
     int i = 1;
     int k = 0;
     int m;
-    if (paramaolq != null)
+    if (paramaqeo != null)
     {
-      m = paramaolq.a();
+      m = paramaqeo.a();
       if (m > 0) {
         break label23;
       }
@@ -71,21 +71,21 @@ public class TabLayout
     {
       return;
       label23:
-      this.jdField_a_of_type_Aolq = paramaolq;
+      this.jdField_a_of_type_Aqeo = paramaqeo;
       this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
       int j;
-      if (m <= paramaolq.b())
+      if (m <= paramaqeo.b())
       {
         setFillViewport(true);
         j = 0;
       }
       while (k < m)
       {
-        View localView = paramaolq.a(k);
+        View localView = paramaqeo.a(k);
         if (localView != null)
         {
           LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, -1, i);
-          Rect localRect = paramaolq.a(k);
+          Rect localRect = paramaqeo.a(k);
           localLayoutParams.leftMargin = localRect.left;
           localLayoutParams.topMargin = localRect.top;
           localLayoutParams.rightMargin = localRect.right;
@@ -94,7 +94,7 @@ public class TabLayout
         }
         k += 1;
         continue;
-        j = paramaolq.c();
+        j = paramaqeo.c();
         setFillViewport(false);
         i = 0;
       }
@@ -131,7 +131,7 @@ public class TabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.TabLayout
  * JD-Core Version:    0.7.0.1
  */

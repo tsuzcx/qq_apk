@@ -12,8 +12,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import omr;
-import rib;
+import orc;
+import rxv;
 
 public class SquareCornerTextImageView
   extends FrameLayout
@@ -44,33 +44,33 @@ public class SquareCornerTextImageView
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localLayoutParams);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559868, null);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378283));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559963, null);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378863));
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_AndroidViewView, paramContext);
   }
   
-  public void a(@NonNull rib paramrib)
+  public void a(@NonNull rxv paramrxv)
   {
-    omr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, rib.a(paramrib), getContext());
-    float f = 1.0F * rib.a(paramrib) / rib.b(paramrib);
-    if ((rib.a(paramrib)) && ((f < 0.455D) || (f > 2.2D)))
+    orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, rxv.a(paramrxv), getContext());
+    float f = 1.0F * rxv.a(paramrxv) / rxv.b(paramrxv);
+    if ((rxv.a(paramrxv)) && ((f < 0.455D) || (f > 2.2D)))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718596));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131719056));
     }
     for (;;)
     {
-      if (rib.b(paramrib))
+      if (rxv.b(paramrxv))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718595));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131719055));
       }
-      if ((!rib.c(paramrib)) || (TextUtils.isEmpty(rib.a(paramrib)))) {
+      if ((!rxv.c(paramrxv)) || (TextUtils.isEmpty(rxv.a(paramrxv)))) {
         break;
       }
-      this.b.setText(rib.a(paramrib));
+      this.b.setText(rxv.a(paramrxv));
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
@@ -90,7 +90,7 @@ public class SquareCornerTextImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,20 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalBaseBottomFragment;
 
 public class twh
-  extends tvz<HotRecommendFeedPlayInfo>
+  implements ydr<trl>
 {
-  public twh(HotRecommendFeedPlayInfo paramHotRecommendFeedPlayInfo)
-  {
-    super(paramHotRecommendFeedPlayInfo);
-  }
+  public twh(QCirclePersonalBaseBottomFragment paramQCirclePersonalBaseBottomFragment) {}
   
-  public uvp a(String paramString)
+  public void a(yeb paramyeb, trl paramtrl)
   {
-    paramString = new uvp(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
-    return paramString;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, twr paramtwr)
-  {
-    ArrayList localArrayList = new ArrayList();
-    twa localtwa = new twa(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, new uvp(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localtwa.a.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
-    localArrayList.add(localtwa);
-    paramtwr.a(new ErrorMessage(), localArrayList, true);
+    if (paramyeb.e()) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twh
  * JD-Core Version:    0.7.0.1
  */

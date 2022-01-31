@@ -1,20 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
+import android.annotation.TargetApi;
+import android.support.annotation.Nullable;
+import java.util.Collection;
 
+@TargetApi(9)
 public class azew
-  implements bfpt
 {
-  public azew(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static boolean a(@Nullable Object paramObject)
   {
-    this.a.finish();
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof Collection)) {
+        break label25;
+      }
+      if (!((Collection)paramObject).isEmpty()) {
+        break label35;
+      }
+    }
+    label25:
+    while (paramObject.toString().isEmpty()) {
+      return true;
+    }
+    label35:
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azew
  * JD-Core Version:    0.7.0.1
  */

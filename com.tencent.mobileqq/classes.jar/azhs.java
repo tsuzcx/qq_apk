@@ -1,19 +1,10 @@
-import android.net.Uri;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-
-public class azhs
-  implements azhl
+public abstract interface azhs
 {
-  public azhs(TroopBarReplyActivity paramTroopBarReplyActivity) {}
-  
-  public void a(Uri paramUri)
-  {
-    this.a.a = paramUri;
-  }
+  public abstract void f(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azhs
  * JD-Core Version:    0.7.0.1
  */

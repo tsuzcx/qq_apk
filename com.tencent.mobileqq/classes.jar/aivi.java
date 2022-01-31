@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aivi
-  extends akat
 {
-  public aivi(HotChatCenterFragment paramHotChatCenterFragment) {}
+  public int a;
+  public MessageRecord a;
+  public String a;
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public aivi(int paramInt, String paramString, MessageRecord paramMessageRecord)
   {
-    this.a.b();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
   }
-  
-  protected void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aivi
  * JD-Core Version:    0.7.0.1
  */

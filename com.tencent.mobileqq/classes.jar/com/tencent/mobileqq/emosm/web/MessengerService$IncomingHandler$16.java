@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
-import ansu;
-import answ;
-import anuq;
+import apkc;
+import apke;
+import aply;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionData;
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$16
   extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$16(anuq paramanuq, Bundle paramBundle, QQAppInterface paramQQAppInterface, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$16(aply paramaply, Bundle paramBundle, QQAppInterface paramQQAppInterface, MessengerService paramMessengerService) {}
   
   public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2)
   {
@@ -121,9 +121,9 @@ public class MessengerService$IncomingHandler$16
         if ((paramList1 == null) || (paramList1.isEmpty())) {
           continue;
         }
-        paramList2 = (answ)this.val$qqApp.getManager(149);
+        paramList2 = (apke)this.val$qqApp.getManager(149);
         localObject = paramList2.a();
-        i2 = ansu.a;
+        i2 = apkc.a;
         i = 0;
         localHashSet = new HashSet();
         if (localObject == null) {
@@ -195,7 +195,7 @@ public class MessengerService$IncomingHandler$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.16
  * JD-Core Version:    0.7.0.1
  */

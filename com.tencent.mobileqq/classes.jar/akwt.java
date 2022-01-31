@@ -1,317 +1,733 @@
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.script.SpriteUtil.1;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.PublicAccountIntent;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.data.Apollo3DMessage;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloMessage;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.FollowExt;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.FollowReq;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.ReqBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class akwt
-  extends MSFServlet
 {
-  private String a = "com.tencent.mobileqq.applets.NewPublicAccountServlet";
+  private static int a;
   
-  protected byte[] a(FromServiceMsg paramFromServiceMsg)
+  static
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFromServiceMsg != null)
+    jdField_a_of_type_Int = 0;
+  }
+  
+  public static int a()
+  {
+    return (int)(bdcb.i() * 4L / 3L);
+  }
+  
+  public static int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      localObject1 = localObject2;
-      if (paramFromServiceMsg.isSuccess()) {
-        localObject1 = bbma.b(paramFromServiceMsg.getWupBuffer());
+    case 8: 
+    default: 
+      return 0;
+    case 7: 
+      return 1;
+    }
+    return 2;
+  }
+  
+  public static int a(int paramInt1, int paramInt2, String paramString, int paramInt3)
+  {
+    if ((paramInt1 == 0) || (8 == paramInt1)) {
+      paramInt2 = ApolloUtil.b(208.0F, paramString, paramInt3);
+    }
+    do
+    {
+      do
+      {
+        return paramInt2;
+        if (3 == paramInt1) {
+          return 32;
+        }
+        if (6 != paramInt1) {
+          break;
+        }
+        paramInt2 = 33;
+      } while (paramInt3 != 2);
+      return 75;
+      if (7 == paramInt1)
+      {
+        if (paramInt3 != 2) {
+          break;
+        }
+        return 74;
+      }
+    } while (9 == paramInt1);
+    QLog.d("cmshow_scripted_SpriteUtil", 1, new Object[] { "Other bubble type, NOT Handle, bubbleType:", Integer.valueOf(paramInt1), ", bubbleId:", Integer.valueOf(32) });
+    return 32;
+  }
+  
+  public static int a(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, boolean paramBoolean3)
+  {
+    int i = 26;
+    paramInt2 = 0;
+    if (paramBoolean1)
+    {
+      if (!paramBoolean2) {
+        break label89;
+      }
+      if (paramBoolean3) {
+        paramInt2 = 81;
       }
     }
-    return localObject1;
+    else if (!paramBoolean1)
+    {
+      if (!paramBoolean2) {
+        break label101;
+      }
+      if (!paramBoolean3) {
+        break label95;
+      }
+      paramInt2 = 84;
+    }
+    for (;;)
+    {
+      if (ApolloUtil.d(paramInt1, paramInt2)) {
+        return paramInt2;
+      }
+      QLog.w("cmshow_scripted_SpriteUtil", 1, "nick bubble not exist, id:" + paramInt2);
+      paramInt1 = i;
+      if (paramBoolean1) {
+        paramInt1 = 25;
+      }
+      return paramInt1;
+      paramInt2 = 82;
+      break;
+      label89:
+      paramInt2 = 25;
+      break;
+      label95:
+      paramInt2 = 83;
+      continue;
+      label101:
+      paramInt2 = 26;
+    }
+    return paramInt2;
   }
   
-  /* Error */
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    // Byte code:
-    //   0: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +13 -> 16
-    //   6: aload_0
-    //   7: getfield 14	akwt:a	Ljava/lang/String;
-    //   10: iconst_2
-    //   11: ldc 44
-    //   13: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   16: aload_1
-    //   17: ldc 50
-    //   19: invokevirtual 56	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: astore 6
-    //   24: aload_0
-    //   25: aload_2
-    //   26: invokevirtual 58	akwt:a	(Lcom/tencent/qphone/base/remote/FromServiceMsg;)[B
-    //   29: astore 5
-    //   31: new 60	android/os/Bundle
-    //   34: dup
-    //   35: invokespecial 61	android/os/Bundle:<init>	()V
-    //   38: astore 7
-    //   40: aload 7
-    //   42: ldc 63
-    //   44: aload 5
-    //   46: invokevirtual 67	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   49: aload 7
-    //   51: ldc 69
-    //   53: aload_2
-    //   54: invokevirtual 73	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailCode	()I
-    //   57: invokevirtual 77	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   60: ldc 79
-    //   62: aload 6
-    //   64: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   67: ifeq +171 -> 238
-    //   70: aload_1
-    //   71: checkcast 87	com/tencent/mobileqq/applets/PublicAccountIntent
-    //   74: invokevirtual 90	com/tencent/mobileqq/applets/PublicAccountIntent:a	()Lajte;
-    //   77: checkcast 92	akwr
-    //   80: astore 6
-    //   82: aload_2
-    //   83: invokevirtual 22	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   86: ifeq +273 -> 359
-    //   89: new 94	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   92: dup
-    //   93: invokespecial 95	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   96: astore_1
-    //   97: aload_1
-    //   98: aload 5
-    //   100: checkcast 97	[B
-    //   103: invokevirtual 101	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   106: checkcast 94	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   109: astore_2
-    //   110: aload_2
-    //   111: astore_1
-    //   112: iconst_m1
-    //   113: istore 4
-    //   115: iload 4
-    //   117: istore_3
-    //   118: aload_1
-    //   119: ifnull +65 -> 184
-    //   122: iload 4
-    //   124: istore_3
-    //   125: aload_1
-    //   126: getfield 105	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   129: invokevirtual 110	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   132: ifeq +52 -> 184
-    //   135: aload_1
-    //   136: getfield 105	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   139: invokevirtual 113	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   142: istore 4
-    //   144: iload 4
-    //   146: istore_3
-    //   147: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   150: ifeq +34 -> 184
-    //   153: aload_0
-    //   154: getfield 14	akwt:a	Ljava/lang/String;
-    //   157: iconst_2
-    //   158: new 115	java/lang/StringBuilder
-    //   161: dup
-    //   162: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   165: ldc 118
-    //   167: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: iload 4
-    //   172: invokevirtual 125	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokestatic 132	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   181: iload 4
-    //   183: istore_3
-    //   184: iload_3
-    //   185: ifne +138 -> 323
-    //   188: aload_1
-    //   189: getfield 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   192: invokevirtual 139	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   195: ifeq +128 -> 323
-    //   198: aload_1
-    //   199: getfield 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   202: invokevirtual 142	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   205: ifnull +118 -> 323
-    //   208: aload_1
-    //   209: getfield 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   212: invokevirtual 142	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   215: invokevirtual 147	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   218: pop
-    //   219: aload_0
-    //   220: invokespecial 151	mqq/app/MSFServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   223: new 153	com/tencent/mobileqq/applets/NewPublicAccountServlet$1
-    //   226: dup
-    //   227: aload_0
-    //   228: aload 6
-    //   230: aload 5
-    //   232: invokespecial 156	com/tencent/mobileqq/applets/NewPublicAccountServlet$1:<init>	(Lakwt;Lakwr;[B)V
-    //   235: invokevirtual 162	mqq/app/AppRuntime:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   238: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   241: ifeq +13 -> 254
-    //   244: aload_0
-    //   245: getfield 14	akwt:a	Ljava/lang/String;
-    //   248: iconst_2
-    //   249: ldc 164
-    //   251: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   254: return
-    //   255: astore_2
-    //   256: aload_0
-    //   257: getfield 14	akwt:a	Ljava/lang/String;
-    //   260: iconst_4
-    //   261: aload_2
-    //   262: invokevirtual 167	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
-    //   265: aload_2
-    //   266: invokestatic 171	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   269: goto -157 -> 112
-    //   272: astore_1
-    //   273: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   276: ifeq -38 -> 238
-    //   279: aload_0
-    //   280: getfield 14	akwt:a	Ljava/lang/String;
-    //   283: iconst_2
-    //   284: iconst_2
-    //   285: anewarray 173	java/lang/Object
-    //   288: dup
-    //   289: iconst_0
-    //   290: ldc 175
-    //   292: aastore
-    //   293: dup
-    //   294: iconst_1
-    //   295: aload_1
-    //   296: invokevirtual 176	java/lang/Exception:toString	()Ljava/lang/String;
-    //   299: aastore
-    //   300: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   303: goto -65 -> 238
-    //   306: astore_2
-    //   307: aload_0
-    //   308: getfield 14	akwt:a	Ljava/lang/String;
-    //   311: iconst_4
-    //   312: aload_2
-    //   313: invokevirtual 180	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   316: aload_2
-    //   317: invokestatic 171	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   320: goto -208 -> 112
-    //   323: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   326: ifeq +13 -> 339
-    //   329: aload_0
-    //   330: getfield 14	akwt:a	Ljava/lang/String;
-    //   333: iconst_2
-    //   334: ldc 182
-    //   336: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   339: aload_0
-    //   340: invokespecial 151	mqq/app/MSFServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   343: new 184	com/tencent/mobileqq/applets/NewPublicAccountServlet$2
-    //   346: dup
-    //   347: aload_0
-    //   348: aload 6
-    //   350: invokespecial 187	com/tencent/mobileqq/applets/NewPublicAccountServlet$2:<init>	(Lakwt;Lakwr;)V
-    //   353: invokevirtual 162	mqq/app/AppRuntime:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   356: goto -118 -> 238
-    //   359: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   362: ifeq +33 -> 395
-    //   365: aload_0
-    //   366: getfield 14	akwt:a	Ljava/lang/String;
-    //   369: iconst_2
-    //   370: new 115	java/lang/StringBuilder
-    //   373: dup
-    //   374: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   377: ldc 189
-    //   379: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   382: aload_2
-    //   383: invokevirtual 73	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailCode	()I
-    //   386: invokevirtual 125	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   389: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   395: aload_0
-    //   396: invokespecial 151	mqq/app/MSFServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   399: new 191	com/tencent/mobileqq/applets/NewPublicAccountServlet$3
-    //   402: dup
-    //   403: aload_0
-    //   404: aload 6
-    //   406: invokespecial 192	com/tencent/mobileqq/applets/NewPublicAccountServlet$3:<init>	(Lakwt;Lakwr;)V
-    //   409: invokevirtual 162	mqq/app/AppRuntime:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   412: goto -174 -> 238
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	415	0	this	akwt
-    //   0	415	1	paramIntent	Intent
-    //   0	415	2	paramFromServiceMsg	FromServiceMsg
-    //   117	68	3	i	int
-    //   113	69	4	j	int
-    //   29	202	5	arrayOfByte	byte[]
-    //   22	383	6	localObject	Object
-    //   38	12	7	localBundle	android.os.Bundle
-    // Exception table:
-    //   from	to	target	type
-    //   97	110	255	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   70	97	272	java/lang/Exception
-    //   125	144	272	java/lang/Exception
-    //   147	181	272	java/lang/Exception
-    //   188	238	272	java/lang/Exception
-    //   256	269	272	java/lang/Exception
-    //   307	320	272	java/lang/Exception
-    //   323	339	272	java/lang/Exception
-    //   339	356	272	java/lang/Exception
-    //   359	395	272	java/lang/Exception
-    //   395	412	272	java/lang/Exception
-    //   97	110	306	java/lang/Exception
+    return akji.b(paramQQAppInterface);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static aknh a(String paramString1, QQAppInterface paramQQAppInterface, int paramInt, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onSend");
-    }
-    paramIntent.getByteArrayExtra("data");
-    Object localObject1 = paramIntent.getStringExtra("BUNDLE_PUBLIC_ACCOUNT_CMD");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, new Object[] { "cmd=", localObject1 });
-    }
-    if ("newFollow".equals(localObject1)) {
-      paramIntent = (PublicAccountIntent)paramIntent;
-    }
-    while (!QLog.isColorLevel()) {
+    for (;;)
+    {
       try
       {
-        localObject1 = (QQAppInterface)super.getAppRuntime();
-        localObject2 = (akwr)paramIntent.a();
-        ((akwr)localObject2).a((QQAppInterface)localObject1);
-        ((QQAppInterface)localObject1).addObserver((ajte)localObject2);
-        akww.a((QQAppInterface)localObject1, paramIntent.getBooleanExtra("BUNDLE_PUBLIC_ACCOUNT_IS_FOLLOW", false), paramIntent.getStringExtra("BUNDLE_PUBLIC_ACCOUNT_UIN"), paramIntent.getIntExtra("BUNDLE_PUBLIC_ACCOUNT_SOURCE", 0));
-        paramPacket.setSSOCommand(null);
-        return;
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, new Object[] { "ClassCastException e", localClassCastException.toString() });
+        paramString1 = new JSONObject(paramString1);
+        int j = paramString1.optInt("isNeedRemark");
+        JSONArray localJSONArray1 = paramString1.optJSONArray("uins");
+        paramString1 = new JSONObject();
+        JSONArray localJSONArray2 = new JSONArray();
+        int i = 0;
+        if (i < localJSONArray1.length())
+        {
+          JSONObject localJSONObject = new JSONObject();
+          String str1 = localJSONArray1.optString(i);
+          if (j == 0)
+          {
+            bool = true;
+            String str2 = a(paramQQAppInterface, paramInt, str1, paramString2, bool);
+            localJSONObject.put("uin", str1);
+            localJSONObject.put("nickname", str2);
+            localJSONArray2.put(localJSONObject);
+            i += 1;
+          }
         }
-        oidb_cmd0xc96.ReqBody localReqBody = new oidb_cmd0xc96.ReqBody();
-        localReqBody.puin.set(Long.parseLong(paramIntent.getStringExtra("BUNDLE_PUBLIC_ACCOUNT_UIN")));
-        Object localObject2 = new oidb_cmd0xc96.FollowExt();
-        ((oidb_cmd0xc96.FollowExt)localObject2).source_from.set(paramIntent.getIntExtra("BUNDLE_PUBLIC_ACCOUNT_SOURCE", 0));
-        paramIntent = new oidb_cmd0xc96.FollowReq();
-        paramIntent.ext.set((MessageMicro)localObject2);
-        localReqBody.follow_req.set(paramIntent);
-        localReqBody.cmd_type.set(1);
-        paramIntent = new oidb_sso.OIDBSSOPkg();
-        paramIntent.uint32_command.set(3222);
-        paramIntent.uint32_result.set(0);
-        paramIntent.uint32_service_type.set(0);
-        paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-        paramIntent = paramIntent.toByteArray();
-        paramPacket.setSSOCommand("OidbSvc.0xc96");
-        paramPacket.putSendData(bbma.a(paramIntent));
+        else
+        {
+          paramString1.put("nicknames", localJSONArray2);
+          paramQQAppInterface = new aknh();
+          paramQQAppInterface.jdField_b_of_type_Boolean = true;
+          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString1.toString();
+          return paramQQAppInterface;
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.e("cmshow_scripted_SpriteUtil", 1, paramString1, new Object[0]);
+        return null;
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public static akwc a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return (akwc)((akwq)paramQQAppInterface.getManager(249)).a().a(0);
+  }
+  
+  public static akwi a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return null;
+      paramQQAppInterface = a(paramQQAppInterface);
+    } while (paramQQAppInterface == null);
+    return paramQQAppInterface.a();
+  }
+  
+  public static akwl a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return ((akwq)paramQQAppInterface.getManager(249)).a();
+  }
+  
+  public static akwm a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return ((akwq)paramQQAppInterface.getManager(249)).a();
+  }
+  
+  public static akwq a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return (akwq)paramQQAppInterface.getManager(249);
+  }
+  
+  public static ApolloActionData a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return ((aleh)paramQQAppInterface.getManager(155)).c(paramInt);
+  }
+  
+  public static MessageForApollo a(String paramString, akwl paramakwl)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (paramakwl.a() == null) {
+          return null;
+        }
+        JSONObject localJSONObject = new JSONObject(new JSONObject(paramString).optString("basicMsg"));
+        Object localObject = new ApolloMessage();
+        ((ApolloMessage)localObject).id = localJSONObject.optInt("id");
+        paramString = localJSONObject.optString("name");
+        if (!TextUtils.isEmpty(paramString)) {
+          ((ApolloMessage)localObject).name = bdbi.decode(paramString.getBytes("utf-8"), 0);
+        }
+        ((ApolloMessage)localObject).flag = localJSONObject.optInt("flag");
+        ((ApolloMessage)localObject).peer_status = localJSONObject.optInt("peerStatus");
+        ((ApolloMessage)localObject).sender_status = localJSONObject.optInt("senderStatus");
+        ((ApolloMessage)localObject).peer_ts = localJSONObject.optLong("peerTS");
+        ((ApolloMessage)localObject).sender_ts = localJSONObject.optLong("senderTS");
+        ((ApolloMessage)localObject).peer_uin = localJSONObject.optLong("peerUin");
+        paramString = localJSONObject.optString("atText");
+        if (!paramString.isEmpty()) {
+          ((ApolloMessage)localObject).text = bdbi.decode(paramString.getBytes("utf-8"), 0);
+        }
+        paramString = localJSONObject.optJSONObject("extraStr");
+        localJSONObject = localJSONObject.optJSONObject("extendJson");
+        if (paramString == null)
+        {
+          paramString = new JSONObject();
+          if (localJSONObject != null) {
+            paramString.put("extendJson", localJSONObject);
+          }
+          ((ApolloMessage)localObject).extStr = paramString.toString();
+          paramakwl = ayvw.a(paramakwl.a(), paramakwl.a().a.jdField_a_of_type_JavaLangString, paramakwl.a().a.jdField_b_of_type_JavaLangString, paramakwl.jdField_a_of_type_Int, (ApolloMessage)localObject);
+          paramakwl.inputText = paramString.optString("inputText");
+          paramakwl.audioId = paramString.optInt("audioID");
+          if (paramString.has("audioStartTime")) {
+            paramakwl.audioStartTime = ((float)paramString.optDouble("audioStartTime"));
+          }
+          paramakwl.actionType = paramString.optInt("actionType");
+          if (localJSONObject != null) {
+            paramakwl.extendJson = localJSONObject.toString();
+          }
+          if (paramString.has("mApollo3DMessage"))
+          {
+            paramString = paramString.getJSONObject("mApollo3DMessage");
+            localObject = new Apollo3DMessage();
+            ((Apollo3DMessage)localObject).setMessageWithJSONObject(paramString);
+            paramakwl.mApollo3DMessage = ((Apollo3DMessage)localObject);
+          }
+          return paramakwl;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("cmshow_scripted_SpriteUtil", 1, paramString, new Object[0]);
+        return null;
       }
     }
-    QLog.d(this.a, 2, "onSend exit");
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteUtil", 2, new Object[] { "[getSpriteName], uin:", paramString1, ",sessionType:", Integer.valueOf(paramInt), ",groupUin:", paramString2, ",isNeedRemark:", Boolean.valueOf(paramBoolean) });
+    }
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)))
+    {
+      paramString1 = "";
+      return paramString1;
+    }
+    if (("-1".equals(paramString1)) || ("-2".equals(paramString1))) {
+      return "";
+    }
+    String str = "";
+    if (-1 == paramInt) {
+      paramString2 = bdbt.c(paramQQAppInterface, paramString1, true);
+    }
+    label253:
+    do
+    {
+      for (;;)
+      {
+        paramQQAppInterface = paramString2;
+        if (!TextUtils.isEmpty(paramString2)) {
+          paramQQAppInterface = paramString2.replace("\\", "").replace("'", "").replace("\"", "");
+        }
+        if (TextUtils.isEmpty(paramQQAppInterface)) {
+          break;
+        }
+        return paramQQAppInterface;
+        if ((paramInt != 1) && (paramInt != 3000)) {
+          break label272;
+        }
+        if (paramBoolean) {}
+        for (str = bdbt.f(paramQQAppInterface, paramString2, paramString1);; str = bdbt.e(paramQQAppInterface, paramString2, paramString1))
+        {
+          if (!TextUtils.isEmpty(str))
+          {
+            paramString2 = str;
+            if (!str.equals(paramString1)) {
+              break;
+            }
+          }
+          paramString2 = ((aloz)paramQQAppInterface.getManager(51)).e(paramString1);
+          if (paramString2 == null) {
+            break label253;
+          }
+          paramString2 = paramString2.name;
+          break;
+        }
+        ((FriendListHandler)paramQQAppInterface.a(1)).a(paramString1, false);
+        paramString2 = str;
+      }
+      paramString2 = str;
+    } while (paramInt != 0);
+    label272:
+    if (paramBoolean) {}
+    for (str = bdbt.p(paramQQAppInterface, paramString1);; str = bdbt.c(paramQQAppInterface, paramString1, true))
+    {
+      paramString2 = str;
+      if (!paramString1.equals(str)) {
+        break;
+      }
+      ((FriendListHandler)paramQQAppInterface.a(1)).a(paramString1, false);
+      paramString2 = str;
+      break;
+    }
+  }
+  
+  public static String a(String paramString)
+  {
+    String str = "";
+    if (paramString != null) {
+      str = Pattern.compile("\\s*|\t|\r|\n").matcher(paramString).replaceAll("");
+    }
+    return str;
+  }
+  
+  public static void a(int paramInt, Object... paramVarArgs)
+  {
+    if (BaseApplicationImpl.sProcessId != 1) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
+      } while ((localObject == null) || (!(localObject instanceof QQAppInterface)));
+      localObject = a((QQAppInterface)localObject);
+    } while (localObject == null);
+    int i = paramInt;
+    if (paramInt == 0) {
+      i = -100;
+    }
+    ((akwq)localObject).a(i, paramVarArgs);
+  }
+  
+  public static void a(akwl paramakwl, List<SpriteTaskParam> paramList)
+  {
+    if ((paramakwl == null) || (paramList == null) || (paramList.size() == 0)) {}
+    do
+    {
+      return;
+      paramakwl = a(paramakwl.a());
+    } while (paramakwl == null);
+    paramakwl.a().a(paramList);
+  }
+  
+  public static void a(akxc paramakxc, int paramInt, ApolloActionData paramApolloActionData)
+  {
+    if (paramakxc == null) {
+      return;
+    }
+    SpriteTaskParam localSpriteTaskParam = new SpriteTaskParam();
+    localSpriteTaskParam.f = paramApolloActionData.actionId;
+    localSpriteTaskParam.k = paramInt;
+    localSpriteTaskParam.jdField_c_of_type_Int = paramApolloActionData.actionType;
+    localSpriteTaskParam.g = 5;
+    localSpriteTaskParam.e = 0;
+    localSpriteTaskParam.jdField_a_of_type_Long = 1000000L;
+    localSpriteTaskParam.jdField_a_of_type_Boolean = true;
+    localSpriteTaskParam.jdField_b_of_type_Boolean = false;
+    paramApolloActionData = paramakxc.a();
+    if ((paramApolloActionData != null) && (paramApolloActionData.a() != null)) {
+      localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(paramApolloActionData.jdField_b_of_type_JavaLangString);
+    }
+    paramakxc.a().a(localSpriteTaskParam);
+  }
+  
+  public static void a(akxc paramakxc, String paramString, int paramInt1, int paramInt2)
+  {
+    if ((paramakxc == null) || (paramakxc.a() == null)) {
+      return;
+    }
+    akwc localakwc = paramakxc.a();
+    paramakxc.a().a(paramInt1);
+    paramakxc = paramakxc.a();
+    int i = 1;
+    if (paramakxc != null) {
+      i = akji.a(paramakxc, paramakxc.c());
+    }
+    localakwc.a("", paramString, a(paramInt1, paramInt2, paramString, i));
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = a(paramQQAppInterface);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, SpriteTaskParam paramSpriteTaskParam)
+  {
+    if ((paramSpriteTaskParam == null) || (paramQQAppInterface == null)) {}
+    akwl localakwl;
+    int k;
+    label71:
+    do
+    {
+      do
+      {
+        return;
+        localakwl = a(paramQQAppInterface);
+      } while (localakwl == null);
+      k = localakwl.jdField_a_of_type_Int;
+      if ((1 == k) || (3000 == k))
+      {
+        i = 0;
+        int j;
+        if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString))
+        {
+          if (paramSpriteTaskParam.jdField_b_of_type_Boolean) {
+            i = 2;
+          }
+        }
+        else
+        {
+          if (!paramSpriteTaskParam.jdField_a_of_type_Boolean) {
+            break label161;
+          }
+          j = 0;
+          k = ApolloUtil.b(k);
+          str = Integer.toString(paramSpriteTaskParam.f);
+          if (paramSpriteTaskParam.e != 0) {
+            break label166;
+          }
+        }
+        for (paramSpriteTaskParam = "0";; paramSpriteTaskParam = "1")
+        {
+          VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "g_msg_clk", j, k, new String[] { str, paramSpriteTaskParam, String.valueOf(i), String.valueOf(System.currentTimeMillis() / 1000L), localakwl.jdField_a_of_type_JavaLangString });
+          return;
+          i = 1;
+          break;
+          j = 1;
+          break label71;
+        }
+      }
+    } while (k != 0);
+    label161:
+    label166:
+    String str = "0";
+    if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString)) {
+      str = "1";
+    }
+    if (paramSpriteTaskParam.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 1)
+    {
+      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "msg_clk", i, 0, new String[] { Integer.toString(paramSpriteTaskParam.f), str, "", String.valueOf(System.currentTimeMillis() / 1000L), localakwl.jdField_a_of_type_JavaLangString });
+      return;
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = a(paramQQAppInterface);
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return true;
+      if (-1 == paramQQAppInterface.d) {
+        paramQQAppInterface.b();
+      }
+    } while (paramQQAppInterface.d == 1);
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if ((paramInt == 1) || (paramInt == 3000))
+    {
+      HotChatManager localHotChatManager = (HotChatManager)paramQQAppInterface.getManager(60);
+      if ((localHotChatManager != null) && (localHotChatManager.b(paramString)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmshow_scripted_SpriteUtil", 2, "cmshow NOT support hot chat right now.");
+        }
+        return false;
+      }
+    }
+    if ((paramInt == 1) && (TroopInfo.isQidianPrivateTroop(paramQQAppInterface, paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteUtil", 2, "cmshow NOT support isQidianPrivateTroop now.");
+      }
+      return false;
+    }
+    if ((paramInt == 0) && (bdal.b(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteUtil", 2, "cmshow NOT support isBabyQUin now.");
+      }
+      return false;
+    }
+    if ((paramInt != 1) && (paramInt != 0) && ((paramInt != 3000) || (akji.c("discuss") != 1)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteUtil", 2, "cmshow NOT support, not friend or troop or discussion.");
+      }
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, SpriteTaskParam paramSpriteTaskParam, akwl paramakwl, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((TextUtils.isEmpty(paramString)) || (paramakwl == null) || (paramakwl.a() == null)) {
+      bool1 = false;
+    }
+    label111:
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          paramakwl = paramakwl.a().getCurrentAccountUin();
+          if ((TextUtils.isEmpty(paramSpriteTaskParam.jdField_b_of_type_JavaLangString)) || (paramSpriteTaskParam.jdField_b_of_type_JavaLangString.length() <= 4)) {
+            break label111;
+          }
+          if ((!paramString.equals(paramSpriteTaskParam.jdField_b_of_type_JavaLangString)) || (!paramString.equals(paramakwl))) {
+            break;
+          }
+          bool1 = bool2;
+        } while (!paramString.equals(paramSpriteTaskParam.jdField_a_of_type_JavaLangString));
+        if (!paramString.equals(paramSpriteTaskParam.jdField_a_of_type_JavaLangString)) {
+          break;
+        }
+        bool1 = bool2;
+      } while (paramBoolean);
+      return false;
+      if (TextUtils.isEmpty(paramSpriteTaskParam.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      bool1 = bool2;
+    } while (paramString.equals(paramakwl));
+    return false;
+    return false;
+  }
+  
+  public static int b()
+  {
+    return (int)bdcb.i();
+  }
+  
+  public static int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return 1;
+    case 1: 
+      return 2;
+    case 2: 
+      return 3;
+    }
+    return 113;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      akwl localakwl;
+      SharedPreferences localSharedPreferences;
+      int i;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            localakwl = a(paramQQAppInterface);
+          } while (localakwl == null);
+          localSharedPreferences = localakwl.jdField_a_of_type_AndroidContentSharedPreferences;
+        } while (localSharedPreferences == null);
+        i = localSharedPreferences.getInt("audio_tips_times" + localakwl.jdField_b_of_type_JavaLangString, 0);
+        if (QLog.isColorLevel()) {
+          QLog.d("cmshow_scripted_SpriteUtil", 2, "totalTimes:" + i);
+        }
+      } while (3 == i);
+      localSharedPreferences.edit().putInt("audio_tips_times" + localakwl.jdField_b_of_type_JavaLangString, i + 1).commit();
+      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.post(new SpriteUtil.1());
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = a(paramQQAppInterface);
+    return (paramQQAppInterface == null) || (paramQQAppInterface.b());
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    int i = b(0);
+    if (!c(paramQQAppInterface))
+    {
+      alda.a(i, 10, 102, new Object[] { "not meet basic case" });
+      QLog.i("cmshow_scripted_SpriteUtil", 1, "not meet basic case.");
+    }
+    do
+    {
+      do
+      {
+        return false;
+        if (1 != albu.a(paramQQAppInterface.c(), paramQQAppInterface))
+        {
+          alda.a(i, 10, 101, new Object[] { "cmshow switch NOT opend" });
+          QLog.i("cmshow_scripted_SpriteUtil", 1, "cmshow switch NOT opend.");
+          return false;
+        }
+        if (!nav.a().a(paramString)) {
+          break;
+        }
+        alda.a(i, 10, 104, new Object[] { "aio anonymous" });
+      } while (!QLog.isColorLevel());
+      QLog.d("cmshow_scripted_SpriteUtil", 2, "aio anonymous.");
+      return false;
+    } while ((!a(paramQQAppInterface, paramInt, paramString)) || (b(paramQQAppInterface)));
+    paramQQAppInterface = new SessionInfo();
+    paramQQAppInterface.jdField_a_of_type_Int = paramInt;
+    paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString;
+    return true;
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      do
+      {
+        return false;
+        if (akji.a(BaseApplicationImpl.getContext())) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmshow_scripted_SpriteUtil", 2, "NOT allowed to use cmshow.");
+      return false;
+    } while (!ApolloEngine.a());
+    return true;
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    if (!c(paramQQAppInterface))
+    {
+      QLog.i("cmshow_scripted_SpriteUtil", 1, "not meet basic case.");
+      return false;
+    }
+    if (1 != albu.a(paramQQAppInterface.c(), paramQQAppInterface))
+    {
+      QLog.i("cmshow_scripted_SpriteUtil", 1, "cmshow switch NOT opend.");
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwt
  * JD-Core Version:    0.7.0.1
  */

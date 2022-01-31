@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.view.animation.Interpolator;
 
-public class auhf
-  implements View.OnClickListener
+public final class auhf
+  implements Interpolator
 {
-  public auhf(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
-  
-  public void onClick(View paramView)
+  public float getInterpolation(float paramFloat)
   {
-    AccountOnlineStateActivity.a(this.a);
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auhf
  * JD-Core Version:    0.7.0.1
  */

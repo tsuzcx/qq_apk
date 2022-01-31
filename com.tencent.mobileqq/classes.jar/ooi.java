@@ -1,66 +1,327 @@
-import android.os.Bundle;
-import com.tencent.aladdin.config.network.AladdinRequestHandler;
-import com.tencent.aladdin.config.network.AladdinResponseHandler;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicLong;
 import mqq.app.NewIntent;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ooi
-  extends AladdinRequestHandler
 {
-  public static byte[] a(byte[] paramArrayOfByte)
+  private static final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString = "";
+  private olp jdField_a_of_type_Olp;
+  
+  public ooi()
   {
-    int i = paramArrayOfByte.length - 4;
-    byte[] arrayOfByte = new byte[i];
-    bbmx.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
-    return arrayOfByte;
+    if (BaseActivity.sTopActivity != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseActivity.sTopActivity.getAppInterface());
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ors.a();
   }
   
-  private static void b(Bundle paramBundle)
+  private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    HashMap localHashMap = new HashMap();
-    int i = paramBundle.getInt("key_ret_code", 0);
-    localHashMap.put("param_OpCode", String.valueOf(paramBundle.getInt("key_rsp_type", 0)));
-    localHashMap.put("param_FailCode", String.valueOf(i));
-    long l1 = paramBundle.getLong("key_config_count");
-    long l2 = paramBundle.getLong("key_failed_count");
-    localHashMap.put("param_ConfigCount", String.valueOf(l1));
-    localHashMap.put("param_FailCount", String.valueOf(l2));
-    l1 = paramBundle.getLong("key_response_timestamp", 0L) - paramBundle.getLong("key_request_timestamp", 0L);
-    localHashMap.put("param_CostTime", String.valueOf(l1));
-    paramBundle = axrn.a(onh.a().getApplication());
-    String str = onh.a();
-    if (i == 0) {}
-    for (boolean bool = true;; bool = false)
+    if (olt.a(BaseApplicationImpl.getContext(), paramString1))
     {
-      paramBundle.a(str, "actKanDianAladdinResult", bool, l1, 0L, localHashMap, null, false);
+      QLog.d("ReadInJoyCommentSSOModule", 1, "the comment copy  is start request");
+      paramString1 = ors.a();
+      if (paramString1 != null)
+      {
+        paramString1 = (oxd)paramString1.getManager(163);
+        if (paramString1 != null)
+        {
+          paramString1 = paramString1.a().a();
+          if (paramString1 != null) {
+            paramString1.a(paramString2, paramString3, paramString4, paramString5);
+          }
+        }
+      }
+    }
+  }
+  
+  public long a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, int paramInt3)
+  {
+    return a(paramString1, paramString2, paramInt1, paramInt2, paramString3, false, paramString4, paramInt3);
+  }
+  
+  public long a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, boolean paramBoolean, String paramString4, int paramInt3)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_Olp == null)) {
+      return -1L;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString1);
+      String str1 = new String(bdbi.decode(localJSONObject.getString("comment"), 0));
+      Object localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("article_id", paramString2);
+      ((JSONObject)localObject1).put("comment_val", str1);
+      ((JSONObject)localObject1).put("type", paramInt2);
+      ((JSONObject)localObject1).put("native_version", bdcb.a(BaseApplicationImpl.getContext()));
+      ((JSONObject)localObject1).put("os", 1);
+      if (paramInt2 == 2)
+      {
+        ((JSONObject)localObject1).put("comment_id", paramString3);
+        localObject2 = localJSONObject.optString("commentUin");
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          ((JSONObject)localObject1).put("to_uin", Long.parseLong((String)localObject2));
+        }
+        if (localJSONObject.optBoolean("isSecondReply", false))
+        {
+          localObject2 = localJSONObject.optString("replyUin");
+          String str2 = localJSONObject.optString("commentId");
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            ((JSONObject)localObject1).put("to", localObject2);
+          }
+          if (!TextUtils.isEmpty(str2)) {
+            ((JSONObject)localObject1).put("to_sub_id", str2);
+          }
+        }
+      }
+      ((JSONObject)localObject1).put("src", 20);
+      ((JSONObject)localObject1).put("uuid", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject1).put("content_src", paramInt1);
+      Object localObject2 = ((JSONObject)localObject1).toString();
+      long l = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement();
+      QLog.d("ReadInJoyCommentSSOModule", 2, "createComment cmd:MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_create seq : " + l + " info:" + (String)localObject2);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject1 = new WebSsoBody.WebSsoRequestBody();
+        ((WebSsoBody.WebSsoRequestBody)localObject1).data.set((String)localObject2);
+        localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), nrz.class);
+        ((NewIntent)localObject2).putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_create");
+        ((NewIntent)localObject2).putExtra("data", ((WebSsoBody.WebSsoRequestBody)localObject1).toByteArray());
+        ((NewIntent)localObject2).setObserver(new ool(this, paramBoolean, l, paramInt2, paramString1, paramInt3, System.currentTimeMillis(), str1, paramString4, paramString2, paramString3, localJSONObject.optString("commentId")));
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject2);
+        return l;
+      }
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+      return -1L;
+    }
+    return -1L;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Olp = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  public void a(BaseCommentData paramBaseCommentData, int paramInt1, int paramInt2, String paramString, int paramInt3)
+  {
+    if ((paramBaseCommentData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_Olp == null)) {
+      return;
+    }
+    label400:
+    for (;;)
+    {
+      Object localObject;
+      int i;
+      try
+      {
+        localObject = new JSONObject();
+        if (!(paramBaseCommentData instanceof CommentData)) {
+          break label353;
+        }
+        ((JSONObject)localObject).put("type", 1);
+        ((JSONObject)localObject).put("comment_id", paramBaseCommentData.commentId);
+        ((JSONObject)localObject).put("article_id", paramString);
+        ((JSONObject)localObject).put("like", paramInt2);
+        ((JSONObject)localObject).put("oper_type", paramInt1);
+        ((JSONObject)localObject).put("native_version", bdcb.a(BaseApplicationImpl.getContext()));
+        if (!paramBaseCommentData.isActivity()) {
+          break label400;
+        }
+        i = 400;
+        ((JSONObject)localObject).put("src", i);
+        ((JSONObject)localObject).put("uuid", this.jdField_a_of_type_JavaLangString);
+        ((JSONObject)localObject).put("to_uin", Long.parseLong(paramBaseCommentData.uin));
+        ((JSONObject)localObject).put("content_src", paramInt3);
+        localObject = ((JSONObject)localObject).toString();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyCommentSSOModule", 2, "commentLike cmd:MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_like info:" + (String)localObject);
+        }
+        paramString = new WebSsoBody.WebSsoRequestBody();
+        paramString.data.set((String)localObject);
+        localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), nrz.class);
+        ((NewIntent)localObject).putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_like");
+        ((NewIntent)localObject).putExtra("data", paramString.toByteArray());
+        ((NewIntent)localObject).setObserver(new ook(this, paramBaseCommentData, paramInt1, paramInt2));
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        if (this.jdField_a_of_type_Olp != null) {
+          this.jdField_a_of_type_Olp.a(false, paramBaseCommentData.commentId, paramInt1, paramInt2);
+        }
+        paramString.printStackTrace();
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ReadInJoyCommentSSOModule", 2, "commentLike error info:" + paramString.getLocalizedMessage());
+      return;
+      label353:
+      if ((paramBaseCommentData instanceof SubCommentData))
+      {
+        ((JSONObject)localObject).put("comment_id", ((SubCommentData)paramBaseCommentData).parentCommentId);
+        ((JSONObject)localObject).put("sub_id", paramBaseCommentData.commentId);
+        ((JSONObject)localObject).put("type", 2);
+        continue;
+        i = 20;
+      }
+    }
+  }
+  
+  public void a(BaseCommentData paramBaseCommentData, String paramString, int paramInt)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+        return;
+      }
+      if (this.jdField_a_of_type_Olp == null) {
+        return;
+      }
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("type", paramBaseCommentData.getCommentLevel());
+      if (!(paramBaseCommentData instanceof CommentData)) {
+        break label298;
+      }
+      ((JSONObject)localObject).put("comment_id", paramBaseCommentData.commentId);
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        Object localObject;
+        if (this.jdField_a_of_type_Olp != null) {
+          this.jdField_a_of_type_Olp.a(false, paramBaseCommentData);
+        }
+        paramString.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ReadInJoyCommentSSOModule", 2, "createComment error info:" + paramString.getLocalizedMessage());
+        return;
+        label298:
+        if ((paramBaseCommentData instanceof SubCommentData))
+        {
+          ((JSONObject)localObject).put("comment_id", ((SubCommentData)paramBaseCommentData).parentCommentId);
+          ((JSONObject)localObject).put("sub_id", paramBaseCommentData.commentId);
+        }
+      }
+    }
+    ((JSONObject)localObject).put("article_id", paramString);
+    ((JSONObject)localObject).put("native_version", bdcb.a(BaseApplicationImpl.getContext()));
+    ((JSONObject)localObject).put("src", 20);
+    ((JSONObject)localObject).put("uuid", this.jdField_a_of_type_JavaLangString);
+    ((JSONObject)localObject).put("content_src", paramInt);
+    localObject = ((JSONObject)localObject).toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment cmd:MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_delete info:" + (String)localObject);
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramString = new WebSsoBody.WebSsoRequestBody();
+      paramString.data.set((String)localObject);
+      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), nrz.class);
+      ((NewIntent)localObject).putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_delete");
+      ((NewIntent)localObject).putExtra("data", paramString.toByteArray());
+      ((NewIntent)localObject).setObserver(new ooj(this, paramBaseCommentData));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
       return;
     }
   }
   
-  private static byte[] c(byte[] paramArrayOfByte)
+  public void a(BaseCommentData paramBaseCommentData, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    long l = paramArrayOfByte.length;
-    byte[] arrayOfByte = new byte[(int)l + 4];
-    bbmx.a(arrayOfByte, 0, 4L + l);
-    bbmx.a(arrayOfByte, 4, paramArrayOfByte, (int)l);
-    return arrayOfByte;
+    if (paramBaseCommentData == null)
+    {
+      QLog.d("ReadInJoyCommentSSOModule", 2, "commentReport failed, something is null.");
+      return;
+    }
+    for (;;)
+    {
+      JSONObject localJSONObject;
+      try
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("article_id", paramString1);
+        paramString1 = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          paramString1 = "";
+        }
+        localJSONObject.put("reason", paramString1);
+        localJSONObject.put("content_type", paramInt2);
+        localJSONObject.put("report_type", paramInt1);
+        if ((paramBaseCommentData instanceof CommentData))
+        {
+          paramInt1 = 1;
+          localJSONObject.put("comment_type", paramInt1);
+          if (paramInt1 != 2) {
+            break label305;
+          }
+          localJSONObject.put("sub_id", paramBaseCommentData.commentId);
+          localJSONObject.put("comment_id", ((SubCommentData)paramBaseCommentData).parentCommentId);
+          localJSONObject.put("reported_uin", paramBaseCommentData.uin);
+          localJSONObject.put("report_uin", ors.a());
+          localJSONObject.put("content", paramBaseCommentData.commentContent);
+          paramString2 = localJSONObject.toString();
+          if (QLog.isColorLevel()) {
+            QLog.d("ReadInJoyCommentSSOModule", 2, new Object[] { "commentReport cmd:MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_report info: ", paramString2 });
+          }
+          if (TextUtils.isEmpty(paramString2)) {
+            break;
+          }
+          paramString1 = new WebSsoBody.WebSsoRequestBody();
+          paramString1.data.set(paramString2);
+          paramString2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), nrz.class);
+          paramString2.putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_report");
+          paramString2.putExtra("data", paramString1.toByteArray());
+          paramString2.setObserver(new oom(this, paramBaseCommentData));
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramString2);
+          return;
+        }
+      }
+      catch (JSONException paramBaseCommentData)
+      {
+        QLog.d("ReadInJoyCommentSSOModule", 2, "commentReport error.");
+        paramBaseCommentData.printStackTrace();
+        return;
+      }
+      paramInt1 = 2;
+      continue;
+      label305:
+      if (paramInt1 == 1) {
+        localJSONObject.put("comment_id", paramBaseCommentData.commentId);
+      }
+    }
   }
   
-  public void onSend(byte[] paramArrayOfByte, Bundle paramBundle, AladdinResponseHandler paramAladdinResponseHandler)
+  public void a(olp paramolp)
   {
-    AppRuntime localAppRuntime = onh.a();
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), ooj.class);
-    localNewIntent.putExtra("key_body_bytes", paramArrayOfByte);
-    localNewIntent.putExtra("key_extra_info", paramBundle);
-    localNewIntent.putExtra("key_response_handler", paramAladdinResponseHandler);
-    localNewIntent.putParcelableArrayListExtra("key_aladdin_listeners", ooe.a);
-    localAppRuntime.startServlet(localNewIntent);
+    this.jdField_a_of_type_Olp = paramolp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ooi
  * JD-Core Version:    0.7.0.1
  */

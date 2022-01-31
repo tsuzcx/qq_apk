@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.util;
 
-import ajsd;
-import olj;
-import olm;
-import sgg;
+import aljq;
+import opt;
+import opw;
+import syb;
 
 public final class PublicAccountUtil$22
   implements Runnable
@@ -12,22 +12,22 @@ public final class PublicAccountUtil$22
   
   public void run()
   {
-    if (ajsd.aQ.equals(this.a))
+    if (aljq.aR.equals(this.a))
     {
-      olm.a();
+      opw.a();
       return;
     }
-    if (ajsd.aR.equals(this.a))
+    if (aljq.aS.equals(this.a))
     {
-      olj.a();
+      opt.a();
       return;
     }
-    sgg.c(this.a);
+    syb.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountUtil.22
  * JD-Core Version:    0.7.0.1
  */

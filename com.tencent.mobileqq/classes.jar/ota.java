@@ -1,157 +1,67 @@
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
+import mqq.app.AppRuntime;
 
 public class ota
+  implements AladdinConfigHandler
 {
-  public static int a;
-  public static long a;
-  private static List<otf> jdField_a_of_type_JavaUtilList;
-  private static Map<Integer, otf> jdField_a_of_type_JavaUtilMap;
-  private static int b;
-  public static long b;
-  public static long c;
-  public static long d;
-  
-  static
+  public static int a(AppRuntime paramAppRuntime, int paramInt)
   {
-    jdField_b_of_type_Int = -1;
-    jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-    jdField_a_of_type_Int = 2;
-    d();
-  }
-  
-  public static void a()
-  {
-    jdField_b_of_type_Int = -1;
-  }
-  
-  public static void a(int paramInt)
-  {
-    jdField_b_of_type_Int = paramInt;
-    switch (paramInt)
+    int i = 1;
+    if (paramAppRuntime == null)
     {
-    default: 
-      return;
-    case 2: 
-      jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
-    case 3: 
-      jdField_b_of_type_Long = System.currentTimeMillis();
-      return;
-    case 25: 
-      c = System.currentTimeMillis();
+      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
+      return 0;
+    }
+    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
+    if (BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).getBoolean("channel_" + paramInt, false)) {}
+    for (paramInt = i;; paramInt = 0) {
+      return paramInt;
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, int paramInt)
+  {
+    if (paramAppRuntime == null)
+    {
+      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
       return;
     }
-    d = System.currentTimeMillis();
+    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
+    BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).edit().putBoolean("channel_" + paramInt, true).apply();
   }
   
-  public static void a(otf paramotf)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramotf == null) {}
-    for (;;)
+    QLog.d("ChannelListDynamicOrder", 2, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      try
-      {
-        if (jdField_a_of_type_JavaUtilList.contains(paramotf)) {
-          continue;
-        }
-        jdField_a_of_type_JavaUtilList.add(paramotf);
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if (TextUtils.equals("channel_list_dynamic_order_switch", str1)) {
+        bjxj.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
-      finally {}
-    }
-  }
-  
-  private static boolean a()
-  {
-    if (jdField_b_of_type_Int > 0) {}
-    switch (jdField_b_of_type_Int)
-    {
-    default: 
-      return false;
     }
     return true;
   }
   
-  public static void b()
+  public void onWipeConfig(int paramInt)
   {
-    try
-    {
-      jdField_a_of_type_Int = 1;
-      osx.e(System.currentTimeMillis());
-      if (a())
-      {
-        localObject1 = (otf)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(jdField_b_of_type_Int));
-        if (localObject1 != null) {
-          ((otf)localObject1).l();
-        }
-      }
-      Object localObject1 = jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        otf localotf = (otf)((Iterator)localObject1).next();
-        if (localotf != null) {
-          localotf.l();
-        }
-      }
-    }
-    finally {}
-  }
-  
-  public static void b(otf paramotf)
-  {
-    if (paramotf != null) {}
-    try
-    {
-      jdField_a_of_type_JavaUtilList.remove(paramotf);
-      return;
-    }
-    finally
-    {
-      paramotf = finally;
-      throw paramotf;
-    }
-  }
-  
-  public static void c()
-  {
-    try
-    {
-      jdField_a_of_type_Int = 2;
-      if (a())
-      {
-        localObject1 = (otf)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(jdField_b_of_type_Int));
-        if (localObject1 != null) {
-          ((otf)localObject1).m();
-        }
-      }
-      Object localObject1 = jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        otf localotf = (otf)((Iterator)localObject1).next();
-        if (localotf != null) {
-          localotf.m();
-        }
-      }
-    }
-    finally {}
-  }
-  
-  private static void d()
-  {
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), new otb());
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(3), new otc());
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(25), new otd());
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), new ote());
+    bjxj.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ota
  * JD-Core Version:    0.7.0.1
  */

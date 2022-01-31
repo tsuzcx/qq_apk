@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ark;
 
-import altt;
+import ankm;
 
 public class ArkMediaPlayer$3
   implements Runnable
 {
-  public ArkMediaPlayer$3(altt paramaltt) {}
+  public ArkMediaPlayer$3(ankm paramankm) {}
   
   public void run()
   {
-    altt.a(this.this$0, false);
+    ankm.a(this.this$0, false);
     if (this.this$0.Pause()) {
-      altt.a(this.this$0, altt.d(this.this$0));
+      ankm.a(this.this$0, ankm.d(this.this$0));
     }
   }
 }

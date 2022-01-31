@@ -1,50 +1,57 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspShareVideoCollectionList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
-import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class tom
-  extends syn
+class tom
+  implements BusinessObserver
 {
-  public long a;
-  public String a;
-  public ArrayList<ShareGroupCollectionItem> a;
-  public boolean a;
-  public int b;
+  tom(toi paramtoi) {}
   
-  public tom(String paramString, qqstory_service.RspShareVideoCollectionList paramRspShareVideoCollectionList)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramRspShareVideoCollectionList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.b = paramRspShareVideoCollectionList.total_share_group_count.get();
-    this.jdField_a_of_type_JavaLangString = paramRspShareVideoCollectionList.next_cookie.get().toStringUtf8();
-    this.jdField_a_of_type_Long = paramRspShareVideoCollectionList.seqno.get();
-    if (paramRspShareVideoCollectionList.is_end.get() == 1) {}
-    for (;;)
+    if (paramBoolean) {}
+    try
     {
-      this.jdField_a_of_type_Boolean = bool;
-      paramRspShareVideoCollectionList = paramRspShareVideoCollectionList.collection_list.get().iterator();
-      while (paramRspShareVideoCollectionList.hasNext())
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
       {
-        qqstory_struct.ShareGroupFeed localShareGroupFeed = (qqstory_struct.ShareGroupFeed)paramRspShareVideoCollectionList.next();
-        ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem();
-        localShareGroupCollectionItem.convertFrom(paramString, localShareGroupFeed);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localShareGroupCollectionItem);
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+          }
+          this.a.a = true;
+          toi.a(this.a);
+          return;
+        }
+        if (paramInt == 58)
+        {
+          toi.a(this.a, 2131695724);
+          return;
+        }
+        if (paramInt == 65)
+        {
+          toi.a(this.a, 2131695697);
+          return;
+        }
+        toi.a(this.a, 2131695727);
+        return;
+        toi.a(this.a, 2131695727);
       }
-      bool = false;
+      return;
     }
+    catch (Exception paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tom
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.listentogether.fragment;
 
 import android.graphics.Bitmap;
-import aswb;
+import aumy;
 
 class ListenTogetherPlayFragment$2
   implements Runnable
 {
-  ListenTogetherPlayFragment$2(ListenTogetherPlayFragment paramListenTogetherPlayFragment, aswb paramaswb, Bitmap paramBitmap) {}
+  ListenTogetherPlayFragment$2(ListenTogetherPlayFragment paramListenTogetherPlayFragment, aumy paramaumy, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aswb.run(null, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Aumy.run(null, this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.2
  * JD-Core Version:    0.7.0.1
  */

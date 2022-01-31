@@ -1,18 +1,67 @@
-class apvv
-  implements aptw
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
+public abstract class apvv
 {
-  apvv(apvu paramapvu) {}
-  
-  public void a()
+  public static apvv a(Bundle paramBundle)
   {
-    eo.b(this.a.a, 0);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    int i;
+    if (paramBundle != null)
+    {
+      localObject1 = localObject2;
+      if (paramBundle.containsKey("cur_data_source_type"))
+      {
+        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
+        i = paramBundle.getInt("cur_data_source_type");
+        if (i != 0) {
+          break label53;
+        }
+        localObject1 = new apwg(null).b(paramBundle);
+      }
+    }
+    label53:
+    do
+    {
+      return localObject1;
+      localObject1 = localObject2;
+    } while (i != 1);
+    return new apwe(null).b(paramBundle);
   }
   
-  public void b() {}
+  public abstract int a(List<apvv> paramList);
+  
+  public abstract long a();
+  
+  public abstract Drawable a(Context paramContext);
+  
+  public abstract appw a();
+  
+  public abstract CustomEmotionData a();
+  
+  public void a(Bundle paramBundle, int paramInt)
+  {
+    paramBundle.putInt("cur_data_source_type", paramInt);
+  }
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(apvv paramapvv);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvv
  * JD-Core Version:    0.7.0.1
  */

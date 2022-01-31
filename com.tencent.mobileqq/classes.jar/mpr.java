@@ -1,61 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import java.lang.ref.WeakReference;
 
-class mpr
-  implements lgm
+public class mpr
+  implements Animation.AnimationListener
 {
-  mpr(mpq parammpq) {}
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public mpr(EffectFilterTextPager paramEffectFilterTextPager, View paramView)
   {
-    boolean bool2 = true;
-    if (11 != paramInt1) {}
-    do
-    {
-      return false;
-      QLog.w(this.a.i, 1, "onC2CDataCome, subType[" + paramInt2 + "], mPeerSupportRedBag[" + this.a.jdField_a_of_type_Int + "], mPeerSendMode[" + this.a.jdField_a_of_type_Boolean + "]");
-      paramArrayOfByte = this.a.a();
-    } while (paramArrayOfByte == null);
-    boolean bool1;
-    switch (paramInt2)
-    {
-    default: 
-      bool1 = false;
-    }
-    for (;;)
-    {
-      return bool1;
-      this.a.jdField_a_of_type_Int = 2;
-      paramArrayOfByte.b("AbilityResDownloading");
-      bool1 = bool2;
-      continue;
-      this.a.jdField_a_of_type_Int = 1;
-      paramArrayOfByte.b("AbilityEnable");
-      bool1 = bool2;
-      continue;
-      this.a.jdField_a_of_type_Int = 0;
-      paramArrayOfByte.b("AbilityDisable");
-      bool1 = bool2;
-      continue;
-      this.a.jdField_a_of_type_Boolean = true;
-      bool1 = bool2;
-      if (this.a.jdField_a_of_type_Int != 1)
-      {
-        this.a.jdField_a_of_type_Int = 1;
-        paramArrayOfByte.b("Enter_SendMode");
-        bool1 = bool2;
-        continue;
-        this.a.jdField_a_of_type_Boolean = false;
-        bool1 = bool2;
-        continue;
-        paramArrayOfByte.a(this.a.b);
-        bool1 = bool2;
-      }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    lek.c("EffectFilterTextPager", "onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(4);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpr
  * JD-Core Version:    0.7.0.1
  */

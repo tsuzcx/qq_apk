@@ -8,7 +8,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import auqj;
+import awhv;
 
 public class BreathEffectView
   extends ImageView
@@ -29,21 +29,21 @@ public class BreathEffectView
   public void a()
   {
     g();
-    setImageResource(2130844428);
+    setImageResource(2130844790);
     d();
   }
   
   public void b()
   {
     g();
-    setImageResource(2130844429);
+    setImageResource(2130844791);
     d();
   }
   
   public void c()
   {
     g();
-    setImageResource(2130845727);
+    setImageResource(2130846106);
     e();
   }
   
@@ -63,7 +63,7 @@ public class BreathEffectView
     setVisibility(0);
     this.a = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F, 0.5F, 1.0F, 0.0F });
     this.a.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.a.addUpdateListener(new auqj(this));
+    this.a.addUpdateListener(new awhv(this));
     this.a.setDuration(4000L);
     this.a.setRepeatCount(0);
     this.a.start();
@@ -102,7 +102,7 @@ public class BreathEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.portal.BreathEffectView
  * JD-Core Version:    0.7.0.1
  */

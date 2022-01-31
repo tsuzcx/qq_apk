@@ -1,29 +1,31 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-public final class bcen
-  implements ThreadExcutor.IThreadListener
+public class bcen
+  implements bhqd
 {
-  long a = 0L;
+  public bcen(VisitorTroopCardFragment paramVisitorTroopCardFragment, bhpy parambhpy) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
+    switch (this.jdField_a_of_type_Bhpy.a(paramInt).c)
+    {
     }
-    this.a = 0L;
-  }
-  
-  public void onPreRun()
-  {
-    this.a = System.currentTimeMillis();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
+      continue;
+      bclo.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      bclo.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcen
  * JD-Core Version:    0.7.0.1
  */

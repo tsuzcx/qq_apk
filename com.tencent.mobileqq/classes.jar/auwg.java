@@ -1,32 +1,60 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import java.util.List;
 
 public class auwg
-  implements QQPermissionCallback
+  extends Handler
 {
-  public auwg(VipProfileCardPhotoHandlerActivity paramVipProfileCardPhotoHandlerActivity) {}
+  public auwg(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user denied");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 4097: 
+      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
+      return;
+    case 4098: 
+      ChooseInterestTagActivity.a(this.a).setVisibility(8);
+      paramMessage = (List)paramMessage.obj;
+      if (paramMessage != null) {
+        ChooseInterestTagActivity.a(this.a, paramMessage);
+      }
+      if (ChooseInterestTagActivity.a(this.a) == null)
+      {
+        ChooseInterestTagActivity.a(this.a, new auwm(this.a, ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a)));
+        ChooseInterestTagActivity.a(this.a).setAdapter(ChooseInterestTagActivity.a(this.a));
+        paramMessage = this.a;
+        if (ChooseInterestTagActivity.b(this.a) == -1) {
+          break label219;
+        }
+      }
+      for (boolean bool = true;; bool = false)
+      {
+        ChooseInterestTagActivity.a(paramMessage, false, bool);
+        return;
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
+        break;
+      }
+    case 4100: 
+      label219:
+      ChooseInterestTagActivity.a(this.a, false);
+      return;
     }
-    bbdj.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user grant");
-    }
-    VipProfileCardPhotoHandlerActivity.a(this.a, ProfileActivity.a(this.a, 5));
+    ChooseInterestTagActivity.a(this.a, alpo.a(2131702180));
+    ChooseInterestTagActivity.a(this.a).setText("");
+    ChooseInterestTagActivity.a(this.a).setOnClickListener(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auwg
  * JD-Core Version:    0.7.0.1
  */

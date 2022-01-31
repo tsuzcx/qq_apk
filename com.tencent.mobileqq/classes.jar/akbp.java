@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import java.util.Comparator;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class akbp
-  implements Comparator<SysSuspiciousMsg>
+  implements MediaPlayer.OnCompletionListener
 {
-  akbp(akbn paramakbn) {}
+  akbp(akbl paramakbl, int paramInt, String paramString) {}
   
-  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
-      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "play completed, soundId:" + this.jdField_a_of_type_Int);
+    try
+    {
+      paramMediaPlayer = new JSONObject();
+      paramMediaPlayer.put("code", 1);
+      this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
+      return;
     }
-    return 0;
+    catch (JSONException paramMediaPlayer)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onCompletion: " + this.jdField_a_of_type_Int, paramMediaPlayer);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbp
  * JD-Core Version:    0.7.0.1
  */

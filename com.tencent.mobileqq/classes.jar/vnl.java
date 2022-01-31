@@ -1,20 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
 
 public class vnl
-  implements vod
+  extends xrw
 {
-  public vnl(DoodleLayout paramDoodleLayout) {}
+  public vnl(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
   
-  public void a()
+  public boolean a(boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.f();
-    }
+    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnl
  * JD-Core Version:    0.7.0.1
  */

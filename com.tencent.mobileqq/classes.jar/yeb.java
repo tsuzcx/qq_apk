@@ -1,74 +1,93 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity.2.1;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class yeb
-  implements BusinessObserver
 {
-  public yeb(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  private volatile int jdField_a_of_type_Int = 4;
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private String jdField_a_of_type_JavaLangString;
+  private volatile boolean jdField_a_of_type_Boolean = true;
+  private String b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public COMM.StCommonExt a()
   {
-    this.a.jdField_a_of_type_Bcqf.dismiss();
-    if (!paramBoolean)
-    {
-      bdis.a().a(this.a.getString(2131693022));
-      DeviceMsgSettingActivity.b(this.a);
-      return;
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(COMM.StCommonExt paramStCommonExt)
+  {
+    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public COMM.StCommonExt b()
+  {
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  }
+  
+  public String b()
+  {
+    if (this.b == null) {
+      this.b = bczr.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
     }
-    if (paramBundle.getInt("cgiResultCode", -1) != 0)
-    {
-      bdis.a().a(this.a.getString(2131693022));
-      return;
+    return this.b;
+  }
+  
+  public void b(String paramString)
+  {
+    if (paramString != null) {
+      bczr.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
     }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
-        if (paramBundle.optInt("ret", -1) != 0)
-        {
-          bdis.a().a(this.a.getString(2131693022));
-          this.a.jdField_a_of_type_AndroidOsHandler.post(new DeviceMsgSettingActivity.2.1(this));
-          return;
-        }
-        paramBundle = paramBundle.optJSONArray("data");
-        if (paramBundle == null)
-        {
-          bdis.a().a(this.a.getString(2131694683));
-          DeviceMsgSettingActivity.b(this.a);
-          return;
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        bdii.e("DeviceMsgSettingActivity", "get msg setting json format faild!");
-        bdis.a().a(this.a.getString(2131693022));
-        continue;
-        paramInt = 0;
-      }
-      while (paramInt < paramBundle.length())
-      {
-        JSONObject localJSONObject = paramBundle.getJSONObject(paramInt);
-        yed localyed = new yed(this.a, null);
-        localyed.jdField_a_of_type_Int = localJSONObject.getInt("id");
-        localyed.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
-        localyed.b = localJSONObject.getInt("enable");
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(localyed);
-        paramInt += 1;
-      }
-    }
+    this.b = paramString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int != 4;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Int == 2;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_a_of_type_Int == 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yeb
  * JD-Core Version:    0.7.0.1
  */

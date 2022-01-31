@@ -1,12 +1,18 @@
-public abstract interface addy
+import com.tencent.mobileqq.activity.MainFragment;
+
+public class addy
+  implements bern
 {
-  public abstract void a();
+  public addy(MainFragment paramMainFragment) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a()
+  {
+    MainFragment.c(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addy
  * JD-Core Version:    0.7.0.1
  */

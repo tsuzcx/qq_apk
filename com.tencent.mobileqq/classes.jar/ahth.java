@@ -1,23 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.widget.ImageView;
 
-public class ahth
-  implements ValueAnimator.AnimatorUpdateListener
+class ahth
+  extends RecyclerView.ViewHolder
 {
-  public ahth(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  ahth(ahtg paramahtg, View paramView)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376920));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahth
  * JD-Core Version:    0.7.0.1
  */

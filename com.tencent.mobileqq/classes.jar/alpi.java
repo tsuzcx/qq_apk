@@ -1,23 +1,29 @@
-class alpi
-  implements wth
+import java.util.Comparator;
+
+public final class alpi
+  implements Comparator<String>
 {
-  alpi(alpe paramalpe, long paramLong) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public int a(String paramString1, String paramString2)
   {
-    alpe localalpe = this.jdField_a_of_type_Alpe;
-    long l = this.jdField_a_of_type_Long;
-    if (paramBoolean1) {}
-    for (int i = 1;; i = 0)
+    try
     {
-      localalpe.a(l, paramBoolean1, paramString, i);
-      return;
+      long l1 = Long.parseLong(paramString1);
+      long l2 = Long.parseLong(paramString2);
+      if (l1 == l2) {
+        return 0;
+      }
+      if (l1 > l2) {
+        return 2;
+      }
+      return -1;
     }
+    catch (Exception paramString1) {}
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alpi
  * JD-Core Version:    0.7.0.1
  */

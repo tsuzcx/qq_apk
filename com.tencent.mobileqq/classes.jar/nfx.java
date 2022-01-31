@@ -1,49 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 
-public class nfx
-  implements bfph
+public final class nfx
+  implements DialogInterface.OnClickListener
 {
-  nfx(nfr paramnfr, nms paramnms, bfpc parambfpc) {}
+  public nfx(Handler paramHandler) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    if (this.jdField_a_of_type_Nfr.f) {
-      return;
-    }
-    this.jdField_a_of_type_Nfr.f = true;
-    if (paramInt + 1 == 1)
-    {
-      if (!ajsd.aR.equals(this.jdField_a_of_type_Nfr.jdField_a_of_type_JavaLangString)) {
-        break label209;
-      }
-      nol.a(null, "", "0X8009947", "0X8009947", 0, 0, "", "", "", "", false);
-      i = 1;
-    }
-    label209:
-    for (;;)
-    {
-      this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nfr.jdField_a_of_type_Akwr);
-      this.jdField_a_of_type_Nfr.jdField_a_of_type_Akwr = new akwr(new nfy(this, i));
-      this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nfr.jdField_a_of_type_Akwr);
-      akww.a(this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, paramInt);
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      int j = 3;
-      i = j;
-      if (ajsd.aR.equals(this.jdField_a_of_type_Nfr.jdField_a_of_type_JavaLangString))
-      {
-        nol.a(null, "", "0X8009943", "0X8009943", 0, 0, "", "", "", "", false);
-        i = j;
-      }
-    }
+    paramDialogInterface.dismiss();
+    this.a.sendEmptyMessage(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfx
  * JD-Core Version:    0.7.0.1
  */

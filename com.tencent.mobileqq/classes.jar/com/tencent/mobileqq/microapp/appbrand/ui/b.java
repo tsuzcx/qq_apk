@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import bbef;
+import bdda;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
 import com.tencent.mobileqq.microapp.b.a;
@@ -28,7 +28,7 @@ final class b
         Object localObject = RoundedBitmapDrawableFactory.create(this.b.getResources(), localBitmap);
         ((RoundedBitmapDrawable)localObject).setCornerRadius(i);
         ((RoundedBitmapDrawable)localObject).setAntiAlias(true);
-        localObject = new ActivityManager.TaskDescription(this.a.config.app_name, bbef.b((Drawable)localObject));
+        localObject = new ActivityManager.TaskDescription(this.a.config.app_name, bdda.b((Drawable)localObject));
         this.b.setTaskDescription((ActivityManager.TaskDescription)localObject);
         if (!localBitmap.isRecycled()) {
           localBitmap.recycle();
@@ -41,7 +41,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.ui.b
  * JD-Core Version:    0.7.0.1
  */

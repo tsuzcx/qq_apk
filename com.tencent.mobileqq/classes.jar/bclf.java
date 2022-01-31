@@ -1,13 +1,12 @@
-public abstract class bclf
-  implements bcju
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+
+public abstract interface bclf
 {
-  public static final bcju a = new bclg();
-  public static final bcju b = new bclh();
-  public static final bcju c = new bcli();
+  public abstract void a(int paramInt, cmd0x934.RspBody paramRspBody);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bclf
  * JD-Core Version:    0.7.0.1
  */

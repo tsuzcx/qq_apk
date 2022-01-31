@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ajte;
+import alkr;
 
 public class MiniAppEntryObserver
-  implements ajte
+  implements alkr
 {
   public void onMiniAppEntryChanged() {}
   
@@ -14,7 +14,7 @@ public class MiniAppEntryObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryObserver
  * JD-Core Version:    0.7.0.1
  */

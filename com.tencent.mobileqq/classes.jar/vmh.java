@@ -1,41 +1,27 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class vmh
-  implements TextWatcher
+  implements uni<vbw, vbx>
 {
-  vmh(vmg paramvmg) {}
+  vmh(vmg paramvmg, vlj paramvlj) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(@NonNull vbw paramvbw, @Nullable vbx paramvbx, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.a.jdField_a_of_type_Vmn == null) {}
-    do
+    if ((paramErrorMessage.isFail()) || (paramvbx == null))
     {
+      wsv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Vlj.a(paramErrorMessage, null, false);
       return;
-      paramInt2 = this.a.a(paramCharSequence.toString());
-      if (paramInt2 > 420)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, paramInt1));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramInt1);
-        if (this.a.jdField_a_of_type_Vmn != null) {
-          this.a.jdField_a_of_type_Vmn.b(420);
-        }
-      }
-    } while (paramInt2 <= 0);
-    this.a.b.setTextColor(Color.parseColor("#12b7f5"));
-    this.a.b.setEnabled(true);
+    }
+    this.jdField_a_of_type_Vmg.a.a(paramvbx.jdField_a_of_type_JavaUtilList, paramvbx.jdField_a_of_type_JavaLangString, paramvbx.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Vlj.a(paramErrorMessage, vkr.b(paramvbx.jdField_a_of_type_JavaUtilList), paramvbx.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmh
  * JD-Core Version:    0.7.0.1
  */

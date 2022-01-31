@@ -1,29 +1,14 @@
-public class ayyt
-  extends ayza
+import com.tencent.mobileqq.data.MessageRecord;
+
+public abstract interface ayyt
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
+  public abstract MessageRecord a(ayyz paramayyz);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" groupFileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" groupFileKey:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
-    localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" downType:").append(this.b);
-    return localStringBuilder.toString();
-  }
+  public abstract MessageRecord a(azae paramazae);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayyt
  * JD-Core Version:    0.7.0.1
  */

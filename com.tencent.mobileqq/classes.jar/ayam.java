@@ -1,14 +1,24 @@
-import java.nio.ByteBuffer;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
 
-class ayam
+public class ayam
+  extends ayad
 {
-  public long a;
-  public ByteBuffer a;
-  public long b;
+  public ayam(LikesView paramLikesView, int paramInt, String paramString)
+  {
+    super(paramInt);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView) != null) {
+      LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView).a(this.jdField_a_of_type_JavaLangString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayam
  * JD-Core Version:    0.7.0.1
  */

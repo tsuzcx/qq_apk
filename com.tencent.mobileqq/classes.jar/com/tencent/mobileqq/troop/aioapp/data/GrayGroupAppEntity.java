@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.aioapp.data;
 
-import auko;
-import aulz;
-import azjx;
+import awbv;
+import awdg;
+import bbig;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
@@ -12,12 +12,12 @@ import java.util.List;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="groupUin")
 public class GrayGroupAppEntity
-  extends auko
+  extends awbv
 {
   private static final String TAG = "GrayGroupAppEntity";
   public long groupUin;
   public int requestIntervalSecond;
-  @aulz
+  @awdg
   public List<TroopAIOAppInfo> troopAIOAppInfos = new ArrayList(20);
   private byte[] troopAIOAppInfosData;
   public long updatedTimestamp;
@@ -25,7 +25,7 @@ public class GrayGroupAppEntity
   public void postRead()
   {
     super.postRead();
-    Object localObject = azjx.a(this.troopAIOAppInfosData);
+    Object localObject = bbig.a(this.troopAIOAppInfosData);
     if (localObject != null) {}
     try
     {
@@ -42,7 +42,7 @@ public class GrayGroupAppEntity
   public void prewrite()
   {
     super.prewrite();
-    this.troopAIOAppInfosData = azjx.a(this.troopAIOAppInfos);
+    this.troopAIOAppInfosData = bbig.a(this.troopAIOAppInfos);
   }
 }
 

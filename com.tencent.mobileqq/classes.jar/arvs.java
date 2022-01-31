@@ -1,24 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Intent;
 
-final class arvs
-  implements DialogInterface.OnClickListener
+public class arvs
+  extends arzz
 {
-  arvs(BaseActivity paramBaseActivity, int paramInt, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public arvs(Intent paramIntent)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    arus.a(paramDialogInterface).a.a(3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    arum localarum = new arum(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    arus.a(paramDialogInterface).a(localarum, false);
-    axqy.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
+    super(paramIntent);
+  }
+  
+  protected boolean g()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arvs
  * JD-Core Version:    0.7.0.1
  */

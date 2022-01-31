@@ -1,40 +1,20 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StGetWatermarkDictRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StWatermarkDict;
-import android.util.Log;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-class bipu
-  implements xgu<CLIENT.StGetWatermarkDictRsp>
+public class bipu
+  implements DialogInterface.OnClickListener
 {
-  bipu(bips parambips) {}
+  public bipu(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StGetWatermarkDictRsp paramStGetWatermarkDictRsp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      paramString = paramStGetWatermarkDictRsp.extInfo;
-      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.vecWatermarkDict.get();
-      paramString = new HashMap();
-      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.iterator();
-      while (paramStGetWatermarkDictRsp.hasNext())
-      {
-        CLIENT.StWatermarkDict localStWatermarkDict = (CLIENT.StWatermarkDict)paramStGetWatermarkDictRsp.next();
-        paramString.put(localStWatermarkDict.key.get(), localStWatermarkDict.value.get());
-      }
-      bips.a(this.a, paramString);
-      return;
-    }
-    Log.d(bips.a(), "retCode:" + paramLong + " errMSg:" + paramString);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bipu
  * JD-Core Version:    0.7.0.1
  */

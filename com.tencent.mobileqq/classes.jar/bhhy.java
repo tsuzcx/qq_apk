@@ -1,69 +1,120 @@
-import android.graphics.Bitmap;
-import android.opengl.GLES20;
-import android.opengl.GLUtils;
-import cooperation.qzone.util.QZLog;
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import com.tencent.qqmini.sdk.utils.ViewUtils;
 
 public class bhhy
+  extends Dialog
 {
-  public static int a(Bitmap paramBitmap, boolean paramBoolean)
+  private View jdField_a_of_type_AndroidViewView;
+  private bhia jdField_a_of_type_Bhia;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public bhhy(@NonNull Context paramContext)
   {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    if (arrayOfInt[0] == 0)
-    {
-      QZLog.e("TextureUtil", "glGenTextures: fail 0 ");
-      return 0;
-    }
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
-    {
-      QZLog.e("TextureUtil", "loadTexture: bitmap  == null || isRecycled");
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-      return 0;
-    }
-    GLES20.glBindTexture(3553, arrayOfInt[0]);
-    if (paramBoolean)
-    {
-      GLES20.glTexParameteri(3553, 10241, 9728);
-      GLES20.glTexParameteri(3553, 10240, 9728);
-    }
-    for (;;)
-    {
-      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
-      GLES20.glGenerateMipmap(3553);
-      GLES20.glBindTexture(3553, 0);
-      return arrayOfInt[0];
-      GLES20.glTexParameteri(3553, 10241, 9728);
-      GLES20.glTexParameteri(3553, 10240, 9729);
-    }
+    super(paramContext, 2131755757);
   }
   
-  public static void a(int paramInt)
+  private void a()
   {
-    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
-    GLES20.glFinish();
-  }
-  
-  public static void a(bhht parambhht)
-  {
-    if (parambhht == null) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
-      int i = 0;
-      while (i < parambhht.size())
-      {
-        bhhu localbhhu = (bhhu)parambhht.valueAt(i);
-        if (localbhhu != null) {
-          localbhhu.b();
-        }
-        i += 1;
-      }
+    }
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    localAnimationSet.addAnimation(localTranslateAnimation);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.setInterpolator(new DecelerateInterpolator());
+    localAnimationSet.setDuration(200L);
+    localAnimationSet.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
+    }
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    localAnimationSet.addAnimation(localTranslateAnimation);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.setInterpolator(new DecelerateInterpolator());
+    localAnimationSet.setDuration(200L);
+    localAnimationSet.setFillAfter(true);
+    localAnimationSet.setAnimationListener(new bhhz(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+  }
+  
+  public void dismiss()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    b();
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    getWindow().getDecorView().setPadding(0, 0, 0, 0);
+    paramBundle = getWindow().getAttributes();
+    paramBundle.height = -2;
+    paramBundle.gravity = 81;
+    int i = ViewUtils.getScreenWidth();
+    int j = ViewUtils.getScreenHeight();
+    if (i < j) {}
+    for (;;)
+    {
+      paramBundle.width = i;
+      getWindow().setAttributes(paramBundle);
+      setCanceledOnTouchOutside(true);
+      return;
+      i = j;
+    }
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(paramInt, null);
+    super.setContentView(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void setContentView(@NonNull View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    super.setContentView(paramView);
+  }
+  
+  public void setContentView(@NonNull View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    super.setContentView(paramView, paramLayoutParams);
+  }
+  
+  public void show()
+  {
+    super.show();
+    a();
+    if (this.jdField_a_of_type_Bhia != null) {
+      this.jdField_a_of_type_Bhia.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhhy
  * JD-Core Version:    0.7.0.1
  */

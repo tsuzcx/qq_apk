@@ -1,85 +1,71 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.YybHandleUtil.1;
+import java.io.File;
+import java.text.DecimalFormat;
+import mqq.os.MqqHandler;
 
 public class bfll
-  implements bflv
 {
-  public bfll(AudioDeviceInterface paramAudioDeviceInterface) {}
+  public static String a = "YybHandleUtil";
+  public static String b = "APK/MobileAssistant_main.apk";
+  public static String c = "yyb.apk";
+  public static final String d = alpo.a(2131717415);
   
-  public void a(int paramInt)
+  public static String a(int paramInt)
   {
-    try
+    if (paramInt < 0) {
+      return null;
+    }
+    float f2 = paramInt;
+    paramInt = 0;
+    float f1;
+    String str2;
+    String str1;
+    if (f2 / 1048576.0F > 1.0F)
     {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+      f1 = f2 / 1048576.0F;
+      paramInt = 2;
+      str2 = new DecimalFormat("#.#").format(f1);
+      if (paramInt != 2) {
+        break label92;
       }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
+      str1 = "MB";
     }
-    catch (Exception localException) {}
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      AudioDeviceInterface.access$400(this.a, paramString);
-    }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(long paramLong, int paramInt) {}
-  
-  public void a(long paramLong, int paramInt, String paramString) {}
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    try
+    for (;;)
     {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+      return str2 + str1;
+      f1 = f2;
+      if (f2 / 1024.0F <= 1.0F) {
+        break;
       }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
+      f1 = f2 / 1024.0F;
+      paramInt = 1;
+      break;
+      label92:
+      if (paramInt == 1) {
+        str1 = "KB";
+      } else {
+        str1 = "B";
+      }
     }
-    catch (Exception localException) {}
   }
   
-  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
+  public static void a()
   {
-    if (AudioDeviceInterface.access$300(this.a)) {
-      AudioDeviceInterface.access$400(this.a, paramString1);
-    }
+    bfhg.c(a, "---deleteYYBApkPackage--");
+    ThreadManager.getSubThreadHandler().post(new YybHandleUtil.1());
   }
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, long paramLong) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt, String paramString) {}
+  public static boolean a()
+  {
+    String str = bexd.a().a().getFilesDir().getAbsolutePath() + File.separator + c;
+    return bfij.a(bexd.a().a(), str);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfll
  * JD-Core Version:    0.7.0.1
  */

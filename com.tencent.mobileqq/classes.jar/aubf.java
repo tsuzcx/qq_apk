@@ -1,17 +1,19 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import java.util.List;
 
-public class aubf
+class aubf
+  implements aubq<Integer, List<EmoticonPackage>>
 {
-  public int a;
-  public String a;
-  public List<aubg> a = new ArrayList();
-  public String b;
-  public String c;
+  aubf(aube paramaube) {}
+  
+  public List<EmoticonPackage> a(Integer paramInteger)
+  {
+    return this.a.a(paramInteger.intValue());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aubf
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bbfr;
-import bbkb;
-import bcxq;
-import bcxt;
+import bdem;
+import bdiv;
+import bews;
+import bewv;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,7 +30,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 public class MSFIntChkStrike
-  implements bcxt
+  implements bewv
 {
   private static final int BTN_ACTION_BROWSER = 5;
   private static final int BTN_ACTION_BROWSER_AND_LOGOUT = 6;
@@ -45,7 +45,7 @@ public class MSFIntChkStrike
   private int mNetworkFlags;
   private String mPackageDownloadURL = "";
   private String mPackageName = "MQPINTCHK";
-  private bcxq mResultListener;
+  private bews mResultListener;
   private int mStrikeResult = 0;
   private int mStrikeType;
   private boolean mToastAlreadyShown;
@@ -122,7 +122,7 @@ public class MSFIntChkStrike
               if (this.mApp != null)
               {
                 this.mApp.logout(true);
-                bbkb.a(this.mApp.getApp(), this.mApp.getCurrentAccountUin(), false);
+                bdiv.a(this.mApp.getApp(), this.mApp.getCurrentAccountUin(), false);
               }
               localObject = new Intent(paramDialogInterface, LoginActivity.class);
               ((Intent)localObject).addFlags(335544320);
@@ -190,7 +190,7 @@ public class MSFIntChkStrike
     }
   }
   
-  public void exec(String paramString, bcxq parambcxq)
+  public void exec(String paramString, bews parambews)
   {
     Object localObject1 = null;
     Object localObject3 = null;
@@ -215,13 +215,13 @@ public class MSFIntChkStrike
             if (TextUtils.isEmpty(paramString)) {
               break;
             }
-            if (parambcxq != null) {
-              this.mResultListener = parambcxq;
+            if (parambews != null) {
+              this.mResultListener = parambews;
             }
-            parambcxq = DocumentBuilderFactory.newInstance();
+            parambews = DocumentBuilderFactory.newInstance();
             try
             {
-              localObject1 = parambcxq.newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes())).getDocumentElement();
+              localObject1 = parambews.newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes())).getDocumentElement();
               paramString = ((Element)localObject1).getElementsByTagName("title");
               if (paramString.getLength() == 0) {
                 break;
@@ -248,13 +248,13 @@ public class MSFIntChkStrike
                   this.mNetworkFlags = 0;
                 }
               }
-              parambcxq = "";
+              parambews = "";
               paramString = ((Element)localObject1).getElementsByTagName("btn_confirm");
               if (paramString.getLength() <= 0) {
                 break label762;
               }
               paramString = (Element)paramString.item(0);
-              parambcxq = paramString.getAttribute("text");
+              parambews = paramString.getAttribute("text");
               paramString = new MSFIntChkStrike.1(this, Integer.parseInt(paramString.getAttribute("action")));
               localObject3 = "";
               localObject1 = ((Element)localObject1).getElementsByTagName("btn_cancel");
@@ -265,7 +265,7 @@ public class MSFIntChkStrike
               localObject3 = ((Element)localObject1).getAttribute("text");
               localObject1 = new MSFIntChkStrike.2(this, Integer.parseInt(((Element)localObject1).getAttribute("action")));
               MSFIntChkStrike.3 local3 = new MSFIntChkStrike.3(this);
-              new Handler(Looper.getMainLooper()).post(new MSFIntChkStrike.4(this, str1, str2, paramString, (DialogInterface.OnClickListener)localObject1, (String)localObject3, parambcxq, local3));
+              new Handler(Looper.getMainLooper()).post(new MSFIntChkStrike.4(this, str1, str2, paramString, (DialogInterface.OnClickListener)localObject1, (String)localObject3, parambews, local3));
               return;
             }
             catch (Exception paramString)
@@ -284,7 +284,7 @@ public class MSFIntChkStrike
       }
       if (this.mStrikeType == 2)
       {
-        if (parambcxq != null) {}
+        if (parambews != null) {}
         label584:
         for (;;)
         {
@@ -299,7 +299,7 @@ public class MSFIntChkStrike
             {
               paramString.put("strike_result", 5);
               if (paramString != null) {
-                parambcxq.a(paramString.toString());
+                parambews.a(paramString.toString());
               }
               this.mApp.b(false);
               return;
@@ -333,13 +333,13 @@ public class MSFIntChkStrike
           for (;;)
           {
             paramString.put("strike_result", i);
-            parambcxq.a(paramString.toString());
+            parambews.a(paramString.toString());
             return;
             paramString = paramString;
             paramString.printStackTrace();
             paramString = localContext;
             continue;
-            if (!bbfr.a(localContext, paramString, this.mApp.getCurrentAccountUin())) {
+            if (!bdem.a(localContext, paramString, this.mApp.getCurrentAccountUin())) {
               break;
             }
             i = 13;
@@ -358,10 +358,10 @@ public class MSFIntChkStrike
         break;
       }
       localContext = this.mApp.getApp().getApplicationContext();
-      if (!bbfr.a(localContext, paramString))
+      if (!bdem.a(localContext, paramString))
       {
         i = 11;
-        if (parambcxq == null) {
+        if (parambews == null) {
           break;
         }
         paramString = new JSONObject();
@@ -376,7 +376,7 @@ public class MSFIntChkStrike
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msfmqpsdkbridge.MSFIntChkStrike
  * JD-Core Version:    0.7.0.1
  */

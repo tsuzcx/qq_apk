@@ -1,36 +1,65 @@
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.5;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
 
-public final class apjy
-  implements aysc
+public class apjy
+  implements URLDrawable.URLDrawableListener
 {
-  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
-  private final String jdField_a_of_type_JavaLangString;
+  public apjy(EmoticonFromGroupManager.5 param5, URLDrawable paramURLDrawable, CustomEmotionData paramCustomEmotionData, apkf paramapkf, apke paramapke) {}
   
-  private apjy(String paramString, IHostInterface.IHttpListener paramIHttpListener)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
+    apju.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
-  public void onResp(aysz paramaysz)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((paramaysz.c == 200) || (paramaysz.c == 206)) {}
-    for (String str = new String(paramaysz.a);; str = null)
+    apju.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    apju.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    paramURLDrawable = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0.a(paramURLDrawable)) {}
+    String str;
+    do
     {
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(paramaysz.c, str);
+      do
+      {
+        return;
+        str = apju.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0, paramURLDrawable);
+      } while ("".equals(str));
+      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = str;
+      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = paramURLDrawable;
+    } while ("".equals(str));
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EmoticonFromGroup_Manager", 4, "onLoadSuccessed upload emo " + paramURLDrawable);
       }
-      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + paramaysz.c + ", rsp=" + str);
+      this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      this.jdField_a_of_type_Apkf.d(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      this.jdField_a_of_type_Apke.c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
       return;
     }
+    catch (IOException paramURLDrawable)
+    {
+      paramURLDrawable.printStackTrace();
+      QLog.d("EmoticonFromGroup_Manager", 1, paramURLDrawable, new Object[0]);
+    }
   }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apjy
  * JD-Core Version:    0.7.0.1
  */

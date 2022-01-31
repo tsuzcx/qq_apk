@@ -1,54 +1,60 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class otj
+  implements AladdinConfigHandler
 {
-  public static long a;
-  public static List<otk> a;
-  public static long b;
-  public static long c;
-  
-  static
+  private static long a(String paramString, long paramLong)
   {
-    jdField_a_of_type_Long = -1L;
-    b = -1L;
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_JavaUtilList.clear();
-    c = 0L;
-  }
-  
-  public static void a(otk paramotk)
-  {
-    if (!jdField_a_of_type_JavaUtilList.isEmpty())
+    try
     {
-      otk localotk = (otk)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
-      if (paramotk.b - localotk.b > jdField_a_of_type_Long) {
-        a();
+      long l = Long.valueOf(paramString).longValue();
+      return l;
+    }
+    catch (NumberFormatException paramString)
+    {
+      QLog.d("FeedsPreloadConfigHandler", 2, "parseStringToLong, e ", paramString);
+    }
+    return paramLong;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
+      if (TextUtils.equals("switch", str1)) {
+        bjxj.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
+      } else if (TextUtils.equals("preload_interval", str1)) {
+        bjxj.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(a(str2, 30L)));
+      } else if (TextUtils.equals("last_enter_kandian", str1)) {
+        bjxj.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(a(str2, 90L)));
+      } else if (TextUtils.equals("preload_time_limit", str1)) {
+        bjxj.a("sp_key_readinjoy_feeds_preload_time_limit", Long.valueOf(a(str2, 10L)));
+      } else if (TextUtils.equals("loading_time", str1)) {
+        bjxj.a("sp_key_readinjoy_feeds_preload_loading_time", Long.valueOf(a(str2, 50L)));
       }
     }
-    jdField_a_of_type_JavaUtilList.add(paramotk);
-    c += paramotk.jdField_a_of_type_Long;
-    if (a())
-    {
-      paramotk = new ArrayList();
-      paramotk.addAll(jdField_a_of_type_JavaUtilList);
-      jdField_a_of_type_JavaUtilList.clear();
-      osx.a(paramotk);
-    }
+    return true;
   }
   
-  public static boolean a()
+  public void onWipeConfig(int paramInt)
   {
-    return c > b;
+    QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
+    bjxj.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import java.util.List;
 
 public class asnm
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.Adapter<FontBubblePanelView<T>.asnn>
 {
-  public asnm(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  public asnm(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public FontBubblePanelView<T>.asnn a(ViewGroup paramViewGroup, int paramInt)
   {
-    aslg.a().a().c();
-    aslg.a().d();
-    if (this.a.a)
-    {
-      this.a.g();
-      return;
+    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131562804, paramViewGroup, false);
+    return new asnn(this.a, paramViewGroup);
+  }
+  
+  public void a(FontBubblePanelView<T>.asnn paramFontBubblePanelView, int paramInt)
+  {
+    if (paramInt < FontBubblePanelView.a(this.a).size()) {
+      this.a.a(paramFontBubblePanelView, (FontBubble)FontBubblePanelView.a(this.a).get(paramInt));
     }
-    this.a.a(this.a.getActivity());
+  }
+  
+  public int getItemCount()
+  {
+    return FontBubblePanelView.a(this.a).size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((FontBubble)FontBubblePanelView.a(this.a).get(paramInt)).viewType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asnm
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbma;
+import bdku;
+import bizf;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -37,6 +38,7 @@ public class MiniAppGetNewBaseLibForSDKServlet
     long l1 = i * 1000;
     long l2 = System.currentTimeMillis();
     StorageUtil.getPreference().edit().putLong("baselib_min_update_time", l1 + l2).apply();
+    StorageUtil.getPreference().edit().putString("baselib_update_qua", bizf.a()).apply();
     paramArrayOfByte = localStGetNewBaseLibRsp.jsOrsoLibs.get().iterator();
     while (paramArrayOfByte.hasNext())
     {
@@ -70,7 +72,7 @@ public class MiniAppGetNewBaseLibForSDKServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetNewBaseLib");
-    paramPacket.putSendData(bbma.a((byte[])localObject));
+    paramPacket.putSendData(bdku.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     QLog.i("MiniAppGetNewBaseLibForSDKServlet", 1, "[MiniEng] GetNewBaseLibServlet send request");
     super.onSend(paramIntent, paramPacket);
@@ -78,7 +80,7 @@ public class MiniAppGetNewBaseLibForSDKServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetNewBaseLibForSDKServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.profile;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import auuz;
-import auva;
-import bbdx;
+import awml;
+import awmm;
+import bdcs;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Map;
@@ -14,11 +14,11 @@ import org.json.JSONObject;
 public class ProfileCardManager$1
   implements Runnable
 {
-  public ProfileCardManager$1(auuz paramauuz, File paramFile, int paramInt) {}
+  public ProfileCardManager$1(awml paramawml, File paramFile, int paramInt) {}
   
   public void run()
   {
-    Object localObject = bbdx.a(this.jdField_a_of_type_JavaIoFile, -1);
+    Object localObject = bdcs.a(this.jdField_a_of_type_JavaIoFile, -1);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     try
     {
@@ -26,22 +26,22 @@ public class ProfileCardManager$1
       if ((localObject != null) && (((JSONArray)localObject).length() > 0))
       {
         JSONObject localJSONObject1 = ((JSONArray)localObject).getJSONObject(0);
-        localObject = new auva(this.this$0, this.jdField_a_of_type_Int);
-        ((auva)localObject).jdField_a_of_type_JavaLangString = localJSONObject1.optString("name");
+        localObject = new awmm(this.this$0, this.jdField_a_of_type_Int);
+        ((awmm)localObject).jdField_a_of_type_JavaLangString = localJSONObject1.optString("name");
         JSONObject localJSONObject2 = localJSONObject1.optJSONObject("previewImage");
         if (localJSONObject2 != null) {
-          ((auva)localObject).b = (auuz.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
+          ((awmm)localObject).b = (awml.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
         }
         localJSONObject2 = localJSONObject1.optJSONObject("coverImg");
         if (localJSONObject2 != null) {
-          ((auva)localObject).c = (auuz.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
+          ((awmm)localObject).c = (awml.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
         }
         localJSONObject1 = localJSONObject1.optJSONObject("detailImage");
         if (localJSONObject1 != null) {
-          ((auva)localObject).d = (auuz.jdField_a_of_type_JavaLangString + localJSONObject1.optString("src"));
+          ((awmm)localObject).d = (awml.jdField_a_of_type_JavaLangString + localJSONObject1.optString("src"));
         }
-        ((auva)localObject).jdField_a_of_type_Boolean = true;
-        auuz.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
+        ((awmm)localObject).jdField_a_of_type_Boolean = true;
+        awml.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
         if (this.this$0.jdField_a_of_type_AndroidOsHandler != null)
         {
           this.this$0.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
@@ -58,7 +58,7 @@ public class ProfileCardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardManager.1
  * JD-Core Version:    0.7.0.1
  */

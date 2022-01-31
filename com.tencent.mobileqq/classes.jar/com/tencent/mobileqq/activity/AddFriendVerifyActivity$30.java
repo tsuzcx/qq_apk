@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aaho;
-import bbdj;
-import bbgu;
+import abyo;
+import bdcd;
+import bdfq;
 
 public class AddFriendVerifyActivity$30
   implements Runnable
@@ -19,17 +19,17 @@ public class AddFriendVerifyActivity$30
     do
     {
       return;
-      this.this$0.a = bbdj.a(this.this$0, 230);
-      this.this$0.a.setMessage(2131720483);
-      aaho localaaho = new aaho(this);
-      this.this$0.a.setPositiveButton(2131691035, localaaho);
+      this.this$0.a = bdcd.a(this.this$0, 230);
+      this.this$0.a.setMessage(2131721022);
+      abyo localabyo = new abyo(this);
+      this.this$0.a.setPositiveButton(2131691088, localabyo);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.30
  * JD-Core Version:    0.7.0.1
  */

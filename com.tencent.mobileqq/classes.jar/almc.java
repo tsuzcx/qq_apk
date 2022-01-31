@@ -1,25 +1,28 @@
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class almc
-  implements TencentMap.OnCameraChangeListener
+class almc
+  extends BroadcastReceiver
 {
-  public almc(ARScanEntryView paramARScanEntryView) {}
+  almc(allz paramallz, QQAppInterface paramQQAppInterface) {}
   
-  public void onCameraChange(CameraPosition paramCameraPosition) {}
-  
-  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((ARScanEntryView.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("AREngine_ARScanEntryView", 2, "ARLBSPOIDialog onCameraChangeFinish");
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
+        this.jdField_a_of_type_Allz.a();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     almc
  * JD-Core Version:    0.7.0.1
  */

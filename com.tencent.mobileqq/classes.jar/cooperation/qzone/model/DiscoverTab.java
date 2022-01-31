@@ -3,13 +3,13 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhfc;
+import bjgm;
 import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
 
 public class DiscoverTab
   implements Parcelable
 {
-  public static final Parcelable.Creator<DiscoverTab> CREATOR = new bhfc();
+  public static final Parcelable.Creator<DiscoverTab> CREATOR = new bjgm();
   public int a;
   public RedTouchExtendButton.RedInfo a;
   public String a;
@@ -84,7 +84,7 @@ public class DiscoverTab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.DiscoverTab
  * JD-Core Version:    0.7.0.1
  */

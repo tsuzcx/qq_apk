@@ -1,25 +1,34 @@
-import android.support.v4.view.MotionEventCompat;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.mobileqq.qipc.QIPCModule;
 
 public class reg
-  implements View.OnTouchListener
 {
-  public reg(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
+  private static reg jdField_a_of_type_Reg;
+  private aenl jdField_a_of_type_Aenl;
+  private alox jdField_a_of_type_Alox;
+  private View jdField_a_of_type_AndroidViewView;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new reh(this, "Module_VideoFeedsIPCServer");
+  private oiq jdField_a_of_type_Oiq;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static reg a()
   {
-    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
-      ReadInJoyNavigationGridview.a(this.a).a();
+    if (jdField_a_of_type_Reg == null) {}
+    try
+    {
+      jdField_a_of_type_Reg = new reg();
+      return jdField_a_of_type_Reg;
     }
-    return true;
+    finally {}
+  }
+  
+  public QIPCModule a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     reg
  * JD-Core Version:    0.7.0.1
  */

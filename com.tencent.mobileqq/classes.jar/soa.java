@@ -1,32 +1,33 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class soa
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnDismissListener
 {
-  public soa(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public soa(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onGlobalLayout()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = PublicAccountImageCollectionCommentActivity.a(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.a(this.a).getHeight();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ImageCollectionCommentActivity", 2, "heightDiff:" + i);
-    }
-    if (i > 150) {
-      PublicAccountImageCollectionCommentActivity.a(this.a, true);
-    }
-    while (!PublicAccountImageCollectionCommentActivity.a(this.a)) {
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("type", -1);
+      paramDialogInterface.put("action", "close");
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      }
       return;
     }
-    PublicAccountImageCollectionCommentActivity.a(this.a, false);
-    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
+    catch (JSONException paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     soa
  * JD-Core Version:    0.7.0.1
  */

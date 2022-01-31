@@ -1,37 +1,28 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class tnl
-  extends sys<tow>
+class tnl
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public String a()
+  tnl(tnk paramtnk) {}
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    return sxm.a("StorySvc.video_apply_authkey");
+    tlo.b("WSVerticalVideoItemView", "itemView onDoubleTap");
+    tnk.a(this.a, paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
   }
   
-  public tow a(byte[] paramArrayOfByte)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
-    try
-    {
-      localRspAuthKey.mergeFrom(paramArrayOfByte);
-      return new tow(localRspAuthKey);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      ved.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return new byte[0];
+    tlo.b("WSVerticalVideoItemView", "itemView onSingleTapConfirmed");
+    tnk.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tnl
  * JD-Core Version:    0.7.0.1
  */

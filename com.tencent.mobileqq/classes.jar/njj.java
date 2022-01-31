@@ -1,53 +1,65 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.io.File;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class njj
-  implements TVK_ICacheMgr.IPreloadCallback
+  implements Handler.Callback
 {
-  private njj(njf paramnjf) {}
+  njj(nin paramnin) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public boolean handleMessage(Message paramMessage)
   {
-    synchronized (njf.a(this.a))
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramMessage.what)
     {
-      njf.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
-      njf.a(this.a, njf.a(this.a));
-      return;
+    default: 
+      bool1 = false;
     }
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    synchronized (njf.a(this.a))
+    do
     {
-      njf.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
-      try
+      do
       {
-        paramString2 = new JSONObject(paramString2);
-        long l1 = paramString2.optLong("fileSize");
-        long l2 = paramString2.optLong("offset");
-        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
-        {
-          paramString2 = new File(njf.b(paramString1));
-          if (paramString2.exists()) {
-            paramString2.renameTo(new File(njf.a(paramString1)));
-          }
-          njf.a(this.a, njf.a(this.a));
+        return bool1;
+        if (QLog.isColorLevel()) {
+          QLog.i("AccountDetailGroupListContainer", 2, "refresh recent list, from_handle");
         }
+        bool1 = bool2;
+      } while (!this.a.b);
+      bool1 = bool2;
+    } while (this.a.jdField_a_of_type_AndroidViewView == null);
+    this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("public_account_detail_setting_status", 0);
+    int i;
+    if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null)
+    {
+      i = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_result_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -10000);
+      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i != 0) {
+        break;
       }
-      catch (Exception paramString1)
-      {
-        label136:
-        break label136;
+      bool1 = bool2;
+      if (this.a.jdField_a_of_type_Int <= -1) {
+        break;
       }
-      return;
+      nin.b(this.a, this.a.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_AndroidViewView.setOnClickListener(new njk(this));
+      return true;
+      i = -10000;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njj
  * JD-Core Version:    0.7.0.1
  */

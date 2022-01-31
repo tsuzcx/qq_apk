@@ -1,16 +1,16 @@
 package com.tencent.open.appstore.dl;
 
-import bdhk;
-import bdho;
+import bfgi;
+import bfgm;
 
 public class DownloadProxy$7
   implements Runnable
 {
-  public DownloadProxy$7(bdho parambdho, String paramString, boolean paramBoolean) {}
+  public DownloadProxy$7(bfgm parambfgm, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    bdhk.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    bfgi.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 

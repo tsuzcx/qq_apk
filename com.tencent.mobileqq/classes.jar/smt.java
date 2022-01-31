@@ -1,22 +1,21 @@
-import UserGrowth.stNotificationReq;
-import UserGrowth.stNotificationRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
 public class smt
-  extends slp<stNotificationRsp>
+  implements View.OnClickListener
 {
-  public smt(String paramString)
+  public smt(ViolaFragment paramViolaFragment) {}
+  
+  public void onClick(View paramView)
   {
-    super("Notification");
-    stNotificationReq localstNotificationReq = new stNotificationReq();
-    localstNotificationReq.linkStrategyArgs = snc.a();
-    localstNotificationReq.push_info = paramString;
-    this.a = localstNotificationReq;
-    snb.b("NotificationRequest", "stNotificationReq = " + localstNotificationReq.toString());
+    this.a.a.d();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smt
  * JD-Core Version:    0.7.0.1
  */

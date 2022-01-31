@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import actj;
+import aekt;
 import android.graphics.Bitmap;
 import android.os.Handler;
-import axlk;
-import uxv;
-import ved;
-import vxv;
+import azgq;
+import wmn;
+import wsv;
+import xmn;
 
 class NewFlowCameraActivity$43
   implements Runnable
@@ -15,30 +15,30 @@ class NewFlowCameraActivity$43
   
   public void run()
   {
-    int i = actj.a(47.0F, this.this$0.getResources());
-    int j = actj.a(75.0F, this.this$0.getResources());
-    Bitmap localBitmap1 = vxv.a(this.a, i, j, false);
+    int i = aekt.a(47.0F, this.this$0.getResources());
+    int j = aekt.a(75.0F, this.this$0.getResources());
+    Bitmap localBitmap1 = xmn.a(this.a, i, j, false);
     if (localBitmap1 == null) {
-      ved.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
+      wsv.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
     }
     Bitmap localBitmap2;
     do
     {
       return;
-      localBitmap2 = new uxv(actj.a(3.0F, this.this$0.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
+      localBitmap2 = new wmn(aekt.a(3.0F, this.this$0.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
       if (localBitmap2 == null)
       {
-        ved.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
+        wsv.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
         return;
       }
       i = this.a.getWidth();
       j = this.a.getHeight();
-      float f1 = axlk.a;
-      float f2 = axlk.a(this.this$0.getApplicationContext());
+      float f1 = azgq.a;
+      float f2 = azgq.a(this.this$0.getApplicationContext());
       if (i / j > f1 / f2) {}
-      for (localBitmap1 = vxv.a(this.a, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = vxv.a(this.a, i, (int)(f2 / f1 * i), true))
+      for (localBitmap1 = xmn.a(this.a, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = xmn.a(this.a, i, (int)(f2 / f1 * i), true))
       {
-        ved.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
+        wsv.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
         return;
       }
     } while (this.this$0.a == null);
@@ -47,7 +47,7 @@ class NewFlowCameraActivity$43
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.43
  * JD-Core Version:    0.7.0.1
  */

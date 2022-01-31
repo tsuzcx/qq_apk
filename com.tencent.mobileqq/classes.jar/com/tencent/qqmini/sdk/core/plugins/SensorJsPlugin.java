@@ -4,12 +4,12 @@ import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Vibrator;
-import behp;
-import behq;
-import bejn;
-import bekr;
-import bekz;
-import betc;
+import bghn;
+import bgho;
+import bgkd;
+import bgkk;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.List;
 
 public class SensorJsPlugin
@@ -44,7 +44,7 @@ public class SensorJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      betc.d("SensorJsPlugin", "exception when doVibrate.", localThrowable);
+      QMLog.e("SensorJsPlugin", "exception when doVibrate.", localThrowable);
     }
   }
   
@@ -69,36 +69,36 @@ public class SensorJsPlugin
     }
   }
   
-  public String enableAccelerometer(bekr parambekr)
+  public String enableAccelerometer(bgkd parambgkd)
   {
-    bekz.a(new SensorJsPlugin.1(this, parambekr));
+    bgkk.a(new SensorJsPlugin.1(this, parambgkd));
     return "";
   }
   
-  public String enableCompass(bekr parambekr)
+  public String enableCompass(bgkd parambgkd)
   {
-    bekz.a(new SensorJsPlugin.2(this, parambekr));
+    bgkk.a(new SensorJsPlugin.2(this, parambgkd));
     return "";
   }
   
-  public String enableDeviceMotionChangeListening(bekr parambekr)
+  public String enableDeviceMotionChangeListening(bgkd parambgkd)
   {
-    bekz.a(new SensorJsPlugin.4(this, parambekr));
+    bgkk.a(new SensorJsPlugin.4(this, parambgkd));
     return "";
   }
   
-  public String enableGyroscope(bekr parambekr)
+  public String enableGyroscope(bgkd parambgkd)
   {
-    bekz.a(new SensorJsPlugin.3(this, parambekr));
+    bgkk.a(new SensorJsPlugin.3(this, parambgkd));
     return "";
   }
   
-  public void onCreate(behq parambehq)
+  public void onCreate(bgho parambgho)
   {
-    super.onCreate(parambehq);
+    super.onCreate(parambgho);
   }
   
-  public final boolean startAccelerometer(behp parambehp, int paramInt)
+  public final boolean startAccelerometer(bghn parambghn, int paramInt)
   {
     if (this.senSensorManager == null) {}
     while (this.senAccelerometer == null) {
@@ -114,7 +114,7 @@ public class SensorJsPlugin
     return true;
   }
   
-  public final boolean startGyroscope(behp parambehp, int paramInt)
+  public final boolean startGyroscope(bghn parambghn, int paramInt)
   {
     if ((this.senSensorManager == null) || (this.gyroscopeSensor == null)) {
       return false;
@@ -127,7 +127,7 @@ public class SensorJsPlugin
     return true;
   }
   
-  public final boolean startRotationListening(behp parambehp, int paramInt)
+  public final boolean startRotationListening(bghn parambghn, int paramInt)
   {
     if ((this.senSensorManager == null) || (this.orientationSensor == null)) {
       return false;
@@ -136,7 +136,7 @@ public class SensorJsPlugin
       stopRotationListening();
     }
     this.orientationSensorJsPlugin = new SensorJsPlugin.RotationSensorJsPlugin(this, null);
-    this.orientationSensorJsPlugin.setJsService(parambehp);
+    this.orientationSensorJsPlugin.setJsService(parambghn);
     this.senSensorManager.registerListener(this.orientationSensorJsPlugin, this.orientationSensor, paramInt);
     return true;
   }
@@ -168,25 +168,25 @@ public class SensorJsPlugin
     }
   }
   
-  public String vibrateLong(bekr parambekr)
+  public String vibrateLong(bgkd parambgkd)
   {
     initSensor();
-    bejn.a(new SensorJsPlugin.6(this), 16, null, true);
-    parambekr.a();
+    ThreadManager.a(new SensorJsPlugin.6(this), 16, null, true);
+    parambgkd.a();
     return "";
   }
   
-  public String vibrateShort(bekr parambekr)
+  public String vibrateShort(bgkd parambgkd)
   {
     initSensor();
-    bejn.a(new SensorJsPlugin.5(this), 16, null, true);
-    parambekr.a();
+    ThreadManager.a(new SensorJsPlugin.5(this), 16, null, true);
+    parambgkd.a();
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.SensorJsPlugin
  * JD-Core Version:    0.7.0.1
  */

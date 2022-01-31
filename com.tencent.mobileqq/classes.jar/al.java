@@ -1,25 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.android.internal.telephony.SmsRawData;
+import com.dataline.activities.LiteActivity;
 
-public final class al
-  implements Parcelable.Creator<SmsRawData>
+public class al
+  implements bhrf
 {
-  public SmsRawData a(Parcel paramParcel)
-  {
-    byte[] arrayOfByte = new byte[paramParcel.readInt()];
-    paramParcel.readByteArray(arrayOfByte);
-    return new SmsRawData(arrayOfByte);
-  }
+  public al(LiteActivity paramLiteActivity) {}
   
-  public SmsRawData[] a(int paramInt)
+  public void a()
   {
-    return new SmsRawData[paramInt];
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     al
  * JD-Core Version:    0.7.0.1
  */

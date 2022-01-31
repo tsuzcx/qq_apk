@@ -1,62 +1,48 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 class vgk
-  extends vpb
+  implements AdapterView.OnItemClickListener
 {
-  private final List<voq> a = new ArrayList();
+  vgk(vgj paramvgj) {}
   
-  public int a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return this.a.size();
-  }
-  
-  public voq a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return (voq)this.a.get(paramInt);
+    if (vgj.a(this.a).getActionSheet().isShowing()) {
+      vgj.a(this.a).getActionSheet().dismiss();
     }
-    return null;
-  }
-  
-  public voq a(String paramString)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      voq localvoq = (voq)localIterator.next();
-      if (TextUtils.equals(paramString, localvoq.a)) {
-        return localvoq;
+    int i = ((bdip)paramView.getTag()).a.action;
+    if ((i == 9) || (i == 10)) {
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131721478;
       }
     }
-    return null;
-  }
-  
-  public void a(Collection<voq> paramCollection)
-  {
-    ved.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    this.a.clear();
-    this.a.addAll(paramCollection);
-    a();
-  }
-  
-  public void a(voq paramvoq)
-  {
-    ved.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramvoq);
-    int i = this.a.indexOf(paramvoq);
-    if (i >= 0)
+    for (;;)
     {
-      this.a.set(i, paramvoq);
-      a(i);
+      if (paramInt != -1)
+      {
+        xxb.a(1, paramInt);
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131721479;
+        }
+      }
+      else
+      {
+        this.a.a(i);
+        return;
+      }
+      paramInt = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgk
  * JD-Core Version:    0.7.0.1
  */

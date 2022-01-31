@@ -1,74 +1,23 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
 
-public class agiz
-  extends aumg
+class agiz
+  extends Handler
 {
-  public agiz(BindVerifyActivity paramBindVerifyActivity) {}
+  agiz(agiy paramagiy) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BindVerifyActivity", 2, "onBindMobile [" + paramBoolean + ", " + paramBundle + "]");
-    }
-    this.a.b();
-    int i;
-    if (paramBoolean)
-    {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0)) {
-        this.a.b();
-      }
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
-      BindVerifyActivity.a(this.a, null);
-      return;
-      if (i == 107)
-      {
-        this.a.a(paramBundle);
-      }
-      else if (i == 106)
-      {
-        this.a.a();
-        if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
-          axqy.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 2, 0, "", "", "", "");
-        }
-      }
-      else
-      {
-        this.a.a(1, a(i));
-        continue;
-        this.a.a(1, this.a.getString(2131718748));
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindVerifyActivity", 2, "onRebindMobile [" + paramBoolean + ", " + paramBundle + "]");
-    }
-    this.a.b();
-    if (paramBoolean) {
-      this.a.b();
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
-      BindVerifyActivity.a(this.a, null);
-      return;
-      this.a.a(1, this.a.getString(2131718748));
+    super.handleMessage(paramMessage);
+    if (this.a.p.isShown()) {
+      this.a.p.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agiz
  * JD-Core Version:    0.7.0.1
  */

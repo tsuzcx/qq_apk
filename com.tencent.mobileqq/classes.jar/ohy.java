@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
-class ohy
-  implements DialogInterface.OnClickListener
+public class ohy
+  implements bepr
 {
-  ohy(ohx paramohx, String paramString, int paramInt) {}
+  public ohy(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    bcql.a(this.jdField_a_of_type_Ohx.jdField_a_of_type_Ohs.a, 2, ajya.a(2131713050), 0).a();
-    if (this.jdField_a_of_type_Ohx.jdField_a_of_type_Ohl != null) {
-      this.jdField_a_of_type_Ohx.jdField_a_of_type_Ohl.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
+    if (ReadInJoyDeliverBiuActivity.b(this.a)) {
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ohy
  * JD-Core Version:    0.7.0.1
  */

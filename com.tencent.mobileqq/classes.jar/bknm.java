@@ -1,26 +1,44 @@
-import android.util.Property;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-class bknm
-  extends Property<bknf, Float>
+public class bknm
+  implements Animator.AnimatorListener
 {
-  bknm(bknf parambknf, Class paramClass, String paramString)
+  public bknm(AECropperImageView paramAECropperImageView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramClass, paramString);
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationCancel(paramAnimator);
+    }
   }
   
-  public Float a(bknf parambknf)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return Float.valueOf(bknf.c(parambknf));
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationEnd(paramAnimator);
+    }
   }
   
-  public void a(bknf parambknf, Float paramFloat)
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    bknf.b(parambknf, paramFloat.floatValue());
+    AECropperImageView.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.onAnimationStart(paramAnimator);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bknm
  * JD-Core Version:    0.7.0.1
  */

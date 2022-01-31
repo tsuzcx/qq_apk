@@ -1,67 +1,29 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageRsp;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class bfaw
-  extends bfau
+  implements bfbo
 {
-  private CloudStorage.StRemoveUserCloudStorageReq a = new CloudStorage.StRemoveUserCloudStorageReq();
+  public bfaw(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public bfaw(String[] paramArrayOfString, String paramString)
+  public void a(long paramLong)
   {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual vid=", Long.valueOf(paramLong) });
+    if (!bdee.g(BaseApplicationImpl.getApplication()))
     {
-      String str = paramArrayOfString[i];
-      this.a.keyList.add(str);
-      i += 1;
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.post(this.a.jdField_a_of_type_JavaLangRunnable);
+      return;
     }
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    CloudStorage.StRemoveUserCloudStorageRsp localStRemoveUserCloudStorageRsp = new CloudStorage.StRemoveUserCloudStorageRsp();
-    try
-    {
-      localStRemoveUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStRemoveUserCloudStorageRsp != null) {
-        return new JSONObject();
-      }
-      betc.a("ProtoBufRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "RemoveUserCloudStorage";
+    this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a), paramLong, this.a.jdField_a_of_type_Bfnj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfaw
  * JD-Core Version:    0.7.0.1
  */

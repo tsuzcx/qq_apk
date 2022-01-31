@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8.1.1;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class alru
-  extends alsi
+class alru
+  implements BusinessObserver
 {
-  public alru(ArkAiDictUpdateMgr.8 param8) {}
+  alru(alro paramalro, String paramString) {}
   
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ThreadManager.post(new ArkAiDictUpdateMgr.8.1.1(this, paramArrayOfByte, paramBoolean), 5, null, true);
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alru
  * JD-Core Version:    0.7.0.1
  */

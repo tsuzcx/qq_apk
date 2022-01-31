@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.statistics.WtloginReporter.1;
 
-public final class aznt
-  implements Parcelable.Creator<TroopBarPOI>
+public class aznt
 {
-  public TroopBarPOI a(Parcel paramParcel)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
-  }
-  
-  public TroopBarPOI[] a(int paramInt)
-  {
-    return null;
+    ThreadManagerV2.executeOnFileThread(new WtloginReporter.1(paramQQAppInterface.getCurrentAccountUin()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aznt
  * JD-Core Version:    0.7.0.1
  */

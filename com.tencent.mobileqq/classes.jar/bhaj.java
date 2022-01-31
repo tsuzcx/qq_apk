@@ -1,45 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.subscribe.event.PublishBoxStatusEvent;
-import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.feed.CertifiedFakeFeed;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.ArrayList;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.audiorecorder.LameMp3EncodeThread;
 
-class bhaj
-  implements EIPCResultCallback
+public class bhaj
+  implements MediaPlayer.OnCompletionListener
 {
-  bhaj(bhah parambhah) {}
+  public bhaj(LameMp3EncodeThread paramLameMp3EncodeThread) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    ArrayList localArrayList;
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
-    {
-      paramEIPCResult = paramEIPCResult.data;
-      paramEIPCResult.setClassLoader(CertifiedFakeFeed.class.getClassLoader());
-      localArrayList = paramEIPCResult.getParcelableArrayList("KEY_CERTIFIED_FAKE_FEED_LIST");
-      if (localArrayList != null) {
-        wpt.a().a(new SubscribeFeedsEvent(localArrayList));
-      }
-      wpt.a().a(new PublishBoxStatusEvent(paramEIPCResult));
-      if (localArrayList != null) {
-        break label93;
-      }
-    }
-    label93:
-    for (int i = 0;; i = localArrayList.size())
-    {
-      QLog.d("QzoneIPCModule", 4, String.format("Get certifed account task list %b", new Object[] { Integer.valueOf(i) }));
-      return;
-    }
+    QMLog.i(LameMp3EncodeThread.a, "onCompletion");
+    LameMp3EncodeThread.a(this.a).sendEmptyMessage(106);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhaj
  * JD-Core Version:    0.7.0.1
  */

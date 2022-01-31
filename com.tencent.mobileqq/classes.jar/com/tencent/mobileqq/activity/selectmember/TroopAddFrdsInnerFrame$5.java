@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import axqy;
+import azmj;
 import java.util.List;
 
 class TroopAddFrdsInnerFrame$5
@@ -10,12 +10,12 @@ class TroopAddFrdsInnerFrame$5
   
   public void run()
   {
-    axqy.b(this.this$0.a.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_send", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_JavaUtilList.size()), "", "");
+    azmj.b(this.this$0.a.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_send", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_JavaUtilList.size()), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame.5
  * JD-Core Version:    0.7.0.1
  */

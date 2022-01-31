@@ -1,66 +1,153 @@
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.device.JNICallCenter.DataPoint;
-import com.tencent.device.msg.activities.DeviceTipActivity;
+import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class yej
-  extends BroadcastReceiver
 {
-  public yej(DeviceTipActivity paramDeviceTipActivity) {}
+  public static String a;
+  private static final yej jdField_a_of_type_Yej = new yej();
+  public static String b = "ACTION_PRAISED_UPDATE";
+  public static String c = "ACTION_DRAFT_SYSTEM_CHANGE";
+  private WeakReference<NativePlugin.JSContext> jdField_a_of_type_JavaLangRefWeakReference;
+  private final ConcurrentHashMap<String, ConcurrentHashMap<Integer, WeakReference<yel>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  @TargetApi(12)
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    jdField_a_of_type_JavaLangString = "SUBSCRIBE_IPC_MODULE";
+  }
+  
+  private yej()
+  {
+    if (BaseApplicationImpl.sProcessId == 1) {}
+    for (;;)
     {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (paramContext.equals("homekey"))) {
-        this.a.finish();
+      if (i != 0) {
+        QIPCServerHelper.getInstance().register(new yek(this, "SUBSCRIBE_IPC_MODULE"));
+      }
+      return;
+      i = 0;
+    }
+  }
+  
+  public static yej a()
+  {
+    return jdField_a_of_type_Yej;
+  }
+  
+  private void a(PraisedUpdateEvents paramPraisedUpdateEvents)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("feedid", paramPraisedUpdateEvents.mTargetFeedId);
+      localJSONObject.put("likestatus", paramPraisedUpdateEvents.mPraisedStatus);
+      paramPraisedUpdateEvents = new JSONObject();
+      paramPraisedUpdateEvents.put("data", localJSONObject);
+      ((NativePlugin.JSContext)this.jdField_a_of_type_JavaLangRefWeakReference.get()).callJs("onSubscribeDoLikeUpdateEvent", paramPraisedUpdateEvents);
+      QLog.d("SimpleEventBus", 2, "notifyMiniProgram onSubscribeDoLikeUpdateEvent success ");
+      return;
+    }
+    catch (JSONException paramPraisedUpdateEvents)
+    {
+      paramPraisedUpdateEvents.printStackTrace();
+    }
+  }
+  
+  private void a(String paramString, yel paramyel)
+  {
+    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    ConcurrentHashMap localConcurrentHashMap1 = localConcurrentHashMap2;
+    if (localConcurrentHashMap2 == null) {
+      localConcurrentHashMap1 = new ConcurrentHashMap();
+    }
+    localConcurrentHashMap1.put(Integer.valueOf(paramyel.hashCode()), new WeakReference(paramyel));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localConcurrentHashMap1);
+    QLog.d("SimpleEventBus", 2, "registerReceiver event Name:" + paramString + ",key：[" + paramyel.getClass().getSimpleName() + ":" + paramyel.hashCode() + "], subscribers size:" + localConcurrentHashMap1.size());
+  }
+  
+  private void b(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((paramSimpleBaseEvent instanceof PraisedUpdateEvents))) {
+      a((PraisedUpdateEvents)paramSimpleBaseEvent);
+    }
+  }
+  
+  private void b(String paramString, yel paramyel)
+  {
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localConcurrentHashMap == null) {
+      return;
+    }
+    localConcurrentHashMap.remove(Integer.valueOf(paramyel.hashCode()));
+    if (localConcurrentHashMap.size() == 0) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    }
+    QLog.d("SimpleEventBus", 2, "unRegisterReceiver event Name:" + paramString + ",key：[" + paramyel.getClass().getSimpleName() + ":" + paramyel.hashCode() + "], subscribers size:" + localConcurrentHashMap.size());
+  }
+  
+  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    Object localObject = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramSimpleBaseEvent.getClass().getName());
+    if (localObject == null) {}
+    for (;;)
+    {
+      return;
+      b(paramSimpleBaseEvent);
+      localObject = ((ConcurrentHashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+          ((yel)localWeakReference.get()).a(paramSimpleBaseEvent);
+        }
       }
     }
-    long l;
-    do
+  }
+  
+  public void a(NativePlugin.JSContext paramJSContext)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramJSContext);
+  }
+  
+  public void a(yel paramyel)
+  {
+    if (paramyel == null) {}
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-          if (paramContext.equals("android.intent.action.SCREEN_OFF"))
-          {
-            bbcf.a();
-            return;
-          }
-          if (paramContext.equals("android.intent.action.SCREEN_ON"))
-          {
-            bbcf.a(2131230742, -1, null);
-            return;
-          }
-          if (!paramContext.equals("SmartDevice_receiveDPMsg")) {
-            break;
-          }
-        } while ((DataPoint)paramIntent.getExtras().getParcelable("dataPoint") != null);
-        return;
-      } while (!paramContext.equals("On_OccupyMicrophoneNotify_Push"));
-      if (QLog.isColorLevel()) {
-        QLog.d(DeviceTipActivity.a, 2, "DeviceTipActivity intent.getExtras() : " + paramIntent.getExtras());
+      return;
+      Iterator localIterator = paramyel.a().iterator();
+      while (localIterator.hasNext()) {
+        a(((Class)localIterator.next()).getName(), paramyel);
       }
-      paramContext = paramIntent.getExtras();
-      l = paramContext.getLong("din", 0L);
-      paramContext = paramContext.getString("uin", "");
-    } while ((!this.a.b.equals(String.valueOf(Long.valueOf(l)))) || (TextUtils.isEmpty(paramContext)));
-    this.a.finish();
+    }
+  }
+  
+  public void b(yel paramyel)
+  {
+    if ((paramyel == null) || (paramyel.a() == null)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramyel.a().iterator();
+      while (localIterator.hasNext()) {
+        b(((Class)localIterator.next()).getName(), paramyel);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yej
  * JD-Core Version:    0.7.0.1
  */

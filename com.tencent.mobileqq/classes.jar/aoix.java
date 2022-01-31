@@ -1,44 +1,42 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aoix
-  implements aola
 {
-  public aoix(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  private boolean a;
   
-  public void a(String paramString, int paramInt)
+  public static aoix a(String paramString)
   {
-    if (!paramString.equals(ExtendFriendSquareFragment.a(this.a)))
-    {
-      ExtendFriendSquareFragment.a(this.a, paramString);
-      if (!aoeu.a.equals(ExtendFriendSquareFragment.a(this.a))) {
-        break label187;
-      }
-      ExtendFriendSquareFragment.a(this.a, false);
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
     }
-    label187:
-    for (boolean bool1 = ExtendFriendSquareFragment.f(this.a);; bool1 = false)
+    try
     {
-      boolean bool2 = ExtendFriendSquareFragment.a(this.a, false, paramString);
-      long l = Math.abs(System.currentTimeMillis() - ExtendFriendSquareFragment.b(this.a));
-      if ((!bool2) || (l > 60000L) || (bool1))
+      aoix localaoix = new aoix();
+      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
+      for (;;)
       {
-        ExtendFriendSquareFragment.b(this.a, false);
-        this.a.a.a();
-        this.a.a.notifyDataSetChanged();
-        this.a.a.a(false);
-        ExtendFriendSquareFragment.a(this.a);
-        ExtendFriendSquareFragment.a(this.a).removeMessages(11);
-        ExtendFriendSquareFragment.a(this.a).sendEmptyMessageDelayed(11, 500L);
-        return;
+        localaoix.a = bool;
+        return localaoix;
+        bool = false;
       }
-      ExtendFriendSquareFragment.b(this.a, true);
-      return;
+      return null;
     }
+    catch (Exception paramString)
+    {
+      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoix
  * JD-Core Version:    0.7.0.1
  */

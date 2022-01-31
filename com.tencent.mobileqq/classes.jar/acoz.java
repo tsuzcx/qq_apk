@@ -1,49 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.UpgradeTipsDialog;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class acoz
-  extends WebViewClient
+class acoz
+  implements DialogInterface.OnClickListener
 {
-  public acoz(UpgradeTipsDialog paramUpgradeTipsDialog) {}
+  acoz(acox paramacox) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageFinished: " + paramString);
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageStarted: " + paramString);
-    }
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onReceivedError: " + paramInt + ", " + paramString1);
-    }
-    axqy.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    while (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
-      return true;
-    }
-    this.a.a.loadUrl(paramString);
-    return true;
+    this.a.a.a();
+    DevlockQuickLoginActivity.c(this.a.a);
+    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acoz
  * JD-Core Version:    0.7.0.1
  */

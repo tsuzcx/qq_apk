@@ -1,38 +1,83 @@
-import android.graphics.drawable.ColorDrawable;
+import android.hardware.GeomagneticField;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class anoz
-  extends ColorDrawable
+public abstract class anoz
+  implements SensorEventListener
 {
-  private int a;
-  private int b;
+  private float jdField_a_of_type_Float = -1.0F;
+  protected SensorManager a;
+  protected anos a;
+  protected List<Sensor> a;
+  private boolean jdField_a_of_type_Boolean;
+  protected float[] a;
+  private float b = -1.0F;
+  private float c = -1.0F;
   
-  public anoz(int paramInt1, int paramInt2)
+  public anoz(SensorManager paramSensorManager, anos paramanos)
   {
-    super(0);
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ArrayOfFloat = new float[3];
+    this.jdField_a_of_type_AndroidHardwareSensorManager = paramSensorManager;
+    this.jdField_a_of_type_Anos = paramanos;
   }
   
-  public anoz(int paramInt1, int paramInt2, int paramInt3)
+  private GeomagneticField a()
   {
-    super(paramInt1);
-    this.a = paramInt2;
-    this.b = paramInt3;
+    if (this.jdField_a_of_type_Boolean) {
+      return new GeomagneticField(this.jdField_a_of_type_Float, this.b, this.c, System.currentTimeMillis());
+    }
+    return null;
   }
   
-  public int getIntrinsicHeight()
+  protected float a()
   {
-    return this.b;
+    GeomagneticField localGeomagneticField = a();
+    if (localGeomagneticField != null) {
+      return localGeomagneticField.getDeclination();
+    }
+    return 0.0F;
   }
   
-  public int getIntrinsicWidth()
+  public void a(int paramInt)
   {
-    return this.a;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, paramInt);
+    }
   }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, 1);
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, localSensor);
+    }
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anoz
  * JD-Core Version:    0.7.0.1
  */

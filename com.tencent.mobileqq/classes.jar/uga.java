@@ -1,47 +1,69 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
 import java.util.List;
 
 public class uga
-  extends QQUIEventReceiver<AbsVideoInfoWidget, tli>
+  extends ugb<uer>
 {
-  public uga(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget)
+  private int a = 200;
+  
+  protected double a()
   {
-    super(paramAbsVideoInfoWidget);
+    return 0.3D;
   }
   
-  public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull tli paramtli)
+  protected int a()
   {
-    if ((paramtli.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtli.jdField_a_of_type_JavaUtilList == null)) {}
-    String str;
-    StoryVideoItem localStoryVideoItem;
-    do
+    return this.a;
+  }
+  
+  protected long a(uer paramuer1, uer paramuer2)
+  {
+    if ((paramuer1 != paramuer2) && (paramuer1.b == paramuer2.b)) {
+      return 1L;
+    }
+    return Math.abs(paramuer1.b - paramuer2.b);
+  }
+  
+  protected uer a(List<uer> paramList)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < paramList.size())
     {
-      do
-      {
-        return;
-        while (paramAbsVideoInfoWidget.a == null) {}
-        str = paramAbsVideoInfoWidget.a.a;
-        paramtli = paramtli.jdField_a_of_type_JavaUtilList.iterator();
-      } while (!paramtli.hasNext());
-      localStoryVideoItem = (StoryVideoItem)paramtli.next();
-    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
-    paramAbsVideoInfoWidget.i();
+      l += ((uer)paramList.get(i)).b;
+      i += 1;
+    }
+    uer localuer = new uer();
+    localuer.b = (l / paramList.size());
+    return localuer;
   }
   
-  public Class acceptEventClass()
+  public void a(int paramInt)
   {
-    return tli.class;
+    this.a = paramInt;
+  }
+  
+  protected boolean a(long paramLong)
+  {
+    int i = b();
+    if (i > 0) {
+      if (paramLong / i >= 1500L) {}
+    }
+    while (paramLong < 200L)
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  protected boolean a(uer paramuer1, uer paramuer2)
+  {
+    return paramuer1.b == paramuer2.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uga
  * JD-Core Version:    0.7.0.1
  */

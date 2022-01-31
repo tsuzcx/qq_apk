@@ -1,60 +1,46 @@
+import android.content.res.Resources;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aclz
-  implements bfph
+  implements View.OnTouchListener
 {
-  public aclz(TroopRequestActivity paramTroopRequestActivity, bfpc parambfpc) {}
+  public aclz(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 20011;
-    switch (paramInt)
+    int i;
+    if ((TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 512)))
     {
-    default: 
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
+      i = 1;
+      if ((!this.a.a.isMember) && (i != 0)) {
+        break label66;
+      }
     }
-    if (bbfj.d(BaseApplication.getContext())) {
-      paramInt = i;
-    }
-    for (;;)
+    label66:
+    do
     {
-      try
-      {
-        switch (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get())
-        {
-        case 1: 
-        case 22: 
-          long l = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get();
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app.getCurrentAccountUin();
-          xkn.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.s, String.valueOf(l), paramView, paramInt, null);
-        }
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        continue;
-      }
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.t, "", "");
+      return false;
+      i = 0;
       break;
-      paramInt = 20009;
-      continue;
-      bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131694610, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
-      continue;
-      paramInt = i;
-    }
+      if (paramMotionEvent.getAction() == 0) {
+        paramView.getBackground().setColorFilter(new LightingColorFilter(0, -950263));
+      }
+    } while ((paramMotionEvent.getX() < this.a.getResources().getDisplayMetrics().widthPixels - 2) && (paramMotionEvent.getX() > 0.0F) && (paramMotionEvent.getY() > 0.0F) && (paramMotionEvent.getY() <= this.a.getResources().getDimensionPixelSize(2131296956) - 2) && (paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
+    paramView.getBackground().setColorFilter(new LightingColorFilter(0, -158425));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,7 @@
-public abstract interface bcse
-{
-  public abstract void a();
-}
+class bcse {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcse
  * JD-Core Version:    0.7.0.1
  */

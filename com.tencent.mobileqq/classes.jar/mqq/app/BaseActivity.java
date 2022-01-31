@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -31,6 +32,7 @@ public class BaseActivity
   public static int localeId;
   private AppRuntime app;
   private boolean isResume;
+  AndroidOreoUtils mAndroidOreoUtils;
   protected boolean mIsShadow;
   private SparseArray<List> mPermissionCallerMap = new SparseArray();
   private AppRuntime mProcRuntime;
@@ -77,6 +79,11 @@ public class BaseActivity
     return 0;
   }
   
+  protected boolean compatibleAndroidOreo()
+  {
+    return true;
+  }
+  
   public final AppRuntime getAppRuntime()
   {
     return this.app;
@@ -121,6 +128,12 @@ public class BaseActivity
   
   protected void onCreate(Bundle paramBundle)
   {
+    this.mAndroidOreoUtils = new AndroidOreoUtils(this);
+    if ((Build.VERSION.SDK_INT == 26) && (compatibleAndroidOreo()) && (getApplicationInfo().targetSdkVersion >= 27) && (this.mAndroidOreoUtils.isTranslucentOrFloating()))
+    {
+      boolean bool = this.mAndroidOreoUtils.fixOrientation();
+      QLog.i("mqq", 1, "onCreate fixOrientation when Oreo, result = " + bool);
+    }
     onCreateNoRuntime(paramBundle);
     if (QLog.isColorLevel()) {
       QLog.i("mqq", 2, "[Activity]" + getClass().getSimpleName() + " onCreate");
@@ -341,6 +354,16 @@ public class BaseActivity
       localAppRuntime = paramAppRuntime.getAppRuntime(getModuleId());
     }
     this.app = localAppRuntime;
+  }
+  
+  public void setRequestedOrientation(int paramInt)
+  {
+    if ((Build.VERSION.SDK_INT == 26) && (compatibleAndroidOreo()) && (getApplicationInfo().targetSdkVersion >= 27) && (this.mAndroidOreoUtils.isTranslucentOrFloating()) && (this.mAndroidOreoUtils.isFixedOrientation(this.mAndroidOreoUtils.getCurrentActivityInfo(), paramInt)))
+    {
+      QLog.i("mqq", 1, "avoid calling setRequestedOrientation when Oreo.");
+      return;
+    }
+    super.setRequestedOrientation(paramInt);
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)

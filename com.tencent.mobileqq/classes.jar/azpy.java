@@ -1,28 +1,65 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation.10.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
+import java.util.ArrayList;
 
 public class azpy
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public azpy(TroopFileItemOperation.10.1 param1) {}
+  private azpx jdField_a_of_type_Azpx;
+  private Thread jdField_a_of_type_JavaLangThread;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azpy(SuspendThreadManager paramSuspendThreadManager, Looper paramLooper, Thread paramThread, azpx paramazpx)
   {
-    switch (paramInt)
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangThread = paramThread;
+    this.jdField_a_of_type_Azpx = paramazpx;
+  }
+  
+  public void a()
+  {
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    sendMessageDelayed(localMessage, 200L);
+  }
+  
+  public void b()
+  {
+    removeMessages(1);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
     }
     do
     {
       return;
-    } while (azpv.a(this.a.a.jdField_a_of_type_Azpv) == 0);
-    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_Azpv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_Azpv.jdField_a_of_type_Long).b(this.a.a.jdField_a_of_type_Azpi.a);
+      if (this.jdField_a_of_type_JavaLangThread.getState() == Thread.State.BLOCKED)
+      {
+        if (this.jdField_a_of_type_Boolean == true)
+        {
+          SuspendThreadManager.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsThreadSuspendThreadManager, SuspendThreadManager.a());
+          SuspendThreadManager.a(1);
+          b();
+          this.jdField_a_of_type_Azpx.a();
+          return;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        a();
+        return;
+      }
+    } while (SuspendThreadManager.a().isEmpty());
+    this.jdField_a_of_type_Boolean = false;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azpy
  * JD-Core Version:    0.7.0.1
  */

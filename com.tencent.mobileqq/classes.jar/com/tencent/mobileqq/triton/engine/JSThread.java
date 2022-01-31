@@ -12,14 +12,12 @@ public class JSThread
 {
   private static final int MAX_PENDING_VSYNC = 1;
   private static final String TAG = "JSThread";
-  private boolean firstFrame;
   private long jsThreadId = -1L;
-  private Runnable mCallbackMainLoop = new JSThread.1(this);
   private JSThread.IListener mListener;
   private final AtomicInteger mPendingVSyncCount = new AtomicInteger();
   private volatile boolean mQuitThread = false;
   private TTEngine mTritonEngine;
-  private Choreographer.FrameCallback mVsyncCallback = new JSThread.2(this);
+  private Choreographer.FrameCallback mVsyncCallback = new JSThread.1(this);
   
   public JSThread(TTEngine paramTTEngine, JSThread.IListener paramIListener)
   {
@@ -32,7 +30,6 @@ public class JSThread
   @MainThread
   private void startScheduleVSync()
   {
-    this.firstFrame = true;
     Choreographer.getInstance().postFrameCallback(this.mVsyncCallback);
   }
   
@@ -66,42 +63,40 @@ public class JSThread
   public void run()
   {
     this.jsThreadId = getId();
+    TTLog.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") run start");
     if (this.mListener == null) {
       return;
     }
     this.mListener.onPrepare();
     try
     {
-      boolean bool;
-      do
+      while (!this.mQuitThread)
       {
         JNICaller.RenderContext.nUpdateRenderContext(this.mTritonEngine.getRenderContext(), this.mTritonEngine.getNativeTTAppHandle());
         JNICaller.TTEngine.runLoop(this.mTritonEngine, true);
-        bool = this.mQuitThread;
         JNICaller.TTEngine.runLoop(this.mTritonEngine, false);
-        TTLog.i("JSThread", "JSThread runLoop is interrupted loopQuit=" + bool);
-      } while (!bool);
+        TTLog.i("JSThread", "JSThread (tid: " + this.jsThreadId + ") runLoop is interrupted loopQuit=" + this.mQuitThread);
+      }
+      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        TTLog.e("JSThread", "JSThread run error " + localException.getMessage());
-      }
+      TTLog.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") run error " + localException.getMessage());
+      TTLog.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") run exit");
+      this.mListener.onExit();
     }
-    TTLog.e("JSThread", "JSThread run exit");
-    this.mListener.onExit();
   }
   
   public void shutdown()
   {
     this.mQuitThread = true;
+    TTLog.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") shutdown");
     JNICaller.TTEngine.interruptLoop(this.mTritonEngine);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.JSThread
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
@@ -35,7 +35,7 @@ public class ViewPagerRadioGroup
         localRadioButton.setChecked(true);
         if (paramInt == 1)
         {
-          localRadioButton.setContentDescription(ajya.a(2131716473));
+          localRadioButton.setContentDescription(alpo.a(2131716845));
           localRadioButton.sendAccessibilityEvent(128);
         }
       }
@@ -44,7 +44,7 @@ public class ViewPagerRadioGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ViewPagerRadioGroup
  * JD-Core Version:    0.7.0.1
  */

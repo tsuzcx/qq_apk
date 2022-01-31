@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbig;
+import bdhc;
 import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;
@@ -37,15 +37,15 @@ class QQCustomDialogWtihInputAndChoose$6$1
       this.a.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
       if ((this.a.this$0.c) && (this.a.this$0.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_AndroidWidgetEditText.getText().toString())))
       {
-        localObject1 = (LinearLayout)this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131369269);
+        localObject1 = (LinearLayout)this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131369504);
         if ((localObject1 != null) && (((LinearLayout)localObject1).getChildCount() > 0))
         {
           localObject1 = ((LinearLayout)localObject1).getChildAt(0);
-          localObject2 = (TextView)((View)localObject1).findViewById(2131369268);
+          localObject2 = (TextView)((View)localObject1).findViewById(2131369503);
           if (((TextView)localObject2).getText() != null) {
             this.a.this$0.a(((TextView)localObject2).getText().toString());
           }
-          localObject1 = ((View)localObject1).findViewById(2131369267);
+          localObject1 = ((View)localObject1).findViewById(2131369502);
           ((View)localObject1).setVisibility(0);
           this.a.this$0.jdField_a_of_type_AndroidViewView = ((View)localObject1);
           this.a.this$0.c = false;

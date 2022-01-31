@@ -1,29 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class acpr
-  implements DialogInterface.OnClickListener
+  implements bhqd
 {
-  public acpr(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public acpr(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bhpy parambhpy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.l();
-    this.a.b(this.a.n);
-    if (VipUtils.b(this.a.app)) {}
-    for (paramDialogInterface = "4";; paramDialogInterface = "3")
+    this.jdField_a_of_type_Bhpy.dismiss();
+    switch (paramInt)
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, naj.a(), paramDialogInterface, "1");
+    default: 
       return;
     }
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "P_CliOper", "Grp_discuss", "", "0X80040ED", "0X80040ED", 0, 0, "", "", "", "");
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006623", "0X8006623", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpr
  * JD-Core Version:    0.7.0.1
  */

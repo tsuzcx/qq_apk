@@ -1,6 +1,6 @@
 package cooperation.qzone.panorama.controller;
 
-import bhhm;
+import bjix;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -9,7 +9,7 @@ public class TouchController$1
 {
   private int[] jdField_b_of_type_ArrayOfInt = { 0, 0 };
   
-  public TouchController$1(bhhm parambhhm, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
+  public TouchController$1(bjix parambjix, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
   
   public void run()
   {
@@ -30,12 +30,12 @@ public class TouchController$1
     {
       if ((this.jdField_b_of_type_ArrayOfInt[1] == 1) && (this.jdField_b_of_type_ArrayOfInt[0] == 1))
       {
-        bhhm.a(this.this$0).cancel();
+        bjix.a(this.this$0).cancel();
         cancel();
       }
       float f1 = this.jdField_a_of_type_ArrayOfInt[0];
-      float f2 = bhhm.a(this.this$0);
-      bhhm.a(this.this$0, 0.0F, f1 * f2);
+      float f2 = bjix.a(this.this$0);
+      bjix.a(this.this$0, 0.0F, f1 * f2);
       return;
       this.jdField_b_of_type_ArrayOfInt[0] = 0;
       this.jdField_a_of_type_ArrayOfInt[0] -= 3;
@@ -67,7 +67,7 @@ public class TouchController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.panorama.controller.TouchController.1
  * JD-Core Version:    0.7.0.1
  */

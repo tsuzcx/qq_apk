@@ -1,52 +1,27 @@
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import mqq.app.QQPermissionCallback;
+
 public class avxv
-  extends avxm
+  implements QQPermissionCallback
 {
-  public android.opengl.EGLContext a;
-  public javax.microedition.khronos.egl.EGLContext a;
-  public int c;
+  public avxv(ScanTorchActivity paramScanTorchActivity) {}
   
-  public avxv(avxm paramavxm)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramavxm.jdField_a_of_type_JavaLangString, paramavxm.jdField_a_of_type_Int, paramavxm.jdField_b_of_type_Boolean, paramavxm.jdField_a_of_type_Boolean, paramavxm.jdField_a_of_type_Long, paramavxm.jdField_b_of_type_Long);
+    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission deny i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
+    bdcd.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public avxv(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramString, paramInt, paramBoolean1, paramBoolean2, paramLong1, paramLong2);
-  }
-  
-  public boolean a(avxm paramavxm)
-  {
-    boolean bool = super.a(paramavxm);
-    if ((paramavxm instanceof avxv))
-    {
-      paramavxm = (avxv)paramavxm;
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != paramavxm.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)
-      {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramavxm.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-        bool = true;
-      }
-      if (this.jdField_a_of_type_AndroidOpenglEGLContext != paramavxm.jdField_a_of_type_AndroidOpenglEGLContext)
-      {
-        this.jdField_a_of_type_AndroidOpenglEGLContext = paramavxm.jdField_a_of_type_AndroidOpenglEGLContext;
-        bool = true;
-      }
-      if (this.c != paramavxm.c)
-      {
-        this.c = paramavxm.c;
-        return true;
-      }
-    }
-    else
-    {
-      throw new IllegalArgumentException("should be FlowDecodeConfig's instance");
-    }
-    return bool;
+    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission grant i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avxv
  * JD-Core Version:    0.7.0.1
  */

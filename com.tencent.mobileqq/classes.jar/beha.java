@@ -1,32 +1,13 @@
-import android.text.Editable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.view.View.OnClickListener;
 
-public class beha
-  implements View.OnTouchListener
+public abstract interface beha
+  extends bebx
 {
-  public beha(Login paramLogin) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
-      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      }
-    }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
-      return false;
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    return false;
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beha
  * JD-Core Version:    0.7.0.1
  */

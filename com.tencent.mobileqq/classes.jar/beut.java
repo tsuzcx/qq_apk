@@ -1,93 +1,19 @@
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
 public class beut
+  implements bhqf
 {
-  private static volatile beut jdField_a_of_type_Beut;
-  private MiniAppProxy jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+  public beut(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public static beut a()
+  public void onDismiss()
   {
-    if (jdField_a_of_type_Beut == null) {}
-    try
-    {
-      if (jdField_a_of_type_Beut == null) {
-        jdField_a_of_type_Beut = new beut();
-      }
-      return jdField_a_of_type_Beut;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getLoginType() == -1) && (MiniAppEnv.g().getLoginInfo() != null)) {
-      return MiniAppEnv.g().getLoginInfo().a();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getLoginType();
-  }
-  
-  public String a()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getAccount() == null) && (MiniAppEnv.g().getLoginInfo() != null)) {
-      return MiniAppEnv.g().getLoginInfo().a();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getAccount();
-  }
-  
-  public byte[] a()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getLoginSig() == null) && (MiniAppEnv.g().getLoginInfo() != null)) {
-      return MiniAppEnv.g().getLoginInfo().a();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getLoginSig();
-  }
-  
-  public String b()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getNickName() == null) && (MiniAppEnv.g().getLoginInfo() != null)) {
-      return MiniAppEnv.g().getLoginInfo().b();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getNickName();
-  }
-  
-  public String c()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPayOpenId() == null) && (MiniAppEnv.g().getLoginInfo() != null)) {
-      return MiniAppEnv.g().getLoginInfo().c();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPayOpenId();
-  }
-  
-  public String d()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPayOpenKey() == null) && (MiniAppEnv.g().getLoginInfo() != null)) {
-      return MiniAppEnv.g().getLoginInfo().d();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPayOpenKey();
-  }
-  
-  public String e()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPlatformId() == null) && (MiniAppEnv.g().getLoginInfo() != null)) {
-      return MiniAppEnv.g().getLoginInfo().e();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getPlatformId();
-  }
-  
-  public String f()
-  {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getAppId() == null) && (MiniAppEnv.g().getLoginInfo() != null)) {
-      return MiniAppEnv.g().getLoginInfo().f();
-    }
-    return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getAppId();
+    ShareActionSheetV2.b(this.a).onDismiss(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beut
  * JD-Core Version:    0.7.0.1
  */

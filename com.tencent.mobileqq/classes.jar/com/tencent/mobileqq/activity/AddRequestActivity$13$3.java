@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import aahz;
+import abyz;
 import android.widget.TextView;
 
 public class AddRequestActivity$13$3
   implements Runnable
 {
-  public AddRequestActivity$13$3(aahz paramaahz) {}
+  public AddRequestActivity$13$3(abyz paramabyz) {}
   
   public void run()
   {
-    this.a.a.a((TextView)this.a.a.findViewById(2131370496));
+    this.a.a.a((TextView)this.a.a.findViewById(2131370802));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.13.3
  * JD-Core Version:    0.7.0.1
  */

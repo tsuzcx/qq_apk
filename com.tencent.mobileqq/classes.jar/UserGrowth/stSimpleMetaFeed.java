@@ -1,6 +1,7 @@
 package UserGrowth;
 
 import NS_KING_SOCIALIZE_META.stMetaComment;
+import NS_KING_SOCIALIZE_META.stMetaGeoInfo;
 import NS_KING_SOCIALIZE_META.stMetaTag;
 import NS_KING_SOCIALIZE_META.stMetaUgcImage;
 import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
@@ -18,33 +19,40 @@ public final class stSimpleMetaFeed
 {
   static stMetaTag cache_bt_style;
   static ArrayList<stMetaComment> cache_comments;
+  static stMetaGeoInfo cache_geoInfo;
   static stH5OpInfo cache_h5_op_info;
   static ArrayList<stMetaUgcImage> cache_images;
   static ArrayList<stImgReplacement> cache_imgReplacements;
+  static stMagicBrand cache_magicBrand;
   static Map<String, String> cache_map_ext;
   static Map<Integer, byte[]> cache_map_pass_back;
   static stMusicFullInfo cache_music_info;
   static stNewIconStyle cache_new_icon;
-  static stOpVideo cache_opVideo = new stOpVideo();
+  static stOpVideo cache_opVideo;
   static stSimpleMetaPerson cache_poster = new stSimpleMetaPerson();
   static stShareInfo cache_share_info;
+  static ArrayList<stSimpleComment> cache_simpleComments;
   static ArrayList<stMetaTag> cache_tags;
   static stMetaUgcVideoSeg cache_video = new stMetaUgcVideoSeg();
+  static stVideoTag cache_videoTag = new stVideoTag();
   static stWaterFallCardStyle cache_waterFallCardStyle;
   static stWaterFallItemStrategy cache_waterFallItemStrategy;
   public String bottom_img_url = "";
   public stMetaTag bt_style;
   public ArrayList<stMetaComment> comments;
+  public int createTime;
   public int ding_count;
   public String feed_desc = "";
   public String feed_material_jump_url = "";
   public String gdt_ad_info = "";
   public int gdt_ad_type;
+  public stMetaGeoInfo geoInfo;
   public stH5OpInfo h5_op_info;
   public String id = "";
   public ArrayList<stMetaUgcImage> images;
   public ArrayList<stImgReplacement> imgReplacements;
   public int is_ding;
+  public stMagicBrand magicBrand;
   public Map<String, String> map_ext;
   public Map<Integer, byte[]> map_pass_back;
   public String material_desc = "";
@@ -60,11 +68,13 @@ public final class stSimpleMetaFeed
   public stSimpleMetaPerson poster;
   public String poster_id = "";
   public stShareInfo share_info;
+  public ArrayList<stSimpleComment> simpleComments;
   public ArrayList<stMetaTag> tags;
   public int total_comment_num;
   public String traceId = "";
   public stMetaUgcVideoSeg video;
   public int videoPoolType;
+  public stVideoTag videoTag;
   public int video_type;
   public String video_url = "";
   public stWaterFallCardStyle waterFallCardStyle;
@@ -99,11 +109,17 @@ public final class stSimpleMetaFeed
     cache_imgReplacements = new ArrayList();
     localObject = new stImgReplacement();
     cache_imgReplacements.add(localObject);
+    cache_opVideo = new stOpVideo();
+    cache_geoInfo = new stMetaGeoInfo();
+    cache_magicBrand = new stMagicBrand();
+    cache_simpleComments = new ArrayList();
+    localObject = new stSimpleComment();
+    cache_simpleComments.add(localObject);
   }
   
   public stSimpleMetaFeed() {}
   
-  public stSimpleMetaFeed(String paramString1, String paramString2, String paramString3, stSimpleMetaPerson paramstSimpleMetaPerson, stMetaUgcVideoSeg paramstMetaUgcVideoSeg, ArrayList<stMetaUgcImage> paramArrayList, int paramInt1, int paramInt2, ArrayList<stMetaComment> paramArrayList1, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6, String paramString7, stShareInfo paramstShareInfo, String paramString8, long paramLong1, long paramLong2, stMusicFullInfo paramstMusicFullInfo, String paramString9, ArrayList<stMetaTag> paramArrayList2, Map<Integer, byte[]> paramMap, int paramInt5, String paramString10, stMetaTag paramstMetaTag, stH5OpInfo paramstH5OpInfo, int paramInt6, Map<String, String> paramMap1, String paramString11, String paramString12, stNewIconStyle paramstNewIconStyle, String paramString13, stWaterFallItemStrategy paramstWaterFallItemStrategy, stWaterFallCardStyle paramstWaterFallCardStyle, int paramInt7, ArrayList<stImgReplacement> paramArrayList3, stOpVideo paramstOpVideo, String paramString14)
+  public stSimpleMetaFeed(String paramString1, String paramString2, String paramString3, stSimpleMetaPerson paramstSimpleMetaPerson, stMetaUgcVideoSeg paramstMetaUgcVideoSeg, ArrayList<stMetaUgcImage> paramArrayList, int paramInt1, int paramInt2, ArrayList<stMetaComment> paramArrayList1, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6, String paramString7, stShareInfo paramstShareInfo, String paramString8, long paramLong1, long paramLong2, stMusicFullInfo paramstMusicFullInfo, String paramString9, ArrayList<stMetaTag> paramArrayList2, Map<Integer, byte[]> paramMap, int paramInt5, String paramString10, stMetaTag paramstMetaTag, stH5OpInfo paramstH5OpInfo, int paramInt6, Map<String, String> paramMap1, String paramString11, String paramString12, stNewIconStyle paramstNewIconStyle, String paramString13, stWaterFallItemStrategy paramstWaterFallItemStrategy, stWaterFallCardStyle paramstWaterFallCardStyle, int paramInt7, ArrayList<stImgReplacement> paramArrayList3, stOpVideo paramstOpVideo, String paramString14, stMetaGeoInfo paramstMetaGeoInfo, stMagicBrand paramstMagicBrand, ArrayList<stSimpleComment> paramArrayList4, int paramInt8, stVideoTag paramstVideoTag)
   {
     this.id = paramString1;
     this.wording = paramString2;
@@ -144,6 +160,11 @@ public final class stSimpleMetaFeed
     this.imgReplacements = paramArrayList3;
     this.opVideo = paramstOpVideo;
     this.traceId = paramString14;
+    this.geoInfo = paramstMetaGeoInfo;
+    this.magicBrand = paramstMagicBrand;
+    this.simpleComments = paramArrayList4;
+    this.createTime = paramInt8;
+    this.videoTag = paramstVideoTag;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -187,6 +208,11 @@ public final class stSimpleMetaFeed
     this.imgReplacements = ((ArrayList)paramJceInputStream.read(cache_imgReplacements, 36, false));
     this.opVideo = ((stOpVideo)paramJceInputStream.read(cache_opVideo, 37, false));
     this.traceId = paramJceInputStream.readString(38, false);
+    this.geoInfo = ((stMetaGeoInfo)paramJceInputStream.read(cache_geoInfo, 39, false));
+    this.magicBrand = ((stMagicBrand)paramJceInputStream.read(cache_magicBrand, 40, false));
+    this.simpleComments = ((ArrayList)paramJceInputStream.read(cache_simpleComments, 41, false));
+    this.createTime = paramJceInputStream.read(this.createTime, 42, false);
+    this.videoTag = ((stVideoTag)paramJceInputStream.read(cache_videoTag, 43, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -289,6 +315,19 @@ public final class stSimpleMetaFeed
     }
     if (this.traceId != null) {
       paramJceOutputStream.write(this.traceId, 38);
+    }
+    if (this.geoInfo != null) {
+      paramJceOutputStream.write(this.geoInfo, 39);
+    }
+    if (this.magicBrand != null) {
+      paramJceOutputStream.write(this.magicBrand, 40);
+    }
+    if (this.simpleComments != null) {
+      paramJceOutputStream.write(this.simpleComments, 41);
+    }
+    paramJceOutputStream.write(this.createTime, 42);
+    if (this.videoTag != null) {
+      paramJceOutputStream.write(this.videoTag, 43);
     }
   }
 }

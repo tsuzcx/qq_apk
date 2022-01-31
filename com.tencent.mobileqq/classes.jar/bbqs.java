@@ -1,73 +1,37 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bbqs
+  extends MSFServlet
 {
-  public int a;
-  public bbqu a;
-  @aumc
-  public String a;
-  public AtomicBoolean a;
-  public bbqt[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
-  public String o;
-  public String p;
-  public String q;
-  public String r;
-  public String s;
-  public String t;
-  public String u;
-  
-  public bbqs()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    ((AppInterface)getAppRuntime()).getTroopFileProtoReqMgr().a(paramIntent, paramFromServiceMsg);
   }
   
-  public bbqs(String paramString)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramString.equals("0")) {
-      a();
+    if (paramIntent == null) {
+      return;
     }
-    this.jdField_a_of_type_ArrayOfBbqt = new bbqt[5];
-    while (i1 < 5)
-    {
-      this.jdField_a_of_type_ArrayOfBbqt[i1] = new bbqt(this);
-      i1 += 1;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = ajya.a(2131714139);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = -1;
-    this.e = "#FF03081A";
-    this.p = "#FF878B99";
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bdku.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    boolean bool = paramIntent.getBooleanExtra("fastresendenable", false);
+    paramPacket.addAttribute("fastresend", Boolean.valueOf(bool));
+    paramPacket.autoResend = bool;
+    paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+    paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(paramIntent.getBooleanExtra("remind_slown_network", true)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbqs
  * JD-Core Version:    0.7.0.1
  */

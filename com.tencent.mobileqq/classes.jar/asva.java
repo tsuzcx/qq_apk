@@ -1,63 +1,66 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class asva
-  implements axeg
+  implements BusinessObserver
 {
-  asva(asuw paramasuw, long paramLong, asur paramasur, String paramString, int paramInt1, int paramInt2) {}
+  asva(asuy paramasuy, asvc paramasvc, String paramString) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadVideo id = " + this.jdField_a_of_type_Long + ", result =" + paramInt);
-    }
-    if (this.jdField_a_of_type_Asur.jdField_a_of_type_Axei.a != null)
+    new Bundle();
+    paramBundle = paramBundle.getByteArray("data");
+    if (paramBundle == null)
     {
-      String str = ShortVideoUtils.a(this.jdField_a_of_type_Asur.jdField_a_of_type_Axei.a, "mp4");
-      asus localasus = this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_JavaLangString);
-      if ((localasus != null) && (!localasus.jdField_a_of_type_Boolean))
+      this.jdField_a_of_type_Asvc.a(this.jdField_a_of_type_JavaLangString, false, -10002);
+      return;
+    }
+    FastAuthorize.AuthorizeResponse localAuthorizeResponse = new FastAuthorize.AuthorizeResponse();
+    try
+    {
+      localAuthorizeResponse.mergeFrom(paramBundle);
+      if ((localAuthorizeResponse.ret.get().equals("0")) && (localAuthorizeResponse.apk_name.has()))
       {
-        localasus.jdField_a_of_type_Int = paramInt;
-        localasus.jdField_a_of_type_Asur.jdField_a_of_type_Int = 3;
-        if (paramInt == 0) {
-          i = 1;
+        if (localAuthorizeResponse.access_token.has()) {
+          this.jdField_a_of_type_Asuy.a.jdField_a_of_type_JavaLangString = localAuthorizeResponse.access_token.get();
         }
-        localasus.jdField_a_of_type_Asvj = new asvj(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, i, str, false);
-        this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_JavaLangString, localasus);
-        this.jdField_a_of_type_Asuw.a(localasus.jdField_a_of_type_Asur, 0, 0, "");
+        if (localAuthorizeResponse.openid.has()) {
+          this.jdField_a_of_type_Asuy.a.b = localAuthorizeResponse.openid.get();
+        }
+        if (localAuthorizeResponse.pay_token.has()) {
+          this.jdField_a_of_type_Asuy.a.c = localAuthorizeResponse.pay_token.get();
+        }
+        this.jdField_a_of_type_Asuy.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_Asvc.a(this.jdField_a_of_type_JavaLangString, true, 0);
+        return;
       }
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Asuw.a != null) && (this.jdField_a_of_type_Asur.jdField_a_of_type_Axei.a != null)) {
-      this.jdField_a_of_type_Asuw.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, this.jdField_a_of_type_Asur.jdField_a_of_type_Axei.a.videoFileSize, true);
-    }
-    asus localasus;
-    if (this.jdField_a_of_type_Asur.jdField_a_of_type_Axei != null)
+    catch (InvalidProtocolBufferMicroException paramBundle)
     {
-      localasus = this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_JavaLangString);
-      if ((localasus != null) && (!localasus.jdField_a_of_type_Boolean))
-      {
-        localasus.c = paramInt;
-        this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_JavaLangString, localasus);
-        if (!asuw.a(this.jdField_a_of_type_Asuw)) {
-          break label136;
-        }
-        asuw.a(this.jdField_a_of_type_Asuw, localasus, localasus.c);
-      }
+      this.jdField_a_of_type_Asvc.a(this.jdField_a_of_type_JavaLangString, false, -10003);
+      paramBundle.printStackTrace();
+      return;
     }
-    return;
-    label136:
-    asuw.b(this.jdField_a_of_type_Asuw, localasus, paramInt);
+    QLog.e("XProxy", 2, "获取票据失败");
+    try
+    {
+      this.jdField_a_of_type_Asvc.a(this.jdField_a_of_type_JavaLangString, false, Integer.parseInt(localAuthorizeResponse.ret.get()));
+      return;
+    }
+    catch (NumberFormatException paramBundle)
+    {
+      this.jdField_a_of_type_Asvc.a(this.jdField_a_of_type_JavaLangString, false, 0);
+      QLog.e("XProxy", 2, "获取票据错误码不为int");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asva
  * JD-Core Version:    0.7.0.1
  */

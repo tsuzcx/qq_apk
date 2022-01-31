@@ -1,29 +1,14 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class tmr
-  extends sym
+public abstract interface tmr
 {
-  public List<uvp> a = new ArrayList();
+  public abstract void a(int paramInt, String paramString);
   
-  public tmr(qqstory_service.RspProfileStoryFeedIdList paramRspProfileStoryFeedIdList)
-  {
-    super(paramRspProfileStoryFeedIdList.result, paramRspProfileStoryFeedIdList.is_end, paramRspProfileStoryFeedIdList.next_cookie);
-    paramRspProfileStoryFeedIdList = paramRspProfileStoryFeedIdList.feed_seq_info_list.get().iterator();
-    while (paramRspProfileStoryFeedIdList.hasNext())
-    {
-      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspProfileStoryFeedIdList.next();
-      this.a.add(new uvp(localFeedSeqInfo));
-    }
-  }
+  public abstract void a(List<tmv> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmr
  * JD-Core Version:    0.7.0.1
  */

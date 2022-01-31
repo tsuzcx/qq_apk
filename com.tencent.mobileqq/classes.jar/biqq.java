@@ -1,57 +1,80 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.view.OrientationListener;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-class biqq
-  implements SensorEventListener
+public abstract class biqq
+  extends Binder
+  implements biqp
 {
-  biqq(biqp parambiqp) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public biqq()
   {
-    float[] arrayOfFloat = paramSensorEvent.values;
-    int j = -1;
-    float f1 = -arrayOfFloat[0];
-    float f2 = -arrayOfFloat[1];
-    float f3 = -arrayOfFloat[2];
-    if ((f1 * f1 + f2 * f2) * 35.0F >= f3 * f3)
+    attachInterface(this, "cooperation.qqdataline.ipc.IDatalineService");
+  }
+  
+  public static biqp a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqdataline.ipc.IDatalineService");
+    if ((localIInterface != null) && ((localIInterface instanceof biqp))) {
+      return (biqp)localIInterface;
+    }
+    return new biqr(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    String str1 = null;
+    Object localObject = null;
+    switch (paramInt1)
     {
-      j = 90 - Math.round(57.29578F * (float)Math.atan2(-f2, f1));
-      int i;
-      for (;;)
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qqdataline.ipc.IDatalineService");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
+      str1 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {
+        localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+      }
+      paramParcel1 = a(str1, (Bundle)localObject);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
       {
-        i = j;
-        if (j < 360) {
-          break;
-        }
-        j -= 360;
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
       }
       for (;;)
       {
-        j = i;
-        if (i >= 0) {
-          break;
-        }
-        i += 360;
+        return true;
+        paramParcel2.writeInt(0);
       }
     }
-    if (biqp.a(this.a) != null) {
-      biqp.a(this.a).onSensorChanged(1, paramSensorEvent.values);
+    paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
+    String str2 = paramParcel1.readString();
+    localObject = str1;
+    if (paramParcel1.readInt() != 0) {
+      localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
     }
-    if (j != biqp.a(this.a))
-    {
-      biqp.a(this.a, j);
-      this.a.a(j);
-    }
-    this.a.a((f1 + 9.8F) * 180.0F / 19.6F, (f2 + 9.8F) * 180.0F / 19.6F, (f3 + 9.8F) * 180.0F / 19.6F);
+    a(str2, (Bundle)localObject);
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biqq
  * JD-Core Version:    0.7.0.1
  */

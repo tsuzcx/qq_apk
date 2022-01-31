@@ -1,25 +1,38 @@
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import android.graphics.Bitmap;
 
 public class wtv
-  implements bcud
+  extends wyj
 {
-  public wtv(VideoPlayerView paramVideoPlayerView) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public void a()
+  public wtv(int paramInt, Bitmap paramBitmap)
   {
-    if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a) != null))
-    {
-      VideoPlayerView.d(this.a, false);
-      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.d(this.a));
-      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getViewWidth(), this.a.a().getViewHeight());
-    }
+    super(paramInt, paramBitmap);
+  }
+  
+  public static wtv a(wtv paramwtv, Bitmap paramBitmap)
+  {
+    paramBitmap = new wtv(paramwtv.c, paramBitmap);
+    paramBitmap.jdField_a_of_type_Int = paramwtv.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Int = paramwtv.jdField_b_of_type_Int;
+    paramBitmap.jdField_a_of_type_JavaLangString = paramwtv.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_a_of_type_Boolean = paramwtv.jdField_a_of_type_Boolean;
+    paramBitmap.jdField_b_of_type_Boolean = paramwtv.jdField_b_of_type_Boolean;
+    return paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtv
  * JD-Core Version:    0.7.0.1
  */

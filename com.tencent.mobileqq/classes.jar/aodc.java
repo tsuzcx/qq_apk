@@ -1,91 +1,36 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import com.tencent.image.NativeGifIndex8;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aodc
-  extends NativeGifIndex8
+  implements alln
 {
-  private boolean a = true;
-  private boolean b;
-  private boolean c;
+  public aodc(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public aodc(File paramFile, int paramInt, boolean paramBoolean)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    super(paramFile, paramBoolean, true, 0, 0, 0.0F);
-  }
-  
-  public void a()
-  {
-    this.a = true;
-  }
-  
-  public void b()
-  {
-    this.a = false;
-    this.b = true;
-  }
-  
-  public void doApplyNextFrame()
-  {
-    super.doApplyNextFrame();
-    if (this.c)
-    {
-      this.c = false;
-      this.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearchFriendActivity", 2, "onGetConfig | mDialogType = " + this.a.j + ", isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
     }
-  }
-  
-  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
-  {
-    initHandlerAndRunnable();
-    if ((!this.a) && (this.mFirstFrameBitmap != null)) {
-      if (this.mFirstFrameBitmap != null) {
-        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
+    if ((this.a.j == 1) || (this.a.j == 2))
+    {
+      if (paramBoolean) {
+        break label110;
       }
+      this.a.a();
+      QQToast.a(this.a, 2131691081, 0).b(this.a.getTitleBarHeight());
     }
-    do
-    {
-      return;
-      if (!this.b) {
-        break;
-      }
-      if (this.mFirstFrameBitmap != null) {
-        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
-      }
-      if (!sPaused)
-      {
-        executeNewTask();
-        return;
-      }
-    } while (this.mIsInPendingAction);
-    sPendingActions.add(new WeakReference(this));
-    this.mIsInPendingAction = true;
-    return;
-    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
-  }
-  
-  public void getNextFrame()
-  {
-    try
-    {
-      if (this.b)
-      {
-        this.c = true;
-        super.reset();
-      }
-      super.getNextFrame();
+    label110:
+    while (paramInt != 2) {
       return;
     }
-    finally {}
+    this.a.a();
+    this.a.a(this.a.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodc
  * JD-Core Version:    0.7.0.1
  */

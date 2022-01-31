@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.persistence.qslowtable;
 
-import aumb;
+import awdi;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 public class QSlowTableManager$1
   implements Runnable
 {
-  public QSlowTableManager$1(aumb paramaumb) {}
+  public QSlowTableManager$1(awdi paramawdi) {}
   
   public void run()
   {
     try
     {
-      if (!aumb.a(this.this$0).verifyAuthentication()) {
+      if (!awdi.a(this.this$0).verifyAuthentication()) {
         QLog.e("QSlowTableManager", 1, "db verifyAuthentication failed!");
       }
       return;
@@ -26,7 +26,7 @@ public class QSlowTableManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager.1
  * JD-Core Version:    0.7.0.1
  */

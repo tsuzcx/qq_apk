@@ -1,42 +1,88 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class aees
-  implements View.OnClickListener
+public class aees
+  implements Animation.AnimationListener
 {
-  aees(aeer paramaeer, ChatMessage paramChatMessage, MessageForWantGiftMsg paramMessageForWantGiftMsg) {}
+  public aees(TroopTransferActivity paramTroopTransferActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void onClick(View paramView)
+  /* Error */
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramView.getId() == 2131372752)
-    {
-      new axrc(this.jdField_a_of_type_Aeer.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + "", "29" }).a();
-      paramView = bbkb.i(this.jdField_a_of_type_Aeer.jdField_a_of_type_AndroidContentContext, "url");
-      if (TextUtils.isEmpty(paramView)) {
-        break label216;
-      }
-    }
-    for (;;)
-    {
-      paramView = paramView.replace("{troopUin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin).replace("{uin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin).replace("{from}", "29");
-      Intent localIntent = new Intent(this.jdField_a_of_type_Aeer.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_Aeer.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return;
-      label216:
-      paramView = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: aload_0
+    //   2: getfield 17	aees:jdField_a_of_type_AndroidViewAnimationTranslateAnimation	Landroid/view/animation/TranslateAnimation;
+    //   5: if_acmpne +49 -> 54
+    //   8: aload_0
+    //   9: getfield 15	aees:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   12: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
+    //   15: astore_1
+    //   16: aload_1
+    //   17: ifnull +91 -> 108
+    //   20: aload_0
+    //   21: getfield 15	aees:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   24: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
+    //   27: invokevirtual 39	android/app/Dialog:show	()V
+    //   30: aload_0
+    //   31: getfield 15	aees:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   34: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   37: aconst_null
+    //   38: invokevirtual 47	android/widget/LinearLayout:setAnimation	(Landroid/view/animation/Animation;)V
+    //   41: aload_0
+    //   42: getfield 15	aees:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   45: getfield 50	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   48: bipush 8
+    //   50: invokevirtual 56	android/view/View:setVisibility	(I)V
+    //   53: return
+    //   54: aload_1
+    //   55: aload_0
+    //   56: getfield 19	aees:b	Landroid/view/animation/TranslateAnimation;
+    //   59: if_acmpne +49 -> 108
+    //   62: aload_0
+    //   63: getfield 15	aees:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   66: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   69: aconst_null
+    //   70: invokevirtual 47	android/widget/LinearLayout:setAnimation	(Landroid/view/animation/Animation;)V
+    //   73: aload_0
+    //   74: getfield 15	aees:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   77: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   80: aload_0
+    //   81: getfield 21	aees:jdField_a_of_type_Int	I
+    //   84: invokevirtual 59	android/widget/LinearLayout:offsetTopAndBottom	(I)V
+    //   87: aload_0
+    //   88: getfield 15	aees:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   91: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   94: invokevirtual 62	android/widget/LinearLayout:requestLayout	()V
+    //   97: return
+    //   98: astore_1
+    //   99: aload_1
+    //   100: invokevirtual 65	java/lang/Exception:printStackTrace	()V
+    //   103: return
+    //   104: astore_1
+    //   105: goto -75 -> 30
+    //   108: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	109	0	this	aees
+    //   0	109	1	paramAnimation	Animation
+    // Exception table:
+    //   from	to	target	type
+    //   0	16	98	java/lang/Exception
+    //   30	53	98	java/lang/Exception
+    //   54	97	98	java/lang/Exception
+    //   20	30	104	java/lang/Exception
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aees
  * JD-Core Version:    0.7.0.1
  */

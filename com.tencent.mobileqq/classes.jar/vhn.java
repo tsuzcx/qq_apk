@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class vhn
-  implements DialogInterface.OnClickListener
+public final class vhn
+  implements uni<vau, vcs>
 {
-  vhn(vhm paramvhm) {}
+  vhn(vhu paramvhu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(@NonNull vau paramvau, @Nullable vcs paramvcs, @NonNull ErrorMessage paramErrorMessage)
+  {
+    ThreadManager.getUIHandler().post(new PlayModeUtils.6.1(this, paramvcs, paramErrorMessage));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhn
  * JD-Core Version:    0.7.0.1
  */

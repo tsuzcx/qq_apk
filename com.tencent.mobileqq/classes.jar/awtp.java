@@ -1,609 +1,253 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine.2;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
 
 public class awtp
-  implements awuu<awoe>
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static final Comparator<awoe> jdField_a_of_type_JavaUtilComparator = new awtq();
-  private static Queue<awts> jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
-  private int jdField_a_of_type_Int;
-  private awuv<awoe> jdField_a_of_type_Awuv;
-  protected QQAppInterface a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<awoe> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Set<String> jdField_a_of_type_JavaUtilSet;
-  private awtt[] jdField_a_of_type_ArrayOfAwtt = { new awtt(1, "friend"), new awtt(768, "phone_contact"), new awtt(8, "discussion"), new awtt(16, "troop") };
-  private int jdField_b_of_type_Int;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private String jdField_b_of_type_JavaLangString;
-  private List<WeakReference<awtr>> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private String c;
+  public static final int a;
+  public float a;
+  public int[] a;
+  float jdField_b_of_type_Float = 0.05F;
+  int jdField_b_of_type_Int = 1;
+  int c = -1;
+  int d = -1;
+  int e = -1;
+  public int f;
+  public int g;
+  int h = 0;
+  int i = 0;
+  private int j;
   
-  public awtp(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
-    this.c = paramString;
-    this.jdField_b_of_type_JavaLangString = "people";
+    jdField_a_of_type_Int = ListenChangeVoicePanel.jdField_a_of_type_ArrayOfInt.length;
   }
   
-  public awtp(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, Set<String> paramSet)
+  public awtp()
   {
-    this(paramQQAppInterface, paramInt1, paramInt2, null, paramSet);
-  }
-  
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
+    this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
+    this.jdField_a_of_type_Float = 0.75F;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getPreferences();
+    try
     {
-    default: 
-      return -1;
-    case 1: 
-      return 0;
-    case 768: 
-      return 1;
-    case 8: 
-      return 2;
-    }
-    return 3;
-  }
-  
-  private List<awoe> a(awtr paramawtr)
-  {
-    int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfAwtt.length)
-    {
-      if ("global_troop_member".equals(Integer.valueOf(this.jdField_a_of_type_ArrayOfAwtt[i].jdField_a_of_type_Int))) {}
-      for (;;)
+      localObject = ((SharedPreferences)localObject).getString("PttVoiceChangePreSender", "[]");
+      JSONArray localJSONArray = new JSONArray((String)localObject);
+      if (localJSONArray.length() == jdField_a_of_type_Int + 2)
       {
-        i += 1;
-        break;
-        this.jdField_a_of_type_ArrayOfAwtt[i].jdField_b_of_type_Long = -1L;
-      }
-    }
-    String str = this.jdField_a_of_type_JavaLangString;
-    ??? = a(str, false);
-    ArrayList localArrayList1 = new ArrayList();
-    if (??? != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ApproximateSearchEngine", 2, "searchContactWithoutTroopMember use cache, keyword = " + str);
-      }
-      localArrayList1.addAll((Collection)???);
-      return localArrayList1;
-    }
-    ArrayList localArrayList2 = new ArrayList();
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-          return null;
-        }
-        localArrayList2.addAll(this.jdField_a_of_type_JavaUtilList);
-        i = 0;
-        if (i >= localArrayList2.size()) {
-          break;
-        }
-        if (paramawtr.a())
+        int k = 0;
+        while (k < jdField_a_of_type_Int)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApproximateSearchEngine", 2, "searchContactWithoutTroopMember canceled, keyword = " + str);
-          }
-          return null;
+          this.jdField_a_of_type_ArrayOfInt[k] = localJSONArray.getInt(k);
+          k += 1;
         }
-      }
-      finally {}
-      synchronized ((awoe)localArrayList2.get(i))
-      {
-        awvy localawvy = ((awoe)???).a(str);
-        if ((localawvy != null) && (localawvy.a)) {
-          localArrayList1.add(???);
-        }
-        i += 1;
-      }
-    }
-    a(str, localArrayList1, false);
-    return localArrayList1;
-  }
-  
-  private List<awoe> a(String paramString, boolean paramBoolean)
-  {
-    label238:
-    label241:
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if ((TextUtils.isEmpty(paramString)) || (paramString.trim().contains(" "))) {
-          return null;
-        }
-        int i = -2147483648;
-        Iterator localIterator = jdField_a_of_type_JavaUtilQueue.iterator();
-        Object localObject1 = null;
-        if (localIterator.hasNext())
-        {
-          awts localawts = (awts)localIterator.next();
-          if ((!paramString.contains(localawts.jdField_a_of_type_JavaLangString)) || (localawts.jdField_a_of_type_JavaLangString.length() <= i)) {
-            break label238;
-          }
-          i = localawts.jdField_a_of_type_JavaLangString.length();
-          localObject1 = localawts;
-          break label241;
-        }
-        if ((localObject1 != null) && (localObject1.jdField_a_of_type_JavaUtilList != null))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApproximateSearchEngine", 2, "getBestCache hit cache, cur keyword = " + paramString + " , cache keyword = " + localObject1.jdField_a_of_type_JavaLangString + " , cache size = " + localObject1.jdField_a_of_type_JavaUtilList.size());
-          }
-          paramString = localObject1.jdField_a_of_type_JavaUtilList;
-          return paramString;
-        }
+        this.f = localJSONArray.getInt(jdField_a_of_type_Int);
+        this.g = localJSONArray.getInt(jdField_a_of_type_Int + 1);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("ApproximateSearchEngine", 2, "getBestCache miss cache, cur keyword = " + paramString);
+        QLog.d("PttInfoCollector", 2, "get send record " + (String)localObject);
       }
-      return null;
-    }
-  }
-  
-  private void a(String paramString, List<awoe> paramList, boolean paramBoolean)
-  {
-    Queue localQueue;
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if ((TextUtils.isEmpty(paramString)) || (paramString.trim().contains(" ")) || (paramList == null)) {
-        return;
-      }
-      localQueue = jdField_a_of_type_JavaUtilQueue;
-      if (localQueue.size() > 2) {
-        localQueue.poll();
-      }
-    }
-    if (localQueue.size() == 2)
-    {
-      if (paramList.isEmpty()) {
-        break label118;
-      }
-      localQueue.poll();
-    }
-    for (;;)
-    {
-      localQueue.add(new awts(this, paramString, paramList));
       return;
-      label118:
-      Iterator localIterator = localQueue.iterator();
-      while (localIterator.hasNext())
-      {
-        awts localawts = (awts)localIterator.next();
-        if (localawts.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          localQueue.remove(localawts);
-        }
-      }
-      if (localQueue.size() == 2) {
-        localQueue.poll();
-      }
+    }
+    catch (Exception localException)
+    {
+      this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
+      this.f = 0;
+      this.g = 0;
+      localException.printStackTrace();
     }
   }
   
-  private static int b(awoe paramawoe1, awoe paramawoe2)
+  private float a(int paramInt)
   {
-    int j = 0;
-    int i = j;
-    if (paramawoe2.c() != null)
-    {
-      i = j;
-      if (paramawoe1.c() != null) {
-        i = paramawoe1.c().toString().compareTo(paramawoe2.c().toString());
-      }
-    }
-    j = i;
-    if (i == 0)
-    {
-      j = i;
-      if (paramawoe2.d() != null)
-      {
-        j = i;
-        if (paramawoe1.d() != null) {
-          j = paramawoe1.d().toString().compareTo(paramawoe2.d().toString());
-        }
-      }
-    }
-    return j;
+    return this.jdField_a_of_type_ArrayOfInt[paramInt] / this.f;
   }
   
-  private List<awoe> b(awvi paramawvi)
+  private void a()
   {
-    awtr localawtr = new awtr(this, false);
-    boolean bool;
-    do
+    Object localObject1 = new JSONArray();
+    Object localObject2 = this.jdField_a_of_type_ArrayOfInt;
+    int m = localObject2.length;
+    int k = 0;
+    while (k < m)
     {
-      ArrayList localArrayList;
-      do
-      {
-        synchronized (this.jdField_b_of_type_JavaLangObject)
-        {
-          this.jdField_b_of_type_JavaUtilList.add(new WeakReference(localawtr));
-          this.jdField_a_of_type_JavaLangString = paramawvi.jdField_a_of_type_JavaLangString;
-          paramawvi = this.jdField_a_of_type_JavaLangString;
-          if (localawtr.a())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApproximateSearchEngine", 2, "searchContact canceled, keyword = " + paramawvi);
-            }
-            return null;
-          }
-        }
-        localArrayList = new ArrayList();
-        ??? = a(localawtr);
-        if (!localawtr.a()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ApproximateSearchEngine", 2, "searchContact canceled, keyword = " + paramawvi);
-      return null;
-      if (??? != null) {
-        localArrayList.addAll((Collection)???);
-      }
-      ??? = new ArrayList();
-      bool = a(localArrayList, (List)???, localawtr, paramawvi);
-      paramawvi = (awvi)???;
-      if (((List)???).size() > 40) {
-        paramawvi = ((List)???).subList(0, 40);
-      }
-    } while (bool);
-    return paramawvi;
+      ((JSONArray)localObject1).put(localObject2[k]);
+      k += 1;
+    }
+    ((JSONArray)localObject1).put(this.f);
+    ((JSONArray)localObject1).put(this.g);
+    localObject2 = BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit();
+    localObject1 = ((JSONArray)localObject1).toString();
+    ((SharedPreferences.Editor)localObject2).putString("PttVoiceChangePreSender", (String)localObject1);
+    ((SharedPreferences.Editor)localObject2).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("PttInfoCollector", 2, "save send record " + (String)localObject1);
+    }
   }
   
-  protected List<awoe> a(int paramInt)
+  private int c()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfAwtt.length)
+    int k = 0;
+    int i1 = 0;
+    int n;
+    for (int m = 0; k < jdField_a_of_type_Int; m = n)
     {
-      this.jdField_a_of_type_ArrayOfAwtt[i].jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_ArrayOfAwtt[i].jdField_a_of_type_Long = 0L;
-      i += 1;
-    }
-    Object localObject2 = new ArrayList();
-    long l1;
-    Object localObject3;
-    Object localObject4;
-    Object localObject1;
-    label168:
-    label253:
-    long l2;
-    if ((paramInt & 0x1) != 0)
-    {
-      l1 = System.currentTimeMillis();
-      localObject3 = new ArrayList();
-      localObject4 = (ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      if (localObject4 != null)
+      n = m;
+      if (m < this.jdField_a_of_type_ArrayOfInt[k])
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        localObject1 = ((ajxl)localObject4).c();
-        if (localObject1 != null)
-        {
-          Iterator localIterator1 = ((List)localObject1).iterator();
-          while (localIterator1.hasNext())
-          {
-            Groups localGroups = (Groups)localIterator1.next();
-            localObject1 = ((ajxl)localObject4).a(String.valueOf(localGroups.group_id));
-            if (localObject1 != null)
-            {
-              Iterator localIterator2 = ((List)localObject1).iterator();
-              Friends localFriends;
-              QQAppInterface localQQAppInterface;
-              if (localIterator2.hasNext())
-              {
-                localFriends = (Friends)localIterator2.next();
-                localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-                i = this.jdField_b_of_type_Int;
-                if (localFriends.gathtertype != 1) {
-                  break label253;
-                }
-              }
-              for (localObject1 = BaseApplicationImpl.sApplication.getResources().getString(2131720649);; localObject1 = localGroups.group_name)
-              {
-                ((List)localObject3).add(new awmt(localQQAppInterface, i, localFriends, (String)localObject1, 0L));
-                break label168;
-                break;
-              }
-            }
-          }
-        }
+        n = this.jdField_a_of_type_ArrayOfInt[k];
+        i1 = k;
       }
-      ((List)localObject2).addAll((Collection)localObject3);
-      l2 = System.currentTimeMillis();
-      i = a(1);
-      this.jdField_a_of_type_ArrayOfAwtt[i].jdField_a_of_type_Long = (l2 - l1);
-      this.jdField_a_of_type_ArrayOfAwtt[i].jdField_b_of_type_Int = ((List)localObject3).size();
+      k += 1;
     }
-    if ((paramInt & 0x100) != 0)
-    {
-      l1 = System.currentTimeMillis();
-      localObject1 = new ArrayList();
-      localObject3 = (askn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-      if (localObject3 != null)
-      {
-        localObject3 = ((askn)localObject3).e();
-        if ((localObject3 != null) && (((List)localObject3).size() > 0))
-        {
-          localObject3 = (List)((List)localObject3).get(0);
-          if (localObject3 != null)
-          {
-            localObject3 = ((List)localObject3).iterator();
-            while (((Iterator)localObject3).hasNext())
-            {
-              localObject4 = (PhoneContact)((Iterator)localObject3).next();
-              ((List)localObject1).add(new awna(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, (PhoneContact)localObject4));
-            }
-          }
-        }
-      }
-      ((List)localObject2).addAll((Collection)localObject1);
-      l2 = System.currentTimeMillis();
-      i = a(768);
-      this.jdField_a_of_type_ArrayOfAwtt[i].jdField_a_of_type_Long = (l2 - l1);
-      this.jdField_a_of_type_ArrayOfAwtt[i].jdField_b_of_type_Int = ((List)localObject1).size();
-    }
-    if ((paramInt & 0x200) != 0)
-    {
-      l1 = System.currentTimeMillis();
-      localObject1 = new ArrayList();
-      localObject3 = (askn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-      if (localObject3 != null)
-      {
-        localObject3 = ((askn)localObject3).e();
-        if ((localObject3 != null) && (((List)localObject3).size() > 1))
-        {
-          localObject3 = (List)((List)localObject3).get(1);
-          if (localObject3 != null)
-          {
-            localObject3 = ((List)localObject3).iterator();
-            while (((Iterator)localObject3).hasNext())
-            {
-              localObject4 = (PhoneContact)((Iterator)localObject3).next();
-              ((List)localObject1).add(new awna(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, (PhoneContact)localObject4));
-            }
-          }
-        }
-      }
-      ((List)localObject2).addAll((Collection)localObject1);
-      l2 = System.currentTimeMillis();
-      i = a(768);
-      this.jdField_a_of_type_ArrayOfAwtt[i].jdField_a_of_type_Long = (l2 - l1);
-      this.jdField_a_of_type_ArrayOfAwtt[i].jdField_b_of_type_Int = ((List)localObject1).size();
-    }
-    if ((paramInt & 0x8) != 0)
-    {
-      l1 = System.currentTimeMillis();
-      localObject1 = new ArrayList();
-      localObject3 = ((ajvi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a();
-      if (localObject3 != null)
-      {
-        localObject3 = ((List)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (DiscussionInfo)((Iterator)localObject3).next();
-          ((List)localObject1).add(new awmq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, (DiscussionInfo)localObject4, null, 0));
-        }
-      }
-      ((List)localObject2).addAll((Collection)localObject1);
-      l2 = System.currentTimeMillis();
-      i = a(8);
-      this.jdField_a_of_type_ArrayOfAwtt[i].jdField_a_of_type_Long = (l2 - l1);
-      this.jdField_a_of_type_ArrayOfAwtt[i].jdField_b_of_type_Int = ((List)localObject1).size();
-    }
-    if ((paramInt & 0x10) != 0)
-    {
-      l1 = System.currentTimeMillis();
-      localObject3 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-      localObject1 = new ArrayList();
-      localObject3 = ((TroopManager)localObject3).a();
-      if (localObject3 != null)
-      {
-        localObject3 = ((List)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (TroopInfo)((Iterator)localObject3).next();
-          ((List)localObject1).add(new awnd(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, (TroopInfo)localObject4, 0L));
-        }
-      }
-      ((List)localObject2).addAll((Collection)localObject1);
-      l2 = System.currentTimeMillis();
-      paramInt = a(16);
-      this.jdField_a_of_type_ArrayOfAwtt[paramInt].jdField_a_of_type_Long = (l2 - l1);
-      this.jdField_a_of_type_ArrayOfAwtt[paramInt].jdField_b_of_type_Int = ((List)localObject1).size();
-    }
-    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!this.jdField_a_of_type_JavaUtilSet.isEmpty()))
-    {
-      localObject1 = new ArrayList();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (awoe)((Iterator)localObject2).next();
-        if (!this.jdField_a_of_type_JavaUtilSet.contains(((awoe)localObject3).b())) {
-          ((List)localObject1).add(localObject3);
-        }
-      }
-      return localObject1;
-    }
-    return localObject2;
+    return i1;
   }
   
-  public List<awoe> a(awvi paramawvi)
+  public int a()
   {
-    return b(paramawvi);
-  }
-  
-  /* Error */
-  public void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_0
-    //   2: getfield 73	awtp:jdField_a_of_type_Int	I
-    //   5: invokevirtual 400	awtp:a	(I)Ljava/util/List;
-    //   8: astore_1
-    //   9: aload_0
-    //   10: monitorenter
-    //   11: aload_1
-    //   12: ifnull +35 -> 47
-    //   15: aload_1
-    //   16: invokeinterface 161 1 0
-    //   21: ifle +26 -> 47
-    //   24: aload_0
-    //   25: getfield 50	awtp:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   28: invokeinterface 403 1 0
-    //   33: aload_0
-    //   34: getfield 50	awtp:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   37: aload_1
-    //   38: invokeinterface 157 2 0
-    //   43: pop
-    //   44: aload_0
-    //   45: monitorexit
-    //   46: return
-    //   47: aload_0
-    //   48: getfield 50	awtp:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   51: invokeinterface 403 1 0
-    //   56: goto -12 -> 44
-    //   59: astore_1
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: aload_1
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	this	awtp
-    //   8	30	1	localList	List
-    //   59	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   15	44	59	finally
-    //   44	46	59	finally
-    //   47	56	59	finally
-    //   60	62	59	finally
-  }
-  
-  public void a(awvi paramawvi, awuv<awoe> paramawuv)
-  {
-    this.jdField_a_of_type_Awuv = paramawuv;
-    ThreadManager.postImmediately(new ApproximateSearchEngine.2(this, paramawvi), null, true);
-  }
-  
-  public boolean a(List<awoe> paramList1, List<awoe> paramList2, awtr arg3, String paramString)
-  {
-    awtr localawtr = ???;
-    if (??? == null) {
-      localawtr = new awtr(this, false);
+    if (this.f < 5)
+    {
+      this.d = -1;
+      return -1;
     }
-    awoe localawoe1;
+    if ((this.jdField_b_of_type_Int >= 2) && (this.c >= 0))
+    {
+      this.d = this.c;
+      this.h = 1;
+    }
     for (;;)
     {
-      awoe localawoe2;
-      synchronized (this.jdField_b_of_type_JavaLangObject)
-      {
-        this.jdField_b_of_type_JavaUtilList.add(new WeakReference(localawtr));
-        ??? = new HashMap();
-        paramList1 = paramList1.iterator();
-        if (!paramList1.hasNext()) {
-          break;
-        }
-        localawoe1 = (awoe)paramList1.next();
-        localawoe2 = (awoe)???.get(localawoe1.a());
-        if (localawtr.a())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApproximateSearchEngine", 2, "searchContact canceled, keyword = " + paramString);
-          }
-          return true;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("PttInfoCollector", 2, "pre-send type " + this.d);
       }
-      if ((localawoe2 == null) || (localawoe2.b() < localawoe1.b())) {
-        ???.put(localawoe1.a(), localawoe1);
+      return this.d;
+      int k = c();
+      if (a(k) >= this.jdField_a_of_type_Float)
+      {
+        this.d = k;
+        this.h = 2;
+      }
+      else if ((this.c >= 0) && (this.g / this.f > 0.8D))
+      {
+        this.d = this.c;
+        this.h = 3;
+      }
+      else
+      {
+        this.d = -1;
+        this.h = -1;
       }
     }
-    paramList1 = new ArrayList();
-    ??? = ???.values().iterator();
-    while (???.hasNext())
-    {
-      localawoe1 = (awoe)???.next();
-      if (localawtr.a())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApproximateSearchEngine", 2, "searchContact canceled, keyword = " + paramString);
-        }
-        return true;
-      }
-      localawoe1 = (awoe)localawoe1.clone();
-      if (localawoe1 != null) {
-        paramList1.add(localawoe1);
-      }
-    }
-    Collections.sort(paramList1, jdField_a_of_type_JavaUtilComparator);
-    paramList2.addAll(paramList1);
-    return false;
   }
   
-  public void b()
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    a();
+    if (this.d != -1)
     {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      azmj.b(paramQQAppInterface, "CliOper", "", "", "0X800608D", "0X800608D", this.h + 10, 0, this.d + "", paramInt + "", "", "8.3.3");
+      if (this.h == 2)
       {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        awtr localawtr = (awtr)localWeakReference.get();
-        if (localawtr != null)
-        {
-          localawtr.a(true);
-          localArrayList.add(localWeakReference);
+        if (this.d != paramInt) {
+          break label235;
+        }
+        this.jdField_a_of_type_Float -= this.jdField_a_of_type_Float * this.jdField_b_of_type_Float;
+        if (this.jdField_a_of_type_Float >= 0.55F) {
+          break label258;
+        }
+        f1 = 0.55F;
+        label127:
+        this.jdField_a_of_type_Float = f1;
+        if (this.jdField_a_of_type_Float <= 0.9F) {
+          break label266;
         }
       }
     }
-    this.jdField_b_of_type_JavaUtilList = localObject2;
-    this.jdField_a_of_type_Awuv = null;
+    label258:
+    label266:
+    for (float f1 = 0.9F;; f1 = this.jdField_a_of_type_Float)
+    {
+      this.jdField_a_of_type_Float = f1;
+      b();
+      if (this.e != -1) {
+        azmj.b(paramQQAppInterface, "CliOper", "", "", "0X800608D", "0X800608D", this.i + 20, 0, this.e + "", paramInt + "", "", "8.3.3");
+      }
+      if (paramInt >= 0) {
+        break label274;
+      }
+      return;
+      label235:
+      this.jdField_a_of_type_Float += (1.0F - this.jdField_a_of_type_Float) * this.jdField_b_of_type_Float;
+      break;
+      f1 = this.jdField_a_of_type_Float;
+      break label127;
+    }
+    label274:
+    if (paramInt == this.c)
+    {
+      this.jdField_b_of_type_Int += 1;
+      this.g += 1;
+    }
+    for (;;)
+    {
+      this.c = paramInt;
+      paramQQAppInterface = this.jdField_a_of_type_ArrayOfInt;
+      paramQQAppInterface[paramInt] += 1;
+      this.f += 1;
+      this.j += 1;
+      if (this.j % 5 == 0) {
+        a();
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("PttInfoCollector", 2, "real send type " + paramInt);
+      return;
+      this.jdField_b_of_type_Int = 1;
+    }
   }
   
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e()
+  public int b()
   {
-    jdField_a_of_type_JavaUtilQueue.clear();
+    if ((this.c == -1) || (this.f < 5))
+    {
+      this.e = -1;
+      return -1;
+    }
+    if (this.jdField_b_of_type_Int >= 2)
+    {
+      this.e = this.c;
+      this.i = 1;
+    }
+    for (;;)
+    {
+      return this.e;
+      int k = c();
+      if (this.c == k)
+      {
+        this.e = this.c;
+        this.i = 2;
+      }
+      else if (this.g / this.f > 0.85D)
+      {
+        this.e = this.c;
+        this.i = 3;
+      }
+      else
+      {
+        this.e = -1;
+        this.i = -1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awtp
  * JD-Core Version:    0.7.0.1
  */

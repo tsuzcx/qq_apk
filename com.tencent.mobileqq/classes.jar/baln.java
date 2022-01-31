@@ -1,39 +1,34 @@
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-class baln
-  extends mxg
+public abstract interface baln
 {
-  baln(balh parambalh, balg parambalg) {}
+  public abstract int a();
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    paramBundle = new oidb_0x962.RspBody();
-    if (paramArrayOfByte != null) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (this.jdField_a_of_type_Balg != null) {
-        this.jdField_a_of_type_Balg.a(paramInt, paramBundle);
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_oidb_0x962. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-        }
-      }
-    }
-  }
+  public abstract bdfq a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, balk> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt);
+  
+  public abstract void a(balk parambalk, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject);
+  
+  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, balk> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, balk> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, balk> paramMap, @Nullable Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baln
  * JD-Core Version:    0.7.0.1
  */

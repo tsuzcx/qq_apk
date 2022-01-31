@@ -1,33 +1,89 @@
-public class aueu
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONObject;
+
+public abstract class aueu<T extends MessageRecord>
+  extends auen
 {
-  public int a = 0;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e = 1;
+  protected T a;
+  protected MessageRecord b;
   
-  public aueu()
+  public aueu(T paramT)
   {
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_c_of_type_Int = 1000;
-    this.jdField_d_of_type_Int = 1;
+    this.a = paramT;
   }
   
-  public String toString()
+  protected abstract int a();
+  
+  protected MsgBackupResEntity a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append("allUseInSimple_2=").append(this.jdField_b_of_type_Boolean).append(", bgUseInSimple_2=").append(this.jdField_c_of_type_Boolean).append(", cfgUse_argb8888=").append(this.jdField_d_of_type_Boolean).append(", networkControl=").append(this.a).append(", dailyRetryTimes=").append(this.jdField_b_of_type_Int).append(", countRetryTimes=").append(this.jdField_c_of_type_Int).append(", entranceControl=").append(this.jdField_d_of_type_Int).append(", autoPreDownload=").append(this.e);
-    return localStringBuilder.toString();
+    MsgBackupResEntity localMsgBackupResEntity = new MsgBackupResEntity();
+    localMsgBackupResEntity.msgType = a();
+    if (this.b != null)
+    {
+      aufh.a(this.b, localMsgBackupResEntity);
+      return localMsgBackupResEntity;
+    }
+    aufh.a(this.a, localMsgBackupResEntity);
+    return localMsgBackupResEntity;
   }
+  
+  protected String a(Map paramMap)
+  {
+    try
+    {
+      paramMap = new JSONObject(paramMap).toString();
+      return paramMap;
+    }
+    catch (Exception paramMap) {}
+    return null;
+  }
+  
+  protected HashMap<String, String> a(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(a()));
+    localHashMap.put("msgSubType", String.valueOf(paramInt));
+    return localHashMap;
+  }
+  
+  public abstract List<MsgBackupResEntity> a();
+  
+  public abstract void a();
+  
+  protected void a(MessageRecord paramMessageRecord)
+  {
+    this.b = paramMessageRecord;
+  }
+  
+  protected void a(String paramString, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    try
+    {
+      new File(paramString);
+      paramMsgBackupResEntity.fileSize = new File(paramString).length();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aueu
  * JD-Core Version:    0.7.0.1
  */

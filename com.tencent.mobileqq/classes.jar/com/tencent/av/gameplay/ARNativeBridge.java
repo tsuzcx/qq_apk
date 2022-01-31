@@ -2,7 +2,7 @@ package com.tencent.av.gameplay;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import lcg;
+import lek;
 
 public class ARNativeBridge
 {
@@ -15,7 +15,7 @@ public class ARNativeBridge
     }
     catch (UnsatisfiedLinkError paramString1)
     {
-      lcg.e("ARZimuTask_ARNativeBridge", "nativeCreateEngineBusiness has exception: " + paramString1);
+      lek.e("ARZimuTask_ARNativeBridge", "nativeCreateEngineBusiness has exception: " + paramString1);
       paramString1.printStackTrace();
     }
   }
@@ -34,7 +34,7 @@ public class ARNativeBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.gameplay.ARNativeBridge
  * JD-Core Version:    0.7.0.1
  */

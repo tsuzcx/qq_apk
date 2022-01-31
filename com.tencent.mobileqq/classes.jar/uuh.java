@@ -1,21 +1,23 @@
-import android.text.TextUtils;
+import com.tribe.async.reactive.StreamFunction;
 
-public class uuh
-  extends uuc
+class uuh
+  extends StreamFunction<utx, utx>
 {
-  public uuh()
-  {
-    super("memory_publish", null);
-  }
+  int jdField_a_of_type_Int = 0;
   
-  public static boolean a(uuc paramuuc)
+  uuh(uuc paramuuc) {}
+  
+  protected void a(utx paramutx)
   {
-    return TextUtils.equals("memory_publish", paramuuc.a);
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    wsv.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramutx.a);
+    notifyResult(paramutx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uuh
  * JD-Core Version:    0.7.0.1
  */

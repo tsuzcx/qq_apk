@@ -1,73 +1,96 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import android.view.Surface;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(16)
-public class bdty
-  extends bdtv
+class bdty
+  implements SensorEventListener
 {
-  public int a;
-  public SurfaceTexture a;
-  private Surface a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
+  private float d;
   
-  public bdty(bdtx parambdtx, bdtw parambdtw, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
+  private void a(long paramLong)
   {
-    super(parambdtx, parambdtw);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.c = 0.0F;
+    this.d = 0.0F;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  protected String a()
+  public void a()
   {
-    return "Q.qqstory.mediadecoderMediaCodecVideoRender";
+    bdtu.b = 1;
+    bdtu.a = true;
   }
   
-  protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
+  public void b()
   {
-    boolean bool = true;
-    int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
-    switch (i)
+    bdtu.b = 3;
+    QLog.d("HealthStepCounterPlugin", 1, "shaking end");
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    float f1 = 0.0F;
+    float f2;
+    float f3;
+    float f4;
+    long l1;
+    long l2;
+    if (paramSensorEvent.sensor.getType() == 1)
     {
-    default: 
-      if ((paramBufferInfo.flags & 0x4) != 0)
+      f2 = paramSensorEvent.values[0];
+      f3 = paramSensorEvent.values[1];
+      f4 = paramSensorEvent.values[2];
+      l1 = System.currentTimeMillis();
+      l2 = l1 - this.jdField_a_of_type_Long;
+      if (l2 <= 5000L) {
+        break label66;
+      }
+      a(l1);
+    }
+    label66:
+    do
+    {
+      do
       {
-        ved.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "output EOS");
-        this.jdField_b_of_type_Boolean = true;
+        return;
+      } while (l2 <= 80L);
+      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
+        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
       }
-      if (paramBufferInfo.size == 0) {
-        break;
+      this.d = (f1 + this.d);
+      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
+      {
+        a();
+        a(l1);
+        return;
       }
-    }
-    for (;;)
-    {
-      paramMediaCodec.releaseOutputBuffer(i, bool);
-      ved.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer render");
-      return;
-      ved.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "INFO_OUTPUT_BUFFERS_CHANGED");
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
-      return;
-      ved.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "New format " + this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat());
-      return;
-      ved.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer timed out!");
-      return;
-      bool = false;
-    }
-  }
-  
-  protected void a(bdtw parambdtw, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-  {
-    paramMediaCodec.configure(paramMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
+      if (this.jdField_a_of_type_Int < 10)
+      {
+        this.jdField_a_of_type_Int += 1;
+        this.jdField_a_of_type_Float = f2;
+        this.b = f3;
+        this.c = f4;
+        this.jdField_a_of_type_Long = l1;
+        return;
+      }
+      a(l1);
+    } while (bdtu.b >= 3);
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdty
  * JD-Core Version:    0.7.0.1
  */

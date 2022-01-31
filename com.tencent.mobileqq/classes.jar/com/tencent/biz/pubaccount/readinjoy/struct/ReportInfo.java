@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import auko;
+import awbv;
 import java.util.Arrays;
-import qbz;
-import qca;
+import qlv;
+import qlw;
 import tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.SRTClickInfo;
 
 public class ReportInfo
-  extends auko
+  extends awbv
   implements Cloneable
 {
   public String firstVideoRowkey;
@@ -16,7 +16,7 @@ public class ReportInfo
   public int mChannelId;
   public String mCollectUrl;
   public int mColumnID = -1;
-  public qbz mFeedsReportData;
+  public qlv mFeedsReportData;
   public int mFolderStatus;
   public String mGWCommonData;
   public byte[] mGalleryReportInfo;
@@ -35,7 +35,7 @@ public class ReportInfo
   public long mSourceArticleId;
   public int mStrategyId;
   public long mUin;
-  public qca mVideoExtraRepoerData;
+  public qlw mVideoExtraRepoerData;
   public int noDifferenceJump;
   public String replyID;
   public long replyUin = -1L;
@@ -63,7 +63,7 @@ public class ReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,86 +1,35 @@
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public abstract class ayyb
-  implements aytj, ayzx
+public class ayyb
+  extends MSFServlet
 {
-  int b = 0;
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
   
-  public static int a()
-  {
-    return a(ayta.a().a());
-  }
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
   
-  public static int a(int paramInt)
+  public void service(Intent paramIntent)
   {
-    int j = 6;
-    int i = j;
-    switch (paramInt)
+    String str = paramIntent.getAction();
+    if ((str != null) && ("gif_ui_show".equals(str)))
     {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      String str = ayta.a().a();
-      paramInt = i;
-      if (str != null)
-      {
-        paramInt = i;
-        if (str.contains("wap")) {
-          paramInt = 5;
-        }
-      }
-      return paramInt;
-      i = 3;
-      continue;
-      i = 7;
-      continue;
-      i = 8;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, akau paramakau, ayzr paramayzr)
-  {
-    paramayzr.c = paramInt1;
-    paramayzr.d = paramInt2;
-    paramayzr.h = paramString1;
-    paramayzr.g = paramString2;
-    if (paramInt1 == 0)
-    {
-      paramayzr.e = 1;
-      paramayzr.f = (paramakau.c - 1);
+      int i = paramIntent.getIntExtra("gif_ui_show_bid", 0);
+      long l = paramIntent.getLongExtra("gif_ui_show_seq", 0L);
+      paramIntent = new Bundle();
+      paramIntent.putInt("gif_ui_show_bid", i);
+      paramIntent.putLong("gif_ui_show_seq", l);
+      notifyObserver(null, 0, true, paramIntent, avqv.class);
       return;
     }
-    paramayzr.e = 0;
-    paramayzr.f = paramakau.c;
-    QLog.d("Q.richmedia.BaseHandler", 1, "result:" + paramInt1 + " errCode:" + paramInt2 + " reason:" + paramString1 + " errStr:" + paramString2);
+    super.service(paramIntent);
   }
-  
-  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, akau paramakau, List<ayzr> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramInt1, paramInt2, paramString1, paramString2, paramakau, (ayzr)paramList.next());
-    }
-  }
-  
-  void a(ayyp paramayyp, aytk paramaytk)
-  {
-    b(paramayyp);
-    paramayyp.jdField_a_of_type_Aytk = paramaytk;
-    if (paramayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null) {
-      paramayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(paramaytk);
-    }
-  }
-  
-  abstract void b(ayyp paramayyp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayyb
  * JD-Core Version:    0.7.0.1
  */

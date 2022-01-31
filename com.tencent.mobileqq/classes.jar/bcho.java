@@ -1,24 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bcho
-  implements bchq
 {
-  public bcho(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState) {}
+  public static bcho[] a;
+  public String a;
   
-  public void a(String paramString)
+  static
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a = 10004;
+    jdField_a_of_type_ArrayOfBcho = new bcho[] { new bcho("BulkChatMessageConfig") };
+  }
+  
+  public bcho(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  final JSONObject a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      return a(paramString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString = new JSONObject();
+      }
+    }
+  }
+  
+  JSONObject a(JSONObject paramJSONObject)
+  {
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcho
  * JD-Core Version:    0.7.0.1
  */

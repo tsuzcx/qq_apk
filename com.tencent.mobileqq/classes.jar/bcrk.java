@@ -1,12 +1,22 @@
-import com.tencent.mobileqq.widget.ObservableScrollView;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
-public abstract interface bcrk
+class bcrk
+  implements baaa
 {
-  public abstract void a(ObservableScrollView paramObservableScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  bcrk(bcrj parambcrj) {}
+  
+  public void a()
+  {
+    this.a.a.a.a.this$0.a();
+    if (this.a.a.a.a.a != null) {
+      this.a.a.a.a.a.a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcrk
  * JD-Core Version:    0.7.0.1
  */

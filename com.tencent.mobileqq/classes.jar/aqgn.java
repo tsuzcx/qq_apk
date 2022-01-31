@@ -1,24 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class aqgn
-  implements View.OnClickListener
+public abstract class aqgn
 {
-  aqgn(aqgk paramaqgk, boolean paramBoolean, String paramString, long paramLong) {}
+  public int a = 1;
+  public String e;
   
-  public void onClick(View paramView)
+  public aqgn(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_Aqgk.a == null) {
-      return;
+    this.a = paramInt;
+    this.e = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof aqgn))
+    {
+      paramObject = (aqgn)paramObject;
+      if (this.e == null) {
+        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
+      }
+      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
+      {
+        return true;
+        return false;
+      }
+      return false;
     }
-    this.jdField_a_of_type_Aqgk.a.hideSoftInputFromWindow();
-    aqgk.a(this.jdField_a_of_type_Aqgk, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Aqgk.D();
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
 public class bcpd
-  implements View.OnClickListener
+  implements baaq
 {
-  public bcpd(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
+  public bcpd(TroopSignVideoView paramTroopSignVideoView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ProfileCardMoreInfoView.a(this.a);
+    if (TroopSignVideoView.a(this.a) != null) {
+      TroopSignVideoView.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpd
  * JD-Core Version:    0.7.0.1
  */

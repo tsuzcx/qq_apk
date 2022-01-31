@@ -1,29 +1,24 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
 public class yww
-  implements yxe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
+  public yww(SingleLyricView paramSingleLyricView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Object localObject = null;
-    wxr localwxr = wxr.a();
-    localwxr.a();
-    localwxr.j(new ywx(this, paramywk, paramString, paramVarArgs, localwxr));
-    if (paramywk != null) {}
-    for (paramString = paramywk.a();; paramString = null)
-    {
-      paramVarArgs = localObject;
-      if (paramywk != null) {
-        paramVarArgs = paramywk.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
-      return true;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yww
  * JD-Core Version:    0.7.0.1
  */

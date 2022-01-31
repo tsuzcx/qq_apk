@@ -1,59 +1,34 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 class ugl
-  implements View.OnLongClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   ugl(ugk paramugk) {}
   
-  public boolean onLongClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = 0;
-    switch (paramView.getId())
+    if (paramBoolean)
     {
-    default: 
-    case 2131370397: 
-    case 2131376005: 
-      do
-      {
-        do
-        {
-          return true;
-          paramView = (tcs)tcz.a(10);
-          if (((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue()) {
-            break;
-          }
-          bool = true;
-          paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-          paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-        } while (paramView == null);
-        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
-      } while (paramView == null);
-      if (bool) {}
-      for (;;)
-      {
-        paramView.a(i);
-        return true;
-        bool = false;
-        break;
-        i = 8;
+      ugk.a(this.a);
+      if (ugk.a(this.a)) {
+        wta.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
       }
     }
-    paramView = (tcs)tcz.a(10);
-    if (!((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue()) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      paramView.b("player_use_tvk", Boolean.valueOf(bool));
-      bcql.a(this.a.b(), "UserTVK: " + bool, 0).a();
-      return true;
+      ugk.a(this.a, paramBoolean);
+      return;
+      ugk.b(this.a);
+      if (ugk.a(this.a)) {
+        wta.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugl
  * JD-Core Version:    0.7.0.1
  */

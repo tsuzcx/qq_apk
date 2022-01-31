@@ -1,60 +1,26 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
-class nlk
-  implements INetInfoHandler
+public class nlk
+  implements Animation.AnimationListener
 {
-  nlk(nli paramnli) {}
+  public nlk(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onNetMobile2None()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetMobile2None");
-    }
-    nli.b(this.a);
+    this.a.setResult(-1);
+    PublicAccountAdvertisementActivity.g(this.a);
+    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
   }
   
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetMobile2Wifi");
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetNone2Mobile");
-    }
-    nli.b(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetNone2Wifi");
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetWifi2Mobile");
-    }
-    nli.b(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetWifi2None");
-    }
-    nli.b(this.a);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nlk
  * JD-Core Version:    0.7.0.1
  */

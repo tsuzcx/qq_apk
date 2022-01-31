@@ -1,31 +1,26 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.content.Context;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class anyq
-  implements View.OnClickListener
+  implements anyn
 {
-  public anyq(EmoticonMainPanel paramEmoticonMainPanel) {}
-  
-  public void onClick(View paramView)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a.b > 1000L)
-    {
-      this.a.b = l;
-      paramView = new Bundle();
-      paramView.putInt("AECAMERA_MODE", 202);
-      paramView.putInt("VIDEO_STORY_FROM_TYPE", birt.i.a());
-      birx.a((BaseActivity)this.a.a, 120, paramView);
-      axqy.b(((BaseActivity)this.a.a).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
+    String str = paramColorNote.getSubType();
+    Object localObject = str.split("-");
+    if (localObject.length > 0) {
+      str = localObject[0];
     }
+    if (localObject.length > 1) {
+      localObject = localObject[1];
+    }
+    paramColorNote = paramColorNote.getReserve();
+    biqv.a(paramContext, "", Long.parseLong(str), paramColorNote);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyq
  * JD-Core Version:    0.7.0.1
  */

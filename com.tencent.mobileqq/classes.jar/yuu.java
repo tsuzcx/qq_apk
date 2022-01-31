@@ -1,145 +1,125 @@
-import android.annotation.SuppressLint;
-import android.text.TextUtils;
-import android.view.MotionEvent;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import android.view.animation.AnimationSet;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.tencent.component.media.image.ImageLoader;
+import com.tencent.qphone.base.util.QLog;
 
 public class yuu
-  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private List<WeakReference<View>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private yuv jdField_a_of_type_Yuv;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private int c;
-  private int d;
+  private View jdField_a_of_type_AndroidViewView;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private ImageView b;
   
-  String a(String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  private Drawable a(String paramString, View paramView)
   {
-    long l1 = this.jdField_b_of_type_Long;
-    long l2 = this.jdField_a_of_type_Long;
-    long l3 = System.currentTimeMillis();
-    long l4 = this.jdField_b_of_type_Long;
-    long l5 = System.currentTimeMillis();
-    long l6 = this.jdField_a_of_type_Long;
-    int i;
-    int j;
-    int k;
-    Object localObject;
-    if (paramBoolean1)
+    return ImageLoader.getInstance().loadImage(paramString, new yuv(this, paramView));
+  }
+  
+  private AnimationSet a()
+  {
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    localAnimationSet.setFillAfter(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
+    localScaleAnimation.setDuration(200L);
+    localScaleAnimation.setStartOffset(280L);
+    localScaleAnimation.setAnimationListener(new yuw(this));
+    localAnimationSet.addAnimation(localScaleAnimation);
+    return localAnimationSet;
+  }
+  
+  private AnimationSet b()
+  {
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    localAnimationSet.setFillAfter(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
+    localScaleAnimation.setDuration(200L);
+    localScaleAnimation.setStartOffset(2240L);
+    localScaleAnimation.setFillAfter(true);
+    localScaleAnimation.setAnimationListener(new yux(this));
+    localAnimationSet.addAnimation(localScaleAnimation);
+    return localAnimationSet;
+  }
+  
+  private AnimationSet c()
+  {
+    if (this.b != null)
     {
-      i = 1;
-      j = axlk.b(BaseApplicationImpl.getContext());
-      k = axlk.a(BaseApplicationImpl.getContext());
-      localObject = new JSONObject();
+      AnimationSet localAnimationSet = new AnimationSet(false);
+      localAnimationSet.setFillAfter(true);
+      ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
+      localScaleAnimation.setInterpolator(new OvershootInterpolator());
+      localScaleAnimation.setDuration(440L);
+      localScaleAnimation.setStartOffset(400L);
+      localScaleAnimation.setAnimationListener(new yuy(this));
+      localAnimationSet.addAnimation(localScaleAnimation);
+      localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
+      localScaleAnimation.setDuration(320L);
+      localScaleAnimation.setStartOffset(2400L);
+      localAnimationSet.addAnimation(localScaleAnimation);
+      return localAnimationSet;
     }
-    for (;;)
-    {
-      try
-      {
-        ((JSONObject)localObject).put("g", String.valueOf(l1 - l2));
-        ((JSONObject)localObject).put("sc", String.valueOf(l3 - l4));
-        ((JSONObject)localObject).put("ec", String.valueOf(l5 - l6));
-        ((JSONObject)localObject).put("aa", String.valueOf(this.jdField_a_of_type_Int));
-        ((JSONObject)localObject).put("ab", String.valueOf(this.jdField_b_of_type_Int));
-        ((JSONObject)localObject).put("ba", String.valueOf(this.c));
-        ((JSONObject)localObject).put("bb", String.valueOf(this.d));
-        ((JSONObject)localObject).put("d", String.valueOf(0));
-        ((JSONObject)localObject).put("p", String.valueOf(paramLong));
-        ((JSONObject)localObject).put("f", String.valueOf(0));
-        ((JSONObject)localObject).put("x", String.valueOf(i));
-        ((JSONObject)localObject).put("sz", String.valueOf(-999));
-        ((JSONObject)localObject).put("da", String.valueOf(k));
-        ((JSONObject)localObject).put("db", String.valueOf(j));
-        if (!paramBoolean2) {
-          continue;
-        }
-        i = 2;
-        ((JSONObject)localObject).put("vca", String.valueOf(i));
-      }
-      catch (Exception localException)
-      {
-        String str;
-        yxp.d("GdtMotiveVideoClickCoordinateReportHelper", "getReportString error", localException);
-        continue;
-        paramString = "?";
-        continue;
-      }
-      str = ((JSONObject)localObject).toString();
-      localObject = paramString;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localObject = paramString;
-        if (!paramString.contains("&s={"))
-        {
-          localObject = new StringBuilder().append(paramString);
-          if (!paramString.contains("?")) {
-            continue;
-          }
-          paramString = "&";
-          localObject = paramString + "s=" + str;
-          yxp.d("GdtMotiveVideoClickCoordinateReportHelper", "getReportString click url result : " + (String)localObject);
-        }
-      }
-      return localObject;
-      i = 0;
-      break;
-      i = 1;
-    }
+    return null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Yuv = null;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (this.jdField_a_of_type_Boolean)
     {
-      View localView = (View)((WeakReference)localIterator.next()).get();
-      if (localView != null) {
-        localView.setOnTouchListener(null);
-      }
-    }
-  }
-  
-  void a(View paramView)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramView));
-    paramView.setOnTouchListener(this);
-  }
-  
-  @SuppressLint({"ClickableViewAccessibility"})
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(a());
+      this.b.clearAnimation();
+      this.b.startAnimation(c());
     }
     for (;;)
     {
-      return false;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
-      this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY());
-      continue;
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      this.c = ((int)paramMotionEvent.getRawX());
-      this.d = ((int)paramMotionEvent.getRawY());
-      if (this.jdField_a_of_type_Yuv != null) {
-        this.jdField_a_of_type_Yuv.a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d);
-      }
+      QLog.d("Q.videostory.config.VSEntranceWidget", 1, "playWidgetAnimationset resourceReady:" + this.jdField_a_of_type_Boolean);
+      return;
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
     }
+  }
+  
+  public void a(FrameLayout paramFrameLayout, View paramView, String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramFrameLayout = yvc.a().a(paramString);
+    if ((paramFrameLayout == null) || (!paramFrameLayout.a()))
+    {
+      QLog.e("Q.videostory.config.VSEntranceWidget", 1, "bindTargetView error!widgetConfig is null or resource not ready!");
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    paramView = a(paramFrameLayout.c, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    if (paramView != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(paramView);
+    }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131363899));
+    paramView = a(paramFrameLayout.d, this.jdField_a_of_type_AndroidWidgetImageView);
+    if (paramView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.b = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131380156));
+    paramFrameLayout = a(paramFrameLayout.f, this.b);
+    if (paramFrameLayout != null) {
+      this.b.setImageDrawable(paramFrameLayout);
+    }
+    this.b.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yuu
  * JD-Core Version:    0.7.0.1
  */

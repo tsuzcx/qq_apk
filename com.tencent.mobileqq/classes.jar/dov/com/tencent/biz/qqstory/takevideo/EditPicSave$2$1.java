@@ -1,14 +1,14 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import acxs;
+import aepf;
 import android.app.Activity;
-import bbdx;
-import bbef;
-import birt;
-import bjts;
-import bjtu;
-import bjxn;
-import bjyv;
+import bdcs;
+import bdda;
+import bkwm;
+import bmfc;
+import bmfe;
+import bmix;
+import bmkf;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -16,26 +16,26 @@ import java.io.File;
 public class EditPicSave$2$1
   implements Runnable
 {
-  public EditPicSave$2$1(bjtu parambjtu, String paramString) {}
+  public EditPicSave$2$1(bmfe parambmfe, String paramString) {}
   
   public void run()
   {
     try
     {
-      if (birt.e(this.jdField_a_of_type_Bjtu.a.jdField_a_of_type_Bjyv.getActivity().getIntent()))
+      if (bkwm.e(this.jdField_a_of_type_Bmfe.a.jdField_a_of_type_Bmkf.getActivity().getIntent()))
       {
-        bjts.a(this.jdField_a_of_type_Bjtu.a, MiniAppFileManager.getInstance().getTmpPathFromOut(this.jdField_a_of_type_JavaLangString, bjts.a(this.jdField_a_of_type_Bjtu.a, this.jdField_a_of_type_Bjtu.a.jdField_a_of_type_Bjyv.a())));
-        bbdx.a(new File(this.jdField_a_of_type_JavaLangString), new File(bjts.a(this.jdField_a_of_type_Bjtu.a)));
+        bmfc.a(this.jdField_a_of_type_Bmfe.a, MiniAppFileManager.getInstance().getTmpPathFromOut(this.jdField_a_of_type_JavaLangString, bmfc.a(this.jdField_a_of_type_Bmfe.a, this.jdField_a_of_type_Bmfe.a.jdField_a_of_type_Bmkf.a())));
+        bdcs.a(new File(this.jdField_a_of_type_JavaLangString), new File(bmfc.a(this.jdField_a_of_type_Bmfe.a)));
         return;
       }
-      bjts.a(this.jdField_a_of_type_Bjtu.a, acxs.a());
-      File localFile = new File(bjts.a(this.jdField_a_of_type_Bjtu.a));
-      if (bbdx.a(new File(this.jdField_a_of_type_JavaLangString), localFile))
+      bmfc.a(this.jdField_a_of_type_Bmfe.a, aepf.a());
+      File localFile = new File(bmfc.a(this.jdField_a_of_type_Bmfe.a));
+      if (bdcs.a(new File(this.jdField_a_of_type_JavaLangString), localFile))
       {
-        if (this.jdField_a_of_type_Bjtu.a.jdField_a_of_type_Bjxn.a.a() == 14) {
-          bjts.a(this.jdField_a_of_type_Bjtu.a, true);
+        if (this.jdField_a_of_type_Bmfe.a.jdField_a_of_type_Bmix.a.a() == 14) {
+          bmfc.a(this.jdField_a_of_type_Bmfe.a, true);
         }
-        bbef.a(this.jdField_a_of_type_Bjtu.a.jdField_a_of_type_Bjyv.getActivity(), localFile);
+        bdda.a(this.jdField_a_of_type_Bmfe.a.jdField_a_of_type_Bmkf.getActivity(), localFile);
         return;
       }
     }
@@ -49,7 +49,7 @@ public class EditPicSave$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditPicSave.2.1
  * JD-Core Version:    0.7.0.1
  */

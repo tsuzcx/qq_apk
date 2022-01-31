@@ -1,47 +1,81 @@
-public class ldd
-  extends lek
+import android.content.Context;
+import android.util.Xml;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.apache.http.Header;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicNameValuePair;
+import org.xmlpull.v1.XmlSerializer;
+
+abstract class ldd
+  extends lcw
 {
-  public static int a;
-  public static String a;
-  public static boolean a;
-  public static int b;
-  public static String b;
-  public static boolean b;
-  public static int c;
-  public static String c;
-  public static int d;
-  public static String d;
-  public static int e;
-  public static String e;
-  public static int f;
-  public static String f;
-  public static String g = "qav_peer_sdk_version";
-  public static String h = "qav_ip";
-  public static String i = "qav_business_type";
-  public static String j = "qav_business_flag";
-  public static String k = "qav_touin";
-  public static String l = "qav_commited";
-  
-  static
+  private static String a(List<String> paramList, String paramString)
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "qua_report_current";
-    jdField_b_of_type_JavaLangString = "qua_report_exception";
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
-    jdField_d_of_type_Int = 4;
-    jdField_e_of_type_Int = 5;
-    jdField_f_of_type_Int = 6;
-    jdField_c_of_type_JavaLangString = "qav_score_count";
-    jdField_d_of_type_JavaLangString = "qav_score_begintime";
-    jdField_e_of_type_JavaLangString = "qav_score_endtime";
-    jdField_f_of_type_JavaLangString = "qav_sdk_version";
+    XmlSerializer localXmlSerializer;
+    StringWriter localStringWriter;
+    try
+    {
+      localXmlSerializer = Xml.newSerializer();
+      localStringWriter = new StringWriter();
+      localXmlSerializer.setOutput(localStringWriter);
+      localXmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
+      localXmlSerializer.startTag("", "TranslateArrayRequest");
+      localXmlSerializer.startTag("", "AppId");
+      localXmlSerializer.endTag("", "AppId");
+      localXmlSerializer.startTag("", "Texts");
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        localXmlSerializer.startTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
+        localXmlSerializer.text(str);
+        localXmlSerializer.endTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
+      }
+      localXmlSerializer.endTag("", "Texts");
+    }
+    catch (Exception paramList)
+    {
+      paramList.printStackTrace();
+      return null;
+    }
+    localXmlSerializer.startTag("", "To");
+    localXmlSerializer.text(paramString);
+    localXmlSerializer.endTag("", "To");
+    localXmlSerializer.endTag("", "TranslateArrayRequest");
+    localXmlSerializer.endDocument();
+    paramList = localStringWriter.toString();
+    return paramList;
+  }
+  
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<String> paramList, String paramString, lcl paramlcl)
+  {
+    paramList = new StringEntity(a(paramList, paramString), "UTF-8");
+    a().a(paramContext, "http://api.microsofttranslator.com/V2/Http.svc/TranslateArray", paramArrayOfHeader, paramList, "application/xml", paramlcl);
+  }
+  
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, Map<String, String> paramMap, lcn paramlcn)
+  {
+    ArrayList localArrayList = new ArrayList(4);
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      localArrayList.add(new BasicNameValuePair((String)localEntry.getKey(), (String)localEntry.getValue()));
+    }
+    paramMap = new UrlEncodedFormEntity(localArrayList);
+    a().a(paramContext, "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13", paramArrayOfHeader, paramMap, "application/x-www-form-urlencoded", paramlcn);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,19 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acny
-  extends ajxj
+class acny
+  implements DialogInterface.OnClickListener
 {
-  public acny(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  acny(acnw paramacnw) {}
   
-  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-      return;
-    }
-    this.a.a(2131719326, 1);
-  }
-  
-  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
-  {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      this.a.a(2131691489, 2);
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ((paramBoolean1) && (paramBoolean3))
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acny
  * JD-Core Version:    0.7.0.1
  */

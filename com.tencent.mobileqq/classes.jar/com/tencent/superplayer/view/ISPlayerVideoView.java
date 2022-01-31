@@ -1,6 +1,7 @@
 package com.tencent.superplayer.view;
 
 import android.view.Surface;
+import android.view.View;
 
 public abstract interface ISPlayerVideoView
 {
@@ -9,6 +10,12 @@ public abstract interface ISPlayerVideoView
   public abstract boolean disableViewCallback();
   
   public abstract boolean enableViewCallback();
+  
+  public abstract View getRenderView();
+  
+  public abstract int getRenderViewHeight();
+  
+  public abstract int getRenderViewWidth();
   
   public abstract String getSerialNO();
   
@@ -26,7 +33,7 @@ public abstract interface ISPlayerVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.superplayer.view.ISPlayerVideoView
  * JD-Core Version:    0.7.0.1
  */

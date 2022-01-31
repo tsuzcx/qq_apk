@@ -1,89 +1,71 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.3.1;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import org.json.JSONObject;
 
 public class aoiu
-  extends RecyclerView.OnScrollListener
 {
-  public aoiu(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public int a;
+  public String a;
+  public JSONObject a;
   
-  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
+  public aoiu()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    if (this.a.jdField_a_of_type_Baxy != null)
-    {
-      if (paramInt != 0) {
-        break label94;
-      }
-      this.a.c = false;
-      this.a.jdField_a_of_type_Baxy.b();
-      this.a.a();
-    }
-    for (;;)
-    {
-      if (paramInt == 0)
-      {
-        ExtendFriendSquareFragment.a(this.a);
-        this.a.g();
-        this.a.b(false);
-      }
-      return;
-      label94:
-      this.a.c = true;
-      this.a.jdField_a_of_type_Baxy.c();
-      this.a.jdField_a_of_type_Baxy.a();
-      synchronized (ExtendFriendBaseFragment.a)
-      {
-        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.clear();
-        }
-      }
-    }
+    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public static aoiu a(String paramString)
   {
-    this.a.h = this.a.d();
-    float f2 = 0.0F;
-    float f1 = f2;
-    if (this.a.d != -1L)
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      long l = System.currentTimeMillis() - this.a.d;
-      f1 = f2;
-      if (l > 0L)
+      aoiu localaoiu = new aoiu();
+      localaoiu.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("loverAIOPush");
+      return localaoiu;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("C2CLovePushGrayConfBean", 2, "C2CLovePushGrayConfBean onParsed erro " + paramString.toString());
+    }
+    return null;
+  }
+  
+  public aoiu b(String paramString)
+  {
+    aoiu localaoiu = new aoiu();
+    try
+    {
+      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
       {
-        f1 = f2;
-        if (l < 2000L) {
-          f1 = paramInt2 * 1.0F / (float)l;
+        paramString = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(paramString);
+        if (paramString != null)
+        {
+          localaoiu.jdField_a_of_type_Int = paramString.optInt("linkType", 1);
+          localaoiu.jdField_a_of_type_JavaLangString = paramString.optString("linkURL", "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1");
+          return localaoiu;
         }
+        localaoiu.jdField_a_of_type_Int = 1;
+        localaoiu.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
+        return localaoiu;
       }
     }
-    this.a.d = System.currentTimeMillis();
-    if (this.a.jdField_a_of_type_AndroidViewView != null)
+    catch (Exception paramString)
     {
-      ExtendFriendSquareFragment.a(this.a, this.a.h, f1);
-      if (!this.a.e) {
-        this.a.d(false);
+      if (QLog.isColorLevel()) {
+        QLog.e("C2CLovePushGrayProcessor", 2, "getC2CLovePushGrayConfBean Exception :", paramString);
       }
+      localaoiu.jdField_a_of_type_Int = 1;
+      localaoiu.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
     }
-    if ((!ExtendFriendSquareFragment.d(this.a)) && (!ExtendFriendSquareFragment.e(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Aoiz != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Aoiz.getItemCount() - 2) != null))
-    {
-      this.a.a(true);
-      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.3.1(this));
-      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
-    }
+    return localaoiu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoiu
  * JD-Core Version:    0.7.0.1
  */

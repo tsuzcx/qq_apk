@@ -19,7 +19,7 @@ public class MiniAppDexLoader
   private String getDexPath()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", "");
-    String str2 = StorageUtil.getPreference().getString("version", "1.13.0.00013");
+    String str2 = StorageUtil.getPreference().getString("version", "1.14.0.00225");
     str1 = BaseLibManager.g().getBaseLibDir(str1, str2);
     if (!TextUtils.isEmpty(str1)) {
       return str1 + "api.jar";
@@ -363,7 +363,7 @@ public class MiniAppDexLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.MiniAppDexLoader
  * JD-Core Version:    0.7.0.1
  */

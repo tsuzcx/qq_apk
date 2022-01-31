@@ -1,54 +1,61 @@
+import android.content.res.Resources;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-class adzk
-  implements asuv
+public class adzk
+  extends alsi
 {
-  adzk(adzf paramadzf, String paramString, adzp paramadzp) {}
+  public adzk(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
   
-  public void a()
+  protected void a(String paramString)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopInviteStatusFragment", 2, "onSendSystemMsgActionError logStr:" + paramString);
+    }
+    if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing()))
+    {
+      this.a.jdField_a_of_type_Bepp.dismiss();
+      paramString = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131720539);
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, paramString, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight()).show();
     }
   }
   
-  public void a(asus paramasus)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "dealVideoSaveUI onSaveComplete");
+    if ((this.a.jdField_a_of_type_Bepp != null) && (this.a.jdField_a_of_type_Bepp.isShowing())) {
+      this.a.jdField_a_of_type_Bepp.dismiss();
     }
-    if (paramasus != null)
+    if (!paramBoolean)
     {
-      if (paramasus.jdField_a_of_type_Int != 0) {
-        break label112;
+      paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131719743);
+      if (TextUtils.isEmpty(paramString3)) {
+        break label175;
       }
-      asut.a(this.jdField_a_of_type_Adzf.a);
     }
     for (;;)
     {
-      paramasus.jdField_a_of_type_Asur.b(this);
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-        this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
-      }
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, paramString3, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
       return;
-      label112:
-      asut.b(this.jdField_a_of_type_Adzf.a);
+      paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131692864);
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2, paramString1, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      this.a.c = -1;
+      TroopInviteStatusFragment.a(this.a);
+      this.a.jdField_b_of_type_Boolean = true;
+      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.jdField_b_of_type_JavaLangRunnable);
+      return;
+      label175:
+      paramString3 = paramString1;
     }
   }
-  
-  public void a(asus paramasus, int paramInt)
-  {
-    this.jdField_a_of_type_Adzf.a(this.jdField_a_of_type_Adzp, paramInt, false);
-  }
-  
-  public void b(asus paramasus) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzk
  * JD-Core Version:    0.7.0.1
  */

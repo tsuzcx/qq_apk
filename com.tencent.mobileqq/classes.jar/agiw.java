@@ -1,23 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-
-public class agiw
-  implements DialogInterface.OnClickListener
+class agiw
+  extends amjj
 {
-  public agiw(BindNumberActivity paramBindNumberActivity) {}
+  agiw(agiu paramagiu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void b()
   {
-    if (this.a.a != null) {
-      this.a.a.setText("");
-    }
+    this.a.b(false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agiw
  * JD-Core Version:    0.7.0.1
  */

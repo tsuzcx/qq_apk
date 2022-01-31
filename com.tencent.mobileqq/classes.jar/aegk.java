@@ -1,16 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.UpgradeTipsDialog;
 
-public class aegk
-  implements wxt
+public abstract interface aegk
 {
-  public aegk(AIOGalleryAdapter paramAIOGalleryAdapter) {}
-  
-  public void a(Bundle paramBundle) {}
+  public abstract void a(UpgradeTipsDialog paramUpgradeTipsDialog);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegk
  * JD-Core Version:    0.7.0.1
  */

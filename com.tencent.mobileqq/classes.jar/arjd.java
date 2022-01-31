@@ -1,48 +1,57 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.intervideo.nowproxy.NowPluginObserver;
-import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public class arjd
-  implements NowPluginObserver
+class arjd
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public arjd(LoadingFragment paramLoadingFragment) {}
+  arjd(aris paramaris) {}
   
-  public void onCloseLoadingView()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.finish();
-    }
-  }
-  
-  public void onEnterAvPlugin(Bundle paramBundle) {}
-  
-  public void onEnterRoom(Bundle paramBundle)
-  {
-    this.a.a();
-  }
-  
-  public void onExitRoom(Bundle paramBundle) {}
-  
-  public void onLoadingViewCreated(View paramView)
-  {
-    if (paramView != null)
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null))
     {
-      this.a.getActivity();
-      FrameLayout localFrameLayout = (FrameLayout)this.a.getView();
-      if ((paramView != null) && (localFrameLayout != null)) {
-        localFrameLayout.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
+      aris.a(this.a, aris.b(this.a, paramInt));
+      this.a.jdField_a_of_type_Arke.b(aris.a(this.a));
+      if (QLog.isDevelopLevel()) {
+        QLog.d("#@#@", 1, "onProgressChanged userPos[" + aris.a(this.a) + "]");
       }
     }
+  }
+  
+  @TargetApi(16)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    aris.c(this.a);
+    aris.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
+    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
+    this.a.jdField_a_of_type_Arke.a(null);
+    aris.a(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("##########", 1, "mMediaPlayer sekTo [" + aris.a(this.a) + "]");
+    }
+    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(aris.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjd
  * JD-Core Version:    0.7.0.1
  */

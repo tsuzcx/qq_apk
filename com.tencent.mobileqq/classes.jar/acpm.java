@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
-public class acpm
-  implements acpu
+class acpm
+  implements DialogInterface.OnClickListener
 {
-  public acpm(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  acpm(acpl paramacpl) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setActualViewSize(paramInt1, paramInt2);
-    this.a.a.invalidate();
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
+      this.a.a.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpm
  * JD-Core Version:    0.7.0.1
  */

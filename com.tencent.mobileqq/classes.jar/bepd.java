@@ -1,25 +1,123 @@
-import android.util.SparseArray;
+import android.content.Intent;
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mobileqq.widget.ProfileViewOnClickListener.1;
+import java.lang.ref.WeakReference;
 
 public class bepd
-  extends bepf
+  implements View.OnClickListener
 {
-  public bepd(BarrageView paramBarrageView, View paramView, int paramInt)
+  private final WeakReference<ProfileCardMoreInfoView> a;
+  
+  public bepd(ProfileCardMoreInfoView paramProfileCardMoreInfoView)
   {
-    super(paramBarrageView, paramView, null);
+    this.a = new WeakReference(paramProfileCardMoreInfoView);
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    super.onAnimationEnd(paramAnimation);
-    BarrageView.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaDanmuBarrageView).remove(this.jdField_a_of_type_Int);
+    Object localObject = (ProfileCardMoreInfoView)this.a.get();
+    if (localObject == null) {}
+    BaseActivity localBaseActivity;
+    QQAppInterface localQQAppInterface;
+    awmk localawmk;
+    do
+    {
+      return;
+      localBaseActivity = ((ProfileCardMoreInfoView)localObject).jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      localQQAppInterface = ((ProfileCardMoreInfoView)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localawmk = ((ProfileCardMoreInfoView)localObject).jdField_a_of_type_Awmk;
+    } while ((localBaseActivity == null) || (localQQAppInterface == null) || (localawmk == null));
+    Intent localIntent = new Intent(localBaseActivity, QQBrowserActivity.class);
+    boolean bool;
+    label80:
+    int j;
+    int i;
+    if (localawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
+    {
+      bool = true;
+      if (bool) {
+        break label206;
+      }
+      localObject = localawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
+      j = 2;
+      i = MedalWallMng.b;
+    }
+    for (;;)
+    {
+      localIntent.putExtra("url", ((MedalWallMng)localQQAppInterface.getManager(250)).a(bool, (String)localObject, i));
+      localBaseActivity.startActivityForResult(localIntent, 1027);
+      azmj.b(localQQAppInterface, "dc00898", "", "", "0X800738D", "0X800738D", j, 0, "", "", "", "");
+      if (!bool) {
+        break;
+      }
+      localawmk.jdField_a_of_type_ComTencentMobileqqDataCard.iNewCount = 0;
+      localawmk.jdField_a_of_type_ComTencentMobileqqDataCard.iUpgradeCount = 0;
+      ThreadManager.excute(new ProfileViewOnClickListener.1(this, localQQAppInterface), 16, null, true);
+      return;
+      bool = false;
+      break label80;
+      label206:
+      localObject = localQQAppInterface.getCurrentAccountUin();
+      j = ((avod)localQQAppInterface.getManager(160)).a();
+      i = MedalWallMng.jdField_a_of_type_Int;
+      if (localawmk.jdField_a_of_type_ComTencentMobileqqDataCard.iNewCount > 0)
+      {
+        j = 4;
+        i = MedalWallMng.c;
+      }
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    int j = 2;
+    Object localObject = (ProfileCardMoreInfoView)this.a.get();
+    if (localObject == null) {}
+    BaseActivity localBaseActivity;
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
+      {
+        return;
+        localBaseActivity = ((ProfileCardMoreInfoView)localObject).jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+        localQQAppInterface = ((ProfileCardMoreInfoView)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject = ((ProfileCardMoreInfoView)localObject).jdField_a_of_type_Awmk;
+      } while ((localBaseActivity == null) || (localQQAppInterface == null) || (localObject == null));
+      paramView = paramView.getTag();
+    } while (!(paramView instanceof awki));
+    switch (((awki)paramView).jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 66: 
+      bcyw.a((awmk)localObject, localQQAppInterface, localBaseActivity);
+      int i = j;
+      if (((awmk)localObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null)
+      {
+        i = j;
+        if (((awmk)localObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
+          i = 1;
+        }
+      }
+      azmj.b(localQQAppInterface, "dc00898", "", "", "0X8009999", "0X8009999", i, 0, "", "", "", "");
+      return;
+    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bepd
  * JD-Core Version:    0.7.0.1
  */

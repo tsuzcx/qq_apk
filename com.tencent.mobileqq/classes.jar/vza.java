@@ -1,22 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
-class vza
-  implements View.OnClickListener
+public class vza
+  extends JobSegment<List<Bitmap>, Bitmap>
 {
-  vza(vyz paramvyz) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
   
-  public void onClick(View paramView)
+  public vza(Context paramContext, String paramString, int paramInt)
   {
-    paramView = this.a.jdField_a_of_type_Vyv;
-    if (paramView != null) {
-      paramView.a(this.a.jdField_a_of_type_Vzb, this.a);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, List<Bitmap> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      notifyError(new ErrorMessage(-1, "bitmap list should not be empty"));
+      return;
     }
+    paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
+    paramList = bcyy.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
+    vzb.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
+    notifyResult(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vza
  * JD-Core Version:    0.7.0.1
  */

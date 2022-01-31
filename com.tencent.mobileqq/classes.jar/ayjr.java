@@ -1,41 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-
 public class ayjr
-  extends Handler
 {
-  public ayjr(ShareAppLogHelper paramShareAppLogHelper, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public String a;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
+  public ayjr(String paramString1, String paramString2)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (ShareAppLogHelper.a(this.a) == null);
-        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
-        return;
-      } while (ShareAppLogHelper.a(this.a) == null);
-      ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
-      return;
-    } while (ShareAppLogHelper.a(this.a) == null);
-    ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayjr
  * JD-Core Version:    0.7.0.1
  */

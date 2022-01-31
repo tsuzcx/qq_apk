@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import ajum;
+import allz;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class DataLineHandler$5
   implements Runnable
 {
-  public DataLineHandler$5(ajum paramajum, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public DataLineHandler$5(allz paramallz, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void run()
   {

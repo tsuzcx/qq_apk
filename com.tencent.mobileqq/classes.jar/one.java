@@ -1,19 +1,21 @@
 import java.util.List;
 
-public class one
+class one
+  extends oob
 {
-  public int a;
-  public String a;
-  public List<Integer> a;
-  public String b;
-  public List<Integer> b;
-  public String c;
+  one(omz paramomz, boolean paramBoolean, List paramList)
+  {
+    super(paramomz, null);
+  }
   
-  public one(ond paramond) {}
+  void a(ooe paramooe)
+  {
+    paramooe.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, omz.d(this.jdField_a_of_type_Omz), 2, 2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     one
  * JD-Core Version:    0.7.0.1
  */

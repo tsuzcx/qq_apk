@@ -1,30 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class afwv
-  implements DialogInterface.OnCancelListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private final WeakReference<ChatHistoryC2CAllFragment> a;
+  public afwv(SixCombolEffectView paramSixCombolEffectView, afxk paramafxk) {}
   
-  public afwv(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
-    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Afxk.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Afxk.b) && (this.jdField_a_of_type_Afxk.a < 0.52F)) {
+      this.jdField_a_of_type_Afxk.b = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afwv
  * JD-Core Version:    0.7.0.1
  */

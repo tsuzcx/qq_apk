@@ -1,24 +1,24 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import bekr;
-import bevz;
-import bexk;
+import bgkd;
+import bgwc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONObject;
 
 class OpenDataJsPlugin$4
   implements AsyncResult
 {
-  OpenDataJsPlugin$4(OpenDataJsPlugin paramOpenDataJsPlugin, bekr parambekr) {}
+  OpenDataJsPlugin$4(OpenDataJsPlugin paramOpenDataJsPlugin, bgkd parambgkd) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    bexk localbexk = bexk.a();
-    StringBuilder localStringBuilder = new StringBuilder().append("setUserCloudStorage callback appid:").append(bevz.a().a()).append(", isSuc").append(paramBoolean).append(", ret:");
+    bgwc localbgwc = bgwc.a();
+    StringBuilder localStringBuilder = new StringBuilder().append("setUserCloudStorage callback appid:").append(OpenDataJsPlugin.access$300(this.this$0).appId).append(", isSuc").append(paramBoolean).append(", ret:");
     if (paramJSONObject != null) {}
     for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
     {
-      localbexk.i("OpenDataJsPlugin", paramJSONObject);
+      localbgwc.i("OpenDataJsPlugin", paramJSONObject);
       paramJSONObject = new JSONObject();
       if (!paramBoolean) {
         break;
@@ -31,7 +31,7 @@ class OpenDataJsPlugin$4
       }
       catch (Throwable paramJSONObject)
       {
-        bexk.a().e("OpenDataJsPlugin", "setUserCloudStorage error " + paramJSONObject.getMessage());
+        bgwc.a().e("OpenDataJsPlugin", "setUserCloudStorage error " + paramJSONObject.getMessage());
         this.val$req.b();
       }
     }
@@ -42,7 +42,7 @@ class OpenDataJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.plugins.OpenDataJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.model;
 
-import alfj;
-import alku;
+import amvz;
+import anbk;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraProxy$1
   implements Runnable
 {
-  public CameraProxy$1(alku paramalku, int paramInt) {}
+  public CameraProxy$1(anbk paramanbk, int paramInt) {}
   
   public void run()
   {
-    if ((alku.a(this.this$0) != 1) || (alku.a(this.this$0) == null))
+    if ((anbk.a(this.this$0) != 1) || (anbk.a(this.this$0) == null))
     {
-      QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + alku.a(this.this$0));
+      QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + anbk.a(this.this$0));
       return;
     }
     int i;
@@ -28,22 +28,22 @@ public class CameraProxy$1
         {
           QLog.i("CameraProxy", 2, "openCameraAync.");
           i = -3;
-          if (alku.b(this.this$0) >= 10) {
+          if (anbk.b(this.this$0) >= 10) {
             break;
           }
-          alku.c(this.this$0);
+          anbk.c(this.this$0);
           System.currentTimeMillis();
-          if (alku.b(this.this$0) == 1)
+          if (anbk.b(this.this$0) == 1)
           {
-            i = alku.a(this.this$0).a(this.a);
-            QLog.i("CameraProxy", 2, "try to open camera. mCurOpenCameraTryTimes = " + alku.b(this.this$0) + ", MAX_OPEN_CAMERA_TRY_TIMES = " + 10);
-            if (alku.a(this.this$0) == null) {
+            i = anbk.a(this.this$0).a(this.a);
+            QLog.i("CameraProxy", 2, "try to open camera. mCurOpenCameraTryTimes = " + anbk.b(this.this$0) + ", MAX_OPEN_CAMERA_TRY_TIMES = " + 10);
+            if (anbk.a(this.this$0) == null) {
               break label474;
             }
-            if (alku.a(this.this$0) == 1) {
+            if (anbk.a(this.this$0) == 1) {
               break label480;
             }
-            QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + alku.a(this.this$0));
+            QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + anbk.a(this.this$0));
             return;
           }
         }
@@ -51,33 +51,33 @@ public class CameraProxy$1
         {
           localInterruptedException.printStackTrace();
           QLog.i("CameraProxy", 1, "InterruptedException = " + localInterruptedException.getMessage());
-          alku.a(this.this$0, 0);
-          QLog.i("CameraProxy", 2, "openCameraAync failed. mCurCameraState = " + alku.a(this.this$0));
+          anbk.a(this.this$0, 0);
+          QLog.i("CameraProxy", 2, "openCameraAync failed. mCurCameraState = " + anbk.a(this.this$0));
           return;
         }
-        i = alku.a(this.this$0).e();
+        i = anbk.a(this.this$0).e();
       }
       if (i != 0) {
         break;
       }
-      alku.a(this.this$0, 2);
-      QLog.i("CameraProxy", 2, "openCameraAync successfully. mCurCameraState = " + alku.a(this.this$0));
+      anbk.a(this.this$0, 2);
+      QLog.i("CameraProxy", 2, "openCameraAync successfully. mCurCameraState = " + anbk.a(this.this$0));
       return;
       Thread.currentThread();
-      Thread.sleep(alku.a(this.this$0));
-    } while (alku.a(this.this$0) == 1);
-    QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + alku.a(this.this$0));
+      Thread.sleep(anbk.a(this.this$0));
+    } while (anbk.a(this.this$0) == 1);
+    QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + anbk.a(this.this$0));
     return;
-    alku.a(this.this$0, 0);
-    QLog.i("CameraProxy", 2, "openCameraAync failed. retCode = " + i + ", mCurCameraState = " + alku.a(this.this$0));
+    anbk.a(this.this$0, 0);
+    QLog.i("CameraProxy", 2, "openCameraAync failed. retCode = " + i + ", mCurCameraState = " + anbk.a(this.this$0));
     if (i == -1)
     {
-      alku.a(this.this$0, false, 0, 1);
+      anbk.a(this.this$0, false, 0, 1);
       return;
     }
     for (;;)
     {
-      alku.a(this.this$0, false, 0, 2);
+      anbk.a(this.this$0, false, 0, 2);
       return;
       label474:
       i = -3;
@@ -97,7 +97,7 @@ public class CameraProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.CameraProxy.1
  * JD-Core Version:    0.7.0.1
  */

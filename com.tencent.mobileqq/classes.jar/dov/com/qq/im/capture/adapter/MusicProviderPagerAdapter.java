@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.adapter;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -8,9 +8,9 @@ import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-import bfpt;
-import bjbc;
-import bjcr;
+import bhqp;
+import blmm;
+import bloc;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
@@ -21,17 +21,17 @@ public class MusicProviderPagerAdapter
   extends PagerAdapter
 {
   public static final int a;
-  public static final int b = actj.a(0.0F, BaseApplication.getContext().getResources());
+  public static final int b = aekt.a(0.0F, BaseApplication.getContext().getResources());
   private Context jdField_a_of_type_AndroidContentContext;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
   private SparseArray<GridView> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private bfpt jdField_a_of_type_Bfpt;
+  private bhqp jdField_a_of_type_Bhqp;
   MusicProviderView jdField_a_of_type_DovComQqImCaptureViewMusicProviderView;
-  private List<bjcr> jdField_a_of_type_JavaUtilList;
+  private List<bloc> jdField_a_of_type_JavaUtilList;
   
   static
   {
-    jdField_a_of_type_Int = actj.a(7.0F, BaseApplication.getContext().getResources());
+    jdField_a_of_type_Int = aekt.a(7.0F, BaseApplication.getContext().getResources());
   }
   
   public MusicProviderPagerAdapter(Context paramContext, MusicProviderView paramMusicProviderView)
@@ -51,12 +51,12 @@ public class MusicProviderPagerAdapter
     return (GridView)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
-  public void a(bfpt parambfpt)
+  public void a(bhqp parambhqp)
   {
-    this.jdField_a_of_type_Bfpt = parambfpt;
+    this.jdField_a_of_type_Bhqp = parambhqp;
   }
   
-  public void a(List<bjcr> paramList)
+  public void a(List<bloc> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
@@ -82,7 +82,7 @@ public class MusicProviderPagerAdapter
       QLog.d("MusicProviderView", 2, "instantiateItem position = " + paramInt);
     }
     GridView localGridView = (GridView)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    bjbc localbjbc;
+    blmm localblmm;
     if (localGridView == null)
     {
       localGridView = new GridView(this.jdField_a_of_type_AndroidContentContext);
@@ -91,16 +91,16 @@ public class MusicProviderPagerAdapter
       localGridView.setVerticalSpacing(b);
       localGridView.setHorizontalSpacing(b);
       localGridView.setVerticalScrollBarEnabled(false);
-      localGridView.setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int * 2 + actj.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localGridView.setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int * 2 + aekt.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       localGridView.setClipToPadding(false);
-      localbjbc = new bjbc(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView);
-      localGridView.setOnItemClickListener(this.jdField_a_of_type_Bfpt);
+      localblmm = new blmm(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView);
+      localGridView.setOnItemClickListener(this.jdField_a_of_type_Bhqp);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localGridView);
     }
     for (;;)
     {
-      localbjbc.a(((bjcr)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
-      localGridView.setAdapter(localbjbc);
+      localblmm.a(((bloc)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+      localGridView.setAdapter(localblmm);
       if (this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.c == paramInt)
       {
         localGridView.setSelection(this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.d);
@@ -109,7 +109,7 @@ public class MusicProviderPagerAdapter
       }
       paramViewGroup.addView(localGridView, -1, -1);
       return localGridView;
-      localbjbc = (bjbc)localGridView.a();
+      localblmm = (blmm)localGridView.a();
     }
   }
   
@@ -120,7 +120,7 @@ public class MusicProviderPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.adapter.MusicProviderPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

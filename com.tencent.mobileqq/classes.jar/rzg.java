@@ -1,44 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
-import com.tencent.viola.core.dispatch.ComponentAppearEvent;
-import com.tencent.viola.core.dispatch.IEvent;
-import com.tencent.viola.core.dispatch.IObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class rzg
-  implements IObserver
+  implements INetInfoHandler
 {
-  public rzg(VTopicVideo paramVTopicVideo) {}
+  public rzg(FastWebActivity paramFastWebActivity) {}
   
-  public String getRef()
+  public void onNetMobile2None()
   {
-    return this.a.getRef();
+    FastWebActivity.o(this.a);
   }
   
-  public void onReceive(IEvent paramIEvent)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
-    {
-      paramIEvent = (ComponentAppearEvent)paramIEvent;
-      if (!paramIEvent.event.equals("didDisappear")) {
-        break label59;
-      }
-      this.a.getVideoLifeCycleChangeListener().c();
-    }
-    label59:
-    do
-    {
-      return;
-      if (paramIEvent.event.equals("willAppear"))
-      {
-        this.a.getVideoLifeCycleChangeListener().a();
-        return;
-      }
-    } while (!paramIEvent.event.equals("didAppear"));
-    this.a.getVideoLifeCycleChangeListener().b();
+    FastWebActivity.o(this.a);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    FastWebActivity.o(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    FastWebActivity.o(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    FastWebActivity.o(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    FastWebActivity.o(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzg
  * JD-Core Version:    0.7.0.1
  */

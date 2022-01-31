@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bdfw
-  implements DialogInterface.OnClickListener
+class bdfw
+  implements View.OnClickListener
 {
-  public bdfw(BaseJsCallBack paramBaseJsCallBack) {}
+  bdfw(bdfq parambdfq, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdfq, 0);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bdfq.isShowing()) {
+        this.jdField_a_of_type_Bdfq.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdfw
  * JD-Core Version:    0.7.0.1
  */

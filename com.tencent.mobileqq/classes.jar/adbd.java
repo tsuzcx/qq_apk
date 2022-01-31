@@ -1,27 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.ImageView;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.qphone.base.util.QLog;
 
-class adbd
-  implements ValueAnimator.AnimatorUpdateListener
+public class adbd
+  extends ResourcePluginListener
 {
-  adbd(adbc paramadbc) {}
+  public adbd(Leba paramLeba) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(byte paramByte)
   {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (adbc.a(this.a) != null) {
-      adbc.a(this.a).setAlpha((float)d);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
     }
-    if (adbc.a(this.a) != null) {
-      adbc.a(this.a).setAlpha((float)d * 2.0F);
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.2.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.link.LinkByWeiyunFragment;
 
-public class arbr
-  implements TVK_IMediaPlayer.OnCompletionListener
+final class arbr
+  implements View.OnClickListener
 {
-  arbr(arbp paramarbp) {}
+  arbr(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(View paramView)
   {
-    arbp.a(this.a).post(new VideoBaseItem.2.1(this));
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbr
  * JD-Core Version:    0.7.0.1
  */

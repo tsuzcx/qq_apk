@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
 public class abug
-  implements DialogInterface.OnClickListener
+  extends absj
 {
-  public abug(QQIdentiferActivity paramQQIdentiferActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull absf paramabsf)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 31: 
+      abvm.a(paramabsf, null);
+    }
+    for (;;)
+    {
+      return true;
+      abvm.a(paramabsf, null);
+      continue;
+      abvm.a(paramabsf, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abug
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-
 public class aroc
-  implements xej
 {
-  public aroc(UiApiPlugin paramUiApiPlugin) {}
+  int a;
+  int b;
   
-  public void a()
+  public String toString()
   {
-    this.a.dispatchJsEvent("qbrowserPullDown", null, null);
-    this.a.h = true;
+    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aroc
  * JD-Core Version:    0.7.0.1
  */

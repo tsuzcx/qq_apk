@@ -2,6 +2,7 @@ package com.tencent.mobileqq.minigame.jsapi.webaudio;
 
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.triton.audio.AudioHandleThread;
+import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,7 +13,7 @@ class WebAudioManager$6
   
   public void run()
   {
-    int i = AudioNativeManager.onAudioProcess(-2);
+    int i = WebAudioManager.access$000(this.this$0).onAudioProcess(-2);
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -34,7 +35,7 @@ class WebAudioManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.webaudio.WebAudioManager.6
  * JD-Core Version:    0.7.0.1
  */

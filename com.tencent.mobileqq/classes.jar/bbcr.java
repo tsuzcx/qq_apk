@@ -1,20 +1,30 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.widget.BubblePopupWindow;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-final class bbcr
-  extends TextView
+class bbcr
+  implements View.OnTouchListener
 {
-  bbcr(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
-  {
-    super(paramContext);
-  }
+  bbcr(bbcq parambbcq) {}
   
-  public boolean performClick()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = super.performClick();
-    this.a.b();
-    return bool;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
+        }
+      }
+    }
   }
 }
 

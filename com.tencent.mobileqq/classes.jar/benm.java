@@ -1,14 +1,21 @@
-import android.widget.TextView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.widget.ParticipleView;
 
-class benm
+public class benm
+  extends AnimatorListenerAdapter
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public benm(ParticipleView paramParticipleView) {}
   
-  private benm(bene parambene) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ParticipleView.a(this.a, 1.0F);
+    this.a.invalidate();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     benm
  * JD-Core Version:    0.7.0.1
  */

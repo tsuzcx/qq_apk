@@ -1,51 +1,51 @@
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xd55.RspBody;
 
 public class alnx
-  implements alni
 {
-  private alnx(alng paramalng) {}
-  
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public static String a(byte[] paramArrayOfByte)
   {
-    if ((!"ScanCode".equals(paramString)) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {}
-    for (;;)
+    if (paramArrayOfByte == null)
     {
-      return false;
-      long l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
-      paramString = new Intent();
-      paramString.setClassName("com.tencent.mobileqq", "com.tencent.biz.qrcode.activity.ScannerActivity");
-      paramString.putExtra("from", alng.class.getName());
-      paramString.putExtra("finishAfterSucc", true);
-      if (alng.a(this.a) != null) {}
-      try
-      {
-        BaseApplicationImpl.getApplication().unregisterReceiver(alng.a(this.a));
-        label105:
-        alng.a(this.a, null);
-        alng.a(this.a, new alny(this, l));
-        paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.API.scanResultAction");
-        BaseApplicationImpl.getApplication().registerReceiver(alng.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
-        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
-        if (paramArrayOfVariantWrapper == null) {
-          continue;
-        }
-        paramArrayOfVariantWrapper.startActivity(paramString);
-        return false;
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "Data is null");
+      return "";
+    }
+    oidb_0xd55.RspBody localRspBody = new oidb_0xd55.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      if (localRspBody.wording.has()) {
+        return localRspBody.wording.get();
       }
-      catch (Exception paramArrayOfVariantWrapper)
-      {
-        break label105;
-      }
+      return "";
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "oidb_0xd55_RspBody merge fail:" + paramArrayOfByte.getMessage());
+    }
+    return "";
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      MiniAppLauncher.launchMiniAppById(paramContext, paramString1, paramString2, null, paramString3, null, 1069);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, paramContext.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alnx
  * JD-Core Version:    0.7.0.1
  */

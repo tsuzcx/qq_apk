@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
 import com.tencent.biz.ui.TouchWebView;
-import ocf;
+import ofx;
 
 class ReadInJoyAdPopSheetDialog$3$1
   implements Runnable
@@ -10,12 +10,12 @@ class ReadInJoyAdPopSheetDialog$3$1
   
   public void run()
   {
-    ocf.a(this.a.this$0).loadUrl(this.a.a);
+    ofx.a(this.a.this$0).loadUrl(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdPopSheetDialog.3.1
  * JD-Core Version:    0.7.0.1
  */

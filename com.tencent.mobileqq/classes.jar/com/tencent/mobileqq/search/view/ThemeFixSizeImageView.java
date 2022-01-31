@@ -2,7 +2,7 @@ package com.tencent.mobileqq.search.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import bfwr;
+import bhxo;
 import com.tencent.widget.FixSizeImageView;
 
 public class ThemeFixSizeImageView
@@ -26,12 +26,12 @@ public class ThemeFixSizeImageView
   public void a()
   {
     setSupportMaskView(true);
-    setMaskShape(bfwr.c);
+    setMaskShape(bhxo.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.ThemeFixSizeImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,85 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.smtt.sdk.TbsReaderView;
 
 class arcd
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
+  arcd(arcb paramarcb, String paramString1, String paramString2) {}
   
-  arcd(arcb paramarcb) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      paramContext = arcb.a(this.jdField_a_of_type_Arcb).iterator();
-      while (paramContext.hasNext()) {
-        ((arce)paramContext.next()).b(false);
-      }
-    }
-    if ("android.intent.action.SCREEN_ON".equals(paramContext))
-    {
-      paramContext = arcb.a(this.jdField_a_of_type_Arcb).iterator();
-      while (paramContext.hasNext()) {
-        ((arce)paramContext.next()).b(true);
-      }
-    }
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-    {
-      paramContext = arcb.a(this.jdField_a_of_type_Arcb).iterator();
-      while (paramContext.hasNext()) {
-        ((arce)paramContext.next()).c(true);
-      }
-    }
-    if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
-    {
-      paramContext = arcb.a(this.jdField_a_of_type_Arcb).iterator();
-      while (paramContext.hasNext()) {
-        ((arce)paramContext.next()).c(false);
-      }
-    }
-    if ("VolumeBtnDown".equals(paramIntent.getAction()))
-    {
-      paramContext = arcb.a(this.jdField_a_of_type_Arcb).iterator();
-      while (paramContext.hasNext()) {
-        ((arce)paramContext.next()).i();
-      }
-    }
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if (paramContext != null) {
-        break label294;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label294:
-      if (paramContext.equals("homekey"))
-      {
-        paramContext = arcb.a(this.jdField_a_of_type_Arcb).iterator();
-        while (paramContext.hasNext())
-        {
-          ((arce)paramContext.next()).h();
-          QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
-        }
-      }
-    }
+    arca.a(this.jdField_a_of_type_Arcb.jdField_a_of_type_Arca).userStatistics(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putString("_filename_from_dlg", this.jdField_a_of_type_Arcb.jdField_a_of_type_AndroidAppActivity.getString(2131694943));
+    paramDialogInterface.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
+    Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
+    paramDialogInterface.putString("big_brother_source_key", "biz_src_jc_file");
+    localIntent.putExtra("param", paramDialogInterface);
+    localIntent.putExtra("url", this.b);
+    this.jdField_a_of_type_Arcb.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arcd
  * JD-Core Version:    0.7.0.1
  */

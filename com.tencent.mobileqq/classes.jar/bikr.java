@@ -1,19 +1,22 @@
-public class bikr
-  extends bikp
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
+
+class bikr
+  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  public int a(int paramInt)
-  {
-    return paramInt * -1;
-  }
+  bikr(biko parambiko) {}
   
-  public boolean a(int paramInt)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    return paramInt < 0;
+    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bikr
  * JD-Core Version:    0.7.0.1
  */

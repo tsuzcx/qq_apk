@@ -1,30 +1,75 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.AuthorityControlFragment;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.1;
+import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bczc
-  implements View.OnTouchListener
+  extends alox
 {
-  public bczc(AuthorityControlFragment paramAuthorityControlFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    switch (paramMotionEvent.getAction())
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
+      localStringBuilder = new StringBuilder().append("onGetHeadInfo ").append(paramBoolean).append(" ");
+      if (paramSetting == null) {
+        break label99;
+      }
     }
-    for (;;)
+    label99:
+    for (String str = paramSetting.uin;; str = "")
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      QLog.i("QQAvatarFHDDecoder", 2, str);
+      if ((paramSetting != null) && (paramSetting.uin != null) && (paramSetting.uin.equals(bczb.a(this.a)))) {
+        ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.1(this, paramSetting), 128, null, true);
+      }
+      return;
     }
+  }
+  
+  public void onGetHeadInfoEmpty(boolean paramBoolean, int paramInt, List<String> paramList)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onGetHeadInfoEmpty ").append(paramBoolean).append(" ").append(paramInt).append(" ");
+      if (paramList == null) {
+        break label138;
+      }
+    }
+    label138:
+    for (String str = paramList.toString();; str = "")
+    {
+      QLog.i("QQAvatarFHDDecoder", 2, str);
+      if (paramList != null)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          str = (String)paramList.next();
+          if ((str != null) && (str.equals(bczb.a(this.a))))
+          {
+            if (!paramBoolean) {
+              break label145;
+            }
+            ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.2(this, str), 128, null, true);
+          }
+        }
+      }
+      return;
+    }
+    label145:
+    bczb.a(this.a).obtainMessage(1).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bczc
  * JD-Core Version:    0.7.0.1
  */

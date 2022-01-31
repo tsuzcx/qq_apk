@@ -1,52 +1,24 @@
-import android.support.annotation.Nullable;
-import com.tencent.map.geolocation.TencentLocation;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
-public abstract class tje
+public class tje
+  extends tjd<tiw, WSPushStrategyInfo>
 {
-  public long a;
-  protected AtomicBoolean a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  
-  public tje()
+  public tje(tiw paramtiw)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    super(paramtiw);
   }
   
-  public void a()
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(String paramString)
-  {
-    long l2 = System.currentTimeMillis();
-    long l1 = this.b - this.jdField_a_of_type_Long;
-    l2 -= this.b;
-    ved.c(paramString, "page network respond times " + l1);
-    ved.c(paramString, "page db times " + l2);
-  }
-  
-  public void b()
-  {
-    this.b = System.currentTimeMillis();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    WSHomeFragment.a(paramContext, 0, false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tje
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MsfServiceSdk
-  extends t
+  extends u
 {
   static final String ServiceName = "com.tencent.mobileqq.msf.service.MsfService";
   static boolean isMainProcess = false;
@@ -31,7 +31,7 @@ public class MsfServiceSdk
   private static Field sDetailMessageField;
   private static MsfServiceSdk sdk = null;
   private static final String tag = "MsfServiceSdk";
-  private final BroadcastReceiver msfServiceListener = new s(this);
+  private final BroadcastReceiver msfServiceListener = new t(this);
   private IMsfProxy proxy;
   
   static
@@ -464,7 +464,7 @@ public class MsfServiceSdk
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), paramCommandCallbackerInfo.uin, "push.cmdRegister");
     localToServiceMsg.setMsfCommand(MsfCommand.registerCmdCallback);
-    y.a(localToServiceMsg, paramCommandCallbackerInfo);
+    z.a(localToServiceMsg, paramCommandCallbackerInfo);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }
@@ -533,13 +533,13 @@ public class MsfServiceSdk
   {
     paramString1 = new ToServiceMsg(getMsfServiceName(), paramString1, "push.proxyRegister");
     paramString1.setMsfCommand(MsfCommand.proxyRegisterPush);
-    x localx = new x();
-    localx.a = paramInt;
-    localx.b = paramString2;
-    localx.c = paramString3;
-    localx.d = paramNotifyRegisterInfo;
-    localx.e = paramCommandCallbackerInfo;
-    y.a(paramString1, localx);
+    y localy = new y();
+    localy.a = paramInt;
+    localy.b = paramString2;
+    localy.c = paramString3;
+    localy.d = paramNotifyRegisterInfo;
+    localy.e = paramCommandCallbackerInfo;
+    z.a(paramString1, localy);
     beforeSend(paramString1);
     return paramString1;
   }
@@ -555,7 +555,7 @@ public class MsfServiceSdk
     }
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), paramPushRegisterInfo.uin, "push.register");
     localToServiceMsg.setMsfCommand(MsfCommand.registerPush);
-    y.a(localToServiceMsg, paramPushRegisterInfo);
+    z.a(localToServiceMsg, paramPushRegisterInfo);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }
@@ -608,7 +608,7 @@ public class MsfServiceSdk
   {
     paramString = new ToServiceMsg(getMsfServiceName(), paramString, "push.resetCmds");
     paramString.setMsfCommand(MsfCommand.resetCmdCallback);
-    y.a(paramString, paramCommandCallbackerInfo);
+    z.a(paramString, paramCommandCallbackerInfo);
     beforeSend(paramString);
     return paramString;
   }
@@ -701,7 +701,7 @@ public class MsfServiceSdk
     }
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), paramPushRegisterInfo.uin, "push.unRegister");
     localToServiceMsg.setMsfCommand(MsfCommand.unRegisterPush);
-    y.a(localToServiceMsg, paramPushRegisterInfo);
+    z.a(localToServiceMsg, paramPushRegisterInfo);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }

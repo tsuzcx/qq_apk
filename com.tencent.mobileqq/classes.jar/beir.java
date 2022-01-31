@@ -1,13 +1,12 @@
-import java.io.OutputStream;
+import android.view.View;
 
-final class beir
-  extends OutputStream
+public abstract interface beir
 {
-  public void write(int paramInt) {}
+  public abstract void a(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beir
  * JD-Core Version:    0.7.0.1
  */

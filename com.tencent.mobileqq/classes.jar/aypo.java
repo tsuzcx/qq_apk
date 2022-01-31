@@ -1,26 +1,19 @@
-class aypo
-  extends akat
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public final class aypo
+  implements ThreadFactory
 {
-  aypo(aypl paramaypl) {}
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public void a(boolean paramBoolean, long paramLong, akau paramakau)
+  public Thread newThread(Runnable paramRunnable)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramakau);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramakau != null) {
-      this.a.v = paramakau.d;
-    }
-    this.a.d();
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aypo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,109 +1,49 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(14)
 public class axmd
-  implements SurfaceTexture.OnFrameAvailableListener
+  extends OrientationEventListener
 {
-  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  public Surface a;
-  axme jdField_a_of_type_Axme;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  boolean jdField_a_of_type_Boolean;
-  
-  public axmd()
+  public axmd(CameraCaptureView paramCameraCaptureView, Context paramContext)
   {
-    a();
+    super(paramContext);
   }
   
-  void a()
+  public void onOrientationChanged(int paramInt)
   {
-    this.jdField_a_of_type_Axme = new axme();
-    this.jdField_a_of_type_Axme.a();
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Axme.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null)
+    this.a.v = paramInt;
+    if (paramInt == -1)
     {
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext().equals(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureView", 2, "OrientationEventListener unknown");
       }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+      this.a.w = 90;
     }
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
-    this.jdField_a_of_type_Axme = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
-  }
-  
-  @SuppressLint({"NewApi"})
-  public void c()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if ((paramInt > 315) || (paramInt < 45)) {
+      this.a.w = 90;
+    }
+    for (;;)
     {
-      for (;;)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {
-          try
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(5000L);
-            if (!this.jdField_a_of_type_Boolean) {
-              throw new RuntimeException("Surface frame wait timed out");
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            Thread.currentThread().interrupt();
-          }
-        }
+      if (this.a.g) {
+        this.a.u = this.a.w;
+      }
+      axlo.a = this.a.u;
+      return;
+      if ((paramInt > 45) && (paramInt < 135)) {
+        this.a.w = 180;
+      } else if ((paramInt > 135) && (paramInt < 225)) {
+        this.a.w = 270;
+      } else if ((paramInt > 225) && (paramInt < 315)) {
+        this.a.w = 0;
       }
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Axme.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Axme.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void onFrameAvailable(SurfaceTexture arg1)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axmd
  * JD-Core Version:    0.7.0.1
  */

@@ -224,7 +224,7 @@ class URLState$DownloadRunnable
   
   public void run()
   {
-    l1 = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     Object localObject1 = new URLState.ThreadReportParam();
     ((URLState.ThreadReportParam)localObject1).startTime = l1;
     ((URLState.ThreadReportParam)localObject1).postTime = (l1 - this.postTime);
@@ -245,46 +245,24 @@ class URLState$DownloadRunnable
       if (localObject1 != URLState.DOWNLOAD_ASYNC) {
         URLState.access$300(this.this$0, localObject1);
       }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      URLState.access$300(this.this$0, localThrowable);
+      return;
+    }
+    finally
+    {
       l1 = System.currentTimeMillis() - l1;
       if ((l1 > 500000L) && (QLog.isColorLevel())) {
         QLog.e("URLDrawable_Thread", 2, "DownloadAsyncTask cost :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag);
       }
       URLState.sThreadReportCache.remove(this.this$0.mUrlStr);
-      if (!QLog.isColorLevel()) {
-        break label333;
-      }
-      localObject1 = "DownloadAsyncTask.doInBackground end :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        label333:
-        URLState.access$300(this.this$0, localThrowable);
-        l1 = System.currentTimeMillis() - l1;
-        if ((l1 > 500000L) && (QLog.isColorLevel())) {
-          QLog.e("URLDrawable_Thread", 2, "DownloadAsyncTask cost :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag);
-        }
-        URLState.sThreadReportCache.remove(this.this$0.mUrlStr);
-        if (QLog.isColorLevel()) {
-          String str = "DownloadAsyncTask.doInBackground end :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("URLDrawable_Thread", 2, "DownloadAsyncTask.doInBackground end :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag);
       }
     }
-    finally
-    {
-      l1 = System.currentTimeMillis() - l1;
-      if ((l1 <= 500000L) || (!QLog.isColorLevel())) {
-        break label562;
-      }
-      QLog.e("URLDrawable_Thread", 2, "DownloadAsyncTask cost :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag);
-      URLState.sThreadReportCache.remove(this.this$0.mUrlStr);
-      if (!QLog.isColorLevel()) {
-        break label634;
-      }
-      QLog.d("URLDrawable_Thread", 2, "DownloadAsyncTask.doInBackground end :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag);
-    }
-    QLog.d("URLDrawable_Thread", 2, (String)localObject1);
   }
   
   public String toString()

@@ -1,47 +1,39 @@
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.OperationView;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
-public final class auxt
-  implements anyg
+public class auxt
+  implements avbe
 {
-  public auxt(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  public auxt(StoryPlayController paramStoryPlayController, avbn paramavbn, VideoData paramVideoData) {}
   
-  public void a(anyh paramanyh)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramanyh != null) {}
-    try
-    {
-      paramanyh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
-      return;
+    if (this.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null) {
+      this.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a().a.findViewById(2131369410).setVisibility(0);
     }
-    catch (Throwable paramanyh) {}
+    this.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(0);
+    this.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a.c();
   }
   
-  public void a(anyh paramanyh1, anyh paramanyh2, Drawable paramDrawable) {}
-  
-  public boolean a(anyh paramanyh)
+  public void a(String paramString, View paramView, int paramInt)
   {
-    return false;
+    if (this.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null) {
+      this.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a().a.findViewById(2131369410).setVisibility(8);
+    }
+    this.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.a();
+    this.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(0);
+    this.jdField_a_of_type_Avbn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnClickListener(new auxu(this));
   }
-  
-  public void b()
-  {
-    aylc.a(this.jdField_a_of_type_AndroidWidgetEditText);
-  }
-  
-  public void b(anyh paramanyh) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auxt
  * JD-Core Version:    0.7.0.1
  */

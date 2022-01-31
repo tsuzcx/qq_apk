@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import apmt;
-import apmu;
-import apnf;
+import arfr;
+import arfs;
+import argf;
 
 public class DeviceFileModel$1$1
   implements Runnable
 {
-  public DeviceFileModel$1$1(apmu paramapmu) {}
+  public DeviceFileModel$1$1(arfs paramarfs) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class DeviceFileModel$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel.1.1
  * JD-Core Version:    0.7.0.1
  */

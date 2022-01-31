@@ -1,41 +1,36 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
-public final class bkpj
-  extends RecyclablePool.Recyclable
+class bkpj
+  implements Animator.AnimatorListener
 {
-  public long a;
-  public String a;
-  public long[] a;
-  public long b;
-  public long c;
+  bkpj(bkpi parambkpi) {}
   
-  public bkpj()
-  {
-    this.jdField_a_of_type_ArrayOfLong = new long[6];
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfLong.length)
-    {
-      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
     }
-    this.c = 0L;
+    if (bkpi.a(this.a) != null)
+    {
+      bkpi.a(this.a).setAlpha(1.0F);
+      bkpi.a(this.a).setVisibility(4);
+      bkpi.a(this.a).b().a(Boolean.valueOf(false));
+    }
+    bkpi.c(this.a);
   }
   
-  public void recycle()
-  {
-    super.recycle();
-    a();
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkpj
  * JD-Core Version:    0.7.0.1
  */

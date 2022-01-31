@@ -1,56 +1,57 @@
-import android.webkit.ValueCallback;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 
-public class beuw
-  implements behp
+class beuw
 {
-  private int a;
-  public ITTJSRuntime a;
+  private final Drawable a;
+  private final Drawable b;
   
-  public beuw(ITTJSRuntime paramITTJSRuntime, int paramInt)
+  beuw(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime = paramITTJSRuntime;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime.evaluateCallbackJs(paramInt, paramString);
-      return;
+    paramContext = paramContext.getResources();
+    int i = 2130837549;
+    if (bhxo.a()) {
+      i = 2130837548;
     }
-    betc.d("[minigame] GameJsRuntime", "evaluateCallbackJs on null realJsRuntime");
+    this.a = paramContext.getDrawable(i);
+    this.b = paramContext.getDrawable(2130837553);
   }
   
-  public void a(String paramString, ValueCallback paramValueCallback)
+  private Drawable a(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime.evaluateJs(paramString);
-      return;
-    }
-    betc.d("[minigame] GameJsRuntime", "evaluateJs on null realJsRuntime");
+    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
   }
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  private Drawable b(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime.evaluateSubscribeJs(paramString1, paramString2);
-      return;
-    }
-    betc.d("[minigame] GameJsRuntime", "evaluateSubcribeJS on null realJsRuntime");
+    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
+    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
+    return paramDrawable;
+  }
+  
+  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
+    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
+    return paramDrawable;
+  }
+  
+  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
+    localStateListDrawable.addState(new int[0], paramDrawable1);
+    return localStateListDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beuw
  * JD-Core Version:    0.7.0.1
  */

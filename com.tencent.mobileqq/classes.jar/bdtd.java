@@ -1,14 +1,27 @@
-public abstract class bdtd
+import android.graphics.Canvas;
+import android.view.SurfaceHolder;
+
+public class bdtd
+  extends bdtc
 {
-  long a;
+  public bdtd(SurfaceHolder paramSurfaceHolder)
+  {
+    super(paramSurfaceHolder);
+  }
   
-  public abstract void a();
+  Canvas a(SurfaceHolder paramSurfaceHolder)
+  {
+    return paramSurfaceHolder.lockCanvas();
+  }
   
-  public abstract void b();
+  public boolean a()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdtd
  * JD-Core Version:    0.7.0.1
  */

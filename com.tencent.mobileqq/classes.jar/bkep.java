@@ -1,13 +1,47 @@
-public class bkep
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
+
+class bkep
+  implements EIPClientConnectListener
 {
-  public static boolean a(int paramInt)
+  bkep(bken parambken, long paramLong) {}
+  
+  public void connectFailed()
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
+    bken.a(this.jdField_a_of_type_Bken, false);
+    bken.b(this.jdField_a_of_type_Bken, false);
+    synchronized (bken.a(this.jdField_a_of_type_Bken))
+    {
+      bken.a(this.jdField_a_of_type_Bken).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlQIPCConnector", 2, "connectFailed:" + bken.a(this.jdField_a_of_type_Bken));
+      }
+      return;
+    }
+  }
+  
+  public void connectSuccess(EIPCConnection arg1)
+  {
+    long l = System.currentTimeMillis();
+    if (??? != null) {
+      bken.a(this.jdField_a_of_type_Bken, ???.procName);
+    }
+    bken.a(this.jdField_a_of_type_Bken, true);
+    bken.b(this.jdField_a_of_type_Bken, false);
+    synchronized (bken.a(this.jdField_a_of_type_Bken))
+    {
+      bken.a(this.jdField_a_of_type_Bken).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlQIPCConnector", 2, "connectSuccess:" + bken.a(this.jdField_a_of_type_Bken) + "|" + (l - this.jdField_a_of_type_Long));
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkep
  * JD-Core Version:    0.7.0.1
  */

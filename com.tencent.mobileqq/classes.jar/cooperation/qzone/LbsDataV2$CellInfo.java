@@ -3,12 +3,12 @@ package cooperation.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgxv;
+import biys;
 
 public class LbsDataV2$CellInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CellInfo> CREATOR = new bgxv();
+  public static final Parcelable.Creator<CellInfo> CREATOR = new biys();
   public int cellId = -1;
   public int lac = -1;
   public int mcc = -1;
@@ -58,7 +58,7 @@ public class LbsDataV2$CellInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.CellInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -177,8 +177,8 @@ public class XposedHelpers
     }
     catch (NoSuchMethodError paramVarArgs)
     {
-      paramVarArgs = paramClass.getDeclaredConstructors();
-      int j = paramVarArgs.length;
+      paramClass = paramClass.getDeclaredConstructors();
+      int j = paramClass.length;
       int i = 0;
       for (;;)
       {
@@ -189,7 +189,7 @@ public class XposedHelpers
           }
           throw new NullPointerException();
         }
-        paramClass = paramVarArgs[i];
+        paramVarArgs = paramClass[i];
         i += 1;
       }
       paramClass = new NoSuchMethodError((String)localObject);
@@ -366,8 +366,8 @@ public class XposedHelpers
     }
     for (;;)
     {
-      paramString = paramClass.getDeclaredMethods();
-      int k = paramString.length;
+      paramVarArgs = paramClass.getDeclaredMethods();
+      int k = paramVarArgs.length;
       int j = 0;
       for (;;)
       {
@@ -382,8 +382,8 @@ public class XposedHelpers
           }
           throw new NullPointerException();
         }
-        paramVarArgs = paramString[j];
-        if ((i == 0) && (Modifier.isPrivate(paramVarArgs.getModifiers()))) {}
+        paramString = paramVarArgs[j];
+        if ((i == 0) && (Modifier.isPrivate(paramString.getModifiers()))) {}
         j += 1;
       }
       paramClass = new NoSuchMethodError((String)localObject);
@@ -1412,7 +1412,7 @@ public class XposedHelpers
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.qq.android.dexposed.XposedHelpers
  * JD-Core Version:    0.7.0.1
  */

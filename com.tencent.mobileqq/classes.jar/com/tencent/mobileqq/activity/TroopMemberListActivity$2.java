@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import ajxl;
+import aloz;
 import android.os.Handler;
-import bbdd;
+import bdbx;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import java.util.List;
 
 class TroopMemberListActivity$2
   implements Runnable
 {
-  TroopMemberListActivity$2(TroopMemberListActivity paramTroopMemberListActivity, ajxl paramajxl) {}
+  TroopMemberListActivity$2(TroopMemberListActivity paramTroopMemberListActivity, aloz paramaloz) {}
   
   public void run()
   {
-    Object localObject1 = bbdd.a().a(this.this$0.app, this.this$0.b, this.this$0.v);
-    bbdd.a().a(this.this$0.app, this.this$0.b, this.this$0.v);
+    Object localObject1 = bdbx.a().a(this.this$0.app, this.this$0.b, this.this$0.v);
+    bdbx.a().a(this.this$0.app, this.this$0.b, this.this$0.v);
     if ((localObject1 != null) && (this.a != null))
     {
       this.this$0.a(this.this$0.v);
@@ -30,7 +30,7 @@ class TroopMemberListActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.2
  * JD-Core Version:    0.7.0.1
  */

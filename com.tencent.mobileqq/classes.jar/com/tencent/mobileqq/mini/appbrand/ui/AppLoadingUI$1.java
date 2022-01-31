@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import bavw;
+import bcuq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -25,15 +25,15 @@ class AppLoadingUI$1
     try
     {
       int i = DisplayUtil.dip2px(BaseApplicationImpl.getContext(), 60.0F);
-      Object localObject1 = this.this$0.getActivity().getResources().getDrawable(2130840785);
+      Object localObject1 = this.this$0.getActivity().getResources().getDrawable(2130840897);
       Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = i;
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = i;
       ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
       ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
       localObject1 = URLDrawable.getDrawable(URLDecoder.decode(AppLoadingUI.access$000(this.this$0).config.iconUrl), (URLDrawable.URLDrawableOptions)localObject2);
-      ((URLDrawable)localObject1).setTag(bavw.b(i, i, 40));
-      ((URLDrawable)localObject1).setDecodeHandler(bavw.i);
+      ((URLDrawable)localObject1).setTag(bcuq.b(i, i, 40));
+      ((URLDrawable)localObject1).setDecodeHandler(bcuq.i);
       localObject2 = Message.obtain();
       ((Message)localObject2).what = 7;
       ((Message)localObject2).obj = localObject1;
@@ -48,7 +48,7 @@ class AppLoadingUI$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppLoadingUI.1
  * JD-Core Version:    0.7.0.1
  */

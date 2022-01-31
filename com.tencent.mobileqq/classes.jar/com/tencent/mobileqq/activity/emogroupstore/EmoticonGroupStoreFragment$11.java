@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import afub;
-import ajya;
+import ahrt;
+import alpo;
 import android.widget.TextView;
 import java.util.List;
 
@@ -14,12 +14,12 @@ class EmoticonGroupStoreFragment$11
   {
     EmoticonGroupStoreFragment.a(this.this$0).a(EmoticonGroupStoreFragment.a(this.this$0));
     EmoticonGroupStoreFragment.a(this.this$0).notifyDataSetChanged();
-    EmoticonGroupStoreFragment.b(this.this$0).setText(ajya.a(2131704070) + EmoticonGroupStoreFragment.c(this.this$0).size() + ajya.a(2131704058));
+    EmoticonGroupStoreFragment.b(this.this$0).setText(alpo.a(2131704442) + EmoticonGroupStoreFragment.c(this.this$0).size() + alpo.a(2131704430));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment.11
  * JD-Core Version:    0.7.0.1
  */

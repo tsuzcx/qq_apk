@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark.debug;
 
-import aluu;
-import alwn;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anln;
+import annk;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,12 +11,12 @@ import org.json.JSONObject;
 public class ArkAsyncShareMiniAppTest$1$1
   implements Runnable
 {
-  public ArkAsyncShareMiniAppTest$1$1(aluu paramaluu, JSONObject paramJSONObject, alwn paramalwn, Object paramObject) {}
+  public ArkAsyncShareMiniAppTest$1$1(anln paramanln, JSONObject paramJSONObject, annk paramannk, Object paramObject) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_OrgJsonJSONObject == null) || (this.jdField_a_of_type_Alwn == null) || (this.jdField_a_of_type_JavaLangObject == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof Bundle))) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process return callback=", this.jdField_a_of_type_Alwn });
+    if ((this.jdField_a_of_type_OrgJsonJSONObject == null) || (this.jdField_a_of_type_Annk == null) || (this.jdField_a_of_type_JavaLangObject == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof Bundle))) {
+      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process return callback=", this.jdField_a_of_type_Annk });
     }
     do
     {
@@ -49,13 +49,13 @@ public class ArkAsyncShareMiniAppTest$1$1
         }
       }
       QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process isProcessed=", Boolean.valueOf(bool), ", msgJson=", this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-    } while (this.jdField_a_of_type_Alwn == null);
-    this.jdField_a_of_type_Alwn.a(bool, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangObject);
+    } while (this.jdField_a_of_type_Annk == null);
+    this.jdField_a_of_type_Annk.a(bool, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1
  * JD-Core Version:    0.7.0.1
  */

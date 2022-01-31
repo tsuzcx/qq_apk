@@ -1,38 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.6;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-public class qkd
-  implements baic
+public final class qkd
+  implements Parcelable.Creator<AdvertisementInfo>
 {
-  public qkd(ReadInJoyWebDataManager.6 param6) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public AdvertisementInfo a(Parcel paramParcel)
   {
-    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
-    if (paramJSONObject != null) {}
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
-        }
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
-        return;
-      }
-    }
-    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
+    return new AdvertisementInfo(paramParcel);
+  }
+  
+  public AdvertisementInfo[] a(int paramInt)
+  {
+    return new AdvertisementInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qkd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileCountRspBody;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public abstract class xar
-  extends mxj
+class xar
+  implements uni<vax, vcv>
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  xar(xak paramxak) {}
+  
+  public void a(@NonNull vax paramvax, @Nullable vcv paramvcv, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    wsv.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramvcv + ", errorMsg = " + paramErrorMessage);
+    synchronized (this.a.jdField_b_of_type_JavaLangObject)
     {
-      a(false, false, 0, 0, 0);
-      return;
-    }
-    paramBundle = new oidb_0x6d8.RspBody();
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (!paramBundle.group_file_cnt_rsp.has())
+      if (!TextUtils.equals(paramvax.a, this.a.jdField_b_of_type_JavaLangString))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFileProtocol", 2, "no group_file_cnt_rsp rsp.");
-        }
-        a(false, false, 0, 0, 0);
+        wsv.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramvcv);
+        return;
+      }
+      if ((paramvcv == null) || (paramErrorMessage.isFail()))
+      {
+        wsv.d("DoodleEmojiManager", "get emoji error : " + paramvcv + ", " + paramErrorMessage);
         return;
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, false, 0, 0, 0);
-      return;
-    }
-    paramArrayOfByte = (oidb_0x6d8.GetFileCountRspBody)paramBundle.group_file_cnt_rsp.get();
-    a(true, paramArrayOfByte.bool_file_too_many.get(), paramArrayOfByte.uint32_all_file_count.get(), paramArrayOfByte.uint32_limit_count.get(), paramInt);
+    this.a.jdField_b_of_type_JavaLangString = paramvcv.a;
+    this.a.a(TextUtils.isEmpty(paramvax.a), paramvcv, false);
   }
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xar
  * JD-Core Version:    0.7.0.1
  */

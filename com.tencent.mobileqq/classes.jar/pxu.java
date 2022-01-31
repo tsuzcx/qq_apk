@@ -1,61 +1,23 @@
-import android.os.Looper;
-import android.text.TextPaint;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigGallery;
 
 public class pxu
-  extends osm
+  extends pxv
 {
-  public pxu(ComponentHeaderUgc paramComponentHeaderUgc) {}
-  
-  public void b(long paramLong, boolean paramBoolean)
+  public pxu(Context paramContext, bcws parambcws, rqj paramrqj)
   {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderUgc", 2, "Please call this method in main thread!!!");
-    }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderUgc", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = this.a.jdField_a_of_type_Puy.a.a();
-    } while (paramLong != localArticleInfo.mSocialFeedInfo.a.a);
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131702295));
-      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
-      localArticleInfo.mSocialFeedInfo.h = 2;
-      localArticleInfo.isNeedShowBtnWhenFollowed = true;
-    }
-    for (;;)
-    {
-      osj.a().b();
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131702300));
-      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
-      localArticleInfo.mSocialFeedInfo.h = 1;
-    }
+    super(paramContext, parambcws, paramrqj);
+  }
+  
+  public pxl g()
+  {
+    this.jdField_a_of_type_Pxk = new ComponentContentBigGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxu
  * JD-Core Version:    0.7.0.1
  */

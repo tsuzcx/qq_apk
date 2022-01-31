@@ -1,26 +1,22 @@
-import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import mqq.os.MqqHandler;
 
 public class vtd
-  implements Comparator<RecentUser>
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  public vtd(ShareToActivity paramShareToActivity) {}
+  vtd(vsv paramvsv) {}
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
-      return -1;
-    }
-    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
-      return 1;
-    }
-    return 0;
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.8.1(this, paramTVK_IMediaPlayer));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vtd
  * JD-Core Version:    0.7.0.1
  */

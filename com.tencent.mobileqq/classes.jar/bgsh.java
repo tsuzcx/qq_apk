@@ -1,29 +1,29 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.content.DialogInterface.OnClickListener;
 
-public class bgsh
-  extends bgsx
+class bgsh
 {
-  public bgsh(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
+  private final int jdField_a_of_type_Int;
+  private final DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  
+  bgsh(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    super(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
   }
   
-  public void onBackPressed()
+  int a()
   {
-    if (this.a.a) {
-      super.onBackPressed();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public DialogInterface.OnClickListener a()
+  {
+    return this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgsh
  * JD-Core Version:    0.7.0.1
  */

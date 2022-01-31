@@ -1,81 +1,55 @@
+import com.tencent.mobileqq.apollo.data.ApolloActionRecentData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import mqq.manager.Manager;
+
 public class alfy
-  extends algo
+  implements Manager
 {
-  public int a;
-  public String a;
-  public alfz[] a;
-  public int b = -1;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
+  public QQAppInterface a;
+  public List<ApolloActionRecentData> a;
+  public List<ApolloActionRecentData> b = Collections.synchronizedList(new ArrayList());
   
-  public alfy()
+  public alfy(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAlfz = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a(paramQQAppInterface);
   }
   
-  public static boolean a(alfy paramalfy)
+  private void a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramalfy != null)
-    {
-      bool1 = bool2;
-      if (paramalfy.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramalfy.b == 0)
-        {
-          bool1 = bool2;
-          if (paramalfy.jdField_a_of_type_ArrayOfAlfz != null)
-          {
-            bool1 = bool2;
-            if (paramalfy.jdField_a_of_type_ArrayOfAlfz[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramalfy.jdField_a_of_type_ArrayOfAlfz[0].a != null) {
-                bool1 = true;
-              }
-            }
-          }
-        }
-      }
+    this.jdField_a_of_type_JavaUtilList = aleh.a(paramQQAppInterface, "recent_c2c");
+    this.b = aleh.a(paramQQAppInterface, "recent_troop");
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
     }
-    return bool1;
+    if (this.b == null) {
+      this.b = Collections.synchronizedList(new ArrayList());
+    }
+    int i;
+    if (this.jdField_a_of_type_JavaUtilList.size() > 8)
+    {
+      i = this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(i - 8, this.jdField_a_of_type_JavaUtilList.size());
+    }
+    if (this.b.size() > 8)
+    {
+      i = this.b.size();
+      this.b = this.b.subList(i - 8, this.b.size());
+    }
   }
   
-  public String toString()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_ArrayOfAlfz != null)
-    {
-      String str1 = "ImageTags{";
-      int i = 0;
-      for (;;)
-      {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfAlfz.length) {
-          break;
-        }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAlfz[i];
-        i += 1;
-      }
-    }
-    String str2 = "null";
-    return "ARCloudMarkerRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alfy
  * JD-Core Version:    0.7.0.1
  */

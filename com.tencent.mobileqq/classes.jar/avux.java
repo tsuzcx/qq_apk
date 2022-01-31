@@ -1,31 +1,45 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class avux
-  extends Animation
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public avux(CircleBarView paramCircleBarView) {}
+  public avux(ScanOcrView paramScanOcrView, avuz paramavuz) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
-    CircleBarView.b(this.a, 30.0F);
-    if (CircleBarView.a(this.a) != null)
-    {
-      if (CircleBarView.a(this.a) != null) {
-        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
-      }
-      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int j = (int)(this.jdField_a_of_type_Avuz.a * f);
+    int i = (int)(f * this.jdField_a_of_type_Avuz.jdField_b_of_type_Int);
+    int m = j - this.jdField_a_of_type_Avuz.a;
+    int k = i - this.jdField_a_of_type_Avuz.jdField_b_of_type_Int;
+    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
+    i = j;
+    if (j > 255) {
+      i = 255;
     }
-    this.a.postInvalidate();
+    j = i;
+    if (i < 0) {
+      j = 0;
+    }
+    i = this.jdField_a_of_type_Avuz.jdField_b_of_type_AndroidGraphicsRect.left;
+    int n = m / 2;
+    int i1 = this.jdField_a_of_type_Avuz.jdField_b_of_type_AndroidGraphicsRect.top;
+    int i2 = k / 2;
+    int i3 = this.jdField_a_of_type_Avuz.jdField_b_of_type_AndroidGraphicsRect.right;
+    m /= 2;
+    int i4 = this.jdField_a_of_type_Avuz.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    k /= 2;
+    this.jdField_a_of_type_Avuz.e = j;
+    this.jdField_a_of_type_Avuz.c.set(i - n, i1 - i2, m + i3, k + i4);
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avux
  * JD-Core Version:    0.7.0.1
  */

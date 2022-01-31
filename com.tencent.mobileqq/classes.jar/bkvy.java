@@ -1,47 +1,63 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.Nullable;
 
 public class bkvy
-  implements View.OnTouchListener
 {
-  public bkvy(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  private String a;
+  private String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bkvy(@Nullable String paramString1, @Nullable String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "touch action:" + (paramMotionEvent.getAction() & 0xFF) + ", shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", actionUp:" + this.a.b.get() + ", isOver:" + CameraCaptureButtonLayout.a(this.a));
-    }
-    this.a.a();
-    GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, true, this.a.jdField_a_of_type_AndroidWidgetImageView, CameraCaptureButtonLayout.a(this.a));
-    if (CameraCaptureButtonLayout.a(this.a)) {}
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  @Nullable
+  public String a()
+  {
+    return this.a;
+  }
+  
+  @Nullable
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject != null) && (!(paramObject instanceof bkvy))) {}
     do
     {
       return false;
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      case 2: 
-      default: 
-        return false;
+      paramObject = (bkvy)paramObject;
+    } while ((bdje.a(this.a)) || (bdje.a(this.b)) || (!this.a.equals(paramObject.a())) || (!this.b.equals(paramObject.b())));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    int j = 0;
+    int i;
+    if (this.b == null)
+    {
+      i = 0;
+      if (this.a != null) {
+        break label40;
       }
-    } while (CameraCaptureButtonLayout.b(this.a));
-    if ((CameraCaptureButtonLayout.a(this.a) == 3) || (CameraCaptureButtonLayout.a(this.a) == 1)) {
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(1, 100L);
     }
-    CameraCaptureButtonLayout.a(this.a, true);
-    return true;
-    CameraCaptureButtonLayout.b(this.a);
-    return true;
+    for (;;)
+    {
+      return (i + 527) * 31 + j;
+      i = this.b.hashCode();
+      break;
+      label40:
+      j = this.a.hashCode();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkvy
  * JD-Core Version:    0.7.0.1
  */

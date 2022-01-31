@@ -1,39 +1,30 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
 
-public abstract class lqc
-  extends lqg
+public class lqc
+  implements mkg
 {
-  protected Handler a;
+  public lqc(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public lqc()
+  public void a()
   {
-    HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
-    localHandlerThread.start();
-    this.a = new lqd(localHandlerThread.getLooper(), this);
+    if (this.a.a != null)
+    {
+      this.a.a.setViewEnable(2131372731, false);
+      this.a.a.setViewEnable(2131372730, false);
+      this.a.a.setViewEnable(2131362956, false);
+    }
   }
   
-  protected abstract void a(Message paramMessage);
-  
-  protected void b()
+  public void b()
   {
-    super.b();
-    Process.setThreadPriority(0);
-    lcg.c("GLContextThread", "init: ");
-  }
-  
-  protected void d()
-  {
-    super.e();
-    this.a.getLooper().quit();
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772165);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lqc
  * JD-Core Version:    0.7.0.1
  */

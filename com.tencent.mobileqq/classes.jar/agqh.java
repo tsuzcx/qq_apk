@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public final class agqh
-  implements Parcelable.Creator<TroopClipPic>
+class agqh
+  implements DialogInterface.OnCancelListener
 {
-  public TroopClipPic a(Parcel paramParcel)
-  {
-    return new TroopClipPic(paramParcel);
-  }
+  agqh(agot paramagot) {}
   
-  public TroopClipPic[] a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return new TroopClipPic[paramInt];
+    this.a.I();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqh
  * JD-Core Version:    0.7.0.1
  */

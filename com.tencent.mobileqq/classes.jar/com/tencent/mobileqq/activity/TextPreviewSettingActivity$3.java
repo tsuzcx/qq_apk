@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aqxj;
+import asnx;
 
 class TextPreviewSettingActivity$3
   implements Runnable
 {
-  TextPreviewSettingActivity$3(TextPreviewSettingActivity paramTextPreviewSettingActivity, aqxj paramaqxj) {}
+  TextPreviewSettingActivity$3(TextPreviewSettingActivity paramTextPreviewSettingActivity, asnx paramasnx) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class TextPreviewSettingActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

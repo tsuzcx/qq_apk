@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-
 public class base
-  implements aybj
 {
-  public base(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  private int a = 480000;
+  private int b = 9;
+  private int c = 3;
+  private int d = 20000;
+  private int e = 40000;
+  private int f = 5000;
   
-  public void a()
+  public int a()
   {
-    this.a.b(TroopGiftToAllSurfaceView.a(this.a));
+    return this.d;
+  }
+  
+  public int b()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     base
  * JD-Core Version:    0.7.0.1
  */

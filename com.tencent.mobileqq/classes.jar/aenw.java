@@ -1,21 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aenw
-  implements DialogInterface.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  aenw(aent paramaent) {}
+  aenw(aenv paramaenv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    paramDialogInterface.dismiss();
-    bbdx.d(this.a.g);
-    this.a.g = "";
+    aenv.d(this.a);
+    QQToast.a(this.a.a, 0, 2131693762, 1).a();
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    aenv.d(this.a);
+    QQToast.a(this.a.a, 0, 2131693762, 1).a();
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    aenv.d(this.a);
+    aenv.a(this.a, aenv.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenw
  * JD-Core Version:    0.7.0.1
  */

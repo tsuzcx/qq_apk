@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.View.OnLongClickListener;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import asrr;
+import auio;
 
 public class MultiCardCustomLayout
   extends RelativeLayout
@@ -32,7 +32,7 @@ public class MultiCardCustomLayout
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewGestureDetector == null)) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new asrr(this), new Handler(Looper.getMainLooper()));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new auio(this), new Handler(Looper.getMainLooper()));
     }
   }
   
@@ -60,7 +60,7 @@ public class MultiCardCustomLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardCustomLayout
  * JD-Core Version:    0.7.0.1
  */

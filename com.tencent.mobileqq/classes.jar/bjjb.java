@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.TextParcelData;
-
-public final class bjjb
-  implements Parcelable.Creator<TextParcelData>
+public abstract interface bjjb
 {
-  public TextParcelData a(Parcel paramParcel)
-  {
-    return new TextParcelData(paramParcel);
-  }
-  
-  public TextParcelData[] a(int paramInt)
-  {
-    return new TextParcelData[paramInt];
-  }
+  public abstract void a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjjb
  * JD-Core Version:    0.7.0.1
  */

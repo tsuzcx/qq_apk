@@ -1,12 +1,19 @@
-public abstract interface ajwf
+import com.tencent.mobileqq.data.Friends;
+
+class ajwf
 {
-  public abstract void a();
+  public int a;
+  public Friends a;
   
-  public abstract void b();
+  public ajwf(Friends paramFriends, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwf
  * JD-Core Version:    0.7.0.1
  */

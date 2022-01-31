@@ -1,36 +1,30 @@
 import android.view.View;
-import com.dataline.activities.PrinterSubOptionActivity;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class ek
-  implements ez
 {
-  public ek(PrinterSubOptionActivity paramPrinterSubOptionActivity) {}
+  public View a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public ImageView b;
+  public TextView b;
+  public CircleFileStateView b;
+  public TextView c;
   
-  public void a(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_Ajum.a != null)
-    {
-      List localList = this.a.jdField_a_of_type_Ajum.a.a();
-      if ((localList == null) || (localList.size() > 0)) {
-        break label79;
-      }
-      this.a.findViewById(2131365659).setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Ajum.a.a();
-      return;
-      label79:
-      PrinterSubOptionActivity.a(this.a);
-    }
-  }
+  public ek(ef paramef) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ek
  * JD-Core Version:    0.7.0.1
  */

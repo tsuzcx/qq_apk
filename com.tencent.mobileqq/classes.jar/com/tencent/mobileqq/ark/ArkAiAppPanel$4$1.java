@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark;
 
-import aanz;
-import adli;
-import ajya;
-import alqz;
-import alrc;
-import altc;
-import alua;
+import acex;
+import afds;
+import alpo;
 import android.text.TextUtils;
+import anhr;
+import anhu;
+import anjv;
+import ankt;
 import com.tencent.ark.open.ArkAppCacheMgr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -30,19 +30,19 @@ import org.w3c.dom.Text;
 public class ArkAiAppPanel$4$1
   implements Runnable
 {
-  public ArkAiAppPanel$4$1(alrc paramalrc, String paramString) {}
+  public ArkAiAppPanel$4$1(anhu paramanhu, String paramString) {}
   
   public void run()
   {
     try
     {
-      if ((alqz.a(this.jdField_a_of_type_Alrc.a) == null) || (alqz.a(this.jdField_a_of_type_Alrc.a).size() <= 0) || (alqz.a(this.jdField_a_of_type_Alrc.a) >= alqz.a(this.jdField_a_of_type_Alrc.a).size())) {
+      if ((anhr.a(this.jdField_a_of_type_Anhu.a) == null) || (anhr.a(this.jdField_a_of_type_Anhu.a).size() <= 0) || (anhr.a(this.jdField_a_of_type_Anhu.a) >= anhr.a(this.jdField_a_of_type_Anhu.a).size())) {
         return;
       }
-      if (alqz.a(this.jdField_a_of_type_Alrc.a).get(alqz.a(this.jdField_a_of_type_Alrc.a)) == null) {
+      if (anhr.a(this.jdField_a_of_type_Anhu.a).get(anhr.a(this.jdField_a_of_type_Anhu.a)) == null) {
         return;
       }
-      localObject1 = ((adli)alqz.a(this.jdField_a_of_type_Alrc.a).get(alqz.a(this.jdField_a_of_type_Alrc.a))).getViewShare();
+      localObject1 = ((afds)anhr.a(this.jdField_a_of_type_Anhu.a).get(anhr.a(this.jdField_a_of_type_Anhu.a))).getViewShare();
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return;
       }
@@ -60,12 +60,12 @@ public class ArkAiAppPanel$4$1
         return;
       }
       localJSONObject = new JSONObject();
-      if (!alua.a(((Node)localObject1).getFirstChild(), localJSONObject)) {
+      if (!ankt.a(((Node)localObject1).getFirstChild(), localJSONObject)) {
         return;
       }
       localObject1 = new ArkAppMessage();
       ((ArkAppMessage)localObject1).appMinVersion = "0.0.0.1";
-      ((ArkAppMessage)localObject1).appName = ((adli)alqz.a(this.jdField_a_of_type_Alrc.a).get(alqz.a(this.jdField_a_of_type_Alrc.a))).getAppName();
+      ((ArkAppMessage)localObject1).appName = ((afds)anhr.a(this.jdField_a_of_type_Anhu.a).get(anhr.a(this.jdField_a_of_type_Anhu.a))).getAppName();
       if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appName)) {
         return;
       }
@@ -82,7 +82,7 @@ public class ArkAiAppPanel$4$1
       if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appDesc)) {
         ((ArkAppMessage)localObject1).appDesc = ((ArkAppMessage)localObject1).appName;
       }
-      ((ArkAppMessage)localObject1).promptText = String.format(ajya.a(2131700643), new Object[] { ((ArkAppMessage)localObject1).appDesc });
+      ((ArkAppMessage)localObject1).promptText = String.format(alpo.a(2131701012), new Object[] { ((ArkAppMessage)localObject1).appDesc });
       localObject2 = MessageForArkApp.getConfigFromXml((Document)localObject2);
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         break label579;
@@ -113,20 +113,20 @@ public class ArkAiAppPanel$4$1
         localException.config = ((JSONObject)localObject2).toString();
       }
     }
-    if (alqz.a(this.jdField_a_of_type_Alrc.a) != null)
+    if (anhr.a(this.jdField_a_of_type_Anhu.a) != null)
     {
-      localObject2 = alqz.a(this.jdField_a_of_type_Alrc.a).a();
+      localObject2 = anhr.a(this.jdField_a_of_type_Anhu.a).a();
       if (localObject2 != null) {
-        aanz.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject2, (ArkAppMessage)localObject1);
+        acex.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject2, (ArkAppMessage)localObject1);
       }
     }
-    altc.a(null, this.jdField_a_of_type_JavaLangString, "AIOInputSendMessage", 0, 0, 0L, 0L, 0L, ((ArkAppMessage)localObject1).appName, "");
+    anjv.a(null, this.jdField_a_of_type_JavaLangString, "AIOInputSendMessage", 0, 0, 0L, 0L, 0L, ((ArkAppMessage)localObject1).appName, "");
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiAppPanel.4.1
  * JD-Core Version:    0.7.0.1
  */

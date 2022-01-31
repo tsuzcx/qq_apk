@@ -1,46 +1,73 @@
-import android.os.MessageQueue.IdleHandler;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class bcgh
-  implements MessageQueue.IdleHandler
+public class bcgh
 {
-  bcgh(bcgg parambcgg) {}
-  
-  public boolean queueIdle()
+  public static String a(String paramString)
   {
-    Object localObject;
-    int i;
-    if (!bcgg.a().isEmpty())
-    {
-      localObject = (bcgj)bcgg.a().remove(0);
-      i = ((bcgj)localObject).a();
-      if (2 == i) {
-        bcgg.a().add(localObject);
-      }
+    if (a(paramString)) {
+      return paramString + 140;
     }
-    else
-    {
-      label38:
-      localObject = this.a;
-      if (bcgg.a().isEmpty()) {
-        break label75;
-      }
+    return null;
+  }
+  
+  public static String a(String paramString1, String paramString2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      QLog.d("AvatarTroopUtil", 1, "getAvatarAddress troopUin is empty");
     }
-    label75:
-    for (boolean bool = true;; bool = false)
+    do
     {
-      ((bcgg)localObject).a = bool;
-      return this.a.a;
-      if (1 != i) {
-        break;
+      return "http://p.qlogo.cn/gh/dir/file/";
+      if (1 == paramInt) {
+        return "http://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2 + "_" + paramString1);
       }
-      break label38;
+    } while (paramInt != 0);
+    return "http://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    return paramString.startsWith("http://p.qlogo.cn/gh/");
+  }
+  
+  public static String b(String paramString)
+  {
+    if (a(paramString)) {
+      return paramString + 0;
+    }
+    return null;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (((paramString.length() > 1) && (paramString.startsWith("+"))) || (paramString.startsWith("-"))) {}
+    for (int i = 1;; i = 0)
+    {
+      int j = paramString.length();
+      int k;
+      do
+      {
+        k = j - 1;
+        if (k < i) {
+          break;
+        }
+        j = k;
+      } while (Character.isDigit(paramString.charAt(k)));
+      return false;
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcgh
  * JD-Core Version:    0.7.0.1
  */

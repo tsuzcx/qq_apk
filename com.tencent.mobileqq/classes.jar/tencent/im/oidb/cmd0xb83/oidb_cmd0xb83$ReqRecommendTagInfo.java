@@ -15,7 +15,7 @@ public final class oidb_cmd0xb83$ReqRecommendTagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.ReqRecommendTagInfo
  * JD-Core Version:    0.7.0.1
  */

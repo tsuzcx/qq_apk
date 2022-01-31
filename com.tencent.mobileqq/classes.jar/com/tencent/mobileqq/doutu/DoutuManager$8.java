@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.doutu;
 
-import anoi;
+import apfp;
 
 public class DoutuManager$8
   implements Runnable
 {
-  public DoutuManager$8(anoi paramanoi) {}
+  public DoutuManager$8(apfp paramapfp) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class DoutuManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuManager.8
  * JD-Core Version:    0.7.0.1
  */

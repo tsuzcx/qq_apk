@@ -1,31 +1,23 @@
-import android.view.View;
-import com.tencent.ark.ArkViewImplement.InputCallback;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentView;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
 
-public class yzt
-  implements ArkViewImplement.InputCallback
+public final class yzt
+  implements Parcelable.Creator<NewerGuidePlugin.RecommendedListResp>
 {
-  public yzt(GdtCanvasFormComponentView paramGdtCanvasFormComponentView) {}
-  
-  public void onFocusChanged(View paramView, boolean paramBoolean)
+  public NewerGuidePlugin.RecommendedListResp a(Parcel paramParcel)
   {
-    GdtCanvasFormComponentView.a(this.a, paramBoolean);
-    if ((paramBoolean) || (GdtCanvasFormComponentView.a(this.a) == null) || (GdtCanvasFormComponentView.b(this.a).get() == null)) {
-      return;
-    }
-    ((zad)GdtCanvasFormComponentView.c(this.a).get()).setPageViewTopMargin(0);
+    return new NewerGuidePlugin.RecommendedListResp(paramParcel);
   }
   
-  public void onHideMenu(View paramView) {}
-  
-  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public NewerGuidePlugin.RecommendedListResp[] a(int paramInt)
+  {
+    return new NewerGuidePlugin.RecommendedListResp[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,71 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import cooperation.troop_homework.outer.TroopHWRecordArrangeActivity;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjzm
-  implements ufm
+  extends Handler
 {
-  public bjzm(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public bjzm(TroopHWRecordArrangeActivity paramTroopHWRecordArrangeActivity) {}
   
-  public void a_(ufh paramufh)
+  public void handleMessage(Message paramMessage)
   {
-    ved.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 3: 
+      this.a.jdField_a_of_type_Boolean = true;
+      return;
+    case 101: 
+      this.a.setResult(0);
+      this.a.finish();
+      return;
+    }
+    paramMessage = paramMessage.obj.toString();
+    Object localObject = new File(paramMessage);
+    long l;
+    if (((File)localObject).exists()) {
+      l = ((File)localObject).length();
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+      paramMessage = new JSONObject();
+      try
+      {
+        paramMessage.put("webid", TroopHWRecordArrangeActivity.a(this.a));
+        paramMessage.put("type", "record");
+        paramMessage.put("state", "stop");
+        paramMessage.put("time", Math.round(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.duration / 1000.0F));
+        paramMessage.put("size", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.size);
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("jscallback", paramMessage.toString());
+        ((Intent)localObject).putExtra("localPath", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
+        this.a.setResult(-1, (Intent)localObject);
+        this.a.finish();
+        return;
+        l = 0L;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzm
  * JD-Core Version:    0.7.0.1
  */

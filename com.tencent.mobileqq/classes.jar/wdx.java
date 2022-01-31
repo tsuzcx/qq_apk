@@ -1,123 +1,51 @@
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import java.util.ArrayList;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 import java.util.List;
 
-public class wdx<T extends RecyclerView.Adapter>
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+class wdx
+  implements uni<vay, vaz>
 {
-  private final T jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private web jdField_a_of_type_Web;
-  private final List<View> b = new ArrayList();
+  wdx(wdw paramwdw, JobContext paramJobContext, wkg paramwkg) {}
   
-  public wdx(T paramT)
+  public void a(@NonNull vay paramvay, @Nullable vaz paramvaz, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramT;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(new wdy(this));
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return (paramInt >= -1000) && (paramInt < this.jdField_a_of_type_JavaUtilList.size() - 1000);
-  }
-  
-  private boolean b(int paramInt)
-  {
-    return (paramInt >= -2000) && (paramInt < this.b.size() - 2000);
-  }
-  
-  public wdx a(web paramweb)
-  {
-    this.jdField_a_of_type_Web = paramweb;
-    return this;
-  }
-  
-  public void a(@NonNull View paramView)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramView);
-  }
-  
-  public void b(@NonNull View paramView)
-  {
-    this.b.add(paramView);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + this.b.size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return paramInt - 1000;
-    }
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - this.jdField_a_of_type_JavaUtilList.size());
-    }
-    return paramInt - 2000 - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
-        localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
-      }
-      localObject2 = localObject1;
-      if (localObject1 == null)
+      wsv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
+      return;
+    }
+    if ((paramvaz == null) || (paramErrorMessage.isFail()))
+    {
+      wsv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for comment request");
+      wdw.a(this.jdField_a_of_type_Wdw, paramErrorMessage);
+      return;
+    }
+    if (this.jdField_a_of_type_Wkg.b == 0) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      ((uqo)urr.a(17)).a(paramvaz.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Wkg.jdField_a_of_type_JavaLangString, bool1, true);
+      boolean bool3 = paramvaz.jdField_a_of_type_Boolean;
+      boolean bool2 = bool3;
+      if (!paramvaz.jdField_a_of_type_Boolean)
       {
-        localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
-        paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        bool2 = bool3;
+        if (paramvaz.jdField_a_of_type_JavaUtilList.size() == 0)
+        {
+          wsv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "comment pull should be end!!!!!!!!!!!!");
+          bool2 = true;
+        }
       }
-      ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
+      paramvay = new wdt(bool1, paramvaz.jdField_a_of_type_JavaUtilList, paramvaz.b, bool2, paramvaz.jdField_a_of_type_JavaLangString);
+      wdw.a(this.jdField_a_of_type_Wdw, paramvay);
       return;
     }
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
-    {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size());
-      return;
-    }
-    localObject1 = localObject2;
-    if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
-      localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null)
-    {
-      localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
-      paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    }
-    ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (a(paramInt))
-    {
-      paramInt = Math.abs(paramInt + 1000);
-      return new wdz(this, (View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    }
-    if (b(paramInt))
-    {
-      paramInt = Math.abs(paramInt + 2000);
-      return new wea(this, (View)this.b.get(paramInt));
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdx
  * JD-Core Version:    0.7.0.1
  */

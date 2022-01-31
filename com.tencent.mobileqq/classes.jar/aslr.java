@@ -1,44 +1,35 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import android.support.annotation.DrawableRes;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
 
-public class aslr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/growth/GrowthUtil;", "", "()V", "INVALID_DRAWABLE_ID", "", "getDrawableIdByWns", "wnsPicId", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aslr
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public static final aslr a = new aslr();
   
-  public aslq a()
+  @JvmStatic
+  @DrawableRes
+  public static final int a(int paramInt)
   {
-    return new aslq(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
-  }
-  
-  public aslr a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public aslr a(MsgBackupUserData paramMsgBackupUserData)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    return this;
-  }
-  
-  public aslr a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public aslr b(String paramString)
-  {
-    this.b = paramString;
-    return this;
+    switch (paramInt)
+    {
+    default: 
+      return -1;
+    case 1001: 
+      return 2130847590;
+    case 1002: 
+      return 2130847591;
+    case 1003: 
+      return 2130847592;
+    case 1004: 
+      return 2130847593;
+    }
+    return 2130847594;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aslr
  * JD-Core Version:    0.7.0.1
  */

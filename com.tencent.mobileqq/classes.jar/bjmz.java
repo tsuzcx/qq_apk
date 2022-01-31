@@ -1,28 +1,45 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import NS_MOBILE_CLIENT_REPORT.CLIENT_NBP_REPORT_REQ;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Map;
 
-final class bjmz
-  implements EIPCResultCallback
+public class bjmz
+  extends bizh
 {
-  bjmz(String paramString) {}
+  public JceStruct a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bjmz(String paramString, ArrayList<String> paramArrayList, Map<String, String> paramMap)
   {
-    if (paramEIPCResult != null)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("uinname");
-      if (QLog.isColorLevel()) {
-        QLog.i("PeakIpcController", 2, "getTroopMemberName success name = " + paramEIPCResult);
-      }
-      bkmp.a().a(this.a, paramEIPCResult);
-    }
+    CLIENT_NBP_REPORT_REQ localCLIENT_NBP_REPORT_REQ = new CLIENT_NBP_REPORT_REQ();
+    localCLIENT_NBP_REPORT_REQ.strABTestId = paramString;
+    localCLIENT_NBP_REPORT_REQ.report_info = paramArrayList;
+    localCLIENT_NBP_REPORT_REQ.extra_info = paramMap;
+    this.a = localCLIENT_NBP_REPORT_REQ;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.nbpClientReport";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "nbpClientReport";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjmz
  * JD-Core Version:    0.7.0.1
  */

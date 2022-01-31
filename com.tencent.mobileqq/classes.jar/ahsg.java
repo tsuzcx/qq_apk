@@ -1,56 +1,71 @@
-import android.text.method.PasswordTransformationMethod;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import com.tencent.qphone.base.util.QLog;
 
-class ahsg
+public class ahsg
+  extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  ahsg(ahse paramahse, int paramInt) {}
+  private ahsf a;
+  public ImageView a;
+  public NumberCheckBox a;
+  public ImageView[] a;
+  public NumberCheckBox[] a;
+  public ImageView b;
+  public NumberCheckBox b;
+  public ImageView[] b;
+  public ImageView c;
+  public NumberCheckBox c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
+  
+  public ahsg(View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368115));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364255));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368147));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368116));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364256));
+    this.d = ((ImageView)paramView.findViewById(2131368148));
+    this.e = ((ImageView)paramView.findViewById(2131368117));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364257));
+    this.f = ((ImageView)paramView.findViewById(2131368149));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_c_of_type_AndroidWidgetImageView, this.e };
+    paramView = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+    int j = paramView.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramView[i].setOnClickListener(this);
+      i += 1;
+    }
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetNumberCheckBox = new NumberCheckBox[] { this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox, this.jdField_b_of_type_ComTencentMobileqqWidgetNumberCheckBox, this.jdField_c_of_type_ComTencentMobileqqWidgetNumberCheckBox };
+    this.jdField_b_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { this.jdField_b_of_type_AndroidWidgetImageView, this.d, this.f };
+  }
+  
+  void a(ahsf paramahsf)
+  {
+    this.jdField_a_of_type_Ahsf = paramahsf;
+  }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.removeTextChangedListener(this.jdField_a_of_type_Ahse.a.b);
-    this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Ahse.a.jdField_c_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_Ahse.a.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramView = (SimpleAccount)this.jdField_a_of_type_Ahse.a.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Ahse.a.jdField_a_of_type_Int);
-    ImageView localImageView;
-    if (!LoginView.h(this.jdField_a_of_type_Ahse.a))
-    {
-      LoginView.h(this.jdField_a_of_type_Ahse.a, true);
-      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-      localImageView = this.jdField_a_of_type_Ahse.a.jdField_c_of_type_AndroidWidgetImageView;
-      if ((!LoginView.d(this.jdField_a_of_type_Ahse.a)) && (!LoginView.e(this.jdField_a_of_type_Ahse.a)) && (!LoginView.f(this.jdField_a_of_type_Ahse.a))) {
-        break label368;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("picOnClick.1", 2, "v.getId: " + paramView.getId() + " itemView.getTag: " + this.itemView.getTag());
     }
-    label368:
-    for (int i = 2130846072;; i = 2130843889)
-    {
-      localImageView.setImageResource(i);
-      this.jdField_a_of_type_Ahse.a.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131706366));
-      LoginView.a(this.jdField_a_of_type_Ahse.a, paramView);
-      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidTextTextWatcher);
-      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.addTextChangedListener(this.jdField_a_of_type_Ahse.a.b);
-      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
-      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Ahse.a.jdField_c_of_type_AndroidTextTextWatcher);
-      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.clearFocus();
-      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
-      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a().setVisibility(8);
-      return;
+    if (this.jdField_a_of_type_Ahsf != null) {
+      this.jdField_a_of_type_Ahsf.a(((Integer)this.itemView.getTag()).intValue(), paramView.getId());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsg
  * JD-Core Version:    0.7.0.1
  */

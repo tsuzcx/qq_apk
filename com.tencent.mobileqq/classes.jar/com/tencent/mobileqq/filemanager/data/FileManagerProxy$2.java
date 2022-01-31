@@ -1,29 +1,20 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import android.content.ContentValues;
-import aper;
+import aqxp;
 
 public class FileManagerProxy$2
   implements Runnable
 {
-  public FileManagerProxy$2(aper paramaper, ContentValues paramContentValues, long paramLong) {}
+  public FileManagerProxy$2(aqxp paramaqxp) {}
   
   public void run()
   {
-    try
-    {
-      this.this$0.a(FileManagerEntity.tableName(), this.jdField_a_of_type_AndroidContentContentValues, "nSessionId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) }, null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    aqxp.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerProxy.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,62 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.List;
+import android.widget.BaseAdapter;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ev
+public abstract class ev
+  extends BaseAdapter
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public boolean b = true;
-  public boolean c = false;
+  long jdField_a_of_type_Long = 0L;
+  private Map<Long, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public ev()
+  public abstract int a();
+  
+  public abstract long a(int paramInt);
+  
+  public boolean a(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = "Printer";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = true;
+    return this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong));
   }
   
-  public boolean a(List<FileInfo> paramList, String paramString, QQAppInterface paramQQAppInterface)
+  public abstract long b(int paramInt);
+  
+  public void b()
   {
-    return true;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    int j = a();
+    if (j > 0)
+    {
+      int i = 0;
+      while (i < j)
+      {
+        long l = a(i);
+        if (l > this.jdField_a_of_type_Long + 180L)
+        {
+          this.jdField_a_of_type_Long = l;
+          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(b(i)), Long.valueOf(this.jdField_a_of_type_Long));
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public void c()
+  {
+    int i = a();
+    if (i == 0) {}
+    long l;
+    do
+    {
+      return;
+      l = a(i - 1);
+    } while (l <= this.jdField_a_of_type_Long + 180L);
+    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(b(i - 1)), Long.valueOf(this.jdField_a_of_type_Long));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ev
  * JD-Core Version:    0.7.0.1
  */

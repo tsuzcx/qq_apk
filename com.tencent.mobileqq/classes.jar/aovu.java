@@ -1,148 +1,63 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.contactsync.ContactSyncManager.1.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
 public class aovu
+  extends awdn
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  public astt a;
-  public asug a;
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  List<aovs> jdField_a_of_type_JavaUtilList;
-  List<aovs> b;
-  List<aovs> c;
-  public List<aovs> d;
-  List<aovs> e;
+  aovu(aovt paramaovt) {}
   
-  public aovu(long paramLong, asug paramasug, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astt paramastt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Long = ???;
-    this.jdField_a_of_type_Asug = paramHashMap;
-    this.jdField_a_of_type_Int = 0;
-    Object localObject;
-    this.jdField_a_of_type_Astt = localObject;
-    this.jdField_a_of_type_JavaUtilHashMap = paramastt;
-    this.b = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.c = new ArrayList();
-    this.d = new ArrayList();
-    this.e = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.b.size();
-  }
-  
-  public void a()
-  {
-    c();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((aovs)localIterator.next()).a();
+    aubm localaubm = (aubm)this.a.a.getManager(11);
+    int i = localaubm.d();
+    String str1 = this.a.a.getCurrentAccountUin();
+    String str2 = this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "onQueryBindState | state = " + i + " | syncUin = " + aovt.b(str2) + " | currentUin = " + aovt.b(str1));
     }
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public void a(aovs paramaovs)
-  {
-    if (paramaovs != null) {
-      this.b.add(paramaovs);
+    if (localaubm.c()) {
+      if (TextUtils.isEmpty(str2)) {
+        aovt.a(this.a).removeCallbacksAndMessages(null);
+      }
     }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((aovs)localIterator.next()).b();
-    }
-    this.jdField_a_of_type_Int = 5;
-  }
-  
-  void c()
-  {
-    if (10 <= this.b.size()) {}
-    ArrayList localArrayList;
-    for (int i = 10;; i = this.b.size())
+    do
     {
-      localArrayList = new ArrayList(i);
-      int j = 0;
-      while (j < i)
+      do
       {
-        aovs localaovs = (aovs)this.b.get(j);
-        this.jdField_a_of_type_JavaUtilList.add(localaovs);
-        localArrayList.add(localaovs);
-        j += 1;
-      }
-    }
-    this.b.removeAll(localArrayList);
-  }
-  
-  public void d()
-  {
-    int j = this.c.size();
-    int k = this.e.size();
-    int m = this.d.size();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    aovs localaovs;
-    if (localIterator.hasNext())
-    {
-      localaovs = (aovs)localIterator.next();
-      if ((localaovs.b == 2) || (localaovs.b == 3) || (localaovs.b == 4)) {
-        localIterator.remove();
-      }
-      if (localaovs.b == 2)
-      {
-        this.c.add(localaovs);
-        i += 1;
-      }
-    }
-    for (;;)
-    {
-      break;
-      if (localaovs.b == 3)
-      {
-        this.e.add(localaovs);
-        i += 1;
-      }
-      else if (localaovs.b == 4)
-      {
-        this.d.add(localaovs);
-        i += 1;
-        continue;
-        c();
-        if (QLog.isColorLevel())
+        aovt.a(this.a).sendEmptyMessage(1);
+        do
         {
-          int n = this.jdField_a_of_type_JavaUtilList.size();
-          int i1 = this.b.size();
-          QLog.i("FileMultiMsgManager<FileAssistant>", 1, "request update, multiUniseq[ " + this.jdField_a_of_type_Long + "] removeCount[" + i + "] leftCount[" + (n + i1) + "] finishCount[" + (m + (j + k)) + "]");
-        }
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext()) {
-          ((aovs)localIterator.next()).a();
-        }
-        if ((this.jdField_a_of_type_JavaUtilList.size() <= 0) && (this.b.size() <= 0))
-        {
-          this.jdField_a_of_type_Int = 5;
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FileMultiMsgManager<FileAssistant>", 1, "all task upload finish , remove multi request: multiUniseq[ " + this.jdField_a_of_type_Long + "]");
-          }
-          aouy.a(this.jdField_a_of_type_Aouy, this.jdField_a_of_type_Long);
-        }
+          return;
+        } while (str1.equals(str2));
+        aovt.a(this.a).removeCallbacksAndMessages(null);
+        aovt.a(this.a).sendEmptyMessage(2);
+        aovt.a(this.a).sendEmptyMessage(1);
         return;
+      } while ((i != 5) && (i != 1) && ((i != 6) || (localaubm.a() == null) || (localaubm.a().lastUsedFlag != 3L)) && ((i != 7) || (localaubm.a() == null) || (!localaubm.a().isStopFindMatch)));
+      if ((i == 5) || (i == 1)) {
+        ThreadManager.excute(new ContactSyncManager.1.1(this), 16, null, false);
       }
+    } while ((TextUtils.isEmpty(str2)) || (!str2.equals(this.a.a.getCurrentAccountUin())));
+    aovt.a(this.a).removeCallbacksAndMessages(null);
+    aovt.a(this.a).sendEmptyMessage(2);
+  }
+  
+  protected void d(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "onQueryContactList | isSuccess = " + paramBoolean + " | updateFlag = " + paramInt);
     }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aovu
  * JD-Core Version:    0.7.0.1
  */

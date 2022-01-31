@@ -1,36 +1,20 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class bjbl
-  extends RecyclerView.ItemDecoration
+class bjbl
+  implements MiniAppPrePullManager.IPrePullListener
 {
-  int a = 0;
-  int b = 0;
-  int c = 0;
-  int d = 0;
+  bjbl(bjbk parambjbk) {}
   
-  public bjbl(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.left = this.a;
-    paramRect.right = this.b;
-    paramRect.bottom = this.d;
-    paramRect.top = this.c;
+    QLog.d("QzoneIPCModule", 4, String.format("after preload For QQ MINI Program %b", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjbl
  * JD-Core Version:    0.7.0.1
  */

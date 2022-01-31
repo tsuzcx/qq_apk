@@ -1,934 +1,664 @@
+import android.media.MediaPlayer;
+import android.os.Build.VERSION;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.TransFileInfo;
-import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Random;
-import msf.msgsvc.msg_ctrl.MsgCtrl;
-import msf.msgsvc.msg_ctrl.ResvResvInfo;
-import msf.msgsvc.msg_svc.AccostTmp;
-import msf.msgsvc.msg_svc.AddressListTmp;
-import msf.msgsvc.msg_svc.BusinessWPATmp;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.DisTmp;
-import msf.msgsvc.msg_svc.GrpTmp;
-import msf.msgsvc.msg_svc.NearByDatingTmp;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
-import msf.msgsvc.msg_svc.PbSendMsgResp;
-import msf.msgsvc.msg_svc.RoutingHead;
-import msf.msgsvc.msg_svc.Trans0x211;
-import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.RichText;
-import tencent.im.msg.im_msg_body.Trans211TmpMsg;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.utils.VipUtils;
+import java.io.File;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class akqb
-  extends akon
+  implements aelc, Handler.Callback, bdhu, bili
 {
-  ArrayList<String> a;
+  public static String a;
+  public static boolean a;
+  public static String b;
+  public static boolean b;
+  public static String c;
+  public static String d;
+  private int jdField_a_of_type_Int;
+  public long a;
+  private akqd jdField_a_of_type_Akqd;
+  private akqf jdField_a_of_type_Akqf;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  public WeakReference<akqe> a;
+  private int b;
+  public WeakReference<akqg> b;
+  private WeakReference<agjp> jdField_c_of_type_JavaLangRefWeakReference;
+  boolean jdField_c_of_type_Boolean = false;
+  private boolean d;
+  private String jdField_e_of_type_JavaLangString = "";
+  private volatile boolean jdField_e_of_type_Boolean;
+  private String jdField_f_of_type_JavaLangString;
+  private boolean jdField_f_of_type_Boolean;
+  private String g;
+  private String h;
   
-  public akqb(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  static
   {
-    super(paramQQAppInterface, paramMessageHandler);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(20);
+    jdField_a_of_type_JavaLangString = "1400035750";
+    jdField_b_of_type_JavaLangString = "5d3728db75adf458";
+    jdField_c_of_type_JavaLangString = "https://sqimg.qq.com/qq_product_operations/gme_sdk/GME_SDK_V1.zip";
+    jdField_d_of_type_JavaLangString = "105d1e43c456bc800b4adacd57ac1199";
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, axai paramaxai)
+  public akqb(QQAppInterface paramQQAppInterface)
   {
-    if (paramaxai == null) {
-      a(paramToServiceMsg, paramFromServiceMsg);
-    }
-    do
+    this.jdField_b_of_type_Int = 5;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new bhow(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Akqd = new akqd(paramQQAppInterface);
+    ((akji)paramQQAppInterface.getManager(153)).a().a(this.jdField_a_of_type_Akqd);
+    bilg.a().a(this);
+    a();
+  }
+  
+  private void b(int paramInt)
+  {
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null))
     {
+      if (paramInt == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameTemp_CmGameAudioManager", 0, "[onReportRecordInfoResp] upload record succ.");
+        }
+        ((akqg)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a();
+      }
+    }
+    else {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("wk", 2, "onReceive, MessageConstants.CMD_TRANSSERVICE_REQOFFFILEPACK: " + paramaxai.jdField_b_of_type_Byte);
-      }
-      if (paramaxai.jdField_b_of_type_Byte == 6)
-      {
-        e(paramToServiceMsg, paramFromServiceMsg, paramaxai);
-        return;
-      }
-      if (paramaxai.jdField_b_of_type_Byte == 3)
-      {
-        d(paramToServiceMsg, paramFromServiceMsg, paramaxai);
-        return;
-      }
-      if (paramaxai.jdField_b_of_type_Byte == 2)
-      {
-        c(paramToServiceMsg, paramFromServiceMsg, paramaxai);
-        return;
-      }
-    } while (paramaxai.jdField_b_of_type_Byte != 1);
-    b(paramToServiceMsg, paramFromServiceMsg, paramaxai);
+    }
+    ((akqg)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(paramInt);
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[onReportRecordInfoResp] uploadError,retcode:" + paramInt);
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public int a()
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderStart");
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((akqe)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+    }
+    return 250;
+  }
+  
+  public int a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onBeginReceiveData");
+    return this.jdField_b_of_type_Int * 1000;
+  }
+  
+  public String a()
+  {
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onInitSuccess");
+  }
+  
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><R><---handleSendTransMessageResp");
-    }
-    String str2 = paramToServiceMsg.getServiceCmd();
-    long l = paramToServiceMsg.extraData.getLong("msgSeq");
-    String str1 = paramToServiceMsg.extraData.getString("uin");
-    int k = paramToServiceMsg.extraData.getInt("transC2CCmd");
-    msg_svc.PbSendMsgResp localPbSendMsgResp = new msg_svc.PbSendMsgResp();
-    try
-    {
-      paramObject = (msg_svc.PbSendMsgResp)localPbSendMsgResp.mergeFrom((byte[])paramObject);
-      if ((paramObject == null) || (!paramObject.result.has()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.msg.BaseMessageProcessor", 2, "server did not return a valid result code, use 4 instead.");
-        }
-        i = 4;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><R><---handleSendTransMessageResp: ---cmd:" + str2 + "----replyCode:" + i + ",sendC2CMessage resp : peerUin:" + str1 + ",msgSeq:" + l + ",transc2ccmd:" + k);
-        }
-        paramFromServiceMsg.extraData.putLong("ServerReplyCode", i);
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
-        paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l);
-        if (paramFromServiceMsg != null) {
-          break label297;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><R><---handleSendTransMessageResp: ---cmd:" + str2 + ",no SendMessageHandler found.");
-        }
-      }
-    }
-    catch (Exception paramObject)
-    {
-      for (;;)
-      {
-        int i;
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageResp::invalid.", paramObject);
-        }
-        paramObject = null;
-        continue;
-        if (paramObject.result.get() != 0)
-        {
-          i = paramObject.result.get();
-          continue;
-          label297:
-          if (i == 255) {}
-          for (int j = 1;; j = 0)
-          {
-            if (j != 0)
-            {
-              paramObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
-              paramFromServiceMsg.getClass();
-              if (paramObject.a(paramFromServiceMsg, "server")) {
-                break;
-              }
-            }
-            if ((i != 0) && (i != 241)) {
-              break label469;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageResp : send successfully.");
-            }
-            this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l);
-            if (133 == k) {
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str1, paramToServiceMsg.extraData.getLong("sessionid"), true);
-            }
-            if (135 != k) {
-              break label436;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(str1, paramToServiceMsg.extraData.getLong("sessionid"), true);
-            return;
-          }
-          label436:
-          if (QLog.isColorLevel())
-          {
-            QLog.w("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageResp : can not handle transc2ccmd:" + k);
-            return;
-            label469:
-            if (QLog.isColorLevel()) {
-              QLog.e("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageResp : send failed:" + i + ", transc2ccmd:" + k);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l);
-            if (133 == k)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str1, paramToServiceMsg.extraData.getLong("sessionid"), false);
-              return;
-            }
-            if (135 == k) {
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(str1, paramToServiceMsg.extraData.getLong("sessionid"), false);
-            }
-          }
-        }
-        else
-        {
-          i = 0;
-        }
-      }
+      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[QQRecorder] onRecorderVolumeStateChanged");
     }
   }
   
-  private void a(msg_svc.PbSendMsgReq paramPbSendMsgReq, FMTransC2CMsgInfo paramFMTransC2CMsgInfo)
+  public void a(int paramInt, akqe paramakqe)
   {
-    if (paramFMTransC2CMsgInfo.entity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("IMG_FILE_QR", 1, "add image QrInfo , info is null, maybe is not qr image");
-      }
-    }
-    for (;;)
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramakqe);
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null)
     {
-      return;
-      paramFMTransC2CMsgInfo = aqvu.a(paramFMTransC2CMsgInfo.entity.getFilePath(), paramFMTransC2CMsgInfo.entity.imgWidth, paramFMTransC2CMsgInfo.entity.imgHeight, paramFMTransC2CMsgInfo.entity.strQRUrl);
-      if (paramFMTransC2CMsgInfo != null)
-      {
-        paramPbSendMsgReq.msg_ctrl.set(paramFMTransC2CMsgInfo);
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            if (paramFMTransC2CMsgInfo.resv_resv_info.has())
-            {
-              QLog.i("IMG_FILE_QR", 1, "reqFeeds with ImageInfo has uint32_flag:" + ((msg_ctrl.ResvResvInfo)paramFMTransC2CMsgInfo.resv_resv_info.get()).uint32_flag.get());
-              QLog.i("IMG_FILE_QR", 1, "reqFeeds with ImageInfo has uint64_reserv2:" + ((msg_ctrl.ResvResvInfo)paramFMTransC2CMsgInfo.resv_resv_info.get()).uint64_reserv2.get());
-              QLog.i("IMG_FILE_QR", 1, "reqFeeds with ImageInfo has uint64_reserv3:" + ((msg_ctrl.ResvResvInfo)paramFMTransC2CMsgInfo.resv_resv_info.get()).uint64_reserv3.get());
-              QLog.i("IMG_FILE_QR", 1, "reqFeeds with ImageInfo has uint32_create_time:" + ((msg_ctrl.ResvResvInfo)paramFMTransC2CMsgInfo.resv_resv_info.get()).uint32_create_time.get());
-              QLog.i("IMG_FILE_QR", 1, "reqFeeds with ImageInfo has uint32_pic_width:" + ((msg_ctrl.ResvResvInfo)paramFMTransC2CMsgInfo.resv_resv_info.get()).uint32_pic_width.get());
-              QLog.i("IMG_FILE_QR", 1, "reqFeeds with ImageInfo has uint32_pic_height:" + ((msg_ctrl.ResvResvInfo)paramFMTransC2CMsgInfo.resv_resv_info.get()).uint32_pic_height.get());
-              return;
-            }
-            QLog.i("IMG_FILE_QR", 1, "eqFeeds without ImageInfo");
-            return;
-          }
-        }
-        catch (Throwable paramPbSendMsgReq) {}
-      }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
+      paramakqe = new QQRecorder.RecorderParam(bdic.jdField_a_of_type_Int, 0, 0);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(paramakqe);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
     }
+    paramakqe = new File(alef.p);
+    if (!paramakqe.exists()) {
+      paramakqe.mkdirs();
+    }
+    paramakqe = b();
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a()) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(paramakqe, true);
+    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[startRecord] start record");
   }
   
-  private void a(msg_svc.PbSendMsgReq paramPbSendMsgReq, FMTransC2CMsgInfo paramFMTransC2CMsgInfo, axax paramaxax)
+  public void a(agjp paramagjp)
   {
-    long l1 = 0L;
-    if ((paramFMTransC2CMsgInfo == null) || (paramFMTransC2CMsgInfo.entity == null)) {
+    this.jdField_c_of_type_JavaLangRefWeakReference = new WeakReference(paramagjp);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    int i = 2;
+    String str = paramBundle.getString("gmesdk_event_key");
+    int j = paramBundle.getInt("gmesdk_event_ret");
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "key:" + str + ",ret:" + j);
+    if ("gmesdk_event_key_enterroom".equals(str))
+    {
+      QLog.e("CmGameTemp_CmGameAudioManager", 1, "key:" + str + ",ret:" + j + ",roomId:" + this.h);
+      if ((j == 0) || (j == 1003))
+      {
+        this.jdField_e_of_type_Boolean = true;
+        this.jdField_e_of_type_JavaLangString = this.g;
+        this.jdField_f_of_type_JavaLangString = this.h;
+        ((akji)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.jdField_e_of_type_JavaLangString, true, this.jdField_a_of_type_Int);
+        a(true, this.jdField_e_of_type_JavaLangString);
+        if (this.jdField_a_of_type_Int == 319) {
+          i = 1;
+        }
+        VipUtils.a(null, "cmshow", "Apollo", "turnOnAudio", i, 0, new String[0]);
+      }
+    }
+    while (!"gmesdk_event_key_exit_room".equals(str))
+    {
+      return;
+      ((akji)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.jdField_e_of_type_JavaLangString, false, this.jdField_a_of_type_Int);
+      a(false, this.jdField_e_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Int == 319) {
+        i = 1;
+      }
+      VipUtils.a(null, "cmshow", "Apollo", "turnOnAudio", i, 1, new String[0]);
       return;
     }
-    paramFMTransC2CMsgInfo = paramFMTransC2CMsgInfo.entity;
-    msg_svc.RoutingHead localRoutingHead = paramPbSendMsgReq.routing_head;
-    int i = (int)paramFMTransC2CMsgInfo.tmpSessionType;
-    switch (i)
-    {
-    default: 
-      return;
-    case 100: 
-      localRoutingHead.accost_tmp.to_uin.set(Long.parseLong(paramFMTransC2CMsgInfo.peerUin));
-      if ((paramFMTransC2CMsgInfo.tmpSessionSig != null) && (paramFMTransC2CMsgInfo.tmpSessionSig.length > 0)) {
-        localRoutingHead.accost_tmp.sig.set(ByteStringMicro.copyFrom(paramFMTransC2CMsgInfo.tmpSessionSig));
-      }
-      localRoutingHead.accost_tmp.setHasFlag(true);
-      localRoutingHead.setHasFlag(true);
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    ((akji)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.jdField_e_of_type_JavaLangString, false, this.jdField_a_of_type_Int);
+    a(false, this.jdField_e_of_type_JavaLangString);
+    this.jdField_e_of_type_JavaLangString = "";
+    if (this.jdField_a_of_type_Int == 319) {
+      i = 1;
     }
-    for (;;)
+    VipUtils.a(null, "cmshow", "Apollo", "turnOffAudio", i, 0, new String[0]);
+  }
+  
+  public void a(AudioPlayer paramAudioPlayer) {}
+  
+  public void a(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[AudioPlayerListener] onError:" + paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderNotReady");
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[audioSwitch] friUin:" + paramString + ",from:" + paramInt + ",mCurrentFriUin:" + this.jdField_e_of_type_JavaLangString);
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      if ((paramaxax != null) && (paramaxax.jdField_a_of_type_ArrayOfByte != null)) {
-        break label786;
-      }
-      if (!QLog.isColorLevel()) {
+      do
+      {
+        return;
+      } while (!a());
+      if (!this.jdField_e_of_type_Boolean) {
         break;
       }
-      QLog.e("Q.msg.BaseMessageProcessor", 2, "tmpsession Bug msgContext or msgContext.msg null!");
+      if (paramString.equals(this.jdField_e_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+        return;
+      }
+      if (paramInt == 318)
+      {
+        paramString = new Bundle();
+        paramString.putString("key_game_friUin", this.jdField_e_of_type_JavaLangString);
+        paramString.putString("key_dialog_type", "dialog_type_confirm");
+        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_show_audio_dialog", paramString, null);
+        return;
+      }
+    } while ((this.jdField_c_of_type_JavaLangRefWeakReference == null) || (this.jdField_c_of_type_JavaLangRefWeakReference.get() == null));
+    ((agjp)this.jdField_c_of_type_JavaLangRefWeakReference.get()).g("dialog_type_confirm");
+    return;
+    b(paramString, paramInt);
+  }
+  
+  public void a(String paramString, akqg paramakqg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[uploadFile] uploadFile:" + paramString);
+    }
+    if (this.jdField_a_of_type_Akqf == null) {
+      this.jdField_a_of_type_Akqf = new akqf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    batw localbatw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramakqg);
+    if (localbatw != null)
+    {
+      if (!this.jdField_c_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Akqf.addFilter(new Class[] { bamp.class });
+        localbatw.a(this.jdField_a_of_type_Akqf);
+        this.jdField_c_of_type_Boolean = true;
+      }
+      paramakqg = new baub();
+      paramakqg.jdField_b_of_type_Int = 24;
+      paramakqg.jdField_c_of_type_Int = 36;
+      paramakqg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+      paramakqg.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+      paramakqg.jdField_a_of_type_Boolean = true;
+      paramakqg.j = ((int)new File(paramString).length());
+      paramakqg.i = paramString;
+      localbatw.a(paramakqg);
+    }
+  }
+  
+  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    int i = 1;
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderPrepare");
+    byte[] arrayOfByte = bdic.a(paramRecorderParam.jdField_c_of_type_Int, paramRecorderParam.jdField_a_of_type_Int);
+    if (paramRecorderParam.jdField_a_of_type_JavaLangObject == null) {}
+    while (i == 0)
+    {
+      azqa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecorderParam.jdField_c_of_type_Int, paramString, 0, (int)(System.currentTimeMillis() / 1000L));
+      azqa.a(paramString, arrayOfByte, arrayOfByte.length, (short)0);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.msg.BaseMessageProcessor", 2, "addTempSessionData add disctmp Info");
-      }
-      long l2;
-      try
-      {
-        l2 = Long.parseLong(paramFMTransC2CMsgInfo.tmpSessionRelatedUin);
-        l1 = l2;
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          QLog.e("Q.msg.BaseMessageProcessor", 1, "case to long faild, relatedUin[" + paramFMTransC2CMsgInfo.tmpSessionRelatedUin + "]");
-        }
-      }
-      localRoutingHead.dis_tmp.dis_uin.set(l1);
-      localRoutingHead.dis_tmp.to_uin.set(Long.parseLong(paramFMTransC2CMsgInfo.peerUin));
-      localRoutingHead.dis_tmp.setHasFlag(true);
-      localRoutingHead.setHasFlag(true);
-      continue;
-      try
-      {
-        l2 = Long.parseLong(paramFMTransC2CMsgInfo.tmpSessionRelatedUin);
-        l1 = l2;
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          QLog.e("Q.msg.BaseMessageProcessor", 1, "case to long faild, relatedUin[" + paramFMTransC2CMsgInfo.tmpSessionRelatedUin + "]");
-        }
-      }
-      localRoutingHead.grp_tmp.group_uin.set(l1);
-      localRoutingHead.grp_tmp.to_uin.set(Long.parseLong(paramFMTransC2CMsgInfo.peerUin));
-      localRoutingHead.grp_tmp.setHasFlag(true);
-      localRoutingHead.setHasFlag(true);
-      continue;
-      localRoutingHead.comm_tmp.to_uin.set(Long.parseLong(paramFMTransC2CMsgInfo.peerUin));
-      if ((paramFMTransC2CMsgInfo.tmpSessionSig != null) && (paramFMTransC2CMsgInfo.tmpSessionSig.length > 0)) {
-        localRoutingHead.comm_tmp.sig.set(ByteStringMicro.copyFrom(paramFMTransC2CMsgInfo.tmpSessionSig));
-      }
-      localRoutingHead.comm_tmp.c2c_type.set(1);
-      localRoutingHead.comm_tmp.svr_type.set(149);
-      localRoutingHead.comm_tmp.setHasFlag(true);
-      localRoutingHead.setHasFlag(true);
-      continue;
-      localRoutingHead.nearby_dating_tmp.to_uin.set(Long.parseLong(paramFMTransC2CMsgInfo.peerUin));
-      if ((paramFMTransC2CMsgInfo.tmpSessionSig != null) && (paramFMTransC2CMsgInfo.tmpSessionSig.length > 0)) {
-        localRoutingHead.nearby_dating_tmp.sig.set(ByteStringMicro.copyFrom(paramFMTransC2CMsgInfo.tmpSessionSig));
-      }
-      localRoutingHead.nearby_dating_tmp.setHasFlag(true);
-      localRoutingHead.setHasFlag(true);
-      continue;
-      if (paramFMTransC2CMsgInfo.tmpSessionFromPhone == null) {
-        paramFMTransC2CMsgInfo.tmpSessionFromPhone = "";
-      }
-      localRoutingHead.address_list.from_phone.set(paramFMTransC2CMsgInfo.tmpSessionFromPhone);
-      if (paramFMTransC2CMsgInfo.tmpSessionToPhone == null) {
-        paramFMTransC2CMsgInfo.tmpSessionToPhone = "";
-      }
-      localRoutingHead.address_list.to_phone.set(paramFMTransC2CMsgInfo.tmpSessionToPhone);
-      String str = paramFMTransC2CMsgInfo.peerUin.replace("+", "");
-      localRoutingHead.address_list.to_uin.set(Long.parseLong(str));
-      if ((paramFMTransC2CMsgInfo.tmpSessionSig != null) && (paramFMTransC2CMsgInfo.tmpSessionSig.length > 0)) {
-        localRoutingHead.address_list.sig.set(ByteStringMicro.copyFrom(paramFMTransC2CMsgInfo.tmpSessionSig));
-      }
-      localRoutingHead.address_list.setHasFlag(true);
-      localRoutingHead.setHasFlag(true);
-      continue;
-      localRoutingHead.business_wpa_tmp.to_uin.set(Long.parseLong(paramFMTransC2CMsgInfo.peerUin));
-      if ((paramFMTransC2CMsgInfo.tmpSessionSig != null) && (paramFMTransC2CMsgInfo.tmpSessionSig.length > 0)) {
-        localRoutingHead.business_wpa_tmp.sig.set(ByteStringMicro.copyFrom(paramFMTransC2CMsgInfo.tmpSessionSig));
-      }
-      localRoutingHead.business_wpa_tmp.setHasFlag(true);
-      localRoutingHead.setHasFlag(true);
+      i = 0;
     }
-    label786:
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.msg.BaseMessageProcessor", 2, "tmpsession msg0x211[" + i + "]");
-    }
-    localRoutingHead.trans_0x211.setHasFlag(false);
-    paramPbSendMsgReq.msg_body.msg_content.setHasFlag(false);
-    paramPbSendMsgReq.msg_body.rich_text.setHasFlag(true);
-    paramPbSendMsgReq.msg_body.rich_text.trans_211_tmp_msg.setHasFlag(true);
-    paramPbSendMsgReq.msg_body.rich_text.trans_211_tmp_msg.bytes_msg_body.set(ByteStringMicro.copyFrom(paramaxax.jdField_a_of_type_ArrayOfByte));
-    paramPbSendMsgReq.msg_body.rich_text.trans_211_tmp_msg.uint32_c2c_cmd.set(4);
+    awtg.a(paramString);
+    awtg.a(paramString, arrayOfByte, arrayOfByte.length);
   }
   
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, axai paramaxai)
+  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
   {
-    if ((paramaxai == null) || (paramaxai.jdField_a_of_type_Long != 0L))
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderEnd,totalTime:" + paramDouble);
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((akqe)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
+    }
+    int i;
+    if (paramRecorderParam != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("wk", 2, "handleSendOfflineFileResp-->handleError");
+      if (paramRecorderParam.jdField_a_of_type_JavaLangObject != null) {
+        break label107;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("wk", 2, "handleSendOfflineFileResp-->notify NOTIFY_TYPE_SEND_OFFLINE_FILE");
-    }
-    int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-    akau localakau = new akau();
-    localakau.b = paramFromServiceMsg.getResultCode();
-    localakau.c = i;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, 5004, true, new Object[] { paramaxai, localakau });
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><R><---handleSendTransMessageExResp");
-    }
-    Object localObject2 = paramToServiceMsg.getServiceCmd();
-    long l1 = paramToServiceMsg.extraData.getLong("uniseq");
-    long l2 = paramToServiceMsg.extraData.getLong("queueSeq");
-    long l3 = paramToServiceMsg.extraData.getLong("msgSeq");
-    String str = paramToServiceMsg.extraData.getString("uin");
-    Object localObject1 = paramToServiceMsg.extraData.getString("uuid");
-    int k = paramToServiceMsg.extraData.getInt("transC2CCmd");
-    int m = paramToServiceMsg.extraData.getInt("busiType");
-    long l4 = paramToServiceMsg.extraData.getLong("tmpSessionType");
-    Object localObject3 = new msg_svc.PbSendMsgResp();
-    try
-    {
-      paramObject = (msg_svc.PbSendMsgResp)((msg_svc.PbSendMsgResp)localObject3).mergeFrom((byte[])paramObject);
-      label329:
-      if ((paramObject == null) || (!paramObject.result.has()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.msg.BaseMessageProcessor", 2, "server did not return a valid result code, use 4 instead.");
-        }
-        i = 4;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><R><---handleSendTransMessageExResp: ---cmd:" + (String)localObject2 + "----replyCode:" + i + ",sendC2CMessage resp : peerUin:" + str + ",uniseq:" + l1 + ",msgSeq:" + l3 + ",transc2ccmd:" + k);
-        }
-        paramFromServiceMsg.extraData.putLong("ServerReplyCode", i);
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l2);
-        if (localObject3 != null) {
-          break label374;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><R><---handleSendTransMessageExResp: ---cmd:" + (String)localObject2 + ",no SendMessageHandler found.");
-        }
+      i = 1;
+      if (i != 0) {
+        break label113;
       }
-    }
-    catch (Exception paramObject)
-    {
-      for (;;)
-      {
-        int i;
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageExResp::invalid.", paramObject);
-        }
-        paramObject = null;
-        continue;
-        if (paramObject.result.get() != 0)
-        {
-          i = paramObject.result.get();
-          continue;
-          label374:
-          if (i == 255) {}
-          for (int j = 1;; j = 0)
-          {
-            if (j != 0)
-            {
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
-              localObject3.getClass();
-              if (((MessageHandler)localObject2).a((SendMessageHandler)localObject3, "server")) {
-                break;
-              }
-            }
-            if ((i != 0) && (i != 241)) {
-              break label848;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageExResp : send successfully.");
-            }
-            this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l2);
-            if ((paramObject.send_time.has()) && (l1 != 0L))
-            {
-              l2 = 0xFFFFFFFF & paramObject.send_time.get();
-              this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(str, 0, l1, l2);
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.msg.BaseMessageProcessor", 2, "updateSendTransMsgTime: sendBuddyPb: respData.uSendTime:" + l2 + ",peerUin:" + str);
-              }
-            }
-            if (529 != k) {
-              break label814;
-            }
-            switch (m)
-            {
-            case 1026: 
-            case 1027: 
-            case 1030: 
-            case 1031: 
-            default: 
-              if (!QLog.isColorLevel()) {
-                break label329;
-              }
-              QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : should not come here for the moment, busiType" + m);
-              return;
-            }
-          }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(str, paramToServiceMsg.extraData.getLong("sessionid"), true);
-          return;
-          if (paramObject.send_time.has()) {
-            a((String)localObject1 + String.valueOf(paramObject.send_time.get()));
-          }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramToServiceMsg, paramFromServiceMsg, paramToServiceMsg.extraData.getLong("sessionid"));
-          if (QLog.isColorLevel())
-          {
-            QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : send offline file  suc");
-            return;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : send file receipt suc");
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.msg.BaseMessageProcessor", 2, "QLINK_<---handleSendTransMessageExResp : qlink send file suc");
-              }
-              l1 = paramToServiceMsg.extraData.getLong("sessionid");
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1);
-              return;
-              if (QLog.isColorLevel())
-              {
-                QLog.d("Q.msg.BaseMessageProcessor", 2, "QLINK_<---handleSendTransMessageExResp : qlink send file state sync suc");
-                return;
-                label814:
-                if (QLog.isColorLevel())
-                {
-                  QLog.w("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageExResp : can not handle transc2ccmd:" + k);
-                  return;
-                  label848:
-                  if (QLog.isColorLevel()) {
-                    QLog.e("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageExResp : send failed:" + i + ", transc2ccmd:" + k);
-                  }
-                  if (((l4 == 100L) || (l4 == 127L)) && (paramObject != null) && (paramObject.errmsg.has()))
-                  {
-                    akoi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, paramObject.errmsg.get(), 1001, false, false);
-                    paramFromServiceMsg.setMsgFail();
-                    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-                    if (l4 != 100L) {
-                      break label1122;
-                    }
-                  }
-                  label1122:
-                  for (paramObject = "0";; paramObject = "1")
-                  {
-                    axqy.b((QQAppInterface)localObject1, "dc00899", "grp_lbs", "", "c2c_tmp", "no_send", 0, 0, paramObject, "" + i, "", "");
-                    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l3);
-                    if (529 != k) {
-                      break label1260;
-                    }
-                    switch (m)
-                    {
-                    case 1026: 
-                    case 1027: 
-                    case 1030: 
-                    case 1031: 
-                    default: 
-                      if (!QLog.isColorLevel()) {
-                        break label329;
-                      }
-                      QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : should not come here for the moment, busiType" + m);
-                      return;
-                    }
-                  }
-                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(str, paramToServiceMsg.extraData.getLong("sessionid"), false);
-                  return;
-                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramToServiceMsg, paramFromServiceMsg, paramToServiceMsg.extraData.getLong("sessionid"));
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : send offline file  fail");
-                    return;
-                    if (QLog.isColorLevel())
-                    {
-                      QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : send file receipt fail");
-                      return;
-                      if (QLog.isColorLevel()) {
-                        QLog.d("Q.msg.BaseMessageProcessor", 2, "QLINK_<---handleSendTransMessageExResp : qlink send file fail");
-                      }
-                      l1 = paramToServiceMsg.extraData.getLong("sessionid");
-                      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(l1);
-                      return;
-                      if (QLog.isColorLevel())
-                      {
-                        QLog.d("Q.msg.BaseMessageProcessor", 2, "QLINK_<---handleSendTransMessageExResp : qlink send file state sync fail");
-                        return;
-                        label1260:
-                        if (QLog.isColorLevel()) {
-                          QLog.w("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageExResp : can not handle transc2ccmd:" + k);
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        else
-        {
-          i = 0;
-        }
-      }
-    }
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, axai paramaxai)
-  {
-    if ((paramaxai == null) || (paramaxai.jdField_a_of_type_Long != 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("wk", 2, "handleSetOfflineFileState-->handleError");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("wk", 2, "handleSetOfflineFileState-->notify NOTIFY_TYPE_SEND_OFFLINE_FILE");
-    }
-    int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-    akau localakau = new akau();
-    localakau.b = paramFromServiceMsg.getResultCode();
-    localakau.c = i;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, 5005, true, new Object[] { paramaxai, localakau });
-  }
-  
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, axai paramaxai)
-  {
-    if (paramaxai == null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
+      azqa.a(paramString, false);
+      azqa.a(paramString);
     }
     for (;;)
     {
+      this.jdField_a_of_type_Long = (paramDouble);
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a();
+      }
       return;
-      long l1 = paramaxai.jdField_c_of_type_Long;
-      long l2 = paramaxai.d;
-      long l3 = paramaxai.e;
-      long l4 = paramaxai.jdField_b_of_type_Long;
-      paramFromServiceMsg = paramaxai.jdField_b_of_type_JavaLangString;
-      String str1 = paramaxai.jdField_c_of_type_JavaLangString;
-      String str2 = paramToServiceMsg.extraData.getString("friendUin");
-      boolean bool = paramToServiceMsg.extraData.getBoolean("isRead");
-      Object localObject = "http://" + bbmx.b(l1) + "/?ver=" + "2" + "&rkey=" + paramFromServiceMsg;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "<<---handleGetOffLineFileResp serverPath: " + (String)localObject + " strFileName: " + str1 + " time: " + paramaxai.d + " seq: " + paramaxai.jdField_a_of_type_Short);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "friendUin:" + str2 + "  struct.senderUin: " + paramaxai.jdField_b_of_type_Long + " struct.time: " + paramaxai.d + " struct.seq: " + paramaxai.jdField_a_of_type_Short);
-      }
-      int i;
-      if (axau.a(str1, paramaxai.jdField_a_of_type_Byte))
-      {
-        paramFromServiceMsg = aywk.a((String)localObject, l3, 1, false, (String)localObject);
-        i = -2000;
-      }
-      while (paramFromServiceMsg != null)
-      {
-        localObject = axas.a(i);
-        ((MessageRecord)localObject).selfuin = paramToServiceMsg.getUin();
-        ((MessageRecord)localObject).frienduin = str2;
-        ((MessageRecord)localObject).senderuin = String.valueOf(l4);
-        ((MessageRecord)localObject).isread = bool;
-        ((MessageRecord)localObject).time = l2;
-        ((MessageRecord)localObject).msgtype = i;
-        ((MessageRecord)localObject).istroop = 0;
-        ((MessageRecord)localObject).msg = paramFromServiceMsg;
-        ((MessageRecord)localObject).msgseq = paramaxai.jdField_a_of_type_Short;
-        ((MessageRecord)localObject).shmsgseq = paramaxai.jdField_a_of_type_Short;
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((MessageRecord)localObject).senderuin))
-        {
-          ((MessageRecord)localObject).isread = true;
-          ((MessageRecord)localObject).issend = 2;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)localObject, paramToServiceMsg.getUin());
-        if (-2005 == i)
-        {
-          paramToServiceMsg = paramToServiceMsg.extraData.getByteArray("filepath");
-          paramFromServiceMsg = (TransFileInfo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(TransFileInfo.class, new String[] { String.valueOf(l2), String.valueOf(((MessageRecord)localObject).msgseq), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((MessageRecord)localObject).frienduin });
-          paramFromServiceMsg = new TransFileInfo();
-          paramFromServiceMsg.selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-          paramFromServiceMsg.friendUin = ((MessageRecord)localObject).frienduin;
-          paramFromServiceMsg.transferedSize = 0L;
-          paramFromServiceMsg.status = 2008;
-          paramFromServiceMsg.mr_seq = ((MessageRecord)localObject).shmsgseq;
-          paramFromServiceMsg.mr_time = l2;
-          paramFromServiceMsg.fileName = str1;
-          paramFromServiceMsg.uuid = paramToServiceMsg;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b(paramFromServiceMsg);
-        }
-        a("handleGetOffLineFileResp", true, 1, true, false);
-        return;
-        if (axau.b(str1, paramaxai.jdField_a_of_type_Byte))
-        {
-          if (!str1.contains("_")) {}
-          for (paramFromServiceMsg = str1.substring(0, str1.length() - 4);; paramFromServiceMsg = str1.substring(str1.lastIndexOf("_") + 1, str1.length() - 4))
-          {
-            paramFromServiceMsg = l4 + paramFromServiceMsg;
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.msg.BaseMessageProcessor", 2, "isPttSuffix offfile key：" + paramFromServiceMsg);
-            }
-            if (!axug.e(paramFromServiceMsg)) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.msg.BaseMessageProcessor", 2, "is Duplicate key：" + paramFromServiceMsg);
-            }
-            axug.d(paramFromServiceMsg);
-            return;
-          }
-          axug.c(paramFromServiceMsg);
-          paramFromServiceMsg = aywk.a((String)localObject, l3, 2, false);
-          i = -2002;
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("wk", 2, "rcv offline file：" + (String)localObject + " fileSize:" + l3);
-          }
-          paramFromServiceMsg = aywk.a(ayph.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), str1, 0, null), l3, 0, false, (String)localObject);
-          i = -2005;
-        }
-      }
+      label107:
+      i = 0;
+      break;
+      label113:
+      awtg.b(paramString);
     }
   }
   
-  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, axai paramaxai)
+  public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
   {
-    if (paramaxai == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-      return;
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderError");
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((akqe)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(-2);
     }
-    int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-    akau localakau = new akau();
-    localakau.b = paramFromServiceMsg.getResultCode();
-    localakau.c = i;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, 5003, true, new Object[] { paramaxai.jdField_a_of_type_ArrayOfByte, localakau });
   }
   
-  public void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 7001: 
-      if ((paramVarArgs != null) && (paramVarArgs.length == 3))
-      {
-        a((ToServiceMsg)paramVarArgs[0], (FromServiceMsg)paramVarArgs[1], (axai)paramVarArgs[2]);
-        return;
-      }
-      a(getClass().getName(), paramInt);
-      return;
-    case 7002: 
-      if ((paramVarArgs != null) && (paramVarArgs.length == 3))
-      {
-        a((ToServiceMsg)paramVarArgs[0], (FromServiceMsg)paramVarArgs[1], paramVarArgs[2]);
-        return;
-      }
-      a(getClass().getName(), paramInt);
-      return;
-    }
-    if ((paramVarArgs != null) && (paramVarArgs.length == 3))
-    {
-      b((ToServiceMsg)paramVarArgs[0], (FromServiceMsg)paramVarArgs[1], paramVarArgs[2]);
-      return;
-    }
-    a(getClass().getName(), paramInt);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
     if (QLog.isColorLevel()) {
-      QLog.d("wk", 2, "handleReqOffFilePackError, count: " + i);
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[enterRoom] friUin:" + paramString1 + ",roomId:" + paramString2 + ",from:" + paramString1);
     }
-    if (i < 2)
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      paramToServiceMsg.extraData.putInt("retryIndex", i + 1);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.send(paramToServiceMsg);
-    }
-    akau localakau;
-    do
-    {
+      QLog.e("CmGameTemp_CmGameAudioManager", 1, "[enterRoom] uin or roomId is empty");
       return;
-      localakau = new akau();
-      localakau.b = paramFromServiceMsg.getResultCode();
-      localakau.c = i;
-      if (paramFromServiceMsg.getResultCode() == 1000)
-      {
-        localakau.b = 2900;
-        localakau.jdField_a_of_type_Long = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 2139062142L);
+    }
+    Bundle localBundle;
+    if ((Build.VERSION.SDK_INT >= 23) && (BaseActivity.sTopActivity != null) && (BaseActivity.sTopActivity.checkSelfPermission("android.permission.RECORD_AUDIO") != 0))
+    {
+      if (paramInt != 318) {
+        break label225;
       }
-      MessageHandler localMessageHandler = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
-      localakau.jdField_a_of_type_JavaLangString = MessageHandler.a(paramFromServiceMsg);
-      paramFromServiceMsg = paramToServiceMsg.extraData.getString("uin");
-      if (paramToServiceMsg.extraData.getInt("offfile_type") == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, 3006, false, paramFromServiceMsg);
-        return;
+      localBundle = new Bundle();
+      localBundle.putString("key_dialog_type", "dialog_type_permission");
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_show_audio_dialog", localBundle, null);
+    }
+    for (;;)
+    {
+      localBundle = new Bundle();
+      localBundle.putString("uin", paramString1);
+      localBundle.putString("friUin", paramString1);
+      localBundle.putString("roomId", paramString2);
+      localBundle.putInt("from", paramInt);
+      paramString1 = Message.obtain();
+      paramString1.setData(localBundle);
+      paramString1.what = 2;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString1);
+      return;
+      label225:
+      if ((this.jdField_c_of_type_JavaLangRefWeakReference != null) && (this.jdField_c_of_type_JavaLangRefWeakReference.get() != null)) {
+        ((agjp)this.jdField_c_of_type_JavaLangRefWeakReference.get()).g("dialog_type_permission");
       }
-      if (paramToServiceMsg.extraData.getInt("offfile_type") == 1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, 5003, false, new Object[] { paramFromServiceMsg, localakau });
-        return;
+    }
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[QQRecorder] onRecorderSilceEnd size：" + paramInt1);
+    }
+    if (paramRecorderParam.jdField_a_of_type_JavaLangObject == null) {}
+    for (paramInt2 = 1; paramInt2 == 0; paramInt2 = 0)
+    {
+      azqa.a(paramString, paramArrayOfByte, paramInt1, (short)0);
+      return;
+    }
+    awtg.a(paramString, paramArrayOfByte, paramInt1);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_c_of_type_JavaLangRefWeakReference != null)
+    {
+      agjp localagjp = (agjp)this.jdField_c_of_type_JavaLangRefWeakReference.get();
+      if ((localagjp != null) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(localagjp.a()))) {
+        localagjp.t(paramBoolean);
       }
-      if (paramToServiceMsg.extraData.getInt("offfile_type") == 2)
+    }
+    akrg.a().a(paramBoolean, paramString);
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    if (this.jdField_f_of_type_Boolean) {
+      return true;
+    }
+    boolean bool1;
+    if (alee.d != null)
+    {
+      jdField_a_of_type_JavaLangString = alee.d.optString("appid", "1400035750");
+      jdField_b_of_type_JavaLangString = alee.d.optString("key", "5d3728db75adf458");
+      jdField_c_of_type_JavaLangString = alee.d.optString("url", "https://sqimg.qq.com/qq_product_operations/gme_sdk/GME_SDK_V1.zip");
+      jdField_d_of_type_JavaLangString = alee.d.optString("md5", "105d1e43c456bc800b4adacd57ac1199");
+      if (alee.d.optInt("openAudio", 0) != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, 5005, false, new Object[] { paramFromServiceMsg, localakau });
-        return;
+        bool1 = true;
+        jdField_a_of_type_Boolean = bool1;
+        bool1 = bool2;
+        if (alee.d.optInt("display", 0) != 0) {
+          bool1 = true;
+        }
+        jdField_b_of_type_Boolean = bool1;
+        QLog.i("CmGameTemp_CmGameAudioManager", 1, "[initParams] appId:" + jdField_a_of_type_JavaLangString + ",key:" + jdField_b_of_type_JavaLangString + ",url:" + jdField_c_of_type_JavaLangString + ",md5:" + jdField_d_of_type_JavaLangString + ",OPEN_AUDIO:" + jdField_a_of_type_Boolean + ",sDISPLAY:" + jdField_b_of_type_Boolean);
+        bilg.a().a(jdField_c_of_type_JavaLangString, jdField_d_of_type_JavaLangString);
       }
-    } while (paramToServiceMsg.extraData.getInt("offfile_type") != 3);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, 5004, false, new Object[] { paramFromServiceMsg, localakau });
+    }
+    for (this.jdField_f_of_type_Boolean = true;; this.jdField_f_of_type_Boolean = false)
+    {
+      return this.jdField_f_of_type_Boolean;
+      bool1 = false;
+      break;
+      QLog.e("CmGameTemp_CmGameAudioManager", 1, "[initParams] gameAudioConfig is null");
+    }
   }
   
   public boolean a(String paramString)
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString))
+    return (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (this.jdField_e_of_type_JavaLangString.equals(paramString)) && (this.jdField_e_of_type_Boolean);
+  }
+  
+  public String b()
+  {
+    return alef.p + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".amr";
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void b(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[queryRoomAndEnter] friUin:" + paramString + ",currentRoom:" + this.jdField_f_of_type_JavaLangString);
+    }
+    if (!a()) {
+      return;
+    }
+    akji localakji = (akji)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+    if (this.jdField_e_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 20) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    }
+    localakji.a().b(paramString, paramInt);
+  }
+  
+  public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderAbnormal");
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_e_of_type_Boolean;
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[playUserRecord] play record:" + paramString);
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      try
+      {
+        if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("CmGameTemp_CmGameAudioManager", 0, "record is playing");
+          }
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+        }
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+        if (TextUtils.isEmpty(paramString))
+        {
+          if (!new File(b()).exists())
+          {
+            QLog.e("CmGameTemp_CmGameAudioManager", 1, "audio file not exist.");
+            return false;
+          }
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(b());
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+          return true;
+        }
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+        return true;
+      }
+      catch (IOException paramString)
+      {
+        QLog.e("CmGameTemp_CmGameAudioManager", 1, paramString.getMessage());
+        return false;
+      }
+    }
+  }
+  
+  public void c()
+  {
+    ((akji)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(this.jdField_a_of_type_Akqd);
+    bilg.a().a();
+    batw localbatw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localbatw != null)
+    {
+      localbatw.b(this.jdField_a_of_type_Akqf);
+      this.jdField_a_of_type_Akqf = null;
+      this.jdField_c_of_type_Boolean = false;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = null;
+    }
+  }
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void c(String paramString, int paramInt)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[exitRoom] uin:" + paramString + ",from:" + paramInt + ",mCurrentUin:" + this.jdField_e_of_type_JavaLangString + ",mCurrentRoomId:" + this.jdField_f_of_type_JavaLangString);
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) || (!paramString.equals(this.jdField_e_of_type_JavaLangString)));
+      if (paramInt != 318) {
+        break;
+      }
+      paramInt = i;
+      if (this.jdField_c_of_type_JavaLangRefWeakReference != null)
+      {
+        paramInt = i;
+        if (this.jdField_c_of_type_JavaLangRefWeakReference.get() != null) {
+          paramInt = 1;
+        }
+      }
+    } while ((paramInt != 0) && (this.jdField_e_of_type_JavaLangString.equals(((agjp)this.jdField_c_of_type_JavaLangRefWeakReference.get()).a())));
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    return;
+    if (akro.a(BaseApplicationImpl.getContext()))
+    {
+      paramString = new akqc(this);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("key_game_friUin", this.jdField_e_of_type_JavaLangString);
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_check_game_running", localBundle, paramString);
+      return;
+    }
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[exitRoom] game is not exist. exit room");
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onInitFailed");
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((akqe)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(-1);
+    }
+  }
+  
+  public boolean c()
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null)
+    {
+      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[startRecord] stop record");
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a();
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public boolean d()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameTemp_CmGameAudioManager", 0, "[stopUserRecord] stop record:");
+        }
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+        return true;
+      }
       return false;
     }
-    return true;
   }
   
-  public boolean a(String paramString, int paramInt, byte[] paramArrayOfByte, FMTransC2CMsgInfo paramFMTransC2CMsgInfo)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = awyn.a;
-    awyn.a = i + 1;
-    long l = i;
-    paramFMTransC2CMsgInfo.queueSeq = l;
-    a(true, true, true, l, new akqc(this, paramString, paramFMTransC2CMsgInfo, paramInt, paramArrayOfByte));
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong, int paramInt, byte[] paramArrayOfByte)
-  {
-    int i = awyn.a;
-    awyn.a = i + 1;
-    long l = i;
-    a(true, true, true, l, new akqd(this, paramString, paramLong, Math.abs(new Random().nextInt()), l, paramInt, paramArrayOfByte));
-    return true;
-  }
-  
-  public void b(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    switch (paramInt)
+    switch (paramMessage.what)
     {
     default: 
-      return;
+      return false;
+    case 1: 
+      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[handleMessage] exitRoom,roomId:" + this.jdField_f_of_type_JavaLangString);
+      bilg.a().a(false);
+      bilg.a().b(false);
+      bilg.a().a(this.jdField_f_of_type_JavaLangString);
+      return false;
     }
-    a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    Object localObject = paramToServiceMsg.getServiceCmd();
-    long l1 = paramToServiceMsg.extraData.getLong("msgSeq");
-    String str = paramToServiceMsg.extraData.getString("uin");
-    long l2 = paramToServiceMsg.extraData.getLong("timeOut");
-    int i = paramToServiceMsg.extraData.getInt("transC2CCmd");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><E><---handleSendTransMessageError: ---cmd:" + (String)localObject + ",sendC2CMessage error : peerUin:" + str + ",msgSeq:" + l1 + ",transc2ccmd:" + i);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l1);
-    if (localObject != null)
+    paramMessage = paramMessage.getData();
+    String str1 = paramMessage.getString("uin");
+    String str2 = paramMessage.getString("roomId");
+    int i = paramMessage.getInt("from");
+    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[handleMessage] enterRoom,uin:" + str1 + ",roomId:" + str2 + ",from:" + i);
+    this.g = str1;
+    this.h = str2;
+    this.jdField_a_of_type_Int = i;
+    bilg.a().a(this.jdField_f_of_type_JavaLangString);
+    if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)))
     {
-      if (paramFromServiceMsg.getResultCode() != 2901) {
-        break label187;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><R><---handleSendTransMessageError, msf said:RESNDMSG");
-      }
-      paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
-      localObject.getClass();
-      if (!paramFromServiceMsg.a((SendMessageHandler)localObject, "msf")) {
-        break label187;
-      }
+      bilg.a().a(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), jdField_b_of_type_JavaLangString, str2, true, true);
+      return false;
     }
-    label187:
-    do
-    {
-      do
-      {
-        return;
-      } while ((480000L != l2) && (!((SendMessageHandler)localObject).a()));
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l1);
-      if (133 == i)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, paramToServiceMsg.extraData.getLong("sessionid"), false);
-        return;
-      }
-    } while (135 != i);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(str, paramToServiceMsg.extraData.getLong("sessionid"), false);
-  }
-  
-  public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    Object localObject = paramToServiceMsg.getServiceCmd();
-    long l1 = paramToServiceMsg.extraData.getLong("uniseq");
-    long l2 = paramToServiceMsg.extraData.getLong("queueSeq");
-    long l3 = paramToServiceMsg.extraData.getLong("msgSeq");
-    String str = paramToServiceMsg.extraData.getString("uin");
-    long l4 = paramToServiceMsg.extraData.getLong("timeOut");
-    int i = paramToServiceMsg.extraData.getInt("transC2CCmd");
-    int j = paramToServiceMsg.extraData.getInt("busiType");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><E><---handleSendTransMessageExError: ---cmd:" + (String)localObject + ",sendC2CMessage error : peerUin:" + str + ",uniseq:" + l1 + ",msgSeq:" + l3 + ",transc2ccmd:" + i);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l2);
-    if (localObject != null)
-    {
-      if (paramFromServiceMsg.getResultCode() != 2901) {
-        break label236;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><R><---handleSendTransMessageExError, msf said:RESNDMSG");
-      }
-      MessageHandler localMessageHandler = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
-      localObject.getClass();
-      if (!localMessageHandler.a((SendMessageHandler)localObject, "msf")) {
-        break label236;
-      }
-    }
-    label236:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-            } while ((480000L != l4) && (!((SendMessageHandler)localObject).a()));
-            this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l2);
-            if (529 != i) {
-              break;
-            }
-            switch (j)
-            {
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : should not come here for the moment, busiType" + j);
-          return;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(str, paramToServiceMsg.extraData.getLong("sessionid"), false);
-          return;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramToServiceMsg, paramFromServiceMsg, paramToServiceMsg.extraData.getLong("sessionid"));
-        } while (!QLog.isColorLevel());
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : send offline file  fail");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : send file receipt fail");
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExError : qlink send file state fail");
+    QLog.e("CmGameTemp_CmGameAudioManager", 0, "[handleMessage] appid or key is null!enter room failed");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,19 @@
-import android.os.AsyncTask;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-final class eq
-  implements aptw
+class eq
+  implements View.OnLongClickListener
 {
-  eq(AsyncTask paramAsyncTask, int paramInt, aptw paramaptw) {}
+  eq(en paramen) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    if (this.jdField_a_of_type_Aptw != null) {
-      this.jdField_a_of_type_Aptw.a();
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aptw != null) {
-      this.jdField_a_of_type_Aptw.b();
-    }
+    return this.a.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     eq
  * JD-Core Version:    0.7.0.1
  */

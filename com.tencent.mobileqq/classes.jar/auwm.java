@@ -1,95 +1,75 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
+import java.util.List;
 
 public class auwm
+  extends BaseAdapter
 {
-  public static auwm a;
-  public SparseArray<auwn> a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private auwp jdField_a_of_type_Auwp;
+  private List<InterestTagInfo> jdField_a_of_type_JavaUtilList;
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public auwm(Context paramContext, int paramInt, List<InterestTagInfo> paramList, auwp paramauwp)
   {
-    if (jdField_a_of_type_Auwm == null) {
-      return a(auwp.a(paramQQAppInterface.getApp()) + "xydata.json");
-    }
-    return true;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Auwp = paramauwp;
   }
   
-  public static boolean a(String paramString)
+  public InterestTagInfo a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("VipWZRYTemplateConfig", 2, "configPath = " + paramString);
-      }
-      return false;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt)) {
+      return null;
     }
-    Object localObject = new File(paramString);
-    try
-    {
-      localObject = bbdx.b((File)localObject);
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        QLog.e("VipWZRYTemplateConfig", 1, paramString + " content is empty.");
-        return false;
-      }
+    return (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<InterestTagInfo> paramList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {
+      notifyDataSetChanged();
     }
-    catch (Exception paramString)
-    {
-      QLog.e("VipWZRYTemplateConfig", 1, paramString.getMessage());
-      return false;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    paramString = new auwm();
-    localObject = new JSONObject((String)localObject).optJSONArray("cardWZResourceGrade");
-    int i;
-    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      paramString.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-      i = 0;
+      paramView = new InterestTagItemView(this.jdField_a_of_type_AndroidContentContext);
+      paramView.a(this.jdField_a_of_type_Int);
+      paramView.setCallback(this.jdField_a_of_type_Auwp);
     }
     for (;;)
     {
-      if (i < ((JSONArray)localObject).length())
-      {
-        JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
-        if (localJSONObject != null)
-        {
-          auwn localauwn = new auwn();
-          localauwn.jdField_a_of_type_Int = localJSONObject.optInt("wz_id");
-          localauwn.jdField_a_of_type_JavaLangString = localJSONObject.optString("wz_name");
-          localauwn.jdField_b_of_type_JavaLangString = localJSONObject.optString("wz_format");
-          localauwn.jdField_b_of_type_Int = localJSONObject.optInt("position_type", 1);
-          if (localJSONObject.has("wz_icon"))
-          {
-            auwo localauwo = new auwo();
-            localJSONObject = localJSONObject.getJSONObject("wz_icon");
-            localauwo.jdField_a_of_type_JavaLangString = localJSONObject.optString("src");
-            localauwo.jdField_a_of_type_Int = localJSONObject.optInt("size");
-            localauwo.jdField_b_of_type_JavaLangString = localJSONObject.optString("md5");
-            localauwo.jdField_b_of_type_Int = localJSONObject.optInt("width");
-            localauwo.jdField_c_of_type_Int = localJSONObject.optInt("height");
-            localauwo.jdField_c_of_type_JavaLangString = localJSONObject.optString("mainColor");
-            localauwn.jdField_a_of_type_Auwo = localauwo;
-          }
-          paramString.jdField_a_of_type_AndroidUtilSparseArray.put(localauwn.jdField_a_of_type_Int, localauwn);
-        }
-      }
-      else
-      {
-        jdField_a_of_type_Auwm = paramString;
-        return true;
-      }
-      i += 1;
+      paramView.a(a(paramInt));
+      return paramView;
+      paramView = (InterestTagItemView)paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auwm
  * JD-Core Version:    0.7.0.1
  */

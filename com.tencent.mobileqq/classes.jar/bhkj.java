@@ -1,159 +1,44 @@
-import android.os.Binder;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.PluginRecord;
-import java.lang.ref.WeakReference;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class bhkj
-  extends bhkl
+  extends Handler
 {
-  private static bhkj jdField_a_of_type_Bhkj;
-  private static String jdField_a_of_type_JavaLangString = "QZoneRemotePluginHandler";
-  private bhii jdField_a_of_type_Bhii;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public static bhkj a()
+  public bhkj(QSecFramework paramQSecFramework, Looper paramLooper)
   {
-    if (jdField_a_of_type_Bhkj == null) {}
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
     try
     {
-      if (jdField_a_of_type_Bhkj == null) {
-        jdField_a_of_type_Bhkj = new bhkj();
-      }
-      return jdField_a_of_type_Bhkj;
-    }
-    finally {}
-  }
-  
-  private void b()
-  {
-    Object localObject = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      localObject = localQQAppInterface;
-      if (localQQAppInterface != null)
+      if ((paramMessage.what == 1) && (!TextUtils.isEmpty((CharSequence)paramMessage.obj)))
       {
-        this.jdField_a_of_type_Bhii = ((bhii)localQQAppInterface.getManager(175));
-        localObject = localQQAppInterface;
+        long l = Long.parseLong((String)paramMessage.obj);
+        if (l != 0L)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
+          }
+          QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
+        }
       }
-    }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "appInterface:" + localObject + ",pluginManger=" + this.jdField_a_of_type_Bhii);
-  }
-  
-  public Binder a()
-  {
-    return this;
-  }
-  
-  @Nullable
-  public QQAppInterface a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return null;
-    }
-    return (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public PluginRecord a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "queryPlugin:" + paramString);
-    }
-    b();
-    if (this.jdField_a_of_type_Bhii == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_Bhii.a(paramString);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "triggerQQDownloadPtuFilter");
-    }
-    b();
-    if (this.jdField_a_of_type_Bhii == null) {
       return;
     }
-    this.jdField_a_of_type_Bhii.a();
-  }
-  
-  public void a(bhip parambhip, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "installPituSo");
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
     }
-    b();
-    if (this.jdField_a_of_type_Bhii == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bhii.a(parambhip, paramInt);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  public boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "isReady");
-    }
-    b();
-    if (this.jdField_a_of_type_Bhii == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_Bhii.a();
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "isPluginInstalled:" + paramString);
-    }
-    b();
-    if (this.jdField_a_of_type_Bhii != null) {
-      return this.jdField_a_of_type_Bhii.a(paramString);
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, bhis parambhis, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "installPlugin:" + paramString);
-    }
-    b();
-    if (this.jdField_a_of_type_Bhii == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_Bhii.a(paramString, parambhis, paramInt);
-  }
-  
-  public boolean b(String paramString)
-  {
-    b();
-    if (this.jdField_a_of_type_Bhii == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_Bhii.b(paramString);
-  }
-  
-  public boolean c(String paramString)
-  {
-    b();
-    if (this.jdField_a_of_type_Bhii == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_Bhii.c(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhkj
  * JD-Core Version:    0.7.0.1
  */

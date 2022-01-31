@@ -3,15 +3,15 @@ package dov.com.qq.im.capture.part;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjck;
-import bjex;
+import blnu;
+import blqi;
 import java.util.ArrayList;
 import org.json.JSONArray;
 
 public class QIMTemplateItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMTemplateItem> CREATOR = new bjex();
+  public static final Parcelable.Creator<QIMTemplateItem> CREATOR = new blqi();
   public int a;
   public String a;
   public ArrayList<String> a;
@@ -63,7 +63,7 @@ public class QIMTemplateItem
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_a_of_type_Boolean = bool1;
-      this.j = (bjck.jdField_b_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + ".mp4");
+      this.j = (blnu.jdField_b_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + ".mp4");
       return;
       bool1 = false;
       break;
@@ -146,7 +146,7 @@ public class QIMTemplateItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.part.QIMTemplateItem
  * JD-Core Version:    0.7.0.1
  */

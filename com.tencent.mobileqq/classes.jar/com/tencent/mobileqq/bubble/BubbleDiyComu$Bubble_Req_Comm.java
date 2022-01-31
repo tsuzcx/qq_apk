@@ -19,7 +19,7 @@ public final class BubbleDiyComu$Bubble_Req_Comm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Req_Comm
  * JD-Core Version:    0.7.0.1
  */

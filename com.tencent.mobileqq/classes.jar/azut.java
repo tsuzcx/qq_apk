@@ -1,70 +1,57 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import java.io.File;
 
-public class azut
+class azut
+  implements View.OnClickListener
 {
-  public TroopFileTransferManager.Item a;
-  public String a;
-  xav jdField_a_of_type_Xav = new azuv(this);
-  xbb jdField_a_of_type_Xbb = new azuu(this);
-  public long d;
+  azut(azus paramazus) {}
   
-  protected azut(long paramLong, TroopFileTransferManager.Item paramItem)
+  public void onClick(View paramView)
   {
-    this.d = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
-    {
-      this.jdField_a_of_type_JavaLangString = paramItem;
+    if (TextUtils.isEmpty(this.a.W)) {
       return;
     }
-  }
-  
-  public static azut a(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    if (paramLong == 0L)
+    for (;;)
     {
-      azst.a("TroopFileUploadFeedsSender", azst.a, "getSender. troopuin=0");
-      return null;
+      String str;
+      try
+      {
+        str = bara.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.V);
+        if (TextUtils.isEmpty(str))
+        {
+          this.a.a();
+          this.a.a(this.a.W, paramView);
+          azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.W, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.U, this.a.V);
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      if (new File(str).exists())
+      {
+        if (this.a.jdField_a_of_type_Boolean) {
+          this.a.d();
+        } else {
+          this.a.c();
+        }
+      }
+      else
+      {
+        this.a.a();
+        this.a.a(this.a.W, paramView);
+      }
     }
-    if (paramItem == null)
-    {
-      azst.a("TroopFileUploadFeedsSender", azst.a, "getSender. item=null");
-      return null;
-    }
-    if (paramItem.Id == null) {
-      azst.a("TroopFileUploadFeedsSender", azst.a, "getSender. item.id=null");
-    }
-    return new azut(paramLong, paramItem);
-  }
-  
-  public long a()
-  {
-    return this.d;
-  }
-  
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
-  
-  public void j()
-  {
-    QQAppInterface localQQAppInterface = azsr.a();
-    if (localQQAppInterface == null)
-    {
-      azst.a("TroopFileUploadFeedsSender", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2 app=null");
-      return;
-    }
-    azst.c("TroopFileUploadFeedsSender", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2");
-    xam.a(localQQAppInterface, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Xbb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azut
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhfw;
+import bjhh;
 
 public class WeishiPictureUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiPictureUrl> CREATOR = new bhfw();
+  public static final Parcelable.Creator<WeishiPictureUrl> CREATOR = new bjhh();
   public int a;
   public PictureUrl a;
   
@@ -39,7 +39,7 @@ public class WeishiPictureUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.WeishiPictureUrl
  * JD-Core Version:    0.7.0.1
  */

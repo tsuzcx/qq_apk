@@ -1,19 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class aomu
-  implements DialogInterface.OnClickListener
+public class aomu
 {
-  aomu(aoms paramaoms) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(aogf[] paramArrayOfaogf)
   {
-    aoms.a(this.a).dismiss();
+    QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[handleReadInJoyResetAllConfig] " + paramArrayOfaogf);
+    if (paramArrayOfaogf != null) {
+      try
+      {
+        if (paramArrayOfaogf.length > 0)
+        {
+          new otw();
+          int j = paramArrayOfaogf.length;
+          int i = 0;
+          while (i < j)
+          {
+            boolean bool = TextUtils.isEmpty(paramArrayOfaogf[i].a);
+            if (bool) {}
+            i += 1;
+          }
+        }
+        return;
+      }
+      catch (Exception paramArrayOfaogf)
+      {
+        QLog.e("ReadinjoyResetFunctionConfProcessor", 1, "[handleReadInJoyResetAllConfig] ", paramArrayOfaogf);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomu
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class EngineVersion
   
   public EngineVersion(String paramString)
   {
-    this.mMajor = "8.3.0.4480";
+    this.mMajor = "8.3.3.4515";
     this.mMinor = paramString;
   }
   
@@ -142,7 +142,7 @@ public class EngineVersion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.EngineVersion
  * JD-Core Version:    0.7.0.1
  */

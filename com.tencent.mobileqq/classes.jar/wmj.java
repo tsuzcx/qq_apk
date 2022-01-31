@@ -1,63 +1,63 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
-import android.os.Bundle;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
 public class wmj
-  implements xgu<CertifiedAccountWrite.StDoLikeRsp>
+  implements Comparator<StoryVideoItem>
 {
-  public wmj(CommentBottomBar paramCommentBottomBar) {}
+  private boolean a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
+  public wmj(boolean paramBoolean)
   {
-    CommentBottomBar.a(this.a, true);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null)) {
-      bcql.a(this.a.getContext(), 1, paramString, 0).a();
-    }
-    label291:
-    label295:
-    for (;;)
-    {
-      return;
-      if (paramStDoLikeRsp.like.status.get() == 1)
-      {
-        i = CommentBottomBar.a(this.a).likeInfo.count.get() + 1;
-        if (CommentBottomBar.a(this.a) != null)
-        {
-          CommentBottomBar.a(this.a).likeInfo.status.set(paramStDoLikeRsp.like.status.get());
-          CommentBottomBar.a(this.a).likeInfo.count.set(i);
-        }
-        wpt.a().a(new PraisedUpdateEvents(CommentBottomBar.a(this.a).id.get(), paramStDoLikeRsp.like.status.get(), i));
-        if (BaseApplicationImpl.sProcessId != 1) {
-          break label291;
-        }
+    this.a = paramBoolean;
+  }
+  
+  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
+  {
+    int j = 1;
+    int i = -1;
+    if (paramStoryVideoItem1.isUploadFail() == paramStoryVideoItem2.isUploadFail()) {
+      if (paramStoryVideoItem1.mCreateTime == paramStoryVideoItem2.mCreateTime) {
+        i = 0;
       }
-      for (int i = 1;; i = 0)
+    }
+    do
+    {
+      do
       {
-        if (i != 0) {
-          break label295;
+        return i;
+        if (paramStoryVideoItem1.mCreateTime <= paramStoryVideoItem2.mCreateTime) {
+          break;
         }
-        paramString = new Bundle();
-        paramString.putString("feed_id", CommentBottomBar.a(this.a).id.get());
-        paramString.putInt("feed_like_status", paramStDoLikeRsp.like.status.get());
-        paramString.putInt("feed_like_num", paramStDoLikeRsp.like.count.get());
-        QIPCClientHelper.getInstance().callServer(wpt.a, wpt.b, paramString, null);
-        return;
-        i = CommentBottomBar.a(this.a).likeInfo.count.get() - 1;
+        i = j;
+      } while (this.a);
+      return -1;
+      if (this.a) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
+      if (!paramStoryVideoItem1.isUploadFail()) {
         break;
       }
+      i = j;
+    } while (this.a);
+    return -1;
+    if (paramStoryVideoItem2.isUploadFail())
+    {
+      if (this.a) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmj
  * JD-Core Version:    0.7.0.1
  */

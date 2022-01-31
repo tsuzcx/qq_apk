@@ -1,45 +1,37 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
 public class pio
-  implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public pio(Context paramContext, ArticleInfo paramArticleInfo)
+  public pio(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onClick(ViewBase paramViewBase)
+  public pio(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    paramViewBase = bhvy.a("kd_topic_recommend_card_jump_url");
-    if ((paramViewBase instanceof String)) {}
-    for (paramViewBase = (String)paramViewBase;; paramViewBase = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnJumpWrapperClickListener", 2, new Object[] { "jumpUrl = ", paramViewBase });
-      }
-      if (!TextUtils.isEmpty(paramViewBase))
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-          ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-        }
-        onh.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-      }
-      return;
-    }
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = 2;
+    this.d = paramString1;
+    this.c = paramString2;
+    this.b = paramString3;
+    this.e = paramString4;
+  }
+  
+  public String toString()
+  {
+    return "type = " + this.jdField_a_of_type_Int + " index = " + this.jdField_a_of_type_JavaLangString + " city = " + this.b + " province = " + this.c + " country = " + this.d + " citycode = " + this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pio
  * JD-Core Version:    0.7.0.1
  */

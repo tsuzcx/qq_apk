@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import java.util.Iterator;
 import java.util.List;
-import ucq;
+import vri;
 
 class StoryPlayerGroupHolder$1
   implements Runnable
@@ -14,13 +14,13 @@ class StoryPlayerGroupHolder$1
     StoryPlayerGroupHolder.a(this.this$0).a(this.this$0.a.c());
     Iterator localIterator = this.this$0.a.a().iterator();
     while (localIterator.hasNext()) {
-      ((ucq)localIterator.next()).a(this.this$0.a.c());
+      ((vri)localIterator.next()).a(this.this$0.a.c());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder.1
  * JD-Core Version:    0.7.0.1
  */

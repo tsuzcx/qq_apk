@@ -1,38 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.os.Handler;
+import com.tencent.biz.qqcircle.report.QCircleLpReportDc05502.1;
+import feedcloud.FeedCloudCommon.Entry;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
 public class tyh
-  extends SimpleObserver<upp>
 {
-  public tyh(tyc paramtyc) {}
-  
-  public void a(upp paramupp)
+  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, FeedCloudMeta.StFeed paramStFeed, List<FeedCloudCommon.Entry> paramList)
   {
-    super.onNext(paramupp);
-    tyc.a(this.a, paramupp, new ErrorMessage(), true);
+    int i = tym.a().a();
+    int j = tym.a().b();
+    typ.a().a().post(new QCircleLpReportDc05502.1(paramString1, paramInt3, paramString2, paramString3, i, j, paramString4, paramString5, paramString6, paramString7, paramList, paramStFeed, paramInt1, paramInt2));
   }
   
-  public void onCancel()
+  private static int b()
   {
-    super.onCancel();
-    ved.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    if (((ErrorMessage)paramError).errorCode == 2223)
-    {
-      tyc.a(this.a, tyc.a(this.a), new ErrorMessage(), false);
-      return;
-    }
-    tyc.a(this.a, tyc.a(this.a), (ErrorMessage)paramError, false);
+    return 5502;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tyh
  * JD-Core Version:    0.7.0.1
  */

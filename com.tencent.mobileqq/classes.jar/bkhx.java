@@ -1,137 +1,32 @@
-import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
+import java.io.File;
 
-public abstract class bkhx
-  extends Drawable
+final class bkhx
+  implements bkgx
 {
-  public static final int g = a(1.0F, BaseApplicationImpl.getContext().getResources());
-  protected ValueAnimator a;
-  protected Context a;
-  protected bkhl a;
-  private bkia a;
-  protected String a;
-  protected ArrayList<Integer> a;
-  protected Bitmap b;
-  protected int f;
+  bkhx(String paramString1, String paramString2, bkhz parambkhz, Context paramContext, File paramFile1, File paramFile2) {}
   
-  public bkhx(Context paramContext, String paramString)
+  public void a(String paramString, long paramLong, float paramFloat)
   {
-    this.jdField_a_of_type_Bkhl = new bkhl();
-    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static final int a(float paramFloat, Resources paramResources)
-  {
-    if (paramFloat == 0.0F) {
-      return 0;
-    }
-    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
-  }
-  
-  public int a()
-  {
-    return this.f;
-  }
-  
-  protected int a(ArrayList<Integer> paramArrayList, int paramInt1, int paramInt2)
-  {
-    int i = paramInt2;
-    if (paramArrayList != null)
-    {
-      i = paramInt2;
-      if (paramArrayList.size() > paramInt1)
-      {
-        paramArrayList = (Integer)paramArrayList.get(paramInt1);
-        i = paramInt2;
-        if (paramArrayList != null) {
-          i = paramArrayList.intValue();
-        }
-      }
-    }
-    return i;
-  }
-  
-  public Bitmap a()
-  {
-    return a(this.jdField_a_of_type_Bkhl.a());
-  }
-  
-  public Bitmap a(long paramLong)
-  {
-    Bitmap localBitmap = b();
-    Canvas localCanvas = new Canvas(localBitmap);
-    ArrayList localArrayList = this.jdField_a_of_type_Bkhl.a(paramLong);
-    if (localArrayList != null) {
-      a(localCanvas, localArrayList);
-    }
-    return localBitmap;
-  }
-  
-  protected abstract void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList);
-  
-  public abstract String[] a(String paramString);
-  
-  protected Bitmap b()
-  {
-    if (this.b == null) {
-      this.b = Bitmap.createBitmap(getIntrinsicWidth(), getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-    }
-    for (;;)
-    {
-      return this.b;
-      new Canvas(this.b).drawColor(0, PorterDuff.Mode.CLEAR);
+    if (this.jdField_a_of_type_Bkhz != null) {
+      this.jdField_a_of_type_Bkhz.a(paramLong, paramFloat);
     }
   }
   
-  protected abstract void b();
-  
-  public String c()
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void c()
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_Bkhl, new Object[] { this.jdField_a_of_type_Bkhl.b(), this.jdField_a_of_type_Bkhl.a() });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bkhy(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bkhz(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.jdField_a_of_type_Bkhl.a());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      a(paramCanvas, this.jdField_a_of_type_JavaUtilArrayList);
+    if (paramBoolean) {
+      bkgl.a().a(bkhw.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new bkhy(this));
     }
+    while (this.jdField_a_of_type_Bkhz == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bkhz.a(paramString3);
   }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkhx
  * JD-Core Version:    0.7.0.1
  */

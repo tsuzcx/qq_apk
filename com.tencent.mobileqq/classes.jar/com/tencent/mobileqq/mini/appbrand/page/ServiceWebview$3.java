@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
+import android.text.TextUtils;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime.OnLoadServiceWebvieJsListener;
 import com.tencent.mobileqq.mini.utils.FileUtils;
@@ -10,29 +11,33 @@ import java.io.IOException;
 class ServiceWebview$3
   implements ValueCallback
 {
-  ServiceWebview$3(ServiceWebview paramServiceWebview, ApkgInfo paramApkgInfo, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener) {}
+  ServiceWebview$3(ServiceWebview paramServiceWebview, String paramString, ApkgInfo paramApkgInfo, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener) {}
   
   public void onReceiveValue(Object paramObject)
   {
-    paramObject = null;
+    String str = this.val$appServiceStr;
+    paramObject = str;
     try
     {
-      String str = FileUtils.readFileToString(new File(this.val$apkgInfo.getAppServiceJsPath()));
-      paramObject = str;
+      if (TextUtils.isEmpty(str)) {
+        paramObject = FileUtils.readFileToString(new File(this.val$apkgInfo.getAppServiceJsPath()));
+      }
+      this.this$0.evaluteJs(paramObject, new ServiceWebview.3.1(this));
+      return;
     }
-    catch (IOException localIOException)
+    catch (IOException paramObject)
     {
       for (;;)
       {
-        localIOException.printStackTrace();
+        paramObject.printStackTrace();
+        paramObject = str;
       }
     }
-    this.this$0.evaluteJs(paramObject, new ServiceWebview.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.ServiceWebview.3
  * JD-Core Version:    0.7.0.1
  */

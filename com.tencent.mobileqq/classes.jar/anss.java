@@ -1,32 +1,50 @@
-import mqq.os.MqqHandler;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
 
-class anss
-  implements apeb
+public class anss
+  extends QQLruCache<Integer, ansf>
 {
-  public MqqHandler a;
-  
-  public anss(MqqHandler paramMqqHandler)
+  public anss(BubbleManager paramBubbleManager, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a = paramMqqHandler;
+    super(paramInt1, paramInt2, paramInt3);
   }
   
-  public void a(int paramInt, String paramString)
+  public void a()
   {
-    if (this.a != null) {
-      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
+    Map localMap = snapshot();
+    if (localMap != null)
+    {
+      Iterator localIterator = localMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((ansf)localIterator.next()).a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleManager", 2, "BubbleInfoLruCache cleared, size = " + localMap.size());
+      }
     }
   }
   
-  public void a(Object paramObject)
+  protected void a(boolean paramBoolean, Integer paramInteger, ansf paramansf1, ansf paramansf2)
   {
-    if (this.a != null) {
-      this.a.sendEmptyMessageDelayed(100, 1500L);
+    super.entryRemoved(paramBoolean, paramInteger, paramansf1, paramansf2);
+    if (QLog.isColorLevel()) {
+      QLog.d("BubbleManager", 2, "entryRemoved key=" + paramInteger);
     }
+    paramansf1.a();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return get(Integer.valueOf(paramInt)) != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anss
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,77 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class mjh
-  implements DialogInterface.OnClickListener
+  extends lhe
 {
-  public mjh(VideoControlUI paramVideoControlUI, long paramLong) {}
+  public mjh(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public void onClick(DialogInterface arg1, int paramInt)
+  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {}
-    long l;
-    do
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Mji != null)) {
+      this.a.jdField_a_of_type_Mji.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt, boolean paramBoolean)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Mji != null)) {
+      this.a.jdField_a_of_type_Mji.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean);
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-      do
-      {
-        return;
-        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.m) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f != null)) {
-          axqy.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, "");
-        }
-        muc.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
-      } while ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 2) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 1));
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
-      l = Long.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).longValue();
-      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a(l, 1);
-    } while (paramInt == -1);
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c.remove(paramInt);
-    synchronized (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d)
-    {
-      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().b(l, 1);
-      if (paramInt != -1)
-      {
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d.remove(paramInt);
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c();
+      if (this.a.jdField_a_of_type_Mji != null) {
+        this.a.jdField_a_of_type_Mji.notifyDataSetChanged();
       }
-      return;
+      this.a.c();
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      if (this.a.jdField_a_of_type_Mji != null) {
+        this.a.jdField_a_of_type_Mji.notifyDataSetChanged();
+      }
+      this.a.c();
+    }
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Mji != null)) {
+      this.a.jdField_a_of_type_Mji.notifyDataSetChanged();
+    }
+  }
+  
+  protected void c(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiVideoMembersListviewAvtivity", 2, "onCloseMemberListActivity --> RelationId = " + paramLong + "mRelationUin = " + this.a.jdField_a_of_type_Long);
+    }
+    if (paramLong == this.a.jdField_a_of_type_Long) {
+      MultiVideoMembersListviewAvtivity.a(this.a);
+    }
+    super.c(paramLong);
+  }
+  
+  protected void c(long paramLong1, long paramLong2)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Mji != null)) {
+      this.a.jdField_a_of_type_Mji.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjh
  * JD-Core Version:    0.7.0.1
  */

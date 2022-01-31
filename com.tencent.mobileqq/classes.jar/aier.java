@@ -1,45 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-
 public class aier
-  extends BroadcastReceiver
 {
-  public aier(SelectMemberActivity paramSelectMemberActivity) {}
+  public int a;
+  private String a;
+  private String b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aier(String paramString1, String paramString2)
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.app.getApp().getPackageName()))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
-      }
-    }
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
-      i = paramIntent.getIntExtra("stopReason", 0);
-      j = paramIntent.getIntExtra("stopReason3rd", -1);
-    } while (((i != 0) && (j != 1)) || ((this.a.d != 11) && (this.a.d != 36)));
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "ACTION_STOP_VIDEO_CHAT");
-    }
-    this.a.finish();
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aier
  * JD-Core Version:    0.7.0.1
  */

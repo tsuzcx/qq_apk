@@ -8,24 +8,24 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import yah;
-import ydu;
-import yer;
+import zpa;
+import zsn;
+import ztk;
 
 public class DevLittleVideoItemBuilder$7
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$7(ydu paramydu, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$7(zsn paramzsn, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    yah localyah = (yah)this.this$0.a.a(51);
-    yer localyer = (yer)this.this$0.a.a(49);
+    zpa localzpa = (zpa)this.this$0.a.a(51);
+    ztk localztk = (ztk)this.this$0.a.a(49);
     for (;;)
     {
-      synchronized (localyer.a)
+      synchronized (localztk.a)
       {
-        Iterator localIterator = localyer.a.entrySet().iterator();
+        Iterator localIterator = localztk.a.entrySet().iterator();
         if (localIterator.hasNext())
         {
           if (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.a.uniseq) {
@@ -34,8 +34,8 @@ public class DevLittleVideoItemBuilder$7
           i = 1;
           if ((i == 0) && (!TextUtils.isEmpty(this.a.thumbFileKey)))
           {
-            long l = localyah.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
-            localyer.a.put(Long.valueOf(l), this.a);
+            long l = localzpa.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
+            localztk.a.put(Long.valueOf(l), this.a);
           }
           return;
         }
@@ -46,7 +46,7 @@ public class DevLittleVideoItemBuilder$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevLittleVideoItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

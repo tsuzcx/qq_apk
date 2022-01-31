@@ -1,45 +1,260 @@
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import android.provider.Settings.Secure;
+import android.text.TextUtils;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import java.util.Locale;
+import java.util.TimeZone;
+import org.json.JSONObject;
 
-final class bfin
-  implements bfjc
+public class bfin
 {
-  private long a;
+  protected static String a;
+  protected static String b;
+  protected static String c;
+  protected static String d;
+  protected static String e;
   
-  public bfin(long paramLong)
+  public static String a()
   {
-    this.a = paramLong;
+    if (TextUtils.isEmpty(a)) {
+      a = "";
+    }
+    try
+    {
+      Object localObject = bexd.a().a();
+      if (localObject != null)
+      {
+        a = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("wifi_mac_address", "");
+        if (TextUtils.isEmpty(a))
+        {
+          a = bhoi.c("7ef1aa");
+          if (a != null)
+          {
+            localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
+            ((SharedPreferences.Editor)localObject).putString("wifi_mac_address", a);
+            ((SharedPreferences.Editor)localObject).commit();
+          }
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    return a;
   }
   
-  public void a(int paramInt, bfjb parambfjb, bfjd parambfjd)
+  public static String b()
   {
-    long l1 = 0L;
-    if (this.a != 0L)
+    return Locale.getDefault().getLanguage();
+  }
+  
+  public static String c()
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(c))
     {
-      if ((paramInt != 1) && (paramInt != 2) && (paramInt != 4)) {
-        break label46;
+      c = "";
+      localObject = bexd.a().a();
+      if (localObject != null)
+      {
+        c = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("imei", "");
+        if (!TextUtils.isEmpty(c)) {}
       }
-      QSecFramework.a(5L, this.a, paramInt, 0L, null, null, null, null);
     }
-    label46:
-    while (paramInt != 3) {
-      return;
+    try
+    {
+      c = bhoi.a("52b7f2");
+      label61:
+      if (c != null)
+      {
+        localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
+        ((SharedPreferences.Editor)localObject).putString("imei", c);
+        ((SharedPreferences.Editor)localObject).commit();
+      }
+      return c;
     }
-    int i = parambfjd.jdField_a_of_type_Int;
-    int j = parambfjd.b;
-    int k = parambfjd.c;
-    int m = parambfjd.d;
-    parambfjb = parambfjd.jdField_a_of_type_ArrayOfByte;
-    long l2 = this.a;
-    long l3 = paramInt;
-    if (parambfjd.jdField_a_of_type_Boolean) {
-      l1 = 1L;
+    catch (Exception localException)
+    {
+      break label61;
     }
-    QSecFramework.a(5L, l2, l3, l1, null, null, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), parambfjb }, null);
+  }
+  
+  public static String d()
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(d))
+    {
+      d = "";
+      localObject = bexd.a().a();
+      if (localObject != null)
+      {
+        d = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("imsi", "");
+        if (!TextUtils.isEmpty(d)) {}
+      }
+    }
+    try
+    {
+      d = bhoi.b("ea6862");
+      label61:
+      if (d != null)
+      {
+        localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
+        ((SharedPreferences.Editor)localObject).putString("imsi", d);
+        ((SharedPreferences.Editor)localObject).commit();
+      }
+      return d;
+    }
+    catch (Exception localException)
+    {
+      break label61;
+    }
+  }
+  
+  public static String e()
+  {
+    if (!TextUtils.isEmpty(b)) {
+      return b;
+    }
+    WindowManager localWindowManager = (WindowManager)bexd.a().a().getSystemService("window");
+    int i = localWindowManager.getDefaultDisplay().getWidth();
+    int j = localWindowManager.getDefaultDisplay().getHeight();
+    return i + "x" + j;
+  }
+  
+  public static String f()
+  {
+    if (!TextUtils.isEmpty(e)) {
+      return e;
+    }
+    Object localObject1 = bexd.a().a();
+    if (localObject1 == null) {
+      return "";
+    }
+    try
+    {
+      localObject1 = (LocationManager)((Context)localObject1).getSystemService("location");
+      Object localObject2 = new Criteria();
+      ((Criteria)localObject2).setCostAllowed(false);
+      ((Criteria)localObject2).setAccuracy(2);
+      localObject2 = ((LocationManager)localObject1).getBestProvider((Criteria)localObject2, true);
+      if (localObject2 != null)
+      {
+        localObject1 = ((LocationManager)localObject1).getLastKnownLocation((String)localObject2);
+        if (localObject1 == null) {
+          return "";
+        }
+        double d1 = ((Location)localObject1).getLatitude();
+        double d2 = ((Location)localObject1).getLongitude();
+        localObject1 = d1 + "*" + d2;
+        return localObject1;
+      }
+    }
+    catch (Exception localException)
+    {
+      bfhg.c("getLocation", "getLocation>>>", localException);
+    }
+    return "";
+  }
+  
+  public static String g()
+  {
+    return "";
+  }
+  
+  public static String h()
+  {
+    try
+    {
+      Context localContext = bexd.a().a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("imei=").append(c()).append('&');
+      localStringBuilder.append("model=").append(Build.MODEL).append('&');
+      localStringBuilder.append("os=").append(Build.VERSION.RELEASE).append('&');
+      localStringBuilder.append("apilevel=").append(Build.VERSION.SDK_INT).append('&');
+      String str = bfhb.b(localContext);
+      Object localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      localStringBuilder.append("network=").append((String)localObject).append('&');
+      localObject = localStringBuilder.append("sdcard=");
+      if (Environment.getExternalStorageState().equals("mounted")) {}
+      for (int i = 1;; i = 0)
+      {
+        ((StringBuilder)localObject).append(i).append('&');
+        localStringBuilder.append("display=").append(e()).append('&');
+        localStringBuilder.append("manu=").append(Build.MANUFACTURER).append("&");
+        localStringBuilder.append("wifi=").append(bfhb.e(localContext));
+        localObject = localStringBuilder.toString();
+        return localObject;
+      }
+      return null;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public static String i()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("qua", bexd.a().f());
+      localJSONObject.put("longitude", f());
+      localJSONObject.put("platform", bexd.a().g());
+      localJSONObject.put("uin", bexd.a().a());
+      localJSONObject.put("imei", c());
+      localJSONObject.put("imei", c());
+      localJSONObject.put("resolution", e());
+      localJSONObject.put("network", bfhb.a(bexd.a().a()));
+      localJSONObject.put("wifimac", a());
+      localJSONObject.put("mobile_pf", "1");
+      localJSONObject.put("os_ver", Build.VERSION.RELEASE);
+      localJSONObject.put("lang", b());
+      localJSONObject.put("device", Build.DEVICE);
+      localJSONObject.put("model_name", Build.MODEL);
+      localJSONObject.put("sdk_ver", "1.5");
+      localJSONObject.put("timezone", TimeZone.getDefault().getID());
+      localJSONObject.put("city", g());
+      localJSONObject.put("longitude", f());
+      localJSONObject.put("ret_code", "0");
+      localJSONObject.put("qua", bexd.a().f());
+      localJSONObject.put("qz_ver", bexd.a().c());
+      localJSONObject.put("imsi", d());
+      localJSONObject.put("androidID", Settings.Secure.getString(bexd.a().a().getContentResolver(), "android_id"));
+      localJSONObject.put("os_api_level", Build.VERSION.SDK_INT);
+      localJSONObject.put("sdkVersionCode", 1);
+      localJSONObject.put("QVersionCode", bexd.a().a());
+      localJSONObject.put("brand", GlobalUtil.getInstance().getBrand());
+      localJSONObject.put("manufacture", GlobalUtil.getInstance().getManufacture());
+      localJSONObject.put("product", GlobalUtil.getInstance().getProduct());
+      return localJSONObject.toString();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        bfhg.e("getMobileInfo", "gather mobile info exception.");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfin
  * JD-Core Version:    0.7.0.1
  */

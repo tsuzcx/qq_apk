@@ -2,17 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse;
 
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import java.util.Map;
 
 class ProteusParser$1
   implements ProteusParser.HasDynamicDataCallback
 {
-  ProteusParser$1(ProteusParser paramProteusParser, ViewBean paramViewBean, String paramString, Object paramObject) {}
+  ProteusParser$1(ProteusParser paramProteusParser, ViewBean paramViewBean, String paramString, Object paramObject, Map paramMap) {}
   
   public void onCallBack(boolean paramBoolean)
   {
     if (paramBoolean)
     {
       this.val$viewBean.valueBean.putAttributeDynamicValue(this.val$key, this.val$valueObj);
+      this.val$templateGlobalVar.putAll(this.this$0.getTemplateGlobalVarKey(this.val$valueObj));
       return;
     }
     this.val$viewBean.valueBean.putNomalValue(this.val$key, this.val$valueObj);
@@ -20,7 +22,7 @@ class ProteusParser$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParser.1
  * JD-Core Version:    0.7.0.1
  */

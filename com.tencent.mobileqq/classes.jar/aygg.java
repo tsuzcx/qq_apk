@@ -1,32 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class aygg
-  extends WebViewClient
+public class aygg
+  implements View.OnTouchListener
 {
-  aygg(ayge paramayge) {}
+  public aygg(FunctionSearchFragment paramFunctionSearchFragment) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageFinished = " + paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageStarted = " + paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return super.shouldOverrideUrlLoading(paramWebView, paramWebResourceRequest);
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aygg
  * JD-Core Version:    0.7.0.1
  */

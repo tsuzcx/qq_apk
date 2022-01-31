@@ -1,96 +1,46 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class pju
-  extends ViewBase
 {
-  private NativeAvatarView a;
-  
-  public pju(VafContext paramVafContext)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramVafContext);
-    this.a = new NativeAvatarView(paramVafContext.getContext());
-  }
-  
-  public void a(pau parampau)
-  {
-    this.a.setModel(parampau);
-  }
-  
-  public void a(pau parampau, boolean paramBoolean)
-  {
-    this.a.setModel(parampau, paramBoolean);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public boolean onClick()
-  {
-    super.onClick();
-    return true;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    String str;
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-    default: 
-      return super.setAttribute(paramInt, paramObject);
+      str = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_small_imge_url", str);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      pkm.a(paramBaseArticleInfo, localJSONObject1, true);
+      oee.b(paramBaseArticleInfo, localJSONObject1);
+      pkm.b(paramBaseArticleInfo, localJSONObject1);
+      pkm.e(paramBaseArticleInfo, localJSONObject1);
+      pkm.l(paramBaseArticleInfo, localJSONObject1);
+      pkm.g(paramBaseArticleInfo, localJSONObject1);
+      pkm.Z(paramBaseArticleInfo, localJSONObject1);
+      if (!noy.a(paramBaseArticleInfo)) {
+        break label125;
+      }
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_location_cell");
     }
-    if ((paramObject instanceof Long)) {
-      this.a.setUin(((Long)paramObject).longValue());
-    }
-    return true;
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    switch (paramInt)
+    for (;;)
     {
-    default: 
-      return super.setAttribute(paramInt, paramString);
+      localJSONObject1.put("id_small_cell_container", new JSONObject());
+      pkm.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      str = null;
+      break;
+      label125:
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_cell");
     }
-    try
-    {
-      this.a.setUin(Long.valueOf(paramString).longValue());
-      return true;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.e("AvatarView", 1, paramString, new Object[0]);
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pju
  * JD-Core Version:    0.7.0.1
  */

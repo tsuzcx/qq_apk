@@ -1,37 +1,35 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
-public class xmd
-  extends WebViewPlugin
+class xmd
+  extends JobSegment<Integer, wkm>
 {
-  public xmd()
+  private wkl a;
+  
+  public xmd(@NonNull wkl paramwkl)
   {
-    this.mPluginNameSpace = "qztodayinhistory";
+    this.a = paramwkl;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneTihSettingWebPlugin", 2, "handleJsRequest url: " + paramString1 + "pkgName:" + paramString2 + "method:" + paramString3);
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((wkm)localObject).a.size() > 0) || (((wkm)localObject).b))
+    {
+      wsv.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
     }
-    if (!paramString2.equals("qztodayinhistory")) {}
-    while (!paramString3.equals("settihnome")) {
-      return false;
-    }
-    paramJsBridgeListener = new Intent("aciton_switch_tih_setting");
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneTihSettingWebPlugin", 2, "actionString: " + paramJsBridgeListener.getAction());
-    }
-    BaseApplication.getContext().sendBroadcast(paramJsBridgeListener);
-    return true;
+    localObject = new vbw();
+    ((vbw)localObject).a = this.a.a();
+    ung.a().a((unk)localObject, new xme(this, paramJobContext, paramInteger));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmd
  * JD-Core Version:    0.7.0.1
  */

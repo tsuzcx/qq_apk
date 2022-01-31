@@ -1,193 +1,267 @@
 package c.t.m.g;
 
-import android.location.Location;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.location.LocationManager;
 import android.net.wifi.ScanResult;
+import android.net.wifi.WifiManager;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Message;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.json.JSONObject;
 
-public final class es
+final class es
+  extends BroadcastReceiver
 {
-  public static int a = 0;
-  public final eu b;
-  public final eq c;
-  public final er d;
+  static Handler e;
+  private static final Comparator<ScanResult> l = new es.2();
+  volatile boolean a;
+  final ea b;
+  boolean c;
+  volatile boolean d = false;
+  private final WifiManager f;
+  private long g;
+  private HashSet<String> h;
+  private List<ScanResult> i;
+  private final Runnable j;
+  private final Object k = new Object();
   
-  public es(eu parameu, eq parameq, er paramer)
+  public es(ea paramea)
   {
-    this.b = parameu;
-    this.c = parameq;
-    this.d = paramer;
+    this.b = paramea;
+    this.f = paramea.g;
+    this.h = new HashSet();
+    this.j = new es.1(this);
   }
   
-  private String a(int paramInt1, int paramInt2, String paramString, dx paramdx, boolean paramBoolean1, boolean paramBoolean2)
+  private void a(List<ScanResult> paramList)
   {
-    if (paramdx == null) {
-      return null;
+    if ((paramList == null) || (paramList.size() == 0)) {
+      d();
     }
     for (;;)
     {
+      paramList = new ey(paramList, this.g, this.f.getWifiState());
+      this.b.b(paramList);
+      return;
+      if (fq.a)
+      {
+        fq.a = false;
+        d();
+      }
+    }
+  }
+  
+  private void c()
+  {
+    Thread.currentThread().getName();
+    if (this.h == null) {
+      this.h = new HashSet();
+    }
+    ScanResult localScanResult;
+    if (this.h.size() == 0)
+    {
+      localIterator = this.i.iterator();
+      while (localIterator.hasNext())
+      {
+        localScanResult = (ScanResult)localIterator.next();
+        this.h.add(localScanResult.toString());
+      }
+      this.g = System.currentTimeMillis();
+      a(this.i);
+    }
+    int m;
+    do
+    {
+      return;
+      m = this.h.size();
+      if (m != this.i.size())
+      {
+        this.h.clear();
+        localIterator = this.i.iterator();
+        while (localIterator.hasNext())
+        {
+          localScanResult = (ScanResult)localIterator.next();
+          this.h.add(localScanResult.BSSID + localScanResult.level);
+        }
+        this.g = System.currentTimeMillis();
+        a(this.i);
+        return;
+      }
+      localIterator = this.i.iterator();
+      while (localIterator.hasNext())
+      {
+        localScanResult = (ScanResult)localIterator.next();
+        this.h.add(localScanResult.BSSID + localScanResult.level);
+      }
+    } while (m == this.h.size());
+    this.h.clear();
+    Iterator localIterator = this.i.iterator();
+    while (localIterator.hasNext())
+    {
+      localScanResult = (ScanResult)localIterator.next();
+      this.h.add(localScanResult.BSSID + localScanResult.level);
+    }
+    this.g = System.currentTimeMillis();
+    a(this.i);
+  }
+  
+  private void d()
+  {
+    m = 1;
+    n = this.f.getWifiState();
+    if (n == 3) {
+      a(0L);
+    }
+    for (;;)
+    {
+      n = m;
       try
       {
-        Object localObject4;
-        if (this.c == null)
+        if (Build.VERSION.SDK_INT >= 23)
         {
-          bool = true;
-          localObject1 = this.b;
-          if (localObject1 == null)
+          n = m;
+          if (!this.b.h.isProviderEnabled("network"))
           {
-            localObject1 = null;
-            break label1050;
-            localObject4 = fm.a(this.c, bool);
-            localObject2 = this.d;
-            if (localObject2 != null) {
-              continue;
+            boolean bool = this.b.h.isProviderEnabled("gps");
+            n = m;
+            if (!bool) {
+              n = 5;
             }
-            localObject2 = "{}";
-            dr localdr = paramdx.b;
-            localObject3 = new HashMap();
-            ((HashMap)localObject3).put("imei", localdr.a());
-            ((HashMap)localObject3).put("imsi", localdr.b());
-            ((HashMap)localObject3).put("phonenum", co.d(localdr.d));
-            ((HashMap)localObject3).put("qq", co.d(localdr.f));
-            ((HashMap)localObject3).put("mac", localdr.c().toLowerCase(Locale.ENGLISH));
-            localObject5 = new JSONObject((Map)localObject3).toString();
-            String str2 = localdr.f();
-            fj.a();
-            int k = fj.a(paramdx.a);
-            String str1 = fn.c(paramdx);
-            localObject3 = localdr.j;
-            paramdx = (dx)localObject3;
-            if (localObject3 != null) {
-              paramdx = ((String)localObject3).replace("\"", "");
-            }
-            localObject3 = paramdx;
-            if (paramdx != null) {
-              localObject3 = paramdx.replace("|", "");
-            }
-            paramdx = (String)localObject3 + "_" + localdr.h;
-            int j = 203;
-            i = j;
-            if (paramBoolean2)
-            {
-              localObject3 = localdr.a();
-              i = j;
-              if (localObject3 != null) {
-                i = Math.abs(((String)localObject3).hashCode()) % 1000 + 1001;
-              }
-            }
-            localObject3 = "{\"version\":\"" + localdr.d() + "\",\"address\":" + paramInt1;
-            paramdx = (String)localObject3 + ",\"source\":" + i + ",\"access_token\":\"" + str2 + "\",\"app_name\":\"" + paramString + "\",\"app_label\":\"" + paramdx + "\",\"bearing\":1";
-            paramString = paramdx;
-            if (paramInt2 >= 0) {
-              paramString = paramdx + ",\"control\":" + paramInt2;
-            }
-            if ((!paramBoolean1) || (paramBoolean2)) {
-              continue;
-            }
-            paramString = paramString + ",\"detectgps\":1";
-            paramString = paramString + ",\"pstat\":" + k;
-            paramString = paramString + ",\"wlan\":" + str1;
-            return paramString + ",\"attribute\":" + (String)localObject5 + ",\"location\":" + (String)localObject2 + ",\"cells\":" + (String)localObject4 + ",\"wifis\":" + (String)localObject1 + "}";
           }
-        }
-        else
-        {
-          if (a == this.c.e) {
-            break label1063;
-          }
-          bool = true;
-          a = this.c.e;
-          continue;
-        }
-        localObject1 = Collections.unmodifiableList(((eu)localObject1).b);
-        break label1050;
-        Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[");
-        if (((List)localObject1).size() <= 0)
-        {
-          ((StringBuilder)localObject2).append("]");
-          localObject1 = ((StringBuilder)localObject2).toString();
-          continue;
-        }
-        Object localObject3 = ((List)localObject1).iterator();
-        int i = 0;
-        if (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (ScanResult)((Iterator)localObject3).next();
-          ((List)localObject1).size();
-          if (i > 0) {
-            ((StringBuilder)localObject2).append(",");
-          }
-          ((StringBuilder)localObject2).append("{\"mac\":\"").append(((ScanResult)localObject4).BSSID).append("\",");
-          ((StringBuilder)localObject2).append("\"rssi\":").append(((ScanResult)localObject4).level).append("}");
-          i += 1;
-          continue;
-        }
-        ((StringBuilder)localObject2).append("]");
-        localObject1 = ((StringBuilder)localObject2).toString();
-        continue;
-        localObject3 = ((er)localObject2).a;
-        Object localObject5 = new StringBuilder();
-        double d1 = fm.a(((Location)localObject3).getLatitude(), 6);
-        double d2 = fm.a(((Location)localObject3).getLongitude(), 6);
-        double d3 = fm.a(((Location)localObject3).getAltitude(), 1);
-        double d4 = fm.a(((Location)localObject3).getAccuracy(), 1);
-        double d5 = fm.a(((Location)localObject3).getBearing(), 1);
-        double d6 = fm.a(((Location)localObject3).getSpeed(), 1);
-        ((StringBuilder)localObject5).append("{");
-        ((StringBuilder)localObject5).append("\"latitude\":");
-        ((StringBuilder)localObject5).append(d1);
-        ((StringBuilder)localObject5).append(",\"longitude\":");
-        ((StringBuilder)localObject5).append(d2);
-        ((StringBuilder)localObject5).append(",\"additional\":");
-        ((StringBuilder)localObject5).append("\"" + d3 + "," + d4 + "," + d5 + "," + d6 + "," + ((er)localObject2).b + "\"");
-        ((StringBuilder)localObject5).append("}");
-        localObject2 = ((StringBuilder)localObject5).toString();
-        continue;
-        paramString = paramString + ",\"detectgps\":0";
-        continue;
-        if (localObject1 != null) {
-          continue;
         }
       }
-      catch (Exception paramString)
+      catch (Exception localException)
       {
-        return null;
+        for (;;)
+        {
+          Message localMessage;
+          n = m;
+        }
       }
-      label1050:
-      Object localObject1 = "[]";
-      continue;
-      label1063:
-      boolean bool = false;
+      localMessage = new Message();
+      localMessage.what = 12999;
+      localMessage.arg1 = 12001;
+      localMessage.arg2 = n;
+      this.b.b(localMessage);
+      return;
+      if (n == 1)
+      {
+        m = 0;
+        if (this.i != null) {
+          this.i.clear();
+        }
+        this.b.b(ey.a);
+      }
+      else
+      {
+        m = -1;
+      }
     }
   }
   
-  public final String a(int paramInt, String paramString, dx paramdx, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public final void a()
   {
-    if (paramBoolean2) {
-      return a(paramInt, 1, paramString, paramdx, paramBoolean1, paramBoolean3);
+    synchronized (this.k)
+    {
+      if (!this.a) {
+        return;
+      }
+      this.a = false;
+      e.removeCallbacksAndMessages(null);
     }
-    return a(paramInt, 0, paramString, paramdx, paramBoolean1, paramBoolean3);
+    try
+    {
+      this.b.a.unregisterReceiver(this);
+      new StringBuilder("unregister system wifi provider,thread name:").append(Thread.currentThread().getName());
+      label59:
+      this.g = 0L;
+      this.h = null;
+      if (this.i != null) {
+        this.i.clear();
+      }
+      if (this.h != null) {
+        this.h.clear();
+      }
+      return;
+      localObject2 = finally;
+      throw localObject2;
+    }
+    catch (Exception localException)
+    {
+      break label59;
+    }
   }
   
-  public final boolean a()
+  final void a(long paramLong)
   {
-    return this.c != null;
+    Handler localHandler = e;
+    Runnable localRunnable = this.j;
+    localHandler.removeCallbacks(localRunnable);
+    localHandler.postDelayed(localRunnable, paramLong);
   }
   
-  public final boolean b()
+  final boolean b()
   {
-    return this.b != null;
+    if ((!fq.b(this.b)) || (this.c)) {
+      return false;
+    }
+    return fq.a(this.f);
+  }
+  
+  public final void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent == null) {
+      return;
+    }
+    try
+    {
+      synchronized (this.k)
+      {
+        paramContext = paramIntent.getAction();
+        if ("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) {
+          d();
+        }
+        if (("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) || ("android.net.wifi.SCAN_RESULTS".equals(paramContext)))
+        {
+          paramContext = fq.b(this.f);
+          if ((paramContext == null) || (paramContext.size() <= 0)) {
+            break label132;
+          }
+          this.i = new ArrayList(paramContext);
+          et.a(this.i);
+          if ((this.i != null) && (this.i.size() > 0))
+          {
+            Collections.sort(this.i, l);
+            c();
+          }
+        }
+        return;
+      }
+      paramIntent = new StringBuilder("ScanResult list is ");
+    }
+    catch (Exception paramContext)
+    {
+      return;
+    }
+    label132:
+    if (paramContext == null) {}
+    for (paramContext = "null";; paramContext = "size=0")
+    {
+      paramIntent.append(paramContext);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.es
  * JD-Core Version:    0.7.0.1
  */

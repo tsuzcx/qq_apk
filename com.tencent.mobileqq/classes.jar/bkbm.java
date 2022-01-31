@@ -1,218 +1,70 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.os.Looper;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import org.json.JSONObject;
+import SWEET_NEW_BASE.sweet_rsp_comm;
+import SWEET_NEW_PAIR.sweet_pair_check_rsp;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
 
-public abstract class bkbm
-  implements bkbq
+public class bkbm
+  extends bkbo
 {
-  private static String a;
-  protected float a;
-  public Context a;
-  public Rect a;
-  protected bkbn a;
-  protected DoodleView a;
-  protected boolean c;
-  protected Paint h;
-  protected Paint i;
-  protected int p;
-  protected int q;
-  protected int r;
-  protected int s;
-  protected int t;
-  
-  static
+  public QQAppInterface a()
   {
-    jdField_a_of_type_JavaLangString = "BaseLayer";
-  }
-  
-  public bkbm(DoodleView paramDoodleView)
-  {
-    if (paramDoodleView == null) {
-      throw new IllegalStateException("DoodleView can not be null.");
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
-    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView = paramDoodleView;
-    c();
+    return null;
   }
   
-  private void c()
+  public QzoneExternalRequest a(Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.h = new Paint();
-    this.h.setAntiAlias(true);
-    this.i = new Paint();
-    this.i.setAntiAlias(true);
-    this.i.setStyle(Paint.Style.STROKE);
-    this.i.setStrokeWidth(5.0F);
-    this.i.setColor(-16776961);
-    this.c = false;
+    return new bkbn(this, paramIntent);
   }
   
-  public float a()
+  public void a(long paramLong)
   {
-    return this.jdField_a_of_type_Float;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("currentUin", paramLong);
+    a(localIntent);
   }
   
-  public Bundle a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("BaseLayer:TopLevelWeight", this.t);
-    return localBundle;
-  }
-  
-  public abstract String a();
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      throw new IllegalArgumentException("illegal width or height, width=" + paramInt1 + ",height=" + paramInt2);
-    }
-    ved.b("BaseLayer", "layer size,width=" + paramInt1 + ",height=" + paramInt2);
-    this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
-    this.jdField_a_of_type_AndroidGraphicsRect.right = paramInt1;
-    this.jdField_a_of_type_AndroidGraphicsRect.top = 0;
-    this.jdField_a_of_type_AndroidGraphicsRect.bottom = paramInt2;
-    this.r = this.jdField_a_of_type_AndroidGraphicsRect.left;
-    this.s = this.jdField_a_of_type_AndroidGraphicsRect.right;
-    this.p = this.jdField_a_of_type_AndroidGraphicsRect.top;
-    this.q = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-  }
-  
-  protected abstract void a(Canvas paramCanvas);
-  
-  public void a(Canvas paramCanvas, float paramFloat)
-  {
-    b(paramCanvas);
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat, boolean paramBoolean)
-  {
-    a(paramCanvas, paramFloat);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    this.t = paramBundle.getInt("BaseLayer:TopLevelWeight");
-  }
-  
-  public void a(bkbn parambkbn)
-  {
-    this.jdField_a_of_type_Bkbn = parambkbn;
-  }
-  
-  public abstract boolean a(long paramLong);
-  
-  protected abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public boolean a(JSONObject paramJSONObject)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    ved.b("BaseLayer", getClass().getName() + " onDestroy.");
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect.width();
-  }
-  
-  public int d()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect.height();
-  }
-  
-  public void d(int paramInt)
-  {
-    this.t = (paramInt + 1);
-  }
-  
-  public final void d(Canvas paramCanvas)
-  {
-    a(paramCanvas);
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setActiveLayer(this);
-    }
-    for (;;)
+    boolean bool = false;
+    paramIntent = a();
+    if (paramIntent != null)
     {
-      k();
-      return;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.f();
+      paramIntent = (alrm)paramIntent.a(172);
+      if (paramIntent != null) {
+        if (paramFromServiceMsg == null) {
+          break label90;
+        }
+      }
     }
-  }
-  
-  public boolean d()
-  {
-    return this.c;
-  }
-  
-  public final boolean d(MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_Bkbn != null) {
-      this.jdField_a_of_type_Bkbn.a(this, paramMotionEvent);
-    }
-    k();
-    return a(paramMotionEvent);
-  }
-  
-  public int i_()
-  {
-    return this.t;
-  }
-  
-  public void k()
-  {
-    if (Looper.myLooper() == Looper.getMainLooper())
+    label90:
+    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
+      paramFromServiceMsg = (sweet_pair_check_rsp)bjqk.a(paramFromServiceMsg.getWupBuffer(), "getPairState");
+      if (paramFromServiceMsg == null) {
+        break;
+      }
+      sweet_rsp_comm localsweet_rsp_comm = paramFromServiceMsg.rsp_comm;
+      if (localsweet_rsp_comm == null) {
+        break;
+      }
+      if (localsweet_rsp_comm.retcode == 0) {
+        bool = true;
+      }
+      paramIntent.a(bool, paramFromServiceMsg);
       return;
     }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.postInvalidate();
-  }
-  
-  public void l()
-  {
-    ved.b("BaseLayer", getClass().getName() + " onPause.");
-    this.c = false;
-  }
-  
-  public void m()
-  {
-    ved.b("BaseLayer", getClass().getName() + " onResume.");
-    this.c = true;
-  }
-  
-  public void n()
-  {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setTopLevelLayer(this);
+    paramIntent.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkbm
  * JD-Core Version:    0.7.0.1
  */

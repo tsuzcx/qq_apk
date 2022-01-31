@@ -1,100 +1,82 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.MD5;
-import java.util.Map;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.10.1;
+import java.util.List;
 
 public class avaj
+  implements AbsListView.OnScrollListener
 {
-  public int a;
-  public String a;
-  public Map<Integer, String> a;
-  public int b;
-  public int c;
-  public int d;
+  public avaj(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public avaj(int paramInt1, int paramInt2, Map<Integer, String> paramMap)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.d = paramInt2;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    if (paramInt1 == 0)
     {
-      paramMap = new StringBuilder();
-      paramMap.append(paramInt1);
-      paramInt1 = 0;
-      while (paramInt1 <= 4)
+      paramAbsListView = ShortVideoCommentsView.a(this.a).getChildAt(0);
+      if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0))
       {
-        String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
-        if (str != null) {
-          paramMap.append(str);
-        }
-        paramInt1 += 1;
+        ShortVideoCommentsView.a(this.a, true);
+        return;
       }
-      this.jdField_a_of_type_JavaLangString = paramMap.toString();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = MD5.toMD5(this.jdField_a_of_type_JavaLangString);
-      }
+      ShortVideoCommentsView.a(this.a, false);
+      return;
     }
+    ShortVideoCommentsView.a(this.a, false);
   }
   
-  private String b(int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    Object localObject = null;
-    int i = 1;
-    while ((TextUtils.isEmpty((CharSequence)localObject)) && (i < 5))
+    if (paramInt == 0)
     {
-      localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf((paramInt + i) % 5));
-      i += 1;
+      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.a.a.size() > 0) && (!ShortVideoCommentsView.b(this.a)) && (!ShortVideoCommentsView.c(this.a))) {
+        ShortVideoCommentsView.c(this.a);
+      }
+      if (ShortVideoCommentsView.a(this.a) == null) {
+        break label269;
+      }
+      paramAbsListView = ShortVideoCommentsView.a(this.a).jdField_a_of_type_JavaLangString;
+      if (ShortVideoCommentsView.a(this.a) != null) {
+        long l = ShortVideoCommentsView.a(this.a).jdField_a_of_type_Long;
+      }
+      paramInt = ShortVideoCommentsView.a(this.a);
+      if ((paramInt < ShortVideoCommentsView.b(this.a)) || (paramInt < mww.a(this.a.getContext(), 40.0F))) {
+        break label272;
+      }
+      if (!ShortVideoCommentsView.d(this.a))
+      {
+        ShortVideoCommentsView.a(this.a, true);
+        if (ShortVideoCommentsView.a(this.a).j != 4) {}
+      }
+      this.a.f();
     }
-    return localObject;
-  }
-  
-  public String a()
-  {
-    Object localObject = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    for (;;)
     {
-      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1));
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = b(1);
+      ShortVideoCommentsView.a(this.a, paramInt);
+      if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0) && (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() == 0) && (!ShortVideoCommentsView.e(this.a)))
+      {
+        ShortVideoCommentsView.b(this.a, true);
+        this.a.postDelayed(new ShortVideoCommentsView.10.1(this), 100L);
+      }
+      return;
+      label269:
+      break;
+      label272:
+      if (!ShortVideoCommentsView.e(this.a))
+      {
+        this.a.j();
+        ShortVideoCommentsView.a(this.a, 2);
       }
     }
-    return localObject;
-  }
-  
-  public String a(int paramInt)
-  {
-    Object localObject = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      if (paramInt > 100) {
-        break label51;
-      }
-    }
-    label51:
-    for (paramInt = 3;; paramInt = 2)
-    {
-      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = b(paramInt);
-      }
-      return localObject;
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool = false;
-    if ((paramObject instanceof avaj)) {
-      bool = bbbr.a(((avaj)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avaj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import auhk;
-import auhr;
+import avyo;
+import avyu;
 
 public class AccountPanel$15$1
   implements Runnable
 {
-  public AccountPanel$15$1(auhr paramauhr) {}
+  public AccountPanel$15$1(avyu paramavyu) {}
   
   public void run()
   {
-    auhk.a(this.a.a);
+    avyo.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.15.1
  * JD-Core Version:    0.7.0.1
  */

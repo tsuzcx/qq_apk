@@ -1,0 +1,20 @@
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
+
+public class xyl
+  implements xxy
+{
+  public xyl(RecommendBannerViewNew paramRecommendBannerViewNew) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean) {
+      RecommendBannerViewNew.a(this.a, paramInt);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     xyl
+ * JD-Core Version:    0.7.0.1
+ */

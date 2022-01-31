@@ -1,31 +1,28 @@
-import android.view.View;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
-public class wws
-  implements bfph
+class wws
+  implements bhpo
 {
-  public wws(FollowTextView paramFollowTextView, bfpc parambfpc) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void OnClick(View paramView, int paramInt)
+  wws(wwr paramwwr) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
-      return;
-    }
-    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Wwr.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Wwr.a.size() - 1)) {
+      this.jdField_a_of_type_Wwr.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wws
  * JD-Core Version:    0.7.0.1
  */

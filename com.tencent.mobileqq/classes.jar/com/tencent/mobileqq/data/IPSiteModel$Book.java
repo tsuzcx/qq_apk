@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anik;
+import aozr;
 
 public class IPSiteModel$Book
   implements Parcelable
 {
-  public static final Parcelable.Creator<Book> CREATOR = new anik();
+  public static final Parcelable.Creator<Book> CREATOR = new aozr();
   public String authorName;
   public String cover;
   public String desc;
@@ -53,7 +53,7 @@ public class IPSiteModel$Book
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Book
  * JD-Core Version:    0.7.0.1
  */

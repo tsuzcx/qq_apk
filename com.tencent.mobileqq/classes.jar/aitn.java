@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
-class aitn
-  implements Comparator<ApolloActionData>
+public class aitn
+  implements View.OnClickListener
 {
-  aitn(aitl paramaitl) {}
+  public aitn(LingHbFragment paramLingHbFragment) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void onClick(View paramView)
   {
-    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
+    if ((paramView instanceof TextView))
+    {
+      paramView = ((TextView)paramView).getText().toString();
+      QLog.i("LingHbFragment", 2, "choice: " + paramView);
+      this.a.c.setText(paramView);
+      this.a.a.post(new LingHbFragment.2.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitn
  * JD-Core Version:    0.7.0.1
  */

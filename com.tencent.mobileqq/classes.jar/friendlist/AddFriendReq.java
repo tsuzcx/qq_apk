@@ -158,7 +158,7 @@ public final class AddFriendReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.AddFriendReq
  * JD-Core Version:    0.7.0.1
  */

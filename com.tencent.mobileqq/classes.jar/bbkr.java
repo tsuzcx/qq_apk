@@ -1,37 +1,18 @@
-import android.content.Context;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo;
 
-public class bbkr
+public final class bbkr
+  implements Parcelable.Creator<InviteToGroupInfo.UinInfo>
 {
-  public static CharSequence a(Context paramContext, athv paramathv, String paramString)
+  public InviteToGroupInfo.UinInfo a(Parcel paramParcel)
   {
-    if ((paramathv == null) || (TextUtils.isEmpty(paramathv.a()))) {
-      return paramString;
-    }
-    String str = "#" + paramathv.a() + "#";
-    paramString = new SpannableString(str + paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "topicName is " + str);
-    }
-    paramString.setSpan(new bbks(paramContext, paramathv), 0, str.length(), 33);
-    return paramString;
+    return new InviteToGroupInfo.UinInfo(paramParcel);
   }
   
-  public static CharSequence b(Context paramContext, athv paramathv, String paramString)
+  public InviteToGroupInfo.UinInfo[] a(int paramInt)
   {
-    if ((paramathv == null) || (TextUtils.isEmpty(paramathv.a()))) {
-      return paramString;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString).append("\n").append("#").append(paramathv.a()).append("#");
-    SpannableString localSpannableString = new SpannableString(localStringBuilder.toString());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "topicAndDescWithLine is " + localStringBuilder);
-    }
-    localSpannableString.setSpan(new bbkt(paramContext, paramathv), paramString.length(), localStringBuilder.length(), 33);
-    return localSpannableString;
+    return new InviteToGroupInfo.UinInfo[paramInt];
   }
 }
 

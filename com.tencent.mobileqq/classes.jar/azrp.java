@@ -1,34 +1,43 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.LinearLayout.LayoutParams;
 
-class azrp
-  implements View.OnTouchListener
+public class azrp
+  extends Animation
 {
-  azrp(azrn paramazrn, String paramString, azrw paramazrw) {}
+  int jdField_a_of_type_Int;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public azrp(ViewGroup paramViewGroup)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      paramView = new Intent(this.jdField_a_of_type_Azrn.a.getContext(), QQBrowserActivity.class);
-      paramMotionEvent = bbqd.a("troopEnterEffect");
-      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Azrn.b);
-      this.jdField_a_of_type_Azrn.a.getContext().startActivity(paramView);
-      azry.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Azrn.b });
-      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Azrw.a), "");
-    }
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
+    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
+    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramViewGroup.height = 0;
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+  }
+  
+  public boolean willChangeBounds()
+  {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azrp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,31 @@
-public abstract interface axgq
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.TabBarView;
+
+public class axgq
+  implements ViewPager.OnPageChangeListener
 {
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  public axgq(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public abstract void b(int paramInt, String paramString, boolean paramBoolean);
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
+    if (paramInt == 0)
+    {
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
+      return;
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axgq
  * JD-Core Version:    0.7.0.1
  */

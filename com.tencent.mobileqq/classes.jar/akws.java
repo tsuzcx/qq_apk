@@ -1,18 +1,23 @@
-public abstract class akws
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+
+public final class akws
+  implements Parcelable.Creator<SpriteTaskParam>
 {
-  public abstract int a();
+  public SpriteTaskParam a(Parcel paramParcel)
+  {
+    return new SpriteTaskParam(paramParcel);
+  }
   
-  public abstract void a(Object paramObject);
-  
-  public abstract void a(boolean paramBoolean, Object paramObject);
-  
-  public abstract void b(Object paramObject);
-  
-  public abstract void b(boolean paramBoolean, Object paramObject);
+  public SpriteTaskParam[] a(int paramInt)
+  {
+    return new SpriteTaskParam[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akws
  * JD-Core Version:    0.7.0.1
  */

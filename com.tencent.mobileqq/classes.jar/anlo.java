@@ -1,31 +1,35 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
-class anlo
-  implements View.OnClickListener
+public class anlo
+  implements CompoundButton.OnCheckedChangeListener
 {
-  anlo(anlm paramanlm, ReportData paramReportData, WindowManager paramWindowManager) {}
+  public anlo(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = (ClipboardManager)this.jdField_a_of_type_Anlm.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard");
-    if (paramView != null)
+    if (paramBoolean)
     {
-      paramView.setPrimaryClip(ClipData.newPlainText(null, this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportData.toString()));
-      bcql.a(this.jdField_a_of_type_Anlm.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getContext(), ajya.a(2131702774), 0).a();
+      AboutActivity.a(5);
+      if (!this.a.b().equals("close")) {
+        this.a.b();
+      }
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
+      ArkAppCenter.a(true);
+      return;
     }
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Anlm.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
+    AboutActivity.a(0);
+    this.a.c();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
+    ArkAppCenter.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlo
  * JD-Core Version:    0.7.0.1
  */

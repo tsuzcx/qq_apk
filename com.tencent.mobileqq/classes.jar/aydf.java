@@ -1,30 +1,45 @@
-public class aydf
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener2;
+import com.tencent.image.URLImageView;
+import java.lang.ref.SoftReference;
+
+final class aydf
+  implements URLDrawable.URLDrawableListener2
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  aydf(SoftReference paramSoftReference, URLDrawable paramURLDrawable, aydh paramaydh) {}
   
-  public boolean equals(Object paramObject)
-  {
-    return this.b.equals(((aydf)paramObject).b);
-  }
+  public void onFileDownloaded(URLDrawable paramURLDrawable) {}
   
-  public int hashCode()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return super.hashCode();
+    if (this.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramURLDrawable = (URLImageView)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+      } while (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof GifDrawable));
+      AbstractGifImage localAbstractGifImage = ((GifDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getImage();
+      localAbstractGifImage.reset();
+      localAbstractGifImage.setStrongGIFPlayOnceListener(new aydg(this, localAbstractGifImage));
+      paramURLDrawable.setVisibility(0);
+      paramURLDrawable.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    } while (this.jdField_a_of_type_Aydh == null);
+    this.jdField_a_of_type_Aydh.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aydf
  * JD-Core Version:    0.7.0.1
  */

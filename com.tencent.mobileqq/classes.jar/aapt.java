@@ -1,34 +1,35 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.ad.tangram.canvas.views.form.AdFormError;
+import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
-public final class aapt
-  implements DialogInterface.OnClickListener
+public class aapt
+  implements View.OnFocusChangeListener
 {
-  public aapt(QQAppInterface paramQQAppInterface, aaqb paramaaqb, long paramLong, Context paramContext, aaqa paramaaqa) {}
+  public aapt(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    atbe localatbe = (atbe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(66);
-    if (localatbe != null) {
-      localatbe.a((byte)0);
+    if ((this.a.a() == null) || (!this.a.a().isValid()))
+    {
+      aanp.b("GdtFormItemTextBoxView", "onFocusChange error");
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true);
-    if (this.jdField_a_of_type_Aaqb.a) {
-      axqy.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    if (paramBoolean)
+    {
+      paramView = new AdFormError(2, -1, this.a.a().title.text);
+      paramView.index = GdtFormItemTextBoxView.a(this.a);
+      GdtFormItemTextBoxView.a(this.a, paramView);
+      return;
     }
-    this.jdField_a_of_type_Aaqb.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aaqa, this.jdField_a_of_type_Aaqb);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    GdtFormItemTextBoxView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapt
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import baxi;
+import bcwc;
 
 class QIMEffectCameraCaptureUnit$6
   implements Runnable
@@ -27,7 +27,7 @@ class QIMEffectCameraCaptureUnit$6
     if (!TextUtils.isEmpty(this.b)) {}
     try
     {
-      Bitmap localBitmap = baxi.a(this.b);
+      Bitmap localBitmap = bcwc.a(this.b);
       QIMEffectCameraCaptureUnit.a(this.this$0).setImageBitmap(localBitmap);
       QIMEffectCameraCaptureUnit.a(this.this$0).setVisibility(0);
       return;
@@ -43,7 +43,7 @@ class QIMEffectCameraCaptureUnit$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMEffectCameraCaptureUnit.6
  * JD-Core Version:    0.7.0.1
  */

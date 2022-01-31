@@ -17,7 +17,6 @@ public class TPProxyUtils
   
   public static TPDownloadParam convertProxyDownloadParams(String paramString, TPDownloadParamData paramTPDownloadParamData)
   {
-    int i = 0;
     if (paramTPDownloadParamData != null)
     {
       Object localObject = new ArrayList();
@@ -32,6 +31,7 @@ public class TPProxyUtils
           if ((paramString == null) || (paramString.length <= 0)) {
             break;
           }
+          int i = 0;
           while (i < paramString.length)
           {
             if (!TextUtils.isEmpty(paramString[i])) {
@@ -41,9 +41,7 @@ public class TPProxyUtils
           }
           ((ArrayList)localObject).add(paramTPDownloadParamData.url);
         }
-      }
-      for (paramString = (String)localObject;; paramString = paramTPDownloadParamData.getUrlCdnidList())
-      {
+        paramString = (String)localObject;
         localObject = new HashMap();
         if (!TPCommonUtils.isEmpty(paramTPDownloadParamData.getUrlHostList())) {
           ((Map)localObject).put("dl_param_url_host", paramTPDownloadParamData.getUrlHostList());
@@ -66,11 +64,10 @@ public class TPProxyUtils
         if (!TextUtils.isEmpty(paramTPDownloadParamData.getVid())) {
           ((Map)localObject).put("dl_param_vid", paramTPDownloadParamData.getVid());
         }
-        if (!TextUtils.isEmpty(paramTPDownloadParamData.getPlayDefinition())) {
+        if (!TextUtils.isEmpty(paramTPDownloadParamData.getPlayDefinition()))
+        {
           ((Map)localObject).put("dl_param_play_definition", paramTPDownloadParamData.getPlayDefinition());
-        }
-        if (paramTPDownloadParamData.getCurrentFormat() != null) {
-          ((Map)localObject).put("dl_param_current_format", paramTPDownloadParamData.getCurrentFormat());
+          ((Map)localObject).put("dl_param_current_format", paramTPDownloadParamData.getPlayDefinition());
         }
         if (paramTPDownloadParamData.getCurrentFormatID() > 0) {
           ((Map)localObject).put("dl_param_current_formatid", Integer.valueOf(paramTPDownloadParamData.getCurrentFormatID()));
@@ -127,7 +124,19 @@ public class TPProxyUtils
         if (!TPCommonUtils.isEmpty(paramTPDownloadParamData.getExtInfoMap())) {
           ((Map)localObject).putAll(paramTPDownloadParamData.getExtInfoMap());
         }
+        if (!paramTPDownloadParamData.getSelfAdaption()) {
+          break label827;
+        }
+        ((Map)localObject).put("dl_param_adaptive_type", Integer.valueOf(3));
+      }
+      for (;;)
+      {
+        ((Map)localObject).put("dl_param_format_nodes", paramTPDownloadParamData.getDefInfoList());
         return new TPDownloadParam(paramString, TPProxyEnumUtils.dlType2Inner(paramTPDownloadParamData.getDlType()), (Map)localObject);
+        paramString = paramTPDownloadParamData.getUrlCdnidList();
+        break;
+        label827:
+        ((Map)localObject).put("dl_param_adaptive_type", Integer.valueOf(0));
       }
     }
     paramTPDownloadParamData = new ArrayList(1);
@@ -142,7 +151,7 @@ public class TPProxyUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPProxyUtils
  * JD-Core Version:    0.7.0.1
  */

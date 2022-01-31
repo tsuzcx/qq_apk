@@ -1,73 +1,103 @@
 import android.content.Context;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.lang.ref.WeakReference;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class upz
-  implements upy
+public abstract class upz<M, VH extends upy<M>>
+  extends RecyclerView.Adapter<upy<M>>
 {
-  private int jdField_a_of_type_Int;
-  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  protected Context a;
+  protected View a;
+  protected upw a;
+  protected upx a;
+  protected View b;
   
-  public upz(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean)
+  public upz(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    int i = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      i = 1;
+    }
+    int j = i;
+    if (this.b != null) {
+      j = i + 1;
+    }
+    return j;
   }
   
-  public void a(String paramString, int paramInt)
+  public final upy a(ViewGroup paramViewGroup, int paramInt)
   {
-    ved.a("Q.qqstory.detail.SpannableStringUtils", "on nick click. unionId = %s.", paramString);
-    if ((paramInt == 1002) || (paramInt == 1003)) {}
-    Object localObject;
-    do
-    {
-      return;
-      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        sxm.a((Context)localObject, 12, paramString);
-      }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localObject = "clk_reply_nick";
-      paramString = "2";
-      if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem instanceof VideoListFeedItem)) {
-        break label157;
-      }
-      paramString = (VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-      paramInt = vei.a(paramString);
-      if (!paramString.getOwner().isMe()) {
-        break label151;
-      }
-      paramString = "1";
+    if (paramInt == 1024) {
+      paramViewGroup = new upy(this.jdField_a_of_type_AndroidViewView);
     }
     for (;;)
     {
-      vei.a("home_page", (String)localObject, paramInt, 0, new String[] { paramString, vei.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return;
-      localObject = "clk_like_name";
-      break;
-      label151:
-      paramString = "2";
-      continue;
-      label157:
-      paramInt = 4;
+      if (this.jdField_a_of_type_Upw != null) {
+        paramViewGroup.itemView.setOnClickListener(new uqa(this, paramViewGroup));
+      }
+      if (this.jdField_a_of_type_Upx != null) {
+        paramViewGroup.itemView.setOnLongClickListener(new uqb(this, paramViewGroup));
+      }
+      return paramViewGroup;
+      if (paramInt == 1025) {
+        paramViewGroup = new upy(this.b);
+      } else {
+        paramViewGroup = b(paramViewGroup, paramInt);
+      }
     }
   }
+  
+  public void a(View paramView)
+  {
+    if (paramView == null)
+    {
+      Log.w("HeaderAndFooterAdapter", "add the header view is null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    notifyDataSetChanged();
+  }
+  
+  public void a(upw paramupw)
+  {
+    this.jdField_a_of_type_Upw = paramupw;
+  }
+  
+  public void a(upx paramupx)
+  {
+    this.jdField_a_of_type_Upx = paramupx;
+  }
+  
+  public final void a(upy paramupy, int paramInt)
+  {
+    switch (paramupy.getItemViewType())
+    {
+    default: 
+      b(paramupy, paramInt);
+    }
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public abstract VH b(ViewGroup paramViewGroup, int paramInt);
+  
+  public abstract void b(VH paramVH, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
-import java.util.concurrent.Executor;
-
-final class bjob
-  implements Executor
+public class bjob
 {
-  public void execute(Runnable paramRunnable)
+  public static bjny a(String paramString, int paramInt)
   {
-    bjoa.a().b(paramRunnable);
+    if (paramInt >= 24) {
+      return new bjoc();
+    }
+    return new bjoa();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjob
  * JD-Core Version:    0.7.0.1
  */

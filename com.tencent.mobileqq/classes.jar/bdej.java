@@ -1,30 +1,43 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.agent.datamodel.Friend;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class bdej
-  implements Parcelable.Creator<Friend>
+class bdej
+  implements View.OnClickListener
 {
-  public Friend a(Parcel paramParcel)
-  {
-    Friend localFriend = new Friend();
-    localFriend.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFriend.b = paramParcel.readString();
-    localFriend.c = paramParcel.readString();
-    localFriend.d = paramParcel.readString();
-    localFriend.jdField_a_of_type_Int = paramParcel.readInt();
-    localFriend.e = paramParcel.readString();
-    return localFriend;
-  }
+  bdej(bdef parambdef) {}
   
-  public Friend[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new Friend[paramInt];
+    switch (bdef.a(this.a))
+    {
+    default: 
+      return;
+    case 1: 
+      bfhg.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
+      bdef.a(this.a);
+      return;
+    case 4: 
+      bdef.b(this.a);
+      bfhg.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
+      return;
+    case 10: 
+      bfhg.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
+      return;
+    case 3: 
+      bdef.c(this.a);
+      bfhg.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
+      return;
+    case 2: 
+      this.a.c();
+      bfhg.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
+      return;
+    }
+    bfhg.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdej
  * JD-Core Version:    0.7.0.1
  */

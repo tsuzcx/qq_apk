@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import beqa;
+import bgpw;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
 
 class AppBrandLaunchManager$2
   implements Runnable
 {
-  AppBrandLaunchManager$2(AppBrandLaunchManager paramAppBrandLaunchManager, beqa parambeqa) {}
+  AppBrandLaunchManager$2(AppBrandLaunchManager paramAppBrandLaunchManager, bgpw parambgpw) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ class AppBrandLaunchManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager.2
  * JD-Core Version:    0.7.0.1
  */

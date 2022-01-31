@@ -1,17 +1,19 @@
 public class oms
 {
+  public int a;
   public String a;
+  public int b;
   public String b;
+  public int c;
   public String c;
-  
-  public String toString()
-  {
-    return "appCode = " + this.a + "\nappVersion = " + this.b + "\nappUsedDate = " + this.c + "\n";
-  }
+  public int d;
+  public String d;
+  public int e;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oms
  * JD-Core Version:    0.7.0.1
  */

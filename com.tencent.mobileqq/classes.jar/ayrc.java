@@ -1,65 +1,63 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.HashMap;
+import java.util.Map;
 
-class ayrc
-  extends ayqu
+public class ayrc
 {
-  private boolean a;
+  private static int jdField_a_of_type_Int;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  ayrc(ayqt paramayqt)
+  public static int a(int paramInt)
   {
-    super(paramayqt);
-    this.jdField_a_of_type_JavaLangString = "SendMsgStep";
-  }
-  
-  protected boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "SendMsgStep|process");
+    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    if (localInteger == null) {
+      return 0;
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    return localInteger.intValue();
+  }
+  
+  public static String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static void a()
+  {
+    try
     {
-      f();
+      jdField_a_of_type_JavaLangString = "";
+      jdField_a_of_type_Int = 0;
+      jdField_a_of_type_JavaUtilMap.clear();
       return;
     }
-    if (!bbfj.g(this.jdField_b_of_type_Ayqt.jdField_a_of_type_AndroidContentContext))
+    finally
     {
-      QLog.w("Q.share.ForwardSdkShareProcessor", 1, "SendMsgStep|no network");
-      if ((ayqt.a(this.jdField_b_of_type_Ayqt) > 0) || (!ayqt.a(this.jdField_b_of_type_Ayqt).get()) || (!ayqt.c(this.jdField_b_of_type_Ayqt).get()) || (ayqt.a(this.jdField_b_of_type_Ayqt).jdField_a_of_type_Int != 1))
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return;
+      try
       {
-        this.jdField_b_of_type_Ayqt.b(9004, "no network");
-        c();
-        return;
+        jdField_a_of_type_Int += 1;
+        jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaLangString + paramInt + "|";
+        jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(jdField_a_of_type_Int));
       }
+      finally {}
     }
-    Object localObject = this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.c, this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
-    if (localObject != null) {
-      this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((MessageRecord)localObject, null);
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("report_type", "102");
-    ((Bundle)localObject).putString("act_type", "14");
-    ((Bundle)localObject).putString("intext_2", "" + ayqt.a(this.jdField_b_of_type_Ayqt));
-    ((Bundle)localObject).putString("stringext_1", "" + ayqt.e(this.jdField_b_of_type_Ayqt));
-    ((Bundle)localObject).putString("intext_3", "0");
-    bdes.a().a((Bundle)localObject, "", this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-    this.jdField_a_of_type_Boolean = true;
-    b();
-    this.jdField_b_of_type_Ayqt.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayrc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,32 @@
-public class alas
-  extends alag
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+class alas
+  implements akzr
 {
-  public aldy a;
-  public String b;
-  public String c;
-  public String d;
+  alas(alap paramalap, File paramFile, String paramString) {}
   
-  public alas(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, aldy paramaldy, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Aldy = paramaldy;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
-    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
-    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aldy).append('\'');
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Alap.a(this.jdField_a_of_type_JavaLangString, 0, alpo.a(2131700856));
+        return;
+      }
+      this.jdField_a_of_type_Alap.a(this.jdField_a_of_type_JavaLangString, 2, alpo.a(2131700885));
+      return;
+    }
+    this.jdField_a_of_type_Alap.a(this.jdField_a_of_type_JavaLangString, 2, alpo.a(2131700867));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alas
  * JD-Core Version:    0.7.0.1
  */

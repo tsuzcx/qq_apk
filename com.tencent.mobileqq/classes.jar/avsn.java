@@ -1,23 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+import android.content.Context;
+import android.view.OrientationEventListener;
 
-public final class avsn
-  implements Parcelable.Creator<FilterCategory>
+class avsn
+  extends OrientationEventListener
 {
-  public FilterCategory a(Parcel paramParcel)
+  avsn(avsm paramavsm, Context paramContext)
   {
-    return new FilterCategory(paramParcel);
+    super(paramContext);
   }
   
-  public FilterCategory[] a(int paramInt)
+  public void onOrientationChanged(int paramInt)
   {
-    return new FilterCategory[paramInt];
+    if (paramInt == -1) {
+      this.a.b = 0;
+    }
+    do
+    {
+      return;
+      this.a.b = ((paramInt + 45) / 90 * 90);
+    } while (this.a.b >= 0);
+    this.a.b = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avsn
  * JD-Core Version:    0.7.0.1
  */

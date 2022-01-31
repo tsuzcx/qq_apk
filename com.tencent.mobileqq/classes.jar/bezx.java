@@ -1,87 +1,63 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserCloudStorageRsp;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.ArrayList;
 
 public class bezx
-  extends bfau
+  extends bfdg
 {
-  private CloudStorage.StGetUserCloudStorageReq a = new CloudStorage.StGetUserCloudStorageReq();
+  public bezx(FriendChooser paramFriendChooser) {}
   
-  public bezx(String[] paramArrayOfString, String paramString)
+  public int getCount()
   {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramArrayOfString[i];
-      this.a.keyList.add(str);
-      i += 1;
-    }
-    this.a.appid.set(paramString);
+    return this.a.b.size();
   }
   
-  protected String a()
+  public Object getItem(int paramInt)
   {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
+      return this.a.b.get(paramInt);
     }
-    Object localObject1 = new CloudStorage.StGetUserCloudStorageRsp();
-    try
-    {
-      ((CloudStorage.StGetUserCloudStorageRsp)localObject1).mergeFrom(a(paramArrayOfByte));
-      if ((localObject1 == null) || (((CloudStorage.StGetUserCloudStorageRsp)localObject1).KVDataList == null)) {
-        break label174;
-      }
-      paramArrayOfByte = new JSONObject();
-      Object localObject2 = ((CloudStorage.StGetUserCloudStorageRsp)localObject1).KVDataList.get();
-      localObject1 = new JSONArray();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject2).next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("key", localStKVData.key.get());
-        localJSONObject.put("value", localStKVData.value.get());
-        ((JSONArray)localObject1).put(localJSONObject);
-      }
-      paramArrayOfByte.put("KVDataList", localObject1);
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("GetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
-    }
-    return paramArrayOfByte;
-    label174:
-    betc.a("GetCloudStorageRequest", "onResponse fail.rsp = null");
     return null;
   }
   
-  protected byte[] a()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetUserCloudStorage";
+    Friend localFriend = (Friend)getItem(paramInt);
+    if (paramView == null)
+    {
+      paramViewGroup = new bfad();
+      paramView = this.a.getLayoutInflater().inflate(2131559202, null);
+      paramViewGroup.a = ((ImageView)paramView.findViewById(2131365910));
+      paramView.setTag(paramViewGroup);
+    }
+    Bitmap localBitmap;
+    for (;;)
+    {
+      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
+        localFriend.d = bfdp.a(this.a.a(), localFriend.a);
+      }
+      localBitmap = bfdm.a().a(localFriend.d);
+      if (localBitmap != null) {
+        break;
+      }
+      paramViewGroup.a.setImageResource(2130840084);
+      paramViewGroup = paramViewGroup.a;
+      bfdm.a().a(localFriend.d, new bezy(this, paramViewGroup));
+      return paramView;
+      paramViewGroup = (bfad)paramView.getTag();
+    }
+    paramViewGroup.a.setImageBitmap(localBitmap);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezx
  * JD-Core Version:    0.7.0.1
  */

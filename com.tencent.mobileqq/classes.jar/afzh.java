@@ -1,22 +1,27 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
 
 public class afzh
   implements View.OnClickListener
 {
-  public afzh(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public afzh(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
   
   public void onClick(View paramView)
   {
-    ChatHistoryTroopMemberFragment.b(this.a);
-    new axrc(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.c }).a();
+    afzl localafzl = (afzl)aekt.a(paramView);
+    if (paramView == localafzl.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localafzl);
+    }
+    while (paramView != localafzl.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+      return;
+    }
+    this.a.a(localafzl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afzh
  * JD-Core Version:    0.7.0.1
  */

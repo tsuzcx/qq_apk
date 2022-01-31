@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.7;
 
-class atmx
-  implements View.OnClickListener
+public class atmx
+  implements DialogInterface.OnClickListener
 {
-  atmx(atlw paramatlw) {}
+  public atmx(LocationDialogUtil.7 param7) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.j(paramView);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmx
  * JD-Core Version:    0.7.0.1
  */

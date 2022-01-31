@@ -1,21 +1,12 @@
-class bfoh
+public abstract interface bfoh
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  int c;
+  public abstract void a(int paramInt);
   
-  public bfoh(int paramInt1, int paramInt2, String paramString, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt3;
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfoh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,113 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class nks
-  extends akov
+  extends amni
 {
-  public nks(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  public nks(AccountDetailActivity paramAccountDetailActivity) {}
+  
+  public int a()
   {
-    super(paramQQAppInterface, paramMessageHandler);
+    return 5;
   }
   
-  public ArrayList<MessageRecord> a(long paramLong, List<msg_comm.Msg> paramList)
+  public void a(Object paramObject)
   {
-    paramList = b(paramLong, paramList);
-    ArrayList localArrayList = new ArrayList();
-    a(paramList, localArrayList, true);
-    paramList.clear();
-    return localArrayList;
-  }
-  
-  public void a(long paramLong, List<msg_comm.Msg> paramList)
-  {
-    paramList = a(paramLong, paramList);
-    nnu localnnu;
-    long l2;
-    long l1;
-    String str;
-    if ((paramList != null) && (paramList.size() > 0))
+    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
     {
-      localnnu = nnu.a();
-      l2 = localnnu.a(this.a, String.valueOf(paramLong));
-      l1 = l2;
-      if (l2 == 0L) {
-        l1 = 9223372036854775807L;
+      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
       }
-      Iterator localIterator = paramList.iterator();
-      if (localIterator.hasNext())
-      {
-        str = ((MessageRecord)localIterator.next()).getExtInfoFromExtStr("pa_msgId");
-        if (TextUtils.isEmpty(str)) {
-          break label176;
-        }
-      }
+      paramObject = new JSONObject();
+      if (this.a.d == null) {}
     }
-    label176:
-    for (;;)
+    try
     {
-      try
-      {
-        long l3 = Long.parseLong(str);
-        l2 = l1;
-        if (l3 < l1)
-        {
-          l2 = l1;
-          if (l3 != 0L)
-          {
-            localnnu.a(this.a, String.valueOf(paramLong), l3);
-            l2 = l3;
-          }
-        }
-        l1 = l2;
-      }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      this.a.a().a(paramList, this.a.getCurrentAccountUin(), true);
+      paramObject.put("uin", this.a.d);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("find.mp.qq.com");
+      localArrayList.add("post.mp.qq.com");
+      localArrayList.add("article.mp.qq.com");
+      atda.a("unFollow", paramObject, localArrayList, null);
+      this.a.h();
+      nrt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.d, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+      StructLongMessageDownloadProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d);
+      ((bcic)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
       return;
     }
-  }
-  
-  public ArrayList<MessageRecord> b(long paramLong, List<msg_comm.Msg> paramList)
-  {
-    Object localObject1 = new ArrayList();
-    a(paramList, (List)localObject1);
-    paramList = new ArrayList();
-    awzw localawzw = new awzw(this.a.getLongAccountUin(), paramLong, true, true, false, false);
-    localawzw.h = true;
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    catch (JSONException paramObject)
     {
-      Object localObject2 = (msg_comm.Msg)((Iterator)localObject1).next();
-      try
+      for (;;)
       {
-        localObject2 = a((msg_comm.Msg)localObject2, localawzw);
-        if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {
-          continue;
-        }
-        paramList.addAll((Collection)localObject2);
-      }
-      catch (Exception localException) {}
-      if (QLog.isColorLevel()) {
-        QLog.w("DynamicMsgProcessor", 2, "decodeSinglePBMsg_C2C error,", localException);
+        paramObject.printStackTrace();
       }
     }
-    return paramList;
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    this.a.d(2131695727);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = this.a;
+    paramObject.c -= 1;
+    if (this.a.c == 0) {
+      this.a.L();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nks
  * JD-Core Version:    0.7.0.1
  */

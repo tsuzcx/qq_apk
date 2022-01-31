@@ -1,13 +1,13 @@
 package cooperation.qappcenter.remote;
 
 import android.os.RemoteException;
-import bgmz;
-import bgnd;
+import biny;
+import bioc;
 
 public class RemoteServiceProxy$3
   implements Runnable
 {
-  public RemoteServiceProxy$3(bgnd parambgnd, SendMsg paramSendMsg) {}
+  public RemoteServiceProxy$3(bioc parambioc, SendMsg paramSendMsg) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class RemoteServiceProxy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qappcenter.remote.RemoteServiceProxy.3
  * JD-Core Version:    0.7.0.1
  */

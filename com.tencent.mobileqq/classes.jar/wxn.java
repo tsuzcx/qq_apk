@@ -1,63 +1,29 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
-
 public class wxn
-  implements TextWatcher
 {
-  public wxn(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    int i;
-    if (str.equals(""))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      i = str.length();
-      ThemeUtil.getCurrentThemeInfo().getString("themeId");
-      if (i <= 6) {
-        break label215;
-      }
-      EditUniqueTitleActivity.a(this.a, false);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(0.5F);
-      }
-    }
-    for (paramEditable = this.a.getResources().getColorStateList(2131166984);; paramEditable = this.a.getResources().getColorStateList(2131166933))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramEditable);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str.length() + "/" + 6);
-      int j = 6 - str.length();
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.a.getString(2131696443), new Object[] { Integer.valueOf(i) }));
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      break;
-      label215:
-      EditUniqueTitleActivity.b(this.a, true);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(1.0F);
-      }
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  @xnb(a="tag_type")
+  public int a;
+  @xnb(a="tag_id")
+  public long a;
+  @xnb(a="tag_name")
+  public String a;
+  @xnb(a="join_count")
+  public int b;
+  @xnb(a="tag_desc")
+  public String b;
+  @xnb(a="music_type")
+  public int c;
+  @xnb(a="wording")
+  public String c;
+  @xnb(a="music_id")
+  public String d;
+  @xnb(a="music_title")
+  public String e;
+  @xnb(a="music_download_url")
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxn
  * JD-Core Version:    0.7.0.1
  */

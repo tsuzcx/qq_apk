@@ -1,21 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.runtime.core.page.BrandPageWebview.4;
+import android.content.Intent;
 
-public class bfbz
-  implements Animation.AnimationListener
+public abstract interface bfbz
 {
-  public bfbz(BrandPageWebview.4 param4) {}
+  public abstract void a(Intent paramIntent);
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(bfdl parambfdl);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbz
  * JD-Core Version:    0.7.0.1
  */

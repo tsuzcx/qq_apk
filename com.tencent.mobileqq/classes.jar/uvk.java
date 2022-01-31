@@ -1,30 +1,41 @@
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class uvk
-  extends ssm<uvo>
+class uvk
+  implements uvr
 {
-  private Stream<uoy> a;
+  uvk(uvh paramuvh) {}
   
-  public void a(uvo paramuvo)
+  public void a(@Nullable utx paramutx, Error paramError)
   {
-    this.a = Stream.of(paramuvo).map(new ThreadOffFunction("Q.qqstory.home.data.FeedCommentBackgroundSyncer", 2)).map(new uvm(null));
-    this.a.subscribe(new uvl(this));
+    if (QLog.isColorLevel()) {
+      QLog.e("MsgTabStoryVideoPreloader", 2, "MsgTabVideoPreloaderDataProvider load video info error", paramError);
+    }
+    this.a.b();
   }
   
-  public void c()
+  public void a(@Nullable utx paramutx, @NonNull List<StoryVideoItem> paramList)
   {
-    ved.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
-    if (this.a != null)
+    if (!paramList.isEmpty())
     {
-      this.a.cancel();
-      this.a = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "start download video list, list = " + paramList.size() + "\n" + paramList);
+      }
+      uvh.a(this.a, paramList);
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.w("MsgTabStoryVideoPreloader", 2, "can not find first unread video");
+    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uvk
  * JD-Core Version:    0.7.0.1
  */

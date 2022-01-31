@@ -1,57 +1,32 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class qcv
+  implements phj
 {
-  public int a;
-  public String a;
-  public ArrayList<qcw> a;
-  public qcj a;
-  public boolean a;
-  public int b;
-  public ArrayList<qcx> b;
-  public int c = 0;
+  public qcv(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public qcv()
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  private String a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    qcw localqcw;
-    for (String str = "["; localIterator.hasNext(); str = str + "{" + localqcw.toString() + "},") {
-      localqcw = (qcw)localIterator.next();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
+      return;
     }
-    return str + "]";
-  }
-  
-  private String b()
-  {
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-    qcx localqcx;
-    for (String str = "["; localIterator.hasNext(); str = str + "{" + localqcx.toString() + "},") {
-      localqcx = (qcx)localIterator.next();
-    }
-    return str + "]";
-  }
-  
-  public String toString()
-  {
-    return "PGCFeedsInfo{pGCPicInfos=" + a() + ", pGCVideoInfos=" + b() + ", pgc_comments='" + this.jdField_a_of_type_JavaLangString + '\'' + ", follow_count=" + this.jdField_a_of_type_Int + ", follow_status=" + this.jdField_b_of_type_Int + ", isShortContent=" + this.jdField_a_of_type_Boolean + ", pgcFeedsType=" + this.c + ", galleryPGCFeedsInfo=" + this.jdField_a_of_type_Qcj + '}';
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131718949, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qcv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,78 @@
-import android.widget.NumberPicker;
-import android.widget.TimePicker;
-import android.widget.TimePicker.OnTimeChangedListener;
+import com.tencent.open.appcommon.js.BaseInterface;
+import com.tencent.smtt.sdk.WebView;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-class bffc
-  implements TimePicker.OnTimeChangedListener
+public class bffc
 {
-  bffc(bffb parambffb) {}
+  protected static Map<Integer, List<BaseInterface>> a = new HashMap();
   
-  public void onTimeChanged(TimePicker paramTimePicker, int paramInt1, int paramInt2)
+  public static void a(WebView paramWebView)
   {
-    bffb.a(this.a, paramInt1);
-    if (paramInt1 == bffb.a(this.a).getMinValue())
+    int i;
+    try
     {
-      bffb.b(this.a).setMinValue(bffb.a(this.a));
-      bffb.b(this.a).setMaxValue(59);
+      i = paramWebView.hashCode();
+      paramWebView = (List)a.get(Integer.valueOf(i));
+      if (paramWebView == null) {
+        return;
+      }
+      Iterator localIterator = paramWebView.iterator();
+      while (localIterator.hasNext()) {
+        ((BaseInterface)localIterator.next()).destroy();
+      }
+      paramWebView.clear();
+    }
+    catch (Exception paramWebView)
+    {
+      paramWebView.printStackTrace();
       return;
     }
-    if (paramInt1 == bffb.a(this.a).getMaxValue())
+    a.remove(Integer.valueOf(i));
+  }
+  
+  public static void a(WebView paramWebView, String paramString)
+  {
+    try
     {
-      bffb.b(this.a).setMinValue(0);
-      bffb.b(this.a).setMaxValue(bffb.b(this.a));
+      int i = paramWebView.hashCode();
+      paramWebView = ((List)a.get(Integer.valueOf(i))).iterator();
+      while (paramWebView.hasNext())
+      {
+        BaseInterface localBaseInterface = (BaseInterface)paramWebView.next();
+        if (localBaseInterface != null) {
+          localBaseInterface.setCurrentUrl(paramString);
+        }
+      }
       return;
     }
-    bffb.b(this.a).setMinValue(0);
-    bffb.b(this.a).setMaxValue(59);
-    bffb.b(this.a, paramInt2);
+    catch (Exception paramWebView)
+    {
+      paramWebView.printStackTrace();
+    }
+  }
+  
+  public static void a(List<BaseInterface> paramList, WebView paramWebView, String paramString, atck paramatck)
+  {
+    if (!bfhm.a(paramString))
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        BaseInterface localBaseInterface = (BaseInterface)localIterator.next();
+        paramatck.a(localBaseInterface, localBaseInterface.getInterfaceName());
+        bfet.a.put(localBaseInterface.getInterfaceName(), localBaseInterface.getClass());
+        localBaseInterface.setCurrentUrl(paramString);
+      }
+    }
+    a.put(Integer.valueOf(paramWebView.hashCode()), paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bffc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.pubaccount.subscript.SubscriptConstants.1;
+import java.util.Map;
 
-public abstract class ste<T extends IEventReceiver, EVENT extends ssh>
-  extends QQUIEventReceiver<T, EVENT>
+public class ste
 {
-  public ste(T paramT)
-  {
-    super(paramT);
-  }
-  
-  public final void a(@NonNull T paramT, @NonNull EVENT paramEVENT)
-  {
-    if ((paramEVENT.a != null) && (paramEVENT.a.isFail()))
-    {
-      c(paramT, paramEVENT);
-      return;
-    }
-    b(paramT, paramEVENT);
-  }
-  
-  public abstract void b(@NonNull T paramT, @NonNull EVENT paramEVENT);
-  
-  public abstract void c(@NonNull T paramT, @NonNull EVENT paramEVENT);
+  public static final Map<String, String> a = new SubscriptConstants.1();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ste
  * JD-Core Version:    0.7.0.1
  */

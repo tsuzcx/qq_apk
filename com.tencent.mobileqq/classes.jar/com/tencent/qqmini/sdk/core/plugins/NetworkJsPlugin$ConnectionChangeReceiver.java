@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import betc;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class NetworkJsPlugin$ConnectionChangeReceiver
@@ -31,13 +31,13 @@ class NetworkJsPlugin$ConnectionChangeReceiver
     }
     catch (Exception paramContext)
     {
-      betc.d("NetworkJsPlugin", "fail on network change", paramContext);
+      QMLog.e("NetworkJsPlugin", "fail on network change", paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.NetworkJsPlugin.ConnectionChangeReceiver
  * JD-Core Version:    0.7.0.1
  */

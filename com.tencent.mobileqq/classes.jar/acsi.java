@@ -1,32 +1,38 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
-import com.tencent.widget.XPanelContainer;
-import mqq.os.MqqHandler;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import java.util.ArrayList;
 
 public class acsi
-  extends akjy
+  extends PagerAdapter
 {
-  public acsi(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public acsi(FontSettingActivity paramFontSettingActivity) {}
   
-  public void a(int paramInt)
+  public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    this.a.e();
-    SendBirthdayWishesActivity.a(this.a, paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
-    }
-    if (paramInt != 2)
-    {
-      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
-      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
-    }
+    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    return this.a.a.size();
+  }
+  
+  public Object instantiateItem(View paramView, int paramInt)
+  {
+    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
+    return this.a.a.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsi
  * JD-Core Version:    0.7.0.1
  */

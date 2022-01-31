@@ -1,126 +1,85 @@
-import java.util.List;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.app.BaseActivity;
 
 public class mmi
 {
-  public static final Object a;
-  private static mmi jdField_b_of_type_Mmi;
-  private static int jdField_c_of_type_Int;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private aykk jdField_a_of_type_Aykk;
-  private String jdField_a_of_type_JavaLangString;
-  private mmi jdField_a_of_type_Mmi;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
-  private String e;
+  View a;
+  View b;
   
-  static
+  public mmi(View paramView)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    this.a = paramView.findViewById(2131372851);
+    this.b = paramView.getRootView().findViewById(2131372852);
   }
   
-  public static mmi a()
+  static void a(View paramView, int paramInt)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Mmi != null)
-      {
-        mmi localmmi = jdField_b_of_type_Mmi;
-        jdField_b_of_type_Mmi = localmmi.jdField_a_of_type_Mmi;
-        localmmi.jdField_a_of_type_Mmi = null;
-        jdField_c_of_type_Int -= 1;
-        return localmmi;
-      }
-      return new mmi();
-    }
-  }
-  
-  public static void a(List<mmi> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
-    {
+    if (paramView == null) {
       return;
-      int i = paramList.size() - 1;
-      while (i >= 0)
+    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    localLayoutParams.height = paramInt;
+    paramView.setLayoutParams(localLayoutParams);
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    if ((paramBaseActivity == null) || (this.a == null)) {}
+    do
+    {
+      do
       {
-        mmi localmmi = (mmi)paramList.remove(i);
-        if (localmmi != null) {
-          localmmi.a();
+        do
+        {
+          return;
+          if (ImmersiveUtils.isSupporImmersive() == 1) {
+            break;
+          }
+          this.a.setVisibility(8);
+        } while (this.b == null);
+        this.b.setVisibility(8);
+        return;
+        int i = ImmersiveUtils.getStatusBarHeight(paramBaseActivity);
+        QLog.w("QavStatusBar", 1, "adjust, height[" + i + "]");
+        if (i > 0)
+        {
+          a(this.a, i);
+          a(this.b, i);
         }
-        i -= 1;
+      } while (AudioHelper.a(0) != 1);
+      this.a.setBackgroundColor(2140405971);
+    } while (this.b == null);
+    this.b.setBackgroundColor(2140405971);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a != null)
+    {
+      QLog.w("QavStatusBar", 1, "setBackgroundColor, bDoubleScreen[" + paramBoolean + "]");
+      if (paramBoolean) {
+        this.a.setBackgroundColor(-16777216);
       }
     }
-  }
-  
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_Aykk;
-  }
-  
-  public String a()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Aykk = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.d = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.e = null;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    else
     {
-      if (jdField_c_of_type_Int < 200)
-      {
-        this.jdField_a_of_type_Mmi = jdField_b_of_type_Mmi;
-        jdField_b_of_type_Mmi = this;
-        jdField_c_of_type_Int += 1;
-      }
       return;
     }
+    this.a.setBackgroundColor(0);
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Aykk = lks.a(paramString, 16);
-  }
-  
-  public String b()
-  {
-    return this.e;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.e = paramString;
-  }
-  
-  public String toString()
-  {
-    return "VideoChatMessage{type=" + this.jdField_a_of_type_Int + ", content='" + this.jdField_a_of_type_Aykk + '\'' + ", filepath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", sendState=" + this.jdField_b_of_type_Int + ", time='" + this.jdField_b_of_type_JavaLangString + '\'' + ", header='" + this.jdField_c_of_type_JavaLangString + '\'' + ", imageUrl='" + this.d + '\'' + ", voiceTime=" + this.jdField_a_of_type_Long + ", msgId='" + this.e + '\'' + '}';
+    return (this.a != null) && (this.a.getVisibility() == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmi
  * JD-Core Version:    0.7.0.1
  */

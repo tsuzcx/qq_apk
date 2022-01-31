@@ -1,56 +1,55 @@
+import com.tencent.commonsdk.util.notification.NotificationLimiter;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class bhpa
+  implements NotificationLimiter
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static bhpa b;
-  private bhpa jdField_a_of_type_Bhpa;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(128);
-  
-  public static bhpa a()
+  private boolean a(int paramInt)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (b != null)
-      {
-        bhpa localbhpa = b;
-        b = localbhpa.jdField_a_of_type_Bhpa;
-        localbhpa.jdField_a_of_type_Bhpa = null;
-        jdField_a_of_type_Int -= 1;
-        return localbhpa;
-      }
-      return new bhpa();
+    return (paramInt == 241) || (paramInt == 244) || (paramInt == 242) || (paramInt == 243);
+  }
+  
+  public boolean shouldNotify(int paramInt)
+  {
+    if (a(paramInt)) {
+      return true;
     }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-  }
-  
-  public bhpa a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramObject);
-    return this;
-  }
-  
-  public void a()
-  {
-    b();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    boolean bool1;
+    if (aieq.a().a())
     {
-      if (jdField_a_of_type_Int < 50)
-      {
-        this.jdField_a_of_type_Bhpa = b;
-        b = this;
-        jdField_a_of_type_Int += 1;
+      if (QLog.isColorLevel()) {
+        QLog.i("NotificationLimiterImpl", 2, "MINI PROC FORE");
       }
-      return;
+      bool1 = false;
     }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    for (;;)
+    {
+      boolean bool2 = bool1;
+      if (bool1) {
+        if (azwu.a(paramInt)) {
+          break label105;
+        }
+      }
+      label105:
+      for (bool2 = true;; bool2 = false)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NotificationLimiterImpl", 2, String.format("studymode_fightNotificationLimiterImpl ,shouldNotify1 = %b,", new Object[] { Boolean.valueOf(bool2) }));
+        }
+        return bool2;
+        if (!MiniChatActivity.a()) {
+          break label110;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("NotificationLimiterImpl", 2, "MiniMsgActForeGround");
+        }
+        bool1 = false;
+        break;
+      }
+      label110:
+      bool1 = true;
+    }
   }
 }
 

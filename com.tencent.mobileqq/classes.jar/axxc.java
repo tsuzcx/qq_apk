@@ -1,16 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-class axxc
-  implements View.OnClickListener
+public class axxc
+  implements axxg
 {
-  axxc(axxb paramaxxb) {}
+  public axxc(EditActivity paramEditActivity) {}
   
-  public void onClick(View paramView) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
+    {
+      axwp localaxwp = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
+      if (localaxwp != null)
+      {
+        EditActivity.a(this.a).actionText = localaxwp.d;
+        EditActivity.a(this.a, false);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxc
  * JD-Core Version:    0.7.0.1
  */

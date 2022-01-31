@@ -1,28 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agkn
-  implements agjv
+class agkn
+  implements DialogInterface.OnClickListener
 {
-  public agkn(PhoneLaunchActivity paramPhoneLaunchActivity) {}
+  agkn(agkk paramagkk) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PhoneLaunchActivity.a(this.a).setEnabled(true);
-    if ((!paramBoolean) && (paramContext != null))
-    {
-      Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
-      localIntent.putExtra("fromKeyForContactBind", 2);
-      paramContext.startActivity(localIntent);
-    }
+    paramDialogInterface.dismiss();
+    bdcs.d(this.a.g);
+    this.a.g = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkn
  * JD-Core Version:    0.7.0.1
  */

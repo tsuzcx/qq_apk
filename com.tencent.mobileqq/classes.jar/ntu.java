@@ -1,38 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
 
 public class ntu
-  implements AladdinConfigHandler
+  extends alvc
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public ntu(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    paramString = oof.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
-      if (TextUtils.equals("readinjoy_drop_frame_monitor", str1)) {
-        bhvy.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
+      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131701639));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
       }
     }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
-    bhvy.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131701618));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ntu
  * JD-Core Version:    0.7.0.1
  */

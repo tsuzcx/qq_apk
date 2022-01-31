@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import aolg;
+import aqee;
 
 public class FrameAnimationDrawable$1
   implements Runnable
 {
-  public FrameAnimationDrawable$1(aolg paramaolg) {}
+  public FrameAnimationDrawable$1(aqee paramaqee) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class FrameAnimationDrawable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.FrameAnimationDrawable.1
  * JD-Core Version:    0.7.0.1
  */

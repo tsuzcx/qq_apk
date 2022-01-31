@@ -1,16 +1,12 @@
-class aemf
-  extends akte
+import com.tencent.mobileqq.data.MessageRecord;
+
+public abstract interface aemf
 {
-  aemf(aemd paramaemd) {}
-  
-  public void b()
-  {
-    this.a.b(false, false);
-  }
+  public abstract void a(MessageRecord paramMessageRecord);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.qqlive.tvkplayer.vinfo.live;
 
+import com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerVideoInfo;
 import java.util.Map;
 
 public class TVKLiveInfoParams
@@ -9,6 +10,7 @@ public class TVKLiveInfoParams
   private boolean mGetPreviewInfo = false;
   private boolean mIsDolby = false;
   private int mStreamFormat = 2;
+  private TVKPlayerVideoInfo mVideoInfo;
   
   public Map<String, String> getExtraPara()
   {
@@ -23,6 +25,11 @@ public class TVKLiveInfoParams
   public int getStreamFormat()
   {
     return this.mStreamFormat;
+  }
+  
+  public TVKPlayerVideoInfo getVideoInfo()
+  {
+    return this.mVideoInfo;
   }
   
   public boolean isDolby()
@@ -59,10 +66,15 @@ public class TVKLiveInfoParams
   {
     this.mStreamFormat = paramInt;
   }
+  
+  public void setVideoInfo(TVKPlayerVideoInfo paramTVKPlayerVideoInfo)
+  {
+    this.mVideoInfo = paramTVKPlayerVideoInfo;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.live.TVKLiveInfoParams
  * JD-Core Version:    0.7.0.1
  */

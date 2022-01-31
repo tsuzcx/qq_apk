@@ -1,21 +1,34 @@
-import android.view.animation.Interpolator;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
 public class qqg
-  implements Interpolator
+  implements View.OnTouchListener
 {
-  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
-  }
+  public qqg(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public float getInterpolation(float paramFloat)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return a(paramFloat, 0.0F, 1.0F, 1.0F);
+    paramView = ReadInJoyUgcSearchTopicFragment.a(this.a).getCompoundDrawables()[2];
+    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
+    {
+      float f = ReadInJoyUgcSearchTopicFragment.a(this.a).getRight() - paramView.getBounds().width();
+      if (paramMotionEvent.getRawX() >= f)
+      {
+        ReadInJoyUgcSearchTopicFragment.b(this.a);
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqg
  * JD-Core Version:    0.7.0.1
  */

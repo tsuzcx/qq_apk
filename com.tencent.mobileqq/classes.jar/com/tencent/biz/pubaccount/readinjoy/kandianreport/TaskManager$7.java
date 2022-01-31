@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bbdx;
-import bhvy;
+import bdcs;
+import bjxj;
 import com.tencent.qphone.base.util.QLog;
 
 class TaskManager$7
@@ -13,14 +13,14 @@ class TaskManager$7
   {
     QLog.d("kandianreport.taskmanager", 1, "reset");
     this.this$0.stopAllTasks();
-    bbdx.a(TaskManager.access$700());
-    bbdx.a(KandianReportSoLoader.getSoLoadDir());
-    bhvy.a("kandianreport_ON", Integer.valueOf(0));
+    bdcs.a(TaskManager.access$700());
+    bdcs.a(KandianReportSoLoader.getSoLoadDir());
+    bjxj.a("kandianreport_ON", Integer.valueOf(0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager.7
  * JD-Core Version:    0.7.0.1
  */

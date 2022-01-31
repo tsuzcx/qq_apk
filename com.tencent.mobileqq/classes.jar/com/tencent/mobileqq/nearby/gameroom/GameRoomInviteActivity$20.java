@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
 import android.os.Bundle;
-import baib;
-import banb;
+import bcgn;
+import bclo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -20,8 +20,8 @@ class GameRoomInviteActivity$20
     Object localObject1 = this.this$0.app.getCurrentAccountUin();
     String str = ((TicketManager)localObject2).getSkey(this.this$0.app.getCurrentAccountUin());
     localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("bkn", "" + banb.b(str));
-    ((Bundle)localObject2).putString("ver", "8.3.0");
+    ((Bundle)localObject2).putString("bkn", "" + bclo.b(str));
+    ((Bundle)localObject2).putString("ver", "8.3.3");
     ((Bundle)localObject2).putString("src", "1");
     ((Bundle)localObject2).putString("platform", "android");
     ((Bundle)localObject2).putString("uin", this.this$0.app.getCurrentAccountUin());
@@ -31,7 +31,7 @@ class GameRoomInviteActivity$20
     ((HashMap)localObject1).put("BUNDLE", localObject2);
     this.this$0.app.getApplication();
     ((HashMap)localObject1).put("CONTEXT", MobileQQ.getContext());
-    new baib("http://nearby.qq.com/cgi-bin/werewolf/get_friend_board_list", "GET", this.this$0.a, 0, null, true).execute(new HashMap[] { localObject1 });
+    new bcgn("http://nearby.qq.com/cgi-bin/werewolf/get_friend_board_list", "GET", this.this$0.a, 0, null, true).execute(new HashMap[] { localObject1 });
     if (QLog.isColorLevel()) {
       QLog.d("GameRoomInviteActivity", 2, "get feed from server start: " + System.currentTimeMillis());
     }
@@ -39,7 +39,7 @@ class GameRoomInviteActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.20
  * JD-Core Version:    0.7.0.1
  */

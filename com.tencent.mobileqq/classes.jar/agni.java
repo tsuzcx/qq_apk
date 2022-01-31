@@ -1,27 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class agni
-  implements DialogInterface.OnClickListener
+class agni
+  implements ysb
 {
-  public agni(PhotoListActivity paramPhotoListActivity) {}
+  agni(agmy paramagmy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (this.a.c != null) {
-      this.a.c.setClickable(true);
-    }
+    this.a.a.a(false, false, 4);
+  }
+  
+  public void b()
+  {
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agni
  * JD-Core Version:    0.7.0.1
  */

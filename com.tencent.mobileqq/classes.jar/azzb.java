@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import java.util.List;
 
-public class azzb
-  implements View.OnClickListener
+public abstract interface azzb<T extends azyx>
 {
-  public azzb(ReciteFragment paramReciteFragment) {}
+  public abstract <N extends azyx> N a(String paramString);
   
-  public void onClick(View paramView)
-  {
-    this.a.m();
-    BeginnerGuideFragment.b(ReciteFragment.a(this.a), null, 4);
-  }
+  public abstract List<azyx> a();
+  
+  public abstract void a(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azzb
  * JD-Core Version:    0.7.0.1
  */

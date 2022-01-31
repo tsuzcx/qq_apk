@@ -1,114 +1,39 @@
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import java.util.List;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-public class bjiy
-  extends DynamicTextItem
+class bjiy
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public static final int b;
-  public static final int c;
-  public static final int d;
-  private float jdField_a_of_type_Float;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  bjiz jdField_a_of_type_Bjiz;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float b;
-  private int e;
+  bjiy(bjix parambjix) {}
   
-  static
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    Resources localResources = BaseApplicationImpl.getContext().getResources();
-    jdField_b_of_type_Int = actj.a(36.0F, localResources);
-    d = actj.a(6.0F, localResources);
-    int i = bkik.a();
-    c = localResources.getDisplayMetrics().widthPixels - vla.a - i * 2;
-  }
-  
-  public bjiy(int paramInt, List<String> paramList, Typeface paramTypeface)
-  {
-    super(paramInt, paramList);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
-    if (paramTypeface == null) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
+    float f = paramScaleGestureDetector.getScaleFactor();
+    bjix.a(this.a, 1.0F - f + bjix.b(this.a));
+    if (bjix.a(this.a) == 0) {
+      bjix.a(this.a, Math.max(bjix.c(this.a), Math.min(1.5F, bjix.b(this.a))));
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-      if (!paramList.isEmpty()) {
-        a(0, (String)paramList.get(0));
+      bjix.b(this.a, bjix.b(this.a) / bjix.d(this.a));
+      if (bjix.a(this.a) != null) {
+        bjix.a(this.a).a(bjix.b(this.a));
       }
-      return;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      return true;
+      bjix.a(this.a, Math.max(bjix.c(this.a), Math.min(1.0F, bjix.b(this.a))));
     }
   }
   
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    super.a(paramInt, paramString);
-    String str = super.b(paramInt);
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "　　";
-    }
-    this.e = actj.a(18.0F, BaseApplicationImpl.getContext().getResources());
-    this.jdField_a_of_type_Bjiz = new bjiz(0);
-    this.jdField_a_of_type_Bjiz.b(new bjil(-65536, d));
-    this.jdField_a_of_type_Bjiz.a(paramString, c, jdField_b_of_type_Int, this.jdField_a_of_type_AndroidTextTextPaint);
-    this.jdField_a_of_type_Bjiz.a(new bjih(this.e));
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_Bjiz.a(1, this.jdField_a_of_type_Bjiz.a()).width();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_Bjiz.a(1, this.jdField_a_of_type_Bjiz.a()).height();
-    this.jdField_a_of_type_Bjiz.a(new bjhh(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float));
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_Bjiz.a(paramCanvas, 0, 0);
-    if (super.b(0))
-    {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Bjiz.a(1, this.jdField_a_of_type_Bjiz.a()));
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
-    }
-  }
-  
-  public boolean a()
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
     return true;
   }
   
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjiy
  * JD-Core Version:    0.7.0.1
  */

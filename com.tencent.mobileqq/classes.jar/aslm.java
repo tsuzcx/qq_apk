@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import java.util.HashSet;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aslm
+class aslm
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public asla a;
-  public String a;
-  public HashSet<RecentBaseData> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
+  aslm(aslk paramaslk, aslo paramaslo) {}
+  
+  public void onClick(View paramView)
+  {
+    aslk.a(this.jdField_a_of_type_Aslk, this.jdField_a_of_type_Aslo.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aslm
  * JD-Core Version:    0.7.0.1
  */

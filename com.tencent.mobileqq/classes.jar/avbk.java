@@ -1,23 +1,10 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
-
-public class avbk
-  extends avbi
+public abstract interface avbk
 {
-  public avbk(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startRecordingBarAnimation onAnimationEnd");
-    }
-    this.a.c = null;
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avbk
  * JD-Core Version:    0.7.0.1
  */

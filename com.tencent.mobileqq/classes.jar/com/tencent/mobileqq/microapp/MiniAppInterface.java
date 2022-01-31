@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aukq;
+import awbx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -28,7 +28,7 @@ public class MiniAppInterface
   static final String TAG = "MiniAppInterface";
   private BroadcastReceiver accountReceiver = new b(this);
   private HashMap authorizeMap = new HashMap();
-  private aukq mFactory;
+  private awbx mFactory;
   
   public MiniAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
@@ -96,7 +96,7 @@ public class MiniAppInterface
     return getAccount();
   }
   
-  public aukq getEntityManagerFactory(String paramString)
+  public awbx getEntityManagerFactory(String paramString)
   {
     if (this.mFactory == null) {
       this.mFactory = new QQEntityManagerFactory(getAccount());
@@ -140,7 +140,7 @@ public class MiniAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.MiniAppInterface
  * JD-Core Version:    0.7.0.1
  */

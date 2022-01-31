@@ -58,7 +58,7 @@ public class TPPlaybackParams
     this.mTpTrackInfoList.add(paramString1);
   }
   
-  public void addAudioTrackSource(String paramString1, String paramString2)
+  public void addAudioTrackSource(String paramString1, String paramString2, List<TPOptionalParam> paramList)
   {
     if (TextUtils.isEmpty(paramString1)) {}
     while (TextUtils.isEmpty(paramString2)) {
@@ -67,6 +67,7 @@ public class TPPlaybackParams
     TPPlaybackParams.AudioTrackAttribute localAudioTrackAttribute = new TPPlaybackParams.AudioTrackAttribute();
     localAudioTrackAttribute.url = paramString1;
     localAudioTrackAttribute.name = paramString2;
+    localAudioTrackAttribute.audioTrackParams = paramList;
     this.mAudioTrackSources.put(paramString1, localAudioTrackAttribute);
     generateTrackInfoByTrackSource(paramString1, paramString2);
   }
@@ -340,7 +341,7 @@ public class TPPlaybackParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlaybackParams
  * JD-Core Version:    0.7.0.1
  */

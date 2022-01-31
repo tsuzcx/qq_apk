@@ -1,32 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.widget.QQViewPager;
 
-public class ahvo
-  implements Animation.AnimationListener
+class ahvo
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public ahvo(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  ahvo(ahvn paramahvn) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    NewFlowCameraActivity.a(this.a).setVisibility(4);
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
-    this.a.e.setVisibility(4);
-    ahtz.a("", "0X8007C05", this.a.c + "", "", "", "");
+    if (paramInt == 1) {
+      this.a.b = this.a.a.getCurrentItem();
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onPageSelected(int paramInt)
   {
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    ahvn.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvo
  * JD-Core Version:    0.7.0.1
  */

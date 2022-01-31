@@ -1,30 +1,30 @@
 package dov.com.qq.im.ae;
 
 import android.app.Activity;
-import bijd;
-import bjaj;
-import bjrl;
+import bkle;
+import blfi;
+import bmcv;
 
 public class AEPituCameraUnit$11
   implements Runnable
 {
-  public AEPituCameraUnit$11(bijd parambijd) {}
+  public AEPituCameraUnit$11(bkle parambkle) {}
   
   public void run()
   {
-    Activity localActivity = bijd.a(this.this$0).a();
+    Activity localActivity = bkle.a(this.this$0).a();
     if ((localActivity == null) || (localActivity.isFinishing())) {
       return;
     }
-    if (bijd.a(this.this$0) == null) {
-      bijd.a(this.this$0, new bjaj(localActivity));
+    if (bkle.a(this.this$0) == null) {
+      bkle.a(this.this$0, new blfi(localActivity));
     }
-    bijd.a(this.this$0).a(new AEPituCameraUnit.11.1(this));
+    bkle.a(this.this$0).a(new AEPituCameraUnit.11.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.11
  * JD-Core Version:    0.7.0.1
  */

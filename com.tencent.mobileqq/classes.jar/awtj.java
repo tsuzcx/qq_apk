@@ -1,131 +1,292 @@
 import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public abstract class awtj
-  implements awtc
+public class awtj
+  implements INetInfoHandler
 {
-  private int jdField_a_of_type_Int;
-  protected Context a;
-  private awte jdField_a_of_type_Awte;
-  private awti jdField_a_of_type_Awti = new awti();
-  protected QQAppInterface a;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<awtd> jdField_a_of_type_JavaLangRefWeakReference;
+  public String a;
+  private boolean a;
+  public String b;
+  public String c;
+  private String d;
   
-  public awte a()
+  public awtj()
   {
-    return this.jdField_a_of_type_Awte;
+    this.jdField_a_of_type_Boolean = true;
+    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getApplication(), this);
+    a();
   }
   
-  protected abstract awte a(Context paramContext);
-  
-  public String a()
+  public static String a()
   {
-    return this.jdField_a_of_type_Awti.a();
+    return "XGIdentifier";
   }
   
-  protected void a() {}
-  
-  public void a(awtd paramawtd)
+  public static String a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawtd);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (QLog.isColorLevel()) {
-      QLog.d("RichNodeBase", 2, "create, serverdata:" + paramString1 + "  extredata:" + paramString2 + " config:" + paramString3 + " templateid:" + paramInt);
+    try
+    {
+      long l = System.nanoTime();
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getBSSID();
+        if (QLog.isColorLevel()) {
+          QLog.e("PttIpSaver", 2, "getWifiMac " + paramContext + " time=" + (System.nanoTime() - l) / 1000000L);
+        }
+        return paramContext;
+      }
     }
-    this.jdField_a_of_type_Awti.a(true);
-    this.jdField_a_of_type_Awti.a(paramString1);
-    this.jdField_a_of_type_Awti.b(paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Awte = a(paramContext);
+    catch (Throwable paramContext) {}
+    return null;
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public void a()
+  {
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Boolean = true;
+      if (this.d == null)
+      {
+        this.d = a();
+        this.jdField_a_of_type_Boolean = false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetMobile2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RichNodeBase", 2, "updateData, serverdata:" + paramString1 + "  extredata:" + paramString2 + " config:" + paramString3);
+      QLog.e("PttIpSaver", 2, "clear ip:" + paramInt);
     }
-    this.jdField_a_of_type_Awti.a(paramString1);
-    this.jdField_a_of_type_Awti.b(paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString3;
+    if (paramInt == -1)
+    {
+      this.jdField_a_of_type_JavaLangString = null;
+      this.b = null;
+      this.c = null;
+    }
+    do
+    {
+      return;
+      if (paramInt == 0)
+      {
+        this.jdField_a_of_type_JavaLangString = null;
+        return;
+      }
+      if (paramInt == 1)
+      {
+        this.b = null;
+        return;
+      }
+    } while (paramInt != 2);
+    this.c = null;
+  }
+  
+  public void a(basp parambasp, int paramInt)
+  {
+    Object localObject = null;
+    if (parambasp != null)
+    {
+      localObject = new StringBuffer(200);
+      ((StringBuffer)localObject).append("http://").append(parambasp.jdField_a_of_type_JavaLangString);
+      if (parambasp.jdField_a_of_type_Int != 80) {
+        ((StringBuffer)localObject).append(":").append(parambasp.jdField_a_of_type_Int);
+      }
+      ((StringBuffer)localObject).append("/");
+      localObject = ((StringBuffer)localObject).toString();
+    }
+    a((String)localObject, paramInt);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (paramString == null) {}
+    do
+    {
+      return;
+      String str = paramString;
+      if (!paramString.startsWith("http://")) {
+        str = "http://" + paramString;
+      }
+      paramString = str;
+      if (!str.endsWith("/")) {
+        paramString = str + "/";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "saveIp:" + paramInt + " " + paramString);
+      }
+      if (paramInt == 0)
+      {
+        this.jdField_a_of_type_JavaLangString = paramString;
+        return;
+      }
+      if (paramInt == 1)
+      {
+        this.b = paramString;
+        return;
+      }
+    } while (paramInt != 2);
+    this.c = paramString;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public String b()
+  {
+    try
+    {
+      String str = this.d;
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichNodeBase", 2, "pause");
+    try
+    {
+      AppNetConnInfo.unregisterNetInfoHandler(this);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
   
-  protected void b(String paramString1, String paramString2)
+  public void onNetMobile2None()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichNodeBase", 2, "fireEvent, key:" + paramString1 + " value:" + paramString2);
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    try
     {
-      awtd localawtd = (awtd)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localawtd != null) {
-        localawtd.a(this, paramString1, paramString2);
+      a(-1);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetMobile2Wifi  " + this.d);
       }
+      return;
     }
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichNodeBase", 2, "resume");
-    }
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichNodeBase", 2, "destroy");
-    }
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_Awte != null)
+    finally
     {
-      this.jdField_a_of_type_Awte.f();
-      this.jdField_a_of_type_Awte = null;
+      paramString = finally;
+      throw paramString;
     }
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Awti = null;
   }
   
-  protected void e()
+  public void onNetNone2Mobile(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichNodeBase", 2, "fireOnRichViewChangedEvent");
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    try
     {
-      awtd localawtd = (awtd)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localawtd != null) {
-        localawtd.a(this);
+      this.d = a();
+      this.jdField_a_of_type_Boolean = false;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetNone2Mobile  " + this.d);
       }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Boolean = true;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetNone2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    try
+    {
+      this.d = a();
+      this.jdField_a_of_type_Boolean = false;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetWifi2Mobile  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    try
+    {
+      a(-1);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awtj
  * JD-Core Version:    0.7.0.1
  */

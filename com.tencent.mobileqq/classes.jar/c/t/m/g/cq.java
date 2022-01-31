@@ -11,39 +11,39 @@ import java.io.File;
 import java.util.List;
 
 public class cq
-  extends dj
+  extends dk
 {
-  private static final String q = ct.a() + co.a(cq.class.getName().getBytes(), "SHA-256").substring(0, 8);
+  private static final String o = cu.a() + co.b(cq.class.getName(), "SHA-256").substring(0, 8);
   private BroadcastReceiver A = new cq.1(this);
-  public cx a = null;
-  public long b = 102400L;
-  public long c = 3600000L;
-  public int d = 1;
-  public int e = 25600;
-  public long f = 104857600L;
-  public long g = 10485760L;
-  public long h = 259200000L;
-  public long i = 2592000000L;
-  public boolean j = true;
-  public int k = 0;
-  public long l = 60000L;
-  public long m = 3000L;
-  public cr n;
-  private Context r = null;
-  private final File s;
-  private boolean t;
-  private volatile Handler u;
-  private long v = 0L;
-  private volatile List<cp> w;
-  private volatile List<ScanResult> x;
-  private volatile Location y;
-  private long z = 0L;
+  public long a = 102400L;
+  public long b = 3600000L;
+  public int c = 1;
+  public int d = 25600;
+  public long e = 104857600L;
+  public long f = 10485760L;
+  public long g = 259200000L;
+  public long h = 2592000000L;
+  public boolean i = true;
+  public boolean j = false;
+  public cs k;
+  public cr l;
+  private Context p = null;
+  private final File q;
+  private boolean r;
+  private volatile Handler s;
+  private int t = 0;
+  private long u = 60000L;
+  private long v = 3000L;
+  private long w = 0L;
+  private volatile List<cp> x;
+  private volatile List<ScanResult> y;
+  private volatile Location z;
   
   private cq(Context paramContext, File paramFile)
   {
-    this.r = paramContext;
-    this.s = paramFile;
-    this.t = false;
+    this.p = paramContext;
+    this.q = paramFile;
+    this.r = false;
   }
   
   public cq(Context paramContext, String paramString)
@@ -58,33 +58,37 @@ public class cq
   
   public final int a(Looper paramLooper)
   {
-    this.w = null;
     this.x = null;
     this.y = null;
-    this.v = 0L;
+    this.z = null;
+    this.w = 0L;
     boolean bool;
-    if ((this.s != null) && ((this.s.exists()) || (this.s.mkdirs()))) {
+    if ((this.q != null) && ((this.q.exists()) || (this.q.mkdirs()))) {
       bool = true;
     }
     for (;;)
     {
-      this.t = bool;
-      co.a("startup! prepared:" + this.t);
-      if (this.t)
+      this.r = bool;
+      co.a("startup! prepared:" + this.r);
+      if (this.r)
       {
-        this.u = new cq.a(this, paramLooper);
-        this.v = (System.currentTimeMillis() - 40000L);
-        co.a(this.u, 107, 300000L);
+        this.s = new cq.a(this, paramLooper);
+        this.w = (System.currentTimeMillis() - 40000L);
+        co.a(this.s, 107, 300000L);
       }
       try
       {
         IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-        this.r.registerReceiver(this.A, localIntentFilter);
-        if ((this.t) && (this.j))
+        this.p.registerReceiver(this.A, localIntentFilter);
+        if ((this.r) && (this.i))
         {
-          this.n = new cr(this.s);
-          this.n.a(paramLooper);
-          co.a("start up:WifiInfoPro");
+          this.k = new cs(this.q);
+          this.k.a(paramLooper);
+        }
+        if (this.j)
+        {
+          this.l = new cr(this.q);
+          this.l.a(paramLooper);
         }
         return 0;
         bool = false;
@@ -103,21 +107,26 @@ public class cq
   {
     try
     {
-      this.r.unregisterReceiver(this.A);
+      this.p.unregisterReceiver(this.A);
       label11:
-      if (this.n != null)
+      if (this.k != null)
       {
-        this.n.d();
-        this.n = null;
+        this.k.d();
+        this.k = null;
       }
-      if (this.t)
+      if (this.l != null)
       {
-        co.a(this.u, 104, 0L);
-        co.a(this.u, 106, 0L);
-        this.v = 0L;
-        co.a(this.u, 107, 0L);
-        co.a(this.u, 105, 200L);
-        this.u = null;
+        this.l.d();
+        this.l = null;
+      }
+      if (this.r)
+      {
+        co.a(this.s, 104, 0L);
+        co.a(this.s, 106, 0L);
+        this.w = 0L;
+        co.a(this.s, 107, 0L);
+        co.a(this.s, 105, 200L);
+        this.s = null;
       }
       co.a("shutdown!");
       return;
@@ -144,10 +153,10 @@ public class cq
         {
           return;
         }
-        this.y = paramLocation;
-        this.x = paramList;
-        this.w = paramList1;
-        if (!this.t) {
+        this.z = paramLocation;
+        this.y = paramList;
+        this.x = paramList1;
+        if (!this.r) {
           continue;
         }
         if (paramList == null)
@@ -155,7 +164,7 @@ public class cq
           if (co.a(paramList1)) {
             continue;
           }
-          co.a(this.u, 102, 0L);
+          co.a(this.s, 102, 0L);
           continue;
         }
         if (co.a(paramList)) {
@@ -163,7 +172,7 @@ public class cq
         }
       }
       finally {}
-      co.a(this.u, 101, 0L);
+      co.a(this.s, 101, 0L);
     }
   }
   
@@ -174,7 +183,7 @@ public class cq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.cq
  * JD-Core Version:    0.7.0.1
  */

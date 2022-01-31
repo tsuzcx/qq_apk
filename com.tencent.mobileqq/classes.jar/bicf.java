@@ -1,78 +1,54 @@
+import android.os.Binder;
 import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-class bicf
-  implements bicd
+public abstract class bicf
+  extends Binder
+  implements bice
 {
-  private IBinder a;
-  
-  bicf(IBinder paramIBinder)
+  public static bice a(IBinder paramIBinder)
   {
-    this.a = paramIBinder;
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+    if ((localIInterface != null) && ((localIInterface instanceof bice))) {
+      return (bice)localIInterface;
+    }
+    return new bicg(paramIBinder);
   }
   
-  /* Error */
-  public void a(java.lang.String paramString, android.os.Bundle paramBundle)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: aload_3
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_3
-    //   11: aload_1
-    //   12: invokevirtual 32	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   15: aload_2
-    //   16: ifnull +33 -> 49
-    //   19: aload_3
-    //   20: iconst_1
-    //   21: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   24: aload_2
-    //   25: aload_3
-    //   26: iconst_0
-    //   27: invokevirtual 42	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   30: aload_0
-    //   31: getfield 15	bicf:a	Landroid/os/IBinder;
-    //   34: iconst_1
-    //   35: aload_3
-    //   36: aconst_null
-    //   37: iconst_1
-    //   38: invokeinterface 48 5 0
-    //   43: pop
-    //   44: aload_3
-    //   45: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   48: return
-    //   49: aload_3
-    //   50: iconst_0
-    //   51: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   54: goto -24 -> 30
-    //   57: astore_1
-    //   58: aload_3
-    //   59: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   62: aload_1
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	this	bicf
-    //   0	64	1	paramString	java.lang.String
-    //   0	64	2	paramBundle	android.os.Bundle
-    //   3	56	3	localParcel	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	15	57	finally
-    //   19	30	57	finally
-    //   30	44	57	finally
-    //   49	54	57	finally
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
+    }
+    paramParcel1.enforceInterface("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+    boolean bool = a();
+    paramParcel2.writeNoException();
+    if (bool) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bicf
  * JD-Core Version:    0.7.0.1
  */

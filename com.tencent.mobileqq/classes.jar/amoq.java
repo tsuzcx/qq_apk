@@ -1,292 +1,229 @@
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import android.text.TextUtils;
-import android.util.SparseArray;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ConfigSeq;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARPromotion.ARPromotionSoundPlayer.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import java.io.File;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class amoq
+  implements SoundPool.OnLoadCompleteListener, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  private final SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(10);
-  private final ConcurrentHashMap<String, CopyOnWriteArraySet<amos>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private SoundPool jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(10, 3, 0);
+  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
+  private Map<String, amor> jdField_a_of_type_JavaUtilMap = new HashMap(10);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   public amoq()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(271, "batch_add_friend_for_troop_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(275, "confess_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(358, "contact_top_entry_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(372, "breaking_ice_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(326, "sosointerface_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(357, "register_invitation_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(330, "hiboom_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(296, "extend_friend_config_785");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(369, "account_logout_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(379, "qqsettingme_f2f_guide_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(378, "profile_btn_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(381, "profile_switch_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(401, "smart_devices_discovery_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(407, "hide_qq_xman");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(405, "add_contact_page_public_account_switch");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(408, "select_member_entry_switch");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(355, "troop_member_list_config");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(this);
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null)
     {
-      String str = (String)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new CopyOnWriteArraySet());
-      i += 1;
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(BaseApplicationImpl.getContext(), null);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setLoopback(true);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(this);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(this);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(this);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(this);
     }
-    a("qqsettingme_f2f_guide_config", new ampe());
-    a("smart_devices_discovery_config", new ampf());
   }
   
-  public static String a(String paramString1, String paramString2)
+  private void b()
   {
-    return bbkb.a(BaseApplicationImpl.getApplication(), paramString1, paramString2);
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        amor localamor = (amor)((Map.Entry)localIterator.next()).getValue();
+        if ((localamor != null) && (localamor.c()))
+        {
+          this.jdField_a_of_type_AndroidMediaSoundPool.pause(localamor.a);
+          localamor.c = 2;
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("ARPromotionSoundPlayer", 2, "stopSound exception", localException);
+      }
+    }
   }
   
-  private CopyOnWriteArraySet<amos> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.jdField_a_of_type_AndroidUtilSparseArray.indexOfValue(paramString) < 0) {
-      return null;
-    }
-    return (CopyOnWriteArraySet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
+  public void OnDownloadCallback(String paramString) {}
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    ThreadManager.post(new ARPromotionSoundPlayer.1(this), 8, null, true);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, boolean paramBoolean, int paramInt2)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel())
-    {
-      paramQQAppInterface = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-      QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "handleConfigFail [id: %s, tag: %s, isSuc: %s, result: %s]", new Object[] { Integer.valueOf(paramInt1), paramQQAppInterface, Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) }));
+    int i = -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARPromotionSoundPlayer", 2, "playSound resPath: " + paramString);
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig, int paramInt)
-  {
-    String str1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (TextUtils.isEmpty(str1)) {
+    this.b = false;
+    if (TextUtils.isEmpty(paramString)) {
       if (QLog.isColorLevel()) {
-        QLog.d("CfgProcess", 2, String.format(" handleConfig tag is null ! config: %s", new Object[] { Integer.valueOf(paramInt) }));
+        QLog.e("ARPromotionSoundPlayer", 2, "playSound resPath is empty!");
       }
     }
-    String str2;
-    BaseApplication localBaseApplication;
-    amor localamor;
     do
     {
-      return;
-      str2 = paramQQAppInterface.getCurrentAccountUin();
-      localBaseApplication = paramQQAppInterface.getApp();
-      localamor = new amor();
-      localamor.jdField_b_of_type_Int = paramConfig.version.get();
-      localamor.jdField_a_of_type_Int = bbkb.c(localBaseApplication, str2, str1);
-      if (localamor.jdField_b_of_type_Int != localamor.jdField_a_of_type_Int) {
+      do
+      {
+        do
+        {
+          return;
+          if (new File(paramString).exists()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("ARPromotionSoundPlayer", 2, "playSound file not exist");
+        return;
+      } while (this.b);
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("CfgProcess", 2, new Object[] { " handleConfig config version is the same. [tag: %s, version: %s]", str1, Integer.valueOf(localamor.jdField_b_of_type_Int) });
+      b();
+      paramString = (amor)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    } while (paramString == null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARPromotionSoundPlayer", 2, "playSound contains resPath, state: " + paramString.c);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (paramString.b())
+      {
+        localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
+        j = paramString.b;
+        if (paramBoolean) {
+          paramString.a = localSoundPool.play(j, 1.0F, 1.0F, 0, i, 1.0F);
+        }
+      }
+      while (!paramString.c()) {
+        for (;;)
+        {
+          paramString.c = 3;
+          return;
+          i = 0;
+        }
+      }
+      SoundPool localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
+      int j = paramString.b;
+      if (paramBoolean) {}
+      for (;;)
+      {
+        paramString.a = localSoundPool.play(j, 1.0F, 1.0F, 0, i, 1.0F);
+        break;
+        i = 0;
+      }
+    }
+    paramString.c = 4;
     return;
-    localamor.c = 0;
-    if (paramConfig.msg_content_list.size() > 0)
-    {
-      paramConfig = (ConfigurationService.Content)paramConfig.msg_content_list.get(0);
-      if (paramConfig != null) {
-        break label367;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CfgProcess", 2, " handleConfig content is null !");
-      }
-      localamor.c = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARPromotionSoundPlayer", 2, "playSound not contains resPath, load");
     }
-    for (;;)
-    {
-      if (localamor.jdField_a_of_type_JavaLangString == null) {
-        localamor.jdField_a_of_type_JavaLangString = "";
-      }
-      localamor.jdField_b_of_type_Boolean = true;
-      localamor.jdField_a_of_type_Boolean = false;
-      if (localamor.c == 0) {
-        try
+    i = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString, 1);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, new amor(this, i, 3));
+  }
+  
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    QLog.d("ARPromotionSoundPlayer", 2, "TVK_IMediaPlayer.onCompletion");
+  }
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    QLog.d("ARPromotionSoundPlayer", 2, String.format("TVK_IMediaPlayer.onError model=%s what=%s position=%s detailInfo=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString }));
+    return false;
+  }
+  
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ARPromotionSoundPlayer", 2, "onLoadComplete sampleId:" + paramInt1 + ", status:" + paramInt2);
+    }
+    if (paramInt2 == 0) {
+      try
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        for (;;)
         {
-          bbcx.a(paramQQAppInterface, str1, localamor);
-          if (!localamor.jdField_a_of_type_Boolean)
+          if (localIterator.hasNext())
           {
-            bbkb.a(localBaseApplication, str2, str1, localamor.jdField_a_of_type_JavaLangString);
-            paramConfig = a(str1);
-            if ((paramConfig == null) || (paramConfig.size() <= 0)) {
-              break label579;
-            }
-            paramConfig = paramConfig.iterator();
-            for (;;)
+            localamor = (amor)((Map.Entry)localIterator.next()).getValue();
+            if ((localamor != null) && (localamor.b == paramInt1))
             {
-              for (;;)
+              if (localamor.a())
               {
-                if (!paramConfig.hasNext()) {
-                  break label579;
-                }
-                amos localamos = (amos)paramConfig.next();
-                try
+                localamor.c = 2;
+                return;
+              }
+              if (localamor.c()) {
+                if (!this.jdField_a_of_type_Boolean)
                 {
-                  localamos.a(paramQQAppInterface, paramInt, str1, localamor);
-                }
-                catch (Exception localException)
-                {
-                  localException.printStackTrace();
-                }
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("CfgProcess", 2, "handleConfig OnGetConfigListener fail:  " + str1);
-                  continue;
-                  label367:
-                  if (paramConfig.compress.get() != 1) {
-                    break label484;
-                  }
-                  paramConfig = augv.a(paramConfig.content.get().toByteArray());
-                  if (paramConfig == null) {
-                    break label460;
-                  }
-                  try
-                  {
-                    localamor.jdField_a_of_type_JavaLangString = new String(paramConfig, "UTF-8");
-                  }
-                  catch (Throwable paramConfig)
-                  {
-                    if (QLog.isColorLevel()) {
-                      QLog.d("CfgProcess", 2, " handleConfig Throwable:" + paramConfig.getMessage());
-                    }
-                    localamor.c = 2;
-                  }
+                  localamor.a = paramSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F);
+                  return;
                 }
               }
-              break;
-              label460:
-              localamor.c = 3;
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("CfgProcess", 2, " handleConfig inflateConfigString error!");
-              break;
-              label484:
-              localamor.jdField_a_of_type_JavaLangString = paramConfig.content.get().toStringUtf8();
             }
           }
         }
-        catch (Throwable paramConfig)
+      }
+      catch (Exception paramSoundPool)
+      {
+        amor localamor;
+        paramSoundPool.printStackTrace();
+        if (QLog.isColorLevel())
         {
-          for (;;)
-          {
-            paramConfig.printStackTrace();
-            if (QLog.isColorLevel())
-            {
-              QLog.i("CfgProcess", 2, "handleConfig call save individual fail:  " + str1);
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.i("CfgProcess", 2, "handleConfig self save config tag: " + str1);
-              }
-            }
-          }
+          QLog.e("ARPromotionSoundPlayer", 2, "onLoadComplete exception", paramSoundPool);
+          return;
+          localamor.c = 4;
         }
       }
     }
-    label579:
-    if (localamor.jdField_b_of_type_Boolean) {}
-    for (int i = localamor.jdField_b_of_type_Int;; i = 0)
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    QLog.d("ARPromotionSoundPlayer", 2, "TVK_IMediaPlayer.onVideoPrepared");
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {}
+    try
     {
-      bbkb.c(localBaseApplication, str2, str1, i);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("CfgProcess", 2, String.format(Locale.getDefault(), "handleConfigForTag  configId: %s, tag: %s, localVersion: %s, version: %s, result: %s, strContent: %s", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(localamor.jdField_a_of_type_Int), Integer.valueOf(localamor.jdField_b_of_type_Int), Integer.valueOf(localamor.c), localamor.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.updatePlayerVideoView(null);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
       return;
     }
-  }
-  
-  public void a(ConfigurationService.ConfigSeq paramConfigSeq, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    String str1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (TextUtils.isEmpty(str1))
+    catch (Exception paramTVK_IMediaPlayer)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "initConfigVersion tag is null, configId: %s", new Object[] { Integer.valueOf(paramInt) }));
-      }
-      return;
+      QLog.d("ARPromotionSoundPlayer", 1, "TVK_IMediaPlayer.onVideoPrepared fail.", paramTVK_IMediaPlayer);
     }
-    String str2 = paramQQAppInterface.c();
-    paramQQAppInterface = paramQQAppInterface.getApp();
-    int i;
-    if (bbkb.d(paramQQAppInterface, str2, str1) != AppSetting.a())
-    {
-      bbkb.d(paramQQAppInterface, str2, str1, AppSetting.a());
-      bbkb.c(paramQQAppInterface, str2, str1, 0);
-      paramConfigSeq.version.set(0);
-      i = 0;
-    }
-    for (;;)
-    {
-      paramConfigSeq.compress.set(1);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "initConfigVersion [id: %s, tag: %s, version: %s]", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(i) }));
-      return;
-      i = bbkb.c(paramQQAppInterface, str2, str1);
-      paramConfigSeq.version.set(i);
-    }
-  }
-  
-  public boolean a(amos paramamos)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((CopyOnWriteArraySet)localIterator.next()).remove(paramamos) | bool) {}
-    return bool;
-  }
-  
-  public boolean a(String paramString, amos paramamos)
-  {
-    boolean bool = false;
-    paramString = a(paramString);
-    if (paramString != null) {
-      bool = paramString.add(paramamos);
-    }
-    return bool;
-  }
-  
-  public boolean b(String paramString, amos paramamos)
-  {
-    boolean bool = false;
-    paramString = a(paramString);
-    if (paramString != null) {
-      bool = paramString.remove(paramamos);
-    }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amoq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,32 @@
-public abstract interface aqkc
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+
+public class aqkc
+  implements View.OnClickListener
 {
-  public abstract String a();
+  public aqkc(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void aS_();
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString);
+  public void onClick(View paramView)
+  {
+    if (!QfileBaseCloudFileTabView.a(this.a)) {
+      return;
+    }
+    QfileBaseCloudFileTabView.a(this.a);
+    this.a.f();
+    if (this.a.jdField_a_of_type_Aqiz.getGroupCount() > 0) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Aqiz.getGroupCount() - 1);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
+    QfileBaseCloudFileTabView.a(this.a, false);
+    this.a.h();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkc
  * JD-Core Version:    0.7.0.1
  */

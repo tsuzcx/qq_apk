@@ -1,37 +1,55 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import eipc.EIPCResult;
+import com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
-class bgif
-  extends VasQuickUpdateManager.CallBacker
+public final class bgif
+  extends bgkd
+  implements bghv<String>
 {
-  int jdField_a_of_type_Int;
+  private bgkd a;
   
-  bgif(bgie parambgie, int paramInt)
+  public static bgif a(bgkd parambgkd, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    bgif localbgif = new bgif();
+    localbgif.jdField_a_of_type_Bgkd = parambgkd;
+    localbgif.jdField_a_of_type_JavaLangString = paramString;
+    localbgif.jdField_b_of_type_JavaLangString = parambgkd.jdField_b_of_type_JavaLangString;
+    localbgif.jdField_b_of_type_Int = parambgkd.jdField_b_of_type_Int;
+    localbgif.jdField_a_of_type_Bghn = parambgkd.jdField_a_of_type_Bghn;
+    return localbgif;
   }
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public String a(bghl parambghl)
   {
-    if ((paramInt1 == 0) && (paramLong == 1000L) && ("vipComic_config_v2.json".equals(paramString1)))
+    parambghl = parambghl.a();
+    if ((parambghl instanceof JsPluginEngine))
     {
-      paramString1 = VasQuickUpdateManager.getJSONFromLocal(BaseApplicationImpl.getApplication().getRuntime(), paramString1, false, null);
-      if (paramString1 != null)
-      {
-        paramString2 = new Bundle();
-        paramString2.putString("config_json", paramString1.toString());
-        this.jdField_a_of_type_Bgie.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramString2));
-      }
+      parambghl = (JsPluginEngine)parambghl;
+      QMLog.d("RepeatRequestEvent", "Dispatch repeat RequestEvent=" + this.jdField_a_of_type_JavaLangString);
+      return parambghl.dispatchSecondaryRequestEvent(this);
     }
+    QMLog.w("RepeatRequestEvent", "Failed to handle repeat RequestEvent=" + this.jdField_a_of_type_JavaLangString);
+    return "";
+  }
+  
+  public String a(JSONObject paramJSONObject)
+  {
+    return this.jdField_a_of_type_Bgkd.a(paramJSONObject);
+  }
+  
+  public String a(JSONObject paramJSONObject, String paramString)
+  {
+    return this.jdField_a_of_type_Bgkd.a(paramJSONObject, paramString);
+  }
+  
+  public String b(JSONObject paramJSONObject)
+  {
+    return this.jdField_a_of_type_Bgkd.b(paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgif
  * JD-Core Version:    0.7.0.1
  */

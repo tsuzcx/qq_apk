@@ -1,22 +1,28 @@
-import android.os.Bundle;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class bgsr
-  extends ajuf
+  extends bgsi
 {
-  bgsr(bgsp parambgsp) {}
-  
-  protected void a(boolean paramBoolean, int paramInt)
+  bgsr(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("result", paramInt);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 3, localBundle);
+    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
+  }
+  
+  protected bgsh a()
+  {
+    return new bgsh(2131694346, new bgss(this));
+  }
+  
+  protected bgsh b()
+  {
+    return new bgsh(2131694326, new bgst(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgsr
  * JD-Core Version:    0.7.0.1
  */

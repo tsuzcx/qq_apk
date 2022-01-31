@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import not;
-import osg;
-import pbu;
+import nsb;
+import owy;
+import phg;
 
 public class PublicAccountUnfollowTask$2
   implements Runnable
 {
-  public PublicAccountUnfollowTask$2(not paramnot) {}
+  public PublicAccountUnfollowTask$2(nsb paramnsb) {}
   
   public void run()
   {
-    osg.a().a().a(not.a(this.this$0).getAccount(), not.a(this.this$0), false, this.this$0, 1);
+    owy.a().a().a(nsb.a(this.this$0).getAccount(), nsb.a(this.this$0), false, this.this$0, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountUnfollowTask.2
  * JD-Core Version:    0.7.0.1
  */

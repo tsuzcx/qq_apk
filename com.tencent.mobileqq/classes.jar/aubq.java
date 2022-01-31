@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
-
-public abstract interface aubq
+public abstract interface aubq<P, R>
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong);
+  public abstract R a(P paramP);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aubq
  * JD-Core Version:    0.7.0.1
  */

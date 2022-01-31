@@ -1,31 +1,30 @@
-import java.nio.channels.SocketChannel;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule.2;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiwn
+  implements aivs
 {
-  public int a;
-  public long a;
-  public String a;
-  public SocketChannel a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public aiwn(QWalletIPCModule.2 param2, ResultReceiver paramResultReceiver) {}
   
-  public aiwn(long paramLong, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, SocketChannel paramSocketChannel)
+  public void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_JavaNioChannelsSocketChannel = paramSocketChannel;
-    this.jdField_c_of_type_Int = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadModule" + paramString2 + "|" + paramResourceInfo + "|" + System.currentTimeMillis());
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("id", paramString1);
+    localBundle.putInt("result", paramInt);
+    localBundle.putString("path", paramString2);
+    localBundle.putSerializable("res_info", paramResourceInfo);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwn
  * JD-Core Version:    0.7.0.1
  */

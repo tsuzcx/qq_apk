@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.fpsreport;
 
-import aaae;
+import abqw;
+import abrb;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import com.tencent.widget.XListView;
-import zzz;
 
 public class FPSXListView
   extends XListView
 {
   private int jdField_a_of_type_Int;
-  private aaae jdField_a_of_type_Aaae;
+  private abrb jdField_a_of_type_Abrb;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean = true;
   
@@ -32,8 +32,8 @@ public class FPSXListView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Aaae != null) {
-      this.jdField_a_of_type_Aaae.a();
+    if (this.jdField_a_of_type_Abrb != null) {
+      this.jdField_a_of_type_Abrb.a();
     }
   }
   
@@ -45,41 +45,41 @@ public class FPSXListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aaae != null)) {
-      this.jdField_a_of_type_Aaae.b();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Abrb != null)) {
+      this.jdField_a_of_type_Abrb.b();
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Aaae != null) {
-      this.jdField_a_of_type_Aaae.a(paramInt);
+    if (this.jdField_a_of_type_Abrb != null) {
+      this.jdField_a_of_type_Abrb.a(paramInt);
     }
     if (this.jdField_a_of_type_Int == 1) {
       if (paramInt == 0) {
-        zzz.a().a("list_leba_new", false);
+        abqw.a().a("list_leba_new", false);
       }
     }
     while (this.jdField_a_of_type_Int != 2)
     {
       return;
-      zzz.a().a("list_leba_new");
+      abqw.a().a("list_leba_new");
       return;
     }
     if (paramInt == 0)
     {
-      zzz.a().a("list_leba", false);
+      abqw.a().a("list_leba", false);
       return;
     }
-    zzz.a().a("list_leba");
+    abqw.a().a("list_leba");
   }
   
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aaae = new aaae();
-    this.jdField_a_of_type_Aaae.a(paramString);
+    this.jdField_a_of_type_Abrb = new abrb();
+    this.jdField_a_of_type_Abrb.a(paramString);
   }
   
   public void setReportType(int paramInt)
@@ -89,7 +89,7 @@ public class FPSXListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fpsreport.FPSXListView
  * JD-Core Version:    0.7.0.1
  */

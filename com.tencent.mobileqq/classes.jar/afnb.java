@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afnb
-  implements View.OnClickListener
+  extends afpq
 {
-  afnb(afmy paramafmy) {}
-  
-  public void onClick(View paramView)
+  afnb(aflj paramaflj)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    banb.a(afmy.a(this.a), paramView, 17, 10029);
-    bbbp.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { paramView.uin, paramView.recomAlgol });
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afvf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afnb
  * JD-Core Version:    0.7.0.1
  */

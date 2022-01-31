@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.util.Base64;
-import belj;
-import betc;
+import bgkz;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
@@ -16,7 +16,7 @@ class ChannelProxyDefault$3
   
   public void onRequestFailed(int paramInt, String paramString)
   {
-    betc.d("ChannelProxyDefault", "onRequestFailed ");
+    QMLog.e("ChannelProxyDefault", "onRequestFailed ");
     if (this.val$listener != null) {
       this.val$listener.onReceiveResult(false, null);
     }
@@ -42,7 +42,7 @@ class ChannelProxyDefault$3
       catch (Throwable paramArrayOfByte)
       {
         JSONObject localJSONObject;
-        betc.d("ChannelProxyDefault", "handleMessage wnsCgiRequest exception ", paramArrayOfByte);
+        QMLog.e("ChannelProxyDefault", "handleMessage wnsCgiRequest exception ", paramArrayOfByte);
         if (this.val$listener == null) {
           return;
         }
@@ -55,7 +55,7 @@ class ChannelProxyDefault$3
       }
       localJSONObject.put("statusCode", paramInt);
       localJSONObject.put("wnsCode", 0);
-      localJSONObject.put("header", belj.a(paramMap));
+      localJSONObject.put("header", bgkz.a(paramMap));
       if (this.val$listener == null) {
         return;
       }
@@ -71,7 +71,7 @@ class ChannelProxyDefault$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault.3
  * JD-Core Version:    0.7.0.1
  */

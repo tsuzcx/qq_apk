@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
-public class amah
-  implements DialogInterface.OnClickListener
+class amah
 {
-  public amah(JumpConfirmFragment paramJumpConfirmFragment) {}
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<amag> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amah(amad paramamad, View paramView, amag paramamag)
   {
-    JefsClass.getInstance().a(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramamag);
+  }
+  
+  public amag a()
+  {
+    return (amag)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amah
  * JD-Core Version:    0.7.0.1
  */

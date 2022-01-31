@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
-import aukp;
-import aukq;
-import aukr;
+import awbw;
+import awbx;
+import awby;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -26,15 +26,15 @@ class MiniAppUserAppInfoListManager$11
       if (this.val$needCheckDbData) {
         MiniAppUserAppInfoListManager.access$1200(this.this$0, (AppInterface)localObject1, this.val$appInfoList);
       }
-      aukp localaukp = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-      if (localaukp == null) {
+      awbw localawbw = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+      if (localawbw == null) {
         continue;
       }
-      localObject1 = localaukp.a();
+      localObject1 = localawbw.a();
       if (localObject1 != null) {}
       try
       {
-        ((aukr)localObject1).a();
+        ((awby)localObject1).a();
         localStringBuilder = new StringBuilder();
         Iterator localIterator = this.val$appInfoList.iterator();
         int i = 1;
@@ -44,7 +44,7 @@ class MiniAppUserAppInfoListManager$11
           localMiniAppInfo.position = i;
           MiniAppEntity localMiniAppEntity = new MiniAppEntity(localMiniAppInfo);
           localMiniAppEntity.setStatus(1000);
-          MiniAppUserAppInfoListManager.access$1100(this.this$0, localaukp, localMiniAppEntity);
+          MiniAppUserAppInfoListManager.access$1100(this.this$0, localawbw, localMiniAppEntity);
           i += 1;
           localStringBuilder.append(localMiniAppInfo.name).append(", ");
         }
@@ -60,14 +60,14 @@ class MiniAppUserAppInfoListManager$11
           QLog.d("MiniAppUserAppInfoListManager", 2, new Object[] { "saveMiniAppInfoList : ", localStringBuilder.toString() });
         }
         if (localObject1 != null) {
-          ((aukr)localObject1).c();
+          ((awby)localObject1).c();
         }
         return;
       }
       finally
       {
         if (localObject1 != null) {
-          ((aukr)localObject1).b();
+          ((awby)localObject1).b();
         }
       }
     }
@@ -75,7 +75,7 @@ class MiniAppUserAppInfoListManager$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,67 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 class ardl
-  implements INetInfoHandler
+  implements arbj
 {
-  ardi a;
+  ardl(ardk paramardk, BaseActivity paramBaseActivity) {}
   
-  public ardl(ardi paramardi1, ardi paramardi2)
+  public arfz a()
   {
-    this.a = paramardi2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    ardh.b("onNetMobile2None");
-    if (this.a != null) {
-      ardi.c(this.a);
+    Object localObject3 = null;
+    int i = 0;
+    Object localObject1;
+    switch (this.jdField_a_of_type_Ardk.a())
+    {
+    default: 
+      localObject1 = null;
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    ardh.b("onNetMobile2Wifi");
-    if (this.a != null) {
-      ardi.c(this.a);
+    int j;
+    int k;
+    for (;;)
+    {
+      Object localObject2 = localObject3;
+      if (localObject1 != null)
+      {
+        localObject2 = localObject3;
+        if (((List)localObject1).size() > 0)
+        {
+          localObject2 = (ardq)((List)localObject1).get(i);
+          j = ((ardq)localObject2).c();
+          k = ((ardq)localObject2).b();
+          if (j != 7) {
+            break;
+          }
+          localObject2 = new argh(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+        }
+      }
+      return localObject2;
+      localObject1 = this.jdField_a_of_type_Ardk.a();
+      i = this.jdField_a_of_type_Ardk.b();
+      continue;
+      localObject1 = this.jdField_a_of_type_Ardk.a();
+      i = this.jdField_a_of_type_Ardk.b();
+      continue;
+      localObject1 = new ArrayList(1);
+      ((List)localObject1).add(this.jdField_a_of_type_Ardk.a());
     }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    ardh.b("onNetNone2Mobile");
-    if (this.a != null) {
-      ardi.c(this.a);
+    if (j == 9) {
+      return new arfw(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
     }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ardh.b("onNetNone2Wifi");
-    if (this.a != null) {
-      ardi.c(this.a);
+    switch (k)
+    {
+    default: 
+      return new arev(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    case 6000: 
+      return new arfb(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
     }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ardh.b("onNetWifi2Mobile");
-    if (this.a != null) {
-      ardi.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    ardh.b("onNetWifi2None");
-    if (this.a != null) {
-      ardi.c(this.a);
-    }
+    return new arfr(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardl
  * JD-Core Version:    0.7.0.1
  */

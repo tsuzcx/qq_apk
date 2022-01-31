@@ -1,25 +1,33 @@
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
 
-class adam
-  implements adao
+public class adam
+  extends alox
 {
-  adam(adal paramadal, adan paramadan) {}
+  public adam(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void a(boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      adal.a(this.jdField_a_of_type_Adal, this.jdField_a_of_type_Adan.a());
-      this.jdField_a_of_type_Adan.a();
+      paramString = ((aloz)this.a.app.getManager(51)).e(this.a.a + "");
+      if (paramString != null)
+      {
+        this.a.e = paramString.name;
+        JoinDiscussionActivity.a(this.a);
+      }
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Adan.a());
-    adal.a(this.jdField_a_of_type_Adal, 0);
+    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adam
  * JD-Core Version:    0.7.0.1
  */

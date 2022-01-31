@@ -200,6 +200,7 @@ public class BaseConstants
   public static final int CODE_SSO_TIPS = 2011;
   public static final int CODE_STANDBYMODE_FORCE_STOP = 2018;
   public static final int CODE_SUBSERVICE_START = 2004;
+  public static final int CODE_TEST_IPC_PACKAGE_LENGTH = -2;
   public static final int CODE_TIMEOUT = 1002;
   public static final int CODE_USERCANCEL = 2006;
   public static final int CODE_USER_GRAYFAIL = 2008;
@@ -284,7 +285,7 @@ public class BaseConstants
   public static final boolean isReleaseVersion = true;
   public static boolean isUseDebugSso = false;
   public static long reSendIntrevTime = 0L;
-  public static final String revision = "a9855103";
+  public static final String revision = "6b98d0b0";
   public static String testServerAddress;
   
   static

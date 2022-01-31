@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.confess;
 
-import amfw;
 import android.text.TextUtils;
+import anww;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ class ConfessPlugin$6
     do
     {
       return;
-      localObject = amfw.a().a(str);
+      localObject = anww.a().a(str);
       ThreadManager.getUIHandler().post(new ConfessPlugin.6.2(this));
       if ((localObject == null) || (localObject.length != 3)) {
         break;
@@ -49,7 +49,7 @@ class ConfessPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.6
  * JD-Core Version:    0.7.0.1
  */

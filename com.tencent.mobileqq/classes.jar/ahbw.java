@@ -1,35 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.Iterator;
+import java.util.List;
 
-class ahbw
-  implements EIPCResultCallback
+public class ahbw
+  implements ruy
 {
-  ahbw(ahbu paramahbu, ahbr paramahbr, DownloadParam paramDownloadParam) {}
+  public ahbw(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(String paramString)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
+    Object localObject;
+    if (paramString != null)
     {
-      i = paramEIPCResult.data.getInt("result_code");
-      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
-      if (this.jdField_a_of_type_Ahbr != null) {
-        this.jdField_a_of_type_Ahbr.onResult(i, paramEIPCResult);
-      }
+      Iterator localIterator = this.a.c.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (ChannelInfo)localIterator.next();
+      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
     }
-    while (this.jdField_a_of_type_Ahbr == null)
+    for (paramString = (String)localObject;; paramString = null)
     {
-      int i;
+      if (paramString != null)
+      {
+        if (!TextUtils.isEmpty(paramString.mJumpUrl))
+        {
+          localObject = new Intent(this.a, QQBrowserActivity.class);
+          ((Intent)localObject).putExtra("hide_operation_bar", true);
+          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
+          this.a.startActivity((Intent)localObject);
+        }
+      }
+      else {
+        return;
+      }
+      nxu.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
       return;
     }
-    this.jdField_a_of_type_Ahbr.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahbw
  * JD-Core Version:    0.7.0.1
  */

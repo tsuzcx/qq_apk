@@ -1,34 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import mqq.app.QQPermissionCallback;
 
 class apiq
-  implements aptw
+  implements QQPermissionCallback
 {
-  apiq(apip paramapip) {}
+  apiq(apik paramapik) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    localQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, null, localQQAppInterface.getAccount(), 0, false);
-    apug.a(this.a.jdField_a_of_type_JavaLangString);
-    aptx.d(BaseActivity.sTopActivity.getString(2131692830));
-    if (this.a.jdField_a_of_type_Apkq != null) {
-      this.a.jdField_a_of_type_Apkq.a(1);
-    }
-    if (this.a.jdField_a_of_type_Apkq.b())
-    {
-      long l = this.a.jdField_a_of_type_Apkq.a().b();
-      apug.a(this.a.jdField_a_of_type_Apkq.a(), l);
-    }
+    bdcd.b(this.a.a);
   }
   
-  public void b() {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    apik.b(this.a);
+    azmj.b(apik.a(this.a), "CliOper", "", "", "0X800A6D6", "0X800A6D6", 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apiq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahwn;
+import ajnx;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class QzoneSlideShowPreparingFragment$4$1
   implements Runnable
 {
-  public QzoneSlideShowPreparingFragment$4$1(ahwn paramahwn) {}
+  public QzoneSlideShowPreparingFragment$4$1(ajnx paramajnx) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class QzoneSlideShowPreparingFragment$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

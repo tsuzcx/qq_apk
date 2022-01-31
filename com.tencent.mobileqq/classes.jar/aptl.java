@@ -1,16 +1,34 @@
-public abstract interface aptl
+import android.view.View;
+import java.util.ArrayList;
+
+public class aptl
 {
-  public abstract void a();
+  private ArrayList<View> a = new ArrayList();
   
-  public abstract void a(int paramInt);
+  public View a()
+  {
+    if (this.a.size() > 0) {
+      return (View)this.a.remove(0);
+    }
+    return null;
+  }
   
-  public abstract void a(long paramLong1, long paramLong2);
+  public void a()
+  {
+    this.a.clear();
+  }
   
-  public abstract void a(String paramString1, String paramString2);
+  public void a(View paramView)
+  {
+    if (this.a.size() >= 3) {
+      return;
+    }
+    this.a.add(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aptl
  * JD-Core Version:    0.7.0.1
  */

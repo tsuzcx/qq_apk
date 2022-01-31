@@ -1,46 +1,53 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.Switch;
+import Wallet.BroadCastInfo;
+import Wallet.GetBroadCastHbIdiomRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import mqq.observer.BusinessObserver;
 
-public class aiqa
-  extends aimt
+class aiqa
+  implements BusinessObserver
 {
-  public aipy a;
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public Switch a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public ImageView d;
-  public TextView d;
-  public TextView e;
+  aiqa(aipz paramaipz) {}
   
-  public aiqa(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369803));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376452));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375467));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377033));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377035));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370498));
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377745));
-    this.jdField_c_of_type_AndroidWidgetImageView.setClickable(false);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131372743));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131377837);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377902));
-    this.e = ((TextView)paramView.findViewById(2131377901));
+    if (paramInt == 28)
+    {
+      paramBundle = (GetBroadCastHbIdiomRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        break label21;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label21:
+      if (paramBoolean)
+      {
+        this.a.jdField_a_of_type_Aipw.a = false;
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          BroadCastInfo localBroadCastInfo = (BroadCastInfo)paramBundle.sendlistIdiomInfoDict.get(str);
+          if ((this.a.jdField_a_of_type_Aipw.a(str) != null) && (localBroadCastInfo != null)) {
+            if (localBroadCastInfo.isFinished == 1) {
+              this.a.jdField_a_of_type_Aipw.a(str);
+            } else {
+              this.a.jdField_a_of_type_Aipw.a(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY);
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiqa
  * JD-Core Version:    0.7.0.1
  */

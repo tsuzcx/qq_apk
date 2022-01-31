@@ -1,24 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Observable;
 
 public class abrl
-  implements DialogInterface.OnClickListener
+  extends Observable
 {
-  public abrl(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  private static abrl a;
+  public int a;
+  public HashMap<String, String> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static abrl a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog cancel clicked!");
+    if (jdField_a_of_type_Abrl == null) {}
+    try
+    {
+      if (jdField_a_of_type_Abrl == null) {
+        jdField_a_of_type_Abrl = new abrl();
+      }
+      return jdField_a_of_type_Abrl;
     }
-    axqy.b(this.a.app, "dc00898", "", "", "0X800A605", "0X800A605", 0, 0, "", "", "", "");
+    finally {}
+  }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    paramHashMap.put("key_type", "t_held_thread");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    setChanged();
+    notifyObservers();
+  }
+  
+  public void a(HashMap<String, String> paramHashMap, int paramInt)
+  {
+    paramHashMap.put("key_type", "t_drop_frame");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_a_of_type_Int = paramInt;
+    setChanged();
+    notifyObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abrl
  * JD-Core Version:    0.7.0.1
  */

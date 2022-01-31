@@ -1,20 +1,34 @@
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapClickListener;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class mwb
-  implements TencentMap.OnMapClickListener
+final class mwb
+  extends BroadcastReceiver
 {
-  public mwb(PoiMapActivity paramPoiMapActivity) {}
-  
-  public void onMapClick(LatLng paramLatLng)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.j();
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    while (!mwa.a.equals(paramIntent.getAction())) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.w("SensorReport", 1, "H264_decode");
+    }
+    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("params");
+    paramIntent = paramIntent.getStringExtra("key");
+    paramContext = paramIntent;
+    if (paramIntent == null) {
+      paramContext = mwa.a;
+    }
+    UserAction.onUserAction(paramContext, true, -1L, -1L, localHashMap, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwb
  * JD-Core Version:    0.7.0.1
  */

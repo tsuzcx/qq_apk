@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
-import java.util.Comparator;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class aurh
-  implements Comparator<PortalManager.TimerConfig>
+final class aurh
+  implements View.OnClickListener
 {
-  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
+  aurh(Dialog paramDialog, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
-    if (l > 0L) {
-      return 1;
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aurh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,88 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqtu
-  extends Handler
+class aqtu
+  extends aqnl
 {
-  public aqtu(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  aqtu(aqtt paramaqtt) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, Bundle paramBundle)
   {
-    switch (paramMessage.what)
+    label280:
+    for (;;)
     {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      this.a.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
-      return;
+      try
+      {
+        String str1;
+        if (aqxg.a)
+        {
+          paramString6 = "183.61.37.13";
+          str1 = "443";
+          paramString5 = null;
+          paramString4 = paramString5;
+          if (aqxg.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+          {
+            paramString4 = paramString5;
+            if (paramBundle != null)
+            {
+              String str2 = paramBundle.getString("strHttpsDomain");
+              short s2 = paramBundle.getShort("httpsPort", (short)0);
+              paramString4 = paramString5;
+              if (!TextUtils.isEmpty(str2))
+              {
+                short s1 = s2;
+                if (s2 == 0) {
+                  s1 = 443;
+                }
+                paramString4 = new Bundle();
+                paramString4.putBoolean("ishttps", true);
+                paramString4.putString("httpsdomain", str2);
+                paramString4.putShort("httpsport", s1);
+              }
+            }
+          }
+          paramString5 = paramString4;
+          if (aroo.a())
+          {
+            paramString5 = paramString4;
+            if (paramBundle != null)
+            {
+              paramBundle = paramBundle.getString("IPv6Dns");
+              paramString5 = paramString4;
+              if (paramString4 == null) {
+                paramString5 = new Bundle();
+              }
+              paramString5.putString("ipv6domain", paramBundle);
+            }
+          }
+          if (this.a.jdField_a_of_type_Aqho != null) {
+            this.a.jdField_a_of_type_Aqho.a(paramBoolean, paramString6, str1, paramInt1, paramString1, paramString3, paramString2, this.a.jdField_a_of_type_JavaLangString, paramString5);
+          }
+        }
+        else
+        {
+          if ((paramString4 == null) || (paramString4.length() <= 0)) {
+            break label280;
+          }
+          str1 = String.valueOf(paramInt2);
+          paramString6 = paramString4;
+          continue;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.e(this.a.b, 2, " callback is null");
+          continue;
+          paramString4 = paramString5;
+        }
+      }
+      finally {}
     }
-    QQGameFeedWebFragment.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtu
  * JD-Core Version:    0.7.0.1
  */

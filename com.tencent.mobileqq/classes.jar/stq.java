@@ -1,30 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.ViewGroup;
+import java.util.ArrayList;
 
 class stq
-  extends SimpleJob<Object>
 {
-  stq(stl paramstl, String paramString1, String paramString2, stu paramstu)
-  {
-    super(paramString1);
-  }
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    stl.a(this.jdField_a_of_type_Stl, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Stu);
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 4;
-  }
+  private stq(stn paramstn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     stq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,35 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetAuthListReq;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import android.widget.HorizontalScrollView;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.qphone.base.util.QLog;
 
 public class bezw
-  extends bfau
+  extends Handler
 {
-  private INTERFACE.StGetAuthListReq a = new INTERFACE.StGetAuthListReq();
+  public bezw(FriendChooser paramFriendChooser) {}
   
-  public bezw(COMM.StCommonExt paramStCommonExt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.appid.set(paramString);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-  }
-  
-  protected String a()
-  {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    if (paramArrayOfByte != null) {}
-    try
+    switch (paramMessage.what)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("authList", a(paramArrayOfByte));
-      return localJSONObject;
     }
-    catch (Exception paramArrayOfByte)
+    for (;;)
     {
-      betc.a("GetAuthListsRequest", "onResponse fail." + paramArrayOfByte);
+      super.handleMessage(paramMessage);
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+      if (QLog.isColorLevel()) {
+        QLog.e("qqBaseActivity", 2, "" + this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width);
+      }
     }
-    betc.a("GetAuthListsRequest", "onResponse fail.data = null");
-    return null;
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetAuthList";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,23 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
-public abstract interface qxb
+public class qxb
+  implements skj
 {
-  public abstract void a(qxc paramqxc);
+  public qxb(SelectVideoTabFragment paramSelectVideoTabFragment) {}
   
-  public abstract void a(qxc paramqxc, VideoInfo paramVideoInfo, int paramInt);
+  public void a(sko paramsko)
+  {
+    SelectVideoTabFragment.a(this.a).setCurrentItem(paramsko.a());
+  }
+  
+  public void b(sko paramsko) {}
+  
+  public void c(sko paramsko) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qxb
  * JD-Core Version:    0.7.0.1
  */

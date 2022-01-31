@@ -9,10 +9,10 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
-import qjy;
-import qnh;
-import qni;
-import qoi;
+import qzf;
+import rcl;
+import rcm;
+import rdm;
 
 public class VideoFeedsFloatWindowDragLayout
   extends FrameLayout
@@ -21,8 +21,8 @@ public class VideoFeedsFloatWindowDragLayout
   private long jdField_a_of_type_Long;
   private Point jdField_a_of_type_AndroidGraphicsPoint;
   private PointF jdField_a_of_type_AndroidGraphicsPointF;
-  private qjy jdField_a_of_type_Qjy;
-  private qni jdField_a_of_type_Qni;
+  private qzf jdField_a_of_type_Qzf;
+  private rcm jdField_a_of_type_Rcm;
   public boolean a;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -55,17 +55,17 @@ public class VideoFeedsFloatWindowDragLayout
   
   private void a(int paramInt1, int paramInt2)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_Qjy, new Object[] { this.jdField_a_of_type_AndroidGraphicsPoint, this.jdField_b_of_type_AndroidGraphicsPoint });
-    localValueAnimator.addUpdateListener(new qnh(this, paramInt1, paramInt2));
+    ValueAnimator localValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_Qzf, new Object[] { this.jdField_a_of_type_AndroidGraphicsPoint, this.jdField_b_of_type_AndroidGraphicsPoint });
+    localValueAnimator.addUpdateListener(new rcl(this, paramInt1, paramInt2));
     localValueAnimator.start();
   }
   
   private void a(Context paramContext)
   {
-    int[] arrayOfInt = qoi.a(paramContext);
+    int[] arrayOfInt = rdm.a(paramContext);
     this.jdField_a_of_type_Long = arrayOfInt[0];
     this.jdField_b_of_type_Long = arrayOfInt[1];
-    this.jdField_a_of_type_Qjy = new qjy();
+    this.jdField_a_of_type_Qzf = new qzf();
     this.jdField_a_of_type_AndroidGraphicsPoint = new Point();
     this.jdField_b_of_type_AndroidGraphicsPoint = new Point();
     int i = ViewConfiguration.get(paramContext).getScaledTouchSlop();
@@ -101,10 +101,10 @@ public class VideoFeedsFloatWindowDragLayout
     paramMotionEvent = (WindowManager.LayoutParams)getLayoutParams();
     paramMotionEvent.x -= i;
     paramMotionEvent.y -= j;
-    if (this.jdField_a_of_type_Qni != null)
+    if (this.jdField_a_of_type_Rcm != null)
     {
-      this.jdField_a_of_type_Qni.b();
-      this.jdField_a_of_type_Qni.a();
+      this.jdField_a_of_type_Rcm.b();
+      this.jdField_a_of_type_Rcm.a();
     }
     this.jdField_c_of_type_Boolean = true;
     return true;
@@ -114,8 +114,8 @@ public class VideoFeedsFloatWindowDragLayout
   {
     if (this.jdField_c_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Qni != null) {
-        this.jdField_a_of_type_Qni.c();
+      if (this.jdField_a_of_type_Rcm != null) {
+        this.jdField_a_of_type_Rcm.c();
       }
       a();
       return true;
@@ -201,9 +201,9 @@ public class VideoFeedsFloatWindowDragLayout
     }
   }
   
-  public void setDragListener(qni paramqni)
+  public void setDragListener(rcm paramrcm)
   {
-    this.jdField_a_of_type_Qni = paramqni;
+    this.jdField_a_of_type_Rcm = paramrcm;
   }
   
   public void setEdge(int paramInt)
@@ -216,7 +216,7 @@ public class VideoFeedsFloatWindowDragLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFloatWindowDragLayout
  * JD-Core Version:    0.7.0.1
  */

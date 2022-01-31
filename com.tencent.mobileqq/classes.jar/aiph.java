@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.data.ShowExternalTroop;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiph
+class aiph
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public ShowExternalTroop a;
+  aiph(aipf paramaipf) {}
   
-  public aiph(int paramInt, ShowExternalTroop paramShowExternalTroop)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
+    aipe.a(this.a.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiph
  * JD-Core Version:    0.7.0.1
  */

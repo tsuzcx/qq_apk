@@ -594,6 +594,7 @@ public abstract class FaceDetector
         localFaceInfo.angles[0] = ((float)(localFaceStatus.pitch * 3.141592653589793D / 180.0D) * -1.0F);
         localFaceInfo.angles[1] = ((float)(localFaceStatus.yaw * 3.141592653589793D / 180.0D) * -1.0F);
         localFaceInfo.angles[2] = ((float)(localFaceStatus.roll * 3.141592653589793D / 180.0D) * -1.0F);
+        localFaceInfo.rect = localFaceStatus.faceRect;
         localFaceInfo.scale = localFaceStatus.scale;
         localFaceInfo.pitch = localFaceStatus.pitch;
         localFaceInfo.yaw = localFaceStatus.yaw;
@@ -603,7 +604,7 @@ public abstract class FaceDetector
         localFaceInfo.denseFaceModel = localFaceStatus.denseFaceModel;
         localFaceInfo.transform = localFaceStatus.transform;
         localFaceInfo.expressionWeights = localFaceStatus.expressionWeights;
-        localFaceInfo.gender = GenderType.FEMALE.value;
+        localFaceInfo.gender = GenderType.DEFAULT.value;
         this.faceInfos.add(localFaceInfo);
         i += 1;
       }

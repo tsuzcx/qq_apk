@@ -1,17 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import android.hardware.Camera;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class azdy
-  implements DialogInterface.OnClickListener
+  extends PreviewContext
+  implements SurfaceHolder.Callback, azdm
 {
-  public azdy(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public azdy(azdf paramazdf, int paramInt1, int paramInt2)
+  {
+    super(paramazdf, paramInt1, paramInt2);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    getPreviewFrame(paramArrayOfByte, paramCamera);
+  }
+  
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.mCamera.a(paramInt1, paramInt2, paramInt3);
+    this.mCamera.a(null, paramSurfaceHolder, this, true);
+  }
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    this.mCamera.a();
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (this.mCamera != null)
+    {
+      this.mCamera.b();
+      this.mCamera.b(true);
+      if (this.mActivtiyDestory) {
+        this.mCamera = null;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azdy
  * JD-Core Version:    0.7.0.1
  */

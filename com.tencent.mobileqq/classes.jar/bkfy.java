@@ -1,14 +1,16 @@
-public abstract interface bkfy
+import com.tencent.weiyun.utils.Singleton;
+
+final class bkfy
+  extends Singleton<bkfx, Void>
 {
-  public abstract void a();
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
+  protected bkfx a(Void paramVoid)
+  {
+    return new bkfx(null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkfy
  * JD-Core Version:    0.7.0.1
  */

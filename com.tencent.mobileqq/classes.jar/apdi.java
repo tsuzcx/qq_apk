@@ -1,19 +1,61 @@
-import android.os.Bundle;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class apdi
+  extends apcg
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public boolean a;
-  public String b;
+  public ArrayList<apdh> a;
   
-  apdi(apdc paramapdc) {}
+  public static apdi a(JSONObject paramJSONObject)
+  {
+    apdi localapdi = new apdi();
+    localapdi.jdField_a_of_type_JavaLangString = paramJSONObject.optString("group");
+    paramJSONObject = paramJSONObject.optJSONArray("configs");
+    localapdi.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramJSONObject.length());
+    int i = 0;
+    while (i < paramJSONObject.length())
+    {
+      apdh localapdh = apdh.a(paramJSONObject.optJSONObject(i));
+      localapdh.a = localapdi;
+      localapdi.jdField_a_of_type_JavaUtilArrayList.add(localapdh);
+      i += 1;
+    }
+    return localapdi;
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("group", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
+      JSONArray localJSONArray = new JSONArray();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put(((apdh)localIterator.next()).a());
+      }
+      localJSONObject.put("configs", localJSONException);
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+      return localJSONObject;
+    }
+    return localJSONObject;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apdi
  * JD-Core Version:    0.7.0.1
  */

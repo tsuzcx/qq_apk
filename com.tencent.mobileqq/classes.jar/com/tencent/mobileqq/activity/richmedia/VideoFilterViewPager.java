@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahty;
-import ahww;
-import ahxd;
-import ahxe;
-import ahxf;
+import ajli;
+import ajog;
+import ajon;
+import ajoo;
+import ajop;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -16,7 +16,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-import baxi;
+import bcwc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
@@ -28,9 +28,9 @@ public class VideoFilterViewPager
   extends ViewPager
 {
   private int jdField_a_of_type_Int;
-  private ahxd jdField_a_of_type_Ahxd;
-  private ahxe jdField_a_of_type_Ahxe;
-  private ahxf jdField_a_of_type_Ahxf;
+  private ajon jdField_a_of_type_Ajon;
+  private ajoo jdField_a_of_type_Ajoo;
+  private ajop jdField_a_of_type_Ajop;
   private Runnable jdField_a_of_type_JavaLangRunnable = new VideoFilterViewPager.1(this);
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b = true;
@@ -50,23 +50,23 @@ public class VideoFilterViewPager
   private void a(View paramView, int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, String.format("onPageSelect position:%s, instantiate:%s, mShowGuideWording:%s, mShowNewGuide:%s, camera:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Integer.valueOf(ahty.jdField_a_of_type_Int) }));
+      QLog.d("VideoFilterViewPager", 2, String.format("onPageSelect position:%s, instantiate:%s, mShowGuideWording:%s, mShowNewGuide:%s, camera:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Integer.valueOf(ajli.jdField_a_of_type_Int) }));
     }
-    Object localObject2 = this.jdField_a_of_type_Ahxf.a(paramInt);
+    Object localObject2 = this.jdField_a_of_type_Ajop.a(paramInt);
     if (!paramBoolean) {
-      ahww.a().a((FilterDesc)localObject2);
+      ajog.a().a((FilterDesc)localObject2);
     }
-    paramView = (TextView)paramView.findViewById(2131373017);
+    paramView = (TextView)paramView.findViewById(2131373455);
     Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("VideoFilterViewPager_video_filter", 0);
     int i = ((SharedPreferences)localObject1).getInt("wordingShowTimes", 0);
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     boolean bool = ((SharedPreferences)localObject1).getBoolean("showSvafGuideWording_" + str, true);
-    if ((this.jdField_a_of_type_Boolean) && (i < 3) && (this.jdField_a_of_type_Ahxf.a(paramInt) == 0))
+    if ((this.jdField_a_of_type_Boolean) && (i < 3) && (this.jdField_a_of_type_Ajop.a(paramInt) == 0))
     {
       if (!paramBoolean) {
         ((SharedPreferences)localObject1).edit().putInt("wordingShowTimes", i + 1).commit();
       }
-      localObject2 = baxi.a(getResources(), 2130845154);
+      localObject2 = bcwc.a(getResources(), 2130845519);
       if (localObject2 != null)
       {
         paramInt = ((Bitmap)localObject2).getWidth();
@@ -89,13 +89,13 @@ public class VideoFilterViewPager
       paramView.setCompoundDrawables(null, null, null, null);
       paramView.setText("");
       continue;
-      if ((this.b) && (bool) && (ahty.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Ahxf.a(paramInt) == 0) && (QmcfManager.getInstance().hasQmcfEntrance(1)))
+      if ((this.b) && (bool) && (ajli.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Ajop.a(paramInt) == 0) && (QmcfManager.getInstance().hasQmcfEntrance(1)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("VideoFilterViewPager", 2, "mShowSvafGuideWording!");
         }
         ((SharedPreferences)localObject1).edit().putBoolean("showSvafGuideWording_" + str, false).commit();
-        localObject1 = baxi.a(getResources(), 2130845153);
+        localObject1 = bcwc.a(getResources(), 2130845518);
         if (localObject1 != null)
         {
           paramInt = ((Bitmap)localObject1).getWidth();
@@ -108,7 +108,7 @@ public class VideoFilterViewPager
       }
       else if (localObject2 != null)
       {
-        localObject1 = baxi.a(((FilterDesc)localObject2).getIconFile(ahww.b));
+        localObject1 = bcwc.a(((FilterDesc)localObject2).getIconFile(ajog.b));
         if (localObject1 != null)
         {
           paramInt = ((Bitmap)localObject1).getWidth();
@@ -132,26 +132,26 @@ public class VideoFilterViewPager
   
   private void d()
   {
-    this.jdField_a_of_type_Ahxf = new ahxf(this);
-    this.jdField_a_of_type_Ahxe = new ahxe(this);
-    setAdapter(this.jdField_a_of_type_Ahxf);
-    setOnPageChangeListener(this.jdField_a_of_type_Ahxe);
+    this.jdField_a_of_type_Ajop = new ajop(this);
+    this.jdField_a_of_type_Ajoo = new ajoo(this);
+    setAdapter(this.jdField_a_of_type_Ajop);
+    setOnPageChangeListener(this.jdField_a_of_type_Ajoo);
   }
   
   public FilterDesc a()
   {
-    return this.jdField_a_of_type_Ahxf.a(getCurrentItem());
+    return this.jdField_a_of_type_Ajop.a(getCurrentItem());
   }
   
   public FilterDesc a(int paramInt)
   {
-    return this.jdField_a_of_type_Ahxf.a(paramInt);
+    return this.jdField_a_of_type_Ajop.a(paramInt);
   }
   
   public void a()
   {
     int i = getCurrentItem();
-    if ((this.b) && (this.jdField_a_of_type_Ahxf.a(i) == 0) && (ahty.jdField_a_of_type_Int == 2) && (QmcfManager.getInstance().hasQmcfEntrance(1)))
+    if ((this.b) && (this.jdField_a_of_type_Ajop.a(i) == 0) && (ajli.jdField_a_of_type_Int == 2) && (QmcfManager.getInstance().hasQmcfEntrance(1)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFilterViewPager", 2, "onCameraChange back!");
@@ -168,16 +168,16 @@ public class VideoFilterViewPager
   {
     int i = 1;
     setVisibility(0);
-    this.jdField_a_of_type_Ahxf.a(paramList);
-    setCurrentItem(this.jdField_a_of_type_Ahxf.a() * 50, false);
+    this.jdField_a_of_type_Ajop.a(paramList);
+    setCurrentItem(this.jdField_a_of_type_Ajop.a() * 50, false);
     paramList = BaseApplicationImpl.getApplication().getSharedPreferences("VideoFilterViewPager_video_filter", 0);
     int j = paramList.getInt("wordingShowTimes", 0);
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if ((ahty.jdField_a_of_type_Int == 2) && (paramList.getBoolean("showSvafGuideWording_" + str, true))) {}
+    if ((ajli.jdField_a_of_type_Int == 2) && (paramList.getBoolean("showSvafGuideWording_" + str, true))) {}
     for (;;)
     {
       int k = getCurrentItem();
-      if (((j < 3) || (i != 0)) && (this.jdField_a_of_type_Ahxf.a(k) == 0)) {
+      if (((j < 3) || (i != 0)) && (this.jdField_a_of_type_Ajop.a(k) == 0)) {
         postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
       }
       return;
@@ -197,15 +197,15 @@ public class VideoFilterViewPager
     if (isShown())
     {
       int i = getCurrentItem();
-      View localView = this.jdField_a_of_type_Ahxf.a(i);
+      View localView = this.jdField_a_of_type_Ajop.a(i);
       if (localView != null)
       {
         localView.removeCallbacks((Runnable)localView.getTag());
         localView.clearAnimation();
         localView.setVisibility(4);
-        if (this.jdField_a_of_type_Ahxd != null)
+        if (this.jdField_a_of_type_Ajon != null)
         {
-          this.jdField_a_of_type_Ahxd.a(1);
+          this.jdField_a_of_type_Ajon.a(1);
           if (QLog.isColorLevel()) {
             QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener hideWordingIfNeed state: 1");
           }
@@ -219,15 +219,15 @@ public class VideoFilterViewPager
     return false;
   }
   
-  public void setViewPagerItemVisiableChangeListener(ahxd paramahxd)
+  public void setViewPagerItemVisiableChangeListener(ajon paramajon)
   {
-    this.jdField_a_of_type_Ahxd = paramahxd;
+    this.jdField_a_of_type_Ajon = paramajon;
     this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,51 @@
-import android.os.Build;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QzoneHardwareRestriction;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class bhow
+  extends Handler
 {
-  private static final int jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuCpuLevel", 1);
-  private static bhow jdField_a_of_type_Bhow;
-  private static final String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuBlackList", "");
-  private static final int jdField_b_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuMemoryLevel", 1);
-  private long jdField_a_of_type_Long = -1L;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile String jdField_b_of_type_JavaLangString;
+  private WeakReference<Handler.Callback> a;
   
-  public bhow()
+  public bhow(Handler.Callback paramCallback)
   {
-    if (this.jdField_a_of_type_Long == -1L) {
-      this.jdField_a_of_type_Long = (QzoneHardwareRestriction.getTotalMem() / 1024L);
-    }
+    this.a = new WeakReference(paramCallback);
   }
   
-  public static bhow a()
+  public bhow(Looper paramLooper, Handler.Callback paramCallback)
   {
-    if (jdField_a_of_type_Bhow == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bhow == null) {
-        jdField_a_of_type_Bhow = new bhow();
-      }
-      return jdField_a_of_type_Bhow;
-    }
-    finally {}
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
   }
   
-  private boolean a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    try
-    {
-      String str = Build.MODEL;
-      if ((str == null) || (str.length() == 0))
-      {
-        QZLog.i("PhotoDanmakuUtil", 1, "buildModel is empty, hide PhotoDanmaku .命中禁止大图浮层策略");
-        return true;
-      }
-      if (QZLog.isColorLevel()) {
-        QZLog.d("PhotoDanmakuUtil", 2, "buildModel is '" + str + "'");
-      }
-      if ((paramString == null) || (paramString.length() == 0)) {
-        break label150;
-      }
-      str = "," + str + ",";
-      if (("," + paramString + ",").contains(str))
-      {
-        QZLog.i("PhotoDanmakuUtil", 1, "命中禁止大图浮层策略");
-        return true;
-      }
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
     }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-      return false;
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    return false;
-    label150:
-    return false;
+    QLog.d("WeakReferenceHandler", 2, "handleMessage cb is null! handler = " + this);
   }
   
-  public boolean a()
+  public String toString()
   {
-    if ((jdField_a_of_type_JavaLangString != null) && (!jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) {
-      if (a(jdField_a_of_type_JavaLangString)) {
-        break label64;
-      }
+    Object localObject = (Handler.Callback)this.a.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("WH");
+    if (localObject != null) {}
+    for (localObject = localObject.toString();; localObject = "None callback") {
+      return (String)localObject;
     }
-    label64:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
-      if ((!this.jdField_a_of_type_Boolean) || (!QzoneHardwareRestriction.meetHardwareRestriction(jdField_b_of_type_Int, jdField_a_of_type_Int))) {
-        break;
-      }
-      return true;
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,29 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class xny
-  implements View.OnClickListener
+public class xny
 {
-  xny(xnw paramxnw, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public static Throwable a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xnw, 1);
+    return new NullPointerException(paramString);
+  }
+  
+  public static Throwable a(String paramString, Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return new IllegalStateException(paramString);
     }
-    this.jdField_a_of_type_Xnw.dismiss();
+    return new IllegalStateException(paramString, paramThrowable);
+  }
+  
+  public static Throwable b(String paramString, Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return new Throwable(paramString);
+    }
+    return new Throwable(paramString, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xny
  * JD-Core Version:    0.7.0.1
  */

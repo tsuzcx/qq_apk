@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
 import android.content.Context;
-import aptm;
-import apty;
-import apxx;
+import armo;
+import arna;
+import arqz;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ class QfileLocalFilePicTabView$1
   public void run()
   {
     if (this.this$0.f) {}
-    for (HashMap localHashMap = (HashMap)apty.a(this.a);; localHashMap = null)
+    for (HashMap localHashMap = (HashMap)arna.a(this.a);; localHashMap = null)
     {
       if (localHashMap == null) {
         localHashMap = new HashMap();
@@ -28,37 +28,46 @@ class QfileLocalFilePicTabView$1
       {
         Object localObject1 = this.this$0.d.iterator();
         while (((Iterator)localObject1).hasNext()) {
-          apty.a(true, ((apxx)((Iterator)localObject1).next()).a(), ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
+          arna.a(true, ((arqz)((Iterator)localObject1).next()).a(), ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, this.this$0);
         }
-        if (this.this$0.f) {}
-        for (localObject1 = aptm.a().a();; localObject1 = null)
+        if (this.this$0.f)
         {
+          localObject1 = armo.a().a();
           if (localObject1 != null) {
-            apty.a(true, (String)localObject1, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
+            arna.a(true, (String)localObject1, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, this.this$0);
           }
-          apty.a(localHashMap);
-          if (localHashMap == null) {
-            break;
+          if (!this.this$0.c()) {
+            break label134;
           }
-          localObject1 = localHashMap.keySet().iterator();
-          while (((Iterator)localObject1).hasNext())
+        }
+        for (;;)
+        {
+          return;
+          localObject1 = null;
+          break;
+          label134:
+          arna.a(localHashMap);
+          if (localHashMap != null)
           {
-            Object localObject2 = (String)((Iterator)localObject1).next();
-            if ("QQfile_recv".equalsIgnoreCase((String)localObject2) != true)
+            localObject1 = localHashMap.keySet().iterator();
+            while (((Iterator)localObject1).hasNext())
             {
-              localObject2 = (List)localHashMap.get(localObject2);
-              this.this$0.a.addAll((Collection)localObject2);
+              Object localObject2 = (String)((Iterator)localObject1).next();
+              if ("QQfile_recv".equalsIgnoreCase((String)localObject2) != true)
+              {
+                localObject2 = (List)localHashMap.get(localObject2);
+                this.this$0.a.addAll((Collection)localObject2);
+              }
             }
           }
         }
-        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView.1
  * JD-Core Version:    0.7.0.1
  */

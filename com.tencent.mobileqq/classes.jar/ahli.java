@@ -1,190 +1,123 @@
-import android.content.Intent;
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.GroupInfo;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class ahli
+public class ahli
   implements View.OnClickListener
 {
-  ahli(ahkd paramahkd) {}
+  public ahli(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
   public void onClick(View paramView)
   {
-    int j;
-    Intent localIntent;
-    if (ahkd.a(this.a) != null)
-    {
-      paramView = ahkd.a(this.a).app;
-      if (paramView == null) {
-        break label1094;
-      }
-      j = paramView.a().e();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "initMultiVideoBar-->SessionType");
-      }
-      if ((j != 1) && (j != 2)) {
-        break label521;
-      }
-      localIntent = new Intent(ahkd.a(this.a).getApplicationContext(), AVActivity.class);
-      if (paramView.a().f() != 1011) {
-        break label97;
-      }
-    }
-    label97:
-    long l;
-    label521:
-    int k;
-    int m;
-    do
-    {
+    if (!(paramView.getTag() instanceof ahjv)) {
       return;
-      paramView = null;
-      break;
-      if ((paramView.c()) && (paramView.a().f() != 1) && (paramView.a().f() != 3000) && (paramView.a().g()) && (paramView.a().f()) && (paramView.a().f() != 1011) && (paramView.a().f() != 21))
-      {
-        localIntent = new Intent(ahkd.a(this.a), VideoInviteActivity.class);
-        localIntent.addFlags(268435456);
-        localIntent.putExtra("uinType", paramView.a().f());
-        localIntent.putExtra("peerUin", paramView.a().c());
-        localIntent.putExtra("extraUin", paramView.a().d());
-        if (j == 1)
-        {
-          bool = true;
-          localIntent.putExtra("isAudioMode", bool);
-          ahkd.a(this.a).startActivity(localIntent);
-          ahkd.a(this.a).overridePendingTransition(2130772132, 0);
-        }
-      }
-      for (;;)
-      {
-        axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 1, 0, "", "", "", "");
-        return;
-        bool = false;
-        break;
-        localIntent.addFlags(262144);
-        localIntent.addFlags(268435456);
-        if (paramView.a().b(paramView.a().c()))
-        {
-          localIntent.putExtra("sessionType", 3);
-          localIntent.putExtra("GroupId", paramView.a().c());
-          localIntent.putExtra("isDoubleVideoMeeting", true);
-          ahkd.a(this.a).startActivity(localIntent);
-          ahkd.a(this.a).overridePendingTransition(2130772132, 0);
-          axqy.b(paramView, "CliOper", "", "", "0X800520A", "0X800520A", 0, 0, "", "", "", "");
-        }
-        else
-        {
-          localIntent.putExtra("sessionType", j);
-          localIntent.putExtra("uin", paramView.a().c());
-          ahkd.a(this.a).startActivity(localIntent);
-          ahkd.a(this.a).overridePendingTransition(2130772132, 0);
-          axqy.b(paramView, "CliOper", "", "", "Two_call", "Two_call_full", 0, 0, "1", "", "", "");
-        }
-      }
-      l = ahkd.a(this.a).app.a().b();
-      k = ahkd.a(this.a).app.a().a();
-      if ((l == 0L) && (ahkd.a(this.a).app.a().b() <= 0)) {
-        break label1077;
-      }
-      m = paramView.a().b(l);
-      if (ahkd.a(this.a).app.a().b() <= 0) {
-        break label650;
-      }
-    } while ((paramView.a().c() == 1) || (paramView.a().c() == 3) || (!QLog.isColorLevel()));
-    QLog.e("MultiVideoBar", 2, "status error");
-    return;
-    label650:
-    label665:
-    int i;
-    if (m == 2)
+    }
+    ahjv localahjv = (ahjv)paramView.getTag();
+    if (localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 80)
     {
-      localIntent = new Intent();
-      if (paramView.a().a(k, l) <= 0L) {
-        break label898;
+      paramView = TroopInfoActivity.a(String.valueOf(localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get()), 5);
+      TroopInfoActivity.a(this.a.a(), paramView);
+      return;
+    }
+    if (!bdee.d(this.a.a()))
+    {
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.a().getString(2131694764), 0).b(this.a.a());
+      return;
+    }
+    ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(String.valueOf(localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get()));
+    TroopNotifyAndRecommendView.a(this.a, (structmsg.StructMsg)localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get(), localahjv.c);
+    String str2 = localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.msg_alert.get();
+    String str3 = localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
+    int i;
+    label286:
+    String str1;
+    if ((this.a.jdField_a_of_type_Ahke != null) && (localahjv.b < this.a.jdField_a_of_type_Ahke.jdField_a_of_type_Int))
+    {
+      paramView = "1";
+      i = localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_inviter_role.get();
+      if ((i != 2) && (i != 3)) {
+        break label383;
       }
-      if (!paramView.a().a(k, l)) {
-        break label893;
+      i = 0;
+      if (i == 0) {
+        break label388;
       }
-      i = 2;
+      str1 = "0";
+      label293:
+      if ((str2 != null) && (!"".equals(str2))) {
+        break label715;
+      }
+      if (localahjv.jdField_a_of_type_Int != 82) {
+        break label394;
+      }
+      TroopNotifyAndRecommendView.a(this.a, localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get(), (structmsg.StructMsg)localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
     }
     for (;;)
     {
-      localIntent.addFlags(262144);
-      localIntent.addFlags(268435456);
-      localIntent.putExtra("GroupId", String.valueOf(l));
-      localIntent.putExtra("Type", i);
-      localIntent.putExtra("sessionType", j);
-      localIntent.putExtra("uinType", muc.c(k));
-      localIntent.putExtra("MultiAVType", m);
-      if (m != 2) {
-        break label988;
-      }
-      if (paramView.a().d(String.valueOf(l)) != 14) {
-        break label903;
-      }
-      ((arfg)paramView.getManager(236)).a(ahkd.a(this.a), paramView.getCurrentAccountUin(), String.valueOf(l), "2", "openRoom");
-      label823:
-      ahkd.a(this.a).overridePendingTransition(2130772132, 0);
-      if (k != 2) {
-        break label1003;
-      }
-      axqy.b(paramView, "CliOper", "", "", "Multi_call", "Msgtab_back", 0, 0, "", "", "", "");
+      TroopNotifyAndRecommendView.d(this.a);
+      this.a.jdField_a_of_type_Bepp.c(2131719773);
+      this.a.jdField_a_of_type_Bepp.show();
+      return;
+      paramView = "0";
       break;
-      localIntent = new Intent(ahkd.a(this.a).getApplicationContext(), AVActivity.class);
-      break label665;
-      label893:
+      label383:
       i = 1;
-      continue;
-      label898:
-      i = 0;
-    }
-    label903:
-    TroopManager localTroopManager = (TroopManager)paramView.getManager(52);
-    if ((localTroopManager != null) && (localTroopManager.b(l + "") == null)) {}
-    for (boolean bool = false;; bool = true)
-    {
-      localIntent.putExtra("troopmember", bool);
-      localIntent.putExtra("Fromwhere", "SmallScreen");
-      bgkp.a(paramView, ahkd.a(this.a), localIntent, 1);
-      break label823;
-      label988:
-      ahkd.a(this.a).startActivity(localIntent);
-      break label823;
-      label1003:
-      if (k != 1) {
-        break;
-      }
-      if (paramView.a().b(l) == 10)
+      break label286;
+      label388:
+      str1 = "1";
+      break label293;
+      label394:
+      if (localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 2)
       {
-        axqy.b(paramView, "CliOper", "", "", "0X8005931", "0X8005931", 0, 0, "", "", "", "");
-        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopNotifyAndRecommendView", 2, "doCheckPayTroopReq start: " + str3);
+        }
+        TroopRequestActivity.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str3, localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.a.jdField_a_of_type_Ahlb);
+        bdaj.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, paramView, str1, "0" });
       }
-      axqy.b(paramView, "CliOper", "", "", "0X80046D8", "0X80046D8", 0, 0, "", "", "", "");
-      break;
-      label1077:
-      if (!QLog.isColorLevel()) {
-        break;
+      else
+      {
+        TroopNotifyAndRecommendView.a(this.a, 1, (structmsg.StructMsg)localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
+        if ((localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.has()) && (localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.has())) {
+          ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3, localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "", localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.get());
+        }
+        if (localahjv.jdField_a_of_type_Int == 1)
+        {
+          bdaj.a("Grp_contacts_news", "notice", "agree_ask", 0, 0, new String[] { str3, paramView, str1, "0" });
+        }
+        else if (localahjv.jdField_a_of_type_Int == 2)
+        {
+          bdaj.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, paramView, str1, "0" });
+          continue;
+          label715:
+          TroopNotifyAndRecommendView.a(this.a, 0, (structmsg.StructMsg)localahjv.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
+          if (localahjv.jdField_a_of_type_Int == 1) {
+            bdaj.a("Grp_contacts_news", "notice", "refuse_ask", 0, 0, new String[] { str3, paramView, str1, "0" });
+          } else if (localahjv.jdField_a_of_type_Int == 2) {
+            bdaj.a("Grp_contacts_news", "notice", "refuse_invite", 0, 0, new String[] { str3, paramView, str1, "0" });
+          }
+        }
       }
-      QLog.e("MultiVideoBar", 2, "status error");
-      break;
-      label1094:
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("MultiVideoBar", 2, "app is null");
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahli
  * JD-Core Version:    0.7.0.1
  */

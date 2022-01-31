@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import airx;
-import ajhu;
+import akji;
+import akzg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -31,7 +31,7 @@ public final class ApolloManager$3
       if (QLog.isColorLevel()) {
         QLog.d("ApolloManager", 2, "check default res cost: " + (l2 - l1) + " ms, unzip: " + bool);
       }
-      if ((bool) && (airx.a()))
+      if ((bool) && (akji.a()))
       {
         localObject2 = localObject1;
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -41,7 +41,7 @@ public final class ApolloManager$3
           localSharedPreferences.edit().putString("inner_res_md5", (String)localObject2).commit();
         }
       }
-      airx.a().set(false);
+      akji.a().set(false);
       if (QLog.isColorLevel()) {
         QLog.d("ApolloManager", 2, "check default ready scene file cost: " + (System.currentTimeMillis() - l2));
       }
@@ -61,7 +61,7 @@ public final class ApolloManager$3
       }
       else
       {
-        localObject2 = ajhu.a(0);
+        localObject2 = akzg.a(0);
         if ((localObject2 == null) || (localObject2.length == 0))
         {
           StringBuilder localStringBuilder;
@@ -106,7 +106,7 @@ public final class ApolloManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloManager.3
  * JD-Core Version:    0.7.0.1
  */

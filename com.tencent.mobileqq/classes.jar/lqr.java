@@ -1,18 +1,22 @@
-import javax.microedition.khronos.opengles.GL11;
+import android.app.Notification;
+import android.os.IInterface;
 
 public abstract interface lqr
+  extends IInterface
 {
-  public abstract int a();
+  public abstract int a(long paramLong, int paramInt);
   
-  public abstract void a(int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public abstract void a();
   
-  public abstract void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public abstract void a(lyx paramlyx);
   
-  public abstract void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public abstract void a(boolean paramBoolean, Notification paramNotification);
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lqr
  * JD-Core Version:    0.7.0.1
  */

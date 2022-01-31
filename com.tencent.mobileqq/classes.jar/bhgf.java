@@ -1,18 +1,24 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.log.QMLog;
 
-public class bhgf
-  implements bhgq
+class bhgf
+  implements bglj
 {
-  public bhgf(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  bhgf(bhge parambhge) {}
   
-  public void a()
+  public void a(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusicList(this.jdField_a_of_type_JavaLangString);
+    paramContext = paramIntent.getAction();
+    QMLog.i("MiniAppAudioPlayer", "onReceiveListener:" + paramContext);
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) && (this.a.a())) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhgf
  * JD-Core Version:    0.7.0.1
  */

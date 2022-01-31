@@ -1,28 +1,20 @@
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aust
-  extends RecyclerView.ViewHolder
+final class aust
+  implements avpl
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  aust(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public aust(CustomCoverFragment paramCustomCoverFragment, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.itemView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366604));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366594));
-    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131167134));
+    auss.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aust
  * JD-Core Version:    0.7.0.1
  */

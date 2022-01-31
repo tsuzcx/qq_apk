@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import ajya;
-import akwa;
+import alpo;
+import ammq;
 
 public class MessageForTroopFile
   extends ChatMessage
@@ -28,7 +28,7 @@ public class MessageForTroopFile
   {
     try
     {
-      TroopFileData localTroopFileData = (TroopFileData)akwa.a(this.msgData);
+      TroopFileData localTroopFileData = (TroopFileData)ammq.a(this.msgData);
       if (localTroopFileData != null)
       {
         this.url = localTroopFileData.fileUrl;
@@ -46,7 +46,7 @@ public class MessageForTroopFile
         this.height = localTroopFileData.height;
         this.duration = localTroopFileData.duration;
       }
-      this.msg = ajya.a(2131706580);
+      this.msg = alpo.a(2131706952);
       return;
     }
     catch (Exception localException)
@@ -61,7 +61,7 @@ public class MessageForTroopFile
   
   public String getSummaryMsg()
   {
-    return ajya.a(2131706629) + this.fileName;
+    return alpo.a(2131707001) + this.fileName;
   }
   
   public boolean isSupportReply()
@@ -98,7 +98,7 @@ public class MessageForTroopFile
     localTroopFileData.duration = this.duration;
     try
     {
-      this.msgData = akwa.a(localTroopFileData);
+      this.msgData = ammq.a(localTroopFileData);
       return;
     }
     catch (Exception localException)
@@ -109,7 +109,7 @@ public class MessageForTroopFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopFile
  * JD-Core Version:    0.7.0.1
  */

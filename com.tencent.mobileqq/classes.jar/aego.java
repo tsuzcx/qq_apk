@@ -1,30 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.VideoListener.1;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
 
 public class aego
-  implements VideoDrawable.OnPlayRepeatListener
+  implements TextWatcher
 {
-  public AIOGalleryAdapter a;
+  public aego(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public aego(AIOGalleryAdapter paramAIOGalleryAdapter)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a = paramAIOGalleryAdapter;
-  }
-  
-  public void onPlayRepeat(int paramInt)
-  {
-    if (paramInt != 1) {
+    if (paramEditable.length() >= 4)
+    {
+      VerifyCodeActivity.c(this.a, true);
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new AIOGalleryAdapter.VideoListener.1(this));
+    VerifyCodeActivity.d(this.a, false);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aego
  * JD-Core Version:    0.7.0.1
  */

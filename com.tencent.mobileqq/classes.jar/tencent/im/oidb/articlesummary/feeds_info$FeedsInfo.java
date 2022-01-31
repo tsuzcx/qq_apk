@@ -17,7 +17,7 @@ public final class feeds_info$FeedsInfo
   public final PBBytesField bytes_business_name_prefix = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_business_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField enum_ugc_src = PBField.initEnum(0);
-  public final PBEnumField feeds_type = PBField.initEnum(0);
+  public final PBUInt32Field feeds_type = PBField.initUInt32(0);
   public feeds_info.FollowRecommendFeedsInfo msg_follow_recommend_feeds_info = new feeds_info.FollowRecommendFeedsInfo();
   public feeds_info.SocializeFeedsInfo msg_social_feeds_info = new feeds_info.SocializeFeedsInfo();
   public feeds_info.TopicRecommendFeedsInfo msg_topic_recommend_feeds_info = new feeds_info.TopicRecommendFeedsInfo();
@@ -35,7 +35,7 @@ public final class feeds_info$FeedsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.feeds_info.FeedsInfo
  * JD-Core Version:    0.7.0.1
  */

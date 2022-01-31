@@ -1,60 +1,58 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-class sfi
-  implements bblz
+public class sfi
+  extends BroadcastReceiver
 {
-  sfi(sfh paramsfh) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  private sfi(sfh paramsfh) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramString = new JSONObject();
-    if (paramInt1 == 8) {}
-    for (;;)
-    {
-      try
-      {
-        paramString.put("retCode", -1);
-        paramString.put("msg", "fail");
-        paramString.put("localId", this.a.d());
-        if (this.a.jdField_a_of_type_Bcdp.a() != null) {
-          this.a.jdField_a_of_type_Bcdp.a().callJs(sfk.h, new String[] { paramString.toString() });
-        }
-        axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2F", "0X8005D2F", 0, 0, "1", "", "", "");
-        if (this.a.jdField_a_of_type_Bbly != null) {
-          this.a.jdField_a_of_type_Bbly.f();
-        }
-        this.a.jdField_a_of_type_Bbly = null;
-        return;
-      }
-      catch (JSONException localJSONException1)
-      {
-        localJSONException1.printStackTrace();
-        continue;
-      }
-      if (paramInt1 == 4) {
-        try
-        {
-          paramString.put("retCode", 0);
-          paramString.put("msg", ajya.a(2131708787) + this.a.d() + ajya.a(2131708781));
-          paramString.put("localId", this.a.d());
-        }
-        catch (JSONException localJSONException2)
-        {
-          localJSONException2.printStackTrace();
-        }
+    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON appstatus=" + sfh.a(this.jdField_a_of_type_Sfh));
       }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF appstatus = " + sfh.a(this.jdField_a_of_type_Sfh));
+            }
+          } while (sfh.a(this.jdField_a_of_type_Sfh) != 2);
+          this.jdField_a_of_type_Sfh.a();
+          this.jdField_a_of_type_Sfh.c();
+          return;
+        } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_USER_PRESENT app status=" + sfh.a(this.jdField_a_of_type_Sfh));
+        }
+      } while ((sfh.a(this.jdField_a_of_type_Sfh) != 2) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)));
+      paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    } while (paramContext == null);
+    this.jdField_a_of_type_Sfh.a(paramContext, NetConnInfoCenter.getServerTimeMillis());
   }
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfi
  * JD-Core Version:    0.7.0.1
  */

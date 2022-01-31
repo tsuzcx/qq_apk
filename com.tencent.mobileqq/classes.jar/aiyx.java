@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 
 public class aiyx
-  extends aizd
+  implements DialogInterface.OnClickListener
 {
-  public aiyx(CmGameLoadingFragment paramCmGameLoadingFragment) {}
+  public aiyx(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (CmGameLoadingFragment.a(this.a) != null) {
-      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).isShowing())) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyx
  * JD-Core Version:    0.7.0.1
  */

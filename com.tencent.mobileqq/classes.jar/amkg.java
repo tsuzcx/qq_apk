@@ -1,10 +1,26 @@
-public abstract interface amkg
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
+
+public class amkg
+  implements ArkViewImplement.LoadCallback
 {
-  public abstract void onServiceSyncSucc(boolean paramBoolean);
+  public amkg(QQDailyArkView paramQQDailyArkView) {}
+  
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  {
+    onLoadState(paramInt1);
+  }
+  
+  public void onLoadState(int paramInt)
+  {
+    if (paramInt != 1) {
+      QQDailyArkView.a(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,62 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.LocalWtTicketPromise.1;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class ayhi
-  implements WtTicketPromise
+class ayhi
+  extends alph
 {
-  private anbr jdField_a_of_type_Anbr;
-  private WeakReference<ayhh> jdField_a_of_type_JavaLangRefWeakReference;
+  ayhi(ayhe paramayhe) {}
   
-  public ayhi(ayhh paramayhh, anbr paramanbr)
+  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramayhh);
-    this.jdField_a_of_type_Anbr = paramanbr;
-  }
-  
-  public void Done(Ticket paramTicket)
-  {
-    if ((paramTicket != null) && (paramTicket._pskey_map != null))
+    super.a(paramBoolean, paramArrayList, paramArrayList1);
+    paramArrayList1 = (String)paramArrayList1.get(0);
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() >= 1))
     {
-      ThreadManager.excute(new ConfigSettingForDataLine.LocalWtTicketPromise.1(this), 128, null, false);
-      return;
+      paramArrayList = ((ArrayList)paramArrayList.get(0)).iterator();
+      while (paramArrayList.hasNext())
+      {
+        Object localObject = (String)paramArrayList.next();
+        if (((String)localObject).charAt(0) < '')
+        {
+          localObject = bdli.b((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            int j = localObject.length;
+            int i = 0;
+            while (i < j)
+            {
+              localStringBuilder.append(localObject[i]).append(" ");
+              i += 1;
+            }
+          }
+        }
+        else
+        {
+          localStringBuilder.append((String)localObject).append(" ");
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
+      }
     }
-    if (this.jdField_a_of_type_Anbr != null) {
-      this.jdField_a_of_type_Anbr.a(false);
+    ayhe.a(this.a).put(paramArrayList1, localStringBuilder);
+    paramArrayList = ayhe.b(this.a).get(paramArrayList1);
+    if (paramArrayList != null) {
+      try
+      {
+        paramArrayList.notify();
+        return;
+      }
+      finally {}
     }
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket is null");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_Anbr != null) {
-      this.jdField_a_of_type_Anbr.a(false);
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (this.jdField_a_of_type_Anbr != null) {
-      this.jdField_a_of_type_Anbr.a(false);
-    }
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket time oiut");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayhi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,30 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CircleProgressBar;
+
 public class bejf
+  extends Handler
 {
-  private static volatile bejf jdField_a_of_type_Bejf;
-  private static volatile byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  public bejf(CircleProgressBar paramCircleProgressBar) {}
   
-  public static bejf a()
+  public void handleMessage(Message paramMessage)
   {
-    if (jdField_a_of_type_Bejf == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    switch (paramMessage.what)
     {
-      if (jdField_a_of_type_Bejf == null) {
-        jdField_a_of_type_Bejf = new bejf();
-      }
-      return jdField_a_of_type_Bejf;
     }
+    do
+    {
+      return;
+      paramMessage = this.a;
+      paramMessage.i += 3;
+      this.a.postInvalidate();
+    } while (!this.a.a);
+    sendEmptyMessageDelayed(10000, 50L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bejf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,24 @@
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class bipn
-  implements bjos<Boolean>
+public class bipn
+  implements DialogInterface.OnDismissListener
 {
-  bipn(bipi parambipi) {}
+  public bipn(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    bipi localbipi = this.a;
-    if (!paramBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
+    if (QlinkShareJumpActivity.a(this.a))
     {
-      bipi.a(localbipi, bool);
-      return;
+      QlinkShareJumpActivity.a(this.a, false);
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bipn
  * JD-Core Version:    0.7.0.1
  */

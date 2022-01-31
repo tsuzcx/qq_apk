@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimTipsInfo;
 
 public class aihm
-  implements DialogInterface.OnClickListener
+  implements biud
 {
-  public aihm(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public aihm(ContactListView paramContactListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(QQPimTipsInfo paramQQPimTipsInfo)
   {
-    this.a.a();
+    if (paramQQPimTipsInfo == null) {
+      return;
+    }
+    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
+    biuk.b(this.a.getContext(), paramQQPimTipsInfo);
+    Message localMessage = new Message();
+    localMessage.what = 6;
+    localMessage.obj = paramQQPimTipsInfo;
+    this.a.a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aihm
  * JD-Core Version:    0.7.0.1
  */

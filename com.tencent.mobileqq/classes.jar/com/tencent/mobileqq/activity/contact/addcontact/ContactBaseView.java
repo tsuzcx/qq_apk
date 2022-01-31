@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import affi;
+import ahcn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,21 +12,21 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public abstract class ContactBaseView
   extends FrameLayout
 {
-  public affi a;
+  public ahcn a;
   public Activity a;
   public QQAppInterface a;
   
-  public ContactBaseView(affi paramaffi)
+  public ContactBaseView(ahcn paramahcn)
   {
-    super(paramaffi.a());
-    this.jdField_a_of_type_Affi = paramaffi;
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_Affi.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramaffi.a();
+    super(paramahcn.a());
+    this.jdField_a_of_type_Ahcn = paramahcn;
+    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_Ahcn.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramahcn.a();
   }
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131297927);
+    return getResources().getDimensionPixelSize(2131297948);
   }
   
   protected void a() {}
@@ -50,7 +50,7 @@ public abstract class ContactBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView
  * JD-Core Version:    0.7.0.1
  */

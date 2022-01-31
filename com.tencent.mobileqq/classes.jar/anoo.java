@@ -1,56 +1,36 @@
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.HashMap;
 
-public class anoo
+final class anoo
+  implements bapw
 {
-  public anop a;
-  public String a;
-  
-  public JSONObject a()
+  public void a(baqv parambaqv, baqw parambaqw)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
+    if ((parambaqv == null) || (parambaqw == null)) {}
+    do
     {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("user_id", this.jdField_a_of_type_Anop.jdField_a_of_type_JavaLangString);
-      localJSONObject2.put("source_md5", this.jdField_a_of_type_Anop.jdField_b_of_type_JavaLangString);
-      localJSONObject2.put("source_url", this.jdField_a_of_type_Anop.c);
-      localJSONArray = new JSONArray();
-      localIterator = this.jdField_a_of_type_Anop.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray.put((String)localIterator.next());
+      do
+      {
+        return;
+      } while (!(parambaqv instanceof baps));
+      parambaqv = (baps)parambaqv;
+      parambaqv.jdField_a_of_type_Long += parambaqw.c;
+      parambaqw.c = 0L;
+      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
+      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
+      if (parambaqw.contains("range="))
+      {
+        String str = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
+        parambaqv.jdField_a_of_type_JavaLangString = (str + "range=" + parambaqv.jdField_a_of_type_Long);
       }
-      localException.put("expose_md5s", localJSONArray);
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("DoutuReportData", 2, "convert error:" + localException);
-      }
-      return localJSONObject1;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = this.jdField_a_of_type_Anop.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localJSONArray.put((String)localIterator.next());
-    }
-    localException.put("expose_urls", localJSONArray);
-    localException.put("click_md5", this.jdField_a_of_type_Anop.d);
-    localException.put("click_url", this.jdField_a_of_type_Anop.e);
-    localException.put("aio_type", this.jdField_a_of_type_Anop.f);
-    localException.put("mobile_type", this.jdField_a_of_type_Anop.g);
-    localException.put("to_user_id", this.jdField_a_of_type_Anop.h);
-    localJSONObject1.put("dcId", this.jdField_a_of_type_JavaLangString);
-    localJSONObject1.put("data", localException);
-    return localJSONObject1;
+    } while (!QLog.isColorLevel());
+    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + parambaqw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anoo
  * JD-Core Version:    0.7.0.1
  */

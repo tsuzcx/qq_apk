@@ -1,66 +1,39 @@
-import com.tencent.mobileqq.confess.ConfessInfo;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.ar.ARGLSurfaceView;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class amns
-  implements ajte
+  implements GLSurfaceView.EGLContextFactory
 {
-  public void a(amnj paramamnj) {}
+  private int jdField_a_of_type_Int = 12440;
   
-  public void a(String paramString, int paramInt1, int paramInt2) {}
+  public amns(ARGLSurfaceView paramARGLSurfaceView) {}
   
-  public void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, ConfessInfo paramConfessInfo) {}
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    switch (paramInt)
-    {
+    QLog.i("AREngine_ARGLSurfaceView", 1, "createContext. display = " + paramEGLDisplay);
+    int i = this.jdField_a_of_type_Int;
+    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+  }
+  
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    if (ARGLSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView) != null) {
+      ARGLSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView).a();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  a(paramBoolean, paramObject);
-                  return;
-                  b(paramBoolean, paramObject);
-                  return;
-                } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-                paramObject = (Object[])paramObject;
-              } while ((paramObject == null) || (paramObject.length != 6));
-              a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (ConfessInfo)paramObject[5]);
-              return;
-            } while ((paramObject == null) || (!(paramObject instanceof amnj)));
-            a((amnj)paramObject);
-            return;
-          } while (!(paramObject instanceof Object[]));
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length < 7);
-        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Boolean)paramObject[6]).booleanValue());
-        return;
-      } while (!(paramObject instanceof Object[]));
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 3);
-    a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("AREngine_ARGLSurfaceView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
+    QLog.i("AREngine_ARGLSurfaceView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amns
  * JD-Core Version:    0.7.0.1
  */

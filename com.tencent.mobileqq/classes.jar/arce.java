@@ -1,18 +1,16 @@
-public abstract interface arce
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class arce
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  arce(arcb paramarcb) {}
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arce
  * JD-Core Version:    0.7.0.1
  */

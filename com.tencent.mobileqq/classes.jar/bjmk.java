@@ -1,23 +1,23 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.remote.RecvMsg;
 
-public class bjmk
-  extends GestureDetector.SimpleOnGestureListener
+public final class bjmk
+  implements Parcelable.Creator<RecvMsg>
 {
-  public bjmk(CropVideoActivity paramCropVideoActivity) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public RecvMsg a(Parcel paramParcel)
   {
-    paramMotionEvent.getX();
-    paramMotionEvent.getY();
-    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
-    return true;
+    return new RecvMsg(paramParcel);
+  }
+  
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjmk
  * JD-Core Version:    0.7.0.1
  */

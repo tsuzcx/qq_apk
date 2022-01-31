@@ -1,27 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-public class tnz
-  extends syn
+class tnz
+  extends View.AccessibilityDelegate
 {
-  public int b;
-  public int c;
+  tnz(tnx paramtnx) {}
   
-  public tnz(qqstory_service.RspGetBlackList paramRspGetBlackList)
+  @TargetApi(14)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    super(paramRspGetBlackList.result);
-    this.b = paramRspGetBlackList.black_status.get();
-    this.c = paramRspGetBlackList.update_interval.get();
-  }
-  
-  public String toString()
-  {
-    return "GetBlackListStatusResponse{blackStatus=" + this.b + ", updateInterval=" + this.c + '}';
+    if (paramInt != 32) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tnz
  * JD-Core Version:    0.7.0.1
  */

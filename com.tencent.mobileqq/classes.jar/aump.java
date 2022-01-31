@@ -1,18 +1,26 @@
-public class aump
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+
+public final class aump
+  implements atxr
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public String toString()
+  public void a(int paramInt)
   {
-    return "QuickSendObject{mOriginMD5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mOriginSize=" + this.jdField_a_of_type_Long + ", mThumbMD5='" + this.b + '\'' + ", mQuickSendFailed=" + this.jdField_a_of_type_Boolean + '}';
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QQPlayerService.a(BaseApplicationImpl.getContext(), QQPlayerService.b());
+      return;
+    }
+    QQPlayerService.c(BaseApplicationImpl.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aump
  * JD-Core Version:    0.7.0.1
  */

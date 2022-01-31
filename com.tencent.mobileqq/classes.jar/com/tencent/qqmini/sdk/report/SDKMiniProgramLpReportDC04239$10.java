@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.report;
 
 import android.os.Bundle;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import bgpn;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.utils.EnvUtils;
 
 public final class SDKMiniProgramLpReportDC04239$10
   implements Runnable
@@ -20,12 +20,13 @@ public final class SDKMiniProgramLpReportDC04239$10
     localBundle.putString("reserves", this.d);
     localBundle.putString("reserves2", this.e);
     localBundle.putString("app_type", this.f);
-    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).callServer("MiniAppTransferModule", "launch_report_sdk_4239", localBundle);
+    localBundle.putBoolean("x5_enable", EnvUtils.isX5Enabled(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo));
+    bgpn.a().a("launch_report", localBundle, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.10
  * JD-Core Version:    0.7.0.1
  */

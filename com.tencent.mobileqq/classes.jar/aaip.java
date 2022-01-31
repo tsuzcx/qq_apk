@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.gdtad.api.GdtAd;
 
-public class aaip
-  implements View.OnClickListener
+public abstract interface aaip
 {
-  public aaip(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public abstract void a(GdtAd paramGdtAd);
   
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(2130771997, 2130772001);
-  }
+  public abstract void a(GdtAd paramGdtAd, aaio paramaaio);
+  
+  public abstract void b(GdtAd paramGdtAd);
+  
+  public abstract void c(GdtAd paramGdtAd);
+  
+  public abstract void d(GdtAd paramGdtAd);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaip
  * JD-Core Version:    0.7.0.1
  */

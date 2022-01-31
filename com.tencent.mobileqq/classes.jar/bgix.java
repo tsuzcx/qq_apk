@@ -1,22 +1,22 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.sdk.core.cache.MiniCacheFreeManager.1;
 
-class bgix
-  implements View.OnClickListener
+public class bgix
+  implements DialogInterface.OnClickListener
 {
-  bgix(bgiw parambgiw) {}
+  public bgix(MiniCacheFreeManager.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
-      this.a.a.a.finish();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgix
  * JD-Core Version:    0.7.0.1
  */

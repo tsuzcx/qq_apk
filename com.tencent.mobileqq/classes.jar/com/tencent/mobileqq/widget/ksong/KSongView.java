@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget.ksong;
 
-import ahiw;
+import ajaf;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,15 +13,15 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
-import asbb;
-import asbc;
-import asbe;
-import asbk;
-import bcte;
-import bctg;
-import bcth;
-import bcti;
-import bctj;
+import atsb;
+import atsc;
+import atse;
+import atsk;
+import besn;
+import besp;
+import besq;
+import besr;
+import bess;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QwAdapter;
 import java.util.ArrayList;
@@ -34,13 +34,13 @@ public class KSongView
   private int jdField_a_of_type_Int = -1;
   public long a;
   private ListView jdField_a_of_type_AndroidWidgetListView;
-  private bcte jdField_a_of_type_Bcte = new bcte();
-  private bctg jdField_a_of_type_Bctg;
-  private bcti jdField_a_of_type_Bcti;
+  private besn jdField_a_of_type_Besn = new besn();
+  private besp jdField_a_of_type_Besp;
+  private besr jdField_a_of_type_Besr;
   private KSongProsBar jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar;
   private KSongTextView jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView;
   private QwAdapter jdField_a_of_type_CooperationQwalletPluginQwAdapter;
-  private List<asbe> jdField_a_of_type_JavaUtilList;
+  private List<atse> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
   private KSongTextView jdField_b_of_type_ComTencentMobileqqWidgetKsongKSongTextView;
@@ -65,29 +65,29 @@ public class KSongView
   
   private float a(int paramInt, long paramLong)
   {
-    Object localObject = (asbe)this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getItem(paramInt);
-    if ((localObject == null) || (((asbe)localObject).jdField_b_of_type_JavaUtilArrayList.size() <= 0))
+    Object localObject = (atse)this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getItem(paramInt);
+    if ((localObject == null) || (((atse)localObject).jdField_b_of_type_JavaUtilArrayList.size() <= 0))
     {
       QLog.i("KSongView", 2, "error, sentence = " + localObject);
       return 0.0F;
     }
-    if (paramLong >= ((asbe)localObject).jdField_a_of_type_Long + ((asbe)localObject).jdField_b_of_type_Long)
+    if (paramLong >= ((atse)localObject).jdField_a_of_type_Long + ((atse)localObject).jdField_b_of_type_Long)
     {
       QLog.i("KSongView", 2, "over the sentence...");
       return 1.0F;
     }
-    asbb localasbb = null;
+    atsb localatsb = null;
     paramInt = 0;
     for (;;)
     {
-      if (paramInt < ((asbe)localObject).jdField_b_of_type_JavaUtilArrayList.size())
+      if (paramInt < ((atse)localObject).jdField_b_of_type_JavaUtilArrayList.size())
       {
-        localasbb = (asbb)((asbe)localObject).jdField_b_of_type_JavaUtilArrayList.get(paramInt);
-        if (paramLong >= localasbb.jdField_a_of_type_Long + localasbb.jdField_b_of_type_Long) {}
+        localatsb = (atsb)((atse)localObject).jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+        if (paramLong >= localatsb.jdField_a_of_type_Long + localatsb.jdField_b_of_type_Long) {}
       }
       else
       {
-        if (localasbb != null) {
+        if (localatsb != null) {
           break;
         }
         QLog.i("KSongView", 2, "error, charaxter is null...");
@@ -95,23 +95,23 @@ public class KSongView
       }
       paramInt += 1;
     }
-    localObject = (asbb)((asbe)localObject).jdField_b_of_type_JavaUtilArrayList.get(((asbe)localObject).jdField_b_of_type_JavaUtilArrayList.size() - 1);
-    float f = (float)(paramLong - localasbb.jdField_a_of_type_Long) / (float)localasbb.jdField_b_of_type_Long;
-    return (localasbb.jdField_a_of_type_Int + f) / ((asbb)localObject).jdField_b_of_type_Int;
+    localObject = (atsb)((atse)localObject).jdField_b_of_type_JavaUtilArrayList.get(((atse)localObject).jdField_b_of_type_JavaUtilArrayList.size() - 1);
+    float f = (float)(paramLong - localatsb.jdField_a_of_type_Long) / (float)localatsb.jdField_b_of_type_Long;
+    return (localatsb.jdField_a_of_type_Int + f) / ((atsb)localObject).jdField_b_of_type_Int;
   }
   
-  private bcte a(String paramString)
+  private besn a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       QLog.i("KSongView", 2, "error! config path wrong...");
     }
-    bcte localbcte;
+    besn localbesn;
     do
     {
       return null;
       try
       {
-        paramString = ahiw.b(paramString);
+        paramString = ajaf.b(paramString);
         QLog.i("KSongView", 2, "config_content = " + paramString);
         if (TextUtils.isEmpty(paramString))
         {
@@ -125,21 +125,21 @@ public class KSongView
         return null;
       }
       paramString = new JSONObject(paramString);
-      localbcte = new bcte();
-      localbcte.jdField_a_of_type_JavaLangString = paramString.optString("name");
-      localbcte.jdField_a_of_type_JavaLangString = paramString.optString("singer");
-      localbcte.jdField_a_of_type_Long = paramString.optLong("time");
-      localbcte.jdField_b_of_type_JavaLangString = paramString.optString("ksongId");
+      localbesn = new besn();
+      localbesn.jdField_a_of_type_JavaLangString = paramString.optString("name");
+      localbesn.jdField_a_of_type_JavaLangString = paramString.optString("singer");
+      localbesn.jdField_a_of_type_Long = paramString.optLong("time");
+      localbesn.jdField_b_of_type_JavaLangString = paramString.optString("ksongId");
       paramString = paramString.optJSONObject("qrcConfig");
     } while (paramString == null);
-    localbcte.jdField_b_of_type_Long = paramString.optLong("start", 0L);
-    localbcte.c = paramString.optLong("end", 0L);
-    localbcte.d = paramString.optLong("pretime", 0L);
-    localbcte.e = paramString.optLong("total", 0L);
-    if ((0L < localbcte.jdField_b_of_type_Long) && (0L < localbcte.c) && (0L < localbcte.d) && (0L < localbcte.e))
+    localbesn.jdField_b_of_type_Long = paramString.optLong("start", 0L);
+    localbesn.c = paramString.optLong("end", 0L);
+    localbesn.d = paramString.optLong("pretime", 0L);
+    localbesn.e = paramString.optLong("total", 0L);
+    if ((0L < localbesn.jdField_b_of_type_Long) && (0L < localbesn.c) && (0L < localbesn.d) && (0L < localbesn.e))
     {
-      paramString = localbcte;
-      if (localbcte.jdField_b_of_type_Long < localbcte.c) {}
+      paramString = localbesn;
+      if (localbesn.jdField_b_of_type_Long < localbesn.c) {}
     }
     else
     {
@@ -170,13 +170,13 @@ public class KSongView
     addView(localLinearLayout, paramAttributeSet);
     localObject1 = new LinearLayout(paramContext);
     ((LinearLayout)localObject1).setOrientation(1);
-    ((LinearLayout)localObject1).setBackgroundResource(2130842859);
+    ((LinearLayout)localObject1).setBackgroundResource(2130843043);
     ((LinearLayout)localObject1).setClickable(true);
     addView((View)localObject1, paramAttributeSet);
     paramAttributeSet = this.jdField_a_of_type_AndroidWidgetListView;
     localObject1 = new ArrayList();
     this.jdField_a_of_type_JavaUtilList = ((List)localObject1);
-    paramContext = new QwAdapter(paramContext, (List)localObject1, 2131560222, new bctj(this));
+    paramContext = new QwAdapter(paramContext, (List)localObject1, 2131560330, new bess(this));
     this.jdField_a_of_type_CooperationQwalletPluginQwAdapter = paramContext;
     paramAttributeSet.setAdapter(paramContext);
   }
@@ -191,16 +191,16 @@ public class KSongView
       QLog.i("KSongView", 2, "error, out of scrop...");
       return false;
     }
-    paramLong = this.jdField_a_of_type_Bcte.jdField_b_of_type_Long + paramLong - this.jdField_a_of_type_Bcte.d;
-    if (this.jdField_a_of_type_Bctg != null) {
-      this.jdField_a_of_type_Bctg.a(paramLong);
+    paramLong = this.jdField_a_of_type_Besn.jdField_b_of_type_Long + paramLong - this.jdField_a_of_type_Besn.d;
+    if (this.jdField_a_of_type_Besp != null) {
+      this.jdField_a_of_type_Besp.a(paramLong);
     }
-    Object localObject = (asbe)this.jdField_a_of_type_JavaUtilList.get(this.jdField_b_of_type_Int);
-    long l = ((asbe)localObject).jdField_a_of_type_Long + ((asbe)localObject).jdField_b_of_type_Long;
+    Object localObject = (atse)this.jdField_a_of_type_JavaUtilList.get(this.jdField_b_of_type_Int);
+    long l = ((atse)localObject).jdField_a_of_type_Long + ((atse)localObject).jdField_b_of_type_Long;
     b(paramLong);
     if (paramLong > l)
     {
-      if (l >= this.jdField_a_of_type_Bcte.c)
+      if (l >= this.jdField_a_of_type_Besn.c)
       {
         QLog.i("KSongView", 2, "play over, no scroll...");
         return false;
@@ -217,8 +217,8 @@ public class KSongView
   private boolean a(String paramString)
   {
     int k = 0;
-    Object localObject = ahiw.b(paramString);
-    paramString = asbk.a((String)localObject, true);
+    Object localObject = ajaf.b(paramString);
+    paramString = atsk.a((String)localObject, true);
     if ((paramString == null) || (paramString.a == null))
     {
       QLog.i("KSongView", 2, "error, parse Qrc fail, qrc = " + (String)localObject);
@@ -230,11 +230,11 @@ public class KSongView
       int j = k;
       if (i < paramString.a.size())
       {
-        localObject = (asbe)paramString.a.get(i);
-        if ((((asbe)localObject).jdField_a_of_type_Long >= this.jdField_a_of_type_Bcte.jdField_b_of_type_Long) && (((asbe)localObject).jdField_a_of_type_Long + ((asbe)localObject).jdField_b_of_type_Long <= this.jdField_a_of_type_Bcte.c)) {
+        localObject = (atse)paramString.a.get(i);
+        if ((((atse)localObject).jdField_a_of_type_Long >= this.jdField_a_of_type_Besn.jdField_b_of_type_Long) && (((atse)localObject).jdField_a_of_type_Long + ((atse)localObject).jdField_b_of_type_Long <= this.jdField_a_of_type_Besn.c)) {
           this.jdField_a_of_type_JavaUtilList.add(localObject);
         }
-        if (((asbe)localObject).jdField_a_of_type_Long >= this.jdField_a_of_type_Bcte.c) {
+        if (((atse)localObject).jdField_a_of_type_Long >= this.jdField_a_of_type_Besn.c) {
           j = k;
         }
       }
@@ -242,7 +242,7 @@ public class KSongView
       {
         while (j < 5)
         {
-          this.jdField_a_of_type_JavaUtilList.add(new asbe());
+          this.jdField_a_of_type_JavaUtilList.add(new atse());
           j += 1;
         }
       }
@@ -261,7 +261,7 @@ public class KSongView
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView = ((KSongTextView)localView.findViewById(2131373428));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView = ((KSongTextView)localView.findViewById(2131373877));
       QLog.i("KSongView", 2, "index line = " + this.jdField_b_of_type_Int);
     } while (this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView == null);
     float f = a(this.jdField_b_of_type_Int, paramLong);
@@ -279,9 +279,9 @@ public class KSongView
     finally {}
   }
   
-  public bcte a()
+  public besn a()
   {
-    return this.jdField_a_of_type_Bcte;
+    return this.jdField_a_of_type_Besn;
   }
   
   public void a()
@@ -294,7 +294,7 @@ public class KSongView
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar.a(0L);
     }
-    this.jdField_a_of_type_Bcti.removeMessages(0);
+    this.jdField_a_of_type_Besr.removeMessages(0);
     if (this.jdField_a_of_type_Int > 0) {
       this.jdField_a_of_type_Int = 0;
     }
@@ -307,7 +307,7 @@ public class KSongView
     }
   }
   
-  public void a(String paramString1, String paramString2, KSongProsBar paramKSongProsBar, bctg parambctg)
+  public void a(String paramString1, String paramString2, KSongProsBar paramKSongProsBar, besp parambesp)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
@@ -315,9 +315,9 @@ public class KSongView
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar = paramKSongProsBar;
-    setKListener(parambctg);
-    this.jdField_a_of_type_Bcti = new bcti(this);
-    new bcth(this).execute(new String[] { paramString1, paramString2 });
+    setKListener(parambesp);
+    this.jdField_a_of_type_Besr = new besr(this);
+    new besq(this).execute(new String[] { paramString1, paramString2 });
   }
   
   public void a(boolean paramBoolean)
@@ -338,7 +338,7 @@ public class KSongView
     if (this.jdField_a_of_type_Int == 2)
     {
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Bcti.sendEmptyMessage(0);
+      this.jdField_a_of_type_Besr.sendEmptyMessage(0);
       this.jdField_b_of_type_Long += System.currentTimeMillis() - this.c;
       return;
     }
@@ -353,11 +353,11 @@ public class KSongView
     for (;;)
     {
       localKSongTextView.a(i, 0);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetKsongKSongTextView.a(this.jdField_a_of_type_Bcte.d, null);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetKsongKSongTextView.a(this.jdField_a_of_type_Besn.d, null);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Bcti.sendEmptyMessage(0);
+      this.jdField_a_of_type_Besr.sendEmptyMessage(0);
       return;
-      i = getResources().getColor(2131166021);
+      i = getResources().getColor(2131166060);
     }
   }
   
@@ -366,24 +366,24 @@ public class KSongView
     if (this.jdField_a_of_type_Int == 1)
     {
       this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_Bcti.removeMessages(0);
+      this.jdField_a_of_type_Besr.removeMessages(0);
       this.c = System.currentTimeMillis();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Bcti != null) {
-      this.jdField_a_of_type_Bcti.removeMessages(0);
+    if (this.jdField_a_of_type_Besr != null) {
+      this.jdField_a_of_type_Besr.removeMessages(0);
     }
     if (this.jdField_a_of_type_Int > 0) {
       this.jdField_a_of_type_Int = 0;
     }
   }
   
-  public void setKListener(bctg parambctg)
+  public void setKListener(besp parambesp)
   {
-    this.jdField_a_of_type_Bctg = parambctg;
+    this.jdField_a_of_type_Besp = parambesp;
   }
 }
 

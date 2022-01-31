@@ -1,10 +1,10 @@
 package com.tencent.qidian;
 
-import ajsd;
+import aljq;
 import android.content.Intent;
 import android.os.Bundle;
-import aqbe;
-import auuy;
+import arum;
+import awmk;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
@@ -34,11 +34,11 @@ class QidianProfileCardActivity$ForwardRunnable
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("forward_type", 1);
-    Object localObject = new File(ajsd.bX);
+    Object localObject = new File(aljq.bY);
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    String str = ajsd.bX + Utils.Crc64String(localQidianProfileCardActivity.a.a.a) + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    String str = aljq.bY + Utils.Crc64String(localQidianProfileCardActivity.a.a.a) + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
     localObject = str;
     if (!new File(str).exists()) {}
     try
@@ -51,7 +51,7 @@ class QidianProfileCardActivity$ForwardRunnable
       localBundle.putString("forward_extra", (String)localObject);
       localObject = new Intent();
       ((Intent)localObject).putExtras(localBundle);
-      aqbe.a(localQidianProfileCardActivity, (Intent)localObject, 21);
+      arum.a(localQidianProfileCardActivity, (Intent)localObject, 21);
       return;
     }
     catch (IOException localIOException)
@@ -65,7 +65,7 @@ class QidianProfileCardActivity$ForwardRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.ForwardRunnable
  * JD-Core Version:    0.7.0.1
  */

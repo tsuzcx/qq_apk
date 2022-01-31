@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoAdInfo;
 
-class nsg
-  implements View.OnClickListener
+public final class nsg
+  implements Parcelable.Creator<VideoAdInfo>
 {
-  nsg(nsc paramnsc) {}
-  
-  public void onClick(View paramView)
+  public VideoAdInfo a(Parcel paramParcel)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToRefresh");
-    nsc.a(this.a, 5);
+    return new VideoAdInfo(paramParcel);
+  }
+  
+  public VideoAdInfo[] a(int paramInt)
+  {
+    return new VideoAdInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsg
  * JD-Core Version:    0.7.0.1
  */

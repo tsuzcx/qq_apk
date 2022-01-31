@@ -1,20 +1,30 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-class adow
-  extends actn
+public class adow
+  implements AdapterView.OnItemClickListener
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  List<ImageView> jdField_a_of_type_JavaUtilList;
-  TextView b;
+  public adow(QuickLoginActivity paramQuickLoginActivity) {}
   
-  adow(adov paramadov) {}
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
+    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
+    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
+    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
+    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adow
  * JD-Core Version:    0.7.0.1
  */

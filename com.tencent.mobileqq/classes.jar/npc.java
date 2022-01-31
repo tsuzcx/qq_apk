@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class npc
-  implements Parcelable.Creator<VideoInfo.AdTagInfo>
+final class npc
+  extends amky
 {
-  public VideoInfo.AdTagInfo a(Parcel paramParcel)
+  npc(String paramString)
   {
-    return new VideoInfo.AdTagInfo(paramParcel);
+    super(paramString);
   }
   
-  public VideoInfo.AdTagInfo[] a(int paramInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return new VideoInfo.AdTagInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation onLocationFinish errCode " + paramInt + " info = " + paramSosoLbsInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npc
  * JD-Core Version:    0.7.0.1
  */

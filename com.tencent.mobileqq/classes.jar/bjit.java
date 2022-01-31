@@ -1,32 +1,14 @@
-import android.text.Spanned;
-
-class bjit
-  extends bkda
+public abstract interface bjit
 {
-  bjit(bjis parambjis, int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract void a();
   
-  public int a(CharSequence paramCharSequence)
-  {
-    if (this.jdField_a_of_type_Bjis.b() == 0) {
-      return super.a(paramCharSequence);
-    }
-    return 0;
-  }
+  public abstract void a(float paramFloat);
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    if (this.jdField_a_of_type_Bjis.b() == 0) {}
-    for (this.jdField_a_of_type_Int = 20;; this.jdField_a_of_type_Int = 18) {
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-    }
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjit
  * JD-Core Version:    0.7.0.1
  */

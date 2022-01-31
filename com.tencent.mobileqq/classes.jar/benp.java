@@ -1,139 +1,108 @@
-import android.content.Context;
-import android.os.Build;
-import android.os.Handler;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.os.Bundle;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
 import android.view.View;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.qqmini.sdk.core.widget.QQToast.ProtectedToast.1;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.mobileqq.widget.ParticipleView;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class benp
-  extends Toast
+public final class benp
+  extends ExploreByTouchHelper
 {
-  private static WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private static Class jdField_a_of_type_JavaLangClass;
-  private static Field jdField_a_of_type_JavaLangReflectField;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static Field jdField_b_of_type_JavaLangReflectField;
-  private static Method jdField_b_of_type_JavaLangReflectMethod;
-  public Runnable a;
+  private WeakReference<View> a;
   
-  public benp(Context paramContext)
+  private benp(View paramView)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new QQToast.ProtectedToast.1(this);
+    super(paramView);
+    this.a = new WeakReference(paramView);
   }
   
-  public void cancel()
+  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
-    try
+    View localView = (View)this.a.get();
+    if ((localView instanceof ParticipleView))
     {
-      betc.a("QQToast", "cancel!");
-      bejn.c().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (!benn.a(getView().getContext(), false))
-      {
-        super.cancel();
-        return;
+      int i = ParticipleView.a((ParticipleView)localView, paramFloat1, paramFloat2);
+      if (i >= 0) {
+        return i;
       }
-      Object localObject = jdField_a_of_type_JavaLangReflectField.get(this);
-      if (jdField_b_of_type_JavaLangReflectMethod == null)
-      {
-        jdField_b_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("hide", new Class[0]);
-        jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
-      }
-      jdField_b_of_type_JavaLangReflectMethod.invoke(localObject, new Object[0]);
-      return;
     }
-    catch (Throwable localThrowable)
+    return -2147483648;
+  }
+  
+  public void getVisibleVirtualViews(List<Integer> paramList)
+  {
+    Object localObject = (View)this.a.get();
+    if ((localObject instanceof ParticipleView))
     {
-      betc.a("QQToast", "", localThrowable);
-      if ((localThrowable instanceof NoSuchMethodException)) {
-        super.cancel();
+      localObject = ParticipleView.b((ParticipleView)localObject);
+      int i = 0;
+      int j = ((List)localObject).size();
+      while (i < j)
+      {
+        paramList.add(Integer.valueOf(i));
+        i += 1;
       }
     }
   }
   
-  public void show()
+  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    try
+    if (paramInt2 == 16)
     {
-      if (getView() == null) {
-        throw new RuntimeException("setView must have been called");
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      betc.a("QQToast", "", localThrowable);
-      if ((localThrowable instanceof NoSuchMethodException)) {
-        super.show();
-      }
-      return;
-    }
-    if (jdField_a_of_type_JavaLangReflectField == null)
-    {
-      jdField_a_of_type_JavaLangReflectField = Toast.class.getDeclaredField("mTN");
-      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-    }
-    Object localObject1 = jdField_a_of_type_JavaLangReflectField.get(this);
-    Object localObject2;
-    if (benn.a())
-    {
-      localObject2 = localObject1.getClass().getDeclaredField("mParams");
-      ((Field)localObject2).setAccessible(true);
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams = (WindowManager.LayoutParams)((Field)localObject2).get(localObject1);
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 40;
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755759;
-    }
-    for (;;)
-    {
-      try
+      paramBundle = (View)this.a.get();
+      if ((paramBundle instanceof ParticipleView))
       {
-        if (("" + Build.MANUFACTURER).equalsIgnoreCase("SAMSUNG")) {
-          jdField_a_of_type_AndroidViewWindowManager$LayoutParams.getClass().getField("layoutInDisplayCutoutMode").setInt(jdField_a_of_type_AndroidViewWindowManager$LayoutParams, 1);
-        }
-        localObject2 = (TextView)getView().findViewById(2131377522);
-        if ((localObject2 != null) && (((TextView)localObject2).getText().length() < 6))
+        paramBundle = ParticipleView.a((ParticipleView)paramBundle);
+        if (paramBundle != null)
         {
-          l = 900L;
-          bejn.c().postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
-          betc.a("QQToast", "show");
-          if (!benn.a(getView().getContext(), false))
-          {
-            super.show();
-            return;
-          }
+          paramBundle.invalidateVirtualView(paramInt1);
+          paramBundle.sendEventForVirtualView(paramInt1, 1);
         }
       }
-      catch (Exception localException)
+      return true;
+    }
+    return false;
+  }
+  
+  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  {
+    Object localObject = (View)this.a.get();
+    if ((localObject instanceof ParticipleView))
+    {
+      localObject = ParticipleView.b((ParticipleView)localObject);
+      if (paramInt < ((List)localObject).size()) {
+        paramAccessibilityEvent.setContentDescription(((beno)((List)localObject).get(paramInt)).a.a());
+      }
+    }
+  }
+  
+  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    Object localObject = (View)this.a.get();
+    if ((localObject instanceof ParticipleView))
+    {
+      localObject = ParticipleView.b((ParticipleView)localObject);
+      if ((paramInt < ((List)localObject).size()) && (paramInt != -2147483648))
       {
-        betc.d("QQToast", localException.getMessage(), localException);
-        continue;
-        if (jdField_a_of_type_JavaLangClass == null) {
-          jdField_a_of_type_JavaLangClass = Class.forName("android.widget.Toast$TN");
-        }
-        if (jdField_b_of_type_JavaLangReflectField == null)
+        localObject = (beno)((List)localObject).get(paramInt);
+        if (beno.a((beno)localObject).size() > 0)
         {
-          jdField_b_of_type_JavaLangReflectField = jdField_a_of_type_JavaLangClass.getDeclaredField("mNextView");
-          jdField_b_of_type_JavaLangReflectField.setAccessible(true);
+          RectF localRectF = (RectF)beno.a((beno)localObject).get(0);
+          paramAccessibilityNodeInfoCompat.setContentDescription(((beno)localObject).a.a());
+          paramAccessibilityNodeInfoCompat.addAction(16);
+          paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom));
         }
-        jdField_b_of_type_JavaLangReflectField.set(localObject1, getView());
-        if (jdField_a_of_type_JavaLangReflectMethod == null)
-        {
-          jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("show", new Class[0]);
-          jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
-        }
-        jdField_a_of_type_JavaLangReflectMethod.invoke(localObject1, new Object[0]);
-        return;
       }
-      long l = 1900L;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     benp
  * JD-Core Version:    0.7.0.1
  */

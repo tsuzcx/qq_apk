@@ -10,6 +10,7 @@ import android.util.Pair;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.api.standard.GLCapabilities;
 import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
+import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.filter.BaseFilter;
@@ -40,6 +41,7 @@ import com.tencent.ttpic.filter.FaceOffByImageFilter;
 import com.tencent.ttpic.filter.FaceOffFilter;
 import com.tencent.ttpic.filter.FacialFeatureFilter;
 import com.tencent.ttpic.filter.FastStickerFilter;
+import com.tencent.ttpic.filter.FrozenFrameFilter;
 import com.tencent.ttpic.filter.HairCos;
 import com.tencent.ttpic.filter.HeadCropFilter;
 import com.tencent.ttpic.filter.LutItemsFilter;
@@ -73,6 +75,7 @@ import com.tencent.ttpic.openapi.filter.MaskStickerFilter.BrushMaskFilter;
 import com.tencent.ttpic.openapi.filter.MaskStickerFilter.DynamicMaskFilter;
 import com.tencent.ttpic.openapi.filter.MaskStickerFilter.StaticMaskFilter;
 import com.tencent.ttpic.openapi.filter.RapidNetFilter;
+import com.tencent.ttpic.openapi.filter.RenderItem;
 import com.tencent.ttpic.openapi.filter.StaticStickerFilter;
 import com.tencent.ttpic.openapi.filter.TransformFilter;
 import com.tencent.ttpic.openapi.filter.VideoFilterList;
@@ -81,12 +84,14 @@ import com.tencent.ttpic.openapi.filter.VideoFilterListExtension.CreateExternalF
 import com.tencent.ttpic.openapi.filter.zoomfilter.ZoomFilter;
 import com.tencent.ttpic.openapi.initializer.FilamentInitializer;
 import com.tencent.ttpic.openapi.initializer.GpuParticleInitializer;
-import com.tencent.ttpic.openapi.initializer.RapidNetSDKInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetGenderSwitchInitializer;
 import com.tencent.ttpic.openapi.manager.FaceOffFilterManager;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.manager.TriggerStateManager;
+import com.tencent.ttpic.openapi.model.AnimationItem;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
+import com.tencent.ttpic.openapi.model.GLBItemJava;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
 import com.tencent.ttpic.openapi.model.TriggerStateItem;
@@ -97,6 +102,16 @@ import com.tencent.ttpic.particle.GPUParticleFilter;
 import com.tencent.ttpic.particle.ParticleFilter;
 import com.tencent.ttpic.particle.ParticleFilter3D;
 import com.tencent.ttpic.particlesystemx.ParticleSystemX;
+import com.tencent.ttpic.renderitem.FrozenFrameRender;
+import com.tencent.ttpic.trigger.AETriggerI;
+import com.tencent.ttpic.trigger.FabbyFiltersTriggerCtrlItem;
+import com.tencent.ttpic.trigger.FilamentTriggerCtrlItem;
+import com.tencent.ttpic.trigger.HairCosTriggerCtrlItem;
+import com.tencent.ttpic.trigger.TriggerCtrlItem;
+import com.tencent.ttpic.trigger.TriggerManager;
+import com.tencent.ttpic.trigger.VoiceToTextTriggerCtrlItem;
+import com.tencent.ttpic.trigger.ZoomTriggerCtrlItem;
+import com.tencent.ttpic.trigger.triggerctrlitem.FrozenFrameTrigerCtrlItem;
 import com.tencent.ttpic.util.FrameUtil;
 import com.tencent.ttpic.util.VideoFilterFactory;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
@@ -106,6 +121,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -189,6 +205,7 @@ public class VideoFilterUtil
     return paramVideoFilterBase.canUseBlendMode();
   }
   
+  @Deprecated
   private static VideoFilterInputFreeze creatFreezeFrameFilter(VideoMaterial paramVideoMaterial)
   {
     paramVideoMaterial = paramVideoMaterial.getItemList();
@@ -241,28 +258,72 @@ public class VideoFilterUtil
     return localObject;
   }
   
-  private static StaticStickerFilter create360FabbyMvBGFilter(StickerItem paramStickerItem, String paramString)
+  private static RenderItem creatZoomRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  {
+    Object localObject2 = null;
+    ZoomTriggerCtrlItem localZoomTriggerCtrlItem = new ZoomTriggerCtrlItem();
+    paramVideoMaterial = paramVideoMaterial.getItemList();
+    Object localObject1 = localObject2;
+    if (paramVideoMaterial != null)
+    {
+      localObject1 = localObject2;
+      if (!paramVideoMaterial.isEmpty())
+      {
+        localObject1 = localObject2;
+        if (paramTriggerManager != null)
+        {
+          Iterator localIterator = paramVideoMaterial.iterator();
+          paramVideoMaterial = null;
+          while (localIterator.hasNext())
+          {
+            StickerItem localStickerItem = (StickerItem)localIterator.next();
+            if (localStickerItem.stickerType == VideoFilterFactory.STICKER_TYPE.ZOOM_SETTING.type)
+            {
+              localObject1 = paramVideoMaterial;
+              if (paramVideoMaterial == null) {
+                localObject1 = new ZoomFilter();
+              }
+              ((ZoomFilter)localObject1).addItem(localStickerItem);
+              localZoomTriggerCtrlItem.addItem(localStickerItem);
+              paramVideoMaterial = (VideoMaterial)localObject1;
+            }
+          }
+          localObject1 = localObject2;
+          if (paramVideoMaterial != null)
+          {
+            paramTriggerManager.addTriggers(localZoomTriggerCtrlItem);
+            localObject1 = new RenderItem(paramVideoMaterial, localZoomTriggerCtrlItem);
+          }
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  private static RenderItem create360FabbyMvBGRenderItem(StickerItem paramStickerItem, String paramString, TriggerManager paramTriggerManager)
   {
     if (VideoFilterListExtension.getCreateExternalFiltersListener() == null) {
       return null;
     }
     StaticStickerFilter localStaticStickerFilter = VideoFilterListExtension.getCreateExternalFiltersListener().createPanoramicFilter(paramStickerItem, paramString);
+    TriggerCtrlItem localTriggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
+    paramTriggerManager.addTriggers(localTriggerCtrlItem);
     LogUtils.d("timweiliu log", "new PanoramicVideoFilter end");
     if (GLCapabilities.isSupportFramebufferFetch())
     {
       paramString = "mee3843x1954047267x1769172581x1193307759x1480941388x1752391508x1919247457x1634887263x1969382765x1919247974x1952802399x975202403x1902473760x1701996917x1919945226x1936286565x544108393x1751607656x1818632304x997482863x1918989834x1735289209x1667593760x1633886258x1935767150x1919905603x1634625892x171664756x2037539190x543649385x845374838x2019914784x1701999988x1919905603x1634625892x171664756x2037539190x543649385x845374838x1886150944x1866686824x1768190575x1702125934x1963592251x1868982638x1931505010x1819307361x1144156773x1886284064x1833530485x1415931745x1970567269x171664754x1718185589x544043631x1886216563x846357868x1852383300x1232369008x1701273965x1954047316x845509237x1853164091x1919903337x1852383341x1818370164x1298427493x996500591x1981811210x540304229x1852140642x1819231076x1982362223x540304229x1131963764x1919904879x1702240300x1663054947x1635151457x1819231091x170488431x537557792x538976288x862152054x1850701344x540876901x862152054x808333608x774971436x824192048x992555054x538976266x1702240288x1981821795x1869768026x1981824288x674456421x741355056x808333344x774905900x171649328x538976266x1702240288x1914712931x1819636581x1919895156x540876901x1131963764x1919904879x1650946606x538970683x1763713056x1646796902x1684956524x1701080909x540884000x2088509489x1701601824x1867342958x1042310500x691155232x791617659x1634100580x745827445x1852404512x1965057379x543450483x1953722221x1970282540x1852776564x1886352416x538970634x2099257376x1936483616x1718165605x1818372128x1298427493x543515759x840973629x544940073x1831808800x1769237621x175729776x538976288x538976288x1936028192x1182035061x543519343x1633886269x1935767150x1869377347x1735536242x539631714x1131963764x1919904879x1650946606x538970683x2099257376x1936483616x1718165605x1818372128x1298427493x543515759x857750845x538999593x791617568x1701995379x537554533x538976288x538976288x1970496882x1866888300x1025533298x1850701344x539828325x1850701352x539828325x1986945379x1866691425x779251564x694314866x673196576x1701728118x1948265760x1866692709x779251564x694314866x538970683x2099257376x1936483616x1718165605x1818372128x1298427493x543515759x874528061x538999593x791617568x1919252079x175726956x538976288x538976288x1936028192x1182035061x543519343x775036989x539631664x1986945379x1866691425x779251564x543319922x1702109226x1819231096x1915646575x171663975x538976288x538976288x543582496x1851876136x1131635062x1919904879x1042313774x774905917x2065705269x538976266x538976288x538976288x1701978144x1953265011x1701998406x1025536558x808333600x840969504x706752558x774973472x539828272x1986945379x1866691425x779251564x706750834x774973472x539828272x1131963764x1919904879x992571950x538976266x538976288x175972384x538976288x538976288x543582496x1851876136x1131635062x1919904879x1042310958x774905917x2065705269x538976266x538976288x538976288x1701978144x1953265011x1701998406x1025533742x808333600x840969504x706752558x774973472x539828272x1986945379x1866691425x779251564x706750823x774973472x539828272x1131963764x1919904879x992569134x538976266x538976288x175972384x538976288x538976288x543582496x1851876136x1131635062x1919904879x1042309678x774905917x2065705269x538976266x538976288x538976288x1701978144x1953265011x1701998406x1025532462x808333600x840969504x706752558x774973472x539828272x1986945379x1866691425x779251564x706750818x774973472x539828272x1131963764x1919904879x992567854x538976266x538976288x175972384x538976288x1696628000x543519596x673212009x1852140642x1685015908x1027416165x2066298144x538976288x1634217775x1768711282x175401063x538976288x538976288x1936028192x1182035061x543519343x775036989x539631664x1986945379x1866691425x779251564x543319922x1702109226x1819231096x1915646575x171663975x538976288x538976288x543582496x2019914792x1869377347x544353906x807419198x539571502x538970747x538976288x538976288x1914708000x1819636581x1919895156x544353893x774971453x539828272x540028466x824713258x757084206x1851876128x1131635062x1919904879x539587118x824713258x757084206x2019914784x1869377347x695348850x538970683x538976288x2099257376x538976266x538976288x1718165536x1702111264x1819231096x1731097199x540884512x691351088x537557792x538976288x538976288x538976288x1970496882x1866888300x1731093874x824196384x757084206x808333856x673196576x540028465x1633886253x1935767150x1869377347x694627954x673196576x540028465x1702109229x1819231096x1731097199x537541417x538976288x538976288x538970749x538976288x1763713056x1948786790x1866692709x779251564x1027481698x892219424x175841321x538976288x538976288x538976288x1936028192x1182035061x778400367x540876898x540028465x775036973x539631664x808333608x1663053088x1635151457x1819231091x1647211119x539631657x808333608x1948265760x1866692709x779251564x171649378x538976288x538976288x537558304x538976288x1818566781x1763730803x1646796902x1684956524x1701080909x540884256x544942390x790634528x1718580015x1734962292x537556072x538976288x538976288x1970496882x1866888300x1025533298x808333856x1663052320x1635151457x1819231091x1915646575x706765415x2019914784x1869377347x1735536242x539697250x1986945379x1866691425x779251564x543319922x1633886250x1935767150x1869377347x1735536242x539631714x1850701352x539828325x540028466x1702109226x1819231096x1915646575x992567911x538976266x538976288x1718165536x1702111264x1819231096x1915646575x540884512x691351088x537557792x538976288x538976288x538976288x1970496882x1866888300x1915643250x840973600x706752558x1851876128x1131635062x1919904879x706769454x774973472x539828272x1131963764x1919904879x539587118x841490475x706752558x2019914784x1869377347x544353906x774971437x706750768x1920037664x1633888372x1935767150x1869377347x695348850x538970683x538976288x2099257376x538976266x538976288x1718165536x1702111264x1819231096x1731097199x540884512x691351088x537557792x538976288x538976288x538976288x1970496882x1866888300x1731093874x840973600x706752558x1851876128x1131635062x1919904879x706766638x774973472x539828272x1131963764x1919904879x539584302x841490475x706752558x2019914784x1869377347x543633010x774971437x706750768x1920037664x1633888372x1935767150x1869377347x694627954x538970683x538976288x2099257376x538976266x538976288x1718165536x1702111264x1819231096x1647211119x540884512x691351088x537557792x538976288x538976288x538976288x1970496882x1866888300x1647207794x840973600x706752558x1851876128x1131635062x1919904879x706765358x774973472x539828272x1131963764x1919904879x539583022x841490475x706752558x2019914784x1869377347x543305330x774971437x706750768x1920037664x1633888372x1935767150x1869377347x694300274x538970683x538976288x2099257376x538976266x545071136x1702063205x543582496x1701601832x1867342958x1025533284x691478589x538976379x1680813856x1684633193x538970725x538976288x1914708000x1819636581x1919895156x540876901x1701728118x538970683x538976288x1763713056x1948786790x1866692709x779251564x540942450x691023408x537557792x538976288x538976288x538976288x1970496882x1866888300x1915643250x1663057184x1635151457x1819231091x1915646575x1948266272x1866692709x779251564x537541490x538976288x538976288x538970749x538976288x1763713056x1948786790x1866692709x779251564x540942439x691023408x537557792x538976288x538976288x538976288x1970496882x1866888300x1731093874x1663057184x1635151457x1819231091x1731097199x1948266272x1866692709x779251564x537541479x538976288x538976288x538970749x538976288x1763713056x1948786790x1866692709x779251564x540942434x691023408x537557792x538976288x538976288x538976288x1970496882x1866888300x1647207794x1663057184x1635151457x1819231091x1647211119x1948266272x1866692709x779251564x537541474x538976288x538976288x538970749x538976288x1914708000x1819636581x1919895156x540876901x678324589x1701728118x1701978156x1953265011x1701998406x537541417x538976288x1818566781x1763730803x1646796902x1684956524x1701080909x540884256x544942392x790634528x1684300079x538976266x538976288x1701978144x1953265011x1701998406x1663057184x1635151457x1819231091x1915646575x723542631x2019914784x1869377347x1735536242x537541474x538976288x538976288x1970496882x1866888300x1025533298x1852402976x1850701352x1914711141x1819636581x1919895156x171649381x538976288x1696628000x543519596x673212009x1852140642x1685015908x1027416165x2066299168x538976288x1970482991x1920234338x175399777x538976288x538976288x1936028192x1182035061x543519343x1633886269x1935767150x1869377347x1735536242x539828322x1131963764x1919904879x1650946606x538970683x538976288x1914708000x1819636581x1919895156x540876901x678977901x1919244918x1914711151x1819636581x1919895156x171649381x538976288x1696628000x543519596x673212009x1852140642x1685015908x1027416165x691024160x538976379x1768173359x537552486x538976288x538976288x1970496882x1866888300x1025533298x1935827232x1851876136x1131635062x1919904879x1650946606x1948265760x1866692709x779251564x694314866x538970683x2099257376x1936483616x1718165605x1818372128x1298427493x543515759x824196413x544942385x791617568x1802658148x537554533x538976288x538976288x1970496882x1866888300x1025533298x1852402976x1851876136x1131635062x1919904879x1650946606x1702109228x1819231096x1915646575x992567911x538976266x545071136x1702063205x543582496x1701601832x1867342958x1025533284x842080317x538999593x1815031584x1952999273x537554533x538976288x538976288x1970496882x1866888300x1025533298x2019650848x1851876136x1131635062x1919904879x1650946606x1702109228x1819231096x1915646575x992567911x538976266x175972384x538976288x1882140448x1830839666x1769237621x544828528x544370534x1816292455x1180986981x174288501x538976288x1667593760x1701978164x1953265011x1869377347x540876914x878929270x1936028200x1182035061x543519343x1702109226x1819231096x1630433903x1702109228x1819231096x1630433903x537541417x538976288x1970562418x1914728050x1819636581x1819231092x171668079x168459552x1684631414x1767992608x1870014574x170484841x538970747x1702240288x1663054947x1635151457x1819231091x1025536623x1600939808x1953718604x1734439494x1635017028x995962971x538976266x1667593760x1702109236x1819231096x1025536623x2019914784x1701999988x1764246578x1953853550x1734438217x2019906661x1701999988x1948265522x1970567269x1866687858x1768190575x1702125934x537541417x1981816864x540304229x1752198241x540876897x1954047348x845509237x1764237380x1953853550x1734438217x2019906661x1701999988x1629498418x1634234476x1919905603x1634625892x992568692x538976266x2019914784x1869377347x543239794x1818304573x778135664x537541490x1730158624x1917214572x1866688353x544370540x1818370109x1130655333x1919904879x2019914792x1869377347x1663052914x1635151457x1819231091x992572015x687370x";
       if (paramStickerItem.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_UP_DOWN) {
-        break label87;
+        break label112;
       }
       localStaticStickerFilter.updateFilterShader("precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 alphaCoordinate;\n\nuniform int texNeedTransform;\nuniform vec2 canvasSize;\nuniform vec2 texAnchor;\nuniform float texScale;\nuniform vec3 texRotate;\n\nconst float PI = 3.14159;\n\nuniform mat4 u_MVPMatrix;\n\nmat4 texMatTranslateBefore = mat4(1.0, 0.0, 0.0, 0.0,\n                                  0.0, 1.0, 0.0, 0.0,\n                                  0.0, 0.0, 1.0, 0.0,\n                                  0.0, 0.0, 0.0, 1.0);\n\nmat4 texMatScale = mat4(1.0, 0.0, 0.0, 0.0,\n                        0.0, 1.0, 0.0, 0.0,\n                        0.0, 0.0, 1.0, 0.0,\n                        0.0, 0.0, 0.0, 1.0);\n\nmat4 texMatRotate = mat4(1.0, 0.0, 0.0, 0.0,\n                         0.0, 1.0, 0.0, 0.0,\n                         0.0, 0.0, 1.0, 0.0,\n                         0.0, 0.0, 0.0, 1.0);\n\nmat4 texMatRotateXY = mat4(1.0, 0.0, 0.0, 0.0,\n                         0.0, 1.0, 0.0, 0.0,\n                         0.0, 0.0, 1.0, 0.0,\n                         0.0, 0.0, 0.0, 1.0);\n\nmat4 texMatTranslateAfter = mat4(1.0, 0.0, 0.0, 0.0,\n                                 0.0, 1.0, 0.0, 0.0,\n                                 0.0, 0.0, 1.0, 0.0,\n                                 0.0, 0.0, 0.0, 1.0);\n\nmat4 mat4RotationYXZ(mat4 m, float xRadians, float yRadians, float zRadians) {\n    /*\n     |  cycz + sxsysz   czsxsy - cysz   cxsy  0 |\n M = |  cxsz            cxcz           -sx    0 |\n     |  cysxsz - czsy   cyczsx + sysz   cxcy  0 |\n     |  0               0               0     1 |\n\n     where cA = cos(A), sA = sin(A) for A = x,y,z\n     */\n\n    float cx = cos(xRadians);\n    float sx = sin(xRadians);\n    float cy = cos(yRadians);\n    float sy = sin(yRadians);\n    float cz = cos(zRadians);\n    float sz = sin(zRadians);\n\n    m[0][0] = (cy * cz) + (sx * sy * sz);\n    m[0][1] = cx * sz;\n    m[0][2] = (cy * sx * sz) - (cz * sy);\n    m[0][3] = 0.0;\n\n    m[1][0] = (cz * sx * sy) - (cy * sz);\n    m[1][1] = cx * cz;\n    m[1][2] = (cy * cz * sx) + (sy * sz);\n    m[1][3] = 0.0;\n\n    m[2][0] = cx * sy;\n    m[2][1] = -sx;\n    m[2][2] = cx * cy;\n    m[2][3] = 0.0;\n\n    m[3][0] = 0.0;\n    m[3][1] = 0.0;\n    m[3][2] = 0.0;\n    m[3][3] = 1.0;\n\n    return m;\n}\n\nvoid main(){\n    vec4 framePos = position;\n    if (texNeedTransform > 0) {\n        framePos.x = framePos.x * canvasSize.x * 0.5;\n        framePos.y = framePos.y * canvasSize.y * 0.5;\n\n        texMatTranslateBefore[3][0] = -texAnchor.x;\n        texMatTranslateBefore[3][1] = -texAnchor.y;\n\n        texMatScale[0][0] = texScale;\n        texMatScale[1][1] = texScale;\n\n        texMatRotate = mat4RotationYXZ(texMatRotate, 0.0, 0.0, texRotate.z);\n        texMatRotateXY = mat4RotationYXZ(texMatRotateXY, texRotate.x, texRotate.y, 0.0);\n\n        texMatTranslateAfter[3][0] = texAnchor.x;\n        texMatTranslateAfter[3][1] = texAnchor.y;\n\n        framePos = texMatRotate * texMatScale * texMatTranslateBefore * framePos;\n\n        framePos.x = framePos.x * 2.0 / canvasSize.x;\n        framePos.y = framePos.y * 2.0 / canvasSize.y;\n\n        framePos = texMatRotateXY * framePos;\n\n        framePos.x = framePos.x * canvasSize.x * 0.5;\n        framePos.y = framePos.y * canvasSize.y * 0.5;\n\n        framePos = texMatTranslateAfter * framePos;\n\n        framePos.x = framePos.x * 2.0 / canvasSize.x;\n        framePos.y = framePos.y * 2.0 / canvasSize.y;\n\n        framePos.x = framePos.x * 1.5 ;\n        framePos.y = framePos.y * 1.5 ;\n\n        framePos = u_MVPMatrix * framePos;\n\n    }\n    gl_Position = framePos;\n    textureCoordinate = vec2(inputTextureCoordinate.x, inputTextureCoordinate.y / 2.);\n    alphaCoordinate = vec2(inputTextureCoordinate.x, inputTextureCoordinate.y / 2. + 0.5);\n}", paramString);
     }
     for (;;)
     {
       LogUtils.d("timweiliu log", "return PanoramicVideoFilter item.sourceType = " + paramStickerItem.sourceType);
-      return localStaticStickerFilter;
+      return new RenderItem(localStaticStickerFilter, localTriggerCtrlItem);
       paramString = "precision highp float;\nvarying vec2 textureCoordinate;\nvarying vec2 alphaCoordinate;\n\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform int blendMode;\nuniform vec2 canvasSize;\n\n vec4 blendColor(vec4 texColor, vec4 canvasColor)\n {\n     vec3 vOne = vec3(1.0, 1.0, 1.0);\n     vec3 vZero = vec3(0.0, 0.0, 0.0);\n\n     vec3 resultFore = texColor.rgb;\n     if (blendMode <= 1 || blendMode > 12){ //default, since used most, put on top\n\n     } else if (blendMode == 2) {  //multiply\n         resultFore = canvasColor.rgb * texColor.rgb;\n     } else if (blendMode == 3){    //screen\n         resultFore = vOne - (vOne - canvasColor.rgb) * (vOne - texColor.rgb);\n     } else if (blendMode == 4){    //overlay\n         resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n         if (canvasColor.r >= 0.5) {\n             resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n         }\n         if (canvasColor.g >= 0.5) {\n             resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n         }\n         if (canvasColor.b >= 0.5) {\n             resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n         }\n     } else if (blendMode == 5){    //hardlight\n         resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n         if (texColor.r >= 0.5) {\n             resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n         }\n         if (texColor.g >= 0.5) {\n             resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n         }\n         if (texColor.b >= 0.5) {\n             resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n         }\n     } else if (blendMode == 6){    //softlight\n         resultFore = 2.0 * canvasColor.rgb * texColor.rgb + canvasColor.rgb * canvasColor.rgb * (vOne - 2.0 * texColor.rgb);\n         if (texColor.r >= 0.5) {\n             resultFore.r = 2.0 * canvasColor.r * (1.0 - texColor.r) + (2.0 * texColor.r - 1.0) * sqrt(canvasColor.r);\n         }\n         if (texColor.g >= 0.5) {\n             resultFore.g = 2.0 * canvasColor.g * (1.0 - texColor.g) + (2.0 * texColor.g - 1.0) * sqrt(canvasColor.g);\n         }\n         if (texColor.b >= 0.5) {\n             resultFore.b = 2.0 * canvasColor.b * (1.0 - texColor.b) + (2.0 * texColor.b - 1.0) * sqrt(canvasColor.b);\n         }\n     } else if (blendMode == 7){    //divide\n         resultFore = vOne;\n         if (texColor.r > 0.0) {\n             resultFore.r = canvasColor.r / texColor.r;\n         }\n         if (texColor.g > 0.0) {\n             resultFore.g = canvasColor.g / texColor.g;\n         }\n         if (texColor.b > 0.0) {\n             resultFore.b = canvasColor.b / texColor.b;\n         }\n         resultFore = min(vOne, resultFore);\n     } else if (blendMode == 8){    //add\n         resultFore = canvasColor.rgb + texColor.rgb;\n         resultFore = min(vOne, resultFore);\n     } else if (blendMode == 9){    //substract\n         resultFore = canvasColor.rgb - texColor.rgb;\n         resultFore = max(vZero, resultFore);\n     } else if (blendMode == 10){   //diff\n         resultFore = abs(canvasColor.rgb - texColor.rgb);\n     } else if (blendMode == 11){   //darken\n         resultFore = min(canvasColor.rgb, texColor.rgb);\n     } else if (blendMode == 12){   //lighten\n         resultFore = max(canvasColor.rgb, texColor.rgb);\n     }\n     //pre multiply for glBlendFunc\n     vec4 resultColor = vec4(resultFore * texColor.a, texColor.a);\n     return resultColor;\n }\n\nvoid main(void)\n{\n    vec4 canvasColor = texture2D(inputImageTexture, vec2(gl_FragCoord.x / canvasSize.x, gl_FragCoord.y / canvasSize.y));\n    vec4 texColor = texture2D(inputImageTexture2, textureCoordinate);\n    vec4 alpha = texture2D (inputImageTexture2, alphaCoordinate);\n    texColor.a = alpha.r;\n    gl_FragColor = blendColor(texColor, canvasColor);\n}";
       break;
-      label87:
+      label112:
       if (paramStickerItem.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_LEFT_RIGHT) {
         localStaticStickerFilter.updateFilterShader("precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 alphaCoordinate;\n\nuniform int texNeedTransform;\nuniform vec2 canvasSize;\nuniform vec2 texAnchor;\nuniform float texScale;\nuniform vec3 texRotate;\n\nconst float PI = 3.14159;\n\nuniform mat4 u_MVPMatrix;\n\nmat4 texMatTranslateBefore = mat4(1.0, 0.0, 0.0, 0.0,\n                                  0.0, 1.0, 0.0, 0.0,\n                                  0.0, 0.0, 1.0, 0.0,\n                                  0.0, 0.0, 0.0, 1.0);\n\nmat4 texMatScale = mat4(1.0, 0.0, 0.0, 0.0,\n                        0.0, 1.0, 0.0, 0.0,\n                        0.0, 0.0, 1.0, 0.0,\n                        0.0, 0.0, 0.0, 1.0);\n\nmat4 texMatRotate = mat4(1.0, 0.0, 0.0, 0.0,\n                         0.0, 1.0, 0.0, 0.0,\n                         0.0, 0.0, 1.0, 0.0,\n                         0.0, 0.0, 0.0, 1.0);\n\nmat4 texMatRotateXY = mat4(1.0, 0.0, 0.0, 0.0,\n                         0.0, 1.0, 0.0, 0.0,\n                         0.0, 0.0, 1.0, 0.0,\n                         0.0, 0.0, 0.0, 1.0);\n\nmat4 texMatTranslateAfter = mat4(1.0, 0.0, 0.0, 0.0,\n                                 0.0, 1.0, 0.0, 0.0,\n                                 0.0, 0.0, 1.0, 0.0,\n                                 0.0, 0.0, 0.0, 1.0);\n\nmat4 mat4RotationYXZ(mat4 m, float xRadians, float yRadians, float zRadians) {\n    /*\n     |  cycz + sxsysz   czsxsy - cysz   cxsy  0 |\n M = |  cxsz            cxcz           -sx    0 |\n     |  cysxsz - czsy   cyczsx + sysz   cxcy  0 |\n     |  0               0               0     1 |\n\n     where cA = cos(A), sA = sin(A) for A = x,y,z\n     */\n\n    float cx = cos(xRadians);\n    float sx = sin(xRadians);\n    float cy = cos(yRadians);\n    float sy = sin(yRadians);\n    float cz = cos(zRadians);\n    float sz = sin(zRadians);\n\n    m[0][0] = (cy * cz) + (sx * sy * sz);\n    m[0][1] = cx * sz;\n    m[0][2] = (cy * sx * sz) - (cz * sy);\n    m[0][3] = 0.0;\n\n    m[1][0] = (cz * sx * sy) - (cy * sz);\n    m[1][1] = cx * cz;\n    m[1][2] = (cy * cz * sx) + (sy * sz);\n    m[1][3] = 0.0;\n\n    m[2][0] = cx * sy;\n    m[2][1] = -sx;\n    m[2][2] = cx * cy;\n    m[2][3] = 0.0;\n\n    m[3][0] = 0.0;\n    m[3][1] = 0.0;\n    m[3][2] = 0.0;\n    m[3][3] = 1.0;\n\n    return m;\n}\n\nvoid main(){\n    vec4 framePos = position;\n    if (texNeedTransform > 0) {\n        framePos.x = framePos.x * canvasSize.x * 0.5;\n        framePos.y = framePos.y * canvasSize.y * 0.5;\n\n        texMatTranslateBefore[3][0] = -texAnchor.x;\n        texMatTranslateBefore[3][1] = -texAnchor.y;\n\n        texMatScale[0][0] = texScale;\n        texMatScale[1][1] = texScale;\n\n        texMatRotate = mat4RotationYXZ(texMatRotate, 0.0, 0.0, texRotate.z);\n        texMatRotateXY = mat4RotationYXZ(texMatRotateXY, texRotate.x, texRotate.y, 0.0);\n\n        texMatTranslateAfter[3][0] = texAnchor.x;\n        texMatTranslateAfter[3][1] = texAnchor.y;\n\n        framePos = texMatRotate * texMatScale * texMatTranslateBefore * framePos;\n\n        framePos.x = framePos.x * 2.0 / canvasSize.x;\n        framePos.y = framePos.y * 2.0 / canvasSize.y;\n\n        framePos = texMatRotateXY * framePos;\n\n        framePos.x = framePos.x * canvasSize.x * 0.5;\n        framePos.y = framePos.y * canvasSize.y * 0.5;\n\n        framePos = texMatTranslateAfter * framePos;\n\n        framePos.x = framePos.x * 2.0 / canvasSize.x;\n        framePos.y = framePos.y * 2.0 / canvasSize.y;\n\n        framePos.x = framePos.x * 1.5 ;\n        framePos.y = framePos.y * 1.5 ;\n\n        framePos = u_MVPMatrix * framePos;\n\n    }\n    gl_Position = framePos;\n    textureCoordinate = vec2(inputTextureCoordinate.x / 2., inputTextureCoordinate.y);\n    alphaCoordinate = vec2(inputTextureCoordinate.x / 2. + 0.5, inputTextureCoordinate.y);\n}", paramString);
       }
@@ -300,7 +361,7 @@ public class VideoFilterUtil
     return null;
   }
   
-  private static List<GPUParticleFilter> createBodyGpuParticleFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createBodyGpuParticleRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     List localList = paramVideoMaterial.getItemList();
@@ -312,9 +373,13 @@ public class VideoFilterUtil
       int i = 0;
       while (i < localList.size())
       {
-        StickerItem localStickerItem = (StickerItem)localList.get(i);
-        if ((localStickerItem.gpuParticleConfig != null) && (VideoMaterialUtil.isBodyDetectItem(localStickerItem))) {
-          localArrayList.add(new GPUParticleFilter(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+        Object localObject = (StickerItem)localList.get(i);
+        if ((((StickerItem)localObject).gpuParticleConfig != null) && (VideoMaterialUtil.isBodyDetectItem((StickerItem)localObject)))
+        {
+          GPUParticleFilter localGPUParticleFilter = new GPUParticleFilter(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject).id, (StickerItem)localObject);
+          localObject = new TriggerCtrlItem((StickerItem)localObject);
+          paramTriggerManager.addTriggers((AETriggerI)localObject);
+          localArrayList.add(new RenderItem(localGPUParticleFilter, (TriggerCtrlItem)localObject));
         }
         i += 1;
       }
@@ -322,7 +387,7 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static List<VideoFilterBase> createBodyParticleFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createBodyParticleRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     List localList = paramVideoMaterial.getItemList();
@@ -331,20 +396,52 @@ public class VideoFilterUtil
       int i = 0;
       if (i < localList.size())
       {
-        StickerItem localStickerItem = (StickerItem)localList.get(i);
-        if ((localStickerItem.particleConfig != null) && (VideoMaterialUtil.isBodyDetectItem(localStickerItem)))
+        Object localObject1 = (StickerItem)localList.get(i);
+        Object localObject2;
+        if ((((StickerItem)localObject1).particleConfig != null) && (VideoMaterialUtil.isBodyDetectItem((StickerItem)localObject1)))
         {
-          if (!localStickerItem.dexName.endsWith("json")) {
-            break label125;
+          if (!((StickerItem)localObject1).dexName.endsWith("json")) {
+            break label159;
           }
-          localArrayList.add(new ParticleFilter3D(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+          localObject2 = new ParticleFilter3D(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject1).id, (StickerItem)localObject1);
+          localObject1 = new TriggerCtrlItem((StickerItem)localObject1);
+          paramTriggerManager.addTriggers((AETriggerI)localObject1);
+          localArrayList.add(new RenderItem((AEFilterI)localObject2, (TriggerCtrlItem)localObject1));
         }
         for (;;)
         {
           i += 1;
           break;
-          label125:
-          localArrayList.add(new ParticleFilter(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+          label159:
+          localObject2 = new ParticleFilter(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject1).id, (StickerItem)localObject1);
+          localObject1 = new TriggerCtrlItem((StickerItem)localObject1);
+          paramTriggerManager.addTriggers((AETriggerI)localObject1);
+          localArrayList.add(new RenderItem((AEFilterI)localObject2, (TriggerCtrlItem)localObject1));
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  private static List<RenderItem> createBodyRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramVideoMaterial.getItemList() != null)
+    {
+      boolean bool = VideoMaterialUtil.canMaterialUseFastRender(paramVideoMaterial);
+      Iterator localIterator = paramVideoMaterial.getItemList().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (StickerItem)localIterator.next();
+        if ((VideoMaterialUtil.isBodyDetectItem((StickerItem)localObject)) && (((StickerItem)localObject).particleConfig == null) && (((StickerItem)localObject).gpuParticleConfig == null) && ((!bool) || (!VideoMaterialUtil.canStickerItemUseFastRender((StickerItem)localObject)) || (!VideoMaterialUtil.canStickerItemUseFastBodyRender((StickerItem)localObject))))
+        {
+          NormalVideoFilter localNormalVideoFilter = VideoFilterFactory.createFilter((StickerItem)localObject, paramVideoMaterial.getDataPath());
+          if (localNormalVideoFilter != null)
+          {
+            localObject = new TriggerCtrlItem((StickerItem)localObject);
+            paramTriggerManager.addTriggers((AETriggerI)localObject);
+            localArrayList.add(new RenderItem(localNormalVideoFilter, (TriggerCtrlItem)localObject));
+          }
         }
       }
     }
@@ -373,15 +470,15 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static BuckleFaceFilter createBuckleFaceFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createBuckleFaceRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    if (VideoFilterListExtension.getCreateExternalFiltersListener() != null) {
-      return VideoFilterListExtension.getCreateExternalFiltersListener().createBuckleFaceFilter(paramVideoMaterial);
+    if (VideoFilterListExtension.getCreateExternalFiltersListener() != null) {}
+    for (paramVideoMaterial = VideoFilterListExtension.getCreateExternalFiltersListener().createBuckleFaceFilter(paramVideoMaterial);; paramVideoMaterial = null) {
+      return new RenderItem(paramVideoMaterial, null);
     }
-    return null;
   }
   
-  private static List<ComicEffectFilter> createComicEffectFilterFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createComicEffectFilterRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     List localList = paramVideoMaterial.getItemList();
@@ -390,9 +487,13 @@ public class VideoFilterUtil
       int i = 0;
       while (i < localList.size())
       {
-        StickerItem localStickerItem = (StickerItem)localList.get(i);
-        if ((localStickerItem.comicLutFilter != null) && (!localStickerItem.comicLutFilter.equals(""))) {
-          localArrayList.add(new ComicEffectFilter(localStickerItem, paramVideoMaterial.getDataPath()));
+        Object localObject = (StickerItem)localList.get(i);
+        if ((((StickerItem)localObject).comicLutFilter != null) && (!((StickerItem)localObject).comicLutFilter.equals("")))
+        {
+          ComicEffectFilter localComicEffectFilter = new ComicEffectFilter((StickerItem)localObject, paramVideoMaterial.getDataPath());
+          localObject = new TriggerCtrlItem((StickerItem)localObject);
+          paramTriggerManager.addTriggers((AETriggerI)localObject);
+          localArrayList.add(new RenderItem(localComicEffectFilter, (TriggerCtrlItem)localObject));
         }
         i += 1;
       }
@@ -400,10 +501,10 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static CosFunFilterGroup createCosFunFilterGroup(VideoMaterial paramVideoMaterial)
+  private static CosFunFilterGroup createCosFunFilterGroup(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    if (paramVideoMaterial.getCosFun() != null) {
-      return new CosFunFilterGroup(paramVideoMaterial);
+    if ((paramVideoMaterial.getCosFun() != null) && (paramTriggerManager != null)) {
+      return new CosFunFilterGroup(paramVideoMaterial, paramTriggerManager);
     }
     return null;
   }
@@ -426,63 +527,61 @@ public class VideoFilterUtil
     return new CustomVideoFilter((String)localObject1, (String)localObject2, paramVideoMaterial.getResourceList(), getCustomFilterTriggerType(paramVideoMaterial.getItemList()), paramVideoMaterial.getDataPath());
   }
   
-  private static CustomVertexFilter createCustomVertexFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createCustomRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    Object localObject2;
-    Object localObject1;
-    if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.CUSTOM_VERTEX_SHADER.value)
+    Object localObject;
+    if ((paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.CUSTOM_BEFORE_COMMON.value) || (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.COMMON_BEFORE_CUSTOM.value))
     {
-      localObject2 = VideoMaterialUtil.loadVertexShader(paramVideoMaterial.getDataPath());
+      localObject = VideoMaterialUtil.loadVertexShader(paramVideoMaterial.getDataPath());
       String str = VideoMaterialUtil.loadFragmentShader(paramVideoMaterial.getDataPath());
-      if ((TextUtils.isEmpty((CharSequence)localObject2)) && (TextUtils.isEmpty(str))) {
+      if ((TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(str))) {
         return null;
       }
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = "precision mediump float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\n\nvoid main(){\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate;\n}";
+      paramTriggerManager = (TriggerManager)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        paramTriggerManager = "mee3725x1667592816x1869181801x1768431726x544237671x1634692198x1628060532x1769108596x1702131042x1667593760x1869619252x1769236851x171667055x1920234593x1953849961x1702240357x1763717731x1953853550x1954047316x1130721909x1685221231x1952542313x1980382053x1769566817x1981835118x540173157x1986945379x1866691425x1768190575x1702125934x1635125819x1852406130x1702240359x1948267107x1970567269x1866687858x1768190575x1702125934x1963592251x1868982638x1763732850x1948284014x1699641445x1918133349x1718840929x997028463x1768846602x1836216166x1667593760x1633886258x1935767150x1702521171x1853164091x1919903337x1702240365x1948267107x1849784421x1919903843x1853164091x1919903337x1818632301x544498031x1400399220x1701601635x1853164091x1919903337x1702240365x1948267363x1867675749x1702125940x1661602363x1953721967x1869375008x1344304225x540876873x875638323x993604913x1853164042x1919903337x1634541677x1965044852x1347833183x1920229709x171669609x1952541962x1702109236x1952533880x1851880020x1952541811x1717912165x543519343x1634541629x824718452x539766830x741355056x808333344x774905900x537537584x538976288x538976288x538976288x538976288x538976288x538976288x538976288x538976288x808333344x774971436x807414832x539766830x741355056x538976266x538976288x538976288x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355056x808333600x774905900x537537584x538976288x538976288x538976288x538976288x538976288x538976288x538976288x538976288x808333344x774905900x807414832x539766830x691023409x1829374523x540308577x1299735924x1666413665x543517793x1634541629x824718452x539766830x741355056x808333344x774905900x537537584x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355057x808333344x774905900x537537584x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355056x808333600x774905900x537537584x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355056x808333344x774971436x171649328x1952541962x1702109236x1952533880x1635020626x1025533300x1952541984x774973492x807414832x539766830x741355056x808333344x538970668x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355057x808333344x774905900x537537584x538976288x538976288x538976288x538976288x538976288x538976288x741355056x808333344x774971436x807414832x170668078x538976288x538976288x538976288x538976288x538976288x538976288x808333344x774905900x807414832x539766830x691023409x1829374523x540308577x1299735924x1867674721x1702125940x1025530200x1952541984x774973492x807414832x539766830x741355056x808333344x538970668x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355057x808333344x774905900x537537584x538976288x538976288x538976288x538976288x538976288x538976288x741355056x808333344x774971436x807414832x170668078x538976288x538976288x538976288x538976288x538976288x538976288x808333344x774905900x807414832x539766830x691023409x1829374523x540308577x1299735924x1918137441x1819504225x1097167969x1919251558x1830829344x674526305x741355057x808333344x774905900x807414832x170668078x538976288x538976288x538976288x538976288x538976288x538976288x538976288x538976288x808333344x774971436x807414832x539766830x741355056x538976266x538976288x538976288x538976288x538976288x538976288x538976288x538976288x774905888x807414832x539766830x741355057x808333344x538970668x538976288x538976288x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355056x808333344x774971436x171649328x1952541962x1634541620x1867658356x1769234804x1482255983x1634543706x1830827124x1818632236x544498031x1684099704x1936613737x1818632236x544498031x1684099705x1936613737x1818632236x544498031x1684099706x1936613737x175841321x538976288x537537071x538976288x1663049852x544891769x2020810795x2054388083x1663049760x1937273722x539828345x2054388067x1663049760x544830328x2082484256x541925386x545005629x1937269536x538976378x538976288x538976288x1668834080x538976378x538976288x538976288x544764717x807411744x537558048x538976288x1663049852x1937273721x539828346x2037611107x1663049760x1937400697x539697272x2054388083x1663049760x544826232x2082484256x538976266x545005600x538980384x538976288x538976288x538976288x538980384x538976288x538976288x538976288x538980384x824188960x168459296x538976288x1701345056x1663067506x540876865x678653795x539765057x1025524083x1852404512x539574568x544370534x540876865x746138744x538970746x706748448x537528879x1713381408x1952542572x544760608x1868767293x1383606387x1634296929x992572270x538976266x1869375008x1931506785x540876920x678324595x1684099704x1936613737x537541417x1713381408x1952542572x544826144x1868767293x1383671923x1634296929x992572270x538976266x1869375008x1931506785x540876921x678324595x1684099705x1936613737x537541417x1713381408x1952542572x544891680x1868767293x1383737459x1634296929x992572270x538976266x1869375008x1931506785x540876922x678324595x1684099706x1936613737x168442665x538976288x1563450221x542978139x1663574077x539631737x539589219x1932009515x539631736x706771315x695890720x538970683x1533878304x828071216x540876893x706771043x997880608x538976266x811298080x1563581277x673201440x706771299x544764704x2054365226x539828265x544891688x2037588010x537541417x1830821920x1532833883x1025531187x808333344x537528891x1830821920x1532834139x1025531184x2053318688x1931487776x539631736x539588979x1663574061x539631737x992574067x538976266x828075296x1563515741x1663057184x539631736x171670115x538976288x1563515757x542978651x1663574077x539631737x706771555x695759648x673196832x706771315x695890720x538970683x1533878304x861625649x540876893x993013296x538970634x1533878304x811294002x540876893x706771043x997815072x538976266x844852512x1563515741x757087520x171669619x538976288x1563581293x542978651x2019762237x1663052320x537541497x1830821920x1532834395x1025531187x808333344x537528891x1830821920x1532834651x1025531184x808333344x538970683x1533878304x828071219x540876893x993013296x538976266x861629728x1563581277x807419168x171651118x538976288x1563646829x542978907x774971453x168442672x538976288x1970562418x1830841970x175966779x1768912394x1634541668x690515561x538970747x1702240288x1713386595x1701667186x544436048x1869619261x1769236851x171667055x538976288x673212009x1316513140x1415865701x1936613746x1836216166x807419424x175841321x538976288x538976288x1835102822x1936674917x1025538094x1634887200x1867539821x544747123x1633886250x1935767150x1702521171x706770990x892219424x538970683x538976288x1919295520x1348824417x2033087343x1713388832x1701667186x779317072x539631737x1986945379x1767076705x2033083770x807414304x171652398x538976266x538976288x2019914784x1416913229x1936613746x1702125932x1868981570x861627762x1563450205x757087520x1098409332x1869112174x997731954x538976266x538976288x2019914784x1416913229x1936613746x1702125932x1868981570x861627762x1563515741x757087520x1098409332x1869112174x997797490x538970634x538976288x1702109216x1952533880x1818321747x1563450213x542978139x1702109245x1633899384x171664748x538976288x538976288x1299735924x1666413665x1533373537x828071217x540876893x1400399220x1701601635x537528891x538976288x1948262432x1632467045x1953452660x543519841x1634541629x1867658356x1769234804x1482255983x1702111322x1952533880x1635020626x539780468x741355056x808333344x1702109228x1953452664x778400865x171649402x538976288x538976288x1299735924x1867674721x1702125940x1025530200x1952541984x1953452596x1869182049x1515739502x2019914792x1383358797x1952543855x744052837x2019914784x1635020626x2016306548x1702109228x1953452664x778400865x807414905x992555054x538970634x538976288x1702109216x1952533880x1851880020x1952541811x1952858469x861631077x1563450205x1948269856x1849784421x1919903843x171669550x538976288x538976288x1299735924x1918137441x1819504225x1097167969x1919251558x1532834651x1025531185x2019914784x1751346753x2033087087x537528891x538976288x1713381408x1701667186x544436048x1702109245x1952533880x1635020626x706766196x2019914784x1400136013x1701601635x1948264992x1632467045x1634882676x1634497390x1698850164x1701998438x1713383968x1701667186x997420880x538970634x538976288x1919295520x1348824417x2016310127x1713388832x1701667186x779317072x539631736x540028466x1633886255x1935767150x1702521171x171669550x538976288x538976288x1835102822x1936674917x1025538350x1634887200x1867539821x544812659x775036970x539959344x1986945379x1767076705x2033083770x537528891x538976288x1713381408x1701667186x544436048x1702109245x1952533880x1635020626x1498965364x1713383968x1701667186x997420880x538970634x538976288x1919295520x1348824417x2016310127x1713388832x1701667186x779317072x539631736x1986945379x1767076705x2016306554x807414304x171652398x538976288x538976288x1835102822x1936674917x1025538350x1634887200x1867539821x544812659x1633886250x1935767150x1702521171x706771246x892219424x537528891x538976288x1713381408x1701667186x544436048x1702109245x1952533880x1851880020x1952541811x1952858469x706769509x1634887200x1867539821x168442739x538976288x538976288x1835102822x1936674917x1025538094x1634887200x1867539821x544747123x775036970x539959344x1986945379x1767076705x2016306554x538970683x538976288x1919295520x1348824417x2033087343x1713388832x1701667186x779317072x539631737x540028466x1633886255x1935767150x1702521171x171669806x538976266x538976288x1634887200x1867539821x544747123x1919295549x1348824417x2016310127x824191520x991966510x538976266x538976288x1634887200x1867539821x544812659x1919295549x1348824417x2033087343x824191520x991966510x538970634x538976288x1919295520x1348824417x1025536879x1298101536x1632456790x2020176500x1713383968x1701667186x997420880x538970634x175972384x538976288x1348430951x1953067887x544108393x1919295549x1348824417x171668335x538976288x1986945379x1866691425x1768190575x1702125934x1981824288x674390885x1835102822x1936674917x790657070x1634887200x1867539821x544681587x774905898x539697205x741682736x1634887200x1867539821x544812659x1919295535x1348824417x1999532911x807414304x723531054x892219424x537541417x1948262432x1970567269x1866687858x1768190575x1702125934x1763720480x1953853550x1954047316x1130721909x1685221231x1952542313x2097822565x10x";
       }
-      localObject2 = str;
+      localObject = str;
       if (TextUtils.isEmpty(str)) {
-        localObject2 = " precision highp float;\n varying vec2 textureCoordinate;\n uniform sampler2D inputImageTexture;\n \n void main(void) {\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n }";
+        localObject = ShaderCreateFactory.getFragmentShaderImageFile();
       }
-      if (CollectionUtils.isEmpty(paramVideoMaterial.getItemList())) {}
     }
-    for (paramVideoMaterial = new CustomVertexFilter((String)localObject1, (String)localObject2);; paramVideoMaterial = null) {
+    for (paramVideoMaterial = new RenderItem(new CustomVideoFilter(paramTriggerManager, (String)localObject, paramVideoMaterial.getResourceList(), getCustomFilterTriggerType(paramVideoMaterial.getItemList()), paramVideoMaterial.getDataPath()), null);; paramVideoMaterial = null) {
       return paramVideoMaterial;
     }
   }
   
-  private static CustomVideoFilter createCustomVideoFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createCustomVertexRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    String str;
-    if ((paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.CUSTOM_BEFORE_COMMON.value) || (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.COMMON_BEFORE_CUSTOM.value))
+    Object localObject;
+    if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.CUSTOM_VERTEX_SHADER.value)
     {
-      localObject2 = VideoMaterialUtil.loadVertexShader(paramVideoMaterial.getDataPath());
-      str = VideoMaterialUtil.loadFragmentShader(paramVideoMaterial.getDataPath());
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) || (!TextUtils.isEmpty(str))) {}
+      localObject = VideoMaterialUtil.loadVertexShader(paramVideoMaterial.getDataPath());
+      String str = VideoMaterialUtil.loadFragmentShader(paramVideoMaterial.getDataPath());
+      if ((TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(str))) {
+        return null;
+      }
+      paramTriggerManager = (TriggerManager)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        paramTriggerManager = "precision mediump float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\n\nvoid main(){\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate;\n}";
+      }
+      localObject = str;
+      if (TextUtils.isEmpty(str)) {
+        localObject = " precision highp float;\n varying vec2 textureCoordinate;\n uniform sampler2D inputImageTexture;\n \n void main(void) {\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n }";
+      }
+      if (CollectionUtils.isEmpty(paramVideoMaterial.getItemList())) {}
     }
-    else
-    {
-      return null;
+    for (paramVideoMaterial = new CustomVertexFilter(paramTriggerManager, (String)localObject);; paramVideoMaterial = null) {
+      return new RenderItem(paramVideoMaterial, null);
     }
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "mee3725x1667592816x1869181801x1768431726x544237671x1634692198x1628060532x1769108596x1702131042x1667593760x1869619252x1769236851x171667055x1920234593x1953849961x1702240357x1763717731x1953853550x1954047316x1130721909x1685221231x1952542313x1980382053x1769566817x1981835118x540173157x1986945379x1866691425x1768190575x1702125934x1635125819x1852406130x1702240359x1948267107x1970567269x1866687858x1768190575x1702125934x1963592251x1868982638x1763732850x1948284014x1699641445x1918133349x1718840929x997028463x1768846602x1836216166x1667593760x1633886258x1935767150x1702521171x1853164091x1919903337x1702240365x1948267107x1849784421x1919903843x1853164091x1919903337x1818632301x544498031x1400399220x1701601635x1853164091x1919903337x1702240365x1948267363x1867675749x1702125940x1661602363x1953721967x1869375008x1344304225x540876873x875638323x993604913x1853164042x1919903337x1634541677x1965044852x1347833183x1920229709x171669609x1952541962x1702109236x1952533880x1851880020x1952541811x1717912165x543519343x1634541629x824718452x539766830x741355056x808333344x774905900x537537584x538976288x538976288x538976288x538976288x538976288x538976288x538976288x538976288x808333344x774971436x807414832x539766830x741355056x538976266x538976288x538976288x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355056x808333600x774905900x537537584x538976288x538976288x538976288x538976288x538976288x538976288x538976288x538976288x808333344x774905900x807414832x539766830x691023409x1829374523x540308577x1299735924x1666413665x543517793x1634541629x824718452x539766830x741355056x808333344x774905900x537537584x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355057x808333344x774905900x537537584x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355056x808333600x774905900x537537584x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355056x808333344x774971436x171649328x1952541962x1702109236x1952533880x1635020626x1025533300x1952541984x774973492x807414832x539766830x741355056x808333344x538970668x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355057x808333344x774905900x537537584x538976288x538976288x538976288x538976288x538976288x538976288x741355056x808333344x774971436x807414832x170668078x538976288x538976288x538976288x538976288x538976288x538976288x808333344x774905900x807414832x539766830x691023409x1829374523x540308577x1299735924x1867674721x1702125940x1025530200x1952541984x774973492x807414832x539766830x741355056x808333344x538970668x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355057x808333344x774905900x537537584x538976288x538976288x538976288x538976288x538976288x538976288x741355056x808333344x774971436x807414832x170668078x538976288x538976288x538976288x538976288x538976288x538976288x808333344x774905900x807414832x539766830x691023409x1829374523x540308577x1299735924x1918137441x1819504225x1097167969x1919251558x1830829344x674526305x741355057x808333344x774905900x807414832x170668078x538976288x538976288x538976288x538976288x538976288x538976288x538976288x538976288x808333344x774971436x807414832x539766830x741355056x538976266x538976288x538976288x538976288x538976288x538976288x538976288x538976288x774905888x807414832x539766830x741355057x808333344x538970668x538976288x538976288x538976288x538976288x538976288x538976288x538976288x807411744x539766830x741355056x808333344x774971436x171649328x1952541962x1634541620x1867658356x1769234804x1482255983x1634543706x1830827124x1818632236x544498031x1684099704x1936613737x1818632236x544498031x1684099705x1936613737x1818632236x544498031x1684099706x1936613737x175841321x538976288x537537071x538976288x1663049852x544891769x2020810795x2054388083x1663049760x1937273722x539828345x2054388067x1663049760x544830328x2082484256x541925386x545005629x1937269536x538976378x538976288x538976288x1668834080x538976378x538976288x538976288x544764717x807411744x537558048x538976288x1663049852x1937273721x539828346x2037611107x1663049760x1937400697x539697272x2054388083x1663049760x544826232x2082484256x538976266x545005600x538980384x538976288x538976288x538976288x538980384x538976288x538976288x538976288x538980384x824188960x168459296x538976288x1701345056x1663067506x540876865x678653795x539765057x1025524083x1852404512x539574568x544370534x540876865x746138744x538970746x706748448x537528879x1713381408x1952542572x544760608x1868767293x1383606387x1634296929x992572270x538976266x1869375008x1931506785x540876920x678324595x1684099704x1936613737x537541417x1713381408x1952542572x544826144x1868767293x1383671923x1634296929x992572270x538976266x1869375008x1931506785x540876921x678324595x1684099705x1936613737x537541417x1713381408x1952542572x544891680x1868767293x1383737459x1634296929x992572270x538976266x1869375008x1931506785x540876922x678324595x1684099706x1936613737x168442665x538976288x1563450221x542978139x1663574077x539631737x539589219x1932009515x539631736x706771315x695890720x538970683x1533878304x828071216x540876893x706771043x997880608x538976266x811298080x1563581277x673201440x706771299x544764704x2054365226x539828265x544891688x2037588010x537541417x1830821920x1532833883x1025531187x808333344x537528891x1830821920x1532834139x1025531184x2053318688x1931487776x539631736x539588979x1663574061x539631737x992574067x538976266x828075296x1563515741x1663057184x539631736x171670115x538976288x1563515757x542978651x1663574077x539631737x706771555x695759648x673196832x706771315x695890720x538970683x1533878304x861625649x540876893x993013296x538970634x1533878304x811294002x540876893x706771043x997815072x538976266x844852512x1563515741x757087520x171669619x538976288x1563581293x542978651x2019762237x1663052320x537541497x1830821920x1532834395x1025531187x808333344x537528891x1830821920x1532834651x1025531184x808333344x538970683x1533878304x828071219x540876893x993013296x538976266x861629728x1563581277x807419168x171651118x538976288x1563646829x542978907x774971453x168442672x538976288x1970562418x1830841970x175966779x1768912394x1634541668x690515561x538970747x1702240288x1713386595x1701667186x544436048x1869619261x1769236851x171667055x538976288x673212009x1316513140x1415865701x1936613746x1836216166x807419424x175841321x538976288x538976288x1835102822x1936674917x1025538094x1634887200x1867539821x544747123x1633886250x1935767150x1702521171x706770990x892219424x538970683x538976288x1919295520x1348824417x2033087343x1713388832x1701667186x779317072x539631737x1986945379x1767076705x2033083770x807414304x171652398x538976266x538976288x2019914784x1416913229x1936613746x1702125932x1868981570x861627762x1563450205x757087520x1098409332x1869112174x997731954x538976266x538976288x2019914784x1416913229x1936613746x1702125932x1868981570x861627762x1563515741x757087520x1098409332x1869112174x997797490x538970634x538976288x1702109216x1952533880x1818321747x1563450213x542978139x1702109245x1633899384x171664748x538976288x538976288x1299735924x1666413665x1533373537x828071217x540876893x1400399220x1701601635x537528891x538976288x1948262432x1632467045x1953452660x543519841x1634541629x1867658356x1769234804x1482255983x1702111322x1952533880x1635020626x539780468x741355056x808333344x1702109228x1953452664x778400865x171649402x538976288x538976288x1299735924x1867674721x1702125940x1025530200x1952541984x1953452596x1869182049x1515739502x2019914792x1383358797x1952543855x744052837x2019914784x1635020626x2016306548x1702109228x1953452664x778400865x807414905x992555054x538970634x538976288x1702109216x1952533880x1851880020x1952541811x1952858469x861631077x1563450205x1948269856x1849784421x1919903843x171669550x538976288x538976288x1299735924x1918137441x1819504225x1097167969x1919251558x1532834651x1025531185x2019914784x1751346753x2033087087x537528891x538976288x1713381408x1701667186x544436048x1702109245x1952533880x1635020626x706766196x2019914784x1400136013x1701601635x1948264992x1632467045x1634882676x1634497390x1698850164x1701998438x1713383968x1701667186x997420880x538970634x538976288x1919295520x1348824417x2016310127x1713388832x1701667186x779317072x539631736x540028466x1633886255x1935767150x1702521171x171669550x538976288x538976288x1835102822x1936674917x1025538350x1634887200x1867539821x544812659x775036970x539959344x1986945379x1767076705x2033083770x537528891x538976288x1713381408x1701667186x544436048x1702109245x1952533880x1635020626x1498965364x1713383968x1701667186x997420880x538970634x538976288x1919295520x1348824417x2016310127x1713388832x1701667186x779317072x539631736x1986945379x1767076705x2016306554x807414304x171652398x538976288x538976288x1835102822x1936674917x1025538350x1634887200x1867539821x544812659x1633886250x1935767150x1702521171x706771246x892219424x537528891x538976288x1713381408x1701667186x544436048x1702109245x1952533880x1851880020x1952541811x1952858469x706769509x1634887200x1867539821x168442739x538976288x538976288x1835102822x1936674917x1025538094x1634887200x1867539821x544747123x775036970x539959344x1986945379x1767076705x2016306554x538970683x538976288x1919295520x1348824417x2033087343x1713388832x1701667186x779317072x539631737x540028466x1633886255x1935767150x1702521171x171669806x538976266x538976288x1634887200x1867539821x544747123x1919295549x1348824417x2016310127x824191520x991966510x538976266x538976288x1634887200x1867539821x544812659x1919295549x1348824417x2033087343x824191520x991966510x538970634x538976288x1919295520x1348824417x1025536879x1298101536x1632456790x2020176500x1713383968x1701667186x997420880x538970634x175972384x538976288x1348430951x1953067887x544108393x1919295549x1348824417x171668335x538976288x1986945379x1866691425x1768190575x1702125934x1981824288x674390885x1835102822x1936674917x790657070x1634887200x1867539821x544681587x774905898x539697205x741682736x1634887200x1867539821x544812659x1919295535x1348824417x1999532911x807414304x723531054x892219424x537541417x1948262432x1970567269x1866687858x1768190575x1702125934x1763720480x1953853550x1954047316x1130721909x1685221231x1952542313x2097822565x10x";
-    }
-    Object localObject2 = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject2 = ShaderCreateFactory.getFragmentShaderImageFile();
-    }
-    return new CustomVideoFilter((String)localObject1, (String)localObject2, paramVideoMaterial.getResourceList(), getCustomFilterTriggerType(paramVideoMaterial.getItemList()), paramVideoMaterial.getDataPath());
   }
   
-  private static VideoFilterBase createDoodleFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createDoodleRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    DoodleFilter localDoodleFilter = null;
-    if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.DOODLE.value) {
-      localDoodleFilter = new DoodleFilter();
+    if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.DOODLE.value) {}
+    for (paramVideoMaterial = new DoodleFilter();; paramVideoMaterial = null) {
+      return new RenderItem(paramVideoMaterial, null);
     }
-    return localDoodleFilter;
   }
   
   private static VideoFilterBase createEffectFilter(VideoMaterial paramVideoMaterial)
@@ -503,7 +602,7 @@ public class VideoFilterUtil
     return createCustomEffectVideoFilter(paramVideoMaterial);
   }
   
-  private static List<EffectTriggerFilter> createEffectTriggerFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createEffectTriggerRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     List localList = paramVideoMaterial.getItemList();
@@ -512,9 +611,13 @@ public class VideoFilterUtil
       int i = 0;
       while (i < localList.size())
       {
-        StickerItem localStickerItem = (StickerItem)localList.get(i);
-        if ((localStickerItem.lutFilterName != null) && (!localStickerItem.lutFilterName.equals(""))) {
-          localArrayList.add(new EffectTriggerFilter(localStickerItem, paramVideoMaterial.getDataPath()));
+        Object localObject = (StickerItem)localList.get(i);
+        if ((((StickerItem)localObject).lutFilterName != null) && (!((StickerItem)localObject).lutFilterName.equals("")))
+        {
+          EffectTriggerFilter localEffectTriggerFilter = new EffectTriggerFilter((StickerItem)localObject, paramVideoMaterial.getDataPath());
+          localObject = new TriggerCtrlItem((StickerItem)localObject);
+          paramTriggerManager.addTriggers((AETriggerI)localObject);
+          localArrayList.add(new RenderItem(localEffectTriggerFilter, (TriggerCtrlItem)localObject));
         }
         i += 1;
       }
@@ -522,47 +625,51 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static FabbyFilters createFabbyMvFilterList(VideoMaterial paramVideoMaterial)
+  private static RenderItem createFabbyMvFiltersRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    Object localObject1 = null;
-    ArrayList localArrayList;
+    ArrayList localArrayList = null;
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = localArrayList;
     Object localObject2;
     FabbyMvFilter localFabbyMvFilter;
     if (paramVideoMaterial.getFabbyParts() != null)
     {
-      localArrayList = new ArrayList();
-      Iterator localIterator = paramVideoMaterial.getFabbyParts().getParts().iterator();
-      if (localIterator.hasNext())
+      localObject1 = localArrayList;
+      if (paramTriggerManager != null)
       {
-        localObject2 = (FabbyMvPart)localIterator.next();
-        localFabbyMvFilter = new FabbyMvFilter();
-        if (((FabbyMvPart)localObject2).bgItem != null)
+        localArrayList = new ArrayList();
+        Iterator localIterator = paramVideoMaterial.getFabbyParts().getParts().iterator();
+        if (localIterator.hasNext())
         {
-          localFabbyMvFilter.bgFilter = ((StaticStickerFilter)VideoFilterFactory.createFilter(((FabbyMvPart)localObject2).bgItem, paramVideoMaterial.getDataPath()));
-          if ((((FabbyMvPart)localObject2).bgItem.name != null) && (((FabbyMvPart)localObject2).bgItem.name.endsWith("_360"))) {
-            localFabbyMvFilter.bgFilter = create360FabbyMvBGFilter(((FabbyMvPart)localObject2).bgItem, paramVideoMaterial.getDataPath());
+          localObject2 = (FabbyMvPart)localIterator.next();
+          localFabbyMvFilter = new FabbyMvFilter();
+          if (((FabbyMvPart)localObject2).bgItem != null)
+          {
+            localFabbyMvFilter.bgRenderItem = VideoFilterFactory.createRenderItem(((FabbyMvPart)localObject2).bgItem, paramVideoMaterial.getDataPath(), paramTriggerManager);
+            if ((((FabbyMvPart)localObject2).bgItem.name != null) && (((FabbyMvPart)localObject2).bgItem.name.endsWith("_360"))) {
+              localFabbyMvFilter.bgRenderItem = create360FabbyMvBGRenderItem(((FabbyMvPart)localObject2).bgItem, paramVideoMaterial.getDataPath(), paramTriggerManager);
+            }
           }
-        }
-        if (((FabbyMvPart)localObject2).fgItem != null) {
-          localFabbyMvFilter.fgFilter = ((StaticStickerFilter)VideoFilterFactory.createFilter(((FabbyMvPart)localObject2).fgItem, paramVideoMaterial.getDataPath()));
-        }
-        if (((FabbyMvPart)localObject2).coverItem != null) {
-          localFabbyMvFilter.coverFilter = ((StaticStickerFilter)VideoFilterFactory.createFilter(((FabbyMvPart)localObject2).coverItem, paramVideoMaterial.getDataPath()));
-        }
-        if (!TextUtils.isEmpty(((FabbyMvPart)localObject2).lutFile))
-        {
-          localFabbyMvFilter.mEffectFilter = new GPUImageLookupFilter();
-          localObject1 = BitmapUtils.decodeSampledBitmapFromFile(paramVideoMaterial.getDataPath() + File.separator + ((FabbyMvPart)localObject2).lutFile, 1);
-          localFabbyMvFilter.mEffectFilter.addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject1, 33986, true));
-          localFabbyMvFilter.mEffectFilter.setAdjustParam(1.0F - ((FabbyMvPart)localObject2).filterAlpha);
+          if (((FabbyMvPart)localObject2).fgItem != null) {
+            localFabbyMvFilter.fgRenderItem = VideoFilterFactory.createRenderItem(((FabbyMvPart)localObject2).fgItem, paramVideoMaterial.getDataPath(), paramTriggerManager);
+          }
+          if (((FabbyMvPart)localObject2).coverItem != null) {
+            localFabbyMvFilter.coverRenderItem = VideoFilterFactory.createRenderItem(((FabbyMvPart)localObject2).coverItem, paramVideoMaterial.getDataPath(), paramTriggerManager);
+          }
+          if (!TextUtils.isEmpty(((FabbyMvPart)localObject2).lutFile))
+          {
+            localFabbyMvFilter.mEffectFilter = new GPUImageLookupFilter();
+            localObject1 = BitmapUtils.decodeSampledBitmapFromFile(paramVideoMaterial.getDataPath() + File.separator + ((FabbyMvPart)localObject2).lutFile, 1);
+            localFabbyMvFilter.mEffectFilter.addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject1, 33986, true));
+            localFabbyMvFilter.mEffectFilter.setAdjustParam(1.0F - ((FabbyMvPart)localObject2).filterAlpha);
+          }
         }
       }
     }
-    label387:
-    label485:
-    label505:
-    label892:
-    label893:
+    label403:
+    label806:
+    label977:
+    label978:
     for (;;)
     {
       if (!TextUtils.isEmpty(((FabbyMvPart)localObject2).bgLutFile))
@@ -572,29 +679,30 @@ public class VideoFilterUtil
         localFabbyMvFilter.bgEffectFilter.addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject1, 33986, true));
         localFabbyMvFilter.bgEffectFilter.setAdjustParam(1.0F - ((FabbyMvPart)localObject2).bgFilterAlpha);
         if (TextUtils.isEmpty(((FabbyMvPart)localObject2).fgLutFile)) {
-          break label715;
+          break label731;
         }
         localFabbyMvFilter.cameraEffectFilter = new GPUImageLookupFilter();
         localObject1 = BitmapUtils.decodeSampledBitmapFromFile(paramVideoMaterial.getDataPath() + File.separator + ((FabbyMvPart)localObject2).fgLutFile, 1);
         localFabbyMvFilter.cameraEffectFilter.addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject1, 33986, true));
         localFabbyMvFilter.cameraEffectFilter.setAdjustParam(1.0F - ((FabbyMvPart)localObject2).fgFilterAlpha);
+        label501:
         localFabbyMvFilter.mvPart = ((FabbyMvPart)localObject2);
         localObject1 = ((FabbyMvPart)localObject2).gridSettingMap.iterator();
         int i = 0;
         if (!((Iterator)localObject1).hasNext()) {
-          break label790;
+          break label806;
         }
         localObject2 = (Pair)((Iterator)localObject1).next();
         if (((GridSettingModel)((Pair)localObject2).second).canvasRectList.size() <= i) {
-          break label892;
+          break label977;
         }
         i = ((GridSettingModel)((Pair)localObject2).second).canvasRectList.size();
       }
       for (;;)
       {
-        break label505;
+        break label521;
         if (TextUtils.isEmpty(((FabbyMvPart)localObject2).filterId)) {
-          break label893;
+          break label978;
         }
         if (effectFilterProvider != null) {}
         for (localObject1 = effectFilterProvider.getFilter(((FabbyMvPart)localObject2).filterId);; localObject1 = FabbyFilterFactory.createFilter(((FabbyMvPart)localObject2).filterId))
@@ -607,7 +715,7 @@ public class VideoFilterUtil
           break;
         }
         if (TextUtils.isEmpty(((FabbyMvPart)localObject2).bgFilterId)) {
-          break label387;
+          break label403;
         }
         if (effectFilterProvider != null) {}
         for (localObject1 = effectFilterProvider.getFilter(((FabbyMvPart)localObject2).filterId);; localObject1 = FabbyFilterFactory.createFilter(((FabbyMvPart)localObject2).bgFilterId))
@@ -619,8 +727,9 @@ public class VideoFilterUtil
           localFabbyMvFilter.bgEffectFilter.setAdjustParam(1.0F - ((FabbyMvPart)localObject2).bgFilterAlpha);
           break;
         }
+        label731:
         if (TextUtils.isEmpty(((FabbyMvPart)localObject2).fgFilterId)) {
-          break label485;
+          break label501;
         }
         if (effectFilterProvider != null) {}
         for (localObject1 = effectFilterProvider.getFilter(((FabbyMvPart)localObject2).filterId);; localObject1 = FabbyFilterFactory.createFilter(((FabbyMvPart)localObject2).fgFilterId))
@@ -633,39 +742,38 @@ public class VideoFilterUtil
           break;
         }
         localArrayList.add(localFabbyMvFilter);
+        if (localFabbyMvFilter.mvPart.transitionItem == null) {
+          break;
+        }
+        localObject1 = new TriggerCtrlItem(localFabbyMvFilter.mvPart.transitionItem);
+        localHashMap.put(Integer.valueOf(localFabbyMvFilter.mvPart.partIndex), localObject1);
         break;
         localObject1 = new FabbyFilters(localArrayList, paramVideoMaterial.getDataPath(), paramVideoMaterial.getFabbyParts().getAudioFile());
+        paramTriggerManager.addTriggersMvMap(localHashMap);
         if ((localObject1 != null) && (paramVideoMaterial.getMaskPaintType() != 0))
         {
           ((FabbyFilters)localObject1).setDoodlerMaskFilter(new BrushMaskFilter(paramVideoMaterial.getMaskPaintType(), paramVideoMaterial.getMaskPaintSize(), paramVideoMaterial.getDataPath() + File.separator + paramVideoMaterial.getMaskPaintImage()));
           ((FabbyFilters)localObject1).setDoodlerMaskRenderId(paramVideoMaterial.getMaskPaintRenderId());
         }
-        return localObject1;
+        return new RenderItem((AEFilterI)localObject1, new FabbyFiltersTriggerCtrlItem(localHashMap));
       }
     }
   }
   
-  private static VideoFilterBase createFaceCopyFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createFaceCopyRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    FaceCopyFilter localFaceCopyFilter = null;
-    if (VideoMaterialUtil.isFaceCopyMaterial(paramVideoMaterial)) {
-      localFaceCopyFilter = new FaceCopyFilter();
+    if (VideoMaterialUtil.isFaceCopyMaterial(paramVideoMaterial)) {}
+    for (paramVideoMaterial = new FaceCopyFilter();; paramVideoMaterial = null) {
+      return new RenderItem(paramVideoMaterial, null);
     }
-    return localFaceCopyFilter;
   }
   
-  private static FaceCropFilter createFaceCropFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createFaceCropRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramVideoMaterial != null)
-    {
-      localObject1 = localObject2;
-      if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_CROP.value) {
-        localObject1 = new FaceCropFilter(paramVideoMaterial);
-      }
+    if ((paramVideoMaterial != null) && (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_CROP.value)) {}
+    for (paramVideoMaterial = new FaceCropFilter(paramVideoMaterial);; paramVideoMaterial = null) {
+      return new RenderItem(paramVideoMaterial, null);
     }
-    return localObject1;
   }
   
   private static List<NormalVideoFilter> createFaceFilterList(VideoMaterial paramVideoMaterial)
@@ -696,7 +804,7 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static List<GPUParticleFilter> createFaceGpuParticleFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createFaceGpuParticleRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     List localList = paramVideoMaterial.getItemList();
@@ -708,9 +816,13 @@ public class VideoFilterUtil
       int i = 0;
       while (i < localList.size())
       {
-        StickerItem localStickerItem = (StickerItem)localList.get(i);
-        if ((localStickerItem.gpuParticleConfig != null) && (VideoMaterialUtil.isFaceItem(localStickerItem))) {
-          localArrayList.add(new GPUParticleFilter(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+        Object localObject = (StickerItem)localList.get(i);
+        if ((((StickerItem)localObject).gpuParticleConfig != null) && (VideoMaterialUtil.isFaceItem((StickerItem)localObject)))
+        {
+          GPUParticleFilter localGPUParticleFilter = new GPUParticleFilter(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject).id, (StickerItem)localObject);
+          localObject = new TriggerCtrlItem((StickerItem)localObject);
+          paramTriggerManager.addTriggers((AETriggerI)localObject);
+          localArrayList.add(new RenderItem(localGPUParticleFilter, (TriggerCtrlItem)localObject));
         }
         i += 1;
       }
@@ -756,11 +868,11 @@ public class VideoFilterUtil
           {
             localObject1 = localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              localObject1 = "attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nattribute vec2 inputGrayTextureCoordinate;\nattribute vec2 inputNoseTextureCoordinate;\nattribute float pointsVisValue;\nattribute float opacity;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 noseTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform vec2 canvasSize;\nuniform float positionRotate;\n\nvoid main(){\n    vec4 framePos = position;\n\n    gl_Position = framePos;\n    canvasCoordinate = vec2(framePos.x * 0.5 + 0.5, framePos.y * 0.5 + 0.5);\n    textureCoordinate = inputTextureCoordinate;\n    grayTextureCoordinate = inputGrayTextureCoordinate;\n    noseTextureCoordinate = inputNoseTextureCoordinate;\n    pointVisValue = pointsVisValue;\n    opacityValue = opacity;\n}\n";
+              localObject1 = "attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nattribute vec2 inputGrayTextureCoordinate;\nattribute vec2 inputModelTextureCoordinate;\nattribute float pointsVisValue;\nattribute float opacity;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 modelTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform vec2 canvasSize;\nuniform float positionRotate;\n\nvoid main(){\n    vec4 framePos = position;\n\n    gl_Position = framePos;\n    canvasCoordinate = vec2(framePos.x * 0.5 + 0.5, framePos.y * 0.5 + 0.5);\n    textureCoordinate = inputTextureCoordinate;\n    grayTextureCoordinate = inputGrayTextureCoordinate;\n    modelTextureCoordinate = inputModelTextureCoordinate;\n    pointVisValue = pointsVisValue;\n    opacityValue = opacity;\n}\n";
             }
             localObject2 = str;
             if (TextUtils.isEmpty(str)) {
-              localObject2 = "//Need Sync FaceOffFragmentShaderExt.dat\n\nprecision highp float;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 noseTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform sampler2D inputImageTexture4;\nuniform sampler2D inputImageTexture5;\nuniform sampler2D inputImageTexture6;\nuniform sampler2D inputImageTexture7;\n\nuniform float alpha;\nuniform int enableFaceOff;\nuniform float enableNoseOcclusion;\nuniform float enableAlphaFromGray;\nuniform float enableAlphaFromGrayNew;\nuniform int blendMode;\nuniform int blendIris;\nuniform float level1;\nuniform float level2;\n\nuniform vec2 size;\nuniform vec2 center1;\nuniform vec2 center2;\nuniform float radius1;\nuniform float radius2;\n\nuniform int leftEyeClosed; // deprecated\nuniform int rightEyeClosed; // deprecated\nuniform float leftEyeCloseAlpha;\nuniform float rightEyeCloseAlpha;\n\nvec3 blendColorWithMode(vec4 texColor, vec4 canvasColor, int colorBlendMode)\n{\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    vec3 resultFore = texColor.rgb;\n    if (colorBlendMode <= 1){ //default, since used most, put on top\n\n    } else if (colorBlendMode == 2) {  //multiply\n        resultFore = canvasColor.rgb * texColor.rgb;\n    } else if (colorBlendMode == 3){    //screen\n        resultFore = vOne - (vOne - canvasColor.rgb) * (vOne - texColor.rgb);\n    } else if (colorBlendMode == 4){    //overlay\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (canvasColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (canvasColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (canvasColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 5){    //hardlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (texColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 6){    //softlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb + canvasColor.rgb * canvasColor.rgb * (vOne - 2.0 * texColor.rgb);\n        if (texColor.r >= 0.5) {\n            resultFore.r = 2.0 * canvasColor.r * (1.0 - texColor.r) + (2.0 * texColor.r - 1.0) * sqrt(canvasColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 2.0 * canvasColor.g * (1.0 - texColor.g) + (2.0 * texColor.g - 1.0) * sqrt(canvasColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 2.0 * canvasColor.b * (1.0 - texColor.b) + (2.0 * texColor.b - 1.0) * sqrt(canvasColor.b);\n        }\n    } else if (colorBlendMode == 7){    //divide\n        resultFore = vOne;\n        if (texColor.r > 0.0) {\n            resultFore.r = canvasColor.r / texColor.r;\n        }\n        if (texColor.g > 0.0) {\n            resultFore.g = canvasColor.g / texColor.g;\n        }\n        if (texColor.b > 0.0) {\n            resultFore.b = canvasColor.b / texColor.b;\n        }\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 8){    //add\n        resultFore = canvasColor.rgb + texColor.rgb;\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 9){    //substract\n        resultFore = canvasColor.rgb - texColor.rgb;\n        resultFore = max(vZero, resultFore);\n    } else if (colorBlendMode == 10){   //diff\n        resultFore = abs(canvasColor.rgb - texColor.rgb);\n    } else if (colorBlendMode == 11){   //darken\n        resultFore = min(canvasColor.rgb, texColor.rgb);\n    } else if (blendMode == 12){   //lighten\n        resultFore = max(canvasColor.rgb, texColor.rgb);\n    }\n    return resultFore;\n}\n\nvec4 blendColor(vec4 texColor, vec4 canvasColor) {\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    //revert pre multiply\n    if(texColor.a > 0.0){\n       texColor.rgb = texColor.rgb / texColor.a;\n    }\n    vec3 resultFore = texColor.rgb;\n    if (blendMode <= 12) {\n        resultFore = blendColorWithMode(texColor, canvasColor, blendMode);\n    } else if (blendMode == 13){   //highlight for lips\n        if (texColor.a > 0.0001) {\n            if(canvasColor.r >= level1) {\n                texColor.rgb = vec3(1.0, 1.0, 1.0);\n                //if(canvasColor.r < 0.6) {\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05;\n                //}\n            } else if (canvasColor.r >= level2) {\n               if (level1 > level2) {\n                   float f = (canvasColor.r - level2) / (level1 - level2);\n                   texColor.rgb = texColor.rgb + (vOne - texColor.rgb) * f;\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05 * f;\n               }\n            }\n        }\n        resultFore = canvasColor.rgb * texColor.rgb;\n        resultFore = clamp(resultFore, 0.0001, 0.9999);\n    } else if (blendMode == 14){   // iris\n         vec2 curPos = vec2(canvasCoordinate.x * size.x, canvasCoordinate.y * size.y);\n         float dist1 = sqrt((curPos.x - center1.x) * (curPos.x - center1.x) + (curPos.y - center1.y) * (curPos.y - center1.y));\n         float dist2 = sqrt((curPos.x - center2.x) * (curPos.x - center2.x) + (curPos.y - center2.y) * (curPos.y - center2.y));\n         if (dist1 < radius1 && leftEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center1.x) / radius1 / 2.0;\n             float _y = (curPos.y - center1.y) / radius1 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * leftEyeCloseAlpha;\n         } else if (dist2 < radius2 && rightEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center2.x) / radius2 / 2.0;\n             float _y = (curPos.y - center2.y) / radius2 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * rightEyeCloseAlpha;\n         } else {\n            texColor.a = 0.0;\n         }\n         //resultFore = texColor.rgb;\n         //texColor.a = 1.0;\n    }\n    //pre multiply for glBlendFunc\n    vec4 resultColor = vec4(resultFore * texColor.a, texColor.a);\n    return resultColor;\n}\n\nvoid main(void) {\n    vec4 canvasColor = texture2D(inputImageTexture, canvasCoordinate);\n    vec4 texColor = texture2D(inputImageTexture2, textureCoordinate);\n\n        if (texColor.a > 0.0) {\n            texColor = texColor / vec4(texColor.a, texColor.a, texColor.a, 1.0);\n        }\n        if(enableAlphaFromGray > 0.0){\n            vec4 grayColor = texture2D(inputImageTexture3, grayTextureCoordinate);\n            vec4 maskColor = texture2D(inputImageTexture5, grayTextureCoordinate);\n            float grayAlpha = (1.0 - mix(maskColor.r, grayColor.r, enableAlphaFromGrayNew));\n            texColor.a = texColor.a * grayAlpha * alpha;\n        } else {\n            texColor.a = texColor.a * alpha;\n        }\n\n    float confidence = smoothstep(0.7, 1.0, pointVisValue) * opacityValue;\n\n    texColor.a = texColor.a * confidence;\n\n        vec4 screenNoseColor = texture2D(inputImageTexture7, canvasCoordinate);\n        texColor.a = texColor.a * mix(1.0, screenNoseColor.a, enableNoseOcclusion); \n\n//    if(confidence >= 0.0){\n//            texColor.a = texColor.a * confidence;\n//    }\n\n    texColor.rgb = texColor.rgb * texColor.a;\n\n    gl_FragColor = blendColor(texColor, canvasColor);\n    //gl_FragColor = vec4(canvasColor.rgb * opacityValue, 1.0);\n }\n";
+              localObject2 = "//Need Sync FaceOffFragmentShaderExt.dat\n\nprecision highp float;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 modelTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform sampler2D inputImageTexture4;\nuniform sampler2D inputImageTexture5;\nuniform sampler2D inputImageTexture6;\nuniform sampler2D inputImageTexture7;\n\nuniform float alpha;\nuniform int enableFaceOff;\nuniform float enableNoseOcclusion;\nuniform float enableAlphaFromGray;\nuniform float enableAlphaFromGrayNew;\nuniform int blendMode;\nuniform int blendIris;\nuniform float level1;\nuniform float level2;\n\nuniform vec2 size;\nuniform vec2 center1;\nuniform vec2 center2;\nuniform float radius1;\nuniform float radius2;\n\nuniform int leftEyeClosed; // deprecated\nuniform int rightEyeClosed; // deprecated\nuniform float leftEyeCloseAlpha;\nuniform float rightEyeCloseAlpha;\nuniform float useMaterialLipsMask;\nuniform float useLipsRGBA;\nuniform vec4 lipsRGBA; \n\nvec3 blendColorWithMode(vec4 texColor, vec4 canvasColor, int colorBlendMode)\n{\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    vec3 resultFore = texColor.rgb;\n    if (colorBlendMode <= 1){ //default, since used most, put on top\n\n    } else if (colorBlendMode == 2) {  //multiply\n        resultFore = canvasColor.rgb * texColor.rgb;\n    } else if (colorBlendMode == 3){    //screen\n        resultFore = vOne - (vOne - canvasColor.rgb) * (vOne - texColor.rgb);\n    } else if (colorBlendMode == 4){    //overlay\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (canvasColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (canvasColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (canvasColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 5){    //hardlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (texColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 6){    //softlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb + canvasColor.rgb * canvasColor.rgb * (vOne - 2.0 * texColor.rgb);\n        if (texColor.r >= 0.5) {\n            resultFore.r = 2.0 * canvasColor.r * (1.0 - texColor.r) + (2.0 * texColor.r - 1.0) * sqrt(canvasColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 2.0 * canvasColor.g * (1.0 - texColor.g) + (2.0 * texColor.g - 1.0) * sqrt(canvasColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 2.0 * canvasColor.b * (1.0 - texColor.b) + (2.0 * texColor.b - 1.0) * sqrt(canvasColor.b);\n        }\n    } else if (colorBlendMode == 7){    //divide\n        resultFore = vOne;\n        if (texColor.r > 0.0) {\n            resultFore.r = canvasColor.r / texColor.r;\n        }\n        if (texColor.g > 0.0) {\n            resultFore.g = canvasColor.g / texColor.g;\n        }\n        if (texColor.b > 0.0) {\n            resultFore.b = canvasColor.b / texColor.b;\n        }\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 8){    //add\n        resultFore = canvasColor.rgb + texColor.rgb;\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 9){    //substract\n        resultFore = canvasColor.rgb - texColor.rgb;\n        resultFore = max(vZero, resultFore);\n    } else if (colorBlendMode == 10){   //diff\n        resultFore = abs(canvasColor.rgb - texColor.rgb);\n    } else if (colorBlendMode == 11){   //darken\n        resultFore = min(canvasColor.rgb, texColor.rgb);\n    } else if (blendMode == 12){   //lighten\n        resultFore = max(canvasColor.rgb, texColor.rgb);\n    }\n    return resultFore;\n}\n\nvec4 blendColor(vec4 texColor, vec4 canvasColor) {\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    //revert pre multiply\n    if(texColor.a > 0.0){\n       texColor.rgb = texColor.rgb / texColor.a;\n    }\n    vec3 resultFore = texColor.rgb;\n    if (blendMode <= 12) {\n        resultFore = blendColorWithMode(texColor, canvasColor, blendMode);\n    } else if (blendMode == 13){   //highlight for lips\n        if (texColor.a > 0.0001) {\n            if(canvasColor.r >= level1) {\n                texColor.rgb = vec3(1.0, 1.0, 1.0);\n                //if(canvasColor.r < 0.6) {\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05;\n                //}\n            } else if (canvasColor.r >= level2) {\n               if (level1 > level2) {\n                   float f = (canvasColor.r - level2) / (level1 - level2);\n                   texColor.rgb = texColor.rgb + (vOne - texColor.rgb) * f;\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05 * f;\n               }\n            }\n        }\n        resultFore = canvasColor.rgb * texColor.rgb;\n        resultFore = clamp(resultFore, 0.0001, 0.9999);\n    } else if (blendMode == 14){   // iris\n         vec2 curPos = vec2(canvasCoordinate.x * size.x, canvasCoordinate.y * size.y);\n         float dist1 = sqrt((curPos.x - center1.x) * (curPos.x - center1.x) + (curPos.y - center1.y) * (curPos.y - center1.y));\n         float dist2 = sqrt((curPos.x - center2.x) * (curPos.x - center2.x) + (curPos.y - center2.y) * (curPos.y - center2.y));\n         if (dist1 < radius1 && leftEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center1.x) / radius1 / 2.0;\n             float _y = (curPos.y - center1.y) / radius1 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * leftEyeCloseAlpha;\n         } else if (dist2 < radius2 && rightEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center2.x) / radius2 / 2.0;\n             float _y = (curPos.y - center2.y) / radius2 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * rightEyeCloseAlpha;\n         } else {\n            texColor.a = 0.0;\n         }\n         //resultFore = texColor.rgb;\n         //texColor.a = 1.0;\n    }\n    //pre multiply for glBlendFunc\n    vec4 resultColor = vec4(resultFore * texColor.a, texColor.a);\n    return resultColor;\n}\n\nvoid main(void) {\n    vec4 canvasColor = texture2D(inputImageTexture, canvasCoordinate);\n    vec4 texColor = texture2D(inputImageTexture2, textureCoordinate);\n\n    float grayAlpha = 1.0; \n    if (texColor.a > 0.0) {\n        texColor = texColor / vec4(texColor.a, texColor.a, texColor.a, 1.0);\n    }\n    if(enableAlphaFromGray > 0.0){\n        vec4 grayColor = texture2D(inputImageTexture3, grayTextureCoordinate);\n        grayAlpha = 1.0 - grayColor.r;\n    }\n    if (useMaterialLipsMask > 0.0) { \n        vec4 lipsColor = texture2D(inputImageTexture5, modelTextureCoordinate);\n        if (lipsColor.g > 0.01) { \n           texColor = mix(texColor, lipsRGBA, useLipsRGBA); \n           grayAlpha = mix(lipsColor.g, lipsColor.r, enableAlphaFromGrayNew); \n        } \n    } \n    texColor.a = texColor.a * alpha * grayAlpha; \n\n    float confidence = smoothstep(0.7, 1.0, pointVisValue) * opacityValue;\n\n    texColor.a = texColor.a * confidence;\n\n        vec4 screenNoseColor = texture2D(inputImageTexture7, canvasCoordinate);\n        texColor.a = texColor.a * mix(1.0, screenNoseColor.a, enableNoseOcclusion); \n\n//    if(confidence >= 0.0){\n//            texColor.a = texColor.a * confidence;\n//    }\n\n    texColor.rgb = texColor.rgb * texColor.a;\n\n    gl_FragColor = blendColor(texColor, canvasColor);\n    //gl_FragColor = vec4(canvasColor.rgb * opacityValue, 1.0);\n }\n";
             }
             localFaceOffFilter.updateFilterShader((String)localObject1, (String)localObject2);
           }
@@ -771,7 +883,67 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static List<VideoFilterBase> createFaceParticleFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createFaceOffRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  {
+    ArrayList localArrayList = new ArrayList();
+    List localList = paramVideoMaterial.getFaceOffItemList();
+    if (localList == null) {
+      return localArrayList;
+    }
+    int i = 0;
+    if (i < localList.size())
+    {
+      Object localObject1 = (FaceItem)localList.get(i);
+      Object localObject2;
+      if (paramVideoMaterial.getFaceoffType() == VideoMaterialUtil.FACE_OFF_TYPE.BY_IMAGE.value)
+      {
+        localObject2 = new FaceOffByImageFilter((FaceItem)localObject1);
+        localObject1 = null;
+      }
+      for (;;)
+      {
+        paramTriggerManager.addTriggers((AETriggerI)localObject1);
+        localArrayList.add(new RenderItem((AEFilterI)localObject2, (TriggerCtrlItem)localObject1));
+        i += 1;
+        break;
+        if (((FaceItem)localObject1).is3DCos)
+        {
+          localObject2 = new FaceOff3DFilter((FaceItem)localObject1, paramVideoMaterial.getDataPath());
+          localObject1 = new TriggerCtrlItem((FaceItem)localObject1);
+        }
+        else
+        {
+          if (i == 0)
+          {
+            FaceOffFilterManager.getInstance().reset();
+            FaceOffFilterManager.getInstance().setCosmeticChangeMode(paramVideoMaterial.getCosmeticChangeMode());
+            FaceOffFilterManager.getInstance().setSwitch(paramVideoMaterial.getCosmeticShelterSwitchClose(), paramVideoMaterial.getCosmeticChangeSwitch());
+          }
+          FaceOffFilter localFaceOffFilter = new FaceOffFilter((FaceItem)localObject1, paramVideoMaterial.getDataPath());
+          TriggerCtrlItem localTriggerCtrlItem = new TriggerCtrlItem((FaceItem)localObject1);
+          localObject2 = VideoMaterialUtil.loadFaceOffVertexShader(paramVideoMaterial.getDataPath());
+          String str = VideoMaterialUtil.loadFaceOffFragmentShader(paramVideoMaterial.getDataPath());
+          if ((!TextUtils.isEmpty((CharSequence)localObject2)) || (!TextUtils.isEmpty(str)))
+          {
+            localObject1 = localObject2;
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              localObject1 = "attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nattribute vec2 inputGrayTextureCoordinate;\nattribute vec2 inputModelTextureCoordinate;\nattribute float pointsVisValue;\nattribute float opacity;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 modelTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform vec2 canvasSize;\nuniform float positionRotate;\n\nvoid main(){\n    vec4 framePos = position;\n\n    gl_Position = framePos;\n    canvasCoordinate = vec2(framePos.x * 0.5 + 0.5, framePos.y * 0.5 + 0.5);\n    textureCoordinate = inputTextureCoordinate;\n    grayTextureCoordinate = inputGrayTextureCoordinate;\n    modelTextureCoordinate = inputModelTextureCoordinate;\n    pointVisValue = pointsVisValue;\n    opacityValue = opacity;\n}\n";
+            }
+            localObject2 = str;
+            if (TextUtils.isEmpty(str)) {
+              localObject2 = "//Need Sync FaceOffFragmentShaderExt.dat\n\nprecision highp float;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 modelTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform sampler2D inputImageTexture4;\nuniform sampler2D inputImageTexture5;\nuniform sampler2D inputImageTexture6;\nuniform sampler2D inputImageTexture7;\n\nuniform float alpha;\nuniform int enableFaceOff;\nuniform float enableNoseOcclusion;\nuniform float enableAlphaFromGray;\nuniform float enableAlphaFromGrayNew;\nuniform int blendMode;\nuniform int blendIris;\nuniform float level1;\nuniform float level2;\n\nuniform vec2 size;\nuniform vec2 center1;\nuniform vec2 center2;\nuniform float radius1;\nuniform float radius2;\n\nuniform int leftEyeClosed; // deprecated\nuniform int rightEyeClosed; // deprecated\nuniform float leftEyeCloseAlpha;\nuniform float rightEyeCloseAlpha;\nuniform float useMaterialLipsMask;\nuniform float useLipsRGBA;\nuniform vec4 lipsRGBA; \n\nvec3 blendColorWithMode(vec4 texColor, vec4 canvasColor, int colorBlendMode)\n{\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    vec3 resultFore = texColor.rgb;\n    if (colorBlendMode <= 1){ //default, since used most, put on top\n\n    } else if (colorBlendMode == 2) {  //multiply\n        resultFore = canvasColor.rgb * texColor.rgb;\n    } else if (colorBlendMode == 3){    //screen\n        resultFore = vOne - (vOne - canvasColor.rgb) * (vOne - texColor.rgb);\n    } else if (colorBlendMode == 4){    //overlay\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (canvasColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (canvasColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (canvasColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 5){    //hardlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (texColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 6){    //softlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb + canvasColor.rgb * canvasColor.rgb * (vOne - 2.0 * texColor.rgb);\n        if (texColor.r >= 0.5) {\n            resultFore.r = 2.0 * canvasColor.r * (1.0 - texColor.r) + (2.0 * texColor.r - 1.0) * sqrt(canvasColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 2.0 * canvasColor.g * (1.0 - texColor.g) + (2.0 * texColor.g - 1.0) * sqrt(canvasColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 2.0 * canvasColor.b * (1.0 - texColor.b) + (2.0 * texColor.b - 1.0) * sqrt(canvasColor.b);\n        }\n    } else if (colorBlendMode == 7){    //divide\n        resultFore = vOne;\n        if (texColor.r > 0.0) {\n            resultFore.r = canvasColor.r / texColor.r;\n        }\n        if (texColor.g > 0.0) {\n            resultFore.g = canvasColor.g / texColor.g;\n        }\n        if (texColor.b > 0.0) {\n            resultFore.b = canvasColor.b / texColor.b;\n        }\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 8){    //add\n        resultFore = canvasColor.rgb + texColor.rgb;\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 9){    //substract\n        resultFore = canvasColor.rgb - texColor.rgb;\n        resultFore = max(vZero, resultFore);\n    } else if (colorBlendMode == 10){   //diff\n        resultFore = abs(canvasColor.rgb - texColor.rgb);\n    } else if (colorBlendMode == 11){   //darken\n        resultFore = min(canvasColor.rgb, texColor.rgb);\n    } else if (blendMode == 12){   //lighten\n        resultFore = max(canvasColor.rgb, texColor.rgb);\n    }\n    return resultFore;\n}\n\nvec4 blendColor(vec4 texColor, vec4 canvasColor) {\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    //revert pre multiply\n    if(texColor.a > 0.0){\n       texColor.rgb = texColor.rgb / texColor.a;\n    }\n    vec3 resultFore = texColor.rgb;\n    if (blendMode <= 12) {\n        resultFore = blendColorWithMode(texColor, canvasColor, blendMode);\n    } else if (blendMode == 13){   //highlight for lips\n        if (texColor.a > 0.0001) {\n            if(canvasColor.r >= level1) {\n                texColor.rgb = vec3(1.0, 1.0, 1.0);\n                //if(canvasColor.r < 0.6) {\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05;\n                //}\n            } else if (canvasColor.r >= level2) {\n               if (level1 > level2) {\n                   float f = (canvasColor.r - level2) / (level1 - level2);\n                   texColor.rgb = texColor.rgb + (vOne - texColor.rgb) * f;\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05 * f;\n               }\n            }\n        }\n        resultFore = canvasColor.rgb * texColor.rgb;\n        resultFore = clamp(resultFore, 0.0001, 0.9999);\n    } else if (blendMode == 14){   // iris\n         vec2 curPos = vec2(canvasCoordinate.x * size.x, canvasCoordinate.y * size.y);\n         float dist1 = sqrt((curPos.x - center1.x) * (curPos.x - center1.x) + (curPos.y - center1.y) * (curPos.y - center1.y));\n         float dist2 = sqrt((curPos.x - center2.x) * (curPos.x - center2.x) + (curPos.y - center2.y) * (curPos.y - center2.y));\n         if (dist1 < radius1 && leftEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center1.x) / radius1 / 2.0;\n             float _y = (curPos.y - center1.y) / radius1 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * leftEyeCloseAlpha;\n         } else if (dist2 < radius2 && rightEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center2.x) / radius2 / 2.0;\n             float _y = (curPos.y - center2.y) / radius2 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * rightEyeCloseAlpha;\n         } else {\n            texColor.a = 0.0;\n         }\n         //resultFore = texColor.rgb;\n         //texColor.a = 1.0;\n    }\n    //pre multiply for glBlendFunc\n    vec4 resultColor = vec4(resultFore * texColor.a, texColor.a);\n    return resultColor;\n}\n\nvoid main(void) {\n    vec4 canvasColor = texture2D(inputImageTexture, canvasCoordinate);\n    vec4 texColor = texture2D(inputImageTexture2, textureCoordinate);\n\n    float grayAlpha = 1.0; \n    if (texColor.a > 0.0) {\n        texColor = texColor / vec4(texColor.a, texColor.a, texColor.a, 1.0);\n    }\n    if(enableAlphaFromGray > 0.0){\n        vec4 grayColor = texture2D(inputImageTexture3, grayTextureCoordinate);\n        grayAlpha = 1.0 - grayColor.r;\n    }\n    if (useMaterialLipsMask > 0.0) { \n        vec4 lipsColor = texture2D(inputImageTexture5, modelTextureCoordinate);\n        if (lipsColor.g > 0.01) { \n           texColor = mix(texColor, lipsRGBA, useLipsRGBA); \n           grayAlpha = mix(lipsColor.g, lipsColor.r, enableAlphaFromGrayNew); \n        } \n    } \n    texColor.a = texColor.a * alpha * grayAlpha; \n\n    float confidence = smoothstep(0.7, 1.0, pointVisValue) * opacityValue;\n\n    texColor.a = texColor.a * confidence;\n\n        vec4 screenNoseColor = texture2D(inputImageTexture7, canvasCoordinate);\n        texColor.a = texColor.a * mix(1.0, screenNoseColor.a, enableNoseOcclusion); \n\n//    if(confidence >= 0.0){\n//            texColor.a = texColor.a * confidence;\n//    }\n\n    texColor.rgb = texColor.rgb * texColor.a;\n\n    gl_FragColor = blendColor(texColor, canvasColor);\n    //gl_FragColor = vec4(canvasColor.rgb * opacityValue, 1.0);\n }\n";
+            }
+            localFaceOffFilter.updateFilterShader((String)localObject1, (String)localObject2);
+          }
+          localObject1 = localTriggerCtrlItem;
+          localObject2 = localFaceOffFilter;
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  private static List<RenderItem> createFaceParticleRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     List localList = paramVideoMaterial.getItemList();
@@ -780,36 +952,72 @@ public class VideoFilterUtil
       int i = 0;
       if (i < localList.size())
       {
-        StickerItem localStickerItem = (StickerItem)localList.get(i);
-        if ((localStickerItem.particleConfig != null) && (VideoMaterialUtil.isFaceItem(localStickerItem)))
+        Object localObject1 = (StickerItem)localList.get(i);
+        Object localObject2;
+        if ((((StickerItem)localObject1).particleConfig != null) && (VideoMaterialUtil.isFaceItem((StickerItem)localObject1)))
         {
-          if (!localStickerItem.dexName.endsWith("json")) {
-            break label125;
+          if (!((StickerItem)localObject1).dexName.endsWith("json")) {
+            break label159;
           }
-          localArrayList.add(new ParticleFilter3D(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+          localObject2 = new ParticleFilter3D(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject1).id, (StickerItem)localObject1);
+          localObject1 = new TriggerCtrlItem((StickerItem)localObject1);
+          paramTriggerManager.addTriggers((AETriggerI)localObject1);
+          localArrayList.add(new RenderItem((AEFilterI)localObject2, (TriggerCtrlItem)localObject1));
         }
         for (;;)
         {
           i += 1;
           break;
-          label125:
-          localArrayList.add(new ParticleFilter(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+          label159:
+          localObject2 = new ParticleFilter(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject1).id, (StickerItem)localObject1);
+          localObject1 = new TriggerCtrlItem((StickerItem)localObject1);
+          paramTriggerManager.addTriggers((AETriggerI)localObject1);
+          localArrayList.add(new RenderItem((AEFilterI)localObject2, (TriggerCtrlItem)localObject1));
         }
       }
     }
     return localArrayList;
   }
   
-  private static VideoFilterBase createFaceSwitchFilter(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createFaceRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    SwitchFaceFilter localSwitchFaceFilter = null;
-    if (VideoMaterialUtil.isFaceSwitchMaterial(paramVideoMaterial)) {
-      localSwitchFaceFilter = new SwitchFaceFilter();
+    ArrayList localArrayList = new ArrayList();
+    if (paramVideoMaterial.getItemList() != null)
+    {
+      boolean bool = VideoMaterialUtil.canMaterialUseFastRender(paramVideoMaterial);
+      Iterator localIterator = paramVideoMaterial.getItemList().iterator();
+      label171:
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (StickerItem)localIterator.next();
+        if ((VideoMaterialUtil.isFaceItem((StickerItem)localObject2)) && (((StickerItem)localObject2).particleConfig == null) && (((StickerItem)localObject2).gpuParticleConfig == null) && ((!bool) || (!VideoMaterialUtil.canStickerItemUseFastRender((StickerItem)localObject2))))
+        {
+          if (((StickerItem)localObject2).type == VideoMaterialUtil.SHADER_TYPE.NORMAL_STATIC_COUNT_FILTER.value) {}
+          for (Object localObject1 = new StaticCountFilter((StickerItem)localObject2, paramVideoMaterial.getDataPath());; localObject1 = VideoFilterFactory.createFilter((StickerItem)localObject2, paramVideoMaterial.getDataPath()))
+          {
+            if (localObject1 == null) {
+              break label171;
+            }
+            localObject2 = new TriggerCtrlItem((StickerItem)localObject2);
+            paramTriggerManager.addTriggers((AETriggerI)localObject2);
+            localArrayList.add(new RenderItem((AEFilterI)localObject1, (TriggerCtrlItem)localObject2));
+            break;
+          }
+        }
+      }
     }
-    return localSwitchFaceFilter;
+    return localArrayList;
   }
   
-  private static List<FacialFeatureFilter> createFacialFeatureFilters(VideoMaterial paramVideoMaterial)
+  private static RenderItem createFaceSwitchRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  {
+    if (VideoMaterialUtil.isFaceSwitchMaterial(paramVideoMaterial)) {}
+    for (paramVideoMaterial = new SwitchFaceFilter();; paramVideoMaterial = null) {
+      return new RenderItem(paramVideoMaterial, null);
+    }
+  }
+  
+  private static List<FacialFeatureFilter> createFacialFeatureFilters(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList1 = new ArrayList();
     if ((paramVideoMaterial == null) || (paramVideoMaterial.getFaceFeatureItemList() == null)) {
@@ -829,17 +1037,30 @@ public class VideoFilterUtil
           localObject2 = ((List)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            Object localObject3 = (StickerItem)((Iterator)localObject2).next();
-            if (localObject3 != null)
+            StickerItem localStickerItem = (StickerItem)((Iterator)localObject2).next();
+            if (localStickerItem != null)
             {
-              localObject3 = VideoFilterFactory.createFilter((StickerItem)localObject3, paramVideoMaterial.getDataPath());
-              if (localObject3 != null) {
-                localArrayList2.add(localObject3);
+              NormalVideoFilter localNormalVideoFilter = VideoFilterFactory.createFilter(localStickerItem, paramVideoMaterial.getDataPath());
+              TriggerCtrlItem localTriggerCtrlItem = new TriggerCtrlItem(localStickerItem);
+              paramTriggerManager.addTriggers(localTriggerCtrlItem);
+              if (localNormalVideoFilter != null) {
+                localArrayList2.add(new RenderItem(localNormalVideoFilter, localTriggerCtrlItem));
+              }
+              if (localStickerItem.charmRange != null) {
+                if ((localStickerItem.type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (VideoMaterialUtil.isGestureTriggerType(localStickerItem.getTriggerTypeInt())))
+                {
+                  paramVideoMaterial.setHandCharmRangeMaterial(true);
+                  ((FacialFeatureFilter)localObject1).addCharmGesttureType(localStickerItem.getTriggerTypeInt());
+                }
+                else
+                {
+                  paramVideoMaterial.setFaceCharmRangeMaterial(true);
+                }
               }
             }
           }
         }
-        ((FacialFeatureFilter)localObject1).setStickerFilters(localArrayList2);
+        ((FacialFeatureFilter)localObject1).setStickerRenderItems(localArrayList2);
         localArrayList1.add(localObject1);
       }
     }
@@ -869,6 +1090,36 @@ public class VideoFilterUtil
     return null;
   }
   
+  private static RenderItem createFastBodyStickerRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  {
+    if ((paramVideoMaterial.getItemList() != null) && (paramTriggerManager != null))
+    {
+      if (!VideoMaterialUtil.canMaterialUseFastRender(paramVideoMaterial)) {
+        return null;
+      }
+      FastStickerFilter localFastStickerFilter = new FastStickerFilter();
+      HashMap localHashMap = new HashMap();
+      Iterator localIterator = paramVideoMaterial.getItemList().iterator();
+      while (localIterator.hasNext())
+      {
+        StickerItem localStickerItem = (StickerItem)localIterator.next();
+        if ((VideoMaterialUtil.isBodyDetectItem(localStickerItem)) && (VideoMaterialUtil.canStickerItemUseFastBodyRender(localStickerItem)))
+        {
+          TriggerCtrlItem localTriggerCtrlItem = new TriggerCtrlItem(localStickerItem);
+          localHashMap.put(localStickerItem.id, localTriggerCtrlItem);
+          localFastStickerFilter.addSticker(localStickerItem, paramVideoMaterial.getDataPath());
+        }
+      }
+      if (localFastStickerFilter.getStickerListSize() > 0)
+      {
+        localFastStickerFilter.setTriggerCtrlItemMap(localHashMap);
+        paramTriggerManager.addTriggersMap(localHashMap);
+        return new RenderItem(localFastStickerFilter, null);
+      }
+    }
+    return null;
+  }
+  
   private static FastStickerFilter createFastFaceStickerFilter(VideoMaterial paramVideoMaterial)
   {
     if (paramVideoMaterial.getItemList() != null)
@@ -892,14 +1143,34 @@ public class VideoFilterUtil
     return null;
   }
   
-  private static FilamentFilter createFilamentFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createFastFaceStickerRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    if ((!VideoMaterialUtil.isFilamentMaterial(paramVideoMaterial)) || (!FeatureManager.Features.FILAMENT.isFunctionReady()))
+    if ((paramVideoMaterial.getItemList() != null) && (paramTriggerManager != null))
     {
-      LogUtils.d("glb", "glb test stage 4");
-      return null;
+      if (!VideoMaterialUtil.canMaterialUseFastRender(paramVideoMaterial)) {
+        return null;
+      }
+      FastStickerFilter localFastStickerFilter = new FastStickerFilter();
+      HashMap localHashMap = new HashMap();
+      Iterator localIterator = paramVideoMaterial.getItemList().iterator();
+      while (localIterator.hasNext())
+      {
+        StickerItem localStickerItem = (StickerItem)localIterator.next();
+        if ((VideoMaterialUtil.isFaceItem(localStickerItem)) && (VideoMaterialUtil.canStickerItemUseFastFaceRender(localStickerItem)))
+        {
+          TriggerCtrlItem localTriggerCtrlItem = new TriggerCtrlItem(localStickerItem);
+          localHashMap.put(localStickerItem.id + localStickerItem.hashCode(), localTriggerCtrlItem);
+          localFastStickerFilter.addSticker(localStickerItem, paramVideoMaterial.getDataPath());
+        }
+      }
+      if (localFastStickerFilter.getStickerListSize() > 0)
+      {
+        localFastStickerFilter.setTriggerCtrlItemMap(localHashMap);
+        paramTriggerManager.addTriggersMap(localHashMap);
+        return new RenderItem(localFastStickerFilter, null);
+      }
     }
-    return new FilamentFilter(paramVideoMaterial);
+    return null;
   }
   
   private static FilamentParticleFilter createFilamentParticleFilter(VideoMaterial paramVideoMaterial)
@@ -909,6 +1180,37 @@ public class VideoFilterUtil
       localFilamentParticleFilter = new FilamentParticleFilter(paramVideoMaterial.getFilamentParticleList(), paramVideoMaterial.getDataPath());
     }
     return localFilamentParticleFilter;
+  }
+  
+  private static RenderItem createFilamentRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  {
+    if ((!VideoMaterialUtil.isFilamentMaterial(paramVideoMaterial)) || (!FeatureManager.Features.FILAMENT.isFunctionReady()) || (paramTriggerManager == null))
+    {
+      LogUtils.d("glb", "glb test stage 4");
+      return null;
+    }
+    FilamentFilter localFilamentFilter = new FilamentFilter(paramVideoMaterial, paramTriggerManager);
+    FilamentTriggerCtrlItem localFilamentTriggerCtrlItem = new FilamentTriggerCtrlItem();
+    ArrayList localArrayList = new ArrayList();
+    paramVideoMaterial = paramVideoMaterial.getGlbList().iterator();
+    while (paramVideoMaterial.hasNext())
+    {
+      Object localObject1 = ((GLBItemJava)paramVideoMaterial.next()).animationList;
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (AnimationItem)((Iterator)localObject1).next();
+          localArrayList.add(((AnimationItem)localObject2).name);
+          localObject2 = new TriggerCtrlItem((AnimationItem)localObject2);
+          localFilamentTriggerCtrlItem.addTriggerCtrlItems((TriggerCtrlItem)localObject2);
+          paramTriggerManager.addTriggers((AETriggerI)localObject2);
+        }
+      }
+    }
+    localFilamentFilter.setAnimationItemNames(localArrayList);
+    return new RenderItem(localFilamentFilter, localFilamentTriggerCtrlItem);
   }
   
   public static VideoFilterList createFilters(VideoMaterial paramVideoMaterial)
@@ -924,229 +1226,243 @@ public class VideoFilterUtil
     if (paramVideoMaterial == null) {
       return null;
     }
-    LutItemsFilter localLutItemsFilter = createLutFilter(paramVideoMaterial);
-    SkyboxItemsFilter localSkyboxItemsFilter = createSkyboxFilter(paramVideoMaterial);
-    CustomVideoFilter localCustomVideoFilter = createCustomVideoFilter(paramVideoMaterial);
-    CustomVertexFilter localCustomVertexFilter = createCustomVertexFilter(paramVideoMaterial);
-    SnakeFaceFilter localSnakeFaceFilter = createSnakeFaceFilter(paramVideoMaterial);
-    List localList1 = createFaceOffFilter(paramVideoMaterial);
-    List localList2 = createTransformFilter(paramVideoMaterial);
-    VideoFilterBase localVideoFilterBase1 = createFaceSwitchFilter(paramVideoMaterial);
-    VideoFilterBase localVideoFilterBase2 = createFaceCopyFilter(paramVideoMaterial);
-    VideoFilterBase localVideoFilterBase3 = createDoodleFilter(paramVideoMaterial);
-    List localList3 = createThreeDimFilter(paramVideoMaterial);
-    BuckleFaceFilter localBuckleFaceFilter = createBuckleFaceFilter(paramVideoMaterial);
-    Object localObject = null;
-    if (localBuckleFaceFilter == null) {
-      localObject = createFaceCropFilter(paramVideoMaterial);
-    }
-    HeadCropFilter localHeadCropFilter = createHeadCropFilter(paramVideoMaterial);
-    List localList15 = createHeadCropFilterList(paramVideoMaterial);
-    List localList16 = createFaceFilterList(paramVideoMaterial);
-    List localList4 = createGestureVideoFilterList(paramVideoMaterial);
-    List localList5 = createBodyVideoFilterList(paramVideoMaterial);
-    HairCos localHairCos = createHairCos(paramVideoMaterial);
-    FabbyFilters localFabbyFilters = createFabbyMvFilterList(paramVideoMaterial);
-    List localList6 = createMultiViewerFilters(paramVideoMaterial);
-    List localList7 = createFacialFeatureFilters(paramVideoMaterial);
-    FilamentFilter localFilamentFilter = createFilamentFilter(paramVideoMaterial);
-    List localList17 = createVoiceTextFilter(paramVideoMaterial);
-    List localList18 = createParticleXFilters(paramVideoMaterial);
-    List localList8 = createFaceParticleFilters(paramVideoMaterial);
-    List localList9 = createGestureParticleFilters(paramVideoMaterial);
-    List localList10 = createBodyParticleFilters(paramVideoMaterial);
-    List localList11 = createStarParticleFilters(paramVideoMaterial);
-    List localList12 = createFaceGpuParticleFilters(paramVideoMaterial);
-    List localList13 = createGestureGpuParticleFilters(paramVideoMaterial);
-    createBodyGpuParticleFilters(paramVideoMaterial);
-    createStarGpuParticleFilters(paramVideoMaterial);
-    FilamentParticleFilter localFilamentParticleFilter = createFilamentParticleFilter(paramVideoMaterial);
-    PhantomFilter localPhantomFilter = createPhantomFilter(paramVideoMaterial);
-    VideoFilterInputFreeze localVideoFilterInputFreeze = creatFreezeFrameFilter(paramVideoMaterial);
-    ZoomFilter localZoomFilter = creatZoomFilter(paramVideoMaterial);
-    List localList14 = createMaskStickerFilters(paramVideoMaterial);
-    List localList19 = createRapidFilters(paramVideoMaterial);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    createQQGestureVideoFilterList(paramVideoMaterial, localArrayList1, localArrayList2);
-    if (localCustomVideoFilter != null) {
-      localCustomVideoFilter.setNormalFilters(localList16);
-    }
-    VideoFilterList localVideoFilterList = new VideoFilterList();
-    AllVideoFilters localAllVideoFilters = new AllVideoFilters();
-    if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.NORMAL.value) {
-      localAllVideoFilters.addAll(localList16);
-    }
-    for (;;)
+    TriggerManager localTriggerManager = new TriggerManager();
+    RenderItem localRenderItem1 = createLutRenderItem(paramVideoMaterial, localTriggerManager);
+    RenderItem localRenderItem2 = createSkyboxRenderItem(paramVideoMaterial, localTriggerManager);
+    RenderItem localRenderItem3 = createCustomRenderItem(paramVideoMaterial, localTriggerManager);
+    RenderItem localRenderItem4 = createCustomVertexRenderItem(paramVideoMaterial, localTriggerManager);
+    RenderItem localRenderItem5 = createSnakeFaceRenderItem(paramVideoMaterial, localTriggerManager);
+    Object localObject2 = createFaceOffRenderItems(paramVideoMaterial, localTriggerManager);
+    List localList1 = createTransformRenderItems(paramVideoMaterial, localTriggerManager);
+    RenderItem localRenderItem6 = createFaceSwitchRenderItem(paramVideoMaterial, localTriggerManager);
+    RenderItem localRenderItem7 = createFaceCopyRenderItem(paramVideoMaterial, localTriggerManager);
+    RenderItem localRenderItem8 = createDoodleRenderItem(paramVideoMaterial, localTriggerManager);
+    List localList2 = createThreeDimRenderItem(paramVideoMaterial, localTriggerManager);
+    RenderItem localRenderItem9 = createBuckleFaceRenderItem(paramVideoMaterial, localTriggerManager);
+    if ((localRenderItem9 == null) || (localRenderItem9.filter == null)) {}
+    for (Object localObject1 = createFaceCropRenderItem(paramVideoMaterial, localTriggerManager);; localObject1 = null)
     {
-      if (paramVideoMaterial.getBlurEffectItem() != null) {
-        localVideoFilterList.setBlurMaskFilter(new BlurMaskFilter(paramVideoMaterial.getBlurEffectItem()));
+      RenderItem localRenderItem12 = createHeadCropRenderItem(paramVideoMaterial, localTriggerManager);
+      List localList14 = createHeadCropRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList15 = createFaceRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList3 = createGestureRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList4 = createBodyRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList5 = createMultiViewerFilters(paramVideoMaterial);
+      List localList6 = createFacialFeatureFilters(paramVideoMaterial, localTriggerManager);
+      RenderItem localRenderItem10 = createFilamentRenderItem(paramVideoMaterial, localTriggerManager);
+      List localList16 = createVoiceTextRenderItem(paramVideoMaterial, localTriggerManager);
+      List localList17 = createParticleXRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList7 = createFaceParticleRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList8 = createGestureParticleRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList9 = createBodyParticleRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList10 = createStarParticleRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList11 = createFaceGpuParticleRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList12 = createGestureGpuParticleRenderItems(paramVideoMaterial, localTriggerManager);
+      createBodyGpuParticleRenderItems(paramVideoMaterial, localTriggerManager);
+      createStarGpuParticleRenderItems(paramVideoMaterial, localTriggerManager);
+      FilamentParticleFilter localFilamentParticleFilter = createFilamentParticleFilter(paramVideoMaterial);
+      PhantomFilter localPhantomFilter = createPhantomFilter(paramVideoMaterial);
+      creatFreezeFrameFilter(paramVideoMaterial);
+      FrozenFrameRender localFrozenFrameRender = createFrozenRender(paramVideoMaterial, localTriggerManager);
+      RenderItem localRenderItem11 = creatZoomRenderItem(paramVideoMaterial, localTriggerManager);
+      List localList13 = createMaskStickerRenderItems(paramVideoMaterial, localTriggerManager);
+      List localList18 = createRapidRenderItems(paramVideoMaterial, localTriggerManager);
+      ArrayList localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      createQQGestureVideoFilterList(paramVideoMaterial, localArrayList1, localArrayList2);
+      if ((localRenderItem3 != null) && (localRenderItem3.filter != null) && ((localRenderItem3.filter instanceof CustomVideoFilter))) {
+        ((CustomVideoFilter)localRenderItem3.filter).setNormalRenderItems(localList15);
       }
-      localVideoFilterList.setLut(localLutItemsFilter);
-      localVideoFilterList.setSkyBox(localSkyboxItemsFilter);
-      localVideoFilterList.setHairCos(localHairCos);
-      if (localPhantomFilter != null) {
-        localVideoFilterList.setPhantomFilter(localPhantomFilter);
+      VideoFilterList localVideoFilterList = new VideoFilterList();
+      AllVideoFilters localAllVideoFilters = new AllVideoFilters();
+      if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.NORMAL.value) {
+        localAllVideoFilters.addRenderItems(localList15);
       }
-      localVideoFilterList.setRapidNetFilterList(localList19);
-      localAllVideoFilters.addAll(localList17);
-      localAllVideoFilters.addAll(localList18);
-      localObject = createEffectFilter(paramVideoMaterial);
-      if (localObject != null)
+      for (;;)
       {
-        localVideoFilterList.setVideoEffectFilter((VideoFilterBase)localObject);
-        localVideoFilterList.setVideoEffectOrder(paramVideoMaterial.getVideoFilterEffect().order);
-      }
-      localVideoFilterList.setFabbyMvFilters(localFabbyFilters);
-      localVideoFilterList.setFilters(localAllVideoFilters.getmFilters(), localList1, localList2);
-      localVideoFilterList.setQQGestureFilters(localArrayList2, localArrayList1);
-      localVideoFilterList.setFastFaceStickerFilter(createFastFaceStickerFilter(paramVideoMaterial));
-      localVideoFilterList.setFastBodyStickerFilter(createFastBodyStickerFilter(paramVideoMaterial));
-      localVideoFilterList.setFaceParticleFilters(localList8);
-      localVideoFilterList.setGestureParticleFilters(localList9);
-      localVideoFilterList.setBodyParticleFilters(localList10);
-      localVideoFilterList.setStarParticleFilters(localList11);
-      localVideoFilterList.setFaceGpuParticleFilters(localList12);
-      localVideoFilterList.setGestureGpuParticleFilters(localList13);
-      localVideoFilterList.setFilamentParticleFilter(localFilamentParticleFilter);
-      localVideoFilterList.setEffectTriggerFilters(createEffectTriggerFilters(paramVideoMaterial));
-      localVideoFilterList.setComicEffectFilters(createComicEffectFilterFilters(paramVideoMaterial));
-      localVideoFilterList.setGestureFilters(localList4);
-      localVideoFilterList.setBodyFilters(localList5);
-      localVideoFilterList.setFilamentFilter(localFilamentFilter);
-      localVideoFilterList.setMultiViewerFilters(localList6);
-      localVideoFilterList.setNeedDetectGesture(VideoMaterialUtil.isGestureDetectMaterial(paramVideoMaterial));
-      localVideoFilterList.setNeedDetectGestureBonePoint(VideoMaterialUtil.isNeedHandBonePoint(paramVideoMaterial));
-      localVideoFilterList.setOnlyDetectOneGesture(VideoMaterialUtil.getOnlyOneGestureDetectMaterial(paramVideoMaterial));
-      if (VideoMaterialUtil.isEmotionDectectMaterial(paramVideoMaterial)) {
-        localVideoFilterList.setNeedDetectEmotion(VideoMaterialUtil.isEmotionDectectMaterial(paramVideoMaterial));
-      }
-      localVideoFilterList.setNeedDetectGender(VideoMaterialUtil.isGenderDetect(paramVideoMaterial));
-      localVideoFilterList.setMaterial(paramVideoMaterial);
-      localVideoFilterList.setFacialFeatureFilterList(localList7);
-      if (paramVideoMaterial.getAudio2Text() != null) {
-        localVideoFilterList.setTriggerWords(paramVideoMaterial.getAudio2Text().triggerWords);
-      }
-      if (localVideoFilterInputFreeze != null) {
-        localVideoFilterList.setInputFrameFreezeSetting(localVideoFilterInputFreeze);
-      }
-      if (localZoomFilter != null) {
-        localVideoFilterList.setZoomFilter(localZoomFilter);
-      }
-      if (localList14 != null) {
-        localVideoFilterList.setMaskStickerFilters(localList14);
-      }
-      if (!TriggerStateManager.getInstance().getTriggerStateItemMap().containsKey(Integer.valueOf(0)))
-      {
-        localObject = new TriggerStateItem(paramVideoMaterial.getTriggerStateEdgeItemList(), paramVideoMaterial.getTriggerActionItemList());
-        if ((localObject != null) && (((TriggerStateItem)localObject).isValid())) {
-          TriggerStateManager.getInstance().putTriggerStateItem(0, (TriggerStateItem)localObject);
+        if (paramVideoMaterial.getBlurEffectItem() != null) {
+          localVideoFilterList.setBlurMaskFilter(new BlurMaskFilter(paramVideoMaterial.getBlurEffectItem()));
         }
-      }
-      localVideoFilterList.setCosFunFilterGroup(createCosFunFilterGroup(paramVideoMaterial));
-      return localVideoFilterList;
-      if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.COMMON_BEFORE_CUSTOM.value)
-      {
-        localAllVideoFilters.addAll(localList16);
-        if (localCustomVideoFilter != null) {
-          localAllVideoFilters.add(localCustomVideoFilter);
+        localVideoFilterList.setLut(localRenderItem1);
+        localVideoFilterList.setSkyBox(localRenderItem2);
+        localVideoFilterList.setHairCosRenderItem(createHairCosRenderItem(paramVideoMaterial, localTriggerManager));
+        if (localPhantomFilter != null) {
+          localVideoFilterList.setPhantomFilter(localPhantomFilter);
         }
-      }
-      else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.CUSTOM_BEFORE_COMMON.value)
-      {
-        if (localCustomVideoFilter != null) {
-          localAllVideoFilters.add(localCustomVideoFilter);
-        }
-        localAllVideoFilters.addAll(localList16);
-      }
-      else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.SNAKE_FACE_BEFORE_COMMON.value)
-      {
-        localAllVideoFilters.add(localSnakeFaceFilter);
-        localAllVideoFilters.addAll(localList16);
-      }
-      else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.CUSTOM_VERTEX_SHADER.value)
-      {
-        localAllVideoFilters.add(localCustomVertexFilter);
-        localAllVideoFilters.addAll(localList16);
-      }
-      else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_OFF.value)
-      {
-        localAllVideoFilters.addAll(localList16);
-      }
-      else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.TRANSFORM.value)
-      {
-        localAllVideoFilters.addAll(localList16);
-      }
-      else if ((paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_OFF_TRANSFORM.value) || (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.GAMEPLAY_3D.value))
-      {
-        localAllVideoFilters.addAll(localList16);
-      }
-      else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.THREE_DIM.value)
-      {
-        localAllVideoFilters.addAll(localList3);
-      }
-      else if (VideoMaterialUtil.isFaceCopyMaterial(paramVideoMaterial))
-      {
-        localAllVideoFilters.add(localVideoFilterBase2);
-      }
-      else if (VideoMaterialUtil.isFaceSwitchMaterial(paramVideoMaterial))
-      {
-        localAllVideoFilters.add(localVideoFilterBase1);
-      }
-      else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.DOODLE.value)
-      {
-        localAllVideoFilters.add(localVideoFilterBase3);
-      }
-      else if (VideoMaterialUtil.isFaceMorphingMaterial(paramVideoMaterial))
-      {
-        localVideoFilterList.setCrazyFaceFilters(new CrazyFaceFilters(paramVideoMaterial));
-        localAllVideoFilters.addAll(localList16);
-      }
-      else if (VideoMaterialUtil.isARMaterial(paramVideoMaterial))
-      {
-        localVideoFilterList.setARParticleFilter(createARParticleFilter(paramVideoMaterial));
-        if (localList16 != null) {
-          localAllVideoFilters.addAll(localList16);
-        }
-      }
-      else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.MAI_MENG.value)
-      {
-        localVideoFilterList.setActFilter(createActFilter(paramVideoMaterial));
-        localAllVideoFilters.addAll(localList16);
-      }
-      else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_CROP.value)
-      {
-        if (localBuckleFaceFilter != null) {
-          localAllVideoFilters.add(localBuckleFaceFilter);
-        }
-        for (;;)
+        localVideoFilterList.setRapidNetRenderItems(localList18);
+        localAllVideoFilters.addRenderItems(localList16);
+        localAllVideoFilters.addRenderItems(localList17);
+        localObject1 = createEffectFilter(paramVideoMaterial);
+        if (localObject1 != null)
         {
-          if (localList16 == null) {
-            break label1202;
+          localVideoFilterList.setVideoEffectFilter((VideoFilterBase)localObject1);
+          localVideoFilterList.setVideoEffectOrder(paramVideoMaterial.getVideoFilterEffect().order);
+        }
+        localVideoFilterList.setFabbyMvFiltersRenderItem(createFabbyMvFiltersRenderItem(paramVideoMaterial, localTriggerManager));
+        localVideoFilterList.setRenderItems(localAllVideoFilters.getRenderItems(), (List)localObject2, localList1);
+        localVideoFilterList.setQQGestureFilters(localArrayList2, localArrayList1);
+        localVideoFilterList.setFastFaceStickerRenderItems(createFastFaceStickerRenderItem(paramVideoMaterial, localTriggerManager));
+        localVideoFilterList.setFastBodyStickerRenderItems(createFastBodyStickerRenderItem(paramVideoMaterial, localTriggerManager));
+        localVideoFilterList.setFaceParticleRenderItems(localList7);
+        localVideoFilterList.setGestureParticleRenderItems(localList8);
+        localVideoFilterList.setBodyParticleRenderItems(localList9);
+        localVideoFilterList.setStarParticleRenderItems(localList10);
+        localVideoFilterList.setFaceGpuParticleRenderItems(localList11);
+        localVideoFilterList.setGestureGpuParticleRenderItems(localList12);
+        localVideoFilterList.setFilamentParticleFilter(localFilamentParticleFilter);
+        localVideoFilterList.setmEffectTriggerRenderItems(createEffectTriggerRenderItems(paramVideoMaterial, localTriggerManager));
+        localVideoFilterList.setComicEffectRenderItems(createComicEffectFilterRenderItems(paramVideoMaterial, localTriggerManager));
+        localVideoFilterList.setGestureRenderItems(localList3);
+        localVideoFilterList.setBodyRenderItems(localList4);
+        localVideoFilterList.setFilamentRenderItem(localRenderItem10);
+        localVideoFilterList.setMultiViewerFilters(localList5);
+        localVideoFilterList.setNeedDetectGesture(VideoMaterialUtil.isGestureDetectMaterial(paramVideoMaterial));
+        localVideoFilterList.setNeedDetectGestureBonePoint(VideoMaterialUtil.isNeedHandBonePoint(paramVideoMaterial));
+        localVideoFilterList.setOnlyDetectOneGesture(VideoMaterialUtil.getOnlyOneGestureDetectMaterial(paramVideoMaterial));
+        if (VideoMaterialUtil.isEmotionDectectMaterial(paramVideoMaterial)) {
+          localVideoFilterList.setNeedDetectEmotion(VideoMaterialUtil.isEmotionDectectMaterial(paramVideoMaterial));
+        }
+        localVideoFilterList.setNeedDetectGender(VideoMaterialUtil.isGenderDetect(paramVideoMaterial));
+        localVideoFilterList.setMaterial(paramVideoMaterial);
+        localVideoFilterList.setFacialFeatureFilterList(localList6);
+        if (paramVideoMaterial.getAudio2Text() != null) {
+          localVideoFilterList.setTriggerWords(paramVideoMaterial.getAudio2Text().triggerWords);
+        }
+        if (localFrozenFrameRender != null) {
+          localVideoFilterList.setFrozenFrameRender(localFrozenFrameRender);
+        }
+        if (localRenderItem11 != null) {
+          localVideoFilterList.setZoomRenderItem(localRenderItem11);
+        }
+        if (localList13 != null) {
+          localVideoFilterList.setMaskStickerRenderItems(localList13);
+        }
+        if (!TriggerStateManager.getInstance().getTriggerStateItemMap().containsKey(Integer.valueOf(0)))
+        {
+          localObject1 = new TriggerStateItem(paramVideoMaterial.getTriggerStateEdgeItemList(), paramVideoMaterial.getTriggerActionItemList());
+          if ((localObject1 != null) && (((TriggerStateItem)localObject1).isValid()))
+          {
+            ((TriggerStateItem)localObject1).setStateVersion(paramVideoMaterial.getStateVersion());
+            TriggerStateManager.getInstance().putTriggerStateItem(0, (TriggerStateItem)localObject1);
           }
-          localAllVideoFilters.addAll(localList16);
-          if (localObject != null) {
-            ((FaceCropFilter)localObject).setNormalFilters(localList16);
-          }
-          if (localBuckleFaceFilter == null) {
-            break;
-          }
-          localBuckleFaceFilter.setNormalFilters(localList16);
+        }
+        if (paramVideoMaterial.getAudio2Text() == null) {
           break;
-          localAllVideoFilters.add((VideoFilterBase)localObject);
         }
-      }
-      else
-      {
-        label1202:
-        if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_HEAD_CROP.value)
+        localObject1 = localTriggerManager.getTriggers().iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          localVideoFilterList.setHeadCropFilter(localHeadCropFilter);
-          localAllVideoFilters.add(localHeadCropFilter);
-          localAllVideoFilters.addAll(localList16);
-          localVideoFilterList.setHeadCropItemFilters(localList15);
+          localObject2 = (AETriggerI)((Iterator)localObject1).next();
+          if ((localObject2 instanceof TriggerCtrlItem)) {
+            ((TriggerCtrlItem)localObject2).setTriggerWords(paramVideoMaterial.getAudio2Text().triggerWords);
+          }
+        }
+        if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.COMMON_BEFORE_CUSTOM.value)
+        {
+          localAllVideoFilters.addRenderItems(localList15);
+          if ((localRenderItem3 != null) && (localRenderItem3.filter != null)) {
+            localAllVideoFilters.add(localRenderItem3);
+          }
+        }
+        else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.CUSTOM_BEFORE_COMMON.value)
+        {
+          if ((localRenderItem3 != null) && (localRenderItem3.filter != null)) {
+            localAllVideoFilters.add(localRenderItem3);
+          }
+          localAllVideoFilters.addRenderItems(localList15);
+        }
+        else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.SNAKE_FACE_BEFORE_COMMON.value)
+        {
+          localAllVideoFilters.add(localRenderItem5);
+          localAllVideoFilters.addRenderItems(localList15);
+        }
+        else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.CUSTOM_VERTEX_SHADER.value)
+        {
+          localAllVideoFilters.add(localRenderItem4);
+          localAllVideoFilters.addRenderItems(localList15);
+        }
+        else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_OFF.value)
+        {
+          localAllVideoFilters.addRenderItems(localList15);
+        }
+        else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.TRANSFORM.value)
+        {
+          localAllVideoFilters.addRenderItems(localList15);
+        }
+        else if ((paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_OFF_TRANSFORM.value) || (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.GAMEPLAY_3D.value))
+        {
+          localAllVideoFilters.addRenderItems(localList15);
+        }
+        else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.THREE_DIM.value)
+        {
+          localAllVideoFilters.addRenderItems(localList2);
+        }
+        else if (VideoMaterialUtil.isFaceCopyMaterial(paramVideoMaterial))
+        {
+          localAllVideoFilters.add(localRenderItem7);
+        }
+        else if (VideoMaterialUtil.isFaceSwitchMaterial(paramVideoMaterial))
+        {
+          localAllVideoFilters.add(localRenderItem6);
+        }
+        else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.DOODLE.value)
+        {
+          localAllVideoFilters.add(localRenderItem8);
+        }
+        else if (VideoMaterialUtil.isFaceMorphingMaterial(paramVideoMaterial))
+        {
+          localVideoFilterList.setCrazyFaceFilters(new CrazyFaceFilters(paramVideoMaterial));
+          localAllVideoFilters.addRenderItems(localList15);
+        }
+        else if (VideoMaterialUtil.isARMaterial(paramVideoMaterial))
+        {
+          localVideoFilterList.setARParticleFilter(createARParticleFilter(paramVideoMaterial));
+          if (localList15 != null) {
+            localAllVideoFilters.addRenderItems(localList15);
+          }
+        }
+        else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.MAI_MENG.value)
+        {
+          localVideoFilterList.setActFilter(createActFilter(paramVideoMaterial));
+          localAllVideoFilters.addRenderItems(localList15);
+        }
+        else if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_CROP.value)
+        {
+          if ((localRenderItem9 != null) && (localRenderItem9.filter != null)) {
+            localAllVideoFilters.add(localRenderItem9);
+          }
+          for (;;)
+          {
+            if (localList15 == null) {
+              break label1351;
+            }
+            localAllVideoFilters.addRenderItems(localList15);
+            if ((localObject1 != null) && (((RenderItem)localObject1).filter != null)) {
+              ((FaceCropFilter)((RenderItem)localObject1).filter).setNormalRenderItems(localList15);
+            }
+            if ((localRenderItem9 == null) || (localRenderItem9.filter == null)) {
+              break;
+            }
+            ((BuckleFaceFilter)localRenderItem9.filter).setNormalRenderItems(localList15);
+            break;
+            localAllVideoFilters.add((RenderItem)localObject1);
+          }
+        }
+        else
+        {
+          label1351:
+          if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_HEAD_CROP.value)
+          {
+            localVideoFilterList.setHeadCropRenderItem(localRenderItem12);
+            localAllVideoFilters.add(localRenderItem12);
+            localAllVideoFilters.addRenderItems(localList15);
+            localVideoFilterList.setHeadCropRenderItems(localList14);
+          }
         }
       }
+      localVideoFilterList.setCosFunFilterGroup(createCosFunFilterGroup(paramVideoMaterial, localTriggerManager));
+      localVideoFilterList.setTriggerManager(localTriggerManager);
+      return localVideoFilterList;
     }
   }
   
@@ -1155,18 +1471,20 @@ public class VideoFilterUtil
     if (paramVideoMaterial == null) {
       return null;
     }
-    Object localObject1 = createCustomVideoFilter(paramVideoMaterial);
-    createCustomVertexFilter(paramVideoMaterial);
-    SnakeFaceFilter localSnakeFaceFilter = createSnakeFaceFilter(paramVideoMaterial);
-    List localList1 = createFaceOffFilter(paramVideoMaterial);
-    List localList2 = createTransformFilter(paramVideoMaterial);
-    VideoFilterBase localVideoFilterBase1 = createFaceSwitchFilter(paramVideoMaterial);
-    VideoFilterBase localVideoFilterBase2 = createFaceCopyFilter(paramVideoMaterial);
-    List localList3 = createThreeDimFilter(paramVideoMaterial);
-    List localList4 = createFaceFilterList(paramVideoMaterial);
-    VideoFilterBase localVideoFilterBase3 = createNonFit2DFilter(paramVideoMaterial);
-    BuckleFaceFilter localBuckleFaceFilter = createBuckleFaceFilter(paramVideoMaterial);
-    VideoFilterBase localVideoFilterBase4 = createBigHeadFilter(paramVideoMaterial);
+    Object localObject1 = new TriggerManager();
+    AllVideoFilters localAllVideoFilters = new AllVideoFilters();
+    Object localObject2 = createCustomRenderItem(paramVideoMaterial, (TriggerManager)localObject1);
+    createCustomVertexRenderItem(paramVideoMaterial, (TriggerManager)localObject1);
+    RenderItem localRenderItem1 = createSnakeFaceRenderItem(paramVideoMaterial, (TriggerManager)localObject1);
+    List localList1 = createFaceOffRenderItems(paramVideoMaterial, (TriggerManager)localObject1);
+    List localList2 = createTransformRenderItems(paramVideoMaterial, (TriggerManager)localObject1);
+    RenderItem localRenderItem2 = createFaceSwitchRenderItem(paramVideoMaterial, (TriggerManager)localObject1);
+    RenderItem localRenderItem3 = createFaceCopyRenderItem(paramVideoMaterial, (TriggerManager)localObject1);
+    List localList3 = createThreeDimRenderItem(paramVideoMaterial, (TriggerManager)localObject1);
+    List localList4 = createFaceRenderItems(paramVideoMaterial, (TriggerManager)localObject1);
+    VideoFilterBase localVideoFilterBase1 = createNonFit2DFilter(paramVideoMaterial);
+    localObject1 = createBuckleFaceRenderItem(paramVideoMaterial, (TriggerManager)localObject1);
+    VideoFilterBase localVideoFilterBase2 = createBigHeadFilter(paramVideoMaterial);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     createQQGestureVideoFilterList(paramVideoMaterial, localArrayList1, localArrayList2);
@@ -1175,94 +1493,94 @@ public class VideoFilterUtil
     }
     for (;;)
     {
-      if (localObject1 != null) {
-        ((CustomVideoFilter)localObject1).setNormalFilters(localList4);
+      if ((localObject2 != null) && (((RenderItem)localObject2).filter != null) && ((((RenderItem)localObject2).filter instanceof CustomVideoFilter))) {
+        ((CustomVideoFilter)((RenderItem)localObject2).filter).setNormalRenderItems(localList4);
       }
       new StringBuffer();
-      localObject1 = new VideoFilterList();
-      ArrayList localArrayList3 = new ArrayList();
+      localObject2 = new VideoFilterList();
       adjustRenderOrder(paramVideoMaterial.getFilterList());
       Iterator localIterator = paramVideoMaterial.getFilterList().iterator();
       while (localIterator.hasNext())
       {
-        Object localObject2 = (String)localIterator.next();
-        if ("FaceOff".equals(localObject2))
+        Object localObject3 = (String)localIterator.next();
+        if ("FaceOff".equals(localObject3))
         {
           if (localList1 != null) {
-            localArrayList3.addAll(localList1);
+            localAllVideoFilters.addRenderItems(localList1);
           }
         }
-        else if ("MeshDistortion".equals(localObject2))
+        else if ("MeshDistortion".equals(localObject3))
         {
           if (paramVideoMaterial.getOrderMode() <= 1)
           {
             if (localList2 != null) {
-              localArrayList3.addAll(localList2);
+              localAllVideoFilters.addRenderItems(localList2);
             }
           }
           else if ((paramVideoMaterial.getOrderMode() == 2) && (localList2 != null)) {
-            localArrayList3.addAll(localList2);
+            localAllVideoFilters.addRenderItems(localList2);
           }
         }
-        else if ("Sticker".equals(localObject2)) {
-          localArrayList3.addAll(localList4);
-        } else if (!"Graffiti".equals(localObject2)) {
-          if ("SnakeFace".equals(localObject2))
+        else if ("Sticker".equals(localObject3)) {
+          localAllVideoFilters.addRenderItems(localList4);
+        } else if (!"Graffiti".equals(localObject3)) {
+          if ("SnakeFace".equals(localObject3))
           {
-            if (localSnakeFaceFilter != null) {
-              localArrayList3.add(localSnakeFaceFilter);
+            if (localRenderItem1 != null) {
+              localAllVideoFilters.add(localRenderItem1);
             }
           }
-          else if ("ThreeDim".equals(localObject2))
+          else if ("ThreeDim".equals(localObject3))
           {
-            localArrayList3.addAll(localList3);
+            localAllVideoFilters.addRenderItems(localList3);
           }
-          else if ("FaceCopy".equals(localObject2))
+          else if ("FaceCopy".equals(localObject3))
           {
-            if (localVideoFilterBase2 != null) {
-              localArrayList3.add(localVideoFilterBase2);
+            if (localRenderItem3 != null) {
+              localAllVideoFilters.add(localRenderItem3);
             }
           }
-          else if ("FaceSwitch".equals(localObject2))
+          else if ("FaceSwitch".equals(localObject3))
           {
-            if (localVideoFilterBase1 != null) {
-              localArrayList3.add(localVideoFilterBase1);
+            if (localRenderItem2 != null) {
+              localAllVideoFilters.add(localRenderItem2);
             }
           }
-          else if ("ARParticle".equals(localObject2))
+          else if ("ARParticle".equals(localObject3))
           {
-            localObject2 = createARParticleFilter(paramVideoMaterial);
-            if (localObject2 != null) {
-              localArrayList3.add(localObject2);
+            localObject3 = createARParticleFilter(paramVideoMaterial);
+            if (localObject3 != null) {
+              localAllVideoFilters.add((VideoFilterBase)localObject3);
             }
           }
-          else if (!"3DAccessory".equals(localObject2))
+          else if (!"3DAccessory".equals(localObject3))
           {
-            if ("Model2dAnimation".equals(localObject2))
+            if ("Model2dAnimation".equals(localObject3))
             {
-              if (localVideoFilterBase3 != null) {
-                localArrayList3.add(localVideoFilterBase3);
+              if (localVideoFilterBase1 != null) {
+                localAllVideoFilters.add(localVideoFilterBase1);
               }
             }
-            else if ("BuckleFace".equals(localObject2))
+            else if ("BuckleFace".equals(localObject3))
             {
-              if (localBuckleFaceFilter != null) {
-                localArrayList3.add(localBuckleFaceFilter);
+              if (localObject1 != null) {
+                localAllVideoFilters.add((RenderItem)localObject1);
               }
             }
-            else if (("Bighead".equals(localObject2)) && (localVideoFilterBase4 != null)) {
-              localArrayList3.add(localVideoFilterBase4);
+            else if (("Bighead".equals(localObject3)) && (localVideoFilterBase2 != null)) {
+              localAllVideoFilters.add(localVideoFilterBase2);
             }
           }
         }
       }
-      ((VideoFilterList)localObject1).setFilters(localArrayList3, localList1, localList2);
-      ((VideoFilterList)localObject1).setQQGestureFilters(localArrayList2, localArrayList1);
-      ((VideoFilterList)localObject1).setMaterial(paramVideoMaterial);
-      return localObject1;
+      ((VideoFilterList)localObject2).setRenderItems(localAllVideoFilters.getRenderItems(), localList1, localList2);
+      ((VideoFilterList)localObject2).setQQGestureFilters(localArrayList2, localArrayList1);
+      ((VideoFilterList)localObject2).setMaterial(paramVideoMaterial);
+      return localObject2;
     }
   }
   
+  @Deprecated
   private static VideoFilterInputFreeze createFreezeFilter(StickerItem paramStickerItem)
   {
     Object localObject2 = null;
@@ -1296,7 +1614,31 @@ public class VideoFilterUtil
     }
   }
   
-  private static List<GPUParticleFilter> createGestureGpuParticleFilters(VideoMaterial paramVideoMaterial)
+  private static FrozenFrameRender createFrozenRender(StickerItem paramStickerItem, TriggerManager paramTriggerManager)
+  {
+    paramStickerItem = new FrozenFrameTrigerCtrlItem(paramStickerItem);
+    paramTriggerManager.addTriggers(paramStickerItem);
+    return new FrozenFrameRender(new FrozenFrameFilter(), paramStickerItem);
+  }
+  
+  private static FrozenFrameRender createFrozenRender(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  {
+    paramVideoMaterial = paramVideoMaterial.getItemList();
+    if ((paramVideoMaterial != null) && (!paramVideoMaterial.isEmpty()))
+    {
+      paramVideoMaterial = paramVideoMaterial.iterator();
+      while (paramVideoMaterial.hasNext())
+      {
+        StickerItem localStickerItem = (StickerItem)paramVideoMaterial.next();
+        if (localStickerItem.stickerType == VideoFilterFactory.STICKER_TYPE.FREEZE_FRAME.type) {
+          return createFrozenRender(localStickerItem, paramTriggerManager);
+        }
+      }
+    }
+    return null;
+  }
+  
+  private static List<RenderItem> createGestureGpuParticleRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     List localList = paramVideoMaterial.getItemList();
@@ -1308,9 +1650,13 @@ public class VideoFilterUtil
       int i = 0;
       while (i < localList.size())
       {
-        StickerItem localStickerItem = (StickerItem)localList.get(i);
-        if ((localStickerItem.gpuParticleConfig != null) && (VideoMaterialUtil.isGestureItem(localStickerItem))) {
-          localArrayList.add(new GPUParticleFilter(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+        Object localObject = (StickerItem)localList.get(i);
+        if ((((StickerItem)localObject).gpuParticleConfig != null) && (VideoMaterialUtil.isGestureItem((StickerItem)localObject)))
+        {
+          GPUParticleFilter localGPUParticleFilter = new GPUParticleFilter(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject).id, (StickerItem)localObject);
+          localObject = new TriggerCtrlItem((StickerItem)localObject);
+          paramTriggerManager.addTriggers((AETriggerI)localObject);
+          localArrayList.add(new RenderItem(localGPUParticleFilter, (TriggerCtrlItem)localObject));
         }
         i += 1;
       }
@@ -1318,7 +1664,7 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static List<VideoFilterBase> createGestureParticleFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createGestureParticleRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     List localList = paramVideoMaterial.getItemList();
@@ -1327,27 +1673,34 @@ public class VideoFilterUtil
       int i = 0;
       if (i < localList.size())
       {
-        StickerItem localStickerItem = (StickerItem)localList.get(i);
-        if ((localStickerItem.particleConfig != null) && (VideoMaterialUtil.isGestureItem(localStickerItem)))
+        Object localObject1 = (StickerItem)localList.get(i);
+        Object localObject2;
+        if ((((StickerItem)localObject1).particleConfig != null) && (VideoMaterialUtil.isGestureItem((StickerItem)localObject1)))
         {
-          if (!localStickerItem.dexName.endsWith("json")) {
-            break label125;
+          if (!((StickerItem)localObject1).dexName.endsWith("json")) {
+            break label159;
           }
-          localArrayList.add(new ParticleFilter3D(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+          localObject2 = new ParticleFilter3D(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject1).id, (StickerItem)localObject1);
+          localObject1 = new TriggerCtrlItem((StickerItem)localObject1);
+          paramTriggerManager.addTriggers((AETriggerI)localObject1);
+          localArrayList.add(new RenderItem((AEFilterI)localObject2, (TriggerCtrlItem)localObject1));
         }
         for (;;)
         {
           i += 1;
           break;
-          label125:
-          localArrayList.add(new ParticleFilter(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+          label159:
+          localObject2 = new ParticleFilter(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject1).id, (StickerItem)localObject1);
+          localObject1 = new TriggerCtrlItem((StickerItem)localObject1);
+          paramTriggerManager.addTriggers((AETriggerI)localObject1);
+          localArrayList.add(new RenderItem((AEFilterI)localObject2, (TriggerCtrlItem)localObject1));
         }
       }
     }
     return localArrayList;
   }
   
-  private static List<NormalVideoFilter> createGestureVideoFilterList(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createGestureRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramVideoMaterial.getItemList() != null)
@@ -1358,9 +1711,12 @@ public class VideoFilterUtil
         Object localObject = (StickerItem)localIterator.next();
         if ((VideoMaterialUtil.isGestureItem((StickerItem)localObject)) && (((StickerItem)localObject).particleConfig == null) && (((StickerItem)localObject).gpuParticleConfig == null))
         {
-          localObject = VideoFilterFactory.createFilter((StickerItem)localObject, paramVideoMaterial.getDataPath());
-          if (localObject != null) {
-            localArrayList.add(localObject);
+          NormalVideoFilter localNormalVideoFilter = VideoFilterFactory.createFilter((StickerItem)localObject, paramVideoMaterial.getDataPath());
+          if (localNormalVideoFilter != null)
+          {
+            localObject = new TriggerCtrlItem((StickerItem)localObject);
+            paramTriggerManager.addTriggers((AETriggerI)localObject);
+            localArrayList.add(new RenderItem(localNormalVideoFilter, (TriggerCtrlItem)localObject));
           }
         }
       }
@@ -1388,18 +1744,28 @@ public class VideoFilterUtil
     return null;
   }
   
-  private static HeadCropFilter createHeadCropFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createHairCosRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramVideoMaterial != null)
+    if ((paramVideoMaterial != null) && (paramVideoMaterial.getItemList() != null) && (paramTriggerManager != null))
     {
-      localObject1 = localObject2;
-      if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_HEAD_CROP.value) {
-        localObject1 = new HeadCropFilter();
+      Object localObject = new ArrayList();
+      Iterator localIterator = paramVideoMaterial.getItemList().iterator();
+      while (localIterator.hasNext())
+      {
+        StickerItem localStickerItem = (StickerItem)localIterator.next();
+        if (localStickerItem.type == VideoFilterFactory.POSITION_TYPE.HAIR.type) {
+          ((List)localObject).add(localStickerItem);
+        }
+      }
+      if (((List)localObject).size() > 0)
+      {
+        paramVideoMaterial = new HairCos((List)localObject, paramVideoMaterial.getDataPath());
+        localObject = new HairCosTriggerCtrlItem((List)localObject);
+        paramTriggerManager.addTriggers((AETriggerI)localObject);
+        return new RenderItem(paramVideoMaterial, (TriggerCtrlItem)localObject);
       }
     }
-    return localObject1;
+    return null;
   }
   
   private static List<NormalVideoFilter> createHeadCropFilterList(VideoMaterial paramVideoMaterial)
@@ -1419,16 +1785,45 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static LutItemsFilter createLutFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createHeadCropRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  {
+    if ((paramVideoMaterial != null) && (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_HEAD_CROP.value)) {}
+    for (paramVideoMaterial = new HeadCropFilter();; paramVideoMaterial = null) {
+      return new RenderItem(paramVideoMaterial, null);
+    }
+  }
+  
+  private static List<RenderItem> createHeadCropRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramVideoMaterial.getHeadCropItemList() != null)
+    {
+      Iterator localIterator = paramVideoMaterial.getHeadCropItemList().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (StickerItem)localIterator.next();
+        NormalVideoFilter localNormalVideoFilter = VideoFilterFactory.createFilter((StickerItem)localObject, paramVideoMaterial.getDataPath());
+        if (localNormalVideoFilter != null)
+        {
+          localObject = new TriggerCtrlItem((StickerItem)localObject);
+          paramTriggerManager.addTriggers((AETriggerI)localObject);
+          localArrayList.add(new RenderItem(localNormalVideoFilter, (TriggerCtrlItem)localObject));
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  private static RenderItem createLutRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     if ((paramVideoMaterial == null) || (paramVideoMaterial.getItemList() == null)) {
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramVideoMaterial.getItemList().iterator();
-    while (localIterator.hasNext())
+    Object localObject = paramVideoMaterial.getItemList().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      StickerItem localStickerItem = (StickerItem)localIterator.next();
+      StickerItem localStickerItem = (StickerItem)((Iterator)localObject).next();
       if (localStickerItem.type == VideoFilterFactory.POSITION_TYPE.LUT.type) {
         localArrayList.add(localStickerItem);
       }
@@ -1436,49 +1831,42 @@ public class VideoFilterUtil
     if (localArrayList.isEmpty()) {
       return null;
     }
-    return new LutItemsFilter(localArrayList, paramVideoMaterial.getDataPath());
+    localObject = new TriggerCtrlItem((StickerItem)localArrayList.get(0));
+    paramTriggerManager.addTriggers((AETriggerI)localObject);
+    return new RenderItem(new LutItemsFilter(localArrayList, paramVideoMaterial.getDataPath()), (TriggerCtrlItem)localObject);
   }
   
-  private static List<VideoFilterBase> createMaskStickerFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createMaskStickerRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = paramVideoMaterial.getItemList();
-    Iterator localIterator;
-    if ((localObject != null) && (!((List)localObject).isEmpty())) {
-      localIterator = ((List)localObject).iterator();
-    }
-    label187:
-    for (;;)
+    Object localObject1 = paramVideoMaterial.getItemList();
+    if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
-      if (localIterator.hasNext())
+      Iterator localIterator = ((List)localObject1).iterator();
+      label220:
+      while (localIterator.hasNext())
       {
-        localObject = (StickerItem)localIterator.next();
-        if (((StickerItem)localObject).stickerType != VideoFilterFactory.STICKER_TYPE.MASK_SETTING.type) {
-          continue;
-        }
-        if ((((StickerItem)localObject).type == VideoFilterFactory.POSITION_TYPE.STATIC.type) || (((StickerItem)localObject).type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type)) {
-          localObject = new StaticMaskFilter((StickerItem)localObject, paramVideoMaterial.getDataPath(), paramVideoMaterial.getMaskType());
-        }
-      }
-      for (;;)
-      {
-        if (localObject == null) {
-          break label187;
-        }
-        localArrayList.add(localObject);
-        break;
-        if ((((StickerItem)localObject).type == VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) || (((StickerItem)localObject).type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (((StickerItem)localObject).type == VideoFilterFactory.POSITION_TYPE.BODY.type))
+        Object localObject2 = (StickerItem)localIterator.next();
+        if (((StickerItem)localObject2).stickerType == VideoFilterFactory.STICKER_TYPE.MASK_SETTING.type)
         {
-          localObject = new DynamicMaskFilter((StickerItem)localObject, paramVideoMaterial.getDataPath(), paramVideoMaterial.getMaskType());
-          continue;
-          return localArrayList;
-        }
-        else
-        {
-          localObject = null;
+          localObject1 = null;
+          if ((((StickerItem)localObject2).type == VideoFilterFactory.POSITION_TYPE.STATIC.type) || (((StickerItem)localObject2).type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type)) {}
+          for (localObject1 = new StaticMaskFilter((StickerItem)localObject2, paramVideoMaterial.getDataPath(), paramVideoMaterial.getMaskType());; localObject1 = new DynamicMaskFilter((StickerItem)localObject2, paramVideoMaterial.getDataPath(), paramVideoMaterial.getMaskType())) {
+            do
+            {
+              if (localObject1 == null) {
+                break label220;
+              }
+              localObject2 = new TriggerCtrlItem((StickerItem)localObject2);
+              paramTriggerManager.addTriggers((AETriggerI)localObject2);
+              localArrayList.add(new RenderItem((AEFilterI)localObject1, (TriggerCtrlItem)localObject2));
+              break;
+            } while ((((StickerItem)localObject2).type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) && (((StickerItem)localObject2).type != VideoFilterFactory.POSITION_TYPE.GESTURE.type) && (((StickerItem)localObject2).type != VideoFilterFactory.POSITION_TYPE.BODY.type));
+          }
         }
       }
     }
+    return localArrayList;
   }
   
   private static List<MultiViewerFilter> createMultiViewerFilters(VideoMaterial paramVideoMaterial)
@@ -1505,7 +1893,9 @@ public class VideoFilterUtil
         {
           ((MultiViewerItem)localObject).videoMaterial.setAllRenderID(((MultiViewerItem)localObject).renderId);
           TriggerStateItem localTriggerStateItem = new TriggerStateItem(((MultiViewerItem)localObject).videoMaterial.getTriggerStateEdgeItemList(), ((MultiViewerItem)localObject).videoMaterial.getTriggerActionItemList());
-          if ((localTriggerStateItem != null) && (localTriggerStateItem.isValid())) {
+          if ((localTriggerStateItem != null) && (localTriggerStateItem.isValid()))
+          {
+            localTriggerStateItem.setStateVersion(((MultiViewerItem)localObject).videoMaterial.getStateVersion());
             TriggerStateManager.getInstance().putTriggerStateItem(((MultiViewerItem)localObject).renderId, localTriggerStateItem);
           }
         }
@@ -1513,10 +1903,10 @@ public class VideoFilterUtil
         localObject = ((MultiViewerItem)localObject).videoMaterial.getFilterId();
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           if (effectFilterProvider == null) {
-            break label253;
+            break label265;
           }
         }
-        label253:
+        label265:
         for (localObject = effectFilterProvider.getFilter((String)localObject);; localObject = FabbyFilterFactory.createFilter((String)localObject))
         {
           localMultiViewerFilter.setEffectFilter((BaseFilter)localObject);
@@ -1536,7 +1926,7 @@ public class VideoFilterUtil
     return null;
   }
   
-  private static List<VideoFilterBase> createParticleXFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createParticleXRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     int j = 0;
     ArrayList localArrayList = new ArrayList();
@@ -1546,12 +1936,12 @@ public class VideoFilterUtil
     {
       i = 0;
       if (i >= localList.size()) {
-        break label174;
+        break label207;
       }
       localStickerItem = (StickerItem)localList.get(i);
       if ((localStickerItem.transition == null) || (localStickerItem.wmGroupConfigCopies != null)) {}
     }
-    label174:
+    label207:
     for (int i = 1;; i = 0)
     {
       if (i != 0)
@@ -1565,7 +1955,10 @@ public class VideoFilterUtil
             localStickerItem = (StickerItem)localList.get(i);
             if ((localStickerItem.transition != null) && (localStickerItem.wmGroupConfigCopies == null))
             {
-              localArrayList.add(new ParticleXFilter(localStickerItem, paramVideoMaterial.getDataPath(), i));
+              ParticleXFilter localParticleXFilter = new ParticleXFilter(localStickerItem, paramVideoMaterial.getDataPath(), i);
+              TriggerCtrlItem localTriggerCtrlItem = new TriggerCtrlItem(localStickerItem);
+              paramTriggerManager.addTriggers(localTriggerCtrlItem);
+              localArrayList.add(new RenderItem(localParticleXFilter, localTriggerCtrlItem));
               ParticleSystemX.getInstance().addParticle(localStickerItem.transition);
             }
             i += 1;
@@ -1603,15 +1996,18 @@ public class VideoFilterUtil
     VideoFilterListExtension.getCreateExternalFiltersListener().createQQGestureVideoFilterList(paramVideoMaterial, paramList1, paramList2);
   }
   
-  private static List<RapidNetFilter> createRapidFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createRapidRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     if ((!OfflineConfig.isNeedSkipRapidnet()) && (paramVideoMaterial != null) && (paramVideoMaterial.getFaceStyleItemList() != null) && (paramVideoMaterial.getFaceStyleItemList().size() != 0))
     {
       ArrayList localArrayList = new ArrayList();
-      paramVideoMaterial = (FaceStyleItem)paramVideoMaterial.getFaceStyleItemList().get(0);
-      if (FeatureManager.Features.RAPID_NET.loadRapidModelFrom(paramVideoMaterial.dataPath, paramVideoMaterial.modelName, false, true, 1, RapidNetSDKInitializer.RAPID_NET_TYPE_GPU_LIB, 0))
+      Object localObject = (FaceStyleItem)paramVideoMaterial.getFaceStyleItemList().get(0);
+      if (FeatureManager.Features.RAPID_NET_GENDER_SWITCH.loadRapidModelFrom(((FaceStyleItem)localObject).dataPath, ((FaceStyleItem)localObject).modelName, false, true, 1, 1, 0))
       {
-        localArrayList.add(new RapidNetFilter(paramVideoMaterial));
+        paramVideoMaterial = new RapidNetFilter((FaceStyleItem)localObject);
+        localObject = new TriggerCtrlItem((FaceStyleItem)localObject);
+        paramTriggerManager.addTriggers((AETriggerI)localObject);
+        localArrayList.add(new RenderItem(paramVideoMaterial, (TriggerCtrlItem)localObject));
         return localArrayList;
       }
     }
@@ -1631,36 +2027,42 @@ public class VideoFilterUtil
     return new SimpleEffectVideoFilter(paramVideoMaterial.getDataPath(), str, f);
   }
   
-  private static SkyboxItemsFilter createSkyboxFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createSkyboxRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     if ((paramVideoMaterial == null) || (paramVideoMaterial.getItemList() == null)) {
       return null;
     }
     ArrayList localArrayList = new ArrayList();
+    HashMap localHashMap = new HashMap();
     Iterator localIterator = paramVideoMaterial.getItemList().iterator();
     while (localIterator.hasNext())
     {
       StickerItem localStickerItem = (StickerItem)localIterator.next();
-      if (localStickerItem.type == VideoFilterFactory.POSITION_TYPE.SKYBOX.type) {
+      if (localStickerItem.type == VideoFilterFactory.POSITION_TYPE.SKYBOX.type)
+      {
+        TriggerCtrlItem localTriggerCtrlItem = new TriggerCtrlItem(localStickerItem);
+        localHashMap.put(localStickerItem.id, localTriggerCtrlItem);
         localArrayList.add(localStickerItem);
       }
     }
     if (localArrayList.isEmpty()) {
       return null;
     }
-    return new SkyboxItemsFilter(localArrayList, paramVideoMaterial.getDataPath());
+    paramVideoMaterial = new SkyboxItemsFilter(localArrayList, paramVideoMaterial.getDataPath());
+    paramVideoMaterial.setTriggerCtrlItemMap(localHashMap);
+    paramTriggerManager.addTriggersMap(localHashMap);
+    return new RenderItem(paramVideoMaterial, null);
   }
   
-  private static SnakeFaceFilter createSnakeFaceFilter(VideoMaterial paramVideoMaterial)
+  private static RenderItem createSnakeFaceRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    SnakeFaceFilter localSnakeFaceFilter = null;
-    if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.SNAKE_FACE_BEFORE_COMMON.value) {
-      localSnakeFaceFilter = new SnakeFaceFilter();
+    if (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.SNAKE_FACE_BEFORE_COMMON.value) {}
+    for (paramVideoMaterial = new SnakeFaceFilter();; paramVideoMaterial = null) {
+      return new RenderItem(paramVideoMaterial, null);
     }
-    return localSnakeFaceFilter;
   }
   
-  private static List<GPUParticleFilter> createStarGpuParticleFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createStarGpuParticleRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     List localList = paramVideoMaterial.getItemList();
@@ -1672,9 +2074,13 @@ public class VideoFilterUtil
       int i = 0;
       while (i < localList.size())
       {
-        StickerItem localStickerItem = (StickerItem)localList.get(i);
-        if ((localStickerItem.gpuParticleConfig != null) && (VideoMaterialUtil.isStarItem(localStickerItem))) {
-          localArrayList.add(new GPUParticleFilter(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+        Object localObject = (StickerItem)localList.get(i);
+        if ((((StickerItem)localObject).gpuParticleConfig != null) && (VideoMaterialUtil.isStarItem((StickerItem)localObject)))
+        {
+          GPUParticleFilter localGPUParticleFilter = new GPUParticleFilter(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject).id, (StickerItem)localObject);
+          localObject = new TriggerCtrlItem((StickerItem)localObject);
+          paramTriggerManager.addTriggers((AETriggerI)localObject);
+          localArrayList.add(new RenderItem(localGPUParticleFilter, (TriggerCtrlItem)localObject));
         }
         i += 1;
       }
@@ -1682,7 +2088,7 @@ public class VideoFilterUtil
     return localArrayList;
   }
   
-  private static List<VideoFilterBase> createStarParticleFilters(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createStarParticleRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     ArrayList localArrayList = new ArrayList();
     List localList = paramVideoMaterial.getItemList();
@@ -1691,29 +2097,36 @@ public class VideoFilterUtil
       int i = 0;
       if (i < localList.size())
       {
-        StickerItem localStickerItem = (StickerItem)localList.get(i);
-        if ((localStickerItem.particleConfig != null) && (VideoMaterialUtil.isStarItem(localStickerItem)))
+        Object localObject1 = (StickerItem)localList.get(i);
+        Object localObject2;
+        if ((((StickerItem)localObject1).particleConfig != null) && (VideoMaterialUtil.isStarItem((StickerItem)localObject1)))
         {
-          if (!localStickerItem.dexName.endsWith("json")) {
-            break label125;
+          if (!((StickerItem)localObject1).dexName.endsWith("json")) {
+            break label159;
           }
-          localArrayList.add(new ParticleFilter3D(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+          localObject2 = new ParticleFilter3D(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject1).id, (StickerItem)localObject1);
+          localObject1 = new TriggerCtrlItem((StickerItem)localObject1);
+          paramTriggerManager.addTriggers((AETriggerI)localObject1);
+          localArrayList.add(new RenderItem((AEFilterI)localObject2, (TriggerCtrlItem)localObject1));
         }
         for (;;)
         {
           i += 1;
           break;
-          label125:
-          localArrayList.add(new ParticleFilter(paramVideoMaterial.getDataPath() + File.separator + localStickerItem.id, localStickerItem));
+          label159:
+          localObject2 = new ParticleFilter(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject1).id, (StickerItem)localObject1);
+          localObject1 = new TriggerCtrlItem((StickerItem)localObject1);
+          paramTriggerManager.addTriggers((AETriggerI)localObject1);
+          localArrayList.add(new RenderItem((AEFilterI)localObject2, (TriggerCtrlItem)localObject1));
         }
       }
     }
     return localArrayList;
   }
   
-  private static List<VideoFilterBase> createThreeDimFilter(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createThreeDimRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    ArrayList localArrayList = new ArrayList();
+    paramTriggerManager = new ArrayList();
     if ((paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.THREE_DIM.value) && (paramVideoMaterial.getItemList() != null))
     {
       Iterator localIterator = paramVideoMaterial.getItemList().iterator();
@@ -1721,11 +2134,11 @@ public class VideoFilterUtil
       {
         ThreeDimFilter localThreeDimFilter = new ThreeDimFilter((StickerItem)localIterator.next(), paramVideoMaterial.getDataPath());
         if (localThreeDimFilter != null) {
-          localArrayList.add(localThreeDimFilter);
+          paramTriggerManager.add(new RenderItem(localThreeDimFilter, null));
         }
       }
     }
-    return localArrayList;
+    return paramTriggerManager;
   }
   
   private static List<VideoFilterBase> createTransformFilter(VideoMaterial paramVideoMaterial)
@@ -1769,34 +2182,101 @@ public class VideoFilterUtil
     }
   }
   
-  private static List<VideoFilterBase> createVoiceTextFilter(VideoMaterial paramVideoMaterial)
+  private static List<RenderItem> createTransformRenderItems(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    Object localObject = paramVideoMaterial.getItemList();
-    paramVideoMaterial = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    if (localObject != null)
+    ArrayList localArrayList = new ArrayList();
+    if ((Build.BRAND.equals("Xiaomi")) && (Build.MODEL.equals("MI 9"))) {
+      return localArrayList;
+    }
+    Object localObject1 = paramVideoMaterial.getFaceMeshItemList();
+    int i;
+    Object localObject2;
+    if (!CollectionUtils.isEmpty((Collection)localObject1))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      i = 0;
+      while (i < ((List)localObject1).size())
       {
-        StickerItem localStickerItem = (StickerItem)((Iterator)localObject).next();
-        if ((localStickerItem.transition != null) && (localStickerItem.wmGroupConfigCopies != null)) {
-          if (localStickerItem.zIndex >= 0) {
-            paramVideoMaterial.add(localStickerItem);
+        localObject2 = new TransformFilter((FaceMeshItem)((List)localObject1).get(i), paramVideoMaterial.getDataPath());
+        TriggerCtrlItem localTriggerCtrlItem = new TriggerCtrlItem((FaceMeshItem)((List)localObject1).get(i));
+        paramTriggerManager.addTriggers(localTriggerCtrlItem);
+        localArrayList.add(new RenderItem((AEFilterI)localObject2, localTriggerCtrlItem));
+        i += 1;
+      }
+    }
+    if (!CollectionUtils.isEmpty(paramVideoMaterial.getDistortionItemList())) {
+      if (paramVideoMaterial.isUseMesh())
+      {
+        int j = paramVideoMaterial.getDistortionItemList().size();
+        i = j;
+        while (i > 60)
+        {
+          localObject1 = new TransformFilter(paramVideoMaterial.getDistortionItemList().subList(j - i, j - i + 60), paramVideoMaterial.getItemList());
+          localObject2 = new TriggerCtrlItem();
+          paramTriggerManager.addTriggers((AETriggerI)localObject2);
+          localArrayList.add(new RenderItem((AEFilterI)localObject1, (TriggerCtrlItem)localObject2));
+          i -= 60;
+        }
+        if (i > 0)
+        {
+          paramVideoMaterial = new TransformFilter(paramVideoMaterial.getDistortionItemList().subList(j - i, j), paramVideoMaterial.getItemList());
+          localObject1 = new TriggerCtrlItem();
+          paramTriggerManager.addTriggers((AETriggerI)localObject1);
+          localArrayList.add(new RenderItem(paramVideoMaterial, (TriggerCtrlItem)localObject1));
+        }
+      }
+    }
+    for (;;)
+    {
+      return localArrayList;
+      if (!CollectionUtils.isEmpty(paramVideoMaterial.getFaceMoveItemList())) {
+        localArrayList.add(new RenderItem(new FaceMoveFilter(paramVideoMaterial.getFaceMoveItemList(), paramVideoMaterial.getItemList(), paramVideoMaterial.getFaceMoveTriangles()), null));
+      }
+    }
+  }
+  
+  private static List<RenderItem> createVoiceTextRenderItem(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2 = paramVideoMaterial.getItemList();
+    Object localObject1 = new ArrayList();
+    paramVideoMaterial = new ArrayList();
+    if (localObject2 != null)
+    {
+      localObject2 = ((List)localObject2).iterator();
+      Object localObject3;
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (StickerItem)((Iterator)localObject2).next();
+        if ((((StickerItem)localObject3).transition != null) && (((StickerItem)localObject3).wmGroupConfigCopies != null)) {
+          if (((StickerItem)localObject3).zIndex >= 0) {
+            ((List)localObject1).add(localObject3);
           } else {
-            localArrayList2.add(localStickerItem);
+            paramVideoMaterial.add(localObject3);
           }
         }
       }
-      if (!paramVideoMaterial.isEmpty()) {
-        localArrayList1.add(new VoiceTextFilter(((StickerItem)paramVideoMaterial.get(0)).zIndex, paramVideoMaterial));
+      if (!((List)localObject1).isEmpty())
+      {
+        localObject2 = new VoiceToTextTriggerCtrlItem();
+        localObject3 = ((List)localObject1).iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((VoiceToTextTriggerCtrlItem)localObject2).addItem((StickerItem)((Iterator)localObject3).next());
+        }
+        localArrayList.add(new RenderItem(new VoiceTextFilter(((StickerItem)((List)localObject1).get(0)).zIndex, (List)localObject1), (TriggerCtrlItem)localObject2));
+        paramTriggerManager.addTriggers((AETriggerI)localObject2);
       }
-      if (!localArrayList2.isEmpty()) {
-        localArrayList1.add(new VoiceTextFilter(((StickerItem)localArrayList2.get(0)).zIndex, localArrayList2));
+      if (!paramVideoMaterial.isEmpty())
+      {
+        localObject1 = new VoiceToTextTriggerCtrlItem();
+        localObject2 = paramVideoMaterial.iterator();
+        while (((Iterator)localObject2).hasNext()) {
+          ((VoiceToTextTriggerCtrlItem)localObject1).addItem((StickerItem)((Iterator)localObject2).next());
+        }
+        localArrayList.add(new RenderItem(new VoiceTextFilter(((StickerItem)paramVideoMaterial.get(0)).zIndex, paramVideoMaterial), (TriggerCtrlItem)localObject1));
+        paramTriggerManager.addTriggers((AETriggerI)localObject1);
       }
     }
-    return localArrayList1;
+    return localArrayList;
   }
   
   public static int get4DirectionAngle(double paramDouble)
@@ -2093,6 +2573,23 @@ public class VideoFilterUtil
     }
   }
   
+  public static void removeEmptyRenderItems(List<RenderItem> paramList)
+  {
+    if (paramList == null) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        RenderItem localRenderItem = (RenderItem)paramList.next();
+        if ((localRenderItem == null) || (localRenderItem.filter == null)) {
+          paramList.remove();
+        }
+      }
+    }
+  }
+  
   public static void setEffectFilterProvider(VideoFilterUtil.EffectFilterProvider paramEffectFilterProvider)
   {
     effectFilterProvider = paramEffectFilterProvider;
@@ -2123,6 +2620,23 @@ public class VideoFilterUtil
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         ((VideoFilterBase)paramList.next()).setRenderMode(paramInt);
+      }
+    }
+  }
+  
+  public static void setRenderModes(List<RenderItem> paramList, int paramInt)
+  {
+    if (CollectionUtils.isEmpty(paramList)) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        RenderItem localRenderItem = (RenderItem)paramList.next();
+        if ((localRenderItem.filter instanceof VideoFilterBase)) {
+          ((VideoFilterBase)localRenderItem.filter).setRenderMode(paramInt);
+        }
       }
     }
   }

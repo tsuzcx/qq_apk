@@ -1,11 +1,11 @@
 package cooperation.qqreader.host.advertisement;
 
+import aanz;
 import android.support.annotation.NonNull;
 import android.view.View;
-import yxz;
 
 public abstract class ReaderGdtSdk$ReportListener
-  implements yxz
+  implements aanz
 {
   private ReaderAdWrapper a;
   
@@ -16,7 +16,7 @@ public abstract class ReaderGdtSdk$ReportListener
   
   public final void reportImpression(View paramView)
   {
-    if (paramView.getTag(2131379211) == this.a.a()) {
+    if (paramView.getTag(2131379911) == this.a.a()) {
       reportImpression(paramView, this.a);
     }
   }
@@ -25,7 +25,7 @@ public abstract class ReaderGdtSdk$ReportListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderGdtSdk.ReportListener
  * JD-Core Version:    0.7.0.1
  */

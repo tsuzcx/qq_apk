@@ -1,29 +1,29 @@
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class amfz
-  implements CompoundButton.OnCheckedChangeListener
+  extends amfy
 {
-  public amfz(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public amfz(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    paramCompoundButton = this.a.getResources();
-    TextView localTextView = CampusCircleReplyActivity.a(this.a);
-    if (paramBoolean) {}
-    for (paramCompoundButton = paramCompoundButton.getColorStateList(2131166207);; paramCompoundButton = paramCompoundButton.getColorStateList(2131166209))
-    {
-      localTextView.setTextColor(paramCompoundButton);
-      return;
-    }
+    super(paramQQAppInterface, paramQQMessageFacade);
+    this.jdField_a_of_type_JavaLangString = aljq.z;
+    this.jdField_a_of_type_Int = 6000;
+  }
+  
+  protected amjd a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0);
+  }
+  
+  protected void a()
+  {
+    ((allz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfz
  * JD-Core Version:    0.7.0.1
  */

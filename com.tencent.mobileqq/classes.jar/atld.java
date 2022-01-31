@@ -1,10 +1,19 @@
-public abstract interface atld
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class atld
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean a(atkz paramatkz, int paramInt, Object paramObject);
+  atld(atlc paramatlc, bdfq parambdfq) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bdfq.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atld
  * JD-Core Version:    0.7.0.1
  */

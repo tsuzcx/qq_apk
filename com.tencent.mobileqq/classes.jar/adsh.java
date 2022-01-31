@@ -1,40 +1,23 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class adsh
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  adsh(adqw paramadqw, int paramInt) {}
+  adsh(adsd paramadsd) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Adqw.a instanceof Activity))
-    {
-      paramView = bfpc.a(this.jdField_a_of_type_Adqw.a);
-      paramView.b(2131691945);
-      paramView.c(2131690596);
-      paramView.a(new adsi(this, paramView));
-      paramView.show();
-      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_Adqw.a).getChatFragment().a();
-      if ((localBaseChatPie instanceof aeoc)) {
-        ((aeoc)localBaseChatPie).a = paramView;
-      }
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    this.a.b = true;
+    adsd.b(this.a);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsh
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.appbrand.utils;
 
 import android.os.Process;
 import android.util.LruCache;
-import bbdx;
-import bbkk;
+import bdcs;
+import bdje;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.pool.RecyclablePool;
@@ -86,7 +86,7 @@ public class MiniLog
   
   private static void addNativeLogItem(String arg0, String paramString2, int paramInt, String paramString3, Throwable paramThrowable)
   {
-    if ((sPool == null) || (bbkk.a(???))) {}
+    if ((sPool == null) || (bdje.a(???))) {}
     MiniLog.QLogItem localQLogItem;
     do
     {
@@ -296,7 +296,7 @@ public class MiniLog
     {
       try
       {
-        if (bbdx.a(str + "log" + localObject1).length() <= MAX_MINI_LOG_SIZE) {
+        if (bdcs.a(str + "log" + localObject1).length() <= MAX_MINI_LOG_SIZE) {
           break label621;
         }
         localObject3 = localObject1;
@@ -553,7 +553,7 @@ public class MiniLog
           break label193;
         }
         localMiniItem = (MiniLog.MiniItem)miniQueue.poll();
-        if ((localMiniItem == null) || (bbkk.a(localMiniItem.filePath))) {
+        if ((localMiniItem == null) || (bdje.a(localMiniItem.filePath))) {
           continue;
         }
         str = localMiniItem.filePath;
@@ -561,7 +561,7 @@ public class MiniLog
         if (localFile.exists()) {
           continue;
         }
-        bbdx.a(str);
+        bdcs.a(str);
         localBufferedWriter1 = new BufferedWriter(new MiniLogWriter(localFile, true), 8192);
       }
       catch (Throwable localThrowable)
@@ -714,7 +714,7 @@ public class MiniLog
     //   209: invokevirtual 337	java/io/File:exists	()Z
     //   212: ifne +297 -> 509
     //   215: aload 6
-    //   217: invokestatic 381	bbdx:a	(Ljava/lang/String;)Ljava/io/File;
+    //   217: invokestatic 381	bdcs:a	(Ljava/lang/String;)Ljava/io/File;
     //   220: pop
     //   221: new 494	java/io/BufferedWriter
     //   224: dup
@@ -909,7 +909,7 @@ public class MiniLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniLog
  * JD-Core Version:    0.7.0.1
  */

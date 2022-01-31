@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcqf;
+import bepp;
 
 class RecentLoginDevActivity$5
   implements Runnable
@@ -12,7 +12,7 @@ class RecentLoginDevActivity$5
     try
     {
       if ((RecentLoginDevActivity.a(this.this$0) == null) && (!this.this$0.isFinishing())) {
-        RecentLoginDevActivity.a(this.this$0, new bcqf(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        RecentLoginDevActivity.a(this.this$0, new bepp(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
       }
       if ((RecentLoginDevActivity.a(this.this$0) != null) && (!RecentLoginDevActivity.a(this.this$0).isShowing())) {
         RecentLoginDevActivity.a(this.this$0).show();
@@ -30,7 +30,7 @@ class RecentLoginDevActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RecentLoginDevActivity.5
  * JD-Core Version:    0.7.0.1
  */

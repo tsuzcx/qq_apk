@@ -1,18 +1,16 @@
-final class apum
-  implements bcwm
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class apum
+  implements DialogInterface.OnClickListener
 {
-  apum(aptw paramaptw) {}
+  apum(apuk paramapuk) {}
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.a.a();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apum
  * JD-Core Version:    0.7.0.1
  */

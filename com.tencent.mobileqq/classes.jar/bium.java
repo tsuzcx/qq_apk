@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class bium
-  implements View.OnClickListener
+class bium
+  implements FilenameFilter
 {
-  bium(biuk parambiuk) {}
+  bium(biul parambiul) {}
   
-  public void onClick(View paramView)
+  public boolean accept(File paramFile, String paramString)
   {
-    biuk.a(this.a);
-    biuk.b(this.a);
-    biuk.a(this.a, new biwd(biuk.a(this.a)));
-    if (!biuk.a(this.a)) {
-      biuk.c(this.a);
-    }
-    biuk.a(this.a).a(new biun(this));
+    return (paramFile != null) && (paramFile.isDirectory()) && (biul.a(this.a).matcher(paramString).matches());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bium
  * JD-Core Version:    0.7.0.1
  */

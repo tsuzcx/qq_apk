@@ -1,68 +1,83 @@
-import android.content.Context;
-import android.view.View;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
-public class atok
-  extends atoj
+class atok
+  implements atpk
 {
-  protected View a;
+  atok(atof paramatof, Activity paramActivity) {}
   
-  protected int a()
+  public void a(LocationRoom.Venue paramVenue)
   {
-    return 2131560847;
+    if (paramVenue != null)
+    {
+      atof.a(this.jdField_a_of_type_Atof);
+      return;
+    }
+    atof.b(this.jdField_a_of_type_Atof);
   }
   
-  protected LabelContainer a(View paramView, int paramInt1, atfm paramatfm, int paramInt2)
+  public void a(LatLng paramLatLng) {}
+  
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
   {
-    paramatfm = (ImageView)paramView.findViewById(2131378556);
-    if (paramInt1 == 7) {
-      paramatfm.setVisibility(8);
-    }
-    for (;;)
+    if (paramList != null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
+      paramLatLng = paramList.iterator();
+      while (paramLatLng.hasNext())
       {
-        paramatfm = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-        paramatfm.topMargin = vpm.b(this.jdField_a_of_type_AndroidContentContext, 16.0F);
-        paramView.setLayoutParams(paramatfm);
+        paramList = (String)paramLatLng.next();
+        Bitmap localBitmap = this.jdField_a_of_type_Atof.a(paramList);
+        if (localBitmap != null)
+        {
+          localBitmap = bdda.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+          atof.a(this.jdField_a_of_type_Atof).a(paramList, localBitmap);
+        }
       }
-      paramInt1 = vpm.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      paramInt2 = vpm.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      paramView = (LabelContainer)paramView.findViewById(2131368874);
-      paramView.setSpace(paramInt1, paramInt2);
-      return paramView;
-      paramatfm.setImageResource(b[paramInt1]);
     }
   }
   
-  public void a(Context paramContext, LinearLayout paramLinearLayout, View paramView)
+  public void a(boolean paramBoolean, Point paramPoint)
   {
-    super.a(paramContext, paramLinearLayout);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (paramBoolean)
+    {
+      atof.a(this.jdField_a_of_type_Atof).setClickable(false);
+      if (bhxo.a()) {
+        atof.a(this.jdField_a_of_type_Atof).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840354));
+      }
+    }
+    Rect localRect;
+    do
+    {
+      return;
+      atof.a(this.jdField_a_of_type_Atof).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840353));
+      return;
+      if (paramPoint == null) {
+        break;
+      }
+      localRect = new Rect();
+      atof.a(this.jdField_a_of_type_Atof).getGlobalVisibleRect(localRect);
+    } while (localRect.contains(paramPoint.x, paramPoint.y));
+    atof.a(this.jdField_a_of_type_Atof).setClickable(true);
+    atof.a(this.jdField_a_of_type_Atof).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840355));
   }
   
-  public boolean a(atfm[] paramArrayOfatfm)
+  public void a(boolean paramBoolean, atpl paramatpl)
   {
-    if (super.a(paramArrayOfatfm))
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    atof.a(this.jdField_a_of_type_Atof, paramBoolean, paramatpl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atok
  * JD-Core Version:    0.7.0.1
  */

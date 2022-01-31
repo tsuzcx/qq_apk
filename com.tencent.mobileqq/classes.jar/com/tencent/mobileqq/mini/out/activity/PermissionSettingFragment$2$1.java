@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 class PermissionSettingFragment$2$1
   implements Runnable
@@ -11,15 +11,15 @@ class PermissionSettingFragment$2$1
   {
     if (this.val$finalErrCode == -101510007L)
     {
-      bcql.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694275), 0).a();
+      QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694414), 0).a();
       return;
     }
-    bcql.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694281), 0).a();
+    QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694420), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

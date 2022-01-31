@@ -1,40 +1,22 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
 public class wvt
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public wvt(RelativeFeedItemView paramRelativeFeedItemView) {}
+  public wvt(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = (CertifiedAccountMeta.StFeed)this.a.a();
-    wis.a(this.a.getContext(), paramView, 0, wrq.a(this.a.a, paramView.cover.width.get(), paramView.cover.height.get()));
-    ExtraTypeInfo localExtraTypeInfo = this.a.a();
-    if ((localExtraTypeInfo != null) && (paramView != null))
-    {
-      if (localExtraTypeInfo.pageType != 7003) {
-        break label133;
-      }
-      xhb.a(paramView.poster.id.get(), "auth_follow", "new_c_clk", 0, 0, new String[] { "", "", paramView.id.get(), paramView.title.get() });
-    }
-    label133:
-    while (localExtraTypeInfo.pageType != 7004) {
-      return;
-    }
-    xhb.a(paramView.poster.id.get(), "auth_discover", "clk_content", 0, 0, new String[] { "", "", paramView.id.get(), paramView.title.get() });
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.b = 3;
+    this.a.jdField_a_of_type_Wwe.a(14);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvt
  * JD-Core Version:    0.7.0.1
  */

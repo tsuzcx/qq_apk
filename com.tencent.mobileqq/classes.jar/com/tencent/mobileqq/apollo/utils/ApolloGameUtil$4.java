@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajfa;
+import akwm;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ final class ApolloGameUtil$4
     {
       Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
       long l = ((JSONObject)localObject).optLong("taskId");
-      localObject = ajfa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (JSONObject)localObject);
+      localObject = akwm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (JSONObject)localObject);
       if (localObject == null) {
         return;
       }
@@ -39,7 +39,7 @@ final class ApolloGameUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.4
  * JD-Core Version:    0.7.0.1
  */

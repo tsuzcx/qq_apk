@@ -1,37 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.view.animation.Animation;
+import cooperation.qzone.contentbox.PlusMenuContainer;
 
 public class bjej
-  extends bjdv
+  extends bhnr
 {
-  public bjej(HummingActivity paramHummingActivity) {}
+  public bjej(PlusMenuContainer paramPlusMenuContainer) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bdis.a().a(ajya.a(2131705674) + HummingActivity.a(this.a), 0);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (paramString != null) && (HummingActivity.a(this.a).getLocalPath().equals(paramString)))
-    {
-      paramString = new Intent();
-      paramString.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
-      this.a.setResult(-1, paramString);
-      this.a.finish();
-    }
+    this.a.setVisibility(4);
+    PlusMenuContainer.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjej
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QIMFollwerAdd;
 
 public class avqo
-  implements View.OnClickListener
+  extends avqe
 {
-  public avqo(IosTimepicker paramIosTimepicker) {}
+  public QIMFollwerAdd a;
   
-  public void onClick(View paramView)
+  public avqo(QIMFollwerAdd paramQIMFollwerAdd)
   {
-    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
-    {
-      IosTimepicker.a(this.a).dismiss();
-      IosTimepicker.a(this.a, null);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd = paramQIMFollwerAdd;
+    this.jdField_a_of_type_Long = paramQIMFollwerAdd.upTime;
+  }
+  
+  public String a()
+  {
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.uin);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return "getMessage";
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.isRead;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avqo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import ajya;
+import alpo;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -18,8 +18,8 @@ class QfileLocalFilePicTabView$2
   public void run()
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    localLinkedHashMap.put(ajya.a(2131709686), new ArrayList());
-    localLinkedHashMap.put(ajya.a(2131709685), new ArrayList());
+    localLinkedHashMap.put(alpo.a(2131710058), new ArrayList());
+    localLinkedHashMap.put(alpo.a(2131710057), new ArrayList());
     try
     {
       Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -35,11 +35,11 @@ class QfileLocalFilePicTabView$2
         }
         else
         {
-          localObject1 = ajya.a(2131709677);
+          localObject1 = alpo.a(2131710049);
         }
         localObject3 = localObject1;
         if (((String)localObject1).equalsIgnoreCase("camera") == true) {
-          localObject3 = ajya.a(2131709701);
+          localObject3 = alpo.a(2131710073);
         }
         if (!localLinkedHashMap.containsKey(localObject3)) {
           localLinkedHashMap.put(localObject3, new ArrayList());
@@ -67,7 +67,7 @@ class QfileLocalFilePicTabView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView.2
  * JD-Core Version:    0.7.0.1
  */

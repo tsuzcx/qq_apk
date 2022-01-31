@@ -1,47 +1,57 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.ProteusLog;
 import com.tencent.qphone.base.util.QLog;
 
 public class pqc
+  implements LogUtil.ProteusLog
 {
-  public static void a()
+  public void d(String paramString1, int paramInt, String paramString2)
   {
-    pqg.a.a();
+    QLog.d(paramString1, paramInt, paramString2);
   }
   
-  private static void a(Context paramContext)
+  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    Intent localIntent = new Intent();
-    String str = pph.a().a("3978");
-    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", "daily_feeds");
-    ppj.a().getClass();
-    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppPath", str);
-    QLog.i("PTSHelper", 1, "[jumpToPTSDailyPage], dailyAppPath = " + str);
-    PublicFragmentActivity.a(paramContext, localIntent, PTSFragment.class);
+    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
   }
   
-  public static boolean a(Context paramContext)
+  public void e(String paramString1, int paramInt, String paramString2)
   {
-    if (!pqg.a.b()) {}
-    do
-    {
-      return false;
-      int i = oou.b();
-      if (!oou.a(i))
-      {
-        QLog.i("PTSHelper", 1, "[isAbleToJumpNewPTSDailyPage], it is not normal daily channel, channelID = " + i);
-        return false;
-      }
-    } while ((!ppj.a().a()) || (!pph.a().a("daily_feeds")));
-    a(paramContext);
-    return true;
+    QLog.e(paramString1, paramInt, paramString2);
+  }
+  
+  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.i(paramString1, paramInt, paramString2);
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.w(paramString1, paramInt, paramString2);
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, paramInt, paramString2, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pqc
  * JD-Core Version:    0.7.0.1
  */

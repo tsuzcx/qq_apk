@@ -1,50 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayer;
-import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayerListener;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.View.OnClickListener;
 
 public class bixv
-  implements IVideoShelfPlayerListener
 {
-  private WeakReference<AETemplateInfoFragment> a;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean = true;
+  private String d;
   
-  public bixv(AETemplateInfoFragment paramAETemplateInfoFragment)
+  public bixv(Context paramContext)
   {
-    this.a = new WeakReference(paramAETemplateInfoFragment);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onChangVideoSize(int paramInt1, int paramInt2) {}
-  
-  public void onCompletion()
+  public bixs a()
   {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onCompletion");
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AETemplateInfoFragment)this.a.get()).a();
-    }
+    return new bixs(this, null);
   }
   
-  public boolean onError(int paramInt, String paramString, Object paramObject)
+  public bixv a(String paramString)
   {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onError errCode=" + paramInt + ", msg=" + paramString);
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.b((AETemplateInfoFragment)this.a.get());
-    }
-    return true;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public void onPrepared(IVideoShelfPlayer paramIVideoShelfPlayer) {}
-  
-  public void onUpdateRate(long paramLong)
+  public bixv a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AETemplateInfoFragment)this.a.get()).a(paramLong);
-    }
+    this.d = paramString;
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public bixv b(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bixv
  * JD-Core Version:    0.7.0.1
  */

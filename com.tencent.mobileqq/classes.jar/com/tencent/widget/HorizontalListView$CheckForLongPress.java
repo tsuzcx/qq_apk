@@ -2,10 +2,10 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import bfsr;
+import bhto;
 
 class HorizontalListView$CheckForLongPress
-  extends bfsr
+  extends bhto
   implements Runnable
 {
   private HorizontalListView$CheckForLongPress(HorizontalListView paramHorizontalListView)
@@ -47,7 +47,7 @@ class HorizontalListView$CheckForLongPress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

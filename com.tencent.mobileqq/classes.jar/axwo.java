@@ -1,28 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
-class axwo
-  implements View.OnTouchListener
+public class axwo
 {
-  axwo(axwm paramaxwm) {}
+  public BaseVideoView a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null)
-    {
-      acxj localacxj = (acxj)this.a.a.get();
-      if (localacxj != null) {
-        return localacxj.onTouch(paramView, paramMotionEvent);
-      }
-    }
-    return false;
-  }
+  public axwo(axwf paramaxwf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axwo
  * JD-Core Version:    0.7.0.1
  */

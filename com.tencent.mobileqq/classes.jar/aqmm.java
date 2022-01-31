@@ -1,62 +1,49 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
 
-public abstract class aqmm
+public class aqmm
+  extends aroh
 {
-  public int c;
-  public Rect c;
-  public boolean d;
+  public aqmm(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
   
-  public aqmm()
+  public void a()
   {
-    this.jdField_c_of_type_Int = 2;
+    this.a.a.a().b();
   }
   
-  public static int a(Rect paramRect, Drawable paramDrawable)
+  public void b()
   {
-    float f1 = paramRect.width();
-    float f2 = paramRect.height();
-    float f3 = paramDrawable.getIntrinsicWidth();
-    float f4 = paramDrawable.getIntrinsicHeight();
-    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {
-      return 0;
-    }
-    f1 = f1 * f4 / (f2 * f3);
-    return 0;
+    this.a.a.a().p();
   }
   
-  public abstract int a();
-  
-  public Rect a()
+  public void c()
   {
-    return this.jdField_c_of_type_AndroidGraphicsRect;
+    this.a.a.a().q();
   }
   
-  public abstract Drawable a();
-  
-  public boolean a(boolean paramBoolean)
+  public void d()
   {
-    return true;
+    this.a.a.a().r();
   }
   
-  public int b()
+  public void e()
   {
-    return 0;
+    this.a.a.a().s();
   }
   
-  public Rect b()
+  public void f()
   {
-    return null;
+    this.a.a.a().t();
   }
   
-  public int c()
+  public void g()
   {
-    return 0;
+    this.a.a.a().G();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmm
  * JD-Core Version:    0.7.0.1
  */

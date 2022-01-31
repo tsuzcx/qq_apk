@@ -1,15 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
 
-public abstract interface aqyx
+class aqyx
+  implements aqze
 {
-  public abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
+  aqyx(aqyw paramaqyw) {}
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public void a()
+  {
+    FileSelectorSearchGroupFragment.a(this.a.a).a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyx
  * JD-Core Version:    0.7.0.1
  */

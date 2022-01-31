@@ -1,34 +1,23 @@
-import android.graphics.RectF;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiPictureUrl;
 
-public class bjhh
-  extends bjgw
+public final class bjhh
+  implements Parcelable.Creator<WeishiPictureUrl>
 {
-  private float a;
-  private float b;
-  
-  public bjhh(float paramFloat1, float paramFloat2)
+  public WeishiPictureUrl a(Parcel paramParcel)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
+    return new WeishiPictureUrl(paramParcel);
   }
   
-  void a(int paramInt, bjgx parambjgx)
+  public WeishiPictureUrl[] a(int paramInt)
   {
-    float f3 = parambjgx.a.right;
-    float f4 = parambjgx.a.left;
-    float f1 = parambjgx.a.bottom;
-    float f2 = parambjgx.a.top;
-    f3 = Math.abs(f3 - f4 - this.a) / 2.0F;
-    f1 = Math.abs(f1 - f2 - this.b) / 2.0F;
-    RectF localRectF = parambjgx.a;
-    localRectF.left += f3;
-    parambjgx = parambjgx.a;
-    parambjgx.right = (f3 + parambjgx.right);
+    return new WeishiPictureUrl[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjhh
  * JD-Core Version:    0.7.0.1
  */

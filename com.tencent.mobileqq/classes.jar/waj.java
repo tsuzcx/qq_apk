@@ -1,18 +1,34 @@
-public abstract interface waj
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class waj
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, ukn>
 {
-  public abstract void onFailure(String paramString);
+  public waj(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  {
+    super(paramQQStoryShareGroupProfileActivity);
+  }
   
-  public abstract void onFinish(boolean paramBoolean);
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull ukn paramukn)
+  {
+    paramukn = paramukn.a;
+    if (paramukn == null) {}
+    while (wnc.a(paramukn.mUploadStatus) != 3) {
+      return;
+    }
+    paramQQStoryShareGroupProfileActivity.b = true;
+  }
   
-  public abstract void onProgress(String paramString);
-  
-  public abstract void onStart();
-  
-  public abstract void onSuccess(String paramString);
+  public Class acceptEventClass()
+  {
+    return ukn.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     waj
  * JD-Core Version:    0.7.0.1
  */

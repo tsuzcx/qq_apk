@@ -1,10 +1,19 @@
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
+
 class bbpn
+  implements Comparator<MessageRecord>
 {
-  private static final bbpm a = new bbpm(null);
+  bbpn(bbpm parambbpm) {}
+  
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbpn
  * JD-Core Version:    0.7.0.1
  */

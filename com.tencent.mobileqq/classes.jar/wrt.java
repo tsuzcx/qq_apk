@@ -1,36 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.FrameLayout;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.6.1;
 
-class wrt
-  implements Animator.AnimatorListener
+public class wrt
+  implements woo
 {
-  wrt(wrq paramwrq) {}
+  wrt(wrh paramwrh) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    wrq.a(this.a, null);
+    wsv.d("NewMyStorySegment", "finish get all data from server steps");
+    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.6.1(this));
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (wrq.a(this.a) != null) {
-      wrq.a(this.a).a(3);
-    }
-    if (wrq.a(this.a) != null)
-    {
-      wrq.a(this.a).setAlpha(0.0F);
-      wrq.a(this.a, null);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrt
  * JD-Core Version:    0.7.0.1
  */

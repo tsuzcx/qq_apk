@@ -1,39 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import cooperation.qzone.contentbox.MsgPhotoView.WeakVipResourcesListener.1;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
-import java.lang.ref.WeakReference;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.smtt.sdk.JsContext;
+import com.tencent.smtt.sdk.JsContext.ExceptionHandler;
+import com.tencent.smtt.sdk.JsError;
 
-public class bhcy
-  implements VipResourcesListener
+class bhcy
+  implements JsContext.ExceptionHandler
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private WeakReference<ImageView> b;
+  bhcy(bhcw parambhcw) {}
   
-  public bhcy(Handler paramHandler, ImageView paramImageView, int paramInt, boolean paramBoolean)
+  public void handleException(JsContext paramJsContext, JsError paramJsError)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
-    this.b = new WeakReference(paramImageView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onFailed() {}
-  
-  public void onLoaded(Drawable paramDrawable)
-  {
-    Handler localHandler = (Handler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramDrawable != null) && (localHandler != null)) {
-      localHandler.post(new MsgPhotoView.WeakVipResourcesListener.1(this, paramDrawable));
-    }
+    QMLog.e("AppBrandService", "X5Exception:" + paramJsError.getMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhcy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,43 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class oxd
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+  implements Manager
 {
-  public oxd(VideoView paramVideoView) {}
+  private AppInterface a;
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public oxd(AppInterface paramAppInterface)
   {
-    if (VideoView.a(this.a) != null) {
-      VideoView.a(this.a).start();
-    }
-    if (VideoView.a(this.a) != null) {
-      this.a.a.postDelayed(this.a, 500L);
-    }
+    QLog.i("ReadInJoyLogicManager", 1, "[ReadInJoyLogicManager] constructed.");
+    this.a = paramAppInterface;
+    a();
+  }
+  
+  public owy a()
+  {
+    return owy.a();
+  }
+  
+  public void a()
+  {
+    osv.a();
+    owy.a().a(this.a);
+  }
+  
+  public void b()
+  {
+    owy.a().a(false);
+  }
+  
+  public void onDestroy()
+  {
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oxd
  * JD-Core Version:    0.7.0.1
  */

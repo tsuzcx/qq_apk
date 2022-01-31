@@ -38,7 +38,7 @@ public final class mobile_event_tags_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_event_tags_rsp
  * JD-Core Version:    0.7.0.1
  */

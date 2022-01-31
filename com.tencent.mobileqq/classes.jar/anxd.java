@@ -1,26 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class anxd
-  implements DialogInterface.OnDismissListener
+  implements bdpj
 {
-  anxd(anxc paramanxc) {}
+  anxd(anxb paramanxb, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
+    paramQQAppInterface = bdsg.a(this.jdField_a_of_type_Anxb.a.getApp(), this.jdField_a_of_type_Int);
     if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
+      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId.onCompleted: invoked. ", " wavPath: ", paramQQAppInterface });
     }
-    this.a.a(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
-    }
+    anxb.a(this.jdField_a_of_type_Anxb, paramQQAppInterface);
   }
+  
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxd
  * JD-Core Version:    0.7.0.1
  */

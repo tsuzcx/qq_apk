@@ -1,21 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import mqq.os.MqqHandler;
 
-class adps
-  implements aptw
+public class adps
+  extends MqqHandler
 {
-  adps(adpq paramadpq, ChatMessage paramChatMessage, Context paramContext) {}
+  public adps(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    apug.a(this.jdField_a_of_type_Adpq.a, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_AndroidContentContext);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adps
  * JD-Core Version:    0.7.0.1
  */

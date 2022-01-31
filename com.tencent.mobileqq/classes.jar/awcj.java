@@ -1,119 +1,158 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
 
 public class awcj
-  extends WebViewPlugin
+  extends awbw
 {
-  public awcj()
+  public awcj(alxk paramalxk, String paramString)
   {
-    this.mPluginNameSpace = "historicalSig";
+    super(paramalxk, paramString);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static void a(List<String> paramList, String paramString, Cursor paramCursor, Class paramClass)
   {
-    if (paramString2.equalsIgnoreCase("historicalSig"))
+    paramClass = awcw.a(paramClass);
+    int j;
+    Field localField;
+    if (paramCursor.moveToFirst())
     {
-      paramString1 = this.mRuntime.a().getAccount();
-      paramJsBridgeListener = this.mRuntime.a();
-      if (paramString3.equalsIgnoreCase("historicalSiglist")) {}
-      do
+      paramCursor = SecurityUtile.b(paramCursor.getString(0)).split(",");
+      int k = paramClass.size();
+      j = 0;
+      if (j < k)
       {
-        do
+        localField = (Field)paramClass.get(j);
+        i = 1;
+        label64:
+        if (i >= paramCursor.length) {
+          break label221;
+        }
+        String str = paramCursor[i].trim().split(" ")[0];
+        if (!localField.getName().equals(str)) {}
+      }
+    }
+    label178:
+    label221:
+    for (int i = 1;; i = 0)
+    {
+      boolean bool;
+      if (i == 0)
+      {
+        if (!localField.isAnnotationPresent(awdd.class)) {
+          break label178;
+        }
+        i = 0;
+        bool = true;
+      }
+      for (;;)
+      {
+        paramList.add(awcw.a(paramString, localField.getName(), (String)awcw.a.get(localField.getType()), bool, i));
+        j += 1;
+        break;
+        i += 1;
+        break label64;
+        if (localField.isAnnotationPresent(awdc.class))
         {
-          do
-          {
-            try
-            {
-              paramString2 = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramString2.optString("fromType");
-              paramString2 = paramString2.optString("fromUin");
-              if (ChatActivityUtils.a(paramString2))
-              {
-                paramString3 = new Intent(paramJsBridgeListener, PublicFragmentActivity.class);
-                paramString3.putExtra("key_uin", paramString2);
-                if (paramString1.equalsIgnoreCase("1"))
-                {
-                  paramString3.putExtra("key_open_via", "history-msglist");
-                  paramJsBridgeListener.finish();
-                }
-                abtq.a(paramJsBridgeListener, paramString3, PublicFragmentActivity.class, SignatureHistoryFragment.class);
-              }
-              QLog.d("JumpProfilePlugin", 1, new Object[] { "historicalSiglist", "fromType=", paramString1, " fromUin", bbkk.e(paramString2) });
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              while (!QLog.isColorLevel()) {}
-              QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-              return true;
-            }
-            return true;
-            if (!paramString3.equalsIgnoreCase("personalTagList")) {
-              break;
-            }
-            try
-            {
-              paramString2 = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramString2.optString("fromType");
-              paramString2 = paramString2.optString("fromUin");
-              if (ChatActivityUtils.a(paramString2))
-              {
-                paramString3 = new Intent(this.mRuntime.a(), PersonalityLabelGalleryActivity.class);
-                paramString3.putExtra("uin", paramString2);
-                if (paramString1.equalsIgnoreCase("1")) {
-                  paramString3.putExtra("fromType", 4);
-                }
-                paramJsBridgeListener.startActivity(paramString3);
-                paramJsBridgeListener.finish();
-              }
-              QLog.d("JumpProfilePlugin", 1, new Object[] { "personalTagList", "fromType=", paramString1, " fromUin", bbkk.e(paramString2) });
-              return true;
-            }
-            catch (JSONException paramJsBridgeListener) {}
-          } while (!QLog.isColorLevel());
-          QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-          return true;
-        } while (!paramString3.equalsIgnoreCase("zanlist"));
+          i = ((awdc)localField.getAnnotation(awdc.class)).a();
+          bool = true;
+        }
+        else
+        {
+          i = 0;
+          bool = false;
+        }
+      }
+    }
+  }
+  
+  protected ContentValues a(awbv paramawbv)
+  {
+    System.nanoTime();
+    awch localawch = awci.a().a(paramawbv.getClass());
+    if (localawch != null)
+    {
+      ContentValues localContentValues = new ContentValues(localawch.jdField_a_of_type_Int);
+      localawch.a(paramawbv, localContentValues);
+      return localContentValues;
+    }
+    return super.a(paramawbv);
+  }
+  
+  public Cursor a(boolean paramBoolean, String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    return super.a(paramBoolean, paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, paramString3, paramString4, paramString5, paramString6);
+  }
+  
+  public awbv a(Class<? extends awbv> paramClass, String paramString, Cursor paramCursor, awcg paramawcg)
+  {
+    awch localawch = awci.a().a(paramClass);
+    if (localawch != null) {
+      if (paramCursor.isBeforeFirst()) {
+        paramCursor.moveToFirst();
+      }
+    }
+    try
+    {
+      if (paramCursor.getColumnIndex("_id") >= 0) {}
+      awbv localawbv;
+      for (l = paramCursor.getLong(paramCursor.getColumnIndex("_id"));; l = -1L) {
         try
         {
-          paramString3 = new JSONObject(paramVarArgs[0]);
-          paramString2 = paramString3.optString("fromType");
-          paramString3 = paramString3.optString("fromUin");
-          if ((ChatActivityUtils.a(paramString3)) && (paramString3.equalsIgnoreCase(paramString1)))
-          {
-            paramString1 = new Intent(paramJsBridgeListener, VisitorsActivity.class);
-            paramString1.putExtra("toUin", Long.valueOf(paramString3));
-            paramString1.putExtra("extra_show_rank", true);
-            if (paramString2.equalsIgnoreCase("1")) {
-              paramString1.putExtra("extra_from", 2);
-            }
-            paramJsBridgeListener.startActivity(paramString1);
-            paramJsBridgeListener.finish();
+          localawbv = (awbv)paramClass.newInstance();
+          if (localawbv == null) {
+            break;
           }
-          QLog.d("JumpProfilePlugin", 1, new Object[] { "zanlist", "fromType=", paramString2, " fromUin", bbkk.e(paramString3) });
-          return true;
+          localawbv._id = l;
+          paramClass = localawbv;
+          if (!localawbv.entityByCursor(paramCursor)) {
+            paramClass = localawch.a(localawbv, paramCursor, localawch.jdField_a_of_type_Boolean, paramawcg);
+          }
+          if ((l != -1L) && (paramString != null)) {}
+          for (paramClass._status = 1001;; paramClass._status = 1002)
+          {
+            paramClass.postRead();
+            return paramClass;
+          }
+          return super.a(paramClass, paramString, paramCursor, paramawcg);
         }
-        catch (JSONException paramJsBridgeListener) {}
-      } while (!QLog.isColorLevel());
-      QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-      return true;
+        catch (Exception paramClass)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("EntityManager", 2, MsfSdkUtils.getStackTraceString(paramClass));
+          }
+          return null;
+        }
+      }
+      return localawbv;
     }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        long l = -1L;
+      }
+    }
+  }
+  
+  protected void a(awbv paramawbv, boolean paramBoolean)
+  {
+    super.a(paramawbv, paramBoolean);
+  }
+  
+  public boolean a(awbv paramawbv)
+  {
+    return super.a(paramawbv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awcj
  * JD-Core Version:    0.7.0.1
  */

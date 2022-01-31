@@ -1,23 +1,111 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.view.View;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
-public final class aape
-  implements DialogInterface.OnClickListener
+public class aape
 {
-  public aape(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, Map paramMap) {}
+  public View a;
+  private WeakReference<aapf> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<WeakReference<aapf>> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private int a(WeakReference<aapf> paramWeakReference)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilMap);
+    int j;
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null))
+    {
+      j = -1;
+      return j;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label71;
+      }
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localWeakReference != null)
+      {
+        j = i;
+        if (localWeakReference.get() == paramWeakReference.get()) {
+          break;
+        }
+      }
+      i += 1;
+    }
+    label71:
+    return -1;
+  }
+  
+  private aapf a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      return (aapf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    return null;
+  }
+  
+  private void a()
+  {
+    if (a() != null) {
+      a().b();
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  private boolean b(WeakReference<aapf> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
+    while (a(paramWeakReference) != -1) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramWeakReference);
+    return true;
+  }
+  
+  private boolean c(WeakReference<aapf> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
+    int i;
+    do
+    {
+      return false;
+      i = a(paramWeakReference);
+    } while (i == -1);
+    this.jdField_a_of_type_JavaUtilList.remove(i);
+    return true;
+  }
+  
+  public void a(WeakReference<aapf> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == a()))
+    {
+      aanp.a("GdtVideoCommonView", "MutiVideoManager play return: " + paramWeakReference);
+      return;
+    }
+    a();
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    b(paramWeakReference);
+  }
+  
+  public boolean a(WeakReference<aapf> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
+    do
+    {
+      return false;
+      c(paramWeakReference);
+    } while (this.jdField_a_of_type_JavaUtilList.size() <= 0);
+    paramWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.iterator().next();
+    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+      ((aapf)paramWeakReference.get()).a();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aape
  * JD-Core Version:    0.7.0.1
  */

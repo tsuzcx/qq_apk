@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class rhw
-  implements View.OnClickListener
+class rhw
+  implements DialogInterface.OnShowListener
 {
-  public rhw(SlideActiveAnimController paramSlideActiveAnimController) {}
+  rhw(rht paramrht) {}
   
-  public void onClick(View paramView)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    SlideActiveAnimController.a(this.a);
+    rhf.a(this.a.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    rhf.a(this.a.a).getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhw
  * JD-Core Version:    0.7.0.1
  */

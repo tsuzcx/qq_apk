@@ -1,21 +1,26 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-class amie
-  implements View.OnTouchListener
+public class amie
+  implements Comparator<Map.Entry<String, Integer>>
 {
-  amie(amib paramamib) {}
+  public amie(MsgLruCache paramMsgLruCache) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
   {
-    return amib.a(this.a).onTouchEvent(paramMotionEvent);
+    if (((Integer)paramEntry1.getValue()).intValue() < ((Integer)paramEntry2.getValue()).intValue()) {
+      return 1;
+    }
+    if (paramEntry1.getValue() == paramEntry2.getValue()) {
+      return 0;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amie
  * JD-Core Version:    0.7.0.1
  */

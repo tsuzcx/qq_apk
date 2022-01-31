@@ -1,47 +1,71 @@
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.view.TextureView;
+import android.view.View;
+import android.view.ViewGroup;
+
 public class vjy
-  implements Comparable<vjy>
 {
-  public int a;
-  public String a;
-  int b;
-  public String b;
-  public String c;
-  
-  public vjy()
+  public static TextureView a(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public vjy(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  public int a(vjy paramvjy)
-  {
-    if (paramvjy == null) {}
-    do
+    if ((paramView instanceof ViewGroup))
     {
-      return -1;
-      if (this.jdField_b_of_type_Int < paramvjy.jdField_b_of_type_Int) {
-        return 1;
+      paramView = (ViewGroup)paramView;
+      int i = 0;
+      while (i < paramView.getChildCount())
+      {
+        TextureView localTextureView = a(paramView.getChildAt(i));
+        if (localTextureView != null) {
+          return localTextureView;
+        }
+        i += 1;
       }
-    } while (this.jdField_b_of_type_Int != paramvjy.jdField_b_of_type_Int);
-    return 0;
+    }
+    if ((paramView instanceof TextureView)) {
+      return (TextureView)paramView;
+    }
+    return null;
   }
   
-  public String toString()
+  public static boolean a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
+    if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
+    {
+      xmh.a(false, "bitmap is not ARGB_8888");
+      return false;
+    }
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    int m = j / paramInt1;
+    int n = k / paramInt1;
+    paramInt1 = 0;
+    for (;;)
+    {
+      if (paramInt1 >= j) {
+        break label118;
+      }
+      int i = 0;
+      for (;;)
+      {
+        if (i >= k) {
+          break label110;
+        }
+        int i1 = paramBitmap.getPixel(paramInt1, i);
+        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
+          break;
+        }
+        i += n;
+      }
+      label110:
+      paramInt1 += m;
+    }
+    label118:
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjy
  * JD-Core Version:    0.7.0.1
  */

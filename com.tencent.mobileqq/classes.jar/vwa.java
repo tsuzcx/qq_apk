@@ -1,47 +1,22 @@
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class vwa
+class vwa
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public long a;
-  private Map<Integer, Long> a;
-  public int b = -1;
+  vwa(vvy paramvvy, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public vwa()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_Long < paramLong)
-    {
-      this.jdField_a_of_type_Long = paramLong;
-      this.b = paramInt;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((Long)((Map.Entry)localIterator.next()).getValue()).longValue() + l) {}
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
-      return "there_is_no_frame";
-    }
-    this.jdField_a_of_type_Int = ((int)l / this.jdField_a_of_type_JavaUtilMap.size());
-    localStringBuilder.append("avg:").append(this.jdField_a_of_type_Int).append("|max:").append(this.jdField_a_of_type_Long).append("|maxId:").append(this.b);
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwa
  * JD-Core Version:    0.7.0.1
  */

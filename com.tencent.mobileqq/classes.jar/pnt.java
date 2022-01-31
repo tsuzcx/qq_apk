@@ -1,40 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-
 class pnt
-  extends osm
+  implements pcm
 {
-  pnt(pno parampno) {}
+  pnt(pnh parampnh) {}
   
-  public void h(int paramInt)
+  public boolean a()
   {
-    boolean bool;
-    if (paramInt < 3)
-    {
-      bool = true;
-      QLog.d(pno.a(this.a), 1, "visibility changed, visible :  " + bool);
-      if (!bool) {
-        break label66;
-      }
-      pno.c(this.a);
-    }
-    for (;;)
-    {
-      if (paramInt == 5) {
-        osj.a().b(this);
-      }
-      return;
-      bool = false;
-      break;
-      label66:
-      if (pno.a(this.a) != null) {
-        pno.a(this.a).b();
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pnt
  * JD-Core Version:    0.7.0.1
  */

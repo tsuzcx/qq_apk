@@ -1,40 +1,24 @@
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import mqq.app.QQPermissionCallback;
+
 public class aybq
-  extends aybi
+  implements QQPermissionCallback
 {
-  private float d;
-  private float e;
+  public aybq(ScreenShotFragment paramScreenShotFragment) {}
   
-  public aybq(int paramInt, float paramFloat1, float paramFloat2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramInt, 2, 0);
-    this.d = paramFloat1;
-    this.e = paramFloat2;
+    bdcd.b(ScreenShotFragment.a(this.a), this.a.getString(2131699448));
   }
   
-  protected void a(int paramInt, float paramFloat)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_c_of_type_Float = (this.d + (this.e - this.d) * paramFloat);
-    if (this.e - this.d > 0.0F) {
-      if (this.jdField_c_of_type_Float >= this.e) {
-        this.jdField_c_of_type_Float = this.e;
-      }
-    }
-    for (;;)
-    {
-      if (paramInt >= this.jdField_c_of_type_Int) {
-        this.jdField_c_of_type_Float = this.e;
-      }
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.jdField_c_of_type_Float <= this.e) {
-        this.jdField_c_of_type_Float = this.e;
-      }
-    }
+    ScreenShotFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aybq
  * JD-Core Version:    0.7.0.1
  */

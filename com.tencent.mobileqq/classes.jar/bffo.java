@@ -1,20 +1,23 @@
-import java.util.Queue;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
 
-class bffo
-  implements RejectedExecutionHandler
+public class bffo
+  implements DialogInterface.OnClickListener
 {
-  bffo(bffn parambffn) {}
+  public bffo(DownloadJSApi.2 param2) {}
   
-  public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bffn.a(this.a).offer(paramRunnable);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bfjy.r, false);
+    bffn.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bffo
  * JD-Core Version:    0.7.0.1
  */

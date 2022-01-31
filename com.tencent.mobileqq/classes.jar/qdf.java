@@ -1,25 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class qdf
+  implements phj
 {
-  public int a;
-  public long a;
-  public UrlJumpInfo a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public qdf(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public String toString()
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id=").append(this.jdField_a_of_type_Long).append("\n").append("rowKey=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("title=").append(this.jdField_b_of_type_JavaLangString).append("\n").append("picUrl=").append(this.c).append("\n").append("jumpUrl=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo).append("\n").append("playCount=").append(this.jdField_a_of_type_Int).append("\n").append("duration=").append(this.jdField_b_of_type_Int);
-    return localStringBuilder.toString();
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentContentRecommendFollowList", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    }
+    if (paramBoolean)
+    {
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.isFollowed = paramBoolean;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
+        return;
+      }
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131718949, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qdf
  * JD-Core Version:    0.7.0.1
  */

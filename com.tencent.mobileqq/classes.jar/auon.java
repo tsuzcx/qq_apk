@@ -1,24 +1,50 @@
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface auon
+class auon
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract void a(int paramInt);
+  auon(auom paramauom) {}
   
-  public abstract void a(int paramInt, aunw paramaunw);
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UrlBottomImageSpan", 2, "onLoadCanceled");
+    }
+  }
   
-  public abstract void a(int paramInt, ArrayList<aunw> paramArrayList);
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UrlBottomImageSpan", 2, "onLoadFialed");
+    }
+  }
   
-  public abstract void a_(int paramInt, boolean paramBoolean);
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UrlBottomImageSpan", 2, "onLoadProgressed i:" + paramInt);
+    }
+  }
   
-  public abstract void b(int paramInt, aunw paramaunw);
-  
-  public abstract void c(int paramInt, aunw paramaunw);
-  
-  public abstract void d(int paramInt, aunw paramaunw);
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UrlBottomImageSpan", 2, "onLoadSuccessed");
+    }
+    paramURLDrawable = paramURLDrawable.getCallback();
+    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof View)))
+    {
+      ((View)paramURLDrawable).invalidate();
+      ((View)paramURLDrawable).requestLayout();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auon
  * JD-Core Version:    0.7.0.1
  */

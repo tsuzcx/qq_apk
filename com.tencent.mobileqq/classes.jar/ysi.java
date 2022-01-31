@@ -1,30 +1,68 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
-import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1;
-import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2;
-import java.util.Map;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.style.ImageSpan;
+import java.lang.ref.WeakReference;
 
-public final class ysi
-  implements AdThreadManagerAdapter
+public class ysi
+  extends ImageSpan
 {
-  public boolean postDelayed(Runnable paramRunnable, int paramInt, long paramLong)
+  private WeakReference<Drawable> a;
+  
+  public ysi(Drawable paramDrawable)
   {
-    GdtThreadManagerAdapter.1 local1 = new GdtThreadManagerAdapter.1(this);
-    if (paramInt == 0) {
-      return new Handler(Looper.getMainLooper()).postDelayed(paramRunnable, paramLong);
+    super(paramDrawable);
+  }
+  
+  private Drawable a()
+  {
+    Object localObject = this.a;
+    Drawable localDrawable = null;
+    if (localObject != null) {
+      localDrawable = (Drawable)((WeakReference)localObject).get();
     }
-    if (local1.containsKey(Integer.valueOf(paramInt)))
+    localObject = localDrawable;
+    if (localDrawable == null)
     {
-      paramInt = ((Integer)local1.get(Integer.valueOf(paramInt))).intValue();
-      return new Handler(Looper.getMainLooper()).postDelayed(new GdtThreadManagerAdapter.2(this, paramRunnable, paramInt), paramLong);
+      localObject = getDrawable();
+      this.a = new WeakReference(localObject);
     }
-    return false;
+    return localObject;
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  {
+    paramCharSequence = a();
+    paramCanvas.save();
+    paramInt1 = paramCharSequence.getIntrinsicHeight();
+    paramInt2 = paramPaint.getFontMetricsInt().ascent;
+    paramInt3 = paramPaint.getFontMetricsInt().descent;
+    paramInt4 = paramCharSequence.getBounds().bottom;
+    paramCanvas.translate(paramFloat, ((paramInt1 - paramInt3 + paramInt2) / 2 + (paramInt5 - paramInt4)) / 5);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    paramCharSequence = a().getBounds();
+    if (paramFontMetricsInt != null)
+    {
+      paramPaint = paramPaint.getFontMetricsInt();
+      paramFontMetricsInt.ascent = paramPaint.ascent;
+      paramFontMetricsInt.descent = paramPaint.descent;
+      paramFontMetricsInt.top = paramPaint.top;
+      paramFontMetricsInt.bottom = paramPaint.bottom;
+    }
+    return paramCharSequence.right;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysi
  * JD-Core Version:    0.7.0.1
  */

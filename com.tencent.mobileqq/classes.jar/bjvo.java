@@ -1,179 +1,219 @@
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.component.network.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import java.util.HashSet;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.vip.manager.MonitorManager;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjvo
-  extends bjxl
-  implements View.OnClickListener
 {
-  public long a;
-  private View jdField_a_of_type_AndroidViewView;
-  private bjmc jdField_a_of_type_Bjmc;
-  private boolean jdField_a_of_type_Boolean;
-  public long b;
-  private boolean b;
-  public long c;
-  private long e;
-  private long f;
-  
-  public bjvo(@NonNull bjxn parambjxn, long paramLong)
+  public static String a()
   {
-    super(parambjxn);
-    this.e = paramLong;
+    Object localObject1 = "";
+    Object localObject2 = a(null);
+    if (localObject2 != null)
+    {
+      ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/"));
+      Object localObject3 = new File((String)localObject2);
+      localObject2 = localObject1;
+      if (((File)localObject3).isDirectory())
+      {
+        localObject3 = ((File)localObject3).listFiles();
+        int j = localObject3.length;
+        int i = 0;
+        for (;;)
+        {
+          localObject2 = localObject1;
+          if (i >= j) {
+            break;
+          }
+          Object localObject4 = localObject3[i];
+          localObject2 = localObject1;
+          if (localObject4.isDirectory()) {
+            localObject2 = (String)localObject1 + localObject4.getName() + ",";
+          }
+          i += 1;
+          localObject1 = localObject2;
+        }
+      }
+      if (((String)localObject2).length() > 0) {
+        return ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
+      }
+      return "";
+    }
+    return "";
   }
   
-  private void d()
+  public static String a(Context paramContext)
   {
-    if (this.jdField_a_of_type_Bjmc == null) {
-      this.jdField_a_of_type_Bjmc = new bjvp(this);
-    }
+    return a("avatar");
   }
   
-  public int a()
+  public static String a(String paramString)
   {
-    int i = 1;
-    int j = this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("extra_transiton_src_from", -1);
-    if (this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d()) {
-      i = 4;
+    Object localObject = bjvp.a();
+    if (localObject == null) {
+      localObject = null;
     }
+    String str;
     do
     {
-      return i;
-      if (j == 1) {
-        return 0;
+      return localObject;
+      str = ((File)localObject).getAbsolutePath();
+      localObject = str;
+    } while (TextUtils.isEmpty(paramString));
+    paramString = new File(str + File.separator + paramString);
+    try
+    {
+      if (paramString.isFile()) {
+        FileUtils.delete(paramString);
       }
-    } while (j == 2);
-    return 2;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidViewView = a(2131378893);
-    if ((this.e & 0x0) != 0L)
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    }
-    this.c = this.jdField_a_of_type_Bjxn.b();
-    if ((this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalVideoSource)) {
-      this.f = ((EditLocalVideoSource)this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a).jdField_a_of_type_Int;
-    }
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = (bjtj)a(bjtj.class);
-    if (localObject != null) {
-      ((bjtj)localObject).a(this.f, false);
-    }
-    localObject = (bjtk)a(bjtk.class);
-    if (localObject != null) {
-      ((bjtk)localObject).b();
-    }
-    this.jdField_a_of_type_Bjxn.a(0);
-    if (paramBoolean)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-      bcql.a(a(), 2, ajya.a(2131703916), 0).a();
-      if (paramLong != 0L) {
-        axqy.b(null, "dc00899", "grp_story", "", "video_edit_cover", "done_cover", a(), 1, "", "", "", "");
+      if (!paramString.exists()) {
+        paramString.mkdirs();
       }
+      return paramString.getAbsolutePath();
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EditVideoCover", 2, new Object[] { "SegmentPickerFinish, coverTime: ", Long.valueOf(this.jdField_a_of_type_Long) });
-      }
-      return;
-      this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
-    }
+    finally {}
   }
   
-  public boolean a()
+  public static void a(becq parambecq, String... paramVarArgs)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Bjxn.jdField_a_of_type_Int == 42)
-    {
-      a(0L, false);
-      bool = true;
+    j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneFacadeJsHandleLogic", 2, "handleSetFacadeFinish");
     }
-    return bool;
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return super.a(paramMessage);
-      if ((this.jdField_a_of_type_Bjxn.jdField_a_of_type_Int == 42) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Long = ((Long[])(Long[])paramMessage.obj)[1].longValue();
-      }
-    }
-  }
-  
-  public void aV_()
-  {
-    if (this.jdField_a_of_type_Long != 0L) {
-      axqy.b(null, "dc00899", "grp_story", "", "video_edit_cover", "pub_cover", a(), 1, "", "", "", "");
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setEnabled(paramBoolean);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
+    if ((parambecq.a() == null) || (parambecq.a() == null)) {
       return;
     }
-    if (this.jdField_a_of_type_Bjxn.a() != null) {
-      this.jdField_a_of_type_Bjxn.a().a.add(Integer.valueOf(9));
+    LocalMultiProcConfig.putInt4Uin("key_personalize_prefix_19", 0, Long.valueOf(parambecq.a().getCurrentAccountUin()).longValue());
+    Intent localIntent = new Intent("action_facade_js2qzone");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cmd", "setAvatar");
+    localIntent.putExtras(localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneFacadeJsHandleLogic", 2, "actionString: " + localIntent.getAction());
     }
-    QLog.d("EditVideoCover", 1, new Object[] { "Click, current covertime, ", Long.valueOf(this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_Bjxn.a(42);
-    d();
-    paramView = this.jdField_a_of_type_Bjxn.jdField_a_of_type_Bjtx.a;
-    VideoCoverPickerProviderView localVideoCoverPickerProviderView = (VideoCoverPickerProviderView)paramView.a(113);
-    if (localVideoCoverPickerProviderView != null)
+    bizm.a(parambecq.a(), bizt.a(), localIntent);
+    i = j;
+    if (paramVarArgs != null)
     {
-      bjtj localbjtj = (bjtj)a(bjtj.class);
-      if (localbjtj != null)
+      i = j;
+      if (paramVarArgs.length >= 1)
       {
-        localVideoCoverPickerProviderView.setPlayMode(localbjtj.a());
-        localVideoCoverPickerProviderView.setUseIFrameVideo(localbjtj.h_());
-        localbjtj.b();
-        if ((!this.jdField_b_of_type_Boolean) && (localbjtj.a() == 1)) {
-          this.jdField_a_of_type_Long = (this.c * 1000000L);
-        }
-        localbjtj.a(this.jdField_a_of_type_Long / 1000000L, true);
+        i = j;
+        if (TextUtils.isEmpty(paramVarArgs[0])) {}
       }
     }
-    paramView.setVideoCoverPickerListener(this.jdField_a_of_type_Bjmc);
-    paramView.a(113, new Object[] { Long.valueOf(this.jdField_a_of_type_Long / 1000000L) });
+    for (;;)
+    {
+      try
+      {
+        i = new JSONObject(paramVarArgs[0]).optInt("need_jump");
+        if (i != 1) {
+          continue;
+        }
+        i = j;
+      }
+      catch (Exception paramVarArgs)
+      {
+        QLog.e("QZoneFacadeJsHandleLogic", 1, paramVarArgs.getMessage());
+        MonitorManager.a().a(15, 4, " parse json error " + paramVarArgs.getStackTrace(), false);
+        i = j;
+        continue;
+      }
+      if (i == 0) {
+        break;
+      }
+      parambecq.a().finish();
+      return;
+      i = 0;
+    }
+  }
+  
+  public static void b(becq parambecq, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneFacadeJsHandleLogic", 2, "handleDownloadFacadeFinish");
+    }
+    String str1 = "";
+    Object localObject3 = "";
+    str2 = "";
+    localObject4 = str2;
+    Object localObject2 = localObject3;
+    Object localObject1 = str1;
+    if (paramVarArgs != null)
+    {
+      localObject4 = str2;
+      localObject2 = localObject3;
+      localObject1 = str1;
+      if (paramVarArgs.length > 0)
+      {
+        localObject2 = localObject3;
+        localObject1 = str1;
+      }
+    }
+    try
+    {
+      localObject4 = new JSONObject(paramVarArgs[0]);
+      localObject2 = localObject3;
+      localObject1 = str1;
+      paramVarArgs = ((JSONObject)localObject4).getString("avatarID");
+      localObject2 = localObject3;
+      localObject1 = paramVarArgs;
+      localObject3 = ((JSONObject)localObject4).getString("avatarUrl");
+      localObject2 = localObject3;
+      localObject1 = paramVarArgs;
+      localObject4 = ((JSONObject)localObject4).getString("type");
+      localObject1 = paramVarArgs;
+      localObject2 = localObject3;
+    }
+    catch (JSONException paramVarArgs)
+    {
+      for (;;)
+      {
+        paramVarArgs.printStackTrace();
+        localObject4 = str2;
+      }
+    }
+    if ((!TextUtils.isEmpty(localObject2)) && (parambecq.a() != null))
+    {
+      paramVarArgs = new Intent("action_facade_js2qzone");
+      localObject3 = new Bundle();
+      ((Bundle)localObject3).putString("avatarId", (String)localObject1);
+      ((Bundle)localObject3).putString("avatarUrl", localObject2);
+      ((Bundle)localObject3).putString("type", (String)localObject4);
+      ((Bundle)localObject3).putString("cmd", "downloadAvatar");
+      paramVarArgs.putExtras((Bundle)localObject3);
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneFacadeJsHandleLogic", 2, "actionString: " + paramVarArgs.getAction());
+      }
+      bizm.a(parambecq.a(), bizt.a(), paramVarArgs);
+    }
+  }
+  
+  public static void c(becq parambecq, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneFacadeJsHandleLogic", 2, "handleCheckDownloadedIdList");
+    }
+    paramVarArgs = a();
+    parambecq = parambecq.a();
+    if (parambecq != null) {
+      parambecq.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"idlist\",data:\"" + paramVarArgs + "\"});");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjvo
  * JD-Core Version:    0.7.0.1
  */

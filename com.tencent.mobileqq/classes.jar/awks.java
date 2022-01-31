@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
 
-class awks
-  implements View.OnClickListener
+public final class awks
+  implements Parcelable.Creator<PersonalityLabel>
 {
-  awks(awkq paramawkq) {}
-  
-  public void onClick(View paramView)
+  public PersonalityLabel a(Parcel paramParcel)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.e.setVisibility(0);
+    return new PersonalityLabel(paramParcel);
+  }
+  
+  public PersonalityLabel[] a(int paramInt)
+  {
+    return new PersonalityLabel[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awks
  * JD-Core Version:    0.7.0.1
  */

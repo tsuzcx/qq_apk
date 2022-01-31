@@ -1,81 +1,34 @@
-import android.content.Context;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.view.View;
-import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
-import java.util.List;
 
 public class anyb
-  extends anzk
 {
-  private anyg jdField_a_of_type_Anyg;
-  private anyk jdField_a_of_type_Anyk;
-  private List<anyh> jdField_a_of_type_JavaUtilList;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  
-  public anyb(Context paramContext, anyg paramanyg, int paramInt)
+  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    super(paramContext, 7, paramInt);
-    this.jdField_a_of_type_Anyg = paramanyg;
-    this.jdField_a_of_type_ArrayOfInt = aocw.a();
+    paramView.setPivotX(paramView.getWidth());
+    paramView.setPivotY(paramView.getHeight() / 2);
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat1, paramFloat2 });
+    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
+    localAnimatorSet.setDuration(paramInt);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, paramView });
+    localAnimatorSet.start();
   }
   
-  public int a()
+  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    return aocu.a(this.jdField_a_of_type_ArrayOfInt);
-  }
-  
-  protected int a(int paramInt)
-  {
-    return 2007;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_Anyg = null;
-  }
-  
-  protected void a(View paramView, int paramInt)
-  {
-    if (paramView == null) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        i = a(paramInt);
-      } while (paramInt >= b());
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = aocu.a(this.jdField_a_of_type_ArrayOfInt);
-      }
-    } while (i != 2007);
-    if (this.jdField_a_of_type_Anyk == null)
-    {
-      this.jdField_a_of_type_Anyk = new anzl(this, 2007);
-      this.jdField_a_of_type_Anyk.a(true);
-      this.jdField_a_of_type_Anyk.c(false);
-      this.jdField_a_of_type_Anyk.b(false);
-      anyh localanyh = new anyh();
-      localanyh.h = "delete";
-      this.jdField_a_of_type_Anyk.a(localanyh);
-    }
-    paramView = (EmoticonLinearLayout)paramView;
-    paramView.setCallBack(this.jdField_a_of_type_Anyg);
-    paramView.setAdapter(this.jdField_a_of_type_Anyk);
-    this.jdField_a_of_type_Anyk.a(3, 7);
-    this.jdField_a_of_type_Anyk.a(paramInt);
-    this.jdField_a_of_type_Anyk.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Anyk.a();
-  }
-  
-  public int b()
-  {
-    return a() + aocu.h;
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { paramFloat1, paramFloat2 });
+    localAnimatorSet.setDuration(paramInt);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 }), ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat5, paramFloat6 }) });
+    localAnimatorSet.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyb
  * JD-Core Version:    0.7.0.1
  */

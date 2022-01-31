@@ -1,29 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.MaterialData;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class nzm
-  implements ajte
+  implements nbs
 {
-  public void a(boolean paramBoolean, String paramString) {}
+  public nzm(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public void a(boolean paramBoolean, List<MaterialData> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void loaded(String paramString, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, (String)paramObject);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
     }
-    a(paramBoolean, (List)paramObject);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import ajya;
-import bcql;
+import alpo;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ARScanEntryView$25
   implements Runnable
@@ -10,12 +10,12 @@ class ARScanEntryView$25
   
   public void run()
   {
-    bcql.a(this.this$0.a, ajya.a(2131700747), 1).b(this.this$0.a());
+    QQToast.a(this.this$0.a, alpo.a(2131701116), 1).b(this.this$0.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.25
  * JD-Core Version:    0.7.0.1
  */

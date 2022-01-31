@@ -1,13 +1,13 @@
 package com.tencent.av.ui;
 
-import mef;
-import meg;
-import mki;
+import mgv;
+import mgw;
+import mnc;
 
 public class MultiIncomingCallUICtr$1$1
   implements Runnable
 {
-  public MultiIncomingCallUICtr$1$1(meg parammeg) {}
+  public MultiIncomingCallUICtr$1$1(mgw parammgw) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class MultiIncomingCallUICtr$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallUICtr.1.1
  * JD-Core Version:    0.7.0.1
  */

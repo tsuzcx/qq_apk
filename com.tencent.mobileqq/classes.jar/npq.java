@@ -1,206 +1,106 @@
-import android.os.Bundle;
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoPlayCountHandler.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.ReqBody;
-import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.List;
+import org.json.JSONArray;
 
 public class npq
-  extends ajtb
+  extends BaseAdapter
 {
-  static final String a = "Q.pubaccount.video." + npr.class.getSimpleName();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  List<npo> jdField_a_of_type_JavaUtilList;
   
-  public npq(AppInterface paramAppInterface)
+  public npq(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail, Context paramContext)
   {
-    super(paramAppInterface);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
   }
   
-  public npq(QQAppInterface paramQQAppInterface)
+  public void a(List<npo> paramList)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public int getCount()
   {
-    int j = 0;
-    int k = 0;
-    boolean bool;
-    Bundle localBundle;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
-      bool = true;
-      localBundle = new Bundle();
-      paramFromServiceMsg = "";
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "handleGetPlayCount onReceive :" + bool);
-      }
-      if (!bool) {
-        break label532;
-      }
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @TargetApi(16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
     for (;;)
     {
-      for (;;)
+      try
       {
-        try
+        paramViewGroup = new JSONArray(((npo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).e);
+        if (paramViewGroup.length() > 0)
         {
-          localObject = new oidb_sso.OIDBSSOPkg();
-          ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramObject);
-          paramObject = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
-          localObject = new oidb_0x6a6.RspBody();
-          ((oidb_0x6a6.RspBody)localObject).mergeFrom(paramObject);
-          if ((((oidb_0x6a6.RspBody)localObject).uint32_ret_code.has()) && (((oidb_0x6a6.RspBody)localObject).uint32_ret_code.get() == 0)) {
-            if (((oidb_0x6a6.RspBody)localObject).uint32_read_count.has()) {
-              i = ((oidb_0x6a6.RspBody)localObject).uint32_read_count.get();
-            }
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          Object localObject;
-          int i;
-          continue;
-          paramToServiceMsg = "";
-          continue;
-        }
-        try
-        {
-          if (paramToServiceMsg.getWupBuffer() == null) {
-            continue;
-          }
-          paramObject = new oidb_sso.OIDBSSOPkg();
-          paramObject.mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
-          if ((paramObject.bytes_bodybuffer.has()) && (paramObject.bytes_bodybuffer.get() != null))
+          paramViewGroup = paramViewGroup.optString(0);
+          if (paramView == null)
           {
-            paramToServiceMsg = new oidb_0x6a6.ReqBody();
-            paramToServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
-            if ((paramToServiceMsg.bytes_article_id.has()) && (paramToServiceMsg.bytes_article_id.get() != null))
-            {
-              paramToServiceMsg = paramToServiceMsg.bytes_article_id.get().toStringUtf8().substring(2);
-              if (QLog.isColorLevel()) {
-                QLog.d(a, 2, "handleGetPlayCount vid :" + paramToServiceMsg + " playCount :" + i);
-              }
-              localBundle.putInt("VALUE_VIDEO_PLAY_COUNT", i);
-              localBundle.putString("VALUE_VIDEO_VID", paramToServiceMsg);
-              super.notifyUI(1, bool, localBundle);
-              return;
-              bool = false;
-              break;
-              if (((oidb_0x6a6.RspBody)localObject).uint64_read_count.has())
-              {
-                i = (int)((oidb_0x6a6.RspBody)localObject).uint64_read_count.get();
-                continue;
-              }
-              if (QLog.isColorLevel())
-              {
-                QLog.e(a, 2, "handleGetPlayCount 获取失败, read_count 为空");
-                i = 0;
-                continue;
-                if (QLog.isColorLevel()) {
-                  QLog.e(a, 2, "handleGetPlayCount 获取失败, ret_code 为空或 ret_code == 1");
-                }
-              }
-              i = 0;
+            localnpr = new npr(this);
+            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559441, null);
+            paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.a, this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.b));
+            localnpr.a = ((URLImageView)paramView.findViewById(2131371900));
+            paramView.setTag(localnpr);
+            localnpr.a.setTag(new awki(25, Integer.valueOf(paramInt)));
+            if (!TextUtils.isEmpty(paramViewGroup)) {
               continue;
             }
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.e(a, 2, "geVideoPlayCount, 请求vid空");
-            continue;
+            localnpr.a.setImageResource(2130839371);
+            return paramView;
           }
-          paramToServiceMsg = paramFromServiceMsg;
-          if (QLog.isColorLevel())
-          {
-            QLog.e(a, 2, "geVideoPlayCount, reqBody为空");
-            paramToServiceMsg = paramFromServiceMsg;
-            continue;
-            i = j;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          j = i;
         }
       }
-      paramToServiceMsg = paramFromServiceMsg;
-      if (QLog.isColorLevel())
+      catch (Exception paramViewGroup)
       {
-        QLog.e(a, 2, "geVideoPlayCount, ERROR e=" + paramObject.getMessage());
-        i = j;
-        paramToServiceMsg = paramFromServiceMsg;
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountDetail.PhotoWallViewForAccountDetail", 2, "RICH_PIC_TEXT:pic json error!");
+        }
+        paramViewGroup.printStackTrace();
+        paramViewGroup = null;
         continue;
-        paramToServiceMsg = paramFromServiceMsg;
-        if (QLog.isColorLevel())
-        {
-          QLog.e(a, 2, "geVideoPlayCount, reqPkg为空");
-          paramToServiceMsg = paramFromServiceMsg;
-          continue;
-          label532:
-          i = k;
-          paramToServiceMsg = paramFromServiceMsg;
-          if (QLog.isColorLevel())
-          {
-            QLog.e(a, 2, "geVideoPlayCount, 返回直接出错了");
-            i = k;
-            paramToServiceMsg = paramFromServiceMsg;
-          }
-        }
+        npr localnpr = (npr)paramView.getTag();
+        continue;
+        paramViewGroup = URLDrawable.getDrawable(paramViewGroup);
+        localnpr.a.setImageDrawable(paramViewGroup);
+        return paramView;
       }
+      paramViewGroup = null;
     }
-  }
-  
-  public void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(a, 4, "getVideoPlayCount()  vId" + paramString1);
-    }
-    oidb_0x6a6.ReqBody localReqBody = new oidb_0x6a6.ReqBody();
-    paramString1 = ByteStringMicro.copyFromUtf8("5_" + paramString1);
-    localReqBody.bytes_article_id.set(paramString1);
-    localReqBody.uint32_req_type.set(paramInt1);
-    localReqBody.uint32_article_type.set(paramInt2);
-    localReqBody.uint32_platform_type.set(paramInt3);
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = ByteStringMicro.copyFromUtf8(paramString2);
-      localReqBody.rowkey.set(paramString1);
-    }
-    super.sendPbReq(super.makeOIDBPkg("OidbSvc.0x6a6", 1702, 0, localReqBody.toByteArray()));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    ThreadManager.excute(new VideoPlayCountHandler.1(this, paramString1, paramString2), 16, null, true);
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return npr.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "handleGetPlayCount onReceive");
-    }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import UserGrowth.stFollowFeedsRsp;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import java.util.ArrayList;
 
-public abstract interface tbc
+public class tbc
+  implements tcm
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public tbc(WSFollowFragment paramWSFollowFragment) {}
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(MessageMicro paramMessageMicro);
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public void a(JceStruct paramJceStruct)
+  {
+    if (!(paramJceStruct instanceof stFollowFeedsRsp)) {}
+    do
+    {
+      return;
+      paramJceStruct = (stFollowFeedsRsp)paramJceStruct;
+    } while (tlf.a(paramJceStruct.feeds));
+    tlo.b("WSFollowFragment", "load cache data for follow page, size: " + paramJceStruct.feeds.size());
+    this.a.a(paramJceStruct.feeds);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbc
  * JD-Core Version:    0.7.0.1
  */

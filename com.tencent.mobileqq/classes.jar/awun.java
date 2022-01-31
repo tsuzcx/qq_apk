@@ -1,22 +1,38 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class awun
-  extends awut
+class awun
+  extends ClickableSpan
 {
-  public awun(GroupSearchEngine paramGroupSearchEngine, awuu paramawuu, String paramString, int paramInt)
+  awun(awul paramawul, String paramString1, String paramString2, String paramString3) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramGroupSearchEngine, paramawuu, paramString, paramInt);
+    new awuq(awul.a(this.jdField_a_of_type_Awul).a).a(this.jdField_a_of_type_JavaLangString).a();
+    azmj.b(awul.a(this.jdField_a_of_type_Awul).a(), "dc00898", "", "", "0X800A4BB", "0X800A4BB", 0, 0, "", "", "", "");
   }
   
-  public awoh a(List<awoi> paramList, String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return new awoa(paramList, paramString, GroupSearchEngine.a(this.a));
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setTextSize(bcwh.a(awul.a(this.jdField_a_of_type_Awul).a, 14.0F));
+    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
+    if (!TextUtils.isEmpty(this.b)) {
+      paramTextPaint.setColor(Color.parseColor(this.b));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      paramTextPaint.setTextSize(Float.valueOf(this.c).floatValue());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awun
  * JD-Core Version:    0.7.0.1
  */

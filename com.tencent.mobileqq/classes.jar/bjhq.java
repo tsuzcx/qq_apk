@@ -1,13 +1,18 @@
-import android.view.View;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-public abstract interface bjhq
+public class bjhq
+  implements bjib
 {
-  public abstract void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt);
+  public bjhq(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusicList(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjhq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,31 @@
 package cooperation.liveroom;
 
-import bbwt;
-import bbwu;
+import bdvu;
+import bdvv;
 
 class LiveRoomDownloadManager$1
-  extends bbwt
+  extends bdvu
 {
   LiveRoomDownloadManager$1(LiveRoomDownloadManager paramLiveRoomDownloadManager, LiveRoomDownloadManager.DownloadCallback paramDownloadCallback) {}
   
-  public void onDone(bbwu parambbwu)
+  public void onDone(bdvv parambdvv)
   {
-    super.onDone(parambbwu);
+    super.onDone(parambdvv);
     if (this.val$callback != null)
     {
-      if (parambbwu.a() == 3) {
-        this.val$callback.onSuccess(parambbwu.a(), parambbwu.a);
+      if (parambdvv.a() == 3) {
+        this.val$callback.onSuccess(parambdvv.a(), parambdvv.a);
       }
     }
     else {
       return;
     }
-    this.val$callback.onFailure(parambbwu.a(), parambbwu.a);
+    this.val$callback.onFailure(parambdvv.a(), parambdvv.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import java.io.PrintStream;
 
 public class azzm
-  implements DialogInterface.OnClickListener
+  extends azzf
 {
-  public azzm(ReciteRecordLayout paramReciteRecordLayout) {}
+  private int f;
+  private int g;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azzm(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramDialogInterface.dismiss();
+    super(paramInt1, 8, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    System.out.println("time = " + paramInt + ", percent = " + paramFloat);
+    this.b = ((int)(this.f + (this.g - this.f) * paramFloat));
+    if (this.g - this.f > 0) {
+      if (this.b >= this.g) {
+        this.b = this.g;
+      }
+    }
+    for (;;)
+    {
+      super.a(paramInt, paramFloat);
+      return;
+      if (this.b <= this.g) {
+        this.b = this.g;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azzm
  * JD-Core Version:    0.7.0.1
  */

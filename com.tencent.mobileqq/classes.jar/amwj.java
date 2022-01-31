@@ -1,16 +1,28 @@
-import java.util.Comparator;
-
-final class amwj
-  implements Comparator<aynk>
+public abstract interface amwj
 {
-  public int a(aynk paramaynk1, aynk paramaynk2)
-  {
-    return paramaynk1.c - paramaynk2.c;
-  }
+  public abstract long a();
+  
+  public abstract void a(int paramInt, amxd paramamxd);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(amyk paramamyk);
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwj
  * JD-Core Version:    0.7.0.1
  */

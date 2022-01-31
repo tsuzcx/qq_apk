@@ -7,9 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbco;
-import bbfj;
-import bcql;
+import bdbi;
+import bdee;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -17,50 +16,51 @@ import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.DisableSlideHorizontalListView;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import nol;
-import omj;
-import onh;
-import osg;
-import osj;
-import osm;
-import ozx;
-import pau;
-import pbu;
-import pqo;
-import pqy;
-import pwf;
-import pwg;
-import pwh;
-import pwi;
-import qbx;
-import ram;
-import rrk;
-import vpm;
+import nrt;
+import oqu;
+import ors;
+import owy;
+import oxb;
+import oxe;
+import pff;
+import pgd;
+import phg;
+import pxj;
+import pxt;
+import qcz;
+import qda;
+import qdb;
+import qdc;
+import qlt;
+import rqj;
+import shx;
+import xee;
 
 public class ComponentContentRecommendFollowGroup
   extends RelativeLayout
-  implements pqo, rrk
+  implements pxj, shx
 {
   private static int jdField_a_of_type_Int = -1;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   private DisableSlideHorizontalListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView;
-  protected osm a;
-  private pau jdField_a_of_type_Pau;
-  private pwi jdField_a_of_type_Pwi;
+  protected oxe a;
+  private pgd jdField_a_of_type_Pgd;
+  private qdc jdField_a_of_type_Qdc;
   private View b;
   
   public ComponentContentRecommendFollowGroup(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Osm = new pwh(this);
+    this.jdField_a_of_type_Oxe = new qdb(this);
     a(paramContext);
   }
   
@@ -74,14 +74,14 @@ public class ComponentContentRecommendFollowGroup
     {
       RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)localIterator.next();
       String str = ComponentContentRecommend.a(paramInt, localRecommendFollowInfo.uin, paramBaseArticleInfo, localRecommendFollowInfo.algorithmId, 3, 0, jdField_a_of_type_Int, null);
-      nol.a(null, onh.a() + "", "0X80094DB", "0X80094DB", 0, 0, paramBaseArticleInfo.mRecommendFollowId + "", paramBaseArticleInfo.mArticleID + "", localRecommendFollowInfo.strategyId + "", str, false);
+      nrt.a(null, ors.a() + "", "0X80094DB", "0X80094DB", 0, 0, paramBaseArticleInfo.mRecommendFollowId + "", paramBaseArticleInfo.mArticleID + "", localRecommendFollowInfo.strategyId + "", str, false);
     }
     paramBaseArticleInfo.mRecommendFollowInfos.jdField_a_of_type_JavaUtilHashMap.clear();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559859, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559954, this, true);
   }
   
   public void a()
@@ -101,23 +101,23 @@ public class ComponentContentRecommendFollowGroup
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView = ((DisableSlideHorizontalListView)paramView.findViewById(2131374959));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374968));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368991);
-    this.b = paramView.findViewById(2131374962);
-    BezierSideBarView localBezierSideBarView = (BezierSideBarView)paramView.findViewById(2131363142);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView = ((DisableSlideHorizontalListView)paramView.findViewById(2131375429));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375438));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369221);
+    this.b = paramView.findViewById(2131375432);
+    BezierSideBarView localBezierSideBarView = (BezierSideBarView)paramView.findViewById(2131363178);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setSideBarView(localBezierSideBarView);
-    this.jdField_a_of_type_Pwi = new pwi(this, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setDividerWidth(vpm.b(paramView.getContext(), 5.0F));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setAdapter(this.jdField_a_of_type_Pwi);
+    this.jdField_a_of_type_Qdc = new qdc(this, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setDividerWidth(xee.b(paramView.getContext(), 5.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setAdapter(this.jdField_a_of_type_Qdc);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setOnOverScrollListener(this);
-    this.b.setOnClickListener(new pwf(this));
+    this.b.setOnClickListener(new qcz(this));
   }
   
   public void a(RecommendFollowInfo paramRecommendFollowInfo)
   {
-    if (!bbfj.g(getContext())) {
-      bcql.a(getContext(), 1, 2131718513, 0).a();
+    if (!bdee.g(getContext())) {
+      QQToast.a(getContext(), 1, 2131718949, 0).a();
     }
     do
     {
@@ -126,7 +126,7 @@ public class ComponentContentRecommendFollowGroup
         QLog.d("ComponentContentRecommendFollowGroup", 1, "jumpToProfile, info = " + paramRecommendFollowInfo);
       }
     } while (paramRecommendFollowInfo == null);
-    String str = omj.k + bbco.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2);
+    String str = oqu.k + bdbi.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2);
     Intent localIntent = new Intent(getContext(), PublicAccountBrowser.class);
     localIntent.putExtra("url", str);
     localIntent.putExtra("hide_operation_bar", true);
@@ -137,11 +137,11 @@ public class ComponentContentRecommendFollowGroup
   
   public void a(Object paramObject)
   {
-    jdField_a_of_type_Int = onh.d();
-    if ((paramObject instanceof pau))
+    jdField_a_of_type_Int = ors.d();
+    if ((paramObject instanceof pgd))
     {
-      this.jdField_a_of_type_Pau = ((pau)paramObject);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_Pau.a();
+      this.jdField_a_of_type_Pgd = ((pgd)paramObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_Pgd.a();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {}
     }
     else
@@ -150,7 +150,7 @@ public class ComponentContentRecommendFollowGroup
     }
     paramObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRecommendFollowInfos;
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramObject.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Pwi.a(paramObject.jdField_b_of_type_JavaUtilList);
+    this.jdField_a_of_type_Qdc.a(paramObject.jdField_b_of_type_JavaUtilList);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRecommendFollowInfos.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -163,15 +163,15 @@ public class ComponentContentRecommendFollowGroup
   {
     int j = 0;
     int i = j;
-    if (this.jdField_a_of_type_Pau != null)
+    if (this.jdField_a_of_type_Pgd != null)
     {
       i = j;
-      if (this.jdField_a_of_type_Pau.a() != null) {
-        i = this.jdField_a_of_type_Pau.a().a();
+      if (this.jdField_a_of_type_Pgd.a() != null) {
+        i = this.jdField_a_of_type_Pgd.a().a();
       }
     }
     paramList = ComponentContentRecommend.a(i, paramLong1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramLong2, 3, paramInt2, jdField_a_of_type_Int, paramList);
-    nol.a(null, onh.a() + "", paramString, paramString, 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRecommendFollowId + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID + "", paramInt1 + "", paramList, false);
+    nrt.a(null, ors.a() + "", paramString, paramString, 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRecommendFollowId + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID + "", paramInt1 + "", paramList, false);
   }
   
   public void a(List<RecommendFollowInfo> paramList, boolean paramBoolean)
@@ -185,7 +185,7 @@ public class ComponentContentRecommendFollowGroup
       localRecommendFollowInfo = (RecommendFollowInfo)paramList.get(i);
       if (paramBoolean != localRecommendFollowInfo.isFollowed)
       {
-        localArrayList1.add(new ozx(localRecommendFollowInfo.uin, localRecommendFollowInfo.type));
+        localArrayList1.add(new pff(localRecommendFollowInfo.uin, localRecommendFollowInfo.type));
         localArrayList2.add(localRecommendFollowInfo);
       }
       i += 1;
@@ -200,23 +200,23 @@ public class ComponentContentRecommendFollowGroup
     }
     for (;;)
     {
-      paramList = new pwg(this, paramList, paramBoolean);
+      paramList = new qda(this, paramList, paramBoolean);
       if (!paramBoolean) {
         break;
       }
-      osg.a().a().a(localArrayList1, paramList, 2);
+      owy.a().a().a(localArrayList1, paramList, 2);
       return;
       label174:
       a("0X80094DD", 0L, localRecommendFollowInfo.algorithmId, localRecommendFollowInfo.strategyId, localArrayList2.size(), localArrayList2);
     }
-    osg.a().a().b(localArrayList1, paramList, 2);
+    owy.a().a().b(localArrayList1, paramList, 2);
   }
   
-  public void a(pqy parampqy) {}
+  public void a(pxt parampxt) {}
   
   public void b(RecommendFollowInfo paramRecommendFollowInfo)
   {
-    osg.a().c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    owy.a().d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
     ThreadManager.post(new ComponentContentRecommendFollowGroup.3(this, paramRecommendFollowInfo), 5, null, true);
   }
   
@@ -228,18 +228,18 @@ public class ComponentContentRecommendFollowGroup
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    osj.a().a(this.jdField_a_of_type_Osm);
+    oxb.a().a(this.jdField_a_of_type_Oxe);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    osj.a().b(this.jdField_a_of_type_Osm);
+    oxb.a().b(this.jdField_a_of_type_Oxe);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup
  * JD-Core Version:    0.7.0.1
  */

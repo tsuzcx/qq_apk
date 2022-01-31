@@ -1,29 +1,12 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-
-class yvx
-  implements TVK_SDKMgr.InstallListener
+public abstract interface yvx
 {
-  yvx(yvs paramyvs) {}
+  public abstract void a(yvy paramyvy);
   
-  public void onInstallProgress(float paramFloat)
-  {
-    yxp.a("GdtMvViewController", "installSDK onInstallProgress arg0=" + paramFloat);
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    yxp.a("GdtMvViewController", "installSDK onInstalledFailed arg0=" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    yxp.a("GdtMvViewController", "installSDK onInstalledSuccessed");
-    yvs.a(this.a).sendEmptyMessage(3);
-  }
+  public abstract void b(yvy paramyvy);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvx
  * JD-Core Version:    0.7.0.1
  */

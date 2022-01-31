@@ -1,12 +1,22 @@
-class aadm
-  implements aach
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class aadm
 {
-  aadm(aadl paramaadl) {}
+  private static aadm jdField_a_of_type_Aadm;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(5);
   
-  public void a(asiw paramasiw, int paramInt)
+  public static aadm a()
   {
-    aadl.a(this.a, paramasiw);
-    aadl.a(this.a, paramInt);
+    if (jdField_a_of_type_Aadm == null) {
+      jdField_a_of_type_Aadm = new aadm();
+    }
+    return jdField_a_of_type_Aadm;
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(paramRunnable);
   }
 }
 

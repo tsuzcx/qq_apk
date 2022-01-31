@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import ajya;
-import akye;
+import alpo;
+import amou;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ARTransferDoorLogicManager$8
   implements Runnable
 {
-  public ARTransferDoorLogicManager$8(akye paramakye) {}
+  public ARTransferDoorLogicManager$8(amou paramamou) {}
   
   public void run()
   {
@@ -20,12 +20,12 @@ public class ARTransferDoorLogicManager$8
       this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.b(1);
       return;
     }
-    this.this$0.a(true, ajya.a(2131700760));
+    this.this$0.a(true, alpo.a(2131701129));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,66 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInjoySkinAndRefreshFacade.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class pzu
-  extends pze
+  extends pxl
 {
-  pzu(pzt parampzt) {}
-  
-  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
+  public pzu(Context paramContext, bcws parambcws, rqj paramrqj)
   {
-    if ((paramBoolean) && (paramInt == pzt.a(this.a))) {
-      ThreadManager.post(new ReadInjoySkinAndRefreshFacade.2.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    super(paramContext, parambcws, paramrqj);
+  }
+  
+  public pxl a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
+  }
+  
+  public pxl d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pgq)) && (ors.s(((pgq)this.jdField_a_of_type_JavaLangObject).a()))) {
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aekt.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBig))) {
+        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pxk);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      }
+      a(localLinearLayout);
+      return this;
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aekt.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    }
+  }
+  
+  public pxl e()
+  {
+    return null;
+  }
+  
+  public pxl g()
+  {
+    this.jdField_a_of_type_Pxk = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pxl o()
+  {
+    super.o();
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pzu
  * JD-Core Version:    0.7.0.1
  */

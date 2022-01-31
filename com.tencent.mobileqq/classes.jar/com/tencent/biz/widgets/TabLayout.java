@@ -10,15 +10,15 @@ import android.view.ViewParent;
 import com.tencent.widget.HorizontalListView;
 import java.util.HashMap;
 import java.util.Map;
-import xod;
-import xoe;
-import xof;
+import zcw;
+import zcx;
+import zcy;
 
 public class TabLayout
   extends HorizontalListView
 {
   private Map<Integer, View> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private xof jdField_a_of_type_Xof;
+  private zcy jdField_a_of_type_Zcy;
   private boolean jdField_a_of_type_Boolean;
   private Map<Integer, Integer> b = new HashMap();
   
@@ -65,8 +65,8 @@ public class TabLayout
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Xof != null) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Xof.notifyDataSetChanged();
+    if ((this.jdField_a_of_type_Zcy != null) && (!this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Zcy.notifyDataSetChanged();
     }
   }
   
@@ -99,8 +99,8 @@ public class TabLayout
       }
       Object localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       ((ValueAnimator)localObject).setDuration(500L);
-      ((ValueAnimator)localObject).addUpdateListener(new xod(this, paramInt1, paramInt2, m, n, localView, j));
-      ((ValueAnimator)localObject).addListener(new xoe(this, paramAnimatorListener));
+      ((ValueAnimator)localObject).addUpdateListener(new zcw(this, paramInt1, paramInt2, m, n, localView, j));
+      ((ValueAnimator)localObject).addListener(new zcx(this, paramAnimatorListener));
       ((ValueAnimator)localObject).start();
       return;
     }
@@ -123,11 +123,11 @@ public class TabLayout
     }
   }
   
-  public void setAdapter(xof paramxof)
+  public void setAdapter(zcy paramzcy)
   {
-    super.setAdapter(paramxof);
-    this.jdField_a_of_type_Xof = paramxof;
-    this.jdField_a_of_type_Xof.a(this);
+    super.setAdapter(paramzcy);
+    this.jdField_a_of_type_Zcy = paramzcy;
+    this.jdField_a_of_type_Zcy.a(this);
   }
   
   public void setChildView(int paramInt, View paramView)
@@ -152,7 +152,7 @@ public class TabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout
  * JD-Core Version:    0.7.0.1
  */

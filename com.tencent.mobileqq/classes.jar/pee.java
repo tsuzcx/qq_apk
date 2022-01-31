@@ -1,36 +1,66 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.oidb_0xb7e.RspBody;
 
-public class pee
+class pee
+  extends mzz
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  pee(ped paramped, boolean paramBoolean) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    if (paramBaseArticleInfo.mSinglePicture != null) {}
-    for (String str = paramBaseArticleInfo.mSinglePicture.getFile();; str = null)
+    if (paramInt == 0)
     {
-      localJSONObject2.put("article_small_imge_url", str);
-      localJSONObject1.put("id_article_small_imge", localJSONObject2);
-      pek.a(paramBaseArticleInfo, localJSONObject1, true);
-      pek.a(paramBaseArticleInfo, localJSONObject1);
-      pek.b(paramBaseArticleInfo, localJSONObject1);
-      pek.e(paramBaseArticleInfo, localJSONObject1);
-      pek.m(paramBaseArticleInfo, localJSONObject1);
-      pek.f(paramBaseArticleInfo, localJSONObject1);
-      pek.Y(paramBaseArticleInfo, localJSONObject1);
-      pek.ac(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
-      pek.a(localJSONObject1, paramBaseArticleInfo);
-      pek.ab(paramBaseArticleInfo, localJSONObject1);
-      return localJSONObject1;
+      try
+      {
+        paramBundle = new oidb_0xb7e.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (!paramBundle.rpt_top_item.has()) {
+          break label129;
+        }
+        List localList = paramBundle.rpt_top_item.get();
+        if ((localList == null) || (localList.size() <= 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(ped.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
+          }
+          oxb.a().a(true, null);
+          ped.a(this.a, paramArrayOfByte, 0L);
+          return;
+        }
+        ped.a(this.a, paramArrayOfByte, System.currentTimeMillis());
+        if (!this.b) {
+          return;
+        }
+        ped.a(this.a, paramBundle);
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
+      QLog.e(ped.a, 2, "requestDiandianTopConfig parser failed");
+      return;
+      label129:
+      if (QLog.isColorLevel()) {
+        QLog.d(ped.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
+      }
+      ped.a(this.a, paramArrayOfByte, 0L);
+      oxb.a().a(true, null);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e(ped.a, 2, "requestDiandianTopConfig failed errorCode = " + paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pee
  * JD-Core Version:    0.7.0.1
  */

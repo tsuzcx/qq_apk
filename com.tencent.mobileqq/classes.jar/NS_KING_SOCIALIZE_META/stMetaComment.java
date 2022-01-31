@@ -22,6 +22,7 @@ public final class stMetaComment
   public String feedOwnerId = "";
   public String id = "";
   public int isDing;
+  public boolean isTempData;
   public int mask;
   public stMetaPerson poster;
   public String poster_id = "";

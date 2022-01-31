@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-public class bkor
-  implements View.OnClickListener
+public abstract interface bkor
 {
-  public bkor(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
+  public abstract void onAETavSessionExportCompleted(String paramString, LocalMediaInfo paramLocalMediaInfo);
   
-  public void onClick(View paramView)
-  {
-    this.a.a(this.a.getContext());
-  }
+  public abstract void onAETavSessionExportError(String paramString, int paramInt);
+  
+  public abstract void onAETavSessionExporting(String paramString, float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkor
  * JD-Core Version:    0.7.0.1
  */

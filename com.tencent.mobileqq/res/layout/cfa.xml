@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/if5" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jqb" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:gravity="center" android:id="@id/a47" android:background="@drawable/intimate_relationship_back_btn" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:maxWidth="88.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/mse" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="88.0dip" android:layout_marginRight="88.0dip" android:text="@string/wn9" android:singleLine="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/mht" android:padding="6.0dip" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/eq7" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jqb">
+        <GridView android:id="@id/mqg" android:paddingLeft="19.0dip" android:paddingTop="11.0dip" android:paddingRight="19.0dip" android:paddingBottom="11.0dip" android:scrollbars="none" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="100.0dip" android:listSelector="@android:color/transparent" android:cacheColorHint="@null" android:horizontalSpacing="11.0dip" android:verticalSpacing="11.0dip" android:stretchMode="none" android:numColumns="4" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

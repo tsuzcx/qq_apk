@@ -1,24 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.9;
+import org.json.JSONObject;
 
-public abstract class aksu
+public class aksu
+  extends AVVideoCtrl.SwitchCameraCompleteCallback
 {
-  public QQAppInterface a;
-  public ProxyManager a;
+  public aksu(CmGameAvHandler.9 param9) {}
   
-  public aksu(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public void onComplete(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
+    int i = 0;
+    if (paramInt2 == 0) {}
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", i);
+        localJSONObject.put("cameraPos", paramInt1);
+        localJSONObject.put("errCode", paramInt2);
+        akro.a().callbackFromRequest(this.a.a, 0, "cs.audioRoom_camera_switch.local", localJSONObject.toString());
+        return;
+      }
+      catch (Exception localException) {}
+      i = -1;
+    }
   }
-  
-  public abstract void a();
-  
-  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksu
  * JD-Core Version:    0.7.0.1
  */

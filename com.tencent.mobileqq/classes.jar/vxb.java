@@ -1,22 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
-class vxb
-  implements View.OnClickListener
+public class vxb
+  extends uhw<vwo, uow>
 {
-  vxb(vxa paramvxa) {}
-  
-  public void onClick(View paramView)
+  public vxb(vwo paramvwo)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a();
+    super(paramvwo);
+  }
+  
+  public void a(@NonNull vwo paramvwo, @NonNull uow paramuow)
+  {
+    if ((paramvwo.a != null) && (TextUtils.equals(paramvwo.a.b, paramuow.a)))
+    {
+      wsv.a(this.TAG, "receive feed info change event. %s.", paramuow.toString());
+      paramvwo.i();
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return uow.class;
+  }
+  
+  public void b(@NonNull vwo paramvwo, @NonNull uow paramuow) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apab;
-import apah;
-import apll;
+import aqsz;
+import aqtf;
+import arek;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -13,68 +13,68 @@ import java.util.Set;
 public final class FileVideoManager$1
   implements Runnable
 {
-  public FileVideoManager$1(apll paramapll) {}
+  public FileVideoManager$1(arek paramarek) {}
   
   public void run()
   {
     if (QLog.isColorLevel())
     {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_Apll.a() + "]StartDownload");
-      QLog.i("VideoPlayControllerForFile", 1, "[" + this.jdField_a_of_type_Apll.a() + "]StartDownload");
+      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_Arek.a() + "]StartDownload");
+      QLog.i("VideoPlayControllerForFile", 1, "[" + this.jdField_a_of_type_Arek.a() + "]StartDownload");
     }
-    apah localapah = apab.a(this.jdField_a_of_type_Apll.a());
-    localapah.jdField_a_of_type_Apll = this.jdField_a_of_type_Apll;
-    this.jdField_a_of_type_Apll.a(-1L);
-    Iterator localIterator = apab.a(apab.a).keySet().iterator();
+    aqtf localaqtf = aqsz.a(this.jdField_a_of_type_Arek.a());
+    localaqtf.jdField_a_of_type_Arek = this.jdField_a_of_type_Arek;
+    this.jdField_a_of_type_Arek.a(-1L);
+    Iterator localIterator = aqsz.a(aqsz.a).keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (apah)apab.a(apab.a).get(localObject);
-      if (((apah)localObject).a())
+      localObject = (aqtf)aqsz.a(aqsz.a).get(localObject);
+      if (((aqtf)localObject).a())
       {
         if (QLog.isColorLevel()) {
-          QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_Apll.a() + "]is downloading continue");
+          QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_Arek.a() + "]is downloading continue");
         }
         return;
       }
-      if (((apah)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+      if (((aqtf)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
       {
-        ((apah)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-        ((apah)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
-        ((apah)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
+        ((aqtf)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
+        ((aqtf)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
+        ((aqtf)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
         if (QLog.isColorLevel()) {
-          QLog.i("FileVideoManager<FileAssistant>", 1, "[" + ((apah)localObject).jdField_a_of_type_Apll.a() + "]Paused!");
+          QLog.i("FileVideoManager<FileAssistant>", 1, "[" + ((aqtf)localObject).jdField_a_of_type_Arek.a() + "]Paused!");
         }
       }
-      if (((apah)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr != null)
+      if (((aqtf)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr != null)
       {
         if (QLog.isColorLevel())
         {
-          QLog.i("FileVideoManager<FileAssistant>", 4, "[" + localObject.hashCode() + "]downMgr[" + ((apah)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.hashCode() + "][" + ((apah)localObject).jdField_a_of_type_Apll.a() + "]pause,start other download, stop this[" + ((apah)localObject).jdField_a_of_type_Int + "]");
-          QLog.i("FileVideoManager<FileAssistant>", 4, "[" + localObject.hashCode() + "]downMgr[" + ((apah)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.hashCode() + "][" + ((apah)localObject).jdField_a_of_type_Apll.a() + "]pause，start other download, stop this[" + ((apah)localObject).c + "]");
+          QLog.i("FileVideoManager<FileAssistant>", 4, "[" + localObject.hashCode() + "]downMgr[" + ((aqtf)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.hashCode() + "][" + ((aqtf)localObject).jdField_a_of_type_Arek.a() + "]pause,start other download, stop this[" + ((aqtf)localObject).jdField_a_of_type_Int + "]");
+          QLog.i("FileVideoManager<FileAssistant>", 4, "[" + localObject.hashCode() + "]downMgr[" + ((aqtf)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.hashCode() + "][" + ((aqtf)localObject).jdField_a_of_type_Arek.a() + "]pause，start other download, stop this[" + ((aqtf)localObject).c + "]");
         }
-        if (((apah)localObject).jdField_a_of_type_Int > 0) {
-          ((apah)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(((apah)localObject).jdField_a_of_type_Int);
+        if (((aqtf)localObject).jdField_a_of_type_Int > 0) {
+          ((aqtf)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(((aqtf)localObject).jdField_a_of_type_Int);
         }
-        if (((apah)localObject).c > 0) {
-          ((apah)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(((apah)localObject).c);
+        if (((aqtf)localObject).c > 0) {
+          ((aqtf)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(((aqtf)localObject).c);
         }
-        if (((apah)localObject).d > 0) {
-          ((apah)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(((apah)localObject).d);
+        if (((aqtf)localObject).d > 0) {
+          ((aqtf)localObject).jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(((aqtf)localObject).d);
         }
         if (QLog.isColorLevel()) {
-          QLog.i("FileVideoManager<FileAssistant>", 1, "[" + ((apah)localObject).jdField_a_of_type_Apll.a() + "]##########Need pause########### bDownloading = false");
+          QLog.i("FileVideoManager<FileAssistant>", 1, "[" + ((aqtf)localObject).jdField_a_of_type_Arek.a() + "]##########Need pause########### bDownloading = false");
         }
-        ((apah)localObject).b = false;
+        ((aqtf)localObject).b = false;
       }
     }
-    localapah.b = true;
-    localapah.a(this.jdField_a_of_type_Apll, false);
+    localaqtf.b = true;
+    localaqtf.a(this.jdField_a_of_type_Arek, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileVideoManager.1
  * JD-Core Version:    0.7.0.1
  */

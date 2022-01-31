@@ -1,86 +1,105 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class ukf
+final class ukf
+  implements uni<vah, vcm>
 {
-  private final QQAppInterface a;
+  ukf(VideoListFeedItem paramVideoListFeedItem, List paramList, uro paramuro) {}
   
-  public ukf(QQAppInterface paramQQAppInterface)
+  public void a(@NonNull vah paramvah, @Nullable vcm paramvcm, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramQQAppInterface == null) {
-      throw new NullPointerException("appInterface is null");
+    boolean bool = false;
+    if ((paramvcm == null) || (paramErrorMessage.isFail())) {
+      bool = true;
     }
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3)
-  {
-    if (paramContext == null) {
-      throw new NullPointerException("context is null");
+    if ((!bool) && (paramvcm.a() != null) && (paramvcm.a().size() != 1)) {
+      bool = true;
     }
-    if (TextUtils.isEmpty(paramString1)) {
-      throw new IllegalArgumentException("please indicate the share group id");
-    }
-    if ((paramInt1 != 2) && (paramInt1 != 1)) {
-      throw new IllegalArgumentException("shareGroupType is error, type=" + paramInt1);
-    }
-    bfpc localbfpc = bfpc.a(paramContext);
-    localbfpc.a(ajya.a(2131699884), 5);
-    localbfpc.a(ajya.a(2131699882) + ssf.a + ajya.a(2131699883), 5);
-    localbfpc.c(2131690596);
-    localbfpc.a(new ukg(this, localbfpc, paramContext, paramInt1, paramString1, paramString2, paramLong, paramInt2, paramInt3));
-    if (!localbfpc.isShowing()) {
-      localbfpc.show();
-    }
-  }
-  
-  public void a(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, boolean paramBoolean, int paramInt2, int paramInt3)
-  {
-    ved.d("AddVideoController", "addVideoByRecord %s %s %s", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
-    if (paramContext == null) {
-      throw new NullPointerException("context is null");
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      throw new IllegalArgumentException("please indicate the share group id");
-    }
-    vwj localvwj = vwj.a();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("entrance_type", 102);
-    localBundle.putInt("shareGroupType", paramInt1);
-    localBundle.putString("shareGroupId", paramString1);
-    localBundle.putString("shareGroupName", paramString2);
-    localBundle.putInt("add_video_source", paramInt3);
-    if (paramInt1 == 1) {
-      localBundle.putLong("groupUin", paramLong);
-    }
-    localBundle.putBoolean("ignorePersonalPublish", paramBoolean);
-    if ((paramContext instanceof Activity))
+    for (;;)
     {
-      paramContext = (Activity)paramContext;
-      localvwj.a(paramContext, localBundle, paramInt2);
-      paramContext.overridePendingTransition(2130772217, 2130772038);
+      wsv.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "add share group fail:%b", new Object[] { Boolean.valueOf(bool) });
+      paramvah = new ukn(false);
+      paramvah.b = false;
+      paramvah.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+      paramErrorMessage = new ukm();
+      paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem;
+      Object localObject;
+      label176:
+      StoryVideoItem localStoryVideoItem1;
+      if (!bool)
+      {
+        localObject = (vcn)paramvcm.a().get(0);
+        if (((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem instanceof ShareGroupFeedItem)) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId.equals(((vcn)localObject).b))) {
+          paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = ((ShareGroupFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+        }
+      }
+      else
+      {
+        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!((Iterator)localObject).hasNext()) {
+          break label501;
+        }
+        localStoryVideoItem1 = (StoryVideoItem)((Iterator)localObject).next();
+        if (!bool) {
+          break label495;
+        }
+      }
+      label495:
+      for (int i = 6;; i = 5)
+      {
+        localStoryVideoItem1.mUploadStatus = i;
+        ukl localukl = new ukl();
+        localukl.a = this.jdField_a_of_type_Uro.a(localStoryVideoItem1);
+        paramErrorMessage.jdField_a_of_type_JavaUtilArrayList.add(localukl);
+        if (bool) {
+          break label176;
+        }
+        StoryVideoItem localStoryVideoItem2 = new StoryVideoItem();
+        localStoryVideoItem2.copy(localStoryVideoItem1);
+        List localList = paramvcm.a();
+        localStoryVideoItem2.mVid = ((String)((vcn)localList.get(0)).a.get(localStoryVideoItem1.sourceVid));
+        localStoryVideoItem2.mVideoIndex = 0L;
+        if (TextUtils.isEmpty(localStoryVideoItem2.mVid))
+        {
+          wsv.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "cannot find true vid for sourceVid=%s, %s", new Object[] { localStoryVideoItem1.sourceVid, localList });
+          xmh.a(localStoryVideoItem2.mVid);
+          localStoryVideoItem2.mVid = StoryVideoItem.makeFakeVid();
+        }
+        localukl.b = this.jdField_a_of_type_Uro.a(localStoryVideoItem2);
+        break label176;
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = new ShareGroupFeedItem();
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.copy(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.feedId = ((vcn)localObject).b;
+        if (paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.videoCount == 0) {
+          paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.videoCount = 1;
+        }
+        xmh.a(((vcn)localObject).b);
+        localObject = (wkp)urr.a(11);
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = ((ShareGroupFeedItem)((wkp)localObject).a(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem));
+        ((wkp)localObject).a(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.ownerId, paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.date, paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.feedId);
+        break;
+      }
+      label501:
+      paramvah.jdField_a_of_type_JavaUtilArrayList.add(paramErrorMessage);
+      uht.a().dispatch(paramvah);
+      wsv.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "add shareGroup video return: %s", new Object[] { paramvah });
       return;
     }
-    localvwj.a(paramContext, localBundle);
-  }
-  
-  public void b(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3)
-  {
-    ved.d("AddVideoController", "addVideoByExist %s %s", new Object[] { paramString1, paramString2 });
-    Bundle localBundle = new Bundle();
-    localBundle.putString("shareGroupId", paramString1);
-    localBundle.putString("shareGroupName", paramString2);
-    localBundle.putInt("add_video_source", paramInt3);
-    StoryTransitionActivity.a(paramContext, ukh.class.getName(), localBundle, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukf
  * JD-Core Version:    0.7.0.1
  */

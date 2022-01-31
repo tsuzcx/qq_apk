@@ -1,42 +1,116 @@
-import QC.CommonRsp;
-import QC.FaceRsp;
+import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aghw
-  extends akfy
+class aghw
+  implements View.OnClickListener
 {
-  public aghw(AvatarPendantActivity paramAvatarPendantActivity) {}
+  aghw(aghr paramaghr) {}
   
-  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
+  public void onClick(View paramView)
   {
-    if (paramFaceRsp != null)
+    if (paramView.getTag() == null) {}
+    QQWalletRedPacketMsg localQQWalletRedPacketMsg;
+    do
     {
-      int i = paramFaceRsp.authRet;
-      localObject = "null";
-      if (paramFaceRsp.stRet != null) {
-        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
-      }
-      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
-      if (i == 0) {
-        this.a.r = 0;
-      }
-    }
-    else
-    {
+      MessageForQQWalletMsg localMessageForQQWalletMsg;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              if (this.a.jdField_a_of_type_Aist != null) {
+                this.a.jdField_a_of_type_Aist.a(2);
+              }
+              l = System.currentTimeMillis();
+            } while (!ajae.a(aghr.jdField_a_of_type_Long, l));
+            aghr.jdField_a_of_type_Long = l;
+            localMessageForQQWalletMsg = (MessageForQQWalletMsg)paramView.getTag();
+            localQQWalletRedPacketMsg = localMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+            localObject1 = (aipw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
+            if (!nav.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+              break;
+            }
+            ((aipw)localObject1).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 2);
+          } while (!QLog.isColorLevel());
+          QLog.d("PasswdRedBagManager", 2, "current is in Anonymous, dont show passwdredbag tips");
+          return;
+          if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
+            break;
+          }
+          localObject2 = (bcjl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48);
+          boolean bool = ((bcjl)localObject2).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          localObject2 = ((bcjl)localObject2).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, false);
+          if ((!bool) && ((localObject2 == null) || (!((bcjr)localObject2).jdField_a_of_type_Boolean))) {
+            break;
+          }
+          ((aipw)localObject1).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 2);
+        } while (!QLog.isColorLevel());
+        QLog.d("PasswdRedBagManager", 2, "current is in TroopMemberGag, dont show passwdredbag tips");
+        return;
+        localObject2 = ((aipw)localObject1).a(localQQWalletRedPacketMsg.redPacketId);
+        long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+        if ((localObject2 == null) || ((!((aipv)localObject2).jdField_a_of_type_Boolean) && (!((aipv)localObject2).b) && (!((aipv)localObject2).c) && (((aipv)localObject2).jdField_a_of_type_Long >= l))) {
+          break;
+        }
+        ((aipw)localObject1).a(localQQWalletRedPacketMsg.redPacketId, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.click", "msgType=13", 0, null);
+        paramView = ajat.b(localMessageForQQWalletMsg);
+        ((aipw)localObject1).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (aipv)localObject2, l, 65536, paramView, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, localMessageForQQWalletMsg.fromHBList, null);
+      } while (!QLog.isColorLevel());
+      QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + ((aipv)localObject2).jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + ((aipv)localObject2).b + ",isPasswdRedBagOverDue=" + ((aipv)localObject2).c);
       return;
-    }
-    this.a.r = 1;
-    Object localObject = new Intent(this.a, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
-    this.a.startActivity((Intent)localObject);
+      Object localObject1 = new Intent();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+        ((Intent)localObject1).putExtra("session", this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      }
+      ((Intent)localObject1).putExtra("uniseq", localMessageForQQWalletMsg.uniseq);
+      ((Intent)localObject1).putExtra("public_fragment_window_feature", 1);
+      Object localObject2 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId;
+      Object localObject3 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.authkey;
+      Object localObject4 = ajae.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      int j = ((Bundle)localObject4).getInt("groupType");
+      localObject4 = ((Bundle)localObject4).getString("name");
+      int i = 0;
+      if (localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem != null) {
+        i = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.resourceType;
+      }
+      localObject2 = ajae.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, j, (String)localObject4, (String)localObject2, (String)localObject3, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "appid#1344242394|bargainor_id#1000030201|channel#detailtips", "redgiftDetail", null, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redChannel, i, localMessageForQQWalletMsg.fromHBList);
+      localObject3 = new Bundle();
+      ((Bundle)localObject3).putString("json", ((JSONObject)localObject2).toString());
+      ((Bundle)localObject3).putString("callbackSn", "0");
+      ((Intent)localObject1).putExtra("detail_bundle", (Bundle)localObject3);
+      ((Intent)localObject1).putExtra("fromHBList", localMessageForQQWalletMsg.fromHBList);
+      ((Intent)localObject1).putExtra("redPacketId", localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
+      if (!(paramView.getContext() instanceof Activity)) {
+        ((Intent)localObject1).addFlags(268435456);
+      }
+      adky.a(paramView.getContext(), (Intent)localObject1, PublicTransFragmentActivity.class, RedPacketVoiceFragment.class);
+    } while (!QLog.isColorLevel());
+    QLog.d("PasswdRedBagManager", 2, "show passwdredbag tips = " + localQQWalletRedPacketMsg.elem.title);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aghw
  * JD-Core Version:    0.7.0.1
  */

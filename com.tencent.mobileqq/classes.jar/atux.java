@@ -1,25 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
 
-class atux
-  implements DialogInterface.OnClickListener
+public class atux
+  extends GestureDetector.SimpleOnGestureListener
 {
-  atux(atut paramatut, atwx paramatwx, atva paramatva) {}
+  public atux(MagicfaceContainerView paramMagicfaceContainerView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (!bbfj.g(this.jdField_a_of_type_Atut.jdField_a_of_type_AndroidContentContext))
-    {
-      bcql.a(this.jdField_a_of_type_Atut.jdField_a_of_type_AndroidContentContext, 1, ajya.a(2131701029), 0).a();
-      return;
+    if (this.a.a != null) {
+      this.a.a.a(5);
     }
-    ((atvs)this.jdField_a_of_type_Atut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.jdField_a_of_type_Atwx.c, this.jdField_a_of_type_Atwx.a, this.jdField_a_of_type_Atwx.d, new atuy(this));
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
+      if (this.a.a != null) {
+        this.a.a.a(0);
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
+            break;
+          }
+        } while (this.a.a == null);
+        this.a.a.a(1);
+        return false;
+        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
+          break;
+        }
+      } while (this.a.a == null);
+      this.a.a.a(2);
+      return false;
+    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (this.a.a == null));
+    this.a.a.a(3);
+    return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(4);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atux
  * JD-Core Version:    0.7.0.1
  */

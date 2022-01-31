@@ -1,22 +1,32 @@
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
-import java.util.Comparator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
 
-final class awpv
-  implements Comparator<awpx>
+public class awpv
+  extends RecyclerView.ViewHolder
 {
-  public int a(awpx paramawpx1, awpx paramawpx2)
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public RoundRelativeLayout a;
+  public ImageView b;
+  
+  public awpv(awpn paramawpn, View paramView)
   {
-    int j = Long.signum(paramawpx2.jdField_a_of_type_Int - paramawpx1.jdField_a_of_type_Int);
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(paramawpx2.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp - paramawpx1.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp);
-    }
-    return i;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378839));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368030));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout = ((RoundRelativeLayout)paramView.findViewById(2131363189));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369432));
+    this.b = ((ImageView)paramView.findViewById(2131368153));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awpv
  * JD-Core Version:    0.7.0.1
  */

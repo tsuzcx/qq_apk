@@ -1,20 +1,20 @@
 package com.tencent.av.app;
 
-import lfp;
+import lhs;
 
 public class InviteMemberObserver$1
   implements Runnable
 {
-  public InviteMemberObserver$1(lfp paramlfp, Object paramObject) {}
+  public InviteMemberObserver$1(lhs paramlhs, Object paramObject) {}
   
   public void run()
   {
-    lfp.a(this.this$0, this.a);
+    lhs.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.app.InviteMemberObserver.1
  * JD-Core Version:    0.7.0.1
  */

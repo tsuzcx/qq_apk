@@ -1,169 +1,33 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.view.LayoutInflater;
+import android.app.Activity;
+import android.content.res.Resources;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class atoj
+class atoj
+  implements View.OnClickListener
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final String[] c = { ajya.a(2131705975), ajya.a(2131705977), ajya.a(2131705971), ajya.a(2131705976), ajya.a(2131705974), ajya.a(2131705972), ajya.a(2131705973) };
-  public static final String[] d = { "0X800554B", "0X800554C", "0X800554D", "0X800554E", "0X800554F", "0X8005550", "0X8005551" };
-  protected Context a;
-  protected LayoutInflater a;
-  protected LinearLayout a;
-  protected atfm a;
+  atoj(atof paramatof, Activity paramActivity) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 5, 6, 7, 1, 2, 3, 4, 8 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130840978, 2130840987, 2130840973, 2130840981, 2130840969, 2130840963, 2130840986 };
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#DCEBFF" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "#777777", "#777777", "#777777", "#777777", "#777777", "#777777", "#777777", "#4B83D3" };
-  }
-  
-  public static int a(int paramInt)
-  {
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfInt.length)
-    {
-      if (paramInt == jdField_a_of_type_ArrayOfInt[i]) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
-  }
-  
-  protected abstract int a();
-  
-  protected View a(int paramInt1, atfm paramatfm, int paramInt2)
-  {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(a(), this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    a(paramInt1, a(localView, paramInt1, paramatfm, paramInt2), paramatfm.jdField_a_of_type_JavaUtilArrayList);
-    return localView;
-  }
-  
-  protected abstract LabelContainer a(View paramView, int paramInt1, atfm paramatfm, int paramInt2);
-  
-  protected void a(int paramInt, LabelContainer paramLabelContainer, ArrayList<InterestTagInfo> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_Atof.a()) {
       return;
-      int j = vpm.b(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-      int k = vpm.b(this.jdField_a_of_type_AndroidContentContext, 5.0F);
-      int m = vpm.b(this.jdField_a_of_type_AndroidContentContext, 2.0F);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramArrayList.next();
-        TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-        localTextView.setIncludeFontPadding(false);
-        localTextView.setTextSize(1, 14.0F);
-        localTextView.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
-        GradientDrawable localGradientDrawable = new GradientDrawable();
-        localGradientDrawable.setColor(Color.parseColor(jdField_a_of_type_ArrayOfJavaLangString[paramInt]));
-        localGradientDrawable.setCornerRadius(m);
-        localTextView.setBackgroundDrawable(localGradientDrawable);
-        localTextView.setTextColor(Color.parseColor(jdField_b_of_type_ArrayOfJavaLangString[paramInt]));
-        if (this.jdField_a_of_type_Atfm != null)
-        {
-          int i = 0;
-          while (i < this.jdField_a_of_type_Atfm.jdField_a_of_type_JavaUtilArrayList.size())
-          {
-            if (((InterestTagInfo)this.jdField_a_of_type_Atfm.jdField_a_of_type_JavaUtilArrayList.get(i)).tagName.equals(localInterestTagInfo.tagName))
-            {
-              localTextView.setTextColor(Color.parseColor(jdField_b_of_type_ArrayOfJavaLangString[7]));
-              localTextView.setBackgroundColor(Color.parseColor(jdField_a_of_type_ArrayOfJavaLangString[7]));
-              this.jdField_a_of_type_Atfm.jdField_a_of_type_JavaUtilArrayList.remove(i);
-            }
-            i += 1;
-          }
-        }
-        if (localInterestTagInfo.tagName != null)
-        {
-          localInterestTagInfo.tagName = localInterestTagInfo.tagName.replaceAll("\005", "");
-          localInterestTagInfo.tagName = localInterestTagInfo.tagName.replaceAll("\006", "");
-        }
-        localTextView.setText(localInterestTagInfo.tagName);
-        localTextView.setPadding(j, k, j, k);
-        localTextView.setGravity(17);
-        paramLabelContainer.addView(localTextView);
-      }
     }
-  }
-  
-  public void a(Context paramContext, LinearLayout paramLinearLayout)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  public void a(atfm paramatfm)
-  {
-    this.jdField_a_of_type_Atfm = paramatfm;
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(atfm[] paramArrayOfatfm)
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    boolean bool2;
-    if ((paramArrayOfatfm == null) || (paramArrayOfatfm.length == 0)) {
-      bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
     }
-    int i;
-    boolean bool1;
-    do
-    {
-      return bool2;
-      i = 0;
-      bool1 = false;
-      bool2 = bool1;
-    } while (i >= jdField_a_of_type_ArrayOfInt.length);
-    int j = 0;
-    for (;;)
-    {
-      bool2 = bool1;
-      if (j < paramArrayOfatfm.length)
-      {
-        if ((jdField_a_of_type_ArrayOfInt[i] == paramArrayOfatfm[j].jdField_a_of_type_Int) && ((a()) || ((paramArrayOfatfm[j].jdField_a_of_type_JavaUtilArrayList != null) && (paramArrayOfatfm[j].jdField_a_of_type_JavaUtilArrayList.size() > 0))))
-        {
-          View localView = a(i, paramArrayOfatfm[j], paramArrayOfatfm.length);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
-          bool2 = true;
-        }
-      }
-      else
-      {
-        i += 1;
-        bool1 = bool2;
-        break;
-      }
-      j += 1;
-    }
+    atof.a(this.jdField_a_of_type_Atof).setClickable(false);
+    atof.a(this.jdField_a_of_type_Atof).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840353));
+    atof.a(this.jdField_a_of_type_Atof).a(true);
+    azmj.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atoj
  * JD-Core Version:    0.7.0.1
  */

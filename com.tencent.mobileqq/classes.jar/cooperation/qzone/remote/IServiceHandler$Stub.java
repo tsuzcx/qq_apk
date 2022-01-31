@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import bhky;
+import bjmj;
 
 public abstract class IServiceHandler$Stub
   extends Binder
@@ -28,7 +28,7 @@ public abstract class IServiceHandler$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IServiceHandler))) {
       return (IServiceHandler)localIInterface;
     }
-    return new bhky(paramIBinder);
+    return new bjmj(paramIBinder);
   }
   
   public IBinder asBinder()
@@ -58,7 +58,7 @@ public abstract class IServiceHandler$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.remote.IServiceHandler.Stub
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,122 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Random;
-import tencent.im.cs.longconn.putinfo.hd_video_putinfo.CmdReportClientInfoReqBody;
-import tencent.im.cs.longconn.putinfo.hd_video_putinfo.MobileHardWareValue;
-import tencent.im.cs.longconn.putinfo.hd_video_putinfo.PutinfoHead;
-import tencent.im.cs.longconn.putinfo.hd_video_putinfo.ReqBody;
-import tencent.im.cs.longconn.putinfo.hd_video_putinfo.VideoHardWareInfo;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 
 public class llb
 {
-  private long jdField_a_of_type_Long;
-  private llk jdField_a_of_type_Llk;
-  private hd_video_putinfo.ReqBody jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody = new hd_video_putinfo.ReqBody();
+  public int a;
+  public long a;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  long[] jdField_a_of_type_ArrayOfLong = new long[41];
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  public llb(lla paramlla) {}
-  
-  private void a()
+  llb()
   {
-    hd_video_putinfo.PutinfoHead localPutinfoHead = (hd_video_putinfo.PutinfoHead)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.get();
-    localPutinfoHead.enum_body_type.set(1);
-    localPutinfoHead.uint64_uin.set(this.jdField_a_of_type_Long);
-    localPutinfoHead.bytes_appid.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Llk.jdField_a_of_type_JavaLangString.getBytes()));
-    localPutinfoHead.uint64_seq.set(new Random().nextLong());
-    localPutinfoHead.bytes_config_ver.set(ByteStringMicro.copyFrom(lla.jdField_a_of_type_JavaLangString.getBytes()));
-    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.set(localPutinfoHead);
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_d_of_type_JavaLangString = "KilledBySystem";
   }
   
-  private void b()
+  public String a()
   {
-    hd_video_putinfo.CmdReportClientInfoReqBody localCmdReportClientInfoReqBody = (hd_video_putinfo.CmdReportClientInfoReqBody)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.get();
-    localCmdReportClientInfoReqBody.uint32_mobile_type.set(this.jdField_a_of_type_Llk.jdField_a_of_type_Int);
-    localCmdReportClientInfoReqBody.uint32_mobile_os_info.set(this.jdField_a_of_type_Llk.jdField_b_of_type_Int);
-    localCmdReportClientInfoReqBody.uint32_instid.set(11001);
-    localCmdReportClientInfoReqBody.bytes_client_system_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Llk.jdField_b_of_type_JavaLangString.getBytes()));
-    localCmdReportClientInfoReqBody.bytes_device_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Llk.jdField_c_of_type_JavaLangString.getBytes()));
-    Object localObject = (hd_video_putinfo.MobileHardWareValue)localCmdReportClientInfoReqBody.msg_device_info.get();
-    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_struct.set(this.jdField_a_of_type_Llk.jdField_c_of_type_Int);
-    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_number.set(this.jdField_a_of_type_Llk.jdField_d_of_type_Int);
-    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_hertz.set(this.jdField_a_of_type_Llk.jdField_e_of_type_Int);
-    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_camera_turn.set(this.jdField_a_of_type_Llk.f);
-    localCmdReportClientInfoReqBody.msg_device_info.set((MessageMicro)localObject);
-    localObject = (hd_video_putinfo.VideoHardWareInfo)localCmdReportClientInfoReqBody.msg_video_info.get();
-    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_encodeframe.set(this.jdField_a_of_type_Llk.g);
-    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_decodeframe.set(this.jdField_a_of_type_Llk.h);
-    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_width.set(this.jdField_a_of_type_Llk.i);
-    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_height.set(this.jdField_a_of_type_Llk.j);
-    localCmdReportClientInfoReqBody.msg_video_info.set((MessageMicro)localObject);
-    localCmdReportClientInfoReqBody.bytes_mobile_rom_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Llk.jdField_d_of_type_JavaLangString.getBytes()));
-    localCmdReportClientInfoReqBody.uint32_sharp_sdk_ver.set(this.jdField_a_of_type_Llk.m);
-    localCmdReportClientInfoReqBody.uint32_open_general_info.set(this.jdField_a_of_type_Llk.l);
-    localCmdReportClientInfoReqBody.bytes_app_version.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Llk.jdField_e_of_type_JavaLangString.getBytes()));
-    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.set(localCmdReportClientInfoReqBody);
+    String str1 = Build.MODEL;
+    String str2 = String.valueOf(Build.VERSION.SDK_INT);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Android").append('|');
+    localStringBuilder.append(str1).append('|');
+    localStringBuilder.append(str2).append('|');
+    localStringBuilder.append(str2).append('|');
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append('|');
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append('|');
+    if (this.jdField_b_of_type_Int != -1) {
+      localStringBuilder.append(this.jdField_b_of_type_Int).append('|');
+    }
+    for (;;)
+    {
+      localStringBuilder.append(this.jdField_a_of_type_Int).append('|');
+      return localStringBuilder.toString();
+      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[20])).append('|');
+    }
   }
   
-  public void a(long paramLong, llk paramllk)
+  public String a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Llk = paramllk;
+    if ((paramInt >= 0) && (paramInt < 41))
+    {
+      StringBuilder localStringBuilder;
+      if (paramLong == 1L)
+      {
+        this.jdField_a_of_type_ArrayOfLong[paramInt] = 1L;
+        localStringBuilder = new StringBuilder();
+        paramInt = 0;
+        label34:
+        if (paramInt >= 41) {
+          break label242;
+        }
+        switch (paramInt)
+        {
+        default: 
+          localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt])).append('|');
+        }
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break label34;
+        this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
+        break;
+        if (this.jdField_a_of_type_ArrayOfLong[14] == 0L)
+        {
+          this.jdField_a_of_type_JavaLangString = lkz.a();
+          this.jdField_a_of_type_ArrayOfLong[14] = 1L;
+        }
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append('|');
+        continue;
+        localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append('|');
+        continue;
+        localStringBuilder.append(0).append('|');
+        continue;
+        if (this.jdField_b_of_type_Long > 0L) {
+          this.jdField_c_of_type_Long = ((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
+        }
+        localStringBuilder.append(this.jdField_c_of_type_Long).append('|');
+      }
+      label242:
+      return localStringBuilder.toString();
+    }
+    lek.d("VideoNodeReporter", "buildBody report error:" + paramInt);
+    return null;
   }
   
-  public byte[] a()
+  public void a(lid paramlid, String paramString)
   {
-    a();
-    b();
-    return this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.toByteArray();
+    if (paramlid != null)
+    {
+      if (paramlid.j != -1) {
+        this.jdField_a_of_type_Int = paramlid.j;
+      }
+      if (paramlid.jdField_d_of_type_Int != 0) {
+        this.jdField_b_of_type_Int = paramlid.jdField_d_of_type_Int;
+      }
+      if (!TextUtils.isEmpty(paramlid.jdField_d_of_type_JavaLangString)) {
+        this.jdField_b_of_type_JavaLangString = paramlid.jdField_d_of_type_JavaLangString;
+      }
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_c_of_type_JavaLangString = paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     llb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/icon" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" />
+        <FrameLayout android:layout_gravity="center_vertical" android:id="@id/b9s" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="12.0dip" android:layout_weight="1.0">
+            <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="豆瓣" />
+        </FrameLayout>
+        <FrameLayout android:layout_gravity="center_vertical" android:id="@id/jpl" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" />
+        <FrameLayout android:layout_gravity="center_vertical" android:id="@id/kqk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip">
+            <ImageView android:id="@id/c9a" android:background="@drawable/gkd" android:layout_width="18.0dip" android:layout_height="18.0dip" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,45 +1,161 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.contentbox.PlusMenuContainer;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.os.Handler;
+import android.os.Looper;
+import android.webkit.ValueCallback;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.core.service.AppBrandWebviewService.2;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
+import java.io.File;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhda
-  implements View.OnClickListener
+  extends bhcv
 {
-  public bhda(PlusMenuContainer paramPlusMenuContainer) {}
+  private bhdk jdField_a_of_type_Bhdk;
+  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
+  protected boolean a;
   
-  public void onClick(View paramView)
+  public bhda(bgho parambgho, bhdk parambhdk)
   {
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof String)))
-    {
-      paramView = (String)paramView.getTag();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("cmd", "Schema");
-      localIntent.putExtra("schema", paramView);
-      bgyp.a((Activity)this.a.a, bgyw.a(), localIntent);
-      if (!paramView.equals(PlusMenuContainer.b[0])) {
-        break label94;
-      }
-      LpReportInfo_pf00064.report(133, 2);
+    super(parambgho);
+    this.jdField_a_of_type_Boolean = true;
+    a(parambhdk);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = new WebView(parambgho.a());
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.addJavascriptInterface(this, "WeixinJSCore");
+    parambgho = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
+    parambgho.setSupportZoom(false);
+    parambgho.setJavaScriptEnabled(true);
+    parambgho.setCacheMode(2);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(new bhdb(this));
+    a(Integer.valueOf(3));
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public String a(bgjw parambgjw)
+  {
+    if (parambgjw == null) {
+      return "";
     }
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.a.b();
+      localJSONObject.put("appId", parambgjw.appId);
+      localJSONObject.put("icon", parambgjw.iconUrl);
+      localJSONObject.put("nickname", "testuser");
+      parambgjw = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.QUA='V1_AND_SQ_8.1.3_0_RDM_B';", new Object[] { parambgjw.mConfigStr, localJSONObject.toString() });
+      parambgjw = parambgjw + "__qqConfig.debug=true;";
+      return parambgjw + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};";
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public String a(boolean paramBoolean)
+  {
+    try
+    {
+      Object localObject = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("USER_DATA_PATH", "qqfile://usr");
+      ((JSONObject)localObject).put("env", localJSONObject);
+      ((JSONObject)localObject).put("preload", paramBoolean);
+      ((JSONObject)localObject).put("useXWebVideo", this.jdField_a_of_type_Boolean);
+      localObject = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = %1$s; Object.assign(__qqConfig, __tempConfig); ", new Object[] { localObject });
+      QMLog.d("miniapp-embedded", "service enableEmbeddedVideo : " + this.jdField_a_of_type_Boolean);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      QMLog.e("AppBrandWebviewService", "getJsDefaultConfig failed: ", localException);
+    }
+    return "";
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    a(String.format("WeixinJSBridge.invokeCallbackHandler(%d, %s)", new Object[] { Integer.valueOf(paramInt), paramString }), null);
+  }
+  
+  public void a(bgjw parambgjw)
+  {
+    if (parambgjw == null) {
       return;
-      label94:
-      if (paramView.equals(PlusMenuContainer.b[1])) {
-        LpReportInfo_pf00064.report(133, 3);
-      } else if (paramView.equals(PlusMenuContainer.b[2])) {
-        LpReportInfo_pf00064.report(133, 4);
+    }
+    b(a(parambgjw));
+    String str = "";
+    try
+    {
+      parambgjw = bgkv.b(new File(parambgjw.a()));
+      c(parambgjw);
+      return;
+    }
+    catch (IOException parambgjw)
+    {
+      for (;;)
+      {
+        parambgjw.printStackTrace();
+        parambgjw = str;
       }
     }
+  }
+  
+  public void a(bhbb parambhbb) {}
+  
+  public void a(bhdk parambhdk)
+  {
+    this.jdField_a_of_type_Bhdk = parambhdk;
+  }
+  
+  public void a(String paramString, ValueCallback paramValueCallback)
+  {
+    a(paramString, paramValueCallback, null);
+  }
+  
+  public void a(String paramString1, ValueCallback paramValueCallback, String paramString2)
+  {
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.evaluateJavascript(paramString1, bhej.a(paramValueCallback));
+      }
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new AppBrandWebviewService.2(this, paramString1, paramValueCallback));
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    QMLog.d("AppBrandWebviewService", "evaluateSubscribeJS  eventName=" + paramString1);
+    paramString1 = "WeixinJSBridge.subscribeHandler(\"" + paramString1 + "\"," + paramString2 + "," + paramInt + "," + 0 + ")";
+    if (!a()) {
+      return;
+    }
+    a(paramString1, null);
+  }
+  
+  public void b()
+  {
+    a(a(true));
+    AppLoaderFactory.g().getMiniAppEnv().getBaselibLoader().loadBaselib(AppLoaderFactory.g().getMiniAppEnv().getContext(), new bhdc(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhda
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.view.MotionEvent;
 
-public class bcpc
-  implements View.OnClickListener
+public abstract interface bcpc
 {
-  public bcpc(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void onClick(View paramView)
-  {
-    auvs.a().c(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpc
  * JD-Core Version:    0.7.0.1
  */

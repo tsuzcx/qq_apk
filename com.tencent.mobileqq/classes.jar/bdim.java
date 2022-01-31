@@ -1,16 +1,24 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
-class bdim
-  implements Comparator<String>
+public class bdim
+  implements View.OnClickListener
 {
-  public int a(String paramString1, String paramString2)
+  public bdim(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
+  
+  public void onClick(View paramView)
   {
-    return paramString1.compareTo(paramString2);
+    if (this.a.a.isShowing())
+    {
+      this.a.a.cancel();
+      this.a.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdim
  * JD-Core Version:    0.7.0.1
  */

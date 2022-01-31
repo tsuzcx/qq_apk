@@ -1,94 +1,276 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
+import com.tencent.mobileqq.tribe.TribeVideoPublishParams.ChangeFace;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.QIMTribeEffectsCameraCaptureUnit.1;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
 public class bkjw
+  extends QIMEffectCameraCaptureUnit
 {
-  private long a;
-  public Handler a;
-  public HandlerThread a;
-  public bkjx a;
+  public static int d = 60000;
   
-  public bkjw()
+  public bkjw(bmcv parambmcv, bmcu parambmcu)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MediaCodecThumbnailGenerator");
+    super(parambmcv, parambmcu);
+    this.jdField_a_of_type_Bmcn = new bmcn(10012, 105, 11);
+    this.jdField_a_of_type_Int = 9;
   }
   
-  public static float a(Bitmap paramBitmap)
+  private void a(TribeVideoPublishParams paramTribeVideoPublishParams)
   {
-    int i1 = paramBitmap.getHeight() / 16;
-    int i2 = paramBitmap.getWidth() / 9;
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    while (k < paramBitmap.getHeight())
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = ((bnkz)blmf.a(3)).a();
+    if (localPtvTemplateInfo != null)
     {
-      int m = 0;
-      if (m < paramBitmap.getWidth())
-      {
-        int n = paramBitmap.getPixel(m, k);
-        if (((n >> 16 & 0xFF) < 10) && ((n >> 8 & 0xFF) < 10) && ((n & 0xFF) < 10))
-        {
-          n = j + 1;
-          j = i;
-        }
-        for (i = n;; i = n)
-        {
-          n = m + i2;
-          m = i;
-          i = j;
-          j = m;
-          m = n;
-          break;
-          n = j;
-          j = i + 1;
-        }
+      paramTribeVideoPublishParams.changeFace = new TribeVideoPublishParams.ChangeFace();
+      paramTribeVideoPublishParams.changeFace.id = localPtvTemplateInfo.id;
+      paramTribeVideoPublishParams.changeFace.type = localPtvTemplateInfo.name;
+    }
+    if ((AdvancedProviderView)this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(AdvancedProviderView.class) != null) {
+      paramTribeVideoPublishParams.beauty = AdvancedProviderView.b();
+    }
+  }
+  
+  public void I()
+  {
+    xir.a().e();
+    Activity localActivity = this.jdField_a_of_type_Bmcv.a();
+    Intent localIntent = new Intent(localActivity, NewPhotoListActivity.class);
+    localIntent.putExtra("enter_from", 24);
+    localIntent.putExtras(this.jdField_a_of_type_Bmcv.a().getIntent().getExtras());
+    localIntent.putExtra("qq_sub_business_id", this.jdField_a_of_type_Bmcn.c);
+    localIntent.putExtra("entrance_type", this.jdField_a_of_type_Bmcn.jdField_b_of_type_Int);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 5);
+    localIntent.putExtra("PhotoConst.IS_SUPPORT_VIDEO_CHECKBOX", true);
+    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
+    localIntent.putExtra("from_tribe_slideshow", true);
+    localIntent.putExtra("ALBUM_NAME", bdaq.RECENT_ALBUM_NAME);
+    localIntent.putExtra("ALBUM_ID", "$RecentAlbumId");
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 10);
+    localIntent.putExtra("report_first_exposure", true);
+    localActivity.startActivityForResult(localIntent, 10012);
+    localActivity.overridePendingTransition(2130772292, 2130771990);
+  }
+  
+  public int a()
+  {
+    return 2131560722;
+  }
+  
+  public View a()
+  {
+    View localView = super.a();
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(3);
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setUseVideoOrientation(true);
+    Object localObject1 = bbae.a(this.jdField_a_of_type_Bmcv.a().getIntent().getExtras());
+    if (localObject1 != null) {
+      d = ((JSONObject)localObject1).optInt("needVideoTimeLimit", 10) * 1000;
+    }
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setMaxDuration(d);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.setMaxDuration(d);
+    localObject1 = this.jdField_a_of_type_Bmcv.a().getIntent().getExtras();
+    try
+    {
+      Object localObject2 = ((Bundle)localObject1).getString("options");
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMTribeEffectsCameraCaptureUnit", 2, "onVideoCaptured option: " + (String)localObject2);
       }
-      k += i1;
+      localObject2 = new JSONObject((String)localObject2);
+      boolean bool1 = ((JSONObject)localObject2).optBoolean("needVideoDoodle", false);
+      boolean bool2 = ((JSONObject)localObject2).optBoolean("needVideoWording", false);
+      ((Bundle)localObject1).putBoolean("needVideoDoodle", bool1);
+      ((Bundle)localObject1).putBoolean("needVideoWording", bool2);
+      this.jdField_a_of_type_Bmcv.a().getIntent().putExtras((Bundle)localObject1);
     }
-    float f = j / (i + j);
-    ved.c("MediaCodecThumbnailGen", "whitePixelCount = " + i + " blackPixelCount = " + j);
-    return f;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-  }
-  
-  public void a(Looper paramLooper)
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Bkjx = new bkjx(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    Looper localLooper = paramLooper;
-    if (paramLooper == null) {
-      localLooper = Looper.myLooper();
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QIMTribeEffectsCameraCaptureUnit", 2, "onVideoCaptured: " + localException);
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localLooper);
+    return localView;
+    return localView;
   }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, bkju<Boolean, bkka> parambkju, bkju<Boolean, bkjz> parambkju1)
+  protected axmk a()
   {
-    bkjy localbkjy = new bkjy();
-    localbkjy.jdField_a_of_type_JavaLangString = paramString1;
-    localbkjy.jdField_b_of_type_JavaLangString = paramString2;
-    localbkjy.jdField_a_of_type_Boolean = paramBoolean1;
-    localbkjy.jdField_a_of_type_Int = paramInt1;
-    localbkjy.jdField_b_of_type_Int = paramInt2;
-    localbkjy.c = paramInt3;
-    localbkjy.d = paramInt4;
-    localbkjy.jdField_b_of_type_Boolean = paramBoolean2;
-    localbkjy.jdField_b_of_type_Bkju = parambkju;
-    localbkjy.jdField_a_of_type_Bkju = parambkju1;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    Message.obtain(this.jdField_a_of_type_Bkjx, 1, localbkjy).sendToTarget();
+    axmk localaxmk = super.a();
+    if (azds.r > 2000000)
+    {
+      localaxmk.j(2000000);
+      azds.r = 2000000;
+      wsv.b("QIMTribeEffectsCameraCaptureUnit", "maxrate:" + azds.r);
+    }
+    localaxmk.b(false);
+    return localaxmk;
+  }
+  
+  public ArrayList<Integer> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(1));
+    localArrayList.add(Integer.valueOf(0));
+    localArrayList.add(Integer.valueOf(2));
+    return localArrayList;
+  }
+  
+  protected List<View> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.jdField_b_of_type_AndroidWidgetTextView);
+    return localArrayList;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    Activity localActivity = this.jdField_a_of_type_Bmcv.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {}
+    do
+    {
+      return;
+      if (paramInt1 != bayl.jdField_a_of_type_Int) {
+        break label87;
+      }
+      if (paramInt2 != -1) {
+        break;
+      }
+    } while (paramIntent == null);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("result", paramIntent.getStringExtra("result"));
+    localActivity.setResult(-1, localIntent);
+    localActivity.finish();
+    return;
+    label87:
+    if ((paramInt1 == 10012) && (paramInt2 == -1))
+    {
+      PublishParam localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.a);
+      TribeVideoPublishParams localTribeVideoPublishParams = (TribeVideoPublishParams)paramIntent.getSerializableExtra(TribeVideoPublishParams.BUNDLE_EXTRA_KEY);
+      localIntent = new Intent();
+      localIntent.putExtra("thumbPath", localPublishParam.c);
+      localIntent.putExtra("videoPath", localPublishParam.j);
+      localIntent.putExtra("fakeVid", localPublishParam.b);
+      localIntent.putExtra("videoDoodleDescription", localPublishParam.f);
+      paramInt1 = paramIntent.getIntExtra("theme_id", -1);
+      paramIntent = paramIntent.getStringExtra("theme_name");
+      localIntent.putExtra("theme_id", paramInt1);
+      localIntent.putExtra("theme_name", paramIntent);
+      a(localTribeVideoPublishParams);
+      localIntent.putExtra(TribeVideoPublishParams.BUNDLE_EXTRA_KEY, localTribeVideoPublishParams);
+      paramIntent = (blpo)blmf.a().c(8);
+      if (paramIntent != null) {
+        paramIntent.e();
+      }
+      paramIntent = localActivity.getIntent().getExtras().getString("options");
+      localIntent.setClass(localActivity, TroopBarPublishActivity.class);
+      localIntent.putExtra("options", paramIntent);
+      localIntent.putExtra("captureMode", this.jdField_b_of_type_Int);
+      localActivity.startActivityForResult(localIntent, bayl.jdField_a_of_type_Int);
+      return;
+    }
+    wsv.d("QIMTribeEffectsCameraCaptureUnit", "onActivityResult, requestCode=%d, resultCode=%d, data=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramIntent });
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    Bundle localBundle = paramActivity.getIntent().getExtras();
+    Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
+    localIntent.putExtra("enter_from", 24);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 2);
+    localIntent.putExtra("video_refer", "tribe");
+    localIntent.putExtra("PhotoConst.IS_PREVIEW_VIDEO", false);
+    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
+    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
+    localIntent.putExtra("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
+    localIntent.putExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME", LocalVideoSelectActivity.class.getName());
+    localIntent.putExtras(localBundle);
+    localIntent.putExtra("entrance_type", this.jdField_a_of_type_Bmcn.jdField_b_of_type_Int);
+    localIntent.putExtra("edit_video_type", 10012);
+    paramActivity.startActivityForResult(localIntent, 10012);
+  }
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
+  {
+    super.a(paramVideoCaptureResult, paramLocalMediaInfo);
+    boolean bool1;
+    boolean bool2;
+    label36:
+    Object localObject;
+    Bundle localBundle;
+    if (this.jdField_a_of_type_Bmcn.jdField_b_of_type_Int != 102)
+    {
+      bool1 = true;
+      if (this.jdField_a_of_type_Bmcn.jdField_b_of_type_Int == 102) {
+        break label167;
+      }
+      bool2 = true;
+      localObject = new bmct().a(false).e(bool1).f(bool2).g(true).h(this.h).a();
+      localBundle = this.jdField_a_of_type_Bmcv.a().getIntent().getExtras();
+      this.jdField_a_of_type_Bmcn.a((bmcr)localObject);
+      localObject = this.jdField_a_of_type_Bmcv.a().getIntent();
+      if (!this.h) {
+        break label173;
+      }
+    }
+    label167:
+    label173:
+    for (int i = 2;; i = -1)
+    {
+      ((Intent)localObject).putExtra("extra_transiton_src_from", i);
+      bngr.a(this.jdField_a_of_type_Bmcv.a(), paramVideoCaptureResult, paramLocalMediaInfo, this.jdField_a_of_type_Bmcn, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, localBundle);
+      return;
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label36;
+    }
+  }
+  
+  public void h()
+  {
+    super.h();
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      super.onClick(paramView);
+      return;
+    }
+    a(this.jdField_a_of_type_Bmcv.a());
+  }
+  
+  protected void w()
+  {
+    ThreadManager.post(new QIMTribeEffectsCameraCaptureUnit.1(this, this.jdField_a_of_type_Bmcv.a()), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkjw
  * JD-Core Version:    0.7.0.1
  */

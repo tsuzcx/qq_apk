@@ -1,12 +1,417 @@
-import android.view.KeyEvent;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import mqq.manager.ProxyIpManager;
+import tencent.im.cs.cmd0x346.cmd0x346.DownloadSuccReq;
+import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
 
-public abstract interface bara
+public class bara
+  extends bamr
+  implements bapw
 {
-  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
+  String e;
+  
+  public bara(batw parambatw, baub parambaub)
+  {
+    super(parambatw, parambaub);
+    this.jdField_a_of_type_JavaUtilList = ((ProxyIpManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(3)).getProxyIp(4);
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return bduw.a(aljq.aX + Utils.Crc64String(paramQQAppInterface.getAccount()) + "/" + "ptt" + "/pa_audio_" + paramString + ".amr");
+  }
+  
+  private cmd0x346.ReqBody a()
+  {
+    int j = 17;
+    cmd0x346.DownloadSuccReq localDownloadSuccReq = new cmd0x346.DownloadSuccReq();
+    localDownloadSuccReq.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_Baub.jdField_b_of_type_JavaLangString));
+    localDownloadSuccReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Baub.e));
+    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
+    localReqBody.uint32_cmd.set(1000);
+    localReqBody.uint32_seq.set(0);
+    int i;
+    if ("ftn".equals(this.d)) {
+      i = 3;
+    }
+    for (;;)
+    {
+      localReqBody.uint32_business_id.set(i);
+      localReqBody.uint32_client_type.set(104);
+      localReqBody.msg_download_succ_req.set(localDownloadSuccReq);
+      return localReqBody;
+      i = j;
+      if ("pttcenter".equals(this.d)) {
+        i = j;
+      }
+    }
+  }
+  
+  private void h()
+  {
+    b("setSuccess", "req");
+    String str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
+    if ("pttcenter".equals(this.d)) {
+      str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
+    }
+    barh localbarh;
+    for (;;)
+    {
+      cmd0x346.ReqBody localReqBody = a();
+      localbarh = new barh();
+      localbarh.jdField_a_of_type_JavaLangString = str;
+      localbarh.jdField_a_of_type_ArrayOfByte = localReqBody.toByteArray();
+      localbarh.c = 1;
+      localbarh.jdField_a_of_type_Int = 30000;
+      localbarh.jdField_b_of_type_Int = 1;
+      localbarh.jdField_a_of_type_Barg = this;
+      if (e()) {
+        break;
+      }
+      a(9366, "illegal app", null, this.jdField_a_of_type_Bamy);
+      d();
+      return;
+      if ("ftn".equals(this.d)) {
+        str = "OfflineFilleHandleSvr.pb_ftnPtt_CMD_REQ_DOWNLOAD_SUCC-1000";
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localbarh);
+  }
+  
+  public void a(baqv parambaqv, baqw parambaqw)
+  {
+    if ((parambaqv == null) || (parambaqw == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambaqv instanceof baps));
+      parambaqv = (baps)parambaqv;
+      parambaqv.jdField_a_of_type_Long += parambaqw.c;
+    } while (0L != parambaqv.jdField_b_of_type_Long);
+    parambaqw.c = 0L;
+    parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
+    parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+  }
+  
+  public void a(bari parambari, barh parambarh)
+  {
+    a(null, parambari.a, parambari.a.getWupBuffer());
+  }
+  
+  public void a(bawo parambawo, baxd parambaxd)
+  {
+    this.jdField_a_of_type_Bawo = null;
+    if (parambaxd != null)
+    {
+      int i = 0;
+      while (i < parambaxd.jdField_a_of_type_JavaUtilList.size())
+      {
+        parambawo = (baxg)parambaxd.jdField_a_of_type_JavaUtilList.get(i);
+        if (QLog.isColorLevel()) {
+          b("procUrl", parambawo.toString());
+        }
+        this.i = parambawo.d;
+        if (QLog.isColorLevel()) {
+          QLog.e("http_sideway", 2, "C2CPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.i);
+        }
+        a(this.jdField_a_of_type_Bamy, parambawo);
+        if (parambawo.c == 0)
+        {
+          this.c = parambawo.jdField_a_of_type_JavaLangString;
+          this.jdField_a_of_type_Baoj.i = this.c;
+          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+          {
+            parambawo = basj.a(this.c);
+            if (parambawo != null) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(parambawo);
+            }
+          }
+          g();
+          i += 1;
+        }
+        else
+        {
+          d();
+        }
+      }
+    }
+  }
+  
+  /* Error */
+  protected void a(com.tencent.qphone.base.remote.ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: ldc 161
+    //   3: ldc_w 341
+    //   6: invokevirtual 166	bara:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   9: aload_2
+    //   10: invokevirtual 344	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   13: sipush 1000
+    //   16: if_icmpeq +38 -> 54
+    //   19: aload_2
+    //   20: invokevirtual 344	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   23: istore 4
+    //   25: aload_0
+    //   26: ldc_w 346
+    //   29: new 35	java/lang/StringBuilder
+    //   32: dup
+    //   33: invokespecial 38	java/lang/StringBuilder:<init>	()V
+    //   36: ldc_w 348
+    //   39: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: iload 4
+    //   44: invokevirtual 351	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokevirtual 166	bara:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   53: return
+    //   54: new 353	tencent/im/cs/cmd0x346/cmd0x346$RspBody
+    //   57: dup
+    //   58: invokespecial 354	tencent/im/cs/cmd0x346/cmd0x346$RspBody:<init>	()V
+    //   61: astore_1
+    //   62: aload_1
+    //   63: aload_3
+    //   64: invokevirtual 358	tencent/im/cs/cmd0x346/cmd0x346$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   67: pop
+    //   68: aload_1
+    //   69: getfield 359	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   72: invokevirtual 362	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   75: ifeq +91 -> 166
+    //   78: aload_1
+    //   79: getfield 359	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   82: invokevirtual 364	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   85: i2l
+    //   86: lstore 5
+    //   88: lload 5
+    //   90: ldc2_w 365
+    //   93: lcmp
+    //   94: ifne -41 -> 53
+    //   97: aload_1
+    //   98: getfield 370	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
+    //   101: invokevirtual 373	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:has	()Z
+    //   104: ifeq -51 -> 53
+    //   107: aload_1
+    //   108: getfield 370	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
+    //   111: invokevirtual 376	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   114: checkcast 372	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp
+    //   117: getfield 380	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:int32_ret_code	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   120: invokevirtual 383	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   123: istore 4
+    //   125: invokestatic 285	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   128: ifeq -75 -> 53
+    //   131: aload_0
+    //   132: ldc_w 346
+    //   135: new 35	java/lang/StringBuilder
+    //   138: dup
+    //   139: invokespecial 38	java/lang/StringBuilder:<init>	()V
+    //   142: ldc_w 385
+    //   145: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: iload 4
+    //   150: invokevirtual 351	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   153: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   156: invokevirtual 166	bara:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   159: return
+    //   160: astore_1
+    //   161: aload_1
+    //   162: invokevirtual 388	java/lang/Exception:printStackTrace	()V
+    //   165: return
+    //   166: ldc2_w 389
+    //   169: lstore 5
+    //   171: goto -83 -> 88
+    //   174: astore_1
+    //   175: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	176	0	this	bara
+    //   0	176	1	paramToServiceMsg	com.tencent.qphone.base.remote.ToServiceMsg
+    //   0	176	2	paramFromServiceMsg	FromServiceMsg
+    //   0	176	3	paramArrayOfByte	byte[]
+    //   23	126	4	i	int
+    //   86	84	5	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   54	62	160	java/lang/Exception
+    //   68	88	160	java/lang/Exception
+    //   97	159	160	java/lang/Exception
+    //   62	68	174	java/lang/Exception
+  }
+  
+  public void aS_()
+  {
+    super.aS_();
+    f();
+  }
+  
+  public int c()
+  {
+    super.c();
+    b("uiParam", this.jdField_a_of_type_Baub.toString());
+    String str = this.jdField_a_of_type_Baub.e;
+    if ((str == null) || (str.equals("")) || (str.equals("null")) || (bdcs.c(str)) || (str.startsWith("http://")))
+    {
+      b(9302, a(new Exception("uuid illegal " + str)));
+      d();
+      return -1;
+    }
+    this.jdField_a_of_type_Baub.h = bduw.a(aljq.aX + Utils.Crc64String(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()) + "/" + "ptt" + "/pa_audio_" + str + ".amr");
+    return 0;
+  }
+  
+  void d()
+  {
+    super.d();
+    d(2005);
+  }
+  
+  void e()
+  {
+    super.e();
+    d(2003);
+  }
+  
+  void f()
+  {
+    this.jdField_a_of_type_Bamy.a();
+    this.d = "pttcenter";
+    b("findDbRec", "not found");
+    bawo localbawo = new bawo();
+    bawq localbawq = new bawq();
+    localbawq.c = this.jdField_a_of_type_Baub.jdField_b_of_type_JavaLangString;
+    localbawq.d = this.jdField_a_of_type_Baub.c;
+    localbawq.e = this.jdField_a_of_type_Baub.d;
+    localbawq.f = this.jdField_a_of_type_Baub.jdField_a_of_type_Int;
+    localbawq.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Baub.e;
+    localbawq.jdField_b_of_type_JavaLangString = this.d;
+    localbawq.jdField_a_of_type_Boolean = this.jdField_a_of_type_Baub.jdField_b_of_type_Boolean;
+    localbawq.jdField_a_of_type_Int = 0;
+    localbawq.jdField_b_of_type_Int = 3;
+    localbawo.jdField_a_of_type_Baxv = this;
+    localbawo.jdField_a_of_type_JavaLangString = "c2c_ptt_dw";
+    localbawo.jdField_a_of_type_JavaUtilList.add(localbawq);
+    localbawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
+    if (!e())
+    {
+      a(9366, "illegal app", null, this.jdField_a_of_type_Bamy);
+      d();
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        b("requestStart", localbawo.toString());
+      }
+    } while (!f());
+    this.jdField_a_of_type_Bawo = localbawo;
+    baxu.a(localbawo);
+  }
+  
+  void g()
+  {
+    this.jdField_b_of_type_Bamy.a();
+    String str3 = a(this.c, this.jdField_a_of_type_JavaUtilArrayList);
+    bamw.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilArrayList);
+    baps localbaps = new baps();
+    localbaps.jdField_a_of_type_Bapx = this;
+    localbaps.jdField_a_of_type_JavaLangString = str3;
+    localbaps.jdField_a_of_type_Int = 0;
+    localbaps.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
+    localbaps.c = this.jdField_a_of_type_Baub.h;
+    localbaps.e = String.valueOf(this.jdField_a_of_type_Baub.jdField_a_of_type_Long);
+    localbaps.g = this.jdField_a_of_type_Baub.jdField_a_of_type_Int;
+    localbaps.f = this.jdField_a_of_type_Baub.jdField_b_of_type_Int;
+    localbaps.jdField_a_of_type_Long = 0L;
+    localbaps.k = true;
+    localbaps.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+    localbaps.l = true;
+    localbaps.jdField_a_of_type_Bapw = this;
+    localbaps.d = this.e;
+    String str2 = null;
+    String str1 = str2;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      str1 = str2;
+      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        str1 = Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray());
+      }
+    }
+    str2 = basj.a(str3);
+    b("httpDown", "RespDomain: " + str2 + " ipList:" + str1 + " uuid:" + this.jdField_a_of_type_Baub.e + " downOffset:" + localbaps.jdField_a_of_type_Long);
+    if (!f()) {
+      return;
+    }
+    this.jdField_a_of_type_Baqv = localbaps;
+    n();
+    this.jdField_a_of_type_Bapv.a(localbaps);
+  }
+  
+  protected void n()
+  {
+    if ((this.jdField_a_of_type_Baqv != null) && ((this.jdField_a_of_type_Baqv instanceof baps))) {
+      ((baps)this.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttCd", ((baps)this.jdField_a_of_type_Baqv).jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onResp(baqw parambaqw)
+  {
+    boolean bool2 = true;
+    super.onResp(parambaqw);
+    this.jdField_a_of_type_Baqv = null;
+    Object localObject = new StringBuilder().append(" result:");
+    if (parambaqw.jdField_a_of_type_Int == 0)
+    {
+      bool1 = true;
+      b("onHttpResp", bool1);
+      localObject = this.jdField_b_of_type_Bamy;
+      if (parambaqw.jdField_a_of_type_Int != 0) {
+        break label142;
+      }
+    }
+    label142:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      a((bamy)localObject, parambaqw, bool1);
+      this.jdField_a_of_type_Long = parambaqw.jdField_a_of_type_Long;
+      if (this.jdField_a_of_type_Long <= 0L) {
+        this.jdField_a_of_type_Long = (parambaqw.jdField_b_of_type_Long + parambaqw.jdField_a_of_type_Baqv.jdField_a_of_type_Long);
+      }
+      this.jdField_b_of_type_Long += parambaqw.c;
+      if (parambaqw.jdField_a_of_type_Int != 0) {
+        break label147;
+      }
+      h();
+      e();
+      return;
+      bool1 = false;
+      break;
+    }
+    label147:
+    if ((parambaqw.jdField_b_of_type_Int == 9364) && (this.l < 3))
+    {
+      b("[netChg]", "failed.but net change detect.so retry");
+      this.l += 1;
+      m();
+      f();
+      return;
+    }
+    d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bara
  * JD-Core Version:    0.7.0.1
  */

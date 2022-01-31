@@ -1,108 +1,53 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class axkg
+class axkg
+  implements bapx
 {
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  axkg(axkd paramaxkd) {}
   
-  public axkg(String paramString)
+  public void onResp(baqw parambaqw)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + File.separator + "audio_data_cache" + File.separator);
-    paramString = new File(this.jdField_a_of_type_JavaLangString);
-    boolean bool1 = paramString.mkdirs();
-    boolean bool2 = paramString.isDirectory();
-    if ((!bool1) && (!bool2)) {
-      throw new RuntimeException("AudioDataCache: mkd=" + bool1 + " isdir=" + bool2);
+    Object localObject = (FilterDesc)parambaqw.jdField_a_of_type_Baqv.a();
+    if (parambaqw.jdField_a_of_type_Int != 0) {
+      lek.c("CaptureVideoFilterManager", "download file failed. errorCode: " + parambaqw.b + ", errorMsg: " + parambaqw.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
     }
-  }
-  
-  private static void a(String paramString, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel())
+    for (;;)
     {
-      if (paramThrowable != null) {
-        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
-      }
-    }
-    else {
       return;
-    }
-    QLog.d("AudioDataCache", 2, "[@] " + paramString);
-  }
-  
-  public String a(RMVideoStateMgr paramRMVideoStateMgr)
-  {
-    a("closeCache: path=" + this.b, null);
-    String str = this.jdField_a_of_type_JavaLangString + this.b;
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (paramRMVideoStateMgr != null)) {}
-    try
-    {
-      paramRMVideoStateMgr.g();
-      this.jdField_a_of_type_JavaIoFileOutputStream.close();
-    }
-    catch (IOException paramRMVideoStateMgr)
-    {
-      label74:
-      break label74;
-    }
-    this.jdField_a_of_type_JavaIoFileOutputStream = null;
-    this.b = null;
-    return str;
-  }
-  
-  public void a(RMVideoStateMgr paramRMVideoStateMgr)
-  {
-    a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
-    a(paramRMVideoStateMgr);
-    this.b = axlx.a();
-    paramRMVideoStateMgr = this.jdField_a_of_type_JavaLangString + this.b;
-    File localFile = new File(paramRMVideoStateMgr);
-    if (localFile.exists()) {
-      throw new RuntimeException("AudioDataCache: file exists| " + paramRMVideoStateMgr);
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-      a("initCache: newPath=" + this.b, null);
-      return;
-    }
-    catch (FileNotFoundException paramRMVideoStateMgr)
-    {
-      for (;;)
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambaqw.jdField_a_of_type_Baqv.c)))
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+        lek.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
+        bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
+        return;
+      }
+      lek.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      try
+      {
+        localObject = axkd.b;
+        bdcs.a(parambaqw.jdField_a_of_type_Baqv.c, (String)localObject, false);
+        bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
+        if ((axkd.a(this.a).decrementAndGet() == 0) && (axkd.a(this.a) != null))
+        {
+          axkd.a(this.a).a(true);
+          return;
+        }
+      }
+      catch (IOException parambaqw)
+      {
+        parambaqw.printStackTrace();
+        lek.c("CaptureVideoFilterManager", "unzip file failed.");
       }
     }
   }
   
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-      bool = true;
-      return bool;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      a("writeData: exp=", paramArrayOfByte);
-    }
-    return false;
-  }
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axkg
  * JD-Core Version:    0.7.0.1
  */

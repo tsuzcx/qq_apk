@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-
-public class bhgg
-  implements DialogInterface.OnClickListener
+public abstract interface bhgg
 {
-  public bhgg(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public abstract void onError(int paramInt1, int paramInt2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.getPlayMode();
-  }
+  public abstract void onPlayerBufferingUpdate(int paramInt);
+  
+  public abstract void onPlayerProgress(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void onPlayerSeek(boolean paramBoolean, int paramInt);
+  
+  public abstract void onPlayerStateChange(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhgg
  * JD-Core Version:    0.7.0.1
  */

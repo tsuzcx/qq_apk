@@ -1,39 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class tvf
-  implements ttc
+class tvf
+  implements DialogInterface.OnClickListener
 {
-  tvf(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
+  tvf(tvd paramtvd) {}
   
-  public void a(int paramInt)
-  {
-    int i = 1;
-    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
-    OpenPlayerBuilder.UIStyle localUIStyle;
-    if (paramInt != -1)
-    {
-      localUIStyle = localData.mUIStyle;
-      if (paramInt != 1) {
-        break label58;
-      }
-    }
-    label58:
-    for (paramInt = i;; paramInt = 2)
-    {
-      localUIStyle.bottomWidgetShowFlag = paramInt;
-      tvc.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvf
  * JD-Core Version:    0.7.0.1
  */

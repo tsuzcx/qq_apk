@@ -1,54 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
-public class ooo
-  implements AladdinConfigHandler
+class ooo
+  implements View.OnClickListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = oof.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "on_click"))
-      {
-        if (TextUtils.equals(str2, "fast_biu")) {}
-        for (paramInt1 = 1;; paramInt1 = 0)
-        {
-          bhvy.a("sp_key_biu_button_click_behaviour", Integer.valueOf(paramInt1));
-          break;
-        }
-      }
-      if (TextUtils.equals(str1, "on_long_pressed"))
-      {
-        if (TextUtils.equals(str2, "fast_biu")) {}
-        for (paramInt1 = 1;; paramInt1 = 0)
-        {
-          bhvy.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(paramInt1));
-          break;
-        }
-      }
-    }
-    return true;
-  }
+  ooo(oon paramoon, omt paramomt, Context paramContext) {}
   
-  public void onWipeConfig(int paramInt)
+  public void onClick(View paramView)
   {
-    bhvy.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0));
-    bhvy.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1));
+    QLog.d(oon.a(this.jdField_a_of_type_Oon), 1, "getBottomGuideView : " + oon.b(this.jdField_a_of_type_Oon));
+    oon.a(this.jdField_a_of_type_Oon, "0X8009FEA", this.jdField_a_of_type_Omt.a);
+    ors.a(this.jdField_a_of_type_AndroidContentContext, oon.b(this.jdField_a_of_type_Oon));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ooo
  * JD-Core Version:    0.7.0.1
  */

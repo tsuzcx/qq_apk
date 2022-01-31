@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acga
-  implements ThreadExcutor.IThreadListener
+public final class acga
+  implements DialogInterface.OnClickListener
 {
-  public acga(TroopAssistantActivity paramTroopAssistantActivity) {}
-  
-  public void onAdded()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, true);
-  }
-  
-  public void onPostRun()
-  {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, false);
-  }
-  
-  public void onPreRun()
-  {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, true);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acga
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Interpolator;
 
-class ajdt
-  implements DialogInterface.OnClickListener
+public class ajdt
+  implements Interpolator
 {
-  ajdt(ajdq paramajdq, ajdy paramajdy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    if (this.jdField_a_of_type_Ajdy != null) {
-      this.jdField_a_of_type_Ajdy.a(this.jdField_a_of_type_Ajdq.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
-    }
+    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdt
  * JD-Core Version:    0.7.0.1
  */

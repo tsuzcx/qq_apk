@@ -1,22 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bacd
+final class bacd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  bacd(Context paramContext, String paramString) {}
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
-  
-  public abstract void b(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void c(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void d(RecyclerView.ViewHolder paramViewHolder);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      arni.c(this.jdField_a_of_type_AndroidContentContext, aosx.a().a());
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bacd
  * JD-Core Version:    0.7.0.1
  */

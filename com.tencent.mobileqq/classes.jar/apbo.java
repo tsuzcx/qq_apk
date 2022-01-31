@@ -1,34 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class apbo
-  extends apbm
+public class apbo
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public apbo(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  public apbo(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime, String paramString) {}
   
-  protected String a()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    return "StateCancelUploadWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    if (paramInt == 2131365503) {
+      DBFixConfigActivity.a = 1;
     }
-    apbi.b(this.jdField_a_of_type_Apbi, 11, 9);
-    apbi.c(this.jdField_a_of_type_Apbi, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Apbm = new apbp(this.jdField_a_of_type_Apbi);
+    for (;;)
+    {
+      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().putInt(this.jdField_a_of_type_JavaLangString + DBFixManager.c, DBFixConfigActivity.a).commit();
+      return;
+      if (paramInt == 2131365022) {
+        DBFixConfigActivity.a = 2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apbo
  * JD-Core Version:    0.7.0.1
  */

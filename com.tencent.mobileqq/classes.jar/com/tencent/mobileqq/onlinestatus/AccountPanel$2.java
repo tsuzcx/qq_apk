@@ -1,27 +1,29 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import auhk;
+import avyo;
+import azyl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AccountPanel$2
   implements Runnable
 {
-  public AccountPanel$2(auhk paramauhk) {}
+  public AccountPanel$2(avyo paramavyo) {}
   
   public void run()
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, auhk.a(this.this$0).getHeight(), 0.0F);
-    localTranslateAnimation.setFillEnabled(true);
-    localTranslateAnimation.setStartTime(300L);
-    localTranslateAnimation.setDuration(300L);
-    auhk.a(this.this$0).startAnimation(localTranslateAnimation);
-    auhk.a(this.this$0, true);
+    if ((avyo.a(this.this$0) != null) && (avyo.a(this.this$0) != null))
+    {
+      avyo.b(this.this$0, true);
+      avyo.c(this.this$0, false);
+      avyo.a(this.this$0, avyo.a(this.this$0));
+      avyo.a(this.this$0).g(false);
+      azyl.a(avyo.a(this.this$0), false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.2
  * JD-Core Version:    0.7.0.1
  */

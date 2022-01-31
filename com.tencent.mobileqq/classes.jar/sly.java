@@ -1,45 +1,73 @@
-import UserGrowth.stSimpleGetFeedListRsp;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
 import java.util.ArrayList;
-import mqq.util.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
-class sly
-  implements sjr
+public class sly<T>
 {
-  sly(slw paramslw, boolean paramBoolean1, boolean paramBoolean2) {}
+  private T jdField_a_of_type_JavaLangObject;
+  private List<slz<T>> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp)
+  public sly(T paramT)
   {
-    snb.d("WSRecommendFragmentPresenter", "onReadCacheCompleted");
-    if ((paramstSimpleGetFeedListRsp != null) && (paramstSimpleGetFeedListRsp.feeds != null) && (paramstSimpleGetFeedListRsp.feeds.size() > 0))
+    this.jdField_a_of_type_JavaLangObject = paramT;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    try
     {
-      slw.a(this.jdField_a_of_type_Slw, true);
-      if (!slw.a(this.jdField_a_of_type_Slw)) {
-        break label48;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((slz)localIterator.next()).a(this);
       }
     }
-    label48:
-    WSRecommendFragment localWSRecommendFragment;
-    do
+    finally {}
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    a();
+  }
+  
+  public void a(slz<T> paramslz)
+  {
+    try
     {
-      do
-      {
-        do
-        {
-          return;
-          paramstSimpleGetFeedListRsp = paramstSimpleGetFeedListRsp.feeds;
-        } while (slw.a(this.jdField_a_of_type_Slw) == null);
-        localWSRecommendFragment = (WSRecommendFragment)slw.a(this.jdField_a_of_type_Slw).get();
-      } while (localWSRecommendFragment == null);
-      localWSRecommendFragment.a(paramstSimpleGetFeedListRsp, this.jdField_a_of_type_Boolean, this.b);
-    } while ((this.jdField_a_of_type_Boolean) || (slw.a(this.jdField_a_of_type_Slw)));
-    snb.d("WSRecommendFragmentPresenter", "showTopLoading");
-    localWSRecommendFragment.a(true);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramslz)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramslz);
+      }
+      return;
+    }
+    finally
+    {
+      paramslz = finally;
+      throw paramslz;
+    }
+  }
+  
+  public void b(slz<T> paramslz)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramslz);
+      return;
+    }
+    finally
+    {
+      paramslz = finally;
+      throw paramslz;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sly
  * JD-Core Version:    0.7.0.1
  */

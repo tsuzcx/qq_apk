@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.utils;
 
-import akas;
-import akvy;
+import alsh;
+import ammo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class FriendsStatusUtil$UpdateFriendStatusItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<UpdateFriendStatusItem> CREATOR = new akvy();
+  public static final Parcelable.Creator<UpdateFriendStatusItem> CREATOR = new ammo();
   public int a;
   public long a;
   public String a;
@@ -55,10 +55,10 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
         return 0L;
       }
       if (this.jdField_a_of_type_ArrayOfByte.length == 4) {
-        return akas.a(this.jdField_a_of_type_ArrayOfByte);
+        return alsh.a(this.jdField_a_of_type_ArrayOfByte);
       }
     } while (this.jdField_a_of_type_ArrayOfByte.length != 8);
-    return akas.a(Arrays.copyOfRange(this.jdField_a_of_type_ArrayOfByte, 0, 4));
+    return alsh.a(Arrays.copyOfRange(this.jdField_a_of_type_ArrayOfByte, 0, 4));
   }
   
   public void a(long paramLong)

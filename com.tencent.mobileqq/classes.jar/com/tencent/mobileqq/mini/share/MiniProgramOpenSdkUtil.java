@@ -9,10 +9,10 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.webkit.URLUtil;
-import aqbe;
-import aqgj;
-import bbco;
-import bbgo;
+import arum;
+import arzy;
+import bdbi;
+import bdfk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -70,15 +70,16 @@ public class MiniProgramOpenSdkUtil
     String str1 = toBase64Decode((String)paramHashMap.get("mini_program_appid"));
     String str2 = toBase64Decode((String)paramHashMap.get("title"));
     String str3 = toBase64Decode((String)paramHashMap.get("description"));
-    String str6 = toBase64Decode((String)paramHashMap.get("image_url"));
+    String str7 = toBase64Decode((String)paramHashMap.get("image_url"));
     String str4 = toBase64Decode((String)paramHashMap.get("mini_program_path"));
-    String str7 = toBase64Decode((String)paramHashMap.get("file_data"));
-    String str5 = (String)paramHashMap.get("share_id");
+    String str8 = toBase64Decode((String)paramHashMap.get("file_data"));
+    String str5 = toBase64Decode((String)paramHashMap.get("url"));
+    String str6 = (String)paramHashMap.get("share_id");
     try
     {
       i = Integer.parseInt(toBase64Decode((String)paramHashMap.get("mini_program_type")));
-      paramHashMap = getFinalPic(str6, str7);
-      return new MiniArkShareModelBuilder().setAppId(str1).setTitle(str2).setDescription(str3).setShareScene(3).setShareTemplateType(1).setShareBusinessType(0).setPicUrl(paramHashMap).setVidUrl(null).setJumpUrl(str4).setVersionType(i).setAppidRich(str5).createMiniArkShareModel();
+      paramHashMap = getFinalPic(str7, str8);
+      return new MiniArkShareModelBuilder().setAppId(str1).setTitle(str2).setDescription(str3).setShareScene(3).setShareTemplateType(1).setShareBusinessType(0).setPicUrl(paramHashMap).setVidUrl(null).setJumpUrl(str4).setVersionType(i).setWebURL(str5).setAppidRich(str6).createMiniArkShareModel();
     }
     catch (NumberFormatException paramHashMap)
     {
@@ -117,7 +118,6 @@ public class MiniProgramOpenSdkUtil
     String str2 = toBase64Decode((String)paramHashMap.get("mini_program_appid"));
     String str3 = toBase64Decode((String)paramHashMap.get("mini_program_path"));
     String str4 = toBase64Decode((String)paramHashMap.get("mini_program_type"));
-    toBase64Decode((String)paramHashMap.get("url"));
     String str1 = toBase64Decode((String)paramHashMap.get("image_url"));
     Object localObject = toBase64Decode((String)paramHashMap.get("file_data"));
     String str5 = toBase64Decode((String)paramHashMap.get("title"));
@@ -131,7 +131,7 @@ public class MiniProgramOpenSdkUtil
     paramHashMap = buildShareInfoRequest((MiniArkShareModel)localObject);
     paramContext = new MiniProgramOpenSdkUtil.3(local2, local1, localTimeOutInfo, str2, str3, str4, str7, ((MiniArkShareModel)localObject).getAppidRich(), str5, str6, paramBundle, paramContext, paramIntent, str1);
     QLog.d("MiniProgramOpenSdkUtil", 1, "forwardShare");
-    aqgj.a("KEY_STAGE_1_GET_SHARE_INFO");
+    arzy.a("KEY_STAGE_1_GET_SHARE_INFO");
     MiniAppCmdUtil.getInstance().getShareInfo(paramHashMap, paramContext);
   }
   
@@ -218,8 +218,8 @@ public class MiniProgramOpenSdkUtil
       com.tencent.mobileqq.app.PhoneContactManagerImp.f = true;
       paramIntent.putExtra("KEY_MINI_PROGRAM_SHARE_OBJ", paramOpenSdkShareModel);
       paramIntent.putExtra("forward_ark_app_meta", str3);
-      paramIntent.putExtras(bbgo.a(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
-      aqbe.a(paramContext, paramIntent);
+      paramIntent.putExtras(bdfk.a(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
+      arum.a(paramContext, paramIntent);
       finishJumpActivity(paramContext);
       return;
     }
@@ -234,7 +234,7 @@ public class MiniProgramOpenSdkUtil
     }
     try
     {
-      paramString = new String(bbco.decode(paramString, 0));
+      paramString = new String(bdbi.decode(paramString, 0));
       return paramString;
     }
     catch (Exception paramString) {}
@@ -294,7 +294,7 @@ public class MiniProgramOpenSdkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adpg;
-import apvd;
+import afhq;
+import arof;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class FilePicItemBuilder$1$1
@@ -11,14 +11,14 @@ class FilePicItemBuilder$1$1
   
   public void run()
   {
-    if ((apvd.b(this.a.a.strLargeThumPath)) || (apvd.b(this.a.a.strMiddleThumPath))) {
+    if ((arof.b(this.a.a.strLargeThumPath)) || (arof.b(this.a.a.strMiddleThumPath))) {
       this.a.this$0.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,6 @@ import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.facedetect.FaceStatus;
-import com.tencent.ttpic.model.TriggerCtrlItem;
-import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import java.io.File;
 
@@ -26,9 +23,7 @@ public class HairDecolor
   public static final String LOOKUP_TABLE_FILE_NAME = "hair.lut";
   private static final String VERTEX_SHADER = "attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 maskCoordinate;\nvarying vec2 maskYYCoordinate;\n\nvoid main(){\n    vec4 framePos = position;\n\n    gl_Position = framePos;\n    maskCoordinate = vec2(framePos.x * 0.5 + 0.5, framePos.y * 0.5 + 0.5);\n    maskYYCoordinate = inputTextureCoordinate;\n}";
   private float YYtype;
-  private boolean alwaysTrigged = false;
   private int genderType = 0;
-  private boolean isCurTrigged = true;
   private boolean isLUTLegal = true;
   private boolean isYYLegal = true;
   private StickerItem item;
@@ -37,17 +32,16 @@ public class HairDecolor
   private String mLutName;
   private int[] mPartIndex;
   private String maskYYName;
-  private TriggerCtrlItem triggerCtrlItem;
   
   public HairDecolor(StickerItem paramStickerItem, String paramString1, String paramString2, float paramFloat)
   {
     super("attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 maskCoordinate;\nvarying vec2 maskYYCoordinate;\n\nvoid main(){\n    vec4 framePos = position;\n\n    gl_Position = framePos;\n    maskCoordinate = vec2(framePos.x * 0.5 + 0.5, framePos.y * 0.5 + 0.5);\n    maskYYCoordinate = inputTextureCoordinate;\n}", FRAGMENT_SHADER);
     this.mDataPath = paramString1;
     this.mLutName = paramStickerItem.hairLutName;
+    this.item = paramStickerItem;
     this.mPartIndex = paramStickerItem.activeParts;
     this.maskYYName = paramString2;
     this.genderType = paramStickerItem.genderType;
-    this.triggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
     this.YYtype = paramFloat;
     initParams();
   }
@@ -58,8 +52,6 @@ public class HairDecolor
     this.mDataPath = paramString1;
     this.mLutName = paramString2;
     this.YYtype = 2.0F;
-    this.triggerCtrlItem = new TriggerCtrlItem();
-    this.alwaysTrigged = true;
     initParams();
   }
   
@@ -86,6 +78,14 @@ public class HairDecolor
   public StickerItem getItem()
   {
     return this.item;
+  }
+  
+  public String getItemID()
+  {
+    if (this.item != null) {
+      return this.item.id;
+    }
+    return null;
   }
   
   public boolean getLUTLegal()
@@ -165,7 +165,7 @@ public class HairDecolor
   
   public Frame render(Frame paramFrame, PointF[] paramArrayOfPointF1, PointF[] paramArrayOfPointF2, int paramInt)
   {
-    if ((getLUTLegal()) && (getYYLegal()) && ((this.alwaysTrigged) || (this.isCurTrigged)))
+    if ((getLUTLegal()) && (getYYLegal()))
     {
       Frame localFrame = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
       setPositions(new float[] { paramArrayOfPointF2[0].x, paramArrayOfPointF2[0].y, paramArrayOfPointF2[1].x, paramArrayOfPointF2[1].y, paramArrayOfPointF1[0].x, paramArrayOfPointF1[0].y, paramArrayOfPointF2[2].x, paramArrayOfPointF2[2].y, paramArrayOfPointF1[1].x, paramArrayOfPointF1[1].y, paramArrayOfPointF2[3].x, paramArrayOfPointF2[3].y, paramArrayOfPointF1[3].x, paramArrayOfPointF1[3].y, paramArrayOfPointF2[2].x, paramArrayOfPointF2[2].y, paramArrayOfPointF1[2].x, paramArrayOfPointF1[2].y, paramArrayOfPointF2[1].x, paramArrayOfPointF2[1].y, paramArrayOfPointF2[0].x, paramArrayOfPointF2[0].y });
@@ -179,17 +179,6 @@ public class HairDecolor
   public void setMask(int paramInt)
   {
     addParam(new UniformParam.TextureParam("inputImageTextureMask", paramInt, 33988));
-  }
-  
-  public void updateActionTriggered(PTDetectInfo paramPTDetectInfo, int paramInt)
-  {
-    this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
-    if ((this.triggerCtrlItem.isTriggered()) && (isInCurPart(paramInt)) && ((this.genderType == 0) || (this.genderType == paramPTDetectInfo.faceStatus.gender))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isCurTrigged = bool;
-      return;
-    }
   }
   
   public void updateAlpha(float paramFloat)

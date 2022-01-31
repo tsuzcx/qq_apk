@@ -1,28 +1,28 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.17.1;
 
-class adlx
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class adlx
+  implements Animation.AnimationListener
 {
-  adlx(adlw paramadlw1, adlw paramadlw2) {}
+  public adlx(QQLSActivity paramQQLSActivity) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBitmap != null)
-    {
-      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      return;
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlx
  * JD-Core Version:    0.7.0.1
  */

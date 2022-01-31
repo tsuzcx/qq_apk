@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
 import android.os.Bundle;
-import apjm;
-import apjn;
+import arcj;
+import arck;
 import com.tencent.qphone.base.util.QLog;
 
 public class LocalTdsViewManager$OpenCallbackImpl$1
   implements Runnable
 {
-  public LocalTdsViewManager$OpenCallbackImpl$1(apjn paramapjn, Integer paramInteger, Object paramObject, Bundle paramBundle) {}
+  public LocalTdsViewManager$OpenCallbackImpl$1(arck paramarck, Integer paramInteger, Object paramObject, Bundle paramBundle) {}
   
   public void run()
   {
@@ -21,8 +21,8 @@ public class LocalTdsViewManager$OpenCallbackImpl$1
       {
         return;
         QLog.w("TdsReaderView_LocalTdsViewManager", 1, "showErrorCode:" + this.jdField_a_of_type_JavaLangObject);
-      } while (apjn.a(this.this$0) == null);
-      apjn.a(this.this$0).a(false);
+      } while (arck.a(this.this$0) == null);
+      arck.a(this.this$0).a(false);
       return;
     }
     boolean bool1;
@@ -35,7 +35,7 @@ public class LocalTdsViewManager$OpenCallbackImpl$1
     }
     for (;;)
     {
-      apjn.a(this.this$0).a(bool1, bool2);
+      arck.a(this.this$0).a(bool1, bool2);
       return;
       bool1 = false;
       break;
@@ -46,7 +46,7 @@ public class LocalTdsViewManager$OpenCallbackImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTdsViewManager.OpenCallbackImpl.1
  * JD-Core Version:    0.7.0.1
  */

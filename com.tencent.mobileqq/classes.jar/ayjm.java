@@ -1,26 +1,41 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-
-class ayjm
-  implements TextView.OnEditorActionListener
+public abstract class ayjm
+  implements ayjl
 {
-  ayjm(ayjh paramayjh) {}
+  private int a;
+  private int b;
+  public boolean f = true;
+  public int r;
+  public int s;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public int a()
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      bfni.b(this.a.a);
-      this.a.d();
-      return true;
-    }
-    return false;
+    return this.a;
+  }
+  
+  public Object a(String paramString)
+  {
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.s = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayjm
  * JD-Core Version:    0.7.0.1
  */

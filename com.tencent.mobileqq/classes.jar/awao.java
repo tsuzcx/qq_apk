@@ -1,42 +1,34 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.util.SparseArray;
+import android.view.View;
 
 public class awao
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  akat jdField_a_of_type_Akat;
-  awar jdField_a_of_type_Awar;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  private SparseArray<View> a = new SparseArray();
   
-  public boolean a()
+  public View a(int paramInt)
   {
-    return (this.a != null) && (this.b == 1);
+    if (this.a.size() > 0)
+    {
+      View localView = (View)this.a.valueAt(paramInt);
+      if (localView != null) {
+        this.a.remove(paramInt);
+      }
+      return localView;
+    }
+    return null;
   }
   
-  public boolean b()
+  public void a(int paramInt, View paramView)
   {
-    return (this.a != null) && (this.b >= 2);
-  }
-  
-  public boolean c()
-  {
-    return (this.a != null) && (this.c == 3);
-  }
-  
-  public boolean d()
-  {
-    return (this.a != null) && (this.c >= 4);
+    if (this.a.size() >= 3) {
+      return;
+    }
+    this.a.put(paramInt, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awao
  * JD-Core Version:    0.7.0.1
  */

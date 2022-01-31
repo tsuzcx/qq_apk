@@ -1,31 +1,20 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.AVActivity.10.1;
-import com.tencent.av.ui.AVActivity.10.2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
-public class maw
-  extends bbzn
+class maw
+  implements DialogInterface.OnClickListener
 {
-  public maw(AVActivity paramAVActivity) {}
+  maw(mav parammav) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a().postDelayed(new AVActivity.10.1(this), 0L);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.a != null) {
-      this.a.a.a().post(new AVActivity.10.2(this));
-    }
+    this.a.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     maw
  * JD-Core Version:    0.7.0.1
  */

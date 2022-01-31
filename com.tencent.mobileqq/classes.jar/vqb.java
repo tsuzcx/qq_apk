@@ -1,33 +1,22 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class vqb
-  extends vpr
+  extends vqk<String>
 {
-  public final int c;
-  
-  public vqb(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public vqb(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    super(paramInt3, paramString, paramInt1);
-    this.c = paramInt2;
+    super(paramVideoViewVideoHolder, null);
   }
   
-  @NonNull
-  public Class<? extends vps> a()
+  public void a(String paramString)
   {
-    return vqc.class;
-  }
-  
-  @NonNull
-  public vps a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new vqc(this, paramContext, paramViewGroup);
+    super.onNext(paramString);
+    VideoViewVideoHolder.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqb
  * JD-Core Version:    0.7.0.1
  */

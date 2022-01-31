@@ -1,26 +1,22 @@
-import android.support.v4.app.Fragment;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
 public class aspn
-  extends GestureDetector.SimpleOnGestureListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aspn(MultiAIOItemFragment paramMultiAIOItemFragment) {}
+  public aspn(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Fragment localFragment = this.a.getParentFragment();
-    if ((localFragment != null) && ((localFragment instanceof MultiAIOFragment))) {
-      ((MultiAIOFragment)localFragment).a(this.a.getView(), paramMotionEvent);
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspn
  * JD-Core Version:    0.7.0.1
  */

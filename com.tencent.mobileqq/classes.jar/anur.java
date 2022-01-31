@@ -1,37 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class anur
-  extends VasQuickUpdateManager.CallBacker
+public class anur
+  extends alox
 {
-  anur(anuq paramanuq) {}
+  public anur(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    paramString2 = (MessengerService)this.a.a.get();
-    if (paramString2 == null) {}
-    do
+    if ((paramBoolean) && (paramString != null))
     {
-      do
+      String str = bdbt.c(this.a.app, paramString, false);
+      int i = 0;
+      while (i < this.a.c.getChildCount())
       {
-        return;
-      } while ((paramLong != 15L) || (!paramString1.startsWith("card.")));
-      paramString1 = new Bundle();
-    } while ((this == null) || (this.a.a.get() == null) || (paramString2.d == null));
-    paramString2.d.putString("cmd", "card_download");
-    paramString1.putInt("result", paramInt1);
-    paramString1.putString("message", paramString3);
-    paramString2.d.putBundle("response", paramString1);
-    paramString2.a(paramString2.d);
-    paramString2.d = null;
+        Object localObject = this.a.c.getChildAt(i);
+        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof anva)) && (paramString.equals(((anva)((View)localObject).getTag()).a)))
+        {
+          localObject = (TextView)((View)localObject).findViewById(2131371127);
+          if (localObject != null) {
+            ((TextView)localObject).setText(str);
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anur
  * JD-Core Version:    0.7.0.1
  */

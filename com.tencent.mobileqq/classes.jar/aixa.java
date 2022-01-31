@@ -1,87 +1,117 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.apollo.debug.log.CmGameDebugLogView.1;
-import java.util.ArrayList;
+import Wallet.RedInfoSyncReq;
+import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
+import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.RedInfo;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager.1;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import mqq.manager.Manager;
 
 public class aixa
+  implements aith, Manager
 {
-  private int jdField_a_of_type_Int;
-  private aixc jdField_a_of_type_Aixc;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private QWRedConfig jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public aixa(Context paramContext, int paramInt)
+  public aixa(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private List<aixb> a()
-  {
-    aiws localaiws = ajac.a();
-    if (localaiws != null) {
-      return localaiws.a(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "QWalletRedManager init");
     }
-    return new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public View a()
-  {
-    View localView = b();
-    a(localView);
-    return localView;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new CmGameDebugLogView.1(this));
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364314));
-    paramView = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-    this.jdField_a_of_type_Aixc = new aixc(this.jdField_a_of_type_AndroidContentContext, a());
-    paramView = new View(this.jdField_a_of_type_AndroidContentContext);
-    paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, baxn.a(this.jdField_a_of_type_AndroidContentContext, 32.0F)));
-    this.jdField_a_of_type_Aixc.a(paramView);
-    paramView.setId(2131362597);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aixc);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig = QWRedConfig.readConfig(paramQQAppInterface);
     a();
   }
   
-  public void a(boolean paramBoolean)
+  private void a()
   {
-    if (this.jdField_a_of_type_Aixc != null)
+    ThreadManager.executeOnSubThread(new QWalletRedManager.1(this));
+  }
+  
+  public aixc a(String paramString)
+  {
+    aixc localaixc = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getShowInfoByPath(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "getShowInfo path=" + paramString + ",res=" + localaixc);
+    }
+    return localaixc;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getNotShowListStr();
+  }
+  
+  public void a(String paramString)
+  {
+    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getCurShowRedInfosByPath(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "doClick" + paramString + "|" + localList);
+    }
+    paramString = new LinkedList();
+    Iterator localIterator = localList.iterator();
+    while (localIterator.hasNext())
     {
-      if (paramBoolean) {
-        a();
+      QWRedConfig.RedInfo localRedInfo = (QWRedConfig.RedInfo)localIterator.next();
+      if (localRedInfo.doClick()) {
+        paramString.add(localRedInfo);
       }
-      this.jdField_a_of_type_Aixc.a(a());
-      this.jdField_a_of_type_Aixc.notifyDataSetChanged();
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(this.jdField_a_of_type_Aixc.getItemCount() - 1);
+    }
+    if (paramString.size() > 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.saveConfig();
+      aiqs.a(RedInfoSyncReq.createReq(paramString), new aixb(this));
+    }
+    if (localList.size() > 0) {
+      VACDReportUtil.a(null, "QWalletStat", "QWalletRedClick", "QWalletRedClick", QWRedConfig.RedInfo.transToReportStr(localList), 0, null);
     }
   }
   
-  public View b()
+  public void a(String paramString1, String paramString2, aitb paramaitb)
   {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558795, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.parseConfig(paramaitb);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (paramList == null) {}
+    LinkedList localLinkedList;
+    do
+    {
+      return;
+      localLinkedList = new LinkedList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        localLinkedList.addAll(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getCurShowRedInfosByPath(str));
+      }
+    } while (localLinkedList.size() <= 0);
+    VACDReportUtil.a(null, "QWalletStat", "QWalletRedShow", "QWalletRedShow", QWRedConfig.RedInfo.transToReportStr(localLinkedList), 0, null);
+  }
+  
+  public void b(String paramString)
+  {
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(paramString);
+    a(localLinkedList);
+  }
+  
+  public void onDestroy()
+  {
+    aitd localaitd = (aitd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245);
+    if (localaitd != null) {
+      localaitd.d("redPoint", this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixa
  * JD-Core Version:    0.7.0.1
  */

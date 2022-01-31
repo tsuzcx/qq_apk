@@ -1,25 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.OnF2FConfigListener.1;
+import com.tencent.qphone.base.util.QLog;
 
-class aogc
-  implements Animation.AnimationListener
+public class aogc
+  implements aofq
 {
-  aogc(aogb paramaogb) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aofp paramaofp)
   {
-    this.a.a.g.setVisibility(8);
-    this.a.a.a = false;
+    if ((paramaofp != null) && ("qqsettingme_f2f_guide_config".equals(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnF2FConfigListener", 2, "handleConfigForTag qqsettingme_f2f content = " + paramaofp.a);
+      }
+      ThreadManager.post(new OnF2FConfigListener.1(this, paramaofp, paramQQAppInterface), 5, null, false);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aogc
  * JD-Core Version:    0.7.0.1
  */

@@ -51,6 +51,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AndroidOreoUtils;
 import mqq.app.IActivityDispatchCallback;
 import mqq.app.MobileQQ;
 import mqq.app.QQPermissionCallback;
@@ -79,6 +80,7 @@ public abstract class PluginProxyActivity
   private static Field sMMapField;
   private static Method sUnparcelMethod;
   public boolean mActNeedImmersive = true;
+  AndroidOreoUtils mAndroidOreoUtils;
   private boolean mCanLock = true;
   private Class<?> mClassLaunchActivity;
   protected String mCreateErrorInfo;
@@ -590,6 +592,11 @@ public abstract class PluginProxyActivity
     return 0;
   }
   
+  protected boolean compatibleAndroidOreo()
+  {
+    return true;
+  }
+  
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     if (sActivityDispatchCallback != null) {
@@ -762,6 +769,7 @@ public abstract class PluginProxyActivity
     if (DebugHelper.sDebug) {
       DebugHelper.log("PluginProxyActivity onCreate");
     }
+    this.mAndroidOreoUtils = new AndroidOreoUtils(this);
     Object localObject1;
     Object localObject2;
     Object localObject4;
@@ -785,8 +793,14 @@ public abstract class PluginProxyActivity
       localObject1 = paramBundle.getBundle("pluginsdk_inner_bundle");
       localObject2 = paramBundle;
     }
+    boolean bool;
     while (!PluginStatic.isValidPluginIntent((Bundle)localObject2))
     {
+      if ((Build.VERSION.SDK_INT == 26) && (compatibleAndroidOreo()) && (getApplicationInfo().targetSdkVersion >= 27) && (this.mAndroidOreoUtils.isTranslucentOrFloating()))
+      {
+        bool = this.mAndroidOreoUtils.fixOrientation();
+        QLog.i("PluginProxyActivity", 1, "onCreate fixOrientation when Oreo, result1 = " + bool);
+      }
       super.onCreate(paramBundle);
       finish();
       return;
@@ -807,7 +821,7 @@ public abstract class PluginProxyActivity
     try
     {
       this.mPluginApkFilePath = PluginUtils.getInstalledPluginPath(this, this.mPluginID).getCanonicalPath();
-      label295:
+      label386:
       this.mUinString = ((Bundle)localObject2).getString("pluginsdk_selfuin");
       if (!TextUtils.isEmpty(this.mUinString))
       {
@@ -841,11 +855,17 @@ public abstract class PluginProxyActivity
           {
             localObject1 = new IllegalArgumentException("Param mPluingLocation missing!");
             i = 0;
-            if (i == 0) {
+            if (i == 0)
+            {
+              if ((Build.VERSION.SDK_INT == 26) && (compatibleAndroidOreo()) && (getApplicationInfo().targetSdkVersion >= 27) && (this.mAndroidOreoUtils.isTranslucentOrFloating()))
+              {
+                bool = this.mAndroidOreoUtils.fixOrientation();
+                QLog.i("PluginProxyActivity", 1, "onCreate fixOrientation when Oreo, result3 = " + bool);
+              }
               super.onCreate(paramBundle);
             }
             if (localObject1 == null) {
-              break label829;
+              break label1074;
             }
             this.mCreateErrorInfo = PluginUtils.getExceptionInfo((Throwable)localObject1);
             if (DebugHelper.sDebug) {
@@ -885,6 +905,11 @@ public abstract class PluginProxyActivity
                 }
                 uploadLaunchInfoWhenCreateClassLoader(this.mLaunchActivity, getIntent());
                 this.mPluginActivity.IOnSetTheme();
+                if ((Build.VERSION.SDK_INT == 26) && (compatibleAndroidOreo()) && (getApplicationInfo().targetSdkVersion >= 27) && (this.mAndroidOreoUtils.isTranslucentOrFloating()))
+                {
+                  bool = this.mAndroidOreoUtils.fixOrientation();
+                  QLog.i("PluginProxyActivity", 1, "onCreate fixOrientation when Oreo, result2 = " + bool);
+                }
                 super.onCreate(paramBundle);
               }
               catch (Throwable localThrowable1)
@@ -919,7 +944,7 @@ public abstract class PluginProxyActivity
               PluginRuntime.handleCrash(localThrowable1, this.mPluginID, this);
               handleCrash((Bundle)localObject2, localThrowable1);
               continue;
-              label829:
+              label1074:
               this.mCreateErrorInfo = "success";
               if (DebugHelper.sDebug) {
                 DebugHelper.log("PluginProxyActivity.onCreate Success");
@@ -947,7 +972,7 @@ public abstract class PluginProxyActivity
     catch (Exception localException2)
     {
       int i;
-      break label295;
+      break label386;
     }
   }
   
@@ -1404,6 +1429,16 @@ public abstract class PluginProxyActivity
     {
       paramActivity.printStackTrace();
     }
+  }
+  
+  public void setRequestedOrientation(int paramInt)
+  {
+    if ((Build.VERSION.SDK_INT == 26) && (compatibleAndroidOreo()) && (getApplicationInfo().targetSdkVersion >= 27) && (this.mAndroidOreoUtils.isTranslucentOrFloating()) && (this.mAndroidOreoUtils.isFixedOrientation(this.mAndroidOreoUtils.getCurrentActivityInfo(), paramInt)))
+    {
+      QLog.i("PluginProxyActivity", 1, "avoid calling setRequestedOrientation when Oreo.");
+      return;
+    }
+    super.setRequestedOrientation(paramInt);
   }
   
   public void setStatusDrawable(Drawable paramDrawable)

@@ -1,28 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
 public class rvz
-  implements rwd
+  extends ThreadLocal<Boolean>
 {
-  public rvz(ViolaAccessHelper.2 param2) {}
+  public rvz(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
   
-  public void a()
+  protected Boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk error");
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk succ");
-    }
+    return Boolean.valueOf(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rvz
  * JD-Core Version:    0.7.0.1
  */

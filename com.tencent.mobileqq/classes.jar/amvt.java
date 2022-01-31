@@ -1,67 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.util.Size;
+import java.nio.FloatBuffer;
 
-public class amvt
-  extends ampa<amvs>
+public abstract interface amvt
 {
-  public int a()
-  {
-    return 490;
-  }
+  public abstract Size a();
   
-  @NonNull
-  public amvs a(int paramInt)
-  {
-    return new amvs();
-  }
+  public abstract FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
   
-  @Nullable
-  public amvs a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
-    {
-      amvs localamvs = amvs.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("RelationVipGrayProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
-      }
-      return localamvs;
-    }
-    return new amvs();
-  }
+  public abstract void a();
   
-  public Class<amvs> a()
-  {
-    return amvs.class;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(int paramInt) {}
+  public abstract boolean a();
   
-  public void a(amvs paramamvs) {}
+  public abstract boolean a(Context paramContext);
   
-  public boolean a()
-  {
-    return true;
-  }
+  public abstract void b();
   
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvt
  * JD-Core Version:    0.7.0.1
  */

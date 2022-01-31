@@ -1,23 +1,23 @@
 package dov.com.qq.im.story.mode;
 
-import ajya;
+import alpo;
 import android.view.View;
-import bcql;
-import bjry;
+import bmdi;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class StoryEffectTextMode$14
   implements Runnable
 {
-  public StoryEffectTextMode$14(bjry parambjry) {}
+  public StoryEffectTextMode$14(bmdi parambmdi) {}
   
   public void run()
   {
-    bcql.a(bjry.a(this.this$0).getContext(), ajya.a(2131714434), 0).a();
+    QQToast.a(bmdi.a(this.this$0).getContext(), alpo.a(2131714806), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.story.mode.StoryEffectTextMode.14
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import io.flutter.plugin.common.BasicMessageChannel.MessageHandler;
-import io.flutter.plugin.common.BasicMessageChannel.Reply;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.SocialFriendChooser;
 
 class bfcu
-  implements BasicMessageChannel.MessageHandler<ByteBuffer>
+  implements bfby
 {
-  bfcu(bfcr parambfcr) {}
+  bfcu(bfct parambfct) {}
   
-  public void a(ByteBuffer paramByteBuffer, BasicMessageChannel.Reply<ByteBuffer> paramReply)
+  public void a()
   {
-    betc.c("miniapp-TISSUE", new String(paramByteBuffer.array(), Charset.forName("utf8")));
+    ((OpenFrame)this.a.a.a.getCurrentView()).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfcu
  * JD-Core Version:    0.7.0.1
  */

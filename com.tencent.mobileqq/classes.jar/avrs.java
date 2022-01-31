@@ -1,20 +1,28 @@
-public abstract interface avrs
+import android.view.View;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.List;
+
+public class avrs
+  implements bhqd
 {
-  public abstract void a(int paramInt);
+  public avrs(OCRResultActivity paramOCRResultActivity) {}
   
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d();
+  public void OnClick(View paramView, int paramInt)
+  {
+    if ((OCRResultActivity.a(this.a) != null) && (paramInt < OCRResultActivity.a(this.a).size()))
+    {
+      paramView = (String)OCRResultActivity.a(this.a).get(paramInt);
+      OCRResultActivity.a(this.a, OCRResultActivity.a(this.a), paramView, false, true);
+    }
+    if ((OCRResultActivity.a(this.a) != null) && (OCRResultActivity.a(this.a).isShowing())) {
+      OCRResultActivity.a(this.a).dismiss();
+    }
+    OCRResultActivity.a(this.a, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avrs
  * JD-Core Version:    0.7.0.1
  */

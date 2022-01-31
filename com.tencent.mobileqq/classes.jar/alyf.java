@@ -1,78 +1,65 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class alyf
-  extends alyb
+  extends MSFServlet
 {
-  private float a;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  float[] d = new float[3];
-  private float[] e = new float[16];
-  
-  public alyf(Context paramContext, int paramInt, SensorManager paramSensorManager, alxt paramalxt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramContext, paramInt, paramSensorManager, paramalxt);
-    this.jdField_a_of_type_Float = -1.0F;
-    if (paramSensorManager.getDefaultSensor(3) != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd"));
     }
-    throw new OrientationProviderNotFound(String.valueOf(3));
-  }
-  
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (this.jdField_a_of_type_Alxt == null) {
-      return;
-    }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
     {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_Alxt.updateAzimuth(paramFloat1);
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    for (;;)
     {
-      this.b = paramFloat2;
-      this.jdField_a_of_type_Alxt.updatePitch(paramFloat2);
-    }
-    if (Math.abs(paramFloat3 - this.c) > 1.0F)
-    {
-      this.c = paramFloat3;
-      this.jdField_a_of_type_Alxt.updateRoll(paramFloat3);
-    }
-    this.jdField_a_of_type_Alxt.updateSensor(paramFloat1, paramFloat2, paramFloat3);
-  }
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    if (paramSensorEvent.sensor.getType() == 3)
-    {
-      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
-      if (this.jdField_a_of_type_Int != 1)
-      {
-        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
-        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
-        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
-        alxv.a(alxv.a(this.d), this.e);
-        super.a(this.e);
+      new Bundle().putByteArray("data", arrayOfByte);
+      SignatureHandler localSignatureHandler = (SignatureHandler)((QQAppInterface)super.getAppRuntime()).a(41);
+      if (localSignatureHandler != null) {
+        localSignatureHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
       }
-    }
-    else
-    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SignatureServlet", 2, "onReceive exit");
+      }
       return;
+      arrayOfByte = null;
     }
-    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if ((!TextUtils.isEmpty(str)) && (arrayOfByte != null))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bdlr.a(paramIntent, 0, arrayOfByte.length + 4);
+      bdlr.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureServlet", 2, "onSend exit cmd=" + str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyf
  * JD-Core Version:    0.7.0.1
  */

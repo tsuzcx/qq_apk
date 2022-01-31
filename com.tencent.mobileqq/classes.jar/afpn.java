@@ -1,32 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afpn
-  extends bfwg
+  extends afpq
 {
-  afpn(afpm paramafpm, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  afpn(aflj paramaflj)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    super(paramaflj, null);
   }
   
-  public View a(int paramInt, Object paramObject, bfwf parambfwf, View.OnClickListener paramOnClickListener)
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    parambfwf = super.a(paramInt, paramObject, parambfwf, paramOnClickListener);
-    if ((parambfwf instanceof SimpleTextView)) {
-      parambfwf.setTag(paramObject);
-    }
-    return parambfwf;
-  }
-  
-  public void a(int paramInt, Object paramObject, bfwf[] paramArrayOfbfwf)
-  {
-    this.a.a(paramInt, paramArrayOfbfwf, paramObject);
+    return new agbb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afpn
  * JD-Core Version:    0.7.0.1
  */

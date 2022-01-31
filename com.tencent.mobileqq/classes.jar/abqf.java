@@ -1,81 +1,34 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.Now;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.kingkong.UpdateManager;
+import org.json.JSONObject;
 
 public class abqf
-  implements uoe
+  extends Handler
 {
-  public abqf(Now paramNow) {}
-  
-  public View a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public ImageView a()
-  {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
-    for (boolean bool = true;; bool = false)
+    paramMessage = paramMessage.getData();
+    try
     {
-      vxp.a(bool);
-      return this.a.jdField_a_of_type_AndroidWidgetImageView;
-    }
-  }
-  
-  public TextView a()
-  {
-    if (this.a.c != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      vxp.a(bool);
-      return this.a.c;
-    }
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      Now.a(this.a);
+      String str = paramMessage.getString("PATCH_JSON_STRING");
+      boolean bool = paramMessage.getBoolean("PATCH_FORCE_UPDATE");
+      paramMessage = abqe.a(new JSONObject(str));
+      if (paramMessage != null) {
+        UpdateManager.a(paramMessage, bool);
+      }
       return;
     }
-    Now.b(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.a(false);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    catch (Exception paramMessage)
     {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
-      return;
+      abpt.a("KingKongUpdateManager", "Update patch exception : " + paramMessage);
     }
-  }
-  
-  public void c()
-  {
-    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqf
  * JD-Core Version:    0.7.0.1
  */

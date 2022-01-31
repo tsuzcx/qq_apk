@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class ApolloFavActionData
-  extends auko
+  extends awbv
 {
   public int acitonId;
   public int audioId;
   public float audioStartTime;
-  @aumc
+  @awdj
   public long favId;
   public int playOriginalAudio;
   public String text;
@@ -50,7 +50,7 @@ public class ApolloFavActionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloFavActionData
  * JD-Core Version:    0.7.0.1
  */

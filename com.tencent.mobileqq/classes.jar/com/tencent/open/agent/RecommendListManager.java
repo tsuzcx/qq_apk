@@ -12,27 +12,27 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bdek;
-import bdeo;
-import bdeq;
-import bder;
-import bdii;
+import bfdi;
+import bfdm;
+import bfdo;
+import bfdp;
+import bfhg;
 import com.tencent.open.agent.datamodel.Friend;
 import java.util.HashMap;
 
 public class RecommendListManager
   extends LinearLayout
-  implements View.OnClickListener, ViewStub.OnInflateListener, bdeq
+  implements View.OnClickListener, ViewStub.OnInflateListener, bfdo
 {
   protected Handler a;
-  protected bdek a;
+  protected bfdi a;
   protected FriendChooser a;
   protected HashMap<String, View> a;
   
   public RecommendListManager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Bdek = bdek.a();
+    this.jdField_a_of_type_Bfdi = bfdi.a();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -48,7 +48,7 @@ public class RecommendListManager
       localViewStub.setOnClickListener(this);
       i += 1;
     }
-    bdii.c("RecommendListManager", "-->onCreate()");
+    bfhg.c("RecommendListManager", "-->onCreate()");
   }
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
@@ -58,8 +58,8 @@ public class RecommendListManager
   
   public void b()
   {
-    int j = this.jdField_a_of_type_Bdek.a();
-    bdii.c("RecommendListManager", "-->notifyDataSetChanged() count = " + j);
+    int j = this.jdField_a_of_type_Bfdi.a();
+    bfhg.c("RecommendListManager", "-->notifyDataSetChanged() count = " + j);
     int i = j;
     if (j > 5) {
       i = 5;
@@ -75,9 +75,9 @@ public class RecommendListManager
       {
         j += 1;
         break;
-        localObject = (CheckBox)((View)localObject).findViewById(2131364192);
-        Friend localFriend = this.jdField_a_of_type_Bdek.a(j);
-        if (this.jdField_a_of_type_Bdek.a(localFriend.a)) {
+        localObject = (CheckBox)((View)localObject).findViewById(2131364254);
+        Friend localFriend = this.jdField_a_of_type_Bfdi.a(j);
+        if (this.jdField_a_of_type_Bfdi.a(localFriend.a)) {
           ((CheckBox)localObject).setChecked(true);
         } else {
           ((CheckBox)localObject).setChecked(false);
@@ -96,13 +96,13 @@ public class RecommendListManager
     }
     for (;;)
     {
-      bdii.c("RecommendListManager", "-->onClick() position = " + i + " v.getId() = " + paramView.getId());
-      if ((i != -1) && (i < this.jdField_a_of_type_Bdek.a()))
+      bfhg.c("RecommendListManager", "-->onClick() position = " + i + " v.getId() = " + paramView.getId());
+      if ((i != -1) && (i < this.jdField_a_of_type_Bfdi.a()))
       {
-        paramView = (CheckBox)paramView.findViewById(2131364192);
-        Friend localFriend = this.jdField_a_of_type_Bdek.a(i);
+        paramView = (CheckBox)paramView.findViewById(2131364254);
+        Friend localFriend = this.jdField_a_of_type_Bfdi.a(i);
         this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(localFriend);
-        if (!this.jdField_a_of_type_Bdek.a(localFriend.a)) {
+        if (!this.jdField_a_of_type_Bfdi.a(localFriend.a)) {
           break;
         }
         paramView.setChecked(true);
@@ -129,26 +129,26 @@ public class RecommendListManager
     switch (paramView.getId())
     {
     default: 
-      bdii.c("RecommendListManager", "-->onInflate() position = " + i);
+      bfhg.c("RecommendListManager", "-->onInflate() position = " + i);
       paramView.setOnClickListener(this);
-      paramViewStub = this.jdField_a_of_type_Bdek.a(i);
+      paramViewStub = this.jdField_a_of_type_Bfdi.a(i);
       if ((paramViewStub.d == null) || ("".equals(paramViewStub.d))) {
-        paramViewStub.d = bder.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
+        paramViewStub.d = bfdp.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(paramViewStub.d, paramView);
-      localObject = (CheckBox)paramView.findViewById(2131364192);
-      localImageView = (ImageView)paramView.findViewById(2131367679);
-      paramView = (TextView)paramView.findViewById(2131370647);
-      if (this.jdField_a_of_type_Bdek.a(paramViewStub.a))
+      localObject = (CheckBox)paramView.findViewById(2131364254);
+      localImageView = (ImageView)paramView.findViewById(2131367808);
+      paramView = (TextView)paramView.findViewById(2131370958);
+      if (this.jdField_a_of_type_Bfdi.a(paramViewStub.a))
       {
         ((CheckBox)localObject).setChecked(true);
         label180:
-        localObject = bdeo.a().a(paramViewStub.d);
+        localObject = bfdm.a().a(paramViewStub.d);
         if (localObject != null) {
           break label277;
         }
-        localImageView.setImageResource(2130839736);
-        bdeo.a().a(paramViewStub.d, this);
+        localImageView.setImageResource(2130840084);
+        bfdm.a().a(paramViewStub.d, this);
       }
       break;
     }

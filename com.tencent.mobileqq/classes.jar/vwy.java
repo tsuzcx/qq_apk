@@ -1,66 +1,58 @@
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
 
-public class vwy
+class vwy
+  extends naa
 {
-  public View a;
-  public View b;
+  vwy(vwx paramvwx) {}
   
-  public vwy(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131369200);
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
-  {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
-    float f = 0.0F;
-    if (localIterator.hasNext())
-    {
-      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
+    this.a.jdField_a_of_type_Vwo.l();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_Vwo.jdField_b_of_type_JavaLangString, 2, "troop story delete result, code=" + paramInt);
+    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
       {
-      }
-      for (;;)
-      {
-        break;
-        if ((vxy.b(paramTroopStoryItemInfo.publishTime)) || (vxy.d(paramTroopStoryItemInfo.publishTime)))
-        {
-          f = vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
+        paramBundle = this.a.jdField_a_of_type_Vwo.a.jdField_b_of_type_JavaLangString;
+        Object localObject = new qqstory_group.RspGroupVideoDelete();
+        ((qqstory_group.RspGroupVideoDelete)localObject).mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_group.RspGroupVideoDelete)localObject).result.get();
+        this.a.jdField_a_of_type_Wkv.a(paramBundle, 0, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        this.a.jdField_a_of_type_Wkv.a(paramBundle, 1, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        localObject = new uqw(new ErrorMessage(), this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
+        ((uqw)localObject).jdField_b_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+        ((uqw)localObject).d = paramBundle;
+        ((uqw)localObject).jdField_b_of_type_Boolean = false;
+        ((uqw)localObject).c = this.a.jdField_a_of_type_Vwo.b();
+        ((uqw)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+        if (((uqw)localObject).a == 0L) {
+          ((uqw)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
         }
-        else
-        {
-          f = vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
-          continue;
-          f = vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
-          continue;
-          f = vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
-          continue;
-          f = vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+        Bosses.get().scheduleJobDelayed(new vwz(this, this.a.jdField_a_of_type_Vwo.jdField_b_of_type_JavaLangString, (uqw)localObject), 400);
+        return paramArrayOfByte;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.jdField_a_of_type_Vwo.jdField_b_of_type_JavaLangString, 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
         }
       }
     }
-    int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
-    paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
-    if (i <= 0)
-    {
-      paramTroopStoryItemInfo.height = 0;
-      this.b.setLayoutParams(paramTroopStoryItemInfo);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    }
-    paramTroopStoryItemInfo.height = i;
-    this.b.setLayoutParams(paramTroopStoryItemInfo);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-
-class bciu
-  extends mxj
+public class bciu
+  implements bcis
 {
-  bciu(bciq parambciq, bcix parambcix) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean a(bbnr parambbnr)
   {
-    if (this.jdField_a_of_type_Bcix != null)
+    switch (parambbnr.e)
     {
-      paramBundle = new oidb_0x8e4.RspBody();
-      if (paramArrayOfByte == null) {}
+    default: 
+      return false;
     }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bcix.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
-        }
-      }
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bciu
  * JD-Core Version:    0.7.0.1
  */

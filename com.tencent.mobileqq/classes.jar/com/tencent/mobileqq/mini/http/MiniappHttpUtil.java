@@ -2,13 +2,6 @@ package com.tencent.mobileqq.mini.http;
 
 import android.text.TextUtils;
 import android.util.Log;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.internal.http.HttpMethod;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -29,6 +22,13 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLPeerUnverifiedException;
+import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
+import okhttp3.RequestBody;
+import okhttp3.internal.http.HttpMethod;
 import org.json.JSONObject;
 
 public class MiniappHttpUtil
@@ -323,7 +323,7 @@ public class MiniappHttpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.http.MiniappHttpUtil
  * JD-Core Version:    0.7.0.1
  */

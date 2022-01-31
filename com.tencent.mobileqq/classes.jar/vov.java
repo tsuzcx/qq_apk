@@ -1,17 +1,14 @@
+import java.util.ArrayList;
+
 public class vov
+  extends ugz
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public ArrayList<String> a;
+  public boolean a = true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vov
  * JD-Core Version:    0.7.0.1
  */

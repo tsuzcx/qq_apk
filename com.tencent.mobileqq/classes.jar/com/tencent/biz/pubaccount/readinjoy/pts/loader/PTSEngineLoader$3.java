@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import mzb;
-import ppj;
-import ppk;
+import nbv;
+import pvy;
+import pvz;
 
 public class PTSEngineLoader$3
   implements Runnable
 {
-  public PTSEngineLoader$3(ppj paramppj) {}
+  public PTSEngineLoader$3(pvy parampvy) {}
   
   public void run()
   {
-    ppk localppk = new ppk(this);
+    pvz localpvz = new pvz(this);
     try
     {
-      mzb.a();
+      nbv.a();
     }
     catch (Throwable localThrowable2)
     {
@@ -24,7 +24,7 @@ public class PTSEngineLoader$3
       {
         try
         {
-          mzb.b("3980", BaseApplicationImpl.getApplication().getRuntime(), localppk, true, 0, true);
+          nbv.b("3980", BaseApplicationImpl.getApplication().getRuntime(), localpvz, true, 0, true);
           return;
         }
         catch (Throwable localThrowable1)
@@ -39,7 +39,7 @@ public class PTSEngineLoader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,24 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.text.DynamicLayout;
+import android.text.Layout.Alignment;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
 
-public abstract interface bhwp
-  extends IInterface
+public class bhwp
+  extends DynamicLayout
 {
-  public abstract Bundle a(String paramString, Bundle paramBundle);
+  public bhwp(CharSequence paramCharSequence1, CharSequence paramCharSequence2, TextPaint paramTextPaint, int paramInt1, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt2)
+  {
+    super(paramCharSequence1, paramCharSequence2, paramTextPaint, paramInt1, paramAlignment, paramFloat1, paramFloat2, paramBoolean, paramTruncateAt, paramInt2);
+  }
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public int getParagraphDirection(int paramInt)
+  {
+    return 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhwp
  * JD-Core Version:    0.7.0.1
  */

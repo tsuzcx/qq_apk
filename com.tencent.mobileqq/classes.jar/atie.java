@@ -1,20 +1,43 @@
 import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class atie
-  extends mxi
+  implements EIPCResultCallback
 {
-  atie(atib paramatib, atii paramatii) {}
+  atie(atid paramatid) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (this.jdField_a_of_type_Atii != null) {
-      this.jdField_a_of_type_Atii.a(paramInt, paramArrayOfByte, paramBundle);
+    int i = 0;
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(atid.a(this.a))) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      if (paramEIPCResult.data.getBoolean("result")) {}
+      for (;;)
+      {
+        localJSONObject.put("result", i);
+        this.a.callJs(atid.a(this.a), new String[] { localJSONObject.toString() });
+        return;
+        i = 1;
+      }
+      return;
+    }
+    catch (JSONException paramEIPCResult)
+    {
+      paramEIPCResult.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atie
  * JD-Core Version:    0.7.0.1
  */

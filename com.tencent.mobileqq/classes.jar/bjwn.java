@@ -1,25 +1,46 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
 import android.view.View;
+import android.widget.PopupWindow;
+import java.lang.ref.WeakReference;
 
-class bjwn
-  extends AnimatorListenerAdapter
+public class bjwn
+  extends PopupWindow
 {
-  bjwn(bjwl parambjwl) {}
+  private WeakReference<Context> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bjwn(Context paramContext)
   {
-    bjwl.a(this.a).setVisibility(8);
+    super(paramContext);
+    this.a = new WeakReference(paramContext);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void showAsDropDown(View paramView)
   {
-    bjwl.a(this.a).setVisibility(8);
+    if (this.a.get() == null) {
+      return;
+    }
+    super.showAsDropDown(paramView);
+  }
+  
+  public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
+  {
+    if (this.a.get() == null) {
+      return;
+    }
+    super.showAsDropDown(paramView, paramInt1, paramInt2);
+  }
+  
+  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.get() == null) {
+      return;
+    }
+    super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjwn
  * JD-Core Version:    0.7.0.1
  */

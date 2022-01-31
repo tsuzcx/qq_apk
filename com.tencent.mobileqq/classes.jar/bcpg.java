@@ -1,21 +1,38 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.widget.AdapterView;
 
 public class bcpg
-  implements View.OnClickListener
+  implements bhqr
 {
-  public bcpg(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
+  public bcpg(WheelPickerLayout paramWheelPickerLayout) {}
   
-  public void onClick(View paramView)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    auvs.a().b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    WheelPickerLayout.a(this.a, paramView, 1);
+    WheelPickerLayout.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt)
+        {
+          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        }
+        paramInt += 1;
+      }
+    }
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpg
  * JD-Core Version:    0.7.0.1
  */

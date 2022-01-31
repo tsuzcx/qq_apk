@@ -1,67 +1,39 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarReq;
-import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarRsp;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bfaz
-  extends bfau
+  implements bfbn
 {
-  private INTERFACE.StSetUserAvatarReq a = new INTERFACE.StSetUserAvatarReq();
+  public bfaz(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public bfaz(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public void a()
   {
-    this.a.appid.set(paramString1);
-    this.a.uin.set(paramString2);
-    this.a.set_type.set(paramInt);
-    this.a.item_id.set(paramString3);
-    this.a.busi_info.set(paramString4);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
+    Intent localIntent = new Intent(this.a.getActivity(), Login.class);
+    localIntent.putExtra("key_req_src", 1);
+    localIntent.putExtra("is_first_login", true);
+    this.a.jdField_a_of_type_JavaLangString = null;
+    this.a.getActivity().startActivityForResult(localIntent, 1);
   }
   
-  protected String a()
+  public void a(String paramString, boolean paramBoolean)
   {
-    return "mini_app_userapp";
+    this.a.a(paramString, paramBoolean);
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public void b()
   {
-    if (paramArrayOfByte == null) {
-      return null;
+    this.a.c(this.a.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer != null) {
+      this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.b();
     }
-    INTERFACE.StSetUserAvatarRsp localStSetUserAvatarRsp = new INTERFACE.StSetUserAvatarRsp();
-    try
-    {
-      localStSetUserAvatarRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStSetUserAvatarRsp != null) {
-        return new JSONObject();
-      }
-      betc.a("SetAvatarRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("SetAvatarRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "SetUserAvatar";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfaz
  * JD-Core Version:    0.7.0.1
  */

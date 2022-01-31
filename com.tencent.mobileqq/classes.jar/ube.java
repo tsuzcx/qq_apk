@@ -1,62 +1,57 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudWrite.StDoFollowRsp;
 
 public class ube
-  extends uaf
+  implements yvn<FeedCloudWrite.StDoFollowRsp>
 {
-  public ube(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public ube(QCircleFollowView paramQCircleFollowView, int paramInt, boolean paramBoolean) {}
   
-  public void d()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
   {
-    boolean bool = false;
-    super.d();
-    String str1 = this.a.jdField_a_of_type_JavaLangString;
-    String str2 = VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)];
-    if (this.a.a().getVisibility() == 0) {
-      bool = true;
-    }
-    ved.d(str1, "onResume, current state = %s, startBtn show = %s", new Object[] { str2, Boolean.valueOf(bool) });
-    if (this.a.c()) {
-      this.a.a(10, "onResume");
-    }
-  }
-  
-  public void e()
-  {
-    super.e();
-    VideoViewVideoHolder.a(this.a, false);
-    ved.d(this.a.jdField_a_of_type_JavaLangString, "onPause, current state = %s", new Object[] { VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)] });
-    this.a.a(0, true, "onPause");
-  }
-  
-  public void g()
-  {
-    super.g();
-    VideoViewVideoHolder.a(this.a).removeCallbacksAndMessages(null);
-    this.a.jdField_a_of_type_Ubv.a();
-    this.a.a(0, true, "onDestroy");
-    this.a.jdField_a_of_type_Ucz.a();
-    this.a.jdField_a_of_type_Ucz.e();
-    tsi localtsi = VideoViewVideoHolder.a(this.a);
-    VideoViewVideoHolder.a(this.a, null);
-    if (localtsi != null) {
-      localtsi.a();
-    }
-    if (VideoViewVideoHolder.a(this.a) != null)
+    boolean bool = true;
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      VideoViewVideoHolder.a(this.a).recycle();
-      VideoViewVideoHolder.a(this.a, null);
+      if (!QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView)) {}
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a(this.jdField_a_of_type_Int, true);
+      if ((QCircleFollowView.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView)) && (this.jdField_a_of_type_Int == 1)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext(), 2, 2131698317, 0).a();
+      }
+      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null)
+      {
+        if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null) {
+          QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).a(true, QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView));
+        }
+        yej.a().a(new QCircleFollowUpdateEvent(this.jdField_a_of_type_Int, QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).id.get()));
+        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext(), QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).id.get(), this.jdField_a_of_type_Int);
+        paramString = txt.a();
+        paramStDoFollowRsp = QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).id.get();
+        if (this.jdField_a_of_type_Int != 1) {
+          break label208;
+        }
+      }
+      label208:
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.a(paramStDoFollowRsp, paramBoolean);
+        return;
+      }
     }
-    if ((this.a.jdField_a_of_type_Wbw != null) && (this.a.jdField_a_of_type_Wbw.isShowing())) {
-      this.a.jdField_a_of_type_Wbw.dismiss();
+    paramString = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2131698316;; i = 2131698381)
+    {
+      QQToast.a(paramString, 1, i, 0).a();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ube
  * JD-Core Version:    0.7.0.1
  */

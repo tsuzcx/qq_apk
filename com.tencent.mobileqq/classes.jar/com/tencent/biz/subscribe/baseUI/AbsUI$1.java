@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.baseUI;
 
-import wkh;
+import xyz;
 
 public class AbsUI$1
   implements Runnable
@@ -8,12 +8,12 @@ public class AbsUI$1
   public void run()
   {
     this.this$0.b();
-    this.this$0.c();
+    this.this$0.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.baseUI.AbsUI.1
  * JD-Core Version:    0.7.0.1
  */

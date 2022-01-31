@@ -1,10 +1,16 @@
-public abstract interface ayhr
+public class ayhr
 {
-  public abstract void a(int paramInt, ayit paramayit);
+  public int a;
+  public String a;
+  public long[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayhr
  * JD-Core Version:    0.7.0.1
  */

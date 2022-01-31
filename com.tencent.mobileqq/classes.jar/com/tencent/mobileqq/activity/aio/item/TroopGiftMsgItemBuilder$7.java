@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aukp;
+import awbw;
 
 public final class TroopGiftMsgItemBuilder$7
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$7(aukp paramaukp) {}
+  public TroopGiftMsgItemBuilder$7(awbw paramawbw) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$7:a	Laukp;
-    //   4: invokevirtual 24	aukp:a	()Laukr;
+    //   1: getfield 12	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$7:a	Lawbw;
+    //   4: invokevirtual 24	awbw:a	()Lawby;
     //   7: astore_1
     //   8: aload_1
-    //   9: invokevirtual 28	aukr:a	()V
-    //   12: getstatic 33	aedj:a	Ljava/util/List;
+    //   9: invokevirtual 28	awby:a	()V
+    //   12: getstatic 33	afzx:a	Ljava/util/List;
     //   15: invokeinterface 39 1 0
     //   20: astore_2
     //   21: aload_2
@@ -28,31 +28,31 @@ public final class TroopGiftMsgItemBuilder$7
     //   36: checkcast 51	com/tencent/mobileqq/data/MessageForTroopGift
     //   39: astore_3
     //   40: aload_0
-    //   41: getfield 12	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$7:a	Laukp;
+    //   41: getfield 12	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$7:a	Lawbw;
     //   44: aload_3
-    //   45: invokevirtual 54	aukp:a	(Lauko;)Z
+    //   45: invokevirtual 54	awbw:a	(Lawbv;)Z
     //   48: pop
     //   49: goto -28 -> 21
     //   52: astore_2
     //   53: aload_1
-    //   54: invokevirtual 57	aukr:b	()V
-    //   57: getstatic 33	aedj:a	Ljava/util/List;
+    //   54: invokevirtual 57	awby:b	()V
+    //   57: getstatic 33	afzx:a	Ljava/util/List;
     //   60: invokeinterface 60 1 0
     //   65: return
     //   66: aload_1
-    //   67: invokevirtual 63	aukr:c	()V
+    //   67: invokevirtual 63	awby:c	()V
     //   70: aload_1
-    //   71: invokevirtual 57	aukr:b	()V
+    //   71: invokevirtual 57	awby:b	()V
     //   74: goto -17 -> 57
     //   77: astore_2
     //   78: aload_1
-    //   79: invokevirtual 57	aukr:b	()V
+    //   79: invokevirtual 57	awby:b	()V
     //   82: aload_2
     //   83: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	84	0	this	7
-    //   7	72	1	localaukr	aukr
+    //   7	72	1	localawby	awby
     //   20	11	2	localIterator	java.util.Iterator
     //   52	1	2	localException	java.lang.Exception
     //   77	6	2	localObject	Object
@@ -69,7 +69,7 @@ public final class TroopGiftMsgItemBuilder$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

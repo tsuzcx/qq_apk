@@ -1,23 +1,33 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class arbs
-  implements TVK_IMediaPlayer.OnErrorListener
+final class arbs
+  implements View.OnClickListener
 {
-  arbs(arbp paramarbp) {}
+  arbs(FileManagerEntity paramFileManagerEntity, ardn paramardn) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(View paramView)
   {
-    this.a.c = 7;
-    if (arbp.a(this.a) != null) {
-      arbp.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    try
+    {
+      paramView = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      paramView.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
+      armz.d(BaseActivity.sTopActivity.getString(2131692912));
+      if ((this.jdField_a_of_type_Ardn != null) && (this.jdField_a_of_type_Ardn.b())) {
+        arni.a(paramView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      }
+      return;
     }
-    return false;
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbs
  * JD-Core Version:    0.7.0.1
  */

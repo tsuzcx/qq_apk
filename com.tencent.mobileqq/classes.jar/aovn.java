@@ -1,53 +1,76 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
-class aovn
-  extends aovw
+public class aovn
 {
+  protected byte a;
+  protected int a;
   protected long a;
   protected String a;
-  protected String b;
+  protected short a;
+  protected boolean a;
+  protected byte[] a;
+  public String b;
   protected String c;
   protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  protected String e = "";
+  protected String f = "";
   
-  public aovn(aouy paramaouy, MessageRecord paramMessageRecord)
+  public aovn(aovm paramaovm)
   {
-    super(paramaouy);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    this.jdField_a_of_type_Byte = 3;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aovv paramaovv)
+  public void a(DataInputStream paramDataInputStream)
   {
-    if ("1".equals(this.g))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaovv.a(aouy.a(this.jdField_a_of_type_Long, false), false);
-      return;
+    this.jdField_a_of_type_Long = paramDataInputStream.readLong();
+    this.jdField_a_of_type_JavaLangString = paramDataInputStream.readUTF();
+    this.b = paramDataInputStream.readUTF();
+    this.d = paramDataInputStream.readUTF();
+    this.jdField_a_of_type_Byte = paramDataInputStream.readByte();
+    this.c = paramDataInputStream.readUTF();
+    this.e = paramDataInputStream.readUTF();
+    this.jdField_a_of_type_Short = paramDataInputStream.readShort();
+  }
+  
+  public void a(DataOutputStream paramDataOutputStream)
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = "";
     }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild uuid is null");
-      }
-      paramaovv.a(aouy.a(this.jdField_a_of_type_Long, true), false);
-      return;
+    if (this.b == null) {
+      this.b = "";
     }
-    aouy.a(this.jdField_a_of_type_Aouy).a().a().a(paramString, paramInt, this.d, 102, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aovo(this, paramString, paramaovv));
+    if (this.d == null) {
+      this.d = "";
+    }
+    if (this.c == null) {
+      this.c = "";
+    }
+    paramDataOutputStream.writeLong(this.jdField_a_of_type_Long);
+    paramDataOutputStream.writeUTF(this.jdField_a_of_type_JavaLangString);
+    paramDataOutputStream.writeUTF(this.b);
+    paramDataOutputStream.writeUTF(this.d);
+    paramDataOutputStream.writeByte(this.jdField_a_of_type_Byte);
+    paramDataOutputStream.writeUTF(this.c);
+    paramDataOutputStream.writeUTF(this.e);
+    paramDataOutputStream.writeShort(this.jdField_a_of_type_Short);
+  }
+  
+  public void b(DataInputStream paramDataInputStream)
+  {
+    a(paramDataInputStream);
+    this.f = paramDataInputStream.readUTF();
+  }
+  
+  public void b(DataOutputStream paramDataOutputStream)
+  {
+    a(paramDataOutputStream);
+    if (this.f == null) {
+      this.f = "";
+    }
+    paramDataOutputStream.writeUTF(this.f);
   }
 }
 

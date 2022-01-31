@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Message;
-import bbdj;
+import bdcd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -28,7 +28,7 @@ class BaseJsPluginEngine$1
     boolean bool = StorageUtil.getPreference().getBoolean(str + "_" + this.this$0.getAppInfo().appId, false);
     if ((BaseJsPluginEngine.access$100(this.this$0)) && (!bool) && ("android.permission.WRITE_EXTERNAL_STORAGE".equals(this.val$permissionName)))
     {
-      bbdj.b(this.val$act);
+      bdcd.b(this.val$act);
       StorageUtil.getPreference().edit().putBoolean(str + "_" + this.this$0.getAppInfo().appId, true).commit();
       return;
     }
@@ -46,7 +46,7 @@ class BaseJsPluginEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine.1
  * JD-Core Version:    0.7.0.1
  */

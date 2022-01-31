@@ -1,76 +1,55 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qconn.protofile.preAuth.PreAuthRequest;
-import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class bdok
-  implements BusinessObserver
+public class bdok
+  extends alxo
 {
-  bdok(bdod parambdod, bdnp parambdnp, bdon parambdon, int paramInt, preAuth.PreAuthRequest paramPreAuthRequest, Activity paramActivity) {}
+  public bdok(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
   
-  private void a(int paramInt, String paramString)
+  public void d(boolean paramBoolean, Object paramObject)
   {
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "--> preAuth onFail mPreAuthRetryCount=", Integer.valueOf(bdod.c(this.jdField_a_of_type_Bdod)), ", errorCode=", Integer.valueOf(paramInt) });
-    if (bdod.c(this.jdField_a_of_type_Bdod) < this.jdField_a_of_type_Int)
+    int i;
+    if ((paramBoolean) && ((paramObject instanceof ArrayList)))
     {
-      bdod.d(this.jdField_a_of_type_Bdod);
-      this.jdField_a_of_type_Bdod.a(this.jdField_a_of_type_ComTencentQconnProtofilePreAuth$PreAuthRequest, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bdnp, this.jdField_a_of_type_Bdon, this.jdField_a_of_type_Int);
-      return;
-    }
-    bdod.b(this.jdField_a_of_type_Bdod, 0);
-    this.jdField_a_of_type_Bdon.a(paramInt, paramString);
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "preAuthWithRetry isSuccess=", Boolean.valueOf(paramBoolean), ", type=", Integer.valueOf(paramInt), ", mPreAuthRetryCount=", Integer.valueOf(bdod.c(this.jdField_a_of_type_Bdod)) });
-    if (!paramBoolean)
-    {
-      aqgj.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bdnp, false);
-      a(paramBundle.getInt("code", -1), "");
-      return;
-    }
-    byte[] arrayOfByte = paramBundle.getByteArray("data");
-    if (arrayOfByte == null)
-    {
-      aqgj.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bdnp, false);
-      a(paramBundle.getInt("code", -1), "");
-      return;
-    }
-    preAuth.PreAuthResponse localPreAuthResponse = new preAuth.PreAuthResponse();
-    arrayOfByte = bdoo.b(arrayOfByte, this.jdField_a_of_type_Bdnp);
-    try
-    {
-      localPreAuthResponse = (preAuth.PreAuthResponse)localPreAuthResponse.mergeFrom(arrayOfByte);
-      if ((localPreAuthResponse.ret.has()) && (localPreAuthResponse.ret.get() == 0))
-      {
-        QLog.d("OpenSdkVirtualManager", 1, "--> preAuth mergeFrom success");
-        aqgj.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bdnp, true);
-        bdod.a(this.jdField_a_of_type_Bdod, localPreAuthResponse);
-        bdod.b(this.jdField_a_of_type_Bdod, 0);
-        this.jdField_a_of_type_Bdon.a();
-        return;
+      paramObject = (ArrayList)paramObject;
+      i = ((Integer)paramObject.get(1)).intValue();
+      if (i == 257) {
+        if (((Boolean)paramObject.get(2)).booleanValue())
+        {
+          this.a.a(1);
+          this.a.jdField_a_of_type_Int = 1;
+        }
       }
     }
-    catch (Exception localException)
+    for (;;)
     {
-      QLog.e("OpenSdkVirtualManager", 1, "Exception", localException);
-      aqgj.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bdnp, false);
-      a(paramBundle.getInt("code", -1), "");
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      if (this.a.jdField_a_of_type_Beps != null) {
+        this.a.jdField_a_of_type_Beps.b();
+      }
       return;
+      this.a.a(0);
+      this.a.jdField_a_of_type_Int = 0;
+      continue;
+      if (i == 258)
+      {
+        this.a.jdField_a_of_type_Int = this.a.b;
+        continue;
+        this.a.a(this.a.jdField_a_of_type_Int);
+        if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) {
+          QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, alpo.a(2131705246), 0).a();
+        }
+        QLog.e("IphoneTitleBarFragment", 0, "onFriendCloneAuth: failed. ");
+      }
     }
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "--> preAuth mergeFrom fail ret=", Integer.valueOf(localException.ret.get()), ", msg=", localException.msg.get() });
-    aqgj.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bdnp, false);
-    a(localException.ret.get(), localException.msg.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdok
  * JD-Core Version:    0.7.0.1
  */

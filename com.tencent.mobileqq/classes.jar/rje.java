@@ -1,20 +1,13 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.util.List;
 
-public class rje
-  implements MessageQueue.IdleHandler
+public abstract interface rje
 {
-  public rje(FastWebActivity paramFastWebActivity) {}
-  
-  public boolean queueIdle()
-  {
-    FastWebActivity.e(this.a);
-    return false;
-  }
+  public abstract List<qyp> a(List<VideoInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rje
  * JD-Core Version:    0.7.0.1
  */

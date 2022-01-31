@@ -1,87 +1,46 @@
-import android.content.Context;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import java.util.HashSet;
-import java.util.Set;
+import UserGrowth.stFeed;
+import UserGrowth.stFollowFeedsRsp;
+import java.util.List;
 
-public class tii
-  extends RecyclerView.ItemDecoration
+class tii
+  implements teo<stFeed>
 {
-  static final Set<Integer> a;
-  protected int a;
-  protected int b;
-  protected int c;
-  protected int d;
-  protected int e;
+  tii(tih paramtih) {}
   
-  static
+  public void a(boolean paramBoolean1, List<stFeed> paramList, boolean paramBoolean2)
   {
-    jdField_a_of_type_JavaUtilSet = new HashSet();
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-  }
-  
-  public tii(Context paramContext)
-  {
-    this.jdField_a_of_type_Int = actj.a(5.0F, paramContext.getResources());
-    this.b = actj.a(16.0F, paramContext.getResources());
-    this.c = actj.a(8.5F, paramContext.getResources());
-    this.d = actj.a(3.0F, paramContext.getResources());
-    this.e = actj.a(3.0F, paramContext.getResources());
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
-    paramView = paramRecyclerView.getAdapter();
-    if ((k < 0) || (k >= paramView.getItemCount())) {
+    if (!paramBoolean1)
+    {
+      ((tit)this.a.a()).a(paramList);
       return;
     }
-    int m = paramView.getItemViewType(k);
-    if (paramView.getItemCount() > k + 1)
+    ((tit)this.a.a()).a(paramList, paramBoolean2);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
+  {
+    ((tit)this.a.a()).d();
+    if (paramBoolean1) {
+      ((tit)this.a.a()).b(paramBoolean2);
+    }
+    if (!paramBoolean2) {
+      ((tit)this.a.a()).a(false, true);
+    }
+    for (;;)
     {
-      int n = paramView.getItemViewType(k + 1);
-      int i = 0;
-      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
-        i = 1;
-      }
-      int j = i;
-      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
-        j = i + 1;
-      }
-      if (j == 1)
+      return;
+      if ((!(paramObject instanceof stFollowFeedsRsp)) || (tlf.a(((stFollowFeedsRsp)paramObject).feeds))) {}
+      for (int i = 1; i != 0; i = 0)
       {
-        paramRect.right = this.d;
-        return;
-      }
-      if (j == 2)
-      {
-        paramRect.right = this.e;
+        ((tit)this.a.a()).a(true, true);
         return;
       }
     }
-    if (m == 2)
-    {
-      paramRect.right = this.b;
-      return;
-    }
-    if (k == paramState.getItemCount() - 1)
-    {
-      paramRect.right = this.c;
-      return;
-    }
-    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tii
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
 
-class qst
-  extends AnimatorListenerAdapter
+public class qst
+  extends qtx
 {
-  qst(qsq paramqsq, qmp paramqmp) {}
+  public qst(EditVideoFragment paramEditVideoFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void o()
   {
-    this.jdField_a_of_type_Qsq.b(this.jdField_a_of_type_Qmp);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    qsq.a(this.jdField_a_of_type_Qsq).setRepeatCount(0);
+    if ((EditVideoFragment.a(this.a) != null) && (EditVideoFragment.a(this.a))) {
+      EditVideoFragment.a(this.a).b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qst
  * JD-Core Version:    0.7.0.1
  */

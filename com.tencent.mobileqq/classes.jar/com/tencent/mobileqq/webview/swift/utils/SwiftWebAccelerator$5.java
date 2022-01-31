@@ -4,38 +4,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import ayxg;
-import bcgn;
+import bavf;
+import befo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.qphone.base.util.QLog;
-import mvs;
+import myl;
 
 public class SwiftWebAccelerator$5
   implements Runnable
 {
-  public SwiftWebAccelerator$5(bcgn parambcgn, long paramLong, Bundle paramBundle) {}
+  public SwiftWebAccelerator$5(befo parambefo, long paramLong, Bundle paramBundle) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs.run cost " + (l - this.jdField_a_of_type_Long) + "ms.");
     l = System.currentTimeMillis();
-    ayxg.a();
+    bavf.a();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:init inner-dns cost " + (l - this.jdField_a_of_type_Long) + "ms.");
     l = System.currentTimeMillis();
-    mvs localmvs = mvs.a(false);
-    localmvs.a("http://www.qq.com/", "foo.bar");
-    localmvs.a("skey");
-    localmvs.a("pskey");
-    localmvs.a("pt4_token");
-    localmvs.a("a1");
-    localmvs.a("a2");
-    localmvs.b("http://www.qq.com/");
-    localmvs.a();
-    localmvs.b();
-    localmvs.e();
+    myl localmyl = myl.a(false);
+    localmyl.a("http://www.qq.com/", "foo.bar");
+    localmyl.a("skey");
+    localmyl.a("pskey");
+    localmyl.a("pt4_token");
+    localmyl.a("a1");
+    localmyl.a("a2");
+    localmyl.b("http://www.qq.com/");
+    localmyl.a();
+    localmyl.b();
+    localmyl.e();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:load domain white list config, cost " + (System.currentTimeMillis() - l) + "ms.");
     l = System.currentTimeMillis();
     if (WebAccelerateHelper.getInstance().isPreGetKey()) {
@@ -51,7 +51,7 @@ public class SwiftWebAccelerator$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.selectmember;
 
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import aidp;
-import aidq;
-import aidr;
-import aids;
+import ajuz;
+import ajva;
+import ajvb;
+import ajvc;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
-import askn;
-import aumg;
-import bcnf;
-import bcot;
+import aubm;
+import awdn;
+import bemh;
+import benv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.widget.IndexView;
@@ -25,18 +25,18 @@ import mqq.os.MqqHandler;
 
 public class PhoneContactTabView
   extends TroopDiscussionBaseV
-  implements View.OnClickListener, View.OnTouchListener, bcnf, bcot
+  implements View.OnClickListener, View.OnTouchListener, bemh, benv
 {
-  private aids jdField_a_of_type_Aids;
+  private ajvc jdField_a_of_type_Ajvc;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private askn jdField_a_of_type_Askn;
-  private aumg jdField_a_of_type_Aumg;
+  private aubm jdField_a_of_type_Aubm;
+  private awdn jdField_a_of_type_Awdn;
   ContactFriendInnerFrame jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactFriendInnerFrame;
   private IndexView jdField_a_of_type_ComTencentMobileqqWidgetIndexView;
   PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
   private String jdField_a_of_type_JavaLangString;
   public List<PhoneContact> a;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new aidq(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new ajva(this);
   
   public PhoneContactTabView(SelectMemberActivity paramSelectMemberActivity, ContactFriendInnerFrame paramContactFriendInnerFrame)
   {
@@ -52,39 +52,39 @@ public class PhoneContactTabView
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131364058));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131368074));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131364120));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131368212));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" });
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelector(2131167087);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelector(2131167138);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setOnLayoutListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378388));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aidp(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378994));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ajuz(this));
   }
   
   private void i()
   {
-    if (this.jdField_a_of_type_Askn == null) {
-      this.jdField_a_of_type_Askn = ((askn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11));
+    if (this.jdField_a_of_type_Aubm == null) {
+      this.jdField_a_of_type_Aubm = ((aubm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11));
     }
-    if (this.jdField_a_of_type_Aumg == null) {
-      this.jdField_a_of_type_Aumg = new aidr(this);
+    if (this.jdField_a_of_type_Awdn == null) {
+      this.jdField_a_of_type_Awdn = new ajvb(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Aumg);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Awdn);
   }
   
   private void j() {}
   
   public void a(Bundle paramBundle)
   {
-    a(2131562397);
-    this.jdField_a_of_type_Askn = ((askn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11));
+    a(2131562601);
+    this.jdField_a_of_type_Aubm = ((aubm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setHandler(PhoneContactTabView.class, this.jdField_a_of_type_MqqOsMqqHandler);
     h();
-    this.jdField_a_of_type_Aids = new aids(this, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Aids);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719218), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d);
-    int i = this.jdField_a_of_type_Askn.d();
+    this.jdField_a_of_type_Ajvc = new ajvc(this, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Ajvc);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719699), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d);
+    int i = this.jdField_a_of_type_Aubm.d();
     if (QLog.isColorLevel()) {
       QLog.i("ContactsInnerFrame", 2, "onStart state:" + i);
     }
@@ -107,7 +107,7 @@ public class PhoneContactTabView
       g();
       return;
     }
-    if (this.jdField_a_of_type_Askn.a().lastUsedFlag == 2L)
+    if (this.jdField_a_of_type_Aubm.a().lastUsedFlag == 2L)
     {
       d();
       return;
@@ -117,7 +117,7 @@ public class PhoneContactTabView
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition() > 0) || ((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition() == 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount() < this.jdField_a_of_type_Aids.getCount() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount()))) && (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.e()))
+    if (((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition() > 0) || ((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition() == 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount() < this.jdField_a_of_type_Ajvc.getCount() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount()))) && (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.e()))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
@@ -136,7 +136,7 @@ public class PhoneContactTabView
     do
     {
       return;
-      i = this.jdField_a_of_type_Aids.a(paramString);
+      i = this.jdField_a_of_type_Ajvc.a(paramString);
     } while (i == -1);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(i + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount());
   }
@@ -146,20 +146,20 @@ public class PhoneContactTabView
     super.b();
     this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(3);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeHandler(PhoneContactTabView.class);
-    if (this.jdField_a_of_type_Aids != null) {
-      this.jdField_a_of_type_Aids.c();
+    if (this.jdField_a_of_type_Ajvc != null) {
+      this.jdField_a_of_type_Ajvc.c();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Aumg);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Awdn);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Aids.notifyDataSetChanged();
+    this.jdField_a_of_type_Ajvc.notifyDataSetChanged();
   }
   
   public void d()
   {
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Askn.g();
+    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Aubm.g();
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(3);
@@ -171,12 +171,12 @@ public class PhoneContactTabView
       this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-      if (this.jdField_a_of_type_Aids == null)
+      if (this.jdField_a_of_type_Ajvc == null)
       {
-        this.jdField_a_of_type_Aids = new aids(this, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Aids);
+        this.jdField_a_of_type_Ajvc = new ajvc(this, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Ajvc);
       }
-      this.jdField_a_of_type_Aids.a();
+      this.jdField_a_of_type_Ajvc.a();
     }
   }
   
@@ -193,7 +193,7 @@ public class PhoneContactTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.PhoneContactTabView
  * JD-Core Version:    0.7.0.1
  */

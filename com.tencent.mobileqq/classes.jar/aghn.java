@@ -1,26 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
-public class aghn
-  implements DialogInterface.OnClickListener
+public abstract interface aghn
 {
-  public aghn(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public static final String a = alpo.a(2131706106);
+  public static final String b = alpo.a(2131706103);
+  public static final String c = alpo.a(2131706104);
+  public static final String d = alpo.a(2131706105);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!this.a.a()) {
-      ((bbrd)this.a.app.a(71)).a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Bbod.a, -1);
-    }
-    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "faceAddon", "0X80088EE", "", 1, 0, 0, null, "", "");
-    axqy.b(this.a.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.a.jdField_a_of_type_Long), "", "", "");
-  }
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aghn
  * JD-Core Version:    0.7.0.1
  */

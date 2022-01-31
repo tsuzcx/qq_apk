@@ -2,41 +2,41 @@ package com.tencent.biz.qrcode.activity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import wgz;
-import whx;
-import wid;
+import xvr;
+import xwp;
+import xwv;
 
 public class QRLoginMgrActivity$6$1
   implements Runnable
 {
-  public QRLoginMgrActivity$6$1(wgz paramwgz, ArrayList paramArrayList) {}
+  public QRLoginMgrActivity$6$1(xvr paramxvr, ArrayList paramArrayList) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      this.jdField_a_of_type_Wgz.a.finish();
+      this.jdField_a_of_type_Xvr.a.finish();
     }
     do
     {
       return;
-      if (QRLoginMgrActivity.a(this.jdField_a_of_type_Wgz.a) != -1L)
+      if (QRLoginMgrActivity.a(this.jdField_a_of_type_Xvr.a) != -1L)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          wid localwid = (wid)localIterator.next();
-          if (localwid.a == QRLoginMgrActivity.a(this.jdField_a_of_type_Wgz.a)) {
-            localwid.c = QRLoginMgrActivity.a(this.jdField_a_of_type_Wgz.a);
+          xwv localxwv = (xwv)localIterator.next();
+          if (localxwv.a == QRLoginMgrActivity.a(this.jdField_a_of_type_Xvr.a)) {
+            localxwv.c = QRLoginMgrActivity.a(this.jdField_a_of_type_Xvr.a);
           }
         }
       }
-    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_Wgz.a) == null);
-    QRLoginMgrActivity.a(this.jdField_a_of_type_Wgz.a).a(this.jdField_a_of_type_JavaUtilArrayList);
+    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_Xvr.a) == null);
+    QRLoginMgrActivity.a(this.jdField_a_of_type_Xvr.a).a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,24 +11,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import behj;
-import bejn;
-import bema;
-import benn;
-import beqw;
-import beqx;
-import betc;
-import bfgi;
+import bglq;
+import bgnf;
+import bgqp;
+import bgqq;
+import com.tencent.qqmini.sdk.MiniSDK;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.FirstPageInfo;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.ui.MiniBaseFragment;
+import com.tencent.qqmini.sdk.utils.DebugUtil;
 
 public class MiniAppInfoLoadingFragment
   extends MiniBaseFragment
 {
-  private static final boolean jdField_a_of_type_Boolean = bema.a("MiniApp", "mini_app_enable_db_cache", true);
+  private static final boolean jdField_a_of_type_Boolean = bglq.a("qqminiapp", "mini_app_enable_db_cache", true);
   private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -42,26 +43,31 @@ public class MiniAppInfoLoadingFragment
   
   private void a(MiniAppInfo paramMiniAppInfo)
   {
-    try
+    if ((paramMiniAppInfo.firstPage != null) && (paramMiniAppInfo.launchParam != null) && (!TextUtils.isEmpty(paramMiniAppInfo.firstPage.pagePath)))
     {
-      if (!a(paramMiniAppInfo))
-      {
-        bejn.c().post(new MiniAppInfoLoadingFragment.3(this));
-        return;
+      if (paramMiniAppInfo.firstPage.pagePath.startsWith("/")) {
+        paramMiniAppInfo.firstPage.pagePath = paramMiniAppInfo.firstPage.pagePath.substring(1);
       }
-      behj.a(getActivity(), paramMiniAppInfo, null, this.jdField_a_of_type_AndroidOsResultReceiver);
+      if (paramMiniAppInfo.firstPage.pagePath.contains(".html")) {
+        paramMiniAppInfo.launchParam.entryPath = paramMiniAppInfo.firstPage.pagePath;
+      }
+    }
+    else
+    {
       return;
     }
-    catch (Throwable paramMiniAppInfo)
+    if (paramMiniAppInfo.firstPage.pagePath.contains("?"))
     {
-      betc.d("MiniAppInfoLoadingFragment", "startAppByAppid exception! ", paramMiniAppInfo);
+      paramMiniAppInfo.launchParam.entryPath = paramMiniAppInfo.firstPage.pagePath.replaceFirst("\\?", ".html\\?");
+      return;
     }
+    paramMiniAppInfo.launchParam.entryPath = (paramMiniAppInfo.firstPage.pagePath + ".html");
   }
   
   private void a(String paramString1, int paramInt, String paramString2, LaunchParam paramLaunchParam)
   {
     a();
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(paramString1, paramInt, new beqx(this, paramLaunchParam));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(paramString1, paramInt, new bgqq(this, paramLaunchParam));
   }
   
   private void a(String paramString, long paramLong)
@@ -70,18 +76,18 @@ public class MiniAppInfoLoadingFragment
     {
       if (getActivity() != null)
       {
-        if (bfgi.a())
+        if (DebugUtil.isDebugVersion())
         {
-          benn.a(getActivity(), 1, "" + paramString + paramLong, 1).a();
+          bgnf.a(getActivity(), 1, "" + paramString + paramLong, 1).a();
           return;
         }
-        benn.a(getActivity(), 1, "" + paramString, 1).a();
+        bgnf.a(getActivity(), 1, "" + paramString, 1).a();
         return;
       }
     }
     catch (Exception paramString)
     {
-      betc.d("MiniAppInfoLoadingFragment", paramString.getMessage(), paramString);
+      QMLog.e("MiniAppInfoLoadingFragment", paramString.getMessage(), paramString);
     }
   }
   
@@ -96,7 +102,7 @@ public class MiniAppInfoLoadingFragment
     if (paramString3 == null) {
       paramString2 = "";
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramString1, str, paramString2, new beqw(this, paramLaunchParam));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramString1, str, paramString2, new bgqp(this, paramLaunchParam));
   }
   
   private static boolean a(MiniAppInfo paramMiniAppInfo)
@@ -112,14 +118,32 @@ public class MiniAppInfoLoadingFragment
     }
   }
   
+  private void b(MiniAppInfo paramMiniAppInfo)
+  {
+    try
+    {
+      if (!a(paramMiniAppInfo))
+      {
+        ThreadManager.c().post(new MiniAppInfoLoadingFragment.3(this));
+        return;
+      }
+      MiniSDK.startMiniApp(getActivity(), paramMiniAppInfo, null, this.jdField_a_of_type_AndroidOsResultReceiver);
+      return;
+    }
+    catch (Throwable paramMiniAppInfo)
+    {
+      QMLog.e("MiniAppInfoLoadingFragment", "startAppByAppid exception! ", paramMiniAppInfo);
+    }
+  }
+  
   @Nullable
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    betc.b("MiniAppInfoLoadingFragment", "LoadingFragment onCreateView");
+    QMLog.i("MiniAppInfoLoadingFragment", "LoadingFragment onCreateView");
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131559292, null);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369500));
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131559339, null);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369762));
     }
     return this.jdField_a_of_type_AndroidViewView;
   }
@@ -127,7 +151,7 @@ public class MiniAppInfoLoadingFragment
   public void onResume()
   {
     super.onResume();
-    betc.b("MiniAppInfoLoadingFragment", "LoadingFragment doTask");
+    QMLog.i("MiniAppInfoLoadingFragment", "LoadingFragment doTask");
     Object localObject = getArguments();
     if (localObject == null)
     {
@@ -157,7 +181,7 @@ public class MiniAppInfoLoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.MiniAppInfoLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,27 @@
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiUserInfo;
 
-public class bjhj
+public final class bjhj
+  implements Parcelable.Creator<WeishiUserInfo>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  
-  public static bjhj a(JSONObject paramJSONObject)
+  public WeishiUserInfo a(Parcel paramParcel)
   {
-    bjhj localbjhj = new bjhj();
-    localbjhj.jdField_a_of_type_JavaLangString = paramJSONObject.optString("resurl");
-    localbjhj.jdField_b_of_type_JavaLangString = paramJSONObject.optString("md5");
-    localbjhj.c = paramJSONObject.optString("name");
-    localbjhj.jdField_a_of_type_Int = paramJSONObject.optInt("text_id");
-    localbjhj.jdField_b_of_type_Int = paramJSONObject.optInt("progress");
-    return localbjhj;
+    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
+    localWeishiUserInfo.uin = paramParcel.readLong();
+    localWeishiUserInfo.nickName = paramParcel.readString();
+    localWeishiUserInfo.logo = paramParcel.readString();
+    return localWeishiUserInfo;
   }
   
-  public String a()
+  public WeishiUserInfo[] a(int paramInt)
   {
-    return this.c + "_" + this.jdField_b_of_type_JavaLangString;
+    return new WeishiUserInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjhj
  * JD-Core Version:    0.7.0.1
  */

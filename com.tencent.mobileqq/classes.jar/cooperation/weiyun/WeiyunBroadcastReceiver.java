@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import aoze;
-import aozi;
-import apug;
+import aqsc;
+import aqsg;
+import arni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
@@ -54,7 +54,7 @@ public class WeiyunBroadcastReceiver
         Iterator localIterator = localArrayList.iterator();
         while (localIterator.hasNext())
         {
-          paramContext = apug.a((WeiYunFileInfo)localIterator.next());
+          paramContext = arni.a((WeiYunFileInfo)localIterator.next());
           paramContext.nOpType = 5;
           localQQAppInterface.a().a(paramContext);
           localQQAppInterface.a().b(paramContext);
@@ -78,7 +78,7 @@ public class WeiyunBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.WeiyunBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

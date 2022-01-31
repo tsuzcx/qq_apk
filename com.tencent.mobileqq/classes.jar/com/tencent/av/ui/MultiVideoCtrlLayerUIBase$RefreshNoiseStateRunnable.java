@@ -16,7 +16,7 @@ public class MultiVideoCtrlLayerUIBase$RefreshNoiseStateRunnable
     {
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(0L, false, 0L);
       if (QLog.isColorLevel()) {
-        QLog.e(this.this$0.c, 2, "RefreshNoiseStateRunnable refreshUserNoiseState return true");
+        QLog.e(this.this$0.d, 2, "RefreshNoiseStateRunnable refreshUserNoiseState return true");
       }
     }
     Handler localHandler;
@@ -39,7 +39,7 @@ public class MultiVideoCtrlLayerUIBase$RefreshNoiseStateRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.RefreshNoiseStateRunnable
  * JD-Core Version:    0.7.0.1
  */

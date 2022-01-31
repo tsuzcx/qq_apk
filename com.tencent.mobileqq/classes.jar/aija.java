@@ -1,67 +1,29 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aija
+  implements View.OnClickListener
 {
-  public List<aijb> a = new ArrayList();
+  public aija(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public static aija a(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if (paramJSONObject == null) {
-      paramJSONObject = new aija();
+    if (CameraPreviewActivity.a(this.a, (String)CameraPreviewActivity.a(this.a).get(0))) {
+      return;
     }
-    for (;;)
-    {
-      return paramJSONObject;
-      localaija = new aija();
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
-        paramJSONObject = localaija;
-        if (localJSONArray == null) {
-          continue;
-        }
-        paramJSONObject = localaija;
-        if (localJSONArray.length() < 0) {
-          continue;
-        }
-        int j = localJSONArray.length();
-        int i = 0;
-        for (;;)
-        {
-          paramJSONObject = localaija;
-          if (i >= j) {
-            break;
-          }
-          paramJSONObject = aijb.a(localJSONArray.getJSONObject(i));
-          localaija.a.add(paramJSONObject);
-          i += 1;
-        }
-        return localaija;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return localaija;
-      }
-      catch (OutOfMemoryError paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return localaija;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
+    if (this.a.b) {
+      azmj.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
     }
+    PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
+    paramView.setClickable(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aija
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,37 @@
-import android.text.TextUtils;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class zaf
+class zaf
+  implements bhqd
 {
-  public int a;
-  public String a;
-  public int b = -1;
+  zaf(zae paramzae) {}
   
-  public zaf(int paramInt1, int paramInt2, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      yxp.d("GdtFormError", "toString error");
-      return null;
-    }
-    switch (this.jdField_a_of_type_Int)
+    this.a.a.dismiss();
+    switch (paramInt)
     {
     default: 
-      yxp.d("GdtFormError", "toString error");
-      return null;
-    case 5: 
-      return ajya.a(2131705179) + this.jdField_a_of_type_JavaLangString;
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
+      }
+      return;
+    case 0: 
+      zae.a(this.a);
+      return;
+    case 1: 
+      zae.b(this.a);
+      return;
+    case 2: 
+      zae.c(this.a);
+      return;
     }
-    return ajya.a(2131705178) + this.jdField_a_of_type_JavaLangString;
+    zae.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zaf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.common.app;
 
-import ajte;
-import ajzt;
-import ampl;
-import amvx;
+import alkr;
+import alrh;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
-import aukq;
-import aumx;
-import ayoz;
-import aysa;
-import bbmv;
+import aogj;
+import aonc;
+import awbx;
+import awee;
+import bamu;
+import bapv;
+import bdlp;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.transfile.ProtoReqManager;
@@ -31,7 +31,7 @@ import mqq.os.MqqHandler;
 
 public abstract class AppInterface
   extends AppRuntime
-  implements bbmv
+  implements bdlp
 {
   public BaseApplicationImpl app;
   protected HttpCommunicator comunicator;
@@ -224,9 +224,9 @@ public abstract class AppInterface
     paramPluginRuntime.sendAppDataIncerment(paramString, getAppDataIncermentTags(paramString, paramBoolean, paramInt1, paramInt2, paramInt3, paramLong), paramLong);
   }
   
-  public void addObserver(ajte paramajte) {}
+  public void addObserver(alkr paramalkr) {}
   
-  public void addObserver(ajte paramajte, boolean paramBoolean) {}
+  public void addObserver(alkr paramalkr, boolean paramBoolean) {}
   
   public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
@@ -242,7 +242,7 @@ public abstract class AppInterface
     return null;
   }
   
-  public List<ajte> getBusinessObserver(int paramInt)
+  public List<alkr> getBusinessObserver(int paramInt)
   {
     return null;
   }
@@ -259,12 +259,12 @@ public abstract class AppInterface
     return null;
   }
   
-  public aukq getEntityManagerFactory()
+  public awbx getEntityManagerFactory()
   {
     return getEntityManagerFactory(getAccount());
   }
   
-  public abstract aukq getEntityManagerFactory(String paramString);
+  public abstract awbx getEntityManagerFactory(String paramString);
   
   public MqqHandler getHandler(Class paramClass)
   {
@@ -291,13 +291,13 @@ public abstract class AppInterface
   {
     if (this.mHwEngine == null)
     {
-      amvx localamvx = (amvx)ampl.a().a(538);
-      this.mHwEngine = new HwEngine(getApplication(), getCurrentAccountUin(), getAppid(), this, ajzt.a(), localamvx.a, localamvx.b);
+      aonc localaonc = (aonc)aogj.a().a(538);
+      this.mHwEngine = new HwEngine(getApplication(), getCurrentAccountUin(), getAppid(), this, alrh.a(), localaonc.a);
     }
     return this.mHwEngine;
   }
   
-  public aysa getNetEngine(int paramInt)
+  public bapv getNetEngine(int paramInt)
   {
     return null;
   }
@@ -315,7 +315,7 @@ public abstract class AppInterface
     finally {}
   }
   
-  public ayoz getTransFileController()
+  public bamu getTransFileController()
   {
     return null;
   }
@@ -373,7 +373,7 @@ public abstract class AppInterface
     this.handlerMap.remove(paramClass);
   }
   
-  public void removeObserver(ajte paramajte) {}
+  public void removeObserver(alkr paramalkr) {}
   
   public void reportClickEvent(String paramString1, String paramString2)
   {
@@ -402,7 +402,7 @@ public abstract class AppInterface
     }
     for (;;)
     {
-      aumx.a(paramLong, paramBoolean, bool);
+      awee.a(paramLong, paramBoolean, bool);
       return;
       label156:
       paramBoolean = false;

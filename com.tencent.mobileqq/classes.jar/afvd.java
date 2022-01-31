@@ -1,32 +1,41 @@
-import android.app.Activity;
-import android.os.Bundle;
-import mqq.os.MqqHandler;
+import android.view.View;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 class afvd
-  extends mxj
 {
-  afvd(afup paramafup) {}
+  private Map<Integer, LinkedList<View>> a = new HashMap();
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  View a(int paramInt)
   {
-    if ((afup.a(this.a).isFinishing()) || (this.a.a)) {
-      return;
+    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
+    if (localLinkedList == null) {
+      return null;
     }
-    this.a.c();
-    if (afup.a(this.a) != null) {
-      afup.a(this.a).removeCallbacks(afup.b(this.a));
-    }
-    if (paramInt == 16)
+    return (View)localLinkedList.poll();
+  }
+  
+  void a()
+  {
+    this.a.clear();
+  }
+  
+  void a(int paramInt, View paramView)
+  {
+    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
+    LinkedList localLinkedList1 = localLinkedList2;
+    if (localLinkedList2 == null)
     {
-      this.a.d();
-      return;
+      localLinkedList1 = new LinkedList();
+      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
     }
-    afup.a(this.a, afup.b(this.a));
+    localLinkedList1.add(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afvd
  * JD-Core Version:    0.7.0.1
  */

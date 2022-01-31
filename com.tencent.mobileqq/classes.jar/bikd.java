@@ -1,20 +1,25 @@
-import android.graphics.SurfaceTexture;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bikd
+class bikd
+  extends BroadcastReceiver
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  bikd(bikc parambikc) {}
   
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void g();
-  
-  public abstract void i();
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
+    }
+    bikc.a(this.a);
+    bikc.b(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bikd
  * JD-Core Version:    0.7.0.1
  */

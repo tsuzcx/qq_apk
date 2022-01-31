@@ -1,53 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.remind.widget.WheelView;
-
-final class avqj
-  implements avqs
+public class avqj
+  extends avqe
 {
-  public long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt)
+  public boolean a()
   {
-    Object localObject2 = null;
-    if ((paramArrayOfInt.length != 3) || (paramArrayOfWheelView.length != 3)) {
-      return -1L;
-    }
-    String str2;
-    if (AppSetting.d)
-    {
-      str2 = avqn.a(paramArrayOfInt[0]);
-      if ((paramArrayOfInt[1] < 0) || (paramArrayOfInt[1] >= avqn.a.length)) {
-        break label206;
-      }
-    }
-    label206:
-    for (String str1 = avqn.a[paramArrayOfInt[1]];; str1 = null)
-    {
-      Object localObject1 = localObject2;
-      if (paramArrayOfInt[2] >= 0)
-      {
-        localObject1 = localObject2;
-        if (paramArrayOfInt[2] < avqn.b.length) {
-          localObject1 = avqn.b[paramArrayOfInt[2]];
-        }
-      }
-      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
-      {
-        str1 = ajya.a(2131713400) + str2 + str1 + ajya.a(2131713398) + (String)localObject1 + ajya.a(2131713399);
-        int j = paramArrayOfWheelView.length;
-        int i = 0;
-        while (i < j)
-        {
-          paramArrayOfWheelView[i].setContentDescription(str1);
-          i += 1;
-        }
-      }
-      return avqn.a(paramArrayOfInt[0], paramArrayOfInt[1], paramArrayOfInt[2]);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avqj
  * JD-Core Version:    0.7.0.1
  */

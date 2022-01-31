@@ -6,19 +6,19 @@ import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhfj;
-import bhou;
+import bjgt;
+import bjqf;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.util.WeakReference;
-import xpv;
+import zeo;
 
 public class PhotoInfo
-  extends xpv
+  extends zeo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhotoInfo> CREATOR = new bhfj();
+  public static final Parcelable.Creator<PhotoInfo> CREATOR = new bjgt();
   public static int l;
   public static int m;
   public static int n;
@@ -180,7 +180,7 @@ public class PhotoInfo
   
   public boolean b()
   {
-    if (!bhou.a().b()) {}
+    if (!bjqf.a().b()) {}
     while ((this.jdField_i_of_type_Int != 32) && (this.jdField_i_of_type_Int != 16)) {
       return false;
     }
@@ -344,7 +344,7 @@ public class PhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.PhotoInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,28 @@
-public abstract interface bbzz
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class bbzz
+  extends bbzp
 {
-  public abstract void a();
+  public List<Integer> b = new ArrayList();
+  public int g = 0;
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public bbzz()
+  {
+    this.b.add(Integer.valueOf(0));
+    this.b.add(Integer.valueOf(3));
+    this.b.add(Integer.valueOf(1));
+    this.b.add(Integer.valueOf(2));
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
+  public int e()
+  {
+    return this.g;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbzz
  * JD-Core Version:    0.7.0.1
  */

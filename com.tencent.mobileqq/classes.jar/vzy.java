@@ -1,34 +1,30 @@
-class vzy
-  implements Cloneable
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+
+public class vzy
+  implements bhqd
 {
-  public double a;
-  public int a;
-  public String a;
-  public int b = -1;
-  public String b;
-  public int c = -1;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f = "0";
+  public vzy(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, bhpy parambhpy) {}
   
-  public vzy(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Double = -1.0D;
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public vzy a()
-  {
-    return (vzy)super.clone();
+    if (xod.b()) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Bhpy.e();
+      paramView = this.jdField_a_of_type_Bhpy.a(paramInt);
+    } while (!alpo.a(2131711422).equals(paramView));
+    paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c, 0);
+    paramView.putInt("extra_last_open_from", this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a);
+    bclo.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramView, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-final class ayat
-  implements DialogInterface.OnClickListener
+public abstract interface ayat
 {
-  ayat(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ayap.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ayap.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ayap.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ayap.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-  }
+  public abstract void k();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayat
  * JD-Core Version:    0.7.0.1
  */

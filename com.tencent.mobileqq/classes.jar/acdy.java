@@ -1,25 +1,25 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class acdy
-  extends MqqHandler
+  implements bepk
 {
-  public acdy(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public acdy(BaseChatPie paramBaseChatPie) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    this.a.a.b(false);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdy
  * JD-Core Version:    0.7.0.1
  */

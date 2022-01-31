@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import actj;
+import aekt;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
@@ -34,14 +34,14 @@ class AssociatedAccountActivity$5$1
       this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.leftView.bringToFront();
       if ("1103".equals(ThemeUtil.curThemeId))
       {
-        localColorStateList = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources().getColorStateList(2131166851);
+        localColorStateList = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources().getColorStateList(2131166898);
         AssociatedAccountActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setTextColor(localColorStateList);
-        AssociatedAccountActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setBackgroundResource(2130838182);
-        AssociatedAccountActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setPadding(actj.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0, actj.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0);
+        AssociatedAccountActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setBackgroundResource(2130838248);
+        AssociatedAccountActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setPadding(aekt.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0, aekt.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0);
         localObject = AssociatedAccountActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).height = actj.a(24.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
+        ((ViewGroup.LayoutParams)localObject).height = aekt.a(24.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
         if ((localObject instanceof RelativeLayout.LayoutParams)) {
-          ((RelativeLayout.LayoutParams)localObject).leftMargin = actj.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
+          ((RelativeLayout.LayoutParams)localObject).leftMargin = aekt.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
         }
         AssociatedAccountActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).requestLayout();
         localObject = (GradientDrawable)AssociatedAccountActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).getBackground();
@@ -68,7 +68,7 @@ class AssociatedAccountActivity$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

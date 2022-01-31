@@ -1,22 +1,25 @@
-import com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import java.util.HashMap;
 
-public class vfg
-  extends axdi
+class vfg
+  extends veh
 {
-  public vfg(EditPicActivity paramEditPicActivity) {}
-  
-  public void a()
+  vfg(vez paramvez, String paramString1, String paramString2, boolean paramBoolean, vgd paramvgd)
   {
-    ved.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    ver localver = (ver)this.a.a.a(ver.class);
-    if (localver != null) {
-      localver.Y_();
-    }
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Vgd.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.jdField_a_of_type_Vgd.a, this.jdField_a_of_type_Vgd.a);
+    a("ShortenUrlJob_shortenedUrls", localHashMap);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfg
  * JD-Core Version:    0.7.0.1
  */

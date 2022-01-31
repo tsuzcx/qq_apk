@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.animation;
 
 import android.graphics.drawable.AnimationDrawable;
 import mqq.util.WeakReference;
-import wkg;
+import xyy;
 
 class PopViewAnimationDrawableHelper$LoopingRunnable
   implements Runnable
@@ -17,16 +17,16 @@ class PopViewAnimationDrawableHelper$LoopingRunnable
   public void run()
   {
     Object localObject = (PopViewAnimationDrawableHelper)this.a.get();
-    wkg localwkg;
+    xyy localxyy;
     if (localObject != null)
     {
-      localwkg = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
-      if (localwkg != null)
+      localxyy = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
+      if (localxyy != null)
       {
         if (PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject) <= 0) {
           break label38;
         }
-        localwkg.a();
+        localxyy.a();
       }
     }
     return;
@@ -34,15 +34,15 @@ class PopViewAnimationDrawableHelper$LoopingRunnable
     localObject = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
     if ((localObject != null) && (((AnimationDrawable)localObject).getFrame(((AnimationDrawable)localObject).getNumberOfFrames() - 1) != ((AnimationDrawable)localObject).getCurrent()))
     {
-      localwkg.b();
+      localxyy.b();
       return;
     }
-    localwkg.a();
+    localxyy.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper.LoopingRunnable
  * JD-Core Version:    0.7.0.1
  */

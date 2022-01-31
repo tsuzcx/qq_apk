@@ -1,104 +1,125 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ahnq
-  extends ahnw
+class ahnq
+  extends alox
 {
-  private int a;
-  private int b;
-  private int c;
+  ahnq(ahnp paramahnp) {}
   
-  public View a(int paramInt, Object paramObject, ahnr paramahnr, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpo paramahpo)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    if (paramView != null)
+    super.onCancelMayKnowRecommend(paramBoolean, paramString);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      paramahnr = paramView;
-      if ("R.layout.conversation_no_chat".equals(paramView.getTag(2131558871))) {}
+      localStringBuilder = new StringBuilder().append("delete mayKnowData ");
+      if (!paramBoolean) {
+        break label65;
+      }
+    }
+    label65:
+    for (String str = "success";; str = "false")
+    {
+      QLog.d("CardViewController", 2, str + ", delete uin is " + paramString);
+      this.a.b();
+      return;
+    }
+  }
+  
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  {
+    super.onMayKnowEntryStateChanged(paramBoolean, paramBundle);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("do network checkUpdate, rsp ");
+      if (paramBoolean)
+      {
+        paramBundle = "success";
+        QLog.d("CardViewController", 2, paramBundle + ". msg: \"send network respond done\"");
+      }
     }
     else
     {
-      paramahnr = View.inflate(paramContext, 2131558871, null);
-      this.b = paramContext.getResources().getDimensionPixelSize(2131298605);
-      this.a = paramContext.getResources().getDimensionPixelSize(2131298608);
-      this.c = paramContext.getResources().getDimensionPixelSize(2131298612);
-    }
-    int i = paramViewGroup.getHeight() - this.a * 2 - this.b;
-    if (i > this.c)
-    {
-      paramView = new AbsListView.LayoutParams(-1, -1);
-      paramView.width = -1;
-      paramView.height = i;
-      paramahnr.setLayoutParams(paramView);
-      paramahnr.setTag(Boolean.valueOf(true));
-      paramView = (TextView)paramahnr.findViewById(2131370851);
-      paramViewGroup = (Button)paramahnr.findViewById(2131363450);
-      if (!(paramObject instanceof Integer)) {
-        break label382;
+      if (paramBoolean) {
+        break label82;
       }
-      i = ((Integer)paramObject).intValue();
-      if (i != 1) {
-        break label263;
-      }
-      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130840999, 0, 0);
-      paramView.setVisibility(0);
-      paramView.setText(2131695129);
-      paramView.setTextColor(paramContext.getResources().getColorStateList(2131166933));
-      paramViewGroup.setVisibility(8);
-      paramViewGroup.setOnClickListener(null);
+      ahnp.a(this.a, System.currentTimeMillis());
     }
     for (;;)
     {
-      paramahnr.setTag(-1, Integer.valueOf(paramInt));
-      paramahnr.setTag(2131558871, "R.layout.conversation_no_chat");
-      return paramahnr;
-      i = this.c;
+      ahnp.a(this.a, true, paramBoolean);
+      return;
+      paramBundle = "false";
       break;
-      label263:
-      if (i == 0)
-      {
-        if ((paramContext instanceof MsgBoxListActivity))
-        {
-          if (((MsgBoxListActivity)paramContext).f)
-          {
-            paramView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-            paramView.setVisibility(0);
-            paramView.setText("");
-          }
-        }
-        else
-        {
-          paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130840999, 0, 0);
-          paramView.setVisibility(0);
-          paramView.setText(2131694659);
-          paramView.setTextColor(paramContext.getResources().getColorStateList(2131166933));
-          paramViewGroup.setVisibility(8);
-          paramViewGroup.setOnClickListener(null);
-        }
+      label82:
+      ahnp.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("recv mayKnowData push add ");
+      if (!paramBoolean) {
+        break label108;
       }
-      else
-      {
-        paramView.setVisibility(4);
-        paramView.setText("");
-        continue;
-        label382:
-        paramView.setVisibility(8);
-        paramView.setText("");
-        paramViewGroup.setVisibility(8);
+      localObject = "success";
+      localObject = localStringBuilder.append((String)localObject).append(", push uin size is ");
+      if (paramList == null) {
+        break label115;
       }
+    }
+    label108:
+    label115:
+    for (int i = paramList.size();; i = 0)
+    {
+      QLog.d("CardViewController", 2, i);
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        ahnp.a(this.a, paramList.size());
+      }
+      this.a.b();
+      return;
+      localObject = "false";
+      break;
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("recv mayKnowData push del ");
+      if (!paramBoolean) {
+        break label82;
+      }
+      localObject = "success";
+      localObject = localStringBuilder.append((String)localObject).append(", push uin size is ");
+      if (paramList == null) {
+        break label89;
+      }
+    }
+    label82:
+    label89:
+    for (int i = paramList.size();; i = 0)
+    {
+      QLog.d("CardViewController", 2, i);
+      this.a.b();
+      return;
+      localObject = "false";
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahnq
  * JD-Core Version:    0.7.0.1
  */

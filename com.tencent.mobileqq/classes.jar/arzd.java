@@ -1,19 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.manager.Manager;
 
-class arzd
-  implements View.OnClickListener
+public class arzd
+  implements Manager
 {
-  arzd(arzc paramarzc) {}
+  private arve jdField_a_of_type_Arve;
+  private Map<String, Map<String, Object>> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void onClick(View paramView)
+  public arzd()
   {
-    this.a.b();
+    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> init");
+    this.jdField_a_of_type_Arve = new arve();
+  }
+  
+  public arve a()
+  {
+    return this.jdField_a_of_type_Arve;
+  }
+  
+  public Map<String, Object> a(String paramString)
+  {
+    return (Map)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+  }
+  
+  public void a(String paramString, Map<String, Object> paramMap)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramMap);
+  }
+  
+  public void onDestroy()
+  {
+    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> onDestroy");
+    this.jdField_a_of_type_Arve.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arzd
  * JD-Core Version:    0.7.0.1
  */

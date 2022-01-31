@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.util;
 
-import bbdx;
+import bdcs;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -11,7 +11,7 @@ public final class QIMFileUtils$1
   
   public void run()
   {
-    bbdx.a(this.jdField_a_of_type_JavaIoFile.getPath() + File.separator, this.jdField_a_of_type_JavaLangString, this.b);
+    bdcs.a(this.jdField_a_of_type_JavaIoFile.getPath() + File.separator, this.jdField_a_of_type_JavaLangString, this.b);
     if (QLog.isColorLevel()) {
       QLog.i("QIMFileUtils", 2, "paster config save to file " + this.jdField_a_of_type_JavaIoFile.getPath() + File.separator + this.jdField_a_of_type_JavaLangString);
     }
@@ -19,7 +19,7 @@ public final class QIMFileUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.util.QIMFileUtils.1
  * JD-Core Version:    0.7.0.1
  */

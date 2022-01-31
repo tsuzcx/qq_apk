@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class ugo
-  implements DialogInterface.OnClickListener
+public class ugo
+  implements xit
 {
-  ugo(ugk paramugk) {}
+  public ugo(AlbumGalleryCapturePart.12.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    ugk.a(this.a);
-    vei.a("play_video", "clk_window", 0, 0, new String[0]);
+    ugk.a(this.a.a.a, -1L);
+    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.12.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugo
  * JD-Core Version:    0.7.0.1
  */

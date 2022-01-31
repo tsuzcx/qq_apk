@@ -1,28 +1,21 @@
-class wiq
-  implements wth
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+
+public class wiq
 {
-  wiq(wip paramwip, String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public static boolean a(QQUserUIItem paramQQUserUIItem)
   {
-    if (!paramBoolean2)
-    {
-      this.jdField_a_of_type_Wip.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0}" });
-      if (wip.a(this.jdField_a_of_type_Wip) == null)
-      {
-        wip.a(this.jdField_a_of_type_Wip, wxr.a());
-        wip.a(this.jdField_a_of_type_Wip).a();
-      }
-      wip.a(this.jdField_a_of_type_Wip).i(paramString, this.b);
-      xhb.a(paramString, "auth_follow", "clk_unfollow", 0, 0, new String[] { "", "", this.b });
-      return;
-    }
-    xhb.a(paramString, "auth_follow", "clk_cancel", 0, 0, new String[] { "", "", this.b });
+    return (paramQQUserUIItem != null) && (paramQQUserUIItem.isVip()) && (!paramQQUserUIItem.isMe()) && (!paramQQUserUIItem.isFriend()) && (!paramQQUserUIItem.isSubscribe());
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals("0_1000", paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wiq
  * JD-Core Version:    0.7.0.1
  */

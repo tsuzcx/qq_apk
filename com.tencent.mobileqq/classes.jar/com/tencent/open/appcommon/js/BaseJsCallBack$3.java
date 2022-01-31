@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.os.Bundle;
-import bdlr;
+import bfko;
 
 class BaseJsCallBack$3
   implements Runnable
@@ -10,7 +10,7 @@ class BaseJsCallBack$3
   
   public void run()
   {
-    bdlr.a().a(this.this$0.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
+    bfko.a().a(this.this$0.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

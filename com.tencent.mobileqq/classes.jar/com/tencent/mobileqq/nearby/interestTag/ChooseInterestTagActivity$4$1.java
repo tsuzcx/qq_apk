@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
 import android.widget.LinearLayout;
-import atfg;
+import auwf;
 
 public class ChooseInterestTagActivity$4$1
   implements Runnable
 {
-  public ChooseInterestTagActivity$4$1(atfg paramatfg) {}
+  public ChooseInterestTagActivity$4$1(auwf paramauwf) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ChooseInterestTagActivity$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

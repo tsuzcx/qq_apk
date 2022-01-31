@@ -1,27 +1,19 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import java.util.ArrayList;
 
 public class baxn
+  extends baxq
 {
-  public static int a(Context paramContext, float paramFloat)
-  {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-  }
-  
-  public static int b(Context paramContext, float paramFloat)
-  {
-    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
-  }
-  
-  public static int c(Context paramContext, float paramFloat)
-  {
-    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
-  }
+  public int a;
+  public ArrayList<basp> a = new ArrayList();
+  public byte[] a;
+  public int b;
+  public byte[] b;
+  public byte[] c;
+  public byte[] d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baxn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,84 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.1;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.2;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.3;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoqz
-  extends aoun
+  extends aopw<aoqy>
 {
-  public aoqz(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
-  
-  protected void a(apez paramapez)
+  public int a()
   {
-    if (paramapez == null) {}
-    do
-    {
-      FileManagerEntity localFileManagerEntity;
-      do
-      {
-        return;
-        if (!(paramapez.a instanceof FileManagerEntity)) {
-          break;
-        }
-        localFileManagerEntity = (FileManagerEntity)paramapez.a;
-      } while ((paramapez.b == null) || (paramapez.b.length() <= 0));
-      localFileManagerEntity.strThumbPath = paramapez.b;
-      QfileBaseCloudFileTabView.k(this.a).a().c(localFileManagerEntity);
-      this.a.i();
-      return;
-    } while (!(paramapez.a instanceof WeiYunFileInfo));
-    this.a.i();
+    return 580;
   }
   
-  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  @NonNull
+  public aoqy a()
   {
-    apel.a(paramString1);
-    apug.a(paramInteger.intValue(), paramString2);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
+    return aoqy.a();
   }
   
-  protected void a(String paramString1, String paramString2, boolean paramBoolean)
+  @NonNull
+  public aoqy a(@NonNull aogf[] paramArrayOfaogf)
   {
-    paramString2 = apel.a(paramString1);
-    if ((!this.a.b(paramString2)) && (this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      paramString2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramString2.hasNext())
-      {
-        WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramString2.next();
-        if (localWeiYunFileInfo.a.equalsIgnoreCase(paramString1) == true) {
-          this.a.b(localWeiYunFileInfo);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfaogf[0].a);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
+    return aoqy.a(paramArrayOfaogf[0].a);
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public Class<aoqy> a()
   {
-    QfileBaseCloudFileTabView.a(this.a, new QfileBaseCloudFileTabView.13.1(this));
+    return aoqy.class;
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public boolean a()
   {
-    QfileBaseCloudFileTabView.b(this.a, new QfileBaseCloudFileTabView.13.2(this, paramLong2));
+    return false;
   }
   
-  protected void b()
+  @NonNull
+  public aoqy b()
   {
-    super.b();
-    QfileBaseCloudFileTabView.c(this.a, new QfileBaseCloudFileTabView.13.3(this));
+    return aoqy.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqz
  * JD-Core Version:    0.7.0.1
  */

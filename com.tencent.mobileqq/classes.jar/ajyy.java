@@ -1,26 +1,27 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-class ajyy
-  implements Comparator<ajzb>
+public class ajyy
+  implements DialogInterface.OnClickListener
 {
-  ajyy(ajyx paramajyx) {}
+  public ajyy(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public int a(ajzb paramajzb1, ajzb paramajzb2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramajzb1 == null) || (paramajzb2 == null)) {}
-    do
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      return 0;
-      if (paramajzb1.a > paramajzb2.a) {
-        return 1;
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
       }
-    } while (paramajzb1.a >= paramajzb2.a);
-    return -1;
+      this.a.a(this.a.c);
+    }
+    ayyu.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyy
  * JD-Core Version:    0.7.0.1
  */

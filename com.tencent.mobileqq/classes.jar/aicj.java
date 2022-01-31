@@ -1,29 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import java.lang.ref.WeakReference;
+import android.view.View;
 
-public class aicj
-  implements DialogInterface.OnCancelListener
+class aicj
+  implements bhrf
 {
-  private final WeakReference<Activity> a;
+  aicj(aici paramaici, View paramView) {}
   
-  public aicj(Activity paramActivity)
+  public void a()
   {
-    this.a = new WeakReference(paramActivity);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    Activity localActivity = (Activity)this.a.get();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      paramDialogInterface.dismiss();
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aicj
  * JD-Core Version:    0.7.0.1
  */

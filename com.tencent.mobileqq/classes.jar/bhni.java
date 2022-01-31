@@ -1,12 +1,11 @@
-public abstract class bhni
+public class bhni
 {
-  public static bhni a = new bhnj();
-  
-  public abstract int a(String paramString, int paramInt);
+  public bhnj a;
+  public boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhni
  * JD-Core Version:    0.7.0.1
  */

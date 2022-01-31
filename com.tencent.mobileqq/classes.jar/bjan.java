@@ -1,19 +1,23 @@
-import com.tencent.common.app.AppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.QZoneShareData;
 
-public abstract class bjan
+public final class bjan
+  implements Parcelable.Creator<QZoneShareData>
 {
-  public AppInterface a()
+  public QZoneShareData a(Parcel paramParcel)
   {
-    return bjal.a();
+    return new QZoneShareData(paramParcel, null);
   }
   
-  public abstract void a();
-  
-  public abstract void b();
+  public QZoneShareData[] a(int paramInt)
+  {
+    return new QZoneShareData[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjan
  * JD-Core Version:    0.7.0.1
  */

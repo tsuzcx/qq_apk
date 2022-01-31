@@ -17,15 +17,15 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import lcx;
-import lga;
-import lhp;
-import lpt;
-import lpu;
-import mao;
-import mbu;
-import mbv;
-import mbw;
+import lfb;
+import lid;
+import ljs;
+import lrz;
+import lsa;
+import mdd;
+import mej;
+import mek;
+import mel;
 
 public class BeautyToolbar
   extends BaseToolbar
@@ -37,7 +37,7 @@ public class BeautyToolbar
   private VideoControlUI mControlUI;
   public boolean mIs1stShow = false;
   boolean mIsShown = false;
-  SeekBar.OnSeekBarChangeListener mOnSeekBarChangeListener = new mbv(this);
+  SeekBar.OnSeekBarChangeListener mOnSeekBarChangeListener = new mek(this);
   public SeekBar mSeek = null;
   int mThumbWidth;
   public Drawable mThumb_0;
@@ -47,7 +47,7 @@ public class BeautyToolbar
   TextView mTip;
   int mTipLayoutMargin;
   RelativeLayout.LayoutParams mTipLayoutParams;
-  mbu mUIInfo = null;
+  mej mUIInfo = null;
   
   public BeautyToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
@@ -56,22 +56,22 @@ public class BeautyToolbar
   
   static boolean checkShowBeauty(VideoController paramVideoController, VideoAppInterface paramVideoAppInterface)
   {
-    if ((paramVideoController.a().m) || (!paramVideoController.a().j) || (!AVNotifyCenter.e(paramVideoAppInterface.getCurrentAccountUin())) || (!paramVideoController.a().n)) {}
+    if ((paramVideoController.a().n) || (!paramVideoController.a().j) || (!AVNotifyCenter.e(paramVideoAppInterface.getCurrentAccountUin())) || (!paramVideoController.a().o)) {}
     for (int i = 1; i == 0; i = 0) {
       return true;
     }
     return false;
   }
   
-  protected mbu getUIInfo()
+  protected mej getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new mbu();
+      this.mUIInfo = new mej();
       this.mUIInfo.d = 4;
-      this.mUIInfo.f = 2131559587;
-      this.mUIInfo.e = 2130841482;
-      this.mUIInfo.a = this.mApp.getApp().getString(2131696204);
+      this.mUIInfo.f = 2131559640;
+      this.mUIInfo.e = 2130841631;
+      this.mUIInfo.a = this.mApp.getApp().getString(2131696375);
     }
     return this.mUIInfo;
   }
@@ -79,39 +79,39 @@ public class BeautyToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695772);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695932);
     }
     return "";
   }
   
   public boolean isEffectBtnEnable()
   {
-    return lhp.a(this.mContext);
+    return ljs.a(this.mContext);
   }
   
   protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
-    this.mBeautySeekBar = ((RelativeLayout)this.toolbarView.findViewById(2131372523));
-    this.mSeek = ((SeekBar)this.toolbarView.findViewById(2131372524));
-    this.mTip = ((TextView)this.toolbarView.findViewById(2131372525));
+    this.mBeautySeekBar = ((RelativeLayout)this.toolbarView.findViewById(2131372879));
+    this.mSeek = ((SeekBar)this.toolbarView.findViewById(2131372880));
+    this.mTip = ((TextView)this.toolbarView.findViewById(2131372881));
     this.mTipLayoutParams = null;
     this.mContext = paramAVActivity;
-    this.mThumb_0 = this.mContext.getResources().getDrawable(2130841444);
-    this.mThumb_30 = this.mContext.getResources().getDrawable(2130841446);
-    this.mThumb_60 = this.mContext.getResources().getDrawable(2130841447);
-    this.mThumb_100 = this.mContext.getResources().getDrawable(2130841445);
+    this.mThumb_0 = this.mContext.getResources().getDrawable(2130841592);
+    this.mThumb_30 = this.mContext.getResources().getDrawable(2130841594);
+    this.mThumb_60 = this.mContext.getResources().getDrawable(2130841595);
+    this.mThumb_100 = this.mContext.getResources().getDrawable(2130841593);
     this.mSeek.setMax(100);
     this.mSeek.setOnSeekBarChangeListener(this.mOnSeekBarChangeListener);
-    this.mSeek.getViewTreeObserver().addOnGlobalLayoutListener(new mbw(this));
+    this.mSeek.getViewTreeObserver().addOnGlobalLayoutListener(new mel(this));
     if ((paramAVActivity instanceof AVActivity)) {
       this.mControlUI = paramAVActivity.a;
     }
     if (AudioHelper.a(0) == 1)
     {
       this.toolbarView.setBackgroundColor(-16711936);
-      this.toolbarView.findViewById(2131372523).setBackgroundColor(-256);
-      this.toolbarView.findViewById(2131372527).setBackgroundColor(-16711681);
-      this.toolbarView.findViewById(2131372524).setBackgroundColor(-65281);
+      this.toolbarView.findViewById(2131372879).setBackgroundColor(-256);
+      this.toolbarView.findViewById(2131372883).setBackgroundColor(-16711681);
+      this.toolbarView.findViewById(2131372880).setBackgroundColor(-65281);
     }
     this.mBeautySeekBar.setVisibility(4);
   }
@@ -123,12 +123,12 @@ public class BeautyToolbar
     this.mApp.a("BEAUTY_SKIN", this.mBeautyValue, true);
     if (this.mBeautyValue > 0)
     {
-      lga locallga = lcx.a().a();
-      if (locallga != null) {
-        locallga.t = true;
+      lid locallid = lfb.a().a();
+      if (locallid != null) {
+        locallid.u = true;
       }
     }
-    this.mControlUI.z(paramLong);
+    this.mControlUI.C(paramLong);
   }
   
   public void onShow(long paramLong, int paramInt, boolean paramBoolean)
@@ -138,14 +138,14 @@ public class BeautyToolbar
     this.mBeautyValue = this.mApp.b("BEAUTY_SKIN");
     this.mSeek.setProgress(this.mBeautyValue);
     this.mControlUI.K();
-    lpu locallpu = VideoController.a().a(((AVActivity)this.mActivity.get()).getApplicationContext());
-    if (locallpu != null)
+    lsa locallsa = VideoController.a().a(((AVActivity)this.mActivity.get()).getApplicationContext());
+    if (locallsa != null)
     {
       if (AudioHelper.e()) {
         QLog.w("BeautyToolbar", 1, "onShow, seq[" + paramLong + "]");
       }
-      locallpu.a(paramLong);
-      mao.a(paramLong, this.mApp);
+      locallsa.a(paramLong);
+      mdd.a(paramLong, this.mApp);
     }
   }
   
@@ -166,7 +166,7 @@ public class BeautyToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.BeautyToolbar
  * JD-Core Version:    0.7.0.1
  */

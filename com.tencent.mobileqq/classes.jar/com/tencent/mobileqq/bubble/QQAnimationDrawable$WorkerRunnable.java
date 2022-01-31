@@ -3,6 +3,7 @@ package com.tencent.mobileqq.bubble;
 import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
+import antv;
 import com.tencent.qphone.base.util.QLog;
 
 class QQAnimationDrawable$WorkerRunnable
@@ -31,6 +32,9 @@ class QQAnimationDrawable$WorkerRunnable
       if ((this.this$0.a == null) && (this.jdField_a_of_type_Int == 0)) {
         this.this$0.a = this.this$0.b;
       }
+      if (QQAnimationDrawable.a(this.this$0) != null) {
+        QQAnimationDrawable.a(this.this$0).a(this.jdField_a_of_type_Int);
+      }
       localObject = this.this$0;
       QQAnimationDrawable localQQAnimationDrawable = this.this$0;
       long l2 = SystemClock.uptimeMillis();
@@ -41,7 +45,7 @@ class QQAnimationDrawable$WorkerRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.QQAnimationDrawable.WorkerRunnable
  * JD-Core Version:    0.7.0.1
  */

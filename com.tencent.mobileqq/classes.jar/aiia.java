@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class aiia
-  implements aptw
+  implements DialogInterface.OnClickListener
 {
-  public aiia(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aiia(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    this.a.finish();
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiia
  * JD-Core Version:    0.7.0.1
  */

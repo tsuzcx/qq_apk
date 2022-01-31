@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import acnq;
+import aefa;
 import android.text.TextUtils;
-import bbbr;
+import bdal;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.utils.ChnToSpell;
 
 class TroopTransferActivity$15
   implements Runnable
 {
-  TroopTransferActivity$15(TroopTransferActivity paramTroopTransferActivity, Friends paramFriends, acnq paramacnq) {}
+  TroopTransferActivity$15(TroopTransferActivity paramTroopTransferActivity, Friends paramFriends, aefa paramaefa) {}
   
   public void run()
   {
@@ -17,73 +17,73 @@ class TroopTransferActivity$15
     String str;
     label187:
     boolean bool;
-    if (!bbbr.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, this.jdField_a_of_type_Acnq.j))
+    if (!bdal.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, this.jdField_a_of_type_Aefa.j))
     {
-      this.jdField_a_of_type_Acnq.j = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Acnq.m))
+      this.jdField_a_of_type_Aefa.j = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aefa.m))
       {
-        this.jdField_a_of_type_Acnq.k = ChnToSpell.a(this.jdField_a_of_type_Acnq.m, 2);
-        this.jdField_a_of_type_Acnq.l = ChnToSpell.a(this.jdField_a_of_type_Acnq.m, 1);
+        this.jdField_a_of_type_Aefa.k = ChnToSpell.a(this.jdField_a_of_type_Aefa.m, 2);
+        this.jdField_a_of_type_Aefa.l = ChnToSpell.a(this.jdField_a_of_type_Aefa.m, 1);
       }
     }
     else
     {
-      if (!bbbr.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_a_of_type_Acnq.g))
+      if (!bdal.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_a_of_type_Aefa.g))
       {
-        this.jdField_a_of_type_Acnq.g = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_Acnq.g)) {
+        this.jdField_a_of_type_Aefa.g = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_Aefa.g)) {
           break label290;
         }
-        this.jdField_a_of_type_Acnq.h = ChnToSpell.a(this.jdField_a_of_type_Acnq.g, 2);
-        this.jdField_a_of_type_Acnq.i = ChnToSpell.a(this.jdField_a_of_type_Acnq.g, 1);
+        this.jdField_a_of_type_Aefa.h = ChnToSpell.a(this.jdField_a_of_type_Aefa.g, 2);
+        this.jdField_a_of_type_Aefa.i = ChnToSpell.a(this.jdField_a_of_type_Aefa.g, 1);
       }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Acnq.j)) {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Aefa.j)) {
         break label311;
       }
-      str = this.jdField_a_of_type_Acnq.j;
-      if (bbbr.a(str, this.jdField_a_of_type_Acnq.b)) {
+      str = this.jdField_a_of_type_Aefa.j;
+      if (bdal.a(str, this.jdField_a_of_type_Aefa.b)) {
         break label412;
       }
-      this.jdField_a_of_type_Acnq.b = str;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Acnq.b)) {
+      this.jdField_a_of_type_Aefa.b = str;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Aefa.b)) {
         break label389;
       }
-      this.jdField_a_of_type_Acnq.c = ChnToSpell.a(this.jdField_a_of_type_Acnq.b, 2);
-      this.jdField_a_of_type_Acnq.d = ChnToSpell.a(this.jdField_a_of_type_Acnq.b, 1);
+      this.jdField_a_of_type_Aefa.c = ChnToSpell.a(this.jdField_a_of_type_Aefa.b, 2);
+      this.jdField_a_of_type_Aefa.d = ChnToSpell.a(this.jdField_a_of_type_Aefa.b, 1);
       bool = true;
     }
     for (;;)
     {
       this.this$0.a(bool);
       return;
-      this.jdField_a_of_type_Acnq.k = "";
-      this.jdField_a_of_type_Acnq.l = "";
+      this.jdField_a_of_type_Aefa.k = "";
+      this.jdField_a_of_type_Aefa.l = "";
       break;
       label290:
-      this.jdField_a_of_type_Acnq.h = "";
-      this.jdField_a_of_type_Acnq.i = "";
+      this.jdField_a_of_type_Aefa.h = "";
+      this.jdField_a_of_type_Aefa.i = "";
       break label166;
       label311:
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Acnq.m))
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aefa.m))
       {
-        str = this.jdField_a_of_type_Acnq.m;
+        str = this.jdField_a_of_type_Aefa.m;
         break label187;
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Acnq.g))
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aefa.g))
       {
-        str = this.jdField_a_of_type_Acnq.g;
+        str = this.jdField_a_of_type_Aefa.g;
         break label187;
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Acnq.a))
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aefa.a))
       {
-        str = this.jdField_a_of_type_Acnq.a;
+        str = this.jdField_a_of_type_Aefa.a;
         break label187;
       }
       str = "";
       break label187;
       label389:
-      this.jdField_a_of_type_Acnq.c = "";
-      this.jdField_a_of_type_Acnq.d = "";
+      this.jdField_a_of_type_Aefa.c = "";
+      this.jdField_a_of_type_Aefa.d = "";
       bool = true;
       continue;
       label412:
@@ -93,7 +93,7 @@ class TroopTransferActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.15
  * JD-Core Version:    0.7.0.1
  */

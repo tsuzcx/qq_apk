@@ -1,36 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.Map;
 
 public class vep
-  implements DialogInterface.OnKeyListener
+  extends vfy
 {
-  public vep(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private String jdField_a_of_type_JavaLangString;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public vep()
   {
-    if (paramInt == 84) {
-      return true;
-    }
-    if (paramInt == 4)
+    a(false, true);
+  }
+  
+  public vep(String paramString)
+  {
+    this();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a()
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new veq(this));
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
     {
-      this.a.a();
-      this.a.a();
-      paramDialogInterface = this.a.a;
-      paramKeyEvent = this.a.a;
-      paramDialogInterface.setResult(0);
-      this.a.a.finish();
-      DanceMachineUploadVideoFragment.a(this.a, false);
-      return true;
+      a("UrlDrawableDownloadJob_dra", this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
+      b(true);
+      return;
     }
-    return false;
+    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UrlDrawableDownloadJob_iiu"))) {
+      this.jdField_a_of_type_JavaLangString = ((String)vgp.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "UrlDrawableDownloadJob_iiu", this.jdField_a_of_type_JavaLangString));
+    }
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return false;
+    }
+    return super.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vep
  * JD-Core Version:    0.7.0.1
  */

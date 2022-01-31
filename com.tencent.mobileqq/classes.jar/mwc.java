@@ -1,31 +1,15 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import com.tencent.biz.PoiMapActivity;
-
-public class mwc
-  implements View.OnKeyListener
+class mwc
 {
-  public mwc(PoiMapActivity paramPoiMapActivity) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  long b = 0L;
+  long c = this.jdField_a_of_type_Mwa.jdField_a_of_type_Int;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
-    {
-      paramView = ((TextView)paramView).getText().toString();
-      if (!TextUtils.isEmpty(paramView)) {
-        this.a.a(paramView);
-      }
-      return true;
-    }
-    return false;
-  }
+  mwc(mwa parammwa) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwc
  * JD-Core Version:    0.7.0.1
  */

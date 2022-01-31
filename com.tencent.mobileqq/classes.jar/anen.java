@@ -1,63 +1,51 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.contactsync.ContactSyncManager.1.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class anen
-  extends aumg
+  implements andy
 {
-  anen(anem paramanem) {}
+  private anen(andw paramandw) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    askn localaskn = (askn)this.a.a.getManager(11);
-    int i = localaskn.d();
-    String str1 = this.a.a.getCurrentAccountUin();
-    String str2 = this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "onQueryBindState | state = " + i + " | syncUin = " + anem.b(str2) + " | currentUin = " + anem.b(str1));
-    }
-    if (localaskn.c()) {
-      if (TextUtils.isEmpty(str2)) {
-        anem.a(this.a).removeCallbacksAndMessages(null);
-      }
-    }
-    do
+    if ((!"ScanCode".equals(paramString)) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {}
+    for (;;)
     {
-      do
+      return false;
+      long l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
+      paramString = new Intent();
+      paramString.setClassName("com.tencent.mobileqq", "com.tencent.biz.qrcode.activity.ScannerActivity");
+      paramString.putExtra("from", andw.class.getName());
+      paramString.putExtra("finishAfterSucc", true);
+      if (andw.a(this.a) != null) {}
+      try
       {
-        anem.a(this.a).sendEmptyMessage(1);
-        do
-        {
-          return;
-        } while (str1.equals(str2));
-        anem.a(this.a).removeCallbacksAndMessages(null);
-        anem.a(this.a).sendEmptyMessage(2);
-        anem.a(this.a).sendEmptyMessage(1);
-        return;
-      } while ((i != 5) && (i != 1) && ((i != 6) || (localaskn.a() == null) || (localaskn.a().lastUsedFlag != 3L)) && ((i != 7) || (localaskn.a() == null) || (!localaskn.a().isStopFindMatch)));
-      if ((i == 5) || (i == 1)) {
-        ThreadManager.excute(new ContactSyncManager.1.1(this), 16, null, false);
+        BaseApplicationImpl.getApplication().unregisterReceiver(andw.a(this.a));
+        label105:
+        andw.a(this.a, null);
+        andw.a(this.a, new aneo(this, l));
+        paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.API.scanResultAction");
+        BaseApplicationImpl.getApplication().registerReceiver(andw.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
+        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
+        if (paramArrayOfVariantWrapper == null) {
+          continue;
+        }
+        paramArrayOfVariantWrapper.startActivity(paramString);
+        return false;
       }
-    } while ((TextUtils.isEmpty(str2)) || (!str2.equals(this.a.a.getCurrentAccountUin())));
-    anem.a(this.a).removeCallbacksAndMessages(null);
-    anem.a(this.a).sendEmptyMessage(2);
-  }
-  
-  protected void d(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "onQueryContactList | isSuccess = " + paramBoolean + " | updateFlag = " + paramInt);
+      catch (Exception paramArrayOfVariantWrapper)
+      {
+        break label105;
+      }
     }
-    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anen
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package cooperation.qzone.webviewplugin;
 
-import bhso;
+import bjtz;
 import java.util.ArrayList;
 
 public class QzonePhotoWallPlugin$2
   implements Runnable
 {
-  public QzonePhotoWallPlugin$2(bhso parambhso, ArrayList paramArrayList) {}
+  public QzonePhotoWallPlugin$2(bjtz parambjtz, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bhso.a(this.this$0, this.a, false);
+    bjtz.a(this.this$0, this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzonePhotoWallPlugin.2
  * JD-Core Version:    0.7.0.1
  */

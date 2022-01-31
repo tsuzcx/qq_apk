@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aulz;
-import aumc;
+import awbv;
+import awdg;
+import awdj;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.ABORT, columnNames="mGameId,mUin")
 public class ApolloGameScoreData
-  extends auko
+  extends awbv
 {
-  @aulz
+  @awdg
   public boolean mFromDb = true;
-  @aumc
+  @awdj
   public int mGameId;
   public int mScore;
   public String mUin;
@@ -29,7 +29,7 @@ public class ApolloGameScoreData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloGameScoreData
  * JD-Core Version:    0.7.0.1
  */

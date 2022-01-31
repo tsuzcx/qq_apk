@@ -4,9 +4,9 @@ import android.text.TextUtils;
 import android.util.Base64;
 import appoint.define.appoint_define.CommonLabel;
 import appoint.define.appoint_define.PublisherInfo;
-import auko;
-import aulz;
-import bbkp;
+import awbv;
+import awdg;
+import bdjj;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -25,7 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class StrangerInfo
-  extends auko
+  extends awbv
   implements Serializable
 {
   private static final long serialVersionUID = 0L;
@@ -39,12 +39,12 @@ public class StrangerInfo
   public int gender;
   public int godFlag;
   public String interestNameStr;
-  @aulz
+  @awdg
   public ArrayList<String> interestNames = new ArrayList();
   public String interestTypeStr;
-  @aulz
+  @awdg
   public ArrayList<Integer> interestTypes = new ArrayList();
-  @aulz
+  @awdg
   public boolean isNewVisitor;
   public int lableId;
   public byte[] lableMsgLast;
@@ -56,7 +56,7 @@ public class StrangerInfo
   public int recentVisitorTime;
   public int recommend;
   public byte[] strangerDeclare;
-  @aulz
+  @awdg
   public String timeStr;
   public long tinyId;
   public long uin;
@@ -352,7 +352,7 @@ public class StrangerInfo
       label1054:
       if (localStrangerInfo.recentVisitorTime > 0)
       {
-        paramPublisherInfo = bbkp.a(localStrangerInfo.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
+        paramPublisherInfo = bdjj.a(localStrangerInfo.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
         localStrangerInfo.timeStr = paramPublisherInfo;
         return localStrangerInfo;
       }
@@ -375,7 +375,7 @@ public class StrangerInfo
   {
     super.postRead();
     if (this.recentVisitorTime > 0) {
-      this.timeStr = bbkp.a(this.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
+      this.timeStr = bdjj.a(this.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
     }
     int i;
     if (!TextUtils.isEmpty(this.interestNameStr)) {
@@ -431,7 +431,7 @@ public class StrangerInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    for (Class localClass = getClass(); localClass != auko.class; localClass = localClass.getSuperclass())
+    for (Class localClass = getClass(); localClass != awbv.class; localClass = localClass.getSuperclass())
     {
       Field[] arrayOfField = localClass.getDeclaredFields();
       int j = arrayOfField.length;
@@ -465,7 +465,7 @@ public class StrangerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.StrangerInfo
  * JD-Core Version:    0.7.0.1
  */

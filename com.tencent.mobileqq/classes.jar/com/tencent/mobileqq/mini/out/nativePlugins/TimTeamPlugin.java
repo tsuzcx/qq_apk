@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import ajsd;
+import aljq;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
@@ -32,7 +32,7 @@ public class TimTeamPlugin
       {
         paramJSONObject = paramJSContext.getActivity();
         paramJSContext = new Intent(paramJSONObject, AccountDetailActivity.class);
-        paramJSContext.putExtra("uin", ajsd.aU);
+        paramJSContext.putExtra("uin", aljq.aV);
         paramJSONObject.startActivity(paramJSContext);
       }
       return;
@@ -46,7 +46,7 @@ public class TimTeamPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TimTeamPlugin
  * JD-Core Version:    0.7.0.1
  */

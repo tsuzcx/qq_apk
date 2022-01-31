@@ -1,88 +1,243 @@
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
-import com.tencent.mobileqq.data.AppShareID;
-import com.tencent.mobileqq.data.OperateVoipTipsInfo;
-import com.tencent.util.Pair;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import protocol.KQQConfig.GetResourceRespInfo;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.nearfield_discuss.nearfield_discuss.BusiRespHead;
+import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
 
 public class ajuf
-  implements ajte
+  extends alst
 {
-  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3) {}
+  public ajuf(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, int paramInt) {}
-  
-  protected void a(boolean paramBoolean, long paramLong) {}
-  
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper) {}
-  
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID) {}
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2) {}
-  
-  protected void a(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void b(boolean paramBoolean, long paramLong) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        a(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
-        return;
-        a(paramBoolean, (GetResourceRespInfo)paramObject);
-        return;
-        a(paramBoolean, (String)paramObject);
-        return;
-        a(paramBoolean, (UpgradeDetailWrapper)paramObject);
-        return;
-        a(paramBoolean, (AppShareID)paramObject);
-        return;
-        b(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
-        return;
-        a(paramBoolean, ((Integer)paramObject).intValue());
-        return;
-        if ((paramObject != null) && ((paramObject instanceof OperateVoipTipsInfo)))
-        {
-          paramObject = (OperateVoipTipsInfo)paramObject;
-          a(paramObject.uin, paramObject.uinType, paramObject.taskList);
-        }
-        a(paramBoolean);
-        return;
-        paramObject = (Pair)paramObject;
-        a(paramBoolean, (String)paramObject.first, (String)paramObject.second);
-        return;
-        b(paramBoolean, ((Boolean)paramObject).booleanValue());
-        return;
-      } while (!(paramObject instanceof Object[]));
-      paramObject = (Object[])paramObject;
-      a(((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
-      return;
-    } while (!(paramObject instanceof Object[]));
     paramObject = (Object[])paramObject;
-    a((Boolean)paramObject[0], (Boolean)paramObject[1], (String)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
+    int j = ((Integer)paramObject[0]).intValue();
+    int i = -1;
+    if (paramObject.length == 3) {
+      i = ((Integer)paramObject[2]).intValue();
+    }
+    if (this.a.jdField_a_of_type_Bepp != null)
+    {
+      this.a.jdField_a_of_type_Bepp.dismiss();
+      this.a.jdField_a_of_type_Bepp = null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CreateFaceToFaceDiscussionActivity", 2, "onGetNearFieldDiscussInfo " + paramBoolean + " mSessionId=" + this.a.jdField_a_of_type_Int + " sessionId=" + j);
+    }
+    if (paramBoolean)
+    {
+      paramObject = (String)paramObject[1];
+      if (j == this.a.jdField_a_of_type_Int)
+      {
+        if ((i != 0) || (!DiscussionInfo.isValidDisUin(paramObject))) {
+          break label256;
+        }
+        this.a.finish();
+        localObject = bdbt.a(this.a.app, this.a.getActivity().getApplicationContext(), paramObject);
+        localIntent = aekt.a(new Intent(this.a.getActivity(), SplashActivity.class), null);
+        localIntent.putExtra("uin", paramObject);
+        localIntent.putExtra("uintype", 3000);
+        localIntent.putExtra("uinname", (String)localObject);
+        localIntent.putExtra("isBack2Root", true);
+        this.a.startActivity(localIntent);
+      }
+    }
+    label256:
+    while (j != this.a.jdField_a_of_type_Int)
+    {
+      Object localObject;
+      Intent localIntent;
+      return;
+      if ((i == 2) || (i == 1))
+      {
+        this.a.finish();
+        localObject = aekt.a(new Intent(this.a.getActivity(), SplashActivity.class), null);
+        ((Intent)localObject).putExtra("uin", paramObject);
+        ((Intent)localObject).putExtra("uintype", 1);
+        ((Intent)localObject).putExtra("uinname", bdbt.h(this.a.app, this.a.app.getCurrentAccountUin()) + alpo.a(2131702996));
+        ((Intent)localObject).putExtra("isBack2Root", true);
+        this.a.startActivity((Intent)localObject);
+        azmj.b(this.a.app, "dc00899", "Grp_create", "", "f2f", "cre_suc", 0, 0, paramObject, "", "", "");
+        return;
+      }
+      CreateFaceToFaceDiscussionActivity.a(this.a, 1, this.a.getString(2131692394));
+      return;
+    }
+    CreateFaceToFaceDiscussionActivity.b(this.a, 1, this.a.getString(2131692394));
+  }
+  
+  protected void a(boolean paramBoolean, List<nearfield_discuss.UserProfile> paramList, int paramInt1, int paramInt2, nearfield_discuss.BusiRespHead paramBusiRespHead, int paramInt3, int paramInt4, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CreateFaceToFaceDiscussionActivity", 2, "NearFieldDiscussObserver isSuccess = " + paramBoolean + " ; interval = " + paramInt1);
+    }
+    Object localObject;
+    if (paramBoolean)
+    {
+      if (paramInt1 > 0) {
+        this.a.jdField_a_of_type_Long = (paramInt1 * 1000);
+      }
+      if ((paramBusiRespHead != null) && (paramBusiRespHead.int32_reply_code.get() != 0))
+      {
+        if (!this.a.jdField_c_of_type_Boolean)
+        {
+          paramList = paramBusiRespHead.str_result.get();
+          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramList, 0).a();
+          ((Animatable)this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
+          this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+          if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+            this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+          }
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 600L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("CreateFaceToFaceDiscussionActivity", 2, "head.int32_reply_code = " + paramBusiRespHead.int32_reply_code.get());
+        }
+        return;
+      }
+      paramBusiRespHead = "";
+      localObject = paramBusiRespHead;
+      if (paramList != null)
+      {
+        localObject = paramBusiRespHead;
+        if (paramLong != 0L)
+        {
+          localObject = paramBusiRespHead;
+          if (paramInt4 != 0)
+          {
+            Iterator localIterator = paramList.iterator();
+            localObject = paramBusiRespHead;
+            if (localIterator.hasNext())
+            {
+              localObject = (nearfield_discuss.UserProfile)localIterator.next();
+              if (((nearfield_discuss.UserProfile)localObject).uint64_uin.get() != paramLong) {
+                break label1094;
+              }
+              paramBusiRespHead = ((nearfield_discuss.UserProfile)localObject).str_nick.get();
+            }
+          }
+        }
+      }
+    }
+    label1094:
+    for (;;)
+    {
+      break;
+      switch (paramInt4)
+      {
+      default: 
+        if (this.a.jdField_a_of_type_JavaUtilList == null)
+        {
+          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+          label364:
+          this.a.jdField_a_of_type_JavaUtilList.add(this.a.jdField_a_of_type_TencentImNearfield_discussNearfield_discuss$UserProfile);
+          if (paramList != null) {
+            this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+          }
+          if ((paramList == null) && (QLog.isColorLevel())) {
+            QLog.i("CreateFaceToFaceDiscussionActivity", 2, "usrList == null");
+          }
+          if (this.a.jdField_a_of_type_Ajui != null)
+          {
+            this.a.jdField_a_of_type_Ajui.notifyDataSetChanged();
+            this.a.jdField_a_of_type_AndroidWidgetGridView.setVisibility(0);
+          }
+          if (this.a.d)
+          {
+            this.a.d = false;
+            CreateFaceToFaceDiscussionActivity.a(this.a);
+            paramList = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
+            this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramList, this.a.jdField_a_of_type_Long);
+          }
+        }
+        break;
+      }
+      for (;;)
+      {
+        ((Animatable)this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
+        this.a.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        return;
+        CreateFaceToFaceDiscussionActivity.a(this.a).setText(this.a.getString(2131689738));
+        CreateFaceToFaceDiscussionActivity.a(this.a).setContentDescription(this.a.getString(2131689738));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131719684));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.a.getString(2131719684));
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.getString(2131719685));
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(this.a.getString(2131719685));
+        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(this.a.getResources().getColor(2131166932));
+        this.a.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839107);
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131702995));
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131719689));
+        break;
+        this.a.jdField_b_of_type_Boolean = false;
+        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131719691, new Object[] { localObject }));
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getString(2131719687));
+        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
+        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.getString(2131719687));
+        this.a.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839107);
+        break;
+        this.a.jdField_b_of_type_Boolean = true;
+        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131719690, new Object[] { localObject }));
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getString(2131719688));
+        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
+        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.getString(2131719688));
+        this.a.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839107);
+        break;
+        this.a.jdField_a_of_type_JavaUtilList.clear();
+        break label364;
+        if (!this.a.jdField_c_of_type_Boolean)
+        {
+          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, alpo.a(2131702993), 1).a();
+          if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+            this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+          }
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 600L);
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CreateFaceToFaceDiscussionActivity", 2, "on push | isSuccess = " + paramBoolean);
+    }
+    if ((paramBoolean) && (((Integer)((Object[])(Object[])paramObject)[0]).intValue() == this.a.jdField_a_of_type_Int) && (this.a.isResume()))
+    {
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajuf
  * JD-Core Version:    0.7.0.1
  */

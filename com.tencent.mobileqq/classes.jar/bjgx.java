@@ -1,24 +1,26 @@
-import android.graphics.RectF;
-import android.text.TextPaint;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.QCirclePublishPictureTagInfo;
 
-public abstract class bjgx
+public final class bjgx
+  implements Parcelable.Creator<QCirclePublishPictureTagInfo>
 {
-  protected int a;
-  protected RectF a;
-  protected TextPaint a;
-  protected int b;
-  
-  public bjgx(int paramInt1, int paramInt2, TextPaint paramTextPaint, RectF paramRectF)
+  public QCirclePublishPictureTagInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
+    QCirclePublishPictureTagInfo localQCirclePublishPictureTagInfo = new QCirclePublishPictureTagInfo();
+    localQCirclePublishPictureTagInfo.picId = paramParcel.readString();
+    localQCirclePublishPictureTagInfo.picTags = paramParcel.readArrayList(String.class.getClassLoader());
+    return localQCirclePublishPictureTagInfo;
+  }
+  
+  public QCirclePublishPictureTagInfo[] a(int paramInt)
+  {
+    return new QCirclePublishPictureTagInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjgx
  * JD-Core Version:    0.7.0.1
  */

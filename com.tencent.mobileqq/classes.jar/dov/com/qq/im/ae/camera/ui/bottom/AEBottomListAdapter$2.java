@@ -1,13 +1,13 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bilv;
+import bkqk;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 
 public class AEBottomListAdapter$2
   implements Runnable
 {
-  public AEBottomListAdapter$2(bilv parambilv) {}
+  public AEBottomListAdapter$2(bkqk parambkqk) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class AEBottomListAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

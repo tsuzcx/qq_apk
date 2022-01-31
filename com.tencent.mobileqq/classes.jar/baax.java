@@ -1,82 +1,93 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.media.MediaMetadataRetriever;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.tencent.mobileqq.vpng.view.VPNGImageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class baax
-  implements bacd
+  extends baav
 {
-  public baax(XMediaEditor paramXMediaEditor) {}
+  protected VPNGImageView a;
   
-  public void a(int paramInt1, int paramInt2)
+  public baax(SpriteNativeView paramSpriteNativeView, String paramString)
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    paramInt1 = paramInt2 - paramInt1;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(XMediaEditor.a(this.a), XMediaEditor.a(this.a) + paramInt1);
-    }
-    XMediaEditor.a(this.a, paramInt1 + XMediaEditor.a(this.a));
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = ((bacf)paramViewHolder).jdField_a_of_type_Babg;
-    this.a.a(paramViewHolder.c);
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
-  {
-    if (XMediaEditor.a(this.a) != this.a.a.a())
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = new VPNGImageView(paramSpriteNativeView.getContext());
+    paramSpriteNativeView = new MediaMetadataRetriever();
+    try
     {
-      paramViewHolder = this.a;
-      if (XMediaEditor.a(this.a)) {
-        break label73;
-      }
+      paramSpriteNativeView.setDataSource(paramString);
+      paramString = paramSpriteNativeView.extractMetadata(18);
+      String str = paramSpriteNativeView.extractMetadata(19);
+      this.jdField_a_of_type_Float = (Integer.parseInt(paramString) / 2);
+      this.b = Integer.parseInt(str);
+      paramString = new FrameLayout.LayoutParams((int)this.jdField_a_of_type_Float, (int)this.b);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setLayoutParams(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotX(this.jdField_a_of_type_Float / 2.0F);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotY(this.b / 2.0F);
+      return;
     }
-    label73:
-    for (paramBoolean = true;; paramBoolean = false)
+    catch (Exception paramString)
     {
-      XMediaEditor.a(paramViewHolder, paramBoolean);
-      if (XMediaEditor.a(this.a) != null) {
-        XMediaEditor.a(this.a).a(XMediaEditor.a(this.a));
-      }
+      QLog.e("VideoSprite", 2, "MediaMetadataRetriever exception " + paramString);
       return;
     }
-  }
-  
-  public void b(RecyclerView.ViewHolder paramViewHolder)
-  {
-    int i = ((bacf)paramViewHolder).jdField_a_of_type_Babg.c;
-    if (i == 0) {}
-    while (this.a.a.a(i - 1).b() == -1) {
-      return;
-    }
-    this.a.a(i - 1);
-  }
-  
-  public void c(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bacu)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a = false;
-    }
-    XMediaEditor.a(this.a, (babp)paramViewHolder.jdField_a_of_type_Babg);
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, true);
+    finally
+    {
+      paramSpriteNativeView.release();
     }
   }
   
-  public void d(RecyclerView.ViewHolder paramViewHolder)
+  public void a()
   {
-    paramViewHolder = (bacu)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, false);
-    }
+    super.a();
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setVideo(paramString, paramBoolean);
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onPause();
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onResume();
+  }
+  
+  public boolean c()
+  {
+    boolean bool = super.c();
+    a(this.jdField_a_of_type_Azze);
+    float f1 = this.jdField_a_of_type_Azze.jdField_a_of_type_Float;
+    float f2 = b();
+    float f3 = this.jdField_a_of_type_Float / 2.0F;
+    float f4 = this.f;
+    float f5 = this.jdField_a_of_type_Azze.b;
+    float f6 = b();
+    float f7 = this.b / 2.0F;
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setX(f1 * f2 - f3);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setY(f4 - f5 * f6 - f7);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleX(this.e * b());
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleY(this.e * b());
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setRotation(this.g);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
+    return bool;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baax
  * JD-Core Version:    0.7.0.1
  */

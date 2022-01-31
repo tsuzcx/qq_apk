@@ -1,190 +1,92 @@
-import com.music.voice.MusicWrapperJNI;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.nio.charset.Charset;
-import java.util.Arrays;
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class bjet
+  extends bame
 {
-  public static final String a;
-  public static final String b;
-  public static final String c = jdField_a_of_type_JavaLangString + File.separator + "audio_fingerprint.secret";
-  public static final String d = jdField_a_of_type_JavaLangString + File.separator + "audio_fingerprint.txt";
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private MusicWrapperJNI jdField_a_of_type_ComMusicVoiceMusicWrapperJNI = new MusicWrapperJNI();
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int b;
-  
-  static
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    jdField_a_of_type_JavaLangString = ahvy.jdField_a_of_type_JavaLangString + "/Tencent/qim/hum_recognition";
-    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + File.separator + "svm_snr15_random_noise";
-  }
-  
-  private int a()
-  {
-    int[] arrayOfInt = new int[1];
-    this.jdField_a_of_type_ComMusicVoiceMusicWrapperJNI.QAFPGetVersion(arrayOfInt);
-    return arrayOfInt[0];
-  }
-  
-  private String a()
-  {
-    long l = System.currentTimeMillis();
-    int i = a();
-    String str1 = bjeg.a("musicopi_12345683" + "a45a1b" + l);
-    String str2 = String.format("%.3f,%d", new Object[] { Float.valueOf(10.0F), Integer.valueOf(this.jdField_b_of_type_Int) });
-    float f = this.jdField_a_of_type_Float;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("v=").append(i).append("&source=").append("musicopi_12345683").append("&time=").append(l).append("&veri_str=").append(str1).append("&cmd=").append("1").append("&info=").append(str2).append("&type=").append("0").append("&session_id=").append(l).append("feature_type=").append(this.jdField_a_of_type_Int).append("&confidence=").append(f * 100.0F).append("");
-    return localStringBuilder.toString();
-  }
-  
-  private void a()
-  {
-    Object localObject = new int[1];
-    float[] arrayOfFloat = new float[1];
-    byte[] arrayOfByte = new byte[10240];
-    int[] arrayOfInt = new int[1];
-    this.jdField_a_of_type_ComMusicVoiceMusicWrapperJNI.GetFeature(10000.0F, (int[])localObject, arrayOfFloat, arrayOfByte, arrayOfInt);
-    this.jdField_a_of_type_Int = (localObject[0] + 1);
-    this.jdField_a_of_type_Float = arrayOfFloat[0];
-    this.jdField_b_of_type_Int = arrayOfInt[0];
-    this.jdField_a_of_type_ArrayOfByte = Arrays.copyOfRange(arrayOfByte, 0, this.jdField_b_of_type_Int);
-    if (QLog.isColorLevel())
-    {
-      localObject = String.format("feature_type=%s prob=%s outputLength=%d", new Object[] { Integer.valueOf(localObject[0]), Float.valueOf(arrayOfFloat[0]), Integer.valueOf(arrayOfInt[0]) });
-      QLog.i("AcousticFingerprint", 2, "getFeatureJni: invoked. info: fingerprintFeature = " + (String)localObject);
+    if (paramDownloadParams == null) {
+      return null;
     }
-  }
-  
-  private boolean a()
-  {
-    File localFile = new File(jdField_b_of_type_JavaLangString);
-    if (!localFile.exists())
+    String str = paramDownloadParams.url.getHost();
+    paramOutputStream = new File(str);
+    if (paramOutputStream.exists()) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AcousticFingerprint", 2, "isClassifierFileExists: invoked. info: not exist. classifierFile = " + localFile);
+      return paramOutputStream;
+      paramURLDrawableHandler = paramDownloadParams.url.getFile();
+      if (TextUtils.isEmpty(paramURLDrawableHandler))
+      {
+        QLog.e("qzonecontentboxdownloader", 2, "downloadImage url err, url=" + paramURLDrawableHandler + ", path=" + str);
+        return null;
       }
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean b()
-  {
-    int i = this.jdField_a_of_type_ComMusicVoiceMusicWrapperJNI.Init(jdField_b_of_type_JavaLangString);
-    if (i == 0) {
-      return true;
-    }
-    if (((i == -1) || (i == -2)) && (QLog.isColorLevel())) {
-      QLog.i("AcousticFingerprint", 2, "initWrapperJni: invoked. info: initResult = " + i);
-    }
-    return false;
-  }
-  
-  private byte[] b(byte[] paramArrayOfByte)
-  {
-    int i = paramArrayOfByte.length;
-    if (i == 0) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AcousticFingerprint", 2, "generateBytes: invoked. info: audioBytes.length = " + i);
+      paramDownloadParams = paramURLDrawableHandler;
+      if (paramURLDrawableHandler.startsWith(File.separator)) {
+        paramDownloadParams = paramURLDrawableHandler.substring(1);
+      }
+      if (!paramDownloadParams.startsWith("http"))
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("qzonecontentboxdownloader", 2, "downloadImage url has no http err, url=" + paramDownloadParams + ", path=" + str);
+        return null;
+      }
+      int i = bdvx.a(new bdvv(paramDownloadParams, paramOutputStream), BaseApplicationImpl.sApplication.getRuntime());
+      if (i == 0)
+      {
+        if (!paramOutputStream.exists())
+        {
+          QLog.e("qzonecontentboxdownloader", 1, "downloadImage file not exists, url=" + paramDownloadParams + ", path=" + str + ", ret:" + i);
+          paramOutputStream = null;
+        }
+      }
+      else
+      {
+        QLog.e("qzonecontentboxdownloader", 1, "downloadImage Error url=" + paramDownloadParams + ", path=" + str + ", ret:" + i);
+        paramOutputStream = null;
       }
     }
-    boolean bool;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    Object localObject = null;
+    paramURLDrawableHandler = null;
+    if ((paramFile != null) && (paramFile.exists()) && (paramDownloadParams != null) && (paramDownloadParams.useApngImage) && (ApngDrawable.isApngFile(paramFile)))
+    {
+      if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {
+        paramURLDrawableHandler = (Bundle)paramDownloadParams.mExtraInfo;
+      }
+      paramDownloadParams = new ApngImage(paramFile, true, paramURLDrawableHandler);
+      if (paramDownloadParams.firstFrame == null) {
+        ChatBackgroundManager.a(paramFile.getAbsolutePath());
+      }
+      paramFile = paramDownloadParams;
+    }
     do
     {
-      return null;
-      if (a()) {
-        break;
-      }
-      bool = bjeg.a();
-      if (bool) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("AcousticFingerprint", 2, "generateBytes: invoked. info: Failed to copy classifier. OK = " + bool);
+      return paramFile;
+      paramFile = localObject;
+    } while (paramDownloadParams == null);
+    paramDownloadParams.useApngImage = false;
     return null;
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = b();
-    }
-    int j = this.jdField_a_of_type_ComMusicVoiceMusicWrapperJNI.Reset();
-    if (((j == -4) || (j == -5)) && (QLog.isColorLevel())) {
-      QLog.i("AcousticFingerprint", 2, "generateBytes: invoked. info: resetResult = " + j);
-    }
-    i = this.jdField_a_of_type_ComMusicVoiceMusicWrapperJNI.Process(paramArrayOfByte, i);
-    if (((i == -4) || (i == -6)) && (QLog.isColorLevel())) {
-      QLog.i("AcousticFingerprint", 2, "generateBytes: invoked. info: processResult = " + i);
-    }
-    a();
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  private byte[] c(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = b(paramArrayOfByte);
-    if (paramArrayOfByte == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AcousticFingerprint", 2, "body: invoked. info: fingerprintBytes = " + paramArrayOfByte);
-      }
-      return null;
-    }
-    Object localObject = a();
-    if (QLog.isColorLevel()) {
-      QLog.i("AcousticFingerprint", 2, "body: invoked. info: header = " + (String)localObject);
-    }
-    localObject = ((String)localObject).getBytes(Charset.forName("UTF-8"));
-    byte[] arrayOfByte = new byte[localObject.length + paramArrayOfByte.length];
-    System.arraycopy(localObject, 0, arrayOfByte, 0, localObject.length);
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, localObject.length, paramArrayOfByte.length);
-    return arrayOfByte;
-  }
-  
-  private byte[] d(byte[] paramArrayOfByte)
-  {
-    SecretKeySpec localSecretKeySpec = new SecretKeySpec("spr_8a2cdeab7b81".getBytes(), "AES");
-    Cipher localCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-    localCipher.init(1, localSecretKeySpec);
-    return localCipher.doFinal(paramArrayOfByte);
-  }
-  
-  public bjet a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AcousticFingerprint", 2, "setTimeThreshold: invoked. info: timeMs = " + paramFloat);
-    }
-    if (paramFloat < 0.0F) {}
-    int i;
-    do
-    {
-      return this;
-      i = this.jdField_a_of_type_ComMusicVoiceMusicWrapperJNI.SetTimeThreashold(paramFloat);
-    } while ((i == 0) || (!QLog.isColorLevel()));
-    QLog.i("AcousticFingerprint", 2, "setTimeThreasholdJni: invoked. info: Failed. retVal = " + i);
-    return this;
-  }
-  
-  public byte[] a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = c(paramArrayOfByte);
-    if (paramArrayOfByte == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AcousticFingerprint", 2, "bytes: invoked. info: Failed to generate fingerprint body. body = " + paramArrayOfByte);
-      }
-      return null;
-    }
-    return d(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjet
  * JD-Core Version:    0.7.0.1
  */

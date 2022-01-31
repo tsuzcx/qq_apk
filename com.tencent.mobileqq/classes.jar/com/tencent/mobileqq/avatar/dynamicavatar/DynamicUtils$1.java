@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import alzk;
+import anqj;
 import com.tencent.common.app.AppInterface;
 
 public final class DynamicUtils$1
@@ -10,12 +10,12 @@ public final class DynamicUtils$1
   
   public void run()
   {
-    alzk.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    anqj.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicUtils.1
  * JD-Core Version:    0.7.0.1
  */

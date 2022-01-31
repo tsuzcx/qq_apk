@@ -1,45 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.opengl.GLES20;
 
-public class amrt
+class amrt
+  implements anau
 {
-  public long a;
-  public boolean a;
+  amrt(amrs paramamrs) {}
   
-  public amrt()
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    GLES20.glUniform1i(amrs.a(this.a), amrs.b(this.a));
   }
   
-  public static amrt a(String paramString)
+  public void a(int paramInt)
   {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        amrt localamrt = new amrt();
-        paramString = new JSONObject(paramString);
-        localamrt.jdField_a_of_type_Boolean = paramString.optBoolean("useParcelForBoot", true);
-        localamrt.jdField_a_of_type_Long = paramString.optLong("delayPluginManageTimeInMills", 0L);
-        QLog.d("BootOptimizeConfProcessor", 2, "confBean = " + localamrt.toString());
-        return localamrt;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("BootOptimizeConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public String toString()
-  {
-    return "BootOptimizeConfigureBean{useParcelForBoot=" + this.jdField_a_of_type_Boolean + ", delayPluginManageTimeInMills=" + this.jdField_a_of_type_Long + '}';
+    amrs.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    amsa.a("glGetUniformLocation uDisplayType");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class amvy
-  extends ampa<amvz>
+  implements amvu
 {
-  public int a()
+  private final String jdField_a_of_type_JavaLangString = "huawei_arcore";
+  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final String b = "huawei_arcore_arch64";
+  private final String c = "v8.0.0";
+  private final String d = "v8.2.0";
+  private final String e = "md5_config.xml";
+  
+  public amvy()
   {
-    return 551;
+    this.jdField_a_of_type_JavaUtilArrayList.add("libarengine_api");
+    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_impl");
+    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_ndk");
+    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_jni");
   }
   
-  @NonNull
-  public amvz a(int paramInt)
+  public String a()
   {
-    return new amvz();
+    return "huawei_arcore";
   }
   
-  @Nullable
-  public amvz a(amph[] paramArrayOfamph)
+  public List<String> a()
   {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null)) {
-      return amvz.a(paramArrayOfamph[0].a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onParsed is null");
-    }
-    return null;
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  public Class<amvz> a()
+  public String b()
   {
-    return amvz.class;
+    return "v8.0.0";
   }
   
-  public void a(int paramInt)
+  public String c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(amvz paramamvz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onUpdate " + paramamvz.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "md5_config.xml";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvy
  * JD-Core Version:    0.7.0.1
  */

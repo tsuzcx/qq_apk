@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Window;
-import bgwf;
-import bgws;
+import bixe;
+import bixp;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
 
@@ -35,10 +35,10 @@ public class ReaderContentPageActivity
         return;
         localObject = (ReaderBaseFragment)b();
       } while ((localObject == null) || (!((ReaderBaseFragment)localObject).b));
-      localObject = (bgws)((ReaderBaseFragment)localObject).a;
+      localObject = (bixp)((ReaderBaseFragment)localObject).a;
       localWindow = getWindow();
     } while ((localObject == null) || (localWindow == null));
-    ((bgws)localObject).a(false, localWindow);
+    ((bixp)localObject).a(false, localWindow);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -51,12 +51,12 @@ public class ReaderContentPageActivity
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
-    bgwf.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
+    bixe.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderContentPageActivity
  * JD-Core Version:    0.7.0.1
  */

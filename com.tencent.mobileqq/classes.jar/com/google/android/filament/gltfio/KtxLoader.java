@@ -1,7 +1,7 @@
 package com.google.android.filament.gltfio;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.google.android.filament.Engine;
 import com.google.android.filament.IndirectLight;
 import com.google.android.filament.Skybox;
@@ -77,7 +77,7 @@ public class KtxLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.gltfio.KtxLoader
  * JD-Core Version:    0.7.0.1
  */

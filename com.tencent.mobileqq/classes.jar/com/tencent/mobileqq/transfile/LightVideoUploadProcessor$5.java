@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
-import awbg;
-import awbh;
-import aysi;
+import axtf;
+import axtg;
+import baqf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class LightVideoUploadProcessor$5
   implements Runnable
 {
-  public LightVideoUploadProcessor$5(aysi paramaysi, awbg paramawbg) {}
+  public LightVideoUploadProcessor$5(baqf parambaqf, axtf paramaxtf) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class LightVideoUploadProcessor$5
     if (this.this$0.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
       this.this$0.s();
     }
-    while ((this.this$0.jdField_b_of_type_JavaUtilArrayList.size() != 0) || (this.this$0.jdField_b_of_type_JavaUtilMap.size() != 0) || (aysi.a(this.this$0) == null) || (!aysi.a(this.this$0).a())) {
+    while ((this.this$0.jdField_b_of_type_JavaUtilArrayList.size() != 0) || (this.this$0.jdField_b_of_type_JavaUtilMap.size() != 0) || (baqf.a(this.this$0) == null) || (!baqf.a(this.this$0).a())) {
       return;
     }
     this.this$0.r();
@@ -29,7 +29,7 @@ public class LightVideoUploadProcessor$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.LightVideoUploadProcessor.5
  * JD-Core Version:    0.7.0.1
  */

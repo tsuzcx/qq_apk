@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.view.ViewStub.OnInflateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-class scu
-  implements ViewStub.OnInflateListener
+public abstract interface scu
 {
-  scu(scr paramscr) {}
-  
-  public void onInflate(ViewStub paramViewStub, View paramView)
-  {
-    this.a.a = paramView;
-    this.a.e();
-  }
+  public abstract void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scu
  * JD-Core Version:    0.7.0.1
  */

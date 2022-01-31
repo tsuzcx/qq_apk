@@ -1,73 +1,43 @@
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
-import java.util.ArrayList;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-public final class absa
-  implements Parcelable.Creator<ProfileActivity.AllInOne>
+public class absa
+  extends RecyclablePool.Recyclable
 {
-  public ProfileActivity.AllInOne a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public String a;
+  public int[] a;
+  public int b;
+  public long b;
+  public int[] b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
+  long e;
+  public int f;
+  public long f;
+  public int g;
+  public long g;
+  int h = 0;
+  int i = 0;
+  
+  public absa()
   {
-    boolean bool = true;
-    ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(null);
-    localAllInOne.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_a_of_type_Int = paramParcel.readInt();
-    localAllInOne.jdField_b_of_type_Int = paramParcel.readInt();
-    localAllInOne.jdField_a_of_type_Byte = paramParcel.readByte();
-    localAllInOne.jdField_a_of_type_Short = ((short)paramParcel.readInt());
-    localAllInOne.jdField_b_of_type_Byte = paramParcel.readByte();
-    localAllInOne.jdField_c_of_type_Int = paramParcel.readInt();
-    localAllInOne.jdField_c_of_type_Byte = paramParcel.readByte();
-    localAllInOne.jdField_a_of_type_ArrayOfByte = paramParcel.createByteArray();
-    localAllInOne.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    paramParcel.readTypedList(localAllInOne.jdField_a_of_type_JavaUtilArrayList, ProfileActivity.CardContactInfo.CREATOR);
-    localAllInOne.jdField_d_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readByte() == 1) {}
-    for (;;)
-    {
-      localAllInOne.jdField_a_of_type_Boolean = bool;
-      localAllInOne.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_e_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_j_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_k_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_l_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.m = paramParcel.readString();
-      localAllInOne.n = paramParcel.readString();
-      localAllInOne.g = paramParcel.readInt();
-      localAllInOne.jdField_h_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_i_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_b_of_type_ArrayOfByte = paramParcel.createByteArray();
-      localAllInOne.jdField_j_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_k_of_type_Int = paramParcel.readInt();
-      localAllInOne.o = paramParcel.readString();
-      localAllInOne.p = paramParcel.readString();
-      localAllInOne.jdField_a_of_type_Long = paramParcel.readLong();
-      localAllInOne.jdField_l_of_type_Int = paramParcel.readInt();
-      localAllInOne.q = paramParcel.readString();
-      localAllInOne.jdField_b_of_type_AndroidOsBundle = ((Bundle)paramParcel.readParcelable(Bundle.class.getClassLoader()));
-      localAllInOne.jdField_f_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_a_of_type_AndroidOsBundle = ((Bundle)paramParcel.readParcelable(Bundle.class.getClassLoader()));
-      return localAllInOne;
-      bool = false;
-    }
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_a_of_type_ArrayOfInt = new int[abrz.a().length];
+    this.jdField_b_of_type_ArrayOfInt = new int[abrz.b().length];
   }
   
-  public ProfileActivity.AllInOne[] a(int paramInt)
+  public String a(long paramLong)
   {
-    return new ProfileActivity.AllInOne[paramInt];
+    return String.format("h:%x[%d,%d,%d][%d,%d][%d,%d,%d][%d,%d,%d][%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.jdField_c_of_type_Long - paramLong), Long.valueOf(this.jdField_b_of_type_Long - paramLong), Long.valueOf(this.jdField_d_of_type_Long - paramLong), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.f), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.g), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Integer.valueOf(this.jdField_e_of_type_Int), this.jdField_a_of_type_JavaLangString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absa
  * JD-Core Version:    0.7.0.1
  */

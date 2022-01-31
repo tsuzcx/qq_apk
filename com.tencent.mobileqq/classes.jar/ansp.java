@@ -1,26 +1,20 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
 
-class ansp
-  implements DialogInterface.OnClickListener
+@TargetApi(11)
+public class ansp
+  implements TypeEvaluator<ansn>
 {
-  ansp(ansm paramansm, BaseActivity paramBaseActivity) {}
+  public ansp(ansh paramansh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ansn a(float paramFloat, ansn paramansn1, ansn paramansn2)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1) {
-      bbrk.a(ansm.a(this.jdField_a_of_type_Ansm), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", ansm.a(this.jdField_a_of_type_Ansm).getString(2131719975), "");
-    }
+    return paramansn2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansp
  * JD-Core Version:    0.7.0.1
  */

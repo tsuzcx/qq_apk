@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import betc;
-import bfgg;
+import bgkd;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.BannerAdPosInfo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class BannerAdPlugin$6
   implements Runnable
 {
-  BannerAdPlugin$6(BannerAdPlugin paramBannerAdPlugin, int paramInt1, int paramInt2, bekr parambekr) {}
+  BannerAdPlugin$6(BannerAdPlugin paramBannerAdPlugin, int paramInt1, int paramInt2, bgkd parambgkd) {}
   
   public void run()
   {
@@ -20,10 +20,10 @@ class BannerAdPlugin$6
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("state", "resize");
       localJSONObject.put("width", this.val$resizeValue);
-      localJSONObject.put("height", bfgg.a(this.val$resizeValue));
+      localJSONObject.put("height", BannerAdPosInfo.getHeight(this.val$resizeValue));
       BannerAdPlugin.access$400(this.this$0, this.val$req, localJSONObject, "onBannerAdStateChange");
-      if (betc.a()) {
-        betc.b("BannerAdPlugin", "updateBannerAd " + bool + ", resizeValue = " + this.val$resizeValue);
+      if (QMLog.isColorLevel()) {
+        QMLog.i("BannerAdPlugin", "updateBannerAd " + bool + ", resizeValue = " + this.val$resizeValue);
       }
       return;
     }
@@ -31,14 +31,14 @@ class BannerAdPlugin$6
     {
       for (;;)
       {
-        betc.d("BannerAdPlugin", "updateBannerAd informJs error", localJSONException);
+        QMLog.e("BannerAdPlugin", "updateBannerAd informJs error", localJSONException);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.BannerAdPlugin.6
  * JD-Core Version:    0.7.0.1
  */

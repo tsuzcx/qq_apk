@@ -1,24 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-class qvy
-  implements Animation.AnimationListener
+public class qvy
+  extends akee
 {
-  qvy(qvx paramqvx) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    qvx.a(this.a).startAnimation(qvx.a(this.a));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public View a;
+  public CheckBox a;
+  public Object a;
+  public TextView d;
+  public TextView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qvy
  * JD-Core Version:    0.7.0.1
  */

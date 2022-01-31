@@ -1,27 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.graphics.Point;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-class anxq
-  implements View.OnClickListener
+public class anxq
 {
-  anxq(anxk paramanxk, IPSiteModel.Book paramBook, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    paramView = new Intent(this.jdField_a_of_type_Anxk.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Anxk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Book.jumpUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_bookclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("param_service_type");
+      String str = paramBundle.getString("param_sub_type");
+      if (paramBundle.getInt("param_extra", 1) != 2) {
+        anyk.a().a(i, str, paramBoolean);
+      }
+      anyk.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+    }
+  }
+  
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
+  {
+    anyk.a().a(paramInt, paramString, paramBoolean);
+  }
+  
+  public void onUpdateColorNote(ColorNote paramColorNote, boolean paramBoolean) {}
+  
+  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      anyk.a().a(paramInt, paramString, paramBundle.getBoolean("extra_is_colornote_exists"));
+      anyk.a().c(paramBundle.getBoolean("extra_can_add_colornote"));
+      anyk.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+      boolean bool = paramBundle.getBoolean("extra_after_sync_msg");
+      anyk.a().b(bool);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxq
  * JD-Core Version:    0.7.0.1
  */

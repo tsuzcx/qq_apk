@@ -1,118 +1,226 @@
-import android.support.annotation.NonNull;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.util.Base64;
+import android.util.DisplayMetrics;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.ui.dom.style.FlexConvertUtils;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class spw
-  extends sps
 {
-  public spw(int paramInt, sqm paramsqm)
+  public static String a = "ViolaBizUtils";
+  private static String b = "8.0.6";
+  
+  public static String a()
   {
-    super(2);
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = new sqr();
-    ((sqr)localObject).a(paramInt);
-    ((sqr)localObject).a(paramsqm);
-    a((sqn)localObject);
-    paramsqm = new sqq();
-    localObject = ((spn)tcz.a(30)).c();
-    if (localObject != null)
+    int j = 1;
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      try
       {
-        sqx localsqx = (sqx)((Iterator)localObject).next();
-        switch (localsqx.a)
-        {
-        default: 
-          break;
-        case 2: 
-          paramsqm.a(localsqx);
-          break;
-        case 4: 
-          paramsqm.b(localsqx);
-          break;
-        case 3: 
-          paramsqm.c(localsqx);
+        localJSONObject.put("platform", "Android");
+        localJSONObject.put("osVersion", bdcb.e());
+        localJSONObject.put("appName", bdcb.c());
+        localJSONObject.put("appVersion", "8.3.3.4515");
+        DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
+        i = (int)(FlexConvertUtils.getScreenHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
+        int k = (int)(FlexConvertUtils.getScreenWidth(BaseApplication.getContext()) / localDisplayMetrics.density);
+        float f = localDisplayMetrics.density;
+        localJSONObject.put("deviceWidth", Math.min(k, i));
+        localJSONObject.put("deviceHeight", Math.max(k, i));
+        localJSONObject.put("dpToPxRatio", f);
+        localJSONObject.put("deviceModel", Build.MODEL);
+        localJSONObject.put("violaVersion", b);
+        localJSONObject.put("statusBarHeight", ImmersiveUtils.getStatusBarHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
+        localJSONObject.put("appID", "1");
+        localJSONObject.put("isDebug", 0);
+        localJSONObject.put("navBarHeight", DisplayUtil.getNavigationBarHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
+        localJSONObject.put("deviceBrand", Build.BRAND);
+        localJSONObject.put("appVersionId", "8.3.3");
+        bngs.a(BaseActivity.sTopActivity);
+        if (!bngs.b()) {
+          continue;
+        }
+        i = 1;
+        localJSONObject.put("isLiuHai", i);
+        if (bdvr.a() != 1) {
+          continue;
+        }
+        i = j;
+        localJSONObject.put("isKindCard", i);
+        localJSONObject.put("netType", ndd.a());
+        localJSONObject.put("build", 100);
+        if (BaseActivity.sTopActivity != null) {
+          localJSONObject.put("nowNavBarHeight", CommonSuspensionGestureLayout.a(BaseActivity.sTopActivity) / localDisplayMetrics.density);
         }
       }
-    }
-    paramsqm.a(new sqv());
-    a(paramsqm);
-  }
-  
-  private static boolean a(String paramString1, String paramString2)
-  {
-    return (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString2));
-  }
-  
-  public static boolean a(@NonNull spy paramspy, int paramInt)
-  {
-    Object localObject = paramspy.a();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      AddressItem localAddressItem = ((spz)((List)localObject).get(0)).a;
-      localObject = ((spz)((List)localObject).get(((List)localObject).size() - 1)).a;
-      if ((localAddressItem == null) || (localObject == null))
+      catch (JSONException localJSONException)
       {
-        ved.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "initAlbumNameByPOI find no poi item :" + paramspy);
-        paramspy.b = "";
+        int i;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d(a, 2, "env JSONException");
+        continue;
+      }
+      return localJSONObject.toString();
+      i = 0;
+      continue;
+      i = 0;
+    }
+  }
+  
+  public static String a(String paramString)
+  {
+    String str = Uri.parse(paramString).getQueryParameter("v_bid");
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = "-1";
+    }
+    return paramString;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    String str = ncb.a(paramString1);
+    if (TextUtils.isEmpty(str)) {}
+    do
+    {
+      return null;
+      paramString1 = str + paramString1;
+      paramString2 = nbv.d(paramString2);
+    } while (TextUtils.isEmpty(paramString2));
+    return paramString1 + "/" + paramString2;
+  }
+  
+  public static JSONObject a()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("viewDidAppear", 1);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException) {}
+    return new JSONObject();
+  }
+  
+  public static JSONObject a(int paramInt)
+  {
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("type", paramInt);
+      localJSONObject1.put("pageRefresh", localJSONObject2);
+      return localJSONObject1;
+    }
+    catch (JSONException localJSONException) {}
+    return new JSONObject();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      String str;
+      do
+      {
         return false;
-      }
-      if ((paramInt <= 5) && (a(localAddressItem.building, ((AddressItem)localObject).building)))
-      {
-        paramspy.b = localAddressItem.building;
-        return true;
-      }
-      if ((paramInt <= 4) && (a(localAddressItem.district, ((AddressItem)localObject).district)))
-      {
-        paramspy.b = localAddressItem.district;
-        return true;
-      }
-      if ((paramInt <= 3) && (a(localAddressItem.city, ((AddressItem)localObject).city)))
-      {
-        paramspy.b = localAddressItem.city;
-        return true;
-      }
-      if ((paramInt <= 2) && (a(localAddressItem.province, ((AddressItem)localObject).province)))
-      {
-        paramspy.b = localAddressItem.province;
-        return true;
-      }
-      if ((paramInt <= 1) && (a(localAddressItem.country, ((AddressItem)localObject).country)))
-      {
-        paramspy.b = localAddressItem.country;
-        return true;
-      }
-    }
-    paramspy.b = "";
-    return false;
+        str = Uri.parse(paramString).getQueryParameter("v_bid");
+      } while (TextUtils.isEmpty(str));
+      paramString = a(str, paramString);
+    } while ((TextUtils.isEmpty(paramString)) || (!new File(paramString).exists()));
+    return true;
   }
   
-  protected List<spz> a()
+  public static String b()
   {
-    ved.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get start Pic list=" + super.a().size());
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = super.a().iterator();
-    while (localIterator.hasNext())
-    {
-      spz localspz = (spz)localIterator.next();
-      if (localspz.a != null) {
-        localArrayList.add(localspz);
-      }
-    }
-    ved.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get end Pic list=" + localArrayList.size());
-    return localArrayList;
+    long l = System.currentTimeMillis();
+    return "&time=" + String.valueOf(l).substring(0, 7);
   }
   
-  protected void c(List<spy> paramList) {}
+  public static String b(String paramString)
+  {
+    String str = Uri.parse(paramString).getQueryParameter("v_bid");
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    return a(str, paramString);
+  }
+  
+  public static JSONObject b()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("viewDidDisappear", 1);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException) {}
+    return new JSONObject();
+  }
+  
+  public static String c(String paramString)
+  {
+    SharedPreferences localSharedPreferences;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localSharedPreferences = bjxj.a(BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      if (localSharedPreferences == null) {
+        QLog.d(a, 1, "failed to getItem");
+      }
+    }
+    else
+    {
+      return null;
+    }
+    return localSharedPreferences.getString(paramString, null);
+  }
+  
+  public static JSONObject c()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("pageDestroy", 1);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException) {}
+    return new JSONObject();
+  }
+  
+  public static String d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    String str;
+    do
+    {
+      do
+      {
+        return paramString;
+      } while (!paramString.contains("v_url_base64"));
+      str = Uri.parse(paramString).getQueryParameter("v_url_base64");
+    } while (TextUtils.isEmpty(str));
+    return new String(Base64.decode(str, 0));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spw
  * JD-Core Version:    0.7.0.1
  */

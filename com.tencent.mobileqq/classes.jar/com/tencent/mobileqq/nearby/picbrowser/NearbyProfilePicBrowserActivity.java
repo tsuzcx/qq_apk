@@ -2,8 +2,8 @@ package com.tencent.mobileqq.nearby.picbrowser;
 
 import android.content.Intent;
 import android.os.Bundle;
-import atnu;
-import atnv;
+import aveu;
+import avev;
 
 public class NearbyProfilePicBrowserActivity
   extends PicBrowserActivity
@@ -19,7 +19,7 @@ public class NearbyProfilePicBrowserActivity
   {
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("intent_param_show_del_pic_and_set_head", false);
     if (this.jdField_a_of_type_Boolean) {}
-    for (this.jdField_a_of_type_Xpw = new atnv(this);; this.jdField_a_of_type_Xpw = new atnu(this)) {
+    for (this.jdField_a_of_type_Zep = new avev(this);; this.jdField_a_of_type_Zep = new aveu(this)) {
       return super.doOnCreate(paramBundle);
     }
   }
@@ -32,7 +32,7 @@ public class NearbyProfilePicBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

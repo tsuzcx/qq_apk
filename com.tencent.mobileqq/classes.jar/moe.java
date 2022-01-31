@@ -1,41 +1,103 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.av.ui.VoiceChangeItemView1;
 
 public class moe
-  implements mgx
+  extends BaseAdapter
 {
-  public moe(ZimuToolbar paramZimuToolbar) {}
+  public static String a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private VoiceChangeItemView1 jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1;
+  moj jdField_a_of_type_Moj;
+  private moh[] jdField_a_of_type_ArrayOfMoh;
+  private int jdField_b_of_type_Int;
+  private VoiceChangeItemView1 jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
+  private int c;
+  private int d;
   
-  public void a(long paramLong)
+  static
   {
-    EffectSettingUi.a(ZimuToolbar.access$400(this.a), paramLong);
+    jdField_a_of_type_JavaLangString = "VoiceChangeAdapter";
   }
   
-  public void a(long paramLong, mhr parammhr)
+  public void a(int paramInt)
   {
-    EffectSettingUi.a(ZimuToolbar.access$000(this.a), paramLong);
-    QLog.w("ZimuToolbar", 1, "onEffectClick, 自己点击了字幕, id[" + parammhr.a + "], seq[" + paramLong + "]");
-    ZimuToolbar.access$100(this.a, paramLong, parammhr.a);
-    if ((!TextUtils.isEmpty(parammhr.a)) && (!"0".equalsIgnoreCase(parammhr.a)))
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(moh[] paramArrayOfmoh)
+  {
+    this.jdField_a_of_type_ArrayOfMoh = paramArrayOfmoh;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ArrayOfMoh == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_ArrayOfMoh.length;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_ArrayOfMoh == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_ArrayOfMoh[paramInt];
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    boolean bool = true;
+    lek.a(jdField_a_of_type_JavaLangString, "getView|position=" + paramInt + ", view=" + paramView);
+    if (paramView == null) {
+      paramView = new VoiceChangeItemView1(this.jdField_a_of_type_AndroidContentContext);
+    }
+    for (;;)
     {
-      ljq.a("0X80085CD", parammhr.a);
-      if (ljo.a(parammhr.a))
+      paramViewGroup = (moh)getItem(paramInt);
+      VoiceChangeItemView1 localVoiceChangeItemView1;
+      if (paramViewGroup != null)
       {
-        parammhr = ZimuToolbar.access$200(this.a).a().a().d;
-        String str = ZimuToolbar.access$300(this.a).getCurrentAccountUin();
-        ljq.a("0X8009191", str, parammhr);
-        ljq.a("0X8009192", str, parammhr);
+        if ((this.d == 0) && (paramInt == 1) && (this.jdField_b_of_type_Int == 0)) {
+          this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
+        }
+        localVoiceChangeItemView1 = (VoiceChangeItemView1)paramView;
+        if (this.c != paramViewGroup.jdField_a_of_type_Int) {
+          break label168;
+        }
+      }
+      for (;;)
+      {
+        localVoiceChangeItemView1.a(paramInt, paramViewGroup, bool, this.jdField_a_of_type_Int, this.jdField_a_of_type_Moj);
+        if (this.c == paramViewGroup.jdField_a_of_type_Int)
+        {
+          if (paramInt != 0) {
+            this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = localVoiceChangeItemView1;
+          }
+          this.d = paramInt;
+        }
+        this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1 = ((VoiceChangeItemView1)paramView);
+        this.jdField_b_of_type_Int = paramInt;
+        return paramView;
+        label168:
+        bool = false;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     moe
  * JD-Core Version:    0.7.0.1
  */

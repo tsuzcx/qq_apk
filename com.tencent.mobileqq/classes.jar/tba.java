@@ -1,14 +1,29 @@
-public abstract class tba
+import com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+
+public class tba
+  implements bibd
 {
-  public abstract String a();
+  public tba(WSBaseHomeFragment paramWSBaseHomeFragment) {}
   
-  public abstract tbb a(byte[] paramArrayOfByte);
+  public void a()
+  {
+    this.a.a();
+  }
   
-  protected abstract byte[] a();
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    this.a.a(paramXRecyclerView, paramInt);
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    this.a.a(paramXRecyclerView, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tba
  * JD-Core Version:    0.7.0.1
  */

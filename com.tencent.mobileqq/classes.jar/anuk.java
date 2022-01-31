@@ -1,66 +1,45 @@
 import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class anuk
-  extends bbzo
+  implements BusinessObserver
 {
-  public anuk(MessengerService paramMessengerService) {}
+  public void a(boolean paramBoolean) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    for (;;)
+    switch (paramInt)
     {
-      try
-      {
-        paramObject = (Bundle)paramObject;
-        if (paramObject == null)
-        {
-          QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver.onUpdate dataBundle=null");
-          return;
-        }
-        int i = paramObject.getInt("result", -1);
-        if (!QLog.isColorLevel()) {
-          break label206;
-        }
-        QLog.d("Q.emoji.web.MessengerService", 2, "fcObserver.onUpdate ret=" + i + ", type=" + paramInt + ", isSuccess=" + paramBoolean);
-      }
-      catch (Exception paramObject)
-      {
-        QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Err:" + paramObject.getMessage());
-        return;
-      }
-      QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Error type=" + paramInt);
-      paramObject = (QQAppInterface)MessengerService.a(this.a);
-      if (paramObject != null)
-      {
-        Object localObject = (bbzs)paramObject.a(46);
-        paramObject.removeObserver(this);
-        return;
-        if (this.a.a != null)
-        {
-          localObject = Message.obtain(null, 5);
-          ((Message)localObject).setData(paramObject);
-          this.a.a.send((Message)localObject);
-        }
-      }
-      else
-      {
-        return;
-        label206:
-        switch (paramInt)
-        {
-        }
-      }
+    default: 
+      return;
+    case 1: 
+      paramInt = paramBundle.getInt("resp_result", 0);
+      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
+      return;
+    case 2: 
+      b(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 3: 
+      a(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 4: 
+      a(paramBoolean);
+      return;
     }
+    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anuk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
 
-class agti
-  implements DialogInterface.OnClickListener
+public abstract class agti
+  implements agtk
 {
-  agti(agta paramagta) {}
+  private boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public URLDrawable.URLDrawableOptions a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    return URLDrawable.URLDrawableOptions.obtain();
+  }
+  
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  {
+    if (paramURL == null) {
+      return null;
     }
-    if (((NewPhotoPreviewActivity)this.a.a.get()).b != null) {
-      ((NewPhotoPreviewActivity)this.a.a.get()).b.setClickable(true);
-    }
+    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    this.a = true;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return this.a;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agti
  * JD-Core Version:    0.7.0.1
  */

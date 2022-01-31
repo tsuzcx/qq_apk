@@ -1,78 +1,29 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
+import java.io.InputStream;
+import java.util.zip.GZIPInputStream;
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.HttpEntityWrapper;
 
-public class lcj
+class lcj
+  extends HttpEntityWrapper
 {
-  public static String a()
+  public lcj(HttpEntity paramHttpEntity)
   {
-    return bbvj.a(ajsd.aW + "qav" + File.separator);
+    super(paramHttpEntity);
   }
   
-  public static String b()
+  public InputStream getContent()
   {
-    return bbvj.a(ajsd.aW + "ptv_template" + File.separator);
+    return new GZIPInputStream(this.wrappedEntity.getContent());
   }
   
-  public static String c()
+  public long getContentLength()
   {
-    return bbvj.a(ajsd.aW + "new_ptv_template" + File.separator);
-  }
-  
-  public static String d()
-  {
-    return c() + "new_ptv_template_usable" + File.separator;
-  }
-  
-  public static String e()
-  {
-    return a() + "effect";
-  }
-  
-  public static String f()
-  {
-    return bbvj.a(ajsd.aW + "funcall" + File.separator);
-  }
-  
-  public static String g()
-  {
-    if (bbbm.a()) {}
-    for (String str1 = bbvj.a(ajsd.aW);; str1 = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath())
-    {
-      String str2 = str1;
-      if (str1 != null)
-      {
-        str2 = str1;
-        if (!str1.endsWith(File.separator)) {
-          str2 = str1 + File.separator;
-        }
-      }
-      return str2 + "pddata/prd/" + "av_redpacket" + File.separator;
-    }
-  }
-  
-  public static String h()
-  {
-    return a() + "beauty" + File.separator;
-  }
-  
-  public static String i()
-  {
-    return bbvj.a(ajsd.aW + "av_image_data" + File.separator);
-  }
-  
-  public static String j()
-  {
-    return bbvj.a(ajsd.aW + "av_report_record_dir");
-  }
-  
-  public static String k()
-  {
-    return BaseApplicationImpl.getLogExternalPath(BaseApplicationImpl.getContext()) + "/tencent/msflogs/com/tencent/mobileqq/";
+    return -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcj
  * JD-Core Version:    0.7.0.1
  */

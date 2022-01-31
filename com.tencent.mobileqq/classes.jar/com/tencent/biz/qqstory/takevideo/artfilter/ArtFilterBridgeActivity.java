@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -15,7 +15,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import vjx;
+import wyp;
 
 public class ArtFilterBridgeActivity
   extends BaseActivity
@@ -31,11 +31,11 @@ public class ArtFilterBridgeActivity
     Object localObject3;
     if (getIntent().getBooleanExtra("USE_FILTER", false))
     {
-      localObject1 = vjx.a();
+      localObject1 = wyp.a();
       i = k;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject3 = vjx.b();
+        localObject3 = wyp.b();
         i = k;
         if (localObject3 != null)
         {
@@ -70,7 +70,7 @@ public class ArtFilterBridgeActivity
           }
           boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
           if (bool2) {
-            ((Bundle)localObject3).putString("extra_publish_text", ajya.a(2131700753));
+            ((Bundle)localObject3).putString("extra_publish_text", alpo.a(2131701122));
           }
           if (localIntent.hasExtra("troop_uin")) {
             ((Bundle)localObject3).putString("troop_uin", localIntent.getStringExtra("troop_uin"));
@@ -139,7 +139,7 @@ public class ArtFilterBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,144 +1,135 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.util.SparseArray;
+import cooperation.qzone.util.QZLog;
 
 public class bjje
+  extends SparseArray<bjjf>
 {
-  public bjjh a(String paramString)
+  private long a;
+  private long b;
+  private long c;
+  
+  public bjje(long paramLong)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip TextUtils.isEmpty(config) return");
-      }
-      return null;
+    this.a = paramLong;
+  }
+  
+  private void a(int paramInt, boolean paramBoolean)
+  {
+    int j = 0;
+    if (this.b + this.c > this.a) {
+      if (!paramBoolean) {}
     }
     for (;;)
     {
+      int i;
       try
       {
-        localObject = new JSONObject(paramString);
-        if (!((JSONObject)localObject).has("pendantMD5")) {
-          break label142;
+        if (paramInt >= size()) {
+          break label150;
         }
-        paramString = ((JSONObject)localObject).getString("pendantMD5");
-        if (!((JSONObject)localObject).has("pendantUrl")) {
-          break label136;
-        }
-        str = ((JSONObject)localObject).getString("pendantUrl");
-        if (!((JSONObject)localObject).has("pendantName")) {
-          break label130;
-        }
-        localObject = ((JSONObject)localObject).getString("pendantName");
-        if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(str)))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.w("ConfigSimplifier_PTV", 2, "zipMd5 or zipUrl empty return!");
-          return null;
-        }
+        i = paramInt;
+        removeAt(i);
+        return;
       }
-      catch (Exception paramString)
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
       {
-        paramString.printStackTrace();
-        return null;
+        localIndexOutOfBoundsException.printStackTrace();
+        if ((a()) || (size() <= 0)) {
+          continue;
+        }
+        if (!paramBoolean) {
+          break label139;
+        }
+        i = j;
+        removeAt(i);
+        QZLog.e("PieceCacheList", "trimToSize: IndexOutOfBoundsException temp " + (size() - (36 - paramInt)));
+        return;
       }
-      paramString = new bjjh((String)localObject, str, paramString);
-      return paramString;
-      label130:
-      Object localObject = "";
-      continue;
-      label136:
-      String str = "";
-      continue;
-      label142:
-      paramString = "";
+      if (paramInt < size())
+      {
+        i = size() - 1;
+      }
+      else
+      {
+        i = size();
+        i -= 36 - paramInt;
+        continue;
+        label139:
+        i = size() - 1;
+        continue;
+        return;
+        label150:
+        i = 0;
+      }
     }
   }
   
-  public bjjh a(String paramString1, String paramString2, String paramString3, bjjg parambjjg)
+  public void a(int paramInt, bjjf parambjjf)
   {
-    bjjh localbjjh = a(paramString1);
-    if (localbjjh == null) {
-      paramString1 = null;
-    }
-    do
+    if (parambjjf != null)
     {
-      for (;;)
+      super.put(paramInt, parambjjf);
+      this.b += parambjjf.c();
+    }
+  }
+  
+  public void a(int paramInt, bjjf parambjjf, boolean paramBoolean)
+  {
+    if (parambjjf != null) {}
+    try
+    {
+      if (this.c == 0L)
       {
-        return paramString1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ConfigSimplifier_PTV", 2, "parseConfigZip md5=" + localbjjh.jdField_c_of_type_JavaLangString + " url=" + localbjjh.b + " name=" + localbjjh.jdField_a_of_type_JavaLangString);
-        }
-        try
-        {
-          paramString1 = paramString2 + File.separator;
-          String str = paramString2 + File.separator + localbjjh.jdField_a_of_type_JavaLangString;
-          File localFile = new File(paramString2, paramString3);
-          if (localFile.exists())
-          {
-            localFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip file.delete()");
-            }
-          }
-          localObject = new File(str);
-          if (((File)localObject).exists())
-          {
-            ((File)localObject).delete();
-            if (QLog.isColorLevel()) {
-              QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip filejson.delete()");
-            }
-          }
-          localObject = new ayrx();
-          ((ayrx)localObject).jdField_a_of_type_Aysc = new bjjf(this, paramString2, paramString3, localbjjh, paramString1, str, parambjjg);
-          ((ayrx)localObject).jdField_a_of_type_JavaLangString = localbjjh.b;
-          ((ayrx)localObject).jdField_a_of_type_Int = 0;
-          ((ayrx)localObject).jdField_c_of_type_JavaLangString = localFile.getPath();
-          ((ayrx)localObject).jdField_c_of_type_Int = bbfj.a(ayta.a().a());
-        }
-        catch (Exception paramString2)
-        {
-          try
-          {
-            Object localObject;
-            paramString1 = BaseApplicationImpl.getApplication().getRuntime();
-            if (QQAppInterface.class.isInstance(paramString1))
-            {
-              ((QQAppInterface)paramString1).getNetEngine(0).a((aysy)localObject);
-              paramString1 = localbjjh;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.i("ConfigSimplifier", 2, "startDownloadFilterConfigZip, url: " + localbjjh.b);
-              return localbjjh;
-            }
-            paramString1 = localbjjh;
-            if (bjal.a() == null) {
-              continue;
-            }
-            bjal.a().getNetEngine(0).a((aysy)localObject);
-            return localbjjh;
-          }
-          catch (Exception paramString1) {}
-          paramString2 = paramString2;
-          paramString1 = localbjjh;
+        this.c = parambjjf.c();
+        if (this.a < this.c * 8L) {
+          this.a = (this.c * 8L);
         }
       }
-    } while (!QLog.isColorLevel());
-    paramString2.printStackTrace();
-    return localbjjh;
-    return localbjjh;
+      a(paramInt, paramBoolean);
+      a(paramInt, parambjjf);
+      return;
+    }
+    finally {}
+  }
+  
+  public boolean a()
+  {
+    if (this.c == 0L) {}
+    while (this.a > this.c * 8L) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void clear()
+  {
+    super.clear();
+    this.b = 0L;
+  }
+  
+  public void remove(int paramInt)
+  {
+    bjjf localbjjf = (bjjf)get(paramInt);
+    if (localbjjf != null) {
+      localbjjf.b();
+    }
+    super.remove(paramInt);
+    this.b -= this.c;
+  }
+  
+  public void removeAt(int paramInt)
+  {
+    bjjf localbjjf = (bjjf)valueAt(paramInt);
+    if (localbjjf != null) {
+      localbjjf.b();
+    }
+    super.removeAt(paramInt);
+    this.b -= this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjje
  * JD-Core Version:    0.7.0.1
  */

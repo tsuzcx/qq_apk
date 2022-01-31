@@ -1,54 +1,28 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class aqiq
-  implements atyp
+  implements URLDrawable.URLDrawableListener
 {
-  public aqiq(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public aqiq(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
   
-  public boolean a()
-  {
-    return this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyHybridFragment", 2, "status =" + paramInt1 + ",direction =" + paramInt2 + ",height =" + paramInt3);
-    }
-    String str = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_view_change_callback", "");
-    JSONObject localJSONObject;
-    if (!TextUtils.isEmpty(str)) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("status", paramInt1);
-      localJSONObject.put("direction", paramInt2);
-      localJSONObject.put("height", paramInt3);
-      if (this.a.jdField_a_of_type_Aqir != null) {
-        this.a.jdField_a_of_type_Aqir.mWebview.callJs(str, new String[] { localJSONObject.toString() });
-      }
-      return false;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("nearby.NearbyHybridFragment", 2, localJSONException, new Object[0]);
-    }
-    return false;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqiq
  * JD-Core Version:    0.7.0.1
  */

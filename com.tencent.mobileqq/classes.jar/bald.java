@@ -1,17 +1,19 @@
-public class bald
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bald
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public boolean a;
+  bald(baky parambaky) {}
   
-  public bald(boolean paramBoolean, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bald
  * JD-Core Version:    0.7.0.1
  */

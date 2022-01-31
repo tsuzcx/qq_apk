@@ -1,12 +1,12 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.robotchat.RobotChatTipLayout;
 
-public abstract interface aybf<T extends aybg>
+public abstract interface aybf
 {
-  public abstract void a(T paramT, Bitmap paramBitmap);
+  public abstract void a(RobotChatTipLayout paramRobotChatTipLayout);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aybf
  * JD-Core Version:    0.7.0.1
  */

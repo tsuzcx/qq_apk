@@ -1,78 +1,19 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
+import android.view.View.OnClickListener;
 
-public class pkx
-  extends ButtonBase
+class pkx
+  implements View.OnClickListener
 {
-  LinearLayout a;
+  pkx(pkv parampkv, pgd parampgd) {}
   
-  public pkx(VafContext paramVafContext)
+  public void onClick(View paramView)
   {
-    super(paramVafContext);
-    a(paramVafContext);
+    rqj.a(this.jdField_a_of_type_Pgd.a(), 0, 1);
   }
-  
-  private void a()
-  {
-    pky localpky = new pky(this);
-    this.a.addOnAttachStateChangeListener(new pkz(this, localpky));
-  }
-  
-  private void a(VafContext paramVafContext)
-  {
-    this.a = ((LinearLayout)LayoutInflater.from(paramVafContext.getContext()).inflate(2131559915, null, false));
-    TextView localTextView = (TextView)this.a.findViewById(2131363287);
-    localTextView.setText(rlz.a().a(paramVafContext.getContext()));
-    localTextView.setPadding(localTextView.getPaddingLeft(), localTextView.getPaddingTop(), localTextView.getPaddingRight(), baxn.a(paramVafContext.getContext(), 4.0F));
-    a();
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measure(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.a.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-  }
-  
-  public void setBackgroundColorForStates() {}
-  
-  public void setBackgroundForStates() {}
-  
-  public void setCompoundDrawableForStates() {}
-  
-  public void setTextColorForStates() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pkx
  * JD-Core Version:    0.7.0.1
  */

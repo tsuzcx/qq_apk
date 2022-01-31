@@ -1,15 +1,6 @@
-public class atzs
-{
-  public String a = "auto";
-  
-  public String toString()
-  {
-    return "ARCloudReqOcrInfo{language = " + this.a + '}';
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atzs
  * JD-Core Version:    0.7.0.1
  */

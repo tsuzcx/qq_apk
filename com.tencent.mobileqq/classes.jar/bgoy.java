@@ -1,21 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnErrorListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgoy
-  implements DialogInterface.OnClickListener
+  implements VideoPlayerProxy.OnErrorListener
 {
-  public bgoy(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  public bgoy(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onError(VideoPlayerProxy paramVideoPlayerProxy, int paramInt1, int paramInt2)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    QMLog.e("MiniAppVideoPlayer", "video onError: m what=" + paramInt1 + " extra=" + paramInt2);
+    if (!this.a.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+      MiniAppVideoPlayer.a(this.a, "error");
+    }
+    for (;;)
+    {
+      return true;
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Bghn.a("onVideoError", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoError = " + paramVideoPlayerProxy.toString());
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgoy
  * JD-Core Version:    0.7.0.1
  */

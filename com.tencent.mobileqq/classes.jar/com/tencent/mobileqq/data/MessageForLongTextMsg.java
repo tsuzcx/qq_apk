@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import akpx;
+import abot;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
 public class MessageForLongTextMsg
@@ -24,7 +24,7 @@ public class MessageForLongTextMsg
   
   public boolean isSupportFTS()
   {
-    return akpx.v(this.istroop);
+    return abot.x(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -44,7 +44,7 @@ public class MessageForLongTextMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForLongTextMsg
  * JD-Core Version:    0.7.0.1
  */

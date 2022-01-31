@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import axrn;
-import baxl;
+import azmz;
+import bcwf;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
@@ -46,7 +46,7 @@ public class QrcodeHbGuiderActivity
   
   private void c()
   {
-    new ImmersionBar(this, -468046, findViewById(2131376453));
+    new ImmersionBar(this, -468046, findViewById(2131376953));
     d();
     e();
     f();
@@ -54,12 +54,12 @@ public class QrcodeHbGuiderActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372668));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368472));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(ajya.a(2131711201));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368429));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368457));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(ajya.a(2131711200));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131373024));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368659));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(alpo.a(2131711573));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368613));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368644));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131711572));
   }
   
   private void e()
@@ -138,7 +138,7 @@ public class QrcodeHbGuiderActivity
     {
       localStringBuilder.append(getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
       localStringBuilder.append("|");
-      localStringBuilder.append(baxl.a());
+      localStringBuilder.append(bcwf.a());
       localStringBuilder.append("|");
       localStringBuilder.append(this.jdField_a_of_type_Int);
       localStringBuilder.append(".");
@@ -147,7 +147,7 @@ public class QrcodeHbGuiderActivity
       }
       localStringBuilder.append("|");
       VACDReportUtil.a(this.jdField_a_of_type_Long, null, paramString, "op_type=" + this.jdField_c_of_type_JavaLangString, 0, "");
-      axrn.a(BaseApplication.getContext()).b(this.app, localStringBuilder.toString());
+      azmz.a(BaseApplication.getContext()).b(this.app, localStringBuilder.toString());
       return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -214,7 +214,7 @@ public class QrcodeHbGuiderActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131560258);
+    setContentView(2131560366);
     c();
     a("face2face.index.show");
     return true;
@@ -234,12 +234,12 @@ public class QrcodeHbGuiderActivity
     {
     default: 
       return;
-    case 2131372668: 
+    case 2131373024: 
       a();
       a("face2face.index.go");
       finish();
       return;
-    case 2131368429: 
+    case 2131368613: 
       a("face2face.index.back");
       finish();
       return;
@@ -260,7 +260,7 @@ public class QrcodeHbGuiderActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QrcodeHbGuiderActivity
  * JD-Core Version:    0.7.0.1
  */

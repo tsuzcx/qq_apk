@@ -1,27 +1,49 @@
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.concurrent.ConcurrentHashMap;
 
 class axzo
-  implements ayaf
+  implements EIPCResultCallback
 {
-  axzo(axzn paramaxzn, CountdownTextView paramCountdownTextView) {}
+  axzo(axzn paramaxzn) {}
   
-  public void a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_Axzn.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_Axzn.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(axzn.a(this.jdField_a_of_type_Axzn, 0L));
-  }
-  
-  public void a(long paramLong)
-  {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(axzn.a(this.jdField_a_of_type_Axzn, paramLong));
-    this.jdField_a_of_type_Axzn.jdField_d_of_type_Long = paramLong;
+    if (paramEIPCResult.data == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          switch (paramEIPCResult.data.getInt("notify_type"))
+          {
+          default: 
+            return;
+          }
+        } while (paramEIPCResult.code != 0);
+        i = paramEIPCResult.data.getInt("id");
+        paramEIPCResult = paramEIPCResult.data.getString("url");
+        if (QLog.isColorLevel()) {
+          QLog.d("Signature.TOOL", 2, "mSignatureManagerIPCCallback get action id = " + i + " url = " + paramEIPCResult);
+        }
+      } while (TextUtils.isEmpty(paramEIPCResult));
+      axzn.b(this.a).put(Integer.valueOf(i), paramEIPCResult);
+      axzn.b(this.a);
+      this.a.notifyObservers(Integer.valueOf(4));
+      return;
+    } while (paramEIPCResult.code != 0);
+    int i = paramEIPCResult.data.getInt("id");
+    this.a.a(i, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axzo
  * JD-Core Version:    0.7.0.1
  */

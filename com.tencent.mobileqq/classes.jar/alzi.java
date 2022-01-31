@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.qphone.base.util.QLog;
+import org.xmlpull.v1.XmlSerializer;
 
-public class alzi
-  implements axhy
+final class alzi
+  extends azsm
 {
-  public alzi(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
-  
-  public void a(Exception paramException)
+  alzi(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DynamicAvatarRecordActivity", 2, "[onCameraException]", paramException);
-    }
+    super(paramString);
   }
   
-  public void a(RuntimeException paramRuntimeException)
+  public void a(XmlSerializer paramXmlSerializer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DynamicAvatarRecordActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    paramXmlSerializer.startTag(null, "picture");
+    if (this.S == null) {}
+    for (String str = "";; str = this.S)
+    {
+      paramXmlSerializer.attribute(null, "cover", str);
+      paramXmlSerializer.endTag(null, "picture");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzi
  * JD-Core Version:    0.7.0.1
  */

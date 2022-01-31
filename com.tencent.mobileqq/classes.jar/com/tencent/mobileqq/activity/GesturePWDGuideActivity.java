@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abhw;
+import acyw;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -13,9 +13,9 @@ public class GesturePWDGuideActivity
   
   private void a()
   {
-    setTitle(2131693004);
-    this.a = ((Button)findViewById(2131367009));
-    this.a.setOnClickListener(new abhw(this));
+    setTitle(2131693105);
+    this.a = ((Button)findViewById(2131367136));
+    this.a.setOnClickListener(new acyw(this));
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -31,13 +31,13 @@ public class GesturePWDGuideActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131559117);
+    super.setContentView(2131559160);
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDGuideActivity
  * JD-Core Version:    0.7.0.1
  */

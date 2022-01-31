@@ -7,6 +7,7 @@ public final class qzap_common
   public static final int CONNECTIONTYPE_4G = 4;
   public static final int CONNECTIONTYPE_4G_LIMIT = 6;
   public static final int CONNECTIONTYPE_4G_NOT_LIMIT = 5;
+  public static final int CONNECTIONTYPE_5G = 7;
   public static final int CONNECTIONTYPE_UNKNOWN = 0;
   public static final int CONNECTIONTYPE_WIFI = 1;
   public static final int ChinaMobile = 1;
@@ -26,6 +27,9 @@ public final class qzap_common
   public static final int DEST_TYPE_MYAPP = 2;
   public static final int DEST_TYPE_MYAPP_APP_STORE = 10;
   public static final int DEST_TYPE_SPA = 1;
+  public static final int DEST_TYPE_STURNUS_IMAX = 15;
+  public static final int DEST_TYPE_TENCENT_NEWS_LIVE = 17;
+  public static final int DEST_TYPE_TENCENT_NEWS_SOFT_ARTICLE = 16;
   public static final int DEST_TYPE_WECHAT_CANVAS = 12;
   public static final int DEVICE_OS_TYPE_ANDROID = 2;
   public static final int DEVICE_OS_TYPE_IOS = 1;
@@ -68,6 +72,7 @@ public final class qzap_common
   public static final int PRODUCTTYPE_QQ_BROWSER_MINI_PROGRAM = 45;
   public static final int PRODUCTTYPE_QQ_BUSINESS = 7;
   public static final int PRODUCTTYPE_QQ_GROUP = 6;
+  public static final int PRODUCTTYPE_QQ_MINIGAME = 49;
   public static final int PRODUCTTYPE_QQ_MP = 37;
   public static final int PRODUCTTYPE_QQ_TUAN = 10;
   public static final int PRODUCTTYPE_QZONE_GIFT = 16;

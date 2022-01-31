@@ -17,7 +17,7 @@ class ApolloPanel$11
       }
       this.this$0.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.notifyDataSetChanged();
       this.this$0.jdField_a_of_type_JavaUtilList.clear();
-      this.this$0.jdField_a_of_type_JavaUtilList.add(this.this$0.jdField_a_of_type_Ajpl);
+      this.this$0.jdField_a_of_type_JavaUtilList.add(this.this$0.jdField_a_of_type_Algy);
       ApolloPanel.a(this.this$0);
       this.this$0.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.a(this.this$0.jdField_a_of_type_JavaUtilList);
     }
@@ -25,7 +25,7 @@ class ApolloPanel$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloPanel.11
  * JD-Core Version:    0.7.0.1
  */

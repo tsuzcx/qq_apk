@@ -1,12 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.OkHttpClient;
 import com.tencent.mobileqq.mini.http.MiniOkHttpClientFactory;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
 
 public class RequestProxyImpl
   extends RequestProxy
@@ -33,7 +33,7 @@ public class RequestProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.RequestProxyImpl
  * JD-Core Version:    0.7.0.1
  */

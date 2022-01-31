@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import amdj;
+import anuj;
 
 class BusinessCardEditActivity$1
   implements Runnable
@@ -9,7 +9,7 @@ class BusinessCardEditActivity$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = this.this$0.jdField_a_of_type_Amdj.d(this.this$0.jdField_a_of_type_JavaLangString);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = this.this$0.jdField_a_of_type_Anuj.d(this.this$0.jdField_a_of_type_JavaLangString);
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null) {
       this.this$0.runOnUiThread(new BusinessCardEditActivity.1.1(this));
     }
@@ -17,7 +17,7 @@ class BusinessCardEditActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.1
  * JD-Core Version:    0.7.0.1
  */

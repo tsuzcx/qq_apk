@@ -5,9 +5,9 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import osx;
-import otl;
-import sgg;
+import oxp;
+import oyd;
+import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$20
@@ -56,16 +56,16 @@ public final class ReadinjoySPEventReport$20
       ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("operation_bitmap");
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(this.b + "");
       localArrayList.add(localObject);
-      localObject = osx.a().b;
+      localObject = oxp.a().b;
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(7);
       localAttributeList.att_name.set("staticDurationAfterEnter");
-      if (((otl)localObject).a <= 0L) {
+      if (((oyd)localObject).a <= 0L) {
         break label743;
       }
     }
     label743:
-    for (long l1 = ((otl)localObject).a - ((otl)localObject).d;; l1 = 0L)
+    for (long l1 = ((oyd)localObject).a - ((oyd)localObject).d;; l1 = 0L)
     {
       localAttributeList.att_value.set(l1 + "");
       localArrayList.add(localAttributeList);
@@ -73,27 +73,27 @@ public final class ReadinjoySPEventReport$20
       localAttributeList.att_id.set(8);
       localAttributeList.att_name.set("staticDurationBeforeExit");
       l1 = l2;
-      if (((otl)localObject).c > 0L) {
-        l1 = ((otl)localObject).e - ((otl)localObject).c;
+      if (((oyd)localObject).c > 0L) {
+        l1 = ((oyd)localObject).e - ((oyd)localObject).c;
       }
       localAttributeList.att_value.set(l1 + "");
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(9);
       localAttributeList.att_name.set("articleInfoList");
-      localAttributeList.att_value.set(((otl)localObject).a());
+      localAttributeList.att_value.set(((oyd)localObject).a());
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(10);
       localAttributeList.att_name.set("scrollInfoList");
-      localAttributeList.att_value.set(((otl)localObject).b());
+      localAttributeList.att_value.set(((oyd)localObject).b());
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(11);
       localAttributeList.att_name.set("stayDuration");
-      localAttributeList.att_value.set(((otl)localObject).e - ((otl)localObject).d + "");
+      localAttributeList.att_value.set(((oyd)localObject).e - ((oyd)localObject).d + "");
       localArrayList.add(localAttributeList);
-      sgg.a(90, localArrayList);
+      syb.a(90, localArrayList);
       return;
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set("1");
       break;
@@ -103,19 +103,19 @@ public final class ReadinjoySPEventReport$20
     ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(6);
     ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("durationBeforeEnter");
     l2 = System.currentTimeMillis();
-    if (osx.f() <= 0L) {}
-    for (l1 = osx.a;; l1 = osx.f())
+    if (oxp.f() <= 0L) {}
+    for (l1 = oxp.a;; l1 = oxp.f())
     {
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(l2 - l1 + "");
       localArrayList.add(localObject);
-      osx.n();
+      oxp.n();
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.20
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.google.android.filament;
 
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Size;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Size;
 import com.google.android.filament.proguard.UsedByReflection;
 import java.nio.Buffer;
 import java.nio.BufferOverflowException;
@@ -50,6 +50,8 @@ public class Texture
   private static native int nGetDepth(long paramLong, int paramInt);
   
   private static native int nGetHeight(long paramLong, int paramInt);
+  
+  private static native int nGetId(long paramLong1, long paramLong2);
   
   private static native int nGetInternalFormat(long paramLong);
   
@@ -117,6 +119,11 @@ public class Texture
     return nGetHeight(getNativeObject(), paramInt);
   }
   
+  public int getId(@NonNull Engine paramEngine)
+  {
+    return nGetId(paramEngine.getNativeObject(), getNativeObject());
+  }
+  
   public int getLevels()
   {
     return nGetLevels(getNativeObject());
@@ -180,7 +187,7 @@ public class Texture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.Texture
  * JD-Core Version:    0.7.0.1
  */

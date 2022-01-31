@@ -1,101 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.handler.NetAddr;
-import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.common.app.AppInterface;
+import com.tencent.av.app.DeviceCapabilityExamination;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.File;
 
 public class lgw
-  extends lgv
+  implements bapx
 {
-  public lgw(AppInterface paramAppInterface)
+  public void onResp(baqw parambaqw)
   {
-    super(paramAppInterface);
-  }
-  
-  protected int a()
-  {
-    Object localObject = (VideoAppInterface)this.mApp;
-    if (((VideoAppInterface)localObject).a(0))
-    {
-      localObject = (ljp)((VideoAppInterface)localObject).a(0);
-      if (localObject != null) {
-        return ((ljp)localObject).b();
-      }
+    boolean bool = false;
+    String str1 = (String)parambaqw.jdField_a_of_type_Baqv.a();
+    if (parambaqw.jdField_a_of_type_Int == 0) {
+      bool = true;
     }
-    return 4;
-  }
-  
-  protected void a(long paramLong1, boolean paramBoolean, List<NetAddr> paramList, long paramLong2)
-  {
-    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
-    lga locallga = localVideoController.a();
-    StringBuilder localStringBuilder = new StringBuilder().append("requestRecordingAudio, isStart[").append(paramBoolean).append("], sessionid[").append(paramLong2).append("], seq[").append(paramLong1).append("], iplist[");
-    if (paramList == null)
+    try
     {
-      localObject = "null";
-      localStringBuilder = localStringBuilder.append(localObject).append("], peerUin[");
-      if (locallga != null) {
-        break label159;
-      }
-    }
-    label159:
-    for (Object localObject = "null";; localObject = locallga.d)
-    {
-      QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, (String)localObject + "]");
-      if ((localVideoController != null) && (locallga != null)) {
-        localVideoController.a(ldu.a(locallga.d), paramBoolean, paramList, paramLong2);
-      }
-      return;
-      localObject = Integer.valueOf(paramList.size());
-      break;
-    }
-  }
-  
-  protected void a(Integer paramInteger, Object paramObject)
-  {
-    lcg.c("AudioTransClientInterfaceHandlerExtend.runhw", "notifyEvent :" + paramInteger + "|" + paramObject);
-    ((VideoAppInterface)this.mApp).a(new Object[] { paramInteger, paramObject });
-  }
-  
-  protected void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    a(Integer.valueOf(6008), new lhc(paramString1, paramString2, paramString3, paramInt));
-  }
-  
-  protected boolean a()
-  {
-    boolean bool2 = false;
-    Object localObject = (VideoAppInterface)this.mApp;
-    boolean bool1 = bool2;
-    if (((VideoAppInterface)localObject).a(0))
-    {
-      localObject = (ljp)((VideoAppInterface)localObject).a(0);
-      bool1 = bool2;
-      if (localObject != null)
+      if (DeviceCapabilityExamination.a != null)
       {
-        localObject = (ZimuItem)((ljp)localObject).a();
-        bool1 = bool2;
-        if (localObject != null)
-        {
-          localObject = ((ZimuItem)localObject).getId();
-          if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equalsIgnoreCase("film"))) {
-            break label74;
-          }
+        DeviceCapabilityExamination.a.a(str1, bool);
+        if (DeviceCapabilityExamination.a.a()) {
+          DeviceCapabilityExamination.a = null;
         }
       }
+      if (!bool)
+      {
+        QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource fail, md5[" + str1 + "], resp.mResult[" + parambaqw.jdField_a_of_type_Int + "]");
+        return;
+      }
     }
-    label74:
-    for (bool1 = true;; bool1 = false) {
-      return bool1;
+    finally {}
+    try
+    {
+      String str2 = DeviceCapabilityExamination.b(str1);
+      bdcs.a(parambaqw.jdField_a_of_type_Baqv.c, str2, false);
+      bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
+      parambaqw = new File(DeviceCapabilityExamination.a(str1));
+      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource, suc, md5[" + str1 + "], exists[" + parambaqw.exists() + "]");
+      return;
+    }
+    catch (Exception parambaqw)
+    {
+      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource Exception, md5[" + str1 + "]");
     }
   }
+  
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lgw
  * JD-Core Version:    0.7.0.1
  */

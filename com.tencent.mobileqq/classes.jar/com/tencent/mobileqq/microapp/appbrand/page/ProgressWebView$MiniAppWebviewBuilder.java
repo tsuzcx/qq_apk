@@ -5,17 +5,17 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
-import bcaz;
-import bcbx;
+import beaa;
+import beay;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.microapp.widget.ProgressView;
 import com.tencent.smtt.sdk.WebView;
-import vzl;
+import xod;
 
 public class ProgressWebView$MiniAppWebviewBuilder
-  extends bcaz
-  implements bcbx
+  extends beaa
+  implements beay
 {
   ProgressView progressView;
   
@@ -34,7 +34,7 @@ public class ProgressWebView$MiniAppWebviewBuilder
   public void buildLayout()
   {
     this.progressView = new ProgressView(this.mWebview.getContext());
-    this.progressView.setLayoutParams(new ViewGroup.LayoutParams(-1, vzl.a(this.mWebview.getContext(), 3.0F)));
+    this.progressView.setLayoutParams(new ViewGroup.LayoutParams(-1, xod.a(this.mWebview.getContext(), 3.0F)));
     this.progressView.b(Color.parseColor("#12B7F5"));
     this.mWebview.addView(this.progressView);
   }
@@ -63,7 +63,7 @@ public class ProgressWebView$MiniAppWebviewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.ProgressWebView.MiniAppWebviewBuilder
  * JD-Core Version:    0.7.0.1
  */

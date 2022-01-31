@@ -31,9 +31,9 @@ public class GroupTeamWordkMoreView
   public GroupTeamWordkMoreView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560334, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372726));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372727));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560442, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373082));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373083));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -89,7 +89,7 @@ public class GroupTeamWordkMoreView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWordkMoreView
  * JD-Core Version:    0.7.0.1
  */

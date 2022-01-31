@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import aabg;
+import absd;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,7 +16,7 @@ public class QzoneFeedsPluginProxyActivity
   {
     super.onResume();
     if (getIntent().getIntExtra("hc_code", 0) != 0) {
-      aabg.a().a(getIntent().getIntExtra("hc_code", 0), true);
+      absd.a().a(getIntent().getIntExtra("hc_code", 0), true);
     }
   }
   
@@ -27,7 +27,7 @@ public class QzoneFeedsPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QzoneFeedsPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

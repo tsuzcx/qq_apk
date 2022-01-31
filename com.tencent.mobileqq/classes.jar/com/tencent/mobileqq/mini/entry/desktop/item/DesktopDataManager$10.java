@@ -1,65 +1,112 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import bbdx;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.apkg.ApkgManager;
+import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
+import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.cache.Storage;
-import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
-import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.MiniAppSubProcessorInfo;
-import com.tencent.mobileqq.mini.util.StorageUtil;
-import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 class DesktopDataManager$10
   implements Runnable
 {
-  DesktopDataManager$10(DesktopDataManager paramDesktopDataManager, MiniAppInfo paramMiniAppInfo) {}
+  DesktopDataManager$10(DesktopDataManager paramDesktopDataManager, INTERFACE.StModuleInfo paramStModuleInfo) {}
   
   public void run()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    String str = ApkgManager.getApkgFolderPath(this.val$miniAppInfo);
-    if (new File(str).exists())
+    int j = 0;
+    Object localObject1;
+    Object localObject2;
+    int i;
+    try
     {
-      bbdx.a(str, false);
-      QLog.d("DesktopDataManager", 1, "clear apkgFile. " + this.val$miniAppInfo.appId);
+      if ((this.val$moduleInfo != null) && (this.val$moduleInfo.useOld.get() == 1)) {
+        return;
+      }
+      if ((this.val$moduleInfo == null) || (DesktopDataManager.access$1600(this.this$0) == null) || (this.val$moduleInfo.useOld.get() != 0) || (this.val$moduleInfo.userAppList.get() == null) || (this.val$moduleInfo.userAppList.get().size() <= 0)) {
+        break label554;
+      }
+      localObject1 = new DesktopAppModuleInfo(this.val$moduleInfo.moduleType.get(), this.val$moduleInfo.title.get());
+      if (((DesktopAppModuleInfo)localObject1).getModuleType() == 2) {
+        DesktopDataManager.access$1700(this.this$0).clear();
+      }
+      ArrayList localArrayList1 = new ArrayList();
+      localObject2 = this.val$moduleInfo.userAppList.get().iterator();
+      for (;;)
+      {
+        i = j;
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        Object localObject3 = (INTERFACE.StUserAppInfo)((Iterator)localObject2).next();
+        localObject3 = new DesktopAppInfo(this.val$moduleInfo.moduleType.get(), MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject3));
+        if ((((DesktopAppModuleInfo)localObject1).getModuleType() == 2) && (((DesktopAppInfo)localObject3).mMiniAppInfo != null))
+        {
+          RecommendAppInfo localRecommendAppInfo = new RecommendAppInfo(((DesktopAppInfo)localObject3).mMiniAppInfo.appId, 0, System.currentTimeMillis());
+          QLog.d("DesktopDataManager-Recommend", 2, "updateModuleInfo add " + localRecommendAppInfo.toString());
+          DesktopDataManager.access$1700(this.this$0).add(localRecommendAppInfo);
+        }
+        localArrayList1.add(localObject3);
+      }
+      i += 1;
     }
-    str = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(this.val$miniAppInfo.appId);
-    if (new File(str).exists())
+    catch (Throwable localThrowable)
     {
-      bbdx.a(str, false);
-      QLog.d("DesktopDataManager", 1, "clear cacheFile. " + this.val$miniAppInfo.appId);
+      QLog.e("DesktopDataManager-Recommend", 2, "updateModuleInfo error!!!", localThrowable);
+      return;
     }
-    str = Storage.getCacheDir(BaseApplicationImpl.getApplication().getBaseContext().getCacheDir().getAbsolutePath(), (String)localObject, this.val$miniAppInfo.appId);
-    if (new File(str).exists())
+    do
     {
-      bbdx.a(str, false);
-      QLog.d("DesktopDataManager", 1, "clear storageFile. " + this.val$miniAppInfo.appId);
-    }
-    if (BaseApplicationImpl.getApplication().getSharedPreferences(this.val$miniAppInfo.appId + "_" + (String)localObject, 4).edit().clear().commit()) {
-      QLog.d("DesktopDataManager", 1, "clear authorize info. " + this.val$miniAppInfo.appId);
-    }
-    if (StorageUtil.getPreference().edit().putBoolean(this.val$miniAppInfo.appId + "_debug", false).commit()) {
-      QLog.d("DesktopDataManager", 1, "clear debug info. " + this.val$miniAppInfo.appId);
-    }
-    localObject = AppBrandLaunchManager.g().getCacheApp(this.val$miniAppInfo);
-    if (localObject != null)
+      do
+      {
+        if (i >= DesktopDataManager.access$1600(this.this$0).size()) {
+          break;
+        }
+        localObject1 = (DesktopItemInfo)DesktopDataManager.access$1600(this.this$0).get(i);
+      } while ((!(localObject1 instanceof DesktopAppInfo)) || (((DesktopItemInfo)localObject1).mModuleType != this.val$moduleInfo.moduleType.get()));
+      localObject1 = (DesktopAppInfo)localObject1;
+    } while ((((DesktopAppInfo)localObject1).mMiniAppInfo == null) || (((DesktopAppInfo)localObject1).mMiniAppInfo.isSpecialMiniApp()));
+    for (;;)
     {
-      AppBrandLaunchManager.g().forceKillProcess((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject);
-      QLog.d("DesktopDataManager", 1, "kill process. " + this.val$miniAppInfo.appId + "; " + ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject).processName);
+      localObject1 = DesktopDataManager.access$1600(this.this$0).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (DesktopItemInfo)((Iterator)localObject1).next();
+        if (((localObject2 instanceof DesktopAppInfo)) && (((DesktopItemInfo)localObject2).mModuleType == this.val$moduleInfo.moduleType.get()))
+        {
+          localObject2 = (DesktopAppInfo)localObject2;
+          if ((((DesktopAppInfo)localObject2).mMiniAppInfo != null) && (!((DesktopAppInfo)localObject2).mMiniAppInfo.isSpecialMiniApp())) {
+            ((Iterator)localObject1).remove();
+          }
+        }
+      }
+      if ((i != -1) && (localThrowable.size() > 0)) {
+        DesktopDataManager.access$1600(this.this$0).addAll(i, localThrowable);
+      }
+      QLog.d("DesktopDataManager", 1, "updateModuleInfo, recommend list: " + localThrowable.toString());
+      label554:
+      DesktopDataManager.access$1800(this.this$0);
+      DesktopDataManager.access$1900(DesktopDataManager.access$1600(this.this$0));
+      ArrayList localArrayList2 = new ArrayList();
+      localArrayList2.addAll(DesktopDataManager.access$1600(this.this$0));
+      DesktopDataManager.access$2000(this.this$0, localArrayList2);
+      if (DesktopDataManager.access$1500(this.this$0) == null) {
+        break;
+      }
+      DesktopDataManager.access$1500(this.this$0).onDataChanged();
+      return;
+      i = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.10
  * JD-Core Version:    0.7.0.1
  */

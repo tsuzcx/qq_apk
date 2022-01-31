@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.text.TextUtils;
-import aukp;
-import aukq;
+import awbw;
+import awbx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -53,7 +53,7 @@ public class GroupPlugin
       gotoSelectMembers(paramInt, paramString2, localBaseActivity, paramString1);
       return;
     }
-    localJSContext.evaluateCallback(false, new JSONObject(), ajya.a(2131705362));
+    localJSContext.evaluateCallback(false, new JSONObject(), alpo.a(2131705734));
   }
   
   public void onDestroy() {}
@@ -93,7 +93,7 @@ public class GroupPlugin
       int i;
       if ((TextUtils.isEmpty((CharSequence)localObject)) || (j < 1) || (j > 3))
       {
-        paramJSContext.evaluateCallback(false, new JSONObject(), ajya.a(2131705364));
+        paramJSContext.evaluateCallback(false, new JSONObject(), alpo.a(2131705736));
         return;
         if (!QLog.isColorLevel()) {
           break;
@@ -118,7 +118,7 @@ public class GroupPlugin
           gotoSelectMembers((String)localObject, i, paramJSONObject);
           return;
         }
-        paramJSContext.evaluateCallback(false, new JSONObject(), ajya.a(2131705363));
+        paramJSContext.evaluateCallback(false, new JSONObject(), alpo.a(2131705735));
         return;
         if (localJSONObject != null) {
           break label146;
@@ -133,7 +133,7 @@ public class GroupPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.GroupPlugin
  * JD-Core Version:    0.7.0.1
  */

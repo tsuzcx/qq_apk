@@ -1,20 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.4.1;
-
 public class aheq
-  implements ahee
 {
-  public aheq(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  public int a;
+  public int b;
   
-  public void a(boolean paramBoolean)
+  public aheq(int paramInt1, int paramInt2)
   {
-    DrawRedpacketPannelPreviewFragment.a(this.a).post(new DrawRedpacketPannelPreviewFragment.4.1(this, paramBoolean));
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aheq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,82 +1,83 @@
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
 public class artp
-  implements INetInfoHandler
+  extends QIPCModule
 {
-  long jdField_a_of_type_Long = 0L;
-  private final WeakReference<QQMusicPlayService> jdField_a_of_type_JavaLangRefWeakReference;
+  private static volatile artp a;
+  public static volatile boolean a;
   
-  public artp(QQMusicPlayService paramQQMusicPlayService)
+  private artp(String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQMusicPlayService);
+    super(paramString);
   }
   
-  private void a(int paramInt)
+  public static artp a()
   {
-    boolean bool2 = true;
-    QQMusicPlayService localQQMusicPlayService = (QQMusicPlayService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQMusicPlayService == null) {}
-    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    boolean bool1 = bool2;
-    if (paramInt != 1)
+    if (jdField_a_of_type_Artp == null) {}
+    try
     {
-      bool1 = bool2;
-      if (paramInt != 2)
-      {
-        bool1 = bool2;
-        if (paramInt != 3) {
-          if (paramInt != 6) {
-            break label78;
-          }
-        }
+      if (jdField_a_of_type_Artp == null) {
+        jdField_a_of_type_Artp = new artp("FlutterSubQIPCModule");
       }
+      return jdField_a_of_type_Artp;
     }
-    label78:
-    for (bool1 = bool2;; bool1 = false)
+    finally {}
+  }
+  
+  public static void a()
+  {
+    if (!jdField_a_of_type_Boolean) {}
+    try
     {
-      QQMusicPlayService.a(localQQMusicPlayService, bool1);
+      QIPCClientHelper.getInstance().register(a());
+      jdField_a_of_type_Boolean = true;
       return;
     }
+    catch (Exception localException)
+    {
+      QLog.d("FlutterSubQIPCModule", 1, "register", localException);
+    }
   }
   
-  public void onNetMobile2None()
+  public static void b()
   {
-    a(4);
+    try
+    {
+      if (QIPCClientHelper.getInstance().getClient() != null)
+      {
+        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+        jdField_a_of_type_Boolean = false;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("FlutterSubQIPCModule", 1, "unregister", localException);
+    }
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    a(3);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a(1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(6);
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(5);
+    if ("ACTION_INSTALL_RESULT".equals(paramString))
+    {
+      boolean bool1 = paramBundle.getBoolean("KEY_INSTALL_RESULT");
+      paramString = paramBundle.getString("KEY_INSTALL_DIR");
+      boolean bool2 = paramBundle.getBoolean("KEY_IS_ENGINE_EXIST");
+      boolean bool3 = paramBundle.getBoolean("KEY_IS_APP_EXIST");
+      QLog.d("FlutterSubQIPCModule", 1, String.format("install finish isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(bool1), paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
+      artu.a().a(bool1, paramString, bool2, bool3);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     artp
  * JD-Core Version:    0.7.0.1
  */

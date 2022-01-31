@@ -1,33 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bemf
-  extends Handler
+class bemf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bemf(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bemf(beme parambeme) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bemd localbemd = (bemd)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      AsyncTask.b(localbemd.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask, localbemd.jdField_a_of_type_ArrayOfJavaLangObject[0]);
-      return;
-    }
-    localbemd.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask.a(localbemd.jdField_a_of_type_ArrayOfJavaLangObject);
+    beme.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bemf
  * JD-Core Version:    0.7.0.1
  */

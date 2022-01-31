@@ -1,26 +1,26 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import bekz;
+import bgkd;
+import bgkk;
 
 public class ClipboardJsPlugin
   extends BaseJsPlugin
 {
-  public String getClipboardData(bekr parambekr)
+  public String getClipboardData(bgkd parambgkd)
   {
-    bekz.a(new ClipboardJsPlugin.1(this, parambekr));
+    bgkk.a(new ClipboardJsPlugin.1(this, parambgkd));
     return "";
   }
   
-  public String setClipboardData(bekr parambekr)
+  public String setClipboardData(bgkd parambgkd)
   {
-    bekz.a(new ClipboardJsPlugin.2(this, parambekr));
+    bgkk.a(new ClipboardJsPlugin.2(this, parambgkd));
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.ClipboardJsPlugin
  * JD-Core Version:    0.7.0.1
  */

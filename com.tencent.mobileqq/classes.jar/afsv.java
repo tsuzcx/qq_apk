@@ -1,12 +1,17 @@
-import android.view.View;
-
-public abstract interface afsv
+class afsv
 {
-  public abstract View a();
+  public int a;
+  public long a;
+  public int b;
+  
+  afsv(afss paramafss)
+  {
+    this.jdField_a_of_type_Long = -1L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afsv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,22 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.os.Build.VERSION;
-import android.widget.MediaController;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-public class udt
-  implements ufm
+class udt
+  implements View.OnClickListener
 {
-  public udt(TextureVideoView paramTextureVideoView) {}
+  udt(uds paramuds) {}
   
-  @TargetApi(15)
-  public void a_(ufh paramufh)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Ufh == null) {}
-    label282:
-    do
-    {
-      int i;
-      do
-      {
-        do
-        {
-          return;
-          this.a.jdField_a_of_type_Int = 2;
-          TextureVideoView localTextureVideoView1 = this.a;
-          TextureVideoView localTextureVideoView2 = this.a;
-          this.a.jdField_d_of_type_Boolean = true;
-          localTextureVideoView2.c = true;
-          localTextureVideoView1.jdField_b_of_type_Boolean = true;
-          if (this.a.jdField_a_of_type_Ufm != null) {
-            this.a.jdField_a_of_type_Ufm.a_(this.a.jdField_a_of_type_Ufh);
-          }
-          if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-            this.a.jdField_a_of_type_AndroidWidgetMediaController.setEnabled(true);
-          }
-          this.a.jdField_d_of_type_Int = paramufh.c();
-          this.a.e = paramufh.d();
-          i = this.a.g;
-          if (i != 0) {
-            this.a.seekTo(i);
-          }
-          if ((this.a.jdField_d_of_type_Int == 0) || (this.a.e == 0)) {
-            break label282;
-          }
-          if (Build.VERSION.SDK_INT >= 15) {
-            this.a.getSurfaceTexture().setDefaultBufferSize(this.a.jdField_d_of_type_Int, this.a.e);
-          }
-          if (this.a.jdField_b_of_type_Int != 3) {
-            break;
-          }
-          this.a.start();
-        } while (this.a.jdField_a_of_type_AndroidWidgetMediaController == null);
-        this.a.jdField_a_of_type_AndroidWidgetMediaController.show();
-        return;
-      } while ((this.a.isPlaying()) || ((i == 0) && (this.a.getCurrentPosition() <= 0)) || (this.a.jdField_a_of_type_AndroidWidgetMediaController == null));
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.show(0);
-      return;
-    } while (this.a.jdField_b_of_type_Int != 3);
-    this.a.start();
+    this.a.jdField_a_of_type_Udr.a.a(16);
+    tqs.a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get(), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     udt
  * JD-Core Version:    0.7.0.1
  */

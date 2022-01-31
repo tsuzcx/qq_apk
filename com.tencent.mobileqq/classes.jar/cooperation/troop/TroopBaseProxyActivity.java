@@ -1,6 +1,6 @@
 package cooperation.troop;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.app.Dialog;
 import android.widget.TextView;
@@ -16,7 +16,7 @@ public class TroopBaseProxyActivity
     {
       try
       {
-        paramActivity = new Dialog(paramActivity, 2131755791);
+        paramActivity = new Dialog(paramActivity, 2131755801);
         Activity localActivity = paramActivity;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
@@ -24,9 +24,9 @@ public class TroopBaseProxyActivity
         try
         {
           paramActivity.setCancelable(true);
-          paramActivity.setContentView(2131559386);
+          paramActivity.setContentView(2131559438);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131371557)).setText(ajya.a(2131715262));
+          ((TextView)paramActivity.findViewById(2131371874)).setText(alpo.a(2131715634));
           localActivity = paramActivity;
           return localActivity;
         }
@@ -49,7 +49,7 @@ public class TroopBaseProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.troop.TroopBaseProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class MiniAppRedDotEntity
-  extends auko
+  extends awbv
 {
   public static final String TAG = "MiniAppRedDotEntity";
-  @aumc
+  @awdj
   public String appId;
   public int publicAccountRedDotNum;
   public int wnsPushRedDotNum;
@@ -30,7 +30,7 @@ public class MiniAppRedDotEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class abpa
-  implements DialogInterface.OnClickListener
+  implements Comparator<MessageRecord>
 {
-  public abpa(NotificationActivity paramNotificationActivity) {}
+  public abpa(QQMessageFacade paramQQMessageFacade) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.a.finish();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("password", null);
-    localBundle.putBoolean("is_from_account_another_login_exit", true);
-    if (!aumk.a().a(this.a.app, this.a.app.getCurrentAccountUin()))
-    {
-      this.a.app.updateSubAccountLogin(this.a.app.getCurrentAccountUin(), false);
-      this.a.app.getApplication().refreAccountList();
-    }
-    paramDialogInterface = (ayax)this.a.app.getManager(61);
-    if (paramDialogInterface != null) {}
-    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
-    {
-      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
-      {
-        paramDialogInterface = paramDialogInterface.iterator();
-        while (paramDialogInterface.hasNext())
-        {
-          String str = (String)paramDialogInterface.next();
-          if (!aumk.a().a(this.a.app, str))
-          {
-            this.a.app.updateSubAccountLogin(str, false);
-            this.a.app.getApplication().refreAccountList();
-          }
-        }
-      }
-      this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(localBundle).addFlags(67108864));
-      return;
-    }
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpa
  * JD-Core Version:    0.7.0.1
  */

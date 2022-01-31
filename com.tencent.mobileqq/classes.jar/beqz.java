@@ -1,23 +1,35 @@
-import android.content.Context;
-import android.text.TextUtils;
-import java.io.File;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.AbsListView;
 
 public class beqz
+  implements bhpo
 {
-  public static final String a = beqb.a().a().getFilesDir().getPath() + "/mini/";
-  public static final String b = a + ".baseLib";
+  public beqz(SlideDetectListView paramSlideDetectListView) {}
   
-  public static String a(String paramString1, String paramString2)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
-    return b + File.separator + bfgt.c(paramString1) + "_" + paramString2 + File.separator;
+    if (SlideDetectListView.b(this.a) != null) {
+      SlideDetectListView.b(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.a.c = paramInt;
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+    }
+    if (SlideDetectListView.b(this.a) != null) {
+      SlideDetectListView.b(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beqz
  * JD-Core Version:    0.7.0.1
  */

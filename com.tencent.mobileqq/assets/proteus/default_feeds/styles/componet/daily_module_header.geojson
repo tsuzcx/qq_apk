@@ -25,57 +25,74 @@
         {
             "view_type":"ReadInjoyAsynImageView",
             "view_id":"id_module_image",
-            "margin_left":"16",
-            "margin_top":"11.5",
-            "height":{
-                "type":"relative",
-                "value":"21"
-            },
-            "width":{
-                "type":"relative",
-                "value":"230"
-            },
-            "attributes":{
-                "setImageWithURLString:lineup:":["$module_image_url_new","1"],
-                "setScaleType:": "1"
-            }
-        },
-        {
-            "view_type":"ReadInjoyAsynImageView",
-            "view_id":"id_module_sub_image",
-            "align_parent_right":"YES",
-            "visible_depend_on_brother":"id_module_sub_name",
-            "margin_right":"20",
-            "margin_top":"17.5",
-            "height":{
-                "type":"relative",
-                "value":"9.5"
-            },
-            "width":{
-                "type":"relative",
-                "value":"5.5"
-            },
-            "attributes":{
-                "setImageWithURLString:lineup:":["http://qqpublic.qpic.cn/qq_public/0/0-2156135816-4F3A1FA7C2C48FF7318A75F4973D9CAB/0","1"]
-            }
-        },
-        {
-            "view_type":"UILabel",
-            "view_id":"id_module_sub_name",
-            "left_of_view":"id_module_sub_image",
-            "margin_right":"6",
+            "margin_left":"12",
             "margin_top":"13",
             "height":{
                 "type":"relative",
                 "value":"18"
             },
             "width":{
+                "type":"relative",
+                "value":"18"
+            },
+            "attributes":{
+                "setImageWithURLString:lineup:":["$module_image_url","1"]
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_module_name",
+            "right_of_view":"id_module_image",
+            "margin_left":"5",
+            "margin_top":"6",
+            "height":{
+                "type":"relative",
+                "value":"32"
+            },
+            "width":{
                 "type":"wrap_content"
             },
             "attributes":{
-                "setText:":"$module_sub_name_new",
-                "setTextColorString:":"#B0B3BF",
-                "setFontSizeString:":"12"
+                "setText:":"$module_name",
+                "setTextColorString:":"#262626",
+                "setBoldFontSizeString:":"17"
+            }
+        },
+        {
+            "view_type":"ReadInjoyAsynImageView",
+            "view_id":"id_module_sub_image",
+            "align_parent_right":"YES",
+            "margin_right":"16",
+            "margin_top":"14",
+            "height":{
+                "type":"relative",
+                "value":"16"
+            },
+            "width":{
+                "type":"relative",
+                "value":"8"
+            },
+            "attributes":{
+                "setImageWithURLString:lineup:":["$module_sub_image_url","1"]
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_module_sub_name",
+            "left_of_view":"id_module_sub_image",
+            "margin_right":"5",
+            "margin_top":"12",
+            "height":{
+                "type":"relative",
+                "value":"20"
+            },
+            "width":{
+                "type":"wrap_content"
+            },
+            "attributes":{
+                "setText:":"$module_sub_name",
+                "setTextColorString:":"#FF4222",
+                "setFontSizeString:":"14"
             }
         }
     ]

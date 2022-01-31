@@ -1,26 +1,21 @@
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class sxj
-  implements swy
+class sxj
+  implements View.OnClickListener
 {
-  public sxj(StoryVideoUploadTask paramStoryVideoUploadTask, teo paramteo, swu paramswu) {}
+  sxj(sxe paramsxe, String paramString) {}
   
-  public void a(swx paramswx)
+  public void onClick(View paramView)
   {
-    paramswx = this.jdField_a_of_type_Teo;
-    if (this.jdField_a_of_type_Swu.a == 0) {}
-    for (int i = 2;; i = 3)
-    {
-      paramswx.jdField_b_of_type_Int = i;
-      this.jdField_a_of_type_Teo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Swu.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_Teo.c = this.jdField_a_of_type_Swu.c;
-      return;
-    }
+    this.jdField_a_of_type_Sxe.j();
+    this.jdField_a_of_type_Sxe.o = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Sxe.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxj
  * JD-Core Version:    0.7.0.1
  */

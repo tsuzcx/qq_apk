@@ -2,12 +2,12 @@ package dov.com.qq.im;
 
 import android.app.Activity;
 import android.content.Intent;
-import biht;
+import bkjp;
 
 public class QIMQzoneEffectsCameraCaptureUnit$1
   implements Runnable
 {
-  public QIMQzoneEffectsCameraCaptureUnit$1(biht parambiht, Intent paramIntent) {}
+  public QIMQzoneEffectsCameraCaptureUnit$1(bkjp parambkjp, Intent paramIntent) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class QIMQzoneEffectsCameraCaptureUnit$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMQzoneEffectsCameraCaptureUnit.1
  * JD-Core Version:    0.7.0.1
  */

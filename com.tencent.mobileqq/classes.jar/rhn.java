@@ -1,29 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.widget.BubblePopupWindow;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
-public class rhn
-  implements View.OnClickListener
+class rhn
+  implements DialogInterface.OnShowListener
 {
-  public rhn(ReadinjoyTabbar paramReadinjoyTabbar) {}
+  rhn(rhf paramrhf) {}
   
-  public void onClick(View paramView)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
-    try
-    {
-      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
-      ReadinjoyTabbar.a(this.a).b();
-      return;
-    }
-    catch (Exception paramView) {}
+    rhf.a(this.a, "mShareActionSheet onShow()");
+    this.a.a.a.getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhn
  * JD-Core Version:    0.7.0.1
  */

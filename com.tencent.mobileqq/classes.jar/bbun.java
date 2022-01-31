@@ -1,66 +1,54 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.mobileqq.vashealth.TracePathData;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
 
 public class bbun
-  implements SensorEventListener
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public bbun(PathTraceManager paramPathTraceManager) {}
+  private bbun(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    QLog.d("PathTraceManager", 1, "step Changed:" + paramSensorEvent.values[0]);
-    if (PathTraceManager.a(this.a) == 1)
+    BaseScaleAndMoveBitmapView.a(this.a, false);
+    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
+    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
+    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
+    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
     {
-      PathTraceManager.a(this.a, (int)paramSensorEvent.values[0]);
-      if ((PathTraceManager.a(this.a) == null) || (PathTraceManager.b(this.a) <= PathTraceManager.c(this.a)) || (PathTraceManager.c(this.a) == 0)) {
-        break label331;
+      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
+        break label323;
       }
-      i = PathTraceManager.a(this.a).totalSteps;
-      if (!this.a.e) {
-        break label246;
-      }
-      paramSensorEvent = PathTraceManager.a(this.a);
-      paramSensorEvent.totalSteps += (PathTraceManager.b(this.a) - PathTraceManager.c(this.a)) * (int)(20.0D * Math.random());
-      PathTraceManager.b(this.a, PathTraceManager.b(this.a));
-      PathTraceManager.a(this.a, null);
-      if (PathTraceManager.a(this.a).type == 1)
+      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
+    }
+    for (;;)
+    {
+      wsv.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
+      this.a.invalidate();
+      return true;
+      if (this.a.b(0.0F) >= 0.0F)
       {
-        if ((i >= PathTraceManager.a(this.a).stepsGoal) || (PathTraceManager.a(this.a).totalSteps < PathTraceManager.a(this.a).stepsGoal)) {
-          break label281;
-        }
-        this.a.a(PathTraceManager.a(this.a), false, true);
+        this.a.b = 0.0F;
+        break;
+      }
+      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
+        break;
+      }
+      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      break;
+      label323:
+      if (this.a.a(0.0F) >= 0.0F) {
+        this.a.jdField_a_of_type_Float = 0.0F;
+      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
+        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
       }
     }
-    label246:
-    while (PathTraceManager.c(this.a) != 0)
-    {
-      int i;
-      do
-      {
-        for (;;)
-        {
-          return;
-          paramSensorEvent = PathTraceManager.a(this.a);
-          paramSensorEvent.totalSteps += PathTraceManager.b(this.a) - PathTraceManager.c(this.a);
-        }
-      } while (Math.floor(PathTraceManager.a(this.a).totalSteps / 1000) - Math.floor(i / 1000) <= 0.0D);
-      this.a.a(PathTraceManager.a(this.a), false, false);
-      return;
-    }
-    label281:
-    label331:
-    PathTraceManager.b(this.a, PathTraceManager.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbun
  * JD-Core Version:    0.7.0.1
  */

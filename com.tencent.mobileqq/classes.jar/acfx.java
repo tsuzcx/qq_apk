@@ -1,33 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acfx
-  implements View.OnClickListener
+public final class acfx
+  implements DialogInterface.OnClickListener
 {
-  public acfx(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public acfx(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, acgy paramacgy, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c = false;
-    if (this.a.a != null)
-    {
-      this.a.a.a(4);
-      this.a.d();
-      this.a.c();
-    }
-    if (asfd.a().c()) {
-      asfd.a().f(this.a.app);
-    }
-    TroopAssistantActivity.b(this.a);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Acgy, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfx
  * JD-Core Version:    0.7.0.1
  */

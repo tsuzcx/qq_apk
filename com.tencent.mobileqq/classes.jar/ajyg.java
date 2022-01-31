@@ -1,2986 +1,1125 @@
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.HotChatHandler.2;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.io.PrintStream;
-import java.io.Serializable;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import tencent.im.oidb.cmd0x62c.oidb_cmd0x62c.ReqBody;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.ReqBody;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.ReqGroupInfo;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspBody;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
-import tencent.im.oidb.cmd0x897.cmd0x897.RspBody;
-import tencent.im.oidb.cmd0x89a.oidb_0x89a.ReqBody;
-import tencent.im.oidb.cmd0x89a.oidb_0x89a.RspBody;
-import tencent.im.oidb.cmd0x89a.oidb_0x89a.groupinfo;
-import tencent.im.oidb.cmd0x89b.oidb_0x89b.ExitPublicGroupReqBody;
-import tencent.im.oidb.cmd0x89b.oidb_0x89b.KickPublicGroupVisitorReqBody;
-import tencent.im.oidb.cmd0x89b.oidb_0x89b.ReqBody;
-import tencent.im.oidb.cmd0x89b.oidb_0x89b.RspBody;
-import tencent.im.oidb.cmd0x8a7.cmd0x8a7.RspBody;
-import tencent.im.oidb.cmd0x8b2.oidb_0x8b2.ReqBody;
-import tencent.im.oidb.cmd0x8b2.oidb_0x8b2.RspBody;
-import tencent.im.oidb.cmd0x8b3.oidb_0x8b3.ReqBody;
-import tencent.im.oidb.cmd0x8b3.oidb_0x8b3.groupinfo;
-import tencent.im.oidb.cmd0xa81.oidb_0xa81.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
-import tencent.im.oidb.hotchat.CreateHotChat.ReqBody;
-import tencent.im.oidb.hotchat.CreateHotChat.RspBody;
-import tencent.im.oidb.hotchat.GetJoinedHotChatList.ReqBody;
-import tencent.im.oidb.hotchat.GetJoinedHotChatList.RspBody;
-import tencent.im.oidb.hotchat.LBS.Attribute;
-import tencent.im.oidb.hotchat.LBS.Cell;
-import tencent.im.oidb.hotchat.LBS.GPS;
-import tencent.im.oidb.hotchat.LBS.LBSInfo;
-import tencent.im.oidb.hotchat.LBS.Wifi;
-import tencent.im.oidb.hotchat.oidb_0x81f.GetAuthDataReq;
-import tencent.im.oidb.hotchat.oidb_0x81f.ReqBody;
-import tencent.im.oidb.hotchat.oidb_0x823.KickPublicGroupVisitorReqBody;
-import tencent.im.oidb.hotchat.oidb_0x823.KickPublicGroupVisitorRspBody;
-import tencent.im.oidb.hotchat.oidb_0x823.PlayerDeviceInfo;
-import tencent.im.oidb.hotchat.oidb_0x823.ReqBody;
-import tencent.im.oidb.hotchat.oidb_0x823.RspBody;
-import tencent.im.oidb.hotchat.oidb_0x8ab.ReqBody;
-import tencent.im.oidb.hotchat.oidb_0x8ab.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class ajyg
-  extends ajtb
+  extends AsyncTask<Void, Void, Integer>
 {
-  public static final String a;
-  public static final String b = ajya.a(2131705568);
-  public static final String c = ajya.a(2131705567);
-  private volatile boolean a;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  public String b;
+  boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  int jdField_d_of_type_Int;
+  String jdField_d_of_type_JavaLangString;
+  int jdField_e_of_type_Int;
+  String jdField_e_of_type_JavaLangString;
+  String f;
+  String g;
   
-  static
+  public ajyg(BaseActivity paramBaseActivity, Intent paramIntent)
   {
-    jdField_a_of_type_JavaLangString = ajya.a(2131705559);
-  }
-  
-  public ajyg(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-  
-  public static LBS.LBSInfo a(boolean paramBoolean)
-  {
-    LBS.LBSInfo localLBSInfo = new LBS.LBSInfo();
-    SosoInterface.a(3600000L, ajyg.class.getSimpleName());
-    Object localObject1 = SosoInterface.a();
-    if ((localObject1 == null) || (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation == null)) {
-      return null;
-    }
-    Object localObject2 = new LBS.GPS();
-    ((LBS.GPS)localObject2).latitude.set((int)(((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c * 1000000.0D));
-    ((LBS.GPS)localObject2).longitude.set((int)(((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d * 1000000.0D));
-    ((LBS.GPS)localObject2).altitude.set(-1);
-    ((LBS.GPS)localObject2).coordinate.set(0);
-    localLBSInfo.gps.set((MessageMicro)localObject2);
-    Object localObject3;
-    if (((SosoInterface.SosoLbsInfo)localObject1).b != null)
-    {
-      localObject2 = ((SosoInterface.SosoLbsInfo)localObject1).b.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (SosoInterface.SosoWifi)((Iterator)localObject2).next();
-        LBS.Wifi localWifi = new LBS.Wifi();
-        localWifi.mac.set(((SosoInterface.SosoWifi)localObject3).jdField_a_of_type_Long);
-        localWifi.rssi.set(((SosoInterface.SosoWifi)localObject3).jdField_a_of_type_Int);
-        localLBSInfo.rpt_wifi.add(localWifi);
-      }
-    }
-    if (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      localObject1 = ((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (SosoInterface.SosoCell)((Iterator)localObject1).next();
-        localObject3 = new LBS.Cell();
-        ((LBS.Cell)localObject3).mcc.set(((SosoInterface.SosoCell)localObject2).jdField_a_of_type_Int);
-        ((LBS.Cell)localObject3).mnc.set(((SosoInterface.SosoCell)localObject2).b);
-        ((LBS.Cell)localObject3).lac.set(((SosoInterface.SosoCell)localObject2).c);
-        ((LBS.Cell)localObject3).cellid.set(((SosoInterface.SosoCell)localObject2).d);
-        ((LBS.Cell)localObject3).rssi.set(((SosoInterface.SosoCell)localObject2).e);
-        localLBSInfo.rpt_cell.add((MessageMicro)localObject3);
-      }
-    }
-    localObject1 = new LBS.Attribute();
-    localObject2 = bbdh.a();
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-      ((LBS.Attribute)localObject1).imei.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
-    }
-    localObject2 = bbdh.b();
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-      ((LBS.Attribute)localObject1).imsi.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
-    }
-    localLBSInfo.attribute.set((MessageMicro)localObject1);
-    return localLBSInfo;
-  }
-  
-  public static LBS.Wifi a()
-  {
-    Object localObject1 = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
-    if (!((WifiManager)localObject1).isWifiEnabled()) {
-      return null;
-    }
-    Object localObject2 = ((WifiManager)localObject1).getConnectionInfo();
-    localObject1 = HotChatManager.a((WifiInfo)localObject2);
-    long l = SosoInterface.SosoWifi.a(((WifiInfo)localObject2).getBSSID());
-    int i = ((WifiInfo)localObject2).getRssi();
-    localObject2 = new LBS.Wifi();
-    ((LBS.Wifi)localObject2).rssi.set(i);
-    ((LBS.Wifi)localObject2).essid.set(ByteStringMicro.copyFrom(((String)localObject1).getBytes()));
-    ((LBS.Wifi)localObject2).mac.set(l);
-    return localObject2;
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("HotChatHandler", 2, "<<---handleError serviceCmd:" + str);
-    }
-    if ("OidbSvc.0x8a4".equals(str)) {
-      a(paramToServiceMsg, paramFromServiceMsg, false);
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          int i;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if (!"OidbSvc.0x89b_3".equals(str)) {
-                    break;
-                  }
-                  if (paramToServiceMsg.extraData.getBoolean("kick", false))
-                  {
-                    j(paramToServiceMsg, paramFromServiceMsg);
-                    return;
-                  }
-                } while (paramToServiceMsg.extraData.getBoolean("isJoin"));
-                c(paramToServiceMsg, paramFromServiceMsg);
-                return;
-              } while ("OidbSvc.0x823_0".equals(str));
-              if ("OidbSvc.0x8a2".equals(str))
-              {
-                d(paramToServiceMsg, paramFromServiceMsg);
-                return;
-              }
-              if ("OidbSvc.0x8ab".equals(str))
-              {
-                e(paramToServiceMsg, paramFromServiceMsg);
-                return;
-              }
-              if ("OidbSvc.0x8b3".equals(str))
-              {
-                f(paramToServiceMsg, paramFromServiceMsg);
-                return;
-              }
-              if (!"OidbSvc.0x8b2".equals(str)) {
-                break;
-              }
-            } while ((paramToServiceMsg == null) || (paramToServiceMsg.extraData == null));
-            i = paramToServiceMsg.extraData.getInt("serviceType");
-            if (QLog.isColorLevel()) {
-              QLog.d("HotChatHandlerQ.hotchat.oidb_0x8b2", 2, "handleError, cmd:" + str + "|serviceType:" + i);
-            }
-          } while (i != 2);
-          g(paramToServiceMsg, paramFromServiceMsg);
-          return;
-          if ("OidbSvc.0xa81".equals(str))
-          {
-            k(paramToServiceMsg, paramFromServiceMsg);
-            return;
-          }
-          if ("OidbSvc.0x88d_0".equals(str))
-          {
-            h(paramToServiceMsg, paramFromServiceMsg);
-            return;
-          }
-          if ("OidbSvc.0x89a_0".equals(str))
-          {
-            i(paramToServiceMsg, paramFromServiceMsg);
-            return;
-          }
-        } while ("OidbSvc.0xa8b".equals(str));
-        if ("OidbSvc.0x897_0".equals(str))
-        {
-          o(paramToServiceMsg, paramFromServiceMsg, null);
-          return;
-        }
-        if ("OidbSvc.0x88d_1".equals(str))
-        {
-          n(paramToServiceMsg, paramFromServiceMsg, null);
-          return;
-        }
-      } while ("OidbSvc.0x8a3_7".equals(str));
-      if ("OidbSvc.0x8a7_0".equals(str))
-      {
-        q(paramToServiceMsg, paramFromServiceMsg, null);
-        return;
-      }
-    } while (!"OidbSvc.0x62c_4".equals(str));
-    a(paramToServiceMsg, paramFromServiceMsg, null);
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "handleGetMyHostChatListRespError timeOut: " + paramBoolean);
-    }
-    notifyUI(1031, false, null);
-    if (paramBoolean) {
-      ((HotChatManager)this.app.getManager(60)).a(null, false);
-    }
-  }
-  
-  private void a(Common.WifiPOIInfo paramWifiPOIInfo, boolean paramBoolean, int paramInt)
-  {
-    int i = 2;
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      atbr.a("HotChatHandler", new Object[] { "createHotChat", Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramWifiPOIInfo });
-    }
-    if (paramWifiPOIInfo == null) {
-      return;
-    }
-    Object localObject = paramWifiPOIInfo.uint32_wifi_poi_type;
-    if (paramBoolean) {
-      i = 1;
-    }
-    ((PBUInt32Field)localObject).set(i);
-    localObject = HotChatInfo.createHotChat(paramWifiPOIInfo, paramBoolean, paramInt);
-    CreateHotChat.ReqBody localReqBody = new CreateHotChat.ReqBody();
-    localReqBody.create_req_info.setHasFlag(true);
-    localReqBody.create_req_info.set(paramWifiPOIInfo);
-    paramInt = j;
-    if (paramBoolean)
-    {
-      paramWifiPOIInfo = a(true);
-      if (paramWifiPOIInfo != null) {
-        localReqBody.lbs_info.set(paramWifiPOIInfo);
-      }
-      paramInt = 1;
-    }
-    paramWifiPOIInfo = makeOIDBPkg("OidbSvc.0x8a2", 2210, paramInt, localReqBody.toByteArray(), 10000L);
-    paramWifiPOIInfo.extraData.putSerializable("HOT_CHAT_INFO", (Serializable)localObject);
-    sendPbReq(paramWifiPOIInfo);
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("HotChatHandler", 2, "<<---handleTimeOut serviceCmd:" + str);
-    }
-    if ("OidbSvc.0x8a4".equals(str)) {
-      a(paramToServiceMsg, paramFromServiceMsg, true);
-    }
-    do
-    {
-      do
-      {
-        int i;
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (!"OidbSvc.0x89b_3".equals(str)) {
-                  break;
-                }
-                if (paramToServiceMsg.extraData.getBoolean("kick", false))
-                {
-                  j(paramToServiceMsg, paramFromServiceMsg);
-                  return;
-                }
-              } while (paramToServiceMsg.extraData.getBoolean("isJoin"));
-              c(paramToServiceMsg, paramFromServiceMsg);
-              return;
-            } while ("OidbSvc.0x823_0".equals(str));
-            if ("OidbSvc.0x8a2".equals(str))
-            {
-              d(paramToServiceMsg, paramFromServiceMsg);
-              return;
-            }
-            if ("OidbSvc.0x8ab".equals(str))
-            {
-              e(paramToServiceMsg, paramFromServiceMsg);
-              return;
-            }
-            if ("OidbSvc.0x8b3".equals(str))
-            {
-              f(paramToServiceMsg, paramFromServiceMsg);
-              return;
-            }
-            if (!"OidbSvc.0x8b2".equals(str)) {
-              break;
-            }
-          } while ((paramToServiceMsg == null) || (paramToServiceMsg.extraData == null));
-          i = paramToServiceMsg.extraData.getInt("serviceType");
-          if (QLog.isColorLevel()) {
-            QLog.d("HotChatHandlerQ.hotchat.oidb_0x8b2", 2, "handleTimeOut, cmd:" + str + "|serviceType:" + i);
-          }
-        } while (i != 2);
-        g(paramToServiceMsg, paramFromServiceMsg);
-        return;
-        if ("OidbSvc.0xa81".equals(str))
-        {
-          k(paramToServiceMsg, paramFromServiceMsg);
-          return;
-        }
-        if ("OidbSvc.0x88d_0".equals(str))
-        {
-          h(paramToServiceMsg, paramFromServiceMsg);
-          return;
-        }
-        if ("OidbSvc.0x89a_0".equals(str))
-        {
-          i(paramToServiceMsg, paramFromServiceMsg);
-          return;
-        }
-      } while ("OidbSvc.0xa8b".equals(str));
-      if ("OidbSvc.0x897_0".equals(str))
-      {
-        o(paramToServiceMsg, paramFromServiceMsg, null);
-        return;
-      }
-      if ("OidbSvc.0x88d_1".equals(str))
-      {
-        n(paramToServiceMsg, paramFromServiceMsg, null);
-        return;
-      }
-    } while (!"OidbSvc.0x8a7_0".equals(str));
-    q(paramToServiceMsg, paramFromServiceMsg, null);
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "handleExtHotChatRespErrorOrTimeOut()");
-    }
-    paramFromServiceMsg = jdField_a_of_type_JavaLangString;
-    notifyUI(1033, false, new Object[] { paramToServiceMsg.extraData.getString("troopUin"), paramFromServiceMsg });
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "handleExitHotChatResp()");
-    }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      return;
-    }
-    String str2 = jdField_a_of_type_JavaLangString;
-    String str1 = paramToServiceMsg.extraData.getString("troopUin");
-    if (paramFromServiceMsg.getResultCode() != 1000)
-    {
-      notifyUI(1033, false, new Object[] { str1, str2 });
-      return;
-    }
-    paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-      if (paramFromServiceMsg == null)
-      {
-        notifyUI(1033, false, new Object[] { str1, str2 });
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      for (;;)
-      {
-        paramFromServiceMsg = null;
-      }
-      if (!paramFromServiceMsg.uint32_result.has())
-      {
-        notifyUI(1033, false, new Object[] { str1, str2 });
-        return;
-      }
-      int i = paramFromServiceMsg.uint32_result.get();
-      if (QLog.isColorLevel()) {
-        QLog.i("HotChatHandler", 2, "handleExitHotChatResp result " + i);
-      }
-      if (i == 0)
-      {
-        paramToServiceMsg = (HotChatManager.HotChatStateWrapper)paramToServiceMsg.extraData.getSerializable("targetHotChatState");
-        paramFromServiceMsg = (HotChatManager)this.app.getManager(60);
-        paramFromServiceMsg.a(paramFromServiceMsg.a(str1), paramToServiceMsg);
-        notifyUI(1033, true, new Object[] { str1, b });
-        return;
-      }
-      notifyUI(1033, false, new Object[] { str1, str2 });
-    }
-  }
-  
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = (HotChatInfo)paramToServiceMsg.extraData.get("HOT_CHAT_INFO");
-    notifyUI(1032, false, new Object[] { paramToServiceMsg.troopUin, ajya.a(2131705571), paramToServiceMsg.name });
-  }
-  
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = ajya.a(2131705564);
-    HotChatInfo localHotChatInfo = (HotChatInfo)paramToServiceMsg.extraData.getSerializable("HOT_CHAT_INFO");
-    boolean bool = paramToServiceMsg.extraData.getBoolean("isWifiHotChat", false);
-    if (paramFromServiceMsg.getResultCode() != 1000)
-    {
-      notifyUI(1032, false, new Object[] { localHotChatInfo.troopUin, str, localHotChatInfo.name });
-      return;
-    }
-    paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      paramToServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
-      if (paramToServiceMsg == null)
-      {
-        notifyUI(1032, false, new Object[] { localHotChatInfo.troopUin, str, localHotChatInfo.name });
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-    {
-      for (;;)
-      {
-        paramToServiceMsg = null;
-      }
-      if (!paramToServiceMsg.uint32_result.has())
-      {
-        notifyUI(1032, false, new Object[] { localHotChatInfo.troopUin, str, localHotChatInfo.name });
-        return;
-      }
-      int i = paramToServiceMsg.uint32_result.get();
-      if (QLog.isColorLevel()) {
-        QLog.i("HotChatHandler", 2, "handleCreateHotChatResp result " + i);
-      }
-      if (i == 0)
-      {
-        paramFromServiceMsg = new CreateHotChat.RspBody();
-        try
-        {
-          paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          long l1 = bbbr.a(paramFromServiceMsg.uint32_group_code.get());
-          long l2 = bbbr.a(paramFromServiceMsg.uint32_group_uin.get());
-          localHotChatInfo.troopUin = String.valueOf(l1);
-          localHotChatInfo.troopCode = String.valueOf(l2);
-          localHotChatInfo.state = 0;
-          ((HotChatManager)this.app.getManager(60)).a(localHotChatInfo, 4);
-          notifyUI(1032, true, new Object[] { ajya.a(2131705554), localHotChatInfo.troopCode, localHotChatInfo.troopUin, localHotChatInfo.name, Boolean.valueOf(bool) });
-          return;
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          notifyUI(1032, false, new Object[] { localHotChatInfo.troopUin, str, localHotChatInfo.name });
-          return;
-        }
-      }
-      switch (i)
-      {
-      case 1284: 
-      case 1285: 
-      case 1286: 
-      case 1287: 
-      case 1288: 
-      case 1289: 
-      default: 
-        paramToServiceMsg = ajya.a(2131705573);
-      }
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
+    paramBaseActivity = paramBaseActivity.getIntent();
+    if (paramIntent != null) {}
     for (;;)
     {
-      notifyUI(1032, false, new Object[] { localHotChatInfo.troopUin, paramToServiceMsg, localHotChatInfo.name });
-      return;
-      paramToServiceMsg = ajya.a(2131705566);
-      continue;
-      paramToServiceMsg = ajya.a(2131705560);
-      continue;
-      paramToServiceMsg = ajya.a(2131705569);
-      continue;
-      paramToServiceMsg = ajya.a(2131705570);
-      continue;
-      paramToServiceMsg = ajya.a(2131705561);
-      continue;
-      paramToServiceMsg = ajya.a(2131705556);
-    }
-  }
-  
-  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    System.out.println("-----> handleQuickJoinHotChatErrorOrTimeOut");
-  }
-  
-  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    boolean bool2;
-    boolean bool1;
-    if (paramToServiceMsg.extraData.getInt("serviceType", 0) == 2)
-    {
-      bool2 = true;
-      paramToServiceMsg = new GetJoinedHotChatList.RspBody();
-      if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {
-        break label275;
-      }
-      bool1 = true;
-      label45:
-      if (!bool1) {
-        break label383;
-      }
-      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-    }
-    for (;;)
-    {
-      try
+      this.jdField_b_of_type_JavaLangString = paramIntent.getExtras().getString("file_send_path");
+      this.jdField_a_of_type_JavaUtilArrayList = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS_BY_FILE");
+      this.jdField_b_of_type_Long = paramIntent.getExtras().getLong("file_send_duration");
+      this.jdField_a_of_type_Long = paramIntent.getExtras().getLong("file_send_size");
+      this.jdField_c_of_type_JavaLangString = paramIntent.getExtras().getString("uin");
+      this.jdField_a_of_type_Int = paramIntent.getIntExtra("uintype", -1);
+      this.jdField_d_of_type_JavaLangString = paramIntent.getStringExtra("file_source");
+      this.jdField_e_of_type_JavaLangString = paramIntent.getExtras().getString("file_shortvideo_md5");
+      this.jdField_a_of_type_JavaLangString = paramIntent.getExtras().getString("activity_before_enter_send_video");
+      this.jdField_a_of_type_Boolean = paramIntent.getExtras().getBoolean("send_in_background");
+      if (paramIntent.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0) == 2) {}
+      for (boolean bool = true;; bool = false)
       {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if (!paramFromServiceMsg.uint32_result.has()) {
-          break label377;
-        }
-        i = paramFromServiceMsg.uint32_result.get();
-        if (i != 0) {}
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        label275:
-        i = 0;
-        bool1 = false;
-        paramToServiceMsg = null;
-        continue;
-        boolean bool3 = false;
-        continue;
-        bool3 = false;
-        ((HotChatManager)this.app.getManager(60)).a(paramToServiceMsg, bool2);
-        if (bool2) {
-          new Handler(Looper.getMainLooper()).post(new HotChatHandler.2(this, bool3, paramToServiceMsg));
-        }
-        notifyUI(1031, true, null);
-        return;
-      }
-      try
-      {
-        paramToServiceMsg.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+        this.jdField_b_of_type_Boolean = bool;
         if (QLog.isColorLevel()) {
-          QLog.i("HotChatHandler", 2, "handleGetMyHotChatListResp isSuccess: " + bool1 + ", result:" + i + ",resp=" + paramToServiceMsg);
+          QLog.d("SendVideoActivity", 2, " SendVideoTask(),  mVideoPath :" + this.jdField_b_of_type_JavaLangString + ", mDuration:" + this.jdField_b_of_type_Long + ", mFileSize:" + this.jdField_a_of_type_Long + ",mUin" + this.jdField_c_of_type_JavaLangString + ",mUinType:" + this.jdField_a_of_type_Int + ",mFileSource:" + this.jdField_d_of_type_JavaLangString + ",mSendBackground = " + this.jdField_a_of_type_Boolean + ", mSendRawVideo:" + this.jdField_b_of_type_Boolean);
         }
-        if (paramToServiceMsg == null) {
-          break label360;
-        }
-        paramFromServiceMsg = paramToServiceMsg.rpt_msg_wifi_poi_info.get();
-        paramToServiceMsg = new ArrayList();
-        if (paramFromServiceMsg == null) {
-          continue;
-        }
-        paramFromServiceMsg = paramFromServiceMsg.iterator();
-        bool1 = false;
-        bool3 = bool1;
-        if (!paramFromServiceMsg.hasNext()) {
-          continue;
-        }
-        paramObject = (Common.WifiPOIInfo)paramFromServiceMsg.next();
-        if (paramObject.uint32_wifi_poi_type.get() != 1) {
-          continue;
-        }
-        bool3 = true;
-        paramObject = HotChatInfo.createHotChat(paramObject, bool3);
-        paramToServiceMsg.add(paramObject);
-        if (!bool2) {
-          break label374;
-        }
-        paramObject.isGameRoom = true;
-        bool1 = true;
-        continue;
+        return;
       }
-      catch (Exception paramToServiceMsg)
-      {
-        continue;
-        continue;
-      }
-      bool2 = false;
-      break;
-      bool1 = false;
-      break label45;
-      label360:
-      notifyUI(1031, false, null);
-      return;
-      label374:
-      label377:
-      int i = 0;
-      continue;
-      label383:
-      i = 0;
+      paramIntent = paramBaseActivity;
     }
   }
   
-  private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public static void a(BaseActivity paramBaseActivity, int paramInt, boolean paramBoolean)
   {
-    paramToServiceMsg = paramToServiceMsg.extraData.getByteArray("uid");
-    int i = paramFromServiceMsg.getResultCode();
-    notifyUI(1035, false, new Object[] { paramToServiceMsg, Integer.valueOf(i), "" });
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "handleSetHotChatAnnounceTimeOutOrError,result= " + i + ",uid=" + paramToServiceMsg);
-    }
-  }
-  
-  private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramToServiceMsg.extraData.getString("hotnamecode");
-    int j = paramToServiceMsg.extraData.getInt("HOTCHAT_EXTRA_FLAG");
-    int k = paramToServiceMsg.extraData.getInt("preHotChatState");
-    Object localObject1 = null;
-    Object localObject2 = null;
-    Object localObject3 = new oidb_0x8ab.RspBody();
-    int m = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject3);
-    if (m == 0)
-    {
-      paramFromServiceMsg = (FromServiceMsg)localObject2;
-      paramObject = localObject1;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (((oidb_0x8ab.RspBody)localObject3).poi_info.has())
-        {
-          paramObject = localObject1;
-          paramFromServiceMsg = (Common.WifiPOIInfo)((oidb_0x8ab.RspBody)localObject3).poi_info.get();
-        }
-        paramObject = paramFromServiceMsg;
-        if (!((oidb_0x8ab.RspBody)localObject3).join_poi_status.has()) {
-          break label795;
-        }
-        paramObject = paramFromServiceMsg;
-        i = ((oidb_0x8ab.RspBody)localObject3).join_poi_status.get();
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("HotChatHandler", 2, paramFromServiceMsg.toString());
-        i = 0;
-        paramFromServiceMsg = paramObject;
-        continue;
-        if ((((HotChatInfo)localObject2).userCreate != paramObject.userCreate) || (!bbbr.a(((HotChatInfo)localObject2).uuid, paramObject.uuid)) || (bbbr.a(((HotChatInfo)localObject2).troopUin, paramObject.troopUin))) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        atbr.a("HotChatHandler", new Object[] { "handleQuickJoinHotChat_check", String.format("userCreate:%d, uuid:%s, local:[%s,%s], server:[%s,%s]", new Object[] { Integer.valueOf(((HotChatInfo)localObject2).userCreate), ((HotChatInfo)localObject2).uuid, ((HotChatInfo)localObject2).troopUin, ((HotChatInfo)localObject2).troopCode, paramObject.troopUin, paramObject.troopCode }) });
-        paramToServiceMsg.a((HotChatInfo)localObject2, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL);
-        continue;
-        if (i != 1) {
-          continue;
-        }
-        paramToServiceMsg.a(paramObject, k);
-        if (!paramFromServiceMsg.uint64_exit_group_code.has()) {
-          continue;
-        }
-        l = paramFromServiceMsg.uint64_exit_group_code.get();
-        localObject2 = paramToServiceMsg.a();
-        if ((localObject1 == null) || (((List)localObject2).size() <= 0)) {
-          continue;
-        }
-        localObject1 = ((List)localObject2).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          continue;
-        }
-        localObject2 = (HotChatInfo)((Iterator)localObject1).next();
-        if ((((HotChatInfo)localObject2).adminLevel != 0) || (!String.valueOf(l).equals(((HotChatInfo)localObject2).troopUin))) {
-          continue;
-        }
-        paramToServiceMsg.a((HotChatInfo)localObject2, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_LEFT_OVERCOUNT);
-        continue;
-        if (i != 2) {
-          continue;
-        }
-        localObject2 = paramToServiceMsg.a(paramObject.troopUin);
-        if (localObject2 != null) {
-          continue;
-        }
-        paramToServiceMsg.a(paramObject, 4);
-        continue;
-        if (k != 1) {
-          continue;
-        }
-        paramToServiceMsg.a(paramObject, k);
-        continue;
-        ((HotChatInfo)localObject2).updateHotChatInfo(paramObject);
-        localObject3 = this.app.getEntityManagerFactory().createEntityManager();
-        ((aukp)localObject3).a((auko)localObject2);
-        ((aukp)localObject3).a();
-        continue;
-        paramToServiceMsg = paramObject;
-      }
-      if (paramFromServiceMsg != null)
-      {
-        paramObject = HotChatInfo.createHotChat(paramFromServiceMsg, false, j);
-        j = paramToServiceMsg.extraData.getInt("apolloGameId");
-        if (j > 0)
-        {
-          paramObject.apolloGameId = j;
-          if (QLog.isColorLevel()) {
-            QLog.d("HotChatHandler", 2, "handleQuickJoinHotChat jionHotChat, apolloGameId:" + j);
-          }
-        }
-        if (QLog.isDevelopLevel()) {
-          atbr.a("PttShow", new Object[] { "handleQuickJoinHotChat", paramObject });
-        }
-        paramToServiceMsg = (HotChatManager)this.app.getManager(60);
-        localObject1 = paramToServiceMsg.a();
-        if ((localObject1 != null) && (((List)localObject1).size() > 0))
-        {
-          j = ((List)localObject1).size() - 1;
-          if (j >= 0)
-          {
-            localObject2 = (HotChatInfo)((List)localObject1).get(j);
-            if (localObject2 == null)
-            {
-              j -= 1;
-              continue;
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        long l;
-        notifyUI(1034, true, new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(i), str });
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("HotChatHandler", 2, "handleQuickJoinHotChat, " + m + "," + paramToServiceMsg + "," + paramFromServiceMsg);
-          }
-          return;
-          notifyUI(1034, false, new Object[] { null, null, Integer.valueOf(m), str });
-          paramToServiceMsg = null;
-          paramFromServiceMsg = null;
-        }
-        paramToServiceMsg = null;
-      }
-      label795:
-      int i = 0;
-    }
-  }
-  
-  private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    byte[] arrayOfByte = paramToServiceMsg.extraData.getByteArray("uid");
-    paramToServiceMsg = paramToServiceMsg.extraData.getString("troop_uin");
-    int i = paramFromServiceMsg.getResultCode();
-    notifyUI(1036, false, new Object[] { paramToServiceMsg, arrayOfByte, Integer.valueOf(i), "", "", null });
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandlerQ.hotchat.oidb_0x8b2", 2, "handleGetHotChatAnnounceTimeOutOrError,result= " + i + ",uid=" + arrayOfByte);
-    }
-  }
-  
-  private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    byte[] arrayOfByte = paramToServiceMsg.extraData.getByteArray("uid");
-    for (;;)
-    {
-      try
-      {
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        int j;
-        paramObject = paramToServiceMsg;
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        try
-        {
-          paramToServiceMsg.mergeFrom((byte[])paramObject);
-          paramObject = paramToServiceMsg;
-          j = -1;
-          i = j;
-          if (paramObject != null)
-          {
-            i = j;
-            if (paramObject.uint32_result.has()) {
-              i = paramObject.uint32_result.get();
-            }
-          }
-          if (i != 0) {
-            break label174;
-          }
-          notifyUI(1035, true, new Object[] { arrayOfByte, Integer.valueOf(i), null });
-          if (QLog.isColorLevel()) {
-            QLog.i("HotChatHandler", 2, "handleSetHotChatAnnounce,result= " + i + ",strErr=" + null);
-          }
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-        {
-          int i;
-          break label150;
-        }
-        paramFromServiceMsg = paramFromServiceMsg;
-        paramToServiceMsg = null;
-      }
-      label150:
-      if (QLog.isColorLevel())
-      {
-        QLog.i("HotChatHandler", 2, paramFromServiceMsg.toString());
-        paramObject = paramToServiceMsg;
-        continue;
-        label174:
-        notifyUI(1035, false, new Object[] { arrayOfByte, Integer.valueOf(i), null });
-      }
-    }
-  }
-  
-  private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = paramToServiceMsg.extraData.getString("groupcode");
-    int i = paramFromServiceMsg.getResultCode();
-    notifyUI(1039, false, new Object[] { paramToServiceMsg, Integer.valueOf(i), "", Long.valueOf(0L) });
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "handleGetUserCreateHotChatAnnounceTimeOutOrError,result= " + i + ",groupcode=" + paramToServiceMsg);
+    bdfq localbdfq = bdcd.a(paramBaseActivity, 232, null, paramBaseActivity.getString(paramInt), new ajyh(paramBoolean, paramBaseActivity), null);
+    if (!paramBaseActivity.isFinishing()) {
+      localbdfq.show();
     }
   }
   
   /* Error */
-  private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public int a()
   {
     // Byte code:
-    //   0: aload_1
-    //   1: getfield 314	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   4: ldc_w 688
-    //   7: invokevirtual 692	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   10: astore 8
-    //   12: aload_1
-    //   13: getfield 314	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   16: ldc_w 804
-    //   19: invokevirtual 517	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: astore 9
-    //   24: new 526	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   27: dup
-    //   28: invokespecial 527	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   31: astore_1
-    //   32: aload_1
-    //   33: aload_3
-    //   34: checkcast 529	[B
-    //   37: checkcast 529	[B
-    //   40: invokevirtual 533	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   43: pop
-    //   44: aload_1
-    //   45: astore_2
-    //   46: aload_2
-    //   47: ifnull +528 -> 575
-    //   50: aload_2
-    //   51: getfield 536	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   54: invokevirtual 539	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   57: ifeq +518 -> 575
-    //   60: aload_2
-    //   61: getfield 536	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   64: invokevirtual 542	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   67: istore 4
-    //   69: aconst_null
-    //   70: astore 6
-    //   72: aconst_null
-    //   73: astore 7
-    //   75: aconst_null
-    //   76: astore_3
-    //   77: iload 4
-    //   79: ifne +418 -> 497
-    //   82: new 824	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody
-    //   85: dup
-    //   86: invokespecial 825	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:<init>	()V
-    //   89: astore 6
-    //   91: aload 6
-    //   93: aload_2
-    //   94: getfield 579	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   97: invokevirtual 582	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   100: invokevirtual 583	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   103: invokevirtual 826	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   106: pop
-    //   107: aload 6
-    //   109: getfield 829	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_group_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   112: invokevirtual 830	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   115: ifeq +455 -> 570
-    //   118: aload 6
-    //   120: getfield 829	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_group_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   123: invokevirtual 582	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   126: invokevirtual 833	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   129: astore_1
-    //   130: aload 6
-    //   132: getfield 836	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_jumping_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   135: invokevirtual 830	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   138: ifeq +427 -> 565
-    //   141: aload 6
-    //   143: getfield 836	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_jumping_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   146: invokevirtual 582	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   149: invokevirtual 833	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   152: astore_2
-    //   153: aload 6
-    //   155: getfield 840	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:uint64_administrator_uin	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   158: invokevirtual 843	com/tencent/mobileqq/pb/PBRepeatField:has	()Z
-    //   161: ifeq +12 -> 173
-    //   164: aload 6
-    //   166: getfield 840	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:uint64_administrator_uin	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   169: invokevirtual 844	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
-    //   172: astore_3
-    //   173: aload_1
-    //   174: astore 6
-    //   176: aload_3
-    //   177: astore_1
-    //   178: aload 6
-    //   180: astore_3
-    //   181: aload_0
-    //   182: getfield 423	ajyg:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   185: bipush 60
-    //   187: invokevirtual 429	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   190: checkcast 251	com/tencent/mobileqq/app/HotChatManager
-    //   193: astore 6
-    //   195: aload 6
-    //   197: aload 9
-    //   199: invokevirtual 555	com/tencent/mobileqq/app/HotChatManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/HotChatInfo;
-    //   202: astore 7
-    //   204: aload 7
-    //   206: ifnull +183 -> 389
-    //   209: aload_3
-    //   210: ifnonnull +144 -> 354
-    //   213: aload 7
-    //   215: getfield 847	com/tencent/mobileqq/data/HotChatInfo:memo	Ljava/lang/String;
-    //   218: ifnonnull +148 -> 366
-    //   221: aload 7
-    //   223: aload_3
-    //   224: putfield 847	com/tencent/mobileqq/data/HotChatInfo:memo	Ljava/lang/String;
-    //   227: aload 7
-    //   229: aload_2
-    //   230: putfield 850	com/tencent/mobileqq/data/HotChatInfo:memoUrl	Ljava/lang/String;
-    //   233: new 104	java/util/ArrayList
-    //   236: dup
-    //   237: invokespecial 655	java/util/ArrayList:<init>	()V
-    //   240: astore 10
-    //   242: aload_1
-    //   243: ifnull +132 -> 375
-    //   246: aload_1
-    //   247: invokeinterface 739 1 0
-    //   252: ifle +123 -> 375
-    //   255: iconst_0
-    //   256: istore 5
-    //   258: iload 5
-    //   260: aload_1
-    //   261: invokeinterface 739 1 0
-    //   266: if_icmpge +109 -> 375
-    //   269: aload 10
-    //   271: aload_1
-    //   272: iload 5
-    //   274: invokeinterface 742 2 0
-    //   279: checkcast 815	java/lang/Long
-    //   282: invokestatic 853	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   285: invokevirtual 854	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   288: pop
-    //   289: iload 5
-    //   291: iconst_1
-    //   292: iadd
-    //   293: istore 5
-    //   295: goto -37 -> 258
-    //   298: astore_3
-    //   299: aconst_null
-    //   300: astore_1
-    //   301: aload_1
-    //   302: astore_2
-    //   303: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   306: ifeq -260 -> 46
-    //   309: ldc_w 282
-    //   312: iconst_2
-    //   313: aload_3
-    //   314: invokevirtual 811	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:toString	()Ljava/lang/String;
-    //   317: invokestatic 415	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   320: aload_1
-    //   321: astore_2
-    //   322: goto -276 -> 46
-    //   325: astore_3
-    //   326: aconst_null
-    //   327: astore_1
-    //   328: aconst_null
-    //   329: astore_2
-    //   330: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   333: ifeq +14 -> 347
-    //   336: ldc_w 282
-    //   339: iconst_2
-    //   340: aload_3
-    //   341: invokevirtual 743	java/lang/Exception:toString	()Ljava/lang/String;
-    //   344: invokestatic 415	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   347: aload_1
-    //   348: astore_3
-    //   349: aconst_null
-    //   350: astore_1
-    //   351: goto -170 -> 181
-    //   354: aload_3
-    //   355: aload 7
-    //   357: getfield 847	com/tencent/mobileqq/data/HotChatInfo:memo	Ljava/lang/String;
-    //   360: invokevirtual 303	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   363: ifne -142 -> 221
-    //   366: aload 7
-    //   368: iconst_0
-    //   369: putfield 857	com/tencent/mobileqq/data/HotChatInfo:memoShowed	Z
-    //   372: goto -151 -> 221
-    //   375: aload 7
-    //   377: aload 10
-    //   379: putfield 861	com/tencent/mobileqq/data/HotChatInfo:adminUins	Ljava/util/List;
-    //   382: aload 6
-    //   384: aload 7
-    //   386: invokevirtual 863	com/tencent/mobileqq/app/HotChatManager:a	(Lcom/tencent/mobileqq/data/HotChatInfo;)V
-    //   389: aload_0
-    //   390: sipush 1036
-    //   393: iconst_1
-    //   394: bipush 6
-    //   396: anewarray 435	java/lang/Object
-    //   399: dup
-    //   400: iconst_0
-    //   401: aload 9
-    //   403: aastore
-    //   404: dup
-    //   405: iconst_1
-    //   406: aload 8
-    //   408: aastore
-    //   409: dup
-    //   410: iconst_2
-    //   411: iload 4
-    //   413: invokestatic 448	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   416: aastore
-    //   417: dup
-    //   418: iconst_3
-    //   419: aload_3
-    //   420: aastore
-    //   421: dup
-    //   422: iconst_4
-    //   423: aload_2
-    //   424: aastore
-    //   425: dup
-    //   426: iconst_5
-    //   427: aload_1
-    //   428: aastore
-    //   429: invokevirtual 419	ajyg:notifyUI	(IZLjava/lang/Object;)V
-    //   432: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   435: ifeq +61 -> 496
-    //   438: ldc_w 357
-    //   441: iconst_2
-    //   442: new 284	java/lang/StringBuilder
-    //   445: dup
-    //   446: invokespecial 285	java/lang/StringBuilder:<init>	()V
-    //   449: ldc_w 865
-    //   452: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   455: iload 4
-    //   457: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   460: ldc_w 867
-    //   463: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   466: aload_3
-    //   467: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   470: ldc_w 869
-    //   473: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   476: aload_2
-    //   477: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: ldc_w 871
-    //   483: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   486: aload_1
-    //   487: invokevirtual 648	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   490: invokevirtual 294	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   493: invokestatic 415	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   496: return
-    //   497: aload_0
-    //   498: sipush 1036
-    //   501: iconst_0
-    //   502: bipush 6
-    //   504: anewarray 435	java/lang/Object
-    //   507: dup
-    //   508: iconst_0
-    //   509: aload 9
-    //   511: aastore
-    //   512: dup
-    //   513: iconst_1
-    //   514: aload 8
-    //   516: aastore
-    //   517: dup
-    //   518: iconst_2
-    //   519: iload 4
-    //   521: invokestatic 448	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   524: aastore
-    //   525: dup
-    //   526: iconst_3
-    //   527: aconst_null
-    //   528: aastore
-    //   529: dup
-    //   530: iconst_4
-    //   531: aconst_null
-    //   532: aastore
-    //   533: dup
-    //   534: iconst_5
-    //   535: aconst_null
-    //   536: aastore
-    //   537: invokevirtual 419	ajyg:notifyUI	(IZLjava/lang/Object;)V
-    //   540: aconst_null
-    //   541: astore_1
-    //   542: aload 7
-    //   544: astore_2
-    //   545: aload 6
-    //   547: astore_3
-    //   548: goto -116 -> 432
-    //   551: astore_3
-    //   552: aconst_null
-    //   553: astore_2
-    //   554: goto -224 -> 330
-    //   557: astore_3
-    //   558: goto -228 -> 330
-    //   561: astore_3
-    //   562: goto -261 -> 301
-    //   565: aconst_null
-    //   566: astore_2
-    //   567: goto -414 -> 153
-    //   570: aconst_null
-    //   571: astore_1
-    //   572: goto -442 -> 130
-    //   575: iconst_m1
-    //   576: istore 4
-    //   578: goto -509 -> 69
+    //   0: aload_0
+    //   1: getfield 35	ajyg:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   4: invokevirtual 199	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   7: checkcast 201	android/content/Context
+    //   10: astore 11
+    //   12: aload 11
+    //   14: ifnonnull +7 -> 21
+    //   17: iconst_5
+    //   18: istore_1
+    //   19: iload_1
+    //   20: ireturn
+    //   21: aload_0
+    //   22: getfield 65	ajyg:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   25: ifnull +60 -> 85
+    //   28: aload_0
+    //   29: getfield 65	ajyg:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   32: invokevirtual 206	java/util/ArrayList:isEmpty	()Z
+    //   35: ifne +50 -> 85
+    //   38: aload_0
+    //   39: getfield 35	ajyg:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   42: invokevirtual 199	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   45: checkcast 37	com/tencent/mobileqq/app/BaseActivity
+    //   48: getfield 210	com/tencent/mobileqq/app/BaseActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   51: aload_0
+    //   52: getfield 65	ajyg:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   55: aload_0
+    //   56: getfield 81	ajyg:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   59: aload_0
+    //   60: getfield 89	ajyg:jdField_a_of_type_Int	I
+    //   63: invokestatic 215	bdil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;Ljava/lang/String;I)V
+    //   66: aload_0
+    //   67: getfield 57	ajyg:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   70: ifnull +12 -> 82
+    //   73: aload_0
+    //   74: getfield 57	ajyg:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   77: ldc 217
+    //   79: if_acmpne +6 -> 85
+    //   82: bipush 9
+    //   84: ireturn
+    //   85: sipush 1280
+    //   88: istore_2
+    //   89: invokestatic 223	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   92: invokevirtual 227	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   95: checkcast 229	com/tencent/mobileqq/app/QQAppInterface
+    //   98: astore 7
+    //   100: iload_2
+    //   101: istore_1
+    //   102: aload 7
+    //   104: ifnull +106 -> 210
+    //   107: aload 11
+    //   109: aload 7
+    //   111: invokevirtual 232	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   114: invokestatic 238	bdiv:p	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   117: astore 7
+    //   119: iload_2
+    //   120: istore_1
+    //   121: aload 7
+    //   123: ifnull +87 -> 210
+    //   126: iload_2
+    //   127: istore_1
+    //   128: aload 7
+    //   130: invokevirtual 243	java/lang/String:length	()I
+    //   133: ifle +77 -> 210
+    //   136: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   139: ifeq +29 -> 168
+    //   142: ldc 124
+    //   144: iconst_2
+    //   145: new 126	java/lang/StringBuilder
+    //   148: dup
+    //   149: invokespecial 127	java/lang/StringBuilder:<init>	()V
+    //   152: ldc 245
+    //   154: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: aload 7
+    //   159: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   165: invokestatic 163	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   168: aload 7
+    //   170: ldc 247
+    //   172: invokevirtual 251	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   175: astore 7
+    //   177: iload_2
+    //   178: istore_1
+    //   179: aload 7
+    //   181: ifnull +29 -> 210
+    //   184: aload 7
+    //   186: arraylength
+    //   187: istore_3
+    //   188: iload_2
+    //   189: istore_1
+    //   190: iload_3
+    //   191: iconst_5
+    //   192: if_icmplt +18 -> 210
+    //   195: aload 7
+    //   197: iconst_0
+    //   198: aaload
+    //   199: invokestatic 257	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   202: invokevirtual 260	java/lang/Integer:intValue	()I
+    //   205: istore_1
+    //   206: iload_1
+    //   207: ifle +1219 -> 1426
+    //   210: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   213: ifeq +29 -> 242
+    //   216: ldc 124
+    //   218: iconst_2
+    //   219: new 126	java/lang/StringBuilder
+    //   222: dup
+    //   223: invokespecial 127	java/lang/StringBuilder:<init>	()V
+    //   226: ldc_w 262
+    //   229: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   232: iload_1
+    //   233: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   239: invokestatic 163	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   242: aload 11
+    //   244: aload_0
+    //   245: getfield 57	ajyg:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   248: iload_1
+    //   249: invokestatic 267	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Landroid/content/Context;Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   252: astore 8
+    //   254: aload 8
+    //   256: ifnonnull +1167 -> 1423
+    //   259: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   262: ifeq +12 -> 274
+    //   265: ldc 124
+    //   267: iconst_2
+    //   268: ldc_w 269
+    //   271: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   274: aload_0
+    //   275: getfield 273	ajyg:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   278: ifnull +201 -> 479
+    //   281: aload_0
+    //   282: getfield 273	ajyg:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   285: astore 8
+    //   287: aload_0
+    //   288: aload 8
+    //   290: invokevirtual 278	android/graphics/Bitmap:getWidth	()I
+    //   293: putfield 280	ajyg:jdField_b_of_type_Int	I
+    //   296: aload_0
+    //   297: aload 8
+    //   299: invokevirtual 283	android/graphics/Bitmap:getHeight	()I
+    //   302: putfield 285	ajyg:jdField_c_of_type_Int	I
+    //   305: aload_0
+    //   306: getfield 280	ajyg:jdField_b_of_type_Int	I
+    //   309: ifeq +10 -> 319
+    //   312: aload_0
+    //   313: getfield 285	ajyg:jdField_c_of_type_Int	I
+    //   316: ifne +201 -> 517
+    //   319: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   322: ifeq +12 -> 334
+    //   325: ldc 124
+    //   327: iconst_2
+    //   328: ldc_w 287
+    //   331: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   334: iconst_0
+    //   335: ifeq +11 -> 346
+    //   338: new 289	java/lang/NullPointerException
+    //   341: dup
+    //   342: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   345: athrow
+    //   346: iconst_0
+    //   347: ifeq +11 -> 358
+    //   350: new 289	java/lang/NullPointerException
+    //   353: dup
+    //   354: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   357: athrow
+    //   358: iconst_0
+    //   359: ifeq +11 -> 370
+    //   362: new 289	java/lang/NullPointerException
+    //   365: dup
+    //   366: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   369: athrow
+    //   370: iconst_2
+    //   371: ireturn
+    //   372: astore 7
+    //   374: iload_2
+    //   375: istore_1
+    //   376: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   379: ifeq -169 -> 210
+    //   382: ldc 124
+    //   384: iconst_2
+    //   385: ldc_w 292
+    //   388: aload 7
+    //   390: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   393: iload_2
+    //   394: istore_1
+    //   395: goto -185 -> 210
+    //   398: astore 11
+    //   400: aconst_null
+    //   401: astore 7
+    //   403: aconst_null
+    //   404: astore 10
+    //   406: aload 7
+    //   408: astore 9
+    //   410: aload 10
+    //   412: astore 8
+    //   414: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   417: ifeq +22 -> 439
+    //   420: aload 7
+    //   422: astore 9
+    //   424: aload 10
+    //   426: astore 8
+    //   428: ldc 124
+    //   430: iconst_2
+    //   431: ldc_w 297
+    //   434: aload 11
+    //   436: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   439: iconst_3
+    //   440: istore_1
+    //   441: iconst_0
+    //   442: ifeq +11 -> 453
+    //   445: new 289	java/lang/NullPointerException
+    //   448: dup
+    //   449: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   452: athrow
+    //   453: aload 7
+    //   455: ifnull +8 -> 463
+    //   458: aload 7
+    //   460: invokevirtual 302	java/io/BufferedOutputStream:close	()V
+    //   463: aload 10
+    //   465: ifnull -446 -> 19
+    //   468: aload 10
+    //   470: invokevirtual 305	java/io/FileInputStream:close	()V
+    //   473: iconst_3
+    //   474: ireturn
+    //   475: astore 7
+    //   477: iconst_3
+    //   478: ireturn
+    //   479: iconst_0
+    //   480: ifeq +11 -> 491
+    //   483: new 289	java/lang/NullPointerException
+    //   486: dup
+    //   487: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   490: athrow
+    //   491: iconst_0
+    //   492: ifeq +11 -> 503
+    //   495: new 289	java/lang/NullPointerException
+    //   498: dup
+    //   499: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   502: athrow
+    //   503: iconst_0
+    //   504: ifeq +11 -> 515
+    //   507: new 289	java/lang/NullPointerException
+    //   510: dup
+    //   511: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   514: athrow
+    //   515: iconst_2
+    //   516: ireturn
+    //   517: new 126	java/lang/StringBuilder
+    //   520: dup
+    //   521: invokespecial 127	java/lang/StringBuilder:<init>	()V
+    //   524: ldc 217
+    //   526: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   529: invokestatic 311	java/lang/System:currentTimeMillis	()J
+    //   532: invokevirtual 138	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   535: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   538: ldc_w 313
+    //   541: invokestatic 316	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   544: astore 12
+    //   546: new 126	java/lang/StringBuilder
+    //   549: dup
+    //   550: invokespecial 127	java/lang/StringBuilder:<init>	()V
+    //   553: invokestatic 318	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	()Ljava/lang/String;
+    //   556: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   559: ldc_w 320
+    //   562: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   565: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   568: invokestatic 325	bdcs:c	(Ljava/lang/String;)V
+    //   571: new 327	java/io/File
+    //   574: dup
+    //   575: aload 12
+    //   577: invokespecial 329	java/io/File:<init>	(Ljava/lang/String;)V
+    //   580: astore 13
+    //   582: new 327	java/io/File
+    //   585: dup
+    //   586: aload 13
+    //   588: invokevirtual 332	java/io/File:getParent	()Ljava/lang/String;
+    //   591: invokespecial 329	java/io/File:<init>	(Ljava/lang/String;)V
+    //   594: astore 7
+    //   596: aload 7
+    //   598: invokevirtual 335	java/io/File:exists	()Z
+    //   601: ifeq +11 -> 612
+    //   604: aload 7
+    //   606: invokevirtual 338	java/io/File:isDirectory	()Z
+    //   609: ifne +9 -> 618
+    //   612: aload 7
+    //   614: invokevirtual 341	java/io/File:mkdirs	()Z
+    //   617: pop
+    //   618: aload 13
+    //   620: invokevirtual 335	java/io/File:exists	()Z
+    //   623: ifeq +11 -> 634
+    //   626: aload 13
+    //   628: invokevirtual 344	java/io/File:isFile	()Z
+    //   631: ifne +9 -> 640
+    //   634: aload 13
+    //   636: invokevirtual 347	java/io/File:createNewFile	()Z
+    //   639: pop
+    //   640: new 299	java/io/BufferedOutputStream
+    //   643: dup
+    //   644: new 349	java/io/FileOutputStream
+    //   647: dup
+    //   648: aload 13
+    //   650: invokespecial 352	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   653: invokespecial 355	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   656: astore 7
+    //   658: aload 8
+    //   660: getstatic 361	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   663: bipush 80
+    //   665: aload 7
+    //   667: invokevirtual 365	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   670: pop
+    //   671: aload 7
+    //   673: invokevirtual 368	java/io/BufferedOutputStream:flush	()V
+    //   676: new 304	java/io/FileInputStream
+    //   679: dup
+    //   680: aload 13
+    //   682: invokespecial 369	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   685: astore 10
+    //   687: aload 7
+    //   689: astore 9
+    //   691: aload 10
+    //   693: astore 8
+    //   695: aload 13
+    //   697: invokevirtual 371	java/io/File:length	()J
+    //   700: lstore 4
+    //   702: aload 7
+    //   704: astore 9
+    //   706: aload 10
+    //   708: astore 8
+    //   710: aload_0
+    //   711: aload 10
+    //   713: lload 4
+    //   715: invokestatic 377	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   718: invokestatic 383	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   721: putfield 385	ajyg:g	Ljava/lang/String;
+    //   724: aload 7
+    //   726: astore 9
+    //   728: aload 10
+    //   730: astore 8
+    //   732: aload_0
+    //   733: getfield 385	ajyg:g	Ljava/lang/String;
+    //   736: invokestatic 390	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   739: ifeq +88 -> 827
+    //   742: aload 7
+    //   744: astore 9
+    //   746: aload 10
+    //   748: astore 8
+    //   750: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   753: ifeq +40 -> 793
+    //   756: aload 7
+    //   758: astore 9
+    //   760: aload 10
+    //   762: astore 8
+    //   764: ldc 124
+    //   766: iconst_2
+    //   767: new 126	java/lang/StringBuilder
+    //   770: dup
+    //   771: invokespecial 127	java/lang/StringBuilder:<init>	()V
+    //   774: ldc_w 392
+    //   777: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   780: aload_0
+    //   781: getfield 385	ajyg:g	Ljava/lang/String;
+    //   784: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   787: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   790: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   793: iconst_0
+    //   794: ifeq +11 -> 805
+    //   797: new 289	java/lang/NullPointerException
+    //   800: dup
+    //   801: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   804: athrow
+    //   805: aload 7
+    //   807: ifnull +8 -> 815
+    //   810: aload 7
+    //   812: invokevirtual 302	java/io/BufferedOutputStream:close	()V
+    //   815: aload 10
+    //   817: ifnull +8 -> 825
+    //   820: aload 10
+    //   822: invokevirtual 305	java/io/FileInputStream:close	()V
+    //   825: iconst_5
+    //   826: ireturn
+    //   827: aload 7
+    //   829: astore 9
+    //   831: aload 10
+    //   833: astore 8
+    //   835: aload_0
+    //   836: aload_0
+    //   837: getfield 385	ajyg:g	Ljava/lang/String;
+    //   840: ldc_w 313
+    //   843: invokestatic 316	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   846: putfield 394	ajyg:f	Ljava/lang/String;
+    //   849: aload 7
+    //   851: astore 9
+    //   853: aload 10
+    //   855: astore 8
+    //   857: aload 12
+    //   859: aload_0
+    //   860: getfield 394	ajyg:f	Ljava/lang/String;
+    //   863: invokestatic 397	bdcs:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   866: istore 6
+    //   868: iload 6
+    //   870: ifne +37 -> 907
+    //   873: iconst_0
+    //   874: ifeq +11 -> 885
+    //   877: new 289	java/lang/NullPointerException
+    //   880: dup
+    //   881: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   884: athrow
+    //   885: aload 7
+    //   887: ifnull +8 -> 895
+    //   890: aload 7
+    //   892: invokevirtual 302	java/io/BufferedOutputStream:close	()V
+    //   895: aload 10
+    //   897: ifnull +8 -> 905
+    //   900: aload 10
+    //   902: invokevirtual 305	java/io/FileInputStream:close	()V
+    //   905: iconst_5
+    //   906: ireturn
+    //   907: aload 7
+    //   909: astore 9
+    //   911: aload 10
+    //   913: astore 8
+    //   915: aload 11
+    //   917: lload 4
+    //   919: invokestatic 403	android/text/format/Formatter:formatFileSize	(Landroid/content/Context;J)Ljava/lang/String;
+    //   922: astore 11
+    //   924: aload 7
+    //   926: astore 9
+    //   928: aload 10
+    //   930: astore 8
+    //   932: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   935: ifeq +38 -> 973
+    //   938: aload 7
+    //   940: astore 9
+    //   942: aload 10
+    //   944: astore 8
+    //   946: ldc 124
+    //   948: iconst_2
+    //   949: new 126	java/lang/StringBuilder
+    //   952: dup
+    //   953: invokespecial 127	java/lang/StringBuilder:<init>	()V
+    //   956: ldc_w 405
+    //   959: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   962: aload 11
+    //   964: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   967: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   970: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   973: aload 7
+    //   975: astore 9
+    //   977: aload 10
+    //   979: astore 8
+    //   981: aload_0
+    //   982: getfield 73	ajyg:jdField_b_of_type_Long	J
+    //   985: lconst_0
+    //   986: lcmp
+    //   987: ifne +22 -> 1009
+    //   990: aload 7
+    //   992: astore 9
+    //   994: aload 10
+    //   996: astore 8
+    //   998: aload_0
+    //   999: aload_0
+    //   1000: getfield 57	ajyg:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1003: invokestatic 407	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;)J
+    //   1006: putfield 73	ajyg:jdField_b_of_type_Long	J
+    //   1009: iconst_0
+    //   1010: ifeq +11 -> 1021
+    //   1013: new 289	java/lang/NullPointerException
+    //   1016: dup
+    //   1017: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   1020: athrow
+    //   1021: aload 7
+    //   1023: ifnull +8 -> 1031
+    //   1026: aload 7
+    //   1028: invokevirtual 302	java/io/BufferedOutputStream:close	()V
+    //   1031: aload 10
+    //   1033: ifnull +8 -> 1041
+    //   1036: aload 10
+    //   1038: invokevirtual 305	java/io/FileInputStream:close	()V
+    //   1041: iconst_1
+    //   1042: ireturn
+    //   1043: astore 11
+    //   1045: aconst_null
+    //   1046: astore 7
+    //   1048: aconst_null
+    //   1049: astore 10
+    //   1051: aload 7
+    //   1053: astore 9
+    //   1055: aload 10
+    //   1057: astore 8
+    //   1059: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1062: ifeq +22 -> 1084
+    //   1065: aload 7
+    //   1067: astore 9
+    //   1069: aload 10
+    //   1071: astore 8
+    //   1073: ldc 124
+    //   1075: iconst_2
+    //   1076: ldc_w 297
+    //   1079: aload 11
+    //   1081: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1084: iconst_0
+    //   1085: ifeq +11 -> 1096
+    //   1088: new 289	java/lang/NullPointerException
+    //   1091: dup
+    //   1092: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   1095: athrow
+    //   1096: aload 7
+    //   1098: ifnull +8 -> 1106
+    //   1101: aload 7
+    //   1103: invokevirtual 302	java/io/BufferedOutputStream:close	()V
+    //   1106: aload 10
+    //   1108: ifnull +8 -> 1116
+    //   1111: aload 10
+    //   1113: invokevirtual 305	java/io/FileInputStream:close	()V
+    //   1116: iconst_5
+    //   1117: ireturn
+    //   1118: astore 11
+    //   1120: aconst_null
+    //   1121: astore 7
+    //   1123: aconst_null
+    //   1124: astore 10
+    //   1126: aload 7
+    //   1128: astore 9
+    //   1130: aload 10
+    //   1132: astore 8
+    //   1134: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1137: ifeq +22 -> 1159
+    //   1140: aload 7
+    //   1142: astore 9
+    //   1144: aload 10
+    //   1146: astore 8
+    //   1148: ldc 124
+    //   1150: iconst_2
+    //   1151: ldc_w 409
+    //   1154: aload 11
+    //   1156: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1159: iconst_4
+    //   1160: istore_1
+    //   1161: iconst_0
+    //   1162: ifeq +11 -> 1173
+    //   1165: new 289	java/lang/NullPointerException
+    //   1168: dup
+    //   1169: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   1172: athrow
+    //   1173: aload 7
+    //   1175: ifnull +8 -> 1183
+    //   1178: aload 7
+    //   1180: invokevirtual 302	java/io/BufferedOutputStream:close	()V
+    //   1183: aload 10
+    //   1185: ifnull -1166 -> 19
+    //   1188: aload 10
+    //   1190: invokevirtual 305	java/io/FileInputStream:close	()V
+    //   1193: iconst_4
+    //   1194: ireturn
+    //   1195: astore 7
+    //   1197: iconst_4
+    //   1198: ireturn
+    //   1199: astore 10
+    //   1201: aconst_null
+    //   1202: astore 7
+    //   1204: aconst_null
+    //   1205: astore 8
+    //   1207: iconst_0
+    //   1208: ifeq +11 -> 1219
+    //   1211: new 289	java/lang/NullPointerException
+    //   1214: dup
+    //   1215: invokespecial 290	java/lang/NullPointerException:<init>	()V
+    //   1218: athrow
+    //   1219: aload 7
+    //   1221: ifnull +8 -> 1229
+    //   1224: aload 7
+    //   1226: invokevirtual 302	java/io/BufferedOutputStream:close	()V
+    //   1229: aload 8
+    //   1231: ifnull +8 -> 1239
+    //   1234: aload 8
+    //   1236: invokevirtual 305	java/io/FileInputStream:close	()V
+    //   1239: aload 10
+    //   1241: athrow
+    //   1242: astore 7
+    //   1244: goto -753 -> 491
+    //   1247: astore 7
+    //   1249: goto -746 -> 503
+    //   1252: astore 7
+    //   1254: goto -739 -> 515
+    //   1257: astore 7
+    //   1259: goto -913 -> 346
+    //   1262: astore 7
+    //   1264: goto -906 -> 358
+    //   1267: astore 7
+    //   1269: goto -899 -> 370
+    //   1272: astore 8
+    //   1274: goto -469 -> 805
+    //   1277: astore 7
+    //   1279: goto -464 -> 815
+    //   1282: astore 7
+    //   1284: goto -459 -> 825
+    //   1287: astore 8
+    //   1289: goto -404 -> 885
+    //   1292: astore 7
+    //   1294: goto -399 -> 895
+    //   1297: astore 7
+    //   1299: goto -394 -> 905
+    //   1302: astore 8
+    //   1304: goto -283 -> 1021
+    //   1307: astore 7
+    //   1309: goto -278 -> 1031
+    //   1312: astore 7
+    //   1314: goto -273 -> 1041
+    //   1317: astore 8
+    //   1319: goto -866 -> 453
+    //   1322: astore 7
+    //   1324: goto -861 -> 463
+    //   1327: astore 8
+    //   1329: goto -233 -> 1096
+    //   1332: astore 7
+    //   1334: goto -228 -> 1106
+    //   1337: astore 7
+    //   1339: goto -223 -> 1116
+    //   1342: astore 8
+    //   1344: goto -171 -> 1173
+    //   1347: astore 7
+    //   1349: goto -166 -> 1183
+    //   1352: astore 9
+    //   1354: goto -135 -> 1219
+    //   1357: astore 7
+    //   1359: goto -130 -> 1229
+    //   1362: astore 7
+    //   1364: goto -125 -> 1239
+    //   1367: astore 10
+    //   1369: aconst_null
+    //   1370: astore 8
+    //   1372: goto -165 -> 1207
+    //   1375: astore 10
+    //   1377: aload 9
+    //   1379: astore 7
+    //   1381: goto -174 -> 1207
+    //   1384: astore 11
+    //   1386: aconst_null
+    //   1387: astore 10
+    //   1389: goto -263 -> 1126
+    //   1392: astore 11
+    //   1394: goto -268 -> 1126
+    //   1397: astore 11
+    //   1399: aconst_null
+    //   1400: astore 10
+    //   1402: goto -351 -> 1051
+    //   1405: astore 11
+    //   1407: goto -356 -> 1051
+    //   1410: astore 11
+    //   1412: aconst_null
+    //   1413: astore 10
+    //   1415: goto -1009 -> 406
+    //   1418: astore 11
+    //   1420: goto -1014 -> 406
+    //   1423: goto -1136 -> 287
+    //   1426: sipush 1280
+    //   1429: istore_1
+    //   1430: goto -1220 -> 210
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	581	0	this	ajyg
-    //   0	581	1	paramToServiceMsg	ToServiceMsg
-    //   0	581	2	paramFromServiceMsg	FromServiceMsg
-    //   0	581	3	paramObject	Object
-    //   67	510	4	i	int
-    //   256	38	5	j	int
-    //   70	476	6	localObject	Object
-    //   73	470	7	localHotChatInfo	HotChatInfo
-    //   10	505	8	arrayOfByte	byte[]
-    //   22	488	9	str	String
-    //   240	138	10	localArrayList	ArrayList
+    //   0	1433	0	this	ajyg
+    //   18	1412	1	i	int
+    //   88	306	2	j	int
+    //   187	6	3	k	int
+    //   700	218	4	l	long
+    //   866	3	6	bool	boolean
+    //   98	98	7	localObject1	Object
+    //   372	17	7	localNumberFormatException	java.lang.NumberFormatException
+    //   401	58	7	localObject2	Object
+    //   475	1	7	localIOException1	java.io.IOException
+    //   594	585	7	localObject3	Object
+    //   1195	1	7	localIOException2	java.io.IOException
+    //   1202	23	7	localObject4	Object
+    //   1242	1	7	localIOException3	java.io.IOException
+    //   1247	1	7	localIOException4	java.io.IOException
+    //   1252	1	7	localIOException5	java.io.IOException
+    //   1257	1	7	localIOException6	java.io.IOException
+    //   1262	1	7	localIOException7	java.io.IOException
+    //   1267	1	7	localIOException8	java.io.IOException
+    //   1277	1	7	localIOException9	java.io.IOException
+    //   1282	1	7	localIOException10	java.io.IOException
+    //   1292	1	7	localIOException11	java.io.IOException
+    //   1297	1	7	localIOException12	java.io.IOException
+    //   1307	1	7	localIOException13	java.io.IOException
+    //   1312	1	7	localIOException14	java.io.IOException
+    //   1322	1	7	localIOException15	java.io.IOException
+    //   1332	1	7	localIOException16	java.io.IOException
+    //   1337	1	7	localIOException17	java.io.IOException
+    //   1347	1	7	localIOException18	java.io.IOException
+    //   1357	1	7	localIOException19	java.io.IOException
+    //   1362	1	7	localIOException20	java.io.IOException
+    //   1379	1	7	localObject5	Object
+    //   252	983	8	localObject6	Object
+    //   1272	1	8	localIOException21	java.io.IOException
+    //   1287	1	8	localIOException22	java.io.IOException
+    //   1302	1	8	localIOException23	java.io.IOException
+    //   1317	1	8	localIOException24	java.io.IOException
+    //   1327	1	8	localIOException25	java.io.IOException
+    //   1342	1	8	localIOException26	java.io.IOException
+    //   1370	1	8	localObject7	Object
+    //   408	735	9	localObject8	Object
+    //   1352	26	9	localIOException27	java.io.IOException
+    //   404	785	10	localFileInputStream	java.io.FileInputStream
+    //   1199	41	10	localObject9	Object
+    //   1367	1	10	localObject10	Object
+    //   1375	1	10	localObject11	Object
+    //   1387	27	10	localObject12	Object
+    //   10	233	11	localContext	Context
+    //   398	518	11	localIOException28	java.io.IOException
+    //   922	41	11	str1	String
+    //   1043	37	11	localException1	Exception
+    //   1118	37	11	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   1384	1	11	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   1392	1	11	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   1397	1	11	localException2	Exception
+    //   1405	1	11	localException3	Exception
+    //   1410	1	11	localIOException29	java.io.IOException
+    //   1418	1	11	localIOException30	java.io.IOException
+    //   544	314	12	str2	String
+    //   580	116	13	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   24	32	298	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   91	130	325	java/lang/Exception
-    //   130	153	551	java/lang/Exception
-    //   153	173	557	java/lang/Exception
-    //   32	44	561	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   195	206	372	java/lang/NumberFormatException
+    //   89	100	398	java/io/IOException
+    //   107	119	398	java/io/IOException
+    //   128	168	398	java/io/IOException
+    //   168	177	398	java/io/IOException
+    //   184	188	398	java/io/IOException
+    //   195	206	398	java/io/IOException
+    //   210	242	398	java/io/IOException
+    //   242	254	398	java/io/IOException
+    //   259	274	398	java/io/IOException
+    //   274	287	398	java/io/IOException
+    //   287	319	398	java/io/IOException
+    //   319	334	398	java/io/IOException
+    //   376	393	398	java/io/IOException
+    //   517	612	398	java/io/IOException
+    //   612	618	398	java/io/IOException
+    //   618	634	398	java/io/IOException
+    //   634	640	398	java/io/IOException
+    //   640	658	398	java/io/IOException
+    //   468	473	475	java/io/IOException
+    //   89	100	1043	java/lang/Exception
+    //   107	119	1043	java/lang/Exception
+    //   128	168	1043	java/lang/Exception
+    //   168	177	1043	java/lang/Exception
+    //   184	188	1043	java/lang/Exception
+    //   195	206	1043	java/lang/Exception
+    //   210	242	1043	java/lang/Exception
+    //   242	254	1043	java/lang/Exception
+    //   259	274	1043	java/lang/Exception
+    //   274	287	1043	java/lang/Exception
+    //   287	319	1043	java/lang/Exception
+    //   319	334	1043	java/lang/Exception
+    //   376	393	1043	java/lang/Exception
+    //   517	612	1043	java/lang/Exception
+    //   612	618	1043	java/lang/Exception
+    //   618	634	1043	java/lang/Exception
+    //   634	640	1043	java/lang/Exception
+    //   640	658	1043	java/lang/Exception
+    //   89	100	1118	java/lang/OutOfMemoryError
+    //   107	119	1118	java/lang/OutOfMemoryError
+    //   128	168	1118	java/lang/OutOfMemoryError
+    //   168	177	1118	java/lang/OutOfMemoryError
+    //   184	188	1118	java/lang/OutOfMemoryError
+    //   195	206	1118	java/lang/OutOfMemoryError
+    //   210	242	1118	java/lang/OutOfMemoryError
+    //   242	254	1118	java/lang/OutOfMemoryError
+    //   259	274	1118	java/lang/OutOfMemoryError
+    //   274	287	1118	java/lang/OutOfMemoryError
+    //   287	319	1118	java/lang/OutOfMemoryError
+    //   319	334	1118	java/lang/OutOfMemoryError
+    //   376	393	1118	java/lang/OutOfMemoryError
+    //   517	612	1118	java/lang/OutOfMemoryError
+    //   612	618	1118	java/lang/OutOfMemoryError
+    //   618	634	1118	java/lang/OutOfMemoryError
+    //   634	640	1118	java/lang/OutOfMemoryError
+    //   640	658	1118	java/lang/OutOfMemoryError
+    //   1188	1193	1195	java/io/IOException
+    //   89	100	1199	finally
+    //   107	119	1199	finally
+    //   128	168	1199	finally
+    //   168	177	1199	finally
+    //   184	188	1199	finally
+    //   195	206	1199	finally
+    //   210	242	1199	finally
+    //   242	254	1199	finally
+    //   259	274	1199	finally
+    //   274	287	1199	finally
+    //   287	319	1199	finally
+    //   319	334	1199	finally
+    //   376	393	1199	finally
+    //   517	612	1199	finally
+    //   612	618	1199	finally
+    //   618	634	1199	finally
+    //   634	640	1199	finally
+    //   640	658	1199	finally
+    //   483	491	1242	java/io/IOException
+    //   495	503	1247	java/io/IOException
+    //   507	515	1252	java/io/IOException
+    //   338	346	1257	java/io/IOException
+    //   350	358	1262	java/io/IOException
+    //   362	370	1267	java/io/IOException
+    //   797	805	1272	java/io/IOException
+    //   810	815	1277	java/io/IOException
+    //   820	825	1282	java/io/IOException
+    //   877	885	1287	java/io/IOException
+    //   890	895	1292	java/io/IOException
+    //   900	905	1297	java/io/IOException
+    //   1013	1021	1302	java/io/IOException
+    //   1026	1031	1307	java/io/IOException
+    //   1036	1041	1312	java/io/IOException
+    //   445	453	1317	java/io/IOException
+    //   458	463	1322	java/io/IOException
+    //   1088	1096	1327	java/io/IOException
+    //   1101	1106	1332	java/io/IOException
+    //   1111	1116	1337	java/io/IOException
+    //   1165	1173	1342	java/io/IOException
+    //   1178	1183	1347	java/io/IOException
+    //   1211	1219	1352	java/io/IOException
+    //   1224	1229	1357	java/io/IOException
+    //   1234	1239	1362	java/io/IOException
+    //   658	687	1367	finally
+    //   414	420	1375	finally
+    //   428	439	1375	finally
+    //   695	702	1375	finally
+    //   710	724	1375	finally
+    //   732	742	1375	finally
+    //   750	756	1375	finally
+    //   764	793	1375	finally
+    //   835	849	1375	finally
+    //   857	868	1375	finally
+    //   915	924	1375	finally
+    //   932	938	1375	finally
+    //   946	973	1375	finally
+    //   981	990	1375	finally
+    //   998	1009	1375	finally
+    //   1059	1065	1375	finally
+    //   1073	1084	1375	finally
+    //   1134	1140	1375	finally
+    //   1148	1159	1375	finally
+    //   658	687	1384	java/lang/OutOfMemoryError
+    //   695	702	1392	java/lang/OutOfMemoryError
+    //   710	724	1392	java/lang/OutOfMemoryError
+    //   732	742	1392	java/lang/OutOfMemoryError
+    //   750	756	1392	java/lang/OutOfMemoryError
+    //   764	793	1392	java/lang/OutOfMemoryError
+    //   835	849	1392	java/lang/OutOfMemoryError
+    //   857	868	1392	java/lang/OutOfMemoryError
+    //   915	924	1392	java/lang/OutOfMemoryError
+    //   932	938	1392	java/lang/OutOfMemoryError
+    //   946	973	1392	java/lang/OutOfMemoryError
+    //   981	990	1392	java/lang/OutOfMemoryError
+    //   998	1009	1392	java/lang/OutOfMemoryError
+    //   658	687	1397	java/lang/Exception
+    //   695	702	1405	java/lang/Exception
+    //   710	724	1405	java/lang/Exception
+    //   732	742	1405	java/lang/Exception
+    //   750	756	1405	java/lang/Exception
+    //   764	793	1405	java/lang/Exception
+    //   835	849	1405	java/lang/Exception
+    //   857	868	1405	java/lang/Exception
+    //   915	924	1405	java/lang/Exception
+    //   932	938	1405	java/lang/Exception
+    //   946	973	1405	java/lang/Exception
+    //   981	990	1405	java/lang/Exception
+    //   998	1009	1405	java/lang/Exception
+    //   658	687	1410	java/io/IOException
+    //   695	702	1418	java/io/IOException
+    //   710	724	1418	java/io/IOException
+    //   732	742	1418	java/io/IOException
+    //   750	756	1418	java/io/IOException
+    //   764	793	1418	java/io/IOException
+    //   835	849	1418	java/io/IOException
+    //   857	868	1418	java/io/IOException
+    //   915	924	1418	java/io/IOException
+    //   932	938	1418	java/io/IOException
+    //   946	973	1418	java/io/IOException
+    //   981	990	1418	java/io/IOException
+    //   998	1009	1418	java/io/IOException
   }
   
-  private void i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  protected Integer a(Void... paramVarArgs)
   {
-    paramToServiceMsg = paramToServiceMsg.extraData.getString("groupcode");
-    int i = paramFromServiceMsg.getResultCode();
-    notifyUI(1040, false, new Object[] { paramToServiceMsg, Integer.valueOf(i), "" });
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "handleSetUserCreateHotChatAnnounce,result= " + i + ",groupcode=" + paramToServiceMsg);
-    }
-  }
-  
-  private void i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    localObject = paramToServiceMsg.extraData.getString("groupcode");
-    try
-    {
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      for (;;)
-      {
-        try
-        {
-          label57:
-          oidb_0x88d.RspBody localRspBody;
-          localRspBody.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-          paramFromServiceMsg = paramObject;
-          if (localRspBody.stzrspgroupinfo.has()) {
-            paramFromServiceMsg = localRspBody.stzrspgroupinfo.get();
-          }
-          if ((paramFromServiceMsg != null) && (paramFromServiceMsg.size() > 0))
-          {
-            paramFromServiceMsg = (oidb_0x88d.RspGroupInfo)paramFromServiceMsg.get(0);
-            if (!paramFromServiceMsg.uint32_result.has()) {
-              break label641;
-            }
-            j = paramFromServiceMsg.uint32_result.get();
-            i = j;
-            if (i != 0) {}
-          }
-        }
-        catch (Exception localException2)
-        {
-          HotChatInfo localHotChatInfo;
-          int j;
-          long l;
-          paramFromServiceMsg = null;
-          continue;
-        }
-        try
-        {
-          if (!paramFromServiceMsg.stgroupinfo.has()) {
-            break label636;
-          }
-          paramObject = (oidb_0x88d.GroupInfo)paramFromServiceMsg.stgroupinfo.get();
-          if (paramObject == null) {
-            break label627;
-          }
-          paramFromServiceMsg = localHotChatInfo;
-          if (paramObject.string_group_memo.has()) {
-            paramFromServiceMsg = paramObject.string_group_memo.get().toStringUtf8();
-          }
-        }
-        catch (Exception localException3)
-        {
-          paramFromServiceMsg = null;
-          continue;
-        }
-        try
-        {
-          if (!paramObject.uint64_group_owner.has()) {
-            break;
-          }
-          l = paramObject.uint64_group_owner.get();
-          paramObject = Long.valueOf(l);
-          paramToServiceMsg = paramFromServiceMsg;
-          paramFromServiceMsg = paramObject;
-          try
-          {
-            paramObject = (HotChatManager)this.app.getManager(60);
-            localHotChatInfo = paramObject.a((String)localObject);
-            if (localHotChatInfo != null)
-            {
-              if (paramToServiceMsg == null)
-              {
-                if (localHotChatInfo.memo != null) {
-                  continue;
-                }
-                localHotChatInfo.memo = paramToServiceMsg;
-                localHotChatInfo.memoUrl = null;
-                localHotChatInfo.ownerUin = String.valueOf(paramFromServiceMsg);
-                paramObject.a(localHotChatInfo);
-              }
-            }
-            else
-            {
-              notifyUI(1039, true, new Object[] { localObject, Integer.valueOf(i), paramToServiceMsg, paramFromServiceMsg });
-              j = i;
-              localObject = paramToServiceMsg;
-              paramObject = paramFromServiceMsg;
-              if (QLog.isColorLevel()) {
-                QLog.i("HotChatHandler", 2, "handleGetUserCreateHotChatAnnounce,result= " + j + ",memo=" + (String)localObject + ",troopOwner=" + paramObject);
-              }
-              return;
-              paramFromServiceMsg = paramFromServiceMsg;
-              paramToServiceMsg = null;
-              if (QLog.isColorLevel()) {
-                QLog.i("HotChatHandler", 2, paramFromServiceMsg.toString());
-              }
-              paramFromServiceMsg = paramToServiceMsg;
-              continue;
-            }
-            if (paramToServiceMsg.equals(localHotChatInfo.memo)) {
-              continue;
-            }
-            localHotChatInfo.memoShowed = false;
-            continue;
-            paramObject = paramToServiceMsg;
-          }
-          catch (Exception localException1)
-          {
-            paramObject = paramFromServiceMsg;
-            paramFromServiceMsg = paramToServiceMsg;
-            paramToServiceMsg = paramObject;
-          }
-        }
-        catch (Exception localException4)
-        {
-          continue;
-        }
-        localObject = paramFromServiceMsg;
-        j = i;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HotChatHandler", 2, localException1.toString());
-          paramObject = paramToServiceMsg;
-          localObject = paramFromServiceMsg;
-          j = i;
-          continue;
-          notifyUI(1039, false, new Object[] { localObject, Integer.valueOf(i), null, paramToServiceMsg });
-          localObject = null;
-          paramObject = paramToServiceMsg;
-          j = i;
-          continue;
-          notifyUI(1039, false, new Object[] { localObject, Integer.valueOf(i), null, paramToServiceMsg });
-          localObject = null;
-          paramObject = paramToServiceMsg;
-          j = i;
-        }
-      }
-    }
-    try
-    {
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      paramFromServiceMsg = paramToServiceMsg;
-      if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.uint32_result.has())) {
-        break label644;
-      }
-      i = paramFromServiceMsg.uint32_result.get();
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      break label415;
-      paramObject = paramFromServiceMsg;
-      paramFromServiceMsg = paramToServiceMsg;
-      paramToServiceMsg = paramObject;
-      break label249;
-      paramObject = null;
-      paramFromServiceMsg = paramToServiceMsg;
-      paramToServiceMsg = paramObject;
-      break label249;
-      paramObject = null;
-      break label192;
-      break label166;
-      i = -1;
-      break label57;
-    }
-    localHotChatInfo = null;
-    paramToServiceMsg = Long.valueOf(0L);
-    paramObject = null;
-    if (i == 0) {
-      localRspBody = new oidb_0x88d.RspBody();
-    }
-  }
-  
-  private void j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    String str = paramToServiceMsg.extraData.getString("groupuin");
-    paramToServiceMsg = paramToServiceMsg.extraData.getString("memberuin");
-    int i = paramFromServiceMsg.getResultCode();
-    notifyUI(1037, false, new Object[] { str, Integer.valueOf(i), paramToServiceMsg, null });
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "handleKickHotChatMemberErrorOrTimeout,result= " + i + ",groupuin=" + str + ",memberUin=" + paramToServiceMsg);
-    }
-  }
-  
-  private void j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    str = paramToServiceMsg.extraData.getString("groupcode");
-    try
-    {
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      for (;;)
-      {
-        label55:
-        paramToServiceMsg = null;
-        if (QLog.isColorLevel()) {
-          QLog.i("HotChatHandler", 2, paramFromServiceMsg.toString());
-        }
-        continue;
-        paramFromServiceMsg = new oidb_0x89a.RspBody();
-        try
-        {
-          paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          boolean bool = paramFromServiceMsg.str_errorinfo.has();
-          if (!bool) {}
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("HotChatHandler", 2, paramToServiceMsg.toString());
-            }
-          }
-        }
-        notifyUI(1040, false, new Object[] { str, Integer.valueOf(i), null });
-      }
-    }
-    try
-    {
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      if ((paramToServiceMsg == null) || (!paramToServiceMsg.uint32_result.has())) {
-        break label251;
-      }
-      i = paramToServiceMsg.uint32_result.get();
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      break label137;
-      i = -1;
-      break label55;
-    }
-    if (i == 0)
-    {
-      notifyUI(1040, true, new Object[] { str, Integer.valueOf(i), null });
-      if (QLog.isColorLevel()) {
-        QLog.i("HotChatHandler", 2, "handleSetUserCreateHotChatAnnounce,result= " + i + ",strErr=" + null);
-      }
-      return;
-    }
-  }
-  
-  private void k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    String str = paramToServiceMsg.extraData.getString("groupuin");
-    paramToServiceMsg = paramToServiceMsg.extraData.getString("groupcode");
-    int i = paramFromServiceMsg.getResultCode();
-    notifyUI(1038, false, new Object[] { str, Integer.valueOf(i), paramToServiceMsg });
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "handleDismissHotChatTimeOutOrError,result= " + i + ",groupuin=" + str + ",groupcode=" + paramToServiceMsg);
-    }
-  }
-  
-  private void k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    str1 = paramToServiceMsg.extraData.getString("groupuin");
-    str2 = paramToServiceMsg.extraData.getString("groupcode");
-    str3 = paramToServiceMsg.extraData.getString("memberuin");
-    str4 = paramToServiceMsg.extraData.getString("nickname");
-    try
-    {
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-    }
-    catch (InvalidProtocolBufferMicroException paramObject)
-    {
-      for (;;)
-      {
-        try
-        {
-          label93:
-          paramToServiceMsg.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-          if (paramToServiceMsg.msg_kick_visitor.has()) {
-            paramToServiceMsg = (oidb_0x823.KickPublicGroupVisitorRspBody)paramToServiceMsg.msg_kick_visitor.get();
-          }
-          akoi.a(this.app, String.valueOf(str2), str4 + BaseApplicationImpl.getContext().getString(2131693322), 1, false, true);
-          notifyUI(1052, true, new Object[] { str1, Integer.valueOf(i), str3, null });
-          if (QLog.isColorLevel()) {
-            QLog.i("HotChatHandlerQ.hotchat.hotchat_kick_mem_by_global_admin", 2, "handleKickHotChatMemberByGlobalAmdminResp,result= " + i + ",groupuin=" + str1 + ",memberUin=" + str3 + ",strErr=" + null);
-          }
-          return;
-          paramObject = paramObject;
-          paramToServiceMsg = null;
-          paramFromServiceMsg = paramToServiceMsg;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("HotChatHandler", 2, paramObject.toString());
-          paramFromServiceMsg = paramToServiceMsg;
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("HotChatHandler", 2, paramToServiceMsg.toString());
-          continue;
-        }
-        notifyUI(1052, false, new Object[] { str1, Integer.valueOf(i), str3, null });
-      }
-    }
-    try
-    {
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      paramFromServiceMsg = paramToServiceMsg;
-      if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.uint32_result.has())) {
-        break label374;
-      }
-      i = paramFromServiceMsg.uint32_result.get();
-    }
-    catch (InvalidProtocolBufferMicroException paramObject)
-    {
-      break label288;
-      i = -1;
-      break label93;
-    }
-    if (i == 0) {
-      paramToServiceMsg = new oidb_0x823.RspBody();
-    }
-  }
-  
-  private void l(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    str1 = paramToServiceMsg.extraData.getString("groupuin");
-    String str3 = paramToServiceMsg.extraData.getString("groupcode");
-    str2 = paramToServiceMsg.extraData.getString("memberuin");
-    String str4 = paramToServiceMsg.extraData.getString("nickname");
-    try
-    {
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-    }
-    catch (InvalidProtocolBufferMicroException paramObject)
-    {
-      for (;;)
-      {
-        label93:
-        paramToServiceMsg = null;
-        paramFromServiceMsg = paramToServiceMsg;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HotChatHandler", 2, paramObject.toString());
-          paramFromServiceMsg = paramToServiceMsg;
-          continue;
-          notifyUI(1037, false, new Object[] { str1, Integer.valueOf(i), str2, null });
-          paramToServiceMsg = null;
-        }
-      }
-    }
-    try
-    {
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      paramFromServiceMsg = paramToServiceMsg;
-      if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.uint32_result.has())) {
-        break label377;
-      }
-      i = paramFromServiceMsg.uint32_result.get();
-    }
-    catch (InvalidProtocolBufferMicroException paramObject)
-    {
-      break label287;
-      i = -1;
-      break label93;
-    }
-    paramToServiceMsg = null;
-    if (i == 0)
-    {
-      paramObject = new oidb_0x89b.RspBody();
-      try
-      {
-        paramObject.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-        if (paramObject.str_err_msg.has()) {
-          paramToServiceMsg = paramObject.str_err_msg.get();
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("HotChatHandler", 2, paramToServiceMsg.toString());
-          }
-          paramToServiceMsg = null;
-        }
-      }
-      akoi.a(this.app, String.valueOf(str3), str4 + BaseApplicationImpl.getContext().getString(2131693322), 1, false, true);
-      notifyUI(1037, true, new Object[] { str1, Integer.valueOf(i), str2, paramToServiceMsg });
-      if (QLog.isColorLevel()) {
-        QLog.i("HotChatHandler", 2, "handleKickHotChatMemberResp,result= " + i + ",groupuin=" + str1 + ",memberUin=" + str2 + ",strErr=" + paramToServiceMsg);
-      }
-      return;
-    }
-  }
-  
-  private void m(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    str = paramToServiceMsg.extraData.getString("groupcode");
-    try
-    {
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      for (;;)
-      {
-        label57:
-        paramToServiceMsg = null;
-        if (QLog.isColorLevel()) {
-          QLog.i("HotChatHandler", 2, paramFromServiceMsg.toString());
-        }
-        continue;
-        notifyUI(1038, false, new Object[] { str, Integer.valueOf(i), null });
-      }
-    }
-    try
-    {
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      paramFromServiceMsg = null;
-      if ((paramToServiceMsg == null) || (!paramToServiceMsg.uint32_result.has())) {
-        break label297;
-      }
-      i = paramToServiceMsg.uint32_result.get();
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      break label218;
-      i = -1;
-      break label57;
-    }
-    if (i == 0)
-    {
-      paramObject = new oidb_0xa81.RspBody();
-      try
-      {
-        paramObject.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-        paramToServiceMsg = paramFromServiceMsg;
-        if (paramObject.str_err_msg.has()) {
-          paramToServiceMsg = paramObject.str_err_msg.get().toStringUtf8();
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("HotChatHandler", 2, paramToServiceMsg.toString());
-          }
-          paramToServiceMsg = null;
-        }
-      }
-      paramFromServiceMsg = (HotChatManager)this.app.getManager(60);
-      paramObject = paramFromServiceMsg.a(str);
-      if (paramObject != null) {
-        paramFromServiceMsg.a(paramObject, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL);
-      }
-      notifyUI(1038, true, new Object[] { str, Integer.valueOf(i), paramToServiceMsg });
-      if (QLog.isColorLevel()) {
-        QLog.i("HotChatHandler", 2, "handleDismissHotChat,result= " + i + ",groupcode=" + str);
-      }
-      return;
-    }
-  }
-  
-  private void n(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      return;
-    }
-    String str = paramToServiceMsg.extraData.getString("troopCode");
-    boolean bool = paramToServiceMsg.extraData.getBoolean("isHotChat");
-    paramToServiceMsg = new Object[3];
-    paramToServiceMsg[0] = str;
-    paramToServiceMsg[1] = Integer.valueOf(-1);
-    paramToServiceMsg[2] = Boolean.valueOf(bool);
-    if (QLog.isColorLevel()) {
-      QLog.d("HotChatHandler", 2, "handleGetTroopInfo isHotChat = " + bool);
-    }
-    if ((paramObject == null) || (paramFromServiceMsg.getResultCode() != 1000))
-    {
-      notifyUI(1047, false, paramToServiceMsg);
-      return;
-    }
-    paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-      if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.uint32_result.has()) || (paramFromServiceMsg.uint32_result.get() != 0) || (!paramFromServiceMsg.bytes_bodybuffer.has()) || (paramFromServiceMsg.bytes_bodybuffer.get() == null))
-      {
-        notifyUI(1047, false, paramToServiceMsg);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      notifyUI(1047, false, paramToServiceMsg);
-      return;
-    }
-    paramObject = new oidb_0x88d.RspBody();
-    int i;
-    try
-    {
-      paramObject.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-      paramFromServiceMsg = paramObject.stzrspgroupinfo.get();
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.size() <= 0)) {
-        break label365;
-      }
-      paramFromServiceMsg = (oidb_0x88d.RspGroupInfo)paramFromServiceMsg.get(0);
-      i = paramFromServiceMsg.uint32_result.get();
-      if (i == 0)
-      {
-        notifyUI(1047, true, new Object[] { str, Integer.valueOf(i), Boolean.valueOf(bool), (oidb_0x88d.GroupInfo)paramFromServiceMsg.stgroupinfo.get() });
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      notifyUI(1047, false, paramToServiceMsg);
-      return;
-    }
-    notifyUI(1047, false, new Object[] { str, Integer.valueOf(i), Boolean.valueOf(bool) });
-    return;
-    label365:
-    notifyUI(1047, false, paramToServiceMsg);
-  }
-  
-  private void o(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramToServiceMsg = Long.valueOf(paramToServiceMsg.extraData.getLong("uitag"));
-    if ((paramFromServiceMsg == null) || (paramObject == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
-      notifyUI(1046, false, new Object[] { Integer.valueOf(1), null, paramToServiceMsg });
-    }
-    for (;;)
-    {
-      return;
-      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramObject = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramObject == null) || (!paramObject.uint32_result.has()) || (!paramObject.bytes_bodybuffer.has()) || (paramObject.bytes_bodybuffer.get() == null))
-        {
-          notifyUI(1046, false, new Object[] { Integer.valueOf(1), null, paramToServiceMsg });
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        notifyUI(1046, false, new Object[] { Integer.valueOf(1), null, paramToServiceMsg });
-        return;
-      }
-      paramFromServiceMsg = new cmd0x897.RspBody();
-      try
-      {
-        paramFromServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
-        if (paramFromServiceMsg.uint32_result.has()) {
-          if (paramFromServiceMsg.uint32_result.get() == 0)
-          {
-            if (!paramFromServiceMsg.rpt_msg_grp_visitor_info.isEmpty()) {
-              notifyUI(1046, true, new Object[] { Integer.valueOf(0), paramFromServiceMsg.rpt_msg_grp_visitor_info.get(), paramToServiceMsg });
-            }
-            while (QLog.isColorLevel())
-            {
-              int i = -1;
-              if (paramFromServiceMsg.uint32_result.has()) {
-                i = paramFromServiceMsg.uint32_result.get();
-              }
-              QLog.i("HotChatHandler", 2, "handleGetHotChatTroopMemberList.result=" + i);
-              return;
-              notifyUI(1046, false, new Object[] { Integer.valueOf(2), null, paramToServiceMsg });
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramObject)
-      {
-        for (;;)
-        {
-          notifyUI(1046, false, new Object[] { Integer.valueOf(1), null, paramToServiceMsg });
-          continue;
-          notifyUI(1046, false, new Object[] { Integer.valueOf(3), null, paramToServiceMsg });
-          continue;
-          notifyUI(1046, false, new Object[] { Integer.valueOf(1), null, paramToServiceMsg });
-        }
-      }
-    }
-  }
-  
-  private void p(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    byte[] arrayOfByte = paramToServiceMsg.extraData.getByteArray("uid");
-    String str = paramToServiceMsg.extraData.getString("troop_uin");
-    ArrayList localArrayList = paramToServiceMsg.extraData.getStringArrayList("uins");
-    int k = paramToServiceMsg.extraData.getInt("serviceType");
-    try
-    {
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-    }
-    catch (InvalidProtocolBufferMicroException paramObject)
-    {
-      try
-      {
-        label93:
-        label224:
-        do
-        {
-          paramToServiceMsg.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-          paramToServiceMsg = (HotChatManager)this.app.getManager(60);
-          paramFromServiceMsg = paramToServiceMsg.a(str);
-          if (paramFromServiceMsg == null) {
-            break label308;
-          }
-          if ((localArrayList == null) || (localArrayList.size() <= 0)) {
-            break label303;
-          }
-          j = 0;
-          for (;;)
-          {
-            if (j >= localArrayList.size()) {
-              break label303;
-            }
-            paramObject = (String)localArrayList.get(j);
-            if ((k != 5) || (paramFromServiceMsg.adminUins.contains(paramObject))) {
-              break;
-            }
-            paramFromServiceMsg.adminUins.add(paramObject);
-            j += 1;
-          }
-          paramObject = paramObject;
-          paramToServiceMsg = null;
-          paramFromServiceMsg = paramToServiceMsg;
-        } while (!QLog.isColorLevel());
-        QLog.i("HotChatHandler", 2, paramObject.toString());
-        paramFromServiceMsg = paramToServiceMsg;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.i("HotChatHandler", 2, paramToServiceMsg.toString());
-            continue;
-            if ((k == 6) && (paramFromServiceMsg.adminUins.contains(paramObject))) {
-              paramFromServiceMsg.adminUins.remove(paramObject);
-            }
-          }
-        }
-        label303:
-        paramToServiceMsg.a(paramFromServiceMsg);
-        label308:
-        notifyUI(1050, true, new Object[] { str, arrayOfByte, Integer.valueOf(i), Integer.valueOf(k), localArrayList });
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("HotChatHandlerQ.hotchat.setadmin", 2, "handleSetHotChatAdminFlag==>,operaUins=" + localArrayList);
-      }
-      return;
-    }
-    try
-    {
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      paramFromServiceMsg = paramToServiceMsg;
-      if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.uint32_result.has())) {
-        break label436;
-      }
-      i = paramFromServiceMsg.uint32_result.get();
-    }
-    catch (InvalidProtocolBufferMicroException paramObject)
-    {
-      break label224;
-      i = -1;
-      break label93;
-    }
-    if (i == 0) {
-      paramToServiceMsg = new oidb_0x8b2.RspBody();
-    }
-    for (;;)
-    {
-      int j;
-      notifyUI(1050, false, new Object[] { str, arrayOfByte, Integer.valueOf(i), Integer.valueOf(k), localArrayList });
-    }
-  }
-  
-  private void q(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.hotchat.remainCount", 2, "req == null || res == null");
-      }
-      return;
-    }
-    String str = paramToServiceMsg.extraData.getString("troopCode");
-    Object[] arrayOfObject = new Object[4];
-    arrayOfObject[0] = str;
-    arrayOfObject[1] = Boolean.valueOf(false);
-    arrayOfObject[2] = "";
-    arrayOfObject[3] = "";
-    if (paramObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.hotchat.remainCount", 2, "time out or error");
-      }
-      notifyUI(1053, false, arrayOfObject);
-      return;
-    }
-    if (paramFromServiceMsg.getResultCode() != 1000)
-    {
-      notifyUI(1053, false, arrayOfObject);
-      return;
-    }
-    paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      paramToServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
-      if ((!paramToServiceMsg.uint32_result.has()) || (paramToServiceMsg.uint32_result.get() != 0) || (!paramToServiceMsg.bytes_bodybuffer.has()) || (paramToServiceMsg.bytes_bodybuffer.get() == null))
-      {
-        notifyUI(1053, false, arrayOfObject);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-    {
-      notifyUI(1053, false, arrayOfObject);
-      return;
-    }
-    paramObject = new cmd0x8a7.RspBody();
-    for (;;)
-    {
-      try
-      {
-        paramObject.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-        boolean bool = paramObject.bool_can_at_all.get();
-        if (!paramObject.bytes_prompt_msg_1.has()) {
-          break label483;
-        }
-        paramToServiceMsg = paramObject.bytes_prompt_msg_1.get().toStringUtf8();
-        if (!paramObject.bytes_prompt_msg_2.has()) {
-          break label476;
-        }
-        paramFromServiceMsg = paramObject.bytes_prompt_msg_2.get().toStringUtf8();
-        if (!paramObject.uint32_remain_at_all_count_for_group.has()) {
-          break label470;
-        }
-        i = paramObject.uint32_remain_at_all_count_for_group.get();
-        if (paramObject.uint32_remain_at_all_count_for_uin.has())
-        {
-          j = paramObject.uint32_remain_at_all_count_for_uin.get();
-          if (QLog.isColorLevel())
-          {
-            paramObject = new StringBuilder();
-            paramObject.append("handleGetAtAllRemainCountInfo:").append("troopCode:").append(str).append(",groupRemainCnt:").append(i).append(",memberRemainCount:").append(j).append(", beCanAtAll:").append(bool).append(",tips1:").append(paramToServiceMsg).append(",tips2:").append(paramFromServiceMsg);
-            QLog.d("Q.hotchat.remainCount", 2, paramObject.toString());
-          }
-          notifyUI(1053, true, new Object[] { str, Boolean.valueOf(bool), paramToServiceMsg, paramFromServiceMsg });
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        notifyUI(1053, false, arrayOfObject);
-        return;
-      }
-      int j = 0;
-      continue;
-      label470:
-      int i = 0;
-      continue;
-      label476:
-      paramFromServiceMsg = "";
-      continue;
-      label483:
-      paramToServiceMsg = "";
-    }
+    return Integer.valueOf(a());
   }
   
   public void a()
   {
-    a(0);
-    if (bbkb.h(this.app.getApplication(), getCurrentAccountUin())) {
-      a(2);
-    }
-    if (bbkb.g(this.app.getApplication(), getCurrentAccountUin())) {
-      ((bciq)this.app.a(107)).a(new ajyh(this));
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      atbr.a("HotChatHandler", new Object[] { "getMyHotChatList()", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-    }
-    long l = Long.parseLong(this.app.getAccount());
-    Object localObject = new GetJoinedHotChatList.ReqBody();
-    ((GetJoinedHotChatList.ReqBody)localObject).uint64_uin.set(l);
-    ((GetJoinedHotChatList.ReqBody)localObject).uint32_req_type.set(3);
-    localObject = makeOIDBPkg("OidbSvc.0x8a4", 2212, paramInt, ((GetJoinedHotChatList.ReqBody)localObject).toByteArray());
-    ((ToServiceMsg)localObject).setTimeout(10000L);
-    ((ToServiceMsg)localObject).extraData.putInt("serviceType", paramInt);
-    sendPbReq((ToServiceMsg)localObject);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    oidb_0x81f.ReqBody localReqBody = new oidb_0x81f.ReqBody();
-    localReqBody.uint64_uin.set(paramLong);
-    try
+    Intent localIntent = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getIntent();
+    localIntent.putExtra("uin", this.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("uintype", this.jdField_a_of_type_Int);
+    localIntent.putExtra("file_send_path", this.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("file_send_size", this.jdField_a_of_type_Long);
+    localIntent.putExtra("file_send_duration", (int)(this.jdField_b_of_type_Long / 1000L));
+    localIntent.putExtra("file_source", this.jdField_d_of_type_JavaLangString);
+    localIntent.putExtra("thumbfile_send_path", this.f);
+    localIntent.putExtra("file_shortvideo_md5", this.jdField_e_of_type_JavaLangString);
+    localIntent.putExtra("thumbfile_send_width", this.jdField_b_of_type_Int);
+    localIntent.putExtra("thumbfile_send_height", this.jdField_c_of_type_Int);
+    localIntent.putExtra("thumbfile_md5", this.g);
+    localIntent.putExtra("file_width", this.jdField_d_of_type_Int);
+    localIntent.putExtra("file_height", this.jdField_e_of_type_Int);
+    localIntent.putExtra("file_raw_size", this.jdField_b_of_type_Boolean);
+    Object localObject1;
+    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(ShortVideoPreviewActivity.class.getName())))
     {
-      localReqBody.gc.set(Long.parseLong(paramString));
-      paramString = new oidb_0x81f.GetAuthDataReq();
-      paramString.uint32_auth.set(1);
-      localReqBody.msg_auth_data.set(paramString);
-      paramString = makeOIDBPkg("OidbSvc.0x81f", 2079, 0, localReqBody.toByteArray());
-      paramString.extraData.putLong("uin", paramLong);
-      sendPbReq(paramString);
+      localIntent.putExtra("file_send_business_type", 2);
+      localObject1 = ayyu.a(0, 2);
+      ((ayzo)localObject1).a(ayyu.a(2, localIntent, (ayzo)localObject1));
+      ayyu.a((ayzo)localObject1, ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app);
+    }
+    for (;;)
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        localObject1 = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getIntent();
+        if (((Intent)localObject1).getBooleanExtra("start_init_activity_after_sended", true))
+        {
+          localObject2 = ((Intent)localObject1).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+          localIntent.setClassName(((Intent)localObject1).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME"), (String)localObject2);
+          if (QLog.isColorLevel()) {
+            QLog.d("SendVideoActivity", 2, "SendVideoTask onPostExecute() INIT_ACTIVITY_CLASS_NAME=" + (String)localObject2);
+          }
+          localIntent.addFlags(603979776);
+          ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(localIntent);
+        }
+        ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+        ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).overridePendingTransition(0, 2130771980);
+      }
+      return;
+      localIntent.putExtra("file_send_business_type", 0);
+      Object localObject2 = ayyu.a(0, 0);
+      localObject1 = ayyu.a(0, localIntent, (ayzo)localObject2);
+      ((ayzo)localObject2).a((azae)localObject1);
+      localObject2 = new ayye(((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app);
+      localObject1 = ((ayye)localObject2).a((azae)localObject1);
+      if (((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app != null) {
+        ((axso)((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app.getManager(326)).a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).uniseq);
+      }
+      ((ayye)localObject2).a((MessageRecord)localObject1);
+    }
+  }
+  
+  void a(Context paramContext, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    catch (NumberFormatException localNumberFormatException)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("HotChatHandler", 2, "getGlobalAdmin, NumberFormatException. troopUin:" + paramString);
+      try
+      {
+        if (this.jdField_a_of_type_AndroidAppProgressDialog == null) {
+          break label63;
+        }
+        b();
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+        if (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
+          break;
+        }
+        this.jdField_a_of_type_AndroidAppProgressDialog.show();
+        return;
+      }
+      catch (Throwable paramContext) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("SendVideoActivity", 2, "showProgressDialog", paramContext);
+      return;
+      label63:
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131755801);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
+      this.jdField_a_of_type_AndroidAppProgressDialog.show();
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559438);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371874));
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString, List<Long> paramList, int paramInt)
+  protected void a(Integer paramInteger)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HotChatHandlerQ.hotchat.setadmin", 2, "setHotChatAdminFlag:|serviceType:" + paramInt);
+    super.onPostExecute(paramInteger);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
     }
-    if ((paramList == null) || (paramList.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.e("HotChatHandlerQ.hotchat.setadmin", 2, "memberUins is empty!");
-      }
+    b();
+    switch (paramInteger.intValue())
+    {
+    case 7: 
+    case 8: 
+    default: 
+      return;
+    case 1: 
+      a();
+      return;
+    case 2: 
+    case 6: 
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131720140, this.jdField_a_of_type_Boolean);
+      return;
+    case 3: 
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131720135, this.jdField_a_of_type_Boolean);
+      return;
+    case 4: 
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131720105, this.jdField_a_of_type_Boolean);
+      return;
+    case 5: 
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131720132, this.jdField_a_of_type_Boolean);
+      return;
     }
-    ToServiceMsg localToServiceMsg;
+    ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+  }
+  
+  void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {}
     for (;;)
     {
       return;
-      if ((paramInt != 5) && (paramInt != 6))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("HotChatHandlerQ.hotchat.setadmin", 2, "serviceType is not correct!");
-        }
-      }
-      else
-      {
-        oidb_0x8b2.ReqBody localReqBody = new oidb_0x8b2.ReqBody();
-        try
-        {
-          localReqBody.uint64_group_code.set(Long.parseLong(paramString));
-          HotChatInfo localHotChatInfo = ((HotChatManager)paramQQAppInterface.getManager(60)).a(paramString);
-          localToServiceMsg = null;
-          paramQQAppInterface = localToServiceMsg;
-          if (localHotChatInfo != null)
-          {
-            paramQQAppInterface = localToServiceMsg;
-            if (localHotChatInfo.uuid != null)
-            {
-              paramQQAppInterface = localHotChatInfo.uuid.getBytes();
-              localReqBody.string_hot_group_id.set(ByteStringMicro.copyFrom(paramQQAppInterface));
-            }
-          }
-          localReqBody.uint64_administrator_uin.set(paramList);
-          localToServiceMsg = makeOIDBPkg("OidbSvc.0x8b2", 2226, paramInt, localReqBody.toByteArray());
-          localToServiceMsg.extraData.putInt("serviceType", paramInt);
-          localToServiceMsg.extraData.putByteArray("uid", paramQQAppInterface);
-          localToServiceMsg.extraData.putString("troop_uin", paramString);
-          paramQQAppInterface = new ArrayList();
-          paramInt = 0;
-          while (paramInt < paramList.size())
-          {
-            paramQQAppInterface.add(paramList.get(paramInt) + "");
-            paramInt += 1;
-          }
-          if (!QLog.isColorLevel()) {}
-        }
-        catch (NumberFormatException paramQQAppInterface) {}
-      }
-    }
-    QLog.e("HotChatHandlerQ.hotchat.setadmin", 2, "NumberFormatException ,troopUinis not correct," + paramString);
-    return;
-    localToServiceMsg.extraData.putStringArrayList("uins", paramQQAppInterface);
-    sendPbReq(localToServiceMsg);
-  }
-  
-  public void a(HotChatInfo paramHotChatInfo, HotChatManager.HotChatStateWrapper paramHotChatStateWrapper)
-  {
-    if (QLog.isColorLevel()) {
-      atbr.a("HotChatHandler", new Object[] { "exitHotChat", paramHotChatInfo, paramHotChatStateWrapper });
-    }
-    if (paramHotChatInfo == null)
-    {
-      notifyUI(1033, false, new Object[] { "", jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject = new oidb_0x89b.ExitPublicGroupReqBody();
-    ((oidb_0x89b.ExitPublicGroupReqBody)localObject).uint64_visitor_uin.set(ajsx.a(this.app.getCurrentAccountUin()));
-    oidb_0x89b.ReqBody localReqBody = new oidb_0x89b.ReqBody();
-    localReqBody.uint64_group_code.set(ajsx.a(paramHotChatInfo.troopUin));
-    localReqBody.uint32_req_type.set(5);
-    localReqBody.msg_exit_group.set((MessageMicro)localObject);
-    localObject = makeOIDBPkg("OidbSvc.0x89b_3", 2203, 3, localReqBody.toByteArray(), 10000L);
-    ((ToServiceMsg)localObject).extraData.putBoolean("isJoin", false);
-    ((ToServiceMsg)localObject).extraData.putString("troopUin", paramHotChatInfo.troopUin);
-    ((ToServiceMsg)localObject).extraData.putSerializable("targetHotChatState", paramHotChatStateWrapper);
-    ((ToServiceMsg)localObject).setTimeout(10000L);
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  /* Error */
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    // Byte code:
-    //   0: new 104	java/util/ArrayList
-    //   3: dup
-    //   4: invokespecial 655	java/util/ArrayList:<init>	()V
-    //   7: astore 5
-    //   9: new 104	java/util/ArrayList
-    //   12: dup
-    //   13: invokespecial 655	java/util/ArrayList:<init>	()V
-    //   16: astore 6
-    //   18: aload_1
-    //   19: ifnull +17 -> 36
-    //   22: aload_3
-    //   23: ifnull +13 -> 36
-    //   26: aload_2
-    //   27: invokevirtual 524	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   30: sipush 1000
-    //   33: if_icmpeq +26 -> 59
-    //   36: aload_0
-    //   37: sipush 1058
-    //   40: iconst_0
-    //   41: iconst_2
-    //   42: anewarray 435	java/lang/Object
-    //   45: dup
-    //   46: iconst_0
-    //   47: aload 5
-    //   49: aastore
-    //   50: dup
-    //   51: iconst_1
-    //   52: aload 6
-    //   54: aastore
-    //   55: invokevirtual 419	ajyg:notifyUI	(IZLjava/lang/Object;)V
-    //   58: return
-    //   59: new 526	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   62: dup
-    //   63: invokespecial 527	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   66: astore_1
-    //   67: aload_1
-    //   68: aload_3
-    //   69: checkcast 529	[B
-    //   72: checkcast 529	[B
-    //   75: invokevirtual 533	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   78: pop
-    //   79: aload_1
-    //   80: ifnull +178 -> 258
-    //   83: aload_1
-    //   84: getfield 536	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   87: invokevirtual 539	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   90: ifeq +168 -> 258
-    //   93: aload_1
-    //   94: getfield 536	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   97: invokevirtual 542	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   100: ifne -42 -> 58
-    //   103: new 1218	tencent/im/oidb/cmd0x62c/oidb_cmd0x62c$RspBody
-    //   106: dup
-    //   107: invokespecial 1219	tencent/im/oidb/cmd0x62c/oidb_cmd0x62c$RspBody:<init>	()V
-    //   110: astore_2
-    //   111: aload_2
-    //   112: aload_1
-    //   113: getfield 579	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   116: invokevirtual 582	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   119: invokevirtual 583	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   122: invokevirtual 1220	tencent/im/oidb/cmd0x62c/oidb_cmd0x62c$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   125: pop
-    //   126: new 104	java/util/ArrayList
-    //   129: dup
-    //   130: invokespecial 655	java/util/ArrayList:<init>	()V
-    //   133: pop
-    //   134: aload_2
-    //   135: getfield 1223	tencent/im/oidb/cmd0x62c/oidb_cmd0x62c$RspBody:msg_tinyid_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   138: invokevirtual 654	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   141: astore_1
-    //   142: iconst_0
-    //   143: istore 4
-    //   145: iload 4
-    //   147: aload_1
-    //   148: invokeinterface 739 1 0
-    //   153: if_icmpge +128 -> 281
-    //   156: aload 6
-    //   158: aload_1
-    //   159: iload 4
-    //   161: invokeinterface 742 2 0
-    //   166: checkcast 1225	tencent/im/oidb/cmd0x62c/oidb_cmd0x62c$TinyIDInfo
-    //   169: getfield 1228	tencent/im/oidb/cmd0x62c/oidb_cmd0x62c$TinyIDInfo:uint64_tinyid	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   172: invokevirtual 771	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   175: invokestatic 598	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   178: invokevirtual 854	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   181: pop
-    //   182: aload 5
-    //   184: aload_1
-    //   185: iload 4
-    //   187: invokeinterface 742 2 0
-    //   192: checkcast 1225	tencent/im/oidb/cmd0x62c/oidb_cmd0x62c$TinyIDInfo
-    //   195: getfield 1229	tencent/im/oidb/cmd0x62c/oidb_cmd0x62c$TinyIDInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   198: invokevirtual 771	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   201: invokestatic 598	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   204: invokevirtual 854	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   207: pop
-    //   208: iload 4
-    //   210: iconst_1
-    //   211: iadd
-    //   212: istore 4
-    //   214: goto -69 -> 145
-    //   217: astore_1
-    //   218: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   221: ifeq +14 -> 235
-    //   224: ldc_w 282
-    //   227: iconst_2
-    //   228: aload_1
-    //   229: invokevirtual 811	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:toString	()Ljava/lang/String;
-    //   232: invokestatic 415	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   235: aload_0
-    //   236: sipush 1058
-    //   239: iconst_0
-    //   240: iconst_2
-    //   241: anewarray 435	java/lang/Object
-    //   244: dup
-    //   245: iconst_0
-    //   246: aload 5
-    //   248: aastore
-    //   249: dup
-    //   250: iconst_1
-    //   251: aload 6
-    //   253: aastore
-    //   254: invokevirtual 419	ajyg:notifyUI	(IZLjava/lang/Object;)V
-    //   257: return
-    //   258: aload_0
-    //   259: sipush 1058
-    //   262: iconst_0
-    //   263: iconst_2
-    //   264: anewarray 435	java/lang/Object
-    //   267: dup
-    //   268: iconst_0
-    //   269: aload 5
-    //   271: aastore
-    //   272: dup
-    //   273: iconst_1
-    //   274: aload 6
-    //   276: aastore
-    //   277: invokevirtual 419	ajyg:notifyUI	(IZLjava/lang/Object;)V
-    //   280: return
-    //   281: aload_0
-    //   282: sipush 1058
-    //   285: iconst_1
-    //   286: iconst_2
-    //   287: anewarray 435	java/lang/Object
-    //   290: dup
-    //   291: iconst_0
-    //   292: aload 5
-    //   294: aastore
-    //   295: dup
-    //   296: iconst_1
-    //   297: aload 6
-    //   299: aastore
-    //   300: invokevirtual 419	ajyg:notifyUI	(IZLjava/lang/Object;)V
-    //   303: return
-    //   304: astore_1
-    //   305: aload_0
-    //   306: sipush 1058
-    //   309: iconst_0
-    //   310: iconst_2
-    //   311: anewarray 435	java/lang/Object
-    //   314: dup
-    //   315: iconst_0
-    //   316: aload 5
-    //   318: aastore
-    //   319: dup
-    //   320: iconst_1
-    //   321: aload 6
-    //   323: aastore
-    //   324: invokevirtual 419	ajyg:notifyUI	(IZLjava/lang/Object;)V
-    //   327: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   330: ifeq -272 -> 58
-    //   333: ldc_w 282
-    //   336: iconst_2
-    //   337: aload_1
-    //   338: invokevirtual 811	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:toString	()Ljava/lang/String;
-    //   341: invokestatic 415	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   344: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	345	0	this	ajyg
-    //   0	345	1	paramToServiceMsg	ToServiceMsg
-    //   0	345	2	paramFromServiceMsg	FromServiceMsg
-    //   0	345	3	paramObject	Object
-    //   143	70	4	i	int
-    //   7	310	5	localArrayList1	ArrayList
-    //   16	306	6	localArrayList2	ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   59	79	217	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   111	142	304	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   145	208	304	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   281	303	304	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-  }
-  
-  public void a(String paramString)
-  {
-    notifyUI(1056, true, new Object[] { paramString, b });
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    notifyUI(1055, true, new Object[] { paramString1, paramString2 });
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    notifyUI(1054, true, new Object[] { paramString1, paramString2, paramString3 });
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    oidb_cmd0x62c.ReqBody localReqBody = new oidb_cmd0x62c.ReqBody();
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      localArrayList.add(Long.valueOf((String)paramArrayList.get(i)));
-      i += 1;
-    }
-    localReqBody.uint64_tinyid.set(localArrayList);
-    sendPbReq(makeOIDBPkg("OidbSvc.0x62c_4", 1580, 4, localReqBody.toByteArray(), 10000L));
-  }
-  
-  public void a(Common.WifiPOIInfo paramWifiPOIInfo, boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {}
-    try
-    {
-      QLog.i("HotChatHandler", 2, "joinHotChat() WifiPOIInfo = " + paramWifiPOIInfo.bytes_name.get().toStringUtf8() + ", " + paramWifiPOIInfo.bytes_uid.get().toStringUtf8());
-      label61:
-      int i = 0;
-      String str = null;
-      if (paramWifiPOIInfo.uint32_group_uin.has()) {
-        str = String.valueOf(bbbr.a(paramWifiPOIInfo.uint32_group_uin.get()));
-      }
-      if ((str == null) || (str.equals("")) || (str.equals("0"))) {
-        i = 1;
-      }
-      if (i != 0)
-      {
-        a(paramWifiPOIInfo, paramBoolean, paramInt2);
-        return;
-      }
       try
       {
-        a(paramWifiPOIInfo.bytes_uid.get().toStringUtf8(), paramInt2, true, paramInt1);
-        return;
-      }
-      catch (Exception paramWifiPOIInfo)
-      {
-        paramWifiPOIInfo.printStackTrace();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      break label61;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "getUserCreateHotChatAnnounce.groupcode=" + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Object localObject2 = new oidb_0x88d.GroupInfo();
-    ((oidb_0x88d.GroupInfo)localObject2).uint64_group_owner.set(1L);
-    ((oidb_0x88d.GroupInfo)localObject2).string_group_memo.set(ByteStringMicro.copyFrom("1".getBytes()));
-    Object localObject1 = new oidb_0x88d.ReqGroupInfo();
-    ((oidb_0x88d.ReqGroupInfo)localObject1).uint64_group_code.set(Long.valueOf(paramString).longValue());
-    ((oidb_0x88d.ReqGroupInfo)localObject1).stgroupinfo.set((MessageMicro)localObject2);
-    localObject2 = new oidb_0x88d.ReqBody();
-    ((oidb_0x88d.ReqBody)localObject2).uint32_appid.set(this.app.getAppid());
-    ((oidb_0x88d.ReqBody)localObject2).stzreqgroupinfo.add((MessageMicro)localObject1);
-    localObject1 = makeOIDBPkg("OidbSvc.0x88d_0", 2189, 6, ((oidb_0x88d.ReqBody)localObject2).toByteArray());
-    ((ToServiceMsg)localObject1).extraData.putString("groupcode", paramString);
-    ((ToServiceMsg)localObject1).extraData.putInt("serviceType", 6);
-    sendPbReq((ToServiceMsg)localObject1);
-    return true;
-  }
-  
-  public boolean a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    return a(paramString, paramInt, paramBoolean, 4);
-  }
-  
-  public boolean a(String paramString, int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    return a(paramString, paramInt1, paramBoolean, paramInt2, -1);
-  }
-  
-  public boolean a(String paramString, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    do
-    {
-      return false;
-      localObject2 = a(false);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = localObject2;
-        if (!paramBoolean) {
-          localObject1 = new LBS.LBSInfo();
-        }
-      }
-      if (localObject1 != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("HotChatHandler", 2, "quickJoinHotChat, lbs is null, needLBS = " + paramBoolean);
-    return false;
-    Object localObject2 = new oidb_0x8ab.ReqBody();
-    ((oidb_0x8ab.ReqBody)localObject2).hotnamecode.set(ByteStringMicro.copyFromUtf8(paramString));
-    ((oidb_0x8ab.ReqBody)localObject2).lbs_info.set((MessageMicro)localObject1);
-    ((oidb_0x8ab.ReqBody)localObject2).version_flag.set(1);
-    Object localObject1 = makeOIDBPkg("OidbSvc.0x8ab", 2219, 0, ((oidb_0x8ab.ReqBody)localObject2).toByteArray());
-    ((ToServiceMsg)localObject1).extraData.putString("hotnamecode", paramString);
-    ((ToServiceMsg)localObject1).extraData.putInt("HOTCHAT_EXTRA_FLAG", paramInt1);
-    ((ToServiceMsg)localObject1).extraData.putInt("preHotChatState", paramInt2);
-    if (paramInt3 > 0) {
-      ((ToServiceMsg)localObject1).extraData.putInt("apolloGameId", paramInt3);
-    }
-    sendPbReq((ToServiceMsg)localObject1);
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "setUserCreateHotChatAnnounce.groupcode=" + paramString1 + ",memo=" + paramString2);
-    }
-    if ((TextUtils.isEmpty(paramString1)) || (paramString2 == null)) {
-      return false;
-    }
-    oidb_0x89a.groupinfo localgroupinfo = new oidb_0x89a.groupinfo();
-    localgroupinfo.string_group_memo.set(ByteStringMicro.copyFrom(paramString2.getBytes()));
-    paramString2 = this.app.getCurrentAccountUin();
-    oidb_0x89a.ReqBody localReqBody = new oidb_0x89a.ReqBody();
-    localReqBody.uint64_group_code.set(Long.valueOf(paramString1).longValue());
-    localReqBody.uint64_original_operator_uin.set(Long.valueOf(paramString2).longValue());
-    localReqBody.st_group_info.set(localgroupinfo);
-    paramString2 = makeOIDBPkg("OidbSvc.0x89a_0", 2202, 0, localReqBody.toByteArray());
-    paramString2.extraData.putString("groupcode", paramString1);
-    sendPbReq(paramString2);
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandlerQ.hotchat.hotchat_kick_mem_by_global_admin", 2, "kickHotChatMemberByGlobalAdmin.groupcode=" + paramString1 + ",groupuin=" + paramString2 + ",memberuin=" + paramString3);
-    }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return false;
-    }
-    Object localObject2 = new ArrayList();
-    try
-    {
-      ((List)localObject2).add(Long.valueOf(Long.parseLong(paramString3)));
-      Object localObject1 = new oidb_0x823.KickPublicGroupVisitorReqBody();
-      ((oidb_0x823.KickPublicGroupVisitorReqBody)localObject1).rpt_uint64_visitor_uin.set((List)localObject2);
-      localObject2 = new oidb_0x823.PlayerDeviceInfo();
-      ((oidb_0x823.PlayerDeviceInfo)localObject2).int32_client_type.set(1);
-      ((oidb_0x823.PlayerDeviceInfo)localObject2).uint32_portal.set(paramInt);
-      oidb_0x823.ReqBody localReqBody = new oidb_0x823.ReqBody();
-      localReqBody.msg_kick_visitor.set((MessageMicro)localObject1);
-      localReqBody.uint64_group_uin.set(Long.valueOf(paramString2).longValue());
-      localReqBody.uint64_group_code.set(Long.valueOf(paramString1).longValue());
-      localReqBody.msg_req_info.set((MessageMicro)localObject2);
-      localObject1 = makeOIDBPkg("OidbSvc.0x823_0", 2083, 0, localReqBody.toByteArray());
-      ((ToServiceMsg)localObject1).extraData.putString("groupcode", paramString1);
-      ((ToServiceMsg)localObject1).extraData.putString("groupuin", paramString2);
-      ((ToServiceMsg)localObject1).extraData.putString("memberuin", paramString3);
-      ((ToServiceMsg)localObject1).extraData.putBoolean("kick", true);
-      ((ToServiceMsg)localObject1).extraData.putString("nickname", paramString4);
-      sendPbReq((ToServiceMsg)localObject1);
-      return true;
-    }
-    catch (NumberFormatException paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("HotChatHandlerQ.hotchat.hotchat_kick_mem_by_global_admin", 2, "kickHotChatMemberByGlobalAdmin.NumberFormatException");
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(byte[] paramArrayOfByte, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandlerQ.hotchat.oidb_0x8b2", 2, "getHotChatAnnounce.uid=" + new String(paramArrayOfByte) + ", troopUin=" + paramString);
-    }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return false;
-    }
-    Object localObject = new oidb_0x8b2.ReqBody();
-    ((oidb_0x8b2.ReqBody)localObject).string_hot_group_id.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    localObject = makeOIDBPkg("OidbSvc.0x8b2", 2226, 2, ((oidb_0x8b2.ReqBody)localObject).toByteArray());
-    ((ToServiceMsg)localObject).extraData.putInt("serviceType", 2);
-    ((ToServiceMsg)localObject).extraData.putByteArray("uid", paramArrayOfByte);
-    ((ToServiceMsg)localObject).extraData.putString("troop_uin", paramString);
-    sendPbReq((ToServiceMsg)localObject);
-    return true;
-  }
-  
-  public boolean a(byte[] paramArrayOfByte, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "setHotChatAnnounce.memo=" + paramString1 + ",url=" + paramString2 + ",uid=" + new String(paramArrayOfByte));
-    }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return false;
-    }
-    String str = paramString1;
-    if (TextUtils.isEmpty(paramString1)) {
-      str = "";
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = "";
-    }
-    paramString2 = new oidb_0x8b3.ReqBody();
-    paramString2.string_hot_group_id.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    oidb_0x8b3.groupinfo localgroupinfo = new oidb_0x8b3.groupinfo();
-    localgroupinfo.string_group_memo.set(ByteStringMicro.copyFrom(str.getBytes()));
-    localgroupinfo.string_jumping_url.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
-    paramString2.st_group_info.set(localgroupinfo);
-    paramString1 = makeOIDBPkg("OidbSvc.0x8b3", 2227, 0, paramString2.toByteArray());
-    paramString1.extraData.putByteArray("uid", paramArrayOfByte);
-    sendPbReq(paramString1);
-    return true;
-  }
-  
-  /* Error */
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    // Byte code:
-    //   0: new 284	java/lang/StringBuilder
-    //   3: dup
-    //   4: invokespecial 285	java/lang/StringBuilder:<init>	()V
-    //   7: aload_1
-    //   8: getfield 314	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   11: ldc_w 1143
-    //   14: invokevirtual 986	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   17: invokevirtual 1402	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   20: ldc_w 694
-    //   23: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 294	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: astore 7
-    //   31: new 526	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   34: dup
-    //   35: invokespecial 527	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   38: astore_1
-    //   39: aload_1
-    //   40: aload_3
-    //   41: checkcast 529	[B
-    //   44: checkcast 529	[B
-    //   47: invokevirtual 533	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   50: pop
-    //   51: aload_1
-    //   52: astore_2
-    //   53: iconst_m1
-    //   54: istore 5
-    //   56: iload 5
-    //   58: istore 4
-    //   60: aload_2
-    //   61: ifnull +26 -> 87
-    //   64: iload 5
-    //   66: istore 4
-    //   68: aload_2
-    //   69: getfield 536	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   72: invokevirtual 539	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   75: ifeq +12 -> 87
-    //   78: aload_2
-    //   79: getfield 536	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   82: invokevirtual 542	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   85: istore 4
-    //   87: iload 4
-    //   89: ifne +235 -> 324
-    //   92: new 1404	tencent/im/oidb/hotchat/oidb_0x81f$RspBody
-    //   95: dup
-    //   96: invokespecial 1405	tencent/im/oidb/hotchat/oidb_0x81f$RspBody:<init>	()V
-    //   99: astore_1
-    //   100: aload_1
-    //   101: aload_2
-    //   102: getfield 579	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   105: invokevirtual 582	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   108: invokevirtual 583	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   111: invokevirtual 1406	tencent/im/oidb/hotchat/oidb_0x81f$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   114: pop
-    //   115: aload_1
-    //   116: getfield 1409	tencent/im/oidb/hotchat/oidb_0x81f$RspBody:msg_auth_data	Ltencent/im/oidb/hotchat/oidb_0x81f$GetAuthDataRsp;
-    //   119: invokevirtual 1412	tencent/im/oidb/hotchat/oidb_0x81f$GetAuthDataRsp:has	()Z
-    //   122: ifeq +244 -> 366
-    //   125: aload_1
-    //   126: getfield 1409	tencent/im/oidb/hotchat/oidb_0x81f$RspBody:msg_auth_data	Ltencent/im/oidb/hotchat/oidb_0x81f$GetAuthDataRsp;
-    //   129: invokevirtual 1413	tencent/im/oidb/hotchat/oidb_0x81f$GetAuthDataRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   132: checkcast 1411	tencent/im/oidb/hotchat/oidb_0x81f$GetAuthDataRsp
-    //   135: astore_1
-    //   136: aload_1
-    //   137: getfield 1414	tencent/im/oidb/hotchat/oidb_0x81f$GetAuthDataRsp:uint32_auth	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   140: invokevirtual 542	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   143: istore 4
-    //   145: aload_0
-    //   146: getfield 423	ajyg:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   149: bipush 60
-    //   151: invokevirtual 429	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   154: checkcast 251	com/tencent/mobileqq/app/HotChatManager
-    //   157: astore_2
-    //   158: iload 4
-    //   160: ifne +126 -> 286
-    //   163: iconst_1
-    //   164: istore 6
-    //   166: aload_2
-    //   167: iload 6
-    //   169: invokevirtual 1416	com/tencent/mobileqq/app/HotChatManager:a	(Z)V
-    //   172: iload 4
-    //   174: ifne +14 -> 188
-    //   177: aload_2
-    //   178: aload_1
-    //   179: getfield 1419	tencent/im/oidb/hotchat/oidb_0x81f$GetAuthDataRsp:uint64_timestamp	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   182: invokevirtual 771	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   185: invokevirtual 1421	com/tencent/mobileqq/app/HotChatManager:a	(J)V
-    //   188: aload_0
-    //   189: sipush 1051
-    //   192: iconst_1
-    //   193: iconst_2
-    //   194: anewarray 435	java/lang/Object
-    //   197: dup
-    //   198: iconst_0
-    //   199: aload 7
-    //   201: aastore
-    //   202: dup
-    //   203: iconst_1
-    //   204: iload 4
-    //   206: invokestatic 448	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   209: aastore
-    //   210: invokevirtual 419	ajyg:notifyUI	(IZLjava/lang/Object;)V
-    //   213: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   216: ifeq +42 -> 258
-    //   219: ldc_w 1015
-    //   222: iconst_2
-    //   223: new 284	java/lang/StringBuilder
-    //   226: dup
-    //   227: invokespecial 285	java/lang/StringBuilder:<init>	()V
-    //   230: ldc_w 1423
-    //   233: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: aload 7
-    //   238: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: ldc_w 1425
-    //   244: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   247: iload 4
-    //   249: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   252: invokevirtual 294	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   255: invokestatic 415	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   258: return
-    //   259: astore_3
-    //   260: aconst_null
-    //   261: astore_1
-    //   262: aload_1
-    //   263: astore_2
-    //   264: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   267: ifeq -214 -> 53
-    //   270: ldc_w 282
-    //   273: iconst_2
-    //   274: aload_3
-    //   275: invokevirtual 811	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:toString	()Ljava/lang/String;
-    //   278: invokestatic 415	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   281: aload_1
-    //   282: astore_2
-    //   283: goto -230 -> 53
-    //   286: iconst_0
-    //   287: istore 6
-    //   289: goto -123 -> 166
-    //   292: astore_1
-    //   293: iconst_0
-    //   294: istore 5
-    //   296: iload 5
-    //   298: istore 4
-    //   300: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   303: ifeq -115 -> 188
-    //   306: ldc_w 282
-    //   309: iconst_2
-    //   310: aload_1
-    //   311: invokevirtual 743	java/lang/Exception:toString	()Ljava/lang/String;
-    //   314: invokestatic 415	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   317: iload 5
-    //   319: istore 4
-    //   321: goto -133 -> 188
-    //   324: aload_0
-    //   325: sipush 1051
-    //   328: iconst_0
-    //   329: iconst_2
-    //   330: anewarray 435	java/lang/Object
-    //   333: dup
-    //   334: iconst_0
-    //   335: aload 7
-    //   337: aastore
-    //   338: dup
-    //   339: iconst_1
-    //   340: iconst_0
-    //   341: invokestatic 448	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   344: aastore
-    //   345: invokevirtual 419	ajyg:notifyUI	(IZLjava/lang/Object;)V
-    //   348: iconst_0
-    //   349: istore 4
-    //   351: goto -138 -> 213
-    //   354: astore_1
-    //   355: iload 4
-    //   357: istore 5
-    //   359: goto -63 -> 296
-    //   362: astore_3
-    //   363: goto -101 -> 262
-    //   366: iconst_0
-    //   367: istore 4
-    //   369: goto -181 -> 188
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	372	0	this	ajyg
-    //   0	372	1	paramToServiceMsg	ToServiceMsg
-    //   0	372	2	paramFromServiceMsg	FromServiceMsg
-    //   0	372	3	paramObject	Object
-    //   58	310	4	i	int
-    //   54	304	5	j	int
-    //   164	124	6	bool	boolean
-    //   29	307	7	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   31	39	259	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   100	145	292	java/lang/Exception
-    //   145	158	354	java/lang/Exception
-    //   166	172	354	java/lang/Exception
-    //   177	188	354	java/lang/Exception
-    //   39	51	362	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    notifyUI(1057, true, new Object[] { paramString1, paramString2 });
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3)
-  {
-    akoi.a(this.app, String.valueOf(paramString1), paramString3 + BaseApplicationImpl.getContext().getString(2131693322), 1, false, true);
-    notifyUI(1037, true, new Object[] { paramString1, Integer.valueOf(0), paramString2, "" });
-  }
-  
-  public boolean b(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatHandler", 2, "kickHotChatMember.groupcode=" + paramString1 + ",groupuin=" + paramString2 + ",memberuin=" + paramString3);
-    }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return false;
-    }
-    if (this.app.a(true).b()) {
-      return a(paramString1, paramString2, paramString3, paramString4, paramInt);
-    }
-    Object localObject = new oidb_0x89b.KickPublicGroupVisitorReqBody();
-    ((oidb_0x89b.KickPublicGroupVisitorReqBody)localObject).rpt_uint64_visitor_uin.add(Long.valueOf(paramString3));
-    oidb_0x89b.ReqBody localReqBody = new oidb_0x89b.ReqBody();
-    localReqBody.uint64_group_uin.set(Long.valueOf(paramString2).longValue());
-    localReqBody.uint64_group_code.set(Long.valueOf(paramString1).longValue());
-    localReqBody.uint32_req_type.set(6);
-    localReqBody.msg_kick_visitor.set((MessageMicro)localObject);
-    localObject = makeOIDBPkg("OidbSvc.0x89b_3", 2203, 5, localReqBody.toByteArray());
-    ((ToServiceMsg)localObject).extraData.putString("groupcode", paramString1);
-    ((ToServiceMsg)localObject).extraData.putString("groupuin", paramString2);
-    ((ToServiceMsg)localObject).extraData.putString("memberuin", paramString3);
-    ((ToServiceMsg)localObject).extraData.putBoolean("kick", true);
-    ((ToServiceMsg)localObject).extraData.putString("nickname", paramString4);
-    sendPbReq((ToServiceMsg)localObject);
-    return true;
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.0x8a4");
-      this.allowCmdSet.add("OidbSvc.0x89b_3");
-      this.allowCmdSet.add("OidbSvc.0x823_0");
-      this.allowCmdSet.add("OidbSvc.0x8a2");
-      this.allowCmdSet.add("OidbSvc.0x8ab");
-      this.allowCmdSet.add("OidbSvc.0x8b3");
-      this.allowCmdSet.add("OidbSvc.0x8b2");
-      this.allowCmdSet.add("OidbSvc.0x81f");
-      this.allowCmdSet.add("OidbSvc.0xa81");
-      this.allowCmdSet.add("OidbSvc.0x88d_0");
-      this.allowCmdSet.add("OidbSvc.0x89a_0");
-      this.allowCmdSet.add("OidbSvc.0x435");
-      this.allowCmdSet.add("OidbSvc.0x897_0");
-      this.allowCmdSet.add("OidbSvc.0x88d_1");
-      this.allowCmdSet.add("OidbSvc.0xa8b");
-      this.allowCmdSet.add("OidbSvc.0x8a3_7");
-      this.allowCmdSet.add("OidbSvc.0x8a7_0");
-      this.allowCmdSet.add("OidbSvc.0x62c_4");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return ajyr.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (msgCmdFilter(str)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotChatHandler", 2, "cmdfilter error=" + str);
-      }
-    }
-    do
-    {
-      do
-      {
-        do
+        if (this.jdField_a_of_type_AndroidAppProgressDialog != null)
         {
-          int i;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if (paramFromServiceMsg.getResultCode() == 1002)
-                  {
-                    b(paramToServiceMsg, paramFromServiceMsg);
-                    return;
-                  }
-                  if (paramFromServiceMsg.getResultCode() != 1000)
-                  {
-                    a(paramToServiceMsg, paramFromServiceMsg);
-                    return;
-                  }
-                  if ("OidbSvc.0x8a4".equals(str))
-                  {
-                    e(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                    return;
-                  }
-                  if (!"OidbSvc.0x89b_3".equals(str)) {
-                    break;
-                  }
-                  if (paramToServiceMsg.extraData.getBoolean("kick", false))
-                  {
-                    l(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                    return;
-                  }
-                } while (paramToServiceMsg.extraData.getBoolean("isJoin"));
-                c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                return;
-                if ("OidbSvc.0x823_0".equals(str))
-                {
-                  k(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                  return;
-                }
-                if ("OidbSvc.0x8a2".equals(str))
-                {
-                  d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                  return;
-                }
-                if ("OidbSvc.0x8ab".equals(str))
-                {
-                  f(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                  return;
-                }
-                if ("OidbSvc.0x8b3".equals(str))
-                {
-                  g(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                  return;
-                }
-                if (!"OidbSvc.0x8b2".equals(str)) {
-                  break;
-                }
-              } while ((paramToServiceMsg == null) || (paramToServiceMsg.extraData == null));
-              i = paramToServiceMsg.extraData.getInt("serviceType");
-              if (QLog.isColorLevel()) {
-                QLog.d("HotChatHandlerQ.hotchat.oidb_0x8b2", 2, "onReceive, cmd:" + str + "|serviceType:" + i);
-              }
-              if (i == 2)
-              {
-                h(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                return;
-              }
-            } while ((i != 5) && (i != 6));
-            p(paramToServiceMsg, paramFromServiceMsg, paramObject);
-            return;
-            if ("OidbSvc.0x81f".equals(str))
-            {
-              b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-              return;
-            }
-            if ("OidbSvc.0xa81".equals(str))
-            {
-              m(paramToServiceMsg, paramFromServiceMsg, paramObject);
-              return;
-            }
-            if (!"OidbSvc.0x88d_0".equals(str)) {
-              break;
-            }
-            i = paramToServiceMsg.extraData.getInt("serviceType");
-            if (QLog.isColorLevel()) {
-              QLog.d("HotChatHandler", 2, "onReceive, cmd:" + str + "|serviceType:" + i);
-            }
-          } while (6 != i);
-          i(paramToServiceMsg, paramFromServiceMsg, paramObject);
-          return;
-          if ("OidbSvc.0x89a_0".equals(str))
-          {
-            j(paramToServiceMsg, paramFromServiceMsg, paramObject);
-            return;
-          }
-        } while ("OidbSvc.0x435".equals(str));
-        if ("OidbSvc.0x897_0".equals(str))
-        {
-          o(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          this.jdField_a_of_type_AndroidAppProgressDialog.cancel();
           return;
         }
-        if ("OidbSvc.0x88d_1".equals(str))
-        {
-          n(paramToServiceMsg, paramFromServiceMsg, paramObject);
-          return;
-        }
-      } while ("OidbSvc.0x8a3_7".equals(str));
-      if ("OidbSvc.0x8a7_0".equals(str))
-      {
-        q(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
       }
-    } while (!"OidbSvc.0x62c_4".equals(str));
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      catch (Exception localException) {}
+    }
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131695284);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyg
  * JD-Core Version:    0.7.0.1
  */

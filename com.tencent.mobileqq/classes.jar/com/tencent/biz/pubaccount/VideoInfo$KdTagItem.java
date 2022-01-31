@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import npl;
+import nst;
 
 public class VideoInfo$KdTagItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<KdTagItem> CREATOR = new npl();
+  public static final Parcelable.Creator<KdTagItem> CREATOR = new nst();
   public long a;
   public String a;
   
@@ -37,7 +37,7 @@ public class VideoInfo$KdTagItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.KdTagItem
  * JD-Core Version:    0.7.0.1
  */

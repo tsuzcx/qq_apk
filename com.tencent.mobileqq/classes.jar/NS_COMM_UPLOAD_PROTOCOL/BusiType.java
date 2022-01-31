@@ -9,7 +9,7 @@ public final class BusiType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_COMM_UPLOAD_PROTOCOL.BusiType
  * JD-Core Version:    0.7.0.1
  */

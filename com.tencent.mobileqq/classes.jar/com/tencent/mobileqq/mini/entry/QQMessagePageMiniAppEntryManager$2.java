@@ -1,32 +1,29 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ahfx;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
+import amnf;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class QQMessagePageMiniAppEntryManager$2
-  implements View.OnClickListener
+  implements Runnable
 {
-  QQMessagePageMiniAppEntryManager$2(QQMessagePageMiniAppEntryManager paramQQMessagePageMiniAppEntryManager) {}
+  QQMessagePageMiniAppEntryManager$2(QQMessagePageMiniAppEntryManager paramQQMessagePageMiniAppEntryManager, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    try
+    if (this.val$app == null) {}
+    amnf localamnf;
+    do
     {
-      ((ahfx)MiniAppUtils.getAppInterface().getManager(342)).a(2);
       return;
-    }
-    catch (Throwable paramView)
-    {
-      QLog.e("QQMessagePageMicroAppEntryManager", 1, paramView, new Object[0]);
-    }
+      localamnf = (amnf)this.val$app.a(148);
+    } while (localamnf == null);
+    localamnf.a();
+    localamnf.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.QQMessagePageMiniAppEntryManager.2
  * JD-Core Version:    0.7.0.1
  */

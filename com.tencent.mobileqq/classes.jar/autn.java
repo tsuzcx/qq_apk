@@ -1,32 +1,40 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.2.1;
-import com.tencent.widget.XListView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.WifiPOIInfo;
 
-public class autn
-  implements View.OnClickListener
+class autn
+  extends beif
 {
-  public autn(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  autn(autj paramautj) {}
   
-  public void onClick(View paramView)
+  public void a(submsgtype0xdd.MsgBody paramMsgBody)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://ti.qq.com/cgi-node/specialtag/zanlist?_wv=1027&asyncMode=3");
-    this.a.startActivity(paramView);
-    paramView = PersonalityLabelGalleryActivity.a(this.a);
-    paramView.praiseCount += PersonalityLabelGalleryActivity.a(this.a).unreadCount;
-    PersonalityLabelGalleryActivity.a(this.a).unreadCount = 0;
-    PersonalityLabelGalleryActivity.a(this.a).postDelayed(new PersonalityLabelGalleryActivity.2.1(this), 500L);
-    axqy.b(this.a.app, "dc00898", "", "", "0X8007FCF", "0X8007FCF", 0, 0, "", "", "", "");
+    switch (paramMsgBody.uint32_msg_type.get())
+    {
+    }
+    do
+    {
+      return;
+      paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
+      String str = paramMsgBody.bytes_uid.get().toStringUtf8();
+      this.a.a(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), str, paramMsgBody.bytes_name.get().toStringUtf8());
+      return;
+      QQToast.a(this.a.a, alpo.a(2131705446), 0).a();
+      paramMsgBody = BaseApplicationImpl.getApplication().getRuntime();
+    } while ((paramMsgBody == null) || (!(paramMsgBody instanceof QQAppInterface)));
+    paramMsgBody = (QQAppInterface)paramMsgBody;
+    bdiv.a(this.a.a, paramMsgBody.getCurrentAccountUin(), false, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     autn
  * JD-Core Version:    0.7.0.1
  */

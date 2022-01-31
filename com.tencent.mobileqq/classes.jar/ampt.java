@@ -1,31 +1,17 @@
-import com.qq.android.dexposed.XC_MethodHook;
-import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
-import com.tencent.mobileqq.config.QConfigureException;
-import com.tencent.qphone.base.util.QLog;
-
-final class ampt
-  extends XC_MethodHook
+public class ampt
 {
-  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
+  public int a;
+  public long a;
+  
+  public ampt(long paramLong, int paramInt)
   {
-    try
-    {
-      paramMethodHookParam = ampo.a();
-      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save")) && (!paramMethodHookParam.contains("android.app.SharedPreferencesImpl"))) {
-        ampo.a(new QConfigureException(paramMethodHookParam), "Can not parse xml beyond QConfigManager when app starting.", "QConfigWatchDog_Xml");
-      }
-      return;
-    }
-    catch (Exception paramMethodHookParam)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QConfigWatchDog", 2, "hook xml exception.", paramMethodHookParam);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampt
  * JD-Core Version:    0.7.0.1
  */

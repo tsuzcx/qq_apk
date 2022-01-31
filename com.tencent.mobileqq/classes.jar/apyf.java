@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
 
-class apyf
-  implements DialogInterface.OnClickListener
+public final class apyf
+  implements Parcelable.Creator<MiniAppRecommInfo.MiniApp>
 {
-  apyf(apye paramapye) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public MiniAppRecommInfo.MiniApp a(Parcel paramParcel)
   {
-    SendBottomBar.a(this.a.a);
+    return new MiniAppRecommInfo.MiniApp(paramParcel);
+  }
+  
+  public MiniAppRecommInfo.MiniApp[] a(int paramInt)
+  {
+    return new MiniAppRecommInfo.MiniApp[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyf
  * JD-Core Version:    0.7.0.1
  */

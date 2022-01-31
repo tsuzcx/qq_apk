@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class amgh
-  implements View.OnClickListener
+  implements Comparator<MessageRecord>
 {
-  amgh(amgf paramamgf, BaseActivity paramBaseActivity) {}
+  amgh(amgg paramamgg) {}
   
-  public void onClick(View paramView)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    amgf.a(this.jdField_a_of_type_Amgf, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    axqy.a(this.jdField_a_of_type_Amgf.a, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 23, 0, "", "", "", "");
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgh
  * JD-Core Version:    0.7.0.1
  */

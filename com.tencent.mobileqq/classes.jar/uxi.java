@@ -1,71 +1,71 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommend;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommendItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 import java.util.List;
 
 public class uxi
-  extends uxo<HotRecommendFeedItem>
+  extends uxf
 {
-  public uxi(@NonNull HotRecommendFeedItem paramHotRecommendFeedItem)
+  public uxi(ViewGroup paramViewGroup)
   {
-    super(paramHotRecommendFeedItem);
+    super(paramViewGroup, 2131561491);
   }
   
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  public void a()
   {
-    Object localObject1 = (qqstory_struct.MultiRecommend)paramStoryFeed.multi_recommend_feed.get();
-    ((HotRecommendFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.MultiRecommend)localObject1);
-    ((HotRecommendFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    paramStoryFeed = (tdl)tcz.a(2);
-    ArrayList localArrayList = new ArrayList();
-    localObject1 = ((qqstory_struct.MultiRecommend)localObject1).recommend_feed.get().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (qqstory_struct.MultiRecommendItem)((Iterator)localObject1).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("HotRecommendHomeFeed", (qqstory_struct.MultiRecommendItem)localObject2);
-      localArrayList.add(localStoryVideoItem);
-      QQUserUIItem localQQUserUIItem = new QQUserUIItem();
-      localQQUserUIItem.convertFrom(((qqstory_struct.MultiRecommendItem)localObject2).user);
-      localObject2 = paramStoryFeed.a(localQQUserUIItem);
-      localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject2).uid;
-      localStoryVideoItem.mOwnerName = ((QQUserUIItem)localObject2).getDisplayName();
-    }
-    c(localArrayList, true);
-    return !localArrayList.isEmpty();
+    this.a.setTag(2131373799, null);
   }
   
-  public void b()
+  public void a(utx paramutx)
   {
-    super.b();
-    tdl localtdl = (tdl)tcz.a(2);
-    if (!this.c.isEmpty())
+    super.a(paramutx);
+    this.a.setDisplayState(2);
+    c(paramutx.jdField_b_of_type_JavaLangString);
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout;
+    String str;
+    if (!TextUtils.isEmpty(paramutx.j))
     {
-      Iterator localIterator = this.c.iterator();
-      while (localIterator.hasNext())
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramutx.c))
       {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
-        if (!TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
-          localtdl.b(localStoryVideoItem.mOwnerUid);
+        str = alpo.a(2131713645);
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramutx.j);
+        if ((paramutx.jdField_a_of_type_JavaUtilList == null) || (paramutx.jdField_a_of_type_JavaUtilList.isEmpty())) {
+          this.a.a(1, 1 - paramutx.jdField_b_of_type_Int);
+        }
+        str = (String)this.a.getTag(2131373799);
+        if (!TextUtils.equals(paramutx.jdField_a_of_type_JavaLangString, str)) {
+          switch (paramutx.jdField_a_of_type_Int)
+          {
+          default: 
+            str = "unknown";
+          }
         }
       }
+    }
+    for (;;)
+    {
+      wta.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramutx.jdField_a_of_type_JavaLangString, str });
+      this.a.setTag(2131373799, paramutx.jdField_a_of_type_JavaLangString);
+      return;
+      str = paramutx.c;
+      break;
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramutx.c)) {}
+      for (str = alpo.a(2131713652);; str = paramutx.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, false);
+        break;
+      }
+      str = "2";
+      continue;
+      str = "3";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,118 +1,207 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoUploadController.1;
+import android.os.Bundle;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager.1;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class qiu
-  extends qij
+  implements Manager
 {
-  private long jdField_a_of_type_Long;
-  aywb jdField_a_of_type_Aywb = new qiv(this);
-  private aywc jdField_a_of_type_Aywc;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
+  public static volatile boolean b;
+  protected int a;
+  protected long a;
+  protected bdwa a;
+  protected AppInterface a;
+  protected String a;
+  protected ArrayList<qiw> a;
+  protected HashMap<String, String> a;
+  protected boolean a;
+  protected int b;
+  private int c = -1;
   
-  public qiu(Context paramContext, QQAppInterface paramQQAppInterface, qik paramqik, String paramString)
+  static
   {
-    super(paramContext, paramQQAppInterface, paramqik);
-    this.d = paramString;
+    jdField_b_of_type_Boolean = true;
   }
   
-  private void a(int paramInt)
+  public qiu(AppInterface paramAppInterface)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    axrn localaxrn = axrn.a(this.jdField_a_of_type_AndroidContentContext);
-    String str = onh.a();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Bdwa = ((bdvx)paramAppInterface.getManager(47)).a(1);
+  }
+  
+  public static RefreshData b(Context paramContext, int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      localaxrn.a(str, "actReadInJoyDeliverVideoUploadVideo", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
-      return;
+      localObject = (qiu)((AppRuntime)localObject).getManager(270);
+      if (localObject != null) {
+        return ((qiu)localObject).a(paramContext, paramInt);
+      }
+    }
+    return null;
+  }
+  
+  private void b(int paramInt1, String paramString, long paramLong, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+    qjs.a(this.jdField_a_of_type_JavaLangString, paramLong);
+    paramInt1 = 0;
+    while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((qiw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      paramInt1 += 1;
     }
   }
   
-  private void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  public int a()
   {
-    QLog.d("VideoUploadController", 2, "finish: retCode - " + paramInt + " fileUrl : " + paramString1);
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    a(paramInt);
-    if (this.jdField_a_of_type_Qik != null) {
-      this.jdField_a_of_type_Qik.a(paramInt, paramString1, paramString2, paramString3);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public RefreshData a(Context paramContext, int paramInt)
+  {
+    RefreshData localRefreshData = null;
+    paramContext = bdiv.a(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt);
+    if (paramContext != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramContext = new JSONObject(paramContext);
+        if (paramContext != null) {
+          localRefreshData = new RefreshData(paramContext);
+        }
+        return localRefreshData;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext = null;
+        continue;
+      }
+      paramContext = null;
     }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Aywb);
-    ThreadManager.executeOnFileThread(new VideoUploadController.1(this));
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
   {
-    this.e = paramString;
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      b(paramInt1, paramString, paramLong, paramInt2);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new ReadInJoyRefreshManager.1(this, paramInt1, paramString, paramLong, paramInt2));
+  }
+  
+  public void a(qiw paramqiw)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramqiw)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramqiw);
+      }
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (a() == 1) && (qjs.b() == 1);
+  }
+  
+  public boolean a(RefreshData paramRefreshData, int paramInt)
+  {
+    return a(paramRefreshData, 0, paramInt);
+  }
+  
+  public boolean a(RefreshData paramRefreshData, int paramInt1, int paramInt2)
+  {
+    Object localObject = paramRefreshData.id;
     if (QLog.isColorLevel()) {
-      QLog.d("VideoUploadController", 2, "startUploadVideo path=" + paramString);
+      QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes start id = " + (String)localObject);
     }
-    if (TextUtils.isEmpty(paramString))
+    String str = qjs.a((String)localObject);
+    if (qjs.a((String)localObject)) {
+      return true;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.get("refresh_" + (String)localObject) != null) {
+      return false;
+    }
+    bdcs.a(str);
+    this.jdField_a_of_type_JavaUtilHashMap.put("refresh_" + (String)localObject, paramRefreshData.url);
+    str = str + ".zip";
+    File localFile = new File(str);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("refreshId", (String)localObject);
+    localObject = new bdvv(paramRefreshData.url, localFile);
+    ((bdvv)localObject).jdField_b_of_type_Int = paramInt1;
+    ((bdvv)localObject).d = 60L;
+    ((bdvv)localObject).m = true;
+    this.jdField_a_of_type_Bdwa.a((bdvv)localObject, new qiv(this, str, paramRefreshData, paramInt2), localBundle);
+    return false;
+  }
+  
+  public void b(qiw paramqiw)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoUploadController", 2, "startUploadVideo empty path!");
-      }
-      a(1001, null, null, null);
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramqiw);
       return;
     }
-    if (!new File(paramString).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoUploadController", 2, "startUploadVideo file not exist, path=" + paramString);
-      }
-      a(1002, null, null, null);
-      return;
-    }
-    if (!bbfj.g(this.jdField_a_of_type_AndroidContentContext))
-    {
-      QLog.d("VideoUploadController", 2, "upload: network not available");
-      a(1003, null, null, null);
-      return;
-    }
-    if ((!paramBoolean) && (!bbfj.h(this.jdField_a_of_type_AndroidContentContext)))
-    {
-      QLog.d("VideoUploadController", 2, "upload: wifi not connected and not upload with mobile");
-      return;
-    }
-    ayvx localayvx = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (this.jdField_a_of_type_Aywb.getFilter().size() == 0) {
-      this.jdField_a_of_type_Aywb.addFilter(new Class[] { ayou.class });
-    }
-    localayvx.a(this.jdField_a_of_type_Aywb);
-    if (this.jdField_a_of_type_Aywc == null)
-    {
-      this.jdField_a_of_type_Aywc = new aywc();
-      this.jdField_a_of_type_Aywc.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Aywc.jdField_c_of_type_Int = 54;
-      this.jdField_a_of_type_Aywc.i = paramString;
-      this.jdField_a_of_type_Aywc.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString = "0";
-      this.jdField_a_of_type_Aywc.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.jdField_a_of_type_Aywc.jdField_b_of_type_Int = 24;
-      this.jdField_a_of_type_Aywc.jdField_a_of_type_JavaLangString = "KandianUGCVideoUpload";
-    }
-    localayvx.a(this.jdField_a_of_type_Aywc);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Int = -1;
+    jdField_b_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qiu
  * JD-Core Version:    0.7.0.1
  */

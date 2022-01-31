@@ -1,28 +1,103 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6.3.1;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class alnv
-  implements alot
+  extends alpn
 {
-  public alnv(ArkAppDeviceModule.ObserverMethod.6.3.1 param1) {}
+  protected long a;
+  private String a;
+  protected long b;
   
-  public void a(long paramLong)
+  protected void a()
   {
-    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Alnj.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    boolean bool2 = true;
+    super.a();
+    this.jdField_a_of_type_Long += 1L;
+    this.b += 1L;
+    if (this.d >= 3L)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
+        break label203;
+      }
+      bool1 = true;
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:mini", this.jdField_a_of_type_JavaLangString });
+      this.d = 0L;
+      if (!bool1) {
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
+      }
+    }
+    if ((this.jdField_a_of_type_Long >= 15L) && (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_qzone_kill.name())))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null)
+      {
+        bool1 = true;
+        label139:
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:qzone");
+        aznh.a().d(aznh.a());
+        this.jdField_a_of_type_Long = 0L;
+      }
+    }
+    else if (this.b >= GuardManager.d) {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
+        break label213;
+      }
+    }
+    label203:
+    label213:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:tool");
+      this.b = 0L;
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label139;
     }
   }
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  protected void a(String paramString)
   {
-    alng.a(this.a.a.a.jdField_a_of_type_Alnj.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    if (!"com.tencent.mobileqq".equals(paramString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
+      ankm.a();
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    QQAppInterface.a().d();
+    alnr.a().a(paramString);
+    aobd.a(true);
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    CoreService.startCoreService(alpl.a().a);
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
+  }
+  
+  protected void c(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void d(String paramString)
+  {
+    if ("com.tencent.mobileqq".equals(paramString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
+      ankm.b();
+      aobd.a(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alnv
  * JD-Core Version:    0.7.0.1
  */

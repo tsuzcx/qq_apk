@@ -1,37 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vdf
-  extends QQUIEventReceiver<vcp, svv>
+  extends unf
 {
-  public vdf(@NonNull vcp paramvcp)
+  public List<StoryVideoItem> a;
+  
+  public vdf(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
   {
-    super(paramvcp);
+    super(paramRspBatchGetVideoInfo.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramRspBatchGetVideoInfo.vid_info_list.has())
+    {
+      paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
+      while (paramRspBatchGetVideoInfo.hasNext())
+      {
+        qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
+        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
+      }
+    }
   }
   
-  public void a(@NonNull vcp paramvcp, @NonNull svv paramsvv)
+  public String toString()
   {
-    if (paramsvv.a())
-    {
-      ved.b(this.TAG, "group video upload");
-      return;
-    }
-    if (!paramsvv.b())
-    {
-      ved.b(this.TAG, "ignore personal video");
-      return;
-    }
-    paramvcp.a(paramsvv);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return svv.class;
+    return "GetShareGroupVideoInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdf
  * JD-Core Version:    0.7.0.1
  */

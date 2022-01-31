@@ -1,31 +1,20 @@
-import android.util.Property;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.util.WeakReference;
 
 class bknc
-  extends Property<bknb, Integer>
+  implements View.OnClickListener
 {
-  bknc(bknb parambknb, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  bknc(bkna parambkna, bkmi parambkmi, int paramInt) {}
   
-  public Integer a(bknb parambknb)
+  public void onClick(View paramView)
   {
-    if (parambknb != null) {
-      return Integer.valueOf(bknb.a(parambknb));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bknb parambknb, Integer paramInteger)
-  {
-    if (parambknb != null) {
-      bknb.a(parambknb, paramInteger.intValue());
-    }
+    ((bkme)this.jdField_a_of_type_Bkna.a.get()).a(this.jdField_a_of_type_Bkmi.itemView, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bknc
  * JD-Core Version:    0.7.0.1
  */

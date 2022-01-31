@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.apollo.script;
 
-import actj;
-import acup;
-import adkr;
-import adte;
-import ajez;
-import ajfh;
-import ajfo;
+import aekt;
+import aelz;
+import afdb;
+import aflj;
+import akwl;
+import akwt;
+import akxa;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
-import bbdh;
-import bcql;
+import bdcb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
@@ -23,6 +22,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForApollo;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
@@ -31,25 +31,25 @@ import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
 
 public class SpriteUIHandler
-  implements ajfo
+  implements akxa
 {
-  private ajez jdField_a_of_type_Ajez;
+  private akwl jdField_a_of_type_Akwl;
   private SpriteUIHandler.SpriteVisibleRunnable jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable;
   private WeakReference<XListView> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<acup> b;
+  private WeakReference<aelz> b;
   
-  public SpriteUIHandler(ajez paramajez)
+  public SpriteUIHandler(akwl paramakwl)
   {
-    this.jdField_a_of_type_Ajez = paramajez;
+    this.jdField_a_of_type_Akwl = paramakwl;
   }
   
   public static int a(Context paramContext)
   {
     int i = 0;
     if (paramContext != null) {
-      i = actj.a(46.0F, paramContext.getResources());
+      i = aekt.a(46.0F, paramContext.getResources());
     }
-    return Math.max(i, (int)((float)bbdh.h() / 7.0F / 2.84D) + 40);
+    return Math.max(i, (int)((float)bdcb.h() / 7.0F / 2.84D) + 40);
   }
   
   private void a(long paramLong, int paramInt)
@@ -67,22 +67,22 @@ public class SpriteUIHandler
       Object localObject1 = a();
       if (localObject1 != null)
       {
-        int i = actj.a(paramLong, (ListAdapter)localObject2);
+        int i = aekt.a(paramLong, (ListAdapter)localObject2);
         if (i >= 0)
         {
-          ChatMessage localChatMessage = (ChatMessage)((acup)localObject2).getItem(i);
-          localObject2 = ((acup)localObject2).a.a(localChatMessage, (BaseAdapter)localObject2);
+          ChatMessage localChatMessage = (ChatMessage)((aelz)localObject2).getItem(i);
+          localObject2 = ((aelz)localObject2).a.a(localChatMessage, (BaseAdapter)localObject2);
           ApolloItemBuilder localApolloItemBuilder;
           View localView;
           if (((localObject2 instanceof ApolloItemBuilder)) && ((localChatMessage instanceof MessageForApollo)))
           {
             localApolloItemBuilder = (ApolloItemBuilder)localObject2;
-            i = actj.a(paramLong, ((XListView)localObject1).getAdapter());
-            localView = actj.a((ListView)localObject1, i);
+            i = aekt.a(paramLong, ((XListView)localObject1).getAdapter());
+            localView = aekt.a((ListView)localObject1, i);
             if (!(localView instanceof BaseChatItemLayout)) {
               break label204;
             }
-            localObject1 = (BaseChatItemLayout)actj.a((ListView)localObject1, i);
+            localObject1 = (BaseChatItemLayout)aekt.a((ListView)localObject1, i);
             if (paramInt != 1) {
               break label189;
             }
@@ -90,14 +90,14 @@ public class SpriteUIHandler
           }
           for (;;)
           {
-            if ((!(localObject2 instanceof adkr)) || (!(localChatMessage instanceof MessageForApollo))) {
+            if ((!(localObject2 instanceof afdb)) || (!(localChatMessage instanceof MessageForApollo))) {
               break label226;
             }
-            localObject1 = (adkr)localObject2;
+            localObject1 = (afdb)localObject2;
             if (paramInt != 1) {
               break;
             }
-            ((adkr)localObject1).a((MessageForApollo)localChatMessage);
+            ((afdb)localObject1).a((MessageForApollo)localChatMessage);
             return;
             localApolloItemBuilder.b((View)localObject1, (MessageForApollo)localChatMessage);
             continue;
@@ -110,12 +110,12 @@ public class SpriteUIHandler
     }
   }
   
-  public acup a()
+  public aelz a()
   {
     if (this.b == null) {
       return null;
     }
-    return (acup)this.b.get();
+    return (aelz)this.b.get();
   }
   
   public XListView a()
@@ -164,12 +164,12 @@ public class SpriteUIHandler
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    if (!ajfh.b(paramQQAppInterface, paramInt, paramString))
+    if (!akwt.b(paramQQAppInterface, paramInt, paramString))
     {
       QLog.i("cmshow_scripted_SpriteUIHandler", 1, "[onDoubleTap], condition NOT meet.");
       return;
     }
-    if (this.jdField_a_of_type_Ajez.d == 1)
+    if (this.jdField_a_of_type_Akwl.d == 1)
     {
       paramInt = 1;
       if (paramInt != 0) {
@@ -192,8 +192,8 @@ public class SpriteUIHandler
       if (paramInt != 0) {
         break label190;
       }
-      bcql.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131690093), 1).a();
-      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_disappear_clk", this.jdField_a_of_type_Ajez.jdField_a_of_type_JavaLangString, 0, 0, new String[] { Integer.toString(ApolloUtil.b(this.jdField_a_of_type_Ajez.jdField_a_of_type_Int)), "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+      QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131690140), 1).a();
+      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_disappear_clk", this.jdField_a_of_type_Akwl.jdField_a_of_type_JavaLangString, 0, 0, new String[] { Integer.toString(ApolloUtil.b(this.jdField_a_of_type_Akwl.jdField_a_of_type_Int)), "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
       return;
       paramInt = 0;
       break;
@@ -201,13 +201,13 @@ public class SpriteUIHandler
       break label38;
     }
     label190:
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_show_clk", 0, 0, new String[] { Integer.toString(ApolloUtil.b(this.jdField_a_of_type_Ajez.jdField_a_of_type_Int)), "0" });
+    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_show_clk", 0, 0, new String[] { Integer.toString(ApolloUtil.b(this.jdField_a_of_type_Akwl.jdField_a_of_type_Int)), "0" });
   }
   
-  public void a(XListView paramXListView, acup paramacup)
+  public void a(XListView paramXListView, aelz paramaelz)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXListView);
-    this.b = new WeakReference(paramacup);
+    this.b = new WeakReference(paramaelz);
   }
   
   public void a(String paramString)
@@ -220,13 +220,13 @@ public class SpriteUIHandler
     if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable != null) {
       ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable);
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable = new SpriteUIHandler.SpriteVisibleRunnable(this.jdField_a_of_type_Ajez, paramBoolean1, paramBoolean2, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable = new SpriteUIHandler.SpriteVisibleRunnable(this.jdField_a_of_type_Akwl, paramBoolean1, paramBoolean2, paramString);
     ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler
  * JD-Core Version:    0.7.0.1
  */

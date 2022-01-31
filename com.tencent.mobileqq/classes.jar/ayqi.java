@@ -1,114 +1,76 @@
-import ConfigPush.FileStorageServerListInfo;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class ayqi
+final class ayqi
+  implements Comparator<ayjh>
 {
-  public String a;
-  public ArrayList<FileStorageServerListInfo> a;
-  public int[] a;
-  public String b;
-  public ArrayList<FileStorageServerListInfo> b;
-  public int[] b;
+  private final aloz jdField_a_of_type_Aloz;
+  private final aubm jdField_a_of_type_Aubm;
   
-  public ayqi()
+  ayqi(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[6];
-    this.jdField_b_of_type_ArrayOfInt = new int[6];
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Aubm = ((aubm)paramQQAppInterface.getManager(11));
+    this.jdField_a_of_type_Aloz = ((aloz)paramQQAppInterface.getManager(51));
   }
   
-  public ArrayList<FileStorageServerListInfo> a(String paramString)
+  public int a(ayjh paramayjh1, ayjh paramayjh2)
   {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-      return this.jdField_a_of_type_JavaUtilArrayList;
+    int i = -1;
+    paramayjh1 = this.jdField_a_of_type_Aubm.c(((ayid)paramayjh1).e());
+    paramayjh2 = this.jdField_a_of_type_Aubm.c(((ayid)paramayjh2).e());
+    if ((paramayjh1 == null) || (paramayjh2 == null)) {
+      if ((paramayjh1 == null) && (paramayjh2 == null)) {
+        i = 0;
+      }
     }
-    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      return this.jdField_b_of_type_JavaUtilArrayList;
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilArrayList.size()];
-    }
-    if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_b_of_type_ArrayOfInt = new int[this.jdField_b_of_type_JavaUtilArrayList.size()];
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (paramString1 != null) {}
-    for (;;)
+    boolean bool2;
+    do
     {
-      try
+      do
       {
-        int i;
-        if (paramString1.equals(this.jdField_a_of_type_JavaLangString))
+        do
         {
-          localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-          paramString1 = this.jdField_a_of_type_ArrayOfInt;
-          if ((localArrayList == null) || (localArrayList.size() <= 0) || (paramString1 == null) || (paramString1.length <= 0)) {
-            break;
-          }
-          paramString2 = new URL(paramString2).getHost();
-          if ((paramString2 == null) || (paramString2.length() <= 0)) {
-            break;
-          }
-          i = 0;
-          if (i >= localArrayList.size()) {
-            break;
-          }
-          String str = ((FileStorageServerListInfo)localArrayList.get(i)).sIP;
-          if ((str != null) && (str.equalsIgnoreCase(paramString2)))
+          do
           {
-            if (paramString1.length <= i) {
-              break;
-            }
-            paramString1[i] += 1;
+            return i;
+          } while (paramayjh2 == null);
+          return 1;
+          if ((paramayjh1.uin.equals("0")) && (paramayjh2.uin.equals("0"))) {
+            break;
           }
-        }
-        else
-        {
-          if ((paramString1 == null) || (!paramString1.equals(this.jdField_b_of_type_JavaLangString))) {
-            break label163;
+          if ((!paramayjh1.uin.equals("0")) && (!paramayjh2.uin.equals("0"))) {
+            return 0;
           }
-          localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-          paramString1 = this.jdField_b_of_type_ArrayOfInt;
-          continue;
+        } while (!paramayjh2.uin.equals("0"));
+        return 1;
+        bool1 = this.jdField_a_of_type_Aloz.a(paramayjh1.unifiedCode, true);
+        bool2 = this.jdField_a_of_type_Aloz.a(paramayjh2.unifiedCode, true);
+        if ((!bool1) && (!bool2)) {
+          break;
         }
-        i += 1;
-        continue;
-        paramString1 = null;
+        if ((bool1) && (bool2)) {
+          return 0;
+        }
+      } while (bool2);
+      return 1;
+      boolean bool1 = TextUtils.isEmpty(paramayjh1.pinyinFirst);
+      bool2 = TextUtils.isEmpty(paramayjh2.pinyinFirst);
+      if ((!bool1) && (!bool2)) {
+        break;
       }
-      catch (MalformedURLException paramString1)
-      {
-        return;
+      if ((bool1) && (bool2)) {
+        return 0;
       }
-      label163:
-      ArrayList localArrayList = null;
-    }
-  }
-  
-  public int[] a(String paramString)
-  {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-      return this.jdField_a_of_type_ArrayOfInt;
-    }
-    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      return this.jdField_b_of_type_ArrayOfInt;
-    }
-    return null;
+    } while (bool2);
+    return 1;
+    return paramayjh1.pinyinFirst.toLowerCase().charAt(0) - paramayjh2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayqi
  * JD-Core Version:    0.7.0.1
  */

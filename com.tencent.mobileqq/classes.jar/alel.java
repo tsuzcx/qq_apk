@@ -1,63 +1,25 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public abstract class alel
-  extends Binder
-  implements alek
+class alel
+  implements Comparator<ApolloActionData>
 {
-  public alel()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-  }
+  alel(aleh paramaleh) {}
   
-  public static alek a(IBinder paramIBinder)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    if (paramIBinder == null) {
-      return null;
+    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
+      return 0;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof alek))) {
-      return (alek)localIInterface;
+    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
+      return 1;
     }
-    return new alem(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      a(paramParcel1.readInt(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-    b(paramParcel1.readInt(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alel
  * JD-Core Version:    0.7.0.1
  */

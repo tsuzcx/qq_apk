@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.banner;
 
-import bjbo;
+import blmy;
 import com.tencent.common.app.AppInterface;
 import java.io.File;
 
@@ -9,7 +9,7 @@ public class QIMCaptureBannerManager$2
 {
   public void run()
   {
-    File localFile = new File(bjbo.a, this.this$0.a().getCurrentAccountUin() + "banner_config");
+    File localFile = new File(blmy.a, this.this$0.a().getCurrentAccountUin() + "banner_config");
     if (localFile.exists()) {
       localFile.delete();
     }
@@ -17,7 +17,7 @@ public class QIMCaptureBannerManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.banner.QIMCaptureBannerManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,39 @@
-import org.json.JSONArray;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
 
-public abstract interface beju
+public class beju
+  implements TextWatcher
 {
-  public abstract void onError(int paramInt);
+  public beju(ConfigClearableEditText paramConfigClearableEditText) {}
   
-  public abstract void onJoinRoom(JSONArray paramJSONArray);
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
+    {
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
+      }
+    }
+    else {
+      return;
+    }
+    if ((ConfigClearableEditText.b(this.a)) || (ConfigClearableEditText.c(this.a)))
+    {
+      this.a.setClearButtonVisible(true);
+      return;
+    }
+    this.a.setClearButtonVisible(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beju
  * JD-Core Version:    0.7.0.1
  */

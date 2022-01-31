@@ -1,56 +1,36 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
-class barh
-  implements ITransactionCallback
+public class barh
 {
-  barh(barg parambarg) {}
+  public int a;
+  public barg a;
+  public bari a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public boolean b;
+  public int c = 3;
+  public int d = 25;
+  public int e = 450000;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public barh()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onFailed errn:" + paramInt);
-    }
-    this.a.e();
+    this.jdField_a_of_type_Int = 480000;
+    this.jdField_b_of_type_Int = 9;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onSuccess");
-    }
-    paramHashMap = new Bdh_extinfo.CommFileExtRsp();
-    try
-    {
-      paramHashMap.mergeFrom(paramArrayOfByte);
-      this.a.b = paramHashMap.bytes_download_url.get().toStringUtf8();
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.b();
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Int = 30000;
+    this.jdField_b_of_type_Int = 1;
+    this.c = 1;
   }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     barh
  * JD-Core Version:    0.7.0.1
  */

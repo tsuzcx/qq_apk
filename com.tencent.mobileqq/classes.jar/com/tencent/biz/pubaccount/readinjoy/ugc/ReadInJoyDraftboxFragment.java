@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import ajya;
+import alpo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bbbm;
-import bbll;
+import bdag;
+import bdkf;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,16 +26,16 @@ import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import osg;
-import pbd;
-import qfc;
+import owy;
+import pgo;
+import qpi;
 
 public class ReadInJoyDraftboxFragment
   extends IphoneTitleBarFragment
 {
   private List<ReadInJoyDraftboxItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private pbd jdField_a_of_type_Pbd = osg.a().a();
-  private qfc jdField_a_of_type_Qfc;
+  private pgo jdField_a_of_type_Pgo = owy.a().a();
+  private qpi jdField_a_of_type_Qpi;
   
   private void b()
   {
@@ -64,7 +64,7 @@ public class ReadInJoyDraftboxFragment
       if (!ThemeUtil.isInNightMode(localFragmentActivity.app)) {
         break label166;
       }
-      if ((bbbm.b()) || (bbbm.d())) {
+      if ((bdag.b()) || (bdag.d())) {
         break label146;
       }
       localFragmentActivity.mSystemBarComp.setStatusBarColor(-7829368);
@@ -72,7 +72,7 @@ public class ReadInJoyDraftboxFragment
     for (;;)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130848498);
+      this.leftView.setBackgroundResource(2130848925);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -83,12 +83,12 @@ public class ReadInJoyDraftboxFragment
       localFragmentActivity.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label166:
-      if ((Build.VERSION.SDK_INT >= 23) && (!bbbm.b()) && (!bbbm.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!bdag.b()) && (!bdag.d()))
       {
         localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
         localFragmentActivity.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!bbbm.d())
+      else if (!bdag.d())
       {
         localFragmentActivity.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -103,26 +103,26 @@ public class ReadInJoyDraftboxFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Qfc = new qfc(getActivity(), this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Qpi = new qpi(getActivity(), this.jdField_a_of_type_JavaUtilList);
     if (this.mContentView != null)
     {
-      paramLayoutInflater = (SwipListView)this.mContentView.findViewById(2131365383);
-      paramLayoutInflater.setAdapter(this.jdField_a_of_type_Qfc);
+      paramLayoutInflater = (SwipListView)this.mContentView.findViewById(2131365468);
+      paramLayoutInflater.setAdapter(this.jdField_a_of_type_Qpi);
       paramLayoutInflater.setDragEnable(true);
       paramLayoutInflater.setDivider(new ColorDrawable(Color.parseColor("#FFF2F2F2")));
-      paramLayoutInflater.setDividerHeight(bbll.a(0.5F));
-      paramLayoutInflater.setEmptyView(this.mContentView.findViewById(2131365382));
+      paramLayoutInflater.setDividerHeight(bdkf.a(0.5F));
+      paramLayoutInflater.setEmptyView(this.mContentView.findViewById(2131365467));
     }
-    setTitle(ajya.a(2131713002));
+    setTitle(alpo.a(2131713374));
     if (this.leftView != null) {
-      this.leftView.setText(ajya.a(2131713003));
+      this.leftView.setText(alpo.a(2131713375));
     }
     a();
   }
   
   public int getContentLayoutId()
   {
-    return 2131559909;
+    return 2131560005;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -138,7 +138,7 @@ public class ReadInJoyDraftboxFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment
  * JD-Core Version:    0.7.0.1
  */

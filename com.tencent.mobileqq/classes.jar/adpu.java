@@ -1,24 +1,25 @@
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
 
 public class adpu
-  extends acuj
+  implements DialogInterface.OnClickListener
 {
-  public RelativeLayout a;
-  public URLDrawable a;
-  public BubbleImageView a;
-  public MessageProgressView a;
-  public RelativeLayout b;
-  public int e;
-  public int f;
+  public adpu(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public adpu(adpq paramadpq) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    RegisterChooseLoginActivity.a(this.a, false);
+    RegisterChooseLoginActivity.a(this.a, false);
+    azmj.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
+    azmj.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 2, 0, "", "", "", "");
+    azmj.a(this.a.app, "new_reg", "next_ask", "no_clk", "", 1, "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpu
  * JD-Core Version:    0.7.0.1
  */

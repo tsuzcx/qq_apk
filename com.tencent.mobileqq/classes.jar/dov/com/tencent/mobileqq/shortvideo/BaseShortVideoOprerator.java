@@ -1,28 +1,28 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import akfv;
+import alxl;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import auna;
-import aunb;
-import aung;
-import aunr;
-import auoq;
-import auor;
-import ayvx;
-import aywc;
-import bkzb;
-import bkzx;
-import bkzz;
-import blaa;
-import blae;
-import blaf;
-import blai;
-import blam;
+import aweh;
+import awei;
+import awen;
+import awey;
+import awfy;
+import awfz;
+import batw;
+import baub;
+import bnkl;
+import bnlh;
+import bnlj;
+import bnlk;
+import bnlo;
+import bnlp;
+import bnls;
+import bnlw;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -30,12 +30,12 @@ import mqq.os.MqqHandler;
 import tencent.im.msg.im_msg_body.RichText;
 
 public abstract class BaseShortVideoOprerator
-  implements auna, auoq, bkzx
+  implements aweh, awfy, bnlh
 {
   static int a;
   protected Handler a;
-  public blae a;
-  protected blam a;
+  public bnlo a;
+  protected bnlw a;
   public QQAppInterface a;
   public MessageRecord a;
   public String a;
@@ -52,11 +52,11 @@ public abstract class BaseShortVideoOprerator
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new bkzb(this, Looper.getMainLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new bnkl(this, Looper.getMainLooper());
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, blae paramblae)
+  public static void a(QQAppInterface paramQQAppInterface, bnlo parambnlo)
   {
     ThreadManager.post(new BaseShortVideoOprerator.2(), 8, null, false);
   }
@@ -75,45 +75,45 @@ public abstract class BaseShortVideoOprerator
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  protected void a(int paramInt, aunr paramaunr)
+  protected void a(int paramInt, awey paramawey)
   {
-    blaf localblaf = new blaf();
-    localblaf.jdField_a_of_type_Blae = this.jdField_a_of_type_Blae;
-    localblaf.jdField_a_of_type_Aunr = paramaunr;
-    localblaf.jdField_a_of_type_Int = -1;
-    a(paramInt, -1, localblaf);
-    if (paramaunr != null)
+    bnlp localbnlp = new bnlp();
+    localbnlp.jdField_a_of_type_Bnlo = this.jdField_a_of_type_Bnlo;
+    localbnlp.jdField_a_of_type_Awey = paramawey;
+    localbnlp.jdField_a_of_type_Int = -1;
+    a(paramInt, -1, localbnlp);
+    if (paramawey != null)
     {
-      aung.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramaunr.jdField_a_of_type_JavaLangString, paramaunr.jdField_b_of_type_JavaLangString);
+      awen.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramawey.jdField_a_of_type_JavaLangString, paramawey.jdField_b_of_type_JavaLangString);
       return;
     }
-    aung.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "handleError", "unkown err,err == null");
+    awen.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "handleError", "unkown err,err == null");
   }
   
-  protected void a(int paramInt, blaf paramblaf)
+  protected void a(int paramInt, bnlp parambnlp)
   {
-    blaf localblaf = paramblaf;
-    if (paramblaf == null) {
-      localblaf = new blaf();
+    bnlp localbnlp = parambnlp;
+    if (parambnlp == null) {
+      localbnlp = new bnlp();
     }
-    localblaf.jdField_a_of_type_Int = 0;
-    localblaf.jdField_a_of_type_Blae = this.jdField_a_of_type_Blae;
-    a(paramInt, 0, localblaf);
-    aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "handleSuccess", "what:" + paramInt);
+    localbnlp.jdField_a_of_type_Int = 0;
+    localbnlp.jdField_a_of_type_Bnlo = this.jdField_a_of_type_Bnlo;
+    a(paramInt, 0, localbnlp);
+    awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "handleSuccess", "what:" + paramInt);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    blaf localblaf = new blaf();
-    localblaf.jdField_a_of_type_Int = 0;
-    localblaf.jdField_a_of_type_JavaLangObject = Integer.valueOf(paramInt);
-    a(1, 0, localblaf);
+    bnlp localbnlp = new bnlp();
+    localbnlp.jdField_a_of_type_Int = 0;
+    localbnlp.jdField_a_of_type_JavaLangObject = Integer.valueOf(paramInt);
+    a(1, 0, localbnlp);
   }
   
   public void a(Message paramMessage)
   {
-    aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
-    if (this.jdField_a_of_type_Blam == null) {}
+    awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
+    if (this.jdField_a_of_type_Bnlw == null) {}
     int i;
     do
     {
@@ -125,17 +125,17 @@ public abstract class BaseShortVideoOprerator
       default: 
         return;
       case 0: 
-        paramMessage = (blaf)paramMessage.obj;
-        this.jdField_a_of_type_Blam.a(i, paramMessage);
+        paramMessage = (bnlp)paramMessage.obj;
+        this.jdField_a_of_type_Bnlw.a(i, paramMessage);
         return;
       case 1: 
-        paramMessage = (blaf)paramMessage.obj;
+        paramMessage = (bnlp)paramMessage.obj;
       }
     } while (!(paramMessage.jdField_a_of_type_JavaLangObject instanceof Integer));
-    this.jdField_a_of_type_Blam.a(((Integer)paramMessage.jdField_a_of_type_JavaLangObject).intValue());
+    this.jdField_a_of_type_Bnlw.a(((Integer)paramMessage.jdField_a_of_type_JavaLangObject).intValue());
     return;
-    paramMessage = (blaf)paramMessage.obj;
-    this.jdField_a_of_type_Blam.b(i, paramMessage);
+    paramMessage = (bnlp)paramMessage.obj;
+    this.jdField_a_of_type_Bnlw.b(i, paramMessage);
     return;
     if (paramMessage.obj != null) {}
     for (;;)
@@ -143,7 +143,7 @@ public abstract class BaseShortVideoOprerator
       try
       {
         paramMessage = (ArrayList)paramMessage.obj;
-        this.jdField_a_of_type_Blam.a(i, paramMessage);
+        this.jdField_a_of_type_Bnlw.a(i, paramMessage);
         return;
       }
       catch (ClassCastException paramMessage)
@@ -151,85 +151,85 @@ public abstract class BaseShortVideoOprerator
         paramMessage = null;
         continue;
       }
-      paramMessage = (blaf)paramMessage.obj;
-      this.jdField_a_of_type_Blam.a(paramMessage.jdField_a_of_type_ArrayOfJavaLangString, paramMessage.jdField_a_of_type_JavaLangString);
+      paramMessage = (bnlp)paramMessage.obj;
+      this.jdField_a_of_type_Bnlw.a(paramMessage.jdField_a_of_type_ArrayOfJavaLangString, paramMessage.jdField_a_of_type_JavaLangString);
       return;
       paramMessage = null;
     }
   }
   
-  public void a(aunb paramaunb)
+  public void a(awei paramawei)
   {
-    if (paramaunb == null)
+    if (paramawei == null)
     {
-      paramaunb = new aunr();
-      paramaunb.jdField_b_of_type_JavaLangString = "result == null";
-      paramaunb.jdField_a_of_type_JavaLangString = "onDownload";
-      a(0, paramaunb);
+      paramawei = new awey();
+      paramawei.jdField_b_of_type_JavaLangString = "result == null";
+      paramawei.jdField_a_of_type_JavaLangString = "onDownload";
+      a(0, paramawei);
       return;
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Blae);
-    aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "onDownload", "result:" + paramaunb.jdField_a_of_type_Int);
-    Object localObject = new blaf();
-    ((blaf)localObject).jdField_a_of_type_Int = paramaunb.jdField_a_of_type_Int;
-    ((blaf)localObject).jdField_a_of_type_JavaLangObject = paramaunb;
-    if (paramaunb.jdField_a_of_type_Int == 0)
+    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bnlo);
+    awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "onDownload", "result:" + paramawei.jdField_a_of_type_Int);
+    Object localObject = new bnlp();
+    ((bnlp)localObject).jdField_a_of_type_Int = paramawei.jdField_a_of_type_Int;
+    ((bnlp)localObject).jdField_a_of_type_JavaLangObject = paramawei;
+    if (paramawei.jdField_a_of_type_Int == 0)
     {
-      a(0, (blaf)localObject);
+      a(0, (bnlp)localObject);
       return;
     }
-    if (paramaunb.jdField_a_of_type_Aunr == null)
+    if (paramawei.jdField_a_of_type_Awey == null)
     {
-      localObject = new aunr();
-      ((aunr)localObject).jdField_b_of_type_JavaLangString = (paramaunb.jdField_b_of_type_Int + "_" + paramaunb.jdField_a_of_type_JavaLangString);
-      ((aunr)localObject).jdField_a_of_type_JavaLangString = "onDownload";
-      a(0, (aunr)localObject);
+      localObject = new awey();
+      ((awey)localObject).jdField_b_of_type_JavaLangString = (paramawei.jdField_b_of_type_Int + "_" + paramawei.jdField_a_of_type_JavaLangString);
+      ((awey)localObject).jdField_a_of_type_JavaLangString = "onDownload";
+      a(0, (awey)localObject);
       return;
     }
-    a(0, paramaunb.jdField_a_of_type_Aunr);
+    a(0, paramawei.jdField_a_of_type_Awey);
   }
   
-  public void a(bkzz parambkzz)
+  public void a(bnlj parambnlj)
   {
-    aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "downloadShortVideo", "start " + Thread.currentThread().getId());
-    if (a(parambkzz))
+    awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "downloadShortVideo", "start " + Thread.currentThread().getId());
+    if (a(parambnlj))
     {
-      b(parambkzz);
+      b(parambnlj);
       return;
     }
-    aunb localaunb = new aunb();
-    localaunb.jdField_a_of_type_Int = -1;
-    localaunb.jdField_a_of_type_Aunr = parambkzz.jdField_a_of_type_Aunr;
-    a(localaunb);
+    awei localawei = new awei();
+    localawei.jdField_a_of_type_Int = -1;
+    localawei.jdField_a_of_type_Awey = parambnlj.jdField_a_of_type_Awey;
+    a(localawei);
   }
   
-  public void a(blaa paramblaa)
+  public void a(bnlk parambnlk)
   {
-    aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "forwardShortVideo", "start " + Thread.currentThread().getId());
-    if (a(paramblaa)) {
-      ThreadManager.getSubThreadHandler().post(new BaseShortVideoOprerator.ForwardShortVideoTask(this, paramblaa));
+    awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "forwardShortVideo", "start " + Thread.currentThread().getId());
+    if (a(parambnlk)) {
+      ThreadManager.getSubThreadHandler().post(new BaseShortVideoOprerator.ForwardShortVideoTask(this, parambnlk));
     }
-    while (paramblaa == null) {
+    while (parambnlk == null) {
       return;
     }
-    a(3, paramblaa.jdField_a_of_type_Aunr);
+    a(3, parambnlk.jdField_a_of_type_Awey);
   }
   
-  public void a(blai paramblai)
+  public void a(bnls parambnls)
   {
-    aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "sendShortVideo", "start " + Thread.currentThread().getId());
-    if (a(paramblai)) {
-      ThreadManager.getSubThreadHandler().post(new BaseShortVideoOprerator.SendShortVideoTask(this, paramblai));
+    awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "sendShortVideo", "start " + Thread.currentThread().getId());
+    if (a(parambnls)) {
+      ThreadManager.getSubThreadHandler().post(new BaseShortVideoOprerator.SendShortVideoTask(this, parambnls));
     }
-    while (paramblai == null) {
+    while (parambnls == null) {
       return;
     }
-    a(2, paramblai.jdField_a_of_type_Aunr);
+    a(2, parambnls.jdField_a_of_type_Awey);
   }
   
-  public void a(blam paramblam)
+  public void a(bnlw parambnlw)
   {
-    this.jdField_a_of_type_Blam = paramblam;
+    this.jdField_a_of_type_Bnlw = parambnlw;
   }
   
   public void a(MessageRecord paramMessageRecord)
@@ -238,12 +238,12 @@ public abstract class BaseShortVideoOprerator
       return;
     }
     long l = System.currentTimeMillis();
-    ((akfv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(paramMessageRecord);
+    ((alxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(paramMessageRecord);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "addMsg", "cost:" + (System.currentTimeMillis() - l));
+    awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "addMsg", "cost:" + (System.currentTimeMillis() - l));
   }
   
-  public void a(ArrayList<blaa> paramArrayList)
+  public void a(ArrayList<bnlk> paramArrayList)
   {
     if (QLog.isColorLevel()) {
       QLog.d("BaseShortVideoOprerator", 2, "multiForwardShortVideo start:" + Thread.currentThread().getId());
@@ -259,119 +259,119 @@ public abstract class BaseShortVideoOprerator
     ThreadManager.getSubThreadHandler().post(new BaseShortVideoOprerator.MultiForwardShortVideoTask(this, paramArrayList));
   }
   
-  boolean a(bkzz parambkzz)
+  boolean a(bnlj parambnlj)
   {
-    if (parambkzz != null)
+    if (parambnlj != null)
     {
-      aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoDownloadInfo", "info:" + parambkzz);
-      return parambkzz.a();
+      awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoDownloadInfo", "info:" + parambnlj);
+      return parambnlj.a();
     }
-    aung.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoDownloadInfo", "info == null");
+    awen.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoDownloadInfo", "info == null");
     return false;
   }
   
-  boolean a(blaa paramblaa)
+  boolean a(bnlk parambnlk)
   {
-    if (paramblaa != null)
+    if (parambnlk != null)
     {
-      aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoForwardInfo", "info:" + paramblaa);
-      return paramblaa.a();
+      awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoForwardInfo", "info:" + parambnlk);
+      return parambnlk.a();
     }
-    aung.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoForwardInfo", "info == null");
+    awen.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoForwardInfo", "info == null");
     return false;
   }
   
-  boolean a(blai paramblai)
+  boolean a(bnls parambnls)
   {
-    if (paramblai != null)
+    if (parambnls != null)
     {
-      aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoUploadInfo", "info:" + paramblai);
-      return paramblai.a();
+      awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoUploadInfo", "info:" + parambnls);
+      return parambnls.a();
     }
-    aung.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoUploadInfo", "info == null");
+    awen.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkShortVideoUploadInfo", "info == null");
     return false;
   }
   
-  public void b(auor paramauor)
+  public void b(awfz paramawfz)
   {
-    if (paramauor == null)
+    if (paramawfz == null)
     {
       a(2, null);
       return;
     }
-    if (paramauor.jdField_a_of_type_Int == 0)
+    if (paramawfz.jdField_a_of_type_Int == 0)
     {
-      a(paramauor);
-      localObject = new blaf();
-      ((blaf)localObject).jdField_a_of_type_Int = 0;
-      ((blaf)localObject).jdField_a_of_type_JavaLangObject = paramauor;
-      a(2, (blaf)localObject);
+      a(paramawfz);
+      localObject = new bnlp();
+      ((bnlp)localObject).jdField_a_of_type_Int = 0;
+      ((bnlp)localObject).jdField_a_of_type_JavaLangObject = paramawfz;
+      a(2, (bnlp)localObject);
       return;
     }
-    Object localObject = new aunr();
-    ((aunr)localObject).jdField_b_of_type_JavaLangString = paramauor.jdField_a_of_type_JavaLangString;
-    a(2, (aunr)localObject);
+    Object localObject = new awey();
+    ((awey)localObject).jdField_b_of_type_JavaLangString = paramawfz.jdField_a_of_type_JavaLangString;
+    a(2, (awey)localObject);
   }
   
-  void b(bkzz parambkzz)
+  void b(bnlj parambnlj)
   {
     long l = System.currentTimeMillis();
-    parambkzz.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    aywc localaywc = new aywc();
-    localaywc.jdField_b_of_type_JavaLangString = parambkzz.jdField_b_of_type_JavaLangString;
-    localaywc.jdField_c_of_type_JavaLangString = parambkzz.jdField_c_of_type_JavaLangString;
-    localaywc.d = parambkzz.d;
-    localaywc.jdField_a_of_type_Int = parambkzz.jdField_b_of_type_Int;
-    localaywc.jdField_a_of_type_Long = parambkzz.jdField_a_of_type_Long;
-    localaywc.jdField_a_of_type_Boolean = false;
-    localaywc.jdField_e_of_type_Int = parambkzz.jdField_a_of_type_Int;
-    localaywc.jdField_g_of_type_Int = parambkzz.f;
-    localaywc.jdField_a_of_type_JavaLangObject = Integer.valueOf(parambkzz.jdField_g_of_type_Int);
-    localaywc.jdField_g_of_type_Boolean = parambkzz.jdField_a_of_type_Boolean;
-    if ((parambkzz.jdField_e_of_type_Int == 1001) || (parambkzz.jdField_e_of_type_Int == 1003) || (parambkzz.jdField_e_of_type_Int == 1005) || (parambkzz.jdField_e_of_type_Int == 1002) || (parambkzz.jdField_e_of_type_Int == 1004) || (parambkzz.jdField_e_of_type_Int == 1006)) {
-      localaywc.f = parambkzz.jdField_e_of_type_JavaLangString;
+    parambnlj.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    baub localbaub = new baub();
+    localbaub.jdField_b_of_type_JavaLangString = parambnlj.jdField_b_of_type_JavaLangString;
+    localbaub.jdField_c_of_type_JavaLangString = parambnlj.jdField_c_of_type_JavaLangString;
+    localbaub.d = parambnlj.d;
+    localbaub.jdField_a_of_type_Int = parambnlj.jdField_b_of_type_Int;
+    localbaub.jdField_a_of_type_Long = parambnlj.jdField_a_of_type_Long;
+    localbaub.jdField_a_of_type_Boolean = false;
+    localbaub.jdField_e_of_type_Int = parambnlj.jdField_a_of_type_Int;
+    localbaub.jdField_g_of_type_Int = parambnlj.f;
+    localbaub.jdField_a_of_type_JavaLangObject = Integer.valueOf(parambnlj.jdField_g_of_type_Int);
+    localbaub.jdField_g_of_type_Boolean = parambnlj.jdField_a_of_type_Boolean;
+    if ((parambnlj.jdField_e_of_type_Int == 1001) || (parambnlj.jdField_e_of_type_Int == 1003) || (parambnlj.jdField_e_of_type_Int == 1005) || (parambnlj.jdField_e_of_type_Int == 1002) || (parambnlj.jdField_e_of_type_Int == 1004) || (parambnlj.jdField_e_of_type_Int == 1006)) {
+      localbaub.f = parambnlj.jdField_e_of_type_JavaLangString;
     }
-    if (this.jdField_a_of_type_Blam != null) {
-      localaywc.jdField_a_of_type_Auna = this;
+    if (this.jdField_a_of_type_Bnlw != null) {
+      localbaub.jdField_a_of_type_Aweh = this;
     }
-    switch (parambkzz.jdField_e_of_type_Int)
+    switch (parambnlj.jdField_e_of_type_Int)
     {
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Blae != null) && (this.jdField_a_of_type_Blae.a != null)) {
-        localaywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_Blae.a;
+      if ((this.jdField_a_of_type_Bnlo != null) && (this.jdField_a_of_type_Bnlo.a != null)) {
+        localbaub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_Bnlo.a;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoItemBuilder", 2, " startDownloadVideo downloadvideo fileType==" + parambkzz.jdField_e_of_type_Int + "downloadvideo MD5==" + parambkzz.jdField_e_of_type_JavaLangString);
+        QLog.d("ShortVideoItemBuilder", 2, " startDownloadVideo downloadvideo fileType==" + parambnlj.jdField_e_of_type_Int + "downloadvideo MD5==" + parambnlj.jdField_e_of_type_JavaLangString);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaywc);
-      aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "doDownloadShortVideo", "cost:" + (System.currentTimeMillis() - l));
-      aung.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "doDownloadShortVideo.start", "TransferRequest: " + localaywc.toString());
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbaub);
+      awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "doDownloadShortVideo", "cost:" + (System.currentTimeMillis() - l));
+      awen.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "doDownloadShortVideo.start", "TransferRequest: " + localbaub.toString());
       return;
-      localaywc.jdField_b_of_type_Int = 7;
-      localaywc.i = (parambkzz.i + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_e_of_type_Int);
+      localbaub.jdField_b_of_type_Int = 7;
+      localbaub.i = (parambnlj.i + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_e_of_type_Int);
       continue;
-      localaywc.jdField_b_of_type_Int = 16;
-      localaywc.i = (parambkzz.i + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_e_of_type_Int);
+      localbaub.jdField_b_of_type_Int = 16;
+      localbaub.i = (parambnlj.i + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_e_of_type_Int);
       continue;
-      localaywc.jdField_b_of_type_Int = 18;
-      localaywc.i = (parambkzz.i + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_e_of_type_Int);
+      localbaub.jdField_b_of_type_Int = 18;
+      localbaub.i = (parambnlj.i + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_e_of_type_Int);
       continue;
-      localaywc.jdField_b_of_type_Int = 6;
-      localaywc.i = (parambkzz.h + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_e_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_c_of_type_Int);
+      localbaub.jdField_b_of_type_Int = 6;
+      localbaub.i = (parambnlj.h + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_e_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_c_of_type_Int);
       continue;
-      localaywc.jdField_b_of_type_Int = 9;
-      localaywc.i = (parambkzz.h + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_e_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_c_of_type_Int);
+      localbaub.jdField_b_of_type_Int = 9;
+      localbaub.i = (parambnlj.h + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_e_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_c_of_type_Int);
       continue;
-      localaywc.jdField_b_of_type_Int = 17;
-      localaywc.i = (parambkzz.h + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_e_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + parambkzz.jdField_c_of_type_Int);
+      localbaub.jdField_b_of_type_Int = 17;
+      localbaub.i = (parambnlj.h + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_e_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + parambnlj.jdField_c_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator
  * JD-Core Version:    0.7.0.1
  */

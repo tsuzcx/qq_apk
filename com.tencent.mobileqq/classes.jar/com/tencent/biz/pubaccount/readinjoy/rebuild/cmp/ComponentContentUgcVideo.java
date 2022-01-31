@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -15,12 +15,12 @@ import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
-import omr;
-import onh;
-import pau;
-import puy;
-import qda;
-import qdc;
+import orc;
+import ors;
+import pgd;
+import qbs;
+import qmw;
+import qmy;
 
 public class ComponentContentUgcVideo
   extends ComponentContentBigImageVideo
@@ -42,17 +42,17 @@ public class ComponentContentUgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559865, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559960, this, true);
   }
   
-  public URL a(pau parampau)
+  public URL a(pgd parampgd)
   {
-    ArticleInfo localArticleInfo = parampau.a();
+    ArticleInfo localArticleInfo = parampgd.a();
     if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.a != null) && (localArticleInfo.mSocialFeedInfo.a.b.size() > 0))
     {
-      Object localObject = (qdc)localArticleInfo.mSocialFeedInfo.a.b.get(0);
-      int i = ((qdc)localObject).c;
-      int j = ((qdc)localObject).d;
+      Object localObject = (qmy)localArticleInfo.mSocialFeedInfo.a.b.get(0);
+      int i = ((qmy)localObject).c;
+      int j = ((qmy)localObject).d;
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams() != null))
       {
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
@@ -70,8 +70,8 @@ public class ComponentContentUgcVideo
           }
           while (localObject != null)
           {
-            parampau = (pau)localObject;
-            return parampau;
+            parampgd = (pgd)localObject;
+            return parampgd;
             label204:
             QLog.d("ComponentContentUgcVideo", 2, "ivWidth: " + k + ", ivHeight: " + m);
           }
@@ -92,7 +92,7 @@ public class ComponentContentUgcVideo
         if (localObject == null) {
           break label327;
         }
-        parampau = (pau)localObject;
+        parampgd = (pgd)localObject;
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -103,7 +103,7 @@ public class ComponentContentUgcVideo
       }
     }
     label327:
-    return super.a(parampau);
+    return super.a(parampgd);
   }
   
   public void a(View paramView)
@@ -125,18 +125,18 @@ public class ComponentContentUgcVideo
     int k;
     boolean bool;
     int j;
-    if ((this.jdField_a_of_type_Puy.a != null) && (this.jdField_a_of_type_Puy.a.a() != null))
+    if ((this.jdField_a_of_type_Qbs.a != null) && (this.jdField_a_of_type_Qbs.a.a() != null))
     {
-      localArticleInfo = this.jdField_a_of_type_Puy.a.a();
+      localArticleInfo = this.jdField_a_of_type_Qbs.a.a();
       if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.a != null) && (localArticleInfo.mSocialFeedInfo.a.b.size() > 0))
       {
         localLayoutParams = getLayoutParams();
         localObject = getResources().getDisplayMetrics();
         i = Math.min(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
-        k = actj.a(12.0F, getResources());
+        k = aekt.a(12.0F, getResources());
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
-        qdc localqdc = (qdc)localArticleInfo.mSocialFeedInfo.a.b.get(0);
-        if (onh.a(localqdc.c, localqdc.d)) {
+        qmy localqmy = (qmy)localArticleInfo.mSocialFeedInfo.a.b.get(0);
+        if (ors.a(localqmy.c, localqmy.d)) {
           break label299;
         }
         bool = true;
@@ -165,7 +165,7 @@ public class ComponentContentUgcVideo
       label305:
       if (localArticleInfo.mChannelID == 0L)
       {
-        i = omr.a(i, getResources());
+        i = orc.a(i, getResources());
         QLog.d("ComponentContentUgcVideo", 2, "main feeds | ivWidth is " + i + "; ivHeight is " + i);
         j = i;
       }
@@ -179,7 +179,7 @@ public class ComponentContentUgcVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo
  * JD-Core Version:    0.7.0.1
  */

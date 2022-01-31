@@ -1,62 +1,60 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.StringTokenizer;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import java.util.ArrayList;
 
 public abstract class aygz
+  extends ayjm
 {
-  public int a;
-  public ayhf a;
-  public QQAppInterface a;
-  public ChatMessage a;
-  public String a;
+  protected QQAppInterface a;
+  protected FTSEntity a;
+  protected CharSequence a;
+  protected String a;
+  protected ArrayList<String> a;
+  protected CharSequence b;
+  protected CharSequence c;
+  private CharSequence d;
   
-  public aygz(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, ayhf paramayhf)
+  public aygz(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramChatMessage.frienduin;
-    this.jdField_a_of_type_Int = paramChatMessage.istroop;
-    this.jdField_a_of_type_Ayhf = paramayhf;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity = paramFTSEntity;
   }
   
-  public abstract String a();
-  
-  public abstract void a(ayha paramayha);
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
   public boolean a()
   {
-    Object localObject = andb.a().c();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null, or maybe has not recv");
-      }
-    }
-    String str;
-    do
-    {
-      while (!((StringTokenizer)localObject).hasMoreTokens())
-      {
-        do
-        {
-          return false;
-          str = apvd.a(a());
-          localObject = new StringTokenizer((String)localObject, "|");
-          if (((StringTokenizer)localObject).hasMoreTokens()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null");
-        return false;
-      }
-    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
-    return true;
+    return false;
   }
+  
+  public CharSequence b()
+  {
+    if (this.d == null) {
+      this.d = ayrd.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mContent, this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    return this.d;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
+  
+  public abstract CharSequence e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aygz
  * JD-Core Version:    0.7.0.1
  */

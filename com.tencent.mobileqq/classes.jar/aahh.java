@@ -1,22 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.view.View;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
+import com.tencent.ark.ArkViewImplement.InputCallback;
 
-public class aahh
-  implements DialogInterface.OnClickListener
+class aahh
+  implements ArkViewImplement.InputCallback
 {
-  public aahh(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString, int paramInt) {}
+  aahh(aahe paramaahe, AdArkAdapter.Callback paramCallback) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFocusChanged(View paramView, boolean paramBoolean)
   {
-    bbrk.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, "mvip.n.a.gnew_apply", this.jdField_a_of_type_JavaLangString, 3, false, false, "", "", true, true);
-    axqy.b(null, "dc00898", "", "", "qq_vip", "0X800A4FB", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onFocusChanged(paramView, paramBoolean);
+    }
   }
+  
+  public void onHideMenu(View paramView) {}
+  
+  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,39 @@
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.List;
 
-public class akrk
-  implements Comparator<akrl>
+class akrk
+  implements akzp
 {
-  private int a;
+  akrk(akrg paramakrg, int paramInt) {}
   
-  public akrk(int paramInt)
+  public void a(boolean paramBoolean, String paramString, List<akzn> paramList)
   {
-    this.a = paramInt;
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      paramString = EIPCResult.createResult(i, null);
+      this.jdField_a_of_type_Akrg.callbackResult(this.jdField_a_of_type_Int, paramString);
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      return;
+    }
   }
   
-  public int a(akrl paramakrl1, akrl paramakrl2)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (this.a == 2) {
-      if (paramakrl1.b <= paramakrl2.b) {}
-    }
-    while (paramakrl1.a > paramakrl2.a)
+    if (paramBoolean) {}
+    for (paramInt1 = 0;; paramInt1 = -1)
     {
-      return -1;
-      if (paramakrl1.b < paramakrl2.b) {
-        return 1;
-      }
-      return 0;
+      paramString = EIPCResult.createResult(paramInt1, null);
+      this.jdField_a_of_type_Akrg.callbackResult(this.jdField_a_of_type_Int, paramString);
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      return;
     }
-    if (paramakrl1.a < paramakrl2.a) {
-      return 1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akrk
  * JD-Core Version:    0.7.0.1
  */

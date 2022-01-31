@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.text;
 
 import android.view.View;
-import bjhn;
+import blsy;
 
 class DynamicTextItem$1
   implements Runnable
@@ -10,11 +10,11 @@ class DynamicTextItem$1
   
   public void run()
   {
-    bjhn localbjhn = DynamicTextItem.a(this.this$0);
+    blsy localblsy = DynamicTextItem.a(this.this$0);
     if (!((Boolean)DynamicTextItem.a(this.this$0).b).booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
-      localbjhn.b = Boolean.valueOf(bool);
+      localblsy.b = Boolean.valueOf(bool);
       this.a.invalidate();
       return;
     }
@@ -22,7 +22,7 @@ class DynamicTextItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.text.DynamicTextItem.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,22 @@
-class amox
+public class amox
 {
-  public byte a;
+  public long a;
   public String a;
-  public byte b;
-  public String b = "";
+  public long b;
   
-  amox(amow paramamow)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    StringBuffer localStringBuffer = new StringBuffer("PlayGuideShowInfo{");
+    localStringBuffer.append("nStartTime=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", nEndTime=").append(this.b);
+    localStringBuffer.append(", strShow=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amox
  * JD-Core Version:    0.7.0.1
  */

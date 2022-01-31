@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.ugc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
-import qef;
-import qeg;
+import qoe;
+import qof;
 
 public class KandianVideoUploadController$1$1
   implements Runnable
 {
-  public KandianVideoUploadController$1$1(qeg paramqeg) {}
+  public KandianVideoUploadController$1$1(qof paramqof) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class KandianVideoUploadController$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadController.1.1
  * JD-Core Version:    0.7.0.1
  */

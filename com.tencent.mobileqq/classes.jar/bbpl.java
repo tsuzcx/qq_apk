@@ -1,38 +1,14 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ReplacementSpan;
-import com.tencent.qphone.base.util.QLog;
-
 public class bbpl
-  extends ReplacementSpan
 {
-  public int a;
-  public int b;
-  
-  public bbpl(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorSpan", 2, "onDraw");
-    }
-  }
-  
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return 0;
-  }
+  public static int a = -1;
+  public static int b = 1;
+  public static int c = 2;
+  public bbla a;
+  public int d = a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbpl
  * JD-Core Version:    0.7.0.1
  */

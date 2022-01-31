@@ -1,73 +1,60 @@
-import OnlinePushPack.SvcRespPushMsg;
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.game.SensorAPIJavaScript.9.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
 
-public class nbx
-  implements nbn
+final class nbx
+  implements BusinessObserver
 {
-  public nbx(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  nbx(NewIntent paramNewIntent, nbs paramnbs, boolean paramBoolean1, boolean paramBoolean2, AppRuntime paramAppRuntime, boolean paramBoolean3) {}
   
-  public void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      AppInterface localAppInterface = this.a.mRuntime.a();
-      if (localAppInterface != null)
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("HtmlCheckUpdate", 2, "-->offline:checkUpdate,onReceive:isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      try
       {
-        ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", localAppInterface.getAccount(), "OnlinePush.RespPush");
-        localToServiceMsg.setNeedCallback(false);
-        UniPacket localUniPacket = new UniPacket(true);
-        localUniPacket.setEncodeName("utf-8");
-        int i = awyn.a;
-        awyn.a = i + 1;
-        localUniPacket.setRequestId(i);
-        localUniPacket.setServantName("OnlinePush");
-        localUniPacket.setFuncName("SvcRespPushMsg");
-        localUniPacket.setRequestId(paramInt);
-        localUniPacket.put("resp", paramSvcRespPushMsg);
-        localToServiceMsg.putWupBuffer(localUniPacket.encode());
-        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), amlx.class);
-        paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
-        localAppInterface.startServlet(paramSvcRespPushMsg);
-        if (QLog.isColorLevel()) {
-          QLog.d("SensorApi", 2, "reply push");
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          return;
         }
+        OfflinePkg.RspBody localRspBody = new OfflinePkg.RspBody();
+        localRspBody.mergeFrom(paramBundle);
+        paramBundle = new String(localRspBody.str_offline_pkg.get().toByteArray(), "UTF-8");
+        if (this.jdField_a_of_type_Nbs != null) {
+          this.jdField_a_of_type_Nbs.loaded(paramBundle, 0);
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          return;
+        }
+        if (this.b)
+        {
+          nbv.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, this.jdField_a_of_type_Nbs);
+          return;
+        }
+        nbv.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, null);
+        return;
       }
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    String str = SensorAPIJavaScript.jdField_a_of_type_Nbk.a(String.valueOf(paramInt));
-    if (!TextUtils.isEmpty(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SensorApi", 2, "send data to appId=" + paramInt);
+      catch (Exception paramBundle)
+      {
+        this.jdField_a_of_type_Nbs.loaded("{\"r\":-1}", 2);
+        return;
       }
-      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
-        this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new SensorAPIJavaScript.9.1(this, str, paramString));
+    } else if (this.jdField_a_of_type_Nbs != null) {
+      this.jdField_a_of_type_Nbs.loaded("{\"r\":-1}", 2);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("SensorApi", 2, "appId=" + paramInt + "'s callback is empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbx
  * JD-Core Version:    0.7.0.1
  */

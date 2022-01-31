@@ -1,20 +1,25 @@
-import android.graphics.Bitmap;
+import eipc.EIPCResult;
 
-public class akrl
+class akrl
+  implements bdpy
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
+  akrl(akrg paramakrg, bdpx parambdpx, int paramInt) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Bdpx.a(null);
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      EIPCResult localEIPCResult = EIPCResult.createResult(i, null);
+      this.jdField_a_of_type_Akrg.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akrl
  * JD-Core Version:    0.7.0.1
  */

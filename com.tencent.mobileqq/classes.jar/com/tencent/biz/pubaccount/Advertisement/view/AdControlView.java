@@ -8,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
-import njm;
-import njn;
+import nmi;
+import nmj;
 
 public class AdControlView
   extends RelativeLayout
@@ -45,17 +45,17 @@ public class AdControlView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(getContext()).inflate(2131559140, this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378939);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131379133);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131362032);
-    this.d = findViewById(2131362043);
-    this.e = findViewById(2131370412);
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar = ((AdvertisementSplitedProgressBar)findViewById(2131379085));
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131719232));
-    this.jdField_b_of_type_AndroidViewView.setContentDescription(getResources().getString(2131699447));
+    LayoutInflater.from(getContext()).inflate(2131559183, this);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379590);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131379826);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131362035);
+    this.d = findViewById(2131362046);
+    this.e = findViewById(2131370718);
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar = ((AdvertisementSplitedProgressBar)findViewById(2131379764));
+    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131719713));
+    this.jdField_b_of_type_AndroidViewView.setContentDescription(getResources().getString(2131699799));
     this.jdField_c_of_type_AndroidViewView.setContentDescription(getResources().getString(2131689559));
-    this.d.setContentDescription(getResources().getString(2131692742));
+    this.d.setContentDescription(getResources().getString(2131692824));
     this.e.setContentDescription(getResources().getString(2131689559));
   }
   
@@ -64,8 +64,8 @@ public class AdControlView
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F, 1.0F }).setDuration(1000L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(3);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new njm(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new njn(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new nmi(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new nmj(this));
   }
   
   public View a()
@@ -82,7 +82,7 @@ public class AdControlView
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841154);
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841274);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_a_of_type_Boolean = true;
   }
@@ -196,7 +196,7 @@ public class AdControlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.AdControlView
  * JD-Core Version:    0.7.0.1
  */

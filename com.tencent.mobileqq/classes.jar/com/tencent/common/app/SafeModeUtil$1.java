@@ -1,7 +1,7 @@
 package com.tencent.common.app;
 
 import android.content.Context;
-import xop;
+import zdi;
 
 public final class SafeModeUtil$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class SafeModeUtil$1
   
   public void run()
   {
-    xop.a(this.a, 2);
+    zdi.a(this.a, 2);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime;
 
 import android.content.Context;
-import bhvy;
+import bjxj;
 import com.tencent.commonsdk.cache.QQHashMap;
-import rqd;
-import rqg;
+import sgc;
+import sgf;
 
 public class RealTimeTemplateFactoryCache
-  extends QQHashMap<String, rqg>
+  extends QQHashMap<String, sgf>
 {
   public RealTimeTemplateFactoryCache()
   {
@@ -30,16 +30,16 @@ public class RealTimeTemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bhvy.o()) {
+    if (!bjxj.p()) {
       clear();
     }
   }
   
-  public rqg get(String paramString)
+  public sgf get(String paramString)
   {
     try
     {
-      paramString = (rqg)super.get(paramString);
+      paramString = (sgf)super.get(paramString);
       return paramString;
     }
     finally
@@ -49,13 +49,13 @@ public class RealTimeTemplateFactoryCache
     }
   }
   
-  public rqg getAutoCreate(Context paramContext, String paramString)
+  public sgf getAutoCreate(Context paramContext, String paramString)
   {
     paramContext = get(paramString);
     if (paramContext != null) {
       return paramContext;
     }
-    paramContext = rqd.a(paramString);
+    paramContext = sgc.a(paramString);
     if (paramContext != null)
     {
       paramContext.b(paramString);
@@ -65,11 +65,11 @@ public class RealTimeTemplateFactoryCache
     return null;
   }
   
-  public rqg put(String paramString, rqg paramrqg)
+  public sgf put(String paramString, sgf paramsgf)
   {
     try
     {
-      paramString = (rqg)super.put(paramString, paramrqg);
+      paramString = (sgf)super.put(paramString, paramsgf);
       return paramString;
     }
     finally
@@ -79,11 +79,11 @@ public class RealTimeTemplateFactoryCache
     }
   }
   
-  public rqg remove(String paramString)
+  public sgf remove(String paramString)
   {
     try
     {
-      paramString = (rqg)super.remove(paramString);
+      paramString = (sgf)super.remove(paramString);
       return paramString;
     }
     finally
@@ -95,7 +95,7 @@ public class RealTimeTemplateFactoryCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime.RealTimeTemplateFactoryCache
  * JD-Core Version:    0.7.0.1
  */

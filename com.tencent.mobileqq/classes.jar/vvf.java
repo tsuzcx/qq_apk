@@ -1,22 +1,20 @@
-public class vvf
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
+class vvf
+  implements DialogInterface.OnDismissListener
 {
-  protected int a = 48000;
-  protected int b = 1;
-  protected int c = 1;
-  protected int d = 48000;
-  protected int e = 1;
-  protected int f = 1;
+  vvf(vvc paramvvc, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a() {}
-  
-  public byte[] a(int paramInt1, int paramInt2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return null;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvf
  * JD-Core Version:    0.7.0.1
  */

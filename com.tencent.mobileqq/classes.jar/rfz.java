@@ -1,141 +1,23 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.text.SpannableString;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.AppRuntime;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class rfz
-  extends Dialog
-  implements View.OnClickListener
+  extends npu
 {
-  private static final String jdField_a_of_type_JavaLangString = ajya.a(2131713149);
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private rfz(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public rfz(@NonNull Context paramContext, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    super(paramContext, paramInt);
+    VideoFeedsPlayActivity.a("onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
   }
   
-  public rfz(@NonNull Context paramContext, Runnable paramRunnable)
-  {
-    this(paramContext, 0);
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-  }
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
   
-  private Drawable a()
-  {
-    float f = actj.a(3.0F, getContext().getResources());
-    ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
-    localShapeDrawable.getPaint().setColor(Color.parseColor("#12B7F5"));
-    localShapeDrawable.getPaint().setStyle(Paint.Style.FILL_AND_STROKE);
-    return localShapeDrawable;
-  }
-  
-  private SpannableString a()
-  {
-    int i = jdField_a_of_type_JavaLangString.indexOf("《QQ看点用户行为规范》");
-    SpannableString localSpannableString = new SpannableString(jdField_a_of_type_JavaLangString);
-    localSpannableString.setSpan(new rga(this, Color.parseColor("#12B7F5")), i, "《QQ看点用户行为规范》".length() + i, 33);
-    return localSpannableString;
-  }
-  
-  public static boolean a(BaseActivity paramBaseActivity, Runnable paramRunnable)
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramBaseActivity);
-    boolean bool1 = localSharedPreferences.getBoolean("qq_readinjoy_user_protocol_agreed_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), false);
-    boolean bool2 = localSharedPreferences.getString("qq_readinjoy_user_protocol_92_switch_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), "0").equals("1");
-    if ((bool1) || (!bool2))
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      return true;
-    }
-    paramRunnable = new rfz(paramBaseActivity, paramRunnable);
-    paramRunnable.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    paramRunnable.show();
-    nol.a(null, "", "0X800992C", "0X800992C", 0, 0, "", "", "", "");
-    return false;
-  }
-  
-  private Drawable b()
-  {
-    float f = actj.a(3.0F, getContext().getResources());
-    ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
-    localShapeDrawable.getPaint().setColor(-1);
-    localShapeDrawable.getPaint().setStyle(Paint.Style.FILL_AND_STROKE);
-    return localShapeDrawable;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView == this.jdField_a_of_type_AndroidViewView) {
-      dismiss();
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramView != this.jdField_a_of_type_AndroidWidgetButton);
-      PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putBoolean("qq_readinjoy_user_protocol_agreed_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), true).apply();
-      dismiss();
-    } while (this.jdField_a_of_type_JavaLangRunnable == null);
-    this.jdField_a_of_type_JavaLangRunnable.run();
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    requestWindowFeature(1);
-    paramBundle = LayoutInflater.from(getContext()).inflate(2131559905, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131364719));
-    this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(false);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramBundle.findViewById(2131362210));
-    this.jdField_a_of_type_AndroidViewView = paramBundle.findViewById(2131364274);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
-    this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(new rgb());
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a());
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    Drawable localDrawable = b();
-    getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    paramBundle.findViewById(2131363157).setBackgroundDrawable(localDrawable);
-    setContentView(paramBundle);
-    paramBundle = getWindow().getAttributes();
-    paramBundle.height = -2;
-    paramBundle.width = actj.a(320.0F, getContext().getResources());
-    getWindow().setAttributes(paramBundle);
-    setCancelable(false);
-    setCanceledOnTouchOutside(false);
-  }
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfz
  * JD-Core Version:    0.7.0.1
  */

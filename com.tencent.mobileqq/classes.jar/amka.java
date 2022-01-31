@@ -1,23 +1,24 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import java.util.ArrayList;
 
-public class amka
-  extends OrientationEventListener
+class amka
+  implements View.OnClickListener
 {
-  public amka(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  amka(amjz paramamjz, ArrayList paramArrayList, String paramString) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a();
+    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString), 120);
+    paramView.a();
+    vju.a(this.jdField_a_of_type_Amjz.a.a, paramView.a(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amka
  * JD-Core Version:    0.7.0.1
  */

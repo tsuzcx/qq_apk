@@ -1,29 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
-class yeu
-  extends akge
+public class yeu
+  implements View.OnClickListener
 {
-  yeu(yer paramyer) {}
+  public yeu(SubscribeHybirdFragment paramSubscribeHybirdFragment, xzf paramxzf) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      if (paramInt == 1)
-      {
-        aoes.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), true);
-        return;
-      }
-      aoes.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
-      return;
-    }
-    aoes.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
+    this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeHybirdFragment.a(this.jdField_a_of_type_Xzf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yeu
  * JD-Core Version:    0.7.0.1
  */

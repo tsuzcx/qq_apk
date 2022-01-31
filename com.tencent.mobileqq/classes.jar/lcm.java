@@ -1,17 +1,19 @@
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
 
 class lcm
+  extends Handler
 {
-  HashMap<Integer, lco> a = new HashMap();
+  lcm(lcl paramlcl) {}
   
-  public String toString()
+  public void handleMessage(Message paramMessage)
   {
-    return "size[" + this.a.size() + "]";
+    this.a.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcm
  * JD-Core Version:    0.7.0.1
  */

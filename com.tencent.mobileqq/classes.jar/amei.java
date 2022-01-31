@@ -1,35 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class amei
-  implements View.OnClickListener
+  extends amab
 {
-  public amei(CardPicGalleryActivity paramCardPicGalleryActivity, bfpc parambfpc) {}
+  private amei(UpdateTroop paramUpdateTroop) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface;
-    if (2 == this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.d)
-    {
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.app;
-      if (!this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b) {
-        break label63;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
     }
-    label63:
-    for (paramView = "1";; paramView = "2")
+    if (!paramBoolean)
     {
-      axqy.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", 4, 0, paramView, "", "", "");
-      this.jdField_a_of_type_Bfpc.dismiss();
+      this.a.a(6);
       return;
     }
+    this.a.a.a.edit().putBoolean("isTrooplistok", true).commit();
+    this.a.a.notifyUI(3, true, Integer.valueOf(2));
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amei
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,24 @@
 package dov.com.qq.im.ae;
 
-import android.content.Context;
-import bcql;
-import bijd;
+import alpo;
+import bkle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class AEPituCameraUnit$15
   implements Runnable
 {
-  public AEPituCameraUnit$15(bijd parambijd, Context paramContext) {}
+  public AEPituCameraUnit$15(bkle parambkle) {}
   
   public void run()
   {
-    bcql.a(this.a, this.a.getString(2131698935), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), alpo.a(2131689787), 0).a();
     this.this$0.q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.15
  * JD-Core Version:    0.7.0.1
  */

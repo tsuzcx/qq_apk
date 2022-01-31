@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.content.Context;
 import android.view.OrientationEventListener;
-import betc;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,7 +54,7 @@ public class OrientationJsPlugin$GameOrientationListener
       {
         for (;;)
         {
-          betc.d("OrientationJsPlugin", "OrientationChange call back error:" + localJSONException.toString());
+          QMLog.e("OrientationJsPlugin", "OrientationChange call back error:" + localJSONException.toString());
         }
       }
     }
@@ -62,7 +62,7 @@ public class OrientationJsPlugin$GameOrientationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.plugins.OrientationJsPlugin.GameOrientationListener
  * JD-Core Version:    0.7.0.1
  */

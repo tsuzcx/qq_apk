@@ -1,28 +1,21 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-
-public class tjl
+public abstract interface tjl
+  extends taw<tjm>
 {
-  public int a;
-  public VideoCollectionItem a;
+  public abstract long a();
   
-  public tjl(int paramInt, VideoCollectionItem paramVideoCollectionItem)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
-  }
+  public abstract void a(String paramString);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (String str = "delete";; str = "update") {
-      return str + '}';
-    }
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract void b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjl
  * JD-Core Version:    0.7.0.1
  */

@@ -14,11 +14,11 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bayh;
-import bgyi;
-import bhdk;
-import bhdl;
-import bhyf;
+import bcxb;
+import bizf;
+import bjeu;
+import bjev;
+import bjzq;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -40,8 +40,8 @@ public class TimeHeaderLayout
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bhdk jdField_a_of_type_Bhdk;
-  bhdl jdField_a_of_type_Bhdl;
+  bjeu jdField_a_of_type_Bjeu;
+  bjev jdField_a_of_type_Bjev;
   TextView b;
   TextView c;
   
@@ -82,31 +82,31 @@ public class TimeHeaderLayout
     if (!TextUtils.isEmpty(str3)) {
       str1 = str2.replace("{uin}", str3).replace("{hostUin}", str3);
     }
-    return str1.replace("{clicktime}", System.currentTimeMillis() + "").replace("{from}", "androidQQ").replace("{qua}", bgyi.a());
+    return str1.replace("{clicktime}", System.currentTimeMillis() + "").replace("{from}", "androidQQ").replace("{qua}", bizf.a());
   }
   
   private void a()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    LayoutInflater.from(getContext()).inflate(2131561997, this, true);
+    LayoutInflater.from(getContext()).inflate(2131562189, this, true);
     this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_time_capsule", 0);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131377272);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362938));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374516));
-    this.b = ((TextView)findViewById(2131374025));
-    this.c = ((TextView)findViewById(2131374586));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369058));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377801);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362973));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374974));
+    this.b = ((TextView)findViewById(2131374478));
+    this.c = ((TextView)findViewById(2131375044));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369289));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    findViewById(2131377272).setOnClickListener(this);
-    bhyf.a(9, 1);
+    findViewById(2131377801).setOnClickListener(this);
+    bjzq.a(9, 1);
   }
   
-  private void a(bhdk parambhdk)
+  private void a(bjeu parambjeu)
   {
     LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(7, 3);
     LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, true);
-    if ((this.jdField_a_of_type_Bhdl != null) && (parambhdk != null)) {
-      this.jdField_a_of_type_Bhdl.a(parambhdk.jdField_a_of_type_JavaLangString, 2131377272);
+    if ((this.jdField_a_of_type_Bjev != null) && (parambjeu != null)) {
+      this.jdField_a_of_type_Bjev.a(parambjeu.jdField_a_of_type_JavaLangString, 2131377801);
     }
   }
   
@@ -121,35 +121,35 @@ public class TimeHeaderLayout
   
   private void b()
   {
-    Object localObject = bayh.a(1, 3);
-    localObject = bayh.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, 1, BaseApplicationImpl.getApplication().getRuntime().getAccount(), 3, (Drawable)localObject, (Drawable)localObject, null);
+    Object localObject = bcxb.a(1, 3);
+    localObject = bcxb.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, 1, BaseApplicationImpl.getApplication().getRuntime().getAccount(), 3, (Drawable)localObject, (Drawable)localObject, null);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    if (this.jdField_a_of_type_Bhdk != null)
+    if (this.jdField_a_of_type_Bjeu != null)
     {
-      if (this.jdField_a_of_type_Bhdk.c <= 999L) {
+      if (this.jdField_a_of_type_Bjeu.c <= 999L) {
         break label120;
       }
       this.c.setText("999+");
-      if (this.jdField_a_of_type_Bhdk.b <= 999L) {
+      if (this.jdField_a_of_type_Bjeu.b <= 999L) {
         break label140;
       }
       this.b.setText("999+");
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bhdk.jdField_a_of_type_Long <= 9999L) {
+      if (this.jdField_a_of_type_Bjeu.jdField_a_of_type_Long <= 9999L) {
         break label160;
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText("9999+");
       return;
       label120:
-      this.c.setText(String.valueOf(this.jdField_a_of_type_Bhdk.c));
+      this.c.setText(String.valueOf(this.jdField_a_of_type_Bjeu.c));
       break;
       label140:
-      this.b.setText(String.valueOf(this.jdField_a_of_type_Bhdk.b));
+      this.b.setText(String.valueOf(this.jdField_a_of_type_Bjeu.b));
     }
     label160:
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_Bhdk.jdField_a_of_type_Long));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_Bjeu.jdField_a_of_type_Long));
   }
   
   public void onClick(View paramView)
@@ -160,33 +160,33 @@ public class TimeHeaderLayout
     do
     {
       return;
-      a(this.jdField_a_of_type_Bhdk);
+      a(this.jdField_a_of_type_Bjeu);
       return;
-    } while (this.jdField_a_of_type_Bhdl == null);
+    } while (this.jdField_a_of_type_Bjev == null);
     paramView = a();
     if (QLog.isColorLevel()) {
       QLog.i("QZoneMsg", 0, " jump url = " + paramView);
     }
-    bhyf.a(9, 2);
-    this.jdField_a_of_type_Bhdl.a(paramView, 2131369058);
+    bjzq.a(9, 2);
+    this.jdField_a_of_type_Bjev.a(paramView, 2131369289);
   }
   
-  public void setHeadInfo(bhdk parambhdk)
+  public void setHeadInfo(bjeu parambjeu)
   {
-    this.jdField_a_of_type_Bhdk = parambhdk;
-    if (parambhdk != null) {
+    this.jdField_a_of_type_Bjeu = parambjeu;
+    if (parambjeu != null) {
       ThreadManagerV2.executeOnSubThread(new TimeHeaderLayout.1(this));
     }
   }
   
-  public void setOnDetailClickListner(bhdl parambhdl)
+  public void setOnDetailClickListner(bjev parambjev)
   {
-    this.jdField_a_of_type_Bhdl = parambhdl;
+    this.jdField_a_of_type_Bjev = parambjev;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.contentbox.TimeHeaderLayout
  * JD-Core Version:    0.7.0.1
  */

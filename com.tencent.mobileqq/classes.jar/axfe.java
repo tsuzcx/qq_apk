@@ -1,327 +1,271 @@
-import android.media.MediaMetadataRetriever;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.util.ShortVideoTrimmer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.automator.step.GetQZoneFeeds;
+import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import common.config.service.QzoneConfig;
+import common.qzone.component.util.SecurityUtil;
+import java.util.ArrayList;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class axfe
+  implements Manager
 {
-  public static axff a(axfh paramaxfh, axfg paramaxfg, boolean paramBoolean)
+  private static int jdField_a_of_type_Int = -1;
+  private static int b = -1;
+  private static int c = -1;
+  private static int d = -1;
+  private long jdField_a_of_type_Long;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
+  private int e = 0;
+  private int f;
+  private int g;
+  
+  public axfe(QQAppInterface paramQQAppInterface)
   {
-    axff localaxff = new axff();
-    int i;
-    if (paramaxfh.e > 0)
-    {
-      i = paramaxfh.e;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "getCompressInfo, videoFps = " + i);
-      }
-      if (!paramBoolean) {
-        break label189;
-      }
-      localaxff.jdField_a_of_type_Float = 1.0F;
-      localaxff.jdField_a_of_type_Int = paramaxfh.jdField_a_of_type_Int;
-      localaxff.jdField_b_of_type_Int = paramaxfh.jdField_b_of_type_Int;
-      localaxff.jdField_b_of_type_Long = i;
-      if ((paramaxfh.jdField_a_of_type_Long <= 0L) || (paramaxfh.jdField_a_of_type_Long * 8L >= paramaxfg.jdField_a_of_type_Long)) {
-        break label169;
-      }
-      localaxff.jdField_a_of_type_Long = paramaxfh.jdField_b_of_type_Long;
-      label124:
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "getCompressInfo, isRaw, compressInfo.desBitRate = " + localaxff.jdField_a_of_type_Long);
-      }
-    }
-    label169:
-    label189:
-    label352:
-    label742:
-    for (;;)
-    {
-      return localaxff;
-      i = 30;
-      break;
-      localaxff.jdField_a_of_type_Long = ((int)(paramaxfg.jdField_a_of_type_Long / paramaxfh.d));
-      break label124;
-      double d2;
-      double d1;
-      if (paramaxfh.jdField_a_of_type_Int <= paramaxfh.jdField_b_of_type_Int)
-      {
-        i = paramaxfh.jdField_b_of_type_Int;
-        if (i <= paramaxfg.jdField_a_of_type_Int) {
-          break label692;
-        }
-        localaxff.jdField_a_of_type_Float = (paramaxfg.jdField_a_of_type_Int / i);
-        localaxff.jdField_a_of_type_Int = ((int)(paramaxfh.jdField_a_of_type_Int * localaxff.jdField_a_of_type_Float));
-        localaxff.jdField_b_of_type_Int = ((int)(paramaxfh.jdField_b_of_type_Int * localaxff.jdField_a_of_type_Float));
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getCompressInfo,  config.scaleRate = " + localaxff.jdField_a_of_type_Float + ", compressInfo.desWidth = " + localaxff.jdField_a_of_type_Int + ", compressInfo.desHeight = " + localaxff.jdField_b_of_type_Int);
-        }
-        if ((paramaxfh.e <= 0) || (paramaxfh.e >= paramaxfg.jdField_b_of_type_Int)) {
-          break label719;
-        }
-        localaxff.jdField_b_of_type_Long = paramaxfh.e;
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getCompressInfo, compressInfo.desFPS = " + localaxff.jdField_b_of_type_Long);
-        }
-        d2 = localaxff.jdField_a_of_type_Int * localaxff.jdField_b_of_type_Int * localaxff.jdField_b_of_type_Long * paramaxfg.jdField_a_of_type_Double;
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getCompressInfo, bpsExp = " + d2);
-        }
-        d1 = d2;
-        if (d2 > paramaxfh.jdField_b_of_type_Long) {
-          d1 = paramaxfh.jdField_b_of_type_Long;
-        }
-        d2 = d1;
-        if (d1 > paramaxfg.c) {
-          d2 = paramaxfg.c;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getCompressInfo, bpsExp real = " + d2);
-        }
-        if (paramaxfh.d * d2 <= paramaxfg.jdField_a_of_type_Long) {
-          break label732;
-        }
-        d2 = paramaxfg.jdField_a_of_type_Long / (localaxff.jdField_a_of_type_Int * localaxff.jdField_b_of_type_Int * localaxff.jdField_b_of_type_Long * paramaxfh.d);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getCompressInfo,densityExp = " + d2);
-        }
-        d1 = d2;
-        if (d2 < paramaxfg.jdField_b_of_type_Double) {
-          d1 = paramaxfg.jdField_b_of_type_Double;
-        }
-      }
-      for (localaxff.jdField_a_of_type_Long = ((int)(d1 * (localaxff.jdField_a_of_type_Int * localaxff.jdField_b_of_type_Int * localaxff.jdField_b_of_type_Long)));; localaxff.jdField_a_of_type_Long = ((int)d2))
-      {
-        if (!QLog.isColorLevel()) {
-          break label742;
-        }
-        QLog.d("VideoCompressConfig", 2, "getCompressInfo,  compressInfo.desBitRate " + localaxff.jdField_a_of_type_Long);
-        return localaxff;
-        i = paramaxfh.jdField_a_of_type_Int;
-        break;
-        localaxff.jdField_a_of_type_Float = 1.0F;
-        localaxff.jdField_a_of_type_Int = paramaxfh.jdField_a_of_type_Int;
-        localaxff.jdField_b_of_type_Int = paramaxfh.jdField_b_of_type_Int;
-        break label263;
-        localaxff.jdField_b_of_type_Long = paramaxfg.jdField_b_of_type_Int;
-        break label352;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static axfg a(QQAppInterface paramQQAppInterface)
+  private SharedPreferences a()
   {
-    axfg localaxfg = new axfg();
-    if (paramQQAppInterface == null) {
-      QLog.e("VideoCompressConfig", 1, "getManageConfig, app is null.");
-    }
-    do
-    {
-      return localaxfg;
-      paramQQAppInterface = bbkb.o(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.length() > 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getManageConfig, compressConfig = " + paramQQAppInterface);
-        }
-        paramQQAppInterface = paramQQAppInterface.split("\\|");
-        if ((paramQQAppInterface == null) || (paramQQAppInterface.length < 5)) {}
-      }
-      try
-      {
-        int i = Integer.valueOf(paramQQAppInterface[0]).intValue();
-        if (i > 0) {
-          localaxfg.jdField_a_of_type_Int = i;
-        }
-        i = Integer.valueOf(paramQQAppInterface[1]).intValue();
-        if (i > 0) {
-          localaxfg.jdField_b_of_type_Int = i;
-        }
-        double d = Double.valueOf(paramQQAppInterface[2]).doubleValue();
-        if (d > 0.0D) {
-          localaxfg.jdField_a_of_type_Double = d;
-        }
-        d = Double.valueOf(paramQQAppInterface[3]).doubleValue();
-        if (d > 0.0D) {
-          localaxfg.jdField_b_of_type_Double = d;
-        }
-        if ((paramQQAppInterface.length >= 6) && (paramQQAppInterface[5] != null) && (paramQQAppInterface[5].length() > 0))
-        {
-          i = Integer.valueOf(paramQQAppInterface[5]).intValue();
-          if (i > 0) {
-            localaxfg.jdField_a_of_type_Long = (i * 1024 * 1024 * 8);
-          }
-        }
-        long l;
-        if ((paramQQAppInterface.length >= 8) && (paramQQAppInterface[7] != null) && (paramQQAppInterface[7].length() > 0))
-        {
-          l = Long.valueOf(paramQQAppInterface[7]).longValue();
-          if (l > 0L) {
-            localaxfg.c = l;
-          }
-        }
-        if ((paramQQAppInterface.length >= 9) && (paramQQAppInterface[8] != null) && (paramQQAppInterface[8].length() > 0))
-        {
-          l = Long.valueOf(paramQQAppInterface[8]).longValue();
-          if (l > 0L) {
-            localaxfg.jdField_b_of_type_Long = l;
-          }
-        }
-      }
-      catch (NumberFormatException paramQQAppInterface)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("VideoCompressConfig", 2, "getCompressConfigNew -> get VideoCompressConfig Erro", paramQQAppInterface);
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoCompressConfig", 2, "getManageConfig, maxLength = " + localaxfg.jdField_a_of_type_Int + ", maxFPS = " + localaxfg.jdField_b_of_type_Int + ", maxDensity = " + localaxfg.jdField_a_of_type_Double + ", minDensity = " + localaxfg.jdField_b_of_type_Double + ", maxSize = " + localaxfg.jdField_a_of_type_Long + ", maxBitRate = " + localaxfg.c + ", minBitRate = " + localaxfg.jdField_b_of_type_Long);
-    return localaxfg;
+    String str = SecurityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) + "GetQZoneFeeds";
+    return BaseApplication.getContext().getSharedPreferences(str, 0);
   }
   
-  public static axfh a(String paramString)
+  private void a(ArrayList<Long> paramArrayList, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString))
+    if ((paramArrayList == null) || (paramArrayList.isEmpty()) || (paramInt >= paramArrayList.size()))
     {
-      QLog.e("VideoCompressConfig", 1, "getVideoInfo, videoPath is empty.");
-      paramString = null;
-      return paramString;
-    }
-    Object localObject = new File(paramString);
-    if (!((File)localObject).exists())
-    {
-      QLog.e("VideoCompressConfig", 1, "getVideoInfo, file not exists.");
-      return null;
-    }
-    axfh localaxfh = new axfh();
-    localaxfh.jdField_a_of_type_Long = ((File)localObject).length();
-    if (Build.VERSION.SDK_INT >= 17) {
-      localObject = new MediaMetadataRetriever();
-    }
-    for (;;)
-    {
-      try
-      {
-        ((MediaMetadataRetriever)localObject).setDataSource(paramString);
-        paramString = ((MediaMetadataRetriever)localObject).extractMetadata(18);
-        String str1 = ((MediaMetadataRetriever)localObject).extractMetadata(19);
-        String str2 = ((MediaMetadataRetriever)localObject).extractMetadata(24);
-        String str3 = ((MediaMetadataRetriever)localObject).extractMetadata(9);
-        String str4 = ((MediaMetadataRetriever)localObject).extractMetadata(32);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getVideoInfo by MediaMetadataRetriever, width = " + paramString + ", height = " + str1 + ", rotation = " + str2 + ", duration = " + str3 + ", frameCount = " + str4);
-        }
-        localaxfh.jdField_a_of_type_Int = Integer.valueOf(paramString).intValue();
-        localaxfh.jdField_b_of_type_Int = Integer.valueOf(str1).intValue();
-        localaxfh.c = Integer.valueOf(str2).intValue();
-        localaxfh.d = ((int)(Integer.valueOf(str3).intValue() / 1000.0D + 0.5D));
-        localaxfh.e = ((int)(Integer.valueOf(str4).intValue() * 1.0D / localaxfh.d + 0.5D));
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("VideoCompressConfig", 1, "getVideoProperty:", paramString);
-        ((MediaMetadataRetriever)localObject).release();
-        continue;
-      }
-      finally
-      {
-        ((MediaMetadataRetriever)localObject).release();
-      }
-      if (localaxfh.d > 0) {
-        localaxfh.jdField_b_of_type_Long = (localaxfh.jdField_a_of_type_Long * 8L / localaxfh.d);
-      }
-      paramString = localaxfh;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("VideoCompressConfig", 2, "getVideoInfo, fileSize = " + localaxfh.jdField_a_of_type_Long + ", width = " + localaxfh.jdField_a_of_type_Int + ", height = " + localaxfh.jdField_b_of_type_Int + ", rotation = " + localaxfh.c + ", duration = " + localaxfh.d + ", fps = " + localaxfh.e + ", videoInfo.bitRate = " + localaxfh.jdField_b_of_type_Long);
-      return localaxfh;
-      try
-      {
-        paramString = ShortVideoTrimmer.getRealProperties(paramString);
-        if (paramString != null)
-        {
-          paramString = paramString.split(",");
-          if ((paramString != null) && (paramString.length > 0))
-          {
-            localObject = new int[paramString.length];
-            int i = 0;
-            while (i < paramString.length)
-            {
-              localObject[i] = Integer.valueOf(paramString[i]).intValue();
-              i += 1;
-            }
-            localaxfh.jdField_a_of_type_Int = localObject[1];
-            localaxfh.jdField_b_of_type_Int = localObject[2];
-            localaxfh.c = Integer.valueOf(ShortVideoTrimmer.a(localObject[3])).intValue();
-            localaxfh.d = ((int)(localObject[4] / 1000.0D + 0.5D));
-          }
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("VideoCompressConfig", 1, "getVideoInfo error.", paramString);
-      }
-    }
-  }
-  
-  public static boolean a(axfh paramaxfh, axfg paramaxfg)
-  {
-    if ((paramaxfh == null) || (paramaxfg == null))
-    {
-      QLog.e("VideoCompressConfig", 1, "isNeedCompress, false, videoInfo or config is null");
-      return false;
-    }
-    if (paramaxfh.jdField_a_of_type_Long * 8L > paramaxfg.jdField_a_of_type_Long)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "isNeedCompress, true, fileSize > maxSize, fileSize = " + paramaxfh.jdField_a_of_type_Long);
-      }
-      return true;
-    }
-    if (paramaxfh.jdField_b_of_type_Long < paramaxfg.jdField_b_of_type_Long)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "isNeedCompress,false, bitRate < minBitRate, bitRate = " + paramaxfh.jdField_b_of_type_Long + ", minBitRate = " + paramaxfg.jdField_b_of_type_Long);
-      }
-      return false;
-    }
-    if (paramaxfh.jdField_b_of_type_Long > paramaxfg.c)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "isNeedCompress, true, bitRate > maxBitRate, bitRate = " + paramaxfh.jdField_b_of_type_Long + ", maxBitRate = " + paramaxfg.c);
-      }
-      return true;
-    }
-    if (paramaxfh.e > 0) {}
-    for (int i = paramaxfh.e;; i = 30)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "isNeedCompress, videoFps = " + i);
-      }
-      if (paramaxfh.jdField_b_of_type_Long <= paramaxfh.jdField_a_of_type_Int * paramaxfh.jdField_b_of_type_Int * i * paramaxfg.jdField_a_of_type_Double * 1.2D) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "isNeedCompress, true, density > 1.2 * maxDensty. bitRate = " + paramaxfh.jdField_b_of_type_Long + ", width * height * videoFps * maxDensity * 1.2 = " + i * (paramaxfh.jdField_a_of_type_Int * paramaxfh.jdField_b_of_type_Int) * paramaxfg.jdField_a_of_type_Double * 1.2D);
-      }
-      return true;
+      e();
+      return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressConfig", 2, "isNeedCompress, false, density <= 1.2 * maxDensty. bitRate = " + paramaxfh.jdField_b_of_type_Long + ", width * height * videoFps * maxDensity * 1.2 = " + i * (paramaxfh.jdField_a_of_type_Int * paramaxfh.jdField_b_of_type_Int) * paramaxfg.jdField_a_of_type_Double * 1.2D);
+      QLog.d("QzoneContactsFeedManager", 2, "refreshAllInner(" + paramInt + ")...");
     }
-    return false;
+    int j = c() + paramInt;
+    int i = j;
+    if (j >= paramArrayList.size()) {
+      i = paramArrayList.size();
+    }
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), axfg.class);
+    paramArrayList = new ArrayList(paramArrayList.subList(paramInt, i));
+    axfh.a(localNewIntent, axfh.a(1, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), paramArrayList, 0L, null));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+  }
+  
+  @TargetApi(9)
+  private void b(long paramLong, String paramString)
+  {
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putLong("last_request_time", paramLong);
+    localEditor.putString("last_attach_info", paramString);
+    if (Build.VERSION.SDK_INT < 9)
+    {
+      localEditor.commit();
+      return;
+    }
+    localEditor.apply();
+  }
+  
+  private static int c()
+  {
+    if (jdField_a_of_type_Int < 0) {
+      jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsUinNum", 100);
+    }
+    return jdField_a_of_type_Int;
+  }
+  
+  private static int d()
+  {
+    if (b < 0) {
+      b = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsRetryNum", 2);
+    }
+    return b;
+  }
+  
+  private static int e()
+  {
+    if (c < 0)
+    {
+      c = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsMinTimeCell", 900);
+      c *= 1000;
+    }
+    return c;
+  }
+  
+  private static int f()
+  {
+    if (d < 0)
+    {
+      d = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsMinRefreshTimeCell", 604800);
+      d *= 1000;
+    }
+    return d;
+  }
+  
+  public long a()
+  {
+    return a().getLong("last_request_time", 0L);
+  }
+  
+  public String a()
+  {
+    return a().getString("last_attach_info", "");
+  }
+  
+  @TargetApi(9)
+  public void a()
+  {
+    if (!GetQZoneFeeds.a) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedManager", 2, "GetQZoneFeeds 此step尚未执行，此次调用就此返回，等待自动机中GetQZoneFeeds执行此方法");
+      }
+    }
+    while (!bdee.g(BaseApplication.getContext())) {
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(new QzoneContactsFeedManager.1(this));
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "updateFriend(" + this.e + ")...");
+    }
+    if (this.e != 0) {
+      return;
+    }
+    this.e = 3;
+    this.f = 0;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "updateAll(" + this.e + ")...");
+    }
+    if (this.e != 0) {
+      return;
+    }
+    this.e = 2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), axfg.class);
+    axfh.a(localNewIntent, axfh.a(2, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), null, paramLong, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+  }
+  
+  public void a(newest_feeds_rsp paramnewest_feeds_rsp)
+  {
+    if (paramnewest_feeds_rsp == null) {}
+    while ((this.e == 3) || (((this.e != 1) || (this.f != 0)) && (this.e != 2))) {
+      return;
+    }
+    b(paramnewest_feeds_rsp.last_feed_time, paramnewest_feeds_rsp.str_attach);
+  }
+  
+  public void b()
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "refreshAll(" + this.e + ")...");
+    }
+    if (this.e != 0) {
+      return;
+    }
+    this.e = 1;
+    this.f = 0;
+    this.jdField_a_of_type_JavaUtilArrayList = axfh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (QLog.isColorLevel())
+    {
+      aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      }
+      QLog.d("QzoneContactsFeedManager", 2, new Object[] { "allFriends.size:", Integer.valueOf(i), ",getAllFreindsCount:", Integer.valueOf(localaloz.a()) });
+    }
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "retry(" + this.g + ")...");
+    }
+    this.g += 1;
+    if (this.g >= d())
+    {
+      this.g = 0;
+      if (this.e == 1) {
+        b(0L, null);
+      }
+      d();
+      return;
+    }
+    if ((this.e == 1) || (this.e == 3))
+    {
+      a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+      return;
+    }
+    if (this.e == 2)
+    {
+      this.e = 0;
+      a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    e();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "doNextRequest(" + this.f + ")...");
+    }
+    if ((this.e != 1) && (this.e != 3))
+    {
+      e();
+      return;
+    }
+    this.f += c();
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "close...");
+    }
+    this.e = 0;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.f = 0;
+    this.g = 0;
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "onDestroy...");
+    }
+    e();
+    GetQZoneFeeds.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axfe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package dov.com.qq.im.ptv;
 
-import blcq;
+import bnoa;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Random;
 
@@ -33,7 +33,7 @@ class LightWeightCaptureButtonLayout$DelayRefresh
     for (f1 = LightWeightCaptureButtonLayout.a(this.this$0).nextFloat();; f1 = f2 / 100.0F)
     {
       f2 = 2.0F + 28.0F * f1;
-      this.this$0.a.setShadowStrokeWidth(blcq.a(f2));
+      this.this$0.a.setShadowStrokeWidth(bnoa.a(f2));
       if (QLog.isColorLevel()) {
         QLog.d("CameraCaptureLayout", 2, "onAudioFrames mIndex=" + this.jdField_a_of_type_Int + " volume=" + this.jdField_a_of_type_Float + " volumeSafe=" + f1 + " dipSize:" + f2);
       }
@@ -43,7 +43,7 @@ class LightWeightCaptureButtonLayout$DelayRefresh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightWeightCaptureButtonLayout.DelayRefresh
  * JD-Core Version:    0.7.0.1
  */

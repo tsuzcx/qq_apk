@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ar;
 
-import alca;
-import alin;
+import amsq;
+import amzd;
 import java.util.ArrayList;
 
 public class ArNativeSoManager$1
   implements Runnable
 {
-  public ArNativeSoManager$1(alca paramalca, ArrayList paramArrayList, String paramString, alin paramalin) {}
+  public ArNativeSoManager$1(amsq paramamsq, ArrayList paramArrayList, String paramString, amzd paramamzd) {}
   
   public void run()
   {
-    alca.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alin);
+    amsq.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amzd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArNativeSoManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
 
-class aanu
-  implements DialogInterface.OnClickListener
+public class aanu
 {
-  aanu(aans paramaans) {}
+  public Ad a;
+  public landing_page_collect_data.LandingPageCollectData a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aanu()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData = new landing_page_collect_data.LandingPageCollectData();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentAdTangramAd != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAdTangramAd.getUrlForAction())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAdTangramAd.getTraceId())) && (this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData != null) && (this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.has());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aanu
  * JD-Core Version:    0.7.0.1
  */

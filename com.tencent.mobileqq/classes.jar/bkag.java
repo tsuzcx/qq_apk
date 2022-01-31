@@ -1,12 +1,22 @@
-public abstract interface bkag
+import com.tencent.qphone.base.util.QLog;
+
+class bkag
+  implements bkaw
 {
-  public abstract void a(int paramInt);
+  bkag(bkae parambkae) {}
   
-  public abstract void a(bkaf parambkaf);
+  public void a(boolean paramBoolean)
+  {
+    QLog.d("VipARCameraController", 2, "loadState " + paramBoolean);
+    bkae.b(this.a, paramBoolean);
+    if (paramBoolean) {
+      bkar.a().a(bkae.a(this.a));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkag
  * JD-Core Version:    0.7.0.1
  */

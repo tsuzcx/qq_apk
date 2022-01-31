@@ -1,82 +1,65 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
 
-public class ajsp
-  extends ajxz
+class ajsp
 {
-  protected void a()
+  int jdField_a_of_type_Int = 3;
+  long jdField_a_of_type_Long = 0L;
+  ajsp jdField_a_of_type_Ajsp = null;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  boolean jdField_a_of_type_Boolean = false;
+  
+  static ajsp a()
   {
-    super.a();
-    float f2 = MemoryManager.a().a();
-    float f1;
-    if (akag.a().d > 0.0F)
+    ajsp localajsp = new ajsp();
+    localajsp.a();
+    return localajsp;
+  }
+  
+  String a()
+  {
+    switch (this.jdField_a_of_type_Int)
     {
-      f1 = akag.a().d;
-      if ((f2 >= f1) && (akag.a().c) && (this.a.a == null))
-      {
-        MemoryManager.a().a(2L);
-        System.exit(-1);
-      }
-      if (this.d != GuardManager.c * 50 - 1) {
-        break label227;
-      }
-      l = MemoryManager.a(Process.myPid());
-      localHashMap = new HashMap();
-      localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
-      localHashMap.put("ramSize", String.valueOf(bbdh.d() / 1024L));
-      localHashMap.put("heapSize", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
-      localHashMap.put("maxHeapSize", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
-      this.a.a("GM_reborn", localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "suicide to free memory! suicide_factor=" + GuardManager.c);
-      }
+    default: 
+      return "LBS_REQ_OK";
+    case 1: 
+      return "LBS_REQ_PENDING";
     }
-    label227:
-    while (((this.d != GuardManager.c * 50) && (this.d != GuardManager.c * 50 + 1)) || (this.a.a != null))
-    {
-      long l;
-      HashMap localHashMap;
-      return;
-      f1 = 0.95F;
-      break;
-    }
-    System.exit(-1);
+    return "LBS_REQ_PERM_OK";
   }
   
-  protected void a(String paramString)
+  void a()
   {
-    this.a.a(3, paramString);
+    if (this.jdField_a_of_type_Ajsp == null) {
+      this.jdField_a_of_type_Ajsp = new ajsp();
+    }
   }
   
-  protected void b()
+  boolean a(String paramString)
   {
-    this.a.a(4, "fake_p_msg");
+    ajsn.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
+    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
   }
   
-  protected void b(String paramString)
+  void b()
   {
-    super.b(paramString);
-    this.a.c(false);
-    if (!"trick_p_msg".equals(paramString)) {
-      this.a.a(false, new String[] { paramString });
-    }
-    long l = MemoryManager.a(Process.myPid());
-    if (ajxx.a().a(l) != 2) {
-      this.a.c();
-    }
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(2, ajxx.a().a, 0L);
-    CoreService.stopCoreService();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  void c()
+  {
+    this.jdField_a_of_type_Ajsp.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Ajsp.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Ajsp.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Ajsp.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Ajsp.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsp
  * JD-Core Version:    0.7.0.1
  */

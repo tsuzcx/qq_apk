@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import behu;
-import bezl;
+import bghu;
+import bgyg;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -14,7 +14,7 @@ class JsPluginEngine$1
   
   public void run()
   {
-    Object localObject1 = behu.a;
+    Object localObject1 = bghu.a;
     Object localObject2 = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
     if (localObject2 != null)
     {
@@ -26,7 +26,7 @@ class JsPluginEngine$1
     for (;;)
     {
       if ((localObject1 != null) && (((List)localObject1).contains(this.val$eventName))) {
-        bezl.a(this.val$miniAppInfo, this.val$eventName);
+        bgyg.a(this.val$miniAppInfo, this.val$eventName);
       }
       return;
     }
@@ -34,7 +34,7 @@ class JsPluginEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine.1
  * JD-Core Version:    0.7.0.1
  */

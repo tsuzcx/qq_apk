@@ -6,6 +6,7 @@ import com.tencent.mobileqq.msf.core.ag;
 import com.tencent.mobileqq.msf.core.ah;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
+import com.tencent.mobileqq.msf.service.t;
 import com.tencent.msf.service.protocol.security.CustomSigContent;
 import com.tencent.msf.service.protocol.security.RespondCustomSig;
 import com.tencent.msf.service.protocol.security.c;
@@ -18,6 +19,7 @@ import com.tencent.msf.service.protocol.security.m;
 import com.tencent.msf.service.protocol.security.n;
 import com.tencent.msf.service.protocol.security.o;
 import com.tencent.msf.service.protocol.security.p;
+import com.tencent.msf.service.protocol.security.q;
 import com.tencent.msf.service.protocol.security.r;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -198,7 +200,7 @@ public class j
     //   225: invokevirtual 126	com/tencent/mobileqq/msf/core/auth/a:j	([B)V
     //   228: aload_2
     //   229: aload_0
-    //   230: invokestatic 131	com/tencent/mobileqq/msf/service/q:b	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Ljava/lang/String;
+    //   230: invokestatic 131	com/tencent/mobileqq/msf/service/t:b	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Ljava/lang/String;
     //   233: invokevirtual 134	com/tencent/mobileqq/msf/core/auth/a:c	(Ljava/lang/String;)V
     //   236: aload 5
     //   238: invokevirtual 137	java/io/ByteArrayInputStream:close	()V
@@ -444,13 +446,13 @@ public class j
         }
       }
     }
-    localObject = (com.tencent.msf.service.protocol.security.q)paramUniPacket.getByClass("UserMainAccount", new com.tencent.msf.service.protocol.security.q());
+    localObject = (q)paramUniPacket.getByClass("UserMainAccount", new q());
     if (localObject != null)
     {
-      if (((com.tencent.msf.service.protocol.security.q)localObject).a != 2L) {
+      if (((q)localObject).a != 2L) {
         break label213;
       }
-      parama.m(((com.tencent.msf.service.protocol.security.q)localObject).c);
+      parama.m(((q)localObject).c);
     }
     for (;;)
     {
@@ -552,7 +554,7 @@ public class j
     QLog.d("MSF.C.AuthCoder", 2, "can not find account " + paramFromServiceMsg.getUin() + " info.");
     return;
     QLog.d("MSF.C.AuthCoder", 1, MD5.toMD5(paramFromServiceMsg.getUin()) + " login succ.");
-    locala.c(com.tencent.mobileqq.msf.service.q.b(paramToServiceMsg));
+    locala.c(t.b(paramToServiceMsg));
     this.n.a(locala);
     if (a(paramToServiceMsg, paramk, locala))
     {

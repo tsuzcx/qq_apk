@@ -12,8 +12,6 @@ import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.model.ParticleParam;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.RedPacketPosition;
 import com.tencent.ttpic.openapi.model.StickerItem;
@@ -28,7 +26,9 @@ public class ParticleFilter
   private static final String FRAGMENT_SHADER = "precision highp float;\n\n varying vec4 vColor;\n varying vec2 vTexCoords;\n\n uniform sampler2D inputImageTexture;\n uniform sampler2D inputImageTexture2;\n\n uniform int isPartical2;\n uniform int u_opacityModifyRGB;\n\n\n vec4 color;\n\n void main() {\n\n     if (isPartical2 == 0) {\n         gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);//texture2D(inputImageTexture2, vTexCoords);\n         return;\n     }\n     else {\n\n         if (u_opacityModifyRGB == 1) {\n             color = vec4(vColor.r * vColor.a,\n                          vColor.g * vColor.a,\n                          vColor.b * vColor.a,\n                          vColor.a);\n         } else {\n             color = vColor;\n         }\n\n         vec4 texColor = texture2D(inputImageTexture2, vTexCoords);\n         gl_FragColor = vec4(texColor) * vColor;\n\n     }\n\n\n }";
   private static final String TAG = ParticleFilter.class.getSimpleName();
   private static final String VERTEX_SHADER = "attribute vec4 position;\n attribute vec2 inputTextureCoordinate;\n attribute vec4 aColor;\n\n varying vec2 vTexCoords;\n varying vec4 vColor;\n\n void main() {\n     gl_Position = position;\n     vTexCoords  = inputTextureCoordinate;\n     vColor = aColor;\n }";
+  private double audioScaleFactor = 1.0D;
   private float canvasScale = -1.0F;
+  private int frameInedx = 0;
   private ArrayList<RedPacketPosition> hotAreaPositions;
   protected StickerItem item;
   private int lastCanvasWidth = 2147483647;
@@ -40,8 +40,6 @@ public class ParticleFilter
   private ParticleEmitter particleEmitter;
   private ParticleParam particleParam = new ParticleParam();
   private float phoneAngles;
-  protected TriggerCtrlItem triggerCtrlItem;
-  protected boolean triggered = false;
   
   public ParticleFilter(String paramString, StickerItem paramStickerItem)
   {
@@ -50,7 +48,6 @@ public class ParticleFilter
     this.particleEmitter = new ParticleEmitter();
     this.particleEmitter.initEmitter(paramString, paramStickerItem.particleConfig);
     this.particleEmitter.setRotateType(paramStickerItem.rotateType);
-    this.triggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
     initParams();
     setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
   }
@@ -90,27 +87,6 @@ public class ParticleFilter
     return arrayOfFloat;
   }
   
-  private void resetParams()
-  {
-    int i = 1;
-    addParam(new UniformParam.IntParam("isPartical2", 1));
-    if (this.particleEmitter.opacityModifyRGB) {}
-    for (;;)
-    {
-      addParam(new UniformParam.IntParam("u_opacityModifyRGB", i));
-      addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
-      setCoordNum(6);
-      addAttribParam(new AttributeParam("position", new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F }, 3));
-      addAttribParam(new AttributeParam("inputTextureCoordinate", new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F }, 2));
-      addAttribParam(new AttributeParam("aColor", new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F }, 4));
-      this.mHasSeenValid = false;
-      this.mPreviousBodyPoints = null;
-      this.particleParam.needRender = false;
-      return;
-      i = 0;
-    }
-  }
-  
   private ParticleFilter.ParticleEmitterParam updateEmitterParam(List<PointF> paramList, float[] paramArrayOfFloat)
   {
     ParticleFilter.ParticleEmitterParam localParticleEmitterParam = new ParticleFilter.ParticleEmitterParam(this, null);
@@ -124,7 +100,7 @@ public class ParticleFilter
     for (;;)
     {
       localParticleEmitterParam.emitPosition = localPointF1;
-      localParticleEmitterParam.extraScale *= (float)this.triggerCtrlItem.getAudioScaleFactor();
+      localParticleEmitterParam.extraScale *= (float)this.audioScaleFactor;
       localParticleEmitterParam.extraScale *= this.width * 1.0F / 720.0F;
       return localParticleEmitterParam;
       localPointF1 = new PointF();
@@ -211,14 +187,10 @@ public class ParticleFilter
     }
   }
   
-  private void updateHotArea()
+  private void updateHotArea(ArrayList<RedPacketPosition> paramArrayList)
   {
-    if ((this.triggerCtrlItem != null) && (this.hotAreaPositions != null))
-    {
-      ArrayList localArrayList = this.triggerCtrlItem.getHotArea();
-      if (localArrayList != null) {
-        this.hotAreaPositions.addAll(localArrayList);
-      }
+    if ((this.hotAreaPositions != null) && (paramArrayList != null)) {
+      this.hotAreaPositions.addAll(paramArrayList);
     }
   }
   
@@ -251,7 +223,7 @@ public class ParticleFilter
         this.particleEmitter.startTime = System.currentTimeMillis();
         i4 = this.particleEmitter.activeParticleCount();
         if (i4 <= 0) {
-          break label1091;
+          break label1094;
         }
         paramParticleEmitterParam = new float[i4 * 18];
         localObject1 = new float[i4 * 12];
@@ -270,7 +242,7 @@ public class ParticleFilter
     for (;;)
     {
       if (i1 >= this.particleEmitter.activeParticleCount()) {
-        break label713;
+        break label710;
       }
       int i3 = 0;
       for (;;)
@@ -282,30 +254,30 @@ public class ParticleFilter
           continue;
           paramParticleEmitterParam = new Vector2();
           break;
-          float f2 = (float)this.triggerCtrlItem.getAudioScaleFactor();
+          float f2 = (float)this.audioScaleFactor;
           LogUtils.e(TAG, "AudioScaleFactor = " + f2);
           this.particleEmitter.setExtraScale(f2);
           localObject3 = this.particleEmitter;
           if (localObject2 != null)
           {
             localObject1 = new Vector2(((PointF)localObject2).x, this.height - ((PointF)localObject2).y);
-            label336:
+            label333:
             ((ParticleEmitter)localObject3).setSourcePosition((Vector2)localObject1);
             this.particleEmitter.setExtraScale(f1);
             this.particleEmitter.setRotateX(paramParticleEmitterParam.rotateX);
             this.particleEmitter.setRotateY(paramParticleEmitterParam.rotateY);
             this.particleEmitter.setRotateZ(paramParticleEmitterParam.rotateZ);
             if (this.canvasScale <= 0.0F) {
-              break label482;
+              break label479;
             }
             this.particleEmitter.setCanvasScaleForTakeLargePicture(this.canvasScale);
             paramParticleEmitterParam = this.particleEmitter;
             l = this.particleEmitter.startTime;
             if (localObject2 == null) {
-              break label476;
+              break label473;
             }
           }
-          label476:
+          label473:
           for (boolean bool = true;; bool = false)
           {
             paramParticleEmitterParam.updateWithCurrentTime(l, bool);
@@ -315,9 +287,9 @@ public class ParticleFilter
             BenchUtil.benchEnd("updateWithCurrentTime");
             break;
             localObject1 = new Vector2();
-            break label336;
+            break label333;
           }
-          label482:
+          label479:
           paramParticleEmitterParam = this.particleEmitter;
           long l = System.currentTimeMillis();
           if (localObject2 != null) {}
@@ -360,7 +332,7 @@ public class ParticleFilter
       j += 12;
       i1 += 1;
     }
-    label713:
+    label710:
     BenchUtil.benchEnd("setValue");
     setCoordNum(i4 * 6);
     addParam(new UniformParam.TextureParam("inputImageTexture2", this.particleEmitter.texture, 33986));
@@ -386,11 +358,11 @@ public class ParticleFilter
         this.particleParam.isPartical2 = 1;
         localObject3 = this.particleParam;
         if (!this.particleEmitter.opacityModifyRGB) {
-          break label1085;
+          break label1088;
         }
       }
     }
-    label1085:
+    label1088:
     for (int i = 1;; i = 0)
     {
       ((ParticleParam)localObject3).uOpacityModifyRGB = i;
@@ -402,7 +374,7 @@ public class ParticleFilter
       i = 0;
       break;
     }
-    label1091:
+    label1094:
     resetParams();
   }
   
@@ -461,6 +433,27 @@ public class ParticleFilter
     return bool2;
   }
   
+  public void resetParams()
+  {
+    int i = 1;
+    addParam(new UniformParam.IntParam("isPartical2", 1));
+    if (this.particleEmitter.opacityModifyRGB) {}
+    for (;;)
+    {
+      addParam(new UniformParam.IntParam("u_opacityModifyRGB", i));
+      addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+      setCoordNum(6);
+      addAttribParam(new AttributeParam("position", new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F }, 3));
+      addAttribParam(new AttributeParam("inputTextureCoordinate", new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F }, 2));
+      addAttribParam(new AttributeParam("aColor", new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F }, 4));
+      this.mHasSeenValid = false;
+      this.mPreviousBodyPoints = null;
+      this.particleParam.needRender = false;
+      return;
+      i = 0;
+    }
+  }
+  
   public void setHotAreaPosition(ArrayList<RedPacketPosition> paramArrayList)
   {
     this.hotAreaPositions = paramArrayList;
@@ -469,11 +462,6 @@ public class ParticleFilter
   protected void update(List<PointF> paramList, float[] paramArrayOfFloat)
   {
     updateParticle(updateEmitterParam(paramList, paramArrayOfFloat));
-  }
-  
-  protected TRIGGERED_STATUS updateActionTriggered(PTDetectInfo paramPTDetectInfo)
-  {
-    return this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
   }
   
   public void updatePreview(Object paramObject)
@@ -485,22 +473,18 @@ public class ParticleFilter
         avoidBodyPointsShake(paramObject);
       }
       this.phoneAngles = paramObject.phoneAngle;
-      updateActionTriggered(paramObject);
-      updateHotArea();
-      if (this.triggerCtrlItem.isTriggered()) {
-        break label60;
+      this.frameInedx = paramObject.frameIndex;
+      this.audioScaleFactor = paramObject.audioScaleFactor;
+      updateHotArea(paramObject.redPacketPositions);
+      if (!VideoMaterialUtil.isGestureItem(this.item)) {
+        break label82;
       }
-      resetParams();
+      update(paramObject.handPoints, paramObject.faceAngles);
     }
-    label60:
+    label82:
     do
     {
       return;
-      if (VideoMaterialUtil.isGestureItem(this.item))
-      {
-        update(paramObject.handPoints, paramObject.faceAngles);
-        return;
-      }
       if (!VideoMaterialUtil.isBodyDetectItem(this.item)) {
         break;
       }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acnq;
-import acnr;
+import aefa;
+import aefb;
 import android.text.TextUtils;
-import bbbr;
+import bdal;
 import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import java.util.ArrayList;
@@ -18,83 +18,83 @@ class TroopTransferActivity$14
     int i = 0;
     boolean bool = false;
     Object localObject;
-    acnq localacnq;
+    aefa localaefa;
     if (i < this.a.size())
     {
       localObject = (TroopMemberCardInfo)this.a.get(i);
-      localacnq = this.this$0.a.a(((TroopMemberCardInfo)localObject).memberuin);
-      if (localacnq != null) {}
+      localaefa = this.this$0.a.a(((TroopMemberCardInfo)localObject).memberuin);
+      if (localaefa != null) {}
     }
     for (;;)
     {
       i += 1;
       break;
-      if (!bbbr.a(((TroopMemberCardInfo)localObject).name, localacnq.m))
+      if (!bdal.a(((TroopMemberCardInfo)localObject).name, localaefa.m))
       {
-        localacnq.m = ((TroopMemberCardInfo)localObject).name;
-        if (!TextUtils.isEmpty(localacnq.m))
+        localaefa.m = ((TroopMemberCardInfo)localObject).name;
+        if (!TextUtils.isEmpty(localaefa.m))
         {
-          localacnq.n = ChnToSpell.a(localacnq.m, 2);
-          localacnq.o = ChnToSpell.a(localacnq.m, 1);
+          localaefa.n = ChnToSpell.a(localaefa.m, 2);
+          localaefa.o = ChnToSpell.a(localaefa.m, 1);
         }
       }
       else
       {
         label118:
-        if (!bbbr.a(((TroopMemberCardInfo)localObject).nick, localacnq.g))
+        if (!bdal.a(((TroopMemberCardInfo)localObject).nick, localaefa.g))
         {
-          localacnq.g = ((TroopMemberCardInfo)localObject).nick;
-          if (TextUtils.isEmpty(localacnq.g)) {
+          localaefa.g = ((TroopMemberCardInfo)localObject).nick;
+          if (TextUtils.isEmpty(localaefa.g)) {
             break label277;
           }
-          localacnq.h = ChnToSpell.a(localacnq.g, 2);
-          localacnq.i = ChnToSpell.a(localacnq.g, 1);
+          localaefa.h = ChnToSpell.a(localaefa.g, 2);
+          localaefa.i = ChnToSpell.a(localaefa.g, 1);
         }
         label181:
-        if (TextUtils.isEmpty(localacnq.j)) {
+        if (TextUtils.isEmpty(localaefa.j)) {
           break label294;
         }
-        localObject = localacnq.j;
+        localObject = localaefa.j;
       }
       for (;;)
       {
-        if (!bbbr.a(localObject, localacnq.b))
+        if (!bdal.a(localObject, localaefa.b))
         {
-          localacnq.b = ((String)localObject);
-          if (!TextUtils.isEmpty(localacnq.b))
+          localaefa.b = ((String)localObject);
+          if (!TextUtils.isEmpty(localaefa.b))
           {
-            localacnq.c = ChnToSpell.a(localacnq.b, 2);
-            localacnq.d = ChnToSpell.a(localacnq.b, 1);
+            localaefa.c = ChnToSpell.a(localaefa.b, 2);
+            localaefa.d = ChnToSpell.a(localaefa.b, 1);
             bool = true;
             break;
-            localacnq.n = "";
-            localacnq.o = "";
+            localaefa.n = "";
+            localaefa.o = "";
             break label118;
             label277:
-            localacnq.h = "";
-            localacnq.i = "";
+            localaefa.h = "";
+            localaefa.i = "";
             break label181;
             label294:
-            if (!TextUtils.isEmpty(localacnq.m))
+            if (!TextUtils.isEmpty(localaefa.m))
             {
-              localObject = localacnq.m;
+              localObject = localaefa.m;
               continue;
             }
-            if (!TextUtils.isEmpty(localacnq.g))
+            if (!TextUtils.isEmpty(localaefa.g))
             {
-              localObject = localacnq.g;
+              localObject = localaefa.g;
               continue;
             }
-            if (!TextUtils.isEmpty(localacnq.a))
+            if (!TextUtils.isEmpty(localaefa.a))
             {
-              localObject = localacnq.a;
+              localObject = localaefa.a;
               continue;
             }
             localObject = "";
             continue;
           }
-          localacnq.c = "";
-          localacnq.d = "";
+          localaefa.c = "";
+          localaefa.d = "";
           bool = true;
           break;
           this.this$0.a(bool);
@@ -106,7 +106,7 @@ class TroopTransferActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.14
  * JD-Core Version:    0.7.0.1
  */

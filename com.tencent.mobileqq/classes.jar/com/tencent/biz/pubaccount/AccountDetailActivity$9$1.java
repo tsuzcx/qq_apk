@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import nhy;
+import nku;
 
 public class AccountDetailActivity$9$1
   implements Runnable
 {
-  public AccountDetailActivity$9$1(nhy paramnhy) {}
+  public AccountDetailActivity$9$1(nku paramnku) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class AccountDetailActivity$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetailActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

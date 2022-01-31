@@ -1,216 +1,59 @@
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.4;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.TroopShortcutbarFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopSign;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.util.HashMap;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aeeg
-  extends aeec
+  extends bceg
 {
-  protected static HashMap<ChatMessage, aeel> a;
-  protected static long c;
-  public TroopChatPie a;
+  TroopShortcutbarFragment a;
   
-  static
+  public aeeg(QQAppInterface paramQQAppInterface, TroopShortcutbarFragment paramTroopShortcutbarFragment)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap(5);
+    super(paramQQAppInterface);
+    this.a = paramTroopShortcutbarFragment;
   }
   
-  public aeeg(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, TroopChatPie paramTroopChatPie)
+  protected void a(long paramLong, boolean paramBoolean)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie = paramTroopChatPie;
-  }
-  
-  public static void e()
-  {
-    if (System.currentTimeMillis() - c < 600000L) {
-      return;
+    if ((paramLong == this.a.jdField_a_of_type_Long) && (paramBoolean)) {
+      this.a.a(false);
     }
-    c = System.currentTimeMillis();
-    mzb.a();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = mzb.a("2833");
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSignItemBuilder", 2, "checkOffline version = " + str);
-    }
-    mzb.a("2833", localQQAppInterface, new aeek(), true, 0, true);
   }
   
-  public acuj a()
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    return new aeem();
-  }
-  
-  public View a(ChatMessage paramChatMessage, acuj paramacuj, View paramView, BaseChatItemLayout paramBaseChatItemLayout, acxj paramacxj)
-  {
-    aeem localaeem = (aeem)paramacuj;
-    MessageForTroopSign localMessageForTroopSign = (MessageForTroopSign)paramChatMessage;
-    localMessageForTroopSign.parse();
-    if (paramView == null)
+    boolean bool = false;
+    if (paramLong == this.a.jdField_a_of_type_Long)
     {
-      paramacuj = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562574, paramBaseChatItemLayout, false);
-      localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramacuj);
-      localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView = ((TroopSignVideoView)localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364798));
-      localaeem.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376712));
-      localaeem.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369774));
-      localaeem.b = ((TextView)localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369776));
-      localaeem.jdField_c_of_type_AndroidViewView = localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369775);
-      localaeem.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369778));
-      localaeem.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369773));
-      localaeem.jdField_d_of_type_AndroidViewView = localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369777);
-      localaeem.jdField_e_of_type_AndroidViewView = localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369486);
-      localaeem.f = localaeem.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369506);
-      localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.setFocusable(false);
-      localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.setFocusableInTouchMode(false);
-      localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.setClickable(false);
-      localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.setFps(30);
-      paramacuj.setOnClickListener(this);
-      paramacuj.setOnLongClickListener(paramacxj);
-      paramacuj.setOnTouchListener(paramacxj);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a(new aeeh(this, localaeem, paramBaseChatItemLayout));
+      if (!paramBoolean) {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, alpo.a(2131696679), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
       }
-      localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.setOnPlayedListener(new aeei(this, localaeem));
-    }
-    for (;;)
-    {
-      boolean bool = TextUtils.isEmpty(localMessageForTroopSign.msgContent);
-      if (!bool)
-      {
-        localaeem.jdField_a_of_type_AndroidWidgetTextView.setText(localMessageForTroopSign.msgContent);
-        localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.setShowCover(true);
-        paramView = localMessageForTroopSign.dynamicSource;
-        if (paramView.equals(localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.getTag())) {
-          break label694;
-        }
-        localaeem.jdField_e_of_type_AndroidViewView.setVisibility(0);
-        localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.setTag(paramView);
-        localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.a();
-        paramacxj = mzh.a("2833") + "2833" + "/troop_sign/" + paramView + ".mp4";
-        if (!new File(paramacxj).exists()) {
-          break label649;
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.am)) {
-          break label636;
-        }
-        localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.setFilePath(paramacxj);
-        label479:
-        localaeem.f.setVisibility(8);
-        label489:
-        a(localaeem.jdField_e_of_type_AndroidViewView, "2833", paramView, bool);
-        label503:
-        a(localaeem, localMessageForTroopSign);
-        if ((AppSetting.d) && (!TextUtils.isEmpty(localMessageForTroopSign.msgTitle))) {
-          paramacuj.setContentDescription("" + localMessageForTroopSign.msgTitle);
-        }
-        a(localaeem, paramBaseChatItemLayout);
-        paramChatMessage = (FrameLayout.LayoutParams)localaeem.jdField_e_of_type_AndroidWidgetTextView.getLayoutParams();
-        if (!localMessageForTroopSign.isSend()) {
-          break label751;
-        }
+      TroopShortcutbarFragment localTroopShortcutbarFragment = this.a;
+      if (!paramBoolean) {
+        bool = true;
       }
-      label649:
-      label694:
-      label751:
-      for (paramChatMessage.leftMargin = (BaseChatItemLayout.j + baxn.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));; paramChatMessage.leftMargin = baxn.a(this.jdField_a_of_type_AndroidContentContext, 10.0F))
-      {
-        localaeem.jdField_e_of_type_AndroidWidgetTextView.setLayoutParams(paramChatMessage);
-        return paramacuj;
-        localaeem.jdField_a_of_type_AndroidWidgetTextView.setText("");
-        localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.setShowCover(false);
-        break;
-        label636:
-        localaeem.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.a(paramacxj);
-        break label479;
-        if (!jdField_a_of_type_JavaUtilHashMap.containsKey(paramChatMessage))
-        {
-          jdField_a_of_type_JavaUtilHashMap.put(paramChatMessage, new aeej(this, paramacxj, localaeem));
-          e();
-        }
-        localaeem.f.setVisibility(0);
-        break label489;
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.am))
-        {
-          jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopSignItemBuilder.TroopSignVideoItemBuilder.4(this, localaeem), 200L);
-          break label503;
-        }
-        a(localaeem.jdField_e_of_type_AndroidViewView, "2833", paramView, bool);
-        break label503;
-      }
-      paramacuj = paramView;
+      localTroopShortcutbarFragment.a(bool);
     }
   }
   
-  public void a()
+  protected void a(long paramLong1, boolean paramBoolean, long paramLong2, int paramInt)
   {
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    super.a();
-  }
-  
-  public void a(View paramView, int paramInt, boolean paramBoolean) {}
-  
-  protected void a(View paramView, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    paramString2 = new StringBuilder().append(mzh.a(paramString1)).append(paramString1).append("/troop_sign/").append(paramString2);
-    if (paramBoolean) {}
-    for (paramString1 = "_no_summary";; paramString1 = "")
+    boolean bool = false;
+    if ((paramLong1 == this.a.jdField_a_of_type_Long) && (!paramBoolean))
     {
-      paramString1 = new File(paramString1 + ".png");
-      if (!paramString1.exists()) {
-        break;
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, alpo.a(2131696679), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      TroopShortcutbarFragment localTroopShortcutbarFragment = this.a;
+      if (!paramBoolean) {
+        bool = true;
       }
-      paramString2 = URLDrawable.URLDrawableOptions.obtain();
-      ColorDrawable localColorDrawable = new ColorDrawable(0);
-      paramString2.mFailedDrawable = localColorDrawable;
-      paramString2.mLoadingDrawable = localColorDrawable;
-      try
-      {
-        paramView.setBackgroundDrawable(URLDrawable.getDrawable(paramString1.toURL(), paramString2));
-        return;
-      }
-      catch (MalformedURLException paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
+      localTroopShortcutbarFragment.a(bool);
     }
-    paramString1 = URLDrawable.URLDrawableOptions.obtain();
-    paramString2 = new ColorDrawable(0);
-    paramString1.mFailedDrawable = paramString2;
-    paramString1.mLoadingDrawable = paramString2;
-    paramString1 = URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/troop_sign_loading.png", paramString1);
-    paramString1.setTag(bavw.b(287, 287, baxn.a(this.jdField_a_of_type_AndroidContentContext, 5.0F)));
-    paramString1.setDecodeHandler(bavw.i);
-    paramView.setBackgroundDrawable(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeeg
  * JD-Core Version:    0.7.0.1
  */

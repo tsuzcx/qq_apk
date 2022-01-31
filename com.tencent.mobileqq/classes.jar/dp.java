@@ -1,42 +1,36 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.dataline.activities.LiteActivity;
+import com.dataline.util.file.DLFileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
 
-public class dp
-  implements InputFilter
+class dp
+  implements army
 {
-  public dp(LiteActivity paramLiteActivity) {}
+  dp(do paramdo, DataLineMsgRecord paramDataLineMsgRecord, dq paramdq) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void a()
   {
-    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
-    if (paramInt3 <= 0)
-    {
-      LiteActivity.a(this.a);
-      return "";
+    int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    DataLineMsgSet localDataLineMsgSet = dm.a(this.jdField_a_of_type_Do.a).a(i).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    if (localDataLineMsgSet != null) {
+      localDataLineMsgSet.setPaused(false);
     }
-    if (paramInt3 >= paramInt2 - paramInt1) {
-      return null;
-    }
-    paramInt3 += paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    if (this.jdField_a_of_type_Dq.a.a != 1)
     {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1)
-      {
-        LiteActivity.a(this.a);
-        return "";
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.fileMsgStatus == 1L) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.strMoloKey != null)) {
+        dl.e(dm.a(this.jdField_a_of_type_Do.a));
       }
+      dm.a(this.jdField_a_of_type_Do.a, this.jdField_a_of_type_Dq, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+      return;
     }
-    LiteActivity.a(this.a);
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    dm.b(this.jdField_a_of_type_Do.a, this.jdField_a_of_type_Dq, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dp
  * JD-Core Version:    0.7.0.1
  */

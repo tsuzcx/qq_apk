@@ -1,18 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.DialogInterface;
 
-public final class ajfv
-  implements EIPCResultCallback
+class ajfv
+  extends bdco
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  ajfv(ajfr paramajfr) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("CmShow_CmShowRenderView", 1, "openCmShowStore CmShow code:" + paramEIPCResult.code);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajfv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 
 public class xag
-  implements DialogInterface.OnClickListener
 {
-  public xag(MoveFileActivity paramMoveFileActivity) {}
+  public final Drawable a;
+  public final String a;
+  public final String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xag(@NonNull String paramString1, @NonNull String paramString2, Drawable paramDrawable)
   {
-    paramDialogInterface = (xnj)paramDialogInterface;
-    this.a.jdField_a_of_type_JavaLangString = paramDialogInterface.getInputValue().trim();
-    if (this.a.jdField_a_of_type_JavaLangString.length() > bakx.a)
-    {
-      paramDialogInterface.a(this.a.getString(2131697631), -65536);
-      axqy.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "over_num", 0, 0, this.a.jdField_a_of_type_Long + "", "", "", "");
-    }
-    do
-    {
-      return;
-      if (bakx.a(this.a.jdField_a_of_type_JavaLangString))
-      {
-        paramDialogInterface.a(this.a.getString(2131697632), -65536);
-        axqy.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "0", "", "");
-        return;
-      }
-      paramDialogInterface.dismiss();
-    } while (bakx.a(this.a.app, this.a, this.a.jdField_a_of_type_Long) == 0);
-    xam.a(this.a.app, this.a.jdField_a_of_type_Long, "/", this.a.jdField_a_of_type_JavaLangString, MoveFileActivity.a(this.a));
-    this.a.a(2131697560);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  public String toString()
+  {
+    return "SelectedItem{category='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xag
  * JD-Core Version:    0.7.0.1
  */

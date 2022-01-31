@@ -1,27 +1,31 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Pair;
 
-final class ansi
-  implements DialogInterface.OnClickListener
+class ansi
+  extends Handler
 {
-  ansi(QQAppInterface paramQQAppInterface, Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ansi(ansh paramansh, Looper paramLooper)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    if (paramInt == 1) {
-      bbrk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719975), "");
-    }
+    paramMessage = (Pair)paramMessage.obj;
+    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansi
  * JD-Core Version:    0.7.0.1
  */

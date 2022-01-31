@@ -1,20 +1,33 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-class baxk<Bitmap>
-  extends WeakReference<Bitmap>
+public class baxk
+  extends baxq
 {
-  private final String a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<basp> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
   
-  public baxk(String paramString, Bitmap paramBitmap, ReferenceQueue paramReferenceQueue)
+  public baxk()
   {
-    super(paramBitmap, paramReferenceQueue);
-    this.a = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" fileID:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baxk
  * JD-Core Version:    0.7.0.1
  */

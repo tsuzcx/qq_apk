@@ -1,17 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-final class arvr
-  implements DialogInterface.OnClickListener
+class arvr
+  implements View.OnTouchListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  arvr(arvo paramarvo) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    axqy.b(null, "CliOper", "", "", "0X800A97A", "0X800A97A", 0, 0, "", "0", "0", "");
+    int i = arvo.a(this.a);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      paramMotionEvent = paramView.findViewById(2131366755);
+      if (paramMotionEvent != null) {
+        paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
+      }
+      if (i != 1) {}
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return false;
+            } while (i != 3);
+            paramView = (ImageView)paramView.findViewById(2131366761);
+          } while (paramView == null);
+          paramView.setImageResource(2130839711);
+          return false;
+        } while (paramMotionEvent.getAction() != 1);
+        paramMotionEvent = paramView.findViewById(2131366755);
+        if (paramMotionEvent != null) {
+          paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
+        }
+      } while ((i == 1) || (i != 3));
+      paramView = (ImageView)paramView.findViewById(2131366761);
+    } while (paramView == null);
+    paramView.setImageResource(2130839710);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arvr
  * JD-Core Version:    0.7.0.1
  */

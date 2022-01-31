@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import aljt;
-import alju;
-import axrn;
+import anaj;
+import anak;
+import azmz;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -18,23 +18,23 @@ public final class MiniScanReport$7
     localHashMap.put("report_key_detect_support_type", String.valueOf(this.a));
     localHashMap.put("report_key_detect_init_cost", String.valueOf(this.b));
     localHashMap.put("report_key_qq_version", "0");
-    localHashMap.put("report_key_qq_subversion", "4480");
-    String str2 = aljt.c("QMCF_qr");
+    localHashMap.put("report_key_qq_subversion", "4515");
+    String str2 = anaj.c("QMCF_qr");
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
     localHashMap.put("report_key_so_md5", str1);
-    alju.a(localHashMap);
-    axrn.a(BaseApplication.getContext()).a("", "report_tag_detect_init_cost", true, 0L, 0L, localHashMap, "");
-    if ((QLog.isColorLevel()) || (alju.a())) {
+    anak.a(localHashMap);
+    azmz.a(BaseApplication.getContext()).a("", "report_tag_detect_init_cost", true, 0L, 0L, localHashMap, "");
+    if ((QLog.isColorLevel()) || (anak.a())) {
       QLog.i("MiniRecog.MiniScanReport", 2, String.format("base_test_scan onDetectInitCost [supportType,timeCost]=[%d,%d]", new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.codeEngine.MiniScanReport.7
  * JD-Core Version:    0.7.0.1
  */

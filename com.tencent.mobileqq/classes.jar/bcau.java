@@ -1,21 +1,17 @@
-public class bcau
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class bcau
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  
-  bcau(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramInt;
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcau
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import alyy;
-import baxo;
+import anpx;
+import bcwi;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.util.WeakReference;
@@ -9,7 +9,7 @@ import mqq.util.WeakReference;
 public class DynamicAvatarManager$7
   implements Runnable
 {
-  public DynamicAvatarManager$7(alyy paramalyy, baxo parambaxo) {}
+  public DynamicAvatarManager$7(anpx paramanpx, bcwi parambcwi) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public class DynamicAvatarManager$7
           if ((localWeakReference == null) || (localWeakReference.get() == null) || (this.this$0.a.contains(localWeakReference))) {
             break label233;
           }
-          boolean bool = this.this$0.a((baxo)localWeakReference.get());
+          boolean bool = this.this$0.a((bcwi)localWeakReference.get());
           if (QLog.isColorLevel()) {
             QLog.i("Q.dynamicAvatar", 2, "onPlayFinished to play. result : " + bool);
           }
@@ -58,7 +58,7 @@ public class DynamicAvatarManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager.7
  * JD-Core Version:    0.7.0.1
  */

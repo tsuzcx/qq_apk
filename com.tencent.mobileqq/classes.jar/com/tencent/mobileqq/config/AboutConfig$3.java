@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.config;
 
-import amoo;
+import aofm;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
 
 public final class AboutConfig$3
   implements Runnable
 {
-  public AboutConfig$3(amoo paramamoo, ResourcePluginInfo paramResourcePluginInfo) {}
+  public AboutConfig$3(aofm paramaofm, ResourcePluginInfo paramResourcePluginInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Amoo.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
-    this.jdField_a_of_type_Amoo.b();
+    this.jdField_a_of_type_Aofm.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
+    this.jdField_a_of_type_Aofm.b();
   }
 }
 

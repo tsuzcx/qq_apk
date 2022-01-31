@@ -1,71 +1,10 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.GalleryProteusItem.1;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONObject;
-import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
-
-public class pfu
-  implements php
+public abstract interface pfu
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    if (paramInt == 103) {
-      return pdx.a(paramBaseArticleInfo);
-    }
-    if (paramInt == 102) {
-      return pdv.a(paramBaseArticleInfo);
-    }
-    return pdw.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
-  {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    Object localObject = (pju)localViewBase.findViewBaseByName("id_info_avator");
-    if (localObject != null)
-    {
-      ((pju)localObject).a(parampau, false);
-      parampau = parampau.a();
-      localObject = (NativeAvatarView)((pju)localObject).getNativeView();
-      if ((onh.b(parampau)) && (parampau.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (parampau.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
-        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130845457));
-      }
-    }
-    paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");
-    parampau = localViewBase.findViewBaseByName("id_view_nickname");
-    if ((paramContainer != null) && (parampau != null))
-    {
-      paramContainer = (NativeTextImp)paramContainer.getNativeView();
-      parampau = parampau.getNativeView();
-      if ((paramContainer != null) && (parampau != null)) {
-        parampau.post(new GalleryProteusItem.1(this, parampau, paramContainer));
-      }
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
-  {
-    return false;
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfu
  * JD-Core Version:    0.7.0.1
  */

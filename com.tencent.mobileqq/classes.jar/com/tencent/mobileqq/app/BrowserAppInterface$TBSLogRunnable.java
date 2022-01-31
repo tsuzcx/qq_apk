@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class BrowserAppInterface$TBSLogRunnable
   implements Runnable
@@ -16,7 +16,7 @@ public class BrowserAppInterface$TBSLogRunnable
   public void run()
   {
     if (!TextUtils.isEmpty(this.a)) {
-      bcql.a(this.this$0.getApp(), this.a, 1).a();
+      QQToast.a(this.this$0.getApp(), this.a, 1).a();
     }
   }
 }

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bich;
-import bicq;
-import bicy;
+import bked;
+import bkem;
+import bkeu;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
 import java.util.ArrayList;
@@ -26,9 +26,9 @@ public class AppJsPlugin$AppDownloadManager
   private HashMap<String, AppJsPlugin.IWaldlCallback> mQueryCallbackMap = new HashMap();
   private HashMap<String, List<AppJsPlugin.IWaldlCallback>> mQueryDownloadInfoListenerMap = new HashMap();
   private int mRetryCount;
-  private bich mWadlCallback = new AppJsPlugin.AppDownloadManager.1(this);
+  private bked mWadlCallback = new AppJsPlugin.AppDownloadManager.1(this);
   private HashMap<String, WadlParams> mWadlParams = new HashMap();
-  private bicq mWadlProxyService;
+  private bkem mWadlProxyService;
   
   public AppJsPlugin$AppDownloadManager(AppJsPlugin paramAppJsPlugin, Context paramContext)
   {
@@ -93,7 +93,7 @@ public class AppJsPlugin$AppDownloadManager
     this.mIsInitFlag = true;
     this.mRetryCount = 0;
     this.mDownloadListenerMap = new HashMap();
-    this.mWadlProxyService = new bicq();
+    this.mWadlProxyService = new bkem();
     this.mWadlProxyService.a(this.mWadlCallback);
   }
   
@@ -128,8 +128,8 @@ public class AppJsPlugin$AppDownloadManager
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
     paramString = new AppJsPlugin.AppDownloadManager.QueryDownloadInfoListener(this, paramString, paramIWaldlCallback);
-    bicy.a().a(paramString);
-    bicy.a().a("10036618", localArrayList);
+    bkeu.a().a(paramString);
+    bkeu.a().a("10036618", localArrayList);
   }
   
   public void removeDownloadListener(String paramString)
@@ -220,7 +220,7 @@ public class AppJsPlugin$AppDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AppJsPlugin.AppDownloadManager
  * JD-Core Version:    0.7.0.1
  */

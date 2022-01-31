@@ -1,42 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aryu
-  implements Animator.AnimatorListener
+class aryu
+  implements DialogInterface.OnClickListener
 {
-  public aryu(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  aryu(arys paramarys) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PoiSlideBottomPanel.h(this.a, false);
-    PoiSlideBottomPanel.i(this.a, false);
-    PoiSlideBottomPanel.j(this.a, false);
-    if (PoiSlideBottomPanel.k(this.a) != null) {
-      PoiSlideBottomPanel.l(this.a).hidePanelFinish();
+    if (this.a.c) {
+      bfdq.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false);
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    PoiSlideBottomPanel.e(this.a, false);
-    PoiSlideBottomPanel.f(this.a, false);
-    PoiSlideBottomPanel.g(this.a, false);
-    if (PoiSlideBottomPanel.i(this.a) != null) {
-      PoiSlideBottomPanel.j(this.a).hidePanelFinish();
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "addToQQFavorites" })));
+    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
+    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("is_share_flag", true);
+    if (this.a.jdField_a_of_type_Long > 0L) {
+      localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    PoiSlideBottomPanel.d(this.a, true);
+    biqv.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
+    birh.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryu
  * JD-Core Version:    0.7.0.1
  */

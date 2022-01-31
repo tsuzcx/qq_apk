@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.map.geolocation.TencentDirectionListener;
 
-public abstract interface atlr
+class atlr
+  implements TencentDirectionListener
 {
-  public abstract int a();
+  atlr(atln paramatln) {}
   
-  public abstract void a();
-  
-  public abstract void a(Comments.Comment paramComment);
-  
-  public abstract void b();
-  
-  public abstract void b(Comments.Comment paramComment);
-  
-  public abstract void c();
+  public void onDirectionChanged(double paramDouble, int paramInt)
+  {
+    if (atln.a(this.a) != null)
+    {
+      atln.a(this.a, 180.0D + paramDouble);
+      atln.a(this.a, false);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atlr
  * JD-Core Version:    0.7.0.1
  */

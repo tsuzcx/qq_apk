@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-public class aqim
-  implements bfpj
+class aqim
+  implements army
 {
-  public aqim(NearbyHybridFragment paramNearbyHybridFragment) {}
+  aqim(aqil paramaqil) {}
   
-  public void onDismiss()
+  public void a()
   {
-    this.a.a = null;
-    this.a.o();
+    UniformDownloadActivity.a(this.a.a);
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
+  }
+  
+  public void b()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqim
  * JD-Core Version:    0.7.0.1
  */

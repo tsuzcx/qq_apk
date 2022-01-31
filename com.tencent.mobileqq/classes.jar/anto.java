@@ -1,24 +1,18 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.view.MotionEvent;
 
 class anto
-  extends DataSetObserver
+  implements beld
 {
-  anto(antn paramantn, DragSortListView paramDragSortListView) {}
+  anto(antn paramantn) {}
   
-  public void onChanged()
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Antn.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    this.jdField_a_of_type_Antn.notifyDataSetInvalidated();
+    return antn.a(this.a, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anto
  * JD-Core Version:    0.7.0.1
  */

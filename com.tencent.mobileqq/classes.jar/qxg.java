@@ -1,65 +1,63 @@
-import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoDataManager.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class qxg
+  implements qxd
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  public static String a;
+  private Context jdField_a_of_type_AndroidContentContext;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private npq jdField_a_of_type_Npq;
-  private npr jdField_a_of_type_Npr;
-  private qwy jdField_a_of_type_Qwy;
-  private qxr jdField_a_of_type_Qxr;
+  private qxc jdField_a_of_type_Qxc;
+  private qxs jdField_a_of_type_Qxs;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private String jdField_b_of_type_JavaLangString;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  qxg(Activity paramActivity, qwy paramqwy, qxr paramqxr)
+  static
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Qwy = paramqwy;
-    this.jdField_a_of_type_Qxr = paramqxr;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onh.a());
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    b();
+    jdField_a_of_type_JavaLangString = "RIJUGC.RIJUgcImageUploader";
   }
   
-  private void b()
+  public qxg(Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_Npq = ((npq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(99));
-    this.jdField_a_of_type_Npr = new qxh(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Npr);
-  }
-  
-  private void b(int paramInt1, int paramInt2)
-  {
-    ThreadManager.post(new MultiVideoDataManager.1(this, paramInt1, paramInt2), 1, null, true);
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Npr);
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "upload, path=" + this.jdField_b_of_type_JavaLangString);
+    this.jdField_b_of_type_Boolean = true;
+    ThreadManagerV2.getUIHandlerV2().post(new RIJUgcImageUploader.1(this));
   }
   
-  void a(int paramInt1, int paramInt2)
+  public void a(qxc paramqxc)
   {
-    int i = paramInt1;
-    while ((i < paramInt1 + paramInt2) && (i < this.jdField_a_of_type_Qxr.a().size()))
+    this.jdField_a_of_type_Qxc = paramqxc;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_Boolean)
     {
-      VideoInfo localVideoInfo = (VideoInfo)this.jdField_a_of_type_Qxr.a().get(i);
-      if (localVideoInfo.s == 0) {
-        this.jdField_a_of_type_Npq.a(localVideoInfo.a, localVideoInfo.g);
+      this.jdField_a_of_type_Boolean = true;
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "cancel, path=" + this.jdField_b_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Qxs != null)
+      {
+        this.jdField_a_of_type_Qxs.a();
+        this.jdField_a_of_type_Qxs.b();
       }
-      i += 1;
     }
-    b(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qxg
  * JD-Core Version:    0.7.0.1
  */

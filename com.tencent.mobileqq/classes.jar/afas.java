@@ -1,25 +1,31 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.util.ArrayList;
+import java.util.List;
 
-public class afas
-  implements MediaPlayer.OnErrorListener
+class afas
+  implements DialogInterface.OnClickListener
 {
-  public afas(BlessActivity paramBlessActivity) {}
+  afas(afar paramafar, List paramList, BaseChatPie paramBaseChatPie) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
+    switch (paramInt)
+    {
     }
-    BlessActivity.a(this.a, true);
-    return true;
+    do
+    {
+      return;
+      paramDialogInterface = aule.a(afar.a(this.jdField_a_of_type_Afar), (ArrayList)this.jdField_a_of_type_JavaUtilList);
+    } while ((paramDialogInterface == null) || (paramDialogInterface.size() == 0));
+    afar.a(this.jdField_a_of_type_Afar, paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afas
  * JD-Core Version:    0.7.0.1
  */

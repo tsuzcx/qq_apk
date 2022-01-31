@@ -47,9 +47,13 @@ public class PTHairSegmenter
     int n;
     do
     {
-      return null;
-      Frame localFrame = (Frame)paramAIInput.getInput("frame");
-      localPTFaceAttr = (PTFaceAttr)paramAIParam.getAIAttr().getRealtimeData(AEDetectorType.FACE.value);
+      Frame localFrame;
+      do
+      {
+        return null;
+        localFrame = (Frame)paramAIInput.getInput("frame");
+        localPTFaceAttr = (PTFaceAttr)paramAIParam.getAIAttr().getRealtimeData(AEDetectorType.FACE.value);
+      } while ((localFrame == null) || (localPTFaceAttr == null));
       i = (int)(localFrame.width * localPTFaceAttr.getFaceDetectScale());
       j = (int)(localFrame.height * localPTFaceAttr.getFaceDetectScale());
       int k = paramAIParam.getBytesDataSizeWidth(getModuleType()).intValue();

@@ -1,26 +1,38 @@
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-public abstract interface vaq
+public class vaq<REQ extends MessageMicro>
+  extends unk<vco>
 {
-  public abstract StoryInputBarView a();
+  public final Bundle a;
+  public final REQ a;
+  public final String a;
   
-  public abstract wco a(String paramString);
+  public vaq(String paramString, REQ paramREQ, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
+  public unf a(byte[] paramArrayOfByte)
+  {
+    return new vco(paramArrayOfByte);
+  }
   
-  public abstract boolean a();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void g();
-  
-  public abstract void h();
+  protected byte[] a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vaq
  * JD-Core Version:    0.7.0.1
  */

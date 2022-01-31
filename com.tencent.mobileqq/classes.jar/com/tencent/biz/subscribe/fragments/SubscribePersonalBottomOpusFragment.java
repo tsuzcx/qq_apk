@@ -3,7 +3,7 @@ package com.tencent.biz.subscribe.fragments;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_COMM.COMM.StCommonExt;
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
@@ -14,62 +14,62 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.List;
-import wil;
-import wit;
-import wlg;
-import wpf;
-import wpw;
-import wqj;
-import wqk;
-import wqm;
-import wqn;
-import wqo;
-import xhb;
+import xxd;
+import xxl;
+import xzz;
+import ydw;
+import yem;
+import yez;
+import yfa;
+import yfc;
+import yfd;
+import yfe;
+import yvu;
 
 public class SubscribePersonalBottomOpusFragment
   extends SubscribeBaseBottomPersonalFragment
 {
   protected ExtraTypeInfo a;
-  private wlg a;
+  private xzz a;
   
-  private void a(wpw paramwpw)
+  private void a(yem paramyem)
   {
     if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView == null) {}
     do
     {
       return;
-      if ((paramwpw == null) || ((paramwpw.jdField_a_of_type_JavaUtilList != null) && (paramwpw.jdField_a_of_type_JavaUtilList.size() > 0)))
+      if ((paramyem == null) || ((paramyem.jdField_a_of_type_JavaUtilList != null) && (paramyem.jdField_a_of_type_JavaUtilList.size() > 0)))
       {
         this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setVisibility(8);
         return;
       }
-    } while (paramwpw.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null);
-    if (paramwpw.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.type.get() == 0) {
-      if (wit.a(paramwpw.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 6)) {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(new wqm(this, paramwpw));
+    } while (paramyem.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null);
+    if (paramyem.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.type.get() == 0) {
+      if (xxl.a(paramyem.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 6)) {
+        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(new yfc(this, paramyem));
       }
     }
     for (;;)
     {
-      xhb.b(paramwpw.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_person", "blank_exp", 0, 0, new String[0]);
+      yvu.b(paramyem.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_person", "blank_exp", 0, 0, new String[0]);
       return;
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setHintImageFilePath(wit.a() + "/certified_account_feeds_empty.png");
-      if (wit.a(paramwpw.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 1))
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setHintImageFilePath(xxl.a() + "/certified_account_feeds_empty.png");
+      if (xxl.a(paramyem.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 1))
       {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(ajya.a(2131719946), 13, getResources().getColor(2131167026));
+        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(alpo.a(2131720481), 13, getResources().getColor(2131167077));
       }
       else
       {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(ajya.a(2131713381), 13, getResources().getColor(2131167026));
+        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(alpo.a(2131713753), 13, getResources().getColor(2131167077));
         continue;
-        if (wit.a(paramwpw.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 1))
+        if (xxl.a(paramyem.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 1))
         {
-          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(new wqn(this, paramwpw), new wqo(this, paramwpw));
+          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(new yfd(this, paramyem), new yfe(this, paramyem));
         }
         else
         {
-          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setHintImageFilePath(wit.a() + "/certified_account_feeds_empty.png");
-          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(ajya.a(2131713381), 13, getResources().getColor(2131167026));
+          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setHintImageFilePath(xxl.a() + "/certified_account_feeds_empty.png");
+          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(alpo.a(2131713753), 13, getResources().getColor(2131167077));
         }
       }
     }
@@ -77,16 +77,16 @@ public class SubscribePersonalBottomOpusFragment
   
   private void b()
   {
-    if (this.jdField_a_of_type_Wpw != null)
+    if (this.jdField_a_of_type_Yem != null)
     {
-      if (this.jdField_a_of_type_Wpw.jdField_a_of_type_JavaUtilList != null)
+      if (this.jdField_a_of_type_Yem.jdField_a_of_type_JavaUtilList != null)
       {
-        a(this.jdField_a_of_type_Wpw.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Wpw.jdField_a_of_type_NS_COMMCOMM$StCommonExt, this.jdField_a_of_type_Wpw.jdField_a_of_type_Boolean);
-        if (this.jdField_a_of_type_Wlg != null) {
-          this.jdField_a_of_type_Wlg.b("share_key_subscribe_user", new wpf(this.jdField_a_of_type_Wpw.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser));
+        a(this.jdField_a_of_type_Yem.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Yem.jdField_a_of_type_NS_COMMCOMM$StCommonExt, this.jdField_a_of_type_Yem.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Xzz != null) {
+          this.jdField_a_of_type_Xzz.b("share_key_subscribe_user", new ydw(this.jdField_a_of_type_Yem.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser));
         }
       }
-      a(this.jdField_a_of_type_Wpw);
+      a(this.jdField_a_of_type_Yem);
     }
   }
   
@@ -111,37 +111,37 @@ public class SubscribePersonalBottomOpusFragment
   
   protected void a()
   {
-    this.jdField_a_of_type_Wlg = new wlg(null);
-    this.jdField_a_of_type_Wlg.b(false);
-    this.jdField_a_of_type_Wlg.a(true);
-    this.jdField_a_of_type_Wlg.a(new wqj(this));
-    this.jdField_a_of_type_Wlg.a(new wqk(this));
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Wlg);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.d();
+    this.jdField_a_of_type_Xzz = new xzz(null);
+    this.jdField_a_of_type_Xzz.b(false);
+    this.jdField_a_of_type_Xzz.a(true);
+    this.jdField_a_of_type_Xzz.a(new yez(this));
+    this.jdField_a_of_type_Xzz.a(new yfa(this));
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Xzz);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.e();
     b();
   }
   
   public void a(int paramInt) {}
   
-  public void a(String paramString, wpw paramwpw)
+  public void a(String paramString, yem paramyem)
   {
     if ("share_key_subscribe_opus".equals(paramString))
     {
-      this.jdField_a_of_type_Wpw = paramwpw;
+      this.jdField_a_of_type_Yem = paramyem;
       b();
     }
   }
   
   public void a(List<CertifiedAccountMeta.StFeed> paramList, COMM.StCommonExt paramStCommonExt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Wlg != null) {
-      this.jdField_a_of_type_Wlg.a(paramList, paramStCommonExt, paramBoolean);
+    if (this.jdField_a_of_type_Xzz != null) {
+      this.jdField_a_of_type_Xzz.a(paramList, paramStCommonExt, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment
  * JD-Core Version:    0.7.0.1
  */

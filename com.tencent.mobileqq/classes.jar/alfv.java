@@ -1,26 +1,54 @@
-public class alfv
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+
+final class alfv
+  implements akzo
 {
-  public int a;
-  public alfw a;
-  public String a;
+  alfv(String paramString, String[] paramArrayOfString, alfs paramalfs, int paramInt) {}
   
-  public alfv()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Alfw = null;
-  }
-  
-  public String toString()
-  {
-    return "ARCloudLBSLocationCheckResult{retCode = " + this.jdField_a_of_type_Int + ", imageId = " + this.jdField_a_of_type_JavaLangString + ", nearestPOIInfo = " + this.jdField_a_of_type_Alfw + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
+      if (paramArrayOfInt.exists()) {
+        try
+        {
+          paramString = alft.a(this.jdField_a_of_type_ArrayOfJavaLangString);
+          if (alft.a(this.jdField_a_of_type_JavaLangString))
+          {
+            paramArrayOfInt = alft.a(paramArrayOfInt, paramString);
+            this.jdField_a_of_type_Alfs.a(0, paramString, paramArrayOfInt);
+          }
+          while (QLog.isColorLevel())
+          {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
+            return;
+            this.jdField_a_of_type_Alfs.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
+          }
+          this.jdField_a_of_type_Alfs.a(-1, null, null);
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
+          return;
+        }
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Alfs.a(-1, null, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alfv
  * JD-Core Version:    0.7.0.1
  */

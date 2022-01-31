@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.teamwork;
 
-import ajya;
+import alpo;
 import android.os.Bundle;
 import android.text.TextUtils;
-import ayfj;
-import ayga;
+import badg;
+import badw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import java.io.UnsupportedEncodingException;
@@ -14,15 +14,15 @@ import org.json.JSONObject;
 public class TenDocOCRExportHandler$1
   implements Runnable
 {
-  public TenDocOCRExportHandler$1(ayga paramayga, String paramString) {}
+  public TenDocOCRExportHandler$1(badw parambadw, String paramString) {}
   
   public void run()
   {
     if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a))) {
       return;
     }
-    ayga localayga = (ayga)this.this$0.app.a(157);
-    JSONObject localJSONObject = ayfj.a(this.this$0.app, this.a, this.this$0.app.getCurrentAccountUin());
+    badw localbadw = (badw)this.this$0.app.a(157);
+    JSONObject localJSONObject = badg.a(this.this$0.app, this.a, this.this$0.app.getCurrentAccountUin());
     if (localJSONObject != null)
     {
       String str = localJSONObject.optString("url");
@@ -34,26 +34,26 @@ public class TenDocOCRExportHandler$1
         {
           Bundle localBundle = new Bundle();
           localBundle.putString("url", str);
-          localayga.notifyUI(3, true, new Object[] { localJSONObject });
+          localbadw.notifyUI(3, true, new Object[] { localJSONObject });
           QIPCClientHelper.getInstance().callServer("Module_TDFileChangeNameQIPCModule", "Action_url_2_fmdb", localBundle);
           return;
         }
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        localayga.notifyUI(1, true, new Object[] { ajya.a(2131714850), this.a });
+        localbadw.notifyUI(1, true, new Object[] { alpo.a(2131715222), this.a });
         localUnsupportedEncodingException.printStackTrace();
         return;
       }
-      localayga.notifyUI(1, true, new Object[] { ajya.a(2131714849), this.a });
+      localbadw.notifyUI(1, true, new Object[] { alpo.a(2131715221), this.a });
       return;
     }
-    localayga.notifyUI(1, true, new Object[] { ajya.a(2131714848), this.a });
+    localbadw.notifyUI(1, true, new Object[] { alpo.a(2131715220), this.a });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1
  * JD-Core Version:    0.7.0.1
  */

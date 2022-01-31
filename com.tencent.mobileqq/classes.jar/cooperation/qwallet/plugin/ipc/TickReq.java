@@ -2,17 +2,17 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import avps;
-import axpy;
-import axqy;
-import axrn;
+import axho;
+import azlj;
+import azmj;
+import azmz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.PatternLockUtils;
 import cooperation.qwallet.plugin.QWalletHelper;
 import java.util.ArrayList;
-import sgg;
+import syb;
 
 public class TickReq
   extends BaseReq
@@ -37,7 +37,7 @@ public class TickReq
   {
     QQAppInterface localQQAppInterface = QWalletHelper.getAppInterface();
     if ((localQQAppInterface != null) && (!TextUtils.isEmpty(this.pubAccUin))) {
-      sgg.a(localQQAppInterface, localQQAppInterface.getApp(), this.pubAccUin, null, false);
+      syb.a(localQQAppInterface, localQQAppInterface.getApp(), this.pubAccUin, null, false);
     }
   }
   
@@ -46,15 +46,15 @@ public class TickReq
     Object localObject = QWalletHelper.getAppInterface();
     if (localObject != null)
     {
-      localObject = (avps)((QQAppInterface)localObject).getManager(36);
-      ((avps)localObject).b(this.redpointPath);
-      if ((this.redpointPath != null) && (this.redpointPath.equals("100007.102000")) && (((avps)localObject).a(100007) != null)) {}
+      localObject = (axho)((QQAppInterface)localObject).getManager(36);
+      ((axho)localObject).b(this.redpointPath);
+      if ((this.redpointPath != null) && (this.redpointPath.equals("100007.102000")) && (((axho)localObject).a(100007) != null)) {}
     }
     else
     {
       return;
     }
-    ((avps)localObject).a(100007, this.redpointPath);
+    ((axho)localObject).a(100007, this.redpointPath);
   }
   
   private void onReport()
@@ -72,7 +72,7 @@ public class TickReq
           break;
           if (QWalletHelper.getAppInterface() != null)
           {
-            axrn.a(BaseApplication.getContext()).b(QWalletHelper.getAppInterface(), (String)localObject);
+            azmz.a(BaseApplication.getContext()).b(QWalletHelper.getAppInterface(), (String)localObject);
           }
           else
           {
@@ -82,7 +82,7 @@ public class TickReq
               if (localObject.length < 12) {
                 return;
               }
-              axqy.b(null, "P_CliOper", localObject[0], localObject[2], localObject[3], localObject[4], Integer.valueOf(localObject[5]).intValue(), Integer.valueOf(localObject[7]).intValue(), localObject[8], localObject[9], localObject[10], localObject[11]);
+              azmj.b(null, "P_CliOper", localObject[0], localObject[2], localObject[3], localObject[4], Integer.valueOf(localObject[5]).intValue(), Integer.valueOf(localObject[7]).intValue(), localObject[8], localObject[9], localObject[10], localObject[11]);
             }
             catch (Exception localException) {}
             if (QLog.isDevelopLevel()) {
@@ -146,7 +146,7 @@ public class TickReq
     do
     {
       return;
-      axpy.a(null, this.dcId, this.dcDetail, this.dcIsMerge);
+      azlj.a(null, this.dcId, this.dcDetail, this.dcIsMerge);
     } while (!QLog.isColorLevel());
     QLog.i("Q.qwallet.pay.dc", 2, this.dcId + '|' + this.dcDetail + '|' + this.dcIsMerge);
   }
@@ -166,7 +166,7 @@ public class TickReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.TickReq
  * JD-Core Version:    0.7.0.1
  */

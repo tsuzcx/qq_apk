@@ -9,15 +9,15 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import onh;
-import oyu;
-import ozo;
-import pqh;
+import ors;
+import pec;
+import pew;
+import pxc;
 
 public class ArticleInfoModule$9
   implements Runnable
 {
-  public ArticleInfoModule$9(ozo paramozo, long paramLong1, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, List paramList1, boolean paramBoolean2, long paramLong2, List paramList2, ToServiceMsg paramToServiceMsg) {}
+  public ArticleInfoModule$9(pew parampew, long paramLong1, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, List paramList1, boolean paramBoolean2, long paramLong2, List paramList2, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ public class ArticleInfoModule$9
       if (!this.jdField_a_of_type_Boolean) {
         break label691;
       }
-      localObject = (ConcurrentHashMap)ozo.b(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+      localObject = (ConcurrentHashMap)pew.b(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
       if (localObject != null) {
         break label803;
       }
@@ -50,7 +50,7 @@ public class ArticleInfoModule$9
         if (localIterator.hasNext())
         {
           ArticleInfo localArticleInfo = (ArticleInfo)localIterator.next();
-          localStringBuilder.append("article【" + i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + onh.c(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " rowkey : " + localArticleInfo.innerUniqueID + ", mFeedType : " + localArticleInfo.mFeedType + " feeedCookie : " + localArticleInfo.mFeedCookie + ", mFeedID : " + localArticleInfo.mFeedId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName);
+          localStringBuilder.append("article【" + i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + ors.c(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " rowkey : " + localArticleInfo.innerUniqueID + ", mFeedType : " + localArticleInfo.mFeedType + " feeedCookie : " + localArticleInfo.mFeedCookie + ", mFeedID : " + localArticleInfo.mFeedId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName);
           SocializeFeedsInfo localSocializeFeedsInfo;
           if (localArticleInfo.mSocialFeedInfo != null)
           {
@@ -63,7 +63,7 @@ public class ArticleInfoModule$9
           }
           for (;;)
           {
-            if ((onh.o(localArticleInfo)) && (!((ConcurrentHashMap)localObject).containsKey(Long.valueOf(localArticleInfo.mRecommendSeq)))) {
+            if ((ors.o(localArticleInfo)) && (!((ConcurrentHashMap)localObject).containsKey(Long.valueOf(localArticleInfo.mRecommendSeq)))) {
               ((ConcurrentHashMap)localObject).put(Long.valueOf(localArticleInfo.mRecommendSeq), Boolean.valueOf(false));
             }
             i += 1;
@@ -77,7 +77,7 @@ public class ArticleInfoModule$9
           }
         }
         if (((ConcurrentHashMap)localObject).size() > 0) {
-          ozo.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
+          pew.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
         }
       }
       localObject = new StringBuilder().append("handleRefreshChannel success=").append(this.jdField_a_of_type_Boolean).append(" channelId=").append(this.jdField_a_of_type_Int).append(" noMoreData=").append(this.jdField_b_of_type_Boolean).append(" beginRecommendSeq=").append(this.jdField_a_of_type_Long).append(" endRecommendSeq=").append(this.jdField_b_of_type_Long).append(" isInMsgTab : ");
@@ -90,24 +90,24 @@ public class ArticleInfoModule$9
         }
       }
       QLog.i("ArticleInfoModule", 1, bool2 + " isRefresh : " + bool1 + ", " + localStringBuilder.toString());
-      oyu.a(this.jdField_a_of_type_JavaUtilList);
+      pec.a(this.jdField_a_of_type_JavaUtilList);
       label691:
-      pqh.a().a(this.jdField_a_of_type_JavaUtilList);
+      pxc.a().a(this.jdField_a_of_type_JavaUtilList);
       this.this$0.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
       if (bool1)
       {
-        ozo.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
-        ozo.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
+        pew.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+        pew.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
         return;
       }
-      ozo.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+      pew.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.9
  * JD-Core Version:    0.7.0.1
  */

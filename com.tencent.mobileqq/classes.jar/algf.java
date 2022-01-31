@@ -1,60 +1,44 @@
+import android.os.SystemClock;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class algf
-  extends alht
+public final class algf
 {
-  public float a;
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  private static HashMap<String, Long> a = new HashMap();
+  private static HashMap<String, Long> b = new HashMap();
   
-  public algf()
+  public static void a()
   {
-    this.jdField_b_of_type_Long = 64L;
+    a.clear();
+    b.clear();
   }
   
-  public static boolean a(algf paramalgf)
+  public static void a(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramalgf != null)
+    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString))) {
+      a.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
+    }
+  }
+  
+  public static void b(String paramString)
+  {
+    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString)) && (a.containsKey(paramString)))
     {
-      bool1 = bool2;
-      if (paramalgf.a())
+      Long localLong = (Long)a.get(paramString);
+      if (localLong != null)
       {
-        bool1 = bool2;
-        if (paramalgf.b()) {
-          bool1 = true;
-        }
+        long l1 = localLong.longValue();
+        long l2 = SystemClock.uptimeMillis();
+        b.put(paramString, Long.valueOf(l2));
+        QLog.d("TraceReport_CmShowStatUtil", 1, new Object[] { "eventName=", paramString, ", cost=", Long.valueOf(l2 - l1) });
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARCloudPreOcrResult", 2, "isRecogSuccess result = " + bool1);
-    }
-    return bool1;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_c_of_type_Int == 1;
-  }
-  
-  public String toString()
-  {
-    return "ARCloudPreOcrResult{recogType = " + this.jdField_b_of_type_Long + ", recogSvrRetCode = " + this.jdField_a_of_type_Int + ", recogSvrRetMsg = " + this.jdField_a_of_type_JavaLangString + ", sessionId = " + this.jdField_b_of_type_JavaLangString + ", arWordDetectRetCode = " + this.jdField_b_of_type_Int + ", arWordDetectRetMsg = " + this.jdField_c_of_type_JavaLangString + ", wordType = " + this.jdField_c_of_type_Int + ", confidence = " + this.jdField_a_of_type_Float + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,146 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoto
-  extends apvf
 {
-  public aoto(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
+  public String a;
+  public List<aotr> a;
+  public Map<String, Long> a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
   
-  public void a()
+  public aoto()
   {
-    this.a.a.a().b();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void b()
+  public static aoto a(aogf[] paramArrayOfaogf)
   {
-    this.a.a.a().p();
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+      return null;
+    }
+    localaoto = new aoto();
+    try
+    {
+      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].jdField_a_of_type_JavaLangString);
+      Object localObject;
+      if (paramArrayOfaogf.has("report"))
+      {
+        localObject = paramArrayOfaogf.getJSONObject("report");
+        localaoto.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("inviteTShow");
+        localaoto.b = ((JSONObject)localObject).optString("inviteTClick");
+        localaoto.c = ((JSONObject)localObject).optString("stateTShow");
+        localaoto.d = ((JSONObject)localObject).optString("stateTClick");
+      }
+      if (paramArrayOfaogf.has("viewTogether"))
+      {
+        localObject = new aotr(paramArrayOfaogf.getJSONObject("viewTogether"));
+        ((aotr)localObject).a = false;
+        localaoto.jdField_a_of_type_JavaUtilList.add(localObject);
+      }
+      if (paramArrayOfaogf.has("editTogether"))
+      {
+        localObject = new aotr(paramArrayOfaogf.getJSONObject("editTogether"));
+        ((aotr)localObject).a = true;
+        localaoto.jdField_a_of_type_JavaUtilList.add(localObject);
+      }
+      if (paramArrayOfaogf.has("editSupport"))
+      {
+        paramArrayOfaogf = paramArrayOfaogf.getJSONObject("editSupport");
+        localObject = paramArrayOfaogf.keys();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          localaoto.jdField_a_of_type_JavaUtilMap.put(str, Long.valueOf(paramArrayOfaogf.getLong(str)));
+        }
+      }
+      return localaoto;
+    }
+    catch (JSONException paramArrayOfaogf)
+    {
+      QLog.e("TencentDocLocalCooperationBean", 1, paramArrayOfaogf.getLocalizedMessage(), paramArrayOfaogf);
+    }
   }
   
-  public void c()
+  public static aotq a(JSONObject paramJSONObject)
   {
-    this.a.a.a().q();
+    if (paramJSONObject != null) {
+      try
+      {
+        if ((paramJSONObject.has("retcode")) && (paramJSONObject.getInt("retcode") == 0) && (paramJSONObject.has("data")))
+        {
+          aotq localaotq = new aotq();
+          paramJSONObject = paramJSONObject.getJSONObject("data");
+          if (paramJSONObject.has("mem_list"))
+          {
+            JSONArray localJSONArray = paramJSONObject.getJSONArray("mem_list");
+            if (localJSONArray != null)
+            {
+              ArrayList localArrayList = new ArrayList();
+              int i = 0;
+              while (i < localJSONArray.length())
+              {
+                JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+                aotp localaotp = new aotp();
+                localaotp.b = localJSONObject.getString("avatar");
+                localaotp.jdField_a_of_type_JavaLangString = localJSONObject.getString("nick");
+                localArrayList.add(localaotp);
+                i += 1;
+              }
+              localaotq.jdField_a_of_type_JavaUtilList = localArrayList;
+            }
+          }
+          if (paramJSONObject.has("mem_count")) {
+            localaotq.jdField_a_of_type_Int = paramJSONObject.getInt("mem_count");
+          }
+          return localaotq;
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("TencentDocLocalCooperationBean", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
+      }
+    }
+    return null;
   }
   
-  public void d()
+  public aotr a(String paramString)
   {
-    this.a.a.a().r();
+    paramString = badt.a(paramString);
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      aotr localaotr = (aotr)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localaotr.a(paramString)) {
+        return localaotr;
+      }
+      i += 1;
+    }
+    return null;
   }
   
-  public void e()
+  public boolean a(String paramString)
   {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    paramString = a(paramString);
+    if (paramString != null) {
+      return paramString.a;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoto
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data.fts;
 
-import auko;
+import awbv;
 
 public class FTSTroopTime
-  extends auko
+  extends awbv
 {
   public long mTimeStamp;
   public String mTroopUin;
@@ -22,7 +22,7 @@ public class FTSTroopTime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.fts.FTSTroopTime
  * JD-Core Version:    0.7.0.1
  */

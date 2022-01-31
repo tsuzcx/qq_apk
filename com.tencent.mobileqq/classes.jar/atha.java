@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-
-public abstract interface atha
+public class atha
 {
-  public abstract void a(Comments.Comment paramComment);
+  public int a;
+  public int b;
   
-  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
+  public atha(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atha
  * JD-Core Version:    0.7.0.1
  */

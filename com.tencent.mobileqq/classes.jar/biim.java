@@ -1,17 +1,33 @@
-import com.tencent.ttpic.video.AECoderFactory.AEEncoderFactory;
-import com.tencent.ttpic.video.AEEncoder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.webbundle.sdk.WebBundleLogListener;
+import org.jetbrains.annotations.NotNull;
 
 final class biim
-  implements AECoderFactory.AEEncoderFactory
+  implements WebBundleLogListener
 {
-  public AEEncoder createEncoder(String paramString, int paramInt1, int paramInt2)
+  public void log(int paramInt, @NotNull String paramString1, @NotNull String paramString2)
   {
-    return new avxh(paramString, paramInt1, paramInt2);
+    if (QLog.isColorLevel()) {}
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 4: 
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    case 3: 
+      QLog.d(paramString1, 2, paramString2);
+      return;
+    case 5: 
+      QLog.w(paramString1, 2, paramString2);
+      return;
+    }
+    QLog.e(paramString1, 2, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biim
  * JD-Core Version:    0.7.0.1
  */

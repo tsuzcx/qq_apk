@@ -1,37 +1,91 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.NamePlateCfgInfo;
-import com.tencent.mobileqq.utils.VipUtils;
+import SummaryCardTaf.SSummaryCardRsp;
+import android.util.Pair;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.13.1;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class acuk
-  implements View.OnClickListener
+  extends allb
 {
-  public acuk(BaseChatItemLayout paramBaseChatItemLayout) {}
+  public acuk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof NamePlateCfgInfo)))
-    {
-      paramView = (NamePlateCfgInfo)paramView.getTag();
-      if ((paramView.mVipType != 3) && (paramView.mVipType != 259)) {
-        break label99;
+    if ((paramString != null) && (this.a.jdField_a_of_type_Awmk != null) && (this.a.jdField_a_of_type_Awmk.a != null) && (this.a.jdField_a_of_type_Awmk.a.a != null) && (paramString.equals(this.a.jdField_a_of_type_Awmk.a.a))) {
+      if ((paramBoolean1) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(paramBoolean2);
       }
-      VipUtils.a(BaseActivity.sTopActivity.app, this.a.getContext(), paramView.mVipType, paramView.mNamePlateId, "mios.p.cl.cztx_qlncmp");
     }
     for (;;)
     {
-      axqy.b(BaseActivity.sTopActivity.app, "dc00898", "", "", "qq_vip", "0X8009CAB", 0, 0, "", "", "", "");
+      QLog.d("FriendProfileCardActivity", 2, " isSuccess" + paramBoolean1 + " isAllow" + paramBoolean2);
       return;
-      label99:
-      VipUtils.b(BaseActivity.sTopActivity.app, this.a.getContext(), "mios.p.cl.cztx_qlncmp");
+      QLog.e("FriendProfileCardActivity", 2, "onGetAllowSeeLoginDays uin empty");
+    }
+  }
+  
+  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.a.isFinishing()) {
+          break;
+        }
+        this.a.jdField_b_of_type_Bhow.removeCallbacks(this.a.jdField_b_of_type_JavaLangRunnable);
+        this.a.A();
+        if ((!paramBoolean) || (paramObject == null)) {
+          break;
+        }
+        if ((paramObject instanceof Card))
+        {
+          ThreadManager.post(new FriendProfileCardActivity.13.1(this, (Card)paramObject), 5, null, true);
+          return;
+        }
+        if (!(paramObject instanceof Pair)) {
+          break;
+        }
+        paramObject = (Pair)paramObject;
+        if (((Integer)paramObject.first).intValue() == 101107)
+        {
+          this.a.d = 1;
+          this.a.B();
+          return;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+        return;
+      }
+      if (((Integer)paramObject.first).intValue() == 101108)
+      {
+        this.a.d = 2;
+      }
+      else if (((Integer)paramObject.first).intValue() == 101111)
+      {
+        this.a.d = 3;
+      }
+      else if (((Integer)paramObject.first).intValue() == 12002)
+      {
+        this.a.d = 4;
+      }
+      else
+      {
+        this.a.d = 5;
+        this.a.a((SSummaryCardRsp)paramObject.second);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acuk
  * JD-Core Version:    0.7.0.1
  */

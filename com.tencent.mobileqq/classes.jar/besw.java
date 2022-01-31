@@ -1,41 +1,30 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Messenger;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.graphics.Outline;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewOutlineProvider;
 
-public abstract interface besw
+@TargetApi(21)
+public class besw
+  extends ViewOutlineProvider
 {
-  public abstract void init(Context paramContext);
+  private float a;
   
-  public abstract boolean isMiniProcess(String paramString);
+  public besw(float paramFloat)
+  {
+    this.a = paramFloat;
+  }
   
-  public abstract void onAppBackground(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void onAppForeground(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void onAppStart(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void onAppStop(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo);
-  
-  public abstract void preloadMiniApp(Bundle paramBundle);
-  
-  public abstract void registerClientMessenger(String paramString, Messenger paramMessenger);
-  
-  public abstract void registerProcessInfo(List<besx> paramList);
-  
-  public abstract void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
-  
-  public abstract void stopMiniApp(MiniAppInfo paramMiniAppInfo);
+  public void getOutline(View paramView, Outline paramOutline)
+  {
+    Rect localRect = new Rect();
+    paramView.getGlobalVisibleRect(localRect);
+    paramOutline.setRoundRect(new Rect(0, 0, localRect.right - localRect.left - 0, localRect.bottom - localRect.top - 0), this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besw
  * JD-Core Version:    0.7.0.1
  */

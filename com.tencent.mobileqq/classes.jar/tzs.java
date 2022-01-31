@@ -1,24 +1,22 @@
-import android.support.v4.view.ViewPager.PageTransformer;
+import android.app.Activity;
 import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleBaseInputPopupWindow.1.1;
 
 public class tzs
-  implements ucs
+  implements ybs
 {
-  public final ViewPager.PageTransformer a;
+  tzs(tzr paramtzr) {}
   
-  public tzs(ViewPager.PageTransformer paramPageTransformer)
+  public void a(View paramView)
   {
-    this.a = paramPageTransformer;
-  }
-  
-  public void a(View paramView, float paramFloat)
-  {
-    this.a.transformPage(paramView, paramFloat);
+    if (this.a.isShowing()) {
+      tzr.a(this.a).runOnUiThread(new QCircleBaseInputPopupWindow.1.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tzs
  * JD-Core Version:    0.7.0.1
  */

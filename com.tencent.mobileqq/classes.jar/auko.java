@@ -1,92 +1,66 @@
-import android.database.Cursor;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-public abstract class auko
+public class auko
+  extends aukn
 {
-  public static final int DETACHED = 1002;
-  public static final int MANAGED = 1001;
-  public static final int NEW = 1000;
-  public static final int REMOVED = 1003;
-  long _id = -1L;
-  int _status = 1000;
-  
-  public auko deepCopyByReflect()
+  public auko(QQAppInterface paramQQAppInterface)
   {
-    try
+    super(paramQQAppInterface);
+  }
+  
+  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  {
+    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
+      return;
+    }
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      auko localauko = (auko)getClass().newInstance();
-      if (localauko != null)
+      ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator.next());
+      int i = 0;
+      while (i < localArrayList.size())
       {
-        Field[] arrayOfField = getClass().getFields();
-        int j = arrayOfField.length;
-        int i = 0;
-        while (i < j)
+        MessageRecord localMessageRecord = (MessageRecord)localArrayList.get(i);
+        if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
         {
-          Field localField = arrayOfField[i];
-          if (!localField.isAccessible()) {
-            localField.setAccessible(true);
-          }
-          localField.set(localauko, localField.get(this));
-          i += 1;
+          String str = alpo.a(2131692473) + localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+          localArrayList.set(i, this.a.a().a().a(localMessageRecord, str, true));
         }
-        localauko._status = 1000;
-        localauko.postRead();
+        i += 1;
       }
-      return localauko;
     }
-    catch (Exception localException)
+  }
+  
+  public void a(auld paramauld, HashMap<String, ArrayList<MessageRecord>> paramHashMap, aukq paramaukq)
+  {
+    if (paramauld == null) {
+      return;
+    }
+    if ((paramauld.b == 8) || (paramauld.b == 9)) {}
+    for (paramauld = new aqyb(this.a, paramauld, paramHashMap, paramaukq);; paramauld = new aqxz(this.a, paramauld, paramHashMap, paramaukq))
     {
-      QLog.d("Entity", 1, " deepCopyByReflect:failed" + getClass().getName() + " exception e: = " + localException.getMessage());
-      localException.printStackTrace();
+      this.a.a().a().a(paramauld, paramHashMap);
+      return;
+      if (paramauld.b == 2)
+      {
+        a(paramHashMap);
+        paramaukq.a(0, 2, paramauld);
+        return;
+      }
     }
-    return null;
-  }
-  
-  protected boolean entityByCursor(Cursor paramCursor)
-  {
-    return false;
-  }
-  
-  protected Class<? extends auko> getClassForTable()
-  {
-    return getClass();
-  }
-  
-  public long getId()
-  {
-    return this._id;
-  }
-  
-  public int getStatus()
-  {
-    return this._status;
-  }
-  
-  public String getTableName()
-  {
-    return getClass().getSimpleName();
-  }
-  
-  protected void postRead() {}
-  
-  protected void postwrite() {}
-  
-  protected void prewrite() {}
-  
-  public void setId(long paramLong)
-  {
-    this._id = paramLong;
-  }
-  
-  public void setStatus(int paramInt)
-  {
-    this._status = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auko
  * JD-Core Version:    0.7.0.1
  */

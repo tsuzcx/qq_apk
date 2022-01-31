@@ -1,440 +1,299 @@
-import android.animation.Animator;
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.doutu.combo.ComboEggView;
-import com.tencent.mobileqq.doutu.combo.ComboMasterView;
-import com.tencent.mobileqq.doutu.combo.ComboNavigateBar;
-import com.tencent.mobileqq.doutu.combo.ComboUIManager.1;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
-@TargetApi(11)
 public class anow
-  implements Handler.Callback, View.OnTouchListener, Observer
+  extends anpa
 {
-  private int jdField_a_of_type_Int = 8;
-  aeyv jdField_a_of_type_Aeyv;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), this);
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private anot jdField_a_of_type_Anot;
-  azno jdField_a_of_type_Azno;
-  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  AIOAnimationConatiner jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ComboEggView jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView;
-  ComboMasterView jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView;
-  ComboNavigateBar jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar;
-  RelativeLayout b;
+  private float jdField_a_of_type_Float;
+  boolean jdField_a_of_type_Boolean = false;
+  private float jdField_b_of_type_Float = -1.0F;
+  boolean jdField_b_of_type_Boolean = false;
+  private float jdField_c_of_type_Float = -1.0F;
+  boolean jdField_c_of_type_Boolean = false;
+  private float jdField_d_of_type_Float = -1.0F;
+  private final float[] jdField_d_of_type_ArrayOfFloat = new float[4];
+  private float[] e = new float[3];
+  private float[] f = new float[3];
+  private float[] g = new float[3];
+  private float[] h = new float[3];
+  private float[] i = new float[3];
+  private float[] j = new float[9];
+  private float[] k = new float[3];
+  private float[] l = new float[9];
+  private float[] m = new float[16];
   
-  public anow(QQAppInterface paramQQAppInterface, Activity paramActivity, BaseChatPie paramBaseChatPie, RelativeLayout paramRelativeLayout, azno paramazno, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public anow(Context paramContext, int paramInt, SensorManager paramSensorManager, anos paramanos)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_AndroidContentContext = paramRelativeLayout.getContext();
-    this.jdField_a_of_type_Azno = paramazno;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    if (this.jdField_a_of_type_Azno != null) {
-      this.jdField_a_of_type_Azno.a(this);
-    }
-    if (paramBaseChatPie != null)
+    super(paramContext, paramInt, paramSensorManager, paramanos);
+    paramContext = paramSensorManager.getDefaultSensor(4);
+    paramanos = paramSensorManager.getDefaultSensor(1);
+    paramSensorManager = paramSensorManager.getDefaultSensor(2);
+    if ((paramContext != null) && (paramanos != null) && (paramSensorManager != null))
     {
-      this.jdField_a_of_type_Aeyv = paramBaseChatPie.a();
-      this.jdField_a_of_type_Aeyv.a(this);
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      this.jdField_a_of_type_JavaUtilList.add(paramanos);
+      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager);
+      a();
+      return;
     }
+    throw new OrientationProviderNotFound("4,1,2");
   }
   
-  private ComboEggView a(anot paramanot)
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    e();
-    ComboEggView localComboEggView = (ComboEggView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558532, null);
-    localComboEggView.a(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (localComboEggView.a(paramanot))
-    {
-      paramanot = new RelativeLayout.LayoutParams(-1, -1);
-      paramanot.addRule(13);
-      this.b.addView(localComboEggView, paramanot);
-      localComboEggView.b();
-      return localComboEggView;
+    if (this.jdField_a_of_type_Anos == null) {
+      return;
     }
-    b(paramanot);
-    return null;
+    if (Math.abs(paramFloat1 - this.jdField_b_of_type_Float) > 1.0F)
+    {
+      this.jdField_b_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Anos.updateAzimuth(paramFloat1);
+    }
+    if (Math.abs(paramFloat2 - this.jdField_c_of_type_Float) > 1.0F)
+    {
+      this.jdField_c_of_type_Float = paramFloat2;
+      this.jdField_a_of_type_Anos.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.jdField_d_of_type_Float) > 1.0F)
+    {
+      this.jdField_d_of_type_Float = paramFloat3;
+      this.jdField_a_of_type_Anos.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Anos.updateSensor(paramFloat1, paramFloat2, paramFloat3);
   }
   
-  private ComboMasterView a(anot paramanot)
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    e();
-    ComboMasterView localComboMasterView = (ComboMasterView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558533, null);
-    localComboMasterView.a(this);
-    if (localComboMasterView.a(paramanot))
-    {
-      paramanot = new RelativeLayout.LayoutParams(-1, -1);
-      paramanot.addRule(13);
-      this.b.addView(localComboMasterView, paramanot);
-      localComboMasterView.a();
-      return localComboMasterView;
+    if (this.jdField_a_of_type_Anos == null) {
+      return;
     }
-    b(paramanot);
-    return null;
+    this.jdField_a_of_type_Anos.updateAccelerometer(paramFloat1, paramFloat2, paramFloat3, paramLong);
   }
   
-  private boolean a()
+  private void a(SensorEvent paramSensorEvent)
   {
-    boolean bool2 = true;
-    Object localObject = Runtime.getRuntime();
-    long l1 = (((Runtime)localObject).totalMemory() - ((Runtime)localObject).freeMemory()) / 1048576L;
-    long l2 = ((Runtime)localObject).maxMemory() / 1048576L;
-    long l3 = l2 - l1;
-    boolean bool1;
-    if (l3 < 10L)
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    float[] arrayOfFloat;
+    if (!this.jdField_c_of_type_Boolean)
     {
-      bool1 = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComboUIManager", 2, " hasOOMDanger: " + bool1 + " availHeapSizeInMB:" + l3 + " maxHeapSizeInMB:" + l2 + " usedMemInMB:" + l1);
+      arrayOfFloat = new float[9];
+      arrayOfFloat = anou.a(this.k);
+      SensorManager.getOrientation(arrayOfFloat, new float[3]);
+      this.l = anou.a(this.l, arrayOfFloat);
+      this.jdField_c_of_type_Boolean = true;
+    }
+    if ((this.jdField_a_of_type_Float != 0.0F) && (this.jdField_c_of_type_Boolean))
+    {
+      float f7 = (float)paramSensorEvent.timestamp;
+      float f8 = this.jdField_a_of_type_Float;
+      System.arraycopy(paramSensorEvent.values, 0, this.i, 0, 3);
+      float f6 = this.i[0];
+      float f5 = this.i[1];
+      float f4 = this.i[2];
+      float f9 = (float)Math.sqrt(f6 * f6 + f5 * f5 + f4 * f4);
+      float f3 = f4;
+      float f2 = f5;
+      float f1 = f6;
+      if (f9 > 1.0E-009F)
+      {
+        f1 = f6 / f9;
+        f2 = f5 / f9;
+        f3 = f4 / f9;
       }
-      localObject = axrn.a(BaseApplication.getContext());
-      if (bool1) {
-        break label145;
+      f5 = (f7 - f8) * 1.0E-009F * f9 / 2.0F;
+      f4 = (float)Math.sin(f5);
+      f5 = (float)Math.cos(f5);
+      this.jdField_d_of_type_ArrayOfFloat[0] = (f1 * f4);
+      this.jdField_d_of_type_ArrayOfFloat[1] = (f2 * f4);
+      this.jdField_d_of_type_ArrayOfFloat[2] = (f3 * f4);
+      this.jdField_d_of_type_ArrayOfFloat[3] = f5;
+      arrayOfFloat = new float[9];
+      anou.c(arrayOfFloat, this.jdField_d_of_type_ArrayOfFloat);
+      this.l = anou.a(this.l, arrayOfFloat);
+      SensorManager.getOrientation(this.l, this.e);
+      e();
+      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Anos != null)) {
+        a((float)(Math.toDegrees(this.e[0] + a()) + 360.0D) % 360.0F, (float)(this.e[1] * 180.0F / 3.141592653589793D), (float)(this.e[2] * 180.0F / 3.141592653589793D));
       }
     }
-    for (;;)
-    {
-      ((axrn)localObject).a(null, "ComboEggOOM", bool2, l3, l1, null, "");
-      return bool1;
-      bool1 = false;
-      break;
-      label145:
-      bool2 = false;
-    }
+    this.jdField_a_of_type_Float = ((float)paramSensorEvent.timestamp);
   }
   
-  private void b(anot paramanot)
+  private void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar = ((ComboNavigateBar)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558534, null));
-      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (this.jdField_a_of_type_Anos == null) {
+      return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar) == -1)
+    this.jdField_a_of_type_Anos.updateGyroscope(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  private void d()
+  {
+    if (SensorManager.getRotationMatrix(this.j, null, this.h, this.g))
     {
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, actj.a(32.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localLayoutParams.addRule(11);
-      localLayoutParams.topMargin = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298865) + actj.a(22.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar, localLayoutParams);
+      SensorManager.getOrientation(this.j, this.k);
+      this.jdField_a_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar.setInfo(paramanot);
   }
   
   private void e()
   {
-    if (this.b == null)
+    float[] arrayOfFloat;
+    double d2;
+    double d1;
+    if ((this.e[0] < -1.570796326794897D) && (this.k[0] > 0.0D))
     {
-      this.b = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      this.b.setOnTouchListener(this);
+      this.f[0] = ((float)(0.9980000257492065D * (this.e[0] + 6.283185307179586D) + this.k[0] * 0.001999974F));
+      arrayOfFloat = this.f;
+      d2 = arrayOfFloat[0];
+      if (this.f[0] > 3.141592653589793D)
+      {
+        d1 = 6.283185307179586D;
+        arrayOfFloat[0] = ((float)(d2 - d1));
+        label97:
+        if ((this.e[1] >= -1.570796326794897D) || (this.k[1] <= 0.0D)) {
+          break label493;
+        }
+        this.f[1] = ((float)(0.9980000257492065D * (this.e[1] + 6.283185307179586D) + this.k[1] * 0.001999974F));
+        arrayOfFloat = this.f;
+        d2 = arrayOfFloat[1];
+        if (this.f[1] <= 3.141592653589793D) {
+          break label488;
+        }
+        d1 = 6.283185307179586D;
+        label186:
+        arrayOfFloat[1] = ((float)(d2 - d1));
+        label194:
+        if ((this.e[2] >= -1.570796326794897D) || (this.k[2] <= 0.0D)) {
+          break label631;
+        }
+        arrayOfFloat = this.f;
+        d1 = this.e[2];
+        arrayOfFloat[2] = ((float)(0.001999974F * this.k[2] + 0.9980000257492065D * (d1 + 6.283185307179586D)));
+        arrayOfFloat = this.f;
+        d2 = arrayOfFloat[2];
+        if (this.f[2] <= 3.141592653589793D) {
+          break label626;
+        }
+        d1 = 6.283185307179586D;
+        label289:
+        arrayOfFloat[2] = ((float)(d2 - d1));
+      }
     }
-    FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
-    if (localFrameLayout.indexOfChild(this.b) == -1)
+    for (;;)
     {
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-      localFrameLayout.addView(this.b, localLayoutParams);
-    }
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null) {
+      this.l = anou.a(this.f);
+      anou.a(this.l, this.m);
+      if (this.jdField_a_of_type_Int != 1) {
+        super.a(this.m);
+      }
+      System.arraycopy(this.f, 0, this.e, 0, 3);
       return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a();
-  }
-  
-  public anot a()
-  {
-    anot localanot;
-    if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.a(this.b);
-      localanot = new anot(this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.jdField_a_of_type_Anot.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.jdField_a_of_type_Anot.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView = null;
-      return localanot;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView.a(this.b);
-      localanot = new anot(this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView.jdField_a_of_type_Anot.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView.jdField_a_of_type_Anot.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView = null;
-      return localanot;
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    c();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(12, paramLong);
-  }
-  
-  public void a(Animator paramAnimator, ComboMasterView paramComboMasterView)
-  {
-    if (this.b != null)
-    {
-      paramAnimator = paramComboMasterView.jdField_a_of_type_Anot;
-      if ((paramAnimator != null) && (this.jdField_a_of_type_Anot.jdField_a_of_type_Int == paramAnimator.jdField_a_of_type_Int)) {
-        b(paramAnimator);
-      }
-      this.b.removeView(paramComboMasterView);
-    }
-    f();
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView = null;
-  }
-  
-  public void a(anot paramanot)
-  {
-    for (;;)
-    {
-      Message localMessage;
-      try
+      d1 = 0.0D;
+      break;
+      if ((this.k[0] < -1.570796326794897D) && (this.e[0] > 0.0D))
       {
-        if (this.jdField_a_of_type_Anot != null)
+        this.f[0] = ((float)(0.998F * this.e[0] + 0.001999974F * (this.k[0] + 6.283185307179586D)));
+        arrayOfFloat = this.f;
+        d2 = arrayOfFloat[0];
+        if (this.f[0] > 3.141592653589793D) {}
+        for (d1 = 6.283185307179586D;; d1 = 0.0D)
         {
-          int i = this.jdField_a_of_type_Anot.jdField_a_of_type_Int;
-          int j = paramanot.jdField_a_of_type_Int;
-          if (i >= j) {
-            return;
-          }
+          arrayOfFloat[0] = ((float)(d2 - d1));
+          break;
         }
-        this.jdField_a_of_type_Anot = paramanot;
-        localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-        localMessage.obj = paramanot;
-        if (QLog.isColorLevel()) {
-          QLog.d("ComboUIManager", 2, "update  msg what:" + localMessage.what + " " + paramanot);
-        }
-        if (!paramanot.jdField_a_of_type_Boolean)
+      }
+      this.f[0] = (0.998F * this.e[0] + this.k[0] * 0.001999974F);
+      break label97;
+      label488:
+      d1 = 0.0D;
+      break label186;
+      label493:
+      if ((this.k[1] < -1.570796326794897D) && (this.e[1] > 0.0D))
+      {
+        this.f[1] = ((float)(0.998F * this.e[1] + 0.001999974F * (this.k[1] + 6.283185307179586D)));
+        arrayOfFloat = this.f;
+        d2 = arrayOfFloat[1];
+        if (this.f[1] > 3.141592653589793D) {}
+        for (d1 = 6.283185307179586D;; d1 = 0.0D)
         {
-          localMessage.what = 1;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {
-            break label242;
-          }
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.w()) {
-            break label204;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("ComboUIManager", 2, "isMsgBoxShown");
-          continue;
-        }
-        if (!ComboEggView.a(paramanot.jdField_a_of_type_Int)) {
-          break label169;
+          arrayOfFloat[1] = ((float)(d2 - d1));
+          break;
         }
       }
-      finally {}
-      localMessage.what = 3;
-      continue;
-      label169:
-      if (paramanot.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))
+      this.f[1] = (0.998F * this.e[1] + this.k[1] * 0.001999974F);
+      break label194;
+      label626:
+      d1 = 0.0D;
+      break label289;
+      label631:
+      if ((this.k[2] < -1.570796326794897D) && (this.e[2] > 0.0D))
       {
-        localMessage.what = 2;
-      }
-      else
-      {
-        localMessage.what = 1;
-        continue;
-        label204:
-        paramanot = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-        if ((paramanot != null) && (paramanot.a() != -1))
+        arrayOfFloat = this.f;
+        d1 = 0.998F * this.e[2];
+        arrayOfFloat[2] = ((float)(0.001999974F * (this.k[2] + 6.283185307179586D) + d1));
+        arrayOfFloat = this.f;
+        d2 = arrayOfFloat[2];
+        if (this.f[2] > 3.141592653589793D) {}
+        for (d1 = 6.283185307179586D;; d1 = 0.0D)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("ComboUIManager", 2, "isTipsShown");
-          }
-        }
-        else {
-          label242:
-          if ((this.jdField_a_of_type_Azno != null) && (this.jdField_a_of_type_Azno.h()) && (localMessage.what < 11))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ComboUIManager", 2, "isTroopAioTipsShown");
-            }
-          }
-          else {
-            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 0L);
-          }
+          arrayOfFloat[2] = ((float)(d2 - d1));
+          break;
         }
       }
+      arrayOfFloat = this.f;
+      float f1 = this.e[2];
+      arrayOfFloat[2] = (0.001999974F * this.k[2] + 0.998F * f1);
     }
   }
   
-  public void a(ComboEggView paramComboEggView)
+  void a()
   {
-    if (this.b != null)
-    {
-      anot localanot = paramComboEggView.jdField_a_of_type_Anot;
-      if ((localanot != null) && (this.jdField_a_of_type_Anot.jdField_a_of_type_Int == localanot.jdField_a_of_type_Int)) {
-        b(localanot);
-      }
-      this.b.removeView(paramComboEggView);
-    }
-    f();
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView = null;
+    this.e[0] = 0.0F;
+    this.e[1] = 0.0F;
+    this.e[2] = 0.0F;
+    this.l[0] = 1.0F;
+    this.l[1] = 0.0F;
+    this.l[2] = 0.0F;
+    this.l[3] = 0.0F;
+    this.l[4] = 1.0F;
+    this.l[5] = 0.0F;
+    this.l[6] = 0.0F;
+    this.l[7] = 0.0F;
+    this.l[8] = 1.0F;
   }
   
-  public void b()
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(12);
-  }
-  
-  public void c()
-  {
-    if (this.b != null)
+    if (paramSensorEvent.sensor.getType() == 4)
     {
-      FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
-      a();
-      localFrameLayout.removeView(this.b);
-      this.b = null;
+      a(paramSensorEvent);
+      b(paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], paramSensorEvent.timestamp);
     }
-    anou.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar != null)
+    do
     {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar = null;
-    }
-  }
-  
-  public void d()
-  {
-    anot localanot = a();
-    if (localanot != null) {
-      b(localanot);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    anot localanot1 = (anot)paramMessage.obj;
-    anot localanot2 = a();
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (localanot1.jdField_a_of_type_Int > 999) {
-        localanot1.jdField_a_of_type_Int = 999;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a()))
+      return;
+      if (paramSensorEvent.sensor.getType() == 2)
       {
-        b(localanot1);
+        System.arraycopy(paramSensorEvent.values, 0, this.g, 0, 3);
+        this.jdField_b_of_type_Boolean = true;
+        return;
       }
-      else if (ajey.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "combo"))
-      {
-        b(localanot1);
-      }
-      else
-      {
-        if (localanot2 != null) {
-          b(localanot2);
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(false);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.av();
-          if (paramMessage.what == 2)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView = a(localanot1);
-          }
-          else
-          {
-            axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008096", "0X8008096", 0, 0, "", "", "", "");
-            if (a())
-            {
-              if (localanot1.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-                this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView = a(localanot1);
-              } else {
-                b(localanot1);
-              }
-            }
-            else
-            {
-              this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView = a(localanot1);
-              if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView == null)
-              {
-                b(localanot1);
-                continue;
-                if (localanot1.jdField_a_of_type_Int > 999) {
-                  localanot1.jdField_a_of_type_Int = 999;
-                }
-                b(localanot1);
-                continue;
-                c();
-                continue;
-                if (QLog.isColorLevel()) {
-                  QLog.d("ComboUIManager", 2, "[Doutu] + handleMessage : 12");
-                }
-                if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar != null) {
-                  this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar.a();
-                }
-                this.jdField_a_of_type_Anot = null;
-                c();
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView != null) || (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView != null))
-    {
-      d();
-      f();
-      return true;
-    }
-    return false;
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    new Handler(Looper.getMainLooper()).post(new ComboUIManager.1(this));
+    } while (paramSensorEvent.sensor.getType() != 1);
+    System.arraycopy(paramSensorEvent.values, 0, this.h, 0, 3);
+    d();
+    a(paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], paramSensorEvent.timestamp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anow
  * JD-Core Version:    0.7.0.1
  */

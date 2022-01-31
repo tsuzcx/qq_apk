@@ -1,19 +1,10 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-
-final class awir
-  implements ThreadFactory
+public class awir
 {
-  private final AtomicInteger a = new AtomicInteger(1);
-  
-  public Thread newThread(Runnable paramRunnable)
-  {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
-  }
+  public static final String a = alpo.a(2131708724);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awir
  * JD-Core Version:    0.7.0.1
  */

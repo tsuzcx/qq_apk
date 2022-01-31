@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.preload;
 
 import com.tencent.qphone.base.util.QLog;
-import pcq;
-import pcr;
-import pcs;
-import pcw;
+import pis;
+import pit;
+import piu;
+import piy;
 
 public class FeedsPreloadManager$4
   implements Runnable
 {
-  public FeedsPreloadManager$4(pcs parampcs, pcr parampcr, long paramLong) {}
+  public FeedsPreloadManager$4(piu parampiu, pit parampit, long paramLong) {}
   
   public void run()
   {
-    pcq localpcq = pcq.a();
-    if (localpcq != null)
+    pis localpis = pis.a();
+    if (localpis != null)
     {
-      if (!pcw.b(this.jdField_a_of_type_Pcr.a)) {
+      if (!piy.b(this.jdField_a_of_type_Pit.a)) {
         QLog.d("FeedsPreloadManager", 1, "is not latest request, do not update preload cache.");
       }
     }
@@ -30,12 +30,12 @@ public class FeedsPreloadManager$4
       return;
     }
     QLog.d("FeedsPreloadManager", 1, "update preload cache.");
-    localpcq.a(this.jdField_a_of_type_Pcr);
+    localpis.a(this.jdField_a_of_type_Pit);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.preload.FeedsPreloadManager.4
  * JD-Core Version:    0.7.0.1
  */

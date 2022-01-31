@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-public class aian
+class aian
+  extends apxc
 {
-  public AtomicBoolean a;
-  public boolean a;
+  aian(aiak paramaiak) {}
   
-  private aian(CameraFilterGLView paramCameraFilterGLView)
+  protected void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aian
  * JD-Core Version:    0.7.0.1
  */

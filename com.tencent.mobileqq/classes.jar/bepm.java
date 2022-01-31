@@ -1,28 +1,33 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-class bepm
-  implements Handler.Callback
+public class bepm
+  implements TencentMap.OnCameraChangeListener
 {
-  bepm(bepl parambepl) {}
+  public bepm(QQMapView paramQQMapView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onCameraChange(CameraPosition paramCameraPosition)
   {
-    int i = paramMessage.what;
-    paramMessage.getData().setClassLoader(bepl.a(this.a).getClassLoader());
-    MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramMessage.getData().getParcelable("KEY_APPINFO");
-    ResultReceiver localResultReceiver = (ResultReceiver)paramMessage.getData().getParcelable("receiver");
-    bepl.a(this.a, i, paramMessage.getData(), localMiniAppInfo, localResultReceiver);
-    return false;
+    if ((this.a.jdField_a_of_type_Bepo != null) && (!this.a.jdField_a_of_type_Boolean))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Bepo.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
+    }
+  }
+  
+  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      QQMapView.a(this.a, paramCameraPosition);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bepm
  * JD-Core Version:    0.7.0.1
  */

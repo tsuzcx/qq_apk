@@ -1,70 +1,80 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.content.res.Resources;
-import android.os.Handler;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
-public class vqx
+class vqx
+  implements uin
 {
-  protected BroadcastReceiver a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private vra jdField_a_of_type_Vra;
-  private boolean jdField_a_of_type_Boolean;
+  vqx(vqr paramvqr, StoryVideoItem paramStoryVideoItem, String paramString) {}
   
-  public vqx(Context paramContext, vra paramvra, Handler paramHandler)
+  public void a(uil paramuil)
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new vqy(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Vra = paramvra;
-    paramContext = new IntentFilter("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-    paramContext.addAction("action_music_start");
-    paramContext.addAction("action_music_refresh_list");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramContext);
-  }
-  
-  private void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
+    if (this.jdField_a_of_type_Vqr.isCanceled())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "songMid not exist");
-      }
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698328));
+      wsv.d(this.jdField_a_of_type_Vqr.a.jdField_a_of_type_JavaLangString, "queryAndUpdateUrl onResult. stream canceled");
       return;
     }
-    if (!bbfj.d(this.jdField_a_of_type_AndroidContentContext))
+    if (!TextUtils.equals(paramuil.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "Net not Support");
-      }
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698333));
+      wsv.e(this.jdField_a_of_type_Vqr.a.jdField_a_of_type_JavaLangString, "ignore queryAndUpdateUrl onResult. oldVid=%s. newVid=%s", new Object[] { paramuil.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
       return;
     }
-    if (bbfj.b(this.jdField_a_of_type_AndroidContentContext)) {
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698332));
+    if (!this.jdField_a_of_type_Vqr.a.d())
+    {
+      vqr.c(this.jdField_a_of_type_Vqr, new ErrorMessage(-1, "queryAndUpdateUrl onResult already unBind"));
+      return;
     }
-    ((QIMMusicConfigManager)bjav.a(2)).a(paramString, this.jdField_a_of_type_Boolean, new vqz(this));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    paramObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(paramInt, paramObject);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
+    Object localObject;
+    if (paramuil.jdField_a_of_type_Boolean)
+    {
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if ((((File)localObject).exists()) && (!ujb.a((File)localObject)))
+      {
+        boolean bool = ((File)localObject).delete();
+        wsv.d(this.jdField_a_of_type_Vqr.a.jdField_a_of_type_JavaLangString, "%s - %d found orphan tmp , delete it. %s", new Object[] { paramuil.jdField_a_of_type_JavaLangString, Integer.valueOf(paramuil.jdField_a_of_type_Int), Boolean.valueOf(bool) });
+      }
+    }
+    if (TextUtils.isEmpty(paramuil.b))
+    {
+      vqr.d(this.jdField_a_of_type_Vqr, new ErrorMessage(13, "queryAndUpdateUrl onResult url empty"));
+      return;
+    }
+    int i = vjz.a(new vkf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramuil.b, this.jdField_a_of_type_JavaLangString, "TVKsetVideoPath"));
+    wsv.d(this.jdField_a_of_type_Vqr.a.jdField_a_of_type_JavaLangString, "setVideoPath, vid=%s, cache=%d, fileName = %s, url=%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, Integer.valueOf(i), this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_JavaLangString.length() - 15), paramuil.b });
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      VideoViewVideoHolder.a(this.jdField_a_of_type_Vqr.a, uid.a(paramuil.b));
+      this.jdField_a_of_type_Vqr.a.c = paramuil.b;
+      VideoViewVideoHolder.a(this.jdField_a_of_type_Vqr.a, "SP", SystemClock.uptimeMillis());
+      VideoViewVideoHolder.b(this.jdField_a_of_type_Vqr.a, SystemClock.uptimeMillis());
+      this.jdField_a_of_type_Vqr.a.jdField_a_of_type_Vrr.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_JavaLangString, paramuil.b, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoBytes, (int)this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoDuration, 0);
+      return;
+      VideoViewVideoHolder localVideoViewVideoHolder = this.jdField_a_of_type_Vqr.a;
+      StringBuilder localStringBuilder = new StringBuilder().append(alpo.a(2131716832));
+      if (this.jdField_a_of_type_Vqr.a.b()) {}
+      for (localObject = "TVK";; localObject = "TexView")
+      {
+        VideoViewVideoHolder.a(localVideoViewVideoHolder, (String)localObject);
+        VideoViewVideoHolder.a(this.jdField_a_of_type_Vqr.a).a(this.jdField_a_of_type_Vqr.a, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramuil.b, null, false);
+        break;
+      }
+      VideoViewVideoHolder.a(this.jdField_a_of_type_Vqr.a, alpo.a(2131716830));
+      continue;
+      VideoViewVideoHolder.a(this.jdField_a_of_type_Vqr.a, alpo.a(2131716824));
+      continue;
+      VideoViewVideoHolder.a(this.jdField_a_of_type_Vqr.a, alpo.a(2131716826));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqx
  * JD-Core Version:    0.7.0.1
  */

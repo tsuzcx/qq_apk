@@ -1,141 +1,105 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.gdtad.api.motivevideo.GdtMvViewAnimationAbs.1;
+import com.tencent.gdtad.api.motivevideo.GdtMvViewAnimationAbs.2;
 
 public class aalk
-  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public aalk(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public aalc a;
+  protected Context a;
+  protected Handler a;
   
-  private void a(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  protected aalk(Context paramContext)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (paramInt2 == 0)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode uin:" + paramString + " seq=" + paramInt1);
-        if (paramDevlockInfo != null) {
-          QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode info.TimeLimit:" + paramDevlockInfo.TimeLimit);
-        }
-      }
-      setSeq(paramInt1);
-      paramInt2 = 60;
-      paramInt1 = paramInt2;
-      if (paramDevlockInfo != null)
-      {
-        paramInt1 = paramInt2;
-        if (paramDevlockInfo.TimeLimit > 0) {
-          paramInt1 = paramDevlockInfo.TimeLimit;
-        }
-      }
-      AuthDevVerifyCodeActivity.a(this.a, paramInt1);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
-      }
-    }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131717143);
-    this.a.a(paramString, 1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  private void b(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  private void a(aalc paramaalc)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AuthDevVerifyCodeActivity.a(this.a);
-    if (paramInt2 == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult uin:" + paramString + " seq=" + paramInt1);
-      }
-      setSeq(paramInt1);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
-      }
-    }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131717143);
-    this.a.a(paramString, 1);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramaalc.h.getLayoutParams();
+    localLayoutParams.height = paramaalc.n;
+    localLayoutParams.width = paramaalc.o;
+    localLayoutParams.addRule(3, 0);
+    localLayoutParams.addRule(12, 0);
+    localLayoutParams.addRule(14);
+    localLayoutParams.addRule(15);
+    paramaalc.h.setLayoutParams(localLayoutParams);
+    paramaalc.h.postInvalidate();
   }
   
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public static void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvNotice uin:" + paramString + " seq=" + paramInt1);
-    }
-    if (paramNotifyType == VerifyDevLockManager.NotifyType.NOTIFY_REFRESH_SMS_RESULT)
-    {
-      a(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
+    if ((paramView == null) || (paramView.getVisibility() != 0)) {
       return;
     }
-    b(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(200L);
+    paramView.startAnimation(localAlphaAnimation);
+    paramView.setVisibility(8);
   }
   
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  public static void b(View paramView)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose ret = " + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose  errMsg:" + paramErrMsg.getMessage());
-      }
-    }
-    if (this.a.isFinishing())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose activity is finishing.");
-      }
+    if (paramView == null) {
       return;
     }
-    this.a.c();
-    AuthDevVerifyCodeActivity.a(this.a);
-    this.a.setResult(-1);
-    this.a.finish();
-    aoes.a().a((AppRuntime)AuthDevVerifyCodeActivity.a(this.a).get(), this.a, paramString, true);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    localAlphaAnimation.setDuration(100L);
+    paramView.startAnimation(localAlphaAnimation);
+    paramView.setVisibility(0);
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Aalc == null) || (this.jdField_a_of_type_Aalc.g == null)) {
+      return;
+    }
+    a(this.jdField_a_of_type_Aalc.g);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtMvViewAnimationAbs.1(this), 300L);
+  }
+  
+  public void a(int paramInt) {}
+  
+  protected void a(aalc paramaalc, View paramView)
+  {
+    paramaalc.h = paramView;
+    paramaalc.o = aapa.a(470, 750, aapa.f(this.jdField_a_of_type_AndroidContentContext));
+    paramaalc.n = aapa.a(470, 1334, aapa.e(this.jdField_a_of_type_AndroidContentContext));
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2)
+  {
+    a(paramView, paramInt1, paramInt2, -1);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramView == null) {
+      return;
+    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    int i = localLayoutParams.topMargin;
+    int j = localLayoutParams.leftMargin;
+    int k = localLayoutParams.rightMargin;
+    a(paramView);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtMvViewAnimationAbs.2(this, localLayoutParams, i, paramInt1, j, paramInt2, paramInt3, k, paramView), 200L);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidContentContext = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalk
  * JD-Core Version:    0.7.0.1
  */

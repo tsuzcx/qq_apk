@@ -1,156 +1,72 @@
-import android.content.Context;
-import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.util.ADNativeArticleAppDownloadManager.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class nlv
-  extends nlt
 {
-  private ListView a;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static nlv jdField_a_of_type_Nlv;
+  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new nlw(this);
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<String> b = new ArrayList();
   
-  public nlv(Context paramContext, ListView paramListView)
+  public static nlv a()
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+    if (jdField_a_of_type_Nlv == null) {
+      jdField_a_of_type_Nlv = new nlv();
+    }
+    return jdField_a_of_type_Nlv;
   }
   
-  public void a(DownloadInfo paramDownloadInfo, int paramInt)
+  private void a()
   {
-    super.a(paramDownloadInfo, paramInt);
-    try
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        qjc localqjc = (qjc)localIterator.next();
-        if ((localqjc.jdField_a_of_type_JavaLangString != null) && (localqjc.d != null) && (localqjc.d.equals(paramDownloadInfo.e)) && (localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null))
-        {
-          localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.k = paramInt;
-          localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j = paramDownloadInfo.f;
-          a(localqjc, paramInt, paramDownloadInfo.f);
+        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        this.jdField_a_of_type_ComTencentImageURLDrawable = baul.a(str);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementCoverPreloadManager", 2, "startImageDownload url:" + str);
         }
       }
       return;
     }
-    catch (Exception paramDownloadInfo)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramDownloadInfo.getMessage());
-    }
   }
   
-  public void a(WadlResult paramWadlResult, int paramInt)
+  public void a(ArrayList<String> paramArrayList)
   {
-    super.a(paramWadlResult, paramInt);
-    try
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
+        break label118;
+      }
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        qjc localqjc = (qjc)localIterator.next();
-        if ((localqjc.jdField_a_of_type_JavaLangString != null) && (localqjc.d != null) && (localqjc.jdField_a_of_type_JavaLangString.equals(paramWadlResult.a.jdField_a_of_type_JavaLangString)) && (localqjc.d.equals(paramWadlResult.a.j)) && (localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null))
+        String str = (String)paramArrayList.next();
+        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
         {
-          localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.k = a(paramWadlResult);
-          localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j = paramWadlResult.d;
-          if (!TextUtils.isEmpty(paramWadlResult.b)) {
-            localqjc.i = paramWadlResult.b;
+          this.jdField_a_of_type_JavaUtilArrayList.add(str);
+          if (QLog.isColorLevel()) {
+            QLog.d("AdvertisementCoverPreloadManager", 2, "addImagesToPreload url:" + str);
           }
-          a(localqjc, paramInt, paramWadlResult.d);
         }
       }
-      return;
     }
-    catch (Exception paramWadlResult)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramWadlResult.getMessage());
-    }
-  }
-  
-  public void a(qjc paramqjc, int paramInt1, int paramInt2)
-  {
-    super.a(paramqjc, paramInt1, paramInt2);
-    if ((paramqjc == null) || (paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData == null)) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ComTencentWidgetListView.getChildCount())
-      {
-        View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
-        Object localObject;
-        AdData localAdData;
-        if ((localView != null) && ((localView instanceof Container)))
-        {
-          localObject = localView.getTag(2131362033);
-          if ((localObject != null) && ((localObject instanceof AdData)))
-          {
-            localAdData = (AdData)localObject;
-            localObject = "";
-          }
-        }
-        try
-        {
-          if (localAdData.a != null)
-          {
-            localObject = localAdData.a.c;
-            localObject = localAdData.a.b;
-          }
-          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(paramqjc.d)))
-          {
-            localAdData.j = paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j;
-            localAdData.k = paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.k;
-            localAdData.Q = paramqjc.i;
-            localObject = ((Container)localView).getVirtualView().findViewBaseByName("id_view_AdDownloadView");
-            this.b.post(new ADNativeArticleAppDownloadManager.1(this, (ViewBase)localObject, paramInt1, paramInt2));
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel())
-            {
-              localException.printStackTrace();
-              QLog.d("ADFeedsVideoAppDownlodManager", 1, "updateUIState exception :" + localException.toString());
-            }
-          }
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  protected boolean b(qjc paramqjc)
-  {
-    if ((paramqjc != null) && (paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null) && (oai.a(paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)) && (!TextUtils.isEmpty(paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.p))) {
-      return false;
-    }
-    return super.b(paramqjc);
-  }
-  
-  protected boolean c(qjc paramqjc)
-  {
-    if ((paramqjc != null) && (paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null) && (oai.a(paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData))) {
-      return false;
-    }
-    return super.c(paramqjc);
+    a();
+    label118:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nlv
  * JD-Core Version:    0.7.0.1
  */

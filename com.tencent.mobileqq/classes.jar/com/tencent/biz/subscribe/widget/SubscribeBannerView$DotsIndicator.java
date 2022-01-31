@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.widget;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
@@ -10,7 +10,7 @@ import android.widget.LinearLayout.LayoutParams;
 public class SubscribeBannerView$DotsIndicator
   extends LinearLayout
 {
-  public int a = 2130838728;
+  public int a = 2130838878;
   public int b;
   public int c;
   public int d;
@@ -23,9 +23,9 @@ public class SubscribeBannerView$DotsIndicator
   
   private void a()
   {
-    this.b = actj.a(10.0F, getResources());
-    this.c = actj.a(7.0F, getResources());
-    this.d = actj.a(7.0F, getResources());
+    this.b = aekt.a(10.0F, getResources());
+    this.c = aekt.a(7.0F, getResources());
+    this.d = aekt.a(7.0F, getResources());
     setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
   }
   
@@ -75,7 +75,7 @@ public class SubscribeBannerView$DotsIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator
  * JD-Core Version:    0.7.0.1
  */

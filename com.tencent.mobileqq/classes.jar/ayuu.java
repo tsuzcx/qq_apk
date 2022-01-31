@@ -1,65 +1,113 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import IMMsgBodyPack.MsgType0x210;
+import KQQ.InfoItem;
+import KQQ.PluginInfo;
+import KQQ.ReqGetPluginSettings;
+import KQQ.RespGetPluginSettings;
+import KQQ.SyncReq;
+import KQQ.SyncRes;
+import com.qq.jce.wup.UniPacket;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.Packet;
 
-class ayuu
-  implements aysb
+public class ayuu
 {
-  ayuu(ayut paramayut) {}
-  
-  public void a(aysy paramaysy, aysz paramaysz)
+  public static MsgType0x210 a(byte[] paramArrayOfByte)
   {
-    if ((paramaysy == null) || (paramaysz == null)) {}
-    label8:
-    ayrx localayrx;
-    do
+    try
     {
-      do
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf-8");
+      MsgType0x210 localMsgType0x210 = new MsgType0x210();
+      localMsgType0x210.readFrom(paramArrayOfByte);
+      return localMsgType0x210;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static List<PluginInfo> a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    Object localObject = new UniPacket(true);
+    try
+    {
+      ((UniPacket)localObject).setEncodeName("utf-8");
+      ((UniPacket)localObject).decode(paramArrayOfByte);
+      paramArrayOfByte = (SyncRes)((UniPacket)localObject).get("SyncRes");
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.result == 0))
       {
-        do
+        paramArrayOfByte = paramArrayOfByte.vecResPkg;
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
         {
-          break label8;
-          do
+          paramArrayOfByte = (InfoItem)paramArrayOfByte.get(0);
+          if (paramArrayOfByte.vecValue != null)
           {
-            return;
-          } while (!(paramaysy instanceof ayrx));
-          localayrx = (ayrx)paramaysy;
-          if (ayut.a(this.a))
-          {
-            File localFile = new File(paramaysy.d);
-            if (paramaysz.c == localFile.length())
+            paramArrayOfByte = new JceInputStream(paramArrayOfByte.vecValue);
+            paramArrayOfByte.setServerEncoding("utf-8");
+            localObject = new RespGetPluginSettings();
+            ((RespGetPluginSettings)localObject).readFrom(paramArrayOfByte);
+            if ((localObject != null) && (((RespGetPluginSettings)localObject).PluginInfoList != null))
             {
-              paramaysz.c = 0L;
-              if (QLog.isColorLevel()) {
-                QLog.e("ShortVideoDownloadProcessor", 2, "fixProgressiveRange, mStartDownOffset = " + paramaysy.jdField_a_of_type_Long);
-              }
+              paramArrayOfByte = ((RespGetPluginSettings)localObject).PluginInfoList;
+              return paramArrayOfByte;
             }
           }
-          localayrx.jdField_a_of_type_Long += paramaysz.c;
-          if (0L != localayrx.b) {
-            break;
-          }
-          paramaysz.c = 0L;
-          paramaysy = "bytes=" + localayrx.jdField_a_of_type_Long + "-";
-          localayrx.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysy);
-          paramaysy = localayrx.jdField_a_of_type_JavaLangString;
-        } while (!paramaysy.contains("range="));
-        paramaysy = paramaysy.substring(0, paramaysy.lastIndexOf("range="));
-        localayrx.jdField_a_of_type_JavaLangString = (paramaysy + "range=" + localayrx.jdField_a_of_type_Long);
-        return;
-      } while ((localayrx.jdField_a_of_type_Long <= 0L) || (localayrx.b <= 0L) || (localayrx.jdField_a_of_type_Long >= localayrx.b));
-      paramaysz.c = 0L;
-      paramaysy = "bytes=" + localayrx.jdField_a_of_type_Long + "-" + localayrx.b;
-      localayrx.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysy);
-      paramaysy = localayrx.jdField_a_of_type_JavaLangString;
-    } while (!paramaysy.contains("range="));
-    paramaysy = paramaysy.substring(0, paramaysy.lastIndexOf("range="));
-    localayrx.jdField_a_of_type_JavaLangString = (paramaysy + "range=" + localayrx.jdField_a_of_type_Long + "-" + localayrx.b);
+        }
+      }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      return null;
+    }
+    return null;
+  }
+  
+  public static void a(Packet paramPacket, List<Long> paramList)
+  {
+    SyncReq localSyncReq = new SyncReq();
+    ArrayList localArrayList = new ArrayList();
+    InfoItem localInfoItem = new InfoItem();
+    localInfoItem.cOperType = 1;
+    localInfoItem.qwServiceId = 22L;
+    localInfoItem.qwTimeStamp = 0L;
+    localInfoItem.vecValue = a(paramList);
+    localArrayList.add(localInfoItem);
+    localSyncReq.vecReqPkg = localArrayList;
+    paramPacket.setSSOCommand("ProfileService.SyncReq");
+    paramPacket.setServantName("ProfileService");
+    paramPacket.setFuncName("SyncReq");
+    paramPacket.addRequestPacket("SyncReq", localSyncReq);
+  }
+  
+  public static byte[] a(List<Long> paramList)
+  {
+    ReqGetPluginSettings localReqGetPluginSettings = new ReqGetPluginSettings();
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (paramList.size() > 0)) {
+      localArrayList.addAll(paramList);
+    }
+    for (;;)
+    {
+      localReqGetPluginSettings.PluginList = localArrayList;
+      paramList = new JceOutputStream();
+      localReqGetPluginSettings.writeTo(paramList);
+      return paramList.toByteArray();
+      localArrayList.add(Long.valueOf(489L));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayuu
  * JD-Core Version:    0.7.0.1
  */

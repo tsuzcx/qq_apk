@@ -1,290 +1,278 @@
-import android.text.Editable.Factory;
-import android.text.SpannableStringBuilder;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ayku
-  extends SpannableStringBuilder
+  extends ayjm
 {
-  public static Editable.Factory a;
-  public static Editable.Factory b;
-  private int a;
-  private int b;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  static
+  public ayku(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new aykv();
-    jdField_b_of_type_AndroidTextEditable$Factory = new aykw();
-  }
-  
-  public ayku(CharSequence paramCharSequence, int paramInt)
-  {
-    this(paramCharSequence, paramInt, 32);
-  }
-  
-  public ayku(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    super(a(paramCharSequence, paramInt1, paramInt2));
-    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static Editable.Factory a(int paramInt)
+  public ayku(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    return new aykx(paramInt);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.d = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramString3;
+    a();
   }
   
-  private static final CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  private void a()
   {
-    if ((paramCharSequence instanceof aykk)) {
-      return ((aykk)paramCharSequence).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.SearchResultModelForEntrance", 2, "extension info:" + this.d);
     }
-    return new aykk(paramCharSequence, paramInt1, paramInt2).a();
+    if (!TextUtils.isEmpty(this.d)) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.d);
+      if (localJSONObject.getInt("hideArrow") == 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        this.e = localJSONObject.optString("title1");
+        this.jdField_a_of_type_JavaLangString = localJSONObject.optString("title2");
+        this.f = localJSONObject.optString("title3");
+        this.g = localJSONObject.optString("secondLine");
+        return;
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public CharSequence a()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    case -3: 
+    case -2: 
+    default: 
+      return alpo.a(2131714038);
+    case -4: 
+      return this.e;
+    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public String a()
   {
-    int j = 0;
-    int i = length();
-    Object localObject1 = new char[i];
-    getChars(0, i, (char[])localObject1, 0);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append((char[])localObject1);
-    int k = "[emoji]".length();
-    localObject1 = (aykr[])getSpans(0, i, aykr.class);
-    i = 0;
-    if (j < localObject1.length)
-    {
-      Object localObject2 = localObject1[j];
-      int m = getSpanStart(localObject2);
-      int n = getSpanEnd(localObject2);
-      switch (((aykr)localObject2).c)
-      {
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        localStringBuffer.replace(m + i, n + i, "[emoji]");
-        i += k - (n - m);
-        continue;
-        localObject2 = ((aykr)localObject2).a();
-        localStringBuffer.replace(m + i, n + i, (String)localObject2);
-        i += ((String)localObject2).length() - (n - m);
-        continue;
-        localObject2 = ayjy.a[(localObject2.jdField_a_of_type_Int & 0x7FFFFFFF)];
-        localStringBuffer.replace(m + i, n + i, (String)localObject2);
-        i += ((String)localObject2).length() - (n - m);
-      }
-    }
-    return localStringBuffer.toString();
+    return null;
   }
   
-  public void getChars(int paramInt1, int paramInt2, char[] paramArrayOfChar, int paramInt3)
+  public void a(View paramView)
   {
-    int i = paramInt1;
-    if (paramInt1 < 0) {
-      i = 0;
-    }
-    int j = length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > j) {
-      paramInt1 = j;
-    }
-    try
+    Object localObject1;
+    Object localObject2;
+    switch (this.jdField_a_of_type_Int)
     {
-      super.getChars(i, paramInt1, paramArrayOfChar, paramInt3);
-      return;
-    }
-    catch (IndexOutOfBoundsException paramArrayOfChar)
-    {
-      QLog.e("QQTextBuilder", 1, "text:" + a());
-    }
-  }
-  
-  public SpannableStringBuilder replace(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, int paramInt4)
-  {
-    if (paramInt1 < 0) {
-      j = 0;
-    }
-    for (;;)
-    {
-      try
+    case -2: 
+    default: 
+      localObject1 = this.jdField_b_of_type_JavaLangString;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        k = length();
-        if (paramInt2 > k)
-        {
-          paramInt1 = k;
-          paramInt2 = paramInt1;
-          if (paramInt1 < 0) {
-            i = paramInt1;
-          }
+        localObject2 = bdds.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), (String)localObject1);
+        if (localObject2 == null) {
+          break label825;
         }
+        ((bddb)localObject2).c();
       }
-      catch (Throwable localThrowable1)
+    case -1: 
+      do
       {
-        int k;
-        Object localObject;
-        QLog.e("QQText", 1, "QQTextBuilder.replace caused crash..text:" + toString() + ", replace text:" + paramCharSequence + " , " + j + "-" + paramInt2 + " , " + paramInt3 + "-" + paramInt4, localThrowable1);
-        return new SpannableStringBuilder();
+        return;
+        ActiveEntitySearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, alpo.a(2131714023), new long[] { 1001L, 1002L });
+        ayrd.a("all_result", "clk_people_group", new String[] { this.jdField_a_of_type_JavaLangString });
+        ayrd.a("all_search", "all_result", "clk_user_grp", 0, 0, new String[] { "", "", this.jdField_a_of_type_JavaLangString, "" });
+      } while (!(paramView.getContext() instanceof UniteSearchActivity));
+      if (aydw.b.containsKey(this))
+      {
+        paramView = (aydx)aydw.b.get(this);
+        localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        localObject2 = new JSONObject();
       }
       try
       {
-        if (!QLog.isColorLevel()) {
-          break label259;
-        }
-        i = paramInt1;
-        QLog.w("QQTextBuilder", 2, "selection error, start = " + j + " end = " + paramInt1 + " length = " + k);
+        ((JSONObject)localObject2).put("project", aynt.a());
+        ((JSONObject)localObject2).put("event_src", "client");
+        ((JSONObject)localObject2).put("obj_lct", paramView.jdField_a_of_type_Int);
+        ((JSONObject)localObject2).put("get_src", "native");
+        aynt.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(paramView.jdField_a_of_type_Long + "").obj2(paramView.jdField_b_of_type_JavaLangString).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(aynt.a(UniteSearchActivity.d)).ver7(((JSONObject)localObject2).toString()).session_id(((QQAppInterface)localObject1).getCurrentAccountUin() + aydw.jdField_a_of_type_Long));
+        aynt.a(null, this.s, 0, "0X8009D3F", 0, 0, null, null);
+        return;
       }
-      catch (Throwable localThrowable2)
+      catch (JSONException localJSONException1)
       {
-        paramInt2 = i;
-        continue;
-        continue;
-        paramInt2 = 0;
-        continue;
-      }
-      i = paramInt2;
-      if (paramCharSequence.length() <= 0) {
-        break label256;
-      }
-      i = paramInt2;
-      localObject = new aykk(paramCharSequence, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int).a();
-      paramCharSequence = (CharSequence)localObject;
-      try
-      {
-        localObject = super.replace(j, paramInt2, paramCharSequence, paramInt3, paramInt4);
-        return localObject;
-      }
-      catch (Throwable localThrowable3)
-      {
-        continue;
-      }
-      j = paramInt1;
-      continue;
-      paramInt1 = paramInt2;
-    }
-  }
-  
-  public CharSequence subSequence(int paramInt1, int paramInt2)
-  {
-    if (!aykk.a) {
-      localObject1 = super.subSequence(paramInt1, paramInt2);
-    }
-    do
-    {
-      return localObject1;
-      if (paramInt1 != 0) {
-        break;
-      }
-      localObject1 = this;
-    } while (paramInt2 == length());
-    int i = paramInt1;
-    if (paramInt1 < 0) {
-      i = 0;
-    }
-    int j = length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > j) {
-      paramInt1 = j;
-    }
-    Object localObject2 = new char[paramInt1 - i];
-    getChars(i, paramInt1, (char[])localObject2, 0);
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append((char[])localObject2);
-    localObject2 = (aykr[])getSpans(i, paramInt1, aykr.class);
-    if (paramInt1 - i > 0)
-    {
-      paramInt2 = 0;
-      if (paramInt2 < localObject2.length)
-      {
-        Object localObject3 = localObject2[paramInt2];
-        int k = getSpanStart(localObject3);
-        int m = getSpanEnd(localObject3);
-        j = k;
-        if (k < i) {
-          j = i;
-        }
-        k = m;
-        if (m > paramInt1) {
-          k = paramInt1;
-        }
-        switch (localObject3.c)
-        {
-        }
         for (;;)
         {
-          paramInt2 += 1;
-          break;
-          try
-          {
-            ((StringBuilder)localObject1).replace(j - i, k - i, aylc.a(localObject3.jdField_a_of_type_Int));
-          }
-          catch (Exception localException)
-          {
-            QLog.e("QQTextBuilder", 1, localException.getStackTrace());
-          }
-          continue;
-          Object localObject4 = (aykt)localException;
-          localObject4 = anqz.a(((aykt)localObject4).e, ((aykt)localObject4).f);
-          ((StringBuilder)localObject1).replace(j - i, k - i, String.valueOf(new char[] { '\024', localObject4[3], localObject4[2], localObject4[1], localObject4[0] }));
-          continue;
-          ((StringBuilder)localObject1).replace(j - i, k - i, aylc.c(((aykr)localObject4).jdField_a_of_type_Int));
+          QLog.e("Q.uniteSearch.SearchResultModelForEntrance", 2, "e = " + localJSONException1);
         }
       }
     }
-    return localObject1;
-  }
-  
-  public String toString()
-  {
-    if (!aykk.a) {
-      return super.toString();
+    if ((paramView.getContext() instanceof UniteSearchActivity)) {
+      switch (((UniteSearchActivity)paramView.getContext()).jdField_a_of_type_Int)
+      {
+      }
     }
-    int i = length();
-    Object localObject1 = new char[i];
-    getChars(0, i, (char[])localObject1, 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((char[])localObject1);
-    int j = localStringBuilder.length();
-    localObject1 = (aykr[])getSpans(0, i, aykr.class);
-    i = 0;
-    if (i < localObject1.length)
+    for (int i = 0;; i = 0)
     {
-      Object localObject2 = localObject1[i];
-      int k = getSpanStart(localObject2);
-      int m = getSpanEnd(localObject2);
-      if ((k < j) && (m <= j)) {
-        switch (((aykr)localObject2).c)
-        {
-        }
-      }
       for (;;)
       {
-        i += 1;
-        break;
-        localStringBuilder.replace(k, m, aylc.a(((aykr)localObject2).jdField_a_of_type_Int));
-        continue;
-        localObject2 = (aykt)localObject2;
-        localObject2 = anqz.a(((aykt)localObject2).e, ((aykt)localObject2).f);
-        localStringBuilder.replace(k, m, String.valueOf(new char[] { '\024', localObject2[3], localObject2[2], localObject2[1], localObject2[0] }));
-        if (QLog.isColorLevel())
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
         {
-          QLog.d("QQTextBuilder", 2, "start:" + k + ",end:" + m);
+          localObject1 = ayra.a(this.jdField_a_of_type_JavaLangString, i, "group");
+          label480:
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
+            ((Intent)localObject2).putExtra("url", (String)localObject1);
+            ((Intent)localObject2).putExtra("search_title", this.jdField_a_of_type_JavaLangString);
+            paramView.getContext().startActivity((Intent)localObject2);
+          }
+          if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+            break label787;
+          }
+          localObject1 = this.jdField_a_of_type_JavaLangString;
+          ayrd.a("all_result", "clk_net_search", new String[] { localObject1 });
+          if ((!(paramView.getContext() instanceof UniteSearchActivity)) || (!aydw.b.containsKey(this))) {
+            break;
+          }
+          paramView = (aydx)aydw.b.get(this);
+          localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          localObject2 = new JSONObject();
+        }
+        try
+        {
+          ((JSONObject)localObject2).put("project", aynt.a());
+          ((JSONObject)localObject2).put("event_src", "client");
+          ((JSONObject)localObject2).put("obj_lct", paramView.jdField_a_of_type_Int);
+          ((JSONObject)localObject2).put("get_src", "web");
+          aynt.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(paramView.jdField_a_of_type_Long + "").obj2(paramView.jdField_b_of_type_JavaLangString).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(aynt.a(UniteSearchActivity.d)).ver7(((JSONObject)localObject2).toString()).session_id(((QQAppInterface)localObject1).getCurrentAccountUin() + aydw.jdField_a_of_type_Long));
+          return;
+          i = 1;
           continue;
-          localStringBuilder.replace(k, m, aylc.c(((aykr)localObject2).jdField_a_of_type_Int));
+          i = 2;
           continue;
-          if (QLog.isColorLevel()) {
-            QLog.e("QQText", 2, "error emo pos. start:" + k + " end: " + m + " length: " + j);
+          i = 3;
+          continue;
+          localObject1 = this.jdField_b_of_type_JavaLangString;
+          break label480;
+          label787:
+          localObject1 = "";
+        }
+        catch (JSONException localJSONException2)
+        {
+          for (;;)
+          {
+            QLog.e("Q.uniteSearch.SearchResultModelForEntrance", 2, "e = " + localJSONException2);
           }
         }
       }
+      label825:
+      if ((!((String)localObject1).startsWith("http://")) && (!((String)localObject1).startsWith("https://"))) {
+        break;
+      }
+      paramView = paramView.getContext();
+      localObject2 = new Intent(paramView, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      paramView.startActivity((Intent)localObject2);
+      return;
     }
-    return localStringBuilder.toString();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public CharSequence b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == -1;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public CharSequence c()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    case -3: 
+    case -2: 
+    default: 
+      return "";
+    case -1: 
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      return aydn.a(BaseApplicationImpl.getContext(), localQQAppInterface.c());
+    }
+    return this.g;
+  }
+  
+  public int d()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      return 2131559666;
+    }
+    return 2131559659;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayku
  * JD-Core Version:    0.7.0.1
  */

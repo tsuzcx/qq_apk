@@ -1,29 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bior
-  implements Animation.AnimationListener
+class bior
+  implements DialogInterface.OnClickListener
 {
-  public bior(AEMaterialPanel paramAEMaterialPanel) {}
+  bior(bioj parambioj, xwj paramxwj) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (AEMaterialPanel.a(this.a) != null)
-    {
-      AEMaterialPanel.a(this.a).setAlpha(1.0F);
-      AEMaterialPanel.a(this.a).setVisibility(8);
-    }
+    this.jdField_a_of_type_Xwj.a();
+    paramDialogInterface.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bior
  * JD-Core Version:    0.7.0.1
  */

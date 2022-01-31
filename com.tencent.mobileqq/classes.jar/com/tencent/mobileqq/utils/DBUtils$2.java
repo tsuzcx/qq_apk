@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.utils;
 
-import akft;
-import bbdd;
+import alxj;
+import bdbx;
 import java.util.List;
 
 public class DBUtils$2
   implements Runnable
 {
-  public DBUtils$2(bbdd parambbdd, akft paramakft, List paramList) {}
+  public DBUtils$2(bdbx parambdbx, alxj paramalxj, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akft.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Alxj.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.DBUtils.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,179 +1,54 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QFlutterAppData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.widget.Switch;
 
-public class aqaa
-  extends anpn
+class aqaa
+  extends nab
 {
-  private boolean d;
+  aqaa(apzz paramapzz, boolean paramBoolean) {}
   
-  public aqaa(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super("qq.android.flutter.app.v8.2.8", paramQQAppInterface);
-  }
-  
-  public static String e()
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
+    boolean bool = true;
+    if (paramInt != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFlutter.QFlutterAppDownloader", 2, "getFilesDir is null");
+      QLog.e("ExtendFriendHandler", 1, "setShowVipIconSwitch error: " + paramInt);
+      ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(null);
+      paramArrayOfByte = ExtendFriendProfileEditFragment.a(this.a.a);
+      if (!this.b) {}
+      for (bool = true;; bool = false)
+      {
+        paramArrayOfByte.setChecked(bool);
+        ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(ExtendFriendProfileEditFragment.a(this.a.a));
+        return;
       }
-      localObject = "";
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.flutter.app.v8.2.8";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("QFlutter.QFlutterAppDownloader", 2, "getLibDir ,path = " + str);
-    return str;
-  }
-  
-  public int a()
-  {
-    return 10093;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QFlutterAppData.class;
-  }
-  
-  public String a()
-  {
-    return QFlutterAppData.class.getSimpleName();
-  }
-  
-  public void a()
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, "restoreState");
+      QLog.d("ExtendFriendHandler", 2, "setShowVipIconSwitch(" + this.b + ") success");
     }
-    a().loadState = 0;
-    a().Version = 0;
-    anpb.a(a(), new String[0]);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    super.a(paramLong1, paramLong2);
-    int i = (int)(100L * paramLong1 / paramLong2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, "download progress: " + i);
-    }
-    aqac.a(1, paramLong1, paramLong2);
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("onDownloadFinish, result: %s, errCode: %s, filepath: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
-    }
-    if (!paramBoolean) {
-      aqac.a(1, false);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, "download success: " + paramString);
-    }
-    if (aqac.a(paramString, (QFlutterAppData)a())) {
-      aqac.a(1, true);
-    }
+    paramArrayOfByte = (apyo)ExtendFriendProfileEditFragment.a(this.a.a).getTag();
+    if (!this.b) {}
     for (;;)
     {
-      super.a(paramString);
-      return;
-      a();
-      aqac.a(1, false);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("restartDownload userClick: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    super.a(paramBoolean);
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    super.b(paramXmlData);
-    if (paramXmlData != null) {}
-    for (long l = paramXmlData.totalSize;; l = 0L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.QFlutterAppDownloader", 2, new Object[] { "download begin, totalLen: %s", Long.valueOf(l) });
+      paramArrayOfByte.mVipHide = bool;
+      VipUtils.a(paramArrayOfByte, ExtendFriendProfileEditFragment.a(this.a.a));
+      paramArrayOfByte = this.a.a.getActivity();
+      if (paramArrayOfByte == null) {
+        break;
       }
+      paramArrayOfByte.setResult(8193);
       return;
+      bool = false;
     }
-  }
-  
-  public boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("isNetValid2Download mHadRequestedByUser: %s", new Object[] { Boolean.valueOf(this.d) }));
-    }
-    if (this.d) {
-      return true;
-    }
-    return super.b();
-  }
-  
-  public void c()
-  {
-    String str = e();
-    boolean bool = apvd.a(new File(str));
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("delete unzipFile: %s, ret: %s", new Object[] { str, Boolean.valueOf(bool) }));
-    }
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    super.e(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("onBeforeUpdateConfig, bLoginElseNet: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-  }
-  
-  public boolean e()
-  {
-    QLog.d("QFlutter.QFlutterAppDownloader", 1, String.format("downloadResource, mHadRequestedByUser = %s", new Object[] { Boolean.valueOf(this.d) }));
-    if (!this.d) {
-      return false;
-    }
-    return super.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqaa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import auko;
+import awbv;
 
 public class ReadInJoySearchHistoryEntity
-  extends auko
+  extends awbv
 {
   public int id;
   public String keyWord;
@@ -11,7 +11,7 @@ public class ReadInJoySearchHistoryEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity
  * JD-Core Version:    0.7.0.1
  */

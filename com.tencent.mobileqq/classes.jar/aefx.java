@@ -1,24 +1,20 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aefx
-  implements View.OnLongClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aefx(PanelIconLinearLayout paramPanelIconLinearLayout) {}
+  public aefx(UpgradeActivity paramUpgradeActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (PanelIconLinearLayout.a(this.a) != null) {
-      PanelIconLinearLayout.a(this.a).a(1);
-    }
-    return true;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefx
  * JD-Core Version:    0.7.0.1
  */

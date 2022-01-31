@@ -1,7 +1,7 @@
 package com.tencent.av.camera;
 
 import android.content.Context;
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class QavCameraUsage$1
   implements Runnable
@@ -10,12 +10,12 @@ public final class QavCameraUsage$1
   
   public void run()
   {
-    bcql.a(this.a, this.a.getString(2131695724), 0).a();
+    QQToast.a(this.a, this.a.getString(2131695884), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.camera.QavCameraUsage.1
  * JD-Core Version:    0.7.0.1
  */

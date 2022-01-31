@@ -1,28 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
 
 public class aijw
-  implements awcf
+  implements View.OnClickListener
 {
-  private aijw(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public aijw(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((paramBitmap != null) && (paramInt2 == 200))
-    {
-      if (this.b.d != 0) {
-        this.b.b = true;
-      }
-    }
-    else {
-      return;
-    }
-    this.b.a.notifyDataSetChanged();
+    paramView = this.a.getIntent();
+    String str = paramView.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    int i = paramView.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
+    PhotoUtils.a(paramView, this.a, str, i, i, 1080, 1080, bcyw.a());
+    azmj.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijw
  * JD-Core Version:    0.7.0.1
  */

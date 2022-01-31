@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.webPlugins;
 
-import bcdp;
-import bcql;
+import becq;
+import com.tencent.mobileqq.widget.QQToast;
 
 class MiniAppPlugin$2
   implements Runnable
@@ -10,12 +10,12 @@ class MiniAppPlugin$2
   
   public void run()
   {
-    bcql.a(this.this$0.mRuntime.a(), 1, 2131695210, 0).a();
+    QQToast.a(this.this$0.mRuntime.a(), 1, 2131695368, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin.2
  * JD-Core Version:    0.7.0.1
  */

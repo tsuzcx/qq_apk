@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class acpc
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public acpc(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public acpc(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.b();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpc
  * JD-Core Version:    0.7.0.1
  */

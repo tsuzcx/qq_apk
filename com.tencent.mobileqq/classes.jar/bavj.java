@@ -1,19 +1,86 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class bavj
-  implements FilenameFilter
+public class bavj
 {
-  bavj(bavg parambavg, String paramString) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  public boolean accept(File paramFile, String paramString)
+  public bavj() {}
+  
+  public bavj(String paramString, int paramInt1, int paramInt2)
   {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.c = paramInt2;
+  }
+  
+  public static String a(List<bavj> paramList)
+  {
+    if (paramList == null) {
+      return null;
+    }
+    try
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        bavj localbavj = (bavj)paramList.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("i", localbavj.jdField_a_of_type_JavaLangString);
+        if (localbavj.jdField_a_of_type_Int != 80) {
+          localJSONObject.put("p", localbavj.jdField_a_of_type_Int);
+        }
+        if (localbavj.c != 1) {
+          localJSONObject.put("t", localbavj.c);
+        }
+        localJSONArray.put(localJSONObject);
+      }
+      paramList = localJSONArray.toString();
+    }
+    catch (Exception paramList)
+    {
+      paramList.printStackTrace();
+      return null;
+    }
+    return paramList;
+  }
+  
+  public static ArrayList<bavj> a(String paramString)
+  {
+    try
+    {
+      ArrayList localArrayList = new ArrayList();
+      JSONArray localJSONArray = new JSONArray(paramString);
+      int i = 0;
+      for (;;)
+      {
+        paramString = localArrayList;
+        if (i >= localJSONArray.length()) {
+          break;
+        }
+        paramString = localJSONArray.getJSONObject(i);
+        localArrayList.add(new bavj(paramString.getString("i"), paramString.optInt("p", 80), paramString.optInt("t", 1)));
+        i += 1;
+      }
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      paramString = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bavj
  * JD-Core Version:    0.7.0.1
  */

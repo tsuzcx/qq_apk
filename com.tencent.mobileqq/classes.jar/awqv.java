@@ -1,19 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 
-class awqv
+public class awqv
   implements View.OnClickListener
 {
-  awqv(awqs paramawqs) {}
+  public awqv(ProfileHeaderView paramProfileHeaderView, awmk paramawmk) {}
   
   public void onClick(View paramView)
   {
-    awqs.a(this.a).a(paramView);
+    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Awmk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awqv
  * JD-Core Version:    0.7.0.1
  */

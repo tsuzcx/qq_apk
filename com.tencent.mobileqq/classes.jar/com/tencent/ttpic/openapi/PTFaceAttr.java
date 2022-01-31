@@ -1,9 +1,11 @@
 package com.tencent.ttpic.openapi;
 
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Pair;
 import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.facedetect.GenderType;
 import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
@@ -295,6 +297,31 @@ public class PTFaceAttr
     return this.facePiont2DCenter;
   }
   
+  public List<Rect> getFaceRectList()
+  {
+    ArrayList localArrayList = new ArrayList();
+    double d = getFaceDetectScale();
+    if (d != 0.0D)
+    {
+      Object localObject = getFaceInfoList();
+      if (!CollectionUtils.isEmpty((Collection)localObject))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          FaceInfo localFaceInfo = (FaceInfo)((Iterator)localObject).next();
+          Rect localRect = new Rect();
+          localRect.left = ((int)(localFaceInfo.rect[0] / d));
+          localRect.top = ((int)(localFaceInfo.rect[1] / d));
+          localRect.right = ((int)(localFaceInfo.rect[2] / d) + localRect.left);
+          localRect.bottom = ((int)(localFaceInfo.rect[3] / d) + localRect.top);
+          localArrayList.add(localRect);
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
   public List<FaceStatus> getFaceStatusList()
   {
     return this.mFaceStatusList;
@@ -438,7 +465,7 @@ public class PTFaceAttr
       ((FaceInfo)localObject2).denseFaceModel = null;
       ((FaceInfo)localObject2).transform = null;
       ((FaceInfo)localObject2).expressionWeights = null;
-      ((FaceInfo)localObject2).gender = GenderType.FEMALE.value;
+      ((FaceInfo)localObject2).gender = GenderType.DEFAULT.value;
       localArrayList.add(localObject2);
     }
     Object localObject2 = new ArrayList();

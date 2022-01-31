@@ -1,28 +1,37 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
 import java.util.List;
 
-public final class ugv
-  extends QQUIEventReceiver<ugk, tjo>
+public class ugv
+  extends QQUIEventReceiver<ugu, uej>
 {
-  public ugv(@NonNull ugk paramugk)
+  public ugv(@NonNull ugu paramugu)
   {
-    super(paramugk);
+    super(paramugu);
   }
   
-  public void a(@NonNull ugk paramugk, @NonNull tjo paramtjo)
+  public void a(@NonNull ugu paramugu, @NonNull uej paramuej)
   {
-    if ((paramtjo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtjo.jdField_a_of_type_JavaUtilList != null) && (paramugk.a != null))
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramuej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
     {
-      paramtjo = paramtjo.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramtjo.hasNext())
+      wsv.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,error! code = %d", Integer.valueOf(paramuej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode));
+      paramugu.d();
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      ugu.a(paramugu).a(bool1);
+      return;
+      wsv.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,size = %d", Integer.valueOf(paramuej.jdField_a_of_type_JavaUtilList.size()));
+      bool1 = bool2;
+      if (paramugu.a(paramuej.jdField_a_of_type_JavaUtilList))
       {
-        tec localtec = (tec)paramtjo.next();
-        if (TextUtils.equals(paramugk.a.b, localtec.a)) {
-          paramugk.i();
+        bool1 = bool2;
+        if (paramuej.jdField_a_of_type_JavaUtilList.size() > 0) {
+          bool1 = true;
         }
       }
     }
@@ -30,12 +39,12 @@ public final class ugv
   
   public Class acceptEventClass()
   {
-    return tjo.class;
+    return uej.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugv
  * JD-Core Version:    0.7.0.1
  */

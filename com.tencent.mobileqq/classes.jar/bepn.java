@@ -1,31 +1,33 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-class bepn
-  implements ServiceConnection
+public class bepn
+  implements TencentMap.OnCameraChangeListener
 {
-  bepn(bepl parambepl) {}
+  public bepn(QQMapView paramQQMapView) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onCameraChange(CameraPosition paramCameraPosition)
   {
-    bepl.a(this.a, bepq.a(paramIBinder));
-    betc.c("minisdk-start_AppBrandProxy", "onServiceConnected:" + bepl.a(this.a));
-    bepl.a(this.a, false);
-    bepl.a(this.a);
-    bepl.b(this.a);
+    if ((this.a.jdField_a_of_type_Bepo != null) && (!this.a.jdField_a_of_type_Boolean))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Bepo.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
+    }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
   {
-    bepl.a(this.a, null);
-    betc.c("minisdk-start_AppBrandProxy", "onServiceDisconnected.");
-    bepl.a(this.a, false);
+    if (this.a.jdField_a_of_type_Boolean) {
+      QQMapView.a(this.a, paramCameraPosition);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bepn
  * JD-Core Version:    0.7.0.1
  */

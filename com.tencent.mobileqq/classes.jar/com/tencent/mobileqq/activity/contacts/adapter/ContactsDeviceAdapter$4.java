@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afpj;
+import ahna;
 
 public class ContactsDeviceAdapter$4
   implements Runnable
 {
-  public ContactsDeviceAdapter$4(afpj paramafpj) {}
+  public ContactsDeviceAdapter$4(ahna paramahna) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ContactsDeviceAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter.4
  * JD-Core Version:    0.7.0.1
  */

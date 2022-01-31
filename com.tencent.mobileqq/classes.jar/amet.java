@@ -1,80 +1,29 @@
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amet
+public class amet
+  extends amab
 {
-  public static void a(View paramView, float paramFloat)
-  {
-    if (ames.a)
-    {
-      ames.a(paramView).a(paramFloat);
-      return;
-    }
-    ameu.c(paramView, paramFloat);
-  }
+  public amet(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public static void b(View paramView, float paramFloat)
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (ames.a)
+    if ((paramInt2 == 512) && (paramBoolean))
     {
-      ames.a(paramView).d(paramFloat);
-      return;
+      paramString2 = ((TroopManager)HiddenChatFragment.a(this.a).getManager(52)).b(paramString1);
+      amez.a(HiddenChatFragment.a(this.a), paramString2);
+      this.a.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch troopUin=" + paramString1);
+      }
     }
-    ameu.d(paramView, paramFloat);
-  }
-  
-  public static void c(View paramView, float paramFloat)
-  {
-    if (ames.a)
-    {
-      ames.a(paramView).e(paramFloat);
-      return;
-    }
-    ameu.e(paramView, paramFloat);
-  }
-  
-  public static void d(View paramView, float paramFloat)
-  {
-    if (ames.a)
-    {
-      ames.a(paramView).b(paramFloat);
-      return;
-    }
-    ameu.a(paramView, paramFloat);
-  }
-  
-  public static void e(View paramView, float paramFloat)
-  {
-    if (ames.a)
-    {
-      ames.a(paramView).c(paramFloat);
-      return;
-    }
-    ameu.b(paramView, paramFloat);
-  }
-  
-  public static void f(View paramView, float paramFloat)
-  {
-    if (ames.a)
-    {
-      ames.a(paramView).g(paramFloat);
-      return;
-    }
-    ameu.f(paramView, paramFloat);
-  }
-  
-  public static void g(View paramView, float paramFloat)
-  {
-    if (ames.a)
-    {
-      ames.a(paramView).h(paramFloat);
-      return;
-    }
-    ameu.g(paramView, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amet
  * JD-Core Version:    0.7.0.1
  */

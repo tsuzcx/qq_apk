@@ -4,7 +4,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import akwf;
+import ammv;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
@@ -18,8 +18,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbdj;
-import bgyp;
+import bdcd;
+import bizm;
 import com.tencent.biz.subscribe.component.base.ComponentPageView;
 import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
@@ -36,28 +36,28 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
-import wis;
-import wit;
-import wkm;
-import wlt;
-import wpf;
-import wpk;
-import wps;
-import wpt;
-import wpv;
-import wpw;
-import wqp;
-import wqq;
-import wqr;
-import wqs;
-import wqy;
-import wsw;
-import xen;
-import xhb;
+import xxk;
+import xxl;
+import xzf;
+import yam;
+import ydw;
+import yeb;
+import yei;
+import yej;
+import yel;
+import yem;
+import yff;
+import yfg;
+import yfh;
+import yfi;
+import yfo;
+import yho;
+import ytg;
+import yvu;
 
 public class SubscribePersonalDetailFragment
   extends SubscribeBaseFragment
-  implements View.OnClickListener, wpv
+  implements View.OnClickListener, yel
 {
   private long jdField_a_of_type_Long;
   private CertifiedAccountRead.StGetMainPageRsp jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
@@ -67,9 +67,9 @@ public class SubscribePersonalDetailFragment
   private ComponentPageView jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView;
   private RelativePersonalDetailHeadItemView jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView;
   private String jdField_a_of_type_JavaLangString;
-  private wlt jdField_a_of_type_Wlt;
-  private wps jdField_a_of_type_Wps;
-  private wqs jdField_a_of_type_Wqs;
+  private yam jdField_a_of_type_Yam;
+  private yei jdField_a_of_type_Yei;
+  private yfi jdField_a_of_type_Yfi;
   private long jdField_b_of_type_Long;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private ImageView c;
@@ -95,27 +95,27 @@ public class SubscribePersonalDetailFragment
       return;
     }
     this.c.setVisibility(8);
-    if (wit.d(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.attr.get()))
+    if (xxl.d(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.attr.get()))
     {
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      xhb.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.id.get(), "auth_person", "exp_shoplist", 0, 0, new String[0]);
+      yvu.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.id.get(), "auth_person", "exp_shoplist", 0, 0, new String[0]);
       return;
     }
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
-  private void a(wpk paramwpk)
+  private void a(yeb paramyeb)
   {
-    if (paramwpk == null) {}
+    if (paramyeb == null) {}
     do
     {
       return;
-      if (paramwpk.c())
+      if (paramyeb.c())
       {
         a(true);
         return;
       }
-    } while (!paramwpk.d());
+    } while (!paramyeb.d());
     a(false);
   }
   
@@ -126,14 +126,14 @@ public class SubscribePersonalDetailFragment
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(this.jdField_a_of_type_JavaLangString, null);
-    wqq localwqq = new wqq(this);
-    if ((wqy.a("1001" + this.jdField_a_of_type_JavaLangString)) && (paramBoolean))
+    yfg localyfg = new yfg(this);
+    if ((yfo.a("1001" + this.jdField_a_of_type_JavaLangString)) && (paramBoolean))
     {
-      wqy.a("1001" + this.jdField_a_of_type_JavaLangString, new wqr(this, localwqq));
+      yfo.a("1001" + this.jdField_a_of_type_JavaLangString, new yfh(this, localyfg));
       return;
     }
     localSubscribePersonalDetailRequest.setEnableCache(paramBoolean);
-    VSNetworkHelper.a().a(localSubscribePersonalDetailRequest, localwqq);
+    VSNetworkHelper.a().a(localSubscribePersonalDetailRequest, localyfg);
   }
   
   private boolean a()
@@ -168,16 +168,16 @@ public class SubscribePersonalDetailFragment
   {
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      this.titleRoot.setBackgroundColor(getResources().getColor(2131167134));
+      this.titleRoot.setBackgroundColor(getResources().getColor(2131167192));
       ImmersiveUtils.a(true, getActivity().getWindow());
     }
   }
   
   private void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a().d();
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a().e();
     if ((!paramBoolean) && (isAdded())) {
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a().a(getResources().getString(2131701479));
+      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a().a(getResources().getString(2131701852));
     }
   }
   
@@ -192,67 +192,67 @@ public class SubscribePersonalDetailFragment
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.setExtraTypeInfo(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.setHostActivity(getActivity());
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.setPostUserData(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView = ((ComponentPageView)this.mContentView.findViewById(2131375228));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131372126));
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView = ((ComponentPageView)this.mContentView.findViewById(2131375710));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131372444));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.findViewById(2131368692));
-    this.c = ((ImageView)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.findViewById(2131368623));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.findViewById(2131369382));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.findViewById(2131368622));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.findViewById(2131368901));
+    this.c = ((ImageView)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.findViewById(2131368823));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.findViewById(2131369627));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.findViewById(2131368822));
     d();
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.findViewById(2131368507).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView.findViewById(2131368697).setOnClickListener(this);
     if (getActivity() != null)
     {
-      this.jdField_a_of_type_Wqs = new wqs(this, null);
+      this.jdField_a_of_type_Yfi = new yfi(this, null);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("action_reload_get_main_page");
-      getActivity().registerReceiver(this.jdField_a_of_type_Wqs, localIntentFilter);
+      getActivity().registerReceiver(this.jdField_a_of_type_Yfi, localIntentFilter);
     }
-    wpt.a().a(this);
+    yej.a().a(this);
   }
   
   private void d()
   {
     if (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView != null)
     {
-      this.jdField_a_of_type_Wps = new wqp(this, null);
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Wps);
-      this.jdField_a_of_type_Wlt = new wlt(null);
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Wlt);
+      this.jdField_a_of_type_Yei = new yff(this, null);
+      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Yei);
+      this.jdField_a_of_type_Yam = new yam(null);
+      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Yam);
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a().setEnableNestScrollingParent(true);
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setEnableRefresh(true);
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setEnableLoadMore(false);
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setExtraTypeInfo(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.d();
+      this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.e();
     }
   }
   
   private void e()
   {
     boolean bool2 = true;
-    wpw localwpw;
+    yem localyem;
     if ((a()) && (b()) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.vecFeed.get().size() > 0))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      xhb.a(((CertifiedAccountMeta.StUser)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.get()).id.get(), "auth_person", "post_exp", 0, 0, new String[] { "", "" });
+      yvu.a(((CertifiedAccountMeta.StUser)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.get()).id.get(), "auth_person", "post_exp", 0, 0, new String[] { "", "" });
       if (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView != null)
       {
-        localwpw = new wpw();
-        localwpw.jdField_a_of_type_JavaUtilList = a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp);
+        localyem = new yem();
+        localyem.jdField_a_of_type_JavaUtilList = a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp);
         if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.isFinish.get() != 1) {
           break label289;
         }
         bool1 = true;
         label137:
-        localwpw.jdField_a_of_type_Boolean = bool1;
-        localwpw.jdField_a_of_type_NS_COMMCOMM$StCommonExt = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.extInfo;
-        localwpw.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-        localwpw.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = ((CertifiedAccountMeta.StUser)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.get());
-        localwpw.jdField_a_of_type_JavaLangString = "share_key_subscribe_opus";
+        localyem.jdField_a_of_type_Boolean = bool1;
+        localyem.jdField_a_of_type_NS_COMMCOMM$StCommonExt = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.extInfo;
+        localyem.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+        localyem.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = ((CertifiedAccountMeta.StUser)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.get());
+        localyem.jdField_a_of_type_JavaLangString = "share_key_subscribe_opus";
         if ((isAdded()) && (getActivity().app != null)) {
-          if ((!wsw.a().a(getActivity().app.getAccount())) || (!b())) {
+          if ((!yho.a().a(getActivity().app.getAccount())) || (!b())) {
             break label294;
           }
         }
@@ -262,11 +262,11 @@ public class SubscribePersonalDetailFragment
     label294:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localwpw.jdField_b_of_type_Boolean = bool1;
-      localwpw.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
-      localwpw.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_Wlt != null) {
-        this.jdField_a_of_type_Wlt.b("share_key_subscribe_opus", new wpf(localwpw));
+      localyem.jdField_b_of_type_Boolean = bool1;
+      localyem.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
+      localyem.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_Yam != null) {
+        this.jdField_a_of_type_Yam.b("share_key_subscribe_opus", new ydw(localyem));
       }
       return;
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -321,7 +321,7 @@ public class SubscribePersonalDetailFragment
     b();
     hideTitleBar();
     c();
-    bgyp.a();
+    bizm.a();
   }
   
   public void a(SimpleBaseEvent paramSimpleBaseEvent)
@@ -337,7 +337,7 @@ public class SubscribePersonalDetailFragment
   
   public int getContentLayoutId()
   {
-    return 2131558682;
+    return 2131558718;
   }
   
   public boolean isTransparent()
@@ -361,20 +361,20 @@ public class SubscribePersonalDetailFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131372126: 
+    case 2131372444: 
       do
       {
         return;
-      } while (xen.a("subscribe_publish_feed_button", 2000L));
+      } while (ytg.a("subscribe_publish_feed_button", 2000L));
       if (Build.VERSION.SDK_INT < 23) {
         break;
       }
     }
-    for (boolean bool1 = akwf.a(getActivity());; bool1 = true)
+    for (boolean bool1 = ammv.a(getActivity());; bool1 = true)
     {
       if (!bool1)
       {
-        bbdj.b(getActivity());
+        bdcd.b(getActivity());
         return;
       }
       paramView = new Intent();
@@ -388,11 +388,11 @@ public class SubscribePersonalDetailFragment
       for (bool1 = true;; bool1 = false)
       {
         paramView.putExtra("has_shop", bool1);
-        bgyp.a(getActivity(), paramView, 0);
+        bizm.a(getActivity(), paramView, 0);
         if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp == null) {
           break;
         }
-        xhb.a(((CertifiedAccountMeta.StUser)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.get()).id.get(), "auth_person", "post_clk", 0, 0, new String[] { "", "" });
+        yvu.a(((CertifiedAccountMeta.StUser)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.get()).id.get(), "auth_person", "post_clk", 0, 0, new String[] { "", "" });
         return;
       }
       onBackEvent();
@@ -400,13 +400,13 @@ public class SubscribePersonalDetailFragment
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp == null) {
         break;
       }
-      wis.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.yzOrderPage.get());
-      xhb.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.id.get(), "auth_person", "clk_shoplist", 0, 0, new String[0]);
+      xxk.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.yzOrderPage.get());
+      yvu.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.id.get(), "auth_person", "clk_shoplist", 0, 0, new String[0]);
       return;
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp == null) {
         break;
       }
-      paramView = new wkm();
+      paramView = new xzf();
       if (!b())
       {
         bool1 = true;
@@ -431,10 +431,10 @@ public class SubscribePersonalDetailFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if ((getActivity() != null) && (this.jdField_a_of_type_Wqs != null)) {
-      getActivity().unregisterReceiver(this.jdField_a_of_type_Wqs);
+    if ((getActivity() != null) && (this.jdField_a_of_type_Yfi != null)) {
+      getActivity().unregisterReceiver(this.jdField_a_of_type_Yfi);
     }
-    wpt.a().b(this);
+    yej.a().b(this);
   }
   
   public void onPause()
@@ -444,7 +444,7 @@ public class SubscribePersonalDetailFragment
     {
       long l1 = System.currentTimeMillis();
       long l2 = this.jdField_b_of_type_Long;
-      xhb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_person", "exp", 0, 0, new String[] { "", l1 - l2 + "" });
+      yvu.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_person", "exp", 0, 0, new String[] { "", l1 - l2 + "" });
     }
   }
   
@@ -456,7 +456,7 @@ public class SubscribePersonalDetailFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment
  * JD-Core Version:    0.7.0.1
  */

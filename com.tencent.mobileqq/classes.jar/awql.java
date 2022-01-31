@@ -1,29 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
-class awql
-  implements View.OnClickListener
+public class awql
+  implements bdjy<Integer>
 {
-  awql(awqj paramawqj, awng paramawng) {}
+  public awql(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public void onClick(View paramView)
+  public void a(bdjs<Integer> parambdjs, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if ("ActiveEntitySearchResultPresenter_add_troop".equals(paramView.getTag())) {
-      awqj.a(this.jdField_a_of_type_Awqj, paramView.getContext(), this.jdField_a_of_type_Awng);
-    }
-    try
-    {
-      axqy.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Grp_find", "", "grptab", "Clk_join", 0, 0, this.jdField_a_of_type_Awng.b, "", "", "");
-      return;
-    }
-    catch (Throwable paramView) {}
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awql
  * JD-Core Version:    0.7.0.1
  */

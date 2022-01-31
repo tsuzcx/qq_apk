@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.view.Window;
-import bgwg;
+import bixf;
 
 public class ActivityWrapper
 {
@@ -14,7 +14,7 @@ public class ActivityWrapper
   
   public ActivityWrapper(Context paramContext)
   {
-    this.a = bgwg.a(paramContext);
+    this.a = bixf.a(paramContext);
   }
   
   public void finish()
@@ -69,7 +69,7 @@ public class ActivityWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.host.ActivityWrapper
  * JD-Core Version:    0.7.0.1
  */

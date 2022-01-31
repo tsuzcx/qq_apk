@@ -1,25 +1,31 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class agyp
-  extends RecyclerView.OnScrollListener
+  implements DialogInterface.OnKeyListener
 {
-  public agyp(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public agyp(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
+    if (paramInt == 84) {}
+    do
     {
-      aelk.a(bool);
-      return;
-    }
+      return true;
+      if (paramInt != 4) {
+        break;
+      }
+    } while (BlessSelectMemberActivity.a() == null);
+    BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agyp
  * JD-Core Version:    0.7.0.1
  */

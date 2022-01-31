@@ -1,24 +1,26 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment.5.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-final class ahox
-  implements Animation.AnimationListener
+public class ahox
+  implements ThreadExcutor.IThreadListener
 {
-  ahox(View paramView, Animation paramAnimation) {}
+  public ahox(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahox
  * JD-Core Version:    0.7.0.1
  */

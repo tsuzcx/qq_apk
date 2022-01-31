@@ -1,24 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 
-class asev
-  implements DialogInterface.OnCancelListener
+public class asev
+  implements aset
 {
-  asev(aseu paramaseu, BaseChatPie paramBaseChatPie) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TempMsgManager", 2, "dialog cancel");
+    a(paramString1, paramString2, paramString3, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  {
+    if ("i".equals(paramString2)) {
+      if (QLog.isColorLevel()) {
+        QLog.i(paramString1, 2, paramString3, paramThrowable);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
+    do
+    {
+      do
+      {
+        return;
+        if (!"d".equals(paramString2)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(paramString1, 2, paramString3, paramThrowable);
+      return;
+      if ("w".equals(paramString2))
+      {
+        QLog.w(paramString1, 2, paramString3, paramThrowable);
+        return;
+      }
+      if ("e".equals(paramString2))
+      {
+        QLog.e(paramString1, 2, paramString3, paramThrowable);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i(paramString1, 2, paramString3, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asev
  * JD-Core Version:    0.7.0.1
  */

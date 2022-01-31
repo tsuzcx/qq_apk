@@ -1,29 +1,17 @@
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import java.util.List;
 
-public class aldq
-  implements aufu
+public abstract interface aldq
 {
-  public aldq(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
+  public abstract List<TraceData> a();
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
-    }
-    ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
-    axqy.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
-  }
+  public abstract boolean a(List<TraceData> paramList);
   
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a.a();
-  }
+  public abstract boolean b(List<TraceData> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldq
  * JD-Core Version:    0.7.0.1
  */

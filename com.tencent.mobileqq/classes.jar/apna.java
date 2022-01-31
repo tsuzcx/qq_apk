@@ -1,22 +1,21 @@
-import mqq.os.MqqHandler;
+import android.os.Bundle;
 
-class apna
-  implements apli
+public class apna
 {
-  apna(apmy paramapmy) {}
+  int jdField_a_of_type_Int;
+  public Bundle a;
+  Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public void a()
+  public apna(int paramInt, Bundle paramBundle)
   {
-    this.a.a = System.currentTimeMillis();
-    apmy.a(this.a).sendEmptyMessageDelayed(8001, apmy.a(this.a));
-    apmy.a(this.a).sendEmptyMessageDelayed(8002, apmy.b(this.a));
+    this.jdField_a_of_type_Int = paramInt;
+    paramBundle.putInt("seq", paramInt);
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apna
  * JD-Core Version:    0.7.0.1
  */

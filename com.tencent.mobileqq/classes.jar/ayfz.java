@@ -1,29 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils.TDFileQIPCModule.1;
-import eipc.EIPCResult;
-
-public class ayfz
-  extends QIPCModule
+public abstract interface ayfz
 {
-  public ayfz()
-  {
-    super("Module_TDFileChangeNameQIPCModule");
-  }
+  public abstract void a(String paramString, int paramInt);
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    bdii.c(ayfx.a(), "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    if (paramString.equals("Action_url_2_fmdb")) {
-      ThreadManager.postImmediately(new TeamWorkUtils.TDFileQIPCModule.1(this, paramBundle.getString("url")), null, true);
-    }
-    return null;
-  }
+  public abstract void c(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayfz
  * JD-Core Version:    0.7.0.1
  */

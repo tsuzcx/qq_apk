@@ -1,63 +1,37 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public class amhn
-  implements amhm
+class amhn
+  implements abnz
 {
-  private void a(Context paramContext, String paramString)
-  {
-    LaunchParam localLaunchParam = new LaunchParam();
-    localLaunchParam.scene = 1131;
-    MiniAppController.startAppByAppid(paramContext, paramString, "", "", localLaunchParam, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher_colorNote", 2, "startMiniAppByAppId, appId: " + paramString);
-    }
-  }
+  amhn(amhm paramamhm, MessageRecord paramMessageRecord, boolean paramBoolean, msg_svc.PbSendMsgReq paramPbSendMsgReq) {}
   
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public ToServiceMsg a()
   {
-    int i = 0;
-    if (paramColorNote.getServiceType() != 16842752) {
-      return;
-    }
-    String str = paramColorNote.getSubType();
-    paramColorNote = paramColorNote.getReserve();
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "openColorNoteMiniAppByAppInfo", 0) == 1) {
-      i = 1;
-    }
-    if ((paramColorNote != null) && (paramColorNote.length > 0) && (i != 0))
+    long l = System.currentTimeMillis();
+    ToServiceMsg localToServiceMsg = amhm.a(this.jdField_a_of_type_Amhm).createToServiceMsg("MessageSvc.PbMultiMsgSend");
+    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+    localToServiceMsg.extraData.putInt("msgtype", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype);
+    localToServiceMsg.extraData.putBoolean(ayvj.h, this.jdField_a_of_type_Boolean);
+    localToServiceMsg.extraData.putLong("key_msg_info_time_start", l);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
+    localToServiceMsg.setTimeout(15000L);
+    localToServiceMsg.setEnableFastResend(true);
+    if (QLog.isColorLevel())
     {
-      paramColorNote = MiniAppUtils.createFromBuffer(paramColorNote);
-      if ((paramColorNote != null) && (!TextUtils.isEmpty(paramColorNote.desc))) {
-        try
-        {
-          MiniAppController.launchMiniAppByAppInfo(null, paramColorNote, 1131);
-          return;
-        }
-        catch (Exception paramColorNote)
-        {
-          QLog.e("MiniAppLauncher_colorNote", 1, "MiniAppLauncher, launch exception: " + Log.getStackTraceString(paramColorNote));
-          a(paramContext, str);
-          return;
-        }
-      }
-      a(paramContext, str);
-      return;
+      int i = ayvy.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid);
+      QLog.d("Q.msg.UncommonMessageProcessor", 2, "sendBlessMsg,  mr_uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + " msgSeq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq + " mr_shMsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + " mr_msgUid:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid + " random:" + i + " isRedBagVideo:" + this.jdField_a_of_type_Boolean);
     }
-    a(paramContext, str);
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amhn
  * JD-Core Version:    0.7.0.1
  */

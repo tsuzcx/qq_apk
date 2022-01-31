@@ -1,138 +1,214 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.os.Build.VERSION;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.view.View.OnTouchListener;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class aoyp
+  implements SurfaceHolder.Callback, aoyn
 {
-  public static int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
+  private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
+  private aoyo jdField_a_of_type_Aoyo;
+  private volatile Object jdField_a_of_type_JavaLangObject;
+  private volatile ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile Object jdField_b_of_type_JavaLangObject;
+  private volatile boolean jdField_b_of_type_Boolean;
+  
+  public aoyp(SurfaceView paramSurfaceView)
   {
-    int j = -1;
-    int i;
-    if (paramChatMessage.isMultiMsg) {
-      i = apug.a(paramChatMessage);
-    }
-    while ((paramChatMessage instanceof MessageForFile)) {
-      if (i == 0)
-      {
-        return 61;
-        if ((paramChatMessage instanceof MessageForFile))
-        {
-          paramQQAppInterface = paramQQAppInterface.a().a(paramChatMessage.uniseq, paramChatMessage.frienduin, paramChatMessage.istroop);
-          i = j;
-          if (paramQQAppInterface != null)
-          {
-            i = j;
-            if (paramQQAppInterface.cloudType != 0) {
-              i = apug.a(paramQQAppInterface.fileName);
-            }
-          }
-        }
-        else
-        {
-          i = j;
-          if ((paramChatMessage instanceof MessageForTroopFile)) {
-            i = apug.a(((MessageForTroopFile)paramChatMessage).fileName);
-          }
-        }
-      }
-      else
-      {
-        if (i == 2) {
-          return 65;
-        }
-        return 3;
-      }
-    }
-    if ((paramChatMessage instanceof MessageForTroopFile))
-    {
-      if (i == 0) {
-        return 61;
-      }
-      if (i == 2) {
-        return 65;
-      }
-      return 3;
-    }
-    return 3;
+    this.jdField_a_of_type_AndroidViewSurfaceView = paramSurfaceView;
+    this.jdField_a_of_type_AndroidViewSurfaceView.setWillNotCacheDrawing(true);
+    this.jdField_a_of_type_AndroidViewSurfaceView.setDrawingCacheEnabled(false);
+    this.jdField_a_of_type_AndroidViewSurfaceView.setWillNotDraw(true);
+    this.jdField_a_of_type_AndroidViewSurfaceView.setZOrderMediaOverlay(true);
+    this.jdField_a_of_type_AndroidViewSurfaceHolder = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+    this.jdField_a_of_type_AndroidViewSurfaceHolder.addCallback(this);
+    this.jdField_a_of_type_AndroidViewSurfaceHolder.setFormat(-2);
   }
   
-  public static adww a(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage)
+  private boolean a()
   {
-    if (paramInt == 3) {
-      paramBaseAdapter = new adwz(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    c();
+    return (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock != null) && (this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_b_of_type_JavaLangObject != null);
+  }
+  
+  private Canvas b()
+  {
+    Object localObject2;
+    if (aowq.a().a().b())
+    {
+      localObject2 = this.jdField_a_of_type_AndroidViewSurfaceHolder.lockHardwareCanvas();
+      return localObject2;
     }
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    e();
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_JavaLangObject != null)) {}
     for (;;)
     {
-      paramChatMessage = a(paramQQAppInterface, paramContext, paramSessionInfo, paramChatMessage);
-      paramAIOAnimationConatiner = paramChatMessage;
-      if (paramChatMessage == null)
+      try
       {
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleItemBuilder error, bubbleModel is not.");
-        paramAIOAnimationConatiner = new aoyh(paramQQAppInterface, paramContext, paramSessionInfo);
+        Canvas localCanvas = this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().lockHardwareCanvas();
+        localObject2 = localCanvas;
+        if (localCanvas != null) {
+          break;
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+        return null;
       }
-      paramBaseAdapter.a(paramAIOAnimationConatiner);
-      return paramBaseAdapter;
-      if (paramInt == 61)
+      catch (Exception localException)
       {
-        paramBaseAdapter = new adwu(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+        aozj.a("SurfaceDanmakuView", "Exception locking surface", localException);
       }
-      else if (paramInt == 65)
-      {
-        paramBaseAdapter = new adxb(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+      Object localObject1 = null;
+    }
+  }
+  
+  private void b(Canvas paramCanvas)
+  {
+    if (aowq.a().a().b()) {
+      this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(paramCanvas);
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().unlockCanvasAndPost(paramCanvas);
+    } while (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null);
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+  }
+  
+  private boolean b()
+  {
+    return (aoye.a()) && (((Build.VERSION.SDK_INT == 23) && (a())) || (aowq.a().a().b()));
+  }
+  
+  private void c()
+  {
+    d();
+    e();
+  }
+  
+  private void d()
+  {
+    Object localObject = aowq.a().a().a(SurfaceView.class, "mSurfaceLock", this.jdField_a_of_type_AndroidViewSurfaceView);
+    if ((localObject instanceof ReentrantLock)) {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = ((ReentrantLock)localObject);
+    }
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_JavaLangObject = aowq.a().a().a(SurfaceView.class, "mDrawingStopped", this.jdField_a_of_type_AndroidViewSurfaceView);
+    this.jdField_b_of_type_JavaLangObject = aowq.a().a().a(SurfaceView.class, "mWindow", this.jdField_a_of_type_AndroidViewSurfaceView);
+    if ((this.jdField_a_of_type_JavaLangObject instanceof Boolean)) {
+      this.jdField_a_of_type_Boolean = ((Boolean)this.jdField_a_of_type_JavaLangObject).booleanValue();
+    }
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_AndroidViewSurfaceView.getY();
+  }
+  
+  public Canvas a()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return b();
+    }
+    return this.jdField_a_of_type_AndroidViewSurfaceHolder.lockCanvas();
+  }
+  
+  public void a()
+  {
+    ReentrantLock localReentrantLock = (ReentrantLock)aowq.a().a().a(SurfaceView.class, "mSurfaceLock", this.jdField_a_of_type_AndroidViewSurfaceView);
+    Surface localSurface = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().getSurface();
+    try
+    {
+      Method localMethod = Surface.class.getDeclaredMethod("nativeRelease", new Class[] { Long.TYPE });
+      localMethod.setAccessible(true);
+      Field localField = Surface.class.getDeclaredField("mLockedObject");
+      localField.setAccessible(true);
+      Long localLong = (Long)localField.get(localSurface);
+      aozj.c("surface_lock", "SurfaceDanmakuView unlock lockObjectValue = " + localLong);
+      if (localLong.longValue() != 0L) {
+        localMethod.invoke(null, new Object[] { localLong });
       }
-      else
+      localField.setLong(localSurface, 0L);
+      aozj.b("surface_lock", "SurfaceDanmakuView unlock: release success");
+      return;
+    }
+    catch (Exception localException)
+    {
+      aozj.a("surface_lock", "SurfaceDanmakuView unlock:release failed", localException);
+      return;
+    }
+    finally
+    {
+      aozj.c("surface_lock", "SurfaceDanmakuView unlock surfaceLock = " + localReentrantLock);
+      if ((localReentrantLock != null) && (localReentrantLock.isLocked()))
       {
-        QLog.e("QFileBubbleBuilderFactory", 1, "");
-        paramBaseAdapter = new adwz(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+        aozj.c("surface_lock", "SurfaceDanmakuView unlock");
+        localReentrantLock.unlock();
       }
     }
   }
   
-  public static aoyq a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, ChatMessage paramChatMessage)
+  public void a(Canvas paramCanvas)
   {
-    if (paramChatMessage.isMultiMsg)
+    if (this.jdField_b_of_type_Boolean)
     {
-      String str = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileType");
-      if (!TextUtils.isEmpty(str))
-      {
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel, fileType[" + str + "] extInfo[" + paramChatMessage.extStr + "]");
-        int i = Integer.parseInt(str);
-        if (i == 3) {
-          return new aoyr(paramQQAppInterface, paramContext, paramSessionInfo);
-        }
-        if (i == 1) {
-          return new aoyi(paramQQAppInterface, paramContext, paramSessionInfo);
-        }
-        if (i == 2) {
-          return new aoyi(paramQQAppInterface, paramContext, paramSessionInfo);
-        }
-        QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error, not support fileType. fileType[" + str + "] extInfo[" + paramChatMessage.extStr + "]");
-        return new aoyh(paramQQAppInterface, paramContext, paramSessionInfo);
-      }
-      QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error,multi file not exist fileType. extInfo[" + paramChatMessage.extStr + "]");
-      return new aoyh(paramQQAppInterface, paramContext, paramSessionInfo);
+      b(paramCanvas);
+      return;
     }
-    if ((paramChatMessage instanceof MessageForFile)) {
-      return new aoyi(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(paramCanvas);
+  }
+  
+  public void a(View.OnTouchListener paramOnTouchListener)
+  {
+    this.jdField_a_of_type_AndroidViewSurfaceView.setOnTouchListener(paramOnTouchListener);
+  }
+  
+  public void a(aoyo paramaoyo)
+  {
+    this.jdField_a_of_type_Aoyo = paramaoyo;
+  }
+  
+  public void b() {}
+  
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_Aoyo != null) {
+      this.jdField_a_of_type_Aoyo.j();
     }
-    if ((paramChatMessage instanceof MessageForTroopFile)) {
-      return new aoyr(paramQQAppInterface, paramContext, paramSessionInfo);
+    aozj.c("SurfaceDanmakuView", "surfaceChanged, width = " + paramInt2 + ", height = " + paramInt3);
+  }
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    if (this.jdField_a_of_type_Aoyo != null) {
+      this.jdField_a_of_type_Aoyo.i();
     }
-    QLog.e("QFileBubbleBuilderFactory", 1, "getFileBubbleModel error, is not file msg.");
-    return new aoyh(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_b_of_type_Boolean = b();
+    aozj.c("SurfaceDanmakuView", "surfaceCreated, isHardwareAccelerateEnable = " + this.jdField_b_of_type_Boolean);
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (this.jdField_a_of_type_Aoyo != null) {
+      this.jdField_a_of_type_Aoyo.k();
+    }
+    aozj.c("SurfaceDanmakuView", "surfaceDestroyed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyp
  * JD-Core Version:    0.7.0.1
  */

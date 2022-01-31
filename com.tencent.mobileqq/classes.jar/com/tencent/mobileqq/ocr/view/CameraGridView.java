@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.view;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -38,7 +38,7 @@ public class CameraGridView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(actj.a(0.5F, getResources()));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(aekt.a(0.5F, getResources()));
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -74,7 +74,7 @@ public class CameraGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.CameraGridView
  * JD-Core Version:    0.7.0.1
  */

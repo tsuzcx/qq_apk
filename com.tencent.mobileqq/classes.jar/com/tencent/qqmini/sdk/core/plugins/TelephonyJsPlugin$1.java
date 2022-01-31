@@ -1,32 +1,32 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import bekx;
-import betc;
+import bgkd;
+import bgki;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class TelephonyJsPlugin$1
   implements AsyncResult
 {
-  TelephonyJsPlugin$1(TelephonyJsPlugin paramTelephonyJsPlugin, bekr parambekr) {}
+  TelephonyJsPlugin$1(TelephonyJsPlugin paramTelephonyJsPlugin, bgkd parambgkd) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    betc.a("TelephonyJsPlugin", "onCmdListener result = " + paramJSONObject);
+    QMLog.d("TelephonyJsPlugin", "onCmdListener result = " + paramJSONObject);
     if ((paramBoolean) && (paramJSONObject != null))
     {
       paramJSONObject.remove("countryCode");
       paramJSONObject.remove("purePhoneNumber");
-      this.val$req.a(bekx.a(this.val$req.a, paramJSONObject));
+      this.val$req.a(bgki.a(this.val$req.a, paramJSONObject));
       return;
     }
-    this.val$req.a(bekx.b(this.val$req.a, null).toString());
+    this.val$req.a(bgki.b(this.val$req.a, null).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.TelephonyJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class aftv
-  extends akfy
+  extends aelt
 {
-  public aftv(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public RelativeLayout b;
+  public TextView b;
+  public View c;
+  public TextView c;
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
-    }
-    ansx localansx = (ansx)EmoticonGroupStoreFragment.a(this.a).getManager(103);
-    if (localansx != null) {
-      localansx.b();
-    }
-  }
+  public aftv(aftr paramaftr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aftv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.jsp;
 
-import aysc;
+import bapx;
 import com.tencent.common.app.AppInterface;
 
 class AECameraPlugin$DownloadRunnable
   implements Runnable
 {
-  aysc jdField_a_of_type_Aysc;
+  bapx jdField_a_of_type_Bapx;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   String jdField_a_of_type_JavaLangString;
   String b;
@@ -14,12 +14,12 @@ class AECameraPlugin$DownloadRunnable
   
   public void run()
   {
-    AECameraPlugin.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Aysc);
+    AECameraPlugin.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Bapx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.AECameraPlugin.DownloadRunnable
  * JD-Core Version:    0.7.0.1
  */

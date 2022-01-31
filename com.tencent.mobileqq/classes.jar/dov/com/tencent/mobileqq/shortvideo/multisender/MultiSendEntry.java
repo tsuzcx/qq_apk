@@ -2,29 +2,29 @@ package dov.com.tencent.mobileqq.shortvideo.multisender;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import auko;
-import aulz;
-import aumc;
-import blbo;
+import awbv;
+import awdg;
+import awdj;
+import bnmy;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class MultiSendEntry
-  extends auko
+  extends awbv
 {
-  @aumc
+  @awdj
   public String fakeVid;
   public String md5;
-  @aulz
-  List<blbo> messageDataList;
+  @awdg
+  List<bnmy> messageDataList;
   public String messageInfos;
   public int syncToStory;
   public long time;
   public String uploadInfo;
-  @aulz
-  blbo uploadMessageData;
+  @awdg
+  bnmy uploadMessageData;
   public String uuid;
   public String videoPath;
   
@@ -41,7 +41,7 @@ public class MultiSendEntry
     if (!TextUtils.isEmpty(this.uploadInfo)) {}
     try
     {
-      this.uploadMessageData = new blbo();
+      this.uploadMessageData = new bnmy();
       this.uploadMessageData.a(this.uploadInfo);
       if (TextUtils.isEmpty(this.messageInfos)) {}
     }
@@ -51,7 +51,7 @@ public class MultiSendEntry
       {
         try
         {
-          this.messageDataList = blbo.a(this.messageInfos);
+          this.messageDataList = bnmy.a(this.messageInfos);
           return true;
           paramCursor = paramCursor;
           paramCursor.printStackTrace();
@@ -73,28 +73,28 @@ public class MultiSendEntry
     }
     Iterator localIterator = this.messageDataList.iterator();
     while (localIterator.hasNext()) {
-      if (((blbo)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
+      if (((bnmy)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
         localIterator.remove();
       }
     }
-    this.messageInfos = blbo.a(this.messageDataList);
+    this.messageInfos = bnmy.a(this.messageDataList);
   }
   
-  public void setMessageDataList(List<blbo> paramList)
+  public void setMessageDataList(List<bnmy> paramList)
   {
     this.messageDataList = paramList;
-    this.messageInfos = blbo.a(paramList);
+    this.messageInfos = bnmy.a(paramList);
   }
   
-  public void setUploadMessageData(blbo paramblbo)
+  public void setUploadMessageData(bnmy parambnmy)
   {
-    this.uploadMessageData = paramblbo;
-    this.uploadInfo = paramblbo.a();
+    this.uploadMessageData = parambnmy;
+    this.uploadInfo = parambnmy.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.multisender.MultiSendEntry
  * JD-Core Version:    0.7.0.1
  */

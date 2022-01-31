@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bimv;
+import bkrl;
 
 public class AEBottomListScrollView$ScrollStateListener$1
   implements Runnable
 {
-  public AEBottomListScrollView$ScrollStateListener$1(bimv parambimv) {}
+  public AEBottomListScrollView$ScrollStateListener$1(bkrl parambkrl) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class AEBottomListScrollView$ScrollStateListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView.ScrollStateListener.1
  * JD-Core Version:    0.7.0.1
  */

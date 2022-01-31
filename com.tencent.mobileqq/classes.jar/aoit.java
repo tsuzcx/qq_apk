@@ -1,29 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.2.1;
+import android.support.v4.util.ArraySet;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aoit
-  extends ajxj
 {
-  public aoit(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public ArraySet<String> a = new ArraySet();
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public static aoit a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, String.format("onUpdateAddFriend isSuccess=%s addSuccess=%s reqestUin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
-    }
-    paramString = this.a.a.a(this.a.c);
-    if ((paramString != null) && (!paramString.mAddFriendVerified))
+    localaoit = new aoit();
+    try
     {
-      paramString.mAddFriendVerified = true;
-      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.2.1(this));
+      paramString = new JSONObject(paramString).getJSONArray("white_list");
+      int i = 0;
+      while (i < paramString.length())
+      {
+        localaoit.a.add(paramString.optString(i, ""));
+        i += 1;
+      }
+      return localaoit;
+    }
+    catch (Throwable paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("BroadcastConfProcessor", 2, paramString, new Object[0]);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoit
  * JD-Core Version:    0.7.0.1
  */

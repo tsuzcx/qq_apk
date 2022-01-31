@@ -1,42 +1,67 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class aomy
-  implements Animation.AnimationListener
+public class aomy
+  extends aofy<aomx>
 {
-  aomy(aomx paramaomx, aonp paramaonp1, int paramInt1, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, aonp paramaonp2, boolean paramBoolean3, boolean paramBoolean4, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt2) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Aomx.a).b(this.jdField_b_of_type_Aonp, this.c, this.d);
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.setStatusWithAnimation(this.jdField_b_of_type_Int);
+    return 490;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  @NonNull
+  public aomx a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation currentUin ( " + this.jdField_a_of_type_Aonp.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " ) Animation Start  ");
+    return new aomx();
+  }
+  
+  @Nullable
+  public aomx a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    {
+      aomx localaomx = aomx.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("RelationVipGrayProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      }
+      return localaomx;
     }
-    double d2 = Math.atan(this.jdField_a_of_type_Double) * 180.0D / 3.141592653589793D * this.jdField_a_of_type_Aomx.jdField_b_of_type_Int;
-    double d1 = d2;
-    if (this.jdField_a_of_type_Boolean) {
-      d1 = 180.0D - d2;
-    }
-    this.jdField_a_of_type_Aomx.jdField_b_of_type_Float = ((float)d1);
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation uinToHoleIndex add( " + this.jdField_a_of_type_Aonp.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " )");
-    }
-    this.jdField_a_of_type_Aomx.a(2, this.jdField_b_of_type_Boolean);
+    return new aomx();
+  }
+  
+  public Class<aomx> a()
+  {
+    return aomx.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aomx paramaomx) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomy
  * JD-Core Version:    0.7.0.1
  */

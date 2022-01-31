@@ -1,82 +1,35 @@
-import QC.BubbleInfo;
-import QC.BubbleRecommendRsp;
-import QC.ItemBase;
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp;
 
-public class aqwo
-  implements aqwx<BubbleRecommendRsp>
+class aqwo
+  implements bkgc<WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp>
 {
-  public int a()
-  {
-    return 4;
-  }
+  aqwo(aqwl paramaqwl, aqwz paramaqwz) {}
   
-  public String a(Context paramContext)
+  public void a(int paramInt, String paramString, WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
   {
-    return bbqd.a(paramContext, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab");
-  }
-  
-  public String a(FontBubble paramFontBubble)
-  {
-    return bbqd.a("bubblePreview").replace("[id]", Integer.toString(paramFontBubble.bubbleId));
-  }
-  
-  public List<FontBubble> a(QQAppInterface paramQQAppInterface, BubbleRecommendRsp paramBubbleRecommendRsp)
-  {
-    int j = 0;
-    paramQQAppInterface = ((ajxl)paramQQAppInterface.getManager(51)).a(paramQQAppInterface.getAccount());
-    int i;
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("FontBubbleManager", 1, "BubbleController no ExtensionInfo");
-      i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink onFailed: errorCode[" + paramInt + "], errorMsg[" + paramString + "]");
     }
-    for (;;)
-    {
-      paramQQAppInterface = new ArrayList();
-      if (paramBubbleRecommendRsp.vItems == null) {
-        break;
-      }
-      paramBubbleRecommendRsp = paramBubbleRecommendRsp.vItems.iterator();
-      while (paramBubbleRecommendRsp.hasNext())
-      {
-        BubbleInfo localBubbleInfo = (BubbleInfo)paramBubbleRecommendRsp.next();
-        FontBubble localFontBubble = new FontBubble();
-        localFontBubble.viewType = 1;
-        localFontBubble.fontId = i;
-        localFontBubble.engine = j;
-        localFontBubble.bubbleId = localBubbleInfo.item.itemId;
-        localFontBubble.name = localBubbleInfo.name;
-        localFontBubble.feeType = localBubbleInfo.feeType;
-        localFontBubble.payUrl = localBubbleInfo.payUrl;
-        localFontBubble.title = localBubbleInfo.title;
-        localFontBubble.msg = localBubbleInfo.msg;
-        localFontBubble.btn = localBubbleInfo.btn;
-        localFontBubble.picUrl = localBubbleInfo.strPicUrl;
-        localFontBubble.panelType = 4;
-        paramQQAppInterface.add(localFontBubble);
-      }
-      i = (int)paramQQAppInterface.uVipFont;
-      j = paramQQAppInterface.vipFontType;
+    if (this.jdField_a_of_type_Aqwz != null) {
+      this.jdField_a_of_type_Aqwz.a(paramInt, paramString);
     }
-    return paramQQAppInterface;
   }
   
-  public void a(akfv paramakfv)
+  public void a(WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
   {
-    paramakfv.e();
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink succeed");
+    }
+    if (this.jdField_a_of_type_Aqwz != null) {
+      this.jdField_a_of_type_Aqwz.a(paramWeiyunShareAddFromMobileQQMsgRsp.raw_url.get());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,78 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
+import android.content.Context;
+import android.util.Log;
+import com.tencent.mobileqq.emoticonview.EmotionPanelListView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class apsp
+public class apsp
 {
-  protected apsq a;
-  protected QQAppInterface a;
-  protected ChatMessage a;
+  private static apsp jdField_a_of_type_Apsp;
+  private List<EmotionPanelListView> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public apsp(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public static apsp a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-  }
-  
-  public static apsp a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null)
+    if (jdField_a_of_type_Apsp == null) {}
+    try
     {
-      QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is null");
-      return null;
+      if (jdField_a_of_type_Apsp == null) {
+        jdField_a_of_type_Apsp = new apsp();
+      }
+      return jdField_a_of_type_Apsp;
     }
-    if ((paramChatMessage instanceof MessageForFile)) {
-      return new apsj(paramQQAppInterface, paramChatMessage);
-    }
-    if ((paramChatMessage instanceof MessageForTroopFile)) {
-      return new apss(paramQQAppInterface, paramChatMessage);
-    }
-    QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is not support. messageType[" + paramChatMessage.getClass().getName() + "]");
-    return null;
+    finally {}
   }
   
-  public abstract long a();
-  
-  public abstract apsm a();
-  
-  public abstract String a();
-  
-  public void a(apsq paramapsq)
+  public EmotionPanelListView a(Context paramContext)
   {
-    this.jdField_a_of_type_Apsq = paramapsq;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      paramContext = (EmotionPanelListView)this.jdField_a_of_type_JavaUtilList.remove(0);
+      if (QLog.isColorLevel()) {
+        Log.d("EmotionPanelListViewPool", "from listview pool and poolSize = " + this.jdField_a_of_type_JavaUtilList.size());
+      }
+      return paramContext;
+    }
+    return new EmotionPanelListView(paramContext);
   }
   
-  public abstract boolean a();
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      Log.d("EmotionPanelListViewPool", "destory");
+    }
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList = null;
+    }
+  }
   
-  public abstract String b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void a(EmotionPanelListView paramEmotionPanelListView)
+  {
+    if (paramEmotionPanelListView == null) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilList == null)
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        this.jdField_a_of_type_JavaUtilList.add(paramEmotionPanelListView);
+      }
+      while (QLog.isColorLevel())
+      {
+        Log.d("EmotionPanelListViewPool", "relase listview");
+        return;
+        if (!this.jdField_a_of_type_JavaUtilList.contains(paramEmotionPanelListView)) {
+          this.jdField_a_of_type_JavaUtilList.add(0, paramEmotionPanelListView);
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apsp
  * JD-Core Version:    0.7.0.1
  */

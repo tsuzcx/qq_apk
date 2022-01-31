@@ -1,26 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class acma
-  implements View.OnClickListener
+  implements aubq<Void, bdsm>
 {
-  public acma(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  public acma(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(View paramView)
+  public bdsm a(Void paramVoid)
   {
-    paramView = new Intent(this.a, CountrySelectActivity.class);
-    paramView.putExtra("key_country_code", this.a.a.mLocationCountyCode);
-    paramView.putExtra("key_no_limit_allow", true);
-    this.a.startActivityForResult(paramView, 111);
+    return bdsn.a(this.a.app).a(this.a.a.troopUin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acma
  * JD-Core Version:    0.7.0.1
  */

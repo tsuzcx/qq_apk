@@ -1,29 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-class aefp
-  implements Animation.AnimationListener
+public class aefp
+  implements DialogInterface.OnClickListener
 {
-  aefp(aefn paramaefn) {}
+  public aefp(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (aefn.a(this.a) != null) {
-      aefn.a(this.a).setVisibility(8);
-    }
-    if (aefn.a(this.a) != null) {
-      aefn.a(this.a).c();
-    }
+    this.a.finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefp
  * JD-Core Version:    0.7.0.1
  */

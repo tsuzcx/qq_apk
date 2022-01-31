@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import aarr;
-import aars;
-import aegp;
-import aegr;
-import afci;
-import afcl;
+import acip;
+import aciq;
+import agdf;
+import agdh;
+import agzn;
+import agzq;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -20,17 +20,17 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import aoeb;
-import aptx;
-import bbfj;
-import bcql;
-import bfpc;
-import bfpp;
+import apwd;
+import armz;
+import bdee;
+import bhpy;
+import bhql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -39,14 +39,14 @@ import java.util.List;
 
 public class TroopAIOEmotionFragment
   extends IphoneTitleBarFragment
-  implements aars, aegr, View.OnClickListener
+  implements aciq, agdh, View.OnClickListener
 {
-  private aarr jdField_a_of_type_Aarr;
-  private afci jdField_a_of_type_Afci;
+  private acip jdField_a_of_type_Acip;
+  private agzn jdField_a_of_type_Agzn;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private List<aoeb> jdField_a_of_type_JavaUtilList;
+  private List<apwd> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private ImageView b;
   
@@ -54,13 +54,13 @@ public class TroopAIOEmotionFragment
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    setRightButton(2131690000, this);
-    this.jdField_a_of_type_Aarr.e();
+    setRightButton(2131690047, this);
+    this.jdField_a_of_type_Acip.f();
     if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((aoeb)localIterator.next()).jdField_a_of_type_Boolean = false;
+        ((apwd)localIterator.next()).jdField_a_of_type_Boolean = false;
       }
       this.jdField_a_of_type_JavaUtilList.clear();
     }
@@ -70,17 +70,17 @@ public class TroopAIOEmotionFragment
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Aarr != null) {
-      this.jdField_a_of_type_Aarr.a(paramLong);
+    if (this.jdField_a_of_type_Acip != null) {
+      this.jdField_a_of_type_Acip.a(paramLong);
     }
   }
   
-  public void a(aoeb paramaoeb)
+  public void a(apwd paramapwd)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramaoeb);
+    this.jdField_a_of_type_JavaUtilList.add(paramapwd);
     if (this.jdField_a_of_type_JavaUtilList.size() == 1)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
@@ -102,7 +102,7 @@ public class TroopAIOEmotionFragment
         if (QLog.isColorLevel()) {
           QLog.d("IphoneTitleBarFragment", 2, "isOverLimit");
         }
-        aptx.a(2131692563);
+        armz.a(2131692639);
       }
       return bool;
     }
@@ -113,38 +113,38 @@ public class TroopAIOEmotionFragment
     ThreadManager.excute(new TroopAIOEmotionFragment.2(this), 32, null, true);
   }
   
-  public void b(aoeb paramaoeb)
+  public void b(apwd paramapwd)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {}
     do
     {
       return;
-      this.jdField_a_of_type_JavaUtilList.remove(paramaoeb);
+      this.jdField_a_of_type_JavaUtilList.remove(paramapwd);
     } while (!this.jdField_a_of_type_JavaUtilList.isEmpty());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839109);
-    this.b.setImageResource(2130839083);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839190);
+    this.b.setImageResource(2130839164);
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(this.mContentView.getContext().getResources().getString(2131692067));
-    setRightButton(2131690000, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131369735));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131366634));
-    this.b = ((ImageView)this.mContentView.findViewById(2131364978));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131367537);
+    setTitle(this.mContentView.getContext().getResources().getString(2131692122));
+    setRightButton(2131690047, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131369998));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131366752));
+    this.b = ((ImageView)this.mContentView.findViewById(2131365063));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131367665);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     paramLayoutInflater = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_Aarr = new aarr();
-    this.jdField_a_of_type_Aarr.a(getActivity().getIntent(), paramLayoutInflater, getActivity());
-    this.jdField_a_of_type_Aarr.a = this;
+    this.jdField_a_of_type_Acip = new acip();
+    this.jdField_a_of_type_Acip.a(getActivity().getIntent(), paramLayoutInflater, getActivity());
+    this.jdField_a_of_type_Acip.a = this;
     paramLayoutInflater = new ViewGroup.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Aarr.a(), 0, paramLayoutInflater);
-    this.jdField_a_of_type_Afci = new afci(getActivity(), 1);
-    this.jdField_a_of_type_Afci.a();
-    aegp.a().a(this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Acip.a(), 0, paramLayoutInflater);
+    this.jdField_a_of_type_Agzn = new agzn(getActivity(), 1);
+    this.jdField_a_of_type_Agzn.a();
+    agdf.a().a(this);
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -159,7 +159,7 @@ public class TroopAIOEmotionFragment
   
   public int getContentLayoutId()
   {
-    return 2131558720;
+    return 2131558756;
   }
   
   public boolean isWrapContent()
@@ -171,7 +171,7 @@ public class TroopAIOEmotionFragment
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == -1) && (paramInt1 == 1)) {
-      this.jdField_a_of_type_Afci.a(paramIntent);
+      this.jdField_a_of_type_Agzn.a(paramIntent);
     }
   }
   
@@ -181,75 +181,75 @@ public class TroopAIOEmotionFragment
     {
     default: 
       return;
-    case 2131368457: 
+    case 2131368644: 
       if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
         this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
         this.b.setEnabled(false);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        setRightButton(2131690596, this);
-        this.jdField_a_of_type_Aarr.d();
+        setRightButton(2131690648, this);
+        this.jdField_a_of_type_Acip.e();
         return;
       }
       c();
       return;
-    case 2131366634: 
+    case 2131366752: 
       if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        aptx.c(2131692560);
+        armz.c(2131692636);
         return;
       }
-      if (!bbfj.d(BaseApplication.getContext()))
+      if (!bdee.d(BaseApplication.getContext()))
       {
-        bcql.a(getActivity(), 2131694673, 1).b(getResources().getDimensionPixelSize(2131298865));
+        QQToast.a(getActivity(), 2131694829, 1).b(getResources().getDimensionPixelSize(2131298914));
         return;
       }
       paramView = new ArrayList();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        paramView.add((ChatMessage)((aoeb)localIterator.next()).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        paramView.add((ChatMessage)((apwd)localIterator.next()).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
       }
-      this.jdField_a_of_type_Afci.a(paramView);
+      this.jdField_a_of_type_Agzn.a(paramView);
       c();
       return;
     }
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      aptx.c(2131692560);
+      armz.c(2131692636);
       return;
     }
-    paramView = (bfpc)bfpp.a(getActivity(), null);
-    paramView.a(2131696396);
-    paramView.a(getActivity().getString(2131692409), 3);
-    paramView.c(2131690596);
-    paramView.a(new afcl(this, paramView));
+    paramView = (bhpy)bhql.a(getActivity(), null);
+    paramView.a(2131696568);
+    paramView.a(getActivity().getString(2131692485), 3);
+    paramView.c(2131690648);
+    paramView.a(new agzq(this, paramView));
     paramView.show();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Aarr.c();
-    this.jdField_a_of_type_Afci.b();
-    aegp.a().b(this);
+    this.jdField_a_of_type_Acip.d();
+    this.jdField_a_of_type_Agzn.b();
+    agdf.a().b(this);
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Aarr.b();
+    this.jdField_a_of_type_Acip.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Aarr.a();
+    this.jdField_a_of_type_Acip.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment
  * JD-Core Version:    0.7.0.1
  */

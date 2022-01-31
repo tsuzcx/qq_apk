@@ -2,30 +2,29 @@ package com.tencent.qqmini.sdk.core.cache;
 
 import android.text.TextUtils;
 import android.util.LruCache;
-import beip;
-import beis;
-import beiw;
-import beix;
-import beiz;
-import betc;
-import java.io.IOException;
+import bgin;
+import bgiq;
+import bgiu;
+import bgiy;
+import bgja;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Storage$2
   implements Runnable
 {
-  public Storage$2(beix parambeix, String paramString1, String paramString2, beiz parambeiz, String paramString3) {}
+  public Storage$2(bgiy parambgiy, String paramString1, String paramString2, bgja parambgja, String paramString3) {}
   
   public void run()
   {
-    ??? = beiw.a(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((??? != null) && (((String)???).length() > 1048576) && (this.jdField_a_of_type_Beiz != null)) {
-      this.jdField_a_of_type_Beiz.onFailed(this.c, "size limit reached");
+    ??? = bgiu.a(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((??? != null) && (((String)???).length() > 1048576) && (this.jdField_a_of_type_Bgja != null)) {
+      this.jdField_a_of_type_Bgja.onFailed(this.c, "size limit reached");
     }
-    if (beix.a(this.this$0) != null) {
-      if (beix.a(this.this$0).a()) {
-        beix.a(this.this$0);
+    if (bgiy.a(this.this$0) != null) {
+      if (bgiy.a(this.this$0).a()) {
+        bgiy.a(this.this$0);
       }
     }
     label361:
@@ -39,63 +38,63 @@ public class Storage$2
           {
             if (this.this$0.a() * 1000L + ((String)???).length() > 10485760L)
             {
-              betc.d("Storage", "exceeded the limit size");
-              if (this.jdField_a_of_type_Beiz != null) {
-                this.jdField_a_of_type_Beiz.onFailed(this.c, "exceeded the limit size");
+              QMLog.e("Storage", "exceeded the limit size");
+              if (this.jdField_a_of_type_Bgja != null) {
+                this.jdField_a_of_type_Bgja.onFailed(this.c, "exceeded the limit size");
               }
             }
-            beis localbeis = beix.a(this.this$0).a(this.c);
-            if (localbeis != null)
+            bgiq localbgiq = bgiy.a(this.this$0).a(this.c);
+            if (localbgiq != null)
             {
-              localbeis.a(0, (String)???);
-              localbeis.a();
+              localbgiq.a(0, (String)???);
+              localbgiq.a();
             }
-            if (beix.a(this.this$0) != null) {
-              beix.a(this.this$0).put(this.c, ???);
+            if (bgiy.a(this.this$0) != null) {
+              bgiy.a(this.this$0).put(this.c, ???);
             }
           }
-          synchronized (beix.a())
+          synchronized (bgiy.a())
           {
-            beix.a(this.this$0).trimToSize(10485760 / beix.a().keySet().size());
-            if (this.jdField_a_of_type_Beiz != null) {
-              this.jdField_a_of_type_Beiz.onSuccess(this.c, "ok");
+            bgiy.a(this.this$0).trimToSize(10485760 / bgiy.a().keySet().size());
+            if (this.jdField_a_of_type_Bgja != null) {
+              this.jdField_a_of_type_Bgja.onSuccess(this.c, "ok");
             }
           }
         }
-        catch (Throwable localThrowable)
+        catch (Throwable localThrowable1)
         {
-          if (this.jdField_a_of_type_Beiz != null) {
-            this.jdField_a_of_type_Beiz.onFailed(this.c, localThrowable.getMessage());
+          if (this.jdField_a_of_type_Bgja != null) {
+            this.jdField_a_of_type_Bgja.onFailed(this.c, localThrowable1.getMessage());
           }
-          betc.d("Storage", localThrowable.getMessage(), localThrowable);
-          if (beix.a(this.this$0) == null) {
+          QMLog.e("Storage", localThrowable1.getMessage(), localThrowable1);
+          if (bgiy.a(this.this$0) == null) {
             continue;
           }
           try
           {
-            beix.a(this.this$0).a();
+            bgiy.a(this.this$0).a();
             return;
           }
-          catch (IOException localIOException1)
+          catch (Throwable localThrowable2)
           {
-            localIOException1.printStackTrace();
+            localThrowable2.printStackTrace();
             return;
           }
         }
         finally
         {
-          if (beix.a(this.this$0) == null) {
+          if (bgiy.a(this.this$0) == null) {
             break label361;
           }
         }
         try
         {
-          beix.a(this.this$0).a();
+          bgiy.a(this.this$0).a();
           return;
         }
-        catch (IOException localIOException2)
+        catch (Throwable localThrowable3)
         {
-          localIOException2.printStackTrace();
+          localThrowable3.printStackTrace();
           return;
         }
       }
@@ -103,24 +102,24 @@ public class Storage$2
       throw localObject3;
       try
       {
-        beix.a(this.this$0).a();
+        bgiy.a(this.this$0).a();
         throw localObject2;
       }
-      catch (IOException localIOException3)
+      catch (Throwable localThrowable4)
       {
         for (;;)
         {
-          localIOException3.printStackTrace();
+          localThrowable4.printStackTrace();
         }
       }
-      betc.d("Storage", "mDiskCache.isClosed(): ");
-    } while (this.jdField_a_of_type_Beiz == null);
-    this.jdField_a_of_type_Beiz.onFailed(this.c, "can not write");
+      QMLog.e("Storage", "mDiskCache.isClosed(): ");
+    } while (this.jdField_a_of_type_Bgja == null);
+    this.jdField_a_of_type_Bgja.onFailed(this.c, "can not write");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.cache.Storage.2
  * JD-Core Version:    0.7.0.1
  */

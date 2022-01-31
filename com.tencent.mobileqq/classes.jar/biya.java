@@ -1,21 +1,10 @@
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-
-public class biya
-  implements bizm
+public abstract interface biya
 {
-  public biya(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
-  
-  public void a(int paramInt)
-  {
-    AEVideoShelfEditFragment.c(this.a, AEVideoShelfEditFragment.c(this.a));
-    AEVideoShelfEditFragment.c(this.a, paramInt);
-    AEVideoShelfEditFragment.a(this.a, paramInt);
-    AEVideoShelfEditFragment.d(this.a, paramInt);
-  }
+  public abstract void a(int paramInt, String... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biya
  * JD-Core Version:    0.7.0.1
  */

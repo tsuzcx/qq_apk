@@ -1,56 +1,25 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-public class nhd
-  extends TopGestureLayout.TopGestureDetector
+class nhd
+  implements View.OnClickListener
 {
-  public nhd(ReadInJoyNewFeedsTopGestureLayout paramReadInJoyNewFeedsTopGestureLayout, Context paramContext)
-  {
-    super(paramReadInJoyNewFeedsTopGestureLayout, paramContext);
-  }
+  nhd(ngw paramngw, nhi paramnhi) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onClick(View paramView)
   {
-    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {
-      return false;
-    }
-    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-    int i;
-    if (this.a.hasGestureFlag(1)) {
-      if (paramMotionEvent1.getX() <= 0.2133333333333334D * bbdh.i())
-      {
-        i = 1;
-        if ((i != 0) && (paramFloat1 < 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
-        {
-          this.a.setGestureFlag(-1);
-          if (!ReadInJoyNewFeedsTopGestureLayout.a(this.a)) {
-            this.a.mOnFlingGesture.flingLToR();
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      return false;
-      i = 0;
-      break;
-      if ((this.a.hasGestureFlag(2)) && (paramFloat1 > 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
-      {
-        this.a.setGestureFlag(-1);
-        if (!ReadInJoyNewFeedsTopGestureLayout.b(this.a)) {
-          this.a.mOnFlingGesture.flingRToL();
-        }
-      }
-    }
+    this.jdField_a_of_type_Nhi.jdField_a_of_type_AndroidWidgetTextView.setText(2131695743);
+    this.jdField_a_of_type_Nhi.b.setVisibility(4);
+    this.jdField_a_of_type_Nhi.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    nia.a(this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_Ngw.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_Ngw.jdField_a_of_type_AndroidAppActivity).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhd
  * JD-Core Version:    0.7.0.1
  */

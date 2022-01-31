@@ -1,32 +1,28 @@
-public class anhs
+import com.tencent.mobileqq.activity.BaseChatPie;
+
+class anhs
+  implements afdw
 {
-  private long a;
-  private long b;
+  anhs(anhr paramanhr) {}
   
-  public anhs(long paramLong)
+  public boolean a(afdt paramafdt)
   {
-    this.b = paramLong;
-    this.a = this.b;
+    if (anhr.a(this.a) != null)
+    {
+      anhr.a(this.a).ar();
+      return true;
+    }
+    return false;
   }
   
-  public long a()
+  public boolean a(afdt paramafdt, String paramString1, String paramString2)
   {
-    return this.b;
-  }
-  
-  public anhs a()
-  {
-    return new anhs(this.b);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.b = (((float)this.b * paramFloat));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhs
  * JD-Core Version:    0.7.0.1
  */

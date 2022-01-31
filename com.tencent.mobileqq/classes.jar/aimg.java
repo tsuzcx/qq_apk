@@ -1,27 +1,24 @@
-import java.util.Comparator;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.app.AppRuntime;
 
-final class aimg
-  implements Comparator<String>
+public class aimg
+  extends avqu
 {
-  public int a(String paramString1, String paramString2)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    if ("★".equals(paramString2)) {}
-    do
-    {
-      return 1;
-      if ("★".equals(paramString1)) {
-        return -1;
-      }
-      if ("#".equals(paramString2)) {
-        return -1;
-      }
-    } while ("#".equals(paramString1));
-    return paramString1.compareTo(paramString2);
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      aimj.getInstance().a = ((get_albumlist_num_rsp)paramBundle).album_num;
+    }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(NewPhotoListActivity.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aimg
  * JD-Core Version:    0.7.0.1
  */

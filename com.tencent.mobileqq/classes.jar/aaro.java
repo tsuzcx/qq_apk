@@ -1,80 +1,66 @@
-import android.graphics.PointF;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.widget.BubblePopupWindow;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aaro
-  implements acxj, View.OnClickListener, bfqj
+  extends aark
 {
-  protected PointF a;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  private boolean a;
+  private String c;
+  private String d;
   
-  public aaro(ChatHistory paramChatHistory)
+  public aaro(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+    a(paramJSONObject);
   }
   
-  public void a()
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-  }
-  
-  void a(View paramView)
-  {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131364984) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    String str = super.a();
+    try
     {
-      a(paramView);
+      Object localObject = new JSONObject(str);
+      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("patchUrl", this.b);
+      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("driverVersion", this.c);
+      ((JSONObject)localObject).put("previousPatch", this.d);
+      ((JSONObject)localObject).put("isDelayLoad", this.jdField_a_of_type_Boolean);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("PatchLogTag", 1, "NativePatchItemConfig writeToJsonString", localJSONException);
+    }
+    return str;
+  }
+  
+  protected void a(JSONObject paramJSONObject)
+  {
+    super.a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
+    this.c = paramJSONObject.optString("driverVersion", null);
+    this.d = paramJSONObject.optString("previousPatch", null);
+    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isDelayLoad", false);
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(this.c))
+    {
+      QLog.d("PatchLogTag", 1, "NativePatchItemConfig isValidConfig driverVersion is null");
       return false;
     }
-    bbmf localbbmf = new bbmf();
-    localbbmf.a(2131364984, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690708), 2130838601);
-    if (localbbmf.a() > 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((aarp)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      int i = (int)this.jdField_a_of_type_AndroidGraphicsPointF.y;
-      int j = actj.a(10.0F, paramView.getResources());
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bbcq.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, i - j, localbbmf, this);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this);
-      a(paramView);
-      return true;
-    }
-    a(paramView);
-    return false;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
-    }
-    return false;
+    return super.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaro
  * JD-Core Version:    0.7.0.1
  */

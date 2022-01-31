@@ -1,11 +1,13 @@
-final class aveb
-  implements bfpj
+class aveb
 {
-  public void onDismiss() {}
+  public String a;
+  public String b;
+  
+  private aveb(avcw paramavcw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aveb
  * JD-Core Version:    0.7.0.1
  */

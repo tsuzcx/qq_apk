@@ -1,33 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout;
 
-public class tof
-  extends syn
+class tof
+  implements View.OnClickListener
 {
-  public List<tec> a = new ArrayList();
+  tof(toe paramtoe, WSTabLayout paramWSTabLayout) {}
   
-  public tof(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
+  public void onClick(View paramView)
   {
-    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
-    {
-      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
-      while (paramRspGetBatchFeedFeature.hasNext())
-      {
-        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
-        tec localtec = new tec();
-        localtec.a(localFeedFeature);
-        this.a.add(localtec);
-      }
+    if (WSTabLayout.a(this.jdField_a_of_type_Toe.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout) != null) {
+      WSTabLayout.a(this.jdField_a_of_type_Toe.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout).a(toe.a(this.jdField_a_of_type_Toe));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tof
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,16 @@
-class bbag
+import android.content.DialogInterface;
+
+final class bbag
+  extends bdco
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbag
  * JD-Core Version:    0.7.0.1
  */

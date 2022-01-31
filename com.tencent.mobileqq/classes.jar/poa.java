@@ -1,19 +1,22 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import org.json.JSONObject;
 
-class poa
-  implements ViewBase.OnClickListener
+public abstract interface poa
 {
-  poa(pnz parampnz) {}
+  public abstract TemplateBean a(int paramInt, JSONObject paramJSONObject);
   
-  public void onClick(ViewBase paramViewBase)
-  {
-    pny.a(this.a.jdField_a_of_type_Pny).a(this.a.jdField_a_of_type_Int, paramViewBase, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean);
-  }
+  public abstract JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo);
+  
+  public abstract void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2);
+  
+  public abstract boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     poa
  * JD-Core Version:    0.7.0.1
  */

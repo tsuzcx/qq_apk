@@ -1,13 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
-
-public abstract interface awhg
+public final class awhg
+  extends awgp
 {
-  public abstract void a(View paramView, int paramInt1, ScribbleResMgr.ResInfo paramResInfo, int paramInt2);
+  protected int c()
+  {
+    return 600;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awhg
  * JD-Core Version:    0.7.0.1
  */

@@ -105,7 +105,7 @@ public class PTSRootNodeScrollViewDelegate
   
   public View onCreateNativeView()
   {
-    this.mScrollView = new PTSCustomScrollView(this.mAppInstance.getActivity());
+    this.mScrollView = new PTSCustomScrollView(this.mAppInstance.getContext());
     return this.mScrollView;
   }
   
@@ -149,7 +149,7 @@ public class PTSRootNodeScrollViewDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.core.PTSRootNodeScrollViewDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.extendfriend.bean.GroupInfo;
-import java.util.List;
-
 public class aohk
+  extends aohi
 {
-  public long a;
-  public List<GroupInfo> a;
-  public boolean a;
+  private aoib jdField_a_of_type_Aoib;
+  private aoil jdField_a_of_type_Aoil;
   
-  public String toString()
+  public aohk(String paramString, aoib paramaoib, aoil paramaoil)
   {
-    return "CacheData{mList.size()=" + this.jdField_a_of_type_JavaUtilList.size() + ", mLoadOver=" + this.jdField_a_of_type_Boolean + ", mUpdateTime=" + this.jdField_a_of_type_Long + '}';
+    super(paramString);
+    this.jdField_a_of_type_Aoib = paramaoib;
+    this.jdField_a_of_type_Aoil = paramaoil;
+  }
+  
+  public aoib a()
+  {
+    return this.jdField_a_of_type_Aoib;
+  }
+  
+  public aoil a()
+  {
+    return this.jdField_a_of_type_Aoil;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,69 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AutoLoginHelper.4.1;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
 public class accp
-  implements CompoundButton.OnCheckedChangeListener
+  extends AccountObserver
 {
-  public accp(SoundAndVibrateActivity paramSoundAndVibrateActivity, String paramString) {}
+  accp(accm paramaccm) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
-    if (NotifyPushSettingActivity.a())
-    {
-      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setChecked(false);
-      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
-      SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.getString(2131718870), "qqsetting_notify_showcontent_key", paramBoolean);
-      if (!paramBoolean) {
-        break label124;
-      }
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte, paramInt2);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), accm.a(this.a), paramString2, paramString1 }));
     }
-    label124:
-    for (int i = 1;; i = 0)
+    this.a.c = false;
+    accm.a(this.a);
+    if (accm.a(this.a) != null)
     {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
-      return;
-      if (paramBoolean)
-      {
-        SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(0);
-        break;
-      }
-      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
-      break;
+      paramString1 = new Intent(accm.a(this.a), LoginActivity.class);
+      paramString1.putExtra("uin", accm.a(this.a));
+      paramString1.putExtra("tab_index", MainFragment.b);
+      paramString1.addFlags(131072);
+      accm.a(this.a).startActivity(paramString1);
+      accm.a(this.a).finish();
+    }
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
+    this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginSuccess ");
+    }
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    this.a.c = false;
+    accm.a(this.a);
+    accm.a(this.a).a.post(new AutoLoginHelper.4.1(this));
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onUserCancel ");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accp
  * JD-Core Version:    0.7.0.1
  */

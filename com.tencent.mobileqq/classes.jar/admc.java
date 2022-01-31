@@ -1,158 +1,26 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class admc
+  implements Comparator<ChatMessage>
 {
-  private akuo jdField_a_of_type_Akuo;
-  protected String a;
-  private final ArrayList<admg> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final ArrayList<admg> b = new ArrayList();
-  private final ArrayList<admf> c = new ArrayList();
+  public admc(QQLSActivity paramQQLSActivity) {}
   
-  public admc(String paramString, long paramLong)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Akuo = new admd(this, 3, true, true, paramLong, true, true, "ArkAppLocationManager");
-  }
-  
-  public static boolean a()
-  {
-    boolean bool2 = true;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    boolean bool1 = bool2;
-    if (localBaseActivity != null)
-    {
-      bool1 = bool2;
-      if (Build.VERSION.SDK_INT >= 23) {
-        if ((localBaseActivity.checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") != 0) || (localBaseActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {
-          break label68;
-        }
-      }
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      return 0;
     }
-    label68:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      ArkAppCenter.c("GetArkLocPermission", "CheckPermission is = " + bool1);
-      return bool1;
+    if (paramChatMessage1.time > paramChatMessage2.time) {
+      return 1;
     }
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    synchronized (this.b)
-    {
-      this.b.clear();
-      SosoInterface.b(this.jdField_a_of_type_Akuo);
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
-  }
-  
-  public void a(admf paramadmf, boolean paramBoolean)
-  {
-    if (paramadmf == null) {
-      return;
-    }
-    synchronized (this.c)
-    {
-      this.c.add(paramadmf);
-      if (paramBoolean)
-      {
-        c();
-        return;
-      }
-    }
-    SosoInterface.a(this.jdField_a_of_type_Akuo);
-  }
-  
-  public void a(admg paramadmg)
-  {
-    if (paramadmg == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramadmg);
-      c();
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.b.size() == 0) && (this.c.size() == 0)) {
-      SosoInterface.b(this.jdField_a_of_type_Akuo);
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-      ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
-        ((admg)((Iterator)???).next()).a();
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-    }
-  }
-  
-  public void b(admg paramadmg)
-  {
-    if (paramadmg == null) {
-      return;
-    }
-    synchronized (this.b)
-    {
-      this.b.add(paramadmg);
-      c();
-      return;
-    }
-  }
-  
-  protected void c()
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (!a())
-    {
-      localBaseActivity.requestPermissions(new adme(this, localBaseActivity), 1, new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" });
-      return;
-    }
-    grant();
-  }
-  
-  @QQPermissionDenied(1)
-  @TargetApi(23)
-  public void denied()
-  {
-    SosoInterface.a(this.jdField_a_of_type_Akuo);
-    ArkAppCenter.c("GetArkLocPermission", "CheckPermission location is denied");
-  }
-  
-  @QQPermissionGrant(1)
-  @TargetApi(23)
-  public void grant()
-  {
-    SosoInterface.a(this.jdField_a_of_type_Akuo);
-    ArkAppCenter.c("GetArkLocPermission", "CheckPermission location is granted ");
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     admc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,23 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import android.view.View;
 
-public class wqf
-  implements wnr
+class wqf
+  extends wna
 {
-  public wqf(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  wqf(wps paramwps) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, View paramView, Object paramObject, wph paramwph)
   {
-    SubscribeHybirdFragment.a(this.a).a(paramInt);
-  }
-  
-  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
-  {
-    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
+    switch (paramView.getId())
     {
-      bcql.a(this.a.a(), ajya.a(2131714649), 0).a();
+    default: 
       return;
     }
-    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqf
  * JD-Core Version:    0.7.0.1
  */

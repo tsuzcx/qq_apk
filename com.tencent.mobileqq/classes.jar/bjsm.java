@@ -1,76 +1,59 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.story.mode.StoryEffectTextMode.EditDialogListener.1;
-import mqq.os.MqqHandler;
-
 public class bjsm
-  implements vmu
 {
-  Runnable a;
-  public vlp a;
+  public static String a;
+  public static String[] a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static final String j;
+  public static final String k;
   
-  bjsm(bjry parambjry)
+  static
   {
-    this.jdField_a_of_type_JavaLangRunnable = new StoryEffectTextMode.EditDialogListener.1(this);
+    jdField_a_of_type_JavaLangString = "JsFamousShare";
+    b = "famousShareToQQFriend";
+    c = "famousShareToQzone";
+    d = "famousShareToWxFriend";
+    e = "famousShareToWxPengyouquan";
+    f = "famousJubao";
+    g = "setUserHomePageMsgBoardGate";
+    h = "SetHostMessage";
+    i = "writeMood";
+    j = alpo.a(2131712306);
+    k = alpo.a(2131712305);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "SetPersonalizeFinished", "setAvatar", "SetNaviDeco", "setFloat", "updateCustomPraise", "setcardfinish", "updatePloymorphicPraise", "setResponsiveLike", "OpenCustomVipSucc", "SetFacade", "setFriendNaviDeco", "SetPlayerDeco", "setDefaultFont", "refreshFeeds", "setCustomTrack" };
   }
   
-  public void a()
+  public static boolean a(String paramString)
   {
-    ((vla)bjry.a(this.jdField_a_of_type_Bjry).a("TextLayer")).c();
-  }
-  
-  public void a(int paramInt)
-  {
-    ((vla)bjry.a(this.jdField_a_of_type_Bjry).a("TextLayer")).a(paramInt);
-  }
-  
-  public void a(vlp paramvlp)
-  {
-    this.jdField_a_of_type_Vlp = paramvlp;
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
-  }
-  
-  public void a(boolean paramBoolean, vlp paramvlp)
-  {
-    vla localvla = (vla)bjry.a(this.jdField_a_of_type_Bjry).a("TextLayer");
-    if (paramBoolean)
-    {
-      localvla.a(true);
-      return;
-    }
-    paramvlp.jdField_a_of_type_Int = bjry.d(this.jdField_a_of_type_Bjry);
-    localvla.a(paramvlp);
-    localvla.a(false);
-    if (bjry.a(this.jdField_a_of_type_Bjry))
-    {
-      bjry.a(this.jdField_a_of_type_Bjry).setVisibility(8);
-      bjry.a(this.jdField_a_of_type_Bjry).setVisibility(8);
-    }
-    if (!TextUtils.equals(paramvlp.jdField_a_of_type_JavaLangString, bjry.a(this.jdField_a_of_type_Bjry)))
-    {
-      bjry.a(this.jdField_a_of_type_Bjry, bjry.a(this.jdField_a_of_type_Bjry), paramvlp.jdField_a_of_type_JavaLangString, bjry.c(this.jdField_a_of_type_Bjry), bjry.d(this.jdField_a_of_type_Bjry), 12, "onKeyboardHide");
-      this.jdField_a_of_type_Bjry.a.ac();
-    }
-    if ((!TextUtils.isEmpty(paramvlp.jdField_a_of_type_JavaLangString)) || (bjry.a(this.jdField_a_of_type_Bjry))) {
-      bjry.b(this.jdField_a_of_type_Bjry).setVisibility(8);
-    }
+    boolean bool2 = false;
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int n = arrayOfString.length;
+    int m = 0;
     for (;;)
     {
-      bjry.a(this.jdField_a_of_type_Bjry).dismiss();
-      return;
-      bjry.b(this.jdField_a_of_type_Bjry).setVisibility(0);
+      boolean bool1 = bool2;
+      if (m < n)
+      {
+        if (arrayOfString[m].equalsIgnoreCase(paramString)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      m += 1;
     }
   }
-  
-  public void b(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjsm
  * JD-Core Version:    0.7.0.1
  */

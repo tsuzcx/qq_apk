@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface ajfm
+class ajfm
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt);
+  ajfm(ajfl paramajfl) {}
   
-  public abstract void a(SpriteTaskParam paramSpriteTaskParam);
-  
-  public abstract boolean a();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajfm
  * JD-Core Version:    0.7.0.1
  */

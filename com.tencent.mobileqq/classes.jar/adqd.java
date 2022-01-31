@@ -1,14 +1,35 @@
-public abstract interface adqd
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+
+public class adqd
+  implements ActionMode.Callback
 {
-  public abstract void a();
+  public adqd(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public abstract void a(int paramInt);
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return false;
+  }
   
-  public abstract void b();
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramMenu.clear();
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqd
  * JD-Core Version:    0.7.0.1
  */

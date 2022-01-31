@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
@@ -11,12 +11,12 @@ import android.text.style.ForegroundColorSpan;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import bbgu;
+import bdfq;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class ShortcutUtils$PermissionDialog
-  extends bbgu
+  extends bdfq
 {
   private static final String CONFIG_SHORTCUT_DIALOG_HIDE = "mini_shortcut_dialog_hide";
   private static final String CONFIG_SHORTCUT_HELP_URL = "mini_shortcut_help_url";
@@ -42,7 +42,7 @@ class ShortcutUtils$PermissionDialog
   
   public static PermissionDialog createPermissionDialog(Activity paramActivity, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramActivity = new PermissionDialog(paramActivity, 2131755791);
+    paramActivity = new PermissionDialog(paramActivity, 2131755801);
     paramActivity.setTitle(paramString1);
     paramActivity.setNegativeButton(paramString2, paramOnClickListener2);
     paramActivity.setPositiveButton(paramString3, paramOnClickListener1);
@@ -60,8 +60,8 @@ class ShortcutUtils$PermissionDialog
   
   public CharSequence getMessageContent()
   {
-    String str1 = ajya.a(2131714014);
-    String str2 = ajya.a(2131714018);
+    String str1 = alpo.a(2131714386);
+    String str2 = alpo.a(2131714390);
     SpannableString localSpannableString = new SpannableString(str1 + str2);
     localSpannableString.setSpan(new ShortcutUtils.PermissionDialog.2(this), str1.length(), str1.length() + str2.length(), 33);
     localSpannableString.setSpan(new ForegroundColorSpan(-15505507), str1.length(), str1.length() + str2.length(), 33);
@@ -70,12 +70,12 @@ class ShortcutUtils$PermissionDialog
   
   public void initUI()
   {
-    setContentView(2131558897);
+    setContentView(2131558934);
     this.text.setMovementMethod(LinkMovementMethod.getInstance());
     this.text.setText(getMessageContent());
-    this.mCheckBoxLayout = ((ViewGroup)findViewById(2131368929));
-    this.mCheckBox = ((CheckBox)findViewById(2131377619));
-    this.mCheckText = ((TextView)findViewById(2131378457));
+    this.mCheckBoxLayout = ((ViewGroup)findViewById(2131369159));
+    this.mCheckBox = ((CheckBox)findViewById(2131378161));
+    this.mCheckText = ((TextView)findViewById(2131379069));
     this.mCheckText.setOnClickListener(new ShortcutUtils.PermissionDialog.1(this));
   }
   
@@ -92,7 +92,7 @@ class ShortcutUtils$PermissionDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.ShortcutUtils.PermissionDialog
  * JD-Core Version:    0.7.0.1
  */

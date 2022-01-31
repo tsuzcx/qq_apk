@@ -1,80 +1,137 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class apys
-  implements ampc<String>
 {
   public int a;
-  public String a;
+  public List<apyt> a;
   public boolean a;
-  public int b;
-  public String b;
   public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h = "1";
-  public String i = "";
   
-  public apys()
+  private int a()
   {
-    this.jdField_a_of_type_JavaLangString = "1";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_c_of_type_Int = 2;
-    this.jdField_d_of_type_Int = 3;
-    this.jdField_e_of_type_Int = 3;
-    this.jdField_f_of_type_Int = 60;
-    this.jdField_g_of_type_Int = 60;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      for (int i = 0;; i = ((apyt)localIterator.next()).jdField_a_of_type_JavaUtilList.size() + i)
+      {
+        j = i;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      }
+    }
+    int j = 0;
+    return j;
   }
   
-  public void a(String paramString)
+  private void a()
   {
-    try
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("entry", "1");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("name", null);
-      this.jdField_d_of_type_JavaLangString = paramString.optString("icon", null);
-      this.jdField_f_of_type_JavaLangString = paramString.optString("actionI", null);
-      this.jdField_g_of_type_JavaLangString = paramString.optString("actionA", null);
-      this.jdField_c_of_type_JavaLangString = paramString.optString("url", null);
-      this.jdField_a_of_type_Int = paramString.optInt("scC", 2);
-      this.jdField_b_of_type_Int = paramString.optInt("hiC", 2);
-      this.jdField_c_of_type_Int = paramString.optInt("flC", 2);
-      this.jdField_d_of_type_Int = paramString.optInt("piC", 3);
-      this.jdField_e_of_type_Int = paramString.optInt("tvC", 3);
-      this.h = paramString.optString("recordRule", "1");
-      this.jdField_f_of_type_Int = paramString.optInt("pIn", 60);
-      this.jdField_g_of_type_Int = paramString.optInt("tvI", 60);
-      this.jdField_a_of_type_Boolean = "1".equals(paramString.optString("qimNotifyEnable", "0"));
-      this.jdField_b_of_type_Boolean = "1".equals(paramString.optString("qimPopUpEnable", "0"));
-      this.i = paramString.optString("qimNotifySource", "");
-      this.jdField_e_of_type_JavaLangString = paramString.optString("qimNotifyLogo", "");
+      long l = System.currentTimeMillis();
+      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      while (i >= 0)
+      {
+        if (Math.abs(l - ((apyt)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long) > 60000L) {
+          this.jdField_a_of_type_JavaUtilList.remove(i);
+        }
+        i -= 1;
+      }
+    }
+  }
+  
+  public apyt a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+        localObject1 = (apyt)this.jdField_a_of_type_JavaUtilList.get(0);
+      }
+    }
+    return localObject1;
+  }
+  
+  public apyt a(String paramString)
+  {
+    int i;
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
+    {
+      i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilList.size()) {
+        if (paramString.equals(((apyt)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString))
+        {
+          paramString = (apyt)this.jdField_a_of_type_JavaUtilList.get(i);
+          this.jdField_a_of_type_JavaUtilList.remove(i);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (paramString != null) {
+        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
+      }
+      return paramString;
+      i += 1;
+      break;
+      paramString = null;
+    }
+  }
+  
+  public void a(apyt paramapyt, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_Int = paramInt;
+    a();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramapyt)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramapyt);
+    }
+    if ((paramapyt == null) || (paramapyt.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    for (;;)
+    {
       return;
+      this.jdField_a_of_type_JavaUtilList.add(0, paramapyt);
+      while ((a() > 500) && (this.jdField_a_of_type_JavaUtilList.size() > 1)) {
+        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+      }
     }
-    catch (Exception paramString)
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("mProfileComplete").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mProfileComplete").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mShowCard").append("=").append(this.b);
+    localStringBuilder.append(" ").append("mMaxLikeCount").append("=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" ").append("mTags").append("=").append(" [");
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      QLog.e("FlashChat", 1, "handleFlashChatConfig failed" + paramString);
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        apyt localapyt = (apyt)this.jdField_a_of_type_JavaUtilList.get(i);
+        localStringBuilder.append("\n");
+        localStringBuilder.append("index_").append(i).append("=").append(localapyt.toString());
+        i += 1;
+      }
     }
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apys
  * JD-Core Version:    0.7.0.1
  */

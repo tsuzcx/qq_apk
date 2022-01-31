@@ -1,34 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class auhd
-  implements Animator.AnimatorListener
+class auhd
+  extends AsyncTask<Void, Void, Void>
 {
-  public auhd(ScanIconAnimateView paramScanIconAnimateView) {}
+  auhd(auhc paramauhc) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  protected Void a(Void... paramVarArgs)
   {
-    ScanIconAnimateView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.b();
+    paramVarArgs = auhc.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    auhc.a(this.a).clear();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auhd
  * JD-Core Version:    0.7.0.1
  */

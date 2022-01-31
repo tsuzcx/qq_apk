@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agls;
+import aijl;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhou;
-import bhqa;
+import bjqf;
+import bjrl;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class LocalMediaInfo
   implements Parcelable, Serializable, Comparable<LocalMediaInfo>
 {
-  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new agls();
+  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new aijl();
   public static final int PHOTO_LAST_SELECTED = 3;
   public static final int PHOTO_SELECTED = 1;
   public static final int PHOTO_UNSELECTED = 2;
@@ -29,6 +29,7 @@ public class LocalMediaInfo
   public static final int TYPE_PANORAMA_NORMAL = 3;
   public long _id;
   public long addedDate;
+  public ArrayList<String> aiTextLabel;
   public Bundle bundle;
   public String fakeVid;
   public long fileSize;
@@ -38,6 +39,7 @@ public class LocalMediaInfo
   public boolean isRegionThumbUseNewDecoder;
   public boolean isSyncToWeishi;
   public boolean isSystemMeidaStore = true;
+  public boolean isVideoReady = true;
   public int latitude;
   public int listViewPosition = -1;
   public int longitude;
@@ -62,6 +64,7 @@ public class LocalMediaInfo
   public int mVideoType;
   public int mediaHeight;
   public int mediaWidth;
+  public String missionID;
   public long modifiedDate;
   public boolean needProcess;
   public int orientation;
@@ -144,7 +147,7 @@ public class LocalMediaInfo
   
   public boolean isPanoramaPhoto()
   {
-    if (!bhou.a().b()) {}
+    if (!bjqf.a().b()) {}
     do
     {
       return false;
@@ -157,13 +160,13 @@ public class LocalMediaInfo
   
   public void setPanoramaType()
   {
-    if ((this.panoramaPhotoType != 0) || (!bhou.a().b())) {}
+    if ((this.panoramaPhotoType != 0) || (!bjqf.a().b())) {}
     while ((this.mediaWidth == 0) || (this.mediaHeight == 0)) {
       return;
     }
     if ((this.mediaHeight >= 1000) && (this.mediaWidth / this.mediaHeight == 2.0F))
     {
-      if (bhqa.a().a(this.path))
+      if (bjrl.a().a(this.path))
       {
         this.panoramaPhotoType = 2;
         return;
@@ -181,7 +184,7 @@ public class LocalMediaInfo
   
   public String toString()
   {
-    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + ", mediaType=" + this.mMediaType + '}';
+    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + ", mediaType=" + this.mMediaType + ", isVideoReady=" + this.isVideoReady + ", missionID=" + this.missionID + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -202,6 +205,7 @@ public class LocalMediaInfo
       paramParcel.writeInt(this.selectStatus);
       paramParcel.writeInt(this.thumbWidth);
       paramParcel.writeInt(this.thumbHeight);
+      paramParcel.writeString(this.thumbnailPath);
       paramParcel.writeInt(this.index);
       paramParcel.writeInt(this.position.intValue());
       paramParcel.writeString(this.mMimeType);
@@ -209,19 +213,16 @@ public class LocalMediaInfo
       paramParcel.writeInt(this.mediaWidth);
       paramParcel.writeInt(this.mediaHeight);
       if (!this.isSystemMeidaStore) {
-        break label248;
+        break label287;
       }
       paramInt = 1;
-      label165:
+      label173:
       paramParcel.writeByte((byte)paramInt);
       if (!this.isRegionThumbUseNewDecoder) {
-        break label253;
+        break label292;
       }
-    }
-    label248:
-    label253:
-    for (paramInt = i;; paramInt = 0)
-    {
+      paramInt = 1;
+      label188:
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.longitude);
       paramParcel.writeInt(this.latitude);
@@ -229,18 +230,32 @@ public class LocalMediaInfo
       paramParcel.writeLong(this.mCloudPhotoOwnerUin);
       paramParcel.writeString(this.mCloudPhotoOwnerAlbumId);
       paramParcel.writeString(this.mCloudPhotoId);
+      if (!this.isVideoReady) {
+        break label297;
+      }
+    }
+    label287:
+    label292:
+    label297:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeString(this.missionID);
       paramParcel.writeList(this.mTransferPosList);
+      paramParcel.writeList(this.aiTextLabel);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
-      break label165;
+      break label173;
+      paramInt = 0;
+      break label188;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.LocalMediaInfo
  * JD-Core Version:    0.7.0.1
  */

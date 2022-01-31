@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
 
 public class ahho
-  implements TVK_IMediaPlayer.OnCompletionListener
+  extends akee
 {
-  public ahho(SpringHbVideoView paramSpringHbVideoView) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    QLog.i("springHb_SpringHbVideoView", 1, "onCompletion");
-    if (SpringHbVideoView.a(this.a) != null) {
-      SpringHbVideoView.a(this.a).ar_();
-    }
-  }
+  public Button a;
+  public TextView a;
+  public SysSuspiciousMsg a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahho
  * JD-Core Version:    0.7.0.1
  */

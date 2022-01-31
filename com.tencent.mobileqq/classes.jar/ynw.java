@@ -1,112 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gamecenter.appointment.GameCenterCheck;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 
 public class ynw
-  implements INetEventHandler
 {
-  public static int a;
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private static ynw jdField_a_of_type_Ynw;
-  public static boolean a;
-  public static boolean b;
-  boolean c = false;
-  boolean d = false;
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  public ArrayList<String> a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  public ArrayList<String> b;
+  boolean b;
+  public String c;
+  public ArrayList<File> c = new ArrayList();
+  public String d;
+  public String e;
   
-  static
+  public ynw(ynm paramynm)
   {
-    jdField_a_of_type_Int = 100;
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterBroadcastReceiver", 2, "registerReceiver");
-    }
-    if (jdField_a_of_type_Ynw == null) {
-      jdField_a_of_type_Ynw = new ynw();
-    }
-    if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      jdField_a_of_type_AndroidContentBroadcastReceiver = new ynx();
-    }
-    if (!jdField_a_of_type_Boolean)
-    {
-      jdField_a_of_type_Boolean = true;
-      AppNetConnInfo.registerNetChangeReceiver(BaseApplicationImpl.getApplication(), jdField_a_of_type_Ynw);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.BATTERY_CHANGED");
-      localIntentFilter.addAction("android.intent.action.ACTION_POWER_CONNECTED");
-      localIntentFilter.addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
-      BaseApplicationImpl.getContext().registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    }
-  }
-  
-  public static void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterBroadcastReceiver", 2, "unRegisterReceiver");
-    }
-    if (jdField_a_of_type_Ynw != null)
-    {
-      AppNetConnInfo.unregisterNetEventHandler(jdField_a_of_type_Ynw);
-      jdField_a_of_type_Ynw = null;
-    }
-    if (jdField_a_of_type_AndroidContentBroadcastReceiver != null)
-    {
-      BaseApplicationImpl.getContext().unregisterReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver);
-      jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    }
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      if (QLog.isColorLevel()) {
-        QLog.i("GameCenterBroadcastReceiver", 2, "no net");
-      }
-    }
-    do
-    {
-      return;
-      if (!AppNetConnInfo.isMobileConn()) {
-        break;
-      }
-    } while (this.d);
-    if (QLog.isColorLevel()) {
-      bdot.b("GameCenterBroadcastReceiver", "mobile connect");
-    }
-    for (;;)
-    {
-      this.c = false;
-      return;
-      if (AppNetConnInfo.isWifiConn())
-      {
-        if (this.c) {
-          break;
-        }
-        this.c = true;
-        if (QLog.isColorLevel()) {
-          bdot.b("GameCenterBroadcastReceiver", "wifi connect");
-        }
-        GameCenterCheck.b();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        bdot.b("GameCenterBroadcastReceiver", "no connect");
-      }
-    }
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ynw
  * JD-Core Version:    0.7.0.1
  */

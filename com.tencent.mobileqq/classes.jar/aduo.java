@@ -1,28 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aduo
-  implements asci
+public class aduo
+  implements DialogInterface.OnClickListener
 {
-  aduo(adun paramadun) {}
+  public aduo(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void a(adus paramadus)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
-    }
-    adue.a(this.a.jdField_a_of_type_Adue, paramadus);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      adue.a(this.a.jdField_a_of_type_Adue, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_Adus);
-    }
+    azmj.b(this.a.app, "dc00898", "", "", "0X8007547", "0X8007547", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aduo
  * JD-Core Version:    0.7.0.1
  */

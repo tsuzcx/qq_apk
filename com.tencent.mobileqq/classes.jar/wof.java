@@ -1,39 +1,30 @@
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import com.tencent.biz.subscribe.comment.EmoView;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class wof
-  implements wog
+public abstract class wof<T extends Dispatcher.Dispatchable>
+  extends QQUIEventReceiver<wnl, T>
+  implements woq
 {
-  public wof(EmoView paramEmoView) {}
+  protected static AtomicLong a = new AtomicLong(0L);
+  public int a;
+  public long a;
+  public uxw a;
+  public wos a;
+  public int b;
   
-  public boolean a()
-  {
-    if (EmoView.a(this.a) == null) {
-      return false;
-    }
-    EmoView.a(this.a).dispatchKeyEvent(new KeyEvent(0L, 0L, 0, 67, 0, 0));
-    return true;
-  }
+  public abstract int a(T paramT);
   
-  public boolean a(String paramString)
+  public abstract void a(T paramT);
+  
+  public boolean b()
   {
-    if (EmoView.a(this.a) == null) {
-      return false;
-    }
-    if ((EmoView.b(this.a) > 0) && (EmoView.a(this.a).getText().length() + paramString.length() > EmoView.b(this.a)))
-    {
-      bcql.a(this.a.getContext(), 0, ajya.a(2131704132), 0);
-      return false;
-    }
-    EmoView.a(EmoView.a(this.a), paramString);
-    return true;
+    return this.b > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wof
  * JD-Core Version:    0.7.0.1
  */

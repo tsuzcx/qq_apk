@@ -1,6 +1,6 @@
 {
   "Readinjoy_article_compact_interaction_cell": {
-    "view_type": "cell",
+    "view_type": "container",
     "direction": "vertical",
     "height": {
       "type": "relative",
@@ -31,10 +31,9 @@
             "align_parent_top": "YES",
             "margin_left": "32",
             "margin_top": "14",
-            "margin_bottom": "14",
             "height": {
               "type": "relative",
-              "value": "22"
+              "value": "19"
             },
             "width": {
               "type": "relative",
@@ -56,12 +55,10 @@
             "default_visible": "YES",
             "event_type":"cmd_dislike_click",
             "align_parent_center_horizontal": "YES",
-            "align_parent_top": "YES",
-            "margin_top": "14",
-            "margin_bottom": "14",
+            "margin_top": "13",
             "height": {
               "type": "relative",
-              "value": "22"
+              "value": "20"
             },
             "width": {
               "type": "relative",
@@ -86,10 +83,9 @@
             "align_parent_top": "YES",
             "margin_right": "32",
             "margin_top": "14",
-            "margin_bottom": "14",
             "height": {
               "type": "relative",
-              "value": "22"
+              "value": "19"
             },
             "width": {
               "type": "relative",

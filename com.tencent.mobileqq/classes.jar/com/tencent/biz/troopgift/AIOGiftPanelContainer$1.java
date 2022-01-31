@@ -1,11 +1,11 @@
 package com.tencent.biz.troopgift;
 
-import xbm;
+import yqf;
 
 public class AIOGiftPanelContainer$1
   implements Runnable
 {
-  public AIOGiftPanelContainer$1(xbm paramxbm, int paramInt) {}
+  public AIOGiftPanelContainer$1(yqf paramyqf, int paramInt) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class AIOGiftPanelContainer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.troopgift.AIOGiftPanelContainer.1
  * JD-Core Version:    0.7.0.1
  */

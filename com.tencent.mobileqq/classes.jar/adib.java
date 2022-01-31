@@ -1,39 +1,49 @@
-import android.content.Context;
-import android.graphics.Paint;
-import android.widget.EditText;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class adib
-  implements adie
+  implements URLDrawable.URLDrawableListener
 {
-  private Paint a;
+  public adib(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    axqy.b(paramQQAppInterface, "dc00898", "", "", "0X8008C70", "0X8008C70", aezl.a(paramInt), 0, "", "", "", "");
-    paramString = aqxj.a(paramString);
-    if ((paramString != null) && (paramString.length() > 20))
-    {
-      bcql.a(paramContext, ajya.a(2131705468), 0).a();
-      axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800932C", "0X800932C", 0, 0, "", "", "", "");
-      return false;
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    return true;
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    }
   }
   
-  public boolean a(Context paramContext, String paramString, EditText paramEditText)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.a == null) {
-      this.a = new Paint();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    this.a.setTypeface(paramEditText.getTypeface());
-    this.a.setTextSize(paramEditText.getTextSize());
-    return (paramString.length() < 200) && (!paramString.contains("\n")) && ((int)this.a.measureText(paramString) + actj.a(45.0F, paramContext.getResources()) + paramEditText.getPaddingLeft() < paramEditText.getMeasuredWidth());
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, xod.a(this.a.app.getApp(), 47.0F), xod.a(this.a.app.getApp(), 14.0F));
+    }
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adib
  * JD-Core Version:    0.7.0.1
  */

@@ -1,250 +1,136 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.ImageCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.ImageBase;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class oou
-  implements AladdinConfigHandler
+  extends ImageBase
 {
-  private static int jdField_a_of_type_Int = 41505;
-  private static String jdField_a_of_type_JavaLangString;
-  private static boolean jdField_a_of_type_Boolean;
-  private static int jdField_b_of_type_Int;
-  private static String jdField_b_of_type_JavaLangString;
-  private static String c;
-  private static String d;
+  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841396));
+  private ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  private Long jdField_a_of_type_JavaLangLong;
   
-  public static float a()
+  public oou(VafContext paramVafContext)
   {
-    Float localFloat = (Float)bhvy.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(1.0F));
-    QLog.d("DailyModeConfigHandler", 1, "[getJumpThreshold] " + localFloat);
-    if ((localFloat.floatValue() > 0.001D) && (localFloat.floatValue() < 10.0F)) {
-      return localFloat.floatValue();
-    }
-    return 1.0F;
+    super(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = new ReadInJoyHeadImageView(paramVafContext.getContext());
   }
   
-  public static int a()
+  public int getComMeasuredHeight()
   {
-    if (b(jdField_a_of_type_Int))
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  }
+  
+  public void loadImage(String paramString)
+  {
+    QLog.d("", 2, "loadImage: path is " + paramString);
+    if ((paramString != null) && (!paramString.equals("-1")))
     {
-      QLog.d("DailyModeConfigHandler", 1, "[getMode] isDailyUnlimitChannel MODE_LOAD_MORE");
-      return 2;
+      if ((!paramString.startsWith("http")) && (!paramString.startsWith("pubaccount"))) {
+        break label76;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.a(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageSrc(paramString);
     }
-    Integer localInteger = (Integer)bhvy.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
-    QLog.d("DailyModeConfigHandler", 1, "[getMode] " + localInteger);
-    if (localInteger.intValue() == 2) {
-      return 2;
-    }
-    if (localInteger.intValue() == 1) {
-      return 1;
-    }
-    return 3;
-  }
-  
-  public static String a()
-  {
-    if (jdField_b_of_type_JavaLangString != null) {
-      return jdField_b_of_type_JavaLangString;
-    }
-    jdField_b_of_type_JavaLangString = (String)bhvy.a("readinjoy_daily_mode_bottom_jump", "");
-    return jdField_b_of_type_JavaLangString;
-  }
-  
-  public static JSONObject a()
-  {
-    if (TextUtils.isEmpty(d)) {
-      d = (String)bhvy.a("readinjoy_daily_mode_footer_pts", "");
-    }
-    QLog.i("DailyModeConfigHandler", 1, "getFooterData pts = " + d);
+    label76:
+    do
+    {
+      return;
+      paramString = ImageCommon.getDrawableResourceId(paramString);
+    } while (paramString == null);
+    QLog.d("", 2, "loadImage: cant find in offline dir, try to load from resources");
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(d);
-      return localJSONObject1;
-    }
-    catch (JSONException localJSONException1)
-    {
-      QLog.e("DailyModeConfigHandler", 1, "getFooterData e = " + localJSONException1);
-      JSONObject localJSONObject2 = new JSONObject();
-      try
-      {
-        localJSONObject2.put("style_ID", "ReadInjoy_daily_footer");
-        localJSONObject2.put("title_EN", "TENCENT KANDIAN");
-        localJSONObject2.put("title_CN", ajya.a(2131702719));
-        return localJSONObject2;
-      }
-      catch (JSONException localJSONException2)
-      {
-        QLog.e("DailyModeConfigHandler", 1, "getFooterData e = " + localJSONException2);
-      }
-      return localJSONObject2;
-    }
-  }
-  
-  public static void a()
-  {
-    QLog.d("DailyModeConfigHandler", 1, "DailyModeConfigHandler reset.");
-    jdField_a_of_type_JavaLangString = null;
-    jdField_b_of_type_JavaLangString = null;
-    c = null;
-    d = null;
-  }
-  
-  public static void a(String paramString)
-  {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        jdField_a_of_type_JavaLangString = paramString.optString("bottom_text");
-        jdField_b_of_type_JavaLangString = paramString.optString("jump_url");
-        c = paramString.optString("jump_src");
-        d = paramString.optString("ReadInjoy_daily_footer_pts");
-        if (jdField_a_of_type_JavaLangString != null) {
-          bhvy.a("readinjoy_daily_mode_bottom_text", jdField_a_of_type_JavaLangString);
-        }
-        if (jdField_b_of_type_JavaLangString != null) {
-          bhvy.a("readinjoy_daily_mode_bottom_jump", jdField_b_of_type_JavaLangString);
-        }
-        if (c != null) {
-          bhvy.a("readinjoy_daily_mode_bottom_jump_src", c);
-        }
-        if (d != null)
-        {
-          bhvy.a("readinjoy_daily_mode_footer_pts", d);
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt == 41505;
-  }
-  
-  public static int b()
-  {
-    return jdField_a_of_type_Int;
-  }
-  
-  public static String b()
-  {
-    if (ntr.a() == 1) {
-      return "1";
-    }
-    if (c != null) {
-      return c;
-    }
-    c = (String)bhvy.a("readinjoy_daily_mode_bottom_jump_src", "0");
-    return c;
-  }
-  
-  public static void b()
-  {
-    if ("1".equals((String)bhvy.a("readinjoy_daily_mode_refresh_mode", "0"))) {}
-    for (jdField_a_of_type_Boolean = true;; jdField_a_of_type_Boolean = false)
-    {
-      jdField_a_of_type_Int = ((Integer)bhvy.a("readinjoy_daily_mode_channel_id", Integer.valueOf(41505))).intValue();
-      if (!bhvy.g())
-      {
-        QLog.i("DailyModeConfigHandler", 1, "非独立看点->进入无限流 refreshDailyConfig   " + jdField_a_of_type_Int);
-        jdField_a_of_type_Int = 41697;
-      }
-      if (b(jdField_a_of_type_Int)) {
-        jdField_a_of_type_Boolean = true;
-      }
-      QLog.i("DailyModeConfigHandler", 1, "refreshDailyConfig " + jdField_a_of_type_Boolean + "  " + jdField_a_of_type_Int);
-      jdField_b_of_type_Int = jdField_a_of_type_Int;
-      if (onh.c) {
-        jdField_a_of_type_Int = 41697;
-      }
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getResources().getDrawable(paramString.intValue());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(paramString);
       return;
     }
+    catch (Resources.NotFoundException paramString)
+    {
+      QLog.d("", 2, "loadImage: cant find in resources dir, do nothing");
+    }
   }
   
-  public static boolean b()
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    boolean bool = true;
-    if (a()) {
-      return false;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.onComLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.onComMeasure(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    if (this.jdField_a_of_type_JavaLangLong != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(this.jdField_a_of_type_JavaLangLong.longValue(), true);
     }
-    if (Aladdin.getConfig(157).getIntegerFromString("enable_dynamic_header", 0) == 1) {}
     for (;;)
     {
-      return bool;
-      bool = false;
+      refresh();
+      return;
+      loadImage(this.mSrc);
     }
   }
   
-  public static boolean b(int paramInt)
+  public void reset()
   {
-    if (a(jdField_a_of_type_Int)) {}
-    while (jdField_a_of_type_Int != paramInt) {
-      return false;
+    super.reset();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageSrc(null);
+    this.mSrc = null;
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramString);
+    case 1075: 
+      try
+      {
+        this.jdField_a_of_type_JavaLangLong = Long.valueOf(Long.parseLong(paramString));
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("", 1, "", paramString);
+        return true;
+      }
     }
+    this.mSrc = paramString;
     return true;
   }
   
-  public static void c()
+  public void setBitmap(Bitmap paramBitmap, boolean paramBoolean)
   {
-    jdField_a_of_type_Int = jdField_b_of_type_Int;
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    if (a(paramInt)) {
-      return true;
-    }
-    return b(paramInt);
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("DailyModeConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = oof.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("DailyModeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "daily_plan_number")) {
-        bhvy.a("readinjoy_daily_mode_plan_number", Integer.valueOf(str2));
-      } else if (TextUtils.equals(str1, "daily_drag_threshold")) {
-        bhvy.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(str2));
-      }
-    }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("DailyModeConfigHandler", 1, "[onWipeConfig]");
-    bhvy.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageBitmap(paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oou
  * JD-Core Version:    0.7.0.1
  */

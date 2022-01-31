@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.tmg_opensdk;
 
-import ajks;
-import ajkv;
-import ajla;
+import alce;
+import alch;
+import alcm;
 import android.text.TextUtils;
-import begr;
+import bggp;
 import com.tencent.TMG.sdk.AVCustomSpearEngineCtrl;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
@@ -15,26 +15,26 @@ import org.json.JSONTokener;
 public class AVEngineWalper$3$1
   implements Runnable
 {
-  public AVEngineWalper$3$1(ajkv paramajkv, byte[] paramArrayOfByte) {}
+  public AVEngineWalper$3$1(alch paramalch, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     Object localObject1 = new JSONTokener(new String(this.jdField_a_of_type_ArrayOfByte));
-    if ((this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_AndroidContentContext == null) || (ajla.a(this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_AndroidContentContext) == null) || (ajla.a(this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_AndroidContentContext).a() == null)) {
-      if (this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_Begr != null) {
-        this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_Begr.b(1, "context is null !!!!");
+    if ((this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_AndroidContentContext == null) || (alcm.a(this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_AndroidContentContext) == null) || (alcm.a(this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_AndroidContentContext).a() == null)) {
+      if (this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp != null) {
+        this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp.b(1, "context is null !!!!");
       }
     }
     AVCustomSpearEngineCtrl localAVCustomSpearEngineCtrl;
     do
     {
       return;
-      localAVCustomSpearEngineCtrl = ajla.a(this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_AndroidContentContext).a();
+      localAVCustomSpearEngineCtrl = alcm.a(this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_AndroidContentContext).a();
       if (localAVCustomSpearEngineCtrl != null) {
         break;
       }
-    } while (this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_Begr == null);
-    this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_Begr.b(1, "get spearEngineCtrl failed!!!!");
+    } while (this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp == null);
+    this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp.b(1, "get spearEngineCtrl failed!!!!");
     return;
     for (;;)
     {
@@ -65,23 +65,23 @@ public class AVEngineWalper$3$1
                 break label414;
               }
               localAVCustomSpearEngineCtrl.addParamByRole((String)localObject2, str);
-              QLog.e("AVEngineWalper", 1, "Add Role mAppID=" + this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_JavaLangString + ", roleName=" + (String)localObject2 + ", strRoleConf=" + str);
+              QLog.e("AVEngineWalper", 1, "Add Role mAppID=" + this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_JavaLangString + ", roleName=" + (String)localObject2 + ", strRoleConf=" + str);
               break label414;
             }
           }
           localAVCustomSpearEngineCtrl.setSpearEngineScence(((JSONObject)localObject1).getInt("scheme"));
         }
-        this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.a(this.jdField_a_of_type_Ajkv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ajkv.jdField_a_of_type_Boolean, this.jdField_a_of_type_Ajkv.b);
+        this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.a(this.jdField_a_of_type_Alch.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alch.jdField_a_of_type_Boolean, this.jdField_a_of_type_Alch.b);
         return;
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
-      if (this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_Begr == null) {
+      if (this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp == null) {
         break;
       }
-      this.jdField_a_of_type_Ajkv.jdField_a_of_type_Ajks.jdField_a_of_type_Begr.b(1, "spearEngineCtrl addParamByRole failed!!!!");
+      this.jdField_a_of_type_Alch.jdField_a_of_type_Alce.jdField_a_of_type_Bggp.b(1, "spearEngineCtrl addParamByRole failed!!!!");
       return;
       label414:
       i += 1;
@@ -90,7 +90,7 @@ public class AVEngineWalper$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.3.1
  * JD-Core Version:    0.7.0.1
  */

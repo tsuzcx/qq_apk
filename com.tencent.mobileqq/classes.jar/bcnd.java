@@ -1,20 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-class bcnd
-  implements ValueAnimator.AnimatorUpdateListener
+public class bcnd
+  implements bclf
 {
-  bcnd(bcnc parambcnc) {}
+  public bcnd(RobotPanelLayoutBase paramRobotPanelLayoutBase, bcnh parambcnh) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    bcnc.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidateSelf();
+    if (paramInt == 0) {
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase.getContext(), 1, alpo.a(2131713862) + "", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcnd
  * JD-Core Version:    0.7.0.1
  */

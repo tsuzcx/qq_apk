@@ -1,60 +1,65 @@
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.2;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
-public class axjw
-  extends bbwt
+class axjw
+  implements bapx
 {
-  public axjw(RedBagVideoManager.2 param2, String paramString1, String paramString2, String paramString3) {}
+  axjw(axjt paramaxjt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, ayyn paramayyn) {}
   
-  public void onDone(bbwu parambbwu)
+  public void onResp(baqw parambaqw)
   {
-    int i = 0;
-    boolean bool = true;
-    try
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + parambaqw.c);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Axjt.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+    parambaqw = this.jdField_a_of_type_Axjt.a.iterator();
+    while (parambaqw.hasNext())
     {
-      if (parambbwu.a() == 3)
+      Object localObject = (axkp)parambaqw.next();
+      if (((axkp)localObject).a != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : [onDone] download finished " + this.jdField_a_of_type_JavaLangString);
-        }
-        parambbwu = axjs.a(this.b);
-        if (this.c.equalsIgnoreCase(parambbwu))
+        localObject = ((axkp)localObject).a.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          axjs.b(this.b);
-          axjs.a(axjs.jdField_a_of_type_JavaLangString + "videoRedbagResInfo", this.c);
-          bbkb.e(BaseApplication.getContext(), false);
-          break label271;
+          PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
+          if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+            localPtvTemplateInfo.usable = this.jdField_a_of_type_Axjt.a(localPtvTemplateInfo);
+          }
         }
-      }
-      for (;;)
-      {
-        parambbwu = new HashMap();
-        parambbwu.put("param_FailCode", String.valueOf(i));
-        axrn.a(BaseApplication.getContext()).a(null, "videoRedbagResDownload", bool, 0L, 0L, parambbwu, "");
-        axjs.jdField_a_of_type_Boolean = false;
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("RedBagVideoManager", 2, "[onDone] checkMd5 failed: " + this.b);
-        }
-        bbdx.d(this.b);
-        bool = false;
-        i = 80704;
-        break label271;
-        if (QLog.isColorLevel()) {
-          QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : [onDone] downloadFile failed: " + parambbwu.b + " code=" + parambbwu.a);
-        }
-        i = parambbwu.a;
-        bool = false;
       }
     }
-    finally {}
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
+    try
+    {
+      ndr.a(new File(axjt.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), axjt.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
+      if (this.jdField_a_of_type_Ayyn != null) {
+        this.jdField_a_of_type_Ayyn.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
+      }
+      return;
+    }
+    catch (IOException parambaqw)
+    {
+      for (;;)
+      {
+        parambaqw.printStackTrace();
+      }
+    }
+  }
+  
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Ayyn != null) {
+      this.jdField_a_of_type_Ayyn.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axjw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.apollo.aioChannel;
 
-import aivl;
-import aivm;
-import aivn;
-import aivo;
-import aivp;
-import aivs;
-import aivu;
-import aivv;
-import aivw;
-import aiyo;
-import ajac;
-import ajai;
-import ajaw;
-import ajbo;
-import ajbu;
-import ajcf;
-import ajct;
-import ajcx;
-import ajdy;
-import ajxl;
+import akmx;
+import akmy;
+import akmz;
+import akna;
+import aknb;
+import akne;
+import akng;
+import aknh;
+import akni;
+import akqa;
+import akro;
+import akru;
+import aksi;
+import akta;
+import aktg;
+import aktr;
+import akuf;
+import akuj;
+import akvk;
+import aloz;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.view.View;
-import bbcz;
-import bbdh;
-import bfob;
+import bdbt;
+import bdcb;
+import bhow;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -58,18 +58,18 @@ public class ApolloCmdChannel
   private WeakReference<Activity> mActivityRef;
   private WeakReference<QQAppInterface> mAppRef;
   private HashMap<Long, Boolean> mCallJsRuntimeMap;
-  private ajaw mPlayer;
-  private aivs mRenderRunners;
-  private bfob mRequestHandlerThread;
-  private List<aivp> mRequestHandlers;
+  private aksi mPlayer;
+  private akne mRenderRunners;
+  private bhow mRequestHandlerThread;
+  private List<aknb> mRequestHandlers;
   private volatile boolean mSetNativeObj;
   
   private ApolloCmdChannel(QQAppInterface paramQQAppInterface)
   {
     this.mAppRef = new WeakReference(paramQQAppInterface);
     this.mRequestHandlers = new ArrayList();
-    this.mRenderRunners = new aivs();
-    this.mPlayer = new ajai(paramQQAppInterface, -10000);
+    this.mRenderRunners = new akne();
+    this.mPlayer = new akru(paramQQAppInterface, -10000);
     this.mCallJsRuntimeMap = new HashMap();
     init();
   }
@@ -78,7 +78,7 @@ public class ApolloCmdChannel
   {
     this._mApp = paramAppRuntime;
     this.mCallJsRuntimeMap = new HashMap();
-    this.mRenderRunners = new aivs();
+    this.mRenderRunners = new akne();
     this.mRequestHandlers = new ArrayList();
     init();
   }
@@ -96,11 +96,11 @@ public class ApolloCmdChannel
   
   private void createRightPlayer(int paramInt)
   {
-    if (ajac.a())
+    if (akro.a())
     {
-      ajcf localajcf = ajac.a(getGameId());
-      if (localajcf != null) {
-        localajcf.b(paramInt);
+      aktr localaktr = akro.a(getGameId());
+      if (localaktr != null) {
+        localaktr.b(paramInt);
       }
     }
   }
@@ -142,11 +142,16 @@ public class ApolloCmdChannel
     {
       try
       {
+        if ((paramAppRuntime instanceof QQAppInterface))
+        {
+          paramAppRuntime = getChannel((QQAppInterface)paramAppRuntime);
+          return paramAppRuntime;
+        }
         if (sDataChannel == null)
         {
           sDataChannel = new ApolloCmdChannel(paramAppRuntime);
           paramAppRuntime = sDataChannel;
-          return paramAppRuntime;
+          continue;
         }
         AppRuntime localAppRuntime = sDataChannel._mApp;
         if (localAppRuntime == null)
@@ -169,24 +174,24 @@ public class ApolloCmdChannel
   
   private int getGameId()
   {
-    if (ajac.a())
+    if (akro.a())
     {
-      ajcf localajcf = ajac.a(Thread.currentThread().getId());
-      if (localajcf == null) {
+      aktr localaktr = akro.a(Thread.currentThread().getId());
+      if (localaktr == null) {
         return -1;
       }
-      return localajcf.a();
+      return localaktr.a();
     }
     return -10000;
   }
   
-  private ajaw getRightPlayer()
+  private aksi getRightPlayer()
   {
-    if (ajac.a())
+    if (akro.a())
     {
-      ajcf localajcf = ajac.a(getGameId());
-      if (localajcf != null) {
-        return localajcf.a();
+      aktr localaktr = akro.a(getGameId());
+      if (localaktr != null) {
+        return localaktr.a();
       }
     }
     else
@@ -199,10 +204,10 @@ public class ApolloCmdChannel
   private void init()
   {
     makesureHasInitObj();
-    this.mRequestHandlerThread = new bfob(ThreadManager.getSubThreadLooper(), null);
+    this.mRequestHandlerThread = new bhow(ThreadManager.getSubThreadLooper(), null);
     synchronized (this.mRequestHandlers)
     {
-      Collections.sort(this.mRequestHandlers, new aivm(this));
+      Collections.sort(this.mRequestHandlers, new akmy(this));
       return;
     }
   }
@@ -216,7 +221,7 @@ public class ApolloCmdChannel
         Iterator localIterator = this.mRequestHandlers.iterator();
         if (localIterator.hasNext())
         {
-          if (!((aivp)localIterator.next() instanceof ajbo)) {
+          if (!((aknb)localIterator.next() instanceof akta)) {
             continue;
           }
           bool = false;
@@ -244,25 +249,25 @@ public class ApolloCmdChannel
     }
   }
   
-  public void addCmdHandler(aivp paramaivp)
+  public void addCmdHandler(aknb paramaknb)
   {
     synchronized (this.mRequestHandlers)
     {
-      this.mRequestHandlers.remove(paramaivp);
-      this.mRequestHandlers.add(paramaivp);
+      this.mRequestHandlers.remove(paramaknb);
+      this.mRequestHandlers.add(paramaknb);
       if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloDataChannel", 2, "addCmdHandler class:" + paramaivp.getClass().getName() + ", size: " + this.mRequestHandlers.size());
+        QLog.d("cmgame_process.ApolloDataChannel", 2, "addCmdHandler class:" + paramaknb.getClass().getName() + ", size: " + this.mRequestHandlers.size());
       }
       return;
     }
   }
   
-  public void addRenderRunner(aivw paramaivw)
+  public void addRenderRunner(akni paramakni)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.ApolloDataChannel", 2, "addRenderRunner,renderRunner:" + paramaivw);
+      QLog.d("cmgame_process.ApolloDataChannel", 2, "addRenderRunner,renderRunner:" + paramakni);
     }
-    this.mRenderRunners.a(paramaivw);
+    this.mRenderRunners.a(paramakni);
   }
   
   public void callbackDirect(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2)
@@ -304,8 +309,8 @@ public class ApolloCmdChannel
         localBoolean = (Boolean)this.mCallJsRuntimeMap.get(Long.valueOf(paramLong));
         try
         {
-          localajcf = ajac.b(paramLong);
-          if ((localajcf == null) || (!localajcf.b())) {
+          localaktr = akro.b(paramLong);
+          if ((localaktr == null) || (!localaktr.b())) {
             break label258;
           }
           if (localBoolean == null) {
@@ -343,13 +348,13 @@ public class ApolloCmdChannel
         }
         callbackEngineOld(paramLong, paramInt, paramString1, paramString2);
         return;
-        ajcf localajcf = ajac.a((int)paramLong);
-        if (localajcf == null) {
+        aktr localaktr = akro.a((int)paramLong);
+        if (localaktr == null) {
           break;
         }
-        if (!localajcf.b())
+        if (!localaktr.b())
         {
-          localajcf.a(paramInt, paramString1, paramString2);
+          localaktr.a(paramInt, paramString1, paramString2);
           return;
         }
       } while (!QLog.isColorLevel());
@@ -375,8 +380,8 @@ public class ApolloCmdChannel
   
   public void callbackGetHead(Bitmap paramBitmap, String paramString, int paramInt, long paramLong)
   {
-    aivw localaivw = this.mRenderRunners.a(paramLong);
-    if (localaivw != null)
+    akni localakni = this.mRenderRunners.a(paramLong);
+    if (localakni != null)
     {
       if (ApolloEngine.a()) {
         break label38;
@@ -387,13 +392,13 @@ public class ApolloCmdChannel
     }
     return;
     label38:
-    localaivw.runRenderTask(new ApolloCmdChannel.4(this, paramBitmap, paramString, paramInt, paramLong));
+    localakni.runRenderTask(new ApolloCmdChannel.4(this, paramBitmap, paramString, paramInt, paramLong));
   }
   
   public void callbackGetNick(String paramString1, String paramString2, int paramInt, long paramLong)
   {
-    aivw localaivw = this.mRenderRunners.a(paramLong);
-    if (localaivw != null)
+    akni localakni = this.mRenderRunners.a(paramLong);
+    if (localakni != null)
     {
       if (ApolloEngine.a()) {
         break label38;
@@ -404,7 +409,7 @@ public class ApolloCmdChannel
     }
     return;
     label38:
-    localaivw.runRenderTask(new ApolloCmdChannel.3(this, paramString1, paramString2, paramInt, paramLong));
+    localakni.runRenderTask(new ApolloCmdChannel.3(this, paramString1, paramString2, paramInt, paramLong));
   }
   
   public void checkSetNative()
@@ -427,31 +432,31 @@ public class ApolloCmdChannel
     }
   }
   
-  public void exeJsOnEngine(aivw paramaivw, String paramString)
+  public void exeJsOnEngine(akni paramakni, String paramString)
   {
-    this.mRenderRunners.a(paramaivw, paramString);
+    this.mRenderRunners.a(paramakni, paramString);
   }
   
   public void getAccountInfo(long paramLong, String paramString, int paramInt)
   {
-    if (ajac.a()) {
-      ajct.a(paramLong, paramInt, paramString);
+    if (akro.a()) {
+      akuf.a(paramLong, paramInt, paramString);
     }
   }
   
   public int getDeviceHeight()
   {
-    return (int)bbdh.l();
+    return (int)bdcb.l();
   }
   
   public int getDeviceWidth()
   {
-    return (int)bbdh.k();
+    return (int)bdcb.k();
   }
   
   public int getDispalyDpi()
   {
-    return bbdh.d();
+    return bdcb.d();
   }
   
   public int getMusicCurPos(int paramInt)
@@ -475,7 +480,7 @@ public class ApolloCmdChannel
   public int getMusicSwitch()
   {
     this.mPlayer = getRightPlayer();
-    AppInterface localAppInterface = ajac.a();
+    AppInterface localAppInterface = akro.a();
     if ((this.mPlayer != null) && (localAppInterface != null)) {
       return this.mPlayer.a(localAppInterface);
     }
@@ -499,7 +504,7 @@ public class ApolloCmdChannel
     return localObject;
     label36:
     if (paramInt == 4) {
-      paramString1 = bbcz.e((QQAppInterface)this.mAppRef.get(), paramString1, paramString2);
+      paramString1 = bdbt.e((QQAppInterface)this.mAppRef.get(), paramString1, paramString2);
     }
     for (;;)
     {
@@ -511,7 +516,7 @@ public class ApolloCmdChannel
       return paramString1;
       if (paramInt == 5)
       {
-        paramString1 = bbcz.c((QQAppInterface)this.mAppRef.get(), paramString2, false);
+        paramString1 = bdbt.c((QQAppInterface)this.mAppRef.get(), paramString2, false);
       }
       else
       {
@@ -522,7 +527,7 @@ public class ApolloCmdChannel
           paramString1 = paramString2;
           if (localObject != null)
           {
-            localObject = ((ajxl)((QQAppInterface)localObject).getManager(51)).b(paramString2);
+            localObject = ((aloz)((QQAppInterface)localObject).getManager(51)).b(paramString2);
             paramString1 = paramString2;
             if (localObject != null) {
               paramString1 = ((Friends)localObject).getFriendNick();
@@ -540,8 +545,8 @@ public class ApolloCmdChannel
     {
       if (i < this.mRequestHandlers.size())
       {
-        if ((this.mRequestHandlers.get(i) instanceof ajbo)) {
-          ((ajbo)this.mRequestHandlers.get(i)).a(paramLong, paramString, new aivn(this, paramLong, paramString));
+        if ((this.mRequestHandlers.get(i) instanceof akta)) {
+          ((akta)this.mRequestHandlers.get(i)).a(paramLong, paramString, new akmz(this, paramLong, paramString));
         }
       }
       else {
@@ -556,8 +561,8 @@ public class ApolloCmdChannel
     int i = 0;
     while (i < this.mRequestHandlers.size())
     {
-      if ((this.mRequestHandlers.get(i) instanceof ajbo)) {
-        ((ajbo)this.mRequestHandlers.get(i)).a(paramLong, paramString, new aivo(this, paramLong, paramString));
+      if ((this.mRequestHandlers.get(i) instanceof akta)) {
+        ((akta)this.mRequestHandlers.get(i)).a(paramLong, paramString, new akna(this, paramLong, paramString));
       }
       i += 1;
     }
@@ -582,9 +587,9 @@ public class ApolloCmdChannel
       return;
     }
     if (paramInt != 0) {}
-    for (aivw localaivw = this.mRenderRunners.a(paramInt);; localaivw = this.mRenderRunners.a())
+    for (akni localakni = this.mRenderRunners.a(paramInt);; localakni = this.mRenderRunners.a())
     {
-      if (localaivw != null) {
+      if (localakni != null) {
         break label92;
       }
       if (!QLog.isColorLevel()) {
@@ -594,7 +599,7 @@ public class ApolloCmdChannel
       return;
     }
     label92:
-    localaivw.runRenderTask(new ApolloCmdChannel.5(this, localaivw, paramString));
+    localakni.runRenderTask(new ApolloCmdChannel.5(this, localakni, paramString));
   }
   
   /* Error */
@@ -603,31 +608,31 @@ public class ApolloCmdChannel
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 301	com/tencent/mobileqq/apollo/ApolloEngine:a	()Z
+    //   2: invokestatic 303	com/tencent/mobileqq/apollo/ApolloEngine:a	()Z
     //   5: ifeq +38 -> 43
     //   8: aload_0
-    //   9: getfield 378	com/tencent/mobileqq/apollo/aioChannel/ApolloCmdChannel:mSetNativeObj	Z
+    //   9: getfield 380	com/tencent/mobileqq/apollo/aioChannel/ApolloCmdChannel:mSetNativeObj	Z
     //   12: ifne +28 -> 40
     //   15: aload_0
     //   16: aload_0
-    //   17: invokespecial 380	com/tencent/mobileqq/apollo/aioChannel/ApolloCmdChannel:nativeSetDataChannelObj	(Lcom/tencent/mobileqq/apollo/aioChannel/ApolloCmdChannel;)V
+    //   17: invokespecial 382	com/tencent/mobileqq/apollo/aioChannel/ApolloCmdChannel:nativeSetDataChannelObj	(Lcom/tencent/mobileqq/apollo/aioChannel/ApolloCmdChannel;)V
     //   20: aload_0
     //   21: iconst_1
-    //   22: putfield 378	com/tencent/mobileqq/apollo/aioChannel/ApolloCmdChannel:mSetNativeObj	Z
-    //   25: invokestatic 239	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   22: putfield 380	com/tencent/mobileqq/apollo/aioChannel/ApolloCmdChannel:mSetNativeObj	Z
+    //   25: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   28: ifeq +12 -> 40
     //   31: ldc 8
     //   33: iconst_2
-    //   34: ldc_w 503
+    //   34: ldc_w 505
     //   37: invokestatic 154	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   40: aload_0
     //   41: monitorexit
     //   42: return
-    //   43: invokestatic 239	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   43: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   46: ifeq -6 -> 40
     //   49: ldc 8
     //   51: iconst_2
-    //   52: ldc_w 505
+    //   52: ldc_w 507
     //   55: invokestatic 154	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   58: goto -18 -> 40
     //   61: astore_1
@@ -656,7 +661,7 @@ public class ApolloCmdChannel
     {
       Iterator localIterator = this.mRequestHandlers.iterator();
       if (localIterator.hasNext()) {
-        ((aivp)localIterator.next()).a();
+        ((aknb)localIterator.next()).a();
       }
     }
     this.mRequestHandlers.clear();
@@ -693,17 +698,17 @@ public class ApolloCmdChannel
   
   public void operateNativeUI(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    Object localObject = ajac.b(paramLong);
+    Object localObject = akro.b(paramLong);
     if (localObject != null)
     {
-      localObject = ((ajcf)localObject).a();
+      localObject = ((aktr)localObject).a();
       if (localObject == null) {}
     }
     try
     {
       paramString3 = new JSONObject(paramString3);
       paramString3.put("action", paramString4);
-      ((ajdy)localObject).a(paramString1, paramString2, paramString4, paramString3.toString());
+      ((akvk)localObject).a(paramString1, paramString2, paramString4, paramString3.toString());
       return;
     }
     catch (Throwable paramString1)
@@ -733,8 +738,8 @@ public class ApolloCmdChannel
     if (QLog.isColorLevel()) {
       QLog.d("cmgame_process.ApolloDataChannel", 2, new Object[] { "[playMusic], type:", Integer.valueOf(paramInt1), ",count:", Integer.valueOf(paramInt2), ",musicPath:", "volumn:", Float.valueOf(paramFloat), ",seekTo:", Integer.valueOf(paramInt3), ",audioType:", Integer.valueOf(paramInt4) });
     }
-    aivw localaivw = this.mRenderRunners.b(Thread.currentThread().getId());
-    if (localaivw == null) {
+    akni localakni = this.mRenderRunners.b(Thread.currentThread().getId());
+    if (localakni == null) {
       if (QLog.isColorLevel()) {
         QLog.d("cmgame_process.ApolloDataChannel", 2, "[playMusic], not find renderRunner");
       }
@@ -756,10 +761,10 @@ public class ApolloCmdChannel
       }
       for (;;)
       {
-        if (!(localaivw instanceof View)) {
+        if (!(localakni instanceof View)) {
           break label232;
         }
-        View localView = (View)localaivw;
+        View localView = (View)localakni;
         if ((localView == null) || (localView.isShown())) {
           break label232;
         }
@@ -772,12 +777,12 @@ public class ApolloCmdChannel
       createRightPlayer(paramInt4);
       this.mPlayer = getRightPlayer();
     } while (this.mPlayer == null);
-    ThreadManager.post(new ApolloCmdChannel.PlayMusicTask(getGameId(), this, localaivw, this.mPlayer, paramLong, paramInt1, paramInt2, paramString, paramFloat, paramInt3), 5, null, true);
+    ThreadManager.post(new ApolloCmdChannel.PlayMusicTask(getGameId(), this, localakni, this.mPlayer, paramLong, paramInt1, paramInt2, paramString, paramFloat, paramInt3), 5, null, true);
   }
   
-  public void playMusicInner(aivw paramaivw, int paramInt, long paramLong)
+  public void playMusicInner(akni paramakni, int paramInt, long paramLong)
   {
-    if ((paramaivw != null) && (paramInt != 0) && (paramLong != 0L))
+    if ((paramakni != null) && (paramInt != 0) && (paramLong != 0L))
     {
       if (ApolloEngine.a()) {
         break label36;
@@ -788,24 +793,24 @@ public class ApolloCmdChannel
     }
     return;
     label36:
-    paramaivw.runRenderTask(new ApolloCmdChannel.6(this, paramLong, paramInt));
+    paramakni.runRenderTask(new ApolloCmdChannel.6(this, paramLong, paramInt));
   }
   
-  public void removeCmdHandler(aivp paramaivp)
+  public void removeCmdHandler(aknb paramaknb)
   {
     synchronized (this.mRequestHandlers)
     {
-      this.mRequestHandlers.remove(paramaivp);
+      this.mRequestHandlers.remove(paramaknb);
       if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloDataChannel", 2, "removeCmdHandler class:" + paramaivp.getClass().getName() + ", size: " + this.mRequestHandlers.size());
+        QLog.d("cmgame_process.ApolloDataChannel", 2, "removeCmdHandler class:" + paramaknb.getClass().getName() + ", size: " + this.mRequestHandlers.size());
       }
       return;
     }
   }
   
-  public void removeRenderRunner(aivw paramaivw)
+  public void removeRenderRunner(akni paramakni)
   {
-    this.mRenderRunners.b(paramaivw);
+    this.mRenderRunners.b(paramakni);
   }
   
   public String requestData(long paramLong, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
@@ -817,15 +822,15 @@ public class ApolloCmdChannel
       QLog.d("cmgame_process.ApolloDataChannel", 2, "[requestData], luaState:" + paramLong + ",cmd:" + paramString1 + ",async:" + paramBoolean1 + ",isCallFromJsRuntime:" + paramBoolean2);
     }
     if (isGameHandlerClosed()) {
-      ajac.a(paramString1, paramString2);
+      akro.a(paramString1, paramString2);
     }
-    if (ajbu.a(paramLong, paramBoolean1, paramString1, paramString2))
+    if (aktg.a(paramLong, paramBoolean1, paramString1, paramString2))
     {
       QLog.i("cmgame_process.ApolloDataChannel", 1, "fetch uin by openId first.");
       return "{}";
     }
-    paramString2 = ajct.a(paramLong, paramString1, paramString2);
-    if (1 == ajbu.a(paramLong, paramString1, paramString2, paramBoolean1)) {
+    paramString2 = akuf.a(paramLong, paramString1, paramString2);
+    if (1 == aktg.a(paramLong, paramString1, paramString2, paramBoolean1)) {
       return "{}";
     }
     this.mCallJsRuntimeMap.put(Long.valueOf(paramLong), Boolean.valueOf(paramBoolean2));
@@ -845,13 +850,13 @@ public class ApolloCmdChannel
           localObject2 = this.mRequestHandlers.iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            aivv localaivv = ((aivp)((Iterator)localObject2).next()).a(paramLong, paramString1, paramString2);
-            if (localaivv != null)
+            aknh localaknh = ((aknb)((Iterator)localObject2).next()).a(paramLong, paramString1, paramString2);
+            if (localaknh != null)
             {
-              if (localaivv.jdField_a_of_type_Boolean) {
+              if (localaknh.jdField_a_of_type_Boolean) {
                 ((Iterator)localObject2).remove();
               }
-              paramString1 = localaivv.jdField_a_of_type_JavaLangString;
+              paramString1 = localaknh.jdField_a_of_type_JavaLangString;
               return paramString1;
             }
           }
@@ -886,17 +891,17 @@ public class ApolloCmdChannel
         Iterator localIterator = this.mRequestHandlers.iterator();
         while (localIterator.hasNext())
         {
-          aivp localaivp = (aivp)localIterator.next();
-          if (localaivp.a(paramActivity))
+          aknb localaknb = (aknb)localIterator.next();
+          if (localaknb.a(paramActivity))
           {
-            localaivp.a();
+            localaknb.a();
             localIterator.remove();
-            QLog.d("cmgame_process.ApolloDataChannel", 1, "setActivityContext handler.checkReCreateOnActivityChanged:" + localaivp.getClass());
+            QLog.d("cmgame_process.ApolloDataChannel", 1, "setActivityContext handler.checkReCreateOnActivityChanged:" + localaknb.getClass());
           }
         }
       }
-      this.mRequestHandlers.add(new aivu(paramActivity, (QQAppInterface)this.mAppRef.get()));
-      Collections.sort(this.mRequestHandlers, new aivl(this));
+      this.mRequestHandlers.add(new akng(paramActivity, (QQAppInterface)this.mAppRef.get()));
+      Collections.sort(this.mRequestHandlers, new akmx(this));
       QLog.d("cmgame_process.ApolloDataChannel", 1, "setActivityContext activity: " + paramActivity);
     }
   }
@@ -907,7 +912,7 @@ public class ApolloCmdChannel
       QLog.d("cmgame_process.ApolloDataChannel", 2, "[setMusicSwitch], switch:" + paramInt);
     }
     this.mPlayer = getRightPlayer();
-    AppInterface localAppInterface = ajac.a();
+    AppInterface localAppInterface = akro.a();
     if ((this.mPlayer != null) && (localAppInterface != null)) {
       this.mPlayer.a(paramInt, localAppInterface);
     }
@@ -925,10 +930,10 @@ public class ApolloCmdChannel
       do
       {
         return;
-        localObject3 = ajac.b(((aivw)localObject2).getRuntimeState());
+        localObject3 = akro.b(((akni)localObject2).getRuntimeState());
       } while ((localObject3 == null) || (localObject1 == null));
-      localObject2 = ((ajcf)localObject3).a();
-      localObject3 = ((ajcf)localObject3).a();
+      localObject2 = ((aktr)localObject3).a();
+      localObject3 = ((aktr)localObject3).a();
     } while ((localObject3 == null) || (localObject2 == null));
     int i = ((CmGameInitParams)localObject3).mViewMode + 1;
     QLog.i("cmgame_process.ApolloDataChannel", 1, "oldMode:" + i);
@@ -936,10 +941,10 @@ public class ApolloCmdChannel
     {
       localObject1 = ((ApolloRender)localObject1).getSavaWrapper();
       if (localObject1 != null) {
-        ((ApolloEngine)localObject1).a(paramInt3 / bbdh.a, paramInt2 / bbdh.a);
+        ((ApolloEngine)localObject1).a(paramInt3 / bdcb.a, paramInt2 / bdcb.a);
       }
     }
-    ((ajcx)localObject2).a(ajcx.a(paramInt1));
+    ((akuj)localObject2).a(akuj.a(paramInt1));
   }
   
   public void stopMusic(int paramInt, String paramString)
@@ -950,13 +955,13 @@ public class ApolloCmdChannel
     }
   }
   
-  public void updateUserInfo(aiyo paramaiyo)
+  public void updateUserInfo(akqa paramakqa)
   {
     int i = 0;
     while (i < this.mRequestHandlers.size())
     {
-      if ((this.mRequestHandlers.get(i) instanceof ajbo)) {
-        ((ajbo)this.mRequestHandlers.get(i)).a(paramaiyo);
+      if ((this.mRequestHandlers.get(i) instanceof akta)) {
+        ((akta)this.mRequestHandlers.get(i)).a(paramakqa);
       }
       i += 1;
     }
@@ -964,7 +969,7 @@ public class ApolloCmdChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel
  * JD-Core Version:    0.7.0.1
  */

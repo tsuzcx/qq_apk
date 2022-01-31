@@ -9,9 +9,9 @@
     </RelativeLayout>
     <ImageView android:id="@id/bvb" android:visibility="gone" android:layout_width="33.0dip" android:layout_height="30.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="23.0dip" android:src="@drawable/foa" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
     <LinearLayout android:orientation="vertical" android:id="@id/ja2" android:layout_width="fill_parent" android:layout_height="@dimen/nw" android:layout_alignParentBottom="true">
-        <View android:id="@id/j_2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <View android:id="@id/j_2" android:layout_width="fill_parent" android:layout_height="1.0px" />
         <RelativeLayout android:id="@id/container_secondary_tab" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mobileqq.emoticonview.HorizontalListViewEx android:orientation="horizontal" android:id="@id/tab_sencondary_emoticon" android:background="@null" android:paddingRight="3.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="51.0dip" android:layout_marginRight="48.0dip" />
+            <com.tencent.mobileqq.emoticonview.HorizontalListViewEx android:orientation="horizontal" android:id="@id/tab_sencondary_emoticon" android:background="@null" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/ak5" android:layout_toRightOf="@id/btn_more_emoticon" />
             <ImageView android:id="@id/btn_more_emoticon" android:layout_width="51.0dip" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:contentDescription="@string/axk" />
             <ImageView android:id="@id/ak5" android:layout_width="51.0dip" android:layout_height="fill_parent" android:src="@drawable/ao1" android:scaleType="fitXY" android:layout_alignParentRight="true" android:contentDescription="@string/axl" />
         </RelativeLayout>

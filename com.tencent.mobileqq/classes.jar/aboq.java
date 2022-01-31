@@ -1,44 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.ims.signature.SignatureKickData;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class aboq
-  implements DialogInterface.OnClickListener
 {
-  public aboq(NotificationActivity paramNotificationActivity, signature.SignatureKickData paramSignatureKickData) {}
+  private MsgLruCache a;
+  protected ConcurrentHashMap<String, Lock> a;
+  private ConcurrentHashMap<String, List<MessageRecord>> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aboq()
   {
-    QLog.i("NotificationActivity", 1, "setPositiveButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("password", null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
-    try
-    {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_ComTencentImsSignature$SignatureKickData.str_url.get()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(paramDialogInterface);
-      label106:
-      paramDialogInterface = new Intent("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.sendBroadcast(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgPool", 2, "MsgPool() called " + this);
     }
-    catch (Exception paramDialogInterface)
+    this.b = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache = new MsgLruCache(this);
+  }
+  
+  public MsgLruCache a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache;
+  }
+  
+  public Map<String, List<MessageRecord>> a()
+  {
+    return this.b;
+  }
+  
+  public Lock a(String arg1, int paramInt)
+  {
+    String str = abot.a(???, paramInt);
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {}
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
-      break label106;
+      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new ReentrantLock());
+      }
+      return (Lock)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aboq
  * JD-Core Version:    0.7.0.1
  */

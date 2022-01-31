@@ -22,7 +22,7 @@ public class NewStyleFollowTextView
   {
     if (this.a)
     {
-      i = 2130838650;
+      i = 2130838727;
       setBackgroundResource(i);
       if (!this.a) {
         break label43;
@@ -32,9 +32,9 @@ public class NewStyleFollowTextView
     for (int i = -9211021;; i = Color.parseColor("#9A9A9A"))
     {
       setTextColor(i);
-      setText(2131690655);
+      setText(2131690707);
       return;
-      i = 2130838648;
+      i = 2130838725;
       break;
     }
   }
@@ -43,7 +43,7 @@ public class NewStyleFollowTextView
   {
     if (this.a)
     {
-      i = 2130838737;
+      i = 2130838899;
       setBackgroundResource(i);
       if (!this.a) {
         break label43;
@@ -53,16 +53,16 @@ public class NewStyleFollowTextView
     for (int i = -1493172225;; i = -1)
     {
       setTextColor(i);
-      setText(2131690661);
+      setText(2131690713);
       return;
-      i = 2130838735;
+      i = 2130838897;
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.NewStyleFollowTextView
  * JD-Core Version:    0.7.0.1
  */

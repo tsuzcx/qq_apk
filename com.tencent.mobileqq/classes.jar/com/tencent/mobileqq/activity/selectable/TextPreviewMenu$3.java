@@ -12,7 +12,7 @@ class TextPreviewMenu$3
   
   public void run()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131371264);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131371576);
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localRelativeLayout.getLayoutParams();
     localLayoutParams.height = this.a.a.getHeight();
     localRelativeLayout.setLayoutParams(localLayoutParams);
@@ -20,7 +20,7 @@ class TextPreviewMenu$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.TextPreviewMenu.3
  * JD-Core Version:    0.7.0.1
  */

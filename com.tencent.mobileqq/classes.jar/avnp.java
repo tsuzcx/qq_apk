@@ -1,29 +1,17 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class avnp
-  implements Downloader.DownloadListener
+public abstract class avnp
+  extends avlt
 {
-  avnp(avno paramavno) {}
-  
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public avnp(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    QLog.i("QzoneGiftManager", 1, " preloadLottieZip fail error");
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    QLog.i("QzoneGiftManager", 1, " preloadLottieZip success");
+    super(paramContext, paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avnp
  * JD-Core Version:    0.7.0.1
  */

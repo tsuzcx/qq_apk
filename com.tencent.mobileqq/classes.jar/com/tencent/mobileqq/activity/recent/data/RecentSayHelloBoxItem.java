@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import akpb;
-import akpu;
+import abol;
+import abor;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import anml;
-import bbcz;
-import bbfh;
+import apds;
+import bdbt;
+import bdec;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -48,14 +48,14 @@ public class RecentSayHelloBoxItem
       synchronized (this.lock)
       {
         this.mUnreadMRList.clear();
-        this.mUnreadNum = ((akpb)localObject1).a(a(), a());
+        this.mUnreadNum = ((abol)localObject1).a(a(), a());
         if (i > 0)
         {
           localObject3 = ((List)localObject3).iterator();
           if (((Iterator)localObject3).hasNext())
           {
             MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject3).next();
-            if ((((akpb)localObject1).a(localMessageRecord.senderuin, localMessageRecord.istroop) > 0) && (this.mUnreadMRList.size() < 6)) {
+            if ((((abol)localObject1).a(localMessageRecord.senderuin, localMessageRecord.istroop) > 0) && (this.mUnreadMRList.size() < 6)) {
               this.mUnreadMRList.add(localMessageRecord);
             }
             if (this.mUnreadMRList.size() < 6) {
@@ -75,12 +75,12 @@ public class RecentSayHelloBoxItem
         if (localObject3 != null) {
           ??? = ((QQMessageFacade)localObject3).a(a(), a());
         }
-        if (anml.a(paramQQAppInterface, a(), 1001))
+        if (apds.a(paramQQAppInterface, a(), 1001))
         {
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131693288);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131693389);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131167006);
           ??? = a();
-          ((MsgSummary)???).strContent = ((akpb)localObject1).a(a(), 1001, paramContext.getResources().getString(2131693287), 0);
+          ((MsgSummary)???).strContent = ((abol)localObject1).a(a(), 1001, paramContext.getResources().getString(2131693388), 0);
           a(paramQQAppInterface, (MsgSummary)???);
           a(paramQQAppInterface, paramContext, (MsgSummary)???);
           if (QLog.isColorLevel()) {
@@ -89,7 +89,7 @@ public class RecentSayHelloBoxItem
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg_box", 2, "boxUin" + a() + ",boxType" + a() + ",unreadNum:" + this.mUnreadNum);
           }
-          if (!AppSetting.d) {
+          if (!AppSetting.c) {
             break;
           }
           paramQQAppInterface = new StringBuilder(24);
@@ -107,12 +107,12 @@ public class RecentSayHelloBoxItem
           i = ((List)localObject3).size();
         }
       }
-      if (anml.b(paramQQAppInterface, a(), 1001))
+      if (apds.b(paramQQAppInterface, a(), 1001))
       {
         this.mHasFlowerMsg = true;
         this.mUnreadFlag = 1;
-        this.mMsgExtroInfo = paramContext.getResources().getString(2131694402);
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
+        this.mMsgExtroInfo = paramContext.getResources().getString(2131694559);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167006);
         this.mLastMsg = "";
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg_box", 2, "boxUin" + a() + ",boxType" + a() + ",HasUnreadGiftMsg");
@@ -130,22 +130,22 @@ public class RecentSayHelloBoxItem
     localObject1 = null;
     if (??? != null)
     {
-      localObject3 = bbcz.q(paramQQAppInterface, ((QQMessageFacade.Message)???).senderuin);
+      localObject3 = bdbt.q(paramQQAppInterface, ((QQMessageFacade.Message)???).senderuin);
       localObject1 = localObject3;
       if (TextUtils.isEmpty((CharSequence)localObject3)) {
-        localObject1 = bbcz.b(paramQQAppInterface, ((QQMessageFacade.Message)???).senderuin, false);
+        localObject1 = bdbt.b(paramQQAppInterface, ((QQMessageFacade.Message)???).senderuin, false);
       }
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label852;
+        break label853;
       }
       localObject1 = "";
     }
     label785:
-    label852:
+    label853:
     for (;;)
     {
       localObject3 = a();
-      bbfh.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)???, a(), (MsgSummary)localObject3, (String)localObject1, false, false);
+      bdec.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)???, a(), (MsgSummary)localObject3, (String)localObject1, false, false);
       a(paramQQAppInterface, (MsgSummary)localObject3);
       a(paramQQAppInterface, paramContext, (MsgSummary)localObject3);
       break;
@@ -169,7 +169,7 @@ public class RecentSayHelloBoxItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentSayHelloBoxItem
  * JD-Core Version:    0.7.0.1
  */

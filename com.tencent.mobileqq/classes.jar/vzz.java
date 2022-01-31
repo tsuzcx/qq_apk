@@ -1,36 +1,23 @@
-class vzz
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.Dispatcher;
+
+public class vzz
+  extends wbo
 {
-  final String jdField_a_of_type_JavaLangString;
-  final boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public vzz(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
-  vzz(boolean paramBoolean, String paramString)
+  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  static vzz a()
-  {
-    return new vzz(false, "");
-  }
-  
-  static vzz a(Process paramProcess)
-  {
-    if (a(Integer.valueOf(paramProcess.exitValue()))) {}
-    for (String str = wba.a(paramProcess.getInputStream());; str = wba.a(paramProcess.getErrorStream())) {
-      return new vzz(a(Integer.valueOf(paramProcess.exitValue())), str);
-    }
-  }
-  
-  static boolean a(Integer paramInteger)
-  {
-    return (paramInteger != null) && (paramInteger.intValue() == 0);
+    vad localvad = new vad();
+    localvad.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
+    localvad.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
+    uht.a().dispatch(localvad);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzz
  * JD-Core Version:    0.7.0.1
  */

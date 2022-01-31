@@ -1,39 +1,32 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import com.tencent.widget.Gallery;
 
-public class agdj
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+class agdj
+  implements army
 {
-  protected agdj(agdi paramagdi) {}
+  agdj(agdi paramagdi) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a()
   {
-    if (paramInt == 3)
+    try
     {
-      this.a.a();
-      return true;
+      this.a.a(true);
+      this.a.jdField_a_of_type_Agft.a(this.a.jdField_a_of_type_Ageh.jdField_a_of_type_Long, this.a.jdField_a_of_type_Ageh.jdField_a_of_type_Int, 20);
+      agdi.a(this.a).b(true);
+      agdi.b(this.a).a(true);
+      return;
     }
-    return false;
+    catch (Exception localException) {}
   }
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void b()
   {
-    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.a();
-      }
-      return true;
-    }
-    return false;
+    this.a.a(false);
+    this.a.c(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdj
  * JD-Core Version:    0.7.0.1
  */

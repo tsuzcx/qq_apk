@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.DynamicAvatar;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public final class anih
-  implements Parcelable.Creator<DynamicAvatar>
+class anih
+  implements anip
 {
-  public DynamicAvatar a(Parcel paramParcel)
-  {
-    return new DynamicAvatar(paramParcel);
-  }
+  anih(anid paramanid, anin paramanin, anip paramanip, String paramString) {}
   
-  public DynamicAvatar[] a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    return new DynamicAvatar[paramInt];
+    if (paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Anip.a(true);
+      return;
+    }
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString }));
+    anid.a(this.jdField_a_of_type_Anid, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anin, new anii(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anih
  * JD-Core Version:    0.7.0.1
  */

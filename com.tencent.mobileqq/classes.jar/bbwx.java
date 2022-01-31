@@ -1,19 +1,10 @@
-final class bbwx
-  extends bbwt
+public abstract interface bbwx
 {
-  public void onDone(bbwu parambbwu)
-  {
-    super.onDone(parambbwu);
-  }
-  
-  public boolean onStart(bbwu parambbwu)
-  {
-    return true;
-  }
+  public abstract void b(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbwx
  * JD-Core Version:    0.7.0.1
  */

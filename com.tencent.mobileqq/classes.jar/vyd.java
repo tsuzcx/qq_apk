@@ -1,59 +1,18 @@
+import java.util.ArrayList;
+
 public class vyd
 {
-  public static String a(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        localObject = new RuntimeException("getStackTrace").getStackTrace();
-        localStringBuilder = new StringBuilder();
-        i = paramInt;
-        if (localObject.length > paramInt) {
-          break label69;
-        }
-        i = localObject.length;
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append(localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label69:
-        paramInt = 2;
-      }
-    }
-  }
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public static void a(String paramString, int paramInt, long paramLong)
+  public vyd(String paramString)
   {
-    if (paramLong <= 0L)
-    {
-      vxp.a("unLikeRecommendFeed failed, because recommendId=" + paramLong, new Object[0]);
-      return;
-    }
-    vye localvye = new vye();
-    localvye.jdField_b_of_type_JavaLangString = paramString;
-    localvye.c = paramInt;
-    localvye.jdField_b_of_type_Long = paramLong;
-    localvye.d = 1;
-    syo.a().a(localvye, null);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyd
  * JD-Core Version:    0.7.0.1
  */

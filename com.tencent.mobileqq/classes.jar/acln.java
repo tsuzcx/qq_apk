@@ -1,39 +1,19 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acln
-  implements View.OnClickListener
+class acln
+  implements DialogInterface.OnClickListener
 {
-  public acln(TroopRequestActivity paramTroopRequestActivity) {}
+  acln(aclm paramaclm) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (akgx)this.a.app.a(26);
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      if (!TextUtils.isEmpty(this.a.b)) {
-        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
-      }
-      paramView.a(localArrayList);
-      return;
-    }
-    catch (NumberFormatException paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", paramView);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acln
  * JD-Core Version:    0.7.0.1
  */

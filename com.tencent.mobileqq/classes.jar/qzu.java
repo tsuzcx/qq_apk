@@ -1,58 +1,25 @@
 import android.view.View;
-import android.widget.PopupWindow;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class qzu
+class qzu
+  implements View.OnClickListener
 {
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private List<bfvi> jdField_a_of_type_JavaUtilList;
+  qzu(qzs paramqzs) {}
   
-  public float a(int paramInt)
+  public void onClick(View paramView)
   {
-    float f2 = 0.0F;
-    float f1 = f2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      f1 = f2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        f1 = ((bfvi)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
     }
-    return f1;
-  }
-  
-  public qzu a(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 83, 0, 0);
-    }
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing());
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    if (qzs.a(this.a).isShowing()) {
+      qzs.a(this.a).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qzu
  * JD-Core Version:    0.7.0.1
  */

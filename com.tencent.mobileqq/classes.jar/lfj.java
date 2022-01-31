@@ -1,77 +1,36 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.MemoryInfo;
-import android.content.ComponentCallbacks2;
-import android.content.Context;
-import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
-class lfj
-  implements ComponentCallbacks2
+public class lfj
+  extends lfv
 {
-  lfj(lfi paramlfi) {}
-  
-  private void a(int paramInt)
+  public lfj(VideoController paramVideoController)
   {
-    VideoController localVideoController = this.a.a.a();
-    if (localVideoController != null) {
-      localVideoController.a("lowMemoryLevel", String.valueOf(paramInt));
+    super(paramVideoController);
+  }
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    QLog.w(VideoController.a, 1, "onCompletion, onClose, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
     }
-    try
+    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().o())
     {
-      ActivityManager localActivityManager = (ActivityManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("activity");
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      localActivityManager.getMemoryInfo(localMemoryInfo);
-      localVideoController = localVideoController.a("availMem", String.valueOf(localMemoryInfo.availMem / 1048576L)).a("threshold", String.valueOf(localMemoryInfo.threshold / 1048576L));
-      if (localMemoryInfo.lowMemory) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        localVideoController.a("lowMemory", String.valueOf(paramInt));
-        return;
-      }
+      lek.d(VideoController.a, "onCompletion onClose is not Closing2");
+      this.jdField_a_of_type_Long = 0L;
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      lcg.e("GMemoryMonitor", localThrowable.getMessage());
-    }
-  }
-  
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GMemoryMonitor", 2, "onConfigurationChanged called");
-    }
-  }
-  
-  public void onLowMemory()
-  {
-    QLog.d("GMemoryMonitor", 1, "onLowMemory called");
-    this.a.a(-10, this.a.a.e);
-    a(-10);
-  }
-  
-  public void onTrimMemory(int paramInt)
-  {
-    if (paramInt >= 15) {
-      liu.a(41, paramInt);
-    }
-    if (paramInt == 15)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GMemoryMonitor", 2, "onTrimMemory called ,level = " + paramInt);
-      }
-      this.a.a(paramInt, this.a.a.e);
-      ((liw)this.a.a.a(4)).a(27, paramInt);
-      a(paramInt);
-    }
+    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvVideoController.a().d, 217);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(217);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_ComTencentAvVideoController.a().d, this.jdField_a_of_type_ComTencentAvVideoController.a().y);
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,88 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aonb
-  implements Animation.AnimationListener
+public class aonb
+  extends aofy<aonc>
 {
-  aonb(aomx paramaomx) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
-    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
+    return 538;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  @NonNull
+  public aonc a(int paramInt)
+  {
+    return new aonc();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  @Nullable
+  public aonc a(aogf[] paramArrayOfaogf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    {
+      paramArrayOfaogf = paramArrayOfaogf[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed, content:" + paramArrayOfaogf);
+      }
+      return aonc.a(paramArrayOfaogf);
+    }
+    return new aonc();
+  }
+  
+  public Class a()
+  {
+    return aonc.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public void a(aonc paramaonc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onUpdate");
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface != null)
+    {
+      localQQAppInterface.a().a = paramaonc;
+      localQQAppInterface.getHwEngine().ipv6Switch = paramaonc.a;
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonb
  * JD-Core Version:    0.7.0.1
  */

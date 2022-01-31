@@ -1,8 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import nol;
-import org.json.JSONException;
-import org.json.JSONObject;
+import nrt;
+import ntd;
 
 class ReadInJoyVideoSubChannelActivity$5
   implements Runnable
@@ -11,22 +10,12 @@ class ReadInJoyVideoSubChannelActivity$5
   
   public void run()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("channel_id", ReadInJoyVideoSubChannelActivity.a(this.this$0));
-      nol.a(null, "", "0X8009665", "0X8009665", 0, 0, "", "", "", localJSONObject.toString(), false);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    nrt.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", ntd.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity.5
  * JD-Core Version:    0.7.0.1
  */

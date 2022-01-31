@@ -1,52 +1,74 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class arue
+  extends arum
 {
-  int jdField_a_of_type_Int = -1;
-  long jdField_a_of_type_Long;
-  ListenTogetherSession jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString = "";
-  boolean jdField_c_of_type_Boolean = true;
-  int jdField_d_of_type_Int;
-  String jdField_d_of_type_JavaLangString = null;
-  boolean jdField_d_of_type_Boolean = false;
-  int e;
-  
-  public void a()
+  public arue(Intent paramIntent)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.e = 1;
+    super(paramIntent);
   }
   
-  public String toString()
+  public List<RecentUser> a(List<RecentUser> paramList)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("UiData{mCurType=").append(this.jdField_a_of_type_Int).append(", mCurUin='").append(this.jdField_a_of_type_JavaLangString).append(", status=").append(this.jdField_b_of_type_Int).append(", userState=").append(this.jdField_c_of_type_Int).append(", changeMusic=").append(this.jdField_d_of_type_Boolean).append(", isAdmin=").append(this.jdField_a_of_type_Boolean).append(", canOper=").append(this.jdField_b_of_type_Boolean).append(", playMode=").append(this.e).append(", creatorUin=").append(this.jdField_c_of_type_JavaLangString).append(", creatorNick=");
-    if (this.jdField_d_of_type_JavaLangString == null) {}
-    for (String str = "null";; str = this.jdField_d_of_type_JavaLangString) {
-      return str + ", isShowPanel=" + this.jdField_c_of_type_Boolean + ", progres=" + this.jdField_d_of_type_Int + ", titleMsg=" + this.jdField_b_of_type_JavaLangString + ", session=\n" + this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession + '}';
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      RecentUser localRecentUser = (RecentUser)paramList.next();
+      if ((localRecentUser != null) && (!bdal.a(localRecentUser.uin)) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1))) {
+        localArrayList.add(localRecentUser);
+      }
     }
+    return localArrayList;
+  }
+  
+  protected void a()
+  {
+    if (l()) {
+      this.jdField_a_of_type_JavaUtilSet.add(c);
+    }
+    if (m()) {
+      this.jdField_a_of_type_JavaUtilSet.add(b);
+    }
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramBundle.getString("uin"));
+    this.jdField_a_of_type_AndroidOsBundle.putInt("uintype", paramBundle.getInt("uintype"));
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("apollo_forward_key", true);
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("isBack2Root", true);
+    this.jdField_a_of_type_AndroidContentIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
+    this.jdField_a_of_type_AndroidContentIntent = aekt.a(this.jdField_a_of_type_AndroidContentIntent, new int[] { 2 });
+    this.jdField_a_of_type_AndroidContentIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+  }
+  
+  public boolean a()
+  {
+    super.a();
+    return true;
+  }
+  
+  public void c()
+  {
+    super.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arue
  * JD-Core Version:    0.7.0.1
  */

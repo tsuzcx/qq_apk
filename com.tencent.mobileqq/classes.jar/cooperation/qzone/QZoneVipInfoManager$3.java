@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bgyp;
+import bizm;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QZoneVipInfoManager$3
@@ -10,12 +10,12 @@ public final class QZoneVipInfoManager$3
   
   public void run()
   {
-    bgyp.a(this.a, "h5");
+    bizm.a(this.a, "h5");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QZoneVipInfoManager.3
  * JD-Core Version:    0.7.0.1
  */

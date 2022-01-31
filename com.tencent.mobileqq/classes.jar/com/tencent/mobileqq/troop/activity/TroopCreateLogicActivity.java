@@ -1,38 +1,37 @@
 package com.tencent.mobileqq.troop.activity;
 
-import ajya;
-import akhp;
-import akil;
+import alpo;
+import alzf;
+import amab;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqau;
-import aqbe;
-import aqdm;
-import axum;
-import axuq;
-import axuz;
-import axva;
-import aykk;
-import azib;
-import azic;
-import azid;
-import azie;
-import azif;
-import azig;
-import azih;
-import azoc;
-import azol;
-import azom;
-import bamv;
-import baui;
-import bbfj;
-import bbjx;
-import bcql;
-import bcww;
-import bdig;
-import bgzl;
+import aruc;
+import arum;
+import arwu;
+import azqg;
+import azqk;
+import azqt;
+import azqu;
+import baig;
+import bbgk;
+import bbgl;
+import bbgm;
+import bbgn;
+import bbgo;
+import bbgp;
+import bbgq;
+import bbml;
+import bbmu;
+import bbmv;
+import bcli;
+import bctc;
+import bdee;
+import bdir;
+import bevy;
+import bfhe;
+import bjao;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -44,6 +43,7 @@ import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import org.json.JSONException;
@@ -51,40 +51,40 @@ import org.json.JSONObject;
 
 public class TroopCreateLogicActivity
   extends BaseActivity
-  implements azol
+  implements bbmu
 {
-  public akil a;
-  azoc jdField_a_of_type_Azoc = null;
-  baui jdField_a_of_type_Baui;
-  public bcww a;
+  public amab a;
+  bbml jdField_a_of_type_Bbml = null;
+  bctc jdField_a_of_type_Bctc;
+  public bevy a;
   TroopInfoData jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData = new TroopInfoData();
   public String a;
   public boolean a;
   
   public TroopCreateLogicActivity()
   {
-    this.jdField_a_of_type_Bcww = new azib(this);
-    this.jdField_a_of_type_Akil = new azic(this);
+    this.jdField_a_of_type_Bevy = new bbgk(this);
+    this.jdField_a_of_type_Amab = new bbgl(this);
   }
   
   private void a()
   {
     if (getIntent() != null) {
-      aqdm.a(getIntent(), this.app, this).a(aqau.a.intValue(), getIntent().getExtras());
+      arwu.a(getIntent(), this.app, this).a(aruc.a.intValue(), getIntent().getExtras());
     }
   }
   
-  private void a(String paramString, azih paramazih)
+  private void a(String paramString, bbgq parambbgq)
   {
-    if ((paramazih == null) || (TextUtils.isEmpty(paramString))) {
+    if ((parambbgq == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
     paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
-    paramString.setURLDrawableListener(new azif(this, paramString, paramazih));
-    paramString.setDownloadListener(new azig(this, paramString, paramazih));
+    paramString.setURLDrawableListener(new bbgo(this, paramString, parambbgq));
+    paramString.setDownloadListener(new bbgp(this, paramString, parambbgq));
     if (paramString.getStatus() == 1)
     {
-      paramazih.a(bdig.a(paramString, 100, 100));
+      parambbgq.a(bfhe.a(paramString, 100, 100));
       return;
     }
     paramString.startDownload();
@@ -96,20 +96,20 @@ public class TroopCreateLogicActivity
     String str1 = paramJSONObject.optString("shareTitle");
     String str2 = paramJSONObject.optString("shareDesc");
     paramJSONObject = paramJSONObject.optString("shareIcon");
-    localObject = new axum(StructMsgForGeneralShare.class).c(149).a(ajya.a(2131715291) + str1).e((String)localObject).a();
-    axuq localaxuq = axuz.a(2);
-    localaxuq.a(paramJSONObject, str1, str2);
-    ((AbsShareMsg)localObject).addItem(localaxuq);
+    localObject = new azqg(StructMsgForGeneralShare.class).c(149).a(alpo.a(2131715663) + str1).e((String)localObject).a();
+    azqk localazqk = azqt.a(2);
+    localazqk.a(paramJSONObject, str1, str2);
+    ((AbsShareMsg)localObject).addItem(localazqk);
     paramJSONObject = new Intent();
     paramJSONObject.putExtra("forward_type", -3);
     paramJSONObject.putExtra("stuctmsg_bytes", ((AbsShareMsg)localObject).getBytes());
-    aqbe.a(this, paramJSONObject, 1002);
+    arum.a(this, paramJSONObject, 1002);
   }
   
   private void b()
   {
     if (getIntent() != null) {
-      aqdm.a(getIntent(), this.app, this).p();
+      arwu.a(getIntent(), this.app, this).p();
     }
   }
   
@@ -131,7 +131,7 @@ public class TroopCreateLogicActivity
     ((Bundle)localObject).putString("url", str1);
     ((Bundle)localObject).putStringArrayList("image_url", paramJSONObject);
     ((Bundle)localObject).putString("bizname", "SharePlato");
-    bgzl.a(this.app, this, (Bundle)localObject, null, 1001);
+    bjao.a(this.app, this, (Bundle)localObject, null, 1001);
   }
   
   private void c()
@@ -170,31 +170,31 @@ public class TroopCreateLogicActivity
   
   private void c(JSONObject paramJSONObject)
   {
-    if (!bbfj.g(this))
+    if (!bdee.g(this))
     {
-      bcql.a(this, 1, 2131694610, 1).a();
+      QQToast.a(this, 1, 2131694766, 1).a();
       return;
     }
     this.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
     String str1 = paramJSONObject.optString("shareLink");
     String str2 = paramJSONObject.optString("shareTitle");
     String str3 = paramJSONObject.optString("shareDesc");
-    a(paramJSONObject.optString("shareIcon"), new azid(this, str2, str3, str1));
+    a(paramJSONObject.optString("shareIcon"), new bbgm(this, str2, str3, str1));
     finish();
   }
   
   private void d(JSONObject paramJSONObject)
   {
-    if (!bbfj.g(this))
+    if (!bdee.g(this))
     {
-      bcql.a(this, 1, 2131694610, 1).a();
+      QQToast.a(this, 1, 2131694766, 1).a();
       return;
     }
     this.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
     String str1 = paramJSONObject.optString("shareLink");
     String str2 = paramJSONObject.optString("shareTitle");
     String str3 = paramJSONObject.optString("shareDesc");
-    a(paramJSONObject.optString("shareIcon"), new azie(this, str2, str3, str1));
+    a(paramJSONObject.optString("shareIcon"), new bbgn(this, str2, str3, str1));
     finish();
   }
   
@@ -231,7 +231,7 @@ public class TroopCreateLogicActivity
     try
     {
       if (!TextUtils.isEmpty(localTroopInfo.mRichFingerMemo)) {
-        paramString = new aykk(localTroopInfo.mRichFingerMemo, 11).a();
+        paramString = new baig(localTroopInfo.mRichFingerMemo, 11).a();
       }
       ((JSONObject)localObject).put("classify", localTroopInfo.dwGroupClassExt);
       ((JSONObject)localObject).put("name", localTroopInfo.troopname);
@@ -255,7 +255,7 @@ public class TroopCreateLogicActivity
   
   public void b(String paramString)
   {
-    if ((this.app == null) || (this.jdField_a_of_type_Baui == null) || (TextUtils.isEmpty(paramString))) {
+    if ((this.app == null) || (this.jdField_a_of_type_Bctc == null) || (TextUtils.isEmpty(paramString))) {
       finish();
     }
     label76:
@@ -299,7 +299,7 @@ public class TroopCreateLogicActivity
       this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.updateForTroopChatSetting(paramString, getResources(), this.app.getCurrentAccountUin());
       this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember = true;
     }
-    this.jdField_a_of_type_Baui.a(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    this.jdField_a_of_type_Bctc.a(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
   }
   
   public void c(String paramString) {}
@@ -401,9 +401,9 @@ public class TroopCreateLogicActivity
         if (paramInt2 != -1) {
           break;
         }
-        i = getResources().getDimensionPixelSize(2131298865);
-        bcql.a(this, 2, getString(2131696780), 0).b(i);
-        localObject = axva.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
+        i = getResources().getDimensionPixelSize(2131298914);
+        QQToast.a(this, 2, getString(2131696955), 0).b(i);
+        localObject = azqu.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
       } while (localObject == null);
       if ((localObject instanceof StructMsgForImageShare)) {}
       String str;
@@ -417,17 +417,17 @@ public class TroopCreateLogicActivity
         break;
         str = paramIntent.getStringExtra("uin");
         i = paramIntent.getIntExtra("uintype", -1);
-        bbjx.a(this.app, str, i, (AbsStructMsg)localObject, null);
+        bdir.a(this.app, str, i, (AbsStructMsg)localObject, null);
       }
       if (paramInt2 == -1)
       {
-        localObject = axva.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
+        localObject = azqu.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
         str = paramIntent.getStringExtra("uin");
         i = paramIntent.getIntExtra("uintype", -1);
         if ((localObject == null) || (TextUtils.isEmpty(str))) {
           break label244;
         }
-        bbjx.a(this.app, str, i, (AbsStructMsg)localObject, null);
+        bdir.a(this.app, str, i, (AbsStructMsg)localObject, null);
       }
       for (;;)
       {
@@ -445,8 +445,8 @@ public class TroopCreateLogicActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Azoc = ((azoc)this.app.getManager(32));
-    this.jdField_a_of_type_Baui = new baui(this, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    this.jdField_a_of_type_Bbml = ((bbml)this.app.getManager(32));
+    this.jdField_a_of_type_Bctc = new bctc(this, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
     paramBundle = getIntent();
     int i = paramBundle.getIntExtra("type", -1);
     if (i == 1) {
@@ -454,7 +454,7 @@ public class TroopCreateLogicActivity
     }
     for (;;)
     {
-      bamv.a("TroopCreateLogicActivity", new String[] { "" + i });
+      bcli.a("TroopCreateLogicActivity", new String[] { "" + i });
       return true;
       if (i == 2)
       {
@@ -472,19 +472,19 @@ public class TroopCreateLogicActivity
       {
         String str = paramBundle.getStringExtra("troop_location");
         long l = paramBundle.getLongExtra("troop_uin", 0L);
-        this.app.addObserver(this.jdField_a_of_type_Akil);
-        ((akhp)this.app.a(20)).a(l, TextUtils.isEmpty(str), str);
+        this.app.addObserver(this.jdField_a_of_type_Amab);
+        ((alzf)this.app.a(20)).a(l, TextUtils.isEmpty(str), str);
       }
       else if (i == 6)
       {
-        if (this.jdField_a_of_type_Azoc == null)
+        if (this.jdField_a_of_type_Bbml == null)
         {
           finish();
         }
         else
         {
           paramBundle = new Intent();
-          paramBundle.putExtra("has_head", this.jdField_a_of_type_Azoc.a().jdField_a_of_type_Boolean);
+          paramBundle.putExtra("has_head", this.jdField_a_of_type_Bbml.a().jdField_a_of_type_Boolean);
           setResult(-1, paramBundle);
           finish();
         }
@@ -515,32 +515,32 @@ public class TroopCreateLogicActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Azoc = null;
-    if (this.jdField_a_of_type_Baui != null)
+    this.jdField_a_of_type_Bbml = null;
+    if (this.jdField_a_of_type_Bctc != null)
     {
-      this.jdField_a_of_type_Baui.f();
-      this.jdField_a_of_type_Baui = null;
+      this.jdField_a_of_type_Bctc.f();
+      this.jdField_a_of_type_Bctc = null;
     }
-    if (this.jdField_a_of_type_Akil != null)
+    if (this.jdField_a_of_type_Amab != null)
     {
-      this.app.removeObserver(this.jdField_a_of_type_Akil);
-      this.jdField_a_of_type_Akil = null;
+      this.app.removeObserver(this.jdField_a_of_type_Amab);
+      this.jdField_a_of_type_Amab = null;
     }
   }
   
   public void e(String paramString)
   {
-    if (this.jdField_a_of_type_Azoc != null)
+    if (this.jdField_a_of_type_Bbml != null)
     {
-      this.jdField_a_of_type_Azoc.a(paramString, 0);
-      this.jdField_a_of_type_Azoc.b(this);
+      this.jdField_a_of_type_Bbml.a(paramString, 0);
+      this.jdField_a_of_type_Bbml.b(this);
     }
   }
   
   public void f(String paramString)
   {
-    if (this.jdField_a_of_type_Azoc != null) {
-      this.jdField_a_of_type_Azoc.a();
+    if (this.jdField_a_of_type_Bbml != null) {
+      this.jdField_a_of_type_Bbml.a();
     }
     if (TextUtils.isEmpty(paramString))
     {

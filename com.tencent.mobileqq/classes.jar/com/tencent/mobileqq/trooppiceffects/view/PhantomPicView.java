@@ -18,11 +18,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import baud;
+import bcsx;
 
 public class PhantomPicView
   extends FrameLayout
-  implements baud
+  implements bcsx
 {
   protected Handler a;
   protected FrameLayout a;
@@ -113,7 +113,7 @@ public class PhantomPicView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.PhantomPicView
  * JD-Core Version:    0.7.0.1
  */

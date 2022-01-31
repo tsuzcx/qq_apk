@@ -1,55 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
 
-class lka
+public class lka
+  extends Handler
 {
-  int jdField_a_of_type_Int = -99;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = -99;
-  int c = -99;
-  int d = -99;
-  int e = -99;
-  int f = -99;
-  int g = -99;
-  int h = -99;
-  int i = -99;
-  int j = -99;
-  
-  void a()
+  public lka(MagicFaceDataEntity paramMagicFaceDataEntity, Looper paramLooper)
   {
-    a(-101, this.b, this.c, this.jdField_a_of_type_Boolean, -101, -101, -101, -101, -101, -101);
+    super(paramLooper);
   }
   
-  void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
+  public void handleMessage(Message paramMessage)
   {
-    long l = this.j;
-    if (paramInt1 <= -99) {}
-    for (this.j = 0;; this.j += 1)
+    lek.c("MagicFaceDataEntity", "MagicFaceDataEntity handleMessage A: " + this.a.a + "|" + paramMessage.what);
+    switch (paramMessage.what)
     {
-      if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.jdField_a_of_type_Boolean != paramBoolean) || (this.d != paramInt4) || (this.e != paramInt5) || (this.f != paramInt6) || (this.g != paramInt7) || (this.h != paramInt8) || (this.i != paramInt9)) {
-        QLog.w("AndroidCamera", 1, "PreviewCallback, Index[" + l + "->" + this.j + "], degree[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], CUR_CAMERA[" + this.b + "->" + paramInt2 + "], nInFPS[" + this.c + "->" + paramInt3 + "], mSupportLandscape[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "], cameraImageOrientation[" + this.d + "->" + paramInt4 + "], displayRotation[" + this.e + "->" + paramInt5 + "], mobileRotation[" + this.f + "->" + paramInt6 + "], dataLength[" + this.g + "->" + paramInt7 + "], w[" + this.h + "->" + paramInt8 + "], h[" + this.i + "->" + paramInt9 + "]");
-      }
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      this.c = paramInt3;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.d = paramInt4;
-      this.e = paramInt5;
-      this.f = paramInt6;
-      this.g = paramInt7;
-      this.h = paramInt8;
-      this.i = paramInt9;
-      return;
     }
-  }
-  
-  void b()
-  {
-    a(-100, this.b, this.c, this.jdField_a_of_type_Boolean, -100, -100, -100, -100, -100, -100);
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (this.a.a != 1);
+          MagicFaceDataEntity.a(this.a, (Object[])paramMessage.obj);
+          return;
+        } while (this.a.a != 0);
+        this.a.a = 1;
+        this.a.c();
+        return;
+      } while (this.a.a != 1);
+      this.a.a = 0;
+      this.a.d();
+      return;
+    } while (this.a.a != 1);
+    paramMessage = (Integer)paramMessage.obj;
+    this.a.a(paramMessage.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lka
  * JD-Core Version:    0.7.0.1
  */

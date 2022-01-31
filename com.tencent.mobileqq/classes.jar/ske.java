@@ -1,41 +1,20 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ske
-  extends sjx
+class ske
+  implements View.OnClickListener
 {
-  public long a;
-  public boolean a;
+  ske(skd paramskd) {}
   
-  public ske(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    super(paramJSONObject);
-  }
-  
-  public static ske a(JSONObject paramJSONObject)
-  {
-    return new ske(paramJSONObject);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 3600L;
-  }
-  
-  public String toString()
-  {
-    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
+    skd.a(this.a).a(skd.a(this.a), skd.a(this.a));
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ske
  * JD-Core Version:    0.7.0.1
  */

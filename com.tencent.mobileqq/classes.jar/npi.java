@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2.1.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public final class npi
-  implements Parcelable.Creator<VideoInfo.GameAdComData>
+public class npi
+  implements TVK_SDKMgr.InstallListener
 {
-  public VideoInfo.GameAdComData a(Parcel paramParcel)
+  public npi(ReadInJoyNativeAdAppVideoView.2 param2) {}
+  
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    return new VideoInfo.GameAdComData(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk failed");
+    }
   }
   
-  public VideoInfo.GameAdComData[] a(int paramInt)
+  public void onInstalledSuccessed()
   {
-    return new VideoInfo.GameAdComData[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk success");
+    }
+    ReadInJoyNativeAdAppVideoView.a(this.a.this$0).post(new ReadInJoyNativeAdAppVideoView.2.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npi
  * JD-Core Version:    0.7.0.1
  */

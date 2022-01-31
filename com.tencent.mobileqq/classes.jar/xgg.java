@@ -1,192 +1,119 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Environment;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Groups;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class xgg
 {
-  public static String a;
-  private static xgg jdField_a_of_type_Xgg;
-  private Map<String, xgi> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  @NonNull
+  protected final Groups a;
+  @NonNull
+  private final List<xgf> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  @NonNull
+  private final List<xgf> b = new ArrayList();
   
-  private xgg()
+  public xgg(@NonNull Groups paramGroups, @NonNull List<xgf> paramList)
   {
-    a(BaseApplicationImpl.getContext());
-  }
-  
-  private String a(Context paramContext)
-  {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    this.jdField_a_of_type_ComTencentMobileqqDataGroups = paramGroups;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    paramGroups = paramList.iterator();
+    while (paramGroups.hasNext())
     {
-      paramContext = paramContext.getExternalFilesDir("video_story");
-      if (paramContext != null) {
-        jdField_a_of_type_JavaLangString = paramContext.getAbsolutePath();
+      paramList = (xgf)paramGroups.next();
+      if (paramList.jdField_a_of_type_Boolean) {
+        this.b.add(paramList);
       }
     }
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+  }
+  
+  public int a()
+  {
+    return this.b.size();
+  }
+  
+  @NonNull
+  public List<xgf> a()
+  {
+    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramContext = Environment.getExternalStorageDirectory().getAbsolutePath();
-      jdField_a_of_type_JavaLangString = paramContext + "/Tencent/MobileQQ/" + "video_story";
+      this.jdField_a_of_type_Boolean = bool;
+      return;
     }
-    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "intDownLoadRoot" + jdField_a_of_type_JavaLangString);
-    return null;
   }
   
-  public static xgg a()
+  public void a(xgf paramxgf)
   {
-    try
+    paramxgf.a();
+    if ((paramxgf.jdField_a_of_type_Boolean) && (!this.b.contains(paramxgf)))
     {
-      if (jdField_a_of_type_Xgg == null) {
-        jdField_a_of_type_Xgg = new xgg();
-      }
-      xgg localxgg = jdField_a_of_type_Xgg;
-      return localxgg;
+      this.b.add(paramxgf);
+      return;
     }
-    finally {}
-  }
-  
-  public String a(String paramString)
-  {
-    try
+    if ((!paramxgf.jdField_a_of_type_Boolean) && (this.b.contains(paramxgf)))
     {
-      paramString = paramString.split("/");
-      paramString = paramString[(paramString.length - 1)];
-      paramString = paramString.substring(0, paramString.indexOf(".zip"));
-      return paramString;
+      this.b.remove(paramxgf);
+      return;
     }
-    catch (Exception paramString)
+    throw new IllegalStateException("onFriendClick, friend select:" + paramxgf.jdField_a_of_type_Boolean + ",contains:" + this.b.contains(paramxgf));
+  }
+  
+  public boolean a()
+  {
+    return (!this.b.isEmpty()) && (this.jdField_a_of_type_JavaUtilList.size() == this.b.size());
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  @NonNull
+  public List<xgf> b()
+  {
+    return Collections.unmodifiableList(this.b);
+  }
+  
+  public void b()
+  {
+    this.b.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      paramString.printStackTrace();
-    }
-    return "";
-  }
-  
-  public void a(String paramString, Downloader.DownloadListener paramDownloadListener)
-  {
-    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:" + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:url is empty" });
-    }
-    String str1;
-    String str2;
-    xgi localxgi;
-    bbwz localbbwz;
-    bbwu localbbwu;
-    Bundle localBundle;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          str1 = a(paramString);
-          if (TextUtils.isEmpty(str1))
-          {
-            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:prefixId is empty" });
-            return;
-          }
-          QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:prefixId:" + str1);
-          if (b(str1))
-          {
-            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource has download");
-            return;
-          }
-          if (c(str1))
-          {
-            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource on download");
-            return;
-          }
-          if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-          {
-            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:mDownLoadRoot is empty" });
-            return;
-          }
-          str2 = jdField_a_of_type_JavaLangString + "/" + str1 + ".zip";
-        } while (TextUtils.isEmpty(paramString));
-        localxgi = new xgi(this, null);
-        this.jdField_a_of_type_JavaUtilMap.put(str1, localxgi);
-        localbbwz = ((bbww)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
-      } while (localbbwz == null);
-      localbbwu = new bbwu(paramString, new File(str2));
-      localbbwu.b = 1;
-      localBundle = new Bundle();
-    } while (localbbwz == null);
-    localbbwz.a(localbbwu, new xgh(this, paramDownloadListener, str2, localxgi, str1, paramString), localBundle);
-  }
-  
-  public void a(xfr paramxfr)
-  {
-    if (paramxfr != null) {
-      a(paramxfr.a(), null);
+      xgf localxgf = (xgf)localIterator.next();
+      localxgf.jdField_a_of_type_Boolean = true;
+      this.b.add(localxgf);
     }
   }
   
-  public void a(xft paramxft)
+  public void b(xgf paramxgf)
   {
-    if (paramxft != null) {
-      a(paramxft.a(), null);
+    paramxgf.jdField_a_of_type_Boolean = true;
+    if (!this.b.contains(paramxgf)) {
+      this.b.add(paramxgf);
     }
   }
   
-  public boolean a(String paramString)
+  public void c()
   {
-    paramString = a(paramString);
-    if (!TextUtils.isEmpty(paramString)) {
-      return b(paramString);
+    this.b.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((xgf)localIterator.next()).jdField_a_of_type_Boolean = false;
     }
-    return false;
-  }
-  
-  public String b(String paramString)
-  {
-    return jdField_a_of_type_JavaLangString + "/" + a(paramString);
-  }
-  
-  public boolean b(String paramString)
-  {
-    Object localObject = jdField_a_of_type_JavaLangString + "/" + paramString;
-    if (new File((String)localObject + ".zip").exists())
-    {
-      QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "upZip failed:" + paramString);
-      return false;
-    }
-    boolean bool2;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      bool2 = new File((String)localObject).exists();
-      bool1 = bool2;
-      if (bool2)
-      {
-        localObject = new xgi(this, null);
-        xgi.a((xgi)localObject, 0);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
-      }
-    }
-    for (boolean bool1 = bool2;; bool1 = false) {
-      return bool1;
-    }
-  }
-  
-  public boolean c(String paramString)
-  {
-    paramString = (xgi)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return (xgi.a(paramString) == -1) || (xgi.a(paramString) == 1);
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgg
  * JD-Core Version:    0.7.0.1
  */

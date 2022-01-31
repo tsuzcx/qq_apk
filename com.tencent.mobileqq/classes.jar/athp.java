@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.MedalInfo;
-
-public final class athp
-  implements Parcelable.Creator<MedalInfo>
+class athp
 {
-  public MedalInfo a(Parcel paramParcel)
-  {
-    return new MedalInfo(paramParcel);
-  }
-  
-  public MedalInfo[] a(int paramInt)
-  {
-    return new MedalInfo[paramInt];
-  }
+  private static final athn a = new athn(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     athp
  * JD-Core Version:    0.7.0.1
  */

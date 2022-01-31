@@ -1,42 +1,176 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
-class azvh
+public class azvh
+  extends azvd
 {
-  private bgbd jdField_a_of_type_Bgbd = new bgbd();
+  private String ai;
+  private String aj;
+  protected long c;
+  protected long d;
+  protected boolean d;
+  protected long e;
+  protected int m;
+  protected int n;
   
-  public azvh(azvg paramazvg)
+  public azvh()
   {
-    this.jdField_a_of_type_Bgbd.a();
+    this.a = "timer";
   }
   
-  public int a(long paramLong1, long paramLong2)
+  private long a()
   {
-    int j = this.jdField_a_of_type_Bgbd.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
-    int k = bgbg.a(BaseApplication.getContext());
-    int i;
-    if (k != 1)
+    if (!this.jdField_d_of_type_Boolean)
     {
-      i = j;
-      if (k != 2) {}
+      long l1 = ayvc.a();
+      long l2 = this.c + this.m - l1;
+      if (l2 < 0L)
+      {
+        this.jdField_d_of_type_Boolean = true;
+        l1 = 0L;
+      }
+      do
+      {
+        return l1;
+        if (l2 <= 0L) {
+          break;
+        }
+        l1 = l2;
+      } while (l2 < this.m);
+      return this.m;
+      this.jdField_d_of_type_Boolean = true;
+      return l2;
     }
-    else
+    return 0L;
+  }
+  
+  private SpannableStringBuilder a(long paramLong)
+  {
+    ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-91585);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.ai);
+    localSpannableStringBuilder.append('\n');
+    if (paramLong > 0L)
     {
-      i = j;
-      if (j > 16384) {
-        i = 16384;
+      int i = localSpannableStringBuilder.length();
+      String str = String.valueOf(paramLong) + alpo.a(2131714989);
+      localSpannableStringBuilder.append(str);
+      localSpannableStringBuilder.append(this.Y);
+      localSpannableStringBuilder.setSpan(localForegroundColorSpan, i, str.length() + i, 33);
+      return localSpannableStringBuilder;
+    }
+    localSpannableStringBuilder.append(this.aj);
+    return localSpannableStringBuilder;
+  }
+  
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    if ((paramView != null) && ((paramView instanceof CountdownTextView)))
+    {
+      paramContext = (CountdownTextView)paramView;
+      paramContext.a(a(), new azvi(this, paramContext));
+      paramContext.setTag(this);
+      return paramContext;
+    }
+    paramContext = new CountdownTextView(paramContext);
+    paramContext.setId(2131378673);
+    paramContext.setTag(this);
+    paramContext.setMaxLines(3);
+    paramContext.setTextColor(-10987432);
+    paramContext.setTextSize(2, 12.0F);
+    long l = a();
+    if (this.Y != null) {
+      paramContext.setText(a(l));
+    }
+    paramContext.a(l, new azvj(this, paramContext));
+    return paramContext;
+  }
+  
+  public String a()
+  {
+    return "Timer";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.ai = ayvy.a(paramObjectInput.readUTF(), false);
+    this.aj = ayvy.a(paramObjectInput.readUTF(), false);
+    this.c = paramObjectInput.readLong();
+    this.m = paramObjectInput.readInt();
+    this.n = paramObjectInput.readInt();
+    this.jdField_d_of_type_Long = paramObjectInput.readLong();
+    this.e = paramObjectInput.readLong();
+    this.jdField_d_of_type_Boolean = paramObjectInput.readBoolean();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.ai == null)
+    {
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.aj != null) {
+        break label108;
       }
     }
-    return i;
+    label108:
+    for (String str = "";; str = this.aj)
+    {
+      paramObjectOutput.writeUTF(str);
+      paramObjectOutput.writeLong(this.c);
+      paramObjectOutput.writeInt(this.m);
+      paramObjectOutput.writeInt(this.n);
+      paramObjectOutput.writeLong(this.jdField_d_of_type_Long);
+      paramObjectOutput.writeLong(this.e);
+      paramObjectOutput.writeBoolean(this.jdField_d_of_type_Boolean);
+      return;
+      str = this.ai;
+      break;
+    }
   }
   
-  public void a()
+  public void a(XmlSerializer paramXmlSerializer)
   {
-    this.jdField_a_of_type_Bgbd.b();
+    paramXmlSerializer.startTag(null, "timer");
+    paramXmlSerializer.attribute(null, "st", String.valueOf(this.c));
+    paramXmlSerializer.attribute(null, "dr", String.valueOf(this.m));
+    paramXmlSerializer.attribute(null, "index", String.valueOf(this.n));
+    if (!TextUtils.isEmpty(this.ai)) {
+      paramXmlSerializer.attribute(null, "summary", this.ai);
+    }
+    if (!TextUtils.isEmpty(this.aj)) {
+      paramXmlSerializer.attribute(null, "ending", this.aj);
+    }
+    paramXmlSerializer.text(this.Y);
+    paramXmlSerializer.endTag(null, "timer");
+  }
+  
+  public boolean a(azsa paramazsa)
+  {
+    if (paramazsa == null) {
+      return true;
+    }
+    this.c = azsd.a(paramazsa.a("st"));
+    this.m = azsd.a(paramazsa.a("dr"));
+    this.n = azsd.a(paramazsa.a("index"));
+    this.ai = ayvy.a(paramazsa.a("summary"), false);
+    this.aj = ayvy.a(paramazsa.a("st"), false);
+    this.Y = ayvy.a(azqu.a(paramazsa), false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azvh
  * JD-Core Version:    0.7.0.1
  */

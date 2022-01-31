@@ -1,73 +1,48 @@
-import QC.FontInfo;
-import QC.FontRecommendRsp;
-import QC.ItemBase;
-import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class aqxa
-  implements aqwx<FontRecommendRsp>
+  extends aqsu
 {
+  aqnl jdField_a_of_type_Aqnl = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  
+  public aqxa(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    a();
+  }
+  
   public int a()
   {
-    return 3;
+    return 4;
   }
   
-  public String a(Context paramContext)
+  public void a()
   {
-    return bbqd.a(paramContext, "font", "mvip.gexinghua.mobile.font.client_tab_store");
+    this.jdField_a_of_type_Aqnl = new aqxb(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqnl);
   }
   
-  public String a(FontBubble paramFontBubble)
+  public boolean a()
   {
-    return bbqd.a("fontPreview").replace("[id]", Integer.toString(paramFontBubble.fontId));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.b);
+    return true;
   }
   
-  public List<FontBubble> a(QQAppInterface paramQQAppInterface, FontRecommendRsp paramFontRecommendRsp)
+  public void b()
   {
-    int j = ((akfv)paramQQAppInterface.a(13)).b();
-    paramQQAppInterface = new ArrayList();
-    if (paramFontRecommendRsp.vItems != null)
-    {
-      paramFontRecommendRsp = paramFontRecommendRsp.vItems.iterator();
-      if (paramFontRecommendRsp.hasNext())
-      {
-        FontInfo localFontInfo = (FontInfo)paramFontRecommendRsp.next();
-        FontBubble localFontBubble = new FontBubble();
-        localFontBubble.viewType = 1;
-        localFontBubble.fontId = localFontInfo.item.itemId;
-        if (localFontInfo.linkBubbleID > 0) {}
-        for (int i = localFontInfo.linkBubbleID;; i = j)
-        {
-          localFontBubble.bubbleId = i;
-          localFontBubble.name = localFontInfo.name;
-          localFontBubble.engine = localFontInfo.engine;
-          localFontBubble.feeType = localFontInfo.feeType;
-          localFontBubble.payUrl = localFontInfo.payUrl;
-          localFontBubble.title = localFontInfo.title;
-          localFontBubble.msg = localFontInfo.msg;
-          localFontBubble.btn = localFontInfo.btn;
-          localFontBubble.picUrl = localFontInfo.strPicUrl;
-          localFontBubble.panelType = 3;
-          paramQQAppInterface.add(localFontBubble);
-          break;
-        }
-      }
+    if (this.jdField_a_of_type_Aqnl != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqnl);
     }
-    return paramQQAppInterface;
-  }
-  
-  public void a(akfv paramakfv)
-  {
-    paramakfv.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxa
  * JD-Core Version:    0.7.0.1
  */

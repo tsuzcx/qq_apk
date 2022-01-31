@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.model;
 
-import asks;
+import aubr;
 
 public class TroopInfoManager$1
   implements Runnable
 {
-  public TroopInfoManager$1(asks paramasks) {}
+  public TroopInfoManager$1(aubr paramaubr) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class TroopInfoManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.model.TroopInfoManager.1
  * JD-Core Version:    0.7.0.1
  */

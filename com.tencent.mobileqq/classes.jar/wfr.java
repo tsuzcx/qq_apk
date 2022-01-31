@@ -1,50 +1,48 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wfr
-  implements View.OnLongClickListener
+class wfr
+  extends uhw<wfn, wdq>
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wft(this);
-  View jdField_a_of_type_AndroidViewView;
-  
-  public wfr(QRCardActivity paramQRCardActivity) {}
-  
-  @SuppressLint({"ServiceCast", "NewApi"})
-  void a(String paramString)
+  wfr(wfn paramwfn)
   {
-    if (!TextUtils.isEmpty(paramString))
+    super(paramwfn);
+  }
+  
+  public void a(@NonNull wfn paramwfn, @NonNull wdq paramwdq)
+  {
+    if ((!paramwdq.jdField_a_of_type_JavaLangString.equals(wfn.a(paramwfn))) || (paramwdq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (wfn.a(paramwfn) == null)) {
+      wsv.b(this.TAG, "ignore this comment list event. %s.", paramwdq.toString());
+    }
+    boolean bool2;
+    boolean bool1;
+    do
     {
-      if (Build.VERSION.SDK_INT < 11) {
-        ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
-      }
-    }
-    else {
       return;
-    }
-    ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+      wsv.a(this.TAG, "receive comment list event. %s.", paramwdq.toString());
+      bool2 = wfn.a(paramwfn);
+      bool1 = true;
+      if (paramwdq.jdField_a_of_type_Int == 0) {
+        bool1 = false;
+      }
+      wfn.a(paramwfn).a(bool1);
+      wfn.a(paramwfn).a(bool1, paramwdq.b);
+      wfn.a(paramwfn).a(bool1, paramwdq.jdField_a_of_type_Boolean);
+      wfn.a(paramwfn).a(paramwdq.jdField_a_of_type_JavaUtilList, paramwdq.c, bool1);
+    } while (bool2 != bool1);
+    paramwfn.b(paramwdq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
   }
   
-  public boolean onLongClick(View paramView)
+  public Class acceptEventClass()
   {
-    if (paramView == null) {
-      return false;
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramView.setSelected(true);
-    bbmf localbbmf = new bbmf();
-    localbbmf.a(2131364824, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131691307), 2130838597);
-    bbcq.a(paramView, localbbmf, this.jdField_a_of_type_AndroidViewView$OnClickListener, new wfs(this, paramView));
-    return true;
+    return wdq.class;
   }
+  
+  public void b(@NonNull wfn paramwfn, @NonNull wdq paramwdq) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wfr
  * JD-Core Version:    0.7.0.1
  */

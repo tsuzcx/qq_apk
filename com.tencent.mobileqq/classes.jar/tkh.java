@@ -1,18 +1,20 @@
-import java.util.HashMap;
+import UserGrowth.stPublisherReq;
+import UserGrowth.stPublisherRsp;
 
 public class tkh
-  extends ssh
+  extends thb<stPublisherRsp>
 {
-  public HashMap<String, String[]> a;
-  
-  public String toString()
+  public tkh()
   {
-    return "InteractionInfoChangeEvent{iconMap=" + this.a + '}';
+    super("Publisher");
+    stPublisherReq localstPublisherReq = new stPublisherReq();
+    this.a = localstPublisherReq;
+    tlo.b("GetPublisherRequest", "stSimpleGetFeedDetailReq = " + localstPublisherReq.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkh
  * JD-Core Version:    0.7.0.1
  */

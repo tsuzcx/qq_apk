@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
+import android.app.Activity;
 import android.os.Environment;
 import android.text.TextUtils;
-import bbvj;
-import bdik;
+import bdcs;
+import bduw;
+import bfhi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mm.vfs.VFSFileOp;
@@ -11,6 +13,7 @@ import com.tencent.mobileqq.mini.apkg.ApkgBaseInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
+import com.tencent.mobileqq.minigame.manager.MiniGameStorageExceedManager;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -18,6 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
+import mqq.util.WeakReference;
 
 public class MiniAppFileManager
 {
@@ -44,6 +48,7 @@ public class MiniAppFileManager
   private static boolean hasCheckUsrDir;
   private static boolean isNoMediaCreated;
   private static volatile MiniAppFileManager sInstance;
+  private WeakReference<Activity> activityWeakReference;
   private ApkgBaseInfo apkgInfo;
   private String curMiniAppId;
   private ConcurrentHashMap<String, String> curWxFileToLocalMap;
@@ -68,51 +73,60 @@ public class MiniAppFileManager
     hasCheckUsrDir = true;
   }
   
+  public static void clearFileCache(String paramString)
+  {
+    paramString = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(paramString);
+    if (new File(paramString).exists()) {
+      bdcs.a(paramString, false);
+    }
+    hasCheckUsrDir = false;
+  }
+  
   /* Error */
   private static void createNoMediaInMiniPath()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 138	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:isNoMediaCreated	Z
+    //   3: getstatic 159	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:isNoMediaCreated	Z
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +7 -> 15
     //   11: ldc 2
     //   13: monitorexit
     //   14: return
-    //   15: new 124	com/tencent/mm/vfs/VFSFile
+    //   15: new 127	com/tencent/mm/vfs/VFSFile
     //   18: dup
-    //   19: getstatic 111	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:MINI_FILE_SAVE_PATH	Ljava/lang/String;
-    //   22: ldc 140
-    //   24: invokespecial 143	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: getstatic 114	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:MINI_FILE_SAVE_PATH	Ljava/lang/String;
+    //   22: ldc 161
+    //   24: invokespecial 164	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   27: astore_1
     //   28: aload_1
-    //   29: invokevirtual 147	com/tencent/mm/vfs/VFSFile:getParentFile	()Lcom/tencent/mm/vfs/VFSFile;
+    //   29: invokevirtual 168	com/tencent/mm/vfs/VFSFile:getParentFile	()Lcom/tencent/mm/vfs/VFSFile;
     //   32: astore_2
     //   33: aload_2
     //   34: ifnull +15 -> 49
     //   37: aload_2
-    //   38: invokevirtual 130	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   38: invokevirtual 133	com/tencent/mm/vfs/VFSFile:exists	()Z
     //   41: ifne +8 -> 49
     //   44: aload_2
-    //   45: invokevirtual 133	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
+    //   45: invokevirtual 136	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
     //   48: pop
     //   49: aload_1
-    //   50: invokevirtual 130	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   50: invokevirtual 133	com/tencent/mm/vfs/VFSFile:exists	()Z
     //   53: ifne +8 -> 61
     //   56: aload_1
-    //   57: invokevirtual 150	com/tencent/mm/vfs/VFSFile:createNewFile	()Z
+    //   57: invokevirtual 171	com/tencent/mm/vfs/VFSFile:createNewFile	()Z
     //   60: pop
     //   61: iconst_1
-    //   62: putstatic 138	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:isNoMediaCreated	Z
+    //   62: putstatic 159	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:isNoMediaCreated	Z
     //   65: goto -54 -> 11
     //   68: astore_1
-    //   69: ldc 152
+    //   69: ldc 173
     //   71: iconst_1
-    //   72: ldc 154
+    //   72: ldc 175
     //   74: aload_1
-    //   75: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   75: invokestatic 181	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   78: goto -67 -> 11
     //   81: astore_1
     //   82: ldc 2
@@ -154,7 +168,7 @@ public class MiniAppFileManager
       QLog.e("MiniAppFileManager", 1, "getCurAppSdcardDir error. uin : " + str + "; curMiniAppId : " + this.curMiniAppId);
       return MINI_FILE_SAVE_PATH;
     }
-    return MINI_FILE_SAVE_PATH + bdik.d(this.curMiniAppId) + "/" + bdik.d(str);
+    return MINI_FILE_SAVE_PATH + bfhi.d(this.curMiniAppId) + "/" + bfhi.d(str);
   }
   
   private static String getCurAppSdcardDir(String paramString)
@@ -165,7 +179,7 @@ public class MiniAppFileManager
       QLog.e("MiniAppFileManager", 1, "getCurAppSdcardDir error. uin : " + str + "; curMiniAppId : " + paramString);
       return MINI_FILE_SAVE_PATH;
     }
-    return MINI_FILE_SAVE_PATH + bdik.d(paramString) + "/" + bdik.d(str);
+    return MINI_FILE_SAVE_PATH + bfhi.d(paramString) + "/" + bfhi.d(str);
   }
   
   private String getFileName(String paramString)
@@ -261,19 +275,29 @@ public class MiniAppFileManager
   
   public static String getPreCacheFilePath(String paramString1, String paramString2)
   {
-    Object localObject = null;
-    VFSFile localVFSFile = new VFSFile(getMiniFolderPath(4, paramString1), paramString2);
-    paramString2 = localObject;
+    return getPreCacheFilePath(paramString1, null, paramString2);
+  }
+  
+  public static String getPreCacheFilePath(String paramString1, String paramString2, String paramString3)
+  {
+    String str2 = getMiniFolderPath(4, paramString1);
+    String str1 = str2;
+    if (!TextUtils.isEmpty(paramString2)) {
+      str1 = str2 + File.separator + paramString2;
+    }
+    paramString2 = new VFSFile(str1, paramString3);
     try
     {
-      if (bbvj.b(localVFSFile.getPath()).startsWith(getCurAppSdcardDir(paramString1))) {
-        paramString2 = localVFSFile.getAbsolutePath();
+      if (bduw.b(paramString2.getPath()).startsWith(getCurAppSdcardDir(paramString1)))
+      {
+        paramString1 = paramString2.getAbsolutePath();
+        return paramString1;
       }
-      return paramString2;
     }
     catch (Throwable paramString1)
     {
       QLog.e("MiniAppFileManager", 1, "getUsrPath error", paramString1);
+      return null;
     }
     return null;
   }
@@ -325,66 +349,66 @@ public class MiniAppFileManager
     //   1: astore 8
     //   3: iconst_1
     //   4: istore_3
-    //   5: new 124	com/tencent/mm/vfs/VFSFile
+    //   5: new 127	com/tencent/mm/vfs/VFSFile
     //   8: dup
     //   9: aload_1
-    //   10: invokespecial 126	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 129	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
     //   13: astore 4
-    //   15: new 124	com/tencent/mm/vfs/VFSFile
+    //   15: new 127	com/tencent/mm/vfs/VFSFile
     //   18: dup
     //   19: aload_0
     //   20: iconst_0
-    //   21: invokespecial 165	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getMiniFolderPath	(I)Ljava/lang/String;
-    //   24: invokespecial 126	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
-    //   27: invokevirtual 259	com/tencent/mm/vfs/VFSFile:getPath	()Ljava/lang/String;
+    //   21: invokespecial 186	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getMiniFolderPath	(I)Ljava/lang/String;
+    //   24: invokespecial 129	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   27: invokevirtual 284	com/tencent/mm/vfs/VFSFile:getPath	()Ljava/lang/String;
     //   30: iconst_1
-    //   31: invokestatic 296	com/tencent/mm/vfs/VFSFileOp:exportExternalPath	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   31: invokestatic 321	com/tencent/mm/vfs/VFSFileOp:exportExternalPath	(Ljava/lang/String;Z)Ljava/lang/String;
     //   34: astore 5
     //   36: aload 4
-    //   38: invokevirtual 147	com/tencent/mm/vfs/VFSFile:getParentFile	()Lcom/tencent/mm/vfs/VFSFile;
-    //   41: invokevirtual 259	com/tencent/mm/vfs/VFSFile:getPath	()Ljava/lang/String;
+    //   38: invokevirtual 168	com/tencent/mm/vfs/VFSFile:getParentFile	()Lcom/tencent/mm/vfs/VFSFile;
+    //   41: invokevirtual 284	com/tencent/mm/vfs/VFSFile:getPath	()Ljava/lang/String;
     //   44: aload 5
-    //   46: invokevirtual 299	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   46: invokevirtual 324	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   49: ifeq +31 -> 80
     //   52: ldc 46
     //   54: iconst_1
-    //   55: new 68	java/lang/StringBuilder
+    //   55: new 71	java/lang/StringBuilder
     //   58: dup
-    //   59: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   62: ldc_w 301
-    //   65: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: invokespecial 74	java/lang/StringBuilder:<init>	()V
+    //   62: ldc_w 326
+    //   65: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: aload_1
-    //   69: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   69: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   75: invokestatic 222	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   78: aload_1
     //   79: areturn
-    //   80: new 124	com/tencent/mm/vfs/VFSFile
+    //   80: new 127	com/tencent/mm/vfs/VFSFile
     //   83: dup
     //   84: aload_0
     //   85: aload 4
-    //   87: invokestatic 303	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getFileSuffix	(Lcom/tencent/mm/vfs/VFSFile;)Ljava/lang/String;
-    //   90: invokevirtual 306	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
-    //   93: invokespecial 126	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   87: invokestatic 328	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getFileSuffix	(Lcom/tencent/mm/vfs/VFSFile;)Ljava/lang/String;
+    //   90: invokevirtual 331	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   93: invokespecial 129	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
     //   96: astore 9
     //   98: sipush 8192
     //   101: newarray byte
     //   103: astore 7
-    //   105: new 308	java/io/BufferedInputStream
+    //   105: new 333	java/io/BufferedInputStream
     //   108: dup
-    //   109: new 310	com/tencent/mm/vfs/VFSFileInputStream
+    //   109: new 335	com/tencent/mm/vfs/VFSFileInputStream
     //   112: dup
     //   113: aload 4
-    //   115: invokespecial 313	com/tencent/mm/vfs/VFSFileInputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
-    //   118: invokespecial 316	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   115: invokespecial 338	com/tencent/mm/vfs/VFSFileInputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
+    //   118: invokespecial 341	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   121: astore 4
-    //   123: new 318	java/io/BufferedOutputStream
+    //   123: new 343	java/io/BufferedOutputStream
     //   126: dup
-    //   127: new 320	com/tencent/mm/vfs/VFSFileOutputStream
+    //   127: new 345	com/tencent/mm/vfs/VFSFileOutputStream
     //   130: dup
     //   131: aload 9
-    //   133: invokespecial 321	com/tencent/mm/vfs/VFSFileOutputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
-    //   136: invokespecial 324	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   133: invokespecial 346	com/tencent/mm/vfs/VFSFileOutputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
+    //   136: invokespecial 349	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   139: astore_1
     //   140: aload_1
     //   141: astore 6
@@ -392,7 +416,7 @@ public class MiniAppFileManager
     //   145: astore 5
     //   147: aload 4
     //   149: aload 7
-    //   151: invokevirtual 330	java/io/InputStream:read	([B)I
+    //   151: invokevirtual 355	java/io/InputStream:read	([B)I
     //   154: istore_2
     //   155: iload_2
     //   156: iconst_m1
@@ -405,7 +429,7 @@ public class MiniAppFileManager
     //   168: aload 7
     //   170: iconst_0
     //   171: iload_2
-    //   172: invokevirtual 336	java/io/OutputStream:write	([BII)V
+    //   172: invokevirtual 361	java/io/OutputStream:write	([BII)V
     //   175: goto -35 -> 140
     //   178: astore 7
     //   180: aload_1
@@ -413,18 +437,18 @@ public class MiniAppFileManager
     //   183: aload 4
     //   185: astore 5
     //   187: ldc 46
-    //   189: ldc_w 338
+    //   189: ldc_w 363
     //   192: aload 7
-    //   194: invokestatic 343	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   194: invokestatic 368	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   197: pop
     //   198: aload_1
     //   199: ifnull +7 -> 206
     //   202: aload_1
-    //   203: invokevirtual 346	java/io/OutputStream:close	()V
+    //   203: invokevirtual 371	java/io/OutputStream:close	()V
     //   206: aload 4
     //   208: ifnull +152 -> 360
     //   211: aload 4
-    //   213: invokevirtual 347	java/io/InputStream:close	()V
+    //   213: invokevirtual 372	java/io/InputStream:close	()V
     //   216: iconst_0
     //   217: istore_2
     //   218: aload 8
@@ -432,7 +456,7 @@ public class MiniAppFileManager
     //   221: iload_2
     //   222: ifeq +9 -> 231
     //   225: aload 9
-    //   227: invokevirtual 267	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
+    //   227: invokevirtual 292	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
     //   230: astore_1
     //   231: aload_1
     //   232: areturn
@@ -441,17 +465,17 @@ public class MiniAppFileManager
     //   236: aload 4
     //   238: astore 5
     //   240: aload_1
-    //   241: invokevirtual 350	java/io/OutputStream:flush	()V
+    //   241: invokevirtual 375	java/io/OutputStream:flush	()V
     //   244: aload_1
     //   245: ifnull +7 -> 252
     //   248: aload_1
-    //   249: invokevirtual 346	java/io/OutputStream:close	()V
+    //   249: invokevirtual 371	java/io/OutputStream:close	()V
     //   252: iload_3
     //   253: istore_2
     //   254: aload 4
     //   256: ifnull -38 -> 218
     //   259: aload 4
-    //   261: invokevirtual 347	java/io/InputStream:close	()V
+    //   261: invokevirtual 372	java/io/InputStream:close	()V
     //   264: iload_3
     //   265: istore_2
     //   266: goto -48 -> 218
@@ -471,11 +495,11 @@ public class MiniAppFileManager
     //   288: aload 6
     //   290: ifnull +8 -> 298
     //   293: aload 6
-    //   295: invokevirtual 346	java/io/OutputStream:close	()V
+    //   295: invokevirtual 371	java/io/OutputStream:close	()V
     //   298: aload 4
     //   300: ifnull +8 -> 308
     //   303: aload 4
-    //   305: invokevirtual 347	java/io/InputStream:close	()V
+    //   305: invokevirtual 372	java/io/InputStream:close	()V
     //   308: aload_1
     //   309: athrow
     //   310: astore_1
@@ -599,7 +623,7 @@ public class MiniAppFileManager
       {
         paramString = str1.replace(WXFILE_PREFIX_TMP, "");
         paramString = new VFSFile(getMiniFolderPath(0), paramString);
-        if ((!paramString.exists()) || (!bbvj.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
+        if ((!paramString.exists()) || (!bduw.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
           break label479;
         }
         return VFSFileOp.exportExternalPath(paramString.getAbsolutePath(), true);
@@ -613,7 +637,7 @@ public class MiniAppFileManager
       {
         paramString = str1.replace(WXFILE_PREFIX_STORE, "");
         paramString = new VFSFile(getMiniFolderPath(1), paramString);
-        if ((paramString.exists()) && (bbvj.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
+        if ((paramString.exists()) && (bduw.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
           return VFSFileOp.exportExternalPath(paramString.getAbsolutePath(), true);
         }
       }
@@ -621,7 +645,7 @@ public class MiniAppFileManager
       {
         paramString = str1.replace(WXFILE_PREFIX_USR, "");
         paramString = new VFSFile(getMiniFolderPath(2), paramString);
-        if ((paramString.exists()) && (bbvj.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
+        if ((paramString.exists()) && (bduw.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
           return VFSFileOp.exportExternalPath(paramString.getAbsolutePath(), true);
         }
       }
@@ -629,14 +653,14 @@ public class MiniAppFileManager
       {
         paramString = str1.replace(WXFILE_PREFIX_PRE_CACHE, "");
         paramString = new VFSFile(getMiniFolderPath(4), paramString);
-        if ((paramString.exists()) && (bbvj.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
+        if ((paramString.exists()) && (bduw.b(paramString.getPath()).startsWith(getCurAppSdcardDir()))) {
           return VFSFileOp.exportExternalPath(paramString.getAbsolutePath(), true);
         }
       }
       else
       {
         paramString = new VFSFile(this.apkgInfo.getFilePath(str1));
-        if ((paramString.exists()) && (bbvj.b(paramString.getPath()).startsWith(bbvj.b(new VFSFile(this.apkgInfo.getApkgFolderPath()).getPath()))))
+        if ((paramString.exists()) && (bduw.b(paramString.getPath()).startsWith(bduw.b(new VFSFile(this.apkgInfo.getApkgFolderPath()).getPath()))))
         {
           paramString = VFSFileOp.exportExternalPath(this.apkgInfo.getFilePath(str1), true);
           return paramString;
@@ -666,7 +690,7 @@ public class MiniAppFileManager
     VFSFile localVFSFile = new VFSFile(getMiniFolderPath(1));
     try
     {
-      if (bbvj.b(localVFSFile.getPath()).startsWith(getCurAppSdcardDir())) {
+      if (bduw.b(localVFSFile.getPath()).startsWith(getCurAppSdcardDir())) {
         arrayOfVFSFile = localVFSFile.listFiles();
       }
       return arrayOfVFSFile;
@@ -701,7 +725,7 @@ public class MiniAppFileManager
       paramString2 = new VFSFile(getMiniFolderPath(0, paramString1), paramString2);
       try
       {
-        if (!bbvj.b(paramString2.getPath()).startsWith(getCurAppSdcardDir(paramString1))) {
+        if (!bduw.b(paramString2.getPath()).startsWith(getCurAppSdcardDir(paramString1))) {
           break;
         }
         paramString1 = VFSFileOp.exportExternalPath(paramString2.getAbsolutePath(), true);
@@ -749,7 +773,7 @@ public class MiniAppFileManager
     }
     try
     {
-      if (bbvj.b(paramString.getPath()).startsWith(getCurAppSdcardDir())) {
+      if (bduw.b(paramString.getPath()).startsWith(getCurAppSdcardDir())) {
         localObject1 = paramString.getAbsolutePath();
       }
       return localObject1;
@@ -885,10 +909,10 @@ public class MiniAppFileManager
       i = 1;
       l3 = FileUtils.getFileOrFolderSize(getMiniFolderPath(i));
       if (!this.apkgInfo.isEngineTypeMiniGame()) {
-        break label187;
+        break label223;
       }
     }
-    label187:
+    label223:
     for (long l1 = 52428800L;; l1 = 10485760L)
     {
       long l2 = l1;
@@ -905,6 +929,9 @@ public class MiniAppFileManager
       if (l3 + paramLong <= l2) {
         break;
       }
+      if (this.apkgInfo.isEngineTypeMiniGame()) {
+        MiniGameStorageExceedManager.showStorageExceedDialog(this.activityWeakReference, BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.apkgInfo.appConfig.config);
+      }
       return false;
       i = 2;
       break label66;
@@ -920,7 +947,7 @@ public class MiniAppFileManager
       boolean bool1 = bool2;
       if (paramString.exists())
       {
-        boolean bool3 = bbvj.b(paramString.getPath()).startsWith(bbvj.b(new VFSFile(this.apkgInfo.getApkgFolderPath()).getPath()));
+        boolean bool3 = bduw.b(paramString.getPath()).startsWith(bduw.b(new VFSFile(this.apkgInfo.getApkgFolderPath()).getPath()));
         bool1 = bool2;
         if (bool3) {
           bool1 = true;
@@ -956,6 +983,11 @@ public class MiniAppFileManager
     return null;
   }
   
+  public void setBaseActivity(Activity paramActivity)
+  {
+    this.activityWeakReference = new WeakReference(paramActivity);
+  }
+  
   public void updateCurApkgInfo(ApkgBaseInfo paramApkgBaseInfo)
   {
     this.curMiniAppId = paramApkgBaseInfo.appId;
@@ -968,7 +1000,7 @@ public class MiniAppFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager
  * JD-Core Version:    0.7.0.1
  */

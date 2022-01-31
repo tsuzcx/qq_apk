@@ -1,54 +1,66 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
+import java.lang.ref.WeakReference;
 
-class apmx
-  implements aplj
+public class apmx
+  extends Handler
 {
-  apmx(apmt paramapmt) {}
+  protected Bundle a;
+  private WeakReference<MessengerService> a;
   
-  public void a(apnc paramapnc)
+  public apmx(MessengerService paramMessengerService)
   {
-    paramapnc = ((apln)paramapnc).a();
-    if (paramapnc == null) {}
-    label12:
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessengerService);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, mServiceWeakRef null");
+      }
+    }
+    MessengerService localMessengerService;
+    int i;
     do
     {
       do
       {
-        do
-        {
-          break label12;
-          do
-          {
-            return;
-          } while ((TextUtils.isEmpty(paramapnc.a())) || (apug.a(paramapnc.a()) != 0) || (!TextUtils.isEmpty(paramapnc.g())));
-          paramapnc = paramapnc.a();
-          if (paramapnc != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("DeviceFileModel<FileAssistant>", 2, "mEntity = null");
         return;
-        if (TextUtils.isEmpty(paramapnc.strThumbPath)) {
+        localMessengerService = (MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localMessengerService != null) {
           break;
         }
-      } while (this.a.jdField_a_of_type_Apne == null);
-      this.a.jdField_a_of_type_Apne.a(String.valueOf(paramapnc.nSessionId), paramapnc.strThumbPath);
+      } while (!QLog.isColorLevel());
+      QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, service null");
       return;
-      paramapnc = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramapnc.peerUin, paramapnc.peerType, paramapnc.msgSeq);
-    } while (paramapnc == null);
-    paramapnc = (MessageForDeviceSingleStruct)paramapnc;
-    yel localyel = ((yer)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a();
-    apmt.a(this.a, localyel.a(paramapnc, null, null));
+      i = paramMessage.what;
+    } while (i != 4);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("qwallet.type", i);
+    if (paramMessage.arg1 == 1) {}
+    for (;;)
+    {
+      localBundle.putBoolean("qwallet.isSuccess", bool);
+      localBundle.putSerializable("qwallet.data", (Serializable)paramMessage.obj);
+      if (this.jdField_a_of_type_AndroidOsBundle == null) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      localMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apmx
  * JD-Core Version:    0.7.0.1
  */

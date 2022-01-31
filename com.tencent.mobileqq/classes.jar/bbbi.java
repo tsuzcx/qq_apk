@@ -1,43 +1,58 @@
+import android.content.Intent;
+import android.os.Handler;
 import android.os.Message;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-final class bbbi
-  implements View.OnTouchListener
+public class bbbi
+  extends Handler
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bbbi(AudioRecordFragment paramAudioRecordFragment) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    if ((this.a.getActivity() == null) || (this.a.isDetached())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOAudioPanel", 2, "handleMessage,fragment is in a invalid state, return");
+      }
+    }
+    do
     {
-    default: 
-    case 0: 
-    case 2: 
       do
       {
-        return false;
-        bbbg.b(false);
-        bbbg.a = f1;
-        bbbg.b = f2;
-        paramMotionEvent = Message.obtain();
-        paramMotionEvent.what = bbbl.a;
-        paramMotionEvent.obj = paramView;
-        bbbg.a().sendMessageDelayed(paramMotionEvent, 1000L);
-        return false;
-      } while ((bbbg.a()) || ((Math.abs(bbbg.a - f1) <= 20.0F) && (Math.abs(bbbg.b - f2) <= 20.0F)));
-      bbbg.b(true);
-      bbbg.a().removeMessages(bbbl.a);
-      return false;
-    }
-    bbbg.a().removeMessages(bbbl.a);
-    return false;
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("AIOAudioPanel", 2, "RECORD_TO_START =============");
+      return;
+      paramMessage = paramMessage.obj.toString();
+      File localFile = new File(paramMessage);
+      if (localFile.exists()) {}
+      for (long l = localFile.length();; l = 0L)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+        paramMessage = new Intent();
+        paramMessage.putExtra("audio_info", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
+        this.a.getActivity().setResult(-1, paramMessage);
+        this.a.getActivity().finish();
+        return;
+      }
+    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals("publish")) || (this.a.b == null));
+    bcht.a("pub_page", "preview_record", this.a.b, this.a.c, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbi
  * JD-Core Version:    0.7.0.1
  */

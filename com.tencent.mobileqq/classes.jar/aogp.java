@@ -1,61 +1,31 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.qq.android.dexposed.XC_MethodHook;
+import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
+import com.tencent.mobileqq.config.QConfigureException;
+import com.tencent.qphone.base.util.QLog;
 
-public class aogp
+final class aogp
+  extends XC_MethodHook
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<aogm> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  
-  public aogp()
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramObject != null)
+    try
     {
-      bool1 = bool2;
-      if ((paramObject instanceof aogp))
-      {
-        paramObject = (aogp)paramObject;
-        bool1 = bool2;
-        if (paramObject.jdField_a_of_type_JavaLangString != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
-            bool1 = true;
-          }
-        }
+      paramMethodHookParam = aogm.a();
+      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save"))) {
+        aogm.a(new QConfigureException(paramMethodHookParam), "Can not parse json beyond QConfigManager when app starting.", "QConfigWatchDog_Json");
       }
+      return;
     }
-    return bool1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
-    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
-    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
-    return localStringBuilder.toString();
+    catch (Exception paramMethodHookParam)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook json exception.", paramMethodHookParam);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aogp
  * JD-Core Version:    0.7.0.1
  */

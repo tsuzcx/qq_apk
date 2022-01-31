@@ -16,7 +16,7 @@ import com.tencent.ttpic.openapi.util.SwitchFaceUtil.FEATURE_TYPE;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.util.ArrayList;
 import java.util.List;
-import lzz;
+import mco;
 
 public class SwitchFaceFilter
   extends SwitchFaceFilterBase
@@ -122,20 +122,20 @@ public class SwitchFaceFilter
     return new PointF((paramPointF1.x + paramPointF2.x) / 2.0F, (paramPointF1.y + paramPointF2.y) / 2.0F);
   }
   
-  public void updateFaceParams(lzz paramlzz1, lzz paramlzz2)
+  public void updateFaceParams(mco parammco1, mco parammco2)
   {
-    addParam(new UniformParam.TextureParam("inputImageTexture2", paramlzz2.jdField_a_of_type_Int, 33986));
-    addParam(new UniformParam.Float2fParam("canvasSize", paramlzz1.jdField_b_of_type_Int, paramlzz1.jdField_c_of_type_Int));
-    addParam(new UniformParam.FloatsParam("diffRGB", new float[] { paramlzz2.d, paramlzz2.e, paramlzz2.f }));
-    addParam(new UniformParam.FloatsParam("userRGB", new float[] { paramlzz2.jdField_a_of_type_Float, paramlzz2.jdField_b_of_type_Float, paramlzz2.jdField_c_of_type_Float }));
-    List localList2 = SwitchFaceUtil.getFullCoords(VideoMaterialUtil.copyList(paramlzz1.jdField_a_of_type_JavaUtilList));
-    List localList1 = SwitchFaceUtil.getFullCoords(VideoMaterialUtil.copyList(paramlzz2.jdField_a_of_type_JavaUtilList));
+    addParam(new UniformParam.TextureParam("inputImageTexture2", parammco2.jdField_a_of_type_Int, 33986));
+    addParam(new UniformParam.Float2fParam("canvasSize", parammco1.jdField_b_of_type_Int, parammco1.jdField_c_of_type_Int));
+    addParam(new UniformParam.FloatsParam("diffRGB", new float[] { parammco2.d, parammco2.e, parammco2.f }));
+    addParam(new UniformParam.FloatsParam("userRGB", new float[] { parammco2.jdField_a_of_type_Float, parammco2.jdField_b_of_type_Float, parammco2.jdField_c_of_type_Float }));
+    List localList2 = SwitchFaceUtil.getFullCoords(VideoMaterialUtil.copyList(parammco1.jdField_a_of_type_JavaUtilList));
+    List localList1 = SwitchFaceUtil.getFullCoords(VideoMaterialUtil.copyList(parammco2.jdField_a_of_type_JavaUtilList));
     localList2 = faceSwapFacePoint(localList2);
-    setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(faceSwapFacePoint(localList1), paramlzz2.jdField_b_of_type_Int, paramlzz2.jdField_c_of_type_Int, this.texVertices));
-    setPositions(SwitchFaceUtil.initFacePositions(localList2, paramlzz1.jdField_b_of_type_Int, paramlzz1.jdField_c_of_type_Int, this.faceVertices));
+    setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(faceSwapFacePoint(localList1), parammco2.jdField_b_of_type_Int, parammco2.jdField_c_of_type_Int, this.texVertices));
+    setPositions(SwitchFaceUtil.initFacePositions(localList2, parammco1.jdField_b_of_type_Int, parammco1.jdField_c_of_type_Int, this.faceVertices));
     setCoordNum(138);
     OnDrawFrameGLSL();
-    renderTexture(paramlzz1.jdField_a_of_type_Int, paramlzz1.jdField_b_of_type_Int, paramlzz1.jdField_c_of_type_Int);
+    renderTexture(parammco1.jdField_a_of_type_Int, parammco1.jdField_b_of_type_Int, parammco1.jdField_c_of_type_Int);
   }
   
   public void updatePreview(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat, long paramLong) {}
@@ -148,7 +148,7 @@ public class SwitchFaceFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.module_switchface.SwitchFaceFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,25 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-class xkd
+public class xkd
   implements View.OnClickListener
 {
-  xkd(xkb paramxkb, String paramString, Activity paramActivity) {}
+  public xkd(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Xkb.a(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
-    {
-      paramView = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((paramView instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)paramView).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
-      }
+    wsv.b("SelectColorLayout", "onUndoClick: undoTypeEnable=" + this.a.jdField_a_of_type_Boolean);
+    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
+    while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_Xkf == null)) {
+      return;
     }
+    this.a.jdField_a_of_type_Xkf.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkd
  * JD-Core Version:    0.7.0.1
  */

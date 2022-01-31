@@ -1,10 +1,10 @@
 package com.tencent.biz.tribe;
 
-import bcdp;
+import becq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import java.lang.ref.WeakReference;
-import wxh;
+import yma;
 
 public class TribeVideoPlugin$TVKSDKInstallRunnable
   implements Runnable
@@ -22,12 +22,12 @@ public class TribeVideoPlugin$TVKSDKInstallRunnable
     if (localTribeVideoPlugin == null) {
       return;
     }
-    TVK_SDKMgr.installPlugin(localTribeVideoPlugin.mRuntime.a().getApplication(), new wxh(this));
+    TVK_SDKMgr.installPlugin(localTribeVideoPlugin.mRuntime.a().getApplication(), new yma(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.tribe.TribeVideoPlugin.TVKSDKInstallRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.msgbackup.fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.LinearLayout;
-import askv;
-import asog;
+import aubu;
+import auff;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.widget.FormSimpleItem;
@@ -16,7 +16,7 @@ public class MsgBackupWelcomeFragment
   protected void b()
   {
     super.b();
-    setTitle(getActivity().getString(2131690362));
+    setTitle(getActivity().getString(2131690413));
   }
   
   protected void c()
@@ -30,11 +30,11 @@ public class MsgBackupWelcomeFragment
     super.d();
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
     this.b.setOnClickListener(this);
-    if (AppSetting.d)
+    if (AppSetting.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131690358));
-      this.b.setContentDescription(getString(2131690359));
-      this.vg.setLeftViewName(2131690399);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131690409));
+      this.b.setContentDescription(getString(2131690410));
+      this.vg.setLeftViewName(2131690450);
     }
   }
   
@@ -44,19 +44,19 @@ public class MsgBackupWelcomeFragment
     {
     default: 
       return;
-    case 2131374991: 
-      asog.a("0X800A22E");
+    case 2131375461: 
+      auff.a("0X800A22E");
       PublicFragmentActivity.a(getActivity(), MsgBackupMigrateFragment.class, 1000);
       return;
     }
-    asog.a("0X800A268");
-    askv.a().a(1);
+    auff.a("0X800A268");
+    aubu.a().a(1);
     PublicFragmentActivity.a(getActivity(), MsgBackupPCAuthFragment.class, 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupWelcomeFragment
  * JD-Core Version:    0.7.0.1
  */

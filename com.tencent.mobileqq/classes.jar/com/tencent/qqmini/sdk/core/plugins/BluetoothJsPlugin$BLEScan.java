@@ -5,7 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothAdapter.LeScanCallback;
 import android.bluetooth.BluetoothDevice;
 import android.os.Handler;
-import betc;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -29,7 +29,7 @@ class BluetoothJsPlugin$BLEScan
   
   public void onBluetoothDeviceFound()
   {
-    betc.a("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound foundDevices size =" + this.foundDevices.size());
+    QMLog.d("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound foundDevices size =" + this.foundDevices.size());
     JSONArray localJSONArray;
     if (this.hasNewDevice)
     {
@@ -56,13 +56,13 @@ class BluetoothJsPlugin$BLEScan
     label128:
     localObject.put("devices", localJSONArray);
     String str = localObject.toString();
-    betc.a("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound callback data =" + str);
+    QMLog.d("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound callback data =" + str);
     this.this$0.sendSubscribeEvent("onBluetoothDeviceFound", str);
   }
   
   public void onLeScan(BluetoothDevice arg1, int paramInt, byte[] paramArrayOfByte)
   {
-    betc.a("BluetoothJsPlugin", "BLEScan.onLeScan device =" + ??? + ",rssi=" + paramInt + ",scanRecord=" + paramArrayOfByte);
+    QMLog.d("BluetoothJsPlugin", "BLEScan.onLeScan device =" + ??? + ",rssi=" + paramInt + ",scanRecord=" + paramArrayOfByte);
     if ((??? == null) || (paramArrayOfByte == null) || (!this.isDiscovering)) {}
     for (;;)
     {
@@ -106,7 +106,7 @@ class BluetoothJsPlugin$BLEScan
   
   public boolean startDiscovery(BluetoothAdapter paramBluetoothAdapter, UUID[] paramArrayOfUUID, boolean paramBoolean, long paramLong)
   {
-    betc.a("BluetoothJsPlugin", "BLEScan.startDiscovery serviceUUID=" + paramArrayOfUUID + ",allowDuplicatesKey=" + paramBoolean + ",timeout=" + paramLong);
+    QMLog.d("BluetoothJsPlugin", "BLEScan.startDiscovery serviceUUID=" + paramArrayOfUUID + ",allowDuplicatesKey=" + paramBoolean + ",timeout=" + paramLong);
     boolean bool;
     if ((this.isDiscovering) || (paramBluetoothAdapter == null))
     {
@@ -142,7 +142,7 @@ class BluetoothJsPlugin$BLEScan
   
   public void stopDiscovery(String arg1)
   {
-    betc.a("BluetoothJsPlugin", "BLEScan.stopDiscovery......from=" + ???);
+    QMLog.d("BluetoothJsPlugin", "BLEScan.stopDiscovery......from=" + ???);
     BluetoothJsPlugin.access$400(this.this$0).removeMessages(1);
     BluetoothJsPlugin.access$400(this.this$0).removeMessages(2);
     if (BluetoothJsPlugin.access$100(this.this$0) != null) {
@@ -159,7 +159,7 @@ class BluetoothJsPlugin$BLEScan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.BluetoothJsPlugin.BLEScan
  * JD-Core Version:    0.7.0.1
  */

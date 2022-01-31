@@ -1,76 +1,61 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.VideoInfo;
 
 public class rfs
-  extends Dialog
-  implements View.OnClickListener
 {
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  public int a;
+  public long a;
+  public Bundle a;
+  public View a;
+  public ViewGroup a;
+  public VideoInfo a;
+  public qlp a;
+  public qlq a;
+  public qyz a;
+  public rjn a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public rfs(@NonNull Context paramContext)
+  public rfs()
   {
-    this(paramContext, 0);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
   }
   
-  public rfs(@NonNull Context paramContext, int paramInt)
+  public void a(String paramString, boolean paramBoolean)
   {
-    super(paramContext, 2131755165);
-    a(paramContext);
-  }
-  
-  private void a(Context paramContext)
-  {
-    requestWindowFeature(1);
-    setContentView(2131559827);
-    getWindow().setLayout(-1, -1);
-    setCancelable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378112));
-    this.b = ((TextView)findViewById(2131378111));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369626));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369631));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.b.setOnClickListener(this);
-    sgt.a(this.b, actj.a(3.0F, paramContext.getResources()), Color.parseColor("#00CAFC"));
-    sgt.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, actj.a(3.0F, paramContext.getResources()), Color.parseColor("#ffffff"));
-    getWindow().setWindowAnimations(2131755312);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.b.setText(paramString2);
-    }
-    show();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    try
     {
-    default: 
+      this.jdField_a_of_type_AndroidOsBundle.putBoolean(paramString, paramBoolean);
       return;
     }
-    dismiss();
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public boolean a(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      paramBoolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean(paramString, paramBoolean);
+      return paramBoolean;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfs
  * JD-Core Version:    0.7.0.1
  */

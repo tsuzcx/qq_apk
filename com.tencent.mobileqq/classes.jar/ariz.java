@@ -1,22 +1,23 @@
-import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
-import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
+import android.view.View.OnLongClickListener;
 
 class ariz
-  implements CustomizedLoading
+  implements View.OnLongClickListener
 {
-  ariz(arik paramarik) {}
+  ariz(aris paramaris) {}
   
-  public void onShowLoading(Context paramContext, Bundle paramBundle, View paramView)
+  public boolean onLongClick(View paramView)
   {
-    LoadingFragment.a(paramContext, paramBundle, paramView);
+    paramView = this.a.a.b();
+    aris.a(this.a, paramView);
+    String str = this.a.a() + "(" + arof.a(this.a.a.c()) + ")";
+    this.a.a(paramView, str);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ariz
  * JD-Core Version:    0.7.0.1
  */

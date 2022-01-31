@@ -1,42 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.16;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
 public class bagh
-  implements DialogInterface.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public bagh(VisitorTroopCardFragment.16 param16) {}
+  public bagh(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramInt == 1)
+    if (paramBoolean)
     {
-      this.a.this$0.a.cancel();
+      badt.a(this.a.app, "0X800993D");
+      paramView.clearFocus();
+      if (this.a.jdField_a_of_type_AndroidAppDialog == null) {}
+    }
+    else
+    {
       return;
     }
-    try
-    {
-      aqfd.a(this.a.this$0.getActivity(), true, "action_game_join_group", Long.valueOf(this.a.this$0.getActivity().getIntent().getStringExtra("appid")).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      this.a.this$0.getActivity().finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("VisitorTroopCardFragment.Activity", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
+    this.a.jdField_a_of_type_AndroidAppDialog = new bahd(this.a, GroupTeamWorkListActivity.a(this.a), this.a.app, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_AndroidAppDialog.setTitle(alpo.a(2131705771));
+    this.a.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
+    this.a.jdField_a_of_type_AndroidAppDialog.show();
+    this.a.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new bagi(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bagh
  * JD-Core Version:    0.7.0.1
  */

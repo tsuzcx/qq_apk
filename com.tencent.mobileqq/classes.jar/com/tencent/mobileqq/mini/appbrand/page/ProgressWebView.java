@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Base64;
-import bbdh;
-import bbkk;
-import bcql;
+import bdcb;
+import bdje;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
@@ -23,6 +22,7 @@ import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebSettings;
@@ -30,9 +30,9 @@ import com.tencent.smtt.sdk.WebSettings.PluginState;
 import com.tencent.smtt.sdk.WebView;
 import java.io.File;
 import java.util.Set;
-import nab;
+import ncv;
 import org.json.JSONObject;
-import vyf;
+import xmx;
 
 public class ProgressWebView
   extends WebView
@@ -67,7 +67,7 @@ public class ProgressWebView
   public int htmlId;
   private Activity mActivity;
   private AppBrandRuntime mAppBrandRuntime;
-  private nab mFileChooserHelper;
+  private ncv mFileChooserHelper;
   private String miniAppWebviewStr;
   private Set<String> supportApiMap;
   private WebView webView;
@@ -77,7 +77,7 @@ public class ProgressWebView
     super(paramActivity);
     this.mActivity = paramActivity;
     paramActivity = getSettings();
-    paramActivity.setUserAgent(paramActivity.getUserAgentString() + " QQ/" + bbdh.c() + " miniProgram miniprogramhtmlwebview");
+    paramActivity.setUserAgent(paramActivity.getUserAgentString() + " QQ/" + bdcb.c() + " miniProgram miniprogramhtmlwebview");
     paramActivity.setSavePassword(false);
     paramActivity.setSaveFormData(false);
     paramActivity.setBuiltInZoomControls(true);
@@ -179,12 +179,12 @@ public class ProgressWebView
     if ((this.mActivity == null) || (this.mActivity.isFinishing()))
     {
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of mActivity is empty");
-      bcql.a(this.mActivity, 1, ajya.a(2131708520), 0).a();
+      QQToast.a(this.mActivity, 1, alpo.a(2131708892), 0).a();
     }
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of sourceUrl is empty");
-      bcql.a(this.mActivity, 1, ajya.a(2131708523), 0).a();
+      QQToast.a(this.mActivity, 1, alpo.a(2131708895), 0).a();
       return;
     }
     Object localObject;
@@ -394,20 +394,20 @@ public class ProgressWebView
     {
       Object localObject = new File(paramString);
       localObject = ShortVideoUtils.d() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject).getName();
-      if (vyf.a(this.mActivity, paramString, (String)localObject))
+      if (xmx.a(this.mActivity, paramString, (String)localObject))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ProgressWebView", 2, "savaPicToAlbum success.");
         }
-        bcql.a(this.mActivity, 2, ajya.a(2131708510), 0).a();
+        QQToast.a(this.mActivity, 2, alpo.a(2131708882), 0).a();
         return;
       }
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed.");
-      bcql.a(this.mActivity, 1, ajya.a(2131708513), 0).a();
+      QQToast.a(this.mActivity, 1, alpo.a(2131708885), 0).a();
       return;
     }
     QLog.e("ProgressWebView", 1, "savaPicToAlbum failed. activity error.");
-    bcql.a(this.mActivity, 1, ajya.a(2131708517), 0).a();
+    QQToast.a(this.mActivity, 1, alpo.a(2131708889), 0).a();
   }
   
   private void sharePicToQQ(String paramString)
@@ -418,7 +418,7 @@ public class ProgressWebView
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("ProgressWebView", 1, "sharePicToQQ failed, because of sourceUrl is empty");
-      bcql.a(this.mActivity, 1, ajya.a(2131708521), 0).a();
+      QQToast.a(this.mActivity, 1, alpo.a(2131708893), 0).a();
       return;
     }
     Object localObject;
@@ -487,7 +487,7 @@ public class ProgressWebView
   public void init(AppBrandRuntime paramAppBrandRuntime)
   {
     this.mAppBrandRuntime = paramAppBrandRuntime;
-    if (bbkk.a(this.miniAppWebviewStr)) {
+    if (bdje.a(this.miniAppWebviewStr)) {
       this.miniAppWebviewStr = AppLoaderFactory.getAppLoaderManager().getMiniAppWebviewStr();
     }
     this.webView = this;
@@ -498,6 +498,8 @@ public class ProgressWebView
   }
   
   public void initService(ApkgInfo paramApkgInfo, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener) {}
+  
+  public void initService(ApkgInfo paramApkgInfo, String paramString, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener) {}
   
   public void initWAServiceJS(String paramString) {}
   
@@ -525,7 +527,7 @@ public class ProgressWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.ProgressWebView
  * JD-Core Version:    0.7.0.1
  */

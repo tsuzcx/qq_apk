@@ -1,49 +1,73 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdpi
-  extends bdou
+  implements IBinder.DeathRecipient, bdpj
 {
-  private List<String> a;
+  private long jdField_a_of_type_Long;
+  private bajj jdField_a_of_type_Bajj;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bdpi()
+  private bdpi(long paramLong, String paramString, bajj parambajj)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bajj = parambajj;
+    try
+    {
+      parambajj.asBinder().linkToDeath(this, 0);
+      return;
+    }
+    catch (RemoteException paramString)
+    {
+      QLog.e("QuickUpdateIPCModule", 1, "linkToDeath fail: " + this, paramString);
+    }
   }
   
-  public void a(String paramString)
+  public void binderDied()
   {
-    super.a(paramString);
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    QLog.e("QuickUpdateIPCModule", 1, "binderDied: " + this);
+    bdsj.a(this.jdField_a_of_type_Long).removeListener(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this);
+  }
+  
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  {
+    QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + paramInt1 + ", " + this);
+    try
     {
+      this.jdField_a_of_type_Bajj.onComplete(paramString1, paramInt1);
       return;
-      try
-      {
-        paramString = new JSONObject(paramString).getJSONArray(this.jdField_a_of_type_JavaLangString);
-        int j = paramString.length();
-        int i = 0;
-        while (i < j)
-        {
-          this.jdField_a_of_type_JavaUtilList.add(paramString.getString(i));
-          i += 1;
-        }
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
     }
+    catch (RemoteException paramQQAppInterface)
+    {
+      QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + this, paramQQAppInterface);
+    }
+  }
+  
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  {
+    try
+    {
+      this.jdField_a_of_type_Bajj.onProgress(paramString1, paramLong2, paramLong3);
+      return;
+    }
+    catch (RemoteException paramQQAppInterface)
+    {
+      QLog.e("QuickUpdateIPCModule", 1, "onProgress: " + this, paramQQAppInterface);
+    }
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString + "," + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdpi
  * JD-Core Version:    0.7.0.1
  */

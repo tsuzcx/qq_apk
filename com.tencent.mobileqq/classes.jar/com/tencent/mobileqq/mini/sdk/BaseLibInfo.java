@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.mini.utils.DebugUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -160,18 +159,7 @@ public class BaseLibInfo
     return "BaseLibInfo{baseLibUrl='" + this.baseLibUrl + '\'' + ", baseLibKey='" + this.baseLibKey + '\'' + ", baseLibVersion='" + this.baseLibVersion + '\'' + ", baseLibDesc='" + this.baseLibDesc + '\'' + ", baseLibType='" + this.baseLibType + '\'' + '}';
   }
   
-  public void updateFor64IfNeed()
-  {
-    if (AppSetting.b)
-    {
-      String str = getBaseLibUrl64();
-      if (!TextUtils.isEmpty(str))
-      {
-        QLog.i("BaseLibInfo", 1, "IS_CPU_64_BIT, update baselib url from " + this.baseLibUrl + " to " + str);
-        this.baseLibUrl = str;
-      }
-    }
-  }
+  public void updateFor64IfNeed() {}
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
@@ -184,7 +172,7 @@ public class BaseLibInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.BaseLibInfo
  * JD-Core Version:    0.7.0.1
  */

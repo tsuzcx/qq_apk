@@ -1,31 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.widget.SwipListView;
 
 class oax
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  oax(oaw paramoaw, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
+  oax(oaw paramoaw, View paramView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = paramValueAnimator.floatValue();
-    float f3 = this.b;
-    float f4 = paramValueAnimator.floatValue();
-    float f5 = this.c;
-    float f6 = paramValueAnimator.floatValue();
-    float f7 = this.d;
-    float f8 = paramValueAnimator.floatValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setLeftAreaTranslate(f1 * f2, f3 * f4);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setRightAreaTranslate(f5 * f6, f8 * f7);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.postInvalidate();
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Oaw.a).a(this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oax
  * JD-Core Version:    0.7.0.1
  */

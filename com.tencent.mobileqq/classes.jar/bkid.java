@@ -1,137 +1,171 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Typeface;
-import android.os.Build.VERSION;
-import android.text.TextPaint;
-import android.view.animation.LinearInterpolator;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import java.util.Random;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadFile;
+import com.tencent.weiyun.transmission.upload.UploadJobContext;
+import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
+import com.tencent.weiyun.transmission.upload.UploadManager;
+import com.tencent.weiyun.uploader.UploadRequest;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bkid
 {
-  public int a;
-  public TextPaint a;
-  public ArrayList<bkhw> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  
-  public bkid(int paramInt1, int paramInt2, Typeface paramTypeface, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public static void a(String paramString1, String paramString2, bkgj parambkgj, boolean paramBoolean, long paramLong)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    if (Build.VERSION.SDK_INT >= 21) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
-    }
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt2);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-    this.jdField_a_of_type_Int = paramInt3;
-    this.b = paramInt4;
-    this.c = paramInt5;
-    this.d = paramInt6;
-  }
-  
-  public static int a()
-  {
-    Random localRandom = new Random();
-    int i = localRandom.nextInt(5);
-    int j = localRandom.nextInt(9);
-    return localRandom.nextInt(9) + (i * 100 + j * 10);
-  }
-  
-  public static bkid a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Typeface paramTypeface, bkhl parambkhl)
-  {
-    paramTypeface = new bkid(paramInt1, paramInt2, paramTypeface, paramInt3, paramInt4, paramInt5, paramInt6);
-    paramTypeface.f = 1;
-    paramTypeface.a(paramCharSequence, parambkhl);
-    return paramTypeface;
-  }
-  
-  public static void a(int paramInt, Paint paramPaint)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
+    try
     {
-      if (paramInt == 255) {
-        paramPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
+      bkie localbkie = new bkie();
+      localbkie.jdField_a_of_type_Int = parambkgj.jdField_b_of_type_Int;
+      localbkie.jdField_a_of_type_JavaLangString = parambkgj.jdField_a_of_type_JavaLangString;
+      bkgi localbkgi2 = parambkgj.jdField_a_of_type_Bkgi;
+      bkgi localbkgi1 = localbkgi2;
+      if (localbkgi2 == null) {
+        localbkgi1 = bkgl.a().a(paramLong);
       }
-    }
-    else {
+      if (localbkgi1 != null)
+      {
+        localbkie.f = localbkgi1.a().jdField_b_of_type_JavaLangString;
+        localbkie.jdField_a_of_type_Long = localbkgi1.a().jdField_a_of_type_Long;
+        localbkie.g = localbkgi1.a().jdField_a_of_type_JavaLangString;
+        localbkie.e = localbkgi1.a().c;
+        localbkie.h = parambkgj.jdField_b_of_type_JavaLangString;
+        parambkgj = localbkgi1.a();
+        if (parambkgj != null) {
+          localbkie.d = parambkgj.jdField_a_of_type_JavaLangString;
+        }
+      }
+      a(paramString1, paramString2, localbkie, paramBoolean, true);
       return;
     }
-    paramPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
-  }
-  
-  public void a(CharSequence paramCharSequence, bkhl parambkhl)
-  {
-    a(paramCharSequence, parambkhl, 0);
-  }
-  
-  public void a(CharSequence paramCharSequence, bkhl parambkhl, int paramInt)
-  {
-    this.e = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramCharSequence, 0, paramCharSequence.length()));
-    if ((paramInt != 0) && (paramInt > this.e)) {}
-    for (int j = (paramInt - this.e) / (paramCharSequence.length() - 1);; j = 0)
+    catch (Exception paramString1)
     {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      int k = 0;
-      paramInt = 0;
-      while (k < paramCharSequence.length())
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WyReportUtils", 2, "report download exception =" + paramString1.getMessage(), paramString1);
+    }
+  }
+  
+  private static void a(String paramString1, String paramString2, bkie parambkie, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    long l = 0L;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(parambkie.jdField_a_of_type_Int));
+    localHashMap.put("serverip", parambkie.jdField_b_of_type_JavaLangString);
+    localHashMap.put("param_errMsg", parambkie.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_errorDesc", String.valueOf(parambkie.jdField_a_of_type_JavaLangString));
+    localHashMap.put("param_Server", parambkie.jdField_b_of_type_JavaLangString);
+    localHashMap.put("param_ftnIP", parambkie.jdField_b_of_type_JavaLangString);
+    localHashMap.put("param_innerServerIp", parambkie.c);
+    localHashMap.put("param_serverPort", String.valueOf(parambkie.jdField_b_of_type_Int));
+    localHashMap.put("param_url", parambkie.d);
+    localHashMap.put("param_MD5", parambkie.e);
+    Object localObject;
+    if (parambkie.jdField_a_of_type_Boolean) {
+      localObject = "0";
+    }
+    for (;;)
+    {
+      localHashMap.put("param_isDowngrade", localObject);
+      localHashMap.put("param_fsizeo", String.valueOf(parambkie.jdField_a_of_type_Long));
+      azmz.a(BaseApplication.getContext()).a(paramString1, paramString2, paramBoolean1, 0L, 0L, localHashMap, null);
+      try
       {
-        int i = paramCharSequence.charAt(k);
-        if (i == 32)
+        paramString2 = new JSONArray();
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("t_server_ip", parambkie.jdField_b_of_type_JavaLangString);
+        ((JSONObject)localObject).put("t_server_port", parambkie.jdField_b_of_type_Int);
+        ((JSONObject)localObject).put("t_url", parambkie.d);
+        ((JSONObject)localObject).put("t_file_name", parambkie.f);
+        ((JSONObject)localObject).put("t_file_id", parambkie.g);
+        ((JSONObject)localObject).put("t_file_path", parambkie.h);
+        ((JSONObject)localObject).put("t_file_size", parambkie.jdField_a_of_type_Long);
+        ((JSONObject)localObject).put("t_file_sha", parambkie.e);
+        ((JSONObject)localObject).put("t_err_code", parambkie.jdField_a_of_type_Int);
+        if (paramString1 != null)
         {
-          paramInt = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText("0", 0, 1) + paramInt;
-          k += 1;
+          if (paramString1.startsWith("weiyun_")) {
+            l = Long.parseLong(paramString1.substring(7));
+          }
         }
         else
         {
-          bkhw localbkhw = new bkhw();
-          String str = new String(new char[] { i });
-          int m = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str, 0, str.length());
-          Object localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-          float f1 = ((Paint.FontMetrics)localObject).bottom;
-          float f2 = ((Paint.FontMetrics)localObject).top;
-          float f3 = Math.abs(((Paint.FontMetrics)localObject).ascent);
-          localObject = Bitmap.createBitmap(m, (int)(f1 - f2), Bitmap.Config.ARGB_8888);
-          Canvas localCanvas = new Canvas((Bitmap)localObject);
-          BaseApplicationImpl.getContext();
-          localCanvas.drawText(str, 0.0F, f3, this.jdField_a_of_type_AndroidTextTextPaint);
-          if (this.f == 0)
-          {
-            localbkhw.b = parambkhl.a("", this.c + a(), this.d, 0, 255, new LinearInterpolator());
-            label282:
-            localbkhw.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-            if (k != 0) {
-              break label374;
-            }
-            localbkhw.jdField_a_of_type_Int = paramInt;
-          }
-          for (paramInt = localbkhw.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + paramInt;; paramInt = localbkhw.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + j + paramInt)
-          {
-            this.jdField_a_of_type_JavaUtilArrayList.add(localbkhw);
-            break;
-            localbkhw.b = parambkhl.a("", this.c + this.d * k / paramCharSequence.length(), this.d, 0, 255, new LinearInterpolator());
-            break label282;
-            label374:
-            localbkhw.jdField_a_of_type_Int = (paramInt + j);
+          label343:
+          ((JSONObject)localObject).put("t_uin", l);
+          ((JSONObject)localObject).put("t_terminal", "Android_mobileQQ");
+          if (!paramBoolean2) {
+            break label465;
           }
         }
+        label465:
+        for (int i = 1;; i = 2)
+        {
+          ((JSONObject)localObject).put("t_action", i);
+          ((JSONObject)localObject).put("t_app_ver", aowf.a(BaseApplication.getContext()));
+          if (!paramBoolean1) {
+            ((JSONObject)localObject).put("t_err_msg", parambkie.jdField_a_of_type_JavaLangString);
+          }
+          paramString2.put(localObject);
+          paramString1 = new JSONObject();
+          paramString1.put("count", 1);
+          paramString1.put("data", paramString2);
+          bkft.a("http://user.weiyun.com/ftn_report/weiyun?op=all", paramString1);
+          return;
+          localObject = "1";
+          break;
+          l = Long.parseLong(paramString1);
+          break label343;
+        }
+        return;
       }
+      catch (Exception paramString1) {}
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean, long paramLong)
+  {
+    boolean bool = false;
+    try
+    {
+      bkie localbkie = new bkie();
+      localbkie.jdField_a_of_type_Int = paramStatusInfo.errorCode;
+      localbkie.jdField_a_of_type_JavaLangString = paramStatusInfo.errorMsg;
+      UploadJobContext localUploadJobContext2 = paramStatusInfo.jobContext;
+      UploadJobContext localUploadJobContext1 = localUploadJobContext2;
+      if (localUploadJobContext2 == null) {
+        localUploadJobContext1 = UploadManager.getInstance().getJobContext(paramLong);
+      }
+      if (localUploadJobContext1 != null)
+      {
+        localbkie.f = localUploadJobContext1.file().fileName;
+        localbkie.jdField_a_of_type_Long = localUploadJobContext1.file().fileSize;
+        localbkie.g = paramStatusInfo.fileId;
+        localbkie.e = localUploadJobContext1.file().sha;
+        paramStatusInfo = localUploadJobContext1.uploadRequest();
+        if (paramStatusInfo != null)
+        {
+          localbkie.jdField_b_of_type_JavaLangString = paramStatusInfo.serverIp();
+          localbkie.jdField_b_of_type_Int = paramStatusInfo.serverPort();
+          localbkie.d = paramStatusInfo.serverName();
+        }
+      }
+      if (!WeiyunTransmissionGlobal.getInstance().isNativeUpload()) {
+        bool = true;
+      }
+      localbkie.jdField_a_of_type_Boolean = bool;
+      a(paramString1, paramString2, localbkie, paramBoolean, false);
       return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WyReportUtils", 2, "report upload exception =" + paramString1.getMessage(), paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkid
  * JD-Core Version:    0.7.0.1
  */

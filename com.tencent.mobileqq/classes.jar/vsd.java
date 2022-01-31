@@ -1,215 +1,108 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.media.MediaMetadataRetriever;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tribe.async.async.JobContext;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 import java.io.File;
-import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-@TargetApi(10)
 public class vsd
-  extends vsn<vsa, vsa>
 {
-  private final String a;
-  public WeakReference<ver> a;
+  @NonNull
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  private IVideoViewBase jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
+  private vse jdField_a_of_type_Vse = new vse();
+  private vsf jdField_a_of_type_Vsf = new vsf(this.jdField_a_of_type_Vse);
+  private vsj jdField_a_of_type_Vsj = new vsj();
   
-  public vsd()
+  public vsd(@NonNull Context paramContext)
   {
-    this(null);
-  }
-  
-  public vsd(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private Bitmap a(vsa paramvsa, Bitmap paramBitmap)
-  {
-    Object localObject = null;
-    if (paramBitmap == null) {
-      return null;
-    }
-    avzx localavzx = new avzx();
-    localavzx.a(paramBitmap.getWidth(), paramBitmap.getHeight());
-    paramvsa = (vsa)localObject;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramvsa = (vsa)localObject;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {}
-    }
-    try
-    {
-      paramvsa = ((ver)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(0);
-      localObject = paramBitmap;
-      if (paramvsa != null)
-      {
-        localObject = (awab)avzw.a(106);
-        ((awab)localObject).a(paramvsa);
-        ((awab)localObject).init();
-        paramvsa = localavzx.a(paramBitmap, (GPUBaseFilter)localObject);
-        ved.a("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "generateMosaicThumbBitmap, mosaicThumbBitmap = %s", paramvsa);
-        if (paramvsa != null) {
-          paramBitmap = paramvsa;
-        }
-        ((awab)localObject).destroy();
-        localObject = paramBitmap;
-      }
-      localavzx.a();
-      return localObject;
-    }
-    catch (Exception paramvsa)
-    {
-      for (;;)
-      {
-        ved.e("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "generateMosaicThumbBitmap, read mosaic bitmap " + paramvsa.toString());
-        paramvsa = (vsa)localObject;
-      }
+      xmh.a(bool);
+      this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+      b();
+      return;
     }
   }
   
-  protected void a(JobContext paramJobContext, vsa paramvsa)
+  public static TVK_PlayerVideoInfo a(String paramString1, String paramString2)
   {
-    String str1;
-    if (((paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) || ((paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)))
+    return a(paramString1, paramString2, "bus_type_qqstory");
+  }
+  
+  public static TVK_PlayerVideoInfo a(String paramString1, String paramString2, String paramString3)
+  {
+    wsv.d("StoryPlayerTVKWrapper", "createPlayerVideoInfo, %s", new Object[] { paramString2 });
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
+    localTVK_PlayerVideoInfo.setPreLoad(false);
+    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", String.valueOf(20161223));
+    localTVK_PlayerVideoInfo.setConfigMap("downloadflag", "0");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("shouq_bus_type", paramString3);
+    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
+    localTVK_PlayerVideoInfo.setPlayMode("cache_extend_video");
+    localTVK_PlayerVideoInfo.addExtraParamsMap("shouq_bus_type", "bus_type_subscribe");
+    localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains(tqb.e)))
     {
-      str1 = this.jdField_a_of_type_JavaLangString;
-      if (str1 != null) {
-        break label481;
-      }
-      str1 = vsq.a(paramvsa.jdField_a_of_type_Int, paramvsa.b, ".jpg");
-    }
-    label407:
-    label414:
-    label429:
-    label473:
-    label478:
-    label481:
-    for (;;)
-    {
-      long l2 = 0L;
-      if ((paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) {
-        l2 = ((EditLocalVideoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Int;
-      }
-      String str2 = paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-      paramJobContext = null;
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      for (;;)
+      localTVK_PlayerVideoInfo.setConfigMap("file_dir", paramString2);
+      paramString2 = paramString2.substring(0, paramString2.lastIndexOf(File.separator));
+      if (!TextUtils.isEmpty(paramString2))
       {
-        try
-        {
-          localMediaMetadataRetriever.setDataSource(str2);
-          if (!paramvsa.jdField_a_of_type_Vsg.a) {
-            continue;
-          }
-          l1 = 0L;
-          if ((paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
-          {
-            int i = ((EditLocalVideoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b;
-            l1 = i;
-          }
+        paramString2 = new File(paramString2);
+        if (!paramString2.exists()) {
+          paramString2.mkdirs();
         }
-        catch (IllegalArgumentException paramJobContext)
-        {
-          long l1;
-          Object localObject;
-          boolean bool;
-          ved.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "Video Source is Invalid ! " + str2, paramJobContext);
-          if (localMediaMetadataRetriever == null) {
-            break label473;
-          }
-          localMediaMetadataRetriever.release();
-          paramJobContext = null;
-          continue;
+      }
+    }
+    localTVK_PlayerVideoInfo.setConfigMap("RawVideoPlay", "true");
+    localTVK_PlayerVideoInfo.setVid(paramString1);
+    return localTVK_PlayerVideoInfo;
+  }
+  
+  private void b()
+  {
+    TVK_SDKMgr.setOnLogListener(this.jdField_a_of_type_Vsj);
+    TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+    wsv.d("StoryPlayerTVKWrapper", "TVK version: %s", new Object[] { TVK_SDKMgr.getSdkVersion() });
+  }
+  
+  public void a()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
+      ThreadManager.executeOnSubThread(new StoryPlayerTVKWrapper.1(this, (TVK_IMediaPlayer)localObject));
+    }
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase != null)
+    {
+      localObject = (View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase = null;
+      if (((View)localObject).getParent() != null)
+      {
+        ViewParent localViewParent = ((View)localObject).getParent();
+        if ((localViewParent instanceof ViewGroup)) {
+          ((ViewGroup)localViewParent).removeView((View)localObject);
         }
-        finally
-        {
-          if (localMediaMetadataRetriever == null) {
-            continue;
-          }
-          localMediaMetadataRetriever.release();
-        }
-        try
-        {
-          paramJobContext = localMediaMetadataRetriever.getFrameAtTime(l1 * 1000L);
-          if (localMediaMetadataRetriever == null) {
-            break label478;
-          }
-          localMediaMetadataRetriever.release();
-          localObject = paramJobContext;
-          if (paramJobContext != null)
-          {
-            localObject = paramJobContext;
-            if (paramvsa.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoNeedRotate) {
-              localObject = vzl.a(paramJobContext, 90.0F);
-            }
-          }
-          paramJobContext = (JobContext)localObject;
-          if ((paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) {
-            paramJobContext = a(paramvsa, (Bitmap)localObject);
-          }
-          if (paramJobContext == null) {
-            break label429;
-          }
-          bool = vxv.a(paramJobContext, Bitmap.CompressFormat.JPEG, 80, str1);
-          paramJobContext.recycle();
-          if (!bool) {
-            break label407;
-          }
-          paramJobContext = new File(str1);
-          if ((!paramJobContext.exists()) || (!paramJobContext.isFile())) {
-            break label414;
-          }
-          ved.a("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "success : %s", str1);
-          paramvsa.jdField_a_of_type_JavaLangString = str1;
-          super.notifyResult(paramvsa);
-          return;
-          paramJobContext = localMediaMetadataRetriever.extractMetadata(9);
-          if (paramJobContext == null) {
-            continue;
-          }
-          l1 = Long.valueOf(paramJobContext).longValue();
-          continue;
-        }
-        catch (OutOfMemoryError paramJobContext)
-        {
-          ved.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime endTime * 1000L oom", paramJobContext);
-          paramJobContext = null;
-          continue;
-        }
-        try
-        {
-          localObject = localMediaMetadataRetriever.getFrameAtTime(1000L * l2);
-          paramJobContext = (JobContext)localObject;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          ved.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime startTime * 1000L oom", localOutOfMemoryError);
-        }
-        continue;
-        ved.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "compressToFile error");
-        for (;;)
-        {
-          notifyError(new ErrorMessage(-1, "GenerateLocalVideoSegment error"));
-          return;
-          ved.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime error : startTime = %s", new Object[] { Long.valueOf(l2) });
-          continue;
-          ved.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "parameters error : %s", new Object[] { paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource });
-        }
-        paramJobContext = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vsd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,23 @@
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class affc
-  extends ncy
+  implements View.OnClickListener
 {
-  public affc(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public affc(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
   
-  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
-      }
-      this.a.b = paramList;
-      ClassificationSearchActivity.a(this.a, true);
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     affc
  * JD-Core Version:    0.7.0.1
  */

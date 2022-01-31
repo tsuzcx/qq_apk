@@ -1,72 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IInterface;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class amvd
-  extends ampa<amvb>
+public abstract interface amvd
+  extends IInterface
 {
-  public int a()
-  {
-    return 534;
-  }
+  public abstract void a();
   
-  @NonNull
-  public amvb a(int paramInt)
-  {
-    return new amvb();
-  }
+  public abstract void a(int paramInt);
   
-  @Nullable
-  public amvb a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
-    {
-      amvb localamvb = amvb.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicConfProcessor", 2, "onParsed  " + paramArrayOfamph[0].a);
-      }
-      return localamvb;
-    }
-    return null;
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public Class<amvb> a()
-  {
-    return amvb.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amvb paramamvb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramamvb.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvd
  * JD-Core Version:    0.7.0.1
  */

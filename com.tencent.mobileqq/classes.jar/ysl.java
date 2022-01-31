@@ -1,27 +1,24 @@
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
-import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-public class ysl
-  implements AdVideoSpliceAdapter
+class ysl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public AdError show(AdVideoSpliceAdapter.Params paramParams)
+  ysl(ysj paramysj, Container paramContainer) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
-    {
-      yxp.d("GdtVideoSpliceAdapter", "show error");
-      return new AdError(4);
-    }
-    yxp.b("GdtVideoSpliceAdapter", "show");
-    new TransitionContext(paramParams).b();
-    return new AdError(0);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getLayoutParams();
+    localLayoutParams.topMargin = paramValueAnimator.intValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 class EditTextViewer$5
   implements Runnable
@@ -9,12 +9,12 @@ class EditTextViewer$5
   
   public void run()
   {
-    bcql.a(this.this$0.getContext(), this.a, 1).a();
+    QQToast.a(this.this$0.getContext(), this.a, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.play.EditTextViewer.5
  * JD-Core Version:    0.7.0.1
  */

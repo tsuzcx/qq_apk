@@ -1,32 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import com.google.gson.reflect.TypeToken;
+import java.util.ArrayList;
 
-public class bkvs
-  extends Handler
-{
-  public bkvs(BeautyBar paramBeautyBar) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
-      }
-    } while (BeautyBar.a(this.a) == null);
-    BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
-  }
-}
+final class bkvs
+  extends TypeToken<ArrayList<bkvy>>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkvs
  * JD-Core Version:    0.7.0.1
  */

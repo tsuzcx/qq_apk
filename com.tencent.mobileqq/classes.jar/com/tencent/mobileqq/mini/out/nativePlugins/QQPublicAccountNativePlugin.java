@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
+import aaoo;
+import aaop;
+import aaoq;
 import android.content.Intent;
-import bgyp;
+import bizm;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -10,11 +13,8 @@ import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
 import java.util.Arrays;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import wis;
-import wpt;
-import yyp;
-import yyq;
-import yyr;
+import xxk;
+import yej;
 
 public class QQPublicAccountNativePlugin
   implements NativePlugin
@@ -33,7 +33,7 @@ public class QQPublicAccountNativePlugin
   {
     boolean bool = true;
     if (paramJSContext != null) {
-      wpt.a().a(paramJSContext);
+      yej.a().a(paramJSContext);
     }
     for (;;)
     {
@@ -58,7 +58,7 @@ public class QQPublicAccountNativePlugin
           }
           ((Intent)localObject).putExtra("has_shop", bool);
           ((Intent)localObject).addFlags(268435456);
-          bgyp.a(paramJSContext.getActivity(), (Intent)localObject, 0);
+          bizm.a(paramJSContext.getActivity(), (Intent)localObject, 0);
           paramJSContext.evaluateCallback(true, null, "");
           return;
         }
@@ -72,8 +72,8 @@ public class QQPublicAccountNativePlugin
           i = paramJSONObject.optInt("type");
           String str = paramJSONObject.optString("feedid");
           long l = paramJSONObject.optLong("createtime");
-          paramJSONObject = wis.a(str, (String)localObject, i, paramJSONObject.optInt("width"), paramJSONObject.optInt("height"), l);
-          wis.a(paramJSContext.getActivity(), paramJSONObject, 9001);
+          paramJSONObject = xxk.a(str, (String)localObject, i, paramJSONObject.optInt("width"), paramJSONObject.optInt("height"), l);
+          xxk.a(paramJSContext.getActivity(), paramJSONObject, 9001);
           return;
         }
       }
@@ -89,14 +89,14 @@ public class QQPublicAccountNativePlugin
         if (paramJSONObject != null)
         {
           paramJSONObject = paramJSONObject.optString("uin");
-          wis.a(paramJSContext.getActivity(), paramJSONObject, 9001);
+          xxk.a(paramJSContext.getActivity(), paramJSONObject, 9001);
         }
       }
       else if ("qsubscribe_getdeviceinfo".equals(localObject))
       {
-        paramJSONObject = new yyq();
+        paramJSONObject = new aaop();
         paramJSONObject.a = "1b0ad2";
-        paramJSONObject = yyp.a(BaseApplication.getContext(), paramJSONObject);
+        paramJSONObject = aaoo.a(BaseApplication.getContext(), paramJSONObject);
         if ((paramJSONObject != null) && (paramJSONObject.a != null))
         {
           localObject = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -118,7 +118,7 @@ public class QQPublicAccountNativePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.QQPublicAccountNativePlugin
  * JD-Core Version:    0.7.0.1
  */

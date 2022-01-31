@@ -1,16 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
 
 public class tkz
-  extends syn
+  implements DialogInterface.OnClickListener
 {
-  public tkz(tkx paramtkx, qqstory_service.RspForbidVideo paramRspForbidVideo)
+  public tkz(OuterInterceptManager.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramRspForbidVideo.result);
+    if (this.a.a != null) {
+      this.a.a.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkz
  * JD-Core Version:    0.7.0.1
  */

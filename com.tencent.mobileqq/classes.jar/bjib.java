@@ -1,23 +1,10 @@
-import android.support.annotation.NonNull;
-
-class bjib
-  implements bjho
+public abstract interface bjib
 {
-  bjib(bjia parambjia) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = bakx.b(paramString);
-    }
-    return str;
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjib
  * JD-Core Version:    0.7.0.1
  */

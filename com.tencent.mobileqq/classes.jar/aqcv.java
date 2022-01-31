@@ -1,27 +1,24 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.pb.profilecard.EditExtendFriendInfo.SchoolInfo;
 
-class aqcv
-  implements URLDrawable.URLDrawableListener
+final class aqcv
+  implements DialogInterface.OnClickListener
 {
-  aqcv(aqcu paramaqcu) {}
+  aqcv(apwv paramapwv, EditExtendFriendInfo.SchoolInfo paramSchoolInfo) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramURLDrawable.setBounds(bbef.a(paramURLDrawable, 36, 100, this.a.a));
-    aqcu.a(this.a).setImageDrawable(paramURLDrawable);
+    if (this.jdField_a_of_type_Apwv != null) {
+      this.jdField_a_of_type_Apwv.a(this.jdField_a_of_type_ComTencentPbProfilecardEditExtendFriendInfo$SchoolInfo);
+    }
+    azmj.b(null, "dc00898", "", "", "0X800ADA8", "0X800ADA8", 1, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqcv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
 
-class aheb
-  implements ahfe
+public final class aheb
+  implements Parcelable.Creator<SearchResultItem>
 {
-  aheb(ahea paramahea, ahed paramahed) {}
-  
-  public void a(boolean paramBoolean)
+  public SearchResultItem a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DrawClassifier", 2, "TensorFlow init:" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ahea.a(this.jdField_a_of_type_Ahea, ahea.a(this.jdField_a_of_type_Ahea), this.jdField_a_of_type_Ahed, true);
-    }
-    while (this.jdField_a_of_type_Ahed == null) {
-      return;
-    }
-    this.jdField_a_of_type_Ahed.a(false);
+    return new SearchResultItem(paramParcel);
+  }
+  
+  public SearchResultItem[] a(int paramInt)
+  {
+    return new SearchResultItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aheb
  * JD-Core Version:    0.7.0.1
  */

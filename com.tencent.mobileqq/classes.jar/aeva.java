@@ -1,27 +1,52 @@
-public class aeva
-  implements bajw
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManager;
+
+class aeva
 {
-  public String a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
   
-  public aeva(String paramString)
+  aeva(aeuy paramaeuy) {}
+  
+  public void a()
   {
-    this.a = paramString;
+    if (this.jdField_a_of_type_AndroidOsHandler == null)
+    {
+      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("DoodleDrawerThread", 0);
+      localHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    }
   }
   
-  public long a()
+  public void a(Runnable paramRunnable)
   {
-    try
-    {
-      long l = Long.parseLong(this.a);
-      return l;
+    if ((paramRunnable == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
+      return;
     }
-    catch (Exception localException) {}
-    return 0L;
+    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeva
  * JD-Core Version:    0.7.0.1
  */

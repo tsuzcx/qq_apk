@@ -1,12 +1,20 @@
-public class agmk
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class agmk
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public String a;
+  agmk(agmb paramagmb) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agmk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emotionintegrate.EmotionDataSource.1;
+import java.util.List;
 
-final class apvy
-  implements View.OnClickListener
+public abstract class apvy
 {
-  apvy(QQAppInterface paramQQAppInterface, String paramString, apwa paramapwa, anbw paramanbw) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
+  public abstract List<apvv> a(boolean paramBoolean);
+  
+  public abstract void a();
+  
+  public void a(apvz paramapvz, apvv paramapvv, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
-    }
-    this.jdField_a_of_type_Apwa.a(this.jdField_a_of_type_Anbw.b());
+    ThreadManager.excute(new EmotionDataSource.1(this, paramBoolean, paramapvz, paramapvv), 64, null, true);
   }
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import java.lang.reflect.Field;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
-public final class vyk
+public class vyk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public final int a;
-  public final String a;
-  public final Field a;
+  public vyk(QGSettingFragment paramQGSettingFragment) {}
   
-  public vyk(String paramString, int paramInt, Field paramField)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectField = paramField;
-    paramField.setAccessible(true);
+    QGSettingFragment.c(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyk
  * JD-Core Version:    0.7.0.1
  */

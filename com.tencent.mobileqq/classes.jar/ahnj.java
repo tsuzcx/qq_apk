@@ -1,29 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ahnj
-  implements View.OnTouchListener
+  extends amab
 {
-  ahnj(ahni paramahni) {}
+  ahnj(ahnd paramahnd) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(1.0F);
-      }
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      ahnd.a(this.a, paramString, localBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahnj
  * JD-Core Version:    0.7.0.1
  */

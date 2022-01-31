@@ -10,9 +10,9 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
-import bfoz;
-import bfps;
-import bfww;
+import bhpv;
+import bhqo;
+import bhxt;
 
 public abstract class AbsSpinner
   extends AdapterView<SpinnerAdapter>
@@ -21,7 +21,7 @@ public abstract class AbsSpinner
   private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver;
   final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   SpinnerAdapter jdField_a_of_type_AndroidWidgetSpinnerAdapter;
-  final bfoz jdField_a_of_type_Bfoz = new bfoz(this);
+  final bhpv jdField_a_of_type_Bhpv = new bhpv(this);
   int jdField_b_of_type_Int;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
   int jdField_c_of_type_Int;
@@ -56,7 +56,7 @@ public abstract class AbsSpinner
       if (jdField_a_of_type_Int == -2) {
         jdField_a_of_type_Int = getStyleableValue("AbsSpinner_entries");
       }
-      paramAttributeSet = new bfww(paramContext.obtainStyledAttributes(paramAttributeSet, getStyleableValues("AbsSpinner"), paramInt, 0));
+      paramAttributeSet = new bhxt(paramContext.obtainStyledAttributes(paramAttributeSet, getStyleableValues("AbsSpinner"), paramInt, 0));
       CharSequence[] arrayOfCharSequence = paramAttributeSet.a(jdField_a_of_type_Int);
       if (arrayOfCharSequence != null)
       {
@@ -132,9 +132,9 @@ public abstract class AbsSpinner
     return this.jdField_a_of_type_AndroidWidgetSpinnerAdapter;
   }
   
-  protected bfps a()
+  protected bhqo a()
   {
-    return new bfps(this);
+    return new bhqo(this);
   }
   
   void a(int paramInt, boolean paramBoolean)
@@ -171,12 +171,12 @@ public abstract class AbsSpinner
   void c()
   {
     int j = getChildCount();
-    bfoz localbfoz = this.jdField_a_of_type_Bfoz;
+    bhpv localbhpv = this.jdField_a_of_type_Bhpv;
     int k = this.mFirstPosition;
     int i = 0;
     while (i < j)
     {
-      localbfoz.a(k + i, getChildAt(i));
+      localbhpv.a(k + i, getChildAt(i));
       i += 1;
     }
   }
@@ -238,13 +238,13 @@ public abstract class AbsSpinner
       if ((i < 0) || (this.jdField_a_of_type_AndroidWidgetSpinnerAdapter == null) || (i >= this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getCount())) {
         break label437;
       }
-      View localView = this.jdField_a_of_type_Bfoz.a(i);
+      View localView = this.jdField_a_of_type_Bhpv.a(i);
       localObject = localView;
       if (localView == null) {
         localObject = this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getView(i, null, this);
       }
       if (localObject != null) {
-        this.jdField_a_of_type_Bfoz.a(i, (View)localObject);
+        this.jdField_a_of_type_Bhpv.a(i, (View)localObject);
       }
       if (localObject == null) {
         break label437;
@@ -390,7 +390,7 @@ public abstract class AbsSpinner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.AbsSpinner
  * JD-Core Version:    0.7.0.1
  */

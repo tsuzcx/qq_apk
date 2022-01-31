@@ -1,185 +1,182 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadDataReport.1;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
+import org.json.JSONException;
 
 public class piw
-  implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  public final String a;
-  
-  public piw(ArticleInfo paramArticleInfo, Context paramContext, int paramInt)
+  public static void a(ToServiceMsg paramToServiceMsg, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "OnSocialHeaderFollowClickListener";
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static long a(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null) {
-      return 0L;
-    }
-    try
+    Object localObject;
+    boolean bool1;
+    boolean bool2;
+    label130:
+    long l;
+    if (paramToServiceMsg != null)
     {
-      long l = Long.parseLong(paramArticleInfo.mSubscribeID);
-      return l;
-    }
-    catch (NumberFormatException paramArticleInfo)
-    {
-      paramArticleInfo.printStackTrace();
-      return 0L;
-    }
-    catch (Exception paramArticleInfo)
-    {
-      paramArticleInfo.printStackTrace();
-    }
-    return 0L;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
-    while (a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    long l = a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    osg.a().a().a(localQQAppInterface.getAccount(), String.valueOf(l), true, new pix(this), 1);
-    c();
-  }
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramArticleInfo != null)
-    {
-      bool1 = bool2;
-      if (paramArticleInfo.mSocialFeedInfo != null)
+      localObject = (Long)paramToServiceMsg.getAttribute("feedsRequestBeginTime");
+      Integer localInteger = (Integer)paramToServiceMsg.getAttribute("channelID");
+      Long localLong = (Long)paramToServiceMsg.getAttribute(pgp.d);
+      Boolean localBoolean = (Boolean)paramToServiceMsg.getAttribute("hitFeedsPreloadCache");
+      if (localBoolean == null) {
+        break label268;
+      }
+      bool1 = localBoolean.booleanValue();
+      if ((localInteger != null) && (localInteger.intValue() == 0) && (localLong != null) && (localLong.longValue() == -1L))
       {
-        bool1 = bool2;
-        if (paramArticleInfo.mSocialFeedInfo.h == 2) {
-          bool1 = true;
+        if ((localObject == null) || (((Long)localObject).longValue() <= 0L)) {
+          break label303;
         }
-      }
-    }
-    return bool1;
-  }
-  
-  private void b()
-  {
-    AppRuntime localAppRuntime = onh.a();
-    ArticleInfo localArticleInfo;
-    if (localAppRuntime != null)
-    {
-      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-      if (localArticleInfo != null)
-      {
-        if ((localArticleInfo.mSocialFeedInfo == null) || (localArticleInfo.mSocialFeedInfo.h == 2)) {
-          return;
+        paramToServiceMsg = (List)paramToServiceMsg.getAttribute("SubscriptionArticles");
+        if ((paramToServiceMsg == null) || (paramToServiceMsg.size() <= 0)) {
+          break label273;
         }
-        if (!shu.a(localArticleInfo.mChannelID)) {
-          break label128;
+        bool2 = true;
+        l = System.currentTimeMillis() - ((Long)localObject).longValue();
+        QLog.d("FeedsPreloadDataReport", 1, new Object[] { "refreshTime = ", Long.valueOf(l), ", hitFeedsPreloadCache = ", Boolean.valueOf(bool1), ", isRedPoint = ", Boolean.valueOf(bool2) });
+        localObject = ors.a();
+        if (!bool2) {
+          break label278;
         }
+        paramToServiceMsg = "1";
       }
-    }
-    label128:
-    for (String str = "0X800941D";; str = "0X80080EC")
-    {
-      ram.a(localArticleInfo, str, str, (int)localArticleInfo.mChannelID);
-      osg.b(localArticleInfo);
-      if (localArticleInfo.mSocialFeedInfo != null)
-      {
-        long l = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qci.jdField_a_of_type_Long;
-        osg.a().a().a(localAppRuntime.getAccount(), String.valueOf(l), true, new piy(this, localArticleInfo));
-      }
-      c();
-      return;
-    }
-  }
-  
-  private void c()
-  {
-    ReportInfo localReportInfo = new ReportInfo();
-    Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    if (localObject2 != null)
-    {
-      Object localObject3 = ((ArticleInfo)localObject2).mSocialFeedInfo;
-      localObject1 = new qbz();
-      localReportInfo.mUin = onh.a();
-      localReportInfo.mSource = 0;
-      localReportInfo.mSourceArticleId = ((ArticleInfo)localObject2).mArticleID;
-      localReportInfo.mChannelId = ((int)((ArticleInfo)localObject2).mChannelID);
-      localReportInfo.mAlgorithmId = ((int)((ArticleInfo)localObject2).mAlgorithmID);
-      localReportInfo.mStrategyId = ((ArticleInfo)localObject2).mStrategyId;
-      localReportInfo.mServerContext = ((ArticleInfo)localObject2).mServerContext;
-      localReportInfo.mReadTimeLength = -1;
-      if (localObject3 != null)
-      {
-        ((qbz)localObject1).jdField_a_of_type_Long = ((SocializeFeedsInfo)localObject3).jdField_a_of_type_Long;
-        if (((SocializeFeedsInfo)localObject3).jdField_a_of_type_Qci != null) {
-          ((qbz)localObject1).jdField_b_of_type_Long = ((SocializeFeedsInfo)localObject3).jdField_a_of_type_Qci.jdField_a_of_type_Long;
-        }
-        ((qbz)localObject1).jdField_a_of_type_Int = ((SocializeFeedsInfo)localObject3).jdField_b_of_type_Int;
-        ((qbz)localObject1).jdField_b_of_type_Int = ((SocializeFeedsInfo)localObject3).d;
-        localObject2 = ((SocializeFeedsInfo)localObject3).jdField_a_of_type_JavaUtilList;
-        if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
-        {
-          ((qbz)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (qci)((Iterator)localObject2).next();
-            if (localObject3 != null) {
-              ((qbz)localObject1).jdField_a_of_type_JavaUtilList.add(Long.valueOf(((qci)localObject3).jdField_a_of_type_Long));
-            }
-          }
-        }
-      }
-      localReportInfo.mOperation = 14;
-      localReportInfo.mFeedsReportData = ((qbz)localObject1);
-    }
-    Object localObject1 = new ArrayList();
-    ((List)localObject1).add(localReportInfo);
-    osg.a().a((List)localObject1);
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
-    {
-      QLog.d("OnSocialHeaderFollowClickListener", 2, "OnSocialHeaderFollowClickListener: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTitle);
-      if ((this.jdField_a_of_type_Int != 31) && (this.jdField_a_of_type_Int != 32) && (this.jdField_a_of_type_Int != 83) && (this.jdField_a_of_type_Int != 84) && (this.jdField_a_of_type_Int != 85) && (this.jdField_a_of_type_Int != 86) && (this.jdField_a_of_type_Int != 77) && (this.jdField_a_of_type_Int != 78) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isPGCShortContent()) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isAccountShown)) {
-        break label144;
-      }
-      a();
     }
     for (;;)
     {
-      oaj.a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, true);
+      try
+      {
+        ((orz)localObject).a("is_reddot", paramToServiceMsg);
+        if (!bool1) {
+          continue;
+        }
+        paramToServiceMsg = "1";
+        ((orz)localObject).a("hit_preload", paramToServiceMsg);
+        ((orz)localObject).a("refresh_cost", String.valueOf(l));
+        ((orz)localObject).a("refresh_num", String.valueOf(paramInt));
+      }
+      catch (JSONException paramToServiceMsg)
+      {
+        label268:
+        label273:
+        label278:
+        QLog.d("FeedsPreloadDataReport", 1, "reportFeedsRefreshCost, e = ", paramToServiceMsg);
+        continue;
+      }
+      a("0X8009C16", ((orz)localObject).a());
+      piy.a(l, bool1);
       return;
-      label144:
-      b();
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label130;
+      paramToServiceMsg = "0";
+      continue;
+      paramToServiceMsg = "0";
+    }
+    label303:
+    QLog.d("FeedsPreloadDataReport", 1, "beginTime is null, no need to report.");
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    piu.a().a(new FeedsPreloadDataReport.1(paramString1, paramString2));
+  }
+  
+  public static void a(boolean paramBoolean, int paramInt)
+  {
+    orz localorz = ors.a();
+    String str;
+    if (paramBoolean) {
+      str = "1";
+    }
+    try
+    {
+      for (;;)
+      {
+        localorz.a("preload_reddot", str);
+        localorz.a("preload_num", String.valueOf(paramInt));
+        a("0X8009C15", localorz.a());
+        return;
+        str = "0";
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.d("FeedsPreloadDataReport", 1, "reportHitFeedsPreloadCache, e = ", localJSONException);
+      }
+    }
+  }
+  
+  public static void a(boolean paramBoolean, int paramInt, long paramLong)
+  {
+    orz localorz = ors.a();
+    String str;
+    if (paramBoolean) {
+      str = "1";
+    }
+    for (;;)
+    {
+      try
+      {
+        localorz.a("preload_reddot", str);
+        localorz.a("preload_num", String.valueOf(paramInt));
+        localorz.a("package_size", String.valueOf(paramLong));
+        if (paramLong <= 20000L) {
+          continue;
+        }
+        str = "1";
+        localorz.a("is_too_large", str);
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.d("FeedsPreloadDataReport", 1, "reportReceiveFeedsPreload, e = ", localJSONException);
+        continue;
+      }
+      a("0X8009C14", localorz.a());
+      return;
+      str = "0";
+      continue;
+      str = "0";
+    }
+  }
+  
+  public static void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    orz localorz = ors.a();
+    String str;
+    if (paramBoolean1) {
+      str = "1";
+    }
+    for (;;)
+    {
+      try
+      {
+        localorz.a("preload_reddot", str);
+        if (!paramBoolean2) {
+          continue;
+        }
+        str = "1";
+        localorz.a("has_exception", str);
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.d("FeedsPreloadDataReport", 1, "reportTriggerFeedsPreload, e = ", localJSONException);
+        continue;
+      }
+      a("0X8009C13", localorz.a());
+      return;
+      str = "0";
+      continue;
+      str = "0";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     piw
  * JD-Core Version:    0.7.0.1
  */

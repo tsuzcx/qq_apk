@@ -1,5 +1,8 @@
 package com.tencent.ad.tangram.protocol;
 
+import android.support.annotation.Keep;
+
+@Keep
 public final class landing_page_collect_data
 {
   public static final int ACTION_ARK_LOAD_START = 61;

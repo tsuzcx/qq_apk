@@ -75,7 +75,7 @@ public class FaceBeautyAutoFilter$MicCureFaceFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.filter.ttpic.FaceBeautyAutoFilter.MicCureFaceFilter
  * JD-Core Version:    0.7.0.1
  */

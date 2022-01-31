@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afnn
-  implements View.OnClickListener
+final class afnn
+  implements afpr
 {
-  public afnn(TroopActivity paramTroopActivity) {}
-  
-  public void onClick(View paramView)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    TroopActivity.a(this.a);
+    return aqrn.a(paramQQAppInterface, paramChatMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afnn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-final class bbar
-  implements View.OnClickListener
+public class bbar
 {
-  bbar(AtomicBoolean paramAtomicBoolean, audw paramaudw) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_a_of_type_Audw.dismiss();
+    this.a = paramJSONObject.optString("left");
+    this.b = paramJSONObject.optString("text");
+    this.c = paramJSONObject.optString("right");
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbar
  * JD-Core Version:    0.7.0.1
  */

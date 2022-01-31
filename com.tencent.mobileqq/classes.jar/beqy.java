@@ -1,48 +1,50 @@
-import android.app.Activity;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class beqy
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private static volatile beqy jdField_a_of_type_Beqy;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  public beqy(SlideDetectListView paramSlideDetectListView) {}
   
-  public static beqy a()
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (jdField_a_of_type_Beqy == null) {}
-    try
+    if (!this.a.jdField_c_of_type_Boolean) {}
+    do
     {
-      if (jdField_a_of_type_Beqy == null) {
-        jdField_a_of_type_Beqy = new beqy();
+      return false;
+      if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) && ((this.a.jdField_c_of_type_Int == 0) || (this.a.d)) && (!this.a.jdField_a_of_type_Boolean) && (Math.abs(paramFloat1) > this.a.f))
+      {
+        this.a.jdField_b_of_type_Int = this.a.a(this.a.jdField_a_of_type_Int);
+        this.a.jdField_a_of_type_AndroidViewView = this.a.a(this.a.jdField_b_of_type_Int);
+        if (this.a.jdField_a_of_type_AndroidViewView != null)
+        {
+          this.a.jdField_a_of_type_Boolean = true;
+          this.a.setPressed(false);
+          this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+          if (SlideDetectListView.a(this.a) != null)
+          {
+            int i = this.a.jdField_b_of_type_Int;
+            int j = this.a.getHeaderViewsCount();
+            SlideDetectListView.a(this.a).a(this.a, this.a.jdField_a_of_type_AndroidViewView, i - j);
+          }
+          this.a.jdField_a_of_type_Int = 0;
+        }
+        for (;;)
+        {
+          return true;
+          this.a.jdField_b_of_type_Boolean = true;
+        }
       }
-      return jdField_a_of_type_Beqy;
-    }
-    finally {}
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  public MiniAppInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
+    } while (Math.abs(paramFloat1) <= Math.abs(paramFloat2) * 2.0F);
+    this.a.jdField_b_of_type_Boolean = true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beqy
  * JD-Core Version:    0.7.0.1
  */

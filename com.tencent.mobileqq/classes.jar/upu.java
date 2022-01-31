@@ -1,60 +1,19 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-public class upu
-  extends sys<tog>
+public abstract interface upu
 {
-  public String a;
-  public boolean a;
-  public int c = -1;
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public String a()
-  {
-    return sxm.a("StorySvc.feed_like_list_715");
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
-    try
-    {
-      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
-      return new upv(localRspFeedLikeList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      ved.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
+  public abstract void a(MessageMicro paramMessageMicro);
   
-  protected byte[] a()
-  {
-    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
-    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      localReqFeedLikeList.source.set(i);
-      if (this.c != -1) {
-        localReqFeedLikeList.type.set(this.c);
-      }
-      return localReqFeedLikeList.toByteArray();
-    }
-  }
-  
-  public String toString()
-  {
-    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
-  }
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upu
  * JD-Core Version:    0.7.0.1
  */

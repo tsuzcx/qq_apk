@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acux;
-import acuy;
-import agfu;
+import aemh;
+import aemi;
+import aidz;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Handler;
@@ -14,12 +14,12 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ChatItemAnimLayout
   extends RelativeLayout
-  implements agfu
+  implements aidz
 {
   int Y;
   int Z = 255;
   public long a;
-  public acuy a;
+  public aemi a;
   private Handler a;
   public ChatMessage b;
   protected boolean b;
@@ -33,21 +33,21 @@ public class ChatItemAnimLayout
   {
     super(paramContext);
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidOsHandler = new acux(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aemh(this);
   }
   
   public ChatItemAnimLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidOsHandler = new acux(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aemh(this);
   }
   
   public ChatItemAnimLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidOsHandler = new acux(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aemh(this);
   }
   
   private boolean a(ChatMessage paramChatMessage)
@@ -75,7 +75,7 @@ public class ChatItemAnimLayout
     }
   }
   
-  public void a(ChatMessage paramChatMessage, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, acuy paramacuy)
+  public void a(ChatMessage paramChatMessage, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, aemi paramaemi)
   {
     if (a(paramChatMessage))
     {
@@ -88,7 +88,7 @@ public class ChatItemAnimLayout
       QLog.d("ChatItemAnimLayout", 2, "startAnim");
     }
     this.jdField_b_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_Acuy = paramacuy;
+    this.jdField_a_of_type_Aemi = paramaemi;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.g = paramFloat1;
     this.h = paramFloat2;
@@ -128,7 +128,7 @@ public class ChatItemAnimLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ChatItemAnimLayout
  * JD-Core Version:    0.7.0.1
  */

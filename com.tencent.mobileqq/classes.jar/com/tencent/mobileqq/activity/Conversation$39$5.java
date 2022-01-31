@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aawp;
-import ahkd;
+import acnn;
+import ajbm;
 
 public class Conversation$39$5
   implements Runnable
 {
-  public Conversation$39$5(aawp paramaawp) {}
+  public Conversation$39$5(acnn paramacnn) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class Conversation$39$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.39.5
  * JD-Core Version:    0.7.0.1
  */

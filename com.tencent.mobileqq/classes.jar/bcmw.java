@@ -1,19 +1,18 @@
-import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
 public class bcmw
-  extends FrameLayout.LayoutParams
 {
-  public int a;
-  public int b;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public URLImageView a;
+  public ImageProgressCircle a;
   
-  public bcmw(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  protected bcmw(bcmu parambcmu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcmw
  * JD-Core Version:    0.7.0.1
  */

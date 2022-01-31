@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ajya;
+import alpo;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -22,16 +22,16 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import baww;
-import bbbm;
+import bcvq;
+import bdag;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import nua;
-import nwe;
+import nxf;
+import nzi;
 
 public class ReadInJoyNewBaseActivity
   extends FragmentActivity
@@ -56,7 +56,7 @@ public class ReadInJoyNewBaseActivity
   public ReadInJoyNewBaseActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new nwe(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new nzi(this);
   }
   
   @TargetApi(11)
@@ -71,19 +71,19 @@ public class ReadInJoyNewBaseActivity
   
   private View c()
   {
-    this.c = ((TextView)findViewById(2131368472));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368474));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368473));
+    this.c = ((TextView)findViewById(2131368659));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368661));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368660));
     return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
   
   protected View a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368429));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368613));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     a(this.jdField_a_of_type_AndroidWidgetTextView);
-    if (AppSetting.d) {
-      baww.b(this.jdField_a_of_type_AndroidWidgetTextView, Button.class.getName());
+    if (AppSetting.c) {
+      bcvq.b(this.jdField_a_of_type_AndroidWidgetTextView, Button.class.getName());
     }
     return this.jdField_a_of_type_AndroidWidgetTextView;
   }
@@ -91,7 +91,7 @@ public class ReadInJoyNewBaseActivity
   public void a()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidViewView = ((ViewStub)findViewById(2131377451)).inflate();
+    this.jdField_b_of_type_AndroidViewView = ((ViewStub)findViewById(2131377988)).inflate();
     if (this.jdField_b_of_type_AndroidViewView != null) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }
@@ -108,8 +108,8 @@ public class ReadInJoyNewBaseActivity
   
   protected void a(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130849038));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131375331));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130849469));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131375814));
     a(this.jdField_a_of_type_AndroidViewViewGroup);
     c();
     a();
@@ -130,7 +130,7 @@ public class ReadInJoyNewBaseActivity
   
   protected View b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368441));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368627));
     a(this.jdField_a_of_type_AndroidWidgetImageView);
     return this.d;
   }
@@ -159,7 +159,7 @@ public class ReadInJoyNewBaseActivity
           if (!this.jdField_a_of_type_Boolean) {
             break label208;
           }
-          if ((bbbm.b()) || (bbbm.d())) {
+          if ((bdag.b()) || (bdag.d())) {
             break label188;
           }
           this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -168,19 +168,19 @@ public class ReadInJoyNewBaseActivity
         {
           this.c.setTextColor(-14408926);
           this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-14408926);
-          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848498);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848496);
+          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848925);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848923);
           this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
           return;
           this.mSystemBarComp.setStatusBarColor(-7829368);
           this.mSystemBarComp.setStatusBarDarkMode(true);
           continue;
-          if ((Build.VERSION.SDK_INT >= 23) && (!bbbm.b()) && (!bbbm.d()))
+          if ((Build.VERSION.SDK_INT >= 23) && (!bdag.b()) && (!bdag.d()))
           {
             a(true);
             this.mSystemBarComp.setStatusBarColor(-1);
           }
-          else if (!bbbm.d())
+          else if (!bdag.d())
           {
             this.mSystemBarComp.setStatusBarColor(-2368549);
           }
@@ -201,7 +201,7 @@ public class ReadInJoyNewBaseActivity
         this.mSystemBarComp.init();
       }
       this.mSystemBarComp.setStatusBarDarkMode(false);
-      if ((Build.VERSION.SDK_INT < 23) || (bbbm.b()) || (bbbm.d())) {
+      if ((Build.VERSION.SDK_INT < 23) || (bdag.b()) || (bdag.d())) {
         break label427;
       }
       a(false);
@@ -211,8 +211,8 @@ public class ReadInJoyNewBaseActivity
     {
       this.c.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848499);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848497);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848926);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848924);
       this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-14408926);
       return;
       label427:
@@ -243,8 +243,8 @@ public class ReadInJoyNewBaseActivity
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
             paramIntent = (Intent)localObject;
-            if (((String)localObject).contains(ajya.a(2131712721))) {
-              paramIntent = getString(2131690572);
+            if (((String)localObject).contains(alpo.a(2131713093))) {
+              paramIntent = getString(2131690623);
             }
           }
         }
@@ -256,16 +256,16 @@ public class ReadInJoyNewBaseActivity
       }
       else
       {
-        localObject = getString(2131690572);
+        localObject = getString(2131690623);
       }
       localTextView.setText((CharSequence)localObject);
       localTextView.setVisibility(0);
-      if (AppSetting.d)
+      if (AppSetting.c)
       {
         localObject = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
         paramIntent = (Intent)localObject;
-        if (!((String)localObject).contains(getString(2131690572))) {
-          paramIntent = getString(2131690572) + (String)localObject;
+        if (!((String)localObject).contains(getString(2131690623))) {
+          paramIntent = getString(2131690623) + (String)localObject;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramIntent);
       }
@@ -320,7 +320,7 @@ public class ReadInJoyNewBaseActivity
     if (!this.mNeedStatusTrans)
     {
       super.setContentView(paramInt);
-      getWindow().setFeatureInt(7, 2131558875);
+      getWindow().setFeatureInt(7, 2131558912);
     }
     do
     {
@@ -331,11 +331,11 @@ public class ReadInJoyNewBaseActivity
       a(getIntent());
       return;
       Object localObject = LayoutInflater.from(this);
-      View localView = ((LayoutInflater)localObject).inflate(2131559984, null);
+      View localView = ((LayoutInflater)localObject).inflate(2131560083, null);
       try
       {
-        this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131377452));
-        this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)localView.findViewById(2131377439));
+        this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131377989));
+        this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)localView.findViewById(2131377976));
         localObject = ((LayoutInflater)localObject).inflate(paramInt, this.jdField_b_of_type_AndroidViewViewGroup, false);
         ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
         this.jdField_b_of_type_AndroidViewViewGroup.addView((View)localObject, 0, localLayoutParams);
@@ -364,7 +364,7 @@ public class ReadInJoyNewBaseActivity
       QLog.e("IphoneTitleBarActivity", 2, "layout with merge ,use framelayout to immersive" + getComponentName());
     }
     super.setContentView(paramInt);
-    getWindow().setFeatureInt(7, 2131558875);
+    getWindow().setFeatureInt(7, 2131558912);
     if (this.jdField_a_of_type_AndroidViewView != null) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
@@ -382,7 +382,7 @@ public class ReadInJoyNewBaseActivity
     if ((this.c != null) && ((this.c instanceof TextView)))
     {
       TextView localTextView = this.c;
-      int i = nua.d;
+      int i = nxf.d;
       Object localObject = paramCharSequence;
       if (paramCharSequence.length() > i) {
         localObject = paramCharSequence.subSequence(0, i) + "...";
@@ -394,7 +394,7 @@ public class ReadInJoyNewBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity
  * JD-Core Version:    0.7.0.1
  */

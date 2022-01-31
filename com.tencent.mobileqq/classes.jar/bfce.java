@@ -1,18 +1,14 @@
-public abstract interface bfce
+import android.widget.TextView;
+import com.tencent.widget.Switch;
+
+public class bfce
 {
-  public abstract String a(String paramString1, String paramString2, behp parambehp, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void b(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void c(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void d(String paramString1, String paramString2, int paramInt);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  Switch jdField_a_of_type_ComTencentWidgetSwitch;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfce
  * JD-Core Version:    0.7.0.1
  */

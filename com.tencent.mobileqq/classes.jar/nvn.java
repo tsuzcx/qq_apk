@@ -1,63 +1,72 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class nvn
-  implements INetInfoHandler
 {
-  private nvn(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public void onNetMobile2None()
+  public static void a(Drawable paramDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2None");
+    if (!a()) {
+      QLog.i("DailyDynamicHeaderBackgroundController", 1, "blurBackground, isNeedToBlurBackground : NO");
     }
-    this.a.b(false);
+    while (!(paramDrawable instanceof URLDrawable)) {
+      return;
+    }
+    ((URLDrawable)paramDrawable).setDecodeHandler(new nvo());
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public static void a(ImageView paramImageView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2Wifi");
+    if (paramImageView == null) {
+      return;
     }
-    this.a.d(true);
+    if (b())
+    {
+      paramImageView.setColorFilter(855638016, PorterDuff.Mode.DARKEN);
+      return;
+    }
+    paramImageView.clearColorFilter();
   }
   
-  public void onNetNone2Mobile(String paramString)
+  private static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Mobile");
+    Object localObject = (oxd)((QQAppInterface)ors.a()).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((oxd)localObject).a().a();
+      if (localObject != null)
+      {
+        localObject = ((JSONObject)localObject).optString("is_blur_background", "0");
+        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedToBlurBackground, isBlurBackground = " + (String)localObject);
+        return "1".equals(localObject);
+      }
     }
-    this.a.c(false);
+    return false;
   }
   
-  public void onNetNone2Wifi(String paramString)
+  private static boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Wifi");
+    Object localObject = (oxd)((QQAppInterface)ors.a()).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((oxd)localObject).a().a();
+      if (localObject != null)
+      {
+        localObject = ((JSONObject)localObject).optString("is_cover_background", "0");
+        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedGrayLayer, isCoverBackground = " + (String)localObject);
+        return "1".equals(localObject);
+      }
     }
-    this.a.d(false);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2Mobile");
-    }
-    this.a.c(true);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2None");
-    }
-    this.a.b(true);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvn
  * JD-Core Version:    0.7.0.1
  */

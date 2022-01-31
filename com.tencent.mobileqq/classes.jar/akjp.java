@@ -1,119 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.voiceChange.VipVoiceChange.subCmd0x1ReqAuth;
-import com.tencent.pb.voiceChange.VipVoiceChange.subCmd0x1RspAuth;
-import com.tencent.pb.voiceChange.VipVoiceChange.voiceChangeReq;
-import com.tencent.pb.voiceChange.VipVoiceChange.voiceChangeRsp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.pb.TianShuAccess.RspEntry;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class akjp
-  extends ajtb
+class akjp
+  implements bkch
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  final String jdField_a_of_type_JavaLangString = "VoiceChangeHandler";
-  WeakReference<ListenChangeVoicePanel> jdField_a_of_type_JavaLangRefWeakReference;
+  akjp(akji paramakji) {}
   
-  public akjp(QQAppInterface paramQQAppInterface)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(int paramInt1, int paramInt2, ListenChangeVoicePanel paramListenChangeVoicePanel)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramListenChangeVoicePanel);
-    paramListenChangeVoicePanel = super.createToServiceMsg("voiceChange.Auth");
-    paramListenChangeVoicePanel.extraData.putInt("callId", paramInt2);
-    VipVoiceChange.voiceChangeReq localvoiceChangeReq = new VipVoiceChange.voiceChangeReq();
-    localvoiceChangeReq.int32_platform.set(109);
-    localvoiceChangeReq.int32_sub_cmd.set(1);
-    localvoiceChangeReq.str_qq_version.set("8.3.0");
-    VipVoiceChange.subCmd0x1ReqAuth localsubCmd0x1ReqAuth = new VipVoiceChange.subCmd0x1ReqAuth();
-    localsubCmd0x1ReqAuth.int32_item_id.set(paramInt2);
-    localvoiceChangeReq.msg_subcmd0x1_req_auth.set(localsubCmd0x1ReqAuth);
-    localvoiceChangeReq.setHasFlag(true);
-    paramListenChangeVoicePanel.putWupBuffer(localvoiceChangeReq.toByteArray());
     if (QLog.isColorLevel()) {
-      QLog.d("VoiceChangeHandler", 2, "sendReqToSVR funcType=" + paramInt1 + ", voiceID:" + paramInt2);
+      QLog.d("ApolloManager", 2, new Object[] { "onGetAdvs isSucc:", Boolean.valueOf(paramBoolean) });
     }
-    super.sendPbReq(paramListenChangeVoicePanel);
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return bcag.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (!"voiceChange.Auth".equals(paramFromServiceMsg.getServiceCmd())) {
+    if ((!paramBoolean) || (paramGetAdsRsp == null)) {
       return;
     }
-    Bundle localBundle;
-    for (;;)
+    if (paramGetAdsRsp.mapAds.has()) {}
+    for (paramGetAdsRsp = paramGetAdsRsp.mapAds.get(); paramGetAdsRsp == null; paramGetAdsRsp = null)
     {
-      try
-      {
-        localBundle = new Bundle();
-        localBundle.putInt("callId", paramToServiceMsg.extraData.getInt("callId"));
-        if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {
-          break label171;
-        }
-        i = 1;
-        if (i != 0) {
-          break;
-        }
-        QLog.e("VoiceChangeHandler", 1, "onReceive~ isSuccess=false ,data=" + bbmx.a((byte[])paramObject));
-        bdes.a().a("voiceChange.Auth", 100, paramFromServiceMsg.getBusinessFailCode(), this.app.getCurrentAccountUin(), 0, ajya.a(2131716852), true);
-        localBundle.putInt("result", -1);
-        super.notifyUI(1, false, localBundle);
-        return;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        QLog.e("VoiceChangeHandler", 1, "onReceive prb.mergeFrom error: " + paramToServiceMsg.getMessage());
-      }
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      QLog.w("ApolloManager", 1, "rspEntries == null");
       return;
-      label171:
-      i = 0;
     }
-    paramToServiceMsg = new VipVoiceChange.voiceChangeRsp();
-    paramToServiceMsg.mergeFrom((byte[])paramObject);
-    int i = paramToServiceMsg.int32_sub_cmd.get();
-    paramToServiceMsg = (VipVoiceChange.subCmd0x1RspAuth)paramToServiceMsg.msg_subcmd0x1_rsp_auth.get();
-    int j = paramToServiceMsg.int32_ret.get();
-    paramFromServiceMsg = paramToServiceMsg.str_error_msg.get();
-    paramObject = paramToServiceMsg.str_active_url.get();
-    localBundle.putInt("result", j);
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceChangeHandler", 2, "VoiceChangeHandler onReceive~ ret=" + j + ",msg=" + paramFromServiceMsg + ", url=" + paramObject + ", funcType=" + i + ", actStr=" + null);
-    }
-    localBundle.putString("message", paramFromServiceMsg);
-    localBundle.putString("svr_url", paramObject);
-    localBundle.putString("svr_actStr", null);
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {}
-    for (paramToServiceMsg = (ListenChangeVoicePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramToServiceMsg = null)
+    HashMap localHashMap = new HashMap();
+    paramGetAdsRsp = paramGetAdsRsp.iterator();
+    while (paramGetAdsRsp.hasNext())
     {
-      if (paramToServiceMsg != null)
-      {
-        paramToServiceMsg.a(i, j, localBundle, false);
-        break;
+      TianShuAccess.RspEntry localRspEntry = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
+      if ((localRspEntry != null) && (localRspEntry.key.has())) {
+        localHashMap.put(Integer.valueOf(localRspEntry.key.get()), localRspEntry);
       }
-      QLog.e("VoiceChangeHandler", 1, "VoiceChangeHandler onReceive~ null == listenChangeVoicePanel ret=" + j + ",msg=" + paramFromServiceMsg + ", url=" + paramObject + ", funcType=" + i + ", actStr=" + null);
-      break;
     }
+    akji.a(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(364)));
+    akji.b(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(367)));
+    akji.c(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(366)));
+    akji.d(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(365)));
+    akji.e(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(393)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjp
  * JD-Core Version:    0.7.0.1
  */

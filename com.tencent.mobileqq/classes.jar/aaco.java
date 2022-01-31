@@ -1,49 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class aaco
-  extends aacn
+public class aaco
+  implements aadk
 {
-  public aaco(aabi paramaabi, long paramLong)
-  {
-    super(paramaabi, 3, paramLong);
-  }
+  public aaco(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (paramInt == 0)
-    {
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("nation", paramSosoLbsInfo.a.c);
-        localJSONObject.put("province", paramSosoLbsInfo.a.d);
-        localJSONObject.put("city", paramSosoLbsInfo.a.e);
-        localJSONObject.put("district", paramSosoLbsInfo.a.g);
-        aaep.a(this.jdField_a_of_type_Aabi, localJSONObject);
-        return;
-      }
-      catch (JSONException paramSosoLbsInfo)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("DoraemonOpenAPI.sensor", 2, paramSosoLbsInfo.getMessage(), paramSosoLbsInfo);
-          }
-        }
-      }
-    }
-    aaep.a(this.jdField_a_of_type_Aabi, paramInt, "error " + paramInt);
+    QLog.i("GameCenterFragment", 1, "removeShotMask code=" + paramInt);
   }
 }
 

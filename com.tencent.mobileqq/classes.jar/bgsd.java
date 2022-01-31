@@ -1,28 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
 
-public class bgsd
-  implements DialogInterface.OnDismissListener
+public final class bgsd
+  implements Parcelable.Creator<EngineVersion>
 {
-  public bgsd(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public EngineVersion a(Parcel paramParcel)
   {
-    if (this.a.a)
-    {
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.a(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
-    }
+    EngineVersion localEngineVersion = new EngineVersion();
+    localEngineVersion.a = paramParcel.readString();
+    localEngineVersion.b = paramParcel.readString();
+    return localEngineVersion;
+  }
+  
+  public EngineVersion[] a(int paramInt)
+  {
+    return new EngineVersion[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgsd
  * JD-Core Version:    0.7.0.1
  */

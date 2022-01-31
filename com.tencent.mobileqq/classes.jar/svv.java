@@ -1,60 +1,43 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import java.util.ArrayList;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-public final class svv
-  extends ssh
+public class svv
+  extends NativeGifImage
 {
-  public StoryVideoItem a;
-  public GeneralFeedItem a;
-  public ArrayList<svu> a;
-  public final boolean a;
-  public StoryVideoItem b;
-  public boolean b;
-  public boolean c;
+  private int jdField_a_of_type_Int = 3;
+  private svw jdField_a_of_type_Svw;
   
-  public svv(boolean paramBoolean)
+  public svv(File paramFile, boolean paramBoolean, int paramInt)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramFile, paramBoolean, false, 0, 0, 0.0F);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static boolean a(int paramInt)
+  public void a()
   {
-    return (paramInt == 940006) || (paramInt == 940007) || (paramInt == 940017) || (paramInt == 940018) || (paramInt == 941001) || (paramInt == 941002) || (paramInt == ayvp.a(940017)) || (paramInt == ayvp.a(9042)) || (paramInt == ayvp.a(9070)) || (paramInt == ayvp.a(9071)) || (paramInt / 100 == ayvp.a(999000) / 100) || ((paramInt >= 5100) && (paramInt <= 5108));
+    this.jdField_a_of_type_Svw = null;
   }
   
-  public static boolean b(int paramInt)
+  public void a(svw paramsvw)
   {
-    return (paramInt == 941001) || (paramInt == 941002);
+    this.jdField_a_of_type_Svw = paramsvw;
   }
   
-  public boolean a()
+  public void executeNewTask()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return false;
+    if (this.mCurrentLoop == this.jdField_a_of_type_Int)
+    {
+      if (this.jdField_a_of_type_Svw != null) {
+        this.jdField_a_of_type_Svw.a();
+      }
+      return;
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isTroopLocalVideoOnly();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
-  }
-  
-  public String toString()
-  {
-    return "StoryVideoPublishStatusEvent{mFakeStoryVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mSucStoryVideoItem=" + this.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mCommentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem + ", mShareGroupFakeItems=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    super.executeNewTask();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svv
  * JD-Core Version:    0.7.0.1
  */

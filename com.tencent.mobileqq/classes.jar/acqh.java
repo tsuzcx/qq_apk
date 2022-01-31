@@ -1,33 +1,23 @@
-import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acqh
-  extends bfmx
+  implements View.OnTouchListener
 {
-  public acqh(VisitorsActivity paramVisitorsActivity) {}
+  public acqh(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.c > 0)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
-      return;
-    }
-    this.a.f.setVisibility(4);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = this.a;
-    paramAnimation.c -= 1;
-    this.a.f.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqh
  * JD-Core Version:    0.7.0.1
  */

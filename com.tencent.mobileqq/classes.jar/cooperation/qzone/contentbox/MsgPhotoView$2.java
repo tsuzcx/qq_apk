@@ -2,8 +2,8 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import bayh;
-import bhct;
+import bcxb;
+import bjed;
 import com.tencent.mobileqq.app.BaseActivity;
 import cooperation.qzone.contentbox.model.MQMsg;
 
@@ -14,16 +14,16 @@ class MsgPhotoView$2
   
   public void run()
   {
-    Object localObject = bayh.a(1, 3);
-    localObject = bayh.a(((BaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext).app, 1, this.a.user_avatar, 3, (Drawable)localObject, (Drawable)localObject, null);
-    if (this.this$0.jdField_a_of_type_Bhct != null) {
-      this.this$0.jdField_a_of_type_Bhct.obtainMessage(10001, localObject).sendToTarget();
+    Object localObject = bcxb.a(1, 3);
+    localObject = bcxb.a(((BaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext).app, 1, this.a.user_avatar, 3, (Drawable)localObject, (Drawable)localObject, null);
+    if (this.this$0.jdField_a_of_type_Bjed != null) {
+      this.this$0.jdField_a_of_type_Bjed.obtainMessage(10001, localObject).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgPhotoView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,27 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
+
 public class beks
+  extends Handler
 {
-  bekr a = new bekr();
-  
-  public bekr a()
+  public beks(DraggableGridView paramDraggableGridView, Looper paramLooper)
   {
-    return this.a;
+    super(paramLooper);
   }
   
-  public beks a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public beks a(behp parambehp)
-  {
-    this.a.jdField_a_of_type_Behp = parambehp;
-    return this;
-  }
-  
-  public beks a(String paramString)
-  {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public beks b(String paramString)
-  {
-    this.a.jdField_b_of_type_JavaLangString = paramString;
-    return this;
+    DraggableGridView.c(this.a, paramMessage.arg1);
+    DraggableGridView.a(this.a).smoothScrollBy(DraggableGridView.d(this.a), 0);
+    DraggableGridView.a(this.a, (int)DraggableGridView.a(this.a), (int)DraggableGridView.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beks
  * JD-Core Version:    0.7.0.1
  */

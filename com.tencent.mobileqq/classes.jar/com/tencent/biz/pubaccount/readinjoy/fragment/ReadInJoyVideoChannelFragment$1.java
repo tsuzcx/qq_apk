@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import nol;
-import npu;
+import nrt;
+import ntd;
 
 class ReadInJoyVideoChannelFragment$1
   implements Runnable
@@ -10,12 +10,12 @@ class ReadInJoyVideoChannelFragment$1
   
   public void run()
   {
-    nol.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", npu.a(56, null), false);
+    nrt.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", ntd.a(56, null), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment.1
  * JD-Core Version:    0.7.0.1
  */

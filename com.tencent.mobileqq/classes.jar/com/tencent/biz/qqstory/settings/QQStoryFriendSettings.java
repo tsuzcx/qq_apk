@@ -2,16 +2,16 @@ package com.tencent.biz.qqstory.settings;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import sxm;
-import sxv;
-import sya;
-import uju;
-import vei;
+import ume;
+import umn;
+import ums;
+import vym;
+import wta;
 
 public class QQStoryFriendSettings
   extends IphoneTitleBarActivity
 {
-  protected sxv<QQStoryFriendSettings> a = sxm.a(uju.class, sya.a(sxv.class), new Object[0]);
+  protected umn<QQStoryFriendSettings> a = ume.a(vym.class, ums.a(umn.class), new Object[0]);
   
   public boolean doOnCreate(Bundle paramBundle)
   {
@@ -29,12 +29,12 @@ public class QQStoryFriendSettings
   public void doOnPause()
   {
     super.doOnPause();
-    vei.a(7, this.currentActivityStayTime);
+    wta.a(7, this.currentActivityStayTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryFriendSettings
  * JD-Core Version:    0.7.0.1
  */

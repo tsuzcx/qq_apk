@@ -2,7 +2,7 @@ package com.tencent.mfsdk.reporter;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import bbvj;
+import bduw;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,12 +26,12 @@ class ReporterMachine$getFileRunnable
       if (!this.jdField_a_of_type_JavaLangString.endsWith("/")) {
         this.jdField_a_of_type_JavaLangString += "/";
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(bbvj.a(this.jdField_a_of_type_JavaLangString + this.b + this.d));
-      this.jdField_a_of_type_JavaUtilArrayList.add(bbvj.a(this.jdField_a_of_type_JavaLangString + this.b + this.e));
-      this.jdField_a_of_type_JavaUtilArrayList.add(bbvj.a(this.jdField_a_of_type_JavaLangString + this.b + this.f));
-      this.jdField_a_of_type_JavaUtilArrayList.add(bbvj.a(this.jdField_a_of_type_JavaLangString + this.c + this.d));
-      this.jdField_a_of_type_JavaUtilArrayList.add(bbvj.a(this.jdField_a_of_type_JavaLangString + this.c + this.e));
-      this.jdField_a_of_type_JavaUtilArrayList.add(bbvj.a(this.jdField_a_of_type_JavaLangString + this.c + this.f));
+      this.jdField_a_of_type_JavaUtilArrayList.add(bduw.a(this.jdField_a_of_type_JavaLangString + this.b + this.d));
+      this.jdField_a_of_type_JavaUtilArrayList.add(bduw.a(this.jdField_a_of_type_JavaLangString + this.b + this.e));
+      this.jdField_a_of_type_JavaUtilArrayList.add(bduw.a(this.jdField_a_of_type_JavaLangString + this.b + this.f));
+      this.jdField_a_of_type_JavaUtilArrayList.add(bduw.a(this.jdField_a_of_type_JavaLangString + this.c + this.d));
+      this.jdField_a_of_type_JavaUtilArrayList.add(bduw.a(this.jdField_a_of_type_JavaLangString + this.c + this.e));
+      this.jdField_a_of_type_JavaUtilArrayList.add(bduw.a(this.jdField_a_of_type_JavaLangString + this.c + this.f));
     }
   }
   
@@ -72,7 +72,7 @@ class ReporterMachine$getFileRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mfsdk.reporter.ReporterMachine.getFileRunnable
  * JD-Core Version:    0.7.0.1
  */

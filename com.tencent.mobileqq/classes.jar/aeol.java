@@ -1,29 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.Nullable;
+import android.support.v4.util.MQLruCache;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import java.io.File;
 
 class aeol
-  implements DialogInterface.OnClickListener
+  implements ImageAssetDelegate
 {
-  aeol(aeoj paramaeoj, String paramString) {}
+  aeol(aeok paramaeok) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    ((ajvi)this.jdField_a_of_type_Aeoj.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Aeoj.a.a.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
+    paramLottieImageAsset = paramLottieImageAsset.getFileName();
+    paramLottieImageAsset = this.a.a + File.separator + paramLottieImageAsset;
+    boolean bool = new File(paramLottieImageAsset).exists();
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateTitleSwitchView", 0, "fetchBitmap exists:" + bool + " imagePath:" + paramLottieImageAsset);
     }
-    ((ajvg)this.jdField_a_of_type_Aeoj.a.a.a(6)).a();
-    this.jdField_a_of_type_Aeoj.a.H();
+    if (!bool) {
+      return null;
+    }
+    Object localObject = BaseApplicationImpl.sImageCache.get(paramLottieImageAsset);
+    if ((localObject != null) && ((localObject instanceof Bitmap))) {
+      return (Bitmap)localObject;
+    }
+    try
+    {
+      localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inScaled = false;
+      localObject = BitmapFactory.decodeFile(paramLottieImageAsset, (BitmapFactory.Options)localObject);
+      BaseApplicationImpl.sImageCache.put(paramLottieImageAsset, localObject);
+      return localObject;
+    }
+    catch (Throwable paramLottieImageAsset)
+    {
+      QLog.i("IntimateTitleSwitchView", 0, "fetchBitmap error " + paramLottieImageAsset.getMessage());
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeol
  * JD-Core Version:    0.7.0.1
  */

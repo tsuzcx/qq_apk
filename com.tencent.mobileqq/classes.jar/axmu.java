@@ -1,48 +1,31 @@
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+
 public class axmu
-  implements ajte
+  extends Animation
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
+  public axmu(CircleBarView paramCircleBarView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, String paramString, long paramLong) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    switch (paramInt)
+    super.applyTransformation(paramFloat, paramTransformation);
+    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
+    CircleBarView.b(this.a, 30.0F);
+    if (CircleBarView.a(this.a) != null)
     {
+      if (CircleBarView.a(this.a) != null) {
+        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
+      }
+      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramObject = (Object[])paramObject;
-          } while ((paramObject == null) || (paramObject.length != 3));
-          a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-          return;
-          paramObject = (Object[])paramObject;
-        } while ((paramObject == null) || (paramObject.length != 5));
-        a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3], ((Long)paramObject[4]).longValue());
-        return;
-        paramObject = (Object[])paramObject;
-      } while ((paramObject == null) || (paramObject.length != 3));
-      a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
-      return;
-      paramObject = (Object[])paramObject;
-    } while ((paramObject == null) || (paramObject.length != 3));
-    b(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+    this.a.postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axmu
  * JD-Core Version:    0.7.0.1
  */

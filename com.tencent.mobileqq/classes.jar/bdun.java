@@ -1,36 +1,78 @@
-import android.view.View;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdun
-  implements bfph
+  extends RemoteCommand
 {
-  public bdun(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public bdun()
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
+    super("running_plugin_cmd");
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    paramOnInvokeFinishLinstener = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramOnInvokeFinishLinstener != null) && ((paramOnInvokeFinishLinstener instanceof QQAppInterface))) {}
+    for (paramOnInvokeFinishLinstener = (QQAppInterface)paramOnInvokeFinishLinstener;; paramOnInvokeFinishLinstener = null)
     {
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
-      return;
-      if (paramInt == 1)
+      switch (paramBundle.getInt("CommondType"))
       {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-        continue;
-        if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-        }
       }
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return null;
+              if (paramOnInvokeFinishLinstener == null) {
+                break;
+              }
+              paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
+            } while (paramOnInvokeFinishLinstener == null);
+            try
+            {
+              Message localMessage = paramOnInvokeFinishLinstener.obtainMessage(1134043);
+              long l = paramBundle.getLong("runningState");
+              paramBundle = paramBundle.getString("cookieUrl");
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("runningState", l);
+              localJSONObject.put("cookieUrl", paramBundle);
+              localMessage.obj = localJSONObject;
+              paramOnInvokeFinishLinstener.sendMessage(localMessage);
+              return null;
+            }
+            catch (JSONException paramBundle)
+            {
+              return null;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.e("SportRemoteCommond", 2, "showRunningBar null");
+          return null;
+        } while (paramOnInvokeFinishLinstener == null);
+        paramBundle = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
+      } while (paramBundle == null);
+      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134044), 1000L);
+      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134040), 1000L);
+      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134050), 1000L);
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdun
  * JD-Core Version:    0.7.0.1
  */

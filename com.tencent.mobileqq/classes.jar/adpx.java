@@ -1,28 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.MessageForPic;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
 
 public class adpx
-  implements bfph
+  implements DialogInterface.OnClickListener
 {
-  public adpx(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, bfpc parambfpc) {}
+  public adpx(RegisterNewBaseActivity.2 param2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpx
  * JD-Core Version:    0.7.0.1
  */

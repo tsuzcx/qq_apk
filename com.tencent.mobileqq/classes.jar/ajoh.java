@@ -1,54 +1,53 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
-final class ajoh
-  implements ajic
+class ajoh
+  implements bapx
 {
-  ajoh(String paramString, String[] paramArrayOfString, ajof paramajof) {}
+  ajoh(ajog paramajog) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onResp(baqw parambaqw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    Object localObject = (FilterDesc)parambaqw.jdField_a_of_type_Baqv.a();
+    if (parambaqw.jdField_a_of_type_Int != 0) {
+      lek.c("VideoFilterTools", "download file failed. errorCode: " + parambaqw.b + ", errorMsg: " + parambaqw.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
     }
-    if (paramBoolean)
+    for (;;)
     {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
-      if (paramArrayOfInt.exists()) {
-        try
+      return;
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambaqw.jdField_a_of_type_Baqv.c)))
+      {
+        lek.c("VideoFilterTools", "download file failed: md5 is not match.");
+        bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
+        return;
+      }
+      lek.c("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      try
+      {
+        localObject = ajog.b;
+        bdcs.a(parambaqw.jdField_a_of_type_Baqv.c, (String)localObject, false);
+        bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
+        if ((ajog.a(this.a).decrementAndGet() == 0) && (ajog.a(this.a) != null))
         {
-          paramString = ajog.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (ajog.a(this.jdField_a_of_type_JavaLangString))
-          {
-            paramArrayOfInt = ajog.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_Ajof.a(0, paramString, paramArrayOfInt);
-          }
-          while (QLog.isColorLevel())
-          {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString });
-            return;
-            this.jdField_a_of_type_Ajof.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
-          }
-          this.jdField_a_of_type_Ajof.a(-1, null, null);
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
+          ajog.a(this.a).a(true);
           return;
         }
       }
-    }
-    else
-    {
-      this.jdField_a_of_type_Ajof.a(-1, null, null);
+      catch (IOException parambaqw)
+      {
+        parambaqw.printStackTrace();
+        lek.c("VideoFilterTools", "unzip file failed.");
+      }
     }
   }
+  
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajoh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,95 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 public class amub
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c = "分享给你1张图片";
-  public String d = "";
+  private static int a;
+  public static String a;
+  public static HashMap<String, amtj> a;
+  private static int b;
+  public static String b;
+  public static String c;
+  public static String d;
   
-  public amub()
+  static
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 10485760L;
-    this.jdField_a_of_type_JavaLangString = "gh_0fc5d8395610";
-    this.jdField_b_of_type_JavaLangString = "/pages/gallery/gallery?";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_Int = 5;
+    jdField_b_of_type_Int = 1;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    c = "";
+    d = "";
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ3", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ4", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ5", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ3", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ4", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ5", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("renderQ1", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("renderQ0", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ1", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ0", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("camRenderQ0", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ1", new amtj(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ0", new amtj(2147483647));
   }
   
-  public static amub a(String paramString)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    boolean bool2 = false;
-    if (paramString == null)
-    {
-      paramString = null;
-      return paramString;
-    }
-    amub localamub = new amub();
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        if (localJSONObject.has("picShareToWeChatEnable"))
-        {
-          if (localJSONObject.getInt("picShareToWeChatEnable") == 1)
-          {
-            bool1 = true;
-            localamub.jdField_a_of_type_Boolean = bool1;
-          }
-        }
-        else
-        {
-          if (localJSONObject.has("picShareToWeChatSize")) {
-            localamub.jdField_a_of_type_Long = localJSONObject.getLong("picShareToWeChatSize");
-          }
-          if (localJSONObject.has("PicShareToWeChatUserName")) {
-            localamub.jdField_a_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatUserName");
-          }
-          if (localJSONObject.has("PicShareToWeChatPath")) {
-            localamub.jdField_b_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatPath");
-          }
-          if (localJSONObject.has("PicShareToWeChatShareTicket"))
-          {
-            bool1 = bool2;
-            if (localJSONObject.getInt("PicShareToWeChatShareTicket") == 1) {
-              bool1 = true;
-            }
-            localamub.jdField_b_of_type_Boolean = bool1;
-          }
-          if (localJSONObject.has("PicShareToWeChatMiniType")) {
-            localamub.jdField_a_of_type_Int = localJSONObject.getInt("PicShareToWeChatMiniType");
-          }
-          if (localJSONObject.has("PicShareToWeChatTitle")) {
-            localamub.c = localJSONObject.getString("PicShareToWeChatTitle");
-          }
-          paramString = localamub;
-          if (!localJSONObject.has("PicShareToWeChatDescription")) {
-            break;
-          }
-          localamub.d = localJSONObject.getString("PicShareToWeChatDescription");
-          return localamub;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("PicShareToWXConfigProcessor", 1, "parse error.", paramString);
-        return localamub;
-      }
-      boolean bool1 = false;
-    }
+    jdField_a_of_type_JavaLangString = paramString1;
+    jdField_b_of_type_JavaLangString = paramString2;
+    c = paramString3;
+    d = paramString4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amub
  * JD-Core Version:    0.7.0.1
  */

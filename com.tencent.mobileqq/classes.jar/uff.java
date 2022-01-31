@@ -1,46 +1,61 @@
-public class uff
+import android.support.annotation.NonNull;
+import java.util.List;
+
+public abstract class uff<Config extends ufn>
 {
-  private double jdField_a_of_type_Double = 1.0D;
-  private long jdField_a_of_type_Long;
+  protected ueq a;
+  private Config a;
   
-  public uff()
+  protected List<uer> a()
   {
-    a();
+    if (this.jdField_a_of_type_Ueq != null) {
+      return this.jdField_a_of_type_Ueq.a();
+    }
+    return null;
   }
   
-  private long b()
+  protected abstract List<ueq> a(@NonNull List<uer> paramList);
+  
+  public Config a()
   {
-    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
+    return this.jdField_a_of_type_Ufn;
   }
   
-  public double a()
+  public void a(ueq paramueq)
   {
-    return this.jdField_a_of_type_Double;
+    if (paramueq.b() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      xmh.a(bool);
+      this.jdField_a_of_type_Ueq = paramueq;
+      return;
+    }
   }
   
-  public long a()
+  public void a(Config paramConfig)
   {
-    return b() - this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Ufn = paramConfig;
   }
   
-  public long a(long paramLong)
+  public List<ueq> b()
   {
-    return paramLong - a();
-  }
-  
-  public void a()
-  {
-    a(0L);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = (b() - paramLong);
+    List localList = a();
+    if ((localList == null) || (localList.size() == 0))
+    {
+      wsv.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "data is null");
+      return null;
+    }
+    if ((a() != null) && (localList.size() < a().b))
+    {
+      wsv.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "too little data");
+      return null;
+    }
+    return a(a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uff
  * JD-Core Version:    0.7.0.1
  */

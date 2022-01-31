@@ -1,28 +1,65 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import cooperation.qzone.util.QZLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.Map;
 
 public class tus
-  implements View.OnKeyListener
+  extends QQUIEventReceiver<tuk, ttq>
 {
-  public tus(StoryPlayerFragment paramStoryPlayerFragment) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public tus(@NonNull tuk paramtuk)
   {
-    if (paramInt == 4)
+    super(paramtuk);
+  }
+  
+  public void a(@NonNull tuk paramtuk, @NonNull ttq paramttq)
+  {
+    switch (paramttq.jdField_a_of_type_Int)
     {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.finish();
-      }
-      return true;
+    case 4: 
+    case 5: 
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+      FeedCloudMeta.StFeed localStFeed;
+      int i;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramtuk.g();
+            return;
+            paramtuk.h();
+            return;
+            tuk.a(paramtuk, false);
+            tuk.a(paramtuk, null);
+            tuk.a(paramtuk, null);
+          } while (!(paramttq.jdField_a_of_type_JavaLangObject instanceof Object[]));
+          paramttq = (Object[])paramttq.jdField_a_of_type_JavaLangObject;
+        } while ((paramttq.length < 2) || (!(paramttq[0] instanceof FeedCloudMeta.StFeed)) || (!(paramttq[1] instanceof Integer)));
+        localStFeed = (FeedCloudMeta.StFeed)paramttq[0];
+        i = ((Integer)paramttq[1]).intValue();
+      } while (!paramtuk.a(localStFeed));
+      tuk.c(paramtuk).put(Integer.valueOf(i), localStFeed);
+      QZLog.i(this.TAG, 1, "EVENT_SET_COMMENT_DATA, position:" + i + ", cellId:" + localStFeed.id.get());
+      return;
     }
-    return false;
+    tuk.a(paramtuk, (Object[])paramttq.jdField_a_of_type_JavaLangObject);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ttq.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tus
  * JD-Core Version:    0.7.0.1
  */

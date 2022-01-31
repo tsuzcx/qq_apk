@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.utils;
 
-import akwe;
-import akwo;
+import ammu;
+import amne;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -12,10 +12,10 @@ import com.tencent.widget.VerticalGallery;
 
 public class TimeWheelPanel
   extends LinearLayout
-  implements akwe
+  implements ammu
 {
   public int a;
-  private akwo jdField_a_of_type_Akwo;
+  private amne jdField_a_of_type_Amne;
   private Context jdField_a_of_type_AndroidContentContext;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -53,14 +53,14 @@ public class TimeWheelPanel
     if ((this.jdField_a_of_type_AndroidViewLayoutInflater == null) || (this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null) || (this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null) || (this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null))
     {
       this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560665, this);
-      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131364929));
-      this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131367660));
-      this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131370336));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364930));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367661));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370337));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365693));
+      this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560841, this);
+      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131365016));
+      this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131367789));
+      this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131370640));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365017));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367790));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370641));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365777));
       this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
       this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
       this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
@@ -128,8 +128,8 @@ public class TimeWheelPanel
     this.jdField_b_of_type_Int = this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView.a();
     this.jdField_c_of_type_Int = this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.a();
     setValues(false);
-    if (this.jdField_a_of_type_Akwo != null) {
-      this.jdField_a_of_type_Akwo.a(paramNumberWheelView, paramVerticalGallery);
+    if (this.jdField_a_of_type_Amne != null) {
+      this.jdField_a_of_type_Amne.a(paramNumberWheelView, paramVerticalGallery);
     }
   }
   
@@ -163,9 +163,9 @@ public class TimeWheelPanel
     }
   }
   
-  public void setScrollerStateListener(akwo paramakwo)
+  public void setScrollerStateListener(amne paramamne)
   {
-    this.jdField_a_of_type_Akwo = paramakwo;
+    this.jdField_a_of_type_Amne = paramamne;
   }
   
   public void setValues(boolean paramBoolean)
@@ -188,19 +188,19 @@ public class TimeWheelPanel
   public void setViewVisibility(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 0) {
-      findViewById(2131364925).setVisibility(paramInt2);
+      findViewById(2131365012).setVisibility(paramInt2);
     }
     do
     {
       return;
       if (paramInt1 == 1)
       {
-        findViewById(2131367656).setVisibility(paramInt2);
+        findViewById(2131367785).setVisibility(paramInt2);
         return;
       }
       if (paramInt1 == 2)
       {
-        findViewById(2131370333).setVisibility(paramInt2);
+        findViewById(2131370637).setVisibility(paramInt2);
         return;
       }
     } while (paramInt1 != 3);

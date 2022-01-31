@@ -2,11 +2,10 @@ package com.tencent.ttpic.filter;
 
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
-import com.tencent.ttpic.model.TriggerCtrlItem;
-import com.tencent.ttpic.openapi.PTDetectInfo;
-import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunItem;
+import com.tencent.ttpic.trigger.TriggerCtrlItem;
+import com.tencent.ttpic.trigger.TriggerManager;
 
 public class FreezeFilter
 {
@@ -19,11 +18,15 @@ public class FreezeFilter
   private boolean triggered;
   private long triggeredStartTime;
   
-  public FreezeFilter(CosFun.CosFunItem paramCosFunItem)
+  public FreezeFilter(CosFun.CosFunItem paramCosFunItem, TriggerManager paramTriggerManager)
   {
     this.startTime = paramCosFunItem.getFreezeStart();
     this.duration = paramCosFunItem.getFreezeDuration();
-    this.triggerCtrlItem = new TriggerCtrlItem(paramCosFunItem);
+    if (paramTriggerManager != null)
+    {
+      this.triggerCtrlItem = new TriggerCtrlItem(paramCosFunItem);
+      paramTriggerManager.addTriggers(this.triggerCtrlItem);
+    }
   }
   
   private boolean inRange(long paramLong)
@@ -84,9 +87,9 @@ public class FreezeFilter
     if (this.triggered) {
       return this.triggeredStartTime;
     }
-    PTDetectInfo localPTDetectInfo = new PTDetectInfo.Builder().faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).build();
-    this.triggerCtrlItem.getTriggeredStatus(localPTDetectInfo);
-    this.triggered = this.triggerCtrlItem.isTriggered();
+    if (this.triggerCtrlItem != null) {
+      this.triggered = this.triggerCtrlItem.isTriggered();
+    }
     this.triggeredStartTime = paramPTFaceAttr.getTimeStamp();
     return this.triggeredStartTime;
   }

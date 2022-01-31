@@ -1,31 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
-
 public class axpn
+  implements axpo
 {
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect");
-    }
-    try
-    {
-      Method localMethod = BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.qipc.QIPCEnvironmentInit").getDeclaredMethod("initEnvironment", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(null, new Object[0]);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
-    }
-  }
+  public void a(int paramInt, Throwable paramThrowable) {}
+  
+  public void a(long paramLong) {}
+  
+  public void b(long paramLong) {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void i() {}
+  
+  public void l() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axpn
  * JD-Core Version:    0.7.0.1
  */

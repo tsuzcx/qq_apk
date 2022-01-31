@@ -1,16 +1,22 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
-
-public class ajbb
-  implements AVCallback
+public abstract interface ajbb
 {
-  public ajbb(CmGameAvHandler.11 param11) {}
+  public abstract int a();
   
-  public void onComplete(int paramInt, String paramString) {}
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean c();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbb
  * JD-Core Version:    0.7.0.1
  */

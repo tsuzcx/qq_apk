@@ -1,61 +1,40 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import java.util.HashMap;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-public class aswp
-  implements ServiceConnection
+public final class aswp
+  extends BroadcastReceiver
 {
-  public aswp(MusicPlayerActivity paramMusicPlayerActivity) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    MusicPlayerActivity.a(this.a, asvo.a(paramIBinder));
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("HuayangPluginLauncher", 2, "onReceive ACTION_FORCE_UPDATE");
+    }
+    if (TextUtils.equals(paramIntent.getAction(), "action_iv_plugin_update"))
     {
-      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
-      paramComponentName = MusicPlayerActivity.a(this.a).a();
-      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
-      if (paramComponentName != null)
+      paramIntent = (InstalledPlugin)paramIntent.getSerializableExtra("plugin");
+      if (paramIntent != null)
       {
-        String str = MusicPlayerActivity.a(this.a, paramComponentName);
-        if (MusicPlayerActivity.b().containsKey(str)) {
-          MusicPlayerActivity.a(this.a, (asww)MusicPlayerActivity.b().get(str), paramIBinder);
+        boolean bool = asws.a(paramContext, paramIntent).a();
+        if (QLog.isColorLevel()) {
+          QLog.d("HuayangPluginLauncher", 2, "onReceive isCalled:" + bool);
         }
-        for (;;)
+        if (!bool)
         {
-          int i = MusicPlayerActivity.a(this.a).a();
-          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
-          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.b, paramComponentName.g, paramComponentName.f, String.valueOf(paramComponentName.a), paramComponentName.c, MusicPlayerActivity.a(this.a).c());
-          return;
-          MusicPlayerActivity.a(this.a, paramComponentName.b, paramComponentName.g, paramComponentName.d, paramIBinder, false, false);
+          com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity.a = 0L;
+          Process.killProcess(Process.myPid());
         }
       }
-      return;
     }
-    catch (Exception paramComponentName) {}
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    paramComponentName = MusicPlayerActivity.a(this.a);
-    if (paramComponentName != null) {}
-    try
-    {
-      paramComponentName.b(MusicPlayerActivity.a(this.a));
-      return;
-    }
-    catch (RemoteException paramComponentName) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aswp
  * JD-Core Version:    0.7.0.1
  */

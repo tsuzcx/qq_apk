@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.apollo.IApolloRunnableTask;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 
 public abstract interface aivw
 {
-  public abstract void exeJsOnEngine(String paramString);
-  
-  public abstract long getRenderThreadId();
-  
-  public abstract long getRuntimeState();
-  
-  public abstract boolean isJsRuntime();
-  
-  public abstract void runRenderTask(IApolloRunnableTask paramIApolloRunnableTask);
+  public abstract void onResult(int paramInt, PreloadManager.PathResult paramPathResult);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aivw
  * JD-Core Version:    0.7.0.1
  */

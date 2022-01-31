@@ -1,10 +1,23 @@
-public abstract interface actf
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.widget.TipsBar;
+
+public class actf
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, String paramString, int paramInt2);
+  public actf(ForwardRecentActivity paramForwardRecentActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.a.a != null) && (this.a.a.getVisibility() == 0)) {
+      this.a.a.setVisibility(8);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     actf
  * JD-Core Version:    0.7.0.1
  */

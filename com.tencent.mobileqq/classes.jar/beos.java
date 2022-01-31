@@ -1,53 +1,38 @@
-import android.app.Activity;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnControllerClickListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class beos
-  implements VideoPlayerProxy.OnControllerClickListener
+  implements axxi
 {
-  public beos(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  final WeakReference<ProfileCardMoreInfoView> a;
   
-  public void onAttationClick(VideoPlayerProxy paramVideoPlayerProxy) {}
-  
-  public void onBackClick(VideoPlayerProxy paramVideoPlayerProxy)
+  public beos(ProfileCardMoreInfoView paramProfileCardMoreInfoView)
   {
-    betc.a("MiniAppVideoPlayer", "video player onBackClick");
-    if ((Activity)this.a.a.get() == null) {}
-    while (!this.a.c) {
-      return;
-    }
-    this.a.g();
+    this.a = new WeakReference(paramProfileCardMoreInfoView);
   }
   
-  public void onBackOnFullScreenClick(VideoPlayerProxy paramVideoPlayerProxy)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    betc.a("MiniAppVideoPlayer", "video player onBackOnFullScreenClick");
-    if ((Activity)this.a.a.get() == null) {}
-    while (!this.a.c) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCardMoreInfoView", 2, String.format("onGetIcon actionId=%s size=%s icon=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramBitmap }));
     }
-    this.a.g();
-  }
-  
-  public void onCacheClick(VideoPlayerProxy paramVideoPlayerProxy) {}
-  
-  public void onFeedbackClick(VideoPlayerProxy paramVideoPlayerProxy) {}
-  
-  public void onFullScreenClick(VideoPlayerProxy paramVideoPlayerProxy)
-  {
-    if (this.a.c)
+    if (paramBitmap == null) {
+      QLog.e("ProfileCardMoreInfoView", 1, "onGetIcon decode icon fail.");
+    }
+    do
     {
-      this.a.g();
       return;
-    }
-    this.a.f();
+      paramBitmap = (ProfileCardMoreInfoView)this.a.get();
+    } while ((paramBitmap == null) || (paramBitmap.a == null) || (paramBitmap.a.a == null) || (paramBitmap.a.a.actionId != paramInt1));
+    paramBitmap.a(paramBitmap.a, true, new String[] { "map_key_sig" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beos
  * JD-Core Version:    0.7.0.1
  */

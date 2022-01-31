@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.qcall;
 
-import avex;
+import awwk;
 import com.tencent.qphone.base.util.QLog;
 
 public class QCallProxy$1
   implements Runnable
 {
-  public QCallProxy$1(avex paramavex) {}
+  public QCallProxy$1(awwk paramawwk) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class QCallProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallProxy.1
  * JD-Core Version:    0.7.0.1
  */

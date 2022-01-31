@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajsd;
-import akpb;
+import abol;
+import aljq;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +29,7 @@ public class RecentItemNearbyLiveTipData
       return;
     }
     Object localObject = paramQQAppInterface.a();
-    akpb localakpb = paramQQAppInterface.a();
+    abol localabol = paramQQAppInterface.a();
     if (localObject != null) {}
     for (localObject = ((QQMessageFacade)localObject).a(this.mData.senderuin, this.mData.istroop);; localObject = null)
     {
@@ -55,17 +55,20 @@ public class RecentItemNearbyLiveTipData
       this.nearbyLiveTipMsg.parse();
       this.mTitleName = this.nearbyLiveTipMsg.nickName;
       localMsgSummary.strContent = this.nearbyLiveTipMsg.msg;
-      if (localakpb != null)
+      if (localabol != null)
       {
-        this.mUnreadNum = localakpb.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
+        this.mUnreadNum = localabol.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
+        if (c().equals("1822701914")) {
+          this.mUnreadFlag = 3;
+        }
         a(paramQQAppInterface, paramContext, localMsgSummary);
-        if (!AppSetting.d) {
+        if (!AppSetting.c) {
           break;
         }
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.mTitleName);
         if (this.mUnreadNum != 0) {
-          break label288;
+          break label305;
         }
       }
       for (;;)
@@ -78,7 +81,7 @@ public class RecentItemNearbyLiveTipData
         return;
         this.mUnreadNum = 0;
         break;
-        label288:
+        label305:
         if (this.mUnreadNum == 1) {
           paramQQAppInterface.append("有一条未读");
         } else if (this.mUnreadNum == 2) {
@@ -97,9 +100,9 @@ public class RecentItemNearbyLiveTipData
     {
       long l1 = Long.valueOf(str2).longValue();
       String str1 = str2;
-      if (l1 > ajsd.l)
+      if (l1 > aljq.l)
       {
-        long l2 = ajsd.l;
+        long l2 = aljq.l;
         str1 = l1 - l2 + "";
       }
       return str1;
@@ -110,7 +113,7 @@ public class RecentItemNearbyLiveTipData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData
  * JD-Core Version:    0.7.0.1
  */

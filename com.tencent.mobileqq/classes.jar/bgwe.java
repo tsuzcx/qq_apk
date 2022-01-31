@@ -1,27 +1,89 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
-public final class bgwe
+public class bgwe
 {
-  public static String a(Context paramContext)
+  public static final Set<String> a = new HashSet();
+  public static final Set<String> b = new HashSet(Arrays.asList(new String[] { "__TT__GLOBAL__", "createAudioInstance", "setAudioState", "getAudioState", "operateAudio", "destroyAudioInstance", "onAudioStateChange", "setInnerAudioOptionQGame", "getAvailableAudioSources", "loadFont", "getTextLineHeight", "getSystemInfo", "getSystemInfoSync" }));
+  private static Set<String> c;
+  private static Set<String> d;
+  
+  public static Set<String> a()
   {
-    return paramContext.getSharedPreferences("SETTING", 0).getString("debug_h5_test_env", null);
+    if (c == null)
+    {
+      c = new HashSet(a);
+      Object localObject = bglq.a("qqtriton", "MiniGameAPILogWhiteList");
+      bgwc.a().i("LogFilterUtil", "wns config white list: " + (String)localObject);
+      localObject = a((String)localObject);
+      if (localObject != null) {
+        c.addAll((Collection)localObject);
+      }
+      localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+      if ((localObject != null) && (((MiniAppProxy)localObject).isDebugVersion())) {
+        c.add("__jsBridge_all_log__");
+      }
+    }
+    return c;
   }
   
-  public static void a(Context paramContext, boolean paramBoolean, String paramString)
+  private static Set<String> a(String paramString)
   {
-    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("debug_h5_test_mode", paramBoolean).putString("debug_h5_test_env", paramString).apply();
+    if (TextUtils.isEmpty(paramString)) {
+      paramString = null;
+    }
+    HashSet localHashSet;
+    String[] arrayOfString;
+    do
+    {
+      do
+      {
+        return paramString;
+        localHashSet = new HashSet();
+        arrayOfString = paramString.split(",");
+        paramString = localHashSet;
+      } while (arrayOfString == null);
+      paramString = localHashSet;
+    } while (arrayOfString.length <= 0);
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      paramString = localHashSet;
+      if (i >= j) {
+        break;
+      }
+      paramString = arrayOfString[i].trim();
+      if (!TextUtils.isEmpty(paramString)) {
+        localHashSet.add(paramString);
+      }
+      i += 1;
+    }
   }
   
-  public static boolean a(Context paramContext)
+  public static Set<String> b()
   {
-    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("debug_h5_test_mode", false);
+    if (d == null)
+    {
+      d = new HashSet(b);
+      Object localObject = bglq.a("qqtriton", "MiniGameAPILogBlackList");
+      bgwc.a().i("LogFilterUtil", "wns config black list: " + (String)localObject);
+      localObject = a((String)localObject);
+      if (localObject != null) {
+        d.addAll((Collection)localObject);
+      }
+    }
+    return d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgwe
  * JD-Core Version:    0.7.0.1
  */

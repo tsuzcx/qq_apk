@@ -1,18 +1,25 @@
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class yoc
-  implements yoq
+class yoc
+  extends yoh
 {
-  public yoc(GameCenterAPIJavaScript paramGameCenterAPIJavaScript, String paramString) {}
-  
-  public void a(int paramInt, String paramString)
+  yoc(ynx paramynx, long paramLong, ynu paramynu, File paramFile)
   {
-    this.jdField_a_of_type_ComTencentGamecenterCommonUtilGameCenterAPIJavaScript.callbackJS(this.jdField_a_of_type_JavaLangString, paramInt, paramString);
+    super(paramynx.a);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    this.jdField_a_of_type_Ynu.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yoc
  * JD-Core Version:    0.7.0.1
  */

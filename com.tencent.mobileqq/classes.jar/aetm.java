@@ -1,27 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
-class aetm
-  extends BroadcastReceiver
+public class aetm
+  extends VasQuickUpdateManager.CallBacker
 {
-  private aetm(aert paramaert) {}
+  public aetm(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      aert.a(this.a, 1);
-    }
-    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
+    do
+    {
       return;
-    }
-    aert.a(this.a, 1);
+      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
+        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
+      }
+      if (paramInt1 == 0) {
+        this.a.a(true);
+      }
+    } while (paramVasQuickUpdateManager == null);
+    paramVasQuickUpdateManager.removeCallBacker(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetm
  * JD-Core Version:    0.7.0.1
  */

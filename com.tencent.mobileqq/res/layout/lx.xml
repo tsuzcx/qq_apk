@@ -12,13 +12,16 @@
         </RelativeLayout>
     </FrameLayout>
     <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlCommenTitle">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:id="@id/mgq" android:background="#ff64a4fe" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mobileqq.widget.navbar.NavBarCommon android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="30.0dip" />
+                <com.tencent.mobileqq.gamecenter.view.GameSessionView android:gravity="center" android:orientation="horizontal" android:id="@id/mh_" android:layout_width="fill_parent" android:layout_height="80.0dip" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/mgq">
                 <com.tencent.mobileqq.gamecenter.web.view.QQGameHeadLayout android:id="@id/cw5" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                    <com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView android:id="@id/cwr" android:background="@color/alq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                    <com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView android:id="@id/cwr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
                 </com.tencent.mobileqq.gamecenter.web.view.QQGameHeadLayout>
             </LinearLayout>
-            <com.tencent.mobileqq.widget.navbar.NavBarCommon android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" />
         </RelativeLayout>
         <RelativeLayout android:id="@id/f8b" android:background="@color/ajr" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="29.0dip" android:layout_marginTop="101.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
             <ImageView android:id="@id/f8a" android:layout_width="24.0dip" android:layout_height="18.0dip" android:layout_marginLeft="6.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />

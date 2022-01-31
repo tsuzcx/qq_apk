@@ -1,49 +1,28 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.QQDeviceInfo.1;
-
 public class bfno
-  implements ServiceConnection
 {
-  public bfno(QQDeviceInfo.1 param1) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public bfno(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    try
-    {
-      paramComponentName = bgbi.a(paramIBinder);
-      try
-      {
-        bfnn.d(paramComponentName.a());
-        bfnn.a("huawei_oaid", bfnn.c());
-        if (QLog.isColorLevel()) {
-          QLog.d(bfnn.a, 2, "huawei oaid = " + bfnn.c());
-        }
-        return;
-      }
-      catch (SecurityException paramComponentName)
-      {
-        paramComponentName.printStackTrace();
-        QLog.e(bfnn.a, 2, paramComponentName, new Object[0]);
-        return;
-      }
-      return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      paramComponentName.printStackTrace();
-      QLog.e(bfnn.a, 2, "get huawei oaid throw e", paramComponentName);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.d = paramString3;
+    this.c = paramString4;
+    this.e = paramString5;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName) {}
+  public String toString()
+  {
+    return " appId=" + this.a + ",appName=" + this.b + ",pkgName=" + this.c + ",channel=" + this.d + ",defUrl=" + this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfno
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,120 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.richstatus.HistorySignItem;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
-import java.util.List;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class awee
-  implements awfg
+public class awee
 {
-  awee(aweb paramaweb, HistorySignItem paramHistorySignItem) {}
+  private static awef a;
+  public static long c;
+  public static long d;
+  protected long a;
+  protected QQAppInterface a;
+  protected long b;
+  protected long e = 524288000L;
+  protected long f = 10485760L;
+  protected long g = 10485760L;
+  protected long h = 5242880L;
   
-  public void a(int paramInt, View paramView)
+  public static final void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (SignatureHistoryFragment.b(this.jdField_a_of_type_Aweb.a)) {}
-    Object localObject;
-    awey localawey;
-    do
-    {
-      do
+    c();
+    jdField_a_of_type_Awef.a(paramLong, paramBoolean1, paramBoolean2);
+  }
+  
+  public static final void b()
+  {
+    c();
+    jdField_a_of_type_Awef.a();
+  }
+  
+  private static final void c()
+  {
+    if (jdField_a_of_type_Awef == null) {
+      try
       {
+        if (jdField_a_of_type_Awef == null) {
+          jdField_a_of_type_Awef = new awef();
+        }
         return;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusHistorySignItem.commentItemList;
-      } while ((localObject == null) || (((List)localObject).size() <= paramInt));
-      localObject = (CommentItem)((List)localObject).get(paramInt);
-      localawey = ((CommentItem)localObject).user;
-    } while ((localawey == null) || (TextUtils.isEmpty(localawey.a)));
-    paramView.setSelected(true);
-    bbmf localbbmf = new bbmf();
-    SignatureHistoryFragment.a(this.jdField_a_of_type_Aweb.a, (CommentItem)localObject);
-    localbbmf.a(2131364824, this.jdField_a_of_type_Aweb.a.getString(2131691307), 0);
-    if ((localawey.a.equals(SignatureHistoryFragment.b(this.jdField_a_of_type_Aweb.a))) || (bbbr.a(SignatureHistoryFragment.b(this.jdField_a_of_type_Aweb.a), SignatureHistoryFragment.a(this.jdField_a_of_type_Aweb.a)))) {
-      localbbmf.a(2131364984, this.jdField_a_of_type_Aweb.a.getString(2131692738), 0);
+      }
+      finally {}
     }
-    bbcq.a(paramView, localbbmf, this.jdField_a_of_type_Aweb.a, new awef(this, paramView));
+  }
+  
+  private void d()
+  {
+    c();
+    long[] arrayOfLong = jdField_a_of_type_Awef.a();
+    this.jdField_a_of_type_Long = (arrayOfLong[0] + arrayOfLong[1]);
+    this.b = (arrayOfLong[2] + arrayOfLong[3]);
+    if (QLog.isColorLevel()) {
+      awen.a("PIC_TAG_PRELOAD", "", "updateTrafficData ", "picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",C2CPicDownFlowXG:" + arrayOfLong[0] + ",Group/DiscussPicDownFlowXG:" + arrayOfLong[1] + ",picTrafficFlowWIFI:" + this.b + ",C2CPicDownFlowWIFI:" + arrayOfLong[2] + ",Group/DiscussPicDownFlowWIFI:" + arrayOfLong[3]);
+    }
+  }
+  
+  public int a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    d();
+    paramBoolean = DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name());
+    if (QLog.isColorLevel()) {
+      awen.a("PIC_TAG_PRELOAD", "isOverLimit", "isInDPCWhiteList:" + paramBoolean);
+    }
+    if ((paramInt2 == 0) || ((paramBoolean) && (paramInt2 != 3)))
+    {
+      if (this.b >= this.e)
+      {
+        awfb.a(paramInt2, this.e);
+        awen.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowWIFI:" + this.b);
+        return -8;
+      }
+    }
+    else if (paramInt2 == 1)
+    {
+      if (this.jdField_a_of_type_Long >= this.f)
+      {
+        awfb.a(paramInt2, this.f);
+        awen.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long);
+        return -8;
+      }
+    }
+    else if (paramInt2 == 2)
+    {
+      if (this.jdField_a_of_type_Long >= this.g)
+      {
+        awfb.a(paramInt2, this.g);
+        awen.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long);
+        return -8;
+      }
+    }
+    else if ((paramInt2 == 3) && (this.jdField_a_of_type_Long >= this.h))
+    {
+      awfb.a(paramInt2, this.h);
+      awen.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long);
+      return -8;
+    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    c = awez.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "UseLocalFlowSet", 0L);
+    d = awez.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "PicDTPt2", 0L);
+    this.e = awez.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "MaxWifiFlow", 524288000L);
+    this.f = awez.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Max4GFlow", 10485760L);
+    this.g = awez.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Max3GFlow", 10485760L);
+    this.h = awez.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Max2GFlow", 5242880L);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awee
  * JD-Core Version:    0.7.0.1
  */

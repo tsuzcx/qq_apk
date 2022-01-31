@@ -1,12 +1,45 @@
-import com.tencent.av.ui.QavListItemBase;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public abstract interface mhp
+public class mhp
 {
-  public abstract void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase);
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  boolean jdField_a_of_type_Boolean = false;
+  public int b;
+  public ImageView b;
+  public TextView b;
+  public boolean b;
+  public ImageView c;
+  public boolean c;
+  public ImageView d;
+  public boolean d;
+  public ImageView e = null;
+  public ImageView f;
+  
+  public mhp()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_b_of_type_AndroidWidgetImageView = null;
+    this.jdField_c_of_type_AndroidWidgetImageView = null;
+    this.jdField_d_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_d_of_type_Boolean = true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhp
  * JD-Core Version:    0.7.0.1
  */

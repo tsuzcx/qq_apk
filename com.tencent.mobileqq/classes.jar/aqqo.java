@@ -1,24 +1,34 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.gamecenter.adapter.QQGamePubFeedsAdapter.FeedsItemVH.2.1;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqqo
-  implements aqsq
+class aqqo
+  implements aqpk
 {
-  aqqo(aqql paramaqql) {}
+  aqqo(aqqn paramaqqn, String paramString) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new QQGamePubFeedsAdapter.FeedsItemVH.2.1(this, paramInt1));
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm.jdField_a_of_type_JavaLangString + " start upload Discfile success");
+      }
+      aqqm.a(this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqr.a(this.jdField_a_of_type_JavaLangString, aqqm.a(this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm));
+    }
+    for (;;)
+    {
+      aqpv.a(this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm.jdField_a_of_type_Aqpv).a().a(aqqm.a(this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm));
+      return;
+      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
+      this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Aqqn.jdField_a_of_type_Aqqm.jdField_a_of_type_Long, false), true);
+    }
   }
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(boolean paramBoolean, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqo
  * JD-Core Version:    0.7.0.1
  */

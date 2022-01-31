@@ -10,16 +10,14 @@ import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
 import com.tencent.aekit.openrender.UniformParam.Float1sParam;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.FloatsParam;
+import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.device.DeviceInstance;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.model.FaceMeshItem;
 import com.tencent.ttpic.model.MeshDistortionType;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
-import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
 import com.tencent.ttpic.openapi.model.DistortionItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.util.VideoFilterUtil;
@@ -38,6 +36,7 @@ import java.util.Set;
 
 public class TransformFilter_new
   extends VideoFilterBase
+  implements AEFilterI
 {
   private static final List<DistortionItem> EMPTY = new ArrayList();
   private static final String FRAGMENT_SHADER = "precision highp float;\n uniform sampler2D inputImageTexture;\n varying vec2 textureCoordinate;\n\n \n uniform float item[210];\n uniform float cos_roll;\n uniform float sin_roll;\n uniform float cos_yaw;\n uniform float tan_yaw;\n uniform float tan_pitch;\nuniform float screenRatioX;\nuniform float screenRatioY;\nuniform vec2 texMapSize;\n\n //30 * 7, type, strength, pointX, pointY, radius, direction, depth\n\n float my_smoothstep(float edge0, float edge1, float x) {\n    float t = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);\n    return t * t * (3.0 - 2.0 * t);\n}\n\nvec2 distortedPosition(vec2 currentPosition) {\n    vec2 newPosition = currentPosition;\n    //if (newPosition.x <= -0.98 || newPosition.y <= -0.98 || newPosition.x >= 0.98 || newPosition.y >= 0.98) {\n    //    return newPosition;\n    //}\n    for (int i = 0; i < 30; i++) {\n        int idx = i * 7;\n        if (item[idx] < 0.1) {\n            continue;\n        }\n\n        vec2 centerPoint = vec2(item[idx+2], item[idx+3]);\n        vec2 ratioTransTargetPoint = vec2(newPosition.x * screenRatioX, newPosition.y * screenRatioY);\n\n        vec2 distVector = ratioTransTargetPoint - centerPoint;\n        // first, rotate vector by face roll\n        vec2 _v = vec2(distVector.x*cos_roll+distVector.y*sin_roll, -distVector.x*sin_roll+distVector.y*cos_roll);\n        float distX0 = abs(_v.x);\n        float distY0 = abs(_v.y);\n        float ddist = sqrt(distX0 * distX0 + distY0 * distY0);\n        if (ddist * 0.5 > item[idx+4]) continue;\n\n        // second, remove perspective effect\n        float d = _v.x * tan_yaw;\n        float d2 = _v.y * tan_pitch;\n\n        float depth = item[idx+6] + d;\n        if(depth <= 0.0) {\n            continue;\n        }\n        depth = clamp(depth, 1.0, 5.0);\n        float distX1 = distX0 * (depth / item[idx+6]);\n        float distY1 = distY0 * (depth / item[idx+6]);\n        // third, remove yaw and pitch effect\n        if(depth > 2.5) {\n          distX1 = distX1 / (1.0-(1.0-cos_yaw)*my_smoothstep(0.0, 0.05, depth-2.5));\n          //distX1 = distX1 / cos_yaw;\n        }\n        //distY1 = distY1 / cos_pitch;\n        float dist = sqrt(distX1 * distX1 + distY1 * distY1);\n        //float dist = distance(ratioTransTargetPoint, centerPoint);\n        if (item[idx] > 1.1) {\n            dist = dist / 1.2;\n        }\n        if (dist < item[idx+4]) {\n            vec2 strengthAdjust = vec2(cos_yaw, 1.0);\n            if(depth < 2.5) {\n                strengthAdjust.x = 1.0-(1.0-cos_yaw)*(1.0-my_smoothstep(0.0, 0.1, 2.5-depth));\n            }\n            float distRatio = dist / item[idx+4];\n            float dx = (centerPoint.x - ratioTransTargetPoint.x) / 1.2;\n            float dy = (centerPoint.y - ratioTransTargetPoint.y) / 1.2;\n            if (item[idx] < 1.1) {\n                dx = dx * 1.2;\n                dy = dy * 1.2;\n                float weight = 1.2 * (1.0 - my_smoothstep(0.0, 1.0, distRatio)) * item[idx+1];\n                dx = dx * weight;\n                dy = dy * weight;\n                // rotate\n                vec2 vector = vec2(dx*cos_roll+dy*sin_roll, -dx*sin_roll+dy*cos_roll);\n                // add yaw and pitch\n                vector = vector * strengthAdjust;\n                // rotate back\n                newPosition.x -= (vector.x * cos_roll - vector.y * sin_roll) / screenRatioX;\n                newPosition.y -= (vector.y * cos_roll + vector.x * sin_roll) / screenRatioY;\n            } else if (item[idx] < 2.1) {\n                float weight = (1.0 - my_smoothstep(0.0, 1.0, distRatio)) * item[idx+1];\n                dx = dx * weight;\n                dy = dy * weight;\n                // rotate\n                vec2 vector = vec2(dx*cos_roll+dy*sin_roll, -dx*sin_roll+dy*cos_roll);\n                // add yaw and pitch\n                vector = vector * strengthAdjust;\n                // rotate back\n                newPosition.x += (vector.x * cos_roll - vector.y * sin_roll) / screenRatioX;\n                newPosition.y += (vector.y * cos_roll + vector.x * sin_roll) / screenRatioY;\n            } else if (item[idx] < 3.1) {\n                float delta = 1.0 - distRatio*distRatio;\n                float deltaScale = my_smoothstep(0.0, 1.0, delta);\n                float weight = delta * deltaScale * item[idx+4] * 0.5 * item[idx+1];\n                //float weight = (cos(3.1415 * 0.5 * distRatio)) * item[idx+4] * 0.5 * item[idx+1];\n                vec2 vector = vec2(1.0, 1.0);\n                if (item[idx+5] < 1.1) {\n                    vector.x *= -weight; vector.y = 0.0;\n                } else if (item[idx+5] < 2.1) {\n                    vector.x = 0.0; vector.y *= -weight;\n                } else if (item[idx+5] < 3.1) {\n                    vector.x *= weight; vector.y = 0.0;\n                } else if (item[idx+5] < 4.1) {\n                    vector.x = 0.0; vector.y *= weight;\n                } else if (item[idx+5] < 5.1) {\n                    vector.x *= -weight; vector.y *= -weight;\n                } else if (item[idx+5] < 6.1) {\n                    vector.x *= weight; vector.y *= -weight;\n                } else if (item[idx+5] < 7.1) {\n                    vector.x *= -weight; vector.y *= weight;\n                } else if (item[idx+5] < 8.1) {\n                    vector.x *= weight; vector.y *= weight;\n                } else {\n                    vector.x = 0.0; vector.y = 0.0;\n                }\n                // add yaw and pitch\n                vector = vector * strengthAdjust;\n                vector.y *= 9.0 / 16.0;\n                newPosition.x += (vector.x * cos_roll - vector.y * sin_roll) / screenRatioX;\n                newPosition.y += (vector.y * cos_roll + vector.x * sin_roll) / screenRatioY;\n            } else if (item[idx] < 5.1) {\n                float delta = 1.0 - distRatio*distRatio;\n                float deltaScale = my_smoothstep(0.0, 1.0, delta);\n                float weight = delta * deltaScale * item[idx+4] * 0.5 * item[idx+1];\n                dx = weight*cos(item[idx+5]);\n                dy = weight*sin(item[idx+5]);\n                // rotate\n                vec2 vector = vec2(dx*cos_roll+dy*sin_roll, -dx*sin_roll+dy*cos_roll);\n                // add yaw and pitch\n                vector = vector * strengthAdjust;\n                // rotate back\n                vector.y *= 9.0 / 16.0;\n                newPosition.x += (vector.x * cos_roll - vector.y * sin_roll) / screenRatioX;\n                newPosition.y += (vector.y * cos_roll + vector.x * sin_roll) / screenRatioY;\n            }\n        }\n    }\n    return newPosition;\n}\n\n void main() {\n     vec2 xTexCoord = (textureCoordinate * texMapSize - 0.5) / (texMapSize - 1.0);\n     vec2 position = xTexCoord * 2.0 - 1.0;\n     vec2 trueDiff = vec2(0.0, 0.0);\n\n     vec4 texDiff = texture2D(inputImageTexture, textureCoordinate);\n     trueDiff = (texDiff.xy * 255.0 + texDiff.zw) / 127.5 - 1.0;   //diff of raw\n     if ((trueDiff.x < -0.9 && trueDiff.y < -0.9) || (trueDiff.x > 0.9 && trueDiff.y > 0.9)){\n        trueDiff = vec2(0.0, 0.0);\n     }\n    \n     vec2 nPosition;\n     vec2 diffPosition;\n     position += trueDiff * 2.0;\n     position.x *= screenRatioY;\n     position.y *= screenRatioX;\n     nPosition = 0.5 * (distortedPosition(position) + vec2(screenRatioY, screenRatioX));\n     diffPosition = (nPosition * vec2(1.0/screenRatioY, 1.0/screenRatioX) - xTexCoord);\n\n     /*if (screenRatio >= 1.0){\n         position.x *= screenRatio;\n         nPosition = 0.5 * (distortedPosition(position) + vec2(screenRatio, 1.0));\n         diffPosition = (nPosition * vec2(1.0 / screenRatio, 1.0) - xTexCoord) + trueDiff;\n     } else {\n         position.y /= screenRatio;\n         nPosition = 0.5 * (distortedPosition(position) + vec2(1.0, 1.0 / screenRatio));\n         diffPosition = (nPosition * vec2(1.0, screenRatio) - xTexCoord) + trueDiff;\n     }*/\n     \n     diffPosition = 0.5 * (diffPosition + 1.0) * 255.0;\n     vec2 a = floor(diffPosition) / 255.0;\n     vec2 b = fract(diffPosition);\n\n     gl_FragColor = vec4(a,b);\n }";
@@ -55,6 +54,7 @@ public class TransformFilter_new
   private float faceHeight;
   private float faceWidth;
   private float[] flatMesh = new float['Ò'];
+  private int frameIdx;
   private List<DistortionItem> items;
   private FaceMeshItem mFaceMeshItem;
   private int mLastMeshIndex = -1;
@@ -67,7 +67,6 @@ public class TransformFilter_new
   private List<StickerItem> stickerItems;
   private float strengthAdjust = 1.0F;
   private float[] texMapSize = { 65.0F, 65.0F };
-  private TriggerCtrlItem triggerCtrlItem;
   
   static
   {
@@ -81,7 +80,6 @@ public class TransformFilter_new
     this.mFaceMeshItem = paramFaceMeshItem;
     this.dataPath = paramString;
     this.items = EMPTY;
-    this.triggerCtrlItem = new TriggerCtrlItem(this.mFaceMeshItem);
     setRenderMode(1);
     initParams();
   }
@@ -91,7 +89,6 @@ public class TransformFilter_new
     super("precision highp float;\n attribute vec4 position;\n attribute vec2 inputTextureCoordinate;\n varying vec2 textureCoordinate;\n \n void main(void) {\n     gl_Position = position;\n     textureCoordinate      = inputTextureCoordinate.xy;\n }", "precision highp float;\n uniform sampler2D inputImageTexture;\n varying vec2 textureCoordinate;\n\n \n uniform float item[210];\n uniform float cos_roll;\n uniform float sin_roll;\n uniform float cos_yaw;\n uniform float tan_yaw;\n uniform float tan_pitch;\nuniform float screenRatioX;\nuniform float screenRatioY;\nuniform vec2 texMapSize;\n\n //30 * 7, type, strength, pointX, pointY, radius, direction, depth\n\n float my_smoothstep(float edge0, float edge1, float x) {\n    float t = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);\n    return t * t * (3.0 - 2.0 * t);\n}\n\nvec2 distortedPosition(vec2 currentPosition) {\n    vec2 newPosition = currentPosition;\n    //if (newPosition.x <= -0.98 || newPosition.y <= -0.98 || newPosition.x >= 0.98 || newPosition.y >= 0.98) {\n    //    return newPosition;\n    //}\n    for (int i = 0; i < 30; i++) {\n        int idx = i * 7;\n        if (item[idx] < 0.1) {\n            continue;\n        }\n\n        vec2 centerPoint = vec2(item[idx+2], item[idx+3]);\n        vec2 ratioTransTargetPoint = vec2(newPosition.x * screenRatioX, newPosition.y * screenRatioY);\n\n        vec2 distVector = ratioTransTargetPoint - centerPoint;\n        // first, rotate vector by face roll\n        vec2 _v = vec2(distVector.x*cos_roll+distVector.y*sin_roll, -distVector.x*sin_roll+distVector.y*cos_roll);\n        float distX0 = abs(_v.x);\n        float distY0 = abs(_v.y);\n        float ddist = sqrt(distX0 * distX0 + distY0 * distY0);\n        if (ddist * 0.5 > item[idx+4]) continue;\n\n        // second, remove perspective effect\n        float d = _v.x * tan_yaw;\n        float d2 = _v.y * tan_pitch;\n\n        float depth = item[idx+6] + d;\n        if(depth <= 0.0) {\n            continue;\n        }\n        depth = clamp(depth, 1.0, 5.0);\n        float distX1 = distX0 * (depth / item[idx+6]);\n        float distY1 = distY0 * (depth / item[idx+6]);\n        // third, remove yaw and pitch effect\n        if(depth > 2.5) {\n          distX1 = distX1 / (1.0-(1.0-cos_yaw)*my_smoothstep(0.0, 0.05, depth-2.5));\n          //distX1 = distX1 / cos_yaw;\n        }\n        //distY1 = distY1 / cos_pitch;\n        float dist = sqrt(distX1 * distX1 + distY1 * distY1);\n        //float dist = distance(ratioTransTargetPoint, centerPoint);\n        if (item[idx] > 1.1) {\n            dist = dist / 1.2;\n        }\n        if (dist < item[idx+4]) {\n            vec2 strengthAdjust = vec2(cos_yaw, 1.0);\n            if(depth < 2.5) {\n                strengthAdjust.x = 1.0-(1.0-cos_yaw)*(1.0-my_smoothstep(0.0, 0.1, 2.5-depth));\n            }\n            float distRatio = dist / item[idx+4];\n            float dx = (centerPoint.x - ratioTransTargetPoint.x) / 1.2;\n            float dy = (centerPoint.y - ratioTransTargetPoint.y) / 1.2;\n            if (item[idx] < 1.1) {\n                dx = dx * 1.2;\n                dy = dy * 1.2;\n                float weight = 1.2 * (1.0 - my_smoothstep(0.0, 1.0, distRatio)) * item[idx+1];\n                dx = dx * weight;\n                dy = dy * weight;\n                // rotate\n                vec2 vector = vec2(dx*cos_roll+dy*sin_roll, -dx*sin_roll+dy*cos_roll);\n                // add yaw and pitch\n                vector = vector * strengthAdjust;\n                // rotate back\n                newPosition.x -= (vector.x * cos_roll - vector.y * sin_roll) / screenRatioX;\n                newPosition.y -= (vector.y * cos_roll + vector.x * sin_roll) / screenRatioY;\n            } else if (item[idx] < 2.1) {\n                float weight = (1.0 - my_smoothstep(0.0, 1.0, distRatio)) * item[idx+1];\n                dx = dx * weight;\n                dy = dy * weight;\n                // rotate\n                vec2 vector = vec2(dx*cos_roll+dy*sin_roll, -dx*sin_roll+dy*cos_roll);\n                // add yaw and pitch\n                vector = vector * strengthAdjust;\n                // rotate back\n                newPosition.x += (vector.x * cos_roll - vector.y * sin_roll) / screenRatioX;\n                newPosition.y += (vector.y * cos_roll + vector.x * sin_roll) / screenRatioY;\n            } else if (item[idx] < 3.1) {\n                float delta = 1.0 - distRatio*distRatio;\n                float deltaScale = my_smoothstep(0.0, 1.0, delta);\n                float weight = delta * deltaScale * item[idx+4] * 0.5 * item[idx+1];\n                //float weight = (cos(3.1415 * 0.5 * distRatio)) * item[idx+4] * 0.5 * item[idx+1];\n                vec2 vector = vec2(1.0, 1.0);\n                if (item[idx+5] < 1.1) {\n                    vector.x *= -weight; vector.y = 0.0;\n                } else if (item[idx+5] < 2.1) {\n                    vector.x = 0.0; vector.y *= -weight;\n                } else if (item[idx+5] < 3.1) {\n                    vector.x *= weight; vector.y = 0.0;\n                } else if (item[idx+5] < 4.1) {\n                    vector.x = 0.0; vector.y *= weight;\n                } else if (item[idx+5] < 5.1) {\n                    vector.x *= -weight; vector.y *= -weight;\n                } else if (item[idx+5] < 6.1) {\n                    vector.x *= weight; vector.y *= -weight;\n                } else if (item[idx+5] < 7.1) {\n                    vector.x *= -weight; vector.y *= weight;\n                } else if (item[idx+5] < 8.1) {\n                    vector.x *= weight; vector.y *= weight;\n                } else {\n                    vector.x = 0.0; vector.y = 0.0;\n                }\n                // add yaw and pitch\n                vector = vector * strengthAdjust;\n                vector.y *= 9.0 / 16.0;\n                newPosition.x += (vector.x * cos_roll - vector.y * sin_roll) / screenRatioX;\n                newPosition.y += (vector.y * cos_roll + vector.x * sin_roll) / screenRatioY;\n            } else if (item[idx] < 5.1) {\n                float delta = 1.0 - distRatio*distRatio;\n                float deltaScale = my_smoothstep(0.0, 1.0, delta);\n                float weight = delta * deltaScale * item[idx+4] * 0.5 * item[idx+1];\n                dx = weight*cos(item[idx+5]);\n                dy = weight*sin(item[idx+5]);\n                // rotate\n                vec2 vector = vec2(dx*cos_roll+dy*sin_roll, -dx*sin_roll+dy*cos_roll);\n                // add yaw and pitch\n                vector = vector * strengthAdjust;\n                // rotate back\n                vector.y *= 9.0 / 16.0;\n                newPosition.x += (vector.x * cos_roll - vector.y * sin_roll) / screenRatioX;\n                newPosition.y += (vector.y * cos_roll + vector.x * sin_roll) / screenRatioY;\n            }\n        }\n    }\n    return newPosition;\n}\n\n void main() {\n     vec2 xTexCoord = (textureCoordinate * texMapSize - 0.5) / (texMapSize - 1.0);\n     vec2 position = xTexCoord * 2.0 - 1.0;\n     vec2 trueDiff = vec2(0.0, 0.0);\n\n     vec4 texDiff = texture2D(inputImageTexture, textureCoordinate);\n     trueDiff = (texDiff.xy * 255.0 + texDiff.zw) / 127.5 - 1.0;   //diff of raw\n     if ((trueDiff.x < -0.9 && trueDiff.y < -0.9) || (trueDiff.x > 0.9 && trueDiff.y > 0.9)){\n        trueDiff = vec2(0.0, 0.0);\n     }\n    \n     vec2 nPosition;\n     vec2 diffPosition;\n     position += trueDiff * 2.0;\n     position.x *= screenRatioY;\n     position.y *= screenRatioX;\n     nPosition = 0.5 * (distortedPosition(position) + vec2(screenRatioY, screenRatioX));\n     diffPosition = (nPosition * vec2(1.0/screenRatioY, 1.0/screenRatioX) - xTexCoord);\n\n     /*if (screenRatio >= 1.0){\n         position.x *= screenRatio;\n         nPosition = 0.5 * (distortedPosition(position) + vec2(screenRatio, 1.0));\n         diffPosition = (nPosition * vec2(1.0 / screenRatio, 1.0) - xTexCoord) + trueDiff;\n     } else {\n         position.y /= screenRatio;\n         nPosition = 0.5 * (distortedPosition(position) + vec2(1.0, 1.0 / screenRatio));\n         diffPosition = (nPosition * vec2(1.0, screenRatio) - xTexCoord) + trueDiff;\n     }*/\n     \n     diffPosition = 0.5 * (diffPosition + 1.0) * 255.0;\n     vec2 a = floor(diffPosition) / 255.0;\n     vec2 b = fract(diffPosition);\n\n     gl_FragColor = vec4(a,b);\n }");
     this.items = paramList;
     this.stickerItems = paramList1;
-    this.triggerCtrlItem = new TriggerCtrlItem();
     setRenderMode(1);
     initParams();
   }
@@ -169,15 +166,9 @@ public class TransformFilter_new
     }
   }
   
-  private TRIGGERED_STATUS updateActionTriggered(Set<Integer> paramSet, long paramLong)
-  {
-    paramSet = new PTDetectInfo.Builder().triggeredExpression(paramSet).timestamp(paramLong).build();
-    return this.triggerCtrlItem.getTriggeredStatus(paramSet);
-  }
-  
   private void updateMeshParam()
   {
-    int i = this.triggerCtrlItem.getFrameIndex();
+    int i = this.frameIdx;
     if (i == this.mLastMeshIndex) {
       return;
     }
@@ -252,10 +243,7 @@ public class TransformFilter_new
     }
   }
   
-  public void reset()
-  {
-    this.triggerCtrlItem.reset();
-  }
+  public void reset() {}
   
   public void setDistortionItems(List<DistortionItem> paramList)
   {
@@ -265,16 +253,6 @@ public class TransformFilter_new
   public void setOptimizeBoundary(boolean paramBoolean)
   {
     this.optimizeBoundary = paramBoolean;
-  }
-  
-  public void setRenderForBitmap(boolean paramBoolean)
-  {
-    this.triggerCtrlItem.setRenderForBitmap(paramBoolean);
-  }
-  
-  public void setTriggerWords(String paramString)
-  {
-    this.triggerCtrlItem.setTriggerWords(paramString);
   }
   
   public void updateFaceFeatures(List<PointF> paramList)
@@ -579,11 +557,11 @@ public class TransformFilter_new
         paramObject[1] = (-localPTDetectInfo.faceAngles[0]);
         paramObject[2] = localPTDetectInfo.faceAngles[2];
       }
+      this.frameIdx = localPTDetectInfo.frameIndex;
       if (this.dataPath != null)
       {
-        updateActionTriggered(localPTDetectInfo.triggeredExpression, localPTDetectInfo.timestamp);
-        if (this.triggerCtrlItem.isTriggered()) {
-          break label132;
+        if ((localPTDetectInfo.facePoints != null) && (localPTDetectInfo.facePoints.size() > 0)) {
+          break label136;
         }
         this.items = EMPTY;
         this.mLastMeshIndex = -1;
@@ -593,7 +571,7 @@ public class TransformFilter_new
     {
       updateParams(localPTDetectInfo.facePoints, localPTDetectInfo.triggeredExpression, this.mFaceDetScale, paramObject);
       return;
-      label132:
+      label136:
       updateMeshParam();
     }
   }

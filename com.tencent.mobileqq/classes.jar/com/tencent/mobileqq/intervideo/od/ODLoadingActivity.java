@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.od;
 
-import ajya;
-import akhk;
+import alpo;
+import alza;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,10 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import argk;
-import args;
-import arju;
-import bcqf;
+import aswy;
+import asxg;
+import atai;
+import bepp;
 import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVCommonInterfaceImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -24,25 +24,25 @@ public class ODLoadingActivity
 {
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private args jdField_a_of_type_Args;
-  private bcqf jdField_a_of_type_Bcqf;
+  private asxg jdField_a_of_type_Asxg;
+  private bepp jdField_a_of_type_Bepp;
   private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
   private boolean jdField_a_of_type_Boolean;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bcqf == null)
+    if (this.jdField_a_of_type_Bepp == null)
     {
-      this.jdField_a_of_type_Bcqf = new bcqf(this, 40);
-      this.jdField_a_of_type_Bcqf.a(ajya.a(2131707836));
+      this.jdField_a_of_type_Bepp = new bepp(this, 40);
+      this.jdField_a_of_type_Bepp.a(alpo.a(2131708208));
     }
-    this.jdField_a_of_type_Bcqf.show();
+    this.jdField_a_of_type_Bepp.show();
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bcqf != null) {
-      this.jdField_a_of_type_Bcqf.dismiss();
+    if (this.jdField_a_of_type_Bepp != null) {
+      this.jdField_a_of_type_Bepp.dismiss();
     }
   }
   
@@ -58,7 +58,7 @@ public class ODLoadingActivity
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onBackPressed").report();
-      argk.b("33669910");
+      aswy.b("33669910");
       IVCommonInterfaceImpl.getInstance().onHostActivityBackPress();
     }
   }
@@ -72,8 +72,8 @@ public class ODLoadingActivity
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("is_start_huiyin", false);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Args = new args(this);
-      this.jdField_a_of_type_Args.a(paramBundle);
+      this.jdField_a_of_type_Asxg = new asxg(this);
+      this.jdField_a_of_type_Asxg.a(paramBundle);
       return;
     }
     paramBundle = new Bundle(getIntent().getExtras());
@@ -86,18 +86,18 @@ public class ODLoadingActivity
       for (;;)
       {
         str = paramBundle.getString("bizType");
-        paramBundle.putString("qqVersion", "8.3.0");
+        paramBundle.putString("qqVersion", "8.3.3");
         paramBundle.putBoolean("isGooglePlayVersion", false);
         this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(str).d1(String.valueOf(l));
         this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("enterLoading").report();
-        argk.b("33669907");
+        aswy.b("33669907");
         this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
         setContentView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
         findViewById(16908290).setVisibility(8);
         a();
-        ExecutorService localExecutorService = akhk.a(192);
-        localExecutorService.submit(new ODLoadingActivity.2(this, localExecutorService.submit(new arju(this, str)), l, paramBundle));
+        ExecutorService localExecutorService = alza.a(192);
+        localExecutorService.submit(new ODLoadingActivity.2(this, localExecutorService.submit(new atai(this, str)), l, paramBundle));
         return;
         QLog.e("ODLoadingActivity", 2, "not have fromId");
       }
@@ -116,7 +116,7 @@ public class ODLoadingActivity
   {
     super.onDestroy();
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Args.b();
+      this.jdField_a_of_type_Asxg.b();
     }
     for (;;)
     {

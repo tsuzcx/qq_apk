@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.troopgift;
 
 import android.graphics.Bitmap;
-import baro;
-import barv;
+import bcqi;
+import bcqp;
 
 public class TroopGiftAnimationController$5$3$1
   implements Runnable
 {
-  public TroopGiftAnimationController$5$3$1(barv parambarv, Bitmap paramBitmap) {}
+  public TroopGiftAnimationController$5$3$1(bcqp parambcqp, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Barv.a.this$0.a != null) {
-      ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_Barv.a.this$0.a).setReceiveHeadBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (this.jdField_a_of_type_Bcqp.a.this$0.a != null) {
+      ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_Bcqp.a.this$0.a).setReceiveHeadBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.3.1
  * JD-Core Version:    0.7.0.1
  */

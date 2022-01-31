@@ -1,21 +1,21 @@
 package dov.com.qq.im.capture.poi;
 
-import bjgi;
-import bjgk;
+import blrt;
+import blrv;
 
 public class FacePoiUI$3$2
   implements Runnable
 {
-  public FacePoiUI$3$2(bjgk parambjgk) {}
+  public FacePoiUI$3$2(blrv paramblrv) {}
   
   public void run()
   {
-    bjgi.a(this.a.a, 1);
+    blrt.a(this.a.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.poi.FacePoiUI.3.2
  * JD-Core Version:    0.7.0.1
  */

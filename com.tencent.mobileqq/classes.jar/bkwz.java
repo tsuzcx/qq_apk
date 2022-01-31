@@ -1,21 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bkwz
-  implements ValueAnimator.AnimatorUpdateListener
+class bkwz
+  implements bmac<blbb>
 {
-  public bkwz(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  bkwz(bkwx parambkwx) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@Nullable blbb paramblbb)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.c);
+    if (paramblbb == null) {}
+    do
+    {
+      return;
+      paramblbb = paramblbb.a;
+      if (paramblbb == AECaptureMode.NORMAL)
+      {
+        bkwx.a(this.a).setVisibility(8);
+        return;
+      }
+      if (paramblbb == AECaptureMode.GIF)
+      {
+        bkwx.a(this.a);
+        return;
+      }
+    } while (paramblbb != AECaptureMode.PLAY);
+    bkwx.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkwz
  * JD-Core Version:    0.7.0.1
  */

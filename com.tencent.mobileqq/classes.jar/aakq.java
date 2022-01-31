@@ -1,47 +1,31 @@
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.ResultReceiver;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
 
-public class aakq
-  extends atzp
+class aakq
+  implements aalt
 {
-  public aakq(AuthDevActivity paramAuthDevActivity) {}
+  aakq(aakp paramaakp) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public Activity a()
   {
-    super.a(paramString1, paramInt, paramString2);
+    return aakp.a(this.a);
   }
   
-  public void a(oidb_0x5e1.RspBody paramRspBody)
+  public void a()
   {
-    super.a(paramRspBody);
-    AuthDevActivity.a(this.a, paramRspBody);
-    int i = ((oidb_0x5e1.UdcUinData)AuthDevActivity.a(this.a).rpt_msg_uin_data.get(0)).user_login_guard_face.get();
-    FormSimpleItem localFormSimpleItem = AuthDevActivity.a(this.a);
-    if (i == 1)
-    {
-      paramRspBody = this.a.getString(2131692277);
-      localFormSimpleItem.setRightText(paramRspBody);
-      if (i != 1) {
-        break label111;
-      }
-    }
-    label111:
-    for (paramRspBody = "1";; paramRspBody = "0")
-    {
-      axqy.b(null, "dc00898", "", "", "0X800AA7C", "0X800AA7C", 0, 0, paramRspBody, "", "", "");
-      return;
-      paramRspBody = this.a.getString(2131692284);
-      break;
-    }
+    this.a.dismiss();
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    aakp.a(this.a).a().resultReceiver.send(paramInt, paramIntent.getExtras());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aakq
  * JD-Core Version:    0.7.0.1
  */

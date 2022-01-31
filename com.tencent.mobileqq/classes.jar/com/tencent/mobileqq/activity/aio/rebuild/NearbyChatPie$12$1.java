@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerj;
-import aerm;
+import agoj;
+import agom;
 
 public class NearbyChatPie$12$1
   implements Runnable
 {
-  public NearbyChatPie$12$1(aerm paramaerm) {}
+  public NearbyChatPie$12$1(agom paramagom) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class NearbyChatPie$12$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1
  * JD-Core Version:    0.7.0.1
  */

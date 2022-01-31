@@ -1,11 +1,23 @@
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
 
-public abstract class atnr<T>
-  extends RecyclerView.Adapter<Object>
-{}
+public class atnr
+  implements View.OnClickListener
+{
+  public atnr(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    azmj.b(null, "CliOper", "", "", "0X800A963", "0X800A963", 0, 0, "0", "0", "0", "");
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atnr
  * JD-Core Version:    0.7.0.1
  */

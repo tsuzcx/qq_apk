@@ -1,57 +1,49 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class barj
-  implements ITransactionCallback
+public class barj
+  extends MSFServlet
 {
-  barj(bari parambari) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "upload onFailed errn:" + paramInt);
+    if (("LongConn.OffPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
+      QLog.d("Q.richmedia.ProtoReqManager", 1, "onRecieve." + paramFromServiceMsg.getStringForLog());
     }
-    this.a.e();
+    ((AppInterface)getAppRuntime()).getProtoReqManager().a(paramIntent, paramFromServiceMsg);
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "upload onSuccess");
-    }
-    paramHashMap = new PttShortVideo.PttShortVideoUploadResp();
-    try
+    if (paramIntent != null)
     {
-      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)paramHashMap.mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte.str_fileid.has()) {
-        this.a.c = paramArrayOfByte.str_fileid.get();
-      }
-      this.a.b = true;
-      this.a.b();
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
+      paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
+      paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
+      boolean bool = paramIntent.getBooleanExtra("key_fastresend", false);
+      paramPacket.addAttribute("fastresend", Boolean.valueOf(bool));
+      paramPacket.autoResend = bool;
+      paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(paramIntent.getBooleanExtra("remind_slown_network", true)));
+      paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
     }
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
+  public void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
+  {
+    if (("LongConn.OffPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd()))) {
+      QLog.d("Q.richmedia.ProtoReqManager", 1, "onSend." + paramToServiceMsg.getStringForLog());
+    }
+    super.sendToMSF(paramIntent, paramToServiceMsg);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     barj
  * JD-Core Version:    0.7.0.1
  */

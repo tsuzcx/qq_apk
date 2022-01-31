@@ -8,12 +8,12 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import aokj;
+import aqcl;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
 public class RotateLoadingLayout
-  extends aokj
+  extends aqcl
 {
   private float jdField_a_of_type_Float;
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix;
@@ -55,7 +55,7 @@ public class RotateLoadingLayout
   
   public int b()
   {
-    return 2130841133;
+    return 2130841253;
   }
   
   public void b(float paramFloat)
@@ -86,7 +86,7 @@ public class RotateLoadingLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.pulltorefresh.internal.RotateLoadingLayout
  * JD-Core Version:    0.7.0.1
  */

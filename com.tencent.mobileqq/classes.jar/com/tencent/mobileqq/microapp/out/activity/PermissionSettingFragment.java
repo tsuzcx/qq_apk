@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.out.activity;
 
-import abtq;
+import adky;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -43,7 +43,7 @@ public class PermissionSettingFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_appid", paramString);
-    abtq.a(paramContext, localIntent, PublicFragmentActivityForMiniApp.class, PermissionSettingFragment.class);
+    adky.a(paramContext, localIntent, PublicFragmentActivityForMiniApp.class, PermissionSettingFragment.class);
   }
   
   public static void launchForResult(Activity paramActivity, String paramString, int paramInt)
@@ -51,7 +51,7 @@ public class PermissionSettingFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_appid", paramString);
-    abtq.a(paramActivity, localIntent, PublicFragmentActivityForMiniApp.class, PermissionSettingFragment.class, paramInt);
+    adky.a(paramActivity, localIntent, PublicFragmentActivityForMiniApp.class, PermissionSettingFragment.class, paramInt);
   }
   
   public boolean needImmersive()
@@ -127,7 +127,7 @@ public class PermissionSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.out.activity.PermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

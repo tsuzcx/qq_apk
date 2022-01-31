@@ -1,50 +1,67 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class ssd
-  extends QQUIEventReceiver<ssc, spr>
+  implements View.OnClickListener
 {
-  public ssd(@NonNull ssc paramssc)
-  {
-    super(paramssc);
-  }
+  public ssd(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void a(@NonNull ssc paramssc, @NonNull spr paramspr)
+  public void onClick(View paramView)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramspr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
-    {
-      ved.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,error! code = %d", Integer.valueOf(paramspr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode));
-      paramssc.d();
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      ssc.a(paramssc).a(bool1);
+    if (ytg.a("service_account_folder_publish_feed_button", 2000L)) {
       return;
-      ved.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,size = %d", Integer.valueOf(paramspr.jdField_a_of_type_JavaUtilList.size()));
-      bool1 = bool2;
-      if (paramssc.a(paramspr.jdField_a_of_type_JavaUtilList))
+    }
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = ammv.a(this.a);; bool = true)
+    {
+      if (!bool)
       {
-        bool1 = bool2;
-        if (paramspr.jdField_a_of_type_JavaUtilList.size() > 0) {
-          bool1 = true;
+        bdcd.b(this.a);
+        return;
+      }
+      paramView = new Intent();
+      paramView.putExtra("postUin", ServiceAccountFolderActivityNew.a(this.a));
+      paramView.putExtra("sourceFrom", 2);
+      String str;
+      if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).user.youZhan.size() > 0))
+      {
+        if (((CertifiedAccountMeta.StYouZanShop)ServiceAccountFolderActivityNew.a(this.a).user.youZhan.get(0)).type.get() > 1)
+        {
+          bool = true;
+          paramView.putExtra("has_shop", bool);
         }
       }
+      else
+      {
+        bizm.a(this.a.getActivity(), paramView, 0);
+        str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.a(this.a).user.get()).id.get();
+        if (ServiceAccountFolderActivityNew.a(this.a) != 0) {
+          break label217;
+        }
+      }
+      label217:
+      for (paramView = "auth_follow";; paramView = "auth_discover")
+      {
+        yvu.a(str, paramView, "post_clk", 0, 0, new String[] { "", "" });
+        return;
+        bool = false;
+        break;
+      }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return spr.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssd
  * JD-Core Version:    0.7.0.1
  */

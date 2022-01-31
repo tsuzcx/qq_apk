@@ -1,27 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class afhs
-  implements View.OnClickListener
+class afhs
+  implements bhqd
 {
-  public afhs(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  afhs(afhq paramafhq, MessageForFile paramMessageForFile, bhpy parambhpy, BaseChatItemLayout paramBaseChatItemLayout, afhx paramafhx) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = Face2FaceAddContactFragment.a(this.a).length();
-    if (i >= 4) {
-      return;
+    paramView = this.jdField_a_of_type_Afhq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
+    if (paramView != null)
+    {
+      if (paramView.status == 16)
+      {
+        armz.a(2131692939);
+        this.jdField_a_of_type_Bhpy.cancel();
+        return;
+      }
+      arni.a(this.jdField_a_of_type_Afhq.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Afhq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     }
-    Face2FaceAddContactFragment.a(this.a, paramView, i);
-    i = Face2FaceAddContactFragment.a(this.a).length();
-    Face2FaceAddContactFragment.a(this.a, i);
-    Face2FaceAddContactFragment.b(this.a, i);
+    this.jdField_a_of_type_Afhq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Afhx, paramView, false);
+    this.jdField_a_of_type_Bhpy.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afhs
  * JD-Core Version:    0.7.0.1
  */

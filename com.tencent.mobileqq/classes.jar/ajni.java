@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract interface ajni
+public class ajni
 {
-  public abstract void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3);
+  public static final String a = bduw.a(aljq.aW);
+  public static final String b = aljq.bf;
+  public static final String c = bduw.a(aljq.bg);
+  public static final String d = bayb.a(aljq.aX);
+  public static final String e = aljq.bk;
+  public static final String f = aljq.br;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajni
  * JD-Core Version:    0.7.0.1
  */

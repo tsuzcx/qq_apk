@@ -52,7 +52,7 @@ public class RedDotImageView
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849297);
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849728);
       }
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent", 2, " showRedDot() : " + this.jdField_b_of_type_Int + ",isShownBorder" + this.jdField_b_of_type_Boolean + "，this = " + this);
@@ -183,7 +183,7 @@ public class RedDotImageView
       }
     }
     label219:
-    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844861);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130848739))
+    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845225);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849170))
     {
       this.jdField_b_of_type_Int = paramInt;
       postInvalidate();

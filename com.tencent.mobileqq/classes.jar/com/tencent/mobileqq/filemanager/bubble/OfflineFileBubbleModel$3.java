@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import aoyi;
-import aoze;
-import apug;
-import apvd;
+import aqrg;
+import aqsc;
+import arni;
+import arof;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class OfflineFileBubbleModel$3
   implements Runnable
 {
-  public OfflineFileBubbleModel$3(aoyi paramaoyi, FileManagerEntity paramFileManagerEntity) {}
+  public OfflineFileBubbleModel$3(aqrg paramaqrg, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    apug.d(this.a);
-    if (apvd.b(this.a.strLargeThumPath)) {
+    arni.d(this.a);
+    if (arof.b(this.a.strLargeThumPath)) {
       this.this$0.a.a().c(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.OfflineFileBubbleModel.3
  * JD-Core Version:    0.7.0.1
  */

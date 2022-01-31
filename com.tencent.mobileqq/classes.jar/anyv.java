@@ -1,48 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.content.Context;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
 
 public class anyv
-  extends antf<CustomEmotionData>
+  implements anyn
 {
-  public anyv(EmoticonMainPanel paramEmoticonMainPanel) {}
+  private String a = "SubscribeColorNoteLauncher";
   
-  public void a()
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "upload_finish");
+    try
+    {
+      paramColorNote = paramColorNote.getReserve();
+      if (paramColorNote == null) {
+        return;
+      }
+      paramColorNote = (SubscribeColorNoteReserveBean)yhl.a(paramColorNote);
+      if (paramColorNote != null)
+      {
+        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+        localStFeed.mergeFrom(paramColorNote.feedData);
+        QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
+        xxk.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
+        return;
+      }
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "download_finish");
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
     }
-    this.a.p();
-    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
-  }
-  
-  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
-  {
-    this.a.p();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "roaming_finish");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ((ansx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(103)).b(this.a.jdField_a_of_type_Antf);
-    }
-    this.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView;
 
 public class qpw
-  implements ajte
+  implements View.OnClickListener
 {
-  public qpw(qpv paramqpv) {}
+  public qpw(ReadInJoyPrivacyListView paramReadInJoyPrivacyListView) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    paramObject = (Bundle)paramObject;
-    qpv.a(this.a, (LikeAnimationInfo)paramObject.getParcelable("key_like_animation_info"));
-    bhvy.a();
-    bhvy.a(qpv.a(this.a));
-    qpv.a(this.a, qpv.a(this.a));
+    ReadInJoyPrivacyListView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qpw
  * JD-Core Version:    0.7.0.1
  */

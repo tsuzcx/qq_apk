@@ -29,6 +29,7 @@ import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
 import com.tencent.mobileqq.mini.app.IAppUIProxy;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager.MiniAppStateObserver;
+import com.tencent.mobileqq.mini.app.PreCacheManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime.KeyboardObserver;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer;
@@ -352,9 +353,10 @@ public class AppBrandFragment
         }
         NavigateBackUtils.clearTag();
         localObject1 = this.appBrandRuntimeContainer.getAppBrandRunTime(this.miniConfig.config);
-        if ((localObject1 != null) && (this.needResume))
+        if ((localObject1 != null) && ((this.needResume) || (((AppBrandRuntime)localObject1).isPauseByopenUrl())))
         {
           ((AppBrandRuntime)localObject1).onResume(this.miniConfig, false);
+          ((AppBrandRuntime)localObject1).setPauseByopenUrl(false);
           this.needResume = false;
         }
         MiniAppReportManager2.reportPageView("2launch", "click_resume", null, this.miniConfig);
@@ -417,6 +419,8 @@ public class AppBrandFragment
         QLog.d("miniapp-start", 1, "onResume appConfig=" + this.miniConfig.toString() + ", appBrandRunTime=" + localObject2);
         if (localObject2 == null)
         {
+          PreCacheManager.g().fetchPreCacheData(this.miniConfig);
+          PreCacheManager.g().fetchPreResourceIfNeed(this.miniConfig);
           QLog.d("AppBrandFragment", 1, "onResume appBrandRunTime not found! isLoadFail=" + this.isLoadFail);
           this.mSoftKeyboardStateHelper = new SoftKeyboardStateHelper(this.rootFrameLayout);
           this.mSoftKeyboardStateHelper.addSoftKeyboardStateListener(this.mListener);
@@ -545,7 +549,7 @@ public class AppBrandFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandFragment
  * JD-Core Version:    0.7.0.1
  */

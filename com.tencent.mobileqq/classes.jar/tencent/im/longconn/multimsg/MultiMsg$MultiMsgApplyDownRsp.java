@@ -20,6 +20,7 @@ public final class MultiMsg$MultiMsgApplyDownRsp
   public final PBRepeatField<Integer> rpt_uint32_down_ip = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBRepeatField<Integer> rpt_uint32_down_port = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBRepeatField<Integer> rpt_uint32_down_v6_port = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBUInt32Field uint32_apply_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_result = PBField.initUInt32(0);
   
   static
@@ -28,12 +29,12 @@ public final class MultiMsg$MultiMsgApplyDownRsp
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 58, 66, 72 }, new String[] { "uint32_result", "bytes_thumb_down_para", "bytes_msg_key", "rpt_uint32_down_ip", "rpt_uint32_down_port", "bytes_msg_resid", "msg_extern_info", "rpt_bytes_down_ip_v6", "rpt_uint32_down_v6_port" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, null, localByteStringMicro4, Integer.valueOf(0) }, MultiMsgApplyDownRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 58, 66, 72, 80 }, new String[] { "uint32_result", "bytes_thumb_down_para", "bytes_msg_key", "rpt_uint32_down_ip", "rpt_uint32_down_port", "bytes_msg_resid", "msg_extern_info", "rpt_bytes_down_ip_v6", "rpt_uint32_down_v6_port", "uint32_apply_id" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, null, localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0) }, MultiMsgApplyDownRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyDownRsp
  * JD-Core Version:    0.7.0.1
  */

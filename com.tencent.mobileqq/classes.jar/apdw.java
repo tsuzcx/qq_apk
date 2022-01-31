@@ -1,42 +1,26 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
 
 class apdw
-  implements bieg<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp>
+  implements View.OnClickListener
 {
-  apdw(apdn paramapdn, apeb paramapeb) {}
+  apdw(apdv paramapdv) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  public void onClick(View paramView)
   {
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "sendWeiYun2Dataline onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
-    if (this.jdField_a_of_type_Apeb != null) {
-      this.jdField_a_of_type_Apeb.a(paramInt, paramString);
-    }
-  }
-  
-  public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
-  {
-    paramCrossBidProxyCopyFileToOtherBidMsgRsp = new String(paramCrossBidProxyCopyFileToOtherBidMsgRsp.dst_path.get().toByteArray());
-    if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
+    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
     {
-      QLog.e("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^! [CS Replay]sendWeiYun2Dataline onSucceed,But uuid is null!!!");
-      if (this.jdField_a_of_type_Apeb != null) {
-        this.jdField_a_of_type_Apeb.a(-3, "copyFileToOtherBid_fail");
-      }
+      HotChatFlashPicActivity.a(this.a.a).dismiss();
+      HotChatFlashPicActivity.a(this.a.a, null);
+      this.a.a.finish();
     }
-    do
-    {
-      return;
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^ [CS Replay] sendWeiYun2Dataline onSucceed, Uuid[" + paramCrossBidProxyCopyFileToOtherBidMsgRsp + "]");
-    } while (this.jdField_a_of_type_Apeb == null);
-    this.jdField_a_of_type_Apeb.a(paramCrossBidProxyCopyFileToOtherBidMsgRsp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apdw
  * JD-Core Version:    0.7.0.1
  */

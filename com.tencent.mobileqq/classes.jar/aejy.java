@@ -1,14 +1,31 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import java.io.File;
+import java.util.Comparator;
 
-public abstract interface aejy
+class aejy
+  implements Comparator<File>
 {
-  public abstract boolean a(PhotoListPanel paramPhotoListPanel);
+  aejy(aejx paramaejx) {}
   
-  public abstract boolean b(PhotoListPanel paramPhotoListPanel);
+  public int a(File paramFile1, File paramFile2)
+  {
+    long l = aejx.a(this.a, paramFile1) - aejx.a(this.a, paramFile2);
+    if (l > 0L) {
+      return 1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejy
  * JD-Core Version:    0.7.0.1
  */

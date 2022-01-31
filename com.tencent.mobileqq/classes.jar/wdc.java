@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class wdc
-  implements View.OnClickListener
+public abstract interface wdc
 {
-  wdc(wdb paramwdb) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.b(true);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdc
  * JD-Core Version:    0.7.0.1
  */

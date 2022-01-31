@@ -1,31 +1,31 @@
 package cooperation.qqdataline;
 
-import bgpc;
-import bgpd;
+import abqn;
+import biqb;
+import biqc;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zzq;
 
 public class DatalineLeakHelper$2$1
   implements Runnable
 {
-  public DatalineLeakHelper$2$1(bgpd parambgpd) {}
+  public DatalineLeakHelper$2$1(biqc parambiqc) {}
   
   public void run()
   {
-    Object localObject1 = zzq.a("mobile_dataline_leak");
+    Object localObject1 = abqn.a("mobile_dataline_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      bgpc.a((String)localObject2);
+      biqb.a((String)localObject2);
     }
     try
     {
-      if (!"0".equals("a9855103"))
+      if (!"0".equals("6b98d0b0"))
       {
         localObject1 = new JSONObject();
         JSONObject localJSONObject = new JSONObject();
@@ -45,7 +45,7 @@ public class DatalineLeakHelper$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqdataline.DatalineLeakHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

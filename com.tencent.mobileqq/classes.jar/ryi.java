@@ -1,17 +1,29 @@
-class ryi
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+
+public class ryi
+  implements olb
 {
-  public String a;
-  public String b;
+  public ryi(FastWebActivity paramFastWebActivity) {}
   
-  ryi(ryg paramryg, String paramString1, String paramString2)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    if (FastWebActivity.a(this.a) != null)
+    {
+      FastWebActivity.a(this.a).b = paramLong;
+      if (FastWebActivity.a(this.a).b <= 0L)
+      {
+        FastWebActivity.a(this.a).b = 0L;
+        this.a.e();
+      }
+      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryi
  * JD-Core Version:    0.7.0.1
  */

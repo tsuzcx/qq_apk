@@ -1,30 +1,23 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.XListView;
 
-class aeor
-  implements Animation.AnimationListener
+public abstract interface aeor
 {
-  aeor(aeoq paramaeoq) {}
+  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, long paramLong, float paramFloat);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.a.a.q != null)
-    {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2130772209);
-      paramAnimation.setAnimationListener(this);
-      this.a.a.q.startAnimation(paramAnimation);
-    }
-  }
+  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, boolean paramBoolean);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract boolean a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract boolean a(XListView paramXListView, int paramInt1, View paramView, ChatMessage paramChatMessage, AudioPlayer paramAudioPlayer, int paramInt2);
+  
+  public abstract boolean b(ChatMessage paramChatMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeor
  * JD-Core Version:    0.7.0.1
  */

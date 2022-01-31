@@ -1,38 +1,22 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface afmk
+class afmk
+  extends afpq
 {
-  public abstract Activity a();
+  afmk(aflj paramaflj)
+  {
+    super(paramaflj, null);
+  }
   
-  public abstract View a();
-  
-  public abstract aqbe a();
-  
-  public abstract bfnk a();
-  
-  public abstract QQAppInterface a();
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(Runnable paramRunnable);
-  
-  public abstract void a(String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract View b();
-  
-  public abstract boolean b();
-  
-  public abstract View c();
-  
-  public abstract View d();
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return aqrn.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 65, paramChatMessage);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afmk
  * JD-Core Version:    0.7.0.1
  */

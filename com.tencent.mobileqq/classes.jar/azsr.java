@@ -1,228 +1,179 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import java.util.Random;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class azsr
+  extends azqk
 {
-  public static int a(String paramString)
+  private void a(Context paramContext, View paramView, azss paramazss, Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    int j;
-    do
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)))
     {
-      do
+      paramContext = paramContext.getResources();
+      if (paramazss.a != null)
       {
-        do
-        {
-          return 0;
-        } while (!paramString.startsWith("H_"));
-        i = paramString.indexOf("_");
-      } while (i == -1);
-      j = paramString.lastIndexOf("_");
-    } while (i == j);
-    paramString = paramString.substring(j);
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
+        paramBundle = new RelativeLayout.LayoutParams(-1, -1);
+        paramazss.a.setId(2131362884);
+        paramBundle.addRule(9, -1);
+        ((RelativeLayout)paramView).addView(paramazss.a);
+      }
+      if (paramazss.b != null)
+      {
+        paramBundle = new RelativeLayout.LayoutParams(-1, -2);
+        paramBundle.addRule(9);
+        if (alnq.a() <= 16.0F) {
+          break label146;
+        }
+      }
     }
-    catch (Exception paramString) {}
-    return 0;
+    label146:
+    for (int i = aekt.a(5.0F, paramContext);; i = aekt.a(10.0F, paramContext))
+    {
+      paramBundle.setMargins(aekt.a(20.0F, paramContext), 0, aekt.a(20.0F, paramContext), i);
+      paramBundle.addRule(12);
+      ((RelativeLayout)paramView).addView(paramazss.b, paramBundle);
+      return;
+    }
   }
   
-  public static long a()
+  protected int b()
   {
-    return (int)(System.currentTimeMillis() / 1000L) << 32 | Math.abs(new Random().nextInt());
+    return 10;
   }
   
-  public static azss a(String paramString)
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    int i = 1;
-    azss localazss = new azss();
-    if (TextUtils.isEmpty(paramString)) {
-      return localazss;
+    azss localazss;
+    Object localObject1;
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof azss)))
+    {
+      localazss = (azss)paramView.getTag();
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     }
     for (;;)
     {
+      azqj localazqj;
+      Object localObject2;
+      String str;
+      int j;
+      int i;
+      if (((Iterator)localObject1).hasNext())
+      {
+        localazqj = (azqj)((Iterator)localObject1).next();
+        localazqj.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject2 = localazqj.jdField_a_of_type_JavaLangString;
+        if ("title".equals(localObject2))
+        {
+          localObject2 = (StructMsgItemTitle)localazqj;
+          str = ((StructMsgItemTitle)localObject2).c();
+          j = ((StructMsgItemTitle)localObject2).f();
+          i = j;
+          if (TextUtils.isEmpty(str)) {}
+        }
+      }
       try
       {
-        int j = paramString.indexOf("://");
-        if (j == -1)
+        i = Integer.parseInt(str);
+        f = alnq.a() / 16.0F;
+        if (i * f > 36.0F) {
+          ((StructMsgItemTitle)localObject2).c("" + (int)(36.0F / f));
+        }
+        for (;;)
         {
-          j = 0;
-          String str1 = paramString.substring(j);
-          int m = str1.indexOf("/");
-          int k = m;
-          if (-1 == m) {
-            k = str1.length() - 1;
-          }
-          m = paramString.indexOf("&bHost=");
-          if (-1 == m)
-          {
-            i = 0;
-            str1 = null;
-            str2 = str1;
-            if (str1 == null) {
-              str2 = paramString.substring(j, k + j);
-            }
-            if (str2 == null) {
-              break;
-            }
-            j = str2.indexOf(":");
-            if (j < 0) {
-              continue;
-            }
-            paramString = str2.substring(0, j);
-            str1 = str2.substring(j + 1);
-            localazss.jdField_a_of_type_JavaLangString = paramString;
-            localazss.jdField_a_of_type_Int = Integer.valueOf(str1).intValue();
-            if (i == 0) {
-              break;
-            }
-            localazss.b = 1;
-            return localazss;
-          }
-          int n = paramString.indexOf("&bPort=", m);
-          if (-1 == n)
-          {
-            i = 0;
-            str1 = null;
-            continue;
-          }
-          str1 = paramString.substring("&bHost=".length() + m, n);
-          String str2 = paramString.substring("&bPort=".length() + n);
-          str1 = str1 + ":" + str2;
-          continue;
-          localazss.jdField_a_of_type_JavaLangString = str2;
-          localazss.jdField_a_of_type_Int = 0;
+          localazss.b = localazqj.a(paramContext, localazss.b, paramBundle);
+          break;
+          ((StructMsgItemTitle)localObject2).c(str);
+        }
+        if (!"paaudio".equals(localObject2)) {
           continue;
         }
-        j += 3;
-      }
-      catch (Exception paramString)
-      {
-        return localazss;
-      }
-    }
-  }
-  
-  public static bajy a(long paramLong)
-  {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    return bajy.a(localQQAppInterface, paramLong);
-  }
-  
-  public static QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    if (!AppNetConnInfo.isNetSupport()) {
-      return "none";
-    }
-    if (AppNetConnInfo.isWifiConn()) {
-      return "wifi";
-    }
-    if (AppNetConnInfo.isMobileConn())
-    {
-      switch (AppNetConnInfo.getMobileInfo())
-      {
-      default: 
-        return "unkonw";
-      case -1: 
-        return "none";
-      case 0: 
-      case 1: 
-        return "2g";
-      case 2: 
-        return "3g";
-      }
-      return "4g";
-    }
-    return "none";
-  }
-  
-  public static String a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    if (paramString.startsWith("/")) {
-      return paramString.substring(1);
-    }
-    return "/" + paramString;
-  }
-  
-  public static int b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      do
-      {
-        do
+        localazss.a = localazqj.a(paramContext, localazss.a, paramBundle);
+        continue;
+        paramContext = localazss;
+        if (paramContext.b != null) {
+          ((TextView)paramContext.b).setMaxLines(1);
+        }
+        paramView.setTag(paramContext);
+        return paramView;
+        localObject1 = paramContext.getResources();
+        localazss = new azss();
+        paramView = new RelativeLayout(paramContext);
+        i = aekt.a(15.0F, (Resources)localObject1);
+        paramView.setPadding(i, i, i, i);
+        i = (int)((BaseChatItemLayout.a - aekt.a(46.0F, (Resources)localObject1)) * 26.0F / 63.0F);
+        paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, aekt.a(30.0F, (Resources)localObject1) + i));
+        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (((Iterator)localObject1).hasNext())
         {
-          return 0;
-          i = paramString.indexOf("User-ReturnCode=[");
-        } while (i == -1);
-        paramString = paramString.substring("User-ReturnCode=[".length() + i);
-      } while (TextUtils.isEmpty(paramString));
-      i = paramString.indexOf("]");
-    } while (i == -1);
-    paramString = paramString.substring(0, i);
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
+          localazqj = (azqj)((Iterator)localObject1).next();
+          localazqj.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          localObject2 = localazqj.jdField_a_of_type_JavaLangString;
+          if ("title".equals(localObject2))
+          {
+            localObject2 = (StructMsgItemTitle)localazqj;
+            str = ((StructMsgItemTitle)localObject2).c();
+            j = ((StructMsgItemTitle)localObject2).f();
+            i = j;
+            if (TextUtils.isEmpty(str)) {}
+          }
+        }
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          for (;;)
+          {
+            i = Integer.parseInt(str);
+            float f = alnq.a() / 16.0F;
+            if (i * f > 36.0F) {
+              ((StructMsgItemTitle)localObject2).c("" + (int)(36.0F / f));
+            }
+            for (;;)
+            {
+              localazss.b = localazqj.a(paramContext, localazss.b, paramBundle);
+              break;
+              ((StructMsgItemTitle)localObject2).c(str);
+            }
+            if ("paaudio".equals(localObject2))
+            {
+              localazss.a = localazqj.a(paramContext, localazss.a, paramBundle);
+              continue;
+              a(paramContext, paramView, localazss, paramBundle);
+              paramContext = localazss;
+            }
+          }
+          localException1 = localException1;
+          i = j;
+        }
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            i = j;
+          }
+        }
+      }
     }
-    catch (Exception paramString) {}
-    return 0;
   }
   
-  public static int c(String paramString)
+  public String b()
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        do
-        {
-          return 0;
-        } while (!paramString.startsWith("H_"));
-        i = paramString.indexOf("_");
-      } while (i == -1);
-      j = paramString.lastIndexOf("_");
-    } while (i == j);
-    paramString = paramString.substring(i, j - 1);
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
+    return "Layout10";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azsr
  * JD-Core Version:    0.7.0.1
  */

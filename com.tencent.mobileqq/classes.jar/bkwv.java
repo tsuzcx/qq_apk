@@ -1,25 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import com.tencent.common.app.AppInterface;
 
-public class bkwv
-  extends Handler
+class bkwv
+  extends bkvo
 {
-  public bkwv(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bkwv(bkwu parambkwu, AppInterface paramAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, bkxm parambkxm)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    if (paramBoolean)
+    {
+      bkwu.a(this.jdField_a_of_type_Bkwu).a(parambkxm);
+      return;
+    }
+    bkwu.a(this.jdField_a_of_type_Bkwu).a(new bkxm());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkwv
  * JD-Core Version:    0.7.0.1
  */

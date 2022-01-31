@@ -1,12 +1,11 @@
-public abstract interface amdi
+public class amdi
 {
-  public abstract int a(int paramInt1, String paramString, int paramInt2, amdf paramamdf);
-  
-  public abstract void a(int paramInt);
+  public int a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdi
  * JD-Core Version:    0.7.0.1
  */

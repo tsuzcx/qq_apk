@@ -1,26 +1,26 @@
-import android.app.Dialog;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
 public class atez
   implements View.OnClickListener
 {
-  public atez(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public atez(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
-      this.a.e("0X800590A");
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
+    paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+    if (!TextUtils.isEmpty(paramView)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(paramView, new String[] { String.valueOf(0) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atez
  * JD-Core Version:    0.7.0.1
  */

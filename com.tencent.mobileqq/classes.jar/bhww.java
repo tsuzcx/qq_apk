@@ -1,20 +1,16 @@
-import android.app.Activity;
+import android.view.View;
 
-public final class bhww
-  implements bgln
+public abstract interface bhww
 {
-  public bhww(Activity paramActivity) {}
+  public abstract void a_(View paramView);
   
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      this.a.finish();
-    }
-  }
+  public abstract void e();
+  
+  public abstract void e(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhww
  * JD-Core Version:    0.7.0.1
  */

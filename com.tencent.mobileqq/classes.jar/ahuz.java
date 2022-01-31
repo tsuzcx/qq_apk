@@ -1,22 +1,24 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class ahuz
-  implements agwr
+  extends arqb
 {
-  public ahuz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public ahuz(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList)
+  public void a(View paramView)
   {
-    if ((this.a.F) && (paramInt1 > 0)) {
-      NewFlowCameraActivity.c = true;
+    if ((paramView.getTag() instanceof String)) {
+      return;
     }
+    paramView = (FileManagerEntity)((ahzc)paramView.getTag()).a;
+    this.a.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahuz
  * JD-Core Version:    0.7.0.1
  */

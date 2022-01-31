@@ -25,6 +25,7 @@ public class LoadFaceItemManager
   private AsyncTask<Void, Integer, Boolean> mGrayImageTask;
   private AsyncTask<Void, Integer, Boolean> mGrayImageTask2;
   private AsyncTask<Void, Integer, Boolean> mGrayImageTask3;
+  private AsyncTask<Void, Integer, Boolean> mGrayImageTask4;
   private AsyncTask<Void, Integer, Boolean> mImageTask;
   private final int sampleSize;
   
@@ -50,6 +51,9 @@ public class LoadFaceItemManager
     }
     if (this.mGrayImageTask3 != null) {
       this.mGrayImageTask3.cancel(true);
+    }
+    if (this.mGrayImageTask4 != null) {
+      this.mGrayImageTask4.cancel(true);
     }
     if (this.mFaceImageTask != null) {
       this.mFaceImageTask.cancel(true);
@@ -102,7 +106,14 @@ public class LoadFaceItemManager
     if (this.mGrayImageTask3.getStatus() != AsyncTask.Status.RUNNING) {
       this.mGrayImageTask3.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
     }
+    this.mGrayImageTask4 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FEATURE_TYPE.LIPS_MASK, this.sampleSize);
+    if (this.mGrayImageTask4.getStatus() != AsyncTask.Status.RUNNING) {
+      this.mGrayImageTask4.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+    }
     ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(this.item.lipsStyleMask)) {
+      localArrayList.add(this.item.lipsStyleMask);
+    }
     if (TextUtils.isEmpty(this.item.id))
     {
       localArrayList.add(this.item.faceExchangeImage);

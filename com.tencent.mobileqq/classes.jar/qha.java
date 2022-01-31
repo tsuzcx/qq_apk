@@ -1,37 +1,21 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.CheckBox;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import java.util.List;
-import java.util.Map;
-
-public class qha
-  extends qgz
+class qha
+  implements qfr
 {
-  public qha(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  qha(qgy paramqgy, qgt paramqgt) {}
+  
+  public void a()
   {
-    super(paramContext, paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
+    this.jdField_a_of_type_Qgt.a();
   }
   
-  protected void a(View paramView, ResultRecord paramResultRecord)
+  public void a(int paramInt, long paramLong, String paramString1, qfz paramqfz, String paramString2, String paramString3, String paramString4)
   {
-    if ((paramView == null) || (FollowingListFragment.a(this.b) == null) || (FollowingListFragment.a(this.b).a() == null) || (FollowingListFragment.a(this.b).a().isEmpty())) {
-      return;
-    }
-    paramView = (CheckBox)paramView.findViewById(2131364192);
-    paramView.setBackgroundResource(2130848416);
-    if (FollowingListFragment.a(this.b).a().contains(paramResultRecord.a()))
-    {
-      paramView.setEnabled(false);
-      return;
-    }
-    paramView.setEnabled(true);
+    this.jdField_a_of_type_Qgt.a(paramInt, paramLong, paramString1, paramqfz, paramString2, paramString3, paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qha
  * JD-Core Version:    0.7.0.1
  */

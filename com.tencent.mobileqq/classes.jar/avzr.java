@@ -1,14 +1,32 @@
-class avzr
+import android.annotation.SuppressLint;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+
+public class avzr
+  implements View.OnTouchListener
 {
-  avza jdField_a_of_type_Avza;
-  avzm jdField_a_of_type_Avzm;
-  avzn jdField_a_of_type_Avzn;
+  public avzr(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  private avzr(avzo paramavzo) {}
+  @SuppressLint({"ClickableViewAccessibility"})
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avzr
  * JD-Core Version:    0.7.0.1
  */

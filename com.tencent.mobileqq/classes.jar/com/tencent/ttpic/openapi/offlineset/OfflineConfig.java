@@ -91,13 +91,18 @@ public class OfflineConfig
   private static List<String> getBenchMarkDeviceList(String paramString)
   {
     sDeviceListFromAsserts = new ArrayList();
-    paramString = paramString + Build.BRAND.toLowerCase() + ".json";
-    if (paramString == null) {}
-    do
-    {
+    String str = Build.BRAND.toLowerCase();
+    if ("honor".equals(Build.BRAND.toLowerCase())) {
+      str = "huawei";
+    }
+    paramString = paramString + str + ".json";
+    if (paramString == null) {
       return null;
-      paramString = FileOfflineUtil.readStringFromAssets(paramString);
-    } while (paramString == null);
+    }
+    paramString = FileOfflineUtil.readStringFromAssets(paramString);
+    if (paramString == null) {
+      return null;
+    }
     paramString = (VLowDeviceModelListJsonBean)GsonUtils.json2Obj(paramString, new OfflineConfig.1().getType());
     if ((paramString != null) && (paramString.modelList != null)) {
       sDeviceListFromAsserts.addAll(paramString.modelList);

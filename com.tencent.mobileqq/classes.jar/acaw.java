@@ -1,66 +1,105 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class acaw
-  extends aywb
+public class acaw
+  extends alsi
 {
-  acaw(acav paramacav) {}
+  public acaw(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, String paramString, azyv paramazyv)
   {
-    int i = paramMessage.what;
-    paramMessage = (ayqo)paramMessage.obj;
-    if (paramMessage == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendMultiPictureHelper", 2, "file is null");
-      }
-    }
+    if (AssociatedAccountActivity.a(this.a, paramString, paramazyv)) {}
     do
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
-        }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessage.p, paramMessage.i, paramMessage.b);
-      } while (this.a.jdField_d_of_type_Boolean);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onPushSubAccountMsg subUin" + paramString);
+      }
+    } while (!paramBoolean);
+    AssociatedAccountActivity.b(this.a, false);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, azyw paramazyw)
+  {
+    if (AssociatedAccountActivity.a(this.a, paramString, paramazyw)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onSubAccountThirdQQUnreadMsgNum mIsFromPull=" + this.a.jdField_b_of_type_Boolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int + " isSuccess=" + paramBoolean + "  mainAccount=" + paramString + "  data=" + paramazyw);
+      }
       if (this.a.jdField_b_of_type_Boolean)
       {
-        if (paramMessage.d == 1005)
-        {
-          this.a.jdField_c_of_type_Boolean = true;
-          return;
-        }
-        if (paramMessage.d == 1003)
-        {
-          this.a.a();
-          return;
-        }
-        acav.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_a_of_type_JavaLangString, paramMessage.b);
+        AssociatedAccountActivity.a(this.a, paramBoolean, false);
         return;
       }
-      if (paramMessage.d == 1003)
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.c = false;
+    } while (!paramBoolean);
+    AssociatedAccountActivity.a(this.a, paramazyw);
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder().append("onSubAccountMsgNumConfirm isSuccess=").append(paramBoolean).append(" subUin=").append(paramString1).append(" set need2ConfirmMsgNum=");
+      if (paramBoolean) {
+        break label157;
+      }
+    }
+    label157:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("AssociatedAccountActivity", 2, paramBoolean + " nextAction=" + paramString2 + " mNeed2ConfirmMsgNum=" + this.a.jdField_b_of_type_Int);
+      if (!"sub.account.switchAccount".equals(paramString2)) {
+        break;
+      }
+      paramString1 = this.a;
+      paramString1.jdField_b_of_type_Int -= 1;
+      if (this.a.jdField_b_of_type_Int <= 0) {
+        AssociatedAccountActivity.b(this.a, false, this.a.jdField_a_of_type_JavaLangString);
+      }
+      if (this.a.jdField_b_of_type_Int >= 0) {
+        break;
+      }
+      this.a.jdField_b_of_type_Int = 0;
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean, String paramString, azyv paramazyv)
+  {
+    if (AssociatedAccountActivity.a(this.a, paramString, paramazyv)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onGetSubAccountMsg subAccount=" + paramString + " mIsFromPull=" + this.a.jdField_b_of_type_Boolean + " isSuccess=" + paramBoolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int);
+      }
+      if (this.a.jdField_b_of_type_Boolean)
       {
-        if (this.a.jdField_a_of_type_Bbgu != null) {
-          this.a.jdField_a_of_type_Bbgu.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
-        }
-        this.a.a();
+        AssociatedAccountActivity.a(this.a, paramBoolean, true);
         return;
       }
-      if (paramMessage.d == 1005)
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.c = false;
+      if ((paramBoolean) && (paramazyv.c))
       {
-        this.a.a();
+        this.a.c();
         return;
       }
-    } while (this.a.jdField_a_of_type_Bbgu == null);
-    this.a.jdField_a_of_type_Bbgu.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
+    } while (!paramBoolean);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acaw
  * JD-Core Version:    0.7.0.1
  */

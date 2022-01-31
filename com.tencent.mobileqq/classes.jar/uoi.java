@@ -1,30 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
 class uoi
-  extends SimpleObserver<Void>
+  extends uoj
 {
-  uoi(uog paramuog, uok paramuok) {}
+  uoi(uoh paramuoh) {}
   
-  public void a(Void paramVoid)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    super.onNext(paramVoid);
-    ved.b("QQStoryTakeVideoHelper", "generate video manifest success.");
-    this.jdField_a_of_type_Uog.a = 2;
-    this.jdField_a_of_type_Uok.a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    ved.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
-    this.jdField_a_of_type_Uog.a = -1;
-    this.jdField_a_of_type_Uok.b();
+    this.a.a.a.e();
+    if (paramBoolean) {
+      this.a.a.a.a(true, paramCommentEntry);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uoi
  * JD-Core Version:    0.7.0.1
  */

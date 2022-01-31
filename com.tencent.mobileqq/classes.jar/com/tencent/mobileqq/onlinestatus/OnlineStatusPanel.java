@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
@@ -36,7 +36,7 @@ public class OnlineStatusPanel
   
   private int a(int paramInt)
   {
-    return actj.a(32.0F, getResources()) * paramInt + actj.a(20.0F, getResources()) * (paramInt - 1) + actj.a(16.0F, getResources());
+    return aekt.a(32.0F, getResources()) * paramInt + aekt.a(20.0F, getResources()) * (paramInt - 1) + aekt.a(16.0F, getResources());
   }
   
   private void b()
@@ -67,9 +67,9 @@ public class OnlineStatusPanel
   public void a(int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter = new OnlineStatusPagerAdapter(BaseApplicationImpl.getContext(), paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131371050));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131371363));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131367697));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131367829));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getLayoutParams();
     localLayoutParams.height = a(paramInt);
@@ -79,7 +79,7 @@ public class OnlineStatusPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusPanel
  * JD-Core Version:    0.7.0.1
  */

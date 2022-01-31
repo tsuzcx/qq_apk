@@ -1,10 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ahfx;
-import ahml;
-import ahqy;
-import amta;
-import amtb;
+import ajdu;
+import ajih;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -29,8 +26,10 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbll;
-import bfol;
+import aokc;
+import aokd;
+import bdkf;
+import bhph;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.mobileqq.activity.Conversation;
@@ -41,7 +40,6 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
-import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.HongBaoResBuilder;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -49,6 +47,7 @@ import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.mobileqq.widget.QQBlurView;
 import com.tencent.mobileqq.widget.QQTabWidget;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.TextHook;
 import com.tencent.widget.ARMapHongBaoListView;
 import com.tencent.widget.ListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -58,14 +57,15 @@ import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
 
 public class MiniAppDesktop
-  implements ahml, bfol, MiniAppPullInterface, BusinessObserver
+  implements ajdu, bhph, MiniAppPullInterface, BusinessObserver
 {
-  private static final int MINI_TRANSLATE = bbll.a(-100.0F);
-  private static final int MINI_TRIGGER_REFRESH_OFFSET = bbll.a(30.0F);
+  private static final int MINI_SEARCH_BAR_HEIGHT = bdkf.a(50.0F);
+  private static final int MINI_TRANSLATE;
+  private static final int MINI_TRIGGER_REFRESH_OFFSET;
   public static final int MODE_IDLE = 1;
   public static final int MODE_REFRESH = 2;
   public static final int MODE_SHOW_NODE = 3;
-  private static final int OFFSET_NODE_SCROLL = bbll.a(-120.0F);
+  private static final int OFFSET_NODE_SCROLL = bdkf.a(-120.0F);
   private static final int OVER_FLING_DISTANCE = 70;
   private static final int RELEASE_ENTER_DESKTOP = 2;
   private static final int RELEASE_ENTER_IDLE = 0;
@@ -79,7 +79,7 @@ public class MiniAppDesktop
   private boolean hasVibrate;
   private WeakReference<Activity> mActivityReference;
   private QQAppInterface mApp;
-  private final ahqy mCareNotificationBar;
+  private final ajih mCareNotificationBar;
   private PullRefreshHeader mChatTopRefresh;
   private MiniAppDesktopLayout mContentView;
   private DrawerFrame mDrawer;
@@ -96,11 +96,17 @@ public class MiniAppDesktop
   private Vibrator mVibrator;
   private int mode = 1;
   private int preMode = 1;
-  private int refreshHeaderHeight = bbll.a(50.0F);
+  private int refreshHeaderHeight = bdkf.b(50.0F);
   private ProgressBar refreshProgressBar;
   private int refreshState = 0;
   private TextView refreshTextView;
   private View refreshView;
+  
+  static
+  {
+    MINI_TRANSLATE = bdkf.a(-100.0F);
+    MINI_TRIGGER_REFRESH_OFFSET = bdkf.a(30.0F);
+  }
   
   public MiniAppDesktop(Activity paramActivity, Conversation paramConversation, ListView paramListView, PullRefreshHeader paramPullRefreshHeader, DrawerFrame paramDrawerFrame, ViewGroup paramViewGroup)
   {
@@ -111,12 +117,12 @@ public class MiniAppDesktop
     this.mRootView = paramViewGroup;
     this.mChatTopRefresh = paramPullRefreshHeader;
     this.mTitleBarView = ((ViewGroup)paramConversation.a());
-    this.mHeadView = ((ViewGroup)paramActivity.findViewById(2131368967));
+    this.mHeadView = ((ViewGroup)paramActivity.findViewById(2131369197));
     this.mQQTabWidget = ((QQTabWidget)paramActivity.findViewById(16908307));
-    this.mQQBlurView = ((QQBlurView)paramActivity.findViewById(2131378810));
+    this.mQQBlurView = ((QQBlurView)paramActivity.findViewById(2131379430));
     this.mListViewContainer = ((ViewGroup)paramConversation.b());
-    this.mCareNotificationBar = paramConversation.jdField_a_of_type_Ahqy;
-    this.mTriggerFullScreenScrollY = amtb.a(OFFSET_NODE_SCROLL);
+    this.mCareNotificationBar = paramConversation.jdField_a_of_type_Ajih;
+    this.mTriggerFullScreenScrollY = aokd.a(OFFSET_NODE_SCROLL);
   }
   
   private void animateOpen()
@@ -133,9 +139,9 @@ public class MiniAppDesktop
         ((MiniAppExposureManager)this.mApp.getManager(322)).clear();
       }
       this.hasOpenDesktop = true;
-      i = bbll.b(50.0F);
+      i = this.refreshHeaderHeight;
       int j = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
-      float f = bbll.a();
+      float f = bdkf.a();
       i = (int)(i + j + 0.1333333F * f);
       ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mTitleBarView, "translationY", new float[] { -i });
       localObjectAnimator1.setInterpolator(new AccelerateInterpolator());
@@ -161,7 +167,7 @@ public class MiniAppDesktop
   {
     if (this.mTitleBarView != null)
     {
-      View localView = this.mTitleBarView.findViewById(2131372760);
+      View localView = this.mTitleBarView.findViewById(2131373116);
       if (localView != null) {
         localView.setVisibility(0);
       }
@@ -199,9 +205,8 @@ public class MiniAppDesktop
       label129:
       if (paramFloat < -this.refreshHeaderHeight)
       {
-        f2 = -getDefaultTranslation() - (this.refreshHeaderHeight + paramFloat);
-        f1 = f2;
-        if (f2 > 0.0F) {
+        f1 = -getDefaultTranslation() - (this.refreshHeaderHeight + paramFloat);
+        if ((f1 > 0.0F) || (this.hasOpenDesktop)) {
           f1 = 0.0F;
         }
         this.mMiniAppListLayout.setTranslationY(f1);
@@ -243,21 +248,13 @@ public class MiniAppDesktop
   
   private int getDefaultTranslation()
   {
-    boolean bool1 = ((DesktopDataManager)this.mApp.getManager(336)).hasPullSearchData();
-    ahfx localahfx = (ahfx)this.mApp.getManager(342);
-    boolean bool2 = localahfx.h();
+    boolean bool = ((DesktopDataManager)this.mApp.getManager(336)).hasPullSearchData();
     int j = getTitleBarAndStatusBarHeight() + this.refreshHeaderHeight;
     int i = j;
-    if (bool1) {
-      i = j + bbll.b(50.0F);
+    if (bool) {
+      i = j + MINI_SEARCH_BAR_HEIGHT;
     }
-    if (bool2) {
-      i = localahfx.a() + i;
-    }
-    for (;;)
-    {
-      return i + dittoBannerHeight;
-    }
+    return i + dittoBannerHeight;
   }
   
   private int getListViewScrollY()
@@ -270,7 +267,7 @@ public class MiniAppDesktop
     int j = this.mTitleBarView.getHeight();
     int i = j;
     if (j == 0) {
-      i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298865) + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
+      i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298914) + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
     }
     return i;
   }
@@ -379,9 +376,9 @@ public class MiniAppDesktop
       Object localObject = (Activity)this.mActivityReference.get();
       if (localObject != null)
       {
-        int i = ((Activity)localObject).getResources().getColor(2131166931);
+        int i = ((Activity)localObject).getResources().getColor(2131166979);
         this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-        localObject = (TextView)this.mChatTopRefresh.findViewById(2131375055);
+        localObject = (TextView)this.mChatTopRefresh.findViewById(2131375536);
         if (localObject != null) {
           ((TextView)localObject).setTextColor(i);
         }
@@ -401,10 +398,10 @@ public class MiniAppDesktop
       Object localObject = (Activity)this.mActivityReference.get();
       if (localObject != null)
       {
-        this.mListView.setOverscrollHeader(((Activity)localObject).getResources().getDrawable(2130849717));
-        int i = ((Activity)localObject).getResources().getColor(2131166931);
+        this.mListView.setOverscrollHeader(((Activity)localObject).getResources().getDrawable(2130850187));
+        int i = ((Activity)localObject).getResources().getColor(2131166979);
         this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-        localObject = (TextView)this.mChatTopRefresh.findViewById(2131375055);
+        localObject = (TextView)this.mChatTopRefresh.findViewById(2131375536);
         if (localObject != null) {
           ((TextView)localObject).setTextColor(i);
         }
@@ -426,7 +423,7 @@ public class MiniAppDesktop
   
   private void setRefreshLayoutVisible(boolean paramBoolean)
   {
-    View localView = this.mChatTopRefresh.findViewById(2131375051);
+    View localView = this.mChatTopRefresh.findViewById(2131375532);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -464,130 +461,43 @@ public class MiniAppDesktop
   
   private void updateRefreshTheme()
   {
-    Object localObject1 = null;
-    for (;;)
+    try
     {
-      try
+      if (this.refreshView != null) {
+        this.refreshView.setBackgroundResource(2130838592);
+      }
+      if (this.refreshProgressBar != null)
       {
-        if (this.mApp != null) {
-          localObject1 = (ahfx)this.mApp.getManager(342);
-        }
-        int i;
-        if ((localObject1 != null) && (((ahfx)localObject1).h()))
+        localObject = (Activity)this.mActivityReference.get();
+        if (localObject != null)
         {
-          localObject1 = ((ahfx)localObject1).a();
-          Object localObject2 = (DesktopDataManager)this.mApp.getManager(336);
-          if (((DesktopDataManager)localObject2).getHongBaoResBuilder() != null)
-          {
-            localObject1 = ((DesktopDataManager)localObject2).getHongBaoResBuilder();
-            if (localObject1 == null) {
-              break;
-            }
-            if ((((DesktopDataManager.HongBaoResBuilder)localObject1).getFullScreenRefreshBgColor() != 2147483647) && (this.refreshView != null)) {
-              this.refreshView.setBackgroundColor(((DesktopDataManager.HongBaoResBuilder)localObject1).getFullScreenRefreshBgColor());
-            }
-            if ((((DesktopDataManager.HongBaoResBuilder)localObject1).getRefreshProgressResId() != -1) && (this.refreshProgressBar != null))
-            {
-              localObject2 = (Activity)this.mActivityReference.get();
-              if (localObject2 != null)
-              {
-                localObject2 = ((Activity)localObject2).getResources().getDrawable(((DesktopDataManager.HongBaoResBuilder)localObject1).getRefreshProgressResId());
-                ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getMinimumWidth(), ((Drawable)localObject2).getMinimumHeight());
-                this.refreshProgressBar.setIndeterminateDrawable((Drawable)localObject2);
-              }
-            }
-            if ((((DesktopDataManager.HongBaoResBuilder)localObject1).getRefreshTextColor() != 2147483647) && (this.mChatTopRefresh != null))
-            {
-              i = ((DesktopDataManager.HongBaoResBuilder)localObject1).getRefreshTextColor();
-              this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-              localObject2 = (TextView)this.mChatTopRefresh.findViewById(2131375055);
-              if (localObject2 != null) {
-                ((TextView)localObject2).setTextColor(i);
-              }
-            }
-            if ((((DesktopDataManager.HongBaoResBuilder)localObject1).getRefreshArrowColor() == -1) || (this.mChatTopRefresh == null)) {
-              break;
-            }
-            this.mChatTopRefresh.setArrowColor(((DesktopDataManager.HongBaoResBuilder)localObject1).getRefreshArrowColor());
-          }
-        }
-        else
-        {
-          if (this.refreshView != null) {
-            this.refreshView.setBackgroundResource(2130838515);
-          }
-          if (this.refreshProgressBar != null)
-          {
-            localObject1 = (Activity)this.mActivityReference.get();
-            if (localObject1 != null)
-            {
-              localObject1 = ((Activity)localObject1).getResources().getDrawable(2130839144);
-              ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getMinimumWidth(), ((Drawable)localObject1).getMinimumHeight());
-              this.refreshProgressBar.setIndeterminateDrawable((Drawable)localObject1);
-            }
-          }
-          if (this.mChatTopRefresh != null) {
-            this.mChatTopRefresh.setArrowColor(0);
-          }
-          localObject1 = (Activity)this.mActivityReference.get();
-          if (localObject1 == null) {
-            break;
-          }
-          i = ((Activity)localObject1).getResources().getColor(2131166931);
-          this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-          return;
+          localObject = ((Activity)localObject).getResources().getDrawable(2130839228);
+          ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getMinimumWidth(), ((Drawable)localObject).getMinimumHeight());
+          this.refreshProgressBar.setIndeterminateDrawable((Drawable)localObject);
         }
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("MiniAppDesktop", 1, "updateRefreshTheme error.", localThrowable);
-        return;
+      if (this.mChatTopRefresh != null) {
+        this.mChatTopRefresh.setArrowColor(0);
       }
+      Object localObject = (Activity)this.mActivityReference.get();
+      if (localObject != null)
+      {
+        int i = ((Activity)localObject).getResources().getColor(2131166979);
+        this.mChatTopRefresh.setTextColor(i, i, i, i, i);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("MiniAppDesktop", 1, "updateRefreshTheme error.", localThrowable);
     }
   }
   
   private void updateStatusTextColorByHongbao()
   {
-    Object localObject;
-    if (this.mApp != null)
-    {
-      localObject = (ahfx)this.mApp.getManager(342);
+    if (this.mApp != null) {
       DesktopDataManager localDesktopDataManager = (DesktopDataManager)this.mApp.getManager(336);
-      if ((localObject != null) && (((ahfx)localObject).h()))
-      {
-        if (localDesktopDataManager.getHongBaoResBuilder() == null) {
-          break label92;
-        }
-        QLog.d("MiniAppDesktop", 2, "updateStatusTextColorByHongbao - set dart false");
-        localObject = (Activity)this.mActivityReference.get();
-        if (localObject != null)
-        {
-          ImmersiveUtils.a(false, ((Activity)localObject).getWindow());
-          this.hasSetStatusBar = true;
-        }
-      }
     }
-    label91:
-    label92:
-    do
-    {
-      do
-      {
-        do
-        {
-          break label91;
-          do
-          {
-            return;
-          } while ((!this.hasSetStatusBar) || (!this.hasOpenDesktop));
-          QLog.d("MiniAppDesktop", 2, "updateStatusTextColorByHongbao - reser color.");
-        } while ((!ThemeUtil.isDefaultTheme()) && (!ThemeUtil.isGoldenTheme()) && (!DisplayUtil.isWhiteModeTheme()) && (!DisplayUtil.isSimpleThemeAndStatusBarOfWhite(ThemeUtil.getCurrentThemeId())));
-        localObject = (Activity)this.mActivityReference.get();
-      } while (localObject == null);
-      ImmersiveUtils.a(true, ((Activity)localObject).getWindow());
-      this.hasSetStatusBar = true;
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniAppDesktop", 2, "animateOpen, set status bar text color.");
   }
   
   public int getMode()
@@ -679,20 +589,20 @@ public class MiniAppDesktop
       this.mMiniAppListLayout = this.mContentView.getContainerView();
       this.mApp.registObserver(this);
       this.mApp.addObserver(new MiniAppDesktop.RedDotAppletsObserver(this.mContentView));
-      this.refreshHeaderHeight = paramActivity.getResources().getDimensionPixelSize(2131298637);
+      this.refreshHeaderHeight = paramActivity.getResources().getDimensionPixelSize(2131298665);
       Object localObject = new RelativeLayout.LayoutParams(-1, DisplayUtil.getScreenHeight(paramActivity));
       this.mContentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = (ViewGroup)this.mChatTopRefresh.findViewById(2131370214);
+      localObject = (ViewGroup)this.mChatTopRefresh.findViewById(2131370482);
       ((ViewGroup)localObject).addView(this.mContentView);
-      this.refreshView = this.mChatTopRefresh.findViewById(2131375051);
+      this.refreshView = this.mChatTopRefresh.findViewById(2131375532);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.refreshView.getLayoutParams();
       localLayoutParams.addRule(12);
       this.refreshView.setLayoutParams(localLayoutParams);
       ((ViewGroup)localObject).setVisibility(0);
-      this.refreshView.setBackgroundResource(2130838515);
+      this.refreshView.setBackgroundResource(2130838592);
       this.mListView.setOverScrollHeight(this.refreshHeaderHeight + MINI_TRIGGER_REFRESH_OFFSET);
-      this.refreshProgressBar = ((ProgressBar)this.mChatTopRefresh.findViewById(2131375056));
-      this.refreshTextView = ((TextView)this.mChatTopRefresh.findViewById(2131375055));
+      this.refreshProgressBar = ((ProgressBar)this.mChatTopRefresh.findViewById(2131375537));
+      this.refreshTextView = ((TextView)this.mChatTopRefresh.findViewById(2131375536));
       this.mListView.setMaxOverScrollTopDistance(70);
       this.mListView.setOverScrollTouchMode(1);
       this.mListView.setQQStoryListViewListener(this);
@@ -732,9 +642,9 @@ public class MiniAppDesktop
     this.mApp.unRegistObserver(this);
     this.mApp = paramQQAppInterface;
     boolean bool = false;
-    Object localObject = amtb.a();
+    Object localObject = aokd.a();
     if (localObject != null) {
-      bool = ((amta)localObject).a();
+      bool = ((aokc)localObject).a();
     }
     QLog.d("MiniAppDesktop", 1, "[MiniAppDesktop].onAccountChanged: " + bool);
     if ((!bool) && (this.mChatTopRefresh != null) && (this.mContentView != null))
@@ -780,6 +690,8 @@ public class MiniAppDesktop
   {
     this.mContentView.onPostThemeChanged();
     updateRefreshTheme();
+    TextHook.updateFont(this.mContentView);
+    TextHook.updateFont(this.refreshTextView);
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
@@ -869,6 +781,7 @@ public class MiniAppDesktop
   
   public void onTouchMoving(ARMapHongBaoListView paramARMapHongBaoListView, boolean paramBoolean, MotionEvent paramMotionEvent)
   {
+    paramBoolean = true;
     float f = paramARMapHongBaoListView.getScrollY();
     switch (paramMotionEvent.getAction() & 0xFF)
     {
@@ -893,7 +806,7 @@ public class MiniAppDesktop
         if ((f <= -(this.refreshHeaderHeight + MINI_TRIGGER_REFRESH_OFFSET)) && (f > this.mTriggerFullScreenScrollY)) {
           if (this.refreshState != 1)
           {
-            this.refreshTextView.setText(2131719804);
+            this.refreshTextView.setText(2131720330);
             this.refreshState = 1;
           }
         }
@@ -911,7 +824,7 @@ public class MiniAppDesktop
         {
           if (this.refreshState != 2)
           {
-            this.refreshTextView.setText(2131694280);
+            this.refreshTextView.setText(2131694419);
             this.refreshState = 2;
           }
         }
@@ -929,37 +842,27 @@ public class MiniAppDesktop
     {
       this.mode = 1;
       paramARMapHongBaoListView.mForStory = false;
-      label291:
-      if ((this.preMode == 1) && (this.mode == 3) && (this.mApp != null)) {
-        ((ahfx)this.mApp.getManager(342)).d();
-      }
-      if ((this.preMode == 3) || (this.mode != 3)) {
-        break label578;
+      if (((this.preMode == 1) && (this.mode == 3)) && ((this.preMode == 3) || (this.mode != 3))) {
+        break label527;
       }
       animateOpen();
       MiniAppUtils.checkMiniAppDesktopSendRequest();
-      label353:
+      label334:
       if (this.mCareNotificationBar.a() != paramARMapHongBaoListView.mForStory)
       {
         this.mCareNotificationBar.a(paramARMapHongBaoListView.mForStory);
         this.mCareNotificationBar.b();
       }
       if (paramARMapHongBaoListView.mForStory) {
-        break label605;
+        break label554;
       }
     }
-    label578:
-    label605:
-    for (paramBoolean = true;; paramBoolean = false)
+    for (;;)
     {
       setRefreshLayoutVisible(paramBoolean);
       QLog.d("MiniAppDesktop", 2, "fight...onTouchMoving.onUp..scrollY = " + f);
       this.hasVibrate = false;
       this.refreshState = 0;
-      if ((f >= 0.0F) || (this.mApp == null)) {
-        break;
-      }
-      ((ahfx)this.mApp.getManager(342)).c();
       return;
       if (paramARMapHongBaoListView.mForStory)
       {
@@ -967,36 +870,39 @@ public class MiniAppDesktop
         {
           this.mode = 1;
           paramARMapHongBaoListView.mForStory = false;
-          break label291;
+          break;
         }
         this.mode = 3;
         paramARMapHongBaoListView.mForStory = true;
-        break label291;
+        break;
       }
       if (f <= this.mTriggerFullScreenScrollY)
       {
         this.mode = 3;
         paramARMapHongBaoListView.mForStory = true;
-        break label291;
+        break;
       }
       if (f <= -(this.refreshHeaderHeight + MINI_TRIGGER_REFRESH_OFFSET))
       {
         this.mode = 2;
         paramARMapHongBaoListView.mForStory = false;
-        break label291;
+        break;
       }
       this.mode = 1;
       paramARMapHongBaoListView.mForStory = false;
-      break label291;
+      break;
+      label527:
       if (this.mode != 1) {
-        break label353;
+        break label334;
       }
       resetAnimationStatus();
       if (this.preMode != 3) {
-        break label353;
+        break label334;
       }
       MiniAppDesktopLayout.exposureReport(true);
-      break label353;
+      break label334;
+      label554:
+      paramBoolean = false;
     }
   }
   
@@ -1031,7 +937,7 @@ public class MiniAppDesktop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop
  * JD-Core Version:    0.7.0.1
  */

@@ -30,23 +30,28 @@ public class PTSThreadUtil
   
   public static void runOnSubThread(Runnable paramRunnable)
   {
-    if (paramRunnable == null) {
-      return;
-    }
-    if (sSubThreadHandler == null) {}
-    try
+    if (paramRunnable == null) {}
+    for (;;)
     {
-      if (sSubThreadHandler == null)
-      {
-        HandlerThread localHandlerThread = new HandlerThread("readinjoy-common-pts-sub");
-        localHandlerThread.start();
-        sSubThreadHandler = new Handler(localHandlerThread.getLooper());
-      }
-      sSubThreadHandler.post(paramRunnable);
-      PTSLog.i("PTSThreadUtil", "[runOnSubThread], callStack = " + Log.getStackTraceString(new Throwable()));
       return;
+      if (sSubThreadHandler == null) {}
+      try
+      {
+        if (sSubThreadHandler == null)
+        {
+          HandlerThread localHandlerThread = new HandlerThread("readinjoy-common-pts-sub");
+          localHandlerThread.start();
+          sSubThreadHandler = new Handler(localHandlerThread.getLooper());
+        }
+        sSubThreadHandler.post(paramRunnable);
+        if ((!PTSLog.isDebug()) && (!PTSLog.isColorLevel())) {
+          continue;
+        }
+        PTSLog.i("PTSThreadUtil", "[runOnSubThread], callStack = " + Log.getStackTraceString(new Throwable()));
+        return;
+      }
+      finally {}
     }
-    finally {}
   }
   
   public static void runOnUIThread(Runnable paramRunnable)
@@ -64,7 +69,7 @@ public class PTSThreadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.core.PTSThreadUtil
  * JD-Core Version:    0.7.0.1
  */

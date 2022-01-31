@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
 class BaseChatPie$43
   implements Runnable
 {
-  BaseChatPie$43(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$43(BaseChatPie paramBaseChatPie, MessageForShakeWindow paramMessageForShakeWindow) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 8);
+    this.this$0.at();
+    this.this$0.a.a(this.a.frienduin, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.43
  * JD-Core Version:    0.7.0.1
  */

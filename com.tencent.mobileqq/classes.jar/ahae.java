@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-public class ahae
+class ahae
+  implements View.OnClickListener
 {
-  public int a;
-  public BaseHbFragment a;
-  public String a;
+  ahae(ahad paramahad) {}
   
-  public ahae(int paramInt, String paramString, BaseHbFragment paramBaseHbFragment)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment = paramBaseHbFragment;
+    paramView = (RecommendTroopItem)paramView.getTag(-1);
+    bclo.a(ahad.a(this.a), paramView, this.a.a());
+    this.a.b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahae
  * JD-Core Version:    0.7.0.1
  */

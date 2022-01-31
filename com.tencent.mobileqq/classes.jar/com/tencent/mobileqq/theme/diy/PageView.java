@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme.diy;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -46,14 +46,14 @@ public class PageView
   {
     this.pageIndex = paramInt1;
     this.mData = paramThemeDIYData;
-    this.mRLayout = ((RelativeLayout)super.findViewById(2131369031));
+    this.mRLayout = ((RelativeLayout)super.findViewById(2131369261));
     paramThemeDIYData = (RelativeLayout.LayoutParams)this.mRLayout.getLayoutParams();
     paramThemeDIYData.width = paramInt2;
     paramThemeDIYData.height = paramInt3;
     this.pich = paramInt3;
     this.picw = paramInt2;
-    this.mUserBgView = super.findViewById(2131378746);
-    this.mMaskColor = super.findViewById(2131369804);
+    this.mUserBgView = super.findViewById(2131379364);
+    this.mMaskColor = super.findViewById(2131370068);
     if (this.mData.orgMarkColor == 0) {
       if (this.mMaskColor.getParent() != null)
       {
@@ -63,7 +63,7 @@ public class PageView
     }
     for (;;)
     {
-      this.mShotView = super.findViewById(2131376090);
+      this.mShotView = super.findViewById(2131376589);
       return;
       this.mMaskColor.setBackgroundColor(super.getResources().getColor(this.mData.orgMarkColor));
     }
@@ -71,7 +71,7 @@ public class PageView
   
   void setProgressBar(boolean paramBoolean)
   {
-    Object localObject = this.mRLayout.findViewById(2131362147);
+    Object localObject = this.mRLayout.findViewById(2131362155);
     if (localObject != null)
     {
       localObject = (ProgressBar)localObject;
@@ -92,9 +92,9 @@ public class PageView
         break;
       } while (localObject != null);
       localObject = new ProgressBar(super.getContext());
-      ((ProgressBar)localObject).setId(2131362147);
-      ((ProgressBar)localObject).setIndeterminateDrawable(super.getResources().getDrawable(2130839140));
-      int i = actj.a(16.0F, super.getResources());
+      ((ProgressBar)localObject).setId(2131362155);
+      ((ProgressBar)localObject).setIndeterminateDrawable(super.getResources().getDrawable(2130839224));
+      int i = aekt.a(16.0F, super.getResources());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
       localLayoutParams.bottomMargin = i;
       localLayoutParams.leftMargin = i;
@@ -234,7 +234,7 @@ public class PageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.PageView
  * JD-Core Version:    0.7.0.1
  */

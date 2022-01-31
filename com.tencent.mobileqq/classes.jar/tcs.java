@@ -1,372 +1,387 @@
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import mqq.app.AppRuntime;
+import NS_KING_SOCIALIZE_META.stMetaComment;
+import NS_KING_SOCIALIZE_META.stMetaReply;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentView;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.subscribe.comment.MoreCommentPanel;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class tcs
-  extends tbx
+  extends BaseAdapter
 {
-  public static String a;
-  public static String b = a(-128);
-  public static String c = "key_last_get_config_time";
-  private long a;
-  public tco a;
+  public static int a;
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private List<stMetaComment> jdField_a_of_type_JavaUtilList;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  private yde jdField_a_of_type_Yde;
+  private String jdField_b_of_type_JavaLangString = "focus";
+  HashSet<Integer> jdField_b_of_type_JavaUtilHashSet = new HashSet();
+  private String c;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "key_get_video_source_tag_config_time";
+    jdField_a_of_type_Int = 1;
   }
   
-  public tcs()
+  public tcs(Context paramContext, yde paramyde)
   {
-    this.jdField_a_of_type_Tco = ((tco)sxm.a(tco.class, new Object[0]));
-    super.a(BaseApplicationImpl.getApplication());
-  }
-  
-  public static String a(int paramInt)
-  {
-    return "qqstory_config_version_of_type__" + paramInt;
-  }
-  
-  public static void a(int paramInt)
-  {
-    ((tcs)tcz.a(10)).b("follow_capture_guide_count", Integer.valueOf(paramInt));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return ((Integer)((tcs)tcz.a(10)).b("integer_show_follow_capture_tip" + paramString, Integer.valueOf(0))).intValue() == 0;
-  }
-  
-  public static String b()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime().getAccount();
-  }
-  
-  public static int c()
-  {
-    return ((Integer)((tcs)tcz.a(10)).b("int_upload_video_size_limit", Integer.valueOf(5120))).intValue() * 1024;
-  }
-  
-  public static void c(boolean paramBoolean)
-  {
-    ved.a("Q.qqstory.config.StoryConfigManager", "setShowSyncToQzone :%s", Boolean.valueOf(paramBoolean));
-    tcs localtcs = (tcs)tcz.a(10);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (this.jdField_a_of_type_JavaUtilList == null)
     {
-      localtcs.b("integer_show_sync_to_qzone_btn", Integer.valueOf(i));
-      if (!paramBoolean) {
-        localtcs.b("integer_enable_sync_to_qzone", Integer.valueOf(-1));
-      }
+      tlo.a("comment", "create mComments ...");
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Yde = paramyde;
+      this.jdField_a_of_type_JavaUtilMap = new HashMap();
       return;
+      tlo.a("comment", "复用 mComments ...");
     }
   }
   
-  public static boolean c()
+  public int a(stMetaComment paramstMetaComment)
   {
-    return ((Boolean)((tcs)tcz.a(10)).b("boolean_enable_cq_mode", Boolean.valueOf(true))).booleanValue();
-  }
-  
-  public static int d()
-  {
-    return ((Integer)((tcs)tcz.a(10)).b("int_high_bitrate", Integer.valueOf(3000))).intValue() * 1000;
-  }
-  
-  public static String d()
-  {
-    return (String)((tcs)tcz.a(10)).c("follow_capture_config", "");
-  }
-  
-  public static void d()
-  {
-    ((tcs)tcz.a(10)).b("integer_show_sync_to_qzone_tip", Integer.valueOf(1));
-  }
-  
-  public static void d(boolean paramBoolean)
-  {
-    ved.a("Q.qqstory.config.StoryConfigManager", "setSyncToQzone :%s", Boolean.valueOf(paramBoolean));
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if ((paramstMetaComment != null) && (!TextUtils.isEmpty(paramstMetaComment.id)))
     {
-      ((tcs)tcz.a(10)).b("integer_enable_sync_to_qzone", Integer.valueOf(i));
-      return;
+      this.jdField_a_of_type_JavaUtilMap.put(paramstMetaComment.id, Integer.valueOf(3));
+      notifyDataSetChanged();
+      return 3;
+    }
+    return -1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilMap.clear();
+  }
+  
+  public void a(int paramInt, stMetaComment paramstMetaComment)
+  {
+    tlo.d("comment", "addComment ...2");
+    if ((paramstMetaComment != null) && (paramInt <= this.jdField_a_of_type_JavaUtilList.size())) {
+      this.jdField_a_of_type_JavaUtilList.add(paramInt, paramstMetaComment);
     }
   }
   
-  public static boolean d()
+  public void a(stMetaComment paramstMetaComment)
   {
-    if (Build.VERSION.SDK_INT < 24) {
-      return false;
-    }
-    return ((Boolean)((tcs)tcz.a(10)).b("boolean_need_high_profile", Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public static int e()
-  {
-    return ((Integer)((tcs)tcz.a(10)).b("follow_capture_guide_count", Integer.valueOf(0))).intValue();
-  }
-  
-  public static String e()
-  {
-    return (String)((tcs)tcz.a(10)).b("key_take_video_node_config", "");
-  }
-  
-  public static void e()
-  {
-    ((tcs)tcz.a(10)).c("follow_capture_config");
-  }
-  
-  public static void e(String paramString)
-  {
-    ((tcs)tcz.a(10)).b("integer_show_follow_capture_tip" + paramString, Integer.valueOf(1));
-  }
-  
-  public static void e(boolean paramBoolean)
-  {
-    ved.a("Q.qqstory.config.StoryConfigManager", "setSyncToQzoneDefaultValue :%s", Boolean.valueOf(paramBoolean));
-    tcs localtcs = (tcs)tcz.a(10);
-    if (((Integer)localtcs.b("integer_enable_sync_to_qzone", Integer.valueOf(-1))).intValue() == -1)
+    Integer localInteger;
+    if ((paramstMetaComment != null) && (!TextUtils.isEmpty(paramstMetaComment.id)))
     {
-      ved.b("Q.qqstory.config.StoryConfigManager", "setSyncToQzoneDefaultValue work");
-      if (!paramBoolean) {
-        break label64;
+      localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramstMetaComment.id);
+      if (localInteger == null) {
+        break label66;
       }
     }
-    label64:
-    for (int i = 1;; i = 0)
+    label66:
+    for (int i = localInteger.intValue() + 10;; i = 10)
     {
-      localtcs.b("integer_enable_sync_to_qzone", Integer.valueOf(i));
+      this.jdField_a_of_type_JavaUtilMap.put(paramstMetaComment.id, Integer.valueOf(i));
+      notifyDataSetChanged();
       return;
     }
   }
   
-  public static boolean e()
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    return false;
-  }
-  
-  public static String f()
-  {
-    return (String)((tcs)tcz.a(10)).b("key_story_album_config", "");
-  }
-  
-  public static void f(String paramString)
-  {
-    ((tcs)tcz.a(10)).c("follow_capture_config", paramString);
-  }
-  
-  public static void f(boolean paramBoolean)
-  {
-    ((tcs)tcz.a(10)).b("key_take_video_node_config_clicked", Boolean.valueOf(paramBoolean));
-  }
-  
-  public static boolean f()
-  {
-    int i = ((Integer)((tcs)tcz.a(10)).b("integer_show_sync_to_qzone_btn", Integer.valueOf(0))).intValue();
-    ved.a("Q.qqstory.config.StoryConfigManager", "isShowSyncToQzone :%d", Integer.valueOf(i));
-    return i == 1;
-  }
-  
-  public static String g()
-  {
-    return (String)((tcs)tcz.a(10)).b("key_story_home_album_entra_confg", "");
-  }
-  
-  public static void g(String paramString)
-  {
-    ((tcs)tcz.a(10)).b("key_take_video_node_config", paramString);
-  }
-  
-  public static void g(boolean paramBoolean)
-  {
-    ((tcs)tcz.a(10)).b("key_qa_entrance", Boolean.valueOf(paramBoolean));
-  }
-  
-  public static boolean g()
-  {
-    int i = ((Integer)((tcs)tcz.a(10)).b("integer_enable_sync_to_qzone", Integer.valueOf(-1))).intValue();
-    ved.a("Q.qqstory.config.StoryConfigManager", "isSyncToQzone :%s", Integer.valueOf(i));
-    return i == 1;
-  }
-  
-  public static String h()
-  {
-    return (String)((tcs)tcz.a(10)).c("thumbnail_config", "");
-  }
-  
-  public static void h(String paramString)
-  {
-    ((tcs)tcz.a(10)).b("key_story_album_config", paramString);
-  }
-  
-  public static boolean h()
-  {
-    return ((Integer)((tcs)tcz.a(10)).b("integer_show_sync_to_qzone_tip", Integer.valueOf(0))).intValue() == 0;
-  }
-  
-  public static void i(String paramString)
-  {
-    ((tcs)tcz.a(10)).b("key_story_home_album_entra_confg", paramString);
-  }
-  
-  public static boolean i()
-  {
-    tcs localtcs = (tcs)tcz.a(10);
-    if (((Integer)localtcs.b("sp_key_user_first_enter_album", Integer.valueOf(-1))).intValue() == -1)
+    if (paramstSimpleMetaFeed != null)
     {
-      localtcs.b("sp_key_user_first_enter_album", Integer.valueOf(0));
-      return true;
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
+      this.c = paramstSimpleMetaFeed.id;
     }
-    return false;
   }
   
-  public static void j(String paramString)
+  public void a(String paramString)
   {
-    ((tcs)tcz.a(10)).c("thumbnail_config", paramString);
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public static boolean j()
+  public void a(String paramString, stMetaReply paramstMetaReply)
   {
-    return ((Boolean)((tcs)tcz.a(10)).b("key_take_video_node_config_clicked", Boolean.valueOf(false))).booleanValue();
+    tlo.d("comment", "addCommentReply :" + paramstMetaReply.wording + ",mComments size:" + this.jdField_a_of_type_JavaUtilList.size());
+    if ((!TextUtils.isEmpty(paramString)) && (paramstMetaReply != null))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        stMetaComment localstMetaComment = (stMetaComment)localIterator.next();
+        if (paramString.equals(localstMetaComment.id)) {
+          localstMetaComment.replyList.add(0, paramstMetaReply);
+        }
+      }
+    }
   }
   
-  public int a()
+  public boolean a(String paramString)
   {
-    return ((Integer)b("qqstory_black_status", Integer.valueOf(0))).intValue();
+    boolean bool2 = false;
+    tlo.d("comment", "removeComment ...");
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i >= 0)
+      {
+        if (!paramString.equals(((stMetaComment)this.jdField_a_of_type_JavaUtilList.get(i)).id)) {
+          break label95;
+        }
+        if (this.jdField_a_of_type_JavaUtilList.remove(i) == null) {
+          break label90;
+        }
+      }
+      label90:
+      for (bool1 = true;; bool1 = false)
+      {
+        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+        return bool1;
+      }
+      label95:
+      i -= 1;
+    }
   }
   
-  public long a()
+  public boolean a(String paramString, stMetaComment paramstMetaComment)
   {
-    return ((Long)b("recent_story_refresh_time", Long.valueOf(0L))).longValue();
+    boolean bool2 = false;
+    tlo.d("comment", "updateComment ...");
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i >= 0)
+      {
+        if (!paramString.equals(((stMetaComment)this.jdField_a_of_type_JavaUtilList.get(i)).id)) {
+          break label90;
+        }
+        if (this.jdField_a_of_type_JavaUtilList.set(i, paramstMetaComment) == null) {
+          break label84;
+        }
+      }
+      label84:
+      for (bool1 = true;; bool1 = false) {
+        return bool1;
+      }
+      label90:
+      i -= 1;
+    }
   }
   
-  public String a()
+  public boolean a(String paramString1, String paramString2)
   {
-    return (String)b("qqstory_retry_proto_list", "");
+    boolean bool2 = false;
+    tlo.d("comment", "removeCommentReply ...");
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        stMetaComment localstMetaComment;
+        do
+        {
+          bool1 = bool2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localstMetaComment = (stMetaComment)localIterator.next();
+        } while (!paramString1.equals(localstMetaComment.id));
+        i = localstMetaComment.replyList.size() - 1;
+        if (i < 0) {
+          break label149;
+        }
+        if (!paramString2.equals(((stMetaReply)localstMetaComment.replyList.get(i)).id)) {
+          break label142;
+        }
+        if (localstMetaComment.replyList.remove(i) == null) {
+          break label136;
+        }
+        bool1 = true;
+      }
+    }
+    for (;;)
+    {
+      return bool1;
+      label136:
+      bool1 = false;
+      continue;
+      label142:
+      i -= 1;
+      break;
+      label149:
+      bool1 = false;
+    }
   }
   
-  public void a(long paramLong)
+  public boolean a(String paramString1, String paramString2, stMetaReply paramstMetaReply)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    boolean bool2 = false;
+    tlo.d("comment", "updateCommentReply ............. mComments.size:" + this.jdField_a_of_type_JavaUtilList.size());
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramstMetaReply.id))
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        stMetaComment localstMetaComment;
+        do
+        {
+          bool1 = bool2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localstMetaComment = (stMetaComment)localIterator.next();
+        } while (!paramString1.equals(localstMetaComment.id));
+        i = localstMetaComment.replyList.size() - 1;
+        if (i < 0) {
+          break label184;
+        }
+        if (!paramString2.equals(((stMetaReply)localstMetaComment.replyList.get(i)).id)) {
+          break label175;
+        }
+        if (localstMetaComment.replyList.set(i, paramstMetaReply) == null) {
+          break label169;
+        }
+        bool1 = true;
+      }
+    }
+    for (;;)
+    {
+      return bool1;
+      label169:
+      bool1 = false;
+      continue;
+      label175:
+      i -= 1;
+      break;
+      label184:
+      bool1 = false;
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a(Collection<stMetaComment> paramCollection)
   {
-    b("has_show_play_guide_vertical", Boolean.valueOf(paramBoolean));
-  }
-  
-  public boolean a()
-  {
-    return ((Boolean)b("has_show_play_guide_vertical", Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public boolean a(int paramInt, Intent paramIntent, ConfigurationService.Config paramConfig)
-  {
-    return this.jdField_a_of_type_Tco.a(paramInt, paramIntent, paramConfig);
-  }
-  
-  public int b()
-  {
-    return bbkb.a(QQStoryContext.a().a(), b, QQStoryContext.a().a());
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public <V> V b(@NonNull String paramString, @NonNull V paramV)
-  {
-    return super.a(paramString + "_" + b(), paramV);
-  }
-  
-  public void b(long paramLong)
-  {
-    c(c, Long.valueOf(paramLong));
+    boolean bool = false;
+    if (paramCollection != null) {
+      bool = this.jdField_a_of_type_JavaUtilList.addAll(paramCollection);
+    }
+    return bool;
   }
   
   public void b(String paramString)
   {
-    b("qqstory_retry_proto_list", paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public <V> void b(@NonNull String paramString, @NonNull V paramV)
+  public int getCount()
   {
-    super.a(paramString + "_" + b(), paramV);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void b(boolean paramBoolean)
+  public Object getItem(int paramInt)
   {
-    b("has_show_play_guide_horizontal", Boolean.valueOf(paramBoolean));
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public boolean b()
+  public long getItemId(int paramInt)
   {
-    return ((Boolean)b("has_show_play_guide_horizontal", Boolean.valueOf(false))).booleanValue();
+    return paramInt;
   }
   
-  public long c()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return ((Long)c(c, Long.valueOf(0L))).longValue();
-  }
-  
-  public <V> V c(@NonNull String paramString, @NonNull V paramV)
-  {
-    return super.a(paramString, paramV);
-  }
-  
-  public String c()
-  {
-    return (String)b("key_video_source_tag_info_config", "");
-  }
-  
-  public void c()
-  {
-    ved.b("Q.qqstory.config.StoryConfigManager", "getBlackStatus");
-    int i = ((Integer)b("qqstory_black_status_last_update_time", Integer.valueOf(0))).intValue();
-    int j = ((Integer)b("qqstory_black_status_update_interval", Integer.valueOf(14400))).intValue();
-    long l = NetConnInfoCenter.getServerTime();
-    if (l > j + i)
+    stMetaComment localstMetaComment = (stMetaComment)getItem(paramInt);
+    if (localstMetaComment.isTempData)
     {
-      tmb localtmb = new tmb();
-      localtmb.b = QQStoryContext.a().b();
-      syo.a().a(localtmb, new tct(this, l));
+      if (!this.jdField_a_of_type_JavaUtilHashSet.contains(Integer.valueOf(paramInt)))
+      {
+        this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(paramInt));
+        paramViewGroup = WSPublicAccReport.getTagPositionId(this.jdField_b_of_type_JavaLangString);
+        paramView = paramViewGroup;
+        if (!paramViewGroup.equals("comment_tag")) {
+          paramView = paramViewGroup + jdField_a_of_type_Int;
+        }
+        WSPublicAccReport.getInstance().reportCommentTagExposure(this.jdField_b_of_type_JavaLangString, paramView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+      }
+      for (;;)
+      {
+        paramView = new MoreCommentPanel(this.jdField_a_of_type_AndroidContentContext);
+        ((TextView)paramView.findViewById(2131370715)).setTextColor(-7829368);
+        paramView.setOnClickListener(new tct(this, paramInt));
+        paramView.setHintText(localstMetaComment.wording);
+        return paramView;
+        tlo.b("beacon-comment", "重复的position:" + paramInt + ",不上报");
+      }
+    }
+    if (!this.jdField_b_of_type_JavaUtilHashSet.contains(Integer.valueOf(paramInt)))
+    {
+      this.jdField_b_of_type_JavaUtilHashSet.add(Integer.valueOf(paramInt));
+      localObject = WSPublicAccReport.getPagePositionId(this.jdField_b_of_type_JavaLangString);
+      paramViewGroup = (ViewGroup)localObject;
+      if (!((String)localObject).equals("comment_page")) {
+        paramViewGroup = (String)localObject + jdField_a_of_type_Int;
+      }
+      WSPublicAccReport.getInstance().reportCommentPageExposure(this.jdField_b_of_type_JavaLangString, paramViewGroup, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    }
+    if (paramView != null)
+    {
+      paramViewGroup = paramView;
+      if (!(paramView instanceof MoreCommentPanel)) {}
+    }
+    else
+    {
+      paramViewGroup = new WsCommentView(this.jdField_a_of_type_AndroidContentContext);
+      ((WsCommentView)paramViewGroup).setOnCommentElementClickListener(this.jdField_a_of_type_Yde);
+      paramViewGroup.setTag(paramViewGroup);
+    }
+    paramView = (WsCommentView)paramViewGroup.getTag();
+    paramView.setPosition(paramInt);
+    paramView.setDisplayNum(3);
+    Object localObject = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localstMetaComment.id);
+    if (localObject != null) {}
+    for (paramInt = ((Integer)localObject).intValue();; paramInt = 3)
+    {
+      paramView.setData(localstMetaComment, paramInt, this.jdField_a_of_type_JavaLangString);
+      return paramViewGroup;
     }
   }
   
-  public void c(long paramLong)
+  public void notifyDataSetChanged()
   {
-    c(jdField_a_of_type_JavaLangString, Long.valueOf(paramLong));
-  }
-  
-  public <V> void c(@NonNull String paramString)
-  {
-    super.a(paramString);
-  }
-  
-  public <V> void c(@NonNull String paramString, @NonNull V paramV)
-  {
-    super.a(paramString, paramV);
-  }
-  
-  public long d()
-  {
-    return ((Long)c(jdField_a_of_type_JavaLangString, Long.valueOf(0L))).longValue();
-  }
-  
-  public void d(String paramString)
-  {
-    b("key_video_source_tag_info_config", paramString);
+    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tcs
  * JD-Core Version:    0.7.0.1
  */

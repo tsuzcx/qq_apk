@@ -14,7 +14,7 @@ public final class feeds_info$BiuOneLevelItem
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_biu_comments = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBEnumField feeds_type = PBField.initEnum(0);
+  public final PBUInt32Field feeds_type = PBField.initUInt32(0);
   public feeds_info.JumpInfo msg_jump_info = new feeds_info.JumpInfo();
   public feeds_info.UGCVoiceInfo msg_voice_info = new feeds_info.UGCVoiceInfo();
   public final PBEnumField op_type = PBField.initEnum(0);
@@ -30,7 +30,7 @@ public final class feeds_info$BiuOneLevelItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.feeds_info.BiuOneLevelItem
  * JD-Core Version:    0.7.0.1
  */

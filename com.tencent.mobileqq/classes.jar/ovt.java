@@ -1,54 +1,36 @@
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.mobileqq.widget.BounceScrollView;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 
-public class ovt
-  implements bckc
+class ovt
+  implements View.OnClickListener
 {
-  public ovt(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  ovt(ovs paramovs) {}
   
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    paramInt1 = ReadInJoySelfFragment.a(this.a).getScrollY();
-    if ((this.a.getActivity() != null) && ((this.a.getActivity() instanceof ReadInJoyNewFeedsActivity))) {}
-    do
+    int i = ((ovu)paramView.getTag()).getAdapterPosition() - ovs.a(this.a).c();
+    int j = this.a.getItemViewType(i);
+    ArticleInfo localArticleInfo = (ArticleInfo)ovs.a(this.a, i);
+    if (localArticleInfo == null)
     {
+      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick onClick articleInfo is null.");
       return;
-      if (paramInt1 >= ReadInJoySelfFragment.a(this.a))
-      {
-        ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#FFFFFF"));
-        if (paramInt1 >= ReadInJoySelfFragment.a(this.a) * 3) {}
-        for (float f = 1.0F;; f = paramInt1 * 0.33F / ReadInJoySelfFragment.a(this.a))
-        {
-          ReadInJoySelfFragment.a(this.a).setAlpha(f);
-          ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842420);
-          ReadInJoySelfFragment.a(this.a).setVisibility(0);
-          if ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity))) {
-            break;
-          }
-          ImmersiveUtils.a(true, this.a.getActivity().getWindow());
-          return;
-        }
-      }
-      ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#00FFFFFF"));
-      ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842421);
-      ReadInJoySelfFragment.a(this.a).setVisibility(8);
-    } while ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity)));
-    ImmersiveUtils.a(false, this.a.getActivity().getWindow());
+    }
+    QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onItemClick, position = ", Integer.valueOf(i), ", itemViewType = ", Integer.valueOf(j) });
+    this.a.a(i, paramView);
+    localArticleInfo.invalidateProteusTemplateBean();
+    ors.a = localArticleInfo;
+    owy.a().a(localArticleInfo.mArticleID, System.currentTimeMillis());
+    this.a.notifyItemChanged(i);
+    ors.b(ovs.a(this.a), localArticleInfo, (int)localArticleInfo.mChannelID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ovt
  * JD-Core Version:    0.7.0.1
  */

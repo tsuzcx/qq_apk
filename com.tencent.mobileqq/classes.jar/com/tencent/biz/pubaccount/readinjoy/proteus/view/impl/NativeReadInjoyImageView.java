@@ -13,10 +13,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import omr;
-import pne;
-import rpe;
-import rph;
+import orc;
+import ptm;
+import sfd;
+import sfg;
 
 public class NativeReadInjoyImageView
   extends KandianUrlImageView
@@ -36,13 +36,13 @@ public class NativeReadInjoyImageView
   public NativeReadInjoyImageView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Rpe.a(false);
+    this.jdField_a_of_type_Sfd.a(false);
   }
   
   public NativeReadInjoyImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Rpe.a(false);
+    this.jdField_a_of_type_Sfd.a(false);
   }
   
   public String a()
@@ -73,8 +73,8 @@ public class NativeReadInjoyImageView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    rph localrph = this.jdField_a_of_type_Rpe.a();
-    if ((localrph == null) || (localrph.jdField_a_of_type_Boolean)) {
+    sfg localsfg = this.jdField_a_of_type_Sfd.a();
+    if ((localsfg == null) || (localsfg.jdField_a_of_type_Boolean)) {
       setImageSrc(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -100,8 +100,8 @@ public class NativeReadInjoyImageView
   public void onFinishTemporaryDetach()
   {
     super.onFinishTemporaryDetach();
-    rph localrph = this.jdField_a_of_type_Rpe.a();
-    if ((localrph == null) || (localrph.jdField_a_of_type_Boolean)) {
+    sfg localsfg = this.jdField_a_of_type_Sfd.a();
+    if ((localsfg == null) || (localsfg.jdField_a_of_type_Boolean)) {
       setImageSrc(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -148,7 +148,7 @@ public class NativeReadInjoyImageView
           this.jdField_a_of_type_JavaNetURL = new URL(this.jdField_a_of_type_JavaLangString);
           QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | current path changed ");
           QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | mPathUrl :" + this.jdField_a_of_type_JavaNetURL);
-          omr.a(this, this.jdField_a_of_type_JavaNetURL, getContext());
+          orc.a(this, this.jdField_a_of_type_JavaNetURL, getContext());
           return;
         }
       }
@@ -165,7 +165,7 @@ public class NativeReadInjoyImageView
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
     if (paramBoolean) {
-      setPublicAccountImageDownListener(new pne(null));
+      setPublicAccountImageDownListener(new ptm(null));
     }
   }
   
@@ -179,7 +179,7 @@ public class NativeReadInjoyImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView
  * JD-Core Version:    0.7.0.1
  */

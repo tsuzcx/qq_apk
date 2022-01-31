@@ -1,36 +1,21 @@
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class abze
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public abze(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public abze(AddRequestActivity paramAddRequestActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    case 107: 
-    default: 
-      return;
-    case 106: 
-      this.a.finish();
-      return;
-    }
-    int i = 0;
-    while (i < 6)
-    {
-      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
-      i += 1;
-    }
-    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
+    this.a.c();
+    azmj.b(this.a.app, "CliOper", "", "", "0X800AA44", "0X800AA44", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abze
  * JD-Core Version:    0.7.0.1
  */

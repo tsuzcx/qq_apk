@@ -1,51 +1,58 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import betc;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import bgkd;
+import com.tencent.qqmini.sdk.core.proxy.AdProxy.ICmdListener;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class DataJsPlugin$10
-  implements AsyncResult
+  implements AdProxy.ICmdListener
 {
-  DataJsPlugin$10(DataJsPlugin paramDataJsPlugin, String paramString, bekr parambekr) {}
+  DataJsPlugin$10(DataJsPlugin paramDataJsPlugin, bgkd parambgkd, int paramInt) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramBoolean)
-    {
-      betc.a("DataJsPlugin", "call getUserInfo ： " + paramJSONObject.toString());
-      if (("webapi_getuserinfo_opendata".equals(this.val$apiName)) && (paramJSONObject != null)) {}
+    if (paramBoolean) {
       try
       {
-        paramJSONObject.remove("signature");
-        paramJSONObject.remove("encryptedData");
-        paramJSONObject.remove("iv");
-        paramJSONObject.remove("cloudID");
-        if (paramJSONObject.has("data"))
+        int i = paramJSONObject.getInt("retCode");
+        paramJSONObject.getString("errMsg");
+        String str1 = paramJSONObject.getString("response");
+        String str2 = paramJSONObject.getString("adClass");
+        paramJSONObject = new JSONObject();
+        JSONObject localJSONObject = new JSONObject();
+        try
         {
-          JSONObject localJSONObject = new JSONObject(paramJSONObject.get("data").toString());
-          localJSONObject.remove("signature");
-          paramJSONObject.put("data", localJSONObject);
+          localJSONObject.put("data", str1);
+          localJSONObject.put("ret", i);
+          localJSONObject.put("adClass", str2);
+          paramJSONObject.put("data", localJSONObject.toString());
+          QMLog.d("DataJsPlugin", "sendAdRequest. retCode = " + i);
+          this.val$req.a(paramJSONObject);
+          DataJsPlugin.access$000(this.this$0, str1, this.val$constAdType);
+          return;
         }
-        this.val$req.a(paramJSONObject);
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            QMLog.i("DataJsPlugin", "sendAdRequest. retCode = " + i);
+          }
+        }
+        this.val$req.b();
+      }
+      catch (Exception paramJSONObject)
+      {
+        this.val$req.b();
         return;
       }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          betc.d("DataJsPlugin", "webapi_getuserinfo_opendata error, ", localThrowable);
-        }
-      }
     }
-    betc.a("DataJsPlugin", "call getUserInfo failed. ");
-    this.val$req.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.DataJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

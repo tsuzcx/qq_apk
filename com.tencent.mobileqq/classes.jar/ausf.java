@@ -1,62 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.qphone.base.BaseConstants;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.NearbyReportManager.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import mqq.manager.Manager;
 
 public class ausf
+  implements Manager
 {
-  private static HashMap<Long, ausg> a = new HashMap();
+  bhod<ausg> jdField_a_of_type_Bhod = new bhod();
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  public boolean a;
   
-  public static void a(int paramInt1, int paramInt2)
+  public ausf(NearbyAppInterface paramNearbyAppInterface)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("business_type", String.valueOf(paramInt1));
-    localHashMap.put("prediction_step", String.valueOf(paramInt2));
-    axrn.a(BaseApplication.getContext()).a(null, "actPredictionData", true, 0L, 0L, localHashMap, "");
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
+  public void a()
   {
-    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
-    long l;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyReportManager", 2, "report");
+    }
+    bhod localbhod = this.jdField_a_of_type_Bhod.a();
+    alta localalta = (alta)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3);
+    boolean bool = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Bhod.a();
+    ThreadManager.post(new NearbyReportManager.1(this, localbhod, localalta, bool), 5, null, false);
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
+  {
+    ausg localausg = (ausg)this.jdField_a_of_type_Bhod.a(paramLong);
+    if (localausg == null)
     {
-      return;
       if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPredictionEvaluator", 2, "msgViewedInAIO, size=" + a.size());
+        QLog.d("NearbyReportManager", 2, "updateRecord ,not exist!! tinyID = " + paramLong);
       }
-      l = System.currentTimeMillis();
-    } while ((a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq))) || (a.size() >= 24));
-    paramQQAppInterface = new ausg(paramQQAppInterface, paramMessageForShortVideo, l, 0L);
-    a.put(Long.valueOf(paramMessageForShortVideo.uniseq), paramQQAppInterface);
+      return;
+    }
+    localausg.c += 1;
+    localausg.d += paramInt1;
+    if (paramInt2 > localausg.e) {
+      localausg.e = paramInt2;
+    }
+    localausg.f |= paramInt3;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
+  public void onDestroy()
   {
-    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPredictionEvaluator", 2, "msgClicked, size=" + a.size());
-        }
-        l = System.currentTimeMillis();
-      } while (!a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq)));
-      paramQQAppInterface = (ausg)a.remove(Long.valueOf(paramMessageForShortVideo.uniseq));
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(l);
-    paramQQAppInterface.a();
+    this.jdField_a_of_type_Bhod.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ausf
  * JD-Core Version:    0.7.0.1
  */

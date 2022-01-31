@@ -1,10 +1,10 @@
 package com.tencent.open.downloadnew.common;
 
 import android.text.TextUtils;
-import bdii;
-import bdlb;
-import bdle;
-import bdlr;
+import bfhg;
+import bfjy;
+import bfkb;
+import bfko;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 class PackageInstallReceiver$1
@@ -14,14 +14,14 @@ class PackageInstallReceiver$1
   
   public void run()
   {
-    bdii.c(this.this$0.a, "ACTION_PACKAGE_REMOVED >> " + this.a);
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(bdlb.q)))
+    bfhg.c(this.this$0.a, "ACTION_PACKAGE_REMOVED >> " + this.a);
+    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(bfjy.q)))
     {
-      bdle.a().a(true);
-      bdlr.a().f();
+      bfkb.a().a(true);
+      bfko.a().f();
     }
     DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    bdle.a().a(9, localDownloadInfo);
+    bfkb.a().a(9, localDownloadInfo);
   }
 }
 

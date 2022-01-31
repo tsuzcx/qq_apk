@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.hotpic;
 
-import aqzl;
+import aspz;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class HotPicPageView$4$1
   implements Runnable
 {
-  public HotPicPageView$4$1(aqzl paramaqzl) {}
+  public HotPicPageView$4$1(aspz paramaspz) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class HotPicPageView$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -96,9 +96,9 @@ public abstract class AbsAppBrandPage
   
   private void initKeyBoardConfirmView()
   {
-    this.keyBoardConfirmView = LayoutInflater.from(getContext().getApplicationContext()).inflate(2131559263, null);
+    this.keyBoardConfirmView = LayoutInflater.from(getContext().getApplicationContext()).inflate(2131559307, null);
     this.keyBoardConfirmView.setVisibility(8);
-    ((TextView)this.keyBoardConfirmView.findViewById(2131370213)).setOnClickListener(new AbsAppBrandPage.1(this));
+    ((TextView)this.keyBoardConfirmView.findViewById(2131370481)).setOnClickListener(new AbsAppBrandPage.1(this));
     addView(this.keyBoardConfirmView);
   }
   
@@ -272,7 +272,7 @@ public abstract class AbsAppBrandPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage
  * JD-Core Version:    0.7.0.1
  */

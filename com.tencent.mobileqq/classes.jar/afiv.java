@@ -1,35 +1,28 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public abstract class afiv<T>
-  extends afiz<T>
+public class afiv
+  extends aelt
 {
-  protected int a;
-  protected Context a;
-  protected LayoutInflater a;
+  float jdField_a_of_type_Float;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  UnlimitedBladeWorks jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  ImageView b;
+  public View c;
+  ImageView c;
   
-  public afiv(Context paramContext, int paramInt)
-  {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
-    a(new afiw(this, paramInt));
-  }
-  
-  public afjf a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
-  {
-    return b(paramContext, paramViewGroup, paramInt);
-  }
-  
-  protected abstract void a(afjf paramafjf, T paramT, int paramInt);
-  
-  protected abstract afjf b(Context paramContext, ViewGroup paramViewGroup, int paramInt);
+  public afiv(afij paramafij) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afiv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,42 @@
-import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.report.lp.MachineLearingSmartReport;
 
-final class bjmw
-  implements EIPCResultCallback
+public class bjmw
+  implements ModuleDownloadListener
 {
-  bjmw(bkmo parambkmo) {}
+  public bjmw(MachineLearingSmartReport paramMachineLearingSmartReport, String paramString1, String paramString2, String paramString3) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onDownloadCanceled(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramEIPCResult != null)
-    {
-      bool1 = bool2;
-      if (paramEIPCResult.data != null) {
-        bool1 = paramEIPCResult.data.getBoolean("key_result");
-      }
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcController", 2, "cancelSendVideoOrPhoto result:" + bool1 + ", uinseq:" + this.a.a + ", status:" + this.a.b + ", progress:" + this.a.c);
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadCanceled " + paramString);
     }
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    MachineLearingSmartReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, 10, "Module onDownloadFailed " + paramString);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadProgress " + paramString + ",progress=" + Float.toString(paramFloat));
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadSucceed " + paramString);
+    }
+    MachineLearingSmartReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, this.jdField_a_of_type_JavaLangString, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjmw
  * JD-Core Version:    0.7.0.1
  */

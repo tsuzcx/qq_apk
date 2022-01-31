@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
-public class aoma
-  implements DialogInterface.OnClickListener
+class aoma
+  implements blur
 {
-  public aoma(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  aoma(aolz paramaolz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    this.a.a = false;
-    this.a.doOnBackPressed();
-    axqy.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
+    ((QIMMusicConfigManager)blmf.a(2)).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoma
  * JD-Core Version:    0.7.0.1
  */

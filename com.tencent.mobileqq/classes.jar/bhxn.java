@@ -1,29 +1,12 @@
-import android.view.View;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import com.tencent.widget.TCWNumberPicker;
 
-public class bhxn
-  implements bfph
+public abstract interface bhxn
 {
-  public bhxn(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, bfpc parambfpc) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.e();
-      return;
-      TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, 29954);
-      continue;
-      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
-    }
-  }
+  public abstract void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhxn
  * JD-Core Version:    0.7.0.1
  */

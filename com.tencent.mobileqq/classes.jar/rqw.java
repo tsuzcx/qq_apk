@@ -1,21 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.widget.AbsListView;
 
-public class rqw
-  implements OnCompositionLoadedListener
+class rqw
+  implements bhpo
 {
-  public rqw(RefreshAnimView.1 param1) {}
+  rqw(rqj paramrqj) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    RefreshAnimView.a(this.a.this$0, paramLottieComposition);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    rqj.b(this.a, paramAbsListView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rqw
  * JD-Core Version:    0.7.0.1
  */

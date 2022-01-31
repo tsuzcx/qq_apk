@@ -1,42 +1,51 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
 public class lxm
-  implements birs
+  extends lwt
 {
-  final WeakReference<QQServiceForAV> a;
+  public boolean a;
   
-  lxm(QQServiceForAV paramQQServiceForAV)
+  public void a(long paramLong)
   {
-    this.a = new WeakReference(paramQQServiceForAV);
+    long l = paramLong - this.jdField_a_of_type_Long;
+    a((float)(paramLong - this.jdField_a_of_type_Long) / 50.0F);
+    int j = 0;
+    int i;
+    if (l < 500L) {
+      i = (int)(l * 255L / 500L);
+    }
+    for (;;)
+    {
+      a(i);
+      return;
+      if (((l >= 500L) && (l <= 5397L)) || (!this.jdField_a_of_type_Boolean))
+      {
+        i = 255;
+      }
+      else
+      {
+        i = j;
+        if (l > 5397L)
+        {
+          i = j;
+          if (l < 5564L)
+          {
+            i = j;
+            if (this.jdField_a_of_type_Boolean) {
+              i = (int)((l - 5564L) * 255L / -167L);
+            }
+          }
+        }
+      }
+    }
   }
   
-  public void a(int paramInt, long paramLong1, long paramLong2) {}
-  
-  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQServiceForAV", 2, "onAEResDownloadResult, package[" + paramInt1 + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt2 + "]");
-    }
-    Object localObject = (QQServiceForAV)this.a.get();
-    if (localObject != null)
-    {
-      localObject = (QQAppInterface)((QQServiceForAV)localObject).a();
-      Intent localIntent = new Intent("tencent.video.q2v.ptusoDownloadRet");
-      localIntent.putExtra("packageIdx", paramInt1);
-      localIntent.putExtra("isDownloaded", paramBoolean);
-      localIntent.putExtra("errorType", paramInt2);
-      ((QQAppInterface)localObject).getApp().sendBroadcast(localIntent);
-    }
+    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxm
  * JD-Core Version:    0.7.0.1
  */

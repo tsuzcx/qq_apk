@@ -1,25 +1,22 @@
-class ahym
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+
+public class ahym
+  implements View.OnClickListener
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
+  public ahym(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public ahym(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public void onClick(View paramView)
   {
-    this.a = paramFloat2;
-    this.b = paramFloat3;
-    this.c = paramFloat1;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.f = paramFloat6;
+    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,60 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 class arwk
-  implements arur
+  extends nac
 {
-  arwk(arwj paramarwj) {}
+  arwk(arwg paramarwg) {}
   
-  public void a(arum paramarum, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "[LocationShareController] onKickOff: invoked. roomKey: " + paramarum + " mRoomKey: " + arwj.a(this.a));
-    }
-    bcql.a(arwj.a(this.a), "已在其他设备进行共享", 0).a();
-    arwj.a(this.a).setResult(1);
-    arwj.a(this.a).finish();
-  }
-  
-  public void a(arum paramarum, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramarum, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
-    }
-    if (!paramarum.equals(arwj.a(this.a))) {}
-    do
+    QLog.d(arwg.a(), 1, new Object[] { "notifyNormalSendMessage onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(arwg.a(this.a)) });
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      do
+      arzy.a("KEY_STAGE_2_NORMAL_DC2", bool);
+      if (!arwg.a(this.a)) {
+        break;
+      }
+      return;
+    }
+    if (paramBundle != null)
+    {
+      long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
+      if (QLog.isColorLevel()) {
+        QLog.d(arwg.a(), 2, new Object[] { "notifyNormalSendMessage currentRequestTime =", Long.valueOf(arwg.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
+      }
+      if ((l == -1L) || (l != arwg.a(this.a)))
       {
+        arwg.a(this.a);
         return;
-        if (paramInt1 != 10100) {
-          break;
-        }
-      } while ((arwj.a(this.a) == null) || (arwj.a(this.a).isFinishing()));
-      arwj.a(this.a).setResult(1);
-      arvm.a(arwj.a(this.a));
-      return;
-    } while ((paramInt1 != 10101) || (arwj.a(this.a) == null) || (arwj.a(this.a).isFinishing()));
-    arwj.a(this.a).setResult(1);
-    arvm.b(arwj.a(this.a));
-  }
-  
-  public void a(arum paramarum, LocationRoom.Venue paramVenue, List<aruk> paramList)
-  {
-    if ((!paramarum.equals(arwj.a(this.a))) || (arwj.a(this.a).isFinishing())) {
-      return;
-    }
-    paramVenue = paramList.iterator();
-    while (paramVenue.hasNext())
-    {
-      paramList = (aruk)paramVenue.next();
-      Bitmap localBitmap = this.a.a(paramList.a());
-      if (localBitmap != null)
-      {
-        localBitmap = bbef.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-        arwj.a(this.a).a(paramList.a(), localBitmap);
       }
     }
-    arwj.a(this.a).a(paramarum);
-  }
-  
-  public void b(arum paramarum, int paramInt)
-  {
-    if (!paramarum.equals(arwj.a(this.a))) {}
-    while ((paramInt == 2) || (paramInt == 1)) {
+    azmj.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "", "", "");
+    paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      QLog.e(arwg.a(), 1, new Object[] { "notifyNormalSendMessage sendOIDBRequest onResult errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
+      arwg.a(this.a);
       return;
     }
-    arwj.a(this.a).setResult(1);
-    arvm.a(arwj.a(this.a));
+    arwg.a(this.a, paramArrayOfByte);
+    ForwardUtils.a(arwg.a(this.a), paramArrayOfByte, arwg.a(this.a), arwg.a(this.a).getString("share_comment_message_for_server"));
+  }
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.e(arwg.a(), 1, new Object[] { "notifyNormalSendMessage onError msg =", paramString });
+    }
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arwk
  * JD-Core Version:    0.7.0.1
  */

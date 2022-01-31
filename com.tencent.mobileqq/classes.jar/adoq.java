@@ -1,21 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceText;
 
-class adoq
-  implements DialogInterface.OnClickListener
+public class adoq
+  extends alox
 {
-  adoq(adop paramadop, MessageForDeviceText paramMessageForDeviceText) {}
+  public adoq(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    ((yer)this.jdField_a_of_type_Adop.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Adop.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adop.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adop.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
+    }
+    this.a.a(this.a.app.getCurrentAccountUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adoq
  * JD-Core Version:    0.7.0.1
  */

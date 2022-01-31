@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.data.ApolloGameData;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class aizm
+class aizm
+  implements baaa
 {
-  public String a;
-  public List<Integer> a;
-  public String b;
-  public List<ApolloGameData> b = new ArrayList();
-  public List<String> c = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
   
-  public aizm(aizi paramaizi)
+  aizm(aizl paramaizl, baaa parambaaa) {}
+  
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (QLog.isColorLevel()) {
+      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim onFrameEnd");
+    }
+    if ((this.jdField_a_of_type_Boolean) || (aizl.a(this.jdField_a_of_type_Aizl))) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = true;
+      if (aizl.a(this.jdField_a_of_type_Aizl) != null) {
+        ThreadManager.getUIHandler().removeCallbacks(aizl.a(this.jdField_a_of_type_Aizl));
+      }
+    } while (this.jdField_a_of_type_Baaa == null);
+    this.jdField_a_of_type_Baaa.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aizm
  * JD-Core Version:    0.7.0.1
  */

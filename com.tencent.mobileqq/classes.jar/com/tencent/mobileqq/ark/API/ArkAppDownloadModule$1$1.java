@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import aloa;
-import alob;
+import aneq;
+import aner;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,20 +10,20 @@ import org.json.JSONArray;
 public class ArkAppDownloadModule$1$1
   implements Runnable
 {
-  public ArkAppDownloadModule$1$1(alob paramalob, ArrayList paramArrayList) {}
+  public ArkAppDownloadModule$1$1(aner paramaner, ArrayList paramArrayList) {}
   
   public void run()
   {
-    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Alob.jdField_a_of_type_Aloa.a(this.jdField_a_of_type_Alob.jdField_a_of_type_Long);
+    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Aner.jdField_a_of_type_Aneq.a(this.jdField_a_of_type_Aner.jdField_a_of_type_Long);
     if (localVariantWrapper1 == null)
     {
-      QLog.d("ark.download.module", 1, "onQueryPackageState Callback is null");
+      QLog.i("ark.download.module", 1, "ark.dctrl.onQueryPackageState Callback is null");
       return;
     }
     ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
     localVariantWrapper2.SetNull();
     ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-    JSONArray localJSONArray = aloa.a(this.jdField_a_of_type_Alob.jdField_a_of_type_Aloa, this.jdField_a_of_type_JavaUtilArrayList, "QueryPackageState");
+    JSONArray localJSONArray = aneq.a(this.jdField_a_of_type_Aner.jdField_a_of_type_Aneq, this.jdField_a_of_type_JavaUtilArrayList, "QueryPackageState");
     String str = "";
     if (localJSONArray != null) {
       str = localJSONArray.toString();
@@ -33,12 +33,12 @@ public class ArkAppDownloadModule$1$1
     localVariantWrapper3.Reset();
     localVariantWrapper2.Reset();
     localVariantWrapper1.Reset();
-    QLog.e("ark.download.module", 1, "QueryPackageState : " + str);
+    QLog.i("ark.download.module", 1, "ark.dctrl.onQueryPackageState result:" + str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppDownloadModule.1.1
  * JD-Core Version:    0.7.0.1
  */

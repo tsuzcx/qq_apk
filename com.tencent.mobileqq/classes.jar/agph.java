@@ -1,22 +1,20 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class agph
-  implements bfou
+  implements DialogInterface.OnDismissListener
 {
-  agph(agpg paramagpg) {}
+  agph(agot paramagot) {}
   
-  public void b(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof agpi))) {
-      ((agpi)paramView).a.setImageDrawable(null);
-    }
+    this.a.ah = false;
+    azmj.b(this.a.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agph
  * JD-Core Version:    0.7.0.1
  */

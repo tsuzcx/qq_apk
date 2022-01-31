@@ -1,6 +1,6 @@
 package cooperation.qzone.font;
 
-import bheb;
+import bjfl;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -8,19 +8,19 @@ import java.io.File;
 public class FontManager$4
   implements Runnable
 {
-  public FontManager$4(bheb parambheb, String paramString, int paramInt) {}
+  public FontManager$4(bjfl parambjfl, String paramString, int paramInt) {}
   
   public void run()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("FontManager", 4, "begin to download font file from network, url =" + this.jdField_a_of_type_JavaLangString);
     }
-    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(bheb.a(this.this$0, this.jdField_a_of_type_Int)))) {
-      bheb.a(this.this$0, this.jdField_a_of_type_Int);
+    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(bjfl.a(this.this$0, this.jdField_a_of_type_Int)))) {
+      bjfl.a(this.this$0, this.jdField_a_of_type_Int);
     }
     for (;;)
     {
-      bheb.a(this.this$0, this.jdField_a_of_type_Int);
+      bjfl.a(this.this$0, this.jdField_a_of_type_Int);
       return;
       QLog.e("FontManager", 1, "Font Download Failed, font url = " + this.jdField_a_of_type_JavaLangString);
     }
@@ -28,7 +28,7 @@ public class FontManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.font.FontManager.4
  * JD-Core Version:    0.7.0.1
  */

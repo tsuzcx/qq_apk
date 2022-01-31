@@ -1,62 +1,30 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.io.FileFilter;
 
-public class amzg
-  extends amyp<amzf>
+final class amzg
+  implements FileFilter
 {
-  public static amzf c()
+  public boolean accept(File paramFile)
   {
-    return (amzf)ampl.a().a(412);
-  }
-  
-  public int a()
-  {
-    return 412;
-  }
-  
-  @NonNull
-  public amzf a()
-  {
-    return new amzf();
-  }
-  
-  @NonNull
-  public amzf a(amph[] paramArrayOfamph)
-  {
-    boolean bool = true;
-    localamzf = new amzf();
-    try
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
     {
-      if (new JSONObject(paramArrayOfamph[0].a).optInt("allow_edit_color_nick", 1) == 1) {}
-      for (;;)
+      int i = 3;
+      while (i < paramFile.length())
       {
-        localamzf.a = bool;
-        return localamzf;
-        bool = false;
+        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+          return false;
+        }
+        i += 1;
       }
-      return localamzf;
+      return true;
     }
-    catch (JSONException paramArrayOfamph)
-    {
-      ved.e("QVipColorNickProcessor", "QVipColorNickProcessor onParsed exception :" + paramArrayOfamph.getMessage());
-    }
-  }
-  
-  public Class<amzf> a()
-  {
-    return amzf.class;
-  }
-  
-  @NonNull
-  public amzf b()
-  {
-    return new amzf();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzg
  * JD-Core Version:    0.7.0.1
  */

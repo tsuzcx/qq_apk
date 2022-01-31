@@ -1,41 +1,38 @@
-import android.text.TextUtils;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bdkc
+final class bdkc
+  implements Handler.Callback
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  
-  public String a()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (TextUtils.isEmpty(this.f)) {
-      return bdid.a(bcyb.a().a());
+    QQAppInterface localQQAppInterface;
+    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
+    {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
+      switch (paramMessage.what)
+      {
+      }
     }
-    return this.f;
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.b));
-  }
-  
-  public String toString()
-  {
-    return this.d + "_" + this.a + "_" + this.b + "_" + this.c + "_" + this.f + "_" + this.g;
+    for (;;)
+    {
+      return true;
+      QQToast.a(localQQAppInterface.getApplication(), alpo.a(2131716430), 0).a();
+      continue;
+      QQToast.a(localQQAppInterface.getApplication(), alpo.a(2131716429), 0).a();
+      continue;
+      QQToast.a(localQQAppInterface.getApplication(), alpo.a(2131716428), 0).a();
+      continue;
+      QQToast.a(localQQAppInterface.getApplication(), alpo.a(2131716431), 0).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkc
  * JD-Core Version:    0.7.0.1
  */

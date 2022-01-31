@@ -1,568 +1,1103 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
+import android.content.Context;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.videostory.support.VideoStoryDataBean;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.util.Pair;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.soload.DexReleasor;
+import com.tencent.commonsdk.soload.SoLoadCore;
+import com.tencent.commonsdk.zip.QZipFile;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pluginsdk.PluginUtils;
+import com.tencent.mobileqq.startup.step.InstallPlugins;
+import com.tencent.mobileqq.startup.step.UpdatePluginVersion;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.3;
-import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.4;
-import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.5;
-import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import java.io.Serializable;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.NotNull;
+import cooperation.plugin.Dex2Oat;
+import cooperation.plugin.PluginInfo;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.zip.ZipEntry;
 
 public class bina
-  extends biwr
+  implements Handler.Callback
 {
-  private final float jdField_a_of_type_Float = 147.0F;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bijd jdField_a_of_type_Bijd;
-  private bipp jdField_a_of_type_Bipp;
-  private biwp jdField_a_of_type_Biwp;
-  private VideoStoryDataBean jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean;
-  private AECameraGLSurfaceView jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView;
-  private final String jdField_a_of_type_JavaLangString = "VideoStoryCapturePart";
-  public List<FrameVideoHelper.FrameBuffer> a;
+  public static HandlerThread a;
+  public static String a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bima jdField_a_of_type_Bima;
+  private HashMap<String, PluginInfo> jdField_a_of_type_JavaUtilHashMap;
   private boolean jdField_a_of_type_Boolean;
-  private final float jdField_b_of_type_Float = 58.799999F;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long = ((Long)xfo.a().a("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue();
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private View jdField_c_of_type_AndroidViewView;
-  private boolean jdField_c_of_type_Boolean;
-  private final int jdField_d_of_type_Int = 700;
-  private View jdField_d_of_type_AndroidViewView;
-  private final int jdField_e_of_type_Int = 600;
-  private View jdField_e_of_type_AndroidViewView;
-  private int jdField_f_of_type_Int;
-  private View jdField_f_of_type_AndroidViewView;
-  private int g;
+  private String b;
   
-  public bina(Activity paramActivity, View paramView, biws parambiws)
+  static
   {
-    super(paramActivity, paramView, parambiws);
-    this.jdField_a_of_type_Bijd = ((bijd)parambiws.a(65537, new Object[0]));
-    this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean = new VideoStoryDataBean();
+    jdField_a_of_type_JavaLangString = Build.FINGERPRINT;
   }
   
-  private void a(@NotNull biwo parambiwo)
+  public bina(Context paramContext, String paramString)
   {
-    if ((parambiwo == biwo.a) && (this.jdField_a_of_type_Bipp != null)) {
-      this.jdField_a_of_type_Bipp.b().a(Boolean.valueOf(false));
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(a().getLooper(), this);
+    this.b = paramString;
+    this.jdField_a_of_type_Bima = bima.a(this.jdField_a_of_type_AndroidContentContext);
+    a();
   }
   
-  private void a(Runnable paramRunnable)
+  public static HandlerThread a()
   {
-    if (!this.jdField_c_of_type_Boolean)
+    if (jdField_a_of_type_AndroidOsHandlerThread == null) {}
+    try
     {
-      ThreadManager.getUIHandler().post(paramRunnable);
-      return;
+      if (jdField_a_of_type_AndroidOsHandlerThread == null)
+      {
+        jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("QQ_PLUGIN", 0);
+        jdField_a_of_type_AndroidOsHandlerThread.start();
+      }
+      return jdField_a_of_type_AndroidOsHandlerThread;
     }
-    xfc.a(new View[] { this.jdField_c_of_type_AndroidViewView, this.jdField_d_of_type_AndroidViewView }).d(new float[] { this.jdField_c_of_type_AndroidViewView.getWidth(), 0.0F }).a(new View[] { this.jdField_e_of_type_AndroidViewView }).c(new float[] { this.jdField_e_of_type_AndroidViewView.getHeight(), 0.0F }).a(new View[] { this.jdField_f_of_type_AndroidViewView }).c(new float[] { this.jdField_f_of_type_AndroidViewView.getHeight(), 0.0F }).a().a(300L).a(new binh(this)).a(new bing(this, paramRunnable)).a();
+    finally {}
   }
   
-  private void a(Object[] paramArrayOfObject)
+  static File a(Context paramContext)
   {
-    AEVideoCaptureResult localAEVideoCaptureResult;
-    LocalMediaInfo localLocalMediaInfo;
-    bjrd localbjrd;
-    Object localObject1;
-    Bundle localBundle1;
-    Bundle localBundle2;
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 5))
-    {
-      localAEVideoCaptureResult = (AEVideoCaptureResult)paramArrayOfObject[0];
-      localLocalMediaInfo = (LocalMediaInfo)paramArrayOfObject[1];
-      Object localObject2 = (Integer)paramArrayOfObject[2];
-      localbjrd = (bjrd)paramArrayOfObject[3];
-      localObject1 = (QIMFilterCategoryItem)paramArrayOfObject[4];
-      localBundle1 = this.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
-      paramArrayOfObject = new bjrj().a(localbjrd.jdField_c_of_type_Int).c(10).j(true);
-      if (birt.f(this.jdField_a_of_type_AndroidAppActivity.getIntent())) {
-        paramArrayOfObject.c(0);
-      }
-      localbjrd.a(paramArrayOfObject.a());
-      this.jdField_a_of_type_AndroidAppActivity.getIntent().putExtra("extra_transiton_src_from", -1);
-      localBundle2 = new Bundle();
-      localBundle2.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", (Serializable)this.jdField_a_of_type_JavaUtilList);
-      localBundle2.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", this.jdField_a_of_type_Long);
-      localBundle2.putInt("KEY_VIDEO_STORY_CAMERA_TYPE", ((Integer)localObject2).intValue());
-      localObject2 = bips.a().a();
-      paramArrayOfObject = "";
-      if (localObject2 != null) {
-        paramArrayOfObject = ((bire)localObject2).f;
-      }
-      localObject2 = this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean;
-      if (TextUtils.isEmpty(paramArrayOfObject)) {
-        break label339;
-      }
-      ((VideoStoryDataBean)localObject2).setWatermarkId(paramArrayOfObject);
-      localObject2 = this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean;
-      if (localObject1 == null) {
-        break label346;
-      }
-      paramArrayOfObject = ((QIMFilterCategoryItem)localObject1).b;
-      label236:
-      ((VideoStoryDataBean)localObject2).setFilterId(paramArrayOfObject);
-      localObject1 = this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean;
-      if (birb.a() != null) {
-        break label353;
-      }
-      paramArrayOfObject = "empty";
-      label258:
-      ((VideoStoryDataBean)localObject1).setLensId(paramArrayOfObject);
-      localObject1 = this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean;
-      if (birb.a() != null) {
-        break label363;
-      }
-    }
-    label339:
-    label346:
-    label353:
-    label363:
-    for (paramArrayOfObject = "empty";; paramArrayOfObject = Integer.valueOf(birb.a().jdField_a_of_type_Int))
-    {
-      ((VideoStoryDataBean)localObject1).setLensTabId(String.valueOf(paramArrayOfObject));
-      localBundle2.putSerializable("KEY_VIDEO_STORY_CAMERA_TYPE", this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean);
-      this.jdField_a_of_type_AndroidAppActivity.getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
-      bkvh.a(this.jdField_a_of_type_AndroidAppActivity, localAEVideoCaptureResult, localLocalMediaInfo, localbjrd, localBundle2, 11, localBundle1);
-      r();
-      return;
-      paramArrayOfObject = "empty";
-      break;
-      paramArrayOfObject = "empty";
-      break label236;
-      paramArrayOfObject = birb.a().jdField_a_of_type_JavaLangString;
-      break label258;
-    }
+    return PluginUtils.getPluginInstallDir(paramContext);
   }
   
-  private void b(@NotNull biwo parambiwo)
+  public static String a()
   {
-    if (this.jdField_a_of_type_Biwp.d())
-    {
-      bjah.b("VideoStoryCapturePart", "checkAniByMode--isCaptureModeChangedByInit: do nothing");
-      this.jdField_a_of_type_Biwp.a(false);
-      return;
+    if (jdField_a_of_type_JavaLangString == null) {
+      return "";
     }
-    bjah.b("VideoStoryCapturePart", "checkAniByMode--captureMode=" + parambiwo);
-    if (parambiwo == biwo.a)
-    {
-      this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.p();
-      this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setBlockCameraFlag(false);
-      bika.a().c(avsz.a());
-      this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.o();
-      if (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-      this.jdField_a_of_type_Biwp.b(true);
-      a(new VideoStoryCapturePart.3(this));
-    }
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  private void a(PluginInfo paramPluginInfo)
+  {
+    bimy.a(paramPluginInfo, a(this.jdField_a_of_type_AndroidContentContext));
+  }
+  
+  private void a(String paramString)
+  {
+    bimy.a(paramString, a(this.jdField_a_of_type_AndroidContentContext));
+  }
+  
+  private boolean a()
+  {
+    boolean bool = false;
+    if (TextUtils.isEmpty(this.b)) {}
     for (;;)
     {
-      this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.a = parambiwo;
-      return;
-      if (parambiwo == biwo.c)
-      {
-        this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.p();
-        this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setBlockCameraFlag(false);
-        bika.a().c(1);
-        this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.o();
-        this.jdField_a_of_type_Biwp.b(true);
-        b(new VideoStoryCapturePart.4(this));
-      }
-      else if (parambiwo == biwo.b)
-      {
-        this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.p();
-        this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setBlockCameraFlag(true);
-        this.jdField_a_of_type_Biwp.b(true);
-        if (this.jdField_c_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
-        ThreadManager.getUIHandler().postDelayed(new VideoStoryCapturePart.5(this), 200L);
-      }
-    }
-  }
-  
-  private void b(Runnable paramRunnable)
-  {
-    d();
-    float f1;
-    if (this.jdField_a_of_type_Bijd != null) {
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_f_of_type_Int != 0)) {
-        f1 = this.jdField_f_of_type_Int;
-      }
-    }
-    for (;;)
-    {
-      xfc.a(new View[] { this.jdField_c_of_type_AndroidViewView, this.jdField_d_of_type_AndroidViewView }).d(new float[] { 0.0F, (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int) / 2 }).a(new View[] { this.jdField_e_of_type_AndroidViewView }).c(new float[] { 0.0F, f1 }).a(new View[] { this.jdField_f_of_type_AndroidViewView }).c(new float[] { 0.0F, this.jdField_a_of_type_AndroidViewView.getHeight() - f1 - this.jdField_a_of_type_Int + 1.0F }).a(1.5F).a(500L).a(new binc(this)).a(new bini(this, paramRunnable)).a();
-      return;
-      f1 = baxn.a(this.jdField_a_of_type_Bijd.a(), 147.0F);
-      continue;
-      if (this.jdField_a_of_type_Boolean) {
-        f1 = (int)(0.0724138F * this.jdField_a_of_type_AndroidViewView.getHeight());
-      } else {
-        f1 = (int)(0.1810345F * this.jdField_a_of_type_AndroidViewView.getHeight());
-      }
-    }
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
-    {
-      if (!paramBoolean) {
-        break label80;
-      }
-      if (this.jdField_a_of_type_AndroidAppDialog == null)
-      {
-        this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidAppActivity, 2131755791);
-        this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-        this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559386);
-      }
-      this.jdField_a_of_type_AndroidAppDialog.show();
-    }
-    label80:
-    while ((this.jdField_a_of_type_AndroidAppDialog == null) || (!this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-  }
-  
-  private void b(Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("camera_log_tag_photo", 2, "in photo end.");
-    }
-    if (birt.f(this.jdField_a_of_type_AndroidAppActivity.getIntent()))
-    {
       if (QLog.isColorLevel()) {
-        QLog.d("camera_log_tag_photo", 2, "in aio photo end.");
+        QLog.d("plugin_tag", 2, "verifyDownloadPath." + this.b + ", " + bool);
       }
-      if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
+      return bool;
+      if (new File(this.b).exists()) {
+        bool = true;
+      }
+    }
+  }
+  
+  private boolean a(PluginInfo paramPluginInfo)
+  {
+    boolean bool1 = false;
+    boolean bool3 = false;
+    boolean bool2 = bool1;
+    if (paramPluginInfo != null)
+    {
+      bool2 = bool1;
+      if (paramPluginInfo.mInstalledPath != null)
       {
-        localavuo = (avuo)paramArrayOfObject[0];
-        paramArrayOfObject = (bjrd)paramArrayOfObject[1];
-        b(false);
-        bkvh.a(this.jdField_a_of_type_AndroidAppActivity, localavuo, paramArrayOfObject, null, 1);
-      }
-    }
-    while ((paramArrayOfObject == null) || (paramArrayOfObject.length != 2)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("camera_log_tag_photo", 2, "arg len = 2");
-    }
-    avuo localavuo = (avuo)paramArrayOfObject[0];
-    paramArrayOfObject = (QIMFilterCategoryItem)paramArrayOfObject[1];
-    paramArrayOfObject = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    Object localObject;
-    if ((birt.e(paramArrayOfObject)) || (!birt.a(this.jdField_a_of_type_AndroidAppActivity.getIntent())))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("camera_log_tag_photo", 2, "in normal photo end.");
-      }
-      paramArrayOfObject = new Bundle();
-      paramArrayOfObject.putString("KEY_PIC_TO_VIDEO_LOCAL_PIC_PATH", localavuo.jdField_a_of_type_JavaLangString);
-      localObject = new LocalMediaInfo();
-      ((LocalMediaInfo)localObject).mMimeType = "pic";
-      this.jdField_a_of_type_AndroidAppActivity.getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 101);
-      bkpv.a(this.jdField_a_of_type_AndroidAppActivity, localavuo.jdField_a_of_type_JavaLangString, (LocalMediaInfo)localObject, 0, (int)((LocalMediaInfo)localObject).mDuration, -1, 10023, 0, null, null, false, 11, 14, paramArrayOfObject);
-      b(false);
-      return;
-    }
-    if ((birt.g(this.jdField_a_of_type_AndroidAppActivity.getIntent())) || (birt.h(this.jdField_a_of_type_AndroidAppActivity.getIntent())))
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("VIDEO_STORY_FROM_TYPE", birt.a(paramArrayOfObject));
-      ((Intent)localObject).putExtra("photo_path", localavuo.jdField_a_of_type_JavaLangString);
-      ((Intent)localObject).putExtra("key_disable_face_detect", paramArrayOfObject.getBooleanExtra("key_disable_face_detect", false));
-      ((Intent)localObject).putExtra("key_need_check_sensitive", paramArrayOfObject.getBooleanExtra("key_need_check_sensitive", false));
-      AETakeFacePhotoPreviewFragment.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject, 1024);
-      b(false);
-      return;
-    }
-    bjah.d("VideoStoryCapturePart", "【onPhotoEnd】wrong entry");
-  }
-  
-  private void d()
-  {
-    if (this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    ViewStub localViewStub1 = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131376603);
-    ViewStub localViewStub2 = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131376599);
-    ViewStub localViewStub3 = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131376600);
-    ViewStub localViewStub4 = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131376601);
-    ViewStub localViewStub5 = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131376602);
-    ViewStub localViewStub6 = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131376598);
-    localViewStub1.inflate();
-    localViewStub2.inflate();
-    localViewStub3.inflate();
-    localViewStub4.inflate();
-    localViewStub5.inflate();
-    localViewStub6.inflate();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362150));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363833);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363829);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363830);
-    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363831);
-    this.jdField_f_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363828);
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_Biwp = ((biwp)bijo.a(this.jdField_a_of_type_Bijd).a(biwp.class));
-    this.jdField_a_of_type_Biwp.a().a(this.jdField_a_of_type_Bijd, new binb(this));
-    this.jdField_a_of_type_Bipp = ((bipp)bijo.a(this.jdField_a_of_type_Bijd).a(bipp.class));
-    this.jdField_a_of_type_Bipp.b().a(this.jdField_a_of_type_Bijd, new bine(this));
-  }
-  
-  private void f()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.getLayoutParams();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -1;
-    localLayoutParams.topMargin = 0;
-    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setLayoutParams(localLayoutParams);
-  }
-  
-  private void k()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.getLayoutParams();
-    localLayoutParams.width = (this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.getMeasuredWidth() - 1);
-    localLayoutParams.height = -1;
-    localLayoutParams.topMargin = 0;
-    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setLayoutParams(localLayoutParams);
-  }
-  
-  private void l()
-  {
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.getLayoutParams();
-    localLayoutParams1.width = this.jdField_a_of_type_Int;
-    localLayoutParams1.height = this.jdField_a_of_type_Int;
-    RelativeLayout.LayoutParams localLayoutParams2;
-    if (this.jdField_a_of_type_Bijd != null)
-    {
-      if (!this.jdField_b_of_type_Boolean)
-      {
-        View localView = this.jdField_a_of_type_Bijd.a().findViewById(2131365839);
-        if (localView != null)
+        File localFile = new File(paramPluginInfo.mInstalledPath);
+        bool1 = bool3;
+        if (localFile != null)
         {
-          localLayoutParams2 = (RelativeLayout.LayoutParams)localView.getLayoutParams();
-          if ((!this.jdField_a_of_type_Boolean) || (this.jdField_f_of_type_Int == 0)) {
-            break label154;
+          bool1 = bool3;
+          if (localFile.exists())
+          {
+            bool1 = bool3;
+            if (localFile.isFile())
+            {
+              if (!bimy.a(paramPluginInfo, localFile)) {
+                break label137;
+              }
+              bool1 = true;
+              paramPluginInfo.mState = 4;
+              paramPluginInfo.mInstalledPath = localFile.getAbsolutePath();
+            }
           }
-          localLayoutParams2.topMargin = (this.jdField_f_of_type_Int + baxn.a(this.jdField_a_of_type_Bijd.a(), 62.0F));
-          localView.setLayoutParams(localLayoutParams2);
         }
       }
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_f_of_type_Int != 0)) {
-        localLayoutParams1.topMargin = this.jdField_f_of_type_Int;
-      }
     }
     for (;;)
     {
-      if (this.g == 0) {
-        this.g = localLayoutParams1.topMargin;
-      }
-      this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setLayoutParams(localLayoutParams1);
-      return;
-      label154:
-      localLayoutParams2.topMargin = baxn.a(this.jdField_a_of_type_Bijd.a(), 209.0F);
-      break;
-      localLayoutParams1.topMargin = baxn.a(this.jdField_a_of_type_Bijd.a(), 147.0F);
-      continue;
-      if (this.jdField_a_of_type_Boolean) {
-        localLayoutParams1.topMargin = ((int)(0.0724138F * this.jdField_c_of_type_Int));
-      } else {
-        localLayoutParams1.topMargin = ((int)(0.1810345F * this.jdField_c_of_type_Int));
-      }
-    }
-  }
-  
-  private void m()
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setOnSurfaceChangedListener(new binf(this));
-  }
-  
-  private void n()
-  {
-    int i = 200;
-    Object localObject = this.jdField_a_of_type_Bijd.a().getIntent();
-    if (localObject != null) {
-      i = ((Intent)localObject).getIntExtra("AECAMERA_MODE", 200);
-    }
-    switch (i)
-    {
-    default: 
-      o();
-      return;
-    case 203: 
-      this.jdField_b_of_type_Boolean = false;
-      l();
-      d();
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      return;
-    case 202: 
-      this.jdField_b_of_type_Boolean = true;
-      l();
-      d();
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      return;
-    }
-    localObject = this.jdField_a_of_type_Biwp.a(this.jdField_a_of_type_Bijd);
-    if (localObject == biwo.a) {
-      o();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.a = ((biwo)localObject);
-      return;
-      if (localObject == biwo.b)
+      bool2 = bool1;
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.p();
-        this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setBlockCameraFlag(true);
-        k();
+        QLog.d("plugin_tag", 2, "verifyInstalledPlugin :" + paramPluginInfo.mID + "," + bool1);
+        bool2 = bool1;
+      }
+      return bool2;
+      label137:
+      d(paramPluginInfo.mID);
+      paramPluginInfo.mState = 0;
+      bool1 = bool3;
+    }
+  }
+  
+  /* Error */
+  private static boolean a(File paramFile, QZipFile paramQZipFile, ZipEntry paramZipEntry)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore 8
+    //   9: aconst_null
+    //   10: astore 7
+    //   12: iconst_1
+    //   13: istore 4
+    //   15: aload_1
+    //   16: aload_2
+    //   17: invokevirtual 178	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   20: astore_1
+    //   21: aload_1
+    //   22: astore 6
+    //   24: aload 7
+    //   26: astore 5
+    //   28: aload 8
+    //   30: astore_1
+    //   31: aload 6
+    //   33: astore_2
+    //   34: aload_0
+    //   35: invokevirtual 140	java/io/File:exists	()Z
+    //   38: ifne +53 -> 91
+    //   41: aload 7
+    //   43: astore 5
+    //   45: aload 8
+    //   47: astore_1
+    //   48: aload 6
+    //   50: astore_2
+    //   51: aload_0
+    //   52: invokevirtual 182	java/io/File:getParentFile	()Ljava/io/File;
+    //   55: astore 9
+    //   57: aload 7
+    //   59: astore 5
+    //   61: aload 8
+    //   63: astore_1
+    //   64: aload 6
+    //   66: astore_2
+    //   67: aload 9
+    //   69: invokevirtual 140	java/io/File:exists	()Z
+    //   72: ifne +19 -> 91
+    //   75: aload 7
+    //   77: astore 5
+    //   79: aload 8
+    //   81: astore_1
+    //   82: aload 6
+    //   84: astore_2
+    //   85: aload 9
+    //   87: invokevirtual 185	java/io/File:mkdirs	()Z
+    //   90: pop
+    //   91: aload 7
+    //   93: astore 5
+    //   95: aload 8
+    //   97: astore_1
+    //   98: aload 6
+    //   100: astore_2
+    //   101: new 187	java/io/BufferedOutputStream
+    //   104: dup
+    //   105: new 189	java/io/FileOutputStream
+    //   108: dup
+    //   109: aload_0
+    //   110: invokespecial 192	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   113: invokespecial 195	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   116: invokestatic 200	bjrc:a	(Ljava/io/OutputStream;)Lbjrc;
+    //   119: astore_0
+    //   120: aload_0
+    //   121: astore 5
+    //   123: aload_0
+    //   124: astore_1
+    //   125: aload 6
+    //   127: astore_2
+    //   128: sipush 8192
+    //   131: newarray byte
+    //   133: astore 7
+    //   135: aload_0
+    //   136: astore 5
+    //   138: aload_0
+    //   139: astore_1
+    //   140: aload 6
+    //   142: astore_2
+    //   143: aload 6
+    //   145: aload 7
+    //   147: invokevirtual 206	java/io/InputStream:read	([B)I
+    //   150: istore_3
+    //   151: iload_3
+    //   152: ifle +66 -> 218
+    //   155: aload_0
+    //   156: astore 5
+    //   158: aload_0
+    //   159: astore_1
+    //   160: aload 6
+    //   162: astore_2
+    //   163: aload_0
+    //   164: aload 7
+    //   166: iconst_0
+    //   167: iload_3
+    //   168: invokevirtual 212	java/io/OutputStream:write	([BII)V
+    //   171: goto -36 -> 135
+    //   174: astore_0
+    //   175: aload 5
+    //   177: astore_1
+    //   178: aload 6
+    //   180: astore_2
+    //   181: ldc 112
+    //   183: iconst_1
+    //   184: aload_0
+    //   185: iconst_0
+    //   186: anewarray 4	java/lang/Object
+    //   189: invokestatic 216	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   192: aload 6
+    //   194: ifnull +8 -> 202
+    //   197: aload 6
+    //   199: invokevirtual 219	java/io/InputStream:close	()V
+    //   202: aload 5
+    //   204: ifnull +8 -> 212
+    //   207: aload 5
+    //   209: invokevirtual 220	java/io/OutputStream:close	()V
+    //   212: iconst_0
+    //   213: istore 4
+    //   215: iload 4
+    //   217: ireturn
+    //   218: aload 6
+    //   220: ifnull +8 -> 228
+    //   223: aload 6
+    //   225: invokevirtual 219	java/io/InputStream:close	()V
+    //   228: aload_0
+    //   229: ifnull -14 -> 215
+    //   232: aload_0
+    //   233: invokevirtual 220	java/io/OutputStream:close	()V
+    //   236: iconst_1
+    //   237: ireturn
+    //   238: astore_0
+    //   239: iconst_1
+    //   240: ireturn
+    //   241: astore_0
+    //   242: aconst_null
+    //   243: astore_2
+    //   244: aload 6
+    //   246: astore_1
+    //   247: aload_2
+    //   248: ifnull +7 -> 255
+    //   251: aload_2
+    //   252: invokevirtual 219	java/io/InputStream:close	()V
+    //   255: aload_1
+    //   256: ifnull +7 -> 263
+    //   259: aload_1
+    //   260: invokevirtual 220	java/io/OutputStream:close	()V
+    //   263: aload_0
+    //   264: athrow
+    //   265: astore_1
+    //   266: goto -38 -> 228
+    //   269: astore_0
+    //   270: goto -68 -> 202
+    //   273: astore_0
+    //   274: goto -62 -> 212
+    //   277: astore_2
+    //   278: goto -23 -> 255
+    //   281: astore_1
+    //   282: goto -19 -> 263
+    //   285: astore_0
+    //   286: goto -39 -> 247
+    //   289: astore_0
+    //   290: aconst_null
+    //   291: astore 6
+    //   293: goto -118 -> 175
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	296	0	paramFile	File
+    //   0	296	1	paramQZipFile	QZipFile
+    //   0	296	2	paramZipEntry	ZipEntry
+    //   150	18	3	i	int
+    //   13	203	4	bool	boolean
+    //   1	207	5	localObject1	Object
+    //   4	288	6	localQZipFile	QZipFile
+    //   10	155	7	arrayOfByte	byte[]
+    //   7	89	8	localObject2	Object
+    //   55	31	9	localFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   34	41	174	java/io/IOException
+    //   51	57	174	java/io/IOException
+    //   67	75	174	java/io/IOException
+    //   85	91	174	java/io/IOException
+    //   101	120	174	java/io/IOException
+    //   128	135	174	java/io/IOException
+    //   143	151	174	java/io/IOException
+    //   163	171	174	java/io/IOException
+    //   232	236	238	java/io/IOException
+    //   15	21	241	finally
+    //   223	228	265	java/io/IOException
+    //   197	202	269	java/io/IOException
+    //   207	212	273	java/io/IOException
+    //   251	255	277	java/io/IOException
+    //   259	263	281	java/io/IOException
+    //   34	41	285	finally
+    //   51	57	285	finally
+    //   67	75	285	finally
+    //   85	91	285	finally
+    //   101	120	285	finally
+    //   128	135	285	finally
+    //   143	151	285	finally
+    //   163	171	285	finally
+    //   181	192	285	finally
+    //   15	21	289	java/io/IOException
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    if (!PluginUtils.isOsNeedReleaseDex()) {
+      return true;
+    }
+    int j = bimr.a(paramString1);
+    Object localObject2;
+    Object localObject1;
+    label280:
+    boolean bool;
+    if (j > 1)
+    {
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+      DexReleasor localDexReleasor = new DexReleasor(paramString2, PluginUtils.getPluginInstallDir(localBaseApplicationImpl).getAbsolutePath() + File.separator);
+      int i = 1;
+      for (;;)
+      {
+        if (i < j)
+        {
+          localObject2 = String.format("classes%d.dex", new Object[] { Integer.valueOf(i + 1) });
+          localObject1 = PluginUtils.getMultiDexName(paramString1, i + 1);
+          if (-1L == localDexReleasor.getEntryCrcCode((String)localObject2))
+          {
+            QLog.d("plugin_tag", 1, "releaseMultiDexIfNeeded noDex " + (String)localObject2 + " " + paramString1);
+            i += 1;
+          }
+          else
+          {
+            localObject1 = new File(PluginUtils.getPluginInstallDir(localBaseApplicationImpl).getAbsolutePath(), (String)localObject1);
+            if (((File)localObject1).exists())
+            {
+              QLog.d("plugin_tag", 1, "releaseMultiDexIfNeeded  " + ((File)localObject1).getAbsolutePath() + " exsit,delete first");
+              ((File)localObject1).delete();
+            }
+            a(paramString2, (String)localObject2, (File)localObject1);
+            if ((localObject1 == null) || (!((File)localObject1).exists()))
+            {
+              paramString2 = new StringBuilder().append("releaseMultiDexIfNeeded failed ").append(i).append(" ");
+              if (localObject1 != null)
+              {
+                paramString1 = ((File)localObject1).getAbsolutePath();
+                QLog.d("plugin_tag", 1, paramString1);
+                bool = false;
+                label297:
+                localDexReleasor.destroy();
+              }
+            }
+          }
+        }
       }
     }
-  }
-  
-  private void o()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    f();
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-  }
-  
-  private void p()
-  {
-    b(true);
-  }
-  
-  private void q()
-  {
-    r();
-    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setCaptureRequest(new bind(this));
-  }
-  
-  private void r()
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setCaptureRequest(null);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public <T> T a(int paramInt, Object... paramVarArgs)
-  {
-    return super.a(paramInt, paramVarArgs);
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView = ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363832));
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_ComTencentBizVideostorySupportVideoStoryDataBean = new VideoStoryDataBean();
-    this.jdField_b_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
-    this.jdField_c_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
-    if (blcq.a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int)) {
-      this.jdField_b_of_type_Int = (this.jdField_c_of_type_Int * 9 / 16);
-    }
-    int i;
-    if (this.jdField_a_of_type_Bijd != null)
+    for (;;)
     {
-      this.jdField_a_of_type_Int = baxn.a(this.jdField_a_of_type_Bijd.a(), 250.0F);
-      i = baxn.a(this.jdField_a_of_type_AndroidAppActivity, 700.0F);
-      if (this.jdField_c_of_type_Int >= i) {
-        break label208;
+      return bool;
+      paramString1 = " ";
+      break label280;
+      localObject2 = new StringBuilder(256);
+      ((StringBuilder)localObject2).append("releaseMultiDexIfNeeded ");
+      ((StringBuilder)localObject2).append(true);
+      ((StringBuilder)localObject2).append(" ");
+      ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+      QLog.d("plugin_tag", 1, ((StringBuilder)localObject2).toString());
+      break;
+      bool = true;
+      break label297;
+      bool = true;
+    }
+  }
+  
+  private static boolean a(String paramString1, String paramString2, File paramFile)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("plugin_tag", 2, String.format("unzip %s of file %s  into %s ", new Object[] { paramString2, paramString1, String.valueOf(paramFile) }));
+    }
+    Object localObject = null;
+    try
+    {
+      QZipFile localQZipFile = new QZipFile(paramString1);
+      localObject = localQZipFile;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        QLog.e("plugin_tag", 1, localIOException, new Object[0]);
+      }
+      paramString1 = localObject.entries();
+      ZipEntry localZipEntry;
+      do
+      {
+        if (!paramString1.hasMoreElements()) {
+          break;
+        }
+        localZipEntry = (ZipEntry)paramString1.nextElement();
+      } while ((localZipEntry.getName().contains("..")) || (!localZipEntry.getName().equals(paramString2)));
+      return a(paramFile, localObject, localZipEntry);
+    }
+    if (localObject == null)
+    {
+      QLog.e("plugin_tag", 1, String.format("unzip %s error", new Object[] { paramString1 }));
+      return false;
+    }
+    return false;
+  }
+  
+  private void c(PluginInfo paramPluginInfo, bind parambind)
+  {
+    int i = 1;
+    String str = paramPluginInfo.mID;
+    QLog.d("plugin_tag", 1, "doSetupPlugin." + str);
+    if (bimy.a(paramPluginInfo, this.jdField_a_of_type_AndroidContentContext))
+    {
+      QLog.d("plugin_tag", 1, "plugin still running");
+      if (parambind != null) {
+        parambind.e(str);
+      }
+      return;
+    }
+    if (!c(str)) {}
+    while (i != 0)
+    {
+      a(str, parambind);
+      return;
+      i = 0;
+    }
+    a(paramPluginInfo, parambind);
+  }
+  
+  private boolean c(String paramString)
+  {
+    if (!a()) {}
+    do
+    {
+      return false;
+      paramString = new File(this.b).list(new binb(this, paramString));
+    } while ((paramString == null) || (paramString.length <= 0));
+    return true;
+  }
+  
+  private boolean d(String paramString)
+  {
+    PluginInfo localPluginInfo = (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localPluginInfo != null) && (bimy.a(localPluginInfo, this.jdField_a_of_type_AndroidContentContext)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "plugin still running");
+      }
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+    a(paramString);
+    if ((localPluginInfo != null) && (localPluginInfo.mInstalledPath != null))
+    {
+      paramString = new File(localPluginInfo.mInstalledPath);
+      if (paramString.exists()) {
+        paramString.delete();
+      }
+    }
+    return true;
+  }
+  
+  public PluginInfo a(String paramString)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return null;
+    }
+    return (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    File localFile1 = a(this.jdField_a_of_type_AndroidContentContext);
+    boolean bool = bimy.a(localFile1);
+    File[] arrayOfFile = bimy.a(localFile1);
+    int i;
+    File localFile2;
+    Object localObject;
+    if (arrayOfFile != null)
+    {
+      int k = arrayOfFile.length;
+      i = 0;
+      if (i < k)
+      {
+        localFile2 = arrayOfFile[i];
+        if (localFile2.isFile())
+        {
+          if (!bool) {
+            break label149;
+          }
+          localObject = UpdatePluginVersion.a;
+          int m = localObject.length;
+          j = 0;
+          label70:
+          if (j >= m) {
+            break label251;
+          }
+          String str = localObject[j];
+          if ((InstallPlugins.a(str)) || (!localFile2.getName().equals(str + ".cfg"))) {
+            break label142;
+          }
+          d(str);
+        }
+      }
+    }
+    label142:
+    label149:
+    label251:
+    for (int j = 1;; j = 0)
+    {
+      if (j != 0) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        j += 1;
+        break label70;
+        localObject = bimy.a(localFile2);
+        if (localObject != null)
+        {
+          if (a((PluginInfo)localObject)) {
+            this.jdField_a_of_type_JavaUtilHashMap.put(((PluginInfo)localObject).mID, localObject);
+          }
+        }
+        else {
+          localFile2.delete();
+        }
+      }
+      if (bool) {
+        bimy.a(localFile1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "load installed plugin info. size:" + this.jdField_a_of_type_JavaUtilHashMap.size());
       }
       this.jdField_a_of_type_Boolean = true;
-      label147:
-      if (this.jdField_a_of_type_Boolean)
+      return;
+    }
+  }
+  
+  public void a(PluginInfo paramPluginInfo, bind parambind)
+  {
+    paramPluginInfo = new Pair(paramPluginInfo, parambind);
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(66816, paramPluginInfo).sendToTarget();
+  }
+  
+  public void a(String paramString, File paramFile, bind parambind)
+  {
+    int i = 1;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramFile);
+    if ((PluginUtils.isOsNeedReleaseDex()) && (bimr.a(paramString) > 1)) {
+      localArrayList.add(PluginUtils.getMultiDexSecondDex(this.jdField_a_of_type_AndroidContentContext, paramString));
+    }
+    for (;;)
+    {
+      try
       {
-        int j = baxn.a(this.jdField_a_of_type_AndroidAppActivity, 600.0F);
-        if (this.jdField_c_of_type_Int >= j) {
-          break label216;
+        long l1 = System.currentTimeMillis();
+        paramFile = Dex2Oat.a();
+        if (QLog.isColorLevel()) {
+          QLog.d("plugin_tag", 2, "dex2Oat targetISA = " + paramFile + " " + paramString + " " + localArrayList.size());
+        }
+        if (!TextUtils.isEmpty(paramFile))
+        {
+          File localFile = new File(PluginUtils.getOptimizedDexPath(this.jdField_a_of_type_AndroidContentContext).getCanonicalPath());
+          long l2 = System.currentTimeMillis();
+          boolean bool = Dex2Oat.a(localArrayList, localFile, true, paramFile, new binc(this));
+          l2 = System.currentTimeMillis() - l2;
+          paramFile = new StringBuilder("dex2Oat ");
+          paramFile.append(l2);
+          paramFile.append(", ");
+          paramFile.append(bool);
+          paramFile.append(", ");
+          paramFile.append(paramString);
+          QLog.w("plugin_tag", 1, paramFile.toString());
+          if (!bool) {
+            break label310;
+          }
+          azmc.a(paramString, i, l2);
+          l2 = System.currentTimeMillis();
+          if (parambind != null) {
+            parambind.a(paramString, "pluginOatCost", l2 - l1);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("plugin_tag", 2, "install finish " + paramString);
+          }
+        }
+        else
+        {
+          azmc.a(paramString, 3, 0L);
+          continue;
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+      label310:
+      i = 2;
+    }
+  }
+  
+  public boolean a(PluginInfo paramPluginInfo, bind parambind)
+  {
+    if (paramPluginInfo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "installDownLoadPlugin. info null.");
+      }
+      throw new NullPointerException("specified PluginInfo is null");
+    }
+    String str1 = paramPluginInfo.mID;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "installDownLoadPlugin." + str1);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (parambind != null) {
+        parambind.e(str1);
+      }
+      return false;
+    }
+    File localFile = new File(PluginUtils.getPluginInstallDir(this.jdField_a_of_type_AndroidContentContext), str1);
+    Object localObject = (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(str1);
+    int i;
+    if ((localObject != null) && (!paramPluginInfo.mMD5.equals(((PluginInfo)localObject).mMD5)))
+    {
+      i = 1;
+      label144:
+      if (!localFile.exists()) {
+        break label627;
+      }
+    }
+    label622:
+    label627:
+    for (boolean bool = a((PluginInfo)localObject);; bool = false)
+    {
+      if ((bool) && (i == 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("plugin_tag", 2, "plugin installed.");
+        }
+        if (parambind == null) {
+          break;
+        }
+        parambind.e(str1);
+        return false;
+        i = 0;
+        break label144;
+      }
+      if (!a())
+      {
+        if (parambind == null) {
+          break;
+        }
+        parambind.e(str1);
+        return false;
+      }
+      localObject = new File(new File(this.b), str1);
+      if (!bimy.a(paramPluginInfo, (File)localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("plugin_tag", 2, "install fail. download file invalid.");
+        }
+        ((File)localObject).delete();
+        if (parambind == null) {
+          break;
+        }
+        parambind.e(str1);
+        return false;
+      }
+      if (parambind != null) {
+        parambind.f(str1);
+      }
+      paramPluginInfo.mState = 3;
+      this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
+      bdcs.a((File)localObject, localFile);
+      if (!bimy.a(paramPluginInfo, localFile))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("plugin_tag", 2, "install fail. copy file invalid.");
+        }
+        localFile.delete();
+        if (parambind != null) {
+          parambind.b(false, str1);
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
+        return false;
+      }
+      for (;;)
+      {
+        try
+        {
+          String str2 = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, str1).getCanonicalPath();
+          str2 = PluginUtils.extractLibs(localFile.getCanonicalPath(), str2);
+          if (str2 == null) {
+            break label622;
+          }
+          QLog.d("plugin_tag", 1, "extractLibs " + str2);
+          i = 1;
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.d("plugin_tag", 1, "extractLibs ", localThrowable);
+          i = 1;
+          continue;
+          int j = 0;
+          continue;
+          if (!bing.a()) {
+            continue;
+          }
+          a(str1, localFile, parambind);
+          paramPluginInfo.mState = 4;
+          paramPluginInfo.mInstalledPath = localFile.getAbsolutePath();
+          paramPluginInfo.mFingerPrint = a();
+          this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
+          a(paramPluginInfo);
+          if (!((File)localObject).exists()) {
+            continue;
+          }
+          ((File)localObject).delete();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("plugin_tag", 2, "install finish.");
+          if (parambind == null) {
+            continue;
+          }
+          parambind.b(true, str1);
+          return true;
+        }
+        j = i;
+        if (i == 0)
+        {
+          if (!a(str1, localFile.getAbsolutePath())) {
+            j = 1;
+          }
+        }
+        else
+        {
+          if (j == 0) {
+            continue;
+          }
+          localFile.delete();
+          if (parambind != null) {
+            parambind.b(false, str1);
+          }
+          this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
+          return false;
+        }
+        i = 0;
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    paramString = (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((paramString != null) && (paramString.mState == 4)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "isPluginInstalled installed = " + bool);
+      }
+      return bool;
+    }
+  }
+  
+  public boolean a(String paramString, bind parambind)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "installBuiltinPlugin." + paramString);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (parambind != null) {
+        parambind.e(paramString);
+      }
+      return false;
+    }
+    if (!this.jdField_a_of_type_Bima.a(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "not built in plugin.");
+      }
+      if (parambind != null) {
+        parambind.e(paramString);
+      }
+      return false;
+    }
+    Object localObject1 = new File(PluginUtils.getPluginInstallDir(this.jdField_a_of_type_AndroidContentContext), paramString);
+    PluginInfo localPluginInfo1 = (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    boolean bool = false;
+    Object localObject3 = this.jdField_a_of_type_Bima.a(paramString);
+    if (localObject3 == null)
+    {
+      QLog.d("plugin_tag", 1, "plugin not builtin");
+      if (parambind != null) {
+        parambind.b(false, paramString);
+      }
+      return false;
+    }
+    if ((localObject3 != null) && (localPluginInfo1 != null) && (!((PluginInfo)localObject3).mMD5.equals(localPluginInfo1.mMD5))) {}
+    for (int i = 1;; i = 0)
+    {
+      if (((File)localObject1).exists()) {
+        bool = a(localPluginInfo1);
+      }
+      if ((!bool) || (i != 0)) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "plugin already installed.");
+      }
+      if (parambind != null) {
+        parambind.b(true, paramString);
+      }
+      return true;
+    }
+    if (parambind != null) {
+      parambind.f(paramString);
+    }
+    PluginInfo localPluginInfo2 = ((PluginInfo)localObject3).a();
+    localPluginInfo2.mState = 3;
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo2);
+    long l1 = System.currentTimeMillis();
+    Object localObject5 = "";
+    try
+    {
+      localObject7 = paramString.substring(0, paramString.indexOf(".apk"));
+      localObject3 = SoLoadCore.getReleasedSoFilePath(this.jdField_a_of_type_AndroidContentContext, (String)localObject7);
+      if (localObject3 != null) {
+        break label865;
+      }
+      localObject3 = SoLoadCore.releaseSo(this.jdField_a_of_type_AndroidContentContext, (String)localObject7);
+    }
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        Object localObject7;
+        Object localObject6;
+        label735:
+        Object localObject4 = localObject6;
+        continue;
+        localObject4 = localObject6;
+      }
+    }
+    if (localObject3 != null)
+    {
+      localObject7 = new File((String)localObject3);
+      try
+      {
+        localObject3 = localPluginInfo2.mMD5;
+        localObject1 = localObject7;
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          localObject4 = localObject6;
+          Object localObject2 = localObject7;
+        }
+      }
+      localObject5 = localObject3;
+      if (TextUtils.isEmpty((CharSequence)localObject3)) {}
+      try
+      {
+        localObject5 = PluginUtils.extractPluginAndGetMd5Code(this.jdField_a_of_type_AndroidContentContext, paramString, (File)localObject1);
+        localObject3 = localPluginInfo2.mMD5;
+        if (QLog.isColorLevel()) {
+          QLog.d("plugin_tag", 2, "md5:" + (String)localObject3 + " vs " + (String)localObject5);
+        }
+        bool = ((String)localObject5).equals(localObject3);
+        if ((0 == 0) && (bool))
+        {
+          long l2 = System.currentTimeMillis();
+          if (parambind != null) {
+            parambind.a(paramString, "pluginApkCost", l2 - l1);
+          }
+          i = 0;
+          try
+          {
+            localObject3 = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, paramString).getCanonicalPath();
+            l1 = System.currentTimeMillis();
+            localObject3 = PluginUtils.extractLibs(((File)localObject1).getCanonicalPath(), (String)localObject3);
+            l2 = System.currentTimeMillis();
+            if (parambind != null) {
+              parambind.a(paramString, "pluginLibCost", l2 - l1);
+            }
+            if (localObject3 != null)
+            {
+              QLog.d("plugin_tag", 1, "extractLibs " + (String)localObject3);
+              i = 1;
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            for (;;)
+            {
+              float f;
+              QLog.d("plugin_tag", 1, "extractLibs ", localThrowable);
+              i = 1;
+              continue;
+              int j = 0;
+            }
+          }
+          j = i;
+          if (i == 0)
+          {
+            if (!a(paramString, ((File)localObject1).getAbsolutePath())) {
+              j = 1;
+            }
+          }
+          else
+          {
+            if (j == 0) {
+              break label735;
+            }
+            ((File)localObject1).delete();
+            if (parambind != null) {
+              parambind.b(false, paramString);
+            }
+            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo1);
+            return false;
+          }
+        }
+      }
+      catch (Exception localException3)
+      {
+        for (;;)
+        {
+          f = bdcs.a();
+          QLog.d("plugin_tag", 1, "extractPluginAndGetMd5Code failed installPath = " + localObject1 + ", leftSpace = " + f, localException3);
+          localObject6 = localObject3;
+        }
+        if (parambind != null) {
+          parambind.b(false, paramString);
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo1);
+        return false;
+      }
+      if (bing.a()) {
+        a(paramString, (File)localObject1, parambind);
+      }
+      localPluginInfo2.mLength = ((File)localObject1).length();
+      localPluginInfo2.mState = 4;
+      localPluginInfo2.mInstalledPath = ((File)localObject1).getAbsolutePath();
+      localPluginInfo2.mMD5 = localObject6;
+      localPluginInfo2.mFingerPrint = a();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo2);
+      a(localPluginInfo2);
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "install finish");
+      }
+      if (parambind != null) {
+        parambind.b(true, paramString);
+      }
+      return true;
+    }
+  }
+  
+  public void b(PluginInfo paramPluginInfo, bind parambind)
+  {
+    paramPluginInfo = new Pair(paramPluginInfo, parambind);
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(67072, paramPluginInfo).sendToTarget();
+  }
+  
+  public boolean b(PluginInfo paramPluginInfo, bind parambind)
+  {
+    String str = paramPluginInfo.mID;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "doDex2OatPlugin." + str);
+    }
+    PluginInfo localPluginInfo = a(str);
+    if ((localPluginInfo != null) && (localPluginInfo.mState == 4)) {
+      QLog.d("plugin_tag", 1, "doDex2OatPlugin. already " + str);
+    }
+    for (;;)
+    {
+      if (parambind != null) {
+        parambind.b(true, str);
+      }
+      return true;
+      if (bimy.a(paramPluginInfo, this.jdField_a_of_type_AndroidContentContext))
+      {
+        QLog.d("plugin_tag", 1, "doDex2OatPlugin. isPluginRunning " + str);
+      }
+      else
+      {
+        a(str, new File(PluginUtils.getPluginInstallDir(this.jdField_a_of_type_AndroidContentContext), str), parambind);
+        paramPluginInfo.mState = 4;
+        paramPluginInfo.mFingerPrint = a();
+        a(paramPluginInfo);
+        if (QLog.isColorLevel()) {
+          QLog.d("plugin_tag", 2, "doDex2OatPlugin finish");
         }
       }
     }
-    label208:
-    label216:
-    float f1;
-    for (this.jdField_f_of_type_Int = baxn.a(this.jdField_a_of_type_AndroidAppActivity, 58.799999F);; this.jdField_f_of_type_Int = baxn.a(this.jdField_a_of_type_AndroidAppActivity, 147.0F - f1 * 88.199997F))
-    {
-      e();
-      return;
-      this.jdField_a_of_type_Int = ((int)(0.6666667F * this.jdField_b_of_type_Int));
-      break;
-      this.jdField_a_of_type_Boolean = false;
-      break label147;
-      f1 = (i - this.jdField_c_of_type_Int) / baxn.a(this.jdField_a_of_type_AndroidAppActivity, 100.0F);
-    }
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 262145: 
-      q();
-      return;
-    case 262146: 
-      a(paramVarArgs);
-      return;
-    case 262147: 
-      p();
-      return;
-    case 262148: 
-      b(paramVarArgs);
-      return;
-    }
-    n();
-  }
-  
-  public void g()
+  public boolean b(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("VideoStoryCapturePart", 2, "onDestroy()");
+      QLog.d("plugin_tag", 2, "uninstallPlugin." + paramString);
     }
-    bkmp.a().onDestroy();
-    super.g();
-    b(false);
+    if (!this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    return d(paramString);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 66816: 
+      paramMessage = (Pair)paramMessage.obj;
+      c((PluginInfo)paramMessage.first, (bind)paramMessage.second);
+      return true;
+    }
+    paramMessage = (Pair)paramMessage.obj;
+    b((PluginInfo)paramMessage.first, (bind)paramMessage.second);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bina
  * JD-Core Version:    0.7.0.1
  */

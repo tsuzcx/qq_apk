@@ -1,140 +1,84 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bdii
 {
-  protected static String a;
-  protected static boolean a;
-  
-  static
+  public static int a()
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaLangString += ".*[S|s][I|i][D|d].*";
-    jdField_a_of_type_JavaLangString += "|.*==.*";
-    jdField_a_of_type_JavaLangString += "|.*[U|u][I|i][N|n].*";
-    jdField_a_of_type_JavaLangString += "|.*%3d%3d.*";
-    jdField_a_of_type_JavaLangString += "|.*[V|v][K|k][E|e][Y|y]";
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_versioncode", 0);
   }
   
-  protected static void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  public static void a(int paramInt)
   {
-    if (jdField_a_of_type_Boolean) {
-      if (paramInt == 1)
-      {
-        if (paramThrowable != null) {
-          break label187;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-    }
-    label98:
-    do
-    {
-      break label186;
-      if ((paramInt == 2) || (paramInt == 0))
-      {
-        if (paramThrowable != null) {
-          break label226;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-      if (paramInt == 3)
-      {
-        if (paramThrowable != null) {
-          break label265;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-      for (;;)
-      {
-        if (paramInt == 4)
-        {
-          if (paramThrowable != null) {
-            break label304;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e(paramString1, 2, "" + "::" + paramString2);
-          }
-        }
-        return;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        break;
-        if (!QLog.isColorLevel()) {
-          break label98;
-        }
-        QLog.d(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        break label98;
-        if (QLog.isColorLevel()) {
-          QLog.w(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    label186:
-    label187:
-    label226:
-    QLog.e(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-    label265:
-    label304:
-    return;
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putInt("key_versioncode", paramInt);
+    localEditor.apply();
   }
   
-  public static void a(String paramString1, String paramString2)
+  public static void a(boolean paramBoolean)
   {
-    a(0, paramString1, paramString2, null);
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(2, paramString1, paramString2, paramThrowable);
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putBoolean("key_predownload_success_key", paramBoolean);
+    localEditor.apply();
   }
   
   public static boolean a()
   {
-    return jdField_a_of_type_Boolean;
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_predownload_success_key", false);
   }
   
-  public static void b(String paramString1, String paramString2)
+  public static boolean a(int paramInt)
   {
-    a(1, paramString1, paramString2, null);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0);
+    if (localSharedPreferences.getInt("key_normal_upgrade_version", 0) != paramInt) {}
+    while (!localSharedPreferences.getBoolean("key_normal_upgrade", false)) {
+      return true;
+    }
+    return false;
   }
   
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  public static int b()
   {
-    a(3, paramString1, paramString2, paramThrowable);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_dialog_versioncode", 0);
   }
   
-  public static void c(String paramString1, String paramString2)
+  public static void b(int paramInt)
   {
-    a(2, paramString1, paramString2, null);
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putInt("key_dialog_versioncode", paramInt);
+    localEditor.apply();
   }
   
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  public static void b(boolean paramBoolean)
   {
-    a(4, paramString1, paramString2, paramThrowable);
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putBoolean("key_has_show_upgrade_dialog", paramBoolean);
+    localEditor.apply();
   }
   
-  public static void d(String paramString1, String paramString2)
+  public static boolean b()
   {
-    a(3, paramString1, paramString2, null);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_has_show_upgrade_dialog", false);
   }
   
-  public static void e(String paramString1, String paramString2)
+  public static void c(int paramInt)
   {
-    a(4, paramString1, paramString2, null);
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putInt("key_normal_upgrade_version", paramInt);
+    localEditor.apply();
+  }
+  
+  public static void c(boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putBoolean("key_normal_upgrade", paramBoolean);
+    localEditor.apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdii
  * JD-Core Version:    0.7.0.1
  */

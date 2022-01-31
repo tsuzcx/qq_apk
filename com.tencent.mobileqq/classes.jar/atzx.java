@@ -1,60 +1,71 @@
-import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class atzx
-  implements ajte
 {
-  public void a(int paramInt, String paramString, aubh paramaubh) {}
+  Map<String, atzw> a = new ConcurrentHashMap();
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult) {}
-  
-  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  atzw a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      if ((paramObject != null) && (paramObject.length == 2))
-      {
-        a(paramBoolean, (String)paramObject[0], (List)paramObject[1]);
-        return;
-      }
-      a(false, "", null);
-      return;
-    case 2: 
-      Object localObject = (Object[])paramObject;
-      if ((paramObject != null) && (localObject.length == 2))
-      {
-        paramObject = (Integer)localObject[0];
-        localObject = (TranslateResult)localObject[1];
-        if (localObject != null)
-        {
-          a(paramBoolean, paramObject.intValue(), (TranslateResult)localObject);
-          return;
-        }
-        a(false, paramObject.intValue(), null);
-        return;
-      }
-      a(false, -1, null);
-      return;
+    atzw localatzw = (atzw)this.a.get(paramString);
+    if ((localatzw != null) && (paramBoolean)) {
+      if (!a(localatzw, paramInt1, paramInt2)) {}
     }
-    paramObject = (Object[])paramObject;
-    if ((paramObject != null) && (paramObject.length == 3))
+    while (!QLog.isColorLevel())
     {
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (aubh)paramObject[2]);
-      return;
+      return localatzw;
+      return null;
     }
-    a(-1, "", null);
+    QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache invalid. cacheKey=", paramString });
+    return localatzw;
+  }
+  
+  void a(atzw paramatzw, int paramInt, atzz paramatzz)
+  {
+    ThreadManagerV2.excute(new MiniAppInfoManager.1(this, paramatzz, paramatzw, paramInt), 128, null, true);
+  }
+  
+  boolean a(atzw paramatzw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyAppInfo. appState=", Integer.valueOf(paramatzw.jdField_c_of_type_Int) });
+    }
+    return (paramatzw != null) && (paramatzw.jdField_c_of_type_Int == 1);
+  }
+  
+  boolean a(atzw paramatzw, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache valid. cacheKey=", paramatzw.h });
+    }
+    if (paramInt2 == 1)
+    {
+      if (paramatzw.jdField_c_of_type_Long <= NetConnInfoCenter.getServerTimeMillis()) {}
+    }
+    else {
+      while ((paramInt2 == 0) && (((paramInt1 == 1) && (paramatzw.a > NetConnInfoCenter.getServerTimeMillis())) || ((paramInt1 == 2) && (paramatzw.b > NetConnInfoCenter.getServerTimeMillis())))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  boolean b(atzw paramatzw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyDownloadUrl. downloadUrl=", paramatzw.f });
+    }
+    return !TextUtils.isEmpty(paramatzw.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atzx
  * JD-Core Version:    0.7.0.1
  */

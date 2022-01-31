@@ -1,173 +1,132 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import android.os.Bundle;
+import android.util.Log;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import eipc.EIPCResult;
 
 public class amlk
-  implements anfw
+  extends QIPCModule
 {
-  private static final angy jdField_a_of_type_Angy = new amll();
-  private static final String jdField_a_of_type_JavaLangString = amlk.class.getSimpleName();
-  private amln jdField_a_of_type_Amln;
-  private amlo jdField_a_of_type_Amlo;
-  private angz jdField_a_of_type_Angz;
-  private DanmakuManager jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+  private static volatile amlk jdField_a_of_type_Amlk;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public anga a(amlp paramamlp)
+  private amlk(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (paramamlp != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramamlp);
-    }
-    return null;
+    super(paramString);
   }
   
-  public void a()
+  public static amlk a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a();
+    if (jdField_a_of_type_Amlk != null) {
+      return jdField_a_of_type_Amlk;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Angz != null)
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      this.jdField_a_of_type_Angz.b(paramInt);
-      if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.h();
+      if (jdField_a_of_type_Amlk != null)
+      {
+        amlk localamlk1 = jdField_a_of_type_Amlk;
+        return localamlk1;
       }
     }
+    jdField_a_of_type_Amlk = new amlk("soso_interface");
+    amlk localamlk2 = jdField_a_of_type_Amlk;
+    return localamlk2;
   }
   
-  public void a(long paramLong)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b(paramLong);
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("SOSO.LBS.SosoInterfaceModule", 2, "onCall s: " + paramString);
     }
-  }
-  
-  public void a(amln paramamln)
-  {
-    this.jdField_a_of_type_Amln = paramamln;
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(this);
-    }
-  }
-  
-  public void a(amlo paramamlo)
-  {
-    this.jdField_a_of_type_Amlo = paramamlo;
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_Angz = angj.a();
-    this.jdField_a_of_type_Angz.a(3);
-    this.jdField_a_of_type_Angz.c(7000);
-    this.jdField_a_of_type_Angz.f(8.0F);
-    this.jdField_a_of_type_Angz.c(12.0F);
-    this.jdField_a_of_type_Angz.b(12.0F);
-    this.jdField_a_of_type_Angz.b(false);
-    this.jdField_a_of_type_Angz.d(true);
-    angl localangl = angj.a();
-    localangl.a(new amlm(this));
-    localangl.a(-4);
-    localangl.a(new amlq(paramContext));
-    paramContext = localangl.a();
-    angx.a(jdField_a_of_type_Angy);
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = new DanmakuManager(paramView, paramContext);
-  }
-  
-  public void a(anga paramanga, anhx paramanhx, anhn paramanhn) {}
-  
-  public void a(DanmuItemBean paramDanmuItemBean)
-  {
-    if ((paramDanmuItemBean != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null))
+    long l;
+    boolean bool2;
+    if ("get_lbs_info".equals(paramString))
     {
-      paramDanmuItemBean = new amlp(paramDanmuItemBean);
-      paramDanmuItemBean = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramDanmuItemBean);
-      paramDanmuItemBean.e(true);
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramDanmuItemBean);
+      bool1 = paramBundle.getBoolean("req_location");
+      l = paramBundle.getLong("max_cache_interval");
+      bool2 = paramBundle.getBoolean("goon");
+      paramInt = paramBundle.getInt("level");
     }
-  }
-  
-  public void a(List<anga> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "addDanmakuList danmakuList is null");
+    label243:
+    do
+    {
+      try
+      {
+        paramString = SosoInterface.a(l, bool2, paramInt, bool1);
+        if (QLog.isColorLevel())
+        {
+          paramBundle = new StringBuilder().append("onCall action on get lbs info : maxCacheInterval: ").append(l).append(" goonListener: ").append(bool2).append(" level: ").append(paramInt).append(" reqLocation:").append(bool1).append(" lbsInfo is null: ");
+          if (paramString == null)
+          {
+            bool1 = true;
+            QLog.i("SOSO.LBS.SosoInterfaceModule", 2, bool1);
+          }
+        }
+        else
+        {
+          paramBundle = new Bundle();
+          localObject1 = new EIPCResult();
+          ((EIPCResult)localObject1).data = paramBundle;
+          if (paramString == null) {
+            break label243;
+          }
+          ((EIPCResult)localObject1).code = 0;
+          paramBundle.putParcelable("soso_lbs_info", paramString);
+          return localObject1;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramString = (String)localObject1;
+          if (QLog.isColorLevel())
+          {
+            QLog.i("SOSO.LBS.SosoInterfaceModule", 2, Log.getStackTraceString(paramBundle));
+            paramString = (String)localObject1;
+            continue;
+            bool1 = false;
+            continue;
+            ((EIPCResult)localObject1).code = -102;
+          }
+        }
+      }
+      localObject1 = localObject2;
+    } while (!"set_lbs_info".equals(paramString));
+    paramBundle.setClassLoader(SosoInterface.class.getClassLoader());
+    boolean bool1 = paramBundle.getBoolean("req_location");
+    localObject1 = new Bundle();
+    paramString = new EIPCResult();
+    paramString.data = ((Bundle)localObject1);
+    if (bool1) {}
+    try
+    {
+      SosoInterface.a(paramBundle.getInt("level"), (SosoInterface.SosoLbsInfo)paramBundle.getParcelable("soso_lbs_info"));
+      for (;;)
+      {
+        paramString.code = 0;
+        return paramString;
+        SosoInterface.a(paramBundle.getString("prodiver"), paramBundle.getByteArray("raw_data"));
       }
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramList);
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d());
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    catch (Exception paramBundle)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.g();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.l();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = null;
-    }
-  }
-  
-  public void b(List<anga> paramList)
-  {
-    if ((this.jdField_a_of_type_Amln != null) && (!b())) {
-      this.jdField_a_of_type_Amln.b();
-    }
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a());
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.e();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.c();
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b();
-    }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Amln != null) {
-      this.jdField_a_of_type_Amln.a();
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("SOSO.LBS.SosoInterfaceModule", 2, Log.getStackTraceString(paramBundle));
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlk
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import nkw;
+import nns;
 
 public class EncryptUinInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<EncryptUinInfo> CREATOR = new nkw();
+  public static final Parcelable.Creator<EncryptUinInfo> CREATOR = new nns();
   public int a;
   public long a;
   public String a;
@@ -36,7 +36,7 @@ public class EncryptUinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.EncryptUinInfo
  * JD-Core Version:    0.7.0.1
  */

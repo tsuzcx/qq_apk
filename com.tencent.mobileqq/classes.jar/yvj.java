@@ -1,27 +1,32 @@
-import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
 public class yvj
 {
-  public float a;
-  public float b;
-  public View f;
-  public View g;
-  public View h;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
-  public int o;
+  private static final String jdField_a_of_type_JavaLangString = yvj.class.getName();
+  private static yvh jdField_a_of_type_Yvh;
+  private static String b;
+  private static String c;
   
-  public String toString()
+  public static yvh a()
   {
-    return " \nvideoViewScaleXby " + this.a + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
+    if (b == null) {
+      b = BaseApplicationImpl.getApplication().getPackageName();
+    }
+    if (c == null) {
+      c = BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath();
+    }
+    if (jdField_a_of_type_Yvh == null)
+    {
+      jdField_a_of_type_Yvh = new yvk(b, c);
+      wsv.b(jdField_a_of_type_JavaLangString, "init FileCache");
+    }
+    return jdField_a_of_type_Yvh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvj
  * JD-Core Version:    0.7.0.1
  */

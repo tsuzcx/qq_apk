@@ -1,39 +1,24 @@
-import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class abxu
-  implements aioc
+  implements View.OnTouchListener
 {
-  public abxu(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public abxu(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    RecommendFriendActivity.a(this.a).setVisibility(0);
-  }
-  
-  public void a(String paramString)
-  {
-    RecommendFriendActivity.a(this.a, paramString);
-  }
-  
-  public void a(List<MayKnowRecommend> paramList)
-  {
-    Intent localIntent = this.a.getIntent();
-    int i = localIntent.getIntExtra("EntranceId", 0);
-    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
-  }
-  
-  public void b()
-  {
-    RecommendFriendActivity.a(this.a).setVisibility(8);
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxu
  * JD-Core Version:    0.7.0.1
  */

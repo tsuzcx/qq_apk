@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import android.view.View;
-import mcz;
+import mfp;
 
 public class EffectSettingBtn$2
   implements Runnable
@@ -10,15 +10,15 @@ public class EffectSettingBtn$2
   {
     if (!this.this$0.b)
     {
-      this.this$0.a.postDelayed(mcz.a(this.this$0), 1000L);
+      this.this$0.a.postDelayed(mfp.a(this.this$0), 1000L);
       return;
     }
-    mcz.a(this.this$0);
+    mfp.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingBtn.2
  * JD-Core Version:    0.7.0.1
  */

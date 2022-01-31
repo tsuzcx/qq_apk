@@ -1,29 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
 public class yyg
-  extends yyh
+  extends yyk
 {
-  yyg(yyf paramyyf) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2)
+  public yyg(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
   {
-    yxp.a("GdtC2SReporter", "onCheckC2SReport: " + paramInt + "， request ADID: " + paramString2);
-    yyc.a(BaseApplicationImpl.getApplication(), this.a, paramInt, this.a.jdField_a_of_type_Long);
-    this.a.jdField_a_of_type_Long = -2147483648L;
-    if (yyf.a(this.a).equals(paramString2))
-    {
-      axqy.a(null, "dc00898", "", "", "0X8009EBD", "0X8009EBD", this.a.jdField_a_of_type_Int, paramInt, "", "", yyf.a(this.a), "");
-      if ((paramInt != 1) && (paramInt != 2)) {
-        ThreadManager.executeOnNetWorkThread(new GdtC2SReportInterface.1.1(this));
-      }
-    }
+    super(paramAbsBaseWebViewActivity, null);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yyg
  * JD-Core Version:    0.7.0.1
  */

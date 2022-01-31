@@ -1,37 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class vcz
-  extends ssv
+public class vcz
+  extends unf
 {
-  vcz(vcp paramvcp) {}
+  public final String a;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public vcz(qqstory_service.RspGetLocation paramRspGetLocation)
   {
-    if ((vcp.a(this.a) == null) || (vcp.a(this.a).a == null))
-    {
-      ved.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
-      return;
-    }
-    String str = vcp.a(this.a).a.a;
-    if (!TextUtils.equals(str, paramStoryPushMsg.d))
-    {
-      ved.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
-      return;
-    }
-    switch (paramStoryPushMsg.a)
-    {
-    case 16: 
-    case 17: 
-    default: 
-      return;
-    }
-    this.a.a(new uzy[] { new uzt(uzb.a(str)), (uzy)this.a.b.a(), new uzs(new vda(this, str)) });
+    this.a = paramRspGetLocation.country.get().toStringUtf8();
+    this.c = paramRspGetLocation.province.get().toStringUtf8();
+    this.d = paramRspGetLocation.city.get().toStringUtf8();
+    this.e = paramRspGetLocation.district.get().toStringUtf8();
+    this.f = paramRspGetLocation.street.get().toStringUtf8();
+  }
+  
+  public String toString()
+  {
+    return "GetLocationResponse{mCountry='" + this.a + '\'' + ", mProvince='" + this.c + '\'' + ", mCity='" + this.d + '\'' + ", mDistrict='" + this.e + '\'' + ", mStreet='" + this.f + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcz
  * JD-Core Version:    0.7.0.1
  */

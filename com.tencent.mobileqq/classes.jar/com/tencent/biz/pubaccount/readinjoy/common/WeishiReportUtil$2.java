@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import oob;
-import osx;
-import sgg;
+import osm;
+import oxp;
+import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class WeishiReportUtil$2
@@ -19,7 +19,7 @@ public final class WeishiReportUtil$2
     oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(1);
     localAttributeList.att_name.set("ExitType");
-    localAttributeList.att_value.set(oob.a(this.jdField_a_of_type_Int));
+    localAttributeList.att_value.set(osm.a(this.jdField_a_of_type_Int));
     localArrayList.add(localAttributeList);
     localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(2);
@@ -29,7 +29,7 @@ public final class WeishiReportUtil$2
     localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(3);
     localAttributeList.att_name.set("Time");
-    localAttributeList.att_value.set(String.valueOf(osx.a(this.jdField_a_of_type_Long) / 1000L));
+    localAttributeList.att_value.set(String.valueOf(oxp.a(this.jdField_a_of_type_Long) / 1000L));
     localArrayList.add(localAttributeList);
     if (!"1".equals(this.jdField_a_of_type_JavaLangString))
     {
@@ -49,12 +49,12 @@ public final class WeishiReportUtil$2
       localAttributeList.att_value.set("" + this.d);
       localArrayList.add(localAttributeList);
     }
-    sgg.a(26, localArrayList);
+    syb.a(26, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.2
  * JD-Core Version:    0.7.0.1
  */

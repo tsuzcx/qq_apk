@@ -1,150 +1,215 @@
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.videostory.network.observer.VSDispatchObserver.1;
-import com.tencent.biz.videostory.network.observer.VSDispatchObserver.2;
-import com.tencent.biz.videostory.network.observer.VSDispatchObserver.3;
-import com.tencent.biz.videostory.network.observer.VSDispatchObserver.4;
-import com.tencent.biz.videostory.network.observer.VSDispatchObserver.5;
-import com.tencent.biz.videostory.network.observer.VSDispatchObserver.6;
-import com.tencent.biz.videostory.network.observer.VSDispatchObserver.7;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
+import com.tribe.async.async.JobContext;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
 
 public class xgt
-  implements BusinessObserver
+  extends xhf<xgs, xgs>
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private volatile ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, xgu>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public final int a;
+  public final String a;
+  public final WeakReference<wtj> a;
+  public final WeakReference<wtk> b;
   
-  private void a(int paramInt, Bundle paramBundle, boolean paramBoolean)
+  public xgt(wtj paramwtj)
   {
-    Object localObject2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    if (localObject2 == null)
-    {
-      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: cmdCallback has All Removed");
-      return;
+    this(paramwtj, null, 0);
+  }
+  
+  public xgt(wtj paramwtj, wtk paramwtk, int paramInt)
+  {
+    this(paramwtj, paramwtk, null, paramInt);
+  }
+  
+  public xgt(wtj paramwtj, wtk paramwtk, String paramString, int paramInt)
+  {
+    if (paramwtj == null) {
+      throw new NullPointerException("doodleLayout should not be null");
     }
-    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramBundle.getSerializable("key_request_data");
-    if (localVSBaseRequest == null)
-    {
-      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: request is null");
-      return;
-    }
-    if (((ConcurrentHashMap)localObject2).get(Integer.valueOf(localVSBaseRequest.getCurrentSeq())) == null)
-    {
-      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | cmdCallback SeqId:" + localVSBaseRequest.getCurrentSeq() + " is Null or has Removed");
-      return;
-    }
-    Object localObject1 = (FromServiceMsg)paramBundle.getParcelable("key_response_msg");
-    long l1 = paramBundle.getLong("key_send_timestamp");
-    paramBundle = (xgu)((ConcurrentHashMap)localObject2).remove(Integer.valueOf(localVSBaseRequest.getCurrentSeq()));
-    if (paramBundle == null)
-    {
-      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | cmdCallback SeqId:" + localVSBaseRequest.getCurrentSeq() + " onVSRspCallBack is Null or removed");
-      return;
-    }
-    if (localObject1 != null)
-    {
-      localObject2 = new PROTOCAL.StQWebRsp();
-      long l2;
-      MessageMicro localMessageMicro;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramwtj);
+    this.b = new WeakReference(paramwtk);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
+  {
+    if ((paramInt + 90) % 180 == 0) {
       try
       {
-        ((PROTOCAL.StQWebRsp)localObject2).mergeFrom(bbma.b(((FromServiceMsg)localObject1).getWupBuffer()));
-        l2 = ((PROTOCAL.StQWebRsp)localObject2).retCode.get();
-        localObject1 = ((PROTOCAL.StQWebRsp)localObject2).errMsg.get().toStringUtf8();
-        localObject2 = ((PROTOCAL.StQWebRsp)localObject2).busiBuff.get().toByteArray();
-        localMessageMicro = localVSBaseRequest.decode((byte[])localObject2);
-        if (localMessageMicro == null)
+        wsv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateOrientation begin!");
+        long l = System.currentTimeMillis();
+        int i = paramBitmap.getWidth();
+        int j = paramBitmap.getHeight();
+        Matrix localMatrix = new Matrix();
+        localMatrix.reset();
+        localMatrix.postRotate(paramInt);
+        paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
+        wsv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateOrientation end, cost:" + (System.currentTimeMillis() - l) / 1000.0D);
+        return paramBitmap;
+      }
+      catch (Exception paramBitmap)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.publish.edit.GenerateDoodleImageSegment", 2, "rotate exception:" + paramBitmap);
+        }
+        return null;
+      }
+    }
+    return null;
+  }
+  
+  protected void a(JobContext paramJobContext, xgs paramxgs)
+  {
+    long l1 = SystemClock.uptimeMillis();
+    String str = paramxgs.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(str))
+    {
+      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
+      wta.b("take_video", "create_doodle_result", 0, -1, new String[0]);
+      return;
+    }
+    wtj localwtj = (wtj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject2 = (wtk)this.b.get();
+    if ((localwtj != null) && ((!localwtj.a(this.jdField_a_of_type_Int)) || ((localObject2 != null) && (((wtk)localObject2).a(this.jdField_a_of_type_Int)))))
+    {
+      paramJobContext = localwtj.a().a(this.jdField_a_of_type_Int);
+      if (paramJobContext == null) {}
+    }
+    Bitmap localBitmap;
+    for (Object localObject1 = xhi.a(paramxgs.jdField_a_of_type_Int, paramxgs.b, "mosaic.png");; localObject1 = localBitmap) {
+      for (;;)
+      {
+        try
         {
-          a().post(new VSDispatchObserver.2(this, paramBundle, l2, (String)localObject1));
+          xmn.a(paramJobContext, (String)localObject1, null);
+          paramxgs.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mosaicPath = ((String)localObject1);
+          wsv.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateMosaicBitmap success %s", localObject1);
+          localBitmap = localwtj.a(this.jdField_a_of_type_Int);
+          localObject1 = this.jdField_a_of_type_JavaLangString;
+          paramJobContext = (JobContext)localObject1;
+          if (localObject1 == null) {
+            paramJobContext = xhi.a(paramxgs.jdField_a_of_type_Int, paramxgs.b, ".png");
+          }
+          if (localBitmap == null) {
+            break label696;
+          }
+          if (localObject2 != null) {}
+          int i;
+          int j;
+          long l2;
+          bool = xmn.a((Bitmap)localObject1, Bitmap.CompressFormat.PNG, 60, paramJobContext);
+        }
+        catch (IOException paramJobContext)
+        {
+          try
+          {
+            if (((wtk)localObject2).a(this.jdField_a_of_type_Int)) {
+              ((wtk)localObject2).a(this.jdField_a_of_type_Int, new Canvas(localBitmap), localBitmap.getWidth(), localBitmap.getHeight());
+            }
+            i = paramxgs.jdField_a_of_type_Xgy.c;
+            j = paramxgs.jdField_a_of_type_Int;
+            if ((j != 2) && (j != 3) && (j != 5) && (j != 101) && (j != 104) && (j != 6)) {
+              break;
+            }
+            localObject1 = a(localBitmap, i);
+            if (localObject1 == null) {
+              break;
+            }
+            localObject2 = new BitmapFactory.Options();
+            ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
+            try
+            {
+              bdda.a(str, (BitmapFactory.Options)localObject2);
+              localObject1 = xmn.c((Bitmap)localObject1, ((BitmapFactory.Options)localObject2).outWidth, ((BitmapFactory.Options)localObject2).outHeight, true, false);
+              if (localObject1 == null) {
+                break label764;
+              }
+              if (paramxgs.jdField_a_of_type_Int != 1) {
+                break label622;
+              }
+              str = xhi.a(paramxgs.jdField_a_of_type_Int, paramxgs.b, ".png");
+            }
+            catch (OutOfMemoryError paramJobContext)
+            {
+              wsv.b("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "decode video thumb failed %s", paramJobContext);
+              super.notifyError(new BitmapError("Q.qqstory.publish.edit.GenerateDoodleImageSegment", 6));
+              return;
+            }
+            try
+            {
+              xmn.a((Bitmap)localObject1, str, null);
+              paramxgs.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodleRawPath = str;
+              bool = true;
+              paramJobContext = null;
+            }
+            catch (Throwable localThrowable)
+            {
+              wsv.c("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "serializeBitmapToFile failed", localThrowable);
+              bool = xmn.a((Bitmap)localObject1, Bitmap.CompressFormat.PNG, 60, paramJobContext);
+              continue;
+            }
+            localwtj.a(localBitmap);
+            if (localObject1 != localBitmap) {
+              xmn.a((Bitmap)localObject1);
+            }
+            if ((localObject1 == null) || (!bool)) {
+              break label650;
+            }
+            wsv.b("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "resize and crop original doodle image success");
+            l2 = SystemClock.uptimeMillis();
+            wta.b("take_video", "create_doodle_time", 0, 0, new String[] { "" + (l2 - l1) });
+            wta.b("take_video", "create_doodle_result", 0, 0, new String[0]);
+            paramxgs.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = paramJobContext;
+            super.notifyResult(paramxgs);
+            return;
+          }
+          finally
+          {
+            localwtj.a(localBitmap);
+          }
+          paramJobContext = paramJobContext;
+          wsv.c("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "serializeBitmapToFile failed", paramJobContext);
+          super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
           return;
         }
-      }
-      catch (Exception localException)
-      {
-        a().post(new VSDispatchObserver.4(this, paramBundle, localException));
+        label622:
+        continue;
+        label650:
+        wsv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "resize and save doodle image failed");
+        wta.b("take_video", "create_doodle_result", 0, -2, new String[0]);
+        paramxgs.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
+        super.notifyError(new ErrorMessage(-1, "Resize or store doodle failed"));
         return;
+        label696:
+        wsv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "get doodle bitmap failed");
+        wta.b("take_video", "create_doodle_result", 0, -2, new String[0]);
+        paramxgs.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
+        super.notifyError(new ErrorMessage(-1, "DoodleLayout get bitmap failed"));
+        return;
+        wsv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "do not generate doodle image because doodle is empty");
+        paramxgs.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
+        super.notifyResult(paramxgs);
+        return;
+        label764:
+        boolean bool = false;
       }
-      a().post(new VSDispatchObserver.3(this, paramBoolean, l2, localException, (byte[])localObject2, paramBundle, (String)localObject1, localMessageMicro, l1));
-      return;
     }
-    a().post(new VSDispatchObserver.5(this, paramBundle));
-  }
-  
-  private void a(VSBaseRequest paramVSBaseRequest, byte[] paramArrayOfByte)
-  {
-    if (bbkk.a(paramVSBaseRequest.getRequestKey()))
-    {
-      ved.d("VSNetworkHelper| Protocol Cache", "requestKey is empty");
-      return;
-    }
-    ThreadManagerV2.executeOnFileThread(new VSDispatchObserver.6(this, paramVSBaseRequest, paramArrayOfByte));
-  }
-  
-  public Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-  }
-  
-  public void a(VSBaseRequest paramVSBaseRequest, MessageMicro paramMessageMicro)
-  {
-    a().post(new VSDispatchObserver.7(this, paramVSBaseRequest, paramMessageMicro));
-  }
-  
-  public void a(VSBaseRequest paramVSBaseRequest, xgu paramxgu)
-  {
-    int i = paramVSBaseRequest.getCmdName().hashCode();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i)) == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), new ConcurrentHashMap());
-    }
-    try
-    {
-      ((ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i))).put(Integer.valueOf(paramVSBaseRequest.getNewSeq()), paramxgu);
-      return;
-    }
-    catch (Exception paramVSBaseRequest)
-    {
-      paramVSBaseRequest.printStackTrace();
-      QLog.e("VSNetworkHelper", 1, "setCallBack exception occur!" + paramVSBaseRequest.toString());
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (paramString != null)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramString.hashCode()));
-    }
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    ThreadManagerV2.excute(new VSDispatchObserver.1(this, paramInt, paramBundle, paramBoolean), 16, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgt
  * JD-Core Version:    0.7.0.1
  */

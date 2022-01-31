@@ -1,51 +1,33 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
 import android.view.View;
-import android.view.View.DragShadowBuilder;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager.1;
 
-@TargetApi(11)
-class attf
-  extends View.DragShadowBuilder
+public class attf
+  implements View.OnClickListener
 {
-  public int a;
+  public attf(PngFrameManager.1 param1) {}
   
-  public attf(atsc paramatsc, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Atsc.a.f * 1.4D));
-  }
-  
-  public void onDrawShadow(Canvas paramCanvas)
-  {
-    getView().setDrawingCacheEnabled(false);
-    getView().setDrawingCacheEnabled(true);
-    Object localObject = new Paint();
-    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
-    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
-    localObject = getView().getDrawingCache();
-    Matrix localMatrix = new Matrix();
-    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
-    localMatrix.postScale(f, f);
-    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
-  }
-  
-  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
-  {
-    int i = this.jdField_a_of_type_Int + 20;
-    int j = this.jdField_a_of_type_Int + 20;
-    paramPoint1.set(i, j);
-    paramPoint2.set(i / 2, j / 2);
+    if (this.a.a.jdField_a_of_type_Afrf.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a.jdField_a_of_type_Afrf.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0);
+      this.a.a.jdField_a_of_type_Boolean = true;
+      this.a.a.jdField_a_of_type_Afrf.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      this.a.this$0.e(this.a.a);
+    } while (this.a.a.jdField_a_of_type_Atti == null);
+    this.a.a.jdField_a_of_type_Atti.a(this.a.a.jdField_a_of_type_Afrf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     attf
  * JD-Core Version:    0.7.0.1
  */

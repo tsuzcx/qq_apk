@@ -1,21 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.app.Activity;
 
 public class abtf
-  implements View.OnClickListener
+  extends absp
 {
-  public abtf(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public void onClick(View paramView)
+  public abtf(Activity paramActivity, int paramInt, String paramString)
   {
-    this.a.a.cancel();
+    super(paramActivity, paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abtf
  * JD-Core Version:    0.7.0.1
  */

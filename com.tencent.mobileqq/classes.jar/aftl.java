@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-public abstract class aftl
-  implements aftp, aftq
+public class aftl
+  extends aelt
 {
-  aftl(CommonRefreshLayout paramCommonRefreshLayout) {}
+  public ImageView a;
+  public TextView a;
+  public CircleFileStateView a;
+  
+  public aftl(aftj paramaftj) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aftl
  * JD-Core Version:    0.7.0.1
  */

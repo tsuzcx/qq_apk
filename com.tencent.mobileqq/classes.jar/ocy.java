@@ -1,30 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
-
 class ocy
-  implements View.OnTouchListener
+  extends ocw
 {
-  ocy(ocw paramocw) {}
+  ocy(ocx paramocx) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      ocw.a(this.a).performClick();
-    }
-    if (ocw.a(this.a, paramMotionEvent.getX(), paramMotionEvent.getY()).booleanValue()) {}
-    for (int i = 101;; i = 102)
-    {
-      int j = ocw.a(this.a, ocw.a(this.a));
-      ocw.a(this.a, i, j + 1);
-      return false;
+    if (paramBoolean) {
+      ocx.a(this.a, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ocy
  * JD-Core Version:    0.7.0.1
  */

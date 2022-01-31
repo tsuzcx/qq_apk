@@ -1,37 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import java.lang.ref.WeakReference;
 
 public class akud
-  extends osm
-  implements ory, orz, osa
 {
-  public void a() {}
+  public int a;
+  public long a;
+  public CmGameStartChecker.StartCheckParam a;
+  public String a;
+  public WeakReference<Activity> a;
   
-  public void a(MessageRecord paramMessageRecord)
+  public String toString()
   {
-    c();
+    StringBuffer localStringBuffer = new StringBuffer("GameRunningTask{");
+    localStringBuffer.append("mStartCheckParam=").append(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    localStringBuffer.append(", mActivityRef=").append(this.jdField_a_of_type_JavaLangRefWeakReference);
+    localStringBuffer.append(", mActivityState=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
-  {
-    c();
-  }
-  
-  public void b()
-  {
-    c();
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    c();
-  }
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akud
  * JD-Core Version:    0.7.0.1
  */

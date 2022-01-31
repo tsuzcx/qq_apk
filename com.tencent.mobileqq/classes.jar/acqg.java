@@ -1,21 +1,21 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acqg
-  extends bfmx
+  implements View.OnClickListener
 {
-  public acqg(VisitorsActivity paramVisitorsActivity) {}
+  public acqg(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqg
  * JD-Core Version:    0.7.0.1
  */

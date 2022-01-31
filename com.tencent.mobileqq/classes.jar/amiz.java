@@ -1,31 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public class amiz
-  implements CompoundButton.OnCheckedChangeListener
+public abstract class amiz
 {
-  public amiz(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
+  public QQAppInterface a;
+  public ProxyManager a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public amiz(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    amgn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    if (!paramBoolean) {
-      new amgo().b(null);
-    }
-    ((amhc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(168)).a(paramBoolean);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      axqy.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
   }
+  
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amiz
  * JD-Core Version:    0.7.0.1
  */

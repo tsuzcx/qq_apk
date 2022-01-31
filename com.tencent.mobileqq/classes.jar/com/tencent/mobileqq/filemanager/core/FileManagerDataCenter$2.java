@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import aoze;
+import aqsc;
 import com.tencent.qphone.base.util.QLog;
 
 public class FileManagerDataCenter$2
   implements Runnable
 {
-  public FileManagerDataCenter$2(aoze paramaoze, Bundle paramBundle) {}
+  public FileManagerDataCenter$2(aqsc paramaqsc, Bundle paramBundle) {}
   
   public void run()
   {

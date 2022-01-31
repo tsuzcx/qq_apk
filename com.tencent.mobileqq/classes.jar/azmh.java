@@ -1,23 +1,55 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.InviteToGroupInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.provider.LocalPhotoGroupData;
+import java.util.ArrayList;
 
-public final class azmh
-  implements Parcelable.Creator<InviteToGroupInfo>
+final class azmh
+  implements bjmq
 {
-  public InviteToGroupInfo a(Parcel paramParcel)
-  {
-    return new InviteToGroupInfo(paramParcel);
-  }
+  azmh(QQAppInterface paramQQAppInterface) {}
   
-  public InviteToGroupInfo[] a(int paramInt)
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    return new InviteToGroupInfo[paramInt];
+    if ((paramBundle == null) || (!paramBundle.containsKey("data")))
+    {
+      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent data == null || !data.containsKey(\"data\")");
+      return;
+    }
+    paramBundle = paramBundle.getBundle("data");
+    if (paramBundle == null)
+    {
+      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent getTravelGroup bundle is empty");
+      return;
+    }
+    boolean bool;
+    if ("cmd.getTravelGroup".equals(paramString))
+    {
+      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent CMD_GET_TRAVEL_GROUP");
+      paramString = (LocalPhotoGroupData)paramBundle.getSerializable("groupData");
+      if ((paramString == null) || (paramString.pathList == null) || (paramString.pathList.size() == 0))
+      {
+        QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData == null");
+        bool = false;
+      }
+    }
+    for (;;)
+    {
+      azmg.a(this.a, bool);
+      bjmn.a().b(this);
+      return;
+      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData:" + paramString.toString());
+      LocalMultiProcConfig.putLong("SP_LAST_UPDATE_TIME", paramString.startTime);
+      bool = true;
+      continue;
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azmh
  * JD-Core Version:    0.7.0.1
  */

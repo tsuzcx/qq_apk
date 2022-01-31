@@ -1,71 +1,52 @@
 import android.text.TextUtils;
+import com.tencent.av.share.AVSchema;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class mau
+  extends amab
 {
-  public static String a;
-  private static mau jdField_a_of_type_Mau;
-  private int jdField_a_of_type_Int = -1;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  public String a;
   
-  static
+  private mau(AVSchema paramAVSchema) {}
+  
+  protected void a(boolean paramBoolean)
   {
-    jdField_a_of_type_JavaLangString = "AIOTopRightButtonConfig";
+    if (QLog.isColorLevel()) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
+    }
   }
   
-  public static mau a()
+  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
   {
-    try
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.a("onGetSimpleTroopInfoResult", l)) {}
+    do
     {
-      if (jdField_a_of_type_Mau == null) {
-        jdField_a_of_type_Mau = new mau();
-      }
-      return jdField_a_of_type_Mau;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Int = 1;
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("AVFromRightCornerEnable")) && (!paramString.getBoolean("AVFromRightCornerEnable"))) {
-        this.jdField_a_of_type_Int = 0;
-      }
-      return;
-      paramString = finally;
-      throw paramString;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
+      do
       {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "updateConfig, JSONException", paramString);
-      }
+        do
+        {
+          return;
+        } while (paramTroopInfo == null);
+        paramString = paramTroopInfo.troopuin;
+      } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)));
+      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "], enum_verify_status[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Mas.a + "], seq[" + l + "]");
+      this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Mas.b = paramTroopInfo.troopname;
+    } while (this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Mas.a != 0);
+    if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new mav(this, l)))
+    {
+      this.jdField_a_of_type_ComTencentAvShareAVSchema.b(l, this.jdField_a_of_type_JavaLangString);
+      return;
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_Int == -1) {
-      a(lct.b(192).jdField_a_of_type_JavaLangString);
-    }
-    return this.jdField_a_of_type_Int == 1;
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, 等权限确认, seq[" + l + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mau
  * JD-Core Version:    0.7.0.1
  */

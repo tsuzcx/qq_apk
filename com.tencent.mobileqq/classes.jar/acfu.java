@@ -1,41 +1,27 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acfu
-  extends ajsy
+public final class acfu
+  implements DialogInterface.OnClickListener
 {
-  public acfu(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public acfu(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, String paramString, int paramInt3) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt2 != 0)
-    {
-      paramString1 = paramString2;
-      if (!this.a.isFinishing())
-      {
-        paramString1 = paramString2;
-        if (this.a.isResume())
-        {
-          paramString1 = paramString2;
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString1 = this.a.getResources().getString(2131694928);
-          }
-          bcql.a(this.a, 1, paramString1, 0).a();
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopAssistantActivity", 2, "onSetCommonUsedTroop error, retCode = " + paramInt2 + " , wording = " + paramString1);
-      }
-      return;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    azmj.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.c + "", "0", "");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfu
  * JD-Core Version:    0.7.0.1
  */

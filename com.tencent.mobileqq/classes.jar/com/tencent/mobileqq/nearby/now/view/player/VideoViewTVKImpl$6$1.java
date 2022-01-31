@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby.now.view.player;
 
-import atlc;
-import atlf;
-import atll;
+import avcc;
+import avcf;
+import avcl;
 
 public class VideoViewTVKImpl$6$1
   implements Runnable
 {
-  public VideoViewTVKImpl$6$1(atll paramatll) {}
+  public VideoViewTVKImpl$6$1(avcl paramavcl) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class VideoViewTVKImpl$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.6.1
  * JD-Core Version:    0.7.0.1
  */

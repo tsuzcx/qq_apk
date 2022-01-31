@@ -1,75 +1,33 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StSetAuthsReq;
-import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
 
 public class bfay
-  extends bfau
+  implements View.OnClickListener
 {
-  private INTERFACE.StSetAuthsReq a = new INTERFACE.StSetAuthsReq();
+  public bfay(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public bfay(COMM.StCommonExt paramStCommonExt, String paramString, INTERFACE.StUserAuthInfo paramStUserAuthInfo)
+  public void onClick(View paramView)
   {
-    this.a.appid.set(paramString);
-    if (paramStUserAuthInfo != null)
+    if (System.currentTimeMillis() - OpenAuthorityFragment.a(this.a) > 1000L)
     {
-      paramString = new ArrayList();
-      paramString.add(paramStUserAuthInfo);
-      this.a.auths.set(paramString);
+      this.a.a.a.setClickable(false);
+      paramView = new Intent();
+      paramView.putExtra("appid", OpenAuthorityFragment.a(this.a));
+      paramView.putExtra("public_fragment_window_feature", 1);
+      adky.a(this.a.getActivity(), paramView, PublicFragmentActivityForOpenSDK.class, CreateVirtualAccountFragment.class, 101);
+      this.a.a.a.setClickable(true);
     }
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-  }
-  
-  protected String a()
-  {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    try
-    {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      if (localStQWebRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode);
-        return paramArrayOfByte;
-      }
-      betc.a("SetAuthsRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("SetAuthsRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "SetAuths";
+    OpenAuthorityFragment.a(this.a, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfay
  * JD-Core Version:    0.7.0.1
  */

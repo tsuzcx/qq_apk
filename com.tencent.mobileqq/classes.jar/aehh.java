@@ -1,19 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.widget.XListView;
 
-class aehh
-  implements DialogInterface.OnClickListener
+public class aehh
+  implements axxi
 {
-  aehh(aegs paramaegs) {}
+  public aehh(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.e();
+    int i = 0;
+    if ((paramBitmap != null) && (paramInt2 == 200))
+    {
+      paramBitmap = this.a.a;
+      if (paramBitmap == null) {
+        break label108;
+      }
+      paramInt2 = paramBitmap.getChildCount();
+    }
+    for (;;)
+    {
+      if (i < paramInt2)
+      {
+        Object localObject = paramBitmap.getChildAt(i).getTag();
+        if ((localObject != null) && ((localObject instanceof aehy)))
+        {
+          localObject = (aehy)localObject;
+          if ((((aehy)localObject).b == paramInt1) && (((aehy)localObject).e != null)) {
+            VisitorsActivity.a(this.a, ((aehy)localObject).e, paramInt1);
+          }
+        }
+        i += 1;
+      }
+      else
+      {
+        return;
+        label108:
+        paramInt2 = 0;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,20 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.widget.AdapterView;
 
 public class pth
-  extends ptf
+  implements bhqp
 {
-  public pth(Context paramContext, baxy parambaxy, ram paramram)
-  {
-    super(paramContext, parambaxy, paramram);
-  }
+  public pth(NativeGridImageView paramNativeGridImageView) {}
   
-  public pqq g()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Pqp = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    NativeGridImageView.a(this.a, paramInt, NativeGridImageView.a(this.a).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pth
  * JD-Core Version:    0.7.0.1
  */

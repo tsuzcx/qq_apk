@@ -1,62 +1,146 @@
-import android.app.ActivityManager;
-import android.os.Debug.MemoryInfo;
-import android.os.Process;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.theme.SkinEngine;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.app.Activity;
+import com.tencent.qqmini.sdk.core.model.InnerShareData;
+import com.tencent.qqmini.sdk.launcher.model.EntryModel;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
+import com.tencent.qqmini.sdk.ui.MoreItem;
 
 public class bgkc
 {
-  public static String a()
+  private InnerShareData a = new InnerShareData(null);
+  
+  public bgkc a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("RAM Info:all=");
-    try
+    this.a.shareSource = paramInt;
+    return this;
+  }
+  
+  public bgkc a(Activity paramActivity)
+  {
+    this.a.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    return this;
+  }
+  
+  public bgkc a(EntryModel paramEntryModel)
+  {
+    this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel = paramEntryModel;
+    return this;
+  }
+  
+  public bgkc a(MiniAppInfo paramMiniAppInfo)
+  {
+    InnerShareData.a(this.a, paramMiniAppInfo);
+    return this;
+  }
+  
+  public bgkc a(ShareChatModel paramShareChatModel)
+  {
+    this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel = paramShareChatModel;
+    return this;
+  }
+  
+  public bgkc a(String paramString)
+  {
+    this.a.title = paramString;
+    return this;
+  }
+  
+  public bgkc a(boolean paramBoolean)
+  {
+    this.a.isLocalPic = paramBoolean;
+    return this;
+  }
+  
+  public InnerShareData a()
+  {
+    return this.a;
+  }
+  
+  public bgkc b(int paramInt)
+  {
+    this.a.shareTarget = paramInt;
+    switch (paramInt)
     {
-      Object localObject = new DecimalFormat();
-      ((DecimalFormat)localObject).applyPattern("0.0");
-      long l1 = bbdh.d() / 1024L / 1024L;
-      long l2 = bbdh.e() / 1024L / 1024L;
-      Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getProcessMemoryInfo(new int[] { Process.myPid() });
-      float f2 = -1.0F;
-      float f1 = f2;
-      if (arrayOfMemoryInfo != null)
-      {
-        f1 = f2;
-        if (arrayOfMemoryInfo.length > 0) {
-          f1 = arrayOfMemoryInfo[0].getTotalPss() / 1024.0F;
-        }
-      }
-      f2 = (float)Runtime.getRuntime().freeMemory() / 1024.0F / 1024.0F;
-      float f3 = (float)Runtime.getRuntime().totalMemory() / 1024.0F / 1024.0F;
-      float f4 = (float)Runtime.getRuntime().maxMemory() / 1024.0F / 1024.0F;
-      localStringBuilder.append(l1).append("M,avaiable:").append(l2).append("M used:").append(((DecimalFormat)localObject).format(f1)).append("M freeMemory:").append(f2).append("M,appTotalMemory:").append(f3).append("M,maxMemory:").append(f4).append("M, ImgCache:").append(BaseApplicationImpl.sImageCache.size() / 1024 / 1024).append("M,SkinCache:").append(SkinEngine.dumpDrawableCacheMemSize() / 1024L / 1024L).append("M,LeakMonitor=").append(aknz.a().jdField_a_of_type_Boolean);
-      localObject = (ArrayList)aknz.jdField_a_of_type_JavaUtilArrayList.clone();
-      if (((ArrayList)localObject).size() > 0)
-      {
-        localStringBuilder.append(",Leaked=[");
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          localStringBuilder.append((String)((Iterator)localObject).next());
-          localStringBuilder.append(",");
-        }
-      }
-      return localStringBuilder.toString();
     }
-    catch (Throwable localThrowable) {}
     for (;;)
     {
-      localStringBuilder.append("]");
+      if (MoreItem.a(paramInt)) {
+        c(paramInt);
+      }
+      return this;
+      c(1);
+      continue;
+      c(2);
+      continue;
+      c(3);
+      continue;
+      c(4);
     }
+  }
+  
+  public bgkc b(String paramString)
+  {
+    this.a.summary = paramString;
+    return this;
+  }
+  
+  public bgkc b(boolean paramBoolean)
+  {
+    this.a.shareInMiniProcess = paramBoolean;
+    return this;
+  }
+  
+  public bgkc c(int paramInt)
+  {
+    this.a.shareItemId = paramInt;
+    return this;
+  }
+  
+  public bgkc c(String paramString)
+  {
+    this.a.sharePicPath = paramString;
+    return this;
+  }
+  
+  public bgkc c(boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public bgkc d(String paramString)
+  {
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bgkc e(String paramString)
+  {
+    this.a.b = paramString;
+    return this;
+  }
+  
+  public bgkc f(String paramString)
+  {
+    this.a.c = paramString;
+    return this;
+  }
+  
+  public bgkc g(String paramString)
+  {
+    this.a.d = paramString;
+    return this;
+  }
+  
+  public bgkc h(String paramString)
+  {
+    this.a.e = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgkc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import UserGrowth.stWeishiDengtaReportReq;
+import UserGrowth.stWeishiDengtaReportRsp;
+import java.util.Map;
 
 public class tka
-  extends ssh
+  extends thb<stWeishiDengtaReportRsp>
 {
-  public List<umu> a;
-  
-  public tka(ErrorMessage paramErrorMessage)
+  public tka(String paramString, Map<String, String> paramMap)
   {
-    this.a = paramErrorMessage;
+    super("WeishiDengtaReport");
+    stWeishiDengtaReportReq localstWeishiDengtaReportReq = new stWeishiDengtaReportReq();
+    localstWeishiDengtaReportReq.eventName = paramString;
+    localstWeishiDengtaReportReq.params = paramMap;
+    this.a = localstWeishiDengtaReportReq;
+    tlo.b("BeaconSendRequest", "BeaconSendRequest = " + localstWeishiDengtaReportReq.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tka
  * JD-Core Version:    0.7.0.1
  */

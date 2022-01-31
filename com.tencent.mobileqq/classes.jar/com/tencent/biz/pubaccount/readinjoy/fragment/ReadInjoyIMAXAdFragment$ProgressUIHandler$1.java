@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.qphone.base.util.QLog;
-import own;
+import pbs;
 
 public class ReadInjoyIMAXAdFragment$ProgressUIHandler$1
   implements Runnable
 {
-  public ReadInjoyIMAXAdFragment$ProgressUIHandler$1(own paramown) {}
+  public ReadInjoyIMAXAdFragment$ProgressUIHandler$1(pbs parampbs) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ReadInjoyIMAXAdFragment$ProgressUIHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.ProgressUIHandler.1
  * JD-Core Version:    0.7.0.1
  */

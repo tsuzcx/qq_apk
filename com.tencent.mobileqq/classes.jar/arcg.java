@@ -1,29 +1,17 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
 
-class arcg
-  implements EIPCResultCallback
+public abstract interface arcg
 {
-  arcg(arcf paramarcf, long paramLong) {}
+  public abstract void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener);
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    switch (paramEIPCResult.code)
-    {
-    }
-    for (;;)
-    {
-      axqy.b(null, "dc00898", "", "", "0X800AC2D", "0X800AC2D", 0, 0, String.valueOf(System.currentTimeMillis() - arcf.a(this.jdField_a_of_type_Arcf)), String.valueOf(this.jdField_a_of_type_Long), "", "");
-      return;
-      arcf.a(this.jdField_a_of_type_Arcf).a(2, paramEIPCResult.data);
-      continue;
-      arcf.a(this.jdField_a_of_type_Arcf).a(1, paramEIPCResult.data);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arcg
  * JD-Core Version:    0.7.0.1
  */

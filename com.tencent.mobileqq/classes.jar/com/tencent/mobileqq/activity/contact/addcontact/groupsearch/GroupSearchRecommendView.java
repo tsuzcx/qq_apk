@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.contact.addcontact.groupsearch;
 
-import afih;
-import afii;
-import afio;
-import afip;
-import afiq;
-import afir;
-import afis;
-import afit;
+import ahfm;
+import ahfn;
+import ahft;
+import ahfu;
+import ahfv;
+import ahfw;
+import ahfx;
+import ahfy;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -15,43 +15,44 @@ import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import baxn;
+import azwu;
+import bcwh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.widget.MeasureListView;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.ScrollView;
-import mxw;
-import mxx;
-import mxz;
+import naq;
+import nar;
+import nat;
 import tencent.im.troop_search_popclassifc.popclassifc.HotWordItem;
 import tencent.im.troop_search_popclassifc.popclassifc.PopHotWordCard;
 
 public class GroupSearchRecommendView
   extends ScrollView
 {
-  private afih jdField_a_of_type_Afih;
-  private afii jdField_a_of_type_Afii;
-  public afip a;
-  private afiq jdField_a_of_type_Afiq;
-  private afir jdField_a_of_type_Afir;
-  private afit jdField_a_of_type_Afit;
+  private ahfm jdField_a_of_type_Ahfm;
+  private ahfn jdField_a_of_type_Ahfn;
+  public ahfu a;
+  private ahfv jdField_a_of_type_Ahfv;
+  private ahfw jdField_a_of_type_Ahfw;
+  private ahfy jdField_a_of_type_Ahfy;
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private HotRecommendGroupFlowLayout jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout;
   private MeasureListView jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView;
-  private mxx jdField_a_of_type_Mxx = new afio(this);
+  private nar jdField_a_of_type_Nar = new ahft(this);
   
-  public GroupSearchRecommendView(Context paramContext, afip paramafip, afii paramafii, afit paramafit)
+  public GroupSearchRecommendView(Context paramContext, ahfu paramahfu, ahfn paramahfn, ahfy paramahfy)
   {
     super(paramContext);
-    this.jdField_a_of_type_Afip = paramafip;
+    this.jdField_a_of_type_Ahfu = paramahfu;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Afii = paramafii;
-    this.jdField_a_of_type_Afit = paramafit;
+    this.jdField_a_of_type_Ahfn = paramahfn;
+    this.jdField_a_of_type_Ahfy = paramahfy;
   }
   
   public GroupSearchRecommendView(Context paramContext, AttributeSet paramAttributeSet)
@@ -66,24 +67,31 @@ public class GroupSearchRecommendView
   
   private void a(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (azwu.a())
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    while (paramBoolean) {
       return;
     }
-    mxz localmxz = (mxz)this.jdField_a_of_type_Afip.a().getManager(80);
-    if ((localmxz.a() != null) && (localmxz.a().rpt_pop_items.size() > 0))
+    nat localnat = (nat)this.jdField_a_of_type_Ahfu.a().getManager(80);
+    if ((localnat.a() != null) && (localnat.a().rpt_pop_items.size() > 0))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_Afir.a();
+      this.jdField_a_of_type_Ahfw.a();
       int i = 0;
-      while (i < localmxz.a().rpt_pop_items.size())
+      while (i < localnat.a().rpt_pop_items.size())
       {
-        this.jdField_a_of_type_Afir.a(new afis(((popclassifc.HotWordItem)localmxz.a().rpt_pop_items.get(i)).str_hot_word.get(), ((popclassifc.HotWordItem)localmxz.a().rpt_pop_items.get(i)).str_text_color.get()));
+        this.jdField_a_of_type_Ahfw.a(new ahfx(((popclassifc.HotWordItem)localnat.a().rpt_pop_items.get(i)).str_hot_word.get(), ((popclassifc.HotWordItem)localnat.a().rpt_pop_items.get(i)).str_text_color.get()));
         i += 1;
       }
-      this.jdField_a_of_type_Afir.notifyDataSetChanged();
+      this.jdField_a_of_type_Ahfw.notifyDataSetChanged();
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -94,44 +102,51 @@ public class GroupSearchRecommendView
   
   private void c()
   {
-    this.jdField_a_of_type_Afiq = new afiq(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView = ((MeasureListView)findViewById(2131369610));
-    this.jdField_a_of_type_Afih = new afih(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView, this.jdField_a_of_type_Afip.a().c());
-    this.jdField_a_of_type_Afih.a(this.jdField_a_of_type_Afii);
+    this.jdField_a_of_type_Ahfv = new ahfv(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView = ((MeasureListView)findViewById(2131369874));
+    this.jdField_a_of_type_Ahfm = new ahfm(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView, this.jdField_a_of_type_Ahfu.a().c());
+    this.jdField_a_of_type_Ahfm.a(this.jdField_a_of_type_Ahfn);
     this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130849017);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new AbsListView.LayoutParams(-1, baxn.a(this.jdField_a_of_type_AndroidContentContext, 12.0F)));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130849448);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new AbsListView.LayoutParams(-1, bcwh.a(this.jdField_a_of_type_AndroidContentContext, 12.0F)));
     this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.setFastScrollEnabled(false);
     LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
     localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.addFooterView(localLinearLayout);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.setAdapter(this.jdField_a_of_type_Afih);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378219));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout = ((HotRecommendGroupFlowLayout)findViewById(2131366332));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369403));
-    this.jdField_a_of_type_Afir = new afir(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Afir.a(this.jdField_a_of_type_Afit);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout.setAdapter(this.jdField_a_of_type_Afir);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.setAdapter(this.jdField_a_of_type_Ahfm);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378786));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout = ((HotRecommendGroupFlowLayout)findViewById(2131366431));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369652));
+    this.jdField_a_of_type_Ahfw = new ahfw(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Ahfw.a(this.jdField_a_of_type_Ahfy);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout.setAdapter(this.jdField_a_of_type_Ahfw);
     a(false);
     setOverScrollMode(0);
     setVerticalScrollBarEnabled(false);
     setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    if (azwu.a())
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
   
   private void d()
   {
-    this.jdField_a_of_type_Afiq.sendEmptyMessage(1);
+    this.jdField_a_of_type_Ahfv.sendEmptyMessage(1);
   }
   
   private void e()
   {
-    new mxw(this.jdField_a_of_type_Afip.a()).a(this.jdField_a_of_type_Mxx);
+    new naq(this.jdField_a_of_type_Ahfu.a()).a(this.jdField_a_of_type_Nar);
   }
   
   public void a()
   {
-    a(2131561153);
+    a(2131561341);
     c();
     d();
   }
@@ -143,14 +158,14 @@ public class GroupSearchRecommendView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Afih != null) {
-      this.jdField_a_of_type_Afih.a();
+    if (this.jdField_a_of_type_Ahfm != null) {
+      this.jdField_a_of_type_Ahfm.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1;
+import android.content.Context;
+import android.view.View;
 
-public class aair
-  implements DialogInterface.OnClickListener
+public abstract interface aair
 {
-  public aair(ArkFullScreenAppActivity.8.1.1 param1) {}
+  public abstract View a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(Context paramContext);
+  
+  public abstract void b(Context paramContext);
+  
+  public abstract void c(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aair
  * JD-Core Version:    0.7.0.1
  */

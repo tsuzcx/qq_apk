@@ -11,7 +11,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
-import atuk;
+import avlk;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class NestScrollLayout
@@ -22,7 +22,7 @@ public class NestScrollLayout
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private atuk jdField_a_of_type_Atuk;
+  private avlk jdField_a_of_type_Avlk;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -49,11 +49,11 @@ public class NestScrollLayout
   public NestScrollLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramInt = paramContext.getResources().getDimensionPixelSize(2131298865) + ImmersiveUtils.getStatusBarHeight(paramContext);
+    paramInt = paramContext.getResources().getDimensionPixelSize(2131298914) + ImmersiveUtils.getStatusBarHeight(paramContext);
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_Atuk = new atuk();
+    this.jdField_a_of_type_Avlk = new avlk();
     paramContext = ViewConfiguration.get(paramContext);
     this.jdField_c_of_type_Int = paramContext.getScaledTouchSlop();
     this.jdField_d_of_type_Int = paramContext.getScaledMaximumFlingVelocity();
@@ -104,7 +104,7 @@ public class NestScrollLayout
       {
         int k = this.jdField_a_of_type_AndroidWidgetScroller.getFinalY();
         int m = a(this.jdField_a_of_type_AndroidWidgetScroller.getDuration(), this.jdField_a_of_type_AndroidWidgetScroller.timePassed());
-        this.jdField_a_of_type_Atuk.a(a(), k - j, m);
+        this.jdField_a_of_type_Avlk.a(a(), k - j, m);
         this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
       }
     }
@@ -119,7 +119,7 @@ public class NestScrollLayout
       this.i = j;
       return;
       label99:
-      if (this.jdField_a_of_type_Atuk.a())
+      if (this.jdField_a_of_type_Avlk.a())
       {
         scrollTo(0, j - this.i + getScrollY());
         if (this.h <= this.g)
@@ -161,7 +161,7 @@ public class NestScrollLayout
         do
         {
           bool = a();
-          if ((!this.jdField_a_of_type_Boolean) || (((this.jdField_d_of_type_Float <= 0.0F) || (bool)) && ((!this.jdField_a_of_type_Atuk.a()) || (this.jdField_d_of_type_Float >= 0.0F)))) {
+          if ((!this.jdField_a_of_type_Boolean) || (((this.jdField_d_of_type_Float <= 0.0F) || (bool)) && ((!this.jdField_a_of_type_Avlk.a()) || (this.jdField_d_of_type_Float >= 0.0F)))) {
             break;
           }
           scrollBy(0, (int)(this.jdField_d_of_type_Float + 0.5D));
@@ -257,17 +257,17 @@ public class NestScrollLayout
   
   public void setPosition(int paramInt)
   {
-    this.jdField_a_of_type_Atuk.a(paramInt);
+    this.jdField_a_of_type_Avlk.a(paramInt);
   }
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_Atuk.a(paramViewPager);
+    this.jdField_a_of_type_Avlk.a(paramViewPager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NestScrollLayout
  * JD-Core Version:    0.7.0.1
  */

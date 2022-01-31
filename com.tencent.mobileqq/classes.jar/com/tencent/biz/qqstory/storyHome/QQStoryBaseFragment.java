@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import ajya;
+import alpo;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import stb;
+import uht;
 
 public abstract class QQStoryBaseFragment
   extends IphoneTitleBarFragment
@@ -60,8 +60,8 @@ public abstract class QQStoryBaseFragment
     if (paramOnClickListener != null) {
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
-    if (AppSetting.d) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + ajya.a(2131710810));
+    if (AppSetting.c) {
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + alpo.a(2131711182));
     }
   }
   
@@ -85,7 +85,7 @@ public abstract class QQStoryBaseFragment
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
       localObject2 = (String)((Map.Entry)localObject2).getValue();
-      stb.a().registerSubscriber((String)localObject2, localSubscriber);
+      uht.a().registerSubscriber((String)localObject2, localSubscriber);
     }
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.c = true;
@@ -116,7 +116,7 @@ public abstract class QQStoryBaseFragment
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-      stb.a().unRegisterSubscriber(localSubscriber);
+      uht.a().unRegisterSubscriber(localSubscriber);
     }
     super.onDestroyView();
   }
@@ -129,7 +129,7 @@ public abstract class QQStoryBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment
  * JD-Core Version:    0.7.0.1
  */

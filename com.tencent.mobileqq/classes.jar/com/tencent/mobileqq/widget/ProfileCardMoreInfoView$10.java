@@ -1,20 +1,38 @@
 package com.tencent.mobileqq.widget;
 
-import android.content.SharedPreferences;
-import android.os.Handler;
+import alpo;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import awne;
+import azmj;
+import bdbk;
+import bdkz;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.util.Pair;
+import java.util.List;
 
 class ProfileCardMoreInfoView$10
   implements Runnable
 {
-  ProfileCardMoreInfoView$10(ProfileCardMoreInfoView paramProfileCardMoreInfoView, TextView paramTextView) {}
+  ProfileCardMoreInfoView$10(ProfileCardMoreInfoView paramProfileCardMoreInfoView, TextView paramTextView, RichStatus paramRichStatus) {}
   
   public void run()
   {
-    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("showPresentRed", 0).getBoolean("showRed", true);
-    ThreadManagerV2.getUIHandlerV2().post(new ProfileCardMoreInfoView.10.1(this, Boolean.valueOf(bool)));
+    int i;
+    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()))
+    {
+      i = awne.a().a(this.jdField_a_of_type_AndroidWidgetTextView, (String)((Pair)this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.get(0)).second, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText, ProfileCardMoreInfoView.a(this.this$0), ProfileCardMoreInfoView.a(this.this$0), ProfileCardMoreInfoView.b(this.this$0));
+      if (i != -2147483648) {}
+    }
+    else
+    {
+      return;
+    }
+    bdkz localbdkz = new bdkz();
+    localbdkz.a(0, alpo.a(2131708854), 0);
+    bdbk.a(this.jdField_a_of_type_AndroidWidgetTextView, 0 - i, 0, localbdkz);
+    awne.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    azmj.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
   }
 }
 

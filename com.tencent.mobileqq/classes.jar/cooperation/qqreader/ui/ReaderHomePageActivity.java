@@ -1,6 +1,5 @@
 package cooperation.qqreader.ui;
 
-import amgn;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,19 +7,20 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.KeyEvent;
-import bgtw;
-import bgur;
-import bguu;
-import bgvf;
-import bgvg;
-import bgvl;
-import bgvz;
-import bgwa;
-import bgwd;
-import bgwf;
-import bgwj;
-import bgwk;
-import bgws;
+import anxn;
+import biuv;
+import bivq;
+import bivt;
+import biwe;
+import biwf;
+import biwk;
+import biwy;
+import biwz;
+import bixc;
+import bixe;
+import bixi;
+import bixj;
+import bixp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -38,10 +38,10 @@ import java.util.Map;
 public class ReaderHomePageActivity
   extends ReaderBaseWebActivity
 {
-  private bgur jdField_a_of_type_Bgur;
+  private bivq jdField_a_of_type_Bivq;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  private amgn jdField_b_of_type_Amgn;
+  private anxn jdField_b_of_type_Anxn;
   private String jdField_b_of_type_JavaLangString;
   
   private static int a(int paramInt, int[] paramArrayOfInt)
@@ -72,8 +72,8 @@ public class ReaderHomePageActivity
     int j = 0;
     int k = 1;
     int i;
-    if (paramIntent.hasExtra(bgvf.jdField_a_of_type_JavaLangString)) {
-      i = paramIntent.getIntExtra(bgvf.jdField_a_of_type_JavaLangString, 1);
+    if (paramIntent.hasExtra(biwe.jdField_a_of_type_JavaLangString)) {
+      i = paramIntent.getIntExtra(biwe.jdField_a_of_type_JavaLangString, 1);
     }
     for (;;)
     {
@@ -82,9 +82,9 @@ public class ReaderHomePageActivity
       if (!paramIntent.getBooleanExtra("is_from_qreader_shortcut", false))
       {
         i = k;
-        if (!bgwd.e(BaseApplicationImpl.getApplication()))
+        if (!bixc.e(BaseApplicationImpl.getApplication()))
         {
-          boolean bool1 = bgwj.a(BaseApplicationImpl.getApplication());
+          boolean bool1 = bixi.a(BaseApplicationImpl.getApplication());
           boolean bool2 = a(paramIntent);
           if (bool1)
           {
@@ -115,34 +115,34 @@ public class ReaderHomePageActivity
     }
     catch (Exception localException)
     {
-      bgwf.a("ReaderHomePageActivity", "Color is ex" + paramString1 + "=" + paramString2);
+      bixe.a("ReaderHomePageActivity", "Color is ex" + paramString1 + "=" + paramString2);
     }
     return paramInt;
   }
   
-  private ArrayList<WebViewTabBarData> a(ArrayList<bgvg> paramArrayList, @NonNull Intent paramIntent)
+  private ArrayList<WebViewTabBarData> a(ArrayList<biwf> paramArrayList, @NonNull Intent paramIntent)
   {
     int j = paramArrayList.size();
     ArrayList localArrayList = new ArrayList();
-    if (paramIntent.hasExtra(bgvf.jdField_b_of_type_JavaLangString)) {}
-    for (paramIntent = "" + "&" + bgvf.jdField_b_of_type_JavaLangString + "=" + paramIntent.getStringExtra(bgvf.jdField_b_of_type_JavaLangString);; paramIntent = "")
+    if (paramIntent.hasExtra(biwe.jdField_b_of_type_JavaLangString)) {}
+    for (paramIntent = "" + "&" + biwe.jdField_b_of_type_JavaLangString + "=" + paramIntent.getStringExtra(biwe.jdField_b_of_type_JavaLangString);; paramIntent = "")
     {
       int i = 0;
       while (i < j)
       {
-        bgvg localbgvg = (bgvg)paramArrayList.get(i);
-        if (localbgvg.jdField_b_of_type_Int == 0)
+        biwf localbiwf = (biwf)paramArrayList.get(i);
+        if (localbiwf.jdField_b_of_type_Int == 0)
         {
           WebViewTabBarData localWebViewTabBarData = new WebViewTabBarData();
-          localWebViewTabBarData.tabIcon = localbgvg.jdField_b_of_type_JavaLangString;
-          localWebViewTabBarData.tabName = localbgvg.jdField_a_of_type_JavaLangString;
-          localWebViewTabBarData.tag = String.valueOf(localbgvg.jdField_a_of_type_Int);
-          localWebViewTabBarData.url = ((String)localbgvg.jdField_a_of_type_JavaUtilArrayList.get(0) + paramIntent);
+          localWebViewTabBarData.tabIcon = localbiwf.jdField_b_of_type_JavaLangString;
+          localWebViewTabBarData.tabName = localbiwf.jdField_a_of_type_JavaLangString;
+          localWebViewTabBarData.tag = String.valueOf(localbiwf.jdField_a_of_type_Int);
+          localWebViewTabBarData.url = ((String)localbiwf.jdField_a_of_type_JavaUtilArrayList.get(0) + paramIntent);
           localArrayList.add(localWebViewTabBarData);
-          if (localbgvg.jdField_a_of_type_JavaUtilArrayList.size() == 2)
+          if (localbiwf.jdField_a_of_type_JavaUtilArrayList.size() == 2)
           {
-            this.jdField_a_of_type_JavaLangString = ((String)localbgvg.jdField_a_of_type_JavaUtilArrayList.get(0) + paramIntent);
-            this.jdField_b_of_type_JavaLangString = ((String)localbgvg.jdField_a_of_type_JavaUtilArrayList.get(1) + paramIntent);
+            this.jdField_a_of_type_JavaLangString = ((String)localbiwf.jdField_a_of_type_JavaUtilArrayList.get(0) + paramIntent);
+            this.jdField_b_of_type_JavaLangString = ((String)localbiwf.jdField_a_of_type_JavaUtilArrayList.get(1) + paramIntent);
           }
         }
         i += 1;
@@ -153,16 +153,16 @@ public class ReaderHomePageActivity
   
   private void a()
   {
-    this.jdField_b_of_type_Amgn = new amgn(this, false, true);
-    this.jdField_b_of_type_Amgn.a(this);
+    this.jdField_b_of_type_Anxn = new anxn(this, false, true);
+    this.jdField_b_of_type_Anxn.a(this);
   }
   
   private static boolean a(@NonNull Intent paramIntent)
   {
     boolean bool1 = b(paramIntent);
-    boolean bool2 = bgtw.a().a();
+    boolean bool2 = biuv.a().a();
     int i = paramIntent.getIntExtra("redtouch_type", -1);
-    boolean bool3 = bgwd.b(BaseApplicationImpl.getApplication());
+    boolean bool3 = bixc.b(BaseApplicationImpl.getApplication());
     if (QLog.isColorLevel()) {
       QLog.e("ReaderHomePageActivity", 2, "-->isPluginReady:" + bool2 + ",exceed30days:" + bool1 + ",isShelf:" + bool3 + ",has red touch extra:" + paramIntent.hasExtra("redtouch_type") + ",has interval:" + paramIntent.hasExtra("login_interval") + ",isPluginReady=" + bool2);
     }
@@ -172,32 +172,32 @@ public class ReaderHomePageActivity
   private void b()
   {
     QueryUserIdentityTask localQueryUserIdentityTask = new QueryUserIdentityTask();
-    localQueryUserIdentityTask.a(new bgwa(this), true);
+    localQueryUserIdentityTask.a(new biwz(this), true);
     localQueryUserIdentityTask.a();
   }
   
   private void b(@NonNull Intent paramIntent)
   {
-    this.jdField_a_of_type_Bgur = new bgur(this);
-    this.jdField_a_of_type_Bgur.a();
-    paramIntent.putExtra("tabConfigData", a(this.jdField_a_of_type_Bgur.a(), paramIntent));
+    this.jdField_a_of_type_Bivq = new bivq(this);
+    this.jdField_a_of_type_Bivq.a();
+    paramIntent.putExtra("tabConfigData", a(this.jdField_a_of_type_Bivq.a(), paramIntent));
     int i = a(paramIntent);
-    bgwf.d("ReaderHomePageActivity", "tabIndex =" + i);
-    int[] arrayOfInt = this.jdField_a_of_type_Bgur.a();
+    bixe.d("ReaderHomePageActivity", "tabIndex =" + i);
+    int[] arrayOfInt = this.jdField_a_of_type_Bivq.a();
     StringBuilder localStringBuilder = new StringBuilder().append("itemids is null");
     if (arrayOfInt == null) {}
     for (boolean bool = true;; bool = false)
     {
-      bgwf.d("ReaderHomePageActivity", bool);
+      bixe.d("ReaderHomePageActivity", bool);
       i = a(i, arrayOfInt);
       paramIntent.putExtra("key_tab_main_tab_pos", i);
       paramIntent.putExtra("tabDefaultIndex", i);
       paramIntent.putExtra("key_subtab", 0);
       paramIntent.putExtra("key_title_bar_left_tab_url", this.jdField_a_of_type_JavaLangString);
       paramIntent.putExtra("key_title_bar_right_tab_url", this.jdField_b_of_type_JavaLangString);
-      paramIntent.putExtra("key_tab_color", a("tabColor", bgur.jdField_a_of_type_Int, this.jdField_a_of_type_Bgur.a()));
-      paramIntent.putExtra("key_tab_name_color", a("tabNameDefaultColor", bgur.jdField_b_of_type_Int, this.jdField_a_of_type_Bgur.b()));
-      paramIntent.putExtra("key_name_selected_color", a("tabNameSelectedColor", bgur.c, this.jdField_a_of_type_Bgur.c()));
+      paramIntent.putExtra("key_tab_color", a("tabColor", bivq.jdField_a_of_type_Int, this.jdField_a_of_type_Bivq.a()));
+      paramIntent.putExtra("key_tab_name_color", a("tabNameDefaultColor", bivq.jdField_b_of_type_Int, this.jdField_a_of_type_Bivq.b()));
+      paramIntent.putExtra("key_name_selected_color", a("tabNameSelectedColor", bivq.c, this.jdField_a_of_type_Bivq.c()));
       return;
     }
   }
@@ -209,23 +209,23 @@ public class ReaderHomePageActivity
   
   private void c(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_b_of_type_Amgn.a(new bgvz(this, paramString1, paramString2, paramString3));
+    this.jdField_b_of_type_Anxn.a(new biwy(this, paramString1, paramString2, paramString3));
   }
   
-  public bgur a()
+  public bivq a()
   {
-    return this.jdField_a_of_type_Bgur;
+    return this.jdField_a_of_type_Bivq;
   }
   
   @Nullable
-  public bgws a()
+  public bixp a()
   {
-    bgws localbgws = null;
+    bixp localbixp = null;
     WebViewFragment localWebViewFragment = b();
     if (localWebViewFragment != null) {
-      localbgws = (bgws)localWebViewFragment.a;
+      localbixp = (bixp)localWebViewFragment.a;
     }
-    return localbgws;
+    return localbixp;
   }
   
   public WebViewFragment a(WebViewTabBarData paramWebViewTabBarData)
@@ -241,7 +241,7 @@ public class ReaderHomePageActivity
       }
       localObject = a();
       if (localObject != null) {
-        ((bgws)localObject).h(i);
+        ((bixp)localObject).h(i);
       }
     }
     return paramWebViewTabBarData;
@@ -250,8 +250,8 @@ public class ReaderHomePageActivity
   public void a(String paramString1, String paramString2, String paramString3)
   {
     c(paramString1, paramString2, paramString3);
-    if (this.jdField_b_of_type_Amgn.b()) {
-      this.jdField_b_of_type_Amgn.e();
+    if (this.jdField_b_of_type_Anxn.b()) {
+      this.jdField_b_of_type_Anxn.e();
     }
   }
   
@@ -262,13 +262,13 @@ public class ReaderHomePageActivity
   
   public boolean a()
   {
-    long l1 = bgwd.a(BaseApplicationImpl.getApplication());
+    long l1 = bixc.a(BaseApplicationImpl.getApplication());
     long l2 = System.currentTimeMillis();
     Object localObject1 = new Date(l1);
     Object localObject2 = new Date(l2);
-    if ((a() != null) && (((ReaderTabBarView)a()).b()) && (bgwk.a((Date)localObject1, (Date)localObject2)) && (AppNetConnInfo.isNetSupport()) && (bgvl.a().a("START_WEBVIEW_ACTIVITY_CONDITION", null)))
+    if ((a() != null) && (((ReaderTabBarView)a()).b()) && (bixj.a((Date)localObject1, (Date)localObject2)) && (AppNetConnInfo.isNetSupport()) && (biwk.a().a("START_WEBVIEW_ACTIVITY_CONDITION", null)))
     {
-      localObject2 = (String)bguu.a.get("qqreaderBookStoreGamepop");
+      localObject2 = (String)bivt.a.get("qqreaderBookStoreGamepop");
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = "https://cdn.vip.qq.com/club/client/read/6/rel/gameAd_index.html";
@@ -276,7 +276,7 @@ public class ReaderHomePageActivity
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("from", 2);
       ((Intent)localObject2).putExtra("url", (String)localObject1);
-      bgtw.a().a(this, (Intent)localObject2, "com.qqreader.pureader.WebViewActivity");
+      biuv.a().a(this, (Intent)localObject2, "com.qqreader.pureader.WebViewActivity");
       return true;
     }
     return false;
@@ -285,14 +285,14 @@ public class ReaderHomePageActivity
   public boolean a(String paramString1, String paramString2, String paramString3)
   {
     c(paramString1, paramString2, paramString3);
-    return this.jdField_b_of_type_Amgn.c();
+    return this.jdField_b_of_type_Anxn.c();
   }
   
   public void b(String paramString1, String paramString2, String paramString3)
   {
     c(paramString1, paramString2, paramString3);
-    if (this.jdField_b_of_type_Amgn.c()) {
-      this.jdField_b_of_type_Amgn.f();
+    if (this.jdField_b_of_type_Anxn.c()) {
+      this.jdField_b_of_type_Anxn.f();
     }
   }
   
@@ -332,7 +332,7 @@ public class ReaderHomePageActivity
     }
     paramIntent.remove("reslut_select_file_info_list");
     paramIntent.putParcelableArrayList("key_reader_file_for_bundle", localArrayList);
-    bgvl.a().a("EVENT_IMPORT_LOCAL_BOOK", paramIntent);
+    biwk.a().a("EVENT_IMPORT_LOCAL_BOOK", paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -341,7 +341,7 @@ public class ReaderHomePageActivity
     Intent localIntent1 = localIntent2;
     if (localIntent2 == null)
     {
-      bgwf.a("ReaderHomePageActivity", "[ReaderHomePageActivity] intent is null! ");
+      bixe.a("ReaderHomePageActivity", "[ReaderHomePageActivity] intent is null! ");
       localIntent1 = new Intent();
     }
     localIntent1.putExtra("key_enter_reader_homepage_activity_oncreate_time", System.currentTimeMillis());
@@ -349,13 +349,13 @@ public class ReaderHomePageActivity
     super.doOnCreate(paramBundle);
     b();
     a();
-    bgwf.c("cost_time_tag", "ReaderHomePageActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
+    bixe.c("cost_time_tag", "ReaderHomePageActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
     return true;
   }
   
   public void doOnDestroy()
   {
-    this.jdField_b_of_type_Amgn.c();
+    this.jdField_b_of_type_Anxn.c();
     super.doOnDestroy();
   }
   
@@ -383,7 +383,7 @@ public class ReaderHomePageActivity
     setIntent(paramIntent);
     paramIntent = (ReaderTabBarView)a();
     if (paramIntent != null) {
-      paramIntent.setSelectedTab(a(a(getIntent()), this.jdField_a_of_type_Bgur.a()), false);
+      paramIntent.setSelectedTab(a(a(getIntent()), this.jdField_a_of_type_Bivq.a()), false);
     }
   }
   
@@ -400,29 +400,29 @@ public class ReaderHomePageActivity
       localObject = (ReaderHomeTabFragment)localObject;
       if (((ReaderHomeTabFragment)localObject).b)
       {
-        Intent localIntent = getIntent();
+        localIntent = getIntent();
         if (localIntent != null)
         {
-          int j = localIntent.getIntExtra("key_tab_id", -1);
-          int i = j;
+          j = localIntent.getIntExtra("key_tab_id", -1);
+          i = j;
           if (j < 0) {
             i = Integer.parseInt(((ReaderHomeTabFragment)localObject).getTag());
           }
-          localObject = (bgws)((ReaderHomeTabFragment)localObject).a;
+          localObject = (bixp)((ReaderHomeTabFragment)localObject).a;
           if (localObject != null) {
-            ((bgws)localObject).h(i);
+            ((bixp)localObject).h(i);
           }
         }
       }
     }
-    for (;;)
+    while (localObject == null)
     {
-      bgvl.a().a("EVENT_PRE_FETCH_GAME_AD_DATA_AND_GET_READ_RECORD", null);
+      Intent localIntent;
+      int j;
+      int i;
       return;
-      if (localObject != null) {
-        bgwf.d("ReaderHomePageActivity", "webViewFragment =" + localObject.getClass().getName());
-      }
     }
+    bixe.d("ReaderHomePageActivity", "webViewFragment =" + localObject.getClass().getName());
   }
   
   public void doOnStop()
@@ -431,7 +431,7 @@ public class ReaderHomePageActivity
     BaseApplicationImpl localBaseApplicationImpl;
     if (a() != null)
     {
-      bool = bgvl.a().a("EVENT_BOOK_SHELF_IS_NOT_EMPTY", null);
+      bool = biwk.a().a("EVENT_BOOK_SHELF_IS_NOT_EMPTY", null);
       localBaseApplicationImpl = BaseApplicationImpl.getApplication();
       if ((!((ReaderTabBarView)a()).a()) || (!bool)) {
         break label51;
@@ -440,14 +440,14 @@ public class ReaderHomePageActivity
     label51:
     for (boolean bool = true;; bool = false)
     {
-      bgwd.c(localBaseApplicationImpl, bool);
+      bixc.c(localBaseApplicationImpl, bool);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderHomePageActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,47 @@
-import android.app.PendingIntent;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class unv
-  implements DialogInterface.OnClickListener
+public final class unv
+  extends MSFServlet
 {
-  public unv(QQStoryMainActivity paramQQStoryMainActivity, Intent paramIntent) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
-        }
-        nau.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
-        try
-        {
-          paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
-          if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->finish--send callback using PendingIntent");
-            }
-            paramDialogInterface.send();
-          }
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
-          return;
-        }
-        catch (Throwable paramDialogInterface) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog ", paramDialogInterface);
+    if (paramIntent == null) {
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->qbShowShareResultDialog--stay");
+    }
+    Bundle localBundle = paramIntent.getExtras();
+    paramIntent = null;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramIntent = bdku.b(paramFromServiceMsg.getWupBuffer());
+      localBundle.putInt("data_error_code", 0);
+    }
+    for (;;)
+    {
+      QQStoryContext.a().a().a(localBundle, paramIntent);
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bdku.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     unv
  * JD-Core Version:    0.7.0.1
  */

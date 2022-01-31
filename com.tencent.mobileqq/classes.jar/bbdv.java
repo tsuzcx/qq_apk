@@ -1,30 +1,20 @@
-import android.annotation.SuppressLint;
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
+import com.tencent.widget.AdapterView;
 
 public class bbdv
+  implements bhqq
 {
-  public static float a(Context paramContext, float paramFloat)
-  {
-    return paramContext.getResources().getDisplayMetrics().densityDpi / 160.0F * paramFloat;
-  }
+  public bbdv(TroopAvatarWallPreviewActivity.2.1 param1) {}
   
-  @SuppressLint({"NewApi"})
-  public static int a(Context paramContext)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = 0;
-    if (Build.VERSION.SDK_INT >= 11) {
-      i = ((ActivityManager)paramContext.getSystemService("activity")).getLauncherLargeIconSize();
+    if ((this.a.a.this$0.e) || (this.a.a.this$0.d)) {
+      TroopAvatarWallPreviewActivity.c(this.a.a.this$0);
     }
-    int j = (int)paramContext.getResources().getDimension(17104896);
-    if (QLog.isColorLevel()) {
-      QLog.d("DisplayUtils", 2, "launcher icon size = " + i + " , app icon size = " + j);
-    }
-    return Math.max(i, j);
+    return true;
   }
 }
 

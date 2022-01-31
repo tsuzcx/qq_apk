@@ -1,35 +1,52 @@
-import android.os.Handler;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.21.1;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.21.2;
+import android.hardware.camera2.CameraDevice;
+import android.hardware.camera2.CameraDevice.StateCallback;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import java.util.concurrent.Semaphore;
 
 public class azay
-  implements INetInfoHandler
+  extends CameraDevice.StateCallback
 {
-  public azay(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public azay(Camera2Control paramCamera2Control, long paramLong) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
+  public void onDisconnected(@NonNull CameraDevice paramCameraDevice)
   {
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.21.1(this));
+    azbl.a(2, "[Camera2]openCamera2 onDisconnected!");
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    paramCameraDevice.close();
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, null);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a.a(-105);
+    }
   }
   
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString)
+  public void onError(@NonNull CameraDevice paramCameraDevice, int paramInt)
   {
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.21.2(this));
+    azbl.a(2, "[Camera2]openCamera2 onError, error:" + paramInt);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    paramCameraDevice.close();
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, null);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a.a(-102);
+    }
   }
   
-  public void onNetWifi2None() {}
+  public void onOpened(@NonNull CameraDevice paramCameraDevice)
+  {
+    azbl.a(1, "[Camera2]openCamera2 onOpen, cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, paramCameraDevice);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, true);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azay
  * JD-Core Version:    0.7.0.1
  */

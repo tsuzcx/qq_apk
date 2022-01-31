@@ -1,21 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class atdb
-  implements DialogInterface.OnClickListener
+final class atdb
+  extends BroadcastReceiver
 {
-  public atdb(GameRoomInviteActivity paramGameRoomInviteActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    atdy.a(this.a, 10);
-    GameRoomInviteActivity.b(this.a);
+    if ((atda.a != null) && (atda.a.size() > 0))
+    {
+      Iterator localIterator = atda.a.iterator();
+      while (localIterator.hasNext())
+      {
+        atda localatda = (atda)((WeakReference)localIterator.next()).get();
+        if (localatda != null) {
+          localatda.a(paramContext, paramIntent);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdb
  * JD-Core Version:    0.7.0.1
  */

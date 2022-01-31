@@ -27,7 +27,7 @@ public class GdtMvButtonHighLight
   public GdtMvButtonHighLight(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130839684);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130839786);
     this.jdField_a_of_type_AndroidGraphicsPaint = getPaint();
   }
   
@@ -60,7 +60,7 @@ public class GdtMvButtonHighLight
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvButtonHighLight
  * JD-Core Version:    0.7.0.1
  */

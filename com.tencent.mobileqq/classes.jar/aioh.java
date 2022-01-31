@@ -1,34 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-class aioh
-  implements DialogInterface.OnClickListener
+public class aioh
+  extends aiml
 {
-  aioh(aiod paramaiod) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aioh(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "clear click");
-    }
-    if (bbfj.d(aiod.a(this.a)))
-    {
-      axqy.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 2, 0, "", "", "", "");
-      aiod.b(this.a);
-      this.a.a.a().a().f();
-      ((FriendListHandler)this.a.a.a(1)).i();
-      return;
-    }
-    bcql.a(aiod.a(this.a), 2131694621, 0).a();
+    super(paramNewPhotoListActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aioh
  * JD-Core Version:    0.7.0.1
  */

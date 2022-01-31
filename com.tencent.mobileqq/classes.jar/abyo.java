@@ -1,35 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity.30;
 
 public class abyo
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public abyo(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  public abyo(AddFriendVerifyActivity.30 param30) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    if (paramInt == 1)
     {
-    default: 
-      return;
-    case 101: 
-      this.a.c();
-      String str = paramMessage.obj.toString();
-      paramMessage = str;
-      if (str == null) {
-        paramMessage = this.a.getString(2131720659);
-      }
-      this.a.a(paramMessage, 1);
-      return;
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
     }
-    this.a.c();
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyo
  * JD-Core Version:    0.7.0.1
  */

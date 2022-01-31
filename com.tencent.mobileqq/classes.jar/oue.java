@@ -1,28 +1,32 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class oue
-  implements ViewTreeObserver.OnPreDrawListener
+public class oue
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  oue(oud paramoud) {}
-  
-  public boolean onPreDraw()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    View localView = ReadInJoyChannelPanelFragment.a(this.a.a).getChildAt(ReadInJoyChannelPanelFragment.a(this.a.a).getChildCount() - 1);
-    Object localObject = new int[2];
-    localView.getLocationOnScreen((int[])localObject);
-    localObject = this.a.a.a(oud.a(this.a), (int[])localObject);
-    ReadInJoyChannelPanelFragment.a(localObject[0], 0.0F, localObject[1], 0.0F, localView);
-    ReadInJoyChannelPanelFragment.a(this.a.a).getViewTreeObserver().removeOnPreDrawListener(oud.a(this.a));
-    return false;
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    if ((String)paramString.get("readinjoy_single_video_switch") != null) {
+      bjxj.a((String)paramString.get("readinjoy_single_video_switch"));
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bjxj.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oue
  * JD-Core Version:    0.7.0.1
  */

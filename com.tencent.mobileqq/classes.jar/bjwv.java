@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGame.GameResultItem;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import cooperation.qzone.zipanimate.ZipAnimationDrawable.1.1;
 
-public final class bjwv
-  implements Parcelable.Creator<EditVideoGame.GameResultItem>
+public class bjwv
+  implements bjxg
 {
-  public EditVideoGame.GameResultItem a(Parcel paramParcel)
-  {
-    return new EditVideoGame.GameResultItem(paramParcel);
-  }
+  bjwv(bjwu parambjwu) {}
   
-  public EditVideoGame.GameResultItem[] a(int paramInt)
+  public void a(int paramInt, Drawable paramDrawable)
   {
-    return new EditVideoGame.GameResultItem[paramInt];
+    if (paramInt == 0)
+    {
+      bjwu.a(this.a).a.b(0);
+      this.a.a.post(new ZipAnimationDrawable.1.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjwv
  * JD-Core Version:    0.7.0.1
  */

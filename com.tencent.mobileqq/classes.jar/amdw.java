@@ -1,30 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.QQComicStep;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class amdw
-  implements View.OnClickListener
+  extends alsi
 {
-  public amdw(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public amdw(QQComicStep paramQQComicStep) {}
   
-  public void onClick(View paramView)
+  public void a(List<MessageRecord> paramList)
   {
-    paramView = (amea)paramView.getTag();
-    if (!((ajxl)this.a.app.getManager(51)).b(paramView.a)) {}
-    for (int i = 35;; i = 1)
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
     {
-      paramView = new ProfileActivity.AllInOne(paramView.a, i);
-      ProfileActivity.a(this.a, paramView, 1016);
       return;
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = azqu.a(((MessageRecord)paramList.next()).msgData);
+        if ((localObject instanceof StructMsgForImageShare))
+        {
+          localObject = (StructMsgForImageShare)localObject;
+          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
+          {
+            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
+            if (arrayOfString.length >= 8) {
+              biiv.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], agej.a(((StructMsgForImageShare)localObject).mMsgActionData) });
+            }
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdw
  * JD-Core Version:    0.7.0.1
  */

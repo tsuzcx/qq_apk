@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import aezk;
+import agwp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bazq;
+import bcyk;
 
 public class ZhituImgResponse
   implements Parcelable
 {
-  public static final Parcelable.Creator<ZhituImgResponse> CREATOR = new aezk();
+  public static final Parcelable.Creator<ZhituImgResponse> CREATOR = new agwp();
   public String coord;
   public String md5;
   public String pass;
   public String style;
-  @bazq(a="text-color")
+  @bcyk(a="text-color")
   public String textColor;
   public String url;
   
@@ -77,7 +77,7 @@ public class ZhituImgResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse
  * JD-Core Version:    0.7.0.1
  */

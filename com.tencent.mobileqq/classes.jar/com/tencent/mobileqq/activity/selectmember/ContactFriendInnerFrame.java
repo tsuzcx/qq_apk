@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import bcsc;
+import berl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 import com.tencent.mobileqq.widget.RedDotTextView;
@@ -15,7 +15,7 @@ import com.tencent.mobileqq.widget.TabBarView;
 
 public class ContactFriendInnerFrame
   extends SelectMemberInnerFrame
-  implements bcsc
+  implements berl
 {
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   public TroopDiscussionBaseV a;
@@ -105,20 +105,20 @@ public class ContactFriendInnerFrame
   {
     super.a(paramBundle);
     paramBundle = a();
-    setContentView(2131560146);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131376796));
+    setContentView(2131560254);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131377309));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, paramBundle.getString(2131691076));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(ajya.a(2131702480) + paramBundle.getString(2131691076));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, paramBundle.getString(2131691077));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(paramBundle.getString(2131691077));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368179));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, paramBundle.getString(2131691129));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(alpo.a(2131702852) + paramBundle.getString(2131691129));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, paramBundle.getString(2131691130));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(paramBundle.getString(2131691130));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368325));
   }
   
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719218), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719699), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d);
   }
   
   public void d()
@@ -158,7 +158,7 @@ public class ContactFriendInnerFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.ContactFriendInnerFrame
  * JD-Core Version:    0.7.0.1
  */

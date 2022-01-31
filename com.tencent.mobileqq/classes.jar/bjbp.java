@@ -1,24 +1,45 @@
+import android.os.Bundle;
+import com.tencent.biz.qqcircle.events.QCircleFakeFeed;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import com.tencent.biz.qqcircle.events.QCirclePublishBoxStatusEvent;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.3;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bjbp
-  implements aysc
+class bjbp
+  implements EIPCResultCallback
 {
-  public bjbp(QIMCaptureBannerManager.3 param3) {}
+  bjbp(bjbk parambjbk) {}
   
-  public void onResp(aysz paramaysz)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMCaptureBannerManager", 2, "onResp url: " + this.a.a.imgUrl + " resultcode: " + paramaysz.c);
+    ArrayList localArrayList;
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
+    {
+      paramEIPCResult = paramEIPCResult.data;
+      paramEIPCResult.setClassLoader(QCircleFakeFeed.class.getClassLoader());
+      localArrayList = paramEIPCResult.getParcelableArrayList("KEY_CERTIFIED_FAKE_FEED_LIST");
+      if (localArrayList != null) {
+        yej.a().a(new QCircleFeedEvent(localArrayList));
+      }
+      yej.a().a(new QCirclePublishBoxStatusEvent(paramEIPCResult));
+      if (localArrayList != null) {
+        break label93;
+      }
+    }
+    label93:
+    for (int i = 0;; i = localArrayList.size())
+    {
+      QLog.d("QzoneIPCModule", 4, String.format("Get QCircleFakeFeed task list %b", new Object[] { Integer.valueOf(i) }));
+      return;
     }
   }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjbp
  * JD-Core Version:    0.7.0.1
  */

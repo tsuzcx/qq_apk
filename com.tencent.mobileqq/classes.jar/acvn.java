@@ -1,40 +1,53 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeAnimStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class acvn
-  implements ahbr
+  implements bdri
 {
-  public acvn(CustomizeStrategyFactory.ThemeAnimStrategy.1 param1) {}
+  public acvn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void a()
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "ZanDoubleDialog: onLeftClick: ");
+    }
+    if (this.a.getIntent().hasExtra("troopUin")) {}
+    for (Object localObject = "1";; localObject = "0")
     {
-      this.a.a.animInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult);
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_AIO_REDPACKET background=" + this.a.a.background + ",animInfo=" + this.a.a.animInfo);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", (String)localObject, "");
+      localObject = new Intent(this.a, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("fragmentStyle", 3);
+      ((Intent)localObject).putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
+      ((Intent)localObject).putExtra("isTransparentTitle", true);
+      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+      this.a.startActivity((Intent)localObject);
       return;
     }
-    catch (Throwable paramPathResult)
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "ZanDoubleDialog: onRightClick: ");
+    }
+    if (this.a.getIntent().hasExtra("troopUin")) {}
+    for (String str = "1";; str = "0")
     {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", str, "");
+      bdqe.a(this.a, "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
+      FriendProfileCardActivity.a(this.a).set(true);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvn
  * JD-Core Version:    0.7.0.1
  */

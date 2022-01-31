@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import agku;
+import aiix;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SettingActivity2$3
@@ -12,16 +12,16 @@ public class SettingActivity2$3
   {
     if (this.this$0.c == null)
     {
-      this.this$0.c = new agku(this);
+      this.this$0.c = new aiix(this);
       this.this$0.app.registObserver(this.this$0.c);
     }
     this.this$0.app.a(new SettingActivity2.3.2(this));
-    this.this$0.a(2131719292, 1000L, true);
+    this.this$0.a(2131719773, 1000L, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.SettingActivity2.3
  * JD-Core Version:    0.7.0.1
  */

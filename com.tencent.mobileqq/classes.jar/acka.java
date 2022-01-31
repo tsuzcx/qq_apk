@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchDialogDismissRunnable;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class acka
-  implements DialogInterface.OnDismissListener
+  implements axxi
 {
-  public acka(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public acka(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.a.postDelayed(new TroopMemberListActivity.SearchDialogDismissRunnable(this.a), 150L);
+    if ((this.a.f != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      ChatSettingActivity.a(this.a, this.a.a, this.a.f);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acka
  * JD-Core Version:    0.7.0.1
  */

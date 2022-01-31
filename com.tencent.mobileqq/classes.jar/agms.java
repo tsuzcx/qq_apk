@@ -1,40 +1,44 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class agms
-  extends ajto
+class agms
+  implements View.OnTouchListener
 {
-  public agms(PhotoCropActivity paramPhotoCropActivity) {}
+  agms(agmb paramagmb) {}
   
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.a.b))
+    boolean bool = false;
+    int i = paramMotionEvent.getAction();
+    paramView = this.a.jdField_a_of_type_Beih.a();
+    if (i == 0)
     {
-      this.a.a.removeMessages(1003);
-      this.a.c();
-      if (!paramBoolean)
-      {
-        paramString = this.a.getIntent();
-        paramString.putExtra("key_from_sdk_set_avatar_result", false);
-        this.a.setResult(-1, paramString);
-        this.a.finish();
+      this.a.m.setText(alpo.a(2131705518));
+      this.a.m.setTextColor(this.a.r);
+      this.a.jdField_a_of_type_Autg.b();
+      if (paramView != null) {
+        paramView.a(true);
       }
+      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
+      bool = true;
     }
-    else
-    {
-      return;
+    while ((i != 3) && (i != 1)) {
+      return bool;
     }
-    axqy.b(this.a.app, "dc00898", "", "", "0X8009B6B", "0X8009B6B", 0, 0, "", "", "", "");
-    paramString = this.a.getIntent();
-    paramString.putExtra("key_from_sdk_set_avatar_result", true);
-    this.a.setResult(-1, paramString);
-    this.a.finish();
+    this.a.m.setText(alpo.a(2131705457));
+    this.a.m.setTextColor(this.a.q);
+    this.a.jdField_a_of_type_Autg.c();
+    if (paramView != null) {
+      paramView.a(false);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agms
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,50 @@
-import android.app.Activity;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class obp
+  implements AladdinConfigHandler
 {
-  @Nullable
-  private obq a;
-  
-  public void a()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.a != null) {
-      this.a.a();
+    QLog.d("AdConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (paramInt1 == 185)
+      {
+        if ((TextUtils.equals(str1, "adcard_style")) && (!TextUtils.isEmpty(str2))) {
+          bjxj.a("sp_key_ad_imax_style", str2.trim());
+        }
+      }
+      else if ((paramInt1 == 188) && (TextUtils.equals(str1, "ad_exposure_supplement")) && (!TextUtils.isEmpty(str2))) {
+        bjxj.a("readinjjoy_ad_supplement_config", str2.trim());
+      }
     }
+    return true;
   }
   
-  public void a(Activity paramActivity, ListView paramListView)
+  public void onWipeConfig(int paramInt)
   {
-    if ((oat.a().a() == 1) && (oat.c()))
-    {
-      str = oat.a().a();
-      i = oat.a().b();
-      if (i != 1) {}
+    if (paramInt == 185) {
+      bjxj.a("sp_key_ad_imax_style", "0");
     }
-    while (!QLog.isColorLevel())
-    {
-      String str;
-      int i;
+    while (paramInt != 188) {
       return;
-      if (apvd.a(str))
-      {
-        this.a = new obq(paramActivity, paramListView, str);
-        this.a.a(i);
-        paramActivity = oat.a().a();
-        if (paramActivity != null) {
-          nzn.b(paramActivity, true, "no error");
-        }
-        oat.a().a = this;
-      }
-      for (;;)
-      {
-        QLog.d("ReadInJoySuperMaskAd", 1, "preview mode value = " + oat.a().d());
-        oat.a().a();
-        return;
-        oat.a().a(3);
-        paramActivity = oat.a().a();
-        if (paramActivity != null) {
-          nzn.b(paramActivity, false, "apng not exit");
-        }
-      }
     }
-    QLog.i("KandianAdPandentMask", 2, "status: " + oat.a().a() + " Aladdin: " + oat.c());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a != null) {
-      this.a.b(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (obq.a(this.a));
+    bjxj.a("readinjjoy_ad_supplement_config", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     obp
  * JD-Core Version:    0.7.0.1
  */

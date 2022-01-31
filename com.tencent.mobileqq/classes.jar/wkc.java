@@ -1,29 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
 public class wkc
-  implements ValueAnimator.AnimatorUpdateListener
+  extends uhe<wkg>
 {
-  private View jdField_a_of_type_AndroidViewView;
+  private Stream<wdq> a;
   
-  private wkc(TopPanelViewNew paramTopPanelViewNew, View paramView)
+  public void a(wkg paramwkg)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = Stream.of(paramwkg).map(new ThreadOffFunction("Q.qqstory.home.data.FeedCommentBackgroundSyncer", 2)).map(new wke(null));
+    this.a.subscribe(new wkd(this));
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void c()
   {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    wsv.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
+    if (this.a != null)
+    {
+      this.a.cancel();
+      this.a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wkc
  * JD-Core Version:    0.7.0.1
  */

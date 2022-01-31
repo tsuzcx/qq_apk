@@ -2,47 +2,47 @@ package dov.com.qq.im;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import bjno;
-import bjnp;
-import bjns;
-import bjot;
-import bjpb;
-import bjpc;
+import blyx;
+import blyy;
+import blzb;
+import bmad;
+import bmal;
+import bmam;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class BaseVMPeakActivity
   extends PeakActivity
-  implements bjns, bjpc
+  implements blzb, bmam
 {
-  private bjot jdField_a_of_type_Bjot = new bjot(this);
-  private bjpb jdField_a_of_type_Bjpb;
+  private bmad jdField_a_of_type_Bmad = new bmad(this);
+  private bmal jdField_a_of_type_Bmal;
   
-  public bjno a()
+  public blyx a()
   {
-    return this.jdField_a_of_type_Bjot;
+    return this.jdField_a_of_type_Bmad;
   }
   
   @NonNull
-  public bjpb a()
+  public bmal a()
   {
     if (BaseApplicationImpl.getApplication() == null) {
       throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
     }
-    if (this.jdField_a_of_type_Bjpb == null) {
-      this.jdField_a_of_type_Bjpb = new bjpb();
+    if (this.jdField_a_of_type_Bmal == null) {
+      this.jdField_a_of_type_Bmal = new bmal();
     }
-    return this.jdField_a_of_type_Bjpb;
+    return this.jdField_a_of_type_Bmal;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Bjot = new bjot(this);
+    this.jdField_a_of_type_Bmad = new bmad(this);
     try
     {
-      this.jdField_a_of_type_Bjot.a(bjnp.a);
+      this.jdField_a_of_type_Bmad.a(blyy.a);
       return;
     }
     catch (Throwable paramBundle)
@@ -56,9 +56,9 @@ public class BaseVMPeakActivity
     super.onDestroy();
     try
     {
-      this.jdField_a_of_type_Bjot.a(bjnp.f);
-      if ((this.jdField_a_of_type_Bjpb != null) && (!isChangingConfigurations())) {
-        this.jdField_a_of_type_Bjpb.a();
+      this.jdField_a_of_type_Bmad.a(blyy.f);
+      if ((this.jdField_a_of_type_Bmal != null) && (!isChangingConfigurations())) {
+        this.jdField_a_of_type_Bmal.a();
       }
       return;
     }
@@ -76,7 +76,7 @@ public class BaseVMPeakActivity
     super.onPause();
     try
     {
-      this.jdField_a_of_type_Bjot.a(bjnp.d);
+      this.jdField_a_of_type_Bmad.a(blyy.d);
       return;
     }
     catch (Throwable localThrowable)
@@ -90,7 +90,7 @@ public class BaseVMPeakActivity
     super.onResume();
     try
     {
-      this.jdField_a_of_type_Bjot.a(bjnp.c);
+      this.jdField_a_of_type_Bmad.a(blyy.c);
       return;
     }
     catch (Throwable localThrowable)
@@ -104,7 +104,7 @@ public class BaseVMPeakActivity
     super.onStart();
     try
     {
-      this.jdField_a_of_type_Bjot.a(bjnp.b);
+      this.jdField_a_of_type_Bmad.a(blyy.b);
       return;
     }
     catch (Throwable localThrowable)
@@ -118,7 +118,7 @@ public class BaseVMPeakActivity
     super.onStop();
     try
     {
-      this.jdField_a_of_type_Bjot.a(bjnp.e);
+      this.jdField_a_of_type_Bmad.a(blyy.e);
       return;
     }
     catch (Throwable localThrowable)
@@ -129,7 +129,7 @@ public class BaseVMPeakActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.BaseVMPeakActivity
  * JD-Core Version:    0.7.0.1
  */

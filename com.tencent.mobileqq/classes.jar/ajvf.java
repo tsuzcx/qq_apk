@@ -1,143 +1,115 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajvf
+  extends aked
 {
-  public static void a(Context paramContext)
+  public ajvf(RecentMemberInnerFrame paramRecentMemberInnerFrame)
   {
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("sp_d_stable", 0);
-    if (!localSharedPreferences.contains("key_mnt"))
-    {
-      localObject = localSharedPreferences.edit();
-      if (Math.random() >= 0.001F) {
-        break label101;
-      }
+    super(paramRecentMemberInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, paramRecentMemberInnerFrame.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, RecentMemberInnerFrame.a(paramRecentMemberInnerFrame), 1, true);
+  }
+  
+  public int getCount()
+  {
+    if (RecentMemberInnerFrame.a(this.a) == null) {
+      return 0;
     }
-    long l3;
-    long l2;
-    label101:
-    for (boolean bool1 = true;; bool1 = false)
+    return RecentMemberInnerFrame.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < RecentMemberInnerFrame.a(this.a).size())) {
+      return RecentMemberInnerFrame.a(this.a).get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if ((paramView != null) && (paramView.getTag() != null))
     {
-      ((SharedPreferences.Editor)localObject).putBoolean("key_mnt", bool1).commit();
-      if (localSharedPreferences.getBoolean("key_mnt", false))
+      localObject = (ajvg)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+    }
+    RecentUser localRecentUser;
+    for (;;)
+    {
+      localRecentUser = (RecentUser)getItem(paramInt);
+      if (localRecentUser != null) {
+        break;
+      }
+      return paramViewGroup;
+      paramView = new ajvg(this.a, null);
+      paramViewGroup = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131562611, paramViewGroup, false);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131364254));
+      paramView.c = ((ImageView)paramViewGroup.findViewById(2131367808));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131370958));
+      paramViewGroup.setTag(paramView);
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(localRecentUser.uin))
+    {
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      paramView.c.setImageBitmap(a(1, localRecentUser.uin));
+      localObject = RecentMemberInnerFrame.a(this.a).b(localRecentUser.uin);
+      if (localObject != null) {
+        break label323;
+      }
+      localObject = "";
+      label189:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      paramView.jdField_a_of_type_JavaLangString = localRecentUser.uin;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.contains(localRecentUser.uin))) {
+        break label333;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
+      label249:
+      if (AppSetting.c)
       {
-        l3 = localSharedPreferences.getLong("k_last_stable_ts_785", 0L);
-        l2 = System.currentTimeMillis();
-        if (l2 - l3 >= 86400000L) {
-          break;
+        if ((!paramView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) || (!paramView.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())) {
+          break label344;
         }
+        paramViewGroup.setContentDescription((String)localObject + alpo.a(2131713581));
       }
-      return;
     }
-    Object localObject = paramContext.getSharedPreferences(paramContext.getPackageName() + "_preferences", 0);
-    long l4 = ((SharedPreferences)localObject).getLong("k_last_stable_ts_785", 0L);
-    File localFile = new File(paramContext.getFilesDir(), "file_stable");
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    localSharedPreferences.edit().remove("k_last_stable_ts");
-    ((SharedPreferences)localObject).edit().remove("k_last_stable_ts");
-    localFile = new File(paramContext.getFilesDir(), "file_stable_785");
-    String str = bbdx.a(localFile);
-    long l1;
-    int i;
-    if (!TextUtils.isEmpty(str))
+    for (;;)
     {
-      l1 = Long.parseLong(str);
-      if ((l4 > 0L) || (l3 > 0L) || (l1 > 0L))
-      {
-        if ((l3 < l1) || ((l3 - l1) % 86400000L != 0L)) {
-          break label832;
-        }
-        if ((l4 < l3) || ((l4 - l3) % 86400000L != 0L)) {
-          break label827;
-        }
-        i = 0;
-        label310:
-        QLog.d("DeviceStability", 1, new Object[] { "check sp file.", Long.valueOf(l4), ", ", Long.valueOf(l3), ", ", Long.valueOf(l1) });
-        HashMap localHashMap = new HashMap(4);
-        localHashMap.put("fileCode", String.valueOf(i));
-        if (i != 0)
-        {
-          localHashMap.put("big_sp_time", String.valueOf(l4));
-          localHashMap.put("sm_sp_time", String.valueOf(l3));
-          localHashMap.put("file_time", str);
-        }
-        axrn.a(paramContext).a("", "actSpFileStable", true, i, 0L, localHashMap, "");
-        if (i == 0)
-        {
-          boolean bool3 = ((SharedPreferences)localObject).getBoolean("k_last_stable_sw", false);
-          boolean bool2 = localSharedPreferences.getBoolean("k_last_stable_sw", false);
-          if (l4 / 24L / 60L / 60L / 1000L % 2L != 0L) {
-            break label837;
-          }
-          bool1 = true;
-          label498:
-          int j = i;
-          if (bool3 != bool1) {
-            j = i | 0x1;
-          }
-          if (l3 / 24L / 60L / 60L / 1000L % 2L != 0L) {
-            break label842;
-          }
-          bool1 = true;
-          label539:
-          i = j;
-          if (bool2 != bool1) {
-            i = j | 0x2;
-          }
-          localHashMap = new HashMap(4);
-          localHashMap.put("fileCode", String.valueOf(i));
-          if (i != 0)
-          {
-            localHashMap.put("big_sp_time", String.valueOf(l4));
-            localHashMap.put("sm_sp_time", String.valueOf(l3));
-            localHashMap.put("file_time", str);
-          }
-          axrn.a(paramContext).a("", "actSpContentStable", true, i, 0L, localHashMap, "");
-        }
-      }
-      l1 = 86400000L * (l2 / 86400000L);
-      if (l2 / 86400000L % 2L != 0L) {
-        break label847;
-      }
-    }
-    label827:
-    label832:
-    label837:
-    label842:
-    label847:
-    for (bool1 = true;; bool1 = false)
-    {
-      QLog.d("DeviceStability", 1, "write now = " + l2);
-      ((SharedPreferences)localObject).edit().putLong("k_last_stable_ts_785", l1).putBoolean("k_last_stable_sw", bool1).commit();
-      QLog.d("DeviceStability", 1, "write switch = " + bool1);
-      localSharedPreferences.edit().putLong("k_last_stable_ts_785", l1).putBoolean("k_last_stable_sw", bool1).commit();
-      QLog.d("DeviceStability", 1, "write sp end");
-      bool1 = bbdx.a(localFile.getAbsolutePath(), String.valueOf(l1), false);
-      QLog.d("DeviceStability", 1, "write content end " + bool1);
-      return;
-      l1 = 0L;
+      paramViewGroup.setOnClickListener(this.a);
+      return paramViewGroup;
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
       break;
-      i = 1;
-      break label310;
-      i = 2;
-      break label310;
-      bool1 = false;
-      break label498;
-      bool1 = false;
-      break label539;
+      label323:
+      localObject = bdbt.a((Friends)localObject);
+      break label189;
+      label333:
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
+      break label249;
+      label344:
+      paramViewGroup.setContentDescription((String)localObject + alpo.a(2131713578));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvf
  * JD-Core Version:    0.7.0.1
  */

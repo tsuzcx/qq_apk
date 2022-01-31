@@ -1,18 +1,27 @@
-import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleRead.ConfidentCircleMemberRsp;
 
 class ttp
-  implements bcsc
+  implements yvn<QQCircleRead.ConfidentCircleMemberRsp>
 {
-  ttp(tto paramtto) {}
+  ttp(ttn paramttn) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRead.ConfidentCircleMemberRsp paramConfidentCircleMemberRsp)
   {
-    this.a.a.setCurrentItem(paramInt2);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramConfidentCircleMemberRsp == null))
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        QLog.e("QCircleTopAuthPart", 1, "confirmCircleMemberShip error:" + paramString);
+      }
+      return;
+    }
+    QLog.e("QCircleTopAuthPart", 1, "confirmCircleMemberShip success!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttp
  * JD-Core Version:    0.7.0.1
  */

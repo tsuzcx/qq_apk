@@ -1,34 +1,29 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.animation.TypeEvaluator;
+import com.tencent.qphone.base.util.QLog;
 
 class aesu
-  implements nok
+  implements TypeEvaluator
 {
-  aesu(aert paramaert) {}
-  
-  public void a(boolean paramBoolean)
+  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    this.a.bp();
-    if (!paramBoolean)
-    {
-      this.a.B(2131695569);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "AlphaEvaluator value: " + paramFloat);
     }
-    aukp localaukp = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    AccountDetail localAccountDetail = (AccountDetail)localaukp.a(AccountDetail.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (localAccountDetail != null) {
-      localaukp.b(localAccountDetail);
+    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
+      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
     }
-    localaukp.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
-    this.a.H();
+    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
+      return Double.valueOf(0.5D);
+    }
+    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
+      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
+    }
+    return Double.valueOf(0.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesu
  * JD-Core Version:    0.7.0.1
  */

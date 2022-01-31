@@ -1,30 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 
 public class oyu
+  implements View.OnClickListener
 {
-  public static void a(List<ArticleInfo> paramList)
+  public oyu(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-        if ((localArticleInfo != null) && (localArticleInfo.mFeedType == 29)) {
-          QLog.d("ReadInJoyLogHelper", 1, new Object[] { "printProteusOnline: \n", localArticleInfo.toProteusOnlineString() });
-        }
-      }
-    }
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oyu
  * JD-Core Version:    0.7.0.1
  */

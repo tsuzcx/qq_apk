@@ -1,465 +1,74 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.text.GetChars;
-import android.text.SpanWatcher;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class ayjw
-  implements GetChars, Spannable, CharSequence, Cloneable
+  extends ayju
 {
-  private int jdField_a_of_type_Int;
-  public String a;
-  private ArrayList<Object> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString;
-  private ArrayList<ayjx> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  public static final String a;
+  public float a;
+  public int a;
+  public CharSequence a;
+  public float b;
+  public CharSequence b;
+  public String b;
+  public String j;
+  public String k;
   
-  public ayjw(CharSequence paramCharSequence, int paramInt)
+  static
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramCharSequence == null)
+    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + ayjw.class.getSimpleName();
+  }
+  
+  public ayjw(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public ayjw(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
     {
-      this.jdField_b_of_type_JavaLangString = "";
-      this.jdField_a_of_type_JavaLangString = "";
+    default: 
+      i = 1;
     }
-    for (;;)
+    return i;
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("bannerImageType");
+      this.jdField_b_of_type_JavaLangString = paramString.optString("bannerImageUrl");
+      this.jdField_a_of_type_Float = ((float)paramString.optDouble("bannerImageWidth"));
+      this.jdField_b_of_type_Float = ((float)paramString.optDouble("bannerImageHeight"));
+      this.j = paramString.optString("topLeftTagText");
+      this.k = paramString.optString("topLeftTagColor");
+      this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("firstLineText");
+      this.jdField_b_of_type_JavaLangCharSequence = paramString.optString("secondLineText");
       return;
-      this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramInt = (int)(paramInt * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
-      Object localObject = new StringBuilder(paramCharSequence);
-      a(0, ((StringBuilder)localObject).length(), paramInt, (StringBuilder)localObject);
-      this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-      if (!aykk.a) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      }
-      if ((paramCharSequence instanceof Spanned))
-      {
-        localObject = (Spanned)paramCharSequence;
-        int k = paramCharSequence.length();
-        paramCharSequence = ((Spanned)localObject).getSpans(0, paramCharSequence.length(), Object.class);
-        paramInt = 0;
-        while (paramInt < paramCharSequence.length)
-        {
-          int j = ((Spanned)localObject).getSpanStart(paramCharSequence[paramInt]);
-          int m = ((Spanned)localObject).getSpanEnd(paramCharSequence[paramInt]);
-          int n = ((Spanned)localObject).getSpanFlags(paramCharSequence[paramInt]);
-          int i = j;
-          if (j < 0) {
-            i = 0;
-          }
-          j = m;
-          if (m > k) {
-            j = k;
-          }
-          setSpan(paramCharSequence[paramInt], i - 0, j - 0, n);
-          paramInt += 1;
-        }
-      }
     }
-  }
-  
-  private static String a(int paramInt1, int paramInt2)
-  {
-    return "(" + paramInt1 + " ... " + paramInt2 + ")";
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3, StringBuilder paramStringBuilder)
-  {
-    int k = paramStringBuilder.length();
-    while (paramInt1 < paramInt2)
+    catch (JSONException paramString)
     {
-      if ((paramStringBuilder.charAt(paramInt1) == '<') && (paramInt1 < k - 2))
-      {
-        int i2 = paramStringBuilder.charAt(paramInt1 + 1);
-        int j;
-        int i;
-        if ((i2 == 36) && (paramInt1 < k - 3))
-        {
-          j = paramStringBuilder.charAt(paramInt1 + 2);
-          if (aykk.a) {
-            paramStringBuilder.replace(paramInt1 + 1, paramInt1 + 3, "##");
-          }
-          for (;;)
-          {
-            if (j >= axau.b.length) {
-              break label189;
-            }
-            if (paramStringBuilder.charAt(paramInt1 + 3) != '>') {
-              break label637;
-            }
-            j = axau.b[j];
-            i = j;
-            if (j == 250) {
-              i = 10;
-            }
-            if (i >= ayjy.jdField_a_of_type_Int) {
-              break label637;
-            }
-            a(new aykr(i, paramInt3, 1), paramInt1, paramInt1 + 4, 33);
-            paramInt1 += 4;
-            break;
-            if (j == 10) {
-              paramStringBuilder.setCharAt(paramInt1 + 2, 'ú');
-            }
-          }
-          label189:
-          if ((j >= 255) && (paramInt1 + 6 < k))
-          {
-            if (paramStringBuilder.charAt(paramInt1 + 6) == '>')
-            {
-              char[] arrayOfChar = new char[3];
-              arrayOfChar[0] = paramStringBuilder.charAt(paramInt1 + 3);
-              arrayOfChar[1] = paramStringBuilder.charAt(paramInt1 + 4);
-              arrayOfChar[2] = ((char)(paramStringBuilder.charAt(paramInt1 + 5) & 0xFF));
-              i = 0;
-              if (i < 3)
-              {
-                if (arrayOfChar[i] == 'ú') {
-                  arrayOfChar[i] = '\n';
-                }
-                for (;;)
-                {
-                  i += 1;
-                  break;
-                  if (arrayOfChar[i] == 'þ') {
-                    arrayOfChar[i] = '\r';
-                  }
-                }
-              }
-              boolean bool;
-              if (j == 511)
-              {
-                bool = true;
-                a(new aykt(arrayOfChar, paramInt3, true, bool), paramInt1, paramInt1 + 7, 33);
-                i = 2;
-                label361:
-                if (i >= 5) {
-                  break label437;
-                }
-                if (paramStringBuilder.charAt(paramInt1 + i) != '\n') {
-                  break label408;
-                }
-                paramStringBuilder.setCharAt(paramInt1 + i, 'ú');
-              }
-              for (;;)
-              {
-                i += 1;
-                break label361;
-                bool = false;
-                break;
-                if (paramStringBuilder.charAt(paramInt1 + i) == '\r') {
-                  paramStringBuilder.setCharAt(paramInt1 + i, 'þ');
-                }
-              }
-              paramInt1 += 7;
-            }
-          }
-          else if (j == 250)
-          {
-            if (aykk.a) {
-              paramStringBuilder.replace(paramInt1 + 1, paramInt1 + 3, "##");
-            }
-            a(new aykr(10, paramInt3, 1), paramInt1, paramInt1 + 4, 33);
-            paramInt1 += 4;
-          }
-        }
-        else
-        {
-          label408:
-          label437:
-          if (((i2 == 37) || (i2 == 38)) && (paramInt1 < k - 6))
-          {
-            j = paramStringBuilder.charAt(paramInt1 + 2);
-            int m = paramStringBuilder.charAt(paramInt1 + 3);
-            int n = paramStringBuilder.charAt(paramInt1 + 4);
-            int i1 = paramStringBuilder.charAt(paramInt1 + 5);
-            i = 3;
-            if (i2 == 38) {
-              i = 2;
-            }
-            a(new bbpl(i, (i1 & 0xFF) + ((j << 24) + 0 + (m << 16 & 0xFF0000) + (n << 8 & 0xFF00))), paramInt1, paramInt1 + 7, 33);
-            paramInt1 += 7;
-            continue;
-          }
-        }
-      }
-      label637:
-      paramInt1 += 1;
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
     }
-  }
-  
-  private void a(Object paramObject, int paramInt1, int paramInt2)
-  {
-    SpanWatcher[] arrayOfSpanWatcher = (SpanWatcher[])getSpans(paramInt1, paramInt2, SpanWatcher.class);
-    int j = arrayOfSpanWatcher.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfSpanWatcher[i].onSpanAdded(this, paramObject, paramInt1, paramInt2);
-      i += 1;
-    }
-  }
-  
-  private void a(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-    paramObject = new ayjx(paramInt1, paramInt2, paramInt3);
-    this.jdField_b_of_type_JavaUtilArrayList.add(paramObject);
-  }
-  
-  private void a(Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    SpanWatcher[] arrayOfSpanWatcher = (SpanWatcher[])getSpans(Math.min(paramInt1, paramInt3), Math.max(paramInt2, paramInt4), SpanWatcher.class);
-    int j = arrayOfSpanWatcher.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfSpanWatcher[i].onSpanChanged(this, paramObject, paramInt1, paramInt2, paramInt3, paramInt4);
-      i += 1;
-    }
-  }
-  
-  private void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < paramInt1) {
-      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " has end before start");
-    }
-    int i = length();
-    if ((paramInt1 > i) || (paramInt2 > i)) {
-      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " ends beyond length " + i);
-    }
-    if ((paramInt1 < 0) || (paramInt2 < 0)) {
-      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " starts before 0");
-    }
-  }
-  
-  private void b(Object paramObject, int paramInt1, int paramInt2)
-  {
-    SpanWatcher[] arrayOfSpanWatcher = (SpanWatcher[])getSpans(paramInt1, paramInt2, SpanWatcher.class);
-    int j = arrayOfSpanWatcher.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfSpanWatcher[i].onSpanRemoved(this, paramObject, paramInt1, paramInt2);
-      i += 1;
-    }
-  }
-  
-  public SpannableString a()
-  {
-    SpannableString localSpannableString = new SpannableString(this.jdField_b_of_type_JavaLangString);
-    TextUtils.copySpansFrom(this, 0, length(), Object.class, localSpannableString, 0);
-    return localSpannableString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public char charAt(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt > length())) {
-      return '\000';
-    }
-    return this.jdField_b_of_type_JavaLangString.charAt(paramInt);
-  }
-  
-  public void getChars(int paramInt1, int paramInt2, char[] paramArrayOfChar, int paramInt3)
-  {
-    int i = paramInt1;
-    if (paramInt1 < 0) {
-      i = 0;
-    }
-    int j = length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > j) {
-      paramInt1 = j;
-    }
-    this.jdField_b_of_type_JavaLangString.getChars(i, paramInt1, paramArrayOfChar, paramInt3);
-  }
-  
-  public int getSpanEnd(Object paramObject)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {}
-    while (i < 0) {
-      return -1;
-    }
-    return ((ayjx)this.jdField_b_of_type_JavaUtilArrayList.get(i)).b;
-  }
-  
-  public int getSpanFlags(Object paramObject)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {}
-    while (i < 0) {
-      return 0;
-    }
-    return ((ayjx)this.jdField_b_of_type_JavaUtilArrayList.get(i)).c;
-  }
-  
-  public int getSpanStart(Object paramObject)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {}
-    while (i < 0) {
-      return -1;
-    }
-    return ((ayjx)this.jdField_b_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int;
-  }
-  
-  public <T> T[] getSpans(int paramInt1, int paramInt2, Class<T> paramClass)
-  {
-    int j = 0;
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (paramClass.isInstance(localObject))
-      {
-        ayjx localayjx = (ayjx)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-        if ((localayjx.jdField_a_of_type_Int >= paramInt1) && (localayjx.b <= paramInt2)) {
-          localArrayList.add(localObject);
-        }
-      }
-      i += 1;
-    }
-    paramClass = (Object[])Array.newInstance(paramClass, localArrayList.size());
-    paramInt1 = j;
-    while (paramInt1 < localArrayList.size())
-    {
-      paramClass[paramInt1] = localArrayList.get(paramInt1);
-      paramInt1 += 1;
-    }
-    return paramClass;
-  }
-  
-  public int length()
-  {
-    return this.jdField_b_of_type_JavaLangString.length();
-  }
-  
-  public int nextSpanTransition(int paramInt1, int paramInt2, Class paramClass)
-  {
-    Object localObject = paramClass;
-    if (paramClass == null) {
-      localObject = Object.class;
-    }
-    int k = 0;
-    while (k < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      paramClass = this.jdField_a_of_type_JavaUtilArrayList.get(k);
-      ayjx localayjx = (ayjx)this.jdField_b_of_type_JavaUtilArrayList.get(k);
-      int i = paramInt2;
-      if (((Class)localObject).isInstance(paramClass))
-      {
-        int j = paramInt2;
-        if (localayjx.jdField_a_of_type_Int > paramInt1)
-        {
-          j = paramInt2;
-          if (localayjx.jdField_a_of_type_Int < paramInt2) {
-            j = localayjx.jdField_a_of_type_Int;
-          }
-        }
-        i = j;
-        if (localayjx.b > paramInt1)
-        {
-          i = j;
-          if (localayjx.b < j) {
-            i = localayjx.b;
-          }
-        }
-      }
-      k += 1;
-      paramInt2 = i;
-    }
-    return paramInt2;
-  }
-  
-  public void removeSpan(Object paramObject)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    if (i >= 0)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      ayjx localayjx = (ayjx)this.jdField_b_of_type_JavaUtilArrayList.remove(i);
-      b(paramObject, localayjx.jdField_a_of_type_Int, localayjx.b);
-    }
-  }
-  
-  public void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a("setSpan", paramInt1, paramInt2);
-    if ((paramInt3 & 0x33) == 51)
-    {
-      char c;
-      if ((paramInt1 != 0) && (paramInt1 != length()))
-      {
-        c = charAt(paramInt1 - 1);
-        if (c != '\n') {
-          throw new RuntimeException("PARAGRAPH span must start at paragraph boundary (" + paramInt1 + " follows " + c + ")");
-        }
-      }
-      if ((paramInt2 != 0) && (paramInt2 != length()))
-      {
-        c = charAt(paramInt2 - 1);
-        if (c != '\n') {
-          throw new RuntimeException("PARAGRAPH span must end at paragraph boundary (" + paramInt2 + " follows " + c + ")");
-        }
-      }
-    }
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    ayjx localayjx;
-    if ((i > 0) && (this.jdField_b_of_type_JavaUtilArrayList.size() > i))
-    {
-      localayjx = (ayjx)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-      int j = localayjx.jdField_a_of_type_Int;
-      int k = localayjx.b;
-      localayjx.jdField_a_of_type_Int = paramInt1;
-      localayjx.b = paramInt2;
-      localayjx.c = paramInt3;
-      a(paramObject, j, k, paramInt1, paramInt2);
-    }
-    if (i < 0)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-      localayjx = new ayjx(paramInt1, paramInt2, paramInt3);
-      this.jdField_b_of_type_JavaUtilArrayList.add(localayjx);
-      a(paramObject, paramInt1, paramInt2);
-    }
-  }
-  
-  public CharSequence subSequence(int paramInt1, int paramInt2)
-  {
-    int i = paramInt1;
-    if (paramInt1 < 0) {
-      i = 0;
-    }
-    int j = length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > j) {
-      paramInt1 = j;
-    }
-    if ((Build.VERSION.SDK_INT >= 26) && (i == 0) && (paramInt1 == length())) {
-      return this;
-    }
-    return this.jdField_b_of_type_JavaLangString.substring(i, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayjw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
-class rfj
-  implements View.OnClickListener
+public class rfj
+  implements TopGestureLayout.OnGestureListener
 {
-  rfj(rfi paramrfi, int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo, ImageView paramImageView) {}
+  public rfj(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void onClick(View paramView)
+  public void flingLToR()
   {
-    if (rfi.a(this.jdField_a_of_type_Rfi) != null) {
-      rfi.a(this.jdField_a_of_type_Rfi).a(this.jdField_a_of_type_Int);
-    }
-    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo;
-    int j = oep.b;
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {}
-    for (int i = 1;; i = 0)
-    {
-      oep.a("0X8009496", paramView, j, i, this.jdField_a_of_type_Int);
+    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a())) {
       return;
+    }
+    VideoFeedsPlayActivity.a(this.a, true);
+    this.a.e();
+  }
+  
+  public void flingRToL()
+  {
+    if (VideoFeedsPlayActivity.a(this.a) != null) {
+      VideoFeedsPlayActivity.a(this.a).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfj
  * JD-Core Version:    0.7.0.1
  */

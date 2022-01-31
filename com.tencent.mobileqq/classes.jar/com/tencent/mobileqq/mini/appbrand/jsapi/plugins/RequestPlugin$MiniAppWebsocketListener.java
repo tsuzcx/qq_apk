@@ -1,13 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bbfj;
-import com.squareup.okhttp.Headers;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
-import com.squareup.okhttp.ws.WebSocket;
-import com.squareup.okhttp.ws.WebSocketListener;
+import bdee;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -16,15 +9,21 @@ import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import okio.Buffer;
+import javax.annotation.Nullable;
+import okhttp3.Headers;
+import okhttp3.HttpUrl;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+import okio.ByteString;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RequestPlugin$MiniAppWebsocketListener
-  implements WebSocketListener
+  extends WebSocketListener
 {
   public int currSocketId;
   private boolean socketClosedCallbacked;
@@ -41,37 +40,37 @@ public class RequestPlugin$MiniAppWebsocketListener
     }
     QLog.d("[mini] http.RequestPlugin", 1, "---onActivelyClose---" + paramString);
     this.socketClosedCallbacked = true;
-    RequestPlugin.access$300(this.this$0, paramInt, paramString, this.currSocketId);
+    RequestPlugin.access$200(this.this$0, paramInt, paramString, this.currSocketId);
   }
   
-  public void onClose(int paramInt, String paramString)
+  public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
   {
     QLog.d("[mini] http.RequestPlugin", 1, "---onClosed---" + paramString);
     this.socketClosedCallbacked = true;
-    RequestPlugin.access$300(this.this$0, paramInt, paramString, this.currSocketId);
+    RequestPlugin.access$200(this.this$0, paramInt, paramString, this.currSocketId);
   }
   
-  public void onFailure(IOException paramIOException, Response paramResponse)
+  public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
   {
-    Object localObject2 = null;
-    QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure, socketId=" + this.currSocketId, paramIOException);
-    if (paramIOException != null) {}
+    Object localObject1 = null;
+    QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure, socketId=" + this.currSocketId, paramThrowable);
+    if (paramThrowable != null) {}
     int i;
-    Object localObject4;
+    Object localObject3;
     try
     {
-      if ((paramIOException.getMessage() != null) && ((paramIOException.getMessage().equals("SSL handshake timed out")) || (paramIOException.getMessage().equals("timeout"))))
+      if ((paramThrowable.getMessage() != null) && ((paramThrowable.getMessage().equals("SSL handshake timed out")) || (paramThrowable.getMessage().equals("timeout"))))
       {
         QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure , timeout , send close state. socketId=" + this.currSocketId);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("socketTaskId", this.currSocketId);
-        ((JSONObject)localObject1).put("state", "close");
+        paramWebSocket = new JSONObject();
+        paramWebSocket.put("socketTaskId", this.currSocketId);
+        paramWebSocket.put("state", "close");
         if (paramResponse == null)
         {
           i = 600;
-          ((JSONObject)localObject1).put("statusCode", i);
+          paramWebSocket.put("statusCode", i);
           if (RequestPlugin.access$000(this.this$0) != null) {
-            RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", ((JSONObject)localObject1).toString(), 0);
+            RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", paramWebSocket.toString(), 0);
           }
         }
       }
@@ -80,88 +79,101 @@ public class RequestPlugin$MiniAppWebsocketListener
         if ((this.this$0.jsPluginEngine == null) || (this.this$0.jsPluginEngine.appBrandRuntime == null) || (this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo() == null) || (this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig == null)) {
           return;
         }
-        Object localObject3 = this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig;
-        localObject4 = MiniReportManager.getAppType(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig);
-        localObject1 = localObject2;
+        Object localObject2 = this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig;
+        localObject3 = MiniReportManager.getAppType(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig);
+        paramWebSocket = localObject1;
         if (paramResponse != null)
         {
-          localObject1 = localObject2;
+          paramWebSocket = localObject1;
           if (paramResponse.request() != null) {
-            localObject1 = paramResponse.request().urlString();
+            paramWebSocket = paramResponse.request().url().toString();
           }
         }
-        MiniReportManager.reportEventType((MiniAppConfig)localObject3, 634, null, null, null, 0, (String)localObject4, 0L, RequestPlugin.access$100((String)localObject1));
+        MiniReportManager.reportEventType((MiniAppConfig)localObject2, 634, null, null, null, 0, (String)localObject3, 0L, RequestPlugin.access$100(paramWebSocket));
         return;
         i = paramResponse.code();
         break;
-        localObject3 = new JSONObject();
-        ((JSONObject)localObject3).put("socketTaskId", this.currSocketId);
-        ((JSONObject)localObject3).put("state", "error");
-        if ((bbfj.b(BaseApplicationImpl.getContext()) != 0) && (bbfj.b(BaseApplicationImpl.getContext()) != -1)) {
-          break label473;
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("socketTaskId", this.currSocketId);
+        ((JSONObject)localObject2).put("state", "error");
+        if ((bdee.b(BaseApplicationImpl.getContext()) != 0) && (bdee.b(BaseApplicationImpl.getContext()) != -1)) {
+          break label468;
         }
-        localObject1 = "network is down";
-        ((JSONObject)localObject3).put("errMsg", "network is down");
-        QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure socketId=" + this.currSocketId + " errMsg=" + (String)localObject1);
+        paramWebSocket = "network is down";
+        ((JSONObject)localObject2).put("errMsg", "network is down");
+        QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure socketId=" + this.currSocketId + " errMsg=" + paramWebSocket);
         if (RequestPlugin.access$000(this.this$0) != null) {
-          RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", ((JSONObject)localObject3).toString(), 0);
+          RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", ((JSONObject)localObject2).toString(), 0);
         }
       }
-      localObject4 = new StringBuilder().append("resposeCode=");
+      localObject3 = new StringBuilder().append("resposeCode=");
     }
-    catch (JSONException paramResponse)
+    catch (JSONException paramWebSocket)
     {
-      QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure exception:", paramIOException);
+      QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onFailure exception:", paramThrowable);
       return;
     }
-    label473:
+    label468:
     if (paramResponse == null) {}
-    for (Object localObject1 = "-1";; localObject1 = Integer.valueOf(i))
+    for (paramWebSocket = "-1";; paramWebSocket = Integer.valueOf(i))
     {
-      localObject1 = localObject1;
+      paramWebSocket = paramWebSocket;
       break;
       i = paramResponse.code();
     }
   }
   
-  public void onMessage(ResponseBody paramResponseBody)
+  public void onMessage(WebSocket paramWebSocket, String paramString)
   {
-    for (;;)
+    try
     {
-      JSONObject localJSONObject;
-      try
-      {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("socketTaskId", this.currSocketId);
-        localJSONObject.put("state", "message");
-        localJSONObject.put("errMsg", "ok");
-        MediaType localMediaType = paramResponseBody.contentType();
-        if ((localMediaType != null) && (localMediaType.subtype().equals("vnd.okhttp.websocket+binary")))
-        {
-          localJSONObject.put("isBuffer", true);
-          if (this.this$0.isGameRuntime)
-          {
-            NativeBuffer.packNativeBuffer(paramResponseBody.bytes(), NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject, RequestPlugin.access$200(this.this$0).getNativeBufferPool());
-            if (RequestPlugin.access$000(this.this$0) == null) {
-              break;
-            }
-            RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", localJSONObject.toString(), 0);
-            return;
-          }
-          NativeBuffer.packNativeBuffer(paramResponseBody.bytes(), NativeBuffer.TYPE_BUFFER_BASE64, "data", localJSONObject, RequestPlugin.access$200(this.this$0).getNativeBufferPool());
-          continue;
-        }
-        localJSONObject.put("isBuffer", false);
+      paramWebSocket = new JSONObject();
+      paramWebSocket.put("socketTaskId", this.currSocketId);
+      paramWebSocket.put("state", "message");
+      paramWebSocket.put("errMsg", "ok");
+      paramWebSocket.put("isBuffer", false);
+      paramWebSocket.put("data", paramString);
+      if (RequestPlugin.access$000(this.this$0) != null) {
+        RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", paramWebSocket.toString(), 0);
       }
-      catch (JSONException paramResponseBody)
-      {
-        paramResponseBody = paramResponseBody;
-        QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onMessage exception:", paramResponseBody);
-        return;
-      }
-      finally {}
-      localJSONObject.put("data", paramResponseBody.string());
+      return;
     }
+    catch (JSONException paramWebSocket)
+    {
+      paramWebSocket = paramWebSocket;
+      QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onMessage exception:", paramWebSocket);
+      return;
+    }
+    finally {}
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
+  {
+    try
+    {
+      paramWebSocket = new JSONObject();
+      paramWebSocket.put("socketTaskId", this.currSocketId);
+      paramWebSocket.put("state", "message");
+      paramWebSocket.put("errMsg", "ok");
+      paramWebSocket.put("isBuffer", true);
+      if (this.this$0.isGameRuntime) {
+        NativeBuffer.packNativeBuffer(paramByteString.toByteArray(), NativeBuffer.TYPE_BUFFER_NATIVE, "data", paramWebSocket, (ITNativeBufferPool)this.this$0.jsPluginEngine.getNativeBufferPool());
+      }
+      while (RequestPlugin.access$000(this.this$0) != null)
+      {
+        RequestPlugin.access$000(this.this$0).evaluateSubcribeJS("onSocketTaskStateChange", paramWebSocket.toString(), 0);
+        return;
+        NativeBuffer.packNativeBuffer(paramByteString.toByteArray(), NativeBuffer.TYPE_BUFFER_BASE64, "data", paramWebSocket, null);
+      }
+      return;
+    }
+    catch (JSONException paramWebSocket)
+    {
+      paramWebSocket = paramWebSocket;
+      QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onMessage exception:", paramWebSocket);
+      return;
+    }
+    finally {}
   }
   
   public void onOpen(WebSocket paramWebSocket, Response paramResponse)
@@ -184,7 +196,7 @@ public class RequestPlugin$MiniAppWebsocketListener
         String str = MiniReportManager.getAppType(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig);
         paramWebSocket = localObject;
         if (paramResponse.request() != null) {
-          paramWebSocket = paramResponse.request().urlString();
+          paramWebSocket = paramResponse.request().url().toString();
         }
         MiniReportManager.reportEventType(localMiniAppConfig, 632, null, null, null, 0, str, 0L, RequestPlugin.access$100(paramWebSocket));
       }
@@ -195,12 +207,10 @@ public class RequestPlugin$MiniAppWebsocketListener
       QLog.e("[mini] http.RequestPlugin", 1, "MiniAppWebsocketListener onOpen error:", paramWebSocket);
     }
   }
-  
-  public void onPong(Buffer paramBuffer) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.RequestPlugin.MiniAppWebsocketListener
  * JD-Core Version:    0.7.0.1
  */

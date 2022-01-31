@@ -1,26 +1,13 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
-
 public class aosz
-  implements Comparator<FileManagerEntity>
 {
-  public aosz(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
-  {
-    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
-      return 1;
-    }
-    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
-      return -1;
-    }
-    return 0;
-  }
+  public String a;
+  public String[] a;
+  public String b;
+  public String[] b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aosz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,113 +1,114 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.util.LruCache;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.canvas.AdCanvas;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.util.GdtCanvasJsonManager.1;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.lang.ref.WeakReference;
-import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.manager.TicketManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class yyo
+  extends WebViewPlugin
 {
-  private static volatile yyo jdField_a_of_type_Yyo;
-  private int jdField_a_of_type_Int = 5;
-  private volatile LruCache<String, String> jdField_a_of_type_AndroidUtilLruCache;
-  
-  private yyo()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    a();
-    this.jdField_a_of_type_AndroidUtilLruCache = new LruCache(this.jdField_a_of_type_Int);
-  }
-  
-  private int a()
-  {
-    int i = AdCanvas.getQueueLength(new WeakReference(BaseApplicationImpl.getContext()));
-    yxp.b("GdtCanvasJsonManager", "getQueueLength :" + i);
-    if (i == -2147483648) {
-      yxp.d("GdtCanvasJsonManager", "getQueueLength error");
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountRelease", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = i;
-    }
-  }
-  
-  public static yyo a()
-  {
-    if (jdField_a_of_type_Yyo == null) {}
-    try
-    {
-      if (jdField_a_of_type_Yyo == null) {
-        jdField_a_of_type_Yyo = new yyo();
-      }
-      return jdField_a_of_type_Yyo;
-    }
-    finally {}
-  }
-  
-  private void a(Ad paramAd, int paramInt1, int paramInt2, long paramLong)
-  {
-    try
-    {
-      yxu localyxu = new yxu();
-      localyxu.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)GdtAd.class.cast(paramAd));
-      localyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(paramInt1);
-      localyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.set(paramInt2);
-      localyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(paramLong);
-      yxt.a(localyxu);
-      return;
-    }
-    catch (Throwable paramAd)
-    {
-      yxp.d("GdtCanvasJsonManager", "rtp report error", paramAd);
-    }
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+    if (!"accountRelease".equals(paramString2)) {
       return false;
     }
-    this.jdField_a_of_type_AndroidUtilLruCache.put(paramString1, paramString2);
-    return true;
-  }
-  
-  public String a(Ad paramAd, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    for (;;)
+    if ("onReleaseSuccess".equals(paramString3))
     {
-      yxp.b("GdtCanvasJsonManager", "getCachedCanvasJson failed :" + paramString);
-      return null;
-      if ((this.jdField_a_of_type_AndroidUtilLruCache != null) && (this.jdField_a_of_type_AndroidUtilLruCache.size() != 0))
+      paramJsBridgeListener = this.mRuntime.a();
+      if (paramJsBridgeListener != null)
       {
-        str = (String)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
-        if (!TextUtils.isEmpty(str)) {
-          break;
-        }
-        a(paramAd, 76, 1, 0L);
+        paramJsBridgeListener.setResult(-1, null);
+        paramJsBridgeListener.finish();
       }
     }
-    a(paramAd, 76, 0, 0L);
-    return str;
-  }
-  
-  public void a(Ad paramAd, String paramString1, String paramString2)
-  {
-    long l = System.currentTimeMillis();
-    a(paramAd, 74, 0, 0L);
-    AdThreadManager.INSTANCE.post(new GdtCanvasJsonManager.1(this, paramString2, l, paramAd, paramString1), 4);
+    while (!"getToken".equals(paramString3)) {
+      for (;;)
+      {
+        return false;
+        QLog.d("AccountRelease", 1, "release success, activity == null");
+      }
+    }
+    paramJsBridgeListener = this.mRuntime.a();
+    paramString1 = this.mRuntime.a();
+    boolean bool = false;
+    if (paramString1 != null) {
+      bool = paramString1.getIntent().getBooleanExtra("is_release_account", false);
+    }
+    for (;;)
+    {
+      if ((bool) && (paramJsBridgeListener != null))
+      {
+        paramString1 = (TicketManager)paramJsBridgeListener.getManager(2);
+        paramJsBridgeListener = paramJsBridgeListener.getCurrentAccountUin();
+        paramString1 = paramString1.getA2(paramJsBridgeListener);
+        if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString1)))
+        {
+          paramString1 = bdcv.a(paramString1);
+          long l = Long.valueOf(paramJsBridgeListener).longValue();
+          paramJsBridgeListener = new byte[76];
+          paramJsBridgeListener[3] = ((byte)(int)(0xFF & l));
+          paramJsBridgeListener[2] = ((byte)(int)(l >>> 8 & 0xFF));
+          paramJsBridgeListener[1] = ((byte)(int)(l >>> 16 & 0xFF));
+          paramJsBridgeListener[0] = ((byte)(int)(l >>> 24 & 0xFF));
+          int i = 0;
+          for (;;)
+          {
+            if (i < paramString1.length)
+            {
+              paramJsBridgeListener[(i + 4)] = paramString1[i];
+              i += 1;
+              continue;
+              QLog.d("AccountRelease", 1, "getToken, activity == null");
+              break;
+            }
+          }
+          paramJsBridgeListener = bfhi.a(paramJsBridgeListener);
+          if (QLog.isColorLevel()) {
+            QLog.d("AccountRelease", 2, String.format("getToken: %s", new Object[] { paramJsBridgeListener }));
+          }
+          paramString1 = new JSONObject();
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+          break label465;
+        }
+        paramString1.put("token", "");
+        callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { paramString1.toString() });
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+      }
+      break;
+      QLog.d("AccountRelease", 1, "uin or a2 is empty, uin:" + paramJsBridgeListener + ",a2:" + paramString1);
+      for (;;)
+      {
+        paramJsBridgeListener = "";
+        break;
+        QLog.d("AccountRelease", 1, "getToken, app == null or flag: " + bool);
+      }
+      label465:
+      paramString1.put("token", paramJsBridgeListener);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yyo
  * JD-Core Version:    0.7.0.1
  */

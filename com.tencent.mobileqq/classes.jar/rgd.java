@@ -1,18 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class rgd
-  extends ThreadLocal<Boolean>
+  extends oxe
 {
-  public rgd(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
+  private rgd(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  protected Boolean a()
+  public void j()
   {
-    return Boolean.valueOf(false);
+    if ((this.a.getActivity() instanceof VideoFeedsPlayActivity))
+    {
+      ((VideoFeedsPlayActivity)this.a.getActivity()).e();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,169 +1,82 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.lifecycle.livedata.LiveData.1;
-import java.util.Iterator;
-import java.util.Map.Entry;
+import cooperation.qzone.statistic.access.concept.Collector;
 
-public abstract class bjoo<T>
+public class bjoo
+  extends bjor
 {
-  private static final Object jdField_b_of_type_JavaLangObject = new Object();
-  private int jdField_a_of_type_Int;
-  private bjoh<bjos<? super T>, bjoo<T>.bjoq> jdField_a_of_type_Bjoh = new bjoh();
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new LiveData.1(this);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private boolean jdField_b_of_type_Boolean;
-  private volatile Object c = jdField_b_of_type_JavaLangObject;
-  private volatile Object d = jdField_b_of_type_JavaLangObject;
+  protected int a;
+  protected long a;
+  protected boolean a;
   
-  private void a(bjoo<T>.bjoq parambjoo)
+  public bjoo(long paramLong, int paramInt, boolean paramBoolean)
   {
-    if (!parambjoo.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      if (!parambjoo.a())
-      {
-        parambjoo.a(false);
-        return;
-      }
-    } while (parambjoo.jdField_a_of_type_Int >= this.jdField_b_of_type_Int);
-    parambjoo.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    parambjoo.jdField_a_of_type_Bjos.a(this.c);
-  }
-  
-  private static void a(String paramString)
-  {
-    if (!bjoa.a().a()) {
-      throw new IllegalStateException("Cannot invoke " + paramString + " on a background thread");
-    }
-  }
-  
-  private void b(@Nullable bjoo<T>.bjoq parambjoo)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      return;
-    }
+    this.jdField_a_of_type_Long = 30000L;
+    this.jdField_a_of_type_Int = 50;
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    bjoo<T>.bjoq localbjoo;
-    if (parambjoo != null)
+    a(paramLong);
+    a(paramInt);
+    a(paramBoolean);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a(Collector paramCollector)
+  {
+    int i;
+    int j;
+    label30:
+    int k;
+    if (paramCollector.a().a() > 0)
     {
-      a(parambjoo);
-      localbjoo = null;
-    }
-    for (;;)
-    {
-      parambjoo = localbjoo;
-      if (this.jdField_b_of_type_Boolean) {
-        break;
+      i = 1;
+      if (System.currentTimeMillis() - paramCollector.a() <= this.jdField_a_of_type_Long) {
+        break label89;
       }
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      bjol localbjol = this.jdField_a_of_type_Bjoh.a();
-      do
-      {
-        localbjoo = parambjoo;
-        if (!localbjol.hasNext()) {
-          break;
-        }
-        a((bjoq)((Map.Entry)localbjol.next()).getValue());
-      } while (!this.jdField_b_of_type_Boolean);
-      localbjoo = parambjoo;
-    }
-  }
-  
-  @Nullable
-  public T a()
-  {
-    Object localObject = this.c;
-    if (localObject != jdField_b_of_type_JavaLangObject) {
-      return localObject;
-    }
-    return null;
-  }
-  
-  protected void a() {}
-  
-  public void a(@NonNull bjns parambjns)
-  {
-    a("removeObservers");
-    Iterator localIterator = this.jdField_a_of_type_Bjoh.iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((bjoq)localEntry.getValue()).a(parambjns)) {
-        a((bjos)localEntry.getKey());
+      j = 1;
+      if (paramCollector.a().a() < this.jdField_a_of_type_Int) {
+        break label94;
+      }
+      k = 1;
+      label47:
+      if ((!this.jdField_a_of_type_Boolean) || (!paramCollector.a())) {
+        break label100;
       }
     }
-  }
-  
-  public void a(@NonNull bjns parambjns, @NonNull bjos<? super T> parambjos)
-  {
-    a("observe");
-    if (parambjns.a().a() == bjnq.a) {}
-    bjop localbjop;
-    do
+    label89:
+    label94:
+    label100:
+    for (int m = 1;; m = 0)
     {
-      return;
-      localbjop = new bjop(this, parambjns, parambjos);
-      parambjos = (bjoq)this.jdField_a_of_type_Bjoh.a(parambjos, localbjop);
-      if ((parambjos != null) && (!parambjos.a(parambjns))) {
-        throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
+      if ((i == 0) || ((j == 0) && (k == 0) && (m == 0))) {
+        break label106;
       }
-    } while (parambjos != null);
-    parambjns.a().a(localbjop);
-  }
-  
-  public void a(@NonNull bjos<? super T> parambjos)
-  {
-    a("removeObserver");
-    parambjos = (bjoq)this.jdField_a_of_type_Bjoh.a(parambjos);
-    if (parambjos == null) {
-      return;
+      return true;
+      i = 0;
+      break;
+      j = 0;
+      break label30;
+      k = 0;
+      break label47;
     }
-    parambjos.a();
-    parambjos.a(false);
-  }
-  
-  protected void a(T paramT)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      int i;
-      if (this.d == jdField_b_of_type_JavaLangObject)
-      {
-        i = 1;
-        this.d = paramT;
-        if (i == 0) {
-          QLog.d("debug", 4, "!postTask");
-        }
-      }
-      else
-      {
-        i = 0;
-      }
-    }
-    bjoa.a().b(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  protected void b() {}
-  
-  public void b(T paramT)
-  {
-    a("setValue");
-    this.jdField_b_of_type_Int += 1;
-    this.c = paramT;
-    b(null);
+    label106:
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjoo
  * JD-Core Version:    0.7.0.1
  */

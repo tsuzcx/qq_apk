@@ -96,7 +96,7 @@ public abstract class TPBaseStrategy
     if ((paramTPStrategyContext != null) && (paramTPStrategyContext.getPlayerType() == 0)) {
       i = strategyForOpen(paramTPPlaybackInfo);
     }
-    label151:
+    label169:
     do
     {
       do
@@ -113,34 +113,46 @@ public abstract class TPBaseStrategy
                 {
                   do
                   {
-                    return i;
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          return i;
+                          i = j;
+                        } while (!checkNeedDoRetry(paramTPStrategyContext));
+                        i = j;
+                        switch (k)
+                        {
+                        case 1: 
+                        case 3: 
+                        default: 
+                          return 0;
+                        case 0: 
+                          if ((paramTPStrategyContext == null) || (paramTPStrategyContext.getPlayerType() != 1)) {
+                            break label169;
+                          }
+                          i = j;
+                        }
+                      } while (!isThumbPlayerEnable(paramTPPlaybackInfo));
+                      return 2;
+                      i = j;
+                    } while (paramTPStrategyContext == null);
                     i = j;
-                  } while (!checkNeedDoRetry(paramTPStrategyContext));
+                  } while (paramTPStrategyContext.getPlayerType() != 2);
                   i = j;
-                  switch (k)
-                  {
-                  case 1: 
-                  case 3: 
-                  default: 
-                    return 0;
-                  case 0: 
-                    if (paramTPStrategyContext.getPlayerType() != 1) {
-                      break label151;
-                    }
-                    i = j;
-                  }
-                } while (!isThumbPlayerEnable(paramTPPlaybackInfo));
-                return 2;
+                } while (!isSystemPlayerEnable(paramTPPlaybackInfo));
+                return 1;
                 i = j;
-              } while (paramTPStrategyContext.getPlayerType() != 2);
+              } while (paramTPStrategyContext == null);
               i = j;
-            } while (!isSystemPlayerEnable(paramTPPlaybackInfo));
-            return 1;
+            } while (paramTPStrategyContext.getPlayerType() != 1);
             i = j;
-          } while (paramTPStrategyContext.getPlayerType() != 1);
+          } while (!isThumbPlayerEnable(paramTPPlaybackInfo));
+          return 2;
           i = j;
-        } while (!isThumbPlayerEnable(paramTPPlaybackInfo));
-        return 2;
+        } while (paramTPStrategyContext == null);
         i = j;
       } while (paramTPStrategyContext.getPlayerType() != 2);
       i = j;
@@ -150,7 +162,7 @@ public abstract class TPBaseStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.strategy.TPBaseStrategy
  * JD-Core Version:    0.7.0.1
  */

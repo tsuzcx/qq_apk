@@ -1,69 +1,36 @@
-import android.os.AsyncTask;
-import android.support.v7.widget.RecyclerView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
-import com.tencent.ttpic.videoshelf.model.edit.ShelfNode;
-import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
-import com.tencent.ttpic.videoshelf.utils.TTPTLogger;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment.OffscreenCaptureRunnable;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
 
-public class biyc
-  extends AsyncTask<Void, Void, Void>
+public abstract class biyc
 {
-  public biyc(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  protected final int a;
+  public String a;
+  protected final int b;
+  public String b;
+  public int c = -9999999;
+  public int d;
   
-  protected Void a(Void... paramVarArgs)
+  public biyc()
   {
-    long l1 = System.currentTimeMillis();
-    AEVideoShelfEditFragment.a(this.a);
-    long l2 = System.currentTimeMillis();
-    if (QLog.isDebugVersion()) {
-      QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "init data doInBackground1---cost: ", Long.valueOf(l2 - l1) });
-    }
-    AEVideoShelfEditFragment.b(this.a);
-    if (QLog.isDebugVersion()) {
-      QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "init data doInBackground2---cost: ", Long.valueOf(System.currentTimeMillis() - l2) });
-    }
-    return null;
+    this.jdField_a_of_type_Int = -9999999;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  protected void a(Void paramVoid)
+  public void a(Bundle paramBundle)
   {
-    AEVideoShelfEditFragment.c(this.a);
-    if (AEVideoShelfEditFragment.a(this.a).isEmpty())
-    {
-      TTPTLogger.w("AEVideoShelfEditFrag", "init NodeGroup Error!");
-      return;
-    }
-    paramVoid = new ArrayList();
-    int i = 0;
-    while (i < AEVideoShelfEditFragment.a(this.a).size())
-    {
-      ShelfNode localShelfNode = new ShelfNode();
-      localShelfNode.setCoverUri(((NodeGroup)AEVideoShelfEditFragment.a(this.a).get(i)).nodeCoverImage);
-      paramVoid.add(localShelfNode);
-      i += 1;
-    }
-    AEVideoShelfEditFragment.a(this.a, new bizk(this.a.getActivity(), paramVoid, AEVideoShelfEditFragment.a(this.a).getVideoWidth(), AEVideoShelfEditFragment.a(this.a).getVideoHeight()));
-    AEVideoShelfEditFragment.a(this.a).a(AEVideoShelfEditFragment.a(this.a).getMaterialPath());
-    AEVideoShelfEditFragment.a(this.a).setAdapter(AEVideoShelfEditFragment.a(this.a));
-    AEVideoShelfEditFragment.d(this.a);
-    AEVideoShelfEditFragment.e(this.a);
-    AEVideoShelfEditFragment.a(this.a, 0);
-    new AEVideoShelfEditFragment.OffscreenCaptureRunnable(this.a, null).run();
+    paramBundle.putInt("_mqqpay_baseresp_retcode", this.c);
+    paramBundle.putString("_mqqpay_baseresp_retmsg", this.jdField_a_of_type_JavaLangString);
+    paramBundle.putString("_mqqpay_baseapi_apiname", this.jdField_b_of_type_JavaLangString);
+    paramBundle.putInt("_mqqpay_baseapi_apimark", this.d);
   }
   
-  protected void onPreExecute()
+  public boolean a()
   {
-    AEVideoShelfEditFragment.a(this.a, null);
+    return this.c == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biyc
  * JD-Core Version:    0.7.0.1
  */

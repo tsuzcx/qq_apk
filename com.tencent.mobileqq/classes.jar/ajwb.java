@@ -1,70 +1,45 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class ajwb
+  extends BroadcastReceiver
 {
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null) {
-      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", "true");
-    }
-  }
+  public ajwb(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMessageRecord.msgtype == -2000) {
-      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", paramBoolean + "");
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FlashPicHelper", 4, "setFlashPicFlag,troopUin:" + paramMessageRecord.frienduin + ",isReaded:" + paramBoolean + ",msgType:" + paramMessageRecord.msgtype);
-    }
-  }
-  
-  public static boolean a(int paramInt, HotChatManager paramHotChatManager, String paramString)
-  {
-    return ((paramInt == 0) || (paramInt == 1) || (paramInt == 3000)) && (!paramHotChatManager.b(paramString));
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessageRecord != null) {
-      if (paramMessageRecord.msgtype != -2000)
-      {
-        bool1 = bool2;
-        if (paramMessageRecord.msgtype != -2006) {}
-      }
-      else
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic"))) {
-          bool1 = true;
-        }
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.app.getApp().getPackageName()))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
       }
     }
-    return bool1;
-  }
-  
-  public static boolean b(MessageRecord paramMessageRecord)
-  {
-    try
+    int i;
+    int j;
+    do
     {
-      boolean bool = Boolean.valueOf(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic")).booleanValue();
-      return bool;
+      do
+      {
+        return;
+      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
+      i = paramIntent.getIntExtra("stopReason", 0);
+      j = paramIntent.getIntExtra("stopReason3rd", -1);
+    } while (((i != 0) && (j != 1)) || ((this.a.d != 11) && (this.a.d != 36)));
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "ACTION_STOP_VIDEO_CHAT");
     }
-    catch (Exception paramMessageRecord)
-    {
-      paramMessageRecord.printStackTrace();
-    }
-    return false;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwb
  * JD-Core Version:    0.7.0.1
  */

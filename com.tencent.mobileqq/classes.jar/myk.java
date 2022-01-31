@@ -1,58 +1,41 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint.FontMetrics;
+import android.text.TextPaint;
+import android.view.View;
+import com.tencent.av.widget.stageview.StageMemberView;
 
-class myk
-  implements asvw
+public class myk
+  extends View
 {
-  myk(myj parammyj) {}
-  
-  public String getToken()
+  public myk(StageMemberView paramStageMemberView, Context paramContext)
   {
-    return QQPlayerService.a(5, "" + this.a.a);
+    super(paramContext);
   }
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public void draw(Canvas paramCanvas)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicService", 2, "onPlaySongChanged:" + paramSongInfo.b);
-    }
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicService", 2, "onPlayStateChanged:" + paramInt);
-    }
-    Object localObject = QQPlayerService.b();
-    localObject = myj.a(this.a, (SongInfo)localObject);
-    if (localObject != null) {}
-    try
+    float f;
+    if (StageMemberView.a(this.a) != null)
     {
-      ((JSONObject)localObject).put("state", paramInt);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add("*.qq.com");
-      armm.a("qbrowserMusicStateChange", (JSONObject)localObject, localArrayList, null);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMusicService", 2, "onPlayStateChanged:" + localJSONException.getStackTrace());
-        }
-        localJSONException.printStackTrace();
+      f = -StageMemberView.a(this.a).getFontMetrics().ascent;
+      if (this.a.a == null) {
+        break label76;
       }
+      StageMemberView.a(this.a).setColor(this.a.a.a);
+    }
+    for (;;)
+    {
+      paramCanvas.drawText(StageMemberView.a(this.a), 0.0F, f, StageMemberView.a(this.a));
+      return;
+      label76:
+      StageMemberView.a(this.a).setColor(-1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.webviewplugin;
 
 import com.tencent.biz.pubaccount.CustomWebView;
-import xmq;
+import zbj;
 
 public class Share$9
   implements Runnable
 {
-  public Share$9(xmq paramxmq, String paramString) {}
+  public Share$9(zbj paramzbj, String paramString) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class Share$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.Share.9
  * JD-Core Version:    0.7.0.1
  */

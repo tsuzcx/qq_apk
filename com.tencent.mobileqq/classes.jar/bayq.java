@@ -1,25 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-public final class bayq
-  implements Parcelable.Creator<FaceInfo>
+public class bayq
+  implements DialogInterface.OnClickListener
 {
-  public FaceInfo a(Parcel paramParcel)
-  {
-    FaceInfo localFaceInfo = new FaceInfo();
-    localFaceInfo.a(paramParcel);
-    return localFaceInfo;
-  }
+  public bayq(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public FaceInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new FaceInfo[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bayq
  * JD-Core Version:    0.7.0.1
  */

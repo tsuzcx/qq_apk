@@ -1,23 +1,22 @@
-import android.view.animation.Animation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 public class afty
-  extends bfmx
+  extends aekx
 {
-  public afty(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a(true);
-    EmoticonGroupStoreFragment.a(this.a, false);
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
-  }
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afty
  * JD-Core Version:    0.7.0.1
  */

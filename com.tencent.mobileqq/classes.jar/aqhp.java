@@ -1,69 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.AbsListView;
 
 public class aqhp
-  extends BroadcastReceiver
+  implements bhpo
 {
-  public aqhp(HotChatFragment paramHotChatFragment) {}
+  public aqhp(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.get_banner_rect".equals(paramIntent.getAction())))
+    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
     {
-      paramContext = paramIntent.getStringExtra("content");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label31;
+      if (paramInt1 != 0) {
+        URLDrawable.resume();
       }
+      return;
     }
-    label31:
-    do
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.g + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
+    }
+    if (paramInt == 0)
     {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
-          if (paramContext != null)
-          {
-            float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
-            int j = paramContext.length();
-            this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-            int i = 0;
-            while (i < j)
-            {
-              paramIntent = paramContext.getJSONObject(i);
-              Rect localRect = new Rect();
-              localRect.top = ((int)(paramIntent.getInt("top") * f));
-              localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
-              this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
-              i += 1;
-            }
-            this.a.d = true;
-            return;
-          }
-        }
-        catch (JSONException paramContext) {}
-      }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
+      URLDrawable.resume();
+      return;
+    }
+    URLDrawable.pause();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhp
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,6 @@ public class HwEngine
   public AtomicLong dwFlow_Wifi = new AtomicLong(0L);
   public AtomicLong dwFlow_Xg = new AtomicLong(0L);
   public boolean ipv6Switch;
-  public boolean ipv6SwitchDual;
   private SparseArray<HwNetSegConf> mBuzSegConfigs;
   public ConnManager mConnManager;
   private Context mContext;
@@ -43,15 +42,14 @@ public class HwEngine
   public AtomicLong upFlow_Wifi = new AtomicLong(0L);
   public AtomicLong upFlow_Xg = new AtomicLong(0L);
   
-  public HwEngine(Context paramContext, String paramString, int paramInt1, AppRuntime paramAppRuntime, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public HwEngine(Context paramContext, String paramString, int paramInt1, AppRuntime paramAppRuntime, int paramInt2, boolean paramBoolean)
   {
     this.mContext = paramContext;
     appId = paramInt1;
     localeId = paramInt2;
     this.currentUin = paramString;
     this.app = paramAppRuntime;
-    this.ipv6Switch = paramBoolean1;
-    this.ipv6SwitchDual = paramBoolean2;
+    this.ipv6Switch = paramBoolean;
     initHwEngine();
   }
   

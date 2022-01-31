@@ -1,25 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.HeadRequest;
+import android.view.SurfaceHolder;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
-public final class bazc
-  implements Parcelable.Creator<HeadRequest>
+public class bazc
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  public HeadRequest a(Parcel paramParcel)
+  public bazc(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
   {
-    HeadRequest localHeadRequest = new HeadRequest();
-    localHeadRequest.a(paramParcel);
-    return localHeadRequest;
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceChanged");
+    }
   }
   
-  public HeadRequest[] a(int paramInt)
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    return new HeadRequest[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
+    }
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bazc
  * JD-Core Version:    0.7.0.1
  */

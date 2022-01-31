@@ -1,88 +1,57 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.Layout;
-import android.text.TextPaint;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bbab
-  extends Drawable
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(7);
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bbab(Context paramContext, String paramString)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, String paramString, int paramInt5, bbad parambbad)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = baxi.b(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130841580);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_Int = Math.min(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    float f1 = localRect.width() / this.jdField_a_of_type_Int;
-    float f2 = this.jdField_a_of_type_Int / 2;
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(f1 * f2);
-    Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label172;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("start", paramInt1);
+      localJSONObject.put("num", paramInt2);
+      localJSONObject.put("type", paramInt3);
+      if ((paramInt3 == 1) || (paramInt3 == 2)) {
+        localJSONObject.put("theme_id", paramInt4);
+      }
+      localJSONObject.put("from", 2);
+      localJSONObject.put("bid", paramLong);
+      localJSONObject.put("pid", paramString);
+      if (paramInt5 != -1) {
+        localJSONObject.put("recommend_by_bid", paramInt5);
       }
     }
-    label172:
-    for (int i = 0;; i = (int)Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint))
+    catch (JSONException paramString)
     {
-      int j = (int)(localFontMetrics.descent - localFontMetrics.ascent);
-      j = localRect.left;
-      i = (localRect.width() - i) / 2;
-      f1 = localRect.top;
-      int k = (int)(localRect.height() / 2.0F + f1 - (localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.top);
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, i + j, k, this.jdField_a_of_type_AndroidTextTextPaint);
-      return;
+      for (;;)
+      {
+        WebSsoBody.WebSsoRequestBody localWebSsoRequestBody;
+        paramString.printStackTrace();
+      }
     }
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, localJSONObject.toString());
+    }
+    paramString = new NewIntent(BaseApplicationImpl.getApplication().getApplicationContext(), mzx.class);
+    paramString.putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.shortvideo_feeds");
+    localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
+    localWebSsoRequestBody.type.set(0);
+    localWebSsoRequestBody.data.set(localJSONObject.toString());
+    paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
+    paramString.setObserver(new bbac(parambbad));
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbab
  * JD-Core Version:    0.7.0.1
  */

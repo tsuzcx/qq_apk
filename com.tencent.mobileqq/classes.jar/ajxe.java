@@ -1,33 +1,22 @@
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.ViewGroup;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface ajxe
+class ajxe
+  extends amab
 {
-  public abstract ViewGroup a();
+  ajxe(ajxc paramajxc) {}
   
-  public abstract bfwx a(String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Configuration paramConfiguration);
-  
-  public abstract void a(QQAppInterface paramQQAppInterface);
-  
-  public abstract void a(String paramString, bfwx parambfwx);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      ajxc.a(this.a, paramString, localBitmap);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxe
  * JD-Core Version:    0.7.0.1
  */

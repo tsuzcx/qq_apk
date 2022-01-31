@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.richstatus;
 
-import ajxl;
+import aloz;
 import android.text.TextUtils;
-import aweq;
-import awet;
+import axzt;
+import axzw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import hy;
+import gh;
 import mqq.os.MqqHandler;
 
 public class StatusManager$3$2
   implements Runnable
 {
-  public StatusManager$3$2(awet paramawet, boolean paramBoolean) {}
+  public StatusManager$3$2(axzw paramaxzw, boolean paramBoolean) {}
   
   public void run()
   {
     int j = 0;
-    aweq.a(this.jdField_a_of_type_Awet.a, null);
-    ajxl localajxl = (ajxl)aweq.a(this.jdField_a_of_type_Awet.a).getManager(51);
-    if (localajxl != null)
+    axzt.a(this.jdField_a_of_type_Axzw.a, null);
+    aloz localaloz = (aloz)axzt.a(this.jdField_a_of_type_Axzw.a).getManager(51);
+    if (localaloz != null)
     {
-      Object localObject2 = localajxl.a(aweq.a(this.jdField_a_of_type_Awet.a).getAccount());
+      Object localObject2 = localaloz.a(axzt.a(this.jdField_a_of_type_Axzw.a).getAccount());
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = aweq.a(this.jdField_a_of_type_Awet.a).getAccount();
+        ((ExtensionInfo)localObject1).uin = axzt.a(this.jdField_a_of_type_Axzw.a).getAccount();
       }
       localObject2 = ((ExtensionInfo)localObject1).getRichStatus();
       if ((localObject2 != null) && ((!TextUtils.isEmpty(((RichStatus)localObject2).actionText)) || (!TextUtils.isEmpty(((RichStatus)localObject2).dataText)) || (!TextUtils.isEmpty(((RichStatus)localObject2).toSpannableStringWithoutAction())))) {
@@ -39,15 +39,15 @@ public class StatusManager$3$2
       {
         long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
         ((ExtensionInfo)localObject1).setRichBuffer(new byte[0], l);
-        localajxl.a((ExtensionInfo)localObject1);
+        localaloz.a((ExtensionInfo)localObject1);
       }
     }
     ThreadManager.getUIHandler().post(new StatusManager.3.2.1(this));
-    Object localObject1 = hy.a();
+    Object localObject1 = gh.a();
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = j;; i = -1)
     {
-      ((hy)localObject1).a(i, RichStatus.getEmptyStatus(), null, 1);
+      ((gh)localObject1).a(i, RichStatus.getEmptyStatus(), null, 1);
       return;
       label218:
       i = 0;
@@ -57,7 +57,7 @@ public class StatusManager$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.3.2
  * JD-Core Version:    0.7.0.1
  */

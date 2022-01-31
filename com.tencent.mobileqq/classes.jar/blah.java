@@ -1,36 +1,92 @@
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.gif.video.GIFCreator.1;
+import dov.com.qq.im.video.GifEncoder;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class blah
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private static String jdField_a_of_type_JavaLangString = blah.class.getSimpleName();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private blaj jdField_a_of_type_Blaj;
+  private GifEncoder jdField_a_of_type_DovComQqImVideoGifEncoder = new GifEncoder();
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private String b = bkkv.b;
+  private String c;
+  private String d;
+  private String e;
   
-  blah(String paramString)
+  public blah(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramString;
+    this.jdField_a_of_type_JavaUtilList = a(paramString);
+    this.c = (this.b + System.currentTimeMillis() + ".gif");
+    this.d = (this.b + System.currentTimeMillis() + "_compressed.gif");
+    try
+    {
+      paramString = new File(this.b);
+      if (!paramString.isDirectory())
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 4, this.b + " is not a directory");
+        boolean bool = paramString.mkdirs();
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "mkdirs return " + bool);
+      }
+      paramString = new HandlerThread("GIFCreatorHT" + System.currentTimeMillis());
+      paramString.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "check dir exception, msg = " + paramString.getMessage());
+      }
+    }
   }
   
-  public int a()
+  private List<String> a(String paramString)
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new File(paramString);
+    if (((File)localObject).isDirectory())
+    {
+      localObject = ((File)localObject).list(new blai(this));
+      if (localObject != null)
+      {
+        Arrays.sort((Object[])localObject);
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = localObject[i];
+          localArrayList.add(paramString + File.separator + str);
+          i += 1;
+        }
+      }
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
+    return localArrayList;
   }
   
-  public String a()
+  public void a()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
+    bdcs.a(this.e);
+  }
+  
+  public void a(blaj paramblaj)
+  {
+    this.jdField_a_of_type_Blaj = paramblaj;
+    QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "start create gif, gif path = ", this.c });
+    this.jdField_a_of_type_AndroidOsHandler.post(new GIFCreator.1(this, paramblaj));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blah
  * JD-Core Version:    0.7.0.1
  */

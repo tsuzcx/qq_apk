@@ -1,50 +1,73 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFeedVisitor;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import UserGrowth.stNewIconStyle;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.view.ViewStub;
 
 public class tnh
-  extends sys
+  extends tck<tmv>
 {
-  public static final String a = sxm.a("StorySvc.feed_visitor_list");
-  public String b;
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private tni jdField_a_of_type_Tni;
+  private tnj jdField_a_of_type_Tnj;
   
-  public String a()
+  public tnh(Context paramContext, tnj paramtnj)
   {
-    return a;
+    super(paramContext);
+    this.jdField_a_of_type_Tnj = paramtnj;
   }
   
-  public syn a(byte[] paramArrayOfByte)
+  private stSimpleMetaFeed a()
   {
-    qqstory_service.RspGetFeedVisitor localRspGetFeedVisitor = new qqstory_service.RspGetFeedVisitor();
-    try
-    {
-      localRspGetFeedVisitor.mergeFrom(paramArrayOfByte);
-      return new tos(this.b, localRspGetFeedVisitor);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      ved.d("Q.qqstory:GetVideoWatcherListRequest", "" + paramArrayOfByte);
+    tmv localtmv = (tmv)a();
+    if ((localtmv != null) && ((localtmv.a() instanceof stSimpleMetaFeed))) {
+      return (stSimpleMetaFeed)localtmv.a();
     }
     return null;
   }
   
-  protected byte[] a()
+  private void b(tmv paramtmv)
   {
-    qqstory_service.ReqGetFeedVisitor localReqGetFeedVisitor = new qqstory_service.ReqGetFeedVisitor();
-    localReqGetFeedVisitor.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqGetFeedVisitor.toByteArray();
+    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
+    {
+      if (this.jdField_a_of_type_Tni == null)
+      {
+        this.jdField_a_of_type_Tni = new tni(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Tnj);
+        this.jdField_a_of_type_Tni.a(this.jdField_a_of_type_AndroidViewViewStub);
+      }
+      this.jdField_a_of_type_Tni.a(paramtmv);
+    }
   }
   
-  public String toString()
+  protected void a() {}
+  
+  public void a(tmv paramtmv)
   {
-    return "GetVideoWatcherListRequest{, feedId='" + this.b + '\'' + '}';
+    super.a(paramtmv);
+    b(paramtmv);
+  }
+  
+  protected int b()
+  {
+    return 2131559877;
+  }
+  
+  protected void b() {}
+  
+  protected void c()
+  {
+    if (this.jdField_a_of_type_Tni != null) {
+      this.jdField_a_of_type_Tni.c();
+    }
+  }
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131379517));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,11 @@
-class anfl
+public abstract interface anfl
+  extends anfm
 {
-  private static final anfj a = new anfj(null);
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfl
  * JD-Core Version:    0.7.0.1
  */

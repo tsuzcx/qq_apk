@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.content.Context;
 
 public class ajhh
-  implements DialogInterface.OnClickListener
+  extends ajhi
 {
-  public ajhh(ApolloGameActivity paramApolloGameActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajhh(Context paramContext)
   {
-    muc.a(this.a);
+    this.a = paramContext.getString(2131697682);
+    this.b = this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhh
  * JD-Core Version:    0.7.0.1
  */

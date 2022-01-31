@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
-import omi;
+import oqt;
 
 public class ReadInJoyCardViewCostBall
   extends TextView
@@ -33,17 +33,17 @@ public class ReadInJoyCardViewCostBall
   
   private void a(Context paramContext)
   {
-    setId(2131370368);
-    setBackgroundColor(paramContext.getResources().getColor(2131165285));
+    setId(2131370673);
+    setBackgroundColor(paramContext.getResources().getColor(2131165320));
     setText("60.00");
     setTextColor(-16711936);
     setGravity(17);
-    setOnTouchListener(new omi(this, null));
+    setOnTouchListener(new oqt(this, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyCardViewCostBall
  * JD-Core Version:    0.7.0.1
  */

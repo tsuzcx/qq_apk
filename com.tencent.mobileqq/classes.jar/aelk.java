@@ -1,54 +1,50 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.Player;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public final class aelk
-  extends AnimationView.Player
+public class aelk
+  implements apnp
 {
-  public static boolean a;
+  public aelk(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public aelk(AnimationView paramAnimationView)
+  public void a(View paramView)
   {
-    super(paramAnimationView);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(AnimationView paramAnimationView)
-  {
-    reset();
-    this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAnimationView);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+    String str = bdox.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if ((localViewParent instanceof ChatXListView)) {
+      EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
+    }
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
     }
     for (;;)
     {
-      return false;
-      if (jdField_a_of_type_Boolean)
-      {
-        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
-      }
-      else
-      {
-        a();
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelk
  * JD-Core Version:    0.7.0.1
  */

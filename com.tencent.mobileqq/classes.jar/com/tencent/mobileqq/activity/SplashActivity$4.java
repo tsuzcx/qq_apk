@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import axqy;
-import bbjn;
+import azmj;
+import bdij;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,11 +15,11 @@ class SplashActivity$4
     long l = SpaceLowNoticeActiviy.a(this.this$0.app, "conf_space_low_shreshold", 104857600L);
     if (SpaceLowNoticeActiviy.a(SpaceLowNoticeActiviy.a(this.this$0.app, "conf_space_check_interval", 259200000L)))
     {
-      if (bbjn.b(this.this$0) + bbjn.b() < l)
+      if (bdij.b(this.this$0) + bdij.b() < l)
       {
         QLog.i("SplashActivity", 1, "qqclean conf did notice");
         SpaceLowNoticeActiviy.a(this.this$0);
-        axqy.b(this.this$0.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.this$0.app.getCurrentAccountUin(), "", "", "");
+        azmj.b(this.this$0.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.this$0.app.getCurrentAccountUin(), "", "", "");
       }
     }
     else {

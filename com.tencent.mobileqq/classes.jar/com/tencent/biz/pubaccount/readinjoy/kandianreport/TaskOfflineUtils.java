@@ -4,8 +4,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
-import mzb;
-import mzh;
+import nbv;
+import ncb;
 import org.json.JSONObject;
 
 public class TaskOfflineUtils
@@ -17,7 +17,7 @@ public class TaskOfflineUtils
   public static TaskOfflineUtils.ConfigData checkOffLineConfig(String paramString, int paramInt)
   {
     TaskOfflineUtils.ConfigData localConfigData = new TaskOfflineUtils.ConfigData();
-    Object localObject = mzh.a(paramString);
+    Object localObject = ncb.a(paramString);
     if (localObject == null) {
       QLog.d(TAG, 2, "checkOffLineConfig: offline root dir is null");
     }
@@ -63,7 +63,7 @@ public class TaskOfflineUtils
     QLog.d(TAG, 2, "bid : " + paramString);
     try
     {
-      mzb.a();
+      nbv.a();
       ThreadManager.executeOnFileThread(new TaskOfflineUtils.1(paramString, paramInt, paramOfflineCallBack));
       return;
     }
@@ -165,7 +165,7 @@ public class TaskOfflineUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskOfflineUtils
  * JD-Core Version:    0.7.0.1
  */

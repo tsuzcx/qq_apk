@@ -1,51 +1,27 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-public class bdcj
-  extends Handler
+final class bdcj
+  implements DialogInterface.OnClickListener
 {
-  public bdcj(OpenCardContainer paramOpenCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bdcj(Activity paramActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    if (paramInt == 1)
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenCardContainer", 2, "-->handleMessage MSG_UPDATE");
-      }
-      OpenCardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      continue;
-      if ((paramMessage.obj instanceof String))
-      {
-        Object localObject = (String)paramMessage.obj;
-        localObject = this.a.a((String)localObject);
-        if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 1))
-        {
-          this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject);
-          Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
-        }
-      }
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdcj
  * JD-Core Version:    0.7.0.1
  */

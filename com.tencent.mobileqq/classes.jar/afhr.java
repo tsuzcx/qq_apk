@@ -1,50 +1,40 @@
 import android.os.Handler;
-import android.os.Message;
-import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder.3.1;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class afhr
-  extends Handler
+  implements bhqd
 {
-  public afhr(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  afhr(afhq paramafhq, int paramInt, MessageForFile paramMessageForFile, bhpy parambhpy, BaseChatItemLayout paramBaseChatItemLayout, afhx paramafhx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramMessage.what == 5)
-    {
-      Face2FaceAddContactFragment.a(this.a).setText(2131692295);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(8);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(0);
+    if (this.jdField_a_of_type_Int != -1) {
+      this.jdField_a_of_type_Afhq.b.post(new FilePicItemBuilder.3.1(this));
     }
-    do
+    for (;;)
     {
+      this.jdField_a_of_type_Bhpy.cancel();
       return;
-      if (paramMessage.what == 301)
+      paramView = arni.a(this.jdField_a_of_type_Afhq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+      if (paramView.status == 16)
       {
-        Face2FaceAddContactFragment.a(this.a);
+        armz.a(2131692939);
+        this.jdField_a_of_type_Bhpy.cancel();
         return;
       }
-      if (paramMessage.what == 500)
-      {
-        Face2FaceAddContactFragment.b(this.a);
-        return;
-      }
-      if (paramMessage.what == 401)
-      {
-        removeMessages(301);
-        this.a.d();
-        return;
-      }
-    } while (paramMessage.what != 6);
-    Face2FaceAddContactFragment.c(this.a);
-    bcql.a(this.a.getActivity(), this.a.getString(2131691018), 0).a();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
+      arni.a(this.jdField_a_of_type_Afhq.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Afhq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      this.jdField_a_of_type_Afhq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Afhx, paramView, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afhr
  * JD-Core Version:    0.7.0.1
  */

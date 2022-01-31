@@ -1,23 +1,23 @@
 package dov.com.qq.im.ae.camera.core;
 
-import axhz;
-import bika;
-import bjah;
+import azdf;
+import bkoi;
+import blfg;
 
 public class AECameraManager$6
   implements Runnable
 {
-  public AECameraManager$6(bika parambika) {}
+  public AECameraManager$6(bkoi parambkoi) {}
   
   public void run()
   {
-    bjah.b("AECameraManager", "### cameraStopPreview");
-    bika.a().a(false);
+    blfg.b("AECameraManager", "### cameraStopPreview");
+    bkoi.a().a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraManager.6
  * JD-Core Version:    0.7.0.1
  */

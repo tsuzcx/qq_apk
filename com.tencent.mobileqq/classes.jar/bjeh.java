@@ -1,51 +1,69 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import cooperation.qzone.contentbox.MsgPhotoView;
+import cooperation.qzone.contentbox.model.MQMsg;
+import cooperation.qzone.contentbox.model.MQUserPersonalData;
+import cooperation.qzone.util.QZLog;
 
-final class bjeh
-  implements waj
+public class bjeh
+  implements View.OnClickListener
 {
-  bjeh(String paramString, bjeu parambjeu) {}
+  public bjeh(MsgPhotoView paramMsgPhotoView) {}
   
-  public void onFailure(String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed to convert sample rate. message = " + paramString);
-    }
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Bjeu != null) && (localFile.exists()))
+    MQUserPersonalData localMQUserPersonalData = this.a.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg.mqUserPersonalData;
+    if (localMQUserPersonalData == null)
     {
-      this.jdField_a_of_type_Bjeu.a(localFile);
-      this.jdField_a_of_type_Bjeu.c();
-    }
-    while (!QLog.isColorLevel()) {
+      QZLog.i("MsgPhotoView", 1, " vip icon click data = null");
       return;
     }
-    QLog.i("HumUtils", 2, "onFinish: audioFile not exist. audioFile = " + localFile);
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onStart: invoked. info: ");
+    Object localObject = "";
+    switch (paramView.getId())
+    {
+    default: 
+      paramView = (View)localObject;
     }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onSuccess: invoked. info: message = " + paramString);
+    for (;;)
+    {
+      if (QZLog.isColorLevel()) {
+        QZLog.i("MsgPhotoView", 2, "MsgVip vip icon click url = " + paramView);
+      }
+      localObject = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramView);
+      ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      return;
+      paramView = localMQUserPersonalData.mBVJumpUrl;
+      bjzq.a(12, 2);
+      continue;
+      localObject = localMQUserPersonalData.mYJumpUrl;
+      paramView = paramView.getTag();
+      if ((paramView != null) && ((paramView instanceof Boolean)))
+      {
+        if (((Boolean)paramView).booleanValue()) {}
+        for (int i = 11;; i = 10)
+        {
+          bjzq.a(i, 2);
+          paramView = (View)localObject;
+          break;
+        }
+        paramView = localMQUserPersonalData.mLYJumpUrl;
+        bjzq.a(13, 2);
+      }
+      else
+      {
+        paramView = (View)localObject;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjeh
  * JD-Core Version:    0.7.0.1
  */

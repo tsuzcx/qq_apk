@@ -1,36 +1,26 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Subscriber;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class unr
-  implements Subscriber
+  extends SimpleJob<Void>
 {
-  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public unr(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
+  public unr(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, unk paramunk)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+    super(paramString);
   }
   
-  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramList.add(vxx.class);
-  }
-  
-  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
-  {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDispatchable != null) {
-      paramDispatchable.c();
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Unk);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     unr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aszf;
-import bazx;
-import bbfj;
-import bbkk;
+import auqc;
+import bcyr;
+import bdee;
+import bdje;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
@@ -16,8 +16,8 @@ class NearbyPeopleProfileActivity$4
   
   public void run()
   {
-    Object localObject = (aszf)this.this$0.app.getManager(106);
-    this.this$0.k = ((aszf)localObject).b(NearbyPeopleProfileActivity.a(this.this$0));
+    Object localObject = (auqc)this.this$0.app.getManager(106);
+    this.this$0.k = ((auqc)localObject).b(NearbyPeopleProfileActivity.a(this.this$0));
     if (!this.this$0.k) {}
     long l;
     do
@@ -25,21 +25,21 @@ class NearbyPeopleProfileActivity$4
       do
       {
         return;
-      } while ((!bbfj.d(BaseApplication.getContext())) && (this.this$0.k));
+      } while ((!bdee.d(BaseApplication.getContext())) && (this.this$0.k));
       localObject = NearbyPeopleProfileActivity.a(this.this$0).vSeed;
       l = NearbyPeopleProfileActivity.a(this.this$0).feedPreviewTime;
       if (this.this$0.jdField_a_of_type_Long > 0L)
       {
-        bazx.a(this.this$0.jdField_a_of_type_Atbz, this.this$0.app, this.this$0.jdField_a_of_type_Long, null, this.this$0.d, (byte[])localObject, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+        bcyr.a(this.this$0.jdField_a_of_type_Ausy, this.this$0.app, this.this$0.jdField_a_of_type_Long, null, this.this$0.d, (byte[])localObject, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
         return;
       }
-    } while (bbkk.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-    bazx.a(this.this$0.jdField_a_of_type_Atbz, this.this$0.app, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.d, (byte[])localObject, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+    } while (bdje.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
+    bcyr.a(this.this$0.jdField_a_of_type_Ausy, this.this$0.app, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.d, (byte[])localObject, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.4
  * JD-Core Version:    0.7.0.1
  */

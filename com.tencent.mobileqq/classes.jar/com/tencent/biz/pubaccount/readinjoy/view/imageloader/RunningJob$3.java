@@ -1,26 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 
-import java.lang.ref.WeakReference;
-import rpf;
-import rph;
+import sfc;
 
 class RunningJob$3
   implements Runnable
 {
-  RunningJob$3(RunningJob paramRunningJob, WeakReference paramWeakReference, Throwable paramThrowable) {}
+  RunningJob$3(RunningJob paramRunningJob, sfc paramsfc) {}
   
   public void run()
   {
-    if (this.this$0.a.a) {}
-    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
-    }
-    ((rpf)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.this$0.a, this.jdField_a_of_type_JavaLangThrowable);
+    RunningJob.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob.3
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import vsr;
+import xhj;
 
 public class PublishParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<PublishParam> CREATOR = new vsr();
+  public static final Parcelable.Creator<PublishParam> CREATOR = new xhj();
   public static final String a;
   public final int a;
   public final long a;
@@ -170,7 +170,7 @@ public class PublishParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.publish.PublishParam
  * JD-Core Version:    0.7.0.1
  */

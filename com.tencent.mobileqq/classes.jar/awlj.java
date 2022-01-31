@@ -1,27 +1,31 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
-public class awlj
-  implements View.OnClickListener
+class awlj
+  implements bhqd
 {
-  public awlj(GroupSearchFragment paramGroupSearchFragment) {}
+  awlj(awlh paramawlh, PersonalityLabelInfo paramPersonalityLabelInfo, bhpy parambhpy) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.g = 1;
-    if (UniteSearchActivity.a(GroupSearchFragment.b(this.a), GroupSearchFragment.a(this.a))) {
-      this.a.g = 1;
+    switch (paramInt)
+    {
     }
-    this.a.h();
-    this.a.b.setVisibility(8);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.e();
+      return;
+      awlh.a(this.jdField_a_of_type_Awlh, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+      continue;
+      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Awlh.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+      this.jdField_a_of_type_Awlh.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awlj
  * JD-Core Version:    0.7.0.1
  */

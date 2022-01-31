@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
-
 public class aiah
-  implements Comparable<aiah>
+  implements ajds
 {
-  public int a;
-  public long a;
-  public int b;
+  public void a(int paramInt) {}
   
-  public aiah(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
-  }
+  public void a(int paramInt, float paramFloat) {}
   
-  public int a(aiah paramaiah)
-  {
-    return -(int)(this.jdField_a_of_type_Long - paramaiah.jdField_a_of_type_Long);
-  }
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiah
  * JD-Core Version:    0.7.0.1
  */

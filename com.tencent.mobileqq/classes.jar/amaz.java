@@ -1,22 +1,28 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
 public class amaz
+  implements DialogInterface.OnClickListener
 {
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
+  public amaz(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.putExtra("big_brother_source_key", paramString2);
-    localIntent.putExtra("key_callback_id", paramInt);
-    localIntent.setData(Uri.parse(paramString1));
-    paramActivity.startActivity(localIntent);
+    mtq.e(false, false);
+    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
+    VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_JavaLangString, this.c, this.d);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    mtq.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amaz
  * JD-Core Version:    0.7.0.1
  */

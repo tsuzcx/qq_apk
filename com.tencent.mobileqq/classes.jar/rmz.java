@@ -1,40 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import mqq.app.MobileQQ;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
 class rmz
-  implements bcww
+  implements rnb<RecyclerView.ViewHolder>
 {
-  rmz(rmy paramrmy, ArticleInfo paramArticleInfo, int paramInt) {}
+  rmz(rmy paramrmy, int paramInt) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    boolean bool = true;
-    if ((rmy.a(this.jdField_a_of_type_Rmy) == null) || (!rmy.a(this.jdField_a_of_type_Rmy).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      wij.b(1, 2131719487);
-      bool = false;
-    }
-    for (;;)
-    {
-      paramBaseResp = (AppInterface)onh.a();
-      rno.a(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
-      return;
-      wij.b(2, 2131719506);
-      continue;
-      bool = false;
+    if ((paramViewHolder instanceof rne)) {
+      ((rne)paramViewHolder).a(this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmz
  * JD-Core Version:    0.7.0.1
  */

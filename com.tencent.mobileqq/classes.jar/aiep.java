@@ -1,82 +1,46 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public class aiep
-  implements acau
+class aiep
+  implements Comparator<RecentBaseData>
 {
-  public aiep(SelectMemberActivity paramSelectMemberActivity) {}
+  aiep(aieo paramaieo) {}
   
-  public void a(Editable paramEditable)
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
+    int j = 0;
+    int i = j;
+    long l1;
+    long l2;
+    if ((paramRecentBaseData1 instanceof RecentUserBaseData))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
-      }
-      return;
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    }
-  }
-  
-  public void a(ResultRecord paramResultRecord)
-  {
-    String str = paramResultRecord.a;
-    if (this.a.b(str))
-    {
-      this.a.e(str);
-      this.a.a(paramResultRecord, false);
-      this.a.k();
-      int i = this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a();
-      if ((i == 6) || (i == 7) || (i == 5) || (i == 4) || (i == 1) || (i == 0) || (i == 8) || (i == 9)) {
-        ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).f();
-      }
-      SelectMemberActivity.a(this.a, false);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && ((this.a.j == 6) || (this.a.j == 7) || (this.a.j != this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a())))
-    {
-      ContactSearchFragment localContactSearchFragment = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
-      if (localContactSearchFragment != null)
+      i = j;
+      if ((paramRecentBaseData2 instanceof RecentUserBaseData))
       {
-        localContactSearchFragment.d(this.a.w);
-        localContactSearchFragment.a(this.a.a(), this.a.jdField_b_of_type_JavaUtilArrayList);
-        FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
+        paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
+        l1 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
+        l2 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
+        if (l1 <= l2) {
+          break label83;
         }
-        localFragmentTransaction.add(2131375189, localContactSearchFragment);
-        localFragmentTransaction.commitAllowingStateLoss();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = localContactSearchFragment;
-      }
-      if (this.a.jdField_b_of_type_Int == 0) {
-        axqy.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 1, 0, "", "", "", "");
+        i = -1;
       }
     }
-    else
+    label83:
+    do
     {
-      return;
-    }
-    axqy.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 2, 0, "", "", "", "");
+      return i;
+      i = j;
+    } while (l1 >= l2);
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiep
  * JD-Core Version:    0.7.0.1
  */

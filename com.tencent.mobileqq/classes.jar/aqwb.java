@@ -1,14 +1,26 @@
-import android.net.Uri;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.1;
 
-public abstract interface aqwb
+public class aqwb
+  extends BroadcastReceiver
 {
-  public abstract void a(Uri paramUri);
+  public aqwb(UniformDownloadMgr.1 param1) {}
   
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent == null) {
+      return;
+    }
+    paramContext = paramIntent.getBundleExtra("param");
+    paramIntent = paramIntent.getStringExtra("url");
+    aqwa.a().a(paramIntent, paramContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwb
  * JD-Core Version:    0.7.0.1
  */

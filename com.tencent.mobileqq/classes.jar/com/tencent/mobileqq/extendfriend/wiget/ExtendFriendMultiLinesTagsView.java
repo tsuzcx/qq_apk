@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import actj;
-import amnx;
+import aekt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -14,8 +13,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import aolc;
-import aold;
+import aoev;
+import aqdv;
+import aqdw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class ExtendFriendMultiLinesTagsView
   implements View.OnClickListener
 {
   public int a;
-  public aolc a;
+  public aqdv a;
   public int b = 30;
   
   public ExtendFriendMultiLinesTagsView(Context paramContext)
@@ -47,11 +47,11 @@ public class ExtendFriendMultiLinesTagsView
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof aold))
+    if ((paramView.getTag() instanceof aqdw))
     {
-      paramView = (aold)paramView.getTag();
-      if (this.jdField_a_of_type_Aolc != null) {
-        this.jdField_a_of_type_Aolc.a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int);
+      paramView = (aqdw)paramView.getTag();
+      if (this.jdField_a_of_type_Aqdv != null) {
+        this.jdField_a_of_type_Aqdv.a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int);
       }
     }
   }
@@ -129,9 +129,9 @@ public class ExtendFriendMultiLinesTagsView
     setMeasuredDimension(m, paramInt1);
   }
   
-  public void setOnItemClickListener(aolc paramaolc)
+  public void setOnItemClickListener(aqdv paramaqdv)
   {
-    this.jdField_a_of_type_Aolc = paramaolc;
+    this.jdField_a_of_type_Aqdv = paramaqdv;
   }
   
   public void setSearchTags(ArrayList<String> paramArrayList)
@@ -142,8 +142,8 @@ public class ExtendFriendMultiLinesTagsView
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       return;
     }
-    int j = actj.a(13.0F, getResources());
-    int k = actj.a(26.0F, getResources());
+    int j = aekt.a(13.0F, getResources());
+    int k = aekt.a(26.0F, getResources());
     int i = 0;
     while (i < paramArrayList.size())
     {
@@ -151,8 +151,8 @@ public class ExtendFriendMultiLinesTagsView
       if (!TextUtils.isEmpty(str))
       {
         TextView localTextView = new TextView(getContext());
-        localTextView.setText(amnx.a(str, 8.5F));
-        localTextView.setTag(new aold(this, i, str));
+        localTextView.setText(aoev.a(str, 8.5F));
+        localTextView.setTag(new aqdw(this, i, str));
         localTextView.setContentDescription(str);
         localTextView.setOnClickListener(this);
         localTextView.setTextSize(1, 14.0F);
@@ -161,8 +161,8 @@ public class ExtendFriendMultiLinesTagsView
         localTextView.setClickable(true);
         localTextView.setFocusable(true);
         localTextView.setPadding(j, 0, j, 0);
-        localTextView.setBackgroundResource(2130844351);
-        localTextView.setTextColor(getResources().getColorStateList(2131166221));
+        localTextView.setBackgroundResource(2130844708);
+        localTextView.setTextColor(getResources().getColorStateList(2131166268));
         localTextView.setEllipsize(TextUtils.TruncateAt.END);
         localTextView.setSingleLine();
         localTextView.setMaxLines(1);
@@ -181,7 +181,7 @@ public class ExtendFriendMultiLinesTagsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,31 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wql
-  implements xgu<CertifiedAccountRead.StGetMainPageRsp>
+public class wql
+  extends QQUIEventReceiver<wps, vaa>
 {
-  wql(wqk paramwqk, wlg paramwlg) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public wql(@NonNull wps paramwps)
   {
-    boolean bool = true;
-    List localList;
-    COMM.StCommonExt localStCommonExt;
-    if ((paramBoolean) && (paramStGetMainPageRsp != null))
-    {
-      paramString = this.jdField_a_of_type_Wlg;
-      localList = paramStGetMainPageRsp.vecFeed.get();
-      localStCommonExt = paramStGetMainPageRsp.extInfo;
-      if (paramStGetMainPageRsp.isFinish.get() != 1) {
-        break label61;
-      }
-    }
-    label61:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramString.b(localList, localStCommonExt, paramBoolean);
+    super(paramwps);
+  }
+  
+  public void a(@NonNull wps paramwps, @NonNull vaa paramvaa)
+  {
+    if ((paramvaa.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvaa.jdField_a_of_type_JavaUtilList == null)) {
       return;
     }
+    paramwps.a(paramvaa);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vaa.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wql
  * JD-Core Version:    0.7.0.1
  */

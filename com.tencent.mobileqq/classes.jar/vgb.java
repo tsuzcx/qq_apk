@@ -1,30 +1,14 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-
-class vgb
-  implements vie
+public abstract interface vgb
 {
-  vgb(vga paramvga) {}
+  public abstract void a();
   
-  public void a()
-  {
-    ved.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
-  }
+  public abstract void b();
   
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    ved.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    if (paramTroopBarPOI != null)
-    {
-      this.a.a.setLocation(paramTroopBarPOI.a());
-      return;
-    }
-    this.a.a.setLocation("None for test!!");
-  }
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgb
  * JD-Core Version:    0.7.0.1
  */

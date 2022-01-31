@@ -1,35 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ListView;
+import java.util.ArrayList;
 
-class azai
-  implements Animator.AnimatorListener
+public abstract class azai
+  implements azah
 {
-  azai(azag paramazag) {}
+  public void a(int paramInt, ArrayList<azaa> paramArrayList) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    azag.a(this.a).setPadding(baxn.a(azag.a(this.a).getContext(), 8.0F), -azag.a(this.a), 0, 0);
-    azag.a(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    azag.a(this.a).setPadding(baxn.a(azag.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    azag.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    azag.a(this.a).setPadding(baxn.a(azag.a(this.a).getContext(), 8.0F), -azag.a(this.a), 0, 0);
-    azag.a(this.a, true);
-  }
+  public void b(int paramInt, azaa paramazaa) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azai
  * JD-Core Version:    0.7.0.1
  */

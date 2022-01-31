@@ -1,26 +1,25 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+
 public class akfk
-  implements ajte
 {
-  public void a(boolean paramBoolean) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 3: 
-      a(paramBoolean);
-      return;
-    }
-    b(paramBoolean);
-  }
+  public int a = 1;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public String a;
+  public boolean a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfk
  * JD-Core Version:    0.7.0.1
  */

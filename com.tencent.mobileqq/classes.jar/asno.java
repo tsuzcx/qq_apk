@@ -1,24 +1,73 @@
-import com.tencent.qphone.base.util.QLog;
+import QC.FontInfo;
+import QC.FontRecommendRsp;
+import QC.ItemBase;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class asno
+public class asno
+  implements asnl<FontRecommendRsp>
 {
-  public String a = "MsgBackup." + getClass().getSimpleName();
-  
-  public void a(String paramString)
+  public int a()
   {
-    if (asoi.a) {
-      QLog.d(this.a, 2, paramString);
-    }
+    return 3;
   }
   
-  protected boolean a(String paramString)
+  public String a(Context paramContext)
   {
-    return bbdx.a(paramString);
+    return bdox.a(paramContext, "font", "mvip.gexinghua.mobile.font.client_tab_store");
+  }
+  
+  public String a(FontBubble paramFontBubble)
+  {
+    return bdox.a("fontPreview").replace("[id]", Integer.toString(paramFontBubble.fontId));
+  }
+  
+  public List<FontBubble> a(QQAppInterface paramQQAppInterface, FontRecommendRsp paramFontRecommendRsp)
+  {
+    int j = ((alxl)paramQQAppInterface.a(13)).b();
+    paramQQAppInterface = new ArrayList();
+    if (paramFontRecommendRsp.vItems != null)
+    {
+      paramFontRecommendRsp = paramFontRecommendRsp.vItems.iterator();
+      if (paramFontRecommendRsp.hasNext())
+      {
+        FontInfo localFontInfo = (FontInfo)paramFontRecommendRsp.next();
+        FontBubble localFontBubble = new FontBubble();
+        localFontBubble.viewType = 1;
+        localFontBubble.fontId = localFontInfo.item.itemId;
+        if (localFontInfo.linkBubbleID > 0) {}
+        for (int i = localFontInfo.linkBubbleID;; i = j)
+        {
+          localFontBubble.bubbleId = i;
+          localFontBubble.name = localFontInfo.name;
+          localFontBubble.engine = localFontInfo.engine;
+          localFontBubble.feeType = localFontInfo.feeType;
+          localFontBubble.payUrl = localFontInfo.payUrl;
+          localFontBubble.title = localFontInfo.title;
+          localFontBubble.msg = localFontInfo.msg;
+          localFontBubble.btn = localFontInfo.btn;
+          localFontBubble.picUrl = localFontInfo.strPicUrl;
+          localFontBubble.panelType = 3;
+          paramQQAppInterface.add(localFontBubble);
+          break;
+        }
+      }
+    }
+    return paramQQAppInterface;
+  }
+  
+  public void a(alxl paramalxl)
+  {
+    paramalxl.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asno
  * JD-Core Version:    0.7.0.1
  */

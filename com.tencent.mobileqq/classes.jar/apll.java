@@ -1,26 +1,10 @@
 public abstract interface apll
 {
-  public abstract long a();
-  
-  public abstract String a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(apaf paramapaf);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract String c();
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apll
  * JD-Core Version:    0.7.0.1
  */

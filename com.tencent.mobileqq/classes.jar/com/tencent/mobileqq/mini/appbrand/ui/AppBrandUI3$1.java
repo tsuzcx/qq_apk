@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+
 class AppBrandUI3$1
   implements Runnable
 {
@@ -7,12 +9,13 @@ class AppBrandUI3$1
   
   public void run()
   {
-    AppBrandUI3.access$000(this.this$0);
+    QUAUtil.getWebViewUA();
+    AppBrandUI3.setCookie();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI3.1
  * JD-Core Version:    0.7.0.1
  */

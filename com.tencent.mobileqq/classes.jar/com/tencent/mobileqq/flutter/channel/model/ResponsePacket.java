@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.model;
 
-import aqar;
+import artz;
 import java.util.Map;
 
 public class ResponsePacket
@@ -12,17 +12,17 @@ public class ResponsePacket
   
   public static ResponsePacket fromMap(Map paramMap)
   {
-    return (ResponsePacket)aqar.a(paramMap, ResponsePacket.class);
+    return (ResponsePacket)artz.a(paramMap, ResponsePacket.class);
   }
   
   public static Map toMap(ResponsePacket paramResponsePacket)
   {
-    return aqar.a(paramResponsePacket);
+    return artz.a(paramResponsePacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.model.ResponsePacket
  * JD-Core Version:    0.7.0.1
  */

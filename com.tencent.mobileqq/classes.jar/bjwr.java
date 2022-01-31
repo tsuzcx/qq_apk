@@ -1,29 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
+import android.view.View.OnTouchListener;
 
 class bjwr
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnTouchListener
 {
-  bjwr(bjwp parambjwp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
+  bjwr(bjwq parambjwq) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
-    int j = this.b;
-    int k = (int)(f * (this.c - this.d));
-    int m = this.d;
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.leftMargin = (i + j);
-    paramValueAnimator.bottomMargin = (m + k);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    this.a.a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjwr
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface C$AudioUsage {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.C.AudioUsage
  * JD-Core Version:    0.7.0.1
  */

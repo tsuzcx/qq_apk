@@ -1,58 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
-import java.io.File;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.mobileqq.widget.TabBarView;
 
-public abstract class berk
+public class berk
+  extends AccessibilityDelegateCompat
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public berk(TabBarView paramTabBarView) {}
   
-  public berk() {}
-  
-  public berk(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.a = paramString;
-    if (paramMiniAppBaseInfo != null)
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (this.a.a(paramView) == this.a.o) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.d = paramMiniAppBaseInfo.appId;
-      this.c = paramMiniAppBaseInfo.name;
-      this.e = paramMiniAppBaseInfo.iconUrl;
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
+      return;
     }
   }
   
-  public abstract String c(String paramString);
-  
-  public String e()
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    return this.a;
-  }
-  
-  public String f()
-  {
-    return this.a;
-  }
-  
-  public String g(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return new File(f(), paramString).getAbsolutePath();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("appId:").append(this.d).append(", name:").append(this.c);
-    return localStringBuilder.toString();
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     berk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import java.lang.ref.WeakReference;
 
 public class ahur
-  implements Comparator<ahwv>
+  implements DialogInterface.OnCancelListener
 {
-  public ahur(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  private final WeakReference<ChatHistoryC2CDateFragment> a;
   
-  public int a(ahwv paramahwv1, ahwv paramahwv2)
+  ahur(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
   {
-    if ((paramahwv1.a < paramahwv2.a) || ((paramahwv1.a == paramahwv2.a) && (paramahwv1.b < paramahwv2.b))) {
-      return -1;
+    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
+    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
     }
-    if ((paramahwv1.a != paramahwv2.a) || (paramahwv1.b != paramahwv2.b)) {
-      return 1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahur
  * JD-Core Version:    0.7.0.1
  */

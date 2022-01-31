@@ -1,17 +1,36 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.res.Resources;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
 
-class akef
-  implements mrl
+public class akef
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  akef(akee paramakee, long paramLong, int paramInt) {}
+  public akef(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public void a(int paramInt1, mrn parammrn, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt1 == 0)
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b - this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_Int);
+    if (AppSetting.c)
     {
-      this.jdField_a_of_type_Akee.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Akee.a.a(7, this.jdField_a_of_type_Long, 2, 0, 0, 21, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Akee.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
+      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.getResources();
+      if (!this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label124;
+      }
+    }
+    label124:
+    for (int i = 2131690851;; i = 2131721188)
+    {
+      paramValueAnimator = paramValueAnimator.getString(i);
+      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString + paramValueAnimator);
+      return;
     }
   }
 }

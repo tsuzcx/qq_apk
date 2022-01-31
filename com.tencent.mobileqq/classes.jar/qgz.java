@@ -1,70 +1,25 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.SimpleAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
 
-public class qgz
-  extends SimpleAdapter
+class qgz
+  extends nac
 {
-  public qgz(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    super(paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
-  }
+  qgz(qgy paramqgy, qgs paramqgs) {}
   
-  protected void a(View paramView, ResultRecord paramResultRecord) {}
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Map localMap = (Map)getItem(paramInt);
-    ResultRecord localResultRecord = ResultRecord.a((String)localMap.get("key_uin"), (String)localMap.get("key_name"));
-    if (FollowingListFragment.a(this.a).contains(localResultRecord)) {
-      localMap.put("key_checked", Boolean.valueOf(true));
-    }
-    for (;;)
+    QLog.i(qgy.a(), 1, "yyy_0xe1a error code = " + paramInt);
+    if (paramInt == 0)
     {
-      paramView = super.getView(paramInt, paramView, paramViewGroup);
-      a(paramView, localResultRecord);
-      return paramView;
-      localMap.put("key_checked", Boolean.valueOf(false));
-    }
-  }
-  
-  public void setViewImage(ImageView paramImageView, String paramString)
-  {
-    super.setViewImage(paramImageView, paramString);
-    if (paramImageView.getId() == 2131367679) {}
-    try
-    {
-      Object localObject = this.a.getResources().getDrawable(2130839736);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localObject = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      ((URLDrawable)localObject).setTag(bavw.a(140, 140));
-      ((URLDrawable)localObject).setDecodeHandler(bavw.o);
-      paramImageView.setImageDrawable((Drawable)localObject);
+      qgy.a(this.jdField_a_of_type_Qgy, paramArrayOfByte, this.jdField_a_of_type_Qgs);
       return;
     }
-    catch (Exception paramImageView)
-    {
-      QLog.e("FollowingListFragment", 2, "setViewImage: " + paramString, paramImageView);
-    }
+    this.jdField_a_of_type_Qgs.a(-1, false, "", "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qgz
  * JD-Core Version:    0.7.0.1
  */

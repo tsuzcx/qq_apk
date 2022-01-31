@@ -1,31 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import android.util.Pair;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class asah
-  extends akdn
+class asah
+  extends amab
 {
-  public asah(LoginWelcomeManager paramLoginWelcomeManager, Bundle paramBundle) {}
+  asah(asag paramasag) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  protected void a(String paramString, List<Pair<String, String>> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
+    if (paramList == null) {}
+    for (int i = 0;; i = paramList.size())
     {
-      localBundle.putInt("result", i);
-      this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager.b();
+      QLog.i("ForwardTroopMemberControllerForMiniPie", 2, i);
+      if ((asag.a(this.a).equals(paramString)) && (asag.a(this.a) != null))
+      {
+        asag.a(this.a);
+        asag.a(this.a).a(paramList);
+      }
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asah
  * JD-Core Version:    0.7.0.1
  */

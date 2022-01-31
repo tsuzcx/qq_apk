@@ -1,25 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
-public class atoq
-  implements auwx
+class atoq
+  implements View.OnClickListener
 {
-  public atoq(NearbyCardVoteView paramNearbyCardVoteView, int paramInt1, int paramInt2, List paramList) {}
+  atoq(atop paramatop, atof paramatof) {}
   
-  public void a(int paramInt1, auww paramauww, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.hasMessages(NearbyCardVoteView.d))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.removeMessages(NearbyCardVoteView.d);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.obtainMessage(NearbyCardVoteView.d, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilList).sendToTarget();
+    if (this.jdField_a_of_type_Atop.jdField_a_of_type_Atof.a()) {
+      return;
     }
+    atof.a(this.jdField_a_of_type_Atop.jdField_a_of_type_Atof).c(true);
+    atof.a(this.jdField_a_of_type_Atop.jdField_a_of_type_Atof);
+    azmj.b(null, "CliOper", "", "", "0X800A973", "0X800A973", 0, 0, "0", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atoq
  * JD-Core Version:    0.7.0.1
  */

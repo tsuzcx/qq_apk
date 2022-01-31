@@ -1,96 +1,124 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import mqq.manager.Manager;
+import Wallet.AcsMsg;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 
 public class aejq
-  implements Manager
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public int a;
-  public Set<String> a;
-  boolean a;
-  public int b;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  public aejq()
+  public aejq(ReminderListFragment paramReminderListFragment, View paramView)
   {
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_Boolean = false;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375588));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375587));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+    this.c = ((TextView)paramView.findViewById(2131375592));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375589));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369527));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369526));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375590));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131375591));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
   }
   
-  public static int a(Context paramContext, String paramString)
+  private void a(View paramView, AcsMsg paramAcsMsg)
   {
-    return paramContext.getSharedPreferences("PhotoListConfig" + paramString, 0).getInt("k_version", 0);
-  }
-  
-  public static aejq a(QQAppInterface paramQQAppInterface)
-  {
-    aejq localaejq = (aejq)paramQQAppInterface.getManager(215);
-    localaejq.a(paramQQAppInterface);
-    return localaejq;
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext.getSharedPreferences("PhotoListConfig" + paramString, 0).edit().putInt("k_version", paramInt).apply();
-  }
-  
-  @TargetApi(14)
-  private void a(QQAppInterface paramQQAppInterface)
-  {
-    try
+    if ((paramView instanceof FrameLayout))
     {
-      if (!this.jdField_a_of_type_Boolean)
+      paramView = ((FrameLayout)paramView).getChildAt(0);
+      if ((paramView instanceof Button))
       {
-        this.jdField_a_of_type_Boolean = true;
-        paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("PhotoListConfig" + paramQQAppInterface.getCurrentAccountUin(), 0);
-        this.jdField_a_of_type_Int = paramQQAppInterface.getInt("k_s", 0);
-        this.b = paramQQAppInterface.getInt("k_w", 0);
-        this.jdField_a_of_type_JavaUtilSet = paramQQAppInterface.getStringSet("k_b_l", null);
-        paramQQAppInterface = new StringBuilder("init ");
-        paramQQAppInterface.append("size:").append(this.jdField_a_of_type_Int).append(" width:").append(this.b).append(" black:").append(this.jdField_a_of_type_JavaUtilSet);
-        QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
+        paramView = (Button)paramView;
+        paramView.setTag(paramAcsMsg);
+        paramView = (FrameLayout.LayoutParams)paramView.getLayoutParams();
+        paramAcsMsg = new Rect();
+        this.jdField_a_of_type_AndroidWidgetImageView.getLocalVisibleRect(paramAcsMsg);
+        paramView.rightMargin = paramAcsMsg.right;
+        this.jdField_a_of_type_AndroidWidgetImageView.getGlobalVisibleRect(paramAcsMsg);
+        paramView.topMargin = (paramAcsMsg.top - paramView.width);
       }
-      return;
-    }
-    finally
-    {
-      paramQQAppInterface = finally;
-      throw paramQQAppInterface;
     }
   }
   
-  @TargetApi(14)
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, Set<String> paramSet)
+  public void a(aekd paramaekd)
   {
-    try
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setTag(paramaekd.jdField_a_of_type_WalletAcsMsg);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramaekd.jdField_a_of_type_WalletAcsMsg.title);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setTag(paramaekd.jdField_a_of_type_WalletAcsMsg.jump_url);
+    Object localObject1 = paramaekd.jdField_a_of_type_WalletAcsMsg.busi_icon;
+    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_b_of_type_AndroidWidgetImageView.getHeight();
+    ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_b_of_type_AndroidWidgetImageView.getWidth();
+    localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+    if (localObject1 != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+    }
+    String str = aeiz.a(paramaekd.jdField_a_of_type_WalletAcsMsg.notice_time * 1000L, "yyyy.MM.dd");
+    localObject2 = aeiz.a(paramaekd.jdField_a_of_type_WalletAcsMsg.notice_time * 1000L, "HH:mm");
+    localObject1 = localObject2;
+    if (paramaekd.jdField_a_of_type_Int == 0) {
+      localObject1 = (String)localObject2 + "　　　开启时提醒";
+    }
+    localObject1 = str + "　　　" + (String)localObject1;
+    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+    localObject1 = this.c;
+    if (!bdje.a(paramaekd.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      this.jdField_a_of_type_JavaUtilSet = paramSet;
-      paramQQAppInterface.getApp().getSharedPreferences("PhotoListConfig" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putInt("k_s", paramInt1).putInt("k_w", paramInt2).putStringSet("k_b_l", paramSet).apply();
-      paramQQAppInterface = new StringBuilder("updateConfig ");
-      paramQQAppInterface.append("size:").append(this.jdField_a_of_type_Int).append(" width:").append(this.b).append(" black:").append(paramSet);
-      QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
+      ((TextView)localObject1).setText(paramaekd.jdField_a_of_type_JavaLangString);
+      ((TextView)localObject1).setVisibility(0);
       return;
     }
-    finally
-    {
-      paramQQAppInterface = finally;
-      throw paramQQAppInterface;
-    }
+    ((TextView)localObject1).setVisibility(8);
   }
   
-  public void onDestroy() {}
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (bdje.a((String)paramView.getTag()));
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment.getActivity(), QQBrowserActivity.class);
+      localIntent.putExtra("url", (String)paramView.getTag());
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment.startActivity(localIntent);
+      return;
+    } while (ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment) == null);
+    a(ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).getContentView(), (AcsMsg)this.jdField_a_of_type_AndroidWidgetFrameLayout.getTag());
+    ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).showAtLocation(ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment), 17, 0, 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejq
  * JD-Core Version:    0.7.0.1
  */

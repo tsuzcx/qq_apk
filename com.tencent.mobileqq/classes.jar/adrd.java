@@ -1,25 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.RiskInfoItem;
 
-class adrd
-  implements apuv
+public final class adrd
+  implements Parcelable.Creator<RiskInfoItem>
 {
-  adrd(adqw paramadqw) {}
-  
-  public void onClick(View paramView)
+  public RiskInfoItem a(Parcel paramParcel)
   {
-    paramView = new Intent();
-    paramView.putExtra("device_info", ((yah)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
-    bhwm.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceUnBindActivity", -1, null, SmartDevicePluginProxyActivity.class);
+    return new RiskInfoItem(paramParcel, null);
+  }
+  
+  public RiskInfoItem[] a(int paramInt)
+  {
+    return new RiskInfoItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrd
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class Buffer$1
   
   public String toString()
   {
-    return this + ".outputStream()";
+    return this.this$0 + ".outputStream()";
   }
   
   public void write(int paramInt)
@@ -28,7 +28,7 @@ class Buffer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.Buffer.1
  * JD-Core Version:    0.7.0.1
  */

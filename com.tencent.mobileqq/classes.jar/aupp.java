@@ -1,14 +1,17 @@
-public final class aupp
-  extends auph
+class aupp
 {
-  protected int c()
+  public int a;
+  public String a;
+  
+  public aupp()
   {
-    return 518;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aupp
  * JD-Core Version:    0.7.0.1
  */

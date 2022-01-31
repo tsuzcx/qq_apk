@@ -1,10 +1,10 @@
-public abstract interface bhor<V>
+public abstract interface bhor<T>
 {
-  public abstract boolean a(V paramV1, V paramV2);
+  public abstract void a(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhor
  * JD-Core Version:    0.7.0.1
  */

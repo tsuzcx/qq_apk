@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import bekr;
-import betc;
-import bffa;
+import bgkd;
+import bhft;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PickerJsPlugin$1$1
-  implements bffa
+  implements bhft
 {
   PickerJsPlugin$1$1(PickerJsPlugin.1 param1) {}
   
@@ -21,7 +21,7 @@ class PickerJsPlugin$1$1
     }
     catch (Exception localException)
     {
-      betc.d("PickerJsPlugin", "showPickerView error.", localException);
+      QMLog.e("PickerJsPlugin", "showPickerView error.", localException);
     }
   }
   
@@ -36,13 +36,13 @@ class PickerJsPlugin$1$1
     }
     catch (JSONException localJSONException)
     {
-      betc.d("PickerJsPlugin", "showPickerView error.", localJSONException);
+      QMLog.e("PickerJsPlugin", "showPickerView error.", localJSONException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.plugin.PickerJsPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

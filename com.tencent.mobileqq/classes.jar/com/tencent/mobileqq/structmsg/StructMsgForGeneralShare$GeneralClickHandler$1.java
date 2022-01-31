@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.os.Bundle;
-import axvm;
+import azrg;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class StructMsgForGeneralShare$GeneralClickHandler$1
   implements Runnable
 {
-  public StructMsgForGeneralShare$GeneralClickHandler$1(axvm paramaxvm, Bundle paramBundle) {}
+  public StructMsgForGeneralShare$GeneralClickHandler$1(azrg paramazrg, Bundle paramBundle) {}
   
   public void run()
   {
@@ -38,7 +38,7 @@ public class StructMsgForGeneralShare$GeneralClickHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler.1
  * JD-Core Version:    0.7.0.1
  */

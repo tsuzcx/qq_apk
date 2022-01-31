@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class vdl
-  implements View.OnClickListener
+public class vdl
+  extends unf
 {
-  vdl(vdj paramvdj) {}
+  public final String a;
+  public final int b;
   
-  public void onClick(View paramView)
+  public vdl(qqstory_service.RspGetWeather paramRspGetWeather)
   {
-    this.a.dismiss();
+    this.b = paramRspGetWeather.temperature.get();
+    this.a = paramRspGetWeather.wea_desc.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdl
  * JD-Core Version:    0.7.0.1
  */

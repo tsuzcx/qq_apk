@@ -1,49 +1,57 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import android.app.Activity;
+import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
 
 public class aakm
-  extends AccountObserver
+  implements aaip
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private Activity jdField_a_of_type_AndroidAppActivity;
   
-  public aakm(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, String paramString, boolean paramBoolean)
+  public aakm(GdtDemoMvFragment paramGdtDemoMvFragment, Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public void onDeleteAccount(boolean paramBoolean)
+  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountManage", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
+      return paramGdtAd.getAd().getAId();
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity;
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
-    {
-      localObject = ((AssociatedAccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
-      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
-      {
-        ((SharedPreferences)localObject).edit().remove("uin").commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountManage", 2, "delete Last_Login");
-        }
-      }
-      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-    }
+    return -2147483648L;
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    GdtDemoMvFragment.a(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtDemoMvFragment, paramGdtAd);
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, "demo数据构造成功", 0).a();
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    aail.a().a(paramGdtAd.getAd());
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, aaio paramaaio)
+  {
+    QLog.e("GdtMotiveVideoAd", 1, "onAdFailedToLoad " + paramaaio.a());
+  }
+  
+  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aakm
  * JD-Core Version:    0.7.0.1
  */

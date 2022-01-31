@@ -1,104 +1,26 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.PayJsPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
-
 public class nrx
-  extends bcaz
-  implements bcbx
 {
-  public nrx(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  
+  public nrx(nru paramnru, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.mWebview = paramTouchWebView;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a()
+  public String toString()
   {
-    super.doOnResume();
+    return "PublicAccountSearchHistoryItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean + ", time:" + this.jdField_a_of_type_Long;
   }
-  
-  public void b()
-  {
-    super.doOnPause();
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    super.bindJavaScript(paramArrayList);
-    if (QLog.isColorLevel()) {
-      QLog.i("EcshopNewPageWebViewBuilder", 2, "[bindJavaScript]");
-    }
-    paramArrayList.add(new QWalletPayJsPlugin());
-    paramArrayList.add(new PayJsPlugin());
-    paramArrayList.add(new QWalletCommonJsPlugin());
-    paramArrayList.add(new QWalletBluetoothJsPlugin());
-    paramArrayList.add(new sfk());
-    paramArrayList.add(new arne());
-    paramArrayList.add(new UiApiPlugin());
-    paramArrayList.add(new SensorAPIJavaScript());
-    paramArrayList.add(new armg());
-    paramArrayList.add(new MediaApiPlugin());
-    paramArrayList.add(new VasCommonJsPlugin());
-    paramArrayList.add(new bbvg());
-    paramArrayList.add(new QWalletMixJsPlugin());
-  }
-  
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public void buildWebView(AppInterface paramAppInterface)
-  {
-    super.buildBaseWebView(paramAppInterface);
-  }
-  
-  public void c()
-  {
-    super.doOnDestroy();
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onWebViewReady()
-  {
-    super.onWebViewReady();
-  }
-  
-  public void preInitWebviewPlugin() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nrx
  * JD-Core Version:    0.7.0.1
  */

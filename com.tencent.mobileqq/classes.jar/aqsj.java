@@ -1,32 +1,31 @@
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqsj
-  implements View.OnClickListener
+class aqsj
+  implements aqte
 {
-  public aqsj(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  aqsj(aqsg paramaqsg, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (QQGamePubAccountFragment.a(this.a) != null)
+    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init cancel!");
+  }
+  
+  public void b()
+  {
+    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init success, start video download");
+    new areo(this.jdField_a_of_type_Aqsg.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
+    for (Object localObject = new arer(this.jdField_a_of_type_Aqsg.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new areo(this.jdField_a_of_type_Aqsg.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
     {
-      QQGamePubAccountFragment.a(this.a).scrollToPosition(0);
-      QQGamePubAccountFragment.a(this.a).setVisibility(8);
-      if (this.a.a != null) {
-        this.a.a.setCurrentItem(0);
-      }
+      aqsz.a((arek)localObject);
+      return;
     }
-    paramView = (String)QQGamePubAccountFragment.a(this.a).getTag();
-    yoa.a(ajac.a(), "769", "205031", "", "76901", "1", "160", new String[] { paramView, "", "20" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqsj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,181 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.34.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.animation.ValueAnimator;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipLayout;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
 public class aesp
-  implements BusinessObserver
 {
-  aesp(aert paramaert) {}
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aesp(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "success:" + String.valueOf(paramBoolean));
+      QLog.d("AdditionalAnimController", 2, "playAnimation");
     }
-    if (!paramBoolean) {}
-    for (;;)
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
-      return;
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        paramInt = paramBundle.getInt("type", 0);
-        if (arrayOfByte == null) {
-          continue;
-        }
-        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
-        if (paramInt == 0) {
-          paramBundle.mergeFrom(arrayOfByte);
-        }
-        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = sgg.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
-        {
-          ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountChatPie.34.1(this, paramBundle), 10L);
-          return;
-        }
-        return;
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
-      catch (Exception paramBundle) {}
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    }
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "setOnCloseClickListener");
+    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    if ((this.jdField_a_of_type_AndroidViewView$OnClickListener != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null)) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "setBackgroundView");
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(new aesr(null), new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(3350L);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aesq(this));
+  }
+  
+  public void a(FriendShipLayout paramFriendShipLayout)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "setRootContainer");
+    }
+    if (paramFriendShipLayout != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+      localLayoutParams.gravity = 53;
+      localLayoutParams.topMargin = azgq.a(30.0F);
+      localLayoutParams.rightMargin = azgq.a(30.0F);
+      paramFriendShipLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "setCloseBtnBitmapPath: " + paramString);
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+      {
+        if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+        }
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = bdda.a(paramString, localOptions);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("AdditionalAnimController", 1, "Decode bitmap error");
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      return;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      QLog.e("AdditionalAnimController", 1, "Decode bitmap OOM");
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "isAnimating");
+    }
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning();
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "cancelAnimation");
+    }
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      }
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "recycleBitmaps");
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "pauseAnimation");
+    }
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (Build.VERSION.SDK_INT >= 19)) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.pause();
+    }
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "resumeAnimation");
+    }
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (Build.VERSION.SDK_INT >= 19)) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.resume();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesp
  * JD-Core Version:    0.7.0.1
  */

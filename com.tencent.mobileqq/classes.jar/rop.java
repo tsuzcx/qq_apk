@@ -1,158 +1,109 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.File;
 
 class rop
-  implements URLDrawable.URLDrawableListener, rot
+  implements azhm
 {
-  private static ror jdField_a_of_type_Ror = new ror(null);
-  private ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-  private ReadInJoyCapsuleView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  Throwable jdField_a_of_type_JavaLangThrowable;
+  final int jdField_b_of_type_Int;
+  final long jdField_b_of_type_Long;
   
-  rop(ReadInJoyCapsuleView paramReadInJoyCapsuleView)
+  rop(roo paramroo, String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView = paramReadInJoyCapsuleView;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = roj.a();
-    localURLDrawableOptions.mFailedDrawable = roj.a();
-    localURLDrawableOptions.mPlayGifImage = paramBoolean;
-    try
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    if (paramInt2 > 0) {}
+    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl), localURLDrawableOptions);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      return;
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      QLog.e("ReadInJoyFeedsHeaderVie", 2, "fail to set background", localMalformedURLException);
+      this.jdField_a_of_type_JavaLangThrowable = null;
+      if (paramString != null) {
+        break;
+      }
+      throw new IllegalArgumentException("null == outputFilePath");
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(Color.parseColor("#777777"));
-    int i = roj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, false);
-    if (i != 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(new ColorDrawable(Color.parseColor("#F1F3F6")));
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    a(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setColorFilter(roj.a());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(-1);
-    int i = roj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, true);
-    if (i != 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
     }
   }
   
-  private void e()
+  public azhn a(int paramInt1, int paramInt2)
   {
-    a(true);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
-        onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      }
+    int i = 30;
+    azhn localazhn = new azhn();
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
+    }
+    localazhn.jdField_a_of_type_JavaIoFile = localFile;
+    long l = ror.a(paramInt1, paramInt2);
+    int j = ror.a(paramInt1, paramInt2);
+    localazhn.jdField_a_of_type_Int = ((int)l);
+    paramInt2 = Math.min(paramInt1, paramInt2);
+    localazhn.jdField_a_of_type_Float = (j / paramInt2);
+    paramInt1 = i;
+    if (this.jdField_b_of_type_Int <= 30) {
+      paramInt1 = this.jdField_b_of_type_Int;
+    }
+    localazhn.jdField_b_of_type_Int = paramInt1;
+    localazhn.jdField_b_of_type_Boolean = a();
+    localazhn.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    localazhn.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig()\n  sourceShortEdge:" + paramInt2 + ", dstResolution:" + j + ", scaleRate:" + localazhn.jdField_a_of_type_Float + "\n  targetVideoBitRate:" + localazhn.jdField_a_of_type_Int + ", videoFrameRate:" + localazhn.jdField_b_of_type_Int + "\n setRotation:" + localazhn.jdField_b_of_type_Boolean + ", beginTime:" + localazhn.jdField_a_of_type_Long + ", endTime:" + localazhn.jdField_b_of_type_Long);
+    }
+    return localazhn;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    if ((roo.a(this.jdField_a_of_type_Roo) != null) && (!this.jdField_a_of_type_Roo.isCancelled())) {
+      roo.a(this.jdField_a_of_type_Roo).a(paramInt / 100.0F);
     }
   }
   
-  public ChannelCoverInfo a()
+  public void a(Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-  }
-  
-  public void a()
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onPlayOnce: pause the animation - " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
-    {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
-      if ((localDrawable instanceof GifDrawable))
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setIndividualPause(true);
-        ((GifDrawable)localDrawable).getImage().reset();
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setGIFPlayOnceListener(null);
-        a(false);
-        QLog.d("ReadInJoyFeedsHeaderVie", 2, "reset gif");
-      }
-    }
-  }
-  
-  void a(ChannelCoverInfo paramChannelCoverInfo, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setOnClickListener(new roq(this, paramOnClickListener));
-    if ((TextUtils.isEmpty(paramChannelCoverInfo.externalExposureBackgroundUrl)) || (bhvy.c(paramChannelCoverInfo.mChannelCoverId)))
-    {
-      c();
-      return;
-    }
-    e();
+    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onFailed:" + paramThrowable.getMessage());
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
+    }
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
+    }
+    return false;
   }
   
   public void b()
   {
-    jdField_a_of_type_Ror.a();
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadCanceled: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
+    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onCanceled:");
     c();
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadFialed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
-    c();
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadSuccessed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
-    d();
-    AbstractGifImage.resumeAll();
-    jdField_a_of_type_Ror.a(this, paramURLDrawable);
+    if (roo.a(this.jdField_a_of_type_Roo) != null) {
+      roo.a(this.jdField_a_of_type_Roo).a(6, null, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rop
  * JD-Core Version:    0.7.0.1
  */

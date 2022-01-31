@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bfpj;
+import bhqf;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class AvatarPendantJsPlugin$6
-  implements bfpj
+  implements bhqf
 {
   AvatarPendantJsPlugin$6(AvatarPendantJsPlugin paramAvatarPendantJsPlugin, String paramString) {}
   

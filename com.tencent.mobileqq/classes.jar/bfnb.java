@@ -1,148 +1,77 @@
-import android.app.Notification;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.badge.CommonBadgeUtilImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
+import com.tencent.open.model.CreateVirtualResult;
+import com.tencent.open.virtual.OpenSdkVirtualManager.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BadgeUtils.1;
-import com.tencent.util.BadgeUtils.2;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfnb
+  extends bfnn
 {
-  public static int a;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private static Runnable jdField_a_of_type_JavaLangRunnable = new BadgeUtils.2();
-  public static boolean a;
-  public static boolean b;
-  public static boolean c;
+  public bfnb(OpenSdkVirtualManager.1 param1) {}
   
-  static
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_Int = -1;
-  }
-  
-  public static int a()
-  {
-    String str = "";
+    int j = 1;
+    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.createVirtual.result:", bfnl.a(paramString1, this.a.jdField_a_of_type_Bfmm.jdField_a_of_type_JavaLangString) });
+    arzy.a("KEY_CREATE_VIRTUAL_D17", this.a.jdField_a_of_type_Bfmm, paramBoolean);
+    paramString2 = new CreateVirtualResult();
     int i;
-    if (jdField_a_of_type_Int != -1) {
-      i = jdField_a_of_type_Int;
+    if (paramBoolean) {
+      i = paramInt;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BadgeUtils", 2, "getLimitCount Limitcount" + i);
-      }
-      return i;
       try
       {
-        Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1|999");
-        if (QLog.isColorLevel()) {
-          QLog.d("BadgeUtils", 2, "LimitConfig:" + (String)localObject);
+        paramString1 = new JSONObject(paramString1);
+        i = paramInt;
+        paramInt = paramString1.optInt("ErrorCode");
+        if (paramInt == 0)
+        {
+          i = paramInt;
+          paramString2.jdField_a_of_type_Long = paramString1.optLong("uint64_vuid");
+          i = paramInt;
+          paramString2.jdField_a_of_type_JavaLangString = paramString1.optString("str_head_url");
         }
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length > 3) {
-          str = localObject[3];
-        }
-        jdField_a_of_type_Int = Integer.valueOf(str).intValue();
-        i = jdField_a_of_type_Int;
       }
-      catch (Exception localException)
+      catch (JSONException paramString1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("BadgeUtils", 2, "getLimitCount e:" + localException.toString());
-        }
-        jdField_a_of_type_Int = 999;
-        i = jdField_a_of_type_Int;
+        j = 0;
+        paramInt = i;
+        i = j;
       }
-    }
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BadgeUtils", 2, "enableBadge mobileqq");
-    }
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    BadgeUtilImpl.enableBadge(BaseApplicationImpl.sApplication);
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    if ((!jdField_a_of_type_Boolean) && (paramInt > 0)) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while (!a(paramContext));
-      i = a();
-      QLog.d("BadgeUtils_UnreadMonitor", 1, "setBadge limit: " + i + ", count: " + paramInt);
-      if (Looper.myLooper() == Looper.getMainLooper()) {
-        break;
-      }
-      BadgeUtilImpl.setLimitCount(i);
       try
       {
-        BadgeUtilImpl.setBadge(paramContext, paramInt);
+        if (QLog.isColorLevel()) {
+          QLog.d("OpenSdkVirtualManager", 2, new Object[] { "OpenVirtual.createResult=", bfnl.a(paramString2.toString(), this.a.jdField_a_of_type_Bfmm.jdField_a_of_type_JavaLangString) });
+        }
+        if (this.a.jdField_a_of_type_Bfnj != null) {
+          this.a.jdField_a_of_type_Bfnj.a(true, paramString2, paramInt);
+        }
         return;
       }
-      catch (Exception paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("BadgeUtilImpl", 2, "badge not support");
-    return;
-    ThreadManager.executeOnSubThread(new BadgeUtils.1(i, paramContext, paramInt));
-  }
-  
-  public static void a(Context paramContext, int paramInt, Notification paramNotification)
-  {
-    if (!c) {
-      if (!b)
+      catch (JSONException paramString1)
       {
-        c = CommonBadgeUtilImpl.isMIUI6();
-        b = true;
-        if (c) {}
+        for (;;)
+        {
+          i = j;
+        }
       }
-      else
+      i = 0;
+      if ((i == 0) && (this.a.jdField_a_of_type_Bfnj != null))
       {
+        this.a.jdField_a_of_type_Bfnj.a(false, null, paramInt);
         return;
+        QLog.d("OpenSdkVirtualManager", 2, "OpenVirtual.createVirtual.e:", paramString1);
+        continue;
+        i = 0;
       }
     }
-    QLog.d("BadgeUtils_UnreadMonitor", 1, "setMIUI6Badge count: " + paramInt);
-    BadgeUtilImpl.setLimitCount(a());
-    BadgeUtilImpl.setMIUI6Badge(paramContext, paramInt, paramNotification);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return BadgeUtilImpl.isSupportBadge(paramContext);
-  }
-  
-  public static void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BadgeUtils", 2, "disableBadge mobileqq");
-    }
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    BadgeUtilImpl.disableBadge(BaseApplicationImpl.sApplication);
-    jdField_a_of_type_AndroidOsHandler.postDelayed(jdField_a_of_type_JavaLangRunnable, 2000L);
-  }
-  
-  public static void c()
-  {
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfnb
  * JD-Core Version:    0.7.0.1
  */

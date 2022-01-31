@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qdo;
-import qdp;
+import qnk;
+import qnl;
 
 public class TopicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopicInfo> CREATOR = new qdo();
+  public static final Parcelable.Creator<TopicInfo> CREATOR = new qnk();
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -30,20 +30,20 @@ public class TopicInfo
     this.e = paramParcel.readString();
   }
   
-  private TopicInfo(qdp paramqdp)
+  private TopicInfo(qnl paramqnl)
   {
-    this.jdField_a_of_type_Long = qdp.a(paramqdp);
-    this.jdField_a_of_type_JavaLangString = qdp.a(paramqdp);
-    this.jdField_b_of_type_JavaLangString = qdp.b(paramqdp);
-    this.c = qdp.c(paramqdp);
-    this.d = qdp.d(paramqdp);
-    this.jdField_b_of_type_Long = qdp.b(paramqdp);
-    this.jdField_a_of_type_Boolean = qdp.a(paramqdp);
+    this.jdField_a_of_type_Long = qnl.a(paramqnl);
+    this.jdField_a_of_type_JavaLangString = qnl.a(paramqnl);
+    this.jdField_b_of_type_JavaLangString = qnl.b(paramqnl);
+    this.c = qnl.c(paramqnl);
+    this.d = qnl.d(paramqnl);
+    this.jdField_b_of_type_Long = qnl.b(paramqnl);
+    this.jdField_a_of_type_Boolean = qnl.a(paramqnl);
   }
   
-  public static qdp a()
+  public static qnl a()
   {
-    return new qdp(null);
+    return new qnl(null);
   }
   
   public long a()
@@ -105,7 +105,7 @@ public class TopicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo
  * JD-Core Version:    0.7.0.1
  */

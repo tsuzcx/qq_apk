@@ -1,114 +1,61 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.qav.observer.FilterableObservable.1;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import android.app.WallpaperColors;
+import android.service.wallpaper.WallpaperService.Engine;
+import android.view.SurfaceHolder;
+import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
 
 public class bdsq
+  extends WallpaperService.Engine
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final List<bdsr> jdField_a_of_type_JavaUtilList = new Vector();
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  private final List<bdsr> jdField_b_of_type_JavaUtilList = new Vector();
+  private final WallpaperHelper jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper = new WallpaperHelper();
   
-  bdsq()
+  private bdsq(VipWallpaperService paramVipWallpaperService)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    if (this.jdField_b_of_type_AndroidOsHandler == null)
-    {
-      HandlerThread localHandlerThread = new HandlerThread("FilterableObservable-bg-thread");
-      localHandlerThread.start();
-      this.jdField_b_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    }
+    super(paramVipWallpaperService);
   }
   
-  private void a(bdsr parambdsr, Handler paramHandler, int paramInt, Object... paramVarArgs)
+  public WallpaperColors onComputeColors()
   {
-    paramHandler.post(new FilterableObservable.1(this, parambdsr, paramInt, paramVarArgs));
+    return this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
   }
   
-  public void a()
+  public void onOffsetsChanged(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      if (this.jdField_b_of_type_AndroidOsHandler != null) {
-        this.jdField_b_of_type_AndroidOsHandler.getLooper().quit();
-      }
-      this.jdField_a_of_type_AndroidOsHandler = null;
-      this.jdField_b_of_type_AndroidOsHandler = null;
-      return;
-    }
-    finally {}
+    super.onOffsetsChanged(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramInt2);
   }
   
-  public void a(bdsr parambdsr)
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (parambdsr != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(parambdsr);
-      this.jdField_b_of_type_JavaUtilList.remove(parambdsr);
-      return;
-    }
-    finally
-    {
-      parambdsr = finally;
-      throw parambdsr;
-    }
+    super.onSurfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
   }
   
-  public void a(bdsr parambdsr, boolean paramBoolean)
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        this.jdField_b_of_type_JavaUtilList.add(parambdsr);
-        return;
-      }
-      finally {}
-      this.jdField_a_of_type_JavaUtilList.add(parambdsr);
-    }
+    super.onSurfaceCreated(paramSurfaceHolder);
+    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService, paramSurfaceHolder);
   }
   
-  public void a(Class<? extends bdsr> paramClass, int paramInt, Object... paramVarArgs)
+  public void onSurfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    Iterator localIterator;
-    bdsr localbdsr;
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        localbdsr = (bdsr)localIterator.next();
-        if ((paramClass != null) && (localbdsr != null) && (paramClass.isAssignableFrom(localbdsr.getClass()))) {
-          a(localbdsr, this.jdField_a_of_type_AndroidOsHandler, paramInt, paramVarArgs);
-        }
-      }
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilList)
-    {
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        localbdsr = (bdsr)localIterator.next();
-        if ((paramClass != null) && (localbdsr != null) && (paramClass.isAssignableFrom(localbdsr.getClass()))) {
-          a(localbdsr, this.jdField_b_of_type_AndroidOsHandler, paramInt, paramVarArgs);
-        }
-      }
-    }
+    super.onSurfaceDestroyed(paramSurfaceHolder);
+    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
+  }
+  
+  public void onSurfaceRedrawNeeded(SurfaceHolder paramSurfaceHolder)
+  {
+    super.onSurfaceRedrawNeeded(paramSurfaceHolder);
+  }
+  
+  public void onVisibilityChanged(boolean paramBoolean)
+  {
+    super.onVisibilityChanged(paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdsq
  * JD-Core Version:    0.7.0.1
  */

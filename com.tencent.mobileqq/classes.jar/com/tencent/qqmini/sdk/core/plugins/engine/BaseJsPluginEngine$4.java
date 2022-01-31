@@ -3,9 +3,9 @@ package com.tencent.qqmini.sdk.core.plugins.engine;
 import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
-import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class BaseJsPluginEngine$4
@@ -23,7 +23,7 @@ class BaseJsPluginEngine$4
       {
         Object localObject1 = paramJSONObject.getJSONObject("userInfo");
         paramJSONObject = ((JSONObject)localObject1).getString("nickName");
-        betc.d("JsPluginEngine[AuthGuard]", "call getUserInfo failed. " + Log.getStackTraceString(localThrowable1));
+        QMLog.e("JsPluginEngine[AuthGuard]", "call getUserInfo failed. " + Log.getStackTraceString(localThrowable1));
       }
       catch (Throwable localThrowable1)
       {
@@ -44,7 +44,7 @@ class BaseJsPluginEngine$4
       label53:
       localObject2 = localObject3;
       continue;
-      betc.a("JsPluginEngine[AuthGuard]", "call getUserInfo failed. ");
+      QMLog.d("JsPluginEngine[AuthGuard]", "call getUserInfo failed. ");
       paramJSONObject = null;
       localObject2 = localObject3;
     }
@@ -52,7 +52,7 @@ class BaseJsPluginEngine$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.engine.BaseJsPluginEngine.4
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.thumbplayer.core.player;
 
 import android.content.Context;
 import android.view.Surface;
+import com.tencent.thumbplayer.core.common.TPAudioPassThroughPluginDetector;
 import com.tencent.thumbplayer.core.common.TPFieldCalledByNative;
 import com.tencent.thumbplayer.core.common.TPHeadsetPluginDetector;
 import com.tencent.thumbplayer.core.common.TPMediaTrackInfo;
@@ -29,6 +30,7 @@ public class TPNativePlayer
     {
       this.m_playerID = _createPlayer();
       TPHeadsetPluginDetector.init(this.mContext);
+      TPAudioPassThroughPluginDetector.init(this.mContext);
       return;
     }
     catch (Throwable paramContext)
@@ -61,6 +63,10 @@ public class TPNativePlayer
   private native long _getDurationMs();
   
   private native int _getPlayerID();
+  
+  private native int _getProgramCount();
+  
+  private native TPNativePlayerProgramInfo _getProgramInfo(int paramInt);
   
   private native long _getPropertyLong(int paramInt);
   
@@ -98,6 +104,8 @@ public class TPNativePlayer
   
   private native int _seekToAsync(int paramInt1, int paramInt2, long paramLong);
   
+  private native int _selectProgramAsync(int paramInt, long paramLong);
+  
   private native int _selectTrackAsync(int paramInt, long paramLong);
   
   private native int _setAudioFrameCallback(Object paramObject);
@@ -110,7 +118,7 @@ public class TPNativePlayer
   
   private native int _setDataSourceFd(int paramInt);
   
-  private native void _setHeadphonePlugIn(boolean paramBoolean);
+  private native int _setDataSourceWithHttpHeader(String paramString, Object[] paramArrayOfObject);
   
   private native int _setInitConfigBool(int paramInt, boolean paramBoolean);
   
@@ -136,7 +144,7 @@ public class TPNativePlayer
   
   private native int _stop();
   
-  private native int _switchDefinitionAsync(String paramString, long paramLong);
+  private native int _switchDefinitionAsync(String paramString, int paramInt, long paramLong);
   
   public int addAudioTrackSource(String paramString1, String paramString2)
   {
@@ -250,9 +258,70 @@ public class TPNativePlayer
     return 0;
   }
   
+  public int getProgramCount()
+  {
+    try
+    {
+      int i = _getProgramCount();
+      return i;
+    }
+    catch (Throwable localThrowable)
+    {
+      TPNativeLog.printLog(4, localThrowable.getMessage());
+    }
+    return 1000001;
+  }
+  
+  /* Error */
   public TPNativePlayerProgramInfo[] getProgramInfo()
   {
-    return null;
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 177	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramCount	()I
+    //   4: istore_2
+    //   5: iload_2
+    //   6: anewarray 181	com/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo
+    //   9: astore 4
+    //   11: iconst_0
+    //   12: istore_1
+    //   13: aload 4
+    //   15: astore_3
+    //   16: iload_1
+    //   17: iload_2
+    //   18: if_icmpge +30 -> 48
+    //   21: aload 4
+    //   23: iload_1
+    //   24: aload_0
+    //   25: iload_1
+    //   26: invokespecial 183	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramInfo	(I)Lcom/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo;
+    //   29: aastore
+    //   30: iload_1
+    //   31: iconst_1
+    //   32: iadd
+    //   33: istore_1
+    //   34: goto -21 -> 13
+    //   37: astore_3
+    //   38: iconst_4
+    //   39: aload_3
+    //   40: invokevirtual 58	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   43: invokestatic 67	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   46: aconst_null
+    //   47: astore_3
+    //   48: aload_3
+    //   49: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	50	0	this	TPNativePlayer
+    //   12	22	1	i	int
+    //   4	15	2	j	int
+    //   15	1	3	arrayOfTPNativePlayerProgramInfo1	TPNativePlayerProgramInfo[]
+    //   37	3	3	localThrowable	Throwable
+    //   47	2	3	arrayOfTPNativePlayerProgramInfo2	TPNativePlayerProgramInfo[]
+    //   9	13	4	arrayOfTPNativePlayerProgramInfo3	TPNativePlayerProgramInfo[]
+    // Exception table:
+    //   from	to	target	type
+    //   0	11	37	java/lang/Throwable
+    //   21	30	37	java/lang/Throwable
   }
   
   public long getPropertyLong(int paramInt)
@@ -430,7 +499,16 @@ public class TPNativePlayer
   
   public int selectProgramAsync(int paramInt, long paramLong)
   {
-    return 0;
+    try
+    {
+      paramInt = _selectProgramAsync(paramInt, paramLong);
+      return paramInt;
+    }
+    catch (Throwable localThrowable)
+    {
+      TPNativeLog.printLog(4, localThrowable.getMessage());
+    }
+    return 1000001;
   }
   
   public int selectTrackAsync(int paramInt, long paramLong)
@@ -519,19 +597,39 @@ public class TPNativePlayer
   
   public int setDataSource(String paramString, Map<String, String> paramMap)
   {
-    return 0;
-  }
-  
-  public void setHeadphonePlugIn(boolean paramBoolean)
-  {
-    try
+    if (paramMap != null) {}
+    for (;;)
     {
-      _setHeadphonePlugIn(paramBoolean);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
+      try
+      {
+        String[] arrayOfString;
+        if (paramMap.size() != 0)
+        {
+          arrayOfString = new String[paramMap.size() * 2];
+          Iterator localIterator = paramMap.keySet().iterator();
+          int i = 0;
+          if (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            arrayOfString[(i * 2)] = str;
+            arrayOfString[(i * 2 + 1)] = ((String)paramMap.get(str));
+            i += 1;
+            continue;
+            return _setDataSourceWithHttpHeader(paramString, paramMap);
+          }
+        }
+        else
+        {
+          paramMap = new String[0];
+          continue;
+        }
+        paramMap = arrayOfString;
+      }
+      catch (Throwable paramString)
+      {
+        TPNativeLog.printLog(4, paramString.getMessage());
+        return 1000001;
+      }
     }
   }
   
@@ -729,12 +827,12 @@ public class TPNativePlayer
     return 1000001;
   }
   
-  public int switchDefinitionAsync(String paramString, long paramLong)
+  public int switchDefinitionAsync(String paramString, int paramInt, long paramLong)
   {
     try
     {
-      int i = _switchDefinitionAsync(paramString, paramLong);
-      return i;
+      paramInt = _switchDefinitionAsync(paramString, paramInt, paramLong);
+      return paramInt;
     }
     catch (Throwable paramString)
     {
@@ -742,10 +840,16 @@ public class TPNativePlayer
     }
     return 1000001;
   }
+  
+  @Deprecated
+  public int switchDefinitionAsync(String paramString, long paramLong)
+  {
+    return switchDefinitionAsync(paramString, 0, paramLong);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayer
  * JD-Core Version:    0.7.0.1
  */

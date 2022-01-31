@@ -1,21 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
 public class acca
-  implements DialogInterface.OnClickListener
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public acca(ShortcutRouterActivity paramShortcutRouterActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.finish();
-  }
+  public acca(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acca
  * JD-Core Version:    0.7.0.1
  */

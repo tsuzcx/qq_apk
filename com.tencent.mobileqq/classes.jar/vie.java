@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.content.DialogInterface;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
-public abstract interface vie
+public class vie
+  extends bdco
 {
-  public abstract void a();
+  public vie(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public abstract void a(TroopBarPOI paramTroopBarPOI);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vie
  * JD-Core Version:    0.7.0.1
  */

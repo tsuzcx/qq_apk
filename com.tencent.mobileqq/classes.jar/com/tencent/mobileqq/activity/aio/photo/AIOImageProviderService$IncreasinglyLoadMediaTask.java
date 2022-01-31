@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aeir;
-import aeje;
-import akpu;
-import akqa;
-import apug;
+import abor;
+import abot;
+import agfh;
+import agfw;
+import amgm;
+import arni;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -54,16 +55,16 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
         this.this$0.b();
         this.this$0.jdField_d_of_type_Boolean = false;
         continue;
-        localList1 = apug.a(AIOImageProviderService.a(this.this$0).a().a(this.this$0.jdField_a_of_type_Long));
+        localList1 = arni.a(AIOImageProviderService.a(this.this$0).a().a(this.this$0.jdField_a_of_type_Long));
         continue;
         localArrayList2.addAll(0, localList1);
-        localArrayList1.addAll(0, AIOImageProviderService.a(this.this$0, AIOImageProviderService.a(this.this$0), localList1));
+        localArrayList1.addAll(0, this.this$0.a(localList1));
         continue;
       }
       catch (Exception localException)
       {
-        label555:
-        label623:
+        label548:
+        label616:
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -77,11 +78,11 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
         try
         {
           if (i >= localList2.size()) {
-            break label1179;
+            break label1165;
           }
           localAIORichMediaData = (AIORichMediaData)localList2.get(i);
           if (AIOImageProviderService.a(localAIORichMediaData)) {
-            break label1224;
+            break label1210;
           }
           ((List)localObject7).add(localAIORichMediaData);
         }
@@ -100,7 +101,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
       if (QLog.isColorLevel()) {
         QLog.d("AIOImageProviderService", 2, "[IncreasinglyLoadTask] start");
       }
-      if ((this.this$0.jdField_a_of_type_Aeje == null) && (this.this$0.jdField_a_of_type_Aeir == null))
+      if ((this.this$0.jdField_a_of_type_Agfw == null) && (this.this$0.jdField_a_of_type_Agfh == null))
       {
         this.this$0.jdField_d_of_type_Boolean = false;
         this.this$0.b();
@@ -151,42 +152,42 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
           for (;;)
           {
             if (this.this$0.jdField_c_of_type_Boolean) {
-              break label997;
+              break label990;
             }
             localArrayList2.addAll((Collection)localObject2);
-            localArrayList1.addAll(AIOImageProviderService.a(this.this$0, AIOImageProviderService.a(this.this$0), (List)localObject2));
+            localArrayList1.addAll(this.this$0.a((List)localObject2));
             this.this$0.jdField_c_of_type_Boolean = true;
             if ((!this.this$0.jdField_a_of_type_Boolean) && (localArrayList1.size() < 30) && (this.this$0.jdField_d_of_type_Int >= 60)) {
               break label137;
             }
             if (localArrayList1.size() <= 0) {
-              break label1207;
+              break label1193;
             }
-            localObject6 = this.this$0.jdField_a_of_type_Aeje;
+            localObject6 = this.this$0.jdField_a_of_type_Agfw;
             if (localObject6 != null)
             {
               localObject7 = new ArrayList();
               if (this.this$0.jdField_a_of_type_Int == 1) {
-                break label1217;
+                break label1203;
               }
               if (this.this$0.jdField_a_of_type_Int != 1026) {
-                break label1084;
+                break label1070;
               }
-              break label1217;
+              break label1203;
               if ((this.this$0.jdField_a_of_type_Int != 1) && (this.this$0.jdField_a_of_type_Int != 0) && (this.this$0.jdField_a_of_type_Int != 3000)) {
-                break label1096;
+                break label1082;
               }
               localObject2 = (AIORichMediaData[])((List)localObject2).toArray(new AIORichMediaData[((List)localObject2).size()]);
               if (localObject2.length > 0) {
-                ((aeje)localObject6).a((AIORichMediaData[])localObject2, -1);
+                ((agfw)localObject6).a((AIORichMediaData[])localObject2, -1);
               }
             }
-            localObject2 = this.this$0.jdField_a_of_type_Aeir;
+            localObject2 = this.this$0.jdField_a_of_type_Agfh;
             if (localObject2 != null)
             {
               localObject6 = (AIORichMediaData[])localArrayList1.toArray(new AIORichMediaData[localArrayList1.size()]);
               if (localObject6.length > 0) {
-                ((aeir)localObject2).a((AIORichMediaData[])localObject6, -1);
+                ((agfh)localObject2).a((AIORichMediaData[])localObject6, -1);
               }
             }
             if (QLog.isColorLevel()) {
@@ -194,8 +195,8 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
             }
             this.this$0.jdField_d_of_type_Boolean = false;
             break;
-            if (!akpu.a(this.this$0.jdField_a_of_type_Int)) {
-              break label863;
+            if (!abot.a(this.this$0.jdField_a_of_type_Int)) {
+              break label856;
             }
             localObject2 = this.this$0;
             ((AIOImageProviderService)localObject2).jdField_c_of_type_Long -= 1L;
@@ -209,32 +210,32 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
     }
     for (;;)
     {
-      label863:
+      label856:
       List localList1;
-      label997:
+      label990:
       List localList2;
-      label1084:
-      label1096:
+      label1070:
+      label1082:
       List localList3;
       int i;
       AIORichMediaData localAIORichMediaData;
-      label1179:
+      label1165:
       Object localObject5 = (AIORichMediaData[])((List)localObject7).toArray(new AIORichMediaData[((List)localObject7).size()]);
-      break label555;
-      label1207:
+      break label548;
+      label1193:
       this.this$0.b();
-      break label623;
-      label1217:
+      break label616;
+      label1203:
       localObject5 = localArrayList1;
       break;
-      label1224:
+      label1210:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.IncreasinglyLoadMediaTask
  * JD-Core Version:    0.7.0.1
  */

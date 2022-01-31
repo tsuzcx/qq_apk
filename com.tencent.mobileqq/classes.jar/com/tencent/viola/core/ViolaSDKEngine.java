@@ -14,6 +14,7 @@ import com.tencent.viola.module.IModuleHolder;
 import com.tencent.viola.module.JSTimerModule;
 import com.tencent.viola.module.ModuleSimpleHolder;
 import com.tencent.viola.module.MonitorModule;
+import com.tencent.viola.module.RouterModule;
 import com.tencent.viola.module.ViolaModuleManager;
 import com.tencent.viola.module.WebSocketModule;
 import com.tencent.viola.ui.animation.AnimationModule;
@@ -32,6 +33,7 @@ import com.tencent.viola.ui.component.VIndicateLoading;
 import com.tencent.viola.ui.component.VInput;
 import com.tencent.viola.ui.component.VKdRefresh;
 import com.tencent.viola.ui.component.VLoading;
+import com.tencent.viola.ui.component.VLottie;
 import com.tencent.viola.ui.component.VModal;
 import com.tencent.viola.ui.component.VPage;
 import com.tencent.viola.ui.component.VPageSlider;
@@ -47,6 +49,7 @@ import com.tencent.viola.ui.component.VText;
 import com.tencent.viola.ui.component.VTransform;
 import com.tencent.viola.ui.component.image.VImage2;
 import com.tencent.viola.utils.ViolaLogUtils;
+import com.tencent.viola.vinstance.VInstance;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -155,6 +158,8 @@ public class ViolaSDKEngine
       registerComponent(VSmartLayout.class, false, new String[] { "smart-layout" });
       registerComponent(VSeekBar.class, false, new String[] { "seek-bar" });
       registerComponent(VTransform.class, false, new String[] { "transform" });
+      registerComponent(VLottie.class, false, new String[] { "vlottie" });
+      registerComponent(VInstance.class, false, new String[] { "instance" });
       registerModule("jsTimer", JSTimerModule.class, true);
       registerModule("http", HttpModule.class, true);
       registerModule("event", EventModule.class, true);
@@ -164,6 +169,7 @@ public class ViolaSDKEngine
       registerModule("monitor", MonitorModule.class, true);
       registerModule("device", DeviceModule.class, false);
       registerModule("backAndroid", BackAndroidModule.class, false);
+      registerModule("router", RouterModule.class, false);
       baseRegisterInit = true;
       return;
     }
@@ -215,7 +221,7 @@ public class ViolaSDKEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.core.ViolaSDKEngine
  * JD-Core Version:    0.7.0.1
  */

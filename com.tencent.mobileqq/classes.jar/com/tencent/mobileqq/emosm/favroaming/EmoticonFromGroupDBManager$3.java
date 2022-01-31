@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import ansk;
-import aukp;
-import aukr;
+import apjs;
+import awbw;
+import awby;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import java.util.List;
 public class EmoticonFromGroupDBManager$3
   implements Runnable
 {
-  public EmoticonFromGroupDBManager$3(ansk paramansk, int paramInt, List paramList) {}
+  public EmoticonFromGroupDBManager$3(apjs paramapjs, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -29,19 +29,19 @@ public class EmoticonFromGroupDBManager$3
     {
       try
       {
-        localaukr = this.this$0.a.a();
-        localObject1 = localaukr;
-        localObject3 = localaukr;
-        localaukr.a();
-        localObject1 = localaukr;
-        localObject3 = localaukr;
+        localawby = this.this$0.a.a();
+        localObject1 = localawby;
+        localObject3 = localawby;
+        localawby.a();
+        localObject1 = localawby;
+        localObject3 = localawby;
         switch (this.jdField_a_of_type_Int)
         {
         }
       }
       catch (Exception localException)
       {
-        aukr localaukr;
+        awby localawby;
         localObject3 = localObject1;
         if (!QLog.isColorLevel()) {
           continue;
@@ -91,36 +91,36 @@ public class EmoticonFromGroupDBManager$3
         }
         localObject3.b();
       }
-      localObject1 = localaukr;
-      localObject3 = localaukr;
-      localaukr.c();
-      if (localaukr != null) {
-        localaukr.b();
+      localObject1 = localawby;
+      localObject3 = localawby;
+      localawby.c();
+      if (localawby != null) {
+        localawby.b();
       }
       if (QLog.isColorLevel()) {
         QLog.i("EmoticonFromGroup_DBManager", 2, "db operation end.");
       }
       return;
-      localObject1 = localaukr;
-      localObject3 = localaukr;
+      localObject1 = localawby;
+      localObject3 = localawby;
       localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      localObject1 = localaukr;
-      localObject3 = localaukr;
+      localObject1 = localawby;
+      localObject3 = localawby;
       if (localIterator.hasNext())
       {
-        localObject1 = localaukr;
-        localObject3 = localaukr;
+        localObject1 = localawby;
+        localObject3 = localawby;
         localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)localIterator.next();
-        localObject1 = localaukr;
-        localObject3 = localaukr;
+        localObject1 = localawby;
+        localObject3 = localawby;
         if (!this.this$0.a(localEmoticonFromGroupEntity))
         {
-          localObject1 = localaukr;
-          localObject3 = localaukr;
+          localObject1 = localawby;
+          localObject3 = localawby;
           if (QLog.isColorLevel())
           {
-            localObject1 = localaukr;
-            localObject3 = localaukr;
+            localObject1 = localawby;
+            localObject3 = localawby;
             QLog.e("EmoticonFromGroup_DBManager.dberror", 2, "updateEntity error, e.md5=" + localEmoticonFromGroupEntity.md5);
           }
         }
@@ -130,7 +130,7 @@ public class EmoticonFromGroupDBManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager.3
  * JD-Core Version:    0.7.0.1
  */

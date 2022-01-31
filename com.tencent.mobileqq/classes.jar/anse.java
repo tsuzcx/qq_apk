@@ -1,473 +1,205 @@
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_GetDiyText_Req;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_GetDiyText_Rsp;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Req;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Req_Comm;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Rsp;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.UserTextInfo;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import org.json.JSONObject;
 
 public class anse
-  extends anqr<CameraEmotionData>
+  extends alko
 {
-  private boolean a;
-  private boolean b;
-  
   public anse(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
   }
   
-  private CameraEmotionData a(ajtg paramajtg, int paramInt)
+  public void a(List<String> paramList, alkr paramalkr)
   {
-    if ((paramajtg == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return null;
-    }
-    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
-    localCameraEmotionData.uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localCameraEmotionData.emoId = (paramInt + 1);
-    localCameraEmotionData.resid = paramajtg.a;
-    localCameraEmotionData.strContext = paramajtg.b;
-    if (bbkk.a(paramajtg.d)) {}
-    for (localCameraEmotionData.md5 = anru.a(paramajtg.a);; localCameraEmotionData.md5 = paramajtg.d)
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    BubbleDiyComu.Bubble_Req_Comm localBubble_Req_Comm;
+    BubbleDiyComu.Bubble_GetDiyText_Req localBubble_GetDiyText_Req;
+    ArrayList localArrayList;
+    label252:
+    do
     {
-      localCameraEmotionData.url = paramajtg.jdField_c_of_type_JavaLangString;
-      return localCameraEmotionData;
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      if ("needDel".equals(((CameraEmotionData)localIterator.next()).RomaingType)) {
-        break label59;
-      }
-      i += 1;
-    }
-    label59:
-    for (;;)
-    {
-      break;
-      return i;
-    }
-  }
-  
-  public anyh a(CameraEmotionData paramCameraEmotionData)
-  {
-    anxv localanxv = new anxv();
-    localanxv.jdField_c_of_type_Int = 11;
-    localanxv.d = a(paramCameraEmotionData);
-    localanxv.a = paramCameraEmotionData.strContext;
-    localanxv.e = paramCameraEmotionData.url;
-    localanxv.jdField_g_of_type_Int = paramCameraEmotionData.emoId;
-    localanxv.jdField_c_of_type_JavaLangString = paramCameraEmotionData.resid;
-    localanxv.jdField_g_of_type_JavaLangString = paramCameraEmotionData.RomaingType;
-    localanxv.b = paramCameraEmotionData.thumbPath;
-    localanxv.f = paramCameraEmotionData.resid;
-    return localanxv;
-  }
-  
-  public Class a()
-  {
-    return CameraEmotionData.class;
-  }
-  
-  public String a(CameraEmotionData paramCameraEmotionData)
-  {
-    if ((paramCameraEmotionData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return "";
-    }
-    if (!TextUtils.isEmpty(paramCameraEmotionData.emoPath)) {
-      return paramCameraEmotionData.emoPath;
-    }
-    String str2 = paramCameraEmotionData.md5;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2))
-    {
-      if (TextUtils.isEmpty(paramCameraEmotionData.resid)) {
-        return "";
-      }
-      str1 = anru.a(paramCameraEmotionData.resid);
-    }
-    return anru.a(str1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-  }
-  
-  public List<CameraEmotionData> a()
-  {
-    Object localObject3;
-    Object localObject4;
-    try
-    {
-      ArrayList localArrayList = new ArrayList();
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label118;
-      }
-      localObject3 = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (CameraEmotionData)((Iterator)localObject3).next();
-        if (localObject4 != null) {
-          localArrayList.add(localObject4);
-        }
-      }
-      localObject3 = localObject1;
-    }
-    finally {}
-    if (QLog.isColorLevel())
-    {
-      QLog.d("CameraEmotionRoamingDBManager", 2, "getEmoticonDataList from cache: data size = " + localObject1.size());
-      localObject3 = localObject1;
-    }
-    for (;;)
-    {
-      return localObject3;
-      label118:
-      localObject3 = localObject1;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        Object localObject2;
-        int i;
-        if (localObject3 != null)
-        {
-          localObject2 = ((aukp)localObject3).a(a(), false, null, null, null, null, null, null);
-          localObject3 = new ArrayList();
-          if ((localObject2 != null) && (((List)localObject2).size() > 0))
-          {
-            localObject4 = ((List)localObject2).iterator();
-            i = 0;
-            if (!((Iterator)localObject4).hasNext()) {
-              break label406;
-            }
-            CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject4).next();
-            if (TextUtils.isEmpty(localCameraEmotionData.RomaingType))
-            {
-              localCameraEmotionData.RomaingType = "init";
-              ((List)localObject3).add(localCameraEmotionData);
-              i = 1;
-            }
-            for (;;)
-            {
-              b(localCameraEmotionData, 1);
-              break;
-              if (localCameraEmotionData.RomaingType.equals("needUpload"))
-              {
-                localCameraEmotionData.RomaingType = "failed";
-                ((List)localObject3).add(localCameraEmotionData);
-                b();
-                i = 1;
-              }
-            }
-          }
-        }
-        label406:
-        for (;;)
-        {
-          a();
-          if (i != 0) {
-            a((List)localObject3, 2);
-          }
-          if (QLog.isColorLevel()) {
-            if (localObject2 != null)
-            {
-              QLog.d("CameraEmotionRoamingDBManager", 2, "getEmoticonDataList from db : data size = " + ((List)localObject2).size());
-              this.jdField_a_of_type_Boolean = true;
-            }
-            else
-            {
-              localObject2 = new ArrayList();
-              QLog.d("CameraEmotionRoamingDBManager", 2, "getEmoticonDataList from db : data size = null");
-              if (this.jdField_a_of_type_Boolean) {
-                axrn.a(BaseApplication.getContext()).a("", "CameraEmoDBError", true, 0L, 0L, null, "");
-              }
-            }
-          }
-          break;
-          i = 0;
-          continue;
-          break;
-        }
-        localObject3 = localObject2;
-      }
-    }
-  }
-  
-  public void a(CameraEmotionData paramCameraEmotionData, int paramInt)
-  {
-    super.a(paramCameraEmotionData, paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      aexb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).g();
-    }
-  }
-  
-  protected void a(List<CameraEmotionData> paramList, int paramInt)
-  {
-    super.a(paramList, paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      aexb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).g();
-    }
-  }
-  
-  public void a(List<ajtg> paramList, List<String> paramList1, List<String> paramList2)
-  {
-    int k = 0;
-    if ((paramList == null) || (paramList1 == null)) {
       return;
-    }
-    Object localObject1;
-    int i;
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder().append("updateLocalDBFromServer, start remoteimgList.size = ").append(paramList.size()).append("| deleteSize =");
-      if (paramList2 == null)
-      {
-        i = 0;
-        QLog.d("CameraEmotionRoamingDBManager", 2, i);
-      }
-    }
-    else
-    {
-      localObject1 = new ArrayList();
-      localObject2 = new ArrayList();
-      Object localObject3 = a();
-      if (localObject3 == null) {
-        break label241;
-      }
-      localObject3 = ((List)localObject3).iterator();
-      bool1 = false;
-      label112:
-      CameraEmotionData localCameraEmotionData;
-      do
-      {
-        bool2 = bool1;
-        if (!((Iterator)localObject3).hasNext()) {
-          break;
-        }
-        localCameraEmotionData = (CameraEmotionData)((Iterator)localObject3).next();
-      } while ((localCameraEmotionData.RomaingType.equals("needDel")) || (localCameraEmotionData.RomaingType.equals("failed")) || (localCameraEmotionData.RomaingType.equals("needUpload")));
-      i = paramList1.indexOf(localCameraEmotionData.resid);
-      if (i >= 0) {
-        break label222;
-      }
-      ((List)localObject1).add(localCameraEmotionData);
-      bool1 = true;
-    }
-    for (;;)
-    {
-      break label112;
-      i = paramList2.size();
-      break;
-      label222:
-      ((List)localObject2).add(paramList.get(i));
-    }
-    label241:
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmotionRoamingDBManager", 2, "updateLocalDBFromServer, needDelete = " + bool2 + "| localNotInServerList.size = " + ((List)localObject1).size());
-    }
-    if (((List)localObject2).size() < paramList.size())
-    {
-      paramList1 = ((List)localObject2).iterator();
-      while (paramList1.hasNext()) {
-        paramList.remove((ajtg)paramList1.next());
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
       if (QLog.isColorLevel()) {
-        QLog.d("CameraEmotionRoamingDBManager", 2, "updateLocalDBFromServer, needAdd = " + bool1 + "| remoteimgList.size = " + paramList.size());
+        QLog.i("BubbleDiyHandler", 2, "try fetchDiyTexts: " + TextUtils.join(",", paramList));
       }
-      paramList1 = b("needDel");
-      if (paramList1 == null) {
-        paramList1 = new ArrayList();
-      }
+      localBubble_Req_Comm = new BubbleDiyComu.Bubble_Req_Comm();
+      localBubble_Req_Comm.platform.set(109L);
+      localBubble_Req_Comm.osver.set(Build.VERSION.RELEASE);
+      localBubble_Req_Comm.mqqver.set("8.3.3");
+      localBubble_GetDiyText_Req = new BubbleDiyComu.Bubble_GetDiyText_Req();
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramList.iterator();
       for (;;)
       {
-        if ((paramList2 != null) && (paramList2.size() > 0))
+        if (!localIterator.hasNext()) {
+          break label252;
+        }
+        Object localObject = (String)localIterator.next();
+        BubbleDiyComu.UserTextInfo localUserTextInfo = new BubbleDiyComu.UserTextInfo();
+        localObject = ((String)localObject).split("_");
+        long l1 = 0L;
+        if (localObject.length == 2) {}
+        try
         {
-          if (paramList1.size() > 0)
+          long l2 = Long.parseLong(localObject[0]);
+          l1 = l2;
+          i = Integer.parseInt(localObject[1]);
+          l1 = l2;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          for (;;)
           {
-            localObject2 = paramList1.iterator();
-            while (((Iterator)localObject2).hasNext()) {
-              if (!paramList2.contains(((CameraEmotionData)((Iterator)localObject2).next()).resid)) {
-                ((Iterator)localObject2).remove();
+            QLog.e("BubbleDiyHandler", 1, "", localNumberFormatException);
+            int i = 0;
+          }
+        }
+        if ((l1 > 0L) && (i > 0))
+        {
+          localUserTextInfo.text_uin.set(l1);
+          localUserTextInfo.text_id.set(i);
+          localArrayList.add(localUserTextInfo);
+        }
+      }
+      if (!localArrayList.isEmpty()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("BubbleDiyHandler", 2, "no diy id need request: " + TextUtils.join(",", paramList));
+    return;
+    localBubble_GetDiyText_Req.user_text_info.set(localArrayList);
+    paramList = new BubbleDiyComu.Bubble_Req();
+    paramList.cmd.set(1);
+    paramList.packet_seq.set(System.currentTimeMillis());
+    paramList.comm.set(localBubble_Req_Comm);
+    paramList.reqcmd_0x01.set(localBubble_GetDiyText_Req);
+    paramalkr = super.createToServiceMsg("bubble.1", paramalkr);
+    paramalkr.putWupBuffer(paramList.toByteArray());
+    super.sendPbReq(paramalkr);
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("bubble.1"))
+    {
+      bool = paramFromServiceMsg.isSuccess();
+      localObject = String.valueOf(paramToServiceMsg.getAttribute("_tag_LOGSTR"));
+      if (QLog.isColorLevel()) {
+        QLog.d("BubbleDiyHandler", 2, "key_seq=" + (String)localObject + " isSuccess=" + bool + " resultCode=" + paramFromServiceMsg.getResultCode());
+      }
+      if (bool) {
+        paramFromServiceMsg = new BubbleDiyComu.Bubble_Rsp();
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        try
+        {
+          boolean bool;
+          paramFromServiceMsg = (BubbleDiyComu.Bubble_Rsp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
+          if (paramFromServiceMsg != null) {
+            if (paramFromServiceMsg.ret.get() != 0L)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("BubbleDiyHandler", 2, "DiyText...fetch key 回包 sso 成功 ，server 失败，ret = " + paramFromServiceMsg.ret.get());
+              }
+              super.notifyUI(paramToServiceMsg, 1, false, null);
+              return;
+            }
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          Object localObject;
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("BubbleDiyHandler", 2, "DiyText bubble_Rsp is null 业务回包 异常");
+            }
+            paramFromServiceMsg = null;
+          }
+          if ((paramFromServiceMsg.rspcmd_0x01.has()) && (paramFromServiceMsg.rspcmd_0x01.user_text_info.has()))
+          {
+            paramObject = paramFromServiceMsg.rspcmd_0x01.user_text_info.get();
+            paramFromServiceMsg = new ArrayList();
+            if (paramObject != null)
+            {
+              paramObject = paramObject.iterator();
+              while (paramObject.hasNext())
+              {
+                localObject = (BubbleDiyComu.UserTextInfo)paramObject.next();
+                if ((((BubbleDiyComu.UserTextInfo)localObject).text.has()) && (((BubbleDiyComu.UserTextInfo)localObject).text_uin.has()) && (((BubbleDiyComu.UserTextInfo)localObject).text_id.has()))
+                {
+                  try
+                  {
+                    JSONObject localJSONObject = new JSONObject(((BubbleDiyComu.UserTextInfo)localObject).text.get());
+                    BubbleDiyEntity localBubbleDiyEntity = new BubbleDiyEntity();
+                    localBubbleDiyEntity.uinAndDiyId = (((BubbleDiyComu.UserTextInfo)localObject).text_uin.get() + "_" + ((BubbleDiyComu.UserTextInfo)localObject).text_id.get());
+                    localBubbleDiyEntity.diyText = localJSONObject.optString("diyText");
+                    localBubbleDiyEntity.bottomLeftId = localJSONObject.optString("bl");
+                    localBubbleDiyEntity.bottomRightId = localJSONObject.optString("br");
+                    localBubbleDiyEntity.topLeftId = localJSONObject.optString("tl");
+                    localBubbleDiyEntity.topRightId = localJSONObject.optString("tr");
+                    paramFromServiceMsg.add(localBubbleDiyEntity);
+                    if (!QLog.isColorLevel()) {
+                      continue;
+                    }
+                    QLog.i("BubbleDiyHandler", 2, "onReceive: uinAndDiyId: " + localBubbleDiyEntity.uinAndDiyId + ",config: " + ((BubbleDiyComu.UserTextInfo)localObject).text.get());
+                  }
+                  catch (Exception localException) {}
+                  if (QLog.isColorLevel()) {
+                    QLog.e("BubbleDiyHandler", 2, "", localException);
+                  }
+                }
               }
             }
+            ansd.a().a(this.app, true, paramFromServiceMsg);
+            super.notifyUI(paramToServiceMsg, 1, true, paramFromServiceMsg);
+            return;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("CameraEmotionRoamingDBManager", 2, "updateLocalDBFromServer, locNeedDelList.size = " + paramList1.size());
-          }
-        }
-        if (bool2) {
-          paramList1.addAll((Collection)localObject1);
-        }
-        if (paramList1.size() > 0)
-        {
-          paramList2 = paramList1.iterator();
-          while (paramList2.hasNext()) {
-            b((CameraEmotionData)paramList2.next(), 4);
-          }
-          a(paramList1, 4);
-        }
-        int j;
-        if (bool1)
-        {
-          paramList1 = a();
-          if (paramList1 != null)
-          {
-            i = 1;
-            j = i;
-            if (k >= paramList1.size()) {
-              break label657;
-            }
-            j = ((CameraEmotionData)paramList1.get(k)).emoId;
-            if (i >= j) {
-              break label740;
-            }
-            i = j;
-          }
-        }
-        label657:
-        label740:
-        for (;;)
-        {
-          k += 1;
-          break;
-          j = 1;
-          paramList1 = new ArrayList();
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            paramList2 = (ajtg)paramList.next();
-            j += 1;
-            paramList2 = a(paramList2, j);
-            paramList2.RomaingType = "normal";
-            b(paramList2, 1);
-            paramList1.add(paramList2);
-          }
-          a(paramList1, 1);
-          a();
+          super.notifyUI(paramToServiceMsg, 1, false, null);
           return;
         }
-      }
+        super.notifyUI(paramToServiceMsg, 1, false, null);
+        return;
+        super.notifyUI(paramToServiceMsg, 1, false, null);
+      } while (!QLog.isColorLevel());
+      QLog.d("BubbleDiyHandler", 2, "DiyText isSuccess is false sso通道  异常");
+      return;
     }
-  }
-  
-  public List<anyh> b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraEmotionRoamingDBManager", 2, "Call CameraEmotionRoamingDBManager syncGetCustomEmotionInfoShowedInPanel.");
-    }
-    List localList = a();
-    ArrayList localArrayList = new ArrayList();
-    if (localList != null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        i = localList.size() - 1;
-        if (i >= 0)
-        {
-          CameraEmotionData localCameraEmotionData = (CameraEmotionData)localList.get(i);
-          if ("needDel".equals(localCameraEmotionData.RomaingType)) {
-            QLog.d("CameraEmotionRoamingDBManager", 1, "data need delete, do not need display -> resId:" + localCameraEmotionData.resid);
-          } else {
-            localArrayList.add(a(localCameraEmotionData));
-          }
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        QLog.e("CameraEmotionRoamingDBManager", 1, "syncGetCustomEmotionInfoShowedInPanel oom");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraEmotionRoamingDBManager", 2, "syncGetCustomEmotionInfoShowedInPanel, display size:" + localArrayList.size());
-      }
-      return localArrayList;
-      i -= 1;
-    }
-  }
-  
-  public void b()
-  {
-    if (!this.b)
-    {
-      this.b = true;
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("sucFlag", "0");
-      localHashMap.put("retCode", String.valueOf(15));
-      axrn.a(BaseApplication.getContext()).a(null, "CamEmoUpload", false, 0L, 0L, localHashMap, null);
-    }
-  }
-  
-  protected List<anyh> c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraEmotionRoamingDBManager", 2, "Call CameraEmotionRoamingDBManager syncGetCustomEmotionInfoShowedInPreview.");
-    }
-    List localList = a();
-    ArrayList localArrayList = new ArrayList();
-    if (localList != null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        i = localList.size() - 1;
-        if (i >= 0)
-        {
-          CameraEmotionData localCameraEmotionData = (CameraEmotionData)localList.get(i);
-          if (!"normal".equals(localCameraEmotionData.RomaingType))
-          {
-            QLog.d("CameraEmotionRoamingDBManager", 1, "data need hidden, do not need display -> resId:" + localCameraEmotionData.resid);
-          }
-          else
-          {
-            anxv localanxv = new anxv();
-            localanxv.jdField_c_of_type_Int = 11;
-            localanxv.d = a(localCameraEmotionData);
-            localanxv.a = localCameraEmotionData.strContext;
-            localanxv.e = localCameraEmotionData.url;
-            localanxv.jdField_g_of_type_Int = localCameraEmotionData.emoId;
-            localanxv.jdField_c_of_type_JavaLangString = localCameraEmotionData.resid;
-            localanxv.jdField_g_of_type_JavaLangString = localCameraEmotionData.RomaingType;
-            localanxv.b = localCameraEmotionData.thumbPath;
-            localanxv.f = localCameraEmotionData.resid;
-            localArrayList.add(localanxv);
-          }
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        QLog.e("CameraEmotionRoamingDBManager", 1, "syncGetCustomEmotionInfoShowedInPreview oom");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraEmotionRoamingDBManager", 2, "syncGetCustomEmotionInfoShowedInPreview, display size:" + localArrayList.size());
-      }
-      return localArrayList;
-      i -= 1;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    ansb.a.a();
+    QLog.d("BubbleDiyHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anse
  * JD-Core Version:    0.7.0.1
  */

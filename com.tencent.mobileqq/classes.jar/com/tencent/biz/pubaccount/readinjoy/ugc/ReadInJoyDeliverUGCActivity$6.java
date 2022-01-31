@@ -5,14 +5,14 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.EditText;
-import aykk;
+import baig;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.ReadInJoyDraftboxContent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pbd;
+import pgo;
 
 class ReadInJoyDeliverUGCActivity$6
   implements Runnable
@@ -53,7 +53,7 @@ class ReadInJoyDeliverUGCActivity$6
       if (localObject != null)
       {
         ReadInJoyDeliverUGCActivity.d(this.this$0).getEditableText().clear();
-        ReadInJoyDeliverUGCActivity.e(this.this$0).getEditableText().insert(0, new aykk((CharSequence)localObject, 7));
+        ReadInJoyDeliverUGCActivity.e(this.this$0).getEditableText().insert(0, new baig((CharSequence)localObject, 7));
       }
       if ((ReadInJoyDeliverUGCActivity.a(this.this$0) > 0) || (ReadInJoyDeliverUGCActivity.f(this.this$0).getText().toString().length() > 0)) {
         ReadInJoyDeliverUGCActivity.a(this.this$0, true);
@@ -68,7 +68,7 @@ class ReadInJoyDeliverUGCActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.6
  * JD-Core Version:    0.7.0.1
  */

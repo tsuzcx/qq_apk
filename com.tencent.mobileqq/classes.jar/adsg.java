@@ -1,26 +1,25 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class adsg
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  adsg(adqw paramadqw, String paramString) {}
+  adsg(adsd paramadsd) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Integer.parseInt(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-    paramTextPaint.setUnderlineText(false);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_Bdfq.cancel();
+      this.a.b = true;
+      adsd.a(this.a);
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsg
  * JD-Core Version:    0.7.0.1
  */

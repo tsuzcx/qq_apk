@@ -16,6 +16,7 @@ public final class FriendInfo
   static byte[] cache_vecIMGroupID = (byte[])new byte[1];
   static byte[] cache_vecIntimateInfo;
   static byte[] cache_vecMSFGroupID;
+  static byte[] cache_vecMusicInfo;
   static byte[] cache_vecMutualMarkData;
   static byte[] cache_vecRing;
   public byte cApolloFlag;
@@ -75,6 +76,7 @@ public final class FriendInfo
   public byte[] vecIMGroupID;
   public byte[] vecIntimateInfo;
   public byte[] vecMSFGroupID;
+  public byte[] vecMusicInfo;
   public byte[] vecMutualMarkData;
   public byte[] vecRing;
   
@@ -96,11 +98,13 @@ public final class FriendInfo
     ((byte[])cache_vecExtSnsFrdData)[0] = 0;
     cache_vecMutualMarkData = (byte[])new byte[1];
     ((byte[])cache_vecMutualMarkData)[0] = 0;
+    cache_vecMusicInfo = (byte[])new byte[1];
+    ((byte[])cache_vecMusicInfo)[0] = 0;
   }
   
   public FriendInfo() {}
   
-  public FriendInfo(long paramLong1, byte paramByte1, short paramShort, String paramString1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, byte paramByte7, byte paramByte8, byte paramByte9, String paramString2, byte paramByte10, String paramString3, byte paramByte11, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, VipBaseInfo paramVipBaseInfo, byte paramByte12, byte[] paramArrayOfByte3, long paramLong2, long paramLong3, int paramInt2, long paramLong4, int paramInt3, String paramString4, long paramLong5, byte paramByte13, long paramLong6, byte paramByte14, long paramLong7, String paramString5, String paramString6, byte paramByte15, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, byte[] paramArrayOfByte4, long paramLong13, byte paramByte16, long paramLong14, String paramString7, long paramLong15, long paramLong16, long paramLong17, String paramString8, long paramLong18, byte paramByte17, byte[] paramArrayOfByte5, byte paramByte18, byte paramByte19, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, long paramLong19, int paramInt4)
+  public FriendInfo(long paramLong1, byte paramByte1, short paramShort, String paramString1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, byte paramByte7, byte paramByte8, byte paramByte9, String paramString2, byte paramByte10, String paramString3, byte paramByte11, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, VipBaseInfo paramVipBaseInfo, byte paramByte12, byte[] paramArrayOfByte3, long paramLong2, long paramLong3, int paramInt2, long paramLong4, int paramInt3, String paramString4, long paramLong5, byte paramByte13, long paramLong6, byte paramByte14, long paramLong7, String paramString5, String paramString6, byte paramByte15, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, byte[] paramArrayOfByte4, long paramLong13, byte paramByte16, long paramLong14, String paramString7, long paramLong15, long paramLong16, long paramLong17, String paramString8, long paramLong18, byte paramByte17, byte[] paramArrayOfByte5, byte paramByte18, byte paramByte19, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, long paramLong19, int paramInt4, byte[] paramArrayOfByte8)
   {
     this.friendUin = paramLong1;
     this.groupId = paramByte1;
@@ -161,6 +165,7 @@ public final class FriendInfo
     this.vecMutualMarkData = paramArrayOfByte7;
     this.uExtOnlineStatus = paramLong19;
     this.iBatteryStatus = paramInt4;
+    this.vecMusicInfo = paramArrayOfByte8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -224,6 +229,7 @@ public final class FriendInfo
     this.vecMutualMarkData = ((byte[])paramJceInputStream.read(cache_vecMutualMarkData, 56, false));
     this.uExtOnlineStatus = paramJceInputStream.read(this.uExtOnlineStatus, 57, false);
     this.iBatteryStatus = paramJceInputStream.read(this.iBatteryStatus, 58, false);
+    this.vecMusicInfo = ((byte[])paramJceInputStream.read(cache_vecMusicInfo, 59, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -317,11 +323,14 @@ public final class FriendInfo
     }
     paramJceOutputStream.write(this.uExtOnlineStatus, 57);
     paramJceOutputStream.write(this.iBatteryStatus, 58);
+    if (this.vecMusicInfo != null) {
+      paramJceOutputStream.write(this.vecMusicInfo, 59);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.FriendInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,8 @@ import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.ttpic.facedetect.FaceActionCounterListener;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
+import com.tencent.ttpic.openapi.model.RedPacketPosition;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,6 +15,7 @@ import java.util.Set;
 public class PTDetectInfo$Builder
 {
   private AIAttr aiAttr;
+  private double audioScaleFactor;
   private List<PointF> bodyPoints;
   private Map<Integer, FaceActionCounter> faceActionCounter;
   private float[] faceAngles;
@@ -22,14 +25,18 @@ public class PTDetectInfo$Builder
   private List<PointF> facePoints;
   private FaceStatus faceStatus;
   private int[] featureIndices;
+  private int frameIndex;
   private int gestureTrigger = -1;
   private Map<Integer, Integer> handActionCounter;
   private List<PointF> handPoints;
   private boolean isFreezeInfo = false;
+  private boolean needRender;
   private Frame noseOcclusionFrame;
   private float phoneAngle;
   private float[] pointsVis;
+  private int randomGroupValue;
   private float realPhoneAngle;
+  private ArrayList<RedPacketPosition> redPacketPositions;
   private List<PointF> starPoints;
   private long timestamp;
   private Set<Integer> triggeredExpression;
@@ -37,6 +44,12 @@ public class PTDetectInfo$Builder
   public Builder aiAttr(AIAttr paramAIAttr)
   {
     this.aiAttr = paramAIAttr;
+    return this;
+  }
+  
+  public Builder audioScaleFactor(double paramDouble)
+  {
+    this.audioScaleFactor = paramDouble;
     return this;
   }
   
@@ -99,6 +112,12 @@ public class PTDetectInfo$Builder
     return this;
   }
   
+  public Builder frameIndex(int paramInt)
+  {
+    this.frameIndex = paramInt;
+    return this;
+  }
+  
   public Builder gestureTrigger(int paramInt)
   {
     this.gestureTrigger = paramInt;
@@ -120,6 +139,12 @@ public class PTDetectInfo$Builder
   public Builder isFreezeInfo(boolean paramBoolean)
   {
     this.isFreezeInfo = paramBoolean;
+    return this;
+  }
+  
+  public Builder needRender(boolean paramBoolean)
+  {
+    this.needRender = paramBoolean;
     return this;
   }
   
@@ -151,9 +176,21 @@ public class PTDetectInfo$Builder
     return this;
   }
   
+  public Builder randomGroupValue(int paramInt)
+  {
+    this.randomGroupValue = paramInt;
+    return this;
+  }
+  
   public Builder realPhoneAngle(float paramFloat)
   {
     this.realPhoneAngle = paramFloat;
+    return this;
+  }
+  
+  public Builder redPacketPositions(ArrayList<RedPacketPosition> paramArrayList)
+  {
+    this.redPacketPositions = paramArrayList;
     return this;
   }
   

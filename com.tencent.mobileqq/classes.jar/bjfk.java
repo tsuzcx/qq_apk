@@ -1,23 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.paster.InteractPasterParcelData;
-
-public final class bjfk
-  implements Parcelable.Creator<InteractPasterParcelData>
-{
-  public InteractPasterParcelData a(Parcel paramParcel)
-  {
-    return new InteractPasterParcelData(paramParcel);
-  }
-  
-  public InteractPasterParcelData[] a(int paramInt)
-  {
-    return new InteractPasterParcelData[paramInt];
-  }
-}
+public abstract interface bjfk
+  extends bjfi
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjfk
  * JD-Core Version:    0.7.0.1
  */

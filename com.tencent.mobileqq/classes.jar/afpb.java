@@ -1,21 +1,22 @@
-public class afpb
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+
+class afpb
+  extends afpq
 {
-  public int c;
-  public int d;
-  public String f;
-  
-  public afpb() {}
-  
-  public afpb(int paramInt1, int paramInt2, String paramString)
+  afpb(aflj paramaflj)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.f = paramString;
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afdq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afpb
  * JD-Core Version:    0.7.0.1
  */

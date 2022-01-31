@@ -1,32 +1,38 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import awwf;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 class GameActivity$36
-  implements awwf
+  implements Runnable
 {
-  GameActivity$36(GameActivity paramGameActivity) {}
+  GameActivity$36(GameActivity paramGameActivity, String paramString) {}
   
-  public void onSoftKeyboardClosed()
+  public void run()
   {
-    if ((GameActivity.access$4700(this.this$0) != null) && (GameActivity.access$4700(this.this$0).getVisibility() == 0)) {
-      GameActivity.access$4700(this.this$0).setVisibility(8);
+    try
+    {
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
+      localHttpURLConnection.setRequestMethod("GET");
+      localHttpURLConnection.setConnectTimeout(10000);
+      localHttpURLConnection.setReadTimeout(10000);
+      localHttpURLConnection.setUseCaches(false);
+      localHttpURLConnection.setInstanceFollowRedirects(true);
+      localHttpURLConnection.connect();
+      int i = localHttpURLConnection.getResponseCode();
+      QLog.i("[minigame] GameActivity", 1, "reportBannerAd rspCode" + i);
+      return;
     }
-    DisplayUtil.setActivityFullScreen(this.this$0);
-  }
-  
-  public void onSoftKeyboardOpened(int paramInt)
-  {
-    if ((GameActivity.access$4700(this.this$0) != null) && (GameActivity.access$4700(this.this$0).getVisibility() == 0)) {
-      GameActivity.access$4700(this.this$0).setPaddingBottom(paramInt);
+    catch (Throwable localThrowable)
+    {
+      QLog.i("[minigame] GameActivity", 1, "reportBannerAd error, url = " + this.val$reportUrl, localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.36
  * JD-Core Version:    0.7.0.1
  */

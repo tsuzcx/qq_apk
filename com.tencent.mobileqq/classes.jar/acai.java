@@ -1,21 +1,21 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.32.1;
+import com.tencent.widget.HeightAdaptableListView;
 
 public class acai
-  implements View.OnClickListener
+  implements ahpp
 {
-  public acai(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public acai(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.getActivity().finish();
+    this.a.a.post(new AssistantSettingActivity.32.1(this));
+    AssistantSettingActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acai
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,10 @@
-public class apez
+public abstract interface apez
 {
-  public int a;
-  public long a;
-  public Object a;
-  public String a;
-  public int b;
-  public String b;
+  public abstract void a(apey paramapey);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apez
  * JD-Core Version:    0.7.0.1
  */

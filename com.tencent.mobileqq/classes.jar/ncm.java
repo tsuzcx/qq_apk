@@ -1,131 +1,197 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.lebasearch.Utils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.utils.Md5Utils;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ncm
-  extends WebViewPlugin
+  implements ncj
 {
-  public ajte a;
-  bbgu jdField_a_of_type_Bbgu;
-  String jdField_a_of_type_JavaLangString = null;
-  wxr jdField_a_of_type_Wxr = null;
-  bbgu b = null;
+  private static HashMap<String, nch> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new ncn(this);
+  public TMAssistantDownloadClient a;
   
-  public ncm()
+  public int a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Ajte = new ncn(this);
-    this.mPluginNameSpace = "lebaPlugin";
-  }
-  
-  private void a(int paramInt, long paramLong, String paramString1, String paramString2)
-  {
-    if ((this.mRuntime.a() == null) || (this.mRuntime.a().isFinishing())) {}
-    do
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(paramContext).getDownloadSDKClient("OfflineDownload");
+    try
     {
-      return;
-      if (this.jdField_a_of_type_Bbgu == null) {
-        this.jdField_a_of_type_Bbgu = Utils.createPluginSetDialogForWeb(this.mRuntime.a(), this.jdField_a_of_type_Wxr, this.jdField_a_of_type_Ajte, paramInt, paramLong, paramString1, paramString2);
+      paramContext = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.getDownloadTaskState(paramString);
+      if (paramContext == null) {
+        return 0;
       }
-    } while (this.jdField_a_of_type_Bbgu.isShowing());
-    this.jdField_a_of_type_Bbgu.show();
+      int i = paramContext.mState;
+      return i;
+    }
+    catch (Exception paramContext) {}
+    return 0;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, nbs paramnbs, Map<String, String> paramMap)
   {
-    paramJsBridgeListener = paramVarArgs[0];
-    if (paramString3 == null) {
-      return false;
+    if (paramnbs == null) {
+      return;
     }
-    if (paramString3.equals("showOpenDialog")) {}
+    if (paramContext == null)
+    {
+      paramnbs.loaded(paramString1, 11);
+      return;
+    }
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)))
+    {
+      paramnbs.loaded(paramString1, 12);
+      return;
+    }
+    if (AppNetConnInfo.getRecentNetworkInfo() == null)
+    {
+      paramnbs.loaded(paramString1, 10);
+      return;
+    }
+    Object localObject = new File(paramString3.substring(0, paramString3.lastIndexOf("/")));
+    if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
+    {
+      paramnbs.loaded(paramString1, 13);
+      return;
+    }
+    localObject = Md5Utils.getMD5(paramString1);
+    paramString2 = new nch((String)localObject, paramString3, paramString2, paramnbs);
+    jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(paramContext).getDownloadSDKClient("OfflineDownload");
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener);
     for (;;)
     {
-      long l;
+      int i;
       try
       {
-        paramString1 = new JSONObject(paramJsBridgeListener);
-        l = paramString1.optLong("id", -1L);
-        paramJsBridgeListener = paramString1.optString("msg");
-        paramString1 = paramString1.optString("callback");
-        if (l != -1L)
+        i = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.startDownloadTask(paramString1, 0, "resource/tm.android.unknown", (String)localObject, paramMap);
+        if (i == 0)
         {
-          paramString2 = new Bundle();
-          paramString2.putInt("reqCode", 10000);
-          paramString2.putLong("uiResId", l);
-          paramString2.putString("msg", paramJsBridgeListener);
-          paramString2.putString("callback", paramString1);
-          paramString2.putInt("dialogType", 1);
-          this.jdField_a_of_type_Wxr.a(18, paramString2, this.jdField_a_of_type_Ajte);
-        }
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        continue;
-      }
-      return true;
-      if (paramString3.equals("getPluginStatus")) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramJsBridgeListener);
-          l = paramJsBridgeListener.optLong("id", -1L);
-          paramJsBridgeListener = paramJsBridgeListener.optString("callback");
-          if (l == -1L) {
-            continue;
+          if (QLog.isColorLevel()) {
+            QLog.d("OfflineDownload", 2, "offline downloader start, url: " + paramString1);
           }
-          paramString1 = new Bundle();
-          paramString1.putInt("reqCode", 10002);
-          paramString1.putLong("uiResId", l);
-          paramString1.putString("callback", paramJsBridgeListener);
-          this.jdField_a_of_type_Wxr.a(18, paramString1, this.jdField_a_of_type_Ajte);
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-        }
-      } else if (paramString3.equals("search")) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramJsBridgeListener).optString("keyWord");
-          if (!TextUtils.isEmpty(paramJsBridgeListener))
+          try
           {
-            if (this.mRuntime.a() != null) {}
-            awwa.a("hot_list", "clk_hot_list", new String[] { paramJsBridgeListener });
+            paramString3 = new DownloadInfo();
+            paramString3.d = paramString1;
+            paramString3.l = paramString2.b;
+            paramString3.e = paramString2.jdField_a_of_type_JavaLangString;
+            bfgh.a(paramContext, paramString3);
+            return;
+          }
+          catch (Throwable paramContext)
+          {
+            return;
           }
         }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
+        if (i != 4) {
+          break label365;
         }
       }
+      catch (Exception paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("OfflineDownload", 2, "offline downloader start fail, result " + -1 + ", url: " + paramString1);
+        }
+        paramnbs.loaded(paramString1, 10);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("OfflineDownload", 2, "offline downloader start fail, file exists, url: " + paramString1);
+      }
+      a(this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient, paramString2, paramString1);
+      continue;
+      label365:
+      if (QLog.isColorLevel()) {
+        QLog.d("OfflineDownload", 2, "offline downloader start fail, result " + i + ", url: " + paramString1);
+      }
+      paramnbs.loaded(paramString1, 10);
     }
   }
   
-  public void onCreate()
+  public void a(Context paramContext, String paramString1, String paramString2, nbs paramnbs)
   {
-    super.onCreate();
-    this.jdField_a_of_type_Wxr = wxr.a();
-    this.jdField_a_of_type_Wxr.a();
+    a(paramContext, paramString1, "0", paramString2, paramnbs, null);
   }
   
-  public void onDestroy()
+  public void a(TMAssistantDownloadClient paramTMAssistantDownloadClient, nch paramnch, String paramString)
   {
-    if (this.jdField_a_of_type_Wxr != null) {
-      this.jdField_a_of_type_Wxr.b();
+    TMAssistantDownloadClient localTMAssistantDownloadClient = null;
+    Object localObject = null;
+    try
+    {
+      paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString);
+      if (paramTMAssistantDownloadClient == null) {}
+      for (paramTMAssistantDownloadClient = localObject;; paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.mSavePath)
+      {
+        localTMAssistantDownloadClient = paramTMAssistantDownloadClient;
+        if (!TextUtils.isEmpty(paramTMAssistantDownloadClient)) {
+          break;
+        }
+        a(paramnch.jdField_a_of_type_Nbs, paramString, paramnch.c, 14, "get current download path fail after download");
+        return;
+      }
+      paramTMAssistantDownloadClient = new File(localTMAssistantDownloadClient);
     }
-    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
-      this.jdField_a_of_type_Bbgu.dismiss();
+    catch (Exception paramTMAssistantDownloadClient)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
+      }
     }
-    super.onDestroy();
+    finally
+    {
+      if (TextUtils.isEmpty(null))
+      {
+        a(paramnch.jdField_a_of_type_Nbs, paramString, paramnch.c, 14, "get current download path fail after download");
+        return;
+      }
+    }
+    if (!paramTMAssistantDownloadClient.exists())
+    {
+      a(paramnch.jdField_a_of_type_Nbs, paramString, paramnch.c, 15, "cannot get current file after download");
+      return;
+    }
+    if (!bdcs.d(localTMAssistantDownloadClient, paramnch.b))
+    {
+      a(paramnch.jdField_a_of_type_Nbs, paramString, paramnch.c, 16, "rename file fail after download");
+      paramTMAssistantDownloadClient.delete();
+      return;
+    }
+    a(paramnch.jdField_a_of_type_Nbs, paramString, paramnch.c, 0, "offline zip download success");
+  }
+  
+  public void a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.pauseDownloadTask(paramString);
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.unRegisterDownloadTaskListener(this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener);
+    jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+  }
+  
+  public void a(nbs paramnbs, String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OfflineDownload", 2, paramString3 + ", bid: " + paramString2 + ", errCode: " + paramInt);
+    }
+    if ((paramnbs != null) && (paramInt >= 0)) {
+      paramnbs.loaded(paramString1, paramInt);
+    }
+    jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncm
  * JD-Core Version:    0.7.0.1
  */

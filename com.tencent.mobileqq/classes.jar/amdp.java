@@ -1,25 +1,30 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
 
 public class amdp
-  implements View.OnClickListener
+  extends alqf
 {
-  public amdp(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  private amdp(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()))
+    if (GetJoinedHotChatListStep.a(this.a) != null)
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      this.a.a.app.removeObserver(GetJoinedHotChatListStep.a(this.a));
+      GetJoinedHotChatListStep.a(this.a, null);
     }
+    if (paramInt == 0)
+    {
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdp
  * JD-Core Version:    0.7.0.1
  */

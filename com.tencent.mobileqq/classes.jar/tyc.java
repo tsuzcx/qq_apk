@@ -1,252 +1,309 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.reactive.Stream;
-import com.tribe.async.reactive.UIThreadOffFunction;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedWidget;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import feedcloud.FeedCloudMeta.StDittoFeed;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import feedcloud.FeedCloudMeta.StUser;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class tyc
-  implements IEventReceiver
+  extends RecyclerView.OnScrollListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private Stream<upp> jdField_a_of_type_ComTribeAsyncReactiveStream;
-  public CharSequence a;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<tyl> jdField_a_of_type_JavaLangRefWeakReference;
-  private tbw jdField_a_of_type_Tbw = (tbw)tcz.a(17);
-  private tye jdField_a_of_type_Tye;
-  private tyf jdField_a_of_type_Tyf;
-  private tyk jdField_a_of_type_Tyk;
-  private uov jdField_a_of_type_Uov;
-  private upp jdField_a_of_type_Upp = new upp();
-  private ura jdField_a_of_type_Ura;
-  private uvx jdField_a_of_type_Uvx = (uvx)tcz.a(11);
-  private boolean jdField_a_of_type_Boolean;
-  private uov b;
+  private static String jdField_a_of_type_JavaLangString = "QCircleFeedReportHelper";
+  private ArrayList<RecyclerView.ViewHolder> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private HashMap<String, tyd> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  private void a(upp paramupp)
+  private FeedCloudMeta.StFeed a(RecyclerView.ViewHolder paramViewHolder)
   {
-    if (paramupp == null) {}
-    label39:
-    do
-    {
-      do
-      {
-        return;
-        if (!paramupp.a()) {
-          break label39;
-        }
-        if (!paramupp.b()) {
-          break;
-        }
-      } while (this.jdField_a_of_type_Int != -1);
-      this.jdField_a_of_type_Int = 1;
-      return;
-      this.jdField_a_of_type_Int = 1;
-      return;
-    } while (this.jdField_a_of_type_Int == -1);
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  private void a(@NonNull upp paramupp, ErrorMessage paramErrorMessage, boolean paramBoolean)
-  {
-    Object localObject;
-    if (paramErrorMessage.isSuccess())
-    {
-      localObject = "suc";
-      if (!paramBoolean) {
-        break label120;
-      }
-    }
-    label120:
-    for (String str = "updated";; str = "not updated")
-    {
-      ved.d("Q.qqstory.player.CommentFloatDialogController", "onFeedItemBack: %s , %s , %s", new Object[] { localObject, str, paramupp });
-      if (paramErrorMessage.isSuccess())
-      {
-        this.jdField_a_of_type_Upp = paramupp;
-        a(paramupp);
-        c();
-        e();
-        if (paramBoolean)
-        {
-          this.b.a(null, 0);
-          this.jdField_a_of_type_Uov.a(null, 0);
-        }
-      }
-      localObject = a();
-      if (localObject != null) {
-        ((tyl)localObject).a(paramupp, paramErrorMessage, paramBoolean);
-      }
-      return;
-      localObject = "fail";
-      break;
-    }
-  }
-  
-  private void d()
-  {
-    ved.d("Q.qqstory.player.CommentFloatDialogController", "onCreate");
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Upp = new upp();
-    this.jdField_a_of_type_Tye = new tye(this);
-    stb.a().registerSubscriber("CommentFloatDialogController", this.jdField_a_of_type_Tye);
-    this.jdField_a_of_type_Tyk = new tyk(this);
-    stb.a().registerSubscriber(this.jdField_a_of_type_Tyk);
-    this.jdField_a_of_type_Tyf = new tyf(this);
-    stb.a().registerSubscriber(this.jdField_a_of_type_Tyf);
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_Ura == null)
-    {
-      this.jdField_a_of_type_Ura = new ura(this.jdField_a_of_type_JavaLangString, new tyd(this));
-      QQStoryContext.a();
-      QQStoryContext.a().addObserver(this.jdField_a_of_type_Ura);
-      return;
-    }
-    this.jdField_a_of_type_Ura.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public tyl a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (tyl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((paramViewHolder != null) && ((paramViewHolder.itemView instanceof BaseWidgetView)) && ((((BaseWidgetView)paramViewHolder.itemView).a() instanceof FeedCloudMeta.StFeed))) {
+      return (FeedCloudMeta.StFeed)((BaseWidgetView)paramViewHolder.itemView).a();
     }
     return null;
   }
   
-  public upp a()
+  public static String a(FeedCloudMeta.StFeed paramStFeed)
   {
-    return this.jdField_a_of_type_Upp;
+    Object localObject = paramStFeed.tagInfos.get();
+    paramStFeed = new StringBuilder();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      FeedCloudMeta.StTagInfo localStTagInfo = (FeedCloudMeta.StTagInfo)((Iterator)localObject).next();
+      if (!TextUtils.isEmpty(paramStFeed)) {
+        paramStFeed.append("|");
+      }
+      paramStFeed.append(localStTagInfo.tagName.get());
+    }
+    return paramStFeed.toString();
+  }
+  
+  private void a(View paramView, boolean paramBoolean)
+  {
+    FeedCloudMeta.StFeed localStFeed;
+    int[] arrayOfInt;
+    int j;
+    if ((paramView instanceof QCircleFeedWidget))
+    {
+      localStFeed = (FeedCloudMeta.StFeed)((QCircleFeedWidget)paramView).a();
+      if (localStFeed != null)
+      {
+        arrayOfInt = a(localStFeed);
+        j = ((QCircleFeedWidget)paramView).b();
+        if (!paramBoolean) {
+          break label101;
+        }
+      }
+    }
+    label101:
+    for (int i = 2;; i = 1)
+    {
+      tyg.a(localStFeed.poster.id.get(), arrayOfInt[0], arrayOfInt[1], i, 1, j, localStFeed.id.get(), a(localStFeed), localStFeed.poster.id.get(), -1, localStFeed, null);
+      return;
+    }
+  }
+  
+  private void a(tyd paramtyd)
+  {
+    if (paramtyd != null)
+    {
+      FeedCloudMeta.StFeed localStFeed = tyd.a(paramtyd);
+      int[] arrayOfInt = a(localStFeed);
+      long l = System.currentTimeMillis();
+      paramtyd.b(l);
+      paramtyd.c(l - paramtyd.a());
+      tyh.a(localStFeed.poster.id.get(), arrayOfInt[0], arrayOfInt[1], paramtyd.a(), localStFeed.id.get(), a(localStFeed), String.valueOf(paramtyd.a()), String.valueOf(paramtyd.b()), String.valueOf(paramtyd.c()), localStFeed.poster.id.get(), localStFeed, null);
+    }
+  }
+  
+  public static int[] a(FeedCloudMeta.StFeed paramStFeed)
+  {
+    int[] arrayOfInt = new int[2];
+    if (paramStFeed != null)
+    {
+      if (paramStFeed.dittoFeed.dittoId.get() == 0) {
+        break label31;
+      }
+      arrayOfInt[0] = 3;
+      arrayOfInt[1] = 1;
+    }
+    label31:
+    do
+    {
+      return arrayOfInt;
+      if (paramStFeed.type.get() == 2)
+      {
+        arrayOfInt[0] = 1;
+        arrayOfInt[1] = 1;
+        return arrayOfInt;
+      }
+    } while (paramStFeed.type.get() != 3);
+    arrayOfInt[0] = 1;
+    arrayOfInt[1] = 2;
+    return arrayOfInt;
+  }
+  
+  private void b()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "checkFirstScreenFeedExpose report expose size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        c((RecyclerView.ViewHolder)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        i += 1;
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  private void c(RecyclerView.ViewHolder paramViewHolder)
+  {
+    int i = 0;
+    if (paramViewHolder != null) {
+      try
+      {
+        View localView = paramViewHolder.itemView;
+        if (localView == null) {
+          return;
+        }
+        Rect localRect = new Rect(0, 0, ImmersiveUtils.a(), ImmersiveUtils.b());
+        localView.getGlobalVisibleRect(localRect);
+        int j = localView.getHeight();
+        if (localRect.bottom > 0) {
+          i = localRect.bottom - localRect.top;
+        }
+        if (i / j >= 0.5D)
+        {
+          QLog.d(jdField_a_of_type_JavaLangString, 4, "report feed valid expose index:" + paramViewHolder.getLayoutPosition());
+          a(paramViewHolder.itemView, true);
+          return;
+        }
+      }
+      catch (Exception paramViewHolder)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "checkFeedExpose exception:" + paramViewHolder.toString());
+      }
+    }
   }
   
   public void a()
   {
-    ved.d("Q.qqstory.player.CommentFloatDialogController", "destroy");
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Upp = new upp();
-    if (this.jdField_a_of_type_Tye != null) {
-      stb.a().unRegisterSubscriber(this.jdField_a_of_type_Tye);
-    }
-    if (this.jdField_a_of_type_Tyk != null) {
-      stb.a().unRegisterSubscriber(this.jdField_a_of_type_Tyk);
-    }
-    if (this.jdField_a_of_type_Tyf != null) {
-      stb.a().unRegisterSubscriber(this.jdField_a_of_type_Tyf);
-    }
-    if (this.jdField_a_of_type_Ura != null)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    if (localIterator.hasNext())
     {
-      QQStoryContext.a();
-      QQStoryContext.a().removeObserver(this.jdField_a_of_type_Ura);
+      String str = (String)localIterator.next();
+      a((tyd)this.jdField_a_of_type_JavaUtilHashMap.get(str));
+      localIterator.remove();
     }
+    b();
   }
   
-  public void a(int paramInt)
+  public void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "onViewAttachedToWindow" + paramViewHolder);
+    a(paramViewHolder.itemView, false);
+    if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      a(this.jdField_a_of_type_Upp, new ErrorMessage(), false);
-    }
-  }
-  
-  public void a(CommentEntry paramCommentEntry, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Upp.b(paramCommentEntry, paramBoolean);
-    this.jdField_a_of_type_Upp.a = ((CommentLikeFeedItem)this.jdField_a_of_type_Uvx.a(this.jdField_a_of_type_Upp.a));
-    this.jdField_a_of_type_Tbw.d(paramCommentEntry);
-    a(this.jdField_a_of_type_Upp);
-  }
-  
-  public void a(@NonNull String paramString)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      d();
-    }
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
-    {
-      this.jdField_a_of_type_JavaLangCharSequence = null;
-      if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
-        this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramViewHolder);
+      if (((paramViewHolder.itemView instanceof QCircleFeedWidget)) && ((((QCircleFeedWidget)paramViewHolder.itemView).a() instanceof FeedCloudMeta.StFeed)))
+      {
+        tyd localtyd = new tyd();
+        localtyd.a(System.currentTimeMillis());
+        localtyd.a((QCircleFeedWidget)paramViewHolder.itemView);
+        localtyd.a(((QCircleFeedWidget)paramViewHolder.itemView).b());
+        localtyd.a((FeedCloudMeta.StFeed)((QCircleFeedWidget)paramViewHolder.itemView).a());
+        this.jdField_a_of_type_JavaUtilHashMap.put(((FeedCloudMeta.StFeed)((QCircleFeedWidget)paramViewHolder.itemView).a()).id.get(), localtyd);
       }
-      this.jdField_a_of_type_Upp = new upp();
-      c();
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(tyl paramtyl)
+  public void b(RecyclerView.ViewHolder paramViewHolder)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramtyl);
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "onViewDetachedFromWindow" + paramViewHolder);
+    paramViewHolder = a(paramViewHolder);
+    if ((paramViewHolder != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramViewHolder.id.get())))
+    {
+      a((tyd)this.jdField_a_of_type_JavaUtilHashMap.get(paramViewHolder.id.get()));
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramViewHolder.id.get());
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "report from detach: " + paramViewHolder.id.get());
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramBoolean) {
-      this.b.c();
-    }
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "onScrollStateChanged" + paramInt);
+    if ((paramInt == 0) && (paramRecyclerView != null)) {}
     for (;;)
     {
-      vei.a("home_page", "load_detail", 0, 0, new String[] { "", vei.a(4444), "", this.jdField_a_of_type_JavaLangString });
-      return;
-      this.jdField_a_of_type_Uov.c();
+      try
+      {
+        if ((paramRecyclerView.getLayoutManager() instanceof yee))
+        {
+          paramRecyclerView = (yee)paramRecyclerView.getLayoutManager();
+          Object localObject1 = paramRecyclerView.findFirstVisibleItemPositions(null);
+          Object localObject2 = paramRecyclerView.findLastVisibleItemPositions(null);
+          paramInt = localObject1[0];
+          int j = localObject2[0];
+          QLog.d(jdField_a_of_type_JavaLangString, 4, paramInt + "  " + j);
+          if (paramInt <= j) {
+            if (paramInt <= j)
+            {
+              localObject1 = paramRecyclerView.findViewByPosition(paramInt);
+              if ((localObject1 instanceof QCircleFeedWidget))
+              {
+                localObject2 = new Rect(0, 0, ImmersiveUtils.a(), ImmersiveUtils.b());
+                ((View)localObject1).getGlobalVisibleRect((Rect)localObject2);
+                int k = ((View)localObject1).getHeight();
+                if (((Rect)localObject2).bottom <= 0) {
+                  break label459;
+                }
+                i = ((Rect)localObject2).bottom - ((Rect)localObject2).top;
+                float f = i / k;
+                QLog.d(jdField_a_of_type_JavaLangString, 4, " state change :" + ((Rect)localObject2).top + " " + ((Rect)localObject2).bottom + " " + i + "  " + k + " " + f);
+                if ((f >= 0.5D) && ((((QCircleFeedWidget)localObject1).a() instanceof FeedCloudMeta.StFeed)))
+                {
+                  localObject2 = ((FeedCloudMeta.StFeed)((QCircleFeedWidget)localObject1).a()).id.get();
+                  if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject2))
+                  {
+                    tyd localtyd = new tyd();
+                    localtyd.a(System.currentTimeMillis());
+                    localtyd.a((QCircleFeedWidget)localObject1);
+                    localtyd.a(((QCircleFeedWidget)localObject1).b());
+                    localtyd.a((FeedCloudMeta.StFeed)((QCircleFeedWidget)localObject1).a());
+                    this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localtyd);
+                  }
+                  QLog.d(jdField_a_of_type_JavaLangString, 4, "feed record report start:");
+                  QLog.d(jdField_a_of_type_JavaLangString, 4, "report feed valid expose index:" + paramInt);
+                  a((View)localObject1, true);
+                }
+              }
+              paramInt += 1;
+              continue;
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception paramRecyclerView)
+      {
+        paramRecyclerView.printStackTrace();
+      }
+      label459:
+      int i = 0;
     }
   }
   
-  public boolean a()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return (this.jdField_a_of_type_Int == -1) || (this.jdField_a_of_type_Int == 2);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
-    }
-    this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_JavaLangString).map(new ThreadOffFunction("Q.qqstory.player.CommentFloatDialogController", 2)).map(new tyi(this)).map(new tyg(this)).map(new UIThreadOffFunction(null));
-    this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new tyh(this));
-    ved.d("Q.qqstory.player.CommentFloatDialogController", "start to sync %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-  }
-  
-  public void c()
-  {
-    ved.a("Q.qqstory.player.CommentFloatDialogController", "resetCommentPageLoader :%s", this.jdField_a_of_type_JavaLangString);
-    if (!this.jdField_a_of_type_Upp.a())
+    int i = 0;
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    b();
+    paramRecyclerView = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    if (paramRecyclerView.hasNext())
     {
-      this.b = new uov(new uvo(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Upp.a(true)), "CommentFloatDialogController");
-      this.jdField_a_of_type_Uov = new uov(new uvo(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Upp.a(false), 0), "CommentFloatDialogController");
-      return;
+      Object localObject = (String)paramRecyclerView.next();
+      localObject = (tyd)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      if ((localObject != null) && (((tyd)localObject).a() != null))
+      {
+        Rect localRect = new Rect(0, 0, ImmersiveUtils.a(), ImmersiveUtils.b());
+        ((tyd)localObject).a().getGlobalVisibleRect(localRect);
+        paramInt2 = ((tyd)localObject).a().getHeight();
+        paramInt1 = i;
+        if (localRect.bottom > 0) {
+          paramInt1 = localRect.bottom - localRect.top;
+        }
+        if (paramInt1 / paramInt2 < 0.5D)
+        {
+          a((tyd)localObject);
+          paramRecyclerView.remove();
+          QLog.d(jdField_a_of_type_JavaLangString, 4, "report from scroll:" + ((tyd)localObject).a().id.get());
+        }
+      }
     }
-    this.jdField_a_of_type_Uov = new uov(new uvo(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Upp.a(false), 1), "CommentFloatDialogController");
-    this.b = new uov(new uvo(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Upp.a(true), 0), "CommentFloatDialogController");
-  }
-  
-  public boolean isValidate()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tyc
  * JD-Core Version:    0.7.0.1
  */

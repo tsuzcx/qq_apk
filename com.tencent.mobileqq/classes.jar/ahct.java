@@ -1,55 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahct
+  extends amle
 {
-  public static int a(String paramString, int paramInt1, int paramInt2)
+  public ahct(PublicView paramPublicView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    SharedPreferences localSharedPreferences = a(paramInt2);
-    paramInt2 = paramInt1;
-    if (localSharedPreferences != null)
-    {
-      paramInt2 = paramInt1;
-      if (!TextUtils.isEmpty(paramString)) {
-        paramInt2 = localSharedPreferences.getInt("url_down_scene" + paramString, paramInt1);
-      }
-    }
-    return paramInt2;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  private static SharedPreferences a(int paramInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (BaseApplicationImpl.getApplication() != null)
-    {
-      if (paramInt == 1) {
-        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_utilinner", 4);
-      }
-      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_util", 4);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicView", 2, "onLocationFinish() errCode=" + paramInt);
     }
-    return null;
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = a(paramInt);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().remove("url_down_scene" + paramString).apply();
-    }
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    SharedPreferences localSharedPreferences = a(paramInt2);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().putInt("url_down_scene" + paramString, paramInt1).apply();
-    }
+    PublicView.a(this.a, true);
+    PublicView.a(this.a, paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahct
  * JD-Core Version:    0.7.0.1
  */

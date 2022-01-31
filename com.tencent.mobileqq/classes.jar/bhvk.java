@@ -1,24 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import cooperation.qzone.zipanimate.ZipAnimationDrawable.1.1;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
 
-public class bhvk
-  implements bhvv
+public abstract interface bhvk
+  extends ExpandableListAdapter
 {
-  bhvk(bhvj parambhvj) {}
+  public abstract int a();
   
-  public void a(int paramInt, Drawable paramDrawable)
-  {
-    if (paramInt == 0)
-    {
-      bhvj.a(this.a).a.b(0);
-      this.a.a.post(new ZipAnimationDrawable.1.1(this));
-    }
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhvk
  * JD-Core Version:    0.7.0.1
  */

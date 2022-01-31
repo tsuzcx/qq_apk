@@ -1,45 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudCommon.BytesEntry;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudMeta.StGPSV2;
+import feedcloud.FeedCloudRead.StGetBusiInfoReq;
+import java.util.ArrayList;
 
 public class txv
-  implements View.OnClickListener
+  extends yfn
 {
-  txv(txt paramtxt) {}
+  FeedCloudMeta.StGPSV2 a;
   
-  public void onClick(View paramView)
+  public txv(FeedCloudMeta.StGPSV2 paramStGPSV2)
   {
-    if ((txt.a(this.a) != null) && (txt.a(this.a).a()))
+    this.a = paramStGPSV2;
+  }
+  
+  public void a() {}
+  
+  public void a(yft paramyft)
+  {
+    QCircleGetTabListRequest localQCircleGetTabListRequest = new QCircleGetTabListRequest(this.a);
+    paramyft = new txw(this, paramyft);
+    localQCircleGetTabListRequest.setEnableCache(true);
+    Object localObject = tym.a().a();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      txt.a(this.a).c();
-      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.2.1(this), 200L);
-      if (!this.a.a()) {
-        break label109;
-      }
-      paramView = "2";
-      label64:
-      if (!this.a.b()) {
-        break label115;
+      localObject = ((String)localObject).getBytes();
+      tym.a().a(null);
+      FeedCloudCommon.StCommonExt localStCommonExt = new FeedCloudCommon.StCommonExt();
+      ArrayList localArrayList = new ArrayList();
+      if (localObject != null)
+      {
+        FeedCloudCommon.BytesEntry localBytesEntry = new FeedCloudCommon.BytesEntry();
+        localBytesEntry.key.set("circle_invite");
+        localBytesEntry.value.set(ByteStringMicro.copyFrom((byte[])localObject));
+        localArrayList.add(localBytesEntry);
+        localStCommonExt.mapBytesInfo.set(localArrayList);
+        if (localQCircleGetTabListRequest.mReq != null) {
+          localQCircleGetTabListRequest.mReq.extInfo.set(localStCommonExt);
+        }
       }
     }
-    label109:
-    label115:
-    for (String str = "2";; str = "1")
-    {
-      vei.a("play_video", "close_reply", 0, 1, new String[] { paramView, str });
-      return;
-      this.a.a();
-      break;
-      paramView = "1";
-      break label64;
-    }
+    VSNetworkHelper.a().a(localQCircleGetTabListRequest, paramyft);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txv
  * JD-Core Version:    0.7.0.1
  */

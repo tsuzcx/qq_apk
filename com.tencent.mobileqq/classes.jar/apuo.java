@@ -1,39 +1,47 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.smtt.sdk.ValueCallback;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector.StickerAnimationListener.1;
 
-final class apuo
-  implements ValueCallback<String>
+public class apuo
+  implements Animator.AnimatorListener
 {
-  apuo(WeakReference paramWeakReference, Activity paramActivity) {}
+  private apuo(apuk paramapuk) {}
   
-  public void a(String paramString)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localActivity != null) && (paramString != null) && (paramString.startsWith("http")))
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null))
     {
-      if (apdc.a().a() == null)
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new StickerGestureDetector.StickerAnimationListener.1(this));
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.bc();
+      this.a.jdField_b_of_type_Double = 1.0D;
+      this.a.jdField_a_of_type_Double = 0.0D;
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
       {
-        paramString = new Bundle();
-        paramString.putString("_filename_from_dlg", this.jdField_a_of_type_AndroidAppActivity.getString(2131694786));
-        paramString.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
-        Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
-        localIntent.putExtra("param", paramString);
-        localIntent.putExtra("url", "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
-        localActivity.sendBroadcast(localIntent);
+        this.a.a(this.a.jdField_a_of_type_AndroidViewView, false);
+        this.a.c = null;
       }
+      if ((this.a.jdField_b_of_type_AndroidViewView != null) && ((this.a.jdField_b_of_type_AndroidViewView instanceof BaseChatItemLayout)))
+      {
+        ((BaseChatItemLayout)this.a.jdField_b_of_type_AndroidViewView).setStickerPressStatus(false);
+        this.a.jdField_b_of_type_AndroidViewView = null;
+      }
+      com.tencent.mobileqq.emoticon.EmojiStickerManager.b = false;
     }
-    else {
-      return;
-    }
-    apug.c(localActivity, "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apuo
  * JD-Core Version:    0.7.0.1
  */

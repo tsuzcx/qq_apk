@@ -1,12 +1,19 @@
-public abstract interface mru
+import com.tencent.av.app.VideoAppInterface;
+
+class mru
+  extends lij
 {
-  public abstract void a();
+  mru(mrt parammrt) {}
   
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean);
+  protected void a(long paramLong)
+  {
+    this.a.a("onConnected_init_when_not_support");
+    mrt.a(this.a).b(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mru
  * JD-Core Version:    0.7.0.1
  */

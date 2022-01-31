@@ -1,61 +1,26 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import com.tencent.mobileqq.flashchat.FlashChatItem;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
 
 public class apzd
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, View.OnLongClickListener
+  implements aqds
 {
-  public int a;
-  public apyw a;
-  apze a;
-  public ArkAppLoadLayout a;
-  public ArkAppView a;
-  public MessageForArkFlashChat a;
-  public FlashChatItem a;
-  public int b;
-  int c;
+  public apzd(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
   
-  public apzd(View paramView, apze paramapze, int paramInt)
+  public void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = null;
-    if (paramapze != null) {
-      this.jdField_a_of_type_Apze = paramapze;
-    }
-    this.c = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramView.findViewById(2131362768));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramView.findViewById(2131369476));
-    this.itemView.setOnClickListener(this);
-    this.itemView.setOnTouchListener(paramapze);
+    ExtendFriendCampusVerifyTipsView.a(ExtendFriendCampusFragment.a(this.a), ExtendFriendCampusFragment.a(this.a));
   }
   
-  public void onClick(View paramView)
+  public void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
   {
-    if (this.jdField_a_of_type_Apze != null) {
-      this.jdField_a_of_type_Apze.a(paramView, getPosition(), this.c);
-    }
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Apze != null)
-    {
-      this.jdField_a_of_type_Apze.b(paramView, getPosition(), this.c);
-      bool = true;
-    }
-    return bool;
+    aqcq.a(ExtendFriendCampusFragment.a(this.a), false);
+    ExtendFriendCampusFragment.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzd
  * JD-Core Version:    0.7.0.1
  */

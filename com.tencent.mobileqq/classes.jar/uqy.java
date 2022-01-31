@@ -1,38 +1,107 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class uqy
-  implements tbc
+public class uqy
+  implements uqz
 {
-  uqy(uqv paramuqv, CommentEntry paramCommentEntry, boolean paramBoolean) {}
-  
-  public void a(int paramInt, Bundle paramBundle)
+  private awbw a()
   {
-    a(-1, ajya.a(2131714418));
+    return QQStoryContext.a().a().createEntityManager();
   }
   
-  public void a(int paramInt, String paramString)
+  public static List<? extends awbv> a(awbw paramawbw, Class<? extends awbv> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    bcql.a(BaseApplication.getContext(), 1, ajya.a(2131714415), 0).a();
-    ved.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+    return paramawbw.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
-  public void a(MessageMicro paramMessageMicro)
+  public List<HotSortVideoEntry> a(String paramString)
   {
-    if (!uqv.a(this.jdField_a_of_type_Uqv).get()) {
-      uqv.a(this.jdField_a_of_type_Uqv, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    List localList = a(a(), HotSortVideoEntry.class, HotSortVideoEntry.class.getSimpleName(), "groupId=?", new String[] { paramString });
+    Object localObject = localList;
+    if (localList == null) {
+      localObject = new ArrayList();
     }
+    wsv.a("Q.qqstory:HotSortVideoManager", "query HotSortVideoEntry id: %s, size: %d", paramString, Integer.valueOf(((List)localObject).size()));
+    return localObject;
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  public void a() {}
+  
+  public void a(HotSortVideoEntry paramHotSortVideoEntry)
+  {
+    awbw localawbw = a();
+    paramHotSortVideoEntry.setStatus(1001);
+    localawbw.a(paramHotSortVideoEntry);
+  }
+  
+  public void a(List<HotSortVideoEntry> paramList)
+  {
+    awbw localawbw = QQStoryContext.a().a().createEntityManager();
+    localawbw.a().a();
+    try
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        HotSortVideoEntry localHotSortVideoEntry = (HotSortVideoEntry)paramList.next();
+        localHotSortVideoEntry.setStatus(1001);
+        localawbw.a(localHotSortVideoEntry);
+      }
+    }
+    finally
+    {
+      localawbw.a().b();
+    }
+    localawbw.a().b();
+  }
+  
+  public void a(List<HotSortVideoEntry> paramList, String paramString, boolean paramBoolean)
+  {
+    awbw localawbw = QQStoryContext.a().a().createEntityManager();
+    localawbw.a().a();
+    Object localObject;
+    HotSortVideoEntry localHotSortVideoEntry;
+    if (paramBoolean) {
+      try
+      {
+        localObject = a(paramString);
+        if (localObject != null)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
+            localHotSortVideoEntry.setStatus(1001);
+            localawbw.b(localHotSortVideoEntry);
+          }
+        }
+        localObject = paramList.iterator();
+      }
+      finally
+      {
+        localawbw.a().b();
+      }
+    }
+    while (((Iterator)localObject).hasNext())
+    {
+      localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
+      localHotSortVideoEntry.groupId = paramString;
+      localHotSortVideoEntry.setStatus(1000);
+      localawbw.b(localHotSortVideoEntry);
+    }
+    wsv.a("Q.qqstory:HotSortVideoManager", "insert HotSortVideoEntry list groupId is %s, size is %d", paramString, Integer.valueOf(paramList.size()));
+    localawbw.a().c();
+    localawbw.a().b();
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqy
  * JD-Core Version:    0.7.0.1
  */

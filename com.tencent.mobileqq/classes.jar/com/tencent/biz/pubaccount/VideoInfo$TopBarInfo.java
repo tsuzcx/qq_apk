@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import npo;
+import nsw;
 
 public class VideoInfo$TopBarInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopBarInfo> CREATOR = new npo();
+  public static final Parcelable.Creator<TopBarInfo> CREATOR = new nsw();
   public int a;
   public UrlJumpInfo a;
   public String a;
@@ -51,7 +51,7 @@ public class VideoInfo$TopBarInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.TopBarInfo
  * JD-Core Version:    0.7.0.1
  */

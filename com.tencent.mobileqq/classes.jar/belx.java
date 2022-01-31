@@ -1,12 +1,22 @@
-public abstract interface belx
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+
+class belx
+  implements View.OnClickListener
 {
-  public abstract void onSoftKeyboardClosed();
+  belx(belw parambelw, boolean paramBoolean) {}
   
-  public abstract void onSoftKeyboardOpened(int paramInt);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Belw.a.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     belx
  * JD-Core Version:    0.7.0.1
  */

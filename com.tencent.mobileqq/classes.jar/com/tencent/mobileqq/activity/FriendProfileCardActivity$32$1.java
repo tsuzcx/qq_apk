@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import abeh;
+import acvg;
 import android.text.TextUtils;
-import auuy;
+import awmk;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.util.QZLog;
@@ -10,7 +10,7 @@ import cooperation.qzone.util.QZLog;
 public class FriendProfileCardActivity$32$1
   implements Runnable
 {
-  public FriendProfileCardActivity$32$1(abeh paramabeh) {}
+  public FriendProfileCardActivity$32$1(acvg paramacvg) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class FriendProfileCardActivity$32$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileCardActivity.32.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,183 +1,356 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import android.view.View;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.oidb_0xd9f.oidb_0xd9f.TopicItem;
+import tencent.im.oidb.oidb_0xd9f.oidb_0xd9f.UinItem;
 
 public class awne
-  extends awoe
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  private TroopMemberInfo jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  
-  public awne(QQAppInterface paramQQAppInterface, int paramInt, TroopMemberInfo paramTroopMemberInfo)
+  public static awne a()
   {
-    super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo = paramTroopMemberInfo;
+    return awng.a();
   }
   
-  private void a()
+  private boolean a(List<oidb_0xd9f.UinItem> paramList, oidb_0xd9f.UinItem paramUinItem)
   {
-    switch (this.jdField_a_of_type_Int)
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramUinItem == null) {
+      bool1 = true;
+    }
+    do
     {
-    default: 
-      return;
-    case 2: 
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick;
-      this.c = awwa.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin });
-      return;
-    case 3: 
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark;
-      this.c = awwa.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin });
-      return;
-    case 1: 
-      this.jdField_b_of_type_JavaLangString = awwa.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark });
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      do
       {
-        this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick;
-        return;
+        return bool1;
+        bool1 = bool2;
+      } while (paramList == null);
+      bool1 = bool2;
+    } while (paramList.size() == 0);
+    int i = 0;
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i >= paramList.size()) {
+        break;
       }
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick;
-      this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = awwa.a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick });
-    this.c = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-  }
-  
-  protected long a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    long l = awwa.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopnick, awii.g);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 2;
-    }
-    l = awwa.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.autoremark, awii.k);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 3;
-    }
-    l = awwa.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.friendnick, awii.l);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 1;
-    }
-    l = awwa.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin, awii.o, false);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 0;
-    }
-    if (this.jdField_a_of_type_Long != -9223372036854775808L)
-    {
-      this.jdField_a_of_type_Long += awii.z;
-      a();
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    if (awwa.a(this.jdField_b_of_type_Int))
-    {
-      ahpd.a = true;
-      ahpd.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin, 1000, c(), false);
-      awwa.a(this.jdField_a_of_type_JavaLangString, 20, 1, paramView);
-      awwa.a(this.jdField_a_of_type_JavaLangString, 20, paramView, false);
-      awwa.a(this, paramView);
-      if (SearchConfigManager.needSeparate) {
-        awwa.a("search", "contact", "contacts", 0, 0, new String[] { awwa.a(this.jdField_b_of_type_Int) });
+      if (((oidb_0xd9f.UinItem)paramList.get(i)).uint64_uin.get() == paramUinItem.uint64_uin.get()) {
+        return true;
       }
-      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
-        awwa.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.i, (String)a(), e());
-      }
-      if ((paramView.getContext() instanceof UniteSearchActivity))
+      i += 1;
+    }
+  }
+  
+  public int a(TextView paramTextView, String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return -2147483648;
+    }
+    float f2 = paramInt1;
+    float f1 = f2;
+    if (!TextUtils.isEmpty(paramString2)) {
+      f1 = f2 + paramTextView.getPaint().measureText(paramString2);
+    }
+    f2 = f1;
+    if (paramString3 != null)
+    {
+      f2 = f1;
+      if (paramInt2 > 0)
       {
-        if ((this.i != null) && (!TextUtils.isEmpty(this.i))) {
-          awsq.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
+        f2 = f1;
+        if (paramString3.length() >= paramInt2) {
+          f2 = f1 + paramTextView.getPaint().measureText(paramString3.substring(0, paramInt2));
         }
       }
-      else {
-        return;
-      }
-      awsq.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
-      return;
     }
-    awwa.a(paramView, this);
+    f1 = paramTextView.getPaint().measureText(paramString1);
+    if (f2 >= paramTextView.getWidth()) {
+      return -2147483648;
+    }
+    if (f1 + f2 >= paramTextView.getWidth()) {
+      return (int)(f2 / 2.0F);
+    }
+    return paramTextView.getWidth() / 2 - (int)(f2 + f1 / 2.0F);
   }
   
-  public boolean a()
+  public int a(List<oidb_0xd9f.TopicItem> paramList)
   {
+    int k;
+    if ((paramList == null) || (paramList.size() <= 0))
+    {
+      k = 0;
+      return k;
+    }
+    int j = 0;
+    int i = 0;
+    for (;;)
+    {
+      k = i;
+      if (j >= paramList.size()) {
+        break;
+      }
+      i += ((oidb_0xd9f.TopicItem)paramList.get(j)).uint32_frd_num.get();
+      j += 1;
+    }
+  }
+  
+  public long a(List<oidb_0xd9f.TopicItem> paramList)
+  {
+    long l2 = -1L;
+    long l1 = l2;
+    if (paramList != null)
+    {
+      l1 = l2;
+      if (paramList.size() > 0)
+      {
+        l1 = -1L;
+        int i = 0;
+        while (i < paramList.size())
+        {
+          l2 = l1;
+          if (paramList.get(i) != null)
+          {
+            l2 = l1;
+            if (((oidb_0xd9f.TopicItem)paramList.get(i)).rpt_frd_item.get() != null)
+            {
+              List localList = ((oidb_0xd9f.TopicItem)paramList.get(i)).rpt_frd_item.get();
+              l2 = l1;
+              if (localList != null)
+              {
+                int j = 0;
+                for (;;)
+                {
+                  l2 = l1;
+                  if (j >= localList.size()) {
+                    break;
+                  }
+                  l2 = l1;
+                  if (((oidb_0xd9f.UinItem)localList.get(j)).uint64_time.get() > l1) {
+                    l2 = ((oidb_0xd9f.UinItem)localList.get(j)).uint64_time.get();
+                  }
+                  j += 1;
+                  l1 = l2;
+                }
+              }
+            }
+          }
+          i += 1;
+          l1 = l2;
+        }
+      }
+    }
+    return l1;
+  }
+  
+  public Pair<Integer, String> a(List<oidb_0xd9f.TopicItem> paramList)
+  {
+    int j = -1;
+    String str1 = "";
+    int i = j;
+    String str2 = str1;
+    int k;
+    if (paramList != null)
+    {
+      i = j;
+      str2 = str1;
+      if (paramList.size() > 0)
+      {
+        k = 0;
+        i = -1;
+        if (k < paramList.size())
+        {
+          if (((oidb_0xd9f.TopicItem)paramList.get(k)).uint32_frd_num.get() < j) {
+            break label162;
+          }
+          j = ((oidb_0xd9f.TopicItem)paramList.get(k)).uint32_topic_id.get();
+          str1 = ((oidb_0xd9f.TopicItem)paramList.get(k)).str_topic.get();
+          i = ((oidb_0xd9f.TopicItem)paramList.get(k)).uint32_frd_num.get();
+        }
+      }
+    }
+    for (;;)
+    {
+      int m = k + 1;
+      k = j;
+      j = i;
+      i = k;
+      k = m;
+      break;
+      str2 = str1;
+      return new Pair(Integer.valueOf(i), str2);
+      label162:
+      m = i;
+      i = j;
+      j = m;
+    }
+  }
+  
+  public CharSequence a(aosg paramaosg)
+  {
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    Object localObject = paramaosg.a().jdField_a_of_type_JavaUtilArrayList;
+    localSpannableStringBuilder.append(paramaosg.a().jdField_a_of_type_JavaLangString);
+    int i = 0;
+    while (i < ((ArrayList)localObject).size()) {
+      if (TextUtils.isEmpty(((aosi)((ArrayList)localObject).get(i)).jdField_a_of_type_JavaLangString))
+      {
+        i += 1;
+      }
+      else
+      {
+        int j = localSpannableStringBuilder.length();
+        paramaosg = ((aosi)((ArrayList)localObject).get(i)).jdField_a_of_type_JavaLangString;
+        localObject = new ForegroundColorSpan(Color.parseColor("#4D94FF"));
+        localSpannableStringBuilder.append(paramaosg);
+        localSpannableStringBuilder.setSpan(localObject, j, paramaosg.length() + j, 33);
+      }
+    }
+    return localSpannableStringBuilder;
+  }
+  
+  public List<oidb_0xd9f.UinItem> a(List<oidb_0xd9f.TopicItem> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      int i = 0;
+      while (i < paramList.size())
+      {
+        if ((paramList.get(i) != null) && (((oidb_0xd9f.TopicItem)paramList.get(i)).rpt_frd_item.get() != null))
+        {
+          List localList = ((oidb_0xd9f.TopicItem)paramList.get(i)).rpt_frd_item.get();
+          if (localList != null)
+          {
+            int j = 0;
+            while (j < localList.size())
+            {
+              if (!a(localArrayList, (oidb_0xd9f.UinItem)localList.get(j)))
+              {
+                localArrayList.add(localList.get(j));
+                if (localArrayList.size() >= 3) {
+                  return localArrayList;
+                }
+              }
+              j += 1;
+            }
+          }
+        }
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("has_shown_sig_with_topic_bubble", true).apply();
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("common_topic_refresh_time", paramLong).apply();
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, RichStatus paramRichStatus)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
+    String str = paramQQAppInterface.getString("sig_feed_id", "");
+    if ((paramRichStatus == null) || (paramRichStatus.feedsId == null)) {
+      if (a().a(str, ""))
+      {
+        paramQQAppInterface.edit().putString("sig_feed_id", "").apply();
+        paramQQAppInterface.edit().putBoolean("common_topic_friend_list_should_show", true).apply();
+      }
+    }
+    while (!a().a(str, paramRichStatus.feedsId)) {
+      return;
+    }
+    paramQQAppInterface.edit().putString("sig_feed_id", paramRichStatus.feedsId).apply();
+    paramQQAppInterface.edit().putBoolean("common_topic_friend_list_should_show", true).apply();
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("has_shown_sig_with_topic_bubble", false);
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    boolean bool = false;
+    if (paramLong > paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getLong("common_topic_refresh_time", -1L))
+    {
+      a(paramQQAppInterface, paramLong);
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (TextUtils.isEmpty(paramString1));
+        bool1 = bool2;
+      } while (TextUtils.isEmpty(paramString2));
+      bool1 = bool2;
+    } while (!paramString1.equals(paramString2));
     return false;
   }
   
-  public String b()
+  public void b(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin;
+    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("common_topic_friend_list_should_show", false).apply();
   }
   
-  public int c()
+  public boolean b(QQAppInterface paramQQAppInterface)
   {
-    return 1;
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("common_topic_friend_list_should_show", true);
   }
   
-  public CharSequence c()
+  public void c(QQAppInterface paramQQAppInterface)
   {
-    if (awwa.a(this.jdField_b_of_type_Int)) {
-      return ajya.a(2131702548);
+    long l = aogj.a().a(529, paramQQAppInterface.getCurrentAccountUin());
+    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("recommend_topic_version", l).apply();
+  }
+  
+  public boolean c(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    if (aogj.a().a(529, paramQQAppInterface.getCurrentAccountUin()) > paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getLong("recommend_topic_version", -1L)) {
+      bool = true;
     }
-    return ajya.a(2131702539);
-  }
-  
-  public String c()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int d()
-  {
-    return 1000;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    return this.c;
-  }
-  
-  public int e()
-  {
-    return 1;
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awne
  * JD-Core Version:    0.7.0.1
  */

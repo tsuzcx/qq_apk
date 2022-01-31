@@ -1,32 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.widget.RelativeLayout;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bkth
-  implements ValueAnimator.AnimatorUpdateListener
+class bkth
+  implements DialogInterface.OnClickListener
 {
-  public bkth(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bkth(bktf parambktf, bkvu parambkvu) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
-      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.a.setAlpha(f);
-      }
-      if ((this.a.c.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.c.setAlpha(Float.valueOf(f).floatValue());
-      }
-    }
+    bktf.a(this.jdField_a_of_type_Bktf, this.jdField_a_of_type_Bkvu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkth
  * JD-Core Version:    0.7.0.1
  */

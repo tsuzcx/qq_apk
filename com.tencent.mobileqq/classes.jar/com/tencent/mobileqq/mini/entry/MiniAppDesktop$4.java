@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
-import akwp;
+import amnf;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class MiniAppDesktop$4
@@ -11,19 +11,19 @@ class MiniAppDesktop$4
   public void run()
   {
     if (this.val$app == null) {}
-    akwp localakwp;
+    amnf localamnf;
     do
     {
       return;
-      localakwp = (akwp)this.val$app.a(148);
-    } while (localakwp == null);
-    localakwp.a();
-    localakwp.c();
+      localamnf = (amnf)this.val$app.a(148);
+    } while (localamnf == null);
+    localamnf.a();
+    localamnf.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.4
  * JD-Core Version:    0.7.0.1
  */

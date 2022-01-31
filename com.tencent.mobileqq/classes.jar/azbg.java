@@ -1,77 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class azbg
-  implements lbs
+public abstract interface azbg
 {
-  public azbg(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public abstract void a(int paramInt);
   
-  public void a() {}
-  
-  public void a(Bundle paramBundle)
-  {
-    int j = 0;
-    paramBundle = paramBundle.getString("sso_GdtLoadAd_rsp_json");
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "json = " + paramBundle);
-    }
-    for (;;)
-    {
-      int i;
-      int k;
-      try
-      {
-        JSONObject localJSONObject1 = new JSONObject(paramBundle);
-        paramBundle = localJSONObject1.optJSONArray("pos_ads_info");
-        localJSONObject1 = new JSONObject(localJSONObject1.optString("busi_cookie")).optJSONObject("index");
-        i = 0;
-        if (i < paramBundle.length())
-        {
-          Object localObject = paramBundle.optJSONObject(i);
-          JSONObject localJSONObject2 = ((JSONObject)localObject).optJSONArray("ads_info").optJSONObject(0);
-          k = j;
-          if (localJSONObject2 != null)
-          {
-            int m = localJSONObject1.optInt(((JSONObject)localObject).optString("pos_id"));
-            k = j;
-            if (m - 1 > 0)
-            {
-              k = j;
-              if (m - 1 < this.a.jdField_a_of_type_JavaUtilArrayList.size())
-              {
-                localObject = new azca(localJSONObject2);
-                this.a.jdField_a_of_type_JavaUtilArrayList.add(m - 1, localObject);
-                k = 1;
-              }
-            }
-          }
-        }
-        else
-        {
-          if (j != 0) {
-            this.a.jdField_a_of_type_Azbo.notifyDataSetChanged();
-          }
-          return;
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      i += 1;
-      j = k;
-    }
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azbg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.app.Activity;
 import android.content.IntentFilter;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
@@ -51,9 +50,9 @@ public class BatteryJsPlugin
   public void onCreate(BaseJsPluginEngine paramBaseJsPluginEngine)
   {
     super.onCreate(paramBaseJsPluginEngine);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.intent.action.BATTERY_CHANGED");
-    paramBaseJsPluginEngine.appBrandRuntime.activity.registerReceiver(this.mPowerConnectionReceiver, localIntentFilter);
+    paramBaseJsPluginEngine = new IntentFilter();
+    paramBaseJsPluginEngine.addAction("android.intent.action.BATTERY_CHANGED");
+    BaseApplicationImpl.getApplication().registerReceiver(this.mPowerConnectionReceiver, paramBaseJsPluginEngine);
   }
   
   public void onDestroy()
@@ -61,7 +60,7 @@ public class BatteryJsPlugin
     super.onDestroy();
     try
     {
-      this.jsPluginEngine.appBrandRuntime.activity.unregisterReceiver(this.mPowerConnectionReceiver);
+      BaseApplicationImpl.getApplication().unregisterReceiver(this.mPowerConnectionReceiver);
       return;
     }
     catch (Throwable localThrowable)
@@ -77,7 +76,7 @@ public class BatteryJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BatteryJsPlugin
  * JD-Core Version:    0.7.0.1
  */

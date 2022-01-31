@@ -15,8 +15,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
-import aqtn;
-import aqto;
+import asjz;
+import aska;
 
 public class ScrollTextView
   extends TextSwitcher
@@ -25,11 +25,11 @@ public class ScrollTextView
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 2000L;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private aqto jdField_a_of_type_Aqto;
+  private aska jdField_a_of_type_Aska;
   private boolean jdField_a_of_type_Boolean;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 800L;
-  private aqto jdField_b_of_type_Aqto;
+  private aska jdField_b_of_type_Aska;
   
   public ScrollTextView(Context paramContext)
   {
@@ -42,13 +42,13 @@ public class ScrollTextView
     a();
   }
   
-  private aqto a(boolean paramBoolean1, boolean paramBoolean2)
+  private aska a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    aqto localaqto = new aqto(this, paramBoolean1, paramBoolean2);
-    localaqto.setDuration(this.jdField_b_of_type_Long);
-    localaqto.setFillAfter(false);
-    localaqto.setInterpolator(new AccelerateInterpolator());
-    return localaqto;
+    aska localaska = new aska(this, paramBoolean1, paramBoolean2);
+    localaska.setDuration(this.jdField_b_of_type_Long);
+    localaska.setFillAfter(false);
+    localaska.setInterpolator(new AccelerateInterpolator());
+    return localaska;
   }
   
   public Drawable a(int paramInt1, int paramInt2, int paramInt3)
@@ -59,21 +59,21 @@ public class ScrollTextView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new aqtn(this);
+    this.jdField_a_of_type_AndroidOsHandler = new asjz(this);
     setFactory(this);
-    this.jdField_a_of_type_Aqto = a(true, true);
-    this.jdField_b_of_type_Aqto = a(false, true);
-    setInAnimation(this.jdField_a_of_type_Aqto);
-    setOutAnimation(this.jdField_b_of_type_Aqto);
+    this.jdField_a_of_type_Aska = a(true, true);
+    this.jdField_b_of_type_Aska = a(false, true);
+    setInAnimation(this.jdField_a_of_type_Aska);
+    setOutAnimation(this.jdField_b_of_type_Aska);
   }
   
   public void b()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Aqto) {
-      setInAnimation(this.jdField_a_of_type_Aqto);
+    if (getInAnimation() != this.jdField_a_of_type_Aska) {
+      setInAnimation(this.jdField_a_of_type_Aska);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Aqto) {
-      setOutAnimation(this.jdField_b_of_type_Aqto);
+    if (getOutAnimation() != this.jdField_b_of_type_Aska) {
+      setOutAnimation(this.jdField_b_of_type_Aska);
     }
   }
   
@@ -87,7 +87,7 @@ public class ScrollTextView
     localTextView.setTextColor(Color.parseColor("#FFFF8000"));
     if (this.jdField_a_of_type_Boolean)
     {
-      Drawable localDrawable = a(2130839653, 50, 50);
+      Drawable localDrawable = a(2130839753, 50, 50);
       if (localDrawable != null) {
         localTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
       }
@@ -133,7 +133,7 @@ public class ScrollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.ScrollTextView
  * JD-Core Version:    0.7.0.1
  */

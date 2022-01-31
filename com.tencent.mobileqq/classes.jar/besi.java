@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
 
-public final class besi
-  implements Parcelable.Creator<ShareChatModel>
+public abstract interface besi
 {
-  public ShareChatModel a(Parcel paramParcel)
-  {
-    return new ShareChatModel(paramParcel, null);
-  }
+  public abstract CalendarDay a();
   
-  public ShareChatModel[] a(int paramInt)
-  {
-    return new ShareChatModel[paramInt];
-  }
+  public abstract void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord);
+  
+  public abstract void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2);
+  
+  public abstract CalendarDay b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besi
  * JD-Core Version:    0.7.0.1
  */

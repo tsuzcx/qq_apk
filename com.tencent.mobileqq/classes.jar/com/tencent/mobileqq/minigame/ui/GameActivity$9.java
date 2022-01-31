@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ajya;
+import alpo;
 import android.widget.Toast;
 
 class GameActivity$9
@@ -12,15 +12,15 @@ class GameActivity$9
   {
     if (this.val$retCode == 104)
     {
-      GameActivity.access$1200(this.this$0);
+      GameActivity.access$1400(this.this$0);
       return;
     }
-    Toast.makeText(this.this$0, ajya.a(2131705014) + this.val$retCode + ")", 0).show();
+    Toast.makeText(this.this$0, alpo.a(2131705386) + this.val$retCode + ")", 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.9
  * JD-Core Version:    0.7.0.1
  */

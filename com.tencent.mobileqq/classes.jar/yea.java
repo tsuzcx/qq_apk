@@ -1,25 +1,33 @@
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
 
 public class yea
-  implements QQPermissionCallback
+  extends RecyclerView.ItemDecoration
 {
-  public yea(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  public yea(ComponentPageView paramComponentPageView, yds paramyds) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    bbdj.b(this.a);
-    this.a.finish();
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    int i = paramRecyclerView.getChildLayoutPosition(paramView);
+    if ((this.a.a != null) && (this.a.a.b(i) != null)) {
+      this.a.a.b(i).a(paramRect, paramView, paramRecyclerView, paramState);
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    DeviceMsgSettingActivity.a(this.a);
+    super.onDraw(paramCanvas, paramRecyclerView, paramState);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yea
  * JD-Core Version:    0.7.0.1
  */

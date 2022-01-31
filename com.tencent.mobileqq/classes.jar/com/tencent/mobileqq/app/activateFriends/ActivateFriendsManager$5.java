@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.activateFriends;
 
 import Wallet.AcsMsg;
-import acsk;
-import acsn;
-import ajsd;
-import akjv;
+import aeju;
+import aejx;
+import aljq;
+import ambl;
 import android.content.SharedPreferences;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -18,7 +18,7 @@ import java.util.List;
 public class ActivateFriendsManager$5
   implements Runnable
 {
-  public ActivateFriendsManager$5(akjv paramakjv) {}
+  public ActivateFriendsManager$5(ambl paramambl) {}
   
   public void run()
   {
@@ -26,12 +26,12 @@ public class ActivateFriendsManager$5
     AcsMsg localAcsMsg;
     try
     {
-      if ((akjv.a(this.this$0) != null) && (akjv.a(this.this$0) != null))
+      if ((ambl.a(this.this$0) != null) && (ambl.a(this.this$0) != null))
       {
-        localObject2 = akjv.a(this.this$0).a();
+        localObject2 = ambl.a(this.this$0).a();
         if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
         {
-          acsk localacsk = (acsk)akjv.a(this.this$0).getManager(321);
+          aeju localaeju = (aeju)ambl.a(this.this$0).getManager(321);
           localObject2 = ((List)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
@@ -39,8 +39,8 @@ public class ActivateFriendsManager$5
             if (localAcsMsg.notice_time <= NetConnInfoCenter.getServerTime()) {
               break label147;
             }
-            if (localacsk != null) {
-              localacsk.a(localAcsMsg);
+            if (localaeju != null) {
+              localaeju.a(localAcsMsg);
             }
           }
         }
@@ -57,9 +57,9 @@ public class ActivateFriendsManager$5
     for (;;)
     {
       label147:
-      boolean bool1 = akjv.a(this.this$0).getBoolean(localAcsMsg.msg_id + akjv.a(this.this$0).getCurrentAccountUin(), false);
+      boolean bool1 = ambl.a(this.this$0).getBoolean(localAcsMsg.msg_id + ambl.a(this.this$0).getCurrentAccountUin(), false);
       if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, " has notifaction: " + bool1 + " key: " + localAcsMsg.msg_id + akjv.a(this.this$0).getCurrentAccountUin());
+        QLog.d("ActivateFriends.Manager", 2, " has notifaction: " + bool1 + " key: " + localAcsMsg.msg_id + ambl.a(this.this$0).getCurrentAccountUin());
       }
       boolean bool2 = this.this$0.a(true);
       if (QLog.isColorLevel()) {
@@ -75,7 +75,7 @@ public class ActivateFriendsManager$5
       }
       QLog.d("ActivateFriends.Manager", 2, "the msg " + localAcsMsg.title + " has notifaction!!!");
       break;
-      Object localObject1 = akjv.a(this.this$0).a().b(ajsd.ad, 9002);
+      Object localObject1 = ambl.a(this.this$0).a().b(aljq.ad, 9002);
       if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
       {
         localObject1 = ((List)localObject1).iterator();
@@ -85,7 +85,7 @@ public class ActivateFriendsManager$5
           if ((localObject2 instanceof MessageForText))
           {
             localObject2 = (MessageForText)localObject2;
-            akjv.a(this.this$0).a().a((MessageRecord)localObject2, true);
+            ambl.a(this.this$0).a().a((MessageRecord)localObject2, true);
           }
         }
       }

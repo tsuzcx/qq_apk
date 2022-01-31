@@ -1,54 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
 import java.util.List;
 
-public class tmj
-  extends sys<tml>
+public abstract interface tmj
+  extends tiv<List<tmv>>
 {
-  public List<String> a = new ArrayList();
+  public abstract VideoFeedsRecyclerView a();
   
-  public String a()
-  {
-    return "StorySvc.homepage_batch_feeds_label";
-  }
+  public abstract WSPlayerManager a();
   
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
-    try
-    {
-      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
-      return new tml(localRspStoryFeedTagInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
+  public abstract tmf a();
   
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    return localReqStoryFeedTagInfo.toByteArray();
-  }
+  public abstract void a(int paramInt, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,28 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
 import com.tencent.qphone.base.util.QLog;
 
 public class asrb
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  public asrb(TabPageIndicator paramTabPageIndicator) {}
+  public asrb(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if (this.a.a == null) {
+      return;
     }
-    if (TabPageIndicator.a(this.a) != null) {
-      this.a.performClick();
+    if (HotVideoMongoliaRelativeLayout.a(this.a) != null) {
+      HotVideoMongoliaRelativeLayout.a(this.a).b(HotVideoMongoliaRelativeLayout.a(this.a));
     }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    QLog.d("HotVideoRelativeLayout", 2, "click round rect send view");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asrb
  * JD-Core Version:    0.7.0.1
  */

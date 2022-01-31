@@ -1,21 +1,24 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import android.content.DialogInterface.OnClickListener;
 
-public class acfn
-  implements DialogInterface.OnDismissListener
+public final class acfn
+  implements DialogInterface.OnClickListener
 {
-  public acfn(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
+  public acfn(acgy paramacgy) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getActivity().finish();
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfn
  * JD-Core Version:    0.7.0.1
  */

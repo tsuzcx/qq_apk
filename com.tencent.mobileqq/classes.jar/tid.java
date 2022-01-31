@@ -1,33 +1,66 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.widget.ARMapHongBaoListView;
+import NS_KING_INTERFACE.stPostFeedDingRsp;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class tid
-  implements View.OnLayoutChangeListener
+final class tid
+  implements tgt
 {
-  tid(thv paramthv, tcs paramtcs) {}
+  tid(Handler paramHandler, int paramInt) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(the paramthe)
   {
-    ved.b(thv.b(), "onLayoutChange");
-    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Thv.d) || (this.jdField_a_of_type_Thv.e)) && (!this.jdField_a_of_type_Thv.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    if ((paramthe == null) || (paramthe.jdField_a_of_type_JavaLangObject == null))
     {
-      ved.b(thv.b(), "first show node, showStoryNode");
-      if (this.jdField_a_of_type_Thv.d)
+      localMessage.what = 4302;
+      localMessage.obj = Integer.valueOf(-1);
+      Log.e(tic.a, "点赞失败:-1");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+      if ((paramthe.jdField_a_of_type_JavaLangObject instanceof stPostFeedDingRsp))
       {
-        this.jdField_a_of_type_Thv.d = false;
-        this.jdField_a_of_type_Tcs.b("first_show_node", Boolean.valueOf(false));
+        stPostFeedDingRsp localstPostFeedDingRsp = (stPostFeedDingRsp)paramthe.jdField_a_of_type_JavaLangObject;
+        if (localstPostFeedDingRsp == null)
+        {
+          Log.e(tic.a, "服务器失败！！！");
+          localMessage.what = 4302;
+          localMessage.obj = Integer.valueOf(paramthe.jdField_a_of_type_Int);
+        }
+        else
+        {
+          int i = localstPostFeedDingRsp.is_ding;
+          localMessage.what = 4301;
+          localMessage.obj = Integer.valueOf(i);
+          paramthe = new Intent("weishi_public_account_ding_state_change");
+          paramthe.putExtra("position", this.jdField_a_of_type_Int);
+          paramthe.putExtra("is_ding", i);
+          BaseApplication.getContext().sendBroadcast(paramthe);
+          Log.e(tic.a, "发送了点赞广播");
+          if (i == 0) {
+            Log.e(tic.a, "请求后变成：没有点赞-by微视");
+          } else {
+            Log.e(tic.a, "请求后变成：已经点赞-by微视");
+          }
+        }
       }
-      this.jdField_a_of_type_Thv.e = false;
-      if (this.jdField_a_of_type_Thv.a()) {
-        this.jdField_a_of_type_Thv.jdField_a_of_type_Thh.a("exp_story", 4);
+      else
+      {
+        Log.e(tic.a, "点赞失败:-2");
+        localMessage.what = 4302;
+        localMessage.obj = Integer.valueOf(-2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tid
  * JD-Core Version:    0.7.0.1
  */

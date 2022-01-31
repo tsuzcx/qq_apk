@@ -2,9 +2,9 @@ package cooperation.qzone.statistic;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import bgyh;
-import bgyi;
-import bhmu;
+import bize;
+import bizf;
+import bjof;
 import com.tencent.qphone.base.util.BaseApplication;
 import cooperation.qzone.statistic.access.WnsCollector;
 import cooperation.qzone.statistic.access.concept.Statistic;
@@ -21,13 +21,13 @@ public class StatisticCollector
   
   public static StatisticCollector getInstance()
   {
-    if (!bhmu.a().inited.get()) {}
+    if (!bjof.a().inited.get()) {}
     try
     {
-      if (!bhmu.a().inited.get()) {
-        bhmu.a().init();
+      if (!bjof.a().inited.get()) {
+        bjof.a().init();
       }
-      return bhmu.a();
+      return bjof.a();
     }
     finally {}
   }
@@ -43,7 +43,7 @@ public class StatisticCollector
       return;
     }
     WnsCollector.a().a(BaseApplication.getContext());
-    WnsCollector.a().a(getDevice(), getSDKVersion(), bgyh.a().c());
+    WnsCollector.a().a(getDevice(), getSDKVersion(), bize.a().c());
     WnsCollector.a().a();
     this.inited.set(true);
   }
@@ -60,7 +60,7 @@ public class StatisticCollector
   
   public String getReleaseVersion()
   {
-    return bgyi.c();
+    return bizf.c();
   }
   
   public Statistic getStatistic()
@@ -81,7 +81,7 @@ public class StatisticCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.statistic.StatisticCollector
  * JD-Core Version:    0.7.0.1
  */

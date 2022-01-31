@@ -1,17 +1,34 @@
-import android.content.Context;
-import com.tencent.widget.AdapterView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aqop
+class aqop
+  implements aqpk
 {
-  public abstract void a(int paramInt);
+  aqop(aqoo paramaqoo, String paramString) {}
   
-  public abstract void a(Context paramContext, aqok paramaqok, int paramInt);
-  
-  public abstract void a(AdapterView paramAdapterView, int paramInt);
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon.jdField_a_of_type_JavaLangString + " start upload Discfile success");
+      }
+      aqon.a(this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqot.a(this.jdField_a_of_type_JavaLangString, aqon.a(this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon));
+    }
+    for (;;)
+    {
+      aqnw.a(this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon.jdField_a_of_type_Aqnw).a().a(aqon.a(this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon));
+      return;
+      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
+      this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqot.a(aqnw.a(this.jdField_a_of_type_Aqoo.jdField_a_of_type_Aqon.jdField_a_of_type_Long, false), true);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqop
  * JD-Core Version:    0.7.0.1
  */

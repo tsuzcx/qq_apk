@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import akye;
-import axqy;
+import amou;
+import azmj;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ARTransferDoorLogicManager$9
   implements Runnable
 {
-  public ARTransferDoorLogicManager$9(akye paramakye) {}
+  public ARTransferDoorLogicManager$9(amou paramamou) {}
   
   public void run()
   {
@@ -20,10 +20,10 @@ public class ARTransferDoorLogicManager$9
         this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.d(true);
         this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.b(2);
       }
-      while (akye.b(this.this$0))
+      while (amou.b(this.this$0))
       {
-        axqy.b(null, "CliOper", "", "", "0X80098C8", "0X80098C8", 0, 0, akye.a(this.this$0), "0", "0", "");
-        akye.b(this.this$0, false);
+        azmj.b(null, "CliOper", "", "", "0X80098C8", "0X80098C8", 0, 0, amou.a(this.this$0), "0", "0", "");
+        amou.b(this.this$0, false);
         return;
         this.this$0.a(false, "");
       }
@@ -32,7 +32,7 @@ public class ARTransferDoorLogicManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.9
  * JD-Core Version:    0.7.0.1
  */

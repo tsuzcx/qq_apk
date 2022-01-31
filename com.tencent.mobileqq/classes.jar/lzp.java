@@ -1,65 +1,24 @@
-import com.tencent.av.so.DownloadInfo;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.av.service.QQServiceForAV;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class lzp
+  implements awvu
 {
-  private static volatile lzp jdField_a_of_type_Lzp;
-  lzr jdField_a_of_type_Lzr = null;
-  lzu jdField_a_of_type_Lzu = null;
+  public lzp(QQServiceForAV paramQQServiceForAV) {}
   
-  public static lzp a()
+  public void a(String paramString)
   {
-    if (jdField_a_of_type_Lzp == null) {}
-    try
-    {
-      if (jdField_a_of_type_Lzp == null)
-      {
-        lzp locallzp = new lzp();
-        locallzp.b();
-        jdField_a_of_type_Lzp = locallzp;
-      }
-      return jdField_a_of_type_Lzp;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onGetQCallNickName");
     }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    lzp locallzp = a();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavSo", 4, String.format("onDownloadRequest, mStatusSo[%s]", new Object[] { Integer.valueOf(locallzp.jdField_a_of_type_Lzu.a) }));
-    }
-    lzr.a();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Lzu = new lzu();
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_Lzr = new lzr();
-    }
-  }
-  
-  public DownloadInfo a()
-  {
-    return this.jdField_a_of_type_Lzu.a();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Lzu.a();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Lzu.c();
+    new maf(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lzq(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzp
  * JD-Core Version:    0.7.0.1
  */

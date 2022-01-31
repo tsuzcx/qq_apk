@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class atsr
-  implements DialogInterface.OnClickListener
+public abstract class atsr<T, P>
 {
-  atsr(atso paramatso, bbgu parambbgu) {}
+  private volatile T a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected abstract T a(P paramP);
+  
+  public final T b(P paramP)
   {
-    this.jdField_a_of_type_Bbgu.dismiss();
-    this.jdField_a_of_type_Atso.a.f();
+    if (this.a == null) {}
+    try
+    {
+      if (this.a == null) {
+        this.a = a(paramP);
+      }
+      return this.a;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsr
  * JD-Core Version:    0.7.0.1
  */

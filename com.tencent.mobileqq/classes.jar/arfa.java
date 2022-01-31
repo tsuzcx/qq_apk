@@ -1,22 +1,24 @@
-import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class arfa
-  implements arfm
+  implements army
 {
-  arfa(arez paramarez, String paramString) {}
+  arfa(arez paramarez) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if ((paramBoolean) && (TextUtils.equals("download", this.jdField_a_of_type_JavaLangString)))
-    {
-      arez.a(this.jdField_a_of_type_Arez).c(2131695921);
-      arez.a(this.jdField_a_of_type_Arez).show();
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.a.d());
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
     }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfa
  * JD-Core Version:    0.7.0.1
  */

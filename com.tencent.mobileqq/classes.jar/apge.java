@@ -1,77 +1,73 @@
-import android.text.TextUtils.TruncateAt;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.DisplayMetrics;
 
 public class apge
-  implements awwr
+  extends BitmapDrawable
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  private float jdField_a_of_type_Float = 1920.0F;
+  private int jdField_a_of_type_Int;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private int b;
+  private int c;
   
-  public apge(ViewGroup paramViewGroup)
+  public apge(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560486, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366211));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366223));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365017));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131366225));
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+    super(paramResources, paramBitmap);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
+    super.setGravity(17);
   }
   
-  public View a()
+  public void draw(Canvas paramCanvas)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    if (this.c >>> 24 != 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    super.draw(paramCanvas);
   }
   
-  public View a(String paramString)
+  public int getIntrinsicHeight()
   {
-    return null;
+    if (this.b > 0) {
+      return this.b;
+    }
+    return super.getIntrinsicHeight();
   }
   
-  public ImageView a()
+  public int getIntrinsicWidth()
   {
-    return null;
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.jdField_a_of_type_Int;
+    }
+    return super.getIntrinsicWidth();
   }
   
-  public TextView a()
+  public void setAlpha(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    }
+    super.setAlpha(paramInt);
   }
   
-  public ImageView b()
+  public void setTargetDensity(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public TextView c()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public TextView d()
-  {
-    return null;
+    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
+    super.setTargetDensity(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apge
  * JD-Core Version:    0.7.0.1
  */

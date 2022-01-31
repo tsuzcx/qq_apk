@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import akwa;
-import axqy;
+import ammq;
+import azmj;
 import com.tencent.qphone.base.util.QLog;
 import java.io.StringReader;
 import org.xmlpull.v1.XmlPullParser;
@@ -24,7 +24,7 @@ public class MessageForIncompatibleGrayTips
   {
     try
     {
-      IncompatibleGrayTipsMessage localIncompatibleGrayTipsMessage = (IncompatibleGrayTipsMessage)akwa.a(this.msgData);
+      IncompatibleGrayTipsMessage localIncompatibleGrayTipsMessage = (IncompatibleGrayTipsMessage)ammq.a(this.msgData);
       if (localIncompatibleGrayTipsMessage != null)
       {
         this.linkStart = localIncompatibleGrayTipsMessage.linkStart;
@@ -152,7 +152,7 @@ public class MessageForIncompatibleGrayTips
   public void prewrite()
   {
     serial();
-    axqy.b(null, "CliOper", "", String.valueOf(this.frienduin), "0X800491A", "0X800491A", 0, 0, "", "", "", "");
+    azmj.b(null, "CliOper", "", String.valueOf(this.frienduin), "0X800491A", "0X800491A", 0, 0, "", "", "", "");
   }
   
   public void serial()
@@ -164,7 +164,7 @@ public class MessageForIncompatibleGrayTips
     localIncompatibleGrayTipsMessage.url = this.url;
     try
     {
-      this.msgData = akwa.a(localIncompatibleGrayTipsMessage);
+      this.msgData = ammq.a(localIncompatibleGrayTipsMessage);
       return;
     }
     catch (Exception localException)
@@ -175,7 +175,7 @@ public class MessageForIncompatibleGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForIncompatibleGrayTips
  * JD-Core Version:    0.7.0.1
  */

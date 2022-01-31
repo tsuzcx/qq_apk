@@ -1,204 +1,315 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.StringTokenizer;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract class aouf
+public class aouf
 {
-  protected Context a;
-  protected View.OnClickListener a;
-  protected aouh a;
-  protected QQAppInterface a;
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private SparseArray<aoug> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<aouh> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private Map<String, aoug> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString = "";
+  private Map<String, String> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString = "";
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString = "";
+  private int jdField_f_of_type_Int;
+  private String jdField_f_of_type_JavaLangString = "";
   
-  public aouf(QQAppInterface paramQQAppInterface, Context paramContext)
+  public static aouf a(aogf[] paramArrayOfaogf)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aoug(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void a(acuj paramacuj, boolean paramBoolean)
-  {
-    paramacuj = a(paramacuj);
-    if (paramBoolean) {
-      if (paramacuj != null)
-      {
-        paramacuj.setVisibility(0);
-        paramacuj.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      }
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+      return null;
     }
-    while (paramacuj == null) {
-      return;
-    }
-    paramacuj.setVisibility(8);
-    paramacuj.setOnClickListener(null);
-  }
-  
-  protected abstract CircleFileStateView a(acuj paramacuj);
-  
-  public void a(acuj paramacuj, View paramView, ChatMessage paramChatMessage)
-  {
-    a(paramacuj, false);
-    CircleFileStateView localCircleFileStateView;
-    int i;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (a(paramChatMessage))
+    Object localObject1 = paramArrayOfaogf[0].jdField_a_of_type_JavaLangString;
+    paramArrayOfaogf = new aouf();
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject = a(paramacuj);
-      if (localObject == null)
+      if (QLog.isColorLevel()) {
+        QLog.d("TencentDocTipsConfigBean", 2, "updateConfig json parse faild");
+      }
+      return paramArrayOfaogf;
+    }
+    JSONObject localJSONObject2;
+    Object localObject2;
+    Object localObject3;
+    Object localObject4;
+    Object localObject5;
+    String str1;
+    try
+    {
+      localObject1 = new JSONObject((String)localObject1);
+      localJSONObject2 = ((JSONObject)localObject1).optJSONObject("File");
+      paramArrayOfaogf.jdField_a_of_type_Int = localJSONObject2.optInt("maxCount");
+      paramArrayOfaogf.jdField_b_of_type_Int = localJSONObject2.optInt("insertDur");
+      localObject2 = localJSONObject2.optJSONObject("fileType");
+      localObject3 = new StringBuilder();
+      localObject4 = ((JSONObject)localObject2).keys();
+      localObject5 = new StringBuilder();
+      while (((Iterator)localObject4).hasNext())
       {
-        localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-        localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
-        localCircleFileStateView.setState(2);
-        localCircleFileStateView.setId(2131364113);
-        localCircleFileStateView.setProgressRingWidth(0.0F);
-        localCircleFileStateView.setCenterBgColor(-1);
-        a(paramacuj, localCircleFileStateView);
-        i = actj.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-        localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296289);
-        localLayoutParams.addRule(8, 2131364109);
-        if (paramChatMessage.isSend())
-        {
-          localLayoutParams.addRule(0, 2131364109);
-          localLayoutParams.addRule(1, 0);
-          if ((paramView instanceof ViewGroup)) {
-            ((ViewGroup)paramView).addView(localCircleFileStateView, localLayoutParams);
-          }
-          a(paramacuj, true);
-        }
+        str1 = (String)((Iterator)localObject4).next();
+        ((StringBuilder)localObject3).append(str1).append("|");
+        String str2 = ((JSONObject)localObject2).getString(str1);
+        paramArrayOfaogf.jdField_a_of_type_JavaUtilMap.put("fileType_" + str1, str2);
+        ((StringBuilder)localObject5).append(str2).append("|");
+        aoug localaoug = new aoug();
+        localaoug.jdField_b_of_type_ArrayOfJavaLangString = a(str2);
+        paramArrayOfaogf.jdField_b_of_type_JavaUtilMap.put(str1, localaoug);
+        continue;
+        return paramArrayOfaogf;
       }
     }
-    while (!b(paramChatMessage))
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        return;
-        localLayoutParams.addRule(1, 2131364109);
-        localLayoutParams.addRule(0, 0);
+      QLog.e("TencentDocTipsConfigBean", 2, localException.toString());
+      localException.printStackTrace();
+    }
+    JSONObject localJSONObject1;
+    do
+    {
+      if (((StringBuilder)localObject5).length() > 0) {
+        ((StringBuilder)localObject5).deleteCharAt(((StringBuilder)localObject5).length() - 1);
       }
-      ((CircleFileStateView)localObject).setState(2);
-      paramView = (RelativeLayout.LayoutParams)((CircleFileStateView)localObject).getLayoutParams();
-      if (paramView == null)
+      if (((StringBuilder)localObject3).length() > 0) {
+        ((StringBuilder)localObject3).deleteCharAt(((StringBuilder)localObject3).length() - 1);
+      }
+      paramArrayOfaogf.jdField_c_of_type_JavaLangString = ((StringBuilder)localObject3).toString();
+      paramArrayOfaogf.jdField_d_of_type_JavaLangString = ((StringBuilder)localObject5).toString();
+      localObject2 = localJSONObject2.optJSONObject("Similarity");
+      paramArrayOfaogf.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("durTime");
+      paramArrayOfaogf.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("maxQuery");
+      paramArrayOfaogf.jdField_a_of_type_Double = ((JSONObject)localObject2).getDouble("Percentage");
+      paramArrayOfaogf.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("Tips");
+      paramArrayOfaogf.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("Link");
+      localJSONObject2 = localJSONObject2.optJSONObject("KeyWords");
+      localObject2 = paramArrayOfaogf.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+      if (((Iterator)localObject2).hasNext())
       {
-        i = actj.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        paramView = new RelativeLayout.LayoutParams(i, i);
-        if (paramChatMessage.isSend())
-        {
-          paramView.addRule(0, 2131364109);
-          paramView.addRule(1, 0);
+        localObject3 = (String)((Iterator)localObject2).next();
+        localObject4 = localJSONObject2.optJSONObject((String)localObject3);
+        localObject5 = (aoug)paramArrayOfaogf.jdField_b_of_type_JavaUtilMap.get(localObject3);
+        str1 = ((JSONObject)localObject4).optString("key");
+        ((aoug)localObject5).jdField_a_of_type_ArrayOfJavaLangString = a(str1);
+        if (paramArrayOfaogf.jdField_e_of_type_Int == 1) {
+          ((aoug)localObject5).jdField_a_of_type_JavaLangString = ((JSONObject)localObject4).optString("Tips1");
         }
-        for (;;)
+        for (((aoug)localObject5).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("Link1");; ((aoug)localObject5).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("Link0"))
         {
-          ((CircleFileStateView)localObject).setLayoutParams(paramView);
+          paramArrayOfaogf.jdField_b_of_type_JavaUtilMap.put(localObject3, localObject5);
+          paramArrayOfaogf.jdField_c_of_type_JavaUtilMap.put("key_str_key_words" + (String)localObject3, str1);
+          paramArrayOfaogf.jdField_c_of_type_JavaUtilMap.put("key_str_key_tips" + (String)localObject3, ((aoug)localObject5).jdField_a_of_type_JavaLangString);
+          paramArrayOfaogf.jdField_c_of_type_JavaUtilMap.put("key_str_key_link" + (String)localObject3, ((aoug)localObject5).jdField_b_of_type_JavaLangString);
           break;
-          paramView.addRule(1, 2131364109);
-          paramView.addRule(0, 0);
+          ((aoug)localObject5).jdField_a_of_type_JavaLangString = ((JSONObject)localObject4).optString("Tips0");
         }
       }
-      if (paramChatMessage.isSend())
-      {
-        paramView.addRule(0, 2131364109);
-        paramView.addRule(1, 0);
-      }
-      for (;;)
-      {
-        ((CircleFileStateView)localObject).setLayoutParams(paramView);
-        break;
-        paramView.addRule(1, 2131364109);
-        paramView.addRule(0, 0);
-      }
-    }
-    Object localObject = a(paramacuj);
-    if (localObject == null)
+      localJSONObject1 = localException.optJSONObject("Text");
+    } while (localJSONObject1 == null);
+    paramArrayOfaogf.jdField_e_of_type_JavaLangString = localJSONObject1.toString();
+    if (localJSONObject1.optInt("textSwitch", 0) == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-      localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
-      localCircleFileStateView.setState(1);
-      localCircleFileStateView.setId(2131364113);
-      localCircleFileStateView.setCenterBgColor(-1);
-      a(paramacuj, localCircleFileStateView);
-      localCircleFileStateView.setProgressRingWidth(0.0F);
-      i = actj.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-      localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296289);
-      localLayoutParams.addRule(8, 2131364109);
-      if (paramChatMessage.isSend())
-      {
-        localLayoutParams.addRule(0, 2131364109);
-        localLayoutParams.addRule(1, 0);
+      paramArrayOfaogf.jdField_a_of_type_Boolean = bool;
+      a(localJSONObject1, paramArrayOfaogf);
+      break;
+    }
+  }
+  
+  private static void a(JSONObject paramJSONObject, aouf paramaouf)
+  {
+    JSONArray localJSONArray = paramJSONObject.optJSONArray("template_list");
+    int i = 0;
+    if (i < localJSONArray.length())
+    {
+      int k = localJSONArray.getJSONObject(i).optInt("template_type", -1);
+      aoug localaoug = new aoug();
+      paramaouf.jdField_f_of_type_Int = paramJSONObject.optInt("containKeyword");
+      if (paramaouf.jdField_f_of_type_Int == 1) {
+        localaoug.jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips1");
       }
-      for (;;)
+      for (localaoug.jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link1");; localaoug.jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link0"))
       {
-        if ((paramView instanceof ViewGroup)) {
-          ((ViewGroup)paramView).addView(localCircleFileStateView, localLayoutParams);
+        int j = k;
+        if (k == -1) {
+          j = i;
         }
-        a(paramacuj, true);
-        return;
-        localLayoutParams.addRule(1, 2131364109);
-        localLayoutParams.addRule(0, 0);
-      }
-    }
-    ((CircleFileStateView)localObject).setState(1);
-    paramView = (RelativeLayout.LayoutParams)((CircleFileStateView)localObject).getLayoutParams();
-    if (paramView == null)
-    {
-      i = actj.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramView = new RelativeLayout.LayoutParams(i, i);
-      if (paramChatMessage.isSend())
-      {
-        paramView.addRule(0, 2131364109);
-        paramView.addRule(1, 0);
-      }
-      for (;;)
-      {
-        ((CircleFileStateView)localObject).setLayoutParams(paramView);
+        paramaouf.jdField_a_of_type_AndroidUtilSparseArray.put(j, localaoug);
+        i += 1;
         break;
-        paramView.addRule(1, 2131364109);
-        paramView.addRule(0, 0);
+        localaoug.jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips0");
       }
     }
-    if (paramChatMessage.isSend())
+  }
+  
+  private static String[] a(String paramString)
+  {
+    int i = 0;
+    StringTokenizer localStringTokenizer = new StringTokenizer(paramString, "|");
+    if (!localStringTokenizer.hasMoreTokens())
     {
-      paramView.addRule(0, 2131364109);
-      paramView.addRule(1, 0);
+      if (QLog.isColorLevel()) {
+        QLog.i("TencentDocTipsConfigBean", 1, "split String faild :" + paramString);
+      }
+      return new String[0];
+    }
+    paramString = new String[localStringTokenizer.countTokens()];
+    while (localStringTokenizer.hasMoreTokens())
+    {
+      paramString[i] = localStringTokenizer.nextToken();
+      i += 1;
+    }
+    return paramString;
+  }
+  
+  public double a()
+  {
+    return this.jdField_a_of_type_Double;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public SparseArray<aoug> a()
+  {
+    return this.jdField_a_of_type_AndroidUtilSparseArray;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<aouh> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public Map<String, aoug> a()
+  {
+    return this.jdField_b_of_type_JavaUtilMap;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    Object localObject;
+    if (paramJSONObject == null)
+    {
+      localObject = "";
+      this.jdField_f_of_type_JavaLangString = ((String)localObject);
+      if (paramJSONObject != null) {
+        break label33;
+      }
+      this.jdField_a_of_type_Boolean = false;
     }
     for (;;)
     {
-      ((CircleFileStateView)localObject).setLayoutParams(paramView);
+      return;
+      localObject = paramJSONObject.toString();
       break;
-      paramView.addRule(1, 2131364109);
-      paramView.addRule(0, 0);
+      try
+      {
+        label33:
+        localObject = paramJSONObject.optJSONArray("template_list");
+        if (paramJSONObject.optInt("retcode", -1) != 0)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        QLog.e("TencentDocTipsConfigBean", 2, paramJSONObject.toString());
+        return;
+      }
+      if (localObject != null)
+      {
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          paramJSONObject = ((JSONArray)localObject).getJSONObject(i);
+          int k = paramJSONObject.optInt("template_type", -1);
+          if (paramJSONObject.optJSONArray("infos") != null)
+          {
+            paramJSONObject = paramJSONObject.optJSONArray("infos");
+            int j = 0;
+            while (j < paramJSONObject.length())
+            {
+              JSONObject localJSONObject = paramJSONObject.getJSONObject(j);
+              aouh localaouh = new aouh();
+              localaouh.jdField_a_of_type_JavaLangString = localJSONObject.optString("template_name");
+              localaouh.jdField_a_of_type_Int = localJSONObject.optInt("template_id", -1);
+              if (localaouh.jdField_a_of_type_Int == -1) {
+                QLog.d("TencentDocTipsConfigBean", 2, "template has no id");
+              }
+              localaouh.jdField_b_of_type_Int = k;
+              this.jdField_a_of_type_JavaUtilList.add(localaouh);
+              j += 1;
+            }
+          }
+          i += 1;
+        }
+      }
     }
   }
   
-  protected abstract void a(acuj paramacuj, CircleFileStateView paramCircleFileStateView);
-  
-  protected void a(View paramView, acuj paramacuj, ChatMessage paramChatMessage, int paramInt) {}
-  
-  public void a(aouh paramaouh)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Aouh = paramaouh;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  protected boolean a(ChatMessage paramChatMessage)
+  public boolean a()
   {
-    return false;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  protected boolean b(ChatMessage paramChatMessage)
+  public int b()
   {
-    return false;
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int c()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public String d()
+  {
+    return this.jdField_e_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aouf
  * JD-Core Version:    0.7.0.1
  */

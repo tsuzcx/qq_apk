@@ -1,266 +1,139 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.av.opengl.effects.AEFilterSupport;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.av.qav_gvideo_sdk_transfer.gVideoAcceptType;
+import com.tencent.av.qav_gvideo_sdk_transfer.gVideoDownChannelControl;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
 
 public class lhp
-  extends EffectConfigBase<FilterItem>
 {
-  static boolean jdField_a_of_type_Boolean;
-  static boolean b;
-  FilterItem jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem = null;
-  private FilterDesc jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
+  public static volatile int a;
+  volatile HashMap<Long, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  volatile boolean jdField_a_of_type_Boolean = false;
   
-  public lhp(VideoAppInterface paramVideoAppInterface)
+  static
   {
-    super(paramVideoAppInterface);
+    jdField_a_of_type_Int = -1;
   }
   
-  public static String a(String paramString)
+  public static int a()
   {
-    if ((paramString == null) || (paramString.equals(""))) {}
-    int i;
-    int j;
-    do
-    {
-      return paramString;
-      i = paramString.lastIndexOf(".");
-      j = paramString.lastIndexOf(File.separator);
-      if (j != -1) {
-        break;
-      }
-    } while (i == -1);
-    return paramString.substring(0, i);
-    if (i == -1) {
-      return paramString.substring(j + 1);
-    }
-    if (j < i) {}
-    for (paramString = paramString.substring(j + 1, i);; paramString = paramString.substring(j + 1)) {
-      return paramString;
-    }
+    return AudioHelper.a(20);
   }
   
-  public static boolean a()
+  public void a()
   {
-    if (b) {
-      return true;
-    }
-    if ((!lpu.a(8, 1400000L)) && (!lpu.a(4, 2150000L))) {
-      return false;
-    }
-    lpd locallpd = lpd.a();
-    if ((locallpd != null) && (!locallpd.b()))
-    {
-      lcg.c("EffectFilterTools", "isSupportGesture false");
-      return false;
-    }
-    b = true;
-    return b;
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public static boolean a(Context paramContext)
+  public boolean a(long paramLong, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (jdField_a_of_type_Boolean) {
-      bool1 = jdField_a_of_type_Boolean;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        if (!lpu.e())
-        {
-          lcg.c("EffectFilterTools", "isSupport Error: 1");
-          return false;
-        }
-        bool1 = bool2;
-      } while (!lpu.a(4, 1400000L));
-      if (paramContext == null) {
-        break;
-      }
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(lct.b(132).a));
-    paramContext = lpd.a();
-    if ((paramContext != null) && (!paramContext.a()))
-    {
-      lcg.c("EffectFilterTools", "  isSupportFilter false");
-      return false;
-    }
-    jdField_a_of_type_Boolean = true;
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean a(PendantItem paramPendantItem)
-  {
-    if (paramPendantItem == null) {
-      return false;
-    }
-    boolean bool;
-    if (AEFilterSupport.a()) {
-      if (!PendantItem.isOnlySupportOldFilter(paramPendantItem.getKind())) {
-        bool = true;
-      }
-    }
-    for (;;)
+    boolean bool = true;
+    int i = a();
+    if (i >= 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("EffectFilterTools", 2, String.format("isSupportFilter, ptu[%s], support[%s], kind[%s], id[%s]", new Object[] { Boolean.valueOf(AEFilterSupport.a()), Boolean.valueOf(bool), Integer.valueOf(paramPendantItem.getKind()), paramPendantItem.getId() }));
+        QLog.d("GVideoDownloadChannelControl", 2, "CheckUinIsBig Debug Mode DEBUG_SMALL_CHANNEL_NUM=" + i);
       }
-      return bool;
-      bool = false;
-      continue;
-      if (!PendantItem.isOnlySupportNewFilter(paramPendantItem.getKind())) {
-        bool = true;
-      } else {
+      return paramInt >= i;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+    {
+      if (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong))).intValue() == 2) {}
+      for (;;)
+      {
+        return bool;
         bool = false;
       }
     }
+    return lid.t();
   }
   
-  public int a()
+  public boolean a(qav_gvideo_sdk_transfer.gVideoDownChannelControl paramgVideoDownChannelControl)
   {
-    return 132;
-  }
-  
-  public FilterDesc a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
-  }
-  
-  public Class<?> a()
-  {
-    return FilterItem.class;
-  }
-  
-  public String a(FilterItem paramFilterItem)
-  {
-    if ((paramFilterItem != null) && (!TextUtils.isEmpty(paramFilterItem.getResurl())) && (!TextUtils.isEmpty(paramFilterItem.getId())))
-    {
-      String str = b(paramFilterItem);
-      paramFilterItem = a(paramFilterItem.getResurl());
-      return str + paramFilterItem;
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("GVideoDownloadChannelControl", 2, "UpdateChannelCtlList start");
     }
-    return null;
-  }
-  
-  public List<FilterItem> a(String paramString)
-  {
-    paramString = super.a(paramString);
-    ArrayList localArrayList = new ArrayList();
-    if (paramString != null) {
-      localArrayList.addAll(paramString);
-    }
-    return localArrayList;
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    switch (paramInt)
+    int k = a();
+    boolean bool1;
+    if (paramgVideoDownChannelControl == null)
     {
-    default: 
-      return;
-    }
-    a(paramLong, null);
-  }
-  
-  public void a(long paramLong, PendantItem paramPendantItem)
-  {
-    if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getFilterName())))
-    {
-      b(paramLong, (FilterItem)a(paramPendantItem.getFilterName()));
-      return;
-    }
-    b(paramLong, this.jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem);
-  }
-  
-  protected void a(FilterItem paramFilterItem) {}
-  
-  public boolean a(long paramLong, FilterItem paramFilterItem)
-  {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem = paramFilterItem;
-    return b(paramLong, paramFilterItem);
-  }
-  
-  protected boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    super.b();
-    boolean bool1 = bool2;
-    int i;
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
-      i = 0;
-      j = 0;
-      if (paramString.hasNext())
-      {
-        FilterItem localFilterItem = (FilterItem)paramString.next();
-        long l = AudioHelper.b();
-        if (AudioHelper.e()) {
-          QLog.w("EffectFilterTools", 1, "preDownloadResource, seq[" + l + "], res[" + localFilterItem.getResurl() + "], icon[" + localFilterItem.getIconurl() + "]");
-        }
-        if (localFilterItem.getPredownload() != 1) {
-          break label185;
-        }
-        j += 1;
-        if ((!TextUtils.isEmpty(localFilterItem.getResurl())) && (!localFilterItem.isUsable())) {
-          a(l, localFilterItem);
-        }
-      }
-    }
-    label185:
-    for (;;)
-    {
-      break;
-      i += 1;
-      continue;
-      bool1 = bool2;
-      if (i == j) {
-        bool1 = true;
-      }
+      bool1 = false;
       return bool1;
     }
-  }
-  
-  boolean b(long paramLong, FilterItem paramFilterItem)
-  {
-    boolean bool = super.a(paramLong, paramFilterItem);
-    lga locallga = VideoController.a().a();
-    if (TextUtils.isEmpty(a(paramFilterItem)))
+    if (paramgVideoDownChannelControl.uint32_switch.get() == 1)
     {
-      locallga.a.clear(2);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
-    }
-    for (;;)
-    {
-      if (paramFilterItem != null) {
-        lhq.a((FilterItem)a());
+      bool1 = true;
+      label46:
+      if (bool1 == this.jdField_a_of_type_Boolean) {
+        break label300;
       }
-      return bool;
-      locallga.a.set(2);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = new FilterDesc(Integer.valueOf(paramFilterItem.getFilterId()).intValue(), paramFilterItem.getPredownload(), paramFilterItem.getResurl(), paramFilterItem.getMd5(), paramFilterItem.getIconurl(), paramFilterItem.getIconMd5(), paramFilterItem.getId(), 0, b(paramFilterItem));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.type = paramFilterItem.getFiltertype();
+      this.jdField_a_of_type_Boolean = bool1;
+    }
+    label297:
+    label300:
+    for (int i = 1;; i = 0)
+    {
+      if (!bool1)
+      {
+        a();
+        if (i != 0)
+        {
+          bool1 = bool2;
+          if (k < 0) {
+            break;
+          }
+        }
+        return false;
+        bool1 = false;
+        break label46;
+      }
+      HashMap localHashMap = new HashMap();
+      int m = paramgVideoDownChannelControl.uint32_videoacceptTypeSize.get();
+      int j = 0;
+      label113:
+      if (j < m)
+      {
+        Object localObject = (qav_gvideo_sdk_transfer.gVideoAcceptType)paramgVideoDownChannelControl.msg_video_accept_type.get(j);
+        long l = ((qav_gvideo_sdk_transfer.gVideoAcceptType)localObject).uint64_account.get();
+        int n = ((qav_gvideo_sdk_transfer.gVideoAcceptType)localObject).video_type.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("GVideoDownloadChannelControl", 2, "UpdateChannelCtlList index=" + j + " |uin=" + l + " |type=" + n);
+        }
+        localObject = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l));
+        if ((localObject != null) && (((Integer)localObject).intValue() == n)) {
+          break label297;
+        }
+        localHashMap.put(Long.valueOf(l), Integer.valueOf(n));
+        i = 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        break label113;
+        if ((m != this.jdField_a_of_type_JavaUtilHashMap.size()) || (i != 0)) {
+          this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
+        }
+        if (i != 0)
+        {
+          bool1 = bool2;
+          if (k < 0) {
+            break;
+          }
+        }
+        return false;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhp
  * JD-Core Version:    0.7.0.1
  */

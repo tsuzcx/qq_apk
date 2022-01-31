@@ -1,40 +1,146 @@
-import android.graphics.Paint;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.annotation.NonNull;
+import android.text.method.ScrollingMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 public class abvh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends Dialog
 {
-  public abvh(QQMapActivity paramQQMapActivity) {}
+  public static boolean a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
   
-  public void onGlobalLayout()
+  public abvh(@NonNull Context paramContext)
   {
-    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
-    if (i > 0)
+    super(paramContext, 2131755247);
+    a(paramContext);
+  }
+  
+  private void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559410, null);
+    setContentView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131362695));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131362707));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131362916));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131379381));
+    this.c = ((TextView)a(paramContext, 2131379409));
+    this.d = ((TextView)a(paramContext, 2131362906));
+    this.d.setMovementMethod(ScrollingMovementMethod.getInstance());
+    this.e = ((TextView)a(paramContext, 2131369338));
+    this.f = ((TextView)a(paramContext, 2131375754));
+    setCanceledOnTouchOutside(false);
+    paramContext = getWindow();
+    if (paramContext != null) {
+      paramContext.setGravity(80);
+    }
+  }
+  
+  public <T extends View> T a(View paramView, int paramInt)
+  {
+    return paramView.findViewById(paramInt);
+  }
+  
+  public void a()
+  {
+    try
     {
-      int j = baxn.a(this.a, 10.0F);
-      Object localObject = new Paint();
-      ((Paint)localObject).setTextSize(baxn.a(this.a, 14.0F));
-      ((Paint)localObject).setAntiAlias(true);
-      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
-      ((Paint)localObject).setTextSize(baxn.a(this.a, 20.0F));
-      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
-      {
-        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      super.dismiss();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void a(DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    setOnCancelListener(new abvk(this, paramOnCancelListener));
+    setOnKeyListener(new abvl(this, paramOnCancelListener));
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.f.setOnClickListener(new abvi(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    if (ndd.a(paramString))
+    {
+      paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
+      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      paramString.setTag(bcuq.b(localLayoutParams.width, localLayoutParams.height, xod.a(this.jdField_a_of_type_AndroidContentContext, 5.0F)));
+      paramString.setDecodeHandler(bcuq.i);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    }
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.e.setOnClickListener(new abvj(this, paramOnClickListener));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    this.d.setText(paramString);
+  }
+  
+  public void e(String paramString)
+  {
+    this.f.setText(paramString);
+  }
+  
+  public void f(String paramString)
+  {
+    this.e.setText(paramString);
+  }
+  
+  public void show()
+  {
+    try
+    {
+      super.show();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvh
  * JD-Core Version:    0.7.0.1
  */

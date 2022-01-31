@@ -1,50 +1,41 @@
-import android.view.View;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupInfo;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class vdd
-  extends uyi
+public class vdd
+  extends unf
 {
-  vdd(vcp paramvcp) {}
+  public List<ShareGroupItem> a;
   
-  public void a(int paramInt, View paramView, Object paramObject, vap paramvap)
+  public vdd(qqstory_service.RspGetShareGroupInfo paramRspGetShareGroupInfo)
   {
-    boolean bool;
-    switch (paramView.getId())
+    super(paramRspGetShareGroupInfo.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramRspGetShareGroupInfo.share_group_info_list.has())
     {
-    default: 
-      if (vcp.a(this.a).a().size() <= 0) {
-        break label149;
-      }
-      paramView = this.a;
-      if (!vcp.a(this.a))
+      paramRspGetShareGroupInfo = paramRspGetShareGroupInfo.share_group_info_list.get().iterator();
+      while (paramRspGetShareGroupInfo.hasNext())
       {
-        bool = true;
-        vcp.a(paramView, bool);
-        vcp.a(this.a);
-        if (!vcp.a(this.a)) {
-          break label143;
-        }
+        qqstory_struct.ShareGroupInfo localShareGroupInfo = (qqstory_struct.ShareGroupInfo)paramRspGetShareGroupInfo.next();
+        ShareGroupItem localShareGroupItem = new ShareGroupItem();
+        localShareGroupItem.convertFrom(localShareGroupInfo);
+        this.jdField_a_of_type_JavaUtilList.add(localShareGroupItem);
       }
-      break;
     }
-    label143:
-    for (paramView = "1";; paramView = "2")
-    {
-      vei.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
-      vei.a("home_page", "exp_share_day", 0, 0, new String[0]);
-      return;
-      vcp.a(this.a, vcp.a(this.a), paramView);
-      return;
-      bool = false;
-      break;
-    }
-    label149:
-    vcp.a(this.a, vcp.a(this.a), paramView);
+  }
+  
+  public String toString()
+  {
+    return "GetShareGroupInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", groupItems=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdd
  * JD-Core Version:    0.7.0.1
  */

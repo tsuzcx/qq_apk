@@ -1,54 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.widget.Switch;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-public class abqy
-  extends akil
+class abqy
+  implements AbstractUnifiedMonitor.ThreadMonitorCallback
 {
-  public abqy(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  abqy(abqw paramabqw) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onThreadMonitorEnd(int paramInt)
   {
-    TextView localTextView;
-    if (paramBoolean1)
-    {
-      this.a.f.a().setChecked(paramBoolean2);
-      localTextView = this.a.a;
-      if (!paramBoolean2) {
-        break label59;
-      }
+    if (paramInt == 10) {
+      abqw.a(this.a);
     }
-    label59:
-    for (int i = 2131693197;; i = 2131693198)
-    {
-      localTextView.setText(i);
-      bbkb.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = true;
-    if (!paramBoolean1)
-    {
-      bcql.a(this.a, 1, ajya.a(2131707927), 0).a();
-      Switch localSwitch = this.a.f.a();
-      if (!paramBoolean2) {}
-      for (paramBoolean1 = bool;; paramBoolean1 = false)
-      {
-        localSwitch.setChecked(paramBoolean1);
-        return;
-      }
-    }
-    bbkb.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abqy
  * JD-Core Version:    0.7.0.1
  */

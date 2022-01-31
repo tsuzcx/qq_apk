@@ -1,80 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.QQApiPlugin.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class arng
-  implements ooc
 {
-  public arng(QQApiPlugin.3 param3) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public static void a(String paramString)
   {
-    if ((this.a.this$0.c == null) || (!this.a.this$0.c.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    boolean bool;
-    switch (paramBaseResp.errCode)
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-    case -1: 
-    default: 
-      wij.a(1, 2131719487);
-      bool = false;
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_JavaLangString))
-      {
-        this.a.this$0.callJs(this.a.this$0.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
+      if (localObject == null) {
         return;
-        wij.a(2, 2131719506);
-        if ((this.a.this$0.jdField_a_of_type_Bcig != null) && (this.a.this$0.jdField_a_of_type_Bcij != null))
-        {
-          int i;
-          label171:
-          String str1;
-          String str2;
-          String str3;
-          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
-          {
-            i = 1009;
-            paramBaseResp = this.a.this$0.jdField_a_of_type_Bcig.f();
-            str1 = this.a.this$0.jdField_a_of_type_Bcig.g();
-            str2 = this.a.b;
-            str3 = AccountDetailActivity.a(this.a.this$0.jdField_a_of_type_Bcij.b());
-            String str4 = this.a.this$0.jdField_a_of_type_Bcig.h();
-            if ((str4 == null) || ("".equals(str4))) {
-              break label314;
-            }
-            nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.this$0.jdField_a_of_type_Bcij.b(), str3, false);
-          }
-          for (;;)
-          {
-            bool = true;
-            break;
-            i = 1004;
-            break label171;
-            label314:
-            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
-              i = 1003;
-            }
-            nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
-          }
-          bool = false;
+      }
+      arnh localarnh = new arnh();
+      localarnh.jdField_b_of_type_JavaLangString = paramString;
+      localarnh.jdField_a_of_type_JavaLangString = paramString;
+      if (localarnh.jdField_a_of_type_Boolean) {}
+      for (int i = 0;; i = 1)
+      {
+        azmj.b((QQAppInterface)localObject, "CliOper", "", "", localarnh.jdField_a_of_type_JavaLangString, localarnh.jdField_b_of_type_JavaLangString, localarnh.jdField_a_of_type_Int, localarnh.jdField_b_of_type_Int, i, String.valueOf(localarnh.jdField_b_of_type_Long), localarnh.d, arnh.a(localarnh), localarnh.c);
+        if (!QLog.isColorLevel()) {
+          break;
         }
-      }
-      else
-      {
-        this.a.this$0.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
+        QLog.i("FileManagerReporter<FileAssistant>", 2, "report key:" + paramString);
         return;
       }
-      bool = true;
+    }
+  }
+  
+  public static void a(String paramString, arnh paramarnh)
+  {
+    BaseApplicationImpl.getContext();
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramString != null) && ((paramString instanceof QQAppInterface))) {}
+    for (paramString = (QQAppInterface)paramString;; paramString = null)
+    {
+      if (paramarnh.jdField_a_of_type_Boolean) {}
+      for (int i = 0;; i = 1)
+      {
+        azmj.b(paramString, "CliOper", "", "", paramarnh.jdField_a_of_type_JavaLangString, paramarnh.jdField_b_of_type_JavaLangString, paramarnh.jdField_a_of_type_Int, paramarnh.jdField_b_of_type_Int, i, String.valueOf(paramarnh.jdField_b_of_type_Long), paramarnh.d, arnh.a(paramarnh), paramarnh.c);
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arng
  * JD-Core Version:    0.7.0.1
  */

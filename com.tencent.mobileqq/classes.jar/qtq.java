@@ -1,29 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Queue;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+import com.tencent.mobileqq.widget.QQToast;
 
-class qtq
-  extends npt
+public class qtq
+  implements DialogInterface.OnClickListener
 {
-  private qtq(qtl paramqtl) {}
+  public qtq(EditColumnFragment paramEditColumnFragment) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoFullPlayController", 2, "onGetRecommend:" + paramBoolean);
-    }
-    if (paramBoolean)
+    this.a.a(true);
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.a() > 0)
     {
-      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-      qtl.a(this.a).addAll(qtl.a(this.a).a(paramBundle));
-      this.a.f();
+      this.a.jdField_a_of_type_Qtv.a(EditColumnFragment.a(this.a), this.a.a());
+      return;
     }
+    QQToast.a(this.a.getActivity(), 0, 2131718765, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qtq
  * JD-Core Version:    0.7.0.1
  */

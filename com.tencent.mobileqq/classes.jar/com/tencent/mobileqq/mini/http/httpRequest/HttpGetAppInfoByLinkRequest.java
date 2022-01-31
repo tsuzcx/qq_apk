@@ -4,7 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.http.HttpProtoBufRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -52,7 +52,7 @@ public class HttpGetAppInfoByLinkRequest
     Object localObject = new INTERFACE.StGetAppInfoByLinkRsp();
     try
     {
-      localStQWebRsp.mergeFrom(bbma.b(paramArrayOfByte));
+      localStQWebRsp.mergeFrom(bdku.b(paramArrayOfByte));
       ((INTERFACE.StGetAppInfoByLinkRsp)localObject).mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
       paramArrayOfByte = new JSONObject();
       MiniAppInfo localMiniAppInfo = MiniAppInfo.from(((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo);
@@ -73,7 +73,7 @@ public class HttpGetAppInfoByLinkRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.http.httpRequest.HttpGetAppInfoByLinkRequest
  * JD-Core Version:    0.7.0.1
  */

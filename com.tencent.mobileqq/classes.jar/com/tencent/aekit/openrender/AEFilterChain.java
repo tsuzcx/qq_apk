@@ -117,7 +117,7 @@ public class AEFilterChain
         Object localObject2 = (AEChainI)localIterator.next();
         if ((localObject2 != null) && (((AEChainI)localObject2).isApplied()))
         {
-          String str = localObject2.getClass().getSimpleName();
+          String str = localObject2.getClass().getSimpleName() + "@" + localObject2.hashCode();
           AEProfiler.getInstance().start(str, true);
           localObject2 = ((AEChainI)localObject2).render((Frame)localObject1);
           long l = AEProfiler.getInstance().end(str, true);
@@ -198,7 +198,7 @@ public class AEFilterChain
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.openrender.AEFilterChain
  * JD-Core Version:    0.7.0.1
  */

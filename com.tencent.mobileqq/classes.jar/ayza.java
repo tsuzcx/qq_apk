@@ -1,13 +1,12 @@
 public class ayza
 {
-  public String c;
-  public String d;
-  public String e;
-  public int f;
+  public long a;
+  public long b;
+  public long c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayza
  * JD-Core Version:    0.7.0.1
  */

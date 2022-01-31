@@ -1,36 +1,20 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class abyj
-  implements View.OnFocusChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public abyj(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
+  public abyj(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
-      }
-    }
-    else {
-      return;
-    }
-    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyj
  * JD-Core Version:    0.7.0.1
  */

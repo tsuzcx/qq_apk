@@ -1,30 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForReplyText;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class adyl
-  implements DialogInterface.OnClickListener
+public class adyl
+  extends BroadcastReceiver
 {
-  adyl(adyf paramadyf, MessageForReplyText paramMessageForReplyText) {}
+  public adyl(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_Adyf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (((baky)this.jdField_a_of_type_Adyf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48)).a(this.jdField_a_of_type_Adyf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true).a) && ((this.jdField_a_of_type_Adyf.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)))
+    if (paramIntent == null) {}
+    do
     {
-      paramDialogInterface = (BaseActivity)this.jdField_a_of_type_Adyf.jdField_a_of_type_AndroidContentContext;
-      bcql.a(this.jdField_a_of_type_Adyf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131697657, 0).b(paramDialogInterface.getTitleBarHeight());
+      do
+      {
+        return;
+      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
+      paramContext = paramIntent.getStringExtra("data");
+    } while (paramContext == null);
+    try
+    {
+      paramContext = new JSONObject(paramContext);
+      this.a.a.tribeId = paramContext.optInt("bid");
+      this.a.a.tribeName = paramContext.optString("bname");
+      this.a.d = true;
+      paramContext = new ArrayList();
+      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+        paramContext.add(this.a.a.tribeName);
+      }
+      this.a.a(9, paramContext, true, 1, true);
       return;
     }
-    this.jdField_a_of_type_Adyf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, null, true);
+    catch (JSONException paramContext) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyl
  * JD-Core Version:    0.7.0.1
  */

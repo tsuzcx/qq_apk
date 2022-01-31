@@ -1,21 +1,26 @@
-import java.util.List;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-public class afae
+class afae
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  @bazr(a=String.class)
-  List<String> jdField_a_of_type_JavaUtilList;
-  String b;
+  afae(afab paramafab) {}
   
-  public String toString()
+  public void onGlobalLayout()
   {
-    return "ZhituReportRequest{, type=" + this.jdField_a_of_type_Int + ", md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", text='" + bflg.a(this.b) + '\'' + '}';
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getLineCount() > 3) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.C()) && (!azib.b()))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afae
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,118 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.FadeIconImageView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.SparseArray;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
+import com.tencent.qqmini.sdk.manager.EngineManager.EngineChannelReceiver.1;
+import com.tencent.qqmini.sdk.manager.InstalledEngine;
+import com.tencent.qqmini.sdk.utils.WnsUtil;
+import java.util.Iterator;
+import java.util.List;
 
 public class bgsa
-  extends Dialog
+  implements bgrs
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = null;
+  public bgsa(bgrx parambgrx) {}
   
-  public bgsa(Context paramContext)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    super(paramContext, 2131755794);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560439, null);
-    setContentView(paramContext);
-    Object localObject = getWindow();
-    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -1;
-    ((Window)localObject).setAttributes(localLayoutParams);
-    setCanceledOnTouchOutside(false);
-    localObject = (TextView)paramContext.findViewById(2131368429);
-    if (localObject != null)
+    paramBundle.setClassLoader(getClass().getClassLoader());
+    int i = paramBundle.getInt("baseLibType");
+    int j = paramBundle.getInt("enginePid");
+    EngineChannel localEngineChannel = (EngineChannel)paramBundle.getParcelable("engineChannel");
+    if (localEngineChannel != null)
     {
-      ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(2131690572);
+      if (bgrx.a(this.a).indexOfKey(j) > 0) {
+        QMLog.w("EngineManager", "[MiniEng] channel already exists for pid " + j + " replacing");
+      }
+      bgrx.a(this.a).put(j, localEngineChannel);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368472));
-    try
+    localEngineChannel = (EngineChannel)bgrx.a(this.a).get(j);
+    if (localEngineChannel == null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692370);
-      }
-      label140:
-      paramContext = (FadeIconImageView)paramContext.findViewById(2131368441);
-      if (paramContext != null)
-      {
-        paramContext.setVisibility(0);
-        paramContext.setImageResource(2130839740);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("qqfav", 2, "enter into QfavLoadingDialog");
-      }
+      QMLog.e("EngineManager", "[MiniEng]no channel available for pid " + j);
       return;
     }
-    catch (Exception localException)
+    QMLog.i("EngineManager", "[MiniEng] onReceiveData what=" + paramInt + ",baseLibType=" + i + ",pid=" + j + ",remote=" + localEngineChannel + ",channelCount=" + bgrx.a(this.a).size());
+    localEngineChannel.a(55, null);
+    Object localObject;
+    if (paramInt == 1)
     {
-      break label140;
+      paramBundle = bgrx.a().a(i);
+      localObject = new Bundle();
+      ((Bundle)localObject).putParcelableArrayList("installedEngineList", paramBundle);
+      localEngineChannel.a(51, (Bundle)localObject);
+      bgrx.a(this.a, localEngineChannel);
+      QMLog.i("EngineManager", "[MiniEng]LiveChannel count " + bgrx.a(this.a).size());
+      return;
     }
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+    if (paramInt == 3) {
+      if (i == 2)
+      {
+        paramBundle = this.a.a(i).iterator();
+        do
+        {
+          if (!paramBundle.hasNext()) {
+            break;
+          }
+          localObject = (InstalledEngine)paramBundle.next();
+        } while ((!((InstalledEngine)localObject).b) || (!((InstalledEngine)localObject).a));
+      }
     }
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839142));
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
+    for (paramInt = 1;; paramInt = 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+      if ((!bgtd.a().a()) && (paramInt == 0))
+      {
+        ThreadManager.b().post(new EngineManager.EngineChannelReceiver.1(this, localEngineChannel));
+        return;
+      }
+      if (bgtd.a().b())
+      {
+        paramBundle = WnsUtil.getGameBaseLibInfo();
+        QMLog.i("EngineManager", "[MiniEng] QQSpeed INSTALL_LATEST_ENGINE gameEngineLib " + paramBundle);
+        if ((paramBundle == null) || (paramBundle.baseLibType != 2)) {
+          break;
+        }
+        bgrx.b(this.a, paramBundle, localEngineChannel);
+        return;
+      }
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib("0,0,1", false, true, new bgsb(this, i, localEngineChannel));
+      return;
+      if (paramInt == 5)
+      {
+        if ((i == 2) && (bgtd.a().b()))
+        {
+          paramBundle = WnsUtil.getGameBaseLibInfo();
+          QMLog.i("EngineManager", "[MiniEng] QQSpeed UPGRADE_ENGINE gameEngineLib " + paramBundle);
+          if ((paramBundle == null) || (paramBundle.baseLibType != 2)) {
+            break;
+          }
+          bgrx.c(this.a, paramBundle, localEngineChannel);
+          return;
+        }
+        ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib("0,0,1", false, true, new bgsc(this, i, localEngineChannel));
+        return;
+      }
+      if (paramInt != 56) {
+        break;
+      }
+      paramBundle = (InstalledEngine)paramBundle.getParcelable("invalidEngine");
+      QMLog.i("EngineManager", "[MiniEng] receive delete InstalledEngine from pid:" + j + ", baseLibType:" + i + ", targetEngine:" + paramBundle);
+      if (paramBundle == null) {
+        break;
+      }
+      bgrt.a(paramBundle);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgsa
  * JD-Core Version:    0.7.0.1
  */

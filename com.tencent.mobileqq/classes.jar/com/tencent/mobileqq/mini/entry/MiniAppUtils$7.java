@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.entry;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bbco;
-import bchg;
+import bdbi;
+import begh;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
@@ -22,37 +22,37 @@ final class MiniAppUtils$7
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    bchg localbchg;
-    if ((paramMessage.obj instanceof bchg))
+    begh localbegh;
+    if ((paramMessage.obj instanceof begh))
     {
-      localbchg = (bchg)paramMessage.obj;
-      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localbchg });
-      if (localbchg.jdField_c_of_type_Int == 0) {
+      localbegh = (begh)paramMessage.obj;
+      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localbegh });
+      if (localbegh.jdField_c_of_type_Int == 0) {
         for (;;)
         {
           JSONObject localJSONObject;
           try
           {
             localJSONObject = new JSONObject();
-            if (localbchg.d == null) {
+            if (localbegh.d == null) {
               break label212;
             }
             if (this.val$returnAsJSON)
             {
-              localJSONObject.put("data", new JSONObject(localbchg.d));
-              localJSONObject.put("statusCode", localbchg.b);
-              localJSONObject.put("wnsCode", localbchg.jdField_c_of_type_Int);
-              localJSONObject.put("header", localbchg.jdField_c_of_type_JavaLangString);
+              localJSONObject.put("data", new JSONObject(localbegh.d));
+              localJSONObject.put("statusCode", localbegh.b);
+              localJSONObject.put("wnsCode", localbegh.jdField_c_of_type_Int);
+              localJSONObject.put("header", localbegh.jdField_c_of_type_JavaLangString);
               this.val$jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, this.val$eventName, localJSONObject, this.val$callBackId);
               return;
             }
-            if (localbchg.a)
+            if (localbegh.a)
             {
-              paramMessage = bbco.encodeToString(localbchg.d.getBytes(), 0);
+              paramMessage = bdbi.encodeToString(localbegh.d.getBytes(), 0);
               localJSONObject.put("data", paramMessage);
               continue;
             }
-            paramMessage = localbchg.d;
+            paramMessage = localbegh.d;
           }
           catch (JSONException paramMessage)
           {
@@ -69,7 +69,7 @@ final class MiniAppUtils$7
     }
     try
     {
-      paramMessage.put("wnsCode", localbchg.jdField_c_of_type_Int);
+      paramMessage.put("wnsCode", localbegh.jdField_c_of_type_Int);
       label243:
       this.val$jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, this.val$eventName, paramMessage, this.val$callBackId);
       return;
@@ -85,7 +85,7 @@ final class MiniAppUtils$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,46 @@
 package com.tencent.av.ui;
 
+import aekt;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageButton;
-import android.widget.ImageView.ScaleType;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
+import bdkf;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.EffectOperateManager;
+import com.tencent.av.utils.AVColorStateList;
 import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
-import lga;
-import mao;
-import mbt;
-import mbu;
-import mgs;
+import lid;
+import mdd;
+import mei;
+import mej;
+import mjk;
+import mwj;
 
 public abstract class BaseToolbar
 {
   public final String TAG = "EffectSettingUi." + getClass().getSimpleName();
   public WeakReference<AVActivity> mActivity;
   public VideoAppInterface mApp;
-  protected ImageButton mEffectBtn;
+  protected Button mEffectBtn;
   RedTouch mEffectBtnRedTouch = null;
   private boolean mIsCreated;
   protected View toolbarView;
@@ -46,20 +51,47 @@ public abstract class BaseToolbar
     this.mActivity = new WeakReference(paramAVActivity);
   }
   
-  private static ImageButton CreateImageButton(LinearLayout paramLinearLayout, int paramInt1, String paramString, int paramInt2)
+  private static Button CreateImageButton(LinearLayout paramLinearLayout, int paramInt, mej parammej)
   {
-    ImageButton localImageButton = new ImageButton(paramLinearLayout.getContext());
-    int i = (int)paramLinearLayout.getResources().getDimension(2131297534);
-    int j = (int)paramLinearLayout.getResources().getDimension(2131297533);
-    localImageButton.setLayoutParams(new FrameLayout.LayoutParams(i, i));
-    localImageButton.setId(paramInt1);
-    localImageButton.setContentDescription(paramString);
-    localImageButton.setBackgroundDrawable(null);
-    localImageButton.setImageResource(paramInt2);
-    localImageButton.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    localImageButton.setPadding(j, j, j, j);
-    paramLinearLayout.addView(localImageButton);
-    return localImageButton;
+    if ((paramLinearLayout == null) || (parammej == null)) {
+      return null;
+    }
+    Button localButton = new Button(paramLinearLayout.getContext());
+    Resources localResources = paramLinearLayout.getResources();
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams((int)localResources.getDimension(2131297555), -2);
+    localLayoutParams.weight = 1.0F;
+    localButton.setLayoutParams(localLayoutParams);
+    localButton.setId(paramInt);
+    localButton.setGravity(17);
+    localButton.setSingleLine();
+    localButton.setContentDescription(parammej.jdField_a_of_type_JavaLangString);
+    localButton.setBackgroundDrawable(null);
+    localButton.setCompoundDrawablePadding(aekt.a(5.0F, localResources));
+    localButton.setText(parammej.jdField_a_of_type_JavaLangString);
+    localButton.setTextSize(bdkf.e(aekt.a(12.0F, localResources)));
+    paramLinearLayout.addView(localButton);
+    return localButton;
+  }
+  
+  private void changImageButtonStyle(Button paramButton, int paramInt1, int paramInt2)
+  {
+    if (paramButton == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.TAG, 2, "changButtonStyle button is null");
+      }
+    }
+    while (paramInt1 == 0) {
+      return;
+    }
+    Object localObject = paramButton.getResources();
+    int i = (int)((Resources)localObject).getDimension(2131297551);
+    if (paramInt2 > 0) {}
+    for (localObject = mwj.a((Resources)localObject, paramInt1, paramInt2);; localObject = ((Resources)localObject).getDrawable(paramInt1))
+    {
+      ((Drawable)localObject).setBounds(0, 0, i, i);
+      paramButton.setCompoundDrawables(null, (Drawable)localObject, null, null);
+      return;
+    }
   }
   
   public static BaseToolbar createToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity, Class<? extends BaseToolbar> paramClass)
@@ -85,9 +117,9 @@ public abstract class BaseToolbar
     }
   }
   
-  public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, mgs parammgs, int paramInt)
+  public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, mjk parammjk, int paramInt)
   {
-    if ((!parammgs.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
+    if ((!parammjk.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
       return;
     }
     int j = 0;
@@ -95,8 +127,8 @@ public abstract class BaseToolbar
     if (paramInt > 0)
     {
       i = j;
-      if (paramInt > parammgs.a()) {
-        i = mgs.jdField_a_of_type_Int * (paramInt - 1);
+      if (paramInt > parammjk.a()) {
+        i = mjk.jdField_a_of_type_Int * (paramInt - 1);
       }
     }
     paramHorizontalListView.resetCurrentX(i);
@@ -156,7 +188,7 @@ public abstract class BaseToolbar
     return getUIInfo().d;
   }
   
-  protected abstract mbu getUIInfo();
+  protected abstract mej getUIInfo();
   
   public String getUnableInfo()
   {
@@ -175,19 +207,19 @@ public abstract class BaseToolbar
   
   public void initBtn(LinearLayout paramLinearLayout, boolean paramBoolean, View.OnClickListener paramOnClickListener)
   {
-    if (this.mEffectBtn != null) {
+    if (paramLinearLayout == null) {
       return;
     }
-    this.mEffectBtn = CreateImageButton(paramLinearLayout, getEffectBtnId(), getUIInfo().jdField_a_of_type_JavaLangString, getUIInfo().e);
+    this.mEffectBtn = CreateImageButton(paramLinearLayout, getEffectBtnId(), getUIInfo());
     this.mEffectBtn.setOnClickListener(paramOnClickListener);
     if (AudioHelper.a(0) == 1)
     {
       paramLinearLayout = this.mEffectBtn;
       if (getEffectBtnId() % 2 != 0) {
-        break label89;
+        break label76;
       }
     }
-    label89:
+    label76:
     for (int i = -16777216;; i = -256)
     {
       paramLinearLayout.setBackgroundColor(i);
@@ -231,9 +263,9 @@ public abstract class BaseToolbar
   {
     if (this.mEffectBtn != null)
     {
-      this.mEffectBtn.setTag(2131376847, Boolean.valueOf(true));
+      this.mEffectBtn.setTag(2131377361, Boolean.valueOf(true));
       this.mEffectBtn.performClick();
-      this.mEffectBtn.setTag(2131376847, null);
+      this.mEffectBtn.setTag(2131377361, null);
     }
   }
   
@@ -265,7 +297,9 @@ public abstract class BaseToolbar
     do
     {
       return;
-      this.mEffectBtn.setSelected(paramBoolean);
+      if (this.mEffectBtn != null) {
+        this.mEffectBtn.setSelected(paramBoolean);
+      }
     } while (getUIInfo().c == 0);
     updateBtnStatus();
   }
@@ -289,7 +323,7 @@ public abstract class BaseToolbar
       }
     } while (((EffectOperateManager)localObject).a() != getEffectBtnId());
     localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).addListener(new mbt(this));
+    ((AnimatorSet)localObject).addListener(new mei(this));
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleX", new float[] { 1.0F, 1.56F, 1.0F });
     localObjectAnimator1.setDuration(400L);
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleY", new float[] { 1.0F, 1.56F, 1.0F });
@@ -311,7 +345,7 @@ public abstract class BaseToolbar
     {
       paramRelativeLayout = getUnableInfo();
       if (!TextUtils.isEmpty(paramRelativeLayout)) {
-        mao.a(this.mApp, 1010, paramRelativeLayout);
+        mdd.a(this.mApp, 1010, paramRelativeLayout);
       }
       QLog.w(this.TAG, 1, "tryShowToolbar, 失败[" + paramRelativeLayout + "], seq[" + paramLong + "]");
       return false;
@@ -336,47 +370,45 @@ public abstract class BaseToolbar
       }
       return;
     }
-    if ((EffectSettingUi.a(this.mApp, true)) && (!this.mApp.a().a().j()) && (getEffectBtnId() != 1)) {}
+    if ((EffectSettingUi.a(this.mApp, true)) && (!this.mApp.a().a().k()) && (getEffectBtnId() != 1)) {}
     for (boolean bool = false;; bool = true)
     {
       this.mEffectBtn.setEnabled(bool);
-      int j = getUIInfo().e;
-      int i = getUIInfo().b;
+      Object localObject = getUIInfo();
+      if (localObject == null) {
+        break;
+      }
+      int j = ((mej)localObject).e;
+      int k = ((mej)localObject).b;
       if ((bool) && (isEffectBtnEnable())) {
-        if ((getUIInfo().c == 0) || (!this.mEffectBtn.isSelected())) {
-          break label249;
+        if ((((mej)localObject).c == 0) || (!this.mEffectBtn.isSelected())) {
+          break label270;
         }
       }
-      label249:
-      for (i = getUIInfo().c;; i = j)
+      label270:
+      for (int i = ((mej)localObject).c;; i = j)
       {
-        j = getUIInfo().jdField_a_of_type_Int;
-        int k;
+        k = ((mej)localObject).jdField_a_of_type_Int;
         if (this.mEffectBtnRedTouch != null)
         {
           this.mEffectBtnRedTouch.setHostEnable(true);
-          k = j;
+          int m = 2131165889;
           j = i;
-          i = k;
+          i = m;
         }
         for (;;)
         {
-          if (i > 0)
-          {
-            AudioHelper.a(this.mEffectBtn, j, i);
-            return;
-            if (this.mEffectBtnRedTouch != null) {
-              this.mEffectBtnRedTouch.setHostEnable(false);
-            }
+          changImageButtonStyle(this.mEffectBtn, j, k);
+          localObject = AVColorStateList.a(this.mEffectBtn.getResources(), i);
+          this.mEffectBtn.setTextColor((ColorStateList)localObject);
+          return;
+          if (this.mEffectBtnRedTouch != null) {
+            this.mEffectBtnRedTouch.setHostEnable(false);
           }
-          else
-          {
-            this.mEffectBtn.setImageResource(j);
-            return;
-            k = i;
-            i = j;
-            j = k;
-          }
+          i = ((mej)localObject).b;
+          continue;
+          j = i;
+          i = 2131165889;
         }
       }
     }
@@ -384,7 +416,7 @@ public abstract class BaseToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.BaseToolbar
  * JD-Core Version:    0.7.0.1
  */

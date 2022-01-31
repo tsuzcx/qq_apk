@@ -1,31 +1,33 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.appbrand.utils.ShortcutUtils.AddShortcutCallback;
-import com.tencent.mobileqq.mini.util.ApiUtil;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class OtherJsPlugin$2
-  implements ShortcutUtils.AddShortcutCallback
+  extends BroadcastReceiver
 {
-  OtherJsPlugin$2(OtherJsPlugin paramOtherJsPlugin, String paramString, JsRuntime paramJsRuntime, int paramInt) {}
+  OtherJsPlugin$2(OtherJsPlugin paramOtherJsPlugin) {}
   
-  public void onAddResult(int paramInt, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 0)
-    {
-      paramString = new JSONObject();
-      paramString = ApiUtil.wrapCallbackOk(this.val$eventName, paramString);
-      this.val$webview.evaluateCallbackJs(this.val$callbackId, paramString.toString());
-      return;
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d(OtherJsPlugin.access$000(), 2, String.format("receiver.onReceive action=%s", new Object[] { paramContext }));
     }
-    paramString = ApiUtil.wrapCallbackFail(this.val$eventName, null, paramString);
-    this.val$webview.evaluateCallbackJs(this.val$callbackId, paramString.toString());
+    if ("action_return_address_to_miniapp".equals(paramContext))
+    {
+      paramContext = paramIntent.getStringExtra("key_miniapp_address_info");
+      if ((OtherJsPlugin.access$100(this.this$0) != null) && (OtherJsPlugin.access$200(this.this$0) > 0)) {
+        OtherJsPlugin.access$300(this.this$0, paramContext, OtherJsPlugin.access$100(this.this$0), OtherJsPlugin.access$200(this.this$0));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OtherJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

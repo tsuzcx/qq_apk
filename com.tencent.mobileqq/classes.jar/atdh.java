@@ -1,34 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.content.Intent;
+import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.1;
+import mqq.app.QQPermissionCallback;
 
 public class atdh
-  implements bcix<oidb_0x8e4.RspBody>
+  implements QQPermissionCallback
 {
-  public atdh(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public atdh(IdentificationApiPlugin.1.1 param1) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
-    {
-      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
-      GameRoomInviteActivity.a = this.a.b;
-    }
-    for (;;)
-    {
-      this.a.a(true);
-      return;
-      paramRspBody = this.a;
-      GameRoomInviteActivity.a = null;
-      paramRspBody.b = null;
-    }
+    bdcd.a(atdf.a(this.a.jdField_a_of_type_Atdg.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    paramArrayOfString = new Intent();
+    paramArrayOfString.putExtra("FaceRecognition.AppConf", this.a.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager$AppConf);
+    atdf.a(this.a.jdField_a_of_type_Atdg.a, paramArrayOfString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdh
  * JD-Core Version:    0.7.0.1
  */

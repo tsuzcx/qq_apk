@@ -1,89 +1,62 @@
-import com.tencent.common.app.AppInterface;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdsa
-  extends bdry
+  extends bdrz
 {
-  private static bdsa jdField_a_of_type_Bdsa;
-  private int jdField_a_of_type_Int;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  
-  public static bdsa a()
+  private void a(String paramString1, long paramLong, String paramString2)
   {
-    if (jdField_a_of_type_Bdsa == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bdsa == null) {
-        jdField_a_of_type_Bdsa = new bdsa();
-      }
-      return jdField_a_of_type_Bdsa;
-    }
-    finally {}
+    QLog.e("EmptyCallback", 1, "call empty method:" + paramString1 + " with " + paramLong + "_" + paramString2, new Exception());
   }
   
-  protected long a()
+  protected void _onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    long l = 0L;
-    if (this.jdField_a_of_type_MqqAppAppRuntime != null) {
-      l = this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin();
-    }
-    return l;
+    a("_onCompleted", paramLong, paramString1);
   }
   
-  public void a(AppRuntime paramAppRuntime)
+  protected void _onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
   {
-    int i = 0;
-    if ((paramAppRuntime instanceof AppInterface)) {
-      i = ((AppInterface)paramAppRuntime).getAppid();
-    }
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_Int = i;
+    a("_onProgress", paramLong1, paramString1);
   }
   
-  protected void b()
+  public boolean canUpdate(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bdsc.class);
-    localNewIntent.putExtra("req_type", 5);
-    localNewIntent.putExtra("app_id", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    a("canUpdate", paramLong, paramString1);
+    return false;
   }
   
-  protected void g(byte[] paramArrayOfByte)
+  public boolean deleteFiles(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bdsc.class);
-    localNewIntent.putExtra("req_type", 6);
-    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    a("deleteFiles", paramLong, paramString);
+    return true;
   }
   
-  protected void h(byte[] paramArrayOfByte)
+  public void download(QQAppInterface paramQQAppInterface, long paramLong, String paramString, bdpj parambdpj, boolean paramBoolean)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bdsc.class);
-    localNewIntent.putExtra("req_type", 2);
-    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    a("download", paramLong, paramString);
   }
   
-  protected void i(byte[] paramArrayOfByte)
+  public long getBID()
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bdsc.class);
-    localNewIntent.putExtra("req_type", 3);
-    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    return 0L;
   }
   
-  protected void j(byte[] paramArrayOfByte)
+  public VasQuickUpdateEngine.TagItemInfo getItemInfo(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bdsc.class);
-    localNewIntent.putExtra("req_type", 4);
-    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    a("getItemInfo", paramLong, paramString);
+    return null;
+  }
+  
+  public boolean isFileExists(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    a("isFileExists", paramLong, paramString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdsa
  * JD-Core Version:    0.7.0.1
  */

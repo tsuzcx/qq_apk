@@ -1,42 +1,64 @@
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.text.TextPaint;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.QzoneModuleConst;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import cooperation.qzone.util.NetworkState;
+import java.util.List;
 
 public class bjin
-  extends bjgx
+  extends bjic
 {
-  protected float a;
-  protected String a;
+  public bjin(QzoneModuleManager paramQzoneModuleManager) {}
   
-  public bjin(int paramInt1, int paramInt2, TextPaint paramTextPaint, String paramString, RectF paramRectF, float paramFloat)
+  private void a()
   {
-    super(paramInt1, paramInt2, paramTextPaint, paramRectF);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    if (paramCanvas == null) {
+    if (!NetworkState.isWifiConn())
+    {
+      QLog.w("QzoneModuleManager", 1, "isWifiConn:false,so stop update.");
       return;
     }
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_JavaLangString.length();
-    float f1 = paramInt1;
-    float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-    float f3 = paramInt2;
-    float f4 = this.jdField_a_of_type_Float;
-    paramCanvas.drawText(str, 0, i, f2 + f1, this.jdField_a_of_type_AndroidGraphicsRectF.top + (f3 + f4), this.jdField_a_of_type_AndroidTextTextPaint);
+    QzoneModuleManager.access$008(this.a);
+    for (;;)
+    {
+      if (QzoneModuleManager.access$000(this.a) < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
+      {
+        String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(QzoneModuleManager.access$000(this.a));
+        if (this.a.checkIfNeedUpdate(str)) {
+          this.a.updateModule(str, this);
+        }
+      }
+      else
+      {
+        if (QzoneModuleManager.access$000(this.a) != QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size()) {
+          break;
+        }
+        QLog.i("QzoneModuleManager", 1, "updateAllModules completed--totalModules:" + QzoneModuleManager.access$000(this.a));
+        return;
+      }
+      QzoneModuleManager.access$008(this.a);
+    }
   }
   
-  public void a(Canvas paramCanvas, bjgv parambjgv, int paramInt1, int paramInt2)
+  public void onDownloadCanceled(String paramString)
   {
-    parambjgv.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRectF, paramInt1, paramInt2);
+    super.onDownloadCanceled(paramString);
+    a();
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    super.onDownloadFailed(paramString);
+    a();
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    super.onDownloadSucceed(paramString);
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjin
  * JD-Core Version:    0.7.0.1
  */

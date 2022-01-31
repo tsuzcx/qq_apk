@@ -1,38 +1,77 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 
 public class okr
-  implements View.OnClickListener
+  implements appt
 {
-  public okr(ReadInJoyCommentLikeView paramReadInJoyCommentLikeView) {}
+  public okr(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void onClick(View paramView)
+  public void a(appw paramappw)
   {
-    if (onh.j()) {}
-    while (ReadInJoyCommentLikeView.a(this.a) == null) {
+    if ((paramappw instanceof aptm))
+    {
+      paramappw = (aptm)paramappw;
+      Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramappw.a(localContext, localContext.getResources().getDisplayMetrics().density));
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      ReadInJoyCommentComponentFragment.a(this.a);
       return;
     }
-    if (ReadInJoyCommentLikeView.a(this.a).isLiked()) {
-      if (ReadInJoyCommentLikeView.a(this.a) != null) {
-        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 0, 0);
-      }
-    }
+    ReadInJoyBaseDeliverActivity.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramappw, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
+  }
+  
+  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
+  
+  public boolean a(appw paramappw)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart() == 0) {}
     for (;;)
     {
-      ReadInJoyCommentLikeView.a(this.a, ReadInJoyCommentLikeView.a(this.a));
-      ReadInJoyCommentLikeView.a(this.a);
       return;
-      if (ReadInJoyCommentLikeView.a(this.a) != null) {
-        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 1, 0);
+      try
+      {
+        Editable localEditable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
+        int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart();
+        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
   }
+  
+  public void b(appw paramappw) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,208 +1,186 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.data.StrangerInfo;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
+import com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo;
+import com.tencent.protobuf.nearbyPeopleRecommend.nearbyPeopleRecommend.QueryRspItem;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.RspBody;
 
 public class altb
+  implements alkr
 {
-  private static boolean a;
+  protected void a() {}
   
-  private static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(ArkAppCenter.d());
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(".crash_file");
-    return localStringBuilder.toString();
-  }
+  protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString) {}
   
-  public static void a()
+  protected void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg, Object paramObject) {}
+  
+  public void a(List<nearbyPeopleRecommend.QueryRspItem> paramList) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString1, String paramString2, String paramString3) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, String paramString) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, oidb_0x8dd.RspBody paramRspBody, ToServiceMsg paramToServiceMsg, List<Object> paramList) {}
+  
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo) {}
+  
+  protected void a(boolean paramBoolean, NearbyMyTabCard paramNearbyMyTabCard) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong) {}
+  
+  public void a(boolean paramBoolean, String paramString1, List<auwl> paramList, String paramString2, int paramInt1, int paramInt2) {}
+  
+  protected void a(boolean paramBoolean1, ArrayList<StrangerInfo> paramArrayList, byte[] paramArrayOfByte, int paramInt, long paramLong1, String paramString, boolean paramBoolean2, long paramLong2, long paramLong3) {}
+  
+  protected void a(boolean paramBoolean, List<ilive_feeds_near_anchor.NearAnchorInfo> paramList) {}
+  
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte) {}
+  
+  public void b() {}
+  
+  protected void b(boolean paramBoolean, int paramInt, String paramString) {}
+  
+  protected void b(boolean paramBoolean, int paramInt, oidb_0x8dd.RspBody paramRspBody, ToServiceMsg paramToServiceMsg, List<Object> paramList) {}
+  
+  public void b(boolean paramBoolean, NearbyMyTabCard paramNearbyMyTabCard) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = 0;
-    try
+    switch (paramInt)
     {
-      a = true;
-      Object localObject1 = ArkAppCenter.d();
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.CrashProtect", 2, "profiling clearAllCrashProtectedMark");
-      }
-      localObject1 = new File((String)localObject1);
-      if (localObject1 != null)
+    }
+    do
+    {
+      do
       {
-        localObject1 = ((File)localObject1).listFiles();
-        if ((localObject1 != null) && (localObject1.length > 0))
+        do
         {
-          int j = localObject1.length;
-          while (i < j)
+          do
           {
-            Object localObject3 = localObject1[i];
-            String str = localObject3.getName();
-            if ((str != null) && (str.contains(".crash_file")))
+            do
             {
-              if (QLog.isColorLevel()) {
-                QLog.e("ArkApp.CrashProtect", 2, new Object[] { "profiling clearCrashProtectedMark app=", str });
-              }
-              localObject3.delete();
-            }
-            i += 1;
-          }
-        }
-      }
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      Object[] arrayOfObject;
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              return;
+                            } while (paramObject == null);
+                            paramObject = (Object[])paramObject;
+                          } while (paramObject.length != 3);
+                          a((FromServiceMsg)paramObject[0], (ToServiceMsg)paramObject[1], (Object[])paramObject[2]);
+                          return;
+                        } while (paramObject == null);
+                        arrayOfObject = (Object[])paramObject;
+                      } while (arrayOfObject.length < 4);
+                      int i = ((Integer)arrayOfObject[0]).intValue();
+                      paramObject = null;
+                      if ((arrayOfObject[1] instanceof oidb_0x8dd.RspBody)) {
+                        paramObject = (oidb_0x8dd.RspBody)arrayOfObject[1];
+                      }
+                      ToServiceMsg localToServiceMsg = null;
+                      if ((arrayOfObject[2] instanceof ToServiceMsg)) {
+                        localToServiceMsg = (ToServiceMsg)arrayOfObject[2];
+                      }
+                      List localList = null;
+                      if ((arrayOfObject[3] instanceof List)) {
+                        localList = (List)arrayOfObject[3];
+                      }
+                      if (paramInt == 1)
+                      {
+                        b(paramBoolean, i, paramObject, localToServiceMsg, localList);
+                        return;
+                      }
+                      a(paramBoolean, i, paramObject, localToServiceMsg, localList);
+                      return;
+                      a();
+                      return;
+                      if ((paramBoolean) && ((paramObject instanceof Object[])))
+                      {
+                        a(paramBoolean, (NearbyMyTabCard)((Object[])(Object[])paramObject)[0]);
+                        return;
+                      }
+                      a(false, null);
+                      return;
+                      paramObject = (Object[])paramObject;
+                      if ((paramBoolean) && (paramObject != null))
+                      {
+                        b(true, (NearbyMyTabCard)paramObject[0]);
+                        return;
+                      }
+                      b(false, null);
+                      return;
+                    } while ((!paramBoolean) || (paramObject == null));
+                    a(true, (byte[])paramObject);
+                    return;
+                    if ((paramBoolean == true) && (paramObject != null))
+                    {
+                      paramObject = (Object[])paramObject;
+                      a(true, new LBSInfo(String.valueOf(paramObject[0]), String.valueOf(paramObject[1]), String.valueOf(paramObject[2]), String.valueOf(paramObject[3]), String.valueOf(paramObject[4]), String.valueOf(paramObject[5]), String.valueOf(paramObject[6]), String.valueOf(paramObject[7]), ((Integer)paramObject[8]).doubleValue(), ((Integer)paramObject[9]).doubleValue(), ((Integer)paramObject[10]).doubleValue(), (String[])paramObject[11]));
+                      return;
+                    }
+                    a(false, null);
+                    return;
+                  } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
+                  paramObject = (Object[])paramObject;
+                  a(((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), (String)paramObject[7]);
+                  return;
+                } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
+                paramObject = (Object[])paramObject;
+                a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), (String)paramObject[8]);
+                return;
+                paramObject = (Object[])paramObject;
+                a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
+                return;
+                paramObject = (Object[])paramObject;
+                a(paramBoolean, (ArrayList)paramObject[0], (byte[])paramObject[1], ((Integer)paramObject[2]).intValue(), ((Long)paramObject[3]).longValue(), (String)paramObject[4], ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue(), ((Long)paramObject[7]).longValue());
+                return;
+              } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
+              paramObject = (Object[])paramObject;
+              a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), ((Integer)paramObject[8]).intValue(), (String)paramObject[9], (String)paramObject[10], (String)paramObject[11]);
+              return;
+            } while (!(paramObject instanceof Object[]));
+            paramObject = (Object[])paramObject;
+            a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+            return;
+          } while (!(paramObject instanceof Object[]));
+          paramObject = (Object[])paramObject;
+          b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+          return;
+        } while (!(paramObject instanceof Object[]));
+        a(paramBoolean, (List)((Object[])(Object[])paramObject)[0]);
+        return;
+        b();
+        return;
+      } while (!(paramObject instanceof Object[]));
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
       return;
-    }
-    finally {}
-  }
-  
-  /* Error */
-  public static boolean a(String paramString)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: getstatic 46	altb:a	Z
-    //   8: ifne +87 -> 95
-    //   11: aload_0
-    //   12: invokestatic 13	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   15: ifne +80 -> 95
-    //   18: aload_0
-    //   19: invokestatic 86	altb:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: astore_3
-    //   23: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   26: ifeq +31 -> 57
-    //   29: ldc 54
-    //   31: iconst_2
-    //   32: iconst_4
-    //   33: anewarray 4	java/lang/Object
-    //   36: dup
-    //   37: iconst_0
-    //   38: ldc 88
-    //   40: aastore
-    //   41: dup
-    //   42: iconst_1
-    //   43: aload_0
-    //   44: aastore
-    //   45: dup
-    //   46: iconst_2
-    //   47: ldc 90
-    //   49: aastore
-    //   50: dup
-    //   51: iconst_3
-    //   52: aload_3
-    //   53: aastore
-    //   54: invokestatic 78	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   57: new 29	java/io/File
-    //   60: dup
-    //   61: aload_3
-    //   62: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
-    //   65: astore_0
-    //   66: aload_0
-    //   67: invokevirtual 93	java/io/File:createNewFile	()Z
-    //   70: istore_2
-    //   71: iload_2
-    //   72: ifeq +18 -> 90
-    //   75: ldc 2
-    //   77: monitorexit
-    //   78: iload_1
-    //   79: ireturn
-    //   80: astore_0
-    //   81: ldc 54
-    //   83: iconst_1
-    //   84: ldc 95
-    //   86: aload_0
-    //   87: invokestatic 98	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   90: iconst_0
-    //   91: istore_1
-    //   92: goto -17 -> 75
-    //   95: iconst_0
-    //   96: istore_1
-    //   97: goto -22 -> 75
-    //   100: astore_0
-    //   101: ldc 2
-    //   103: monitorexit
-    //   104: aload_0
-    //   105: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	106	0	paramString	String
-    //   1	96	1	bool1	boolean
-    //   70	2	2	bool2	boolean
-    //   22	40	3	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   66	71	80	java/io/IOException
-    //   5	57	100	finally
-    //   57	66	100	finally
-    //   66	71	100	finally
-    //   81	90	100	finally
-  }
-  
-  public static boolean b(String paramString)
-  {
-    boolean bool1 = true;
-    for (;;)
-    {
-      try
-      {
-        if ((!a) && (!TextUtils.isEmpty(paramString)))
-        {
-          String str = a(paramString);
-          if (QLog.isColorLevel()) {
-            QLog.e("ArkApp.CrashProtect", 2, new Object[] { "profiling clearCrashProtectedMark appname=", paramString, ",filePath=", str });
-          }
-          boolean bool2 = new File(str).delete();
-          if (bool2) {
-            return bool1;
-          }
-        }
-        else
-        {
-          bool1 = false;
-          continue;
-        }
-        bool1 = false;
-      }
-      finally {}
-    }
-  }
-  
-  public static boolean c(String paramString)
-  {
-    boolean bool = true;
-    for (;;)
-    {
-      try
-      {
-        if ((!a) && (!TextUtils.isEmpty(paramString)))
-        {
-          String str = a(paramString);
-          if (QLog.isColorLevel()) {
-            QLog.e("ArkApp.CrashProtect", 2, new Object[] { "profiling isAppCrash appname=", paramString, ",filePath=", str });
-          }
-          if (new File(str).exists())
-          {
-            QLog.e("ArkApp.CrashProtect", 1, new Object[] { "profiling find preload crashed app=", paramString, ",filePath=", str });
-            return bool;
-          }
-        }
-        else
-        {
-          bool = false;
-          continue;
-        }
-        bool = false;
-      }
-      finally {}
-    }
+    } while (!(paramObject instanceof Object[]));
+    a((List)((Object[])(Object[])paramObject)[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     altb
  * JD-Core Version:    0.7.0.1
  */

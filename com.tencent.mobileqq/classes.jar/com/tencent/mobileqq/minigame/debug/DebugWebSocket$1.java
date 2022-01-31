@@ -1,32 +1,31 @@
 package com.tencent.mobileqq.minigame.debug;
 
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
-import com.squareup.okhttp.ws.WebSocket;
-import com.squareup.okhttp.ws.WebSocketListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import okio.Buffer;
+import javax.annotation.Nullable;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
 
 class DebugWebSocket$1
-  implements WebSocketListener
+  extends WebSocketListener
 {
   DebugWebSocket$1(DebugWebSocket paramDebugWebSocket) {}
   
-  public void onClose(int paramInt, String paramString)
+  public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
   {
+    super.onClosed(paramWebSocket, paramInt, paramString);
     if (this.this$0.mOutListener != null) {
       this.this$0.mOutListener.onSocketClose(this.this$0, paramInt);
     }
     QLog.e(this.this$0.TAG, 1, "---onClose---code: " + paramInt + ",reason:" + paramString);
   }
   
-  public void onFailure(IOException paramIOException, Response paramResponse)
+  public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
   {
     if (paramResponse != null) {}
     for (int i = paramResponse.code();; i = 0)
     {
-      QLog.e(this.this$0.TAG, 1, "onFailure", paramIOException);
+      QLog.e(this.this$0.TAG, 1, "onFailure", paramThrowable);
       if (this.this$0.mOutListener != null) {
         this.this$0.mOutListener.onSocketFailure(this.this$0, i);
       }
@@ -34,15 +33,10 @@ class DebugWebSocket$1
     }
   }
   
-  public void onMessage(ResponseBody paramResponseBody)
+  public void onMessage(WebSocket paramWebSocket, String paramString)
   {
-    if (paramResponseBody != null) {}
-    for (paramResponseBody = paramResponseBody.string() + "";; paramResponseBody = "")
-    {
-      if (this.this$0.mOutListener != null) {
-        this.this$0.mOutListener.onSocketMessage(this.this$0, paramResponseBody);
-      }
-      return;
+    if (this.this$0.mOutListener != null) {
+      this.this$0.mOutListener.onSocketMessage(this.this$0, paramString);
     }
   }
   
@@ -53,15 +47,10 @@ class DebugWebSocket$1
       this.this$0.mOutListener.onSocketOpened(this.this$0);
     }
   }
-  
-  public void onPong(Buffer paramBuffer)
-  {
-    QLog.e(this.this$0.TAG, 1, "onPong");
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.debug.DebugWebSocket.1
  * JD-Core Version:    0.7.0.1
  */

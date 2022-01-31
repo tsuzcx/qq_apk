@@ -1,13 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import java.util.HashMap;
 
-public abstract interface aqzx
+public class aqzx
 {
-  public abstract boolean a(View paramView, String paramString, HotPicData paramHotPicData);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  private int c;
+  public long c;
+  public long d;
+  
+  public aqzx()
+  {
+    this.jdField_c_of_type_Int = 3;
+  }
+  
+  public HashMap<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("param_SubReason", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("param_XTFReceiverType", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_Suffix", String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localHashMap.put("param_TargetUin", String.valueOf(this.jdField_c_of_type_Long));
+    localHashMap.put("param_TargetType", String.valueOf(this.jdField_b_of_type_Int));
+    localHashMap.put("param_FileSize", String.valueOf(this.d));
+    localHashMap.put("param_TranferPlatform", String.valueOf(this.jdField_c_of_type_Int));
+    return localHashMap;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzx
  * JD-Core Version:    0.7.0.1
  */

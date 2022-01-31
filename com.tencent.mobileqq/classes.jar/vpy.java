@@ -1,45 +1,99 @@
-import android.content.Context;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class vpy
-  extends vpr
+  extends SimpleJob<Object>
 {
-  protected EditVideoParams a;
-  public String c;
-  
-  public vpy(int paramInt1, String paramString, int paramInt2)
+  public vpy(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, boolean paramBoolean1, int paramInt1, Long paramLong, boolean paramBoolean2, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3, int paramInt5, int paramInt6, int paramInt7, vse paramvse, long paramLong1, String paramString4, String paramString5)
   {
-    super(paramInt1, paramString, paramInt2);
+    super(paramString1);
   }
   
-  public vpy(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super(paramInt1, paramString, paramInt2);
-    this.a = paramEditVideoParams;
-  }
-  
-  @NonNull
-  public Class<? extends vps> a()
-  {
-    return vqa.class;
-  }
-  
-  @NonNull
-  public vps a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new vqa(this, paramContext, paramViewGroup, null);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    int i = 0;
+    paramJobContext = "0";
+    int j;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      j = 200;
+      i = this.jdField_a_of_type_Int;
+      paramVarArgs = String.valueOf(i) + "*";
+      paramJobContext = paramVarArgs;
+      i = j;
+      if (this.jdField_a_of_type_JavaLangLong != null)
+      {
+        paramJobContext = paramVarArgs + String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_JavaLangLong.longValue());
+        i = j;
+      }
+      if ((i != 0) && (i != 7) && ((i != 200) || (this.jdField_a_of_type_Int < 6) || (this.jdField_a_of_type_Int > 10))) {
+        break label509;
+      }
+      if (this.jdField_d_of_type_Int != 1) {
+        break label503;
+      }
+      paramVarArgs = "1";
+      label138:
+      if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString)) || (i == 0)) {
+        break label532;
+      }
+      wsv.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "reportDevPlayerDone, errorCode=%d, suError=%s => treat as success => 300", new Object[] { Integer.valueOf(i), paramJobContext });
+      j = 300;
+      String str = String.valueOf(i) + "*";
+      paramJobContext = str + paramJobContext;
+    }
+    for (;;)
+    {
+      wta.b("play_video", "play_result", this.e, j, new String[] { paramJobContext, paramVarArgs, wta.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      wta.b("play_video", "play_buffering", this.e, j, new String[] { String.valueOf(this.f), String.valueOf(this.g), wta.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      if (this.jdField_a_of_type_Vse.jdField_a_of_type_Long > 0L) {
+        wta.b("play_video", "play_bitRate", this.e, j, new String[] { paramJobContext, this.jdField_a_of_type_Vse.toString(), wta.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        i = 1;
+      }
+      for (;;)
+      {
+        if (i != 0)
+        {
+          long l = 0L;
+          if (this.jdField_a_of_type_Long != 0L) {
+            l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+          }
+          wta.b("sdk_download_video", "video_download_error", this.e, j, new String[] { this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, String.valueOf(i), String.valueOf(l) });
+        }
+        return null;
+        if (!this.jdField_b_of_type_Boolean) {
+          break;
+        }
+        i = this.jdField_b_of_type_Int;
+        paramJobContext = String.valueOf(this.jdField_c_of_type_Int);
+        break;
+        label503:
+        paramVarArgs = "2";
+        break label138;
+        label509:
+        paramVarArgs = "0";
+        break label138;
+        if (this.jdField_b_of_type_Boolean) {
+          i = 2;
+        } else {
+          i = 0;
+        }
+      }
+      label532:
+      j = i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpy
  * JD-Core Version:    0.7.0.1
  */

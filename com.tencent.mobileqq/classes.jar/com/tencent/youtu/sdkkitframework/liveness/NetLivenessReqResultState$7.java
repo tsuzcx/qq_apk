@@ -1,22 +1,22 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
 import java.util.HashMap;
 
 class NetLivenessReqResultState$7
-  implements YtSDKKitFramework.IYtSDKKitNetResponseParser
+  extends HashMap<String, Object>
 {
-  NetLivenessReqResultState$7(NetLivenessReqResultState paramNetLivenessReqResultState) {}
-  
-  public void onNetworkResponseEvent(HashMap<String, String> paramHashMap, Exception paramException)
+  NetLivenessReqResultState$7(NetLivenessReqResultState paramNetLivenessReqResultState, Exception paramException)
   {
-    NetLivenessReqResultState.access$100(this.this$0, paramHashMap, paramException);
-    NetLivenessReqResultState.access$200(this.this$0);
+    put("ui_action", "process_finished");
+    put("ui_tips", "rst_failed");
+    put("process_action", "failed");
+    put("error_code", Integer.valueOf(2097153));
+    put("message", this.val$e.getMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.NetLivenessReqResultState.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,33 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acfw
-  extends akil
+public final class acfw
+  implements DialogInterface.OnClickListener
 {
-  public acfw(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public acfw(long paramLong, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean1, acgy paramacgy, Bundle paramBundle, boolean paramBoolean2) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a.sendEmptyMessage(1);
-      }
-    }
-    while ((paramInt1 != 2) || (paramInt2 != 0)) {
+    boolean bool = false;
+    paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
+    if (paramInt == 1)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Acgy, this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    asfd.a().b(paramString, this.a.app);
-    this.a.c();
-  }
-  
-  protected void b(String paramString)
-  {
-    this.a.c();
+    if (!this.b) {
+      bool = true;
+    }
+    ChatActivityUtils.a(paramDialogInterface, bool, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfw
  * JD-Core Version:    0.7.0.1
  */

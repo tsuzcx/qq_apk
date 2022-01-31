@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import akiz;
+import amap;
 import com.tencent.qphone.base.util.QLog;
 
 class HotWordsForSubBussFragment$1$1
@@ -13,7 +13,7 @@ class HotWordsForSubBussFragment$1$1
     if (this.jdField_a_of_type_ArrayOfByte != null)
     {
       QLog.d(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 1, "use cache!");
-      this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment$1.this$0.jdField_a_of_type_Akiz.a(null, 1000, this.jdField_a_of_type_ArrayOfByte);
+      this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment$1.this$0.jdField_a_of_type_Amap.a(null, 1000, this.jdField_a_of_type_ArrayOfByte);
     }
     while (this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment$1.a) {
       return;
@@ -21,12 +21,12 @@ class HotWordsForSubBussFragment$1$1
     if (QLog.isColorLevel()) {
       QLog.d(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "hot word list cache is null！");
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment$1.this$0.jdField_a_of_type_Akiz.a();
+    this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment$1.this$0.jdField_a_of_type_Amap.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

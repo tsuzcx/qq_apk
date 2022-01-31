@@ -1,70 +1,38 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class rkr
-  implements rkh
+class rkr
+  implements rje
 {
-  public static String a(String paramString, ImageData paramImageData)
+  rkr(rkp paramrkp) {}
+  
+  public List<qyp> a(List<VideoInfo> paramList)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramImageData.a)) {}
-    while (!((Boolean)bhvy.a("sp_native_web_sharpp_pic_switch", Boolean.valueOf(false))).booleanValue()) {
-      return paramString;
-    }
-    if (paramString.contains("fmt=gif"))
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
     {
-      paramImageData.a = false;
-      return paramString;
-    }
-    paramImageData = bfnx.a(paramString);
-    if (paramImageData.containsKey("tp"))
-    {
-      paramImageData = (String)paramImageData.get("tp");
-      paramString = paramString.replace("tp=" + paramImageData, "tp=sharp");
-    }
-    for (;;)
-    {
-      QLog.d(paf.a, 2, "sharpSupport, url : " + paramString);
-      return paramString;
-      if (paramImageData.size() > 0) {
-        paramString = paramString + "&tp=sharp";
-      } else {
-        paramString = paramString + "?tp=sharp";
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (VideoInfo)paramList.next();
+        if (localObject != null)
+        {
+          localObject = qys.a((VideoInfo)localObject);
+          if (localObject != null) {
+            localArrayList.add(rqj.a((BaseArticleInfo)localObject, true));
+          }
+        }
       }
     }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return paramString.contains("tp=sharp");
-  }
-  
-  public int a(BaseData paramBaseData)
-  {
-    return 1;
-  }
-  
-  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    return new rks(LayoutInflater.from(paramContext).inflate(2131559920, null), paramBaseData);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.p == 3;
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkr
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Window;
-import bffw;
-import bfgl;
+import bhib;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 
 public class MiniTranslucentFragmentActivity
   extends MiniFragmentActivity
 {
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends MiniBaseFragment> paramClass, int paramInt)
   {
-    bffw.a(paramActivity, paramIntent, MiniTranslucentFragmentActivity.class, paramClass, paramInt);
+    bhib.a(paramActivity, paramIntent, MiniTranslucentFragmentActivity.class, paramClass, paramInt);
   }
   
   public static void a(Context paramContext, Intent paramIntent, Class<? extends MiniBaseFragment> paramClass)
@@ -31,7 +31,7 @@ public class MiniTranslucentFragmentActivity
   public void onCreate(@Nullable Bundle paramBundle)
   {
     getWindow().addFlags(67108864);
-    bfgl.b(this);
+    DisplayUtil.setActivityTransparent(this);
     super.onCreate(paramBundle);
   }
   
@@ -42,7 +42,7 @@ public class MiniTranslucentFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniTranslucentFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

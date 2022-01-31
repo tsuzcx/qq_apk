@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.question.bean;
 
-import auko;
+import awbv;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.oidb.cmd0xbe7.oidb_cmd0xbe7.QuestionInfo;
 
 public class QuestionSquareBean
-  extends auko
+  extends awbv
 {
   public int answerNum;
   public int fanNum;
@@ -68,7 +68,7 @@ public class QuestionSquareBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.question.bean.QuestionSquareBean
  * JD-Core Version:    0.7.0.1
  */

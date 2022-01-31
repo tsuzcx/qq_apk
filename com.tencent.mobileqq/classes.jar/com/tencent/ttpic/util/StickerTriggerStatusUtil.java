@@ -1,6 +1,6 @@
 package com.tencent.ttpic.util;
 
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
+import com.tencent.ttpic.trigger.TRIGGERED_STATUS;
 import java.util.HashMap;
 
 public class StickerTriggerStatusUtil

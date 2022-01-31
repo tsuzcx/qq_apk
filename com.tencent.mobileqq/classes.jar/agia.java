@@ -1,19 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.AnimationView;
 
 public class agia
-  extends atzn
+  extends aelt
 {
-  public agia(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    AvatarPendantActivity.a(this.a);
-  }
+  public long a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public AnimationView a;
+  public RelativeLayout b;
+  public TextView b;
+  public AnimationView b;
+  public String b = "";
+  public RelativeLayout c;
+  public RelativeLayout d;
+  public RelativeLayout e;
+  public RelativeLayout f;
+  public RelativeLayout g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agia
  * JD-Core Version:    0.7.0.1
  */

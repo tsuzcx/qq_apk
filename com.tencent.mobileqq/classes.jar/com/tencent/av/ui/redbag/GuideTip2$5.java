@@ -5,24 +5,24 @@ import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.widget.RelativeLayout;
-import mpk;
+import mse;
 
 public class GuideTip2$5
   implements Runnable
 {
-  public GuideTip2$5(mpk parammpk, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2) {}
+  public GuideTip2$5(mse parammse, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2) {}
   
   public void run()
   {
     Object localObject = this.this$0.a();
     if (localObject != null)
     {
-      localObject = (RelativeLayout)((Activity)localObject).findViewById(2131367238);
+      localObject = (RelativeLayout)((Activity)localObject).findViewById(2131367368);
       if (Build.VERSION.SDK_INT < 16) {
         break label118;
       }
-      ((RelativeLayout)localObject).findViewById(2131367239).setBackground(null);
-      ((RelativeLayout)localObject).findViewById(2131367240).setBackground(null);
+      ((RelativeLayout)localObject).findViewById(2131367369).setBackground(null);
+      ((RelativeLayout)localObject).findViewById(2131367370).setBackground(null);
     }
     for (;;)
     {
@@ -39,14 +39,14 @@ public class GuideTip2$5
       }
       return;
       label118:
-      ((RelativeLayout)localObject).findViewById(2131367239).setBackgroundDrawable(null);
-      ((RelativeLayout)localObject).findViewById(2131367240).setBackgroundDrawable(null);
+      ((RelativeLayout)localObject).findViewById(2131367369).setBackgroundDrawable(null);
+      ((RelativeLayout)localObject).findViewById(2131367370).setBackgroundDrawable(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.redbag.GuideTip2.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import amwo;
-import bgyp;
+import aonv;
+import bizm;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 class ChatSettingForTroop$3
@@ -11,13 +11,13 @@ class ChatSettingForTroop$3
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Amwn = amwo.a();
-    bgyp.b(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    this.this$0.jdField_a_of_type_Aonu = aonv.a();
+    bizm.b(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.3
  * JD-Core Version:    0.7.0.1
  */

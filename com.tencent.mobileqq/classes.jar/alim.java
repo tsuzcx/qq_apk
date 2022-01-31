@@ -1,32 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import java.util.Deque;
 
-final class alim
-  implements aysb
+public class alim
+  implements PopupWindow.OnDismissListener
 {
-  public void a(aysy paramaysy, aysz paramaysz)
+  public alim(ApolloPanel paramApolloPanel) {}
+  
+  public void onDismiss()
   {
-    if ((paramaysy == null) || (paramaysz == null)) {}
-    while (!(paramaysy instanceof ayrx)) {
-      return;
-    }
-    ayrx localayrx = (ayrx)paramaysy;
-    localayrx.jdField_a_of_type_Long += paramaysz.c;
-    paramaysz.c = 0L;
-    paramaysz = "bytes=" + localayrx.jdField_a_of_type_Long + "-";
-    localayrx.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
-    paramaysz = localayrx.jdField_a_of_type_JavaLangString;
-    if (paramaysz.contains("range="))
+    this.a.a = null;
+    if ((ApolloPanel.a(this.a) != null) && (ApolloPanel.a(this.a).size() > 0))
     {
-      paramaysz = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
-      localayrx.jdField_a_of_type_JavaLangString = (paramaysz + "range=" + localayrx.jdField_a_of_type_Long);
+      alir localalir = (alir)ApolloPanel.a(this.a).poll();
+      if (ApolloPanel.a(this.a).size() == 0) {
+        ApolloPanel.a(this.a, null);
+      }
+      if (localalir != null) {
+        ApolloPanel.a(this.a, localalir.jdField_a_of_type_AndroidViewView, localalir.jdField_a_of_type_Int, localalir.jdField_a_of_type_JavaLangString, localalir.b);
+      }
     }
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((ayrx)paramaysy).jdField_a_of_type_JavaLangString + ", offset=" + localayrx.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alim
  * JD-Core Version:    0.7.0.1
  */

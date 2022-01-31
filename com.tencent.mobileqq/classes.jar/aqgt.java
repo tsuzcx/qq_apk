@@ -1,50 +1,22 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Pair;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
-class aqgt
-  implements baxz
+public class aqgt
+  implements DialogInterface.OnClickListener
 {
-  aqgt(aqgr paramaqgr) {}
+  public aqgt(FMActivity paramFMActivity) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (aqgr.a(this.a) == null) {}
-    while (aqgr.a(this.a).a()) {
-      return;
-    }
-    paramInt2 = aqgr.a(this.a).findFirstVisibleItemPosition();
-    int i = aqgr.a(this.a).getChildCount();
-    paramInt1 = 1;
-    label74:
-    if (paramInt1 < i) {
-      if (((String)((Pair)aqgr.a(this.a).a.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
-      {
-        aqgy localaqgy = (aqgy)aqgr.a(this.a).getChildViewHolder(aqgr.a(this.a).getChildAt(paramInt1));
-        if (!(localaqgy instanceof aqgx)) {
-          break label170;
-        }
-        ((aqgx)localaqgy).a.setImageBitmap(paramBitmap);
-      }
-    }
-    for (;;)
-    {
-      paramInt1 += 1;
-      break label74;
-      break;
-      label170:
-      QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "onDecodeTaskCompleted viewHolder in wrong instance ! ");
-    }
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,11 @@
 package com.tencent.qqmini.sdk.ui;
 
-import android.os.Bundle;
-import bfgl;
-
 public class MiniActivity1
   extends MiniActivity
-{
-  protected void onCreate(Bundle paramBundle)
-  {
-    bfgl.b(this);
-    super.onCreate(paramBundle);
-  }
-}
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniActivity1
  * JD-Core Version:    0.7.0.1
  */

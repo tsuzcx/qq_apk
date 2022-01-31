@@ -1,29 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-class xkj
+public class xkj
+  implements xkk
 {
-  xkj(xki paramxki, String paramString) {}
-  
-  @QQPermissionDenied(1)
-  public void denied()
+  public void a(@NonNull ArrayList<xkl> paramArrayList, @NonNull Context paramContext)
   {
-    this.jdField_a_of_type_Xki.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    akuf.a(new xkk(this, "webview"));
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationPlugin", 2, "SosoInterface.startLocation");
+    int i = 0;
+    while (i < xkl.a.length)
+    {
+      paramArrayList.add(new xkl(paramContext.getResources().getDrawable(xkl.b[i]), 0, xkl.a[i]));
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkj
  * JD-Core Version:    0.7.0.1
  */

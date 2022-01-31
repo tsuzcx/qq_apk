@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import aztn;
+import bbrw;
 
 public class TroopFileDownloadMgr$8
   implements Runnable
 {
-  public TroopFileDownloadMgr$8(aztn paramaztn, int paramInt) {}
+  public TroopFileDownloadMgr$8(bbrw parambbrw, int paramInt) {}
   
   public void run()
   {

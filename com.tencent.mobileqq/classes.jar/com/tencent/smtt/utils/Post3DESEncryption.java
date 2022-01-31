@@ -13,7 +13,6 @@ import javax.crypto.spec.DESedeKeySpec;
 public class Post3DESEncryption
 {
   private static final String Algorithm = "DESede/ECB/PKCS5Padding";
-  private static final String Publickey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcEQ3TCNWPBqgIiY7WQ/IqTOTTV2w8aZ/GPm68FK0fAJBemZKtYR3Li46VJ+Hwnor7ZpQnblGWPFaLv5JoPqvavgB0GInuhm+T+syPs1mw0uPLWaqwvZsCfoaIvUuxy5xHJgmWARrK4/9pHyDxRlZte0PCIoR1ko5B8lVVH1X1dQIDAQAB";
   private static final String RSA_NO_PADDING = "RSA/ECB/NoPadding";
   private static byte[] desBytes = null;
   private static String deskeys;
@@ -35,7 +34,10 @@ public class Post3DESEncryption
     }
     desBytes = ((String)localObject + deskeys).getBytes();
     this.mRSAEncryptCipher = Cipher.getInstance("RSA/ECB/NoPadding");
-    localObject = new X509EncodedKeySpec(Base64.decode("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcEQ3TCNWPBqgIiY7WQ/IqTOTTV2w8aZ/GPm68FK0fAJBemZKtYR3Li46VJ+Hwnor7ZpQnblGWPFaLv5JoPqvavgB0GInuhm+T+syPs1mw0uPLWaqwvZsCfoaIvUuxy5xHJgmWARrK4/9pHyDxRlZte0PCIoR1ko5B8lVVH1X1dQIDAQAB".getBytes(), 0));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getStr1());
+    ((StringBuilder)localObject).append(getStr2());
+    localObject = new X509EncodedKeySpec(Base64.decode(((StringBuilder)localObject).toString().getBytes(), 0));
     localObject = KeyFactory.getInstance("RSA").generatePublic((KeySpec)localObject);
     this.mRSAEncryptCipher.init(1, (Key)localObject);
     keyValue = bytesToHex(this.mRSAEncryptCipher.doFinal(desBytes));
@@ -108,6 +110,16 @@ public class Post3DESEncryption
     return null;
   }
   
+  private String getStr1()
+  {
+    return "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcEQ3TCNWPBqgIiY7WQ/IqTOTTV2w8aZ/GPm68FK0";
+  }
+  
+  private String getStr2()
+  {
+    return "fAJBemZKtYR3Li46VJ+Hwnor7ZpQnblGWPFaLv5JoPqvavgB0GInuhm+T+syPs1mw0uPLWaqwvZsCfoaIvUuxy5xHJgmWARrK4/9pHyDxRlZte0PCIoR1ko5B8lVVH1X1dQIDAQAB";
+  }
+  
   public static byte[] hexToBytes(String paramString)
   {
     paramString = paramString.toCharArray();
@@ -167,7 +179,7 @@ public class Post3DESEncryption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.utils.Post3DESEncryption
  * JD-Core Version:    0.7.0.1
  */

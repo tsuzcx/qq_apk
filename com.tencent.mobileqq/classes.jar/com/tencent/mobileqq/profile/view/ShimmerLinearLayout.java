@@ -12,7 +12,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.LinearLayout;
-import aval;
+import awry;
 import com.tencent.qphone.base.util.QLog;
 
 public class ShimmerLinearLayout
@@ -78,7 +78,7 @@ public class ShimmerLinearLayout
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.c + this.jdField_b_of_type_Int);
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aval(this, i, j, k, m, null));
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new awry(this, i, j, k, m, null));
           localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
           continue;
           i = -this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
@@ -257,7 +257,7 @@ public class ShimmerLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ShimmerLinearLayout
  * JD-Core Version:    0.7.0.1
  */

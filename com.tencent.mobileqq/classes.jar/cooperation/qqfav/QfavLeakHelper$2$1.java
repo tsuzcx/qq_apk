@@ -1,28 +1,28 @@
 package cooperation.qqfav;
 
-import bgqc;
-import bgqd;
+import abqn;
+import birb;
+import birc;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zzq;
 
 public class QfavLeakHelper$2$1
   implements Runnable
 {
-  public QfavLeakHelper$2$1(bgqd parambgqd) {}
+  public QfavLeakHelper$2$1(birc parambirc) {}
   
   public void run()
   {
-    Object localObject1 = zzq.a("mobile_Qfav_leak");
+    Object localObject1 = abqn.a("mobile_Qfav_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      bgqc.a((String)localObject2);
+      birb.a((String)localObject2);
     }
     try
     {
@@ -46,7 +46,7 @@ public class QfavLeakHelper$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.QfavLeakHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

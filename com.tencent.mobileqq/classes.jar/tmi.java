@@ -1,62 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.Iterator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
+import java.util.ArrayList;
 import java.util.List;
 
-public class tmi
-  extends sys<tof>
+public abstract interface tmi
+  extends taw<tmj>
 {
-  public static final String a;
-  public List<String> a;
+  public abstract int a();
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.feed_feature_775");
-  }
+  public abstract int a(int paramInt);
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
+  public abstract List<tmv> a(ArrayList paramArrayList);
   
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
-    try
-    {
-      localRspGetBatchFeedFeature.mergeFrom(paramArrayOfByte);
-      return new tof(localRspGetBatchFeedFeature);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
   
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str)) {
-        localReqGetBatchFeedFeature.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
-    }
-    return localReqGetBatchFeedFeature.toByteArray();
-  }
+  public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmi
  * JD-Core Version:    0.7.0.1
  */

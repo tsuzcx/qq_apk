@@ -1,22 +1,21 @@
-import android.support.annotation.Nullable;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class bipk
-  implements bjos<bipq>
+public class bipk
+  implements DialogInterface.OnClickListener
 {
-  bipk(bipi parambipi) {}
+  public bipk(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void a(@Nullable bipq parambipq)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (parambipq == null) {
-      return;
-    }
-    bipi.d(this.a).setSelected(parambipq.a());
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bipk
  * JD-Core Version:    0.7.0.1
  */

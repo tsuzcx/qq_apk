@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -15,13 +15,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
-import auos;
-import ayou;
-import ayvx;
-import aywb;
-import aywc;
-import bbfj;
-import bfnk;
+import awga;
+import bamp;
+import batw;
+import baua;
+import baub;
+import bdee;
+import bhoe;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -29,8 +29,8 @@ import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import vek;
-import vel;
+import wtc;
+import wtd;
 
 public class CommonPicUploadFragment
   extends PublicBaseFragment
@@ -39,8 +39,8 @@ public class CommonPicUploadFragment
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   protected Dialog a;
-  aywb jdField_a_of_type_Aywb = new vel(this);
-  private bfnk jdField_a_of_type_Bfnk;
+  baua jdField_a_of_type_Baua = new wtd(this);
+  private bhoe jdField_a_of_type_Bhoe;
   public BaseActivity a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
@@ -108,9 +108,9 @@ public class CommonPicUploadFragment
   {
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131755791);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558929);
-      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new vek(this));
+      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131755801);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558966);
+      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new wtc(this));
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager().getDefaultDisplay();
       WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
       localLayoutParams.width = ((Display)localObject).getWidth();
@@ -118,9 +118,9 @@ public class CommonPicUploadFragment
       this.jdField_a_of_type_AndroidAppDialog.getWindow().setAttributes(localLayoutParams);
       this.jdField_a_of_type_AndroidAppDialog.show();
     }
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371557);
+    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371874);
     if (TextUtils.isEmpty(paramString)) {
-      ((TextView)localObject).setText(2131719291);
+      ((TextView)localObject).setText(2131719772);
     }
     for (;;)
     {
@@ -143,7 +143,7 @@ public class CommonPicUploadFragment
     }
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(1003);
+      this.jdField_a_of_type_Bhoe.sendEmptyMessage(1003);
       if (QLog.isColorLevel()) {
         QLog.d("CommonPicUploadFragment", 2, "startUploadPic empty path!");
       }
@@ -156,14 +156,14 @@ public class CommonPicUploadFragment
       if (((File)localObject).exists()) {
         break;
       }
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(1003);
+      this.jdField_a_of_type_Bhoe.sendEmptyMessage(1003);
     } while (!QLog.isColorLevel());
     QLog.d("CommonPicUploadFragment", 2, "startUploadPic file not exist, path=" + paramString);
     return;
     this.jdField_a_of_type_Long = ((File)localObject).length();
-    if (!bbfj.g(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
+    if (!bdee.g(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
     {
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(1004);
+      this.jdField_a_of_type_Bhoe.sendEmptyMessage(1004);
       return;
     }
     this.jdField_a_of_type_JavaLangString = "";
@@ -174,7 +174,7 @@ public class CommonPicUploadFragment
     {
       localCompressInfo = new CompressInfo(paramString, 0);
       localCompressInfo.f = 0;
-      if (!auos.a(localCompressInfo)) {
+      if (!awga.a(localCompressInfo)) {
         QLog.d("CommonPicUploadFragment", 1, "CompressOperator failed");
       }
       if (TextUtils.isEmpty(localCompressInfo.jdField_e_of_type_JavaLangString))
@@ -190,18 +190,18 @@ public class CommonPicUploadFragment
     for (;;)
     {
       paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      this.jdField_a_of_type_Aywb.addFilter(new Class[] { ayou.class });
-      paramString.a(this.jdField_a_of_type_Aywb);
-      localObject = new aywc();
-      ((aywc)localObject).jdField_a_of_type_Boolean = true;
-      ((aywc)localObject).jdField_c_of_type_Int = a(this.jdField_a_of_type_Int);
-      ((aywc)localObject).i = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Baua.addFilter(new Class[] { bamp.class });
+      paramString.a(this.jdField_a_of_type_Baua);
+      localObject = new baub();
+      ((baub)localObject).jdField_a_of_type_Boolean = true;
+      ((baub)localObject).jdField_c_of_type_Int = a(this.jdField_a_of_type_Int);
+      ((baub)localObject).i = this.jdField_a_of_type_JavaLangString;
       this.jdField_d_of_type_Long = ((Math.random() * 1000000.0D));
-      ((aywc)localObject).jdField_a_of_type_Long = this.jdField_d_of_type_Long;
-      ((aywc)localObject).jdField_c_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-      ((aywc)localObject).jdField_b_of_type_Int = 24;
-      ((aywc)localObject).jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_Int);
-      paramString.a((aywc)localObject);
+      ((baub)localObject).jdField_a_of_type_Long = this.jdField_d_of_type_Long;
+      ((baub)localObject).jdField_c_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+      ((baub)localObject).jdField_b_of_type_Int = 24;
+      ((baub)localObject).jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_Int);
+      paramString.a((baub)localObject);
       return;
       localObject = localCompressInfo.jdField_e_of_type_JavaLangString;
       break;
@@ -220,7 +220,7 @@ public class CommonPicUploadFragment
       return false;
     case 1001: 
       a();
-      a(ajya.a(2131702243));
+      a(alpo.a(2131702615));
       return true;
     case 1002: 
     case 1003: 
@@ -260,7 +260,7 @@ public class CommonPicUploadFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_Bfnk = new bfnk(this);
+    this.jdField_a_of_type_Bhoe = new bhoe(this);
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getExtras().getString("upload_pic_path");
     this.jdField_b_of_type_Boolean = paramBundle.getExtras().getBoolean("upload_pic_need_compress", false);
@@ -288,14 +288,14 @@ public class CommonPicUploadFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bfnk != null) {
-      this.jdField_a_of_type_Bfnk.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Bhoe != null) {
+      this.jdField_a_of_type_Bhoe.removeCallbacksAndMessages(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,25 @@
 import android.app.Activity;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.10;
 
-class atmk
-  implements atvx
+public class atmk
+  implements DialogInterface.OnClickListener
 {
-  atmk(atmj paramatmj) {}
+  public atmk(LocationDialogUtil.10 param10) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
+    if (atmi.a(this.a.a))
     {
-      atvs localatvs = (atvs)this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263);
-      if (localatvs != null) {
-        localatvs.d(paramString);
-      }
-      atlw.a(this.a.a.a, paramString);
-      if ((this.a.a.a.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity)) {
-        ((BaseActivity)this.a.a.a.jdField_a_of_type_AndroidViewView.getContext()).finish();
-      }
-      return;
+      this.a.a.finish();
+      atmi.a("");
     }
-    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131708266), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmk
  * JD-Core Version:    0.7.0.1
  */

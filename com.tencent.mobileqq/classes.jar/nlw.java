@@ -1,145 +1,64 @@
-import android.content.Context;
-import android.os.Handler;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.NativeAd.util.ADVideoFeedsVideoAppDownlodManager.1;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
 
-public class nlw
-  extends nlt
+class nlw
+  implements URLDrawable.DownloadListener
 {
-  private VideoFeedsRecyclerView a;
+  nlw(nlv paramnlv) {}
   
-  public nlw(Context paramContext, boolean paramBoolean, VideoFeedsRecyclerView paramVideoFeedsRecyclerView)
+  public void onFileDownloadFailed(int paramInt)
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView = paramVideoFeedsRecyclerView;
-  }
-  
-  protected void a()
-  {
-    super.a();
-    Object localObject = bicp.a().a();
-    if ((localObject == null) || (((List)localObject).isEmpty())) {}
-    for (;;)
+    synchronized ()
     {
-      return;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      String str = (String)nlv.a(this.a).get(0);
+      nlv.a(this.a).remove(0);
+      if (nlv.b(this.a) != null)
       {
-        bich localbich = (bich)((Iterator)localObject).next();
-        if ((localbich instanceof nlw)) {
-          bicp.a().b(localbich);
+        if (!nlv.b(this.a).contains(str)) {
+          break label119;
+        }
+        nlv.b(this.a).remove(str);
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(delete) url:" + str);
         }
       }
-    }
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo, int paramInt)
-  {
-    super.a(paramDownloadInfo, paramInt);
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        qjc localqjc = (qjc)localIterator.next();
-        if ((localqjc.d != null) && (localqjc.d.equals(paramDownloadInfo.e)) && (localqjc.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData != null))
-        {
-          localqjc.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.b = paramInt;
-          localqjc.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.c = paramDownloadInfo.f;
-          a(localqjc, paramInt, paramDownloadInfo.f);
-        }
-      }
-      return;
-    }
-    catch (Exception paramDownloadInfo)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramDownloadInfo.getMessage());
-    }
-  }
-  
-  public void a(WadlResult paramWadlResult, int paramInt)
-  {
-    super.a(paramWadlResult, paramInt);
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        qjc localqjc = (qjc)localIterator.next();
-        if ((localqjc.d != null) && (localqjc.jdField_a_of_type_JavaLangString.equals(paramWadlResult.a.jdField_a_of_type_JavaLangString)) && (localqjc.d.equals(paramWadlResult.a.j)) && (localqjc.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData != null))
-        {
-          localqjc.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.b = a(paramWadlResult);
-          localqjc.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.c = paramWadlResult.d;
-          if (!TextUtils.isEmpty(paramWadlResult.b)) {
-            localqjc.i = paramWadlResult.b;
-          }
-          a(localqjc, paramInt, paramWadlResult.d);
-        }
-      }
-      return;
-    }
-    catch (Exception paramWadlResult)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramWadlResult.getMessage());
-    }
-  }
-  
-  public void a(qjc paramqjc, int paramInt1, int paramInt2)
-  {
-    super.a(paramqjc, paramInt1, paramInt2);
-    if ((paramqjc == null) || (paramqjc.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData == null)) {
-      return;
-    }
-    Object localObject = (LinearLayoutManager)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getLayoutManager();
-    int j = ((LinearLayoutManager)localObject).findLastVisibleItemPosition();
-    int i = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
-    label45:
-    if (i < j + 1)
-    {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getLayoutManager().findViewByPosition(i);
-      if (localObject != null) {
-        break label82;
-      }
-    }
-    label82:
-    do
-    {
+      label119:
       do
       {
-        do
-        {
-          i += 1;
-          break label45;
-          break;
-          localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getChildViewHolder((View)localObject);
-        } while (!(localObject instanceof qmp));
-        localObject = (qmp)localObject;
-      } while ((((qmp)localObject).q == null) || (((qmp)localObject).q.getVisibility() != 0));
-      localObject = (VideoInfo.GameAdComData)((qmp)localObject).q.getTag(2131379213);
-    } while ((localObject == null) || (!"2".equals(((VideoInfo.GameAdComData)localObject).r)) || (!paramqjc.d.equals(((VideoInfo.GameAdComData)localObject).d)));
-    ((VideoInfo.GameAdComData)localObject).c = paramqjc.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.c;
-    ((VideoInfo.GameAdComData)localObject).b = paramqjc.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.b;
-    paramqjc = ((qlp)((bfzx)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.getAdapter()).a()).a();
-    this.b.post(new ADVideoFeedsVideoAppDownlodManager.1(this, paramqjc, paramInt1, paramInt2));
+        nlv.a(this.a, null);
+        nlv.a(this.a);
+        return;
+        nlv.a(this.a).add(str);
+        nlv.b(this.a).add(str);
+      } while (!QLog.isColorLevel());
+      QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(retry) url:" + str);
+    }
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    synchronized ()
+    {
+      String str = (String)nlv.a(this.a).get(0);
+      nlv.a(this.a).remove(0);
+      if ((nlv.b(this.a) != null) && (nlv.b(this.a).contains(str))) {
+        nlv.b(this.a).remove(str);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadSucceed url:" + str);
+      }
+      nlv.a(this.a, null);
+      nlv.a(this.a);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nlw
  * JD-Core Version:    0.7.0.1
  */

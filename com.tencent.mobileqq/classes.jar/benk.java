@@ -1,37 +1,49 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.View;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-class benk
+public class benk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  public benk(ParticipleView paramParticipleView) {}
   
-  private void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
+    long l = System.currentTimeMillis();
+    paramValueAnimator = ParticipleView.a(this.a).iterator();
+    int i = 1;
+    if (paramValueAnimator.hasNext())
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
-      if ((localDrawable instanceof GradientDrawable)) {
-        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
+      beno localbeno = (beno)paramValueAnimator.next();
+      float f = Math.min((float)(l - beno.a(localbeno)) / ParticipleView.a(this.a), 1.0F);
+      beno.a(localbeno, f);
+      if (f < 1.0F) {
+        i = 0;
+      }
+      for (;;)
+      {
+        break;
+        paramValueAnimator.remove();
       }
     }
-    else
+    if (i != 0)
     {
-      return;
+      ParticipleView.a(this.a).cancel();
+      ParticipleView.a(this.a, null);
+      ParticipleView.a(this.a).clear();
+      if (QLog.isColorLevel()) {
+        QLog.d("ParticipleView", 2, "selectedAnimation end cancel");
+      }
     }
-    betc.c("BrandColorManager", "set band border-color fail");
-  }
-  
-  void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     benk
  * JD-Core Version:    0.7.0.1
  */

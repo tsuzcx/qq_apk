@@ -1,38 +1,46 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class afjs
-  extends Handler
+class afjs
+  implements bhqd
 {
-  private WeakReference<NewFriendActivity> a;
+  afjs(afjq paramafjq, bhpy parambhpy) {}
   
-  public afjs(NewFriendActivity paramNewFriendActivity)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramNewFriendActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
-    if (localNewFriendActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Bhpy.dismiss();
+    switch (paramInt)
     {
     default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      localNewFriendActivity.a(paramMessage.arg1);
       return;
     }
-    localNewFriendActivity.finish();
+    String str;
+    if (this.jdField_a_of_type_Afjq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006)
+    {
+      str = this.jdField_a_of_type_Afjq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      paramView = null;
+    }
+    for (;;)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_Afjq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Afjq.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afjq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Afjq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, str, true, this.jdField_a_of_type_Afjq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, null);
+      str = ChatActivityUtils.a(this.jdField_a_of_type_Afjq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      paramView = str;
+      if (str == null) {
+        paramView = "";
+      }
+      azmj.b(this.jdField_a_of_type_Afjq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "12", paramView, "", "");
+      azmj.b(this.jdField_a_of_type_Afjq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
+      return;
+      paramView = this.jdField_a_of_type_Afjq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      str = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afjs
  * JD-Core Version:    0.7.0.1
  */

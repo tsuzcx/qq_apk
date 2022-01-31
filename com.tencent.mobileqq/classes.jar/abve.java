@@ -1,14 +1,21 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONObject;
 
 public class abve
+  extends abvg
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  public abve(TestAppFragment paramTestAppFragment) {}
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    super.onSuccess(paramJSONObject);
+    paramJSONObject.optString("openid", "");
+    this.a.a.a("getAppFriends", null, new abvf(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abve
  * JD-Core Version:    0.7.0.1
  */

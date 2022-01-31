@@ -1,36 +1,14 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.data.TroopInfo;
 
-class ahjq
-  implements WtTicketPromise
+public class ahjq
 {
-  ahjq(ahjk paramahjk, ahjr paramahjr) {}
-  
-  public void Done(Ticket paramTicket)
-  {
-    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
-    {
-      paramTicket = new String(paramTicket._sig);
-      this.jdField_a_of_type_Ahjr.a(paramTicket);
-      return;
-    }
-    this.jdField_a_of_type_Ahjk.c("get skey is null");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Ahjk.c("get skey failed");
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Ahjk.c("get skey time out");
-  }
+  public int a;
+  public TroopInfo a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjq
  * JD-Core Version:    0.7.0.1
  */

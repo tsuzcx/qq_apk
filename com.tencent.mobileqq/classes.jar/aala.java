@@ -1,29 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
 
 public class aala
-  implements View.OnClickListener
+  extends aalc
 {
-  public aala(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
+  public int a;
+  public View a;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    paramView = (ImageView)paramView.findViewById(2131367799);
-    if (paramView != null)
-    {
-      int i = 0;
-      if (paramView.getVisibility() == 0) {
-        i = 4;
-      }
-      paramView.setVisibility(i);
-    }
+    return " \nlpcYby " + this.jdField_a_of_type_Int + " videoViewScaleXby " + this.jdField_a_of_type_Float + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aala
  * JD-Core Version:    0.7.0.1
  */

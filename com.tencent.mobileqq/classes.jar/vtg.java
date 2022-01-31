@@ -1,37 +1,18 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class vtg
+class vtg
+  implements vuc
 {
-  TroopInfo a;
-  public boolean a;
+  vtg(vte paramvte, vru paramvru, Object paramObject) {}
   
-  public vtg(boolean paramBoolean, TroopInfo paramTroopInfo)
+  public boolean a(vtz paramvtz, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
-  }
-  
-  public static ArrayList<vtg> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
-  {
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
-      vtg localvtg = new vtg(false, localTroopInfo);
-      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
-        localvtg.jdField_a_of_type_Boolean = true;
-      }
-      localArrayList.add(localvtg);
-      i += 1;
-    }
-    return localArrayList;
+    return this.jdField_a_of_type_Vru.a(this.jdField_a_of_type_Vte, 0, paramInt1, this.jdField_a_of_type_Vte.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vtg
  * JD-Core Version:    0.7.0.1
  */

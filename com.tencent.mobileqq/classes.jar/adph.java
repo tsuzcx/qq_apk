@@ -1,40 +1,57 @@
+import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder.3.1;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class adph
-  implements bfph
+  extends Handler
 {
-  adph(adpg paramadpg, int paramInt, MessageForFile paramMessageForFile, bfpc parambfpc, BaseChatItemLayout paramBaseChatItemLayout, adpn paramadpn) {}
+  public adph(RegisterActivity paramRegisterActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Int != -1) {
-      this.jdField_a_of_type_Adpg.b.post(new FilePicItemBuilder.3.1(this));
-    }
-    for (;;)
+    this.a.c();
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Bfpc.cancel();
-      return;
-      paramView = apug.a(this.jdField_a_of_type_Adpg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
-      if (paramView.status == 16)
+    case -1: 
+    case 0: 
+    case 2: 
+    default: 
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+      do
       {
-        aptx.a(2131692857);
-        this.jdField_a_of_type_Bfpc.cancel();
         return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
-      apug.a(this.jdField_a_of_type_Adpg.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Adpg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-      this.jdField_a_of_type_Adpg.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Adpn, paramView, false);
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Byte = ((byte)(paramMessage.jdField_a_of_type_Byte + 1));
+        this.a.a();
+        return;
+        this.a.d();
+        return;
+        this.a.b();
+        return;
+      } while (this.a.jdField_a_of_type_JavaLangString == null);
+      Toast.makeText(this.a.getApplicationContext(), this.a.jdField_a_of_type_JavaLangString, 1).show();
+      this.a.jdField_a_of_type_JavaLangString = null;
+      return;
+    case 6: 
+      paramMessage = paramMessage.getData().getString("url");
+      this.a.a(paramMessage);
+      return;
+    case 7: 
+      this.a.a(paramMessage.getData().getString("telNum"), paramMessage.getData().getString("msg"));
+      return;
     }
+    this.a.jdField_a_of_type_Byte = 3;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adph
  * JD-Core Version:    0.7.0.1
  */

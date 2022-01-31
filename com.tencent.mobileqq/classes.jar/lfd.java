@@ -1,26 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-
-class lfd
-  extends BroadcastReceiver
+public class lfd
 {
-  lfd(lfc paramlfc) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  String jdField_a_of_type_JavaLangString = null;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString = null;
+  long jdField_c_of_type_Long = 0L;
+  String jdField_c_of_type_JavaLangString = null;
+  String d = null;
+  String e = null;
+  String f = null;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    int i = paramIntent.getIntExtra("level", 0);
-    if ((lfc.a(this.a) != null) && (lfc.a(this.a).a != null))
-    {
-      ((liw)lfc.a(this.a).a(4)).a(i);
-      liu.a(18, i);
-    }
-  }
+  public lfd(lfc paramlfc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfd
  * JD-Core Version:    0.7.0.1
  */

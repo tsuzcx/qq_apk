@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import ajya;
+import alpo;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.ShortcutInfo;
@@ -10,8 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Icon;
 import android.os.Build.VERSION;
 import android.os.PersistableBundle;
-import bbkd;
-import bdis;
+import bdix;
+import bfhq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -37,11 +37,11 @@ final class ShortcutUtils$3
         if (ShortcutUtils.isShortcutCreated_O(this.val$apkgInfo.appId, localShortcutManager))
         {
           QLog.i("Shortcut", 1, "Shortcut has created before!");
-          bdis.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
+          bfhq.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
           if (this.val$callback == null) {
             break;
           }
-          this.val$callback.onAddResult(0, ajya.a(2131714025));
+          this.val$callback.onAddResult(0, alpo.a(2131714397));
           return;
         }
         if (!localShortcutManager.isRequestPinShortcutSupported()) {
@@ -60,7 +60,7 @@ final class ShortcutUtils$3
           if (this.val$callback == null) {
             break;
           }
-          this.val$callback.onAddResult(1, ajya.a(2131714021));
+          this.val$callback.onAddResult(1, alpo.a(2131714393));
           return;
         }
       }
@@ -72,17 +72,17 @@ final class ShortcutUtils$3
       if (this.val$callback == null) {
         break;
       }
-      this.val$callback.onAddResult(0, ajya.a(2131714016));
+      this.val$callback.onAddResult(0, alpo.a(2131714388));
       return;
       label302:
-      if (bbkd.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
+      if (bdix.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
       {
         QLog.i("Shortcut", 1, "Shortcut has created before!");
-        bdis.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
+        bfhq.a().a(this.val$apkgInfo.apkgName + "\"快捷方式已存在");
         if (this.val$callback == null) {
           break;
         }
-        this.val$callback.onAddResult(0, ajya.a(2131714013));
+        this.val$callback.onAddResult(0, alpo.a(2131714385));
         return;
       }
       Intent localIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
@@ -92,20 +92,20 @@ final class ShortcutUtils$3
       localIntent.putExtra("android.intent.extra.shortcut.INTENT", ShortcutUtils.access$000(this.val$activity, this.val$apkgInfo));
       this.val$activity.sendBroadcast(localIntent);
       Thread.sleep(1000L);
-      if (bbkd.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
+      if (bdix.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.val$apkgInfo.apkgName }))
       {
-        bdis.a().a("已创建\"" + this.val$apkgInfo.apkgName + "\"快捷方式到桌面");
+        bfhq.a().a("已创建\"" + this.val$apkgInfo.apkgName + "\"快捷方式到桌面");
         if (this.val$callback == null) {
           break;
         }
-        this.val$callback.onAddResult(0, ajya.a(2131714015));
+        this.val$callback.onAddResult(0, alpo.a(2131714387));
         return;
       }
       ShortcutUtils.access$200(this.val$activity);
       if (this.val$callback == null) {
         break;
       }
-      this.val$callback.onAddResult(1, ajya.a(2131714024));
+      this.val$callback.onAddResult(1, alpo.a(2131714396));
       return;
       label597:
       boolean bool = false;
@@ -114,7 +114,7 @@ final class ShortcutUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.ShortcutUtils.3
  * JD-Core Version:    0.7.0.1
  */

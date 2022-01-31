@@ -1,26 +1,24 @@
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.liveroom.LiveRoomGiftCallback;
 
 class ofl
-  implements ViewBase.OnClickListener
+  implements LiveRoomGiftCallback
 {
-  ofl(ofb paramofb, ViewBase paramViewBase) {}
+  ofl(ofi paramofi) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onCall(int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase instanceof oki)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().setBackgroundColor(Color.parseColor("#DBE5EF"));
-    }
-    if (this.jdField_a_of_type_Ofb.jdField_a_of_type_Ohs != null) {
-      this.jdField_a_of_type_Ofb.jdField_a_of_type_Ohs.a(this.jdField_a_of_type_Ofb.jdField_a_of_type_Ohs.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView(), this.jdField_a_of_type_Ofb.jdField_a_of_type_Oif, new ofm(this));
+    if (paramInt == 7)
+    {
+      QLog.d("KandianAdPandent", 2, "Vpng play completion!");
+      ofi.a(this.a).sendEmptyMessage(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofl
  * JD-Core Version:    0.7.0.1
  */

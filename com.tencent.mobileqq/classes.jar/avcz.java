@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.1.1;
-import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class avcz
-  implements avdf
+class avcz
+  implements View.OnClickListener
 {
-  avcz(avcy paramavcy) {}
+  avcz(avcw paramavcw) {}
   
-  public void a(List<PushDialogTemplate> paramList)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new AIOPushDialogHelper.1.1(this, paramList));
+    this.a.h(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avcz
  * JD-Core Version:    0.7.0.1
  */

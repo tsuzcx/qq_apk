@@ -1,21 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class amdv
-  implements View.OnClickListener
+public final class amdv
+  implements bapw
 {
-  public amdv(BusinessCardEditActivity paramBusinessCardEditActivity) {}
-  
-  public void onClick(View paramView)
+  public void a(baqv parambaqv, baqw parambaqw)
   {
-    paramView = (amea)paramView.getTag();
-    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
+    if ((parambaqv == null) || (parambaqw == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambaqv instanceof baps));
+      parambaqv = (baps)parambaqv;
+      parambaqv.jdField_a_of_type_Long += parambaqw.c;
+      parambaqw.c = 0L;
+      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
+      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
+      if (parambaqw.contains("range="))
+      {
+        String str = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
+        parambaqv.jdField_a_of_type_JavaLangString = (str + "range=" + parambaqv.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + parambaqw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdv
  * JD-Core Version:    0.7.0.1
  */

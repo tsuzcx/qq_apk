@@ -1,41 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.qphone.base.util.QLog;
-
-public class anqp
-  extends Handler
+public abstract interface anqp
 {
-  public anqp(Client paramClient, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.a.onRespFromServer(paramMessage.getData());
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
-      return;
-      this.a.onPushMsgFromServer(paramMessage.getData());
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqp
  * JD-Core Version:    0.7.0.1
  */

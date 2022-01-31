@@ -1,89 +1,69 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-final class azcd
-  implements BusinessObserver
+class azcd
+  extends BroadcastReceiver
 {
-  azcd(azce paramazce) {}
+  azcd(azcc paramazcc) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    String str = localContext.getString(2131696569);
-    Object localObject2 = null;
-    int i = -1;
-    if (paramBoolean) {
-      paramInt = i;
-    }
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
     for (;;)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        paramInt = i;
-        localObject1 = new WebSsoBody.WebSsoResponseBody();
-        paramInt = i;
-        ((WebSsoBody.WebSsoResponseBody)localObject1).mergeFrom(paramBundle);
-        paramInt = i;
-        i = ((WebSsoBody.WebSsoResponseBody)localObject1).ret.get();
-        paramInt = i;
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject1).data.get());
-        if (i == 0) {
-          continue;
-        }
-        paramInt = i;
-        str = paramBundle.optString("msg");
-        localObject1 = localObject2;
-        paramBundle = str;
-        paramInt = i;
-        if (TextUtils.isEmpty(str))
-        {
-          paramInt = i;
-          paramBundle = localContext.getString(2131696570, new Object[] { Integer.valueOf(i) });
-          localObject1 = localObject2;
-        }
-        localObject2 = localObject1;
-        paramInt = i;
-        localObject1 = paramBundle;
-        paramBundle = localObject2;
-      }
-      catch (Exception paramBundle)
-      {
-        Object localObject1 = localContext.getString(2131696570, new Object[] { Integer.valueOf(9992) });
-        paramBundle = null;
+      return;
+      if (!"tencent.video.gesturemgr.notify".equals(paramIntent.getAction())) {
         continue;
       }
-      this.a.a(paramInt, (String)localObject1, paramBundle);
-      return;
-      paramInt = i;
-      localObject1 = azcb.a(paramBundle.getJSONObject("result").optJSONArray("feeds"));
-      paramBundle = str;
-      continue;
-      paramInt = i;
-      localObject1 = localContext.getString(2131696570, new Object[] { Integer.valueOf(9991) });
-      paramBundle = null;
-      paramInt = -1;
-      continue;
-      paramInt = i;
-      localObject1 = localContext.getString(2131696570, new Object[] { Integer.valueOf(9992) });
-      paramBundle = null;
-      paramInt = -1;
+      int i = paramIntent.getIntExtra("Event_Progress", 0);
+      if ((i == 100) || (i < 0))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+        int j = this.a.jdField_a_of_type_Int;
+        this.a.jdField_a_of_type_Int = azce.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+        boolean bool;
+        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
+        {
+          bool = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("QavGesture", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGesture[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
+          }
+          paramIntent = new ArrayList();
+        }
+        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+        {
+          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+          ??? = paramIntent.iterator();
+          while (???.hasNext()) {
+            ((azby)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
+          }
+          bool = false;
+        }
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGesture", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
+      }
+      paramIntent = new ArrayList();
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      {
+        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        ??? = paramIntent.iterator();
+        if (!???.hasNext()) {
+          continue;
+        }
+        ((azby)???.next()).a(i);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azcd
  * JD-Core Version:    0.7.0.1
  */

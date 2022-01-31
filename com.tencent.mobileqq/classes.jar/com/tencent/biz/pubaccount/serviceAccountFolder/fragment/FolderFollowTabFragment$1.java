@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
 import android.os.Message;
 import mqq.os.MqqHandler;
-import saz;
+import ssp;
 
 public class FolderFollowTabFragment$1
   implements Runnable
 {
-  FolderFollowTabFragment$1(FolderFollowTabFragment paramFolderFollowTabFragment, saz paramsaz) {}
+  FolderFollowTabFragment$1(FolderFollowTabFragment paramFolderFollowTabFragment, ssp paramssp) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class FolderFollowTabFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.1
  * JD-Core Version:    0.7.0.1
  */

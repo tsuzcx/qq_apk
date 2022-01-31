@@ -1,20 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.Callable;
 
 class asuo
-  implements DialogInterface.OnKeyListener
+  implements Callable<File>
 {
   asuo(asun paramasun) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public File a()
   {
-    return paramInt == 4;
+    try
+    {
+      boolean bool = asun.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("shadow::CdnPmUpdater", 2, "isNeedDownload:" + bool);
+      }
+      if (!bool)
+      {
+        localFile = this.a.getLatest();
+        return localFile;
+      }
+      File localFile = this.a.a();
+      return localFile;
+    }
+    finally
+    {
+      asun.a(this.a, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asuo
  * JD-Core Version:    0.7.0.1
  */

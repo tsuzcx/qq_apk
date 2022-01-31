@@ -1,32 +1,21 @@
-import android.text.Spanned;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class qgp
-  implements Comparator<Object>
+class qgp
+  implements View.OnClickListener
 {
-  private Spanned a;
+  qgp(qgo paramqgo, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public qgp(Spanned paramSpanned)
+  public void onClick(View paramView)
   {
-    this.a = paramSpanned;
-  }
-  
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    int i = this.a.getSpanStart(paramObject1);
-    int j = this.a.getSpanStart(paramObject2);
-    if (i > j) {
-      return 1;
-    }
-    if (i < j) {
-      return -1;
-    }
-    return 0;
+    String str = String.format("https://viola.qq.com/js/redpackIndex.js?_rij_violaUrl=1&hideNav=1&statusColor=1&statusBarStyle=1&v_nav_immer=1&v_tid=6&v_bundleName=redpackIndex&v_bid=3740&redpack_type=%d&plat_source=%d&jump_source=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
+    ors.a(paramView.getContext(), str);
+    this.jdField_a_of_type_Qgo.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qgp
  * JD-Core Version:    0.7.0.1
  */

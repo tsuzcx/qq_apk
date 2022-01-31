@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import airx;
+import akji;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionData;
@@ -15,12 +15,12 @@ class ApolloLinearLayout$1
     if ((this.this$0.a == null) || (this.this$0.a.a == null)) {
       return;
     }
-    ((airx)this.this$0.a.a.getManager(153)).a(this.a, 4);
+    ((akji)this.this$0.a.a.getManager(153)).a(this.a, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloLinearLayout.1
  * JD-Core Version:    0.7.0.1
  */

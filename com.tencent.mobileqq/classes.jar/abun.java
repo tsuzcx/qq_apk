@@ -1,57 +1,23 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
 public class abun
-  implements View.OnTouchListener
+  extends absj
 {
-  public abun(QQLSActivity paramQQLSActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull absf paramabsf)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "singlelist  click doble");
-        }
-        if (QQLSActivity.a(this.a) != null)
-        {
-          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
-          QQLSActivity.a(this.a, true);
-        }
-        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
-      }
-    }
-    for (;;)
+    switch (paramInt)
     {
+    default: 
       return false;
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLSActivity", 2, "singlelist  click once");
-      }
-      if (QQLSActivity.a(this.a)) {
-        QQLSActivity.b(this.a).setText(2131699104);
-      }
-      for (;;)
-      {
-        paramView = QQLSActivity.a(this.a).obtainMessage(5);
-        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
-        break;
-        QQLSActivity.b(this.a).setText(2131699103);
-      }
-      if (paramMotionEvent.getAction() == 1) {
-        QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
-      }
     }
+    abvm.a(paramabsf, absh.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abun
  * JD-Core Version:    0.7.0.1
  */

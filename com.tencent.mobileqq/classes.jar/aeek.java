@@ -1,32 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-final class aeek
-  implements myy
+public class aeek
+  implements View.OnTouchListener
 {
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
-    }
-    if ((paramInt == 0) && (paramString == null))
-    {
-      paramString = aeeg.a.entrySet().iterator();
-      while (paramString.hasNext()) {
-        ((aeel)((Map.Entry)paramString.next()).getValue()).a(paramInt);
-      }
-      aeeg.a.clear();
-    }
-  }
+  public aeek(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void progress(int paramInt) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent != null) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeek
  * JD-Core Version:    0.7.0.1
  */

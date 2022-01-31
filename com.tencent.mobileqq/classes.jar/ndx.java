@@ -1,39 +1,94 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ndx
-  implements View.OnClickListener
+final class ndx
+  implements BusinessObserver
 {
-  public ndx(EqqAccountDetailActivity paramEqqAccountDetailActivity, nms paramnms, String paramString) {}
+  ndx(Context paramContext, QQAppInterface paramQQAppInterface, bepp parambepp, EqqDetail paramEqqDetail, SessionInfo paramSessionInfo, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Nms.g)) || (TextUtils.isEmpty(this.jdField_a_of_type_Nms.f)))
+    if (QLog.isColorLevel()) {
+      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    mobileqq_mp.FollowResponse localFollowResponse;
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.jdField_a_of_type_JavaLangString, 2, "buildMapItemForEqq no lat or lng");
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localFollowResponse = new mobileqq_mp.FollowResponse();
       }
-      return;
     }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, QQMapActivity.class);
-    paramView.putExtra("lat", this.jdField_a_of_type_Nms.g);
-    paramView.putExtra("lon", this.jdField_a_of_type_Nms.f);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      paramView.putExtra("loc", this.jdField_a_of_type_JavaLangString);
+    for (;;)
+    {
+      try
+      {
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
+          ndv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+          paramBundle = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
+          if (paramBundle != null) {
+            paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d("IVR_TS_CrmUtils", 4, "<<<end follow, ts=" + System.currentTimeMillis());
+          }
+          ndv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+          apwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
+          ndv.a(this.jdField_a_of_type_Bepp);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        ndv.a(this.jdField_a_of_type_Bepp);
+        return;
+      }
+      if (paramInt == 58)
+      {
+        ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695724);
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "PublicAccount_max_limit_false", 0, 0, "", "", "", "");
+      }
+      else if (paramInt == 65)
+      {
+        ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695697);
+      }
+      else if (paramInt == 20)
+      {
+        ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695698);
+      }
+      else
+      {
+        ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        continue;
+        ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        continue;
+        ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695727);
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+      }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
-    axqy.b(EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "", "", "");
-    EqqAccountDetailActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ndx
  * JD-Core Version:    0.7.0.1
  */

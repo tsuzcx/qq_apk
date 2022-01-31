@@ -1,39 +1,23 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import java.util.List;
 
 class akcl
-  implements Comparator<PhoneContact>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  akcl(akcj paramakcj) {}
+  akcl(akck paramakck) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
-    int i = j;
-    if (j == 0)
-    {
-      Object localObject2 = paramPhoneContact1.pinyinFirst;
-      String str = paramPhoneContact2.pinyinFirst;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      j = ((String)localObject1).compareTo((String)localObject2);
-      i = j;
-      if (j == 0) {
-        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-      }
-    }
-    return i;
+    int i = ((Integer)paramCompoundButton.getTag()).intValue();
+    AppletItem localAppletItem = (AppletItem)this.a.a.get(i);
+    akck.a(this.a).a(paramCompoundButton, paramBoolean, localAppletItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcl
  * JD-Core Version:    0.7.0.1
  */

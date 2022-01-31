@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
 import android.os.Message;
-import bemc;
-import bemd;
-import beme;
-import bemf;
-import bemg;
+import bgls;
+import bglt;
+import bglu;
+import bglv;
+import bglw;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -18,7 +18,7 @@ public abstract class AsyncTask<Params, Progress, Result>
 {
   private static final BlockingQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
   public static final Executor a;
-  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new bemc();
+  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new bgls();
   public static final Executor b;
   private static volatile Executor c = jdField_b_of_type_JavaUtilConcurrentExecutor;
   private volatile AsyncTask.Status jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask$Status;
@@ -29,12 +29,12 @@ public abstract class AsyncTask<Params, Progress, Result>
   {
     jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue(10);
     jdField_a_of_type_JavaUtilConcurrentExecutor = new ThreadPoolExecutor(1, 128, 1L, TimeUnit.SECONDS, jdField_a_of_type_JavaUtilConcurrentBlockingQueue, jdField_a_of_type_JavaUtilConcurrentThreadFactory);
-    jdField_b_of_type_JavaUtilConcurrentExecutor = new bemg(null);
+    jdField_b_of_type_JavaUtilConcurrentExecutor = new bglw(null);
   }
   
   private Result a(Result paramResult)
   {
-    beme.a.obtainMessage(1, new bemd(this, new Object[] { paramResult })).sendToTarget();
+    bglu.a.obtainMessage(1, new bglt(this, new Object[] { paramResult })).sendToTarget();
     return paramResult;
   }
   
@@ -76,7 +76,7 @@ public abstract class AsyncTask<Params, Progress, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.thread.AsyncTask
  * JD-Core Version:    0.7.0.1
  */

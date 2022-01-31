@@ -1,49 +1,52 @@
-import android.app.Activity;
-import android.text.Editable;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class auct
-  implements auco
 {
-  public auct(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public Activity a()
+  public auct(String paramString1, String paramString2, String paramString3, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    return this.a;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(View paramView)
+  public int a()
   {
-    if (paramView == null) {
-      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      return;
-      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(String paramString)
+  public String a()
   {
-    this.a.a(paramString);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(boolean paramBoolean)
+  public String b()
   {
-    this.a.jdField_a_of_type_Aucu.a(paramBoolean);
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupGetQrRsp--");
+    localStringBuilder.append(",qr_sig:").append(this.jdField_a_of_type_JavaLangString).append(",token:").append(this.b).append(",encryptKey:").append(this.c).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auct
  * JD-Core Version:    0.7.0.1
  */

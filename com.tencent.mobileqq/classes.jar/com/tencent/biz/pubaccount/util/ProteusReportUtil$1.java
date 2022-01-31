@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.util;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import naj;
+import ndd;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -32,7 +32,7 @@ public final class ProteusReportUtil$1
           try
           {
             Object localObject1;
-            naj.a(BaseActivity.sTopActivity, (String)localObject1, "GET", null, null);
+            ndd.a(BaseActivity.sTopActivity, (String)localObject1, "GET", null, null);
             i += 1;
             continue;
             localJSONException = localJSONException;
@@ -53,7 +53,7 @@ public final class ProteusReportUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ProteusReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

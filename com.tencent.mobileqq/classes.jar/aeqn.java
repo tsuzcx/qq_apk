@@ -1,31 +1,56 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 class aeqn
-  implements bfub
+  extends Animation
 {
-  aeqn(aeqb paramaeqb) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  aeqn(aeql paramaeql) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    aeqb.a(this.a).setPullType(0);
-    aeqb.a(this.a).c(aeqb.i);
-    aeqb.a(this.a, 0, this.a.a.a());
+    float f2 = 1.0F;
+    float f1;
+    if (paramFloat < this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 11.0F)
+    {
+      f1 = paramFloat / (this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 11.0F);
+      if (paramFloat >= this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 6.0F) {
+        break label139;
+      }
+      f2 = 1.0F + paramFloat / (this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 6.0F) * 0.5F;
+    }
+    for (;;)
+    {
+      paramTransformation.setAlpha(f1);
+      paramTransformation.getMatrix().setScale(f2, f2, this.jdField_a_of_type_Float, this.b);
+      return;
+      if (paramFloat < this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 20.0F)
+      {
+        f1 = 1.0F;
+        break;
+      }
+      f1 = 1.0F - (paramFloat - this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 20.0F) / (4.0F * this.jdField_a_of_type_Aeql.jdField_a_of_type_Float);
+      break;
+      label139:
+      if (paramFloat < this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 11.0F) {
+        f2 = 1.5F - (paramFloat - this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 6.0F) * 0.5F / (5.0F * this.jdField_a_of_type_Aeql.jdField_a_of_type_Float);
+      }
+    }
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return false;
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
+    this.b = (paramInt2 * 0.5F);
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqn
  * JD-Core Version:    0.7.0.1
  */

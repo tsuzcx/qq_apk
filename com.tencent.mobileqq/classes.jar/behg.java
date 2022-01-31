@@ -1,16 +1,17 @@
-import com.tencent.common.app.AppInterface;
-import mqq.manager.TicketManager;
+import android.os.Bundle;
 
-public class behg
+public abstract interface behg
+  extends bebx
 {
-  public static String a(AppInterface paramAppInterface)
-  {
-    return ((TicketManager)paramAppInterface.getManager(2)).getSkey(paramAppInterface.getAccount());
-  }
+  public abstract zbj a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     behg
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import vvf;
-import vvg;
+import xjx;
+import xjy;
 
 class AudioCombiner$AudioSegmentLooper
   implements Runnable
@@ -104,7 +104,7 @@ class AudioCombiner$AudioSegmentLooper
           Iterator localIterator2 = AudioCombiner.a(this.this$0).iterator();
           if (localIterator2.hasNext())
           {
-            byte[] arrayOfByte = ((vvf)localIterator2.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + AudioCombiner.b(this.this$0));
+            byte[] arrayOfByte = ((xjx)localIterator2.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + AudioCombiner.b(this.this$0));
             if (arrayOfByte == null) {
               continue;
             }
@@ -147,7 +147,7 @@ class AudioCombiner$AudioSegmentLooper
       }
       Iterator localIterator1 = AudioCombiner.a(this.this$0).iterator();
       while (localIterator1.hasNext()) {
-        ((vvf)localIterator1.next()).a();
+        ((xjx)localIterator1.next()).a();
       }
       if (!QLog.isColorLevel()) {
         break;
@@ -159,7 +159,7 @@ class AudioCombiner$AudioSegmentLooper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.tools.audio.AudioCombiner.AudioSegmentLooper
  * JD-Core Version:    0.7.0.1
  */

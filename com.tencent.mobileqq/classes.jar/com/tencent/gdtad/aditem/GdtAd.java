@@ -1,5 +1,9 @@
 package com.tencent.gdtad.aditem;
 
+import aaid;
+import aaik;
+import aano;
+import aanp;
 import android.content.ContentResolver;
 import android.net.Uri;
 import android.os.Handler;
@@ -7,7 +11,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import axqy;
+import azmj;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.util.AdClickUtil.Result;
@@ -19,6 +23,7 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -43,15 +48,11 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.WeChatAppInfo;
-import ysm;
-import yst;
-import yxo;
-import yxp;
 
 public class GdtAd
   implements Parcelable, Ad, Externalizable
 {
-  public static final Parcelable.Creator<GdtAd> CREATOR = new ysm();
+  public static final Parcelable.Creator<GdtAd> CREATOR = new aaid();
   public static final int REPORT_STATE_FINISHED = 2;
   public static final int REPORT_STATE_INIT = -1;
   public static final int REPORT_STATE_PENDING = 1;
@@ -69,7 +70,7 @@ public class GdtAd
       int i = paramParcel.readInt();
       if (i <= 0)
       {
-        yxp.d("GdtAd", "GdtAd(Parcel in) error");
+        aanp.d("GdtAd", "GdtAd(Parcel in) error");
         return;
       }
       byte[] arrayOfByte = new byte[i];
@@ -81,7 +82,7 @@ public class GdtAd
     }
     catch (Throwable paramParcel)
     {
-      yxp.d("GdtAd", "GdtAd(Parcel in)", paramParcel);
+      aanp.d("GdtAd", "GdtAd(Parcel in)", paramParcel);
     }
   }
   
@@ -115,7 +116,7 @@ public class GdtAd
       try
       {
         Object localObject = new JSONObject(this.info.ext_json.get());
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
         if (localObject == null) {
           continue;
         }
@@ -127,7 +128,7 @@ public class GdtAd
       }
       catch (Throwable localThrowable)
       {
-        yxp.b("GdtAd", "canPreloadForQQMINIProgram", localThrowable);
+        aanp.b("GdtAd", "canPreloadForQQMINIProgram", localThrowable);
       }
     }
   }
@@ -155,7 +156,7 @@ public class GdtAd
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
             bool = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).disable_auto_download.get();
@@ -164,7 +165,7 @@ public class GdtAd
         }
         catch (Throwable localThrowable)
         {
-          yxp.b("GdtAd", "disableAutoDownload", localThrowable);
+          aanp.b("GdtAd", "disableAutoDownload", localThrowable);
         }
       }
     }
@@ -176,6 +177,11 @@ public class GdtAd
       return this.info.report_info.trace_info.aid.get();
     }
     return -2147483648L;
+  }
+  
+  public long getActionSetId()
+  {
+    return this.actionSetId;
   }
   
   public long getAdvertiserId()
@@ -249,7 +255,7 @@ public class GdtAd
           try
           {
             Object localObject = new JSONObject(this.info.ext_json.get());
-            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
             if (localObject != null)
             {
               localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).market_deep_link.get();
@@ -258,7 +264,7 @@ public class GdtAd
           }
           catch (Throwable localThrowable)
           {
-            yxp.b("GdtAd", "getAppMarketDeeplink", localThrowable);
+            aanp.b("GdtAd", "getAppMarketDeeplink", localThrowable);
           }
         }
       }
@@ -280,7 +286,7 @@ public class GdtAd
           try
           {
             Object localObject = new JSONObject(this.info.ext_json.get());
-            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
             if (localObject != null)
             {
               localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).market_package_name.get();
@@ -289,7 +295,7 @@ public class GdtAd
           }
           catch (Throwable localThrowable)
           {
-            yxp.b("GdtAd", "getAppMarketPackageName", localThrowable);
+            aanp.b("GdtAd", "getAppMarketPackageName", localThrowable);
           }
         }
       }
@@ -376,33 +382,33 @@ public class GdtAd
     return -2147483648;
   }
   
-  public yst getImageData()
+  public aaik getImageData()
   {
     if (!isValid()) {
       return null;
     }
-    yst localyst = new yst();
-    localyst.jdField_a_of_type_JavaLangString = this.info.display_info.basic_info.img.get();
-    localyst.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
-    localyst.b = this.info.display_info.basic_info.pic_height.get();
-    if (localyst.a()) {}
+    aaik localaaik = new aaik();
+    localaaik.jdField_a_of_type_JavaLangString = this.info.display_info.basic_info.img.get();
+    localaaik.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
+    localaaik.b = this.info.display_info.basic_info.pic_height.get();
+    if (localaaik.a()) {}
     for (;;)
     {
-      return localyst;
-      localyst = null;
+      return localaaik;
+      localaaik = null;
     }
   }
   
-  public yst getImageData(int paramInt)
+  public aaik getImageData(int paramInt)
   {
     if ((!isValid()) || (paramInt < 0) || (paramInt >= this.info.display_info.muti_pic_text_info.image.size())) {
       return null;
     }
-    yst localyst = new yst();
-    localyst.jdField_a_of_type_JavaLangString = ((String)this.info.display_info.muti_pic_text_info.image.get(paramInt));
-    localyst.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
-    localyst.b = this.info.display_info.basic_info.pic_height.get();
-    return localyst;
+    aaik localaaik = new aaik();
+    localaaik.jdField_a_of_type_JavaLangString = ((String)this.info.display_info.muti_pic_text_info.image.get(paramInt));
+    localaaik.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
+    localaaik.b = this.info.display_info.basic_info.pic_height.get();
+    return localaaik;
   }
   
   public String getNetLogId()
@@ -584,7 +590,7 @@ public class GdtAd
   
   public boolean isCanvas()
   {
-    return ((isAppXiJing()) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json.get()))) || ((getProductType() == 1000) && (getDestType() == 4) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json.get())));
+    return ((!isAppXiJingDefault()) && (!isAppXiJing())) || ((!TextUtils.isEmpty(this.info.dest_info.canvas_json.get())) || ((getProductType() == 1000) && (getDestType() == 4) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json.get()))));
   }
   
   public boolean isHitCanvasVideoCeilingExp()
@@ -604,7 +610,7 @@ public class GdtAd
       try
       {
         Object localObject = new JSONObject(this.info.ext_json.get());
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
         if (localObject == null) {
           continue;
         }
@@ -616,7 +622,7 @@ public class GdtAd
       }
       catch (Throwable localThrowable)
       {
-        yxp.b("GdtAd", "isHitCanvasVideoCeilingExp", localThrowable);
+        aanp.b("GdtAd", "isHitCanvasVideoCeilingExp", localThrowable);
       }
     }
   }
@@ -634,7 +640,7 @@ public class GdtAd
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
             boolean bool = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).no_clkcgi_jump.get();
@@ -643,8 +649,42 @@ public class GdtAd
         }
         catch (Throwable localThrowable)
         {
-          yxp.b("GdtAd", "isHitJumpExperiment", localThrowable);
+          aanp.b("GdtAd", "isHitJumpExperiment", localThrowable);
         }
+      }
+    }
+  }
+  
+  public boolean isInterstitial()
+  {
+    boolean bool = true;
+    if (!isValid()) {}
+    for (;;)
+    {
+      bool = false;
+      do
+      {
+        return bool;
+      } while (this.info.ext.render_pos_type.get() == 2);
+      if (TextUtils.isEmpty(this.info.ext_json.get())) {
+        continue;
+      }
+      try
+      {
+        Object localObject = new JSONObject(this.info.ext_json.get());
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+        if (localObject == null) {
+          continue;
+        }
+        int i = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).render_pos_type.get();
+        if (i == 2) {}
+        for (bool = true;; bool = false) {
+          return bool;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        aanp.b("GdtAd", "isInterstitial", localThrowable);
       }
     }
   }
@@ -709,7 +749,7 @@ public class GdtAd
         if (((IWXAPI)localObject1).isWXAppInstalled()) {
           continue;
         }
-        a(paramHandler, 2131692979);
+        a(paramHandler, 2131693073);
         paramHandler = null;
       }
       catch (Exception paramHandler)
@@ -737,12 +777,12 @@ public class GdtAd
           continue;
         }
       }
-      axqy.b(null, "dc00898", "", "", "0X800AA79", "0X800AA79", 0, 0, "", "", String.valueOf(this.info.wechat_app_info.pos_id.get()), "");
+      azmj.b(null, "dc00898", "", "", "0X800AA79", "0X800AA79", 0, 0, "", "", String.valueOf(this.info.wechat_app_info.pos_id.get()), "");
       return paramHandler;
       if (((IWXAPI)localObject1).getWXAppSupportAPI() >= 621086464) {
         continue;
       }
-      a(paramHandler, 2131692980);
+      a(paramHandler, 2131693074);
       paramHandler = null;
     }
     paramHandler = new WXLaunchMiniProgram.Req();
@@ -810,7 +850,7 @@ public class GdtAd
     int i = 0;
     if (paramObjectInput == null)
     {
-      yxp.d("GdtAd", "readExternal error");
+      aanp.d("GdtAd", "readExternal error");
       return;
     }
     int j;
@@ -820,13 +860,13 @@ public class GdtAd
       j = paramObjectInput.readInt();
       if (j <= 0)
       {
-        yxp.d("GdtAd", "readExternal error");
+        aanp.d("GdtAd", "readExternal error");
         return;
       }
     }
     catch (Throwable paramObjectInput)
     {
-      yxp.d("GdtAd", "readExternal", paramObjectInput);
+      aanp.d("GdtAd", "readExternal", paramObjectInput);
       return;
     }
     Object localObject = new ByteArrayOutputStream();
@@ -839,7 +879,7 @@ public class GdtAd
         arrayOfByte = new byte[j - i];
         k = paramObjectInput.read(arrayOfByte);
         if (k < 0) {
-          yxp.d("GdtAd", "readExternal error");
+          aanp.d("GdtAd", "readExternal error");
         }
       }
       else
@@ -849,7 +889,7 @@ public class GdtAd
         if ((i == j) && (paramObjectInput.length == j)) {
           break;
         }
-        yxp.d("GdtAd", "readExternal error");
+        aanp.d("GdtAd", "readExternal error");
         return;
       }
       i += k;
@@ -864,15 +904,20 @@ public class GdtAd
     }
     catch (InvalidProtocolBufferMicroException paramObjectInput)
     {
-      yxp.d("GdtAd", "readExternal", paramObjectInput);
+      aanp.d("GdtAd", "readExternal", paramObjectInput);
     }
+  }
+  
+  public void setActionSetId(long paramLong)
+  {
+    this.actionSetId = paramLong;
   }
   
   public void writeExternal(ObjectOutput paramObjectOutput)
   {
     if ((paramObjectOutput == null) || (this.info == null))
     {
-      yxp.d("GdtAd", "writeExternal error");
+      aanp.d("GdtAd", "writeExternal error");
       return;
     }
     byte[] arrayOfByte;
@@ -882,13 +927,13 @@ public class GdtAd
       arrayOfByte = this.info.toByteArray();
       if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
       {
-        yxp.d("GdtAd", "writeExternal error");
+        aanp.d("GdtAd", "writeExternal error");
         return;
       }
     }
     catch (Throwable paramObjectOutput)
     {
-      yxp.d("GdtAd", "writeExternal", paramObjectOutput);
+      aanp.d("GdtAd", "writeExternal", paramObjectOutput);
       return;
     }
     paramObjectOutput.writeInt(arrayOfByte.length);
@@ -899,7 +944,7 @@ public class GdtAd
   {
     if ((paramParcel == null) || (this.info == null))
     {
-      yxp.d("GdtAd", "writeToParcel error");
+      aanp.d("GdtAd", "writeToParcel error");
       return;
     }
     byte[] arrayOfByte;
@@ -916,13 +961,13 @@ public class GdtAd
           if (paramInt > 0) {
             break;
           }
-          yxp.d("GdtAd", "writeToParcel error");
+          aanp.d("GdtAd", "writeToParcel error");
           return;
         }
       }
       catch (Throwable paramParcel)
       {
-        yxp.d("GdtAd", "writeToParcel", paramParcel);
+        aanp.d("GdtAd", "writeToParcel", paramParcel);
         return;
       }
       paramInt = 0;
@@ -932,7 +977,7 @@ public class GdtAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtAd
  * JD-Core Version:    0.7.0.1
  */

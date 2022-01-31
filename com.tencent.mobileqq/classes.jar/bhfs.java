@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiFeedCommInfo;
+import android.widget.NumberPicker;
+import android.widget.NumberPicker.OnValueChangeListener;
 
-public final class bhfs
-  implements Parcelable.Creator<WeishiFeedCommInfo>
+class bhfs
+  implements NumberPicker.OnValueChangeListener
 {
-  public WeishiFeedCommInfo a(Parcel paramParcel)
-  {
-    return new WeishiFeedCommInfo(paramParcel);
-  }
+  bhfs(bhfr parambhfr) {}
   
-  public WeishiFeedCommInfo[] a(int paramInt)
+  public void onValueChange(NumberPicker paramNumberPicker, int paramInt1, int paramInt2)
   {
-    return new WeishiFeedCommInfo[paramInt];
+    bhfr.a(this.a, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhfs
  * JD-Core Version:    0.7.0.1
  */

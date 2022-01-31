@@ -1,134 +1,102 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.subaccount.SubAccountProtocManager.2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
-public final class azyr
+public class azyr
+  implements Manager
 {
-  private static int jdField_a_of_type_Int = 4000;
-  private static final Map<String, azys> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
+  private static byte[] jdField_c_of_type_ArrayOfByte = new byte[0];
+  private alyr jdField_a_of_type_Alyr = new azys(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new SubAccountProtocManager.2(this);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean;
+  private boolean d;
   
-  private static void a(azys paramazys, boolean paramBoolean)
+  public azyr(QQAppInterface paramQQAppInterface)
   {
-    if ((paramazys != null) && (paramazys.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
-    {
-      if (paramazys.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
-      {
-        if (paramazys.jdField_a_of_type_JavaIoFile == null)
-        {
-          File localFile = new File(paramazys.jdField_a_of_type_JavaLangString);
-          if (!localFile.exists()) {
-            localFile.createNewFile();
-          }
-          paramazys.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile, true);
-          paramazys.jdField_a_of_type_JavaIoFile = localFile;
-        }
-        paramazys.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(paramazys.jdField_a_of_type_JavaIoFileOutputStream);
-      }
-      if (paramBoolean)
-      {
-        if (paramazys.jdField_a_of_type_JavaIoFileOutputStream != null)
-        {
-          paramazys.jdField_a_of_type_JavaIoFileOutputStream.flush();
-          paramazys.jdField_a_of_type_JavaIoFileOutputStream.close();
-          paramazys.jdField_a_of_type_JavaIoFileOutputStream = null;
-        }
-        paramazys.jdField_a_of_type_JavaIoFile = null;
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.d = false;
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Alyr);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.subaccount.SubAccountProtocManager", 2, "SubAccountProtocManager: manager init");
     }
   }
   
-  public static void a(String paramString)
+  public void a()
   {
-    b(paramString);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if ((azys)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
-    {
-      azys localazys = new azys();
-      localazys.jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_JavaUtilMap.put(paramString, localazys);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
     }
-    return true;
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    paramString = (azys)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null)
+    synchronized (jdField_c_of_type_ArrayOfByte)
     {
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
-        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
-      }
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
-    }
-    try
-    {
-      a(paramString, false);
-      label66:
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      return true;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      break label66;
-    }
-  }
-  
-  private static void b(String paramString)
-  {
-    azys localazys = (azys)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localazys == null) || (localazys.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      localazys.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-      label31:
-      if (localazys.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-      try
-      {
-        localazys.jdField_a_of_type_JavaIoFileOutputStream.close();
-        label45:
-        localazys.jdField_a_of_type_JavaIoFileOutputStream = null;
-        jdField_a_of_type_JavaUtilMap.remove(paramString);
+      if (this.jdField_c_of_type_Boolean) {
         return;
       }
-      catch (Exception localException1)
-      {
-        break label45;
+    }
+    this.jdField_c_of_type_Boolean = true;
+    ((alyp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a();
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    synchronized (jdField_b_of_type_ArrayOfByte)
+    {
+      if (this.jdField_b_of_type_Boolean) {
+        return;
       }
     }
-    catch (Exception localException2)
+    this.jdField_b_of_type_Boolean = true;
+    ((alyp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    synchronized (jdField_a_of_type_ArrayOfByte)
     {
-      break label31;
+      if (this.jdField_a_of_type_Boolean) {
+        return;
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
+    ((alyp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a(paramString1, paramString2, paramString3);
+  }
+  
+  public boolean a()
+  {
+    synchronized (jdField_c_of_type_ArrayOfByte)
+    {
+      boolean bool = this.d;
+      return bool;
     }
   }
   
-  public static boolean b(String paramString)
+  public void onDestroy()
   {
-    azys localazys = (azys)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localazys != null) && (localazys.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      a(localazys, true);
-      label29:
-      localazys.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      b(paramString);
-      return true;
-    }
-    catch (IOException localIOException)
-    {
-      break label29;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alyr);
+    if (ThreadManager.getSubThreadHandler() != null) {
+      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azyr
  * JD-Core Version:    0.7.0.1
  */

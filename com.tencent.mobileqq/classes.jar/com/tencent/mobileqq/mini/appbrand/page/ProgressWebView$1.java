@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.appbrand.page;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import bbdj;
-import bbgu;
+import bdcd;
+import bdfq;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
@@ -15,7 +15,7 @@ import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
 import com.tencent.smtt.sdk.WebView;
-import nab;
+import ncv;
 
 class ProgressWebView$1
   extends WebChromeClient
@@ -30,7 +30,7 @@ class ProgressWebView$1
   
   public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    bbdj.a(ProgressWebView.access$100(this.this$0).activity, paramString2, 2131690596, 2131694794, new ProgressWebView.1.2(this, paramJsResult), new ProgressWebView.1.3(this, paramJsResult)).show();
+    bdcd.a(ProgressWebView.access$100(this.this$0).activity, paramString2, 2131690648, 2131694951, new ProgressWebView.1.2(this, paramJsResult), new ProgressWebView.1.3(this, paramJsResult)).show();
     return true;
   }
   
@@ -59,7 +59,7 @@ class ProgressWebView$1
   public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
     if (ProgressWebView.access$200(this.this$0) == null) {
-      ProgressWebView.access$202(this.this$0, new nab());
+      ProgressWebView.access$202(this.this$0, new ncv());
     }
     if (ProgressWebView.access$300(this.this$0) != null)
     {
@@ -72,7 +72,7 @@ class ProgressWebView$1
   public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
     if (ProgressWebView.access$200(this.this$0) == null) {
-      ProgressWebView.access$202(this.this$0, new nab());
+      ProgressWebView.access$202(this.this$0, new ncv());
     }
     if (ProgressWebView.access$300(this.this$0) != null)
     {
@@ -85,7 +85,7 @@ class ProgressWebView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.ProgressWebView.1
  * JD-Core Version:    0.7.0.1
  */

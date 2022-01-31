@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import aezl;
+import agwq;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import ogf;
+import oks;
 
 public class ReadInJoyCommentComponentFragment$8$1
   implements Runnable
 {
-  public ReadInJoyCommentComponentFragment$8$1(ogf paramogf) {}
+  public ReadInJoyCommentComponentFragment$8$1(oks paramoks) {}
   
   public void run()
   {
-    aezl localaezl = ReadInJoyCommentComponentFragment.a(this.a.a);
-    if ((localaezl != null) && (ReadInJoyCommentComponentFragment.a(this.a.a)))
+    agwq localagwq = ReadInJoyCommentComponentFragment.a(this.a.a);
+    if ((localagwq != null) && (ReadInJoyCommentComponentFragment.a(this.a.a)))
     {
-      localaezl.c();
+      localagwq.c();
       ReadInJoyCommentComponentFragment.a(this.a.a, false);
       this.a.a.f.setSelected(false);
     }
@@ -25,14 +25,14 @@ public class ReadInJoyCommentComponentFragment$8$1
     ReadInJoyCommentComponentFragment.a(this.a.a);
     if (this.a.a.jdField_a_of_type_Boolean)
     {
-      this.a.a.g.setImageResource(2130842282);
+      this.a.a.g.setImageResource(2130842451);
       ReadInJoyCommentComponentFragment.b(this.a.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.8.1
  * JD-Core Version:    0.7.0.1
  */

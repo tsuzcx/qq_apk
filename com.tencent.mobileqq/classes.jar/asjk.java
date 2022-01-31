@@ -1,118 +1,81 @@
-import android.app.Activity;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.view.GameSessionView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 public class asjk
 {
-  public static asjl a(String paramString)
+  Context jdField_a_of_type_AndroidContentContext;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
+  
+  public asjk(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131364285));
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(aekt.a(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378757));
+    this.b = ((TextView)paramView.findViewById(2131378845));
+    this.c = ((TextView)paramView.findViewById(2131378980));
+    this.d = ((TextView)paramView.findViewById(2131378830));
+    this.e = ((TextView)paramView.findViewById(2131379017));
+  }
+  
+  public void a(GameCenterSessionInfo paramGameCenterSessionInfo)
+  {
+    if (paramGameCenterSessionInfo == null) {
+      QLog.e(GameSessionView.a, 0, "[updateSession] info is null.");
+    }
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839371);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839371);
+    try
     {
-      return null;
-      paramString = Uri.parse(paramString);
-      if (paramString.isHierarchical())
+      this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(URLDrawable.getDrawable(paramGameCenterSessionInfo.f(), (URLDrawable.URLDrawableOptions)localObject));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("来自" + paramGameCenterSessionInfo.e());
+      this.b.setText(paramGameCenterSessionInfo.g());
+      if (paramGameCenterSessionInfo.a() == 0)
       {
-        paramString = paramString.getQueryParameter("_appinfo");
-        if (!TextUtils.isEmpty(paramString)) {
-          try
-          {
-            paramString = Base64.decode(paramString, 10);
-            if (paramString == null)
-            {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.i("miniAppJump", 2, "appinfo decode error 2");
-              return null;
-            }
-          }
-          catch (Exception paramString)
-          {
-            QLog.e("miniAppJump", 1, "parse miniapp jump url error", paramString);
-            return null;
-          }
+        localObject = "[" + paramGameCenterSessionInfo.b() + "位好友请求]来自" + paramGameCenterSessionInfo.e();
+        this.d.setText(new baig((CharSequence)localObject, 3, 16));
+        this.e.setVisibility(4);
+        this.c.setText(asin.a(paramGameCenterSessionInfo.a() * 1000L));
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e(GameSessionView.a, 1, "[updateSession] " + localException);
+        continue;
+        this.d.setText(new baig(paramGameCenterSessionInfo.h(), 3, 16, -1));
+        if (paramGameCenterSessionInfo.c() == 0)
+        {
+          this.e.setVisibility(4);
         }
-      }
-    }
-    paramString = new JSONObject(new String(paramString, "UTF-8"));
-    asjl localasjl = new asjl();
-    localasjl.jdField_a_of_type_Int = paramString.getInt("type");
-    localasjl.jdField_a_of_type_JavaLangString = paramString.getString("appid");
-    localasjl.jdField_b_of_type_JavaLangString = paramString.optString("pageName");
-    localasjl.jdField_b_of_type_Int = paramString.optInt("from");
-    localasjl.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("param");
-    return localasjl;
-  }
-  
-  public static boolean a(Activity paramActivity, asjl paramasjl, Bundle paramBundle)
-  {
-    if (paramasjl == null) {}
-    while ((paramasjl.jdField_a_of_type_Int == 4) || (paramasjl.jdField_a_of_type_Int != 3)) {
-      return false;
-    }
-    asjb.a(paramActivity, paramasjl.jdField_a_of_type_JavaLangString, paramasjl.jdField_a_of_type_Int, null);
-    return true;
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
-  {
-    return a(paramActivity, a(paramString), paramBundle);
-  }
-  
-  public static boolean a(BaseActivity paramBaseActivity, String paramString, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    Bundle localBundle = new Bundle();
-    QQAppInterface localQQAppInterface = paramBaseActivity.app;
-    localBundle.putString("uin", localQQAppInterface.getCurrentAccountUin());
-    boolean bool;
-    if (paramMessageRecord.istroop == 1)
-    {
-      localBundle.putString("gc", paramMessageRecord.frienduin);
-      if ((banb.a(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())) || (banb.b(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())))
-      {
-        bool = true;
-        localBundle.putBoolean("isAdmin", bool);
-      }
-    }
-    else
-    {
-      paramString = a(paramString);
-      bool = a(paramBaseActivity, paramString, localBundle);
-      if ((paramString != null) && (bool) && ((paramMessageRecord instanceof MessageForGrayTips)) && (paramString.jdField_a_of_type_Int == 4) && (paramString.jdField_a_of_type_JavaLangString.equals("101474665")))
-      {
-        if (paramString.jdField_b_of_type_Int != 1) {
-          break label186;
+        else
+        {
+          this.e.setVisibility(0);
+          this.e.setText(asin.a(paramGameCenterSessionInfo.c()));
         }
-        axqy.b(localQQAppInterface, "dc00899", "Grp_idol", "", "idol_follow", "follow_suc_clk", 0, 0, paramMessageRecord.frienduin, "", "", "");
-      }
-    }
-    for (;;)
-    {
-      return bool;
-      bool = false;
-      break;
-      label186:
-      if (paramString.jdField_b_of_type_Int == 2) {
-        bbbp.a("Grp_idol", "Grp_AIO", "clk_renwu", 0, 0, new String[] { paramMessageRecord.frienduin });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asjk
  * JD-Core Version:    0.7.0.1
  */

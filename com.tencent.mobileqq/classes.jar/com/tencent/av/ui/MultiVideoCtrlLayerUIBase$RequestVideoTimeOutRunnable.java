@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import axqy;
+import azmj;
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,21 +13,21 @@ class MultiVideoCtrlLayerUIBase$RequestVideoTimeOutRunnable
   {
     if (this.this$0.a != null)
     {
-      this.this$0.a.f();
-      this.this$0.v();
+      this.this$0.a.a("Multi_RequestVideoTimeOutRunnable");
+      this.this$0.w();
       if (this.this$0.e == 2) {
-        axqy.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
+        azmj.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
       }
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.e(this.this$0.c, 2, "RequestVideoTimeOutRunnable, mVideoController = null!!!");
+    QLog.e(this.this$0.d, 2, "RequestVideoTimeOutRunnable, mVideoController = null!!!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.RequestVideoTimeOutRunnable
  * JD-Core Version:    0.7.0.1
  */

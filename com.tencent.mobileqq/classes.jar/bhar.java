@@ -1,212 +1,236 @@
+import android.app.Activity;
 import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.downloader.DownloadRequest;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.Vector;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.model.AppConfigInfo;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 
-public class bhar
+public abstract class bhar
+  extends bghl
 {
-  private static bhar jdField_a_of_type_Bhar;
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  private bhat jdField_a_of_type_Bhat;
-  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader;
-  private Vector<bhat> jdField_a_of_type_JavaUtilVector = new Vector();
-  private boolean jdField_a_of_type_Boolean;
+  protected Activity a;
+  protected ViewGroup a;
+  protected bgjw a;
+  protected bhas a;
+  protected bhbo a;
+  protected bhdj a;
+  protected JsPluginEngine a;
+  protected MiniAppInfo a;
+  protected String a;
   
-  public static bhar a()
+  public bhar()
   {
-    if (jdField_a_of_type_Bhar == null) {}
-    try
-    {
-      jdField_a_of_type_Bhar = new bhar();
-      return jdField_a_of_type_Bhar;
+    this.jdField_a_of_type_Bhas = new bhas(this);
+  }
+  
+  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    return 0;
+  }
+  
+  public Activity a()
+  {
+    return this.jdField_a_of_type_AndroidAppActivity;
+  }
+  
+  public Context a()
+  {
+    return AppLoaderFactory.g().getMiniAppEnv().getContext();
+  }
+  
+  public bghn a()
+  {
+    return this.jdField_a_of_type_Bhdj;
+  }
+  
+  public bghq a()
+  {
+    return this.jdField_a_of_type_Bhbo;
+  }
+  
+  public bhas a()
+  {
+    return this.jdField_a_of_type_Bhas;
+  }
+  
+  public JsPluginEngine a()
+  {
+    return this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
+  }
+  
+  public MiniAppInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  }
+  
+  public ShareState a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return bgrl.a().b().baseLibVersion;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_Bhbo.a() != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_Bhbo.a());
     }
-    finally {}
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.jdField_a_of_type_AndroidViewViewGroup = null;
   }
   
-  /* Error */
-  private Downloader a()
+  public void a(Activity paramActivity, ViewGroup paramViewGroup)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 39	bhar:jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader	Lcom/tencent/component/network/downloader/Downloader;
-    //   6: ifnull +12 -> 18
-    //   9: aload_0
-    //   10: getfield 39	bhar:jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader	Lcom/tencent/component/network/downloader/Downloader;
-    //   13: astore_1
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: aload_1
-    //   17: areturn
-    //   18: aconst_null
-    //   19: astore_1
-    //   20: aload_0
-    //   21: getfield 24	bhar:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   24: invokestatic 45	com/tencent/component/network/DownloaderFactory:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/DownloaderFactory;
-    //   27: invokevirtual 48	com/tencent/component/network/DownloaderFactory:getCommonDownloader	()Lcom/tencent/component/network/downloader/Downloader;
-    //   30: astore_2
-    //   31: aload_2
-    //   32: astore_1
-    //   33: aload_2
-    //   34: invokevirtual 53	com/tencent/component/network/downloader/Downloader:enableResumeTransfer	()V
-    //   37: aload_2
-    //   38: astore_1
-    //   39: aload_0
-    //   40: aload_1
-    //   41: putfield 39	bhar:jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader	Lcom/tencent/component/network/downloader/Downloader;
-    //   44: aload_0
-    //   45: getfield 39	bhar:jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader	Lcom/tencent/component/network/downloader/Downloader;
-    //   48: ifnonnull +26 -> 74
-    //   51: new 55	java/lang/RuntimeException
-    //   54: dup
-    //   55: ldc 57
-    //   57: invokespecial 60	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   60: athrow
-    //   61: astore_1
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_1
-    //   65: athrow
-    //   66: astore_2
-    //   67: aload_2
-    //   68: invokevirtual 63	java/lang/Throwable:printStackTrace	()V
-    //   71: goto -32 -> 39
-    //   74: aload_0
-    //   75: getfield 39	bhar:jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader	Lcom/tencent/component/network/downloader/Downloader;
-    //   78: astore_1
-    //   79: goto -65 -> 14
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	82	0	this	bhar
-    //   13	28	1	localObject1	Object
-    //   61	4	1	localObject2	Object
-    //   78	1	1	localDownloader1	Downloader
-    //   30	8	2	localDownloader2	Downloader
-    //   66	2	2	localThrowable	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	61	finally
-    //   20	31	61	finally
-    //   33	37	61	finally
-    //   39	61	61	finally
-    //   67	71	61	finally
-    //   74	79	61	finally
-    //   20	31	66	java/lang/Throwable
-    //   33	37	66	java/lang/Throwable
+    if ((this.jdField_a_of_type_AndroidAppActivity == paramActivity) && (this.jdField_a_of_type_AndroidViewViewGroup == paramViewGroup)) {
+      return;
+    }
+    this.jdField_a_of_type_Bhbo.a(paramActivity);
+    if ((this.jdField_a_of_type_Bhbo.a() != null) && (this.jdField_a_of_type_Bhbo.a().getParent() != null)) {
+      ((ViewGroup)this.jdField_a_of_type_Bhbo.a().getParent()).removeView(this.jdField_a_of_type_Bhbo.a());
+    }
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    paramViewGroup.addView(this.jdField_a_of_type_Bhbo.a(), new ViewGroup.LayoutParams(-1, -1));
   }
   
-  private boolean a(bhat parambhat)
+  public void a(bhdj parambhdj)
   {
-    boolean bool = true;
+    Context localContext = AppLoaderFactory.g().getMiniAppEnv().getContext();
+    if (parambhdj != null)
+    {
+      this.jdField_a_of_type_Bhdj = parambhdj;
+      int i = this.jdField_a_of_type_Bhdj.a();
+      Log.i("BaseAppBrandRuntime", "customJsService " + parambhdj + ",status=" + i);
+      if (i != 0) {
+        this.jdField_a_of_type_Bhdj = null;
+      }
+      if (this.jdField_a_of_type_Bhdj != null) {
+        this.jdField_a_of_type_Bhdj.a(this.jdField_a_of_type_Bhas);
+      }
+    }
+    if (this.jdField_a_of_type_Bhdj == null) {
+      this.jdField_a_of_type_Bhdj = new bhcw(this, this.jdField_a_of_type_Bhas);
+    }
+    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine = new JsPluginEngine(localContext);
+  }
+  
+  public void a(MiniAppInfo paramMiniAppInfo, String paramString)
+  {
+    if (this.jdField_a_of_type_Bgjw != null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
+    this.jdField_a_of_type_Bgjw = ((bgjw)paramMiniAppInfo.apkgInfo);
+    bgjm.a().a(this.jdField_a_of_type_Bgjw, false);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, false, null);
+  }
+  
+  public void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Bhbo != null) {
+      this.jdField_a_of_type_Bhbo.a(paramMiniAppInfo, paramBoolean);
+    }
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onResume();
+    }
+  }
+  
+  public void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onCreate(this);
+    this.jdField_a_of_type_Bhdj.a((bgjw)paramMiniAppInfo.apkgInfo);
+    this.jdField_a_of_type_Bhbo.setApkgInfo((bgjw)paramMiniAppInfo.apkgInfo);
+    Object localObject = paramMiniAppInfo.launchParam.entryPath;
+    if (!TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
-      try
-      {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (parambhat.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_JavaUtilVector.add(0, parambhat);
-            return bool;
-          }
-          this.jdField_a_of_type_JavaUtilVector.add(parambhat);
-          continue;
-        }
-        if (parambhat.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest == null) {
-          break label86;
+      if (TextUtils.isEmpty(paramString)) {
+        if ((paramMiniAppInfo != null) && (paramMiniAppInfo.apkgInfo != null) && (((bgjw)paramMiniAppInfo.apkgInfo).a != null)) {
+          paramMiniAppInfo = ((bgjw)paramMiniAppInfo.apkgInfo).a.entryPagePath;
         }
       }
-      finally {}
-      if (a().download(parambhat.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest, parambhat.jdField_b_of_type_Boolean))
+      for (;;)
       {
-        this.jdField_a_of_type_Bhat = parambhat;
-        this.jdField_a_of_type_Boolean = true;
-        continue;
-        label86:
-        if (a().download(parambhat.jdField_b_of_type_JavaLangString, parambhat.jdField_a_of_type_JavaLangString, parambhat.jdField_b_of_type_Boolean, parambhat.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener))
+        localObject = this.jdField_a_of_type_Bhbo;
+        if (paramBoolean) {}
+        for (paramString = "reLaunch";; paramString = "appLaunch")
         {
-          this.jdField_a_of_type_Bhat = parambhat;
-          this.jdField_a_of_type_Boolean = true;
+          ((bhbo)localObject).a(paramMiniAppInfo, paramString);
+          return;
+          paramMiniAppInfo = null;
+          break;
         }
-        else
-        {
-          bool = false;
-        }
+        paramMiniAppInfo = paramString;
       }
-      else
-      {
-        bool = false;
-      }
+      paramString = (String)localObject;
     }
   }
   
-  public void a(String paramString, Downloader.DownloadListener paramDownloadListener)
+  public byte[] a(int paramInt)
   {
-    a().cancel(paramString, paramDownloadListener);
-    if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
-    {
-      paramString = (bhat)this.jdField_a_of_type_JavaUtilVector.get(0);
-      this.jdField_a_of_type_JavaUtilVector.remove(0);
-      this.jdField_a_of_type_Boolean = false;
-      a(paramString);
+    return new byte[0];
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Bhbo != null) {
+      this.jdField_a_of_type_Bhbo.a();
+    }
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onPause();
     }
   }
   
-  public final boolean a(DownloadRequest paramDownloadRequest, boolean paramBoolean)
+  public boolean c()
   {
-    return a(null, null, paramBoolean, false, paramDownloadRequest, paramDownloadRequest.getListener());
+    return false;
   }
   
-  public final boolean a(String paramString1, String paramString2, Downloader.DownloadListener paramDownloadListener)
+  public void d()
   {
-    return a(paramString1, paramString2, false, false, paramDownloadListener);
-  }
-  
-  public final boolean a(String paramString1, String paramString2, boolean paramBoolean, Downloader.DownloadListener paramDownloadListener)
-  {
-    return a(paramString1, paramString2, paramBoolean, false, paramDownloadListener);
-  }
-  
-  public final boolean a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, DownloadRequest paramDownloadRequest, Downloader.DownloadListener paramDownloadListener)
-  {
-    bhat localbhat = new bhat(this);
-    localbhat.jdField_a_of_type_JavaLangString = paramString2;
-    localbhat.jdField_b_of_type_JavaLangString = paramString1;
-    localbhat.jdField_b_of_type_Boolean = paramBoolean1;
-    localbhat.jdField_a_of_type_Boolean = paramBoolean2;
-    localbhat.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = paramDownloadListener;
-    localbhat.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new bhas(this, localbhat);
-    if (paramDownloadRequest != null)
-    {
-      paramDownloadRequest.setListener(localbhat.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);
-      localbhat.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest = paramDownloadRequest;
+    if (this.jdField_a_of_type_Bhbo != null) {
+      this.jdField_a_of_type_Bhbo.b();
     }
-    return a(localbhat);
   }
   
-  public final boolean a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, Downloader.DownloadListener paramDownloadListener)
+  public boolean d()
   {
-    return a(paramString1, paramString2, paramBoolean1, paramBoolean2, null, paramDownloadListener);
+    return (this.jdField_a_of_type_Bhbo != null) && (this.jdField_a_of_type_Bhbo.a(1, -1));
   }
   
-  public void b(String paramString, Downloader.DownloadListener paramDownloadListener)
+  public void e()
   {
-    a().abort(paramString, paramDownloadListener);
-    if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
+    if (this.jdField_a_of_type_Bhbo != null)
     {
-      paramString = (bhat)this.jdField_a_of_type_JavaUtilVector.get(0);
-      this.jdField_a_of_type_JavaUtilVector.remove(0);
-      this.jdField_a_of_type_Boolean = false;
-      a(paramString);
+      this.jdField_a_of_type_Bhbo.c();
+      this.jdField_a_of_type_Bhbo.a(false);
+    }
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onDestroy();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhar
  * JD-Core Version:    0.7.0.1
  */

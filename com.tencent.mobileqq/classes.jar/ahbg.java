@@ -1,48 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import java.util.Map;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 class ahbg
-  extends ahcc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahbg(ahbf paramahbf, bbwt parambbwt)
-  {
-    super(parambbwt);
-  }
+  ahbg(ahbf paramahbf) {}
   
-  public void onDoneFile(bbwu parambbwu)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    long l2 = -1L;
-    super.onDoneFile(parambbwu);
-    if ((parambbwu != null) && (parambbwu.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambbwu.jdField_a_of_type_JavaLangString)))
-    {
-      File localFile = (File)parambbwu.jdField_a_of_type_JavaUtilMap.get(parambbwu.jdField_a_of_type_JavaLangString);
-      if (localFile != null)
-      {
-        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localObject != null)
-        {
-          localObject = (ayxs)((QQAppInterface)localObject).getManager(193);
-          String str = parambbwu.jdField_a_of_type_JavaLangString;
-          long l1 = l2;
-          if (parambbwu.jdField_a_of_type_Int == 0)
-          {
-            l1 = l2;
-            if (localFile.exists()) {
-              l1 = localFile.length();
-            }
-          }
-          ((ayxs)localObject).a(str, l1);
-        }
-      }
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.a.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahbg
  * JD-Core Version:    0.7.0.1
  */

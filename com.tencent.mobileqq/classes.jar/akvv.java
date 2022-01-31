@@ -1,26 +1,43 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-abstract class akvv
+class akvv
+  implements View.OnClickListener
 {
-  protected final SharedPreferences a = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
+  akvv(akvu paramakvu) {}
   
-  protected abstract String a();
-  
-  protected void a()
+  public void onClick(View paramView)
   {
-    this.a.edit().putBoolean(a(), true).commit();
-  }
-  
-  protected boolean a()
-  {
-    return !this.a.contains(a());
+    if (akvu.a(this.a) == null) {
+      return;
+    }
+    boolean bool = akvu.a(this.a).a();
+    if (bool)
+    {
+      akvu.a(this.a).setImageDrawable(akvu.a(this.a).getContext().getResources().getDrawable(2130838375));
+      paramView = this.a;
+      if (bool) {
+        break label124;
+      }
+    }
+    label124:
+    for (bool = true;; bool = false)
+    {
+      akvu.a(paramView, bool);
+      akvu.a(this.a).a(akvu.a(this.a));
+      return;
+      akvu.a(this.a).setImageDrawable(akvu.a(this.a).getContext().getResources().getDrawable(2130838374));
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvv
  * JD-Core Version:    0.7.0.1
  */

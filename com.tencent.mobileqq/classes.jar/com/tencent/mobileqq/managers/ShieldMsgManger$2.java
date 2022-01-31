@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.managers;
 
-import aset;
+import atvt;
 import java.util.ArrayList;
 
 public class ShieldMsgManger$2
   implements Runnable
 {
-  public ShieldMsgManger$2(aset paramaset, ArrayList paramArrayList) {}
+  public ShieldMsgManger$2(atvt paramatvt, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ShieldMsgManger$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.managers.ShieldMsgManger.2
  * JD-Core Version:    0.7.0.1
  */

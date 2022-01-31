@@ -3,9 +3,9 @@ package cooperation.plugin;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bglh;
-import bglt;
-import bglu;
+import bimg;
+import bims;
+import bimt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -30,7 +30,7 @@ public class PluginCrashReceiver
             if ((!"com.tencent.mobileqq.ACTION_PLUGIN_CRASH".equals(localObject)) || ("com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED".equals(localObject))) {
               try
               {
-                new bglu(paramIntent).execute(new String[] { "" });
+                new bimt(paramIntent).execute(new String[] { "" });
                 return;
               }
               catch (Throwable paramContext)
@@ -41,7 +41,7 @@ public class PluginCrashReceiver
             if ("com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG".equals(localObject)) {
               try
               {
-                new bglt(paramContext).execute(new String[] { "" });
+                new bims(paramContext).execute(new String[] { "" });
                 return;
               }
               catch (Throwable paramContext)
@@ -60,14 +60,14 @@ public class PluginCrashReceiver
         } while ("com.tencent.mobileqq".equals(paramIntent));
         paramIntent = (QQAppInterface)localObject;
       } while (!paramIntent.a(27));
-      ((bglh)paramIntent.getManager(27)).cancelInstall(paramContext);
+      ((bimg)paramIntent.getManager(27)).cancelInstall(paramContext);
       return;
     } while (!"com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_SPEED_INFO".equals(localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.plugin.PluginCrashReceiver
  * JD-Core Version:    0.7.0.1
  */

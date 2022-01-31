@@ -1,46 +1,41 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.HtmlOffline.6;
 
 public class nby
-  implements SensorEventListener
+  implements nbs
 {
-  protected byte a;
-  protected String a;
+  public nby(HtmlOffline.6 param6) {}
   
-  public nby(SensorAPIJavaScript paramSensorAPIJavaScript, byte paramByte, String paramString)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Byte = paramByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
+    if (nbv.a.a()) {
+      nbv.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
+    }
+    if (paramInt == 0) {
+      if (nbv.b(this.a.b)) {
+        this.a.jdField_a_of_type_Nbs.loaded(null, 0);
+      }
+    }
+    for (;;)
+    {
+      BidDownloader.b(this.a.b);
+      nbv.a(this.a.b, paramInt, l, ndk.a(this.a.jdField_a_of_type_AndroidContentContext));
+      return;
+      this.a.jdField_a_of_type_Nbs.loaded(null, 6);
+      continue;
+      this.a.jdField_a_of_type_Nbs.loaded(null, 2);
+    }
   }
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void progress(int paramInt)
   {
-    switch (this.jdField_a_of_type_Byte)
-    {
-    default: 
-      return;
-    case 0: 
-      f1 = paramSensorEvent.values[0];
-      float f2 = paramSensorEvent.values[1];
-      float f3 = paramSensorEvent.values[2];
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1), String.valueOf(f2), String.valueOf(f3) });
-      return;
-    case 1: 
-      f1 = paramSensorEvent.values[0];
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
-      return;
-    }
-    float f1 = paramSensorEvent.values[0];
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
+    this.a.jdField_a_of_type_Nbs.progress(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nby
  * JD-Core Version:    0.7.0.1
  */

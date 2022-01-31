@@ -22,6 +22,8 @@ public abstract interface JsRuntime
   
   public abstract void initService(ApkgInfo paramApkgInfo, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener);
   
+  public abstract void initService(ApkgInfo paramApkgInfo, String paramString, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener);
+  
   public abstract void initWAServiceJS(String paramString);
   
   public abstract boolean isDestroyed();
@@ -38,7 +40,7 @@ public abstract interface JsRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.webview.JsRuntime
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.1;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.2;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class orv
-  extends BroadcastReceiver
+public final class orv
+  implements bhvu
 {
-  public orv(KandianMergeManager paramKandianMergeManager) {}
+  orv(BaseActivity paramBaseActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(bhvt parambhvt)
   {
-    paramContext = osg.a().a();
-    if (paramContext != null) {
-      paramContext.a();
+    switch (parambhvt.a)
+    {
+    default: 
+      return;
+    case 0: 
+      rvv.a(this.a, new ReadInJoyUtils.15.1(this));
+      return;
     }
+    rvv.a(this.a, new ReadInJoyUtils.15.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     orv
  * JD-Core Version:    0.7.0.1
  */

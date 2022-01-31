@@ -1,25 +1,59 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.mobileqq.ptt.LSRecordPanel.2.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
 public class avbl
-  extends avbi
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public avbl(LSRecordPanel paramLSRecordPanel) {}
+  private avbl(StuffContainerView paramStuffContainerView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS stopRecordingBarAnimation onAnimationEnd");
+    if (this.a.a == null) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    LSRecordPanel.a(this.a).post(new LSRecordPanel.2.1(this));
+    float f2;
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
+    {
+      float f1 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
+      f2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
+      if (Math.abs(f1) <= Math.abs(f2)) {
+        break label143;
+      }
+      if (Math.abs(Math.asin(Math.abs(f2) / Math.sqrt(f2 * f2 + f1 * f1))) < 0.5235987755982988D)
+      {
+        if (f1 >= 0.0F) {
+          break label128;
+        }
+        this.a.a.g();
+      }
+    }
+    for (;;)
+    {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label128:
+      this.a.a.j();
+      continue;
+      label143:
+      if (f2 > 0.0F) {
+        this.a.a.h();
+      } else {
+        this.a.a.i();
+      }
+    }
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      this.a.a.f();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avbl
  * JD-Core Version:    0.7.0.1
  */

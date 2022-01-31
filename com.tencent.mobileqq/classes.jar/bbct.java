@@ -1,7 +1,14 @@
-public class bbct
+import java.util.List;
+
+class bbct
+  extends amab
 {
-  public int a;
-  public String a;
+  bbct(bbcq parambbcq) {}
+  
+  public void a(boolean paramBoolean, long paramLong, List paramList, int paramInt)
+  {
+    bbcq.a(this.a, paramBoolean, paramLong, paramList, paramInt);
+  }
 }
 
 

@@ -1,42 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.6;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import mqq.app.AppRuntime.Status;
 
 public class aloh
-  implements DialogInterface.OnClickListener
+  implements avzf
 {
-  public aloh(ArkAppDownloadModule.6 param6) {}
+  public aloh(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(AppRuntime.Status paramStatus)
   {
-    boolean bool = false;
-    aloa.a(this.a.this$0, true);
-    bicp.a().b(this.a.jdField_a_of_type_Int, this.a.b);
-    axqy.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.b, "");
-    if ((paramDialogInterface instanceof bbgu))
-    {
-      if (!((bbgu)paramDialogInterface).getCheckBoxState()) {
-        bool = true;
-      }
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
-    }
-    try
-    {
-      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.c, bool).apply();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.e("ark.download.module", 1, "continue download sp error : ", paramDialogInterface);
-    }
+    this.a.v();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aloh
  * JD-Core Version:    0.7.0.1
  */

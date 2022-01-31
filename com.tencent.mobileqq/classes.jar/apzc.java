@@ -1,31 +1,32 @@
-import android.os.Message;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import mqq.app.AppRuntime;
 
-class apzc
-  implements admt
+public class apzc
+  implements View.OnClickListener
 {
-  apzc(apza paramapza, apzd paramapzd, int paramInt) {}
+  public apzc(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    FlashChatTextEffectView.a(this.jdField_a_of_type_Apzd);
-    Message localMessage = Message.obtain();
-    localMessage.obj = this.jdField_a_of_type_Apzd;
-    localMessage.what = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Int < FlashChatTextEffectView.a().length)
+    if (!aqcz.b(ExtendFriendCampusFragment.a(this.a)))
     {
-      apza.a(this.jdField_a_of_type_Apza).sendMessageDelayed(localMessage, FlashChatTextEffectView.a()[this.jdField_a_of_type_Int]);
-      return;
+      paramView = new Intent("com.tencent.mobileqq.action.publishmood");
+      bizt localbizt = bizt.a();
+      localbizt.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      paramView.putExtra("qzone_plugin_activity_name", "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
+      paramView.putExtra("uin", localbizt.a);
+      paramView.putExtra("key_from_kuolie", true);
+      bizm.b(ExtendFriendCampusFragment.a(this.a), localbizt, paramView, 0);
     }
-    apza.a(this.jdField_a_of_type_Apza).sendMessageDelayed(localMessage, 7000L);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzc
  * JD-Core Version:    0.7.0.1
  */

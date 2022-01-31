@@ -1,246 +1,143 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloaderFirstPkgRp;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import java.util.HashMap;
+import com.tencent.mobileqq.earlydownload.xmldata.QavSoDataBase;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aphk
-  extends apgy
+public abstract class aphk
+  extends apgu
 {
-  private long jdField_a_of_type_Long;
-  public final apgz a;
-  private ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
-  private ExcitingTransferDownloaderFirstPkgRp jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp;
-  private boolean jdField_a_of_type_Boolean;
-  private long b;
-  
-  public aphk(QQAppInterface paramQQAppInterface)
+  public aphk(String paramString, QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Apgz = new apgz();
+    super(paramString, paramQQAppInterface);
   }
   
-  private long a(long paramLong, int paramInt)
+  public int a()
   {
-    if (paramLong == 9004L) {}
-    do
+    return 10048;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadSoDuration";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavSoDownloadHandlerBase", 2, "func doOnServerResp begins, respData" + paramXmlData);
+    }
+    if ((paramXmlData == null) || (!(paramXmlData instanceof QavSoDataBase)))
     {
-      return paramLong;
-      if ((paramLong != 0L) && (paramInt != 0))
-      {
-        if ((paramInt == -29120) || (paramInt == -29150) || (paramInt == -21122) || (paramInt == -28123) || (paramInt == -25081) || (paramInt == -28126) || (paramInt == -6101) || (paramInt == -7003) || (paramInt == -403) || (paramInt == -9006) || (paramInt == -9004) || (paramInt == -9017) || (paramInt == -2813)) {
-          return 9042L;
-        }
-        return paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("QavSoDownloadHandlerBase", 2, "func doOnServerResp ends. respData is not QavSoDataBase");
       }
-      switch ((int)paramLong)
-      {
-      default: 
-        return paramLong;
-      case 0: 
-        return 0L;
-      case 101: 
-        return 9037L;
-      case 201: 
-        return 9001L;
-      case 300: 
-      case 301: 
-      case 302: 
-      case 303: 
-      case 400: 
-        if ((AppNetConnInfo.isNetSupport()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin())) {
-          return 9052L;
-        }
-        return 9004L;
-      }
-    } while ((AppNetConnInfo.isNetSupport()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()));
-    return 9004L;
-    return 9343L;
-    return 9321L;
-    if ((AppNetConnInfo.isNetSupport()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin())) {
-      return 9050L;
-    }
-    return 9004L;
-    return 9056L;
-    return 9058L;
-    return 9009L;
-    return -9527L;
-    if (b()) {
-      return 9040L;
-    }
-    return 9003L;
-    return 9040L;
-    return 9082L;
-  }
-  
-  private boolean b()
-  {
-    if (bbbm.a()) {}
-    for (long l = bbbm.a() * 1024L; this.jdField_a_of_type_Apgz.d > l; l = bbbm.b() * 1024L) {
-      return true;
-    }
-    return false;
-  }
-  
-  protected String a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return "actFileDown";
-    }
-    return "actPDFileDownload";
-  }
-  
-  protected HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Apgz != null) {
-      localHashMap.putAll(this.jdField_a_of_type_Apgz.a());
-    }
-    localHashMap.put("param_SubReason", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp != null) {
-      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.getReportData());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null) {
-      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.getReportData());
-    }
-    if (this.jdField_b_of_type_Long != 0L) {
-      localHashMap.put("param_SrvRetCode", String.valueOf(this.jdField_b_of_type_Long));
-    }
-    return localHashMap;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Apgz.jdField_a_of_type_Long = 5L;
-    this.jdField_a_of_type_Long = 3L;
-    this.jdField_a_of_type_Apgz.jdField_b_of_type_Long = 9004L;
-    a(false);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Long = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
-  {
-    apgz localapgz = new apgz();
-    localapgz.jdField_b_of_type_Int = this.jdField_a_of_type_Apgz.jdField_b_of_type_Int;
-    localapgz.jdField_a_of_type_Int = this.jdField_a_of_type_Apgz.jdField_a_of_type_Int;
-    localapgz.c = this.jdField_a_of_type_Apgz.c;
-    localapgz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Apgz.jdField_a_of_type_JavaLangString;
-    localapgz.d = this.jdField_a_of_type_Apgz.d;
-    localapgz.jdField_a_of_type_Long = paramInt1;
-    localapgz.jdField_b_of_type_Long = paramInt2;
-    super.a(localapgz, paramExcitingTransferOneSlotComplete);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize != -1L) {
+      super.a(paramXmlData);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize = paramLong;
+    QavSoDataBase localQavSoDataBase = (QavSoDataBase)paramXmlData;
+    if (QLog.isColorLevel()) {
+      QLog.d("QavSoDownloadHandlerBase", 2, "doOnServerResp url:" + paramXmlData.strResURL_big + ", md5:" + paramXmlData.MD5 + ", m_TcHevcDec =" + localQavSoDataBase.m_TcHevcDec + ", m_TcHevcDec2 = " + localQavSoDataBase.m_TcHevcDec2 + ", m_TcHevcEnc = " + localQavSoDataBase.m_TcHevcEnc);
+    }
+    super.a(paramXmlData);
   }
   
-  public void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHttpFirstTime = (paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataTime - paramExcitingTransferDownloadCompletedInfo.m_uStartTime);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize = paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataSize;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
+    Object localObject1 = a();
+    String str2;
+    Object localObject3;
+    String str1;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      str2 = "QAVSOMD5__" + ((XmlData)localObject1).getSharedPreferencesName();
+      localObject3 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
+      str1 = ((SharedPreferences)localObject3).getString(str2, null);
+      localObject2 = bfhi.a(paramString);
+      if ((TextUtils.isEmpty(((XmlData)localObject1).MD5)) || (!((XmlData)localObject1).MD5.equalsIgnoreCase((String)localObject2)))
+      {
+        localObject3 = new StringBuilder().append("download success but check md5 failed. config zip file md5 = ");
+        if (!TextUtils.isEmpty(((XmlData)localObject1).MD5)) {}
+        for (localObject1 = ((XmlData)localObject1).MD5;; localObject1 = "null")
+        {
+          QLog.e("QavSoDownloadHandlerBase", 1, (String)localObject1 + ", realZipFileMd5 = " + (String)localObject2);
+          paramString = new File(paramString);
+          if (paramString.exists()) {
+            paramString.delete();
+          }
+          return;
+        }
+      }
+      QLog.d("QavSoDownloadHandlerBase", 1, "download success: " + paramString + "|" + str1 + "|" + ((XmlData)localObject1).MD5 + "|" + localObject1);
+      if (((TextUtils.isEmpty(((XmlData)localObject1).MD5)) || (((XmlData)localObject1).MD5.equalsIgnoreCase(str1))) && (UpdateAvSo.a(this.a.getApp().getApplicationContext(), Boolean.valueOf(true)))) {}
+    }
+    try
+    {
+      bdcs.a(paramString, UpdateAvSo.a(), false);
+      ((SharedPreferences)localObject3).edit().putString(str2, ((XmlData)localObject1).MD5).commit();
+      if (!UpdateAvSo.a(true)) {
+        QLog.e("QavSoDownloadHandlerBase", 1, "checkHevcSoMd5 failed. md5 error!");
+      }
+      for (;;)
+      {
+        super.a(paramString);
+        return;
+        localObject2 = new File(UpdateAvSo.a() + "/libTcHevcEnc.so");
+        if (((File)localObject2).exists()) {
+          break;
+        }
+        QLog.e("QavSoDownloadHandlerBase", 1, "libTcHevcEnc.so is not exist.");
+        localObject2 = new File(UpdateAvSo.a() + "/libTcHevcDec.so");
+        if (((File)localObject2).exists()) {
+          break label569;
+        }
+        QLog.e("QavSoDownloadHandlerBase", 1, "libTcHevcDec.so is not exist.");
+        localObject2 = new File(UpdateAvSo.a() + "/libTcHevcDec2.so");
+        if (((File)localObject2).exists()) {
+          break label596;
+        }
+        QLog.e("QavSoDownloadHandlerBase", 1, "libTcHevcDec2.so is not exist.");
+        QLog.d("QavSoDownloadHandlerBase", 1, "uncompressZip success: " + paramString + "|" + str1 + "|" + ((XmlData)localObject1).MD5 + "|" + localObject1);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        QLog.e("QavSoDownloadHandlerBase", 1, "uncompressZip qavso failed.");
+        File localFile = new File(paramString);
+        if (localFile.exists())
+        {
+          localFile.delete();
+          continue;
+          ((SharedPreferences)localObject3).edit().putLong("SP_QAV_HEVC_ENC_SO_FILE_SIZE", ((File)localObject2).length()).commit();
+          continue;
+          label569:
+          ((SharedPreferences)localObject3).edit().putLong("SP_QAV_HEVC_DEC_SO_FILE_SIZE", ((File)localObject2).length()).commit();
+          continue;
+          label596:
+          ((SharedPreferences)localObject3).edit().putLong("SP_QAV_HEVC_DEC2_SO_FILE_SIZE", ((File)localObject2).length()).commit();
+        }
+      }
+    }
   }
   
-  protected boolean a()
+  public boolean a()
   {
     return true;
-  }
-  
-  protected HashMap<String, String> b()
-  {
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null)
-    {
-      localHashMap.put("serverip", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_strLastServerHost));
-      localHashMap.put("param_Server", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_strLastServerHost));
-      localHashMap.put("param_ftnIP", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_strLastServerHost));
-      localHashMap.put("param_retry", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uRetryTimes));
-      localHashMap.put("param_FailCode", String.valueOf(a(this.jdField_a_of_type_Apgz.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_nSrvReturnCode)));
-      localHashMap.put("param_fsized", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uDownloadedSize));
-      localHashMap.put("param_ipStackType", String.valueOf(apvm.a()));
-      localHashMap.put("param_realTransferType", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uProxyType));
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uTotalTimes != 0L) {
-        localHashMap.put("param_speed", String.valueOf((float)(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uDownloadedSize / 1048576L) / (float)this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.m_uTotalTimes));
-      }
-    }
-    for (;;)
-    {
-      localHashMap.put("param_uuid", "");
-      localHashMap.put("param_MD5", "");
-      localHashMap.put("param_fsizeo", String.valueOf(this.jdField_a_of_type_Apgz.d));
-      localHashMap.put("param_PeerUin", String.valueOf(this.jdField_a_of_type_Apgz.c));
-      localHashMap.put("param_url", String.valueOf(""));
-      localHashMap.put("param_rspHeader", String.valueOf(""));
-      localHashMap.put("param_nSessionId", String.valueOf(""));
-      localHashMap.put("param_fromType", String.valueOf("1"));
-      return localHashMap;
-      localHashMap.put("param_speed", "0");
-      continue;
-      localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Apgz.jdField_b_of_type_Long));
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Apgz.jdField_a_of_type_Long = 1L;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (this.jdField_a_of_type_Long = 3L;; this.jdField_a_of_type_Long = 2L)
-    {
-      this.jdField_a_of_type_Apgz.jdField_b_of_type_Long = 9037L;
-      a(false);
-      return;
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_a_of_type_Apgz.jdField_a_of_type_Long = 2L;
-    this.jdField_a_of_type_Long = 2L;
-    this.jdField_a_of_type_Apgz.jdField_b_of_type_Long = paramLong;
-    a(false);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp != null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp = new ExcitingTransferDownloaderFirstPkgRp();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSStartTime = awzy.a();
-  }
-  
-  public void c(long paramLong)
-  {
-    this.jdField_a_of_type_Apgz.jdField_a_of_type_Long = 2L;
-    this.jdField_a_of_type_Long = 7L;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Apgz.jdField_b_of_type_Long = paramLong;
-    a(false);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSEndTime = awzy.a();
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aphk
  * JD-Core Version:    0.7.0.1
  */

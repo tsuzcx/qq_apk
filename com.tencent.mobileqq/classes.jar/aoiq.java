@@ -1,35 +1,122 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aoiq
-  implements Animator.AnimatorListener
+  extends aofy<aoir>
 {
-  public aoiq(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public int a()
   {
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.topMargin = (-this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.j);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    return 566;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  @NonNull
+  public aoir a(int paramInt)
   {
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.topMargin = (-this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.j);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    return new aoir();
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  @Nullable
+  public aoir a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
+    {
+      aoir localaoir = aoir.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("BootOptimizeConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      }
+      return localaoir;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BootOptimizeConfProcessor", 2, "onParsed is null");
+    }
+    return null;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public Class<aoir> a()
+  {
+    return aoir.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BootOptimizeConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(aoir paramaoir)
+  {
+    if (paramaoir == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("BootOptimizeConfProcessor", 2, "onUpdate but newConf==null");
+      }
+    }
+    Object localObject;
+    do
+    {
+      for (;;)
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("BootOptimizeConfProcessor", 2, "onUpdate " + paramaoir.toString());
+        }
+        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        ajfw.a((QQAppInterface)localObject, paramaoir.jdField_a_of_type_Boolean);
+        ((QQAppInterface)localObject).getApp().getSharedPreferences("acc_info" + ((QQAppInterface)localObject).getAccount(), 0).edit().putLong("PREF_PLUGIN_DELAY_TIME", paramaoir.jdField_a_of_type_Long).apply();
+        try
+        {
+          localObject = new File(((QQAppInterface)localObject).getApp().getFilesDir() + File.separator + "enableKernelServiceInVivo");
+          if (paramaoir.b)
+          {
+            if (((File)localObject).exists()) {
+              continue;
+            }
+            ((File)localObject).createNewFile();
+          }
+        }
+        catch (Throwable paramaoir)
+        {
+          QLog.e("BootOptimizeConfProcessor", 1, "create file failed", paramaoir);
+          return;
+        }
+      }
+    } while (!((File)localObject).exists());
+    ((File)localObject).delete();
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BootOptimizeConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoiq
  * JD-Core Version:    0.7.0.1
  */

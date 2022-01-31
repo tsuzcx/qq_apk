@@ -17,6 +17,7 @@ public final class e_attribute_2
   public static final int _IsFriShortVideoFeed = 1048576;
   public static final int _IsGdtAdv = 32;
   public static final int _IsHighFiveFeeds = 33554432;
+  public static final int _IsKuoLieAIOFeeds = 536870912;
   public static final int _IsLifeMomentFeed = 262144;
   public static final int _IsLifeMomentUgcFeed = 524288;
   public static final int _IsMayKnowFriend = 1;
@@ -31,12 +32,13 @@ public final class e_attribute_2
   public static final int _IsTagEventSetTop = 16384;
   public static final int _IsTxOmgAdv = 4;
   public static final int _IsUgcHotWordVideo = 256;
+  public static final int _IsVideoCircleContainer = 268435456;
   public static final int _IsWeishiFeeds = 2097152;
   public static final int _IsWeishiVideoContainer = 4194304;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_attribute_2
  * JD-Core Version:    0.7.0.1
  */

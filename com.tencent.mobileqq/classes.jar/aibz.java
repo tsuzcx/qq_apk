@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class aibz
-  implements View.OnLongClickListener
+  implements Comparator<aicu>
 {
-  aibz(aibx paramaibx, ContainerView paramContainerView) {}
+  aibz(aiby paramaiby) {}
   
-  public boolean onLongClick(View paramView)
+  public int a(aicu paramaicu1, aicu paramaicu2)
   {
-    this.jdField_a_of_type_Aibx.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView, paramView);
-    return false;
+    return (int)(paramaicu2.a.time - paramaicu1.a.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibz
  * JD-Core Version:    0.7.0.1
  */

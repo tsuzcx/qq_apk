@@ -1,23 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.model.HotWordSearchSpecialDataModel.TopicImage;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
 class awif
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  awif(awie paramawie, HotWordSearchSpecialDataModel.TopicImage paramTopicImage) {}
+  awif(awhw paramawhw, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Awie.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchSpecialDataModel$TopicImage.jumpUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchSpecialDataModel$TopicImage.imageText);
-    awie.a(this.jdField_a_of_type_Awie, false, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchSpecialDataModel$TopicImage.imageText);
-    ((akgc)((QQAppInterface)onh.a()).getManager(299)).a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchSpecialDataModel$TopicImage.imageText);
+    this.jdField_a_of_type_Awhw.l();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Awhw.l();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Awhw.f) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awif
  * JD-Core Version:    0.7.0.1
  */

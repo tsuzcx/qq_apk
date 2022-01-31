@@ -1,59 +1,67 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
+import com.tencent.ark.open.ArkView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class amkc
-  implements Application.ActivityLifecycleCallbacks
 {
-  public amkc(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
+  private List<ArkView> a = new ArrayList();
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityResumed: " + paramActivity.getClass().getName());
-    }
-    if (this.a.f)
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      this.a.f = false;
-      this.a.d = true;
-      this.a.a().removeCallbacks(this.a.b);
-      this.a.a().postDelayed(this.a.b, 200L);
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onDestroy();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onDestroy");
+    }
+    this.a.clear();
+  }
+  
+  public void a(ArkView paramArkView)
+  {
+    this.a.add(paramArkView);
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onPause();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onPause");
     }
   }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
+  public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStarted: " + paramActivity.getClass().getName());
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onResume();
+      }
     }
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStopped: " + paramActivity.getClass().getName());
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onResume");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkc
  * JD-Core Version:    0.7.0.1
  */

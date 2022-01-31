@@ -1,37 +1,40 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import mqq.app.MobileQQ;
 
 class scy
-  implements Animation.AnimationListener
+  implements bevy
 {
-  scy(scr paramscr) {}
+  scy(scx paramscx, ArticleInfo paramArticleInfo, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if ((this.a.b > 0) && (this.a.c > 0)) {
-      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131372102)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
+    boolean bool = true;
+    if ((scx.a(this.jdField_a_of_type_Scx) == null) || (!scx.a(this.jdField_a_of_type_Scx).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      xxb.b(1, 2131720019);
+      bool = false;
+    }
+    for (;;)
+    {
+      paramBaseResp = (AppInterface)ors.a();
+      sdn.b(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
+      return;
+      xxb.b(2, 2131720038);
+      continue;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scy
  * JD-Core Version:    0.7.0.1
  */

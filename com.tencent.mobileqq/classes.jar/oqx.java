@@ -1,38 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 public class oqx
-  implements bgag
+  extends RecyclerView.ViewHolder
 {
-  public oqx(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
+  public TextView a;
   
-  public void a()
+  public oqx(oqv paramoqv, View paramView)
   {
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "endOfRefresh.");
-  }
-  
-  public void a(XRecyclerView paramXRecyclerView, int paramInt)
-  {
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startLoadMore.");
-    paramXRecyclerView = orh.a();
-    if (paramXRecyclerView != null) {
-      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.f(this.a), ReadInJoyCGIDynamicChannelFragment.a(this.a).a(), 10);
-    }
-  }
-  
-  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
-  {
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startTopRefresh.");
-    paramXRecyclerView = orh.a();
-    if (paramXRecyclerView != null) {
-      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.e(this.a));
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368566));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqx
  * JD-Core Version:    0.7.0.1
  */

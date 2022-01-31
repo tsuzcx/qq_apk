@@ -1,38 +1,36 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class alrs
-  implements alrw
+  implements aubn
 {
-  alrs(alrl paramalrl, alrv paramalrv, String paramString, alrx paramalrx) {}
+  alrs(alro paramalro) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrv.b }));
+    boolean bool1 = alro.b(this.a);
+    alro.a(this.a, false);
+    boolean bool2 = this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "onBindStateChanged last:" + bool1 + "  now:" + bool2);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Alrx.a(false);
-      return;
-      if (!alrl.b(paramArrayOfByte, this.jdField_a_of_type_Alrv.d))
-      {
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrv.b, this.jdField_a_of_type_Alrv.d }));
-      }
-      else
-      {
-        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString });
-        if (alrl.a(paramArrayOfByte, str)) {
-          break;
-        }
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrv.b, str }));
-      }
+    if (bool1 != bool2) {
+      ((FriendListHandler)alro.a(this.a).a(1)).notifyUI(92, true, null);
     }
-    this.jdField_a_of_type_Alrx.a(true);
   }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alrs
  * JD-Core Version:    0.7.0.1
  */

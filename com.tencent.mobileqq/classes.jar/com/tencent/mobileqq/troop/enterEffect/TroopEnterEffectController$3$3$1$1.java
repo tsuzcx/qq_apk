@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
 import android.graphics.Bitmap;
-import aybf;
-import azrn;
-import azrs;
-import azrt;
+import azzc;
+import bbpw;
+import bbqb;
+import bbqc;
 
 public class TroopEnterEffectController$3$3$1$1
   implements Runnable
 {
-  public TroopEnterEffectController$3$3$1$1(azrt paramazrt, Bitmap paramBitmap) {}
+  public TroopEnterEffectController$3$3$1$1(bbqc parambbqc, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Azrt.jdField_a_of_type_Aybf.a(this.jdField_a_of_type_Azrt.jdField_a_of_type_Azrs.a.this$0.a, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Bbqc.jdField_a_of_type_Azzc.a(this.jdField_a_of_type_Bbqc.jdField_a_of_type_Bbqb.a.this$0.a, this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.qqlive.tvkplayer.vinfo;
 
 import android.text.TextUtils;
 import com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfo;
+import com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfo.TVKCGIVideoWatermarkInfo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -88,6 +89,7 @@ public class TVKNetVideoInfo
   private int mVst = 0;
   private float mWHRadio;
   private String mWanIP;
+  ArrayList<TVKCGIVideoInfo.TVKCGIVideoWatermarkInfo> mWatermarkInfos;
   
   public void addAudioTrack(TVKNetVideoInfo.AudioTrackInfo paramAudioTrackInfo)
   {
@@ -404,6 +406,11 @@ public class TVKNetVideoInfo
     return this.mWanIP;
   }
   
+  public ArrayList<TVKCGIVideoInfo.TVKCGIVideoWatermarkInfo> getWatermarkInfos()
+  {
+    return this.mWatermarkInfos;
+  }
+  
   public boolean isHevc()
   {
     return this.mIsHevc;
@@ -681,10 +688,15 @@ public class TVKNetVideoInfo
   {
     this.mWanIP = paramString;
   }
+  
+  public void setWatermarkInfos(ArrayList<TVKCGIVideoInfo.TVKCGIVideoWatermarkInfo> paramArrayList)
+  {
+    this.mWatermarkInfos = paramArrayList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKNetVideoInfo
  * JD-Core Version:    0.7.0.1
  */

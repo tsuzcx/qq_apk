@@ -1,111 +1,214 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils.2;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.manager.Manager;
 
 public class amev
+  implements Manager
 {
-  public static BusinessCard a(QQAppInterface paramQQAppInterface)
+  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  ConcurrentHashMap<String, amfa> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  
+  public amev(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = (amdj)paramQQAppInterface.getManager(112);
-    if (paramQQAppInterface != null) {}
-    for (paramQQAppInterface = paramQQAppInterface.a();; paramQQAppInterface = null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = amey.a(paramQQAppInterface.getApp(), paramQQAppInterface.c());
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public static amev a(QQAppInterface paramQQAppInterface)
+  {
+    return (amev)paramQQAppInterface.getManager(277);
+  }
+  
+  amfa a(String paramString, int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
-      Object localObject = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        localObject = new BusinessCard();
+      amfa localamfa2 = (amfa)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      amfa localamfa1 = localamfa2;
+      if (localamfa2 == null)
+      {
+        localamfa1 = new amfa();
+        localamfa1.jdField_a_of_type_JavaLangString = paramString;
+        localamfa1.jdField_a_of_type_Int = paramInt;
       }
-      return localObject;
+      return localamfa1;
     }
   }
   
-  public static BusinessCard a(QQAppInterface paramQQAppInterface, auuy paramauuy)
+  public ArrayList<amfa> a()
   {
-    amdj localamdj = (amdj)paramQQAppInterface.getManager(112);
-    if (paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-      paramQQAppInterface = localamdj.a();
-    }
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("KeyHiddenChatList", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      paramauuy = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        paramauuy = new BusinessCard();
-      }
-      return paramauuy;
-      if (paramauuy.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+      localObject = ((String)localObject).split(";");
+      if ((localObject != null) && (localObject.length > 0))
       {
-        paramQQAppInterface = paramauuy.jdField_a_of_type_ComTencentMobileqqDataCard.getCardInfo();
-        if ((paramauuy.jdField_a_of_type_ComTencentMobileqqDataCard.hasCardInfo()) && (!TextUtils.isEmpty(paramQQAppInterface.cardId))) {
-          localamdj.a(paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramQQAppInterface);
-        } else {
-          paramQQAppInterface = localamdj.b(paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+        int j = localObject.length;
+        int i = 0;
+        for (;;)
+        {
+          if (i < j)
+          {
+            String[] arrayOfString = localObject[i].split("\\|");
+            if ((arrayOfString != null) && (arrayOfString.length == 2)) {}
+            try
+            {
+              amfa localamfa = new amfa();
+              localamfa.jdField_a_of_type_JavaLangString = arrayOfString[0];
+              localamfa.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[1]);
+              localArrayList.add(localamfa);
+              i += 1;
+            }
+            catch (Throwable localThrowable)
+            {
+              for (;;)
+              {
+                QLog.e("tag_hidden_chat", 2, localThrowable, new Object[0]);
+              }
+            }
+          }
         }
       }
-      else
-      {
-        paramQQAppInterface = null;
-      }
     }
+    return localArrayList;
   }
   
-  public static void a(String paramString)
+  public void a()
   {
-    try
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
     {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = 1000;
-      localURLDrawableOptions.mRequestHeight = 600;
-      ThreadManager.post(new BusinessCardUtils.2(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
+      amfa localamfa = (amfa)localIterator.next();
+      localStringBuilder.append(localamfa.jdField_a_of_type_JavaLangString).append("|").append(localamfa.jdField_a_of_type_Int).append(";");
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("KeyHiddenChatList", localStringBuilder.toString()).commit();
+  }
+  
+  void a(amfa paramamfa)
+  {
+    if ((paramamfa == null) || (TextUtils.isEmpty(paramamfa.jdField_a_of_type_JavaLangString))) {
       return;
     }
-    catch (Exception paramString)
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
-      paramString.printStackTrace();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramamfa.jdField_a_of_type_JavaLangString, paramamfa);
+      a();
+      return;
     }
   }
   
-  public static void a(String paramString, int paramInt)
+  public void a(Activity paramActivity)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errorCode", String.valueOf(paramInt));
-    axrn.a(BaseApplicationImpl.getContext()).a(paramString, "ocr_user_edit_action_report", true, 0L, 0L, localHashMap, null);
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    if (!localSharedPreferences.getBoolean("FirstSetHidden", false))
+    {
+      localSharedPreferences.edit().putBoolean("FirstSetHidden", true).commit();
+      bdcd.a(paramActivity, 230, paramActivity.getString(2131696822), paramActivity.getString(2131696820), paramActivity.getString(2131720083), paramActivity.getString(2131696821), new amew(this, paramActivity), new bdco()).show();
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A349", "0X800A349", 0, 0, "0", "0", "", "");
+    }
   }
   
-  public static void a(String paramString, URLImageView paramURLImageView, int paramInt1, int paramInt2)
+  void a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramURLImageView == null)) {}
-    do
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      a();
       return;
+    }
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(paramString))) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(a(paramString, paramInt));
+      return;
+    }
+    a(paramString);
+  }
+  
+  boolean a()
+  {
+    for (;;)
+    {
       try
       {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = paramInt1;
-        localURLDrawableOptions.mRequestHeight = paramInt2;
-        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130844129);
-        paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-        paramURLImageView.setURLDrawableDownListener(new amew(paramURLImageView));
-        return;
+        Object localObject1 = a();
+        if (QLog.isColorLevel())
+        {
+          if (localObject1 != null)
+          {
+            i = ((List)localObject1).size();
+            QLog.d("tag_hidden_chat", 2, new Object[] { "doInitAllHidden(), dataList.size is ", Integer.valueOf(i) });
+          }
+        }
+        else
+        {
+          if (localObject1 == null) {
+            break label158;
+          }
+          synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+          {
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+            localObject1 = ((List)localObject1).iterator();
+            if (!((Iterator)localObject1).hasNext()) {
+              break;
+            }
+            amfa localamfa = (amfa)((Iterator)localObject1).next();
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localamfa.jdField_a_of_type_JavaLangString, localamfa);
+          }
+        }
+        int i = 0;
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("BusinessCard", 2, "error " + paramString.toString());
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("tag_hidden_chat", 2, "doInitAllHidden exception:" + localException.getMessage());
+        }
+        return false;
+      }
+    }
+    label158:
+    return true;
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      a();
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amev
  * JD-Core Version:    0.7.0.1
  */

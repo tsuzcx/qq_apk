@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aifm
-  implements View.OnClickListener
+public class aifm
+  extends aifb
 {
-  aifm(aifk paramaifk) {}
-  
-  public void onClick(View paramView)
+  public aifm(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    aifk.a(this.a).onClick(paramView);
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+  }
+  
+  protected void y()
+  {
+    this.a = "MiniPieForNearby";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifm
  * JD-Core Version:    0.7.0.1
  */

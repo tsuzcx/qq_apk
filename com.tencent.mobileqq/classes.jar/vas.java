@@ -1,36 +1,59 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDeleteVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vas
-  extends QQUIEventReceiver<MystoryListView, svs>
+  extends unk<vcq>
 {
-  public vas(@NonNull MystoryListView paramMystoryListView)
+  private static final String b = ume.a("StorySvc.video_show_delete");
+  public String a;
+  
+  public vas(String paramString)
   {
-    super(paramMystoryListView);
+    this.a = paramString;
   }
   
-  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull svs paramsvs)
+  public String a()
   {
-    paramMystoryListView.q();
-    paramsvs = (vba)paramMystoryListView.a("FeedSegment");
-    if (paramsvs != null) {
-      paramsvs.j();
-    }
-    paramMystoryListView = (vcp)paramMystoryListView.a("NewMyStorySegment");
-    if (paramMystoryListView != null) {
-      paramMystoryListView.a(false);
-    }
+    return b;
   }
   
-  public Class acceptEventClass()
+  public vcq a(byte[] paramArrayOfByte)
   {
-    return svs.class;
+    qqstory_service.RspDeleteVideo localRspDeleteVideo = new qqstory_service.RspDeleteVideo();
+    try
+    {
+      localRspDeleteVideo.mergeFrom(paramArrayOfByte);
+      return new vcq(localRspDeleteVideo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(ByteStringMicro.copyFromUtf8(this.a));
+    localReqDeleteVideo.vid_list.addAll(localArrayList);
+    return localReqDeleteVideo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vas
  * JD-Core Version:    0.7.0.1
  */

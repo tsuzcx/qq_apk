@@ -1,27 +1,36 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
-final class acxu
-  extends akil
+public class acxu
+  implements bhqd
 {
-  acxu(SessionInfo paramSessionInfo) {}
+  public acxu(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, bhpy parambhpy) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean)
-    {
-      QWalletHelper.saveLastUpdateToopMemberNumTime(this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PlusPanelUtils", 2, "onOIDB0X88D_0_Ret 群uin：" + this.a.a + " 群成员个数：" + paramTroopInfo.wMemberNum);
-      }
+    if (this.jdField_a_of_type_Bhpy != null) {
+      this.jdField_a_of_type_Bhpy.dismiss();
     }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 1);
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(3) }));
+      return;
+    case 1: 
+      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 2);
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(2) }));
+      return;
+    }
+    FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 3);
+    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(1) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxu
  * JD-Core Version:    0.7.0.1
  */

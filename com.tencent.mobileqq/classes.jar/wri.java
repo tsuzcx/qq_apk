@@ -1,20 +1,16 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-
 class wri
-  implements xgu<CertifiedAccountRead.StGetMainPageRsp>
+  implements xoi<wnr>
 {
-  wri(wrh paramwrh, wrd paramwrd) {}
+  wri(wrh paramwrh) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public wnr a()
   {
-    if (this.jdField_a_of_type_Wrd != null) {
-      this.jdField_a_of_type_Wrd.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
-    }
+    return new wnr();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wri
  * JD-Core Version:    0.7.0.1
  */

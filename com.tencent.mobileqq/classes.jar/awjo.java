@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-
 public class awjo
-  implements View.OnClickListener
 {
-  public awjo(BaseSearchActivity paramBaseSearchActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    BaseSearchActivity.b = 1;
-    this.a.a.setText("");
-  }
+  public static String a = "precover_ipc_action_get_resource";
+  public static String b = "precover_ipc_action_req_download";
+  public static String c = "precover_ipc_action_query_download_progress";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awjo
  * JD-Core Version:    0.7.0.1
  */

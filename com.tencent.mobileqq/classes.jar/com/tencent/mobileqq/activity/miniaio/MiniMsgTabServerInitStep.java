@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import bfof;
+import bhpa;
 import com.tencent.commonsdk.util.notification.NotificationLimiterUtil;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
@@ -18,7 +18,7 @@ public class MiniMsgTabServerInitStep
   private void b()
   {
     a = true;
-    NotificationLimiterUtil.setLimiter(new bfof());
+    NotificationLimiterUtil.setLimiter(new bhpa());
   }
   
   public int a()
@@ -35,7 +35,7 @@ public class MiniMsgTabServerInitStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgTabServerInitStep
  * JD-Core Version:    0.7.0.1
  */

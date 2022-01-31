@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.adapter;
 
-import aion;
+import akfy;
 
 public class RecommendFriendAdapter$6
   implements Runnable
 {
-  public RecommendFriendAdapter$6(aion paramaion) {}
+  public RecommendFriendAdapter$6(akfy paramakfy) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class RecommendFriendAdapter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.RecommendFriendAdapter.6
  * JD-Core Version:    0.7.0.1
  */

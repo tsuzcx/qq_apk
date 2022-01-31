@@ -1,25 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-
-public class vhc
-  implements Animation.AnimationListener
+class vhc
+  implements uxu
 {
-  public vhc(EditVideoGuide paramEditVideoGuide) {}
+  vhc(vha paramvha, uxt paramuxt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean)
   {
-    this.a.g();
-    this.a.a.a(0);
+    this.jdField_a_of_type_Uxt.a();
+    this.jdField_a_of_type_Vha.c();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhc
  * JD-Core Version:    0.7.0.1
  */

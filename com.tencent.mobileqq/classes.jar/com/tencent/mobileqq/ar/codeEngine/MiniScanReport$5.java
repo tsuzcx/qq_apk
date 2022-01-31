@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import aljt;
-import alju;
-import axrn;
+import anaj;
+import anak;
+import azmz;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public final class MiniScanReport$5
   
   public void run()
   {
-    long l1 = alju.a("report_tag_aio_minicode_result", 0L);
+    long l1 = anak.a("report_tag_aio_minicode_result", 0L);
     long l2 = System.currentTimeMillis();
     HashMap localHashMap;
     if (l2 - l1 > 10800000L)
@@ -35,19 +35,19 @@ public final class MiniScanReport$5
     {
       localHashMap.put("report_key_aio_detect_suc", localObject);
       localHashMap.put("report_key_qq_version", "0");
-      localHashMap.put("report_key_qq_subversion", "4480");
-      String str = aljt.c("QMCF_qr");
+      localHashMap.put("report_key_qq_subversion", "4515");
+      String str = anaj.c("QMCF_qr");
       localObject = str;
       if (str == null) {
         localObject = "";
       }
       localHashMap.put("report_key_so_md5", localObject);
-      alju.a(localHashMap);
-      axrn.a(BaseApplication.getContext()).a("", "report_tag_aio_minicode_result", true, 0L, 0L, localHashMap, "");
+      anak.a(localHashMap);
+      azmz.a(BaseApplication.getContext()).a("", "report_tag_aio_minicode_result", true, 0L, 0L, localHashMap, "");
       if (QLog.isColorLevel()) {
         QLog.i("MiniRecog.MiniScanReport", 2, String.format("onAIOMiniCodeResultReport [decodeSuc,detectSuc]=[%b,%b]", new Object[] { Boolean.valueOf(this.a), Boolean.valueOf(this.b) }));
       }
-      alju.a("report_tag_aio_minicode_result", l2);
+      anak.a("report_tag_aio_minicode_result", l2);
       return;
       localObject = "0";
       break;
@@ -56,7 +56,7 @@ public final class MiniScanReport$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.codeEngine.MiniScanReport.5
  * JD-Core Version:    0.7.0.1
  */

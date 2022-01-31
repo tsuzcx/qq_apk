@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.ExtConfigInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.TipsBar;
 
-public final class berr
-  implements Parcelable.Creator<ExtConfigInfo>
+public class berr
+  implements View.OnClickListener
 {
-  public ExtConfigInfo a(Parcel paramParcel)
-  {
-    return new ExtConfigInfo(paramParcel);
-  }
+  public berr(TipsBar paramTipsBar) {}
   
-  public ExtConfigInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ExtConfigInfo[paramInt];
+    this.a.removeAllViews();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     berr
  * JD-Core Version:    0.7.0.1
  */

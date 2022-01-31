@@ -1,203 +1,136 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener.1;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener.2;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener.3;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener.4;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener.5;
+import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bdek
+  implements bfka
 {
-  protected static bdek a;
-  protected static byte[] a;
-  public int a;
-  protected List<bdel> a;
-  public int b;
-  protected List<Friend> b;
-  protected List<String> c = new ArrayList(20);
+  private long a;
+  private long b;
   
-  static
-  {
-    jdField_a_of_type_ArrayOfByte = new byte[1];
-  }
+  protected bdek(bdef parambdef) {}
   
-  protected bdek()
+  public void installSucceed(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(20);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList(5);
-  }
-  
-  public static bdek a()
-  {
-    if (jdField_a_of_type_Bdek == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    long l;
+    if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
     {
-      if (jdField_a_of_type_Bdek == null) {
-        jdField_a_of_type_Bdek = new bdek();
-      }
-      return jdField_a_of_type_Bdek;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_JavaUtilList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    List localList = ((bdel)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList;
-    if (localList != null) {
-      return localList.size();
-    }
-    return 0;
-  }
-  
-  public Friend a(int paramInt)
-  {
-    return (Friend)this.jdField_b_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public Friend a(String paramString)
-  {
-    Friend localFriend;
-    do
-    {
-      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-      Iterator localIterator2;
-      while (!localIterator2.hasNext())
-      {
-        if (!localIterator1.hasNext()) {
-          break;
-        }
-        localIterator2 = ((bdel)localIterator1.next()).jdField_a_of_type_JavaUtilList.iterator();
-      }
-      localFriend = (Friend)localIterator2.next();
-    } while (!paramString.equals(localFriend.jdField_a_of_type_JavaLangString));
-    return localFriend;
-    return null;
-  }
-  
-  public String a(int paramInt)
-  {
-    return ((bdel)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<Friend> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator1.hasNext())
-    {
-      Iterator localIterator2 = ((bdel)localIterator1.next()).jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator2.hasNext()) {
-        localArrayList.add(localIterator2.next());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public List<Friend> a(int paramInt)
-  {
-    return ((bdel)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!this.c.contains(paramString)) {
-      this.c.add(paramString);
-    }
-  }
-  
-  public void a(List<bdel> paramList, int paramInt1, int paramInt2)
-  {
-    label9:
-    String str2;
-    Iterator localIterator1;
-    if (paramList.size() <= 0)
-    {
-      return;
+      l = System.currentTimeMillis();
+      if (l - this.b >= 1000L) {}
     }
     else
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      this.c.clear();
-      str2 = bcyb.a().a().getResources().getString(2131690902);
-      localIterator1 = paramList.iterator();
+      return;
     }
-    for (;;)
+    this.b = l;
+    bfhg.b("NewUpgradeDialog", bfeh.a(10010, bdef.a(), 3, 400));
+    bfef.a().a(22, bfeh.a(10010, bdef.a(), 3, 400));
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    bfhg.c("NewUpgradeDialog", "onDownloadCancel");
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
     {
-      if (localIterator1.hasNext())
-      {
-        paramList = (bdel)localIterator1.next();
-        if (str2.equals(paramList.jdField_a_of_type_JavaLangString)) {
-          this.jdField_b_of_type_JavaUtilList.addAll(paramList.jdField_a_of_type_JavaUtilList);
-        }
+      bfhg.c("NewUpgradeDialog", "onDownloadError state = " + paramInt2);
+      if ((paramDownloadInfo.f == 100) || (paramDownloadInfo.a() == 4)) {
+        onDownloadFinish(paramDownloadInfo);
       }
-      else
+    }
+    else
+    {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.4(this, paramDownloadInfo));
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    bfhg.c("NewUpgradeDialog", "onDownloadFinish");
+    long l;
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      l = System.currentTimeMillis();
+      if (l - this.jdField_a_of_type_Long >= 1000L) {}
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    bfhg.b("NewUpgradeDialog", bfeh.a(10010, bdef.a(), 3, 700));
+    bfef.a().a(20, bfeh.a(10010, bdef.a(), 3, 700));
+    ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.2(this, paramDownloadInfo));
+    if (bdef.b(this.jdField_a_of_type_Bdef))
+    {
+      bdef.b(this.jdField_a_of_type_Bdef);
+      bfhg.c("NewUpgradeDialog", alpo.a(2131707956));
+      return;
+    }
+    bfhg.c("NewUpgradeDialog", alpo.a(2131707964));
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      bfhg.c("NewUpgradeDialog", "onDownloadPause");
+      bfhg.b("NewUpgradeDialog", bfeh.a(10010, bdef.a(), 3, 600));
+      bfef.a().a(19, bfeh.a(10010, bdef.a(), 3, 600));
+      ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.1(this, paramDownloadInfo));
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    bfhg.c("NewUpgradeDialog", "onDownloadUpdate");
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        break label9;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(paramList);
-      paramList = paramList.jdField_a_of_type_JavaUtilList;
-      if (paramList == null) {
-        break;
-      }
-      Iterator localIterator2 = paramList.iterator();
-      while (localIterator2.hasNext())
-      {
-        Friend localFriend = (Friend)localIterator2.next();
-        String str1 = localFriend.c;
-        if (str1 != null)
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        if (localDownloadInfo.c.equals("1101070898"))
         {
-          paramList = str1;
-          if (!"".equals(str1)) {}
+          bfhg.c("NewUpgradeDialog", "onDownloadUpdate STATE = " + localDownloadInfo.a());
+          ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.3(this, localDownloadInfo));
         }
-        else
-        {
-          paramList = localFriend.b;
-        }
-        localFriend.f = ChnToSpell.a(paramList, 2);
-        localFriend.g = ChnToSpell.a(paramList, 1);
       }
     }
   }
   
-  public boolean a(String paramString)
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    return this.c.contains(paramString);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public List<String> b()
-  {
-    return this.c;
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.c.contains(paramString)) {
-      this.c.remove(paramString);
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898"))) {
+      bfhg.c("NewUpgradeDialog", "onDownloadWait");
     }
   }
   
-  public int c()
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
   {
-    return this.c.size();
+    if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
+    {
+      bdef.a(this.jdField_a_of_type_Bdef, new bdek(this.jdField_a_of_type_Bdef));
+      ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.5(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdek
  * JD-Core Version:    0.7.0.1
  */

@@ -1,93 +1,115 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.DLFilesViewerActivity;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.dataline.activities.LiteMutiPicViewerActivity;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.data.DataLineMsgSetList;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
-public class du
-  extends AsyncTask<Bundle, Integer, Void>
+class du
+  implements View.OnClickListener
 {
-  public du(LiteActivity paramLiteActivity) {}
+  du(dt paramdt) {}
   
-  DataLineMsgRecord a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-    localDataLineMsgRecord.path = paramString;
-    localDataLineMsgRecord.msgtype = -2000;
-    localDataLineMsgRecord.groupId = paramInt1;
-    localDataLineMsgRecord.groupSize = paramInt2;
-    localDataLineMsgRecord.groupIndex = paramInt3;
-    return localDataLineMsgRecord;
-  }
-  
-  protected Void a(Bundle... paramVarArgs)
-  {
-    paramVarArgs = paramVarArgs[0].getStringArrayList("PhotoConst.PHOTO_PATHS");
-    if (paramVarArgs == null) {
-      return null;
-    }
-    a(paramVarArgs);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.a.a(false);
-  }
-  
-  void a(List<String> paramList)
-  {
-    ajum localajum = (ajum)this.a.app.a(8);
-    for (;;)
+    if (!this.a.a()) {}
+    do
     {
-      int j = paramList.size();
-      if (j <= 3)
-      {
-        i = 0;
-        while (i < j)
-        {
-          localajum.a(a((String)paramList.get(i), 0, 0, 0), false);
-          i += 1;
-        }
+      return;
+      this.a.a();
+      paramView = (ef)paramView.getTag();
+      localObject2 = paramView.a();
+      localObject1 = ((DataLineMsgSet)localObject2).getFirstItem();
+      if (!((DataLineMsgSet)localObject2).isSingle()) {
+        break;
       }
-      if ((j > 3) && (j < 50))
-      {
-        localArrayList = new ArrayList();
-        int k = localajum.a();
-        i = 0;
-        while (i < j)
-        {
-          localArrayList.add(a((String)paramList.get(i), k, j, i));
-          i += 1;
-        }
-        fc.n(this.a.app);
-        localajum.a(localArrayList, false);
-        return;
-      }
-      ArrayList localArrayList = new ArrayList();
-      j = localajum.a();
-      int i = 0;
-      while (i < 50)
-      {
-        localArrayList.add(a((String)paramList.get(i), j, 50, i));
-        i += 1;
-      }
-      fc.n(this.a.app);
-      localajum.a(localArrayList, false);
-      i = 0;
-      while (i < 50)
-      {
-        paramList.remove(0);
-        i += 1;
-      }
+    } while (-1000 == ((DataLineMsgRecord)localObject1).msgtype);
+    FileManagerEntity localFileManagerEntity = arni.a((DataLineMsgRecord)localObject1);
+    if (biuq.a().a(localFileManagerEntity))
+    {
+      biuq.a().a(this.a.jdField_a_of_type_AndroidContentContext, localFileManagerEntity.strFilePath, true);
+      return;
     }
+    if ((((DataLineMsgRecord)localObject1).nOpType == 31) || (arni.d(localFileManagerEntity)))
+    {
+      dt.a(this.a, (DataLineMsgRecord)localObject1);
+      return;
+    }
+    if (((DataLineMsgRecord)localObject1).nOpType == 29)
+    {
+      dt.b(this.a, (DataLineMsgRecord)localObject1);
+      return;
+    }
+    Object localObject2 = new arhi(this.a.jdField_a_of_type_AndroidContentContext, localFileManagerEntity);
+    ArrayList localArrayList = new ArrayList();
+    if (localFileManagerEntity.nFileType == 0)
+    {
+      Iterator localIterator = dt.a(this.a).iterator();
+      label335:
+      while (localIterator.hasNext())
+      {
+        Object localObject3 = (DataLineMsgSet)localIterator.next();
+        if (((DataLineMsgSet)localObject3).isSingle())
+        {
+          localObject3 = ((DataLineMsgSet)localObject3).values().iterator();
+          for (;;)
+          {
+            if (!((Iterator)localObject3).hasNext()) {
+              break label335;
+            }
+            DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject3).next();
+            int j = arni.a(localDataLineMsgRecord.filename);
+            int i = j;
+            if (j == -1)
+            {
+              i = j;
+              if (localDataLineMsgRecord.msgtype == -2000) {
+                i = 0;
+              }
+            }
+            if (i != localFileManagerEntity.nFileType) {
+              break;
+            }
+            if (localDataLineMsgRecord != localObject1) {
+              localArrayList.add(String.valueOf(arni.a(localDataLineMsgRecord).nSessionId));
+            } else {
+              localArrayList.add(String.valueOf(localFileManagerEntity.nSessionId));
+            }
+          }
+        }
+      }
+      if (localArrayList.size() == 0) {
+        localArrayList.add(String.valueOf(localFileManagerEntity.nSessionId));
+      }
+      ((arhi)localObject2).a(localArrayList);
+    }
+    paramView = aroo.a(paramView.a().a, localFileManagerEntity.fileName);
+    Object localObject1 = new arhj(this.a.jdField_a_of_type_AndroidContentContext, (arhm)localObject2);
+    ((arhj)localObject1).a(11);
+    ((arhj)localObject1).a(paramView);
+    ((arhj)localObject1).a();
+    return;
+    if (((DataLineMsgSet)localObject2).getGroupType() == -2000)
+    {
+      paramView = new Intent(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity, LiteMutiPicViewerActivity.class);
+      paramView.putExtra("dataline_group_id", ((DataLineMsgSet)localObject2).getGroupId());
+      this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.startActivity(paramView);
+      return;
+    }
+    paramView = new Intent(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity, DLFilesViewerActivity.class);
+    paramView.putExtra("dl_files_groupid", ((DataLineMsgSet)localObject2).getGroupId());
+    this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.startActivityForResult(paramView, 102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     du
  * JD-Core Version:    0.7.0.1
  */

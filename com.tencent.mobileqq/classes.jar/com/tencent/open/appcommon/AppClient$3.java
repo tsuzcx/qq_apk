@@ -2,9 +2,9 @@ package com.tencent.open.appcommon;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bdfk;
-import bdlb;
-import bdlr;
+import bfei;
+import bfjy;
+import bfko;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -15,19 +15,19 @@ public final class AppClient$3
   
   public void run()
   {
-    if (bdlr.a().b())
+    if (bfko.a().b())
     {
       Bundle localBundle = new Bundle();
-      String str = bdlb.b;
+      String str = bfjy.b;
       if (this.jdField_a_of_type_JavaLangString == null) {}
       for (localObject = "";; localObject = this.jdField_a_of_type_JavaLangString)
       {
         localBundle.putString(str, (String)localObject);
-        localBundle.putString(bdlb.c, "");
-        localBundle.putString(bdlb.d, "");
-        localBundle.putString(bdlb.f, this.b);
-        localBundle.putInt(bdlb.e, 0);
-        localBundle.putString(bdlb.i, "ANDROIDQQ.SHARESOURCE");
+        localBundle.putString(bfjy.c, "");
+        localBundle.putString(bfjy.d, "");
+        localBundle.putString(bfjy.f, this.b);
+        localBundle.putInt(bfjy.e, 0);
+        localBundle.putString(bfjy.i, "ANDROIDQQ.SHARESOURCE");
         localBundle.putString("big_brother_source_key", this.c);
         ThreadManager.getSubThreadHandler().post(new AppClient.3.1(this, localBundle));
         return;
@@ -40,7 +40,7 @@ public final class AppClient$3
     ((Bundle)localObject).putBoolean("autoDownload", false);
     ((Bundle)localObject).putString("packageName", this.b);
     ((Bundle)localObject).putString("subpagetype", "SHARESOURCE");
-    bdfk.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 2462, (Bundle)localObject);
+    bfei.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 2462, (Bundle)localObject);
   }
 }
 

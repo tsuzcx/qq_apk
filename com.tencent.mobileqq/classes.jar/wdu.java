@@ -1,34 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
 public class wdu
-  extends QQUIEventReceiver<StoryUserBadgeView, tkh>
 {
-  public wdu(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
-  {
-    super(paramStoryUserBadgeView);
-  }
+  public int a;
+  public List<LikeEntry> a;
+  public boolean a;
+  public int b;
   
-  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull tkh paramtkh)
+  public wdu(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
   {
-    if (paramtkh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
-    while (paramtkh.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
-      return;
-    }
-    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tkh.class;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdu
  * JD-Core Version:    0.7.0.1
  */

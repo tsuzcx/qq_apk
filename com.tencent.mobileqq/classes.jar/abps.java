@@ -1,22 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.ToService;
 
-public class abps
-  implements View.OnClickListener
+public final class abps
+  implements Parcelable.Creator<ToService>
 {
-  public abps(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
-  
-  public void onClick(View paramView)
+  public ToService a(Parcel paramParcel)
   {
-    PublicFragmentActivity.a(this.a, TempMsgSettingFragment.class);
+    ToService localToService = new ToService();
+    localToService.jdField_a_of_type_Int = paramParcel.readInt();
+    localToService.b = paramParcel.readInt();
+    localToService.c = paramParcel.readInt();
+    localToService.d = paramParcel.readInt();
+    localToService.jdField_a_of_type_Long = paramParcel.readLong();
+    localToService.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localToService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localToService;
+  }
+  
+  public ToService[] a(int paramInt)
+  {
+    return new ToService[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abps
  * JD-Core Version:    0.7.0.1
  */

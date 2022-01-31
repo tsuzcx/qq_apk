@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import afcw;
+import ahab;
 
 class FriendListHandler$2
   implements Runnable
@@ -9,7 +9,7 @@ class FriendListHandler$2
   
   public void run()
   {
-    afcw.a();
+    ahab.a();
     this.this$0.d();
   }
 }

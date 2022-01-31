@@ -1,21 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
-import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import QzoneCombine.ClientOnlineNotfiyReq;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class biyj
-  implements DialogInterface.OnCancelListener
+  extends QzoneExternalRequest
 {
-  public biyj(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
+  ClientOnlineNotfiyReq a;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public biyj(long paramLong, byte[] paramArrayOfByte)
   {
-    AEVideoShelfPreviewFragment.a(this.a).cancelSave();
+    this.needCompress = false;
+    this.a = new ClientOnlineNotfiyReq(paramArrayOfByte, paramLong);
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService." + uniKey();
+  }
+  
+  public byte[] getEncodedUniParameter()
+  {
+    return bihk.a(this.a);
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "MqqOnlineNtf";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biyj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import android.graphics.Rect;
+import android.hardware.Camera.Size;
+import java.io.File;
 
 public class azdb
-  implements Animation.AnimationListener
 {
-  public azdb(AbsPublishActivity paramAbsPublishActivity) {}
+  public int a;
+  public ajrs a;
+  public Rect a;
+  public Camera.Size a;
+  public File a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  private azdb(azcx paramazcx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azdb
  * JD-Core Version:    0.7.0.1
  */

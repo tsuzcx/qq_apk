@@ -1,134 +1,78 @@
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
 class areu
+  extends ypt
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new arew(this);
-  private arki jdField_a_of_type_Arki = new arev(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<arkh> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<arkh> b = new ArrayList();
+  areu(aret paramaret, aqtd paramaqtd) {}
   
-  private Intent a()
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.gvideo.message.communicate.qq2gvideo");
-    return localIntent;
-  }
-  
-  private void a(Intent paramIntent)
-  {
-    arlc localarlc = (arlc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338);
-    NewTogetherRoomMessageData localNewTogetherRoomMessageData = new NewTogetherRoomMessageData();
-    localNewTogetherRoomMessageData.b = paramIntent.getStringExtra("closeRoomGroupOwnerUin");
-    localNewTogetherRoomMessageData.a = paramIntent.getStringExtra("closeRoomGroupUin");
-    localarlc.a(paramIntent.getStringExtra("closeRoomFrom"), localNewTogetherRoomMessageData);
-  }
-  
-  private void a(Intent paramIntent, List<arkh> paramList)
-  {
-    int i;
-    String str;
-    StringBuilder localStringBuilder;
-    if (!paramList.isEmpty())
+    if (paramDownloadFileRspBody == null)
     {
-      i = paramIntent.getIntExtra("callback_return_code", 0);
-      str = paramIntent.getStringExtra("callback_return_message");
-      paramIntent = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext()) {
-        ((arkh)paramIntent.next()).a(i, str);
+      if (QLog.isDevelopLevel()) {
+        QLog.e("VideoForTroop<QFile>", 4, "error DownloadFileRspBody is null!!!!!");
       }
-      localStringBuilder = new StringBuilder().append("receive ");
-      if (paramList != this.jdField_a_of_type_JavaUtilList) {
-        break label130;
-      }
-    }
-    label130:
-    for (paramIntent = "close";; paramIntent = "open")
-    {
-      QLog.i("GroupVideoManager|Communicate", 2, paramIntent + " room message " + i + " " + str);
-      paramList.clear();
+      this.jdField_a_of_type_Aqtd.a(-1, "");
       return;
     }
-  }
-  
-  private void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, int paramInt)
-  {
-    Intent localIntent = a();
-    localIntent.putExtra("command_type", paramInt);
-    localIntent.putExtra("togetherRoomMessageData", paramNewTogetherRoomMessageData);
-    b(localIntent);
-  }
-  
-  private void b()
-  {
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
+    paramBundle = TroopFileTransferManager.a(aret.a(this.jdField_a_of_type_Aret).b);
+    if (paramBundle == null)
     {
-      localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      Intent localIntent = a();
-      localIntent.putExtra("command_type", 6);
-      localIntent.putExtra("sKeyKey", (String)localObject);
-      b(localIntent);
+      QLog.e("VideoForTroop<QFile>", 1, "getUrl: onReqDownloadFileResult: get troopFileTransferManager failed.");
       return;
     }
-    QLog.e("GroupVideoManager|Communicate", 1, "get skey error");
-  }
-  
-  private void b(Intent paramIntent)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramIntent);
-  }
-  
-  public arki a()
-  {
-    return this.jdField_a_of_type_Arki;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.b.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  void a(Bundle paramBundle, arkh paramarkh)
-  {
-    Intent localIntent = a();
-    localIntent.putExtra("command_type", 4);
-    localIntent.putExtra("closeRoomBundle", paramBundle);
-    b(localIntent);
-    this.jdField_a_of_type_JavaUtilList.add(paramarkh);
-  }
-  
-  void a(arkh paramarkh)
-  {
-    this.b.add(paramarkh);
-  }
-  
-  void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = new IntentFilter();
-    paramQQAppInterface.addAction("com.tencent.gvideo.message.communicate.gvideo2qq");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface);
+    paramBundle = paramBundle.a(aret.a(this.jdField_a_of_type_Aret));
+    if (paramBundle == null)
+    {
+      this.jdField_a_of_type_Aqtd.a(-2, "");
+      return;
+    }
+    paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+    QLog.e("VideoForTroop<QFile>", 1, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+    if (paramDownloadFileRspBody.bytes_cookie_val.has())
+    {
+      paramBundle.cookieValue = bdcv.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+      paramBundle.cookieValue = paramBundle.cookieValue.toLowerCase();
+    }
+    paramBundle.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+    paramBundle.DownloadUrl = bdcv.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+    paramBundle.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+    paramBundle.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+    if ((paramInt == -133) || (paramInt == -132) || (paramInt == -134))
+    {
+      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
+      this.jdField_a_of_type_Aqtd.a(paramInt, "");
+      return;
+    }
+    if ((paramInt == -103) || (paramInt == -301))
+    {
+      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
+      return;
+    }
+    paramDownloadFileRspBody = arcy.a(paramBundle.DownloadIp, paramBundle.DownloadUrl, paramBundle.FilePath, paramBundle.cookieValue, "");
+    if (QLog.isColorLevel()) {
+      QLog.e("VideoForTroop<QFile>", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + paramBundle.cookieValue);
+    }
+    if (!TextUtils.isEmpty(paramDownloadFileRspBody))
+    {
+      this.jdField_a_of_type_Aqtd.a(paramDownloadFileRspBody, paramBundle.cookieValue);
+      return;
+    }
+    this.jdField_a_of_type_Aqtd.a(-3, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     areu
  * JD-Core Version:    0.7.0.1
  */

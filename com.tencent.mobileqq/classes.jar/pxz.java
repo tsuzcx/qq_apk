@@ -1,21 +1,24 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class pxz
-  implements View.OnClickListener
+class pxz
+  implements View.OnTouchListener
 {
-  public pxz(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
+  pxz(pxx parampxx, LinearLayout paramLinearLayout) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    pcy.a(2, this.jdField_a_of_type_JavaLangString);
-    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,26 @@
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.chatroom.VideoChatRoomContainer;
 
-public class mpf
+class mpf
+  implements Animation.AnimationListener
 {
-  public static ArrayList<ldr> a;
-  public String a = "20000005011710261000100000426100";
-  public boolean a;
-  public String b = "0";
-  public boolean b;
-  public String c = "0";
-  public boolean c;
+  mpf(mpe parammpe) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (mpe.a(this.a) != null) {
+      mpe.a(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpf
  * JD-Core Version:    0.7.0.1
  */

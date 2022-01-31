@@ -1,38 +1,42 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-class atgd
-  extends atgf
+public class atgd
+  extends QIPCModule
 {
-  atgd(atgb paramatgb) {}
+  private static atgd a;
   
-  public Message a(Message paramMessage)
+  private atgd(String paramString)
   {
-    if (paramMessage == null) {
-      return null;
-    }
-    return this.a.b(paramMessage);
+    super(paramString);
   }
   
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  public static atgd a()
   {
-    if (paramBasicTypeDataParcel == null) {}
-    Object[] arrayOfObject;
-    do
+    if (a == null) {}
+    try
     {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
+      if (a == null) {
+        a = new atgd("JubaoIPCServer");
       }
-      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
-    } while (arrayOfObject == null);
-    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("JubaoIPCServer", 2, "jubaoIpcServer onCall= " + paramString + ",callbackId = " + paramInt);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atgd
  * JD-Core Version:    0.7.0.1
  */

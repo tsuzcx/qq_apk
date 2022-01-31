@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import android.app.Activity;
 
-public abstract interface arul
+class arul
+  implements anfs
 {
-  public abstract void a();
+  arul(aruk paramaruk) {}
   
-  public abstract void a(LocationRoom.Venue paramVenue);
-  
-  public abstract void a(String paramString);
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      this.a.a.finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arul
  * JD-Core Version:    0.7.0.1
  */

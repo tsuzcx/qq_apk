@@ -1,20 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
 class mqb
-  implements View.OnTouchListener
 {
-  mqb(mpx parammpx) {}
+  public String a;
+  public byte[] a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public mqb(String paramString, byte[] paramArrayOfByte)
   {
-    return true;
+    byte[] arrayOfByte = paramArrayOfByte;
+    if (paramArrayOfByte == null) {
+      arrayOfByte = new byte[0];
+    }
+    this.jdField_a_of_type_ArrayOfByte = arrayOfByte;
+    paramArrayOfByte = paramString;
+    if (paramString == null) {
+      paramArrayOfByte = "";
+    }
+    this.jdField_a_of_type_JavaLangString = paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mqb
  * JD-Core Version:    0.7.0.1
  */

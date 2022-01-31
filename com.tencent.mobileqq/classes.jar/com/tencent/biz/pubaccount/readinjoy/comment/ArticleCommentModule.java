@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import bbco;
+import bdbi;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import oew;
+import oji;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,7 +42,7 @@ public class ArticleCommentModule
     }
     try
     {
-      paramString = new String(bbco.decode(str, 0));
+      paramString = new String(bdbi.decode(str, 0));
       localObject = paramString;
       QLog.d("ArticleCommentModule", 2, "buildFeedsOutsideComment commentVal " + paramString);
       localObject = paramString;
@@ -66,7 +66,7 @@ public class ArticleCommentModule
       paramString.authorUin = ((QQAppInterface)paramArticleInfo).getCurrentAccountUin();
       paramString.commentByMyself = true;
     }
-    paramArticleInfo = ReadInJoyUserInfoModule.a(Long.parseLong(paramString.authorUin), new oew(paramString));
+    paramArticleInfo = ReadInJoyUserInfoModule.a(Long.parseLong(paramString.authorUin), new oji(paramString));
     if (paramArticleInfo != null) {}
     for (paramArticleInfo = paramArticleInfo.nick;; paramArticleInfo = ReadInJoyUserInfoModule.a())
     {
@@ -82,7 +82,7 @@ public class ArticleCommentModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule
  * JD-Core Version:    0.7.0.1
  */

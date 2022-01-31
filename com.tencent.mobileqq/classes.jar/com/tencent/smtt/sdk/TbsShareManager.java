@@ -874,8 +874,8 @@ public class TbsShareManager
     //   6: aload_0
     //   7: ldc_w 432
     //   10: invokestatic 434	com/tencent/smtt/sdk/TbsShareManager:getTbsShareFile	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-    //   13: astore 8
-    //   15: aload 8
+    //   13: astore 9
+    //   15: aload 9
     //   17: ifnonnull +28 -> 45
     //   20: iconst_0
     //   21: ifeq +11 -> 32
@@ -894,7 +894,7 @@ public class TbsShareManager
     //   48: dup
     //   49: new 441	java/io/FileInputStream
     //   52: dup
-    //   53: aload 8
+    //   53: aload 9
     //   55: invokespecial 444	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   58: invokespecial 447	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   61: astore_3
@@ -917,22 +917,22 @@ public class TbsShareManager
     //   96: aload_0
     //   97: invokevirtual 492	com/tencent/smtt/sdk/TbsInstaller:getTbsCoreShareDir	(Landroid/content/Context;)Ljava/io/File;
     //   100: invokevirtual 111	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   103: astore 7
+    //   103: astore 8
     //   105: aload_0
     //   106: invokevirtual 314	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   109: invokevirtual 288	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   112: astore 9
+    //   112: astore 7
     //   114: aload_0
     //   115: invokestatic 497	com/tencent/smtt/utils/AppUtil:getAppVersionCode	(Landroid/content/Context;)I
     //   118: istore_2
     //   119: aload 6
     //   121: ldc 14
-    //   123: aload 9
+    //   123: aload 7
     //   125: invokevirtual 490	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   128: pop
     //   129: aload 6
     //   131: ldc 17
-    //   133: aload 7
+    //   133: aload 8
     //   135: invokevirtual 490	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   138: pop
     //   139: aload 6
@@ -945,7 +945,7 @@ public class TbsShareManager
     //   154: dup
     //   155: new 503	java/io/FileOutputStream
     //   158: dup
-    //   159: aload 8
+    //   159: aload 9
     //   161: invokespecial 504	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   164: invokespecial 507	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   167: astore_0
@@ -1032,12 +1032,12 @@ public class TbsShareManager
     //   308: astore_3
     //   309: goto -108 -> 201
     //   312: astore 4
-    //   314: aload_3
+    //   314: aload_0
     //   315: astore 5
-    //   317: aload_0
-    //   318: astore_3
+    //   317: aload_3
+    //   318: astore_0
     //   319: aload 5
-    //   321: astore_0
+    //   321: astore_3
     //   322: goto -121 -> 201
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1048,21 +1048,21 @@ public class TbsShareManager
     //   254	1	3	localException1	Exception
     //   262	1	3	localException2	Exception
     //   266	28	3	localException3	Exception
-    //   298	21	3	localObject2	Object
-    //   1	1	4	localObject3	Object
+    //   298	24	3	localContext1	Context
+    //   1	1	4	localObject2	Object
     //   194	48	4	localThrowable1	Throwable
-    //   277	1	4	localContext	Context
-    //   285	6	4	localObject4	Object
-    //   294	1	4	localObject5	Object
+    //   277	1	4	localContext2	Context
+    //   285	6	4	localObject3	Object
+    //   294	1	4	localObject4	Object
     //   302	1	4	localThrowable2	Throwable
     //   312	1	4	localThrowable3	Throwable
-    //   4	195	5	localObject6	Object
-    //   274	6	5	localObject7	Object
-    //   288	32	5	localObject8	Object
+    //   4	195	5	localObject5	Object
+    //   274	6	5	localObject6	Object
+    //   288	32	5	localContext3	Context
     //   69	100	6	localProperties	java.util.Properties
-    //   103	31	7	str1	String
-    //   13	147	8	localFile	File
-    //   112	12	9	str2	String
+    //   112	12	7	str1	String
+    //   103	31	8	str2	String
+    //   13	147	9	localFile	File
     // Exception table:
     //   from	to	target	type
     //   187	191	192	java/lang/Exception
@@ -2000,7 +2000,7 @@ public class TbsShareManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsShareManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,12 @@
-import java.io.File;
-import java.io.FileFilter;
+import java.nio.channels.SelectionKey;
 
-final class bgma
-  implements FileFilter
+public abstract interface bgma
 {
-  public boolean accept(File paramFile)
-  {
-    return paramFile.getName().endsWith(".cfg");
-  }
+  public abstract boolean handle(SelectionKey paramSelectionKey);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgma
  * JD-Core Version:    0.7.0.1
  */

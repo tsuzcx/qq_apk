@@ -1,27 +1,19 @@
-import android.hardware.Camera.Size;
-import java.util.Comparator;
+import android.util.Pair;
+import com.tencent.mobileqq.data.Emoticon;
 
 class aubk
-  implements Comparator<Camera.Size>
+  implements aubq<Pair<String, String>, Emoticon>
 {
-  aubk(aubi paramaubi) {}
+  aubk(aube paramaube) {}
   
-  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
+  public Emoticon a(Pair<String, String> paramPair)
   {
-    int i = paramSize1.height * paramSize1.width;
-    int j = paramSize2.height * paramSize2.width;
-    if (j < i) {
-      return 1;
-    }
-    if (j > i) {
-      return -1;
-    }
-    return 0;
+    return this.a.a((String)paramPair.first, (String)paramPair.second);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aubk
  * JD-Core Version:    0.7.0.1
  */

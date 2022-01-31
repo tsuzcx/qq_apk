@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.troopgift;
 
-import baro;
-import barp;
+import bcqi;
+import bcqj;
 
 public class TroopGiftAnimationController$1
   implements Runnable
 {
-  public TroopGiftAnimationController$1(baro parambaro) {}
+  public TroopGiftAnimationController$1(bcqi parambcqi) {}
   
   public void run()
   {
     if ((this.this$0.a instanceof TroopGiftToAllSurfaceView)) {
-      ((TroopGiftToAllSurfaceView)this.this$0.a).a(new barp(this));
+      ((TroopGiftToAllSurfaceView)this.this$0.a).a(new bcqj(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1
  * JD-Core Version:    0.7.0.1
  */

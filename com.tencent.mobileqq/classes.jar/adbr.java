@@ -1,37 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.35.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class adbr
-  implements Animation.AnimationListener
+  extends auqh
 {
-  public adbr(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public adbr(Leba paramLeba) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
+      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    if (Leba.a(this.a) == null) {
+      return;
     }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationStart is called,time is:" + System.currentTimeMillis());
-    }
+    this.a.a.post(new Leba.35.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbr
  * JD-Core Version:    0.7.0.1
  */

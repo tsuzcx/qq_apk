@@ -1,41 +1,21 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistory;
-
 class aari
-  extends ClickableSpan
 {
-  aari(aarf paramaarf, String paramString1, String paramString2) {}
+  public int a;
+  public long a;
+  public aarp a;
+  public String a;
   
-  public void onClick(View paramView)
+  public aari(aarh paramaarh, int paramInt, long paramLong, String paramString, aarp paramaarp)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    axqy.b(this.jdField_a_of_type_Aarf.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
-    try
-    {
-      this.jdField_a_of_type_Aarf.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aarp = paramaarp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aari
  * JD-Core Version:    0.7.0.1
  */

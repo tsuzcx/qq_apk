@@ -13,13 +13,13 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import tcz;
-import tdl;
-import uwg;
-import vxp;
+import urr;
+import usd;
+import wky;
+import xmh;
 
 public class GeneralRecommendFeedItem
-  extends VideoListFeedItem<uwg, QQUserUIItem>
+  extends VideoListFeedItem<wky, QQUserUIItem>
 {
   public String blurb;
   public QQUserUIItem mUserUIItem = new QQUserUIItem();
@@ -40,7 +40,7 @@ public class GeneralRecommendFeedItem
     if (paramObject.mUserUIItem != null)
     {
       this.mUserUIItem = paramObject.mUserUIItem;
-      vxp.a(this.mUserUIItem);
+      xmh.a(this.mUserUIItem);
     }
     if (paramObject.blurb != null) {
       this.blurb = paramObject.blurb;
@@ -79,8 +79,8 @@ public class GeneralRecommendFeedItem
       }
       paramString = new QQUserUIItem();
       paramString.convertFrom(paramGeneralFeed.user);
-      this.mUserUIItem = ((tdl)tcz.a(2)).a(paramString);
-      vxp.a(this.mUserUIItem);
+      this.mUserUIItem = ((usd)urr.a(2)).a(paramString);
+      xmh.a(this.mUserUIItem);
       this.ownerId = this.mUserUIItem.getUnionId();
       return true;
       bool = false;
@@ -113,9 +113,9 @@ public class GeneralRecommendFeedItem
   }
   
   @NonNull
-  public uwg generateHomeFeed()
+  public wky generateHomeFeed()
   {
-    return new uwg(this);
+    return new wky(this);
   }
   
   public int getCommentLikeType()
@@ -143,7 +143,7 @@ public class GeneralRecommendFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    this.mUserUIItem = ((tdl)tcz.a(2)).a(this.ownerId);
+    this.mUserUIItem = ((usd)urr.a(2)).a(this.ownerId);
   }
   
   public void readFromLocalByte(byte[] paramArrayOfByte)
@@ -169,7 +169,7 @@ public class GeneralRecommendFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem
  * JD-Core Version:    0.7.0.1
  */

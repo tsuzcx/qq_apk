@@ -1,23 +1,20 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 
-class ttq
-  implements ViewPager.OnPageChangeListener
+public class ttq
+  implements Dispatcher.Dispatchable
 {
-  ttq(tto paramtto) {}
+  public int a;
+  public Object a;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public ttq(int paramInt, Object... paramVarArgs)
   {
-    this.a.a.setSelectedTab(paramInt, true);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttq
  * JD-Core Version:    0.7.0.1
  */

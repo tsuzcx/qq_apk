@@ -1,168 +1,213 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import org.json.JSONArray;
 
 public class awub
-  implements awuu<awoe>
 {
-  int jdField_a_of_type_Int;
-  awtu jdField_a_of_type_Awtu;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  public static final int a;
+  public float a;
+  public int[] a;
+  float jdField_b_of_type_Float = 0.05F;
+  int jdField_b_of_type_Int = 1;
+  int c = -1;
+  int d = -1;
+  public int e;
+  public int f;
+  int g = 0;
+  private int h;
   
-  public awub(QQAppInterface paramQQAppInterface, int paramInt)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Awtu = new awtu(paramQQAppInterface, 10002, 5, null);
+    jdField_a_of_type_Int = ListenChangeVoicePanel.jdField_a_of_type_ArrayOfInt.length;
   }
   
-  public List<awoe> a(awvi paramawvi)
+  public awub(QQAppInterface paramQQAppInterface)
   {
-    long l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_Boolean = false;
-    if ((paramawvi == null) || (TextUtils.isEmpty(paramawvi.a))) {
-      return null;
-    }
-    Object localObject2 = paramawvi.a.split("\\s+");
-    if (localObject2.length < 2) {
-      return null;
-    }
-    if (!this.c)
+    this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
+    this.jdField_a_of_type_Float = 0.75F;
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    try
     {
-      this.jdField_a_of_type_Awtu.a();
-      this.c = true;
+      paramQQAppInterface = paramQQAppInterface.getString("PttVoiceChangePreSender", "[]");
+      JSONArray localJSONArray = new JSONArray(paramQQAppInterface);
+      if (localJSONArray.length() == jdField_a_of_type_Int + 2)
+      {
+        int i = 0;
+        while (i < jdField_a_of_type_Int)
+        {
+          this.jdField_a_of_type_ArrayOfInt[i] = localJSONArray.getInt(i);
+          i += 1;
+        }
+        this.e = localJSONArray.getInt(jdField_a_of_type_Int);
+        this.f = localJSONArray.getInt(jdField_a_of_type_Int + 1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PttPreSendManager", 2, "init : get send record " + paramQQAppInterface);
+      }
+      return;
     }
-    Object localObject1 = new ArrayList();
-    int j = localObject2.length;
+    catch (Exception paramQQAppInterface)
+    {
+      this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
+      this.e = 0;
+      this.f = 0;
+      paramQQAppInterface.printStackTrace();
+    }
+  }
+  
+  private float a(int paramInt)
+  {
+    return this.jdField_a_of_type_ArrayOfInt[paramInt] / this.e;
+  }
+  
+  private String a()
+  {
+    JSONArray localJSONArray = new JSONArray();
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
     {
-      localObject3 = localObject2[i];
-      if (this.jdField_a_of_type_Boolean) {
-        return null;
-      }
-      localObject3 = new awvi((String)localObject3);
-      localObject3 = this.jdField_a_of_type_Awtu.a((awvi)localObject3);
-      if ((localObject3 != null) && (!((List)localObject3).isEmpty())) {
-        ((List)localObject1).add(localObject3);
+      localJSONArray.put(arrayOfInt[i]);
+      i += 1;
+    }
+    localJSONArray.put(this.e);
+    localJSONArray.put(this.f);
+    return localJSONArray.toString();
+  }
+  
+  private int b()
+  {
+    int i = 0;
+    int m = 0;
+    int k;
+    for (int j = 0; i < jdField_a_of_type_Int; j = k)
+    {
+      k = j;
+      if (j < this.jdField_a_of_type_ArrayOfInt[i])
+      {
+        k = this.jdField_a_of_type_ArrayOfInt[i];
+        m = i;
       }
       i += 1;
     }
-    if (((List)localObject1).size() < 2) {
-      return null;
-    }
-    int m = ((List)localObject1).size();
-    Object localObject3 = new ArrayList();
-    Object localObject4 = ((List)localObject1).iterator();
-    while (((Iterator)localObject4).hasNext())
-    {
-      localObject2 = (List)((Iterator)localObject4).next();
-      localObject1 = localObject2;
-      if (((List)localObject2).size() > m) {
-        localObject1 = ((List)localObject2).subList(0, m);
-      }
-      ((List)localObject3).add(localObject1);
-    }
-    localObject2 = new HashMap();
-    localObject1 = new HashMap();
-    localObject4 = ((List)localObject3).iterator();
-    i = 0;
-    Object localObject5;
-    Object localObject6;
-    while (((Iterator)localObject4).hasNext())
-    {
-      localObject5 = ((List)((Iterator)localObject4).next()).iterator();
-      while (((Iterator)localObject5).hasNext())
-      {
-        localObject6 = (awoe)((Iterator)localObject5).next();
-        if (!((Map)localObject2).containsKey(((awoe)localObject6).b()))
-        {
-          ((Map)localObject2).put(((awoe)localObject6).b(), Integer.valueOf(i));
-          ((Map)localObject1).put(Integer.valueOf(i), ((awoe)localObject6).b());
-          i += 1;
-        }
-      }
-    }
-    localObject4 = (long[][])Array.newInstance(Long.TYPE, new int[] { m, i });
-    j = 0;
-    while (j < ((List)localObject3).size())
-    {
-      int k = 0;
-      while (k < ((List)((List)localObject3).get(j)).size())
-      {
-        localObject5 = (Integer)((Map)localObject2).get(((awoe)((List)((List)localObject3).get(j)).get(k)).b());
-        if (localObject5 != null) {
-          localObject4[j][localObject5.intValue()] = ((awoe)((List)((List)localObject3).get(j)).get(k)).b();
-        }
-        k += 1;
-      }
-      j += 1;
-    }
-    localObject2 = awvr.a((long[][])localObject4, m, i);
-    localObject4 = new ArrayList();
-    i = localObject2.length - 1;
-    while (i >= 0)
-    {
-      if (localObject2[i] != -1)
-      {
-        localObject6 = (List)((List)localObject3).get(i);
-        localObject5 = (String)((Map)localObject1).get(Integer.valueOf(localObject2[i]));
-        localObject6 = ((List)localObject6).iterator();
-        while (((Iterator)localObject6).hasNext())
-        {
-          awoe localawoe = (awoe)((Iterator)localObject6).next();
-          if ((localObject5 != null) && (((String)localObject5).equals(localawoe.b()))) {
-            ((List)localObject4).add(localawoe);
-          }
-        }
-      }
-      i -= 1;
-    }
-    if (((List)localObject4).size() < 2) {
-      return null;
-    }
-    paramawvi = new awmp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, paramawvi.a, (List)localObject4);
-    localObject1 = new ArrayList();
-    ((List)localObject1).add(paramawvi);
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("CreateDiscussionSearchEngine", 2, "Create discussion search cost time = " + (l2 - l1));
-    }
-    if (!this.b)
-    {
-      this.b = true;
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800635E", "0X800635E", 0, 0, "", "", "", "");
-    }
-    return localObject1;
+    return m;
   }
   
-  public void a() {}
-  
-  public void a(awvi paramawvi, awuv<awoe> paramawuv) {}
-  
-  public void b()
+  public int a()
   {
-    this.jdField_a_of_type_Awtu.b();
+    if ((this.e < 5) || (this.c < 0))
+    {
+      this.d = -1;
+      return -1;
+    }
+    if (this.jdField_b_of_type_Int >= 2)
+    {
+      this.d = this.c;
+      this.g = 1;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PttPreSendManager", 2, "guess type, result : " + this.d + " case : " + this.g + ", datas : " + a());
+      }
+      return this.d;
+      int i = b();
+      if (a(i) >= this.jdField_a_of_type_Float)
+      {
+        this.d = i;
+        this.g = 2;
+      }
+      else if ((this.c >= 0) && (this.f / this.e > 0.8D))
+      {
+        this.d = this.c;
+        this.g = 3;
+      }
+      else
+      {
+        this.d = -1;
+        this.g = -1;
+      }
+    }
   }
   
-  public void c() {}
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    String str = a();
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    paramQQAppInterface.putString("PttVoiceChangePreSender", str);
+    paramQQAppInterface.commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("PttInfoCollector", 2, "save send record " + str);
+    }
+  }
   
-  public void d() {}
-  
-  public void e() {}
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    float f1 = 0.55F;
+    if ((this.d != -1) && (this.g == 2))
+    {
+      if (this.d != paramInt) {
+        break label88;
+      }
+      this.jdField_a_of_type_Float -= this.jdField_a_of_type_Float * this.jdField_b_of_type_Float;
+      if (this.jdField_a_of_type_Float >= 0.55F) {
+        break label111;
+      }
+      label55:
+      this.jdField_a_of_type_Float = f1;
+      if (this.jdField_a_of_type_Float <= 0.9F) {
+        break label119;
+      }
+    }
+    label88:
+    label111:
+    label119:
+    for (f1 = 0.9F;; f1 = this.jdField_a_of_type_Float)
+    {
+      this.jdField_a_of_type_Float = f1;
+      if (paramInt >= 0) {
+        break label127;
+      }
+      this.c = paramInt;
+      return;
+      this.jdField_a_of_type_Float += (1.0F - this.jdField_a_of_type_Float) * this.jdField_b_of_type_Float;
+      break;
+      f1 = this.jdField_a_of_type_Float;
+      break label55;
+    }
+    label127:
+    if (paramInt == this.c)
+    {
+      this.jdField_b_of_type_Int += 1;
+      this.f += 1;
+    }
+    for (;;)
+    {
+      this.c = paramInt;
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      arrayOfInt[paramInt] += 1;
+      this.e += 1;
+      this.h += 1;
+      if (this.h % 5 == 0) {
+        a(paramQQAppInterface);
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("PttInfoCollector", 2, "real send type " + paramInt);
+      return;
+      this.jdField_b_of_type_Int = 1;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awub
  * JD-Core Version:    0.7.0.1
  */

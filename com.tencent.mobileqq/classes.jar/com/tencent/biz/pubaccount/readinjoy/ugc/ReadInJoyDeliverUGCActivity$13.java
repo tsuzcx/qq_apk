@@ -8,9 +8,9 @@ import com.tencent.mobileqq.hotpic.HotPicData;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pbd;
-import qfh;
-import qgo;
+import pgo;
+import qpn;
+import qqu;
 
 class ReadInJoyDeliverUGCActivity$13
   implements Runnable
@@ -22,7 +22,7 @@ class ReadInJoyDeliverUGCActivity$13
     ReadInJoyDraftboxItem.ReadInJoyDraftboxContent localReadInJoyDraftboxContent = new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent();
     localReadInJoyDraftboxContent.typeList = ReadInJoyDeliverUGCActivity.a(this.this$0);
     ReadInJoyDeliverUGCActivity.a(this.this$0, new ArrayList());
-    qgo.a(ReadInJoyDeliverUGCActivity.g(this.this$0), this.this$0.app.getCurrentAccountUin(), ReadInJoyDeliverUGCActivity.b(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0));
+    qqu.a(ReadInJoyDeliverUGCActivity.g(this.this$0), this.this$0.app.getCurrentAccountUin(), ReadInJoyDeliverUGCActivity.b(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0));
     localReadInJoyDraftboxContent.multiBiuStruct = ReadInJoyDeliverUGCActivity.a(this.this$0);
     localReadInJoyDraftboxContent.srcSize = ReadInJoyDeliverUGCActivity.d(this.this$0);
     localReadInJoyDraftboxContent.commentString = ReadInJoyDeliverUGCActivity.h(this.this$0).getEditableText().toString();
@@ -62,7 +62,7 @@ class ReadInJoyDeliverUGCActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.13
  * JD-Core Version:    0.7.0.1
  */

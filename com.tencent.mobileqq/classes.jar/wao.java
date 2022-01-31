@@ -1,39 +1,53 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-final class wao
-  extends waa
+public class wao
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vag>
 {
-  wao(waa paramwaa, PublishVideoEntry paramPublishVideoEntry) {}
-  
-  public void onFailure(String paramString)
+  public wao(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
-    }
-    this.jdField_a_of_type_Waa.onFailure(paramString);
-    if ((this.jdField_a_of_type_Waa instanceof swh)) {
-      ((swh)this.jdField_a_of_type_Waa).a(941004);
-    }
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 failed message：" + paramString);
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void onStart()
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vag paramvag)
   {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 start");
+    if (!paramQQStoryShareGroupProfileActivity.g) {}
+    wbb localwbb;
+    Object localObject1;
+    do
+    {
+      return;
+      Object localObject2 = null;
+      localwbb = paramQQStoryShareGroupProfileActivity.a.a;
+      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
+      do
+      {
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (HotSortVideoEntry)localIterator.next();
+      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramvag.a));
+    } while (localObject1 == null);
+    ((HotSortVideoEntry)localObject1).viewCount += 1;
+    ((uqy)urr.a(25)).a((HotSortVideoEntry)localObject1);
+    localwbb.a((HotSortVideoEntry)localObject1);
+    paramQQStoryShareGroupProfileActivity.d = true;
   }
   
-  public void onSuccess(String paramString)
+  public Class acceptEventClass()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 success cost：" + String.valueOf(l1 - l2) + "ms\n");
+    return vag.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wao
  * JD-Core Version:    0.7.0.1
  */

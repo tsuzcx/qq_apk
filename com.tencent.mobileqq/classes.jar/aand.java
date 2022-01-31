@@ -1,31 +1,100 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.AppRuntime;
+import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import tencent.gdt.qq_ad_get.QQAdGetRsp;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
 
-class aand
-  implements DialogInterface.OnClickListener
+public class aand
+  implements aaif
 {
-  aand(aanc paramaanc) {}
+  public aand(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onResponse(aaie paramaaie)
   {
-    if (this.a.a.a() != null)
+    int k = -2147483648;
+    int i;
+    int j;
+    if (paramaaie == null)
     {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.a().startActivity(localIntent);
+      i = -2147483648;
+      j = -2147483648;
     }
-    paramDialogInterface.dismiss();
+    for (;;)
+    {
+      i = this.a.a(GdtInterstitialFragmentForJS.a(this.a).a.a, j, i, k);
+      GdtInterstitialFragmentForJS.a(this.a, new aaio(i));
+      Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("on response:%s", new Object[] { GdtInterstitialFragmentForJS.a(this.a).a() }), 0).show();
+      return;
+      if (paramaaie.a() == null)
+      {
+        i = -2147483648;
+        j = -2147483648;
+      }
+      else
+      {
+        long l = paramaaie.a().jdField_a_of_type_Long;
+        i = paramaaie.a().jdField_a_of_type_Int;
+        int m;
+        if (paramaaie.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp == null)
+        {
+          m = -2147483648;
+          j = i;
+          i = m;
+        }
+        else
+        {
+          j = paramaaie.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.ret.get();
+          if (j != 0)
+          {
+            m = i;
+            i = j;
+            j = m;
+          }
+          else if (paramaaie.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.size() <= 0)
+          {
+            m = i;
+            i = j;
+            j = m;
+          }
+          else
+          {
+            k = ((qq_ad_get.QQAdGetRsp.PosAdInfo)paramaaie.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ret.get();
+            if (k != 0)
+            {
+              m = i;
+              i = j;
+              j = m;
+            }
+            else if (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramaaie.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ads_info.size() <= 0)
+            {
+              m = i;
+              i = j;
+              j = m;
+            }
+            else
+            {
+              paramaaie = (qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramaaie.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ads_info.get(0);
+              GdtInterstitialFragmentForJS.a(this.a).a.a = new GdtAd(paramaaie);
+              GdtInterstitialFragmentForJS.a(this.a, new aajy(this.a.getActivity(), GdtInterstitialFragmentForJS.a(this.a)));
+              m = i;
+              i = j;
+              j = m;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aand
  * JD-Core Version:    0.7.0.1
  */

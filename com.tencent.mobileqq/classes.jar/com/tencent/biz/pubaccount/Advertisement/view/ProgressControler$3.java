@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.Advertisement.view;
 import android.os.Handler;
 import java.util.Timer;
 import java.util.TimerTask;
-import njp;
+import nml;
 
 public class ProgressControler$3
   extends TimerTask
 {
-  public ProgressControler$3(njp paramnjp) {}
+  public ProgressControler$3(nml paramnml) {}
   
   public void run()
   {
-    njp localnjp = this.this$0;
-    localnjp.c += 50L;
+    nml localnml = this.this$0;
+    localnml.c += 50L;
     if (this.this$0.c >= this.this$0.b)
     {
       this.this$0.c = this.this$0.b;
@@ -26,7 +26,7 @@ public class ProgressControler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.ProgressControler.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -9,12 +9,12 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bfzk;
-import sxm;
+import biah;
+import ume;
 
 public class LoadMoreLayout
   extends FrameLayout
-  implements bfzk
+  implements biah
 {
   protected int a;
   protected Context a;
@@ -56,11 +56,11 @@ public class LoadMoreLayout
   
   private void a()
   {
-    this.jdField_a_of_type_JavaLangString = ajya.a(2131706257);
-    this.c = ajya.a(2131706259);
-    this.d = ajya.a(2131706256);
-    this.b = sxm.a(2131699696);
-    this.e = ajya.a(2131706258);
+    this.jdField_a_of_type_JavaLangString = alpo.a(2131706629);
+    this.c = alpo.a(2131706631);
+    this.d = alpo.a(2131706628);
+    this.b = ume.a(2131700065);
+    this.e = alpo.a(2131706630);
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -111,9 +111,9 @@ public class LoadMoreLayout
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561447, null));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131372004));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377032));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561637, null));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131372321));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377552));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
     super.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
     c(0);
@@ -170,7 +170,7 @@ public class LoadMoreLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.LoadMoreLayout
  * JD-Core Version:    0.7.0.1
  */

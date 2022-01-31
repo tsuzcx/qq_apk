@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
 
 public class mff
-  implements DialogInterface.OnClickListener
+  implements mkg
 {
-  public mff(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  public mff(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    this.a.k = true;
+    this.a.L();
+  }
+  
+  public void b()
+  {
+    this.a.k = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mff
  * JD-Core Version:    0.7.0.1
  */

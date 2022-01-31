@@ -1,24 +1,24 @@
-import android.bluetooth.BluetoothAdapter.LeScanCallback;
-import android.bluetooth.BluetoothDevice;
-import com.tencent.device.qfind.QFindBLEScanMgr;
-import com.tencent.device.qfind.QFindBLEScanMgr.3.1;
-import mqq.os.MqqHandler;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class ygh
-  implements BluetoothAdapter.LeScanCallback
+class ygh
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public ygh(QFindBLEScanMgr paramQFindBLEScanMgr) {}
+  ygh(ygg paramygg) {}
   
-  public void onLeScan(BluetoothDevice paramBluetoothDevice, int paramInt, byte[] paramArrayOfByte)
+  public boolean onPreDraw()
   {
-    if (this.a.a != null) {
-      this.a.a.post(new QFindBLEScanMgr.3.1(this, paramBluetoothDevice, paramArrayOfByte));
-    }
+    ygg.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+    ygg.a(this.a, ygg.a(this.a).getLeft(), ygg.a(this.a).getTop(), ygg.a(this.a).getWidth(), ygg.a(this.a).getHeight());
+    QLog.d("TransitionAnimHelper", 4, new Object[] { "initImageEnterAnimation left:" + ygg.a(this.a).getLeft(), ",top:", Integer.valueOf(ygg.a(this.a).getTop()), ",width:", Integer.valueOf(ygg.a(this.a).getWidth()), ",height:", Integer.valueOf(ygg.a(this.a).getHeight()) });
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ygh
  * JD-Core Version:    0.7.0.1
  */

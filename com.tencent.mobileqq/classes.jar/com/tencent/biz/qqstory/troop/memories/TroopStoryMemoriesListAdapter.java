@@ -8,44 +8,44 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import bayh;
-import bbdv;
-import bbef;
-import bfwe;
+import bcxb;
+import bdcq;
+import bdda;
+import bhxb;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import tcz;
-import tdl;
-import tsr;
-import vwu;
-import vwv;
-import vww;
-import vwx;
-import vwy;
-import vwz;
-import vxa;
-import vxc;
-import vxd;
-import vxf;
-import vxh;
-import vxj;
+import urr;
+import usd;
+import vhj;
+import xlm;
+import xln;
+import xlo;
+import xlp;
+import xlq;
+import xlr;
+import xls;
+import xlu;
+import xlv;
+import xlx;
+import xlz;
+import xmb;
 
 public class TroopStoryMemoriesListAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131718744, 2131691507 };
-  private static final int[] b = { 2131165614, 2131165530 };
-  private static final int[] c = { 2131375144, 2131369914 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131719217, 2131691561 };
+  private static final int[] b = { 2131165650, 2131165566 };
+  private static final int[] c = { 2131375625, 2131370179 };
   public final float a;
   public Context a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public ArrayList<TroopStoryItemInfo> a;
-  public vwz a;
-  vxc jdField_a_of_type_Vxc;
+  public xlr a;
+  xlu jdField_a_of_type_Xlu;
   public boolean a;
   
   private View a(int paramInt, ViewGroup paramViewGroup)
@@ -55,37 +55,37 @@ public class TroopStoryMemoriesListAdapter
     default: 
       return null;
     case 0: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561389, paramViewGroup, false);
-      paramViewGroup.setTag(new vxj(this, paramViewGroup));
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561579, paramViewGroup, false);
+      paramViewGroup.setTag(new xmb(this, paramViewGroup));
       return paramViewGroup;
     case 1: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561385, paramViewGroup, false);
-      paramViewGroup.setTag(new vwx(this, paramViewGroup));
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561575, paramViewGroup, false);
+      paramViewGroup.setTag(new xlp(this, paramViewGroup));
       return paramViewGroup;
     case 3: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561387, paramViewGroup, false);
-      paramViewGroup.setTag(new vxa(this, paramViewGroup));
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561577, paramViewGroup, false);
+      paramViewGroup.setTag(new xls(this, paramViewGroup));
       return paramViewGroup;
     case 4: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561386, paramViewGroup, false);
-      paramViewGroup.setTag(new vwy(this, paramViewGroup));
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561576, paramViewGroup, false);
+      paramViewGroup.setTag(new xlq(this, paramViewGroup));
       return paramViewGroup;
     case 2: 
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561388, paramViewGroup, false);
-      paramViewGroup = new vxh(this, localView);
-      localView = this.jdField_a_of_type_Vxc.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561578, paramViewGroup, false);
+      paramViewGroup = new xlz(this, localView);
+      localView = this.jdField_a_of_type_Xlu.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
       localView.setTag(paramViewGroup);
       return localView;
     case 5: 
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561388, paramViewGroup, false);
-      paramViewGroup = new vxf(this, localView);
-      localView = this.jdField_a_of_type_Vxc.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561578, paramViewGroup, false);
+      paramViewGroup = new xlx(this, localView);
+      localView = this.jdField_a_of_type_Xlu.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
       localView.setTag(paramViewGroup);
       return localView;
     }
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561388, paramViewGroup, false);
-    paramViewGroup = new vxd(this, localView);
-    localView = this.jdField_a_of_type_Vxc.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561578, paramViewGroup, false);
+    paramViewGroup = new xlv(this, localView);
+    localView = this.jdField_a_of_type_Xlu.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
     localView.setTag(paramViewGroup);
     return localView;
   }
@@ -99,65 +99,65 @@ public class TroopStoryMemoriesListAdapter
     default: 
       return;
     case 0: 
-      ((vxj)paramView.getTag()).a(localTroopStoryItemInfo);
+      ((xmb)paramView.getTag()).a(localTroopStoryItemInfo);
       return;
     case 1: 
-      ((vwx)paramView.getTag()).a(localTroopStoryItemInfo, paramInt);
+      ((xlp)paramView.getTag()).a(localTroopStoryItemInfo, paramInt);
       return;
     case 3: 
-      ((vxa)paramView.getTag()).a(localTroopStoryItemInfo);
+      ((xls)paramView.getTag()).a(localTroopStoryItemInfo);
       return;
     case 4: 
-      ((vwy)paramView.getTag()).a(localTroopStoryItemInfo);
+      ((xlq)paramView.getTag()).a(localTroopStoryItemInfo);
       return;
     case 5: 
-      localObject = (vxf)paramView.getTag();
-      ((vxf)localObject).a(localTroopStoryItemInfo, paramInt);
-      paramView.setOnLongClickListener(new vwu(this, paramInt));
-      this.jdField_a_of_type_Vxc.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (bfwe)localObject, this);
+      localObject = (xlx)paramView.getTag();
+      ((xlx)localObject).a(localTroopStoryItemInfo, paramInt);
+      paramView.setOnLongClickListener(new xlm(this, paramInt));
+      this.jdField_a_of_type_Xlu.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (bhxb)localObject, this);
       return;
     case 6: 
-      localObject = (vxd)paramView.getTag();
-      ((vxd)localObject).a(localTroopStoryItemInfo, paramInt);
-      paramView.setOnLongClickListener(new vwv(this, paramInt));
-      this.jdField_a_of_type_Vxc.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (bfwe)localObject, this);
+      localObject = (xlv)paramView.getTag();
+      ((xlv)localObject).a(localTroopStoryItemInfo, paramInt);
+      paramView.setOnLongClickListener(new xln(this, paramInt));
+      this.jdField_a_of_type_Xlu.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (bhxb)localObject, this);
       return;
     }
-    Object localObject = (vxh)paramView.getTag();
-    ((vxh)localObject).a(localTroopStoryItemInfo, paramInt);
-    paramView.setOnLongClickListener(new vww(this, paramInt));
-    this.jdField_a_of_type_Vxc.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (bfwe)localObject, this);
+    Object localObject = (xlz)paramView.getTag();
+    ((xlz)localObject).a(localTroopStoryItemInfo, paramInt);
+    paramView.setOnLongClickListener(new xlo(this, paramInt));
+    this.jdField_a_of_type_Xlu.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (bhxb)localObject, this);
   }
   
   private void a(TroopStoryItemInfo paramTroopStoryItemInfo, URLImageView paramURLImageView, TextView paramTextView)
   {
-    Object localObject1 = bbef.b();
+    Object localObject1 = bdda.b();
     if (paramTroopStoryItemInfo.unionIdRole == 2)
     {
-      localObject2 = ((tdl)tcz.a(2)).b(paramTroopStoryItemInfo.unionId);
+      localObject2 = ((usd)urr.a(2)).b(paramTroopStoryItemInfo.unionId);
       if ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()))
       {
         paramURLImageView.setImageDrawable((Drawable)localObject1);
-        paramTextView.setText(tsr.a((QQUserUIItem)localObject2));
-        tsr.a(paramTextView);
+        paramTextView.setText(vhj.a((QQUserUIItem)localObject2));
+        vhj.a(paramTextView);
         return;
       }
       if (!((QQUserUIItem)localObject2).isFriend())
       {
-        tsr.a(paramURLImageView, ((QQUserUIItem)localObject2).headUrl, true, (int)bbdv.a(this.jdField_a_of_type_AndroidContentContext, 35.0F));
-        paramTextView.setText(tsr.a((QQUserUIItem)localObject2));
-        tsr.a(this.jdField_a_of_type_AndroidContentContext.getResources(), paramTextView, ((QQUserUIItem)localObject2).symbolUrl, 13.0F, 2.0F);
+        vhj.a(paramURLImageView, ((QQUserUIItem)localObject2).headUrl, true, (int)bdcq.a(this.jdField_a_of_type_AndroidContentContext, 35.0F));
+        paramTextView.setText(vhj.a((QQUserUIItem)localObject2));
+        vhj.a(this.jdField_a_of_type_AndroidContentContext.getResources(), paramTextView, ((QQUserUIItem)localObject2).symbolUrl, 13.0F, 2.0F);
         return;
       }
     }
     Object localObject2 = paramTroopStoryItemInfo.uin;
-    localObject2 = bayh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, (String)localObject2, 3, (Drawable)localObject1, (Drawable)localObject1);
+    localObject2 = bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, (String)localObject2, 3, (Drawable)localObject1, (Drawable)localObject1);
     if (localObject2 == null) {}
     for (;;)
     {
       paramURLImageView.setImageDrawable((Drawable)localObject1);
       paramTextView.setText(paramTroopStoryItemInfo.nickName);
-      tsr.a(paramTextView);
+      vhj.a(paramTextView);
       return;
       localObject1 = localObject2;
     }
@@ -220,7 +220,7 @@ public class TroopStoryMemoriesListAdapter
           }
           i = -1;
         }
-      } while (this.jdField_a_of_type_Vwz == null);
+      } while (this.jdField_a_of_type_Xlr == null);
       localTroopStoryItemInfo = (TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       switch (paramView.getId())
       {
@@ -228,14 +228,14 @@ public class TroopStoryMemoriesListAdapter
         return;
       }
     }
-    this.jdField_a_of_type_Vwz.a(paramView, i, localTroopStoryItemInfo, 2);
+    this.jdField_a_of_type_Xlr.a(paramView, i, localTroopStoryItemInfo, 2);
     return;
-    this.jdField_a_of_type_Vwz.a(paramView, localTroopStoryItemInfo, 2);
+    this.jdField_a_of_type_Xlr.a(paramView, localTroopStoryItemInfo, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter
  * JD-Core Version:    0.7.0.1
  */

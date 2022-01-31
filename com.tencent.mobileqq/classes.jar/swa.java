@@ -1,24 +1,19 @@
-import android.support.annotation.Nullable;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class swa
+public class swa
 {
-  private WeakReference<svz> a;
+  private static boolean a = true;
   
-  public swa(svz paramsvz)
-  {
-    this.a = new WeakReference(paramsvz);
-  }
+  public static void a(FromServiceMsg paramFromServiceMsg) {}
   
-  @Nullable
-  public svz a()
-  {
-    return (svz)this.a.get();
-  }
+  public static void a(ToServiceMsg paramToServiceMsg) {}
+  
+  public static void a(byte[] paramArrayOfByte, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     swa
  * JD-Core Version:    0.7.0.1
  */

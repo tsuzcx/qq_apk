@@ -1,55 +1,58 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 public class xai
-  implements TextWatcher
 {
-  public xai(MoveFileActivity paramMoveFileActivity, EditText paramEditText, xnj paramxnj) {}
+  private static xai a = new xai();
   
-  public void afterTextChanged(Editable paramEditable)
+  public static xai a()
   {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    TextView localTextView = this.jdField_a_of_type_Xnj.getBtnight();
-    if (bakx.b(paramEditable))
-    {
-      localTextView.setEnabled(false);
-      localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165540));
-      return;
-    }
-    localTextView.setEnabled(true);
-    localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165535));
+    return a;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(Context paramContext, ImageView paramImageView, String paramString, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
-    if (paramInt3 > 0)
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
     {
-      paramCharSequence = paramCharSequence.toString();
-      String str = bakx.b(paramCharSequence);
-      if ((paramCharSequence == null) || (paramCharSequence.equals(str))) {
-        break label57;
-      }
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
-    }
-    label57:
-    while (!this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean) {
+      wsv.e("ImageLoader", "ImageView or uri is null.");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = false;
+    wsv.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
+    paramContext = URLDrawable.URLDrawableOptions.obtain();
+    if ((paramInt1 > 0) && (paramInt2 > 0))
+    {
+      paramContext.mRequestWidth = paramInt1;
+      paramContext.mRequestHeight = paramInt2;
+    }
+    paramContext.mFailedDrawable = baul.a;
+    paramContext.mLoadingDrawable = baul.a;
+    paramContext.mUseAutoScaleParams = false;
+    paramContext = URLDrawable.getDrawable(paramString, paramContext);
+    if (paramURLDrawableListener != null)
+    {
+      if (paramContext.getStatus() != 1) {
+        break label154;
+      }
+      wsv.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
+      paramURLDrawableListener.onLoadSuccessed(paramContext);
+    }
+    for (;;)
+    {
+      paramContext.setURLDrawableListener(paramURLDrawableListener);
+      paramImageView.setImageDrawable(paramContext);
+      return;
+      label154:
+      wsv.b("ImageLoader", "start load URLDrawable.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xai
  * JD-Core Version:    0.7.0.1
  */

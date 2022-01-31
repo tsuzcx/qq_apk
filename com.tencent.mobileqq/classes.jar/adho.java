@@ -1,83 +1,23 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.activity.Now;
 
-class adho
-  extends akat
+public class adho
+  implements View.OnClickListener
 {
-  adho(adhl paramadhl) {}
+  public adho(Now paramNow) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
+  public void onClick(View paramView)
   {
-    bafs localbafs;
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppShortcutBarAIOHelper", 2, "onGetSystemMsgFin.success");
-      }
-      List localList = adhl.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(ajsd.N, 0);
-      localbafs = null;
-      paramList = localbafs;
-      if (localList != null)
-      {
-        paramList = localbafs;
-        if (localList.size() - 1 >= 0) {
-          paramList = (MessageRecord)localList.get(localList.size() - 1);
-        }
-      }
-      if ((paramList != null) && ((paramList instanceof MessageForSystemMsg))) {
-        break label98;
-      }
+    if (Now.a(this.a) != null) {
+      Now.a(this.a).m();
     }
-    label98:
-    do
-    {
-      do
-      {
-        long l;
-        do
-        {
-          int i;
-          do
-          {
-            do
-            {
-              return;
-              paramList = ((MessageForSystemMsg)paramList).getSystemMsg();
-            } while ((paramList.msg_type.get() != 2) || (paramList.msg.get() == null));
-            i = paramList.msg.group_msg_type.get();
-          } while ((i != 3) && (i != 15));
-          l = paramList.msg.group_code.get();
-        } while ((adhl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == null) || (!adhl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equalsIgnoreCase("" + l)));
-        paramList = ((TroopManager)adhl.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(adhl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      } while (paramList == null);
-      localbafs = adhl.a(this.a).a(Long.valueOf(Long.parseLong(adhl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
-      if (localbafs != null)
-      {
-        localbafs.c(0);
-        adhl.a(this.a).a(Long.parseLong(adhl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), (int)paramList.dwGroupClassExt);
-      }
-      localbafs = adhl.a(this.a).b(Long.valueOf(Long.parseLong(adhl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
-    } while (localbafs == null);
-    localbafs.c(0);
-    adhl.a(this.a).b(Long.parseLong(adhl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), (int)paramList.dwGroupClassExt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adho
  * JD-Core Version:    0.7.0.1
  */

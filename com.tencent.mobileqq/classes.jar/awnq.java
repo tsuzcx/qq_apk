@@ -1,83 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
 
 public class awnq
-  extends awpq
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c = "xiaoweiba";
+  public awnq(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public awnq(String paramString1, String paramString2, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(View paramView)
-  {
-    QQAppInterface localQQAppInterface;
-    Object localObject;
-    if (!TextUtils.isEmpty(this.b))
-    {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = bbex.a(localQQAppInterface, paramView.getContext(), this.b);
-      if (localObject == null) {
-        break label173;
-      }
-      ((bbeg)localObject).c();
-    }
-    for (;;)
-    {
-      paramView = new JSONObject();
-      try
-      {
-        paramView.put("project", awsq.a());
-        paramView.put("event_src", "client");
-        paramView.put("get_src", "web");
-        awsq.a(null, new ReportModelDC02528().module("all_result").action("clk_tail").obj1(this.jdField_a_of_type_Long + "").ver1(UniteSearchActivity.b).ver2(awsq.a(UniteSearchActivity.d)).ver7(paramView.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + awiw.jdField_a_of_type_Long));
-        return;
-        label173:
-        if ((!this.b.startsWith("http://")) && (!this.b.startsWith("https://"))) {
-          continue;
-        }
-        paramView = paramView.getContext();
-        localObject = new Intent(paramView, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", this.b);
-        paramView.startActivity((Intent)localObject);
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("Q.uniteSearch.SearchResultGroupModelImpl", 2, "e = " + localJSONException);
-        }
-      }
-    }
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awnq
  * JD-Core Version:    0.7.0.1
  */

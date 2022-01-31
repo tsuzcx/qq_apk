@@ -1,24 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-class bjwd
-  extends QQUIEventReceiver<bjvt, bkcg>
+public abstract interface bjwd
 {
-  public bjwd(@NonNull bjvt parambjvt)
-  {
-    super(parambjvt);
-  }
-  
-  public void a(@NonNull bjvt parambjvt, @NonNull bkcg parambkcg) {}
-  
-  public Class acceptEventClass()
-  {
-    return bkcg.class;
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjwd
  * JD-Core Version:    0.7.0.1
  */

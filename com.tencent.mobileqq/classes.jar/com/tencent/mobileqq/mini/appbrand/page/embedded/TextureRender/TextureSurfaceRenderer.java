@@ -4,6 +4,7 @@ import android.opengl.GLUtils;
 import android.os.Handler;
 import android.view.Surface;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
@@ -20,6 +21,7 @@ public abstract class TextureSurfaceRenderer
   private EGLContext eglContext;
   private EGLDisplay eglDisplay;
   private EGLSurface eglSurface;
+  private int fpsIntervalTime = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_embeedded_video_fps_interval_time", 32);
   private int frames;
   protected int height;
   private long lastFpsOutput;
@@ -161,8 +163,9 @@ public abstract class TextureSurfaceRenderer
           if (draw()) {
             this.egl.eglSwapBuffers(this.eglDisplay, this.eglSurface);
           }
-          long l2 = System.currentTimeMillis();
-          l1 = 16L - (l2 - l1);
+          long l2 = this.fpsIntervalTime;
+          long l3 = System.currentTimeMillis();
+          l1 = l2 - (l3 - l1);
           if (l1 > 0L) {
             try
             {
@@ -184,7 +187,7 @@ public abstract class TextureSurfaceRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.embedded.TextureRender.TextureSurfaceRenderer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,28 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import common.config.service.QzoneConfig;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class alsr
-  implements FileFilter
+public class alsr
+  implements alkq
 {
-  public boolean accept(File paramFile)
+  private List<String> a = new ArrayList();
+  
+  public List<String> a(AppInterface paramAppInterface)
   {
-    return (paramFile.getName().startsWith("hc_")) || (paramFile.getName().startsWith(".hc_"));
+    if (this.a.isEmpty()) {
+      this.a.add("100077");
+    }
+    if (((paramAppInterface instanceof QQAppInterface)) && (QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameEnable", 1) == 1)) {
+      return this.a;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alsr
  * JD-Core Version:    0.7.0.1
  */

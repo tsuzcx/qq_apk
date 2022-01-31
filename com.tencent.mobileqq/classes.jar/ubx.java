@@ -1,41 +1,44 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.mobileqq.widget.AnimationView;
+import feedcloud.FeedCloudMeta.StFeed;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
 public class ubx
-  extends JobSegment<String, String>
 {
-  private ubx(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private AnimationView jdField_a_of_type_ComTencentMobileqqWidgetAnimationView;
+  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  private QQCircleFeedBase.StPolyLike jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike;
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public ubx(Activity paramActivity)
   {
-    this.a.jdField_a_of_type_Ucz.a(null);
-    this.a.jdField_a_of_type_Ucz.a(null);
-    this.a.jdField_a_of_type_Ucz.a(null);
-    this.a.jdField_a_of_type_Ucz.a(null);
-    this.a.jdField_a_of_type_Ucz.a(null);
-    if (VideoViewVideoHolder.f(this.a) == 0)
-    {
-      ved.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. already idle state");
-      notifyResult(paramString);
-      return;
-    }
-    if (VideoViewVideoHolder.f(this.a) < 7)
-    {
-      ved.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. change to idle directly");
-      VideoViewVideoHolder.a(this.a, 0);
-      notifyResult(paramString);
-      return;
-    }
-    ved.b(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. stop video view");
-    this.a.jdField_a_of_type_Ucz.a();
-    VideoViewVideoHolder.a(this.a, 0);
-    notifyResult(paramString);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramActivity).inflate(2131560562, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373174));
+  }
+  
+  public AnimationView a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView;
+  }
+  
+  public QQCircleFeedBase.StPolyLike a()
+  {
+    return this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike;
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StPolyLike paramStPolyLike, int paramInt)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike = paramStPolyLike;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.av.app;
 
-import ajya;
-import ampl;
+import alpo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import ayrx;
-import aysa;
-import bbdx;
-import bbfj;
+import aogj;
+import baps;
+import bapv;
+import bdcs;
+import bdee;
 import com.tencent.av.VideoController;
 import com.tencent.av.video.call.ClientLogReport;
 import com.tencent.av.videoeffect.VideoEffectTest;
@@ -28,27 +28,27 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import lch;
-import lcl;
-import lcn;
-import lco;
-import lem;
-import len;
-import leo;
+import lel;
 import lep;
 import ler;
 import les;
-import let;
-import leu;
-import lkz;
-import lll;
-import lox;
-import mup;
-import muw;
+import lgp;
+import lgq;
+import lgr;
+import lgs;
+import lgu;
+import lgv;
+import lgw;
+import lgx;
+import lnc;
+import lno;
+import lra;
+import mxi;
+import mxp;
 
 public class DeviceCapabilityExamination
 {
-  public static les a;
+  public static lgv a;
   public VideoAppInterface a;
   
   public DeviceCapabilityExamination(VideoAppInterface paramVideoAppInterface)
@@ -77,14 +77,14 @@ public class DeviceCapabilityExamination
     return "DT_" + paramInt + "_" + paramString;
   }
   
-  public static String a(int paramInt, lcn paramlcn)
+  public static String a(int paramInt, ler paramler)
   {
-    String str = "enc_[w" + paramlcn.jdField_a_of_type_Int + "h" + paramlcn.jdField_b_of_type_Int + "fYUV420]_";
-    paramlcn = c(paramlcn.jdField_a_of_type_JavaLangString) + str + paramlcn.jdField_c_of_type_Int + "_" + paramlcn.d + "_" + paramlcn.jdField_a_of_type_Int + "x" + paramlcn.jdField_b_of_type_Int;
+    String str = "enc_[w" + paramler.jdField_a_of_type_Int + "h" + paramler.jdField_b_of_type_Int + "fYUV420]_";
+    paramler = c(paramler.jdField_a_of_type_JavaLangString) + str + paramler.jdField_c_of_type_Int + "_" + paramler.d + "_" + paramler.jdField_a_of_type_Int + "x" + paramler.jdField_b_of_type_Int;
     if ((paramInt == 1) || (paramInt == 2)) {
-      return paramlcn + ".264";
+      return paramler + ".264";
     }
-    return paramlcn + ".265";
+    return paramler + ".265";
   }
   
   public static String a(String paramString)
@@ -110,7 +110,7 @@ public class DeviceCapabilityExamination
     if (localArrayList.size() == 0)
     {
       QLog.w("DeviceCapabilityExamination", 1, "getBitRateTable, 没找到对应的码表, md5[" + paramString + "], w[" + paramInt1 + "], h[" + paramInt2 + "]");
-      localArrayList.add(new Integer[] { Integer.valueOf(29), Integer.valueOf(600), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+      localArrayList.add(new Integer[] { Integer.valueOf(32), Integer.valueOf(2000), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
     }
     return localArrayList;
   }
@@ -118,63 +118,51 @@ public class DeviceCapabilityExamination
   public static TreeMap<Integer, Integer[]> a()
   {
     TreeMap localTreeMap = new TreeMap();
-    localTreeMap.put(Integer.valueOf(1), new Integer[] { Integer.valueOf(1), Integer.valueOf(30), Integer.valueOf(192), Integer.valueOf(144), Integer.valueOf(4), Integer.valueOf(3), Integer.valueOf(10), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(2), new Integer[] { Integer.valueOf(2), Integer.valueOf(45), Integer.valueOf(192), Integer.valueOf(144), Integer.valueOf(4), Integer.valueOf(3), Integer.valueOf(10), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(3), new Integer[] { Integer.valueOf(3), Integer.valueOf(60), Integer.valueOf(192), Integer.valueOf(144), Integer.valueOf(6), Integer.valueOf(3), Integer.valueOf(10), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(4), new Integer[] { Integer.valueOf(4), Integer.valueOf(80), Integer.valueOf(192), Integer.valueOf(144), Integer.valueOf(6), Integer.valueOf(3), Integer.valueOf(10), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(5), new Integer[] { Integer.valueOf(5), Integer.valueOf(100), Integer.valueOf(192), Integer.valueOf(144), Integer.valueOf(8), Integer.valueOf(3), Integer.valueOf(10), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(6), new Integer[] { Integer.valueOf(6), Integer.valueOf(115), Integer.valueOf(192), Integer.valueOf(144), Integer.valueOf(10), Integer.valueOf(2), Integer.valueOf(10), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(7), new Integer[] { Integer.valueOf(7), Integer.valueOf(130), Integer.valueOf(192), Integer.valueOf(144), Integer.valueOf(10), Integer.valueOf(2), Integer.valueOf(10), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(8), new Integer[] { Integer.valueOf(8), Integer.valueOf(130), Integer.valueOf(320), Integer.valueOf(240), Integer.valueOf(8), Integer.valueOf(3), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(9), new Integer[] { Integer.valueOf(9), Integer.valueOf(150), Integer.valueOf(320), Integer.valueOf(240), Integer.valueOf(8), Integer.valueOf(2), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(10), new Integer[] { Integer.valueOf(10), Integer.valueOf(170), Integer.valueOf(320), Integer.valueOf(240), Integer.valueOf(10), Integer.valueOf(2), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(11), new Integer[] { Integer.valueOf(11), Integer.valueOf(190), Integer.valueOf(320), Integer.valueOf(240), Integer.valueOf(10), Integer.valueOf(2), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(12), new Integer[] { Integer.valueOf(12), Integer.valueOf(210), Integer.valueOf(320), Integer.valueOf(240), Integer.valueOf(10), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(13), new Integer[] { Integer.valueOf(13), Integer.valueOf(230), Integer.valueOf(320), Integer.valueOf(240), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(14), new Integer[] { Integer.valueOf(14), Integer.valueOf(250), Integer.valueOf(320), Integer.valueOf(240), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(15), new Integer[] { Integer.valueOf(15), Integer.valueOf(275), Integer.valueOf(320), Integer.valueOf(240), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(16), new Integer[] { Integer.valueOf(16), Integer.valueOf(300), Integer.valueOf(320), Integer.valueOf(240), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(17), new Integer[] { Integer.valueOf(17), Integer.valueOf(325), Integer.valueOf(320), Integer.valueOf(240), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(18), new Integer[] { Integer.valueOf(18), Integer.valueOf(300), Integer.valueOf(480), Integer.valueOf(360), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(19), new Integer[] { Integer.valueOf(19), Integer.valueOf(325), Integer.valueOf(480), Integer.valueOf(360), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(20), new Integer[] { Integer.valueOf(20), Integer.valueOf(350), Integer.valueOf(480), Integer.valueOf(360), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(21), new Integer[] { Integer.valueOf(21), Integer.valueOf(375), Integer.valueOf(480), Integer.valueOf(360), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(22), new Integer[] { Integer.valueOf(22), Integer.valueOf(400), Integer.valueOf(480), Integer.valueOf(360), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(23), new Integer[] { Integer.valueOf(23), Integer.valueOf(425), Integer.valueOf(480), Integer.valueOf(360), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(24), new Integer[] { Integer.valueOf(24), Integer.valueOf(450), Integer.valueOf(480), Integer.valueOf(360), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(25), new Integer[] { Integer.valueOf(25), Integer.valueOf(425), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(26), new Integer[] { Integer.valueOf(26), Integer.valueOf(450), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(27), new Integer[] { Integer.valueOf(27), Integer.valueOf(500), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(28), new Integer[] { Integer.valueOf(28), Integer.valueOf(550), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(29), new Integer[] { Integer.valueOf(29), Integer.valueOf(600), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(30), new Integer[] { Integer.valueOf(30), Integer.valueOf(650), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(31), new Integer[] { Integer.valueOf(31), Integer.valueOf(700), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(32), new Integer[] { Integer.valueOf(32), Integer.valueOf(750), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(33), new Integer[] { Integer.valueOf(33), Integer.valueOf(800), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(34), new Integer[] { Integer.valueOf(34), Integer.valueOf(850), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(35), new Integer[] { Integer.valueOf(35), Integer.valueOf(900), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(36), new Integer[] { Integer.valueOf(36), Integer.valueOf(1000), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(37), new Integer[] { Integer.valueOf(37), Integer.valueOf(800), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(38), new Integer[] { Integer.valueOf(38), Integer.valueOf(850), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(39), new Integer[] { Integer.valueOf(39), Integer.valueOf(900), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(40), new Integer[] { Integer.valueOf(40), Integer.valueOf(1000), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(41), new Integer[] { Integer.valueOf(41), Integer.valueOf(1100), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(42), new Integer[] { Integer.valueOf(42), Integer.valueOf(1200), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
-    localTreeMap.put(Integer.valueOf(43), new Integer[] { Integer.valueOf(43), Integer.valueOf(1300), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(1), new Integer[] { Integer.valueOf(1), Integer.valueOf(425), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(2), new Integer[] { Integer.valueOf(2), Integer.valueOf(450), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(3), new Integer[] { Integer.valueOf(3), Integer.valueOf(500), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(4), new Integer[] { Integer.valueOf(4), Integer.valueOf(550), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(12), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(5), new Integer[] { Integer.valueOf(5), Integer.valueOf(600), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(6), new Integer[] { Integer.valueOf(6), Integer.valueOf(650), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(7), new Integer[] { Integer.valueOf(7), Integer.valueOf(700), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(8), new Integer[] { Integer.valueOf(8), Integer.valueOf(750), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(9), new Integer[] { Integer.valueOf(9), Integer.valueOf(800), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(10), new Integer[] { Integer.valueOf(10), Integer.valueOf(850), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(11), new Integer[] { Integer.valueOf(11), Integer.valueOf(900), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(12), new Integer[] { Integer.valueOf(12), Integer.valueOf(1000), Integer.valueOf(640), Integer.valueOf(480), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(13), new Integer[] { Integer.valueOf(13), Integer.valueOf(800), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(14), new Integer[] { Integer.valueOf(14), Integer.valueOf(850), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(15), new Integer[] { Integer.valueOf(15), Integer.valueOf(900), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(16), new Integer[] { Integer.valueOf(16), Integer.valueOf(1000), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(17), new Integer[] { Integer.valueOf(17), Integer.valueOf(1100), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(18), new Integer[] { Integer.valueOf(18), Integer.valueOf(1200), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(19), new Integer[] { Integer.valueOf(19), Integer.valueOf(1300), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(20), new Integer[] { Integer.valueOf(20), Integer.valueOf(1400), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(20), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(21), new Integer[] { Integer.valueOf(21), Integer.valueOf(1500), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(20), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(22), new Integer[] { Integer.valueOf(22), Integer.valueOf(1600), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(20), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(23), new Integer[] { Integer.valueOf(23), Integer.valueOf(1700), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(20), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(24), new Integer[] { Integer.valueOf(24), Integer.valueOf(1800), Integer.valueOf(1280), Integer.valueOf(720), Integer.valueOf(20), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(25), new Integer[] { Integer.valueOf(25), Integer.valueOf(2000), Integer.valueOf(1920), Integer.valueOf(1080), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(26), new Integer[] { Integer.valueOf(26), Integer.valueOf(2100), Integer.valueOf(1920), Integer.valueOf(1080), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(27), new Integer[] { Integer.valueOf(27), Integer.valueOf(2200), Integer.valueOf(1920), Integer.valueOf(1080), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(28), new Integer[] { Integer.valueOf(28), Integer.valueOf(2300), Integer.valueOf(1920), Integer.valueOf(1080), Integer.valueOf(15), Integer.valueOf(1), Integer.valueOf(15), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(29), new Integer[] { Integer.valueOf(29), Integer.valueOf(2400), Integer.valueOf(1920), Integer.valueOf(1080), Integer.valueOf(20), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(30), new Integer[] { Integer.valueOf(30), Integer.valueOf(2600), Integer.valueOf(1920), Integer.valueOf(1080), Integer.valueOf(20), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
+    localTreeMap.put(Integer.valueOf(31), new Integer[] { Integer.valueOf(31), Integer.valueOf(2800), Integer.valueOf(1920), Integer.valueOf(1080), Integer.valueOf(20), Integer.valueOf(1), Integer.valueOf(20), Integer.valueOf(5) });
     return localTreeMap;
   }
   
-  public static leu a(int paramInt1, int paramInt2, long paramLong1, String paramString1, String paramString2, int paramInt3, long paramLong2)
+  public static lgx a(int paramInt1, int paramInt2, long paramLong1, String paramString1, String paramString2, int paramInt3, long paramLong2)
   {
-    leu localleu = new leu();
-    localleu.jdField_a_of_type_Long = Long.parseLong(VideoController.a().jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-    localleu.jdField_b_of_type_Int = paramInt1;
-    localleu.g = paramString2;
-    localleu.h = paramString1;
-    localleu.jdField_c_of_type_Int = paramInt2;
-    localleu.d = ((int)paramLong2);
-    localleu.e = ((int)paramLong1);
-    return localleu;
+    lgx locallgx = new lgx();
+    locallgx.jdField_a_of_type_Long = Long.parseLong(VideoController.a().jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+    locallgx.jdField_b_of_type_Int = paramInt1;
+    locallgx.g = paramString2;
+    locallgx.h = paramString1;
+    locallgx.jdField_c_of_type_Int = paramInt2;
+    locallgx.d = ((int)paramLong2);
+    locallgx.e = ((int)paramLong1);
+    return locallgx;
   }
   
   private void a()
@@ -190,7 +178,7 @@ public class DeviceCapabilityExamination
     Object localObject1 = a().edit();
     ((SharedPreferences.Editor)localObject1).putLong(a(paramInt, "doneTime"), l);
     ((SharedPreferences.Editor)localObject1).commit();
-    int i = ampl.a().a(431, "");
+    int i = aogj.a().a(431, "");
     localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject1 instanceof VideoAppInterface))
     {
@@ -199,12 +187,12 @@ public class DeviceCapabilityExamination
       ((HashMap)localObject1).put("uin", ((VideoAppInterface)localObject2).getCurrentAccountUin());
       ((HashMap)localObject1).put("ver", i + "");
       ((HashMap)localObject1).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-      localObject2 = lcl.a(paramInt);
+      localObject2 = lep.a(paramInt);
       if (localObject2 != null)
       {
-        i = lox.a((lco)localObject2);
+        i = lra.a((les)localObject2);
         ((HashMap)localObject1).put("test" + paramInt, "1");
-        ((HashMap)localObject1).put("test" + paramInt + "_ver", ((lco)localObject2).e + "");
+        ((HashMap)localObject1).put("test" + paramInt + "_ver", ((les)localObject2).e + "");
         ((HashMap)localObject1).put("test" + paramInt + "_flag", i + "");
       }
       UserAction.onUserAction("qav_codec_done", true, -1L, -1L, (Map)localObject1, true, true);
@@ -221,8 +209,8 @@ public class DeviceCapabilityExamination
   
   public static void a(int paramInt, VideoAppInterface paramVideoAppInterface)
   {
-    mup.a(paramVideoAppInterface);
-    mup.a("DeviceCapabilityExamination", paramVideoAppInterface);
+    mxi.a(paramVideoAppInterface);
+    mxi.a("DeviceCapabilityExamination", paramVideoAppInterface);
     ThreadManager.excute(new DeviceCapabilityExamination.1(paramInt, paramVideoAppInterface), 16, null, true);
   }
   
@@ -236,19 +224,19 @@ public class DeviceCapabilityExamination
     b(paramInt, paramString);
   }
   
-  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface, int paramInt, lcn paramlcn, len paramlen)
+  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface, int paramInt, ler paramler, lgq paramlgq)
   {
     long l = System.currentTimeMillis();
     VideoController localVideoController = paramVideoAppInterface.a();
-    leo localleo = new leo();
-    localleo.jdField_a_of_type_Int = paramInt;
-    localleo.jdField_a_of_type_JavaLangString = paramlcn.jdField_a_of_type_JavaLangString;
-    localleo.jdField_b_of_type_JavaLangString = a(paramlcn.jdField_a_of_type_JavaLangString);
-    localleo.d = a(paramInt, paramlcn);
-    localleo.jdField_c_of_type_Int = paramlcn.jdField_c_of_type_Int;
-    localleo.jdField_b_of_type_Int = paramlcn.d;
-    localleo.jdField_c_of_type_JavaLangString = paramlcn.jdField_c_of_type_JavaLangString;
-    lem.a(paramLong, localVideoController, localleo, new lep(l, paramInt, localleo, paramlcn, paramVideoAppInterface, paramLong, paramlen));
+    lgr locallgr = new lgr();
+    locallgr.jdField_a_of_type_Int = paramInt;
+    locallgr.jdField_a_of_type_JavaLangString = paramler.jdField_a_of_type_JavaLangString;
+    locallgr.jdField_b_of_type_JavaLangString = a(paramler.jdField_a_of_type_JavaLangString);
+    locallgr.d = a(paramInt, paramler);
+    locallgr.jdField_c_of_type_Int = paramler.jdField_c_of_type_Int;
+    locallgr.jdField_b_of_type_Int = paramler.d;
+    locallgr.jdField_c_of_type_JavaLangString = paramler.jdField_c_of_type_JavaLangString;
+    lgp.a(paramLong, localVideoController, locallgr, new lgs(l, paramInt, locallgr, paramler, paramVideoAppInterface, paramLong, paramlgq));
   }
   
   public static void a(VideoAppInterface paramVideoAppInterface)
@@ -281,19 +269,19 @@ public class DeviceCapabilityExamination
     QLog.w("DeviceCapabilityExamination", 1, "testHWCodecIfNeed, no");
   }
   
-  public static void a(lco paramlco, String paramString1, String paramString2)
+  public static void a(les paramles, String paramString1, String paramString2)
   {
-    if (!bbfj.h(null))
+    if (!bdee.h(null))
     {
       QLog.w("DeviceCapabilityExamination", 1, "startDownloadTestResource, no wifi");
       return;
     }
     try
     {
-      if (jdField_a_of_type_Les == null) {
-        jdField_a_of_type_Les = new les();
+      if (jdField_a_of_type_Lgv == null) {
+        jdField_a_of_type_Lgv = new lgv();
       }
-      if (jdField_a_of_type_Les.a(paramString1, paramString2))
+      if (jdField_a_of_type_Lgv.a(paramString1, paramString2))
       {
         QLog.w("DeviceCapabilityExamination", 1, "startDownloadTestResource, 下载中 , md5[" + paramString1 + "]");
         return;
@@ -303,28 +291,28 @@ public class DeviceCapabilityExamination
     if (AudioHelper.e()) {
       QLog.w("DeviceCapabilityExamination", 1, "startDownloadTestResource, md5[" + paramString1 + "]");
     }
-    paramlco = new ayrx();
-    paramlco.jdField_a_of_type_Aysc = new let();
-    paramlco.jdField_a_of_type_JavaLangString = paramString2;
-    paramlco.jdField_a_of_type_Int = 0;
-    paramlco.jdField_c_of_type_JavaLangString = (c(paramString1) + "sample.zip");
-    paramlco.e = paramString1;
-    paramlco.a(paramString1);
-    lch.a().a(paramlco);
+    paramles = new baps();
+    paramles.jdField_a_of_type_Bapx = new lgw();
+    paramles.jdField_a_of_type_JavaLangString = paramString2;
+    paramles.jdField_a_of_type_Int = 0;
+    paramles.jdField_c_of_type_JavaLangString = (c(paramString1) + "sample.zip");
+    paramles.e = paramString1;
+    paramles.a(paramString1);
+    lel.a().a(paramles);
   }
   
-  public static void a(leu paramleu, int paramInt1, int paramInt2)
+  public static void a(lgx paramlgx, int paramInt1, int paramInt2)
   {
-    ClientLogReport.instance().callbackSendLog(paramleu.jdField_a_of_type_Long, 5274, paramleu.a().getBytes());
-    AudioHelper.c(ajya.a(2131703175) + paramInt1 + "], resultCode:" + paramInt2);
+    ClientLogReport.instance().callbackSendLog(paramlgx.jdField_a_of_type_Long, 5274, paramlgx.a().getBytes());
+    AudioHelper.c(alpo.a(2131703547) + paramInt1 + "], resultCode:" + paramInt2);
     a(paramInt1, paramInt2);
-    a(paramInt1, paramleu.h);
+    a(paramInt1, paramlgx.h);
   }
   
   static boolean a(int paramInt)
   {
-    lco locallco = lcl.a(paramInt);
-    if ((locallco == null) || (System.currentTimeMillis() > locallco.jdField_a_of_type_Long)) {}
+    les localles = lep.a(paramInt);
+    if ((localles == null) || (System.currentTimeMillis() > localles.jdField_a_of_type_Long)) {}
     SharedPreferences localSharedPreferences;
     long l1;
     do
@@ -332,14 +320,14 @@ public class DeviceCapabilityExamination
       do
       {
         return false;
-        b(locallco.jdField_b_of_type_Int, locallco.e);
+        b(localles.jdField_b_of_type_Int, localles.e);
         localSharedPreferences = a();
         l1 = localSharedPreferences.getLong(a(paramInt, "doneTime"), 0L);
         if (l1 != 0L) {
           break;
         }
-      } while (!a(locallco, true));
-      a(locallco.jdField_b_of_type_Int);
+      } while (!a(localles, true));
+      a(localles.jdField_b_of_type_Int);
       return true;
     } while (!AudioHelper.e());
     int i = localSharedPreferences.getInt(a(paramInt, "result"), -99);
@@ -348,29 +336,29 @@ public class DeviceCapabilityExamination
     return false;
   }
   
-  public static boolean a(lco paramlco, boolean paramBoolean)
+  public static boolean a(les paramles, boolean paramBoolean)
   {
-    if (paramlco == null) {}
-    lcn locallcn;
+    if (paramles == null) {}
+    ler localler;
     do
     {
       do
       {
         return false;
-      } while (lox.a(paramlco) == 0);
-      locallcn = b(paramlco);
-      if (locallcn == null)
+      } while (lra.a(paramles) == 0);
+      localler = b(paramles);
+      if (localler == null)
       {
-        QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 无样本, codec[" + paramlco.jdField_b_of_type_Int + "]");
+        QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 无样本, codec[" + paramles.jdField_b_of_type_Int + "]");
         return false;
       }
-      String str = a(locallcn.jdField_a_of_type_JavaLangString);
+      String str = a(localler.jdField_a_of_type_JavaLangString);
       if (new File(str).exists()) {
         break;
       }
-      QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 样本未下载, codec[" + paramlco.jdField_b_of_type_Int + "], path[" + str + "], downloadRes[" + paramBoolean + "]");
+      QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 样本未下载, codec[" + paramles.jdField_b_of_type_Int + "], path[" + str + "], downloadRes[" + paramBoolean + "]");
     } while (!paramBoolean);
-    a(paramlco, locallcn.jdField_a_of_type_JavaLangString, locallcn.jdField_b_of_type_JavaLangString);
+    a(paramles, localler.jdField_a_of_type_JavaLangString, localler.jdField_b_of_type_JavaLangString);
     return false;
     return true;
   }
@@ -381,14 +369,14 @@ public class DeviceCapabilityExamination
     return (Integer[])paramTreeMap.get((int)(System.currentTimeMillis() % paramTreeMap.size()));
   }
   
-  private static lcn b(lco paramlco)
+  private static ler b(les paramles)
   {
     Object localObject1 = null;
     Object localObject3 = null;
     Object localObject2 = localObject3;
-    if (paramlco.jdField_a_of_type_JavaUtilHashMap != null)
+    if (paramles.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      if (paramlco.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
+      if (paramles.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
         break label30;
       }
       localObject2 = localObject3;
@@ -398,21 +386,21 @@ public class DeviceCapabilityExamination
     {
       return localObject2;
       localObject3 = a();
-      localObject2 = ((SharedPreferences)localObject3).getString(a(paramlco.jdField_b_of_type_Int, "md5"), null);
+      localObject2 = ((SharedPreferences)localObject3).getString(a(paramles.jdField_b_of_type_Int, "md5"), null);
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = (lcn)paramlco.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+        localObject1 = (ler)paramles.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
       }
       if (localObject1 == null) {
         break;
       }
       localObject2 = localObject1;
-    } while (!TextUtils.isEmpty(((lcn)localObject1).jdField_b_of_type_JavaLangString));
-    int i = paramlco.jdField_a_of_type_JavaUtilHashMap.size();
+    } while (!TextUtils.isEmpty(((ler)localObject1).jdField_b_of_type_JavaLangString));
+    int i = paramles.jdField_a_of_type_JavaUtilHashMap.size();
     i = (int)(System.currentTimeMillis() % i);
-    localObject1 = (String)paramlco.jdField_a_of_type_JavaUtilHashMap.keySet().toArray()[i];
-    localObject2 = (lcn)paramlco.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+    localObject1 = (String)paramles.jdField_a_of_type_JavaUtilHashMap.keySet().toArray()[i];
+    localObject2 = (ler)paramles.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
     localObject3 = ((SharedPreferences)localObject3).edit();
-    ((SharedPreferences.Editor)localObject3).putString(a(paramlco.jdField_b_of_type_Int, "md5"), (String)localObject1);
+    ((SharedPreferences.Editor)localObject3).putString(a(paramles.jdField_b_of_type_Int, "md5"), (String)localObject1);
     ((SharedPreferences.Editor)localObject3).commit();
     return localObject2;
   }
@@ -422,14 +410,14 @@ public class DeviceCapabilityExamination
     if (AudioHelper.e()) {
       QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed");
     }
-    Object localObject = lll.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+    Object localObject = lno.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       if (AudioHelper.e()) {
         QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed test config: \n" + (String)localObject);
       }
-      localObject = new lkz((String)localObject);
-      if (new muw().a((lkz)localObject) == 1)
+      localObject = new lnc((String)localObject);
+      if (new mxp().a((lnc)localObject) == 1)
       {
         localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getSharedPreferences("qav_sp_video_effect", 0);
         if (((SharedPreferences)localObject).getBoolean("qav_key_test_executed", false)) {
@@ -438,7 +426,7 @@ public class DeviceCapabilityExamination
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("qav_key_test_executed", true);
         ((SharedPreferences.Editor)localObject).commit();
-        new VideoEffectTest(new ler(this)).a();
+        new VideoEffectTest(new lgu(this)).a();
       }
     }
     label161:
@@ -486,7 +474,7 @@ public class DeviceCapabilityExamination
       String str = c(paramString);
       File localFile = new File(str);
       boolean bool = localFile.exists();
-      bbdx.a(str);
+      bdcs.a(str);
       QLog.w("DeviceCapabilityExamination", 1, "delSampleFile, codec[" + paramInt + "], md5[" + paramString + "], exists[" + bool + "->" + localFile.exists() + "]");
       return;
     }
@@ -500,7 +488,7 @@ public class DeviceCapabilityExamination
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.app.DeviceCapabilityExamination
  * JD-Core Version:    0.7.0.1
  */

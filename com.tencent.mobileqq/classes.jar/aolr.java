@@ -1,66 +1,61 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aolr
-  extends LinearLayoutManager
+  extends aofy<aolq>
 {
-  public aolr(Context paramContext)
+  public int a()
   {
-    super(paramContext);
+    return 419;
   }
   
-  public aolr(Context paramContext, int paramInt, boolean paramBoolean)
+  @NonNull
+  public aolq a(int paramInt)
   {
-    super(paramContext, paramInt, paramBoolean);
+    return new aolq();
   }
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  @Nullable
+  public aolq a(aogf[] paramArrayOfaogf)
   {
-    try
-    {
-      super.onLayoutChildren(paramRecycler, paramState);
-      return;
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aolq.a(paramArrayOfaogf[0].a);
     }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      QLog.e("WrapContentLinearLayoutManager", 1, "onLayoutChildren fail!", paramRecycler);
-    }
+    return null;
   }
   
-  public int scrollHorizontallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public Class<aolq> a()
   {
-    try
-    {
-      paramInt = super.scrollHorizontallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      QLog.e("WrapContentLinearLayoutManager", 1, "scrollHorizontallyBy fail!", paramRecycler);
-    }
+    return aolq.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aolq paramaolq) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
     return 0;
   }
   
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public boolean b()
   {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      QLog.e("WrapContentLinearLayoutManager", 1, "scrollVerticallyBy fail!", paramRecycler);
-    }
-    return 0;
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
-import android.content.Context;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class ajow
-  extends ajqd
 {
-  public ajow(String paramString)
-  {
-    super(paramString);
-  }
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  public String toString()
   {
-    super.a(paramQQAppInterface, paramContext, paramEditText, paramSessionInfo);
+    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajow
  * JD-Core Version:    0.7.0.1
  */

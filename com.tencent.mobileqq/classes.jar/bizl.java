@@ -1,26 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-class bizl
-  implements View.OnClickListener
+public class bizl
+  extends QzoneExternalRequest
 {
-  bizl(bizk parambizk, int paramInt) {}
+  public JceStruct a;
   
-  public void onClick(View paramView)
+  public bizl(long paramLong1, long paramLong2, String paramString)
   {
-    if (!bizk.a()) {}
-    do
-    {
-      return;
-      bizk.a(this.jdField_a_of_type_Bizk, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bizk.notifyDataSetChanged();
-    } while (bizk.a(this.jdField_a_of_type_Bizk) == null);
-    bizk.a(this.jdField_a_of_type_Bizk).a(this.jdField_a_of_type_Int);
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
+    mobile_sub_get_photo_wall_req localmobile_sub_get_photo_wall_req = new mobile_sub_get_photo_wall_req();
+    localmobile_sub_get_photo_wall_req.uin = paramLong1;
+    localmobile_sub_get_photo_wall_req.attachInfo = paramString;
+    this.a = localmobile_sub_get_photo_wall_req;
+  }
+  
+  public static JceStruct a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return decode(paramArrayOfByte, "getPhotoWall");
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getPhotoWall";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getPhotoWall";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bizl
  * JD-Core Version:    0.7.0.1
  */

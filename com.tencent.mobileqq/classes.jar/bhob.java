@@ -1,37 +1,44 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import java.io.File;
+import android.os.Debug;
+import java.io.IOException;
 
-class bhob
-  implements ModuleDownloadListener
+public class bhob
 {
-  bhob(bhnz parambhnz) {}
+  private static boolean jdField_a_of_type_Boolean;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "35872667", "354653668", "270749863", "279242625", "1849510872" };
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public static void a(String paramString)
   {
-    if (!paramString.equals("pictureMarkerSo.zip")) {}
-    do
+    if (jdField_a_of_type_Boolean) {}
+    for (;;)
     {
       return;
-      localObject = bhnz.a.getPath();
-      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-    } while (!paramString.exists());
-    Object localObject = new File((String)localObject);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
+      Object localObject = jdField_a_of_type_ArrayOfJavaLangString;
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (localObject[i].equals(paramString))
+        {
+          localObject = aljq.bd + "dump_";
+          try
+          {
+            Debug.dumpHprofData((String)localObject + paramString + System.currentTimeMillis());
+            jdField_a_of_type_Boolean = true;
+            return;
+          }
+          catch (IOException paramString)
+          {
+            return;
+          }
+        }
+        i += 1;
+      }
     }
-    bhoh.b(paramString, (File)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import java.util.List;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.VipProfileWZRYView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class awsh
+public class awsh
   implements View.OnClickListener
 {
-  awsh(awsc paramawsc, awpb paramawpb, Context paramContext) {}
+  public awsh(VipProfileWZRYView paramVipProfileWZRYView, awmk paramawmk) {}
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Awpb.m))
-    {
-      paramView = awvx.a(this.jdField_a_of_type_Awpb.a(), 0, awsq.a(this.jdField_a_of_type_Awpb.c));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      paramView = new StringBuilder();
-      int i = 0;
-      if (i < this.jdField_a_of_type_Awpb.a.size())
-      {
-        if (i != this.jdField_a_of_type_Awpb.a.size() - 1) {
-          paramView.append(((awoo)this.jdField_a_of_type_Awpb.a.get(i)).b).append("::");
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          paramView.append(((awoo)this.jdField_a_of_type_Awpb.a.get(i)).b);
-        }
-      }
-      awsq.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Awpb.g).ver2(awsq.a(UniteSearchActivity.d)).ver4(paramView.toString()).ver5("1").ver6("2").ver7("{experiment_id:" + awsq.b + "}"));
-    }
+    paramView = bdox.a("gameHonourAddHonour");
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileWZRYView.a, paramView, -1L, null, false, -1);
+    VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_into", "0", 1, 0, 0, ndd.a(), String.valueOf(this.jdField_a_of_type_Awmk.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_Awmk.a.lCurrentStyleId));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awsh
  * JD-Core Version:    0.7.0.1
  */

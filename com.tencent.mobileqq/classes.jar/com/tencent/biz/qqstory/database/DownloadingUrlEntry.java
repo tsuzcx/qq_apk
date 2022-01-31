@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class DownloadingUrlEntry
-  extends auko
+  extends awbv
 {
   public int bIsDownloadCompleted = 0;
   public int compressLevel;
   public int fileType;
-  @aumc
+  @awdj
   public String key;
   public long updatedMs;
   public String url;
@@ -22,7 +22,7 @@ public class DownloadingUrlEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.DownloadingUrlEntry
  * JD-Core Version:    0.7.0.1
  */

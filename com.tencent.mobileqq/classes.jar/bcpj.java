@@ -1,82 +1,63 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.content.res.Resources;
+import android.util.TypedValue;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NowShowVideoInfo;
-import com.tencent.mobileqq.data.ProfilePhotoWall;
-import com.tencent.mobileqq.data.QZonePhotoInfo;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.ProfileCardNewPhotoWallView;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
 public class bcpj
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public bcpj(ProfileCardNewPhotoWallView paramProfileCardNewPhotoWallView, ProfilePhotoWall paramProfilePhotoWall, int paramInt) {}
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  public void onClick(View paramView)
+  public bcpj(WheelPickerLayout paramWheelPickerLayout, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataProfilePhotoWall instanceof NowShowVideoInfo))
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramWheelPickerLayout.getResources().getDisplayMetrics()));
+  }
+  
+  public int getCount()
+  {
+    return WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b);
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      localObject1 = (NowShowVideoInfo)this.jdField_a_of_type_ComTencentMobileqqDataProfilePhotoWall;
-      localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("hide_more_button", true);
-      ((Intent)localObject2).putExtra("hide_operation_bar", true);
-      ((Intent)localObject2).putExtra("url", ((NowShowVideoInfo)localObject1).mJumpUrl);
-      paramView.getContext().startActivity((Intent)localObject2);
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "NOW", "", "qq_zlk", "replay_click", 0, 0, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_JavaLangString, "", "", "");
-      return;
+      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.getContext());
+      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
     }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_AndroidAppActivity, TroopAvatarWallPreviewActivity.class);
-    Object localObject1 = new Bundle();
-    ((Bundle)localObject1).putInt("index", this.jdField_a_of_type_Int);
-    Object localObject2 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_JavaUtilLinkedList.size())
+    for (;;)
     {
-      Object localObject3 = (ProfilePhotoWall)this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_JavaUtilLinkedList.get(i);
-      if ((localObject3 instanceof QZonePhotoInfo))
-      {
-        ((ArrayList)localObject2).add(((ProfilePhotoWall)localObject3).getOriginUrl());
-        localObject3 = (QZonePhotoInfo)localObject3;
-        localArrayList1.add(((QZonePhotoInfo)localObject3).photoId);
-        localArrayList2.add(((QZonePhotoInfo)localObject3).time + "");
-      }
-      i += 1;
+      paramViewGroup = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b, paramInt);
+      WheelTextView localWheelTextView = (WheelTextView)paramView;
+      localWheelTextView.setTextSize(1, WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).b);
+      localWheelTextView.setTextColor(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).c);
+      localWheelTextView.setGravity(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).d);
+      localWheelTextView.setText(paramViewGroup);
+      return paramView;
     }
-    ((Bundle)localObject1).putStringArrayList("seqNum", (ArrayList)localObject2);
-    ((Bundle)localObject1).putBoolean("from_photo_wall", true);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_JavaLangString))
-    {
-      ((Bundle)localObject1).putBoolean("delete_ability", true);
-      ((Bundle)localObject1).putStringArrayList("photoIds", localArrayList1);
-      ((Bundle)localObject1).putStringArrayList("photoTimes", localArrayList2);
-    }
-    ((Bundle)localObject1).putBoolean("SHOW_MENU", true);
-    ((Bundle)localObject1).putBoolean("IS_EDIT", false);
-    ((Bundle)localObject1).putBoolean("is_use_path", true);
-    ((Bundle)localObject1).putBoolean("is_show_action", true);
-    ((Bundle)localObject1).putBoolean("is_not_show_index", true);
-    paramView.putExtras((Bundle)localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_JavaLangString))
-    {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A80", "0X8006A80", 0, 0, "", "", "", "");
-      return;
-    }
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A94", "0X8006A94", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpj
  * JD-Core Version:    0.7.0.1
  */

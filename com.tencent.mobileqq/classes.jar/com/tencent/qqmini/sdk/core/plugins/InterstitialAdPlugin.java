@@ -2,14 +2,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import behm;
-import behp;
-import behq;
-import bekp;
-import bekr;
-import bekx;
-import betc;
-import bfhh;
+import bghk;
+import bghn;
+import bgho;
+import bgjw;
+import bgkd;
+import bgki;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.MiniSDKConst.AdConst;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -28,7 +28,7 @@ public class InterstitialAdPlugin
   private static final String ERRMSG = "errMsg";
   public static final String EVENT_INTERSTITIAL_CLOSE = "onInterstitialAdClose";
   public static final String KEY_REF_ID = "biz_src_miniapp";
-  public static final HashMap<Integer, String> S_CodeMsg_Map = bfhh.a;
+  public static final HashMap<Integer, String> S_CodeMsg_Map = MiniSDKConst.AdConst.CodeMsgMap;
   private static final String TAG = "InterstitialAdPlugin";
   private Map<Integer, InterstitialAdPlugin.MiniInterstitialAd> mInterstitialMap = new HashMap();
   
@@ -37,7 +37,7 @@ public class InterstitialAdPlugin
     return !TextUtils.isEmpty(paramString);
   }
   
-  InterstitialAdPlugin.MiniInterstitialAd getMiniInterstitialAd(int paramInt, String paramString, bekr parambekr)
+  InterstitialAdPlugin.MiniInterstitialAd getMiniInterstitialAd(int paramInt, String paramString, bgkd parambgkd)
   {
     Object localObject2 = null;
     Object localObject1;
@@ -50,14 +50,14 @@ public class InterstitialAdPlugin
         if (this.mMiniAppContext != null) {
           localObject1 = this.mMiniAppContext.a();
         }
-        paramString.setJsService(parambekr.jdField_a_of_type_Behp);
+        paramString.setJsService(parambgkd.jdField_a_of_type_Bghn);
         paramString.setActivity((Activity)localObject1);
       }
       return paramString;
     }
     if ((this.mMiniAppContext != null) && (this.mApkgInfo != null))
     {
-      localObject1 = this.mApkgInfo.d;
+      localObject1 = this.mApkgInfo.appId;
       label101:
       if (this.mMiniAppContext == null) {
         break label163;
@@ -66,7 +66,7 @@ public class InterstitialAdPlugin
     label163:
     for (Activity localActivity = this.mMiniAppContext.a();; localActivity = null)
     {
-      paramString = new InterstitialAdPlugin.MiniInterstitialAd(this, localActivity, paramInt, paramString, (String)localObject1, parambekr.jdField_a_of_type_Behp);
+      paramString = new InterstitialAdPlugin.MiniInterstitialAd(this, localActivity, paramInt, paramString, (String)localObject1, parambgkd.jdField_a_of_type_Bghn);
       this.mInterstitialMap.put(Integer.valueOf(paramInt), paramString);
       break;
       localObject1 = "";
@@ -87,33 +87,31 @@ public class InterstitialAdPlugin
     }
   }
   
-  public String operateInterstitialAd(bekr parambekr)
+  public String operateInterstitialAd(bgkd parambgkd)
   {
     try
     {
-      betc.d("InterstitialAdPlugin", "operateInterstitialAd, jsonParams = " + parambekr.jdField_b_of_type_JavaLangString);
-      JSONObject localJSONObject1 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
+      QMLog.e("InterstitialAdPlugin", "operateInterstitialAd, jsonParams = " + parambgkd.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
       int j = localJSONObject1.optInt("id", -1);
       Object localObject = localJSONObject1.optString("adUnitId", null);
       if (!isAdUnitIdValid((String)localObject))
       {
-        localJSONObject1 = bekx.b(parambekr.jdField_a_of_type_JavaLangString, localJSONObject1);
+        localJSONObject1 = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject1);
         localJSONObject1.put("errCode", 1002);
-        localJSONObject1.put("errMsg", "广告单元无效");
         localObject = localJSONObject1.toString();
-        parambekr.a(localJSONObject1, "广告单元无效");
+        parambgkd.a(localJSONObject1, "广告单元无效");
         return localObject;
       }
-      localObject = getMiniInterstitialAd(j, (String)localObject, parambekr);
+      localObject = getMiniInterstitialAd(j, (String)localObject, parambgkd);
       String str = localJSONObject1.optString("type");
       int i = localJSONObject1.optInt("compId", -1);
       if ("load".equals(str)) {
-        if (!((InterstitialAdPlugin.MiniInterstitialAd)localObject).load(i, parambekr.jdField_b_of_type_Int))
+        if (!((InterstitialAdPlugin.MiniInterstitialAd)localObject).load(i, parambgkd.jdField_b_of_type_Int))
         {
-          localJSONObject1 = bekx.b(parambekr.jdField_a_of_type_JavaLangString, localJSONObject1);
+          localJSONObject1 = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject1);
           localJSONObject1.put("errCode", 1003);
-          localJSONObject1.put("errMsg", "内部错误");
-          parambekr.a(localJSONObject1, "内部错误");
+          parambgkd.a(localJSONObject1, "内部错误");
         }
       }
       for (;;)
@@ -121,57 +119,54 @@ public class InterstitialAdPlugin
         return "";
         if ("show".equals(str))
         {
-          j = behm.a();
+          j = bghk.a();
           if (j != 0)
           {
-            localJSONObject1 = bekx.b(parambekr.jdField_a_of_type_JavaLangString, localJSONObject1);
+            localJSONObject1 = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject1);
             localJSONObject1.put("errCode", j);
-            localJSONObject1.put("errMsg", "内部错误");
-            parambekr.a(localJSONObject1, "内部错误");
+            parambgkd.a(localJSONObject1, "内部错误");
             return localJSONObject1.toString();
           }
-          if (((InterstitialAdPlugin.MiniInterstitialAd)localObject).show(i, parambekr.jdField_b_of_type_Int)) {
+          if (((InterstitialAdPlugin.MiniInterstitialAd)localObject).show(i, parambgkd.jdField_b_of_type_Int)) {
             continue;
           }
-          localJSONObject1 = bekx.b(parambekr.jdField_a_of_type_JavaLangString, localJSONObject1);
+          localJSONObject1 = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject1);
           localJSONObject1.put("errCode", 1003);
-          localJSONObject1.put("errMsg", "内部错误");
-          parambekr.a(localJSONObject1, "内部错误");
+          parambgkd.a(localJSONObject1, "内部错误");
           continue;
         }
         try
         {
           localJSONObject2.put("errCode", 1003);
-          localJSONObject2.put("errMsg", "内部错误");
-          parambekr.a(localJSONObject2, "内部错误");
+          parambgkd.a(localJSONObject2, "内部错误");
           return localJSONObject2.toString();
           if (!"destroy".equals(str)) {
             continue;
           }
           if (((InterstitialAdPlugin.MiniInterstitialAd)localObject).destroy()) {}
-          for (JSONObject localJSONObject2 = bekx.a(parambekr.jdField_a_of_type_JavaLangString, localJSONObject2);; localJSONObject2 = bekx.a(parambekr.jdField_a_of_type_JavaLangString, localJSONObject2, "内部错误").put("errCode", 1003).put("errMsg", "内部错误"))
+          for (JSONObject localJSONObject2 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject2);; localJSONObject2 = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, localJSONObject2, "内部错误").put("errCode", 1003).put("errMsg", "内部错误"))
           {
-            parambekr.jdField_a_of_type_Behp.a(parambekr.jdField_b_of_type_Int, localJSONObject2.toString());
+            parambgkd.jdField_a_of_type_Bghn.a(parambgkd.jdField_b_of_type_Int, localJSONObject2.toString());
             this.mInterstitialMap.remove(Integer.valueOf(j));
             break;
           }
         }
-        catch (Throwable parambekr)
+        catch (Throwable parambgkd)
         {
-          break label384;
+          break label334;
         }
       }
     }
     catch (Throwable localThrowable)
     {
-      betc.d("InterstitialAdPlugin", "operateInterstitialAdfailed e:", localThrowable);
-      localJSONObject2 = bekx.b(parambekr.jdField_a_of_type_JavaLangString, null);
+      QMLog.e("InterstitialAdPlugin", "operateInterstitialAdfailed e:", localThrowable);
+      localJSONObject2 = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.InterstitialAdPlugin
  * JD-Core Version:    0.7.0.1
  */

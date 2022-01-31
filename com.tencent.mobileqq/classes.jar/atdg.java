@@ -1,38 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.1;
+import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class atdg
-  implements bcix<oidb_0x8e4.RspBody>
+  implements astb
 {
-  public atdg(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
+  atdg(atdf paramatdf) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void a(int paramInt, String paramString)
   {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    QLog.e("IdentificationApiPlugin", 1, "getAppConf error, code : " + paramInt + " errorMsg : " + paramString);
+    if (atdf.a(this.a) == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b = paramRspBody.string_invite_id.get().toStringUtf8();
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
+      QLog.e("IdentificationApiPlugin", 1, "getConfFailed, activity is null");
       return;
     }
-    paramRspBody = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
-    paramRspBody.b = null;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Boolean)
+    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.1.2(this, paramString));
+  }
+  
+  public void a(FaceDetectForThirdPartyManager.AppConf paramAppConf)
+  {
+    if (atdf.a(this.a) == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.c();
+      QLog.e("IdentificationApiPlugin", 1, "getConfSuccess, activity is null");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
+    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.1.1(this, paramAppConf));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdg
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhft;
+import bjhe;
 
 public class WeishiFeedInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiFeedInfo> CREATOR = new bhft();
+  public static final Parcelable.Creator<WeishiFeedInfo> CREATOR = new bjhe();
   public static final int FROM_TYPE_ALBUM_VIDEO = 1;
   public static final int FROM_TYPE_DEFAULT = 0;
   public static final int FROM_TYPE_WEISHI_VIDEO = 2;
@@ -73,7 +73,7 @@ public class WeishiFeedInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.WeishiFeedInfo
  * JD-Core Version:    0.7.0.1
  */

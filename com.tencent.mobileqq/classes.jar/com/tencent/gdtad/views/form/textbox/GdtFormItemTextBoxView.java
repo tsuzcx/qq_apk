@@ -1,5 +1,9 @@
 package com.tencent.gdtad.views.form.textbox;
 
+import aanp;
+import aaps;
+import aapt;
+import aapu;
 import android.content.Context;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
@@ -10,46 +14,42 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import com.tencent.gdtad.views.form.framework.GdtFormItemData;
-import com.tencent.gdtad.views.form.framework.GdtFormItemView;
-import com.tencent.gdtad.views.xijing.GdtTextData;
+import com.tencent.ad.tangram.canvas.views.form.framework.AdFormErrorListener;
+import com.tencent.ad.tangram.canvas.views.form.framework.AdFormItemData;
+import com.tencent.ad.tangram.canvas.views.form.framework.AdFormItemView;
+import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
 import java.lang.ref.WeakReference;
-import yxp;
-import zak;
-import zau;
-import zav;
-import zaw;
 
 public class GdtFormItemTextBoxView
-  extends GdtFormItemView
+  extends AdFormItemView
 {
   private EditText a;
   
-  public GdtFormItemTextBoxView(Context paramContext, GdtFormItemTextBoxData paramGdtFormItemTextBoxData, WeakReference<zak> paramWeakReference)
+  public GdtFormItemTextBoxView(Context paramContext, GdtFormItemTextBoxData paramGdtFormItemTextBoxData, WeakReference<AdFormErrorListener> paramWeakReference)
   {
     super(paramContext, paramGdtFormItemTextBoxData, paramWeakReference);
   }
   
   private TextWatcher a()
   {
-    return new zau(this);
+    return new aaps(this);
   }
   
   private View.OnFocusChangeListener a()
   {
-    return new zav(this);
+    return new aapt(this);
   }
   
   private TextView.OnEditorActionListener a()
   {
-    return new zaw(this);
+    return new aapu(this);
   }
   
   private static void b(TextView paramTextView)
   {
     if ((paramTextView == null) || (paramTextView.getContext() == null) || (paramTextView.getContext().getSystemService("input_method") == null) || (!(paramTextView.getContext().getSystemService("input_method") instanceof InputMethodManager)))
     {
-      yxp.d("GdtFormItemTextBoxView", "hideSoftInput error");
+      aanp.d("GdtFormItemTextBoxView", "hideSoftInput error");
       return;
     }
     try
@@ -59,15 +59,24 @@ public class GdtFormItemTextBoxView
     }
     catch (Throwable paramTextView)
     {
-      yxp.d("GdtFormItemTextBoxView", "hideSoftInput", paramTextView);
+      aanp.d("GdtFormItemTextBoxView", "hideSoftInput", paramTextView);
     }
   }
   
-  public View a(Context paramContext)
+  public GdtFormItemTextBoxData a()
+  {
+    AdFormItemData localAdFormItemData = super.getData();
+    if ((localAdFormItemData instanceof GdtFormItemTextBoxData)) {
+      return (GdtFormItemTextBoxData)GdtFormItemTextBoxData.class.cast(localAdFormItemData);
+    }
+    return null;
+  }
+  
+  public View createContentView(Context paramContext)
   {
     if ((a() == null) || (!a().isValid()))
     {
-      yxp.d("GdtFormItemTextBoxView", "createContentView error");
+      aanp.d("GdtFormItemTextBoxView", "createContentView error");
       return null;
     }
     this.a = new EditText(paramContext);
@@ -115,20 +124,11 @@ public class GdtFormItemTextBoxView
     }
   }
   
-  public GdtFormItemTextBoxData a()
-  {
-    GdtFormItemData localGdtFormItemData = super.a();
-    if ((localGdtFormItemData instanceof GdtFormItemTextBoxData)) {
-      return (GdtFormItemTextBoxData)GdtFormItemTextBoxData.class.cast(localGdtFormItemData);
-    }
-    return null;
-  }
-  
-  public void a()
+  public void reset()
   {
     if (this.a == null)
     {
-      yxp.d("GdtFormItemTextBoxView", "reset error");
+      aanp.d("GdtFormItemTextBoxView", "reset error");
       return;
     }
     this.a.setText(null);
@@ -136,7 +136,7 @@ public class GdtFormItemTextBoxView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,201 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusAnimationItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.widget.AbsListView;
+import cooperation.qzone.util.NetworkState;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONObject;
 
 public class sbq
-  extends sce
+  implements sai, sak
 {
-  public sbq(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  private final Map<String, Integer> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList)
+  private void a(Container paramContainer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
-    }
-    if (!paramBoolean) {}
-    do
+    int i = 8;
+    int j = 0;
+    ViewBase localViewBase;
+    if (paramContainer != null)
     {
-      do
+      localViewBase = paramContainer.getVirtualView();
+      if (localViewBase != null)
       {
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
-          break;
+        paramContainer = localViewBase.findViewBaseByName("id_large_video_icon");
+        localViewBase = localViewBase.findViewBaseByName("id_video_bg");
+        if (!NetworkState.isWifiConn()) {
+          break label64;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
+      }
+    }
+    for (;;)
+    {
+      if (paramContainer != null) {
+        paramContainer.setVisibility(j);
+      }
+      if (localViewBase != null) {
+        localViewBase.setVisibility(i);
+      }
       return;
-    } while (this.a.a == null);
-    Message localMessage = new Message();
-    localMessage.what = 1003;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
-    localMessage.setData(localBundle);
-    this.a.a.removeMessages(1003);
+      label64:
+      j = 8;
+      i = 0;
+    }
   }
+  
+  public int a(BaseData paramBaseData)
+  {
+    if ((paramBaseData instanceof ProteusItemData))
+    {
+      paramBaseData = (ProteusItemData)paramBaseData;
+      if (paramBaseData.a != null)
+      {
+        paramBaseData = paramBaseData.a.getStyleName();
+        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramBaseData);
+        if (localInteger != null) {
+          return localInteger.intValue();
+        }
+        QLog.d("WebProteusViewCreator", 1, "getViewType error,styleName:" + paramBaseData);
+      }
+    }
+    return -1;
+  }
+  
+  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new put();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
+      opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+    }
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
+    }
+    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
+    paramViewGroup = null;
+    try
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
+      paramViewGroup = (ViewGroup)localObject;
+      opy.a(((Container)localObject).getVirtualView(), localProteusItemData.a.getViewBean());
+      paramViewGroup = (ViewGroup)localObject;
+      str = localProteusItemData.c.toString();
+      paramViewGroup = (ViewGroup)localObject;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        boolean bool;
+        String str = "error!! msg=" + localException.toString();
+      }
+    }
+    bool = false;
+    localObject = paramViewGroup;
+    if (paramViewGroup == null)
+    {
+      localObject = new View(paramContext);
+      bool = true;
+    }
+    QLog.d("WebProteusViewCreator", 1, "createViewHolder viewIsNull=" + bool + "  proteusData=" + str);
+    if ((paramBaseData instanceof ProteusAnimationItemData)) {
+      ((ProteusAnimationItemData)paramBaseData).a((View)localObject);
+    }
+    return new sbr(this, (View)localObject, localProteusItemData);
+  }
+  
+  public void a() {}
+  
+  public void a(Context paramContext)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new put();
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
+          opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+          paramContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getTemplateFactory().getNameTemplateMap().keySet();
+          sah.a = 32;
+          int i = sah.a + 1;
+          paramContext = paramContext.iterator();
+          if (paramContext.hasNext())
+          {
+            String str = (String)paramContext.next();
+            if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str))
+            {
+              this.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
+              i += 1;
+            }
+          }
+          else
+          {
+            QLog.d("WebProteusViewCreator", 1, "VIEW_TYPE_COUNT=" + sah.a + ",NAME_VIEWTYPE_MAP size=" + this.jdField_a_of_type_JavaUtilMap.size() + "type=" + i);
+            sah.a += this.jdField_a_of_type_JavaUtilMap.size() + 1;
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        QLog.d("WebProteusViewCreator", 1, "initProteusTypeCount error,msg:" + paramContext.toString());
+        return;
+      }
+    }
+  }
+  
+  public void a(BaseAdapter paramBaseAdapter)
+  {
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    switch (paramBaseData.s)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbq
  * JD-Core Version:    0.7.0.1
  */

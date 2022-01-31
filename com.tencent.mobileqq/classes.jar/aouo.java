@@ -1,42 +1,123 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aouo
+final class aouo
 {
-  private QQAppInterface a;
+  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
   
-  public aouo(QQAppInterface paramQQAppInterface)
+  public static aouo a(aogf[] paramArrayOfaogf)
   {
-    this.a = paramQQAppInterface;
+    Object localObject1;
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0))
+    {
+      QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error, confFiles is no-valid.");
+      localObject1 = null;
+      return localObject1;
+    }
+    aouo localaouo = new aouo();
+    int j = paramArrayOfaogf.length;
+    int i = 0;
+    for (;;)
+    {
+      localObject1 = localaouo;
+      if (i >= j) {
+        break;
+      }
+      localObject1 = paramArrayOfaogf[i];
+      try
+      {
+        localObject1 = new JSONObject(((aogf)localObject1).a);
+        if (localObject1 != null)
+        {
+          if (((JSONObject)localObject1).has("has_gray")) {
+            localaouo.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("has_gray");
+          }
+          a((JSONObject)localObject1, localaouo.jdField_a_of_type_JavaUtilMap);
+        }
+        i += 1;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error", localJSONException);
+          Object localObject2 = null;
+        }
+      }
+    }
   }
   
-  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong, String paramString5, aout paramaout)
+  public static void a(JSONObject paramJSONObject, Map<String, String> paramMap)
   {
-    aowt localaowt = this.a.a().a();
-    aowu localaowu = new aowu();
-    localaowu.jdField_a_of_type_JavaLangString = paramString4;
-    localaowu.jdField_a_of_type_Long = paramLong;
-    localaowu.c = paramString5;
-    localaowu.b = paramString3;
-    if (paramInt1 != 3000)
+    if ((paramJSONObject == null) || (paramMap == null)) {}
+    do
     {
-      localaowt.a(paramString1, paramInt1, paramString2, paramInt2, localaowu, 5000, 5, new aour(this, paramaout));
       return;
-    }
-    localaowt.a(paramString1, paramString2, localaowu, new aous(this, paramaout));
+      if (paramJSONObject.has("facade_plugin_name")) {
+        paramMap.put("facade_plugin_name", paramJSONObject.optString("facade_plugin_name"));
+      }
+      if (paramJSONObject.has("facade_plugin_name_prefix")) {
+        paramMap.put("facade_plugin_name_prefix", paramJSONObject.optString("facade_plugin_name_prefix"));
+      }
+      if (paramJSONObject.has("facade_plugin_url")) {
+        paramMap.put("facade_plugin_url", paramJSONObject.optString("facade_plugin_url"));
+      }
+      if (paramJSONObject.has("facade_plugin_md5")) {
+        paramMap.put("facade_plugin_md5", paramJSONObject.optString("facade_plugin_md5"));
+      }
+      if (paramJSONObject.has("facade_plugin_entry_class")) {
+        paramMap.put("facade_plugin_entry_class", paramJSONObject.optString("facade_plugin_entry_class"));
+      }
+      if (paramJSONObject.has("pre_load_info")) {
+        paramMap.put("pre_load_info", paramJSONObject.optString("pre_load_info"));
+      }
+      if (paramJSONObject.has("global_required_res_info")) {
+        paramMap.put("global_required_res_info", paramJSONObject.optString("global_required_res_info"));
+      }
+      if (paramJSONObject.has("docs_plugin_info")) {
+        paramMap.put("docs_plugin_info", paramJSONObject.optString("docs_plugin_info"));
+      }
+      if (paramJSONObject.has("docs_font_info")) {
+        paramMap.put("docs_font_info", paramJSONObject.optString("docs_font_info"));
+      }
+      if (paramJSONObject.has("sheets_plugin_info")) {
+        paramMap.put("sheets_plugin_info", paramJSONObject.optString("sheets_plugin_info"));
+      }
+      if (paramJSONObject.has("slides_plugin_info")) {
+        paramMap.put("slides_plugin_info", paramJSONObject.optString("slides_plugin_info"));
+      }
+    } while (!paramJSONObject.has("slides_res_info"));
+    paramMap.put("slides_res_info", paramJSONObject.optString("slides_res_info"));
   }
   
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, long paramLong, int paramInt2, aout paramaout)
+  public static void a(boolean paramBoolean, aouo paramaouo)
   {
-    aowt localaowt = this.a.a().a();
-    aowu localaowu = new aowu();
-    localaowu.jdField_a_of_type_JavaLangString = paramString3;
-    localaowu.jdField_a_of_type_Long = paramLong;
-    if ((paramInt1 == 3000) || (paramInt1 == 1))
-    {
-      localaowt.a(paramString2, paramString1, localaowu, paramInt2, 5000, 3, new aoup(this, paramaout));
-      return;
+    if (paramaouo == null) {
+      QLog.w("TdsReaderView_TdsReaderConfigBean", 1, "source error, configBean is null.");
     }
-    localaowt.a(paramString1, paramInt1, paramString2, 5000, 3, new aouq(this, paramaout));
+    int i;
+    do
+    {
+      return;
+      if (!paramaouo.jdField_a_of_type_JavaUtilMap.isEmpty()) {}
+      for (i = 1;; i = 0)
+      {
+        if (i != 0) {
+          TdsReaderGlobal.a(paramBoolean, paramaouo.jdField_a_of_type_JavaUtilMap);
+        }
+        if (!paramaouo.jdField_a_of_type_Boolean) {
+          break;
+        }
+        aour.b();
+        return;
+      }
+    } while (i == 0);
+    TdsReaderGlobal.a(true);
   }
 }
 

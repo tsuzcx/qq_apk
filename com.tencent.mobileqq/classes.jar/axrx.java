@@ -1,74 +1,114 @@
-import android.content.Intent;
+import android.opengl.GLES20;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
 
 public class axrx
+  extends GPUBaseFilter
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, String paramString8)
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230755);
+  private float jdField_a_of_type_Float = 0.0F;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean = false;
+  private int c;
+  
+  public axrx()
   {
-    axry localaxry = new axry();
-    localaxry.jdField_c_of_type_JavaLangString = paramString1;
-    localaxry.jdField_d_of_type_JavaLangString = paramString2;
-    localaxry.jdField_e_of_type_JavaLangString = paramString3;
-    localaxry.f = paramString4;
-    localaxry.jdField_c_of_type_Long = paramInt1;
-    localaxry.jdField_d_of_type_Long = paramInt2;
-    localaxry.jdField_e_of_type_Long = paramInt3;
-    localaxry.g = paramString5;
-    localaxry.h = paramString6;
-    localaxry.i = paramString7;
-    localaxry.j = paramString8;
-    paramString1 = localaxry.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("SubscribeReportController", 1, "getReportingDetail=" + paramString1);
-    }
-    return paramString1;
+    this("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public axrx(String paramString1, String paramString2)
   {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
+    super(paramString1, paramString2);
+    this.mFilterType = 0;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat)
+  {
+    float f2 = 1.0F;
+    float f1 = 0.0F;
+    if (paramFloat > 1.0F) {
+      paramFloat = f2;
+    }
+    for (;;)
     {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
+      if (paramFloat < 0.0F) {
+        paramFloat = f1;
+      }
+      for (;;)
       {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
-          }
-        }
+        this.jdField_b_of_type_Boolean = paramBoolean;
+        this.jdField_a_of_type_Float = paramFloat;
+        return;
       }
     }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a("${uin_unknown}", paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7);
-      paramString1 = new Intent();
-      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramString1.putExtra("reporting_tag", "dc05263");
-      paramString1.putExtra("reporting_detail", paramQQAppInterface);
-      paramString1.putExtra("reporting_count", paramInt2);
-      paramString1.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
-      return;
-    }
-    axqy.b(localQQAppInterface, "dc05263", a(localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7), paramInt2);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
+  public void onDrawTexture()
   {
-    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt1, 1, paramInt2, paramString4, paramString5, paramString6, paramString7);
+    float f2 = 1.0F;
+    int i = this.jdField_b_of_type_Int;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      f1 = 1.0F;
+      GLES20.glUniform1f(i, f1);
+      GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float);
+      i = this.c;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label57;
+      }
+    }
+    label57:
+    for (float f1 = f2;; f1 = 2.0F)
+    {
+      GLES20.glUniform1f(i, f1);
+      return;
+      f1 = 2.0F;
+      break;
+    }
+  }
+  
+  public void onInitialized()
+  {
+    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "percent");
+    this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "drawPart");
+    this.c = GLES20.glGetUniformLocation(getProgram(), "cutX");
+  }
+  
+  public String toString()
+  {
+    double d2 = 1.0D;
+    int i = this.mFilterType;
+    double d1;
+    float f;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      d1 = 1.0D;
+      f = this.jdField_a_of_type_Float;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label77;
+      }
+    }
+    for (;;)
+    {
+      return String.format("filter type=%s, draw left=%s, draw percent=%s, directionx=%s", new Object[] { Integer.valueOf(i), Double.valueOf(d1), Float.valueOf(f), Double.valueOf(d2) });
+      d1 = 2.0D;
+      break;
+      label77:
+      d2 = 2.0D;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axrx
  * JD-Core Version:    0.7.0.1
  */

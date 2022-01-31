@@ -1,37 +1,48 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import java.util.ArrayList;
 
-class arhi
-  extends BroadcastReceiver
+public class arhi
+  extends arhm
 {
-  arhi(arhd paramarhd) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private boolean d;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public arhi(Context paramContext, FileManagerEntity paramFileManagerEntity)
   {
-    paramContext = paramIntent.getAction();
-    int i;
-    if ((paramContext.equals(arfy.a(arhd.b(this.a)))) || (paramContext.equals(arfy.d(arhd.b(this.a)))))
-    {
-      i = paramIntent.getIntExtra("key_state", -1);
-      paramContext = arhd.a(this.a, i);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    this.d = false;
+  }
+  
+  public Intent a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+      return null;
     }
-    switch (i)
-    {
-    default: 
-      return;
-    case 9: 
-    case 100: 
-      this.a.callJs("notifyJsCallback", new String[] { paramContext.toString() });
-      return;
+    ForwardFileInfo localForwardFileInfo = arvo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localForwardFileInfo.b(10009);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("fileinfo", localForwardFileInfo);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", this.jdField_a_of_type_JavaUtilArrayList);
     }
-    arhj.a.a = 0L;
+    localIntent.putExtra("_from_aio_", this.d);
+    return localIntent;
+  }
+  
+  public void a(ArrayList<String> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhi
  * JD-Core Version:    0.7.0.1
  */

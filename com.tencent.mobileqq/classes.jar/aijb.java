@@ -1,57 +1,42 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import java.util.ArrayList;
 
 public class aijb
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  public aijb(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  static aijb a(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if (paramJSONObject == null) {
-      return new aijb();
-    }
-    aijb localaijb = new aijb();
-    try
+    if (!CameraPreviewActivity.a(this.a))
     {
-      localaijb.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localaijb.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
-      localaijb.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localaijb.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
-      localaijb.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
-      localaijb.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
-      localaijb.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
-      localaijb.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
-      localaijb.g = paramJSONObject.getString("classifyName");
-      localaijb.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
-      localaijb.f = String.valueOf(paramJSONObject.getInt("vip_type"));
-      localaijb.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
-      localaijb.h = paramJSONObject.getString("trialstartday");
-      localaijb.i = paramJSONObject.getString("trialendday");
-      return localaijb;
+      if (this.a.b) {
+        azmj.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
+      }
+      if (!this.a.b) {
+        break label133;
+      }
+      aild.d();
     }
-    catch (JSONException paramJSONObject)
+    for (;;)
     {
-      paramJSONObject.printStackTrace();
+      if ((CameraPreviewActivity.a(this.a) != null) && (CameraPreviewActivity.a(this.a).size() > 0)) {
+        bhnu.a((String)CameraPreviewActivity.a(this.a).get(0), true);
+      }
+      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
+      paramView.setClickable(false);
+      return;
+      label133:
+      aild.b();
     }
-    return localaijb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijb
  * JD-Core Version:    0.7.0.1
  */

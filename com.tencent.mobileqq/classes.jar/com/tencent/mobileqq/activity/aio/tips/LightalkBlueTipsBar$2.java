@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aeye;
+import agvj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,14 +9,14 @@ import com.tencent.qphone.base.util.QLog;
 public class LightalkBlueTipsBar$2
   implements Runnable
 {
-  public LightalkBlueTipsBar$2(aeye paramaeye) {}
+  public LightalkBlueTipsBar$2(agvj paramagvj) {}
   
   public void run()
   {
-    Object localObject = aeye.a(this.this$0).getPreferences();
-    int i = ((SharedPreferences)localObject).getInt("LT_tip_show_times" + aeye.a(this.this$0).getCurrentAccountUin(), 0);
+    Object localObject = agvj.a(this.this$0).getPreferences();
+    int i = ((SharedPreferences)localObject).getInt("LT_tip_show_times" + agvj.a(this.this$0).getCurrentAccountUin(), 0);
     localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + aeye.a(this.this$0).getCurrentAccountUin(), i + 1);
+    ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + agvj.a(this.this$0).getCurrentAccountUin(), i + 1);
     ((SharedPreferences.Editor)localObject).commit();
     if (QLog.isColorLevel()) {
       QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : commit =====> tipsum = " + (i + 1));
@@ -25,7 +25,7 @@ public class LightalkBlueTipsBar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.2
  * JD-Core Version:    0.7.0.1
  */

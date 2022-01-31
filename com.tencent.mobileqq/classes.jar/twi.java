@@ -1,30 +1,43 @@
+import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public abstract interface twi
+public class twi
+  implements Observer<tzm<FeedCloudRead.StGetMainPageRsp>>
 {
-  public abstract twj a(@Nullable twl paramtwl, int paramInt);
+  public twi(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
   
-  @UiThread
-  public abstract two a();
-  
-  public abstract void a();
-  
-  @UiThread
-  public abstract void a(@Nullable twl paramtwl, int paramInt1, int paramInt2, String paramString);
-  
-  @UiThread
-  public abstract void a(@Nullable twl paramtwl, String paramString);
-  
-  public abstract void a(twn paramtwn);
-  
-  public abstract void b();
-  
-  public abstract void b(twn paramtwn);
+  public void a(@Nullable tzm<FeedCloudRead.StGetMainPageRsp> paramtzm)
+  {
+    if (paramtzm != null) {
+      try
+      {
+        if ((paramtzm.a() == 2) || (paramtzm.a() == 3))
+        {
+          if (this.a.a != null)
+          {
+            this.a.a.a(new ArrayList(Arrays.asList(new FeedCloudRead.StGetMainPageRsp[] { (FeedCloudRead.StGetMainPageRsp)paramtzm.a() })));
+            this.a.a.d(true);
+            return;
+          }
+          QLog.e(QCirclePersonalDetailFragment.c, 1, "mPersonalDetailHeaderAdapter is null");
+          return;
+        }
+      }
+      catch (Exception paramtzm)
+      {
+        QLog.e(QCirclePersonalDetailFragment.c, 1, "getShareInfo error");
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twi
  * JD-Core Version:    0.7.0.1
  */

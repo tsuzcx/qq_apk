@@ -1,44 +1,48 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import android.content.Context;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.qphone.base.util.QLog;
 
-class bimj
-  implements bjos<Boolean>
+final class bimj
+  extends OnPluginInstallListener.Stub
 {
-  bimj(bima parambima) {}
+  bimj(bimn parambimn, bimp parambimp, Context paramContext) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    if (paramBoolean == null) {}
-    do
+    if (QLog.isDevelopLevel()) {
+      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallError");
+    }
+    if (this.jdField_a_of_type_Bimn != null) {
+      this.jdField_a_of_type_Bimn.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bimp);
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallFinish");
+    }
+    if (this.jdField_a_of_type_Bimn != null)
     {
-      return;
-      if (bima.a(this.a).a())
+      paramString = bimg.a().queryPlugin(this.jdField_a_of_type_Bimp.b);
+      if (paramString != null)
       {
-        bima.a(this.a).setVisibility(8);
-        return;
+        this.jdField_a_of_type_Bimp.c = paramString.mInstalledPath;
+        this.jdField_a_of_type_Bimp.a(paramString);
       }
-      if (bima.a(this.a).b())
-      {
-        if (!bima.a(this.a))
-        {
-          AEBottomListScrollView localAEBottomListScrollView = bima.a(this.a);
-          if (paramBoolean.booleanValue()) {}
-          for (int i = 0;; i = 4)
-          {
-            localAEBottomListScrollView.setVisibility(i);
-            return;
-          }
-        }
-        bima.a(this.a).setVisibility(8);
-        return;
-      }
-    } while (!bima.a(this.a).c());
-    bima.a(this.a).setVisibility(8);
+      this.jdField_a_of_type_Bimn.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bimp);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bimj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,23 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.triton.sdk.callback.DialogCallback;
+
 class bgtv
-  implements bgln
+  implements DialogInterface.OnClickListener
 {
-  bgtv(bgtt parambgtt) {}
+  bgtv(bgtt parambgtt, DialogCallback paramDialogCallback) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bgwf.c("QRPluginManager", "startPluginByActivity: openPlugin result = " + paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqTritonSdkCallbackDialogCallback.onConfirm();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgtv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class wpd
-  extends GridLayoutManager.SpanSizeLookup
+  implements View.OnClickListener
 {
-  wpd(wpc paramwpc) {}
+  wpd(wou paramwou, wsb paramwsb) {}
   
-  public int getSpanSize(int paramInt)
+  public void onClick(View paramView)
   {
-    woz localwoz = this.a.b(paramInt);
-    if (localwoz != null) {
-      return localwoz.a(localwoz.b(paramInt));
-    }
-    return 1;
+    wta.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.jdField_a_of_type_Wsb.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpd
  * JD-Core Version:    0.7.0.1
  */

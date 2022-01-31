@@ -1,35 +1,21 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
 
 public class qes
-  implements bfph
+  implements View.OnClickListener
 {
-  public qes(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public qes(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyDeliverUGCActivity.b(this.a, true);
-    ReadInJoyDeliverUGCActivity.c(this.a, ReadInJoyDeliverUGCActivity.c(this.a));
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
-      return;
-      ReadInJoyDeliverUGCActivity.b(this.a);
-      nol.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", onh.e(), false);
-      continue;
-      ReadInJoyDeliverUGCActivity.c(this.a);
-    }
+    pja.a(2, this.jdField_a_of_type_JavaLangString);
+    ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qes
  * JD-Core Version:    0.7.0.1
  */

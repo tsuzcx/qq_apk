@@ -1,31 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 class adim
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  adim(adil paramadil, List paramList, BaseChatPie paramBaseChatPie) {}
+  adim(adii paramadii) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      paramDialogInterface = asuh.a(adil.a(this.jdField_a_of_type_Adil), (ArrayList)this.jdField_a_of_type_JavaUtilList);
-    } while ((paramDialogInterface == null) || (paramDialogInterface.size() == 0));
-    adil.a(this.jdField_a_of_type_Adil, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, null, false);
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adim
  * JD-Core Version:    0.7.0.1
  */

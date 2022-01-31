@@ -1,55 +1,88 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import cooperation.comic.ui.QQComicFragment;
+import cooperation.comic.ui.QQComicTabBarView;
+import java.util.List;
+import mqq.util.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bijs
-  extends biqp
+  implements View.OnClickListener
 {
-  public bijs(AECameraGLSurfaceView paramAECameraGLSurfaceView, Context paramContext)
+  final int jdField_a_of_type_Int;
+  final List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
+  final WeakReference<QQComicTabBarView> jdField_a_of_type_MqqUtilWeakReference;
+  final boolean jdField_a_of_type_Boolean;
+  
+  public bijs(QQComicTabBarView paramQQComicTabBarView, int paramInt, boolean paramBoolean, List<WebViewTabBarData> paramList)
   {
-    super(paramContext);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQComicTabBarView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  void a(QQComicTabBarView paramQQComicTabBarView)
   {
-    if (AECameraGLSurfaceView.a(this.a) != null) {
-      AECameraGLSurfaceView.a(this.a).a(paramFloat3);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = 0;
-    AECameraGLSurfaceView.a(this.a, paramInt);
-    bika.a().b(paramInt);
-    if (paramInt == -1) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AECameraGLSurfaceView", 2, "OrientationEventListener unknown");
-      }
-    }
-    for (int j = 90;; j = 0)
+    Object localObject;
+    JSONObject localJSONObject;
+    if ((paramQQComicTabBarView.getContext() instanceof QQBrowserActivity))
     {
-      if ((paramInt > 315) || (paramInt < 45)) {
-        i = 90;
-      }
-      for (;;)
+      localObject = ((QQBrowserActivity)paramQQComicTabBarView.getContext()).a();
+      if ((localObject instanceof QQComicFragment))
       {
-        AECameraGLSurfaceView.b(this.a, i);
-        return;
-        if ((paramInt > 45) && (paramInt < 135)) {
-          i = 180;
-        } else if ((paramInt > 135) && (paramInt < 225)) {
-          i = 270;
-        } else if ((paramInt <= 225) || (paramInt >= 315)) {
-          i = j;
+        localObject = ((QQComicFragment)localObject).a();
+        if (localObject != null) {
+          localJSONObject = new JSONObject();
         }
       }
     }
+    try
+    {
+      localJSONObject.put("source", "comic");
+      ((bijh)localObject).dispatchJsEvent("qbrowserTabClick", null, localJSONObject);
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int))
+      {
+        localObject = ((WebViewTabBarData)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).tag;
+        QQComicTabBarView.a(paramQQComicTabBarView.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject, true);
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("WebViewTabBarView", 1, localJSONException, new Object[0]);
+      }
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = (QQComicTabBarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (paramView == null) {}
+    long l;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == paramView.i)
+      {
+        a(paramView);
+        return;
+      }
+      l = System.currentTimeMillis();
+    } while (l - paramView.jdField_a_of_type_Long < 500L);
+    paramView.jdField_a_of_type_Long = l;
+    paramView.setSelectedTab(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bijs
  * JD-Core Version:    0.7.0.1
  */

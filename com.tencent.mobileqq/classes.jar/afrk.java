@@ -1,38 +1,26 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class afrk
+class afrk
+  extends aekx
 {
-  public PublicAccountInfo a;
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
   public String a;
-  public String b = "";
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
   
-  public afrk(PublicAccountInfo paramPublicAccountInfo)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
-  }
+  afrk(afrh paramafrh) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afrk
  * JD-Core Version:    0.7.0.1
  */

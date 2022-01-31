@@ -1,19 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.GiftPkgSelectDialog.1.1;
 
-class ofc
-  implements ViewBase.OnClickListener
+public class ofc
+  implements AdapterView.OnItemClickListener
 {
   ofc(ofb paramofb) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.jdField_a_of_type_Ohs.b(this.a.jdField_a_of_type_Oif);
+    ofb.a(this.a, paramInt);
+    ofb.a(this.a).notifyDataSetChanged();
+    ofb.a(this.a).postDelayed(new GiftPkgSelectDialog.1.1(this, paramInt), 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,52 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.util.SparseArray;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import java.util.HashSet;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class autr
-  implements Animator.AnimatorListener
+  implements behy<oidb_0x8e4.RspBody>
 {
-  public autr(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, autu paramautu, View paramView) {}
+  public autr(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Autu.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+    if ((paramInt == 0) || (paramInt == 1004))
+    {
+      this.a.jdField_a_of_type_Autg.d();
+      bdiv.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_b_of_type_Long = this.a.app.getLongAccountUin();
+      this.a.jdField_b_of_type_JavaLangString = null;
+      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
+      this.a.jdField_a_of_type_JavaUtilList = null;
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (this.a.jdField_b_of_type_JavaUtilList != null) {
+        this.a.jdField_b_of_type_JavaUtilList.clear();
+      }
+      this.a.f = false;
+      this.a.a();
+      paramRspBody = this.a.a();
+      if ((paramRspBody != null) && (paramRspBody.jdField_a_of_type_Boolean)) {
+        QQToast.a(this.a, alpo.a(2131705440), 0).a();
+      }
+      this.a.jdField_a_of_type_Auun.notifyDataSetChanged();
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.a.jdField_b_of_type_AndroidViewView.setEnabled(true);
+      return;
+      this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Autu.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     autr
  * JD-Core Version:    0.7.0.1
  */

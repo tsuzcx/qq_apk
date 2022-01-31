@@ -1,74 +1,106 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.confess.data.TroopConfessMsg;
-import com.tencent.mobileqq.confess.data.TroopConfessMsgItem;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-class amol
-  extends acuj
+public class amol
+  implements amrx
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ConfessNewsBgView jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView;
-  private TextView b;
-  private View jdField_c_of_type_AndroidViewView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  public static int a;
+  private long jdField_a_of_type_Long;
+  private amom jdField_a_of_type_Amom;
+  private amrv jdField_a_of_type_Amrv;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean = true;
   
-  public void a(TroopConfessMsg paramTroopConfessMsg)
+  static
   {
-    if (paramTroopConfessMsg == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData null is troopConfessMsgItem.");
-      }
+    jdField_a_of_type_Int = 8;
+  }
+  
+  public amol(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Amrv = new amrv();
+  }
+  
+  private void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    long l;
+    if (this.jdField_a_of_type_Long != 0L)
+    {
+      l = System.currentTimeMillis();
+      if (l - this.jdField_a_of_type_Long >= 1000L) {}
     }
+    label35:
+    label195:
+    label197:
     do
     {
-      return;
-      if ((paramTroopConfessMsg.items != null) && (!paramTroopConfessMsg.items.isEmpty())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData items is null or empty.");
-    return;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopConfessMsg.getConfessToNick());
-    this.b.setText(((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic);
-    String str2 = ((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic;
-    float f = amoa.a(str2);
-    int i;
-    if (f > 8.0F)
-    {
-      this.b.setTextSize(1, 24.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
-      this.b.setLineSpacing(0.0F, 1.1F);
-      str1 = str2;
-      if (f <= 12.0F)
+      for (;;)
       {
-        str1 = str2;
-        if (amoa.a(str2)) {
-          i = (int)(f * 0.7D);
+        return;
+        this.jdField_a_of_type_Long = l;
+        if (paramFloat2 > jdField_a_of_type_Int) {}
+        for (int i = 1;; i = 2)
+        {
+          if (this.jdField_b_of_type_Int == i) {
+            break label195;
+          }
+          QLog.i("ARPhonePoseDetectManager", 1, "detectPhonePose. data = " + paramFloat1 + "," + paramFloat2 + "," + paramFloat3 + "," + paramLong + ", mPhonePose = " + this.jdField_b_of_type_Int + ", phonePose = " + i);
+          if ((i == 2) && (this.jdField_b_of_type_Boolean)) {
+            this.jdField_b_of_type_Boolean = false;
+          }
+          this.jdField_b_of_type_Int = i;
+          if (this.jdField_a_of_type_Amom == null) {
+            break;
+          }
+          if (this.jdField_b_of_type_Int != 1) {
+            break label197;
+          }
+          this.jdField_a_of_type_Amom.a(true);
+          return;
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          break label35;
         }
       }
-    }
-    for (String str1 = str2.substring(0, i) + "\n" + str2.substring(i, str2.length());; str1 = str2)
+    } while (this.jdField_b_of_type_Int != 2);
+    this.jdField_a_of_type_Amom.a(false);
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      this.b.setText(str1);
-      if (paramTroopConfessMsg.totalCount > 1) {
-        break;
-      }
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_Amrv.a(this.jdField_a_of_type_AndroidContentContext, this);
+      this.jdField_a_of_type_Boolean = true;
       return;
-      this.b.setTextSize(1, 24.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
-      this.b.setLineSpacing(0.0F, 1.0F);
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(ajya.a(2131715286), new Object[] { Integer.valueOf(paramTroopConfessMsg.totalCount - 1) }));
+    this.jdField_a_of_type_Amrv.b();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    b(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public void a(amom paramamom)
+  {
+    this.jdField_a_of_type_Amom = paramamom;
+  }
+  
+  public void a(float[] paramArrayOfFloat) {}
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Amrv.c();
+    this.jdField_b_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amol
  * JD-Core Version:    0.7.0.1
  */

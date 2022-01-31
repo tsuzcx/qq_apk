@@ -1,27 +1,20 @@
-import org.json.JSONObject;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
 
 public class andr
+  implements ands
 {
-  public boolean a;
+  public andr(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
   
-  public static andr a(String paramString)
+  public void a(int paramInt)
   {
-    andr localandr = new andr();
-    try
-    {
-      localandr.a = new JSONObject(paramString).optBoolean("test_crash_enabled", false);
-      return localandr;
+    if (ScanEntryProviderContainerView.a(this.a) != null) {
+      ScanEntryProviderContainerView.a(this.a).c(paramInt);
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andr
  * JD-Core Version:    0.7.0.1
  */

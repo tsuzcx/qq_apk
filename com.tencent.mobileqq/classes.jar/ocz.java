@@ -1,33 +1,50 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppDownloadManager;
 
-class ocz
-  implements oaz
+public class ocz
 {
-  ocz(ocw paramocw) {}
-  
-  public void a()
+  public static void a(Activity paramActivity, int paramInt, VideoInfo paramVideoInfo)
   {
-    if (ocw.a(this.a).booleanValue())
-    {
-      if ((ocw.a(this.a).isShown()) && (ocw.a(this.a).getWindowVisibility() == 0))
-      {
-        ocw.a(this.a, ocw.a(this.a));
-        ocw.a(this.a).removeCallbacks(ocw.a(this.a));
-        ocw.a(this.a).postDelayed(ocw.a(this.a), ocw.a(this.a).mAdvertisementExtInfo.n);
-      }
-    }
-    else {
+    if (paramVideoInfo == null) {
       return;
     }
-    ocw.a(this.a, Boolean.valueOf(false));
-    ocw.a(this.a, ocw.a(this.a));
+    AdvertisementInfo localAdvertisementInfo = noy.a(paramVideoInfo.a);
+    if (paramVideoInfo.a(paramActivity))
+    {
+      noy.a(new obk().a(paramActivity).a(noy.a).b(noy.P).a(localAdvertisementInfo).a(paramVideoInfo.a).d(paramInt).a());
+      return;
+    }
+    noy.a(new obk().a(paramActivity).a(noy.a).b(noy.N).a(localAdvertisementInfo).a(paramVideoInfo.a).d(paramInt).a());
+  }
+  
+  public static void a(Activity paramActivity, int paramInt, VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, ADVideoAppDownloadManager paramADVideoAppDownloadManager)
+  {
+    if (paramVideoInfo.c)
+    {
+      if (!paramADVideoAppDownloadManager.a(paramVideoInfo)) {
+        break label33;
+      }
+      szl.b(paramActivity, paramAdvertisementInfo, null, 3, true, null);
+    }
+    for (;;)
+    {
+      a(paramActivity, paramInt, paramVideoInfo);
+      return;
+      label33:
+      if (paramAdvertisementInfo != null) {
+        paramAdvertisementInfo.setClickPos(paramInt);
+      }
+      paramADVideoAppDownloadManager = new obg();
+      paramADVideoAppDownloadManager.c = true;
+      szl.b(paramActivity, paramAdvertisementInfo, null, 3, true, paramADVideoAppDownloadManager);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ocz
  * JD-Core Version:    0.7.0.1
  */

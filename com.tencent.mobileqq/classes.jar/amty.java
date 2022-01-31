@@ -1,120 +1,63 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class amty
+class amty
+  extends amuv
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
+  amty(amtv paramamtv) {}
   
-  public amty()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 8;
-    this.jdField_a_of_type_Long = 100000000L;
-    this.jdField_b_of_type_Int = 7;
-    this.jdField_b_of_type_Long = 16777216L;
-    this.jdField_c_of_type_Long = 16777216L;
-    this.jdField_c_of_type_Int = -1;
-  }
-  
-  public static amty a(amph[] paramArrayOfamph)
-  {
-    amty localamty = new amty();
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
+    }
+    if (amtv.a(this.a) == null)
     {
-      int j = paramArrayOfamph.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = paramArrayOfamph[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((amph)localObject).a;
-          try
-          {
-            JSONObject localJSONObject = new JSONObject((String)localObject);
-            a(localJSONObject, localamty);
-            b(localJSONObject, localamty);
-            c(localJSONObject, localamty);
-            if (QLog.isColorLevel()) {
-              QLog.i("PicCommonBean", 2, "parse: " + (String)localObject + " bean:" + localamty);
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
-        }
-      }
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
+      return;
     }
-    if (localamty.jdField_a_of_type_Int < 0) {
-      localamty.jdField_a_of_type_Int = 8;
-    }
-    if (localamty.jdField_a_of_type_Long < 0L) {
-      localamty.jdField_a_of_type_Long = 100000000L;
-    }
-    if (localamty.jdField_b_of_type_Int < 1) {
-      localamty.jdField_a_of_type_Long = 7L;
-    }
-    return localamty;
+    Message localMessage = Message.obtain();
+    localMessage.what = 6;
+    localMessage.arg1 = paramInt;
+    amtv.a(this.a).sendMessage(localMessage);
   }
   
-  private static void a(JSONObject paramJSONObject, amty paramamty)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramJSONObject = paramJSONObject.getJSONObject("regionDecode");
-    if (paramJSONObject.has("ramThreshold")) {
-      paramamty.jdField_a_of_type_Int = paramJSONObject.optInt("ramThreshold");
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
     }
-    if (paramJSONObject.has("pxThreshold")) {
-      paramamty.jdField_a_of_type_Long = paramJSONObject.optLong("pxThreshold");
+    if (amtv.a(this.a) == null) {
+      return;
     }
-    if (paramJSONObject.has("threadCount")) {
-      paramamty.jdField_b_of_type_Int = paramJSONObject.optInt("threadCount");
-    }
-    if (paramJSONObject.has("needRegionDecode")) {
-      paramamty.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("needRegionDecode");
-    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 7;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    amtv.a(this.a).sendMessage(localMessage);
   }
   
-  private static void b(JSONObject paramJSONObject, amty paramamty)
+  public void b(int paramInt1, int paramInt2)
   {
-    paramJSONObject = paramJSONObject.getJSONObject("uploadLimit");
-    if (paramJSONObject.has("c2c")) {
-      paramamty.jdField_b_of_type_Long = paramJSONObject.optInt("c2c");
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
     }
-    if (paramJSONObject.has("group")) {
-      paramamty.jdField_c_of_type_Long = paramJSONObject.optInt("group");
+    if (amtv.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
+      return;
     }
-  }
-  
-  private static void c(JSONObject paramJSONObject, amty paramamty)
-  {
-    paramJSONObject = paramJSONObject.getJSONObject("switchEXIF");
-    if (paramJSONObject.has("switch")) {
-      paramamty.jdField_c_of_type_Int = paramJSONObject.optInt("switch");
-    }
-  }
-  
-  public String toString()
-  {
-    return "PicCommonBean{needRegionDecode=" + this.jdField_a_of_type_Boolean + ", ramThreshold=" + this.jdField_a_of_type_Int + ", pxThreshold=" + this.jdField_a_of_type_Long + ", threadCount=" + this.jdField_b_of_type_Int + ", C2C_FileSize_Limit=" + this.jdField_b_of_type_Long + ", GROUP_FileSize_Limit=" + this.jdField_c_of_type_Long + ", EXIF_SWITCH=" + this.jdField_c_of_type_Int + '}';
+    Message localMessage = Message.obtain();
+    localMessage.what = 8;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    amtv.a(this.a).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amty
  * JD-Core Version:    0.7.0.1
  */

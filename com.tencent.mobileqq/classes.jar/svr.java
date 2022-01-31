@@ -1,36 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 class svr
-  extends SimpleJob<Object>
+  implements rse
 {
-  svr(svl paramsvl, String paramString)
-  {
-    super(paramString);
-  }
+  svr(svp paramsvp) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    paramVarArgs = ((tcw)tcz.a(5)).a();
-    paramJobContext = new ArrayList(paramVarArgs.size());
-    paramVarArgs = paramVarArgs.iterator();
-    while (paramVarArgs.hasNext()) {
-      paramJobContext.add(new sxe((StoryVideoItem)paramVarArgs.next()));
+    if (!bdee.g(svl.a(this.a.a)))
+    {
+      QQToast.a(svl.a(this.a.a), 1, svl.a(this.a.a).getString(2131718724), 0).a();
+      return false;
     }
-    this.a.a(paramJobContext);
-    ved.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
-    return null;
+    paramView = ors.a();
+    owy.a().a(Long.valueOf(paramView).longValue(), this.a.a.a(paramArrayList));
+    QQToast.a(svl.a(this.a.a), -1, svl.a(this.a.a).getString(2131700042), 0).b(svl.a(this.a.a).getResources().getDimensionPixelSize(2131298914));
+    svl.a(this.a.a).dismiss();
+    if (svl.a(this.a.a) != null) {
+      svl.a(this.a.a).a(svl.a(this.a.a), svl.e(this.a.a), svl.a(this.a.a), paramArrayList);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svr
  * JD-Core Version:    0.7.0.1
  */

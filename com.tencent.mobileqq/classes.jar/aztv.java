@@ -1,69 +1,66 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-public class aztv
+class aztv
+  implements aels
 {
-  protected long a;
-  protected azsh a;
-  protected TroopFileTransferManager.Item a;
-  protected String a;
-  xba a;
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  boolean jdField_a_of_type_Boolean;
+  TextView b;
   
-  private aztv(long paramLong, TroopFileTransferManager.Item paramItem)
+  private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Xba = new aztw(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
+    Drawable localDrawable = this.a.getBackground();
+    if (localDrawable != null) {
+      if (!paramBoolean) {
+        break label28;
+      }
+    }
+    label28:
+    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
     {
-      this.jdField_a_of_type_JavaLangString = paramItem;
+      localDrawable.setColorFilter(localColorFilter);
+      localDrawable.invalidateSelf();
       return;
     }
   }
   
-  public static aztv a(long paramLong, TroopFileTransferManager.Item paramItem)
+  public void a(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramLong == 0L)
+    switch (paramMotionEvent.getAction())
     {
-      azst.a("TroopFilePreviewWorker", azst.a, "getWoker. troopuin=0");
-      return null;
+    case 2: 
+    default: 
+    case 1: 
+    case 3: 
+      do
+      {
+        return;
+        paramView = this.a.getBackground();
+      } while (paramView == null);
+      paramView.setColorFilter(null);
+      paramView.invalidateSelf();
+      return;
     }
-    if (paramItem == null)
-    {
-      azst.a("TroopFilePreviewWorker", azst.a, "getWoker. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      azst.a("TroopFilePreviewWorker", azst.a, "getWoker. item.id=null");
-      return null;
-    }
-    return new aztv(paramLong, paramItem);
+    a(false);
   }
   
-  public UUID a()
+  public void a(View paramView, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
-  
-  public boolean a()
-  {
-    QQAppInterface localQQAppInterface = azsr.a();
-    if (localQQAppInterface == null)
-    {
-      azst.a("TroopFilePreviewWorker", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] getPreviewInfo app=null");
-      return false;
-    }
-    azst.c("TroopFilePreviewWorker", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] getPreviewInfo");
-    this.jdField_a_of_type_Azsh = xam.a(localQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 0, true, false, this.jdField_a_of_type_Xba);
-    return true;
+    a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aztv
  * JD-Core Version:    0.7.0.1
  */

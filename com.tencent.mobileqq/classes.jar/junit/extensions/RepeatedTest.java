@@ -42,7 +42,7 @@ public class RepeatedTest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     junit.extensions.RepeatedTest
  * JD-Core Version:    0.7.0.1
  */

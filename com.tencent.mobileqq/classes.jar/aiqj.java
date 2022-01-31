@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class aiqj
-  implements Animation.AnimationListener
+public class aiqj
+  extends bdvu
 {
-  aiqj(aiqi paramaiqi, yah paramyah, View paramView) {}
+  aiqj(aiqi paramaiqi) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDone(bdvv parambdvv)
   {
-    this.jdField_a_of_type_Yah.a("");
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839132);
+    super.onDone(parambdvv);
+    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambdvv));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiqj
  * JD-Core Version:    0.7.0.1
  */

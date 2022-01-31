@@ -1,12 +1,12 @@
 package com.tencent.biz;
 
 import java.util.concurrent.atomic.AtomicBoolean;
-import mvs;
+import myl;
 
 public class AuthorizeConfig$6
   implements Runnable
 {
-  public AuthorizeConfig$6(mvs parammvs) {}
+  public AuthorizeConfig$6(myl parammyl) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class AuthorizeConfig$6
     if (this.this$0.h == null) {
       this.this$0.f();
     }
-    if (mvs.a.compareAndSet(false, true)) {
+    if (myl.a.compareAndSet(false, true)) {
       this.this$0.c();
     }
   }

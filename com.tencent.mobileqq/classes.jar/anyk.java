@@ -1,190 +1,144 @@
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.graphics.Point;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import mqq.util.WeakReference;
 
-public abstract class anyk
+public class anyk
 {
-  int jdField_a_of_type_Int;
-  anyh jdField_a_of_type_Anyh;
-  anyj jdField_a_of_type_Anyj;
-  public String a;
-  List<anyh> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  anyh jdField_b_of_type_Anyh;
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  anyh jdField_c_of_type_Anyh;
-  boolean jdField_c_of_type_Boolean;
-  int jdField_d_of_type_Int;
-  anyh jdField_d_of_type_Anyh;
-  boolean jdField_d_of_type_Boolean;
-  anyh jdField_e_of_type_Anyh;
-  boolean jdField_e_of_type_Boolean;
-  anyh jdField_f_of_type_Anyh;
-  boolean jdField_f_of_type_Boolean;
+  private static anyk jdField_a_of_type_Anyk;
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private static final byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new anyl(this);
+  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private WeakReference<anxq> jdField_a_of_type_MqqUtilWeakReference;
+  private boolean jdField_a_of_type_Boolean = true;
+  private WeakReference<aobe> jdField_b_of_type_MqqUtilWeakReference;
+  private boolean jdField_b_of_type_Boolean = true;
   
-  public anyk()
+  public static anyk a()
   {
-    this.jdField_a_of_type_JavaLangString = "init";
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int a(int paramInt)
-  {
-    int j = 1;
-    int i = 0;
-    int k = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonLinearLayout", 2, "getRealIndex, position:" + paramInt + ",pageTotalNum:" + this.jdField_d_of_type_Int + ",page:" + this.jdField_c_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      if ((paramInt + 1) % this.jdField_d_of_type_Int == 0) {
-        paramInt = -1;
-      }
-    }
-    int m;
-    label237:
-    label242:
-    do
+    if (jdField_a_of_type_Anyk == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
     {
-      do
-      {
-        return paramInt;
-        return paramInt + this.jdField_c_of_type_Int * (this.jdField_d_of_type_Int - 1);
-        if (this.jdField_e_of_type_Boolean)
-        {
-          if ((paramInt == 0) && (this.jdField_c_of_type_Int == 0)) {
-            return -5;
-          }
-          if (this.jdField_f_of_type_Boolean) {
-            i = 1;
-          }
-          if ((paramInt == 1) && (this.jdField_c_of_type_Int == 0) && (this.jdField_f_of_type_Boolean)) {
-            return -6;
-          }
-          if (this.jdField_c_of_type_Int == 0) {
-            return paramInt - 1 - i;
-          }
-          return this.jdField_d_of_type_Int - 1 + (this.jdField_c_of_type_Int - 1) * this.jdField_d_of_type_Int + paramInt - i;
-        }
-        m = this.jdField_a_of_type_JavaUtilList.size();
-        if (this.jdField_d_of_type_Boolean)
-        {
-          i = 1;
-          if (!this.jdField_c_of_type_Boolean) {
-            break label237;
-          }
-        }
-        for (;;)
-        {
-          if (this.jdField_c_of_type_Int + paramInt != 0) {
-            break label270;
-          }
-          if (!this.jdField_d_of_type_Boolean) {
-            break label242;
-          }
-          return -4;
-          i = 0;
-          break;
-          j = 0;
-        }
-        paramInt = k;
-      } while (this.jdField_a_of_type_JavaUtilList.size() != 0);
-      paramInt = k;
-    } while (!this.jdField_c_of_type_Boolean);
-    return -2;
-    label270:
-    if (this.jdField_c_of_type_Int * this.jdField_d_of_type_Int + paramInt == i + (m - 1) + j)
-    {
-      if (this.jdField_c_of_type_Boolean) {
-        return -2;
+      if (jdField_a_of_type_Anyk == null) {
+        jdField_a_of_type_Anyk = new anyk();
       }
-      return this.jdField_a_of_type_JavaUtilList.size() - 1;
+      return jdField_a_of_type_Anyk;
     }
-    if (this.jdField_d_of_type_Boolean) {
-      return this.jdField_c_of_type_Int * this.jdField_d_of_type_Int + paramInt - 1;
-    }
-    return paramInt + this.jdField_c_of_type_Int * this.jdField_d_of_type_Int;
   }
   
-  public anyh a(int paramInt)
+  public Point a()
   {
-    paramInt = a(paramInt);
-    if (paramInt == -1) {
-      return this.jdField_a_of_type_Anyh;
-    }
-    if (paramInt == -2) {
-      return this.jdField_c_of_type_Anyh;
-    }
-    if (paramInt == -3) {
-      return this.jdField_b_of_type_Anyh;
-    }
-    if (paramInt == -4) {
-      return this.jdField_d_of_type_Anyh;
-    }
-    if (paramInt == -5) {
-      return this.jdField_e_of_type_Anyh;
-    }
-    if (paramInt == -6) {
-      return this.jdField_f_of_type_Anyh;
-    }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (anyh)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
+    return this.jdField_a_of_type_AndroidGraphicsPoint;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Anyj != null) {
-      this.jdField_a_of_type_Anyj.a();
+    IntentFilter localIntentFilter = new IntentFilter("key_float_window_position");
+    localIntentFilter.addAction("key_delete_item_call");
+    localIntentFilter.addAction("key_after_sync_msg");
+    try
+    {
+      BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteQIPCModule", 1, "register broadcast");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("ColorNoteQIPCModule", 2, "register failed", localException);
+      }
     }
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt, String paramString, boolean paramBoolean)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    a(paramInt, paramString, paramBoolean, 0);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_d_of_type_Int = (paramInt2 * paramInt1);
-    this.jdField_a_of_type_Anyj.a(paramInt1, paramInt2);
+    if (paramInt2 == 2) {
+      return;
+    }
+    paramString = paramInt1 + paramString + paramInt2;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(paramString);
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilSet.remove(paramString);
   }
   
-  public abstract void a(int paramInt, RelativeLayout paramRelativeLayout, ViewGroup paramViewGroup);
-  
-  public void a(anyh paramanyh)
+  public void a(Point paramPoint)
   {
-    this.jdField_a_of_type_Anyh = paramanyh;
+    if ((paramPoint != null) && (paramPoint.x != 0) && (paramPoint.y != 0)) {
+      this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    }
   }
   
-  public void a(anyj paramanyj)
+  public void a(anxq paramanxq)
   {
-    this.jdField_a_of_type_Anyj = paramanyj;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramanxq);
   }
   
-  public void a(List<anyh> paramList)
+  public void a(aobe paramaobe)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramaobe);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    anxu.a(paramBoolean);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    anxu.a(paramBoolean);
   }
   
-  public int b()
+  public boolean a()
   {
-    return this.jdField_b_of_type_Int;
+    return anxu.a();
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return a(paramInt, paramString, 0);
+  }
+  
+  public boolean a(int paramInt1, String paramString, int paramInt2)
+  {
+    return (paramInt2 != 2) && (this.jdField_a_of_type_JavaUtilSet.contains(paramInt1 + paramString + paramInt2));
+  }
+  
+  public void b()
+  {
+    try
+    {
+      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteQIPCModule", 1, "unregister broadcast");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("ColorNoteQIPCModule", 2, "unregister failed", localException);
+      }
+    }
   }
   
   public void b(boolean paramBoolean)
@@ -192,14 +146,24 @@ public abstract class anyk
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
   public void c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyk
  * JD-Core Version:    0.7.0.1
  */

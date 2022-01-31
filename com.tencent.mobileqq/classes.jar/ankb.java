@@ -1,25 +1,50 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.Setting;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-public final class ankb
-  implements Parcelable.Creator<Setting>
+public class ankb
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public Setting a(Parcel paramParcel)
-  {
-    Setting localSetting = new Setting();
-    localSetting.readFromParcel(paramParcel);
-    return localSetting;
-  }
+  public ankb(ArkAppPreDownloadMgr.3.1 param1) {}
   
-  public Setting[] a(int paramInt)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    return new Setting[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
+    }
+    paramString = (QQAppInterface)anka.a(this.a.a.this$0).get();
+    if (paramString != null)
+    {
+      paramString = (bavr)paramString.getManager(193);
+      if (paramString != null)
+      {
+        if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.path == null)) {
+          break label211;
+        }
+        long l = 0L;
+        paramAppPathInfo = new File(paramAppPathInfo.path);
+        if (paramAppPathInfo.exists()) {
+          l = paramAppPathInfo.length();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",filesize=", Long.valueOf(l) });
+        }
+        paramString.a(this.a.a.a.a, l);
+      }
+    }
+    return;
+    label211:
+    paramString.a(this.a.a.a.a, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankb
  * JD-Core Version:    0.7.0.1
  */

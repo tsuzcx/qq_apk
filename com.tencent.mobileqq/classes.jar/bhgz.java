@@ -1,17 +1,14 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.os.Bundle;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.METHOD})
-public @interface bhgz
+public abstract interface bhgz
 {
-  String a();
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhgz
  * JD-Core Version:    0.7.0.1
  */

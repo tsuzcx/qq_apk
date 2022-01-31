@@ -1,23 +1,27 @@
-public class asaq
+import android.app.Activity;
+
+class asaq
+  implements acgy
 {
-  public int a;
-  public String a;
-  public String b = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121848_eHHesyqska.png";
+  asaq(asap paramasap) {}
   
-  public asaq()
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121837_iSfyMAuKAV.png";
-    this.jdField_a_of_type_Int = 360;
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
   
-  public String toString()
+  public void b() {}
+  
+  public void c()
   {
-    return "popup_url=" + this.jdField_a_of_type_JavaLangString + "\nfixed_entrance_url=" + this.b + "\nrequest_interval=" + this.jdField_a_of_type_Int;
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asaq
  * JD-Core Version:    0.7.0.1
  */

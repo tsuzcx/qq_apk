@@ -1,39 +1,107 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class aosd
 {
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity, apkq paramapkq)
+  private HashMap<String, aose> a = new HashMap();
+  
+  public static aosd a(aogf paramaogf)
   {
-    String str1 = paramFileManagerEntity.getFilePath();
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FileViewerFacade", 2, "open[" + str1 + "]");
-    }
-    if ((str1 != null) && (str1.lastIndexOf(".rename") > 0))
-    {
-      String str3 = str1.replace(".rename", "");
-      String str2 = str3.substring(0, str3.lastIndexOf("."));
-      str3 = str3.substring(str3.lastIndexOf(".")).replaceAll("[0-9]*", "").replace("(", "").replace(")", "");
-      str2 = str2 + str3;
+    aosd localaosd = new aosd();
+    if (paramaogf != null) {
       if (QLog.isColorLevel()) {
-        QLog.i("<FileAssistant>FileViewerFacade", 2, "file maybe renmaed,realName[" + str2 + "]");
+        QLog.d("VerticalNavigationConfBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
       }
-      aptt.a(paramActivity, paramActivity.getString(2131692883), 2131692870, new aose(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramapkq));
-      return;
     }
-    if ((paramFileManagerEntity.nFileType == 5) && ((paramFileManagerEntity.isZipInnerFile) || (paramFileManagerEntity.nOpType == 190)))
+    try
     {
-      aptt.a(paramActivity, paramActivity.getString(2131692883), 2131692851, new aosf(paramActivity, paramFileManagerEntity));
-      return;
+      paramaogf = new JSONObject(paramaogf.jdField_a_of_type_JavaLangString);
+      Object localObject;
+      if (paramaogf.has("emoji"))
+      {
+        localObject = paramaogf.optJSONObject("emoji");
+        if (localObject != null)
+        {
+          aose localaose = new aose();
+          localaose.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switch", 0);
+          localaose.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("iconUrl", "");
+          localaose.b = ((JSONObject)localObject).optString("url", "");
+          localaosd.a.put("emoji", localaose);
+        }
+      }
+      if (paramaogf.has("wiki"))
+      {
+        paramaogf = paramaogf.optJSONObject("wiki");
+        if (paramaogf != null)
+        {
+          localObject = new aose();
+          ((aose)localObject).jdField_a_of_type_Int = paramaogf.optInt("switch", 0);
+          ((aose)localObject).jdField_a_of_type_JavaLangString = paramaogf.optString("iconUrl", "");
+          ((aose)localObject).b = paramaogf.optString("url", "");
+          localaosd.a.put("wiki", localObject);
+        }
+      }
     }
-    apug.a(paramActivity, paramFileManagerEntity.getFilePath());
+    catch (Exception paramaogf)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("VerticalNavigationConfBean", 2, "parse error->" + paramaogf.toString());
+    }
+    return localaosd;
+    return localaosd;
+  }
+  
+  public String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    paramString = (aose)this.a.get(paramString);
+    if (paramString != null) {
+      return paramString.b;
+    }
+    return "";
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return false;
+      paramString = (aose)this.a.get(paramString);
+    } while (paramString == null);
+    if (paramString.jdField_a_of_type_Int == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    paramString = (aose)this.a.get(paramString);
+    if (paramString != null) {
+      return paramString.jdField_a_of_type_JavaLangString;
+    }
+    return "";
+  }
+  
+  public String toString()
+  {
+    if (this.a != null) {}
+    for (String str = this.a.toString();; str = "null") {
+      return String.format("mConfigData:%s ", new Object[] { str });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aosd
  * JD-Core Version:    0.7.0.1
  */

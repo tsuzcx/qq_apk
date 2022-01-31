@@ -1,56 +1,70 @@
-import android.app.Activity;
-import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class yut
-  implements ysy
+  extends aofy<yus>
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  
-  public yut(GdtDemoMvFragment paramGdtDemoMvFragment, Activity paramActivity)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    return 406;
   }
   
-  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public Class<yus> a()
   {
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
-      return paramGdtAd.getAd().getAId();
+    return yus.class;
+  }
+  
+  @NonNull
+  public yus a(int paramInt)
+  {
+    return new yus();
+  }
+  
+  @Nullable
+  public yus a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return yus.a(paramArrayOfaogf[0].a);
     }
-    return -2147483648L;
+    return null;
   }
   
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public void a()
   {
-    GdtDemoMvFragment.a(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtDemoMvFragment, paramGdtAd);
-    bcql.a(this.jdField_a_of_type_AndroidAppActivity, "demo数据构造成功", 0).a();
-    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    ysu.a().a(paramGdtAd.getAd());
+    super.a();
+    bkum.a().a(false);
   }
   
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, ysx paramysx)
+  public void a(int paramInt) {}
+  
+  public void a(yus paramyus)
   {
-    QLog.e("GdtMotiveVideoAd", 1, "onAdFailedToLoad " + paramysx.a());
+    bkum.a().a(true);
   }
   
-  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public boolean a()
   {
-    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    return true;
   }
   
-  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public int b()
   {
-    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    return 0;
   }
   
-  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public boolean b()
   {
-    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yut
  * JD-Core Version:    0.7.0.1
  */

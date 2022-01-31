@@ -1,23 +1,23 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.io.File;
+import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
 
-public abstract interface ucg
+public class ucg
+  implements antv
 {
-  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean);
+  public ucg(QCircleRecommendImageView paramQCircleRecommendImageView) {}
   
-  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, ucz paramucz);
+  public void a() {}
   
-  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, ucz paramucz, int paramInt, Object paramObject);
+  public void a(int paramInt) {}
   
-  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, ucz paramucz, boolean paramBoolean);
-  
-  public abstract void b(VideoViewVideoHolder paramVideoViewVideoHolder, ucz paramucz);
-  
-  public abstract void c(VideoViewVideoHolder paramVideoViewVideoHolder, ucz paramucz);
+  public void b()
+  {
+    QCircleRecommendImageView.a(this.a);
+    QCircleRecommendImageView.a(this.a, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucg
  * JD-Core Version:    0.7.0.1
  */

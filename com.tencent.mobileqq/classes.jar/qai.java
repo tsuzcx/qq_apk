@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 
-public final class qai
-  implements Parcelable.Creator<AdvertisementInfo>
+class qai
+  implements View.OnTouchListener
 {
-  public AdvertisementInfo a(Parcel paramParcel)
-  {
-    return new AdvertisementInfo(paramParcel);
-  }
+  qai(qaf paramqaf, RelativeLayout paramRelativeLayout) {}
   
-  public AdvertisementInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new AdvertisementInfo[paramInt];
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qai
  * JD-Core Version:    0.7.0.1
  */

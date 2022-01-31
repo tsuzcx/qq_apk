@@ -32,17 +32,19 @@ public class TPThumbCapture
   
   public void generateImageAsyncAtTime(long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams, TPCaptureCallBack paramTPCaptureCallBack)
   {
-    if (paramTPImageGeneratorParams == null)
-    {
-      paramTPImageGeneratorParams = new TPImageGeneratorParams();
-      paramTPImageGeneratorParams.format = 37;
-    }
+    if (paramTPImageGeneratorParams == null) {}
     for (;;)
     {
-      this.mOpaque += 1L;
-      this.mCallBackMap.put(Long.valueOf(this.mOpaque), paramTPCaptureCallBack);
-      this.mImageGenerator.generateImageAsyncAtTime(paramLong, this.mOpaque, paramTPImageGeneratorParams);
-      return;
+      try
+      {
+        paramTPImageGeneratorParams = new TPImageGeneratorParams();
+        paramTPImageGeneratorParams.format = 37;
+        this.mOpaque += 1L;
+        this.mCallBackMap.put(Long.valueOf(this.mOpaque), paramTPCaptureCallBack);
+        this.mImageGenerator.generateImageAsyncAtTime(paramLong, this.mOpaque, paramTPImageGeneratorParams);
+        return;
+      }
+      finally {}
     }
   }
   
@@ -82,7 +84,7 @@ public class TPThumbCapture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.caputure.TPThumbCapture
  * JD-Core Version:    0.7.0.1
  */

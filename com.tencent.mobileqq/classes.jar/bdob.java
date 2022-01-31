@@ -1,26 +1,16 @@
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bdob
+class bdob
+  implements DialogInterface.OnClickListener
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
-  {
-    String str;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (paramString.length() != 0) {}
-    }
-    else
-    {
-      str = "sdk_preference";
-    }
-    return paramContext.getSharedPreferences(str, 4);
-  }
+  bdob(bdnx parambdnx) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class nuu
-  extends anqq
+  implements View.OnClickListener
 {
-  nuu(nut paramnut) {}
+  nuu(nut paramnut, String paramString) {}
   
-  public void onBindedToClient()
+  public void onClick(View paramView)
   {
-    ReadInJoyArticleDetailActivity.a(this.a.a);
+    if (this.jdField_a_of_type_Nut.jdField_a_of_type_Nun != null) {
+      this.jdField_a_of_type_Nut.jdField_a_of_type_Nun.b(this.jdField_a_of_type_Nut.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    }
   }
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nuu
  * JD-Core Version:    0.7.0.1
  */

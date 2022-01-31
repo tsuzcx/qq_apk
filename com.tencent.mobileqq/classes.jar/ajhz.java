@@ -1,62 +1,65 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class ajhz
-  extends bbwt
+public class ajhz
+  extends ajhc
 {
-  ajhz(String paramString, File paramFile, ajif paramajif) {}
+  public ajhz(Context paramContext) {}
   
-  public void onDone(bbwu parambbwu)
+  public void a(byte[] paramArrayOfByte)
   {
-    super.onDone(parambbwu);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData onDone url" + this.jdField_a_of_type_JavaLangString + " task.getStatus():" + parambbwu.a());
-    }
-    if (3 == parambbwu.a()) {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-    }
-    while (this.jdField_a_of_type_Ajif == null)
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      do
-      {
-        try
-        {
-          nav.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-          if (this.jdField_a_of_type_Ajif != null) {
-            this.jdField_a_of_type_Ajif.a(true, 0);
-          }
-          return;
-        }
-        catch (Exception parambbwu)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error  error->" + parambbwu.getMessage());
-            }
-          }
-        }
-        catch (OutOfMemoryError parambbwu)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error resType->" + parambbwu.getMessage());
-            }
-          }
-        }
-      } while (this.jdField_a_of_type_Ajif == null);
-      this.jdField_a_of_type_Ajif.a(false, 0);
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Bbkv == null) {
+        this.jdField_a_of_type_Bbkv = new bbkv();
+      }
+      this.jdField_a_of_type_Bbkv.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
-    this.jdField_a_of_type_Ajif.a(false, 0);
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bbkv != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbkv.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhz
  * JD-Core Version:    0.7.0.1
  */

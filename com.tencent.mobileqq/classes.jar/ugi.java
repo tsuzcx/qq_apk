@@ -1,39 +1,12 @@
-import android.content.Intent;
-
-public class ugi
-  extends uaf
+public abstract interface ugi
 {
-  private ugh a;
+  public abstract void a(ueq paramueq);
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramIntent);
-    }
-  }
-  
-  public void a(ugh paramugh)
-  {
-    this.a = paramugh;
-  }
-  
-  public void f()
-  {
-    if (this.a != null) {
-      this.a.c();
-    }
-  }
-  
-  public void g()
-  {
-    if (this.a != null) {
-      this.a.b();
-    }
-  }
+  public abstract void b(ueq paramueq);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugi
  * JD-Core Version:    0.7.0.1
  */

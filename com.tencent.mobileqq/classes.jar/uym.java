@@ -1,16 +1,16 @@
-final class uym
-  extends ThreadLocal<StringBuilder>
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import java.util.List;
+
+public class uym
+  extends ugz
 {
-  protected StringBuilder a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(512);
-    localStringBuilder.setLength(0);
-    return localStringBuilder;
-  }
+  public ShareGroupItem a;
+  public String a;
+  public List<ShareGroupItem> a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uym
  * JD-Core Version:    0.7.0.1
  */

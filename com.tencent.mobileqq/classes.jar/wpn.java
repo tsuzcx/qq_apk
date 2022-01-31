@@ -1,46 +1,21 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1;
 
 public class wpn
-  extends LinearLayoutManager
+  extends AnimatorListenerAdapter
 {
-  public wpn(Context paramContext, int paramInt, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramContext, paramInt, paramBoolean);
-  }
-  
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      super.onLayoutChildren(paramRecycler, paramState);
-      return;
+    if (this.a) {
+      new Handler().postDelayed(new StoryDownloadView.5.1(this), 1200L);
     }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-  }
-  
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpn
  * JD-Core Version:    0.7.0.1
  */

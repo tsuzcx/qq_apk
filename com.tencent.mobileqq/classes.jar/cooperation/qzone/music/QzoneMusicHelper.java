@@ -1,6 +1,6 @@
 package cooperation.qzone.music;
 
-import ajya;
+import alpo;
 import android.text.TextUtils;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -8,23 +8,23 @@ import org.json.JSONObject;
 
 public class QzoneMusicHelper
 {
-  public static final String NO_NETWORK_MSG = ajya.a(2131712039);
+  public static final String NO_NETWORK_MSG = alpo.a(2131712411);
   
   public static SongInfo convertAudioSongInfo(JSONObject paramJSONObject)
   {
     SongInfo localSongInfo = new SongInfo();
-    localSongInfo.jdField_b_of_type_JavaLangString = getString(paramJSONObject, "name");
-    localSongInfo.g = getString(paramJSONObject, "singer");
-    localSongInfo.jdField_a_of_type_Long = getLong(paramJSONObject, "songId");
-    localSongInfo.jdField_a_of_type_JavaLangString = getString(paramJSONObject, "playUrl");
+    localSongInfo.jdField_c_of_type_JavaLangString = getString(paramJSONObject, "name");
+    localSongInfo.h = getString(paramJSONObject, "singer");
+    localSongInfo.a = getLong(paramJSONObject, "songId");
+    localSongInfo.jdField_b_of_type_JavaLangString = getString(paramJSONObject, "playUrl");
     localSongInfo.jdField_b_of_type_Int = getInt(paramJSONObject, "type");
-    localSongInfo.d = getString(paramJSONObject, "cover");
+    localSongInfo.e = getString(paramJSONObject, "cover");
     localSongInfo.jdField_c_of_type_Long = getLong(paramJSONObject, "singerId");
-    localSongInfo.f = getString(paramJSONObject, "album");
-    localSongInfo.e = getString(paramJSONObject, "detailUrl");
-    localSongInfo.jdField_c_of_type_JavaLangString = getString(paramJSONObject, "showId");
-    if (localSongInfo.jdField_a_of_type_Long == 0L) {
-      localSongInfo.jdField_a_of_type_Long = getFMID(localSongInfo.jdField_c_of_type_JavaLangString);
+    localSongInfo.g = getString(paramJSONObject, "album");
+    localSongInfo.f = getString(paramJSONObject, "detailUrl");
+    localSongInfo.d = getString(paramJSONObject, "showId");
+    if (localSongInfo.a == 0L) {
+      localSongInfo.a = getFMID(localSongInfo.d);
     }
     return localSongInfo;
   }
@@ -33,44 +33,44 @@ public class QzoneMusicHelper
   {
     SongInfo localSongInfo = new SongInfo();
     String str = getString(paramJSONObject, "showID");
-    localSongInfo.jdField_b_of_type_JavaLangString = getString(paramJSONObject, "showName");
-    localSongInfo.g = "";
-    localSongInfo.jdField_a_of_type_Long = getFMID(str);
-    localSongInfo.jdField_a_of_type_JavaLangString = getString(paramJSONObject, "showAudioUrl");
+    localSongInfo.jdField_c_of_type_JavaLangString = getString(paramJSONObject, "showName");
+    localSongInfo.h = "";
+    localSongInfo.a = getFMID(str);
+    localSongInfo.jdField_b_of_type_JavaLangString = getString(paramJSONObject, "showAudioUrl");
     localSongInfo.jdField_b_of_type_Int = 8;
-    localSongInfo.d = "";
-    localSongInfo.jdField_c_of_type_Long = 0L;
-    localSongInfo.f = "";
     localSongInfo.e = "";
-    localSongInfo.jdField_c_of_type_JavaLangString = str;
+    localSongInfo.jdField_c_of_type_Long = 0L;
+    localSongInfo.g = "";
+    localSongInfo.f = "";
+    localSongInfo.d = str;
     return localSongInfo;
   }
   
   public static SongInfo convertSongInfo(JSONObject paramJSONObject)
   {
     SongInfo localSongInfo = new SongInfo();
-    localSongInfo.jdField_b_of_type_JavaLangString = getString(paramJSONObject, "name");
-    localSongInfo.g = getString(paramJSONObject, "singer");
-    localSongInfo.jdField_a_of_type_Long = getLong(paramJSONObject, "songId");
-    localSongInfo.jdField_a_of_type_JavaLangString = getString(paramJSONObject, "playUrl");
+    localSongInfo.jdField_c_of_type_JavaLangString = getString(paramJSONObject, "name");
+    localSongInfo.h = getString(paramJSONObject, "singer");
+    localSongInfo.a = getLong(paramJSONObject, "songId");
+    localSongInfo.jdField_b_of_type_JavaLangString = getString(paramJSONObject, "playUrl");
     localSongInfo.jdField_b_of_type_Int = getInt(paramJSONObject, "type");
-    localSongInfo.d = getString(paramJSONObject, "cover");
+    localSongInfo.e = getString(paramJSONObject, "cover");
     localSongInfo.jdField_c_of_type_Long = getLong(paramJSONObject, "singerId");
-    localSongInfo.f = getString(paramJSONObject, "album");
+    localSongInfo.g = getString(paramJSONObject, "album");
     localSongInfo.jdField_b_of_type_Long = getLong(paramJSONObject, "uin");
-    if (TextUtils.isEmpty(localSongInfo.f)) {
-      localSongInfo.f = getString(paramJSONObject, "songMid");
+    if (TextUtils.isEmpty(localSongInfo.g)) {
+      localSongInfo.g = getString(paramJSONObject, "songMid");
     }
-    if (TextUtils.isEmpty(localSongInfo.f)) {
-      localSongInfo.f = getString(paramJSONObject, "musicMId");
+    if (TextUtils.isEmpty(localSongInfo.g)) {
+      localSongInfo.g = getString(paramJSONObject, "musicMId");
     }
-    if ((!TextUtils.isEmpty(localSongInfo.f)) && (localSongInfo.jdField_a_of_type_Long == 0L)) {
-      localSongInfo.jdField_a_of_type_Long = getSongIDWithMid(localSongInfo.f);
+    if ((!TextUtils.isEmpty(localSongInfo.g)) && (localSongInfo.a == 0L)) {
+      localSongInfo.a = getSongIDWithMid(localSongInfo.g);
     }
     if ((localSongInfo.jdField_b_of_type_Int == 0) && (getInt(paramJSONObject, "voiceType") == 3)) {
       localSongInfo.jdField_b_of_type_Int = 11;
     }
-    localSongInfo.e = getString(paramJSONObject, "detailUrl");
+    localSongInfo.f = getString(paramJSONObject, "detailUrl");
     return localSongInfo;
   }
   
@@ -146,7 +146,7 @@ public class QzoneMusicHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.music.QzoneMusicHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,25 @@
 package okio;
 
-import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-class Okio$3
-  extends AsyncTimeout
+final class Okio$3
+  implements Sink
 {
-  Okio$3(Socket paramSocket) {}
+  public void close() {}
   
-  protected IOException newTimeoutException(IOException paramIOException)
+  public void flush() {}
+  
+  public Timeout timeout()
   {
-    SocketTimeoutException localSocketTimeoutException = new SocketTimeoutException("timeout");
-    if (paramIOException != null) {
-      localSocketTimeoutException.initCause(paramIOException);
-    }
-    return localSocketTimeoutException;
+    return Timeout.NONE;
   }
   
-  protected void timedOut()
+  public void write(Buffer paramBuffer, long paramLong)
   {
-    try
-    {
-      this.val$socket.close();
-      return;
-    }
-    catch (Exception localException)
-    {
-      Okio.logger.log(Level.WARNING, "Failed to close timed out socket " + this.val$socket, localException);
-      return;
-    }
-    catch (AssertionError localAssertionError)
-    {
-      if (Okio.isAndroidGetsocknameError(localAssertionError))
-      {
-        Okio.logger.log(Level.WARNING, "Failed to close timed out socket " + this.val$socket, localAssertionError);
-        return;
-      }
-      throw localAssertionError;
-    }
+    paramBuffer.skip(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.Okio.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,90 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class aadb
-  implements BusinessObserver
+public class aadb
+  extends BroadcastReceiver
 {
-  aadb(aacw paramaacw, String paramString) {}
+  private aadb(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (QLog.isColorLevel()) {
-      QLog.d(aacw.jdField_a_of_type_JavaLangString, 2, "-->doAuthorize-onReceive, ssoAccount: " + (String)localObject + " | uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
-    }
-    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      return;
-    }
-    paramInt = paramBundle.getInt("code");
-    if (paramBoolean)
+    paramContext = null;
+    String str = paramIntent.getAction();
+    if (QLog.isColorLevel())
     {
-      localObject = new SdkAuthorize.AuthorizeResponse();
-      try
+      if ("[onRecevier] action:" + str + ",data:" + paramIntent.getExtras() != null) {
+        paramContext = paramIntent.getExtras().toString();
+      }
+      QLog.d("GCApi", 2, paramContext);
+    }
+    if (str == null) {}
+    do
+    {
+      do
       {
-        paramBundle = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
-        paramInt = paramBundle.ret.get();
-        localObject = paramBundle.msg.get();
-        if (paramInt != 0)
+        for (;;)
         {
-          aaep.a(this.jdField_a_of_type_Aacw.jdField_a_of_type_Aabi, paramInt, (String)localObject);
           return;
+          if ("action_qgame_messgae_change".equals(str))
+          {
+            paramIntent = paramIntent.getExtras();
+            if (paramIntent == null) {
+              continue;
+            }
+            paramContext = (GameCenterSessionInfo)paramIntent.getParcelable("key_game_msg");
+            i = paramIntent.getInt("key_msg_change_type");
+            if (QLog.isColorLevel()) {
+              QLog.d("GCApi", 0, "[onReceive] type:" + i + ",info:" + paramContext);
+            }
+            paramIntent = new JSONArray();
+            if (paramContext != null) {
+              paramIntent.put(paramContext.a());
+            }
+            try
+            {
+              paramContext = new JSONObject();
+              paramContext.put("session", paramIntent);
+              paramContext.put("eventType", i);
+              paramContext.put("ret", 0);
+              this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_SESSION_INFO, paramContext, null);
+              if (QLog.isColorLevel())
+              {
+                QLog.d("GCApi", 2, "[onReceive] gameCenterMsg: " + paramContext.toString());
+                return;
+              }
+            }
+            catch (Exception paramContext)
+            {
+              return;
+            }
+          }
         }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(aacw.jdField_a_of_type_JavaLangString, 2, "parse do auth result error: \n" + paramBundle.getMessage());
-        }
-        aaep.a(this.jdField_a_of_type_Aacw.jdField_a_of_type_Aabi, -2, "parse do auth result error");
-        return;
-      }
-      localObject = new aacv();
-      ((aacv)localObject).jdField_a_of_type_JavaLangString = paramBundle.openid.get().toUpperCase();
-      ((aacv)localObject).b = paramBundle.access_token.get().toUpperCase();
-      paramBundle = paramBundle.callbackURL.get();
-      if (QLog.isColorLevel()) {}
-      aacw.b(this.jdField_a_of_type_Aacw, paramBundle);
-      this.jdField_a_of_type_Aacw.jdField_a_of_type_Aacs.a((aacv)localObject);
-      aaep.a(this.jdField_a_of_type_Aacw.jdField_a_of_type_Aabi, ((aacv)localObject).a());
+      } while (!"action_qgame_unread_change".equals(str));
+      paramContext = paramIntent.getExtras();
+    } while (paramContext == null);
+    int i = paramContext.getInt("key_msg_unread_cnt");
+    if (QLog.isColorLevel()) {
+      QLog.d("GCApi", 2, "[onReceive] cnt:" + i);
+    }
+    try
+    {
+      paramContext = new JSONObject();
+      paramContext.put("newMsgCount", i);
+      paramContext.put("ret", 0);
+      this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_UNREAD_CNT, paramContext, null);
       return;
     }
-    aaep.a(this.jdField_a_of_type_Aacw.jdField_a_of_type_Aabi, paramInt, "do auth error");
+    catch (Exception paramContext)
+    {
+      QLog.e("GCApi", 1, paramContext, new Object[0]);
+    }
   }
 }
 

@@ -1,26 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.trooponline.widget.RoundTextView;
 
-public final class bcsg
-  implements ValueAnimator.AnimatorUpdateListener
+public class bcsg
 {
-  private final TabDragAnimationView a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public bcsi a;
+  public RoundTextView a;
+  public String a;
+  public StringBuilder a;
   
-  public bcsg(TabDragAnimationView paramTabDragAnimationView)
-  {
-    this.a = paramTabDragAnimationView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f, 0.0F, true);
-  }
+  public bcsg(bcsd parambcsd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcsg
  * JD-Core Version:    0.7.0.1
  */

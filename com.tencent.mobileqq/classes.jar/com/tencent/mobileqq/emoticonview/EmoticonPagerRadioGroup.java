@@ -9,8 +9,8 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import anzg;
-import aocu;
+import apqe;
+import apur;
 import com.tencent.common.config.AppSetting;
 
 public class EmoticonPagerRadioGroup
@@ -43,12 +43,12 @@ public class EmoticonPagerRadioGroup
   {
     float f1 = 13.0F;
     float f2 = 10.0F;
-    anzg localanzg = new anzg(this, getContext());
+    apqe localapqe = new apqe(this, getContext());
     Resources localResources;
     if (paramInt == 2)
     {
-      localanzg.setButtonDrawable(2130846224);
-      localanzg.setGravity(17);
+      localapqe.setButtonDrawable(2130846603);
+      localapqe.setGravity(17);
       localResources = super.getContext().getResources();
       if (paramInt != 2) {
         break label209;
@@ -63,25 +63,25 @@ public class EmoticonPagerRadioGroup
       int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
       localLayoutParams.leftMargin = i;
       localLayoutParams.rightMargin = i;
-      localanzg.setLayoutParams(localLayoutParams);
-      localanzg.setClickable(true);
-      if ((AppSetting.d) && (paramInt != 3) && (paramInt != 2))
+      localapqe.setLayoutParams(localLayoutParams);
+      localapqe.setClickable(true);
+      if ((AppSetting.c) && (paramInt != 3) && (paramInt != 2))
       {
-        localanzg.setClickable(false);
-        localanzg.setFocusable(false);
+        localapqe.setClickable(false);
+        localapqe.setFocusable(false);
       }
-      return localanzg;
+      return localapqe;
       if (paramInt == 3)
       {
-        localanzg.setButtonDrawable(2130846225);
+        localapqe.setButtonDrawable(2130846604);
         break;
       }
       if (paramInt == 4)
       {
-        localanzg.setButtonDrawable(2130838435);
+        localapqe.setButtonDrawable(2130838495);
         break;
       }
-      localanzg.setButtonDrawable(2130839377);
+      localapqe.setButtonDrawable(2130839458);
       break;
       label209:
       if (paramInt == 3) {
@@ -132,7 +132,7 @@ public class EmoticonPagerRadioGroup
     {
       RadioButton localRadioButton = (RadioButton)super.getChildAt(0);
       if (!paramBoolean) {
-        localRadioButton.setButtonDrawable(2130839377);
+        localRadioButton.setButtonDrawable(2130839458);
       }
       localRadioButton = (RadioButton)super.getChildAt(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
       if (localRadioButton != null) {
@@ -155,8 +155,8 @@ public class EmoticonPagerRadioGroup
     if (!this.jdField_a_of_type_Boolean)
     {
       removeAllViews();
-      int k = aocu.h;
-      int m = Math.max(aocu.h, paramInt);
+      int k = apur.h;
+      int m = Math.max(apur.h, paramInt);
       super.addView(this.jdField_b_of_type_AndroidWidgetRadioButton);
       int i = 0;
       while (i < m)
@@ -205,7 +205,7 @@ public class EmoticonPagerRadioGroup
       if (!this.jdField_a_of_type_Boolean) {
         break label372;
       }
-      j = aocu.h;
+      j = apur.h;
       k = this.jdField_a_of_type_Int;
       if (((this.jdField_b_of_type_Int != j) || (paramInt != j - 1)) && (paramInt != 0)) {
         break label232;
@@ -311,7 +311,7 @@ public class EmoticonPagerRadioGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup
  * JD-Core Version:    0.7.0.1
  */

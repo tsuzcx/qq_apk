@@ -1,123 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.io.File;
-import java.util.HashMap;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.widget.TCWNumberPicker;
 
-class bhxl
-  implements ITMAssistantDownloadClientListener
+public class bhxl
+  implements InputFilter
 {
-  bhxl(bhxk parambhxk) {}
+  private bhxl(TCWNumberPicker paramTCWNumberPicker) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    paramTMAssistantDownloadClient = (bhxm)bhxk.a(this.a).get(paramString);
-    if (paramTMAssistantDownloadClient != null) {
-      paramTMAssistantDownloadClient.a(paramString, paramLong1, paramLong2);
-    }
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    int j = 6;
-    String str = "";
-    Object localObject;
-    int i;
-    if (paramInt1 == 4)
+    int i = 0;
+    if (TCWNumberPicker.a(this.a) == null)
     {
-      str = (String)bhxk.b(this.a).get(paramString1);
-      localObject = "";
-      try
-      {
-        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        if (paramTMAssistantDownloadClient != null) {
-          break label153;
-        }
-        paramTMAssistantDownloadClient = null;
-      }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        for (;;)
-        {
-          QLog.e(bhxk.a, 2, paramTMAssistantDownloadClient.toString());
-          paramTMAssistantDownloadClient = (TMAssistantDownloadClient)localObject;
-          continue;
-          QLog.e(bhxk.a, 2, "file renameTo faild frompath:" + paramTMAssistantDownloadClient + " topath:" + str);
-          i = 0;
-        }
-        QLog.e(bhxk.a, 2, "file not exist path:" + paramTMAssistantDownloadClient);
-      }
-      if (!TextUtils.isEmpty(paramTMAssistantDownloadClient))
-      {
-        localObject = new File(paramTMAssistantDownloadClient);
-        if (((File)localObject).exists()) {
-          if (((File)localObject).renameTo(new File(str)))
-          {
-            i = 1;
-            if (i != 0) {
-              break label265;
-            }
-            paramTMAssistantDownloadClient = (bhxm)bhxk.a(this.a).get(paramString1);
-            if (paramTMAssistantDownloadClient != null) {
-              paramTMAssistantDownloadClient.a(paramString1, 6, 0, "", "");
-            }
-            bhxk.a(this.a).remove(paramString1);
-            bhxk.b(this.a).remove(paramString1);
-          }
-        }
-      }
+      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      return paramCharSequence;
     }
-    label153:
-    do
-    {
-      return;
-      paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.mSavePath;
-      break;
-      for (;;)
-      {
-        i = 0;
-        break;
-        QLog.e(bhxk.a, 2, "currentPath is null");
-      }
-      paramTMAssistantDownloadClient = (bhxm)bhxk.a(this.a).get(paramString1);
-    } while (paramTMAssistantDownloadClient == null);
-    label265:
-    switch (paramInt1)
-    {
-    default: 
-      paramInt1 = 0;
-    }
+    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
+    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
+    String[] arrayOfString = TCWNumberPicker.a(this.a);
+    paramInt2 = arrayOfString.length;
+    paramInt1 = i;
     for (;;)
     {
-      paramTMAssistantDownloadClient.a(paramString1, paramInt1, paramInt2, paramString2, str);
-      return;
-      paramInt1 = 2;
-      continue;
-      bhxk.a(this.a).remove(paramString1);
-      bhxk.b(this.a).remove(paramString1);
-      paramInt1 = j;
-      continue;
-      paramInt1 = 3;
-      bhxk.a(this.a).remove(paramString1);
-      bhxk.b(this.a).remove(paramString1);
-      continue;
-      paramInt1 = 4;
-      continue;
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 5;
-      bhxk.a(this.a).remove(paramString1);
-      bhxk.b(this.a).remove(paramString1);
+      if (paramInt1 >= paramInt2) {
+        break label154;
+      }
+      paramCharSequence = str;
+      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
+        break;
+      }
+      paramInt1 += 1;
     }
+    label154:
+    return "";
   }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhxl
  * JD-Core Version:    0.7.0.1
  */

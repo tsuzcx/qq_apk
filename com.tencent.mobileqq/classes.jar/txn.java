@@ -1,35 +1,34 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
 public class txn
-  extends tvz<SingleFeedPlayInfo>
+  extends RecyclerView.ViewHolder
 {
-  public txn(SingleFeedPlayInfo paramSingleFeedPlayInfo)
+  private final QCircleContentOperationView jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
+  public RecyclerViewCompat a;
+  public tws a;
+  
+  public txn(txk paramtxk, View paramView)
   {
-    super(paramSingleFeedPlayInfo);
+    super(paramView);
+    paramtxk = (FrameLayout)paramView;
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat = ((RecyclerViewCompat)paramtxk.getChildAt(0));
+    this.jdField_a_of_type_Tws = ((tws)this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.getAdapter());
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView = ((QCircleContentOperationView)paramtxk.getChildAt(1));
+    this.jdField_a_of_type_Tws.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView);
   }
   
-  public uvp a(String paramString)
+  public tws a()
   {
-    paramString = new uvp(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    return paramString;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, twr paramtwr)
-  {
-    ArrayList localArrayList = new ArrayList();
-    twa localtwa = new twa(((SingleFeedPlayInfo)this.a).mFeedFeedId, new uvp(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localtwa.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    localArrayList.add(localtwa);
-    paramtwr.a(new ErrorMessage(), localArrayList, true);
+    return this.jdField_a_of_type_Tws;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txn
  * JD-Core Version:    0.7.0.1
  */

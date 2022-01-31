@@ -1,16 +1,12 @@
-class atsz
-  implements bfpj
+import android.os.Message;
+
+public abstract interface atsz
 {
-  atsz(atsc paramatsc) {}
-  
-  public void onDismiss()
-  {
-    atsc.a(this.a, this.a.h, false);
-  }
+  public abstract void a(Message paramMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsz
  * JD-Core Version:    0.7.0.1
  */

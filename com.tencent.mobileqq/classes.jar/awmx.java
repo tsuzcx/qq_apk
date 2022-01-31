@@ -1,267 +1,101 @@
-import android.text.TextUtils;
-import android.view.View;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.net.URLEncoder;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awmx
-  extends awoe
+  extends VasWebviewJsPlugin
 {
-  protected int a;
-  protected long a;
-  protected TroopInfo a;
-  public String a;
-  protected long b;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
-  
-  public awmx(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  public awmx()
   {
-    super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_b_of_type_Long = awii.V;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).c(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
-      this.jdField_b_of_type_Long = awii.G;
-    }
+    this.mPluginNameSpace = "profie_edit";
   }
   
-  private void a()
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
   {
-    switch (this.jdField_a_of_type_Int)
+    try
     {
-    default: 
-      this.e = "";
-      this.f = null;
-      return;
-    case 0: 
-      if (!TextUtils.isEmpty(this.c))
-      {
-        this.e = this.c;
-        this.f = this.jdField_b_of_type_JavaLangString;
-        return;
-      }
-      if (!TextUtils.isEmpty(this.d))
-      {
-        this.e = this.d;
-        this.f = this.jdField_b_of_type_JavaLangString;
-        return;
-      }
-      this.e = this.jdField_b_of_type_JavaLangString;
-      this.f = null;
-      return;
-    case 2: 
-      this.e = this.c;
-      if (!TextUtils.isEmpty(this.d))
-      {
-        this.f = this.d;
-        return;
-      }
-      this.f = this.jdField_b_of_type_JavaLangString;
-      return;
+      localObject = URLEncoder.encode(paramString, "UTF-8");
+      paramString = (String)localObject;
     }
-    if (!TextUtils.isEmpty(this.c))
+    catch (Exception localException)
     {
-      this.e = this.c;
-      this.f = this.d;
-      return;
+      for (;;)
+      {
+        try
+        {
+          Object localObject;
+          paramContext.startActivity((Intent)localObject);
+          return;
+        }
+        catch (SecurityException paramQQAppInterface) {}
+        localException = localException;
+        QLog.e("ProfileEditWebViewPlugin", 2, "openNickSetWeb", localException);
+      }
     }
-    this.e = this.d;
-    this.f = this.jdField_b_of_type_JavaLangString;
+    paramString = "https://ti.qq.com/hybrid-h5/qq/nick" + "?curNick=" + paramString;
+    localObject = new Intent(paramContext, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
+    ((Intent)localObject).putExtra("url", paramString);
   }
   
-  protected long a(String paramString)
+  protected void a(String paramString)
   {
-    this.g = paramString;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop())
-    {
-      bool = false;
-      if (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
-        break label188;
-      }
-      l = awii.i;
-      label38:
-      l = awwa.a(paramString, this.c, l, false, false, bool);
-      if (l > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_Int = 2;
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
-        break label195;
-      }
-    }
-    label188:
-    label195:
-    for (long l = awii.h;; l = awii.l)
-    {
-      l = awwa.a(paramString, this.d, l, false, false, bool);
-      if (l > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_Int = 1;
-      }
-      l = awwa.a(paramString, this.jdField_b_of_type_JavaLangString, awii.o, false, true, true);
-      if (l > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_Int = 0;
-      }
-      if (this.jdField_a_of_type_Long != -9223372036854775808L)
-      {
-        this.jdField_a_of_type_Long += this.jdField_b_of_type_Long;
-        a();
-      }
-      return this.jdField_a_of_type_Long;
-      bool = true;
-      break;
-      l = awii.q;
-      break label38;
-    }
-  }
-  
-  public Object a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String a()
-  {
-    return this.g;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    String str2;
-    Object localObject;
-    if (awwa.a(this.jdField_b_of_type_Int))
-    {
-      ahpd.a = true;
-      str2 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).d(this.jdField_a_of_type_JavaLangString);
-      localObject = ((ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.jdField_b_of_type_JavaLangString);
-      if (awiw.a(this.jdField_b_of_type_JavaLangString)) {
-        break label390;
-      }
-      if ((localObject == null) || (!((Friends)localObject).isFriend())) {
-        break label276;
-      }
-      ahpd.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, 0, bbcz.a((Friends)localObject), false);
-      awwa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bbcz.a((Friends)localObject), this.jdField_b_of_type_JavaLangString, "", 0);
-    }
     for (;;)
     {
-      akgb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.g);
-      awwa.a(this.g, 20, 1, paramView);
-      awwa.a(this.g, 20, paramView, false);
-      awwa.a(this, paramView);
-      if (SearchConfigManager.needSeparate) {
-        awwa.a("search", "contact", "contacts", 0, 0, new String[] { awwa.a(this.jdField_b_of_type_Int) });
-      }
-      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
-        awwa.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.g, this.i, (String)a(), e());
-      }
-      if ((paramView.getContext() instanceof UniteSearchActivity))
+      try
       {
-        if ((this.i == null) || (TextUtils.isEmpty(this.i))) {
+        paramString = new JSONObject(paramString).optString("nickname");
+        if (this.mRuntime.a() == null) {
+          return;
+        }
+        if ((this.mRuntime.a() == null) || (this.mRuntime.a() == null)) {
           break;
         }
-        awsq.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
-      }
-      return;
-      label276:
-      ahpd.a(paramView.getContext(), this.jdField_b_of_type_JavaLangString, str2, 1000, a().toString(), false);
-      String str1 = a().toString();
-      localObject = str1;
-      if (TextUtils.isEmpty(str1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(h, 2, "saveSearchHistory title is null");
+        Object localObject1 = QIPCClientHelper.getInstance().getClient();
+        Object localObject2 = new Bundle();
+        ((Bundle)localObject2).putString("nickname", paramString);
+        localObject1 = ((EIPCClient)localObject1).callServer("CommonModule", "set_nickname", (Bundle)localObject2);
+        if (!QLog.isColorLevel()) {
+          break;
         }
-        str1 = c();
-        localObject = str1;
-        if (TextUtils.isEmpty(str1))
+        localObject2 = new StringBuilder().append("setNickName, result=");
+        if (localObject1 != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d(h, 2, "saveSearchHistory titlestr is null");
-          }
-          localObject = d();
+          i = ((EIPCResult)localObject1).code;
+          QLog.d("ProfileEditWebViewPlugin", 2, i + ", nickname = " + paramString);
+          return;
         }
       }
-      awwa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, this.jdField_b_of_type_JavaLangString, str2, 1000);
-      continue;
-      label390:
-      bail.a(paramView.getContext(), null, this.jdField_b_of_type_JavaLangString);
-      awwa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a().toString(), this.jdField_b_of_type_JavaLangString, str2, 1000);
+      catch (JSONException paramString)
+      {
+        return;
+      }
+      int i = -1;
     }
-    awsq.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
   }
   
-  public boolean a()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
+    if (("profie_edit".equals(paramString2)) && ("setnick".equals(paramString3)) && (paramVarArgs.length == 1)) {
+      a(paramVarArgs[0]);
+    }
     return false;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    String str = bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, true);
-    if (str != null) {
-      return ajya.a(2131702532) + str;
-    }
-    return ajya.a(2131702524);
-  }
-  
-  public String c()
-  {
-    return this.e;
-  }
-  
-  public int d()
-  {
-    return 1000;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    return this.f;
-  }
-  
-  public int e()
-  {
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awmx
  * JD-Core Version:    0.7.0.1
  */

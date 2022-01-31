@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ajsd;
-import ajud;
+import aljq;
+import allq;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -11,11 +11,11 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConfigHandler$5
   implements Runnable
 {
-  public ConfigHandler$5(ajud paramajud, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConfigHandler$5(allq paramallq, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
-    File localFile = new File(ajsd.cd);
+    File localFile = new File(aljq.ce);
     try
     {
       if (HttpDownloadUtil.a(this.this$0.app, new URL(this.jdField_a_of_type_JavaLangString), localFile))

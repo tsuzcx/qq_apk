@@ -1,34 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
+import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
 public class rfb
-  extends Handler
+  extends DataSetObserver
 {
-  public rfb(ReadInJoySearchTipsContainer paramReadInJoySearchTipsContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public rfb(VideoFeedsListView paramVideoFeedsListView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onChanged()
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a != null)
+    VideoFeedsListView localVideoFeedsListView = this.a;
+    if (VideoFeedsListView.a(this.a) != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (paramMessage.obj != null) {
-        this.a.a.a((String)paramMessage.obj);
-      }
-    }
-    else {
+      VideoFeedsListView.a(localVideoFeedsListView, bool);
       return;
     }
-    this.a.a.a(null);
+  }
+  
+  public void onInvalidated()
+  {
+    VideoFeedsListView localVideoFeedsListView = this.a;
+    if (VideoFeedsListView.a(this.a) != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      VideoFeedsListView.a(localVideoFeedsListView, bool);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfb
  * JD-Core Version:    0.7.0.1
  */

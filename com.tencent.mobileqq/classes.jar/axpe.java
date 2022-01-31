@@ -1,26 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-public final class axpe
-  implements View.OnClickListener
+public class axpe
 {
-  public axpe(axnx paramaxnx) {}
-  
-  public void onClick(View paramView)
+  public static int a(long paramLong1, long paramLong2)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {
+      return -1;
     }
-    this.a.a(15, 1, 0L);
-    com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.needJump = false;
-    com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.hasClickJumpBtn = true;
+    long l = Math.max(paramLong1, paramLong2);
+    if ((l > 500L) && (l <= 960L)) {
+      return 3;
+    }
+    if ((l > 200L) && (l <= 500L)) {
+      return 2;
+    }
+    if (l <= 200L) {
+      return 1;
+    }
+    if (a(paramLong1, paramLong2)) {
+      return 0;
+    }
+    return 4;
+  }
+  
+  public static boolean a(long paramLong1, long paramLong2)
+  {
+    return (paramLong1 >= 3L * paramLong2) || (paramLong2 >= 3L * paramLong1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axpe
  * JD-Core Version:    0.7.0.1
  */

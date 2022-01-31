@@ -1,144 +1,71 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.data.Friends;
 
 public class abzf
-  extends AccountObserver
+  implements View.OnClickListener
 {
-  public abzf(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public abzf(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onRegisterCommitSmsCodeResp(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp isSuccess=" + paramBoolean + ",code=" + paramInt);
-    }
-    if (this.a.isFinishing()) {}
-    label234:
-    label241:
-    do
+    int j = 0;
+    azmj.b(this.a.app, "CliOper", "", "", "Verification_msg", "Vfc_answ_clk", 0, 0, "", "", "", "");
+    paramView = this.a;
+    int i;
+    if (AddRequestActivity.a(this.a) == 3999)
     {
+      i = 3041;
+      AddRequestActivity.a(paramView, i);
+      Object localObject = (aloz)this.a.app.getManager(51);
+      boolean bool = ((aloz)localObject).b(this.a.a);
+      paramView = aekt.a(new Intent(this.a, SplashActivity.class), null);
+      paramView.putExtra("uin", this.a.a);
+      paramView.putExtra("add_friend_source_id", AddRequestActivity.a(this.a));
+      if (!bool) {
+        break label220;
+      }
+      localObject = ((aloz)localObject).e(this.a.a);
+      if (localObject != null)
+      {
+        paramView.putExtra("cSpecialFlag", ((Friends)localObject).cSpecialFlag);
+        paramView.putExtra("uinname", bdbt.a((Friends)localObject));
+      }
+      label185:
+      if (!bool) {
+        break label251;
+      }
+      i = j;
+    }
+    for (;;)
+    {
+      paramView.putExtra("uintype", i);
+      this.a.startActivity(paramView);
       return;
-      this.a.c();
-      try
-      {
-        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-        QQAppInterface localQQAppInterface = this.a.app;
-        String str2 = Integer.toString(paramInt);
-        if (TextUtils.isEmpty(this.a.c))
-        {
-          str1 = "2";
-          if (paramArrayOfByte != null) {
-            break label234;
-          }
-          localObject = "";
-          axqy.a(localQQAppInterface, "new_reg", "msg_page", "next_clk", "", 1, "", str2, str1, (String)localObject, "", "", "", "", "");
-          if ((paramBoolean) && (paramInt == 0)) {
-            break label241;
-          }
-          paramString1 = paramArrayOfByte;
-          if (TextUtils.isEmpty(paramArrayOfByte)) {
-            paramString1 = this.a.getString(2131717143);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp error=" + paramString1);
-          }
-          this.a.a(paramString1, 1);
-        }
+      i = AddRequestActivity.a(this.a);
+      break;
+      label220:
+      paramView.putExtra("uinname", this.a.b);
+      paramView.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+      break label185;
+      label251:
+      if ((AddRequestActivity.a(this.a) == 2007) || (AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 4007)) {
+        i = 1001;
+      } else if ((AddRequestActivity.a(this.a) == 2019) || (AddRequestActivity.a(this.a) == 3019)) {
+        i = 1010;
+      } else {
+        i = 1022;
       }
-      catch (UnsupportedEncodingException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramArrayOfByte = null;
-          continue;
-          String str1 = "1";
-          continue;
-          Object localObject = paramArrayOfByte;
-        }
-        if (!TextUtils.isEmpty(paramString1)) {
-          RegisterVerifyCodeActivity.a(this.a, paramString1);
-        }
-        if (!TextUtils.isEmpty(paramString2)) {
-          RegisterVerifyCodeActivity.b(this.a, paramString2);
-        }
-        if (!TextUtils.isEmpty(paramString3)) {
-          RegisterVerifyCodeActivity.c(this.a, paramString3);
-        }
-        this.a.a();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "onRegisterCommitSmsCodeResp code=" + paramInt + " ,uin=" + paramString1 + " ,nick=" + paramString2 + " ,faceUrl=" + paramString3);
-  }
-  
-  public void onRegisterSendResendSmsreqResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
-  {
-    Object localObject = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp");
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (!paramBoolean) {
-      try
-      {
-        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-        localObject = paramArrayOfByte;
-        if (TextUtils.isEmpty(paramArrayOfByte)) {
-          localObject = this.a.getString(2131717143);
-        }
-        this.a.a((String)localObject, 1);
-        return;
-      }
-      catch (UnsupportedEncodingException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramArrayOfByte = null;
-        }
-      }
-    }
-    if (paramArrayOfByte != null) {}
-    try
-    {
-      localObject = new String(paramArrayOfByte, "utf-8");
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp code = " + paramInt1 + ";strMsg = " + (String)localObject + ";next_chk_time =" + paramInt2 + ";total_time_over =" + paramInt3);
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        continue;
-        if (paramInt1 == 5)
-        {
-          paramInt1 = paramInt2;
-          if (paramInt2 <= 60) {
-            paramInt1 = 60;
-          }
-          RegisterVerifyCodeActivity.a(this.a, paramInt1);
-        }
-      }
-    }
-    if (paramInt1 == 0)
-    {
-      RegisterVerifyCodeActivity.a(this.a, 60);
-      RegisterVerifyCodeActivity.a(this.a, RegisterVerifyCodeActivity.c(this.a));
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzf
  * JD-Core Version:    0.7.0.1
  */

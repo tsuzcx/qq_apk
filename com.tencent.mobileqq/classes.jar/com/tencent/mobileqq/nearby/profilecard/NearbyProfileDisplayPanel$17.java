@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import atpk;
-import aukp;
-import aukq;
+import avgk;
+import awbw;
+import awbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NearbyProfileDisplayPanel$17
@@ -10,17 +10,17 @@ public class NearbyProfileDisplayPanel$17
 {
   public void run()
   {
-    aukp localaukp = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
-    if (localaukp != null)
+    awbw localawbw = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
+    if (localawbw != null)
     {
-      localaukp.a(atpk.a(this.this$0));
-      localaukp.a();
+      localawbw.a(avgk.a(this.this$0));
+      localawbw.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.17
  * JD-Core Version:    0.7.0.1
  */

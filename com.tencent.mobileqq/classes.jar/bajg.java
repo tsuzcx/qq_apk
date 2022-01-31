@@ -1,19 +1,27 @@
-import android.text.Spanned;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 final class bajg
-  implements Comparator<Object>
+  implements DialogInterface.OnClickListener
 {
-  bajg(Spanned paramSpanned) {}
+  bajg(baji parambaji) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    bajd.a("0X800A5CB");
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeManager", 2, "showThemeDarkModeTips");
+    }
+    bajd.a(false);
+    if (this.a != null) {
+      this.a.onConfirm();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bajg
  * JD-Core Version:    0.7.0.1
  */

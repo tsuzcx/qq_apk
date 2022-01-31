@@ -1,26 +1,37 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
-public final class axoe
-  implements QQPermissionCallback
+public class axoe
 {
-  public axoe(axof paramaxof, Activity paramActivity) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private void a()
   {
-    bbdj.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Axof);
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private void a(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Axof != null) {
-      this.jdField_a_of_type_Axof.a();
+    if (paramViewGroup != null) {
+      paramViewGroup.removeAllViews();
     }
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axoe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,43 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class upq
-  implements Comparator<CommentEntry>
 {
-  public upq(upp paramupp) {}
+  public static upq a;
   
-  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
+  public static upq a()
   {
-    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
-      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
+    if (a == null) {
+      a = new upq();
     }
-    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
-    {
-      return -1;
-      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
-        return 1;
-      }
-      return 0;
-    }
-    return 1;
+    return a;
+  }
+  
+  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
+  {
+    QQStoryContext.a();
+    AppInterface localAppInterface = QQStoryContext.a();
+    NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), mzx.class);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("isResend", false);
+    localNewIntent.setObserver(paramBusinessObserver);
+    localAppInterface.startServlet(localNewIntent);
+  }
+  
+  public void a(ups paramups, upt paramupt)
+  {
+    byte[] arrayOfByte = paramups.a();
+    String str = paramups.a();
+    long l = System.currentTimeMillis();
+    a(paramups.a(), arrayOfByte, new upr(this, l, paramups, str, paramupt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upq
  * JD-Core Version:    0.7.0.1
  */

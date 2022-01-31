@@ -1,25 +1,28 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class xce
+  implements Animation.AnimationListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public xce(DoodleLayout paramDoodleLayout) {}
   
-  public xce(Oidb_0xcd1.EmptyPackagePage paramEmptyPackagePage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = paramEmptyPackagePage.enable.get();
-    this.jdField_a_of_type_JavaLangString = paramEmptyPackagePage.wording.get();
-    this.b = paramEmptyPackagePage.jump_wording.get();
-    this.c = paramEmptyPackagePage.jump_url.get();
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.jdField_a_of_type_Xcf != null) {
+      this.a.jdField_a_of_type_Xcf.a(null);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xce
  * JD-Core Version:    0.7.0.1
  */

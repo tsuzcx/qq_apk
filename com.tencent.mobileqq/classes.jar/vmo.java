@@ -1,39 +1,23 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class vmo
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Animation.AnimationListener
 {
-  private vmo(vmg paramvmg) {}
+  vmo(vml paramvml) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom();
-    if (this.a.c < 0)
-    {
-      this.a.c = i;
-      this.a.jdField_a_of_type_Vmn.a();
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.c - i <= this.a.b);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      this.a.c = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    } while (this.a.jdField_a_of_type_Vmn == null);
-    this.a.jdField_a_of_type_Vmn.a(true, null);
-    this.a.jdField_a_of_type_Vmn.a(this.a.a());
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmo
  * JD-Core Version:    0.7.0.1
  */

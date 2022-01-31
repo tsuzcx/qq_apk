@@ -1,35 +1,48 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFilterList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class uss
-  implements syq<tmq, tmr>
+public class uss
+  extends unk<ust>
 {
-  uss(usr paramusr, JobContext paramJobContext, Integer paramInteger) {}
+  @NonNull
+  public final String a;
+  public final int c;
   
-  public void a(@NonNull tmq paramtmq, @Nullable tmr paramtmr, @NonNull ErrorMessage paramErrorMessage)
+  public uss(@NonNull String paramString)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      ved.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
-      return;
-    }
-    if ((paramErrorMessage.isFail()) || (paramtmr == null))
-    {
-      ved.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-      usr.a(this.jdField_a_of_type_Usr, paramErrorMessage);
-      return;
-    }
-    usr.a(this.jdField_a_of_type_Usr).a(paramtmr.jdField_a_of_type_JavaUtilList, paramtmr.jdField_a_of_type_JavaLangString, paramtmr.jdField_a_of_type_Boolean);
-    ((uvx)tcz.a(11)).a(paramtmr.jdField_a_of_type_JavaUtilList);
-    paramtmq = usr.a(this.jdField_a_of_type_Usr).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    usr.a(this.jdField_a_of_type_Usr, paramtmq);
+    this(paramString, 20);
+  }
+  
+  public uss(@NonNull String paramString, int paramInt)
+  {
+    this.a = paramString;
+    this.c = paramInt;
+  }
+  
+  public String a()
+  {
+    return ume.a("StorySvc.video_filter_list");
+  }
+  
+  public unf a(byte[] paramArrayOfByte)
+  {
+    return new ust(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetFilterList localReqGetFilterList = new qqstory_service.ReqGetFilterList();
+    localReqGetFilterList.count.set(this.c);
+    localReqGetFilterList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqGetFilterList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uss
  * JD-Core Version:    0.7.0.1
  */

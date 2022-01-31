@@ -1,8 +1,5 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.ws.WebSocket;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.WebSocketProxy;
@@ -10,6 +7,9 @@ import com.tencent.qqmini.sdk.core.proxy.WebSocketProxy.WebSocketListener;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
+import okhttp3.MediaType;
+import okhttp3.WebSocket;
+import okio.ByteString;
 
 public class WebSocketProxyImpl
   extends WebSocketProxy
@@ -50,8 +50,8 @@ public class WebSocketProxyImpl
     if ((localWebSocketTask != null) && (localWebSocketTask.mWebSocket != null)) {
       try
       {
-        MediaType localMediaType = MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
-        localWebSocketTask.mWebSocket.sendMessage(RequestBody.create(localMediaType, paramString));
+        MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
+        localWebSocketTask.mWebSocket.send(paramString);
         return true;
       }
       catch (Exception paramString)
@@ -69,8 +69,7 @@ public class WebSocketProxyImpl
     if ((localWebSocketTask != null) && (localWebSocketTask.mWebSocket != null)) {
       try
       {
-        MediaType localMediaType = MediaType.parse("application/vnd.okhttp.websocket+binary");
-        localWebSocketTask.mWebSocket.sendMessage(RequestBody.create(localMediaType, paramArrayOfByte));
+        localWebSocketTask.mWebSocket.send(ByteString.of(paramArrayOfByte));
         return true;
       }
       catch (Exception paramArrayOfByte)
@@ -84,7 +83,7 @@ public class WebSocketProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.WebSocketProxyImpl
  * JD-Core Version:    0.7.0.1
  */

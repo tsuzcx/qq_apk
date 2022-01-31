@@ -1,24 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class msg
-  implements DialogInterface.OnClickListener
+class msg
+  implements View.OnClickListener
 {
-  public msg(PopupDialog paramPopupDialog) {}
+  msg(mse parammse) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (PopupDialog.a.a != null) {
-      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
-    }
-    paramDialogInterface.dismiss();
-    PopupDialog.a();
+    this.a.a(false, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msg
  * JD-Core Version:    0.7.0.1
  */

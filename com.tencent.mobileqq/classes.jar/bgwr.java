@@ -1,14 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.util.ArrayList;
 
-public class bgwr
+class bgwr
 {
-  public ImageView a;
-  public TextView a;
+  private int jdField_a_of_type_Int = 0;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int b = -1;
+  
+  public bgwr(bgwp parambgwp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgwr
  * JD-Core Version:    0.7.0.1
  */

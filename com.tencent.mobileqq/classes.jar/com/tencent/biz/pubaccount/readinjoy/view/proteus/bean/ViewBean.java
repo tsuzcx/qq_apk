@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ViewBean
@@ -15,18 +16,18 @@ public class ViewBean
   public String viewId;
   public String viewType;
   
-  private boolean bindValueWithoutId(JSONObject paramJSONObject)
+  private boolean bindValueWithoutId(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    Iterator localIterator = paramJSONObject.keys();
-    boolean bool1 = false;
+    Object localObject1 = paramJSONObject1.keys();
+    bool1 = false;
     for (;;)
     {
-      if (localIterator.hasNext())
+      if (((Iterator)localObject1).hasNext())
       {
-        String str = (String)localIterator.next();
+        String str = (String)((Iterator)localObject1).next();
         try
         {
-          boolean bool2 = this.valueBean.putTrueDynamicValue(str, paramJSONObject.get(str), false);
+          boolean bool2 = this.valueBean.putTrueDynamicValue(str, paramJSONObject1.get(str), false);
           if (bool2) {
             bool1 = true;
           }
@@ -40,7 +41,23 @@ public class ViewBean
         }
       }
     }
-    return setVisible(bool1);
+    if (paramJSONObject2 != null) {
+      try
+      {
+        paramJSONObject1 = paramJSONObject2.keys();
+        while (paramJSONObject1.hasNext())
+        {
+          localObject1 = (String)paramJSONObject1.next();
+          Object localObject2 = paramJSONObject2.get((String)localObject1);
+          this.valueBean.putTrueDynamicValue((String)localObject1, localObject2, false);
+        }
+        return setVisible(bool1);
+      }
+      catch (JSONException paramJSONObject1)
+      {
+        paramJSONObject1.printStackTrace();
+      }
+    }
   }
   
   private static Map<String, Object> getKeyOriginValue(JSONObject paramJSONObject)
@@ -58,9 +75,9 @@ public class ViewBean
     return localArrayMap;
   }
   
-  public void bindData(JSONObject paramJSONObject, Map<String, ViewBean> paramMap)
+  void bindData(JSONObject paramJSONObject1, JSONObject paramJSONObject2, Map<String, ViewBean> paramMap)
   {
-    Object localObject1 = paramJSONObject.optJSONObject(this.viewId);
+    Object localObject1 = paramJSONObject1.optJSONObject(this.viewId);
     Object localObject2;
     if (localObject1 != null)
     {
@@ -72,7 +89,7 @@ public class ViewBean
         this.valueBean.putTrueDynamicValue((String)((Map.Entry)localObject2).getKey(), ((Map.Entry)localObject2).getValue());
       }
     }
-    bindValueWithoutId(paramJSONObject);
+    bindValueWithoutId(paramJSONObject1, paramJSONObject2);
     boolean bool2;
     int i;
     boolean bool1;
@@ -89,11 +106,11 @@ public class ViewBean
       {
         localViewBean = arrayOfViewBean[i];
         if (localViewBean.valueBean.isVisibleDependeOnChilds()) {
-          break label422;
+          break label423;
         }
       }
     }
-    label422:
+    label423:
     for (String str = localViewBean.valueBean.getVisibleDependeOnBrotherViewId();; str = null)
     {
       localObject2 = localObject1;
@@ -105,7 +122,7 @@ public class ViewBean
         }
         ((Map)localObject2).put(str, localViewBean);
       }
-      localViewBean.bindData(paramJSONObject, paramMap);
+      localViewBean.bindData(paramJSONObject1, paramJSONObject2, paramMap);
       if (localViewBean.valueBean.isVisible()) {
         bool1 = true;
       }
@@ -117,19 +134,19 @@ public class ViewBean
       }
       if (localObject1 != null)
       {
-        paramJSONObject = ((Map)localObject1).entrySet().iterator();
-        while (paramJSONObject.hasNext())
+        paramJSONObject1 = ((Map)localObject1).entrySet().iterator();
+        while (paramJSONObject1.hasNext())
         {
-          localObject1 = (Map.Entry)paramJSONObject.next();
-          localObject2 = findViewById((String)((Map.Entry)localObject1).getKey());
-          if (localObject2 != null)
+          paramJSONObject2 = (Map.Entry)paramJSONObject1.next();
+          localObject1 = findViewById((String)paramJSONObject2.getKey());
+          if (localObject1 != null)
           {
-            bool1 = ((ViewBean)localObject2).valueBean.isVisible();
-            ((ViewBean)((Map.Entry)localObject1).getValue()).setVisible(bool1);
+            bool1 = ((ViewBean)localObject1).valueBean.isVisible();
+            ((ViewBean)paramJSONObject2.getValue()).setVisible(bool1);
             if (bool1) {
-              paramMap.put(((ViewBean)((Map.Entry)localObject1).getValue()).viewId, ((Map.Entry)localObject1).getValue());
+              paramMap.put(((ViewBean)paramJSONObject2.getValue()).viewId, paramJSONObject2.getValue());
             } else {
-              paramMap.remove(((ViewBean)((Map.Entry)localObject1).getValue()).viewId);
+              paramMap.remove(((ViewBean)paramJSONObject2.getValue()).viewId);
             }
           }
         }
@@ -229,7 +246,7 @@ public class ViewBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,20 @@
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adga
+  implements DialogInterface.OnClickListener
 {
-  private int a = -1;
-  private int b = -1;
+  public adga(NotificationActivity paramNotificationActivity) {}
   
-  private void a(QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListViewExposeLogic", 2, "reportListItemMessage : exposeItemIndex -> " + paramInt);
-    }
-    if (paramInt >= 0)
-    {
-      Object localObject = paramListView.getAdapter();
-      if ((localObject != null) && (paramInt < ((ListAdapter)localObject).getCount()))
-      {
-        localObject = ((ListAdapter)localObject).getItem(paramInt);
-        if ((localObject instanceof MessageRecord))
-        {
-          localObject = (MessageRecord)localObject;
-          adfy.a(paramListView.getContext(), paramQQAppInterface, (MessageRecord)localObject, 1);
-        }
-      }
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, ListView paramListView)
-  {
-    int j = paramListView.mFirstPosition;
-    int k = paramListView.getChildCount();
-    if (QLog.isColorLevel()) {
-      QLog.d("ListViewExposeLogic", 2, "reportExposeOnShowFirst : curFirstPosition -> " + j + ", childCount -> " + k);
-    }
-    int i = j;
-    while (i < j + k)
-    {
-      a(paramQQAppInterface, paramListView, i);
-      i += 1;
-    }
-    this.a = paramListView.mFirstPosition;
-    this.b = paramListView.getChildCount();
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, ListView paramListView)
-  {
-    int j = paramListView.mFirstPosition;
-    int k = paramListView.getChildCount();
-    if ((j == this.a) && (this.b == k)) {
-      return;
-    }
-    int i = -1;
-    if (j < this.a) {
-      i = j;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ListViewExposeLogic", 2, "handleListViewScroll : curExposeItemIndex -> " + i + ", curFirstPosition -> " + j + ", childCount -> " + k);
-      }
-      this.a = j;
-      this.b = k;
-      a(paramQQAppInterface, paramListView, i);
-      return;
-      if (j + k > this.a + this.b) {
-        i = j + k - 1;
-      }
-    }
+    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adga
  * JD-Core Version:    0.7.0.1
  */

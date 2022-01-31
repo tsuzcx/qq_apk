@@ -1,138 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.1;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.2;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.3;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.manager.Manager;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class atel
-  implements Manager
+class atel
+  implements ymm
 {
-  public aukp a;
-  public QQAppInterface a;
-  public Object a;
-  public Map<String, RecentInviteUser> a;
-  protected Object b = new Object();
+  atel(atei paramatei) {}
   
-  public atel(QQAppInterface paramQQAppInterface)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    ThreadManager.post(new WerewolvesDataManager.1(this, paramQQAppInterface), 5, null, false);
-  }
-  
-  public List<RecentInviteUser> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    int i = paramBundle.getInt("state", 0);
+    int j = paramBundle.getInt("percentage", 0);
+    long l = paramBundle.getLong("errCode", 0L);
+    try
     {
-      Object localObject3 = this.jdField_a_of_type_JavaUtilMap.values();
-      ??? = ((Collection)localObject3).iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject3 = (RecentInviteUser)((Iterator)???).next();
-        if (((RecentInviteUser)localObject3).uinType == 0) {
-          localArrayList.add(localObject3);
-        }
-      }
-    }
-    synchronized (this.b)
-    {
-      Collections.sort(localList);
-      return localList;
-    }
-  }
-  
-  public void a(RecentInviteUser paramRecentInviteUser)
-  {
-    ThreadManager.post(new WerewolvesDataManager.3(this, paramRecentInviteUser), 5, null, false);
-  }
-  
-  public void a(String arg1, int paramInt, String paramString2)
-  {
-    String str = RecentInviteUser.getKey(paramInt, ???);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      ??? = (RecentInviteUser)this.jdField_a_of_type_JavaUtilMap.get(str);
-      ??? = ???;
-      if (??? == null)
-      {
-        ??? = new RecentInviteUser();
-        ((RecentInviteUser)???).uniKey = str;
-      }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(str, ???);
-        ((RecentInviteUser)???).uin = ???;
-        ((RecentInviteUser)???).uinType = paramInt;
-        ((RecentInviteUser)???).lastInviteId = paramString2;
-      }
-    }
-    synchronized (this.b)
-    {
-      ((RecentInviteUser)???).lastInviteTime = System.currentTimeMillis();
-      a((RecentInviteUser)???);
+      paramBundle = new JSONObject();
+      paramBundle.put("state", i);
+      paramBundle.put("percentage", j);
+      paramBundle.put("errCode", l);
+      this.a.callJs(this.a.g, new String[] { paramBundle.toString() });
       return;
-      ??? = finally;
-      throw ???;
-      ??? = finally;
-      throw ???;
     }
-  }
-  
-  public void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, atem paramatem)
-  {
-    ThreadManager.post(new WerewolvesDataManager.2(this, paramString1, paramString2, paramArrayList, paramatem), 8, null, true);
-  }
-  
-  public boolean a(String paramString1, int paramInt, String paramString2)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    catch (Exception paramBundle)
     {
-      paramString1 = (RecentInviteUser)this.jdField_a_of_type_JavaUtilMap.get(RecentInviteUser.getKey(paramInt, paramString1));
-      if (paramString1 != null)
-      {
-        boolean bool = TextUtils.equals(paramString1.lastInviteId, paramString2);
-        return bool;
+      if (QLog.isColorLevel()) {
+        QLog.w("TroopApiPlugin", 2, "huanjiDownload exp", paramBundle);
       }
-      return false;
+      this.a.callJs(this.a.g, new String[] { "{\"errCode\":-10,\"message\":\"request fail\"}" });
     }
   }
-  
-  public List<RecentInviteUser> b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Object localObject2 = this.jdField_a_of_type_JavaUtilMap.values();
-      ??? = ((Collection)localObject2).iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject2 = (RecentInviteUser)((Iterator)???).next();
-        if (((RecentInviteUser)localObject2).uinType == 1) {
-          localArrayList.add(localObject2);
-        }
-      }
-    }
-    Collections.sort(localList);
-    return localList;
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atel
  * JD-Core Version:    0.7.0.1
  */

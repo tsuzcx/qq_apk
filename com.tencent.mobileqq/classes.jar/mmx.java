@@ -1,35 +1,38 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class mmx
-  implements Animation.AnimationListener
+class mmx
+  implements mkg
 {
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  mmx(mmw parammmw, int paramInt) {}
   
-  public mmx(EffectFilterTextPager paramEffectFilterTextPager, View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    lcg.c("EffectFilterTextPager", "onAnimationEnd :" + localView + "|" + paramAnimation);
-    if (localView != null) {
-      localView.setVisibility(4);
+    if (this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+    {
+      this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131372730, false);
+      this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362956, false);
+      this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362968, false);
+      this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362967, false);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b()
+  {
+    this.jdField_a_of_type_Mmw.a.a().a(this.jdField_a_of_type_Mmw.a.c, 250);
+    this.jdField_a_of_type_Mmw.a.a().b(250);
+    this.jdField_a_of_type_Mmw.a.a().b(this.jdField_a_of_type_Mmw.a.c, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Mmw.a.e = true;
+    QLog.d(this.jdField_a_of_type_Mmw.a.jdField_a_of_type_JavaLangString, 1, "onClose()-> onOutAnimationEnd ->finish  ");
+    this.jdField_a_of_type_Mmw.a.finish();
+    this.jdField_a_of_type_Mmw.a.overridePendingTransition(0, 2130772165);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmx
  * JD-Core Version:    0.7.0.1
  */

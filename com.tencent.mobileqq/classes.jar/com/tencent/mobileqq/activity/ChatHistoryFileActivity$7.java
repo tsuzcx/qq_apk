@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aouu;
-import aptx;
-import apue;
-import ayfg;
+import aqns;
+import armz;
+import arng;
+import badd;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.TencentDocData;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -68,21 +68,21 @@ class ChatHistoryFileActivity$7
     for (;;)
     {
       return;
-      localObject2 = ((ayfg)this.this$0.app.a(122)).a(localJSONException);
+      localObject2 = ((badd)this.this$0.app.a(122)).a(localJSONException);
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryFIleActivity", 1, localJSONException.toString());
       }
       if (((JSONObject)localObject2).getInt("retcode") == 0) {
-        apue.a("0X8009AA0");
+        arng.a("0X8009AA0");
       } else {
-        aptx.a(((JSONObject)localObject2).getString("msg"));
+        armz.a(((JSONObject)localObject2).getString("msg"));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.7
  * JD-Core Version:    0.7.0.1
  */

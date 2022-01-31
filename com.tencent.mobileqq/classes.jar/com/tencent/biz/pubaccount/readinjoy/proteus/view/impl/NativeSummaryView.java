@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import axau;
-import aykk;
-import bbcz;
+import ayvy;
+import baig;
+import bdbt;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -21,31 +21,31 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import okz;
-import omr;
-import onh;
-import pau;
-import pbg;
-import pnj;
-import puy;
-import qcg;
-import qcv;
-import qda;
-import qdc;
-import qdq;
-import qds;
-import ram;
-import rri;
-import rvk;
-import rvl;
-import rvm;
+import opj;
+import orc;
+import ors;
+import pgd;
+import pgr;
+import ptr;
+import qbs;
+import qmc;
+import qmr;
+import qmw;
+import qmy;
+import qnm;
+import qno;
+import rqj;
+import shh;
+import slx;
+import sly;
+import slz;
 
 public class NativeSummaryView
   extends ReadInJoyYAFolderTextView
-  implements IView, rvm<CharSequence>
+  implements IView, slz<CharSequence>
 {
-  puy jdField_a_of_type_Puy = new puy();
-  private rvl<CharSequence> jdField_a_of_type_Rvl;
+  qbs jdField_a_of_type_Qbs = new qbs();
+  private sly<CharSequence> jdField_a_of_type_Sly;
   
   public NativeSummaryView(Context paramContext)
   {
@@ -55,11 +55,11 @@ public class NativeSummaryView
   private void a(ArticleInfo paramArticleInfo)
   {
     if (!paramArticleInfo.isPGCShortContent()) {
-      setSpanText(ajya.a(2131707087));
+      setSpanText(alpo.a(2131707459));
     }
     setMaxLines(a(paramArticleInfo));
-    setMoreSpan(new pnj(this, paramArticleInfo, -3355444));
-    if ((onh.k(paramArticleInfo)) || (onh.l(paramArticleInfo)))
+    setMoreSpan(new ptr(this, paramArticleInfo, -3355444));
+    if ((ors.k(paramArticleInfo)) || (ors.l(paramArticleInfo)))
     {
       setSpanText("");
       setMoreSpan(null);
@@ -68,100 +68,102 @@ public class NativeSummaryView
   
   public static void a(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if ((onh.b(paramArticleInfo)) || (onh.c(paramArticleInfo)))
+    if ((ors.b(paramArticleInfo)) || (ors.c(paramArticleInfo)))
     {
-      onh.a(paramContext, paramArticleInfo, 1, false, 4, false);
-      ram.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
-      onh.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+      ors.a(paramContext, paramArticleInfo, 1, false, 4, false);
+      rqj.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+      ors.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
     }
   }
   
-  private void a(pau parampau)
+  private void a(pgd parampgd)
   {
-    if (parampau.a() == null) {
+    if (parampgd.a() == null) {
       return;
     }
-    this.jdField_a_of_type_Rvl = parampau.a().articleViewModel.b();
-    this.jdField_a_of_type_Rvl.a(this);
-    setText((CharSequence)this.jdField_a_of_type_Rvl.a());
-    a(parampau.a());
+    this.jdField_a_of_type_Sly = parampgd.a().articleViewModel.b();
+    this.jdField_a_of_type_Sly.a(this);
+    setText((CharSequence)this.jdField_a_of_type_Sly.a());
+    a(parampgd.a());
   }
   
-  public static void a(pau parampau, SpannableStringBuilder paramSpannableStringBuilder, pbg parampbg)
+  public static void a(pgd parampgd, SpannableStringBuilder paramSpannableStringBuilder, pgr parampgr)
   {
     long l1 = 0L;
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    Object localObject = parampau.a();
-    localSpannableStringBuilder.append("@");
-    if ((ram.d((ArticleInfo)localObject)) || (ram.b((BaseArticleInfo)localObject)) || (ram.b(parampau.a())))
+    Object localObject = parampgd.a();
+    if (!rqj.a((BaseArticleInfo)localObject)) {
+      localSpannableStringBuilder.append("@");
+    }
+    if ((rqj.d((ArticleInfo)localObject)) || (rqj.c((BaseArticleInfo)localObject)) || (rqj.b(parampgd.a())) || (rqj.a((BaseArticleInfo)localObject)))
     {
-      localObject = parampau.a().mSubscribeName;
-      if ((parampau.a() == 33) && (parampau.a().mSocialFeedInfo != null) && (parampau.a().mSocialFeedInfo.jdField_a_of_type_Qdq != null)) {
-        if (parampau.a().mSocialFeedInfo.jdField_a_of_type_Qdq.b == 0L)
+      localObject = parampgd.a().mSubscribeName;
+      if ((parampgd.a() == 33) && (parampgd.a().mSocialFeedInfo != null) && (parampgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm != null)) {
+        if (parampgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.b == 0L)
         {
-          parampbg = parampau.a().mSocialFeedInfo.jdField_a_of_type_Qdq.jdField_a_of_type_JavaLangString;
+          parampgr = parampgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.jdField_a_of_type_JavaLangString;
           localSpannableStringBuilder.append((CharSequence)localObject);
         }
       }
     }
-    while ((!ram.f((ArticleInfo)localObject)) || (!ram.i((ArticleInfo)localObject))) {
+    while ((!rqj.f((ArticleInfo)localObject)) || (!rqj.i((ArticleInfo)localObject))) {
       for (;;)
       {
         try
         {
-          l1 = Long.valueOf(parampbg).longValue();
-          localSpannableStringBuilder.setSpan(new rri(l1, "2", parampau.a()), 0, localSpannableStringBuilder.length(), 33);
+          l1 = Long.valueOf(parampgr).longValue();
+          localSpannableStringBuilder.setSpan(new shh(l1, "2", parampgd.a()), 0, localSpannableStringBuilder.length(), 33);
           localSpannableStringBuilder.append(": ");
-          paramSpannableStringBuilder.append(new SpannableStringBuilder(new aykk(localSpannableStringBuilder, 7, 16)));
+          paramSpannableStringBuilder.append(new SpannableStringBuilder(new baig(localSpannableStringBuilder, 3, 16)));
           return;
-          parampbg = String.valueOf(parampau.a().mSocialFeedInfo.jdField_a_of_type_Qdq.b);
-          if (onh.a())
+          parampgr = String.valueOf(parampgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.b);
+          if (ors.a())
           {
-            localObject = bbcz.b((QQAppInterface)onh.a(), parampbg, true);
+            localObject = bdbt.b((QQAppInterface)ors.a(), parampgr, true);
             continue;
           }
-          localObject = parampau.a().b(parampau.a().mSocialFeedInfo.jdField_a_of_type_Qdq.b);
+          localObject = parampgd.a().b(parampgd.a().mSocialFeedInfo.jdField_a_of_type_Qnm.b);
         }
-        catch (NumberFormatException parampbg)
+        catch (NumberFormatException parampgr)
         {
-          parampbg.printStackTrace();
+          parampgr.printStackTrace();
           l1 = 0L;
           continue;
         }
-        if (parampau.a().mAccountLess == 0)
+        if (parampgd.a().mAccountLess == 0)
         {
-          parampbg = parampau.a().mSubscribeID;
+          parampgr = parampgd.a().mSubscribeID;
           try
           {
-            long l2 = Long.valueOf(parampbg).longValue();
+            long l2 = Long.valueOf(parampgr).longValue();
             l1 = l2;
           }
-          catch (NumberFormatException parampbg)
+          catch (NumberFormatException parampgr)
           {
             for (;;)
             {
-              parampbg.printStackTrace();
+              parampgr.printStackTrace();
             }
           }
           localSpannableStringBuilder.append((CharSequence)localObject);
-          localSpannableStringBuilder.setSpan(new rri(l1, "2", parampau.a()), 0, localSpannableStringBuilder.length(), 33);
+          localSpannableStringBuilder.setSpan(new shh(l1, "2", parampgd.a()), 0, localSpannableStringBuilder.length(), 33);
           continue;
         }
         localSpannableStringBuilder.append((CharSequence)localObject);
         localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.rgb(96, 96, 96)), 0, localSpannableStringBuilder.length(), 33);
       }
     }
-    l1 = ((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qda.jdField_a_of_type_Long;
-    parampbg = ReadInJoyUserInfoModule.a(l1, parampbg);
-    if (parampbg != null) {}
-    for (parampbg = parampbg.nick;; parampbg = ReadInJoyUserInfoModule.a())
+    l1 = ((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Qmw.jdField_a_of_type_Long;
+    parampgr = ReadInJoyUserInfoModule.a(l1, parampgr);
+    if (parampgr != null) {}
+    for (parampgr = parampgr.nick;; parampgr = ReadInJoyUserInfoModule.a())
     {
-      if (!TextUtils.isEmpty(parampbg))
+      if (!TextUtils.isEmpty(parampgr))
       {
-        localSpannableStringBuilder.append(onh.d(parampbg));
-        localSpannableStringBuilder.setSpan(new rri(l1, "2", parampau.a()), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.append(ors.d(parampgr));
+        localSpannableStringBuilder.setSpan(new shh(l1, "2", parampgd.a()), 0, localSpannableStringBuilder.length(), 33);
       }
-      if (onh.p((ArticleInfo)localObject)) {
+      if (ors.p((ArticleInfo)localObject)) {
         localSpannableStringBuilder.append(" 回答了");
       }
       localSpannableStringBuilder.append(": ");
@@ -169,32 +171,30 @@ public class NativeSummaryView
     }
   }
   
-  public static void b(pau parampau, SpannableStringBuilder paramSpannableStringBuilder, pbg parampbg)
+  public static void b(pgd parampgd, SpannableStringBuilder paramSpannableStringBuilder, pgr parampgr)
   {
     int j = 1;
     int k = 0;
-    ArticleInfo localArticleInfo = parampau.a();
-    if (okz.a(localArticleInfo))
+    ArticleInfo localArticleInfo = parampgd.a();
+    if (opj.a(localArticleInfo))
     {
       paramSpannableStringBuilder.append(localArticleInfo.mSocialFeedInfo.e);
       return;
     }
     int i;
-    switch (parampau.a())
+    switch (parampgd.a())
     {
     default: 
       i = 0;
-      if ((ram.d(localArticleInfo)) || (ram.b(localArticleInfo)) || (ram.b(parampau.a())))
+      if (rqj.a(localArticleInfo))
       {
-        k = ram.c(localArticleInfo);
-        if (parampau.a().isPGCShortContent()) {
-          if ((localArticleInfo != null) && (localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv != null) && (!TextUtils.isEmpty(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaLangString)))
-          {
-            parampau = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaLangString;
-            label194:
-            paramSpannableStringBuilder.append(parampau);
-            i = 7;
-          }
+        parampgd = "";
+        if (!TextUtils.isEmpty(localArticleInfo.mTitle))
+        {
+          parampgd = localArticleInfo.mTitle;
+          label122:
+          paramSpannableStringBuilder.append(parampgd);
+          i = k;
         }
       }
       break;
@@ -207,132 +207,151 @@ public class NativeSummaryView
       break;
       i = 1;
       break;
-      if (!TextUtils.isEmpty(localArticleInfo.mTitle))
-      {
-        parampau = localArticleInfo.mTitle;
-        break label194;
+      if (TextUtils.isEmpty(localArticleInfo.mSummary)) {
+        break label122;
       }
-      parampau = "";
-      break label194;
-      if ((35 == k) || (34 == k))
+      parampgd = localArticleInfo.mSummary;
+      break label122;
+      if ((rqj.d(localArticleInfo)) || (rqj.c(localArticleInfo)) || (rqj.b(parampgd.a())))
       {
-        parampau = new SpannableStringBuilder();
-        if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaLangString != null))
+        k = rqj.c(localArticleInfo);
+        if (parampgd.a().isPGCShortContent())
         {
-          parampau.append(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaLangString);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.readinjoy.ui", 2, "Comment String: " + localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaLangString);
+          i = 7;
+          if ((localArticleInfo != null) && (localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr != null) && (!TextUtils.isEmpty(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr.jdField_a_of_type_JavaLangString))) {
+            parampgd = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr.jdField_a_of_type_JavaLangString;
+          }
+          for (;;)
+          {
+            paramSpannableStringBuilder.append(parampgd);
+            break;
+            if (!TextUtils.isEmpty(localArticleInfo.mTitle)) {
+              parampgd = localArticleInfo.mTitle;
+            } else {
+              parampgd = "";
+            }
           }
         }
-        for (;;)
+        if ((35 == k) || (34 == k))
         {
-          paramSpannableStringBuilder.append(parampau);
-          i = j;
+          parampgd = new SpannableStringBuilder();
+          if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr.jdField_a_of_type_JavaLangString != null))
+          {
+            parampgd.append(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr.jdField_a_of_type_JavaLangString);
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.readinjoy.ui", 2, "Comment String: " + localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmr.jdField_a_of_type_JavaLangString);
+            }
+          }
+          for (;;)
+          {
+            paramSpannableStringBuilder.append(parampgd);
+            i = j;
+            break;
+            if (localArticleInfo.mTitle != null) {
+              parampgd.append(localArticleInfo.mTitle);
+            }
+          }
+        }
+        if (i != 0)
+        {
+          if (!TextUtils.isEmpty(localArticleInfo.mSummary)) {}
+          for (parampgd = localArticleInfo.mSummary;; parampgd = "")
+          {
+            if (!TextUtils.isEmpty(localArticleInfo.mTitle)) {
+              parampgd = localArticleInfo.mTitle;
+            }
+            paramSpannableStringBuilder.append(parampgd);
+            i = 2;
+            break;
+          }
+        }
+        Object localObject = parampgd.a().mSummary;
+        if ((qbs.f(parampgd)) || (qbs.i(parampgd))) {
+          localObject = parampgd.a().mTitle;
+        }
+        parampgr = (pgr)localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          if (parampgd.a() == 33) {
+            parampgr = alpo.a(2131707460);
+          }
+        }
+        else
+        {
+          label618:
+          paramSpannableStringBuilder.append(parampgr);
+          if ((parampgd.a() == 33) && (!rqj.g(localArticleInfo)))
+          {
+            parampgr = (qno)localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qnm.jdField_a_of_type_JavaUtilArrayList.get(0);
+            localObject = paramSpannableStringBuilder.append("“");
+            if (!TextUtils.isEmpty(parampgr.c)) {
+              break label805;
+            }
+            parampgd = "";
+            label684:
+            localObject = ((SpannableStringBuilder)localObject).append(parampgd);
+            if (!TextUtils.isEmpty(parampgr.jdField_a_of_type_JavaLangString)) {
+              break label813;
+            }
+          }
+        }
+        label805:
+        label813:
+        for (parampgd = "";; parampgd = parampgr.jdField_a_of_type_JavaLangString)
+        {
+          ((SpannableStringBuilder)localObject).append(parampgd).append("”");
+          i = 3;
           break;
-          if (localArticleInfo.mTitle != null) {
-            parampau.append(localArticleInfo.mTitle);
+          if ((qbs.e(parampgd)) || (qbs.g(parampgd)) || (qbs.h(parampgd)))
+          {
+            parampgr = alpo.a(2131707458);
+            break label618;
           }
-        }
-      }
-      if (i != 0)
-      {
-        if (!TextUtils.isEmpty(localArticleInfo.mSummary)) {}
-        for (parampau = localArticleInfo.mSummary;; parampau = "")
-        {
-          if (!TextUtils.isEmpty(localArticleInfo.mTitle)) {
-            parampau = localArticleInfo.mTitle;
+          if ((qbs.f(parampgd)) || (qbs.i(parampgd)))
+          {
+            parampgr = alpo.a(2131707456);
+            break label618;
           }
-          paramSpannableStringBuilder.append(parampau);
-          i = 2;
-          break;
-        }
-      }
-      Object localObject = parampau.a().mSummary;
-      if ((puy.f(parampau)) || (puy.i(parampau))) {
-        localObject = parampau.a().mTitle;
-      }
-      parampbg = (pbg)localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        if (parampau.a() == 33) {
-          parampbg = ajya.a(2131707088);
-        }
-      }
-      else
-      {
-        label558:
-        paramSpannableStringBuilder.append(parampbg);
-        if ((parampau.a() == 33) && (!ram.f(localArticleInfo)))
-        {
-          parampbg = (qds)localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qdq.jdField_a_of_type_JavaUtilArrayList.get(0);
-          localObject = paramSpannableStringBuilder.append("“");
-          if (!TextUtils.isEmpty(parampbg.c)) {
-            break label745;
+          if (qbs.a(parampgd))
+          {
+            parampgr = alpo.a(2131707457);
+            break label618;
           }
-          parampau = "";
-          label624:
-          localObject = ((SpannableStringBuilder)localObject).append(parampau);
-          if (!TextUtils.isEmpty(parampbg.jdField_a_of_type_JavaLangString)) {
-            break label753;
-          }
+          parampgr = alpo.a(2131707455);
+          break label618;
+          parampgd = parampgr.c;
+          break label684;
         }
-      }
-      label745:
-      label753:
-      for (parampau = "";; parampau = parampbg.jdField_a_of_type_JavaLangString)
-      {
-        ((SpannableStringBuilder)localObject).append(parampau).append("”");
-        i = 3;
-        break;
-        if ((puy.e(parampau)) || (puy.g(parampau)) || (puy.h(parampau)))
-        {
-          parampbg = ajya.a(2131707086);
-          break label558;
-        }
-        if ((puy.f(parampau)) || (puy.i(parampau)))
-        {
-          parampbg = ajya.a(2131707084);
-          break label558;
-        }
-        if (puy.a(parampau))
-        {
-          parampbg = ajya.a(2131707085);
-          break label558;
-        }
-        parampbg = ajya.a(2131707083);
-        break label558;
-        parampau = parampbg.c;
-        break label624;
       }
       i = k;
-      if (ram.f(localArticleInfo))
+      if (rqj.f(localArticleInfo))
       {
         i = k;
-        if (ram.i(localArticleInfo))
+        if (rqj.i(localArticleInfo))
         {
-          parampau = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.jdField_a_of_type_JavaLangString;
-          if (onh.a(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda))
+          parampgd = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.jdField_a_of_type_JavaLangString;
+          if (ors.a(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw))
           {
-            parampau = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.jdField_a_of_type_Qcg.a(localArticleInfo, "2", parampbg);
-            if (!TextUtils.isEmpty(parampau)) {
-              paramSpannableStringBuilder.append(parampau);
+            parampgd = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.jdField_a_of_type_Qmc.a(localArticleInfo, "2", parampgr);
+            if (!TextUtils.isEmpty(parampgd)) {
+              paramSpannableStringBuilder.append(parampgd);
             }
             i = 4;
           }
-          else if ((puy.c(localArticleInfo)) && (!ram.q(localArticleInfo)))
+          else if ((qbs.c(localArticleInfo)) && (!rqj.q(localArticleInfo)))
           {
-            parampau = ((qdc)localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.b.get(0)).e;
-            if ((!TextUtils.isEmpty(parampau)) && (TextUtils.equals(omr.a(parampau), parampau))) {
-              axau.b(parampau);
+            parampgd = ((qmy)localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qmw.b.get(0)).e;
+            if ((!TextUtils.isEmpty(parampgd)) && (TextUtils.equals(orc.a(parampgd), parampgd))) {
+              ayvy.b(parampgd);
             }
             i = 5;
           }
           else
           {
             i = k;
-            if (!TextUtils.isEmpty(parampau))
+            if (!TextUtils.isEmpty(parampgd))
             {
-              paramSpannableStringBuilder.append(new aykk(axau.b(parampau), 7, 16));
+              paramSpannableStringBuilder.append(new baig(ayvy.b(parampgd), 3, 16));
               i = 6;
             }
           }
@@ -341,10 +360,10 @@ public class NativeSummaryView
     }
   }
   
-  public void a(rvl<CharSequence> paramrvl)
+  public void a(sly<CharSequence> paramsly)
   {
-    paramrvl = (CharSequence)paramrvl.a();
-    ThreadManager.getUIHandler().post(new NativeSummaryView.1(this, paramrvl));
+    paramsly = (CharSequence)paramsly.a();
+    ThreadManager.getUIHandler().post(new NativeSummaryView.1(this, paramsly));
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -380,29 +399,29 @@ public class NativeSummaryView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Rvl != null) {
-      this.jdField_a_of_type_Rvl.b(this);
+    if (this.jdField_a_of_type_Sly != null) {
+      this.jdField_a_of_type_Sly.b(this);
     }
   }
   
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    if (this.jdField_a_of_type_Rvl != null) {
-      this.jdField_a_of_type_Rvl.b(this);
+    if (this.jdField_a_of_type_Sly != null) {
+      this.jdField_a_of_type_Sly.b(this);
     }
   }
   
-  public void setModel(pau parampau)
+  public void setModel(pgd parampgd)
   {
-    this.jdField_a_of_type_Puy.a(parampau);
+    this.jdField_a_of_type_Qbs.a(parampgd);
     setShouldCallClick(false);
-    switch (parampau.a())
+    switch (parampgd.a())
     {
     }
     for (;;)
     {
-      a(parampau);
+      a(parampgd);
       return;
       setShouldCallClick(true);
     }
@@ -410,7 +429,7 @@ public class NativeSummaryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView
  * JD-Core Version:    0.7.0.1
  */

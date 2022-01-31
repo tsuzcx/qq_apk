@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.videoplatform;
 
-import bbwm;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.videoplatform.util.LogUtil;
 import com.tencent.superplayer.api.ISuperPlayer;
 
-public class VideoPlayerProxy$2
+class VideoPlayerProxy$2
   implements Runnable
 {
-  public VideoPlayerProxy$2(bbwm parambbwm) {}
+  VideoPlayerProxy$2(VideoPlayerProxy paramVideoPlayerProxy) {}
   
   public void run()
   {
     try
     {
-      if ((bbwm.a(this.this$0) != null) && (bbwm.a(this.this$0).isPlaying()))
+      if ((VideoPlayerProxy.access$000(this.this$0) != null) && (VideoPlayerProxy.access$000(this.this$0).isPlaying()))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.this$0.a(), 2, "mMediaPlayer.pause()");
+        if (LogUtil.isColorLevel()) {
+          LogUtil.d(this.this$0.getLogTag(), 2, "mMediaPlayer.pause()");
         }
-        bbwm.a(this.this$0).pause();
+        VideoPlayerProxy.access$000(this.this$0).pause();
+        VideoPlayerProxy.access$200(this.this$0);
       }
       return;
     }
@@ -27,7 +27,7 @@ public class VideoPlayerProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlayerProxy.2
  * JD-Core Version:    0.7.0.1
  */

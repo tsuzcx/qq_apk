@@ -1,82 +1,26 @@
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 public class akyk
+  implements DialogInterface.OnClickListener
 {
-  aleb jdField_a_of_type_Aleb = null;
-  private aleq jdField_a_of_type_Aleq;
-  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = null;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public akyk(ApolloGameActivity paramApolloGameActivity) {}
   
-  void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if (this.jdField_a_of_type_Aleb != null)
-      {
-        if (this.jdField_a_of_type_Aleq != null)
-        {
-          this.jdField_a_of_type_Aleb.b(this.jdField_a_of_type_Aleq);
-          this.jdField_a_of_type_Aleq = null;
-        }
-        if (this.jdField_a_of_type_AndroidContentServiceConnection != null)
-        {
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-          this.jdField_a_of_type_AndroidContentServiceConnection = null;
-        }
-        this.jdField_a_of_type_Aleb = null;
-      }
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.w(akyx.a, 1, "DownloadDependRes.clean, Exception", localException);
-    }
-  }
-  
-  void a(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    if (!ArConfigService.e(BaseApplicationImpl.getApplication().getRuntime()))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(akyx.a, 1, "tryDownload, so未准备");
-      }
-      b();
-    }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_Aleb != null) {
-      try
-      {
-        this.jdField_a_of_type_Aleb.c();
-        return;
-      }
-      catch (Exception localException)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(akyx.a, 2, "downloadArSo Exception", localException);
-        return;
-      }
-    }
-    this.jdField_a_of_type_Aleq = new akyl(this);
-    this.jdField_a_of_type_AndroidContentServiceConnection = new akym(this);
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ArConfigService.class);
-    boolean bool = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    QLog.w(akyx.a, 1, "bindServer, ret[" + bool + "]");
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putBoolean("key_open_voice", true);
+    paramDialogInterface.putString("key_game_friUin", ApolloGameActivity.a(this.a).mTempAIOUin);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_aduio_enter_room", paramDialogInterface, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,219 +1,260 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.util.Pair;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
 
 public class ayhv
-  extends BaseAdapter
-  implements View.OnClickListener
+  extends ayjh
 {
-  public static int a;
-  public static int b;
-  Context jdField_a_of_type_AndroidContentContext;
-  protected View.OnClickListener a;
-  final List<GroupPadTemplateInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private Set<String> b;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private DiscussionMemberInfo jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  static
+  public ayhv(QQAppInterface paramQQAppInterface, int paramInt, DiscussionMemberInfo paramDiscussionMemberInfo)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
+    super(paramQQAppInterface, paramInt, 0L);
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo = paramDiscussionMemberInfo;
   }
   
-  public ayhv(Context paramContext, View.OnClickListener paramOnClickListener)
+  private void a()
   {
-    this.jdField_b_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a(AsyncImageView paramAsyncImageView, GroupPadTemplateInfo paramGroupPadTemplateInfo)
-  {
-    if (paramGroupPadTemplateInfo != null)
+    switch (this.jdField_a_of_type_Int)
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839723);
-      if (!bfnx.a(paramGroupPadTemplateInfo.mobThumbUrl)) {
-        paramAsyncImageView.setImageDrawable(localDrawable);
-      }
-      for (;;)
+    default: 
+      this.jdField_a_of_type_JavaLangString = "";
+      return;
+    case 0: 
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark))
       {
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark;
+        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
         return;
-        String str = paramGroupPadTemplateInfo.mobThumbUrl;
-        paramGroupPadTemplateInfo = URLDrawable.URLDrawableOptions.obtain();
-        paramGroupPadTemplateInfo.mLoadingDrawable = localDrawable;
-        paramGroupPadTemplateInfo.mFailedDrawable = localDrawable;
-        Object localObject = null;
-        try
-        {
-          paramGroupPadTemplateInfo = URLDrawable.getDrawable(str, paramGroupPadTemplateInfo);
-          if (paramGroupPadTemplateInfo != null)
-          {
-            if ((paramGroupPadTemplateInfo.getStatus() == 2) && (this.jdField_b_of_type_JavaUtilSet.remove(str))) {
-              paramGroupPadTemplateInfo.restartDownload();
-            }
-            paramGroupPadTemplateInfo.setDownloadListener(new ayhw(this, str));
-            paramAsyncImageView.setImageDrawable(paramGroupPadTemplateInfo);
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("GroupPadTemplateAdapter", 2, "loadThumbImage is ok. url: " + str);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            paramGroupPadTemplateInfo = localObject;
-            if (QLog.isColorLevel())
-            {
-              QLog.e("GroupPadTemplateAdapter", 2, localException, new Object[] { "loadThumbImage failed" });
-              paramGroupPadTemplateInfo = localObject;
-            }
-          }
-          paramAsyncImageView.setImageDrawable(localDrawable);
-          return;
-        }
       }
-    }
-    paramAsyncImageView.setImageResource(2130839723);
-  }
-  
-  public GroupPadTemplateInfo a()
-  {
-    GroupPadTemplateInfo localGroupPadTemplateInfo = new GroupPadTemplateInfo();
-    localGroupPadTemplateInfo.docOrSheetType = 1;
-    localGroupPadTemplateInfo.templateName = this.jdField_a_of_type_AndroidContentContext.getString(2131693213);
-    return localGroupPadTemplateInfo;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(List<GroupPadTemplateInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName))
       {
-        GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)paramList.next();
-        if ((localGroupPadTemplateInfo != null) && (localGroupPadTemplateInfo.templateID >= 0)) {
-          this.jdField_a_of_type_JavaUtilList.add(localGroupPadTemplateInfo);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName;
+        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
+        return;
+      }
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
+      this.jdField_b_of_type_JavaLangString = null;
+      return;
+    case 2: 
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName))
+      {
+        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName;
+        return;
+      }
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
+      return;
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark))
+    {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark;
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName;
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName;
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
+  }
+  
+  protected long a(String paramString)
+  {
+    DiscussionInfo localDiscussionInfo = ((almv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.discussionUin);
+    if ((localDiscussionInfo == null) || (localDiscussionInfo.isDiscussHrMeeting()) || (localDiscussionInfo.isHidden()))
+    {
+      this.jdField_a_of_type_Long = -9223372036854775808L;
+      return this.jdField_a_of_type_Long;
+    }
+    this.c = paramString;
+    this.jdField_a_of_type_Long = -9223372036854775808L;
+    long l = ayrd.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark, aydi.k);
+    if (l > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Int = 2;
+    }
+    l = ayrd.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName, aydi.l);
+    if (l > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Int = 1;
+    }
+    l = ayrd.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, aydi.o, false);
+    if (l > this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Int = 0;
+    }
+    if (this.jdField_a_of_type_Long != -9223372036854775808L)
+    {
+      this.jdField_a_of_type_Long += aydi.H;
+      a();
+    }
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public Pair<CharSequence, CharSequence> a()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return null;
+    case 0: 
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark)) {
+        return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark, ayrd.c(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, this.c, 6, false));
+      }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName)) {
+        return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName, ayrd.c(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, this.c, 6, false));
+      }
+      return new Pair(ayrd.b(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, this.c, 6, false), null);
+    case 2: 
+      return new Pair(ayrd.b(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark, this.c, 6, true), null);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark)) {
+      return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark, ayrd.c(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName, this.c, 6, true));
+    }
+    return new Pair(ayrd.b(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName, this.c, 6, true), null);
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
+  }
+  
+  public String a()
+  {
+    return this.c;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    if (ayrd.a(this.jdField_b_of_type_Int))
+    {
+      ajgm.a = true;
+      ajgm.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.discussionUin, 1004, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName, false);
+      ayrd.a(this.c, 20, 1, paramView);
+      alxr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
+      ayrd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a().toString(), this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.discussionUin, 1004);
+      ayrd.a(this.c, 20, paramView, false);
+      ayrd.a(this, paramView);
+      if (SearchConfigManager.needSeparate) {
+        ayrd.a("search", "contact", "contacts", 0, 0, new String[] { ayrd.a(this.jdField_b_of_type_Int) });
+      }
+      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
+        ayrd.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.i, (String)a(), e());
+      }
+      if ((paramView.getContext() instanceof UniteSearchActivity))
+      {
+        if ((this.i != null) && (!TextUtils.isEmpty(this.i))) {
+          aynt.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
         }
       }
-      paramList = a();
-      this.jdField_a_of_type_JavaUtilList.add(paramList);
+      else {
+        return;
+      }
+      aynt.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
+      return;
     }
-    notifyDataSetChanged();
+    ayrd.a(paramView, this);
   }
   
-  public int getCount()
+  public boolean a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return false;
   }
   
-  public Object getItem(int paramInt)
+  public String b()
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence c()
+  {
+    if (ayrd.a(this.jdField_b_of_type_Int)) {
+      return alpo.a(2131702942);
     }
+    return alpo.a(2131702903);
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int d()
+  {
+    return 1004;
+  }
+  
+  public CharSequence d()
+  {
     return null;
   }
   
-  public long getItemId(int paramInt)
+  public String d()
   {
-    GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)getItem(paramInt);
-    if (localGroupPadTemplateInfo != null) {
-      return localGroupPadTemplateInfo.templateID;
-    }
-    return 0L;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public int e()
   {
-    GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)getItem(paramInt);
-    if (getCount() == paramInt + 1)
+    return 1;
+  }
+  
+  public CharSequence e()
+  {
+    Object localObject = a();
+    CharSequence localCharSequence = b();
+    switch (this.jdField_a_of_type_Int)
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559125, null);
-      paramView = new ayhx(this);
-      paramView.jdField_a_of_type_Int = jdField_b_of_type_Int;
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131367222));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131367218));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131367216));
-      paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
-      paramViewGroup.setTag(paramView);
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      if (paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo == null) {
-        break label287;
-      }
-      if (paramView.jdField_a_of_type_Int != jdField_a_of_type_Int) {
-        break label264;
-      }
-      a(paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localGroupPadTemplateInfo);
-      label135:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupPadTemplateInfo.templateName);
     }
-    for (;;)
+    do
     {
-      if (AppSetting.d)
+      localObject = super.e();
+      SpannableStringBuilder localSpannableStringBuilder;
+      do
       {
-        if (localGroupPadTemplateInfo == null) {
-          break label309;
+        return localObject;
+        localSpannableStringBuilder = new SpannableStringBuilder();
+        if (localObject != null) {
+          localSpannableStringBuilder.append((CharSequence)localObject);
         }
-        paramViewGroup.setContentDescription(localGroupPadTemplateInfo.templateName);
+        localObject = localSpannableStringBuilder;
+      } while (localCharSequence == null);
+      localSpannableStringBuilder.append(localCharSequence);
+      return localSpannableStringBuilder;
+      return localObject;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark)) {
+        return localObject;
       }
-      return paramViewGroup;
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559124, null);
-      paramView = new ayhx(this);
-      paramView.jdField_a_of_type_Int = jdField_a_of_type_Int;
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131367221));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131367220));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131367215));
-      paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
-      paramViewGroup.setTag(paramView);
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      break;
-      label264:
-      if (paramView.jdField_a_of_type_Int != jdField_b_of_type_Int) {
-        break label135;
-      }
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130839725);
-      break label135;
-      label287:
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130839723);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    }
-    label309:
-    paramViewGroup.setContentDescription("");
-    return paramViewGroup;
+    } while ((localCharSequence == null) || (localCharSequence.length() <= 2));
+    return localCharSequence.subSequence(1, localCharSequence.length() - 1);
   }
   
-  public void onClick(View paramView) {}
+  public String e()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.discussionUin;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayhv
  * JD-Core Version:    0.7.0.1
  */

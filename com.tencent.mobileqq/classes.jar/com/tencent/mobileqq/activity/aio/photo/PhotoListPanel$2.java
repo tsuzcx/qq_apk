@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aigw;
+import ajyg;
 
 class PhotoListPanel$2
   implements Runnable
 {
-  PhotoListPanel$2(PhotoListPanel paramPhotoListPanel, aigw paramaigw) {}
+  PhotoListPanel$2(PhotoListPanel paramPhotoListPanel, ajyg paramajyg) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class PhotoListPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.2
  * JD-Core Version:    0.7.0.1
  */

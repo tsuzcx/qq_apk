@@ -1,8 +1,13 @@
-import android.view.animation.Transformation;
+import java.util.List;
 
-public abstract interface bble<T>
+public class bble
 {
-  public abstract void a(bbky<T> parambbky, float paramFloat, T paramT, Transformation paramTransformation);
+  public int a;
+  public List<Integer> a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

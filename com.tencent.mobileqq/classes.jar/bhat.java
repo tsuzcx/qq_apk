@@ -1,21 +1,27 @@
-import com.tencent.component.network.downloader.DownloadRequest;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import io.flutter.view.FlutterNativeView;
 
-class bhat
+public class bhat
+  extends bhar
 {
-  DownloadRequest jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest;
-  Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  Downloader.DownloadListener jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
+  private FlutterNativeView a;
   
-  bhat(bhar parambhar) {}
+  public void a(bhdj parambhdj)
+  {
+    super.a(parambhdj);
+    parambhdj = new bhch(this, this.jdField_a_of_type_Bhas);
+    parambhdj.a(null);
+    this.jdField_a_of_type_Bhbo = parambhdj;
+    parambhdj.a(this.jdField_a_of_type_IoFlutterViewFlutterNativeView);
+  }
+  
+  public void a(FlutterNativeView paramFlutterNativeView)
+  {
+    this.jdField_a_of_type_IoFlutterViewFlutterNativeView = paramFlutterNativeView;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhat
  * JD-Core Version:    0.7.0.1
  */

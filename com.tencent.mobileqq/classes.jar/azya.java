@@ -1,20 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-public class azya
-  implements View.OnClickListener
+public final class azya
+  implements azyd
 {
-  public azya(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, bfpc parambfpc) {}
+  private final File a;
   
-  public void onClick(View paramView)
+  public azya(String paramString)
   {
-    this.jdField_a_of_type_Bfpc.dismiss();
+    this.a = new File(String.format("/data/local/tmp/%sPluginManager.apk", new Object[] { paramString }));
+  }
+  
+  public boolean a()
+  {
+    return this.a.exists();
+  }
+  
+  public File getLatest()
+  {
+    if (this.a.exists()) {
+      return this.a;
+    }
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return alza.a(16).submit(new azyc(this, paramFile));
+  }
+  
+  public Future<File> update()
+  {
+    return alza.a(16).submit(new azyb(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azya
  * JD-Core Version:    0.7.0.1
  */

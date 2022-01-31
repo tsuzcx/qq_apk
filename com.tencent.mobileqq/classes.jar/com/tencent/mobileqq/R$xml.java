@@ -14,10 +14,11 @@ public final class R$xml
   public static final int qq_contactsync_contacts = 2131886089;
   public static final int qq_contactsync_syncadapter = 2131886090;
   public static final int qq_safe_jump_whitelist = 2131886091;
+  public static final int qqvip_wallpaper = 2131886092;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.R.xml
  * JD-Core Version:    0.7.0.1
  */

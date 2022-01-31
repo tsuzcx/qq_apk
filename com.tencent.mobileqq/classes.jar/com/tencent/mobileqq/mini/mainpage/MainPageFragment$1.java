@@ -1,19 +1,11 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import ajya;
-import android.content.Context;
-import android.os.Process;
+import alpo;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.Toast;
-import bbdx;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.app.AppLoaderFactory;
-import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.mini.cache.MiniCacheFreeManager;
 
 class MainPageFragment$1
   implements View.OnLongClickListener
@@ -22,28 +14,15 @@ class MainPageFragment$1
   
   public boolean onLongClick(View paramView)
   {
-    String str = AppLoaderFactory.PATH_WXAPKG_ROOT + MainPageFragment.access$000(this.this$0).appId + "_debug";
-    if (new File(str).exists()) {
-      bbdx.a(str, false);
-    }
-    str = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(MainPageFragment.access$000(this.this$0).appId);
-    if (new File(str).exists()) {
-      bbdx.a(str, false);
-    }
-    str = paramView.getContext().getCacheDir() + File.separator + "mini" + File.separator + MainPageFragment.getUin() + File.separator + MainPageFragment.access$000(this.this$0).appId;
-    if (new File(str).exists()) {
-      bbdx.a(str, false);
-    }
+    MiniCacheFreeManager.freeCache(MainPageFragment.getUin(), MainPageFragment.access$000(this.this$0));
     this.this$0.getActivity().finish();
-    Process.killProcess(Process.myPid());
-    QLog.e("debug", 1, "clear miniapp");
-    Toast.makeText(paramView.getContext(), ajya.a(2131706433), 1).show();
+    Toast.makeText(paramView.getContext(), alpo.a(2131706805), 1).show();
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MainPageFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,272 +1,190 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.channels.FileChannel;
-import java.util.Map;
-import mqq.app.AccountNotMatchException;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class sfa
-  extends ayrp
 {
-  private BaseApplicationImpl a;
+  protected static final Comparator<byte[]> a;
+  private int jdField_a_of_type_Int;
+  private List<byte[]> jdField_a_of_type_JavaUtilList = new ArrayList(64);
+  private final int b;
   
-  public sfa(BaseApplicationImpl paramBaseApplicationImpl)
+  static
   {
-    this.a = paramBaseApplicationImpl;
+    jdField_a_of_type_JavaUtilComparator = new sfb();
   }
   
-  public static URL a(String paramString, int paramInt)
+  public sfa(int paramInt)
   {
-    return a(paramString, paramInt, null);
+    this.b = paramInt;
   }
   
-  public static URL a(String paramString, int paramInt, Object paramObject)
+  private void b()
   {
-    String str;
-    for (;;)
+    try
     {
-      try
+      if (this.jdField_a_of_type_Int > this.b)
       {
-        if ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
-          return new URL(paramString);
-        }
-        paramObject = bfnx.a(paramString);
-        if (!paramObject.containsKey("busiType")) {
-          continue;
-        }
-        paramString = paramString.replace("busiType=" + (String)paramObject.get("busiType"), "busiType=" + paramInt);
-        paramString = new URL("pubaccountimage", null, paramString);
-        str = paramString;
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            return str;
-          }
-          QLog.d("PubAccountHttpDownloader", 2, "<--generateURL urlString =" + paramString.toString());
-          return paramString;
-        }
-        catch (MalformedURLException paramObject) {}
+        byte[] arrayOfByte = (byte[])this.jdField_a_of_type_JavaUtilList.get(0);
+        this.jdField_a_of_type_JavaUtilList.remove(arrayOfByte);
+        this.jdField_a_of_type_Int -= arrayOfByte.length;
       }
-      catch (MalformedURLException paramObject)
-      {
-        paramString = null;
-        continue;
-      }
-      str = paramString;
-      if (!QLog.isColorLevel()) {
-        return str;
-      }
-      QLog.e("PubAccountHttpDownloader", 2, "<--generateURL urlString", paramObject);
-      return paramString;
-      paramString = bfnx.a(paramString, "busiType", paramInt + "");
+      return;
     }
-    return str;
+    finally {}
   }
   
-  private void a(String paramString, long paramLong)
+  public void a()
   {
-    if (bbfj.b(BaseApplication.getContext()) == 1) {}
-    for (String[] arrayOfString = { "param_WIFIPublicPlatDownloadFlow", "param_WIFIFlow", "param_Flow" };; arrayOfString = new String[] { "param_XGPublicPlatDownloadFlow", "param_XGFlow", "param_Flow" }) {
-      try
-      {
-        ((QQAppInterface)this.a.getAppRuntime(paramString)).sendAppDataIncerment(paramString, arrayOfString, paramLong);
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountHttpDownloader", 2, "param_PublicPlatDownloadFlow fileSize: " + paramLong);
-        }
-        return;
-      }
-      catch (AccountNotMatchException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    String str = paramDownloadParams.urlStr;
-    if (str.startsWith("pubaccountimage")) {
-      str = paramDownloadParams.url.getFile();
-    }
-    label514:
-    for (;;)
+    try
     {
-      Object localObject1 = bfnx.a(str);
-      if (((Map)localObject1).get("busiType") != null) {}
-      int i;
-      sfc localsfc;
-      int j;
-      for (;;)
-      {
-        try
-        {
-          i = Integer.parseInt((String)((Map)localObject1).get("busiType"));
-          paramDownloadParams.url = new URL(str);
-          paramDownloadParams.urlStr = str;
-          localsfc = new sfc(this.a, i);
-          localsfc.a(paramDownloadParams, (Map)localObject1);
-          localObject1 = null;
-          if (paramDownloadParams.headers == null) {
-            break label554;
-          }
-          Header[] arrayOfHeader = paramDownloadParams.headers;
-          j = arrayOfHeader.length;
-          i = 0;
-          if (i >= j) {
-            break;
-          }
-          localObject3 = arrayOfHeader[i];
-          if ("my_uin".equals(((Header)localObject3).getName())) {
-            localObject1 = ((Header)localObject3).getValue();
-          }
-          i += 1;
-          continue;
-          i = -1;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("PubAccountHttpDownloader", 2, "urlString: " + str + "  busiType:" + (String)((Map)localObject1).get("busiType"), localNumberFormatException);
-        }
-      }
-      label414:
-      label551:
-      label554:
-      for (Object localObject3 = localObject1;; localObject3 = null)
-      {
-        sfb localsfb = new sfb(this, paramOutputStream);
-        localObject1 = null;
-        j = 0;
-        int k = 3;
-        i = k - 1;
-        if (k > 0) {
-          j += 1;
-        }
-        for (;;)
-        {
-          Object localObject2;
-          try
-          {
-            localsfc.a();
-            File localFile = super.a(localsfb, paramDownloadParams, localsfc.a(paramURLDrawableHandler));
-            if (localFile != null) {
-              break label551;
-            }
-            i = -1;
-            if ((i == -1) || (i == 0))
-            {
-              localsfc.a(j, paramDownloadParams);
-              localObject1 = localFile;
-              k = i;
-              break;
-            }
-            try
-            {
-              Thread.sleep(5L);
-              localObject1 = localFile;
-            }
-            catch (InterruptedException localInterruptedException1)
-            {
-              localInterruptedException1.printStackTrace();
-              localObject2 = localFile;
-            }
-            continue;
-            label371:
-            if (i != 0) {
-              break label514;
-            }
-          }
-          catch (IOException localIOException)
-          {
-            if (!localIOException.getMessage().contains(" response error! response code: ")) {
-              break label414;
-            }
-            if ((i != 0) && (!"None".equals(sfc.a(localsfc)))) {
-              break label428;
-            }
-            throw localIOException;
-          }
-          finally
-          {
-            if (i == -1) {}
-          }
-          localsfc.a(j, paramDownloadParams);
-          for (;;)
-          {
-            for (;;)
-            {
-              throw paramOutputStream;
-              localsfc.a(-1, localIOException.getMessage());
-              break label371;
-              try
-              {
-                label428:
-                ((FileOutputStream)paramOutputStream).getChannel().truncate(0L);
-                if ((i == -1) || (i == 0)) {
-                  localsfc.a(j, paramDownloadParams);
-                }
-              }
-              catch (Exception localException)
-              {
-                for (;;)
-                {
-                  QLog.e("PubAccountHttpDownloader", 2, "urlString: " + str, localException);
-                  continue;
-                  try
-                  {
-                    Thread.sleep(5L);
-                  }
-                  catch (InterruptedException localInterruptedException2)
-                  {
-                    localInterruptedException2.printStackTrace();
-                  }
-                }
-              }
-            }
-            break;
-            try
-            {
-              Thread.sleep(5L);
-            }
-            catch (InterruptedException paramDownloadParams)
-            {
-              paramDownloadParams.printStackTrace();
-            }
-          }
-          if (localObject3 != null) {
-            a((String)localObject3, localsfb.a);
-          }
-          return localObject2;
-        }
-      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void a(HttpResponse paramHttpResponse, String paramString, URLDrawableHandler paramURLDrawableHandler)
+  /* Error */
+  public void a(byte[] paramArrayOfByte)
   {
-    if ((paramURLDrawableHandler instanceof sfd))
-    {
-      paramURLDrawableHandler = ((sfd)paramURLDrawableHandler).a();
-      if (paramURLDrawableHandler != null) {
-        paramURLDrawableHandler.a(paramHttpResponse, paramString);
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +16 -> 19
+    //   6: aload_1
+    //   7: arraylength
+    //   8: istore_2
+    //   9: aload_0
+    //   10: getfield 31	sfa:b	I
+    //   13: istore_3
+    //   14: iload_2
+    //   15: iload_3
+    //   16: if_icmple +6 -> 22
+    //   19: aload_0
+    //   20: monitorexit
+    //   21: return
+    //   22: aload_0
+    //   23: getfield 29	sfa:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   26: aload_1
+    //   27: getstatic 20	sfa:jdField_a_of_type_JavaUtilComparator	Ljava/util/Comparator;
+    //   30: invokestatic 55	java/util/Collections:binarySearch	(Ljava/util/List;Ljava/lang/Object;Ljava/util/Comparator;)I
+    //   33: istore_3
+    //   34: iload_3
+    //   35: istore_2
+    //   36: iload_3
+    //   37: ifge +8 -> 45
+    //   40: iload_3
+    //   41: ineg
+    //   42: iconst_1
+    //   43: isub
+    //   44: istore_2
+    //   45: aload_0
+    //   46: getfield 29	sfa:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   49: iload_2
+    //   50: aload_1
+    //   51: invokeinterface 59 3 0
+    //   56: aload_0
+    //   57: aload_0
+    //   58: getfield 33	sfa:jdField_a_of_type_Int	I
+    //   61: aload_1
+    //   62: arraylength
+    //   63: iadd
+    //   64: putfield 33	sfa:jdField_a_of_type_Int	I
+    //   67: aload_0
+    //   68: invokespecial 61	sfa:b	()V
+    //   71: goto -52 -> 19
+    //   74: astore_1
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: aload_1
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	sfa
+    //   0	79	1	paramArrayOfByte	byte[]
+    //   8	42	2	i	int
+    //   13	28	3	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   6	14	74	finally
+    //   22	34	74	finally
+    //   45	71	74	finally
+  }
+  
+  /* Error */
+  public byte[] a(int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: iconst_0
+    //   3: istore_2
+    //   4: iload_2
+    //   5: aload_0
+    //   6: getfield 29	sfa:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   9: invokeinterface 66 1 0
+    //   14: if_icmpge +56 -> 70
+    //   17: aload_0
+    //   18: getfield 29	sfa:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   21: iload_2
+    //   22: invokeinterface 39 2 0
+    //   27: checkcast 41	[B
+    //   30: astore_3
+    //   31: aload_3
+    //   32: arraylength
+    //   33: iload_1
+    //   34: if_icmplt +29 -> 63
+    //   37: aload_0
+    //   38: aload_0
+    //   39: getfield 33	sfa:jdField_a_of_type_Int	I
+    //   42: aload_3
+    //   43: arraylength
+    //   44: isub
+    //   45: putfield 33	sfa:jdField_a_of_type_Int	I
+    //   48: aload_0
+    //   49: getfield 29	sfa:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   52: iload_2
+    //   53: invokeinterface 68 2 0
+    //   58: pop
+    //   59: aload_0
+    //   60: monitorexit
+    //   61: aload_3
+    //   62: areturn
+    //   63: iload_2
+    //   64: iconst_1
+    //   65: iadd
+    //   66: istore_2
+    //   67: goto -63 -> 4
+    //   70: iload_1
+    //   71: newarray byte
+    //   73: astore_3
+    //   74: goto -15 -> 59
+    //   77: astore_3
+    //   78: aload_0
+    //   79: monitorexit
+    //   80: aload_3
+    //   81: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	this	sfa
+    //   0	82	1	paramInt	int
+    //   3	64	2	i	int
+    //   30	44	3	arrayOfByte	byte[]
+    //   77	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   4	59	77	finally
+    //   70	74	77	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfa
  * JD-Core Version:    0.7.0.1
  */

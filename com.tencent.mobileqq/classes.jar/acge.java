@@ -1,37 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import java.util.Map;
 
-public class acge
-  implements View.OnClickListener
+public final class acge
+  implements DialogInterface.OnClickListener
 {
-  public acge(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public acge(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean, Map paramMap) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      axqy.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_confirm", 0, 0, "", "", "", "");
-      this.a.jdField_a_of_type_Bbjl = ((bbjl)this.a.app.getManager(31));
-      this.a.b.setCompoundDrawablesWithIntrinsicBounds(2130839140, 0, 0, 0);
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        paramView = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
-        this.a.a(paramView, 4);
-        i += 1;
-      }
+    ChatActivityUtils.a(-1034L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaUtilMap);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acge
  * JD-Core Version:    0.7.0.1
  */

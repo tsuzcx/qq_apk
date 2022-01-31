@@ -1,38 +1,25 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.widget.ImageView;
+import android.graphics.drawable.Drawable;
 
-class avpd
-  extends RecyclerView.OnScrollListener
+public class avpd
 {
-  avpd(avpc paramavpc) {}
+  public int a;
+  public Drawable a;
+  public avpl a;
+  public String a;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public avpd(String paramString, avpl paramavpl)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    avpc.a(this.a, paramInt);
-    if (avpc.a(this.a) == 0)
-    {
-      if (avpc.a(this.a).a()) {
-        avpc.a(this.a).b();
-      }
-      int i = avpc.a(this.a).getChildCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramRecyclerView = avpc.a(this.a).getChildAt(paramInt);
-        paramRecyclerView = (avpf)avpc.a(this.a).getChildViewHolder(paramRecyclerView);
-        avpf.a(paramRecyclerView).setImageBitmap(avpc.a(this.a, avpf.a(paramRecyclerView)));
-        paramInt += 1;
-      }
-    }
-    avpc.a(this.a).a();
-    avpc.a(this.a).c();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Avpl = paramavpl;
+    a();
   }
+  
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avpd
  * JD-Core Version:    0.7.0.1
  */

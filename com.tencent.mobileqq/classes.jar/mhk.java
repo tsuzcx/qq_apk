@@ -1,55 +1,39 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiMembersAudioUI;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class mhk
-  implements Animation.AnimationListener
+public class mhk
+  implements View.OnClickListener
 {
-  mhk(mhj parammhj) {}
+  public mhk(MultiMembersAudioUI paramMultiMembersAudioUI) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationEnd");
-    }
-    try
+    if (this.a.jdField_a_of_type_Muo == null) {}
+    do
     {
-      if (this.a.a != null) {
-        this.a.a.b();
+      return;
+      paramView = (mhp)paramView.getTag();
+      if (paramView != null) {
+        break;
       }
+    } while (!QLog.isColorLevel());
+    QLog.e("MultiMembersAudioUI", 2, "onItemClick-->holder is null");
+    return;
+    if (paramView.c) {}
+    for (int i = 7; (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)); i = this.a.a(paramView.jdField_a_of_type_Long))
+    {
+      this.a.jdField_a_of_type_Muo.a(paramView.jdField_a_of_type_Long, paramView.jdField_a_of_type_Int, i, true);
       return;
     }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationEnd Exception :" + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationStart");
-    }
-    try
-    {
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationStart Exception :" + paramAnimation);
-    }
+    this.a.jdField_a_of_type_Muo.a(paramView.jdField_a_of_type_Long, paramView.jdField_a_of_type_Int, i, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhk
  * JD-Core Version:    0.7.0.1
  */

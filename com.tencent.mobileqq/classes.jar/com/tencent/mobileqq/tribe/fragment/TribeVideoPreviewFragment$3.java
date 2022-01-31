@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import ajya;
-import bcql;
+import alpo;
+import com.tencent.mobileqq.widget.QQToast;
 
 class TribeVideoPreviewFragment$3
   implements Runnable
@@ -12,15 +12,15 @@ class TribeVideoPreviewFragment$3
   {
     if (this.a)
     {
-      bcql.a(this.this$0.getActivity(), 2, ajya.a(2131715107), 0).a();
+      QQToast.a(this.this$0.getActivity(), 2, alpo.a(2131715479), 0).a();
       return;
     }
-    bcql.a(this.this$0.getActivity(), 1, ajya.a(2131715128), 0).a();
+    QQToast.a(this.this$0.getActivity(), 1, alpo.a(2131715500), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment.3
  * JD-Core Version:    0.7.0.1
  */

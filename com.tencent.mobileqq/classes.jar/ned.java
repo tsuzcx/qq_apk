@@ -1,23 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 
-class ned
-  implements Animation.AnimationListener
+final class ned
+  extends ThreadLocal<CharsetDecoder>
 {
-  ned(nea paramnea) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  protected CharsetDecoder a()
   {
-    nea.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
+    return Charset.forName("UTF-8").newDecoder();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ned
  * JD-Core Version:    0.7.0.1
  */

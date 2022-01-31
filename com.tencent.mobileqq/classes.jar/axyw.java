@@ -1,69 +1,48 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class axyw
+  implements bhqd
 {
-  public static View a(Context paramContext, View paramView, acxj paramacxj, Bundle paramBundle)
+  public axyw(SignatureHistoryFragment paramSignatureHistoryFragment, CommentItem paramCommentItem, String paramString, bhpy parambhpy) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    paramacxj = paramContext.getResources();
-    int i;
-    label37:
-    Object localObject;
-    if (paramBundle.getInt("longMsgHolderType", -1) == 1)
+    switch (paramInt)
     {
-      i = 1;
-      if ((paramView == null) || (!(paramView instanceof RelativeLayout))) {
-        break label237;
-      }
-      ((RelativeLayout)paramView).removeAllViews();
-      paramView = (RelativeLayout)paramView;
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, actj.a(75.0F, paramacxj)));
-      paramBundle = new RelativeLayout(paramContext);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(13);
-      paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
-      localObject = new ImageView(paramContext);
-      paramContext = new TextView(paramContext);
-      if (i == 0) {
-        break label249;
-      }
-      ((ImageView)localObject).setImageResource(2130841233);
-      paramContext.setText(paramacxj.getString(2131696725));
     }
     for (;;)
     {
-      ((ImageView)localObject).setId(2131376577);
-      ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(actj.a(23.5F, paramacxj), actj.a(22.5F, paramacxj)));
-      paramBundle.addView((View)localObject);
-      paramContext.setTextSize(2, 14.0F);
-      paramContext.setTextColor(Color.parseColor("#777777"));
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131376577);
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = actj.a(7.5F, paramacxj);
-      paramBundle.addView(paramContext, (ViewGroup.LayoutParams)localObject);
-      return paramView;
-      i = 0;
-      break;
-      label237:
-      paramView = new RelativeLayout(paramContext);
-      break label37;
-      label249:
-      ((ImageView)localObject).setImageResource(2130841232);
-      paramContext.setText(paramacxj.getString(2131696724));
+      this.jdField_a_of_type_Bhpy.e();
+      return;
+      if (!bdee.d(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity()))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 2131693415, 0).a();
+      }
+      else
+      {
+        SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem);
+        if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem != null) && (!TextUtils.isEmpty(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment))) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+        {
+          if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) == null) {
+            SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, new bepp(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().getTitleBarHeight()));
+          }
+          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).a(null);
+          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).show();
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.a.a(Long.valueOf(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment)).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.feedId, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.id);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axyw
  * JD-Core Version:    0.7.0.1
  */

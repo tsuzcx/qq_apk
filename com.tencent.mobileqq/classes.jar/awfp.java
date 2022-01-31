@@ -1,128 +1,78 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pic.PresendPicMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class awfp
-  extends awfm
+  extends Handler
 {
-  public int a;
-  public CheckBox a;
-  QQAppInterface a;
-  public CommentsView a;
-  public LikesView a;
-  public RichStatus b;
+  private final WeakReference<PresendPicMgr> a;
   
-  public awfp(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
+  public awfp(Looper paramLooper, PresendPicMgr paramPresendPicMgr)
   {
-    super(paramContext, paramAppInterface, paramView, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
-    this.e = 1;
+    super(paramLooper);
+    this.a = new WeakReference(paramPresendPicMgr);
   }
   
-  public View a(RichStatus paramRichStatus)
+  public void handleMessage(Message paramMessage)
   {
-    return super.a(paramRichStatus);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setMinimumHeight(0);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    int i;
-    label49:
-    label77:
-    label98:
-    LikesView localLikesView;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView != null)
+    PresendPicMgr localPresendPicMgr = (PresendPicMgr)this.a.get();
+    if (localPresendPicMgr != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
-      if (paramBoolean)
+      switch (paramMessage.what)
       {
-        i = jdField_a_of_type_ArrayOfInt[14];
-        ((CommentsView)localObject).setNormalTextColor(i);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
-        if (!paramBoolean) {
-          break label162;
+      default: 
+        super.handleMessage(paramMessage);
+        return;
+      case 1: 
+        awen.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_REGISTER_CLIENT_HANDLER");
+        localPresendPicMgr.a = paramMessage.replyTo;
+        paramMessage = Message.obtain(null, 2);
+        ArrayList localArrayList = new ArrayList();
+        Object localObject = PresendPicMgr.a(localPresendPicMgr).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          localArrayList.add(((awfq)((Iterator)localObject).next()).a);
         }
-        i = jdField_a_of_type_ArrayOfInt[13];
-        ((CommentsView)localObject).setItemColor(i);
-      }
-    }
-    else if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView != null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
-      if (!paramBoolean) {
-        break label172;
-      }
-      i = jdField_a_of_type_ArrayOfInt[14];
-      ((LikesView)localObject).setNormalTextColor(i);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
-      if (!paramBoolean) {
-        break label182;
-      }
-      i = jdField_a_of_type_ArrayOfInt[13];
-      ((LikesView)localObject).setItemColor(i);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.a();
-      if ((this.jdField_a_of_type_AndroidContentContext != null) && (localObject != null))
-      {
-        localLikesView = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
-        if (!paramBoolean) {
-          break label192;
+        localObject = new Bundle();
+        ((Bundle)localObject).putParcelableArrayList("flag_compressinfolist", localArrayList);
+        paramMessage.setData((Bundle)localObject);
+        try
+        {
+          localPresendPicMgr.a.send(paramMessage);
+          localPresendPicMgr.a = null;
+          PresendPicMgr.a(localPresendPicMgr);
+          localPresendPicMgr.b();
+          return;
+        }
+        catch (RemoteException paramMessage)
+        {
+          for (;;)
+          {
+            localPresendPicMgr.a = null;
+            if (QLog.isColorLevel()) {
+              QLog.e("PresendPicMgr", 2, paramMessage.getMessage(), paramMessage);
+            }
+            paramMessage.printStackTrace();
+          }
         }
       }
-    }
-    label162:
-    label172:
-    label182:
-    label192:
-    for (Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846523);; localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846524))
-    {
-      localLikesView.setLikSpanDrawable((Drawable)localObject);
+      awen.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_UNREGISTER_CLIENT_HANDLER");
+      localPresendPicMgr.a = null;
       return;
-      i = jdField_a_of_type_ArrayOfInt[16];
-      break;
-      i = jdField_a_of_type_ArrayOfInt[15];
-      break label49;
-      i = jdField_a_of_type_ArrayOfInt[15];
-      break label77;
-      i = jdField_a_of_type_ArrayOfInt[15];
-      break label98;
     }
+    awen.b("PresendPicMgr", "handleMessage", "PresendPicMgr == null!");
   }
-  
-  protected int b()
-  {
-    return jdField_a_of_type_ArrayOfInt[12];
-  }
-  
-  protected boolean d()
-  {
-    return true;
-  }
-  
-  protected boolean e()
-  {
-    return false;
-  }
-  
-  protected void i() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awfp
  * JD-Core Version:    0.7.0.1
  */

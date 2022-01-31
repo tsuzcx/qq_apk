@@ -1,12 +1,7 @@
-public class wra
-{
-  public static String a = "Initialed";
-  public static String b = "Loading";
-  public static String c = "Done";
-}
+public abstract interface wra {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wra
  * JD-Core Version:    0.7.0.1
  */

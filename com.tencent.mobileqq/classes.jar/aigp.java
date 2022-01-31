@@ -1,25 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+
 public class aigp
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
+  public aigp(BaseActivityView paramBaseActivityView) {}
   
-  public aigp() {}
-  
-  public aigp(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigp
  * JD-Core Version:    0.7.0.1
  */

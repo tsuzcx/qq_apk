@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
 
-class akos
-  implements Comparator<MessageRecord>
+public class akos
+  implements CompoundButton.OnCheckedChangeListener
 {
-  akos(akoq paramakoq) {}
+  public akos(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_storage_switch", paramBoolean).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akos
  * JD-Core Version:    0.7.0.1
  */

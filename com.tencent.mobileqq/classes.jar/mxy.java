@@ -1,91 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
-import tencent.im.troop_search_popclassifc.popclassifc.RspBody;
-import tencent.im.troop_search_searchtab.searchtab.RspBody;
-
 public class mxy
-  implements BusinessObserver
 {
-  protected int a;
-  protected WeakReference<mxx> a;
-  protected WeakReference<QQAppInterface> b;
-  
-  public mxy(mxx parammxx, QQAppInterface paramQQAppInterface, int paramInt)
+  public static int a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammxx);
-    this.b = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Int = paramInt;
+    return (paramInt1 % paramInt2 + paramInt2) % paramInt2;
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static int a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    boolean bool2 = false;
-    mxx localmxx = (mxx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject1 = (QQAppInterface)this.b.get();
-    Object localObject2;
-    if (QLog.isColorLevel())
+    paramInt1 = a(paramInt1, paramInt3);
+    paramInt2 = a(paramInt2, paramInt3);
+    if (paramBoolean)
     {
-      localObject2 = new StringBuilder().append("InfoReqObserver: type=").append(paramInt).append(", reqType=").append(this.jdField_a_of_type_Int).append(", isSucc=").append(paramBoolean).append(", cbIsNull=");
-      if (localmxx != null) {
-        break label270;
+      if (paramInt1 > paramInt2) {
+        return paramInt1 - paramInt2;
       }
+      return paramInt1 + (paramInt3 - paramInt2);
     }
-    label269:
-    label270:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localObject2 = ((StringBuilder)localObject2).append(bool1).append(", appIsNull=");
-      bool1 = bool2;
-      if (localObject1 == null) {
-        bool1 = true;
-      }
-      QLog.d("AddContactTroopHandler", 2, bool1);
-      if ((localmxx != null) && (localObject1 != null)) {
-        if ((paramBoolean) && (paramBundle != null)) {
-          try
-          {
-            paramBundle = paramBundle.getByteArray("data");
-            if (paramBundle != null)
-            {
-              localObject1 = (mxz)((QQAppInterface)localObject1).getManager(80);
-              if (this.jdField_a_of_type_Int == 1)
-              {
-                localObject2 = new popclassifc.RspBody();
-                ((popclassifc.RspBody)localObject2).mergeFrom(paramBundle);
-                ((mxz)localObject1).a((popclassifc.RspBody)localObject2);
-                localmxx.a();
-                return;
-              }
-              if (this.jdField_a_of_type_Int != 2) {
-                break label269;
-              }
-              localObject2 = new searchtab.RspBody();
-              ((searchtab.RspBody)localObject2).mergeFrom(paramBundle);
-              ((mxz)localObject1).a((searchtab.RspBody)localObject2);
-              localmxx.a();
-              return;
-            }
-          }
-          catch (Exception paramBundle)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("AddContactTroopHandler", 2, "InfoReqObserver exp:", paramBundle);
-            }
-          }
-        } else {
-          localmxx.b();
-        }
-      }
-      return;
+    if (paramInt1 > paramInt2) {
+      return paramInt3 - paramInt1 + paramInt2;
     }
+    return paramInt2 - paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxy
  * JD-Core Version:    0.7.0.1
  */

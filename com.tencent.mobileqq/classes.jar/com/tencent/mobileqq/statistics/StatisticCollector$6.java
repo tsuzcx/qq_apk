@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.statistics;
 
-import axrn;
+import azmz;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class StatisticCollector$6
   implements Runnable
 {
-  public StatisticCollector$6(axrn paramaxrn, ToServiceMsg paramToServiceMsg) {}
+  public StatisticCollector$6(azmz paramazmz, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {

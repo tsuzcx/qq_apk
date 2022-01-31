@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import apdc;
-import apdh;
-import axrm;
+import aqwa;
+import aqwf;
+import azmy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
@@ -11,7 +11,7 @@ import mqq.app.MobileQQ;
 public class UniformDownloadMgr$13
   implements Runnable
 {
-  public UniformDownloadMgr$13(apdc paramapdc, String paramString, Bundle paramBundle) {}
+  public UniformDownloadMgr$13(aqwa paramaqwa, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
@@ -22,29 +22,29 @@ public class UniformDownloadMgr$13
     }
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("_notify_param_Id");
     QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onDownloadNotificationBeClean. URL:" + this.jdField_a_of_type_JavaLangString + " nofiyid:" + i);
-    apdh localapdh = apdc.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-    if ((localapdh != null) && (this.this$0.a != null))
+    aqwf localaqwf = aqwa.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    if ((localaqwf != null) && (this.this$0.a != null))
     {
-      if (localapdh.a != 1) {
+      if (localaqwf.a != 1) {
         break label175;
       }
-      axrm.a(this.this$0.a.getApplication().getApplicationContext(), this.this$0.a.getCurrentAccountUin(), "Stop_download_2-1_3-0");
+      azmy.a(this.this$0.a.getApplication().getApplicationContext(), this.this$0.a.getCurrentAccountUin(), "Stop_download_2-1_3-0");
     }
     for (;;)
     {
-      apdc.c(this.this$0, this.jdField_a_of_type_JavaLangString);
-      apdc.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+      aqwa.c(this.this$0, this.jdField_a_of_type_JavaLangString);
+      aqwa.a(this.this$0, this.jdField_a_of_type_JavaLangString);
       this.this$0.b(this.jdField_a_of_type_JavaLangString);
-      apdc.b(this.this$0);
+      aqwa.b(this.this$0);
       return;
       label175:
-      axrm.a(this.this$0.a.getApplication().getApplicationContext(), this.this$0.a.getCurrentAccountUin(), "Stop_download_2-1_3-1");
+      azmy.a(this.this$0.a.getApplication().getApplicationContext(), this.this$0.a.getCurrentAccountUin(), "Stop_download_2-1_3-1");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.13
  * JD-Core Version:    0.7.0.1
  */

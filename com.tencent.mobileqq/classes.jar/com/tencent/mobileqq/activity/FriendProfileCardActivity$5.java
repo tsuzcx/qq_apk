@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import auuy;
+import bdmy;
 
 class FriendProfileCardActivity$5
   implements Runnable
@@ -9,24 +9,12 @@ class FriendProfileCardActivity$5
   
   public void run()
   {
-    try
-    {
-      FriendProfileCardActivity.a(this.this$0.app, this.this$0.a);
-      FriendProfileCardActivity.b(this.this$0.a);
-      if ((!ProfileActivity.AllInOne.b(this.this$0.a.a)) && (!ProfileActivity.AllInOne.i(this.this$0.a.a))) {
-        this.this$0.a(false, true, null);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    bdmy.b(this.this$0.app);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileCardActivity.5
  * JD-Core Version:    0.7.0.1
  */

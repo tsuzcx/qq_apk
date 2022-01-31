@@ -1,18 +1,30 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 
 public class wci
-  implements wdh
+  implements Animation.AnimationListener
 {
-  public wci(SegmentList paramSegmentList) {}
+  public wci(QQStoryBaseActivity paramQQStoryBaseActivity) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.a(false);
+    if (this.a.c != null)
+    {
+      this.a.c.clearAnimation();
+      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wci
  * JD-Core Version:    0.7.0.1
  */

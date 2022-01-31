@@ -1,74 +1,406 @@
-import java.text.SimpleDateFormat;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import android.media.MediaMuxer;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.richmedia.segment.SegmentManager.1;
+import com.tencent.mobileqq.richmedia.segment.SegmentManager.2;
+import com.tencent.mobileqq.shortvideo.util.AudioEncoder;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
+@TargetApi(18)
 public class axte
+  extends axtc
+  implements Handler.Callback
 {
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private LinkedList<axtf> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
+  public axje a;
+  private axtd jdField_a_of_type_Axtd;
+  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  public CameraCaptureView a;
+  private ArrayList<axtd> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public HashMap<String, String> a;
+  public MqqHandler a;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private long jdField_c_of_type_Long;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private long jdField_d_of_type_Long;
+  private String jdField_d_of_type_JavaLangString;
+  private boolean jdField_d_of_type_Boolean = true;
+  private long jdField_e_of_type_Long;
+  private String jdField_e_of_type_JavaLangString;
+  private boolean jdField_e_of_type_Boolean;
+  private long jdField_f_of_type_Long;
+  private final boolean jdField_f_of_type_Boolean;
+  private long g;
+  private long h;
   
-  public axte(int paramInt, long paramLong)
+  public axte(CameraCaptureView paramCameraCaptureView, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    super(paramLong);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = paramCameraCaptureView;
+    this.jdField_a_of_type_Axje = axje.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = ((SessionInfo)((Activity)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.getContext()).getIntent().getParcelableExtra("PhotoConst.SEND_SESSION_INFO"));
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManagerV2.getFileThreadLooper(), this);
+    this.jdField_f_of_type_Boolean = true;
+    QLog.d("SegmentManager", 1, "SegmentManager,mSegmentMode:" + this.jdField_f_of_type_Boolean);
   }
   
-  public static String a(List<axtf> paramList)
+  private Bundle a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((paramList != null) && (paramList.size() > 0))
+    Bundle localBundle = new Bundle();
+    if (this.jdField_f_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
     {
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("HH点mm分ss");
-      int i = paramList.size();
-      localStringBuilder.ensureCapacity((((axtf)paramList.get(0)).jdField_a_of_type_JavaLangObject.toString().length() + 20) * i);
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        axtf localaxtf = (axtf)paramList.next();
-        localStringBuilder.append("[").append(localSimpleDateFormat.format(new Date(localaxtf.jdField_a_of_type_Long))).append(":").append(localaxtf.jdField_a_of_type_JavaLangObject.toString()).append("]");
-      }
+      localBundle.putInt("video_segment_mode", i);
+      localBundle.putLong("vidoe_record_uniseq", this.jdField_a_of_type_Long);
+      localBundle.putBoolean("video_segment_capture_success", this.jdField_d_of_type_Boolean);
+      localBundle.putParcelable("PhotoConst.SEND_SESSION_INFO", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      return localBundle;
     }
-    return localStringBuilder.toString();
   }
   
-  public List<axtf> a(Object arg1)
+  private void a(MediaFormat paramMediaFormat)
   {
-    Object localObject1 = new axtf();
-    ((axtf)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
-    ((axtf)localObject1).jdField_a_of_type_JavaLangObject = ???;
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    try
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.addLast(localObject1);
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() < this.jdField_a_of_type_Int) {
-        return null;
-      }
-      axtf localaxtf = (axtf)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
-      if (((axtf)localObject1).jdField_a_of_type_Long - localaxtf.jdField_a_of_type_Long < this.jdField_a_of_type_Long)
+      if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_d_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString != null) && (!this.jdField_b_of_type_Boolean))
       {
-        localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedList);
-        return localObject1;
+        this.jdField_b_of_type_Boolean = true;
+        ThreadManagerV2.excute(new SegmentManager.2(this, paramMediaFormat), 64, null, true);
       }
+      return;
     }
-    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-    return null;
+    finally
+    {
+      paramMediaFormat = finally;
+      throw paramMediaFormat;
+    }
+  }
+  
+  private void c()
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_JavaLangString != null) && (this.jdField_f_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
+      {
+        this.jdField_c_of_type_Boolean = true;
+        Bundle localBundle = a();
+        this.jdField_a_of_type_Axje.a(201, -1, localBundle);
+        if (QLog.isColorLevel()) {
+          QLog.d("SegmentManager", 2, "sendAudioFinishedMsg");
+        }
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private void c(String paramString, MediaFormat paramMediaFormat)
+  {
+    ThreadManagerV2.executeOnFileThread(new SegmentManager.1(this, paramString, paramMediaFormat));
   }
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_AndroidMediaMediaMuxer != null) {}
+    try
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
+      Bundle localBundle = a();
+      this.jdField_a_of_type_Axje.a(208, -1, localBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("SegmentManager", 2, "cancelTask");
+      }
       return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put("param_audio_error", String.valueOf(-6));
+    long l;
+    azfn localazfn;
+    if (this.jdField_e_of_type_JavaLangString != null)
+    {
+      l = SystemClock.uptimeMillis();
+      localazfn = new azfn();
+      localazfn.jdField_a_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+      localazfn.jdField_b_of_type_JavaLangString = c();
+      localazfn.jdField_a_of_type_Int = 0;
+      localazfn.d = paramInt;
+      localazfn.c = azds.n;
+      if (azds.p != 2) {
+        break label178;
+      }
+      localazfn.jdField_b_of_type_Int = 16;
+      if (azds.o != 16) {
+        break label188;
+      }
+      localazfn.e = 1;
+      label101:
+      paramInt = AudioEncoder.a(this.jdField_e_of_type_JavaLangString);
+      if (paramInt == 0) {
+        break label197;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SegmentManager", 2, "onEncodeAudioError checkSourceAudioIsOK  failed:" + paramInt);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_audio_error", String.valueOf(paramInt));
+    }
+    for (;;)
+    {
+      this.jdField_c_of_type_JavaLangString = "AUDIO_PROBLEM";
+      a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a());
+      return;
+      label178:
+      localazfn.jdField_b_of_type_Int = 8;
+      break;
+      label188:
+      localazfn.e = 2;
+      break label101;
+      label197:
+      paramInt = AudioEncoder.a(localazfn);
+      if (paramInt == 0) {
+        break label256;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_audio_error", String.valueOf(paramInt));
+      if (QLog.isColorLevel()) {
+        QLog.d("SegmentManager", 2, "AudioEncoder.encodeSafely failed:" + paramInt);
+      }
+    }
+    label256:
+    if (QLog.isColorLevel()) {
+      QLog.d("SegmentManager", 2, "onEncodeAudioError encodeSafely succ,  cost :" + (SystemClock.uptimeMillis() - l));
+    }
+    a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a(), c());
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    this.jdField_d_of_type_Long = (paramLong2 - paramLong1);
+    this.jdField_e_of_type_Long = paramLong2;
+    Bundle localBundle = a();
+    localBundle.putLong("video_duration", this.jdField_d_of_type_Long);
+    localBundle.putLong("video_start_time", paramLong2);
+    this.jdField_a_of_type_Axje.a(207, -1, localBundle);
+    athi.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("SegmentManager", 2, "confirmTask");
+    }
+  }
+  
+  public void a(MediaFormat paramMediaFormat, String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("SegmentManager", 2, "onEncodeAudio:" + this.jdField_c_of_type_JavaLangString);
+    }
+    this.jdField_f_of_type_Long = System.currentTimeMillis();
+    c();
+    a(paramMediaFormat);
+  }
+  
+  public void a(axtd paramaxtd, boolean paramBoolean, MediaFormat paramMediaFormat)
+  {
+    int i = paramaxtd.a();
+    long l = paramaxtd.a();
+    String str = paramaxtd.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("SegmentManager", 2, "onEncodeVideoSegment:" + paramaxtd);
+    }
+    int j = paramMediaFormat.getInteger("width");
+    int k = paramMediaFormat.getInteger("height");
+    paramaxtd = a();
+    paramaxtd.putString("video_slice_path", str);
+    paramaxtd.putInt("video_slice_index", i);
+    paramaxtd.putInt("video_slice_width", j);
+    paramaxtd.putInt("video_slice_height", k);
+    paramaxtd.putLong("video_slice_timestamp", l);
+    this.jdField_a_of_type_Axje.a(200, -1, paramaxtd);
+    if (i == 0) {
+      c(str, paramMediaFormat);
+    }
+    if (paramBoolean)
+    {
+      this.h = System.currentTimeMillis();
+      this.jdField_a_of_type_Boolean = true;
+      paramaxtd = a();
+      this.jdField_a_of_type_Axje.a(204, -1, paramaxtd);
+      c();
+    }
+  }
+  
+  public void a(String paramString, MediaFormat paramMediaFormat)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("SegmentManager", 2, "onEncodeVideo:" + paramString + " mSegmentMode:" + this.jdField_f_of_type_Boolean + " mSegmentEncodeSuc:" + this.jdField_d_of_type_Boolean + " mThumbPath:" + this.jdField_d_of_type_JavaLangString);
+    }
+    this.g = System.currentTimeMillis();
+    if (!this.jdField_f_of_type_Boolean) {
+      c(paramString, paramMediaFormat);
+    }
+    for (;;)
+    {
+      a(paramMediaFormat);
+      return;
+      if ((!this.jdField_d_of_type_Boolean) && (this.jdField_d_of_type_JavaLangString == null)) {
+        c(paramString, paramMediaFormat);
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_f_of_type_Boolean;
+  }
+  
+  public boolean a(long paramLong, boolean paramBoolean)
+  {
+    if (!this.jdField_f_of_type_Boolean) {}
+    do
+    {
+      return false;
+      if (this.jdField_b_of_type_Long == 0L) {
+        this.jdField_b_of_type_Long = paramLong;
+      }
+      this.jdField_c_of_type_Long = paramLong;
+    } while ((this.jdField_c_of_type_Long - this.jdField_b_of_type_Long < 1500000L) || (!paramBoolean));
+    this.jdField_b_of_type_Long = 0L;
+    return true;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SegmentManager", 2, "onError");
+    }
+    Bundle localBundle = a();
+    this.jdField_a_of_type_Axje.a(206, -1, localBundle);
+    a();
+    ((Activity)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.getContext()).finish();
+  }
+  
+  public void b(String paramString, MediaFormat paramMediaFormat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SegmentManager", 2, "onEncodeAudioPCM:" + paramString);
+    }
+    this.jdField_e_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (!this.jdField_d_of_type_Boolean) {}
+    while (this.jdField_e_of_type_Boolean) {
+      return true;
+    }
+    int i;
+    try
+    {
+      switch (paramMessage.what)
+      {
+      case 1: 
+        i = this.jdField_a_of_type_JavaUtilArrayList.size();
+        this.jdField_a_of_type_Axtd = new axtd(d(), i);
+        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Axtd);
+        if (QLog.isColorLevel()) {
+          QLog.d("SegmentManager", 2, "Muxer_Start :" + this.jdField_a_of_type_Axtd);
+        }
+        this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(this.jdField_a_of_type_Axtd.a(), 0);
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)paramMessage.obj);
+        this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
+        return true;
+      }
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("SegmentManager", 2, "onSegmentEncodeError");
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_segment_fail_flag", "1");
+      this.jdField_d_of_type_Boolean = false;
+      a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a());
+      return true;
+    }
+    paramMessage = (axrc)paramMessage.obj;
+    MediaCodec.BufferInfo localBufferInfo = paramMessage.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
+    if (localBufferInfo.flags != 1) {
+      if (localBufferInfo.flags != 1) {
+        break label506;
+      }
+    }
+    for (;;)
+    {
+      long l = localBufferInfo.presentationTimeUs;
+      if (a(l, bool))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SegmentManager", 2, "Muxer_Data needSegment timeStamp:" + l);
+        }
+        this.jdField_b_of_type_Long = 0L;
+        this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
+        a(this.jdField_a_of_type_Axtd, false, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a());
+        i = this.jdField_a_of_type_JavaUtilArrayList.size();
+        this.jdField_a_of_type_Axtd = new axtd(d(), i);
+        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Axtd);
+        this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(this.jdField_a_of_type_Axtd.a(), 0);
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a());
+        this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
+      }
+      this.jdField_a_of_type_Axtd.a(paramMessage);
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Int, paramMessage.jdField_a_of_type_JavaNioByteBuffer, paramMessage.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("SegmentManager", 2, "Muxer_Stop :" + this.jdField_a_of_type_Axtd);
+      }
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
+      a(this.jdField_a_of_type_Axtd, true, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a());
+      return true;
+      return true;
+      boolean bool = true;
+      continue;
+      label506:
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axte
  * JD-Core Version:    0.7.0.1
  */

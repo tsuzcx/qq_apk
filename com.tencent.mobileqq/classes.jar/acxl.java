@@ -1,23 +1,31 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class acxl
+  implements aoec
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public RedTouch a;
-  public String a;
-  public boolean a;
-  public int b;
-  public ImageView b;
-  public String b;
-  public String c;
+  public acxl(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  
+  public void a()
+  {
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {}
+    for (paramInt1 = 0;; paramInt1 = 1)
+    {
+      this.a.c = true;
+      this.a.a(paramInt1, true);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxl
  * JD-Core Version:    0.7.0.1
  */

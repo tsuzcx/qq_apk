@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ajvg;
+import almt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -10,7 +10,7 @@ public class GetDiscussionInfo
 {
   public int a()
   {
-    ((ajvg)this.a.app.a(6)).c();
+    ((almt)this.a.app.a(6)).c();
     return 7;
   }
 }

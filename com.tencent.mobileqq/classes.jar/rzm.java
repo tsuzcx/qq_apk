@@ -1,24 +1,24 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class rzm
-  extends rzc
-  implements ryv
+  implements aobg
 {
-  public rzm(Activity paramActivity, ryq paramryq, VVideoView paramVVideoView)
+  public rzm(FastWebActivity paramFastWebActivity) {}
+  
+  public void onColorNoteAnimFinish()
   {
-    super(paramActivity, paramryq, paramVVideoView);
+    FastWebActivity.a(this.a, true);
+    FastWebActivity.c(this.a);
+    if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).c())) {
+      this.a.overridePendingTransition(0, 0);
+    }
+    QLog.d(FastWebActivity.a(this.a), 2, "mColorNoteController ：onColorNoteAnimFinish");
   }
-  
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzm
  * JD-Core Version:    0.7.0.1
  */

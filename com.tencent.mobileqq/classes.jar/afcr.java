@@ -1,41 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class afcr
-  implements View.OnClickListener
+class afcr
+  implements bcwt
 {
-  public afcr(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  afcr(afco paramafco) {}
   
-  public void onClick(View paramView)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof Integer))) {}
-    int i;
-    do
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    for (;;)
     {
-      do
+      return;
+      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
+        afco.b(this.a).setImageBitmap(paramBitmap);
+      }
+      while (QLog.isColorLevel())
       {
+        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
         return;
-        i = ((Integer)paramView).intValue();
-      } while ((i < 0) || (this.a.jdField_a_of_type_Afcu == null));
-      paramView = this.a.getActivity();
-    } while (paramView == null);
-    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
-    MessageRecord localMessageRecord = ((afct)this.a.jdField_a_of_type_Afcu.getItem(i)).a;
-    ChatHistoryBubbleListForTroopFragment.a(paramView, this.a.b, localMessageRecord, 100, 1);
-    if (QLog.isColorLevel()) {
-      QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+          afco.a(this.a).setImageBitmap(paramBitmap);
+        }
+      }
     }
-    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcr
  * JD-Core Version:    0.7.0.1
  */

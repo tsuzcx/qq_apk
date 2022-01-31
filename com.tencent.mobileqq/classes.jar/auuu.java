@@ -1,17 +1,20 @@
-import android.util.Pair;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
 
 class auuu
-  implements Comparator<Pair<Long, String>>
+  implements DialogInterface.OnClickListener
 {
-  public int a(Pair<Long, String> paramPair1, Pair<Long, String> paramPair2)
+  auuu(auus paramauus) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return auut.a((CharSequence)paramPair1.second) - auut.a((CharSequence)paramPair2.second);
+    this.a.a.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auuu
  * JD-Core Version:    0.7.0.1
  */

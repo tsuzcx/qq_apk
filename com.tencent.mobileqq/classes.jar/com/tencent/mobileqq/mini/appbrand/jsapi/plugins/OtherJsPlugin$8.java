@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.content.res.Resources;
-import bcql;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import anxn;
 
 class OtherJsPlugin$8
   implements Runnable
 {
-  OtherJsPlugin$8(OtherJsPlugin paramOtherJsPlugin) {}
+  OtherJsPlugin$8(OtherJsPlugin paramOtherJsPlugin, anxn paramanxn) {}
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690852), 5000).a();
+    this.val$finalColorNoteController.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OtherJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

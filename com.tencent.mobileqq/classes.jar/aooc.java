@@ -1,40 +1,72 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 public class aooc
-  implements View.OnClickListener
+  extends aofy<aoob>
 {
-  public aooc(FMLocalFileActivity paramFMLocalFileActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (!this.a.a()) {
-      if (QLog.isColorLevel()) {
-        QLog.i(FMLocalFileActivity.g, 2, "click too fast , wait a minute.");
-      }
-    }
-    do
+    return 158;
+  }
+  
+  @NonNull
+  public aoob a(int paramInt)
+  {
+    return new aoob();
+  }
+  
+  @Nullable
+  public aoob a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
     {
-      return;
-      this.a.e();
-      paramView = (apeo)paramView.getTag();
-    } while (paramView.a == 0);
-    int i = paramView.a;
-    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-    paramView.putBoolean("last_select_All", true);
-    paramView.commit();
-    FMLocalFileActivity.a(this.a, i);
+      aoob localaoob = aoob.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVSecurityConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      }
+      return localaoob;
+    }
+    return null;
+  }
+  
+  public Class<aoob> a()
+  {
+    return aoob.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aoob paramaoob)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVSecurityConfProcessor", 2, "onUpdate " + paramaoob.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aooc
  * JD-Core Version:    0.7.0.1
  */

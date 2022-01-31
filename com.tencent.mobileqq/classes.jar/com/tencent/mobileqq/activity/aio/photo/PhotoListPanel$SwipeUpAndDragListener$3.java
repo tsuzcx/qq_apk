@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aeke;
-import aekh;
-import aekm;
+import aggv;
+import aggy;
+import aghd;
 import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -10,15 +10,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class PhotoListPanel$SwipeUpAndDragListener$3
   implements Runnable
 {
-  public PhotoListPanel$SwipeUpAndDragListener$3(aekh paramaekh) {}
+  public PhotoListPanel$SwipeUpAndDragListener$3(aggy paramaggy) {}
   
   public void run()
   {
-    aeke localaeke;
-    if ((this.this$0.b.get()) && (SystemClock.elapsedRealtime() - this.this$0.jdField_a_of_type_Long >= aekh.b()))
+    aggv localaggv;
+    if ((this.this$0.b.get()) && (SystemClock.elapsedRealtime() - this.this$0.jdField_a_of_type_Long >= aggy.a()))
     {
-      localaeke = (aeke)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a.findViewHolderForAdapterPosition(this.this$0.jdField_c_of_type_Int);
-      if (localaeke != null) {
+      localaggv = (aggv)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a.findViewHolderForAdapterPosition(this.this$0.jdField_c_of_type_Int);
+      if (localaggv != null) {
         break label61;
       }
     }
@@ -30,14 +30,14 @@ public class PhotoListPanel$SwipeUpAndDragListener$3
         return;
       } while (this.this$0.jdField_a_of_type_Boolean);
       this.this$0.jdField_a_of_type_Boolean = true;
-      this.this$0.jdField_a_of_type_Aekm = this.this$0.jdField_c_of_type_Aekm;
-    } while (this.this$0.jdField_a_of_type_Aekm == null);
-    this.this$0.jdField_a_of_type_Aekm.a(localaeke, this.this$0.jdField_c_of_type_Int);
+      this.this$0.jdField_a_of_type_Aghd = this.this$0.jdField_c_of_type_Aghd;
+    } while (this.this$0.jdField_a_of_type_Aghd == null);
+    this.this$0.jdField_a_of_type_Aghd.a(localaggv, this.this$0.jdField_c_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener.3
  * JD-Core Version:    0.7.0.1
  */

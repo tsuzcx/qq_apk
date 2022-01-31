@@ -2,14 +2,12 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import Wallet.AuthCodeItem;
 import Wallet.AuthCodeRsp;
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -21,12 +19,12 @@ import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.provider.ContactsContract.Contacts;
 import android.text.TextUtils;
-import anqq;
-import anqu;
-import anvq;
-import bbey;
-import bcdp;
-import bgxk;
+import aphy;
+import apic;
+import apmy;
+import bddt;
+import becq;
+import biyh;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -129,7 +127,7 @@ public class QWalletCommonJsPlugin
     try
     {
       Object localObject2 = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject2).optString("title", ajya.a(2131711436));
+      paramString = ((JSONObject)localObject2).optString("title", alpo.a(2131711808));
       int i = ((JSONObject)localObject2).optInt("type", 1);
       this.mCallback = ((JSONObject)localObject2).optString("callback");
       if ((i & 0x1) == 0) {}
@@ -1066,110 +1064,6 @@ public class QWalletCommonJsPlugin
     return true;
   }
   
-  private void handlePendantSwitch(String paramString)
-  {
-    localJSONObject = new JSONObject();
-    try
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        break label267;
-      }
-      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("spring_entry_sp", 4);
-      str = "key_show_pendant_by_user_" + this.app.getCurrentAccountUin();
-      paramString = new JSONObject(paramString);
-      bool = localSharedPreferences.getBoolean(str, true);
-      if (!bool) {
-        break label250;
-      }
-      i = 1;
-    }
-    catch (Throwable paramString)
-    {
-      try
-      {
-        for (;;)
-        {
-          SharedPreferences localSharedPreferences;
-          String str;
-          localJSONObject.put("retcode", k);
-          localJSONObject.put("state", j);
-          paramString = localJSONObject.toString();
-          if (QLog.isColorLevel()) {
-            QLog.i("QWalletCommonJsPlugin", 2, "pendant switch result:" + paramString);
-          }
-          doCallback(paramString);
-          return;
-          i = 0;
-          continue;
-          bool = false;
-          continue;
-          m = -1;
-          continue;
-          j = 1;
-          k = -1;
-          continue;
-          paramString = paramString;
-          i = 1;
-          QLog.e("QWalletCommonJsPlugin", 1, paramString, new Object[0]);
-          k = -1;
-          j = i;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          QLog.e("QWalletCommonJsPlugin", 1, paramString, new Object[0]);
-        }
-      }
-    }
-    j = i;
-    try
-    {
-      if (paramString.optInt("action") != 1) {
-        break label318;
-      }
-      j = i;
-      k = paramString.optInt("state");
-      j = i;
-      paramString = localSharedPreferences.edit();
-      if (k != 1) {
-        break label255;
-      }
-      bool = true;
-      j = i;
-      bool = paramString.putBoolean(str, bool).commit();
-      if (!bool) {
-        break label326;
-      }
-      i = k;
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        int m;
-        i = j;
-        continue;
-        int k = 0;
-        j = i;
-        continue;
-        if (bool) {
-          m = 0;
-        }
-      }
-    }
-    j = i;
-    k = m;
-    if (!bool)
-    {
-      j = i;
-      QLog.e("QWalletCommonJsPlugin", 1, "handlePendantSwitch,set sp fail");
-      k = m;
-      j = i;
-    }
-  }
-  
   private void handleRedPackSkin(String paramString, int paramInt)
   {
     if (paramInt == 1) {}
@@ -1193,16 +1087,16 @@ public class QWalletCommonJsPlugin
     if (this.mContext == null) {
       return false;
     }
-    return bbey.f(this.mContext);
+    return bddt.f(this.mContext);
   }
   
   private void notifyViewUpdate(String paramString1, String paramString2)
   {
-    int i;
-    int j;
-    String str;
     for (;;)
     {
+      int i;
+      int j;
+      String str;
       try
       {
         paramString1 = new JSONObject(paramString1);
@@ -1210,7 +1104,7 @@ public class QWalletCommonJsPlugin
         j = paramString1.optInt("viewid");
         str = paramString1.optString("extstr");
         if ((i != 2) && (i != 4)) {
-          break;
+          break label744;
         }
         handleSkin(str, i, j);
         paramString1 = new Intent("action_notify_view_update");
@@ -1222,7 +1116,6 @@ public class QWalletCommonJsPlugin
       }
       catch (Exception paramString1)
       {
-        label102:
         paramString1.printStackTrace();
         return;
       }
@@ -1246,7 +1139,7 @@ public class QWalletCommonJsPlugin
               localObject1 = new JSONObject(str);
               paramString1 = ((JSONObject)localObject1).optString("listid");
               localObject1 = ((JSONObject)localObject1).optString("feedsid");
-              localObject2 = bgxk.a().b(paramString1);
+              localObject2 = biyh.a().b(paramString1);
               paramString1 = paramString2;
               if (!TextUtils.isEmpty((CharSequence)localObject1))
               {
@@ -1298,7 +1191,7 @@ public class QWalletCommonJsPlugin
               break label633;
             }
             mListid = paramString1;
-            mParamForGarpHb = bgxk.a().b(paramString1);
+            mParamForGarpHb = biyh.a().b(paramString1);
             if (QLog.isColorLevel()) {
               QLog.d("QWalletCommonJsPlugin", 2, "paramForGarpHb paramForGarpHb:" + mParamForGarpHb);
             }
@@ -1333,33 +1226,17 @@ public class QWalletCommonJsPlugin
             }
           }
         }
-        else
+        else if ((i == 20) && (j == 1))
         {
-          if ((i != 20) || (j != 1)) {
-            break label728;
-          }
           handleMiniApp(str, i, j);
         }
-      }
-    }
-    while ((i == 24) && (j == 1))
-    {
-      handlePendantSwitch(str);
-      break;
-      if (i != 3) {
-        break label102;
-      }
-      if (j == 1) {
-        break;
-      }
-      break label102;
-      label728:
-      if (((i == 21) && (j == 1)) || ((i == 22) && (j == 1))) {
-        break;
-      }
-      if (i == 23) {
-        if (j == 1) {
-          break;
+        else if (((i != 21) || (j != 1)) && ((i != 22) || (j != 1)) && ((i != 23) || (j != 1)) && (i == 24) && (j == 1))
+        {
+          continue;
+          label744:
+          if (i == 3) {
+            if (j == 1) {}
+          }
         }
       }
     }
@@ -1399,8 +1276,8 @@ public class QWalletCommonJsPlugin
   {
     Bundle localBundle = new Bundle();
     localBundle.putLong("appId", this.mAuthCodeAppId);
-    localBundle = anqu.a("qwallet_getAuthCode", this.mCallback, this.mOnRemoteResp.key, localBundle);
-    anvq.a().a(localBundle);
+    localBundle = apic.a("qwallet_getAuthCode", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    apmy.a().a(localBundle);
   }
   
   protected void doAuthCodeCallback(String paramString, AuthCodeItem paramAuthCodeItem)

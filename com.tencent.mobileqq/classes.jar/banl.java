@@ -1,29 +1,23 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.troop.widget.AddedRobotView;
-import com.tencent.qphone.base.util.QLog;
-
-public class banl
-  extends RecyclerView.OnScrollListener
+class banl
+  extends alsi
 {
-  public banl(AddedRobotView paramAddedRobotView) {}
+  banl(bank parambank) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, alsj paramalsj)
   {
-    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      AddedRobotView.a(this.a).c();
-    }
-    while (!AddedRobotView.a(this.a).a()) {
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramalsj);
+    if (paramBoolean)
+    {
+      this.a.e();
       return;
     }
-    AddedRobotView.a(this.a).b();
-    AddedRobotView.a(this.a).notifyDataSetChanged();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     banl
  * JD-Core Version:    0.7.0.1
  */

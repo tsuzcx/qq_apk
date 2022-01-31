@@ -1,86 +1,83 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
 public class arpd
-  extends MSFServlet
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  public static long d;
+  private static arpd a;
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static arpd a()
   {
-    c = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebSSOAgentServlet", 2, "onReceive");
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
+    try
     {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bbmx.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      if (a == null) {
+        a = new arpd();
+      }
+      arpd localarpd = a;
+      return localarpd;
+    }
+    finally {}
+  }
+  
+  public arpe a(String paramString)
+  {
+    Object localObject = aqwa.a().a();
+    if (localObject == null) {
+      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] getBPTransItem failed APP=null. url[" + paramString + "]");
     }
     for (;;)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("extra_result_err_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
-      localBundle.putString("extra_callbackid", paramIntent.getStringExtra("extra_callbackid"));
-      localBundle.putByteArray("extra_data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
+      return null;
+      if (((QQAppInterface)localObject).a() != null) {}
+      for (paramString = ((QQAppInterface)localObject).a().a(paramString); paramString != null; paramString = null)
+      {
+        localObject = new arpe();
+        ((arpe)localObject).jdField_a_of_type_JavaLangString = paramString.mFileName;
+        ((arpe)localObject).jdField_a_of_type_Long = paramString.mFileSize;
+        ((arpe)localObject).c = paramString.mFilePath;
+        ((arpe)localObject).b = paramString.mTempPath;
+        return localObject;
+        QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] getUDLBPTransProxy=null.");
+      }
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebSSOAgentServlet", 2, "onSend");
+    QLog.i("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] delBPTransItem. url[" + paramString + "]");
+    QQAppInterface localQQAppInterface = aqwa.a().a();
+    if (localQQAppInterface == null) {
+      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] delBPTransItem failed APP=null. url[" + paramString + "]");
     }
-    String str = paramIntent.getStringExtra("extra_cmd");
-    if (str == null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-      }
+    while (localQQAppInterface.a() == null) {
       return;
     }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("extra_data");
-    paramPacket.setSSOCommand(str);
-    long l = paramIntent.getLongExtra("extra_timeout", -1L);
-    if (l > 0L) {
-      paramPacket.setTimeout(l);
-    }
-    if (arrayOfByte != null)
+    localQQAppInterface.a().a(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
+  {
+    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = new UniformDownloadBPTransEntity();
+    localUniformDownloadBPTransEntity.mUrl = paramString1;
+    localUniformDownloadBPTransEntity.mFileName = paramString2;
+    localUniformDownloadBPTransEntity.mFileSize = paramLong;
+    localUniformDownloadBPTransEntity.mFilePath = paramString4;
+    localUniformDownloadBPTransEntity.mTempPath = paramString3;
+    QQAppInterface localQQAppInterface = aqwa.a().a();
+    if (localQQAppInterface == null)
     {
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bbmx.a(paramIntent, 0, arrayOfByte.length + 4);
-      bbmx.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] addBPTransItem.failed APP=null, filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
+      return;
     }
-    b = System.currentTimeMillis();
+    if (localQQAppInterface.a() != null) {
+      localQQAppInterface.a().a(localUniformDownloadBPTransEntity);
+    }
+    QLog.i("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] addBPTransItem.filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpd
  * JD-Core Version:    0.7.0.1
  */

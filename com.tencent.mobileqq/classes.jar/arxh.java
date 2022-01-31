@@ -1,59 +1,59 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.LocationPoiDataHelper.1.1;
-import com.tencent.mobileqq.mini.out.CommonObserver;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.proto.lbsshare.LBSShare.LocationResp;
-import com.tencent.proto.lbsshare.LBSShare.POI;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
 
 public class arxh
-  extends CommonObserver
+  extends arxd
 {
-  public void onGetPoiList(boolean paramBoolean, LBSShare.LocationResp paramLocationResp)
+  private int jdField_a_of_type_Int;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private AnimationTextView jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView;
+  
+  public arxh(bdfq parambdfq)
   {
-    arxg.a(this.a, false);
-    Object localObject1;
-    if (paramBoolean)
-    {
-      arxg.a(this.a);
-      localObject1 = paramLocationResp.poilist.get().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (LBSShare.POI)((Iterator)localObject1).next();
-        localObject2 = LocationRoom.Venue.a(arxg.a(this.a).app.c(), (LBSShare.POI)localObject2);
-        arxg.a(this.a).add(localObject2);
-      }
-      localObject1 = this.a;
-      if (paramLocationResp.next.get() <= 0) {
-        break label198;
-      }
-    }
-    label198:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      arxg.b((arxg)localObject1, paramBoolean);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("LocationPoiDataHelper", 4, "[venue][poi-data] onGetPoiList next: mVenueList size = " + arxg.a(this.a).size() + ", mHashMore = " + arxg.a(this.a));
-      }
-      if (arxg.a(this.a) != null) {
-        ThreadManager.getUIHandler().post(new LocationPoiDataHelper.1.1(this));
-      }
-      return;
-    }
+    super(parambdfq);
   }
   
-  public void onGetStreetUrl(boolean paramBoolean, String paramString) {}
+  protected int a()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_Bdfq.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296991)) / bdkf.a));
+    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  protected View a()
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558925, null));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377566));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new arxi(this));
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardPreviewTextController", 2, " bindData ");
+    }
+    if (paramString1 != null) {
+      a(paramString1);
+    }
+    if ((paramString2 != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(new baig(paramString2, 5, 20));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arxh
  * JD-Core Version:    0.7.0.1
  */

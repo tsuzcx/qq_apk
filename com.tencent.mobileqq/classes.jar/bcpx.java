@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.PublicMenuBar;
-
 public class bcpx
-  implements View.OnClickListener
 {
-  public bcpx(PublicMenuBar paramPublicMenuBar, String paramString, int paramInt) {}
+  public long a;
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if (PublicMenuBar.a(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar) != null) {
-      PublicMenuBar.b(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
-    }
+    return "CheckInResEntity{filePath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cover='" + this.b + '\'' + ", videoDuration=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpx
  * JD-Core Version:    0.7.0.1
  */

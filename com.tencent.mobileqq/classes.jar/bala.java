@@ -1,17 +1,42 @@
-public class bala
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+class bala
+  extends amab
 {
-  public long a;
-  public String a;
+  bala(baky parambaky) {}
   
-  public bala(String paramString, long paramLong)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherControlManager", 2, "onTroopManagerSuccess,reqType=" + paramInt1 + ", result=" + paramInt2 + ", troopUin=" + paramString);
+    }
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
+    {
+      Iterator localIterator = baky.a(this.a).entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((balj)((Map.Entry)localIterator.next()).getValue()).a(paramInt1, paramInt2, paramString);
+      }
+    }
+  }
+  
+  protected void b(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherControlManager", 2, "onPassiveExit, troopUin=" + paramString + ", reason=" + paramInt);
+    }
+    Iterator localIterator = baky.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((balj)((Map.Entry)localIterator.next()).getValue()).a(paramString, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bala
  * JD-Core Version:    0.7.0.1
  */

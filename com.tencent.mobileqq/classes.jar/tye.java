@@ -1,67 +1,74 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.report.QCircleLpReportDc05493.1;
+import com.tencent.qphone.base.util.QLog;
 
-class tye
-  extends ste<tyc, uoy>
+public class tye
 {
-  tye(tyc paramtyc)
+  private static void a(String paramString1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt)
   {
-    super(paramtyc);
+    typ.a().a().post(new QCircleLpReportDc05493.1(paramString1, paramLong4, paramLong1, paramLong2, paramLong3, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramInt));
   }
   
-  public void a(@NonNull tyc paramtyc, @NonNull uoy paramuoy)
+  public static void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
   {
-    if ((!paramuoy.jdField_a_of_type_JavaLangString.equals(tyc.a(paramtyc))) || (paramuoy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (tyc.a(paramtyc) == null)) {
-      ved.b("Q.qqstory.player.CommentFloatDialogController", "ignore this comment list event. %s.", paramuoy.toString());
-    }
-    tyl localtyl;
-    do
+    i = 0;
+    j = 0;
+    l2 = 0L;
+    try
     {
-      boolean bool2;
-      boolean bool1;
-      do
+      int k = Integer.parseInt(paramString2);
+      j = k;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      try
       {
-        return;
-        ved.a("Q.qqstory.player.CommentFloatDialogController", "receive comment list event. %s.", paramuoy.toString());
-        bool2 = paramtyc.a();
-        bool1 = true;
-        if (paramuoy.jdField_a_of_type_Int == 0) {
-          bool1 = false;
+        l1 = Long.parseLong(paramString3);
+        switch (j)
+        {
+        default: 
+          QLog.e("QCircleReportHelper_QCircleLpReportDc05493", 1, "QCircle launch report invalid input fromStr:!" + paramString2);
+          a(paramString1, i, j, l1, paramLong, "", "", "", "", "", "", paramInt);
+          return;
+          localNumberFormatException = localNumberFormatException;
+          QLog.e("QCircleReportHelper_QCircleLpReportDc05493", 1, "QCircle launch report invalid input fromStr:" + paramString2);
         }
-        tyc.a(paramtyc).a(bool1);
-        tyc.a(paramtyc).a(bool1, paramuoy.b);
-        tyc.a(paramtyc).a(bool1, paramuoy.jdField_a_of_type_Boolean);
-        tyc.a(paramtyc).a(paramuoy.jdField_a_of_type_JavaUtilList, paramuoy.c, bool1);
-      } while (bool2 != bool1);
-      localtyl = paramtyc.a();
-    } while (localtyl == null);
-    localtyl.a(tyc.a(paramtyc), paramuoy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uoy.class;
-  }
-  
-  public void b(@NonNull tyc paramtyc, @NonNull uoy paramuoy)
-  {
-    boolean bool2 = paramtyc.a();
-    boolean bool1 = true;
-    if (paramuoy.jdField_a_of_type_Int == 0) {
-      bool1 = false;
-    }
-    if (bool2 == bool1)
-    {
-      paramuoy = paramtyc.a();
-      if (paramuoy != null) {
-        paramuoy.a(tyc.a(paramtyc), false);
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("QCircleReportHelper_QCircleLpReportDc05493", 1, "QCircle launch report invalid input pushId:" + paramString3);
+          long l1 = l2;
+          continue;
+          i = 1;
+          continue;
+          i = 2;
+          continue;
+          i = 2;
+          l1 = 1L;
+          continue;
+          i = 3;
+        }
       }
     }
+    l1 = l2;
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      l1 = l2;
+      if (!TextUtils.isDigitsOnly(paramString3)) {}
+    }
+  }
+  
+  private static int b()
+  {
+    return 5493;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tye
  * JD-Core Version:    0.7.0.1
  */

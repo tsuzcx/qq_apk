@@ -1,52 +1,20 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-class bahx
-  implements baic
+final class bahx
+  extends Editable.Factory
 {
-  bahx(bahw parambahw) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.change_machine", 2, "getChangeMachineFlag result:" + paramJSONObject);
+    if ((paramCharSequence instanceof bahw)) {
+      return (Editable)paramCharSequence;
     }
-    int j = 0;
-    int k = -1;
-    paramInt = k;
-    int i = j;
-    if (paramJSONObject != null)
-    {
-      if (paramJSONObject.has("code")) {
-        break label88;
-      }
-      i = j;
-      paramInt = k;
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (i != 0))
-      {
-        bahw.a(this.a);
-        this.a.b();
-      }
-      return;
-      label88:
-      k = paramJSONObject.optInt("code");
-      paramInt = k;
-      i = j;
-      if (k == 0)
-      {
-        i = paramJSONObject.optInt("flag");
-        paramInt = k;
-      }
-    }
+    return new bahw(paramCharSequence, 32);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bahx
  * JD-Core Version:    0.7.0.1
  */

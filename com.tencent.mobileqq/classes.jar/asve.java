@@ -1,33 +1,77 @@
-class asve
-  implements apsq
+import com.tencent.mobileqq.intervideo.shadow.PluginProcessKiller;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+
+public class asve
 {
-  asve(asuw paramasuw, asur paramasur) {}
+  private static asve jdField_a_of_type_Asve = new asve();
+  private PluginProcessKiller jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller;
+  private DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(int paramInt)
+  public static asve a()
   {
-    if ((this.jdField_a_of_type_Asur != null) && (this.jdField_a_of_type_Asur.a != null))
+    return jdField_a_of_type_Asve;
+  }
+  
+  private void a(String paramString, DynamicPluginManager paramDynamicPluginManager, PluginProcessKiller paramPluginProcessKiller)
+  {
+    int j = 1;
+    int i;
+    if ((paramString != null) && (paramString.equals("Now")))
     {
-      String str = this.jdField_a_of_type_Asur.a.a();
-      asus localasus = this.jdField_a_of_type_Asuw.a(str);
-      if ((localasus != null) && (!localasus.a))
-      {
-        localasus.c = paramInt;
-        this.jdField_a_of_type_Asuw.a(str, localasus);
-        asuw.a(this.jdField_a_of_type_Asuw, localasus, paramInt);
+      i = 1;
+      if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals("Now"))) {
+        break label55;
       }
     }
+    for (;;)
+    {
+      if ((i == 0) && (j == 0)) {
+        break label61;
+      }
+      return;
+      i = 0;
+      break;
+      label55:
+      j = 0;
+    }
+    label61:
+    if ((paramString != null) && (!paramString.equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager != null)
+      {
+        PluginProcessKiller localPluginProcessKiller = (PluginProcessKiller)this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.getManagerImpl();
+        if (localPluginProcessKiller != null) {
+          localPluginProcessKiller.onKillPluginProcess();
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller != null) {
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller.onKillPluginProcess();
+      }
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller = paramPluginProcessKiller;
   }
   
-  public void a(boolean paramBoolean)
+  public String a()
   {
-    asuw.a(this.jdField_a_of_type_Asuw, this.jdField_a_of_type_Asur, paramBoolean);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void b(boolean paramBoolean) {}
+  public void a(String paramString, PluginProcessKiller paramPluginProcessKiller)
+  {
+    a(paramString, null, paramPluginProcessKiller);
+  }
+  
+  public void a(String paramString, DynamicPluginManager paramDynamicPluginManager)
+  {
+    a(paramString, paramDynamicPluginManager, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asve
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,148 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-class aqos
-  implements Animation.AnimationListener
+public class aqos
 {
-  aqos(aqoq paramaqoq) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public aukq a;
+  public auld a;
+  public HashMap<String, ArrayList<MessageRecord>> a;
+  List<aqoq> jdField_a_of_type_JavaUtilList;
+  List<aqoq> b;
+  List<aqoq> c;
+  public List<aqoq> d;
+  List<aqoq> e;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aqos(long paramLong, auld paramauld, HashMap<String, ArrayList<MessageRecord>> paramHashMap, aukq paramaukq)
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(4);
+    this.jdField_a_of_type_Long = ???;
+    this.jdField_a_of_type_Auld = paramHashMap;
+    this.jdField_a_of_type_Int = 0;
+    Object localObject;
+    this.jdField_a_of_type_Aukq = localObject;
+    this.jdField_a_of_type_JavaUtilHashMap = paramaukq;
+    this.b = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.c = new ArrayList();
+    this.d = new ArrayList();
+    this.e = new ArrayList();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int a()
+  {
+    return this.b.size();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a()
+  {
+    c();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aqoq)localIterator.next()).a();
+    }
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void a(aqoq paramaqoq)
+  {
+    if (paramaqoq != null) {
+      this.b.add(paramaqoq);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aqoq)localIterator.next()).b();
+    }
+    this.jdField_a_of_type_Int = 5;
+  }
+  
+  void c()
+  {
+    if (10 <= this.b.size()) {}
+    ArrayList localArrayList;
+    for (int i = 10;; i = this.b.size())
+    {
+      localArrayList = new ArrayList(i);
+      int j = 0;
+      while (j < i)
+      {
+        aqoq localaqoq = (aqoq)this.b.get(j);
+        this.jdField_a_of_type_JavaUtilList.add(localaqoq);
+        localArrayList.add(localaqoq);
+        j += 1;
+      }
+    }
+    this.b.removeAll(localArrayList);
+  }
+  
+  public void d()
+  {
+    int j = this.c.size();
+    int k = this.e.size();
+    int m = this.d.size();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
+    aqoq localaqoq;
+    if (localIterator.hasNext())
+    {
+      localaqoq = (aqoq)localIterator.next();
+      if ((localaqoq.b == 2) || (localaqoq.b == 3) || (localaqoq.b == 4)) {
+        localIterator.remove();
+      }
+      if (localaqoq.b == 2)
+      {
+        this.c.add(localaqoq);
+        i += 1;
+      }
+    }
+    for (;;)
+    {
+      break;
+      if (localaqoq.b == 3)
+      {
+        this.e.add(localaqoq);
+        i += 1;
+      }
+      else if (localaqoq.b == 4)
+      {
+        this.d.add(localaqoq);
+        i += 1;
+        continue;
+        c();
+        if (QLog.isColorLevel())
+        {
+          int n = this.jdField_a_of_type_JavaUtilList.size();
+          int i1 = this.b.size();
+          QLog.i("FileMultiMsgManager<FileAssistant>", 1, "request update, multiUniseq[ " + this.jdField_a_of_type_Long + "] removeCount[" + i + "] leftCount[" + (n + i1) + "] finishCount[" + (m + (j + k)) + "]");
+        }
+        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext()) {
+          ((aqoq)localIterator.next()).a();
+        }
+        if ((this.jdField_a_of_type_JavaUtilList.size() <= 0) && (this.b.size() <= 0))
+        {
+          this.jdField_a_of_type_Int = 5;
+          if (QLog.isDevelopLevel()) {
+            QLog.i("FileMultiMsgManager<FileAssistant>", 1, "all task upload finish , remove multi request: multiUniseq[ " + this.jdField_a_of_type_Long + "]");
+          }
+          aqnw.a(this.jdField_a_of_type_Aqnw, this.jdField_a_of_type_Long);
+        }
+        return;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqos
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,89 @@
 import android.content.Context;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
-final class sgq
-  extends akws
+public class sgq
+  extends sgm
 {
-  sgq(Object paramObject, QQAppInterface paramQQAppInterface, String paramString, akdn paramakdn, boolean paramBoolean, Context paramContext) {}
+  public sgq(Context paramContext)
+  {
+    super(paramContext);
+  }
   
   public int a()
   {
-    return 5;
+    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298665);
   }
   
-  public void a(Object paramObject)
+  public View a(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_JavaLangObject != null)
-    {
-      paramObject = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-      if (paramObject != null) {
-        paramObject.a(this.jdField_a_of_type_JavaLangObject);
-      }
+    if (this.jdField_a_of_type_Yst == null) {
+      this.jdField_a_of_type_Yst = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559511, paramViewGroup, false));
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Akdn != null) {
-        this.jdField_a_of_type_Akdn.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
-      }
+    return (View)this.jdField_a_of_type_Yst;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Yst == null) {
       return;
-      paramObject = (akdh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-      paramObject.b(this.jdField_a_of_type_JavaLangString);
-      paramObject.a(this.jdField_a_of_type_JavaLangString);
-      StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008);
-      sdc.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.a());
-      saz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      paramObject = (nqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88);
-      if (paramObject != null) {
-        paramObject.a(this.jdField_a_of_type_JavaLangString, "unfollow");
-      }
     }
+    this.jdField_a_of_type_Yst.a(0L);
+    this.jdField_a_of_type_Yst.aw_();
   }
   
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Akdn != null) {
-      this.jdField_a_of_type_Akdn.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+    super.a(paramInt, paramBoolean);
+    if (this.jdField_a_of_type_Yst == null) {
+      return;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      sgg.a(this.jdField_a_of_type_AndroidContentContext, 2131695569);
+    if (paramInt == 100)
+    {
+      this.jdField_a_of_type_Yst.b(0L);
+      return;
     }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Yst.aw_();
+      return;
+    }
+    this.jdField_a_of_type_Yst.c(0L);
   }
   
-  public void b(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Yst == null) {
+      return;
+    }
+    this.jdField_a_of_type_Yst.a(0L);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_Yst == null) {
+      return;
+    }
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      this.jdField_a_of_type_Yst.a(0, paramString);
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Yst.a(0);
+      return;
+    }
+    this.jdField_a_of_type_Yst.a(2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgq
  * JD-Core Version:    0.7.0.1
  */

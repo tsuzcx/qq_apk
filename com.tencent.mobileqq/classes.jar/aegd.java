@@ -1,26 +1,26 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aegd
-  implements aptw
+  implements DialogInterface.OnClickListener
 {
-  public aegd(AIOFileVideoData paramAIOFileVideoData, Context paramContext, agqv paramagqv) {}
+  public aegd(UpgradeActivity paramUpgradeActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
-      this.jdField_a_of_type_Agqv.b();
-      this.jdField_a_of_type_Agqv.f();
+    azmj.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      azmj.b(this.a.app, "CliOper", "", "", "0X800714D", "0X800714D", 0, 0, "", "", "", "");
     }
+    azmj.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, amlo.b(), String.valueOf(2), amlp.a(), "0");
+    amlp.a().a(this.a.app);
+    this.a.finish();
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegd
  * JD-Core Version:    0.7.0.1
  */

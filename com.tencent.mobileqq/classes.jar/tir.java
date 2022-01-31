@@ -1,82 +1,43 @@
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import java.util.Iterator;
-import java.util.List;
+import UserGrowth.stSimpleGetFeedListRsp;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import java.util.ArrayList;
 
-public class tir
-  extends tij
+class tir
+  implements tcm
 {
-  public tir(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup);
-  }
+  tir(tip paramtip, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected String a(QQUserUIItem paramQQUserUIItem)
+  public void a(JceStruct paramJceStruct)
   {
-    String str = super.a(paramQQUserUIItem);
-    paramQQUserUIItem = str;
-    if (str == null) {
-      paramQQUserUIItem = ajya.a(2131713264);
-    }
-    return paramQQUserUIItem;
-  }
-  
-  public void a()
-  {
-    this.a.setTag(2131373350, null);
-  }
-  
-  protected void a(String paramString)
-  {
-    c(paramString);
-  }
-  
-  protected void a(String paramString, boolean paramBoolean, tff paramtff)
-  {
-    if ((!TextUtils.isEmpty(paramtff.j)) && (!paramBoolean))
+    tlo.d("WSRecommendFragmentPresenter", "onReadCacheCompleted");
+    if (!(paramJceStruct instanceof stSimpleGetFeedListRsp)) {}
+    WSRecommendFragment localWSRecommendFragment;
+    do
     {
-      this.a.setNodeName(paramString, paramtff.j);
-      return;
-    }
-    super.a(paramString, paramBoolean, paramtff);
-  }
-  
-  public void a(tff paramtff)
-  {
-    super.a(paramtff);
-    this.a.setDisplayState(2);
-    String str;
-    if (!TextUtils.equals((String)this.a.getTag(2131373350), paramtff.jdField_a_of_type_JavaLangString))
-    {
-      if ((paramtff.jdField_a_of_type_JavaUtilList == null) || (paramtff.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label168;
-      }
-      str = ((tfx)paramtff.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
-      Iterator localIterator = paramtff.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      do
       {
-        tfx localtfx = (tfx)localIterator.next();
-        if (!localtfx.jdField_a_of_type_Boolean) {
-          str = localtfx.jdField_a_of_type_JavaLangString;
-        }
-      }
-    }
-    for (;;)
-    {
-      vei.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramtff.jdField_a_of_type_JavaLangString, "1", "", str });
-      this.a.setTag(2131373350, paramtff.jdField_a_of_type_JavaLangString);
-      return;
-      continue;
-      label168:
-      str = "";
-    }
+        do
+        {
+          do
+          {
+            return;
+            paramJceStruct = (stSimpleGetFeedListRsp)paramJceStruct;
+          } while ((paramJceStruct.feeds == null) || (paramJceStruct.feeds.size() <= 0));
+          tip.a(this.jdField_a_of_type_Tip, true);
+        } while (tip.a(this.jdField_a_of_type_Tip));
+        paramJceStruct = paramJceStruct.feeds;
+        localWSRecommendFragment = (WSRecommendFragment)this.jdField_a_of_type_Tip.a();
+      } while (localWSRecommendFragment == null);
+      localWSRecommendFragment.a(paramJceStruct, this.jdField_a_of_type_Boolean, this.b);
+    } while ((this.jdField_a_of_type_Boolean) || (tip.a(this.jdField_a_of_type_Tip)));
+    tlo.d("WSRecommendFragmentPresenter", "showTopLoading");
+    localWSRecommendFragment.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tir
  * JD-Core Version:    0.7.0.1
  */

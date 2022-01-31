@@ -1,70 +1,58 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.splashad.SplashADView;
+import com.tencent.qphone.base.util.QLog;
 
-class azks
-  implements Comparator<azkq>
+public final class azks
+  implements View.OnClickListener
 {
-  public int a(azkq paramazkq)
-  {
-    if (paramazkq.jdField_a_of_type_Int != -1) {
-      return paramazkq.jdField_a_of_type_Int;
-    }
-    Friends localFriends = paramazkq.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = bbcz.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      paramazkq.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
-  }
+  public azks(awvk paramawvk, azjg paramazjg, SplashADView paramSplashADView, Activity paramActivity) {}
   
-  public int a(azkq paramazkq1, azkq paramazkq2)
+  public void onClick(View paramView)
   {
-    return a(paramazkq1) - a(paramazkq2);
+    int j = 0;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131368987: 
+      if ((this.jdField_a_of_type_Awvk != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Awvk.b))) {
+        awvh.a(this.jdField_a_of_type_Awvk.b, null, 3);
+      }
+      this.jdField_a_of_type_Azjg.a(15, 1, 0L);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.setOnClickListener(null);
+    awvh.a = true;
+    int i = j;
+    if (this.jdField_a_of_type_Awvk != null) {
+      if (this.jdField_a_of_type_Awvk.jdField_d_of_type_Int != 2)
+      {
+        i = j;
+        if (this.jdField_a_of_type_Awvk.jdField_d_of_type_Int != 3) {}
+      }
+      else
+      {
+        awvh.a = false;
+        i = 2000;
+        if ((this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.a) && (this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b) && (this.jdField_a_of_type_Awvk.a == 2)) {
+          this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
+        }
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Awvk.b)) {
+          awvh.a(this.jdField_a_of_type_Awvk.b, null, 2);
+        }
+        bkaz.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Awvk.jdField_d_of_type_JavaLangString);
+      }
+    }
+    QLog.i("QSplash@QbossSplashUtil", 1, "cover_layer =" + i);
+    this.jdField_a_of_type_Azjg.a(15, 1, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azks
  * JD-Core Version:    0.7.0.1
  */

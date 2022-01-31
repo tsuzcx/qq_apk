@@ -11,11 +11,11 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bepb;
-import bepc;
-import bepd;
-import bepe;
-import bfgl;
+import bgpe;
+import bgpf;
+import bgpg;
+import bgph;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,17 +28,17 @@ import java.util.Set;
 
 public class BarrageView
   extends RelativeLayout
-  implements Comparator<bepc>
+  implements Comparator<bgpf>
 {
   private int jdField_a_of_type_Int = 500;
   private long jdField_a_of_type_Long = 9223372036854775807L;
   private final SparseArray<Animation> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private final List<bepc> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private final List<bgpf> jdField_a_of_type_JavaUtilList = new LinkedList();
   private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
   private final Set<Animation> jdField_a_of_type_JavaUtilSet = new HashSet();
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 10;
-  private final List<bepc> jdField_b_of_type_JavaUtilList = new LinkedList();
+  private final List<bgpf> jdField_b_of_type_JavaUtilList = new LinkedList();
   private boolean jdField_b_of_type_Boolean = true;
   private int c = 15;
   private int d = 15;
@@ -75,24 +75,24 @@ public class BarrageView
   
   private Animation a(int paramInt, Animation.AnimationListener paramAnimationListener)
   {
-    Animation localAnimation = bepb.a(getContext(), paramInt, -bfgl.a(getContext()));
+    Animation localAnimation = bgpe.a(getContext(), paramInt, -DisplayUtil.getScreenWidth(getContext()));
     localAnimation.setAnimationListener(paramAnimationListener);
     localAnimation.setDuration(3000L);
     return localAnimation;
   }
   
-  private TextView a(bepc parambepc, int paramInt1, int paramInt2)
+  private TextView a(bgpf parambgpf, int paramInt1, int paramInt2)
   {
     TextView localTextView = new TextView(getContext());
     localTextView.setPadding(this.c, this.e, this.d, this.f);
     localTextView.setTextSize(paramInt1);
-    localTextView.setText(parambepc.jdField_a_of_type_JavaLangString);
-    localTextView.setTextColor(parambepc.jdField_a_of_type_Int);
-    parambepc = new RelativeLayout.LayoutParams(-2, -2);
-    parambepc.addRule(10);
-    parambepc.topMargin = paramInt2;
+    localTextView.setText(parambgpf.jdField_a_of_type_JavaLangString);
+    localTextView.setTextColor(parambgpf.jdField_a_of_type_Int);
+    parambgpf = new RelativeLayout.LayoutParams(-2, -2);
+    parambgpf.addRule(10);
+    parambgpf.topMargin = paramInt2;
     Log.i("BarrageView", "createTextByBarrage: " + paramInt2);
-    localTextView.setLayoutParams(parambepc);
+    localTextView.setLayoutParams(parambgpf);
     return localTextView;
   }
   
@@ -116,8 +116,8 @@ public class BarrageView
       int i2 = ((Integer)paramList.next()).intValue();
       if (this.jdField_a_of_type_AndroidUtilSparseArray.get(i2) == null)
       {
-        localTextView = a((bepc)this.jdField_a_of_type_JavaUtilList.get(i2), i1, m);
-        localAnimation = a(n, new bepd(this, localTextView, i2));
+        localTextView = a((bgpf)this.jdField_a_of_type_JavaUtilList.get(i2), i1, m);
+        localAnimation = a(n, new bgpg(this, localTextView, i2));
         a(localTextView, localAnimation);
         this.jdField_a_of_type_AndroidUtilSparseArray.put(i2, localAnimation);
         m = i1 * 3 + m;
@@ -126,21 +126,21 @@ public class BarrageView
     paramList = this.jdField_b_of_type_JavaUtilList.iterator();
     while (paramList.hasNext())
     {
-      localTextView = a((bepc)paramList.next(), i1, m);
+      localTextView = a((bgpf)paramList.next(), i1, m);
       m += i1 * 3;
-      localAnimation = a(n, new bepe(this, localTextView));
+      localAnimation = a(n, new bgph(this, localTextView));
       a(localTextView, localAnimation);
       this.jdField_a_of_type_JavaUtilSet.add(localAnimation);
     }
     this.jdField_b_of_type_JavaUtilList.clear();
   }
   
-  public int a(bepc parambepc1, bepc parambepc2)
+  public int a(bgpf parambgpf1, bgpf parambgpf2)
   {
-    if (parambepc1.jdField_a_of_type_Long < parambepc2.jdField_a_of_type_Long) {
+    if (parambgpf1.jdField_a_of_type_Long < parambgpf2.jdField_a_of_type_Long) {
       return -1;
     }
-    if (parambepc1.jdField_a_of_type_Long == parambepc2.jdField_a_of_type_Long) {
+    if (parambgpf1.jdField_a_of_type_Long == parambgpf2.jdField_a_of_type_Long) {
       return 0;
     }
     return 1;
@@ -180,7 +180,7 @@ public class BarrageView
       long l;
       if (m < this.jdField_a_of_type_JavaUtilList.size())
       {
-        l = ((bepc)this.jdField_a_of_type_JavaUtilList.get(m)).jdField_a_of_type_Long * 1000L;
+        l = ((bgpf)this.jdField_a_of_type_JavaUtilList.get(m)).jdField_a_of_type_Long * 1000L;
         if (l <= paramLong) {}
       }
       else
@@ -200,12 +200,12 @@ public class BarrageView
     }
   }
   
-  public void a(bepc parambepc)
+  public void a(bgpf parambgpf)
   {
-    this.jdField_b_of_type_JavaUtilList.add(parambepc);
+    this.jdField_b_of_type_JavaUtilList.add(parambgpf);
   }
   
-  public void setBarrages(List<bepc> paramList)
+  public void setBarrages(List<bgpf> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {}
     do
@@ -219,7 +219,7 @@ public class BarrageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView
  * JD-Core Version:    0.7.0.1
  */

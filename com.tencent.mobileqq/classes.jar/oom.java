@@ -1,38 +1,104 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class oom
-  implements AladdinConfigHandler
+class oom
+  implements BusinessObserver
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("AdFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = oof.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("AdFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "commercialAd_feeds")) {
-        bhvy.a("ad_feeds_proteus_offline_bid", str2);
-      }
-    }
-    return true;
-  }
+  oom(ooi paramooi, BaseCommentData paramBaseCommentData) {}
   
-  public void onWipeConfig(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    bhvy.a("ad_feeds_proteus_offline_bid", "0");
+    int i = 1;
+    String str = "";
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        if (arrayOfByte == null) {
+          break label229;
+        }
+        paramBundle = new WebSsoBody.WebSsoResponseBody();
+        try
+        {
+          paramBundle.mergeFrom(arrayOfByte);
+          paramInt = paramBundle.ret.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("ReadInJoyCommentSSOModule", 2, "commentReport ret=" + paramBundle.data.get());
+          }
+          if (paramInt == 0) {
+            break label179;
+          }
+          try
+          {
+            paramBundle = new JSONObject(paramBundle.data.get()).optString("msg");
+            paramInt = 0;
+          }
+          catch (JSONException paramBundle)
+          {
+            paramBundle.printStackTrace();
+            paramInt = 0;
+            paramBundle = str;
+            continue;
+          }
+          if ((paramInt == 0) && (ooi.a(this.jdField_a_of_type_Ooi) != null)) {
+            ooi.a(this.jdField_a_of_type_Ooi).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, paramBundle);
+          }
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+          continue;
+        }
+        paramBundle.printStackTrace();
+      }
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+      }
+      for (;;)
+      {
+        for (;;)
+        {
+          paramBundle = str;
+          break;
+          label179:
+          paramBundle = str;
+          paramInt = i;
+          try
+          {
+            if (ooi.a(this.jdField_a_of_type_Ooi) == null) {
+              break;
+            }
+            ooi.a(this.jdField_a_of_type_Ooi).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
+            paramBundle = str;
+            paramInt = i;
+          }
+          catch (Exception paramBundle)
+          {
+            paramInt = 1;
+          }
+        }
+      }
+      label229:
+      paramInt = 0;
+      paramBundle = str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oom
  * JD-Core Version:    0.7.0.1
  */

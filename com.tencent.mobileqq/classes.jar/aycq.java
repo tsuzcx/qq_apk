@@ -1,32 +1,80 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.1.1;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SearchHistory;
 
 public class aycq
-  implements MediaPlayer.OnCompletionListener
+  extends aydi
 {
-  public aycq(VideoSprite paramVideoSprite) {}
+  private SearchHistory a;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public aycq(QQAppInterface paramQQAppInterface, SearchHistory paramSearchHistory)
   {
-    if (this.a.j) {
-      this.a.b.b(new VideoSprite.1.1(this));
-    }
-    do
+    this.a = paramSearchHistory;
+  }
+  
+  public Drawable a()
+  {
+    return null;
+  }
+  
+  public SearchHistory a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return this.a.extralInfo;
+  }
+  
+  public void a(String paramString) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    switch (this.a.type)
     {
-      return;
-      this.a.g = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    } while (this.a.jdField_a_of_type_Aycd == null);
-    this.a.jdField_a_of_type_Aycd.a();
+    default: 
+    case 3000: 
+    case 1: 
+    case 1006: 
+    case 56938: 
+    case 1008: 
+      do
+      {
+        return 1;
+        return 101;
+        return 4;
+        return 11;
+      } while (!TextUtils.equals(this.a.uin, aljq.az));
+      return 110;
+    }
+    return 111;
+  }
+  
+  public String c()
+  {
+    return this.a.displayName;
+  }
+  
+  public String d()
+  {
+    return this.a.uin;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aycq
  * JD-Core Version:    0.7.0.1
  */

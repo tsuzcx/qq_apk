@@ -1,34 +1,61 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.hce.HcePluginInstallActivity;
 
-class bils
-  implements Animation.AnimationListener
+public class bils
+  implements OnPluginInstallListener
 {
-  bils(bill parambill, boolean paramBoolean, int paramInt, String paramString) {}
+  public bils(HcePluginInstallActivity paramHcePluginInstallActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public IBinder asBinder()
   {
-    bill.a(this.jdField_a_of_type_Bill, false);
-    bill.b(this.jdField_a_of_type_Bill).setVisibility(8);
-    bill.a(this.jdField_a_of_type_Bill).setVisibility(8);
-    if ((this.jdField_a_of_type_Boolean) && (!bill.a(this.jdField_a_of_type_Bill).get())) {
-      bill.a(this.jdField_a_of_type_Bill, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallBegin, pluginId:" + paramString);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    bill.a(this.jdField_a_of_type_Bill, true);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallDownloadProgress, pluginId:" + paramString + " offset:" + paramInt1 + " total: " + paramInt2);
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
+    }
+    QQToast.a(this.a.getApplicationContext(), 2131695368, 0).a();
+    HcePluginInstallActivity.a(this.a, false);
+    this.a.finish();
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
+    }
+    if (HcePluginInstallActivity.a(this.a).isPlugininstalled("vfc_plugin.apk"))
+    {
+      HcePluginInstallActivity.a(this.a);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 2131695368, 0).a();
+    HcePluginInstallActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bils
  * JD-Core Version:    0.7.0.1
  */

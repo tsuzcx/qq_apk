@@ -1,65 +1,30 @@
-import java.util.ArrayList;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import dov.com.qq.im.ae.camera.ui.panel.AEGridView;
 
-class bkte
+public class bkte
+  extends RecyclerView.ItemDecoration
 {
-  int jdField_a_of_type_Int = 3;
-  long jdField_a_of_type_Long = 0L;
-  bkte jdField_a_of_type_Bkte = null;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-  boolean jdField_a_of_type_Boolean = false;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  static bkte a()
+  public bkte(AEGridView paramAEGridView, int paramInt1, int paramInt2)
   {
-    bkte localbkte = new bkte();
-    localbkte.a();
-    return localbkte;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  String a()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return "LBS_REQ_OK";
-    case 1: 
-      return "LBS_REQ_PENDING";
-    }
-    return "LBS_REQ_PERM_OK";
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Bkte == null) {
-      this.jdField_a_of_type_Bkte = new bkte();
-    }
-  }
-  
-  boolean a(String paramString)
-  {
-    bktc.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
-    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
-  }
-  
-  void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  void c()
-  {
-    this.jdField_a_of_type_Bkte.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Bkte.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Bkte.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Bkte.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Bkte.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    paramRect.top = this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkte
  * JD-Core Version:    0.7.0.1
  */

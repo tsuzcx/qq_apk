@@ -1,18 +1,49 @@
-public class bkbw
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
+
+class bkbw
+  extends QzoneExternalRequest
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  bkbw(bkbv parambkbv, Intent paramIntent) {}
   
-  public String toString()
+  public String getCmdString()
   {
-    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
+    return "SweetQzoneService.GetCommCfg";
+  }
+  
+  public JceStruct getReq()
+  {
+    sweet_comm_cfg_get_req localsweet_comm_cfg_get_req = new sweet_comm_cfg_get_req();
+    Object localObject = new ArrayList();
+    ((ArrayList)localObject).add(Integer.valueOf(1));
+    localsweet_comm_cfg_get_req.vec_cfg = ((ArrayList)localObject);
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    {
+      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      localObject = new sweet_req_comm();
+      ((sweet_req_comm)localObject).opuin = l;
+      ((sweet_req_comm)localObject).uin = l;
+      ((sweet_req_comm)localObject).loveuin = 0L;
+      ((sweet_req_comm)localObject).qua = bizf.a();
+      ((sweet_req_comm)localObject).pf = 1;
+      ((sweet_req_comm)localObject).src = 3;
+      localsweet_comm_cfg_get_req.req_comm = ((sweet_req_comm)localObject);
+    }
+    return localsweet_comm_cfg_get_req;
+  }
+  
+  public String uniKey()
+  {
+    return "GetCommCfg";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkbw
  * JD-Core Version:    0.7.0.1
  */

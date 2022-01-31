@@ -1,32 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.hlyyb.downloader.DownloaderTask;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 
 public class azxp
-  implements View.OnClickListener
 {
-  public azxp(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public long a;
+  private DownloaderTask a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "now_for_qq";
+  public String e = "now_appid_2";
+  public String f = "now";
+  public String g;
+  public String h;
   
-  public void onClick(View paramView)
+  public static azxp a(String paramString1, String paramString2, String paramString3)
   {
-    bfni.b(paramView);
-    try
-    {
-      this.a.h();
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
-    }
+    azxp localazxp = new azxp();
+    localazxp.jdField_a_of_type_JavaLangString = "2";
+    localazxp.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
+    localazxp.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
+    localazxp.b = paramString1;
+    localazxp.c = paramString2;
+    localazxp.jdField_a_of_type_Long = System.currentTimeMillis();
+    QLog.i("NowDownloadTaskInfo", 4, localazxp.toString());
+    return localazxp;
+  }
+  
+  public DownloaderTask a()
+  {
+    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
+  }
+  
+  public void a(DownloaderTask paramDownloaderTask)
+  {
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
+  }
+  
+  public String toString()
+  {
+    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azxp
  * JD-Core Version:    0.7.0.1
  */

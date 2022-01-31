@@ -1,36 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
-public final class aacv
+public class aacv
+  implements aadk
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  public aacv(GameCenterAPIJavaScript paramGameCenterAPIJavaScript, String paramString) {}
   
-  public JSONObject a()
+  public void a(int paramInt, String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
-      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(aacs.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
-    }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
+    this.jdField_a_of_type_ComTencentGamecenterCommonUtilGameCenterAPIJavaScript.callbackJS(this.jdField_a_of_type_JavaLangString, paramInt, paramString);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aglf;
-import aglr;
+import aiiz;
+import aijk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 
 public class ImageInfo
-  extends aglf
+  extends aiiz
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageInfo> CREATOR = new aglr();
+  public static final Parcelable.Creator<ImageInfo> CREATOR = new aijk();
   public long a;
   public int b;
   public long b;
@@ -191,7 +191,7 @@ public class ImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.ImageInfo
  * JD-Core Version:    0.7.0.1
  */

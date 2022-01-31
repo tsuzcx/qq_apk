@@ -4,8 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import aymx;
-import bbqz;
+import bakt;
+import bdpt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -21,7 +21,7 @@ import com.tencent.qq.effect.utils.QEffectUtils;
 public class QEffectApngImageView
   extends QEffectImageView
 {
-  private aymx jdField_a_of_type_Aymx;
+  private bakt jdField_a_of_type_Bakt;
   private final String jdField_a_of_type_JavaLangString = "QEffectApngImageView";
   
   public QEffectApngImageView(Context paramContext)
@@ -29,13 +29,13 @@ public class QEffectApngImageView
     super(paramContext);
   }
   
-  public static aymx a(int[] paramArrayOfInt, String paramString)
+  public static bakt a(int[] paramArrayOfInt, String paramString)
   {
-    aymx localaymx = new aymx();
-    localaymx.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    localaymx.b = paramString;
-    localaymx.jdField_a_of_type_JavaLangString = paramString;
-    return localaymx;
+    bakt localbakt = new bakt();
+    localbakt.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    localbakt.b = paramString;
+    localbakt.jdField_a_of_type_JavaLangString = paramString;
+    return localbakt;
   }
   
   public void load(Context paramContext, QEffectView paramQEffectView, IQEffectLoad paramIQEffectLoad, QEffectData paramQEffectData)
@@ -50,23 +50,23 @@ public class QEffectApngImageView
       return;
     }
     paramContext = paramQEffectView.getExtOptions(paramQEffectData.type);
-    if ((paramContext != null) && ((paramContext instanceof aymx))) {
-      this.jdField_a_of_type_Aymx = ((aymx)paramQEffectView.getExtOptions(paramQEffectData.type));
+    if ((paramContext != null) && ((paramContext instanceof bakt))) {
+      this.jdField_a_of_type_Bakt = ((bakt)paramQEffectView.getExtOptions(paramQEffectData.type));
     }
     for (;;)
     {
       paramContext = new Bundle();
       paramContext.putBoolean("key_double_bitmap", true);
-      paramContext = bbqz.a(BaseApplicationImpl.sApplication.getRuntime(), paramQEffectData.src, this.jdField_a_of_type_Aymx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aymx.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Aymx.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_Aymx.b, paramContext);
+      paramContext = bdpt.a(BaseApplicationImpl.sApplication.getRuntime(), paramQEffectData.src, this.jdField_a_of_type_Bakt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bakt.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Bakt.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_Bakt.b, paramContext);
       if (paramContext != null) {
         break;
       }
       Log.e("QEffectApngImageView", " load apng is null" + paramQEffectData.repeat);
       return;
-      this.jdField_a_of_type_Aymx = new aymx();
-      this.jdField_a_of_type_Aymx.jdField_a_of_type_JavaLangString = String.valueOf(paramQEffectData.effectId);
-      this.jdField_a_of_type_Aymx.b = String.valueOf(paramQEffectData.effectId);
-      this.jdField_a_of_type_Aymx.jdField_a_of_type_ArrayOfInt = new int[] { paramQEffectData.effectId };
+      this.jdField_a_of_type_Bakt = new bakt();
+      this.jdField_a_of_type_Bakt.jdField_a_of_type_JavaLangString = String.valueOf(paramQEffectData.effectId);
+      this.jdField_a_of_type_Bakt.b = String.valueOf(paramQEffectData.effectId);
+      this.jdField_a_of_type_Bakt.jdField_a_of_type_ArrayOfInt = new int[] { paramQEffectData.effectId };
     }
     if ((paramContext.getCurrDrawable() instanceof ApngDrawable)) {
       ((ApngDrawable)paramContext.getCurrDrawable()).getImage().apngLoop = paramQEffectData.repeat;
@@ -76,7 +76,7 @@ public class QEffectApngImageView
   
   public void pause()
   {
-    int[] arrayOfInt = this.jdField_a_of_type_Aymx.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = this.jdField_a_of_type_Bakt.jdField_a_of_type_ArrayOfInt;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -88,7 +88,7 @@ public class QEffectApngImageView
   
   public void resume()
   {
-    int[] arrayOfInt = this.jdField_a_of_type_Aymx.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = this.jdField_a_of_type_Bakt.jdField_a_of_type_ArrayOfInt;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -100,7 +100,7 @@ public class QEffectApngImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.effect.QEffectApngImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import mqq.app.Packet;
 
@@ -38,14 +38,14 @@ public class MiniAppDataReportServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_report_transfer.DataReport");
-    paramPacket.putSendData(bbma.a((byte[])localObject));
+    paramPacket.putSendData(bdku.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppDataReportServlet
  * JD-Core Version:    0.7.0.1
  */

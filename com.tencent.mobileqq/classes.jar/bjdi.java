@@ -1,25 +1,43 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import cooperation.qzone.util.QZLog;
+import mqq.util.WeakReference;
 
-class bjdi
-  implements DialogInterface.OnClickListener
+final class bjdi
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  bjdi(bjdg parambjdg) {}
+  bjdi(long paramLong, bjdj parambjdj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(false);
-    this.a.jdField_a_of_type_Bigp.d(false);
-    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().onBackPressed();
-    avtp.e();
-    avtd.f();
+    StringBuilder localStringBuilder = new StringBuilder().append("onPluginManagerLoaded: ");
+    Object localObject;
+    if (paramPluginManagerClient != null)
+    {
+      localObject = Boolean.valueOf(paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk"));
+      QZLog.i("QZoneApiProxy", localObject + " cost " + (System.nanoTime() - this.jdField_a_of_type_Long));
+      bjdh.a(new WeakReference(paramPluginManagerClient));
+      if (this.jdField_a_of_type_Bjdj != null)
+      {
+        localObject = this.jdField_a_of_type_Bjdj;
+        if ((paramPluginManagerClient == null) || (!paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk"))) {
+          break label111;
+        }
+      }
+    }
+    label111:
+    for (boolean bool = true;; bool = false)
+    {
+      ((bjdj)localObject).a(bool);
+      return;
+      localObject = "null";
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjdi
  * JD-Core Version:    0.7.0.1
  */

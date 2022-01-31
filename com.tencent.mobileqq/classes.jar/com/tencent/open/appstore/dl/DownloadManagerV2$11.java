@@ -1,23 +1,23 @@
 package com.tencent.open.appstore.dl;
 
-import bdhi;
-import bdhk;
+import bfgg;
+import bfgi;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DownloadManagerV2$11
   implements Runnable
 {
-  public DownloadManagerV2$11(bdhk parambdhk, String paramString) {}
+  public DownloadManagerV2$11(bfgi parambfgi, String paramString) {}
   
   public void run()
   {
-    if (bdhk.a(this.this$0).get(this.a) != null) {}
+    if (bfgi.a(this.this$0).get(this.a) != null) {}
     DownloadInfo localDownloadInfo;
     do
     {
       return;
-      localDownloadInfo = bdhi.a().a(this.a);
+      localDownloadInfo = bfgg.a().a(this.a);
     } while (localDownloadInfo == null);
     this.this$0.c(localDownloadInfo);
   }

@@ -1,38 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-class mhd
-  implements DialogInterface.OnClickListener
+public class mhd
+  extends BroadcastReceiver
 {
-  mhd(mhc parammhc) {}
+  public mhd(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    mha.a(this.a.a, false);
-    if (paramInt == 1)
+    if (paramIntent.getAction().equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
     {
-      axqy.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
-      this.a.a.c();
-      if (!muc.a(mha.a(this.a.a))) {
-        mha.a(this.a.a).a(mha.a(this.a.a));
-      }
+      long l = AudioHelper.b();
+      paramContext = lfb.a().a();
+      this.a.a(l, "BroadcastReceiver_qzone", this.a.getIntent(), paramContext);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
+      this.a.b("BroadcastReceiver_qzone");
     }
-    while (paramInt != 0)
-    {
-      return;
-      mha.a(this.a.a).b(mha.a(this.a.a));
-      return;
-    }
-    mha.a(this.a.a, mha.a(this.a.a).a().v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,213 +1,187 @@
-import android.graphics.Canvas;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.RectF;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.os.Build.VERSION;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
 
 public class bjiz
+  extends bjja
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private bjgv jdField_a_of_type_Bjgv;
-  private bjja jdField_a_of_type_Bjja;
-  private ArrayList<bjin> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private float b = 0.0F;
+  public static float a;
+  private float g;
   
-  public bjiz(int paramInt)
+  public bjiz(boolean paramBoolean)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_Bjja = new bjim();
+    super(paramBoolean);
+    this.jdField_g_of_type_Float = 55.207924F;
+    if (paramBoolean) {
+      this.jdField_g_of_type_Int = 36;
     }
-    while (paramInt == 0) {
-      return;
-    }
-    throw new IllegalArgumentException("TextDrawImplement init failed");
-  }
-  
-  public float a()
-  {
-    RectF localRectF = new RectF();
-    localRectF.left = 3.4028235E+38F;
-    localRectF.top = 3.4028235E+38F;
-    localRectF.right = 1.4E-45F;
-    localRectF.bottom = 1.4E-45F;
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      bjin localbjin = (bjin)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localRectF.left > localbjin.jdField_a_of_type_AndroidGraphicsRectF.left) {
-        localRectF.left = localbjin.jdField_a_of_type_AndroidGraphicsRectF.left;
-      }
-      if (localRectF.right < localbjin.jdField_a_of_type_AndroidGraphicsRectF.right) {
-        localRectF.right = localbjin.jdField_a_of_type_AndroidGraphicsRectF.right;
-      }
-      if (localRectF.top > localbjin.jdField_a_of_type_AndroidGraphicsRectF.top) {
-        localRectF.top = localbjin.jdField_a_of_type_AndroidGraphicsRectF.top;
-      }
-      if (localRectF.bottom < localbjin.jdField_a_of_type_AndroidGraphicsRectF.bottom) {
-        localRectF.bottom = localbjin.jdField_a_of_type_AndroidGraphicsRectF.bottom;
-      }
-      i += 1;
-    }
-    return localRectF.width();
+    this.jdField_c_of_type_Float = jdField_a_of_type_Float;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return 3;
   }
   
-  public int a(int paramInt)
+  protected void a()
   {
-    return ((bjin)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString.length();
-  }
-  
-  public RectF a(int paramInt)
-  {
-    return ((bjin)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_AndroidGraphicsRectF;
-  }
-  
-  public RectF a(int paramInt1, int paramInt2)
-  {
-    paramInt1 -= 1;
-    paramInt2 -= 1;
-    if ((paramInt1 >= 0) && (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt2 >= 0) && (paramInt2 < this.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt2 >= paramInt1))
+    if ((this.h != 0) && (this.i != 0)) {}
+    for (this.jdField_f_of_type_Float = (360 - (6 - (int)(this.h / this.i + 0.1F)) * 40);; this.jdField_f_of_type_Float = 360.0F)
     {
-      RectF localRectF = new RectF();
-      localRectF.left = 3.4028235E+38F;
-      localRectF.top = 3.4028235E+38F;
-      localRectF.right = 1.4E-45F;
-      localRectF.bottom = 1.4E-45F;
-      while (paramInt1 <= paramInt2)
-      {
-        bjin localbjin = (bjin)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-        if (localRectF.left > localbjin.jdField_a_of_type_AndroidGraphicsRectF.left) {
-          localRectF.left = localbjin.jdField_a_of_type_AndroidGraphicsRectF.left;
-        }
-        if (localRectF.right < localbjin.jdField_a_of_type_AndroidGraphicsRectF.right) {
-          localRectF.right = localbjin.jdField_a_of_type_AndroidGraphicsRectF.right;
-        }
-        if (localRectF.top > localbjin.jdField_a_of_type_AndroidGraphicsRectF.top) {
-          localRectF.top = localbjin.jdField_a_of_type_AndroidGraphicsRectF.top;
-        }
-        if (localRectF.bottom < localbjin.jdField_a_of_type_AndroidGraphicsRectF.bottom) {
-          localRectF.bottom = localbjin.jdField_a_of_type_AndroidGraphicsRectF.bottom;
-        }
-        paramInt1 += 1;
+      if (this.jdField_f_of_type_Float > 360.0F) {
+        this.jdField_f_of_type_Float = 360.0F;
       }
-      return localRectF;
-    }
-    return null;
-  }
-  
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Bjgv != null)) {
-      this.jdField_a_of_type_Bjgv.a(paramCanvas, this.jdField_a_of_type_JavaUtilArrayList, paramInt1, paramInt2);
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bjin localbjin = (bjin)localIterator.next();
-      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Bjgv != null)) {
-        localbjin.a(paramCanvas, this.jdField_a_of_type_Bjgv, paramInt1, paramInt2);
-      }
-      localbjin.a(paramCanvas, paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(bjgv parambjgv)
-  {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Bjgv = parambjgv;
-  }
-  
-  public void a(bjgw parambjgw)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      parambjgw.a(i, (bjin)this.jdField_a_of_type_JavaUtilArrayList.get(i));
-      i += 1;
-    }
-  }
-  
-  public void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint)
-  {
-    if (paramTextPaint == null) {
-      paramTextPaint = new TextPaint();
-    }
-    for (;;)
-    {
-      paramTextPaint.setTextSize(paramInt2);
-      StaticLayout localStaticLayout = new StaticLayout(paramCharSequence, paramTextPaint, paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramInt1 = 0;
-      float f3;
-      for (float f1 = 0.0F; paramInt1 < localStaticLayout.getLineCount(); f1 += f3)
-      {
-        Object localObject = new RectF();
-        String str = paramCharSequence.subSequence(localStaticLayout.getLineStart(paramInt1), localStaticLayout.getLineEnd(paramInt1)).toString();
-        Paint.FontMetrics localFontMetrics = paramTextPaint.getFontMetrics();
-        float f2 = paramTextPaint.measureText(str, 0, str.length());
-        f3 = Math.abs(localFontMetrics.bottom - localFontMetrics.top);
-        float f4 = Math.abs(localFontMetrics.ascent);
-        ((RectF)localObject).left = 0.0F;
-        ((RectF)localObject).right = (0.0F + f2);
-        ((RectF)localObject).top = f1;
-        ((RectF)localObject).bottom = (f1 + f3);
-        localObject = new bjin(0, 0, paramTextPaint, str, (RectF)localObject, f4);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        if (this.jdField_a_of_type_Float < f2) {
-          this.jdField_a_of_type_Float = f2;
-        }
-        this.b += f3;
-        paramInt1 += 1;
-      }
+      jdField_a_of_type_Float = this.jdField_f_of_type_Float / 2.0F;
+      this.jdField_c_of_type_Float = jdField_a_of_type_Float;
       return;
     }
   }
   
-  public float b()
+  public int b()
   {
-    RectF localRectF = new RectF();
-    localRectF.left = 3.4028235E+38F;
-    localRectF.top = 3.4028235E+38F;
-    localRectF.right = 1.4E-45F;
-    localRectF.bottom = 1.4E-45F;
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      bjin localbjin = (bjin)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localRectF.left > localbjin.jdField_a_of_type_AndroidGraphicsRectF.left) {
-        localRectF.left = localbjin.jdField_a_of_type_AndroidGraphicsRectF.left;
-      }
-      if (localRectF.right < localbjin.jdField_a_of_type_AndroidGraphicsRectF.right) {
-        localRectF.right = localbjin.jdField_a_of_type_AndroidGraphicsRectF.right;
-      }
-      if (localRectF.top > localbjin.jdField_a_of_type_AndroidGraphicsRectF.top) {
-        localRectF.top = localbjin.jdField_a_of_type_AndroidGraphicsRectF.top;
-      }
-      if (localRectF.bottom < localbjin.jdField_a_of_type_AndroidGraphicsRectF.bottom) {
-        localRectF.bottom = localbjin.jdField_a_of_type_AndroidGraphicsRectF.bottom;
-      }
-      i += 1;
-    }
-    return localRectF.height();
+    return 2;
   }
   
-  public void b(bjgv parambjgv)
+  protected void b()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Bjgv = parambjgv;
+    this.d = 0.5228754F;
+    ArrayList localArrayList = bjqf.a().a(this.jdField_f_of_type_Float, false);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (Object localObject = bjqf.a().a(this.jdField_f_of_type_Float, true);; localObject = null)
+    {
+      if ((localArrayList == null) || (localArrayList.size() != 2)) {}
+      float[] arrayOfFloat1;
+      do
+      {
+        return;
+        float[] arrayOfFloat2 = (float[])localArrayList.get(0);
+        int i = arrayOfFloat2.length;
+        arrayOfFloat1 = arrayOfFloat2;
+        if (localObject != null)
+        {
+          float[] arrayOfFloat3 = (float[])((ArrayList)localObject).get(0);
+          arrayOfFloat1 = Arrays.copyOf(arrayOfFloat2, arrayOfFloat3.length + i);
+          System.arraycopy(arrayOfFloat3, 0, arrayOfFloat1, i, arrayOfFloat3.length);
+        }
+        if (arrayOfFloat1 != null)
+        {
+          this.jdField_a_of_type_Int = (i / 3);
+          this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(arrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+          this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat1);
+          this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+        }
+        arrayOfFloat2 = (float[])localArrayList.get(1);
+        i = arrayOfFloat2.length;
+        arrayOfFloat1 = arrayOfFloat2;
+        if (localObject != null)
+        {
+          localObject = (float[])((ArrayList)localObject).get(1);
+          arrayOfFloat1 = Arrays.copyOf(arrayOfFloat2, localObject.length + i);
+          System.arraycopy(localObject, 0, arrayOfFloat1, i, localObject.length);
+        }
+      } while (arrayOfFloat1 == null);
+      this.jdField_b_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(arrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.jdField_b_of_type_JavaNioFloatBuffer.put(arrayOfFloat1);
+      this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.d != 0.0F)
+    {
+      if (this.d > 0.5228754F) {
+        this.d = 0.5228754F;
+      }
+      float f = (float)(Math.toDegrees(Math.atan(this.d)) * 2.0D);
+      this.jdField_g_of_type_Float = ((int)((55.207924F - f) * 0.5D));
+      if (Build.VERSION.SDK_INT >= 14) {
+        Matrix.perspectiveM(this.jdField_b_of_type_ArrayOfFloat, 0, f, this.jdField_e_of_type_Float, 1.0F, 500.0F);
+      }
+      Matrix.translateM(this.jdField_b_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, -2.0F);
+    }
+    int i;
+    if (this.jdField_b_of_type_Float > this.jdField_g_of_type_Float)
+    {
+      this.jdField_b_of_type_Float = this.jdField_g_of_type_Float;
+      if (jdField_a_of_type_Float == 180.0F) {
+        break label337;
+      }
+      if (this.jdField_e_of_type_Int != 1) {
+        break label312;
+      }
+      i = 44;
+      label133:
+      if (this.jdField_c_of_type_Float <= this.jdField_f_of_type_Float - i) {
+        break label318;
+      }
+      this.jdField_c_of_type_Float = (this.jdField_f_of_type_Float - i);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bjit != null)
+      {
+        this.jdField_a_of_type_Bjit.a(this.d);
+        this.jdField_a_of_type_Bjit.a(this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
+      }
+      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, -this.jdField_b_of_type_Float, 1.0F, 0.0F, 0.0F);
+      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, -this.jdField_c_of_type_Float, 0.0F, 1.0F, 0.0F);
+      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, 0.0F, 1.0F);
+      if ((this.jdField_a_of_type_Bjjb != null) && (this.d != 1.0F)) {
+        this.jdField_a_of_type_Bjjb.a((int)this.jdField_f_of_type_Float - i, -this.jdField_b_of_type_Float, -this.jdField_c_of_type_Float, this.d);
+      }
+      return;
+      if (this.jdField_b_of_type_Float >= -this.jdField_g_of_type_Float) {
+        break;
+      }
+      this.jdField_b_of_type_Float = (-this.jdField_g_of_type_Float);
+      break;
+      label312:
+      i = 17;
+      break label133;
+      label318:
+      if (this.jdField_c_of_type_Float < i) {
+        this.jdField_c_of_type_Float = i;
+      }
+      continue;
+      label337:
+      i = 0;
+    }
+  }
+  
+  public void d()
+  {
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.jdField_f_of_type_Int);
+    GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, a(), 0);
+    GLES20.glDrawArrays(4, 0, c());
+    if (this.jdField_a_of_type_Bjje != null)
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_Bjje.size())
+      {
+        bjjf localbjjf = (bjjf)this.jdField_a_of_type_Bjje.valueAt(i);
+        int j = localbjjf.a();
+        if (j > 0)
+        {
+          GLES20.glBindTexture(3553, j);
+          j = c();
+          GLES20.glDrawArrays(4, ((int)(this.jdField_f_of_type_Float / 10.0F) - 1 - localbjjf.b()) * 6 + j, 6);
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjiz
  * JD-Core Version:    0.7.0.1
  */

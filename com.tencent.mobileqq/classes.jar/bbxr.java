@@ -1,102 +1,41 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.vip.diy.TemplateLikeView;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class bbxr
-  extends bhzo
+  implements DialogInterface.OnClickListener
 {
-  private String a;
+  public bbxr(ReciteFragment paramReciteFragment, QQAppInterface paramQQAppInterface) {}
   
-  public bbxr(String paramString1, View paramView, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramString1, paramView);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    ((TemplateLikeView)paramView).a(1);
-  }
-  
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = -2;
-    this.b = a(paramJSONObject.optString("height"));
-    paramLayoutParams.width = -2;
-    paramLayoutParams.height = -2;
-    int i = vzl.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("lpd", 2) / 2);
-    int j = vzl.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("rpd", 2) / 2);
-    ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setContainerLayoutParams(this.jdField_a_of_type_Int, this.b, i, j);
-    return paramLayoutParams;
-  }
-  
-  protected URLDrawable a(String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    String str = paramString;
-    if (!paramString.startsWith("http"))
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.c();
+    QQAppInterface localQQAppInterface;
+    String str1;
+    String str2;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      str = paramString;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (!this.jdField_a_of_type_JavaLangString.startsWith("http")) {
-          break label114;
-        }
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      str1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bbzr.f;
+      str2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bbzr.f;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo == null) {
+        break label108;
       }
     }
-    for (str = this.jdField_a_of_type_JavaLangString + paramString;; str = paramString)
+    label108:
+    for (paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title;; paramDialogInterface = "")
     {
-      paramString = URLDrawable.URLDrawableOptions.obtain();
-      paramString.mLoadingDrawable = aywm.a;
-      paramString.mFailedDrawable = aywm.a;
-      paramString.mPlayGifImage = false;
-      if (paramDecodeHandler != null) {
-        paramString.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
-      }
-      paramString = URLDrawable.getDrawable(str, paramString);
-      paramString.setDecodeHandler(paramDecodeHandler);
-      return paramString;
-      label114:
-      QLog.e("JsonInflateViewModel", 1, "it have the illegal url prefix=" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if ("bg".equals(paramString1)) {
-      if ((this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView)) {
-        ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setVoteContainerBackground(a(paramString2, null));
-      }
-    }
-    do
-    {
-      return;
-      if (!"style".equals(paramString1)) {
-        break;
-      }
-    } while (!(this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView));
-    paramString1 = (TemplateLikeView)this.jdField_a_of_type_AndroidViewView;
-    if ("1".equals(paramString2)) {}
-    for (int i = 0;; i = 1)
-    {
-      paramString1.a(i);
+      bdaj.a(localQQAppInterface, str1, "Grp_recite", "Out_Recite_Clk", 0, 0, new String[] { str2, "", paramDialogInterface, "" });
       return;
     }
-    super.a(paramString1, paramString2);
-  }
-  
-  public void c()
-  {
-    super.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbxr
  * JD-Core Version:    0.7.0.1
  */

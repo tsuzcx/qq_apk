@@ -6,21 +6,21 @@ import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import azth;
-import azti;
+import bbrq;
+import bbrr;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopMemberListRefresher$1$1
   implements Runnable
 {
-  public TroopMemberListRefresher$1$1(azti paramazti) {}
+  public TroopMemberListRefresher$1$1(bbrr parambbrr) {}
   
   public void run()
   {
     try
     {
       QLog.e("RefreshMemberList", 4, "onUpdateTroopGetMemberList - success");
-      String str = azth.a(this.a.a, this.a.a.jdField_a_of_type_JavaLangString);
+      String str = bbrq.a(this.a.a, this.a.a.jdField_a_of_type_JavaLangString);
       if (TextUtils.isEmpty(str)) {
         return;
       }

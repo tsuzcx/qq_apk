@@ -1,97 +1,42 @@
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
-public class afbf
-  extends akat
+class afbf
+  implements View.OnClickListener
 {
-  public afbf(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  afbf(afbe paramafbe, String paramString1, String paramString2) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onBlessDirtyTextCheck " + paramBoolean + " ,code=" + paramInt);
-    }
-    if (paramBoolean) {}
-    while ((i != 0) && (!BlessSelectMemberActivity.b()))
+    try
     {
-      BlessSelectMemberActivity.a(this.a, BlessSelectMemberActivity.a(this.a));
-      return;
-      if (paramInt != 0) {
-        if (paramInt == 1)
-        {
-          BlessSelectMemberActivity.a(this.a, 2131690501, true);
-          i = 0;
-        }
-        else
-        {
-          if (paramInt == 8) {
-            BlessSelectMemberActivity.a(this.a, 2131690536, true);
-          }
-          i = 0;
-        }
-      }
-    }
-    this.a.e();
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1 + " ,replyCode=" + paramInt + " waitTime=" + paramLong + " ,entrance=" + BlessSelectMemberActivity.a(this.a));
-    }
-    if (!this.a.a) {
-      return;
-    }
-    this.a.a = false;
-    if (paramInt == 67L)
-    {
-      BlessSelectMemberActivity.a(System.currentTimeMillis());
-      this.a.a(paramLong);
-      this.a.e();
-      BlessSelectMemberActivity.a(this.a, 2131690521, true);
-      return;
-    }
-    if (BlessSelectMemberActivity.b(this.a) == 15)
-    {
-      this.a.a(paramBoolean1);
-      return;
-    }
-    this.a.a(paramBoolean1, paramBoolean2);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessSelectMemberActivity", 2, "onUpdateMsgContent, isSuc:" + paramBoolean + " ,type:" + BlessSelectMemberActivity.c(this.a));
-    }
-    if (BlessSelectMemberActivity.c(this.a) == 3) {
-      if (paramBoolean) {
-        BlessSelectMemberActivity.a(this.a);
-      }
-    }
-    do
-    {
-      do
+      if (!this.jdField_a_of_type_JavaLangString.equals("0"))
       {
-        return;
-        this.a.e();
-        BlessSelectMemberActivity.a(this.a, 2131690520, false);
-        return;
-      } while (BlessSelectMemberActivity.c(this.a) != 2);
-      if ((BlessSelectMemberActivity.a(this.a).a() == null) || (!paramBoolean))
-      {
-        this.a.e();
-        BlessSelectMemberActivity.a(this.a, 2131690537, false);
-        return;
+        afbe.a(this.jdField_a_of_type_Afbe).a.getText().clear();
+        afbe.a(this.jdField_a_of_type_Afbe).c(afbe.a(this.jdField_a_of_type_Afbe));
       }
-    } while (BlessSelectMemberActivity.b());
-    BlessSelectMemberActivity.b(this.a);
+      int i = afbe.a(this.jdField_a_of_type_Afbe).a.getSelectionStart();
+      paramView = afbe.a(this.jdField_a_of_type_Afbe).a.getText();
+      this.jdField_a_of_type_Afbe.a = true;
+      paramView.insert(i, this.b);
+      this.jdField_a_of_type_Afbe.a = false;
+      afbe.a(this.jdField_a_of_type_Afbe).a.setSelection(paramView.length());
+      this.jdField_a_of_type_Afbe.a();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  PasswdRedBagTips throw an exception: " + paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afbf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,82 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-import com.tencent.mobileqq.nearby.now.view.widget.TopicViewItem;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
 
-public class atng
-  extends BaseAdapter
+class atng
+  implements atlm
 {
-  public atng(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
+  atng(atnf paramatnf) {}
   
-  public int getCount()
+  public void a(atlh paramatlh, int paramInt)
   {
-    if ((StartLiveTopicLabelListView.a(this.a) == null) || (StartLiveTopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[LocationShareController] onKickOff: invoked. roomKey: " + paramatlh + " mRoomKey: " + atnf.a(this.a));
     }
-    return StartLiveTopicLabelListView.a(this.a).size();
+    QQToast.a(atnf.a(this.a), "已在其他设备进行共享", 0).a();
+    atnf.a(this.a).setResult(1);
+    atnf.a(this.a).finish();
   }
   
-  public Object getItem(int paramInt)
+  public void a(atlh paramatlh, int paramInt1, int paramInt2)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramatlh, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
+    }
+    if (!paramatlh.equals(atnf.a(this.a))) {}
+    do
     {
-      paramViewGroup = new atnj(this.a, null);
-      paramView = new TopicViewItem(StartLiveTopicLabelListView.a(this.a));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.a = ((String)StartLiveTopicLabelListView.a(this.a).get(paramInt));
-      if (!ajya.a(2131714357).equals(paramViewGroup.a)) {
-        break label133;
+      do
+      {
+        return;
+        if (paramInt1 != 10100) {
+          break;
+        }
+      } while ((atnf.a(this.a) == null) || (atnf.a(this.a).isFinishing()));
+      atnf.a(this.a).setResult(1);
+      atmi.a(atnf.a(this.a));
+      return;
+    } while ((paramInt1 != 10101) || (atnf.a(this.a) == null) || (atnf.a(this.a).isFinishing()));
+    atnf.a(this.a).setResult(1);
+    atmi.b(atnf.a(this.a));
+  }
+  
+  public void a(atlh paramatlh, LocationRoom.Venue paramVenue, List<atlf> paramList)
+  {
+    if ((!paramatlh.equals(atnf.a(this.a))) || (atnf.a(this.a).isFinishing())) {
+      return;
+    }
+    paramVenue = paramList.iterator();
+    while (paramVenue.hasNext())
+    {
+      paramList = (atlf)paramVenue.next();
+      Bitmap localBitmap = this.a.a(paramList.a());
+      if (localBitmap != null)
+      {
+        localBitmap = bdda.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+        atnf.a(this.a).a(paramList.a(), localBitmap);
       }
-      paramView.setBackgroundResource(StartLiveTopicLabelListView.a(this.a));
-      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.b(this.a));
     }
-    for (;;)
-    {
-      paramView.setOnClickListener(new atnh(this));
-      ((TopicViewItem)paramView).setText(paramViewGroup.a);
-      return paramView;
-      paramViewGroup = (atnj)paramView.getTag();
-      break;
-      label133:
-      paramView.setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
-      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.d(this.a));
+    atnf.a(this.a).a(paramatlh);
+  }
+  
+  public void b(atlh paramatlh, int paramInt)
+  {
+    if (!paramatlh.equals(atnf.a(this.a))) {}
+    while ((paramInt == 2) || (paramInt == 1)) {
+      return;
     }
+    atnf.a(this.a).setResult(1);
+    atmi.a(atnf.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atng
  * JD-Core Version:    0.7.0.1
  */

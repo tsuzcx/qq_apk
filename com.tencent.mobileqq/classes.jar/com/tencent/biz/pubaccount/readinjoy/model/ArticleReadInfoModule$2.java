@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
 import java.util.Iterator;
 import java.util.List;
-import ozt;
+import pfb;
 
 public class ArticleReadInfoModule$2
   implements Runnable
 {
-  public ArticleReadInfoModule$2(ozt paramozt, List paramList) {}
+  public ArticleReadInfoModule$2(pfb parampfb, List paramList) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class ArticleReadInfoModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule.2
  * JD-Core Version:    0.7.0.1
  */

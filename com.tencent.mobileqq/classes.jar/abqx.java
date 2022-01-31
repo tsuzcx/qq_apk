@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.Choreographer.FrameCallback;
 
-public class abqx
-  extends aqkn
+class abqx
+  implements Choreographer.FrameCallback
 {
-  public abqx(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  abqx(abqw paramabqw) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void doFrame(long paramLong)
   {
-    super.a(paramBoolean, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onBandIntimateRelationship");
-    }
-    PermisionPrivacyActivity.a(this.a);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    super.a(paramBoolean1, paramString, paramBoolean2);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onDisbandIntimateRelationship");
-    }
-    PermisionPrivacyActivity.a(this.a);
+    this.a.a(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abqx
  * JD-Core Version:    0.7.0.1
  */

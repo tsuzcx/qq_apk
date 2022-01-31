@@ -1,66 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiku
+final class aiku
+  implements DialogInterface.OnClickListener
 {
-  private static aiku a;
+  aiku(Activity paramActivity) {}
   
-  public static aiku a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new aiku();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  private String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 0: 
-      return "folder_weather_arrive";
-    case 1: 
-      return "folder_weather_expose";
-    case 2: 
-      return "folder_weather_click";
-    case 3: 
-      return "aio_news_click";
-    case 4: 
-      return "aio_othercity_click";
-    case 5: 
-      return "aio_page_arrive";
-    }
-    return "aio_search_push";
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    String str = System.currentTimeMillis() + "|" + "QQWeather" + "|" + "QQWeather_native" + "|" + a(paramInt) + "|" + "android";
-    axpy.a(paramQQAppInterface, "dc04698", str);
-    if (QLog.isColorLevel()) {
-      QLog.d("WeatherDCReportHelper", 2, "reportWeather : " + str);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      a().a(paramQQAppInterface, 0);
+    if (paramInt == 0) {
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiku
  * JD-Core Version:    0.7.0.1
  */

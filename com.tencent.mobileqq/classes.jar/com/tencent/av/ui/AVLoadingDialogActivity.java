@@ -12,24 +12,24 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import mbn;
-import mbo;
+import mec;
+import med;
 
 public class AVLoadingDialogActivity
   extends BaseActivity
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mbn(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new mbo(this.jdField_a_of_type_JavaLangString);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mec(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new med(this.jdField_a_of_type_JavaLangString);
   final String jdField_a_of_type_JavaLangString = "AVLoadingDialogActivity_" + AudioHelper.b();
   
   Dialog a()
   {
-    Dialog localDialog = new Dialog(this, 2131755791);
-    localDialog.setContentView(2131559386);
+    Dialog localDialog = new Dialog(this, 2131755801);
+    localDialog.setContentView(2131559438);
     localDialog.setCancelable(false);
-    TextView localTextView = (TextView)localDialog.findViewById(2131371557);
+    TextView localTextView = (TextView)localDialog.findViewById(2131371874);
     if (localTextView != null) {
-      localTextView.setText(2131696181);
+      localTextView.setText(2131696350);
     }
     return localDialog;
   }
@@ -93,7 +93,7 @@ public class AVLoadingDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.AVLoadingDialogActivity
  * JD-Core Version:    0.7.0.1
  */

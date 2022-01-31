@@ -1,15 +1,39 @@
-import java.util.List;
-import javax.annotation.Nonnull;
+import android.content.Intent;
 
-public abstract interface vva
+public class vva
+  extends vox
 {
-  public abstract void a(int paramInt, @Nonnull List<vvd> paramList, boolean paramBoolean);
+  private vuz a;
   
-  public abstract void b(int paramInt, @Nonnull List<vvd> paramList, boolean paramBoolean);
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.a != null) {
+      this.a.a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public void a(vuz paramvuz)
+  {
+    this.a = paramvuz;
+  }
+  
+  public void f()
+  {
+    if (this.a != null) {
+      this.a.c();
+    }
+  }
+  
+  public void g()
+  {
+    if (this.a != null) {
+      this.a.b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vva
  * JD-Core Version:    0.7.0.1
  */

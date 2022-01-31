@@ -20,7 +20,7 @@ public final class oidb_cmd0xd46$KsGetSubscribedListRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xd46.oidb_cmd0xd46.KsGetSubscribedListRsp
  * JD-Core Version:    0.7.0.1
  */

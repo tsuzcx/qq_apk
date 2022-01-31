@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acno
-  implements Comparator<acnq>
+  extends avqr
 {
-  private acno(TroopTransferActivity paramTroopTransferActivity) {}
+  public acno(Conversation paramConversation) {}
   
-  public int a(acnq paramacnq1, acnq paramacnq2)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    return paramacnq1.f.compareToIgnoreCase(paramacnq2.f);
+    super.a(paramBoolean1, paramBoolean2, paramInt);
+    if ((paramBoolean1) && (paramInt != 2) && (Conversation.b(this.a))) {
+      axhu.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acno
  * JD-Core Version:    0.7.0.1
  */

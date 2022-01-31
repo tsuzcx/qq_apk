@@ -1,32 +1,91 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-@Deprecated
 public class ahpk
-  extends ahnw
+  extends amab
 {
-  public View a(int paramInt, Object paramObject, ahnr paramahnr, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpo paramahpo)
+  public ahpk(TroopFragment paramTroopFragment) {}
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    paramObject = paramView;
-    if (paramView == null) {
-      paramObject = View.inflate(paramContext, 2131562528, null);
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.h();
+      }
     }
-    paramahnr = paramObject.findViewById(2131377741);
-    paramahnr.setTag(-1, Integer.valueOf(paramInt));
-    paramahnr.setOnClickListener(paramOnClickListener);
-    paramahnr = paramObject.findViewById(2131377740);
-    paramahnr.setTag(-1, Integer.valueOf(paramInt));
-    paramahnr.setOnClickListener(paramOnClickListener);
-    paramObject.setTag(-1, Integer.valueOf(paramInt));
-    return paramObject;
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.h();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.h();
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (this.a.jdField_a_of_type_Ahnd != null) {
+      this.a.jdField_a_of_type_Ahnd.b();
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    }
+    if (this.a.c)
+    {
+      this.a.c = false;
+      if (this.a.jdField_a_of_type_Ahoj != null) {
+        this.a.jdField_a_of_type_Ahoj.a(this.a.b(), paramBoolean, null);
+      }
+    }
+    ThreadManager.getUIHandler().postDelayed(new TroopFragment.MyTroopObserver.1(this), 500L);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.h();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.h();
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.h();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.h();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpk
  * JD-Core Version:    0.7.0.1
  */

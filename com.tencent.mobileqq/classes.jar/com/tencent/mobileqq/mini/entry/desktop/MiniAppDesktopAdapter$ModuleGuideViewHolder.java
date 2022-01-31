@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import ahfx;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -20,40 +18,26 @@ public class MiniAppDesktopAdapter$ModuleGuideViewHolder
   public MiniAppDesktopAdapter$ModuleGuideViewHolder(View paramView)
   {
     super(paramView);
-    this.emptyGuideLayout = ((RelativeLayout)paramView.findViewById(2131370174));
-    this.emptyGuideTextView = ((TextView)paramView.findViewById(2131370175));
+    this.emptyGuideLayout = ((RelativeLayout)paramView.findViewById(2131370441));
+    this.emptyGuideTextView = ((TextView)paramView.findViewById(2131370442));
   }
   
   public void update()
   {
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject != null)
+    if (MiniAppUtils.getAppInterface() != null)
     {
-      localObject = (ahfx)((AppInterface)localObject).getManager(342);
-      if ((localObject == null) || (!((ahfx)localObject).h())) {
-        break label62;
-      }
       if (this.emptyGuideLayout != null) {
-        this.emptyGuideLayout.setBackgroundResource(2130840626);
+        this.emptyGuideLayout.setBackgroundResource(2130840728);
       }
       if (this.emptyGuideTextView != null) {
-        this.emptyGuideTextView.setTextColor(-1);
+        this.emptyGuideTextView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166979));
       }
     }
-    label62:
-    do
-    {
-      return;
-      if (this.emptyGuideLayout != null) {
-        this.emptyGuideLayout.setBackgroundResource(2130840625);
-      }
-    } while (this.emptyGuideTextView == null);
-    this.emptyGuideTextView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166931));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.ModuleGuideViewHolder
  * JD-Core Version:    0.7.0.1
  */

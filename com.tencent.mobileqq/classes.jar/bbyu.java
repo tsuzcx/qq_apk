@@ -1,66 +1,65 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Set;
 
 public class bbyu
+  extends BaseAdapter
 {
-  public int a;
-  public String a;
-  public List<bbyw> a;
-  public boolean a;
-  public String b;
-  public String c;
+  protected List<ParagraphInfo> a;
+  protected Set<Integer> a;
   
-  public bbyu()
+  public bbyu(List<ParagraphInfo> paramList, Set<Integer> paramSet)
   {
-    this.jdField_a_of_type_Int = -30009;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaUtilSet = paramSet;
   }
   
-  public bbyu(JSONObject paramJSONObject)
+  public ParagraphInfo a(int paramInt)
   {
-    this.jdField_a_of_type_Int = -30009;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("msg");
-    if (paramJSONObject.optInt("openflag") == 1)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
-      this.c = paramJSONObject.optString("content");
-      this.b = paramJSONObject.optString("url");
-      paramJSONObject = paramJSONObject.optString("list");
-      if (!TextUtils.isEmpty(paramJSONObject)) {
-        break label96;
-      }
-    }
-    for (;;)
-    {
-      return;
-      bool = false;
-      break;
-      label96:
-      paramJSONObject = new JSONArray(paramJSONObject);
-      int j = paramJSONObject.length();
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      while (i < j)
-      {
-        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
-        if (localJSONObject != null) {
-          this.jdField_a_of_type_JavaUtilList.add(new bbyw(localJSONObject.optString("num"), localJSONObject.optString("light")));
-        }
-        i += 1;
-      }
-    }
+    return (ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public String toString()
+  public int getCount()
   {
-    return "LiangHaoRsp{openFlag=" + this.jdField_a_of_type_Boolean + ", ret=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", moreUrl='" + this.b + '\'' + ", content='" + this.c + '\'' + '}';
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560477, paramViewGroup, false);
+    }
+    Object localObject1 = (CheckBox)localView.findViewById(2131364252);
+    paramView = (TextView)localView.findViewById(2131378668);
+    ((CheckBox)localObject1).setChecked(this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)));
+    Object localObject2 = a(paramInt);
+    localObject1 = String.format(SelectReciteParagraphFragment.b, new Object[] { Integer.valueOf(((ParagraphInfo)localObject2).pid + 1) });
+    localObject2 = new SpannableString((String)localObject1 + ((ParagraphInfo)localObject2).content_html);
+    ((SpannableString)localObject2).setSpan(new bcmj(paramViewGroup.getContext(), paramViewGroup.getContext().getResources().getColor(2131166974), 17, 4, 3, 12, Color.parseColor("#777777"), (String)localObject1), 0, ((String)localObject1).length(), 33);
+    paramView.setText((CharSequence)localObject2);
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbyu
  * JD-Core Version:    0.7.0.1
  */

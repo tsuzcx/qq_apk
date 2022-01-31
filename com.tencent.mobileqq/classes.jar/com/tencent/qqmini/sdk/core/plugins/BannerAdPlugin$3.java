@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import betc;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class BannerAdPlugin$3
   implements Runnable
@@ -10,14 +10,14 @@ class BannerAdPlugin$3
   public void run()
   {
     boolean bool = this.this$0.hideBannerAd();
-    if (betc.a()) {
-      betc.b("BannerAdPlugin", "hideBannerAd " + bool);
+    if (QMLog.isColorLevel()) {
+      QMLog.i("BannerAdPlugin", "hideBannerAd " + bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.BannerAdPlugin.3
  * JD-Core Version:    0.7.0.1
  */

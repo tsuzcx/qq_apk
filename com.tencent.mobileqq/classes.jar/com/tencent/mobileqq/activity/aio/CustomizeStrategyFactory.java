@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acvc;
-import acvd;
-import acve;
-import acvf;
-import acvg;
-import acvi;
-import acvm;
-import acvo;
-import acvq;
-import aels;
-import aelt;
-import aelu;
-import aelv;
-import aelw;
-import aelx;
-import aely;
-import aelz;
-import agzb;
-import agzd;
-import agzh;
-import ajzh;
+import aemm;
+import aemn;
+import aemo;
+import aemp;
+import aemq;
+import aems;
+import aemw;
+import aemy;
+import aena;
+import agij;
+import agik;
+import agil;
+import agim;
+import agin;
+import agio;
+import agip;
+import agiq;
+import aitb;
+import aitd;
+import aith;
+import alqv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -46,16 +46,16 @@ import java.util.Set;
 import mqq.os.MqqHandler;
 
 public class CustomizeStrategyFactory
-  implements agzh, Handler.Callback
+  implements aith, Handler.Callback
 {
   public static float a;
   private static volatile CustomizeStrategyFactory jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory;
   public static byte[] a;
-  public agzd a;
+  public aitd a;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private SparseArray<acve> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(5);
-  private QQLruCache<String, aels> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new acvc(this, 1020, 30, 10000);
-  private HashMap<Object, acvf> jdField_a_of_type_JavaUtilHashMap;
+  private SparseArray<aemo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(5);
+  private QQLruCache<String, agij> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new aemm(this, 1020, 30, 10000);
+  private HashMap<Object, aemp> jdField_a_of_type_JavaUtilHashMap;
   public boolean a;
   public boolean b;
   private byte[] b;
@@ -78,32 +78,32 @@ public class CustomizeStrategyFactory
     jdField_a_of_type_Float = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
   }
   
-  private acve a(int paramInt, QQAppInterface paramQQAppInterface)
+  private aemo a(int paramInt, QQAppInterface paramQQAppInterface)
   {
     if (QLog.isColorLevel()) {
       QLog.i("CustomizeStrategyFactory", 2, "getCustomizeStrategy type =" + paramInt);
     }
-    acve localacve = (acve)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localacve != null) {
-      return localacve;
+    aemo localaemo = (aemo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localaemo != null) {
+      return localaemo;
     }
     if (2 == paramInt) {
-      paramQQAppInterface = new ajzh(paramQQAppInterface);
+      paramQQAppInterface = new alqv(paramQQAppInterface);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt, paramQQAppInterface);
       return paramQQAppInterface;
       if (1 == paramInt) {
-        paramQQAppInterface = new acvo(paramQQAppInterface);
+        paramQQAppInterface = new aemy(paramQQAppInterface);
       } else if (4 == paramInt) {
-        paramQQAppInterface = new acvm(paramQQAppInterface);
+        paramQQAppInterface = new aemw(paramQQAppInterface);
       } else if (5 == paramInt) {
-        paramQQAppInterface = new acvi(paramQQAppInterface);
+        paramQQAppInterface = new aems(paramQQAppInterface);
       } else if (6 == paramInt) {
-        paramQQAppInterface = new acvq(paramQQAppInterface);
+        paramQQAppInterface = new aena(paramQQAppInterface);
       } else if (7 == paramInt) {
-        paramQQAppInterface = new acvg(paramQQAppInterface);
+        paramQQAppInterface = new aemq(paramQQAppInterface);
       } else {
         paramQQAppInterface = null;
       }
@@ -125,7 +125,7 @@ public class CustomizeStrategyFactory
   
   private void b(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    if ((paramRedPacketInfo == null) || (!paramRedPacketInfo.jdField_b_of_type_Boolean) || (paramRedPacketInfo.jdField_a_of_type_Acvd == null) || (TextUtils.isEmpty(paramRedPacketInfo.jdField_a_of_type_Acvd.jdField_a_of_type_JavaLangString))) {
+    if ((paramRedPacketInfo == null) || (!paramRedPacketInfo.jdField_b_of_type_Boolean) || (paramRedPacketInfo.jdField_a_of_type_Aemn == null) || (TextUtils.isEmpty(paramRedPacketInfo.jdField_a_of_type_Aemn.jdField_a_of_type_JavaLangString))) {
       return;
     }
     paramRedPacketInfo = new CustomizeStrategyFactory.3(this, paramRedPacketInfo);
@@ -142,9 +142,9 @@ public class CustomizeStrategyFactory
     ThreadManager.post(new CustomizeStrategyFactory.2(this), 5, null, true);
   }
   
-  public CustomizeStrategyFactory.RedPacketInfo a(QQAppInterface paramQQAppInterface, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, acvf paramacvf)
+  public CustomizeStrategyFactory.RedPacketInfo a(QQAppInterface paramQQAppInterface, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aemp paramaemp)
   {
-    if ((paramRedPacketInfo == null) || (paramacvf == null))
+    if ((paramRedPacketInfo == null) || (paramaemp == null))
     {
       paramQQAppInterface = null;
       return paramQQAppInterface;
@@ -162,12 +162,12 @@ public class CustomizeStrategyFactory
       if (localObject == null) {
         break;
       }
-      paramQQAppInterface = (aels)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramRedPacketInfo.jdField_b_of_type_JavaLangString);
+      paramQQAppInterface = (agij)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramRedPacketInfo.jdField_b_of_type_JavaLangString);
       if (paramQQAppInterface != null) {
         break label195;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramRedPacketInfo, paramacvf);
-      ((acve)localObject).a(paramRedPacketInfo);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramRedPacketInfo, paramaemp);
+      ((aemo)localObject).a(paramRedPacketInfo);
       return paramRedPacketInfo;
       ((StringBuilder)localObject).append("_").append(paramRedPacketInfo.templateId);
       if ((paramRedPacketInfo.type == 2) && (!TextUtils.isEmpty(paramRedPacketInfo.jdField_a_of_type_JavaLangString))) {
@@ -175,7 +175,7 @@ public class CustomizeStrategyFactory
       }
     }
     label195:
-    ((acve)localObject).a(paramRedPacketInfo, paramQQAppInterface);
+    ((aemo)localObject).a(paramRedPacketInfo, paramQQAppInterface);
     return paramRedPacketInfo;
   }
   
@@ -207,7 +207,7 @@ public class CustomizeStrategyFactory
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  public void a(String paramString1, String paramString2, agzb paramagzb)
+  public void a(String paramString1, String paramString2, aitb paramaitb)
   {
     if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache == null) {
       return;
@@ -215,8 +215,8 @@ public class CustomizeStrategyFactory
     paramString1 = this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.snapshot().entrySet().iterator();
     while (paramString1.hasNext())
     {
-      paramString2 = (aels)((Map.Entry)paramString1.next()).getValue();
-      if (((paramString2 instanceof aelw)) || ((paramString2 instanceof aelt))) {
+      paramString2 = (agij)((Map.Entry)paramString1.next()).getValue();
+      if (((paramString2 instanceof agin)) || ((paramString2 instanceof agik))) {
         paramString1.remove();
       }
     }
@@ -271,15 +271,15 @@ public class CustomizeStrategyFactory
       int i = 0;
       while (i < j)
       {
-        ((acve)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).a();
+        ((aemo)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).a();
         i += 1;
       }
       this.jdField_a_of_type_AndroidUtilSparseArray.clear();
     }
     synchronized (this.jdField_b_of_type_ArrayOfByte)
     {
-      if (this.jdField_a_of_type_Agzd != null) {
-        this.jdField_a_of_type_Agzd.d("redPack", this);
+      if (this.jdField_a_of_type_Aitd != null) {
+        this.jdField_a_of_type_Aitd.d("redPack", this);
       }
       this.d = true;
       this.jdField_a_of_type_Boolean = true;
@@ -302,13 +302,13 @@ public class CustomizeStrategyFactory
   public boolean handleMessage(Message paramMessage)
   {
     CustomizeStrategyFactory.RedPacketInfo localRedPacketInfo;
-    acvf localacvf;
+    aemp localaemp;
     if (paramMessage.what == 1)
     {
       localRedPacketInfo = (CustomizeStrategyFactory.RedPacketInfo)paramMessage.obj;
-      localacvf = (acvf)this.jdField_a_of_type_JavaUtilHashMap.remove(localRedPacketInfo);
+      localaemp = (aemp)this.jdField_a_of_type_JavaUtilHashMap.remove(localRedPacketInfo);
       if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "handleMessage info type=" + localRedPacketInfo.type + "| listener=" + localacvf + "| templateId=" + localRedPacketInfo.templateId + "| content=" + localRedPacketInfo.jdField_a_of_type_JavaLangString + "| info=" + localRedPacketInfo + "|" + System.currentTimeMillis());
+        QLog.d("CustomizeStrategyFactory", 2, "handleMessage info type=" + localRedPacketInfo.type + "| listener=" + localaemp + "| templateId=" + localRedPacketInfo.templateId + "| content=" + localRedPacketInfo.jdField_a_of_type_JavaLangString + "| info=" + localRedPacketInfo + "|" + System.currentTimeMillis());
       }
       if (!this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.containsKey(localRedPacketInfo.jdField_b_of_type_JavaLangString))
       {
@@ -316,7 +316,7 @@ public class CustomizeStrategyFactory
         if (localRedPacketInfo.type != 2) {
           break label203;
         }
-        paramMessage = new aely(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+        paramMessage = new agip(localRedPacketInfo.jdField_b_of_type_JavaLangString);
         paramMessage.a(localRedPacketInfo);
       }
     }
@@ -325,43 +325,43 @@ public class CustomizeStrategyFactory
       if ((paramMessage != null) && (paramMessage.a())) {
         this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(localRedPacketInfo.jdField_b_of_type_JavaLangString, paramMessage);
       }
-      if (localacvf != null) {
-        localacvf.onSucc(localRedPacketInfo.type, localRedPacketInfo);
+      if (localaemp != null) {
+        localaemp.onSucc(localRedPacketInfo.type, localRedPacketInfo);
       }
       return false;
       label203:
       if ((localRedPacketInfo.type == 1) || (localRedPacketInfo.type == 4))
       {
-        paramMessage = new aelx(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+        paramMessage = new agio(localRedPacketInfo.jdField_b_of_type_JavaLangString);
         paramMessage.a(localRedPacketInfo);
       }
       else if (localRedPacketInfo.type == 5)
       {
         if (localRedPacketInfo.skinType == 1)
         {
-          paramMessage = new aelw(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+          paramMessage = new agin(localRedPacketInfo.jdField_b_of_type_JavaLangString);
           paramMessage.a(localRedPacketInfo);
           localRedPacketInfo.icon = paramMessage.a(localRedPacketInfo);
         }
         else if ((localRedPacketInfo.skinType == 2) || (localRedPacketInfo.skinType == 4))
         {
-          paramMessage = new aelv(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+          paramMessage = new agim(localRedPacketInfo.jdField_b_of_type_JavaLangString);
           paramMessage.a(localRedPacketInfo);
         }
         else if (localRedPacketInfo.skinType == 3)
         {
-          paramMessage = new aelt(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+          paramMessage = new agik(localRedPacketInfo.jdField_b_of_type_JavaLangString);
           paramMessage.a(localRedPacketInfo);
         }
       }
       else if (localRedPacketInfo.type == 6)
       {
-        paramMessage = new aelz(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+        paramMessage = new agiq(localRedPacketInfo.jdField_b_of_type_JavaLangString);
         paramMessage.a(localRedPacketInfo);
       }
       else if (localRedPacketInfo.type == 7)
       {
-        paramMessage = new aelu(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+        paramMessage = new agil(localRedPacketInfo.jdField_b_of_type_JavaLangString);
         paramMessage.a(localRedPacketInfo);
       }
     }
@@ -369,7 +369,7 @@ public class CustomizeStrategyFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory
  * JD-Core Version:    0.7.0.1
  */

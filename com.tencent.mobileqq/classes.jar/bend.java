@@ -1,12 +1,53 @@
-import com.tencent.qqmini.sdk.core.widget.NavigationBar;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.PAHighLightImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bend
+public class bend
+  implements View.OnTouchListener
 {
-  public abstract void a(NavigationBar paramNavigationBar);
+  Context jdField_a_of_type_AndroidContentContext;
+  PAHighLightImageView jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView;
+  
+  public bend(PAHighLightImageView paramPAHighLightImageView, Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView = paramPAHighLightImageView;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PAHighLightImageView", 2, "onTouch is called,action is:" + paramMotionEvent.getAction());
+    }
+    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.getTag(2131372427);
+    if (paramView == null) {}
+    label100:
+    do
+    {
+      return false;
+      if (paramView.equals(Integer.valueOf(1))) {}
+      for (boolean bool = true;; bool = false)
+      {
+        if (paramMotionEvent.getAction() != 0) {
+          break label100;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a(this.jdField_a_of_type_AndroidContentContext, bool);
+        return false;
+        if (!paramView.equals(Integer.valueOf(2))) {
+          break;
+        }
+      }
+    } while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a();
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bend
  * JD-Core Version:    0.7.0.1
  */

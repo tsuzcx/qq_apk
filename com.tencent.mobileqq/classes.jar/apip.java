@@ -1,48 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import java.util.ArrayList;
+import java.util.List;
 
-final class apip
-  implements View.OnClickListener
+class apip
+  implements apia
 {
-  apip(String paramString, apkq paramapkq) {}
+  apip(apik paramapik) {}
   
-  public void onClick(View paramView)
+  public void a(List<appw> paramList)
   {
-    try
-    {
-      paramView = new apiq(this);
-      aptd localaptd = aptd.a(this.jdField_a_of_type_JavaLangString);
-      if (localaptd == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("FileOperaterUtils", 2, "error. get filemodel null, filepath[ " + this.jdField_a_of_type_JavaLangString + "]");
-        }
-      }
-      else if (localaptd.a(false))
-      {
-        if (!bbfj.e(BaseApplicationImpl.getContext()))
-        {
-          aptx.a(2131693314);
-          return;
-        }
-        if (bcwb.a(this.jdField_a_of_type_Apkq.getActivity(), 5, new apir(this, paramView))) {
-          aptt.a(this.jdField_a_of_type_Apkq.getActivity(), 2131692673, 2131692676, paramView);
-        }
-      }
-      else
-      {
-        paramView.a();
-      }
-      return;
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
     }
-    catch (Exception paramView) {}
+    if (apik.a(this.a) != null) {
+      apik.a(this.a).obtainMessage(206, localObject).sendToTarget();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apip
  * JD-Core Version:    0.7.0.1
  */

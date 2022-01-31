@@ -1,30 +1,51 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import org.json.JSONObject;
 
 class uhy
-  implements bfph
+  extends SimpleJob<Object>
 {
-  uhy(uhw paramuhw, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bfpc parambfpc) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  uhy(uhx paramuhx, String paramString)
   {
-    switch (paramInt)
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  {
+    Object localObject = (String)((urk)urr.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
+    synchronized (this.a.b)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      tsr.a(this.jdField_a_of_type_Uhw.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new uhz(this));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        long l = this.a.a.jdField_a_of_type_Long;
+        if (l != 0L) {}
+      }
+      try
+      {
+        paramVarArgs = new uib();
+        localObject = new JSONObject((String)localObject);
+        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
+        paramVarArgs.jdField_a_of_type_ArrayOfByte = bdcv.a(((JSONObject)localObject).getString("ak"));
+        this.a.a = paramVarArgs;
+        wsv.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
+        return null;
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          wsv.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhy
  * JD-Core Version:    0.7.0.1
  */

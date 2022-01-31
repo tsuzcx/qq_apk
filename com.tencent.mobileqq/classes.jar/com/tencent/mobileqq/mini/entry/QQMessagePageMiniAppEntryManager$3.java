@@ -1,29 +1,22 @@
 package com.tencent.mobileqq.mini.entry;
 
-import akwp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.PopupWindow;
 
 class QQMessagePageMiniAppEntryManager$3
   implements Runnable
 {
-  QQMessagePageMiniAppEntryManager$3(QQMessagePageMiniAppEntryManager paramQQMessagePageMiniAppEntryManager, QQAppInterface paramQQAppInterface) {}
+  QQMessagePageMiniAppEntryManager$3(QQMessagePageMiniAppEntryManager paramQQMessagePageMiniAppEntryManager, PopupWindow paramPopupWindow) {}
   
   public void run()
   {
-    if (this.val$app == null) {}
-    akwp localakwp;
-    do
-    {
-      return;
-      localakwp = (akwp)this.val$app.a(148);
-    } while (localakwp == null);
-    localakwp.a();
-    localakwp.c();
+    if (this.val$popupWindow.isShowing()) {
+      this.val$popupWindow.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.QQMessagePageMiniAppEntryManager.3
  * JD-Core Version:    0.7.0.1
  */

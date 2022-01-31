@@ -1,16 +1,12 @@
-import com.tencent.ad.tangram.device.AdImeiAdapter;
-
-public class ysb
-  implements AdImeiAdapter
+public abstract interface ysb
 {
-  public String getIMEI()
-  {
-    return bfnn.a("f4c66e");
-  }
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysb
  * JD-Core Version:    0.7.0.1
  */

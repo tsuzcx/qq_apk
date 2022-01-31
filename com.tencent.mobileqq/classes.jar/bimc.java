@@ -1,28 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import java.util.concurrent.ThreadFactory;
 
-class bimc
-  implements Animator.AnimatorListener
+public final class bimc
+  implements ThreadFactory
 {
-  bimc(bima parambima) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public Thread newThread(@NonNull Runnable paramRunnable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEWaterMarkListPart", 2, "Watermark Panel Opened!");
-    }
+    return new Thread(paramRunnable, "PluginDex2Oat");
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bimc
  * JD-Core Version:    0.7.0.1
  */

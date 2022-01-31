@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import NS_COMM.COMM.StCommonExt;
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,7 +57,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", -4);
-        paramString1.put("resultMsg", ajya.a(2131706848));
+        paramString1.put("resultMsg", alpo.a(2131707220));
         if (paramString1 != null) {
           paramString1 = paramString1.toString();
         }
@@ -87,7 +87,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", 1000);
-        paramString1.put("errMsg", ajya.a(2131706853));
+        paramString1.put("errMsg", alpo.a(2131707225));
         paramString1 = paramString1.toString();
         if (paramString1 != null) {
           handleNativeResponse(paramString3, paramString1, paramInt2);
@@ -141,7 +141,7 @@ public class MiniGamePayFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGamePayFragment
  * JD-Core Version:    0.7.0.1
  */

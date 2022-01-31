@@ -1,78 +1,58 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import java.io.File;
+import java.net.URL;
 
-public class tlw
-  extends sys
+final class tlw
+  implements tpv
 {
-  public static final String a;
-  public List<uvp> a;
-  public List<String> b = new ArrayList();
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = System.currentTimeMillis();
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.homepage_batch_feeds_detail_720");
-  }
+  tlw(KandianUrlImageView paramKandianUrlImageView) {}
   
-  public tlw()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public void a(URL paramURL, int paramInt) {}
   
-  public String a()
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
-    try
+    tlo.d("WeishiUtils", "url = " + paramURL + ", onLoadFailed!!!");
+    if (this.jdField_a_of_type_Int < 2)
     {
-      localRspStoryFeed.mergeFrom(paramArrayOfByte);
-      return new tlx(localRspStoryFeed);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      tlo.d("WeishiUtils", "");
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(paramURL);
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(URL paramURL, sfc paramsfc)
+  {
+    tlo.b("WeishiUtils", "onLoadSuccess!!!");
+    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_Long > 0L)
     {
-      for (;;)
+      if (paramURL != null)
       {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      uvp localuvp = (uvp)localIterator.next();
-      if (localuvp != null) {
-        if (TextUtils.isEmpty(localuvp.jdField_a_of_type_JavaLangString)) {
-          ved.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
-        } else {
-          localArrayList.add(localuvp.a());
+        tfd.b(1, paramURL.toString());
+        long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+        paramsfc = bame.a(paramURL.toString());
+        if (paramsfc != null)
+        {
+          String str = paramsfc.getAbsolutePath();
+          long l2 = paramsfc.length();
+          tlo.c("actWsFeedPicReqDuration", "--successTime:" + System.currentTimeMillis() + ", downloadCost:" + l1 + ", length:" + l2 + ", url = " + paramURL.toString() + "\n--absolutePath = " + str);
+          tjz.a().a(true, l1, l2);
         }
       }
+      this.jdField_a_of_type_Long = 0L;
     }
-    if (localArrayList.size() == 0) {
-      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
-    }
-    localReqStoryFeed.feed_id_list.set(localArrayList);
-    return localReqStoryFeed.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlw
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcbu;
+import beav;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.commons.IReportDelegate;
 import mqq.app.AppRuntime;
-import nuq;
-import osq;
-import rvx;
+import nxu;
+import oxi;
+import smk;
 
 public class LiveRoomPluginHelper
 {
@@ -22,7 +22,7 @@ public class LiveRoomPluginHelper
   
   public static void backToReadInJoy(Context paramContext)
   {
-    nuq.b(paramContext, 11);
+    nxu.b(paramContext, 11);
   }
   
   public static LiveRoomWebViewBuilder createWebView(Activity paramActivity, Intent paramIntent)
@@ -33,7 +33,7 @@ public class LiveRoomPluginHelper
       paramIntent.putExtra("window_no_title", false);
       paramIntent.putExtra("webview_hide_progress", true);
       paramActivity = new LiveRoomWebViewBuilder(paramActivity, paramActivity, paramIntent, localLiveRoomInterfaceProxy);
-      new bcbu(paramActivity).a(null, localLiveRoomInterfaceProxy, paramIntent);
+      new beav(paramActivity).a(null, localLiveRoomInterfaceProxy, paramIntent);
       return paramActivity;
     }
     QLog.e("LiveRoomPluginHelper", 2, "createWebView: app should be AppInterface");
@@ -67,7 +67,7 @@ public class LiveRoomPluginHelper
     if (!violaSoLoaded)
     {
       violaSoLoaded = true;
-      osq.a("LiveRoomPluginHelper", new LiveRoomPluginHelper.1(paramInitViolaListener, paramAppRuntime, paramString, paramIReportDelegate));
+      oxi.a("LiveRoomPluginHelper", new LiveRoomPluginHelper.1(paramInitViolaListener, paramAppRuntime, paramString, paramIReportDelegate));
       return;
     }
     initViolaSDKEngine(paramAppRuntime, paramString, paramIReportDelegate, paramInitViolaListener);
@@ -91,12 +91,12 @@ public class LiveRoomPluginHelper
     while ((i != 2) || (TextUtils.isEmpty(paramBundle))) {
       return;
     }
-    rvx.a(paramActivity, str, paramBundle, null);
+    smk.a(paramActivity, str, paramBundle, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomPluginHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public abstract class rnv
+public class rnv
 {
-  protected abstract void a();
-  
-  public abstract void a(ListView paramListView);
-  
-  protected void a(String paramString, JSONObject paramJSONObject)
-  {
-    try
-    {
-      paramJSONObject.put("folder_status", onh.d);
-      paramJSONObject.put("kandian_mode", onh.e());
-      paramJSONObject = paramJSONObject.toString();
-      nol.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
-      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
-      throw new IllegalArgumentException("fail to construct r5 json");
-    }
-  }
-  
-  public abstract void b();
-  
-  public void c()
-  {
-    a();
-  }
-  
-  public void d() {}
-  
-  public void e() {}
+  public View a;
+  public ViewGroup a;
+  public ImageView a;
+  public SeekBar a;
+  public TextView a;
+  public URLImageView a;
+  public ViewGroup b;
+  public SeekBar b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rnv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpModel;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-public final class smd
-  implements Parcelable.Creator<WSPushOpModel>
+public class smd
+  implements Animation.AnimationListener
 {
-  public WSPushOpModel a(Parcel paramParcel)
+  public smd(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new WSPushOpModel(paramParcel);
+    CommonSuspensionGestureLayout.c(this.a).setLayerType(0, null);
+    CommonSuspensionGestureLayout.a(this.a).c();
+    CommonSuspensionGestureLayout.a(this.a).a();
+    CommonSuspensionGestureLayout.b(this.a);
   }
   
-  public WSPushOpModel[] a(int paramInt)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return new WSPushOpModel[paramInt];
+    CommonSuspensionGestureLayout.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smd
  * JD-Core Version:    0.7.0.1
  */

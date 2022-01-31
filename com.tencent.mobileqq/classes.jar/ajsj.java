@@ -1,30 +1,39 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import java.nio.ByteBuffer;
 
-final class ajsj
-  implements Animation.AnimationListener
+public class ajsj
 {
-  ajsj(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static ByteBuffer a(int paramInt1, int paramInt2)
   {
-    if ((this.a != null) && (this.a.getVisibility() == 0))
+    try
     {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772209);
-      paramAnimation.setAnimationListener(this);
-      this.a.startAnimation(paramAnimation);
+      if (ajsi.c)
+      {
+        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
+        ajsi.b = true;
+        ByteBuffer localByteBuffer2 = localByteBuffer1;
+        if (localByteBuffer1 == null)
+        {
+          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
+          ajsi.b = false;
+        }
+        return localByteBuffer2;
+      }
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        Object localObject = null;
+        continue;
+        localObject = null;
+      }
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsj
  * JD-Core Version:    0.7.0.1
  */

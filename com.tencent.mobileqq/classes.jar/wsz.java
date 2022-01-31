@@ -1,18 +1,21 @@
-class wsz
-  implements wta
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+
+public class wsz
+  extends unf
 {
-  wsz(wsy paramwsy) {}
-  
-  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
+  public wsz(qqstory_service.RspMonitorValue paramRspMonitorValue)
   {
-    if (this.a.jdField_a_of_type_Wth != null) {
-      this.a.jdField_a_of_type_Wth.a(paramBoolean, this.a.jdField_a_of_type_JavaLangString, false);
-    }
+    super(paramRspMonitorValue.result);
+  }
+  
+  public String toString()
+  {
+    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsz
  * JD-Core Version:    0.7.0.1
  */

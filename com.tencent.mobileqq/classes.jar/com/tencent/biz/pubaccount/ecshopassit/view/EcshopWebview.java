@@ -2,10 +2,7 @@ package com.tencent.biz.pubaccount.ecshopassit.view;
 
 import android.content.Context;
 import android.content.MutableContextWrapper;
-import android.os.Handler;
-import android.os.Looper;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebBackForwardList;
 import com.tencent.smtt.sdk.WebHistoryItem;
@@ -24,6 +21,9 @@ public class EcshopWebview
   {
     super(paramContext);
     this.jdField_a_of_type_Int = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("parasons333", 2, "---EcshopWebview---");
+    }
   }
   
   public static EcshopWebview a(Context paramContext)
@@ -51,34 +51,6 @@ public class EcshopWebview
     return localEcshopWebview;
   }
   
-  public void a(boolean paramBoolean)
-  {
-    for (int i = 1;; i = 0)
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (jdField_b_of_type_Int >= 1) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview = jdField_b_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview;
-        jdField_b_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview = this;
-        jdField_b_of_type_Int += 1;
-        if (i != 0)
-        {
-          ((MutableContextWrapper)getContext()).setBaseContext(BaseApplicationImpl.sApplication);
-          if (!paramBoolean)
-          {
-            resetForReuse();
-            onPause();
-          }
-          return;
-        }
-      }
-      super.destroy();
-      return;
-    }
-  }
-  
   public boolean canGoBack()
   {
     if (1 == this.jdField_a_of_type_Int)
@@ -95,36 +67,10 @@ public class EcshopWebview
     }
     return super.canGoBack();
   }
-  
-  public void destroy()
-  {
-    if (this.c > 1)
-    {
-      super.destroy();
-      return;
-    }
-    if (!"about:blank".equals(getUrl())) {}
-    try
-    {
-      stopLoading();
-      loadUrlOriginal("about:blank");
-      clearHistory();
-      clearView();
-      new Handler(Looper.getMainLooper()).postDelayed(new EcshopWebview.1(this), 1000L);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("EcshopWebview", 1, "destroy error:" + localThrowable.getMessage());
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview
  * JD-Core Version:    0.7.0.1
  */

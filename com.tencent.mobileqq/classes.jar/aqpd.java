@@ -1,23 +1,35 @@
-import mqq.app.QQPermissionCallback;
-
-class aqpd
-  implements QQPermissionCallback
+public class aqpd
 {
-  aqpd(aqoz paramaqoz) {}
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b = "";
+  public short b;
+  public byte[] b;
+  public int c;
+  public long c;
+  public String c;
+  public byte[] c;
+  public int d;
+  public String d = "";
+  public byte[] d;
+  public String e = "";
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public aqpd(aqpa paramaqpa)
   {
-    bbdj.b(this.a.a);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    aqoz.a(this.a);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_c_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqpd
  * JD-Core Version:    0.7.0.1
  */

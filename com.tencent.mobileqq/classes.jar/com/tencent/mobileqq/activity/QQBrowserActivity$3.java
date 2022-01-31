@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcbw;
+import beax;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class QQBrowserActivity$3
@@ -10,12 +10,12 @@ class QQBrowserActivity$3
   
   public void run()
   {
-    bcbw.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
+    beax.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserActivity.3
  * JD-Core Version:    0.7.0.1
  */

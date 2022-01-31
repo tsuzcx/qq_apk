@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
 
 class aryw
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  aryw(aryv paramaryv, String paramString) {}
+  aryw(arys paramarys) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    aryv.a(this.jdField_a_of_type_Aryv).a(this.jdField_a_of_type_JavaLangString);
-    axqy.b(null, "CliOper", "", "", "0X800A770", "0X800A770", 0, 0, "", "0", "0", "");
+    if ((this.a.a instanceof DirectForwardActivity)) {
+      this.a.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryw
  * JD-Core Version:    0.7.0.1
  */

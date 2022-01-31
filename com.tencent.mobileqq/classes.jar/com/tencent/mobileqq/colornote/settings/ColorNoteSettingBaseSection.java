@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.colornote.settings;
 
-import amiq;
-import amiw;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import anzr;
+import anzx;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.util.Iterator;
 import java.util.List;
@@ -13,8 +13,8 @@ import java.util.List;
 public class ColorNoteSettingBaseSection
   extends LinearLayout
 {
-  private amiq jdField_a_of_type_Amiq;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private anzr jdField_a_of_type_Anzr;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   
   public ColorNoteSettingBaseSection(Context paramContext)
@@ -37,15 +37,15 @@ public class ColorNoteSettingBaseSection
   
   private void b()
   {
-    inflate(getContext(), 2131558812, this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131375773));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363085));
+    inflate(getContext(), 2131558848, this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131376268));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363121));
   }
   
   public void a()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    Iterator localIterator = this.jdField_a_of_type_Amiq.a(getContext()).iterator();
+    Iterator localIterator = this.jdField_a_of_type_Anzr.a(getContext()).iterator();
     while (localIterator.hasNext())
     {
       HistoryFormItem localHistoryFormItem = (HistoryFormItem)localIterator.next();
@@ -53,10 +53,10 @@ public class ColorNoteSettingBaseSection
     }
   }
   
-  public void setAdapter(amiq paramamiq)
+  public void setAdapter(anzr paramanzr)
   {
-    this.jdField_a_of_type_Amiq = paramamiq;
-    this.jdField_a_of_type_Amiq.a(new amiw(this));
+    this.jdField_a_of_type_Anzr = paramanzr;
+    this.jdField_a_of_type_Anzr.a(new anzx(this));
   }
   
   public void setContentDescription(CharSequence paramCharSequence)
@@ -76,7 +76,7 @@ public class ColorNoteSettingBaseSection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.ColorNoteSettingBaseSection
  * JD-Core Version:    0.7.0.1
  */

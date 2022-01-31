@@ -14,21 +14,21 @@ import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
 import java.util.Iterator;
 import java.util.List;
-import szs;
-import ted;
-import utx;
-import uuj;
-import vaq;
-import vbu;
-import ved;
-import vei;
-import wco;
+import uok;
+import usv;
+import wip;
+import wjb;
+import wpi;
+import wqm;
+import wsv;
+import wta;
+import xrg;
 
 public class StoryMemoriesListView
   extends SegmentList
-  implements View.OnTouchListener, vbu
+  implements View.OnTouchListener, wqm
 {
-  private utx a;
+  private wip a;
   
   public StoryMemoriesListView(Context paramContext)
   {
@@ -49,14 +49,14 @@ public class StoryMemoriesListView
   {
     Iterator localIterator = this.a.a().iterator();
     while (localIterator.hasNext()) {
-      a((wco)localIterator.next());
+      a((xrg)localIterator.next());
     }
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
     super.setOnTouchListener(this);
-    if (this.a.jdField_a_of_type_Vaq != null) {
-      this.a.jdField_a_of_type_Vaq.a().setInputViewHideListener(this);
+    if (this.a.jdField_a_of_type_Wpi != null) {
+      this.a.jdField_a_of_type_Wpi.a().setInputViewHideListener(this);
     }
   }
   
@@ -64,15 +64,15 @@ public class StoryMemoriesListView
   
   public void b()
   {
-    if (this.a.jdField_a_of_type_Vaq != null) {
-      this.a.jdField_a_of_type_Vaq.g();
+    if (this.a.jdField_a_of_type_Wpi != null) {
+      this.a.jdField_a_of_type_Wpi.g();
     }
   }
   
   public void c()
   {
-    if (this.a.jdField_a_of_type_Vaq != null) {
-      this.a.jdField_a_of_type_Vaq.h();
+    if (this.a.jdField_a_of_type_Wpi != null) {
+      this.a.jdField_a_of_type_Wpi.h();
     }
   }
   
@@ -89,16 +89,16 @@ public class StoryMemoriesListView
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ved.e("SwipListView", "error:%s", new Object[] { localIllegalStateException.toString() });
+      wsv.e("SwipListView", "error:%s", new Object[] { localIllegalStateException.toString() });
     }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_Vaq == null) {
+    if (this.a.jdField_a_of_type_Wpi == null) {
       return false;
     }
-    paramView = this.a.jdField_a_of_type_Vaq.a();
+    paramView = this.a.jdField_a_of_type_Wpi.a();
     if (paramView.getVisibility() == 0)
     {
       ((InputMethodManager)this.a.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
@@ -106,37 +106,37 @@ public class StoryMemoriesListView
       paramView.setVisibility(8);
       b();
       paramView = paramView.a.a;
-      int i = vei.a(paramView.getOwner());
+      int i = wta.a(paramView.getOwner());
       if (paramView.getOwner().isMe()) {}
       for (paramView = "1";; paramView = "2")
       {
-        vei.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
+        wta.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
         return true;
       }
     }
     return false;
   }
   
-  public void setConfig(@NonNull utx paramutx)
+  public void setConfig(@NonNull wip paramwip)
   {
-    this.a = paramutx;
+    this.a = paramwip;
   }
   
   public boolean trackMotionScroll(int paramInt1, int paramInt2)
   {
-    uuj localuuj = (uuj)a("FeedSegment");
-    if ((localuuj == null) || (localuuj.a() == 0) || (!localuuj.c())) {
+    wjb localwjb = (wjb)a("FeedSegment");
+    if ((localwjb == null) || (localwjb.a() == 0) || (!localwjb.c())) {
       return super.trackMotionScroll(paramInt1, paramInt2);
     }
-    localuuj.c(1);
+    localwjb.c(1);
     boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
-    localuuj.c(0);
+    localwjb.c(0);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView
  * JD-Core Version:    0.7.0.1
  */

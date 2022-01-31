@@ -1,26 +1,32 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class achv
-  implements URLDrawable.URLDrawableListener
+  implements bhqd
 {
-  public achv(TroopInfoActivity paramTroopInfoActivity) {}
+  public achv(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, bhpy parambhpy) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void OnClick(View paramView, int paramInt)
   {
-    TroopInfoActivity.b(this.a);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.obtainMessage(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new achw(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achv
  * JD-Core Version:    0.7.0.1
  */

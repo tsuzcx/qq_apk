@@ -1,7 +1,7 @@
 package dov.com.qq.im.video;
 
 import android.graphics.Bitmap;
-import biik;
+import bkkj;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import java.io.File;
@@ -23,7 +23,7 @@ public class GifEncoder
   {
     try
     {
-      biik.a();
+      bkkj.a();
       System.load(new File(FeatureManager.getSoDir(), "libgiftools.so").getPath());
       jdField_a_of_type_Int = 1;
       b = 2;
@@ -89,7 +89,7 @@ public class GifEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.video.GifEncoder
  * JD-Core Version:    0.7.0.1
  */

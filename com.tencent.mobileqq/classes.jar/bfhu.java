@@ -1,34 +1,35 @@
-import android.os.Bundle;
-import com.tencent.ims.SafeReport.RspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
+import android.os.Build.VERSION;
+import java.util.concurrent.Executor;
 
-final class bfhu
-  extends mxj
+public abstract class bfhu<Param, Progress, Result>
+  extends AsyncTask<Param, Progress, Result>
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected String a;
+  protected String b;
+  
+  public bfhu(String paramString1, String paramString2)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new SafeReport.RspBody();
+    this.a = paramString1;
+    if (!paramString1.toLowerCase().startsWith("http")) {
+      this.a = ("https://openmobile.qq.com/" + paramString1);
     }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
-        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
-      }
-      return;
+    this.b = paramString2;
+  }
+  
+  @SuppressLint({"InlinedApi", "NewApi"})
+  public Executor a()
+  {
+    if (Build.VERSION.SDK_INT >= 11) {
+      return AsyncTask.THREAD_POOL_EXECUTOR;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfhu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahsx
-  implements DialogInterface.OnShowListener
+class ahsx
+  implements azjq
 {
-  public ahsx(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ahsx(ahsw paramahsw) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(8);
-    }
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(8);
-    }
-    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
-      EditLocalVideoActivity.a(this.a, true);
-    }
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog grant");
+  }
+  
+  public void b()
+  {
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog denied");
+    ahsh.a(this.a.a, ahsh.b(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsx
  * JD-Core Version:    0.7.0.1
  */

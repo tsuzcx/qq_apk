@@ -1,10 +1,39 @@
-public abstract interface bejj
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ClearableEditText;
+
+public class bejj
+  implements TextWatcher
 {
-  public abstract void a(bekp parambekp, int paramInt, String paramString);
+  public bejj(ClearableEditText paramClearableEditText) {}
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
+    {
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
+      }
+    }
+    else {
+      return;
+    }
+    if ((ClearableEditText.a(this.a)) || (ClearableEditText.b(this.a)))
+    {
+      this.a.setClearButtonVisible(true);
+      return;
+    }
+    this.a.setClearButtonVisible(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bejj
  * JD-Core Version:    0.7.0.1
  */

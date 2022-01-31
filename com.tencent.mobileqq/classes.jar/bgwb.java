@@ -1,23 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qqreader.ui.ReaderHomeTabFragment;
-import cooperation.qqreader.view.ReaderTabBarView;
-
-public class bgwb
-  extends BroadcastReceiver
+public abstract interface bgwb
 {
-  public bgwb(ReaderHomeTabFragment paramReaderHomeTabFragment) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    bgwd.c(this.a.getActivity());
-    ReaderHomeTabFragment.a(this.a).setUnReadMsg(1, 20);
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgwb
  * JD-Core Version:    0.7.0.1
  */

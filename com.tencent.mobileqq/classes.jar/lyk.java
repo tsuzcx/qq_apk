@@ -1,41 +1,46 @@
-import com.tencent.av.ReqGroupVideo.ReqCreateShareUrl;
-import com.tencent.av.ReqGroupVideo.RspCreateShareUrl;
-import com.tencent.av.common.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
 
-class lyk
-  extends lhb<ReqGroupVideo.ReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl>
+public class lyk
 {
-  lyk(lyi paramlyi) {}
+  public int a;
+  public final lyh a;
+  public int b;
+  public int c;
+  private int d;
   
-  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqCreateShareUrl paramReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl paramRspCreateShareUrl, Object paramObject)
+  lyk()
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    paramReqCreateShareUrl = paramRspCreateShareUrl.share_url_with_no_sig.get().toStringUtf8();
-    paramObject = paramRspCreateShareUrl.share_url.get().toStringUtf8();
-    paramRspCreateShareUrl = (common.ErrorInfo)paramRspCreateShareUrl.result.get();
-    int i = lgy.a(paramRspCreateShareUrl);
-    QLog.w("ShareChat", 1, "requestGetUrlFromServer.callback, result[" + i + "], bytes_errmsg[" + paramRspCreateShareUrl.bytes_errmsg.get().toStringUtf8() + "], share_url_with_no_sig[" + paramReqCreateShareUrl + "], share_url[" + paramObject + "], seq[" + paramLong + "]");
-    if (i == 0)
-    {
-      this.a.c = paramObject;
-      this.a.b = paramReqCreateShareUrl;
-      bbgb.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, this.a.c);
+    this.jdField_a_of_type_Lyh = new lyh();
+  }
+  
+  public void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, lyh paramlyh)
+  {
+    this.d += 1;
+    StringBuilder localStringBuilder;
+    if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (!this.jdField_a_of_type_Lyh.equals(paramlyh)) || (this.c != paramInt3)) {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("updateFrame, frameIndex[").append(this.d).append("], data[");
+        if (paramArrayOfByte != null) {
+          break label198;
+        }
+      }
     }
-    for (;;)
+    label198:
+    for (paramArrayOfByte = "null";; paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length))
     {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      QLog.i("AVShare", 2, paramArrayOfByte + "], imgFormat[" + this.b + "-->" + paramInt2 + "], recordParam[" + this.jdField_a_of_type_Lyh + "--->" + paramlyh + "], angle[" + this.c + "-->" + paramInt3 + "]");
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.jdField_a_of_type_Lyh.a(paramlyh);
+      this.c = paramInt3;
       return;
-      if (i != 11001) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyk
  * JD-Core Version:    0.7.0.1
  */

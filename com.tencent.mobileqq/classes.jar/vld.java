@@ -1,33 +1,53 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.support.annotation.NonNull;
 
-class vld
-  implements ValueAnimator.AnimatorUpdateListener
+public class vld
 {
-  vld(vlc paramvlc) {}
+  public String a;
+  public String b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public vld(@NonNull String paramString)
   {
-    if (vla.a(this.a.a) == null) {
-      return;
+    this.a = paramString;
+    xmh.a(paramString);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (vld)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
     }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.l = (this.a.d + this.a.f * f);
-    this.a.m = (this.a.e + this.a.g * f);
-    this.a.j = (this.a.b + this.a.h * f);
-    this.a.k = (this.a.c + this.a.i * f);
-    if (this.a.a.a != null) {
-      this.a.a.a.a(f);
+    return 0;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.b == null) {}
+    for (String str = "";; str = this.b) {
+      return str + this.a;
     }
-    if (f == 1.0F) {
-      vla.a(this.a.a, null);
-    }
-    vla.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vld
  * JD-Core Version:    0.7.0.1
  */

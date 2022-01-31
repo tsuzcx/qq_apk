@@ -1,8 +1,8 @@
 package cooperation.qzone.music;
 
-import arsj;
-import bhlc;
-import bhle;
+import atje;
+import bjmn;
+import bjmp;
 import org.json.JSONObject;
 
 class QzoneWebMusicJsPlugin$13
@@ -12,13 +12,13 @@ class QzoneWebMusicJsPlugin$13
   
   public void run()
   {
-    bhlc.a().a().b();
-    arsj.a(new JSONObject(), "pauseFloatView", null);
+    bjmn.a().a().b();
+    atje.a(new JSONObject(), "pauseFloatView", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.13
  * JD-Core Version:    0.7.0.1
  */

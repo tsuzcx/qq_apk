@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import aarr;
+import acip;
 
 class TroopAIOEmotionFragment$2$1
   implements Runnable
@@ -11,13 +11,13 @@ class TroopAIOEmotionFragment$2$1
   {
     TroopAIOEmotionFragment.a(this.a.this$0);
     if (TroopAIOEmotionFragment.a(this.a.this$0) != null) {
-      TroopAIOEmotionFragment.a(this.a.this$0).f();
+      TroopAIOEmotionFragment.a(this.a.this$0).g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

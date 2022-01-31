@@ -42,7 +42,7 @@ public class a$a
           a.k += 5000L;
           a.l += paramLong2;
         }
-        a.p = g.d;
+        a.p = j.d;
         if (a.p)
         {
           a.e += 5000L;
@@ -86,8 +86,8 @@ public class a$a
       {
         sleep(5000L);
         long l2 = System.currentTimeMillis();
-        long l3 = g.b(l2);
-        if ((a.d == 0L) && (l3 >= g.a))
+        long l3 = j.b(l2);
+        if ((a.d == 0L) && (l3 >= j.a))
         {
           a.d = System.currentTimeMillis() - SystemClock.elapsedRealtime();
           a.b = l1;
@@ -99,7 +99,7 @@ public class a$a
         if (a.d <= 0L) {
           continue;
         }
-        if (l3 > g.b) {
+        if (l3 > j.b) {
           break label141;
         }
         a(l2, l1);

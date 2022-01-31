@@ -1,20 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForLongMsg;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-class adtw
-  implements DialogInterface.OnClickListener
+public class adtw
+  extends RecyclerView.ItemDecoration
 {
-  adtw(adtu paramadtu, MessageForLongMsg paramMessageForLongMsg) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adtw(adto paramadto, int paramInt)
   {
-    aanz.a(this.jdField_a_of_type_Adtu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adtu.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adtu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.jdField_a_of_type_Int;
+    paramRect.bottom = this.jdField_a_of_type_Int;
+    paramRect.left = this.jdField_a_of_type_Int;
+    if (paramRecyclerView.getChildPosition(paramView) != 0) {
+      paramRect.right = this.jdField_a_of_type_Int;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adtw
  * JD-Core Version:    0.7.0.1
  */

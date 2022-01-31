@@ -1,15 +1,12 @@
-public class blby
+import android.view.View;
+
+public abstract interface blby
 {
-  private blbu a;
-  
-  public blby(blbw paramblbw)
-  {
-    this.a = new blbu(paramblbw);
-  }
+  public abstract void a(View paramView, bkvu parambkvu, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blby
  * JD-Core Version:    0.7.0.1
  */

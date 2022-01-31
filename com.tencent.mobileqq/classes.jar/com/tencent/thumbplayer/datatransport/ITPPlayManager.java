@@ -5,6 +5,7 @@ import com.tencent.thumbplayer.api.TPVideoInfo;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
 import com.tencent.thumbplayer.api.proxy.ITPPlayerProxyListener;
+import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPDLProxyLogListener;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 
@@ -37,7 +38,9 @@ public abstract interface ITPPlayManager
   
   public abstract void setVideoInfo(TPVideoInfo paramTPVideoInfo);
   
-  public abstract String startDownLoadTrackUrl(int paramInt, String paramString);
+  public abstract void startDemuxer(String paramString1, String paramString2);
+  
+  public abstract String startDownLoadTrackUrl(int paramInt, String paramString, TPDownloadParamData paramTPDownloadParamData);
   
   public abstract String startDownloadPlay(String paramString);
   
@@ -47,13 +50,15 @@ public abstract interface ITPPlayManager
   
   public abstract ITPMediaAsset startSwitchDefTaskByAsset(ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo);
   
+  public abstract void stopDemuxer();
+  
   public abstract void stopDownLoadTrackUrl(String paramString);
   
   public abstract void stopDownload();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.ITPPlayManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,39 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ates
-  extends balg
+public final class ates
+  implements EIPCResultCallback
 {
-  public ates(TroopGiftPanelForNearby paramTroopGiftPanelForNearby) {}
+  public ates(JSONObject paramJSONObject, spj paramspj, String paramString) {}
   
-  public void a(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    akbj.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
-    }
-    if (paramInt == 20007) {
-      bcql.a(TroopGiftPanelForNearby.a(this.a), ajya.a(2131715433), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
-    }
-    for (;;)
-    {
-      akbj.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
-      return;
-      bcql.a(TroopGiftPanelForNearby.b(this.a), ajya.a(2131715430), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null)) {}
+    for (boolean bool = paramEIPCResult.data.getBoolean("action_update_biu_and_comment_switch");; bool = false) {
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("isGrayscaleUser", bool);
+        QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig is " + bool);
+        this.jdField_a_of_type_Spj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+        return;
+      }
+      catch (JSONException paramEIPCResult)
+      {
+        for (;;)
+        {
+          QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig error " + paramEIPCResult.getMessage());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ates
  * JD-Core Version:    0.7.0.1
  */

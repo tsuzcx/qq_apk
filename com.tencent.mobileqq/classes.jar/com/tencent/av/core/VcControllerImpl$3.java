@@ -17,11 +17,16 @@ class VcControllerImpl$3
     VcControllerImpl.access$202(this.this$0, -1);
     VcControllerImpl.access$102(this.this$0, null);
     QLog.d("VcControllerImpl", 1, "closeVideo end. mCloseResult = " + VcControllerImpl.access$000(this.this$0));
+    synchronized (VcControllerImpl.access$500(this.this$0))
+    {
+      VcControllerImpl.access$500(this.this$0).notify();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.core.VcControllerImpl.3
  * JD-Core Version:    0.7.0.1
  */

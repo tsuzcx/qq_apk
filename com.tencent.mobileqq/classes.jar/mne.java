@@ -1,27 +1,52 @@
-public class mne
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+
+class mne
+  extends BroadcastReceiver
 {
-  public long a;
-  public byte[] a;
-  public long b;
+  mne(mnd parammnd) {}
   
-  public mne(byte[] paramArrayOfByte, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("PCMFrame:");
-    if (this.jdField_a_of_type_ArrayOfByte == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ArrayOfByte.length) {
-      return i + ", idx=" + this.jdField_a_of_type_Long + ", pts=" + this.b;
+    long l;
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      l = mwd.a(paramIntent);
+      if (!paramContext.equals("tencent.video.invite.accept")) {
+        break label32;
+      }
+      this.a.a(l);
     }
+    label32:
+    do
+    {
+      return;
+      if (paramContext.equals("tencent.video.invite.refuse"))
+      {
+        this.a.b(l);
+        return;
+      }
+      if (paramContext.equals("tencent.video.invite.gaaccept"))
+      {
+        this.a.d(l);
+        return;
+      }
+      if (paramContext.equals("tencent.video.invite.gaignore"))
+      {
+        this.a.c(l);
+        return;
+      }
+    } while (!paramContext.equals("tencent.video.q2v.sdk.onRequestVideo"));
+    QLog.d("VideoInviteFloatBarUICtr", 1, "onReceive action = " + paramContext);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mne
  * JD-Core Version:    0.7.0.1
  */

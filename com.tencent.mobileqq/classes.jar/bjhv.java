@@ -1,22 +1,23 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-class bjhv
-  implements bjho
+public class bjhv
+  implements DialogInterface.OnClickListener
 {
-  bjhv(bjhu parambjhu) {}
+  public bjhv(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      return bakx.b(paramString);
-    }
-    return "";
+    this.a.stopPlay();
+    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
+    paramDialogInterface.dismiss();
+    QzoneWebMusicJsPlugin.access$902(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjhv
  * JD-Core Version:    0.7.0.1
  */

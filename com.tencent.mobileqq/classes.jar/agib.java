@@ -1,27 +1,54 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.widget.AbsListView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.Player;
+import java.lang.ref.WeakReference;
 
-public class agib
-  extends agig
+public final class agib
+  extends AnimationView.Player
 {
-  public agib(AvatarPendantActivity paramAvatarPendantActivity)
+  public static boolean a;
+  
+  public agib(AnimationView paramAnimationView)
   {
-    super(paramAvatarPendantActivity);
+    super(paramAnimationView);
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(boolean paramBoolean)
   {
-    if (this.a.e == AvatarPendantActivity.d) {}
-    while (Build.VERSION.SDK_INT < 14) {
-      return;
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(AnimationView paramAnimationView)
+  {
+    reset();
+    this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAnimationView);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    this.a.b();
+    for (;;)
+    {
+      return false;
+      if (jdField_a_of_type_Boolean)
+      {
+        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      }
+      else
+      {
+        a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agib
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class pbo
+  implements TVK_SDKMgr.InstallListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public pbo(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public JSONObject a()
+  public void onInstallProgress(float paramFloat)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("businessId", this.jdField_a_of_type_Int);
-      localJSONObject.put("businessType", this.jdField_b_of_type_Int);
-      localJSONObject.put("businessName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("jumpUrl", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("businessIconUrl", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("fansCount", this.jdField_c_of_type_Int);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("SelfInfoModule", 1, "toJson error. " + localJSONException);
-    }
-    return localJSONObject;
+    aanp.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void onInstalledFailed(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramJSONObject.getInt("businessId");
-    this.jdField_b_of_type_Int = paramJSONObject.getInt("businessType");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("businessName");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("jumpUrl");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("businessIconUrl");
-    this.jdField_c_of_type_Int = paramJSONObject.getInt("fansCount");
+    aanp.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    aanp.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
+    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
+      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbo
  * JD-Core Version:    0.7.0.1
  */

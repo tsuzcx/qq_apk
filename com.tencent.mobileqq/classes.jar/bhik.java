@@ -1,22 +1,15 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-
-final class bhik
-  implements bhin
+public class bhik
 {
-  public void a(boolean paramBoolean, Context paramContext, bhio parambhio)
+  public static void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      bhii.d(paramContext, parambhio);
-    }
+    bhiq localbhiq = new bhiq();
+    localbhiq.a(paramInt1).a(paramInt2);
+    bhin.a(localbhiq.toString(), 103);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhik
  * JD-Core Version:    0.7.0.1
  */

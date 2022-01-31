@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aggg;
+import aiel;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,7 +18,7 @@ public class MiniMsgIPCClient
   public static final String MODULE_NAME = "mini_msg_client_module";
   public static final String TAG = "mini_msg_IPCClient";
   private static MiniMsgIPCClient sInstance;
-  private ConcurrentHashMap<Integer, aggg> mBusinessInfoMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, aiel> mBusinessInfoMap = new ConcurrentHashMap();
   private MiniMsgUser mMiniUser;
   
   public MiniMsgIPCClient(String paramString)
@@ -73,9 +73,9 @@ public class MiniMsgIPCClient
     paramString = getInstance().mBusinessInfoMap;
     if (!paramString.containsKey(Integer.valueOf(paramInt)))
     {
-      aggg localaggg = new aggg();
-      localaggg.a = paramInt;
-      paramString.put(Integer.valueOf(paramInt), localaggg);
+      aiel localaiel = new aiel();
+      localaiel.a = paramInt;
+      paramString.put(Integer.valueOf(paramInt), localaiel);
       paramString = getInstance();
     }
     try
@@ -107,9 +107,9 @@ public class MiniMsgIPCClient
     QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_clear_business", localBundle, null);
   }
   
-  public aggg getBusinessInfo(int paramInt)
+  public aiel getBusinessInfo(int paramInt)
   {
-    return (aggg)this.mBusinessInfoMap.get(Integer.valueOf(paramInt));
+    return (aiel)this.mBusinessInfoMap.get(Integer.valueOf(paramInt));
   }
   
   public MiniMsgUser getMiniUser()
@@ -214,7 +214,7 @@ public class MiniMsgIPCClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgIPCClient
  * JD-Core Version:    0.7.0.1
  */

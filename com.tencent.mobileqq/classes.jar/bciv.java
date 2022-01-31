@@ -1,40 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.1;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class bciv
-  extends mxj
+public class bciv
+  implements FilenameFilter
 {
-  bciv(bciq parambciq, bcix parambcix) {}
+  public bciv(TroopFileTransferManager.1 param1) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean accept(File paramFile, String paramString)
   {
-    if (this.jdField_a_of_type_Bcix != null)
-    {
-      paramBundle = new oidb_0x8ed.RspBody();
-      if (paramArrayOfByte == null) {}
+    if (paramString == null) {
+      return false;
     }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bcix.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
-        }
-      }
-    }
+    return paramString.startsWith("[Thumb]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bciv
  * JD-Core Version:    0.7.0.1
  */

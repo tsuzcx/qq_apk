@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qvk;
-import ram;
+import rlb;
+import rqj;
 
 public class ReadInJoyBaseAdapter$33
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$33(ram paramram) {}
+  public ReadInJoyBaseAdapter$33(rqj paramrqj) {}
   
   public void run()
   {
-    qvk.a().c(false);
+    rlb.a().c(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.33
  * JD-Core Version:    0.7.0.1
  */

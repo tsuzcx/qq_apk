@@ -1,28 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-
-class qxd
-  implements Animation.AnimationListener
+public abstract interface qxd
 {
-  qxd(qxc paramqxc, boolean paramBoolean) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public abstract void a(qxc paramqxc);
   
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (qxc.a(this.jdField_a_of_type_Qxc) != null) {
-      qxc.a(this.jdField_a_of_type_Qxc).setImageDrawable(this.jdField_a_of_type_Qxc.a(qxc.a(this.jdField_a_of_type_Qxc, this.jdField_a_of_type_Boolean)));
-    }
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
-  }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qxd
  * JD-Core Version:    0.7.0.1
  */

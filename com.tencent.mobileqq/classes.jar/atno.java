@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public final class atno
+class atno
+  implements DialogInterface.OnDismissListener
 {
-  String jdField_a_of_type_JavaLangString;
+  atno(atnn paramatnn) {}
   
-  private atno(TopicLabelListView paramTopicLabelListView) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atno
  * JD-Core Version:    0.7.0.1
  */

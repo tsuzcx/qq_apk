@@ -12,6 +12,7 @@ public final class QzmallCustomPraise
   public int iSubPraisetype;
   public int iType;
   public long lUin;
+  public String strCmShowActionId = "";
   public String strItemSummary = "";
   public String strPraiseComboZip = "";
   public String strPraiseListPic = "";
@@ -22,7 +23,7 @@ public final class QzmallCustomPraise
   
   public QzmallCustomPraise() {}
   
-  public QzmallCustomPraise(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5, long paramLong, int paramInt3, int paramInt4, String paramString6, String paramString7)
+  public QzmallCustomPraise(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5, long paramLong, int paramInt3, int paramInt4, String paramString6, String paramString7, String paramString8)
   {
     this.iItemId = paramInt1;
     this.strItemSummary = paramString1;
@@ -36,6 +37,7 @@ public final class QzmallCustomPraise
     this.iSubPraisetype = paramInt4;
     this.strPraisePicBefore = paramString6;
     this.strPraiseZipAfter = paramString7;
+    this.strCmShowActionId = paramString8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -52,6 +54,7 @@ public final class QzmallCustomPraise
     this.iSubPraisetype = paramJceInputStream.read(this.iSubPraisetype, 10, false);
     this.strPraisePicBefore = paramJceInputStream.readString(11, false);
     this.strPraiseZipAfter = paramJceInputStream.readString(12, false);
+    this.strCmShowActionId = paramJceInputStream.readString(13, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -81,6 +84,9 @@ public final class QzmallCustomPraise
     }
     if (this.strPraiseZipAfter != null) {
       paramJceOutputStream.write(this.strPraiseZipAfter, 12);
+    }
+    if (this.strCmShowActionId != null) {
+      paramJceOutputStream.write(this.strCmShowActionId, 13);
     }
   }
 }

@@ -1,41 +1,29 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import cooperation.qzone.panorama.widget.PanoramaGuideAnimate;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.ui.MiniAppDialog.1.1;
 
 public class bhhz
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public bhhz(PanoramaGuideAnimate paramPanoramaGuideAnimate) {}
+  bhhz(bhhy parambhhy) {}
   
-  @TargetApi(11)
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      PanoramaGuideAnimate.a(this.a).setRotationY(PanoramaGuideAnimate.a(this.a));
-      PanoramaGuideAnimate.a(this.a).setTranslationX(PanoramaGuideAnimate.b(this.a));
-      return;
-      if (PanoramaGuideAnimate.c(this.a) > 0.0F) {
-        break;
-      }
-    } while (PanoramaGuideAnimate.a(this.a) == null);
-    PanoramaGuideAnimate.a(this.a).a();
-    return;
-    PanoramaGuideAnimate.a(this.a, PanoramaGuideAnimate.c(this.a) - 0.05F);
-    this.a.setAlpha(PanoramaGuideAnimate.c(this.a));
-    PanoramaGuideAnimate.a(this.a).sendEmptyMessage(292);
+    bhhy.a(this.a, false);
+    bhhy.a(this.a).post(new MiniAppDialog.1.1(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    bhhy.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhhz
  * JD-Core Version:    0.7.0.1
  */

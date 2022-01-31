@@ -1,23 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import java.util.List;
 
-public final class tbo
-  implements Parcelable.Creator<DiscoverBannerVideoEntry.BannerInfo>
+public class tbo
+  extends FragmentPagerAdapter
 {
-  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
+  private List<Fragment> jdField_a_of_type_JavaUtilList;
+  
+  public tbo(FragmentManager paramFragmentManager, List<Fragment> paramList)
   {
-    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
+    super(paramList);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
+  public int getCount()
   {
-    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbo
  * JD-Core Version:    0.7.0.1
  */

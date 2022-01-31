@@ -1,45 +1,34 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wah
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vol>
 {
-  public int a;
-  public String a;
-  public ArrayList<Object> a;
-  public waj a;
-  public String[] a;
-  
-  public wah() {}
-  
-  public wah(String[] paramArrayOfString, String paramString, waj paramwaj)
+  public wah(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Waj = paramwaj;
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public String toString()
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vol paramvol)
   {
-    String str1;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
+    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramvol.jdField_a_of_type_JavaLangString)) && ((paramvol.jdField_a_of_type_Vld instanceof vlo)))
     {
-      str1 = "null";
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        break label86;
+      paramvol = ((vlo)paramvol.jdField_a_of_type_Vld).a;
+      if (paramvol != null) {
+        paramQQStoryShareGroupProfileActivity.a(paramvol.jdField_a_of_type_JavaLangString);
       }
     }
-    label86:
-    for (String str2 = "null";; str2 = TextUtils.join(",", this.jdField_a_of_type_JavaUtilArrayList.toArray()))
-    {
-      return "FFmpegCommandUnit{ cmdType :" + this.jdField_a_of_type_Int + "\n cmd: " + str1 + "\n output: " + this.jdField_a_of_type_JavaLangString + "\n arguments: " + str2;
-      str1 = TextUtils.join(" ", this.jdField_a_of_type_ArrayOfJavaLangString);
-      break;
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vol.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wah
  * JD-Core Version:    0.7.0.1
  */

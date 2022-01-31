@@ -1,279 +1,293 @@
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.support.v4.util.LruCache;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticonview.EmoticonTabAdapter.1;
+import com.tencent.mobileqq.emoticonview.HorizontalListViewEx;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
-import mqq.app.AppRuntime;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.MobileQQ;
 
-public final class aprl
+public class aprl
+  extends BaseAdapter
 {
-  public static long a(int paramInt)
+  public static LruCache<String, URL> a;
+  private int jdField_a_of_type_Int;
+  protected Context a;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public QQAppInterface a;
+  List<aprm> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  Drawable b;
+  
+  static
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      long l2 = NetConnInfoCenter.getServerTime();
-      if (paramInt == 1) {}
-      for (long l1 = 604800000L;; l1 = 2592000000L) {
-        return l1 + 1000L * l2;
-      }
-    }
-    return -1L;
+    jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(50);
   }
   
-  public static Bitmap a(String paramString, int paramInt)
+  public aprl(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
   {
-    Object localObject = null;
-    if (TextUtils.isEmpty(paramString)) {}
-    Bitmap localBitmap;
-    do
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837914);
+    this.b = paramContext.getResources().getDrawable(2130837915);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static URL a(String paramString, boolean paramBoolean)
+  {
+    Object localObject2;
+    if (paramString == null)
     {
-      return localObject;
-      localObject = wij.a(paramString, -1);
-      if (localObject == null)
+      localObject2 = null;
+      return localObject2;
+    }
+    label98:
+    for (;;)
+    {
+      try
       {
-        QLog.w("LinkUtils<FileAssistant>", 2, "getQrCode4Weiyun: encode failed.");
-        return null;
-      }
-      int m = ((ij)localObject).a();
-      int n = ((ij)localObject).b();
-      paramString = new int[m * n];
-      i = 0;
-      while (i < n)
-      {
-        j = 0;
-        if (j < m)
-        {
-          if (((ij)localObject).a(j, i)) {}
-          for (k = -16777216;; k = 16777215)
-          {
-            paramString[(i * m + j)] = k;
-            j += 1;
-            break;
-          }
+        Object localObject1 = (URL)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString + "_" + paramBoolean);
+        localObject2 = localObject1;
+        if (localObject1 != null) {
+          break;
         }
-        i += 1;
+        QLog.e("EmoticonTabAdapter", 2, "generateTabUrl error = " + localMalformedURLException1.getMessage());
       }
-      localObject = Bitmap.createBitmap(m, n, Bitmap.Config.ARGB_8888);
-      ((Bitmap)localObject).setPixels(paramString, 0, m, 0, 0, m, n);
-      if (m == paramInt)
+      catch (MalformedURLException localMalformedURLException1)
       {
-        paramString = (String)localObject;
-        if (n == paramInt) {}
+        try
+        {
+          localObject2 = new URL("protocol_vas_extension_image", "EMOTICON_TAB", paramString + "_" + paramBoolean);
+          localObject1 = localObject2;
+          jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, localObject1);
+          return localObject1;
+        }
+        catch (MalformedURLException localMalformedURLException2)
+        {
+          break label98;
+        }
+        localMalformedURLException1 = localMalformedURLException1;
+        localObject1 = null;
       }
-      else
-      {
-        paramString = Bitmap.createBitmap(paramInt, paramInt, Bitmap.Config.ARGB_8888);
-        new Canvas(paramString).drawBitmap((Bitmap)localObject, new Rect(0, 0, m, n), new Rect(0, 0, paramInt, paramInt), new Paint());
-        ((Bitmap)localObject).recycle();
-      }
-      localBitmap = baxi.a(BaseApplicationImpl.sApplication.getResources(), 2130843517);
-      localObject = paramString;
-    } while (localBitmap == null);
-    paramInt = localBitmap.getWidth();
-    int i = localBitmap.getHeight();
-    localObject = new Canvas(paramString);
-    int j = ((Canvas)localObject).getWidth();
-    int k = ((Canvas)localObject).getHeight();
-    ((Canvas)localObject).drawBitmap(localBitmap, new Rect(0, 0, paramInt, i), new Rect((j - paramInt) / 2, (k - i) / 2, (paramInt + j) / 2, (i + k) / 2), new Paint());
-    localBitmap.recycle();
-    return paramString;
+    }
   }
   
-  public static String a(int paramInt)
+  public static void a(String paramString) {}
+  
+  public int a(int paramInt)
   {
-    if (paramInt <= 0) {
-      return "";
-    }
-    Random localRandom = new Random();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramInt)
+    Object localObject = (apjf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334);
+    int j;
+    if ((this.jdField_a_of_type_JavaUtilList.isEmpty()) && (11 == paramInt) && (localObject != null) && (((apjf)localObject).c()))
     {
-      localStringBuilder.append("abcdefghijklmnopqrstuvwxyz0123456789".charAt(localRandom.nextInt("abcdefghijklmnopqrstuvwxyz0123456789".length())));
+      j = 2;
+      return j;
+    }
+    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
+    for (;;)
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break label108;
+      }
+      aprm localaprm = (aprm)((Iterator)localObject).next();
+      if (localaprm != null)
+      {
+        j = i;
+        if (localaprm.jdField_a_of_type_Int == paramInt) {
+          break;
+        }
+      }
       i += 1;
     }
-    return localStringBuilder.toString();
+    label108:
+    return 0;
   }
   
-  public static String a(FileManagerEntity paramFileManagerEntity, String paramString)
+  public Drawable a(aprm paramaprm)
   {
-    String str = paramString;
-    if (paramFileManagerEntity != null) {
-      if (!TextUtils.isEmpty(paramFileManagerEntity.fileName)) {
-        break label44;
+    URL localURL = a(paramaprm.jdField_a_of_type_JavaLangString, paramaprm.jdField_a_of_type_Boolean);
+    Object localObject = null;
+    if (localURL != null)
+    {
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (10 != paramaprm.jdField_a_of_type_Int) {
+        break label130;
       }
     }
-    label44:
-    for (str = paramString;; str = paramFileManagerEntity.fileName)
+    label130:
+    for (boolean bool = true;; bool = false)
     {
-      paramFileManagerEntity = apvd.a(str);
-      if ((!".doc".equalsIgnoreCase(paramFileManagerEntity)) && (!".docx".equalsIgnoreCase(paramFileManagerEntity))) {
-        break;
+      ((URLDrawable.URLDrawableOptions)localObject).mExtraInfo = Boolean.valueOf(bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonTabAdapter", 2, "getTabDrawable, completed = " + paramaprm.jdField_a_of_type_Boolean + ", epId = " + paramaprm.jdField_a_of_type_JavaLangString);
       }
-      return "1";
-    }
-    if ((".xls".equalsIgnoreCase(paramFileManagerEntity)) || (".xlsx".equalsIgnoreCase(paramFileManagerEntity))) {
-      return "2";
-    }
-    if ((".ppt".equalsIgnoreCase(paramFileManagerEntity)) || (".pptx".equalsIgnoreCase(paramFileManagerEntity))) {
-      return "3";
-    }
-    if (".pdf".equalsIgnoreCase(paramFileManagerEntity)) {
-      return "4";
-    }
-    if (".txt".equalsIgnoreCase(paramFileManagerEntity)) {
-      return "5";
-    }
-    if ((".zip".equalsIgnoreCase(paramFileManagerEntity)) || (".rar".equalsIgnoreCase(paramFileManagerEntity))) {
-      return "6";
-    }
-    return "7";
-  }
-  
-  public static String a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return "1";
-    }
-    return "2";
-  }
-  
-  public static void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    String str = localBaseApplicationImpl.getResources().getString(paramInt2);
-    if (paramBoolean) {}
-    for (paramInt2 = 1;; paramInt2 = 0)
-    {
-      bcql.a(localBaseApplicationImpl, paramInt1, str, paramInt2).b(localBaseApplicationImpl.getResources().getDimensionPixelSize(2131298865));
-      return;
-    }
-  }
-  
-  public static void a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      bcql.a(localBaseApplicationImpl, paramInt, paramString, i).b(localBaseApplicationImpl.getResources().getDimensionPixelSize(2131298865));
-      return;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (paramString2 == null)
-    {
-      paramString2 = "";
-      if (paramString3 != null) {
-        break label38;
+      paramaprm = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
+      localObject = paramaprm;
+      if (paramaprm.getStatus() == 2)
+      {
+        paramaprm.restartDownload();
+        localObject = paramaprm;
       }
-      paramString3 = "";
+      return localObject;
     }
-    label38:
+  }
+  
+  public void a(List<aprm> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
+    {
+      QLog.e("EmoticonTabAdapter", 1, "getItem error");
+      return null;
+    }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aprn localaprn;
+    if (paramView == null)
+    {
+      localaprn = new aprn(this);
+      paramView = HorizontalListViewEx.a();
+      if (paramView != null) {
+        break label612;
+      }
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559076, paramViewGroup, false);
+    }
+    label187:
+    label612:
     for (;;)
     {
-      axqy.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
-      return;
-      break;
-    }
-  }
-  
-  public static boolean a(FileManagerEntity paramFileManagerEntity, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      return true;
-      if (paramFileManagerEntity == null) {
-        return false;
-      }
-      int i = apug.a(paramFileManagerEntity);
-      if (i == 2)
+      localaprn.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377302));
+      localaprn.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375521));
+      localaprn.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365645);
+      paramView.setTag(localaprn);
+      Object localObject;
+      for (paramViewGroup = paramView;; paramViewGroup = paramView)
       {
-        if (!TextUtils.isEmpty(paramFileManagerEntity.WeiYunFileId)) {}
-        for (paramBoolean = true;; paramBoolean = false) {
-          return paramBoolean;
+        localObject = (aprm)getItem(paramInt);
+        if (localObject != null) {
+          break;
+        }
+        QLog.e("EmoticonTabAdapter", 1, "getView item is null ,position = " + paramInt);
+        localObject = null;
+        return localObject;
+        localaprn = (aprn)paramView.getTag();
+      }
+      localaprn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramViewGroup.setBackgroundDrawable(null);
+        localaprn.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839460));
+        switch (((aprm)localObject).jdField_a_of_type_Int)
+        {
+        case 5: 
+        default: 
+          paramView = null;
         }
       }
-      if (i == 1)
+      for (;;)
       {
-        if ((TextUtils.isEmpty(paramFileManagerEntity.Uuid)) || (TextUtils.isEmpty(paramFileManagerEntity.peerUin))) {
-          return false;
+        localObject = paramViewGroup;
+        if (paramView == null) {
+          break;
         }
-      }
-      else if (i == 4)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-        if ((localAppRuntime instanceof QQAppInterface)) {
-          try
+        localaprn.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramView);
+        return paramViewGroup;
+        localaprn.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
+        paramViewGroup.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839455));
+        break label187;
+        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846616);
+        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+        {
+          localObject = (aube)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
+          if ((localObject != null) && (((aube)localObject).a(this.jdField_a_of_type_Int)))
           {
-            paramFileManagerEntity = bakx.a((QQAppInterface)localAppRuntime, paramFileManagerEntity);
-            if (paramFileManagerEntity != null)
-            {
-              paramBoolean = TextUtils.isEmpty(paramFileManagerEntity.e);
-              if (!paramBoolean) {}
-            }
-            else
-            {
-              return false;
-            }
+            localaprn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).edit().putBoolean("recommemd_red_effect", true).apply();
+            VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "ep_mall", "j_redshow", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
           }
-          catch (Throwable paramFileManagerEntity)
+          else
           {
-            QLog.e("LinkUtils<FileAssistant>", 2, "isSupportedShareByWeiyun error", paramFileManagerEntity);
+            continue;
+            paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846606);
+            continue;
+            paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846605);
+            continue;
+            if (((apjf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).b()) {
+              localaprn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            }
+            paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837820);
+            continue;
+            paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837913);
+            continue;
+            paramView = a((aprm)localObject);
+            if (paramView == null)
+            {
+              paramView = new StateListDrawable();
+              Drawable localDrawable = this.b;
+              paramView.addState(new int[] { 16842913 }, localDrawable);
+              localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+              paramView.addState(new int[0], localDrawable);
+              ThreadManager.post(new EmoticonTabAdapter.1(this, (aprm)localObject), 5, null, false);
+            }
+            else {}
           }
         }
       }
     }
-    return false;
-  }
-  
-  public static String b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return "1";
-    case 2: 
-      return "2";
-    }
-    return "3";
-  }
-  
-  public static String c(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 2: 
-      return "1";
-    case 3: 
-      return "2";
-    case 9: 
-      return "3";
-    case 10: 
-      return "4";
-    }
-    return "5";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aprl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,56 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import java.lang.reflect.Field;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
 public class bbjh
+  implements bbkb
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
+  public bbjh(NewTroopContactView paramNewTroopContactView) {}
+  
+  public ArrayList<ResultRecord> a()
   {
-    if ((paramContext == null) || (paramString == null) || (paramString.length() <= 0)) {
-      return null;
-    }
-    try
+    return this.a.c;
+  }
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Bbiv.notifyDataSetChanged();
+    if (this.a.jdField_a_of_type_Bbiv.getGroupCount() > 0)
     {
-      Class localClass = Class.forName("android.content.Context");
-      i = ((Integer)localClass.getField("MODE_MULTI_PROCESS").get(localClass)).intValue();
-      int j = i;
-      if (i == -1) {
-        j = 0;
-      }
-      return paramContext.getSharedPreferences(paramString, j);
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
+      Groups localGroups1 = this.a.jdField_a_of_type_Bbiv.a(1007L);
+      Groups localGroups2 = this.a.jdField_a_of_type_Bbiv.a(1008L);
+      if ((localGroups1 != null) || (localGroups2 != null))
       {
-        i = -1;
+        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.a(0);
+        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setIsNeedScrollPositionTop(true);
+        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.smoothScrollToPositionFromTop(1, 0, 0);
+      }
+      if (localGroups1 != null) {
+        this.a.jdField_a_of_type_Bbjz.a();
+      }
+      if (localGroups2 != null) {
+        this.a.jdField_a_of_type_Bbjz.c();
       }
     }
-    catch (NoSuchFieldException localNoSuchFieldException)
+  }
+  
+  public ArrayList<String> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.c.size())
     {
-      for (;;)
-      {
-        i = -1;
-      }
+      localArrayList.add(((ResultRecord)this.a.c.get(i)).a);
+      i += 1;
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
-    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbjh
  * JD-Core Version:    0.7.0.1
  */

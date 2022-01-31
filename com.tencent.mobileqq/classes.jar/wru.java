@@ -1,45 +1,22 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import android.util.Property;
-import android.widget.ImageView;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
 
-final class wru
-  extends Property<ImageView, Matrix>
+public class wru
+  implements wop
 {
-  wru(Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  wru(wrh paramwrh) {}
   
-  public Matrix a(ImageView paramImageView)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    return null;
-  }
-  
-  public void a(ImageView paramImageView, Matrix paramMatrix)
-  {
-    Drawable localDrawable = paramImageView.getDrawable();
-    if (localDrawable == null) {
-      return;
-    }
-    if (paramMatrix == null) {
-      localDrawable.setBounds(0, 0, paramImageView.getWidth(), paramImageView.getHeight());
-    }
-    for (;;)
-    {
-      paramImageView.invalidate();
-      return;
-      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      if (paramImageView.getImageMatrix() == null) {
-        paramImageView.setImageMatrix(new Matrix());
-      }
-      paramImageView.setImageMatrix(paramMatrix);
-    }
+    wsv.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wru
  * JD-Core Version:    0.7.0.1
  */

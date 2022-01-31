@@ -1,16 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
-class atrk
-  implements DialogInterface.OnClickListener
+public class atrk
+  implements URLDrawable.URLDrawableListener
 {
-  atrk(atqw paramatqw) {}
+  public atrk(LoginWelcomeManager paramLoginWelcomeManager, atro paramatro, RecentUser paramRecentUser) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "tryShowCGRU drawable onLoadSuccessed");
+    }
+    this.jdField_a_of_type_Atro.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Atro.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.jdField_a_of_type_Atro.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
+    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atrk
  * JD-Core Version:    0.7.0.1
  */

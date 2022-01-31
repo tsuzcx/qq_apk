@@ -1,40 +1,32 @@
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.biz.qqcircle.comment.ItemReplyContainer;
+import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import feedcloud.FeedCloudMeta.StComment;
 
 public class tuh
-  implements bfos
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
+  public tuh(QCircleCommentItemView paramQCircleCommentItemView) {}
   
-  public tuh(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
+    if ((QCircleCommentItemView.a(this.a) != null) && (QCircleCommentItemView.a(this.a).vecReply.size() > 0))
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
-      }
+      QCircleCommentItemView.a(this.a).a(paramView, 10, QCircleCommentItemView.a(this.a), QCircleCommentItemView.a(this.a));
+      this.a.a.b.setVisibility(8);
+      this.a.a.a.setVisibility(8);
+      QCircleCommentItemView.a(this.a).setVisibility(0);
+      QCircleCommentItemView.a(this.a).setVisibility(0);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
-    tuj.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tuh
  * JD-Core Version:    0.7.0.1
  */

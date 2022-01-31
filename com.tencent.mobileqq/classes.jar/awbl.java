@@ -1,83 +1,61 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import com.tencent.mobileqq.persistence.NoColumnError;
 
 public class awbl
-  implements ajte
+  extends awch
 {
-  protected void a(long paramLong, int paramInt) {}
-  
-  protected void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2) {}
-  
-  protected void a(long paramLong, int paramInt1, int paramInt2, avwj paramavwj) {}
-  
-  protected void b(long paramLong, int paramInt) {}
-  
-  protected void c(long paramLong, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public awbl()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TransObserver", 2, new Object[] { "onUpdate, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
+    this.a = 2;
+  }
+  
+  public awbv a(awbv paramawbv, Cursor paramCursor, boolean paramBoolean, awcg paramawcg)
+  {
+    paramawbv = (CommonlyUsedTroop)paramawbv;
+    if (paramawcg == null)
     {
-    default: 
-      return;
-    case 0: 
-      if ((paramObject instanceof Object[]))
-      {
-        paramObject = (Object[])paramObject;
-        a(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (String)paramObject[5]);
-        return;
-      }
-      c(-1L, -1);
-      return;
-    case 1: 
-      if ((paramObject instanceof Object[]))
-      {
-        paramObject = (Object[])paramObject;
-        long l = ((Long)paramObject[0]).longValue();
-        paramInt = ((Integer)paramObject[1]).intValue();
-        int i = ((Integer)paramObject[2]).intValue();
-        if (paramObject[3] != null) {}
-        for (paramObject = (avwj)paramObject[3];; paramObject = null)
-        {
-          a(l, paramInt, i, paramObject);
-          return;
-        }
-      }
-      c(-1L, -1);
-      return;
-    case 2: 
-      if ((paramObject instanceof Object[]))
-      {
-        paramObject = (Object[])paramObject;
-        a(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
-        return;
-      }
-      c(-1L, -1);
-      return;
-    case 3: 
-      if ((paramObject instanceof Object[]))
-      {
-        paramObject = (Object[])paramObject;
-        c(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
-        return;
-      }
-      c(-1L, -1);
-      return;
+      paramawbv.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
+      paramawbv.addedTimestamp = paramCursor.getLong(paramCursor.getColumnIndex("addedTimestamp"));
+      return paramawbv;
     }
-    if ((paramObject instanceof Object[]))
+    int i = paramCursor.getColumnIndex("troopUin");
+    if (i == -1) {
+      paramawcg.a(new NoColumnError("troopUin", String.class));
+    }
+    for (;;)
     {
-      paramObject = (Object[])paramObject;
-      b(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
-      return;
+      i = paramCursor.getColumnIndex("addedTimestamp");
+      if (i != -1) {
+        break;
+      }
+      paramawcg.a(new NoColumnError("addedTimestamp", Long.TYPE));
+      return paramawbv;
+      paramawbv.troopUin = paramCursor.getString(i);
     }
-    c(-1L, -1);
+    paramawbv.addedTimestamp = paramCursor.getLong(i);
+    return paramawbv;
+  }
+  
+  public String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopUin TEXT UNIQUE ,addedTimestamp INTEGER)");
+    return localStringBuilder.toString();
+  }
+  
+  public void a(awbv paramawbv, ContentValues paramContentValues)
+  {
+    paramawbv = (CommonlyUsedTroop)paramawbv;
+    paramContentValues.put("troopUin", paramawbv.troopUin);
+    paramContentValues.put("addedTimestamp", Long.valueOf(paramawbv.addedTimestamp));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awbl
  * JD-Core Version:    0.7.0.1
  */

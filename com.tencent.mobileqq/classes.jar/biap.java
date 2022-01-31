@@ -1,37 +1,31 @@
-import android.graphics.drawable.Drawable;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 
-public class biap
+class biap
+  implements View.OnLayoutChangeListener
 {
-  public static biap a;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public static biap a()
+  private biap(bial parambial) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (a == null) {}
-    try
+    if ((this.jdField_a_of_type_Int > 0) && (this.b > 0)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
     {
-      if (a == null) {
-        a = new biap();
+      if ((paramInt1 != 0) && (!bial.c(this.jdField_a_of_type_Bial)) && ((this.jdField_a_of_type_Int != paramView.getHeight()) || (this.b != paramView.getWidth()))) {
+        this.jdField_a_of_type_Bial.f(bial.b(this.jdField_a_of_type_Bial));
       }
-      return a;
+      this.jdField_a_of_type_Int = paramView.getHeight();
+      this.b = paramView.getWidth();
+      return;
     }
-    finally {}
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
-  {
-    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
-  {
-    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biap
  * JD-Core Version:    0.7.0.1
  */

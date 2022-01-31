@@ -1,82 +1,30 @@
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.VideoInfo.VideoRemark;
 
-public class bjgz
+public final class bjgz
+  implements Parcelable.Creator<VideoInfo.VideoRemark>
 {
-  int a;
-  public Bitmap a;
-  public Typeface a;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  public int e;
-  public int f;
-  public int g = 2;
-  
-  public bjgz()
+  public VideoInfo.VideoRemark a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 0;
+    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
+    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.c = paramParcel.readString();
+    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
+    localVideoRemark.d = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
+    return localVideoRemark;
   }
   
-  public int a(float paramFloat)
+  public VideoInfo.VideoRemark[] a(int paramInt)
   {
-    return actj.a(paramFloat, BaseApplicationImpl.getApplication().getResources());
-  }
-  
-  public bjgy a()
-  {
-    bjgy localbjgy = new bjgy();
-    a(localbjgy);
-    return localbjgy;
-  }
-  
-  public bjgz a(float paramFloat1, float paramFloat2)
-  {
-    this.e = a(paramFloat1);
-    this.f = a(paramFloat2);
-    return this;
-  }
-  
-  public bjgz a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
-  {
-    this.c = a(paramFloat1);
-    this.d = a(paramFloat2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    return this;
-  }
-  
-  public bjgz a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    return this;
-  }
-  
-  public bjgz a(Typeface paramTypeface)
-  {
-    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
-    return this;
-  }
-  
-  void a(bjgy parambjgy)
-  {
-    parambjgy.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    parambjgy.e = this.e;
-    parambjgy.f = this.f;
-    parambjgy.c = this.c;
-    parambjgy.d = this.d;
-    parambjgy.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    parambjgy.b = this.b;
-    parambjgy.jdField_a_of_type_AndroidGraphicsTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
-    parambjgy.g = parambjgy.a(parambjgy.jdField_a_of_type_Int);
-    parambjgy.h = parambjgy.a(parambjgy.b);
-    parambjgy.i = this.g;
+    return new VideoInfo.VideoRemark[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjgz
  * JD-Core Version:    0.7.0.1
  */

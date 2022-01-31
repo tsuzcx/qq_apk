@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:dither="true" android:shape="oval">
-            <solid android:color="#0f000000" />
-            <stroke android:width="0.5dip" android:color="#ffeeeeee" />
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="4.5dip" />
+            <solid android:color="@color/dd" />
         </shape>
     </item>
-    <item android:left="0.5dip" android:top="0.5dip" android:right="0.5dip" android:bottom="0.5dip">
-        <shape android:shape="oval">
-            <solid android:color="#ffffffff" />
-            <size android:height="40.0dip" android:width="40.0dip" />
-        </shape>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <corners android:radius="4.5dip" />
+                <solid android:color="@color/al3" />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="4.5dip" />
+                <solid android:color="@color/al3" />
+            </shape>
+        </clip>
     </item>
 </layer-list>

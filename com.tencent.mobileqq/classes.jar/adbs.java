@@ -1,33 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class adbs
-  extends Handler
+  extends allb
 {
-  public adbs(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adbs(Leba paramLeba) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
     }
-    this.a.a.j(1);
-    this.a.b();
-    bcql.a(this.a.a.a(), this.a.a.a().getString(2131698553), 1).a();
+    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
+      this.a.a.sendEmptyMessage(11340002);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbs
  * JD-Core Version:    0.7.0.1
  */

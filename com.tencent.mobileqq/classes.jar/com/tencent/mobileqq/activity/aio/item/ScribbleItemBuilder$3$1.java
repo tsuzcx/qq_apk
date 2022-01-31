@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adyy;
-import bcpu;
+import afvm;
+import bepe;
 import com.tencent.qphone.base.util.QLog;
 
 public class ScribbleItemBuilder$3$1
   implements Runnable
 {
-  public ScribbleItemBuilder$3$1(adyy paramadyy, bcpu parambcpu) {}
+  public ScribbleItemBuilder$3$1(afvm paramafvm, bepe parambepe) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ScribbleItemBuilder$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.3.1
  * JD-Core Version:    0.7.0.1
  */

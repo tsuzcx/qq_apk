@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.app;
 
-import ajya;
+import alpo;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
@@ -64,9 +64,9 @@ public class InternalAppUIProxy
   {
     this.mActivity = paramBaseActivity;
     boolean bool = super.doOnCreate(paramBaseActivity, paramBundle);
-    this.mLoadingLayout = this.mActivity.findViewById(2131369500);
+    this.mLoadingLayout = this.mActivity.findViewById(2131369762);
     this.mLoadingLayout.setVisibility(8);
-    this.mRootView = this.mActivity.findViewById(2131370207);
+    this.mRootView = this.mActivity.findViewById(2131370475);
     return bool;
   }
   
@@ -79,7 +79,7 @@ public class InternalAppUIProxy
   
   protected int getLayoutResourceId()
   {
-    return 2131559262;
+    return 2131559306;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -127,7 +127,7 @@ public class InternalAppUIProxy
     if (paramBundle != null) {}
     for (paramBundle = (MiniAppConfig)paramBundle.getParcelable("CONFIG"); paramBundle == null; paramBundle = null)
     {
-      Toast.makeText(paramBaseActivity, ajya.a(2131705812), 1).show();
+      Toast.makeText(paramBaseActivity, alpo.a(2131706184), 1).show();
       paramBaseActivity.finish();
       return;
     }
@@ -135,7 +135,7 @@ public class InternalAppUIProxy
     ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
     ((RelativeLayout.LayoutParams)localObject).topMargin = (DisplayUtil.dip2px(paramBaseActivity, 9.0F) + ImmersiveUtils.getStatusBarHeight(paramBaseActivity));
     this.mLoadingLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = (ViewGroup)this.mLoadingLayout.findViewById(2131364687);
+    localObject = (ViewGroup)this.mLoadingLayout.findViewById(2131364766);
     if ((paramBundle.isInternalApp()) && (paramBundle.config.appMode.closeTopRightCapsule)) {
       ((ViewGroup)localObject).setVisibility(8);
     }
@@ -150,9 +150,9 @@ public class InternalAppUIProxy
       AppLoaderFactory.getAppLoaderManager().loadApkgByConfig(paramBundle);
       return;
       ((ViewGroup)localObject).setVisibility(0);
-      localObject = (ImageView)this.mLoadingLayout.findViewById(2131363500);
+      localObject = (ImageView)this.mLoadingLayout.findViewById(2131363541);
       if (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL)) {
-        ((ImageView)localObject).setImageDrawable(MiniAppUtils.getIcon(paramBaseActivity, MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840862, 40, 30));
+        ((ImageView)localObject).setImageDrawable(MiniAppUtils.getIcon(paramBaseActivity, MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840978, 40, 30));
       }
       ((ImageView)localObject).setOnClickListener(new InternalAppUIProxy.1(this, paramBaseActivity));
     }
@@ -160,7 +160,7 @@ public class InternalAppUIProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.InternalAppUIProxy
  * JD-Core Version:    0.7.0.1
  */

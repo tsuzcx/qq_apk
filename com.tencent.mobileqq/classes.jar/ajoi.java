@@ -1,54 +1,44 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
-final class ajoi
-  implements ajic
+class ajoi
+  implements bapx
 {
-  ajoi(String paramString, String[] paramArrayOfString, ajof paramajof, int paramInt) {}
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onResp(baqw parambaqw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    Object localObject = (ajol)parambaqw.jdField_a_of_type_Baqv.a();
+    lek.c("VideoFilterTools", "download file call back. file = " + ((ajol)localObject).a);
+    if (parambaqw.jdField_a_of_type_Int != 0)
     {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
-      if (paramArrayOfInt.exists()) {
-        try
-        {
-          paramString = ajog.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (ajog.a(this.jdField_a_of_type_JavaLangString))
-          {
-            paramArrayOfInt = ajog.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_Ajof.a(0, paramString, paramArrayOfInt);
-          }
-          while (QLog.isColorLevel())
-          {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
-            return;
-            this.jdField_a_of_type_Ajof.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
-          }
-          this.jdField_a_of_type_Ajof.a(-1, null, null);
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
-          return;
-        }
-      }
+      lek.c("VideoFilterTools", "download file faild. errcode = " + parambaqw.b);
+      return;
     }
-    else
+    if (!((ajol)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambaqw.jdField_a_of_type_Baqv.c)))
     {
-      this.jdField_a_of_type_Ajof.a(-1, null, null);
+      lek.c("VideoFilterTools", "download file faild : md5 is not match.");
+      bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
+      return;
+    }
+    lek.c("VideoFilterTools", "download file successed.");
+    try
+    {
+      localObject = ajog.a();
+      bdcs.a(parambaqw.jdField_a_of_type_Baqv.c, (String)localObject, false);
+      bdcs.d(parambaqw.jdField_a_of_type_Baqv.c);
+      return;
+    }
+    catch (IOException parambaqw)
+    {
+      parambaqw.printStackTrace();
+      lek.c("VideoFilterTools", "BEAUTY_ZIP unzip file faild.");
     }
   }
+  
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajoi
  * JD-Core Version:    0.7.0.1
  */

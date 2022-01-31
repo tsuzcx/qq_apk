@@ -1,39 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.reactive.SimpleObserver;
+import android.animation.TypeEvaluator;
+import android.graphics.PointF;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
 
-public class ubs<T>
-  extends SimpleObserver<T>
+public class ubs
+  implements TypeEvaluator<PointF>
 {
-  private ubs(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  PointF jdField_a_of_type_AndroidGraphicsPointF;
+  PointF b = new PointF();
   
-  public void onCancel()
+  public ubs(QCirclePolymorphicAniView paramQCirclePolymorphicAniView, PointF paramPointF)
   {
-    super.onCancel();
-    ved.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
   }
   
-  public void onError(@NonNull Error paramError)
+  private PointF a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, float paramFloat)
   {
-    super.onError(paramError);
-    ved.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    this.b.x = ((1.0F - paramFloat) * (1.0F - paramFloat) * paramPointF1.x + 2.0F * paramFloat * (1.0F - paramFloat) * paramPointF3.x + paramFloat * paramFloat * paramPointF2.x);
+    this.b.y = ((1.0F - paramFloat) * (1.0F - paramFloat) * paramPointF1.y + 2.0F * paramFloat * (1.0F - paramFloat) * paramPointF3.y + paramFloat * paramFloat * paramPointF2.y);
+    return this.b;
   }
   
-  public void onNext(T paramT)
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    super.onNext(paramT);
-    ved.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    return a(paramPointF1, paramPointF2, this.jdField_a_of_type_AndroidGraphicsPointF, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubs
  * JD-Core Version:    0.7.0.1
  */

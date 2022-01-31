@@ -61,7 +61,7 @@ public class EmoticonImageView
       if (jdField_a_of_type_AndroidGraphicsBitmap == null) {}
       try
       {
-        jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(super.getResources(), 2130838304);
+        jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(super.getResources(), 2130838364);
         label37:
         if (jdField_a_of_type_AndroidGraphicsBitmap == null) {
           continue;
@@ -97,7 +97,7 @@ public class EmoticonImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonImageView
  * JD-Core Version:    0.7.0.1
  */

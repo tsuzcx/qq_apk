@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class aydr
-  implements Parcelable.Creator<DocsGrayTipsInfo>
+final class aydr
+  implements ThreadFactory
 {
-  public DocsGrayTipsInfo a(Parcel paramParcel)
-  {
-    return new DocsGrayTipsInfo(paramParcel);
-  }
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public DocsGrayTipsInfo[] a(int paramInt)
+  public Thread newThread(Runnable paramRunnable)
   {
-    return new DocsGrayTipsInfo[paramInt];
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aydr
  * JD-Core Version:    0.7.0.1
  */

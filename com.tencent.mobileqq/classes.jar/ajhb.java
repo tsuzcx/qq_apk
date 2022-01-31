@@ -1,26 +1,45 @@
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.View;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
 import com.tencent.qphone.base.util.QLog;
 
-class ajhb
-  implements ajoc
+public class ajhb
+  implements ajgw
 {
-  ajhb(ajha paramajha) {}
+  public View a;
+  public TabDragAnimationView a;
+  private boolean a;
   
-  public void a(int paramInt)
+  public ajhb(TabDragAnimationView paramTabDragAnimationView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.b, 2, new Object[] { "createShortcut result:", Integer.valueOf(paramInt) });
-    }
-    if (this.a.jdField_a_of_type_Ajob != null) {
-      this.a.jdField_a_of_type_Ajob.a(paramInt);
-    }
-    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, paramInt, new String[] { String.valueOf(this.a.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, int paramInt, View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView == null) || (this.jdField_a_of_type_AndroidViewView == null) || (!this.jdField_a_of_type_AndroidViewView.equals(paramView))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TabDragListener", 2, "drag detect x=" + paramFloat1 + ",y=" + paramFloat2 + ",dragType=" + paramInt);
+      }
+      if ((paramInt == 1) || (paramInt == 2))
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(paramFloat1, paramFloat2, false);
+        return;
+      }
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhb
  * JD-Core Version:    0.7.0.1
  */

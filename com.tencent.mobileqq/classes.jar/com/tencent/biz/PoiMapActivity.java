@@ -1,12 +1,13 @@
 package com.tencent.biz;
 
-import ajya;
+import alpo;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask.Status;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -33,11 +34,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import axqy;
-import baxn;
-import bbky;
-import bcql;
-import bfos;
+import azmj;
+import bcwh;
+import bdjs;
+import bhpo;
 import com.tencent.component.network.utils.PlatformUtil;
 import com.tencent.map.lib.basemap.data.GeoPoint;
 import com.tencent.mobileqq.activity.QQMapActivity;
@@ -47,6 +47,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.proto.lbsshare.LBSShare.DPBiz;
 import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
 import com.tencent.proto.lbsshare.LBSShare.LocationResp;
@@ -69,48 +70,48 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
-import mvs;
-import mwb;
-import mwc;
-import mwd;
-import mwe;
-import mwf;
-import mwg;
-import mwh;
-import mwi;
-import mwj;
-import mwk;
-import mwl;
-import mwm;
-import mwn;
-import mwo;
-import mwp;
-import mwq;
-import mwr;
-import mws;
-import mwt;
-import mwu;
-import mww;
-import mwx;
-import mxa;
-import mxb;
-import mxd;
-import naj;
+import myl;
+import myu;
+import myv;
+import myw;
+import myx;
+import myy;
+import myz;
+import mza;
+import mzb;
+import mzc;
+import mzd;
+import mze;
+import mzf;
+import mzg;
+import mzh;
+import mzi;
+import mzj;
+import mzk;
+import mzl;
+import mzm;
+import mzn;
+import mzp;
+import mzq;
+import mzt;
+import mzu;
+import mzw;
+import ndd;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xnn;
-import xnp;
+import zcg;
+import zci;
 
 public class PoiMapActivity
   extends QQMapActivity
-  implements View.OnClickListener, xnp
+  implements View.OnClickListener, zci
 {
   protected float a;
   public int a;
   public View.OnClickListener a;
-  View.OnKeyListener jdField_a_of_type_AndroidViewView$OnKeyListener = new mwc(this);
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new mwk(this);
+  View.OnKeyListener jdField_a_of_type_AndroidViewView$OnKeyListener = new myv(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new mzd(this);
   protected View a;
   public final ViewTreeObserver.OnPreDrawListener a;
   public EditText a;
@@ -119,17 +120,17 @@ public class PoiMapActivity
   public LinearLayout a;
   protected RelativeLayout a;
   protected TextView a;
-  protected bfos a;
+  protected bhpo a;
   public XListView a;
   public final String a;
-  public List<mwt> a;
-  protected mvs a;
-  public mww a;
-  public mxa a;
-  protected xnn a;
+  public List<mzm> a;
+  protected myl a;
+  public mzp a;
+  public mzt a;
+  protected zcg a;
   public boolean a;
-  String[] jdField_a_of_type_ArrayOfJavaLangString = { ajya.a(2131708327), ajya.a(2131708326), ajya.a(2131708328), ajya.a(2131708324) };
-  public mwx[] a;
+  String[] jdField_a_of_type_ArrayOfJavaLangString = { alpo.a(2131708699), alpo.a(2131708698), alpo.a(2131708700), alpo.a(2131708696) };
+  public mzq[] a;
   public int b;
   public View b;
   protected ImageView b;
@@ -182,9 +183,9 @@ public class PoiMapActivity
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_g_of_type_Boolean = true;
     this.jdField_j_of_type_Boolean = true;
-    this.jdField_a_of_type_Bfos = new mwd(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new mwe(this);
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = new mwf(this);
+    this.jdField_a_of_type_Bhpo = new myw(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new myx(this);
+    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = new myy(this);
     this.jdField_b_of_type_ArrayOfJavaLangString = new String[] { "", "281100|281200", "281000|281010|281011|281012|281013|281099", "100000|130000" };
   }
   
@@ -205,8 +206,8 @@ public class PoiMapActivity
     localBundle.putString("description", this.jdField_g_of_type_JavaLangString);
     localBundle.putString("latSpan", String.valueOf(this.jdField_h_of_type_Int));
     localBundle.putString("lngSpan", String.valueOf(this.jdField_i_of_type_Int));
-    if ((TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) || (this.jdField_l_of_type_JavaLangString.equals(getString(2131695228)))) {
-      this.jdField_l_of_type_JavaLangString = getString(2131694005);
+    if ((TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) || (this.jdField_l_of_type_JavaLangString.equals(getString(2131695386)))) {
+      this.jdField_l_of_type_JavaLangString = getString(2131694121);
     }
     if (TextUtils.isEmpty(this.jdField_m_of_type_JavaLangString)) {
       this.jdField_m_of_type_JavaLangString = "Unknown Address";
@@ -236,12 +237,12 @@ public class PoiMapActivity
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131373064));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131375675);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131371809);
-    this.jdField_k_of_type_AndroidViewView = super.findViewById(2131369769);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371815));
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131695232));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131373500));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131376168);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131372127);
+    this.jdField_k_of_type_AndroidViewView = super.findViewById(2131370033);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131372133));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131695390));
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     if (this.jdField_k_of_type_Boolean)
@@ -264,10 +265,10 @@ public class PoiMapActivity
       Object localObject = (FrameLayout.LayoutParams)this.jdField_k_of_type_AndroidViewView.getLayoutParams();
       ((FrameLayout.LayoutParams)localObject).bottomMargin = (this.p + this.jdField_q_of_type_Int);
       this.jdField_k_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_c_of_type_AndroidViewView = super.findViewById(2131377350);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366661));
-      super.findViewById(2131363479).setVisibility(8);
-      localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365763);
+      this.jdField_c_of_type_AndroidViewView = super.findViewById(2131377884);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366779));
+      super.findViewById(2131363520).setVisibility(8);
+      localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365849);
       ((EditText)localObject).setFocusable(false);
       ((EditText)localObject).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       return;
@@ -279,8 +280,8 @@ public class PoiMapActivity
       g();
       if (!"group_activity".equals(this.jdField_o_of_type_JavaLangString))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.getMap().setOnMapClickListener(new mwb(this));
-        this.jdField_e_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131371817);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.getMap().setOnMapClickListener(new myu(this));
+        this.jdField_e_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131372135);
         this.jdField_e_of_type_AndroidViewView.setOnClickListener(this);
       }
     }
@@ -288,11 +289,11 @@ public class PoiMapActivity
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ArrayOfMwx == null) || (paramInt >= this.jdField_a_of_type_ArrayOfMwx.length)) {
+    if ((this.jdField_a_of_type_ArrayOfMzq == null) || (paramInt >= this.jdField_a_of_type_ArrayOfMzq.length)) {
       return;
     }
     this.jdField_l_of_type_Int = paramInt;
-    int i2 = this.jdField_a_of_type_ArrayOfMwx.length;
+    int i2 = this.jdField_a_of_type_ArrayOfMzq.length;
     int i1 = 0;
     label30:
     if (i1 < i2)
@@ -300,8 +301,8 @@ public class PoiMapActivity
       if (i1 != paramInt) {
         break label67;
       }
-      this.jdField_a_of_type_ArrayOfMwx[i1].a(true);
-      this.jdField_a_of_type_ArrayOfMwx[i1].b(true);
+      this.jdField_a_of_type_ArrayOfMzq[i1].a(true);
+      this.jdField_a_of_type_ArrayOfMzq[i1].b(true);
     }
     for (;;)
     {
@@ -309,7 +310,7 @@ public class PoiMapActivity
       break label30;
       break;
       label67:
-      this.jdField_a_of_type_ArrayOfMwx[i1].a(false);
+      this.jdField_a_of_type_ArrayOfMzq[i1].a(false);
     }
   }
   
@@ -374,27 +375,27 @@ public class PoiMapActivity
     this.jdField_j_of_type_Int = this.jdField_h_of_type_Int;
     this.jdField_k_of_type_Int = this.jdField_i_of_type_Int;
     this.jdField_c_of_type_Boolean = false;
-    i2 = this.jdField_a_of_type_ArrayOfMwx.length;
+    i2 = this.jdField_a_of_type_ArrayOfMzq.length;
     i1 = 0;
     if (i1 < i2)
     {
       if (i1 == 0)
       {
-        this.jdField_a_of_type_ArrayOfMwx[0].jdField_a_of_type_Mwu.a(false);
+        this.jdField_a_of_type_ArrayOfMzq[0].jdField_a_of_type_Mzn.a(false);
         if (this.jdField_g_of_type_Boolean) {
-          this.jdField_a_of_type_ArrayOfMwx[0].a(-1, false);
+          this.jdField_a_of_type_ArrayOfMzq[0].a(-1, false);
         }
       }
       for (;;)
       {
         i1 += 1;
         break;
-        this.jdField_a_of_type_ArrayOfMwx[0].a(0, false);
+        this.jdField_a_of_type_ArrayOfMzq[0].a(0, false);
         continue;
-        this.jdField_a_of_type_ArrayOfMwx[i1].a(-1, true);
+        this.jdField_a_of_type_ArrayOfMzq[i1].a(-1, true);
       }
     }
-    this.jdField_a_of_type_ArrayOfMwx[this.jdField_l_of_type_Int].b(true);
+    this.jdField_a_of_type_ArrayOfMzq[this.jdField_l_of_type_Int].b(true);
   }
   
   public void a(LBSShare.GetShopsByIdsResp paramGetShopsByIdsResp)
@@ -421,65 +422,65 @@ public class PoiMapActivity
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = paramGetShopsByIdsResp.shops.get().iterator();
       LBSShare.DPBiz localDPBiz;
-      mxd localmxd;
+      mzw localmzw;
       if (localIterator.hasNext())
       {
         localDPBiz = (LBSShare.DPBiz)localIterator.next();
-        localmxd = new mxd(this);
-        localmxd.jdField_a_of_type_Int = 1;
+        localmzw = new mzw(this);
+        localmzw.jdField_a_of_type_Int = 1;
         if (!localDPBiz.id.has()) {
           break label372;
         }
         paramGetShopsByIdsResp = localDPBiz.id.get();
-        localmxd.h = paramGetShopsByIdsResp;
+        localmzw.h = paramGetShopsByIdsResp;
         if (!localDPBiz.name.has()) {
           break label378;
         }
         paramGetShopsByIdsResp = localDPBiz.name.get();
-        localmxd.jdField_e_of_type_JavaLangString = paramGetShopsByIdsResp;
+        localmzw.jdField_e_of_type_JavaLangString = paramGetShopsByIdsResp;
         if (!localDPBiz.logo.has()) {
           break label384;
         }
         paramGetShopsByIdsResp = localDPBiz.logo.get();
-        localmxd.jdField_f_of_type_JavaLangString = paramGetShopsByIdsResp;
+        localmzw.jdField_f_of_type_JavaLangString = paramGetShopsByIdsResp;
         if (!localDPBiz.url.has()) {
           break label390;
         }
         paramGetShopsByIdsResp = localDPBiz.url.get();
-        localmxd.jdField_g_of_type_JavaLangString = paramGetShopsByIdsResp;
+        localmzw.jdField_g_of_type_JavaLangString = paramGetShopsByIdsResp;
         if (!localDPBiz.avg_price.has()) {
           break label396;
         }
         paramGetShopsByIdsResp = localDPBiz.avg_price.get();
-        localmxd.jdField_b_of_type_JavaLangString = paramGetShopsByIdsResp;
+        localmzw.jdField_b_of_type_JavaLangString = paramGetShopsByIdsResp;
         if (!localDPBiz.biz_zone.has()) {
           break label402;
         }
         paramGetShopsByIdsResp = localDPBiz.biz_zone.get();
-        localmxd.jdField_c_of_type_JavaLangString = paramGetShopsByIdsResp;
+        localmzw.jdField_c_of_type_JavaLangString = paramGetShopsByIdsResp;
         if (!localDPBiz.category.has()) {
           break label408;
         }
         paramGetShopsByIdsResp = localDPBiz.category.get();
-        localmxd.jdField_a_of_type_JavaLangString = paramGetShopsByIdsResp;
+        localmzw.jdField_a_of_type_JavaLangString = paramGetShopsByIdsResp;
         if (!localDPBiz.has_quan.has()) {
           break label414;
         }
         i1 = localDPBiz.has_quan.get();
-        localmxd.jdField_c_of_type_Int = i1;
+        localmzw.jdField_c_of_type_Int = i1;
         if (!localDPBiz.has_tuan.has()) {
           break label419;
         }
         i1 = localDPBiz.has_tuan.get();
-        localmxd.jdField_b_of_type_Int = i1;
+        localmzw.jdField_b_of_type_Int = i1;
         if (!localDPBiz.rate.has()) {
           break label424;
         }
       }
       for (i1 = localDPBiz.rate.get();; i1 = 0)
       {
-        localmxd.jdField_d_of_type_Int = i1;
-        localArrayList.add(localmxd);
+        localmzw.jdField_d_of_type_Int = i1;
+        localArrayList.add(localmzw);
         break label64;
         break;
         paramGetShopsByIdsResp = "";
@@ -551,7 +552,7 @@ public class PoiMapActivity
         if (QLog.isColorLevel()) {
           QLog.i("PoiMapActivity", 2, "onGetLbsShareSearch error:" + i6);
         }
-        bcql.a(this, super.getString(2131693733), 0).a();
+        QQToast.a(this, super.getString(2131693849), 0).a();
       }
       i1 = 0;
       i2 = 0;
@@ -564,7 +565,7 @@ public class PoiMapActivity
         break label933;
       }
       paramBundle = new GeoPoint(i3, i4);
-      if (this.jdField_a_of_type_Mww != null) {
+      if (this.jdField_a_of_type_Mzp != null) {
         break label789;
       }
     }
@@ -572,14 +573,14 @@ public class PoiMapActivity
     {
       Object localObject;
       LBSShare.POI localPOI;
-      mwt localmwt;
+      mzm localmzm;
       try
       {
-        this.jdField_a_of_type_Mww = new mww(this);
-        this.jdField_a_of_type_Mww.a(paramBundle);
-        this.jdField_a_of_type_Mww.execute(new Void[0]);
-        paramBundle = new mwt(this);
-        paramBundle.jdField_a_of_type_JavaLangString = super.getResources().getString(2131695228);
+        this.jdField_a_of_type_Mzp = new mzp(this);
+        this.jdField_a_of_type_Mzp.a(paramBundle);
+        this.jdField_a_of_type_Mzp.execute(new Void[0]);
+        paramBundle = new mzm(this);
+        paramBundle.jdField_a_of_type_JavaLangString = super.getResources().getString(2131695386);
         paramBundle.jdField_b_of_type_JavaLangString = "";
         this.jdField_m_of_type_JavaLangString = paramBundle.jdField_b_of_type_JavaLangString;
         paramBundle.jdField_b_of_type_Int = i3;
@@ -603,59 +604,59 @@ public class PoiMapActivity
           break label1516;
         }
         localPOI = (LBSShare.POI)((Iterator)localObject).next();
-        localmwt = new mwt(this);
+        localmzm = new mzm(this);
         if (!localPOI.name.has()) {
           break label1240;
         }
         paramBundle = localPOI.name.get();
-        localmwt.jdField_a_of_type_JavaLangString = paramBundle;
+        localmzm.jdField_a_of_type_JavaLangString = paramBundle;
         if (!localPOI.addr.has()) {
           break label1246;
         }
         paramBundle = localPOI.addr.get();
-        localmwt.jdField_b_of_type_JavaLangString = paramBundle;
+        localmzm.jdField_b_of_type_JavaLangString = paramBundle;
         if (!localPOI.lat.has()) {
           break label1252;
         }
         i2 = localPOI.lat.get();
-        localmwt.jdField_b_of_type_Int = i2;
+        localmzm.jdField_b_of_type_Int = i2;
         if (!localPOI.lng.has()) {
           break label1258;
         }
         i2 = localPOI.lng.get();
-        localmwt.jdField_c_of_type_Int = i2;
+        localmzm.jdField_c_of_type_Int = i2;
         if (!localPOI.id.has()) {
           break label1264;
         }
         paramBundle = localPOI.id.get();
-        localmwt.jdField_c_of_type_JavaLangString = paramBundle;
+        localmzm.jdField_c_of_type_JavaLangString = paramBundle;
         if (!"group_activity".equals(this.jdField_o_of_type_JavaLangString)) {
           break label1270;
         }
-        localmwt.jdField_d_of_type_JavaLangString = "";
-        localmwt.jdField_e_of_type_JavaLangString = "";
-        localmwt.jdField_a_of_type_Int = 0;
-        localmwt.jdField_g_of_type_JavaLangString = "";
-        localmwt.h = "";
-        localmwt.jdField_i_of_type_JavaLangString = "";
-        localmwt.jdField_f_of_type_JavaLangString = "";
-        if (!TextUtils.isEmpty(localmwt.jdField_d_of_type_JavaLangString)) {
+        localmzm.jdField_d_of_type_JavaLangString = "";
+        localmzm.jdField_e_of_type_JavaLangString = "";
+        localmzm.jdField_a_of_type_Int = 0;
+        localmzm.jdField_g_of_type_JavaLangString = "";
+        localmzm.h = "";
+        localmzm.jdField_i_of_type_JavaLangString = "";
+        localmzm.jdField_f_of_type_JavaLangString = "";
+        if (!TextUtils.isEmpty(localmzm.jdField_d_of_type_JavaLangString)) {
           a("share_locate", "view_share_tuan", "", "", "", "");
         }
-        if ((TextUtils.isEmpty(localmwt.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(localmwt.jdField_e_of_type_JavaLangString))) {
+        if ((TextUtils.isEmpty(localmzm.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(localmzm.jdField_e_of_type_JavaLangString))) {
           a("share_locate", "view_quan", "", "", "", "");
         }
-        if ((!this.jdField_c_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) || (!this.jdField_d_of_type_JavaLangString.equals(localmwt.jdField_c_of_type_JavaLangString))) {
+        if ((!this.jdField_c_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) || (!this.jdField_d_of_type_JavaLangString.equals(localmzm.jdField_c_of_type_JavaLangString))) {
           break label1499;
         }
         if (!localArrayList.isEmpty())
         {
-          paramBundle = (mwt)localArrayList.get(0);
+          paramBundle = (mzm)localArrayList.get(0);
           if ((this.jdField_l_of_type_JavaLangString.equals(paramBundle.jdField_a_of_type_JavaLangString)) && (this.jdField_m_of_type_JavaLangString.equals(paramBundle.jdField_b_of_type_JavaLangString))) {
             localArrayList.remove(0);
           }
         }
-        localArrayList.add(0, localmwt);
+        localArrayList.add(0, localmzm);
         continue;
         bool1 = false;
       }
@@ -668,28 +669,28 @@ public class PoiMapActivity
         continue;
       }
       label789:
-      this.jdField_a_of_type_Mww.a = paramBundle;
+      this.jdField_a_of_type_Mzp.a = paramBundle;
       if (PlatformUtil.version() >= 11)
       {
-        localObject = ((ThreadPoolExecutor)mww.THREAD_POOL_EXECUTOR).getQueue();
+        localObject = ((ThreadPoolExecutor)mzp.THREAD_POOL_EXECUTOR).getQueue();
         if ((localObject != null) && (((BlockingQueue)localObject).size() > 0)) {
           ((BlockingQueue)localObject).removeAll((Collection)localObject);
         }
       }
-      if (this.jdField_a_of_type_Mww.getStatus() != AsyncTask.Status.FINISHED)
+      if (this.jdField_a_of_type_Mzp.getStatus() != AsyncTask.Status.FINISHED)
       {
-        if (!this.jdField_a_of_type_Mww.isCancelled()) {
-          this.jdField_a_of_type_Mww.cancel(true);
+        if (!this.jdField_a_of_type_Mzp.isCancelled()) {
+          this.jdField_a_of_type_Mzp.cancel(true);
         }
       }
       else
       {
         try
         {
-          localObject = new mww(this);
-          ((mww)localObject).a(paramBundle);
-          this.jdField_a_of_type_Mww = ((mww)localObject);
-          this.jdField_a_of_type_Mww.execute(new Void[0]);
+          localObject = new mzp(this);
+          ((mzp)localObject).a(paramBundle);
+          this.jdField_a_of_type_Mzp = ((mzp)localObject);
+          this.jdField_a_of_type_Mzp.execute(new Void[0]);
         }
         catch (RejectedExecutionException paramBundle) {}
         if (QLog.isColorLevel())
@@ -701,51 +702,51 @@ public class PoiMapActivity
           if (paramLocationResp.mylbs.has())
           {
             localObject = (LBSShare.POI)paramLocationResp.mylbs.get();
-            localmwt = new mwt(this);
+            localmzm = new mzm(this);
             if (((LBSShare.POI)localObject).name.has())
             {
               paramBundle = ((LBSShare.POI)localObject).name.get();
               label988:
-              localmwt.jdField_a_of_type_JavaLangString = paramBundle;
+              localmzm.jdField_a_of_type_JavaLangString = paramBundle;
               if (!((LBSShare.POI)localObject).shop_url.has()) {
                 break label1184;
               }
               paramBundle = ((LBSShare.POI)localObject).shop_url.get();
               label1014:
-              localmwt.jdField_d_of_type_JavaLangString = paramBundle;
+              localmzm.jdField_d_of_type_JavaLangString = paramBundle;
               if (!((LBSShare.POI)localObject).addr.has()) {
                 break label1190;
               }
               paramBundle = ((LBSShare.POI)localObject).addr.get();
               label1040:
-              localmwt.jdField_b_of_type_JavaLangString = paramBundle;
+              localmzm.jdField_b_of_type_JavaLangString = paramBundle;
               if (!((LBSShare.POI)localObject).lat.has()) {
                 break label1196;
               }
               i1 = ((LBSShare.POI)localObject).lat.get();
               label1066:
-              localmwt.jdField_b_of_type_Int = i1;
+              localmzm.jdField_b_of_type_Int = i1;
               if (!((LBSShare.POI)localObject).lng.has()) {
                 break label1201;
               }
               i1 = ((LBSShare.POI)localObject).lng.get();
               label1092:
-              localmwt.jdField_c_of_type_Int = i1;
+              localmzm.jdField_c_of_type_Int = i1;
               if ((!this.jdField_c_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString))) {
                 break label1206;
               }
-              localmwt.jdField_a_of_type_JavaLangString = this.jdField_l_of_type_JavaLangString;
-              localmwt.jdField_d_of_type_JavaLangString = "";
-              localmwt.jdField_b_of_type_JavaLangString = this.jdField_m_of_type_JavaLangString;
-              localmwt.jdField_b_of_type_Int = this.jdField_h_of_type_Int;
-              localmwt.jdField_c_of_type_Int = this.jdField_i_of_type_Int;
+              localmzm.jdField_a_of_type_JavaLangString = this.jdField_l_of_type_JavaLangString;
+              localmzm.jdField_d_of_type_JavaLangString = "";
+              localmzm.jdField_b_of_type_JavaLangString = this.jdField_m_of_type_JavaLangString;
+              localmzm.jdField_b_of_type_Int = this.jdField_h_of_type_Int;
+              localmzm.jdField_c_of_type_Int = this.jdField_i_of_type_Int;
             }
             for (;;)
             {
-              localArrayList.add(localmwt);
+              localArrayList.add(localmzm);
               i1 = 1;
               break;
-              paramBundle = super.getResources().getString(2131695228);
+              paramBundle = super.getResources().getString(2131695386);
               break label988;
               label1184:
               paramBundle = "";
@@ -760,8 +761,8 @@ public class PoiMapActivity
               i1 = 0;
               break label1092;
               label1206:
-              localmwt.jdField_a_of_type_JavaLangString = super.getResources().getString(2131695228);
-              this.jdField_m_of_type_JavaLangString = localmwt.jdField_b_of_type_JavaLangString;
+              localmzm.jdField_a_of_type_JavaLangString = super.getResources().getString(2131695386);
+              this.jdField_m_of_type_JavaLangString = localmzm.jdField_b_of_type_JavaLangString;
             }
             label1232:
             i1 = 0;
@@ -786,32 +787,32 @@ public class PoiMapActivity
             if (localPOI.shop_url.has())
             {
               paramBundle = localPOI.shop_url.get();
-              localmwt.jdField_d_of_type_JavaLangString = paramBundle;
+              localmzm.jdField_d_of_type_JavaLangString = paramBundle;
               if (!localPOI.shop_url_quan.has()) {
                 break label1463;
               }
               paramBundle = localPOI.shop_url_quan.get();
-              localmwt.jdField_e_of_type_JavaLangString = paramBundle;
+              localmzm.jdField_e_of_type_JavaLangString = paramBundle;
               if (!localPOI.shop_count.has()) {
                 break label1469;
               }
               i2 = localPOI.shop_count.get();
-              localmwt.jdField_a_of_type_Int = i2;
+              localmzm.jdField_a_of_type_Int = i2;
               if (!localPOI.shangquan_url.has()) {
                 break label1475;
               }
               paramBundle = localPOI.shangquan_url.get();
-              localmwt.jdField_g_of_type_JavaLangString = paramBundle;
+              localmzm.jdField_g_of_type_JavaLangString = paramBundle;
               if (!localPOI.shangquan_wording.has()) {
                 break label1481;
               }
               paramBundle = localPOI.shangquan_wording.get();
-              localmwt.h = paramBundle;
+              localmzm.h = paramBundle;
               if (!localPOI.POI_preview_url.has()) {
                 break label1487;
               }
               paramBundle = localPOI.POI_preview_url.get();
-              localmwt.jdField_i_of_type_JavaLangString = paramBundle;
+              localmzm.jdField_i_of_type_JavaLangString = paramBundle;
               if (!localPOI.dpid.has()) {
                 break label1493;
               }
@@ -823,7 +824,7 @@ public class PoiMapActivity
             label1396:
             for (paramBundle = localPOI.dpid.get();; paramBundle = "")
             {
-              localmwt.jdField_f_of_type_JavaLangString = paramBundle;
+              localmzm.jdField_f_of_type_JavaLangString = paramBundle;
               break;
               paramBundle = "";
               break label1290;
@@ -846,7 +847,7 @@ public class PoiMapActivity
             label1487:
             label1493:
             label1499:
-            localArrayList.add(localmwt);
+            localArrayList.add(localmzm);
           }
         }
       }
@@ -908,65 +909,65 @@ public class PoiMapActivity
       paramBundle = new ArrayList();
       Iterator localIterator = paramNearByShopsResp.poilist.get().iterator();
       LBSShare.Shop localShop;
-      mws localmws;
+      mzl localmzl;
       if (localIterator.hasNext())
       {
         localShop = (LBSShare.Shop)localIterator.next();
-        localmws = new mws(this);
-        localmws.jdField_a_of_type_Int = 1;
+        localmzl = new mzl(this);
+        localmzl.jdField_a_of_type_Int = 1;
         if (!localShop.id.has()) {
           break label417;
         }
         paramNearByShopsResp = localShop.id.get();
-        localmws.h = paramNearByShopsResp;
+        localmzl.h = paramNearByShopsResp;
         if (!localShop.name.has()) {
           break label423;
         }
         paramNearByShopsResp = localShop.name.get();
-        localmws.jdField_e_of_type_JavaLangString = paramNearByShopsResp;
+        localmzl.jdField_e_of_type_JavaLangString = paramNearByShopsResp;
         if (!localShop.logo.has()) {
           break label429;
         }
         paramNearByShopsResp = localShop.logo.get();
-        localmws.jdField_f_of_type_JavaLangString = paramNearByShopsResp;
+        localmzl.jdField_f_of_type_JavaLangString = paramNearByShopsResp;
         if (!localShop.url.has()) {
           break label435;
         }
         paramNearByShopsResp = localShop.url.get();
-        localmws.jdField_g_of_type_JavaLangString = paramNearByShopsResp;
+        localmzl.jdField_g_of_type_JavaLangString = paramNearByShopsResp;
         if (!localShop.detail.has()) {
           break label441;
         }
         paramNearByShopsResp = localShop.detail.get();
-        localmws.jdField_a_of_type_JavaLangString = paramNearByShopsResp;
+        localmzl.jdField_a_of_type_JavaLangString = paramNearByShopsResp;
         if (!localShop.discount.has()) {
           break label447;
         }
         paramNearByShopsResp = localShop.discount.get();
-        localmws.jdField_b_of_type_JavaLangString = paramNearByShopsResp;
+        localmzl.jdField_b_of_type_JavaLangString = paramNearByShopsResp;
         if (!localShop.price.has()) {
           break label453;
         }
         paramNearByShopsResp = localShop.price.get();
-        localmws.jdField_c_of_type_JavaLangString = paramNearByShopsResp;
+        localmzl.jdField_c_of_type_JavaLangString = paramNearByShopsResp;
         if (!localShop.soldnum.has()) {
           break label459;
         }
         paramNearByShopsResp = localShop.soldnum.get();
-        localmws.jdField_d_of_type_JavaLangString = paramNearByShopsResp;
+        localmzl.jdField_d_of_type_JavaLangString = paramNearByShopsResp;
         if (!localShop.has_tuan.has()) {
           break label465;
         }
         i1 = localShop.has_tuan.get();
-        localmws.jdField_b_of_type_Int = i1;
+        localmzl.jdField_b_of_type_Int = i1;
         if (!localShop.has_quan.has()) {
           break label470;
         }
       }
       for (i1 = localShop.has_quan.get();; i1 = 0)
       {
-        localmws.jdField_c_of_type_Int = i1;
-        paramBundle.add(localmws);
+        localmzl.jdField_c_of_type_Int = i1;
+        paramBundle.add(localmzl);
         break label109;
         break;
         paramNearByShopsResp = "";
@@ -1008,21 +1009,21 @@ public class PoiMapActivity
   {
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131695224));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131695382));
     this.jdField_c_of_type_JavaLangString = paramString;
     this.jdField_n_of_type_Int = 0;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_f_of_type_Boolean = false;
     a(this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, paramString, "", 0, 20);
-    this.jdField_a_of_type_Mxa.notifyDataSetChanged();
+    this.jdField_a_of_type_Mzt.notifyDataSetChanged();
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
+    azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
   }
   
-  protected void a(String paramString, List<mwt> paramList, boolean paramBoolean)
+  protected void a(String paramString, List<mzm> paramList, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
@@ -1032,12 +1033,12 @@ public class PoiMapActivity
       if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
         break label216;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719087));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719567));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Mxa.notifyDataSetChanged();
+      this.jdField_a_of_type_Mzt.notifyDataSetChanged();
       return;
       if (this.jdField_n_of_type_Int == 0) {
         this.jdField_a_of_type_JavaUtilList.clear();
@@ -1066,7 +1067,7 @@ public class PoiMapActivity
     }
   }
   
-  public void a(ArrayList<mwt> paramArrayList, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, boolean paramBoolean)
+  public void a(ArrayList<mzm> paramArrayList, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     if ((this.jdField_h_of_type_Int != paramInt1) && (this.jdField_i_of_type_Int != paramInt2)) {}
     label142:
@@ -1074,7 +1075,7 @@ public class PoiMapActivity
     for (;;)
     {
       return;
-      paramInt2 = this.jdField_a_of_type_ArrayOfMwx.length;
+      paramInt2 = this.jdField_a_of_type_ArrayOfMzq.length;
       paramInt1 = 0;
       for (;;)
       {
@@ -1083,7 +1084,7 @@ public class PoiMapActivity
         }
         if (this.jdField_b_of_type_ArrayOfJavaLangString[paramInt1].equals(paramString))
         {
-          paramString = this.jdField_a_of_type_ArrayOfMwx[paramInt1];
+          paramString = this.jdField_a_of_type_ArrayOfMzq[paramInt1];
           if (paramInt3 != 0) {}
           for (boolean bool = true;; bool = false)
           {
@@ -1094,14 +1095,14 @@ public class PoiMapActivity
             if ((paramArrayList == null) || (paramArrayList.size() <= 1)) {
               break label142;
             }
-            this.jdField_a_of_type_ArrayOfMwx[0].a(0, true);
+            this.jdField_a_of_type_ArrayOfMzq[0].a(0, true);
             if (this.jdField_k_of_type_Boolean) {
               break;
             }
             a("share_locate", "pageview_all", this.jdField_f_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, "", "");
             return;
           }
-          this.jdField_a_of_type_ArrayOfMwx[0].a(0, true);
+          this.jdField_a_of_type_ArrayOfMzq[0].a(0, true);
           return;
         }
         paramInt1 += 1;
@@ -1115,12 +1116,12 @@ public class PoiMapActivity
     if (paramList != null)
     {
       l();
-      localObject = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addPolyline(new PolylineOptions().addAll(paramList).width(baxn.a(this, 7.0F)).color(Color.parseColor("#389dff")));
+      localObject = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addPolyline(new PolylineOptions().addAll(paramList).width(bcwh.a(this, 7.0F)).color(Color.parseColor("#389dff")));
       if (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null)
       {
         this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline = ((Polyline)localObject);
         m();
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(xnn.a(paramInt));
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(zcg.a(paramInt));
       }
     }
     for (;;)
@@ -1132,43 +1133,43 @@ public class PoiMapActivity
         ((ArrayList)localObject).addAll(paramList);
       }
       ((ArrayList)localObject).add(new LatLng(this.jdField_a_of_type_Double, this.jdField_b_of_type_Double));
-      xnn.a((List)localObject, this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView, baxn.a(this, 42.0F));
+      zcg.a((List)localObject, this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView, bcwh.a(this, 42.0F));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.invalidate();
       return;
-      bcql.a(this, 0, ajya.a(2131708325), 0).b(getResources().getDimensionPixelSize(2131298865));
+      QQToast.a(this, 0, alpo.a(2131708697), 0).b(getResources().getDimensionPixelSize(2131298914));
     }
   }
   
-  public void a(mwt parammwt)
+  public void a(mzm parammzm)
   {
-    this.jdField_m_of_type_JavaLangString = parammwt.jdField_b_of_type_JavaLangString;
-    this.jdField_l_of_type_JavaLangString = parammwt.jdField_a_of_type_JavaLangString;
-    this.jdField_d_of_type_JavaLangString = parammwt.jdField_c_of_type_JavaLangString;
-    this.jdField_h_of_type_Int = parammwt.jdField_b_of_type_Int;
-    this.jdField_i_of_type_Int = parammwt.jdField_c_of_type_Int;
+    this.jdField_m_of_type_JavaLangString = parammzm.jdField_b_of_type_JavaLangString;
+    this.jdField_l_of_type_JavaLangString = parammzm.jdField_a_of_type_JavaLangString;
+    this.jdField_d_of_type_JavaLangString = parammzm.jdField_c_of_type_JavaLangString;
+    this.jdField_h_of_type_Int = parammzm.jdField_b_of_type_Int;
+    this.jdField_i_of_type_Int = parammzm.jdField_c_of_type_Int;
     this.jdField_j_of_type_Int = this.jdField_h_of_type_Int;
     this.jdField_k_of_type_Int = this.jdField_i_of_type_Int;
-    this.jdField_n_of_type_JavaLangString = parammwt.jdField_f_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = parammwt.jdField_c_of_type_JavaLangString;
+    this.jdField_n_of_type_JavaLangString = parammzm.jdField_f_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = parammzm.jdField_c_of_type_JavaLangString;
     this.jdField_c_of_type_Boolean = true;
-    int i2 = this.jdField_a_of_type_ArrayOfMwx.length;
+    int i2 = this.jdField_a_of_type_ArrayOfMzq.length;
     int i1 = 0;
     if (i1 < i2)
     {
       if (i1 == 0)
       {
-        this.jdField_a_of_type_ArrayOfMwx[0].jdField_a_of_type_Mwu.a(false);
-        this.jdField_a_of_type_ArrayOfMwx[0].a(0, false);
+        this.jdField_a_of_type_ArrayOfMzq[0].jdField_a_of_type_Mzn.a(false);
+        this.jdField_a_of_type_ArrayOfMzq[0].a(0, false);
       }
       for (;;)
       {
         i1 += 1;
         break;
-        this.jdField_a_of_type_ArrayOfMwx[i1].a(-1, false);
+        this.jdField_a_of_type_ArrayOfMzq[i1].a(-1, false);
       }
     }
     a(0);
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(parammwt.jdField_b_of_type_Int / 1000000.0D, parammwt.jdField_c_of_type_Int / 1000000.0D)));
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(parammzm.jdField_b_of_type_Int / 1000000.0D, parammzm.jdField_c_of_type_Int / 1000000.0D)));
   }
   
   public boolean a()
@@ -1189,7 +1190,7 @@ public class PoiMapActivity
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation((Animation)localObject1);
     localDialog.requestWindowFeature(1);
     localDialog.getWindow().setSoftInputMode(36);
-    localDialog.setContentView(2131562369);
+    localDialog.setContentView(2131562573);
     Object localObject2 = localDialog.getWindow().getAttributes();
     ((WindowManager.LayoutParams)localObject2).x = 0;
     ((WindowManager.LayoutParams)localObject2).y = 0;
@@ -1199,38 +1200,38 @@ public class PoiMapActivity
     localDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
     localObject2 = new TranslateAnimation(0.0F, 0.0F, -i1, 0.0F);
     ((TranslateAnimation)localObject2).setDuration(300L);
-    mwl localmwl = new mwl(this, (TranslateAnimation)localObject1, localDialog, i1, (TranslateAnimation)localObject2);
-    ((TranslateAnimation)localObject1).setAnimationListener(localmwl);
-    ((TranslateAnimation)localObject2).setAnimationListener(localmwl);
-    localDialog.setOnDismissListener(new mwm(this, (TranslateAnimation)localObject2, localInputMethodManager));
-    this.jdField_d_of_type_AndroidViewView = localDialog.findViewById(2131375493);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)localDialog.findViewById(2131365763));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new mxb(this));
+    mze localmze = new mze(this, (TranslateAnimation)localObject1, localDialog, i1, (TranslateAnimation)localObject2);
+    ((TranslateAnimation)localObject1).setAnimationListener(localmze);
+    ((TranslateAnimation)localObject2).setAnimationListener(localmze);
+    localDialog.setOnDismissListener(new mzf(this, (TranslateAnimation)localObject2, localInputMethodManager));
+    this.jdField_d_of_type_AndroidViewView = localDialog.findViewById(2131375981);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)localDialog.findViewById(2131365849));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new mzu(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
     this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(this.jdField_a_of_type_AndroidViewView$OnKeyListener);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)localDialog.findViewById(2131367678));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new mwn(this));
-    localObject1 = (Button)localDialog.findViewById(2131363479);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)localDialog.findViewById(2131367807));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new mzg(this));
+    localObject1 = (Button)localDialog.findViewById(2131363520);
     ((Button)localObject1).setVisibility(0);
-    ((Button)localObject1).setOnClickListener(new mwo(this, localDialog));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localDialog.findViewById(2131370876));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localDialog.findViewById(2131375189));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new mwp(this, localDialog));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localDialog.findViewById(2131375673));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundDrawable(super.getResources().getDrawable(2130838514));
+    ((Button)localObject1).setOnClickListener(new mzh(this, localDialog));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localDialog.findViewById(2131371186));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localDialog.findViewById(2131375671));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new mzi(this, localDialog));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localDialog.findViewById(2131376166));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundDrawable(super.getResources().getDrawable(2130838591));
     this.jdField_a_of_type_ComTencentWidgetXListView.setDividerHeight(0);
     this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Mxa = new mxa(this, this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Mxa);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Bfos);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new mwq(this, localInputMethodManager));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new mwr(this, localDialog));
-    if (1 == naj.a()) {}
+    this.jdField_a_of_type_Mzt = new mzt(this, this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Mzt);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Bhpo);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new mzj(this, localInputMethodManager));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new mzk(this, localDialog));
+    if (1 == ndd.a()) {}
     for (this.jdField_e_of_type_Boolean = true;; this.jdField_e_of_type_Boolean = false)
     {
       this.jdField_b_of_type_Boolean = true;
-      xnn.a("search", a());
+      zcg.a("search", a());
       return;
     }
   }
@@ -1271,7 +1272,7 @@ public class PoiMapActivity
       {
         localObject2 = "0";
         String str3 = this.jdField_l_of_type_Int + 1 + "";
-        if (!this.jdField_a_of_type_ArrayOfMwx[this.jdField_l_of_type_Int].jdField_a_of_type_Mwu.jdField_a_of_type_Boolean) {
+        if (!this.jdField_a_of_type_ArrayOfMzq[this.jdField_l_of_type_Int].jdField_a_of_type_Mzn.jdField_a_of_type_Boolean) {
           break label372;
         }
         localObject3 = "2";
@@ -1298,7 +1299,7 @@ public class PoiMapActivity
       }
       for (;;)
       {
-        xnn.a("send_location", a(), (String)localObject1);
+        zcg.a("send_location", a(), (String)localObject1);
         return;
         localObject2 = this.jdField_b_of_type_JavaLangString;
         break;
@@ -1325,8 +1326,8 @@ public class PoiMapActivity
   
   protected void f()
   {
-    this.jdField_a_of_type_Mvs = mvs.a();
-    Object localObject2 = this.jdField_a_of_type_Mvs.a("poi_category", "");
+    this.jdField_a_of_type_Myl = myl.a();
+    Object localObject2 = this.jdField_a_of_type_Myl.a("poi_category", "");
     Object localObject1;
     String[] arrayOfString;
     int i1;
@@ -1392,13 +1393,13 @@ public class PoiMapActivity
   
   public void g()
   {
-    this.p = super.getResources().getDimensionPixelSize(2131297343);
-    this.jdField_q_of_type_Int = super.getResources().getDimensionPixelSize(2131297352);
-    this.t = super.getResources().getDimensionPixelSize(2131297346);
-    this.u = super.getResources().getDimensionPixelSize(2131297345);
-    this.jdField_r_of_type_Int = super.getResources().getDimensionPixelSize(2131297338);
-    this.s = super.getResources().getDimensionPixelSize(2131297339);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131371820));
+    this.p = super.getResources().getDimensionPixelSize(2131297362);
+    this.jdField_q_of_type_Int = super.getResources().getDimensionPixelSize(2131297371);
+    this.t = super.getResources().getDimensionPixelSize(2131297365);
+    this.u = super.getResources().getDimensionPixelSize(2131297364);
+    this.jdField_r_of_type_Int = super.getResources().getDimensionPixelSize(2131297357);
+    this.s = super.getResources().getDimensionPixelSize(2131297358);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131372138));
     this.jdField_b_of_type_AndroidViewView.setBackgroundColor(this.jdField_c_of_type_Int);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(null);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundResource(this.jdField_d_of_type_Int);
@@ -1409,8 +1410,8 @@ public class PoiMapActivity
       ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
       this.jdField_i_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    Object localObject = (FrameLayout)super.findViewById(2131371812);
-    this.jdField_a_of_type_ArrayOfMwx = new mwx[this.jdField_a_of_type_ArrayOfJavaLangString.length];
+    Object localObject = (FrameLayout)super.findViewById(2131372130);
+    this.jdField_a_of_type_ArrayOfMzq = new mzq[this.jdField_a_of_type_ArrayOfJavaLangString.length];
     LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-2, -1);
     LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-1, -1);
     localLayoutParams1.weight = 1.0F;
@@ -1418,18 +1419,18 @@ public class PoiMapActivity
     int i1 = 0;
     while (i1 < i2)
     {
-      mwx localmwx = new mwx(this, this, this.jdField_a_of_type_ArrayOfJavaLangString[i1], i1);
+      mzq localmzq = new mzq(this, this, this.jdField_a_of_type_ArrayOfJavaLangString[i1], i1);
       if (i1 == 0)
       {
-        localmwx.a(true);
-        localmwx.jdField_a_of_type_Mwu.jdField_a_of_type_Int = 0;
+        localmzq.a(true);
+        localmzq.jdField_a_of_type_Mzn.jdField_a_of_type_Int = 0;
       }
       if (i1 == i2 - 1) {
-        localmwx.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView.a();
+        localmzq.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView.a();
       }
-      this.jdField_a_of_type_ArrayOfMwx[i1] = localmwx;
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localmwx.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView, localLayoutParams1);
-      ((FrameLayout)localObject).addView(localmwx.jdField_a_of_type_ComTencentWidgetXListView, localLayoutParams2);
+      this.jdField_a_of_type_ArrayOfMzq[i1] = localmzq;
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localmzq.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView, localLayoutParams1);
+      ((FrameLayout)localObject).addView(localmzq.jdField_a_of_type_ComTencentWidgetXListView, localLayoutParams2);
       i1 += 1;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView != null) {
@@ -1451,11 +1452,11 @@ public class PoiMapActivity
     while ((this.p <= 0) || (this.jdField_o_of_type_Int <= 0)) {
       return;
     }
-    bbky localbbky = new bbky(Integer.valueOf(this.jdField_o_of_type_Int + this.p), Integer.valueOf(this.jdField_o_of_type_Int), new mwg(this));
-    localbbky.setDuration(200L);
-    localbbky.setFillAfter(true);
-    localbbky.setAnimationListener(new mwh(this));
-    this.jdField_i_of_type_AndroidViewView.startAnimation(localbbky);
+    bdjs localbdjs = new bdjs(Integer.valueOf(this.jdField_o_of_type_Int + this.p), Integer.valueOf(this.jdField_o_of_type_Int), new myz(this));
+    localbdjs.setDuration(200L);
+    localbdjs.setFillAfter(true);
+    localbdjs.setAnimationListener(new mza(this));
+    this.jdField_i_of_type_AndroidViewView.startAnimation(localbdjs);
   }
   
   public void j()
@@ -1464,11 +1465,11 @@ public class PoiMapActivity
     while ((this.p <= 0) || (this.jdField_o_of_type_Int <= 0)) {
       return;
     }
-    bbky localbbky = new bbky(Integer.valueOf(this.jdField_o_of_type_Int), Integer.valueOf(this.jdField_o_of_type_Int + this.p), new mwi(this));
-    localbbky.setDuration(200L);
-    localbbky.setFillAfter(true);
-    localbbky.setAnimationListener(new mwj(this));
-    this.jdField_i_of_type_AndroidViewView.startAnimation(localbbky);
+    bdjs localbdjs = new bdjs(Integer.valueOf(this.jdField_o_of_type_Int), Integer.valueOf(this.jdField_o_of_type_Int + this.p), new mzb(this));
+    localbdjs.setDuration(200L);
+    localbdjs.setFillAfter(true);
+    localbdjs.setAnimationListener(new mzc(this));
+    this.jdField_i_of_type_AndroidViewView.startAnimation(localbdjs);
   }
   
   public void k()
@@ -1524,8 +1525,8 @@ public class PoiMapActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131371815: 
-    case 2131371817: 
+    case 2131372133: 
+    case 2131372135: 
       label159:
       do
       {
@@ -1545,7 +1546,7 @@ public class PoiMapActivity
         }
         for (;;)
         {
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841872);
+          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842024);
           return;
           a(true);
           break;
@@ -1558,28 +1559,39 @@ public class PoiMapActivity
       return;
     }
     paramView = new GeoPoint((int)(this.jdField_a_of_type_Double * 1000000.0D), (int)(this.jdField_b_of_type_Double * 1000000.0D));
-    this.jdField_a_of_type_Xnn.a(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint, paramView, this.jdField_q_of_type_JavaLangString, this.jdField_l_of_type_JavaLangString);
-    xnn.a("navigation_click");
-    xnn.b("click_navig", "0");
+    if (Build.VERSION.SDK_INT >= 23) {
+      if (checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0) {
+        requestPermissions(new String[] { "android.permission.ACCESS_FINE_LOCATION" }, 1);
+      }
+    }
+    for (;;)
+    {
+      zcg.a("navigation_click");
+      zcg.b("click_navig", "0");
+      return;
+      this.jdField_a_of_type_Zcg.a(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint, paramView, this.jdField_q_of_type_JavaLangString, this.jdField_l_of_type_JavaLangString);
+      continue;
+      this.jdField_a_of_type_Zcg.a(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint, paramView, this.jdField_q_of_type_JavaLangString, this.jdField_l_of_type_JavaLangString);
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     paramBundle = ThemeUtil.getCurrentThemeInfo().getString("themeId");
-    this.jdField_a_of_type_Int = super.getResources().getColor(2131166928);
-    this.jdField_b_of_type_Int = super.getResources().getColor(2131166854);
-    this.jdField_d_of_type_Int = 2130849139;
-    this.jdField_e_of_type_Int = 2130839129;
-    this.jdField_f_of_type_Int = 2130843313;
+    this.jdField_a_of_type_Int = super.getResources().getColor(2131166975);
+    this.jdField_b_of_type_Int = super.getResources().getColor(2131166901);
+    this.jdField_d_of_type_Int = 2130849570;
+    this.jdField_e_of_type_Int = 2130839213;
+    this.jdField_f_of_type_Int = 2130843496;
     if ("1103".equals(paramBundle)) {}
-    for (this.jdField_c_of_type_Int = super.getResources().getColor(2131165806);; this.jdField_c_of_type_Int = super.getResources().getColor(2131165805))
+    for (this.jdField_c_of_type_Int = super.getResources().getColor(2131165844);; this.jdField_c_of_type_Int = super.getResources().getColor(2131165843))
     {
       this.jdField_g_of_type_Int = Color.rgb(0, 121, 255);
       this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
       this.jdField_j_of_type_Boolean = getIntent().getBooleanExtra("is_need_destroy_broadcast", true);
-      this.jdField_a_of_type_Xnn = new xnn(this);
-      this.jdField_a_of_type_Xnn.a(this);
+      this.jdField_a_of_type_Zcg = new zcg(this);
+      this.jdField_a_of_type_Zcg.a(this);
       f();
       a();
       return;
@@ -1596,7 +1608,7 @@ public class PoiMapActivity
   
   public void onMapScrollStart(GeoPoint paramGeoPoint)
   {
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841870);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842022);
   }
 }
 

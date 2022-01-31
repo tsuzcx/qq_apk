@@ -1,86 +1,59 @@
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.os.IBinder;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.PopupWindow;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.Calendar;
 
-public class bcou
-  extends PopupWindow
+class bcou
+  implements bcpm
 {
-  protected Context a;
-  private View jdField_a_of_type_AndroidViewView;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  bcou(bcot parambcot) {}
   
-  public bcou(Context paramContext)
+  public void a(int paramInt1, int paramInt2)
   {
-    super(paramContext, null, 2131755870);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    setOutsideTouchable(true);
-    setFocusable(true);
-    setTouchable(true);
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (bcot.a(this.a) != null)
     {
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      localValueAnimator.setDuration(400L);
-      localValueAnimator.addUpdateListener(new bcox(this));
-      localValueAnimator.addListener(new bcoy(this));
-      localValueAnimator.start();
+      if (paramInt1 != 0) {
+        break label212;
+      }
+      if (bcot.a(this.a) == null) {
+        break label288;
+      }
+      paramInt1 = bcot.a(this.a).a(bcot.a(this.a), paramInt2);
+      int i = bcot.a(this.a).a(bcot.a(this.a), paramInt2, paramInt1);
+      paramInt2 = paramInt1;
+      paramInt1 = i;
     }
-  }
-  
-  private void a(IBinder paramIBinder)
-  {
-    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -1;
-    localLayoutParams.format = -3;
-    localLayoutParams.type = 1000;
-    localLayoutParams.token = paramIBinder;
-    this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(855638016);
-    this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(false);
-    this.jdField_a_of_type_AndroidViewView.setOnKeyListener(new bcov(this));
-    this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-    paramIBinder = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    paramIBinder.setDuration(400L);
-    paramIBinder.addUpdateListener(new bcow(this));
-    paramIBinder.start();
-  }
-  
-  public void dismiss()
-  {
-    a();
-    super.dismiss();
-  }
-  
-  public void showAsDropDown(View paramView)
-  {
-    a(paramView.getWindowToken());
-    super.showAsDropDown(paramView);
-  }
-  
-  public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
-  {
-    a(paramView.getWindowToken());
-    super.showAsDropDown(paramView, paramInt1, paramInt2);
-  }
-  
-  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramView.getWindowToken());
-    super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
+    for (;;)
+    {
+      bcot.a(this.a).setSelection(1, paramInt2);
+      bcot.a(this.a).a(1);
+      bcot.a(this.a).setSelection(2, paramInt1);
+      bcot.a(this.a).a(2);
+      label212:
+      do
+      {
+        bcot.a(this.a, bcot.a(this.a).a(new int[] { bcot.a(this.a).a(0), bcot.a(this.a).a(1), bcot.a(this.a).a(2) }));
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopPickerViewHelper", 2, Arrays.toString(bcot.a(this.a).a(bcot.a(this.a).getTimeInMillis())));
+        }
+        return;
+      } while (paramInt1 != 1);
+      if (bcot.a(this.a) != null) {}
+      for (paramInt1 = bcot.a(this.a).a(bcot.a(this.a), bcot.a(this.a).a(0), paramInt2);; paramInt1 = 0)
+      {
+        bcot.a(this.a).setSelection(2, paramInt1);
+        bcot.a(this.a).a(2);
+        break;
+      }
+      label288:
+      paramInt1 = 0;
+      paramInt2 = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcou
  * JD-Core Version:    0.7.0.1
  */

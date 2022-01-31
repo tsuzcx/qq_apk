@@ -1,54 +1,255 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch.1;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public final class wwx
+public class wwx
+  extends wwc
+  implements View.OnClickListener, bhqp
 {
-  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new wxa(this);
+  View jdField_a_of_type_AndroidViewView;
+  ViewStub jdField_a_of_type_AndroidViewViewStub;
+  public EditText a;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  XListView jdField_a_of_type_ComTencentWidgetXListView = null;
+  WeakReference<www> jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList<TroopBarPOI> jdField_a_of_type_JavaUtilArrayList = null;
+  utq jdField_a_of_type_Utq = utq.a();
+  xgp jdField_a_of_type_Xgp = null;
+  View b;
+  View c;
+  View d = null;
+  View e = null;
+  View f = null;
+  View g = null;
+  
+  public wwx(@NonNull wwe paramwwe)
   {
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.setData(Uri.parse(paramString2));
-    localIntent.putExtra("srcAction", paramString3);
-    localIntent.putExtra("srcPackageName", paramString4);
-    localIntent.putExtra("srcClassName", paramString5);
-    localIntent.putExtra("params_appid", paramString1);
-    try
-    {
-      paramContext.startActivity(localIntent);
-      return true;
-    }
-    catch (ActivityNotFoundException paramContext) {}
-    return false;
+    super(paramwwe);
   }
   
-  public static boolean b(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  private void l()
   {
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.setData(Uri.parse(paramString1));
-    if (localPackageManager.queryIntentActivities(localIntent, 0).size() != 0)
+    wsv.b("Q.qqstory.publish.edit.EditVideoPoiSearch", "requestPoiList");
+    String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    this.jdField_a_of_type_Utq.a(str);
+    if (TextUtils.isEmpty(str))
     {
-      if (a(paramContext, paramString2, paramString1, paramString3, paramString4, paramString5)) {
-        return true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DataProviderApi", 2, "start scheme:" + paramString1 + " failed!");
-      }
-      return false;
+      wsv.c("Q.qqstory.publish.edit.EditVideoPoiSearch", "requestPoiList text is null ignore");
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_Xgp.notifyDataSetChanged();
+      k();
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DataProviderApi", 2, "scheme:" + paramString1 + " is not found!");
+    utk localutk = (utk)urr.a(9);
+    utj localutj = xnd.a(this.jdField_a_of_type_Wwe.a);
+    if (localutj != null) {
+      localutk.a(localutj, this.jdField_a_of_type_Utq, new wwz(this, str));
     }
-    return false;
+    if (this.jdField_a_of_type_Utq.b())
+    {
+      j();
+      this.d.setVisibility(4);
+      return;
+    }
+    this.d.setVisibility(0);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131373797));
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
+      return;
+    }
+    if ((paramObject instanceof www)) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((www)paramObject);
+    }
+    f();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.jdField_a_of_type_AndroidWidgetEditText.post(new EditVideoPoiSearch.1(this));
+    this.d.setVisibility(4);
+  }
+  
+  void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.e.setVisibility(0);
+    this.f.setVisibility(4);
+    this.g.setVisibility(0);
+    paramString = a().getString(2131700055, new Object[] { paramString });
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.d == null) {
+      return;
+    }
+    TextView localTextView = (TextView)this.d.findViewById(2131375536);
+    if (paramBoolean)
+    {
+      localTextView.setText(2131720332);
+      return;
+    }
+    localTextView.setText(2131720327);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  protected boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)
+      {
+        this.jdField_a_of_type_Wwe.a(0);
+        this.jdField_a_of_type_Wwe.a(3, this.jdField_a_of_type_JavaLangRefWeakReference.get());
+        bhoc.b(a().a());
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
+      this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+    }
+  }
+  
+  void f()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+      this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131372129);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131368361));
+      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131363920);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372128));
+      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131372137);
+      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131376239);
+      this.g = this.jdField_a_of_type_AndroidViewView.findViewById(2131376201);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376202));
+      this.b.setOnClickListener(this);
+      this.e.setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
+      this.jdField_a_of_type_Xgp = new xgp(a());
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_a_of_type_Xgp.a(this.jdField_a_of_type_JavaUtilArrayList, null);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.e);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new wwy(this));
+      i();
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Xgp);
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      this.c.setOnClickListener(this);
+    }
+  }
+  
+  protected void g()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
+      this.jdField_a_of_type_Wwe.a(0);
+    }
+    bhoc.b(a().a());
+  }
+  
+  protected void i()
+  {
+    if (this.d == null)
+    {
+      this.d = LayoutInflater.from(a()).inflate(2131559511, null);
+      ImageView localImageView = (ImageView)this.d.findViewById(2131375534);
+      TextView localTextView1 = (TextView)this.d.findViewById(2131375536);
+      TextView localTextView2 = (TextView)this.d.findViewById(2131375542);
+      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131375537);
+      localTextView1.setTextColor(-8355712);
+      localTextView1.setText(2131720327);
+      localTextView2.setVisibility(8);
+      localImageView.setVisibility(8);
+      localProgressBar.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentWidgetXListView.getFooterViewsCount() > 0) {
+      this.jdField_a_of_type_ComTencentWidgetXListView.removeFooterView(this.d);
+    }
+    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.d);
+  }
+  
+  void j()
+  {
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
+    this.e.setVisibility(0);
+    this.f.setVisibility(0);
+    this.g.setVisibility(4);
+  }
+  
+  void k()
+  {
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+    this.e.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131372129: 
+    case 2131372137: 
+      bhoc.b(a().a());
+      return;
+    }
+    b();
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      paramAdapterView = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      g();
+      paramView = (www)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramView != null) {
+        paramView.a(paramAdapterView);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wwx
  * JD-Core Version:    0.7.0.1
  */

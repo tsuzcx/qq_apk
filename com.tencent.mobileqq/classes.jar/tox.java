@@ -1,16 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
 public class tox
-  extends syn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public tox(qqstory_service.RspReportEvil paramRspReportEvil)
+  public tox(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramRspReportEvil.result);
+    PublicAccountImageCollectionCommentActivity.b(this.a, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tox
  * JD-Core Version:    0.7.0.1
  */

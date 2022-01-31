@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anyc;
-import bbdx;
+import appp;
+import bdcs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -17,7 +17,7 @@ import mqq.app.AppRuntime;
 public class CommonUsedSystemEmojiManager$3
   implements Runnable
 {
-  public CommonUsedSystemEmojiManager$3(anyc paramanyc) {}
+  public CommonUsedSystemEmojiManager$3(appp paramappp) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class CommonUsedSystemEmojiManager$3
       {
         File localFile = new File(BaseApplicationImpl.sApplication.getFilesDir(), "commonusedSystemEmojiInfoFile_v3_" + BaseApplicationImpl.sApplication.getRuntime().getAccount());
         EmosmPb.SubCmd0x13Rsp localSubCmd0x13Rsp = new EmosmPb.SubCmd0x13Rsp();
-        Object localObject1 = anyc.a(this.this$0);
+        Object localObject1 = this.this$0.b();
         if (localObject1 == null)
         {
           localObject1 = new ArrayList();
@@ -45,7 +45,7 @@ public class CommonUsedSystemEmojiManager$3
             }
             QLog.d("CommonUsedSystemEmojiManager", 2, localStringBuilder.toString());
           }
-          bbdx.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
+          bdcs.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
           return;
         }
       }
@@ -54,7 +54,7 @@ public class CommonUsedSystemEmojiManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager.3
  * JD-Core Version:    0.7.0.1
  */

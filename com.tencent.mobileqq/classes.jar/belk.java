@@ -1,38 +1,10 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
-
-public class belk
+public abstract interface belk
 {
-  public static void a(String paramString, JSONObject paramJSONObject, int paramInt)
-  {
-    switch (paramInt)
-    {
-    case -4: 
-    default: 
-    case -5: 
-      try
-      {
-        paramJSONObject.put("errMsg", "unknown reason");
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        betc.d("MiniappHttpUtil", "fillErrMsg", paramString);
-        return;
-      }
-      if (TextUtils.isEmpty(paramString)) {}
-      for (paramString = "abort";; paramString = paramString + ":fail abort")
-      {
-        paramJSONObject.put("errMsg", paramString);
-        return;
-      }
-    }
-    paramJSONObject.put("errMsg", "request protocol error");
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     belk
  * JD-Core Version:    0.7.0.1
  */

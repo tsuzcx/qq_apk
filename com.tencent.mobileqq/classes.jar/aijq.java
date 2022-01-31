@@ -1,17 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
-public class aijq
-  implements View.OnClickListener
+class aijq
+  implements bhqd
 {
-  public aijq(SpecailCareListActivity paramSpecailCareListActivity) {}
+  aijq(aijp paramaijp, bhpy parambhpy) {}
   
-  public void onClick(View paramView) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_Aijp.jdField_a_of_type_ArrayOfJavaLangString.length)
+    {
+      this.jdField_a_of_type_Aijp.a(paramInt);
+      this.jdField_a_of_type_Aijp.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.a();
+    }
+    this.jdField_a_of_type_Bhpy.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijq
  * JD-Core Version:    0.7.0.1
  */

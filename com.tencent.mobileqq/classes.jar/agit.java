@@ -1,94 +1,48 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.ark.ArkDebugger.DebuggerCallback;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.1;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.2;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.3;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.4;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
 
 public class agit
-  extends aumg
+  implements ArkDebugger.DebuggerCallback
 {
-  public agit(BindNumberActivity paramBindNumberActivity) {}
+  public agit(ArkDebugChatPie.1 param1) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void Accepted()
   {
-    this.a.f = false;
-    this.a.a();
-    this.a.b();
-    int i;
-    if (paramBoolean)
-    {
-      String str = bbcz.a();
-      if (!TextUtils.isEmpty(str)) {
-        axqy.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      }
-      i = paramBundle.getInt("k_result");
-      if (paramBundle.getBoolean("k_buto_bind", false)) {
-        this.a.c();
-      }
-    }
-    for (;;)
-    {
-      bbcz.a();
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      if ((i == 104) || (i == 0))
-      {
-        this.a.b();
-      }
-      else
-      {
-        if (i == 107)
-        {
-          this.a.a(paramBundle);
-          return;
-        }
-        if (i == 106)
-        {
-          this.a.a(null, 2);
-        }
-        else if (i == 227)
-        {
-          this.a.d();
-        }
-        else if (i == 226)
-        {
-          this.a.e();
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "bind error " + i);
-          }
-          this.a.a(a(i));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
-          }
-          this.a.b(2131718748);
-        }
-      }
-    }
+    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.1(this));
+    QLog.d(this.a.this$0.a, 1, "ArkDebugger Accepted");
   }
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public boolean ReadyToRun(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.a.b();
-    if (paramBoolean) {
-      this.a.b();
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      this.a.b(2131718748);
-    }
+    ArkAppCenter.a().postToMainThread(new ArkDebugChatPie.1.1.4(this, paramString4, paramString3, paramString1, paramString2));
+    QLog.d(this.a.this$0.a, 1, String.format("ArkDebugger ReadyToRun viewId: %s, metaData: %s, mode: %s", new Object[] { paramString1, paramString2, paramString3 }));
+    return true;
+  }
+  
+  public void ReceivedPackage(String paramString1, String paramString2)
+  {
+    agis.a(this.a.this$0, paramString1);
+    agis.b(this.a.this$0, paramString2);
+    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.3(this, paramString1, paramString2));
+    QLog.d(this.a.this$0.a, 1, String.format("ArkDebugger ReceivedPackage appid: %s, appview: %s", new Object[] { paramString1, paramString2 }));
+  }
+  
+  public void Stopped(int paramInt)
+  {
+    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.2(this, paramInt));
+    QLog.d(this.a.this$0.a, 1, "ArkDebugger Stopped");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agit
  * JD-Core Version:    0.7.0.1
  */

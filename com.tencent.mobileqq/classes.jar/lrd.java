@@ -1,97 +1,39 @@
-import android.util.Log;
-import java.util.LinkedList;
-import java.util.List;
-
-public abstract class lrd
+public class lrd
 {
-  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "-" + Integer.toHexString(hashCode());
-  private List<lrc> jdField_a_of_type_JavaUtilList = new LinkedList();
-  lrf jdField_a_of_type_Lrf;
-  private lri jdField_a_of_type_Lri;
+  private short jdField_a_of_type_Short;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private short b;
   
-  public lrd()
+  public lrd(short paramShort1, short paramShort2, byte[] paramArrayOfByte)
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "ImageSource: ");
+    this.jdField_a_of_type_Short = paramShort1;
+    this.b = paramShort2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  public lrd a(lrc paramlrc)
+  public int a()
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "addTarget: " + paramlrc);
-    this.jdField_a_of_type_JavaUtilList.add(paramlrc);
-    paramlrc.a(this.jdField_a_of_type_Lri);
-    return this;
+    return b() + 4;
   }
   
-  protected abstract void a();
-  
-  public void a(lrf paramlrf)
+  public short a()
   {
-    this.jdField_a_of_type_Lrf = paramlrf;
+    return this.jdField_a_of_type_Short;
   }
   
-  protected abstract void b();
-  
-  protected void b(List<lrg> paramList, long paramLong)
+  public byte[] a()
   {
-    int k = 0;
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      int j;
-      for (;;)
-      {
-        j = k;
-        if (i >= paramList.size()) {
-          break;
-        }
-        ((lrg)paramList.get(i)).a(this.jdField_a_of_type_JavaUtilList.size());
-        i += 1;
-      }
-      while (j < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        ((lrc)this.jdField_a_of_type_JavaUtilList.get(j)).a(paramList, paramLong);
-        j += 1;
-      }
-    }
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
-  public void c()
+  public short b()
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "isolated: ");
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void d()
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "init");
-    this.jdField_a_of_type_Lri = new lri();
-    this.jdField_a_of_type_Lri.a = this;
-    a();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((lrc)this.jdField_a_of_type_JavaUtilList.get(i)).a(this.jdField_a_of_type_Lri);
-      i += 1;
-    }
-  }
-  
-  public void e()
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "destroy");
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((lrc)this.jdField_a_of_type_JavaUtilList.get(i)).c();
-      i += 1;
-    }
-    b();
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrd
  * JD-Core Version:    0.7.0.1
  */

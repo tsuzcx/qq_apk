@@ -1,150 +1,30 @@
-import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie.8.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
 
 public class aeoj
-  extends akat
+  implements Animator.AnimatorListener
 {
-  aeoj(aeoc paramaeoc) {}
+  public aeoj(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
   
-  private void d(String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    try
-    {
-      if (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
-        bbdj.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, ajya.a(2131703343), this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131719260), new aeol(this, paramString), null).show();
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "ERR!! send_discussion_msg_failed_not_member:" + paramString.getMessage());
-    }
+    onAnimationEnd(paramAnimator);
   }
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-    }
-    if ((paramInt1 == 1) || (paramInt1 == 3000) || (paramInt1 == 0))
-    {
-      paramSendMessageHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramInt1, paramLong2);
-      if ((paramSendMessageHandler != null) && ((paramSendMessageHandler instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)paramSendMessageHandler).structingMsg.mMsgAction))) {
-        asua.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramInt1, paramLong2, false);
-      }
-    }
-    if (paramInt1 == 3000) {
-      switch (paramInt2)
-      {
-      default: 
-        if (paramInt2 > 100) {
-          bcql.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString2, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      this.a.e(196608);
-      return;
-      bcql.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131719258, 1).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      continue;
-      bcql.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131719261, 1).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      continue;
-      bbdj.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, ajya.a(2131703342), this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131691882), new aeok(this, paramString1), null).show();
-      continue;
-      if (Looper.myLooper() != Looper.getMainLooper()) {
-        this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new DiscussChatPie.8.2(this, paramString1));
-      } else {
-        d(paramString1);
-      }
-    }
+    this.a.c.setAlpha(1.0F);
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    a(paramBoolean, paramString, paramLong, null);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong, akaq paramakaq)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.u = true;
-    this.a.a(262144, paramakaq, paramLong);
-  }
-  
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onMsgRevokeNotice:" + paramBoolean1);
-    }
-    if (!paramBoolean1) {
-      return;
-    }
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      Object localObject = (MessageRecord)paramList.get(0);
-      if (this.a.jdField_a_of_type_Azno != null)
-      {
-        int i = this.a.jdField_a_of_type_Azno.b();
-        if (i != -1)
-        {
-          asks localasks = (asks)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
-          long l = localasks.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + "&" + 3000);
-          if (((MessageRecord)localObject).uniseq == l)
-          {
-            localasks.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + "&" + 3000, i);
-            this.a.jdField_a_of_type_Azno.a(i);
-            this.a.jdField_a_of_type_Azno.e();
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder("onMsgRevokeNotice==>");
-            ((StringBuilder)localObject).append("navigateType:").append(i).append("|navigaeSeq:").append(l);
-            QLog.d(this.a.jdField_a_of_type_JavaLangString + ".troop.special_msg", 2, ((StringBuilder)localObject).toString());
-          }
-        }
-      }
-    }
-    super.a(paramBoolean1, paramList, paramBoolean2);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
-    }
-    this.a.e(131072);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.e(65536);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeoj
  * JD-Core Version:    0.7.0.1
  */

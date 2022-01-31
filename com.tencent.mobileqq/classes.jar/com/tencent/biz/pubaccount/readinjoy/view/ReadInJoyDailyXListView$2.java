@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import olo;
+import opy;
 
 class ReadInJoyDailyXListView$2
   implements Runnable
@@ -10,12 +10,12 @@ class ReadInJoyDailyXListView$2
   
   public void run()
   {
-    olo.a(ReadInJoyDailyXListView.a(this.this$0), null, this.a);
+    opy.a(ReadInJoyDailyXListView.a(this.this$0), null, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView.2
  * JD-Core Version:    0.7.0.1
  */

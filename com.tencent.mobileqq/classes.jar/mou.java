@@ -1,92 +1,113 @@
-import android.os.Handler;
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.ui.redbag.AVRedBag.3.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import java.util.List;
 
 public class mou
-  extends mcf
+  extends BaseAdapter
 {
-  mou(mor parammor) {}
+  private int jdField_a_of_type_Int;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<mpc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int b;
   
-  protected void a(String paramString, Boolean paramBoolean)
+  public mou(Context paramContext)
   {
-    paramString = this.a.a();
-    if (paramString != null)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    VideoAppInterface localVideoAppInterface = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    this.b = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
+    this.jdField_a_of_type_Int = aekt.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+  }
+  
+  private BitmapDrawable a(String paramString)
+  {
+    Object localObject = null;
+    if (0 == 0)
     {
-      mpi localmpi = paramString.jdField_a_of_type_Mpi;
-      if (localmpi != null) {
-        localmpi.a(-4, 10000L);
+      localObject = VideoController.a().a();
+      if ((((lid)localObject).d != 1) && (((lid)localObject).d != 2)) {
+        break label71;
       }
-      paramString.c(paramBoolean.booleanValue());
     }
-  }
-  
-  public void a(mcj parammcj)
-  {
-    moz localmoz = this.a.a();
-    if (localmoz == null) {}
-    while ((!localmoz.a()) || (localmoz.d())) {
-      return;
-    }
-    mpu.c();
-    mao.a(this.a.a, 1045, 2131696113);
-    parammcj.jdField_b_of_type_Boolean = true;
-    parammcj.jdField_b_of_type_JavaLangString = "AVRedBag";
-  }
-  
-  protected void b(String paramString, Boolean paramBoolean)
-  {
-    moz localmoz = this.a.a();
-    if (localmoz != null)
+    label71:
+    for (int i = 1; i != 0; i = 0)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.a.i, 4, "onAVActivityStop, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], isInGameMode[" + localmoz.a() + "], isGameStarter[" + localmoz.d() + "]");
-      }
-      if (localmoz.a()) {
-        ((AVRedPacketManager)this.a.a.a(6)).b(false);
-      }
-      localmoz.c();
-      if ((!paramBoolean.booleanValue()) && (localmoz.a()) && (!localmoz.d())) {
-        mpu.e();
-      }
+      localObject = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localObject = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), ((VideoAppInterface)localObject).a(0, paramString, null, true, true));
+      return localObject;
     }
+    paramString = VideoController.a().a(String.valueOf(paramString), String.valueOf(((lid)localObject).g), ((lid)localObject).E, true, true);
+    return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramString);
   }
   
-  public void b(String paramString1, String paramString2)
+  private View a(LayoutInflater paramLayoutInflater, int paramInt1, View paramView, ViewGroup paramViewGroup, int paramInt2)
   {
-    moz localmoz = this.a.a();
-    if (localmoz == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((!localmoz.a()) || (localmoz.jdField_a_of_type_Mph == null) || (localmoz.jdField_a_of_type_Mph.a == null));
-      QLog.w(this.a.i, 1, "onViewSwitch, uinBig[" + paramString1 + "], uinSmall[" + paramString2 + "]");
-    } while (!localmoz.jdField_a_of_type_Mph.a.jdField_b_of_type_Boolean);
-    ((AVRedPacketManager)this.a.a.a(6)).a(paramString1, paramString2);
+    View localView = paramView;
+    if (paramView == null) {
+      localView = paramLayoutInflater.inflate(paramInt2, paramViewGroup, false);
+    }
+    paramLayoutInflater = a(paramInt1);
+    paramView = localView.findViewById(2131367506);
+    paramViewGroup = (TextView)localView.findViewById(2131377552);
+    paramView.setVisibility(0);
+    paramView.setBackgroundDrawable(a(paramLayoutInflater.a()));
+    paramViewGroup.setPadding(aekt.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    paramViewGroup.setText(paramLayoutInflater.a());
+    paramViewGroup.setTextColor(-1);
+    paramViewGroup.setSpannableFactory(baig.a);
+    return localView;
   }
   
-  protected void d(String paramString)
+  public mpc a(int paramInt)
   {
-    paramString = this.a.a();
-    if ((paramString != null) && (paramString.a())) {
-      ((AVRedPacketManager)this.a.a.a(6)).b(true);
-    }
+    return (mpc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  protected void e(String paramString)
+  public void a(List<mpc> paramList, boolean paramBoolean)
   {
-    if (this.a.a == null) {
-      return;
+    if (paramBoolean) {
+      mpc.a(this.jdField_a_of_type_JavaUtilList);
     }
-    this.a.a.a().post(new AVRedBag.3.1(this));
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public void a(mpc parammpc)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(parammpc);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return a(this.jdField_a_of_type_AndroidViewLayoutInflater, paramInt, paramView, paramViewGroup, 2131559634);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mou
  * JD-Core Version:    0.7.0.1
  */

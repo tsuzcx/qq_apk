@@ -1,10 +1,11 @@
 package com.tencent.qqlive.tvkplayer;
 
-import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.SparseArray;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKLogUtil;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKVcSystemInfo;
+import com.tencent.qqlive.tvkplayer.vinfo.TVKPlatformInfo;
 import com.tencent.qqlive.tvkplayer.vinfo.ckey.CKeyFacade;
 import java.security.MessageDigest;
 import java.util.HashMap;
@@ -12,17 +13,16 @@ import java.util.Map;
 
 public class TVideoMgr
 {
-  private static final String VINFO_SDTFROM = "";
-  private static Application mApp;
+  private static Context mAppContext;
   public static Map<String, String> mFreeNetFlowRequestMap;
   public static String mOriginalUpc = "";
   private static int mPlatform;
+  private static SparseArray<TVKPlatformInfo> mPlatformMap;
   private static String mStaGuid;
-  private static String vskey = "Ql/htTRimt7Wz+A6GPZUxKFiE+c8QCFlaOzbR9F4ajtLHHAKcVI43jHmEs87kZLeW4cgL8Ihy6BDHc89lyxxOj3nD2oamuN/xffuoqSJmVQ9XBWqvzIpIF4AsCA48O/eNBb5trflsLKQgBHCXtfKfBVnimFJt+LG8pekFCjAyV5n3lyJZivJLN2YxnYhKEwRgkqaFh6dcXnVU+wb9GQZS+p9V/v/dJjikoDIpJcW5sOMVDQ41KYOWPGPA/fMmyfw3ScewBbcvBh07vqc9d9557gA0CCSYoc6BJwisQH0b4lARO+JCdq9oxMolRlqQPMLXhVB3Km1APnq+LpSx4XMxZBq98mY4K3x5akBHo2VEmmS+SpHO1qiBjNWX0HrgDdiwzvOqa3k1LIlO75yWJzByBrw9Q7SRmwUGMlrquVAit1AsZGXn5YYtIKme+TQ2TkzvO2W4UOOwv0kIIeN3gXXg6Q6gstEblHXdPzEyvOIxeiiUSEBdXfY5cdQmlkW/EFU";
   
   public static Context getApplicationContext()
   {
-    return mApp.getApplicationContext();
+    return mAppContext;
   }
   
   public static String getPlayerVersion()
@@ -35,7 +35,7 @@ public class TVideoMgr
     if (!TextUtils.isEmpty(mStaGuid)) {
       return mStaGuid;
     }
-    Object localObject = TVKVcSystemInfo.getDeviceID(mApp.getApplicationContext()) + TVKVcSystemInfo.getDeviceMacAddr(mApp.getApplicationContext());
+    Object localObject = TVKVcSystemInfo.getDeviceID(mAppContext) + TVKVcSystemInfo.getDeviceMacAddr(mAppContext);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     try
     {
@@ -57,8 +57,8 @@ public class TVideoMgr
     }
     catch (Throwable localThrowable)
     {
-      label155:
-      break label155;
+      label149:
+      break label149;
     }
     if (TextUtils.isEmpty(mStaGuid)) {
       mStaGuid = "wtfguidisemptyhehehe";
@@ -73,16 +73,38 @@ public class TVideoMgr
   
   public static String getVinfoSdtfrom()
   {
-    return "";
+    return getVinfoSdtfrom(mPlatform);
   }
   
-  public static void init(Application paramApplication, int paramInt)
+  public static String getVinfoSdtfrom(int paramInt)
   {
-    mApp = paramApplication;
+    if ((mPlatformMap != null) && (mPlatformMap.indexOfKey(paramInt) > 0)) {
+      return ((TVKPlatformInfo)mPlatformMap.get(paramInt)).getSdtFrom();
+    }
+    return null;
+  }
+  
+  public static void init(Context paramContext, int paramInt)
+  {
+    mAppContext = paramContext.getApplicationContext();
     mPlatform = paramInt;
-    paramApplication = new TVideoMgr.1();
-    CKeyFacade.setInterface("", String.valueOf(getVinfoPlatform()), paramApplication, null);
-    CKeyFacade.instance().init(mApp.getApplicationContext(), vskey, getStaGuid());
+    CKeyFacade.setInterface("", "", new TVideoMgr.1(), null);
+    CKeyFacade.instance().init(mAppContext, null, getStaGuid());
+  }
+  
+  public static boolean registerTVideoPlatformInfo(TVKPlatformInfo paramTVKPlatformInfo)
+  {
+    if (paramTVKPlatformInfo == null) {}
+    do
+    {
+      return false;
+      if (mPlatformMap == null) {
+        mPlatformMap = new SparseArray();
+      }
+    } while (mPlatformMap.indexOfKey(paramTVKPlatformInfo.getPlatform()) >= 0);
+    mPlatformMap.put(paramTVKPlatformInfo.getPlatform(), paramTVKPlatformInfo);
+    CKeyFacade.instance().addVsAppKey(mAppContext, paramTVKPlatformInfo.getAppKey());
+    return true;
   }
   
   public static void setOnLogListener(TVideoMgr.OnTVideoLogListener paramOnTVideoLogListener)
@@ -118,7 +140,7 @@ public class TVideoMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.TVideoMgr
  * JD-Core Version:    0.7.0.1
  */

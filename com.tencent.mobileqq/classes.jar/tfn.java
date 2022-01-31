@@ -1,22 +1,22 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class tfn
-  implements syq<tgj, tgk>
+class tfn
+  implements View.OnTouchListener
 {
   tfn(tfk paramtfk) {}
   
-  public void a(@NonNull tgj paramtgj, @Nullable tgk paramtgk, @NonNull ErrorMessage paramErrorMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramtgj, paramtgk, paramErrorMessage));
+    tfk.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfn
  * JD-Core Version:    0.7.0.1
  */

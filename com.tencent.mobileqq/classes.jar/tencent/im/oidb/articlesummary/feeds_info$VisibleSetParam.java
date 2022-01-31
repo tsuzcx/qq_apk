@@ -16,7 +16,7 @@ public final class feeds_info$VisibleSetParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.feeds_info.VisibleSetParam
  * JD-Core Version:    0.7.0.1
  */

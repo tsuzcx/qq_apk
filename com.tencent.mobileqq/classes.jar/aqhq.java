@@ -1,20 +1,41 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class aqhq
-  implements View.OnClickListener
+  implements bhqp
 {
-  public aqhq(IphoneTitleBarFragment paramIphoneTitleBarFragment) {}
+  public aqhq(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.onBackEvent();
+    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
+    if (paramAdapterView.c()) {
+      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
+    }
+    while (!this.a.f()) {
+      return;
+    }
+    if (aqxj.a(paramAdapterView)) {
+      aqxj.b(paramAdapterView);
+    }
+    for (;;)
+    {
+      this.a.l();
+      LocalFileBrowserActivity.a(this.a);
+      return;
+      if (this.a.f) {
+        aqxj.b();
+      }
+      aqxj.a(paramAdapterView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhq
  * JD-Core Version:    0.7.0.1
  */

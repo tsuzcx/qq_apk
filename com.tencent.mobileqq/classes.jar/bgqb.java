@@ -1,44 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1;
-import mqq.os.MqqHandler;
+import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
+import com.tencent.qqmini.sdk.log.QMLog;
 
-public abstract class bgqb
-  extends OnPluginInstallListener.Stub
+public class bgqb
+  implements bgqi
 {
-  public Bundle a;
+  public bgqb(AppRuntimeLoaderManager paramAppRuntimeLoaderManager, bgqi parambgqi) {}
   
-  public bgqb(Bundle paramBundle)
+  public void a(int paramInt, String paramString, bgqg parambgqg)
   {
-    this.a = paramBundle;
-  }
-  
-  public void a()
-  {
-    bgpw.a(BaseApplication.getContext(), this);
-  }
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    a(false, this.a);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new QfavHelper.AsyncFavoritesProvider.1(this));
+    try
+    {
+      if (this.jdField_a_of_type_Bgqi != null) {
+        this.jdField_a_of_type_Bgqi.a(paramInt, paramString, parambgqg);
+      }
+      if (paramInt != 0) {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherAppRuntimeLoaderManager.removeRuntimeLoader(parambgqg);
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QMLog.e("minisdk-start_AppRuntimeLoaderManager", "runtime load result exception!", paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgqb
  * JD-Core Version:    0.7.0.1
  */

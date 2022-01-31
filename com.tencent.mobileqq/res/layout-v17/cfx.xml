@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ff1a1a1a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView android:id="@id/mw1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_gravity="top" android:id="@id/mt9" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/mt_" android:padding="10.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/dpm" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
+        <ImageView android:id="@id/mta" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/fcu" android:scaleType="centerInside" android:layout_toLeftOf="@id/mt_" android:layout_alignWithParentIfMissing="true" android:layout_toStartOf="@id/mt_" />
+        <ImageView android:id="@id/m1d" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/biw" android:layout_toLeftOf="@id/mt_" android:layout_alignWithParentIfMissing="true" android:layout_marginEnd="3.0dip" android:layout_toStartOf="@id/mt_" />
+    </RelativeLayout>
+    <ProgressBar android:id="@id/mt7" android:visibility="gone" android:layout_width="108.0dip" android:layout_height="108.0dip" android:layout_margin="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/b0o" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/kr9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

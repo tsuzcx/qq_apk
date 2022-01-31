@@ -1,70 +1,35 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
+import android.view.View;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
-public class ugs
-  extends QQUIEventReceiver<ugk, tta>
+class ugs
+  implements RecyclerView.OnChildAttachStateChangeListener
 {
-  public ugs(@NonNull ugk paramugk)
-  {
-    super(paramugk);
-  }
+  ugs(ugk paramugk) {}
   
-  public void a(@NonNull ugk paramugk, @NonNull tta paramtta)
+  public void onChildViewAttachedToWindow(View paramView)
   {
-    if (TextUtils.equals(String.valueOf(paramugk.hashCode()), paramtta.jdField_a_of_type_JavaLangString)) {
-      b(paramugk, paramtta);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tta.class;
-  }
-  
-  public void b(ugk paramugk, tta paramtta)
-  {
-    paramugk = ((StoryPlayerGroupHolder)paramugk.a()).a();
-    if (paramugk != null) {
-      paramugk.c(false);
-    }
-    if (paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return;
-    }
-    boolean bool = tsr.a(paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    switch (paramtta.jdField_a_of_type_Int)
+    paramView = (ugc)ugk.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == ugk.a(this.a)))
     {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131701175), 0).a();
-      return;
-    case 2: 
-      if (bool) {}
-      for (paramugk = "2";; paramugk = "1")
-      {
-        vei.a("play_video", "down_suc", 0, 0, new String[] { paramugk, "", "", paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        bcql.a(BaseApplicationImpl.getContext(), 2, sxm.a(2131699719), 0).a();
-        return;
-      }
+      paramView.b();
+      wsv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
     }
-    if (bool) {}
-    for (paramugk = "2";; paramugk = "1")
+  }
+  
+  public void onChildViewDetachedFromWindow(View paramView)
+  {
+    paramView = (ugc)ugk.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == ugk.a(this.a)))
     {
-      vei.a("play_video", "down_fail", 0, 0, new String[] { paramugk, "", "", paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131701176), 0).a();
-      return;
+      paramView.c();
+      wsv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugs
  * JD-Core Version:    0.7.0.1
  */

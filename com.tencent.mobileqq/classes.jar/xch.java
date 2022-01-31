@@ -1,39 +1,64 @@
-import org.json.JSONObject;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class xch
+  implements xbf
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  private xch(DoodleLayout paramDoodleLayout) {}
   
-  public xch(JSONObject paramJSONObject)
+  public void a()
   {
-    if (paramJSONObject.has("title")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+    this.a.a().c();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a().a(paramInt);
+  }
+  
+  public void a(boolean paramBoolean, xah paramxah)
+  {
+    wzs localwzs = this.a.a();
+    if (paramBoolean)
+    {
+      localwzs.a(true);
+      switch (this.a.b)
+      {
+      }
+      for (;;)
+      {
+        this.a.c(3);
+        return;
+        this.a.a().b(false);
+      }
     }
-    if (paramJSONObject.has("tabID")) {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
+    if (paramxah.jdField_a_of_type_Int != -1) {
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
     }
-    if (paramJSONObject.has("icon")) {
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+    for (;;)
+    {
+      localwzs.a(paramxah);
+      localwzs.a(false);
+      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
+      this.a.c(0);
+      this.a.d(0);
+      this.a.jdField_a_of_type_Xcg.i();
+      return;
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
     }
-    if (paramJSONObject.has("jumpUrl")) {
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
-    }
-    if (paramJSONObject.has("width")) {
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
-    }
-    if (paramJSONObject.has("height")) {
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Xcg != null) {
+      this.a.jdField_a_of_type_Xcg.b(3, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xch
  * JD-Core Version:    0.7.0.1
  */

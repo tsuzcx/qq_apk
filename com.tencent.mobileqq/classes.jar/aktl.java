@@ -1,188 +1,222 @@
-import android.os.Handler;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import android.os.Process;
-import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.1;
+import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.lang.ref.WeakReference;
 
 public class aktl
-  extends Handler
+  implements aksw, Handler.Callback
 {
-  public static int a;
-  public static long a;
-  private akta a;
-  private long b;
-  private long c;
-  private long d;
+  private static long jdField_a_of_type_Long;
+  private int jdField_a_of_type_Int;
+  protected bhow a;
+  public WeakReference<Activity> a;
+  private WeakReference<QQAppInterface> b;
   
-  static
+  public aktl(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    jdField_a_of_type_Int = -1000;
+    this.jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public aktl(Looper paramLooper, QQAppInterface paramQQAppInterface, akta paramakta)
+  private void b(String paramString)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_Akta = paramakta;
-    this.b = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_GeneralEventHandler", 2, "startNewGame reqData:" + paramString);
+    }
+    long l = System.currentTimeMillis();
+    if (l - jdField_a_of_type_Long < 1000L) {
+      QLog.e("apollochannel_GeneralEventHandler", 1, "[startNewGame] current - sLastLaunchGameTime < 1000");
+    }
+    do
+    {
+      return;
+      jdField_a_of_type_Long = l;
+    } while (TextUtils.isEmpty(paramString));
+    ThreadManagerV2.excute(new GeneralEventHandler.2(this, paramString), 16, null, false);
+  }
+  
+  public int a()
+  {
+    return 100;
+  }
+  
+  public aknh a(String paramString)
+  {
+    aknh localaknh = new aknh();
+    String str = ApolloUtil.a(paramString, "tips");
+    int i = ApolloUtil.a(paramString, "length");
+    if (TextUtils.isEmpty(str)) {
+      return localaknh;
+    }
+    paramString = this.jdField_a_of_type_Bhow.obtainMessage(255);
+    paramString.obj = str;
+    paramString.arg1 = i;
+    paramString.sendToTarget();
+    return localaknh;
+  }
+  
+  public aknh a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (this.b == null) {
+      return null;
+    }
+    if (this.jdField_a_of_type_Int != paramInt2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollochannel_GeneralEventHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
+      }
+      return new aknh();
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    if ("general_cmd_ui_show_toast".equals(paramString1)) {
+      return a(paramString2);
+    }
+    if ("cs.get_dress_path.local".equals(paramString1))
+    {
+      alep.a(localQQAppInterface, paramString1, paramString2, paramInt1);
+      return new aknh();
+    }
+    if ("cs.report_data_2_backstage.local".equals(paramString1))
+    {
+      alep.b(localQQAppInterface, paramString2);
+      return new aknh();
+    }
+    if ("cs.report_flow_data.local".equals(paramString1))
+    {
+      alep.c(localQQAppInterface, paramString2);
+      return new aknh();
+    }
+    if ("cs.save_recommend_ip.local".equals(paramString1))
+    {
+      alep.a(localQQAppInterface, paramString2);
+      return new aknh();
+    }
+    if ("cs.openFloatTransparentView.local".equals(paramString1))
+    {
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      {
+        alep.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        return new aknh();
+      }
+    }
+    else if ("cs.openWebView.local".equals(paramString1))
+    {
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      {
+        alep.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        return new aknh();
+      }
+    }
+    else
+    {
+      if ("cs.script_get_nickname.local".equals(paramString1))
+      {
+        QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
+        paramInt2 = -1;
+        String str = "";
+        paramString1 = str;
+        paramInt1 = paramInt2;
+        if (localQQMessageFacade != null)
+        {
+          paramString1 = str;
+          paramInt1 = paramInt2;
+          if (localQQMessageFacade.a())
+          {
+            paramString1 = str;
+            paramInt1 = paramInt2;
+            if (!TextUtils.isEmpty(localQQMessageFacade.a()))
+            {
+              paramString1 = localQQMessageFacade.a();
+              paramInt1 = localQQMessageFacade.a();
+            }
+          }
+        }
+        return akwt.a(paramString2, localQQAppInterface, paramInt1, paramString1);
+      }
+      if (!"cs.send_game_msg.local".equals(paramString1)) {
+        break label403;
+      }
+      alep.a(localQQAppInterface, paramString2, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    }
+    for (;;)
+    {
+      return null;
+      label403:
+      if ("cs.create_xy.local".equals(paramString1))
+      {
+        b(paramString2);
+      }
+      else if ("cs.open_cm_aio.local".equals(paramString1))
+      {
+        a(paramString2);
+      }
+      else if ("cs.show_one_more_page.local".equals(paramString1))
+      {
+        paramString1 = (akji)localQQAppInterface.getManager(153);
+        if (paramString1 != null) {
+          paramString1.a().h(paramString2);
+        }
+      }
+    }
   }
   
   public void a()
   {
-    removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Bhow.removeCallbacksAndMessages(null);
   }
   
-  public void dispatchMessage(Message paramMessage)
+  void a(String paramString)
   {
-    ThreadRegulator.a().b();
-    super.dispatchMessage(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_GeneralEventHandler", 2, "openCmAIO reqData:" + paramString);
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      ThreadManagerV2.excute(new GeneralEventHandler.1(this, paramString), 16, null, false);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean handleMessage(Message paramMessage)
   {
-    jdField_a_of_type_Int = Process.myTid();
-    jdField_a_of_type_Long = SystemClock.currentThreadTimeMillis();
-    long l2 = System.currentTimeMillis();
-    long l3 = SystemClock.currentThreadTimeMillis();
-    Object localObject1 = (akth)paramMessage.obj;
-    label266:
-    boolean bool;
+    int i = 1;
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      for (;;)
-      {
-        try
-        {
-          int i = paramMessage.what;
-          switch (i)
-          {
-          default: 
-            this.d += SystemClock.currentThreadTimeMillis() - l3;
-            this.c += System.currentTimeMillis() - l2;
-            if (System.currentTimeMillis() - this.b > 300000L)
-            {
-              paramMessage = new StringBuilder(100);
-              paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-              paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-              localObject1 = (akti)this.jdField_a_of_type_Akta.a(1);
-              if (localObject1 != null) {
-                paramMessage.append(((akti)localObject1).a());
-              }
-              localObject1 = (aktm)this.jdField_a_of_type_Akta.a(2);
-              if (localObject1 != null) {
-                paramMessage.append(((aktm)localObject1).a()).append("\n");
-              }
-              QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-              this.d = 0L;
-              this.c = 0L;
-              this.b = System.currentTimeMillis();
-            }
-            return;
-          }
-        }
-        finally
-        {
-          l1 = this.d;
-          this.d = (SystemClock.currentThreadTimeMillis() - l3 + l1);
-          l1 = this.c;
-          this.c = (System.currentTimeMillis() - l2 + l1);
-          if (System.currentTimeMillis() - this.b <= 300000L) {
-            continue;
-          }
-          localObject1 = new StringBuilder(100);
-          ((StringBuilder)localObject1).append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-          ((StringBuilder)localObject1).append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-          Object localObject2 = (akti)this.jdField_a_of_type_Akta.a(1);
-          if (localObject2 == null) {
-            continue;
-          }
-          ((StringBuilder)localObject1).append(((akti)localObject2).a());
-          localObject2 = (aktm)this.jdField_a_of_type_Akta.a(2);
-          if (localObject2 == null) {
-            continue;
-          }
-          ((StringBuilder)localObject1).append(((aktm)localObject2).a()).append("\n");
-          QLog.d("Q.fts.BgCpu.Total", 1, ((StringBuilder)localObject1).toString());
-          this.d = 0L;
-          this.c = 0L;
-          this.b = System.currentTimeMillis();
-        }
-        if (((akth)localObject1).c()) {
-          sendMessageDelayed(obtainMessage(2, localObject1), 30000L);
-        } else if (QLog.isColorLevel()) {
-          QLog.w("Q.fts.sync_worker", 2, "readSyncedCursor is false!!");
-        }
-      }
-      removeMessages(2, localObject1);
-      if (((akth)localObject1).d()) {
-        ((akth)localObject1).e();
-      }
-      bool = this.jdField_a_of_type_Akta.b;
-      if (!bool) {
-        break;
-      }
-      this.d += SystemClock.currentThreadTimeMillis() - l3;
-      this.c += System.currentTimeMillis() - l2;
-    } while (System.currentTimeMillis() - this.b <= 300000L);
-    paramMessage = new StringBuilder(100);
-    paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-    paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-    localObject1 = (akti)this.jdField_a_of_type_Akta.a(1);
-    if (localObject1 != null) {
-      paramMessage.append(((akti)localObject1).a());
-    }
-    localObject1 = (aktm)this.jdField_a_of_type_Akta.a(2);
-    if (localObject1 != null) {
-      paramMessage.append(((aktm)localObject1).a()).append("\n");
-    }
-    QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-    this.d = 0L;
-    this.c = 0L;
-    this.b = System.currentTimeMillis();
-    return;
-    paramMessage = obtainMessage(2, localObject1);
-    if (((akth)localObject1).f()) {}
-    for (long l1 = 15000L;; l1 = 30000L)
+      return false;
+    } while (!(paramMessage.obj instanceof String));
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    CharSequence localCharSequence = (CharSequence)paramMessage.obj;
+    if (paramMessage.arg1 == 1) {}
+    for (;;)
     {
-      sendMessageDelayed(paramMessage, l1);
-      break;
-      removeMessages(3, localObject1);
-      ((akth)localObject1).e();
-      bool = this.jdField_a_of_type_Akta.b;
-      if (!bool) {
-        break;
-      }
-      this.d += SystemClock.currentThreadTimeMillis() - l3;
-      this.c += System.currentTimeMillis() - l2;
-      if (System.currentTimeMillis() - this.b <= 300000L) {
-        break label266;
-      }
-      paramMessage = new StringBuilder(100);
-      paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-      paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-      localObject1 = (akti)this.jdField_a_of_type_Akta.a(1);
-      if (localObject1 != null) {
-        paramMessage.append(((akti)localObject1).a());
-      }
-      localObject1 = (aktm)this.jdField_a_of_type_Akta.a(2);
-      if (localObject1 != null) {
-        paramMessage.append(((aktm)localObject1).a()).append("\n");
-      }
-      QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-      this.d = 0L;
-      this.c = 0L;
-      this.b = System.currentTimeMillis();
-      return;
+      QQToast.a(localBaseApplication, localCharSequence, i).a();
+      return false;
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aktl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,28 @@
-import MQQ.PayRuleCfg;
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class abwi
-  extends aywn
+  extends alyr
 {
-  public abwi(QQSettingMe paramQQSettingMe, TextView paramTextView) {}
+  public abwi(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected void a(boolean paramBoolean, azyv paramazyv)
   {
-    QLog.e("QQSettingRedesign", 1, "VipInfoHandler updateVipItemView onLoadFialed: ", paramThrowable);
+    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected void b(boolean paramBoolean, azyv paramazyv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "VipInfoHandler onLoadSuccessed: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconUrl);
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconText);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol));
-      return;
-    }
-    catch (Exception paramURLDrawable)
-    {
-      QLog.e("QQSettingRedesign", 1, "VipInfoHandler setTextColor: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol, paramURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    }
+    AccountManageActivity.a(this.a, false);
+  }
+  
+  protected void c(boolean paramBoolean, azyv paramazyv)
+  {
+    AccountManageActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwi
  * JD-Core Version:    0.7.0.1
  */

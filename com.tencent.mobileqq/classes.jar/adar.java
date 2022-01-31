@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adar
-  implements aybj
+  extends BroadcastReceiver
 {
-  public adar(FriendShipWaveView paramFriendShipWaveView) {}
+  public adar(JumpActivity paramJumpActivity) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aybr localaybr = new aybr(new aybi[] { new aybq(300, 0.1F, 1.1F), new aybq(100, 1.2F, 0.9F), new aybq(100, 0.9F, 1.0F) });
-    this.a.c.a(new aybi[] { localaybr });
-    this.a.b.a(new aybi[] { new aybq(300, 0.0F, 1.0F) });
+    if (!this.a.isFinishing())
+    {
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adar
  * JD-Core Version:    0.7.0.1
  */

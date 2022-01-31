@@ -1,29 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class aqfz
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
   aqfz(aqfv paramaqfv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 1)
-    {
-      aqes.a(aqfv.a(this.a), false, "shareToQQ", aqfv.a(this.a));
-      nau.a(aqfv.a(this.a), 0, "", "");
-      if (aqfv.a(this.a) != null) {
-        aqfv.a(this.a).b(1);
-      }
-      aqfv.a(this.a).moveTaskToBack(true);
-    }
+    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
+    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfz
  * JD-Core Version:    0.7.0.1
  */

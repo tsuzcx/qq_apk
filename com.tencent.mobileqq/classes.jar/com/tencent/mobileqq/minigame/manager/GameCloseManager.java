@@ -16,8 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import bbdj;
-import bbgu;
+import bdcd;
+import bdfq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -146,7 +146,7 @@ public class GameCloseManager
     while (!shouldShowAlertViewForBattleGame(paramMiniAppConfig)) {
       return false;
     }
-    paramGameActivity = bbdj.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131720260)).setMessage(paramGameActivity.getString(2131694271)).setNegativeButton(paramGameActivity.getString(2131690596), new GameCloseManager.3()).setPositiveButton(paramGameActivity.getString(2131694270), new GameCloseManager.2(paramOnClickListener));
+    paramGameActivity = bdcd.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131720796)).setMessage(paramGameActivity.getString(2131694410)).setNegativeButton(paramGameActivity.getString(2131690648), new GameCloseManager.3()).setPositiveButton(paramGameActivity.getString(2131694409), new GameCloseManager.2(paramOnClickListener));
     paramGameActivity.setCancelable(false);
     paramGameActivity.show();
     return true;
@@ -164,7 +164,7 @@ public class GameCloseManager
       } while ((paramMiniAppConfig.launchParam != null) && ((paramMiniAppConfig.launchParam.scene == 2001) || (paramMiniAppConfig.launchParam.scene == 1001) || (MiniAppUtils.isFromPullDownEntry(paramMiniAppConfig)) || (isInWnsBlackList(paramMiniAppConfig.launchParam.scene))));
       i = StorageUtil.getPreference().getInt("pref_key_mini_game_close_confirm_exposure_times", 0);
     } while (i >= MINI_GAME_CLOSE_CONFIRM_EXPOSURE_TIMES_THRESHOLD);
-    paramMiniAppConfig = bbdj.a(paramGameActivity, 230);
+    paramMiniAppConfig = bdcd.a(paramGameActivity, 230);
     Object localObject = new URLImageView(paramGameActivity);
     ((URLImageView)localObject).setImageDrawable(URLDrawable.getDrawable(GameWnsUtils.getGameExitConfirmImageUrl(), true));
     ((URLImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -177,7 +177,7 @@ public class GameCloseManager
     }
     localLayoutParams.gravity = 1;
     TextView localTextView = new TextView(paramGameActivity);
-    localTextView.setText(Html.fromHtml(paramGameActivity.getApplicationContext().getString(2131694268)), TextView.BufferType.SPANNABLE);
+    localTextView.setText(Html.fromHtml(paramGameActivity.getApplicationContext().getString(2131694407)), TextView.BufferType.SPANNABLE);
     localTextView.setTextColor(Color.parseColor("#02081B"));
     localTextView.setGravity(17);
     localTextView.setTypeface(Typeface.DEFAULT, 1);
@@ -188,7 +188,7 @@ public class GameCloseManager
     localObject = new LinearLayout.LayoutParams(-2, -2);
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
     paramMiniAppConfig.setCancelable(false);
-    paramMiniAppConfig.setTitle(null).setMessage(null).addView(paramGameActivity, (LinearLayout.LayoutParams)localObject).setPositiveButton(2131694436, new GameCloseManager.1(paramOnClickListener));
+    paramMiniAppConfig.setTitle(null).setMessage(null).addView(paramGameActivity, (LinearLayout.LayoutParams)localObject).setPositiveButton(2131694593, new GameCloseManager.1(paramOnClickListener));
     paramMiniAppConfig.getBtnight().setTypeface(Typeface.DEFAULT, 1);
     paramMiniAppConfig.show();
     StorageUtil.getPreference().edit().putInt("pref_key_mini_game_close_confirm_exposure_times", i + 1).apply();
@@ -197,7 +197,7 @@ public class GameCloseManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameCloseManager
  * JD-Core Version:    0.7.0.1
  */

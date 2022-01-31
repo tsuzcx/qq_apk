@@ -1,238 +1,181 @@
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Pair;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
+import com.tencent.image.GifDrawable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public class axsm
 {
-  private static long jdField_a_of_type_Long;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new axsn(ThreadManager.getFileThreadLooper());
-  private static BufferedWriter jdField_a_of_type_JavaIoBufferedWriter;
-  private static String jdField_a_of_type_JavaLangString;
-  static ThreadLocal<StringBuilder> jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
-  private static BufferedWriter jdField_b_of_type_JavaIoBufferedWriter;
-  private static String jdField_b_of_type_JavaLangString;
-  private static String c;
-  private static String d;
+  private QQAppInterface a;
   
-  static Pair<Long, File> a(long paramLong1, long paramLong2, int paramInt, long paramLong3)
+  public axsm(QQAppInterface paramQQAppInterface)
   {
-    if (d == null) {
-      d = bbvj.a(Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/com/tencent/mobileqq/battery/");
+    this.a = paramQQAppInterface;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == -2000) || (paramInt == -2022) || (paramInt == -1035) || (paramInt == -1036);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 1004) || (paramInt == 1005) || (paramInt == 2005) || (paramInt == 5001) || (paramInt == 5002);
+  }
+  
+  public int a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord = this.a.a().a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
+      if ((paramMessageRecord instanceof bamw)) {
+        return (int)((bamw)paramMessageRecord).c();
+      }
     }
-    Object localObject2 = new File(d);
-    if (!((File)localObject2).exists()) {
-      return null;
+    return -1;
+  }
+  
+  protected void a(MessageForShortVideo paramMessageForShortVideo)
+  {
+    azap localazap = new azap(this.a, this.a.getApplication(), paramMessageForShortVideo, null);
+    azao.a().a(paramMessageForShortVideo.uniseq, localazap);
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord == null) || (this.a == null)) {}
+    for (;;)
+    {
+      return;
+      long l = System.currentTimeMillis();
+      if (((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForLightVideo))) {
+        this.a.a().b(paramMessageRecord, this.a.getAccount());
+      }
+      while (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addMsg cost:").append(System.currentTimeMillis() - l).append(" uniseq = ").append(paramMessageRecord.uniseq).append(", msgtype = ").append(paramMessageRecord.msgtype);
+        QLog.d("MediaMsgController", 2, localStringBuilder.toString());
+        return;
+        ((alxl)this.a.a(13)).a(paramMessageRecord);
+        this.a.a().a(paramMessageRecord, this.a.getCurrentAccountUin());
+      }
     }
-    Object localObject1 = new ArrayList();
+  }
+  
+  public void a(MessageRecord paramMessageRecord, alsi paramalsi, axsq paramaxsq)
+  {
+    if (paramMessageRecord == null) {
+      return;
+    }
+    if (paramaxsq != null) {
+      paramaxsq.a(paramMessageRecord);
+    }
+    this.a.a().b(paramMessageRecord, paramalsi);
+  }
+  
+  public boolean a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord != null) && (paramMessageRecord.extraflag == 32768)) {
+      return true;
+    }
     int i;
-    long l1;
-    long l2;
-    int j;
-    try
-    {
-      localObject2 = ((File)localObject2).listFiles();
-      int k = localObject2.length;
-      i = 0;
-      l1 = 0L;
-      if (i < k) {
-        localFile = localObject2[i];
-      }
-    }
-    catch (Throwable localThrowable1)
-    {
-      File localFile;
-      l1 = 0L;
-      localObject1 = null;
-    }
-    try
-    {
-      if ((localFile.getName() == null) || (!localFile.getName().endsWith(".log"))) {
-        break label366;
-      }
-      l2 = b(localFile);
-      if ((l2 == -1L) || (l2 >= paramLong2) || (l2 <= paramLong1) || (localFile.length() <= paramLong3)) {
-        break label366;
-      }
-      j = paramInt - 1;
-      if (paramInt <= 0) {
-        break label375;
-      }
-      ((List)localObject1).add(localFile.getAbsolutePath());
-    }
-    catch (Throwable localThrowable2)
-    {
-      for (;;)
-      {
-        localObject1 = null;
-      }
-    }
-    if (((List)localObject1).size() > 0)
-    {
-      localObject2 = d + paramLong2 + ".zip";
-      if (bbdx.a((List)localObject1, (String)localObject2)) {
-        localObject1 = new File((String)localObject2);
-      }
+    if ((paramMessageRecord instanceof MessageForShortVideo)) {
+      i = ((MessageForShortVideo)paramMessageRecord).videoFileStatus;
     }
     for (;;)
     {
-      try
+      return b(i);
+      if (((paramMessageRecord instanceof MessageForPic)) && (((MessageForPic)paramMessageRecord).size <= 0L))
       {
-        boolean bool = ((File)localObject1).exists();
-        paramLong1 = l1;
-        localObject2 = localObject1;
-        if (!bool)
-        {
-          localObject2 = null;
-          paramLong1 = l1;
+        int j = a(paramMessageRecord);
+        i = j;
+        if (j == -1) {
+          return true;
         }
-        return new Pair(Long.valueOf(paramLong1), localObject2);
       }
-      catch (Throwable localThrowable3)
+      else
       {
-        continue;
-      }
-      QLog.e("BatteryStats.Log", 1, "zip fail");
-      localObject2 = null;
-      paramLong1 = l1;
-      continue;
-      paramLong1 = l1;
-      localObject2 = localObject1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("BatteryStats.Log", 2, "", localThrowable1);
-        paramLong1 = l1;
-        localObject2 = localObject1;
-      }
-    }
-    label359:
-    paramInt = j;
-    for (;;)
-    {
-      label366:
-      i += 1;
-      break;
-      label375:
-      if (l2 <= l1) {
-        break label359;
-      }
-      l1 = l2;
-      paramInt = j;
-    }
-  }
-  
-  static StringBuilder a()
-  {
-    StringBuilder localStringBuilder = (StringBuilder)jdField_a_of_type_JavaLangThreadLocal.get();
-    if (localStringBuilder == null)
-    {
-      localStringBuilder = new StringBuilder(1024);
-      jdField_a_of_type_JavaLangThreadLocal.set(localStringBuilder);
-      return localStringBuilder;
-    }
-    localStringBuilder.delete(0, localStringBuilder.length());
-    return localStringBuilder;
-  }
-  
-  static List<File> a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    if (d == null) {
-      d = bbvj.a(Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/com/tencent/mobileqq/battery/");
-    }
-    Object localObject = new File(d);
-    if (!((File)localObject).exists())
-    {
-      localObject = null;
-      return localObject;
-    }
-    ArrayList localArrayList = new ArrayList();
-    for (;;)
-    {
-      int i;
-      try
-      {
-        File[] arrayOfFile = ((File)localObject).listFiles();
-        int j = arrayOfFile.length;
         i = 0;
-        localObject = localArrayList;
-        if (i >= j) {
-          break;
-        }
-        localObject = arrayOfFile[i];
-        if ((((File)localObject).getName() == null) || (!((File)localObject).getName().endsWith(".rpt"))) {
-          break label207;
-        }
-        long l = b((File)localObject);
-        if ((l == -1L) || (l >= paramLong2) || (l <= paramLong1) || (((File)localObject).length() <= paramLong3)) {
-          break label207;
-        }
-        localArrayList.add(localObject);
       }
-      catch (Exception localException)
-      {
-        localObject = localArrayList;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("BatteryStats.Log", 2, "", localException);
-      return localArrayList;
-      label207:
-      i += 1;
     }
   }
   
-  static void a(long paramLong)
+  public boolean a(String paramString)
   {
-    jdField_a_of_type_AndroidOsHandler.obtainMessage(1, Long.valueOf(paramLong)).sendToTarget();
-  }
-  
-  static void a(String paramString, long paramLong)
-  {
-    c = paramString;
-    jdField_a_of_type_Long = paramLong;
-    jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-  }
-  
-  static void a(Object... paramVarArgs)
-  {
-    if (jdField_b_of_type_JavaIoBufferedWriter != null) {
-      jdField_a_of_type_AndroidOsHandler.obtainMessage(2, 1, 0, paramVarArgs).sendToTarget();
-    }
-  }
-  
-  private static long b(File paramFile)
-  {
-    paramFile = paramFile.getName();
-    try
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
     {
-      paramFile = paramFile.substring(paramFile.indexOf("_") + 1);
-      if ((paramFile.endsWith(".log")) || (paramFile.endsWith(".zip")) || (paramFile.endsWith("rpt")))
+      return false;
+      File localFile = new File(paramString);
+      if ((localFile.exists()) && (GifDrawable.isGifFile(localFile)))
       {
-        long l = Long.valueOf(paramFile.substring(0, paramFile.length() - 4)).longValue();
-        return l;
+        if (QLog.isColorLevel()) {
+          QLog.d("MediaMsgController", 2, "isDoutuPic gifFile");
+        }
+        return true;
       }
+      i = bilx.a(paramString);
+    } while ((i != 2000) && (i != 3));
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaMsgController", 2, new Object[] { "isDoutuPic imageType:", Integer.valueOf(i) });
     }
-    catch (Exception paramFile) {}
-    return -1L;
+    return true;
   }
   
-  static void b(Object... paramVarArgs)
+  public int b(MessageRecord paramMessageRecord)
   {
-    if (jdField_a_of_type_JavaIoBufferedWriter != null) {
-      jdField_a_of_type_AndroidOsHandler.obtainMessage(2, 0, 0, paramVarArgs).sendToTarget();
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord = this.a.a().a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
+      if (!(paramMessageRecord instanceof bamw)) {}
     }
+    for (int i = ((bamw)paramMessageRecord).e();; i = -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaMsgController", 2, new Object[] { "getUploadProgress:", Integer.valueOf(i) });
+      }
+      return i;
+    }
+  }
+  
+  public boolean b(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForShortVideo))
+    {
+      MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)paramMessageRecord;
+      if ((localMessageForShortVideo.busiType == 0) && (localMessageForShortVideo.videoFileStatus != 998) && (TextUtils.isEmpty(localMessageForShortVideo.md5)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MediaMsgController", 2, "isVideoNeedPreCompress is true, " + paramMessageRecord.uniseq);
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean c(MessageRecord paramMessageRecord)
+  {
+    boolean bool = false;
+    if (b(paramMessageRecord))
+    {
+      bool = true;
+      a((MessageForShortVideo)paramMessageRecord);
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axsm
  * JD-Core Version:    0.7.0.1
  */

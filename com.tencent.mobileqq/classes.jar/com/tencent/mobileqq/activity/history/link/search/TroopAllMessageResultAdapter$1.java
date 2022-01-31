@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.history.link.search;
 
-import agbp;
+import ahzs;
 import android.os.Bundle;
 import android.os.Message;
-import bbeb;
-import bfnk;
+import bdcw;
+import bhoe;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class TroopAllMessageResultAdapter$1
   implements Runnable
 {
-  public TroopAllMessageResultAdapter$1(agbp paramagbp, String paramString, int paramInt, long paramLong) {}
+  public TroopAllMessageResultAdapter$1(ahzs paramahzs, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
@@ -27,10 +27,10 @@ public class TroopAllMessageResultAdapter$1
     Object localObject4;
     if (this.jdField_a_of_type_Int == 1)
     {
-      ??? = agbp.a(this.this$0).a().a(agbp.a(this.this$0), this.jdField_a_of_type_JavaLangString);
-      bbeb.a(agbp.b(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+      ??? = ahzs.a(this.this$0).a().a(ahzs.a(this.this$0), this.jdField_a_of_type_JavaLangString);
+      bdcw.a(ahzs.b(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
       localObject2 = new ArrayList();
-      localObject4 = agbp.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
+      localObject4 = ahzs.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
       if (QLog.isColorLevel()) {
         QLog.i("LinkMessageResultAdapter", 2, "loadMessageResult, get: messageItems[] = " + localObject2);
       }
@@ -39,17 +39,17 @@ public class TroopAllMessageResultAdapter$1
     {
       synchronized (this.this$0.a)
       {
-        if (agbp.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
+        if (ahzs.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
         {
           if (this.jdField_a_of_type_Int != 1) {
             continue;
           }
-          localagbp = this.this$0;
+          localahzs = this.this$0;
           if (((ArrayList)localObject2).size() < 20)
           {
-            agbp.a(localagbp, bool);
-            agbp.a(this.this$0, (ChatHistorySearchData)localObject4);
-            localObject2 = agbp.a(this.this$0).obtainMessage(2, localObject2);
+            ahzs.a(localahzs, bool);
+            ahzs.a(this.this$0, (ChatHistorySearchData)localObject4);
+            localObject2 = ahzs.a(this.this$0).obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
             ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
@@ -64,7 +64,7 @@ public class TroopAllMessageResultAdapter$1
           if (this.jdField_a_of_type_Int != 2) {
             break;
           }
-          ??? = agbp.c(this.this$0).a().a(agbp.b(this.this$0), "");
+          ??? = ahzs.c(this.this$0).a().a(ahzs.b(this.this$0), "");
           break;
         }
         bool = false;
@@ -72,13 +72,13 @@ public class TroopAllMessageResultAdapter$1
         if (this.jdField_a_of_type_Int != 2) {
           continue;
         }
-        agbp localagbp = this.this$0;
+        ahzs localahzs = this.this$0;
         if (((ArrayList)localObject2).size() < 20)
         {
           bool = true;
-          agbp.b(localagbp, bool);
-          agbp.b(this.this$0, (ChatHistorySearchData)localObject4);
-          localObject2 = agbp.b(this.this$0).obtainMessage(2, localObject2);
+          ahzs.b(localahzs, bool);
+          ahzs.b(this.this$0, (ChatHistorySearchData)localObject4);
+          localObject2 = ahzs.b(this.this$0).obtainMessage(2, localObject2);
           ((Message)localObject2).arg1 = 2;
           localObject4 = new Bundle();
           ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
@@ -93,7 +93,7 @@ public class TroopAllMessageResultAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.1
  * JD-Core Version:    0.7.0.1
  */

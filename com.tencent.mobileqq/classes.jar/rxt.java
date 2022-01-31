@@ -1,29 +1,22 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
 public class rxt
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rxt(BridgeModule paramBridgeModule, String paramString) {}
+  public rxt(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("timestamp", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramView);
-      return;
-    }
-    catch (JSONException paramView) {}
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    SlideActiveAnimController.a(this.a).setAlpha(paramValueAnimator.floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxt
  * JD-Core Version:    0.7.0.1
  */

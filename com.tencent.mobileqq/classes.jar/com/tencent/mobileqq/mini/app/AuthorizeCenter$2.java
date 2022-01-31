@@ -7,18 +7,21 @@ import org.json.JSONObject;
 class AuthorizeCenter$2
   implements MiniAppCmdInterface
 {
-  AuthorizeCenter$2(AuthorizeCenter paramAuthorizeCenter) {}
+  AuthorizeCenter$2(AuthorizeCenter paramAuthorizeCenter, MiniAppCmdInterface paramMiniAppCmdInterface) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (QLog.isColorLevel()) {
       QLog.e("AuthorizeCenter", 2, "updateUserSetting() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
     }
+    if (this.val$listener != null) {
+      this.val$listener.onCmdListener(paramBoolean, paramJSONObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AuthorizeCenter.2
  * JD-Core Version:    0.7.0.1
  */

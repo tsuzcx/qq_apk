@@ -1,27 +1,28 @@
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.LayoutParams;
-import java.util.Comparator;
+import com.tencent.biz.qqcircle.widgets.QCircleTagPageHeaderView;
 
 public class ucw
-  implements Comparator<View>
+  implements ubd
 {
-  public int a(View paramView1, View paramView2)
+  public ucw(QCircleTagPageHeaderView paramQCircleTagPageHeaderView) {}
+  
+  public void a()
   {
-    paramView1 = (XViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (XViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
+    tyj.a("", 6, 2L, 3L);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt > 0) {}
+    for (long l = 2L;; l = 1L)
     {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
+      tyj.a("", 6, 2L, l);
+      return;
     }
-    return paramView1.b - paramView2.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucw
  * JD-Core Version:    0.7.0.1
  */

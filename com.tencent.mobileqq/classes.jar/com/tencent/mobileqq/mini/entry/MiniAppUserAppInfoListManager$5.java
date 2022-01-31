@@ -19,8 +19,8 @@ class MiniAppUserAppInfoListManager$5
     //   13: invokestatic 35	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   16: return
     //   17: aload_1
-    //   18: invokevirtual 41	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Laukq;
-    //   21: invokevirtual 47	aukq:createEntityManager	()Laukp;
+    //   18: invokevirtual 41	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lawbx;
+    //   21: invokevirtual 47	awbx:createEntityManager	()Lawbw;
     //   24: astore_2
     //   25: aload_2
     //   26: ifnull +685 -> 711
@@ -35,7 +35,7 @@ class MiniAppUserAppInfoListManager$5
     //   41: aconst_null
     //   42: ldc 57
     //   44: aconst_null
-    //   45: invokevirtual 63	aukp:a	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   45: invokevirtual 63	awbw:a	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
     //   48: astore_3
     //   49: new 65	java/lang/StringBuilder
     //   52: dup
@@ -284,7 +284,7 @@ class MiniAppUserAppInfoListManager$5
     //   615: aconst_null
     //   616: aconst_null
     //   617: aconst_null
-    //   618: invokevirtual 63	aukp:a	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   618: invokevirtual 63	awbw:a	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
     //   621: astore_2
     //   622: aload_2
     //   623: ifnull +88 -> 711
@@ -326,12 +326,12 @@ class MiniAppUserAppInfoListManager$5
     //   711: aload_1
     //   712: sipush 148
     //   715: invokevirtual 214	com/tencent/common/app/AppInterface:getBusinessHandler	(I)Ljava/lang/Object;
-    //   718: checkcast 216	akwp
+    //   718: checkcast 216	amnf
     //   721: astore_1
     //   722: aload_1
     //   723: ifnull -707 -> 16
     //   726: aload_1
-    //   727: invokevirtual 219	akwp:c	()V
+    //   727: invokevirtual 219	amnf:c	()V
     //   730: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -339,7 +339,7 @@ class MiniAppUserAppInfoListManager$5
     //   3	125	1	localObject1	Object
     //   176	5	1	localObject2	Object
     //   182	530	1	localThrowable	java.lang.Throwable
-    //   721	6	1	localakwp	akwp
+    //   721	6	1	localamnf	amnf
     //   24	628	2	localObject3	Object
     //   48	639	3	localObject4	Object
     //   56	529	4	localStringBuilder	java.lang.StringBuilder
@@ -378,7 +378,7 @@ class MiniAppUserAppInfoListManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.5
  * JD-Core Version:    0.7.0.1
  */

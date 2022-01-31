@@ -1,46 +1,28 @@
-import android.graphics.SurfaceTexture;
-import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.util.Pair;
+import cooperation.qqreader.net.BusinessTask;
 
-public class bixw
-  implements TextureView.SurfaceTextureListener
+public final class bixw
 {
-  private WeakReference<AETemplateInfoFragment> a;
+  public static final Pair<Integer, Integer> a = new Pair(Integer.valueOf(1154), Integer.valueOf(1));
+  public static final Pair<Integer, Integer> b = new Pair(Integer.valueOf(1529), Integer.valueOf(2));
+  public static final Pair<Integer, Integer> c = new Pair(Integer.valueOf(1201), Integer.valueOf(1));
   
-  public bixw(AETemplateInfoFragment paramAETemplateInfoFragment)
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull biwg parambiwg)
   {
-    this.a = new WeakReference(paramAETemplateInfoFragment);
+    a(paramPair, parambiwg, false);
   }
   
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull biwg parambiwg, boolean paramBoolean)
   {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureAvailable");
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.a((AETemplateInfoFragment)this.a.get(), paramSurfaceTexture);
-    }
+    paramPair = new BusinessTask("ZzConfigDataTask", paramPair);
+    paramPair.a(parambiwg, paramBoolean);
+    paramPair.a();
   }
-  
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureDestroyed");
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.c((AETemplateInfoFragment)this.a.get());
-    }
-    return true;
-  }
-  
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureSizeChanged");
-  }
-  
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bixw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,58 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
-final class lku
-  implements Comparator<lkt>
+public class lku
 {
-  public int a(lkt paramlkt1, lkt paramlkt2)
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString;
+  private static String b = "actAVFunChatDecorate";
+  
+  public static void a(String paramString, VideoAppInterface paramVideoAppInterface)
   {
-    if (paramlkt1 == paramlkt2) {
-      return 0;
+    if (paramVideoAppInterface.a(2))
+    {
+      paramVideoAppInterface = (PendantItem)((lkt)paramVideoAppInterface.a(2)).a();
+      if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
+        a(paramString, null);
+      }
     }
-    if (paramlkt1 == null) {
-      return -1;
+  }
+  
+  static void a(String paramString1, String paramString2)
+  {
+    long l1 = System.currentTimeMillis();
+    if (!lux.a(paramString2, jdField_a_of_type_JavaLangString))
+    {
+      if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_Long != 0L))
+      {
+        long l2 = jdField_a_of_type_Long;
+        a(paramString1, jdField_a_of_type_JavaLangString, (l1 - l2) / 1000L);
+      }
+      jdField_a_of_type_JavaLangString = paramString2;
+      jdField_a_of_type_Long = l1;
     }
-    if (paramlkt2 == null) {
-      return 1;
+  }
+  
+  public static void a(String paramString1, String paramString2, long paramLong)
+  {
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      long l = (System.currentTimeMillis() - paramLong) / 1000L;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("tempID", paramString2);
+      localHashMap.put("duration", l + "");
+      UserAction.onUserAction(b, true, -1L, -1L, localHashMap, true);
+      lek.c(paramString1, "onStateReport, ID: " + paramString2 + "  pendant time: " + paramLong);
     }
-    return paramlkt1.a - paramlkt2.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lku
  * JD-Core Version:    0.7.0.1
  */

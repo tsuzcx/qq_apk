@@ -43,7 +43,7 @@ public class BrandPagePool
     this.mLoadingRootView = null;
     View localView1 = localView2;
     if (localView2 == null) {
-      localView1 = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559247, null);
+      localView1 = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559291, null);
     }
     return localView1;
   }
@@ -80,12 +80,12 @@ public class BrandPagePool
     if (this.mLoadingRootView != null) {
       return;
     }
-    this.mLoadingRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559247, null);
+    this.mLoadingRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559291, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.BrandPagePool
  * JD-Core Version:    0.7.0.1
  */

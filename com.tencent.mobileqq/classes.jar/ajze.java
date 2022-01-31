@@ -1,34 +1,17 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-class ajze
-  implements Comparator<File>
+public class ajze
+  implements DialogInterface.OnClickListener
 {
-  ajze(ajzd paramajzd) {}
+  public ajze(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l2 = 0L;
-    if (paramFile1 != null) {}
-    for (long l1 = paramFile1.lastModified();; l1 = 0L)
-    {
-      if (paramFile2 != null) {
-        l2 = paramFile2.lastModified();
-      }
-      if (l2 >= l1) {
-        break;
-      }
-      return -1;
-    }
-    if (l2 > l1) {
-      return 1;
-    }
-    return 0;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajze
  * JD-Core Version:    0.7.0.1
  */

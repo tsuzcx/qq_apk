@@ -54,7 +54,22 @@ public class FaceOffNoseOcclusionFilter
   
   private void updateParam(List<PointF> paramList, float paramFloat)
   {
-    setPositions(FaceOffUtil.initFaceNoseLastPositions(FaceOffUtil.getFullCoordsForNoseAndOutline(VideoMaterialUtil.copyList(paramList)), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+    Object localObject = null;
+    try
+    {
+      paramList = VideoMaterialUtil.copyList(paramList);
+      if (paramList != null) {
+        setPositions(FaceOffUtil.initFaceNoseLastPositions(FaceOffUtil.getFullCoordsForNoseAndOutline(paramList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+      }
+      return;
+    }
+    catch (Exception paramList)
+    {
+      for (;;)
+      {
+        paramList = localObject;
+      }
+    }
   }
   
   public void ApplyGLSLFilter()

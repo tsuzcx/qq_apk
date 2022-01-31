@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aebu;
+import afyi;
 import android.view.View;
 import android.view.animation.Animation;
 
 class StructingMsgItemBuilder$7
   implements Runnable
 {
-  StructingMsgItemBuilder$7(StructingMsgItemBuilder paramStructingMsgItemBuilder, aebu paramaebu, Animation paramAnimation) {}
+  StructingMsgItemBuilder$7(StructingMsgItemBuilder paramStructingMsgItemBuilder, afyi paramafyi, Animation paramAnimation) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aebu.a.setVisibility(4);
-    this.jdField_a_of_type_Aebu.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.jdField_a_of_type_Afyi.a.setVisibility(4);
+    this.jdField_a_of_type_Afyi.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

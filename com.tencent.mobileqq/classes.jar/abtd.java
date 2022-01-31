@@ -1,39 +1,107 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
+import tencent.im.oidb.oidb_0xb60.RspBody;
 
-public class abtd
-  implements Animation.AnimationListener
+class abtd
+  extends nac
 {
-  public abtd(PublicAccountListActivity paramPublicAccountListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  abtd(abtc paramabtc, atzw paramatzw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "onResult type=" + this.jdField_a_of_type_Atzw.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Atzw.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      abtc.a(this.jdField_a_of_type_Abtc, new AppInfoError(6, "jobApiPermission req error"));
+      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
+        break label513;
+      }
     }
-    while (paramAnimation != this.b) {
-      return;
+    for (;;)
+    {
+      Object localObject;
+      try
+      {
+        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+        localObject = new StringBuilder().append("req error code=").append(paramInt);
+        if (paramArrayOfByte == null)
+        {
+          paramArrayOfByte = ", data=null";
+          QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, paramArrayOfByte);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle = "";
+        continue;
+        paramArrayOfByte = ", msg=" + paramBundle;
+        continue;
+      }
+      paramBundle = new oidb_0xb60.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((paramBundle.get_privilege_rsp.api_groups.has()) && (paramBundle.get_privilege_rsp.next_req_duration.has())) {
+          break label297;
+        }
+        abtc.b(this.jdField_a_of_type_Abtc, new AppInfoError(6, "jobApiPermission rsp invalid"));
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "rsp invalid");
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        abtc.c(this.jdField_a_of_type_Abtc, new AppInfoError(6, "jobApiPermission parse rsp error"));
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse rsp error", paramArrayOfByte);
+        return;
+        label297:
+        if (QLog.isColorLevel()) {
+          QLog.d("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
+        }
+        paramArrayOfByte = absu.a();
+        paramArrayOfByte.a(paramBundle.get_privilege_rsp.api_groups.get(), this.jdField_a_of_type_Atzw.jdField_a_of_type_JavaUtilSet);
+        if (paramBundle.get_privilege_rsp.api_names.size() > 0)
+        {
+          localObject = paramBundle.get_privilege_rsp.api_names.get().iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            String str = (String)((Iterator)localObject).next();
+            if (absu.a(paramArrayOfByte, str)) {
+              this.jdField_a_of_type_Atzw.jdField_a_of_type_JavaUtilSet.add(str);
+            }
+          }
+        }
+        this.jdField_a_of_type_Atzw.c = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.get_privilege_rsp.next_req_duration.get() * 1000L, 300000L));
+        auab.a().a(this.jdField_a_of_type_Atzw);
+        abtc.a(this.jdField_a_of_type_Abtc, this.jdField_a_of_type_Atzw);
+        return;
+        label513:
+        paramBundle = "";
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.requestLayout();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abtd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.videostory.db;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class WSPersonalEntity
-  extends auko
+  extends awbv
 {
-  @aumc
+  @awdj
   public String uin;
   public byte[] weiShiPersonalRsp;
   
@@ -21,7 +21,7 @@ public class WSPersonalEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.videostory.db.WSPersonalEntity
  * JD-Core Version:    0.7.0.1
  */

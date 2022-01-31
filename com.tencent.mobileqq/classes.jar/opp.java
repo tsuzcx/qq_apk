@@ -1,32 +1,39 @@
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
 public class opp
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public BaseArticleInfo a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  
+  public opp(BaseArticleInfo paramBaseArticleInfo)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = oof.a(paramString);
-    if ((String)paramString.get("readinjoy_single_video_switch") != null) {
-      bhvy.a((String)paramString.get("readinjoy_single_video_switch"));
-    }
-    return true;
+    this.a = paramBaseArticleInfo;
   }
   
-  public void onWipeConfig(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    super.onWipeConfig(paramInt);
-    bhvy.a(null);
+    if (paramObject == null) {}
+    while (!(paramObject instanceof opp)) {
+      return false;
+    }
+    paramObject = (opp)paramObject;
+    return this.a.equals(paramObject.a);
+  }
+  
+  public int hashCode()
+  {
+    return this.a.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opp
  * JD-Core Version:    0.7.0.1
  */

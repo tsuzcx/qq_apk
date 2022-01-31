@@ -5,7 +5,17 @@ import java.util.List;
 
 public class PoseDataConvert
 {
-  private static int[][] mirrorMap = { { 14, 15 }, { 16, 17 }, { 2, 5 }, { 3, 6 }, { 4, 7 }, { 8, 11 }, { 9, 12 }, { 10, 13 }, { 32, 33 }, { 34, 35 }, { 20, 23 }, { 21, 24 }, { 22, 25 }, { 26, 29 }, { 27, 30 }, { 28, 31 } };
+  private static int[][] mirrorMap;
+  
+  static
+  {
+    int[] arrayOfInt1 = { 4, 7 };
+    int[] arrayOfInt2 = { 9, 12 };
+    int[] arrayOfInt3 = { 34, 35 };
+    int[] arrayOfInt4 = { 21, 24 };
+    int[] arrayOfInt5 = { 26, 29 };
+    mirrorMap = new int[][] { { 14, 15 }, { 16, 17 }, { 2, 5 }, { 3, 6 }, arrayOfInt1, { 8, 11 }, arrayOfInt2, { 10, 13 }, { 32, 33 }, arrayOfInt3, { 20, 23 }, arrayOfInt4, { 22, 25 }, arrayOfInt5, { 27, 30 }, { 28, 31 } };
+  }
   
   public static float[] convertPointsOld(float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
@@ -115,7 +125,7 @@ public class PoseDataConvert
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.utils.PoseDataConvert
  * JD-Core Version:    0.7.0.1
  */

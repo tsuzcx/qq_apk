@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
 
-public class aspl
-  implements asre
+public abstract interface aspl
 {
-  public aspl(MultiAIOFragment paramMultiAIOFragment) {}
+  public abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
   
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
-    }
-    MultiAIOFragment.a(this.a).setViewPagerBusy(true);
-    MultiAIOFragment.a(this.a).c(paramInt);
-    if (MultiAIOFragment.a(this.a).c() == 0) {
-      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-    }
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspl
  * JD-Core Version:    0.7.0.1
  */

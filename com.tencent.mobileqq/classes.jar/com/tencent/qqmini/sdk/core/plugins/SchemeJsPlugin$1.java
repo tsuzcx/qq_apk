@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bekr;
-import betc;
+import bgkd;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class SchemeJsPlugin$1
   extends ResultReceiver
 {
-  SchemeJsPlugin$1(SchemeJsPlugin paramSchemeJsPlugin, Handler paramHandler, bekr parambekr, String paramString)
+  SchemeJsPlugin$1(SchemeJsPlugin paramSchemeJsPlugin, Handler paramHandler, bgkd parambgkd, String paramString)
   {
     super(paramHandler);
   }
@@ -17,7 +17,7 @@ class SchemeJsPlugin$1
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    betc.a("SchemeJsPlugin", "onReceiveResult resultCode : " + paramInt);
+    QMLog.d("SchemeJsPlugin", "onReceiveResult resultCode : " + paramInt);
     if (paramInt == 1)
     {
       this.val$req.a();
@@ -27,13 +27,13 @@ class SchemeJsPlugin$1
     if (paramBundle != null) {
       str = paramBundle.getString("errMsg");
     }
-    betc.a("SchemeJsPlugin", this.val$scheme + " failed, errMsg : " + str);
+    QMLog.d("SchemeJsPlugin", this.val$scheme + " failed, errMsg : " + str);
     this.val$req.a(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.SchemeJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

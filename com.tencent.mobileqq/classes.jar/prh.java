@@ -1,26 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 
 class prh
-  implements View.OnTouchListener
+  implements Animator.AnimatorListener
 {
-  prh(prc paramprc, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  prh(prf paramprf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    prf.a(this.a).setSelected(this.a.isSelected());
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    prf.a(this.a, false);
+    prf.a(this.a).setSelected(this.a.isSelected());
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     prh
  * JD-Core Version:    0.7.0.1
  */

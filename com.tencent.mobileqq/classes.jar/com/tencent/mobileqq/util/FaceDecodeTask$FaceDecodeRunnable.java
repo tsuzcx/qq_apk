@@ -2,7 +2,7 @@ package com.tencent.mobileqq.util;
 
 import android.os.Process;
 import android.text.TextUtils;
-import baxw;
+import bcwq;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.ArrayList;
 
@@ -66,7 +66,7 @@ class FaceDecodeTask$FaceDecodeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.FaceDecodeTask.FaceDecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

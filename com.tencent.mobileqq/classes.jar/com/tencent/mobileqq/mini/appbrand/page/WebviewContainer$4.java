@@ -16,7 +16,7 @@ class WebviewContainer$4
     {
       paramView = new JSONObject();
       paramView.put("data", this.val$data);
-      WebviewContainer.access$500(this.this$0).evaluateSubcribeJS("onImageViewClick", paramView.toString(), WebviewContainer.access$500(this.this$0).pageWebviewId);
+      this.this$0.pageWebview.evaluateSubcribeJS("onImageViewClick", paramView.toString(), this.this$0.pageWebview.pageWebviewId);
       return;
     }
     catch (Throwable paramView)
@@ -27,7 +27,7 @@ class WebviewContainer$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.WebviewContainer.4
  * JD-Core Version:    0.7.0.1
  */

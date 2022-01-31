@@ -1,21 +1,12 @@
-import android.view.View;
-
-class azke
-  implements bfph
+public class azke
 {
-  azke(azka paramazka) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    azka.a(this.a);
-    if (paramInt == 0) {
-      azka.a(this.a, "");
-    }
-  }
+  public int a;
+  public String a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azke
  * JD-Core Version:    0.7.0.1
  */

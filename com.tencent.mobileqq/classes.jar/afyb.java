@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class afyb
-  implements asup
+public class afyb
+  implements PopupWindow.OnDismissListener
 {
-  afyb(afya paramafya) {}
+  public afyb(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void a()
+  public void onDismiss()
   {
-    this.a.jdField_a_of_type_Asuw.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Asuw.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
+    StructingMsgItemBuilder.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afyb
  * JD-Core Version:    0.7.0.1
  */

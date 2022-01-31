@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ajya;
-import auko;
-import aumc;
+import alpo;
+import awbv;
+import awdj;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import org.json.JSONTokener;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class BlessTask
-  extends auko
+  extends awbv
 {
   public int cameraMode;
   public String defaultShareTitle;
@@ -30,13 +30,13 @@ public class BlessTask
   public int festival_id;
   public String filterCategory = "";
   public String filterId = "";
-  @aumc
+  @awdj
   public int id = 1000;
   public boolean isDeleted;
   public boolean isNew = true;
   public String mainBanner;
   public String mainCenter;
-  public String pendantCategory = ajya.a(2131701165);
+  public String pendantCategory = alpo.a(2131701534);
   public String pendantId = "";
   public int ptvAnimationCost;
   public int ptvAnimationCount;
@@ -213,7 +213,7 @@ public class BlessTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessTask
  * JD-Core Version:    0.7.0.1
  */

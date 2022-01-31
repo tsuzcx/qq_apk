@@ -1,36 +1,23 @@
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.statistic.serverip.WebAppIpRecord;
 
-public class bjpb
+public final class bjpb
+  implements Parcelable.Creator<WebAppIpRecord>
 {
-  private final HashMap<String, bjow> a = new HashMap();
-  
-  final bjow a(String paramString)
+  public WebAppIpRecord a(Parcel paramParcel)
   {
-    return (bjow)this.a.get(paramString);
+    return new WebAppIpRecord(paramParcel);
   }
   
-  public final void a()
+  public WebAppIpRecord[] a(int paramInt)
   {
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((bjow)localIterator.next()).b();
-    }
-    this.a.clear();
-  }
-  
-  final void a(String paramString, bjow parambjow)
-  {
-    paramString = (bjow)this.a.put(paramString, parambjow);
-    if (paramString != null) {
-      paramString.b();
-    }
+    return new WebAppIpRecord[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjpb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import ajyx;
-import andt;
-import bbkb;
+import alql;
+import aova;
+import bdiv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 public class ConfigServlet$9
   implements Runnable
 {
-  public ConfigServlet$9(andt paramandt, ConfigurationService.Config paramConfig) {}
+  public ConfigServlet$9(aova paramaova, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.this$0.getAppRuntime();
-    boolean bool = ((ajyx)localQQAppInterface.getManager(123)).a(this.a);
-    bbkb.a(localQQAppInterface.getApp(), this.a.version.get(), bool);
+    boolean bool = ((alql)localQQAppInterface.getManager(123)).a(this.a);
+    bdiv.a(localQQAppInterface.getApp(), this.a.version.get(), bool);
   }
 }
 

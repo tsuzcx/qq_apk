@@ -1,30 +1,59 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.1;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.2;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 public class avrp
-  implements axdj
+  implements View.OnTouchListener
 {
-  avrp(avrn paramavrn) {}
+  public avrp(OCRResultActivity paramOCRResultActivity) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.2(this, paramPtvTemplateInfo, paramInt));
+    paramView = (EditText)paramView;
+    int j = paramMotionEvent.getAction();
+    if (j == 1)
+    {
+      Object localObject = paramView.getText();
+      int m = (int)paramMotionEvent.getX();
+      i = (int)paramMotionEvent.getY();
+      int n = paramView.getTotalPaddingLeft();
+      int k = paramView.getTotalPaddingTop();
+      m = m - n + paramView.getScrollX();
+      n = paramView.getScrollY();
+      Layout localLayout = paramView.getLayout();
+      i = localLayout.getLineForVertical(i - k + n);
+      float f = localLayout.getLineWidth(i);
+      if (m <= f)
+      {
+        i = localLayout.getOffsetForHorizontal(i, m);
+        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
+        if ((localObject.length != 0) && (j == 1))
+        {
+          localObject[0].onClick(paramView);
+          azmj.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
+        }
+      }
     }
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        return true;
+      }
+      if ((j == 1) && (!paramView.isFocused())) {
+        azmj.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
+      }
+      return paramView.onTouchEvent(paramMotionEvent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avrp
  * JD-Core Version:    0.7.0.1
  */

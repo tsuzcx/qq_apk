@@ -1,23 +1,26 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
-final class amhi
-  implements DialogInterface.OnClickListener
+class amhi
+  implements abnz
 {
-  amhi(bbgu parambbgu, Context paramContext) {}
+  amhi(amha paramamha, long paramLong, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ToServiceMsg a()
   {
-    if (this.jdField_a_of_type_Bbgu.isShowing()) {
-      this.jdField_a_of_type_Bbgu.dismiss();
-    }
-    amkf.a(this.jdField_a_of_type_AndroidContentContext, true);
+    ToServiceMsg localToServiceMsg = amha.b(this.jdField_a_of_type_Amha).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("type", 1L);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amhi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,32 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
-class askm
-  implements askr<Pair<String, Integer>, EmoticonPackage>
+public class askm
+  implements best
 {
-  askm(askf paramaskf) {}
+  public askm(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public void a(View paramView, int paramInt)
   {
-    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    if ((paramInt == 5) || (paramInt == 4))
+    {
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "2747277822");
+      this.a.startActivity(paramView);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    QQGameFeedWebFragment.a(this.a, this.a.a);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     askm
  * JD-Core Version:    0.7.0.1
  */

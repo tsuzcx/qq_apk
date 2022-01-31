@@ -1,24 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class acal
-  implements bfvx
+  implements DialogInterface.OnClickListener
 {
-  public acal(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public acal(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SearchMightKnowFragment.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    SearchMightKnowFragment.a(this.a, true);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acal
  * JD-Core Version:    0.7.0.1
  */

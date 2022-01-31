@@ -1,22 +1,32 @@
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-class aree
-  implements Callable<Boolean>
+public class aree
+  implements aoah
 {
-  aree(arec paramarec, File paramFile) {}
-  
-  public Boolean a()
+  public String a()
   {
-    if ((arec.a(this.jdField_a_of_type_Arec).exists()) && (this.jdField_a_of_type_JavaIoFile == arec.a(this.jdField_a_of_type_Arec))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    return alpo.a(2131699774);
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {}
+    while (paramInt != 17039360) {
+      return;
     }
+    paramView = paramView.getContext();
+    Intent localIntent = new Intent(paramView, FileAssistantActivity.class);
+    localIntent.putExtra("from", "FileAssistant");
+    paramView.startActivity(localIntent);
+    azmj.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aree
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bjld;
-import bjle;
+import blwn;
+import blwo;
 
 public class QIMCommonLoadingView
   extends View
-  implements bjle
+  implements blwo
 {
   private static float jdField_d_of_type_Float;
   protected float a;
@@ -28,7 +28,7 @@ public class QIMCommonLoadingView
   protected Paint a;
   protected Path a;
   protected RectF a;
-  bjld jdField_a_of_type_Bjld;
+  blwn jdField_a_of_type_Blwn;
   boolean jdField_a_of_type_Boolean = false;
   protected float b;
   protected int b;
@@ -87,23 +87,23 @@ public class QIMCommonLoadingView
   
   public void a()
   {
-    bjld localbjld = this.jdField_a_of_type_Bjld;
-    if (localbjld != null) {
-      setProgress(Math.round(localbjld.a() * (float)this.jdField_a_of_type_Long));
+    blwn localblwn = this.jdField_a_of_type_Blwn;
+    if (localblwn != null) {
+      setProgress(Math.round(localblwn.a() * (float)this.jdField_a_of_type_Long));
     }
   }
   
-  public void a(bjld parambjld)
+  public void a(blwn paramblwn)
   {
-    bjld localbjld = this.jdField_a_of_type_Bjld;
-    if (localbjld != null) {
-      localbjld.a(this);
+    blwn localblwn = this.jdField_a_of_type_Blwn;
+    if (localblwn != null) {
+      localblwn.a(this);
     }
-    this.jdField_a_of_type_Bjld = parambjld;
-    if (parambjld != null)
+    this.jdField_a_of_type_Blwn = paramblwn;
+    if (paramblwn != null)
     {
-      parambjld.b(this);
-      setProgress(Math.round(parambjld.a() * (float)this.jdField_a_of_type_Long));
+      paramblwn.b(this);
+      setProgress(Math.round(paramblwn.a() * (float)this.jdField_a_of_type_Long));
     }
   }
   
@@ -151,10 +151,10 @@ public class QIMCommonLoadingView
         }
         while (this.jdField_c_of_type_Boolean)
         {
-          if ((this.jdField_b_of_type_Long == this.jdField_a_of_type_Long) || (this.jdField_a_of_type_Bjld == null)) {
+          if ((this.jdField_b_of_type_Long == this.jdField_a_of_type_Long) || (this.jdField_a_of_type_Blwn == null)) {
             break label262;
           }
-          setProgress(Math.round(this.jdField_a_of_type_Bjld.a() * (float)this.jdField_a_of_type_Long));
+          setProgress(Math.round(this.jdField_a_of_type_Blwn.a() * (float)this.jdField_a_of_type_Long));
           return;
           paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 270.0F, f, false, this.jdField_b_of_type_AndroidGraphicsPaint);
         }
@@ -207,7 +207,7 @@ public class QIMCommonLoadingView
     {
       invalidate();
       return;
-      if (this.jdField_a_of_type_Bjld != null) {
+      if (this.jdField_a_of_type_Blwn != null) {
         this.jdField_c_of_type_Boolean = true;
       }
     }
@@ -239,7 +239,7 @@ public class QIMCommonLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMCommonLoadingView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,50 @@
 package c.t.m.g;
 
-import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.Locale;
+import android.content.Context;
 
 public final class dp
 {
-  private static HashMap<String, ThreadLocal<SimpleDateFormat>> a = new HashMap();
+  protected static volatile boolean a = false;
+  private static volatile Context b;
   
-  public static SimpleDateFormat a(String paramString)
+  public static final Context a()
   {
-    for (;;)
+    try
     {
-      try
+      if (b != null)
       {
-        ThreadLocal localThreadLocal = (ThreadLocal)a.get(paramString);
-        if (localThreadLocal == null)
-        {
-          localThreadLocal = new ThreadLocal();
-          a.put(paramString, localThreadLocal);
-          SimpleDateFormat localSimpleDateFormat2 = (SimpleDateFormat)localThreadLocal.get();
-          SimpleDateFormat localSimpleDateFormat1 = localSimpleDateFormat2;
-          if (localSimpleDateFormat2 == null)
-          {
-            localSimpleDateFormat1 = new SimpleDateFormat(paramString, Locale.ENGLISH);
-            localThreadLocal.set(localSimpleDateFormat1);
-          }
-          return localSimpleDateFormat1;
-        }
+        Context localContext = b;
+        return localContext;
       }
-      finally {}
+      throw new NullPointerException("u should init first.");
     }
+    finally {}
+  }
+  
+  public static final void a(Context paramContext)
+  {
+    try
+    {
+      if ((b != null) && (b.getApplicationContext() != null)) {
+        break label52;
+      }
+      if ((paramContext == null) || (paramContext.getApplicationContext() == null)) {
+        throw new NullPointerException("context cannot be null.");
+      }
+    }
+    finally {}
+    b = paramContext.getApplicationContext();
+    label52:
+  }
+  
+  public static final void b()
+  {
+    a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dp
  * JD-Core Version:    0.7.0.1
  */

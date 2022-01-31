@@ -1,14 +1,26 @@
-public abstract interface adbf
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
+
+public class adbf
+  implements ViewSwitcher.ViewFactory
 {
-  public abstract boolean a();
+  public adbf(Leba paramLeba) {}
   
-  public abstract void d();
-  
-  public abstract void e();
+  public View makeView()
+  {
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbf
  * JD-Core Version:    0.7.0.1
  */

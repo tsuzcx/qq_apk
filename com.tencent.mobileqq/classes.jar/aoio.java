@@ -1,29 +1,28 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.text.TextUtils;
 
-public class aoio
-  implements Animator.AnimatorListener
+class aoio
 {
-  public aoio(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public String a()
   {
-    this.a.n();
+    return this.a + this.b;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean a()
   {
-    this.a.n();
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoio
  * JD-Core Version:    0.7.0.1
  */

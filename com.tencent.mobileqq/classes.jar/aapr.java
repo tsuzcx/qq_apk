@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public final class aapr
-  implements DialogInterface.OnCancelListener
+class aapr
+  extends AdHttp.Params
 {
-  public aapr(DialogInterface.OnClickListener paramOnClickListener) {}
+  public int a = -2147483648;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public boolean isSuccess()
   {
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, 0);
-    }
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapr
  * JD-Core Version:    0.7.0.1
  */

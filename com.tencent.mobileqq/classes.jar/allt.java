@@ -1,58 +1,41 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
-public final class allt
+public class allt
+  implements Manager
 {
-  public static int a(String paramString)
+  private bcxp jdField_a_of_type_Bcxp;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public Object a;
+  
+  public allt(QQAppInterface paramQQAppInterface)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).getInt(paramString, 0);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static void a(Context paramContext, View paramView)
+  public bcxp a()
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
+    if (this.jdField_a_of_type_Bcxp == null) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i = ImmersiveUtils.getStatusBarHeight(paramContext);
-      paramContext = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      paramContext.topMargin = i;
-      paramView.setLayoutParams(paramContext);
-    }
-  }
-  
-  public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
-  {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams;
-    int i;
-    if (axlk.a(paramContext))
-    {
-      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      i = paramInt;
-      if (paramBoolean) {
-        i = paramInt + axlk.d(paramContext);
+      if (this.jdField_a_of_type_Bcxp == null) {
+        this.jdField_a_of_type_Bcxp = new bcxp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      if (localMarginLayoutParams.bottomMargin != i) {}
+      return this.jdField_a_of_type_Bcxp;
     }
-    else
-    {
-      return;
-    }
-    localMarginLayoutParams.bottomMargin = i;
-    paramView.setLayoutParams(localMarginLayoutParams);
   }
   
-  public static void a(String paramString, int paramInt)
+  public void onDestroy()
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).edit().putInt(paramString, paramInt).commit();
+    if (this.jdField_a_of_type_Bcxp != null) {
+      this.jdField_a_of_type_Bcxp.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     allt
  * JD-Core Version:    0.7.0.1
  */

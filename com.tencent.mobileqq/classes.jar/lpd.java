@@ -1,98 +1,123 @@
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class lpd
 {
-  private static lpd jdField_a_of_type_Lpd;
-  int jdField_a_of_type_Int = 0;
+  loy jdField_a_of_type_Loy = null;
+  lpe jdField_a_of_type_Lpe = null;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public static lpd a()
+  lpd()
   {
-    try
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, "QavGPDownloader in QQAppInterface");
+    }
+    this.jdField_a_of_type_Lpe = new lpe();
+  }
+  
+  static void a(int paramInt)
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    Intent localIntent = new Intent("tencent.video.qavgameplaysomgr.notify");
+    localIntent.setPackage(localBaseApplicationImpl.getPackageName());
+    localIntent.putExtra("Event_Progress", paramInt);
+    localBaseApplicationImpl.sendBroadcast(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, "onEnterBackground");
+    }
+    a();
+  }
+  
+  public static void a(String paramString)
+  {
+    if (loz.a()) {
+      loz.a().a.b(paramString);
+    }
+  }
+  
+  public static void a(loy paramloy)
+  {
+    SharedPreferences localSharedPreferences = lpg.a();
+    paramloy = paramloy.b;
+    localSharedPreferences.edit().putString("so_zip_md5", paramloy).commit();
+  }
+  
+  public static boolean a()
+  {
+    return loz.a().a.b();
+  }
+  
+  private boolean b()
+  {
+    QLog.d("QavGPDownloadManager", 4, "innerDownload, start");
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      lpd locallpd;
-      if (jdField_a_of_type_Lpd != null)
+      if (((QQAppInterface)localObject).getManager(21) == null)
       {
-        locallpd = jdField_a_of_type_Lpd;
-        return locallpd;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QavGPDownloadManager", 4, "innerDownload, getNetEngine 为空");
+        }
+        return false;
       }
-      return null;
     }
-    finally
+    else
     {
-      try
-      {
-        jdField_a_of_type_Lpd = new lpd();
-        locallpd = jdField_a_of_type_Lpd;
-        return locallpd;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGPDownloadManager", 4, "appRuntime 不是 QQAppInterface");
       }
-      catch (Exception localException) {}
-      localObject = finally;
+      return false;
+    }
+    if (this.jdField_a_of_type_Loy == null) {
+      this.jdField_a_of_type_Loy = loy.a();
+    }
+    localObject = this.jdField_a_of_type_Loy;
+    if (localObject == null)
+    {
+      QLog.d("QavGPDownloadManager", 2, "downloadInfo == null");
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    if (11 == lpg.a((loy)localObject)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool)
+      {
+        QLog.d("QavGPDownloadManager", 2, "downloadTask.start");
+        return this.jdField_a_of_type_Lpe.a((loy)localObject);
+      }
+      QLog.d("QavGPDownloadManager", 2, "bDownloading = false");
+      return bool;
     }
   }
   
-  public boolean a()
+  void b(String paramString)
   {
-    boolean bool = false;
-    if (lgj.a(BaseApplicationImpl.getContext()).a("sharp/EffectFilterDeviceConfig/isClose", 0) == 0) {
-      bool = true;
+    loy localloy = null;
+    if (!TextUtils.isEmpty(paramString)) {
+      localloy = loy.a(paramString);
     }
-    return bool;
-  }
-  
-  public boolean b()
-  {
-    boolean bool = false;
-    if (lgj.a(BaseApplicationImpl.getContext()).a("sharp/qavGestureConfig/isClose", 0) == 0) {
-      bool = true;
+    this.jdField_a_of_type_Loy = localloy;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QLog.d("QavGPDownloadManager", 1, "handle_QAG_QavGameplay_Config, mNeedDownloadAfterGetConfig == true");
+      this.jdField_a_of_type_Boolean = false;
+      a();
     }
-    return bool;
-  }
-  
-  public boolean c()
-  {
-    boolean bool = false;
-    if (lgj.a(BaseApplicationImpl.getContext()).a("sharp/qavRedbagConfig/isClose", 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean d()
-  {
-    boolean bool = false;
-    if (lgj.a(BaseApplicationImpl.getContext()).a("sharp/qavScreenRecoder/isClose", 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean e()
-  {
-    boolean bool = false;
-    if (lgj.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/isClose", 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean f()
-  {
-    return lgj.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/enable", 0) == 1;
-  }
-  
-  public boolean g()
-  {
-    return lgj.a(BaseApplicationImpl.getContext()).a("sharp/CameraFocusMethod/isUseSelfDev", 0) == 1;
-  }
-  
-  public boolean h()
-  {
-    return 1 == lgj.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDetectInversion/Inversion", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lpd
  * JD-Core Version:    0.7.0.1
  */

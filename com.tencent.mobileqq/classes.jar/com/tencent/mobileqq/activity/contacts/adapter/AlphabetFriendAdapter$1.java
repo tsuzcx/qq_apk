@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afpc;
+import ahmt;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,15 +10,15 @@ import mqq.os.MqqHandler;
 public class AlphabetFriendAdapter$1
   implements Runnable
 {
-  public AlphabetFriendAdapter$1(afpc paramafpc) {}
+  public AlphabetFriendAdapter$1(ahmt paramahmt) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     try
     {
-      localArrayList.addAll(afpc.a(this.this$0));
-      Object[] arrayOfObject = afpc.a(this.this$0, localArrayList, afpc.a(this.this$0));
+      localArrayList.addAll(ahmt.a(this.this$0));
+      Object[] arrayOfObject = ahmt.a(this.this$0, localArrayList, ahmt.a(this.this$0));
       ThreadManager.getUIHandler().post(new AlphabetFriendAdapter.1.1(this, localArrayList));
       if ((arrayOfObject == null) || (arrayOfObject.length < 3))
       {
@@ -46,7 +46,7 @@ public class AlphabetFriendAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.adapter.AlphabetFriendAdapter.1
  * JD-Core Version:    0.7.0.1
  */

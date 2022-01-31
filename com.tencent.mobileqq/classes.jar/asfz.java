@@ -1,23 +1,46 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.medalwall.MedalID;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class asfz
-  implements Parcelable.Creator<MedalID>
+class asfz
+  implements View.OnClickListener
 {
-  public MedalID a(Parcel paramParcel)
-  {
-    return new MedalID(paramParcel);
-  }
+  asfz(asfu paramasfu, String paramString1, String paramString2) {}
   
-  public MedalID[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new MedalID[paramInt];
+    paramView = new HashMap();
+    aact.a(paramView, this.jdField_a_of_type_JavaLangString);
+    paramView.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
+    paramView.put(Integer.valueOf(10), "1");
+    paramView.put(Integer.valueOf(12), this.b);
+    Intent localIntent = new Intent(asfu.a(this.jdField_a_of_type_Asfu), QQBrowserActivity.class);
+    if (TextUtils.isEmpty(this.b))
+    {
+      localIntent.putExtra("url", "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393");
+      paramView.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuezq");
+    }
+    for (;;)
+    {
+      aact.a(akro.a(), "769", "205711", this.jdField_a_of_type_Asfu.a().gameAppId, "76905", "1", "160", paramView);
+      asfu.a(this.jdField_a_of_type_Asfu).startActivity(localIntent);
+      asfu.a(this.jdField_a_of_type_Asfu).dismiss();
+      return;
+      localIntent.putExtra("url", this.b);
+      paramView.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuebl");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asfz
  * JD-Core Version:    0.7.0.1
  */

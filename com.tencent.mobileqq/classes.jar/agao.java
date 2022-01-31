@@ -1,22 +1,14 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-public class agao
-  implements View.OnClickListener
+public abstract interface agao
 {
-  public agao(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public abstract void a(View paramView);
   
-  public void onClick(View paramView)
-  {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
-  }
+  public abstract void b(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agao
  * JD-Core Version:    0.7.0.1
  */

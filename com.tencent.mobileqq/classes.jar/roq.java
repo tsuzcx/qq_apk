@@ -1,26 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class roq
-  implements View.OnClickListener
+public abstract interface roq
 {
-  roq(rop paramrop, View.OnClickListener paramOnClickListener) {}
+  public abstract void a(float paramFloat);
   
-  public void onClick(View paramView)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onClick: " + rop.a(this.jdField_a_of_type_Rop).mChannelCoverName);
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
-    bhvy.a(rop.a(this.jdField_a_of_type_Rop).mChannelCoverId, true);
-    rop.a(this.jdField_a_of_type_Rop);
-  }
+  public abstract void a(int paramInt, String paramString, ros paramros);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     roq
  * JD-Core Version:    0.7.0.1
  */

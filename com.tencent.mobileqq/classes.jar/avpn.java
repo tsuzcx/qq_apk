@@ -1,23 +1,23 @@
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract class avpn
+class avpn
+  implements View.OnClickListener
 {
-  private static int b;
-  public int a;
+  avpn(avpm paramavpm) {}
   
-  public avpn()
+  public void onClick(View paramView)
   {
-    int i = b;
-    b = i + 1;
-    this.a = i;
+    if (((paramView.getTag() instanceof avpo)) && (this.a.a != null))
+    {
+      avpo localavpo = (avpo)paramView.getTag();
+      this.a.a.a(this.a, paramView, localavpo);
+    }
   }
-  
-  public abstract void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avpn
  * JD-Core Version:    0.7.0.1
  */

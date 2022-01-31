@@ -1,67 +1,40 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
 public class ayek
+  implements View.OnClickListener
 {
-  public static FileManagerEntity a(ForwardFileInfo paramForwardFileInfo)
-  {
-    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.fileName = paramForwardFileInfo.d();
-    localFileManagerEntity.nFileType = apug.a(localFileManagerEntity.fileName);
-    localFileManagerEntity.nSessionId = paramForwardFileInfo.b();
-    localFileManagerEntity.cloudType = paramForwardFileInfo.d();
-    return localFileManagerEntity;
-  }
+  public ayek(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public static String a(int paramInt)
+  public void onClick(View paramView)
   {
-    String str = ajya.a(2131714803);
-    if (paramInt == 3) {
-      str = "word";
-    }
-    do
+    this.a.c();
+    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCursorVisible(false);
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.removeTextChangedListener(this.a);
+    if ((ActiveEntitySearchActivity.a(this.a) == 1) && (!TextUtils.isEmpty(this.a.b)))
     {
-      return str;
-      if (paramInt == 6) {
-        return "excel";
-      }
-      if (paramInt == 7) {
-        return "ppt";
-      }
-    } while (paramInt != 9);
-    return "pdf";
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    a(paramActivity, paramString, false);
-  }
-  
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    Object localObject = new FileManagerEntity();
-    ((FileManagerEntity)localObject).nSessionId = apug.a().longValue();
-    ((FileManagerEntity)localObject).fileName = paramString;
-    paramString = new ForwardFileInfo();
-    paramString.d(9);
-    paramString.b(10001);
-    paramString.d(((FileManagerEntity)localObject).fileName);
-    paramString.b(((FileManagerEntity)localObject).nSessionId);
-    localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("isMiniProgram", paramBoolean);
-    Intent localIntent = new Intent(paramActivity, FileBrowserActivity.class);
-    localIntent.putExtra("fileinfo", paramString);
-    localIntent.putExtra("file_browser_extra_params", (Bundle)localObject);
-    paramActivity.startActivityForResult(localIntent, 102);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText(this.a.b);
+      ActiveEntitySearchActivity.a(this.a, ActiveEntitySearchActivity.a(this.a));
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.addTextChangedListener(this.a);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText("");
+      ActiveEntitySearchActivity.a(this.a, 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayek
  * JD-Core Version:    0.7.0.1
  */

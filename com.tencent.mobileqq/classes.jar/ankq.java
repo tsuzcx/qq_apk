@@ -1,22 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class ankq
-  implements DialogInterface.OnClickListener
+public abstract interface ankq
 {
-  ankq(ankn paramankn) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.cancel();
-    QLog.d(ankn.a(), 1, "showConfirmDialog, cancel click");
-    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, ankn.d, ankn.d, 0, 0, "", "", "", "");
-  }
+  public abstract void b(ArrayList<anjz> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankq
  * JD-Core Version:    0.7.0.1
  */

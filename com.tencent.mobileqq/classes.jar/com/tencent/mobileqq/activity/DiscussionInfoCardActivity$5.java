@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import ajvg;
-import ajvh;
-import ajvi;
+import almt;
+import almu;
+import almv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +19,10 @@ class DiscussionInfoCardActivity$5
     if (this.a) {}
     try
     {
-      ajvh localajvh = new ajvh();
-      localajvh.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
-      localajvh.b = localArrayList.size();
-      DiscussionInfoCardActivity.a(this.this$0).a(localajvh);
+      almu localalmu = new almu();
+      localalmu.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
+      localalmu.b = localArrayList.size();
+      DiscussionInfoCardActivity.a(this.this$0).a(localalmu);
       return;
     }
     catch (Exception localException)
@@ -34,7 +34,7 @@ class DiscussionInfoCardActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.5
  * JD-Core Version:    0.7.0.1
  */

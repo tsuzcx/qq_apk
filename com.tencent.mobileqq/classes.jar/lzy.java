@@ -1,42 +1,40 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class lzy
-  extends MagicFaceDataEntity
+  implements alln
 {
-  public lzy(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
+  private WeakReference<mac> a;
+  private WeakReference<allj> b;
+  private WeakReference<lzj> c;
+  
+  public lzy(mac parammac, allj paramallj, lzj paramlzj)
   {
-    super(paramVideoAppInterface, paramString1, paramString2, paramString3, paramBoolean, paramInt);
+    this.a = new WeakReference(parammac);
+    this.b = new WeakReference(paramallj);
+    this.c = new WeakReference(paramlzj);
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    super.a(paramString, paramArrayOfByte, paramShort1, paramShort2, paramShort3, paramShort4, paramBoolean);
-    if (paramBoolean) {
-      QLog.d("SwitchFaceMagicFaceDataEntity", 2, "WL_DEBUG onReceivePeerFaceFeature uin = " + paramString + ", width = " + paramShort1 + ", height = " + paramShort2 + ", frameWidth = " + paramShort3 + ", frameHeight = " + paramShort4);
+    Object localObject = (allj)this.b.get();
+    if (localObject != null) {
+      ((allj)localObject).d(this);
+    }
+    localObject = (mac)this.a.get();
+    lzj locallzj = (lzj)this.c.get();
+    if ((localObject != null) && (locallzj != null)) {
+      ((mac)localObject).a(paramBoolean, locallzj);
     }
   }
   
-  public void c()
+  public void a(lzj paramlzj)
   {
-    super.c();
-    c(0);
-    c(1);
-    a(true);
-    a(null);
-  }
-  
-  public void d()
-  {
-    super.d();
-    b(0);
-    b(1);
+    this.c = new WeakReference(paramlzj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzy
  * JD-Core Version:    0.7.0.1
  */

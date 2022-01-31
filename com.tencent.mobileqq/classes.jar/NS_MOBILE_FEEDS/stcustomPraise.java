@@ -10,6 +10,7 @@ public final class stcustomPraise
   public int customPraisetype = 0;
   public int iFrameRate;
   public int iItemId;
+  public int iPraiseActId;
   public String strPraiseButton = "";
   public String strPraiseComboZip = "";
   public String strPraisePic = "";
@@ -19,7 +20,7 @@ public final class stcustomPraise
   
   public stcustomPraise() {}
   
-  public stcustomPraise(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, int paramInt3, long paramLong, int paramInt4)
+  public stcustomPraise(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, int paramInt3, long paramLong, int paramInt4, int paramInt5)
   {
     this.iItemId = paramInt1;
     this.strPraisePic = paramString1;
@@ -30,6 +31,7 @@ public final class stcustomPraise
     this.customPraisetype = paramInt3;
     this.uiComboCount = paramLong;
     this.subpraisetype = paramInt4;
+    this.iPraiseActId = paramInt5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -43,6 +45,7 @@ public final class stcustomPraise
     this.customPraisetype = paramJceInputStream.read(this.customPraisetype, 6, false);
     this.uiComboCount = paramJceInputStream.read(this.uiComboCount, 7, false);
     this.subpraisetype = paramJceInputStream.read(this.subpraisetype, 8, false);
+    this.iPraiseActId = paramJceInputStream.read(this.iPraiseActId, 9, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -64,11 +67,12 @@ public final class stcustomPraise
     paramJceOutputStream.write(this.customPraisetype, 6);
     paramJceOutputStream.write(this.uiComboCount, 7);
     paramJceOutputStream.write(this.subpraisetype, 8);
+    paramJceOutputStream.write(this.iPraiseActId, 9);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.stcustomPraise
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
 
 public class rbv
-  implements bfos
+  implements Animation.AnimationListener
 {
-  List<bfos> a = new ArrayList();
+  public rbv(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    this.a.clear();
+    VideoFeedsAioGuideView.b(this.a).setStartOffset(360L);
   }
   
-  public void a(bfos parambfos)
-  {
-    if (!this.a.contains(parambfos)) {
-      this.a.add(parambfos);
-    }
-  }
-  
-  public void b(bfos parambfos)
-  {
-    this.a.remove(parambfos);
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      bfos localbfos = (bfos)localIterator.next();
-      try
-      {
-        localbfos.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("ReadInJoyBaseListView", 2, "onScroll exp", localThrowable);
-      }
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      bfos localbfos = (bfos)localIterator.next();
-      try
-      {
-        localbfos.onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, "onScrollStateChanged exp", localThrowable);
-      }
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rbv
  * JD-Core Version:    0.7.0.1
  */

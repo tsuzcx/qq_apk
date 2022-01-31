@@ -1,18 +1,16 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.view.animation.Interpolator;
 
-class belc
-  implements FileFilter
+public class belc
+  implements Interpolator
 {
-  public boolean accept(File paramFile)
+  public float getInterpolation(float paramFloat)
   {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
+    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     belc
  * JD-Core Version:    0.7.0.1
  */

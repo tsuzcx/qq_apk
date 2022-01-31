@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import aiai;
+import ajrs;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
-import axhr;
-import axhu;
-import axhz;
+import azcx;
+import azda;
+import azdf;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraPreview;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 import java.io.File;
@@ -73,12 +73,12 @@ public class CameraCover
     int i = this.a.getLeft();
     int j = this.a.getTop();
     localRect2.offset(-i, -j);
-    axhr localaxhr;
+    azcx localazcx;
     if (localRect1.equals(localRect2))
     {
-      localaxhr = axhr.a();
+      localazcx = azcx.a();
       localRect2 = a(paramInt, localRect1, localRect2);
-      if (localaxhr.b() % 180 != 90) {
+      if (localazcx.b() % 180 != 90) {
         break label266;
       }
       paramInt = localRect1.height();
@@ -89,7 +89,7 @@ public class CameraCover
     }
     label266:
     label275:
-    for (i = paramRect.width();; i = localaxhr.b().a)
+    for (i = paramRect.width();; i = localazcx.b().a)
     {
       float f = i / paramInt;
       localRect2.left = ((int)(localRect2.left * f));
@@ -116,12 +116,12 @@ public class CameraCover
     }
   }
   
-  public void a(File paramFile, aiai paramaiai, int paramInt, boolean paramBoolean)
+  public void a(File paramFile, ajrs paramajrs, int paramInt, boolean paramBoolean)
   {
-    a(paramFile, paramaiai, paramInt, paramBoolean, 0, -1, -1);
+    a(paramFile, paramajrs, paramInt, paramBoolean, 0, -1, -1);
   }
   
-  public void a(File paramFile, aiai paramaiai, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4)
+  public void a(File paramFile, ajrs paramajrs, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4)
   {
     Object localObject = null;
     if (this.a == null) {}
@@ -144,7 +144,7 @@ public class CameraCover
         if (localObject == null) {
           break label122;
         }
-        ((PreviewContext)localObject).mCamera.a(paramFile, localRect, paramaiai, paramInt1, paramBoolean, paramInt2, 0);
+        ((PreviewContext)localObject).mCamera.a(paramFile, localRect, paramajrs, paramInt1, paramBoolean, paramInt2, 0);
         return;
         localRect = a(null, paramInt1);
         break;
@@ -162,7 +162,7 @@ public class CameraCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.CameraCover
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,20 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
-class acyz
-  extends Animation
+public class acyz
+  implements DialogInterface.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private float b;
+  public acyz(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  acyz(acyx paramacyx) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f2 = 1.0F;
-    float f1;
-    if (paramFloat < this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 11.0F)
-    {
-      f1 = paramFloat / (this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 11.0F);
-      if (paramFloat >= this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 6.0F) {
-        break label139;
-      }
-      f2 = 1.0F + paramFloat / (this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 6.0F) * 0.5F;
-    }
-    for (;;)
-    {
-      paramTransformation.setAlpha(f1);
-      paramTransformation.getMatrix().setScale(f2, f2, this.jdField_a_of_type_Float, this.b);
-      return;
-      if (paramFloat < this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 20.0F)
-      {
-        f1 = 1.0F;
-        break;
-      }
-      f1 = 1.0F - (paramFloat - this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 20.0F) / (4.0F * this.jdField_a_of_type_Acyx.jdField_a_of_type_Float);
-      break;
-      label139:
-      if (paramFloat < this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 11.0F) {
-        f2 = 1.5F - (paramFloat - this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 6.0F) * 0.5F / (5.0F * this.jdField_a_of_type_Acyx.jdField_a_of_type_Float);
-      }
-    }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
-    this.b = (paramInt2 * 0.5F);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyz
  * JD-Core Version:    0.7.0.1
  */

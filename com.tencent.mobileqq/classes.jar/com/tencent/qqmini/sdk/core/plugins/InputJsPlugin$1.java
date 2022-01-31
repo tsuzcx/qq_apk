@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
+import bgkd;
 import com.tencent.qqmini.sdk.core.widget.KeyboardLayout;
 
 class InputJsPlugin$1
   implements Runnable
 {
-  InputJsPlugin$1(InputJsPlugin paramInputJsPlugin, bekr parambekr) {}
+  InputJsPlugin$1(InputJsPlugin paramInputJsPlugin, bgkd parambgkd) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ class InputJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.InputJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

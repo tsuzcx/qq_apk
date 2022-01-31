@@ -1,74 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class amtk
-  extends ampa<amtj>
 {
-  public static amtj a()
+  public int a;
+  public long a;
+  public long[] a;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  public long f;
+  
+  public amtk(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, double paramDouble, long[] paramArrayOfLong, int paramInt)
   {
-    return (amtj)ampl.a().a(572);
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.d = paramLong4;
+    this.e = paramLong5;
+    this.f = ((0.9D + paramDouble));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
   }
   
-  public int a()
+  public String toString()
   {
-    return 572;
-  }
-  
-  @NonNull
-  public amtj a(int paramInt)
-  {
-    return new amtj();
-  }
-  
-  @Nullable
-  public amtj a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
-    {
-      new amtj();
-      return amtj.a(paramArrayOfamph);
-    }
-    return null;
-  }
-  
-  public Class<amtj> a()
-  {
-    return amtj.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amtj paramamtj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramamtj.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "70% :  " + this.c + " --------- 80% : " + this.b + " --------- 90% : " + this.jdField_a_of_type_Long + " --------- min : " + this.d + " --------- max : " + this.e + " --------- num : " + this.jdField_a_of_type_Int + "--------arr" + this.jdField_a_of_type_ArrayOfLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtk
  * JD-Core Version:    0.7.0.1
  */

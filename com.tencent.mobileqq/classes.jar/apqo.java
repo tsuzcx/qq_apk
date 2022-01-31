@@ -1,125 +1,83 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 
 public class apqo
-  extends apxh
 {
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new apqp(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
+  int jdField_a_of_type_Int = 0;
+  public appt a;
+  apqa jdField_a_of_type_Apqa;
+  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  EmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
+  public String a;
+  boolean jdField_a_of_type_Boolean = false;
+  int b;
+  public boolean b = false;
+  public int c;
+  boolean c = true;
+  public boolean d = false;
+  boolean e = false;
+  boolean f = false;
+  boolean g = false;
+  boolean h = false;
+  boolean i = false;
   
-  public apqo(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
-  {
-    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-    c();
-  }
+  public apqo() {}
   
-  private void c()
+  public apqo(EmoticonMainPanel paramEmoticonMainPanel)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131375832));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131370887));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-  }
-  
-  private void d()
-  {
-    if ((this.jdField_a_of_type_AndroidOsBundle == null) || (!this.jdField_a_of_type_AndroidOsBundle.containsKey("qfile_search_param_exparams_qlink_state")))
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = paramEmoticonMainPanel;
+    if (paramEmoticonMainPanel != null)
     {
-      a(null);
-      return;
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
-    Object localObject2 = apel.a();
-    ArrayList localArrayList = new ArrayList();
-    localObject2 = ((Set)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      localArrayList.add(((FileInfo)((Iterator)localObject2).next()).c());
-    }
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
-    localObject2 = new Intent();
-    if (222 == i)
-    {
-      ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
-      i = -1;
-    }
-    for (;;)
-    {
-      a(i, (Intent)localObject2);
-      return;
-      if ((333 == i) || (666 == i) || (3333 == i) || (6666 == i))
+      paramEmoticonMainPanel = paramEmoticonMainPanel.a();
+      if (paramEmoticonMainPanel != null)
       {
-        ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
-      }
-      else
-      {
-        if ((444 == i) || (555 == i))
-        {
-          if (444 == i) {}
-          for (boolean bool = true;; bool = false)
-          {
-            ((Intent)localObject2).putExtra("_INIT_SEND_IOS_", bool);
-            ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
-            break;
-          }
-        }
-        if ((777 == i) || (888 == i))
-        {
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putStringArrayList("string_filepaths", localArrayList);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-          bgnk.a(this.jdField_a_of_type_AndroidContentContext, 16, (Bundle)localObject1);
-          i = -1;
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject1, localArrayList);
-          ((Intent)localObject2).putExtra("_UIN_", (String)localObject1);
-          ((Intent)localObject2).putExtra("_SEND_QLINK_FILE_", true);
-          i = -1;
-        }
+        this.jdField_a_of_type_Appt = paramEmoticonMainPanel.jdField_a_of_type_Appt;
+        this.jdField_a_of_type_Boolean = paramEmoticonMainPanel.h;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        this.c = paramEmoticonMainPanel.k;
+        this.jdField_a_of_type_Apqa = EmoticonPanelController.a(paramEmoticonMainPanel);
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+        this.i = EmoticonPanelController.a(paramEmoticonMainPanel);
       }
     }
   }
   
   public void a()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698392);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131713798));
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (apel.b() > 0L) {}
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null) {}
+    EmoticonPanelController localEmoticonPanelController;
+    do
     {
-      localTextView.setEnabled(bool);
       return;
-    }
+      localEmoticonPanelController = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a();
+    } while (localEmoticonPanelController == null);
+    this.h = false;
+    localEmoticonPanelController.jdField_a_of_type_Apqo = this;
+    localEmoticonPanelController.jdField_a_of_type_Appt = this.jdField_a_of_type_Appt;
+    localEmoticonPanelController.h = this.jdField_a_of_type_Boolean;
+    localEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localEmoticonPanelController.k = this.c;
+    EmoticonPanelController.a(localEmoticonPanelController, this.jdField_a_of_type_Apqa);
+    localEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+    EmoticonPanelController.a(localEmoticonPanelController, this.i);
+    localEmoticonPanelController.a(this.jdField_a_of_type_Int);
   }
   
-  public void a(Bundle paramBundle)
+  public void b()
   {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_ex_params_target_uin");
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("qfile_search_param_exparams_qlink_ap_created");
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null) || (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a() == null)) {
+      return;
     }
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apqo
  * JD-Core Version:    0.7.0.1
  */

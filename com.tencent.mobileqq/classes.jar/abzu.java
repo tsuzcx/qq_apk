@@ -1,113 +1,58 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
-import com.tencent.ims.QQProtectRisks.RiskInfo;
-import com.tencent.mobileqq.activity.RiskInfoActivity;
-import com.tencent.mobileqq.activity.RiskInfoItem;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class abzu
-  extends mxj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abzu(RiskInfoActivity paramRiskInfoActivity) {}
+  public abzu(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool1;
-    boolean bool2;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    int i;
+    label43:
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("RiskInfoDetails", 2, "request risks info,onResult error=" + paramInt + " data=" + paramArrayOfByte);
+      i = 1;
+      bjxj.e(i);
+      bjxj.a(paramBoolean);
+      bjxj.a(true);
+      if (!paramBoolean) {
+        break label98;
       }
-      bool1 = false;
-      paramBundle = new HashMap();
-      bool2 = bool1;
-      if (!bool1) {}
+      QQToast.a(this.a.getBaseContext(), 2, 2131719039, 2000).a();
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label121;
+      }
+      paramCompoundButton = "0X8008236";
+      label59:
+      if (!paramBoolean) {
+        break label127;
+      }
     }
-    for (;;)
+    label98:
+    label121:
+    label127:
+    for (String str = "0X8008236";; str = "0X8008235")
     {
-      try
-      {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
-        paramInt = 0;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
-        bool2 = bool1;
-        if (paramInt == 1)
-        {
-          bool2 = bool1;
-          if (localQQProtectRisksResponse.risk_info_list.has())
-          {
-            bool2 = bool1;
-            if (!localQQProtectRisksResponse.risk_info_list.isEmpty())
-            {
-              paramInt = 0;
-              bool2 = bool1;
-              if (paramInt < localQQProtectRisksResponse.risk_info_list.size())
-              {
-                new QQProtectRisks.RiskInfo();
-                paramArrayOfByte = (QQProtectRisks.RiskInfo)localQQProtectRisksResponse.risk_info_list.get(paramInt);
-                if ((paramArrayOfByte.uint32_item_type.has()) && (paramArrayOfByte.uint32_item_type.get() == 1)) {
-                  break label511;
-                }
-                RiskInfoItem localRiskInfoItem = new RiskInfoItem();
-                localRiskInfoItem.jdField_a_of_type_JavaLangString = paramArrayOfByte.str_left_text.get();
-                localRiskInfoItem.d = paramArrayOfByte.str_jump_target.get();
-                if ((TextUtils.isEmpty(localRiskInfoItem.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localRiskInfoItem.d))) {
-                  break label511;
-                }
-                localRiskInfoItem.jdField_b_of_type_JavaLangString = paramArrayOfByte.str_right_text.get();
-                localRiskInfoItem.c = paramArrayOfByte.str_desc_text.get();
-                localRiskInfoItem.jdField_a_of_type_Int = paramArrayOfByte.uint32_click_report_id.get();
-                if (paramArrayOfByte.uint32_item_id.has()) {
-                  localRiskInfoItem.jdField_b_of_type_Int = paramArrayOfByte.uint32_item_id.get();
-                }
-                if (paramArrayOfByte.str_right_text_open.has()) {
-                  localRiskInfoItem.e = paramArrayOfByte.str_right_text_open.get();
-                }
-                paramArrayOfByte = String.format("%d", new Object[] { Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int) });
-                if (localRiskInfoItem.jdField_b_of_type_Int == 0) {
-                  paramArrayOfByte = localRiskInfoItem.d;
-                }
-                paramBundle.put(paramArrayOfByte, localRiskInfoItem);
-                QLog.d("RiskInfoDetails", 1, String.format("%s, %s, %s, %s, %d, %d, %s", new Object[] { localRiskInfoItem.jdField_a_of_type_JavaLangString, localRiskInfoItem.jdField_b_of_type_JavaLangString, localRiskInfoItem.c, localRiskInfoItem.d, Integer.valueOf(localRiskInfoItem.jdField_a_of_type_Int), Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int), localRiskInfoItem.e }));
-              }
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.d("RiskInfoDetails", 1, "error protobuf content");
-        bool2 = false;
-        RiskInfoActivity.a(this.a, paramBundle, bool2);
-        return;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        bool2 = bool1;
-        continue;
-      }
-      bool1 = true;
+      nrt.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
+      return;
+      i = 0;
       break;
-      label511:
-      paramInt += 1;
+      QQToast.a(this.a.getBaseContext(), 2, 2131719037, 2000).a();
+      break label43;
+      paramCompoundButton = "0X8008235";
+      break label59;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzu
  * JD-Core Version:    0.7.0.1
  */

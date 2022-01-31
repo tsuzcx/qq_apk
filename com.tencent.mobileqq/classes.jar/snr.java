@@ -1,57 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
+import com.tencent.viola.adapter.HttpResponse;
+import com.tencent.viola.adapter.IHttpAdapter.OnHttpListener;
+import com.tencent.viola.ui.component.VLottie.IVLottieLoadListener;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONObject;
 
-class snr
-  implements BusinessObserver
+public class snr
+  implements IHttpAdapter.OnHttpListener
 {
-  snr(snn paramsnn) {}
+  public snr(KdLottieView paramKdLottieView, VLottie.IVLottieLoadListener paramIVLottieLoadListener) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
+  
+  public void onHttpFinish(HttpResponse paramHttpResponse)
   {
-    if (paramBoolean) {}
+    int i = Integer.parseInt(paramHttpResponse.statusCode);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i == 200) {
+      bool1 = bool2;
+    }
     try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      if (paramHttpResponse.originalData != null)
       {
-        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-        localFollowResponse.mergeFrom(paramBundle);
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
-          }
-          this.a.a = true;
-          snn.a(this.a);
-          return;
-        }
-        if (paramInt == 58)
-        {
-          snn.a(this.a, 2131695566);
-          return;
-        }
-        if (paramInt == 65)
-        {
-          snn.a(this.a, 2131695539);
-          return;
-        }
-        snn.a(this.a, 2131695569);
-        return;
-        snn.a(this.a, 2131695569);
+        paramHttpResponse = new JSONObject(new String(paramHttpResponse.originalData, "utf-8"));
+        bool1 = true;
+        LottieComposition.Factory.fromJson(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaLottieKdLottieView.getContext().getResources(), paramHttpResponse, new sns(this));
       }
+      this.jdField_a_of_type_ComTencentViolaUiComponentVLottie$IVLottieLoadListener.onResult(bool1);
       return;
     }
-    catch (Exception paramBundle) {}
+    catch (Exception paramHttpResponse) {}
   }
+  
+  public void onHttpStart() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snr
  * JD-Core Version:    0.7.0.1
  */

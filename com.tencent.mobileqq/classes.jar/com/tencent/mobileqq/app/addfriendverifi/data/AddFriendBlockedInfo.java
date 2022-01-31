@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.addfriendverifi.data;
 
-import akke;
+import ambu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class AddFriendBlockedInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<AddFriendBlockedInfo> CREATOR = new akke();
+  public static final Parcelable.Creator<AddFriendBlockedInfo> CREATOR = new ambu();
   public int a;
   public long a;
   public String a;

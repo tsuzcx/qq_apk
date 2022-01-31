@@ -1,77 +1,29 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.open.agent.BindGroupFragment;
 
 public class bezb
+  implements DialogInterface.OnClickListener
 {
-  private static final HashMap<String, bezc> a = new HashMap();
+  public bezb(BindGroupFragment paramBindGroupFragment, String paramString) {}
   
-  private static void a(bezc parambezc)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (parambezc != null) {
-      try
-      {
-        String str = parambezc.a();
-        betc.a("MiniProgramLpReportDC05", "doReport " + str);
-        betc.a("MiniProgramLpReportDC05", "doReport " + parambezc.toString());
-        Bundle localBundle = new Bundle();
-        localBundle.putStringArray("data", new String[] { str });
-        if (bfhk.a()) {}
-        for (str = "dc05115";; str = "dc05387")
-        {
-          localBundle.putString("log_key", str);
-          bepk.a().a("cmd_dc_report_log_key_data", localBundle, null);
-          parambezc.a();
-          return;
-        }
-        return;
-      }
-      catch (Exception parambezc)
-      {
-        betc.d("MiniProgramLpReportDC05", "doReport ", parambezc);
-      }
-    }
-  }
-  
-  public static void a(MiniAppInfo paramMiniAppInfo, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
-  {
-    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    if (paramInt == 1)
     {
-      paramMiniAppInfo = (bezc)a.get(paramMiniAppInfo.appId);
-      if (paramMiniAppInfo != null)
-      {
-        bezc.a(paramMiniAppInfo, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5);
-        a(paramMiniAppInfo);
-      }
+      BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment, alpo.a(2131701487));
+      ((alzf)BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Integer.valueOf(BindGroupFragment.b(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), BindGroupFragment.c(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment));
     }
-  }
-  
-  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, long paramLong1, long paramLong2)
-  {
-    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
-    {
-      paramMiniAppInfo = (bezc)a.get(paramMiniAppInfo.appId);
-      if (paramMiniAppInfo != null) {
-        paramMiniAppInfo.a(paramLong2, paramLong1, paramInt);
-      }
+    while (paramInt != 0) {
+      return;
     }
-  }
-  
-  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, long paramLong, boolean paramBoolean)
-  {
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
-    {
-      paramMiniAppInfo = (bezc)a.get(paramMiniAppInfo.appId);
-      if (paramMiniAppInfo != null) {
-        paramMiniAppInfo.a(paramLong, paramInt, paramBoolean);
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezb
  * JD-Core Version:    0.7.0.1
  */

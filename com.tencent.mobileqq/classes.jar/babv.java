@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.ReSendCmd;
 
-public class babv
-  implements bcnl
+public final class babv
+  implements Parcelable.Creator<ReSendCmd>
 {
-  public babv(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView) {}
-  
-  public void a(String paramString)
+  public ReSendCmd a(Parcel paramParcel)
   {
-    this.a.a.setVisibility(8);
+    return new ReSendCmd(paramParcel);
+  }
+  
+  public ReSendCmd[] a(int paramInt)
+  {
+    return new ReSendCmd[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     babv
  * JD-Core Version:    0.7.0.1
  */

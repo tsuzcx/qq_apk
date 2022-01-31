@@ -1,73 +1,67 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adjt
-  implements adif
+  extends allb
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public adjt(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public adjt(BaseChatPie paramBaseChatPie)
+  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
+    {
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
+    }
   }
   
-  private void a()
+  protected void onImpeach(boolean paramBoolean, String paramString)
   {
-    aser localaser;
-    if (this.jdField_a_of_type_Int > 0)
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString)) {
+      return;
+    }
+    this.a.f();
+    if (paramBoolean)
     {
-      localaser = (aser)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(308);
-      if (localaser == null) {
-        break label93;
+      this.a.a(2131690676, 2);
+      return;
+    }
+    this.a.a(2131690674, 1);
+  }
+  
+  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
+    {
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  {
+    if (((paramBoolean) && (paramInt == 0)) || ((!paramBoolean) && (paramInt == 34))) {}
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
+        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
       }
-      switch (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
-      {
+      if (paramCard != null) {
+        this.a.jdField_a_of_type_AndroidOsBundle.putShort("key_personality_label_switch", paramCard.switch_disable_personality_label);
       }
+      return;
+      this.a.a(2131695605, 1);
     }
-    label93:
-    while (!QLog.isColorLevel())
-    {
-      return;
-      localaser.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, aser.b);
-      return;
-      localaser.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, aser.c);
-      return;
-    }
-    QLog.d("UnreadCountHelper", 2, "PushNotificationManager is null");
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 5 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjt
  * JD-Core Version:    0.7.0.1
  */

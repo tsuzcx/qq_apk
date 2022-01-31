@@ -1,37 +1,33 @@
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class afhc
-  implements afqs
+class afhc
+  extends ClickableSpan
 {
-  public afhc(TroopView paramTroopView) {}
+  afhc(afgz paramafgz) {}
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
-    }
-    paramObject = TroopView.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (!bdee.d(this.a.a))
     {
-      paramObject = paramObject.obtainMessage(14, paramInt, i);
-      TroopView.a(this.a).sendMessage(paramObject);
+      QQToast.a(this.a.a, alpo.a(2131703608), 2000).a();
       return;
     }
-  }
-  
-  public void am_()
-  {
-    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
-      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
-    }
+    paramView = new Intent();
+    paramView.setFlags(268435456);
+    paramView.setAction("android.intent.action.VIEW");
+    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
+    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
+    this.a.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afhc
  * JD-Core Version:    0.7.0.1
  */

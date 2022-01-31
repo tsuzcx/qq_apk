@@ -13,6 +13,7 @@ import NS_MINI_INTERFACE.INTERFACE.StDeveloperInfo;
 import NS_MINI_INTERFACE.INTERFACE.StDomainConfig;
 import NS_MINI_INTERFACE.INTERFACE.StExtConfigInfo;
 import NS_MINI_INTERFACE.INTERFACE.StFirstPage;
+import NS_MINI_INTERFACE.INTERFACE.StIdeConfig;
 import NS_MINI_INTERFACE.INTERFACE.StMDebugInfo;
 import NS_MINI_INTERFACE.INTERFACE.StMainPageExtInfo;
 import NS_MINI_INTERFACE.INTERFACE.StOperationInfo;
@@ -22,8 +23,6 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import berw;
-import betc;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -31,6 +30,7 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public class MiniAppInfo
   implements Parcelable
 {
   public static final String APP_STORE_MINI_APP_ID = "1108291530";
-  public static final Parcelable.Creator<MiniAppInfo> CREATOR = new berw();
+  public static final Parcelable.Creator<MiniAppInfo> CREATOR = new MiniAppInfo.1();
   public static final String ENV_VERSION_DEVELOP = "develop";
   public static final String ENV_VERSION_RELEASE = "release";
   public static final String ENV_VERSION_TRIAL = "trial";
@@ -68,6 +68,7 @@ public class MiniAppInfo
   public String extraData;
   public int forceReroad;
   public String friendMessageQuery = "";
+  public int gameAdsTotalTime;
   public boolean isSupportBlueBar;
   public boolean isSupportOffline;
   @NonNull
@@ -85,7 +86,7 @@ public class MiniAppInfo
   
   public MiniAppInfo() {}
   
-  public MiniAppInfo(Parcel paramParcel)
+  protected MiniAppInfo(Parcel paramParcel)
   {
     super(paramParcel);
     this.topType = paramParcel.readInt();
@@ -118,7 +119,7 @@ public class MiniAppInfo
       this.preCacheList = paramParcel.createTypedArrayList(PreCacheInfo.CREATOR);
       this.miniGamePluginInfo = ((MiniGamePluginInfo)paramParcel.readParcelable(MiniGamePluginInfo.class.getClassLoader()));
       LaunchParam localLaunchParam = (LaunchParam)paramParcel.readParcelable(LaunchParam.class.getClassLoader());
-      this.launchParam.a(localLaunchParam);
+      this.launchParam.clone(localLaunchParam);
       this.baseLibInfo = ((BaseLibInfo)paramParcel.readParcelable(BaseLibInfo.class.getClassLoader()));
       this.forceReroad = paramParcel.readInt();
       return;
@@ -127,7 +128,7 @@ public class MiniAppInfo
     }
   }
   
-  private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo, INTERFACE.StDomainConfig paramStDomainConfig, INTERFACE.StMainPageExtInfo paramStMainPageExtInfo, INTERFACE.StDeveloperInfo paramStDeveloperInfo, String paramString9, int paramInt4, Map<String, String> paramMap, INTERFACE.StAppMode paramStAppMode, int paramInt5, boolean paramBoolean1, boolean paramBoolean2, String paramString10, String paramString11, int paramInt6, COMM.StCommonExt paramStCommonExt, List<INTERFACE.StExtConfigInfo> paramList1, INTERFACE.StAppBasicInfo paramStAppBasicInfo)
+  private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo, INTERFACE.StDomainConfig paramStDomainConfig, INTERFACE.StMainPageExtInfo paramStMainPageExtInfo, INTERFACE.StDeveloperInfo paramStDeveloperInfo, String paramString9, int paramInt4, INTERFACE.StAppMode paramStAppMode, int paramInt5, boolean paramBoolean1, boolean paramBoolean2, String paramString10, String paramString11, int paramInt6, COMM.StCommonExt paramStCommonExt, List<INTERFACE.StExtConfigInfo> paramList1, INTERFACE.StAppBasicInfo paramStAppBasicInfo, INTERFACE.StOperationInfo paramStOperationInfo, INTERFACE.StIdeConfig paramStIdeConfig)
   {
     this.appId = paramString1;
     this.name = paramString2;
@@ -162,8 +163,8 @@ public class MiniAppInfo
     if (paramStFirstPage != null)
     {
       this.firstPage = new FirstPageInfo();
-      this.firstPage.jdField_a_of_type_JavaLangString = paramStFirstPage.pagePath.get();
-      this.firstPage.b = paramStFirstPage.subPkgName.get();
+      this.firstPage.pagePath = paramStFirstPage.pagePath.get();
+      this.firstPage.subPkgName = paramStFirstPage.subPkgName.get();
     }
     if (paramStApiRightController != null)
     {
@@ -198,8 +199,8 @@ public class MiniAppInfo
     if ((paramStMDebugInfo != null) && (!TextUtils.isEmpty(paramStMDebugInfo.roomId.get())) && (!TextUtils.isEmpty(paramStMDebugInfo.wsUrl.get())))
     {
       this.debugInfo = new DebugInfo();
-      this.debugInfo.jdField_a_of_type_JavaLangString = paramStMDebugInfo.roomId.get();
-      this.debugInfo.b = paramStMDebugInfo.wsUrl.get();
+      this.debugInfo.roomId = paramStMDebugInfo.roomId.get();
+      this.debugInfo.wsUrl = paramStMDebugInfo.wsUrl.get();
     }
     if (paramStDomainConfig != null)
     {
@@ -240,12 +241,8 @@ public class MiniAppInfo
     }
     this.extraData = paramString9;
     this.recommend = paramInt4;
-    if (paramMap != null)
-    {
-      this.reportData = new HashMap();
-      this.reportData.putAll(paramMap);
-    }
-    this.appMode = AppMode.a(paramStAppMode);
+    this.reportData = this.reportData;
+    this.appMode = AppMode.from(paramStAppMode);
     this.skipDomainCheck = paramInt5;
     this.isSupportBlueBar = paramBoolean1;
     this.isSupportOffline = paramBoolean2;
@@ -265,7 +262,7 @@ public class MiniAppInfo
     }
     if (paramStAppBasicInfo != null)
     {
-      betc.b("MiniAppInfo", "appid:" + paramString1 + ", usrFileSizeLimit:" + paramStAppBasicInfo.usrFileSizeLimit.get());
+      QMLog.i("MiniAppInfo", "appid:" + paramString1 + ", usrFileSizeLimit:" + paramStAppBasicInfo.usrFileSizeLimit.get());
       this.usrFileSizeLimit = paramStAppBasicInfo.usrFileSizeLimit.get();
       if (paramStAppBasicInfo.preCacheList != null)
       {
@@ -283,129 +280,32 @@ public class MiniAppInfo
       }
       this.versionUpdateTime = paramStAppBasicInfo.versionUpdateTime.get();
       if (!paramStAppBasicInfo.pkgType.has()) {
-        break label1249;
+        break label1247;
       }
       if (paramStAppBasicInfo.pkgType.get() != 1) {
-        break label1241;
+        break label1239;
       }
       this.engineType = 1;
     }
     for (;;)
     {
       this.noNeedRealRecommend = paramStAppBasicInfo.noNeedRealRecommend.get();
-      this.miniGamePluginInfo = MiniGamePluginInfo.a(paramStAppBasicInfo.pluginInfo);
-      this.renderInfo = RenderInfo.a(paramStAppBasicInfo.renderInfo);
+      this.miniGamePluginInfo = MiniGamePluginInfo.fromProtocol(paramStAppBasicInfo.pluginInfo);
+      this.renderInfo = RenderInfo.from(paramStAppBasicInfo.renderInfo);
       if (paramStAppBasicInfo.qualificationInfo != null) {
         this.qualifications = new ArrayList(paramStAppBasicInfo.qualificationInfo.get());
       }
       this.shareId = paramStAppBasicInfo.shareId.get();
       this.via = paramStAppBasicInfo.via.get();
+      if (paramStOperationInfo != null) {
+        this.reportData = paramStOperationInfo.reportData.get();
+      }
       return;
-      label1241:
+      label1239:
       this.engineType = 0;
       continue;
-      label1249:
+      label1247:
       this.engineType = this.reportType;
-    }
-  }
-  
-  private static String a(INTERFACE.StApiAppInfo paramStApiAppInfo)
-  {
-    if ((paramStApiAppInfo.extInfo == null) || (paramStApiAppInfo.extInfo.mapInfo == null)) {
-      return "";
-    }
-    int i = 0;
-    while (i < paramStApiAppInfo.extInfo.mapInfo.size())
-    {
-      COMM.Entry localEntry = (COMM.Entry)paramStApiAppInfo.extInfo.mapInfo.get(i);
-      if ("recommIcon".equals(localEntry.key.get())) {
-        return localEntry.value.get();
-      }
-      i += 1;
-    }
-    return "";
-  }
-  
-  private static Map<String, String> a(INTERFACE.StApiAppInfo paramStApiAppInfo)
-  {
-    int i = 0;
-    String str1 = null;
-    String[] arrayOfString = null;
-    Object localObject2 = null;
-    localObject1 = arrayOfString;
-    if (paramStApiAppInfo.operInfo != null)
-    {
-      localObject1 = arrayOfString;
-      if (paramStApiAppInfo.operInfo.reportData != null)
-      {
-        paramStApiAppInfo = paramStApiAppInfo.operInfo.reportData.get();
-        localObject1 = arrayOfString;
-        if (!TextUtils.isEmpty(paramStApiAppInfo))
-        {
-          localObject1 = str1;
-          try
-          {
-            arrayOfString = paramStApiAppInfo.split("&");
-            localObject1 = str1;
-            int j = arrayOfString.length;
-            for (paramStApiAppInfo = (INTERFACE.StApiAppInfo)localObject2;; paramStApiAppInfo = (INTERFACE.StApiAppInfo)localObject2)
-            {
-              localObject1 = paramStApiAppInfo;
-              if (i >= j) {
-                break;
-              }
-              String str2 = arrayOfString[i];
-              localObject1 = paramStApiAppInfo;
-              int k = str2.indexOf("=");
-              localObject2 = paramStApiAppInfo;
-              if (k > 0)
-              {
-                localObject2 = paramStApiAppInfo;
-                localObject1 = paramStApiAppInfo;
-                if (k < str2.length() - 1)
-                {
-                  localObject1 = paramStApiAppInfo;
-                  str1 = URLDecoder.decode(str2.substring(0, k), "UTF-8");
-                  localObject1 = paramStApiAppInfo;
-                  str2 = URLDecoder.decode(str2.substring(k + 1), "UTF-8");
-                  localObject2 = paramStApiAppInfo;
-                  if (paramStApiAppInfo == null)
-                  {
-                    localObject1 = paramStApiAppInfo;
-                    localObject2 = new HashMap();
-                  }
-                  localObject1 = localObject2;
-                  ((Map)localObject2).put(str1, str2);
-                }
-              }
-              i += 1;
-            }
-            return localObject1;
-          }
-          catch (Exception paramStApiAppInfo)
-          {
-            betc.d("MiniAppInfo", " parse reportData error.", paramStApiAppInfo);
-          }
-        }
-      }
-    }
-  }
-  
-  private static boolean a(INTERFACE.StApiAppInfo paramStApiAppInfo)
-  {
-    if ((paramStApiAppInfo.extInfo == null) || (paramStApiAppInfo.extInfo.mapInfo == null)) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < paramStApiAppInfo.extInfo.mapInfo.size())
-      {
-        COMM.Entry localEntry = (COMM.Entry)paramStApiAppInfo.extInfo.mapInfo.get(i);
-        if ("support_blue_bar".equals(localEntry.key.get())) {
-          return "1".equals(localEntry.value.get());
-        }
-        i += 1;
-      }
     }
   }
   
@@ -425,8 +325,8 @@ public class MiniAppInfo
     localMiniAppInfo.baselibMiniVersion = paramMiniAppInfo.baselibMiniVersion;
     localMiniAppInfo.subpkgs = paramMiniAppInfo.subpkgs;
     Object localObject = new FirstPageInfo();
-    ((FirstPageInfo)localObject).a("");
-    ((FirstPageInfo)localObject).b("");
+    ((FirstPageInfo)localObject).setPagePath("");
+    ((FirstPageInfo)localObject).setSubPkgName("");
     localMiniAppInfo.firstPage = ((FirstPageInfo)localObject);
     localMiniAppInfo.reportType = paramMiniAppInfo.reportType;
     localMiniAppInfo.engineType = paramMiniAppInfo.engineType;
@@ -465,7 +365,7 @@ public class MiniAppInfo
       while (((Iterator)localObject).hasNext())
       {
         PreCacheInfo localPreCacheInfo = (PreCacheInfo)((Iterator)localObject).next();
-        localMiniAppInfo.preCacheList.add(new PreCacheInfo(localPreCacheInfo.jdField_a_of_type_JavaLangString, localPreCacheInfo.b, localPreCacheInfo.jdField_a_of_type_Long));
+        localMiniAppInfo.preCacheList.add(new PreCacheInfo(localPreCacheInfo.getDataUrl, localPreCacheInfo.preCacheKey, localPreCacheInfo.expireTime));
       }
     }
     localMiniAppInfo.versionUpdateTime = paramMiniAppInfo.versionUpdateTime;
@@ -523,8 +423,8 @@ public class MiniAppInfo
         localObject1 = paramJSONObject.optJSONObject("first");
         if (localObject1 != null)
         {
-          localMiniAppInfo.firstPage.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("pagePath");
-          localMiniAppInfo.firstPage.b = ((JSONObject)localObject1).optString("subPkgName");
+          localMiniAppInfo.firstPage.pagePath = ((JSONObject)localObject1).optString("pagePath");
+          localMiniAppInfo.firstPage.subPkgName = ((JSONObject)localObject1).optString("subPkgName");
         }
         if (paramJSONObject.optJSONObject("domain") != null)
         {
@@ -606,8 +506,8 @@ public class MiniAppInfo
         localObject1 = paramJSONObject.optJSONObject("mDebug");
         if (localObject1 != null)
         {
-          localMiniAppInfo.debugInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("roomId");
-          localMiniAppInfo.debugInfo.b = ((JSONObject)localObject1).optString("wsUrl");
+          localMiniAppInfo.debugInfo.roomId = ((JSONObject)localObject1).optString("roomId");
+          localMiniAppInfo.debugInfo.wsUrl = ((JSONObject)localObject1).optString("wsUrl");
         }
         localMiniAppInfo.versionId = paramJSONObject.optString("versionId");
         localObject1 = paramJSONObject.optJSONObject("apiRight");
@@ -683,15 +583,15 @@ public class MiniAppInfo
           }
           localMiniAppInfo.appMode = new AppMode();
           paramJSONObject = paramJSONObject.optJSONObject("appMode");
-          localMiniAppInfo.appMode.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("interMode");
-          localMiniAppInfo.appMode.b = paramJSONObject.optBoolean("authoritySilent");
-          localMiniAppInfo.appMode.c = paramJSONObject.optBoolean("keepOffPullList");
-          localMiniAppInfo.appMode.d = paramJSONObject.optBoolean("closeTopRightCapsule");
-          localMiniAppInfo.appMode.e = paramJSONObject.optBoolean("openNativeApi");
-          localMiniAppInfo.appMode.f = paramJSONObject.optBoolean("hideAppSearch");
-          localMiniAppInfo.appMode.g = paramJSONObject.optBoolean("isAppStore");
-          localMiniAppInfo.appMode.h = paramJSONObject.optBoolean("isWangKa");
-          localMiniAppInfo.appMode.i = paramJSONObject.optBoolean("interLoading");
+          localMiniAppInfo.appMode.interMode = paramJSONObject.optBoolean("interMode");
+          localMiniAppInfo.appMode.authoritySilent = paramJSONObject.optBoolean("authoritySilent");
+          localMiniAppInfo.appMode.keepOffPullList = paramJSONObject.optBoolean("keepOffPullList");
+          localMiniAppInfo.appMode.closeTopRightCapsule = paramJSONObject.optBoolean("closeTopRightCapsule");
+          localMiniAppInfo.appMode.openNativeApi = paramJSONObject.optBoolean("openNativeApi");
+          localMiniAppInfo.appMode.hideAppSearch = paramJSONObject.optBoolean("hideAppSearch");
+          localMiniAppInfo.appMode.isAppStore = paramJSONObject.optBoolean("isAppStore");
+          localMiniAppInfo.appMode.isWangKa = paramJSONObject.optBoolean("isWangKa");
+          localMiniAppInfo.appMode.interLoading = paramJSONObject.optBoolean("interLoading");
           break;
         }
         localMiniAppInfo.engineType = 0;
@@ -700,7 +600,7 @@ public class MiniAppInfo
       }
       catch (Throwable paramJSONObject)
       {
-        betc.d("MiniAppInfo", "", paramJSONObject);
+        QMLog.e("MiniAppInfo", "", paramJSONObject);
         return null;
       }
     }
@@ -738,13 +638,94 @@ public class MiniAppInfo
     INTERFACE.StMainPageExtInfo localStMainPageExtInfo = paramStApiAppInfo.mainExt;
     INTERFACE.StDeveloperInfo localStDeveloperInfo = paramStApiAppInfo.devInfo;
     int k = paramStApiAppInfo.isRecommend.get();
-    Map localMap = a(paramStApiAppInfo);
     INTERFACE.StAppMode localStAppMode = (INTERFACE.StAppMode)paramStApiAppInfo.appMode.get();
     int m = paramStApiAppInfo.skipDomainCheck.get();
-    boolean bool2 = a(paramStApiAppInfo);
+    boolean bool2 = getSupportBlueBar(paramStApiAppInfo);
     if (paramStApiAppInfo.supportOffline.get() == 1) {}
     for (boolean bool1 = true;; bool1 = false) {
-      return new MiniAppInfo(str1, str2, str3, str4, i, 0, j, str5, str6, str7, 0L, localList, str8, localStFirstPage, localStApiRightController, localStMDebugInfo, localStDomainConfig, localStMainPageExtInfo, localStDeveloperInfo, null, k, localMap, localStAppMode, m, bool2, bool1, a(paramStApiAppInfo), paramStApiAppInfo.extendData.get(), paramStApiAppInfo.appNoCacheExt.clearAuths.get(), paramStApiAppInfo.extInfo, paramStApiAppInfo.extConfig.get(), (INTERFACE.StAppBasicInfo)paramStApiAppInfo.basicInfo.get());
+      return new MiniAppInfo(str1, str2, str3, str4, i, 0, j, str5, str6, str7, 0L, localList, str8, localStFirstPage, localStApiRightController, localStMDebugInfo, localStDomainConfig, localStMainPageExtInfo, localStDeveloperInfo, null, k, localStAppMode, m, bool2, bool1, getRecommendIconUrl(paramStApiAppInfo), paramStApiAppInfo.extendData.get(), paramStApiAppInfo.appNoCacheExt.clearAuths.get(), paramStApiAppInfo.extInfo, paramStApiAppInfo.extConfig.get(), (INTERFACE.StAppBasicInfo)paramStApiAppInfo.basicInfo.get(), (INTERFACE.StOperationInfo)paramStApiAppInfo.operInfo.get(), (INTERFACE.StIdeConfig)paramStApiAppInfo.basicInfo.ideConfig.get());
+    }
+  }
+  
+  private static String getRecommendIconUrl(INTERFACE.StApiAppInfo paramStApiAppInfo)
+  {
+    if ((paramStApiAppInfo.extInfo == null) || (paramStApiAppInfo.extInfo.mapInfo == null)) {
+      return "";
+    }
+    int i = 0;
+    while (i < paramStApiAppInfo.extInfo.mapInfo.size())
+    {
+      COMM.Entry localEntry = (COMM.Entry)paramStApiAppInfo.extInfo.mapInfo.get(i);
+      if ("recommIcon".equals(localEntry.key.get())) {
+        return localEntry.value.get();
+      }
+      i += 1;
+    }
+    return "";
+  }
+  
+  private static Map<String, String> getReportDataFromAppInfo(INTERFACE.StApiAppInfo paramStApiAppInfo)
+  {
+    int i = 0;
+    String str1 = null;
+    String[] arrayOfString = null;
+    Object localObject2 = null;
+    localObject1 = arrayOfString;
+    if (paramStApiAppInfo.operInfo != null)
+    {
+      localObject1 = arrayOfString;
+      if (paramStApiAppInfo.operInfo.reportData != null)
+      {
+        paramStApiAppInfo = paramStApiAppInfo.operInfo.reportData.get();
+        localObject1 = arrayOfString;
+        if (!TextUtils.isEmpty(paramStApiAppInfo))
+        {
+          localObject1 = str1;
+          try
+          {
+            arrayOfString = paramStApiAppInfo.split("&");
+            localObject1 = str1;
+            int j = arrayOfString.length;
+            for (paramStApiAppInfo = (INTERFACE.StApiAppInfo)localObject2;; paramStApiAppInfo = (INTERFACE.StApiAppInfo)localObject2)
+            {
+              localObject1 = paramStApiAppInfo;
+              if (i >= j) {
+                break;
+              }
+              String str2 = arrayOfString[i];
+              localObject1 = paramStApiAppInfo;
+              int k = str2.indexOf("=");
+              localObject2 = paramStApiAppInfo;
+              if (k > 0)
+              {
+                localObject2 = paramStApiAppInfo;
+                localObject1 = paramStApiAppInfo;
+                if (k < str2.length() - 1)
+                {
+                  localObject1 = paramStApiAppInfo;
+                  str1 = URLDecoder.decode(str2.substring(0, k), "UTF-8");
+                  localObject1 = paramStApiAppInfo;
+                  str2 = URLDecoder.decode(str2.substring(k + 1), "UTF-8");
+                  localObject2 = paramStApiAppInfo;
+                  if (paramStApiAppInfo == null)
+                  {
+                    localObject1 = paramStApiAppInfo;
+                    localObject2 = new HashMap();
+                  }
+                  localObject1 = localObject2;
+                  ((Map)localObject2).put(str1, str2);
+                }
+              }
+              i += 1;
+            }
+            return localObject1;
+          }
+          catch (Exception paramStApiAppInfo)
+          {
+            QMLog.e("MiniAppInfo", " parse reportData error.", paramStApiAppInfo);
+          }
+        }
+      }
     }
   }
   
@@ -793,8 +774,26 @@ public class MiniAppInfo
       }
       localException2 = localException2;
       paramMap = (Map<String, String>)localObject1;
-      betc.d("MiniAppInfo", " getReportDataString error.", localException2);
+      QMLog.e("MiniAppInfo", " getReportDataString error.", localException2);
       return paramMap;
+    }
+  }
+  
+  private static boolean getSupportBlueBar(INTERFACE.StApiAppInfo paramStApiAppInfo)
+  {
+    if ((paramStApiAppInfo.extInfo == null) || (paramStApiAppInfo.extInfo.mapInfo == null)) {}
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < paramStApiAppInfo.extInfo.mapInfo.size())
+      {
+        COMM.Entry localEntry = (COMM.Entry)paramStApiAppInfo.extInfo.mapInfo.get(i);
+        if ("support_blue_bar".equals(localEntry.key.get())) {
+          return "1".equals(localEntry.value.get());
+        }
+        i += 1;
+      }
     }
   }
   
@@ -822,6 +821,13 @@ public class MiniAppInfo
   public int describeContents()
   {
     return 0;
+  }
+  
+  public void dump()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniAppInfo {\n").append("\tappId=").append(this.appId).append("\n").append("\tname=").append(this.name).append("\n").append("\tversionId=").append(this.versionId).append("\n").append("\tverType=").append(this.verType).append("\n").append("\ticonUrl=").append(this.iconUrl).append("\n").append("\tdownloadUrl=").append(this.downloadUrl).append("\n").append("\twhiteList=").append(this.whiteList).append("\n").append("\tblackList=").append(this.blackList).append("\n").append("\tbaselibMiniVersion=").append(this.baselibMiniVersion).append("\n").append("\tfirstPage=").append(this.firstPage).append("\n").append("\tlaunchParam=").append(this.launchParam).append("\n").append("}");
+    QMLog.d("MiniAppInfo", localStringBuilder.toString());
   }
   
   public boolean equals(MiniAppInfo paramMiniAppInfo)
@@ -873,7 +879,7 @@ public class MiniAppInfo
     if (this.appMode == null) {
       return false;
     }
-    return this.appMode.g;
+    return this.appMode.isAppStore;
   }
   
   public boolean isEngineTypeMiniApp()
@@ -888,12 +894,12 @@ public class MiniAppInfo
   
   public boolean isFakeAppInfo()
   {
-    return this.launchParam.jdField_a_of_type_Boolean;
+    return this.launchParam.isFakeAppInfo;
   }
   
   public boolean isLimitedAccessApp()
   {
-    return (this.appMode != null) && (this.appMode.j);
+    return (this.appMode != null) && (this.appMode.isLimitedAccess);
   }
   
   public boolean isReportTypeMiniApp()
@@ -908,7 +914,7 @@ public class MiniAppInfo
   
   public boolean isShortcutFakeApp()
   {
-    return (this.launchParam != null) && (this.launchParam.jdField_a_of_type_Int == 1023) && (TextUtils.isEmpty(this.downloadUrl));
+    return (this.launchParam != null) && (this.launchParam.scene == 1023) && (TextUtils.isEmpty(this.downloadUrl));
   }
   
   public boolean isSpecialMiniApp()
@@ -933,7 +939,7 @@ public class MiniAppInfo
   
   public String toString()
   {
-    return "MiniAppInfo{appId='" + this.appId + '\'' + ", name='" + this.name + '\'';
+    return "MiniAppInfo{appId='" + this.appId + '\'' + ", name='" + this.name + '\'' + "}";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -979,7 +985,7 @@ public class MiniAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.MiniAppInfo
  * JD-Core Version:    0.7.0.1
  */

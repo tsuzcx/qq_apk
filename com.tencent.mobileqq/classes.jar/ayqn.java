@@ -1,24 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.net.URL;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
-class ayqn
-  implements aywy
+public class ayqn
+  extends ayox
 {
-  ayqn(ayql paramayql) {}
+  private Comparator<ayjh> a = new ayqo(this);
   
-  public Bitmap a(URL paramURL)
+  public ayqn(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    paramURL = this.a.a(paramURL);
-    if (paramURL == null) {
-      return null;
-    }
-    return ShortVideoUtils.a(null, paramURL.a);
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+  }
+  
+  public Comparator<ayjh> a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayqn
  * JD-Core Version:    0.7.0.1
  */

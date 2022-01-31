@@ -1,52 +1,93 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
-class scm
-  implements View.OnClickListener
+public class scm
 {
-  scm(scl paramscl, sck paramsck) {}
-  
-  public void onClick(View paramView)
+  public static float a()
   {
-    axqy.b(this.jdField_a_of_type_Scl.jdField_a_of_type_Sck.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005732", "0X8005732", 0, 0, "", "", "", "");
-    axqy.b(this.jdField_a_of_type_Scl.jdField_a_of_type_Sck.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642F", "0X800642F", 0, 0, String.valueOf(this.jdField_a_of_type_Scl.jdField_a_of_type_Scj.jdField_a_of_type_Long), "", "", "");
-    if (this.jdField_a_of_type_Scl.jdField_a_of_type_Scj != null)
-    {
-      paramView = String.valueOf(this.jdField_a_of_type_Scl.jdField_a_of_type_Scj.jdField_a_of_type_Long);
-      if (!TextUtils.isEmpty(paramView)) {}
+    float f = ((Float)bjxj.a("readinjoy_font_size_sp", Float.valueOf(-1.0F))).floatValue();
+    if (f == -1.0F) {
+      return 16.0F;
     }
-    else
+    return Utils.px2dp(f);
+  }
+  
+  private static void a(String paramString)
+  {
+    QLog.e("FastWebPTSUtils", 1, "errorUrl!! detail:" + paramString);
+    throw new IllegalArgumentException(paramString);
+  }
+  
+  public static void a(List<BaseData> paramList)
+  {
+    if (paramList == null) {}
+    Object localObject;
+    do
     {
-      return;
-    }
-    if (this.jdField_a_of_type_Scl.jdField_a_of_type_Scj.jdField_a_of_type_Int == 0)
-    {
-      if (!bbfj.d(this.jdField_a_of_type_Scl.jdField_a_of_type_Sck.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
+      do
       {
-        bcql.a(this.jdField_a_of_type_Scl.jdField_a_of_type_Sck.jdField_a_of_type_AndroidAppActivity, 2131694610, 0).b(((BaseActivity)this.jdField_a_of_type_Scl.jdField_a_of_type_Sck.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
         return;
-      }
-      this.jdField_a_of_type_Scl.a(2);
-      this.jdField_a_of_type_Scl.jdField_a_of_type_Scj.jdField_a_of_type_Int = 2;
-      MqqHandler localMqqHandler = this.jdField_a_of_type_Scl.jdField_a_of_type_Sck.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-      if ((localMqqHandler != null) && (this.jdField_a_of_type_Scl.jdField_a_of_type_Sck.jdField_a_of_type_AndroidAppActivity != null) && ((this.jdField_a_of_type_Scl.jdField_a_of_type_Sck.jdField_a_of_type_AndroidAppActivity instanceof SubscriptFeedsActivity))) {
-        localMqqHandler.sendEmptyMessage(1007);
-      }
-      sgg.a(this.jdField_a_of_type_Scl.jdField_a_of_type_Sck.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Scl.jdField_a_of_type_Sck.jdField_a_of_type_AndroidAppActivity, paramView, new scq(this.jdField_a_of_type_Scl.jdField_a_of_type_Sck, this.jdField_a_of_type_Scl));
+        while (!paramList.hasNext()) {
+          paramList = paramList.iterator();
+        }
+        localObject = (BaseData)paramList.next();
+      } while (!(localObject instanceof ProteusItemData));
+      localObject = (ProteusItemData)localObject;
+    } while ((((ProteusItemData)localObject).w != 1) || (((ProteusItemData)localObject).f));
+    if (((ProteusItemData)localObject).c != null) {}
+    for (paramList = ((ProteusItemData)localObject).c.toString();; paramList = "data error!!")
+    {
+      a(paramList);
       return;
     }
-    scl.a(this.jdField_a_of_type_Scl);
+  }
+  
+  public static void a(List<BaseData> paramList, float paramFloat)
+  {
+    if (paramList == null) {}
+    for (;;)
+    {
+      return;
+      paramFloat = Utils.px2dp(paramFloat);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (BaseData)paramList.next();
+        try
+        {
+          if ((localObject instanceof ProteusItemData))
+          {
+            localObject = (ProteusItemData)localObject;
+            if ((((ProteusItemData)localObject).w == 1) && (((ProteusItemData)localObject).v == 1)) {
+              ((ProteusItemData)localObject).c.put("attribute_text_size", String.valueOf(paramFloat));
+            }
+          }
+        }
+        catch (Exception localException) {}
+      }
+    }
+  }
+  
+  public static boolean a(BaseData paramBaseData)
+  {
+    if ((paramBaseData.s == 26) && ((paramBaseData instanceof ProteusItemData)) && (((ProteusItemData)paramBaseData).w == 1)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if ((paramBaseData.s == 18) || (paramBaseData.s == 22) || (paramBaseData.s == 0)) {
+        bool = true;
+      }
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scm
  * JD-Core Version:    0.7.0.1
  */

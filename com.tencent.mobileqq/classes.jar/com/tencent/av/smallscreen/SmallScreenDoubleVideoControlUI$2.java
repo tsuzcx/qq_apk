@@ -1,12 +1,12 @@
 package com.tencent.av.smallscreen;
 
 import com.tencent.qphone.base.util.QLog;
-import lyy;
+import mbn;
 
 public class SmallScreenDoubleVideoControlUI$2
   implements Runnable
 {
-  public SmallScreenDoubleVideoControlUI$2(lyy paramlyy) {}
+  public SmallScreenDoubleVideoControlUI$2(mbn parammbn) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class SmallScreenDoubleVideoControlUI$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI.2
  * JD-Core Version:    0.7.0.1
  */

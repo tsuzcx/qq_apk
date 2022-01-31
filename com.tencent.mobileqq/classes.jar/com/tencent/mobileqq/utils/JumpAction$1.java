@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
-import akfo;
-import auko;
-import aukp;
-import aukq;
-import bbeg;
+import alxe;
+import awbv;
+import awbw;
+import awbx;
+import bddb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PushBannerReportLog;
 import java.util.ArrayList;
@@ -17,14 +17,14 @@ import java.util.Set;
 public class JumpAction$1
   extends Thread
 {
-  public JumpAction$1(bbeg parambbeg) {}
+  public JumpAction$1(bddb parambddb) {}
   
   public void run()
   {
     Object localObject1 = (String)this.this$0.a.get("version");
-    Object localObject3 = akfo.a(this.this$0.b, this.this$0.c, (String)localObject1, "");
-    localObject1 = bbeg.a(this.this$0).getEntityManagerFactory().createEntityManager();
-    Object localObject4 = ((aukp)localObject1).a(PushBannerReportLog.class);
+    Object localObject3 = alxe.a(this.this$0.b, this.this$0.c, (String)localObject1, "");
+    localObject1 = bddb.a(this.this$0).getEntityManagerFactory().createEntityManager();
+    Object localObject4 = ((awbw)localObject1).a(PushBannerReportLog.class);
     Object localObject2;
     if ((localObject4 != null) && (((List)localObject4).size() >= 9))
     {
@@ -49,19 +49,19 @@ public class JumpAction$1
         localObject5 = (Integer)((Map.Entry)localObject5).getValue();
         ((List)localObject3).add(str + "|" + localObject5);
       }
-      localObject4 = bbeg.a(this.this$0);
-      bbeg.a(this.this$0);
-      ((akfo)((QQAppInterface)localObject4).a(5)).a((String[])((List)localObject3).toArray(new String[((List)localObject3).size()]));
-      ((aukp)localObject1).a(PushBannerReportLog.class);
+      localObject4 = bddb.a(this.this$0);
+      bddb.a(this.this$0);
+      ((alxe)((QQAppInterface)localObject4).a(5)).a((String[])((List)localObject3).toArray(new String[((List)localObject3).size()]));
+      ((awbw)localObject1).a(PushBannerReportLog.class);
       ((HashMap)localObject2).clear();
     }
     for (;;)
     {
-      ((aukp)localObject1).a();
+      ((awbw)localObject1).a();
       return;
       localObject2 = new PushBannerReportLog();
       ((PushBannerReportLog)localObject2).setLog((String)localObject3);
-      ((aukp)localObject1).a((auko)localObject2);
+      ((awbw)localObject1).a((awbv)localObject2);
     }
   }
 }

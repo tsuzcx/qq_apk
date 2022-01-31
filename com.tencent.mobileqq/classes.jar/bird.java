@@ -1,33 +1,22 @@
-class bird
-  implements birp
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+final class bird
+  implements View.OnClickListener
 {
-  bird(birb parambirb, birp parambirp) {}
+  bird(Dialog paramDialog) {}
   
-  public void a(bire parambire, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Birp != null) {
-      this.jdField_a_of_type_Birp.a(parambire, paramInt);
-    }
-  }
-  
-  public void a(bire parambire, boolean paramBoolean)
-  {
-    bire localbire = birb.a(this.jdField_a_of_type_Birb, parambire);
-    if (localbire != null) {
-      localbire.d = birb.a(parambire);
-    }
-    if (this.jdField_a_of_type_Birp != null)
-    {
-      this.jdField_a_of_type_Birp.a(parambire, paramBoolean);
-      if (localbire != null) {
-        bjah.b("AEMaterialManager", "【END】onDownloadFinish :" + localbire.a);
-      }
+    if (this.a != null) {
+      this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bird
  * JD-Core Version:    0.7.0.1
  */

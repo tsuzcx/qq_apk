@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acyl;
-import acyu;
-import acyv;
+import aepy;
+import aeqi;
+import aeqj;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import bfnz;
+import bhou;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 
 public class PathAnimation
-  extends acyl
+  extends aepy
 {
   private PathAnimation.Animator jdField_a_of_type_ComTencentMobileqqActivityAioAnimPathAnimation$Animator;
-  ArrayList<acyv> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<aeqj> jdField_a_of_type_JavaUtilArrayList;
   
   public PathAnimation(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
@@ -23,9 +23,9 @@ public class PathAnimation
   }
   
   @TargetApi(11)
-  void a(View paramView, acyv paramacyv)
+  void a(View paramView, aeqj paramaeqj)
   {
-    if (!paramacyv.jdField_b_of_type_Boolean) {}
+    if (!paramaeqj.jdField_b_of_type_Boolean) {}
     do
     {
       return;
@@ -33,15 +33,15 @@ public class PathAnimation
       int j = paramView.getWidth() / 2;
       int k = paramView.getTop();
       int m = paramView.getHeight() / 2;
-      paramView.offsetTopAndBottom(paramacyv.jdField_b_of_type_Int - (k + m));
-      paramView.offsetLeftAndRight(paramacyv.jdField_a_of_type_Int - (i + j));
-    } while (!bfnz.e());
-    paramView.setAlpha(paramacyv.f);
-    paramView.setRotation(paramacyv.jdField_a_of_type_Float);
-    paramView.setScaleX(paramacyv.d);
-    paramView.setScaleY(paramacyv.e);
-    paramView.setRotationX(paramacyv.jdField_b_of_type_Float);
-    paramView.setRotationY(paramacyv.c);
+      paramView.offsetTopAndBottom(paramaeqj.jdField_b_of_type_Int - (k + m));
+      paramView.offsetLeftAndRight(paramaeqj.jdField_a_of_type_Int - (i + j));
+    } while (!bhou.e());
+    paramView.setAlpha(paramaeqj.f);
+    paramView.setRotation(paramaeqj.jdField_a_of_type_Float);
+    paramView.setScaleX(paramaeqj.d);
+    paramView.setScaleY(paramaeqj.e);
+    paramView.setRotationX(paramaeqj.jdField_b_of_type_Float);
+    paramView.setRotationY(paramaeqj.c);
   }
   
   public boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -56,19 +56,19 @@ public class PathAnimation
     {
       Drawable[] arrayOfDrawable;
       long l1;
-      acyu localacyu;
+      aeqi localaeqi;
       int i;
       label82:
       View localView;
       int j;
       label159:
-      acyv localacyv;
+      aeqj localaeqj;
       if ((paramVarArgs[0] instanceof Drawable[]))
       {
         arrayOfDrawable = (Drawable[])paramVarArgs[0];
         int k = ((Integer)paramVarArgs[1]).intValue();
         l1 = ((Long)paramVarArgs[2]).longValue();
-        localacyu = (acyu)AIOAnimationConatiner.a.loadClass((String)paramVarArgs[3]).newInstance();
+        localaeqi = (aeqi)AIOAnimationConatiner.a.loadClass((String)paramVarArgs[3]).newInstance();
         this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(k);
         long l2 = AnimationUtils.currentAnimationTimeMillis();
         i = 0;
@@ -84,16 +84,16 @@ public class PathAnimation
           break label272;
         }
         j = 0;
-        localacyv = new acyv();
-        localacyv.jdField_a_of_type_Long = (j + l2);
-        localacyv.jdField_a_of_type_AndroidViewView = localView;
+        localaeqj = new aeqj();
+        localaeqj.jdField_a_of_type_Long = (j + l2);
+        localaeqj.jdField_a_of_type_AndroidViewView = localView;
         if (i != 0) {
           break label284;
         }
-        paramVarArgs = localacyu;
+        paramVarArgs = localaeqi;
         label192:
-        localacyv.jdField_a_of_type_Acyu = paramVarArgs;
-        if (!bfnz.e()) {
+        localaeqj.jdField_a_of_type_Aeqi = paramVarArgs;
+        if (!bhou.e()) {
           break label295;
         }
         localView.setLayerType(2, null);
@@ -102,7 +102,7 @@ public class PathAnimation
       }
       for (;;)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localacyv);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localaeqj);
         i += 1;
         break label82;
         arrayOfDrawable = new Drawable[] { (Drawable)paramVarArgs[0] };
@@ -111,10 +111,10 @@ public class PathAnimation
         j = (int)(Math.random() * l1);
         break label159;
         label284:
-        paramVarArgs = localacyu.a();
+        paramVarArgs = localaeqi.a();
         break label192;
         label295:
-        localView.setTag(localacyv);
+        localView.setTag(localaeqj);
       }
       label305:
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimPathAnimation$Animator == null)
@@ -139,7 +139,7 @@ public class PathAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.PathAnimation
  * JD-Core Version:    0.7.0.1
  */

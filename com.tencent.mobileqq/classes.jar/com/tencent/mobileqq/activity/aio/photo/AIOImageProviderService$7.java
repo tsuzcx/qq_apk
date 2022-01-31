@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ajwb;
-import ajyi;
-import axqy;
+import alnp;
+import alpw;
+import azmj;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -28,10 +28,10 @@ class AIOImageProviderService$7
       if (localChatMessage != null)
       {
         localQQMessageFacade = localQQAppInterface.a();
-        if (!ajyi.a(localChatMessage)) {
+        if (!alpw.a(localChatMessage)) {
           break label157;
         }
-        ajyi.a(localChatMessage);
+        alpw.a(localChatMessage);
         break label180;
       }
       for (;;)
@@ -40,10 +40,10 @@ class AIOImageProviderService$7
         if (QLog.isColorLevel()) {
           QLog.d("Q.hotchat", 2, "makeFlashPicReaded,uin:" + this.this$0.b + ",type:" + localChatMessage.istroop + ",extStr" + localChatMessage.extStr);
         }
-        axqy.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
+        azmj.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
         return;
         label157:
-        ajwb.a(localChatMessage);
+        alnp.a(localChatMessage);
         Iterator localIterator = localQQMessageFacade.b(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
         label180:
         if (localIterator.hasNext())
@@ -52,7 +52,7 @@ class AIOImageProviderService$7
           if (localMessageRecord.uniseq != this.a) {
             break;
           }
-          ajwb.a(localMessageRecord);
+          alnp.a(localMessageRecord);
         }
       }
       return;
@@ -65,7 +65,7 @@ class AIOImageProviderService$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.7
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,11 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.filter.blurmaskfilter.OptimGaussianMaskFilter;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
-import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.trigger.FabbyStrokeExtTriggerCtrlItem.FabbyExtModel;
 import com.tencent.ttpic.util.VideoFilterFactory.SEGMENT_STROKE_TRIGGER_STYLE;
 import com.tencent.ttpic.util.VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -26,15 +24,14 @@ public class FabbyStrokeFilterExt
   private final float[] ZERO_COLOR = { 0.0F, 0.0F, 0.0F, 0.0F };
   private BaseFilter copyFilter;
   private OptimGaussianMaskFilter gaussianMaskFilter;
+  private String itemId;
   private FabbyStrokeFilterExt mCurrentFilter = this;
   private int mFrameHeight = 0;
   private int mFrameWidth = 0;
-  private boolean mIsCtrInit = false;
   private int mMaskTextureID = -1;
-  private boolean mNeedDrawStroke = false;
   private FabbyOutlineLightFilter mOutLineLightFilter;
   private Map<String, StickerItem> mStickerItemsMap;
-  private List<TriggerCtrlItem> mTriggerCtrItems;
+  private boolean renderEnded;
   
   static
   {
@@ -44,19 +41,18 @@ public class FabbyStrokeFilterExt
   public FabbyStrokeFilterExt(List<StickerItem> paramList)
   {
     addParam(new UniformParam.IntParam("useMaskAlpha", 0));
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    this.mStickerItemsMap = new HashMap();
-    this.mTriggerCtrItems = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
     {
-      StickerItem localStickerItem = (StickerItem)paramList.next();
-      this.mTriggerCtrItems.add(new TriggerCtrlItem(localStickerItem));
-      this.mStickerItemsMap.put(localStickerItem.id, localStickerItem);
+      return;
+      this.mStickerItemsMap = new HashMap();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        StickerItem localStickerItem = (StickerItem)paramList.next();
+        this.mStickerItemsMap.put(localStickerItem.id, localStickerItem);
+      }
     }
-    this.mNeedDrawStroke = true;
   }
   
   private void initOutlineFilter()
@@ -166,30 +162,9 @@ public class FabbyStrokeFilterExt
     }
   }
   
-  public void initCtrItems(long paramLong)
-  {
-    if ((!this.mIsCtrInit) && (this.mTriggerCtrItems != null))
-    {
-      Iterator localIterator = this.mTriggerCtrItems.iterator();
-      while (localIterator.hasNext()) {
-        ((TriggerCtrlItem)localIterator.next()).updateFrameIndex(paramLong);
-      }
-      this.mIsCtrInit = true;
-    }
-  }
-  
   public void reset()
   {
-    if (this.mTriggerCtrItems != null)
-    {
-      Iterator localIterator = this.mTriggerCtrItems.iterator();
-      while (localIterator.hasNext()) {
-        ((TriggerCtrlItem)localIterator.next()).reset();
-      }
-    }
     this.item = null;
-    this.triggerCtrlItem = null;
-    this.mIsCtrInit = false;
     this.mCurrentFilter = this;
   }
   
@@ -216,66 +191,57 @@ public class FabbyStrokeFilterExt
     }
   }
   
+  public void updateRenderParams(Object paramObject)
+  {
+    if ((paramObject instanceof FabbyStrokeExtTriggerCtrlItem.FabbyExtModel))
+    {
+      paramObject = (FabbyStrokeExtTriggerCtrlItem.FabbyExtModel)paramObject;
+      this.itemId = paramObject.itemId;
+      this.frameIndex = paramObject.frameIndex;
+      this.renderEnded = paramObject.renderEnded;
+    }
+  }
+  
   public void updateTextureParam(PTDetectInfo paramPTDetectInfo)
   {
     int k = 1;
     int j = 0;
-    if ((this.mTriggerCtrItems == null) || (this.mStickerItemsMap == null) || (paramPTDetectInfo == null))
+    if ((this.mStickerItemsMap == null) || (paramPTDetectInfo == null))
     {
       this.mCurrentFilter.addParam(new UniformParam.IntParam("useBg", 0));
       this.mCurrentFilter.addParam(new UniformParam.IntParam("useMaskAlpha", 0));
-      this.mNeedDrawStroke = false;
+    }
+    do
+    {
       return;
-    }
-    initCtrItems(paramPTDetectInfo.timestamp);
-    Iterator localIterator = this.mTriggerCtrItems.iterator();
-    while (localIterator.hasNext())
+      this.item = ((StickerItem)this.mStickerItemsMap.get(this.itemId));
+    } while (this.item == null);
+    int i;
+    if (this.renderEnded)
     {
-      TriggerCtrlItem localTriggerCtrlItem = (TriggerCtrlItem)localIterator.next();
-      if (localTriggerCtrlItem.isCurrentFrameTriggered(paramPTDetectInfo))
-      {
-        StickerItem localStickerItem = (StickerItem)this.mStickerItemsMap.get(localTriggerCtrlItem.getStickerItemID());
-        if ((localStickerItem != null) && (localStickerItem.getTriggerTypeInt() == PTFaceAttr.PTExpression.ALWAYS.value))
-        {
-          if (this.triggerCtrlItem == null)
-          {
-            this.triggerCtrlItem = localTriggerCtrlItem;
-            this.item = localStickerItem;
-          }
-        }
-        else
-        {
-          if ((this.triggerCtrlItem != null) && (this.triggerCtrlItem != localTriggerCtrlItem) && (this.item.getTriggerTypeInt() != PTFaceAttr.PTExpression.TIME_TRIGGER.value)) {
-            this.triggerCtrlItem.reset();
-          }
-          this.triggerCtrlItem = localTriggerCtrlItem;
-          this.item = localStickerItem;
-        }
-      }
+      this.mCurrentFilter = this;
+      this.item = null;
+      i = 0;
     }
-    if ((this.item != null) && (this.triggerCtrlItem != null))
+    for (;;)
     {
-      this.mNeedDrawStroke = true;
-      int i;
-      if (this.triggerCtrlItem.isTriggered()) {
-        if (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.NONE.type)
-        {
-          this.item.strokeColor = this.ZERO_COLOR;
-          this.item.strokeWidth = 0.0D;
-          this.item.strokeGap = 0.0D;
-          this.mCurrentFilter = this;
-          i = 0;
-        }
+      this.mCurrentFilter.addParam(new UniformParam.IntParam("useMaskAlpha", i));
+      this.mCurrentFilter.addParam(new UniformParam.IntParam("useBg", j));
+      if (this.copyFilter == null) {
+        break;
       }
-      for (;;)
+      this.copyFilter.addParam(new UniformParam.IntParam("useBg", j));
+      return;
+      if (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.NONE.type)
       {
-        this.mCurrentFilter.addParam(new UniformParam.IntParam("useMaskAlpha", i));
-        this.mCurrentFilter.addParam(new UniformParam.IntParam("useBg", j));
-        if (this.copyFilter == null) {
-          break;
-        }
-        this.copyFilter.addParam(new UniformParam.IntParam("useBg", j));
-        return;
+        this.item.strokeColor = this.ZERO_COLOR;
+        this.item.strokeWidth = 0.0D;
+        this.item.strokeGap = 0.0D;
+        this.mCurrentFilter = this;
+        i = 0;
+      }
+      else
+      {
         boolean bool;
         if (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.ALL_LINE_STROKE.type)
         {
@@ -295,8 +261,6 @@ public class FabbyStrokeFilterExt
             float f2 = Math.min(this.mFrameWidth, this.mFrameHeight);
             initSmoothFilter(this.mFrameWidth, this.mFrameHeight, f1 * f2 / 3.0F);
           }
-          this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
-          this.triggerCtrlItem.updateFrameIndex(paramPTDetectInfo.timestamp);
           i = updateStrokeBitmap(paramPTDetectInfo);
           if (this.copyFilter != null) {
             this.copyFilter.addParam(new UniformParam.TextureParam("inputImageTexture3", i, 33987));
@@ -316,15 +280,10 @@ public class FabbyStrokeFilterExt
             i = k;
             break;
           }
-          this.triggerCtrlItem.reset();
-          this.mCurrentFilter = this;
-          this.triggerCtrlItem = null;
-          this.item = null;
         }
         i = 0;
       }
     }
-    this.mNeedDrawStroke = false;
   }
 }
 

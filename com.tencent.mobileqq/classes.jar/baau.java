@@ -1,34 +1,96 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class baau
-  implements myz
+public class baau
+  extends baav
+  implements azzb<baav>
 {
-  baau(baas parambaas, long paramLong) {}
+  public List<azyx> b = new ArrayList();
   
-  public void loaded(int paramInt, String paramString)
+  public baau(SpriteNativeView paramSpriteNativeView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLibraryLoader", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SoLibraryLoader", 4, "transToLocalUrl transUrl:" + paramString);
-    }
-    paramString = mzh.a(baas.a(this.jdField_a_of_type_Baas)) + baas.a(this.jdField_a_of_type_Baas) + File.separator + baas.b(this.jdField_a_of_type_Baas);
-    if (!new File(paramString).exists())
+    this.a = paramSpriteNativeView;
+  }
+  
+  public <N extends azyx> N a(String paramString)
+  {
+    int i = 0;
+    while (i < this.b.size())
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SoLibraryLoader", 2, "file not exist! path = " + paramString);
+      baav localbaav = (baav)this.b.get(i);
+      if (paramString.equals(localbaav.jdField_a_of_type_JavaLangString)) {
+        return localbaav;
       }
+      if ((localbaav instanceof baau)) {
+        return ((baau)localbaav).a(paramString);
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public List<azyx> a()
+  {
+    return this.b;
+  }
+  
+  public void a()
+  {
+    super.a();
+    int i = 0;
+    while (i < this.b.size())
+    {
+      ((baav)this.b.get(i)).a();
+      i += 1;
+    }
+    this.b.clear();
+  }
+  
+  public void a(baav parambaav)
+  {
+    if (parambaav.jdField_a_of_type_Azzb == null)
+    {
+      this.b.add(parambaav);
+      parambaav.jdField_a_of_type_Azzb = this;
+      parambaav.d();
       return;
     }
-    bbdx.d(paramString, baas.a(this.jdField_a_of_type_Baas).getFilesDir().getAbsolutePath() + File.separator + baas.b(this.jdField_a_of_type_Baas));
+    new RuntimeException("the node had another parent");
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((azyx)localIterator.next()).b();
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((azyx)localIterator.next()).c();
+    }
+  }
+  
+  public boolean c()
+  {
+    boolean bool = super.c();
+    int i = 0;
+    while (i < this.b.size())
+    {
+      bool |= ((baav)this.b.get(i)).c();
+      i += 1;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baau
  * JD-Core Version:    0.7.0.1
  */

@@ -1,212 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
 
 public class ved
+  extends vfy
 {
-  private static veb a = ;
+  StoryVideoItem a;
+  public vzs a;
   
-  private static String a(String paramString, Object... paramVarArgs)
+  public ved(StoryVideoItem paramStoryVideoItem)
   {
-    return String.format(null, paramString, paramVarArgs);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a()
   {
-    if (a.a(2)) {
-      a.a(paramString1, paramString2);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    {
+      wsv.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
+      return;
     }
-  }
-  
-  public static void a(String paramString1, String paramString2, Object paramObject)
-  {
-    if (a.a(3)) {
-      a.b(paramString1, a(paramString2, new Object[] { paramObject }));
+    utb localutb = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
+    if (localutb != null)
+    {
+      this.jdField_a_of_type_Vzs = new vzp();
+      this.jdField_a_of_type_Vzs.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new vee(this, localutb));
+      return;
     }
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    if (a.a(3)) {
-      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2 }));
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3)
-  {
-    if (a.a(3)) {
-      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3 }));
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
-  {
-    if (a.a(3)) {
-      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3, paramObject4 }));
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a.a(3)) {
-      a.a(paramString1, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(2)) {
-      a.a(paramString1, a(paramString2, paramVarArgs));
-    }
-  }
-  
-  public static void a(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(3)) {
-      a(paramString1, a(paramString2, paramVarArgs), paramThrowable);
-    }
-  }
-  
-  public static void a(veb paramveb)
-  {
-    if (paramveb == null) {
-      throw new IllegalArgumentException();
-    }
-    a = paramveb;
-  }
-  
-  public static boolean a()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    if (a.a(3)) {
-      a.b(paramString1, paramString2);
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, a(paramString2, new Object[] { paramObject }));
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2 }));
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3 }));
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3, paramObject4 }));
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a.a(5)) {
-      a.c(paramString1, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(3)) {
-      b(paramString1, a(paramString2, paramVarArgs));
-    }
-  }
-  
-  public static void b(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(4)) {
-      a.b(paramString1, a(paramString2, paramVarArgs), paramThrowable);
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, paramString2);
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a.a(6)) {
-      a.d(paramString1, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, a(paramString2, paramVarArgs));
-    }
-  }
-  
-  public static void c(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(5)) {
-      a.c(paramString1, a(paramString2, paramVarArgs), paramThrowable);
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    if (a.a(5)) {
-      a.d(paramString1, paramString2);
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(5)) {
-      a.d(paramString1, a(paramString2, paramVarArgs));
-    }
-  }
-  
-  public static void d(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(6)) {
-      a.d(paramString1, a(paramString2, paramVarArgs), paramThrowable);
-    }
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    if (a.a(6)) {
-      a.e(paramString1, paramString2);
-    }
-  }
-  
-  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(6)) {
-      a.e(paramString1, a(paramString2, paramVarArgs));
-    }
-  }
-  
-  public static void f(String paramString1, String paramString2)
-  {
-    if (a.a(6)) {
-      a.e(paramString1, paramString2);
-    }
-  }
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ved
  * JD-Core Version:    0.7.0.1
  */

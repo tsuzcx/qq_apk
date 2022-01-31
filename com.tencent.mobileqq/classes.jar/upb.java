@@ -1,26 +1,28 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
 
 public class upb
+  extends upt
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public boolean a;
-  public boolean b;
+  qqstory_service.RspLikeFeed a;
   
-  public upb(boolean paramBoolean1, List<CommentEntry> paramList, int paramInt, boolean paramBoolean2, String paramString)
+  public upb() {}
+  
+  public upb(qqstory_service.RspLikeFeed paramRspLikeFeed)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramRspLikeFeed.result);
+    this.a = paramRspLikeFeed;
   }
+  
+  public void a() {}
+  
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upb
  * JD-Core Version:    0.7.0.1
  */

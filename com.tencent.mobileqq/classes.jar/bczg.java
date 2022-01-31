@@ -1,29 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.open.agent.AuthorityControlFragment;
-import com.tencent.widget.XListView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
-public class bczg
-  implements View.OnClickListener
+final class bczg
+  implements URLDrawable.URLDrawableListener
 {
-  public bczg(AuthorityControlFragment paramAuthorityControlFragment) {}
+  bczg(WeakReference paramWeakReference) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    AuthorityControlFragment.a(this.a).c();
-    AuthorityControlFragment.a(this.a, this.a.rightViewText, 2131690284);
-    this.a.rightViewText.setTextColor(AuthorityControlFragment.a(this.a));
-    this.a.rightViewText.setEnabled(true);
-    this.a.setLeftButton("", null);
-    this.a.leftView.setVisibility(0);
-    AuthorityControlFragment.a(this.a).setText(2131690298);
-    AuthorityControlFragment.a(this.a).setOverScrollHeader(AuthorityControlFragment.a(this.a));
+    if (this.a != null)
+    {
+      paramURLDrawable = (View)this.a.get();
+      if (paramURLDrawable != null) {
+        paramURLDrawable.postInvalidate();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bczg
  * JD-Core Version:    0.7.0.1
  */

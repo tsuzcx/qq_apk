@@ -1,27 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ofo
-  implements ViewBase.OnClickListener
+  implements View.OnClickListener
 {
-  ofo(ofb paramofb) {}
+  ofo(ofn paramofn) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Oif.a != null)
-    {
-      onh.a(this.a.jdField_a_of_type_Ohs.a().getContext(), this.a.jdField_a_of_type_Oif.a.activityJumpUrl);
-      if (this.a.jdField_a_of_type_Ohs.a() != null) {
-        this.a.jdField_a_of_type_Ohs.a().e(this.a.jdField_a_of_type_Oif);
-      }
-    }
+    oee.a(ofn.a(this.a), 1000, null);
+    szl.a((Activity)ofn.a(this.a), ofn.a(this.a), ofn.a(this.a).a(), ofn.a(this.a).e(), false, oed.b(ofn.a(this.a)), new obg());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofo
  * JD-Core Version:    0.7.0.1
  */

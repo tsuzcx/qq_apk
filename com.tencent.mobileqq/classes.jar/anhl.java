@@ -1,104 +1,142 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkAppMessage.Config;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkContextInfo;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.LinkedList;
 
 public class anhl
+  implements anho
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  protected final View a;
+  public int a;
+  public RecommendCommonMessage.ArkMsgAppInfo a;
+  public RecommendCommonMessage a;
+  public int b;
+  public int c;
   
-  public anhl(View paramView)
+  private void a(Context paramContext)
   {
-    if (paramView == null) {
-      throw new IllegalArgumentException("itemView may not be null");
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    new beqa(paramContext).a(2131719743, paramContext.getResources().getDimensionPixelSize(2131298914), 1, 0);
   }
   
-  private View a(View paramView, float paramFloat1, float paramFloat2)
+  private void a(ankh paramankh, ankl paramankl)
   {
-    RectF localRectF = new RectF();
-    int i = 0;
-    Object localObject = null;
-    Iterator localIterator = paramView.getTouchables().iterator();
-    View localView;
-    float f1;
-    if (localIterator.hasNext())
+    paramankh = new anhn(this, paramankh);
+    paramankl.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramankh);
+  }
+  
+  public void attachArkView(ankh paramankh, ankl paramankl, int paramInt)
+  {
+    paramankl.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844423);
+    ArkAppView localArkAppView = paramankl.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+    localArkAppView.setBorderType(3);
+    localArkAppView.setClipRadiusTop(16.0F);
+    localArkAppView.setClipRadius(0.0F);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer == null)
     {
-      localView = (View)localIterator.next();
-      f1 = localView.getX();
-      float f2 = localView.getY();
-      localRectF.set(f1, f2, localView.getMeasuredWidth() + f1, localView.getMeasuredWidth() + f2);
-      if (!localRectF.contains(paramFloat1, paramFloat2)) {
-        break label160;
-      }
-      if (localView.equals(paramView)) {
-        i = 1;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer = new afds();
+      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer.a(paramankh);
+      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer.a = new ArkAppMessage.Config();
+      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer.a.autoSize = Integer.valueOf(1);
+      anjv.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "ShowView", this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, null, anjv.f, 0, 0);
     }
-    label160:
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer;
+    if (this.c > 0) {
+      ((afds)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appVer, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.meta, anjs.a(), this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo, paramankh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    }
     for (;;)
     {
-      break;
-      localObject = localView;
-      if ((localView instanceof ViewGroup))
-      {
-        localObject = a(paramView, paramFloat1 - f1, paramFloat2 - paramFloat1);
-        continue;
-        if ((i != 0) && (localObject == null)) {
-          localObject = paramView;
-        }
-      }
-      else
-      {
-        return localObject;
-      }
-      return localObject;
+      ((afds)localObject).setFixSize(anjs.jdField_a_of_type_Int, anjs.jdField_a_of_type_Int);
+      ((afds)localObject).setMaxSize(anjs.jdField_a_of_type_Int, anjs.jdField_a_of_type_Int);
+      ((afds)localObject).setMinSize(anjs.jdField_a_of_type_Int * 7 / 10, anjs.jdField_a_of_type_Int);
+      QLog.d("ArkAdapterItemForTextMsg", 1, new Object[] { "ArkFold.attachArkView appName:", this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, ", getChatbubbleMaxWidth=", Integer.valueOf(anjs.jdField_a_of_type_Int) });
+      localObject = new anhm(this, paramankl, paramankh, paramInt, (afds)localObject);
+      paramankl.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer, paramankl.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
+      localArkAppView.setOnTouchListener(paramankh.jdField_a_of_type_Aeov);
+      localArkAppView.setOnLongClickListener(paramankh.jdField_a_of_type_Aeov);
+      localArkAppView.setLoadCallback((ArkViewImplement.LoadCallback)localObject);
+      return;
+      ((afds)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appVer, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.meta, anjs.a(), this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, paramankh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     }
   }
   
-  public int a()
+  public void clickTail(ankl paramankl, afeg paramafeg, Context paramContext) {}
+  
+  public void destroyContainerByRemove()
   {
-    return this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+    this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.doOnEvent(2);
   }
   
-  public View a(anhx paramanhx)
+  public anho extendArkCardByOpen(afdt paramafdt, String paramString1, String paramString2)
   {
-    return a(this.jdField_a_of_type_AndroidViewView, paramanhx.a(), paramanhx.b());
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer == paramafdt)
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mContextList;
+      int i = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mOpenCardAppInfoList.size();
+      if (((ArrayList)localObject).size() == 1)
+      {
+        localObject = ((RecommendCommonMessage.ArkContextInfo)((ArrayList)localObject).get(0)).contextAppInfoList;
+        if ((((LinkedList)localObject).size() == 1) && (i >= ankt.jdField_a_of_type_Int - 1)) {
+          return null;
+        }
+        if ((((LinkedList)localObject).size() > 1) && (i >= ankt.c - 1)) {
+          return null;
+        }
+      }
+      else if ((((ArrayList)localObject).size() > 1) && (i >= ankt.c - 1))
+      {
+        return null;
+      }
+      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (localObject == null) {
+        return null;
+      }
+      localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
+      localObject = new anhl();
+      ((anhl)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage;
+      ((anhl)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo = new RecommendCommonMessage.ArkMsgAppInfo();
+      ((anhl)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName = paramafdt.getAppName();
+      ((anhl)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appPath = ArkAppMgr.getInstance().getAppPathByNameFromLocal(((anhl)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, ((anhl)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView, null, false);
+      ((anhl)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView = paramString1;
+      ((anhl)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.meta = paramString2;
+      ((anhl)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      ((anhl)localObject).b = this.b;
+      ((anhl)localObject).c = (this.b + 1);
+      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mOpenCardAppInfoList.add(0, ((anhl)localObject).jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo);
+      return localObject;
+    }
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public String[] getArkAppNameAndPath()
   {
-    this.jdField_a_of_type_AndroidViewView.measure(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_AndroidViewView.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_AndroidViewView.getAlpha() * 255.0F));
-    int i = paramCanvas.saveLayer(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint, 31);
-    this.jdField_a_of_type_AndroidViewView.draw(paramCanvas);
-    paramCanvas.restoreToCount(i);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+    String[] arrayOfString = new String[3];
+    arrayOfString[0] = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName;
+    arrayOfString[1] = null;
+    arrayOfString[2] = null;
+    if ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null) {
+      return arrayOfString;
+    }
+    arrayOfString[1] = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView, null, false);
+    arrayOfString[2] = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView;
+    return arrayOfString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhl
  * JD-Core Version:    0.7.0.1
  */

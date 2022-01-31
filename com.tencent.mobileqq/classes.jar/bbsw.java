@@ -1,145 +1,293 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.vas.avatar.IdleGetDynamic;
-import com.tencent.mobileqq.vas.avatar.VasAvatar;
-import com.tencent.mobileqq.vas.avatar.VasAvatarLoader.1;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.net.URL;
-import mqq.os.MqqHandler;
+import android.os.Build.VERSION;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.1;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.2;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.3;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.UUID;
 
 public class bbsw
-  implements bbrm<String>
 {
-  private static IdleGetDynamic a;
-  private static final Drawable b;
-  public int a;
-  public long a;
-  public Drawable a;
-  public String a;
-  public WeakReference<VasAvatar> a;
-  public boolean a;
-  public int b;
-  public String b;
+  private static bbsw jdField_a_of_type_Bbsw;
+  private bbsq jdField_a_of_type_Bbsq = new bbsq();
+  private bbsu jdField_a_of_type_Bbsu = new bbsu();
   
-  static
+  public static bbsw a()
   {
-    jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic = new IdleGetDynamic();
-    jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(16777215);
-  }
-  
-  public bbsw(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public bbsw(String paramString1, int paramInt, String paramString2, long paramLong)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(VasAvatar paramVasAvatar)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVasAvatar);
-    if (this.jdField_b_of_type_Int == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.VasFaceManager", 2, "delay getAvatar uin: " + this.jdField_a_of_type_JavaLangString);
-      }
-      jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic.a(this);
-      return;
-    }
-    a(false);
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    if (paramObject == jdField_b_of_type_AndroidGraphicsDrawableDrawable) {
-      a(true);
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        if (paramString == null)
-        {
-          QLog.e("Q.qqhead.VasFaceManager", 1, "VasAvatar get null path");
-          return;
-        }
-      } while ((this.jdField_b_of_type_Int == -1) && (bblj.a()));
-      localObject = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localObject == null) || (((VasAvatar)localObject).jdField_a_of_type_Bbsw != this));
     try
     {
-      paramObject = new URL("vasapngdownloader", paramString, "-vas-face-");
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mUseApngImage = true;
-      localURLDrawableOptions.mUseMemoryCache = true;
-      localURLDrawableOptions.mMemoryCacheKeySuffix = Long.toString(this.jdField_a_of_type_Long);
-      localObject = ((VasAvatar)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mExtraInfo = VasFaceManager.a(this.jdField_a_of_type_Boolean);
-      VasFaceManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(paramObject, localURLDrawableOptions);
-      paramObject = URLDrawable.getDrawable(paramObject, localURLDrawableOptions);
-      ThreadManager.getUIHandler().post(new VasAvatarLoader.1(this, paramObject));
+      if (jdField_a_of_type_Bbsw == null) {
+        jdField_a_of_type_Bbsw = new bbsw();
+      }
+      bbsw localbbsw = jdField_a_of_type_Bbsw;
+      return localbbsw;
+    }
+    finally {}
+  }
+  
+  public static final String a()
+  {
+    String str = aljq.bp;
+    VFSFile localVFSFile = new VFSFile(str);
+    if (!localVFSFile.exists()) {
+      localVFSFile.mkdirs();
+    }
+    return str;
+  }
+  
+  public static final void a(TroopFileTransferManager.Item paramItem, int paramInt)
+  {
+    if (paramItem == null) {
       return;
     }
-    catch (Exception paramObject)
+    StringBuilder localStringBuilder;
+    if (paramInt == 128)
     {
-      QLog.e("Q.qqhead.VasFaceManager", 1, "getApngDrawable ApngImage err, path:" + paramString, paramObject);
+      paramItem.ThumbnailDownloading_Small = true;
+      paramItem.ThumbnailFileTimeMS_Small = SystemClock.uptimeMillis();
+      localStringBuilder = new StringBuilder();
+      if (paramItem.Id == null) {
+        break label142;
+      }
+    }
+    label142:
+    for (paramItem = paramItem.Id.toString();; paramItem = "")
+    {
+      paramItem = paramItem + "_" + paramInt;
+      bbrc.c("TroopFileThumbnailMgr", bbrc.a, "[" + paramItem + "] setGettingStatus. ");
+      return;
+      if (paramInt == 640)
+      {
+        paramItem.ThumbnailDownloading_Large = true;
+        paramItem.ThumbnailFileTimeMS_Large = SystemClock.uptimeMillis();
+        break;
+      }
+      if (paramInt != 383) {
+        break;
+      }
+      paramItem.ThumbnailDownloading_Middle = true;
+      paramItem.ThumbnailFileTimeMS_Middle = SystemClock.uptimeMillis();
+      break;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public static final boolean a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
   {
-    Object localObject1 = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localObject1 == null) || (((VasAvatar)localObject1).jdField_a_of_type_Bbsw != this)) {}
-    Object localObject2;
+    if ((paramLong == 0L) || (paramItem == null)) {}
+    while (!a(paramLong, paramItem, paramInt, paramItem.getThumbnailFile(paramLong, paramInt))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static final boolean a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString)
+  {
+    int i = 0;
+    int j = 0;
+    boolean bool3 = false;
+    int k = 0;
+    int m = 0;
+    boolean bool2 = false;
+    boolean bool4 = true;
+    boolean bool1 = true;
+    if (TextUtils.isEmpty(paramString)) {
+      return bool2;
+    }
+    if (paramInt == 128)
+    {
+      if (!bdcs.b(paramString)) {
+        break label260;
+      }
+      paramInt = i;
+      if (!paramItem.HasThumbnailFile_Small) {
+        paramInt = 1;
+      }
+      paramItem.HasThumbnailFile_Small = true;
+      if (!paramString.equalsIgnoreCase(paramItem.smallThumbFile)) {
+        paramInt = 1;
+      }
+      paramItem.smallThumbFile = paramString;
+      paramItem.ThumbnailFileTimeMS_Small = 0L;
+    }
+    for (;;)
+    {
+      bool2 = bool1;
+      if (paramInt == 0) {
+        break;
+      }
+      bbqm.a(paramLong, paramItem);
+      return bool1;
+      if (paramInt == 640)
+      {
+        if (!bdcs.b(paramString)) {
+          break label251;
+        }
+        paramInt = k;
+        if (!paramItem.HasThumbnailFile_Large) {
+          paramInt = 1;
+        }
+        paramItem.HasThumbnailFile_Large = true;
+        if (!paramString.equalsIgnoreCase(paramItem.largeThumbnailFile)) {
+          paramInt = 1;
+        }
+        paramItem.largeThumbnailFile = paramString;
+        paramItem.ThumbnailFileTimeMS_Large = 0L;
+        bool1 = bool4;
+      }
+      for (;;)
+      {
+        break;
+        if ((paramInt == 383) && (bdcs.b(paramString)))
+        {
+          if (!paramItem.HasThumbnailFile_Middle) {}
+          for (paramInt = 1;; paramInt = 0)
+          {
+            paramItem.HasThumbnailFile_Middle = true;
+            if (!paramString.equalsIgnoreCase(paramItem.middleThumbnailFile)) {
+              paramInt = 1;
+            }
+            paramItem.middleThumbnailFile = paramString;
+            paramItem.ThumbnailFileTimeMS_Middle = 0L;
+            paramItem.ThumbnailDownloading_Middle_Fail = false;
+            bool1 = true;
+            break;
+          }
+        }
+        paramInt = 0;
+        bool1 = bool3;
+        break;
+        label251:
+        bool1 = false;
+        paramInt = m;
+      }
+      label260:
+      bool1 = false;
+      paramInt = j;
+    }
+  }
+  
+  private void b(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  {
+    String str = paramItem.getThumbnailFile(paramLong, 640);
+    if (paramItem.LocalFile != null)
+    {
+      VFSFile localVFSFile = new VFSFile(paramItem.LocalFile);
+      if (localVFSFile.exists())
+      {
+        int j = 0;
+        int i = j;
+        if (paramItem.origLastModifyTime != 0L)
+        {
+          long l = localVFSFile.lastModified();
+          i = j;
+          if (paramItem.origLastModifyTime != l)
+          {
+            i = j;
+            if (TextUtils.isEmpty(paramItem.FilePath))
+            {
+              i = j;
+              if (this.jdField_a_of_type_Bbsq.a(paramLong, paramItem, paramInt) == 0) {
+                i = 1;
+              }
+            }
+          }
+        }
+        if (i == 0) {
+          this.jdField_a_of_type_Bbsu.a(paramLong, paramItem, paramInt, null);
+        }
+        return;
+      }
+    }
+    if ((paramInt == 383) && (arof.b(str)))
+    {
+      this.jdField_a_of_type_Bbsu.a(paramLong, paramItem, paramInt, str);
+      return;
+    }
+    this.jdField_a_of_type_Bbsq.a(paramLong, paramItem, paramInt);
+  }
+  
+  public static final void b(TroopFileTransferManager.Item paramItem, int paramInt)
+  {
+    if (paramItem == null) {
+      return;
+    }
+    StringBuilder localStringBuilder;
+    if (paramInt == 128)
+    {
+      paramItem.ThumbnailDownloading_Small = false;
+      localStringBuilder = new StringBuilder();
+      if (paramItem.Id == null) {
+        break label121;
+      }
+    }
+    label121:
+    for (paramItem = paramItem.Id.toString();; paramItem = "")
+    {
+      paramItem = paramItem + "_" + paramInt;
+      bbrc.c("TroopFileThumbnailMgr", bbrc.a, "[" + paramItem + "] setStopGetStatus. ");
+      return;
+      if (paramInt == 640)
+      {
+        paramItem.ThumbnailDownloading_Large = false;
+        break;
+      }
+      if (paramInt != 383) {
+        break;
+      }
+      paramItem.ThumbnailDownloading_Middle = false;
+      break;
+    }
+  }
+  
+  public void a()
+  {
+    bbrc.c("TroopFileThumbnailMgr", bbrc.a, "init");
+    this.jdField_a_of_type_Bbsu.a();
+    this.jdField_a_of_type_Bbsq.a();
+  }
+  
+  public void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  {
+    if ((paramLong == 0L) || (paramItem == null)) {}
     do
     {
       do
       {
         return;
-        localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      } while (!(localObject1 instanceof QQAppInterface));
-      localObject2 = (QQAppInterface)localObject1;
-      localObject1 = ((bbrg)((QQAppInterface)localObject2).getManager(235)).a;
-      if (this.jdField_a_of_type_Int > 0)
-      {
-        ((VasFaceManager)localObject1).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this, null);
-        return;
+      } while ((paramItem.Id == null) || (paramInt == 0));
+      if (paramItem.canFetchThumbnailFile(paramInt)) {
+        break;
       }
-      localObject2 = ((QQAppInterface)localObject2).a(this.jdField_a_of_type_JavaLangString, paramBoolean);
-      if ((localObject2 == null) || (((ExtensionInfo)localObject2).faceIdUpdateTime == 0L))
-      {
-        ((VasFaceManager)localObject1).b(this.jdField_a_of_type_JavaLangString, this, jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-        return;
-      }
-    } while (((ExtensionInfo)localObject2).faceId <= 0);
-    ((VasFaceManager)localObject1).a(((ExtensionInfo)localObject2).faceId, this.jdField_b_of_type_JavaLangString, this, null);
+    } while ((paramInt != 383) || (!paramItem.genThumb_Middle_OnGettedLargeOrOrigPic));
+    paramItem.genThumb_Middle_OnGettedLargeOrOrigPic = false;
+    bbqt.a(new TroopFileThumbnailMgr.2(this, paramItem, paramLong, paramInt), false);
+    return;
+    if (a(paramLong, paramItem, paramInt))
+    {
+      paramItem.StatusUpdateTimeMs = 0L;
+      bbqm.b(paramLong, paramItem);
+      return;
+    }
+    bbqt.a(new TroopFileThumbnailMgr.3(this, paramLong, paramItem, paramInt), false);
+  }
+  
+  public void b()
+  {
+    bbrc.c("TroopFileThumbnailMgr", bbrc.a, "release");
+    if (Build.VERSION.SDK_INT == 19)
+    {
+      this.jdField_a_of_type_Bbsu.b();
+      this.jdField_a_of_type_Bbsq.b();
+      return;
+    }
+    bbqt.a(new TroopFileThumbnailMgr.1(this), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbsw
  * JD-Core Version:    0.7.0.1
  */

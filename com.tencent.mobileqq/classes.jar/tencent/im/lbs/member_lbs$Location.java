@@ -16,7 +16,7 @@ public final class member_lbs$Location
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.Location
  * JD-Core Version:    0.7.0.1
  */

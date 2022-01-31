@@ -1,104 +1,119 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
+import java.util.List;
 
-public class aozb
-  extends aoyu
+public class aozb<T>
 {
-  private aoun a;
+  private int jdField_a_of_type_Int;
+  private final aozc<T> jdField_a_of_type_Aozc;
+  private final aozd jdField_a_of_type_Aozd;
+  private final Comparator<T> jdField_a_of_type_JavaUtilComparator;
   
-  public aozb(QQAppInterface paramQQAppInterface)
+  public aozb(Comparator<T> paramComparator, aozd<T> paramaozd)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Aoun = new aozc(this);
-    paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Aoun);
+    this.jdField_a_of_type_Aozd = paramaozd;
+    this.jdField_a_of_type_Aozc = new aozc();
+    this.jdField_a_of_type_JavaUtilComparator = paramComparator;
   }
   
-  private aozd a(long paramLong, boolean paramBoolean)
+  private void a(long paramLong, List<T> paramList, aozc<T> paramaozc)
   {
-    aoyv localaoyv = a(paramLong);
-    if (localaoyv == null) {
-      return null;
+    if ((aowq.a().a().a()) && ((paramList == null) || (paramList.isEmpty())) && (!a()) && ((paramaozc.jdField_a_of_type_JavaLangObject instanceof aoxh)))
+    {
+      paramList = (aoxh)paramaozc.jdField_a_of_type_JavaLangObject;
+      long l = Math.abs(paramList.d() - paramLong);
+      if (l > 60000L) {
+        aozj.d("DanmakuDataSource", "Danmaku upload to screen fail, deltaTime = " + l + " , curTime = " + paramLong + ", curDanmaku = " + paramList);
+      }
     }
-    if ((localaoyv instanceof aozd)) {
-      return (aozd)localaoyv;
-    }
-    return null;
   }
   
-  public String a(FileManagerEntity paramFileManagerEntity, int paramInt)
+  public int a()
   {
-    if (paramFileManagerEntity.Uuid == null)
-    {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. uuid = null nSession[" + paramFileManagerEntity.nSessionId + "]");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
-      return null;
-    }
-    int i = a(paramFileManagerEntity.fileName);
-    if (-1 == i)
-    {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. can not getThumb of file:" + paramFileManagerEntity.fileName);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
-      return null;
-    }
-    String str = paramFileManagerEntity.Uuid.replace("/", "");
-    a();
-    str = aptm.a().d() + a(paramInt, str);
-    if (bbdx.b(str) == true)
-    {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramFileManagerEntity.nSessionId + "] thumb Downloaded:" + str);
-      return str;
-    }
-    aozd localaozd = new aozd(paramFileManagerEntity);
-    localaozd.jdField_a_of_type_Int = paramInt;
-    localaozd.b = i;
-    a(localaozd, str);
-    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] download  nSession[" + paramFileManagerEntity.nSessionId + "], ThumbDownloadId[" + localaozd.jdField_a_of_type_Long + "]");
-    return null;
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(long paramLong, apda paramapda) {}
-  
-  public void a(long paramLong, bbmu parambbmu)
+  public T a()
   {
-    parambbmu.c = 0;
+    return this.jdField_a_of_type_Aozc.jdField_a_of_type_Aozc.jdField_a_of_type_JavaLangObject;
   }
   
-  public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, apda paramapda)
+  public List<T> a(long paramLong, List<T> paramList, int paramInt)
   {
-    aozd localaozd = a(paramLong, false);
-    if (localaozd == null)
+    aozc localaozc = this.jdField_a_of_type_Aozc.jdField_a_of_type_Aozc;
+    int j;
+    for (int i = 0; (i < paramInt) && (localaozc != this.jdField_a_of_type_Aozc) && (this.jdField_a_of_type_Aozd.a(localaozc.jdField_a_of_type_JavaLangObject, paramLong) <= 0); i = j)
     {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted no this session");
-      return;
+      j = i;
+      if (paramList != null)
+      {
+        paramList.add(localaozc.jdField_a_of_type_JavaLangObject);
+        j = i + 1;
+      }
+      this.jdField_a_of_type_Int -= 1;
+      localaozc = localaozc.jdField_a_of_type_Aozc;
     }
-    if (paramBoolean)
-    {
-      localaozd.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
-      apug.e(localaozd.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localaozd.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBoolean, 50, new Object[] { localaozd.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(localaozd.jdField_a_of_type_Int) });
-    super.a(paramLong, paramBoolean, paramInt, paramString, paramapda);
+    a(paramLong, paramList, localaozc);
+    this.jdField_a_of_type_Aozc.jdField_a_of_type_Aozc = localaozc;
+    localaozc.b = this.jdField_a_of_type_Aozc;
+    return paramList;
   }
   
-  public boolean a(long paramLong, apda paramapda)
+  public void a()
   {
-    paramapda = a(paramLong, false);
-    if (paramapda == null)
-    {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrl no this session");
+    this.jdField_a_of_type_Aozc.jdField_a_of_type_Aozc = this.jdField_a_of_type_Aozc;
+    this.jdField_a_of_type_Aozc.b = this.jdField_a_of_type_Aozc;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Aozc.jdField_a_of_type_Aozc == this.jdField_a_of_type_Aozc;
+  }
+  
+  public boolean a(T paramT)
+  {
+    if (paramT == null) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramapda.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramapda.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramLong);
+    for (aozc localaozc = this.jdField_a_of_type_Aozc.b; (localaozc != this.jdField_a_of_type_Aozc) && (this.jdField_a_of_type_JavaUtilComparator.compare(localaozc.jdField_a_of_type_JavaLangObject, paramT) > 0); localaozc = localaozc.b) {}
+    if (paramT.equals(localaozc.jdField_a_of_type_JavaLangObject)) {
+      return false;
+    }
+    paramT = new aozc(paramT, localaozc.jdField_a_of_type_Aozc, localaozc);
+    localaozc.jdField_a_of_type_Aozc.b = paramT;
+    localaozc.jdField_a_of_type_Aozc = paramT;
+    this.jdField_a_of_type_Int += 1;
     return true;
   }
   
-  public void b(long paramLong, apda paramapda) {}
+  public T b()
+  {
+    aozc localaozc = this.jdField_a_of_type_Aozc.b;
+    if (localaozc != this.jdField_a_of_type_Aozc) {
+      return localaozc.jdField_a_of_type_JavaLangObject;
+    }
+    return null;
+  }
+  
+  public boolean b(T paramT)
+  {
+    if (paramT == null) {
+      return false;
+    }
+    for (aozc localaozc = this.jdField_a_of_type_Aozc.jdField_a_of_type_Aozc; (localaozc != this.jdField_a_of_type_Aozc) && (this.jdField_a_of_type_JavaUtilComparator.compare(localaozc.jdField_a_of_type_JavaLangObject, paramT) < 0); localaozc = localaozc.jdField_a_of_type_Aozc) {}
+    if (paramT.equals(localaozc.jdField_a_of_type_JavaLangObject)) {
+      return false;
+    }
+    paramT = new aozc(paramT, localaozc, localaozc.b);
+    localaozc.b.jdField_a_of_type_Aozc = paramT;
+    localaozc.b = paramT;
+    this.jdField_a_of_type_Int += 1;
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozb
  * JD-Core Version:    0.7.0.1
  */

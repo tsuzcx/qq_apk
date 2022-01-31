@@ -1,31 +1,70 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.1;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.2;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.3;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.4;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.5;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.6;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class anfh
-  implements View.OnClickListener
+public class anfh
+  implements INetInfoHandler
 {
-  anfh(anfe paramanfe, String paramString) {}
+  anfh(anff paramanff) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    anfe.a(this.jdField_a_of_type_Anfe).removeCallbacks(anfe.a(this.jdField_a_of_type_Anfe));
-    anfe.a(this.jdField_a_of_type_Anfe).run();
-    int i = anfe.a(this.jdField_a_of_type_Anfe).getSelectionStart();
-    paramView = anfe.a(this.jdField_a_of_type_Anfe).getEditableText();
-    if ((i < 0) || (i >= paramView.length()))
-    {
-      paramView.append(this.jdField_a_of_type_JavaLangString);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2None mLastNetType=" + anff.b(this.a));
     }
-    paramView.insert(i, this.jdField_a_of_type_JavaLangString);
+    ArkAppCenter.a().post(anff.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.6(this));
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2Wifi mLastNetType=" + anff.b(this.a));
+    }
+    ArkAppCenter.a().post(anff.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.5(this));
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Mobile mLastNetType=" + anff.b(this.a));
+    }
+    ArkAppCenter.a().post(anff.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.4(this));
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Wifi mLastNetType=" + anff.b(this.a));
+    }
+    ArkAppCenter.a().post(anff.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.3(this));
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2Mobile mLastNetType=" + anff.b(this.a));
+    }
+    ArkAppCenter.a().post(anff.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.2(this));
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2None mLastNetType=" + anff.b(this.a));
+    }
+    ArkAppCenter.a().post(anff.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfh
  * JD-Core Version:    0.7.0.1
  */

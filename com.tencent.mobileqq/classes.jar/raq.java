@@ -1,45 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 class raq
-  extends quz
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  raq(ram paramram, BaseArticleInfo paramBaseArticleInfo) {}
+  raq(ran paramran) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (paramBoolean3)
-    {
-      if (paramBoolean4) {
-        this.jdField_a_of_type_Ram.jdField_a_of_type_Qtr.c();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(ran.a(), 2, "播放器状态回调 onVideoPrepared");
     }
-    else
-    {
-      if (paramBoolean1) {
-        break label77;
-      }
-      this.jdField_a_of_type_Ram.b = false;
+    ran.a(this.a, System.currentTimeMillis());
+    paramTVK_IMediaPlayer = new HashSet();
+    Iterator localIterator = ran.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext()) {
+      paramTVK_IMediaPlayer.add(((Map.Entry)localIterator.next()).getKey());
     }
-    for (;;)
-    {
-      if ((paramBoolean2) && (this.jdField_a_of_type_Ram.jdField_a_of_type_Qum != null)) {
-        this.jdField_a_of_type_Ram.jdField_a_of_type_Qum.a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, 0L);
-      }
-      return;
-      this.jdField_a_of_type_Ram.jdField_a_of_type_Qtr.b(2);
-      break;
-      label77:
-      if (this.jdField_a_of_type_Ram.b)
-      {
-        this.jdField_a_of_type_Ram.jdField_a_of_type_Qtr.c();
-        this.jdField_a_of_type_Ram.b = false;
-      }
-    }
+    ran.a(this.a).setExtractFrameModeInfo(true, paramTVK_IMediaPlayer);
+    ran.a(this.a).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     raq
  * JD-Core Version:    0.7.0.1
  */

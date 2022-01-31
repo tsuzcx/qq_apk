@@ -1,47 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.1;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.music.SongInfo;
 
 public final class angl
+  implements aumt
 {
-  private int jdField_a_of_type_Int;
-  private angn jdField_a_of_type_Angn;
-  public ango a;
-  private angq jdField_a_of_type_Angq;
-  private angr jdField_a_of_type_Angr;
-  public angs a;
-  private angt jdField_a_of_type_Angt;
-  private angv jdField_a_of_type_Angv;
-  private angw jdField_a_of_type_Angw;
-  private List<anha> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private String a;
   
-  public angj a()
+  public angl(String paramString)
   {
-    return new angj(this, null);
+    this.a = paramString;
   }
   
-  public angl a(int paramInt)
+  public String getToken()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    return angk.a();
   }
   
-  public angl a(angt paramangt)
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    this.jdField_a_of_type_Angt = paramangt;
-    return this;
+    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.2(this, paramSongInfo));
   }
   
-  public angl a(anha paramanha)
+  public void onPlayStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramanha);
-    return this;
+    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.1(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angl
  * JD-Core Version:    0.7.0.1
  */

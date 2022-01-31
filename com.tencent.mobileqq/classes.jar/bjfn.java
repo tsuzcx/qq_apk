@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class bjfn
-  implements avtm
+  implements EIPCResultCallback
 {
-  bjfn(bjfl parambjfl, boolean paramBoolean) {}
+  bjfn(bjfl parambjfl) {}
   
-  public void a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    SosoInterface.a(new bjfo(this, "NewStoryTakeVideoActivity"));
+    if (QLog.isColorLevel()) {
+      QLog.d("FontManager", 2, "startFontSoDownload download so success");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjfn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,50 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import java.util.Collection;
+import java.util.Iterator;
 
-class bbih
-  implements View.OnTouchListener
+public class bbih
 {
-  bbih(bbig parambbig) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static String a(Collection<TroopAIOAppInfo> paramCollection)
   {
-    this.a.a.setImageResource(2130846382);
-    this.a.a.setTag(Integer.valueOf(2130846382));
-    this.a.a();
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (bbig.a(paramCollection))
+    {
+      localStringBuilder.append("empty apps");
+      return localStringBuilder.toString();
+    }
+    localStringBuilder.append("[gray+ red*]");
+    paramCollection = paramCollection.iterator();
+    label41:
+    TroopAIOAppInfo localTroopAIOAppInfo;
+    if (paramCollection.hasNext())
+    {
+      localTroopAIOAppInfo = (TroopAIOAppInfo)paramCollection.next();
+      if (localTroopAIOAppInfo.isGray) {
+        localStringBuilder.append("+");
+      }
+      if (localTroopAIOAppInfo.redPoint) {
+        localStringBuilder.append("*");
+      }
+      if (TextUtils.isEmpty(localTroopAIOAppInfo.name)) {
+        break label117;
+      }
+      localStringBuilder.append(localTroopAIOAppInfo.name);
+    }
+    for (;;)
+    {
+      localStringBuilder.append(" ");
+      break label41;
+      break;
+      label117:
+      localStringBuilder.append("id:");
+      localStringBuilder.append(localTroopAIOAppInfo.appid);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbih
  * JD-Core Version:    0.7.0.1
  */

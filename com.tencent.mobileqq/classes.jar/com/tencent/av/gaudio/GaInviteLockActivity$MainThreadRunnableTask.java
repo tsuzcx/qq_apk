@@ -1,11 +1,8 @@
 package com.tencent.av.gaudio;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.TextView;
-import muc;
 
 class GaInviteLockActivity$MainThreadRunnableTask
   implements Runnable
@@ -28,21 +25,19 @@ class GaInviteLockActivity$MainThreadRunnableTask
     if (this.this$0.jdField_a_of_type_AndroidWidgetImageView != null) {
       this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    if (this.this$0.b != null) {
-      this.this$0.b.setText(this.b);
+    if (this.this$0.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(this.b);
     }
     if (this.this$0.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      float f = this.this$0.getResources().getDimensionPixelSize(2131297021);
-      String str = muc.a(this.this$0.getApplicationContext(), this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_AndroidWidgetTextView, f);
-      str = String.format(this.this$0.getApplicationContext().getString(2131692966), new Object[] { String.valueOf(str) });
+      String str = this.this$0.a(this.this$0.jdField_b_of_type_Int, this.this$0.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, true, false);
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteLockActivity.MainThreadRunnableTask
  * JD-Core Version:    0.7.0.1
  */

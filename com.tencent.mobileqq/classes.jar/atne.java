@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
-
-public class atne
+public abstract interface atne
 {
-  public float a;
-  public float[] a;
-  
-  private atne(MetaballView paramMetaballView) {}
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atne
  * JD-Core Version:    0.7.0.1
  */

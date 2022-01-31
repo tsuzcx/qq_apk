@@ -1,27 +1,32 @@
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Collections;
+import java.util.List;
 
-public class uvq
-  implements Comparator<uvp>
+class uvq
+  extends SimpleObserver<List<vhg>>
 {
-  public int a(uvp paramuvp1, uvp paramuvp2)
+  uvq(uvn paramuvn, uvr paramuvr, utx paramutx) {}
+  
+  public void a(List<vhg> paramList)
   {
-    if (paramuvp1.a == paramuvp2.a) {
-      if (!paramuvp1.b) {}
+    super.onNext(paramList);
+    if (this.jdField_a_of_type_Uvr != null) {
+      this.jdField_a_of_type_Uvr.a(this.jdField_a_of_type_Utx, Collections.emptyList());
     }
-    while (paramuvp1.a > paramuvp2.a)
-    {
-      return -1;
-      if (paramuvp2.b) {
-        return 1;
-      }
-      return 0;
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Uvr != null) {
+      this.jdField_a_of_type_Uvr.a(this.jdField_a_of_type_Utx, paramError);
     }
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uvq
  * JD-Core Version:    0.7.0.1
  */

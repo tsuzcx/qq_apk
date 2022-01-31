@@ -1,23 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
 
-public final class qjt
-  implements Parcelable.Creator<LikeAnimationInfo>
+public class qjt
+  extends bame
 {
-  public LikeAnimationInfo a(Parcel paramParcel)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return new LikeAnimationInfo(paramParcel);
+    paramDownloadParams = paramDownloadParams.urlStr;
+    if (paramDownloadParams.startsWith("readinjoy_skin_gif://")) {
+      paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif://", "");
+    }
+    for (;;)
+    {
+      paramOutputStream = new File(paramOutputStream);
+      if (!paramOutputStream.exists()) {
+        break;
+      }
+      return paramOutputStream;
+      paramOutputStream = paramDownloadParams;
+      if (paramDownloadParams.startsWith("readinjoy_skin_gif:")) {
+        paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif:", "");
+      }
+    }
+    return null;
   }
   
-  public LikeAnimationInfo[] a(int paramInt)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return new LikeAnimationInfo[paramInt];
+    return new qju(this, paramFile, false, false, 0, 0, 0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qjt
  * JD-Core Version:    0.7.0.1
  */

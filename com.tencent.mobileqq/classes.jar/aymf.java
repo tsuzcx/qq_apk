@@ -1,14 +1,15 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
 
-public abstract interface aymf
+public abstract interface aymf<M extends ayji, V extends ayrs>
+  extends aymg<M, V>
 {
-  public abstract void a(Bundle paramBundle);
+  public abstract void a(M paramM, V paramV);
   
-  public abstract void b(Bundle paramBundle);
+  public abstract void a(M paramM, V paramV, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aymf
  * JD-Core Version:    0.7.0.1
  */

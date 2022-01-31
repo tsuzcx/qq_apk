@@ -1,30 +1,32 @@
 package com.tencent.mobileqq.minigame.gpkg;
 
-import android.os.Bundle;
+import com.tencent.mobileqq.mini.apkg.ApkgMainProcessManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.launch.CmdCallback.Stub;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 final class GpkgManager$1
-  extends CmdCallback.Stub
+  implements GpkgManager.OnInitGpkgListener
 {
   GpkgManager$1(MiniAppConfig paramMiniAppConfig, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener) {}
   
-  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
-    if (paramBoolean) {
-      GpkgManager.access$000(this.val$gameConfig, this.val$listener);
+    if (this.val$listener != null) {
+      this.val$listener.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
     }
-    while (paramBundle == null) {
-      return;
+  }
+  
+  public void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString)
+  {
+    ApkgMainProcessManager.removeSubProcessLoadTask(this.val$gameConfig);
+    if (this.val$listener != null) {
+      this.val$listener.onInitGpkgInfo(paramInt, paramMiniGamePkg, paramString);
     }
-    float f = paramBundle.getFloat("PROGRESS");
-    long l = paramBundle.getLong("TOTAL_SIZE");
-    this.val$listener.onDownloadGpkgProgress(this.val$gameConfig.config, f, l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.gpkg.GpkgManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.os.Handler;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.JSONUtil;
@@ -133,7 +133,7 @@ class AudioJsPlugin$InnerAudioManager
       i = this.audioContext.optInt("startTime");
       bool = this.audioContext.optBoolean("loop");
       d = this.audioContext.optDouble("volume");
-      if (!bbkk.a(str)) {}
+      if (!bdje.a(str)) {}
     }
     else
     {
@@ -259,7 +259,7 @@ class AudioJsPlugin$InnerAudioManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.InnerAudioManager
  * JD-Core Version:    0.7.0.1
  */

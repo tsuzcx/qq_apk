@@ -1,56 +1,38 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.1;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.2;
+import com.tencent.mobileqq.activity.AddRequestActivity.13.3;
+import java.util.ArrayList;
 
 public class abyz
-  extends aumg
+  extends almw
 {
-  public abyz(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public abyz(AddRequestActivity paramAddRequestActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
+    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
+      this.a.runOnUiThread(new AddRequestActivity.13.3(this));
     }
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
+    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
+      this.a.runOnUiThread(new AddRequestActivity.13.2(this));
     }
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        RegisterQQNumberActivity.a(this.a, true);
-        RegisterQQNumberActivity.b(this.a);
-        return;
-      }
-      if ((paramBoolean3) && (!TextUtils.isEmpty(paramString)))
-      {
-        RegisterQQNumberActivity.a(this.a);
-        Intent localIntent = new Intent(this.a, VerifyPhoneNumActivity.class);
-        localIntent.putExtra("phonenum", this.a.a);
-        localIntent.putExtra("key", this.a.b);
-        localIntent.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-        localIntent.putExtra("key_register_sign", RegisterQQNumberActivity.a(this.a));
-        localIntent.putExtra("key_register_binduin", paramString);
-        this.a.startActivity(localIntent);
-        this.a.finish();
-        return;
-      }
-      RegisterQQNumberActivity.b(this.a);
-      return;
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
+      this.a.runOnUiThread(new AddRequestActivity.13.1(this));
     }
-    RegisterQQNumberActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyz
  * JD-Core Version:    0.7.0.1
  */

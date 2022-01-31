@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ahfa;
-import ajsd;
+import aize;
+import aljq;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
@@ -11,7 +11,7 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.os.Handler;
 import android.os.Looper;
-import bbdx;
+import bdcs;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,14 +23,14 @@ class LineLayer$SaveTempFileJob
   private int jdField_a_of_type_Int = -1;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public final String a;
-  private WeakReference<ahfa> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<aize> jdField_a_of_type_JavaLangRefWeakReference;
   private int b = -1;
   
-  public LineLayer$SaveTempFileJob(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, ahfa paramahfa)
+  public LineLayer$SaveTempFileJob(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, aize paramaize)
   {
-    this.jdField_a_of_type_JavaLangString = (ajsd.cl + "temp" + File.separator);
+    this.jdField_a_of_type_JavaLangString = (aljq.cm + "temp" + File.separator);
     QLog.d("SaveTempFileJob", 2, "SaveTempFileJob begin:");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramahfa);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaize);
     if (paramBitmap == null) {
       return;
     }
@@ -83,8 +83,8 @@ class LineLayer$SaveTempFileJob
       try
       {
         String str = this.jdField_a_of_type_JavaLangString + paramInt + ".tmp";
-        if (bbdx.a(str)) {
-          bbdx.d(str);
+        if (bdcs.a(str)) {
+          bdcs.d(str);
         }
         FileOutputStream localFileOutputStream = new FileOutputStream(str);
         paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localFileOutputStream);
@@ -142,7 +142,7 @@ class LineLayer$SaveTempFileJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.LineLayer.SaveTempFileJob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bgyi;
+import bizf;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
@@ -76,7 +76,7 @@ public class LpReportInfo_DC02543
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC02543
  * JD-Core Version:    0.7.0.1
  */

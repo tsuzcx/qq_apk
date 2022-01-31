@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.launcher.annotation;
 
-import bere;
-import berf;
+import bgqv;
+import bgqw;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class JsonORM
 {
-  private static final Map<Class, berf[]> a = new IdentityHashMap();
+  private static final Map<Class, bgqw[]> a = new IdentityHashMap();
   
   public static int a(Class<?> paramClass)
   {
@@ -45,7 +45,7 @@ public class JsonORM
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (berf[])a.get(paramClass);
+    Object localObject2 = (bgqw[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -199,25 +199,25 @@ public class JsonORM
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class<?> paramClass, ArrayList<berf> paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<bgqw> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
     if (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      bere localbere = (bere)localField.getAnnotation(bere.class);
-      if (localbere == null) {}
+      bgqv localbgqv = (bgqv)localField.getAnnotation(bgqv.class);
+      if (localbgqv == null) {}
       for (;;)
       {
         i += 1;
         break;
-        paramArrayList.add(new berf(localbere.a(), a(localField.getType()), localField));
+        paramArrayList.add(new bgqw(localbgqv.a(), a(localField.getType()), localField));
       }
     }
   }
   
-  private static berf[] a(Class<?> paramClass)
+  private static bgqw[] a(Class<?> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -225,7 +225,7 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new berf[localArrayList.size()];
+    paramClass = new bgqw[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }
@@ -259,7 +259,7 @@ public class JsonORM
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.annotation.JsonORM
  * JD-Core Version:    0.7.0.1
  */

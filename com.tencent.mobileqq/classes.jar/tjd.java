@@ -1,44 +1,19 @@
-public abstract class tjd
+import android.content.Context;
+
+public abstract class tjd<MSG extends tiw, INFO extends tix>
 {
-  protected int a;
-  protected tjb a;
+  MSG a;
   
-  public abstract void a();
-  
-  public void a(tjb paramtjb)
+  public tjd(MSG paramMSG)
   {
-    this.jdField_a_of_type_Tjb = paramtjb;
+    this.a = paramMSG;
   }
   
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int < 1)
-    {
-      this.jdField_a_of_type_Int += 1;
-      ved.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-      a();
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Tjb != null) {
-      this.jdField_a_of_type_Tjb.a(this);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Tjb != null) {
-      this.jdField_a_of_type_Tjb.b(this);
-    }
-  }
+  public abstract boolean a(Context paramContext, INFO paramINFO);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjd
  * JD-Core Version:    0.7.0.1
  */

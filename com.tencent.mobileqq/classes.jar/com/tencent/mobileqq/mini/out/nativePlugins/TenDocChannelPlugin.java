@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import ayed;
-import ayek;
-import ayhm;
+import baca;
+import bach;
+import bafi;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
@@ -73,8 +73,8 @@ public class TenDocChannelPlugin
     {
       paramString = new JSONObject(paramString).optString("fileName");
       new Bundle().putString("fileName", paramString);
-      ayek.a(paramActivity, paramString, true);
-      ayhm.a(null, "0X800A4B2");
+      bach.a(paramActivity, paramString, true);
+      bafi.a(null, "0X800A4B2");
       return;
     }
     catch (Exception paramActivity)
@@ -93,7 +93,7 @@ public class TenDocChannelPlugin
     {
       paramString = new JSONObject(paramString).optString("folderId");
       Intent localIntent = new Intent(paramActivity, FMActivity.class);
-      localIntent.putExtra(ayed.f, true);
+      localIntent.putExtra(baca.f, true);
       localIntent.addFlags(536870912);
       localIntent.putExtra("selectMode", true);
       localIntent.putExtra("busiType", 9);
@@ -101,7 +101,7 @@ public class TenDocChannelPlugin
       localIntent.putExtra("enterfrom", 9);
       localIntent.putExtra("tab_tab_type", 7);
       localIntent.putExtra("only_show_local_tab", true);
-      localIntent.putExtra(ayed.g, paramString);
+      localIntent.putExtra(baca.g, paramString);
       localIntent.putExtra("smart_device_support_flag", 8);
       paramActivity.startActivity(localIntent);
       return;
@@ -150,7 +150,7 @@ public class TenDocChannelPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TenDocChannelPlugin
  * JD-Core Version:    0.7.0.1
  */

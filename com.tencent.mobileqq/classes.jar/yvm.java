@@ -1,88 +1,169 @@
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import com.tencent.gdtad.api.motivevideo.GdtMvAnimation585V.1;
+import android.os.Looper;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.1;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.2;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.3;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.4;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.5;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.6;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.7;
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.observer.BusinessObserver;
 
 public class yvm
-  extends yvr
+  implements BusinessObserver
 {
-  private Runnable a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private final ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, yvn>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  protected yvm(Context paramContext)
+  private void a(int paramInt, Bundle paramBundle, boolean paramBoolean)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new GdtMvAnimation585V.1(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    yxp.b("GdtMotiveVideoAd", "585V doAnimation " + this.jdField_a_of_type_Yvj + " targetMode " + paramInt);
-    yvi localyvi;
-    if (this.jdField_a_of_type_Yvj != null)
+    Object localObject2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    if (localObject2 == null)
     {
-      localyvi = (yvi)this.jdField_a_of_type_Yvj;
-      a();
-      if (paramInt == 1)
-      {
-        if (localyvi.jdField_a_of_type_AndroidViewView != null) {
-          localyvi.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        }
-        a(localyvi.jdField_f_of_type_AndroidViewView, localyvi.j, localyvi.k);
-        a(localyvi.jdField_e_of_type_AndroidViewView, localyvi.jdField_g_of_type_Int, localyvi.h);
-        a(localyvi.jdField_b_of_type_AndroidViewView, localyvi.jdField_a_of_type_Int, localyvi.jdField_b_of_type_Int);
-        a(localyvi.jdField_d_of_type_AndroidViewView, localyvi.jdField_e_of_type_Int, localyvi.jdField_f_of_type_Int);
-        a(localyvi.jdField_c_of_type_AndroidViewView, localyvi.jdField_c_of_type_Int, localyvi.jdField_d_of_type_Int);
-      }
-    }
-    else
-    {
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: cmdCallback has All Removed");
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
-    a(localyvi.jdField_f_of_type_AndroidViewView, -localyvi.j, -localyvi.k);
-    a(localyvi.jdField_e_of_type_AndroidViewView, -localyvi.jdField_g_of_type_Int, -localyvi.h);
-    a(localyvi.jdField_b_of_type_AndroidViewView, -localyvi.jdField_a_of_type_Int, -localyvi.jdField_b_of_type_Int);
-    a(localyvi.jdField_d_of_type_AndroidViewView, -localyvi.jdField_e_of_type_Int, -localyvi.jdField_f_of_type_Int);
-    a(localyvi.jdField_c_of_type_AndroidViewView, -localyvi.jdField_c_of_type_Int, -localyvi.jdField_d_of_type_Int);
+    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramBundle.getSerializable("key_request_data");
+    if (localVSBaseRequest == null)
+    {
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: request is null");
+      return;
+    }
+    if (((ConcurrentHashMap)localObject2).get(Integer.valueOf(localVSBaseRequest.getCurrentSeq())) == null)
+    {
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | cmdCallback SeqId:" + localVSBaseRequest.getCurrentSeq() + " is Null or has Removed");
+      return;
+    }
+    Object localObject1 = (FromServiceMsg)paramBundle.getParcelable("key_response_msg");
+    long l1 = paramBundle.getLong("key_send_timestamp");
+    paramBundle = (yvn)((ConcurrentHashMap)localObject2).remove(Integer.valueOf(localVSBaseRequest.getCurrentSeq()));
+    if (paramBundle == null)
+    {
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | cmdCallback SeqId:" + localVSBaseRequest.getCurrentSeq() + " onVSRspCallBack is Null or removed");
+      return;
+    }
+    if (localObject1 != null)
+    {
+      long l2;
+      MessageMicro localMessageMicro;
+      try
+      {
+        localObject2 = localVSBaseRequest.parseResponseWrapper(bdku.b(((FromServiceMsg)localObject1).getWupBuffer()));
+        l2 = ((Long)localObject2[0]).longValue();
+        localObject1 = (String)localObject2[1];
+        localObject2 = ((ByteStringMicro)localObject2[2]).toByteArray();
+        localMessageMicro = localVSBaseRequest.decode((byte[])localObject2);
+        if (localMessageMicro == null)
+        {
+          a().post(new VSDispatchObserver.2(this, paramBundle, l2, (String)localObject1, localVSBaseRequest, l1));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        a().post(new VSDispatchObserver.4(this, paramBundle, localVSBaseRequest, l1, localException));
+        return;
+      }
+      a().post(new VSDispatchObserver.3(this, paramBoolean, l2, localVSBaseRequest, (byte[])localObject2, paramBundle, localException, localMessageMicro, l1));
+      return;
+    }
+    a().post(new VSDispatchObserver.5(this, paramBundle, localVSBaseRequest, l1));
   }
   
-  public void a(View paramView1, View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, View paramView7, View paramView8)
+  private void a(VSBaseRequest paramVSBaseRequest, byte[] paramArrayOfByte)
   {
-    yvi localyvi = new yvi();
-    localyvi.jdField_a_of_type_AndroidViewView = paramView1;
-    localyvi.jdField_f_of_type_AndroidViewView = paramView3;
-    localyvi.jdField_g_of_type_AndroidViewView = paramView2;
-    localyvi.j = yzb.a(-406, 1334, yzb.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvi.k = yzb.a(125, 750, yzb.f(this.jdField_a_of_type_AndroidContentContext));
-    float f = yzb.a(220, 750, yzb.f(this.jdField_a_of_type_AndroidContentContext));
-    if (f > 0.0F)
+    if (bdje.a(paramVSBaseRequest.getRequestKey()))
     {
-      localyvi.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / yzb.f(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
-      localyvi.jdField_b_of_type_Float = localyvi.jdField_a_of_type_Float;
+      wsv.d("VSNetworkHelper| Protocol Cache", "requestKey is empty");
+      return;
     }
-    localyvi.l = yzb.a(50, 750, yzb.f(this.jdField_a_of_type_AndroidContentContext));
-    localyvi.m = yzb.a(50, 1334, yzb.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvi.jdField_b_of_type_AndroidViewView = paramView4;
-    localyvi.jdField_c_of_type_AndroidViewView = paramView5;
-    localyvi.jdField_d_of_type_AndroidViewView = paramView6;
-    localyvi.jdField_e_of_type_AndroidViewView = paramView7;
-    localyvi.jdField_a_of_type_Int = yzb.a(-618, 1334, yzb.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvi.jdField_b_of_type_Int = yzb.a(275, 750, yzb.f(this.jdField_a_of_type_AndroidContentContext));
-    localyvi.jdField_c_of_type_Int = yzb.a(-457, 1334, yzb.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvi.jdField_d_of_type_Int = ((yzb.f(this.jdField_a_of_type_AndroidContentContext) - paramView5.getWidth()) / 2 - yzb.a(196, 750, yzb.f(this.jdField_a_of_type_AndroidContentContext)));
-    localyvi.jdField_e_of_type_Int = yzb.a(-451, 1334, yzb.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvi.jdField_f_of_type_Int = ((yzb.f(this.jdField_a_of_type_AndroidContentContext) - paramView6.getWidth()) / 2 - yzb.a(196, 750, yzb.f(this.jdField_a_of_type_AndroidContentContext)));
-    localyvi.jdField_g_of_type_Int = yzb.a(-440, 1334, yzb.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvi.h = ((yzb.f(this.jdField_a_of_type_AndroidContentContext) - paramView7.getWidth()) / 2 - yzb.a(196, 750, yzb.f(this.jdField_a_of_type_AndroidContentContext)));
-    a(localyvi, paramView8);
-    this.jdField_a_of_type_Yvj = localyvi;
+    ThreadManagerV2.executeOnFileThread(new VSDispatchObserver.6(this, paramVSBaseRequest, paramArrayOfByte));
+  }
+  
+  public Handler a()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    }
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        int i = ((Integer)localIterator.next()).intValue();
+        ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+        if (localConcurrentHashMap != null) {
+          localConcurrentHashMap.clear();
+        }
+      }
+    }
+    finally {}
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (paramContext == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramContext.hashCode())) == null);
+      paramContext = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramContext.hashCode()));
+    } while (paramContext == null);
+    paramContext.clear();
+  }
+  
+  public void a(VSBaseRequest paramVSBaseRequest, MessageMicro paramMessageMicro)
+  {
+    a().post(new VSDispatchObserver.7(this, paramVSBaseRequest, paramMessageMicro));
+  }
+  
+  public void a(VSBaseRequest paramVSBaseRequest, yvn paramyvn)
+  {
+    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramVSBaseRequest.getContextHashCode()));
+    ConcurrentHashMap localConcurrentHashMap1 = localConcurrentHashMap2;
+    if (localConcurrentHashMap2 == null)
+    {
+      localConcurrentHashMap1 = new ConcurrentHashMap();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramVSBaseRequest.getContextHashCode()), localConcurrentHashMap1);
+    }
+    try
+    {
+      localConcurrentHashMap1.put(Integer.valueOf(paramVSBaseRequest.getNewSeq()), paramyvn);
+      return;
+    }
+    catch (Exception paramVSBaseRequest)
+    {
+      paramVSBaseRequest.printStackTrace();
+      QLog.e("VSNetworkHelper", 1, "setCallBack exception occur!" + paramVSBaseRequest.toString());
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    ThreadManagerV2.excute(new VSDispatchObserver.1(this, paramInt, paramBundle, paramBoolean), 16, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,135 +1,50 @@
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
 
-public class bgrf
+class bgrf
+  implements DownloaderProxy.DownloadListener
 {
-  private final HashSet<WeakReference<bgrg>> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private final ConcurrentHashMap<Integer, HashSet<WeakReference<bgrg>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  bgrf(bgrb parambgrb, bgrh parambgrh, bgjw parambgjw, MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2) {}
   
-  public void a(int paramInt, Object paramObject, Object... paramVarArgs)
+  public void onDownloadFailed(int paramInt, String paramString)
   {
-    Object localObject1 = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    if (this.jdField_a_of_type_Bgrh != null)
     {
-      HashSet localHashSet = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-      if (localHashSet != null) {
-        ((ArrayList)localObject1).addAll(localHashSet);
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      ((ArrayList)localObject1).addAll(this.jdField_a_of_type_JavaUtilHashSet);
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        ??? = (bgrg)((WeakReference)((Iterator)localObject1).next()).get();
-        if (??? != null)
-        {
-          ((bgrg)???).a(paramInt, paramObject, paramVarArgs);
-          continue;
-          paramObject = finally;
-          throw paramObject;
-        }
-      }
+      this.jdField_a_of_type_Bgrh.onInitApkgInfo(2, this.jdField_a_of_type_Bgjw, "下载失败");
+      QMLog.d("ApkgManager", "onDownloadFailed() called with: statusCode = [" + paramInt + "], errorMsg = [" + paramString + "]");
     }
   }
   
-  public void a(bgrg parambgrg)
-  {
-    if (parambgrg == null) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator;
-    Object localObject2;
-    Object localObject3;
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject2 = (WeakReference)localIterator.next();
-        localObject3 = (bgrg)((WeakReference)localObject2).get();
-        if ((localObject3 == null) || (parambgrg == localObject3)) {
-          localArrayList.add(localObject2);
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.removeAll(localArrayList);
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-      {
-        localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        int i = ((Integer)localIterator.next()).intValue();
-        localObject2 = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-        localArrayList.clear();
-        localObject3 = ((HashSet)localObject2).iterator();
-        if (((Iterator)localObject3).hasNext())
-        {
-          WeakReference localWeakReference = (WeakReference)((Iterator)localObject3).next();
-          bgrg localbgrg = (bgrg)localWeakReference.get();
-          if ((localbgrg != null) && (parambgrg != localbgrg)) {
-            continue;
-          }
-          localArrayList.add(localWeakReference);
-        }
-      }
-      ((HashSet)localObject2).removeAll(localArrayList);
-    }
-  }
+  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
   
-  public void a(bgrg parambgrg, int... arg2)
+  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
+  
+  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
   {
-    if (parambgrg == null) {
-      return;
-    }
-    a(parambgrg);
-    parambgrg = new WeakReference(parambgrg);
-    if ((??? == null) || (???.length == 0)) {
-      synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-      {
-        this.jdField_a_of_type_JavaUtilHashSet.add(parambgrg);
-        return;
+    bgyd.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 614, this.jdField_a_of_type_JavaLangString, null, null, 0, "0", 0L, null);
+    bgyd.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 615, this.jdField_a_of_type_JavaLangString, null, null, 0, "0", 0L, null);
+    paramString = bgrb.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    boolean bool = bgjt.a(new File(this.b).getAbsolutePath(), paramString, bgrb.a(this.jdField_a_of_type_Bgrb));
+    QMLog.d("ApkgManager", "downloadSubPack | getResPath :hasUnpack=" + bool + "; folderPath=" + paramString + "; subRoot=" + bgrb.a(this.jdField_a_of_type_Bgrb));
+    bgyd.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 616, this.jdField_a_of_type_JavaLangString, null, null, 0, "0", 0L, null);
+    if (bool) {
+      if (this.jdField_a_of_type_Bgrh != null) {
+        this.jdField_a_of_type_Bgrh.onInitApkgInfo(0, this.jdField_a_of_type_Bgjw, null);
       }
     }
-    for (;;)
-    {
-      int i;
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-      {
-        int j = ???.length;
-        i = 0;
-        if (i < j)
-        {
-          int k = ???[i];
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(k)))
-          {
-            ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(k))).add(parambgrg);
-          }
-          else
-          {
-            HashSet localHashSet = new HashSet();
-            localHashSet.add(parambgrg);
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(k), localHashSet);
-          }
-        }
-      }
+    while (this.jdField_a_of_type_Bgrh == null) {
       return;
-      i += 1;
     }
+    this.jdField_a_of_type_Bgrh.onInitApkgInfo(3, this.jdField_a_of_type_Bgjw, "解包失败");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgrf
  * JD-Core Version:    0.7.0.1
  */

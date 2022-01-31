@@ -1,18 +1,24 @@
-import com.tencent.YTFace.model.FaceStatus;
+import android.content.Context;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class algj
+  extends alhq
 {
-  public int a = 3000;
-  public FaceStatus[] a;
-  
-  public String toString()
+  public algj(String paramString)
   {
-    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
+    super(paramString);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    super.a(paramQQAppInterface, paramContext, paramEditText, paramSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algj
  * JD-Core Version:    0.7.0.1
  */

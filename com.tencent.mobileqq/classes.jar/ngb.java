@@ -1,41 +1,85 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ngb
-  extends akws
+  implements bcgo
 {
   ngb(nga paramnga) {}
   
-  public int a()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return 7;
-  }
-  
-  public void a(Object paramObject)
-  {
-    nfr.b(this.a.a, this.a.a.jdField_a_of_type_Int);
-    if (this.a.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      this.a.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("setting_status_" + this.a.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.a.jdField_a_of_type_Int).apply();
+    nga.a(this.a);
+    String str = "";
+    long l = 0L;
+    Object localObject1 = "";
+    if (paramBundle != null)
+    {
+      l = paramBundle.getLong("time", 0L);
+      str = paramBundle.getString("room_id");
+      localObject1 = paramBundle.getString("friendUin");
     }
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailGroupListContainer", 2, "New 0xc76 onGetRecvMsgState isSuccess = " + paramBoolean);
+    localObject1 = this.a.a((String)localObject1, l);
+    if (paramJSONObject == null)
+    {
+      nga.b(this.a);
+      this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), localObject1, paramBundle });
+      return;
     }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), null, paramBundle });
+          return;
+          Object localObject2 = paramJSONObject.optJSONObject("result");
+          if ((localObject2 != null) && (((JSONObject)localObject2).optInt("retcode") == 0))
+          {
+            paramJSONObject = new ArrayList();
+            localObject2 = ((JSONObject)localObject2).optJSONArray("videoURLList");
+            if (localObject2 != null)
+            {
+              int i = 0;
+              for (;;)
+              {
+                if (i < ((JSONArray)localObject2).length()) {
+                  try
+                  {
+                    paramJSONObject.add(((JSONArray)localObject2).getString(i));
+                    i += 1;
+                  }
+                  catch (JSONException localJSONException)
+                  {
+                    for (;;)
+                    {
+                      localJSONException.printStackTrace();
+                    }
+                  }
+                }
+              }
+              ((ngc)localObject1).jdField_a_of_type_JavaUtilList = paramJSONObject;
+              ((ngc)localObject1).b = str;
+            }
+            this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
+          }
+        }
+      } while (paramJSONObject.optInt("retcode") != 0);
+      paramJSONObject = paramJSONObject.optJSONObject("result");
+    } while (paramJSONObject == null);
+    ((ngc)localObject1).jdField_a_of_type_Int = paramJSONObject.optInt("state");
+    this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
   }
-  
-  public void b(Object paramObject) {}
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngb
  * JD-Core Version:    0.7.0.1
  */

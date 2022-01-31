@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.Arrays;
-import qjt;
+import qza;
 
 public class LikeAnimationInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<LikeAnimationInfo> CREATOR = new qjt();
+  public static final Parcelable.Creator<LikeAnimationInfo> CREATOR = new qza();
   public int a;
   public String[] a;
   
@@ -39,7 +39,7 @@ public class LikeAnimationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo
  * JD-Core Version:    0.7.0.1
  */

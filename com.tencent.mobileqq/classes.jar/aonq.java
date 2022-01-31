@@ -1,24 +1,16 @@
-public class aonq
-  extends aonp
+import java.util.Comparator;
+
+final class aonq
+  implements Comparator<balg>
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  
-  public aonq(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  public int a(balg parambalg1, balg parambalg2)
   {
-    super(2, paramString1);
-    this.a = paramString2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
+    return parambalg1.c - parambalg2.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonq
  * JD-Core Version:    0.7.0.1
  */

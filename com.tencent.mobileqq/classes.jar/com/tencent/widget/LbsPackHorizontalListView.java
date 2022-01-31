@@ -3,7 +3,7 @@ package com.tencent.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import bfuc;
+import bhuz;
 
 public class LbsPackHorizontalListView
   extends HorizontalListView
@@ -47,7 +47,7 @@ public class LbsPackHorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.LbsPackHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

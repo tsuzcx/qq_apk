@@ -1,150 +1,89 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class axwz
-  extends axuq
 {
-  protected int b()
+  private volatile long jdField_a_of_type_Long;
+  private axxb jdField_a_of_type_Axxb;
+  private String jdField_a_of_type_JavaLangString;
+  private HashSet<String> jdField_a_of_type_JavaUtilHashSet;
+  
+  public axwz(String paramString, axxb paramaxxb)
   {
-    return 11;
+    paramString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Axxb = paramaxxb;
   }
   
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  public static File a()
   {
-    Object localObject4 = paramContext.getResources();
-    float f;
-    if ((paramView != null) && ((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof axxa)))
-    {
-      localObject1 = (axxa)paramView.getTag();
-      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (axup)((Iterator)localObject2).next();
-        ((axup)localObject3).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        localObject4 = ((axup)localObject3).jdField_a_of_type_JavaLangString;
-        if ("title".equals(localObject4))
-        {
-          localObject3 = (StructMsgItemTitle)localObject3;
-          ((StructMsgItemTitle)localObject3).b("#ffffff");
-          f = ajwc.a() / 16.0F;
-          if (f > 1.0F) {
-            ((StructMsgItemTitle)localObject3).c("" + (int)(36 / f));
-          }
-          for (;;)
-          {
-            ((StructMsgItemTitle)localObject3).a(paramContext, ((axxa)localObject1).b, paramBundle);
-            break;
-            ((StructMsgItemTitle)localObject3).c(String.valueOf(36));
-          }
-        }
-        if ("pavideo".equals(localObject4)) {
-          ((axup)localObject3).a(paramContext, ((axxa)localObject1).a, paramBundle);
-        }
-      }
-      if ((localObject1 != null) && (((axxa)localObject1).b != null)) {
-        ((TextView)((axxa)localObject1).b).setMaxLines(2);
-      }
-      return paramView;
+    if (bdag.a()) {
+      return new File(aljq.aX + "status_ic");
     }
-    Object localObject2 = new RelativeLayout(paramContext);
-    int i = (int)((BaseChatItemLayout.a - actj.a(46.0F, (Resources)localObject4)) / 1.8D) + actj.a(30.0F, (Resources)localObject4);
-    ((RelativeLayout)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, i));
-    int j = actj.a(15.0F, (Resources)localObject4);
-    ((RelativeLayout)localObject2).setPadding(j, j, j, j);
-    Object localObject3 = new axxa();
-    Object localObject1 = null;
-    paramView = null;
-    Object localObject5 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    axup localaxup;
-    String str;
-    if (((Iterator)localObject5).hasNext())
-    {
-      localaxup = (axup)((Iterator)localObject5).next();
-      localaxup.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-      str = localaxup.jdField_a_of_type_JavaLangString;
-      if ("title".equals(str))
-      {
-        localObject1 = (StructMsgItemTitle)localaxup;
-        ((StructMsgItemTitle)localObject1).b("#ffffff");
-        f = ajwc.a() / 16.0F;
-        if (f > 1.0F)
-        {
-          ((StructMsgItemTitle)localObject1).c("" + (int)(36 / f));
-          label439:
-          localObject1 = ((StructMsgItemTitle)localObject1).a(paramContext, null, paramBundle);
-          ((View)localObject1).setId(1001);
-        }
-      }
-    }
-    for (;;)
-    {
-      break;
-      ((StructMsgItemTitle)localObject1).c(String.valueOf(36));
-      break label439;
-      if ("pavideo".equals(str))
-      {
-        paramView = localaxup.a(paramContext, null, paramBundle);
-        paramView.setId(1003);
-        continue;
-        if (paramView != null) {
-          ((RelativeLayout)localObject2).addView(paramView, new RelativeLayout.LayoutParams(-1, -1));
-        }
-        paramBundle = new View(paramContext);
-        i = (int)(i * 0.32D);
-        paramBundle.setBackgroundResource(2130841308);
-        localObject5 = new RelativeLayout.LayoutParams(-1, i);
-        ((RelativeLayout.LayoutParams)localObject5).addRule(12, -1);
-        ((RelativeLayout)localObject2).addView(paramBundle, (ViewGroup.LayoutParams)localObject5);
-        if (localObject1 != null)
-        {
-          paramBundle = new RelativeLayout.LayoutParams(-1, -2);
-          paramBundle.addRule(12, -1);
-          paramBundle.bottomMargin = actj.a(11.5F, (Resources)localObject4);
-          paramBundle.leftMargin = actj.a(20.0F, (Resources)localObject4);
-          paramBundle.rightMargin = actj.a(20.0F, (Resources)localObject4);
-          ((RelativeLayout)localObject2).addView((View)localObject1, paramBundle);
-        }
-        paramBundle = new RelativeLayout.LayoutParams(actj.a(52.5F, (Resources)localObject4), actj.a(52.5F, (Resources)localObject4));
-        paramBundle.addRule(15, -1);
-        paramContext = new ImageView(paramContext);
-        paramContext.setImageResource(2130841241);
-        paramContext.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        paramBundle.addRule(14, -1);
-        ((RelativeLayout)localObject2).addView(paramContext, paramBundle);
-        if (paramView != null) {
-          ((axxa)localObject3).a = paramView;
-        }
-        if (localObject1 != null)
-        {
-          ((axxa)localObject3).b = ((View)localObject1);
-          ((TextView)((axxa)localObject3).b).setMaxLines(1);
-        }
-        ((RelativeLayout)localObject2).setTag(localObject3);
-        return localObject2;
-      }
-    }
+    return null;
   }
   
-  public String b()
+  private boolean a(String paramString, File paramFile)
   {
-    return "Layout11";
+    int i = HttpDownloadUtil.a(null, paramString, paramFile);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.img", 2, "download " + paramString + "result " + i);
+    }
+    paramFile = azmz.a(BaseApplication.getContext());
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("result", String.valueOf(i));
+    localHashMap.put("url", paramString);
+    if (i == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramFile.a("", "RichStatusIcon", bool, 0L, 0L, localHashMap, "");
+      if (i != 0) {
+        break;
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(this.jdField_a_of_type_JavaLangString + paramString);
+  }
+  
+  public Bitmap a(String paramString1, String paramString2, String paramString3)
+  {
+    Bitmap localBitmap = a(paramString1);
+    if (localBitmap == null)
+    {
+      if (this.jdField_a_of_type_JavaUtilHashSet == null) {
+        this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+      }
+      if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.richstatus.img", 2, "decodeBitmap " + paramString1 + ", " + paramString2 + ", " + paramString3);
+        }
+        this.jdField_a_of_type_JavaUtilHashSet.add(paramString1);
+        new axxa(this, paramString1, paramString2, paramString3).execute((Void[])null);
+      }
+    }
+    return localBitmap;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axwz
  * JD-Core Version:    0.7.0.1
  */

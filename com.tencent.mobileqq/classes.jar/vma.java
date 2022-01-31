@@ -1,17 +1,18 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-final class vma
-  implements FilenameFilter
+class vma
+  extends uhe<vlk>
 {
-  public boolean accept(File paramFile, String paramString)
+  vma(vlz paramvlz) {}
+  
+  public void a(vlk paramvlk)
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
+    paramvlk.a(new vmb(this));
   }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vma
  * JD-Core Version:    0.7.0.1
  */

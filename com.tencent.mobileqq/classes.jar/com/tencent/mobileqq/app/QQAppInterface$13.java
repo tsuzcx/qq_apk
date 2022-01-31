@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import bbcf;
+import bdaz;
 
 class QQAppInterface$13
   implements Runnable
 {
   public void run()
   {
-    bbcf.a(2131230758, false);
+    bdaz.a(2131230758, false);
   }
 }
 

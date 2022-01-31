@@ -1,26 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionBase;
 
-public class ally
-  implements DialogInterface.OnClickListener
+public abstract class ally<T extends CustomEmotionBase>
+  extends alko
 {
-  public ally(ARScanEntryView paramARScanEntryView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected ally(QQAppInterface paramQQAppInterface)
   {
-    Activity localActivity = (Activity)this.a.a;
-    Intent localIntent = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
-    localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
-    localActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    super(paramQQAppInterface);
   }
+  
+  public abstract void a();
+  
+  protected abstract void a(Object paramObject, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ally
  * JD-Core Version:    0.7.0.1
  */

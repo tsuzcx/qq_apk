@@ -2,7 +2,7 @@
 <RelativeLayout android:id="@id/m86" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="6.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout android:id="@id/m88" android:layout_width="63.0dip" android:layout_height="63.0dip" android:layout_centerHorizontal="true">
-        <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/m85" android:background="@drawable/h35" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+        <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/m85" android:layout_width="48.0dip" android:layout_height="48.0dip" />
         <com.tencent.mobileqq.activity.recent.cur.DragTextView android:layout_gravity="center|right|top" android:id="@id/m8b" android:background="@drawable/skin_tips_newmessage" android:duplicateParentState="true" android:text="2" style="@style/cg" />
     </FrameLayout>
     <TextView android:textSize="12.0dip" android:textColor="#ff222222" android:id="@id/m89" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="腾讯微视" android:includeFontPadding="false" android:layout_below="@id/m88" android:layout_centerHorizontal="true" />

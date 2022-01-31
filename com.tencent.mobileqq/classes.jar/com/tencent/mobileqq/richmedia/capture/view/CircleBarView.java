@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-import avuv;
-import avuw;
-import avux;
+import axmu;
+import axmv;
+import axmw;
 
 public class CircleBarView
   extends View
@@ -25,9 +25,9 @@ public class CircleBarView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private avuv jdField_a_of_type_Avuv;
-  private avuw jdField_a_of_type_Avuw;
-  private avux jdField_a_of_type_Avux;
+  private axmu jdField_a_of_type_Axmu;
+  private axmv jdField_a_of_type_Axmv;
+  private axmw jdField_a_of_type_Axmw;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -86,25 +86,25 @@ public class CircleBarView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_Avux = new avux(this);
+    this.jdField_a_of_type_Axmw = new axmw(this);
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Avuv != null) && (this.jdField_a_of_type_Avuv.hasStarted())) {
-      this.jdField_a_of_type_Avuv.cancel();
+    if ((this.jdField_a_of_type_Axmu != null) && (this.jdField_a_of_type_Axmu.hasStarted())) {
+      this.jdField_a_of_type_Axmu.cancel();
     }
     clearAnimation();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Avuv = new avuv(this);
+    this.jdField_a_of_type_Axmu = new axmu(this);
     this.jdField_a_of_type_Float = 100.0F;
-    this.jdField_a_of_type_Avuv.setDuration(paramInt);
-    this.jdField_a_of_type_Avuv.setRepeatCount(-1);
-    this.jdField_a_of_type_Avuv.setInterpolator(new LinearInterpolator());
-    startAnimation(this.jdField_a_of_type_Avuv);
+    this.jdField_a_of_type_Axmu.setDuration(paramInt);
+    this.jdField_a_of_type_Axmu.setRepeatCount(-1);
+    this.jdField_a_of_type_Axmu.setInterpolator(new LinearInterpolator());
+    startAnimation(this.jdField_a_of_type_Axmu);
   }
   
   public boolean a(int paramInt)
@@ -152,9 +152,9 @@ public class CircleBarView
     this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void setOnAnimationListener(avuw paramavuw)
+  public void setOnAnimationListener(axmv paramaxmv)
   {
-    this.jdField_a_of_type_Avuw = paramavuw;
+    this.jdField_a_of_type_Axmv = paramaxmv;
   }
   
   public void setTextView(TextView paramTextView)
@@ -164,7 +164,7 @@ public class CircleBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CircleBarView
  * JD-Core Version:    0.7.0.1
  */

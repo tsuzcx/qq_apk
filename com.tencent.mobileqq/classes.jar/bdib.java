@@ -1,27 +1,20 @@
+import com.tencent.mobileqq.utils.RandomAccessFileManager;
+import java.io.RandomAccessFile;
+
 public class bdib
-  extends bdic
 {
-  private String n;
+  public volatile int a;
+  public long a;
+  public bdib a;
+  public RandomAccessFile a;
+  public long b;
+  public bdib b;
   
-  public static bdib a()
-  {
-    return new bdib();
-  }
-  
-  public bdib a(String paramString)
-  {
-    this.n = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return b() + "|" + c() + "|" + this.n;
-  }
+  public bdib(RandomAccessFileManager paramRandomAccessFileManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdib
  * JD-Core Version:    0.7.0.1
  */

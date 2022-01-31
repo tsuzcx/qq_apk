@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import afdy;
+import ahbd;
 
 public class AddContactViewPagerTroopFragment$4$1
   implements Runnable
 {
-  public AddContactViewPagerTroopFragment$4$1(afdy paramafdy) {}
+  public AddContactViewPagerTroopFragment$4$1(ahbd paramahbd) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class AddContactViewPagerTroopFragment$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
 
-public class ambu
+public final class ambu
+  implements Parcelable.Creator<AddFriendBlockedInfo>
 {
-  public final int a;
-  public final Rect a;
-  public final BitmapDrawable a;
-  
-  public ambu(BitmapDrawable paramBitmapDrawable, int paramInt, Rect paramRect)
+  public AddFriendBlockedInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+    return new AddFriendBlockedInfo(paramParcel);
+  }
+  
+  public AddFriendBlockedInfo[] a(int paramInt)
+  {
+    return new AddFriendBlockedInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ambu
  * JD-Core Version:    0.7.0.1
  */

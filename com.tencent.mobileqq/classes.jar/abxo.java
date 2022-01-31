@@ -1,30 +1,20 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class abxo
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public abxo(QuickLoginActivity paramQuickLoginActivity) {}
+  public abxo(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
-    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
-    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
-    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
-    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,31 @@
-import android.content.Context;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class smh<MSG extends sma, INFO extends smb>
+public class smh
+  extends AnimatorListenerAdapter
 {
-  MSG a;
+  public smh(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, View paramView) {}
   
-  public smh(MSG paramMSG)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = paramMSG;
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    }
   }
   
-  public abstract boolean a(Context paramContext, INFO paramINFO);
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smh
  * JD-Core Version:    0.7.0.1
  */

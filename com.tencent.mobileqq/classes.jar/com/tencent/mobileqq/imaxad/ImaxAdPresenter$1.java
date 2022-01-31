@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.imaxad;
 
-import ardd;
+import astr;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class ImaxAdPresenter$1
   implements Runnable
 {
-  public ImaxAdPresenter$1(ardd paramardd, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public ImaxAdPresenter$1(astr paramastr, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ImaxAdPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdPresenter.1
  * JD-Core Version:    0.7.0.1
  */

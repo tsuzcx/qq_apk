@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bkvi;
+import bngs;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.NavigationBarInfo;
 import com.tencent.mobileqq.mini.apkg.WindowInfo;
@@ -53,6 +53,7 @@ public class NavigatorBarForMiniGame
   
   private void init()
   {
+    int i = 0;
     if ((getContext() != null) && (!this.hasInit))
     {
       this.mContainer = new RelativeLayout(getContext());
@@ -60,10 +61,14 @@ public class NavigatorBarForMiniGame
       this.mContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.mContainer.setClipChildren(false);
       this.mCapsuleButton = new CapsuleButton(getContext());
-      this.mCapsuleButton.setId(2131364687);
+      this.mCapsuleButton.setId(2131364766);
       localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = (DisplayUtil.dip2px(getContext(), 9.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
+      j = DisplayUtil.dip2px(getContext(), 9.0F);
+      if (bngs.b()) {
+        i = ImmersiveUtils.getStatusBarHeight(getContext());
+      }
+      ((RelativeLayout.LayoutParams)localObject).topMargin = (i + j);
       ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
       this.mContainer.addView(this.mCapsuleButton, (ViewGroup.LayoutParams)localObject);
       addView(this.mContainer);
@@ -74,6 +79,7 @@ public class NavigatorBarForMiniGame
     while (!QLog.isColorLevel())
     {
       Object localObject;
+      int j;
       return;
     }
     QLog.d("[minigame] NavigatorBarForMiniGame", 2, "[init] context null");
@@ -100,7 +106,7 @@ public class NavigatorBarForMiniGame
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mCapsuleButton.getLayoutParams();
     int j = DisplayUtil.dip2px(getContext(), 9.0F);
-    if (bkvi.b()) {}
+    if (bngs.b()) {}
     for (int i = ImmersiveUtils.getStatusBarHeight(getContext());; i = 0)
     {
       localLayoutParams.topMargin = (i + j);
@@ -174,7 +180,7 @@ public class NavigatorBarForMiniGame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.NavigatorBarForMiniGame
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,24 @@
-public class ahgh
+import android.view.View;
+import android.view.View.OnLongClickListener;
+
+class ahgh
+  implements View.OnLongClickListener
 {
-  public static String a(int paramInt)
+  ahgh(ahge paramahge, ahgk paramahgk) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    switch (paramInt)
+    if (this.jdField_a_of_type_Ahge.a != null)
     {
-    case 1: 
-    default: 
-      return "";
-    case 0: 
-      return "status_before_config_ready";
-    case 2: 
-      return "status_in_party";
-    case 4: 
-      return "status_beyong_party";
+      int i = this.jdField_a_of_type_Ahgk.getAdapterPosition();
+      return this.jdField_a_of_type_Ahge.a.a(paramView, this.jdField_a_of_type_Ahgk, i);
     }
-    return "status_after_party";
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import java.util.ArrayList;
 
 class bits
-  extends RecyclerView.ViewHolder
+  extends axzy
 {
-  TextView a;
+  private bits(bito parambito) {}
   
-  public bits(View paramView)
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RichStatus> paramArrayList, boolean paramBoolean3)
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131372848));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.itemView.setSelected(paramBoolean);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putInt("start", paramInt1);
+    localBundle.putInt("end", paramInt2);
+    localBundle.putBoolean("over", paramBoolean2);
+    localBundle.putSerializable("data", paramArrayList);
+    localBundle.putBoolean("isAddFromCard", paramBoolean3);
+    localBundle.putInt("which_method", 0);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bits
  * JD-Core Version:    0.7.0.1
  */

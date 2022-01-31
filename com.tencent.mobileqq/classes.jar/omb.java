@@ -1,22 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-
-class omb
-  implements View.OnClickListener
+public class omb
 {
-  omb(olt paramolt) {}
+  public int a;
+  public long a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
   
-  public void onClick(View paramView)
+  public omb(String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    NativeSummaryView.a((ArticleInfo)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext());
+    this(paramString, paramLong, paramCharSequence, 0);
+  }
+  
+  public omb(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramString = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramString = "";
+    }
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     omb
  * JD-Core Version:    0.7.0.1
  */

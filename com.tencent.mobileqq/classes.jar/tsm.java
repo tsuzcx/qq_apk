@@ -1,15 +1,38 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.ArrayList;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
-public abstract interface tsm
+class tsm
+  implements Observer<tzm<FeedCloudRead.StGetMainPageRsp>>
 {
-  public abstract void a();
+  tsm(tsl paramtsl) {}
   
-  public abstract void a(ArrayList<StoryVideoItem> paramArrayList);
+  public void a(@Nullable tzm<FeedCloudRead.StGetMainPageRsp> paramtzm)
+  {
+    if (paramtzm != null) {}
+    try
+    {
+      if ((paramtzm.a() == 2) || (paramtzm.a() == 3))
+      {
+        tsl.a(this.a, (FeedCloudRead.StGetMainPageRsp)paramtzm.a());
+        tsl.a(this.a, (FeedCloudMeta.StUser)tsl.a(this.a).user.get());
+        tsl.a(this.a);
+        tsl.b(this.a);
+        tsl.c(this.a);
+      }
+      return;
+    }
+    catch (Exception paramtzm)
+    {
+      QLog.e("QCirclePersonalTitleBar", 1, "getShareInfo error");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsm
  * JD-Core Version:    0.7.0.1
  */

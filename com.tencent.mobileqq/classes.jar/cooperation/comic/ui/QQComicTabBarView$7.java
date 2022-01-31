@@ -1,7 +1,7 @@
 package cooperation.comic.ui;
 
-import bgje;
-import bgji;
+import bikc;
+import bikg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -23,9 +23,9 @@ class QQComicTabBarView$7
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "start getRedAppInfo");
     }
-    Object localObject = (bgje)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web")).getManager(213);
+    Object localObject = (bikc)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web")).getManager(213);
     ArrayList localArrayList = new ArrayList();
-    if (((bgje)localObject).a(1113)) {
+    if (((bikc)localObject).a(1113)) {
       localArrayList.addAll(this.this$0.a.keySet());
     }
     for (boolean bool = true;; bool = false)
@@ -33,7 +33,7 @@ class QQComicTabBarView$7
       if (QLog.isColorLevel()) {
         QLog.d("WebViewTabBarView", 2, "isLebaItemOpen=" + bool + ", resId=" + 1113);
       }
-      localObject = ((bgje)localObject).a(localArrayList);
+      localObject = ((bikc)localObject).a(localArrayList);
       if (QLog.isColorLevel()) {
         QLog.d("WebViewTabBarView", 2, "end getRedAppInfo map is " + localObject);
       }
@@ -52,7 +52,7 @@ class QQComicTabBarView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.comic.ui.QQComicTabBarView.7
  * JD-Core Version:    0.7.0.1
  */

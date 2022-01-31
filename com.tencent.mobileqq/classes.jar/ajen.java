@@ -1,20 +1,18 @@
-public abstract interface ajen
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
+
+public class ajen
+  extends ajfh
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajen
  * JD-Core Version:    0.7.0.1
  */

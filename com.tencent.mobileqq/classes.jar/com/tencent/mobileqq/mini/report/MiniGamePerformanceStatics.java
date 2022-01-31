@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.report;
 
-import akdd;
+import alus;
 import android.os.Debug;
 import android.os.Debug.MemoryInfo;
 import android.os.SystemClock;
@@ -27,13 +27,13 @@ public class MiniGamePerformanceStatics
   private final Runnable mStaticsRunnable = new MiniGamePerformanceStatics.1(this);
   private MiniAppConfig miniAppConfig;
   
-  private void doReport()
+  private void doReport(float paramFloat)
   {
-    float f2 = 0.0F;
+    float f1 = 0.0F;
     float f3;
     float f4;
     float f5;
-    float f1;
+    float f2;
     if (this.miniAppConfig != null)
     {
       long l = SystemClock.uptimeMillis() - this.mStartTimeMillis;
@@ -42,31 +42,30 @@ public class MiniGamePerformanceStatics
         reset();
         return;
       }
-      f3 = (float)(akdd.a("-1") - this.mStartCpuTime) / ((float)l / 1000.0F);
+      f3 = (float)(alus.a("-1") - this.mStartCpuTime) / ((float)l / 1000.0F);
       f4 = this.mAverageMemory.calculate();
       f5 = this.mMaxMemory.calculate() - this.mStartMemory;
       if (!this.miniAppConfig.isReportTypeMiniGame()) {
-        break label207;
+        break label213;
       }
-      f1 = this.mAverageFps.calculate();
-      f2 = this.mFpsVariance.calculate();
+      f2 = this.mAverageFps.calculate();
+      f1 = this.mFpsVariance.calculate();
       MiniReportManager.reportEventType(this.miniAppConfig, 629, toString(f3), "1");
       MiniReportManager.reportEventType(this.miniAppConfig, 631, toString(f4), "1");
       MiniReportManager.reportEventType(this.miniAppConfig, 643, toString(f5), "1");
-      MiniReportManager.reportEventType(this.miniAppConfig, 630, toString(f1), "1");
-      MiniReportManager.reportEventType(this.miniAppConfig, 642, toString(f2), "1");
-      MiniProgramLpReportDC04902.reportGameEnd(f1, f2);
+      MiniReportManager.reportEventType(this.miniAppConfig, 630, toString(f2), "1");
+      MiniReportManager.reportEventType(this.miniAppConfig, 642, toString(f1), "1");
+      MiniProgramLpReportDC04902.reportGameEnd(f2, f1, paramFloat);
     }
-    for (;;)
+    for (paramFloat = f2;; paramFloat = 0.0F)
     {
-      MiniProgramLpReportDC05115.reportCPUMemoryFPS(this.miniAppConfig, f3, f4, f5, f1, f2);
+      MiniProgramLpReportDC05115.reportCPUMemoryFPS(this.miniAppConfig, f3, f4, f5, paramFloat, f1);
       reset();
       return;
-      label207:
+      label213:
       MiniReportManager.reportEventType(this.miniAppConfig, 629, toString(f3), "0");
       MiniReportManager.reportEventType(this.miniAppConfig, 631, toString(f4), "0");
       MiniReportManager.reportEventType(this.miniAppConfig, 643, toString(f5), "0");
-      f1 = 0.0F;
     }
   }
   
@@ -94,7 +93,7 @@ public class MiniGamePerformanceStatics
     this.mAverageMemory.reset();
     this.mAverageFps.reset();
     this.mFpsVariance.reset();
-    this.mStartCpuTime = akdd.a("-1");
+    this.mStartCpuTime = alus.a("-1");
     this.mStartTimeMillis = SystemClock.uptimeMillis();
   }
   
@@ -127,15 +126,15 @@ public class MiniGamePerformanceStatics
     localMqqHandler.postDelayed(this.mStaticsRunnable, 10000L);
   }
   
-  public void stopReport()
+  public void stopReport(float paramFloat)
   {
     ThreadManager.getSubThreadHandler().removeCallbacks(this.mStaticsRunnable);
-    doReport();
+    doReport(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniGamePerformanceStatics
  * JD-Core Version:    0.7.0.1
  */

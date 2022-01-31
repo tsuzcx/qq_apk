@@ -1,25 +1,19 @@
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import java.util.List;
 
 public class ovy
 {
-  public RelativeLayout a;
-  public URLImageView a;
-  public DragTextView a;
-  public DragTextView b;
+  public void a(int paramInt, List<DynamicChannelDataModel> paramList) {}
   
-  public ovy(DragTextView paramDragTextView1, RelativeLayout paramRelativeLayout, URLImageView paramURLImageView, DragTextView paramDragTextView2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = paramDragTextView1;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_ComTencentImageURLImageView = paramURLImageView;
-    this.b = paramDragTextView2;
-  }
+  public void a(int paramInt1, boolean paramBoolean, List<owf> paramList, int paramInt2) {}
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
+  
+  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ovy
  * JD-Core Version:    0.7.0.1
  */

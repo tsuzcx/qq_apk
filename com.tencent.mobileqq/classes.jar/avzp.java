@@ -1,21 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.data.AutoReplyText;
 
-class avzp
-  implements awal
+public abstract interface avzp
 {
-  avzp(avzo paramavzo) {}
+  public abstract void a(AutoReplyText paramAutoReplyText);
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    avzo.a(this.a, true);
-    if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
-      QLog.d("HWVideoRecorder", 2, "Generate thumbnail result. success = " + paramBoolean + " ; file path = " + paramString);
-    }
-  }
+  public abstract void a(AutoReplyText paramAutoReplyText1, AutoReplyText paramAutoReplyText2);
+  
+  public abstract void a(AutoReplyText paramAutoReplyText, boolean paramBoolean);
+  
+  public abstract void b(@Nullable AutoReplyText paramAutoReplyText, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avzp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import aulv;
+import awdc;
 
 public class MessageForLocationShare
   extends ChatMessage
 {
   private static final String TAG = "MessageForLocationShare";
-  @aulv(a=1)
+  @awdc(a=1)
   public boolean isSharingLocation = true;
   
   public MessageForLocationShare()
@@ -362,7 +362,7 @@ public class MessageForLocationShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForLocationShare
  * JD-Core Version:    0.7.0.1
  */

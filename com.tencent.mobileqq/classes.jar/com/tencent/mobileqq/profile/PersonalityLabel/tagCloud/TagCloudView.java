@@ -12,6 +12,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.Layout;
@@ -20,22 +21,25 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import auun;
-import auuo;
-import auup;
-import auuq;
-import auur;
-import auus;
+import awlz;
+import awma;
+import awmb;
+import awmc;
+import awmd;
+import awme;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.ISkinSetTypeface;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
 public class TagCloudView
   extends View
+  implements ISkinSetTypeface
 {
   public static final int b;
   float jdField_a_of_type_Float;
@@ -45,12 +49,12 @@ public class TagCloudView
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(7);
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  auup jdField_a_of_type_Auup;
-  List<auun> jdField_a_of_type_JavaUtilList = new ArrayList();
+  awmb jdField_a_of_type_Awmb;
+  List<awlz> jdField_a_of_type_JavaUtilList = new ArrayList();
   Random jdField_a_of_type_JavaUtilRandom = new Random();
   private boolean jdField_a_of_type_Boolean;
   private Matrix jdField_b_of_type_AndroidGraphicsMatrix;
-  List<auuo> jdField_b_of_type_JavaUtilList = new ArrayList();
+  List<awma> jdField_b_of_type_JavaUtilList = new ArrayList();
   int c = jdField_b_of_type_Int;
   int d;
   int e = 42;
@@ -92,8 +96,8 @@ public class TagCloudView
     Object localObject2;
     while (j < localArrayList2.size())
     {
-      auun localauun = (auun)localArrayList2.get(j);
-      if ((localauun.c) || (localauun.jdField_b_of_type_AndroidGraphicsPoint.x * localauun.jdField_b_of_type_AndroidGraphicsPoint.y == 0))
+      awlz localawlz = (awlz)localArrayList2.get(j);
+      if ((localawlz.c) || (localawlz.jdField_b_of_type_AndroidGraphicsPoint.x * localawlz.jdField_b_of_type_AndroidGraphicsPoint.y == 0))
       {
         localArrayList1.add(new Rect());
         j += 1;
@@ -101,12 +105,12 @@ public class TagCloudView
       else
       {
         if (QLog.isColorLevel()) {
-          QLog.i("TagCloudView", 2, "layoutChildren index:" + j + " tagW:" + localauun.jdField_b_of_type_AndroidGraphicsPoint.x + " tagH:" + localauun.jdField_b_of_type_AndroidGraphicsPoint.y + " " + localauun.jdField_a_of_type_JavaLangCharSequence);
+          QLog.i("TagCloudView", 2, "layoutChildren index:" + j + " tagW:" + localawlz.jdField_b_of_type_AndroidGraphicsPoint.x + " tagH:" + localawlz.jdField_b_of_type_AndroidGraphicsPoint.y + " " + localawlz.jdField_a_of_type_JavaLangCharSequence);
         }
         i = paramInt2;
         for (localObject2 = localObject1;; localObject2 = a(localArrayList2, paramInt1, i))
         {
-          Object localObject3 = a(localauun, (List)localObject2, localArrayList1, paramInt1, i);
+          Object localObject3 = a(localawlz, (List)localObject2, localArrayList1, paramInt1, i);
           if ((localObject3 != null) && (((List)localObject3).size() > 0))
           {
             localObject1 = localObject2;
@@ -120,10 +124,10 @@ public class TagCloudView
               break;
             }
             localObject3 = a((List)localObject3, paramInt1, i);
-            localauun.jdField_a_of_type_AndroidGraphicsPoint.x = ((Rect)localObject3).left;
-            localauun.jdField_a_of_type_AndroidGraphicsPoint.y = ((Rect)localObject3).top;
+            localawlz.jdField_a_of_type_AndroidGraphicsPoint.x = ((Rect)localObject3).left;
+            localawlz.jdField_a_of_type_AndroidGraphicsPoint.y = ((Rect)localObject3).top;
             localArrayList1.add(localObject3);
-            a((List)localObject2, localauun, paramInt1, i);
+            a((List)localObject2, localawlz, paramInt1, i);
             localObject1 = localObject2;
             paramInt2 = i;
             if (!QLog.isDevelopLevel()) {
@@ -137,20 +141,20 @@ public class TagCloudView
           if (QLog.isColorLevel()) {
             QLog.i("TagCloudView", 2, "layoutChildren enlarge");
           }
-          i = a(localArrayList1, paramInt1, i, (int)(0.3F * localauun.jdField_b_of_type_AndroidGraphicsPoint.y));
+          i = a(localArrayList1, paramInt1, i, (int)(0.3F * localawlz.jdField_b_of_type_AndroidGraphicsPoint.y));
           paramInt2 = 0;
           while (paramInt2 < localArrayList1.size())
           {
-            ((auun)localArrayList2.get(paramInt2)).jdField_a_of_type_AndroidGraphicsPoint.x = ((Rect)localArrayList1.get(paramInt2)).left;
-            ((auun)localArrayList2.get(paramInt2)).jdField_a_of_type_AndroidGraphicsPoint.y = ((Rect)localArrayList1.get(paramInt2)).top;
+            ((awlz)localArrayList2.get(paramInt2)).jdField_a_of_type_AndroidGraphicsPoint.x = ((Rect)localArrayList1.get(paramInt2)).left;
+            ((awlz)localArrayList2.get(paramInt2)).jdField_a_of_type_AndroidGraphicsPoint.y = ((Rect)localArrayList1.get(paramInt2)).top;
             paramInt2 += 1;
           }
         }
       }
     }
     localObject1 = new Point((int)(paramInt1 * 0.5F), (int)(paramInt2 * 0.5F));
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, new auus(this, (Point)localObject1));
-    Collections.sort(localArrayList1, new auuq(this, (Point)localObject1));
+    Collections.sort(this.jdField_a_of_type_JavaUtilList, new awme(this, (Point)localObject1));
+    Collections.sort(localArrayList1, new awmc(this, (Point)localObject1));
     int i = this.jdField_a_of_type_JavaUtilList.size();
     if (this.jdField_a_of_type_JavaUtilList.size() >= 6) {
       i = 2;
@@ -192,25 +196,25 @@ public class TagCloudView
     return paramInt2;
   }
   
-  private int a(int paramInt1, int paramInt2, List<auun> paramList, int paramInt3)
+  private int a(int paramInt1, int paramInt2, List<awlz> paramList, int paramInt3)
   {
     int j = 0;
     int i = paramInt2;
     paramInt2 = j;
     while (paramInt2 < paramList.size())
     {
-      auun localauun = (auun)paramList.get(paramInt2);
-      for (int k = localauun.a(paramInt1); (k > 1.0F * paramInt3) && (!localauun.c); k = localauun.a(paramInt1))
+      awlz localawlz = (awlz)paramList.get(paramInt2);
+      for (int k = localawlz.a(paramInt1); (k > 1.0F * paramInt3) && (!localawlz.c); k = localawlz.a(paramInt1))
       {
-        localauun.a();
+        localawlz.a();
         if (QLog.isColorLevel()) {
-          QLog.i("TagCloudView", 2, "measureChildren too high " + localauun.jdField_a_of_type_JavaLangCharSequence);
+          QLog.i("TagCloudView", 2, "measureChildren too high " + localawlz.jdField_a_of_type_JavaLangCharSequence);
         }
-        localauun.jdField_a_of_type_Float *= 0.75F;
-        localauun.jdField_a_of_type_AndroidTextTextPaint.setTextSize(localauun.jdField_a_of_type_Float);
+        localawlz.jdField_a_of_type_Float *= 0.75F;
+        localawlz.jdField_a_of_type_AndroidTextTextPaint.setTextSize(localawlz.jdField_a_of_type_Float);
       }
       j = i;
-      if (!localauun.c) {
+      if (!localawlz.c) {
         j = Math.max(i, k);
       }
       paramInt2 += 1;
@@ -243,9 +247,9 @@ public class TagCloudView
     int m;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      auun localauun = (auun)this.jdField_a_of_type_JavaUtilList.get(i);
-      m = (int)(localauun.b() * 0.8F);
-      int n = (int)(localauun.c() * 0.8F);
+      awlz localawlz = (awlz)this.jdField_a_of_type_JavaUtilList.get(i);
+      m = (int)(localawlz.b() * 0.8F);
+      int n = (int)(localawlz.c() * 0.8F);
       if (m * n <= 0)
       {
         n = j;
@@ -261,7 +265,7 @@ public class TagCloudView
         if ((m > paramRect.width()) || (n > paramRect.height())) {
           break label216;
         }
-        i1 = (int)(localauun.jdField_a_of_type_Float * 0.8F);
+        i1 = (int)(localawlz.jdField_a_of_type_Float * 0.8F);
         m = k;
         n = j;
         if (i1 > j)
@@ -273,12 +277,12 @@ public class TagCloudView
         }
       }
       label216:
-      float f1 = paramRect.width() / localauun.b();
-      float f2 = paramRect.height() / localauun.c();
+      float f1 = paramRect.width() / localawlz.b();
+      float f2 = paramRect.height() / localawlz.c();
       if (f1 < f2) {}
       for (;;)
       {
-        i1 = (int)(localauun.jdField_a_of_type_Float * f1);
+        i1 = (int)(localawlz.jdField_a_of_type_Float * f1);
         break;
         f1 = f2;
       }
@@ -498,7 +502,7 @@ public class TagCloudView
     }
   }
   
-  private static List<Rect> a(auun paramauun, List<Point> paramList, List<Rect> paramList1, int paramInt1, int paramInt2)
+  private static List<Rect> a(awlz paramawlz, List<Point> paramList, List<Rect> paramList1, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList(paramList.size());
     int i = 0;
@@ -506,19 +510,19 @@ public class TagCloudView
     {
       int j = ((Point)paramList.get(i)).x;
       int k = ((Point)paramList.get(i)).y;
-      Rect localRect = new Rect(j, k, paramauun.jdField_b_of_type_AndroidGraphicsPoint.x + j, paramauun.jdField_b_of_type_AndroidGraphicsPoint.y + k);
+      Rect localRect = new Rect(j, k, paramawlz.jdField_b_of_type_AndroidGraphicsPoint.x + j, paramawlz.jdField_b_of_type_AndroidGraphicsPoint.y + k);
       if (a(localRect, paramList1, paramInt1, paramInt2)) {
         localArrayList.add(localRect);
       }
-      localRect = new Rect(j - paramauun.jdField_b_of_type_AndroidGraphicsPoint.x, k - paramauun.jdField_b_of_type_AndroidGraphicsPoint.y, j, k);
+      localRect = new Rect(j - paramawlz.jdField_b_of_type_AndroidGraphicsPoint.x, k - paramawlz.jdField_b_of_type_AndroidGraphicsPoint.y, j, k);
       if (a(localRect, paramList1, paramInt1, paramInt2)) {
         localArrayList.add(localRect);
       }
-      localRect = new Rect(j, k - paramauun.jdField_b_of_type_AndroidGraphicsPoint.y, paramauun.jdField_b_of_type_AndroidGraphicsPoint.x + j, k);
+      localRect = new Rect(j, k - paramawlz.jdField_b_of_type_AndroidGraphicsPoint.y, paramawlz.jdField_b_of_type_AndroidGraphicsPoint.x + j, k);
       if (a(localRect, paramList1, paramInt1, paramInt2)) {
         localArrayList.add(localRect);
       }
-      localRect = new Rect(j - paramauun.jdField_b_of_type_AndroidGraphicsPoint.x, k, j, paramauun.jdField_b_of_type_AndroidGraphicsPoint.y + k);
+      localRect = new Rect(j - paramawlz.jdField_b_of_type_AndroidGraphicsPoint.x, k, j, paramawlz.jdField_b_of_type_AndroidGraphicsPoint.y + k);
       if (a(localRect, paramList1, paramInt1, paramInt2)) {
         localArrayList.add(localRect);
       }
@@ -527,7 +531,7 @@ public class TagCloudView
     return localArrayList;
   }
   
-  private static List<Point> a(List<auun> paramList, int paramInt1, int paramInt2)
+  private static List<Point> a(List<awlz> paramList, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new Point(0, 0));
@@ -540,19 +544,19 @@ public class TagCloudView
     paramInt1 = 0;
     if (paramInt1 < paramList.size())
     {
-      Object localObject = (auun)paramList.get(paramInt1);
-      if ((!((auun)localObject).a()) && (((auun)localObject).c)) {}
+      Object localObject = (awlz)paramList.get(paramInt1);
+      if ((!((awlz)localObject).a()) && (((awlz)localObject).c)) {}
       for (;;)
       {
         paramInt1 += 1;
         break;
-        Point localPoint1 = new Point(((auun)localObject).jdField_a_of_type_AndroidGraphicsPoint.x, ((auun)localObject).jdField_a_of_type_AndroidGraphicsPoint.y);
-        Point localPoint2 = new Point(((auun)localObject).jdField_a_of_type_AndroidGraphicsPoint.x + ((auun)localObject).jdField_b_of_type_AndroidGraphicsPoint.x, ((auun)localObject).jdField_a_of_type_AndroidGraphicsPoint.y);
-        Point localPoint3 = new Point(((auun)localObject).jdField_a_of_type_AndroidGraphicsPoint.x, ((auun)localObject).jdField_a_of_type_AndroidGraphicsPoint.y + ((auun)localObject).jdField_b_of_type_AndroidGraphicsPoint.y);
-        paramInt2 = ((auun)localObject).jdField_a_of_type_AndroidGraphicsPoint.x;
-        int i = ((auun)localObject).jdField_b_of_type_AndroidGraphicsPoint.x;
-        int j = ((auun)localObject).jdField_a_of_type_AndroidGraphicsPoint.y;
-        localObject = new Point(paramInt2 + i, ((auun)localObject).jdField_b_of_type_AndroidGraphicsPoint.y + j);
+        Point localPoint1 = new Point(((awlz)localObject).jdField_a_of_type_AndroidGraphicsPoint.x, ((awlz)localObject).jdField_a_of_type_AndroidGraphicsPoint.y);
+        Point localPoint2 = new Point(((awlz)localObject).jdField_a_of_type_AndroidGraphicsPoint.x + ((awlz)localObject).jdField_b_of_type_AndroidGraphicsPoint.x, ((awlz)localObject).jdField_a_of_type_AndroidGraphicsPoint.y);
+        Point localPoint3 = new Point(((awlz)localObject).jdField_a_of_type_AndroidGraphicsPoint.x, ((awlz)localObject).jdField_a_of_type_AndroidGraphicsPoint.y + ((awlz)localObject).jdField_b_of_type_AndroidGraphicsPoint.y);
+        paramInt2 = ((awlz)localObject).jdField_a_of_type_AndroidGraphicsPoint.x;
+        int i = ((awlz)localObject).jdField_b_of_type_AndroidGraphicsPoint.x;
+        int j = ((awlz)localObject).jdField_a_of_type_AndroidGraphicsPoint.y;
+        localObject = new Point(paramInt2 + i, ((awlz)localObject).jdField_b_of_type_AndroidGraphicsPoint.y + j);
         if (!a(localArrayList, localPoint1)) {
           localArrayList.add(localPoint1);
         }
@@ -644,7 +648,7 @@ public class TagCloudView
   private void a()
   {
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    auun.a((int)(this.jdField_a_of_type_Float * 4.0F));
+    awlz.a((int)(this.jdField_a_of_type_Float * 4.0F));
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(-16777216);
   }
   
@@ -723,9 +727,9 @@ public class TagCloudView
         bool = true;
         j = a(paramRect);
       } while (j < 0);
-      localObject = (auun)this.jdField_a_of_type_JavaUtilList.get(j);
-      i = (int)(((auun)localObject).b() * 0.8F);
-      k = (int)(((auun)localObject).c() * 0.8F);
+      localObject = (awlz)this.jdField_a_of_type_JavaUtilList.get(j);
+      i = (int)(((awlz)localObject).b() * 0.8F);
+      k = (int)(((awlz)localObject).c() * 0.8F);
     } while (i * k <= 0);
     if ((i <= paramRect.width()) && (k <= paramRect.height())) {
       if (bool) {
@@ -736,9 +740,9 @@ public class TagCloudView
     label701:
     for (f1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat() * 0.45F + 0.5F;; f1 = 0.8F)
     {
-      i = (int)(((auun)localObject).b() * f1);
-      k = (int)(((auun)localObject).c() * f1);
-      this.jdField_b_of_type_JavaUtilList.add(new auuo(j, f1, paramRect.left, paramRect.top));
+      i = (int)(((awlz)localObject).b() * f1);
+      k = (int)(((awlz)localObject).c() * f1);
+      this.jdField_b_of_type_JavaUtilList.add(new awma(j, f1, paramRect.left, paramRect.top));
       localObject = new Rect(i + paramRect.left, paramRect.top, paramRect.right, paramRect.top + k);
       paramRect = new Rect(paramRect.left, k + paramRect.top, paramRect.right, paramRect.bottom);
       a((Rect)localObject);
@@ -746,8 +750,8 @@ public class TagCloudView
       return;
       bool = false;
       break label170;
-      f1 = paramRect.width() / ((auun)localObject).b();
-      float f2 = paramRect.height() / ((auun)localObject).c();
+      f1 = paramRect.width() / ((awlz)localObject).b();
+      float f2 = paramRect.height() / ((awlz)localObject).c();
       int m;
       if (f1 < f2)
       {
@@ -755,12 +759,12 @@ public class TagCloudView
         if (i == 0) {
           break label663;
         }
-        m = (int)(((auun)localObject).b() * f1 + 0.5F);
-        int n = (int)(((auun)localObject).c() * f1 + 0.5F);
+        m = (int)(((awlz)localObject).b() * f1 + 0.5F);
+        int n = (int)(((awlz)localObject).c() * f1 + 0.5F);
         k = Math.max(paramRect.width() / m, paramRect.height() / k);
         if (k > 30)
         {
-          QLog.i("TagCloudView", 1, "fillWithTags WARNING!!! " + k + " w:" + paramRect.width() + " h:" + paramRect.height() + " tagW:" + ((auun)localObject).b() + " tagH:" + ((auun)localObject).b() + " small:" + bool);
+          QLog.i("TagCloudView", 1, "fillWithTags WARNING!!! " + k + " w:" + paramRect.width() + " h:" + paramRect.height() + " tagW:" + ((awlz)localObject).b() + " tagH:" + ((awlz)localObject).b() + " small:" + bool);
           if (bool) {
             break;
           }
@@ -774,7 +778,7 @@ public class TagCloudView
       }
       for (;;)
       {
-        this.jdField_b_of_type_JavaUtilList.add(new auuo(j, f1, paramRect.left, paramRect.top));
+        this.jdField_b_of_type_JavaUtilList.add(new awma(j, f1, paramRect.left, paramRect.top));
         return;
         i = 0;
         break;
@@ -786,12 +790,12 @@ public class TagCloudView
     }
   }
   
-  public static void a(List<auun> paramList)
+  public static void a(List<awlz> paramList)
   {
     int i = 0;
     while (i < paramList.size())
     {
-      ((auun)paramList.get(i)).a();
+      ((awlz)paramList.get(i)).a();
       i += 1;
     }
   }
@@ -802,14 +806,14 @@ public class TagCloudView
     int i = 0;
     if ((m < this.jdField_a_of_type_JavaUtilList.size()) && (i < paramInt))
     {
-      auun localauun = (auun)this.jdField_a_of_type_JavaUtilList.get(m);
-      if (localauun.c) {}
+      awlz localawlz = (awlz)this.jdField_a_of_type_JavaUtilList.get(m);
+      if (localawlz.c) {}
       for (;;)
       {
         m += 1;
         break;
-        int n = (int)(paramPoint.x - (localauun.jdField_a_of_type_AndroidGraphicsPoint.x + 0.5F * localauun.jdField_b_of_type_AndroidGraphicsPoint.x));
-        int i1 = (int)(paramPoint.y - (localauun.jdField_a_of_type_AndroidGraphicsPoint.y + 0.5F * localauun.jdField_b_of_type_AndroidGraphicsPoint.y));
+        int n = (int)(paramPoint.x - (localawlz.jdField_a_of_type_AndroidGraphicsPoint.x + 0.5F * localawlz.jdField_b_of_type_AndroidGraphicsPoint.x));
+        int i1 = (int)(paramPoint.y - (localawlz.jdField_a_of_type_AndroidGraphicsPoint.y + 0.5F * localawlz.jdField_b_of_type_AndroidGraphicsPoint.y));
         Rect localRect1 = (Rect)paramList.get(m);
         Rect localRect2 = new Rect(localRect1);
         localRect2.offset(n, 0);
@@ -873,24 +877,24 @@ public class TagCloudView
         {
           j = i + 1;
           localRect1.offset(n, i1);
-          localauun.jdField_a_of_type_AndroidGraphicsPoint.x = localRect1.left;
-          localauun.jdField_a_of_type_AndroidGraphicsPoint.y = localRect1.top;
+          localawlz.jdField_a_of_type_AndroidGraphicsPoint.x = localRect1.left;
+          localawlz.jdField_a_of_type_AndroidGraphicsPoint.y = localRect1.top;
         }
         i = j;
       }
     }
   }
   
-  private static void a(List<Point> paramList, auun paramauun, int paramInt1, int paramInt2)
+  private static void a(List<Point> paramList, awlz paramawlz, int paramInt1, int paramInt2)
   {
-    if (!paramauun.a()) {}
+    if (!paramawlz.a()) {}
     do
     {
       return;
-      Point localPoint1 = new Point(paramauun.jdField_a_of_type_AndroidGraphicsPoint.x, paramauun.jdField_a_of_type_AndroidGraphicsPoint.y);
-      Point localPoint2 = new Point(paramauun.jdField_a_of_type_AndroidGraphicsPoint.x + paramauun.jdField_b_of_type_AndroidGraphicsPoint.x, paramauun.jdField_a_of_type_AndroidGraphicsPoint.y);
-      Point localPoint3 = new Point(paramauun.jdField_a_of_type_AndroidGraphicsPoint.x, paramauun.jdField_a_of_type_AndroidGraphicsPoint.y + paramauun.jdField_b_of_type_AndroidGraphicsPoint.y);
-      paramauun = new Point(paramauun.jdField_a_of_type_AndroidGraphicsPoint.x + paramauun.jdField_b_of_type_AndroidGraphicsPoint.x, paramauun.jdField_a_of_type_AndroidGraphicsPoint.y + paramauun.jdField_b_of_type_AndroidGraphicsPoint.y);
+      Point localPoint1 = new Point(paramawlz.jdField_a_of_type_AndroidGraphicsPoint.x, paramawlz.jdField_a_of_type_AndroidGraphicsPoint.y);
+      Point localPoint2 = new Point(paramawlz.jdField_a_of_type_AndroidGraphicsPoint.x + paramawlz.jdField_b_of_type_AndroidGraphicsPoint.x, paramawlz.jdField_a_of_type_AndroidGraphicsPoint.y);
+      Point localPoint3 = new Point(paramawlz.jdField_a_of_type_AndroidGraphicsPoint.x, paramawlz.jdField_a_of_type_AndroidGraphicsPoint.y + paramawlz.jdField_b_of_type_AndroidGraphicsPoint.y);
+      paramawlz = new Point(paramawlz.jdField_a_of_type_AndroidGraphicsPoint.x + paramawlz.jdField_b_of_type_AndroidGraphicsPoint.x, paramawlz.jdField_a_of_type_AndroidGraphicsPoint.y + paramawlz.jdField_b_of_type_AndroidGraphicsPoint.y);
       if (!a(paramList, localPoint1)) {
         paramList.add(localPoint1);
       }
@@ -900,8 +904,8 @@ public class TagCloudView
       if (!a(paramList, localPoint3)) {
         paramList.add(localPoint3);
       }
-    } while (a(paramList, paramauun));
-    paramList.add(paramauun);
+    } while (a(paramList, paramawlz));
+    paramList.add(paramawlz);
   }
   
   private static boolean a(Rect paramRect, List<Rect> paramList, int paramInt1, int paramInt2)
@@ -1087,7 +1091,7 @@ public class TagCloudView
     if (QLog.isDevelopLevel()) {
       QLog.i("TagCloudView", 4, "onDraw");
     }
-    if (this.jdField_a_of_type_Auup != null) {
+    if (this.jdField_a_of_type_Awmb != null) {
       if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != getMeasuredWidth()) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != getMeasuredHeight())))) {
         if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
         {
@@ -1117,8 +1121,8 @@ public class TagCloudView
         if (i >= ((List)localObject3).size()) {
           break label1066;
         }
-        localObject4 = (auun)((List)localObject3).get(i);
-        if ((!((auun)localObject4).c) && (((auun)localObject4).a())) {
+        localObject4 = (awlz)((List)localObject3).get(i);
+        if ((!((awlz)localObject4).c) && (((awlz)localObject4).a())) {
           break label255;
         }
         i += 1;
@@ -1136,27 +1140,27 @@ public class TagCloudView
       ((Canvas)localObject1).drawColor(0, PorterDuff.Mode.CLEAR);
       continue;
       label255:
-      Object localObject5 = ((auun)localObject4).jdField_a_of_type_AndroidTextTextPaint;
-      Point localPoint1 = ((auun)localObject4).jdField_a_of_type_AndroidGraphicsPoint;
-      Point localPoint2 = ((auun)localObject4).jdField_b_of_type_AndroidGraphicsPoint;
-      if (((auun)localObject4).jdField_b_of_type_Int != 0)
+      Object localObject5 = ((awlz)localObject4).jdField_a_of_type_AndroidTextTextPaint;
+      Point localPoint1 = ((awlz)localObject4).jdField_a_of_type_AndroidGraphicsPoint;
+      Point localPoint2 = ((awlz)localObject4).jdField_b_of_type_AndroidGraphicsPoint;
+      if (((awlz)localObject4).jdField_b_of_type_Int != 0)
       {
         ((Canvas)localObject1).save();
         ((Canvas)localObject1).clipRect(localPoint1.x + m, localPoint1.y, localPoint1.x + localPoint2.x + m, localPoint1.y + localPoint2.y);
         ((Canvas)localObject1).translate(localPoint1.x + m, localPoint1.y);
-        ((Canvas)localObject1).scale(((auun)localObject4).jdField_b_of_type_Float, ((auun)localObject4).jdField_b_of_type_Float);
-        ((Canvas)localObject1).drawColor(((auun)localObject4).jdField_b_of_type_Int);
+        ((Canvas)localObject1).scale(((awlz)localObject4).jdField_b_of_type_Float, ((awlz)localObject4).jdField_b_of_type_Float);
+        ((Canvas)localObject1).drawColor(((awlz)localObject4).jdField_b_of_type_Int);
         ((Canvas)localObject1).restore();
       }
       ((Point)localObject2).set(0, 0);
-      int k = auun.f;
+      int k = awlz.f;
       int j;
-      if (((auun)localObject4).e == 2)
+      if (((awlz)localObject4).e == 2)
       {
         ((Canvas)localObject1).save();
-        if (((auun)localObject4).jdField_b_of_type_Boolean)
+        if (((awlz)localObject4).jdField_b_of_type_Boolean)
         {
-          boolean bool = ((auun)localObject4).jdField_a_of_type_Boolean;
+          boolean bool = ((awlz)localObject4).jdField_a_of_type_Boolean;
           j = localPoint2.y - k * 2;
           if (bool)
           {
@@ -1168,11 +1172,11 @@ public class TagCloudView
             }
             ((Canvas)localObject1).restore();
             label501:
-            if ((((auun)localObject4).e != 0) && (!((auun)localObject4).c)) {
+            if ((((awlz)localObject4).e != 0) && (!((awlz)localObject4).c)) {
               break label969;
             }
             ((TextPaint)localObject5).setColor(this.f);
-            if (!((auun)localObject4).c) {
+            if (!((awlz)localObject4).c) {
               break label962;
             }
             j = 64;
@@ -1180,14 +1184,14 @@ public class TagCloudView
             ((TextPaint)localObject5).setAlpha(j);
             j = 0;
             label545:
-            ((TextPaint)localObject5).setFakeBoldText(((auun)localObject4).jdField_d_of_type_Boolean);
+            ((TextPaint)localObject5).setFakeBoldText(((awlz)localObject4).jdField_d_of_type_Boolean);
             ((Canvas)localObject1).save();
-            ((Canvas)localObject1).translate(((Point)localObject2).x + localPoint1.x + m, ((Point)localObject2).y + localPoint1.y - (((auun)localObject4).jdField_b_of_type_Float * ((auun)localObject4).jdField_d_of_type_Int + 0.5F));
-            if (!((auun)localObject4).jdField_b_of_type_Boolean) {
+            ((Canvas)localObject1).translate(((Point)localObject2).x + localPoint1.x + m, ((Point)localObject2).y + localPoint1.y - (((awlz)localObject4).jdField_b_of_type_Float * ((awlz)localObject4).jdField_d_of_type_Int + 0.5F));
+            if (!((awlz)localObject4).jdField_b_of_type_Boolean) {
               break label988;
             }
-            ((Canvas)localObject1).scale(((auun)localObject4).jdField_b_of_type_Float, ((auun)localObject4).jdField_b_of_type_Float);
-            ((auun)localObject4).jdField_a_of_type_AndroidTextLayout.draw((Canvas)localObject1);
+            ((Canvas)localObject1).scale(((awlz)localObject4).jdField_b_of_type_Float, ((awlz)localObject4).jdField_b_of_type_Float);
+            ((awlz)localObject4).jdField_a_of_type_AndroidTextLayout.draw((Canvas)localObject1);
           }
         }
       }
@@ -1205,7 +1209,7 @@ public class TagCloudView
         int i2 = localPoint1.y;
         ((Canvas)localObject1).clipRect(j + m, k, n + i1 + m, localPoint2.y + i2);
         ((Canvas)localObject1).translate(localPoint1.x + m, localPoint1.y);
-        ((Canvas)localObject1).scale(((auun)localObject4).jdField_b_of_type_Float, ((auun)localObject4).jdField_b_of_type_Float);
+        ((Canvas)localObject1).scale(((awlz)localObject4).jdField_b_of_type_Float, ((awlz)localObject4).jdField_b_of_type_Float);
         ((Canvas)localObject1).drawColor(Color.argb(127, 0, 0, 0));
         ((Canvas)localObject1).restore();
         break;
@@ -1213,7 +1217,7 @@ public class TagCloudView
         ((Canvas)localObject1).translate(localPoint1.x + localPoint2.x - j - k + m, k + localPoint1.y);
         break label482;
         j = localPoint2.x - k * 2;
-        if (((auun)localObject4).jdField_a_of_type_Boolean)
+        if (((awlz)localObject4).jdField_a_of_type_Boolean)
         {
           ((Point)localObject2).set(k, j + k + k);
           ((Canvas)localObject1).translate(localPoint1.x + k + m, k + localPoint1.y);
@@ -1222,7 +1226,7 @@ public class TagCloudView
         ((Point)localObject2).set(k, k);
         ((Canvas)localObject1).translate(localPoint1.x + k + m, localPoint1.y + localPoint2.y - j - k);
         break label482;
-        if (((auun)localObject4).e != 1) {
+        if (((awlz)localObject4).e != 1) {
           break label501;
         }
         ((Point)localObject2).set(k, k);
@@ -1236,11 +1240,11 @@ public class TagCloudView
         j = 1;
         break label545;
         label988:
-        ((Canvas)localObject1).scale(((auun)localObject4).jdField_b_of_type_Float, ((auun)localObject4).jdField_b_of_type_Float);
+        ((Canvas)localObject1).scale(((awlz)localObject4).jdField_b_of_type_Float, ((awlz)localObject4).jdField_b_of_type_Float);
         k = 0;
-        while (k < ((auun)localObject4).jdField_b_of_type_JavaUtilList.size())
+        while (k < ((awlz)localObject4).jdField_b_of_type_JavaUtilList.size())
         {
-          localObject5 = (Layout)((auun)localObject4).jdField_b_of_type_JavaUtilList.get(k);
+          localObject5 = (Layout)((awlz)localObject4).jdField_b_of_type_JavaUtilList.get(k);
           ((Layout)localObject5).draw((Canvas)localObject1);
           ((Canvas)localObject1).translate(((Layout)localObject5).getWidth(), 0.0F);
           k += 1;
@@ -1250,18 +1254,18 @@ public class TagCloudView
       int i = 0;
       if (i < this.jdField_b_of_type_JavaUtilList.size())
       {
-        localObject3 = (auuo)this.jdField_b_of_type_JavaUtilList.get(i);
-        localObject2 = (auun)this.jdField_a_of_type_JavaUtilList.get(((auuo)localObject3).jdField_a_of_type_Int);
-        localObject4 = ((auun)localObject2).jdField_a_of_type_AndroidTextTextPaint;
+        localObject3 = (awma)this.jdField_b_of_type_JavaUtilList.get(i);
+        localObject2 = (awlz)this.jdField_a_of_type_JavaUtilList.get(((awma)localObject3).jdField_a_of_type_Int);
+        localObject4 = ((awlz)localObject2).jdField_a_of_type_AndroidTextTextPaint;
         ((TextPaint)localObject4).setColor(this.f);
         ((TextPaint)localObject4).setAlpha(64);
         ((TextPaint)localObject4).setFakeBoldText(false);
-        localObject4 = new Point(((auuo)localObject3).jdField_b_of_type_Int, ((auuo)localObject3).c);
+        localObject4 = new Point(((awma)localObject3).jdField_b_of_type_Int, ((awma)localObject3).c);
         ((Canvas)localObject1).save();
-        ((Canvas)localObject1).translate(((Point)localObject4).x + m, ((Point)localObject4).y - ((auun)localObject2).jdField_d_of_type_Int * ((auuo)localObject3).jdField_a_of_type_Float);
-        ((Canvas)localObject1).scale(((auuo)localObject3).jdField_a_of_type_Float, ((auuo)localObject3).jdField_a_of_type_Float);
-        if (((auun)localObject2).jdField_b_of_type_Boolean) {
-          ((auun)localObject2).jdField_a_of_type_AndroidTextLayout.draw((Canvas)localObject1);
+        ((Canvas)localObject1).translate(((Point)localObject4).x + m, ((Point)localObject4).y - ((awlz)localObject2).jdField_d_of_type_Int * ((awma)localObject3).jdField_a_of_type_Float);
+        ((Canvas)localObject1).scale(((awma)localObject3).jdField_a_of_type_Float, ((awma)localObject3).jdField_a_of_type_Float);
+        if (((awlz)localObject2).jdField_b_of_type_Boolean) {
+          ((awlz)localObject2).jdField_a_of_type_AndroidTextLayout.draw((Canvas)localObject1);
         }
         for (;;)
         {
@@ -1269,9 +1273,9 @@ public class TagCloudView
           i += 1;
           break;
           j = 0;
-          while (j < ((auun)localObject2).jdField_b_of_type_JavaUtilList.size())
+          while (j < ((awlz)localObject2).jdField_b_of_type_JavaUtilList.size())
           {
-            localObject3 = (Layout)((auun)localObject2).jdField_b_of_type_JavaUtilList.get(j);
+            localObject3 = (Layout)((awlz)localObject2).jdField_b_of_type_JavaUtilList.get(j);
             ((Layout)localObject3).draw((Canvas)localObject1);
             ((Canvas)localObject1).translate(((Layout)localObject3).getWidth(), 0.0F);
             j += 1;
@@ -1279,11 +1283,11 @@ public class TagCloudView
         }
       }
       localObject1 = new Rect(0, 0, getMeasuredWidth(), getMeasuredHeight());
-      if ((this.jdField_a_of_type_Auup != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+      if ((this.jdField_a_of_type_Awmb != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
         paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, (Rect)localObject1, (Rect)localObject1, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Auup != null)) {
-        this.jdField_a_of_type_Auup.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Awmb != null)) {
+        this.jdField_a_of_type_Awmb.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
       this.jdField_a_of_type_Boolean = false;
       return;
@@ -1323,7 +1327,7 @@ public class TagCloudView
     if (paramInt2 < this.jdField_d_of_type_Int) {
       paramInt1 = this.jdField_d_of_type_Int;
     }
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, new auur(this, this.jdField_a_of_type_JavaUtilRandom, (int)(i * 0.7F), (int)(this.jdField_d_of_type_Int * 0.7F)));
+    Collections.sort(this.jdField_a_of_type_JavaUtilList, new awmd(this, this.jdField_a_of_type_JavaUtilRandom, (int)(i * 0.7F), (int)(this.jdField_d_of_type_Int * 0.7F)));
     paramInt2 = a(i, paramInt1);
     if (j == 1073741824) {
       paramInt1 = paramInt2;
@@ -1356,12 +1360,12 @@ public class TagCloudView
     this.jdField_d_of_type_Int = paramInt;
   }
   
-  public void setOnUpdateDrawingListener(auup paramauup)
+  public void setOnUpdateDrawingListener(awmb paramawmb)
   {
-    if (paramauup != this.jdField_a_of_type_Auup)
+    if (paramawmb != this.jdField_a_of_type_Awmb)
     {
-      this.jdField_a_of_type_Auup = paramauup;
-      if (paramauup != null) {
+      this.jdField_a_of_type_Awmb = paramawmb;
+      if (paramawmb != null) {
         break label46;
       }
       this.jdField_a_of_type_Boolean = false;
@@ -1397,7 +1401,7 @@ public class TagCloudView
     }
   }
   
-  public void setTags(List<auun> paramList)
+  public void setTags(List<awlz> paramList)
   {
     this.c = jdField_b_of_type_Int;
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -1426,10 +1430,26 @@ public class TagCloudView
   {
     this.e = paramInt;
   }
+  
+  public void setTypeface(Typeface paramTypeface)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        awlz localawlz = (awlz)localIterator.next();
+        if ((localawlz != null) && (localawlz.jdField_a_of_type_AndroidTextTextPaint != null)) {
+          localawlz.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+        }
+      }
+      invalidate();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView
  * JD-Core Version:    0.7.0.1
  */

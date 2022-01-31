@@ -1,21 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
 
 public class awdo
-  implements hr
+  implements alkr
 {
-  public awdo(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  protected void a(NewerGuidePlugin.RecommendedListResp paramRecommendedListResp) {}
   
-  public void a()
+  protected void a(boolean paramBoolean) {}
+  
+  protected void b(boolean paramBoolean) {}
+  
+  protected void c(boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
-    SignatureHistoryFragment.a(this.a).sendMessage(localMessage);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean);
+      return;
+    case 2: 
+      b(paramBoolean);
+      return;
+    case 3: 
+      a((NewerGuidePlugin.RecommendedListResp)paramObject);
+      return;
+    }
+    c(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awdo
  * JD-Core Version:    0.7.0.1
  */

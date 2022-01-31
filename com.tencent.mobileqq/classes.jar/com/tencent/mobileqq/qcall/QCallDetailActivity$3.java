@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.qcall;
 
-import akpx;
-import askn;
-import avet;
+import abot;
+import aubm;
+import awwg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PhoneContact;
 
@@ -25,7 +25,7 @@ class QCallDetailActivity$3
       return;
       if (QCallDetailActivity.a(this.this$0, QCallDetailActivity.a(this.this$0)))
       {
-        Object localObject = akpx.q;
+        Object localObject = abot.q;
         int m = localObject.length;
         int i = 0;
         int j = k;
@@ -41,12 +41,12 @@ class QCallDetailActivity$3
           if (j == 0) {
             break;
           }
-          localObject = (askn)this.this$0.app.getManager(11);
+          localObject = (aubm)this.this$0.app.getManager(11);
           if (localObject != null) {
             break label142;
           }
         }
-        for (localObject = null;; localObject = ((askn)localObject).c(QCallDetailActivity.a(this.this$0)))
+        for (localObject = null;; localObject = ((aubm)localObject).c(QCallDetailActivity.a(this.this$0)))
         {
           if (localObject == null) {
             break label159;
@@ -62,7 +62,7 @@ class QCallDetailActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.3
  * JD-Core Version:    0.7.0.1
  */

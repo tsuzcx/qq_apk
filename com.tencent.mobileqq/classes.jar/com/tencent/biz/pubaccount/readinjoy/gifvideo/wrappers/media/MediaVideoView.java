@@ -3,11 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import oxr;
+import pcw;
 
 public class MediaVideoView
   extends VideoView
-  implements oxr
+  implements pcw
 {
   public MediaVideoView(Context paramContext)
   {
@@ -27,7 +27,7 @@ public class MediaVideoView
   
   public void B_()
   {
-    b();
+    c();
   }
   
   public void C_()
@@ -67,7 +67,7 @@ public class MediaVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView
  * JD-Core Version:    0.7.0.1
  */

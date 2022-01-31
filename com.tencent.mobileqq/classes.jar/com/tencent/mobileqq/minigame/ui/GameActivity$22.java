@@ -11,8 +11,6 @@ import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 import org.json.JSONObject;
 
 class GameActivity$22
@@ -30,15 +28,15 @@ class GameActivity$22
     {
       l = paramJSONObject.optLong("retCode");
       if (paramJSONObject == null) {
-        break label301;
+        break label276;
       }
       localObject = paramJSONObject.optString("errMsg");
       QLog.i("[minigame] GameActivity", 1, "doRequestByLink, retCode = " + l + ",errMsg = " + (String)localObject);
       if (!paramBoolean) {
-        break label351;
+        break label382;
       }
       if (paramJSONObject == null) {
-        break label394;
+        break label425;
       }
       localMiniAppInfo = (MiniAppInfo)paramJSONObject.opt("appInfo");
       paramJSONObject = paramJSONObject.optString("shareTicket", "");
@@ -57,36 +55,39 @@ class GameActivity$22
         if (!TextUtils.isEmpty(((MiniAppConfig)localObject).launchParam.shareTicket)) {
           ((MiniAppConfig)localObject).launchParam.scene = 1044;
         }
-        if (((MiniAppConfig)localObject).launchParam.reportData == null) {
-          ((MiniAppConfig)localObject).launchParam.reportData = new HashMap();
+        if (TextUtils.isEmpty(((MiniAppConfig)localObject).launchParam.reportData)) {
+          ((MiniAppConfig)localObject).launchParam.reportData = localMiniAppInfo.reportData;
         }
-        if (localMiniAppInfo.reportData != null) {
-          ((MiniAppConfig)localObject).launchParam.reportData.putAll(localMiniAppInfo.reportData);
+        for (;;)
+        {
+          if ((localMiniAppInfo.verType != 3) && (localMiniAppInfo.verType != 1)) {
+            ((MiniAppConfig)localObject).forceReroad = 3;
+          }
+          MiniAppStartUtils.saveMiniAppInfoToFile((MiniAppConfig)localObject, BaseApplicationImpl.getApplication().getQQProcessName());
+          this.this$0.mGameAppConfig = ((MiniAppConfig)localObject);
+          MiniAppUtils.notityPullDownEntryInMainProcess((MiniAppConfig)localObject);
+          this.this$0.runOnUiThread(new GameActivity.22.1(this));
+          return;
+          l = 0L;
+          break;
+          label276:
+          localObject = "";
+          break label23;
+          if (!TextUtils.isEmpty(localMiniAppInfo.reportData)) {
+            ((MiniAppConfig)localObject).launchParam.reportData = (((MiniAppConfig)localObject).launchParam.reportData + "&" + localMiniAppInfo.reportData);
+          }
         }
-        if ((localMiniAppInfo.verType != 3) && (localMiniAppInfo.verType != 1)) {
-          ((MiniAppConfig)localObject).forceReroad = 3;
-        }
-        MiniAppStartUtils.saveMiniAppInfoToFile((MiniAppConfig)localObject, BaseApplicationImpl.getApplication().getQQProcessName());
-        this.this$0.mGameAppConfig = ((MiniAppConfig)localObject);
-        MiniAppUtils.notityPullDownEntryInMainProcess((MiniAppConfig)localObject);
-        this.this$0.runOnUiThread(new GameActivity.22.1(this));
-        return;
-        l = 0L;
-        break;
-        label301:
-        localObject = "";
-        break label23;
       }
       MiniProgramLpReportDC04239.reportPageView(this.this$0.mGameAppConfig, "1", null, "load_fail", "shortcut_request_fail");
       MiniAppReportManager2.reportPageView("2launch_fail", "shotcut_request_fail", null, this.this$0.mGameAppConfig);
-      GameActivity.access$2700(this.this$0, l, (String)localObject);
+      GameActivity.access$3100(this.this$0, l, (String)localObject);
       return;
-      label351:
+      label382:
       MiniProgramLpReportDC04239.reportPageView(this.this$0.mGameAppConfig, "1", null, "load_fail", "shortcut_request_fail");
       MiniAppReportManager2.reportPageView("2launch_fail", "shotcut_request_fail", null, this.this$0.mGameAppConfig);
-      GameActivity.access$2700(this.this$0, l, (String)localObject);
+      GameActivity.access$3100(this.this$0, l, (String)localObject);
       return;
-      label394:
+      label425:
       paramJSONObject = null;
       localMiniAppInfo = null;
     }
@@ -94,7 +95,7 @@ class GameActivity$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.22
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoPresenter.5.1;
+import java.util.List;
 
-public final class qwu
-  implements Parcelable.Creator<DiscoveryInfo.TopicVideoCard>
+public class qwu
+  implements qoj
 {
-  public DiscoveryInfo.TopicVideoCard a(Parcel paramParcel)
+  qwu(qwp paramqwp) {}
+  
+  public List a(int paramInt1, int paramInt2)
   {
-    return new DiscoveryInfo.TopicVideoCard(paramParcel);
+    return qny.a(paramInt1, paramInt2);
   }
   
-  public DiscoveryInfo.TopicVideoCard[] a(int paramInt)
+  public void a(List paramList, boolean paramBoolean)
   {
-    return new DiscoveryInfo.TopicVideoCard[paramInt];
+    qwp.a(this.a).a(paramList, paramBoolean);
+    bfrq.c(new SelectVideoPresenter.5.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qwu
  * JD-Core Version:    0.7.0.1
  */

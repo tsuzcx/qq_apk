@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bgqh
+public abstract interface bgqh<T>
 {
-  public ChatMessage a;
-  public String a;
+  public abstract T a(Context paramContext, Bundle paramBundle);
   
-  public bgqh(ChatMessage paramChatMessage, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract boolean a(Bundle paramBundle);
+  
+  public abstract boolean a(MiniAppInfo paramMiniAppInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgqh
  * JD-Core Version:    0.7.0.1
  */

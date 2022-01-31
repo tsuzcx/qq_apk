@@ -15,7 +15,7 @@ public final class nearfield_discuss$Wifi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_discuss.nearfield_discuss.Wifi
  * JD-Core Version:    0.7.0.1
  */

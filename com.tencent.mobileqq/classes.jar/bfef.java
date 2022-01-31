@@ -1,166 +1,163 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import io.flutter.view.FlutterMain;
-import io.flutter.view.FlutterNativeView;
-import java.io.File;
-import java.lang.reflect.Method;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.SparseArray;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.module.common.NetworkState.NetworkStateListener;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.tmassistant.common.jce.StatItem;
+import com.tencent.tmassistant.common.jce.StatReportRequest;
+import com.tencent.tmassistant.common.jce.StatReportResponse;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-@behk(a="RuntimeCreateTask")
 public class bfef
-  extends bffk
+  implements bfed, NetworkState.NetworkStateListener
 {
-  bfbi jdField_a_of_type_Bfbi;
-  private boolean jdField_a_of_type_Boolean;
+  private static bfef jdField_a_of_type_Bfef;
+  private long jdField_a_of_type_Long = 1800000L;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private SparseArray<ArrayList<StatItem>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private bfec jdField_a_of_type_Bfec = new bfec();
+  private Map<Integer, ArrayList<String>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private SparseArray<ArrayList<StatItem>> b = new SparseArray();
   
-  public bfef(Context paramContext, beqm parambeqm)
+  private bfef()
   {
-    super(paramContext, parambeqm);
+    this.jdField_a_of_type_Bfec.a(this);
+    a();
   }
   
-  private static boolean a(String paramString)
+  public static bfef a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramString != null)
-    {
-      bool1 = bool2;
-      if (paramString.length() <= 0) {}
-    }
     try
     {
-      bool1 = new File(paramString).exists();
-      return bool1;
+      if (jdField_a_of_type_Bfef == null) {
+        jdField_a_of_type_Bfef = new bfef();
+      }
+      bfef localbfef = jdField_a_of_type_Bfef;
+      return localbfef;
     }
-    catch (Exception paramString)
-    {
-      betc.d("Tools.isFileExists", "" + paramString.getMessage());
-    }
-    return false;
+    finally {}
   }
   
-  private boolean b(String paramString)
+  private void a()
   {
-    paramString = paramString + "/res.apk";
-    if (a(paramString)) {}
-    for (;;)
+    HandlerThread localHandlerThread = new HandlerThread("thread_report");
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new bfeg(this, localHandlerThread.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+  }
+  
+  public void a(int paramInt, DownloadInfo paramDownloadInfo)
+  {
+    if (BaseApplicationImpl.sProcessId == 7) {}
+    for (int i = 1; (paramDownloadInfo == null) || (i == 0); i = 0) {
+      return;
+    }
+    long l = System.currentTimeMillis() / 1000L;
+    a(9, l + "|" + paramDownloadInfo.jdField_c_of_type_JavaLangString + "|" + paramDownloadInfo.b + "|" + paramDownloadInfo.e + "|" + paramDownloadInfo.jdField_c_of_type_Int + "|" + paramInt + "|" + paramDownloadInfo.jdField_c_of_type_Long + "|" + paramDownloadInfo.h);
+  }
+  
+  public void a(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2)
+  {
+    Log.i("selfupdeReport", "circleTest reportLog onReportFinish errorCode = " + paramInt2);
+    paramStatReportRequest = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    if (paramStatReportRequest == null) {
+      paramStatReportRequest = (ArrayList)this.b.get(paramInt1);
+    }
+    for (int i = 1;; i = 0)
     {
-      try
+      if (paramInt2 != 0)
       {
-        long l1 = System.currentTimeMillis();
-        AssetManager localAssetManager = a().getAssets();
-        Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
-        localMethod.setAccessible(true);
-        localMethod.invoke(localAssetManager, new Object[] { paramString });
-        long l2 = System.currentTimeMillis();
-        betc.d("miniapp-start-TISSUE", "loadAsset", paramString);
-      }
-      catch (Exception paramString)
-      {
-        try
+        if ((paramStatReportRequest != null) && (paramStatReportRequest.size() > 0) && (i == 0))
         {
-          betc.a("miniapp-start-TISSUE", String.format("load asset file %s cost %s ms", new Object[] { paramString, Long.valueOf(l2 - l1) }));
-          bool = true;
-          if (betc.a()) {
-            betc.a("miniapp-start-TISSUE", String.format("loadAssetRes, isSuccess: %s", new Object[] { Boolean.valueOf(bool) }));
-          }
-          return bool;
-        }
-        catch (Exception paramString)
-        {
-          for (;;)
+          SparseArray localSparseArray = new SparseArray();
+          Iterator localIterator = paramStatReportRequest.iterator();
+          while (localIterator.hasNext())
           {
-            boolean bool = true;
+            StatItem localStatItem = (StatItem)localIterator.next();
+            paramStatReportResponse = (List)localSparseArray.get(localStatItem.type);
+            paramStatReportRequest = paramStatReportResponse;
+            if (paramStatReportResponse == null)
+            {
+              paramStatReportRequest = new ArrayList();
+              localSparseArray.put(localStatItem.type, paramStatReportRequest);
+            }
+            paramStatReportRequest.addAll(localStatItem.records);
+          }
+          i = localSparseArray.size();
+          paramInt2 = 0;
+          while (paramInt2 < i)
+          {
+            int j = localSparseArray.keyAt(paramInt2);
+            paramStatReportResponse = (List)localSparseArray.get(j);
+            paramStatReportRequest = new ArrayList();
+            paramStatReportResponse = paramStatReportResponse.iterator();
+            while (paramStatReportResponse.hasNext()) {
+              paramStatReportRequest.add((String)paramStatReportResponse.next());
+            }
+            paramStatReportResponse = bfds.a().a(String.valueOf(j));
+            if (paramStatReportResponse != null) {
+              paramStatReportRequest.addAll(paramStatReportResponse);
+            }
+            bfds.a().a(String.valueOf(j), paramStatReportRequest);
+            paramInt2 += 1;
           }
         }
-        paramString = paramString;
-        bool = false;
       }
-      continue;
-      betc.d("miniapp-start-TISSUE", String.format("assetsPath: %s not exist", new Object[] { paramString }));
-      bool = true;
-    }
-  }
-  
-  public bfbi a()
-  {
-    return this.jdField_a_of_type_Bfbi;
-  }
-  
-  public void a()
-  {
-    beyq.a(200, "", a().getMiniAppInfoForReport());
-    if (this.jdField_a_of_type_Bfbi != null)
-    {
-      c();
-      return;
-    }
-    if ((beku.a != null) && (!b(beku.a.getNativeLibDir())))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      betc.d("miniapp-start-TISSUE", "flutter loadAssetRes failed!!! enableFlutter=false");
-    }
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
+      else if ((i != 0) && (paramStatReportRequest != null) && (paramStatReportRequest.size() > 0))
       {
-        this.jdField_a_of_type_Bfbi = new bfbg();
-        this.jdField_a_of_type_Bfbi.a(a());
-        c();
-        return;
+        paramStatReportRequest = paramStatReportRequest.iterator();
+        while (paramStatReportRequest.hasNext())
+        {
+          paramStatReportResponse = (StatItem)paramStatReportRequest.next();
+          bfds.a().a(String.valueOf(paramStatReportResponse.type));
+        }
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt1);
+      this.b.delete(paramInt1);
+      return;
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt >= 0) && (!TextUtils.isEmpty(paramString)))
+    {
+      ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      ArrayList localArrayList1 = localArrayList2;
+      if (localArrayList2 == null)
+      {
+        localArrayList1 = new ArrayList();
+        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList1);
+      }
+      localArrayList1.add(paramString);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 500L);
+    }
+  }
+  
+  public void onNetworkConnect(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
       }
     }
-    catch (Throwable localThrowable)
-    {
-      betc.d("minisdk-start", "RuntimeCreateTask exception!", localThrowable);
-      f();
+    while (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
       return;
     }
-    this.jdField_a_of_type_Bfbi = new bfbk();
-    this.jdField_a_of_type_Bfbi.a(a());
-    Object localObject = beku.a;
-    if (localObject != null) {}
-    try
-    {
-      FlutterMain.setNativeLibDir(beku.a.getNativeLibDir());
-      FlutterMain.startInitialization(a().getApplicationContext());
-      FlutterMain.ensureInitializationComplete(a().getApplicationContext(), null);
-      label170:
-      localObject = new FlutterNativeView(a().getApplicationContext());
-      ((bfbk)this.jdField_a_of_type_Bfbi).a((FlutterNativeView)localObject);
-      c();
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      break label170;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void aU_()
-  {
-    beyq.a(221, "", a().getMiniAppInfoForReport());
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Bfbi = null;
-  }
-  
-  public void c()
-  {
-    super.c();
-    beyq.a(201, "", a().getMiniAppInfoForReport());
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfef
  * JD-Core Version:    0.7.0.1
  */

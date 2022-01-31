@@ -1,14 +1,12 @@
-public abstract interface ahhr
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ThemeTabLayout;
+
+public class ahhr
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, String paramString, Object paramObject);
-  
-  public abstract void ar_();
+  public ThemeTabLayout a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhr
  * JD-Core Version:    0.7.0.1
  */

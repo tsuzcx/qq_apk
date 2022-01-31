@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.fms;
 
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import java.io.Serializable;

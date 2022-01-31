@@ -1,24 +1,12 @@
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import java.io.File;
 
 public class mcq
-  implements mho
 {
-  public mcq(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
-  
-  public void a()
-  {
-    this.a.j = true;
-    this.a.L();
-  }
-  
-  public void b()
-  {
-    this.a.j = false;
-  }
+  public static String a = lju.d + "huanlian" + File.separator + "allgray.png";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mcq
  * JD-Core Version:    0.7.0.1
  */

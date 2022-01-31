@@ -1,7 +1,7 @@
 package com.tencent.sharp.jni;
 
 import android.content.Intent;
-import bflq;
+import bhmk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -141,7 +141,7 @@ abstract class TraeAudioManager$switchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioManager.switchThread
  * JD-Core Version:    0.7.0.1
  */

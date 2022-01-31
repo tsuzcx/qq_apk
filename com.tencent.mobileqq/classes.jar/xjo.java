@@ -1,32 +1,40 @@
-import android.os.Bundle;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class xjo
-  implements DownloadListener
 {
-  public xjo(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView) {}
+  public final int a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public xjo(qqstory_struct.CompInfoBase paramCompInfoBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "start UniformDownloadActivity");
+    this.jdField_a_of_type_JavaLangString = paramCompInfoBase.title.get();
+    this.b = paramCompInfoBase.backgroud_url.get();
+    this.c = paramCompInfoBase.compared_vid.get();
+    if (paramCompInfoBase.is_compared_able.get() == 1) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.d = paramCompInfoBase.icon_url.get();
+      this.jdField_a_of_type_Int = paramCompInfoBase.oa_task_id.get();
+      return;
+      bool = false;
     }
-    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    aoyd.a(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, paramString1, localBundle);
+  }
+  
+  public String toString()
+  {
+    return "CompInfoBase{title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", linkUrl='" + this.b + '\'' + ", comparedVid='" + this.c + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.d + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjo
  * JD-Core Version:    0.7.0.1
  */

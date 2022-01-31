@@ -1,31 +1,23 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.3;
 
-class qpe
-  implements acwb
+public class qpe
+  implements DialogInterface.OnClickListener
 {
-  qpe(qpd paramqpd, MessageForShortVideo paramMessageForShortVideo) {}
+  public qpe(ReadInJoyDeliverVideoActivity.3 param3) {}
   
-  public void a(View paramView, ayqo paramayqo, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramayqo == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (paramayqo.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)) {}
-    while ((paramayqo.jdField_b_of_type_Int != 6) && (paramayqo.jdField_b_of_type_Int != 17) && (paramayqo.jdField_b_of_type_Int != 9) && (paramayqo.jdField_b_of_type_Int != 20)) {
-      return;
-    }
-    paramView = new Bundle();
-    paramView.putInt("VALUE_SHORTVIDEO_RESP_FILE_STATUS", paramayqo.d);
-    paramView.putString("VALUE_SHORTVIDEO_RESP_FILE_DOMAIN", paramayqo.u);
-    paramView.putStringArray("VALUE_SHORTVIDEO_RESP_FILE_URLS", paramayqo.c);
-    paramView.putLong("VALUE_SHORTVIDEO_RESP_FILE_UNISEQ", paramayqo.jdField_b_of_type_Long);
-    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_SHORTVIDEO_REQUEST_MANUAL_DOWNLOAD", paramView, null);
+    arys.a(this.a.this$0, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(this.a.this$0));
+    this.a.this$0.moveTaskToBack(true);
+    this.a.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qpe
  * JD-Core Version:    0.7.0.1
  */

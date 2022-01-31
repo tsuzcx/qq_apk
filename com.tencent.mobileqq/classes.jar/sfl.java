@@ -1,24 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import com.tencent.image.URLDrawableHandler;
 
-class sfl
-  extends Handler
+public class sfl
+  implements URLDrawableHandler
 {
-  sfl(sfk paramsfk) {}
+  public sfl(RunningJob paramRunningJob) {}
   
-  public void handleMessage(Message paramMessage)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a = false;
+    return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted()
+  {
+    pdz.b(3, this.a.a);
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    if (this.a.a.d == 0) {
+      pdz.b(2, this.a.a);
+    }
+  }
+  
+  public void publishProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfl
  * JD-Core Version:    0.7.0.1
  */

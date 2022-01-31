@@ -1,42 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.IphoneTreeView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x934.cmd0x934.Item;
+import tencent.im.oidb.cmd0x934.cmd0x934.List;
 
 public class bcnk
-  implements View.OnTouchListener
 {
-  public bcnk(IphoneTreeView paramIphoneTreeView) {}
+  public String a;
+  public ArrayList<bcnh> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static bcnk a(cmd0x934.List paramList)
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
+    bcnk localbcnk = new bcnk();
+    localbcnk.jdField_a_of_type_JavaLangString = paramList.name.get();
+    localbcnk.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList.items.size());
+    int i = 0;
+    while (i < paramList.items.size())
     {
-    case 2: 
-    default: 
-      bool = false;
+      localbcnk.jdField_a_of_type_JavaUtilArrayList.add(bcnh.a((cmd0x934.Item)paramList.items.get(i)));
+      i += 1;
     }
-    do
-    {
-      return bool;
-      paramView.setPressed(true);
-      this.a.invalidate();
-      return true;
-      paramView.setPressed(false);
-      this.a.invalidate();
-      break;
-    } while (!paramView.isPressed());
-    paramView.setPressed(false);
-    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
-    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_AndroidViewView = null;
-    return true;
+    return localbcnk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcnk
  * JD-Core Version:    0.7.0.1
  */

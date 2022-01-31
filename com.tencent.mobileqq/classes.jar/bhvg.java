@@ -1,21 +1,15 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-class bhvg
-  implements View.OnTouchListener
+public abstract interface bhvg
 {
-  bhvg(bhvf parambhvf) {}
+  public abstract void a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.a.a();
-    return false;
-  }
+  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhvg
  * JD-Core Version:    0.7.0.1
  */

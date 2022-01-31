@@ -1,49 +1,35 @@
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class xpd
-  implements xps
+final class xpd
+  extends xos
 {
-  protected long a;
-  protected ArrayList<xps> a;
-  protected boolean a;
-  public boolean b = true;
-  public boolean c;
+  xpd(xos paramxos, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public xpd()
+  public void onFailure(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = 350L;
+    QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 1, paramString);
+    this.jdField_a_of_type_Xos.onFailure(paramString);
+    wta.a("music_composite", "music_clip", 0, 1, new String[0]);
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio failed  msg：" + paramString);
   }
   
-  public long a()
+  public void onStart()
   {
-    return this.jdField_a_of_type_Long;
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio start");
   }
   
-  public void a()
+  public void onSuccess(String paramString)
   {
-    this.jdField_a_of_type_Long = 350L;
+    paramString = String.valueOf(System.currentTimeMillis() - this.b);
+    wta.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio end cost：" + paramString);
   }
-  
-  public void a(xps paramxps)
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramxps)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramxps);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpd
  * JD-Core Version:    0.7.0.1
  */

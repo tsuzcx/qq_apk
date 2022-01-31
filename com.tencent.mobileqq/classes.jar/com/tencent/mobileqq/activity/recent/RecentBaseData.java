@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahpj;
-import ahqt;
+import ajgs;
+import ajic;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import aryz;
-import aykk;
-import aync;
-import bbbr;
-import bbcz;
-import bbdh;
-import bbfh;
+import atpv;
+import baig;
+import baky;
+import bdal;
+import bdbt;
+import bdcb;
+import bdec;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 import com.tencent.qphone.base.util.QLog;
-import lnm;
-import muc;
+import lpp;
+import mww;
 
-@ahqt
+@ajic
 public abstract class RecentBaseData
 {
   public static final int MENU_FLAG_AV_A = 12288;
@@ -97,7 +97,7 @@ public abstract class RecentBaseData
   {
     if ((paramMessage != null) && (1 == paramInt))
     {
-      paramQQAppInterface = bbcz.g(paramQQAppInterface, paramMessage.frienduin, paramMessage.senderuin);
+      paramQQAppInterface = bdbt.g(paramQQAppInterface, paramMessage.frienduin, paramMessage.senderuin);
       if ((paramQQAppInterface != null) && (!TextUtils.equals(paramQQAppInterface, paramMessage.nickName)))
       {
         paramMessage.nickName = paramQQAppInterface;
@@ -144,6 +144,17 @@ public abstract class RecentBaseData
     }
   }
   
+  protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  {
+    a(paramMessage, paramQQAppInterface, paramInt);
+    if (paramMessage != null) {}
+    for (String str = paramMessage.nickName;; str = null)
+    {
+      bdec.a(paramContext, paramQQAppInterface, paramMessage, paramInt, paramMsgSummary, str, false, false);
+      return;
+    }
+  }
+  
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.mStatus = 0;
@@ -159,7 +170,7 @@ public abstract class RecentBaseData
       try
       {
         l = Long.parseLong(a());
-        m = muc.b(k);
+        m = mww.b(k);
         if (paramQQAppInterface.a().a(m, l) > 0L) {
           if (paramQQAppInterface.a().a(m, l))
           {
@@ -183,7 +194,7 @@ public abstract class RecentBaseData
               if (k != 1) {
                 break label534;
               }
-              if (aryz.b(paramQQAppInterface, (String)localObject1)) {
+              if (atpv.b(paramQQAppInterface, (String)localObject1)) {
                 this.mStatus = 8;
               }
             }
@@ -205,7 +216,7 @@ public abstract class RecentBaseData
               }
               i = 1;
               label288:
-              i = ((aync)paramQQAppInterface.getManager(339)).a(i, (String)localObject1);
+              i = ((baky)paramQQAppInterface.getManager(339)).a(i, (String)localObject1);
               if (((this.mStatus == 0) || (this.mStatus >= i)) && (i != 0)) {
                 this.mStatus = i;
               }
@@ -226,12 +237,12 @@ public abstract class RecentBaseData
         if (localObject2 == null) {}
       }
     }
-    for (int i = ((lnm)localObject2).a + 0;; i = 0)
+    for (int i = ((lpp)localObject2).a + 0;; i = 0)
     {
       localObject2 = paramQQAppInterface.a().a(l, 10);
       int j = i;
       if (localObject2 != null) {
-        j = i + ((lnm)localObject2).a;
+        j = i + ((lpp)localObject2).a;
       }
       if (j <= 0) {
         break;
@@ -258,7 +269,7 @@ public abstract class RecentBaseData
       this.mStatus = 0;
       break label137;
       label534:
-      if ((k != 0) || (!aryz.a(paramQQAppInterface, (String)localObject2))) {
+      if ((k != 0) || (!atpv.a(paramQQAppInterface, (String)localObject2))) {
         break label185;
       }
       this.mStatus = 8;
@@ -285,7 +296,7 @@ public abstract class RecentBaseData
     if (paramMsgSummary != null)
     {
       this.mLastMsg = paramMsgSummary.a(paramContext);
-      if (((this.mLastMsg instanceof SpannableStringBuilder)) && (bbdh.b())) {
+      if (((this.mLastMsg instanceof SpannableStringBuilder)) && (bdcb.b())) {
         this.mLastMsg = ((SpannableStringBuilder)this.mLastMsg).append(" ");
       }
       paramQQAppInterface = this.mLastMsg;
@@ -295,7 +306,7 @@ public abstract class RecentBaseData
     {
       this.mLastMsg = paramQQAppInterface.subSequence(0, 168);
       if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
-        this.mShowTime = ahpj.a().a(a(), this.mDisplayTime);
+        this.mShowTime = ajgs.a().a(a(), this.mDisplayTime);
       }
       return;
     }
@@ -329,18 +340,7 @@ public abstract class RecentBaseData
     } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getSummary())));
     this.mDisplayTime = paramQQAppInterface.getTime();
     paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new aykk(paramQQAppInterface.getSummary(), 3, 16);
-  }
-  
-  protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
-  {
-    a(paramMessage, paramQQAppInterface, paramInt);
-    if (paramMessage != null) {}
-    for (String str = paramMessage.nickName;; str = null)
-    {
-      bbfh.a(paramContext, paramQQAppInterface, paramMessage, paramInt, paramMsgSummary, str, false, false);
-      return;
-    }
+    paramMsgSummary.mDraft = new baig(paramQQAppInterface.getSummary(), 3, 16);
   }
   
   public boolean a()
@@ -378,7 +378,7 @@ public abstract class RecentBaseData
   public void d()
   {
     StringBuilder localStringBuilder;
-    if (AppSetting.d)
+    if (AppSetting.c)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(this.mTitleName).append(",");
@@ -395,9 +395,9 @@ public abstract class RecentBaseData
       return;
       label67:
       if (this.mUnreadNum == 1) {
-        localStringBuilder.append("有一条未读");
+        localStringBuilder.append("有一条未读,");
       } else if (this.mUnreadNum == 2) {
-        localStringBuilder.append("有两条未读");
+        localStringBuilder.append("有两条未读,");
       } else if (this.mUnreadNum > 0) {
         localStringBuilder.append("有").append(this.mUnreadNum).append("条未读,");
       }
@@ -410,7 +410,7 @@ public abstract class RecentBaseData
     for (boolean bool = true; (!bool) && ((paramObject instanceof RecentBaseData)); bool = false)
     {
       paramObject = (RecentBaseData)paramObject;
-      if ((paramObject.a() != a()) || (!bbbr.a(paramObject.a(), a()))) {
+      if ((paramObject.a() != a()) || (!bdal.a(paramObject.a(), a()))) {
         break;
       }
       return true;
@@ -420,7 +420,7 @@ public abstract class RecentBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentBaseData
  * JD-Core Version:    0.7.0.1
  */

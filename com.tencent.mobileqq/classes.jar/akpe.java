@@ -1,43 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-
 public class akpe
-  extends akpf
 {
-  public akpe(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
-  {
-    super(paramQQAppInterface, paramQQMessageFacade);
-    this.jdField_a_of_type_JavaLangString = ajsd.A;
-    this.jdField_a_of_type_Int = 6003;
-  }
+  public static int a;
+  public static final String a;
+  public static int b;
+  public static int c;
+  public static int d;
   
-  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
+  static
   {
-    if (paramDataLineMsgRecord != null)
-    {
-      paramDataLineMsgRecord.selfuin = this.jdField_a_of_type_JavaLangString;
-      paramDataLineMsgRecord.frienduin = paramDataLineMsgRecord.selfuin;
-      paramDataLineMsgRecord.senderuin = paramDataLineMsgRecord.selfuin;
-      paramDataLineMsgRecord.istroop = this.jdField_a_of_type_Int;
-      paramDataLineMsgRecord.dataline_type = 1;
-    }
-    return super.a(paramDataLineMsgRecord, paramBoolean);
-  }
-  
-  protected aksy a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-  }
-  
-  protected void a()
-  {
-    ((ajum)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).b(false);
+    jdField_a_of_type_Int = 6;
+    b = 1;
+    c = 1;
+    d = 1;
+    jdField_a_of_type_JavaLangString = alef.jdField_a_of_type_JavaLangString + "/game";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpe
  * JD-Core Version:    0.7.0.1
  */

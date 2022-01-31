@@ -1,33 +1,123 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import cooperation.liveroom.LiveRoomGiftCallback;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.ViewGroup;
 
-class bcan
-  implements MediaPlayer.OnCompletionListener
+public class bcan
 {
-  bcan(bcam parambcam) {}
+  private SparseArray<bcal> a;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  @NonNull
+  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (bcam.a(this.a)) {
-      this.a.a.start();
+    bcal localbcal = a(paramInt);
+    if (localbcal != null) {
+      return localbcal.a(paramViewGroup);
     }
-    for (;;)
+    return null;
+  }
+  
+  public bcal a(int paramInt)
+  {
+    return (bcal)this.a.get(paramInt);
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i < this.a.size())
     {
-      if (bcam.a(this.a) != null) {
-        bcam.a(this.a).onCall(7, "");
+      ((bcal)this.a.valueAt(i)).a();
+      i += 1;
+    }
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = (bcao)paramViewHolder;
+    if (paramViewHolder.a != null)
+    {
+      bcal localbcal = a(paramViewHolder.a.b());
+      if (localbcal != null) {
+        localbcal.a(paramViewHolder);
       }
-      return;
-      bcam.a(this.a, false);
-      if (bcam.a(this.a) != null) {
-        bcam.a(this.a).onCompletion(this.a.a);
+    }
+  }
+  
+  public void a(@NonNull RecyclerView.ViewHolder paramViewHolder, bbzp parambbzp, int paramInt)
+  {
+    bcal localbcal = a(parambbzp.b());
+    if (localbcal != null)
+    {
+      ((bcao)paramViewHolder).a = parambbzp;
+      localbcal.a(paramViewHolder, parambbzp, paramInt);
+    }
+  }
+  
+  public void a(SparseArray<bcal> paramSparseArray)
+  {
+    this.a = paramSparseArray;
+  }
+  
+  public void a(bbzp parambbzp)
+  {
+    bcal localbcal = a(parambbzp.b());
+    if (localbcal != null) {
+      localbcal.b(parambbzp);
+    }
+  }
+  
+  public void a(bbzz parambbzz)
+  {
+    bcal localbcal = a(parambbzz.b());
+    if ((localbcal != null) && ((localbcal instanceof bcbe))) {
+      ((bcbe)localbcal).a(parambbzz);
+    }
+  }
+  
+  public void b(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = (bcao)paramViewHolder;
+    if (paramViewHolder.a != null)
+    {
+      bcal localbcal = a(paramViewHolder.a.b());
+      if (localbcal != null) {
+        localbcal.b(paramViewHolder);
       }
+    }
+  }
+  
+  public void b(bbzp parambbzp)
+  {
+    bcal localbcal = a(parambbzp.b());
+    if (localbcal != null) {
+      localbcal.c(parambbzp);
+    }
+  }
+  
+  public void c(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = (bcao)paramViewHolder;
+    if (paramViewHolder.a != null)
+    {
+      bcal localbcal = a(paramViewHolder.a.b());
+      if (localbcal != null) {
+        localbcal.c(paramViewHolder);
+      }
+    }
+  }
+  
+  public void c(bbzp parambbzp)
+  {
+    bcal localbcal = a(parambbzp.b());
+    if (localbcal != null) {
+      localbcal.d(parambbzp);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcan
  * JD-Core Version:    0.7.0.1
  */

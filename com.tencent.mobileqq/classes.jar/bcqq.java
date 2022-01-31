@@ -1,92 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.4.1;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
 
-class bcqq
-  extends Handler
+public class bcqq
+  implements bcxc
 {
-  private long a = 0L;
+  public bcqq(TroopGiftAnimationController.5 param5) {}
   
-  private bcqq(Looper paramLooper)
+  public void onLoadingStateChanged(int paramInt1, int paramInt2)
   {
-    super(paramLooper);
-  }
-  
-  private void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQToast", 2, "scheduleNextToast to " + paramLong);
-    }
-    removeMessages(1);
-    sendEmptyMessageDelayed(1, paramLong);
-  }
-  
-  private void a(bcqp parambcqp)
-  {
-    long l2 = 0L;
-    parambcqp = parambcqp.a();
-    long l1;
-    int i;
-    if (parambcqp != null)
+    if ((paramInt1 == 0) && (paramInt2 == 1) && ((this.a.this$0.a instanceof TroopGiftToPersonalSurfaceView)))
     {
-      parambcqp.a();
-      if (bcql.a(parambcqp) == 0)
-      {
-        l1 = 2000L;
-        this.a = (System.currentTimeMillis() + l1);
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      if (!bcql.a().isEmpty())
-      {
-        if (i != 0) {
-          l2 = 100L + l1;
-        }
-        a(l2);
-      }
-      return;
-      l1 = 3500L;
-      break;
-      i = 0;
-      l1 = 0L;
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    long l;
-    do
-    {
-      return;
       if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "MSG_SHOW_TOAST received");
+        QLog.d("TroopGiftAnimationController", 2, "onLoadingStateChanged: curState = " + paramInt2);
       }
-      l = System.currentTimeMillis();
-      if (l <= this.a + 100L) {
-        break;
-      }
-      paramMessage = (bcqp)bcql.a().poll();
-      if (paramMessage != null)
-      {
-        a(paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQToast", 2, "MSG_SHOW_TOAST but no message to show");
-    return;
-    a(this.a - l + 100L);
+      Bitmap localBitmap = bclo.a(this.a.this$0.a(String.valueOf(this.a.a.receiverUin), null));
+      this.a.this$0.a.b(new TroopGiftAnimationController.5.4.1(this, localBitmap));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcqq
  * JD-Core Version:    0.7.0.1
  */

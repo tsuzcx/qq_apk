@@ -1,9 +1,12 @@
 package com.tencent.ttpic.openapi.model;
 
+import android.graphics.PointF;
 import com.tencent.aekit.plugin.core.AEDetectorType;
+import com.tencent.aekit.plugin.core.AIActionCounter;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.PTHandAttr;
 import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.manager.TouchTriggerManager;
 import com.tencent.ttpic.openapi.manager.TriggerStateManager;
 import com.tencent.ttpic.openapi.util.TriggerUtil;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
@@ -13,8 +16,10 @@ import java.util.Set;
 
 public class TriggerExpression
 {
+  public String externalTriggerWords;
   public int mTriggerType;
   public ArrayList<StickerItem.TriggerArea> triggerArea;
+  public int triggerFingerIndex = 0;
   public int triggerHandPoint;
   
   public TriggerExpression(int paramInt)
@@ -30,35 +35,35 @@ public class TriggerExpression
   public boolean isTriggered()
   {
     boolean bool = true;
-    PTDetectInfo localPTDetectInfo = TriggerStateManager.getInstance().getPTDetectInfo();
-    if (localPTDetectInfo == null) {}
-    Object localObject;
+    Object localObject1 = TriggerStateManager.getInstance().getPTDetectInfo();
+    if (localObject1 == null) {}
+    Object localObject2;
     List localList;
     AIAttr localAIAttr;
     do
     {
       return false;
-      localObject = localPTDetectInfo.triggeredExpression;
-      localList = localPTDetectInfo.bodyPoints;
-      localAIAttr = localPTDetectInfo.aiAttr;
+      localObject2 = ((PTDetectInfo)localObject1).triggeredExpression;
+      localList = ((PTDetectInfo)localObject1).bodyPoints;
+      localAIAttr = ((PTDetectInfo)localObject1).aiAttr;
       if (!VideoMaterialUtil.isFaceTriggerType(this.mTriggerType)) {
         break;
       }
-    } while (localObject == null);
-    return ((Set)localObject).contains(Integer.valueOf(this.mTriggerType));
+    } while (localObject2 == null);
+    return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
     if (VideoMaterialUtil.isGestureTriggerType(this.mTriggerType))
     {
-      localObject = (PTHandAttr)localAIAttr.getAvailableData(AEDetectorType.HAND.value);
-      if (localObject == null) {
-        break label227;
+      localObject2 = (PTHandAttr)localAIAttr.getAvailableData(AEDetectorType.HAND.value);
+      if (localObject2 == null) {
+        break label327;
       }
     }
-    label227:
-    for (bool = TriggerUtil.isGestureTriggered((PTHandAttr)localObject, this.mTriggerType, this.triggerHandPoint, this.triggerArea, localAIAttr);; bool = false)
+    label327:
+    for (bool = TriggerUtil.isGestureTriggered((PTHandAttr)localObject2, this.mTriggerType, this.triggerHandPoint, this.triggerFingerIndex, this.triggerArea, localAIAttr);; bool = false)
     {
-      if (localPTDetectInfo.isFreezeInfo)
+      if (((PTDetectInfo)localObject1).isFreezeInfo)
       {
-        if (localPTDetectInfo.gestureTrigger != this.mTriggerType) {
+        if (((PTDetectInfo)localObject1).gestureTrigger != this.mTriggerType) {
           break;
         }
         return true;
@@ -68,20 +73,35 @@ public class TriggerExpression
         return true;
       }
       if (VideoMaterialUtil.isAllFreezeFrameTriggerType(this.mTriggerType)) {
-        return ((Set)localObject).contains(Integer.valueOf(this.mTriggerType));
+        return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
       }
-      if (VideoMaterialUtil.isTouchTriggerType(this.mTriggerType)) {
-        return ((Set)localObject).contains(Integer.valueOf(this.mTriggerType));
+      if (VideoMaterialUtil.isTouchTriggerType(this.mTriggerType))
+      {
+        if (this.triggerArea != null)
+        {
+          localObject1 = TouchTriggerManager.getInstance().getCurTouchPosition();
+          return TriggerUtil.isTouchAreaTriggered(this.triggerArea, (PointF)localObject1);
+        }
+        return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
       }
-      if (!VideoMaterialUtil.isBodyDetectType(this.mTriggerType)) {
+      if (VideoMaterialUtil.isBodyDetectType(this.mTriggerType))
+      {
+        if ((localList != null) && (!localList.isEmpty())) {}
+        for (;;)
+        {
+          return bool;
+          bool = false;
+        }
+      }
+      if ((!VideoMaterialUtil.isExternalWordsTriggerType(this.mTriggerType)) || (localAIAttr == null)) {
         break;
       }
-      if ((localList != null) && (!localList.isEmpty())) {}
-      for (;;)
-      {
-        return bool;
-        bool = false;
+      localObject1 = (List)localAIAttr.getRealtimeData(AEDetectorType.VOICE_RECOGNIZE.value);
+      if ((localObject1 == null) || (!((List)localObject1).contains(this.externalTriggerWords))) {
+        break;
       }
+      AIActionCounter.updateAction(AEDetectorType.VOICE_RECOGNIZE + this.externalTriggerWords);
+      return true;
     }
   }
 }

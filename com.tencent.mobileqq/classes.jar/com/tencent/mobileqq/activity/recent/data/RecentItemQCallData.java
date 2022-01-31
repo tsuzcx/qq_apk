@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import bbcz;
+import bdbt;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
@@ -16,11 +16,11 @@ public class RecentItemQCallData
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.mTitleName = bbcz.b(paramQQAppInterface, this.mUser.uin, true);
+    this.mTitleName = bdbt.b(paramQQAppInterface, this.mUser.uin, true);
     this.mDisplayTime = this.mUser.lastmsgtime;
     a(paramQQAppInterface, paramContext, this.msgSummary);
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.d)
+    if (AppSetting.c)
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append(this.mTitleName).append(",");
@@ -49,7 +49,7 @@ public class RecentItemQCallData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemQCallData
  * JD-Core Version:    0.7.0.1
  */

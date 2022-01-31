@@ -6,11 +6,11 @@ import java.util.Map;
 public abstract interface ITPDownloadProxyAidl
   extends IInterface
 {
-  public abstract String getClipPlayUrl(int paramInt1, int paramInt2);
+  public abstract String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract String getPlayErrorCodeStr(int paramInt);
   
-  public abstract String getPlayUrl(int paramInt);
+  public abstract String getPlayUrl(int paramInt1, int paramInt2);
   
   public abstract int init(String paramString);
   
@@ -40,7 +40,7 @@ public abstract interface ITPDownloadProxyAidl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl
  * JD-Core Version:    0.7.0.1
  */

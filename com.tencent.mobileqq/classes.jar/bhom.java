@@ -1,237 +1,65 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import android.opengl.GLES20;
 
 public class bhom
 {
-  public static Object a(Object paramObject, String paramString, boolean paramBoolean, Class[] paramArrayOfClass, Object... paramVarArgs)
+  public static int a(int paramInt, String paramString)
   {
-    if ((paramObject == null) || (TextUtils.isEmpty(paramString))) {
-      return null;
-    }
-    Class localClass = paramObject.getClass();
-    if ((paramBoolean) || (paramArrayOfClass != null)) {}
-    try
+    paramInt = GLES20.glCreateShader(paramInt);
+    if (paramInt != 0)
     {
-      if (paramArrayOfClass.length == 0) {
-        paramString = localClass.getMethod(paramString, new Class[0]);
-      }
-      while ((paramVarArgs == null) || (paramVarArgs.length == 0))
+      GLES20.glShaderSource(paramInt, paramString);
+      GLES20.glCompileShader(paramInt);
+      paramString = new int[1];
+      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
+      if (paramString[0] == 0)
       {
-        return paramString.invoke(paramObject, new Object[0]);
-        paramString = localClass.getMethod(paramString, paramArrayOfClass);
-        continue;
-        if ((paramArrayOfClass == null) || (paramArrayOfClass.length == 0)) {
-          paramString = localClass.getDeclaredMethod(paramString, new Class[0]);
-        } else {
-          paramString = localClass.getDeclaredMethod(paramString, paramArrayOfClass);
-        }
+        GLES20.glDeleteShader(paramInt);
+        return 0;
       }
-      paramObject = paramString.invoke(paramObject, paramVarArgs);
-      return paramObject;
     }
-    catch (NoSuchMethodException paramObject)
-    {
-      QZLog.e("JarReflectUtil", "NoSuchMethodException: " + paramObject.getMessage());
-      paramObject.printStackTrace();
-      return null;
-    }
-    catch (InvocationTargetException paramObject)
-    {
-      QZLog.e("JarReflectUtil", "InvocationTargetException: " + paramObject.getMessage());
-      paramObject.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramObject)
-    {
-      paramObject.printStackTrace();
-      QZLog.e("JarReflectUtil", "IllegalAccessException: " + paramObject.getMessage());
-      return null;
-    }
-    catch (NullPointerException paramObject)
-    {
-      paramObject.printStackTrace();
-      QZLog.e("JarReflectUtil", "NullPointerException: " + paramObject.getMessage());
-    }
-    return null;
+    return paramInt;
   }
   
-  public static Object a(String paramString1, String paramString2)
+  public static int a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    try
+    int i = a(35633, paramString1);
+    if (i == 0) {}
+    int j;
+    do
     {
-      paramString1 = Class.forName(paramString1);
-      paramString1 = paramString1.getField(paramString2).get(paramString1);
-      return paramString1;
-    }
-    catch (NoSuchFieldException paramString1)
+      return 0;
+      j = a(35632, paramString2);
+    } while (j == 0);
+    int k = GLES20.glCreateProgram();
+    if (k != 0)
     {
-      QZLog.e("JarReflectUtil", "NoSuchFieldException: ");
-      paramString1.printStackTrace();
-      return null;
+      GLES20.glAttachShader(k, i);
+      a("glAttachShader");
+      GLES20.glAttachShader(k, j);
+      a("glAttachShader");
+      GLES20.glLinkProgram(k);
+      paramString1 = new int[1];
+      GLES20.glGetProgramiv(k, 35714, paramString1, 0);
+      if (paramString1[0] != 1)
+      {
+        GLES20.glDeleteProgram(k);
+        return 0;
+      }
     }
-    catch (IllegalAccessException paramString1)
-    {
-      QZLog.e("JarReflectUtil", "IllegalAccessException: ");
-      paramString1.printStackTrace();
-      return null;
-    }
-    catch (ClassNotFoundException paramString1)
-    {
-      QZLog.e("JarReflectUtil", "ClassNotFoundException: ");
-      paramString1.printStackTrace();
-    }
-    return null;
+    return k;
   }
   
-  public static Object a(String paramString1, String paramString2, boolean paramBoolean, Class[] paramArrayOfClass, Object... paramVarArgs)
+  public static void a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
+    int i = GLES20.glGetError();
+    if (i != 0) {
+      throw new RuntimeException(paramString + ": glError " + i);
     }
-    for (;;)
-    {
-      try
-      {
-        paramString1 = Class.forName(paramString1);
-        if (!paramBoolean)
-        {
-          if ((paramArrayOfClass == null) || (paramArrayOfClass.length == 0))
-          {
-            paramString1 = paramString1.getMethod(paramString2, new Class[0]);
-            if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
-              continue;
-            }
-            return paramString1.invoke(null, new Object[0]);
-          }
-          paramString1 = paramString1.getMethod(paramString2, paramArrayOfClass);
-          continue;
-        }
-        if ((paramArrayOfClass != null) && (paramArrayOfClass.length != 0)) {
-          continue;
-        }
-        paramString1 = paramString1.getDeclaredMethod(paramString2, new Class[0]);
-      }
-      catch (NoSuchMethodException paramString1)
-      {
-        paramString1.printStackTrace();
-        QZLog.e("JarReflectUtil", "NoSuchMethodException: " + paramString1.getMessage());
-        return null;
-        paramString1 = paramString1.getDeclaredMethod(paramString2, paramArrayOfClass);
-        continue;
-        paramString1 = paramString1.invoke(null, paramVarArgs);
-        return paramString1;
-      }
-      catch (InvocationTargetException paramString1)
-      {
-        paramString1.printStackTrace();
-        QZLog.e("JarReflectUtil", "InvocationTargetException: " + paramString1.getMessage());
-        return null;
-      }
-      catch (IllegalAccessException paramString1)
-      {
-        paramString1.printStackTrace();
-        QZLog.e("JarReflectUtil", "IllegalAccessException: " + paramString1.getMessage());
-        return null;
-      }
-      catch (ClassNotFoundException paramString1)
-      {
-        paramString1.printStackTrace();
-        QZLog.e("JarReflectUtil", "ClassNotFoundException: " + paramString1.getMessage());
-        return null;
-      }
-      catch (NullPointerException paramString1)
-      {
-        paramString1.printStackTrace();
-        QZLog.e("JarReflectUtil", "NullPointerException: " + paramString1.getMessage());
-      }
-      paramString1.setAccessible(true);
-    }
-    return null;
-  }
-  
-  public static Object a(String paramString, Class[] paramArrayOfClass, Object... paramVarArgs)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName(paramString);
-      if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-        return paramString.newInstance();
-      }
-      paramString = paramString.getConstructor(paramArrayOfClass).newInstance(paramVarArgs);
-      return paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      QZLog.e("JarReflectUtil", "ClassNotFoundException: " + paramString.getMessage());
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramString)
-    {
-      QZLog.e("JarReflectUtil", "InstantiationException: " + paramString.getMessage());
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      QZLog.e("JarReflectUtil", "IllegalAccessException: " + paramString.getMessage());
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (NoSuchMethodException paramString)
-    {
-      QZLog.e("JarReflectUtil", "NoSuchMethodException: " + paramString.getMessage());
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (InvocationTargetException paramString)
-    {
-      QZLog.e("JarReflectUtil", "InvocationTargetException: " + paramString.getMessage());
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static Field a(Object paramObject, String paramString)
-  {
-    paramObject = paramObject.getClass();
-    try
-    {
-      paramObject = paramObject.getDeclaredField(paramString);
-      return paramObject;
-    }
-    catch (NoSuchFieldException paramObject)
-    {
-      paramObject.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static Class[] a(Class... paramVarArgs)
-  {
-    Class[] arrayOfClass = new Class[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      arrayOfClass[i] = paramVarArgs[i];
-      i += 1;
-    }
-    return arrayOfClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhom
  * JD-Core Version:    0.7.0.1
  */

@@ -1,106 +1,70 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ProviderInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import java.util.Comparator;
 
-public class bbjb
+class bbjb
+  implements Comparator<bbiz>
 {
-  private static int jdField_a_of_type_Int;
-  private static String jdField_a_of_type_JavaLangString;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.android.launcher.permission.READ_SETTINGS", "com.android.launcher2.permission.READ_SETTINGS", "com.android.launcher3.permission.READ_SETTINGS", "com.google.android.launcher.permission.READ_SETTINGS", "com.huawei.android.launcher.permission.READ_SETTINGS", "com.huawei.launcher2.permission.READ_SETTINGS", "com.huawei.launcher3.permission.READ_SETTINGS", "com.bbk.launcher2.permission.READ_SETTINGS", "com.huaqin.launcherEx.permission.READ_SETTINGS", "com.htc.launcher.permission.READ_SETTINGS", "com.htc.launcher.settings", "com.oppo.launcher.permission.READ_SETTINGS", "com.meizu.android.launcher.permission.READ_SETTINGS", "com.meizu.launcher2.permission.READ_SETTINGS", "com.meizu.android.launcher3.permission.READ_SETTINGS", "com.lenovo.launcher.permission.READ_SETTINGS", "com.ebproductions.android.launcher.permission.READ_SETTINGS", "com.android.mylauncher.permission.READ_SETTINGS", "com.sec.android.app.twlauncher.settings.READ_SETTINGS", "com.fede.launcher.permission.READ_SETTINGS", "net.qihoo.launcher.permission.READ_SETTINGS", "com.qihoo360.launcher.permission.READ_SETTINGS", "com.lge.launcher.permission.READ_SETTINGS", "org.adw.launcher.permission.READ_SETTINGS", "telecom.mdesk.permission.READ_SETTINGS" };
-  private static int jdField_b_of_type_Int;
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { ajya.a(2131710780), ajya.a(2131710781) };
-  private static int jdField_c_of_type_Int;
-  private static final String[] jdField_c_of_type_ArrayOfJavaLangString = { ajya.a(2131710784), ajya.a(2131710779), ajya.a(2131710778), ajya.a(2131710783) };
-  private static int jdField_d_of_type_Int;
-  private static final String[] jdField_d_of_type_ArrayOfJavaLangString = { ajya.a(2131710785) };
-  private static int jdField_e_of_type_Int;
-  private static final String[] jdField_e_of_type_ArrayOfJavaLangString = { ajya.a(2131710782) };
-  private static int jdField_f_of_type_Int;
-  private static final String[] jdField_f_of_type_ArrayOfJavaLangString = { "vivo" };
-  private static int g;
-  
-  static
+  public int a(bbiz parambbiz)
   {
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Int = -1;
-    jdField_c_of_type_Int = 100;
-    jdField_d_of_type_Int = -1;
-    jdField_e_of_type_Int = 100;
-    jdField_f_of_type_Int = -1;
-    g = 6;
-  }
-  
-  public static String a(Context paramContext)
-  {
-    if (jdField_a_of_type_JavaLangString == null)
-    {
-      jdField_a_of_type_JavaLangString = a(paramContext, jdField_a_of_type_ArrayOfJavaLangString);
-      if (jdField_a_of_type_JavaLangString == null) {
-        break label88;
-      }
+    if (parambbiz.jdField_a_of_type_Int != -1) {
+      return parambbiz.jdField_a_of_type_Int;
     }
-    label88:
-    for (jdField_a_of_type_JavaLangString = "content://" + jdField_a_of_type_JavaLangString + "/favorites?notify=true";; jdField_a_of_type_JavaLangString = "empty")
+    Friends localFriends = parambbiz.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = bdbt.a(localFriends.detalStatusFlag, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.shortcut", 2, "getShortcutUri.shortcutUri=" + jdField_a_of_type_JavaLangString);
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label132;
       }
-      return jdField_a_of_type_JavaLangString;
-    }
-  }
-  
-  private static String a(Context paramContext, String[] paramArrayOfString)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getInstalledPackages(10);
-      if (paramContext != null)
+      i = 4096;
+      switch (k)
       {
-        paramContext = paramContext.iterator();
-        while (paramContext.hasNext())
-        {
-          ProviderInfo[] arrayOfProviderInfo = ((PackageInfo)paramContext.next()).providers;
-          if (arrayOfProviderInfo != null)
-          {
-            int k = arrayOfProviderInfo.length;
-            int i = 0;
-            while (i < k)
-            {
-              ProviderInfo localProviderInfo = arrayOfProviderInfo[i];
-              if (localProviderInfo != null)
-              {
-                int m = paramArrayOfString.length;
-                int j = 0;
-                while (j < m)
-                {
-                  if (paramArrayOfString[j].equals(localProviderInfo.readPermission))
-                  {
-                    paramContext = localProviderInfo.authority;
-                    return paramContext;
-                  }
-                  j += 1;
-                }
-              }
-              i += 1;
-            }
-          }
-        }
+      case 5: 
+      case 6: 
+      default: 
+        label64:
+        i = j | i | (int)localFriends.getLastLoginType();
       }
-      return null;
     }
-    catch (RuntimeException paramContext)
+    for (;;)
     {
-      paramContext.printStackTrace();
+      parambbiz.jdField_a_of_type_Int = i;
+      return i;
+      j = 131072;
+      break;
+      label132:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      {
+        i = 8192;
+        break label64;
+      }
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      {
+        i = 12288;
+        break label64;
+      }
+      i = 16384;
+      break label64;
+      i = j | i | 0x1;
+      continue;
+      i = j | i | 0x2;
+      continue;
+      i = j | i | 0x3;
     }
+  }
+  
+  public int a(bbiz parambbiz1, bbiz parambbiz2)
+  {
+    return a(parambbiz1) - a(parambbiz2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbjb
  * JD-Core Version:    0.7.0.1
  */

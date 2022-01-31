@@ -1,61 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ancp
-  extends ampa<anco>
+  implements DialogInterface.OnClickListener
 {
-  public static anco a()
-  {
-    return (anco)ampl.a().a(487);
-  }
+  public ancp(ARScanEntryView paramARScanEntryView) {}
   
-  public int a()
-  {
-    return 487;
-  }
-  
-  @NonNull
-  public anco a(int paramInt)
-  {
-    return new anco();
-  }
-  
-  @Nullable
-  public anco a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return anco.a(paramArrayOfamph);
-    }
-    return null;
-  }
-  
-  public Class<anco> a()
-  {
-    return anco.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(anco paramanco) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancp
  * JD-Core Version:    0.7.0.1
  */

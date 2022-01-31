@@ -1,42 +1,51 @@
-import android.app.Activity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.2;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.3;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.4;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aubc
-  extends aygc
+  extends Handler
 {
-  public aubc(OCRResultFragmentNew paramOCRResultFragmentNew, Activity paramActivity)
+  public aubc() {}
+  
+  public aubc(Looper paramLooper)
   {
-    super(paramActivity);
+    super(paramLooper);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.3(this));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
+    {
+      if (ChatBackgroundManager.c < 3)
+      {
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
+        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, azmz.a(BaseApplication.getContext()));
+        ChatBackgroundManager.c += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
+        }
+        Message localMessage = ChatBackgroundManager.a.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
+      }
+    }
+    else {
+      return;
+    }
+    ChatBackgroundManager.c = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aubc
  * JD-Core Version:    0.7.0.1
  */

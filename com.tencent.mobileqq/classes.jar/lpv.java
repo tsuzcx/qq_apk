@@ -1,40 +1,31 @@
+import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.BaseGaInvite;
 
-class lpv
-  extends lkb
+@SuppressLint({"HandlerLeak"})
+public class lpv
+  extends Handler
 {
-  lpv(lpu paramlpu) {}
+  public lpv(BaseGaInvite paramBaseGaInvite) {}
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.w(lpu.jdField_a_of_type_JavaLangString, 1, "onAfterOpenCamera, success[" + paramBoolean + "], preSessionType[" + paramInt + "], seq[" + paramLong + "]");
-    if (paramBoolean) {
-      b(paramLong);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.b();
+      return;
     }
-  }
-  
-  void b(long paramLong)
-  {
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4);
-    localMessage.obj = Long.valueOf(paramLong);
-    localMessage.sendToTarget();
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    long l = AudioHelper.b();
-    QLog.w(lpu.jdField_a_of_type_JavaLangString, 1, "onAfterReopenCamera, success[" + paramBoolean + "], seq[" + l + "]");
-    if (paramBoolean) {
-      b(l);
-    }
+    this.a.a("Msg");
+    super.sendEmptyMessageDelayed(1, 2000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lpv
  * JD-Core Version:    0.7.0.1
  */

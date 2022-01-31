@@ -1,28 +1,25 @@
-import android.content.Context;
-import android.text.TextUtils;
-
-public class ahpu
-  extends ahpz
+class ahpu
+  implements aubn
 {
-  public ahpu(Context paramContext, String paramString)
+  ahpu(ahpq paramahpq) {}
+  
+  public void a(int paramInt)
   {
-    a(paramString);
+    this.a.c(false);
+    ahpq.a(this.a);
   }
   
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = "";; paramString = '[' + paramString + ']')
-    {
-      this.a = paramString;
-      this.b = this.a;
-      return;
-    }
-  }
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpu
  * JD-Core Version:    0.7.0.1
  */

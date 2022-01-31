@@ -1,24 +1,16 @@
-public class atgk
-  implements ajte
+class atgk
+  implements ahrf
 {
-  protected void a(boolean paramBoolean, String paramString) {}
+  atgk(atgi paramatgi) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public long a()
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (!paramBoolean);
-    paramObject = (Object[])paramObject;
-    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
+    return atgi.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atgk
  * JD-Core Version:    0.7.0.1
  */

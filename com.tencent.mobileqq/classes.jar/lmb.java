@@ -1,19 +1,12 @@
-import com.tencent.av.AVFunDrawing.MessageBody;
-import com.tencent.mobileqq.utils.AudioHelper;
-
 class lmb
 {
-  long jdField_a_of_type_Long = AudioHelper.a();
-  AVFunDrawing.MessageBody jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody;
-  
-  lmb(AVFunDrawing.MessageBody paramMessageBody)
-  {
-    this.jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody = paramMessageBody;
-  }
+  int a;
+  int b;
+  int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmb
  * JD-Core Version:    0.7.0.1
  */

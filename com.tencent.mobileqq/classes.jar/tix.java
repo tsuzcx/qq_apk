@@ -1,29 +1,35 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.os.Parcel;
+import org.json.JSONObject;
 
 public class tix
-  extends tiv
 {
-  protected TextView c = (TextView)a(2131378649);
+  public String mAbTest;
+  public int mType;
   
-  public tix(ViewGroup paramViewGroup, int paramInt)
+  protected tix(Parcel paramParcel)
   {
-    super(paramViewGroup, paramInt);
+    this.mType = paramParcel.readInt();
+    this.mAbTest = paramParcel.readString();
   }
   
-  public void a(tff paramtff)
+  protected tix(JSONObject paramJSONObject)
   {
-    if (paramtff.b > 99)
-    {
-      this.c.setText("99+");
-      return;
-    }
-    this.c.setText(String.valueOf(paramtff.b));
+    this.mType = paramJSONObject.optInt("type");
+    this.mAbTest = paramJSONObject.optString("qq_abtest");
+    parseJson(paramJSONObject);
+  }
+  
+  protected void parseJson(JSONObject paramJSONObject) {}
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeInt(this.mType);
+    paramParcel.writeString(this.mAbTest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tix
  * JD-Core Version:    0.7.0.1
  */

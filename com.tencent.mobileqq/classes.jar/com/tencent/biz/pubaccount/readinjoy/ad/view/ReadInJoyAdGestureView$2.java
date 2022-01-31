@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
 import com.tencent.qphone.base.util.QLog;
-import oar;
+import oee;
 
 class ReadInJoyAdGestureView$2
   implements Runnable
@@ -12,7 +12,7 @@ class ReadInJoyAdGestureView$2
   {
     try
     {
-      ReadInJoyAdGestureView.a(this.this$0, oar.a(this.a, (int)this.this$0.e, (int)this.this$0.f));
+      ReadInJoyAdGestureView.a(this.this$0, oee.a(this.a, (int)this.this$0.e, (int)this.this$0.f));
       return;
     }
     catch (Exception localException)
@@ -26,7 +26,7 @@ class ReadInJoyAdGestureView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdGestureView.2
  * JD-Core Version:    0.7.0.1
  */

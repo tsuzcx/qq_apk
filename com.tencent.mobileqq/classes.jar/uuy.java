@@ -1,19 +1,27 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class uuy
-  implements bfqj
+  extends unf
 {
-  public uuy(StoryMessageListActivity paramStoryMessageListActivity, View paramView) {}
+  public long a;
+  public int b;
   
-  public void a()
+  public uuy(qqstory_service.RspCheckActivity paramRspCheckActivity)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    super(paramRspCheckActivity.result);
+    this.b = paramRspCheckActivity.is_activity.get();
+    this.a = paramRspCheckActivity.next_check_time.get();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveResponse{active=" + this.b + ", nextCheckTime=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uuy
  * JD-Core Version:    0.7.0.1
  */

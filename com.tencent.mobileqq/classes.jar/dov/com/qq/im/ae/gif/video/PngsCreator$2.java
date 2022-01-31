@@ -1,23 +1,23 @@
 package dov.com.qq.im.ae.gif.video;
 
-import bivw;
-import biwb;
+import blaq;
+import blav;
 
 public class PngsCreator$2
   implements Runnable
 {
-  public PngsCreator$2(bivw parambivw) {}
+  public PngsCreator$2(blaq paramblaq) {}
   
   public void run()
   {
-    bivw.b(this.this$0, 0);
-    bivw.a(this.this$0).a();
-    bivw.a(this.this$0).a();
+    blaq.b(this.this$0, 0);
+    blaq.a(this.this$0).a();
+    blaq.a(this.this$0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.video.PngsCreator.2
  * JD-Core Version:    0.7.0.1
  */

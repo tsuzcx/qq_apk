@@ -1,31 +1,33 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class aqis
-  extends akuo
+  implements DialogInterface.OnKeyListener
 {
-  public aqis(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aqis(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt != 0)
+    boolean bool = false;
+    if (paramInt == 4)
     {
-      bcql.a(this.a.a, 1, ajya.a(2131707679), 1).a();
-      this.a.f();
+      if (this.a.a != null)
+      {
+        this.a.a.dismiss();
+        this.a.a = null;
+      }
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      bool = true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
-    }
-    this.a.a(paramSosoLbsInfo);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqis
  * JD-Core Version:    0.7.0.1
  */

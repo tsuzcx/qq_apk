@@ -1,21 +1,44 @@
-import java.util.List;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-class oiw
-  extends ojn
+public class oiw
 {
-  oiw(oil paramoil, boolean paramBoolean, List paramList)
+  private oiy jdField_a_of_type_Oiy;
+  private uku jdField_a_of_type_Uku = new uku();
+  
+  private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
   {
-    super(paramoil, null);
+    if (this.jdField_a_of_type_Oiy != null) {
+      this.jdField_a_of_type_Oiy.a(paramPublishVideoEntry, paramInt, paramString);
+    }
   }
   
-  void a(ojq paramojq)
+  private void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
   {
-    paramojq.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, oil.c(this.jdField_a_of_type_Oil), 6, 6);
+    if (this.jdField_a_of_type_Oiy != null) {
+      this.jdField_a_of_type_Oiy.a(paramPublishVideoEntry, paramString);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    uku.a(uku.a(paramString));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    paramString1 = uku.a(paramString1);
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_Uku.a(paramString1, paramString2 + ".tmp.mp4", false, true, new oix(this, l, paramString1));
+  }
+  
+  public void a(oiy paramoiy)
+  {
+    this.jdField_a_of_type_Oiy = paramoiy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oiw
  * JD-Core Version:    0.7.0.1
  */

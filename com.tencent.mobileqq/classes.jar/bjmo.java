@@ -1,73 +1,42 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ProgressBar;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.text.TextUtils;
+import cooperation.qzone.remote.IActionListener.Stub;
+import cooperation.qzone.remote.RecvMsg;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class bjmo
-  extends Handler
+class bjmo
+  extends IActionListener.Stub
 {
-  public bjmo(CropVideoActivity paramCropVideoActivity) {}
+  bjmo(bjmn parambjmn) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onRecvFromMsg(RecvMsg paramRecvMsg)
   {
-    switch (paramMessage.what)
+    if (paramRecvMsg == null) {}
+    for (;;)
     {
-    default: 
-    case 1: 
-    case 2: 
-      do
+      return;
+      if ((!TextUtils.isEmpty(paramRecvMsg.getServiceCmd())) && (bjmn.a(this.a) != null))
       {
-        return;
-        postDelayed(this.a.a, 1000L);
-        CropVideoActivity.a(this.a).setProgress(paramMessage.arg1);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("CropVideoActivity", 2, "crop video begin");
-        }
-        if ((CropVideoActivity.a(this.a) >= CropVideoActivity.b(this.a)) && (CropVideoActivity.b(this.a) >= 0L))
+        Iterator localIterator = bjmn.a(this.a).iterator();
+        while (localIterator.hasNext())
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("CropVideoActivity", 2, "startCropVideo illegal time!");
+          Object localObject = (WeakReference)localIterator.next();
+          if (localObject != null)
+          {
+            localObject = (bjmq)((WeakReference)localObject).get();
+            if (localObject != null) {
+              ((bjmq)localObject).onWebEvent(paramRecvMsg.getServiceCmd(), paramRecvMsg.extraData);
+            }
           }
-          bcql.a(this.a.getApplicationContext(), ajya.a(2131702635), 1).a();
-          return;
         }
-      } while (CropVideoActivity.a(this.a, CropVideoActivity.a(this.a)) != 0);
-      if (Build.VERSION.SDK_INT >= 18) {
-        bjmr.a(CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.e(this.a), CropVideoActivity.f(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), new bjmp(this));
       }
-      for (;;)
-      {
-        this.a.a();
-        return;
-        CropVideoActivity.a(this.a, CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a));
-      }
-    case 3: 
-      if (QLog.isColorLevel()) {
-        QLog.d("CropVideoActivity", 2, "crop video success");
-      }
-      this.a.finish();
-      return;
-    case 4: 
-      if (QLog.isColorLevel()) {
-        QLog.d("CropVideoActivity", 2, "crop video fail");
-      }
-      bcql.a(this.a.getApplicationContext(), 1, ajya.a(2131702633), 1).a();
-      this.a.finish();
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "crop video with ffmpeg");
-    }
-    CropVideoActivity.a(this.a, CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a));
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjmo
  * JD-Core Version:    0.7.0.1
  */

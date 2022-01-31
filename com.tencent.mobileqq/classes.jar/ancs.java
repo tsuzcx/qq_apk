@@ -1,45 +1,25 @@
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
 public class ancs
+  implements TencentMap.OnCameraChangeListener
 {
-  private Map<String, Long> a = new HashMap();
+  public ancs(ARScanEntryView paramARScanEntryView) {}
   
-  public static ancs a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
-      return null;
-    }
-    localancs = new ancs();
-    try
-    {
-      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a);
-      Iterator localIterator = paramArrayOfamph.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localancs.a.put(str, Long.valueOf(paramArrayOfamph.getLong(str)));
-      }
-      return localancs;
-    }
-    catch (JSONException paramArrayOfamph)
-    {
-      QLog.e("TencentDocPreviewConfigBean", 1, paramArrayOfamph.getLocalizedMessage(), paramArrayOfamph);
-    }
-  }
+  public void onCameraChange(CameraPosition paramCameraPosition) {}
   
-  public Map<String, Long> a()
+  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
   {
-    return this.a;
+    if ((ARScanEntryView.a(this.a) != null) && (QLog.isColorLevel())) {
+      QLog.d("AREngine_ARScanEntryView", 2, "ARLBSPOIDialog onCameraChangeFinish");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancs
  * JD-Core Version:    0.7.0.1
  */

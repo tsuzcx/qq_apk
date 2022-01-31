@@ -1,135 +1,85 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.mobileqq.redtouch.RedTouchUI;
-import com.tencent.mobileqq.redtouch.RedTypeInfo;
-import cooperation.qqreader.view.ReaderTabBarView;
+import android.media.MediaFormat;
+import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
+import com.tencent.qqmini.sdk.minigame.webaudio.WebAudioManager.5;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bgwq
+  implements bgwo
 {
-  public int a;
-  RedTouchUI jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
-  public String a;
-  public boolean a;
-  public int b = 0;
+  public bgwq(WebAudioManager.5 param5, bgwm parambgwm) {}
   
-  public bgwq(ReaderTabBarView paramReaderTabBarView, int paramInt1, String paramString, boolean paramBoolean, int paramInt2, RedTouchUI paramRedTouchUI)
+  public void a(byte[] paramArrayOfByte, MediaFormat paramMediaFormat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI = paramRedTouchUI;
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).get(paramInt) == null) {}
-    label165:
-    do
+    bgwr localbgwr;
+    synchronized ()
     {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        if ((!this.jdField_a_of_type_Boolean) && (ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).containsKey(Integer.valueOf(paramInt)))) {
-          ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).remove(Integer.valueOf(paramInt));
-        }
-        switch (this.jdField_a_of_type_Int)
-        {
-        default: 
-          paramInt = 0;
-        }
-        for (;;)
-        {
-          if (this.jdField_a_of_type_Boolean) {
-            break label165;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.b();
-          return;
-          paramInt = 0;
-          continue;
-          paramInt = -1;
-          try
-          {
-            int i = Integer.parseInt(this.jdField_a_of_type_JavaLangString);
-            paramInt = i;
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            for (;;)
-            {
-              bgwf.a("ReaderTabBarView", localNumberFormatException.getMessage());
-              continue;
-              paramBoolean = false;
-            }
-          }
-          if (this.jdField_a_of_type_Boolean)
-          {
-            if (paramInt <= 0) {
-              break;
-            }
-            paramBoolean = true;
-            this.jdField_a_of_type_Boolean = paramBoolean;
-          }
-          paramInt = 4;
-        }
-        RedAppInfo localRedAppInfo = new RedAppInfo();
-        localRedAppInfo.b(1);
-        localRedAppInfo.c(paramInt);
-        RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
-        RedTypeInfo localRedTypeInfo = new RedTypeInfo();
-        localRedTypeInfo.setRed_type(paramInt);
-        Object localObject;
-        if (paramInt == 4) {
-          localObject = new JSONObject();
-        }
-        try
-        {
-          ((JSONObject)localObject).put("cn", "#FF0000");
-          localRedTypeInfo.setRed_desc(((JSONObject)localObject).toString());
-          localRedTypeInfo.setRed_content(this.jdField_a_of_type_JavaLangString);
-          localObject = new ArrayList();
-          ((ArrayList)localObject).add(localRedTypeInfo);
-          localRedDisplayInfo.a((ArrayList)localObject);
-          localRedAppInfo.a(localRedDisplayInfo);
-          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(localRedAppInfo);
-          if (localRedTypeInfo.getRed_type() != 0) {
-            break;
-          }
-          if (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) == 4)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 20, 8, 0).a();
-            return;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            bgwf.a("ReaderTabBarView", localJSONException.getMessage());
-          }
-        }
-      } while (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) != 5);
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 15, 8, 0).a();
-      return;
-      if (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) == 4)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 30, 2, 0).a();
+      if (bgwp.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0) == null) {
         return;
       }
-    } while (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) != 5);
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 25, 2, 0).a();
+      if (!bgwp.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).containsKey(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int))) {
+        bgwp.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).put(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int), new bgwr(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0));
+      }
+      localbgwr = (bgwr)bgwp.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).get(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int));
+      ArrayList localArrayList = (ArrayList)bgwp.b(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).get(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int));
+      paramMediaFormat = localArrayList;
+      if (localArrayList == null) {
+        paramMediaFormat = new ArrayList();
+      }
+      if (paramBoolean2)
+      {
+        bgwr.a(localbgwr, 3);
+        return;
+      }
+    }
+    int i = bgwp.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).loadRawData(paramArrayOfByte, this.jdField_a_of_type_Bgwm.a(), this.jdField_a_of_type_Bgwm.b(), this.jdField_a_of_type_Bgwm.c());
+    paramMediaFormat.add(Integer.valueOf(i));
+    bgwp.b(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).put(Integer.valueOf(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int), paramMediaFormat);
+    switch (bgwr.a(localbgwr))
+    {
+    }
+    for (;;)
+    {
+      if (paramBoolean1) {
+        paramArrayOfByte = new JSONObject();
+      }
+      try
+      {
+        paramArrayOfByte.put("decodeId", this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Int);
+        paramArrayOfByte.put("status", "ok");
+        if (this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Bgkd != null) {
+          this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.jdField_a_of_type_Bgkd.a.a("onDecodeWebAudioDataDone", paramArrayOfByte.toString(), 0);
+        }
+        return;
+        bgwr.a(localbgwr, 1);
+        continue;
+        paramArrayOfByte = bgwr.a(localbgwr);
+        if ((paramArrayOfByte != null) && (!paramArrayOfByte.isEmpty()))
+        {
+          paramArrayOfByte = paramArrayOfByte.iterator();
+          while (paramArrayOfByte.hasNext())
+          {
+            int j = ((Integer)paramArrayOfByte.next()).intValue();
+            bgwp.a(this.jdField_a_of_type_ComTencentQqminiSdkMinigameWebaudioWebAudioManager$5.this$0).setQueueBuffer(j, i);
+          }
+        }
+      }
+      catch (JSONException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgwq
  * JD-Core Version:    0.7.0.1
  */

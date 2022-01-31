@@ -1,175 +1,168 @@
 import android.annotation.TargetApi;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.drawable.Drawable;
-import android.util.LruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.doutu.combo.ComboEggView;
-import com.tencent.mobileqq.doutu.combo.ComboResource.1;
-import com.tencent.mobileqq.doutu.combo.ComboResource.2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.os.Build.VERSION;
 
-@TargetApi(12)
 public class anou
 {
-  public static float a;
-  private static LruCache<String, anov> a;
-  public static final String a;
-  public static boolean a;
-  public static final String[] a;
-  public static final String b;
-  public static final String[] b;
-  public static final String[] c;
-  public static final String[] d;
+  private static final int jdField_a_of_type_Int = Build.VERSION.SDK_INT;
+  private static float[] jdField_a_of_type_ArrayOfFloat;
   
-  static
+  public static void a(float[] paramArrayOfFloat, SensorEvent paramSensorEvent)
   {
-    jdField_a_of_type_JavaLangString = azac.a(anoi.jdField_a_of_type_JavaLangString + "combo" + File.separator);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "ribbon0.png", "ribbon1.png", "ribbon2.png", "ribbon3.png", "ribbon4.png", "ribbon5.png", "ribbon6.png", "ribbon7.png", "ribbon8.png", "ribbon9.png" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "0.png", "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png" };
-    jdField_a_of_type_Float = 2.0F;
-    c = new String[] { "1bitX.png", "2bitX.png", "3bitX.png" };
-    jdField_b_of_type_JavaLangString = anoi.jdField_a_of_type_JavaLangString;
-    d = new String[] { jdField_b_of_type_JavaLangString + "bonus_8" + File.separator + "doutuX8_", jdField_b_of_type_JavaLangString + "bonus_18" + File.separator + "doutuX18_", jdField_b_of_type_JavaLangString + "bonus_88" + File.separator + "doutuX88_", jdField_b_of_type_JavaLangString + "bonus_888" + File.separator + "doutuX888_" };
-    jdField_a_of_type_AndroidUtilLruCache = new LruCache(15);
-  }
-  
-  public static anov a()
-  {
-    return a(jdField_a_of_type_JavaLangString + "dui.png", 2);
-  }
-  
-  public static anov a(int paramInt)
-  {
-    return a(jdField_a_of_type_JavaLangString + jdField_a_of_type_ArrayOfJavaLangString[paramInt], 2);
-  }
-  
-  public static anov a(String paramString, int paramInt)
-  {
-    int i = 0;
-    Object localObject1 = (anov)jdField_a_of_type_AndroidUtilLruCache.get(paramString);
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    if (!new File(paramString).exists())
+    float[] arrayOfFloat = paramSensorEvent.values;
+    if (paramSensorEvent.sensor.getType() == 11)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ComboUIManager", 2, "resource missing: " + paramString);
-      }
-      if (!jdField_a_of_type_Boolean)
+      if (arrayOfFloat.length > 4)
       {
-        jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new ComboResource.1(), 5, null, false);
-      }
-      return null;
-    }
-    Object localObject2 = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject2);
-    localObject1 = BaseApplicationImpl.sApplication.getResources();
-    int j = ((BitmapFactory.Options)localObject2).outHeight;
-    int k = ((BitmapFactory.Options)localObject2).outWidth;
-    try
-    {
-      localObject2 = Drawable.createFromPath(paramString);
-      if ((k == 0) || (j == 0) || (localObject2 == null))
-      {
-        if (!jdField_a_of_type_Boolean)
+        if (jdField_a_of_type_Int >= 9)
         {
-          jdField_a_of_type_Boolean = true;
-          ThreadManager.post(new ComboResource.2(), 5, null, false);
+          c(paramArrayOfFloat, (float[])arrayOfFloat.clone());
+          return;
         }
-        return null;
+        if (jdField_a_of_type_ArrayOfFloat == null) {
+          jdField_a_of_type_ArrayOfFloat = new float[4];
+        }
+        System.arraycopy(arrayOfFloat, 0, jdField_a_of_type_ArrayOfFloat, 0, 4);
+        c(paramArrayOfFloat, jdField_a_of_type_ArrayOfFloat);
+        return;
       }
+      c(paramArrayOfFloat, (float[])arrayOfFloat.clone());
+      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ComboUIManager", 2, "load resource oom: " + paramString);
-      }
-      return null;
-    }
-    switch (paramInt)
-    {
-    default: 
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      anov localanov = new anov();
-      localanov.jdField_a_of_type_Int = i;
-      localanov.b = paramInt;
-      localanov.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject2);
-      jdField_a_of_type_AndroidUtilLruCache.put(paramString, localanov);
-      return localanov;
-      i = actj.a(k / jdField_a_of_type_Float, localanov);
-      paramInt = actj.a(j / jdField_a_of_type_Float, localanov);
-      continue;
-      paramInt = actj.a(32.0F, localanov);
-      i = (int)(paramInt / j * k);
-      continue;
-      paramInt = actj.a(24.0F, localanov);
-      i = (int)(paramInt / j * k);
-    }
+    c(paramArrayOfFloat, (float[])arrayOfFloat.clone());
   }
   
-  public static void a()
-  {
-    jdField_a_of_type_AndroidUtilLruCache.evictAll();
-  }
-  
-  public static File[] a(int paramInt)
+  public static void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     int i = 0;
-    String str = null;
-    while (i < ComboEggView.a.length)
+    if (i < paramArrayOfFloat2.length)
     {
-      if (paramInt == ComboEggView.a[i]) {
-        str = d[i];
+      if (i < 3) {
+        paramArrayOfFloat2[i] = paramArrayOfFloat1[i];
       }
-      i += 1;
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((i > 3) && (i <= 6)) {
+          paramArrayOfFloat2[i] = paramArrayOfFloat1[(i - 1)];
+        } else if ((i == 3) || (i == 7) || (i == 11)) {
+          paramArrayOfFloat2[i] = 0.0F;
+        } else if ((i == 12) || (i == 13) || (i == 14)) {
+          paramArrayOfFloat2[i] = 0.0F;
+        } else if (i == 15) {
+          paramArrayOfFloat2[i] = 1.0F;
+        } else if ((i > 7) && (i <= 10)) {
+          paramArrayOfFloat2[i] = paramArrayOfFloat1[(i - 2)];
+        }
+      }
     }
-    if (str == null) {}
-    ArrayList localArrayList;
+  }
+  
+  public static float[] a(float[] paramArrayOfFloat)
+  {
+    float f1 = (float)Math.sin(paramArrayOfFloat[1]);
+    float f2 = (float)Math.cos(paramArrayOfFloat[1]);
+    float f3 = (float)Math.sin(paramArrayOfFloat[2]);
+    float f4 = (float)Math.cos(paramArrayOfFloat[2]);
+    float f5 = (float)Math.sin(paramArrayOfFloat[0]);
+    float f6 = (float)Math.cos(paramArrayOfFloat[0]);
+    float f7 = -f1;
+    float f8 = -f3;
+    float f9 = -f5;
+    paramArrayOfFloat = a(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, f2, f1, 0.0F, f7, f2 }, new float[] { f4, 0.0F, f3, 0.0F, 1.0F, 0.0F, f8, 0.0F, f4 });
+    return a(new float[] { f6, f5, 0.0F, f9, f6, 0.0F, 0.0F, 0.0F, 1.0F }, paramArrayOfFloat);
+  }
+  
+  public static float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    return new float[] { paramArrayOfFloat1[0] * paramArrayOfFloat2[0] + paramArrayOfFloat1[1] * paramArrayOfFloat2[3] + paramArrayOfFloat1[2] * paramArrayOfFloat2[6], paramArrayOfFloat1[0] * paramArrayOfFloat2[1] + paramArrayOfFloat1[1] * paramArrayOfFloat2[4] + paramArrayOfFloat1[2] * paramArrayOfFloat2[7], paramArrayOfFloat1[0] * paramArrayOfFloat2[2] + paramArrayOfFloat1[1] * paramArrayOfFloat2[5] + paramArrayOfFloat1[2] * paramArrayOfFloat2[8], paramArrayOfFloat1[3] * paramArrayOfFloat2[0] + paramArrayOfFloat1[4] * paramArrayOfFloat2[3] + paramArrayOfFloat1[5] * paramArrayOfFloat2[6], paramArrayOfFloat1[3] * paramArrayOfFloat2[1] + paramArrayOfFloat1[4] * paramArrayOfFloat2[4] + paramArrayOfFloat1[5] * paramArrayOfFloat2[7], paramArrayOfFloat1[3] * paramArrayOfFloat2[2] + paramArrayOfFloat1[4] * paramArrayOfFloat2[5] + paramArrayOfFloat1[5] * paramArrayOfFloat2[8], paramArrayOfFloat1[6] * paramArrayOfFloat2[0] + paramArrayOfFloat1[7] * paramArrayOfFloat2[3] + paramArrayOfFloat1[8] * paramArrayOfFloat2[6], paramArrayOfFloat1[6] * paramArrayOfFloat2[1] + paramArrayOfFloat1[7] * paramArrayOfFloat2[4] + paramArrayOfFloat1[8] * paramArrayOfFloat2[7], paramArrayOfFloat1[6] * paramArrayOfFloat2[2] + paramArrayOfFloat1[7] * paramArrayOfFloat2[5] + paramArrayOfFloat1[8] * paramArrayOfFloat2[8] };
+  }
+  
+  @TargetApi(9)
+  public static void b(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    SensorManager.getRotationMatrixFromVector(paramArrayOfFloat1, paramArrayOfFloat2);
+  }
+  
+  public static void c(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    if (jdField_a_of_type_Int >= 9) {
+      b(paramArrayOfFloat1, paramArrayOfFloat2);
+    }
+    float f3;
+    float f1;
+    float f5;
+    float f6;
+    float f7;
+    float f8;
+    float f9;
+    float f10;
+    float f11;
     do
     {
-      return null;
-      localArrayList = new ArrayList();
-      paramInt = 1;
-      while (paramInt <= 31)
-      {
-        File localFile = new File(str + paramInt + ".png");
-        if (localFile.exists()) {
-          localArrayList.add(localFile);
-        }
-        paramInt += 1;
+      return;
+      float f2 = paramArrayOfFloat2[0];
+      f3 = paramArrayOfFloat2[1];
+      float f4 = paramArrayOfFloat2[2];
+      if (paramArrayOfFloat2.length == 4) {
+        f1 = paramArrayOfFloat2[3];
       }
-    } while (localArrayList.size() <= 0);
-    return (File[])localArrayList.toArray(new File[localArrayList.size()]);
-  }
-  
-  public static anov b()
-  {
-    return a(jdField_a_of_type_JavaLangString + "ribbonX.png", 3);
-  }
-  
-  public static anov b(int paramInt)
-  {
-    return a(jdField_a_of_type_JavaLangString + jdField_b_of_type_ArrayOfJavaLangString[paramInt], 1);
-  }
-  
-  public static anov c(int paramInt)
-  {
-    return a(jdField_a_of_type_JavaLangString + c[(paramInt - 1)], 1);
+      for (;;)
+      {
+        f5 = 2.0F * f2 * f2;
+        f6 = 2.0F * f3 * f3;
+        f7 = 2.0F * f4 * f4;
+        f8 = 2.0F * f2 * f3;
+        f9 = 2.0F * f4 * f1;
+        f10 = 2.0F * f2 * f4;
+        f11 = 2.0F * f3 * f1;
+        f3 = f3 * 2.0F * f4;
+        f1 *= f2 * 2.0F;
+        if (paramArrayOfFloat1.length != 9) {
+          break;
+        }
+        paramArrayOfFloat1[0] = (1.0F - f6 - f7);
+        paramArrayOfFloat1[1] = (f8 - f9);
+        paramArrayOfFloat1[2] = (f10 + f11);
+        paramArrayOfFloat1[3] = (f8 + f9);
+        paramArrayOfFloat1[4] = (1.0F - f5 - f7);
+        paramArrayOfFloat1[5] = (f3 - f1);
+        paramArrayOfFloat1[6] = (f10 - f11);
+        paramArrayOfFloat1[7] = (f1 + f3);
+        paramArrayOfFloat1[8] = (1.0F - f5 - f6);
+        return;
+        f1 = 1.0F - f2 * f2 - f3 * f3 - f4 * f4;
+        if (f1 > 0.0F) {
+          f1 = (float)Math.sqrt(f1);
+        } else {
+          f1 = 0.0F;
+        }
+      }
+    } while (paramArrayOfFloat1.length != 16);
+    paramArrayOfFloat1[0] = (1.0F - f6 - f7);
+    paramArrayOfFloat1[1] = (f8 - f9);
+    paramArrayOfFloat1[2] = (f10 + f11);
+    paramArrayOfFloat1[3] = 0.0F;
+    paramArrayOfFloat1[4] = (f8 + f9);
+    paramArrayOfFloat1[5] = (1.0F - f5 - f7);
+    paramArrayOfFloat1[6] = (f3 - f1);
+    paramArrayOfFloat1[7] = 0.0F;
+    paramArrayOfFloat1[8] = (f10 - f11);
+    paramArrayOfFloat1[9] = (f1 + f3);
+    paramArrayOfFloat1[10] = (1.0F - f5 - f6);
+    paramArrayOfFloat1[11] = 0.0F;
+    paramArrayOfFloat1[14] = 0.0F;
+    paramArrayOfFloat1[13] = 0.0F;
+    paramArrayOfFloat1[12] = 0.0F;
+    paramArrayOfFloat1[15] = 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anou
  * JD-Core Version:    0.7.0.1
  */

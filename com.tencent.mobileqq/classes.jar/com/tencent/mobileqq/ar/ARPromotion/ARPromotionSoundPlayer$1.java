@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import akya;
-import akyb;
+import amoq;
+import amor;
 import android.media.SoundPool;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -13,29 +13,29 @@ import java.util.Set;
 public class ARPromotionSoundPlayer$1
   implements Runnable
 {
-  public ARPromotionSoundPlayer$1(akya paramakya) {}
+  public ARPromotionSoundPlayer$1(amoq paramamoq) {}
   
   public void run()
   {
     try
     {
-      if (akya.a(this.this$0) != null)
+      if (amoq.a(this.this$0) != null)
       {
-        if (akya.a(this.this$0).isPlaying()) {
-          akya.a(this.this$0).stop();
+        if (amoq.a(this.this$0).isPlaying()) {
+          amoq.a(this.this$0).stop();
         }
-        akya.a(this.this$0).release();
-        akya.a(this.this$0, null);
+        amoq.a(this.this$0).release();
+        amoq.a(this.this$0, null);
       }
-      Iterator localIterator = akya.a(this.this$0).entrySet().iterator();
+      Iterator localIterator = amoq.a(this.this$0).entrySet().iterator();
       while (localIterator.hasNext())
       {
-        akyb localakyb = (akyb)((Map.Entry)localIterator.next()).getValue();
-        if (localakyb != null) {
-          akya.a(this.this$0).stop(localakyb.a);
+        amor localamor = (amor)((Map.Entry)localIterator.next()).getValue();
+        if (localamor != null) {
+          amoq.a(this.this$0).stop(localamor.a);
         }
       }
-      akya.a(this.this$0).release();
+      amoq.a(this.this$0).release();
     }
     catch (Exception localException)
     {
@@ -45,12 +45,12 @@ public class ARPromotionSoundPlayer$1
       }
       return;
     }
-    akya.a(this.this$0).clear();
+    amoq.a(this.this$0).clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionSoundPlayer.1
  * JD-Core Version:    0.7.0.1
  */

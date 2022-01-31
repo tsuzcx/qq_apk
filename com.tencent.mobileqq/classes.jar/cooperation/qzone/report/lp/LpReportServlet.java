@@ -2,8 +2,8 @@ package cooperation.qzone.report.lp;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import bgyi;
-import bhoz;
+import bizf;
+import bjqk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -33,8 +33,8 @@ public class LpReportServlet
     localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt));
     localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()));
-    localStatistic.setValue(WnsKeys.Qua, bgyi.a());
-    localStatistic.setValue(WnsKeys.Build, "4480");
+    localStatistic.setValue(WnsKeys.Qua, bizf.a());
+    localStatistic.setValue(WnsKeys.Build, "4515");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);
@@ -64,7 +64,7 @@ public class LpReportServlet
           if (QLog.isColorLevel()) {
             QLog.i("LpReport.LpReportServlet", 4, "LpReportServlet onReceive success.");
           }
-          bhoz.a(paramFromServiceMsg.getWupBuffer(), "ClientReport", arrayOfInt, arrayOfString);
+          bjqk.a(paramFromServiceMsg.getWupBuffer(), "ClientReport", arrayOfInt, arrayOfString);
           if (arrayOfInt[0] == 1000006) {
             break;
           }
@@ -127,7 +127,7 @@ public class LpReportServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportServlet
  * JD-Core Version:    0.7.0.1
  */

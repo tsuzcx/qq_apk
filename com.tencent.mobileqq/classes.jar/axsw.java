@@ -1,276 +1,331 @@
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgStatusCallback.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qphone.base.util.QLog.ILogCallback;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.os.MqqHandler;
 
-class axsw
-  extends axsq
-  implements QLog.ILogCallback
+public class axsw
+  implements aenl
 {
-  private int jdField_a_of_type_Int = 20;
-  private long jdField_a_of_type_Long = 2000L;
-  private axtg jdField_a_of_type_Axtg;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private int jdField_b_of_type_Int = 50;
-  private long jdField_b_of_type_Long;
-  private Map<String, HashSet<Pair<Long, Integer>>> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private int jdField_c_of_type_Int = 100;
-  private Map<String, HashSet<Pair<Long, Integer>>> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private axsy jdField_a_of_type_Axsy;
+  private Long jdField_a_of_type_JavaLangLong;
+  private String jdField_a_of_type_JavaLangString;
+  private ConcurrentHashMap<Long, axsx> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ConcurrentLinkedQueue<Long> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  public axsw(axsp paramaxsp, String paramString)
+  public axsw(String paramString)
   {
-    super(paramaxsp, paramString);
-    QLog.setLogCallback(this);
-    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 1) && (this.jdField_a_of_type_Array2dOfJavaLangString[0].length >= 4))
-    {
-      this.jdField_a_of_type_Long = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][0]).intValue() * 1000L);
-      this.jdField_b_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][1]).intValue();
-      this.jdField_c_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][2]).intValue();
-      this.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][3]).intValue();
-    }
-    this.jdField_a_of_type_Axtg = new axtg(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_JavaUtilMap.put("MSF.D.MonitorSocket", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("Q.msg.MsgProxy|addMsgQueue", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("Q.db.Cache|writeRunable", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("Q.msg.MsgProxy|writeRunable", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("Q.db.Cache|addMsgQueue", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("SQLiteOpenHelper| getWritableDatabase", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("SQLiteOpenHelper| getReadableDatabase", Integer.valueOf(0));
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(Bundle paramBundle)
+  private baoj a()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (paramBundle.getInt("key_action") != 6) {
-      return;
-    }
-    String str = paramBundle.getString("key_log");
-    int i = paramBundle.getInt("key_count");
-    if (QLog.isColorLevel()) {
-      QLog.d("BatteryStats", 2, "LOG.onOtherProcReport：" + str + ", count:" + i);
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilMap)
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
     {
-      HashSet localHashSet;
-      if (this.jdField_b_of_type_Boolean)
+      this.jdField_a_of_type_JavaLangLong = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek());
+      if ((this.jdField_a_of_type_JavaLangLong != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(this.jdField_a_of_type_JavaLangLong)))
       {
-        localHashSet = (HashSet)this.jdField_b_of_type_JavaUtilMap.get(str);
-        paramBundle = localHashSet;
-        if (localHashSet == null)
-        {
-          paramBundle = new HashSet();
-          this.jdField_b_of_type_JavaUtilMap.put(str, paramBundle);
-        }
-        paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
-      }
-      if ((this.jdField_c_of_type_Boolean) && (this.d))
-      {
-        localHashSet = (HashSet)this.jdField_c_of_type_JavaUtilMap.get(str);
-        paramBundle = localHashSet;
-        if (localHashSet == null)
-        {
-          paramBundle = new HashSet();
-          this.jdField_c_of_type_JavaUtilMap.put(str, paramBundle);
-        }
-        paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
-      }
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    super.b();
-    synchronized (this.jdField_b_of_type_JavaUtilMap)
-    {
-      this.jdField_c_of_type_JavaUtilMap.clear();
-      return;
-    }
-  }
-  
-  public void e()
-  {
-    super.e();
-    if ((axsp.a()) && (this.jdField_a_of_type_Boolean)) {}
-    label290:
-    for (;;)
-    {
-      synchronized (this.jdField_b_of_type_JavaUtilMap)
-      {
-        Iterator localIterator1 = this.jdField_b_of_type_JavaUtilMap.values().iterator();
-        int i = 0;
-        if (localIterator1.hasNext())
-        {
-          i = ((HashSet)localIterator1.next()).size() + i;
-          continue;
-        }
-        axsp.b(this.jdField_b_of_type_Axsp, new String[] { "fg30LogCount", "|", String.valueOf(i) });
-        localIterator1 = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
-        if (localIterator1.hasNext())
-        {
-          String str = (String)localIterator1.next();
-          StringBuilder localStringBuilder = axsm.a();
-          HashSet localHashSet = (HashSet)this.jdField_b_of_type_JavaUtilMap.get(str);
-          Iterator localIterator2 = localHashSet.iterator();
-          i = 0;
-          if (localIterator2.hasNext())
-          {
-            Pair localPair = (Pair)localIterator2.next();
-            localStringBuilder.append(localPair.first).append(",").append(localPair.second);
-            i += 1;
-            if (i >= localHashSet.size()) {
-              break label290;
-            }
-            localStringBuilder.append("#");
-            break label290;
-          }
-          axsp.b(this.jdField_b_of_type_Axsp, new String[] { "fg30LogAlarm", "|", str, "|", localStringBuilder.toString() });
+        axsx localaxsx = (axsx)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.jdField_a_of_type_JavaLangLong);
+        if (localaxsx != null) {
+          return localaxsx.a();
         }
       }
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      return;
     }
+    return null;
   }
   
-  public void f()
+  private void a(baoj parambaoj)
   {
-    super.f();
-    if ((axsp.a()) && (this.jdField_a_of_type_Boolean)) {}
-    label292:
-    for (;;)
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(parambaoj.b))))
     {
-      synchronized (this.jdField_b_of_type_JavaUtilMap)
-      {
-        Iterator localIterator1 = this.jdField_c_of_type_JavaUtilMap.values().iterator();
-        int i = 0;
-        if (localIterator1.hasNext())
-        {
-          i = ((HashSet)localIterator1.next()).size() + i;
-          continue;
-        }
-        axsp.b(this.jdField_b_of_type_Axsp, new String[] { "bg5LogCount", "|", String.valueOf(i) });
-        localIterator1 = this.jdField_c_of_type_JavaUtilMap.keySet().iterator();
-        if (localIterator1.hasNext())
-        {
-          String str = (String)localIterator1.next();
-          HashSet localHashSet = (HashSet)this.jdField_c_of_type_JavaUtilMap.get(str);
-          StringBuilder localStringBuilder = axsm.a();
-          Iterator localIterator2 = localHashSet.iterator();
-          i = 0;
-          if (localIterator2.hasNext())
-          {
-            Pair localPair = (Pair)localIterator2.next();
-            localStringBuilder.append(localPair.first).append(",").append(localPair.second);
-            i += 1;
-            if (i >= localHashSet.size()) {
-              break label292;
-            }
-            localStringBuilder.append("#");
-            break label292;
-          }
-          axsp.b(this.jdField_b_of_type_Axsp, new String[] { "bg5LogAlarm", "|", str, "|", localStringBuilder.toString() });
-        }
+      Object localObject = (axsx)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(parambaoj.b));
+      if (localObject == null) {
+        break label150;
       }
-      this.jdField_c_of_type_JavaUtilMap.clear();
+      View localView = ((axsx)localObject).a();
+      localObject = ((axsx)localObject).a();
+      if ((localView != null) && (localObject != null))
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("realHandleMessage1 status:").append(parambaoj.d).append(" ,uniseq").append(parambaoj.b);
+          QLog.d("OrderMediaMsgStatusCallback", 2, localStringBuilder.toString());
+        }
+        ((aenl)localObject).a(localView, parambaoj, parambaoj.d, parambaoj.g);
+      }
+    }
+    else
+    {
       return;
     }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(parambaoj.b));
+    return;
+    label150:
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(parambaoj.b));
   }
   
-  public void onWriteLog(String paramString1, String paramString2)
+  private void a(baoj parambaoj, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Axtg.a();
-    }
+    if (parambaoj == null) {}
     do
     {
-      return;
-      if (this.jdField_b_of_type_Long == 0L) {
-        this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      }
-      this.jdField_a_of_type_Axtg.a(paramString1 + "|" + paramString2);
-    } while (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long <= this.jdField_a_of_type_Long);
-    Map localMap = this.jdField_a_of_type_Axtg.a();
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Axtg.a();
-    Object localObject;
-    if (localMap != null)
-    {
-      paramString1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (paramString1.hasNext())
+      do
       {
-        paramString2 = (String)paramString1.next();
-        localObject = localMap.keySet().iterator();
-        while (((Iterator)localObject).hasNext()) {
-          if (((String)((Iterator)localObject).next()).contains(paramString2)) {
-            ((Iterator)localObject).remove();
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_a_of_type_JavaLangLong = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek());
+            if ((this.jdField_a_of_type_JavaLangLong == null) || (parambaoj.b != this.jdField_a_of_type_JavaLangLong.longValue())) {
+              break;
+            }
+            a(parambaoj);
+          } while (parambaoj.d != 1003);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(this.jdField_a_of_type_JavaLangLong);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_JavaLangLong);
+          if (QLog.isColorLevel()) {
+            QLog.d("OrderMediaMsgStatusCallback", 2, "remove callback:" + this.jdField_a_of_type_JavaLangLong);
+          }
+          a(a(), false);
+          return;
+        } while ((!paramBoolean) || (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(parambaoj.b))));
+        localObject = (axsx)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(parambaoj.b));
+      } while (localObject == null);
+      ((axsx)localObject).a(parambaoj);
+    } while (!QLog.isColorLevel());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("needCache fileStatus:").append(parambaoj.d).append(" ,uniseq:").append(parambaoj.b);
+    QLog.d("OrderMediaMsgStatusCallback", 2, ((StringBuilder)localObject).toString());
+  }
+  
+  private boolean a(long paramLong, int paramInt)
+  {
+    boolean bool1 = false;
+    if (axsm.b(paramInt))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(Long.valueOf(paramLong));
+      if (this.jdField_a_of_type_Axsy != null) {
+        this.jdField_a_of_type_Axsy.a(paramLong, paramInt);
+      }
+      boolean bool2 = true;
+      bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleErrorMessage status:").append(paramInt).append(" ,uniseq:").append(paramLong);
+        QLog.d("OrderMediaMsgStatusCallback", 2, localStringBuilder.toString());
+        bool1 = bool2;
+      }
+    }
+    return bool1;
+  }
+  
+  private void c(long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))))
+    {
+      localObject = (axsx)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      if (localObject != null)
+      {
+        localView = ((axsx)localObject).a();
+        localaenl = ((axsx)localObject).a();
+        localObject = ((axsx)localObject).a();
+        if ((localView != null) && (localaenl != null) && (localObject != null))
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("realHandleMessage2 status:").append(((baoj)localObject).d).append(" ,uniseq:").append(((baoj)localObject).b);
+            QLog.d("OrderMediaMsgStatusCallback", 2, localStringBuilder.toString());
+          }
+          ThreadManager.getUIHandler().post(new OrderMediaMsgStatusCallback.1(this, localaenl, localView, (baoj)localObject));
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      Object localObject;
+      View localView;
+      aenl localaenl;
+      StringBuilder localStringBuilder;
+      return;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
+      return;
+    }
+    QLog.d("OrderMediaMsgStatusCallback", 2, "CallbackWrapperMap not contain:" + paramLong);
+  }
+  
+  public int a(long paramLong)
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong)))
+    {
+      if (((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek()).longValue() == paramLong) {
+        i = 1;
+      }
+    }
+    else {
+      return i;
+    }
+    return 2;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    this.jdField_a_of_type_Axsy = null;
+  }
+  
+  public void a(long paramLong)
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong))) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(Long.valueOf(paramLong));
+    }
+  }
+  
+  public void a(View paramView, baoj parambaoj, int paramInt1, int paramInt2)
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(parambaoj.b)))
+    {
+      a(parambaoj);
+      if (QLog.isColorLevel()) {
+        QLog.d("OrderMediaMsgStatusCallback", 2, "not exist in uniseqlist:" + parambaoj.b);
+      }
+      return;
+    }
+    boolean bool = true;
+    paramView = parambaoj;
+    if (a(parambaoj.b, paramInt1))
+    {
+      a(parambaoj);
+      paramView = a();
+      bool = false;
+    }
+    a(paramView, bool);
+  }
+  
+  public void a(axsy paramaxsy)
+  {
+    this.jdField_a_of_type_Axsy = paramaxsy;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, long paramLong, View paramView, aenl paramaenl)
+  {
+    if ((paramQQAppInterface == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue == null) || (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong)))) {
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    }
+    Object localObject = aenj.a(paramQQAppInterface);
+    if (localObject != null) {
+      ((aenj)localObject).a(paramView, this);
+    }
+    int i;
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong), new axsx(this, paramView, paramaenl));
+      if (QLog.isColorLevel()) {
+        QLog.d("OrderMediaMsgStatusCallback", 2, "callback add success:" + paramLong);
+      }
+      paramQQAppInterface = paramQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, paramLong);
+      if (paramQQAppInterface == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("OrderMediaMsgStatusCallback", 2, "addCallback processor is null " + paramLong);
+        }
+        if (this.jdField_a_of_type_Axsy == null) {
+          break label504;
+        }
+        this.jdField_a_of_type_Axsy.a(paramLong);
+        i = -1;
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          StringBuilder localStringBuilder = ((StringBuilder)localObject).append("addCallback uniseq:").append(paramLong).append(" ,status:").append(i).append(" ,view:");
+          if (paramView != null) {
+            break label510;
+          }
+          paramQQAppInterface = "";
+          label252:
+          paramView = localStringBuilder.append(paramQQAppInterface).append(" ,callback:");
+          if (paramaenl != null) {
+            break label519;
           }
         }
       }
     }
-    int i;
-    if ((localMap != null) && (localMap.size() > 0))
+    label519:
+    for (paramQQAppInterface = "";; paramQQAppInterface = paramaenl.toString())
     {
-      localObject = new StringBuilder(localMap.size() * 20 + 10);
-      paramString1 = null;
-      Iterator localIterator = localMap.keySet().iterator();
-      i = 0;
-      if (localIterator.hasNext())
+      paramView.append(paramQQAppInterface);
+      QLog.d("OrderMediaMsgStatusCallback", 2, ((StringBuilder)localObject).toString());
+      return true;
+      if ((paramQQAppInterface instanceof bamw))
       {
-        paramString2 = (String)localIterator.next();
-        if (((StringBuilder)localObject).length() > 0) {
-          ((StringBuilder)localObject).append("#");
+        paramQQAppInterface = (bamw)paramQQAppInterface;
+        i = (int)paramQQAppInterface.c();
+        if (!a(paramLong, i))
+        {
+          this.jdField_a_of_type_JavaLangLong = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek());
+          if ((paramLong != 0L) && (this.jdField_a_of_type_JavaLangLong != null) && (paramLong != this.jdField_a_of_type_JavaLangLong.longValue()))
+          {
+            if (paramaenl != null)
+            {
+              paramaenl.a(paramView, paramQQAppInterface.a(), i, paramQQAppInterface.j);
+              localObject = (axsx)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+              if (localObject != null) {
+                ((axsx)localObject).a(paramQQAppInterface.a());
+              }
+            }
+            if (QLog.isColorLevel())
+            {
+              paramQQAppInterface = new StringBuilder();
+              paramQQAppInterface.append("Not the first! status:").append(i).append(" ,uniseq:").append(paramLong);
+              QLog.d("OrderMediaMsgStatusCallback", 2, paramQQAppInterface.toString());
+            }
+          }
         }
-        ((StringBuilder)localObject).append("[").append(paramString2).append(",").append(localMap.get(paramString2)).append("]");
-        if (((Integer)localMap.get(paramString2)).intValue() <= i) {
-          break label549;
-        }
-        i = ((Integer)localMap.get(paramString2)).intValue();
-        paramString1 = paramString2;
-      }
-    }
-    label549:
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_action", 6);
-      localBundle.putString("key_log", paramString2);
-      localBundle.putInt("key_count", ((Integer)localMap.get(paramString2)).intValue());
-      if (!axsp.a()) {
-        axsk.a().a(localBundle);
-      }
-      for (;;)
-      {
         break;
-        a(localBundle);
+        paramQQAppInterface = (axsx)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+        paramQQAppInterface.a = new WeakReference(paramView);
+        paramQQAppInterface.b = new WeakReference(paramaenl);
       }
-      axsp.a(this.jdField_b_of_type_Axsp, new String[] { "log|", ((StringBuilder)localObject).toString() });
-      paramString2 = this.jdField_b_of_type_Axsp;
-      if (i > this.jdField_c_of_type_Int) {}
-      for (int j = 1;; j = 0)
-      {
-        axsp.a(paramString2, 2, 0, j, ajya.a(2131701081) + paramString1, "2秒钟日志打印次数：" + i);
-        return;
-      }
-      if ((axsp.a(this.jdField_b_of_type_Axsp) == null) || (!QLog.isColorLevel())) {
-        break;
-      }
-      axsp.a(this.jdField_b_of_type_Axsp, "No high frequnecy log in last 2seconds");
-      return;
+      label504:
+      i = -1;
+      break;
+      label510:
+      paramQQAppInterface = paramView.toString();
+      break label252;
     }
   }
   
-  public void onWriteLog(String paramString, byte[] paramArrayOfByte) {}
+  public void b(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong)))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(Long.valueOf(paramLong));
+      if (QLog.isColorLevel()) {
+        QLog.d("OrderMediaMsgStatusCallback", 2, "removeUniseqFromOrderList " + paramLong);
+      }
+      c(paramLong);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axsw
  * JD-Core Version:    0.7.0.1
  */

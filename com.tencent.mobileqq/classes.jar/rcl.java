@@ -1,22 +1,29 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFloatWindowDragLayout;
 
 public class rcl
-  implements okf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rcl(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView, okf paramokf) {}
+  public rcl(VideoFeedsFloatWindowDragLayout paramVideoFeedsFloatWindowDragLayout, int paramInt1, int paramInt2) {}
   
-  public void a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ReadInJoyFastWebBottomSocialView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialView).setVisibility(8);
-    if (this.jdField_a_of_type_Okf != null) {
-      this.jdField_a_of_type_Okf.a(paramInt);
+    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout.getLayoutParams();
+    int i = this.jdField_a_of_type_Int;
+    localLayoutParams.x = (((Point)paramValueAnimator.getAnimatedValue()).x + i);
+    i = this.b;
+    localLayoutParams.y = (((Point)paramValueAnimator.getAnimatedValue()).y + i);
+    if (VideoFeedsFloatWindowDragLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout) != null) {
+      VideoFeedsFloatWindowDragLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rcl
  * JD-Core Version:    0.7.0.1
  */

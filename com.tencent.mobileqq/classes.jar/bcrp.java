@@ -1,50 +1,24 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
-public class bcrp
-  extends GestureDetector.SimpleOnGestureListener
+class bcrp
+  implements baaa
 {
-  public bcrp(SlideDetectListView paramSlideDetectListView) {}
+  bcrp(bcro parambcro) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a()
   {
-    if (!this.a.jdField_c_of_type_Boolean) {}
-    do
-    {
-      return false;
-      if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) && ((this.a.jdField_c_of_type_Int == 0) || (this.a.d)) && (!this.a.jdField_a_of_type_Boolean) && (Math.abs(paramFloat1) > this.a.f))
-      {
-        this.a.jdField_b_of_type_Int = this.a.a(this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_AndroidViewView = this.a.a(this.a.jdField_b_of_type_Int);
-        if (this.a.jdField_a_of_type_AndroidViewView != null)
-        {
-          this.a.jdField_a_of_type_Boolean = true;
-          this.a.setPressed(false);
-          this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (SlideDetectListView.a(this.a) != null)
-          {
-            int i = this.a.jdField_b_of_type_Int;
-            int j = this.a.getHeaderViewsCount();
-            SlideDetectListView.a(this.a).a(this.a, this.a.jdField_a_of_type_AndroidViewView, i - j);
-          }
-          this.a.jdField_a_of_type_Int = 0;
-        }
-        for (;;)
-        {
-          return true;
-          this.a.jdField_b_of_type_Boolean = true;
-        }
-      }
-    } while (Math.abs(paramFloat1) <= Math.abs(paramFloat2) * 2.0F);
-    this.a.jdField_b_of_type_Boolean = true;
-    return false;
+    this.a.a.a.this$0.a();
+    if (this.a.a.a.jdField_a_of_type_Baaa != null) {
+      this.a.a.a.jdField_a_of_type_Baaa.a();
+    }
+    this.a.a.a.this$0.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.this$0.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcrp
  * JD-Core Version:    0.7.0.1
  */

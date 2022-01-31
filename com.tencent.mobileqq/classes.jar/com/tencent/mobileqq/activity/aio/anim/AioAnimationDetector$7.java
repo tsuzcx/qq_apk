@@ -1,31 +1,21 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acyq;
-import acyr;
-import acys;
-import android.graphics.drawable.Drawable;
+import aeqd;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class AioAnimationDetector$7
   implements Runnable
 {
-  public AioAnimationDetector$7(acyq paramacyq, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, acyr paramacyr) {}
+  public AioAnimationDetector$7(aeqd paramaeqd, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Acyr.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_Acyr.a.jdField_a_of_type_Int)
-    {
-      localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(j), Integer.valueOf(i) });
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(1, 200, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector.7
  * JD-Core Version:    0.7.0.1
  */

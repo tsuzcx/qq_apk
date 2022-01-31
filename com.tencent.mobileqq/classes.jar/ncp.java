@@ -1,66 +1,87 @@
-import android.os.Bundle;
-import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg;
+import com.tencent.mobileqq.bnr.BnrReport.BNReportConfigRsp;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
 
 public class ncp
-  implements ajte
+  implements aywc
 {
-  public ncp(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
+  private QQAppInterface a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public ncp(QQAppInterface paramQQAppInterface)
   {
-    if (paramObject == null) {
-      return;
+    this.a = paramQQAppInterface;
+    nco.a();
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BnrReport", 2, "getCheckUpdateItemData");
     }
-    paramObject = (Bundle)paramObject;
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 17: 
-      paramBoolean = paramObject.getBoolean("result");
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (paramBoolean)
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.cOperType = 1;
+    localReqItem.eServiceID = 118;
+    BnrReport.BNRConfigMsg localBNRConfigMsg = nco.a(this.a.getCurrentAccountUin());
+    if (localBNRConfigMsg != null) {
+      localReqItem.vecParam = bdku.a(localBNRConfigMsg.toByteArray());
+    }
+    nco.a = true;
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BnrReport", 2, "handleCheckUpdateItemData");
+    }
+    BnrReport.BNRConfigMsg localBNRConfigMsg;
+    if (paramRespItem.cResult == 2) {
+      if (paramRespItem.eServiceID == 118)
       {
-        paramObject = this.a.getString(2131696286);
-        localStringBuilder.append(paramObject);
-        localStringBuilder.append(this.a.getString(2131696284));
-        localStringBuilder.append(this.a.c);
-        if (!paramBoolean) {
-          break label233;
-        }
-        paramInt = 2;
-        label104:
-        bcql.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
-        paramObject = this.a;
-        if (!paramBoolean) {
-          break label238;
+        paramRespItem = bdku.b(paramRespItem.vecUpdate);
+        if (paramRespItem != null) {
+          localBNRConfigMsg = new BnrReport.BNRConfigMsg();
         }
       }
-      break;
     }
-    label233:
-    label238:
-    for (paramInt = -1;; paramInt = 0)
+    for (;;)
     {
-      paramObject.setResult(paramInt);
-      return;
-      this.a.a = paramObject.getBoolean("isOpen");
-      this.a.c = paramObject.getString("name");
-      if (this.a.c != null) {
-        this.a.b = this.a.getString(2131696346, new Object[] { this.a.c });
+      try
+      {
+        localBNRConfigMsg.mergeFrom(paramRespItem);
+        nco.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
+        nco.a(this.a, 74);
+        nco.a = false;
+        return;
       }
-      LebaSearchMoreInfoActivity.a(this.a);
-      return;
-      paramObject = this.a.getString(2131696285);
-      break;
-      paramInt = 1;
-      break label104;
+      catch (InvalidProtocolBufferMicroException paramRespItem)
+      {
+        paramRespItem.printStackTrace();
+        continue;
+      }
+      catch (Exception paramRespItem)
+      {
+        paramRespItem.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BnrReport", 2, "***handleCheckUpdateItemData fail respitem.cResult:" + paramRespItem.cResult);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncp
  * JD-Core Version:    0.7.0.1
  */

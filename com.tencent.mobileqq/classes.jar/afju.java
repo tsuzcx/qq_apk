@@ -1,38 +1,35 @@
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+
 class afju
-  extends bfwg
+  extends ClickableSpan
 {
-  afju(afjt paramafjt, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  afju(afjb paramafjb) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = bhpy.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131720912);
+      paramView.c(2131690648);
+      paramView.a(new afjv(this));
+      paramView.a(new afjw(this, paramView));
+      paramView.show();
+      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
+    }
   }
   
-  public void a(int paramInt, Object paramObject, bfwf[] paramArrayOfbfwf)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    paramInt = 1;
-    if ((paramArrayOfbfwf == null) || (paramArrayOfbfwf.length <= 0)) {}
-    for (;;)
-    {
-      return;
-      int i = this.a.a();
-      if ((paramArrayOfbfwf.length < 0) && ((i & 0xF) == 1))
-      {
-        paramArrayOfbfwf[0].b = 0;
-        paramArrayOfbfwf[0].a = 0;
-      }
-      while (paramInt < paramArrayOfbfwf.length)
-      {
-        paramArrayOfbfwf[paramInt].b = -1;
-        paramArrayOfbfwf[paramInt].a = -1;
-        paramInt += 1;
-        continue;
-        paramInt = 0;
-      }
-    }
+    paramTextPaint.setColor(-12541697);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afju
  * JD-Core Version:    0.7.0.1
  */

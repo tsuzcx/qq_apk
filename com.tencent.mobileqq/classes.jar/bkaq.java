@@ -1,33 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.text.TextUtils;
 
-class bkaq
-  extends AnimatorListenerAdapter
+public class bkaq
+  extends bfsv
 {
-  bkaq(bkao parambkao) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public void i(String paramString1, String paramString2)
   {
-    ved.b(bkak.a, "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ved.b(bkak.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.j = false;
-    this.a.b.k();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ved.b(bkak.a, "scaleAnimator start!");
-    this.a.j = true;
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("onRenderFrame"))) {
+      return;
+    }
+    super.i(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkaq
  * JD-Core Version:    0.7.0.1
  */

@@ -25,20 +25,35 @@ final class l
     for (;;)
     {
       this.a = SystemClock.elapsedRealtime();
-      try
+      synchronized (k.l())
       {
-        sleep(5000L);
-        label13:
-        this.b = SystemClock.elapsedRealtime();
-        if (this.b - this.a > 6000L)
+        try
         {
-          Iterator localIterator = k.l().entrySet().iterator();
-          while (localIterator.hasNext()) {
+          if (QLog.isColorLevel()) {
+            QLog.d("MSF.C.StatReport", 2, "try wait to report");
+          }
+          k.l().wait(5000L);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+        this.b = SystemClock.elapsedRealtime();
+        if (this.b - this.a <= 6000L) {
+          break label241;
+        }
+        ??? = k.m().entrySet().iterator();
+        for (;;)
+        {
+          if (((Iterator)???).hasNext()) {
             try
             {
-              Map.Entry localEntry = (Map.Entry)localIterator.next();
-              if ((localEntry != null) && (this.b - ((Long)localEntry.getKey()).longValue() > k.m())) {
-                localIterator.remove();
+              Map.Entry localEntry = (Map.Entry)((Iterator)???).next();
+              if ((localEntry != null) && (this.b - ((Long)localEntry.getKey()).longValue() > k.n())) {
+                ((Iterator)???).remove();
               }
             }
             catch (Exception localException)
@@ -46,19 +61,16 @@ final class l
               localException.printStackTrace();
             }
           }
-          k.l().put(Long.valueOf(this.a), Long.valueOf(this.b));
-          k.b(true);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("MSF.C.StatReport", 2, "find deep sleep. currTime:" + this.b + ", lastTime:" + this.a + ", sleep:" + (this.b - this.a));
-          continue;
         }
-        k.b(false);
       }
-      catch (InterruptedException localInterruptedException)
+      k.m().put(Long.valueOf(this.a), Long.valueOf(this.b));
+      k.b(true);
+      if (QLog.isColorLevel())
       {
-        break label13;
+        QLog.d("MSF.C.StatReport", 2, "find deep sleep. currTime:" + this.b + ", lastTime:" + this.a + ", sleep:" + (this.b - this.a));
+        continue;
+        label241:
+        k.b(false);
       }
     }
   }

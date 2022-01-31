@@ -3,14 +3,14 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aydy;
+import babv;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReSendCmd
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReSendCmd> CREATOR = new aydy();
+  public static final Parcelable.Creator<ReSendCmd> CREATOR = new babv();
   public int a;
   public String a;
   List<String> a;
@@ -70,7 +70,7 @@ public class ReSendCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.ReSendCmd
  * JD-Core Version:    0.7.0.1
  */

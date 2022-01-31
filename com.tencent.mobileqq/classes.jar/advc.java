@@ -1,26 +1,40 @@
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class advc
-  extends acuj
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  public aibq a;
-  public TextView a;
-  public ETTextView a;
-  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
-  public boolean a;
-  public TextView b;
-  public ETTextView b;
-  private String b = "0";
-  public int e = -1;
+  public advc(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public advc(aduy paramaduy) {}
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
+    }
+    paramView = (azyu)this.a.app.getManager(61);
+    if (paramView != null) {}
+    for (int i = paramView.a();; i = 0)
+    {
+      if (i < 2)
+      {
+        paramView = new Intent(this.a, SubLoginActivity.class);
+        paramView.putExtra("fromWhere", this.a.b);
+        this.a.startActivity(paramView);
+        return;
+      }
+      azyl.a(this.a.app, this.a);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advc
  * JD-Core Version:    0.7.0.1
  */

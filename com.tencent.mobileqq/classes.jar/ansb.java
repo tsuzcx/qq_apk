@@ -1,117 +1,81 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
-public class ansb
+class ansb
+  extends Drawable
 {
-  private static int a;
-  public static bjbs a;
+  public int a;
+  public Bitmap a;
+  private Paint a;
+  public boolean a;
+  public int b = -1;
   
-  static
+  public ansb(Bitmap paramBitmap)
   {
-    jdField_a_of_type_Int = -1;
-    jdField_a_of_type_Bjbs = new bjbs();
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Int = paramBitmap.getWidth();
+    this.b = paramBitmap.getHeight();
   }
   
-  private static int a()
+  public void draw(Canvas paramCanvas)
   {
-    Object localObject = (anse)((QQAppInterface)bjal.a()).getManager(333);
-    if (jdField_a_of_type_Int == -1)
+    Rect localRect = super.getBounds();
+    if (this.jdField_a_of_type_Boolean)
     {
-      jdField_a_of_type_Int = 1;
-      localObject = ((anse)localObject).a();
-      if (localObject != null)
-      {
-        i = 0;
-        while (i < ((List)localObject).size())
-        {
-          int j = ((CameraEmotionData)((List)localObject).get(i)).emoId;
-          if (jdField_a_of_type_Int < j) {
-            jdField_a_of_type_Int = j;
-          }
-          i += 1;
-        }
-      }
+      paramCanvas.save();
+      paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
     }
-    int i = jdField_a_of_type_Int + 1;
-    jdField_a_of_type_Int = i;
-    return i;
-  }
-  
-  private static CameraEmotionData a(String paramString1, String paramString2)
-  {
-    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
-    localCameraEmotionData.uin = bjal.a().getCurrentAccountUin();
-    localCameraEmotionData.emoPath = paramString1;
-    localCameraEmotionData.RomaingType = "needUpload";
-    localCameraEmotionData.strContext = paramString2;
-    return localCameraEmotionData;
-  }
-  
-  private static CameraEmotionData a(String paramString1, String paramString2, String paramString3)
-  {
-    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
-    localCameraEmotionData.uin = bjal.a().getCurrentAccountUin();
-    localCameraEmotionData.emoOriginalPath = paramString1;
-    localCameraEmotionData.thumbPath = paramString3;
-    localCameraEmotionData.RomaingType = "needUpload";
-    localCameraEmotionData.strContext = paramString2;
-    return localCameraEmotionData;
-  }
-  
-  public static void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
-  {
-    Object localObject = (QQAppInterface)bjal.a();
-    if (localObject == null) {
-      return;
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, super.getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Boolean) {
+      paramCanvas.restore();
     }
-    anse localanse = (anse)((QQAppInterface)localObject).getManager(333);
-    localObject = (ajtf)((QQAppInterface)localObject).a(160);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList1.size())
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.b;
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
     {
-      CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i));
-      localCameraEmotionData.emoId = a();
-      localanse.c(localCameraEmotionData);
-      localArrayList.add(localCameraEmotionData);
-      i += 1;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      super.invalidateSelf();
     }
-    ((ajtf)localObject).notifyUI(4, true, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
-    }
-    jdField_a_of_type_Bjbs.a(String.valueOf(1011), new Object[] { localArrayList });
   }
   
-  public static void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
+  public void setColorFilter(ColorFilter paramColorFilter)
   {
-    Object localObject = (QQAppInterface)bjal.a();
-    anse localanse = (anse)((QQAppInterface)localObject).getManager(333);
-    localObject = (ajtf)((QQAppInterface)localObject).a(160);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList1.size())
-    {
-      CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i), (String)paramArrayList3.get(i));
-      localCameraEmotionData.emoId = a();
-      localanse.c(localCameraEmotionData);
-      localArrayList.add(localCameraEmotionData);
-      i += 1;
-    }
-    ((ajtf)localObject).notifyUI(4, true, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
-    }
-    jdField_a_of_type_Bjbs.a(String.valueOf(1011), new Object[] { localArrayList });
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    super.invalidateSelf();
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    super.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansb
  * JD-Core Version:    0.7.0.1
  */

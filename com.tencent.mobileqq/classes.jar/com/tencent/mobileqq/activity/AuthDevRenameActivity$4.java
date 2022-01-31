@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcqf;
+import bepp;
 
 class AuthDevRenameActivity$4
   implements Runnable
@@ -12,11 +12,11 @@ class AuthDevRenameActivity$4
     try
     {
       if ((AuthDevRenameActivity.a(this.this$0) == null) && (!this.this$0.isFinishing())) {
-        AuthDevRenameActivity.a(this.this$0, new bcqf(this.this$0, this.this$0.getTitleBarHeight()));
+        AuthDevRenameActivity.a(this.this$0, new bepp(this.this$0, this.this$0.getTitleBarHeight()));
       }
       if ((AuthDevRenameActivity.a(this.this$0) != null) && (!AuthDevRenameActivity.a(this.this$0).isShowing()))
       {
-        AuthDevRenameActivity.a(this.this$0).a(this.this$0.getString(2131692166));
+        AuthDevRenameActivity.a(this.this$0).a(this.this$0.getString(2131692240));
         AuthDevRenameActivity.a(this.this$0).show();
       }
       return;
@@ -32,7 +32,7 @@ class AuthDevRenameActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevRenameActivity.4
  * JD-Core Version:    0.7.0.1
  */

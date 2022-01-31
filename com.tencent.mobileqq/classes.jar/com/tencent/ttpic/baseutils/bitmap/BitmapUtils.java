@@ -1836,6 +1836,18 @@ public class BitmapUtils
     return null;
   }
   
+  private static BitmapUtils.Size getNewSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    float f = Math.min(paramInt3 / paramInt1, paramInt4 / paramInt2);
+    if (f < 1.0D) {}
+    for (BitmapUtils.Size localSize = new BitmapUtils.Size((int)(paramInt1 * f), (int)(f * paramInt2));; localSize = new BitmapUtils.Size(paramInt1, paramInt2))
+    {
+      localSize.width = Math.max(localSize.width, 1);
+      localSize.height = Math.max(localSize.height, 1);
+      return localSize;
+    }
+  }
+  
   public static String getRealPath(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
@@ -1893,6 +1905,30 @@ public class BitmapUtils
     return false;
   }
   
+  public static Bitmap resizeBySidesRange(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    int j;
+    if (paramBitmap.getHeight() / paramBitmap.getWidth() >= 1.0D) {
+      j = paramBitmap.getHeight();
+    }
+    for (int i = paramBitmap.getWidth();; i = paramBitmap.getHeight())
+    {
+      Object localObject;
+      if (i < paramInt1)
+      {
+        localObject = paramBitmap;
+        if (j < paramInt2) {}
+      }
+      else
+      {
+        localObject = getNewSize(i, j, paramInt1, paramInt2);
+        localObject = Bitmap.createScaledBitmap(paramBitmap, ((BitmapUtils.Size)localObject).width, ((BitmapUtils.Size)localObject).height, false);
+      }
+      return localObject;
+      j = paramBitmap.getWidth();
+    }
+  }
+  
   public static Bitmap rotateBitmap(Bitmap paramBitmap, int paramInt)
   {
     return rotateBitmap(paramBitmap, paramInt, true);
@@ -1946,7 +1982,7 @@ public class BitmapUtils
     //   20: aload_3
     //   21: astore_2
     //   22: aload 6
-    //   24: invokevirtual 704	java/io/File:getParentFile	()Ljava/io/File;
+    //   24: invokevirtual 723	java/io/File:getParentFile	()Ljava/io/File;
     //   27: astore 7
     //   29: aload_3
     //   30: astore_2
@@ -1973,7 +2009,7 @@ public class BitmapUtils
     //   67: new 286	java/io/FileOutputStream
     //   70: dup
     //   71: aload_1
-    //   72: invokespecial 705	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   72: invokespecial 724	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   75: astore_3
     //   76: aload_0
     //   77: ifnull +18 -> 95
@@ -1984,10 +2020,10 @@ public class BitmapUtils
     //   87: invokevirtual 207	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   90: pop
     //   91: aload_3
-    //   92: invokevirtual 708	java/io/FileOutputStream:flush	()V
+    //   92: invokevirtual 727	java/io/FileOutputStream:flush	()V
     //   95: aload_3
-    //   96: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
-    //   99: getstatic 717	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_SUCCESS	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   96: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   99: getstatic 736	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_SUCCESS	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   102: areturn
     //   103: astore_1
     //   104: aload 4
@@ -1998,10 +2034,10 @@ public class BitmapUtils
     //   110: invokestatic 219	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   113: aload_0
     //   114: astore_2
-    //   115: getstatic 720	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_FAILED	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   115: getstatic 739	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_FAILED	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   118: astore_1
     //   119: aload_0
-    //   120: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   120: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   123: aload_1
     //   124: areturn
     //   125: astore 4
@@ -2013,7 +2049,7 @@ public class BitmapUtils
     //   134: invokestatic 219	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   137: aload_3
     //   138: astore_2
-    //   139: ldc_w 722
+    //   139: ldc_w 741
     //   142: iconst_3
     //   143: anewarray 4	java/lang/Object
     //   146: dup
@@ -2036,15 +2072,15 @@ public class BitmapUtils
     //   173: invokestatic 171	com/tencent/ttpic/baseutils/report/ReportUtil:report	(Ljava/lang/String;)V
     //   176: aload_3
     //   177: astore_2
-    //   178: getstatic 725	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_OOM	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   178: getstatic 744	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_OOM	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   181: astore_0
     //   182: aload_3
-    //   183: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   183: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   186: aload_0
     //   187: areturn
     //   188: astore_0
     //   189: aload_2
-    //   190: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   190: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   193: aload_0
     //   194: athrow
     //   195: astore_0
@@ -2115,7 +2151,7 @@ public class BitmapUtils
     //   10: aload_0
     //   11: ifnull +21 -> 32
     //   14: aload_0
-    //   15: invokevirtual 729	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   15: invokevirtual 748	android/content/Context:getCacheDir	()Ljava/io/File;
     //   18: astore_0
     //   19: aload_2
     //   20: astore 8
@@ -2134,7 +2170,7 @@ public class BitmapUtils
     //   47: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   50: aload_3
     //   51: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: ldc_w 731
+    //   54: ldc_w 750
     //   57: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   60: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   63: astore_0
@@ -2142,7 +2178,7 @@ public class BitmapUtils
     //   67: dup
     //   68: aload 8
     //   70: aload_0
-    //   71: invokespecial 733	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   71: invokespecial 752	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   74: astore_3
     //   75: new 286	java/io/FileOutputStream
     //   78: dup
@@ -2159,12 +2195,12 @@ public class BitmapUtils
     //   99: aload_0
     //   100: astore_2
     //   101: aload 5
-    //   103: invokevirtual 668	java/lang/String:length	()I
+    //   103: invokevirtual 680	java/lang/String:length	()I
     //   106: istore 6
     //   108: iload 6
     //   110: ifle +71 -> 181
     //   113: aload_0
-    //   114: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   114: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   117: aload_3
     //   118: astore_0
     //   119: iload 7
@@ -2179,7 +2215,7 @@ public class BitmapUtils
     //   135: aload_2
     //   136: astore 8
     //   138: aload_0
-    //   139: invokevirtual 736	java/io/File:isDirectory	()Z
+    //   139: invokevirtual 755	java/io/File:isDirectory	()Z
     //   142: ifne -110 -> 32
     //   145: aload_2
     //   146: astore 8
@@ -2193,7 +2229,7 @@ public class BitmapUtils
     //   161: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   164: aload_3
     //   165: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: ldc_w 738
+    //   168: ldc_w 757
     //   171: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   177: astore_0
@@ -2217,7 +2253,7 @@ public class BitmapUtils
     //   204: aload_1
     //   205: invokestatic 219	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   208: aload_0
-    //   209: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   209: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   212: iconst_0
     //   213: istore 7
     //   215: aload_3
@@ -2227,7 +2263,7 @@ public class BitmapUtils
     //   221: aload 9
     //   223: astore_1
     //   224: aload_1
-    //   225: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   225: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   228: aload_0
     //   229: athrow
     //   230: aconst_null
@@ -2294,7 +2330,7 @@ public class BitmapUtils
     //   20: aload_3
     //   21: astore_2
     //   22: aload 6
-    //   24: invokevirtual 704	java/io/File:getParentFile	()Ljava/io/File;
+    //   24: invokevirtual 723	java/io/File:getParentFile	()Ljava/io/File;
     //   27: astore 7
     //   29: aload_3
     //   30: astore_2
@@ -2321,7 +2357,7 @@ public class BitmapUtils
     //   67: new 286	java/io/FileOutputStream
     //   70: dup
     //   71: aload_1
-    //   72: invokespecial 705	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   72: invokespecial 724	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   75: astore_3
     //   76: aload_0
     //   77: ifnull +18 -> 95
@@ -2332,10 +2368,10 @@ public class BitmapUtils
     //   87: invokevirtual 207	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   90: pop
     //   91: aload_3
-    //   92: invokevirtual 708	java/io/FileOutputStream:flush	()V
+    //   92: invokevirtual 727	java/io/FileOutputStream:flush	()V
     //   95: aload_3
-    //   96: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
-    //   99: getstatic 717	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_SUCCESS	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   96: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   99: getstatic 736	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_SUCCESS	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   102: areturn
     //   103: astore_1
     //   104: aload 4
@@ -2346,10 +2382,10 @@ public class BitmapUtils
     //   110: invokestatic 219	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   113: aload_0
     //   114: astore_2
-    //   115: getstatic 720	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_FAILED	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   115: getstatic 739	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_FAILED	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   118: astore_1
     //   119: aload_0
-    //   120: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   120: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   123: aload_1
     //   124: areturn
     //   125: astore 4
@@ -2384,15 +2420,15 @@ public class BitmapUtils
     //   173: invokestatic 171	com/tencent/ttpic/baseutils/report/ReportUtil:report	(Ljava/lang/String;)V
     //   176: aload_3
     //   177: astore_2
-    //   178: getstatic 725	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_OOM	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   178: getstatic 744	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_OOM	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   181: astore_0
     //   182: aload_3
-    //   183: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   183: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   186: aload_0
     //   187: areturn
     //   188: astore_0
     //   189: aload_2
-    //   190: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   190: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   193: aload_0
     //   194: athrow
     //   195: astore_0
@@ -2476,7 +2512,7 @@ public class BitmapUtils
     //   33: aload_2
     //   34: astore_1
     //   35: aload_2
-    //   36: invokevirtual 741	java/io/ByteArrayOutputStream:flush	()V
+    //   36: invokevirtual 760	java/io/ByteArrayOutputStream:flush	()V
     //   39: aload_2
     //   40: astore_1
     //   41: aload_2
@@ -2485,7 +2521,7 @@ public class BitmapUtils
     //   46: aload_3
     //   47: astore_1
     //   48: aload_2
-    //   49: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   49: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   52: aload_1
     //   53: areturn
     //   54: astore_0
@@ -2496,7 +2532,7 @@ public class BitmapUtils
     //   59: aload_0
     //   60: invokestatic 219	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   63: aload_2
-    //   64: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   64: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   67: aload 4
     //   69: areturn
     //   70: astore_3
@@ -2508,7 +2544,7 @@ public class BitmapUtils
     //   76: invokestatic 219	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   79: aload_2
     //   80: astore_1
-    //   81: ldc_w 743
+    //   81: ldc_w 762
     //   84: iconst_2
     //   85: anewarray 4	java/lang/Object
     //   88: dup
@@ -2526,14 +2562,14 @@ public class BitmapUtils
     //   108: invokestatic 165	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   111: invokestatic 171	com/tencent/ttpic/baseutils/report/ReportUtil:report	(Ljava/lang/String;)V
     //   114: aload_2
-    //   115: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   115: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   118: aload 4
     //   120: areturn
     //   121: astore_0
     //   122: aconst_null
     //   123: astore_1
     //   124: aload_1
-    //   125: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   125: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   128: aload_0
     //   129: athrow
     //   130: astore_0
@@ -2590,7 +2626,7 @@ public class BitmapUtils
     //   20: aload_3
     //   21: astore_2
     //   22: aload 6
-    //   24: invokevirtual 704	java/io/File:getParentFile	()Ljava/io/File;
+    //   24: invokevirtual 723	java/io/File:getParentFile	()Ljava/io/File;
     //   27: astore 7
     //   29: aload_3
     //   30: astore_2
@@ -2617,7 +2653,7 @@ public class BitmapUtils
     //   67: new 286	java/io/FileOutputStream
     //   70: dup
     //   71: aload_1
-    //   72: invokespecial 705	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   72: invokespecial 724	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   75: astore_3
     //   76: aload_0
     //   77: ifnull +18 -> 95
@@ -2628,10 +2664,10 @@ public class BitmapUtils
     //   87: invokevirtual 207	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   90: pop
     //   91: aload_3
-    //   92: invokevirtual 708	java/io/FileOutputStream:flush	()V
+    //   92: invokevirtual 727	java/io/FileOutputStream:flush	()V
     //   95: aload_3
-    //   96: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
-    //   99: getstatic 717	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_SUCCESS	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   96: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   99: getstatic 736	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_SUCCESS	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   102: areturn
     //   103: astore_1
     //   104: aload 4
@@ -2642,10 +2678,10 @@ public class BitmapUtils
     //   110: invokestatic 219	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   113: aload_0
     //   114: astore_2
-    //   115: getstatic 720	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_FAILED	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   115: getstatic 739	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_FAILED	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   118: astore_1
     //   119: aload_0
-    //   120: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   120: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   123: aload_1
     //   124: areturn
     //   125: astore 4
@@ -2680,15 +2716,15 @@ public class BitmapUtils
     //   173: invokestatic 171	com/tencent/ttpic/baseutils/report/ReportUtil:report	(Ljava/lang/String;)V
     //   176: aload_3
     //   177: astore_2
-    //   178: getstatic 725	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_OOM	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
+    //   178: getstatic 744	com/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS:SAVE_OOM	Lcom/tencent/ttpic/baseutils/bitmap/BitmapUtils$SAVE_STATUS;
     //   181: astore_0
     //   182: aload_3
-    //   183: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   183: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   186: aload_0
     //   187: areturn
     //   188: astore_0
     //   189: aload_2
-    //   190: invokestatic 711	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   190: invokestatic 730	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
     //   193: aload_0
     //   194: athrow
     //   195: astore_0

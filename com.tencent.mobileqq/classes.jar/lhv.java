@@ -1,51 +1,52 @@
-import android.os.Handler;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class lhv
-  implements Observer
 {
-  private WeakReference<MagicFaceDataEntity> a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public lhv(MagicFaceDataEntity paramMagicFaceDataEntity)
+  public lhv(VideoAppInterface paramVideoAppInterface)
   {
-    this.a = new WeakReference(paramMagicFaceDataEntity);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lhx(paramVideoAppInterface, null);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void a()
   {
-    int j;
-    if (this.a.get() != null)
-    {
-      paramObservable = ((MagicFaceDataEntity)this.a.get()).a;
-      if (paramObject != null)
-      {
-        Object[] arrayOfObject = (Object[])paramObject;
-        if ((arrayOfObject != null) && (arrayOfObject.length > 0))
-        {
-          j = ((Integer)arrayOfObject[0]).intValue();
-          if ((j == 130) || (j == 131) || (j == 132)) {
-            if ((j != 131) && (j != 132)) {
-              break label152;
-            }
-          }
-        }
-      }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.qav.notify.accept");
+    localIntentFilter.addAction("com.tencent.qav.notify.refuse");
+    localIntentFilter.addAction("tencent.video.q2v.ptusoDownloadRet");
+    localIntentFilter.addAction("tencent.video.q2v.ptuLibpagDownloadRet");
+    localIntentFilter.addAction("tencent.video.q2v.avReceivePushMsg");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVNotifyActionMonitor", 2, "register");
     }
-    label152:
-    for (int i = 500;; i = 0)
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      lcg.c("MagicFaceDataEntity", "MagicFaceDataEntity update :" + j + "|" + i);
-      paramObservable.sendMessageDelayed(paramObservable.obtainMessage(1, paramObject), i);
-      return;
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVNotifyActionMonitor", 2, "unRegister");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhv
  * JD-Core Version:    0.7.0.1
  */

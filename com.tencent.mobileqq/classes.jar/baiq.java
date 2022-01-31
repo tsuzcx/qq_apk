@@ -1,292 +1,290 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.Editable.Factory;
+import android.text.SpannableStringBuilder;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import mqq.manager.Manager;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class baiq
-  implements Manager
+  extends SpannableStringBuilder
 {
-  public static final String a;
-  private static final String[] a;
-  private static final String[] b = { "", ajya.a(2131713578), ajya.a(2131713574) };
-  protected SparseArray<String[]> a;
-  protected final QQAppInterface a;
-  protected LinkedHashMap<String, bair> a;
+  public static Editable.Factory a;
+  public static Editable.Factory b;
+  private int a;
+  private int b;
   
   static
   {
-    jdField_a_of_type_JavaLangString = ".troop.school_troop." + baiq.class.getSimpleName();
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "", ajya.a(2131713575), ajya.a(2131713577) };
+    jdField_a_of_type_AndroidTextEditable$Factory = new bair();
+    jdField_b_of_type_AndroidTextEditable$Factory = new bais();
   }
   
-  public baiq(QQAppInterface paramQQAppInterface)
+  public baiq(CharSequence paramCharSequence, int paramInt)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
+    this(paramCharSequence, paramInt, 32);
   }
   
-  public static String a(String paramString1, String paramString2)
+  public baiq(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    if (paramString1 == null) {
-      return "";
+    super(a(paramCharSequence, paramInt1, paramInt2));
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public static Editable.Factory a(int paramInt)
+  {
+    return new bait(paramInt);
+  }
+  
+  private static final CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    if ((paramCharSequence instanceof baig)) {
+      return ((baig)paramCharSequence).a();
     }
-    if (paramString1.length() <= 0) {
-      return "";
-    }
-    String str = paramString2;
-    if (paramString2 == null) {
-      str = "";
-    }
-    paramString2 = new StringBuilder();
-    int k = paramString1.length();
-    int i = 0;
-    if (i < k)
+    return new baig(paramCharSequence, paramInt1, paramInt2).a();
+  }
+  
+  public String a()
+  {
+    int j = 0;
+    int i = length();
+    Object localObject1 = new char[i];
+    getChars(0, i, (char[])localObject1, 0);
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append((char[])localObject1);
+    int k = "[emoji]".length();
+    localObject1 = (bain[])getSpans(0, i, bain.class);
+    i = 0;
+    if (j < localObject1.length)
     {
-      int m = paramString1.codePointAt(i);
-      if (ayjy.a.get(m, -1) != -1)
+      Object localObject2 = localObject1[j];
+      int m = getSpanStart(localObject2);
+      int n = getSpanEnd(localObject2);
+      switch (((bain)localObject2).c)
       {
-        int j = i;
-        if (m > 65535) {
-          j = i + 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        localStringBuffer.replace(m + i, n + i, "[emoji]");
+        i += k - (n - m);
+        continue;
+        localObject2 = ((bain)localObject2).a();
+        localStringBuffer.replace(m + i, n + i, (String)localObject2);
+        i += ((String)localObject2).length() - (n - m);
+        continue;
+        localObject2 = apog.a(((bain)localObject2).jdField_a_of_type_Int & 0x7FFFFFFF);
+        localStringBuffer.replace(m + i, n + i, (String)localObject2);
+        i += ((String)localObject2).length() - (n - m);
+      }
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public void getChars(int paramInt1, int paramInt2, char[] paramArrayOfChar, int paramInt3)
+  {
+    int i = paramInt1;
+    if (paramInt1 < 0) {
+      i = 0;
+    }
+    int j = length();
+    paramInt1 = paramInt2;
+    if (paramInt2 > j) {
+      paramInt1 = j;
+    }
+    try
+    {
+      super.getChars(i, paramInt1, paramArrayOfChar, paramInt3);
+      return;
+    }
+    catch (IndexOutOfBoundsException paramArrayOfChar)
+    {
+      QLog.e("QQTextBuilder", 1, "text:" + a());
+    }
+  }
+  
+  public SpannableStringBuilder replace(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, int paramInt4)
+  {
+    if (paramInt1 < 0) {
+      j = 0;
+    }
+    for (;;)
+    {
+      try
+      {
+        k = length();
+        if (paramInt2 > k)
+        {
+          paramInt1 = k;
+          paramInt2 = paramInt1;
+          if (paramInt1 < 0) {
+            i = paramInt1;
+          }
         }
-        paramString2.append(str);
-        i = j;
+      }
+      catch (Throwable localThrowable1)
+      {
+        int k;
+        Object localObject;
+        QLog.e("QQText", 1, "QQTextBuilder.replace caused crash..text:" + toString() + ", replace text:" + paramCharSequence + " , " + j + "-" + paramInt2 + " , " + paramInt3 + "-" + paramInt4, localThrowable1);
+        return new SpannableStringBuilder();
+      }
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          break label259;
+        }
+        i = paramInt1;
+        QLog.w("QQTextBuilder", 2, "selection error, start = " + j + " end = " + paramInt1 + " length = " + k);
+      }
+      catch (Throwable localThrowable2)
+      {
+        paramInt2 = i;
+        continue;
+        continue;
+        paramInt2 = 0;
+        continue;
+      }
+      i = paramInt2;
+      if (paramCharSequence.length() <= 0) {
+        break label256;
+      }
+      i = paramInt2;
+      localObject = new baig(paramCharSequence, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int).a();
+      paramCharSequence = (CharSequence)localObject;
+      try
+      {
+        localObject = super.replace(j, paramInt2, paramCharSequence, paramInt3, paramInt4);
+        return localObject;
+      }
+      catch (Throwable localThrowable3)
+      {
+        continue;
+      }
+      j = paramInt1;
+      continue;
+      paramInt1 = paramInt2;
+    }
+  }
+  
+  public CharSequence subSequence(int paramInt1, int paramInt2)
+  {
+    if (!baig.a) {
+      localObject1 = super.subSequence(paramInt1, paramInt2);
+    }
+    do
+    {
+      return localObject1;
+      if (paramInt1 != 0) {
+        break;
+      }
+      localObject1 = this;
+    } while (paramInt2 == length());
+    int i = paramInt1;
+    if (paramInt1 < 0) {
+      i = 0;
+    }
+    int j = length();
+    paramInt1 = paramInt2;
+    if (paramInt2 > j) {
+      paramInt1 = j;
+    }
+    Object localObject2 = new char[paramInt1 - i];
+    getChars(i, paramInt1, (char[])localObject2, 0);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append((char[])localObject2);
+    localObject2 = (bain[])getSpans(i, paramInt1, bain.class);
+    if (paramInt1 - i > 0)
+    {
+      paramInt2 = 0;
+      if (paramInt2 < localObject2.length)
+      {
+        Object localObject3 = localObject2[paramInt2];
+        int k = getSpanStart(localObject3);
+        int m = getSpanEnd(localObject3);
+        j = k;
+        if (k < i) {
+          j = i;
+        }
+        k = m;
+        if (m > paramInt1) {
+          k = paramInt1;
+        }
+        switch (localObject3.c)
+        {
+        }
+        for (;;)
+        {
+          paramInt2 += 1;
+          break;
+          try
+          {
+            ((StringBuilder)localObject1).replace(j - i, k - i, baiy.a(localObject3.jdField_a_of_type_Int));
+          }
+          catch (Exception localException)
+          {
+            QLog.e("QQTextBuilder", 1, localException.getStackTrace());
+          }
+          continue;
+          Object localObject4 = (baip)localException;
+          localObject4 = apih.a(((baip)localObject4).e, ((baip)localObject4).f);
+          ((StringBuilder)localObject1).replace(j - i, k - i, String.valueOf(new char[] { '\024', localObject4[3], localObject4[2], localObject4[1], localObject4[0] }));
+          continue;
+          ((StringBuilder)localObject1).replace(j - i, k - i, baiy.c(((bain)localObject4).jdField_a_of_type_Int));
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  public String toString()
+  {
+    if (!baig.a) {
+      return super.toString();
+    }
+    int i = length();
+    Object localObject1 = new char[i];
+    getChars(0, i, (char[])localObject1, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((char[])localObject1);
+    int j = localStringBuilder.length();
+    localObject1 = (bain[])getSpans(0, i, bain.class);
+    i = 0;
+    if (i < localObject1.length)
+    {
+      Object localObject2 = localObject1[i];
+      int k = getSpanStart(localObject2);
+      int m = getSpanEnd(localObject2);
+      if ((k < j) && (m <= j)) {
+        switch (((bain)localObject2).c)
+        {
+        }
       }
       for (;;)
       {
         i += 1;
         break;
-        if (m == 20)
+        localStringBuilder.replace(k, m, baiy.a(((bain)localObject2).jdField_a_of_type_Int));
+        continue;
+        localObject2 = (baip)localObject2;
+        localObject2 = apih.a(((baip)localObject2).e, ((baip)localObject2).f);
+        localStringBuilder.replace(k, m, String.valueOf(new char[] { '\024', localObject2[3], localObject2[2], localObject2[1], localObject2[0] }));
+        if (QLog.isColorLevel())
         {
-          i += 1;
-          paramString2.append(str);
-        }
-        else
-        {
-          paramString2.append(paramString1.charAt(i));
-        }
-      }
-    }
-    return paramString2.toString();
-  }
-  
-  private void a()
-  {
-    long l = System.currentTimeMillis();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getString("troop_school_keyword_config", "");
-    if (TextUtils.isEmpty(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "The configString is empty, new user or no config");
-      }
-      return;
-    }
-    a(str);
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "loadConfig cost time: " + (System.currentTimeMillis() - l));
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if (paramSessionInfo.jdField_a_of_type_Int != 1) {
-      return false;
-    }
-    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    return paramQQAppInterface.dwGroupClassExt == 32L;
-  }
-  
-  public int a(SessionInfo paramSessionInfo)
-  {
-    int j;
-    if (paramSessionInfo.jdField_a_of_type_Int != 1)
-    {
-      j = -1;
-      return j;
-    }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0) {
-      return -4;
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
-    if (localTroopInfo == null)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 2, "it must be wrong. The troopUin '" + paramSessionInfo.jdField_a_of_type_JavaLangString + "' has not troopInfo");
-      return -2;
-    }
-    if (localTroopInfo.dwGroupClassExt != 32L)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "Not school troop. The troopUin '" + paramSessionInfo.jdField_a_of_type_JavaLangString + "', dwGroupClassExt = " + localTroopInfo.dwGroupClassExt);
-      }
-      return -3;
-    }
-    int i = 0;
-    if (localTroopInfo.isTroopOwner(str)) {
-      i = 1;
-    }
-    for (;;)
-    {
-      j = i;
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "detect role. The currentUin '" + str + "', role = " + i);
-      return i;
-      if (localTroopInfo.isTroopAdmin(str)) {
-        i = 2;
-      }
-    }
-  }
-  
-  public bair a(SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
-  {
-    long l1 = System.currentTimeMillis();
-    if ((paramMessageRecord == null) || (TextUtils.isEmpty(paramMessageRecord.msg))) {
-      paramSessionInfo = null;
-    }
-    long l2;
-    String str1;
-    do
-    {
-      return paramSessionInfo;
-      i = a(paramSessionInfo);
-      if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "detectKeyword.detectRole time cost: " + (System.currentTimeMillis() - l1));
-      }
-      if (i <= 0) {
-        return null;
-      }
-      if (((i & 0x2) != 2) && ((i & 0x1) != 1)) {
-        return null;
-      }
-      if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.w(jdField_a_of_type_JavaLangString, 2, "Keywords is empty, the config is error?");
-        }
-        return null;
-      }
-      l2 = paramMessageRecord.uniseq;
-      str1 = l2 + "_" + i;
-      localbair = (bair)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str1);
-      if (localbair == null) {
-        break;
-      }
-      paramSessionInfo = localbair;
-    } while (!QLog.isColorLevel());
-    QLog.i(jdField_a_of_type_JavaLangString, 2, "detectKeyword.useCache time cost: " + (System.currentTimeMillis() - l1));
-    return localbair;
-    paramMessageRecord = paramMessageRecord.msg;
-    bair localbair = new bair();
-    localbair.jdField_a_of_type_Long = l2;
-    localbair.jdField_a_of_type_Int = i;
-    localbair.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    localbair.a(paramMessageRecord);
-    int k = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    int i = 0;
-    while (i < k)
-    {
-      int m = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-      paramSessionInfo = (String[])this.jdField_a_of_type_AndroidUtilSparseArray.get(m);
-      int n = paramSessionInfo.length;
-      int j = 0;
-      while (j < n)
-      {
-        String str2 = paramSessionInfo[j];
-        int i1 = paramMessageRecord.indexOf(str2);
-        if (i1 != -1)
-        {
-          localbair.jdField_b_of_type_Int = m;
-          localbair.jdField_b_of_type_JavaLangString = str2;
-          localbair.c = i1;
-          localbair.d = (str2.length() + i1);
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str1, localbair);
-          return localbair;
-        }
-        j += 1;
-      }
-      i += 1;
-    }
-    localbair.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str1, localbair);
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "detectKeyword time cost: " + (System.currentTimeMillis() - l1) + ", result = " + localbair.jdField_b_of_type_Int);
-    }
-    return localbair;
-  }
-  
-  public void a(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "update config, config=" + paramString);
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(paramString);
-        int k = localJSONArray.length();
-        i = 0;
-        if (i < k)
-        {
-          Object localObject = localJSONArray.optJSONObject(i);
-          int m = ((JSONObject)localObject).getInt("action");
-          if (m >= jdField_a_of_type_ArrayOfJavaLangString.length) {
-            break label308;
+          QLog.d("QQTextBuilder", 2, "start:" + k + ",end:" + m);
+          continue;
+          localStringBuilder.replace(k, m, baiy.c(((bain)localObject2).jdField_a_of_type_Int));
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.e("QQText", 2, "error emo pos. start:" + k + " end: " + m + " length: " + j);
           }
-          ArrayList localArrayList = new ArrayList();
-          localObject = ((JSONObject)localObject).getJSONArray("words");
-          int n = ((JSONArray)localObject).length();
-          int j = 0;
-          if (j < n)
-          {
-            localArrayList.add(((JSONArray)localObject).getString(j));
-            j += 1;
-            continue;
-          }
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(m, localArrayList.toArray(new String[localArrayList.size()]));
         }
       }
-      catch (JSONException localJSONException)
-      {
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "parse config error, config = " + paramString);
-        return;
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-        return;
-      }
-      finally
-      {
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "updateConfig cost time: " + (System.currentTimeMillis() - l));
-      }
-      label308:
-      i += 1;
     }
+    return localStringBuilder.toString();
   }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baiq
  * JD-Core Version:    0.7.0.1
  */

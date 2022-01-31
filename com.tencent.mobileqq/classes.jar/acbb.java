@@ -1,28 +1,56 @@
-import android.os.Handler;
+import android.os.Message;
 import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class acbb
-  implements INetEventHandler
+  extends MqqHandler
 {
-  acbb(acav paramacav) {}
+  public acbb(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (!paramBoolean)
+    switch (paramMessage.what)
     {
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131694620), 1).show();
-      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
-      new Handler().postDelayed(local1, 3000L);
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (AssociatedAccountManageActivity.a(this.a) == null) {
+        AssociatedAccountManageActivity.a(this.a, new bepp(this.a, this.a.getTitleBarHeight()));
+      }
+      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
+      {
+        try
+        {
+          AssociatedAccountManageActivity.a(this.a).show();
+        }
+        catch (Exception localException) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
+          continue;
+          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
+          {
+            AssociatedAccountManageActivity.a(this.a).dismiss();
+            AssociatedAccountManageActivity.a(this.a, null);
+            continue;
+            if (AssociatedAccountManageActivity.a(this.a) != null) {
+              AssociatedAccountManageActivity.a(this.a).cancel();
+            }
+            AssociatedAccountManageActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
 public class auga
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public auga(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  public auga(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131375605: 
-      this.a.b();
-      return;
-    case 2131375600: 
-      this.a.c();
-      return;
-    case 2131375594: 
-      this.a.d();
-      return;
-    }
-    this.a.doOnBackPressed();
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((0.0F - this.jdField_a_of_type_Int) * f1));
+    paramValueAnimator.topMargin = (this.b + Math.round((this.c - this.b) * f1));
+    paramValueAnimator.width = (this.d + Math.round((this.e - this.d) * f1));
+    int i = this.f;
+    paramValueAnimator.height = (Math.round(f1 * (this.g - this.f)) + i);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auga
  * JD-Core Version:    0.7.0.1
  */

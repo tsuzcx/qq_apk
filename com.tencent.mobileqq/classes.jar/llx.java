@@ -1,18 +1,17 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
-
-class llx
-  implements FileFilter
+public abstract interface llx
+  extends llp
 {
-  public boolean accept(File paramFile)
-  {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
-  }
+  public abstract void a(float paramFloat1, float paramFloat2, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void setDrawParticle(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     llx
  * JD-Core Version:    0.7.0.1
  */

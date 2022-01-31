@@ -5,10 +5,10 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import augv;
-import axmv;
-import bazp;
-import bjpn;
+import avxz;
+import azib;
+import bcyj;
+import bmax;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
-import llw;
+import lnz;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,7 +34,7 @@ import org.json.JSONObject;
 public class LightVideoConfigMgr
 {
   private static AtomicReference<LightVideoConfigMgr> jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
-  private bjpn jdField_a_of_type_Bjpn = new bjpn();
+  private bmax jdField_a_of_type_Bmax = new bmax();
   
   public static int a()
   {
@@ -55,7 +55,7 @@ public class LightVideoConfigMgr
         if (paramQQAppInterface != null) {
           if (paramQQAppInterface.compress.get() == 1)
           {
-            paramQQAppInterface = augv.a(paramQQAppInterface.content.get().toByteArray());
+            paramQQAppInterface = avxz.a(paramQQAppInterface.content.get().toByteArray());
             if (paramQQAppInterface == null) {}
           }
         }
@@ -182,7 +182,7 @@ public class LightVideoConfigMgr
         i = 0;
         while (i < j)
         {
-          LightVideoConfigMgr.StrategyItem localStrategyItem = (LightVideoConfigMgr.StrategyItem)bazp.a(paramJSONObject.getJSONObject(i), LightVideoConfigMgr.StrategyItem.class);
+          LightVideoConfigMgr.StrategyItem localStrategyItem = (LightVideoConfigMgr.StrategyItem)bcyj.a(paramJSONObject.getJSONObject(i), LightVideoConfigMgr.StrategyItem.class);
           if (localStrategyItem == null)
           {
             VideoEnvironment.a("LightVideoConfigMgr", "parseConfigData:item=null i=" + i, null);
@@ -326,8 +326,8 @@ public class LightVideoConfigMgr
     try
     {
       paramString = new JSONObject(paramString);
-      localLightVideoConfigMgr.jdField_a_of_type_Bjpn.jdField_a_of_type_Boolean = paramString.optBoolean("showLightEntry", false);
-      localLightVideoConfigMgr.jdField_a_of_type_Bjpn.jdField_a_of_type_Int = paramString.optInt("longClickEntry", 0);
+      localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_a_of_type_Boolean = paramString.optBoolean("showLightEntry", false);
+      localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_a_of_type_Int = paramString.optInt("longClickEntry", 0);
       int m = paramString.optInt("lightDuration", 20);
       i = m;
       if (m > 5) {
@@ -341,7 +341,7 @@ public class LightVideoConfigMgr
       QLog.d("LightVideoConfigMgr", 2, "loadGeneralConfigMgr[JSONException]", paramString);
       return localLightVideoConfigMgr;
     }
-    localLightVideoConfigMgr.jdField_a_of_type_Bjpn.jdField_b_of_type_Int = i;
+    localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_b_of_type_Int = i;
     k = paramString.optInt("lightBitrate", 450);
     int i = k;
     if (k >= 2000) {
@@ -350,13 +350,13 @@ public class LightVideoConfigMgr
     for (;;)
     {
       label119:
-      localLightVideoConfigMgr.jdField_a_of_type_Bjpn.c = i;
-      localLightVideoConfigMgr.jdField_a_of_type_Bjpn.jdField_b_of_type_Boolean = false;
-      if ((localLightVideoConfigMgr.jdField_a_of_type_Bjpn.jdField_a_of_type_Boolean) && (!a(paramString)))
+      localLightVideoConfigMgr.jdField_a_of_type_Bmax.c = i;
+      localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_b_of_type_Boolean = false;
+      if ((localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_a_of_type_Boolean) && (!a(paramString)))
       {
         ArrayList localArrayList = new ArrayList(3);
         if (a(paramString, localArrayList) == 0) {
-          localLightVideoConfigMgr.jdField_a_of_type_Bjpn.jdField_b_of_type_Boolean = a(localArrayList);
+          localLightVideoConfigMgr.jdField_a_of_type_Bmax.jdField_b_of_type_Boolean = a(localArrayList);
         }
       }
       return localLightVideoConfigMgr;
@@ -386,7 +386,7 @@ public class LightVideoConfigMgr
   private static boolean b(LightVideoConfigMgr.StrategyItem paramStrategyItem)
   {
     if (paramStrategyItem.cpuKernel <= 0) {}
-    while (llw.e() <= paramStrategyItem.cpuKernel) {
+    while (lnz.e() <= paramStrategyItem.cpuKernel) {
       return true;
     }
     return false;
@@ -394,32 +394,32 @@ public class LightVideoConfigMgr
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Bjpn.jdField_a_of_type_Boolean) && (!axmv.b());
+    return (this.jdField_a_of_type_Bmax.jdField_a_of_type_Boolean) && (!azib.b());
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Bjpn.jdField_b_of_type_Int;
+    return this.jdField_a_of_type_Bmax.jdField_b_of_type_Int;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Bjpn.jdField_a_of_type_Int == 1;
+    return this.jdField_a_of_type_Bmax.jdField_a_of_type_Int == 1;
   }
   
   public int c()
   {
-    return this.jdField_a_of_type_Bjpn.c;
+    return this.jdField_a_of_type_Bmax.c;
   }
   
   public boolean c()
   {
-    return this.jdField_a_of_type_Bjpn.jdField_b_of_type_Boolean;
+    return this.jdField_a_of_type_Bmax.jdField_b_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightVideoConfigMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,28 @@
-import android.app.Activity;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import android.os.IInterface;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class bjlv
-  implements bkfy
+public abstract interface bjlv
+  extends IInterface
 {
-  public bjlv(StaticStickerProviderView paramStaticStickerProviderView, Activity paramActivity) {}
+  public abstract PluginRecord a(String paramString);
   
-  public void a()
-  {
-    ved.b("StaticStickerProviderView", "用户点击重新拉取地理贴纸");
-    ((bjfl)bjav.a(4)).a(true, this.jdField_a_of_type_AndroidAppActivity);
-  }
+  public abstract void a();
   
-  public void a(String paramString)
-  {
-    ved.b("StaticStickerProviderView", "用户点击下载：" + paramString);
-    vej.b("0X80075DD");
-    if (!((bkby)tcz.a(39)).a(paramString, true)) {
-      ved.d("StaticStickerProviderView", "用户点击下载启动失败");
-    }
-  }
+  public abstract void a(bjka parambjka, int paramInt);
   
-  public void b(String paramString)
-  {
-    ved.b("StaticStickerProviderView", "用户点击下载取消：" + paramString);
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString, bjkd parambjkd, int paramInt);
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean c(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjlv
  * JD-Core Version:    0.7.0.1
  */

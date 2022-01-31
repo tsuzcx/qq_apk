@@ -1,52 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.StructMsgObserver.1;
-import com.tencent.mobileqq.activity.StructMsgObserver.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class acdn
-  implements Observer
+  implements bcvv
 {
-  public void update(Observable paramObservable, Object paramObject)
+  public acdn(BaseChatPie paramBaseChatPie) {}
+  
+  public void onClick(View paramView)
   {
-    if (!acqv.a) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (!(paramObject instanceof MessageForStructing)) {
-              break;
-            }
-            paramObject = (MessageForStructing)paramObject;
-            paramObservable = paramObject.structingMsg;
-          } while ((paramObject.isSend()) || (!acqv.a(paramObservable)));
-          paramObject = paramObservable.mMsgUrl;
-          str1 = paramObservable.currentAccountUin;
-          str2 = paramObservable.uin;
-          ThreadManager.post(new StructMsgObserver.1(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
-          return;
-        } while (!(paramObject instanceof MessageForText));
-        paramObservable = (MessageForText)paramObject;
-      } while ((paramObservable.isSend()) || (TextUtils.isEmpty(paramObservable.msg)));
-      paramObject = acqv.c(paramObservable.msg);
-    } while (TextUtils.isEmpty(paramObject));
-    String str1 = paramObservable.frienduin;
-    String str2 = paramObservable.selfuin;
-    ThreadManager.post(new StructMsgObserver.2(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
+    this.a.onClick(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdn
  * JD-Core Version:    0.7.0.1
  */

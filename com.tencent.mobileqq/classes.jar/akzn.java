@@ -1,20 +1,18 @@
-public abstract interface akzn
+public class akzn
 {
-  public abstract int a();
+  public int a;
+  public int b;
+  public int c;
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(akzo paramakzo);
-  
-  public abstract void b();
+  public akzn(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzn
  * JD-Core Version:    0.7.0.1
  */

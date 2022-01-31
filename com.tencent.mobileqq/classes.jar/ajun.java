@@ -1,23 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
-class ajun
-  extends BroadcastReceiver
+public class ajun
+  extends aecn
 {
-  ajun(ajum paramajum) {}
+  public CheckBox a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
-      this.a.d(8);
-    }
-  }
+  private ajun(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajun
  * JD-Core Version:    0.7.0.1
  */

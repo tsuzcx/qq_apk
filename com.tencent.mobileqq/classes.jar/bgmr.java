@@ -1,57 +1,61 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.AbstractPluginCommunicationChannel;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.proxy.ShareProxy;
+import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 
 public class bgmr
-  extends AbstractPluginCommunicationChannel
+  implements bgmq
 {
-  private QQAppInterface a()
+  protected bgho a;
+  protected ShareProxy a;
+  
+  public bgmr(bgho parambgho)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
+    this.jdField_a_of_type_Bgho = parambgho;
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyShareProxy = ((ShareProxy)ProxyManager.get(ShareProxy.class));
   }
   
-  public String getNickName()
+  public void a()
   {
-    String str = null;
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      str = localQQAppInterface.getCurrentNickname();
+    QMLog.i("CapsuleButton", "on close click");
+    Activity localActivity = this.jdField_a_of_type_Bgho.a();
+    if ((localActivity != null) && (!localActivity.isFinishing()))
+    {
+      if (!localActivity.moveTaskToBack(true))
+      {
+        QMLog.e("CapsuleButton", "moveTaskToBack failed, finish the activity.");
+        localActivity.finish();
+      }
+      this.jdField_a_of_type_Bgho.a(bghw.a(60));
     }
-    return str;
+    if (this.jdField_a_of_type_Bgho.a() != null) {
+      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonCloseClick(new bghp(this.jdField_a_of_type_Bgho));
+    }
   }
   
-  public String getSKey()
+  public void b()
   {
-    String str = null;
-    if (a() != null) {
-      str = "getSKey";
+    QMLog.i("CapsuleButton", "on more click");
+    ShareState localShareState = bgic.a(this.jdField_a_of_type_Bgho);
+    if (localShareState != null)
+    {
+      localShareState.fromShareMenuBtn = 0;
+      localShareState.stagingJsonParams = null;
     }
-    return str;
-  }
-  
-  public String getSid()
-  {
-    throw new RuntimeException("NotSupported!");
-  }
-  
-  public long getUin()
-  {
-    long l = 0L;
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      l = localQQAppInterface.getLongAccountUin();
+    if (!QUAUtil.isQQApp()) {
+      bhih.a(this.jdField_a_of_type_Bgho);
     }
-    return l;
+    if (this.jdField_a_of_type_Bgho.a() != null) {
+      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonMoreClick(new bghp(this.jdField_a_of_type_Bgho));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgmr
  * JD-Core Version:    0.7.0.1
  */

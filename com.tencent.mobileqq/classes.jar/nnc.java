@@ -1,58 +1,25 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment.1.1;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nnc
-  implements View.OnClickListener
+class nnc
+  implements DialogInterface.OnCancelListener
 {
-  public nnc(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
+  nnc(nmx paramnmx, JsResult paramJsResult, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      onClick(paramView);
-      return;
-    case 2131368457: 
-      if (!this.a.jdField_a_of_type_Bcfx.a.a)
-      {
-        paramView = this.a.jdField_a_of_type_Bccj.c.getText().toString();
-        this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onRightBtn(\"" + paramView + "\")");
-        return;
-      }
-      if (PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a) == 1001)
-      {
-        ThreadManager.executeOnSubThread(new PublicAccountBrowser.PublicAccountBrowserFragment.1.1(this));
-        this.a.getActivity().finish();
-        return;
-      }
-      onClick(paramView);
-      return;
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (this.jdField_a_of_type_Nmx.a > 2) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
     }
-    if (!this.a.jdField_a_of_type_Bcfx.a.a)
-    {
-      paramView = this.a.jdField_a_of_type_Bccj.a.getText().toString();
-      if (paramView.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
-      {
-        this.a.f();
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onLeftBtn(\"" + paramView + "\")");
-      return;
-    }
-    onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnc
  * JD-Core Version:    0.7.0.1
  */

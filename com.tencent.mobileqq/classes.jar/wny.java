@@ -1,22 +1,31 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
 
-class wny
-  implements View.OnClickListener
+public class wny
+  implements uni<woa, wob>
 {
-  wny(wns paramwns, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  private WeakReference<wnx> a;
   
-  public void onClick(View paramView)
+  public wny(wnx paramwnx)
   {
-    wni.a(this.jdField_a_of_type_Wns.a, wni.a(this.jdField_a_of_type_Wns.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
-    wni.a(this.jdField_a_of_type_Wns.a).dismiss();
+    this.a = new WeakReference(paramwnx);
+  }
+  
+  public void a(@NonNull woa paramwoa, @Nullable wob paramwob, @NonNull ErrorMessage paramErrorMessage)
+  {
+    wsv.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
+    wnx localwnx = (wnx)this.a.get();
+    if (localwnx == null) {
+      return;
+    }
+    localwnx.a(paramwoa, paramwob, paramErrorMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wny
  * JD-Core Version:    0.7.0.1
  */

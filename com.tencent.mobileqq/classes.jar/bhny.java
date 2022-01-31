@@ -1,45 +1,86 @@
-import android.support.annotation.NonNull;
-import cooperation.qzone.thread.QzoneThreadMonitor;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.os.Build.VERSION;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhny
-  implements Comparable<bhny>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  
-  public bhny(QzoneThreadMonitor paramQzoneThreadMonitor, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, long paramLong, int paramInt2)
+  public static Camera a()
   {
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
+    return a(-1, 5);
   }
   
-  public int a(@NonNull bhny parambhny)
+  public static Camera a(int paramInt)
   {
-    return (int)(this.jdField_a_of_type_Long - parambhny.jdField_a_of_type_Long);
+    return a(paramInt, 5);
   }
   
-  public boolean equals(Object paramObject)
+  @TargetApi(9)
+  public static Camera a(int paramInt1, int paramInt2)
   {
-    return ((paramObject instanceof bhny)) && (this.jdField_a_of_type_JavaLangString.equals(((bhny)paramObject).jdField_a_of_type_JavaLangString));
+    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+      paramInt2 = 1;
+    }
+    int i = 0;
+    Camera localCamera1 = null;
+    Camera localCamera3;
+    for (;;)
+    {
+      localCamera3 = localCamera1;
+      if (i < paramInt2)
+      {
+        Camera localCamera2 = localCamera1;
+        try
+        {
+          if ((Build.VERSION.SDK_INT >= 9) && (paramInt1 != -1)) {
+            localCamera2 = localCamera1;
+          }
+          for (localCamera1 = Camera.open(paramInt1);; localCamera1 = Camera.open())
+          {
+            localCamera2 = localCamera1;
+            localCamera3 = localCamera1;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            localCamera2 = localCamera1;
+            QLog.d("CameraUtil", 2, "openCameraWithRetry successfully.  retry times = " + i + ", max retry times = " + paramInt2);
+            return localCamera1;
+            localCamera2 = localCamera1;
+          }
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("CameraUtil", 2, "openCameraWithRetry. Fail to open camera. error msg: " + localException.getMessage() + ", retry times = " + i + ", max retry times = " + paramInt2);
+          }
+          i += 1;
+          if (i < paramInt2) {
+            try
+            {
+              Thread.currentThread();
+              Thread.sleep(500);
+              Object localObject = localCamera2;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                localInterruptedException.printStackTrace();
+              }
+            }
+          } else {
+            throw new RuntimeException(localInterruptedException);
+          }
+        }
+      }
+    }
+    return localCamera3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhny
  * JD-Core Version:    0.7.0.1
  */

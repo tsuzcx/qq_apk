@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -17,10 +17,10 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import pau;
-import puy;
-import qci;
-import qja;
+import pgd;
+import qbs;
+import qme;
+import qyh;
 import tencent.im.oidb.articlesummary.articlesummary.PartnerAccountInfo;
 
 public class NativeAvatarView
@@ -31,7 +31,7 @@ public class NativeAvatarView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   private ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
-  private puy jdField_a_of_type_Puy = new puy();
+  private qbs jdField_a_of_type_Qbs = new qbs();
   
   public NativeAvatarView(Context paramContext)
   {
@@ -44,37 +44,37 @@ public class NativeAvatarView
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     localLayoutParams.addRule(13);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848473);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848898);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = new ReadInJoyHeadImageView(paramContext);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     localLayoutParams.addRule(13);
-    int i = actj.a(3.5F, paramContext.getResources());
+    int i = aekt.a(3.5F, paramContext.getResources());
     localLayoutParams.setMargins(i, i, i, i);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView, localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(actj.a(12.0F, paramContext.getResources()), actj.a(12.0F, paramContext.getResources()));
+    localLayoutParams = new RelativeLayout.LayoutParams(aekt.a(12.0F, paramContext.getResources()), aekt.a(12.0F, paramContext.getResources()));
     localLayoutParams.addRule(12);
     localLayoutParams.addRule(11);
-    i = actj.a(3.0F, paramContext.getResources());
+    i = aekt.a(3.0F, paramContext.getResources());
     localLayoutParams.setMargins(0, 0, i, i);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842325);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842494);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localLayoutParams);
   }
   
-  public void a(pau parampau)
+  public void a(pgd parampgd)
   {
-    if (parampau == null) {}
+    if (parampgd == null) {}
     do
     {
       return;
-      parampau = parampau.a();
-    } while ((parampau == null) || (parampau.mSocialFeedInfo == null) || (parampau.mSocialFeedInfo.a == null));
-    if (parampau.mSocialFeedInfo.a.a())
+      parampgd = parampgd.a();
+    } while ((parampgd == null) || (parampgd.mSocialFeedInfo == null) || (parampgd.mSocialFeedInfo.a == null));
+    if (parampgd.mSocialFeedInfo.a.a())
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;
@@ -84,17 +84,17 @@ public class NativeAvatarView
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Puy.a == null) {
+    if (this.jdField_a_of_type_Qbs.a == null) {
       return;
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(this.jdField_a_of_type_Long, paramBoolean);
-    Object localObject = this.jdField_a_of_type_Puy.a.a();
+    Object localObject = this.jdField_a_of_type_Qbs.a.a();
     if (localObject == null)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842325);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842494);
     if (((ArticleInfo)localObject).isAccountShown) {
       if (((ArticleInfo)localObject).mPartnerAccountInfo != null)
       {
@@ -110,8 +110,8 @@ public class NativeAvatarView
       try
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(new URL((String)localObject));
-        a(this.jdField_a_of_type_Puy.a);
-        qja.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
+        a(this.jdField_a_of_type_Qbs.a);
+        qyh.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
         return;
         localObject = "";
       }
@@ -173,14 +173,14 @@ public class NativeAvatarView
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
   }
   
-  public void setModel(pau parampau)
+  public void setModel(pgd parampgd)
   {
-    setModel(parampau, true);
+    setModel(parampgd, true);
   }
   
-  public void setModel(pau parampau, boolean paramBoolean)
+  public void setModel(pgd parampgd, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Puy.a(parampau);
+    this.jdField_a_of_type_Qbs.a(parampgd);
     a(paramBoolean);
   }
   
@@ -188,12 +188,12 @@ public class NativeAvatarView
   {
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(paramLong, true);
-    qja.a(paramLong, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
+    qyh.a(paramLong, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView
  * JD-Core Version:    0.7.0.1
  */

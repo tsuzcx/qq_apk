@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.qphone.base.util.QLog;
-import osj;
+import oxb;
 
 class ReadinjoyJumpActivity$1
   implements Runnable
@@ -11,13 +11,13 @@ class ReadinjoyJumpActivity$1
   public void run()
   {
     QLog.d("ReadinjoyJumpActivity", 1, "timeout ! show error page !");
-    osj.a().b(ReadinjoyJumpActivity.a(this.this$0));
+    oxb.a().b(ReadinjoyJumpActivity.a(this.this$0));
     ReadinjoyJumpActivity.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity.1
  * JD-Core Version:    0.7.0.1
  */

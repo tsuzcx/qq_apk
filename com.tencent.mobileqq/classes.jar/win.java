@@ -1,99 +1,85 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StShare;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.Entry;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import mqq.app.AppRuntime;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class win
+  extends uxw
+  implements uni<vbo, vde>
 {
-  private static volatile CertifiedAccountMeta.StUser jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
-  private static CertifiedAccountRead.StGetMainPageRsp jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
+  public String a;
+  private String b;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
   
-  public static CertifiedAccountMeta.StUser a()
+  private void d()
   {
-    try
-    {
-      if (jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null)
-      {
-        COMM.StCommonExt localStCommonExt = new COMM.StCommonExt();
-        COMM.Entry localEntry = new COMM.Entry();
-        localEntry.key.set("user_info");
-        localEntry.value.set("1");
-        localStCommonExt.mapInfo.add(localEntry);
-        if (VSNetworkHelper.a() != null) {
-          VSNetworkHelper.a().a(new SubscribePersonalDetailRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount(), localStCommonExt), new wio());
-        }
-      }
-      return jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    vbo localvbo = new vbo();
+    localvbo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localvbo.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localvbo.jdField_b_of_type_Long = 0L;
+    localvbo.c = 10;
+    localvbo.d = 10;
+    ung.a().a(localvbo, this);
+    wsv.a("Q.qqstory.memories:ShareGroupPageLoader", "send share group list request. request=%s.", localvbo.toString());
   }
   
-  public static CertifiedAccountRead.StGetMainPageRsp a()
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
-    return jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = null;
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp = null;
+    super.a(paramTencentLocation, paramInt);
+    if (this.jdField_c_of_type_Boolean) {
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.jdField_b_of_type_JavaLangString = "";
+    d();
   }
   
-  public static void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void a(@NonNull vbo paramvbo, @Nullable vde paramvde, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp == null) {
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp = new CertifiedAccountRead.StGetMainPageRsp();
-    }
-    if (jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null) {
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = new CertifiedAccountMeta.StUser();
-    }
-    CertifiedAccountMeta.StUser localStUser = paramStGetMainPageRsp.user;
-    if (localStUser == null) {}
-    do
+    wsv.a("Q.qqstory.memories:ShareGroupPageLoader", "get share group list return:%s", paramErrorMessage.toString());
+    if (this.jdField_c_of_type_Boolean)
     {
+      wsv.c("Q.qqstory.memories:ShareGroupPageLoader", "don't nothing after terminate");
       return;
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.feedCount.set(paramStGetMainPageRsp.feedCount.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.followCount.set(paramStGetMainPageRsp.followCount.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.fansCount.set(paramStGetMainPageRsp.fansCount.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.set(paramStGetMainPageRsp.user.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.share.set(paramStGetMainPageRsp.share);
-    } while (!wit.a(localStUser.attr.get()));
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.set(localStUser.id.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.set(localStUser.nick.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.icon.set(localStUser.icon.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.followState.set(localStUser.followState.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.attr.set(localStUser.attr.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.set(localStUser.youZhan.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.type.set(localStUser.type.get());
+    }
+    wio localwio = new wio(paramErrorMessage, this.jdField_c_of_type_JavaLangString);
+    localwio.jdField_b_of_type_Boolean = false;
+    if ((paramvde == null) || (paramErrorMessage.isFail()))
+    {
+      uht.a().dispatch(localwio);
+      return;
+    }
+    this.jdField_b_of_type_JavaLangString = paramvde.jdField_a_of_type_JavaLangString;
+    localwio.jdField_a_of_type_JavaUtilList = paramvde.jdField_a_of_type_JavaUtilArrayList;
+    localwio.jdField_a_of_type_Int = paramvde.b;
+    localwio.jdField_a_of_type_Boolean = paramvde.jdField_a_of_type_Boolean;
+    localwio.jdField_c_of_type_Boolean = TextUtils.isEmpty(paramvbo.jdField_a_of_type_JavaLangString);
+    paramvde = paramvde.jdField_a_of_type_JavaUtilArrayList;
+    ((ure)urr.a(19)).b(paramvde, paramvbo.jdField_b_of_type_JavaLangString, localwio.jdField_c_of_type_Boolean);
+    try
+    {
+      this.jdField_b_of_type_Boolean = true;
+      uht.a().dispatch(localwio);
+      wsv.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from network: %s", localwio);
+      return;
+    }
+    finally {}
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     win
  * JD-Core Version:    0.7.0.1
  */

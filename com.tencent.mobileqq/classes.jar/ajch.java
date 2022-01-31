@@ -1,65 +1,37 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
 class ajch
-  implements EIPCResultCallback
+  implements View.OnClickListener
 {
-  ajch(ajcf paramajcf) {}
+  ajch(ajbm paramajbm, long paramLong, String paramString) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    long l1 = 0L;
-    if ((paramEIPCResult == null) || (paramEIPCResult.data == null)) {}
-    Activity localActivity;
-    do
+    if (ajbm.a(this.jdField_a_of_type_Ajbm) != null)
     {
-      int i;
-      CmGameInitParams localCmGameInitParams;
-      do
-      {
-        return;
-        i = paramEIPCResult.data.getInt("result");
-        localActivity = this.a.a();
-        if (i != 0) {
-          break;
-        }
-        long l2 = paramEIPCResult.data.getLong("ResultCode");
-        localCmGameInitParams = (CmGameInitParams)paramEIPCResult.data.getSerializable("CmGameInitParams");
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.CmGameLauncher", 2, new Object[] { "queryCheckGameFromMainProcess onCallback cmGameInitParams", localCmGameInitParams });
-        }
-        if ((l2 != 0L) || (localCmGameInitParams == null)) {
-          break;
-        }
-      } while (!(localActivity instanceof ApolloGameActivity));
-      if (ajcf.a(this.a) == null) {}
-      for (;;)
-      {
-        paramEIPCResult = (CmGameStartChecker.StartCheckParam)paramEIPCResult.data.getSerializable("StartCheckParam");
-        this.a.b(paramEIPCResult);
-        ajac.a(new Object[] { "[checkFinish], loading from main process but waiting for tool, before cost:", Long.valueOf(l1) });
-        ((ApolloGameActivity)localActivity).a(paramEIPCResult);
-        ((ApolloGameActivity)localActivity).a(localCmGameInitParams);
-        return;
-        l1 = System.currentTimeMillis() - ajcf.a(this.a).mCreateTs;
-      }
-      QLog.e("cmgame_process.CmGameLauncher", 1, new Object[] { "queryCheckGameFromMainProcess onCallback result:", Integer.valueOf(i) });
-      if ((localActivity instanceof ApolloGameActivity)) {
-        ((ApolloGameActivity)localActivity).i();
-      }
-    } while (localActivity == null);
-    localActivity.finish();
+      paramView = ajbm.a(this.jdField_a_of_type_Ajbm).obtainMessage(1134028);
+      ajbm.a(this.jdField_a_of_type_Ajbm).sendMessage(paramView);
+    }
+    paramView = new Intent();
+    paramView.putExtra("bookid", this.jdField_a_of_type_Long);
+    paramView.putExtra("chapterid", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("is_from_conversation", true);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramView);
+    localIntent.putExtra("readtype", "15");
+    localIntent.setClassName(ajbm.a(this.jdField_a_of_type_Ajbm), "cooperation.qqreader.QRBridgeActivity");
+    localIntent.addFlags(268435456);
+    ajbm.a(this.jdField_a_of_type_Ajbm).startActivity(localIntent);
+    azmj.a(ajbm.a(this.jdField_a_of_type_Ajbm).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajch
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.qidian.data;
 
-import auko;
-import aumc;
-import bduf;
-import bdvu;
+import awbv;
+import awdj;
+import bfua;
+import bfvp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class QidianProfileUiInfo
-  extends auko
+  extends awbv
 {
   public static final int CONFIG_INFO_EVENT_CALL_MOBILE = 2;
   public static final int CONFIG_INFO_EVENT_CALL_TEL = 1;
@@ -33,8 +33,8 @@ public class QidianProfileUiInfo
   public static final int CONFIG_INFO_TYPE_TEXT = 1;
   private static final String TAG = "QidianProfileUiInfo";
   public byte[] infoByte;
-  public List<bdvu> mConfigGroupInfos;
-  @aumc
+  public List<bfvp> mConfigGroupInfos;
+  @awdj
   public String uin = "";
   
   private void initList()
@@ -42,10 +42,10 @@ public class QidianProfileUiInfo
     Object localObject3;
     try
     {
-      Object localObject1 = (bduf)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(165);
+      Object localObject1 = (bfua)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(165);
       if (this.infoByte != null)
       {
-        if (((bduf)localObject1).c(this.uin, true)) {
+        if (((bfua)localObject1).c(this.uin, true)) {
           break label164;
         }
         localObject1 = new mobileqq_qidian.GetUserDetailInfoRspBody();
@@ -60,7 +60,7 @@ public class QidianProfileUiInfo
             localObject1 = ((List)localObject3).iterator();
             while (((Iterator)localObject1).hasNext())
             {
-              localObject3 = new bdvu((mobileqq_qidian.ConfigGroupInfo)((Iterator)localObject1).next());
+              localObject3 = new bfvp((mobileqq_qidian.ConfigGroupInfo)((Iterator)localObject1).next());
               this.mConfigGroupInfos.add(localObject3);
             }
           }
@@ -87,7 +87,7 @@ public class QidianProfileUiInfo
           localObject2 = ((List)localObject3).iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            localObject3 = new bdvu((mobileqq_qidian.ConfigGroupInfo)((Iterator)localObject2).next());
+            localObject3 = new bfvp((mobileqq_qidian.ConfigGroupInfo)((Iterator)localObject2).next());
             this.mConfigGroupInfos.add(localObject3);
           }
         }
@@ -123,7 +123,7 @@ public class QidianProfileUiInfo
     initList();
   }
   
-  public List<bdvu> getConfigGroupInfos()
+  public List<bfvp> getConfigGroupInfos()
   {
     if (this.mConfigGroupInfos == null)
     {
@@ -142,7 +142,7 @@ public class QidianProfileUiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.data.QidianProfileUiInfo
  * JD-Core Version:    0.7.0.1
  */

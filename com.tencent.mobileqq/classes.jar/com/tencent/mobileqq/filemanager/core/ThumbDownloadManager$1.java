@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apcw;
+import aqvu;
 
 public class ThumbDownloadManager$1
   implements Runnable
 {
-  public ThumbDownloadManager$1(apcw paramapcw, long paramLong, String paramString1, String paramString2) {}
+  public ThumbDownloadManager$1(aqvu paramaqvu, long paramLong, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (apcw.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
-      apcw.a(this.this$0);
+    if (aqvu.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
+      aqvu.a(this.this$0);
     }
   }
 }

@@ -1,19 +1,19 @@
 package dov.com.qq.im.capture.predownload;
 
-import auko;
+import awbv;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="resId, resType")
 public class QIMResClickHistory
-  extends auko
+  extends awbv
 {
   public String resId;
   public String resType;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.predownload.QIMResClickHistory
  * JD-Core Version:    0.7.0.1
  */

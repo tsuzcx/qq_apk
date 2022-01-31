@@ -1,64 +1,147 @@
-import android.util.Log;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
-public class asaz
-  extends ScheduledThreadPoolExecutor
+public final class asaz
+  extends beaa
+  implements TouchWebView.OnScrollChangedListener
 {
-  public asaz(TimerTaskManager paramTimerTaskManager, int paramInt)
+  public int a;
+  public boolean a;
+  public boolean b;
+  boolean c = false;
+  
+  public asaz(CommonTabFragment paramCommonTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
-    super(paramInt);
+    super(paramContext, paramActivity, paramAppInterface);
+    super.preInitPluginEngine();
   }
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public void a()
   {
-    super.afterExecute(paramRunnable, paramThrowable);
-    Throwable localThrowable1 = paramThrowable;
-    if (paramThrowable == null)
-    {
-      localThrowable1 = paramThrowable;
-      if (!(paramRunnable instanceof Future)) {}
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {}
+    for (long l = System.currentTimeMillis();; l = 0L)
     {
-      paramRunnable = (Future)paramRunnable;
-      localThrowable1 = paramThrowable;
-      if (paramRunnable.isDone())
+      this.jdField_a_of_type_Boolean = true;
+      myl.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) {
+        this.mUrl = this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.tabUrl;
+      }
+      if (!TextUtils.isEmpty(this.mUrl)) {
+        if (!this.mUrl.contains("?")) {
+          break label351;
+        }
+      }
+      label351:
+      for (this.mUrl += "&";; this.mUrl += "?")
       {
-        paramRunnable.get();
-        localThrowable1 = paramThrowable;
+        this.mUrl += this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_JavaLangString;
+        this.mWebview = new TouchWebView(this.mContext);
+        buildBaseWebView(this.mInterface);
+        this.c = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
+        if (this.c) {
+          this.mWebview.setMask(true);
+        }
+        this.mWebview.setBackgroundColor(-1);
+        this.mWebview.setOnScrollChangedListener(this);
+        setmTimeBeforeLoadUrl(System.currentTimeMillis());
+        if (QLog.isDevelopLevel()) {
+          ausq.a("WebSpeedTrace", "mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.mTimeBeforeLoadUrl) });
+        }
+        this.mWebview.loadUrl(this.mUrl);
+        if (QLog.isColorLevel()) {
+          ausq.a("AbsWebView", new Object[] { "HotChatWebView.init", this.mUrl });
+        }
+        if ((this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k != 0L)) {
+          break;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k = (System.currentTimeMillis() - l);
+        if (!QLog.isDevelopLevel()) {
+          break;
+        }
+        ausq.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k) });
+        return;
       }
     }
-    catch (CancellationException localCancellationException)
-    {
-      break label46;
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    super.doOnCreate(paramIntent);
+  }
+  
+  public void b()
+  {
+    super.doOnResume();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      paramArrayList.add(new behn());
     }
-    catch (ExecutionException paramRunnable)
+  }
+  
+  public void c()
+  {
+    super.doOnPause();
+  }
+  
+  public void d()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Asdl != null)
     {
-      for (;;)
-      {
-        localThrowable2 = paramRunnable.getCause();
-      }
+      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Asdl.b(false).a(true);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Asdl.a();
     }
-    catch (InterruptedException paramRunnable)
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    this.b = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Asdl != null)
     {
-      for (;;)
-      {
-        label46:
-        Throwable localThrowable2 = paramThrowable;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Asdl.b(true).a(true);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Asdl.a();
     }
-    if (localThrowable1 != null) {
-      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
+    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b.getVisibility() != 8)) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b.setVisibility(8);
+    }
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    if (this.mWebview != null) {
+      this.jdField_a_of_type_Int = this.mWebview.getWebScrollY();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asaz
  * JD-Core Version:    0.7.0.1
  */

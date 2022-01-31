@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.Observable;
 
-final class bgpx
-  implements DialogInterface.OnClickListener
+public class bgpx
+  extends Observable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Object paramObject)
   {
-    paramDialogInterface.dismiss();
+    if (paramObject == null) {
+      return;
+    }
+    QMLog.d("minisdk-start_AppStateManager", "notifyChange msg=" + paramObject);
+    setChanged();
+    if (paramObject != null)
+    {
+      notifyObservers(paramObject);
+      return;
+    }
+    notifyObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgpx
  * JD-Core Version:    0.7.0.1
  */

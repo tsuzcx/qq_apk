@@ -1,96 +1,30 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.vfs.CancellationSignalCompat;
-import com.tencent.mm.vfs.StatisticsCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.app.AppRuntime;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
 public class bbvi
-  implements StatisticsCallback
+  implements QQPermissionCallback
 {
-  private static CopyOnWriteArrayList<Map<String, Object>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private static boolean jdField_a_of_type_Boolean;
-  private static CopyOnWriteArrayList<Throwable> b = new CopyOnWriteArrayList();
+  public bbvi(PublishHomeWorkFragment paramPublishHomeWorkFragment, int paramInt) {}
   
-  private void a(Throwable paramThrowable)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    axpu.a(paramThrowable);
+    bdcd.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity());
   }
   
-  protected void a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    try
-    {
-      jdField_a_of_type_Boolean = true;
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      Iterator localIterator2 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator2.hasNext())
-      {
-        Map localMap = (Map)localIterator2.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("VFSRegisterProxy", 2, "statisticsReportCache params -> " + localMap);
-        }
-        axrn.a(BaseApplicationImpl.getContext()).a(str, "vfs_statistics_tag", true, 0L, 0L, (HashMap)localMap, null);
-      }
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    }
-    catch (Exception localException)
-    {
-      QLog.d("VFSRegisterProxy", 1, "statisticsReportCache report error!", localException);
-      return;
-    }
-    Iterator localIterator1 = b.iterator();
-    while (localIterator1.hasNext()) {
-      a((Throwable)localIterator1.next());
-    }
-    b.clear();
-  }
-  
-  public void deleteFiles(CancellationSignalCompat paramCancellationSignalCompat) {}
-  
-  public void reportError(Throwable paramThrowable)
-  {
-    if (jdField_a_of_type_Boolean)
-    {
-      a(paramThrowable);
-      return;
-    }
-    b.add(paramThrowable);
-  }
-  
-  public void statistics(String paramString, int paramInt, Map<String, Object> paramMap)
-  {
-    if (paramMap != null) {
-      try
-      {
-        paramMap.put("id", paramString);
-        paramMap.put("phase", String.valueOf(paramInt));
-        if (jdField_a_of_type_Boolean)
-        {
-          paramString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-          axrn.a(BaseApplicationImpl.getContext()).a(paramString, "vfs_statistics_tag", true, 0L, 0L, (HashMap)paramMap, null);
-        }
-        while (QLog.isColorLevel())
-        {
-          QLog.d("VFSRegisterProxy", 2, "report params -> " + paramMap + ", mCanAccurReport = " + jdField_a_of_type_Boolean);
-          return;
-          jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramMap);
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.d("VFSRegisterProxy", 1, "vfs report error!", paramString);
-      }
-    }
+    paramArrayOfString = TroopHWJsPlugin.a(10 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a.getCurrentAccountUin());
+    paramArrayOfString.putExtra("HomeWorkConstants:homework_request_code_key", 259);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.startActivityForResult(paramArrayOfString, 259);
+    bhoc.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbvi
  * JD-Core Version:    0.7.0.1
  */

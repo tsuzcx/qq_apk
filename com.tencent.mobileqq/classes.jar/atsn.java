@@ -1,16 +1,19 @@
+import java.util.Comparator;
+
 class atsn
-  implements bfpj
+  implements Comparator<atse>
 {
-  atsn(atsc paramatsc) {}
-  
-  public void onDismiss()
+  public int a(atse paramatse1, atse paramatse2)
   {
-    atsc.a(this.a, this.a.b, false);
+    if (paramatse1.a >= paramatse2.a) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsn
  * JD-Core Version:    0.7.0.1
  */

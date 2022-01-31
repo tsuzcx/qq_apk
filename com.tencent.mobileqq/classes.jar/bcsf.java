@@ -1,49 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
-public final class bcsf
-  implements ValueAnimator.AnimatorUpdateListener
+class bcsf
+  implements alzv
 {
-  public float a;
-  private final TabDragAnimationView a;
-  public boolean a;
-  public boolean b = false;
+  public bcsg a;
   
-  public bcsf(TabDragAnimationView paramTabDragAnimationView)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
-  }
+  private bcsf(bcsd parambcsd) {}
   
-  public void a()
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Float = 1.0F;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f - this.jdField_a_of_type_Float > 0.0F) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (f > 0.8F)) {
-      this.b = false;
-    }
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-    if (QLog.isColorLevel()) {
-      QLog.d(TabDragAnimationView.class.getSimpleName(), 2, "do mScale animation, percent=" + this.jdField_a_of_type_Float + ",reversed=" + this.jdField_a_of_type_Boolean + ",doAnim=" + this.b);
+    if ((this.jdField_a_of_type_Bcsg != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_Bcsg.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
+    {
+      paramTroopMemberInfo = new bahs(((TroopManager)this.jdField_a_of_type_Bcsd.a.getManager(52)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
+      this.jdField_a_of_type_Bcsg.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
+      if (AppSetting.c) {
+        bcsd.a(this.jdField_a_of_type_Bcsd, this.jdField_a_of_type_Bcsg);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcsf
  * JD-Core Version:    0.7.0.1
  */

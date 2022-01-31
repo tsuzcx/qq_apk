@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class PublicAccountMenuEntity
-  extends auko
+  extends awbv
 {
   public byte[] data;
   public long savedDateTime;
   public int seqno;
-  @aumc
+  @awdj
   public String uin;
   
   public PublicAccountMenuEntity() {}
@@ -44,7 +44,7 @@ public class PublicAccountMenuEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PublicAccountMenuEntity
  * JD-Core Version:    0.7.0.1
  */

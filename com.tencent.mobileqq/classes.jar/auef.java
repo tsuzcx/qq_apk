@@ -1,95 +1,37 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class auef
-  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, auek
+  implements auby
 {
-  private GestureController a;
+  public auef(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public auef(GestureController paramGestureController)
+  public void a(List<RecentBaseData> paramList)
   {
-    this.a = paramGestureController;
-  }
-  
-  public void a(auej paramauej)
-  {
-    this.a.a(paramauej);
-  }
-  
-  public boolean a(auej paramauej)
-  {
-    return this.a.b(paramauej);
-  }
-  
-  public boolean b(auej paramauej)
-  {
-    return this.a.a(paramauej);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return this.a.e(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return this.a.b(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    this.a.b(paramMotionEvent);
-  }
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return this.a.b(paramScaleGestureDetector);
-  }
-  
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return this.a.a(paramScaleGestureDetector);
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    this.a.a(paramScaleGestureDetector);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return this.a.d(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return this.a.c(paramMotionEvent);
+    MsgBackupSelectionFragment.a(this.a, true);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      this.a.a.clear();
+      this.a.a.addAll(paramList);
+    }
+    for (;;)
+    {
+      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
+      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
+      return;
+      if (MsgBackupSelectionFragment.a(this.a) == 0) {
+        auff.a("0X800A232");
+      } else if (aucf.c) {
+        auff.a("0X800A257");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auef
  * JD-Core Version:    0.7.0.1
  */

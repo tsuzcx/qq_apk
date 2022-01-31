@@ -1,18 +1,35 @@
-public abstract interface aosc
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public class aosc
 {
-  public abstract void d();
+  public static int a = 1;
+  public static int b = 2;
+  public int c = b;
   
-  public abstract void e();
+  private static aosc b(String paramString)
+  {
+    aosc localaosc = new aosc();
+    try
+    {
+      localaosc.c = new JSONObject(paramString).optInt("action", b);
+      return localaosc;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
+    }
+    return localaosc;
+  }
   
-  public abstract void n();
-  
-  public abstract void p();
-  
-  public abstract void q();
+  public boolean a()
+  {
+    return this.c == a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aosc
  * JD-Core Version:    0.7.0.1
  */

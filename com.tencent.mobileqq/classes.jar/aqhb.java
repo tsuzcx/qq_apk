@@ -1,27 +1,30 @@
-import android.app.Activity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-class aqhb
-  implements aaqa
+public class aqhb
+  extends bada
 {
-  aqhb(aqha paramaqha) {}
+  public aqhb(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void a()
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    super.a(paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
   }
   
-  public void b() {}
-  
-  public void c()
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    super.a(paramString, paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhb
  * JD-Core Version:    0.7.0.1
  */

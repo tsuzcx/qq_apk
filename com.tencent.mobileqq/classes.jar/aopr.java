@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.content.Context;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class aopr
-  implements View.OnClickListener
+class aopr
+  implements aooy
 {
-  public aopr(UniformDownloadActivity paramUniformDownloadActivity) {}
+  aopr(aopq paramaopq) {}
   
-  public void onClick(View paramView)
+  public void a(Context paramContext)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, aopq.a(this.a), -1L, null, false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class biqd
-  implements DialogInterface.OnClickListener
+final class biqd
+  implements View.OnClickListener
 {
-  biqd(bipy parambipy) {}
+  biqd(Dialog paramDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biqd
  * JD-Core Version:    0.7.0.1
  */

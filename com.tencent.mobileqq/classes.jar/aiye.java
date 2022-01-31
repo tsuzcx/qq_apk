@@ -1,584 +1,186 @@
-import android.app.Activity;
-import android.net.Uri;
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.Window;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawClassifier.3;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.math.BigInteger;
-import java.net.URLDecoder;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class aiye
 {
-  public static int a;
-  private static boolean jdField_a_of_type_Boolean;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "http", "https", "GameRes", "GameSandBox" };
-  private static int b;
-  private static int c;
+  private static volatile aiye jdField_a_of_type_Aiye;
+  public float a;
+  private int jdField_a_of_type_Int = 5;
+  private aizc jdField_a_of_type_Aizc;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b = "https://i.gtimg.cn/channel/imglib/201907/upload_e119bb8768152fcb2476c5c41b896cf2.zip";
   
-  public static int a(int paramInt)
+  private aiye()
   {
-    Object localObject = ajac.a(paramInt);
-    if (localObject != null)
+    this.jdField_a_of_type_Float = 0.2F;
+  }
+  
+  public static aiye a()
+  {
+    if (jdField_a_of_type_Aiye == null) {}
+    try
     {
-      localObject = ((ajcf)localObject).a();
-      if (localObject != null) {
-        return ((CmGameInitParams)localObject).mSrc;
+      if (jdField_a_of_type_Aiye == null) {
+        jdField_a_of_type_Aiye = new aiye();
+      }
+      return jdField_a_of_type_Aiye;
+    }
+    finally {}
+  }
+  
+  private void a(String paramString, aiyh paramaiyh, boolean paramBoolean)
+  {
+    DownloadParam localDownloadParam = new DownloadParam();
+    localDownloadParam.filePos = 1;
+    localDownloadParam.url = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.i("DrawClassifier", 2, "init modelUrl=" + paramString + ",isRetryLastAfterFail=" + paramBoolean);
+    }
+    PreloadManager.a().a(localDownloadParam, new aiyg(this, paramBoolean, paramaiyh));
+  }
+  
+  private void b(aevb paramaevb, aiyi paramaiyi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawClassifier", 2, "recognize called");
+    }
+    if ((!this.jdField_a_of_type_Boolean) || (paramaevb == null))
+    {
+      if (paramaiyi != null) {
+        paramaiyi.a(false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("DrawClassifier", 2, "recognize has not init");
       }
     }
-    return 0;
+    ThreadManager.excute(new DrawClassifier.3(this, paramaiyi, paramaevb), 16, null, true);
   }
   
-  public static int a(String paramString)
+  public String a()
   {
-    int i = 0;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      i = new JSONObject(paramString).optInt("xyRootSrc");
-      return i;
+    if (this.jdField_a_of_type_Aizc == null) {
+      return null;
     }
-    catch (Throwable paramString)
-    {
-      QLog.e("ApolloGameTool", 1, paramString, new Object[0]);
-    }
-    return 0;
-  }
-  
-  public static String a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    try
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("page_id=").append(paramInt1).append("&").append("module_id=").append(paramInt2).append("&").append("action_type=").append(paramInt3).append("&").append("action_id=").append(paramInt4).append("&").append("item_id=").append(paramInt5).append("&").append("action_source=").append(paramInt6).append("&").append("platform=").append("android").append("&").append("ext3=").append(System.currentTimeMillis() / 1000L);
-      localObject = ((StringBuilder)localObject).toString();
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameTool", 1, localThrowable, new Object[0]);
-    }
-    return "";
+    return this.jdField_a_of_type_Aizc.a();
   }
   
   /* Error */
-  public static String a(android.graphics.Bitmap paramBitmap, int paramInt)
+  public void a()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_2
-    //   5: aload_0
-    //   6: ifnull +128 -> 134
-    //   9: new 125	java/io/ByteArrayOutputStream
-    //   12: dup
-    //   13: sipush 1024
-    //   16: invokespecial 128	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   19: astore_3
-    //   20: aload_3
-    //   21: astore_2
-    //   22: aload_0
-    //   23: getstatic 134	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   26: iload_1
-    //   27: aload_3
-    //   28: invokevirtual 140	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   31: pop
-    //   32: aload_3
-    //   33: astore_2
-    //   34: aload_3
-    //   35: invokevirtual 144	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   38: iconst_2
-    //   39: invokestatic 150	bbco:encodeToString	([BI)Ljava/lang/String;
-    //   42: astore_0
-    //   43: aload_0
-    //   44: astore_2
-    //   45: aload_3
-    //   46: ifnull +13 -> 59
-    //   49: aload_3
-    //   50: invokevirtual 153	java/io/ByteArrayOutputStream:flush	()V
-    //   53: aload_3
-    //   54: invokevirtual 156	java/io/ByteArrayOutputStream:close	()V
-    //   57: aload_0
-    //   58: astore_2
-    //   59: aload_2
-    //   60: areturn
-    //   61: astore_2
-    //   62: aload_2
-    //   63: invokevirtual 159	java/io/IOException:printStackTrace	()V
-    //   66: aload_0
-    //   67: areturn
-    //   68: astore_0
-    //   69: aconst_null
-    //   70: astore_3
-    //   71: aload_3
-    //   72: astore_2
-    //   73: aload_0
-    //   74: invokevirtual 160	java/lang/Exception:printStackTrace	()V
-    //   77: aload 4
-    //   79: astore_2
-    //   80: aload_3
-    //   81: ifnull -22 -> 59
-    //   84: aload_3
-    //   85: invokevirtual 153	java/io/ByteArrayOutputStream:flush	()V
-    //   88: aload_3
-    //   89: invokevirtual 156	java/io/ByteArrayOutputStream:close	()V
-    //   92: aconst_null
-    //   93: areturn
-    //   94: astore_0
-    //   95: aload_0
-    //   96: invokevirtual 159	java/io/IOException:printStackTrace	()V
-    //   99: aconst_null
-    //   100: areturn
-    //   101: astore_0
-    //   102: aconst_null
-    //   103: astore_2
-    //   104: aload_2
-    //   105: ifnull +11 -> 116
-    //   108: aload_2
-    //   109: invokevirtual 153	java/io/ByteArrayOutputStream:flush	()V
-    //   112: aload_2
-    //   113: invokevirtual 156	java/io/ByteArrayOutputStream:close	()V
-    //   116: aload_0
-    //   117: athrow
-    //   118: astore_2
-    //   119: aload_2
-    //   120: invokevirtual 159	java/io/IOException:printStackTrace	()V
-    //   123: goto -7 -> 116
-    //   126: astore_0
-    //   127: goto -23 -> 104
-    //   130: astore_0
-    //   131: goto -60 -> 71
-    //   134: aconst_null
-    //   135: astore_3
-    //   136: aload_2
-    //   137: astore_0
-    //   138: goto -95 -> 43
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 55	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: ifeq +31 -> 36
+    //   8: ldc 57
+    //   10: iconst_2
+    //   11: new 59	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 130
+    //   20: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: aload_0
+    //   24: getfield 97	aiye:jdField_a_of_type_Boolean	Z
+    //   27: invokevirtual 71	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: aload_0
+    //   37: getfield 97	aiye:jdField_a_of_type_Boolean	Z
+    //   40: istore_1
+    //   41: iload_1
+    //   42: ifne +6 -> 48
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: return
+    //   48: aload_0
+    //   49: iconst_0
+    //   50: putfield 97	aiye:jdField_a_of_type_Boolean	Z
+    //   53: aload_0
+    //   54: getfield 34	aiye:jdField_a_of_type_Aizc	Laizc;
+    //   57: ifnull -12 -> 45
+    //   60: aload_0
+    //   61: getfield 34	aiye:jdField_a_of_type_Aizc	Laizc;
+    //   64: invokevirtual 132	aizc:a	()V
+    //   67: goto -22 -> 45
+    //   70: astore_2
+    //   71: aload_0
+    //   72: monitorexit
+    //   73: aload_2
+    //   74: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	141	0	paramBitmap	android.graphics.Bitmap
-    //   0	141	1	paramInt	int
-    //   4	56	2	localObject1	Object
-    //   61	2	2	localIOException1	java.io.IOException
-    //   72	41	2	localObject2	Object
-    //   118	19	2	localIOException2	java.io.IOException
-    //   19	117	3	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   1	77	4	localObject3	Object
+    //   0	75	0	this	aiye
+    //   40	2	1	bool	boolean
+    //   70	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   49	57	61	java/io/IOException
-    //   9	20	68	java/lang/Exception
-    //   84	92	94	java/io/IOException
-    //   9	20	101	finally
-    //   108	116	118	java/io/IOException
-    //   22	32	126	finally
-    //   34	43	126	finally
-    //   73	77	126	finally
-    //   22	32	130	java/lang/Exception
-    //   34	43	130	java/lang/Exception
+    //   2	36	70	finally
+    //   36	41	70	finally
+    //   48	67	70	finally
   }
   
-  public static String a(String paramString)
+  public void a(aevb paramaevb, aiyi paramaiyi)
   {
-    return aixs.a + "/" + paramString;
+    b(paramaevb, paramaiyi);
   }
   
-  public static String a(String paramString1, int paramInt, String paramString2, boolean paramBoolean)
+  public void a(Context paramContext, String paramString, aiyh paramaiyh)
   {
-    Object localObject3 = null;
-    Object localObject4 = null;
-    Object localObject1;
-    Object localObject2;
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      try
-      {
-        if (paramString1.length() > 4096)
-        {
-          if (!QLog.isColorLevel()) {
-            break label738;
-          }
-          QLog.d("ApolloGameTool", 2, "[urlToPath] too long " + paramString1.substring(0, 100));
-          return null;
-        }
-        localObject1 = URLDecoder.decode(paramString1, "UTF-8");
-        paramString1 = (String)localObject1;
-      }
-      catch (Throwable paramString2)
-      {
-        for (;;)
-        {
-          int i;
-          String str;
-          int j;
-          label151:
-          QLog.e("ApolloGameTool", 1, paramString2, new Object[0]);
-          localObject1 = paramString1;
-          localObject2 = localObject4;
-        }
-      }
-      try
-      {
-        i = paramString1.indexOf("://");
-        localObject1 = paramString1;
-        localObject2 = localObject4;
-        if (i == -1) {
-          break label577;
-        }
-        if (!paramBoolean) {
-          break label725;
-        }
-        localObject1 = Uri.parse(paramString1);
-        str = ((Uri)localObject1).getHost();
-        j = ((Uri)localObject1).getPort();
-        if (j == 0) {
-          break label719;
-        }
-        localObject1 = paramString1.replace(":" + j, "");
-      }
-      catch (Throwable paramString2)
-      {
-        break label680;
-        localObject1 = paramString1;
-        break label151;
-        break label217;
-      }
-      paramString1 = (String)localObject1;
-      localObject2 = localObject1;
-    }
     for (;;)
     {
       try
       {
-        if (!TextUtils.isEmpty(str))
-        {
-          localObject2 = localObject1;
-          paramString1 = str + "/";
-          localObject2 = localObject1;
-          if (!((String)localObject1).contains(paramString1)) {
-            continue;
-          }
-          localObject2 = localObject1;
-          paramString1 = ((String)localObject1).replace(paramString1, "");
+        if (!TextUtils.isEmpty(paramString)) {
+          this.jdField_a_of_type_JavaLangString = paramString;
         }
-        label217:
-        localObject1 = paramString1;
-        localObject2 = paramString1;
-        if (paramString1.contains("?"))
+        if (QLog.isColorLevel()) {
+          QLog.d("DrawClassifier", 2, "init recogtitle:" + this.jdField_a_of_type_JavaLangString + ",mIsInit" + this.jdField_a_of_type_Boolean);
+        }
+        try
         {
-          localObject2 = paramString1;
-          j = paramString1.indexOf("?");
-          if (j == 0) {
-            break;
+          paramContext = BaseHbFragment.getHbPannelConfig(10);
+          if (QLog.isColorLevel()) {
+            QLog.d("DrawClassifier", 2, "init configObj:" + paramContext);
           }
-          localObject1 = paramString1;
-          if (j != -1)
+          if (paramContext != null)
           {
-            localObject2 = paramString1;
-            localObject1 = paramString1.substring(0, j);
+            this.b = paramContext.optString("aModel", "https://i.gtimg.cn/channel/imglib/201907/upload_e119bb8768152fcb2476c5c41b896cf2.zip");
+            this.jdField_a_of_type_Float = ((float)paramContext.optDouble("aThreshold", 0.2000000029802322D));
+            this.jdField_a_of_type_Int = paramContext.optInt("topN", 5);
           }
         }
-        localObject2 = localObject1;
-        paramString1 = ((String)localObject1).substring(0, i);
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty(paramString1)) {
-          continue;
-        }
-        localObject2 = localObject1;
-        localObject3 = jdField_a_of_type_ArrayOfJavaLangString;
-        localObject2 = localObject1;
-        j = localObject3.length;
-        i = 0;
-        if (i >= j) {
-          continue;
-        }
-        localObject2 = localObject1;
-        if (!paramString1.equals(localObject3[i])) {
-          continue;
-        }
-        localObject2 = localObject1;
-        str = a(String.valueOf(paramInt));
-        localObject2 = localObject1;
-        localObject3 = ((String)localObject1).replace(paramString1 + "://", "");
-        paramString1 = (String)localObject3;
-        localObject2 = localObject1;
-        if (!TextUtils.isEmpty(paramString2))
+        catch (Throwable paramContext)
         {
-          localObject2 = localObject1;
-          paramString1 = paramString2 + "/" + (String)localObject3;
-        }
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty(str)) {
+          paramContext.printStackTrace();
           continue;
         }
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty(paramString1)) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("DrawClassifier", 2, "init modelUrl=" + this.b + ",threshold=" + this.jdField_a_of_type_Float + ",topN" + this.jdField_a_of_type_Int);
         }
-        localObject2 = localObject1;
-        paramString1 = new File(str + "/" + paramString1);
-        localObject2 = localObject1;
-        paramString2 = new File(str);
-        localObject2 = localObject1;
-        if (!paramString1.exists()) {
-          continue;
-        }
-        localObject2 = localObject1;
-        if (!paramString1.isFile()) {
-          continue;
-        }
-        localObject2 = localObject1;
-        paramString2 = paramString2.getCanonicalPath();
-        localObject2 = localObject1;
-        paramString1 = paramString1.getCanonicalPath();
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty(paramString2)) {
-          continue;
-        }
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty(paramString1)) {
-          continue;
-        }
-        localObject2 = localObject1;
-        paramBoolean = paramString1.startsWith(paramString2);
-        if (!paramBoolean) {
-          continue;
-        }
-        localObject2 = paramString1;
-      }
-      catch (Throwable paramString2)
-      {
-        label577:
-        paramString1 = (String)localObject2;
-        label680:
-        continue;
-        localObject2 = localObject4;
-        continue;
-      }
-      localObject3 = localObject2;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ApolloGameTool", 2, "[urlToPath] " + (String)localObject1 + " " + (String)localObject2);
-      return localObject2;
-      localObject2 = localObject1;
-      paramString1 = ((String)localObject1).replace(str, "");
-      continue;
-      localObject2 = localObject1;
-      if (QLog.isColorLevel())
-      {
-        localObject2 = localObject1;
-        QLog.d("ApolloGameTool", 2, "[urlToPath] path leak");
-      }
-      paramString1 = null;
-      continue;
-      i += 1;
-      continue;
-      label719:
-      label725:
-      localObject1 = paramString1;
-      localObject2 = localObject4;
-    }
-    label738:
-    return localObject3;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    for (;;)
-    {
-      int i;
-      String str;
-      try
-      {
-        paramString1 = new JSONObject(paramString1);
-        String[] arrayOfString = aixt.jdField_a_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        i = 0;
-        if (i >= j) {
-          break label183;
-        }
-        str = arrayOfString[i];
-        if (!paramString1.has(str)) {
-          break label201;
-        }
-        Object localObject = paramString1.opt(str);
-        if ((localObject == null) || (localObject.toString().equals(paramString2))) {
-          break label201;
-        }
-        if ((localObject instanceof String))
+        if (this.jdField_a_of_type_Boolean)
         {
-          paramString1.put(str, paramString2);
-          if (!QLog.isColorLevel()) {
-            break label201;
+          if (paramaiyh != null) {
+            paramaiyh.a(true);
           }
-          QLog.e("ApolloGameTool", 2, "[filterSSOPara] " + localObject + " " + paramString2);
-          break label201;
-        }
-        if ((localObject instanceof Integer))
-        {
-          paramString1.put(str, Integer.parseInt(paramString2));
-          continue;
-        }
-        if (!(localObject instanceof Long)) {
-          continue;
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        QLog.e("ApolloGameTool", 1, new Object[0]);
-        return null;
-      }
-      paramString1.put(str, Long.parseLong(paramString2));
-      continue;
-      label183:
-      paramString1.put("from", "android.H5");
-      paramString1 = paramString1.toString();
-      return paramString1;
-      label201:
-      i += 1;
-    }
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Boolean = false;
-    b = 0;
-    c = 0;
-    jdField_a_of_type_Int = 0;
-  }
-  
-  private static void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    switch (paramInt1)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameTool", 2, "set aio white " + paramInt2);
-      }
-      if (paramInt2 == 0)
-      {
-        aixr.a("CMGamePlusPanel", -aixs.c);
-        return;
-      }
-    } while (paramInt2 != 1);
-    aixr.a("CMGamePlusPanel", aixs.c);
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    if ((paramActivity != null) && (!paramActivity.isFinishing()))
-    {
-      paramActivity = paramActivity.getWindow();
-      if (paramActivity != null) {
-        paramActivity.getDecorView().setSystemUiVisibility(5894);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      QLog.e("ApolloGameTool", 1, "app is null");
-    }
-    do
-    {
-      return;
-      paramQQAppInterface = (bbrd)paramQQAppInterface.a(71);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.d();
-  }
-  
-  public static void a(String paramString, JSONArray paramJSONArray)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("ApolloGameTool", 1, "bitmap is null");
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = new StringBuilder(new BigInteger(paramString).toString(2)).reverse().toString();
-        int k = paramString.length();
-        int i = 0;
-        if (i < 64)
-        {
-          if (i < k)
-          {
-            j = paramString.charAt(i) - '0';
-            a(i, j, 0);
-            i += 1;
-          }
-        }
-        else {
           return;
         }
       }
-      catch (Throwable paramString)
-      {
-        QLog.e("ApolloGameTool", 1, paramString, new Object[0]);
-      }
-      int j = 0;
+      finally {}
+      aizg.a().a(new aiyf(this, paramaiyh));
     }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return !TextUtils.isEmpty(paramString);
-  }
-  
-  public static String b(String paramString)
-  {
-    String str = paramString;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        str = paramString.replace("\\", "\\\\").replace("'", "\\'");
-      }
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameTool", 1, localThrowable, new Object[0]);
-    }
-    return paramString;
-  }
-  
-  public static String c(String paramString)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("extendInfo"))
-        {
-          paramString = new JSONObject(paramString.optString("extendInfo"));
-          if (paramString.has("bk_share_url"))
-          {
-            paramString = paramString.optString("bk_share_url");
-            return paramString;
-          }
-        }
-      }
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("ApolloGameTool", 1, paramString, new Object[0]);
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiye
  * JD-Core Version:    0.7.0.1
  */

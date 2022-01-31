@@ -1,119 +1,72 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ArkAppMessage.Config;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
-public class afow
+class afow
+  extends afpq
 {
-  public ArrayList<afpb> a;
-  private boolean a;
-  public int[] a;
-  public String[] a;
+  private afec jdField_a_of_type_Afec;
+  private afek jdField_a_of_type_Afek;
+  private afet jdField_a_of_type_Afet;
   
-  public afow(boolean paramBoolean)
+  afow(aflj paramaflj)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    a();
+    super(paramaflj, null);
   }
   
-  public int a(int paramInt)
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return ((afpb)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c;
-    }
-    return 1;
+    return null;
   }
   
-  protected void a()
+  protected aemj b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new afpb(0, 2131364653, ajya.a(2131702572)));
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afpb(6, 2131364650, ajya.a(2131702558)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afpb(1, 2131364649, ajya.a(2131702529)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afpb(2, 2131364654, ajya.a(2131702571)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afpb(3, 2131364647, ajya.a(2131702555)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afpb(4, 2131364651, ajya.a(2131702551)));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new afpb(5, 2131364652, sfe.a()));
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
-    this.jdField_a_of_type_ArrayOfInt = new int[j];
-    int i = 0;
-    while (i < j)
+    int j = 1;
+    int i = j;
+    if ((paramChatMessage instanceof MessageForArkApp))
     {
-      this.jdField_a_of_type_ArrayOfInt[i] = ((afpb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).d;
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((afpb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).f;
-      i += 1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactsTabs", 2, "buildData showRecommend:" + this.jdField_a_of_type_Boolean + " tabSize:" + j);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    boolean bool = false;
-    if (paramBoolean != this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (paramBoolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, new afpb(0, 2131364653, ajya.a(2131702526)));
-      }
-      for (;;)
+      paramChatMessage = (MessageForArkApp)paramChatMessage;
+      ArkAppMessage.Config localConfig = new ArkAppMessage.Config();
+      i = j;
+      if (paramChatMessage.ark_app_message != null)
       {
-        j = this.jdField_a_of_type_JavaUtilArrayList.size();
-        this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
-        this.jdField_a_of_type_ArrayOfInt = new int[j];
-        i = 0;
-        while (i < j)
+        localConfig.fromString(paramChatMessage.ark_app_message.config);
+        i = j;
+        if (localConfig.showSender != null)
         {
-          localafpb = (afpb)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if (localafpb.c == 5) {
-            localafpb.f = sfe.a();
+          i = j;
+          if (localConfig.showSender.intValue() == 0) {
+            i = 0;
           }
-          this.jdField_a_of_type_ArrayOfInt[i] = localafpb.d;
-          this.jdField_a_of_type_ArrayOfJavaLangString[i] = localafpb.f;
-          i += 1;
         }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ContactsTabs", 2, "update showRecommend1:" + paramBoolean + " tabSize:" + j);
-      }
-      bool = true;
     }
-    while (!QLog.isColorLevel())
+    if ((this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1008) || (this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1038))
     {
-      int j;
-      int i;
-      afpb localafpb;
-      return bool;
-    }
-    QLog.d("ContactsTabs", 2, "update showRecommend2:" + paramBoolean + " tabSize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-    return false;
-  }
-  
-  public int b(int paramInt)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((afpb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c == paramInt) {
-        return i;
+      if (this.jdField_a_of_type_Afet == null) {
+        this.jdField_a_of_type_Afet = new afet(this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Aflj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
       }
-      i += 1;
+      return this.jdField_a_of_type_Aflj.a(this.jdField_a_of_type_Afet, paramBaseAdapter);
     }
-    return -1;
+    if ((i == 0) || (this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 9501))
+    {
+      if (this.jdField_a_of_type_Afek == null) {
+        this.jdField_a_of_type_Afek = new afek(this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Aflj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      }
+      return this.jdField_a_of_type_Aflj.a(this.jdField_a_of_type_Afek, paramBaseAdapter);
+    }
+    if (this.jdField_a_of_type_Afec == null) {
+      this.jdField_a_of_type_Afec = new afec(this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Aflj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aflj.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    }
+    return this.jdField_a_of_type_Aflj.a(this.jdField_a_of_type_Afec, paramBaseAdapter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afow
  * JD-Core Version:    0.7.0.1
  */

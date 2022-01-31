@@ -1,113 +1,38 @@
-import android.graphics.PointF;
+import java.util.ArrayList;
 
 public class ljl
 {
   int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = null;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
+  public String a;
+  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
+  final ljo jdField_a_of_type_Ljo;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public PointF a(PointF paramPointF)
+  ljl(ljo paramljo, ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    if ((!a()) || (paramPointF == null)) {
-      return null;
+    this.jdField_a_of_type_Ljo = paramljo;
+    this.jdField_a_of_type_Int = 0;
+    if (paramArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
     }
-    float f1 = paramPointF.x * this.d;
-    float f2 = paramPointF.y * this.c;
-    float f4 = this.jdField_a_of_type_Int;
-    float f3 = this.jdField_b_of_type_Int;
-    f4 = (f4 + f1) / this.f;
-    f3 = (f3 + f2) / this.e;
-    ljj.a("getSmallPointInBigScreen: " + f1 + "|" + f2 + "|" + f4 + "|" + f3 + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_b_of_type_Int);
-    return new PointF(f4, f3);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.g = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public boolean a()
+  boolean a()
   {
-    int i;
-    int j;
-    if (this.jdField_b_of_type_JavaLangString != null)
-    {
-      i = 1;
-      if ((this.e <= 0) || (this.f <= 0)) {
-        break label60;
-      }
-      j = 1;
-      label25:
-      if ((this.c <= 0) || (this.d <= 0)) {
-        break label65;
-      }
-    }
-    label60:
-    label65:
-    for (int k = 1;; k = 0)
-    {
-      if ((i == 0) || (j == 0) || (k == 0)) {
-        break label70;
-      }
-      return true;
-      i = 0;
-      break;
-      j = 0;
-      break label25;
-    }
-    label70:
-    return false;
+    return this.jdField_a_of_type_Int >= 3;
   }
   
-  public String b()
+  public String toString()
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.e = paramInt1;
-    this.f = paramInt2;
+    return "ItemRecord{" + this.jdField_a_of_type_Ljo + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljl
  * JD-Core Version:    0.7.0.1
  */

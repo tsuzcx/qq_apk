@@ -1,39 +1,107 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3.1;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Timer;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoph
-  implements View.OnClickListener
+  extends aofy<aopg>
 {
-  public aoph(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (!bbfj.d(BaseApplicationImpl.getContext())) {
-      aptx.a(BaseApplicationImpl.getContext().getString(2131694608));
+    return 557;
+  }
+  
+  @NonNull
+  public aopg a(int paramInt)
+  {
+    return new aopg();
+  }
+  
+  @Nullable
+  public aopg a(aogf[] paramArrayOfaogf)
+  {
+    QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onParsed");
+    if (paramArrayOfaogf != null) {
+      try
+      {
+        if (paramArrayOfaogf.length > 0)
+        {
+          paramArrayOfaogf = (aopg)aogt.a(paramArrayOfaogf[0].a, aopg.class);
+          return paramArrayOfaogf;
+        }
+      }
+      catch (QStorageInstantiateException paramArrayOfaogf)
+      {
+        QLog.e("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaogf.getMessage());
+      }
     }
-    do
+    return null;
+  }
+  
+  public Class<aopg> a()
+  {
+    return aopg.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public void a(aopg paramaopg)
+  {
+    if (paramaopg != null)
     {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label152;
+      }
+    }
+    label152:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        if (TextUtils.isEmpty(paramaopg.a)) {
+          paramaopg.a = "{}";
+        }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("c2cfile_excitingupload_" + ((QQAppInterface)localObject).c(), 0).edit();
+        localEditor.putString("qfile_c2cfile_excitingupload", paramaopg.a);
+        localEditor.apply();
+        QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Upload config [" + paramaopg.a + "]");
+        localObject = (aqpu)((QQAppInterface)localObject).getManager(317);
+        if (localObject != null) {
+          ((aqpu)localObject).a(paramaopg);
+        }
+      }
       return;
-      aptx.a(BaseApplicationImpl.getContext().getString(2131694333));
-      paramView = (ajum)MPFileVerifyPwdView.a(this.a).a(8);
-      MPFileVerifyPwdView.a(this.a, paramView.a().a(3));
-      MPFileVerifyPwdView.b(this.a).setEnabled(false);
-      MPFileVerifyPwdView.b(this.a).setTextColor(-7829368);
-      MPFileVerifyPwdView.a(this.a).schedule(new MPFileVerifyPwdView.3.1(this), 15000L);
-    } while (MPFileVerifyPwdView.a(this.a) == null);
-    MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoph
  * JD-Core Version:    0.7.0.1
  */

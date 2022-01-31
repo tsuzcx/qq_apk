@@ -1,30 +1,14 @@
-public class ajik
+import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
+
+public abstract interface ajik
 {
-  public float a;
-  public int a;
-  public String a;
-  public boolean a;
-  public float b;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
+  public abstract void a();
+  
+  public abstract void a(GuideBaseFragment paramGuideBaseFragment);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajik
  * JD-Core Version:    0.7.0.1
  */

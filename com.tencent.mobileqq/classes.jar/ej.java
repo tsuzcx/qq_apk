@@ -1,33 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.dataline.activities.PrinterOptionActivity;
+import com.tencent.image.URLImageView;
 
 public class ej
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public ej(PrinterOptionActivity paramPrinterOptionActivity) {}
+  public GridView a;
+  public LinearLayout a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public LinearLayout b;
+  public TextView b;
+  public TextView c;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131691376);
-      return;
-    }
-    if (PrinterOptionActivity.b(this.a))
-    {
-      PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131691356);
-      return;
-    }
-    PrinterOptionActivity.a(this.a).setVisibility(4);
-  }
+  public ej(ef paramef) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ej
  * JD-Core Version:    0.7.0.1
  */

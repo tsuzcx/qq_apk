@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.Advertisement.fragment;
 
 import android.support.v4.view.ViewPager;
-import nix;
+import nlt;
 
 public class VideoCoverFragment$3$1
   implements Runnable
 {
-  public VideoCoverFragment$3$1(nix paramnix) {}
+  public VideoCoverFragment$3$1(nlt paramnlt) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class VideoCoverFragment$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

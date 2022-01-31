@@ -1,111 +1,64 @@
-import android.graphics.drawable.Animatable;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
 public class accj
-  extends RecyclerView.Adapter<acch>
+  extends avqt
 {
-  private int jdField_a_of_type_Int;
-  List<acci> jdField_a_of_type_JavaUtilList;
+  private WeakReference<avqt> a;
   
-  public accj(List<acci> paramList)
+  public accj(avqt paramavqt)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-    this.jdField_a_of_type_Int = axmv.c();
+    this.a = new WeakReference(paramavqt);
   }
   
-  private void a(int paramInt)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    acci localacci = a(paramInt);
-    if (!localacci.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    avqt localavqt = (avqt)this.a.get();
+    if (localavqt != null)
     {
-      if (a(localacci, paramInt, bool)) {
-        accg.a(this.jdField_a_of_type_Accg).a(localacci.jdField_a_of_type_Int);
-      }
+      localavqt.a(paramString1, paramInt, paramString2);
       return;
     }
+    super.a(paramString1, paramInt, paramString2);
   }
   
-  public acch a(ViewGroup paramViewGroup, int paramInt)
+  public void a(String paramString1, String paramString2)
   {
-    paramViewGroup = accg.a(this.jdField_a_of_type_Accg).getLayoutInflater().inflate(2131562429, paramViewGroup, false);
-    return new acch(this.jdField_a_of_type_Accg, paramViewGroup);
-  }
-  
-  public acci a(int paramInt)
-  {
-    return (acci)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(acch paramacch, int paramInt)
-  {
-    acci localacci = a(paramInt);
-    if (localacci.jdField_a_of_type_Boolean)
+    avqt localavqt = (avqt)this.a.get();
+    if (localavqt != null)
     {
-      paramacch.b.setVisibility(0);
-      ViewCompat.setAccessibilityDelegate(paramacch.jdField_a_of_type_ComTencentImageURLImageView, new acck(this));
-      paramacch.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(axmq.c[paramInt]);
-      accg.a(this.jdField_a_of_type_Accg, paramacch.jdField_a_of_type_ComTencentImageURLImageView, localacci);
-      if (!localacci.b) {
-        break label134;
-      }
-      paramacch.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((Animatable)paramacch.jdField_a_of_type_AndroidViewView.getBackground()).start();
-    }
-    for (;;)
-    {
-      paramacch.itemView.setOnClickListener(new accm(this, paramInt));
+      localavqt.a(paramString1, paramString2);
       return;
-      paramacch.b.setVisibility(8);
-      ViewCompat.setAccessibilityDelegate(paramacch.jdField_a_of_type_ComTencentImageURLImageView, new accl(this));
-      break;
-      label134:
-      paramacch.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      ((Animatable)paramacch.jdField_a_of_type_AndroidViewView.getBackground()).stop();
     }
+    super.a(paramString1, paramString2);
   }
   
-  public boolean a(acci paramacci, int paramInt, boolean paramBoolean)
+  public void a(oidb_0x87a.RspBody paramRspBody)
   {
-    if (this.jdField_a_of_type_Int == paramInt)
+    avqt localavqt = (avqt)this.a.get();
+    if (localavqt != null)
     {
-      notifyItemChanged(paramInt);
-      return false;
+      localavqt.a(paramRspBody);
+      return;
     }
-    paramacci.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramacci.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_Int >= 0) {
-        break label46;
-      }
-    }
-    for (this.jdField_a_of_type_Int = paramInt;; this.jdField_a_of_type_Int = paramInt)
-    {
-      notifyItemChanged(paramInt);
-      return true;
-      label46:
-      paramacci = a(this.jdField_a_of_type_Int);
-      paramacci.jdField_a_of_type_Boolean = false;
-      paramacci.b = false;
-      notifyItemChanged(this.jdField_a_of_type_Int);
-    }
+    super.a(paramRspBody);
   }
   
-  public int getItemCount()
+  public void a(oidb_0x87c.RspBody paramRspBody)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    avqt localavqt = (avqt)this.a.get();
+    if (localavqt != null)
+    {
+      localavqt.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accj
  * JD-Core Version:    0.7.0.1
  */

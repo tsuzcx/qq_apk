@@ -1,98 +1,162 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.1;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.2;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.List;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aixo
-  extends aixj
+  implements IRedPacket
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  boolean d;
-  
-  public aixo(QQAppInterface paramQQAppInterface)
+  public aixo()
   {
-    super(paramQQAppInterface);
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0);
-    this.jdField_a_of_type_Int = paramQQAppInterface.getInt("hire_priority", 1);
-    this.jdField_b_of_type_Int = paramQQAppInterface.getInt("hire_action", 0);
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getString("hire_word", "");
-    this.jdField_a_of_type_Long = paramQQAppInterface.getLong("hire_for", 0L);
-    this.jdField_b_of_type_Long = paramQQAppInterface.getLong("hire_end", 0L);
+    aiwh.a().a();
   }
   
-  public int a(ajfq paramajfq, int paramInt, AppInterface paramAppInterface, Context paramContext)
+  public JSONObject getPopAd(int paramInt1, int paramInt2)
   {
-    if ((NetConnInfoCenter.getServerTime() > this.jdField_b_of_type_Long) || (this.d) || (!this.c)) {
-      return super.a(paramajfq, paramInt, paramAppInterface, paramContext);
-    }
-    if (this.jdField_b_of_type_Int > 0)
+    aiwh.a().a();
+    Object localObject1 = new Bundle();
+    ((Bundle)localObject1).putInt("key_func", 4);
+    ((Bundle)localObject1).putInt("key_skin_id", paramInt1);
+    ((Bundle)localObject1).putInt("key_channel", paramInt2);
+    localObject2 = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject1);
+    if ((localObject2 != null) && (((EIPCResult)localObject2).isSuccess()))
     {
-      if (ApolloUtil.c(5, this.jdField_b_of_type_Int))
+      localObject1 = ((EIPCResult)localObject2).data.getString("pop_ad_tips");
+      String str = ((EIPCResult)localObject2).data.getString("pop_ad_url");
+      paramInt1 = ((EIPCResult)localObject2).data.getInt("pop_ad_url_type");
+      try
       {
-        paramContext = new ApolloActionData();
-        paramContext.actionId = this.jdField_b_of_type_Int;
-        paramContext.actionType = 0;
-        ajfh.a(paramajfq, 6, paramContext);
-        this.d = true;
-        paramAppInterface.getApp().getSharedPreferences("apollo_sp" + paramAppInterface.getCurrentAccountUin(), 0).edit().putLong("hire_end", NetConnInfoCenter.getServerTime()).commit();
-        return 0;
+        localObject2 = new JSONObject();
+        return null;
       }
-      QLog.w("AplloDrawerStatus", 2, "HireDrawerStatus resource is not ready, actionId:" + this.jdField_b_of_type_Int);
-      super.a(paramajfq, paramInt, paramAppInterface, paramContext);
-      ajhu.a(paramAppInterface, ApolloUtil.c(this.jdField_b_of_type_Int) + "/d.zip", ApolloUtil.d(this.jdField_b_of_type_Int));
-      return 0;
+      catch (JSONException localJSONException1)
+      {
+        try
+        {
+          ((JSONObject)localObject2).putOpt("pop_ad_tips", localObject1);
+          ((JSONObject)localObject2).putOpt("pop_ad_url", str);
+          ((JSONObject)localObject2).putOpt("pop_ad_url_type", Integer.valueOf(paramInt1));
+          return localObject2;
+        }
+        catch (JSONException localJSONException2)
+        {
+          return localObject2;
+        }
+        localJSONException1 = localJSONException1;
+        return null;
+      }
     }
-    QLog.w("AplloDrawerStatus", 2, "HireDrawerStatus action is not correct, actionId:" + this.jdField_b_of_type_Int);
-    super.a(paramajfq, paramInt, paramAppInterface, paramContext);
-    paramAppInterface.getApp().getSharedPreferences("apollo_sp" + paramAppInterface.getCurrentAccountUin(), 0).edit().putLong("hire_end", NetConnInfoCenter.getServerTime()).commit();
-    return 0;
   }
   
-  public void a(ajfq paramajfq, Context paramContext, QQAppInterface paramQQAppInterface)
+  public List<String> getReadyResList()
   {
-    paramajfq = new Intent();
-    paramajfq.putExtra("extra_key_url_append", "&tab=interactive&suin=" + paramQQAppInterface.getCurrentAccountUin());
-    ApolloUtil.a(paramContext, paramajfq, "drawer", ajms.ai, null);
-    a(paramQQAppInterface);
-    VipUtils.a(null, "cmshow", "Apollo", "0X80065F002", 0, 0, new String[] { String.valueOf(this.jdField_b_of_type_Int) });
+    return null;
   }
   
-  public void a(ajfq paramajfq, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void getSkin(RedPacketInfoBase paramRedPacketInfoBase, IRedPacket.OnGetSkinListener paramOnGetSkinListener)
   {
-    if (!this.c) {}
-    boolean bool;
-    do
+    if ((paramRedPacketInfoBase == null) || (paramOnGetSkinListener == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "getSkin | skinId = " + paramRedPacketInfoBase.skinId + ",skinType=" + paramRedPacketInfoBase.skinType);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_func", 1);
+    localBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
+    localBundle.putParcelable("key_callback", aivz.a(new RedPacketProxy.1(this, null, paramOnGetSkinListener)));
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "red_packet", localBundle, null);
+  }
+  
+  public JSONObject getTail(int paramInt1, int paramInt2)
+  {
+    return null;
+  }
+  
+  public void getVoiceRateRes(RedPacketInfoBase paramRedPacketInfoBase, IRedPacket.OnGetSkinListener paramOnGetSkinListener)
+  {
+    if ((paramRedPacketInfoBase == null) || (paramOnGetSkinListener == null)) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_func", 5);
+    localBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
+    localBundle.putParcelable("key_callback", aivz.a(new RedPacketProxy.2(this, null, paramOnGetSkinListener)));
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "red_packet", localBundle, null);
+  }
+  
+  public boolean isRiskSwitchOpen()
+  {
+    aiwh.a().a();
+    boolean bool2 = false;
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("key_func", 2);
+    localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject);
+    boolean bool1 = bool2;
+    if (localObject != null)
     {
-      return;
-      bool = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0).getBoolean("hire_bubble_click", false);
-    } while ((NetConnInfoCenter.getServerTime() > this.jdField_b_of_type_Long) || (bool));
-    this.jdField_b_of_type_Boolean = true;
-    ajfh.a(paramajfq, this.jdField_a_of_type_JavaLangString, 7, 0);
-    VipUtils.a(null, "cmshow", "Apollo", "0X80065F001", 0, 0, new String[] { String.valueOf(this.jdField_b_of_type_Int) });
+      bool1 = bool2;
+      if (((EIPCResult)localObject).isSuccess()) {
+        bool1 = ((EIPCResult)localObject).data.getBoolean("key_is_risk_switch_open");
+      }
+    }
+    return bool1;
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void onActiveAccount() {}
+  
+  public boolean onGetThemeConfig(int paramInt)
   {
-    if (paramQQAppInterface == null) {
-      return;
+    aiwh.a().a();
+    boolean bool2 = false;
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("key_func", 6);
+    ((Bundle)localObject).putInt("theme_id", paramInt);
+    localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject);
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((EIPCResult)localObject).isSuccess()) {
+        bool1 = ((EIPCResult)localObject).data.getBoolean("key_theme_exist");
+      }
     }
-    paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0).edit().putBoolean("hire_bubble_click", true).commit();
+    return bool1;
   }
+  
+  public void onUpdate(int paramInt) {}
+  
+  public void registRedPacketSkinListObserver(BusinessObserver paramBusinessObserver) {}
+  
+  public void reqGroupAvailableList(String paramString, int paramInt, IRedPacket.OnGetAvailableListListener paramOnGetAvailableListListener) {}
+  
+  public void requestRedPacketSkinList()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_func", 3);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "red_packet", localBundle, null);
+  }
+  
+  public void requestRedPacketSkinList(String paramString1, String paramString2, int paramInt) {}
+  
+  public void setSelectedSkin(int paramInt, BusinessObserver paramBusinessObserver) {}
+  
+  public void unregistRedPacketSkinListObserver(BusinessObserver paramBusinessObserver) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixo
  * JD-Core Version:    0.7.0.1
  */

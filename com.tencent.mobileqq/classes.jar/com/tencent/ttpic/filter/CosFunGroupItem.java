@@ -7,6 +7,7 @@ import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunGroupItem;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunItem;
+import com.tencent.ttpic.trigger.TriggerManager;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -24,10 +25,11 @@ public class CosFunGroupItem
   private int itemIndex = -1;
   private int lastFrameFaceCount = -1;
   private String materialPath;
+  private TriggerManager triggerManager;
   private int triggerType = 1;
   private Set<Integer> triggeredExpression;
   
-  public CosFunGroupItem(String paramString, CosFun.CosFunGroupItem paramCosFunGroupItem, int paramInt)
+  public CosFunGroupItem(String paramString, CosFun.CosFunGroupItem paramCosFunGroupItem, int paramInt, TriggerManager paramTriggerManager)
   {
     this.materialPath = paramString;
     this.cosFunGroupItem = paramCosFunGroupItem;
@@ -35,13 +37,14 @@ public class CosFunGroupItem
     if (paramCosFunGroupItem.getLoopMode().equals("random")) {
       this.itemIndex = paramInt;
     }
+    this.triggerManager = paramTriggerManager;
     updateTriggerType(paramCosFunGroupItem);
   }
   
   private CosFunFilter createFilter(String paramString, int paramInt)
   {
     CosFunFilter localCosFunFilter = new CosFunFilter();
-    localCosFunFilter.init(paramString, (CosFun.CosFunItem)this.cosFunGroupItem.getCosFunItems().get(paramInt));
+    localCosFunFilter.init(paramString, (CosFun.CosFunItem)this.cosFunGroupItem.getCosFunItems().get(paramInt), this.triggerManager);
     return localCosFunFilter;
   }
   

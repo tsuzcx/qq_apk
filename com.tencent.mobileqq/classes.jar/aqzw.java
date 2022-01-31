@@ -1,52 +1,69 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aqzw
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, View.OnLongClickListener
+public abstract class aqzw
 {
-  arba a;
-  public ImageView d;
+  protected final QQAppInterface a;
   
-  public aqzw(HotPicPageView paramHotPicPageView, View paramView, arba paramarba)
+  public aqzw(QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
-    if (paramarba != null)
+    this.a = paramQQAppInterface;
+  }
+  
+  protected abstract String a(boolean paramBoolean);
+  
+  protected abstract HashMap<String, String> a();
+  
+  public abstract void a();
+  
+  public void a(aqzx paramaqzx, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  {
+    paramaqzx = paramaqzx.a();
+    paramaqzx.putAll(paramExcitingTransferOneSlotComplete.getReportData());
+    azmz localazmz = azmz.a(BaseApplication.getContext());
+    String str = this.a.getCurrentAccountUin();
+    if (paramExcitingTransferOneSlotComplete.m_SubReason == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.a = paramarba;
-      this.d = ((ImageView)paramView.findViewById(2131367644));
-      this.d.setTag("HotPicControlTag");
-      this.itemView.setOnClickListener(this);
-      this.itemView.setOnLongClickListener(this);
-      this.itemView.setOnTouchListener(paramarba);
+      localazmz.a(str, "actPDSlot", bool, 0L, 0L, paramaqzx, "");
+      return;
     }
   }
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (this.a != null) {
-      this.a.a(paramView, getPosition());
+    if (a()) {
+      b(paramBoolean);
     }
+    HashMap localHashMap = a();
+    if (localHashMap != null) {
+      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
+    }
+    azmz.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
   }
   
-  public boolean onLongClick(View paramView)
+  protected abstract boolean a();
+  
+  protected abstract HashMap<String, String> b();
+  
+  public abstract void b();
+  
+  public void b(boolean paramBoolean)
   {
-    boolean bool = false;
-    if (this.a != null)
+    HashMap localHashMap = b();
+    if (localHashMap != null)
     {
-      this.a.b(paramView, getPosition());
-      bool = true;
+      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
+      azmz.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
     }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzw
  * JD-Core Version:    0.7.0.1
  */

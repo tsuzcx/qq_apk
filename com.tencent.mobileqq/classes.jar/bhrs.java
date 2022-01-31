@@ -1,21 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.widget.DynamicGridView;
 
-final class bhrs
-  implements DialogInterface.OnClickListener
+public class bhrs
+  implements TypeEvaluator<Rect>
 {
-  bhrs(bbgu parambbgu) {}
+  public bhrs(DynamicGridView paramDynamicGridView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+  }
+  
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  {
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhrs
  * JD-Core Version:    0.7.0.1
  */

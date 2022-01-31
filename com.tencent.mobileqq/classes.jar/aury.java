@@ -1,36 +1,31 @@
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.HashSet;
 
-final class aury
-  implements aysb
+class aury
+  implements bcwt
 {
-  public void a(aysy paramaysy, aysz paramaysz)
+  aury(auru paramauru) {}
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((paramaysy == null) || (paramaysz == null)) {}
-    do
+    synchronized (this.a.a)
     {
-      do
+      if (this.a.a.contains(paramString))
       {
-        return;
-      } while (!(paramaysy instanceof ayrx));
-      paramaysy = (ayrx)paramaysy;
-      paramaysy.jdField_a_of_type_Long += paramaysz.c;
-      paramaysz.c = 0L;
-      paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
-      paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
-      paramaysz = paramaysy.jdField_a_of_type_JavaLangString;
-      if (paramaysz.contains("range="))
-      {
-        String str = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
-        paramaysy.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysy.jdField_a_of_type_Long);
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
+        }
+        this.a.a.remove(paramString);
+        auru.a(this.a, 4161, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("PrecoverResDownloader", 2, "IBreakDownFix, " + paramaysz);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aury
  * JD-Core Version:    0.7.0.1
  */

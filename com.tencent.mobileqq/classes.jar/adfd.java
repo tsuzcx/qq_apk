@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adfd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adfd(ColorView paramColorView) {}
+  public adfd(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ColorView.a(this.a) != null) {
-      ColorView.a(this.a).a();
-    }
+    NotificationActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adfd
  * JD-Core Version:    0.7.0.1
  */

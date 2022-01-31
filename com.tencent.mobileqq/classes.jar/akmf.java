@@ -1,36 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
-public final class akmf
-  implements aysb
+public abstract interface akmf
 {
-  public void a(aysy paramaysy, aysz paramaysz)
-  {
-    if ((paramaysy == null) || (paramaysz == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramaysy instanceof ayrx));
-      paramaysy = (ayrx)paramaysy;
-      paramaysy.jdField_a_of_type_Long += paramaysz.c;
-      paramaysz.c = 0L;
-      paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
-      paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
-      paramaysz = paramaysy.jdField_a_of_type_JavaLangString;
-      if (paramaysz.contains("range="))
-      {
-        String str = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
-        paramaysy.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysy.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + paramaysz);
-  }
+  public abstract EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject);
+  
+  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akmf
  * JD-Core Version:    0.7.0.1
  */

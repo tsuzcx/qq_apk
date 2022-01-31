@@ -1,109 +1,77 @@
 import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bazf
-  implements Handler.Callback
+  implements ldw
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public bazf(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public bazf(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_MqqOsMqqHandler = new bfnk(ThreadManager.getFileThreadLooper(), this);
-  }
+  public void a() {}
   
-  public Setting a(String paramString)
+  public void a(Bundle paramBundle)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramString);
-  }
-  
-  public String a()
-  {
-    return ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a();
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage();
-    localMessage.what = 1;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("headType", paramInt1);
-    localBundle.putString("id", paramString);
-    localBundle.putInt("idType", paramInt2);
-    localMessage.setData(localBundle);
-    localMessage.sendToTarget();
-  }
-  
-  public void a(Setting paramSetting)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramSetting);
-    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    localaukp.b(paramSetting);
-    localaukp.a();
-  }
-  
-  public void a(ArrayList<String> paramArrayList, long paramLong)
-  {
-    if (paramLong <= 0L) {
-      return;
-    }
-    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    aukr localaukr = localaukp.a();
-    localaukr.a();
-    int i = 0;
-    try
-    {
-      while (i < paramArrayList.size())
-      {
-        Setting localSetting = (Setting)localaukp.a(Setting.class, (String)paramArrayList.get(i));
-        if (localSetting != null)
-        {
-          localSetting.updateTimestamp = paramLong;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localSetting);
-          localaukp.a(localSetting);
-        }
-        i += 1;
-      }
-      return;
-    }
-    catch (Exception paramArrayList)
-    {
-      paramArrayList.printStackTrace();
-      localaukr.c();
-      localaukr.b();
-    }
-  }
-  
-  public String b()
-  {
-    return ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+    int j = 0;
+    paramBundle = paramBundle.getString("sso_GdtLoadAd_rsp_json");
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "json = " + paramBundle);
     }
     for (;;)
     {
-      return false;
-      paramMessage.what = 4139;
-      ConnectNearbyProcService.a(paramMessage);
+      int i;
+      int k;
+      try
+      {
+        JSONObject localJSONObject1 = new JSONObject(paramBundle);
+        paramBundle = localJSONObject1.optJSONArray("pos_ads_info");
+        localJSONObject1 = new JSONObject(localJSONObject1.optString("busi_cookie")).optJSONObject("index");
+        i = 0;
+        if (i < paramBundle.length())
+        {
+          Object localObject = paramBundle.optJSONObject(i);
+          JSONObject localJSONObject2 = ((JSONObject)localObject).optJSONArray("ads_info").optJSONObject(0);
+          k = j;
+          if (localJSONObject2 != null)
+          {
+            int m = localJSONObject1.optInt(((JSONObject)localObject).optString("pos_id"));
+            k = j;
+            if (m - 1 > 0)
+            {
+              k = j;
+              if (m - 1 < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+              {
+                localObject = new bazz(localJSONObject2);
+                this.a.jdField_a_of_type_JavaUtilArrayList.add(m - 1, localObject);
+                k = 1;
+              }
+            }
+          }
+        }
+        else
+        {
+          if (j != 0) {
+            this.a.jdField_a_of_type_Bazn.notifyDataSetChanged();
+          }
+          return;
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      i += 1;
+      j = k;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bazf
  * JD-Core Version:    0.7.0.1
  */

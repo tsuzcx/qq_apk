@@ -1,44 +1,45 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class yzx
-  implements View.OnTouchListener
+class yzx
+  implements nbs
 {
-  private static final int jdField_a_of_type_Int = bbll.b(3.0F);
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private int b;
-  private int c;
+  yzx(yzu paramyzu, JsBridgeListener paramJsBridgeListener) {}
   
-  public yzx(Runnable paramRunnable)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int j = (int)paramMotionEvent.getX();
-    int i = (int)paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.b = j;
-      this.c = i;
-      return true;
-      j = Math.abs(j - this.b);
-      i = Math.abs(i - this.c);
-      if ((j < jdField_a_of_type_Int) && (i < jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangRunnable != null)) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
+    if (TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject();
+        paramString.put("retcode", -1);
+        paramString.put("msg", "error");
+        this.jdField_a_of_type_Yzu.callJs(this.jdField_a_of_type_Yzu.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + paramString);
+        return;
       }
     }
+    Message localMessage = Message.obtain();
+    localMessage.what = 121;
+    localMessage.obj = new Object[] { this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, paramString };
+    this.jdField_a_of_type_Yzu.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzx
  * JD-Core Version:    0.7.0.1
  */

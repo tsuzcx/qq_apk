@@ -1,149 +1,79 @@
-import android.app.Dialog;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
 import java.util.Map;
 
-public class uji
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
+class uji
+  extends ujp
 {
-  private TextView a;
-  private String c = "";
-  private boolean e;
-  
-  public uji(View paramView)
+  public uji(ujf paramujf)
   {
-    super(paramView);
+    super("Q.qqstory.download.preload.PlayingListPreloader");
   }
   
-  public String a()
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, uja paramuja)
   {
-    return "WeishiTagVideoInfoWidget";
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramuja);
+    a(paramString, paramInt1, paramErrorMessage, paramuja);
   }
   
-  public void a(View paramView)
+  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, uja paramuja)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-  }
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new ujk(this), "");
-  }
-  
-  public void a(@NonNull uas paramuas, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    paramuas = paramuas.a();
-    if (paramuas == null)
+    ujh localujh = this.a.jdField_a_of_type_Ujh;
+    if (localujh == null) {}
+    label14:
+    label169:
+    do
     {
-      k();
-      return;
-    }
-    if (TextUtils.equals(this.c, paramStoryVideoItem.mVid))
-    {
-      this.e = false;
-      int i = paramuas.mSourceTagType;
-      if (i != 1) {
-        break label123;
-      }
-      j();
-      axqy.b(null, "dc00898", "", "", "weishi_share_videoplay", "story_entry_exp", 0, 0, "", "", "", "");
-      paramStoryVideoItem = vzs.b(i);
-      switch (i)
+      break label14;
+      do
       {
-      default: 
-        paramuas = paramStoryVideoItem;
+        return;
+      } while (!TextUtils.equals(paramString, localujh.jdField_a_of_type_JavaLangString));
+      if (paramErrorMessage.isFail()) {
+        if (!TextUtils.isEmpty(localujh.b)) {
+          break label136;
+        }
       }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramuas);
-      return;
-      this.e = true;
-      this.c = paramStoryVideoItem.mVid;
-      break;
-      label123:
-      k();
-      return;
-      paramuas = paramStoryVideoItem;
-      if (TextUtils.isEmpty(paramStoryVideoItem)) {
-        paramuas = "来自微视APP";
+      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
+      {
+        localujh.b = paramErrorMessage;
+        localujh.jdField_a_of_type_Int = (paramInt + 1000);
+        if ((!paramuja.a.containsKey("handleCallback")) || (localujh.jdField_a_of_type_Boolean)) {
+          break;
+        }
+        localujh.jdField_a_of_type_Boolean = true;
+        if (!this.a.a(paramString)) {
+          break label169;
+        }
+        if (this.a.jdField_a_of_type_Ujj == null) {
+          break;
+        }
+        this.a.jdField_a_of_type_Ujj.a(paramString, paramuja.d, paramInt);
+        return;
       }
-    }
+    } while (this.a.jdField_a_of_type_Ujj == null);
+    label136:
+    this.a.jdField_a_of_type_Ujj.a(paramString, paramuja.d, localujh.a(), paramInt);
   }
   
-  public boolean a(@NonNull uas paramuas, @NonNull StoryVideoItem paramStoryVideoItem)
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, uja paramuja)
   {
-    if ((paramuas.a != null) && (paramuas.a.a == 13)) {}
-    while (paramStoryVideoItem.mSourceTagType != 1) {
-      return false;
-    }
-    return true;
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramuja);
+    a(paramString, paramInt1, new ErrorMessage(), paramuja);
   }
   
-  public int b()
+  public void b(String paramString, int paramInt, uja paramuja)
   {
-    return -1;
-  }
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Uas != null) {}
-    for (paramView = this.jdField_a_of_type_Uas.a(); paramView == null; paramView = null)
-    {
-      ved.e(this.b, "click error , video info not found");
-      return;
-    }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)a()).a();
-    vzs.a(paramView.mSourceTagType);
-    switch (paramView.mSourceTagType)
-    {
-    default: 
-      return;
-    }
-    Dialog localDialog = wbz.a(b(), paramView.mOwnerUid, "4", paramView.mVid, 3, paramView.mWsSchema);
-    if (localDialog != null)
-    {
-      localDialog.setOnDismissListener(new ujj(this, localVideoViewVideoHolder));
-      if (localVideoViewVideoHolder != null) {
-        localVideoViewVideoHolder.c(true);
-      }
-    }
-    int i;
-    if (vzw.a(b()))
-    {
-      i = 2;
-      vei.a("weishi_share", "tag_clk", 0, i, new String[] { "4", paramView.mOwnerUid, "weishi", paramView.mVid });
-      if (!vzw.a(b())) {
-        break label220;
-      }
-    }
-    label220:
-    for (paramView = "story_clk_ws";; paramView = "story_dl_ws")
-    {
-      axqy.b(null, "dc00898", "", "", "weishi_share_videoplay", paramView, 0, 0, "", "", "", "");
-      return;
-      i = 1;
-      break;
+    super.b(paramString, paramInt, paramuja);
+    if ((this.a.jdField_a_of_type_Ujj != null) && ((paramInt == 0) || (paramInt == 1))) {
+      this.a.jdField_a_of_type_Ujj.b(paramString, paramuja.d, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uji
  * JD-Core Version:    0.7.0.1
  */

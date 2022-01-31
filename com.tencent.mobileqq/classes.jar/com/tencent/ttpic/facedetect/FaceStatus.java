@@ -8,6 +8,7 @@ public class FaceStatus
   public float[] eyeEulerAngle;
   public float[] eyeRollWeights;
   public long faceID;
+  public float[] faceRect = new float[4];
   public int gender;
   public int illumination_score;
   public float pitch;

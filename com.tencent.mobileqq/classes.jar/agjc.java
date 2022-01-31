@@ -1,26 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class agjc
-  implements DialogInterface.OnClickListener
+class agjc
+  extends alnd
 {
-  public agjc(BindVerifyActivity paramBindVerifyActivity) {}
+  agjc(agiy paramagiy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindVerifyActivity", 2, "new user guild confirm unbind");
+    if (paramBoolean)
+    {
+      this.a.b = apwl.a(this.a.a).a(this.a.a, this.a.a());
+      this.a.b(this.a.b);
+      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
+        this.a.t(false);
+      }
     }
-    this.a.a.b(BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a), 0, BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a));
-    this.a.a(2131719292, 1000L, true);
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agjc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,12 @@
-class aoyl
-  implements aptw
+import android.graphics.Canvas;
+
+public abstract interface aoyl
 {
-  aoyl(aoyi paramaoyi) {}
-  
-  public void a()
-  {
-    apug.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aoyi.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void b() {}
+  public abstract void a(Canvas paramCanvas, aoxq paramaoxq, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyl
  * JD-Core Version:    0.7.0.1
  */

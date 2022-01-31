@@ -1,24 +1,20 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
 class agov
-  implements aptw
+  implements DialogInterface.OnClickListener
 {
-  agov(agot paramagot) {}
+  agov(agou paramagou, int paramInt) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.j();
-  }
-  
-  public void b()
-  {
-    this.a.a.b.setClickable(true);
+    this.jdField_a_of_type_Agou.a.a.a(4, 0, 0, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agov
  * JD-Core Version:    0.7.0.1
  */

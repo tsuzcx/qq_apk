@@ -7,7 +7,7 @@ import android.os.Message;
 class TPThreadUtil$EventHandler
   extends Handler
 {
-  public TPThreadUtil$EventHandler(Looper paramLooper)
+  TPThreadUtil$EventHandler(Looper paramLooper)
   {
     super(paramLooper);
   }
@@ -16,7 +16,7 @@ class TPThreadUtil$EventHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPThreadUtil.EventHandler
  * JD-Core Version:    0.7.0.1
  */

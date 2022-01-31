@@ -1,33 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface oul<DataType>
+public class oul
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract DataType a(int paramInt);
+  public oul(DailyTipsFoldUtils.1 param1, View paramView, int paramInt) {}
   
-  public abstract List<DataType> a();
-  
-  public abstract void a();
-  
-  public abstract void a(DataType paramDataType, int paramInt);
-  
-  public abstract void a(List<DataType> paramList);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b();
-  
-  public abstract void b(List<DataType> paramList);
-  
-  public abstract void c();
-  
-  public abstract void c(List<ChannelCoverInfo> paramList);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
+    int i = (int)(this.jdField_a_of_type_Int * f);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("DailyTipsFoldUtils", 2, "percent = " + f + ", scrollHeight = " + i);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oul
  * JD-Core Version:    0.7.0.1
  */

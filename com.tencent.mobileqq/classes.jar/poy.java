@@ -1,29 +1,55 @@
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class poy
+  implements ViewBase.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<Long> a;
-  public poz a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public String toString()
+  public poy(ArticleInfo paramArticleInfo, Context paramContext, int paramInt)
   {
-    return "channelID:" + this.jdField_a_of_type_Int + " channelType:" + this.jdField_b_of_type_Int + " upDateTimes：" + this.jdField_c_of_type_Int + " beginRecommendSeq：" + this.jdField_a_of_type_Long + " endRecommendSeq：" + this.jdField_b_of_type_Long + " beginCollectionID:" + this.jdField_c_of_type_Long + " endCollectionID:" + this.d + "   subscriptionArticleList:" + this.jdField_a_of_type_JavaUtilList + " innerMsg:" + this.jdField_a_of_type_Poz;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a()
+  {
+    nrt.a(null, null, "0X80097D7", "0X80097D7", 0, 0, "", "", "", "", false);
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    String str = "";
+    paramViewBase = str;
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      paramViewBase = str;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
+      {
+        paramViewBase = str;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null)
+        {
+          paramViewBase = str;
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f != null)
+          {
+            paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f;
+            ors.d(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+          }
+        }
+      }
+    }
+    QLog.d("OnFriendsBiuClickListener", 1, "jump channel,  context:" + this.jdField_a_of_type_AndroidContentContext + "  url:" + paramViewBase);
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     poy
  * JD-Core Version:    0.7.0.1
  */

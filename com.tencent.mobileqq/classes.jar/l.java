@@ -271,7 +271,7 @@ public class l
           {
             bool = true;
             label917:
-            if ((i3 <= paramInt1) || (i1 <= i3) || (!a(ha.a(paramCharSequence, paramInt1, i3), paramInt1, i4, 0, false, i2))) {
+            if ((i3 <= paramInt1) || (i1 <= i3) || (!a(fj.a(paramCharSequence, paramInt1, i3), paramInt1, i4, 0, false, i2))) {
               break label1082;
             }
           }
@@ -306,19 +306,19 @@ public class l
           break label917;
           label1082:
           if ((localCharacterStyle instanceof ClickableSpan)) {
-            if (a(ha.a(paramCharSequence, i3, i1), i3, i4, 1, bool, i2)) {
+            if (a(fj.a(paramCharSequence, i3, i1), i3, i4, 1, bool, i2)) {
               break label951;
             }
           }
           for (;;)
           {
-            if ((paramInt2 == arrayOfCharacterStyle.length - 1) && (!bool) && (a(ha.a(paramCharSequence, i1, ((Spanned)localObject).length()), i1, i4, 0, true, i2))) {
+            if ((paramInt2 == arrayOfCharacterStyle.length - 1) && (!bool) && (a(fj.a(paramCharSequence, i1, ((Spanned)localObject).length()), i1, i4, 0, true, i2))) {
               break label1280;
             }
             paramInt2 += 1;
             paramInt1 = i1;
             break;
-            if (((localCharacterStyle instanceof aykr)) || ((localCharacterStyle instanceof awdb)))
+            if (((localCharacterStyle instanceof bain)) || ((localCharacterStyle instanceof axye)))
             {
               if (!a(localCharacterStyle, i3, i1, 2, bool)) {
                 continue;
@@ -327,7 +327,7 @@ public class l
             }
             if ((localCharacterStyle instanceof RelativeSizeSpan))
             {
-              if (!a((RelativeSizeSpan)localCharacterStyle, ha.a(paramCharSequence, i3, i1), i3, i4, 3, bool, i2)) {
+              if (!a((RelativeSizeSpan)localCharacterStyle, fj.a(paramCharSequence, i3, i1), i3, i4, 3, bool, i2)) {
                 continue;
               }
               break label951;
@@ -446,9 +446,9 @@ public class l
   {
     boolean bool = false;
     Object localObject;
-    if ((paramCharacterStyle instanceof aykr))
+    if ((paramCharacterStyle instanceof bain))
     {
-      localObject = ((aykr)paramCharacterStyle).a().getBounds();
+      localObject = ((bain)paramCharacterStyle).a().getBounds();
       paramInt2 = ((Rect)localObject).width();
       paramInt1 = ((Rect)localObject).height();
     }
@@ -490,12 +490,12 @@ public class l
       while (!paramBoolean)
       {
         return bool;
-        if (!(paramCharacterStyle instanceof awdb)) {
+        if (!(paramCharacterStyle instanceof axye)) {
           break label423;
         }
-        localObject = (awdb)paramCharacterStyle;
-        paramInt2 = ((awdb)localObject).a();
-        paramInt1 = ((awdb)localObject).b();
+        localObject = (axye)paramCharacterStyle;
+        paramInt2 = ((axye)localObject).a();
+        paramInt1 = ((axye)localObject).b();
         break;
         this.p += ((r)localObject).jdField_b_of_type_Int;
         ((r)localObject).jdField_d_of_type_Int = this.w;
@@ -859,7 +859,7 @@ public class l
     }
   }
   
-  public int a(int paramInt1, int paramInt2, hx paramhx)
+  public int a(int paramInt1, int paramInt2, gg paramgg)
   {
     int i1 = 0;
     while (i1 < this.jdField_b_of_type_JavaUtilList.size())
@@ -869,7 +869,7 @@ public class l
       {
         int i2 = localr.jdField_e_of_type_Int;
         if (paramInt2 <= localr.jdField_c_of_type_Int + i2) {
-          return paramhx.b(i1);
+          return paramgg.b(i1);
         }
       }
       i1 += 1;
@@ -1036,12 +1036,12 @@ public class l
     }
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      a(ajya.a(2131704865));
+      a(alpo.a(2131705237));
       return false;
     }
     if (this.jdField_a_of_type_ArrayOfInt.length <= 0)
     {
-      a(ajya.a(2131704864));
+      a(alpo.a(2131705236));
       return false;
     }
     c();
@@ -1118,7 +1118,7 @@ public class l
       i.a("FounderColorLayout", "字数：" + localCharSequence.length() + "   字号：" + this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getTextSize() + "px   排版耗时：" + d1 + "ms");
     }
     if (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null) {
-      hv.a("action_measure", paramETFont.mFontId, 4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getText().length(), d1);
+      ge.a("action_measure", paramETFont.mFontId, 4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getText().length(), d1);
     }
     if (b()) {
       return this.jdField_h_of_type_ArrayOfInt;
@@ -1253,22 +1253,22 @@ public class l
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject, localr.jdField_d_of_type_Int, localr.jdField_e_of_type_Int + localr.jdField_c_of_type_Int - i2, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       continue;
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawRect(localr.jdField_d_of_type_Int, localr.jdField_e_of_type_Int, localr.jdField_d_of_type_Int + localr.jdField_b_of_type_Int, localr.jdField_e_of_type_Int + localr.jdField_c_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if ((localr.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof aykr))
+      if ((localr.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bain))
       {
-        ((aykr)localr.jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localr.jdField_d_of_type_Int, localr.jdField_e_of_type_Int, localr.jdField_e_of_type_Int + localr.jdField_c_of_type_Int, localr.jdField_e_of_type_Int + localr.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        ((bain)localr.jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localr.jdField_d_of_type_Int, localr.jdField_e_of_type_Int, localr.jdField_e_of_type_Int + localr.jdField_c_of_type_Int, localr.jdField_e_of_type_Int + localr.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
-      else if ((localr.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof awdb))
+      else if ((localr.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof axye))
       {
-        localObject = (awdb)localr.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        ((awdb)localObject).jdField_a_of_type_Boolean = false;
-        ((awdb)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localr.jdField_d_of_type_Int, localr.jdField_e_of_type_Int, localr.jdField_e_of_type_Int, localr.jdField_e_of_type_Int + localr.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        localObject = (axye)localr.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        ((axye)localObject).jdField_a_of_type_Boolean = false;
+        ((axye)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localr.jdField_d_of_type_Int, localr.jdField_e_of_type_Int, localr.jdField_e_of_type_Int, localr.jdField_e_of_type_Int + localr.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     l
  * JD-Core Version:    0.7.0.1
  */

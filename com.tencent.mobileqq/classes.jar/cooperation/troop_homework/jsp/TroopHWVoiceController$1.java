@@ -3,20 +3,20 @@ package cooperation.troop_homework.jsp;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bhxg;
-import bhxx;
+import bjyr;
+import bjzi;
 
 public class TroopHWVoiceController$1
   implements Runnable
 {
-  public TroopHWVoiceController$1(bhxx parambhxx) {}
+  public TroopHWVoiceController$1(bjzi parambjzi) {}
   
   public void run()
   {
-    String str = bhxg.a(bhxx.a(this.this$0));
+    String str = bjyr.a(bjzi.a(this.this$0));
     if (!TextUtils.isEmpty(str))
     {
-      Message localMessage = bhxx.a(this.this$0).obtainMessage();
+      Message localMessage = bjzi.a(this.this$0).obtainMessage();
       localMessage.what = 0;
       localMessage.obj = str;
       localMessage.sendToTarget();
@@ -25,7 +25,7 @@ public class TroopHWVoiceController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWVoiceController.1
  * JD-Core Version:    0.7.0.1
  */

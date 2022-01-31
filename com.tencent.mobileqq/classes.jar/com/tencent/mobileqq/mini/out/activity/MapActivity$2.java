@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import ajya;
-import akuo;
+import alpo;
+import amle;
 import android.graphics.Color;
-import bbgu;
+import bdfq;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 class MapActivity$2
-  extends akuo
+  extends amle
 {
   MapActivity$2(MapActivity paramMapActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, boolean paramBoolean5)
   {
@@ -40,13 +40,13 @@ class MapActivity$2
       }
       return;
     }
-    this.this$0.dialog.setTitle(ajya.a(2131706459)).setMessage(ajya.a(2131706455)).setPositiveButton(ajya.a(2131706457), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(ajya.a(2131706456), Color.parseColor("#000000"), new MapActivity.2.1(this));
+    this.this$0.dialog.setTitle(alpo.a(2131706831)).setMessage(alpo.a(2131706827)).setPositiveButton(alpo.a(2131706829), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(alpo.a(2131706828), Color.parseColor("#000000"), new MapActivity.2.1(this));
     this.this$0.dialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity.2
  * JD-Core Version:    0.7.0.1
  */

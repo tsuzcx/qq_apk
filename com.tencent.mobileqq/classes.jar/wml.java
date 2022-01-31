@@ -1,24 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 
-public class wml
-  implements Animation.AnimationListener
+public abstract interface wml
 {
-  public wml(CommentBottomBar paramCommentBottomBar) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    CommentBottomBar.a(this.a, true);
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(@NonNull Activity paramActivity);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wml
  * JD-Core Version:    0.7.0.1
  */

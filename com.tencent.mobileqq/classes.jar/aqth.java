@@ -1,101 +1,111 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.ImageSwitcher;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl.2.1;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl.2.2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr.ICallBackListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import java.lang.ref.WeakReference;
-import java.util.List;
+import java.util.LinkedHashMap;
+import mqq.os.MqqHandler;
 
 public class aqth
-  implements Handler.Callback
+  implements TVK_IDownloadMgr.ICallBackListener
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private WeakReference<ImageSwitcher> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 1;
-  private WeakReference<ImageSwitcher> jdField_b_of_type_JavaLangRefWeakReference;
+  aqth(aqtf paramaqtf) {}
   
-  public aqth(ImageSwitcher paramImageSwitcher1, ImageSwitcher paramImageSwitcher2)
+  public void downloadCallBack(String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageSwitcher1);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramImageSwitcher2);
-    paramImageSwitcher1.setAnimateFirstView(false);
-    paramImageSwitcher1.setAnimateFirstView(false);
-    AlphaAnimation localAlphaAnimation1 = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation1.setDuration(1400L);
-    AlphaAnimation localAlphaAnimation2 = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation2.setDuration(1400L);
-    paramImageSwitcher1.setInAnimation(localAlphaAnimation1);
-    paramImageSwitcher2.setInAnimation(localAlphaAnimation2);
-    localAlphaAnimation1 = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation1.setDuration(1400L);
-    paramImageSwitcher1.setOutAnimation(localAlphaAnimation1);
-    paramImageSwitcher2.setOutAnimation(localAlphaAnimation1);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameImagePlayHelper", 0, "[startPlay] set next image :" + this);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
+    int i;
+    int j;
+    long l2;
+    long l1;
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQGameImagePlayHelper", 0, "[handleMessage] set next image");
+      paramString = arni.a(paramString);
+      i = Integer.parseInt((String)paramString.get("callbacktype"));
+      j = Integer.parseInt((String)paramString.get("playid"));
+      l2 = Long.parseLong((String)paramString.get("offset"));
+      if (this.a.jdField_b_of_type_Int == 0) {
+        this.a.jdField_b_of_type_Int = aqtf.a(this.a, this.a.jdField_a_of_type_Arek.a());
       }
-      int i;
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-      {
-        paramMessage = (ImageSwitcher)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        i = this.jdField_a_of_type_Int + 1;
-        this.jdField_a_of_type_Int = i;
-        if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-          this.jdField_a_of_type_Int = 0;
-        }
-        paramMessage.setImageDrawable(URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)));
+      if ((j != this.a.jdField_c_of_type_Int) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration() > 1L) && (l2 > this.a.jdField_a_of_type_Long)) {
+        this.a.jdField_a_of_type_Long = l2;
       }
-      if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null))
-      {
-        paramMessage = (ImageSwitcher)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-        i = this.jdField_b_of_type_Int + 1;
-        this.jdField_b_of_type_Int = i;
-        if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-          this.jdField_b_of_type_Int = 0;
-        }
-        paramMessage.setImageDrawable(URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_b_of_type_Int)));
+      l1 = l2;
+      if (l2 < this.a.jdField_a_of_type_Long) {
+        l1 = this.a.jdField_a_of_type_Long;
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
-      return false;
+      if (!this.a.jdField_c_of_type_Boolean) {
+        break label956;
+      }
+      QLog.i("FileVideoManager<FileAssistant>", 4, "[" + this.a.hashCode() + "].[" + this.a.jdField_a_of_type_Arek.a() + "],playid +[" + j + "] download success! igon");
+      return;
     }
-    catch (Exception paramMessage)
+    catch (Exception paramString)
     {
-      QLog.e("QQGameImagePlayHelper", 1, "[handleMessage] ");
+      paramString.printStackTrace();
+      return;
     }
-    return false;
+    if (!this.a.jdField_b_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileVideoManager<FileAssistant>", 4, "[" + this.a.hashCode() + "]mDownloadMgr[" + this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.hashCode() + "]" + this.a.jdField_a_of_type_Arek.a() + "],playid +[" + j + "] File download over igon");
+      }
+    }
+    else
+    {
+      l2 = arni.a(this.a.jdField_c_of_type_JavaLangString);
+      if (QLog.isDebugVersion()) {
+        QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a.jdField_a_of_type_Arek.a() + "],playid +[" + j + "],downloadId[" + this.a.jdField_c_of_type_Int + "],pos[" + l1 + "], tmpLen[" + l2 + "],block[" + this.a.jdField_b_of_type_Int + "],bDownloadBlock[" + this.a.jdField_a_of_type_Boolean + "],progress[" + (float)l2 / (float)this.a.jdField_a_of_type_Arek.a() + "]");
+      }
+      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (l1 - l2 > this.a.jdField_b_of_type_Int) && (!this.a.jdField_a_of_type_Boolean))
+      {
+        ThreadManager.getUIHandler().post(new FileVideoManager.VideoControl.2.1(this));
+        if (QLog.isColorLevel())
+        {
+          QLog.i("FileVideoManager<FileAssistant>.FVBlock", 4, "[" + this.a.jdField_a_of_type_Arek.a() + "],setRemainTime for playID[" + this.a.jdField_a_of_type_Int + "]");
+          QLog.i("FileVideoManager<FileAssistant>.FVBlock", 4, "[" + this.a.jdField_a_of_type_Arek.a() + "],startDownload for recv block [" + this.a.d + "]");
+        }
+        this.a.jdField_a_of_type_Boolean = true;
+        return;
+      }
+      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.d > 0) && (l1 - l2 < this.a.jdField_b_of_type_Int))
+      {
+        ThreadManager.getUIHandler().post(new FileVideoManager.VideoControl.2.2(this));
+        if (QLog.isColorLevel()) {
+          QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.jdField_a_of_type_Arek.a() + "] block is full will be stop [" + this.a.d + "]");
+        }
+        this.a.jdField_a_of_type_Boolean = false;
+      }
+      float f = (float)l2 / (float)this.a.jdField_a_of_type_Arek.a();
+      this.a.jdField_a_of_type_Arek.a(l2);
+      return;
+      if (arni.a(this.a.jdField_c_of_type_JavaLangString) == this.a.jdField_a_of_type_Arek.a())
+      {
+        aqtf.a(this.a);
+        return;
+        this.a.jdField_b_of_type_Boolean = false;
+        this.a.jdField_a_of_type_Arek.a(false);
+        if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+        {
+          paramString = (aqtd)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (paramString != null) {
+            paramString.a(201, "");
+          }
+        }
+        aqsz.a(this.a.jdField_a_of_type_Arek.a());
+      }
+    }
+    return;
+    label956:
+    switch (i)
+    {
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqth
  * JD-Core Version:    0.7.0.1
  */

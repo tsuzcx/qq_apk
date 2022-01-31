@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic;
 
-import bbdx;
+import bdcs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.ByteArrayOutputStream;
@@ -23,7 +23,7 @@ class OlympicManager$7
         localObjectOutputStream.writeObject(this.a);
         localObjectOutputStream.close();
         localByteArrayOutputStream.close();
-        bbdx.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_torchinfo_" + this.this$0.a.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
+        bdcs.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_torchinfo_" + this.this$0.a.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
         return;
       }
       catch (Throwable localThrowable)
@@ -36,7 +36,7 @@ class OlympicManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlympicManager.7
  * JD-Core Version:    0.7.0.1
  */

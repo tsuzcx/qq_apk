@@ -1,13 +1,13 @@
 package dov.com.qq.im.ptv;
 
-import bjpq;
-import bjrk;
+import bmba;
+import bmcu;
 import com.tencent.qphone.base.util.QLog;
 
 public class LightWeightCameraCaptureUnit$12
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$12(bjpq parambjpq) {}
+  public LightWeightCameraCaptureUnit$12(bmba parambmba) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class LightWeightCameraCaptureUnit$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightWeightCameraCaptureUnit.12
  * JD-Core Version:    0.7.0.1
  */

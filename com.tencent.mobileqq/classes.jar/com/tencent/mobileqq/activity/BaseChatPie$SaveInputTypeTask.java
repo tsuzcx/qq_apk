@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import ajxl;
-import auko;
+import aloz;
+import awbv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.NoC2CExtensionInfo;
@@ -10,12 +10,12 @@ import java.lang.ref.WeakReference;
 public class BaseChatPie$SaveInputTypeTask
   implements Runnable
 {
-  private auko jdField_a_of_type_Auko;
+  private awbv jdField_a_of_type_Awbv;
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public BaseChatPie$SaveInputTypeTask(auko paramauko, QQAppInterface paramQQAppInterface)
+  public BaseChatPie$SaveInputTypeTask(awbv paramawbv, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Auko = paramauko;
+    this.jdField_a_of_type_Awbv = paramawbv;
     if (paramQQAppInterface != null) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     }
@@ -32,19 +32,19 @@ public class BaseChatPie$SaveInputTypeTask
         return;
         localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       } while (localObject == null);
-      localObject = (ajxl)((QQAppInterface)localObject).getManager(51);
-      if ((this.jdField_a_of_type_Auko instanceof ExtensionInfo))
+      localObject = (aloz)((QQAppInterface)localObject).getManager(51);
+      if ((this.jdField_a_of_type_Awbv instanceof ExtensionInfo))
       {
-        ((ajxl)localObject).a((ExtensionInfo)this.jdField_a_of_type_Auko);
+        ((aloz)localObject).a((ExtensionInfo)this.jdField_a_of_type_Awbv);
         return;
       }
-    } while (!(this.jdField_a_of_type_Auko instanceof NoC2CExtensionInfo));
-    ((ajxl)localObject).a((NoC2CExtensionInfo)this.jdField_a_of_type_Auko, true);
+    } while (!(this.jdField_a_of_type_Awbv instanceof NoC2CExtensionInfo));
+    ((aloz)localObject).a((NoC2CExtensionInfo)this.jdField_a_of_type_Awbv, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.SaveInputTypeTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
-import aumc;
-import ved;
+import awbv;
+import awdj;
+import wsv;
 
 public class VideoCollectionEntry
-  extends auko
+  extends awbv
 {
   public String address;
   public int collectionCount;
@@ -16,7 +16,7 @@ public class VideoCollectionEntry
   public String feedId;
   public String groupId;
   public int hasShareToDiscover;
-  @aumc
+  @awdj
   public String key;
   public String label;
   public String nextCookie;
@@ -34,7 +34,7 @@ public class VideoCollectionEntry
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      ved.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
+      wsv.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
     }
     return -1;
   }
@@ -66,7 +66,7 @@ public class VideoCollectionEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.VideoCollectionEntry
  * JD-Core Version:    0.7.0.1
  */

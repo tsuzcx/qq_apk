@@ -1,20 +1,26 @@
-public abstract interface apdb
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+
+class apdb
+  implements Animation.AnimationListener
 {
-  public abstract void a(long paramLong, int paramInt, apda paramapda);
+  apdb(apda paramapda) {}
   
-  public abstract void a(long paramLong, apda paramapda);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.a.setVisibility(8);
+    this.a.a.d();
+  }
   
-  public abstract void a(long paramLong, bbmu parambbmu);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, apda paramapda);
-  
-  public abstract boolean a(long paramLong, apda paramapda);
-  
-  public abstract void b(long paramLong, apda paramapda);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apdb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
+import aail;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBannerAdListener;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.ICmdListener;
@@ -12,7 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import ysu;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
 class AdProxyImpl$SDKBannerAdView$1
   implements AdProxy.ICmdListener
@@ -26,9 +28,9 @@ class AdProxyImpl$SDKBannerAdView$1
         this.this$1.mBannerListener.onNoAD(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
       }
     }
-    label264:
-    label275:
-    label304:
+    label284:
+    label295:
+    label324:
     do
     {
       do
@@ -41,7 +43,7 @@ class AdProxyImpl$SDKBannerAdView$1
             int i = paramJSONObject.getInt("retCode");
             paramJSONObject = paramJSONObject.getString("response");
             if ((i != 0) || (TextUtils.isEmpty(paramJSONObject))) {
-              break label304;
+              break label324;
             }
             String str = AdProxyImpl.access$000(this.this$1.this$0, paramJSONObject);
             paramJSONObject = null;
@@ -49,14 +51,15 @@ class AdProxyImpl$SDKBannerAdView$1
               paramJSONObject = AdProxyImpl.access$100(this.this$1.this$0, str);
             }
             if (paramJSONObject == null) {
-              break label264;
+              break label284;
             }
             GdtAd localGdtAd = new GdtAd(paramJSONObject);
-            ysu.a().a(localGdtAd);
+            aail.a().a(localGdtAd);
             this.this$1.mReportUrl = paramJSONObject.report_info.exposure_url.get();
+            this.this$1.mAdId = paramJSONObject.report_info.trace_info.aid.get();
             this.this$1.mGdtBannerView = AdProxyImpl.access$300(this.this$1.this$0, this.val$activity, paramJSONObject, this.this$1.mWidth, this.this$1.mHeight);
             if (this.this$1.mGdtBannerView == null) {
-              break label275;
+              break label295;
             }
             if (this.this$1.mBannerListener != null) {
               this.this$1.mBannerListener.onADReceive();
@@ -84,7 +87,7 @@ class AdProxyImpl$SDKBannerAdView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBannerAdView.1
  * JD-Core Version:    0.7.0.1
  */

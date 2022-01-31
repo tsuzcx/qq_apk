@@ -2,8 +2,8 @@ package com.tencent.map.geolocation.internal;
 
 import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import c.t.m.g.dg;
+import androidx.annotation.Nullable;
+import c.t.m.g.dh;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationRequest;
 import com.tencent.map.geolocation.TencentLocationUtils;
@@ -56,7 +56,7 @@ public class TencentExtraKeys
               if (paramTencentLog == null)
               {
                 paramTencentLog = null;
-                dg.a(paramTencentLog);
+                dh.a(paramTencentLog);
               }
             }
             else
@@ -215,7 +215,7 @@ public class TencentExtraKeys
   {
     try
     {
-      dg.a(null);
+      dh.a(null);
       boolean bool = sTencentLogs.remove(paramTencentLog);
       return bool;
     }
@@ -272,7 +272,7 @@ public class TencentExtraKeys
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.geolocation.internal.TencentExtraKeys
  * JD-Core Version:    0.7.0.1
  */

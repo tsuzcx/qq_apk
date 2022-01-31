@@ -1,101 +1,43 @@
+import com.tencent.biz.qqstory.network.handler.GetUserIconHandler.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class uyv
-  implements uzy
 {
-  protected tjb a;
-  private uyc jdField_a_of_type_Uyc;
-  private uyx jdField_a_of_type_Uyx;
-  protected uzb a;
-  protected uzz a;
-  protected vaa a;
+  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public static boolean a;
   
-  public uyv(uyx paramuyx)
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_Uyx = paramuyx;
-    this.jdField_a_of_type_Uyc = new uyc();
-  }
-  
-  public Object a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return getClass().getSimpleName();
-  }
-  
-  public void a()
-  {
-    ved.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
-    if (this.jdField_a_of_type_Uzb == null)
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      if (this.jdField_a_of_type_Vaa != null)
+      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
       {
-        this.jdField_a_of_type_Vaa.a(a());
-        return;
+        jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        jdField_a_of_type_JavaUtilSet.add(paramString);
       }
-      ved.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Uzb.a);
-    this.jdField_a_of_type_Tjb = tjb.a(localArrayList);
-    this.jdField_a_of_type_Tjb.a("GetMyStoryDesFromVidListStep");
-    this.jdField_a_of_type_Tjb.a(new uyw(this, localArrayList));
-    this.jdField_a_of_type_Tjb.b();
-  }
-  
-  public void a(Object paramObject)
-  {
-    boolean bool2 = true;
-    if ((paramObject instanceof uzb))
-    {
-      this.jdField_a_of_type_Uzb = ((uzb)paramObject);
-      return;
-    }
-    paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-    if (this.jdField_a_of_type_Uzb == null)
-    {
-      bool1 = true;
-      ved.e("GetMyStoryDesFromVidListStep", bool1);
-      paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-      if (this.jdField_a_of_type_Uzb != null) {
-        break label96;
+      if (!jdField_a_of_type_Boolean)
+      {
+        jdField_a_of_type_Boolean = true;
+        ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
       }
-    }
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      vxp.a(bool1, new Object[0]);
       return;
-      bool1 = false;
-      break;
     }
   }
   
-  public void a(uzz paramuzz)
+  public static void a(ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_Uzz = paramuzz;
+    paramArrayList = new uyw(paramArrayList);
+    uyx localuyx = new uyx();
+    upq.a().a(paramArrayList, localuyx);
   }
-  
-  public void a(vaa paramvaa)
-  {
-    this.jdField_a_of_type_Vaa = paramvaa;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyv
  * JD-Core Version:    0.7.0.1
  */

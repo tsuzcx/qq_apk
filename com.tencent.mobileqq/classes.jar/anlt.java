@@ -1,33 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class anlt
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public anlt(DataReportViewer paramDataReportViewer) {}
+  public anlt(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a.setVisibility(0);
-    paramAnimator = new AlphaAnimation(0.0F, 1.0F);
-    paramAnimator.setFillAfter(true);
-    paramAnimator.setDuration(200L);
-    this.a.a.startAnimation(paramAnimator);
-    paramAnimator.setAnimationListener(new anlu(this));
+    paramView = (bhpy)bhql.a(BaseActivity.sTopActivity, null);
+    paramView.a(BaseActivity.sTopActivity.getString(2131690268));
+    paramView.a(2131690267, 3);
+    paramView.c(2131690266);
+    paramView.setOnDismissListener(new anlu(this, paramView));
+    paramView.a(new anlv(this, paramView));
+    if (!paramView.isShowing()) {
+      paramView.show();
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlt
  * JD-Core Version:    0.7.0.1
  */

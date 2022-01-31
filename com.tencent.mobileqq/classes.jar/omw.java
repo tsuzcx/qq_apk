@@ -1,18 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.util.Pair;
-import java.util.Comparator;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-final class omw
-  implements Comparator<Pair<Long, BaseArticleInfo>>
+class omw
+  extends ClickableSpan
 {
-  public int a(Pair<Long, BaseArticleInfo> paramPair1, Pair<Long, BaseArticleInfo> paramPair2)
+  omw(omt paramomt, SubCommentData paramSubCommentData) {}
+  
+  public void onClick(View paramView)
   {
-    return ((Long)paramPair2.first).compareTo((Long)paramPair1.first);
+    olt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
+    paramView = new oke(this.jdField_a_of_type_Omt).a().a();
+    nrt.a(null, olt.a(this.jdField_a_of_type_Omt.a), "0X800955B", "0X800955B", 0, 0, String.valueOf(this.jdField_a_of_type_Omt.a.mArticleID), String.valueOf(this.jdField_a_of_type_Omt.a.mAlgorithmID), this.jdField_a_of_type_Omt.a.innerUniqueID, paramView, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     omw
  * JD-Core Version:    0.7.0.1
  */

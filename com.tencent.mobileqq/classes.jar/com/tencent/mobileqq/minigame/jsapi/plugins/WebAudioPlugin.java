@@ -2,11 +2,14 @@ package com.tencent.mobileqq.minigame.jsapi.plugins;
 
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
+import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
+import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.minigame.jsapi.webaudio.WebAudioManager;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
@@ -45,20 +48,17 @@ public class WebAudioPlugin
   public static final String API_WEB_AUDIO_CONNECT_AUDIO_NODE = "webAudioConnectAudioNode";
   private static final Set<String> S_EVENT_MAP = new WebAudioPlugin.1();
   private static final String TAG = "WebAudioPlugin";
-  private ITTEngine mTTEngine = GameLoadManager.g().getGameEngine();
   private AtomicInteger sId = new AtomicInteger();
-  
-  private boolean getWebAudioSoLoadStatus()
-  {
-    return true;
-  }
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
     GameLog.getInstance().d("WebAudioPlugin", "handleNativeRequest " + paramString1 + " jsonParams " + paramString2);
-    if (!this.mTTEngine.getOptionalSoLoadStatus("webAudio")) {
+    Object localObject = GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.jsPluginEngine.appBrandRuntime.activity);
+    if (localObject != null) {}
+    for (localObject = ((GameRuntimeLoader)localObject).getGameEngine(); (localObject == null) || (!((ITTEngine)localObject).getOptionalSoLoadStatus("webAudio")); localObject = null) {
       return ApiUtil.wrapCallbackFail(paramString1, null).toString();
     }
+    WebAudioManager.getInstance().setAudioNativeManager((ITTEngine)localObject);
     if ("createWebAudioContext".equals(paramString1)) {
       return ApiUtil.wrapCallbackOk(paramString1, WebAudioManager.getInstance().createAudioContext(paramString2)).toString();
     }
@@ -84,18 +84,18 @@ public class WebAudioPlugin
         {
           paramString1 = new JSONObject(paramString2).getString("operationType");
           if (!paramString1.equals("suspend")) {
-            break label242;
+            break label287;
           }
-          WebAudioManager.getInstance().suspendAudioContext(this.mTTEngine);
+          WebAudioManager.getInstance().suspendAudioContext((ITTEngine)localObject);
         }
         catch (Throwable paramString1)
         {
           GameLog.getInstance().e("WebAudioPlugin", "handleNativeRequest API_OPERATE_WEB_AUDIO_CONTEXT error " + paramString1.getMessage());
         }
         continue;
-        label242:
+        label287:
         if (paramString1.equals("resume")) {
-          WebAudioManager.getInstance().resumeAudioContext(this.mTTEngine);
+          WebAudioManager.getInstance().resumeAudioContext((ITTEngine)localObject);
         }
       }
       else
@@ -134,8 +134,15 @@ public class WebAudioPlugin
           {
             paramString2 = new JSONObject(paramString2);
             paramInt = paramString2.getInt("channelId");
-            i = paramString2.getInt("bufferId");
-            paramString1 = ApiUtil.wrapCallbackOk(paramString1, WebAudioManager.getInstance().setSourceBuffer(paramInt, i)).toString();
+            i = paramString2.optInt("bufferId", -1);
+            j = paramString2.optInt("decodeId", -1);
+            if (i != -1) {
+              return ApiUtil.wrapCallbackOk(paramString1, WebAudioManager.getInstance().setSourceBuffer(paramInt, i)).toString();
+            }
+            if (j == -1) {
+              continue;
+            }
+            paramString1 = ApiUtil.wrapCallbackOk(paramString1, WebAudioManager.getInstance().setDecodingQueueBuffer(paramInt, j)).toString();
             return paramString1;
           }
           catch (Throwable paramString1)
@@ -217,7 +224,9 @@ public class WebAudioPlugin
             boolean bool = paramString2.getBoolean("loop");
             paramInt = paramString2.getInt("channelId");
             i = paramString2.getInt("audioId");
-            WebAudioManager.getInstance().setBufferSourceLoop(i, paramInt, bool);
+            if (bool) {
+              WebAudioManager.getInstance().setBufferSourceLoop(i, paramInt, bool);
+            }
             paramString1 = ApiUtil.wrapCallbackOk(paramString1, null).toString();
             return paramString1;
           }
@@ -259,7 +268,7 @@ public class WebAudioPlugin
             i = paramString2.getInt("channelId");
             paramString2 = WebAudioManager.getInstance().getBufferChannelData(paramInt, i);
             paramJsRuntime = new JSONObject();
-            NativeBuffer.packNativeBuffer((byte[])paramString2, NativeBuffer.TYPE_BUFFER_NATIVE, "data", paramJsRuntime, this.mTTEngine.getNativeBufferPool());
+            NativeBuffer.packNativeBuffer((byte[])paramString2, NativeBuffer.TYPE_BUFFER_NATIVE, "data", paramJsRuntime, ((ITTEngine)localObject).getNativeBufferPool());
             paramString1 = ApiUtil.wrapCallbackOk(paramString1, paramJsRuntime).toString();
             return paramString1;
           }
@@ -272,7 +281,7 @@ public class WebAudioPlugin
           {
             paramString2 = new JSONObject(paramString2);
             paramInt = this.sId.incrementAndGet();
-            paramString2 = NativeBuffer.unpackNativeBuffer(paramString2, "data", this.mTTEngine.getNativeBufferPool());
+            paramString2 = NativeBuffer.unpackNativeBuffer(paramString2, "data", ((ITTEngine)localObject).getNativeBufferPool());
             if (paramString2 != null)
             {
               paramString2 = paramString2.buf;
@@ -298,7 +307,7 @@ public class WebAudioPlugin
               i = paramString2.optInt("sourceId", -1);
               j = paramString2.getInt("channelId");
               k = paramString2.optInt("startInChannel", 0);
-              paramString2 = NativeBuffer.unpackNativeBuffer(paramString2, "data", this.mTTEngine.getNativeBufferPool());
+              paramString2 = NativeBuffer.unpackNativeBuffer(paramString2, "data", ((ITTEngine)localObject).getNativeBufferPool());
               if (paramString2 == null) {
                 continue;
               }
@@ -372,7 +381,7 @@ public class WebAudioPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.WebAudioPlugin
  * JD-Core Version:    0.7.0.1
  */

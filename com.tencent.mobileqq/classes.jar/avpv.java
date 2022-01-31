@@ -1,279 +1,182 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import com.tencent.mobileqq.redtouch.RedTypeInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageForNearbyRecommenderTips;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0x89.Submsgtype0x89.NumRedBusiInfo;
+import mqq.app.MobileQQ;
 
 public class avpv
 {
-  public static int a(String paramString1, String paramString2)
+  public static void a(Context paramContext, String paramString, List<Object> paramList)
   {
-    if ((paramString1 == null) && (paramString2 == null)) {
-      return 0;
+    if (paramList == null) {
+      return;
     }
-    if ((paramString1 != null) && (paramString2 == null)) {
-      return 1;
-    }
-    if ((paramString1 == null) && (paramString2 != null)) {
-      return -1;
-    }
-    String[] arrayOfString1 = paramString1.split("\\.");
-    String[] arrayOfString2 = paramString2.split("\\.");
-    int i = 0;
-    for (;;)
-    {
-      int j;
-      int k;
-      try
-      {
-        if ((i < arrayOfString1.length) && (i < arrayOfString2.length))
-        {
-          j = Integer.parseInt(arrayOfString1[i]);
-          k = Integer.parseInt(arrayOfString2[i]);
-          if (j < k) {
-            return -1;
-          }
-        }
-        else
-        {
-          if (arrayOfString1.length > i) {
-            return 1;
-          }
-          j = arrayOfString2.length;
-          if (j <= i) {
-            break;
-          }
-          return -1;
-        }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        localNumberFormatException.printStackTrace();
-        return paramString1.compareTo(paramString2);
-      }
-      if (j > k) {
-        return 1;
-      }
-      i += 1;
-    }
+    bdcs.a(paramString + "v5.8.nbr", new Object[] { paramList });
   }
   
-  public static RedAppInfo a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public static void a(AppInterface paramAppInterface, Bundle paramBundle)
   {
-    int j = 0;
-    if (paramAppInfo == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RedTouchUtils BusinessInfo2RedAppInfo", 2, "appInfo is null ");
-      }
-      return null;
-    }
-    RedAppInfo localRedAppInfo = new RedAppInfo();
-    localRedAppInfo.a(paramAppInfo.uiAppId.get());
-    localRedAppInfo.b(paramAppInfo.iNewFlag.get());
-    localRedAppInfo.c(paramAppInfo.type.get());
-    localRedAppInfo.a(paramAppInfo.buffer.get());
-    localRedAppInfo.b(paramAppInfo.path.get());
-    localRedAppInfo.d(paramAppInfo.modify_ts.get());
-    localRedAppInfo.e(paramAppInfo.appset.get());
-    localRedAppInfo.f(paramAppInfo.num.get());
-    localRedAppInfo.c(paramAppInfo.icon_url.get());
-    localRedAppInfo.h(paramAppInfo.icon_type.get());
-    localRedAppInfo.g(paramAppInfo.icon_flag.get());
-    localRedAppInfo.i(paramAppInfo.push_red_ts.get());
-    localRedAppInfo.j(paramAppInfo.mission_level.get());
-    localRedAppInfo.k(paramAppInfo.exposure_max.get());
-    Object localObject = new ArrayList();
+    if (paramBundle == null) {}
     int i;
-    if ((paramAppInfo.missions.get() != null) && (paramAppInfo.missions.get().size() > 0))
+    int j;
+    int k;
+    long l1;
+    long l2;
+    do
     {
-      i = 0;
-      while (i < paramAppInfo.missions.get().size())
-      {
-        ((ArrayList)localObject).add(paramAppInfo.missions.get().get(i));
-        i += 1;
+      return;
+      SharedPreferences.Editor localEditor = paramAppInterface.getApplication().getSharedPreferences("sp_nearbyrecommender", 0).edit();
+      i = paramBundle.getInt("key_login_pull_interval", -1);
+      if (i != -1) {
+        localEditor.putInt(paramAppInterface.getCurrentAccountUin() + "_" + "key_login_pull_interval", i);
       }
-    }
-    localRedAppInfo.a((ArrayList)localObject);
-    localObject = new RedDisplayInfo();
-    RedTypeInfo localRedTypeInfo = new RedTypeInfo();
-    ArrayList localArrayList = new ArrayList();
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo1 = (BusinessInfoCheckUpdate.RedTypeInfo)((BusinessInfoCheckUpdate.RedDisplayInfo)paramAppInfo.red_display_info.get()).tab_display_info.get();
-    paramAppInfo = ((BusinessInfoCheckUpdate.RedDisplayInfo)paramAppInfo.red_display_info.get()).red_type_info.get();
-    if (localRedTypeInfo1 != null)
-    {
-      localRedTypeInfo.setRed_content(localRedTypeInfo1.red_content.get());
-      localRedTypeInfo.setRed_desc(localRedTypeInfo1.red_desc.get());
-      localRedTypeInfo.setRed_priority(localRedTypeInfo1.red_priority.get());
-      localRedTypeInfo.setRed_type(localRedTypeInfo1.red_type.get());
-    }
-    ((RedDisplayInfo)localObject).a(localRedTypeInfo);
-    if ((paramAppInfo != null) && (paramAppInfo.size() > 0))
-    {
-      i = j;
-      while (i < paramAppInfo.size())
-      {
-        localRedTypeInfo = new RedTypeInfo();
-        localRedTypeInfo.setRed_content(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_content.get());
-        localRedTypeInfo.setRed_desc(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_desc.get());
-        localRedTypeInfo.setRed_priority(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_priority.get());
-        localRedTypeInfo.setRed_type(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_type.get());
-        localArrayList.add(localRedTypeInfo);
-        i += 1;
+      j = paramBundle.getInt("key_msgbox_pull_interval", -1);
+      if (j != -1) {
+        localEditor.putInt(paramAppInterface.getCurrentAccountUin() + "_" + "key_msgbox_pull_interval", j);
       }
-    }
-    ((RedDisplayInfo)localObject).a(localArrayList);
-    localRedAppInfo.a((RedDisplayInfo)localObject);
-    return localRedAppInfo;
+      k = paramBundle.getInt("key_expiretime", -1);
+      if (k != -1) {
+        localEditor.putInt(paramAppInterface.getCurrentAccountUin() + "_" + "key_expiretime", k);
+      }
+      l1 = paramBundle.getLong("key_login_pull_time", 0L);
+      if (l1 != 0L) {
+        localEditor.putLong(paramAppInterface.getCurrentAccountUin() + "_" + "key_login_pull_time", l1);
+      }
+      l2 = paramBundle.getLong("key_msgbox_pull_time", 0L);
+      if (l2 != 0L) {
+        localEditor.putLong(paramAppInterface.getCurrentAccountUin() + "_" + "key_msgbox_pull_time", l2);
+      }
+      String str = paramBundle.getString("key_nearbyrecommender_title");
+      if (!TextUtils.isEmpty(str)) {
+        localEditor.putString("key_nearbyrecommender_title", str);
+      }
+      int m = paramBundle.getInt("key_nearbyrecommender_reasontype", -1);
+      if (m != -1) {
+        localEditor.putInt(paramAppInterface.getCurrentAccountUin() + "_" + "key_nearbyrecommender_reasontype", m);
+      }
+      paramBundle = paramBundle.getString("key_nearbyrecommender_uins");
+      if (!"".equals(paramBundle)) {
+        localEditor.putString(paramAppInterface.getCurrentAccountUin() + "_" + "key_nearbyrecommender_uins", paramBundle);
+      }
+      localEditor.commit();
+    } while (!QLog.isColorLevel());
+    QLog.d("NearbyRecommenderUtils", 2, "updateConfigs--->login_pull_interval=" + i + ",msgbox_pull_interval=" + j + ",expiretime=" + k + ",login_pull_time=" + l1 + ",msgbox_pull_time=" + l2);
   }
   
-  public static BusinessInfoCheckUpdate.AppInfo a(RedAppInfo paramRedAppInfo)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (paramRedAppInfo == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyRecommenderUtils", 2, "checkExpireTime");
     }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
-    localAppInfo.uiAppId.set(paramRedAppInfo.a());
-    localAppInfo.iNewFlag.set(paramRedAppInfo.b());
-    localAppInfo.type.set(paramRedAppInfo.c());
-    localAppInfo.buffer.set(paramRedAppInfo.a());
-    localAppInfo.path.set(paramRedAppInfo.b());
-    localAppInfo.modify_ts.set(paramRedAppInfo.d());
-    localAppInfo.missions.set(paramRedAppInfo.a());
-    localAppInfo.appset.set(paramRedAppInfo.e());
-    localAppInfo.num.set(paramRedAppInfo.f());
-    localAppInfo.icon_url.set(paramRedAppInfo.c());
-    localAppInfo.icon_flag.set(paramRedAppInfo.g());
-    localAppInfo.icon_type.set(paramRedAppInfo.h());
-    localAppInfo.push_red_ts.set(paramRedAppInfo.i());
-    localAppInfo.mission_level.set(paramRedAppInfo.j());
-    localAppInfo.exposure_max.set(paramRedAppInfo.k());
-    BusinessInfoCheckUpdate.RedDisplayInfo localRedDisplayInfo = new BusinessInfoCheckUpdate.RedDisplayInfo();
-    Object localObject = paramRedAppInfo.a();
-    paramRedAppInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    RedTypeInfo localRedTypeInfo;
-    if (localObject != null)
+    if (a(paramQQAppInterface))
     {
-      localRedTypeInfo = ((RedDisplayInfo)localObject).a();
-      paramRedAppInfo.red_content.set(localRedTypeInfo.getRed_content());
-      paramRedAppInfo.red_desc.set(localRedTypeInfo.getRed_desc());
-      paramRedAppInfo.red_priority.set(localRedTypeInfo.getRed_priority());
-      paramRedAppInfo.red_type.set(localRedTypeInfo.getRed_type());
-    }
-    localRedDisplayInfo.tab_display_info.set(paramRedAppInfo);
-    paramRedAppInfo = new ArrayList();
-    if (localObject != null)
-    {
-      localObject = ((RedDisplayInfo)localObject).a();
+      int i = paramQQAppInterface.getApplication().getSharedPreferences("sp_nearbyrecommender", 0).getInt("key_expiretime", 172800);
+      long l3 = System.currentTimeMillis();
+      long l2 = 0L;
+      Object localObject = paramQQAppInterface.getApplication().getFileStreamPath(paramQQAppInterface.getCurrentAccountUin() + "v5.8.nbr");
+      long l1 = l2;
       if (localObject != null)
       {
-        int i = 0;
-        while (i < ((List)localObject).size())
-        {
-          localRedTypeInfo = (RedTypeInfo)((List)localObject).get(i);
-          BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo1 = new BusinessInfoCheckUpdate.RedTypeInfo();
-          localRedTypeInfo1.red_content.set(localRedTypeInfo.getRed_content());
-          localRedTypeInfo1.red_desc.set(localRedTypeInfo.getRed_desc());
-          localRedTypeInfo1.red_priority.set(localRedTypeInfo.getRed_priority());
-          localRedTypeInfo1.red_type.set(localRedTypeInfo.getRed_type());
-          paramRedAppInfo.add(localRedTypeInfo1);
-          i += 1;
+        l1 = l2;
+        if (((File)localObject).exists()) {
+          l1 = ((File)localObject).lastModified();
         }
       }
-    }
-    localRedDisplayInfo.red_type_info.set(paramRedAppInfo);
-    localAppInfo.red_display_info.set(localRedDisplayInfo);
-    return localAppInfo;
-  }
-  
-  public static Map<String, JSONObject> a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
-  {
-    if (paramAppInfo != null)
-    {
-      Object localObject = paramAppInfo.buffer.get();
-      if (!bbkk.a((String)localObject)) {
-        try
+      if (i <= Math.abs(l3 - l1) / 1000L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyRecommenderUtils", 2, "checkExpireTime-->expire true");
+        }
+        paramQQAppInterface = paramQQAppInterface.a();
+        localObject = paramQQAppInterface.b(aljq.H, 1001).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          paramAppInfo = new HashMap();
-          localObject = new JSONObject((String)localObject).getJSONObject("msg");
-          Iterator localIterator = ((JSONObject)localObject).keys();
-          while (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            if (!bbkk.a(str))
-            {
-              JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject(str);
-              if (localJSONObject != null)
-              {
-                paramAppInfo.put(str, localJSONObject);
-                continue;
-                return null;
-              }
-            }
+          MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+          if (localMessageRecord.msgtype == -4011) {
+            paramQQAppInterface.a(localMessageRecord, true);
           }
         }
-        catch (JSONException paramAppInfo)
-        {
-          paramAppInfo.printStackTrace();
-        }
       }
     }
-    return paramAppInfo;
   }
   
-  public static boolean a(Submsgtype0x89.NumRedBusiInfo paramNumRedBusiInfo)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
-    boolean bool = true;
-    String str = paramNumRedBusiInfo.str_client_ver_begin.get();
-    paramNumRedBusiInfo = paramNumRedBusiInfo.str_client_ver_end.get();
-    if ((str == null) && (paramNumRedBusiInfo == null)) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyRecommenderUtils", 2, "addNearbyRecommenderMsg");
     }
-    int i = a(str, "8.3.0");
-    int j = a("8.3.0", paramNumRedBusiInfo);
-    if ((i == -1) || (i == 0))
-    {
-      i = 1;
-      if ((j != 1) && (j != 0) && (!paramNumRedBusiInfo.equals("0.0.0"))) {
-        break label94;
-      }
-      j = 1;
-      label79:
-      if ((i == 0) || (j == 0)) {
-        break label99;
-      }
+    MessageForNearbyRecommenderTips localMessageForNearbyRecommenderTips = (MessageForNearbyRecommenderTips)ayvw.a(-4011);
+    long l = ayvc.a();
+    localMessageForNearbyRecommenderTips.init(paramQQAppInterface.getCurrentAccountUin(), aljq.as, aljq.as, "", l, -4011, 1001, l);
+    localMessageForNearbyRecommenderTips.isread = true;
+    abot.a(localMessageForNearbyRecommenderTips, false);
+    localMessageForNearbyRecommenderTips.readFlag = false;
+    localMessageForNearbyRecommenderTips.strBrief = paramString;
+    localMessageForNearbyRecommenderTips.uRecommendTime = paramLong;
+    localMessageForNearbyRecommenderTips.serial();
+    paramQQAppInterface.a().a(localMessageForNearbyRecommenderTips, localMessageForNearbyRecommenderTips.selfuin);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyRecommenderUtils", 2, "-----addGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bdal.a(paramString3));
     }
-    for (;;)
+    long l = ayvc.a();
+    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)ayvw.a(-5007);
+    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, l, -5007, paramInt, l);
+    localMessageForGrayTips.isread = paramBoolean2;
+    if ((!paramBoolean1) || (!alsh.a(paramQQAppInterface, localMessageForGrayTips, false))) {
+      paramQQAppInterface.a().a(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().b(aljq.H, 1001);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
     {
+      paramQQAppInterface = paramQQAppInterface.iterator();
+      MessageRecord localMessageRecord;
+      do
+      {
+        if (!paramQQAppInterface.hasNext()) {
+          break;
+        }
+        localMessageRecord = (MessageRecord)paramQQAppInterface.next();
+      } while ((localMessageRecord.msgtype != -4011) || (((MessageForNearbyRecommenderTips)localMessageRecord).readFlag));
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyRecommenderUtils", 2, "checkUnreadMsgForNearbyRecommender,resut=" + bool);
+      }
       return bool;
-      i = 0;
-      break;
-      label94:
-      j = 0;
-      break label79;
-      label99:
-      bool = false;
     }
+  }
+  
+  public static String[] a(QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("sp_nearbyrecommender", 0);
+    int i = localSharedPreferences.getInt(paramQQAppInterface.getCurrentAccountUin() + "_" + "key_nearbyrecommender_reasontype", 0);
+    paramQQAppInterface = localSharedPreferences.getString(paramQQAppInterface.getCurrentAccountUin() + "_" + "key_nearbyrecommender_uins", "");
+    return new String[] { Integer.toString(i), paramQQAppInterface };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avpv
  * JD-Core Version:    0.7.0.1
  */

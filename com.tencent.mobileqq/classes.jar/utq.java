@@ -1,32 +1,57 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Bundle;
+import android.text.TextUtils;
+import java.util.HashSet;
 
 public class utq
-  extends QQUIEventReceiver<utk, tce>
 {
-  public utq(utk paramutk)
+  final int jdField_a_of_type_Int;
+  public final Bundle a;
+  String jdField_a_of_type_JavaLangString = "";
+  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  boolean jdField_a_of_type_Boolean = true;
+  String jdField_b_of_type_JavaLangString = "";
+  boolean jdField_b_of_type_Boolean = true;
+  
+  public utq(int paramInt)
   {
-    super(paramutk);
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(@NonNull utk paramutk, @NonNull tce paramtce)
+  public static utq a()
   {
-    if (paramtce.a.isSuccess())
+    return new utq(20);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
     {
-      ved.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramtce.toString());
-      utk.a(paramutk, true);
+      this.jdField_b_of_type_JavaLangString = paramString;
+      a();
     }
   }
   
-  public Class acceptEventClass()
+  public boolean a()
   {
-    return tce.class;
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utq
  * JD-Core Version:    0.7.0.1
  */

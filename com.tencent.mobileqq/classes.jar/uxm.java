@@ -1,81 +1,36 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
-public abstract class uxm<T extends FeedItem>
+class uxm
+  extends uxf
 {
-  protected T a;
-  public boolean b;
-  
-  public uxm(@NonNull T paramT)
+  public uxm(ViewGroup paramViewGroup)
   {
-    vxp.a(paramT);
-    this.a = paramT;
+    super(paramViewGroup, 2131561491);
   }
   
-  public static uxm a(int paramInt)
+  public void a(String paramString)
   {
-    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramInt);
-    if (localFeedItem == null) {
-      return null;
-    }
-    return localFeedItem.generateHomeFeed();
+    b(paramString);
   }
   
-  public T a()
+  public void a(utx paramutx)
   {
-    return this.a;
+    super.a(paramutx);
+    wsv.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramutx);
+    a(xoa.b(paramutx.g));
+    this.a.setNodeName(paramutx.c, 2130846129);
   }
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt, tlx paramtlx, tlr paramtlr, tlu paramtlu);
-  
-  public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
-  
-  public abstract void b();
-  
-  public List<StoryVideoItem> d()
+  protected void b(utx paramutx)
   {
-    return new ArrayList(0);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (uxm)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.a != null) {
-      return this.a.hashCode();
-    }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return this.a.toString();
+    this.a.setDisplayState(6);
+    this.a.a(paramutx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,28 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
 
 public class atkh
-  implements View.OnTouchListener
 {
-  public atkh(StuffContainerView paramStuffContainerView, GestureDetector paramGestureDetector) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
+  }
+  
+  public static void a(boolean paramBoolean, int paramInt)
+  {
+    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
+  }
+  
+  public static void b(boolean paramBoolean, int paramInt)
+  {
+    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, bdee.b(null), paramInt), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkh
  * JD-Core Version:    0.7.0.1
  */

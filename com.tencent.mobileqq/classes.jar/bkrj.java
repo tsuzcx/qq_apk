@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.1;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class bkrj
-  implements Animation.AnimationListener
+public abstract interface bkrj<T extends RecyclerView.ViewHolder>
 {
-  public bkrj(VideoFilterViewPager.1 param1) {}
+  public abstract void a(@Nullable T paramT, int paramInt);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(@Nullable T paramT, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkrj
  * JD-Core Version:    0.7.0.1
  */

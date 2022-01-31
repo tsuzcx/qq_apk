@@ -1,21 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-final class vmy
-  implements ValueAnimator.AnimatorUpdateListener
+public class vmy
+  extends JobSegment<weh, weh>
 {
-  vmy(vna paramvna) {}
+  public vmy(vmu paramvmu) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(JobContext paramJobContext, weh paramweh)
   {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
+    paramweh.a(vmu.a(this.a).a(paramweh.a.feedId, true), true, true);
+    if (paramweh.a()) {
+      paramweh.a(vmu.a(this.a).a(vmu.a(this.a), false), true, false);
     }
+    wsv.a("Q.qqstory.player.CommentFloatDialogController", "load feed data from cache: %s.", vmu.a(this.a).toString());
+    notifyResult(paramweh);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmy
  * JD-Core Version:    0.7.0.1
  */

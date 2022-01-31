@@ -12,17 +12,17 @@ class QQSettingMe$16
     //   0: aload_0
     //   1: getfield 16	com/tencent/mobileqq/activity/QQSettingMe$16:a	Ljava/lang/String;
     //   4: invokestatic 31	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   7: ifne +654 -> 661
+    //   7: ifne +710 -> 717
     //   10: aload_0
     //   11: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
     //   14: getfield 36	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   17: ifnull +644 -> 661
+    //   17: ifnull +700 -> 717
     //   20: aload_0
     //   21: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
     //   24: getfield 36	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   27: bipush 51
     //   29: invokevirtual 42	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   32: checkcast 44	ajxl
+    //   32: checkcast 44	aloz
     //   35: astore 4
     //   37: aload_0
     //   38: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
@@ -31,7 +31,7 @@ class QQSettingMe$16
     //   45: getfield 36	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   48: aload_0
     //   49: getfield 16	com/tencent/mobileqq/activity/QQSettingMe$16:a	Ljava/lang/String;
-    //   52: invokestatic 49	bbac:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   52: invokestatic 49	bcyw:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   55: putfield 52	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
     //   58: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   61: ifeq +163 -> 224
@@ -101,16 +101,16 @@ class QQSettingMe$16
     //   224: aload_0
     //   225: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
     //   228: getfield 52	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
-    //   231: ifnull +372 -> 603
+    //   231: ifnull +428 -> 659
     //   234: aload 4
-    //   236: ifnull +367 -> 603
+    //   236: ifnull +423 -> 659
     //   239: aload 4
     //   241: aload_0
     //   242: getfield 16	com/tencent/mobileqq/activity/QQSettingMe$16:a	Ljava/lang/String;
-    //   245: invokevirtual 134	ajxl:e	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
+    //   245: invokevirtual 134	aloz:e	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
     //   248: astore 4
     //   250: aload 4
-    //   252: ifnull +260 -> 512
+    //   252: ifnull +316 -> 568
     //   255: aload_0
     //   256: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
     //   259: getfield 52	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
@@ -118,7 +118,7 @@ class QQSettingMe$16
     //   264: aload 4
     //   266: getstatic 140	QQService/EVIPSPEC:E_SP_QQVIP	LQQService/EVIPSPEC;
     //   269: invokevirtual 146	com/tencent/mobileqq/data/Friends:isServiceEnabled	(LQQService/EVIPSPEC;)Z
-    //   272: ifeq +390 -> 662
+    //   272: ifeq +446 -> 718
     //   275: iconst_1
     //   276: istore_1
     //   277: aload 5
@@ -131,7 +131,7 @@ class QQSettingMe$16
     //   292: aload 4
     //   294: getstatic 149	QQService/EVIPSPEC:E_SP_SUPERVIP	LQQService/EVIPSPEC;
     //   297: invokevirtual 146	com/tencent/mobileqq/data/Friends:isServiceEnabled	(LQQService/EVIPSPEC;)Z
-    //   300: ifeq +367 -> 667
+    //   300: ifeq +423 -> 723
     //   303: iconst_1
     //   304: istore_1
     //   305: aload 5
@@ -153,7 +153,7 @@ class QQSettingMe$16
     //   342: getfield 52	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
     //   345: getfield 75	com/tencent/mobileqq/data/Card:bSuperVipOpen	B
     //   348: iconst_1
-    //   349: if_icmpne +151 -> 500
+    //   349: if_icmpne +207 -> 556
     //   352: aload 4
     //   354: getstatic 149	QQService/EVIPSPEC:E_SP_SUPERVIP	LQQService/EVIPSPEC;
     //   357: invokevirtual 159	com/tencent/mobileqq/data/Friends:getServiceLevel	(LQQService/EVIPSPEC;)I
@@ -174,13 +174,13 @@ class QQSettingMe$16
     //   391: getfield 166	com/tencent/mobileqq/data/Friends:grayNameplateFlag	I
     //   394: putfield 167	com/tencent/mobileqq/data/Card:grayNameplateFlag	I
     //   397: aload 4
-    //   399: ifnull +184 -> 583
+    //   399: ifnull +240 -> 639
     //   402: aload 4
     //   404: getfield 170	com/tencent/mobileqq/data/Friends:medalsInfo	Ljava/lang/String;
     //   407: invokestatic 31	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   410: istore_3
     //   411: iload_3
-    //   412: ifne +171 -> 583
+    //   412: ifne +227 -> 639
     //   415: aload_0
     //   416: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
     //   419: aload 4
@@ -210,126 +210,152 @@ class QQSettingMe$16
     //   478: invokestatic 130	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   481: aload_0
     //   482: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
-    //   485: getfield 192	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppBaseActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   488: new 194	com/tencent/mobileqq/activity/QQSettingMe$16$1
-    //   491: dup
-    //   492: aload_0
-    //   493: invokespecial 197	com/tencent/mobileqq/activity/QQSettingMe$16$1:<init>	(Lcom/tencent/mobileqq/activity/QQSettingMe$16;)V
-    //   496: invokevirtual 203	com/tencent/mobileqq/app/BaseActivity:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   499: return
-    //   500: aload 4
-    //   502: getstatic 140	QQService/EVIPSPEC:E_SP_QQVIP	LQQService/EVIPSPEC;
-    //   505: invokevirtual 159	com/tencent/mobileqq/data/Friends:getServiceLevel	(LQQService/EVIPSPEC;)I
-    //   508: istore_2
-    //   509: goto -148 -> 361
-    //   512: ldc 60
-    //   514: iconst_1
-    //   515: ldc 205
-    //   517: invokestatic 130	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   520: goto -123 -> 397
-    //   523: astore 4
-    //   525: ldc 60
-    //   527: iconst_1
-    //   528: new 62	java/lang/StringBuilder
-    //   531: dup
-    //   532: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   535: ldc 207
-    //   537: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   540: aload 4
-    //   542: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   545: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   548: invokestatic 212	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   551: return
-    //   552: astore 4
-    //   554: ldc 60
-    //   556: iconst_1
-    //   557: new 62	java/lang/StringBuilder
-    //   560: dup
-    //   561: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   564: ldc 214
-    //   566: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   569: aload 4
-    //   571: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   574: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   577: invokestatic 212	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   580: goto -99 -> 481
-    //   583: aload_0
-    //   584: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
-    //   587: aconst_null
-    //   588: invokestatic 179	com/tencent/mobileqq/activity/QQSettingMe:a	(Lcom/tencent/mobileqq/activity/QQSettingMe;Lcom/tencent/mobileqq/data/MedalList;)Lcom/tencent/mobileqq/data/MedalList;
-    //   591: pop
-    //   592: ldc 60
-    //   594: iconst_1
-    //   595: ldc 216
-    //   597: invokestatic 212	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   600: goto -119 -> 481
-    //   603: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   606: ifeq +55 -> 661
-    //   609: new 62	java/lang/StringBuilder
-    //   612: dup
-    //   613: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   616: ldc 218
-    //   618: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   621: astore 5
-    //   623: aload_0
-    //   624: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
-    //   627: getfield 52	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
-    //   630: ifnull +24 -> 654
-    //   633: ldc 220
-    //   635: astore 4
-    //   637: ldc 60
-    //   639: iconst_2
-    //   640: aload 5
-    //   642: aload 4
-    //   644: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   647: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   650: invokestatic 130	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   653: return
-    //   654: ldc 222
-    //   656: astore 4
-    //   658: goto -21 -> 637
-    //   661: return
-    //   662: iconst_0
-    //   663: istore_1
-    //   664: goto -387 -> 277
-    //   667: iconst_0
-    //   668: istore_1
-    //   669: goto -364 -> 305
+    //   485: invokestatic 182	com/tencent/mobileqq/activity/QQSettingMe:a	(Lcom/tencent/mobileqq/activity/QQSettingMe;)Lcom/tencent/mobileqq/data/MedalList;
+    //   488: ifnonnull +49 -> 537
+    //   491: aload_0
+    //   492: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
+    //   495: getfield 36	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   498: bipush 27
+    //   500: invokevirtual 192	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalko;
+    //   503: checkcast 194	ambd
+    //   506: astore 4
+    //   508: aload 4
+    //   510: ifnull +27 -> 537
+    //   513: aload_0
+    //   514: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
+    //   517: aload 4
+    //   519: invokevirtual 196	ambd:a	()Ljava/lang/String;
+    //   522: invokestatic 176	com/tencent/mobileqq/data/MedalList:parse	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/MedalList;
+    //   525: invokestatic 179	com/tencent/mobileqq/activity/QQSettingMe:a	(Lcom/tencent/mobileqq/activity/QQSettingMe;Lcom/tencent/mobileqq/data/MedalList;)Lcom/tencent/mobileqq/data/MedalList;
+    //   528: pop
+    //   529: ldc 60
+    //   531: iconst_1
+    //   532: ldc 198
+    //   534: invokestatic 201	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   537: aload_0
+    //   538: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
+    //   541: getfield 204	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppBaseActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   544: new 206	com/tencent/mobileqq/activity/QQSettingMe$16$1
+    //   547: dup
+    //   548: aload_0
+    //   549: invokespecial 209	com/tencent/mobileqq/activity/QQSettingMe$16$1:<init>	(Lcom/tencent/mobileqq/activity/QQSettingMe$16;)V
+    //   552: invokevirtual 215	com/tencent/mobileqq/app/BaseActivity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   555: return
+    //   556: aload 4
+    //   558: getstatic 140	QQService/EVIPSPEC:E_SP_QQVIP	LQQService/EVIPSPEC;
+    //   561: invokevirtual 159	com/tencent/mobileqq/data/Friends:getServiceLevel	(LQQService/EVIPSPEC;)I
+    //   564: istore_2
+    //   565: goto -204 -> 361
+    //   568: ldc 60
+    //   570: iconst_1
+    //   571: ldc 217
+    //   573: invokestatic 130	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   576: goto -179 -> 397
+    //   579: astore 4
+    //   581: ldc 60
+    //   583: iconst_1
+    //   584: new 62	java/lang/StringBuilder
+    //   587: dup
+    //   588: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   591: ldc 219
+    //   593: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   596: aload 4
+    //   598: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   601: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   604: invokestatic 224	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   607: return
+    //   608: astore 4
+    //   610: ldc 60
+    //   612: iconst_1
+    //   613: new 62	java/lang/StringBuilder
+    //   616: dup
+    //   617: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   620: ldc 226
+    //   622: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   625: aload 4
+    //   627: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   630: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   633: invokestatic 224	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   636: goto -155 -> 481
+    //   639: aload_0
+    //   640: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
+    //   643: aconst_null
+    //   644: invokestatic 179	com/tencent/mobileqq/activity/QQSettingMe:a	(Lcom/tencent/mobileqq/activity/QQSettingMe;Lcom/tencent/mobileqq/data/MedalList;)Lcom/tencent/mobileqq/data/MedalList;
+    //   647: pop
+    //   648: ldc 60
+    //   650: iconst_1
+    //   651: ldc 228
+    //   653: invokestatic 224	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   656: goto -175 -> 481
+    //   659: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   662: ifeq +55 -> 717
+    //   665: new 62	java/lang/StringBuilder
+    //   668: dup
+    //   669: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   672: ldc 230
+    //   674: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   677: astore 5
+    //   679: aload_0
+    //   680: getfield 14	com/tencent/mobileqq/activity/QQSettingMe$16:this$0	Lcom/tencent/mobileqq/activity/QQSettingMe;
+    //   683: getfield 52	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   686: ifnull +24 -> 710
+    //   689: ldc 232
+    //   691: astore 4
+    //   693: ldc 60
+    //   695: iconst_2
+    //   696: aload 5
+    //   698: aload 4
+    //   700: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   703: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   706: invokestatic 130	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   709: return
+    //   710: ldc 234
+    //   712: astore 4
+    //   714: goto -21 -> 693
+    //   717: return
+    //   718: iconst_0
+    //   719: istore_1
+    //   720: goto -443 -> 277
+    //   723: iconst_0
+    //   724: istore_1
+    //   725: goto -420 -> 305
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	672	0	this	16
-    //   276	393	1	b	byte
-    //   360	149	2	i	int
+    //   0	728	0	this	16
+    //   276	449	1	b	byte
+    //   360	205	2	i	int
     //   410	2	3	bool	boolean
-    //   35	466	4	localObject1	Object
-    //   523	18	4	localThrowable	java.lang.Throwable
-    //   552	18	4	localJSONException	org.json.JSONException
-    //   635	22	4	str	String
-    //   262	379	5	localObject2	Object
+    //   35	522	4	localObject1	Object
+    //   579	18	4	localThrowable	java.lang.Throwable
+    //   608	18	4	localJSONException	org.json.JSONException
+    //   691	22	4	str	String
+    //   262	435	5	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   0	224	523	java/lang/Throwable
-    //   224	234	523	java/lang/Throwable
-    //   239	250	523	java/lang/Throwable
-    //   255	275	523	java/lang/Throwable
-    //   277	303	523	java/lang/Throwable
-    //   305	361	523	java/lang/Throwable
-    //   361	397	523	java/lang/Throwable
-    //   402	411	523	java/lang/Throwable
-    //   415	481	523	java/lang/Throwable
-    //   481	499	523	java/lang/Throwable
-    //   500	509	523	java/lang/Throwable
-    //   512	520	523	java/lang/Throwable
-    //   554	580	523	java/lang/Throwable
-    //   583	600	523	java/lang/Throwable
-    //   603	633	523	java/lang/Throwable
-    //   637	653	523	java/lang/Throwable
-    //   415	481	552	org/json/JSONException
+    //   0	224	579	java/lang/Throwable
+    //   224	234	579	java/lang/Throwable
+    //   239	250	579	java/lang/Throwable
+    //   255	275	579	java/lang/Throwable
+    //   277	303	579	java/lang/Throwable
+    //   305	361	579	java/lang/Throwable
+    //   361	397	579	java/lang/Throwable
+    //   402	411	579	java/lang/Throwable
+    //   415	481	579	java/lang/Throwable
+    //   481	508	579	java/lang/Throwable
+    //   513	537	579	java/lang/Throwable
+    //   537	555	579	java/lang/Throwable
+    //   556	565	579	java/lang/Throwable
+    //   568	576	579	java/lang/Throwable
+    //   610	636	579	java/lang/Throwable
+    //   639	656	579	java/lang/Throwable
+    //   659	689	579	java/lang/Throwable
+    //   693	709	579	java/lang/Throwable
+    //   415	481	608	org/json/JSONException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.16
  * JD-Core Version:    0.7.0.1
  */

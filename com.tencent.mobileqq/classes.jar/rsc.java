@@ -1,39 +1,41 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-class rsc
-  implements ViewTreeObserver.OnPreDrawListener
+final class rsc
+  implements DialogInterface.OnClickListener
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  rsc(Context paramContext) {}
   
-  rsc(rsb paramrsb, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public boolean onPreDraw()
-  {
-    this.jdField_a_of_type_Rsb.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rsb.a, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rsb.a) + rsb.a(this.jdField_a_of_type_Rsb));
-    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Rsb.a, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Rsb.a) + rsb.b(this.jdField_a_of_type_Rsb));
-    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rsb.a) != null) {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rsb.a).setVisibility(0);
+    if (paramInt == 1)
+    {
+      bjxj.e(1);
+      bjxj.a(true);
+      nxu.b(this.a, 9);
     }
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rsb.a, this.jdField_a_of_type_Rsb.a.a(ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rsb.a)));
-    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rsb.a) != null) {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rsb.a).setVisibility(4);
+    for (;;)
+    {
+      if ((this.a instanceof Activity)) {
+        ((Activity)this.a).finish();
+      }
+      return;
+      paramDialogInterface = new Intent(this.a, SplashActivity.class);
+      paramDialogInterface.putExtra("fragment_id", 1);
+      paramDialogInterface.putExtra("open_kandian_tab_fragment", true);
+      paramDialogInterface.putExtra("arg_channel_cover_id", 0);
+      paramDialogInterface.setFlags(335544320);
+      this.a.startActivity(paramDialogInterface);
     }
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rsb.a, this.jdField_a_of_type_Int, this.b);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,1023 +1,335 @@
-import com.tencent.commonsdk.cache.QQConcurrentHashMap;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.ConversationInfo;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import com.tencent.mobileqq.apollo.game.ApolloFragment;
+import com.tencent.mobileqq.apollo.game.ApolloFragmentManager.1;
+import com.tencent.mobileqq.apollo.game.ApolloFragmentManager.2;
+import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.Stack;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class akpc
-  extends aksu
 {
-  aukp jdField_a_of_type_Aukp = null;
-  aukz jdField_a_of_type_Aukz = new akpd(this);
-  private QQConcurrentHashMap<String, ConversationInfo> jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap = new QQConcurrentHashMap(1005, 0, 100);
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean;
+  public static akpc a;
+  public static Stack<ApolloFragment> a;
+  public static AtomicInteger a;
+  public static Stack<ApolloFragment> b;
+  private int jdField_a_of_type_Int;
+  private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
+  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  private FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
   
-  public akpc(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  static
   {
-    super(paramQQAppInterface, paramProxyManager);
+    jdField_a_of_type_JavaUtilStack = new Stack();
+    b = new Stack();
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  private aukp a()
+  public static akpc a()
   {
-    if ((this.jdField_a_of_type_Aukp == null) || (!this.jdField_a_of_type_Aukp.a())) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_Aukp == null) || (!this.jdField_a_of_type_Aukp.a())) {
-        this.jdField_a_of_type_Aukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      }
-      return this.jdField_a_of_type_Aukp;
-    }
-  }
-  
-  /* Error */
-  protected int a(String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: iload_2
-    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   7: astore_3
-    //   8: aload_3
-    //   9: ifnull +106 -> 115
-    //   12: aload_0
-    //   13: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   16: aload_3
-    //   17: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   20: ifeq +95 -> 115
-    //   23: aload_0
-    //   24: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   27: aload_3
-    //   28: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   31: ifnull +84 -> 115
-    //   34: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   37: ifeq +55 -> 92
-    //   40: ldc 83
-    //   42: iconst_2
-    //   43: new 85	java/lang/StringBuilder
-    //   46: dup
-    //   47: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   50: ldc 88
-    //   52: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: aload_1
-    //   56: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: ldc 94
-    //   61: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: aload_0
-    //   65: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   68: aload_3
-    //   69: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   72: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   75: getfield 100	com/tencent/mobileqq/data/ConversationInfo:extInt3	I
-    //   78: iconst_1
-    //   79: iand
-    //   80: invokestatic 106	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   83: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   89: invokestatic 114	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   92: aload_0
-    //   93: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   96: aload_3
-    //   97: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   100: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   103: getfield 100	com/tencent/mobileqq/data/ConversationInfo:extInt3	I
-    //   106: istore_2
-    //   107: iload_2
-    //   108: iconst_1
-    //   109: iand
-    //   110: istore_2
-    //   111: aload_0
-    //   112: monitorexit
-    //   113: iload_2
-    //   114: ireturn
-    //   115: iconst_0
-    //   116: istore_2
-    //   117: goto -6 -> 111
-    //   120: astore_1
-    //   121: aload_0
-    //   122: monitorexit
-    //   123: aload_1
-    //   124: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	125	0	this	akpc
-    //   0	125	1	paramString	String
-    //   0	125	2	paramInt	int
-    //   7	90	3	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	120	finally
-    //   12	92	120	finally
-    //   92	107	120	finally
-  }
-  
-  /* Error */
-  protected long a(String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: iload_2
-    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnull +33 -> 42
-    //   12: aload_0
-    //   13: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   16: aload_1
-    //   17: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   20: ifeq +22 -> 42
-    //   23: aload_0
-    //   24: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   27: aload_1
-    //   28: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   31: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   34: getfield 119	com/tencent/mobileqq/data/ConversationInfo:lastread	J
-    //   37: lstore_3
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: lload_3
-    //   41: lreturn
-    //   42: lconst_0
-    //   43: lstore_3
-    //   44: goto -6 -> 38
-    //   47: astore_1
-    //   48: aload_0
-    //   49: monitorexit
-    //   50: aload_1
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	52	0	this	akpc
-    //   0	52	1	paramString	String
-    //   0	52	2	paramInt	int
-    //   37	7	3	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	47	finally
-    //   12	38	47	finally
-  }
-  
-  /* Error */
-  protected ConversationInfo a(String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: iload_2
-    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnull +30 -> 39
-    //   12: aload_0
-    //   13: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   16: aload_1
-    //   17: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   20: ifeq +19 -> 39
-    //   23: aload_0
-    //   24: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   27: aload_1
-    //   28: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   31: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   34: astore_1
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_1
-    //   38: areturn
-    //   39: aconst_null
-    //   40: astore_1
-    //   41: goto -6 -> 35
-    //   44: astore_1
-    //   45: aload_0
-    //   46: monitorexit
-    //   47: aload_1
-    //   48: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	49	0	this	akpc
-    //   0	49	1	paramString	String
-    //   0	49	2	paramInt	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	44	finally
-    //   12	35	44	finally
-  }
-  
-  public Set<ConversationInfo> a()
-  {
+    if (jdField_a_of_type_Akpc == null) {}
     try
     {
-      HashSet localHashSet1 = new HashSet(this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.values());
-      return localHashSet1;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.unread.Proxy", 2, "cloneConversationInfoSet OOM!", localOutOfMemoryError);
-        }
-        HashSet localHashSet2 = new HashSet();
+      if (jdField_a_of_type_Akpc == null) {
+        jdField_a_of_type_Akpc = new akpc();
       }
+      return jdField_a_of_type_Akpc;
     }
     finally {}
   }
   
-  protected void a() {}
-  
-  protected void a(String paramString, int paramInt)
+  public static void a(FragmentActivity paramFragmentActivity, Intent paramIntent)
   {
+    Object localObject = new Bundle();
+    if ((paramIntent != null) && (paramFragmentActivity != null))
+    {
+      paramIntent.putExtra("vasUsePreWebview", true);
+      ((Bundle)localObject).putParcelable("intent", paramIntent);
+    }
     try
     {
-      Object localObject = akpx.a(paramString, paramInt);
-      if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(localObject)) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject) != null))
-      {
-        localObject = (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject);
-        ((ConversationInfo)localObject).extInt3 = (((ConversationInfo)localObject).extInt3 >> 1 << 1);
-        a(paramString, paramInt, (ConversationInfo)localObject);
-      }
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    int i = paramInt2;
-    if (paramInt2 > 0) {
-      i = 1;
-    }
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.unread.Proxy", 2, "setUnreadForImax uin=" + paramString);
-        }
-        localObject = akpx.a(paramString, paramInt1);
-        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(localObject)) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject) != null))
-        {
-          localObject = (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject);
-          if (((ConversationInfo)localObject).unreadCount != i)
-          {
-            ((ConversationInfo)localObject).unreadCount = i;
-            QLog.d("Q.unread.Proxy", 1, "setUnreadForImax update=" + ((ConversationInfo)localObject).toString());
-            a(paramString, paramInt1, (ConversationInfo)localObject);
-            return;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.unread.Proxy", 2, "setUnreadForImax nochange=" + ((ConversationInfo)localObject).toString());
-          continue;
-        }
-        localConversationInfo = new ConversationInfo(paramString, paramInt1, 0L, 0);
-      }
-      finally {}
-      ConversationInfo localConversationInfo;
-      localConversationInfo.unreadCount = i;
-      QLog.d("Q.unread.Proxy", 1, "setUnreadForImax insert=" + localConversationInfo.toString());
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(localObject, localConversationInfo);
-      b(paramString, paramInt1, localConversationInfo);
-    }
-  }
-  
-  /* Error */
-  protected void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: iload_2
-    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   7: astore 6
-    //   9: aload_0
-    //   10: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   13: aload 6
-    //   15: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   18: ifeq +66 -> 84
-    //   21: aload_0
-    //   22: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   25: aload 6
-    //   27: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: ifnull +54 -> 84
-    //   33: aload_0
-    //   34: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   37: aload 6
-    //   39: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   42: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   45: astore 6
-    //   47: aload_0
-    //   48: aload_1
-    //   49: iload_2
-    //   50: aload 6
-    //   52: getfield 119	com/tencent/mobileqq/data/ConversationInfo:lastread	J
-    //   55: aload 6
-    //   57: getfield 151	com/tencent/mobileqq/data/ConversationInfo:unreadCount	I
-    //   60: iload_3
-    //   61: iadd
-    //   62: aload 6
-    //   64: getfield 172	com/tencent/mobileqq/data/ConversationInfo:unreadGiftCount	I
-    //   67: iload 4
-    //   69: iadd
-    //   70: aload 6
-    //   72: getfield 175	com/tencent/mobileqq/data/ConversationInfo:extInt1	I
-    //   75: iload 5
-    //   77: iadd
-    //   78: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
-    //   81: aload_0
-    //   82: monitorexit
-    //   83: return
-    //   84: aload_0
-    //   85: aload_1
-    //   86: iload_2
-    //   87: lconst_0
-    //   88: iload_3
-    //   89: iload 4
-    //   91: iload 5
-    //   93: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
-    //   96: goto -15 -> 81
-    //   99: astore_1
-    //   100: aload_0
-    //   101: monitorexit
-    //   102: aload_1
-    //   103: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	104	0	this	akpc
-    //   0	104	1	paramString	String
-    //   0	104	2	paramInt1	int
-    //   0	104	3	paramInt2	int
-    //   0	104	4	paramInt3	int
-    //   0	104	5	paramInt4	int
-    //   7	64	6	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	81	99	finally
-    //   84	96	99	finally
-  }
-  
-  protected void a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4)
-  {
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        localObject = akpx.a(paramString, paramInt1);
-        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(localObject)) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject) != null))
-        {
-          localObject = (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject);
-          if (((((ConversationInfo)localObject).lastread < paramLong) && (akpb.a(paramInt1))) || ((((ConversationInfo)localObject).lastread != paramLong) && (!akpb.a(paramInt1))) || (((ConversationInfo)localObject).unreadCount != paramInt2) || (((ConversationInfo)localObject).unreadGiftCount != paramInt3) || (((ConversationInfo)localObject).extInt1 != paramInt4))
-          {
-            long l = paramLong;
-            if (akpb.a(paramInt1)) {
-              l = Math.max(((ConversationInfo)localObject).lastread, paramLong);
-            }
-            ((ConversationInfo)localObject).lastread = l;
-            ((ConversationInfo)localObject).unreadCount = Math.max(0, paramInt2);
-            ((ConversationInfo)localObject).unreadGiftCount = Math.max(0, paramInt3);
-            ((ConversationInfo)localObject).extInt1 = Math.max(0, paramInt4);
-            if (paramInt2 == 0) {
-              ((ConversationInfo)localObject).extInt3 = (((ConversationInfo)localObject).extInt3 >> 1 << 1);
-            }
-            QLog.d("Q.unread.Proxy_UnreadMonitor", 1, "insertOrUpdateUnread update=" + ((ConversationInfo)localObject).toString());
-            a(paramString, paramInt1, (ConversationInfo)localObject);
-            return;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.unread.Proxy", 2, "insertOrUpdateUnread  nochange=" + ((ConversationInfo)localObject).toString());
-          continue;
-        }
-        localConversationInfo = new ConversationInfo(paramString, paramInt1, paramLong, Math.max(0, paramInt2));
-      }
-      finally {}
-      ConversationInfo localConversationInfo;
-      localConversationInfo.unreadGiftCount = Math.max(0, paramInt3);
-      localConversationInfo.extInt1 = Math.max(0, paramInt4);
-      if (paramInt2 == 0) {
-        localConversationInfo.extInt3 = (localConversationInfo.extInt3 >> 1 << 1);
-      }
-      QLog.d("Q.unread.Proxy_UnreadMonitor", 1, "insertOrUpdateUnread insert=" + localConversationInfo.toString());
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(localObject, localConversationInfo);
-      b(paramString, paramInt1, localConversationInfo);
-    }
-  }
-  
-  protected void a(String paramString, int paramInt, ConversationInfo paramConversationInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(paramString, paramInt, ConversationInfo.getConversationInfoTableName(), paramConversationInfo, 4, null);
-  }
-  
-  /* Error */
-  public boolean a(com.tencent.mobileqq.activity.recent.RecentBaseData paramRecentBaseData)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +51 -> 54
-    //   6: aload_1
-    //   7: invokevirtual 216	com/tencent/mobileqq/activity/recent/RecentBaseData:a	()Ljava/lang/String;
-    //   10: aload_1
-    //   11: invokevirtual 219	com/tencent/mobileqq/activity/recent/RecentBaseData:a	()I
-    //   14: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   17: astore_1
-    //   18: aload_0
-    //   19: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   22: aload_1
-    //   23: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   26: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   29: astore_1
-    //   30: aload_1
-    //   31: ifnull +23 -> 54
-    //   34: aload_1
-    //   35: getfield 175	com/tencent/mobileqq/data/ConversationInfo:extInt1	I
-    //   38: istore_2
-    //   39: iload_2
-    //   40: ifle +9 -> 49
-    //   43: iconst_1
-    //   44: istore_3
-    //   45: aload_0
-    //   46: monitorexit
-    //   47: iload_3
-    //   48: ireturn
-    //   49: iconst_0
-    //   50: istore_3
-    //   51: goto -6 -> 45
-    //   54: iconst_0
-    //   55: istore_3
-    //   56: goto -11 -> 45
-    //   59: astore_1
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: aload_1
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	this	akpc
-    //   0	64	1	paramRecentBaseData	com.tencent.mobileqq.activity.recent.RecentBaseData
-    //   38	2	2	i	int
-    //   44	12	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	30	59	finally
-    //   34	39	59	finally
-  }
-  
-  /* Error */
-  protected int b(String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: iload_2
-    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnull +33 -> 42
-    //   12: aload_0
-    //   13: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   16: aload_1
-    //   17: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   20: ifeq +22 -> 42
-    //   23: aload_0
-    //   24: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   27: aload_1
-    //   28: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   31: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   34: getfield 151	com/tencent/mobileqq/data/ConversationInfo:unreadCount	I
-    //   37: istore_2
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: iload_2
-    //   41: ireturn
-    //   42: iconst_0
-    //   43: istore_2
-    //   44: goto -6 -> 38
-    //   47: astore_1
-    //   48: aload_0
-    //   49: monitorexit
-    //   50: aload_1
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	52	0	this	akpc
-    //   0	52	1	paramString	String
-    //   0	52	2	paramInt	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	47	finally
-    //   12	38	47	finally
-  }
-  
-  protected void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.clear();
-      if ((this.jdField_a_of_type_Aukp != null) && (this.jdField_a_of_type_Aukp.a())) {
-        this.jdField_a_of_type_Aukp.a();
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  protected void b(String paramString, int paramInt)
-  {
-    for (;;)
-    {
-      String str;
-      ConversationInfo localConversationInfo;
-      try
-      {
-        str = akpx.a(paramString, paramInt);
-        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(str)) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str) != null))
-        {
-          localConversationInfo = (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str);
-          if ((((ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str)).unreadCount > 0) && (!ajsd.aQ.equals(paramString)) && (!ajsd.aR.equals(paramString)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.unread.Proxy", 2, "insertOrUpdatePublicAccountRed return , updateinfo= " + localConversationInfo.toString());
-            }
-            return;
-          }
-          localConversationInfo.unreadCount += 1;
-          localConversationInfo.extInt3 = (((ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str)).extInt3 | 0x1);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.unread.Proxy", 2, "insertOrUpdatePublicAccountRed update=" + localConversationInfo.toString());
-          }
-          a(paramString, paramInt, localConversationInfo);
-          continue;
-        }
-        localConversationInfo = new ConversationInfo(paramString, paramInt, 0L, 0);
-      }
-      finally {}
-      localConversationInfo.extInt3 = 1;
-      localConversationInfo.unreadCount += 1;
+      ApolloWebViewFragment localApolloWebViewFragment = new ApolloWebViewFragment();
+      paramIntent.putExtra("id", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+      localApolloWebViewFragment.setArguments((Bundle)localObject);
+      localObject = paramFragmentActivity.getIntent();
+      ((Intent)localObject).putExtras(paramIntent);
+      localApolloWebViewFragment.b(paramIntent.getExtras());
+      localApolloWebViewFragment.c(paramIntent.getExtras());
+      paramFragmentActivity.setIntent((Intent)localObject);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.unread.Proxy", 2, "insertOrUpdatePublicAccountRed insert=" + localConversationInfo.toString());
+        QLog.d("ApolloFragmentManager", 2, "[notifyViewChange] " + localApolloWebViewFragment.b() + " " + localApolloWebViewFragment.a());
       }
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(str, localConversationInfo);
-      b(paramString, paramInt, localConversationInfo);
-    }
-  }
-  
-  protected void b(String paramString, int paramInt1, int paramInt2)
-  {
-    for (;;)
-    {
-      Object localObject;
-      try
+      paramIntent = paramFragmentActivity.getSupportFragmentManager();
+      if (!localApolloWebViewFragment.isAdded()) {
+        paramIntent.beginTransaction().add(2131367059, localApolloWebViewFragment).commitAllowingStateLoss();
+      }
+      paramIntent.beginTransaction().show(localApolloWebViewFragment).setCustomAnimations(2130772047, 2130772048).commit();
+      if ((!paramFragmentActivity.isFinishing()) && ((paramFragmentActivity instanceof ApolloGameActivity)))
       {
-        localObject = akpx.a(paramString, paramInt1);
-        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(localObject)) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject) != null))
-        {
-          localObject = (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject);
-          if (((ConversationInfo)localObject).unreadMark != paramInt2)
-          {
-            ((ConversationInfo)localObject).unreadMark = paramInt2;
-            QLog.d("Q.unread.Proxy", 1, "insertOrUpdateUnreadMark update=" + ((ConversationInfo)localObject).toString());
-            a(paramString, paramInt1, (ConversationInfo)localObject);
-            return;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.unread.Proxy", 2, "insertOrUpdateUnreadMark nochange=" + ((ConversationInfo)localObject).toString());
-          continue;
+        paramIntent = ((ApolloGameActivity)paramFragmentActivity).a();
+        if (paramIntent != null) {
+          paramIntent.a = localApolloWebViewFragment;
         }
-        localConversationInfo = new ConversationInfo(paramString, paramInt1, 0L, 0);
-      }
-      finally {}
-      ConversationInfo localConversationInfo;
-      localConversationInfo.unreadMark = paramInt2;
-      QLog.d("Q.unread.Proxy", 1, "insertOrUpdateUnreadMark insert=" + localConversationInfo.toString());
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(localObject, localConversationInfo);
-      b(paramString, paramInt1, localConversationInfo);
-    }
-  }
-  
-  protected void b(String paramString, int paramInt, ConversationInfo paramConversationInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(paramString, paramInt, ConversationInfo.getConversationInfoTableName(), paramConversationInfo, 3, null);
-  }
-  
-  /* Error */
-  protected int c(String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: iload_2
-    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   7: astore_1
-    //   8: aload_0
-    //   9: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   12: aload_1
-    //   13: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   16: ifeq +22 -> 38
-    //   19: aload_0
-    //   20: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   23: aload_1
-    //   24: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   27: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   30: getfield 172	com/tencent/mobileqq/data/ConversationInfo:unreadGiftCount	I
-    //   33: istore_2
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: iload_2
-    //   37: ireturn
-    //   38: iconst_0
-    //   39: istore_2
-    //   40: goto -6 -> 34
-    //   43: astore_1
-    //   44: aload_0
-    //   45: monitorexit
-    //   46: aload_1
-    //   47: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	48	0	this	akpc
-    //   0	48	1	paramString	String
-    //   0	48	2	paramInt	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	34	43	finally
-  }
-  
-  /* Error */
-  protected void c()
-  {
-    // Byte code:
-    //   0: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +12 -> 15
-    //   6: ldc 83
-    //   8: iconst_2
-    //   9: ldc_w 256
-    //   12: invokestatic 259	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   15: aload_0
-    //   16: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   19: invokevirtual 222	com/tencent/commonsdk/cache/QQConcurrentHashMap:clear	()V
-    //   22: aload_0
-    //   23: invokespecial 261	akpc:a	()Laukp;
-    //   26: ldc 96
-    //   28: invokestatic 206	com/tencent/mobileqq/data/ConversationInfo:getConversationInfoTableName	()Ljava/lang/String;
-    //   31: iconst_0
-    //   32: aconst_null
-    //   33: aconst_null
-    //   34: aconst_null
-    //   35: aconst_null
-    //   36: aconst_null
-    //   37: aconst_null
-    //   38: aload_0
-    //   39: getfield 31	akpc:jdField_a_of_type_Aukz	Laukz;
-    //   42: invokevirtual 264	aukp:a	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Laukz;)Ljava/util/List;
-    //   45: astore_2
-    //   46: aload_0
-    //   47: getfield 62	akpc:jdField_a_of_type_Boolean	Z
-    //   50: ifeq +46 -> 96
-    //   53: aload_0
-    //   54: invokespecial 261	akpc:a	()Laukp;
-    //   57: ldc 96
-    //   59: invokevirtual 267	aukp:a	(Ljava/lang/Class;)Z
-    //   62: pop
-    //   63: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   66: ifeq +12 -> 78
-    //   69: ldc 83
-    //   71: iconst_2
-    //   72: ldc_w 269
-    //   75: invokestatic 114	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   78: invokestatic 275	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   81: invokestatic 280	axrn:a	(Landroid/content/Context;)Laxrn;
-    //   84: aconst_null
-    //   85: ldc_w 282
-    //   88: iconst_1
-    //   89: lconst_1
-    //   90: lconst_0
-    //   91: aconst_null
-    //   92: aconst_null
-    //   93: invokevirtual 285	axrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
-    //   96: aload_2
-    //   97: ifnonnull +4 -> 101
-    //   100: return
-    //   101: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   104: ifeq +34 -> 138
-    //   107: ldc 83
-    //   109: iconst_2
-    //   110: new 85	java/lang/StringBuilder
-    //   113: dup
-    //   114: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   117: ldc_w 287
-    //   120: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: aload_2
-    //   124: invokeinterface 292 1 0
-    //   129: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 114	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   138: iconst_0
-    //   139: istore_1
-    //   140: iload_1
-    //   141: aload_2
-    //   142: invokeinterface 292 1 0
-    //   147: if_icmpge -47 -> 100
-    //   150: aload_0
-    //   151: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   154: aload_2
-    //   155: iload_1
-    //   156: invokeinterface 298 2 0
-    //   161: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   164: getfield 301	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
-    //   167: aload_2
-    //   168: iload_1
-    //   169: invokeinterface 298 2 0
-    //   174: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   177: getfield 304	com/tencent/mobileqq/data/ConversationInfo:type	I
-    //   180: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   183: aload_2
-    //   184: iload_1
-    //   185: invokeinterface 298 2 0
-    //   190: invokevirtual 165	com/tencent/commonsdk/cache/QQConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   193: pop
-    //   194: iload_1
-    //   195: iconst_1
-    //   196: iadd
-    //   197: istore_1
-    //   198: goto -58 -> 140
-    //   201: astore_2
-    //   202: aload_2
-    //   203: athrow
-    //   204: astore_2
-    //   205: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	206	0	this	akpc
-    //   139	59	1	i	int
-    //   45	139	2	localList	java.util.List
-    //   201	2	2	localObject	Object
-    //   204	1	2	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   140	194	201	finally
-    //   140	194	204	java/lang/Exception
-  }
-  
-  protected void c(String paramString, int paramInt)
-  {
-    try
-    {
-      String str = akpx.a(paramString, paramInt);
-      if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(str))
-      {
-        c(paramString, paramInt, (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str));
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.remove(str);
+        paramFragmentActivity.runOnUiThread(new ApolloFragmentManager.1(paramFragmentActivity, localApolloWebViewFragment));
       }
       return;
     }
-    finally
+    catch (Throwable paramFragmentActivity)
     {
-      paramString = finally;
-      throw paramString;
+      QLog.e("ApolloFragmentManager", 1, paramFragmentActivity, new Object[0]);
     }
   }
   
-  /* Error */
-  protected void c(String paramString, int paramInt1, int paramInt2)
+  private void b(Stack<ApolloFragment> paramStack)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: iload_2
-    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   7: astore 4
-    //   9: aload_0
-    //   10: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   13: aload 4
-    //   15: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   18: ifeq +54 -> 72
-    //   21: aload_0
-    //   22: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   25: aload 4
-    //   27: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: ifnull +42 -> 72
-    //   33: aload_0
-    //   34: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   37: aload 4
-    //   39: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   42: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   45: astore 4
-    //   47: aload_0
-    //   48: aload_1
-    //   49: iload_2
-    //   50: aload 4
-    //   52: getfield 119	com/tencent/mobileqq/data/ConversationInfo:lastread	J
-    //   55: iload_3
-    //   56: aload 4
-    //   58: getfield 172	com/tencent/mobileqq/data/ConversationInfo:unreadGiftCount	I
-    //   61: aload 4
-    //   63: getfield 175	com/tencent/mobileqq/data/ConversationInfo:extInt1	I
-    //   66: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
-    //   69: aload_0
-    //   70: monitorexit
-    //   71: return
-    //   72: aload_0
-    //   73: aload_1
-    //   74: iload_2
-    //   75: lconst_0
-    //   76: iload_3
-    //   77: iconst_0
-    //   78: iconst_0
-    //   79: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
-    //   82: goto -13 -> 69
-    //   85: astore_1
-    //   86: aload_0
-    //   87: monitorexit
-    //   88: aload_1
-    //   89: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	90	0	this	akpc
-    //   0	90	1	paramString	String
-    //   0	90	2	paramInt1	int
-    //   0	90	3	paramInt2	int
-    //   7	55	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	69	85	finally
-    //   72	82	85	finally
-  }
-  
-  protected void c(String paramString, int paramInt, ConversationInfo paramConversationInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(paramString, paramInt, ConversationInfo.getConversationInfoTableName(), paramConversationInfo, 5, null);
-  }
-  
-  /* Error */
-  protected int d(String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: iload_2
-    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   7: astore_1
-    //   8: aload_0
-    //   9: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   12: aload_1
-    //   13: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   16: ifeq +22 -> 38
-    //   19: aload_0
-    //   20: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   23: aload_1
-    //   24: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   27: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   30: getfield 175	com/tencent/mobileqq/data/ConversationInfo:extInt1	I
-    //   33: istore_2
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: iload_2
-    //   37: ireturn
-    //   38: iconst_0
-    //   39: istore_2
-    //   40: goto -6 -> 34
-    //   43: astore_1
-    //   44: aload_0
-    //   45: monitorexit
-    //   46: aload_1
-    //   47: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	48	0	this	akpc
-    //   0	48	1	paramString	String
-    //   0	48	2	paramInt	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	34	43	finally
-  }
-  
-  protected void d()
-  {
-    try
+    if ((paramStack != null) && (paramStack.size() > 0) && (this.jdField_a_of_type_AndroidSupportV4AppFragmentManager != null))
     {
-      if (!this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.isEmpty())
+      FragmentTransaction localFragmentTransaction = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
+      paramStack = paramStack.iterator();
+      while (paramStack.hasNext())
       {
-        Iterator localIterator = this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.values().iterator();
-        while (localIterator.hasNext())
+        Fragment localFragment = (Fragment)paramStack.next();
+        if ((localFragment != null) && (localFragment.isAdded()) && ((this.jdField_a_of_type_AndroidSupportV4AppFragment == null) || (!localFragment.equals(this.jdField_a_of_type_AndroidSupportV4AppFragment)))) {
+          localFragmentTransaction.hide(localFragment);
+        }
+      }
+      localFragmentTransaction.commitAllowingStateLoss();
+    }
+  }
+  
+  public int a()
+  {
+    if (jdField_a_of_type_JavaUtilStack == null) {
+      return 0;
+    }
+    return jdField_a_of_type_JavaUtilStack.size();
+  }
+  
+  public void a()
+  {
+    a(jdField_a_of_type_JavaUtilStack);
+    a(b);
+    jdField_a_of_type_JavaUtilStack.clear();
+    b.clear();
+    akpk.a().a();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (jdField_a_of_type_JavaUtilStack.size() > 1)
+    {
+      localApolloFragment = (ApolloFragment)jdField_a_of_type_JavaUtilStack.pop();
+      if (localApolloFragment != null)
+      {
+        localApolloFragment.a(null);
+        b.push(localApolloFragment);
+      }
+      localApolloFragment = (ApolloFragment)jdField_a_of_type_JavaUtilStack.peek();
+      if (localApolloFragment != null)
+      {
+        localBundle = new Bundle();
+        if (paramIntent != null)
         {
-          ConversationInfo localConversationInfo = (ConversationInfo)localIterator.next();
-          if ((localConversationInfo.unreadCount > 0) || (localConversationInfo.unreadMark > 0))
-          {
-            localConversationInfo.unreadCount = 0;
-            localConversationInfo.unreadGiftCount = 0;
-            localConversationInfo.unreadMark = 0;
-            localConversationInfo.extInt1 = 0;
-            localConversationInfo.extInt3 = (localConversationInfo.extInt3 >> 1 << 1);
-            a(localConversationInfo.uin, localConversationInfo.type, localConversationInfo);
-          }
+          localBundle.putParcelable("intent", paramIntent);
+          localApolloFragment.b(paramIntent.getExtras());
+        }
+      }
+      b();
+    }
+    while (!QLog.isColorLevel())
+    {
+      ApolloFragment localApolloFragment;
+      Bundle localBundle;
+      return;
+    }
+    QLog.d("ApolloFragmentManager", 2, "[back] reach bottom");
+  }
+  
+  /* Error */
+  public void a(Intent paramIntent, java.lang.Class<? extends ApolloFragment> paramClass)
+  {
+    // Byte code:
+    //   0: getstatic 25	akpc:b	Ljava/util/Stack;
+    //   3: invokevirtual 264	java/util/Stack:empty	()Z
+    //   6: ifeq +34 -> 40
+    //   9: aconst_null
+    //   10: astore_3
+    //   11: aload_3
+    //   12: ifnull +41 -> 53
+    //   15: getstatic 23	akpc:jdField_a_of_type_JavaUtilStack	Ljava/util/Stack;
+    //   18: aload_3
+    //   19: invokevirtual 252	java/util/Stack:push	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   22: pop
+    //   23: aload_1
+    //   24: ifnull +11 -> 35
+    //   27: aload_3
+    //   28: aload_1
+    //   29: invokevirtual 91	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   32: invokevirtual 256	com/tencent/mobileqq/apollo/game/ApolloFragment:b	(Landroid/os/Bundle;)V
+    //   35: aload_0
+    //   36: invokevirtual 258	akpc:b	()V
+    //   39: return
+    //   40: getstatic 25	akpc:b	Ljava/util/Stack;
+    //   43: invokevirtual 244	java/util/Stack:pop	()Ljava/lang/Object;
+    //   46: checkcast 246	com/tencent/mobileqq/apollo/game/ApolloFragment
+    //   49: astore_3
+    //   50: goto -39 -> 11
+    //   53: ldc 2
+    //   55: monitorenter
+    //   56: new 46	android/os/Bundle
+    //   59: dup
+    //   60: invokespecial 47	android/os/Bundle:<init>	()V
+    //   63: astore_3
+    //   64: aload_1
+    //   65: ifnull +90 -> 155
+    //   68: aload_1
+    //   69: ldc 49
+    //   71: iconst_1
+    //   72: invokevirtual 55	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   75: pop
+    //   76: aload_3
+    //   77: ldc 57
+    //   79: aload_1
+    //   80: invokevirtual 61	android/os/Bundle:putParcelable	(Ljava/lang/String;Landroid/os/Parcelable;)V
+    //   83: aload_2
+    //   84: invokevirtual 269	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   87: checkcast 246	com/tencent/mobileqq/apollo/game/ApolloFragment
+    //   90: astore_2
+    //   91: aload_1
+    //   92: ldc 66
+    //   94: getstatic 32	akpc:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   97: invokevirtual 70	java/util/concurrent/atomic/AtomicInteger:getAndIncrement	()I
+    //   100: invokevirtual 73	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   103: pop
+    //   104: aload_2
+    //   105: aload_3
+    //   106: invokevirtual 270	com/tencent/mobileqq/apollo/game/ApolloFragment:setArguments	(Landroid/os/Bundle;)V
+    //   109: getstatic 23	akpc:jdField_a_of_type_JavaUtilStack	Ljava/util/Stack;
+    //   112: aload_2
+    //   113: invokevirtual 252	java/util/Stack:push	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   116: pop
+    //   117: aload_0
+    //   118: getfield 41	akpc:jdField_a_of_type_AndroidSupportV4AppFragmentActivity	Landroid/support/v4/app/FragmentActivity;
+    //   121: invokevirtual 83	android/support/v4/app/FragmentActivity:getIntent	()Landroid/content/Intent;
+    //   124: astore_3
+    //   125: aload_3
+    //   126: aload_1
+    //   127: invokevirtual 87	android/content/Intent:putExtras	(Landroid/content/Intent;)Landroid/content/Intent;
+    //   130: pop
+    //   131: aload_2
+    //   132: aload_1
+    //   133: invokevirtual 91	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   136: invokevirtual 256	com/tencent/mobileqq/apollo/game/ApolloFragment:b	(Landroid/os/Bundle;)V
+    //   139: aload_2
+    //   140: aload_1
+    //   141: invokevirtual 91	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   144: invokevirtual 271	com/tencent/mobileqq/apollo/game/ApolloFragment:c	(Landroid/os/Bundle;)V
+    //   147: aload_0
+    //   148: getfield 41	akpc:jdField_a_of_type_AndroidSupportV4AppFragmentActivity	Landroid/support/v4/app/FragmentActivity;
+    //   151: aload_3
+    //   152: invokevirtual 100	android/support/v4/app/FragmentActivity:setIntent	(Landroid/content/Intent;)V
+    //   155: ldc 2
+    //   157: monitorexit
+    //   158: goto -123 -> 35
+    //   161: astore_1
+    //   162: ldc 2
+    //   164: monitorexit
+    //   165: aload_1
+    //   166: athrow
+    //   167: astore_1
+    //   168: ldc 108
+    //   170: iconst_1
+    //   171: aload_1
+    //   172: iconst_0
+    //   173: anewarray 4	java/lang/Object
+    //   176: invokestatic 196	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   179: goto -24 -> 155
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	182	0	this	akpc
+    //   0	182	1	paramIntent	Intent
+    //   0	182	2	paramClass	java.lang.Class<? extends ApolloFragment>
+    //   10	142	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   56	64	161	finally
+    //   68	83	161	finally
+    //   83	155	161	finally
+    //   155	158	161	finally
+    //   162	165	161	finally
+    //   168	179	161	finally
+    //   83	155	167	java/lang/Throwable
+  }
+  
+  public void a(FragmentActivity paramFragmentActivity, int paramInt)
+  {
+    if (paramFragmentActivity != null)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+      this.jdField_a_of_type_AndroidSupportV4AppFragmentManager = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager();
+      return;
+    }
+    QLog.e("ApolloFragmentManager", 1, "[init] activity null");
+  }
+  
+  public void a(Stack<ApolloFragment> paramStack)
+  {
+    if ((paramStack != null) && (paramStack.size() > 0))
+    {
+      paramStack = paramStack.iterator();
+      while (paramStack.hasNext())
+      {
+        ApolloFragment localApolloFragment = (ApolloFragment)paramStack.next();
+        if ((localApolloFragment.isAdded()) && (this.jdField_a_of_type_AndroidSupportV4AppFragmentManager != null)) {
+          this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction().remove(localApolloFragment).commit();
         }
       }
     }
-    finally {}
   }
   
-  /* Error */
-  protected void d(String paramString, int paramInt1, int paramInt2)
+  public void b()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: iload_2
-    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   7: astore 4
-    //   9: aload_0
-    //   10: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   13: aload 4
-    //   15: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   18: ifeq +60 -> 78
-    //   21: aload_0
-    //   22: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   25: aload 4
-    //   27: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: ifnull +48 -> 78
-    //   33: aload_0
-    //   34: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
-    //   37: aload 4
-    //   39: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   42: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
-    //   45: astore 4
-    //   47: aload_0
-    //   48: aload_1
-    //   49: iload_2
-    //   50: aload 4
-    //   52: getfield 119	com/tencent/mobileqq/data/ConversationInfo:lastread	J
-    //   55: aload 4
-    //   57: getfield 151	com/tencent/mobileqq/data/ConversationInfo:unreadCount	I
-    //   60: iload_3
-    //   61: iadd
-    //   62: aload 4
-    //   64: getfield 172	com/tencent/mobileqq/data/ConversationInfo:unreadGiftCount	I
-    //   67: aload 4
-    //   69: getfield 175	com/tencent/mobileqq/data/ConversationInfo:extInt1	I
-    //   72: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
-    //   75: aload_0
-    //   76: monitorexit
-    //   77: return
-    //   78: aload_0
-    //   79: aload_1
-    //   80: iload_2
-    //   81: lconst_0
-    //   82: iload_3
-    //   83: iconst_0
-    //   84: iconst_0
-    //   85: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
-    //   88: goto -13 -> 75
-    //   91: astore_1
-    //   92: aload_0
-    //   93: monitorexit
-    //   94: aload_1
-    //   95: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	96	0	this	akpc
-    //   0	96	1	paramString	String
-    //   0	96	2	paramInt1	int
-    //   0	96	3	paramInt2	int
-    //   7	61	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	75	91	finally
-    //   78	88	91	finally
+    try
+    {
+      if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentManager != null) && (!jdField_a_of_type_JavaUtilStack.isEmpty()))
+      {
+        ApolloFragment localApolloFragment = (ApolloFragment)jdField_a_of_type_JavaUtilStack.peek();
+        if (localApolloFragment != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloFragmentManager", 2, "[notifyViewChange] " + localApolloFragment.b() + " " + localApolloFragment.a());
+          }
+          if (!localApolloFragment.isAdded()) {
+            this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction().add(this.jdField_a_of_type_Int, localApolloFragment).commitAllowingStateLoss();
+          }
+          this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction().show(localApolloFragment).setCustomAnimations(2130772047, 2130772048).commit();
+          this.jdField_a_of_type_AndroidSupportV4AppFragment = localApolloFragment;
+          b(b);
+          b(jdField_a_of_type_JavaUtilStack);
+          if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) && ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof ApolloGameActivity))) {
+            this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new ApolloFragmentManager.2(this, localApolloFragment));
+          }
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloFragmentManager", 1, "[notifyViewChange]", localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpc
  * JD-Core Version:    0.7.0.1
  */

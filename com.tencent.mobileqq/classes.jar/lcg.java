@@ -1,44 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpRequestInterceptor;
+import org.apache.http.protocol.HttpContext;
 
-public class lcg
+class lcg
+  implements HttpRequestInterceptor
 {
-  @Deprecated
-  public static void a(String paramString1, String paramString2)
+  lcg(lce paramlce) {}
+  
+  public void process(HttpRequest paramHttpRequest, HttpContext paramHttpContext)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(paramString1, 4, paramString2);
+    if (!paramHttpRequest.containsHeader("Accept-Encoding")) {
+      paramHttpRequest.addHeader("Accept-Encoding", "gzip");
     }
-  }
-  
-  @Deprecated
-  public static void b(String paramString1, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.e(paramString1, 4, paramString2);
+    paramHttpContext = lce.a(this.a).keySet().iterator();
+    while (paramHttpContext.hasNext())
+    {
+      String str = (String)paramHttpContext.next();
+      paramHttpRequest.addHeader(str, (String)lce.a(this.a).get(str));
     }
-  }
-  
-  @Deprecated
-  public static void c(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcg
  * JD-Core Version:    0.7.0.1
  */

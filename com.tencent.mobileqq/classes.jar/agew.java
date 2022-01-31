@@ -1,40 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class agew
-  implements bfos
+  implements DialogInterface.OnDismissListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  agew(aget paramaget) {}
   
-  agew(ager paramager) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.b = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_Ager.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_Ager.jdField_a_of_type_Agfb) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(ager.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-      }
-    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
-    if (QLog.isColorLevel()) {
-      QLog.i(ager.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-    }
-    ager.a(this.jdField_a_of_type_Ager);
+    aget.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agew
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
 import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class acxm
-  extends bbdt
+  implements DialogInterface.OnDismissListener
 {
-  public acxm(PlusPanel paramPlusPanel) {}
+  public acxm(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,66 @@
+import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.res.Resources;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-class adot
-  extends ClickableSpan
+public class adot
+  extends Dialog
 {
-  adot(adop paramadop) {}
-  
-  public void onClick(View paramView)
+  public adot(Context paramContext)
   {
-    if (!bbfj.d(this.a.a))
+    super(paramContext, 2131755657);
+    setContentView(2131562027);
+    getWindow().setFlags(1024, 2048);
+  }
+  
+  public void a(String paramString)
+  {
+    ((TextView)findViewById(2131377884)).setText(paramString);
+  }
+  
+  public void dismiss()
+  {
+    try
     {
-      bcql.a(this.a.a, ajya.a(2131703235), 2000).a();
+      super.dismiss();
       return;
     }
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
-    paramView.putExtra("hide_more_button", true);
-    this.a.a.startActivity(paramView);
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
+    }
+  }
+  
+  public void setTitle(int paramInt)
+  {
+    if (paramInt == 0) {}
+    for (String str = null;; str = getContext().getResources().getString(paramInt))
+    {
+      a(str);
+      return;
+    }
+  }
+  
+  public void show()
+  {
+    try
+    {
+      super.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adot
  * JD-Core Version:    0.7.0.1
  */

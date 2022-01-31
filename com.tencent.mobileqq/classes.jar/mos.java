@@ -1,33 +1,19 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
 
-class mos
-  extends lkb
+public class mos
+  implements ahqz
 {
-  mos(mor parammor) {}
+  public mos(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public int a(int paramInt, boolean paramBoolean)
   {
-    c();
-  }
-  
-  protected void b(long paramLong, boolean paramBoolean)
-  {
-    c();
-  }
-  
-  void c()
-  {
-    moz localmoz = this.a.a();
-    if ((localmoz != null) && (localmoz.a())) {
-      ((AVRedPacketManager)this.a.a.a(6)).c(this.a.a.a().a().j);
-    }
+    this.a.setCurSelTab(paramInt, paramBoolean, 1);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mos
  * JD-Core Version:    0.7.0.1
  */

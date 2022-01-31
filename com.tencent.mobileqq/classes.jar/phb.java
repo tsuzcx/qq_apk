@@ -1,20 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 
-class phb
-  implements ViewBase.OnClickListener
+public abstract interface phb
 {
-  phb(pgw parampgw, pau parampau) {}
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    pgw.a(this.jdField_a_of_type_Pgw, this.jdField_a_of_type_Pau, paramViewBase);
-    pgw.a(this.jdField_a_of_type_Pgw, this.jdField_a_of_type_Pau.a());
-  }
+  public abstract void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phb
  * JD-Core Version:    0.7.0.1
  */

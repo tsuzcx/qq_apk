@@ -1,35 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.3;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
 
 public class afhz
-  extends akuo
+  extends aekx
 {
-  public afhz(Face2FaceAddContactPresenter.3 param3, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  TextView b;
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onLocationFinish errCode = " + paramInt + " info = " + paramSosoLbsInfo);
-    }
-    if ((paramInt != 0) || (paramSosoLbsInfo == null)) {
-      if (afhx.a(this.a.this$0) != null) {
-        afhx.a(this.a.this$0).b();
-      }
-    }
-    while ((TextUtils.isEmpty(this.a.a)) || (this.a.a.length() != 4)) {
-      return;
-    }
-    afhx.a(this.a.this$0, paramSosoLbsInfo, this.a.a, this.a.b);
-  }
+  afhz(afhy paramafhy) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afhz
  * JD-Core Version:    0.7.0.1
  */

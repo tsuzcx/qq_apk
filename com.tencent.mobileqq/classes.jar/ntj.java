@@ -1,30 +1,41 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10.1.1;
-import com.tencent.biz.widgets.TabLayout;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ntj
-  implements Animator.AnimatorListener
+class ntj
+  implements URLDrawableDownListener
 {
-  public ntj(ReadInJoyChannelViewPagerController.10 param10) {}
+  ntj(nti paramnti) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    nth.b(this.a.this$0, false);
-    nth.a(this.a.this$0, nth.a, 0.0F, 0);
-    nth.a(this.a.this$0).postDelayed(new ReadInJoyChannelViewPagerController.10.1.1(this), 0L);
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountTipsManager", 2, "img Load Failed.");
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountTipsManager", 2, "img Load Interrupted.");
+    }
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (nti.a(this.a) != null) {
+      nti.a(this.a).setVisibility(0);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ntj
  * JD-Core Version:    0.7.0.1
  */

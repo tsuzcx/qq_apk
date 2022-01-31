@@ -6,21 +6,21 @@ import android.content.DialogInterface.OnKeyListener;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.KeyEvent;
-import bcqf;
-import bcqi;
+import bepp;
+import beps;
 import com.tencent.qphone.base.util.QLog;
-import vtn;
-import vtq;
-import vtz;
+import xif;
+import xii;
+import xir;
 
 public class SlideProgressNotifier
-  extends bcqi
-  implements DialogInterface.OnKeyListener, vtn
+  extends beps
+  implements DialogInterface.OnKeyListener, xif
 {
   Activity jdField_a_of_type_AndroidAppActivity;
   Handler jdField_a_of_type_AndroidOsHandler;
   SlideProgressNotifier.RefreshProgressThread jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread;
-  private vtq jdField_a_of_type_Vtq;
+  private xii jdField_a_of_type_Xii;
   
   public SlideProgressNotifier(Activity paramActivity, int paramInt)
   {
@@ -60,9 +60,9 @@ public class SlideProgressNotifier
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131699546) + "0%", 0);
-    if (this.jdField_a_of_type_Bcqf != null) {
-      this.jdField_a_of_type_Bcqf.setOnKeyListener(this);
+    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131699901) + "0%", 0);
+    if (this.jdField_a_of_type_Bepp != null) {
+      this.jdField_a_of_type_Bepp.setOnKeyListener(this);
     }
     if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread.a()))
     {
@@ -76,18 +76,18 @@ public class SlideProgressNotifier
     }
   }
   
-  public void a(vtq paramvtq)
+  public void a(xii paramxii)
   {
-    this.jdField_a_of_type_Vtq = paramvtq;
+    this.jdField_a_of_type_Xii = paramxii;
   }
   
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
     if (paramInt == 4)
     {
-      vtz.a().f();
-      if (this.jdField_a_of_type_Vtq != null) {
-        this.jdField_a_of_type_Vtq.a();
+      xir.a().f();
+      if (this.jdField_a_of_type_Xii != null) {
+        this.jdField_a_of_type_Xii.a();
       }
     }
     return false;
@@ -95,7 +95,7 @@ public class SlideProgressNotifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideProgressNotifier
  * JD-Core Version:    0.7.0.1
  */

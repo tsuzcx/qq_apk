@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import afmk;
-import ajte;
+import ahjp;
+import alkr;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,14 +10,14 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import bfnk;
+import bhoe;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class BaseTroopView
   extends FrameLayout
 {
   protected int a;
-  public afmk a;
+  public ahjp a;
   View a;
   public QQAppInterface a;
   protected boolean a;
@@ -34,7 +34,7 @@ public class BaseTroopView
   
   public Activity a()
   {
-    return this.jdField_a_of_type_Afmk.a();
+    return this.jdField_a_of_type_Ahjp.a();
   }
   
   public void a()
@@ -52,18 +52,18 @@ public class BaseTroopView
   
   public void a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Afmk.a().sendEmptyMessageDelayed(paramInt, paramLong);
+    this.jdField_a_of_type_Ahjp.a().sendEmptyMessageDelayed(paramInt, paramLong);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Afmk.a(paramInt, paramBoolean);
+    this.jdField_a_of_type_Ahjp.a(paramInt, paramBoolean);
   }
   
-  public void a(ajte paramajte)
+  public void a(alkr paramalkr)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(paramajte);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(paramalkr);
     }
   }
   
@@ -74,23 +74,23 @@ public class BaseTroopView
   
   protected final void a(Intent paramIntent, int paramInt)
   {
-    this.jdField_a_of_type_Afmk.a().startActivityForResult(paramIntent, paramInt);
+    this.jdField_a_of_type_Ahjp.a().startActivityForResult(paramIntent, paramInt);
   }
   
-  protected void a(Intent paramIntent, afmk paramafmk)
+  protected void a(Intent paramIntent, ahjp paramahjp)
   {
-    this.jdField_a_of_type_Afmk = paramafmk;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Afmk.a();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Afmk.b();
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_Afmk.c();
-    this.c = this.jdField_a_of_type_Afmk.a();
-    this.d = this.jdField_a_of_type_Afmk.d();
+    this.jdField_a_of_type_Ahjp = paramahjp;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Ahjp.a();
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Ahjp.b();
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_Ahjp.c();
+    this.c = this.jdField_a_of_type_Ahjp.a();
+    this.d = this.jdField_a_of_type_Ahjp.d();
   }
   
   protected final void a(String paramString)
   {
     if (!a()) {
-      this.jdField_a_of_type_Afmk.a(paramString);
+      this.jdField_a_of_type_Ahjp.a(paramString);
     }
   }
   
@@ -114,10 +114,10 @@ public class BaseTroopView
     a(getResources().getString(paramInt));
   }
   
-  public void b(ajte paramajte)
+  public void b(alkr paramalkr)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(paramajte);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(paramalkr);
     }
   }
   
@@ -141,7 +141,7 @@ public class BaseTroopView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.BaseTroopView
  * JD-Core Version:    0.7.0.1
  */

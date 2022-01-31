@@ -1,165 +1,158 @@
-import android.text.TextUtils;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class akhx
-  extends akil
+public abstract class akhx
 {
-  public akhx(TroopManager paramTroopManager) {}
+  @SuppressLint({"UseSparseArrays"})
+  public static Map<Integer, ColorStateList> a;
+  protected int a;
+  protected akdd a;
+  protected akhz a;
+  Context jdField_a_of_type_AndroidContentContext;
+  protected Drawable a;
+  public awbv a;
+  protected bhxa a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected boolean a;
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  static
   {
-    switch (paramInt1)
+    jdField_a_of_type_JavaUtilMap = new HashMap(5);
+  }
+  
+  protected akhx(QQAppInterface paramQQAppInterface, Context paramContext, awbv paramawbv)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Awbv = paramawbv;
+  }
+  
+  protected static ColorStateList a(Context paramContext, int paramInt)
+  {
+    ColorStateList localColorStateList2 = (ColorStateList)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    ColorStateList localColorStateList1 = localColorStateList2;
+    if (localColorStateList2 == null)
     {
+      localColorStateList1 = paramContext.getResources().getColorStateList(paramInt);
+      jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localColorStateList1);
     }
-    Object localObject2;
-    do
-    {
-      return;
-      this.a.f(paramString);
-      synchronized (this.a)
-      {
-        if (TroopManager.a(this.a) != null)
-        {
-          localObject2 = TroopManager.a(this.a).iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            if (((TroopInfo)((Iterator)localObject2).next()).troopuin.equals(paramString)) {
-              ((Iterator)localObject2).remove();
-            }
-          }
-        }
-        return;
-      }
-      ??? = new ArrayList();
-      ((ArrayList)???).add(paramString);
-      this.a.b((ArrayList)???);
-      return;
-      localObject2 = this.a.b(paramString);
-    } while ((localObject2 == null) || (!TroopManager.a(this.a, (TroopInfo)localObject2, true)));
-    akhp localakhp = (akhp)this.a.a.a(20);
+    return localColorStateList1;
+  }
+  
+  protected int a()
+  {
+    return 1;
+  }
+  
+  protected Drawable a()
+  {
+    boolean bool = azib.b();
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_Boolean != bool)) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {}
     for (;;)
     {
-      synchronized (this.a)
+      try
       {
-        if (TroopManager.a(this.a) == null)
-        {
-          TroopManager.a(this.a, new ArrayList());
-          TroopManager.a(this.a).add(localObject2);
-          localakhp.a(true, paramString, ((TroopInfo)localObject2).troopcode, 9);
-          return;
+        Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+        if (!bool) {
+          continue;
         }
+        i = 2130844481;
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(i);
+        this.jdField_a_of_type_Boolean = bool;
       }
-      TroopManager.a(this.a).add(localObject2);
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        int i;
+        continue;
+      }
+      catch (Exception localException)
+      {
+        continue;
+      }
+      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      i = 2130844480;
     }
   }
   
-  protected void a(String arg1, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public abstract View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener);
+  
+  protected bhxa a(Context paramContext)
   {
-    boolean bool;
-    ArrayList localArrayList;
-    if (QLog.isColorLevel())
+    int i = bdkf.a(152.0F);
+    int j = a();
+    int k = b();
+    paramContext = a();
+    int[] arrayOfInt1 = b();
+    int[] arrayOfInt2 = c();
+    return new akhy(this, j, k, new int[] { i }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+  }
+  
+  protected void a(int paramInt, bhxc[] paramArrayOfbhxc) {}
+  
+  public void a(akhz paramakhz)
+  {
+    this.jdField_a_of_type_Akhz = paramakhz;
+  }
+  
+  public void a(View paramView, int paramInt, akia paramakia, View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_Bhxa != null) {}
+    for (int i = this.jdField_a_of_type_Bhxa.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Awbv, paramakia, paramOnClickListener);; i = 0)
     {
-      paramList = new StringBuilder().append("onUpdateTroopGetMemberList(memberLimit), troopUin:").append(???).append(", mGetTroopMemberListTroops == null:");
-      if (TroopManager.a(this.a) == null)
+      if ((this.jdField_a_of_type_Akdd != null) && (this.jdField_a_of_type_Akdd.jdField_a_of_type_Int != -1))
       {
-        bool = true;
-        QLog.i("Q.contacttab.troop", 2, bool);
+        if (paramInt != this.jdField_a_of_type_Akdd.jdField_a_of_type_Int) {
+          paramView.scrollTo(0, 0);
+        }
       }
-    }
-    else
-    {
-      localArrayList = new ArrayList();
-      localArrayList.add(???);
-      if (TroopManager.a(this.a) != null) {
-        break label98;
-      }
-      this.a.b(localArrayList);
-    }
-    label98:
-    TroopInfo localTroopInfo;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          bool = false;
-          break;
-        } while (TroopManager.a(this.a).size() <= 0);
-        localTroopInfo = (TroopInfo)TroopManager.a(this.a).get(0);
-      } while (!localTroopInfo.troopuin.equals(???));
-      paramList = (akhp)this.a.a.a(20);
-      if ((paramBoolean) || (TroopManager.a(this.a) >= 3)) {
-        break label237;
-      }
-      paramList.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 4);
-    } while (!QLog.isColorLevel());
-    QLog.w("Q.contacttab.troop", 2, "getTroopsMemberList(memberLimit), failed, retry mRetryGetTroopMemberListCount:" + TroopManager.b(this.a) + ", troopUin" + localTroopInfo.troopuin);
-    return;
-    label237:
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.contacttab.troop", 2, "notifyTroopMembersUpdate, troopUin:" + ???);
-    }
-    if (paramBoolean) {
-      this.a.b(localArrayList);
-    }
-    synchronized (this.a)
-    {
-      TroopManager.a(this.a).remove(0);
-      if (TroopManager.a(this.a).size() > 0)
-      {
-        ??? = (TroopInfo)TroopManager.a(this.a).get(0);
-        TroopManager.a(this.a, 0);
-        paramList.a(true, ???.troopuin, ???.troopcode, 4);
+      else {
         return;
-        this.a.g(???);
       }
-    }
-    synchronized (this.a)
-    {
-      TroopManager.a(this.a, null);
+      paramView.scrollTo(i, 0);
       return;
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  protected int[] a()
   {
-    QLog.i("troop_ext", 1, "onGetTroopInfoResult success: troopUin: " + paramString);
+    return null;
   }
   
-  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
+  protected int b()
   {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      int i = 0;
-      while (i < paramArrayList.size())
-      {
-        paramString = (TroopMemberCardInfo)paramArrayList.get(i);
-        this.a.b(paramString.troopuin, paramString.memberuin);
-        i += 1;
-      }
-    }
+    return 1;
   }
   
-  protected void f(boolean paramBoolean, String paramString)
+  protected int[] b()
   {
-    QLog.i("troop_ext", 1, "onActiveExtTroop success: " + paramBoolean + " troopUin: " + paramString);
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      ((akhp)this.a.a.a(20)).j(paramString);
-    }
+    return null;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  protected int[] c()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhx
  * JD-Core Version:    0.7.0.1
  */

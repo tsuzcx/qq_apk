@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import alaz;
+import amrp;
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
@@ -9,19 +9,19 @@ import com.tencent.qphone.base.util.QLog;
 public class NormalVideoARRenderable$3
   implements Runnable
 {
-  public NormalVideoARRenderable$3(alaz paramalaz) {}
+  public NormalVideoARRenderable$3(amrp paramamrp) {}
   
   @TargetApi(11)
   public void run()
   {
     try
     {
-      alaz.a(this.this$0).updateTexImage();
-      alaz.a(this.this$0).getTransformMatrix(alaz.a(this.this$0));
+      amrp.a(this.this$0).updateTexImage();
+      amrp.a(this.this$0).getTransformMatrix(amrp.a(this.this$0));
       if (ScanTorchActivity.i)
       {
-        alaz localalaz = this.this$0;
-        localalaz.b += 1L;
+        amrp localamrp = this.this$0;
+        localamrp.b += 1L;
         if (this.this$0.b >= 30L)
         {
           this.this$0.b = 0L;
@@ -46,7 +46,7 @@ public class NormalVideoARRenderable$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.NormalVideoARRenderable.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,30 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Set;
 
-public class aflq
-  extends ajto
+class aflq
+  extends afpq
 {
-  public aflq(SystemMsgListView paramSystemMsgListView) {}
-  
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  aflq(aflj paramaflj)
   {
-    if (paramBoolean)
-    {
-      if (SystemMsgListView.a(this.a) != null) {
-        SystemMsgListView.a(this.a).c();
-      }
-      bcql.a(this.a.getContext(), 2131699212, 3000).a();
-      return;
-    }
-    bcql.a(this.a.getContext(), 2131699211, 1).a();
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    paramChatMessage = new afpx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    aflj.a(this.a).add(paramChatMessage);
+    return paramChatMessage;
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflq
  * JD-Core Version:    0.7.0.1
  */

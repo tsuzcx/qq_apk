@@ -1,34 +1,25 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-class acwu
-  implements URLDrawable.URLDrawableListener
+public class acwu
+  implements Animation.AnimationListener
 {
-  acwu(acwl paramacwl) {}
+  public acwu(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    acwl.d(this.a);
-    bcql.a(this.a.a, 0, 2131693658, 1).a();
+    this.a.f = false;
+    this.a.finish();
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    acwl.d(this.a);
-    bcql.a(this.a.a, 0, 2131693658, 1).a();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    acwl.d(this.a);
-    acwl.a(this.a, acwl.a(this.a));
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwu
  * JD-Core Version:    0.7.0.1
  */

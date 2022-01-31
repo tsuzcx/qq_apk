@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import android.os.Build.VERSION;
-import axrn;
-import bbdh;
+import azmz;
+import bdcb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import onh;
+import ors;
 
 class ReadInJoyNewFeedsActivity$MyRunnable
   implements Runnable
@@ -33,23 +33,23 @@ class ReadInJoyNewFeedsActivity$MyRunnable
         localWebProcessManager = (WebProcessManager)((ReadInJoyNewFeedsActivity)this.a.get()).app.getManager(13);
         if (localWebProcessManager != null)
         {
-          i = onh.f();
-          if (!onh.f()) {}
+          i = ors.f();
+          if (!ors.f()) {}
         }
       }
       try
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-        localHashMap.put("param_totalMem", String.valueOf(bbdh.d()));
-        localHashMap.put("param_availableMem", String.valueOf(bbdh.e()));
-        localHashMap.put("param_cpuNum", String.valueOf(bbdh.b()));
-        localHashMap.put("param_cpuFreq", String.valueOf(bbdh.a()));
+        localHashMap.put("param_totalMem", String.valueOf(bdcb.d()));
+        localHashMap.put("param_availableMem", String.valueOf(bdcb.e()));
+        localHashMap.put("param_cpuNum", String.valueOf(bdcb.b()));
+        localHashMap.put("param_cpuFreq", String.valueOf(bdcb.a()));
         localHashMap.put("param_preloadLevel", String.valueOf(i));
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyNewFeedsActivity", 2, "preloadToolProcessReport:" + localHashMap.toString());
         }
-        axrn.a(this.this$0).a(this.this$0.app.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
+        azmz.a(this.this$0).a(this.this$0.app.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
       }
       catch (Exception localException)
       {
@@ -72,7 +72,7 @@ class ReadInJoyNewFeedsActivity$MyRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.MyRunnable
  * JD-Core Version:    0.7.0.1
  */

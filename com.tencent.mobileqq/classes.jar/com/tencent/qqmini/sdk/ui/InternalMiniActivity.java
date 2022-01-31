@@ -1,26 +1,28 @@
 package com.tencent.qqmini.sdk.ui;
 
-import android.os.Bundle;
-import bfgl;
+import android.view.KeyEvent;
 
 public class InternalMiniActivity
   extends MiniActivity
 {
   public void onBackPressed()
   {
-    super.onBackPressed();
     finish();
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    bfgl.b(this);
-    super.onCreate(paramBundle);
+    if (paramInt == 4)
+    {
+      finish();
+      return true;
+    }
+    return super.onKeyDown(paramInt, paramKeyEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.InternalMiniActivity
  * JD-Core Version:    0.7.0.1
  */

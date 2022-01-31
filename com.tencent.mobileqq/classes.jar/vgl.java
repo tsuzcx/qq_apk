@@ -1,17 +1,19 @@
-public class vgl
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class vgl
+  implements DialogInterface.OnDismissListener
 {
-  public final String a;
-  public final vie a;
+  vgl(vgj paramvgj) {}
   
-  public vgl(vie paramvie, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Vie = paramvie;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgl
  * JD-Core Version:    0.7.0.1
  */

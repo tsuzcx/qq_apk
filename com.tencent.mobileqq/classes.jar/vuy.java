@@ -1,46 +1,55 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class vuy
-  extends syr<tnd, toq>
 {
-  vuy(vux paramvux) {}
+  public int a;
+  public Drawable a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
   
-  public void a(@NonNull tnd paramtnd, @Nullable toq paramtoq, @NonNull ErrorMessage paramErrorMessage)
+  public vuy(View paramView)
   {
-    ved.b("EditVideoTagPresenter", "refresh onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramtoq != null))
-    {
-      ved.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramtoq.toString());
-      paramtnd = paramtoq.jdField_a_of_type_JavaUtilList;
-      if (paramtnd.contains(vux.a(this.a)))
-      {
-        int i = paramtnd.indexOf(vux.a(this.a));
-        vux.a(this.a, (vvd)paramtnd.get(i));
-        vux.a(this.a).clear();
-        vux.a(this.a).addAll(paramtnd);
-        vux.a(this.a, paramtoq.jdField_a_of_type_JavaLangString);
-        vux.a(this.a, paramtoq.b);
-        ThreadManager.executeOnSubThread(new EditVideoTagPresenter.1.1(this));
-      }
-    }
-    for (;;)
-    {
-      vux.a(this.a).a(paramErrorMessage.errorCode, vux.a(this.a), this.a.a());
-      return;
-      vux.a(this.a, null);
-      break;
-      ved.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369496);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369495));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369487));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369484));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369494));
+    this.c = ((TextView)paramView.findViewById(2131361894));
+    this.jdField_a_of_type_Int = paramView.getContext().getResources().getDimensionPixelOffset(2131298809);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramView.getContext().getResources().getDrawable(2130839435);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839429);
+    this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), this.jdField_a_of_type_AndroidViewView.getPaddingTop(), this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839435);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(null, 1);
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("");
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("");
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.c.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vuy
  * JD-Core Version:    0.7.0.1
  */

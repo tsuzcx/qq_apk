@@ -1,242 +1,271 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.DrawerPushItem;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.app.MobileQQ;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnShowListener;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.ImageButton;
+import android.widget.VideoView;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoMusicMixRunnable;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 
 public class ajkm
-  implements ajfl
 {
-  public static boolean a;
-  private int jdField_a_of_type_Int = 1;
-  ajez jdField_a_of_type_Ajez;
-  private boolean b;
-  private boolean c;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private final aelc jdField_a_of_type_Aelc = new ajkn(this);
+  private final ajot jdField_a_of_type_Ajot = new ajko(this);
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener;
+  private DialogInterface.OnShowListener jdField_a_of_type_AndroidContentDialogInterface$OnShowListener;
+  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
+  private bepp jdField_a_of_type_Bepp;
+  private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
+  private FixedSizeVideoView jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView;
+  private QzoneVerticalVideoTopicInfo jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Dialog> jdField_a_of_type_JavaLangRefWeakReference;
+  private xgc jdField_a_of_type_Xgc;
+  private boolean jdField_a_of_type_Boolean;
+  private long b;
+  private long c;
   
-  public ajkm(ajez paramajez)
+  private ajkm(Activity paramActivity, FixedSizeVideoView paramFixedSizeVideoView, ImageButton paramImageButton, QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo)
   {
-    this.jdField_a_of_type_Ajez = paramajez;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView = paramFixedSizeVideoView;
+    this.jdField_a_of_type_AndroidWidgetImageButton = paramImageButton;
+    this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = paramQzoneVerticalVideoTopicInfo;
+    this.jdField_a_of_type_Xgc = a();
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  private long a()
   {
-    boolean bool = false;
-    if (paramQQAppInterface != null)
+    return this.b - this.jdField_a_of_type_Long;
+  }
+  
+  public static ajkm a(Activity paramActivity, FixedSizeVideoView paramFixedSizeVideoView, QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo, ImageButton paramImageButton)
+  {
+    return new ajkm(paramActivity, paramFixedSizeVideoView, paramImageButton, paramQzoneVerticalVideoTopicInfo);
+  }
+  
+  private xgc a()
+  {
+    if ((this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo != null) && (this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.a()))
     {
-      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
-      if (localSharedPreferences.getInt(paramQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_" + ApolloUtil.b(), 0) >= localSharedPreferences.getInt("sp_key_aio_bubble_max_count", 3)) {
-        bool = true;
-      }
-      jdField_a_of_type_Boolean = bool;
+      xgc localxgc = new xgc();
+      localxgc.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.c();
+      localxgc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.d();
+      localxgc.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.b();
+      localxgc.jdField_b_of_type_Int = 3;
+      return localxgc;
     }
+    return null;
   }
   
-  private void b()
+  private void b(boolean paramBoolean)
   {
-    if (!this.b) {}
-    Object localObject;
-    airt localairt;
-    airx localairx;
-    do
-    {
-      do
-      {
-        return;
-        this.b = false;
-        localObject = this.jdField_a_of_type_Ajez.a();
-      } while (localObject == null);
-      localairt = (airt)((QQAppInterface)localObject).getManager(211);
-      localairx = (airx)((QQAppInterface)localObject).getManager(153);
-      localObject = null;
-      if (localairt.jdField_a_of_type_Ajkk != null) {
-        localObject = localairt.jdField_a_of_type_Ajkk.a();
-      }
-    } while ((localObject == null) || ((((DrawerPushItem)localObject).msg_type != 7) && (((DrawerPushItem)localObject).msg_type != 9) && (((DrawerPushItem)localObject).msg_type != 2) && (((DrawerPushItem)localObject).msg_type != 10)));
-    QLog.i("ApolloBubbleLogic", 1, "checkIfPanelBubble remove panel bubble");
-    localairx.a((DrawerPushItem)localObject);
-    localairt.jdField_a_of_type_Ajkk.a();
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp", 0);
-    Object localObject1 = paramQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_";
-    String str1 = (String)localObject1 + ApolloUtil.b();
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
-    if (((SharedPreferences)localObject2).contains(str1)) {
-      localEditor.putInt(str1, ((SharedPreferences)localObject2).getInt(str1, 0) + 1);
-    }
+    float f2 = 0.0F;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView != null) {}
     for (;;)
     {
-      localEditor.commit();
-      a(paramQQAppInterface);
-      return;
-      Object localObject3 = ((SharedPreferences)localObject2).getAll();
-      localObject2 = new ArrayList();
-      if (localObject3 != null)
+      try
       {
-        localObject3 = ((Map)localObject3).entrySet().iterator();
-        while (((Iterator)localObject3).hasNext())
+        Object localObject = VideoView.class.getDeclaredField("mMediaPlayer");
+        ((Field)localObject).setAccessible(true);
+        localObject = (MediaPlayer)((Field)localObject).get(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView);
+        if (localObject != null)
         {
-          Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
-          String str2 = (String)localEntry.getKey();
-          if ((str2 != null) && (str2.startsWith((String)localObject1))) {
-            ((List)localObject2).add(localEntry.getKey());
+          if (paramBoolean)
+          {
+            f1 = 0.0F;
+            break label100;
+            ((MediaPlayer)localObject).setVolume(f1, f2);
           }
         }
-        localObject1 = ((List)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          localEditor.remove((String)((Iterator)localObject1).next());
+        else {
+          return;
         }
+        float f1 = 1.0F;
       }
-      localEditor.putInt(str1, 1);
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        QZLog.e("EditLocalVideoMusicMixe", 2, localNoSuchFieldException, new Object[0]);
+        return;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        QZLog.e("EditLocalVideoMusicMixe", 2, localIllegalAccessException, new Object[0]);
+        return;
+      }
+      f2 = 1.0F;
+      continue;
+      label100:
+      if (!paramBoolean) {}
     }
   }
   
-  public int a()
+  private void c(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) {
+      if (!paramBoolean) {
+        break label49;
+      }
+    }
+    label49:
+    for (int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b();; i = 0)
+    {
+      this.jdField_a_of_type_Int = i;
+      if (this.jdField_a_of_type_Xgc == null) {
+        b(false);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = null;
+      return;
+    }
+  }
+  
+  private boolean c()
+  {
+    return (this.jdField_a_of_type_Xgc != null) && (a() - this.jdField_a_of_type_Xgc.f > 0L);
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new AudioPlayer(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aelc);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(3);
+    }
+    AudioPlayer localAudioPlayer;
+    String str;
+    if (this.jdField_a_of_type_Xgc != null)
+    {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Xgc.g)) {
+        break label119;
+      }
+      localAudioPlayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
+      str = this.jdField_a_of_type_Xgc.g;
+      if (this.jdField_a_of_type_Int == 0) {
+        break label108;
+      }
+    }
+    label108:
+    for (int i = this.jdField_a_of_type_Int;; i = this.jdField_a_of_type_Xgc.jdField_d_of_type_Int)
+    {
+      localAudioPlayer.a(str, i);
+      this.jdField_a_of_type_AndroidAppActivity.sendBroadcast(new Intent("action_music_start"));
+      b(true);
+      return;
+    }
+    label119:
+    QZLog.e("EditLocalVideoMusicMixe", 2, new Object[] { "startAudioPlayback: music not downloaded " + this.jdField_a_of_type_Xgc.jdField_d_of_type_JavaLangString });
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ajez != null)
-    {
-      airt localairt = (airt)this.jdField_a_of_type_Ajez.a().getManager(211);
-      localairt.jdField_a_of_type_Int = -1;
-      localairt.a(-1, -1);
+    P2VEditMusicDialog localP2VEditMusicDialog = new P2VEditMusicDialog(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Ajot, (int)a(), true);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      localP2VEditMusicDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
     }
-    this.jdField_a_of_type_Ajez = null;
-    this.c = false;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener != null) {
+      localP2VEditMusicDialog.setOnShowListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener);
+    }
+    localP2VEditMusicDialog.setCanceledOnTouchOutside(false);
+    localP2VEditMusicDialog.show();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localP2VEditMusicDialog);
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    switch (paramInt)
+    if (paramInt2 - paramInt1 > 0)
     {
-    }
-    label304:
-    for (;;)
-    {
+      this.jdField_a_of_type_Long = paramInt1;
+      this.b = paramInt2;
+      Log.d("EditLocalVideoMusicMixe", "updateVideoFrameClippedRange: " + paramInt1 + " " + paramInt2);
       return;
-      b();
-      return;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_Ajez.a();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_Ajez.a() != null) && (ajfh.a(localQQAppInterface) != null))
-      {
-        SharedPreferences localSharedPreferences = localQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
-        int i = localSharedPreferences.getInt(localQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_" + ApolloUtil.b(), 0);
-        int j = localSharedPreferences.getInt("sp_key_aio_bubble_max_count", 3);
-        if (i >= j)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloBubbleLogic", 2, new Object[] { "AIO Bubble show count limited:", Integer.valueOf(j) });
-          }
-        }
-        else if (this.c)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloBubbleLogic", 2, "current AIO has play bubble, wait for next time");
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloBubbleLogic", 2, "start play bubble");
-          }
-          if (a(localQQAppInterface)) {
-            paramInt = 2;
-          }
-          for (;;)
-          {
-            if (paramInt <= 0) {
-              break label304;
-            }
-            this.b = true;
-            this.c = true;
-            b(localQQAppInterface);
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ApolloBubbleLogic", 2, new Object[] { "AIO bubble play type:", Integer.valueOf(paramInt), ",current count:", Integer.valueOf(i), ",maxCount:", Integer.valueOf(j) });
-            return;
-            if (b(localQQAppInterface)) {
-              paramInt = 3;
-            } else {
-              paramInt = 0;
-            }
-          }
-        }
-      }
+    }
+    Log.w("EditLocalVideoMusicMixe", "updateVideoFrameClippedRange: duration less or equal than zero " + paramInt2 + " " + paramInt1);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Xgc != null) {
+      new P2VEditMusicDialog(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Ajot, (int)paramLong, true);
     }
   }
   
-  public boolean a(QQAppInterface paramQQAppInterface)
+  public void a(long paramLong, String paramString)
   {
-    airt localairt = (airt)paramQQAppInterface.getManager(211);
-    if (localairt.jdField_a_of_type_Ajkk != null) {}
-    for (DrawerPushItem localDrawerPushItem = localairt.jdField_a_of_type_Ajkk.a();; localDrawerPushItem = null)
-    {
-      if ((localDrawerPushItem != null) && (localDrawerPushItem.msg_type != 7) && (localairt.jdField_a_of_type_Ajkk.a(paramQQAppInterface, this.jdField_a_of_type_Ajez.jdField_a_of_type_Int)))
-      {
-        if (localDrawerPushItem.reddotGameId > 0)
-        {
-          localairt.jdField_a_of_type_Int = localDrawerPushItem.reddotGameId;
-          localairt.a(localDrawerPushItem.reddotGameId, 3);
-          VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_msg_display", ApolloUtil.b(this.jdField_a_of_type_Ajez.jdField_a_of_type_Int), 3, new String[] { String.valueOf(localDrawerPushItem.reddotGameId), String.valueOf(localDrawerPushItem.reddotRedId) });
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloBubbleLogic", 2, new Object[] { "show aio bubble for reddot game, game id=", Integer.valueOf(localDrawerPushItem.reddotGameId) });
-          }
-        }
-        return true;
-      }
-      return false;
-    }
+    a(0, (int)paramLong);
+    this.c = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public boolean b(QQAppInterface paramQQAppInterface)
+  public void a(ajkq paramajkq)
   {
-    boolean bool2 = false;
-    airt localairt = (airt)paramQQAppInterface.getManager(211);
-    if (localairt.jdField_a_of_type_Ajkk != null) {}
-    for (Object localObject = localairt.jdField_a_of_type_Ajkk.a();; localObject = null)
-    {
-      boolean bool1 = bool2;
-      if (localObject != null)
-      {
-        bool1 = bool2;
-        if (((DrawerPushItem)localObject).msg_type == 7)
-        {
-          localObject = (airx)paramQQAppInterface.getManager(153);
-          bool1 = bool2;
-          if (localairt.jdField_a_of_type_Ajkk.a(paramQQAppInterface, this.jdField_a_of_type_Ajez.jdField_a_of_type_Int))
-          {
-            if (localObject != null) {
-              ((airx)localObject).o = true;
-            }
-            VipUtils.a(null, "cmshow", "Apollo", "peoplebubble", ApolloUtil.b(this.jdField_a_of_type_Ajez.jdField_a_of_type_Int), 0, new String[] { String.valueOf(1) });
-            bool1 = true;
-          }
-        }
-      }
-      return bool1;
-    }
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new EditLocalVideoMusicMixRunnable(this.jdField_a_of_type_Long, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xgc, new ajkp(this, paramajkq)));
+  }
+  
+  public void a(DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = paramOnDismissListener;
+  }
+  
+  public void a(DialogInterface.OnShowListener paramOnShowListener)
+  {
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener = paramOnShowListener;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (((Dialog)this.jdField_a_of_type_JavaLangRefWeakReference.get()).isShowing());
+  }
+  
+  public void b()
+  {
+    c(false);
+    f();
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Xgc != null) && ((this.jdField_a_of_type_Xgc.jdField_b_of_type_Int == 0) || (this.jdField_a_of_type_Xgc.jdField_b_of_type_Int == 3) || (this.jdField_a_of_type_Xgc.jdField_b_of_type_Int == 2)) && (!this.jdField_a_of_type_Boolean);
+  }
+  
+  public void c()
+  {
+    c(false);
+  }
+  
+  public void d()
+  {
+    c(true);
+  }
+  
+  public void e()
+  {
+    f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,46 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import java.util.ArrayList;
 
 public class acpi
-  extends aumg
+  extends BroadcastReceiver
 {
-  public acpi(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public acpi(DirectForwardActivity paramDirectForwardActivity) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
-    }
-    this.a.a();
-    if (paramBoolean1)
+    paramIntent = paramIntent.getExtras();
+    if (paramIntent != null)
     {
-      if (paramBoolean2)
-      {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.c(this.a);
-        return;
+      paramContext = paramIntent.getStringArrayList("procNameList");
+      paramIntent = paramIntent.getString("verify");
+      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bcwf.a(paramIntent, paramContext))) {
+        break label53;
       }
-      VerifyPhoneNumActivity.c(this.a);
-      return;
     }
-    VerifyPhoneNumActivity.c(this.a);
+    for (;;)
+    {
+      return;
+      label53:
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        if (this.a.a.equals(paramContext.get(i)))
+        {
+          this.a.finish();
+          return;
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpi
  * JD-Core Version:    0.7.0.1
  */

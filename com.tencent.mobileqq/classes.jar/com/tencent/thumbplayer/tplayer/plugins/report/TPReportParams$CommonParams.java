@@ -28,6 +28,7 @@ public class TPReportParams$CommonParams
   public String p2pVersionString;
   public long platformLong;
   public String playNoString;
+  public int playTypeInt;
   public int playerTypeInt;
   public String playerVersionString;
   public String qqOpenIdString;
@@ -72,10 +73,11 @@ public class TPReportParams$CommonParams
     paramITPReportProperties.put("p2pver", this.p2pVersionString);
     paramITPReportProperties.put("appver", this.appVersionString);
     paramITPReportProperties.put("playerver", this.playerVersionString);
-    paramITPReportProperties.put("playertype", this.playerTypeInt);
+    paramITPReportProperties.put("playertype", this.playTypeInt);
     paramITPReportProperties.put("confid", this.configIdInt);
     paramITPReportProperties.put("cdnid", this.cdnIdInt);
     paramITPReportProperties.put("scenesid", this.scenesId);
+    paramITPReportProperties.put("playtype", this.playerTypeInt);
     paramITPReportProperties.put("dltype", this.downloadTypeInt);
     paramITPReportProperties.put("vid", this.vidString);
     paramITPReportProperties.put("definition", this.mediaResolutionString);
@@ -125,7 +127,7 @@ public class TPReportParams$CommonParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportParams.CommonParams
  * JD-Core Version:    0.7.0.1
  */

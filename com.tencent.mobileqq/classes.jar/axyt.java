@@ -1,60 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class axyt
-  extends URLDrawableDownListener.Adapter
+public final class axyt
+  implements apqa
 {
-  axyt(axys paramaxys) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public List<apsm> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.S, 2, "onLoadCancelled");
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.S, 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.S, 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    do
-    {
-      return;
-      paramView.setBackgroundDrawable(null);
-      if ((paramView instanceof ImageView))
-      {
-        ((URLImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.a.S, 2, "onLoadSuccessed");
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new apsm(7, 7, null));
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axyt
  * JD-Core Version:    0.7.0.1
  */

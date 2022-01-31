@@ -1,87 +1,96 @@
-import android.os.HandlerThread;
-import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSSwitchManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.pts.core.PTSThreadUtil;
-import com.tencent.pts.nativemodule.PTSNativeModuleRegistry;
-import com.tencent.pts.ui.PTSNodeFactory;
-import com.tencent.pts.utils.PTSLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class pqg
+  extends ViewBase
 {
-  public static pqg a;
-  private boolean a;
-  private boolean b;
-  private boolean c;
+  private NativeAvatarView a;
   
-  static
+  public pqg(VafContext paramVafContext)
   {
-    jdField_a_of_type_Pqg = new pqg();
+    super(paramVafContext);
+    this.a = new NativeAvatarView(paramVafContext.getContext());
   }
   
-  private void b()
+  public void a(pgd parampgd)
   {
-    this.c = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    d();
+    this.a.setModel(parampgd);
   }
   
-  private void c()
+  public void a(pgd parampgd, boolean paramBoolean)
   {
-    d();
-    PTSLog.registerLogger(new pqd());
-    PTSNodeFactory.registerNodeBuilder("img", new pqb());
-    PTSNativeModuleRegistry.registerNativeModule("RequestFeedsModule", new ppx());
-    PTSNativeModuleRegistry.registerNativeModule("NavigateToModule", new ppv());
-    PTSNativeModuleRegistry.registerNativeModule("AllInOneJumpModule", new ppp());
-    PTSNativeModuleRegistry.registerNativeModule("LoadFeedsModule", new pps());
-    PTSNativeModuleRegistry.registerNativeModule("HandleJSException", new ppr());
-    PTSNativeModuleRegistry.registerNativeModule("ReportTo1160", new ppw());
-    PTSNativeModuleRegistry.registerNativeModule("MarkArticleRead", new ppu());
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("readinjoy-common-pts-sub", 0);
-    localHandlerThread.start();
-    PTSThreadUtil.registerSubHandlerThread(localHandlerThread);
-    ppj.a().a();
-    pph.a().a();
+    this.a.setModel(parampgd, paramBoolean);
   }
   
-  private void d()
+  public int getComMeasuredHeight()
   {
-    PTSNativeModuleRegistry.clearNativeModule();
-    ppa.a().a();
+    return this.a.getComMeasuredHeight();
   }
   
-  void a()
+  public int getComMeasuredWidth()
   {
-    b();
-    PTSSwitchManager.1 local1 = new PTSSwitchManager.1(this);
-    ThreadManager.getSubThreadHandler().post(local1);
+    return this.a.getComMeasuredWidth();
   }
   
-  public boolean a()
+  public View getNativeView()
   {
-    return this.c;
+    return this.a;
   }
   
-  public boolean b()
+  public boolean onClick()
   {
-    return this.jdField_a_of_type_Boolean;
+    super.onClick();
+    return true;
   }
   
-  public boolean c()
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return this.b;
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public boolean d()
+  public void onComMeasure(int paramInt1, int paramInt2)
   {
-    return (this.jdField_a_of_type_Boolean) || (this.b);
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramObject);
+    }
+    if ((paramObject instanceof Long)) {
+      this.a.setUin(((Long)paramObject).longValue());
+    }
+    return true;
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramString);
+    }
+    try
+    {
+      this.a.setUin(Long.valueOf(paramString).longValue());
+      return true;
+    }
+    catch (NumberFormatException paramString)
+    {
+      QLog.e("AvatarView", 1, paramString, new Object[0]);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pqg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.bizdapters;
 
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import wku;
+import xzn;
 
 public class DetailBaseAdapter$6
   implements Runnable
 {
-  public DetailBaseAdapter$6(wku paramwku) {}
+  public DetailBaseAdapter$6(xzn paramxzn) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class DetailBaseAdapter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.6
  * JD-Core Version:    0.7.0.1
  */

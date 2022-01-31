@@ -1,25 +1,25 @@
 package com.tencent.device.msg.activities;
 
-import axdq;
-import axei;
+import ayyu;
+import ayzo;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
-import ydu;
+import zsn;
 
 public class DevLittleVideoItemBuilder$5
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$5(ydu paramydu, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$5(zsn paramzsn, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    axei localaxei = axdq.a(0, 4);
-    localaxei.a(axdq.a(this.a, localaxei));
-    axdq.a(localaxei, this.this$0.a);
+    ayzo localayzo = ayyu.a(0, 4);
+    localayzo.a(ayyu.a(this.a, localayzo));
+    ayyu.a(localayzo, this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevLittleVideoItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

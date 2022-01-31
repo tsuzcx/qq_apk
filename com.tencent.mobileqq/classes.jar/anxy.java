@@ -1,49 +1,33 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.colornote.anim.EnterExitAnimHelper.1.1;
+import mqq.os.MqqHandler;
 
-class anxy
-  implements URLDrawableDownListener
+public class anxy
+  implements Animator.AnimatorListener
 {
-  anxy(anxw paramanxw, anxv paramanxv, URLImageView paramURLImageView, ImageView paramImageView) {}
+  anxy(anxx paramanxx, aobg paramaobg, boolean paramBoolean) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    QLog.e("CameraEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Anxv.toString());
-    anxw.a(this.jdField_a_of_type_Anxw, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.e("CameraEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Anxv.toString());
-    anxw.a(this.jdField_a_of_type_Anxw, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    QLog.e("CameraEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Anxv.toString());
-    anxw.a(this.jdField_a_of_type_Anxw, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    anxw.a(this.jdField_a_of_type_Anxw, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraEmotionAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_Anxv.toString());
+    if (this.jdField_a_of_type_Aobg != null) {
+      this.jdField_a_of_type_Aobg.onColorNoteAnimFinish();
     }
-    anxw.a(this.jdField_a_of_type_Anxw, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
+    if ((this.jdField_a_of_type_Boolean) && ((paramAnimator instanceof xto))) {
+      ThreadManager.getUIHandler().postDelayed(new EnterExitAnimHelper.1.1(this, paramAnimator), 200L);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxy
  * JD-Core Version:    0.7.0.1
  */

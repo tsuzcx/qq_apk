@@ -1,29 +1,26 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-
 public class basc
-  implements aybj
+  extends base
 {
-  public basc(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  private int a = 480000;
+  private int b = 9;
+  private int c = 3;
+  private int d = 20000;
+  private int e = 40000;
+  private int f = 5000;
   
-  public void a()
+  public int a()
   {
-    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
-      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
-    }
-    for (;;)
-    {
-      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
-        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
-      }
-      return;
-      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
-    }
+    return this.d;
+  }
+  
+  public int b()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     basc
  * JD-Core Version:    0.7.0.1
  */

@@ -21,9 +21,9 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import axlk;
-import bfnz;
-import bhpx;
+import azgq;
+import bhou;
+import bjri;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -47,7 +47,7 @@ public class DisplayUtil
   
   static
   {
-    if (bfnz.j()) {}
+    if (bhou.i()) {}
     try
     {
       Method localMethod = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
@@ -143,8 +143,8 @@ public class DisplayUtil
     int j;
     if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null))
     {
-      Rect localRect = bhpx.a(paramActivity.getWindow().getDecorView());
-      localRect.top = bhpx.a(paramActivity, paramActivity);
+      Rect localRect = bjri.a(paramActivity.getWindow().getDecorView());
+      localRect.top = bjri.a(paramActivity, paramActivity);
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       if (Build.VERSION.SDK_INT >= 17)
       {
@@ -303,7 +303,7 @@ public class DisplayUtil
       k = i;
       if (m != 0)
       {
-        j = axlk.c(BaseApplication.getContext());
+        j = azgq.c(BaseApplication.getContext());
         k = 0;
       }
       i = j;
@@ -570,7 +570,7 @@ public class DisplayUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.DisplayUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,36 @@
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ahsy
-  implements bfph
+class ahsy
+  extends nac
 {
-  public ahsy(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
+  ahsy(ahsh paramahsh) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + ajya.a(2131703671);
-    bhbe.a().c(paramView);
-    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
-    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
+    QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction checkOpenidDiff errorCode =" + paramInt);
+    if ((ahsh.a(this.a).isFinishing()) || (this.a.a))
+    {
+      QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction activity finishing or timeout");
+      return;
+    }
+    this.a.c();
+    if (ahsh.a(this.a) != null) {
+      ahsh.a(this.a).removeCallbacks(ahsh.b(this.a));
+    }
+    if (paramInt == 16)
+    {
+      this.a.d();
+      return;
+    }
+    ahsh.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsy
  * JD-Core Version:    0.7.0.1
  */

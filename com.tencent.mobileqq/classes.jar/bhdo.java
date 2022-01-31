@@ -1,51 +1,21 @@
-import NS_MOBILE_OPERATION.operation_like_req;
-import com.qq.taf.jce.JceStruct;
+import com.qflutter.video.IQflutterVideoView.StatusCallBack;
+import com.tencent.qqmini.sdk.runtime.flutter.SurfaceFlutterVideoView;
 
 public class bhdo
-  extends bgyk
+  implements bgnl
 {
-  private int a;
-  public JceStruct a;
+  public bhdo(SurfaceFlutterVideoView paramSurfaceFlutterVideoView) {}
   
-  public bhdo(Long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void a(bgnj parambgnj)
   {
-    operation_like_req localoperation_like_req = new operation_like_req();
-    localoperation_like_req.uin = paramLong.longValue();
-    localoperation_like_req.action = paramInt1;
-    localoperation_like_req.appid = paramInt2;
-    localoperation_like_req.curkey = paramString1;
-    localoperation_like_req.unikey = paramString2;
-    this.jdField_a_of_type_ComQqTafJceJceStruct = localoperation_like_req;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.like";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
-  }
-  
-  public String uniKey()
-  {
-    return "like";
+    if (SurfaceFlutterVideoView.a(this.a) != null) {
+      SurfaceFlutterVideoView.a(this.a).on(4, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhdo
  * JD-Core Version:    0.7.0.1
  */

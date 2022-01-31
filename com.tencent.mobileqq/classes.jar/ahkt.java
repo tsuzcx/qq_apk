@@ -1,22 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 
-class ahkt
+public class ahkt
   implements View.OnClickListener
 {
-  ahkt(ahkd paramahkd) {}
+  public ahkt(TroopActivity paramTroopActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_b_of_type_Long == 77313L) {
-      this.a.jdField_b_of_type_Boolean = true;
-    }
-    this.a.c();
+    TroopActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkt
  * JD-Core Version:    0.7.0.1
  */

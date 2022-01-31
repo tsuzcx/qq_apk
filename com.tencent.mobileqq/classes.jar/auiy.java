@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.8;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
 public class auiy
-  implements View.OnClickListener
+  implements auhv
 {
-  public auiy(AutoReplyEditActivity.8 param8) {}
+  public auiy(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    AutoReplyEditActivity.a(this.a.this$0, true);
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).setViewPagerBusy(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auiy
  * JD-Core Version:    0.7.0.1
  */

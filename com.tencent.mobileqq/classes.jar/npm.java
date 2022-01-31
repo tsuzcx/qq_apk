@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.LikeActionDownloadBar;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1;
 
-public final class npm
-  implements Parcelable.Creator<VideoInfo.LikeActionDownloadBar>
+public class npm
+  extends ContentObserver
 {
-  public VideoInfo.LikeActionDownloadBar a(Parcel paramParcel)
+  public npm(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
   {
-    return new VideoInfo.LikeActionDownloadBar(paramParcel);
+    super(paramHandler);
   }
   
-  public VideoInfo.LikeActionDownloadBar[] a(int paramInt)
+  public void onChange(boolean paramBoolean)
   {
-    return new VideoInfo.LikeActionDownloadBar[paramInt];
+    super.onChange(paramBoolean);
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
+      ReadInJoyNativeAdAppVideoView.a(this.a).post(new ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npm
  * JD-Core Version:    0.7.0.1
  */

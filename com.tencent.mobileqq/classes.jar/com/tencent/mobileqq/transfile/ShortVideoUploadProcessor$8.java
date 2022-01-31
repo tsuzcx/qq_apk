@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import ayoz;
+import bamu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.transaction.Transaction;
@@ -42,13 +42,13 @@ class ShortVideoUploadProcessor$8
     if (!this.jdField_a_of_type_Boolean)
     {
       this.this$0.s();
-      this.this$0.jdField_a_of_type_Ayoz.a(this.this$0.a());
+      this.this$0.jdField_a_of_type_Bamu.a(this.this$0.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoUploadProcessor.8
  * JD-Core Version:    0.7.0.1
  */

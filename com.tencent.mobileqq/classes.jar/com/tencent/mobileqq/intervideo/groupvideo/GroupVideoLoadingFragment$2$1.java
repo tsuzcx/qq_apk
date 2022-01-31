@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
 import android.support.v4.app.FragmentActivity;
-import arfd;
+import asvr;
 
 public class GroupVideoLoadingFragment$2$1
   implements Runnable
 {
-  public GroupVideoLoadingFragment$2$1(arfd paramarfd) {}
+  public GroupVideoLoadingFragment$2$1(asvr paramasvr) {}
   
   public void run()
   {

@@ -1,59 +1,45 @@
-import cooperation.qqreader.net.BaseCgiTask;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.MiniSDK;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
+import com.tencent.qqmini.sdk.utils.MiniAppLauncher;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
-public class bgvw
-  extends bgvk
+public final class bgvw
+  implements View.OnClickListener
 {
-  public bgvw(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  public bgvw(Dialog paramDialog, Context paramContext, String paramString1, MiniAppProxy paramMiniAppProxy, TianShuAccess.AdItem paramAdItem, String paramString2) {}
   
-  public void a(bgvj parambgvj)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    JSONObject localJSONObject = parambgvj.a();
-    if (localJSONObject == null) {}
-    try
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore response json is null");
-      return;
+      if (!MiniAppLauncher.isMiniAppUrl(this.jdField_a_of_type_JavaLangString)) {
+        break label69;
+      }
+      MiniSDK.startMiniApp((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2094, null);
     }
-    catch (JSONException parambgvj)
+    for (;;)
     {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore parse failed: " + parambgvj.getMessage());
+      MiniGameAdBannerPopup.a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, this.b, 102);
       return;
+      label69:
+      paramView = new Intent();
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.startBrowserActivity((Activity)this.jdField_a_of_type_AndroidContentContext, paramView);
     }
-    int i = localJSONObject.getInt("ret");
-    parambgvj = localJSONObject.getString("msg");
-    localJSONObject = localJSONObject.getJSONObject("data");
-    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore ret=" + i + "|msg=" + parambgvj);
-      return;
-    }
-    i = localJSONObject.optInt("err_code", 0);
-    parambgvj = localJSONObject.optString("err_msg");
-    if (i == 0) {
-      bool = true;
-    }
-    bgwd.b(ForceUserUpdateActivity.a(this.a), bool);
-    if (bool)
-    {
-      bgwf.d("ForceUserUpdateActivity", "onReceiveData: UpdateToQQBookstore succeed");
-      ForceUserUpdateActivity.c(this.a);
-      return;
-    }
-    ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore errMsg=" + parambgvj);
-  }
-  
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
-  {
-    ForceUserUpdateActivity.a(this.a, "onConnectionError: UpdateToQQBookstore error: " + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgvw
  * JD-Core Version:    0.7.0.1
  */

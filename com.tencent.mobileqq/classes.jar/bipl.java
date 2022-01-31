@@ -1,22 +1,20 @@
-import android.support.annotation.Nullable;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class bipl
-  implements bjos<Boolean>
+public class bipl
+  implements DialogInterface.OnClickListener
 {
-  bipl(bipi parambipi) {}
+  public bipl(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    bipi.e(this.a).setSelected(paramBoolean.booleanValue());
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bipl
  * JD-Core Version:    0.7.0.1
  */

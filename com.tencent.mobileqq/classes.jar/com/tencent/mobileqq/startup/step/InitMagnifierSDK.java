@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import ajvi;
-import ajxl;
-import akag;
+import abqn;
+import almv;
+import aloz;
+import alrv;
+import amfn;
 import android.os.Handler;
-import aney;
-import axoj;
-import bhoy;
+import aowf;
+import azju;
+import bjqj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
@@ -14,10 +16,14 @@ import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +32,24 @@ public class InitMagnifierSDK
   extends Step
 {
   private static ArrayList<String> a = new ArrayList(20);
+  
+  public static String a()
+  {
+    return "V 8.3.3." + aowf.a(BaseApplicationImpl.sApplication) + ".r" + AppSetting.g();
+  }
+  
+  @NotNull
+  public static List<String> a(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList(4);
+    localArrayList.add(abqn.b());
+    localArrayList.add(abqn.a());
+    localArrayList.addAll(abqn.b());
+    QLog.i("QQ_QAPM", 1, "leakDump" + paramString);
+    return localArrayList;
+  }
+  
+  public static void a(long paramLong) {}
   
   public static void a(long paramLong1, long paramLong2, String paramString, long paramLong3, long paramLong4, long paramLong5, long paramLong6, int paramInt1, int paramInt2)
   {
@@ -48,12 +72,12 @@ public class InitMagnifierSDK
       localJSONArray.put(localJSONObject2);
       localJSONObject1.put("parts", localJSONArray);
       ReporterMachine.a(new ResultObject(0, "testcase", true, 1L, 1L, localJSONObject1, true, true, MagnifierSDK.a));
-      QLog.d("LeakInspector", 2, new Object[] { "report new ceiling:s= ", Long.valueOf(paramLong1), ", stage=", paramString, ", useMem=" + paramLong3 + ", cnt=" + paramInt1 });
+      QLog.d("QQ_QAPM", 2, new Object[] { "report new ceiling:s= ", Long.valueOf(paramLong1), ", stage=", paramString, ", useMem=" + paramLong3 + ", cnt=" + paramInt1 });
       return;
     }
     catch (Exception paramString)
     {
-      QLog.e("LeakInspector", 1, "reportCeiling", paramString);
+      QLog.e("QQ_QAPM", 1, "reportCeiling", paramString);
     }
   }
   
@@ -63,8 +87,8 @@ public class InitMagnifierSDK
     Object localObject2;
     if (2 == BaseApplicationImpl.sProcessId)
     {
-      str = bhoy.c();
-      localObject1 = str + bhoy.a();
+      str = bjqj.c();
+      localObject1 = str + bjqj.a();
       if (!a.contains(localObject1))
       {
         localObject2 = new StringBuffer(512);
@@ -72,54 +96,55 @@ public class InitMagnifierSDK
         if ((localObject3 instanceof QQAppInterface))
         {
           localObject3 = (QQAppInterface)localObject3;
-          localajxl = (ajxl)((QQAppInterface)localObject3).getManager(51);
-          if (localajxl != null)
+          localaloz = (aloz)((QQAppInterface)localObject3).getManager(51);
+          if (localaloz != null)
           {
-            i = localajxl.a();
+            i = localaloz.a();
             ((StringBuffer)localObject2).append("fc=");
             ((StringBuffer)localObject2).append(i);
             ((StringBuffer)localObject2).append("&");
           }
-          localObject3 = (ajvi)((QQAppInterface)localObject3).getManager(53);
+          localObject3 = (almv)((QQAppInterface)localObject3).getManager(53);
           if (localObject3 != null)
           {
-            i = ((ajvi)localObject3).a().size();
+            i = ((almv)localObject3).a().size();
             ((StringBuffer)localObject2).append("dc=");
             ((StringBuffer)localObject2).append(i);
             ((StringBuffer)localObject2).append("&");
-            i = ((ajvi)localObject3).b();
+            i = ((almv)localObject3).b();
             ((StringBuffer)localObject2).append("dmc=");
             ((StringBuffer)localObject2).append(i);
             ((StringBuffer)localObject2).append("&");
           }
         }
-        a(paramHandler, paramLong, (100 - akag.a().a) * Runtime.getRuntime().maxMemory() / 100L, str, ((StringBuffer)localObject2).toString());
+        a(paramHandler, paramLong, (100 - alrv.a().a) * Runtime.getRuntime().maxMemory() / 100L, str, ((StringBuffer)localObject2).toString());
+        a(paramLong);
         a.add(localObject1);
       }
     }
     while (1 != BaseApplicationImpl.sProcessId)
     {
       Object localObject3;
-      ajxl localajxl;
+      aloz localaloz;
       int i;
       return;
     }
     if (BaseActivity.sTopActivity != null)
     {
       str = BaseActivity.sTopActivity.getActivityName();
-      label269:
+      label273:
       localObject2 = new StringBuilder().append(str).append("@");
       if (BaseActivity.sTopActivity == null) {
-        break label327;
+        break label333;
       }
     }
-    label327:
+    label333:
     for (Object localObject1 = Integer.valueOf(BaseActivity.sTopActivity.hashCode());; localObject1 = "")
     {
       localObject1 = localObject1;
       break;
       str = "";
-      break label269;
+      break label273;
     }
   }
   
@@ -154,32 +179,54 @@ public class InitMagnifierSDK
       localJSONObject2.put("newplugin", 129);
       ReporterMachine.a(new ResultObject(0, "testcase", false, 1L, 1L, localJSONObject2, true, true, MagnifierSDK.a));
       if (QLog.isColorLevel()) {
-        QLog.d("LeakInspector", 2, "reportTOAPM : " + localJSONObject2.toString());
+        QLog.d("QQ_QAPM", 2, "reportTOAPM : " + localJSONObject2.toString());
       }
       return;
     }
     catch (JSONException paramJSONObject)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d("LeakInspector", 2, paramJSONObject, new Object[0]);
+      QLog.d("QQ_QAPM", 2, paramJSONObject, new Object[0]);
     }
   }
   
-  private static boolean b(LeakInspector.InspectUUID paramInspectUUID)
+  public static void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (!AppSetting.e) {}
-    return false;
+    QLog.i("QQ_QAPM", 1, "finishDump" + paramString1 + paramString2);
+  }
+  
+  public static boolean a(LeakInspector.InspectUUID paramInspectUUID)
+  {
+    if (paramInspectUUID != null) {}
+    try
+    {
+      if (paramInspectUUID.weakObj != null) {
+        MemoryManager.a().a(paramInspectUUID.weakObj.get());
+      }
+      label24:
+      if (!AppSetting.d) {}
+      return false;
+    }
+    catch (Exception paramInspectUUID)
+    {
+      break label24;
+    }
+  }
+  
+  public static boolean a(Object paramObject)
+  {
+    return !amfn.a().a;
   }
   
   protected boolean doStep()
   {
-    Object localObject = "V 8.3.0." + aney.a(BaseApplicationImpl.sApplication) + ".r" + AppSetting.g();
+    Object localObject = a();
     QLog.i("InitMagnifierSDK", 4, "init MagnifierSDK: process = " + BaseApplicationImpl.sProcessId + " verson = " + (String)localObject);
     if (10 == BaseApplicationImpl.sProcessId) {}
     for (int i = Integer.parseInt(MagnifierSDK.a());; i = 1)
     {
       localObject = MagnifierSDK.a(ThreadManager.getSubThreadHandler(), i, (String)localObject);
-      ((MagnifierSDK)localObject).a(new axoj());
+      ((MagnifierSDK)localObject).a(new azju());
       if (7 == BaseApplicationImpl.sProcessId)
       {
         ((MagnifierSDK)localObject).a(BaseApplicationImpl.getApplication(), 9);

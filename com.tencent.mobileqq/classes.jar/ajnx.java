@@ -1,18 +1,43 @@
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import mqq.os.MqqHandler;
 
-class ajnx
-  extends ajod
+public class ajnx
+  implements xit
 {
-  ajnx(ajnv paramajnv) {}
+  public ajnx(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void a()
   {
-    QLog.d("ApolloGameUtil", 2, " onSuccess  the http retcode = " + paramInt);
+    QLog.d(QzoneSlideShowPreparingFragment.a(), 2, "createSlideShowNew AblumListener - endMerge.");
+    QzoneSlideShowPreparingFragment.a(this.a).removeCallbacks(QzoneSlideShowPreparingFragment.a(this.a));
+    ThreadManager.getUIHandler().post(new QzoneSlideShowPreparingFragment.4.1(this));
+    if (QzoneSlideShowPreparingFragment.a(this.a) == 18) {
+      LpReportInfo_pf00064.allReport(585, 15, 8);
+    }
+    if (QzoneSlideShowPreparingFragment.a(this.a) != null)
+    {
+      Object localObject = (BitmapDrawable)QzoneSlideShowPreparingFragment.a(this.a).getDrawable();
+      if (localObject != null)
+      {
+        localObject = ((BitmapDrawable)localObject).getBitmap();
+        if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+          ((Bitmap)localObject).recycle();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnx
  * JD-Core Version:    0.7.0.1
  */

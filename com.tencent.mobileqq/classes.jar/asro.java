@@ -1,35 +1,18 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
-class asro
-  implements View.OnTouchListener
+public abstract interface asro
+  extends View.OnTouchListener
 {
-  asro(asrn paramasrn) {}
+  public abstract void a(View paramView, int paramInt);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
-  }
+  public abstract void b(View paramView, int paramInt);
+  
+  public abstract void c(asqh paramasqh, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asro
  * JD-Core Version:    0.7.0.1
  */

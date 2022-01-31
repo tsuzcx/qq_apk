@@ -1,83 +1,102 @@
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bild
+class bild
 {
-  public static String a(long paramLong, int paramInt)
+  baps jdField_a_of_type_Baps;
+  bilb jdField_a_of_type_Bilb = null;
+  bilf jdField_a_of_type_Bilf;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  boolean a(bilb parambilb, int paramInt)
   {
-    Object localObject = bcyb.a().f();
-    long l = bcyb.a().a();
-    localObject = "https://tu.qq.com/wspeed.qq.com/w.cgi?appid=1000322&commandid=pitu.qqsdk.AutoAIScene&releaseversion=" + (String)localObject + "&touin=" + l + "&frequency=1&resultcode=" + paramInt + "&timecost=" + paramLong;
-    try
+    String str1;
+    if (!bilc.b(parambilb))
     {
-      localObject = (HttpURLConnection)new URL((String)localObject).openConnection();
-      ((HttpURLConnection)localObject).setConnectTimeout(5000);
-      ((HttpURLConnection)localObject).setRequestMethod("GET");
-      if (((HttpURLConnection)localObject).getResponseCode() == 200)
-      {
-        localObject = ((HttpURLConnection)localObject).getInputStream().toString();
-        return localObject;
+      String str2 = parambilb.jdField_a_of_type_JavaLangString;
+      str1 = parambilb.b;
+      String str3 = bilc.a(parambilb);
+      baps localbaps = new baps();
+      localbaps.jdField_a_of_type_Bapx = new bile(this, str1, parambilb);
+      localbaps.a(str1);
+      localbaps.jdField_a_of_type_JavaLangString = str2;
+      localbaps.jdField_a_of_type_Int = 0;
+      localbaps.jdField_c_of_type_JavaLangString = new File(str3).getPath();
+      localbaps.jdField_c_of_type_Int = bdee.a(baqx.a().a());
+      parambilb = akro.a().getNetEngine(0);
+      if (parambilb == null) {
+        break label206;
       }
-      return null;
+      this.jdField_a_of_type_Baps = localbaps;
+      parambilb.a(this.jdField_a_of_type_Baps);
     }
-    catch (Exception localException)
+    label206:
+    for (boolean bool = true;; bool = false)
     {
-      localException.printStackTrace();
+      if ((!bool) && (this.jdField_a_of_type_Bilf != null)) {
+        this.jdField_a_of_type_Bilf.a(3, "");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TMG_Downloader", 2, String.format("downloadRes, md5[%s], etr[%s]", new Object[] { str1, Boolean.valueOf(bool) }));
+      }
+      return bool;
+      if (this.jdField_a_of_type_Bilf != null) {
+        this.jdField_a_of_type_Bilf.a(0, "So Already Exist!!!");
+      }
+      return false;
     }
-    return null;
   }
   
-  public static JSONObject a(String paramString1, String paramString2)
+  boolean a(bilb parambilb, bilf parambilf)
   {
-    System.setProperty("sun.net.client.defaultConnectTimeout", "30000");
-    System.setProperty("sun.net.client.defaultReadTimeout", "30000");
-    HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString1).openConnection();
-    localHttpURLConnection.setRequestMethod("POST");
-    localHttpURLConnection.setRequestProperty("accept", "*/*");
-    localHttpURLConnection.setRequestProperty("content-type", "application/json");
-    localHttpURLConnection.setConnectTimeout(5000);
-    localHttpURLConnection.setReadTimeout(5000);
-    localHttpURLConnection.setDoOutput(true);
-    localHttpURLConnection.setDoInput(true);
-    localHttpURLConnection.setUseCaches(false);
-    localHttpURLConnection.setInstanceFollowRedirects(true);
-    localHttpURLConnection.connect();
-    paramString1 = new DataOutputStream(localHttpURLConnection.getOutputStream());
-    paramString1.write(paramString2.getBytes("utf-8"));
-    paramString1.flush();
-    paramString1.close();
-    if (200 == localHttpURLConnection.getResponseCode())
+    this.jdField_a_of_type_Bilf = parambilf;
+    boolean bool;
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramString1 = new BufferedReader(new InputStreamReader(localHttpURLConnection.getInputStream()));
-      paramString2 = new StringBuilder();
-      for (;;)
+      if ((this.jdField_a_of_type_Bilb == parambilb) || (TextUtils.isEmpty(parambilb.b)) || (parambilb.b.equals(this.jdField_a_of_type_Bilb.b))) {
+        break label214;
+      }
+      bool = true;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
+      }
+      if (!bool)
       {
-        String str = paramString1.readLine();
-        if (str == null) {
-          break;
+        return this.jdField_a_of_type_Boolean;
+        bool = true;
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Baps != null)
+        {
+          parambilf = akro.a().getNetEngine(0);
+          if (parambilf != null)
+          {
+            QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Baps.a() }));
+            parambilf.b(this.jdField_a_of_type_Baps);
+          }
         }
-        paramString2.append(new String(str.getBytes(), "utf-8"));
+        this.jdField_a_of_type_Bilb = parambilb;
+        this.jdField_a_of_type_Baps = null;
+        if (QLog.isColorLevel()) {
+          QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, mInfo[%s]", new Object[] { this.jdField_a_of_type_Bilb }));
+        }
+        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_Bilb, 1);
+        return this.jdField_a_of_type_Boolean;
+        label214:
+        bool = false;
       }
-      paramString1.close();
     }
-    for (paramString1 = paramString2.toString();; paramString1 = null)
-    {
-      localHttpURLConnection.disconnect();
-      if (paramString1 != null) {
-        break;
-      }
-      return null;
-    }
-    return new JSONObject(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bild
  * JD-Core Version:    0.7.0.1
  */

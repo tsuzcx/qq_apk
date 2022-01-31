@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aast;
-import aeic;
-import aeis;
+import acjr;
+import ages;
+import agfi;
 import android.os.SystemClock;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
@@ -29,24 +29,24 @@ class ChatHistoryImageView$2
     else
     {
       l = SystemClock.uptimeMillis();
-      if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (!this.this$0.jdField_a_of_type_Aeic.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int))) {
-        this.this$0.jdField_a_of_type_Aeic.a();
+      if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (!this.this$0.jdField_a_of_type_Ages.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int))) {
+        this.this$0.jdField_a_of_type_Ages.b();
       }
-      if (this.this$0.jdField_a_of_type_Aeic.a() != 0) {
+      if (this.this$0.jdField_a_of_type_Ages.a() != 0) {
         break label231;
       }
       this.this$0.b.setVisibility(0);
     }
     for (;;)
     {
-      if (!this.this$0.jdField_a_of_type_Aeis.a(false)) {
-        this.this$0.jdField_a_of_type_Aeis.notifyDataSetChanged();
+      if (!this.this$0.jdField_a_of_type_Agfi.a(false)) {
+        this.this$0.jdField_a_of_type_Agfi.notifyDataSetChanged();
       }
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) {
         this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, false);
       }
-      if (this.this$0.jdField_a_of_type_Aast != null) {
-        this.this$0.jdField_a_of_type_Aast.a();
+      if (this.this$0.jdField_a_of_type_Acjr != null) {
+        this.this$0.jdField_a_of_type_Acjr.a();
       }
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryImageView", 2, "[onImageListLoad] cost: " + (SystemClock.uptimeMillis() - l));
@@ -61,7 +61,7 @@ class ChatHistoryImageView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryImageView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import ajcb;
+import aktn;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import bbdh;
-import bbef;
+import bdcb;
+import bdda;
 import com.tencent.qphone.base.util.QLog;
-import ij;
+import gs;
 import java.io.File;
-import wij;
+import xxb;
 
 public class CmGameCommonShare$2
   implements Runnable
 {
-  public CmGameCommonShare$2(ajcb paramajcb, int paramInt, Bitmap paramBitmap, File paramFile) {}
+  public CmGameCommonShare$2(aktn paramaktn, int paramInt, Bitmap paramBitmap, File paramFile) {}
   
   public void run()
   {
@@ -26,12 +26,12 @@ public class CmGameCommonShare$2
     int k;
     try
     {
-      m = (int)bbdh.i() / 4;
+      m = (int)bdcb.i() / 4;
       localBitmap = Bitmap.createBitmap(m, m, Bitmap.Config.ARGB_8888);
       localCanvas = new Canvas(localBitmap);
       localCanvas.drawColor(-1);
-      localObject2 = wij.a("https://cmshow.qq.com/apollo/html/game-platform/scan-game.html?gameId=" + this.jdField_a_of_type_Int, -1);
-      n = ((ij)localObject2).a();
+      localObject2 = xxb.a("https://cmshow.qq.com/apollo/html/game-platform/scan-game.html?gameId=" + this.jdField_a_of_type_Int, -1);
+      n = ((gs)localObject2).a();
       localObject1 = new int[n * n];
       i = 0;
     }
@@ -49,7 +49,7 @@ public class CmGameCommonShare$2
       return;
     }
     if (j < n) {
-      if (((ij)localObject2).a(j, i)) {
+      if (((gs)localObject2).a(j, i)) {
         k = -16777216;
       }
     }
@@ -71,7 +71,7 @@ public class CmGameCommonShare$2
         localCanvas.restore();
       }
       ((Bitmap)localObject2).recycle();
-      bbef.a(localBitmap, this.jdField_a_of_type_JavaIoFile);
+      bdda.a(localBitmap, this.jdField_a_of_type_JavaIoFile);
       QLog.d("apollo_cmGame_CmGameCommonShare", 2, "checkDefaultQRSharePic end");
       return;
       for (;;)
@@ -95,7 +95,7 @@ public class CmGameCommonShare$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.2
  * JD-Core Version:    0.7.0.1
  */

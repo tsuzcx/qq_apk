@@ -1,49 +1,29 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class wbj
-  implements ViewPager.OnPageChangeListener
+class wbj
+  implements View.OnClickListener
 {
-  public wbj(EmptySupportViewPager paramEmptySupportViewPager) {}
+  wbj(wbi paramwbi) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
+    paramView = new wbc();
+    if (this.a.a.a) {
+      this.a.a.a = false;
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (this.a.a != null)
+    for (paramView.a = 0;; paramView.a = 1)
     {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
+      uht.a().dispatch(paramView);
+      return;
+      this.a.a.a = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbj
  * JD-Core Version:    0.7.0.1
  */

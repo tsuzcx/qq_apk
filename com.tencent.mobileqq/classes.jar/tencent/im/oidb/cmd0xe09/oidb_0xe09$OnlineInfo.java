@@ -17,7 +17,7 @@ public final class oidb_0xe09$OnlineInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe09.oidb_0xe09.OnlineInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.15.1;
 
 public class bkrx
+  implements bkog
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  public boolean b;
+  bkrx(bkrq parambkrq) {}
   
-  private bkrx(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
+  public void a(Bitmap paramBitmap)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
+    ThreadManager.excute(new VideoStoryCapturePart.15.1(this, paramBitmap), 64, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkrx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,19 @@
-import android.view.View;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public abstract interface zbo
+public final class zbo
 {
-  public abstract void a(View paramView);
+  public PBStringField a;
+  public PBStringField b;
+  
+  public zbo(PBStringField paramPBStringField1, PBStringField paramPBStringField2)
+  {
+    this.a = paramPBStringField1;
+    this.b = paramPBStringField2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbo
  * JD-Core Version:    0.7.0.1
  */

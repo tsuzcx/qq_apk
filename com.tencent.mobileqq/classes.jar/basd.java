@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-
 public class basd
-  implements aybj
+  extends base
 {
-  public basd(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  private int a = 420000;
+  private int b = 9;
+  private int c = 3;
+  private int d = 15000;
+  private int e = 30000;
+  private int f = 4000;
   
-  public void a()
+  public int a()
   {
-    aybr localaybr = new aybr(new aybi[] { new aybq(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new aybq(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
-    localaybr.a = true;
-    TroopGiftToAllSurfaceView.a(this.a).a(new aybi[] { localaybr });
+    return this.d;
+  }
+  
+  public int b()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     basd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,34 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class auiu
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public auiu(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public auiu(MultiCardFragment paramMultiCardFragment, auje paramauje, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    aujh.a(AutoReplyEditActivity.a(this.a), true);
-    paramView = new Intent();
-    paramView.putExtra("AutoReplyEditActivity:new_text", AutoReplyEditActivity.b(this.a));
-    if (AutoReplyEditActivity.a(this.a) != null) {
-      paramView.putExtra("AutoReplyEditActivity:text", new AutoReplyText(AutoReplyText.trimRawString(String.valueOf(AutoReplyEditActivity.a(this.a).getText()), false), AutoReplyEditActivity.a(this.a).getTextId()));
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    if (this.jdField_a_of_type_Auje == null) {
+      return;
     }
-    this.a.getActivity().setResult(325, paramView);
-    this.a.getActivity().finish();
+    float f2 = this.jdField_a_of_type_Float + (1.0F - this.jdField_a_of_type_Float) * f1;
+    this.jdField_a_of_type_Auje.a.setScaleX(f2);
+    this.jdField_a_of_type_Auje.a.setScaleY(f2);
+    this.jdField_a_of_type_Auje.a.setTranslationX(0.0F);
+    this.jdField_a_of_type_Auje.a.setTranslationY(this.b * (1.0F - f1));
+    paramValueAnimator = this.jdField_a_of_type_Auje.a.getLayoutParams();
+    float f3 = this.c;
+    float f4 = this.d;
+    paramValueAnimator.height = ((int)((f1 * (1.0F - this.d) + f4) / f2 * f3));
+    this.jdField_a_of_type_Auje.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auiu
  * JD-Core Version:    0.7.0.1
  */

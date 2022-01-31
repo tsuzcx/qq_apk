@@ -25,14 +25,14 @@ public abstract class BaseLayout
   
   private View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(a(), null, false);
+    return LayoutInflater.from(paramContext).inflate(a(), null, true);
   }
   
   protected abstract int a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.view.BaseLayout
  * JD-Core Version:    0.7.0.1
  */

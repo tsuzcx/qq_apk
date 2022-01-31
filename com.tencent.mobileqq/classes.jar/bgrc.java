@@ -1,39 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.RemoteException;
-import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.1;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bgrc
+class bgrc
+  implements bgrg
 {
-  protected bgqz a;
-  public ConcurrentLinkedQueue<bgre> a;
-  protected boolean a;
+  bgrc(bgrb parambgrb, bgrh parambgrh, long paramLong, MiniAppInfo paramMiniAppInfo) {}
   
-  private void a(bgre parambgre)
+  public void a(bgjw parambgjw, int paramInt, String paramString)
   {
-    if ((this.a != null) && (parambgre != null))
-    {
-      Looper localLooper = Looper.getMainLooper();
-      if (Thread.currentThread() != localLooper.getThread()) {
-        new Handler(localLooper).post(new QfavRemoteProxyForQQ.1(this, parambgre));
-      }
+    if ((paramInt == 0) && (parambgjw != null)) {
+      bgrb.a(this.jdField_a_of_type_Bgrb, this.jdField_a_of_type_Bgrh, 0, parambgjw, "Apkg init succ :" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    else
+    for (;;)
     {
+      bgyd.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 13, null, null, null, 0);
       return;
+      bgrb.a(this.jdField_a_of_type_Bgrb, this.jdField_a_of_type_Bgrh, paramInt, null, paramString);
     }
-    try
-    {
-      this.a.a(parambgre.jdField_a_of_type_Int, parambgre.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    catch (RemoteException parambgre) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgrc
  * JD-Core Version:    0.7.0.1
  */

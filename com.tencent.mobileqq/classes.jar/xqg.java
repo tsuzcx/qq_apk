@@ -1,33 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.JNICallCenter.DataPoint;
+import android.database.DataSetObserver;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import com.tencent.biz.qqstory.view.PagerIndicator;
+import com.tencent.biz.qqstory.view.PagerIndicator.IndicatorAdapter;
 
-public final class xqg
-  implements Parcelable.Creator<DataPoint>
+public class xqg
+  extends DataSetObserver
+  implements ViewPager.OnPageChangeListener
 {
-  public DataPoint a(Parcel paramParcel)
+  private xqg(PagerIndicator paramPagerIndicator) {}
+  
+  public void onChanged()
   {
-    DataPoint localDataPoint = new DataPoint();
-    localDataPoint.mDin = paramParcel.readLong();
-    localDataPoint.mSendUinType = paramParcel.readInt();
-    localDataPoint.mApiName = paramParcel.readString();
-    localDataPoint.mProperityId = paramParcel.readInt();
-    localDataPoint.mValueType = paramParcel.readString();
-    localDataPoint.mValue = paramParcel.readString();
-    localDataPoint.mRetCode = paramParcel.readInt();
-    localDataPoint.mErrMsg = paramParcel.readString();
-    localDataPoint.mSeq = paramParcel.readString();
-    return localDataPoint;
+    Log.d("PagerIndicator", "onChanged");
+    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
   }
   
-  public DataPoint[] a(int paramInt)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    return new DataPoint[paramInt];
+    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
+    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xqg
  * JD-Core Version:    0.7.0.1
  */

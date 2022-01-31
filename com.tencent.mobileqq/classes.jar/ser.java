@@ -1,71 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.ReportPublicAccountResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.util.WeakReference;
 
-final class ser
-  implements BusinessObserver
+class ser
+  implements GifDrawable.OnGIFPlayOnceListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  AbstractGifImage a;
+  
+  ser(AbstractGifImage paramAbstractGifImage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reportClickEventForAdver onReceive: " + String.valueOf(paramBoolean));
-    }
-    long l2;
-    if (paramBoolean) {
-      l2 = -1L;
-    }
-    do
+    this.a = paramAbstractGifImage;
+  }
+  
+  public void onPlayOnce()
+  {
+    Object localObject = (List)seq.a().get(this.a);
+    if (localObject != null)
     {
-      try
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.ReportPublicAccountResponse localReportPublicAccountResponse = new mobileqq_mp.ReportPublicAccountResponse();
-        localReportPublicAccountResponse.mergeFrom(paramBundle);
-        l1 = l2;
-        if (localReportPublicAccountResponse.ret_info.has())
-        {
-          l1 = l2;
-          if (localReportPublicAccountResponse.ret_info.ret_code.has())
-          {
-            paramInt = localReportPublicAccountResponse.ret_info.ret_code.get();
-            l2 = paramInt;
-            l1 = l2;
-            if (l2 == 0L)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(l2));
-              }
-              return;
-            }
-          }
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if (localWeakReference.get() != null) {
+          ((ses)localWeakReference.get()).a();
         }
       }
-      catch (Exception paramBundle)
-      {
-        long l1;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("PAReport", 2, "reportClickEventRuntime exception", paramBundle);
-        return;
-      }
-      finally
-      {
-        if (!QLog.isColorLevel()) {
-          break label288;
-        }
-        QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(-1L));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(l1));
+    }
+    this.a.setGIFPlayOnceListener(null);
+    seq.b().remove(this.a);
+    seq.a().remove(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ser
  * JD-Core Version:    0.7.0.1
  */

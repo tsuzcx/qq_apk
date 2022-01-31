@@ -1,49 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
 
-final class ajne
-  implements ajni
+public class ajne
+  implements Animator.AnimatorListener
 {
-  ajne(int paramInt) {}
+  public ajne(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb) {}
   
-  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
-    }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return;
-    }
-    try
+    if ((NewFlowCameraActivity.a(this.a.this$0) != null) && (NewFlowCameraActivity.b(this.a.this$0) != null) && (NewFlowCameraActivity.a(this.a.this$0) != null))
     {
-      paramQQAppInterface = ajnc.a(paramInt2, paramArrayOfInt);
-      if (paramQQAppInterface == null)
-      {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
-        return;
-      }
+      NewFlowCameraActivity.a(this.a.this$0).setVisibility(8);
+      NewFlowCameraActivity.b(this.a.this$0).setImageBitmap(this.a.b);
+      NewFlowCameraActivity.b(this.a.this$0).setVisibility(0);
+      NewFlowCameraActivity.a(this.a.this$0).setText(NewFlowCameraActivity.c(this.a.this$0) + "");
+      NewFlowCameraActivity.a(this.a.this$0).setVisibility(0);
     }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
-      return;
-    }
-    if (this.a == 1000) {
-      paramQQAppInterface.put("uin", paramString1);
-    }
-    paramQQAppInterface.put("openId", paramString2);
-    paramString1 = new Bundle();
-    paramString1.putString("resData", paramQQAppInterface.toString());
-    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
-    aizu.a().callbackResult(paramInt1, paramQQAppInterface);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajne
  * JD-Core Version:    0.7.0.1
  */

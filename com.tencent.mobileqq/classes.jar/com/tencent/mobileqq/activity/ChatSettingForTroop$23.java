@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
-import aukp;
-import aukq;
-import bbbr;
+import awbw;
+import awbx;
+import bdal;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
@@ -26,8 +26,8 @@ class ChatSettingForTroop$23
       localObject2 = this.this$0.app.getEntityManagerFactory().createEntityManager();
       if (localObject2 != null)
       {
-        localObject1 = ((aukp)localObject2).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin }, null, null, null, null);
-        ((aukp)localObject2).a();
+        localObject1 = ((awbw)localObject2).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin }, null, null, null, null);
+        ((awbw)localObject2).a();
       }
     } while (localObject1 == null);
     Object localObject2 = new ArrayList(((List)localObject1).size());
@@ -35,7 +35,7 @@ class ChatSettingForTroop$23
     while (((Iterator)localObject1).hasNext())
     {
       TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject1).next();
-      if (bbbr.d(localTroopMemberInfo.memberuin)) {
+      if (bdal.d(localTroopMemberInfo.memberuin)) {
         ((ArrayList)localObject2).add(localTroopMemberInfo.memberuin);
       }
     }
@@ -44,7 +44,7 @@ class ChatSettingForTroop$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.23
  * JD-Core Version:    0.7.0.1
  */

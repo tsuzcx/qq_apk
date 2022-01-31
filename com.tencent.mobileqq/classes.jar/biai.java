@@ -1,53 +1,98 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import java.io.File;
+import android.content.Context;
 
-class biai
-  extends ahmq
+public class biai
 {
-  private biai(biag parambiag) {}
+  protected int a;
+  Context a;
+  protected biah a;
+  protected biak a;
+  protected boolean a;
+  
+  public biai(biah parambiah, Context paramContext)
+  {
+    this.jdField_a_of_type_Int = 5;
+    this.jdField_a_of_type_Biah = parambiah;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(biak parambiak)
+  {
+    this.jdField_a_of_type_Biak = parambiak;
+    if (parambiak != null)
+    {
+      a(true);
+      a(true, false);
+    }
+    this.jdField_a_of_type_Biah.setOnClickListener(new biaj(this));
+  }
   
   public void a(boolean paramBoolean)
   {
-    super.a(paramBoolean);
-    if ((paramBoolean) && (apvd.a(this.c)))
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
     {
-      String str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.f.hashCode()));
-      File localFile = new File(this.c);
-      QzoneZipCacheHelper.unzipFile(localFile.getAbsolutePath(), str);
-      if (localFile.exists()) {
-        apvd.a(localFile);
+      this.jdField_a_of_type_Biah.a(3);
+      return;
+    }
+    this.jdField_a_of_type_Biah.a(0);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (!paramBoolean1)
+    {
+      this.jdField_a_of_type_Biah.a(5);
+      return;
+    }
+    if (paramBoolean2) {}
+    for (int i = 3;; i = 4)
+    {
+      this.jdField_a_of_type_Biah.a(i);
+      if ((!this.jdField_a_of_type_Biah.b(i)) || (this.jdField_a_of_type_Biak == null)) {
+        break;
       }
-      this.c = str;
-      if (QZLog.isColorLevel()) {
-        QZLog.i("QbossADBannerConfigInfo", 2, "zip success = pathDir = " + str);
-      }
+      this.jdField_a_of_type_Biak.c();
+      return;
     }
   }
   
-  public boolean a()
+  public void b(boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.a.f))) {}
-    String str;
-    Object localObject;
+    if (!this.jdField_a_of_type_Boolean) {}
+    boolean bool;
     do
     {
       do
       {
-        return false;
-        str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.f.hashCode()));
-        localObject = new File(str);
-      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
-      localObject = ((File)localObject).listFiles();
-    } while ((localObject == null) || (localObject.length <= 0));
-    this.c = str;
-    return true;
+        return;
+      } while ((this.jdField_a_of_type_Biah.a() == 0) || (!this.jdField_a_of_type_Biah.b(2)));
+      bool = true;
+      if (this.jdField_a_of_type_Biak != null) {
+        bool = this.jdField_a_of_type_Biak.a(paramBoolean);
+      }
+    } while (!bool);
+    this.jdField_a_of_type_Biah.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biai
  * JD-Core Version:    0.7.0.1
  */

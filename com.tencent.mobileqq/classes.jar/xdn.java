@@ -1,16 +1,17 @@
-import com.tencent.biz.troopplugin.PluginJumpManager;
-
 public class xdn
 {
+  public int a;
   public String a;
-  public String b;
-  public String c;
-  
-  public xdn(PluginJumpManager paramPluginJumpManager) {}
+  public int[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdn
  * JD-Core Version:    0.7.0.1
  */

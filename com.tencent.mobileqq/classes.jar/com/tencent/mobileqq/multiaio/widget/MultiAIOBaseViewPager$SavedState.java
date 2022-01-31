@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.AbsSavedState;
-import asqr;
+import auhq;
 
 public class MultiAIOBaseViewPager$SavedState
   extends AbsSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = new asqr();
+  public static final Parcelable.Creator<SavedState> CREATOR = new auhq();
   int jdField_a_of_type_Int;
   Parcelable jdField_a_of_type_AndroidOsParcelable;
   ClassLoader jdField_a_of_type_JavaLangClassLoader;
@@ -45,7 +45,7 @@ public class MultiAIOBaseViewPager$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState
  * JD-Core Version:    0.7.0.1
  */

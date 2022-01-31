@@ -2,29 +2,29 @@ package com.tencent.mobileqq.multimsg.save;
 
 import android.os.Handler;
 import android.os.Message;
-import asuq;
-import asus;
-import bbef;
+import auln;
+import aulp;
+import bdda;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import gp;
+import ey;
 import java.io.File;
 
 public class FileSaveRunnable
   implements Runnable
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private asus jdField_a_of_type_Asus;
+  private aulp jdField_a_of_type_Aulp;
   private File jdField_a_of_type_JavaIoFile;
   private boolean jdField_a_of_type_Boolean;
   private File b;
   
-  public FileSaveRunnable(File paramFile1, File paramFile2, Handler paramHandler, asus paramasus, boolean paramBoolean)
+  public FileSaveRunnable(File paramFile1, File paramFile2, Handler paramHandler, aulp paramaulp, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaIoFile = paramFile1;
     this.b = paramFile2;
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Asus = paramasus;
+    this.jdField_a_of_type_Aulp = paramaulp;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
@@ -39,9 +39,9 @@ public class FileSaveRunnable
         QLog.e("PictureSaveRunnable", 2, "save file fail");
       }
       localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-      this.jdField_a_of_type_Asus.b = 10003;
-      this.jdField_a_of_type_Asus.jdField_a_of_type_JavaLangString = asuq.a(this.jdField_a_of_type_Asus.b);
-      ((Message)localObject).obj = this.jdField_a_of_type_Asus;
+      this.jdField_a_of_type_Aulp.b = 10003;
+      this.jdField_a_of_type_Aulp.jdField_a_of_type_JavaLangString = auln.a(this.jdField_a_of_type_Aulp.b);
+      ((Message)localObject).obj = this.jdField_a_of_type_Aulp;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
       return;
     }
@@ -51,7 +51,7 @@ public class FileSaveRunnable
         QLog.e("PictureSaveRunnable", 2, "desFile exist");
       }
       localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-      ((Message)localObject).obj = this.jdField_a_of_type_Asus;
+      ((Message)localObject).obj = this.jdField_a_of_type_Aulp;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
       return;
     }
@@ -72,13 +72,13 @@ public class FileSaveRunnable
             }
           }
         }
-        if ((this.b == null) || (!gp.a(this.jdField_a_of_type_JavaIoFile, this.b))) {
+        if ((this.b == null) || (!ey.a(this.jdField_a_of_type_JavaIoFile, this.b))) {
           continue;
         }
         if (QLog.isColorLevel()) {
           QLog.e("PictureSaveRunnable", 2, "savePhotoToSysAlbum...");
         }
-        bbef.a(BaseApplicationImpl.getContext(), this.b.getAbsolutePath());
+        bdda.a(BaseApplicationImpl.getContext(), this.b.getAbsolutePath());
         i = 1;
         if (i == 0) {
           continue;
@@ -90,36 +90,36 @@ public class FileSaveRunnable
           continue;
         }
         QLog.e("PictureSaveRunnable", 2, "save exception = " + localException.getMessage());
-        this.jdField_a_of_type_Asus.b = 10005;
-        this.jdField_a_of_type_Asus.jdField_a_of_type_JavaLangString = asuq.a(this.jdField_a_of_type_Asus.b);
+        this.jdField_a_of_type_Aulp.b = 10005;
+        this.jdField_a_of_type_Aulp.jdField_a_of_type_JavaLangString = auln.a(this.jdField_a_of_type_Aulp.b);
         continue;
         j = 2;
         continue;
         int i = -1;
         continue;
       }
-      localObject = this.jdField_a_of_type_Asus;
+      localObject = this.jdField_a_of_type_Aulp;
       if (i == 0) {
         continue;
       }
       i = k;
-      ((asus)localObject).jdField_a_of_type_Int = i;
+      ((aulp)localObject).jdField_a_of_type_Int = i;
       localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(j);
-      ((Message)localObject).obj = this.jdField_a_of_type_Asus;
+      ((Message)localObject).obj = this.jdField_a_of_type_Aulp;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
       return;
       if (QLog.isColorLevel()) {
         QLog.e("PictureSaveRunnable", 2, "copyFile error");
       }
-      this.jdField_a_of_type_Asus.b = 10004;
-      this.jdField_a_of_type_Asus.jdField_a_of_type_JavaLangString = asuq.a(this.jdField_a_of_type_Asus.b);
+      this.jdField_a_of_type_Aulp.b = 10004;
+      this.jdField_a_of_type_Aulp.jdField_a_of_type_JavaLangString = auln.a(this.jdField_a_of_type_Aulp.b);
       i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.FileSaveRunnable
  * JD-Core Version:    0.7.0.1
  */

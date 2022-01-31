@@ -14,10 +14,37 @@ public enum AdArkView
   
   private AdArkView() {}
   
+  public static View buildArkView(AdArkAdapter.Params paramParams)
+  {
+    AdArkAdapter localAdArkAdapter = getAdapter();
+    if (localAdArkAdapter != null) {
+      return localAdArkAdapter.buildArkView(paramParams);
+    }
+    return null;
+  }
+  
+  public static View buildSelectWindowArkView(AdArkAdapter.Params paramParams)
+  {
+    AdArkAdapter localAdArkAdapter = getAdapter();
+    if (localAdArkAdapter != null) {
+      return localAdArkAdapter.buildSelectWindowArkView(paramParams);
+    }
+    return null;
+  }
+  
   private static AdArkAdapter getAdapter()
   {
     if (INSTANCE.adapter != null) {
       return (AdArkAdapter)INSTANCE.adapter.get();
+    }
+    return null;
+  }
+  
+  public static String getArkFormData(AdArkAdapter.DataParams paramDataParams)
+  {
+    AdArkAdapter localAdArkAdapter = getAdapter();
+    if (localAdArkAdapter != null) {
+      return localAdArkAdapter.getArkFormData(paramDataParams);
     }
     return null;
   }
@@ -27,24 +54,6 @@ public enum AdArkView
     AdArkAdapter localAdArkAdapter = getAdapter();
     if (localAdArkAdapter != null) {
       return localAdArkAdapter.getArkInputRect(paramView);
-    }
-    return null;
-  }
-  
-  public static View getArkView(AdArkAdapter.Params paramParams)
-  {
-    AdArkAdapter localAdArkAdapter = getAdapter();
-    if (localAdArkAdapter != null) {
-      return localAdArkAdapter.getArkView(paramParams);
-    }
-    return null;
-  }
-  
-  public static View getSelectWindowArkView(AdArkAdapter.Params paramParams)
-  {
-    AdArkAdapter localAdArkAdapter = getAdapter();
-    if (localAdArkAdapter != null) {
-      return localAdArkAdapter.getSelectWindowArkView(paramParams);
     }
     return null;
   }

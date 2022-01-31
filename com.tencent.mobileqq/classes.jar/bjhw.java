@@ -1,28 +1,26 @@
-import android.text.Spanned;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-class bjhw
-  extends bkda
+public class bjhw
+  implements DialogInterface.OnClickListener
 {
-  bjhw(bjhu parambjhu, int paramInt)
-  {
-    super(paramInt);
-  }
+  public bjhw(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, bjib parambjib) {}
   
-  public int a(CharSequence paramCharSequence)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 0;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    this.jdField_a_of_type_Int = (str.length() - bakx.b(str).length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
+    if (this.jdField_a_of_type_Bjib != null) {
+      this.jdField_a_of_type_Bjib.a();
+    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isFlowWarningVisible = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjhw
  * JD-Core Version:    0.7.0.1
  */

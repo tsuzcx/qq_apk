@@ -1,71 +1,45 @@
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import java.util.List;
+import UserGrowth.stNotificationRsp;
 
-public class tiq
-  extends tin
+class tiq
+  implements tgt
 {
-  public tiq(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561301);
-  }
+  tiq(tip paramtip) {}
   
-  public void a()
+  public void a(the paramthe)
   {
-    this.a.setTag(2131373350, null);
-  }
-  
-  public void a(tff paramtff)
-  {
-    super.a(paramtff);
-    this.a.setDisplayState(2);
-    c(paramtff.jdField_b_of_type_JavaLangString);
-    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout;
-    String str;
-    if (!TextUtils.isEmpty(paramtff.j))
+    tlo.b("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse-resultCode:" + paramthe.b + " | resultBean:" + paramthe.jdField_a_of_type_JavaLangObject + " | thread:" + Thread.currentThread().getName());
+    if (this.a.a() == null)
     {
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramtff.c))
-      {
-        str = ajya.a(2131713273);
-        localStoryMsgNodeFrameLayout.setNodeName(str, paramtff.j);
-        if ((paramtff.jdField_a_of_type_JavaUtilList == null) || (paramtff.jdField_a_of_type_JavaUtilList.isEmpty())) {
-          this.a.a(1, 1 - paramtff.jdField_b_of_type_Int);
-        }
-        str = (String)this.a.getTag(2131373350);
-        if (!TextUtils.equals(paramtff.jdField_a_of_type_JavaLangString, str)) {
-          switch (paramtff.jdField_a_of_type_Int)
-          {
-          default: 
-            str = "unknown";
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      vei.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramtff.jdField_a_of_type_JavaLangString, str });
-      this.a.setTag(2131373350, paramtff.jdField_a_of_type_JavaLangString);
+      tlo.d("WSRecommendFragmentPresenter", "getNotification onTaskResponse getView(): null");
       return;
-      str = paramtff.c;
-      break;
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramtff.c)) {}
-      for (str = ajya.a(2131713280);; str = paramtff.c)
-      {
-        localStoryMsgNodeFrameLayout.setNodeName(str, false);
-        break;
-      }
-      str = "2";
-      continue;
-      str = "3";
     }
+    if (paramthe.a())
+    {
+      if ((paramthe.jdField_a_of_type_JavaLangObject instanceof stNotificationRsp))
+      {
+        stNotificationRsp localstNotificationRsp = (stNotificationRsp)paramthe.jdField_a_of_type_JavaLangObject;
+        tgu localtgu = paramthe.jdField_a_of_type_Tgu;
+        if (localtgu != null) {
+          tee.a().a(localstNotificationRsp.trace_id, localtgu.a);
+        }
+        if (localstNotificationRsp.type > 0)
+        {
+          ((tjm)this.a.a()).a(localstNotificationRsp, localtgu);
+          return;
+        }
+        ((tjm)this.a.a()).a(paramthe.b, paramthe.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      ((tjm)this.a.a()).a(paramthe.b, paramthe.jdField_a_of_type_JavaLangString);
+      tlo.d("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse error:" + paramthe.b + " | " + paramthe.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ((tjm)this.a.a()).a(paramthe.jdField_a_of_type_Int, paramthe.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tiq
  * JD-Core Version:    0.7.0.1
  */

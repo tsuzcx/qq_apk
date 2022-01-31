@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
 
-public class aakr
-  extends atzp
+class aakr
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public aakr(AuthDevActivity paramAuthDevActivity) {}
+  aakr(aakp paramaakp, ViewGroup paramViewGroup) {}
   
-  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    AuthDevActivity.a(this.a, paramSecureCheckResponse);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    bcql.a(this.a, paramString2, 0).a();
-    QLog.e("Q.devlock.AuthDevActivity", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(7942);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aakr
  * JD-Core Version:    0.7.0.1
  */

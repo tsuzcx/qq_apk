@@ -1,113 +1,98 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Point;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.ArrayList;
+import java.util.List;
 
-@TargetApi(14)
 public class vpm
+  extends vnz
+  implements IEventReceiver
 {
-  public static int a;
-  public static int b;
+  private long jdField_a_of_type_Long;
+  private VideoCoverListBar jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
+  private vky jdField_a_of_type_Vky;
+  private vpp jdField_a_of_type_Vpp;
+  private volatile boolean b;
+  private boolean c;
+  private boolean d;
   
-  public static float a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public vpm(@NonNull ViewGroup paramViewGroup)
   {
-    if (paramInt2 < paramInt4) {
-      return 1.0F;
-    }
-    return paramInt4 / paramInt2;
+    super(paramViewGroup);
   }
   
-  public static int a()
+  protected View a(ViewGroup paramViewGroup)
   {
-    return b(BaseApplicationImpl.getApplication().getBaseContext(), 24.0F);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar = ((VideoCoverListBar)paramViewGroup.findViewById(2131379611));
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
   }
   
-  public static int a(Context paramContext)
+  public void a(int paramInt, vle paramvle, @NonNull ArrayList<vpk> paramArrayList)
   {
-    if (a > 0) {
-      return a;
-    }
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    Point localPoint;
-    if (Build.VERSION.SDK_INT >= 13)
+    wsv.a("VideoCoverListGroupHolder", "onBind() pos=%d, group=%s", Integer.valueOf(paramInt), paramvle);
+    boolean bool = this.jdField_a_of_type_Boolean;
+    super.a(paramInt, paramvle, paramArrayList);
+    if (!bool)
     {
-      localPoint = new Point();
-      paramContext.getDefaultDisplay().getSize(localPoint);
+      this.d = true;
+      if (this.jdField_a_of_type_Vpp == null) {
+        this.jdField_a_of_type_Vpp = new vpp(this);
+      }
+      uht.a().registerSubscriber("", this.jdField_a_of_type_Vpp);
     }
-    for (a = localPoint.x;; a = paramContext.getDefaultDisplay().getWidth()) {
-      return a;
-    }
-  }
-  
-  public static int a(Context paramContext, float paramFloat)
-  {
-    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
-  }
-  
-  public static void a(Canvas paramCanvas, vpo paramvpo, vpp paramvpp, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramInt1 = a();
-    paramCanvas.concat(paramvpo.b(paramvpp));
-    int i = (int)(paramvpp.n * paramvpp.j * paramvpp.p) + paramvpp.e * 2;
-    int j = (int)(paramvpp.o * paramvpp.j * paramvpp.p) + paramvpp.e * 2;
-    paramCanvas.translate(-i * 1.0F / 2.0F, -j * 1.0F / 2.0F);
-    paramvpo = new Paint();
-    paramvpo.setStyle(Paint.Style.STROKE);
-    paramvpo.setColor(BaseApplicationImpl.getApplication().getResources().getColor(2131167146));
-    paramvpo.setStrokeWidth(b(BaseApplicationImpl.getApplication().getBaseContext(), 1.0F));
-    int k = b(BaseApplicationImpl.getApplication().getBaseContext(), 3.0F);
-    paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, i, j), k, k, paramvpo);
-    paramCanvas.translate(-paramInt1 / 2, -paramInt1 / 2);
-    paramCanvas.translate(i, j);
-    paramvpo = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt3);
-    paramvpo.setBounds(0, 0, paramInt1, paramInt1);
-    paramvpo.draw(paramCanvas);
-    paramCanvas.translate(0.0F, -j);
-    paramvpo = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt2);
-    paramvpo.setBounds(0, 0, paramInt1, paramInt1);
-    paramvpo.draw(paramCanvas);
-  }
-  
-  public static int b(Context paramContext)
-  {
-    if (b > 0) {
-      return b;
-    }
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    Point localPoint;
-    if (Build.VERSION.SDK_INT >= 13)
+    if ((paramvle.c()) || (paramvle.b())) {}
+    int i;
+    do
     {
-      localPoint = new Point();
-      paramContext.getDefaultDisplay().getSize(localPoint);
-    }
-    for (b = localPoint.y;; b = paramContext.getDefaultDisplay().getHeight()) {
-      return b;
+      return;
+      i = this.jdField_a_of_type_Vky.a().size();
+      this.jdField_a_of_type_Vky.a(paramInt, paramArrayList, paramvle.a);
+    } while (i == this.jdField_a_of_type_Vky.a().size());
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(paramString);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    this.jdField_a_of_type_Vky = new vky(a().mUIStyle.showVideoCoverList);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(this.jdField_a_of_type_Vky);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnVideoClickListener(new vpn(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnScrollListener(new vpo(this));
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_Vpp != null)
+    {
+      this.d = false;
+      uht.a().unRegisterSubscriber(this.jdField_a_of_type_Vpp);
     }
   }
   
-  public static int b(Context paramContext, float paramFloat)
+  public void d()
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.b();
   }
   
-  public static int c(Context paramContext, float paramFloat)
+  public boolean isValidate()
   {
-    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().scaledDensity + 0.5F);
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpm
  * JD-Core Version:    0.7.0.1
  */

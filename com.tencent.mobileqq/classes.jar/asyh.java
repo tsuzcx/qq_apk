@@ -1,30 +1,81 @@
-import java.util.Comparator;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.hlyyb.downloader.DownloaderTaskListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.intervideo.now.DownloadEngine.DownloadTaskListenerBridge.1;
+import mqq.os.MqqHandler;
 
-final class asyh
-  implements Comparator<String>
+public class asyh
+  implements DownloaderTaskListener
 {
-  public int a(String paramString1, String paramString2)
+  private asyj a;
+  
+  public asyh(asyj paramasyj)
   {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
-    }
-    while (paramString1 != null)
-    {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
-      }
-      return 1;
-    }
-    if (paramString2 != null) {
-      return 1;
-    }
-    return 0;
+    this.a = paramasyj;
   }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.a(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskDetectedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.b(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskFailedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    ThreadManager.getSubThreadHandler().post(new DownloadTaskListenerBridge.1(this, paramDownloaderTask));
+  }
+  
+  public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedMainloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.d(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.f(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.e(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asyh
  * JD-Core Version:    0.7.0.1
  */

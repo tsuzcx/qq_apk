@@ -1,148 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.biz.JoinGroupHandler.2;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-
 public class mvv
 {
-  protected int a;
-  protected long a;
-  protected akil a;
-  protected Context a;
-  public bcqf a;
-  protected QQAppInterface a;
-  protected Runnable a;
-  protected String a;
-  protected mvy a;
-  protected long b;
+  public baps a;
+  public String a = "";
+  public String b = "";
+  public String c = "";
   
-  public mvv(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, mvy parammvy)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangRunnable = new JoinGroupHandler.2(this);
-    this.jdField_a_of_type_Akil = new mvx(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Mvy = parammvy;
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    new bcqr(this.jdField_a_of_type_AndroidContentContext).a(paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865), 0, paramInt2);
-  }
-  
-  private void a(TroopInfo paramTroopInfo)
-  {
-    if (paramTroopInfo.cGroupOption != 3)
-    {
-      paramTroopInfo = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, paramTroopInfo.troopuin, paramTroopInfo.troopname, paramTroopInfo.cGroupOption, this.jdField_a_of_type_Int, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer, null, this.jdField_a_of_type_JavaLangString, null);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramTroopInfo);
-      this.jdField_a_of_type_Mvy.b();
-      return;
-    }
-    a(2131720506, 1);
-    this.jdField_a_of_type_Mvy.a();
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing()))
-      {
-        long l1 = System.currentTimeMillis();
-        long l2 = this.b;
-        if ((!paramBoolean) && (l1 - l2 < 1000L))
-        {
-          ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
-          return;
-        }
-        this.jdField_a_of_type_Bcqf.dismiss();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  private void b(long paramLong)
-  {
-    try
-    {
-      akhp localakhp = (akhp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-      this.jdField_a_of_type_Long = paramLong;
-      localakhp.a(paramLong, 8390784);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      a(2131720004, 0);
-      this.jdField_a_of_type_Mvy.a();
-    }
-  }
-  
-  private void c()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Bcqf == null)
-      {
-        this.jdField_a_of_type_Bcqf = new bcqf(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
-        this.jdField_a_of_type_Bcqf.c(2131694931);
-        this.jdField_a_of_type_Bcqf.c(false);
-        this.jdField_a_of_type_Bcqf.setOnDismissListener(new mvw(this));
-      }
-      this.jdField_a_of_type_Bcqf.show();
-      this.b = System.currentTimeMillis();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akil);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (!bbfj.d(this.jdField_a_of_type_AndroidContentContext))
-    {
-      a(2131694608, 0);
-      this.jdField_a_of_type_Mvy.a();
-      return;
-    }
-    if (0L == paramLong)
-    {
-      this.jdField_a_of_type_Mvy.a();
-      return;
-    }
-    this.jdField_a_of_type_Long = paramLong;
-    c();
-    b(paramLong);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akil);
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    a(true);
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append(", url='").append(this.a).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvv
  * JD-Core Version:    0.7.0.1
  */

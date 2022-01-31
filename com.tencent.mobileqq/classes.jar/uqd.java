@@ -1,32 +1,18 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONObject;
 
 public class uqd
-  extends tja
 {
-  public FeedVideoInfo a;
-  public String a;
-  public List<StoryVideoItem> a;
+  public int a;
+  public String a = "";
+  public JSONObject a;
   public String b;
-  
-  public uqd(ErrorMessage paramErrorMessage, String paramString)
-  {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
-  }
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqd
  * JD-Core Version:    0.7.0.1
  */

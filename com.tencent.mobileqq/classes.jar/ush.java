@@ -1,32 +1,39 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class ush
+class ush
+  implements uni<vca, vdl>
 {
-  private qqstory_struct.GatherCardInfo a;
+  ush(usf paramusf) {}
   
-  public ush(qqstory_struct.GatherCardInfo paramGatherCardInfo)
+  public void a(@NonNull vca paramvca, @Nullable vdl paramvdl, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a = paramGatherCardInfo;
-  }
-  
-  public ush(byte[] paramArrayOfByte)
-  {
-    this.a = new qqstory_struct.GatherCardInfo();
-    try
+    wsv.b("WeatherDataProvider", "requestWeather Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramvdl != null))
     {
-      this.a.mergeFrom(paramArrayOfByte);
-      return;
+      wsv.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramvdl.b));
+      this.a.jdField_a_of_type_JavaLangObject = new usi(paramvdl.b, paramvdl.a);
+      wsv.c("WeatherDataProvider", "update local weather data.");
+      paramvca = (urk)urr.a(10);
+      paramvca.b("edit_video_weather_filter_data", Integer.valueOf(paramvdl.b));
+      paramvca.b("edit_video_weather_desc", paramvdl.a);
+      usf.a(this.a, System.currentTimeMillis() + 14400000L);
+      paramvca.b("edit_video_weather_expiry_time", Long.valueOf(usf.a(this.a)));
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
-      ved.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      wsv.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramvca });
+      this.a.a(false, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ush
  * JD-Core Version:    0.7.0.1
  */

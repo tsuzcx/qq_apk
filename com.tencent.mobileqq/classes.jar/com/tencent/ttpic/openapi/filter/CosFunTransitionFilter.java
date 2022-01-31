@@ -7,6 +7,7 @@ import com.tencent.aekit.openrender.AEOpenRenderConfig;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.io.FileUtils;
@@ -38,6 +39,7 @@ public class CosFunTransitionFilter
   private final int backgroundMode2;
   private VideoFilterBase copyFilter = new VideoFilterBase("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private FaceFeatureTex dstFeature;
+  private boolean isInited = false;
   private Frame materialFrame;
   private FaceFeatureTex srcFeature;
   private CrazyFaceDataTemplate template;
@@ -52,13 +54,16 @@ public class CosFunTransitionFilter
     this.MAX_SIZE = initMaxLength();
     this.backgroundMode1 = paramInt1;
     this.backgroundMode2 = paramInt2;
-    if (this.template == null) {
+    if (this.template == null) {}
+    do
+    {
       return;
-    }
-    paramString = FaceOffUtil.getFaceBitmap(this.template.folderPath + File.separator + this.template.getFaceLayer(0).imagePath, this.MAX_SIZE.width, this.MAX_SIZE.height);
+      paramString = FaceOffUtil.getFaceBitmap(this.template.folderPath + File.separator + this.template.getFaceLayer(0).imagePath, this.MAX_SIZE.width, this.MAX_SIZE.height);
+    } while (!BitmapUtils.isLegal(paramString));
     paramInt1 = RendererUtils.createTexture(paramString);
     paramString.recycle();
     this.materialFrame = new Frame(0, paramInt1, paramString.getWidth(), paramString.getHeight());
+    this.isInited = true;
   }
   
   private SizeI initMaxLength()
@@ -299,6 +304,11 @@ public class CosFunTransitionFilter
       this.transFilter = new CFTransformFilterForTex(this.srcFeature, this.dstFeature, this.backgroundMode1, this.backgroundMode2);
       this.transFilter.ApplyGLSLFilter();
     }
+  }
+  
+  public boolean isInited()
+  {
+    return this.isInited;
   }
 }
 

@@ -1,24 +1,101 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class abua
-  implements amkp
+class abua
+  implements DialogInterface.OnCancelListener, bhqd, bhqf
 {
-  public abua(QQBrowserActivity paramQQBrowserActivity) {}
+  absf jdField_a_of_type_Absf;
+  bhpy jdField_a_of_type_Bhpy;
   
-  public void a()
+  public abua(bhpy parambhpy, absf paramabsf)
   {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
+    this.jdField_a_of_type_Bhpy = parambhpy;
+    this.jdField_a_of_type_Absf = paramabsf;
   }
   
-  public void b()
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
+    this.jdField_a_of_type_Bhpy.dismiss();
+    paramView = new JSONObject();
+    try
+    {
+      paramView.put("cancel", false);
+      paramView.put("tapIndex", paramInt);
+      abvm.a(this.jdField_a_of_type_Absf, paramView);
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      String str = paramView.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramView);
+      }
+      absf localabsf = this.jdField_a_of_type_Absf;
+      paramView = str;
+      if (str == null) {
+        paramView = "";
+      }
+      abvm.a(localabsf, -2, paramView);
+    }
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("cancel", true);
+      paramDialogInterface.put("tapIndex", -1);
+      abvm.a(this.jdField_a_of_type_Absf, paramDialogInterface);
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      String str = paramDialogInterface.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
+      }
+      absf localabsf = this.jdField_a_of_type_Absf;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
+      }
+      abvm.a(localabsf, -2, paramDialogInterface);
+    }
+  }
+  
+  public void onDismiss()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("cancel", true);
+      localJSONObject.put("tapIndex", -1);
+      abvm.a(this.jdField_a_of_type_Absf, localJSONObject);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      String str = localJSONException.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, localJSONException);
+      }
+      absf localabsf = this.jdField_a_of_type_Absf;
+      Object localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      abvm.a(localabsf, -2, (String)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abua
  * JD-Core Version:    0.7.0.1
  */

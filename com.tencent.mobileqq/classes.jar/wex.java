@@ -1,21 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 class wex
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TextView.OnEditorActionListener
 {
-  wex(wew paramwew, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
+  wex(wew paramwew) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramValueAnimator = (wez)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
+    if (paramInt == 4)
+    {
+      this.a.d();
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wex
  * JD-Core Version:    0.7.0.1
  */

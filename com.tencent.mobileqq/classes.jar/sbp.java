@@ -1,72 +1,31 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.1;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.2;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.3;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.4;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.5;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.6;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.VideoData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastVideoViewCreator.VideoViewHolder.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class sbp
-  extends MqqHandler
+  implements ory
 {
-  public sbp(SubscriptFeedsActivity paramSubscriptFeedsActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  sbp(sbo paramsbo, VideoData paramVideoData) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (this.a.isFinishing()) {}
-    do
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_JavaLangString, paramString1)))
     {
-      do
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_JavaLangString = paramString2;
+      if ((paramInt1 > 0) && (paramInt2 > 0))
       {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1002: 
-            try
-            {
-              paramMessage = sdc.a().b(this.a.app);
-              this.a.runOnUiThread(new SubscriptFeedsActivity.14.1(this, paramMessage));
-              return;
-            }
-            catch (Exception paramMessage) {}
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("SubscriptFeedsActivity", 2, paramMessage.toString());
-        return;
-        this.a.runOnUiThread(new SubscriptFeedsActivity.14.2(this));
-        return;
-        paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!bhvy.a()));
-      paramMessage = paramMessage.getSerializable("ReadInJoyArticleList");
-    } while ((paramMessage == null) || (!(paramMessage instanceof ArrayList)));
-    if ((!SubscriptFeedsActivity.a(this.a, (ArrayList)paramMessage)) && (QLog.isColorLevel())) {
-      QLog.d("SubscriptFeedsActivity", 2, "onGetRecommendReadInJoyArticleList data save to sp fail");
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_Int = paramInt1;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_Int = paramInt2;
+      }
+      ThreadManager.getUIHandler().post(new WebFastVideoViewCreator.VideoViewHolder.1.1(this));
     }
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.3(this, paramMessage));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.4(this));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.5(this));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.6(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbp
  * JD-Core Version:    0.7.0.1
  */

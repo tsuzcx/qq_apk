@@ -1,45 +1,29 @@
-import android.util.SparseArray;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import java.util.HashSet;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
 
-class beob
-  implements View.OnClickListener
+public class beob
+  implements View.OnLayoutChangeListener
 {
-  beob(beny parambeny) {}
+  public beob(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
   
-  public void onClick(View paramView)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    int i = paramView.getId();
-    Object localObject;
-    if ((beny.a(this.a)) && ((beny.a(this.a) == null) || (!beny.a(this.a).contains(Integer.valueOf(i)))) && (beny.b(this.a) != -1) && (i != beny.b(this.a)))
-    {
-      localObject = (View)beny.a(this.a).get(beny.b(this.a));
-      ((View)localObject).findViewById(2131361914).setVisibility(8);
-      localObject = (TextView)((View)localObject).findViewById(2131361913);
-      beny.a(this.a, (TextView)localObject, false);
-      localObject = (View)beny.a(this.a).get(i);
-      ((View)localObject).findViewById(2131361914).setVisibility(0);
-      localObject = (TextView)((View)localObject).findViewById(2131361913);
-      beny.a(this.a, (TextView)localObject, true);
-      beny.a(this.a, i);
+    if (!ProfileCardExtendFriendView.a(this.a)) {
+      this.a.removeOnLayoutChangeListener(this);
     }
-    if (beny.a(this.a) != null) {
-      beny.a(this.a).OnClick(paramView, i);
+    while ((!ProfileCardExtendFriendView.a(this.a)) || (!ProfileCardExtendFriendView.b(this.a)) || (ProfileCardExtendFriendView.a(this.a) != 0) || (ProfileCardExtendFriendView.b(this.a) != 0)) {
+      return;
     }
-    if (beny.a(this.a) != null)
-    {
-      localObject = (TextView)paramView.findViewById(2131361913);
-      if ((localObject != null) && ((localObject instanceof TextView))) {
-        beny.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
-      }
-    }
+    ProfileCardExtendFriendView.a(this.a, Math.max(paramInt4 - paramInt2, paramInt8 - paramInt6));
+    ProfileCardExtendFriendView.b(this.a, Math.min(paramInt4 - paramInt2, paramInt8 - paramInt6));
+    this.a.removeOnLayoutChangeListener(this);
+    ProfileCardExtendFriendView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beob
  * JD-Core Version:    0.7.0.1
  */

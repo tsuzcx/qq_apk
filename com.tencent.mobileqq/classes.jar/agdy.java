@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agdy
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  agdy(agdv paramagdv) {}
+  agdy(agdi paramagdi) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = null;
-    this.a.dismiss();
+    if ((this.a.a != null) && (!this.a.a.c())) {
+      this.a.a.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdy
  * JD-Core Version:    0.7.0.1
  */

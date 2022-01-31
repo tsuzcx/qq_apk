@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import rpi;
+import sfh;
 
 class ReadInJoyChannelActivity$3
   implements Runnable
@@ -9,13 +9,13 @@ class ReadInJoyChannelActivity$3
   
   public void run()
   {
-    rpi.a().a();
-    rpi.a().b(this.this$0.app);
+    sfh.a().a();
+    sfh.a().b(this.this$0.app);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,16 @@
-import android.app.Activity;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
-
 public class bhxr
-  implements QQPermissionCallback
 {
-  public bhxr(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
+  public static void a() {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbdj.b(this.jdField_a_of_type_AndroidAppActivity);
-  }
+  public static void a(long paramLong, String paramString, int paramInt) {}
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.d(this.jdField_a_of_type_Int);
-  }
+  public static void a(String paramString) {}
+  
+  public static void b(long paramLong, String paramString, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhxr
  * JD-Core Version:    0.7.0.1
  */

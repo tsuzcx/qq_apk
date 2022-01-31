@@ -1,25 +1,31 @@
-import android.view.View;
+import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
+import java.io.InputStream;
 
 public class yvi
-  extends yvj
 {
-  public int a;
-  public View a;
-  public int b;
-  public View b;
-  public int c;
-  public View c;
-  public int d;
-  public View d;
-  public int e;
-  public View e;
-  public int f;
-  public int g;
-  public int h;
+  private DiskLruCache.Snapshot jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
+  
+  public yvi(yvh paramyvh) {}
+  
+  public InputStream a()
+  {
+    return this.jdField_a_of_type_JavaIoInputStream;
+  }
+  
+  public void a(DiskLruCache.Snapshot paramSnapshot)
+  {
+    this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot = paramSnapshot;
+  }
+  
+  public void a(InputStream paramInputStream)
+  {
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvi
  * JD-Core Version:    0.7.0.1
  */

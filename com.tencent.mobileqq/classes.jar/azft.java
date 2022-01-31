@@ -1,25 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.3;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.3.1;
-import com.tencent.widget.AdapterView;
+import android.opengl.EGLContext;
 
 public class azft
-  implements bfpu
 {
-  public azft(TroopAvatarWallPreviewActivity.3.1 param1) {}
+  int jdField_a_of_type_Int;
+  EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  int b;
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(EGLContext paramEGLContext, int paramInt1, int paramInt2)
   {
-    if ((this.a.a.this$0.e) || (this.a.a.this$0.d)) {
-      TroopAvatarWallPreviewActivity.d(this.a.a.this$0);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      return;
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azft
  * JD-Core Version:    0.7.0.1
  */

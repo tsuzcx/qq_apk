@@ -1,501 +1,452 @@
-import android.content.Context;
-import android.os.Handler;
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyManager;
-import com.tencent.mobileqq.leba.core.redtouch.LebaSpecificRedTouch.1;
-import com.tencent.mobileqq.leba.core.redtouch.LebaSpecificRedTouch.2;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import com.tencent.mobileqq.filemanager.widget.DocCooperationBanner.2;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class arqe
+  implements View.OnClickListener
 {
-  public int a;
-  private Map<Long, Integer> a;
-  private int b;
+  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  public View a;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  aoto jdField_a_of_type_Aoto;
+  aotr jdField_a_of_type_Aotr;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
+  final String jdField_a_of_type_JavaLangString = "DocCooperationBanner";
+  private boolean jdField_a_of_type_Boolean;
+  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
+  String jdField_b_of_type_JavaLangString;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_c_of_type_ComTencentImageURLImageView;
   
-  public arqe()
+  public arqe(Activity paramActivity, ViewGroup paramViewGroup, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, aoto paramaoto)
   {
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560668, paramViewGroup, true);
+    this.jdField_a_of_type_Aoto = paramaoto;
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131364848);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    b();
   }
   
-  private void a(long paramLong, RedTouch paramRedTouch)
+  private Drawable a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap == null) {}
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      if (paramInt == 0) {
+        return bcxb.a((AppInterface)localObject, 1, paramString);
+      }
+      if (paramInt == 1) {
+        return bcxb.a((AppInterface)localObject, 4, paramString);
+      }
+      if (paramInt == 3000) {
+        return bcxb.a((AppInterface)localObject, 101, paramString);
+      }
+    }
+    return null;
+  }
+  
+  private void a(boolean paramBoolean, int paramInt)
+  {
+    int j = 1;
+    Object localObject = aots.a();
     int i;
-    do
+    if (paramBoolean)
     {
-      return;
-      i = arqg.a(paramRedTouch);
-    } while (i == 0);
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), Integer.valueOf(i));
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface, Context paramContext, RedTouch paramRedTouch)
-  {
-    Object localObject;
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo;
-    if (paramQQAppInterface != null)
-    {
-      localObject = (ReadInJoyManager)paramQQAppInterface.getManager(96);
-      if (localObject != null)
+      localObject = ((aoto)localObject).jdField_b_of_type_JavaLangString;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localRedTypeInfo = ((ReadInJoyManager)localObject).a();
-        paramQQAppInterface = ((ReadInJoyManager)localObject).a();
-        localObject = ((ReadInJoyManager)localObject).a();
-      }
-    }
-    int i;
-    switch (((bhwl)localObject).jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 1: 
-      i = ((bhwl)localObject).jdField_b_of_type_Int;
-      if (i > 99) {
-        localRedTypeInfo.red_content.set("99+");
-      }
-      for (;;)
-      {
-        localRedTypeInfo.red_type.set(5);
-        localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-        paramQQAppInterface.red_display_info.red_type_info.add(localRedTypeInfo);
-        paramQQAppInterface.iNewFlag.set(1);
-        paramRedTouch.a(paramQQAppInterface);
-        return;
-        localRedTypeInfo.red_content.set(i + "");
-      }
-    case 3: 
-      localRedTypeInfo.red_type.set(3);
-      i = ((bhwl)localObject).c;
-      localRedTypeInfo.red_desc.set("{'drawable':" + i + "}");
-      paramQQAppInterface.red_display_info.red_type_info.add(localRedTypeInfo);
-      paramQQAppInterface.iNewFlag.set(1);
-      paramRedTouch.a(paramQQAppInterface);
-      return;
-    case 2: 
-      localObject = ((bhwl)localObject).jdField_b_of_type_JavaLangString;
-      localRedTypeInfo.red_content.set((String)localObject + "");
-      localRedTypeInfo.red_type.set(4);
-      localRedTypeInfo.red_desc.set("{'cr':'#777777'}");
-      paramQQAppInterface.red_display_info.red_type_info.add(localRedTypeInfo);
-      localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-      localRedTypeInfo.red_type.set(9);
-      localRedTypeInfo.red_content.set(baxn.a(paramContext, 3.0F) + "");
-      localRedTypeInfo.red_desc.set("");
-      paramQQAppInterface.red_display_info.red_type_info.add(localRedTypeInfo);
-      paramContext = new BusinessInfoCheckUpdate.RedTypeInfo();
-      paramContext.red_type.set(0);
-      paramQQAppInterface.red_display_info.red_type_info.add(paramContext);
-      paramQQAppInterface.iNewFlag.set(1);
-      paramRedTouch.a(paramQQAppInterface);
-      return;
-    case 4: 
-      paramContext = ((bhwl)localObject).jdField_b_of_type_JavaLangString;
-      localRedTypeInfo.red_content.set(paramContext + "");
-      localRedTypeInfo.red_type.set(4);
-      localRedTypeInfo.red_desc.set("{'cr':'#FF0000'}");
-      paramQQAppInterface.red_display_info.red_type_info.add(localRedTypeInfo);
-      paramQQAppInterface.iNewFlag.set(1);
-      paramRedTouch.a(paramQQAppInterface);
-      return;
-    }
-    paramRedTouch.b();
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface, String paramString, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
-  {
-    if (paramAppInfo == null) {}
-    while ((paramAppInfo.iNewFlag.get() == 0) || (!paramString.equals("com.tx.xingqubuluo.android"))) {
-      return;
-    }
-    if (!TextUtils.isEmpty(paramAppInfo.icon_url.get())) {}
-    for (int i = 1;; i = 2)
-    {
-      axqy.b(paramQQAppInterface, "dc00899", "Grp_tribe", "", "dynamic", "exp_tribe", 0, 0, i + "", "", "", "");
-      return;
-    }
-  }
-  
-  public void a(atxe paramatxe, RedTouch paramRedTouch)
-  {
-    if (paramRedTouch == null) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramatxe.d;
-    this.jdField_b_of_type_Int = paramatxe.c;
-    Object localObject;
-    switch (paramatxe.jdField_a_of_type_Int)
-    {
-    case 1: 
-    case 2: 
-    case 4: 
-    default: 
-      paramRedTouch.a(null);
-      return;
-    case 3: 
-      paramatxe = (String)paramatxe.jdField_a_of_type_JavaUtilList.get(0);
-      localObject = new BusinessInfoCheckUpdate.RedTypeInfo();
-      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.set(3);
-      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_content.set(paramatxe);
-      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_desc.set("{'av':1, 'dot':1}");
-      paramRedTouch.a((BusinessInfoCheckUpdate.RedTypeInfo)localObject);
-      return;
-    case 5: 
-      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-      localRedTypeInfo.red_type.set(5);
-      localObject = paramatxe.jdField_b_of_type_Int + "";
-      if (paramatxe.jdField_b_of_type_Int > 99) {
-        localObject = "99+";
-      }
-      localRedTypeInfo.red_content.set((String)localObject);
-      localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-      paramRedTouch.a(localRedTypeInfo);
-      return;
-    }
-    paramatxe = new BusinessInfoCheckUpdate.RedTypeInfo();
-    paramatxe.red_type.set(0);
-    paramatxe.red_content.set("");
-    paramatxe.red_desc.set("");
-    paramRedTouch.a(paramatxe);
-  }
-  
-  protected void a(QQAppInterface paramQQAppInterface, Context paramContext, RedTouch paramRedTouch)
-  {
-    Object localObject;
-    if (paramQQAppInterface != null)
-    {
-      if (!amnj.a(paramQQAppInterface, "redpoint_leba_show")) {
-        break label357;
-      }
-      localObject = ((amnn)paramQQAppInterface.getManager(269)).b();
-      if (localObject == null) {
-        break label264;
-      }
-      localObject = ((amnj)localObject).a(paramQQAppInterface);
-      if ((paramQQAppInterface.a() == null) || (!paramQQAppInterface.a().a())) {
-        break label271;
-      }
-    }
-    label264:
-    label271:
-    for (int i = 1;; i = 0)
-    {
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || (i != 0)) {
-        break label290;
-      }
-      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-      paramQQAppInterface = new BusinessInfoCheckUpdate.AppInfo();
-      localRedTypeInfo.red_content.set((String)localObject);
-      localRedTypeInfo.red_type.set(4);
-      localRedTypeInfo.red_desc.set("{'cn':'#00000000','cr':'#888888'}");
-      paramQQAppInterface.red_display_info.red_type_info.add(localRedTypeInfo);
-      localObject = new BusinessInfoCheckUpdate.RedTypeInfo();
-      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.set(0);
-      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_desc.set("");
-      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_content.set("");
-      paramQQAppInterface.red_display_info.red_type_info.add((MessageMicro)localObject);
-      paramQQAppInterface.iNewFlag.set(1);
-      paramRedTouch.a(paramQQAppInterface);
-      try
-      {
-        paramQQAppInterface = (TextView)paramRedTouch.findViewById(30);
-        paramRedTouch = (LinearLayout.LayoutParams)paramQQAppInterface.getLayoutParams();
-        paramQQAppInterface.setMaxWidth(actj.a(200.0F, paramContext.getResources()));
-        paramRedTouch.weight = 1.0F;
-        paramRedTouch.width = 0;
-        paramRedTouch.rightMargin = actj.a(4.0F, paramContext.getResources());
-        paramQQAppInterface.setEllipsize(TextUtils.TruncateAt.END);
-        paramQQAppInterface.setLayoutParams(paramRedTouch);
-        return;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        QLog.i("Q.lebatab.LebaSpecificRedTouch", 1, "updateConfessRedTouch", paramQQAppInterface);
-        return;
-      }
-      localObject = "";
-      break;
-    }
-    label290:
-    paramQQAppInterface = new BusinessInfoCheckUpdate.RedTypeInfo();
-    paramContext = new BusinessInfoCheckUpdate.AppInfo();
-    paramQQAppInterface.red_type.set(0);
-    paramQQAppInterface.red_desc.set("");
-    paramQQAppInterface.red_content.set("");
-    paramContext.red_display_info.red_type_info.add(paramQQAppInterface);
-    paramContext.iNewFlag.set(1);
-    paramRedTouch.a(paramContext);
-    return;
-    label357:
-    paramRedTouch.b();
-  }
-  
-  protected void a(QQAppInterface paramQQAppInterface, RedTouch paramRedTouch)
-  {
-    if (paramRedTouch == null) {
-      return;
-    }
-    paramQQAppInterface = (mxu)paramQQAppInterface.getManager(70);
-    oidb_0x791.RedDotInfo localRedDotInfo = paramQQAppInterface.a();
-    if (localRedDotInfo == null)
-    {
-      paramRedTouch.b();
-      return;
-    }
-    vei.a("dynamic", "exp_story", 0, paramQQAppInterface.b(), new String[0]);
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
-    int i;
-    switch (localRedDotInfo.uint32_appid.get())
-    {
-    default: 
-      i = -1;
-    case 11: 
-    case 37: 
-    case 8: 
-    case 35: 
-      label126:
-      while (i != -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("storyRedDotDebug", 2, "更新动态红点:" + mxu.a(localRedDotInfo));
-        }
-        localRedTypeInfo.red_type.set(i);
-        localAppInfo.red_display_info.red_type_info.add(localRedTypeInfo);
-        localAppInfo.iNewFlag.set(1);
-        paramRedTouch.a(localRedTypeInfo);
-        return;
-        localRedTypeInfo.red_content.set(localRedDotInfo.str_custom_buffer.get().toStringUtf8() + "");
-        localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-        i = 4;
-        continue;
-        paramQQAppInterface = "New";
-        try
+        i = j;
+        if (paramInt != 1)
         {
-          String str = new JSONObject(localRedDotInfo.str_custom_buffer.get().toStringUtf8()).getString("red_word");
-          paramQQAppInterface = str;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            ved.d("Q.lebatab.LebaSpecificRedTouch", "tag red dot json parse error , %s", new Object[] { localException.getMessage() });
+          if (paramInt != 3000) {
+            break label80;
           }
-        }
-        localRedTypeInfo.red_content.set(paramQQAppInterface);
-        localRedTypeInfo.red_desc.set("{'cn':'#00000000' ,'cr':'#777777'}");
-        i = 4;
-        continue;
-        i = 0;
-        continue;
-        paramQQAppInterface = localRedDotInfo.str_custom_buffer.get().toStringUtf8();
-        if (TextUtils.isEmpty(paramQQAppInterface)) {
-          break label436;
-        }
-        try
-        {
-          long l = new JSONObject(paramQQAppInterface).optLong("image_red_display_780", 1L);
-          ved.e("Q.lebatab.LebaSpecificRedTouch", "updateStoryRedTouch() APPID_STORY_IMG: red display=%d", new Object[] { Long.valueOf(l) });
-          if (l != 0L) {
-            break label445;
-          }
-          paramRedTouch.b();
-          i = -1;
-        }
-        catch (JSONException paramQQAppInterface)
-        {
-          ved.c("Q.lebatab.LebaSpecificRedTouch", "updateStoryRedTouch() APPID_STORY_IMG: Error parse json: ", paramQQAppInterface);
-          i = -1;
+          i = j;
         }
       }
-      label436:
-      ved.b("Q.lebatab.LebaSpecificRedTouch", "updateStoryRedTouch() APPID_STORY_IMG: str_custom_buffer is null");
-      label445:
-      i = localRedDotInfo.uint32_cmd_uin_type.get();
-      if (i == 0)
-      {
-        localObject = localRedDotInfo.str_face_url.get().toStringUtf8();
-        paramQQAppInterface = String.format("{'uin':'%s','dot':1, 'av':1}", new Object[] { localRedDotInfo.uint64_cmd_uin.get() + "" });
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          paramQQAppInterface = "{'av':1, 'dot':1}";
-          localRedTypeInfo.red_content.set((String)localObject);
-        }
-        localRedTypeInfo.red_desc.set(paramQQAppInterface);
-      }
-      for (;;)
-      {
-        i = 3;
-        break label126;
-        if (i != 1) {
-          break;
-        }
-        paramQQAppInterface = "https://p.qlogo.cn/gh/" + localRedDotInfo.uint64_cmd_uin.get() + "/" + localRedDotInfo.uint64_cmd_uin.get() + "/100?t=" + mxu.c;
-        localRedTypeInfo.red_content.set(paramQQAppInterface);
-        localRedTypeInfo.red_desc.set("{'av':1, 'dot':1}");
-      }
-    }
-    Object localObject = localRedTypeInfo.red_content;
-    if (localRedDotInfo.uint32_number.get() > 99) {}
-    for (paramQQAppInterface = "99+";; paramQQAppInterface = localRedDotInfo.uint32_number.get() + "")
-    {
-      ((PBStringField)localObject).set(paramQQAppInterface);
-      localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-      i = 4;
-      break;
-    }
-  }
-  
-  protected void a(QQAppInterface paramQQAppInterface, RedTouch paramRedTouch, long paramLong)
-  {
-    ThreadManager.post(new LebaSpecificRedTouch.1(this, paramQQAppInterface, new Handler(), paramRedTouch, paramLong), 8, null, true);
-  }
-  
-  protected void a(QQAppInterface paramQQAppInterface, RedTouch paramRedTouch, String paramString1, String paramString2, long paramLong)
-  {
-    ThreadManager.getSubThreadHandler().post(new LebaSpecificRedTouch.2(this, paramQQAppInterface, paramRedTouch, paramString1, paramString2, paramLong));
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
-  {
-    if (paramString.equals("com.tx.xingqubuluo.android")) {
-      b(paramQQAppInterface, paramString, paramAppInfo);
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, Context paramContext, long paramLong, RedTouch paramRedTouch, String paramString, Map<Long, Integer> paramMap)
-  {
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    paramMap = String.valueOf(paramLong);
-    if ((paramMap != null) && (bhwl.jdField_a_of_type_JavaLangString.equals(paramMap)))
-    {
-      b(paramQQAppInterface, paramContext, paramRedTouch);
-      a(paramLong, paramRedTouch);
-      return true;
-    }
-    if (String.valueOf(nde.jdField_a_of_type_Int).equals(paramMap))
-    {
-      a(paramQQAppInterface, paramRedTouch);
-      a(paramLong, paramRedTouch);
-      return true;
-    }
-    if (bcji.jdField_a_of_type_JavaLangString.equals(paramString))
-    {
-      bcji.a(paramQQAppInterface, paramRedTouch);
-      a(paramLong, paramRedTouch);
-      return true;
-    }
-    if (7759L == paramLong)
-    {
-      a(paramQQAppInterface, paramContext, paramRedTouch);
-      a(paramLong, paramRedTouch);
-      return true;
-    }
-    if (7719L == paramLong)
-    {
-      a(paramQQAppInterface, paramRedTouch, paramLong);
-      return true;
-    }
-    if (7720L == paramLong)
-    {
-      a(paramQQAppInterface, paramRedTouch, paramMap, paramString, paramLong);
-      return true;
-    }
-    return false;
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, RedTouch paramRedTouch, String paramString1, String paramString2, long paramLong)
-  {
-    Object localObject2 = (avps)paramQQAppInterface.getManager(36);
-    int i;
-    if (localObject2 != null)
-    {
-      paramString2 = ((avps)localObject2).a(paramString1);
-      if (paramString2 != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.lebatab.LebaSpecificRedTouch", 2, "updateKuolieRedTouch() kuolie appInfo.buffer: " + paramString2.buffer.get());
-        }
-        Object localObject1 = paramString2.red_display_info.red_type_info.get();
-        if (((List)localObject1).size() > 0)
-        {
-          paramString1 = null;
-          localObject2 = ((avps)localObject2).a(paramString2);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.lebatab.LebaSpecificRedTouch", 2, "updateKuolieRedTouch() kuolie appInfo bufferExtParam: " + localObject2);
-          }
-          if (localObject2 != null) {
-            paramString1 = ((JSONObject)localObject2).optString("_red_ext_uin");
-          }
-          if (!TextUtils.isEmpty(paramString1))
-          {
-            localObject1 = ((List)localObject1).iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (BusinessInfoCheckUpdate.RedTypeInfo)((Iterator)localObject1).next();
-              if (((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.get() == 3) {
-                try
-                {
-                  JSONObject localJSONObject = new JSONObject(((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.get());
-                  localJSONObject.put("uin", paramString1);
-                  ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set(localJSONObject.toString());
-                }
-                catch (Throwable localThrowable)
-                {
-                  QLog.e("Q.lebatab.LebaSpecificRedTouch", 1, "updateKuolieRedTouch()  modify image reddot red_desc JSONException ", localThrowable);
-                }
-              }
-            }
-          }
-        }
-      }
-      if ((paramQQAppInterface.a() == null) || (!paramQQAppInterface.a().a())) {
-        break label300;
-      }
-      i = 1;
-      if (i == 0) {
-        break label306;
-      }
-      paramRedTouch.b(paramString2);
     }
     for (;;)
     {
-      a(paramLong, paramRedTouch);
+      azmj.b(null, "dc00898", "", "", (String)localObject, (String)localObject, i, 0, "", "", "", "");
       return;
-      label300:
-      i = 0;
+      localObject = ((aoto)localObject).d;
       break;
-      label306:
-      paramRedTouch.a(paramString2);
+      label80:
+      if (paramInt == 0) {
+        i = 0;
+      } else {
+        i = 3;
+      }
+    }
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368416));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364852));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364851));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364844));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364845));
+    this.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364846));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364850));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364853));
+    String str;
+    if ((this.jdField_a_of_type_Aoto != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null))
+    {
+      localObject = this.jdField_a_of_type_Aoto.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Aotr = ((aotr)localObject);
+      if ((localObject != null) && (!TextUtils.isEmpty(((aotr)localObject).jdField_a_of_type_JavaLangString)))
+      {
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        str = ((aotr)localObject).jdField_a_of_type_JavaLangString;
+        if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int != 3000)) {
+          break label245;
+        }
+      }
+    }
+    label245:
+    for (Object localObject = alpo.a(2131703770);; localObject = alpo.a(2131703755))
+    {
+      localObject = str.replace("$name", (CharSequence)localObject);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      return;
+    }
+  }
+  
+  public void a()
+  {
+    a(false);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_b_of_type_JavaLangString = paramString;
+    }
+    boolean bool;
+    if (this.jdField_a_of_type_Aotr != null)
+    {
+      bool = this.jdField_a_of_type_Aotr.jdField_a_of_type_Boolean;
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(8);
+      this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(8);
+      if (paramInt <= 0) {
+        break label171;
+      }
+      localObject = new StringBuilder().append(paramInt).append(alpo.a(2131703759));
+      if (!bool) {
+        break label153;
+      }
+      paramString = alpo.a(2131703767);
+      label94:
+      localObject = paramString;
+      localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+      if (!bool) {
+        break label162;
+      }
+    }
+    label153:
+    label162:
+    for (paramString = alpo.a(2131703751);; paramString = alpo.a(2131703760))
+    {
+      localTextView.setText(paramString);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramString = (String)localObject;
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+      return;
+      bool = false;
+      break;
+      paramString = alpo.a(2131703761);
+      break label94;
+    }
+    label171:
+    Object localObject = alpo.a(2131703757);
+    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+    StringBuilder localStringBuilder = new StringBuilder().append(alpo.a(2131703756));
+    if (bool) {}
+    for (paramString = alpo.a(2131703771);; paramString = alpo.a(2131703754))
+    {
+      localTextView.setText(paramString + alpo.a(2131703769));
+      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null)
+      {
+        paramString = a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString);
+        if (paramString != null) {
+          this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramString);
+        }
+      }
+      paramString = (String)localObject;
+      break;
+    }
+  }
+  
+  public void a(int paramInt, List<aotp> paramList, String paramString)
+  {
+    int i = 0;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    boolean bool;
+    Object localObject1;
+    if (this.jdField_a_of_type_Aotr != null)
+    {
+      bool = this.jdField_a_of_type_Aotr.jdField_a_of_type_Boolean;
+      if (paramInt != 1) {
+        break label365;
+      }
+      this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(8);
+      this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(8);
+      localObject1 = new StringBuilder().append(alpo.a(2131703753));
+      if (!bool) {
+        break label321;
+      }
+      paramString = alpo.a(2131703765);
+      label92:
+      paramString = paramString;
+      if ((paramList == null) || (paramList.size() <= 0)) {
+        break label331;
+      }
+      localObject1 = (aotp)paramList.get(0);
+      paramString = ((aotp)localObject1).jdField_a_of_type_JavaLangString + paramString;
+      label150:
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+      localObject1 = this.jdField_c_of_type_AndroidWidgetTextView;
+      if (!bool) {
+        break label355;
+      }
+    }
+    label321:
+    label331:
+    label355:
+    for (paramString = alpo.a(2131703768);; paramString = alpo.a(2131703758))
+    {
+      ((TextView)localObject1).setText(paramString);
+      if (paramList == null) {
+        return;
+      }
+      paramString = this.jdField_a_of_type_ComTencentImageURLImageView;
+      localObject1 = this.jdField_b_of_type_ComTencentImageURLImageView;
+      URLImageView localURLImageView = this.jdField_c_of_type_ComTencentImageURLImageView;
+      paramInt = i;
+      while (paramInt < paramList.size())
+      {
+        Object localObject2 = ((aotp)paramList.get(paramInt)).jdField_b_of_type_JavaLangString;
+        if (paramInt < 3)
+        {
+          localObject2 = URLDrawable.getDrawable((String)localObject2, URLDrawable.URLDrawableOptions.obtain());
+          i = aekt.a(24.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+          ((URLDrawable)localObject2).setTag(bcuq.b(i, i, i / 2));
+          ((URLDrawable)localObject2).setDecodeHandler(bcuq.c);
+          new URLImageView[] { paramString, localObject1, localURLImageView }[paramInt].setImageDrawable((Drawable)localObject2);
+        }
+        paramInt += 1;
+      }
+      bool = false;
+      break;
+      paramString = alpo.a(2131703772);
+      break label92;
+      paramString = "1人" + paramString;
+      break label150;
+    }
+    label365:
+    this.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(0);
+    if (paramInt == 2)
+    {
+      this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(8);
+      label387:
+      localObject1 = new StringBuilder().append(paramInt).append(alpo.a(2131703766));
+      if (!bool) {
+        break label477;
+      }
+      paramString = alpo.a(2131703763);
+      label421:
+      paramString = paramString;
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+      localObject1 = this.jdField_c_of_type_AndroidWidgetTextView;
+      if (!bool) {
+        break label487;
+      }
+    }
+    label477:
+    label487:
+    for (paramString = alpo.a(2131703750);; paramString = alpo.a(2131703749))
+    {
+      ((TextView)localObject1).setText(paramString);
+      break;
+      this.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(0);
+      break label387;
+      paramString = alpo.a(2131703752);
+      break label421;
+    }
+  }
+  
+  public void a(String paramString1, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, boolean paramBoolean, String paramString2)
+  {
+    StringBuilder localStringBuilder;
+    if ((!TextUtils.isEmpty(paramString1)) && (paramTeamWorkFileImportInfo != null))
+    {
+      new StringBuilder(paramString1);
+      if (paramString1.indexOf("?") <= 0) {
+        break label213;
+      }
+      paramString1 = paramString1 + "&adtag=s_qq_file_inviteedit";
+      if (paramBoolean)
+      {
+        paramBoolean = aots.a().a(paramTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
+        localStringBuilder = new StringBuilder(alpo.a(2131703764));
+        if ((paramTeamWorkFileImportInfo.jdField_a_of_type_Int != 1) && (paramTeamWorkFileImportInfo.jdField_a_of_type_Int != 3000)) {
+          break label237;
+        }
+        localStringBuilder.append("群成员");
+        label108:
+        if (!paramBoolean) {
+          break label256;
+        }
+        localStringBuilder.append("一起编辑");
+      }
+    }
+    for (;;)
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, localStringBuilder.toString(), 1).a();
+      ThreadManager.excute(new DocCooperationBanner.2(this, paramTeamWorkFileImportInfo, paramString1, paramBoolean, paramString2), 128, null, false);
+      bafi.a(null, "0X800A637");
+      paramString2 = new Bundle();
+      paramString2.putString("url", paramString1);
+      paramString2.putBoolean("temp_preview_from_qq", true);
+      paramString2.putParcelable("key_team_work_file_import_info", paramTeamWorkFileImportInfo);
+      TeamWorkDocEditBrowserActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, false);
+      return;
+      label213:
+      paramString1 = paramString1 + "?adtag=s_qq_file_inviteedit";
+      break;
+      label237:
+      if (paramTeamWorkFileImportInfo.jdField_a_of_type_Int != 0) {
+        break label108;
+      }
+      localStringBuilder.append("好友");
+      break label108;
+      label256:
+      localStringBuilder.append("一起查看");
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Aoto != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null))
+    {
+      if (!paramBoolean) {
+        break label106;
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { 0.0F });
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+      }
+    }
+    return;
+    label106:
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+        }
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { this.jdField_a_of_type_AndroidViewView.getHeight() });
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new arqf(this));
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+      }
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!bdee.d(BaseApplication.getContext())) {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, alpo.a(2131703762), 0).a();
+    }
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
+      {
+        paramView = BaseApplicationImpl.sApplication.getRuntime();
+        if ((paramView instanceof QQAppInterface))
+        {
+          paramView = (bacn)((QQAppInterface)paramView).a(120);
+          if ((paramView != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (!paramView.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo)))
+          {
+            bafi.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.k + "-" + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d);
+            this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
+            paramView.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+          }
+        }
+      }
+      for (boolean bool = true; this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null; bool = false)
+      {
+        a(bool, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
+        return;
+        if (this.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0) {
+          a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, false, "");
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqe
  * JD-Core Version:    0.7.0.1
  */

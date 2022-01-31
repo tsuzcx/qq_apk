@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.skin;
 
-import auko;
+import awbv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.persistence.ConflictClause;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id,uin")
 public abstract class BaseResData<T extends MessageMicro>
-  extends auko
+  extends awbv
 {
   public int beginTime;
   public String business = "";
@@ -54,7 +54,7 @@ public abstract class BaseResData<T extends MessageMicro>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.skin.BaseResData
  * JD-Core Version:    0.7.0.1
  */

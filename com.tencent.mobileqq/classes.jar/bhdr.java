@@ -1,32 +1,28 @@
-import java.util.LinkedList;
-import java.util.List;
+import com.qflutter.video.IQflutterVideoView.StatusCallBack;
+import com.tencent.qqmini.sdk.runtime.flutter.SurfaceFlutterVideoView;
 
 public class bhdr
+  implements bgnp
 {
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final List<Integer> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private Object b;
+  public bhdr(SurfaceFlutterVideoView paramSurfaceFlutterVideoView) {}
   
-  public bhdr(bhdr parambhdr, Object paramObject)
+  public void a(bgnj parambgnj)
   {
-    this.jdField_a_of_type_JavaUtilList = parambhdr.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = parambhdr.jdField_a_of_type_Boolean;
-    this.b = this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  private bhdr(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = true;
-    this.b = this.jdField_a_of_type_JavaLangObject;
+    if (SurfaceFlutterVideoView.a(this.a) != null) {
+      SurfaceFlutterVideoView.a(this.a).on(12, null);
+    }
+    if (SurfaceFlutterVideoView.a(this.a)) {}
+    try
+    {
+      SurfaceFlutterVideoView.a(this.a).start();
+      return;
+    }
+    catch (Throwable parambgnj) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhdr
  * JD-Core Version:    0.7.0.1
  */

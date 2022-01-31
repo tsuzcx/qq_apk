@@ -1,27 +1,29 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.33;
 
-class apmk
-  implements xax
+public class apmk
+  implements alcb
 {
-  apmk(apmj paramapmj, boolean paramBoolean, String paramString, short paramShort) {}
+  public apmk(MessengerService.IncomingHandler.33 param33) {}
   
-  public void a(List<apqk> paramList)
+  public void a(long paramLong, String paramString)
   {
-    if (this.jdField_a_of_type_Apmj.a.jdField_a_of_type_Apng != null) {
-      this.jdField_a_of_type_Apmj.a.jdField_a_of_type_Apng.a(paramList, this.jdField_a_of_type_Apmj.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apmj.a.b, this.jdField_a_of_type_Apmj.a.c, this.jdField_a_of_type_Apmj.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
-    }
-    if (paramList != null)
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
     {
-      axqy.b(this.jdField_a_of_type_Apmj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Apmj.a.jdField_a_of_type_Apkt.a().TroopUin, "", apug.f(this.jdField_a_of_type_Apmj.a.b()), "1");
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    axqy.b(this.jdField_a_of_type_Apmj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Apmj.a.jdField_a_of_type_Apkt.a().TroopUin, "-1", apug.f(this.jdField_a_of_type_Apmj.a.b()), "1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apmk
  * JD-Core Version:    0.7.0.1
  */

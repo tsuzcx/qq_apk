@@ -1,65 +1,52 @@
-import android.support.annotation.NonNull;
-import android.util.Log;
-import com.tencent.feedback.eup.CrashReport;
-import com.tencent.mobileqq.statistics.CaughtException;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport.1;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-
-public final class axpu
+public class axpu
+  extends axpl
 {
-  private static final Set<String> a = new CaughtExceptionReport.1(20);
-  private static final Set<Class> b = new CaughtExceptionReport.2(5);
+  public android.opengl.EGLContext a;
+  public javax.microedition.khronos.egl.EGLContext a;
+  public int c;
   
-  public static void a(@NonNull Throwable paramThrowable)
+  public axpu(axpl paramaxpl)
   {
-    a(paramThrowable, "This is CaughtException");
+    super(paramaxpl.jdField_a_of_type_JavaLangString, paramaxpl.jdField_a_of_type_Int, paramaxpl.jdField_b_of_type_Boolean, paramaxpl.jdField_a_of_type_Boolean, paramaxpl.jdField_a_of_type_Long, paramaxpl.jdField_b_of_type_Long);
   }
   
-  public static void a(@NonNull Throwable paramThrowable, @NonNull String paramString)
+  public axpu(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
   {
-    if ((paramThrowable == null) || (paramString == null)) {
-      return;
-    }
-    if (!a(paramThrowable))
+    super(paramString, paramInt, paramBoolean1, paramBoolean2, paramLong1, paramLong2);
+  }
+  
+  public boolean a(axpl paramaxpl)
+  {
+    boolean bool = super.a(paramaxpl);
+    if ((paramaxpl instanceof axpu))
     {
-      Log.e("CaughtExceptionReport", "this report is not permitted. ", paramThrowable);
-      return;
-    }
-    Object localObject = paramThrowable;
-    if (!(paramThrowable instanceof CaughtException)) {
-      localObject = new CaughtException("Caught: " + paramThrowable.getMessage(), paramThrowable);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("CaughtExceptionReport-eup", 2, "rqd将上报信息到rdm网站，上报不会导致客户端闪退，仅用作数据统计");
-    }
-    CrashReport.handleCatchException(Thread.currentThread(), (Throwable)localObject, "ExtraMessage: " + paramString, null);
-  }
-  
-  private static boolean a(Throwable paramThrowable)
-  {
-    if (b.contains(paramThrowable.getClass())) {
-      return true;
-    }
-    paramThrowable = paramThrowable.getStackTrace();
-    if ((paramThrowable == null) || (paramThrowable.length < 1)) {
-      return false;
-    }
-    paramThrowable = paramThrowable[0].getClassName();
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext()) {
-      if (paramThrowable.startsWith((String)localIterator.next())) {
+      paramaxpl = (axpu)paramaxpl;
+      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != paramaxpl.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)
+      {
+        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramaxpl.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+        bool = true;
+      }
+      if (this.jdField_a_of_type_AndroidOpenglEGLContext != paramaxpl.jdField_a_of_type_AndroidOpenglEGLContext)
+      {
+        this.jdField_a_of_type_AndroidOpenglEGLContext = paramaxpl.jdField_a_of_type_AndroidOpenglEGLContext;
+        bool = true;
+      }
+      if (this.c != paramaxpl.c)
+      {
+        this.c = paramaxpl.c;
         return true;
       }
     }
-    return false;
+    else
+    {
+      throw new IllegalArgumentException("should be FlowDecodeConfig's instance");
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axpu
  * JD-Core Version:    0.7.0.1
  */

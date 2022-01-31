@@ -1,54 +1,35 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import mqq.observer.BusinessObserver;
+import android.util.Pair;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class bczt
-  implements BusinessObserver
 {
-  public bczt(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static ArrayList<Pair<String, Long>> a(ArrayList<Pair<String, Long>> paramArrayList)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.app.getCurrentAccountUin().equals(localObject)) {}
-    for (;;)
+    Object[] arrayOfObject = new Object[paramArrayList.size()];
+    int i = 0;
+    Object localObject;
+    while (i < paramArrayList.size())
     {
-      return;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      if (paramBoolean)
-      {
-        localObject = new GetAppInfoProto.GetAppinfoResponse();
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle != null)
-          {
-            ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
-            if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
-            {
-              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-              paramBundle.what = 3;
-              paramBundle.obj = localObject;
-              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
-              return;
-            }
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-        }
-      }
+      localObject = (Pair)paramArrayList.get(i);
+      arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
+      i += 1;
     }
+    Arrays.sort(arrayOfObject, new bczu());
+    paramArrayList.clear();
+    i = 0;
+    while (i < arrayOfObject.length)
+    {
+      localObject = (String[])arrayOfObject[i];
+      paramArrayList.add(Pair.create(localObject[0], Long.valueOf(Long.parseLong(localObject[1]))));
+      i += 1;
+    }
+    return paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bczt
  * JD-Core Version:    0.7.0.1
  */

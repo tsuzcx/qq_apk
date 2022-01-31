@@ -1,10 +1,13 @@
-public abstract class akiw
+class akiw
 {
-  public abstract void a();
+  public int a;
+  public long a;
+  
+  akiw(akiv paramakiv) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akiw
  * JD-Core Version:    0.7.0.1
  */

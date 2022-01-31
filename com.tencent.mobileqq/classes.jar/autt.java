@@ -1,25 +1,120 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.PlayerState;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.WifiPOIInfo;
 
 public class autt
-  extends RecyclerView.ItemDecoration
+  extends beif
 {
-  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
+  public autt(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  private autt(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a(int paramInt)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null) || (this.a.isFinishing())) {}
+    do
+    {
+      return;
+      if (paramInt == 0)
+      {
+        this.a.jdField_d_of_type_Boolean = false;
+        this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
+        this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setComplete(new autu(this));
+        this.a.a("load_page", "suc_cnt");
+        return;
+      }
+    } while (paramInt == 4);
+    if (this.a.jdField_d_of_type_Int > 3)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.a.setText(alpo.a(2131705477));
+      this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
+      this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+      this.a.jdField_d_of_type_Boolean = false;
+      return;
+    }
+    this.a.jdField_d_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Beih.a();
+    GameRoomInviteActivity localGameRoomInviteActivity = this.a;
+    localGameRoomInviteActivity.jdField_d_of_type_Int += 1;
+  }
+  
+  public void a(submsgtype0xdd.MsgBody paramMsgBody)
+  {
+    Object localObject;
+    switch (paramMsgBody.uint32_msg_type.get())
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("GameRoomInviteActivity", 2, "the 0xdd push type is wrong:" + paramMsgBody.uint32_msg_type.get());
+      }
+    case 1: 
+      do
+      {
+        return;
+        localObject = this.a;
+        int i;
+        if ((!paramMsgBody.uint64_invite_leader.has()) || (paramMsgBody.uint64_invite_leader.get() == this.a.app.getLongAccountUin()))
+        {
+          bool = true;
+          ((GameRoomInviteActivity)localObject).jdField_a_of_type_Boolean = bool;
+          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+          i = 0;
+          if (i >= paramMsgBody.rpt_msg_player_state.size()) {
+            continue;
+          }
+          localObject = new auum(this.a);
+          submsgtype0xdd.MsgBody.PlayerState localPlayerState = (submsgtype0xdd.MsgBody.PlayerState)paramMsgBody.rpt_msg_player_state.get(i);
+          ((auum)localObject).jdField_a_of_type_JavaLangString = (localPlayerState.uint64_uin.get() + "");
+          if (localPlayerState.uint32_state.get() != 1) {
+            break label250;
+          }
+        }
+        for (boolean bool = true;; bool = false)
+        {
+          ((auum)localObject).jdField_a_of_type_Boolean = bool;
+          this.a.jdField_a_of_type_JavaUtilList.add(localObject);
+          i += 1;
+          break label135;
+          bool = false;
+          break;
+        }
+      } while (this.a.jdField_d_of_type_Boolean);
+      this.a.jdField_a_of_type_Auun.notifyDataSetChanged();
+      this.a.a();
+      return;
+    case 2: 
+      paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
+      localObject = paramMsgBody.bytes_uid.get().toStringUtf8();
+      this.a.a(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), (String)localObject, paramMsgBody.bytes_name.get().toStringUtf8());
+      aush.a(this.a.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(ayvc.a()));
+      return;
+    case 3: 
+      label135:
+      label250:
+      QQToast.a(this.a, alpo.a(2131705502), 0).a();
+      this.a.finish();
+      this.a.jdField_a_of_type_JavaUtilList = null;
+      bdiv.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
+      return;
+    }
+    this.a.a(null, alpo.a(2131705479), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     autt
  * JD-Core Version:    0.7.0.1
  */

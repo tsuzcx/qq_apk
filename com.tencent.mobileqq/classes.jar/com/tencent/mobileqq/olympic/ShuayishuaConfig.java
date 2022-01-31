@@ -3,14 +3,14 @@ package com.tencent.mobileqq.olympic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aufi;
+import avwm;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ShuayishuaConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ShuayishuaConfig> CREATOR = new aufi();
+  public static final Parcelable.Creator<ShuayishuaConfig> CREATOR = new avwm();
   public String LUIconImg;
   public String LUIconImgMd5;
   public String actTime;
@@ -137,7 +137,7 @@ public class ShuayishuaConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.ShuayishuaConfig
  * JD-Core Version:    0.7.0.1
  */

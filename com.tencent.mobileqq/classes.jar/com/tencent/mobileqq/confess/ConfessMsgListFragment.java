@@ -1,13 +1,7 @@
 package com.tencent.mobileqq.confess;
 
-import ajsd;
-import aktf;
-import amnj;
-import amnn;
-import amnq;
-import amnr;
-import amns;
-import amnz;
+import aljq;
+import amjk;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -24,8 +18,14 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import awzy;
-import axqy;
+import aoeh;
+import aoel;
+import aoeo;
+import aoep;
+import aoeq;
+import aoex;
+import ayvc;
+import azmj;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -49,9 +49,9 @@ public class ConfessMsgListFragment
   extends BaseMsgListFragment
   implements View.OnClickListener
 {
-  amnn jdField_a_of_type_Amnn;
-  amns jdField_a_of_type_Amns = new amnq(this);
   public ImageView a;
+  aoel jdField_a_of_type_Aoel;
+  aoeq jdField_a_of_type_Aoeq = new aoeo(this);
   View b;
   public ImageView b;
   View c;
@@ -60,7 +60,7 @@ public class ConfessMsgListFragment
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("uintype", 1032);
-    localIntent.putExtra("uin", ajsd.aM);
+    localIntent.putExtra("uin", aljq.aN);
     localIntent.addFlags(335544320);
     PublicFragmentActivity.a(paramContext, localIntent, ConfessMsgListFragment.class);
   }
@@ -72,7 +72,7 @@ public class ConfessMsgListFragment
     if (this.jdField_b_of_type_AndroidViewView == null) {
       return;
     }
-    boolean bool2 = amnj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show");
+    boolean bool2 = aoeh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show");
     boolean bool1;
     label40:
     Object localObject1;
@@ -80,46 +80,46 @@ public class ConfessMsgListFragment
     label76:
     Object localObject3;
     Object localObject2;
-    if (this.jdField_b_of_type_AndroidViewView.findViewById(2131375040).getVisibility() == 0)
+    if (this.jdField_b_of_type_AndroidViewView.findViewById(2131375521).getVisibility() == 0)
     {
       bool1 = true;
       if (bool2 != bool1)
       {
-        localObject1 = this.jdField_b_of_type_AndroidViewView.findViewById(2131375040);
+        localObject1 = this.jdField_b_of_type_AndroidViewView.findViewById(2131375521);
         if (!bool2) {
           break label223;
         }
         ((View)localObject1).setVisibility(i);
       }
-      if (this.jdField_a_of_type_Amnn != null) {
+      if (this.jdField_a_of_type_Aoel != null) {
         break label229;
       }
       localObject1 = null;
       if (localObject1 == null) {
         break label254;
       }
-      localObject3 = ((amnj)localObject1).i;
-      str = ((amnj)localObject1).a();
-      localObject2 = ((amnj)localObject1).r;
+      localObject3 = ((aoeh)localObject1).i;
+      str = ((aoeh)localObject1).a();
+      localObject2 = ((aoeh)localObject1).r;
     }
     for (;;)
     {
       localObject1 = localObject3;
       if (TextUtils.isEmpty((CharSequence)localObject3)) {
-        localObject1 = amnj.jdField_a_of_type_JavaLangString;
+        localObject1 = aoeh.jdField_a_of_type_JavaLangString;
       }
       if (TextUtils.isEmpty(str)) {
-        str = amnj.b;
+        str = aoeh.b;
       }
       for (;;)
       {
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject2 = amnj.c;
+          localObject2 = aoeh.c;
         }
         for (;;)
         {
-          localObject3 = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364691);
-          TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365017);
+          localObject3 = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364770);
+          TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365102);
           if (bool2) {}
           for (;;)
           {
@@ -137,7 +137,7 @@ public class ConfessMsgListFragment
             i = 8;
             break label60;
             label229:
-            localObject1 = this.jdField_a_of_type_Amnn.b();
+            localObject1 = this.jdField_a_of_type_Aoel.b();
             break label76;
             localObject2 = localObject1;
           }
@@ -192,23 +192,23 @@ public class ConfessMsgListFragment
       paramString.putString("key_confessor_nick", paramView.mConfessInfo.confessorNick);
       paramString.putString("key_confess_desc", paramView.mConfessInfo.topic);
       paramString.putLong("key_confess_time", paramView.mConfessInfo.confessTime);
-      amnr.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView.a(), paramView.mType, paramView.mConfessInfo.topicId, paramView.mTitleName, paramString);
+      aoep.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView.a(), paramView.mType, paramView.mConfessInfo.topicId, paramView.mTitleName, paramString);
       if (paramView.mType != 1033) {
         break label233;
       }
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4D", "0X8008F4D", 2, 0, "", "", "", "");
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4D", "0X8008F4D", 2, 0, "", "", "", "");
     }
     label233:
-    while ((paramView.mType != 1032) || (!TextUtils.equals(paramView.mUin, ajsd.aN))) {
+    while ((paramView.mType != 1032) || (!TextUtils.equals(paramView.mUin, aljq.aO))) {
       for (;;)
       {
-        amnr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RecentItemConfessMsg)paramRecentBaseData, false);
+        aoep.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RecentItemConfessMsg)paramRecentBaseData, false);
         return;
-        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4E", "0X8008F4E", 2, 0, "", "", "", "");
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4E", "0X8008F4E", 2, 0, "", "", "", "");
       }
     }
     label272:
-    if (this.jdField_a_of_type_Amnn == null)
+    if (this.jdField_a_of_type_Aoel == null)
     {
       paramView = null;
       label304:
@@ -224,9 +224,9 @@ public class ConfessMsgListFragment
       paramString.putExtra("hide_operation_bar", true);
       paramString.putExtra("url", paramView);
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramString);
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4F", "0X8008F4F", 2, 0, "", "", "", "");
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4F", "0X8008F4F", 2, 0, "", "", "", "");
       break;
-      paramView = this.jdField_a_of_type_Amnn.b();
+      paramView = this.jdField_a_of_type_Aoel.b();
       break label304;
     }
   }
@@ -244,7 +244,7 @@ public class ConfessMsgListFragment
       QLog.i("ConfessMsgListFragment", 4, String.format(Locale.getDefault(), "onRecentBaseDataDelete [type: %s, uin: %s, r4: %s]", new Object[] { Integer.valueOf(paramRecentBaseData.a()), paramRecentBaseData.a(), paramString }));
     }
     if ((paramRecentBaseData instanceof RecentItemConfessMsg)) {
-      amnr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RecentItemConfessMsg)paramRecentBaseData, true);
+      aoep.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RecentItemConfessMsg)paramRecentBaseData, true);
     }
     b();
   }
@@ -293,7 +293,7 @@ public class ConfessMsgListFragment
   protected void b(List<MessageRecord> paramList)
   {
     int k = 0;
-    Object localObject1 = this.jdField_a_of_type_Amnn.a();
+    Object localObject1 = this.jdField_a_of_type_Aoel.a();
     int i;
     Object localObject2;
     if ((paramList != null) && (paramList.size() > 0))
@@ -319,7 +319,7 @@ public class ConfessMsgListFragment
           }
           else
           {
-            if ((localObject1 == null) || (((amnz)localObject1).jdField_a_of_type_Long <= ((MessageRecord)localObject2).time)) {
+            if ((localObject1 == null) || (((aoex)localObject1).jdField_a_of_type_Long <= ((MessageRecord)localObject2).time)) {
               break label590;
             }
             i = j;
@@ -335,16 +335,16 @@ public class ConfessMsgListFragment
       if (j < 0)
       {
         i = 0;
-        if ((localObject1 != null) && (((amnz)localObject1).a()) && (paramList != null))
+        if ((localObject1 != null) && (((aoex)localObject1).a()) && (paramList != null))
         {
           localObject2 = new MessageRecord();
           ((MessageRecord)localObject2).istroop = 1032;
-          ((MessageRecord)localObject2).frienduin = ajsd.aN;
-          ((MessageRecord)localObject2).time = ((amnz)localObject1).jdField_a_of_type_Long;
-          ((MessageRecord)localObject2).senderuin = ((amnz)localObject1).jdField_a_of_type_JavaLangString;
-          ((MessageRecord)localObject2).msg = ((amnz)localObject1).c;
-          ((MessageRecord)localObject2).msg2 = ((amnz)localObject1).b;
-          ((MessageRecord)localObject2).longMsgCount = ((amnz)localObject1).jdField_a_of_type_Int;
+          ((MessageRecord)localObject2).frienduin = aljq.aO;
+          ((MessageRecord)localObject2).time = ((aoex)localObject1).jdField_a_of_type_Long;
+          ((MessageRecord)localObject2).senderuin = ((aoex)localObject1).jdField_a_of_type_JavaLangString;
+          ((MessageRecord)localObject2).msg = ((aoex)localObject1).c;
+          ((MessageRecord)localObject2).msg2 = ((aoex)localObject1).b;
+          ((MessageRecord)localObject2).longMsgCount = ((aoex)localObject1).jdField_a_of_type_Int;
           paramList.add(i, localObject2);
         }
         if ((paramList != null) && (!paramList.isEmpty())) {
@@ -352,15 +352,15 @@ public class ConfessMsgListFragment
         }
         j = 1;
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-        localObject2 = ((aktf)localObject1).b(ajsd.aM, 1032);
-        bool = amnj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show");
-        l1 = amnj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show");
-        long l2 = amnj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_clear_time");
-        long l3 = awzy.a();
+        localObject2 = ((amjk)localObject1).b(aljq.aN, 1032);
+        bool = aoeh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show");
+        l1 = aoeh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show");
+        long l2 = aoeh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_clear_time");
+        long l3 = ayvc.a();
         if ((j == 0) || (localObject2 == null) || (bool) || (Math.abs(l3 - l2) <= 259200000L)) {
           break label440;
         }
-        ((aktf)localObject1).b((RecentUser)localObject2);
+        ((amjk)localObject1).b((RecentUser)localObject2);
         i = k;
       }
       for (;;)
@@ -395,13 +395,13 @@ public class ConfessMsgListFragment
         if ((j == 0) && (localObject2 == null))
         {
           localObject2 = new RecentUser();
-          ((RecentUser)localObject2).uin = ajsd.aM;
+          ((RecentUser)localObject2).uin = aljq.aN;
           ((RecentUser)localObject2).setType(1032);
           if (bool) {}
           for (l1 = Math.max(((MessageRecord)paramList.get(0)).time, l1);; l1 = ((MessageRecord)paramList.get(0)).time)
           {
             ((RecentUser)localObject2).lastmsgtime = l1;
-            ((aktf)localObject1).a((RecentUser)localObject2);
+            ((amjk)localObject1).a((RecentUser)localObject2);
             i = 1;
             break;
           }
@@ -413,10 +413,10 @@ public class ConfessMsgListFragment
           if (localObject2 == null)
           {
             paramList = new RecentUser();
-            paramList.uin = ajsd.aM;
+            paramList.uin = aljq.aN;
             paramList.setType(1032);
             paramList.lastmsgtime = l1;
-            ((aktf)localObject1).a(paramList);
+            ((amjk)localObject1).a(paramList);
             i = 1;
           }
         }
@@ -434,14 +434,14 @@ public class ConfessMsgListFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698709));
+    setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131699007));
     paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
-    this.jdField_a_of_type_Amnn = ((amnn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(269));
-    paramBundle = this.jdField_a_of_type_Amnn.b();
+    this.jdField_a_of_type_Aoel = ((aoel)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(269));
+    paramBundle = this.jdField_a_of_type_Aoel.b();
     if ((paramBundle != null) && (paramBundle.g == 1))
     {
-      Drawable localDrawable1 = getResources().getDrawable(2130849311);
-      Drawable localDrawable2 = getResources().getDrawable(2130844186);
+      Drawable localDrawable1 = getResources().getDrawable(2130849744);
+      Drawable localDrawable2 = getResources().getDrawable(2130844529);
       if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
       {
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -450,39 +450,41 @@ public class ConfessMsgListFragment
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable2);
         this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
         this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131699004));
+        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131694188));
       }
-      if ((paramBundle == null) || ((paramBundle != null) && (paramBundle.h >= 1)) || (amnj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show")))
+      if ((paramBundle == null) || ((paramBundle != null) && (paramBundle.h >= 1)) || (aoeh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show")))
       {
-        this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560693, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560869, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
         if ((LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams() != null) {
-          break label368;
+          break label396;
         }
-        paramBundle = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131297958));
-        paramBundle.topMargin = paramViewGroup.getDimensionPixelSize(2131297959);
-        paramBundle.bottomMargin = paramViewGroup.getDimensionPixelOffset(2131297959);
+        paramBundle = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131297979));
+        paramBundle.topMargin = paramViewGroup.getDimensionPixelSize(2131297980);
+        paramBundle.bottomMargin = paramViewGroup.getDimensionPixelOffset(2131297980);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidViewView, paramBundle);
-        label261:
+        label289:
         this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
         d();
-        this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560700, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560876, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
         if ((LinearLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams() != null) {
-          break label382;
+          break label410;
         }
-        paramLayoutInflater = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131297960));
+        paramLayoutInflater = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131297981));
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidViewView, paramLayoutInflater);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amns, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aoeq, true);
       ThreadManager.post(new ConfessMsgListFragment.1(this), 5, null, true);
       return;
-      setRightButton(2131719384, this);
+      setRightButton(2131719870, this);
       break;
-      label368:
+      label396:
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidViewView);
-      break label261;
-      label382:
+      break label289;
+      label410:
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidViewView);
     }
   }
@@ -492,7 +494,7 @@ public class ConfessMsgListFragment
     label25:
     Object localObject;
     if (paramView == this.jdField_b_of_type_AndroidViewView) {
-      if (this.jdField_a_of_type_Amnn == null)
+      if (this.jdField_a_of_type_Aoel == null)
       {
         paramView = null;
         if (paramView != null) {
@@ -507,12 +509,12 @@ public class ConfessMsgListFragment
           ((Intent)localObject).putExtra("url", paramView);
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
         }
-        localObject = this.jdField_b_of_type_AndroidViewView.findViewById(2131375040);
+        localObject = this.jdField_b_of_type_AndroidViewView.findViewById(2131375521);
         if (((View)localObject).getVisibility() != 8) {
           ((View)localObject).setVisibility(8);
         }
-        amnr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4B", "0X8008F4B", 2, 0, "", "", "", "");
+        aoep.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4B", "0X8008F4B", 2, 0, "", "", "", "");
         if (QLog.isDevelopLevel()) {
           QLog.i("ConfessMsgListFragment", 4, String.format(Locale.getDefault(), "click entry url: %s", new Object[] { paramView }));
         }
@@ -524,13 +526,13 @@ public class ConfessMsgListFragment
     do
     {
       return;
-      paramView = this.jdField_a_of_type_Amnn.b();
+      paramView = this.jdField_a_of_type_Aoel.b();
       break;
       paramView = paramView.k;
       break label25;
       if (paramView == this.rightViewText)
       {
-        if (this.jdField_a_of_type_Amnn == null)
+        if (this.jdField_a_of_type_Aoel == null)
         {
           paramView = null;
           if (paramView != null) {
@@ -545,19 +547,19 @@ public class ConfessMsgListFragment
             ((Intent)localObject).putExtra("url", paramView);
             this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
           }
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80091A1", "0X80091A1", 0, 0, "", "", "", "");
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80091A1", "0X80091A1", 0, 0, "", "", "", "");
           if (!QLog.isDevelopLevel()) {
             break;
           }
           QLog.i("ConfessMsgListFragment", 4, String.format(Locale.getDefault(), "click entry url: %s", new Object[] { paramView }));
           return;
-          paramView = this.jdField_a_of_type_Amnn.b();
+          paramView = this.jdField_a_of_type_Aoel.b();
           break label217;
         }
       }
       if (paramView == this.jdField_b_of_type_AndroidWidgetImageView)
       {
-        if (this.jdField_a_of_type_Amnn == null)
+        if (this.jdField_a_of_type_Aoel == null)
         {
           paramView = null;
           if (paramView != null) {
@@ -572,20 +574,20 @@ public class ConfessMsgListFragment
             ((Intent)localObject).putExtra("url", paramView);
             this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
           }
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800948C", "0X800948C", 0, 0, "", "", "", "");
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800948C", "0X800948C", 0, 0, "", "", "", "");
           if (!QLog.isDevelopLevel()) {
             break;
           }
           QLog.i("ConfessMsgListFragment", 4, String.format(Locale.getDefault(), "click entry url: %s", new Object[] { paramView }));
           return;
-          paramView = this.jdField_a_of_type_Amnn.b();
+          paramView = this.jdField_a_of_type_Aoel.b();
           break label366;
         }
       }
     } while (paramView != this.jdField_a_of_type_AndroidWidgetImageView);
     label341:
     label490:
-    if (this.jdField_a_of_type_Amnn == null)
+    if (this.jdField_a_of_type_Aoel == null)
     {
       paramView = null;
       if (paramView != null) {
@@ -602,13 +604,13 @@ public class ConfessMsgListFragment
         ((Intent)localObject).putExtra("url", paramView);
         this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
       }
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80091A1", "0X80091A1", 0, 0, "", "", "", "");
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80091A1", "0X80091A1", 0, 0, "", "", "", "");
       if (!QLog.isDevelopLevel()) {
         break;
       }
       QLog.i("ConfessMsgListFragment", 4, String.format(Locale.getDefault(), "click entry url: %s", new Object[] { paramView }));
       return;
-      paramView = this.jdField_a_of_type_Amnn.b();
+      paramView = this.jdField_a_of_type_Aoel.b();
       break label515;
     }
   }
@@ -622,9 +624,9 @@ public class ConfessMsgListFragment
   
   public View onCreateRightView()
   {
-    this.rightViewText = ((TextView)this.titleRoot.findViewById(2131368457));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.titleRoot.findViewById(2131368441));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.titleRoot.findViewById(2131368442));
+    this.rightViewText = ((TextView)this.titleRoot.findViewById(2131368644));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.titleRoot.findViewById(2131368627));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.titleRoot.findViewById(2131368628));
     setLayerType(this.jdField_a_of_type_AndroidWidgetImageView);
     setLayerType(this.jdField_b_of_type_AndroidWidgetImageView);
     setLayerType(this.rightViewText);
@@ -633,7 +635,7 @@ public class ConfessMsgListFragment
   
   public void onDestroyView()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amns);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aoeq);
     super.onDestroyView();
   }
   
@@ -673,7 +675,7 @@ public class ConfessMsgListFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessMsgListFragment
  * JD-Core Version:    0.7.0.1
  */

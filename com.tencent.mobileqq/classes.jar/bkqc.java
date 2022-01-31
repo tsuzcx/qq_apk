@@ -1,128 +1,24 @@
-import android.os.Message;
-import android.util.SparseArray;
-import android.view.View;
-import cooperation.qzone.util.QZLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 
-public class bkqc
-  extends bjxl
+class bkqc
+  implements Animation.AnimationListener
 {
-  private static final SparseArray<bkpy> a;
+  bkqc(bkqa parambkqa) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    jdField_a_of_type_AndroidUtilSparseArray.put(3000, bkpy.a(98, 1, 0, bkqc.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3005, bkpy.a(98, 12, 0, bkqc.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3006, bkpy.a(98, 2, 0, bkqc.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(5, bkpy.a(98, 5, 0, bjvt.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(7, bkpy.a(98, 3, 0, bjvt.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(6, bkpy.a(98, 6, 0, bjvt.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(11, bkpy.a(98, 4, 0, bjtn.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(12, bkpy.a(98, 7, 0, EditVideoArtFilter.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(19, bkpy.a(98, 9, 0, bjts.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3001, bkpy.a(98, 10, 0, bkpz.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3002, bkpy.a(98, 8, 1, bkqf.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3003, bkpy.a(98, 8, 2, bkqf.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3004, bkpy.a(98, 11, 0, bkpz.class));
+    bkqa.b(this.a).setVisibility(8);
   }
   
-  private <T> T a(Class<T> paramClass)
-  {
-    Iterator localIterator = this.jdField_a_of_type_Bjxn.a().iterator();
-    while (localIterator.hasNext())
-    {
-      bjxl localbjxl = (bjxl)localIterator.next();
-      if (paramClass.isInstance(localbjxl)) {
-        return localbjxl;
-      }
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  private Set<Integer> a()
-  {
-    HashSet localHashSet = new HashSet();
-    Object localObject = (bjvt)a(bjvt.class);
-    if ((localObject != null) && (!((bjvt)localObject).c()))
-    {
-      if (!((bjvt)localObject).a().a().a()) {
-        localHashSet.add(Integer.valueOf(1));
-      }
-      if (!((bjvt)localObject).a().a().a()) {
-        localHashSet.add(Integer.valueOf(3));
-      }
-      if (!((bjvt)localObject).a().a().a()) {
-        localHashSet.add(Integer.valueOf(4));
-      }
-    }
-    localObject = (EditVideoArtFilter)a(EditVideoArtFilter.class);
-    if ((localObject != null) && (((EditVideoArtFilter)localObject).b())) {
-      localHashSet.add(Integer.valueOf(5));
-    }
-    localObject = (bjtn)a(bjtn.class);
-    if ((localObject != null) && (((bjtn)localObject).b())) {
-      localHashSet.add(Integer.valueOf(2));
-    }
-    return localHashSet;
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    if ((paramMessage.what == 1) && ((paramMessage.obj instanceof Object[])))
-    {
-      long l = ((Long)((Object[])(Object[])paramMessage.obj)[0]).longValue();
-      View localView = (View)((Object[])(Object[])paramMessage.obj)[1];
-      QZLog.d("QzoneEditPicturePartRep", 2, "handleEditVideoMessage " + l + " " + localView);
-    }
-    return super.a(paramMessage);
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    super.a_(paramInt, paramObject);
-    paramObject = (bkpy)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramObject != null)
-    {
-      if (paramInt == 3005) {
-        paramObject.a(a());
-      }
-      paramObject.a();
-      paramObject = (bjxl)a(paramObject.a());
-      if ((paramObject instanceof bjvt))
-      {
-        QZLog.d("QzoneEditPicturePartRep", 2, "editVideoStateChanged doodle report");
-        return;
-      }
-      if ((paramObject instanceof bjtn))
-      {
-        QZLog.d("QzoneEditPicturePartRep", 2, "editVideoStateChanged crop report");
-        return;
-      }
-      if ((paramObject instanceof bjts))
-      {
-        QZLog.d("QzoneEditPicturePartRep", 2, "editVideoStateChanged save report");
-        return;
-      }
-      if ((paramObject instanceof EditVideoArtFilter))
-      {
-        QZLog.d("QzoneEditPicturePartRep", 2, "editVideoStateChanged art filter report");
-        return;
-      }
-      QZLog.d("QzoneEditPicturePartRep", 2, "editVideoStateChanged unsupported report");
-      return;
-    }
-    QZLog.w("QzoneEditPicturePartRep", 2, new Object[] { "editVideoStateChanged we are not interested at this edit state for reporting" });
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkqc
  * JD-Core Version:    0.7.0.1
  */

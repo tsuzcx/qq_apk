@@ -1,50 +1,37 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-
-public class bhba
-  extends bhit
+public class bhba<E>
 {
-  private long jdField_a_of_type_Long = -1L;
+  private bhax<T, E>.bhaz<T> jdField_a_of_type_Bhaz;
+  private E jdField_a_of_type_JavaLangObject;
+  private bhax<T, E>.bhaz<T> b;
   
-  public bhba(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public bhba(bhax parambhax) {}
   
-  public void a(String paramString)
+  public bhax<T, E>.bhaz<T> a()
   {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallBegin] pluginId=" + paramString);
-    if (this.jdField_a_of_type_Long < 0L) {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
+    return this.jdField_a_of_type_Bhaz;
   }
   
-  public void a(String paramString, float paramFloat, long paramLong)
+  public bhba a(bhax<T, E>.bhaz<T> parambhax)
   {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallDownloadProgress] pluginId=" + paramString + " progress=" + paramFloat + " total=" + paramLong);
+    this.jdField_a_of_type_Bhaz = parambhax;
+    return this;
   }
   
-  public void a(String paramString, int paramInt)
+  public bhba a(E paramE)
   {
-    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
-    paramString = QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).obtainMessage();
-    paramString.what = 1010;
-    if (8 == paramInt) {}
-    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
-    {
-      QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendMessage(paramString);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangObject = paramE;
+    return this;
   }
   
-  public void b(String paramString)
+  public bhba b(bhax<T, E>.bhaz<T> parambhax)
   {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallFinish] pluginId=" + paramString);
-    QzoneVerticalVideoDownloadActivity.access$900("vertical_layer", "vertical_layer_time_cost", "plugin_install_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    this.b = parambhax;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhba
  * JD-Core Version:    0.7.0.1
  */

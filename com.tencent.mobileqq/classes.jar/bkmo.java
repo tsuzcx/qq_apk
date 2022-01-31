@@ -1,36 +1,23 @@
-import android.graphics.Bitmap;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class bkmo
+class bkmo
+  extends avqu
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
-  public String e;
-  String f;
-  public String g;
-  
-  public void a()
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    this.e = "";
-    this.g = "";
-    this.a = 0L;
-    this.jdField_b_of_type_Boolean = false;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      aimj.getInstance().a = ((get_albumlist_num_rsp)paramBundle).album_num;
+    }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(bkml.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmo
  * JD-Core Version:    0.7.0.1
  */

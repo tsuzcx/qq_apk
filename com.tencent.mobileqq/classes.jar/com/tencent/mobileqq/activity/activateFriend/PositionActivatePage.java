@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import acrg;
-import acrq;
-import acrr;
-import acrs;
+import aeiq;
+import aeja;
+import aejb;
+import aejc;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +16,8 @@ import mqq.util.WeakReference;
 public class PositionActivatePage
   extends ActivateBasePage
 {
-  private acrg jdField_a_of_type_Acrg = new acrq(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acrr(this);
+  private aeiq jdField_a_of_type_Aeiq = new aeja(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aejb(this);
   public String a;
   private WeakReference<ActivateFriendActivity> jdField_a_of_type_MqqUtilWeakReference;
   private View.OnClickListener b;
@@ -25,33 +25,33 @@ public class PositionActivatePage
   public PositionActivatePage(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new acrs(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new aejc(this);
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference((ActivateFriendActivity)paramContext);
     this.jdField_a_of_type_AndroidWidgetButton.setText(2131689597);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.setGridCallBack(this.jdField_a_of_type_Acrg);
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.setGridCallBack(this.jdField_a_of_type_Aeiq);
     this.d.setVisibility(0);
     this.d.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560594, this, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560769, this, false);
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361939));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361935));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361936));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361933));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361938));
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361932));
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid = ((ActivateFriendGrid)this.jdField_a_of_type_AndroidViewView.findViewById(2131366783));
-    a((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361953));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361941));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361937));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361938));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361935));
+    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361940));
+    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361934));
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid = ((ActivateFriendGrid)this.jdField_a_of_type_AndroidViewView.findViewById(2131366902));
+    a((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361955));
     addView(this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.PositionActivatePage
  * JD-Core Version:    0.7.0.1
  */

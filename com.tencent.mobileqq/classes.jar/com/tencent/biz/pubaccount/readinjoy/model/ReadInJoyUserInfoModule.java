@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ajxl;
-import ajya;
+import aloz;
+import alpo;
 import android.os.Handler;
 import android.text.TextUtils;
-import aukp;
+import awbw;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
@@ -28,16 +28,16 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import mqq.app.AppRuntime;
-import onh;
-import osg;
-import osl;
-import pbe;
-import pbg;
-import pbh;
-import pbi;
-import pbj;
-import por;
-import pot;
+import ors;
+import owy;
+import oxd;
+import pgp;
+import pgr;
+import pgs;
+import pgt;
+import pgu;
+import puz;
+import pvb;
 import tencent.im.oidb.cmd0xb81.oidb_cmd0xb81.AccountInfo;
 import tencent.im.oidb.cmd0xb81.oidb_cmd0xb81.AccountLevelInfo;
 import tencent.im.oidb.cmd0xb81.oidb_cmd0xb81.GetUserInfoReq;
@@ -50,29 +50,29 @@ import tencent.im.oidb.cmd0xb81.oidb_cmd0xb81.UserInfoOption;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class ReadInJoyUserInfoModule
-  extends pbe
+  extends pgp
 {
   private static Map<Long, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ConcurrentHashMap<String, List<pbg>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private pbj jdField_a_of_type_Pbj;
+  private ConcurrentHashMap<String, List<pgr>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private pgu jdField_a_of_type_Pgu;
   private ConcurrentHashMap<String, Boolean> b = new ConcurrentHashMap();
   
-  public ReadInJoyUserInfoModule(AppInterface paramAppInterface, aukp paramaukp, ExecutorService paramExecutorService, por parampor, Handler paramHandler)
+  public ReadInJoyUserInfoModule(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    super(paramAppInterface, paramaukp, paramExecutorService, parampor, paramHandler);
-    this.jdField_a_of_type_Pbj = new pbj(paramExecutorService, this, paramaukp);
+    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    this.jdField_a_of_type_Pgu = new pgu(paramExecutorService, this, paramawbw);
   }
   
-  public static ReadInJoyUserInfo a(long paramLong, pbg parampbg)
+  public static ReadInJoyUserInfo a(long paramLong, pgr parampgr)
   {
     if (paramLong != 0L)
     {
-      Object localObject = (QQAppInterface)onh.a();
+      Object localObject = (QQAppInterface)ors.a();
       if (localObject != null)
       {
-        localObject = ((osl)((QQAppInterface)localObject).getManager(163)).a().a();
+        localObject = ((oxd)((QQAppInterface)localObject).getManager(163)).a().a();
         if (localObject != null) {
-          return ((ReadInJoyUserInfoModule)localObject).a(String.valueOf(paramLong), parampbg);
+          return ((ReadInJoyUserInfoModule)localObject).a(String.valueOf(paramLong), parampgr);
         }
       }
     }
@@ -121,7 +121,7 @@ public class ReadInJoyUserInfoModule
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.str_client_version.set(AppSetting.f());
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    paramString = pot.a(paramString);
+    paramString = pvb.a(paramString);
     paramString.putWupBuffer(localOIDBSSOPkg.toByteArray());
     paramString.setTimeout(30000L);
     return paramString;
@@ -129,7 +129,7 @@ public class ReadInJoyUserInfoModule
   
   public static String a()
   {
-    return ajya.a(2131713084);
+    return alpo.a(2131713456);
   }
   
   public static String a(long paramLong)
@@ -145,6 +145,15 @@ public class ReadInJoyUserInfoModule
     {
       return str;
     }
+  }
+  
+  public static String a(long paramLong, pgr parampgr, String paramString)
+  {
+    parampgr = a(paramLong, parampgr);
+    if (parampgr == null) {
+      return paramString;
+    }
+    return parampgr.nick;
   }
   
   public static String a(ReadInJoyUserInfo paramReadInJoyUserInfo)
@@ -193,13 +202,13 @@ public class ReadInJoyUserInfoModule
     QLog.i("ReadInJoyUserInfoModule", 1, "[clearCallbackList], uin = " + paramString);
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = (QQAppInterface)onh.a();
+      Object localObject = (QQAppInterface)ors.a();
       if (localObject != null)
       {
-        localObject = (osl)((QQAppInterface)localObject).getManager(163);
+        localObject = (oxd)((QQAppInterface)localObject).getManager(163);
         if (localObject != null)
         {
-          localObject = ((osl)localObject).a().a();
+          localObject = ((oxd)localObject).a().a();
           if ((localObject != null) && (((ReadInJoyUserInfoModule)localObject).a() != null))
           {
             ((ReadInJoyUserInfoModule)localObject).a().remove(paramString);
@@ -213,10 +222,10 @@ public class ReadInJoyUserInfoModule
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     Object localObject1 = new oidb_cmd0xb81.RspBody();
-    int j = pot.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject1);
+    int j = pvb.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject1);
     long l = System.currentTimeMillis() - ((Long)paramToServiceMsg.getAttribute("request_begin_time")).longValue();
     QLog.d("ReadInJoyUserInfoModule", 1, new Object[] { "handle0xb81UserInfo result = ", Integer.valueOf(j), ", cost = ", Long.valueOf(l) });
-    paramFromServiceMsg = onh.a();
+    paramFromServiceMsg = ors.a();
     boolean bool;
     int i;
     label182:
@@ -224,7 +233,7 @@ public class ReadInJoyUserInfoModule
     if (j == 0)
     {
       bool = true;
-      onh.b(paramFromServiceMsg, bool, l, j);
+      ors.b(paramFromServiceMsg, bool, l, j);
       if (j != 0) {
         break label704;
       }
@@ -293,7 +302,7 @@ public class ReadInJoyUserInfoModule
       for (;;)
       {
         ((ReadInJoyUserInfo)localObject1).requestFlag = true;
-        this.jdField_a_of_type_Pbj.a(paramToServiceMsg, (ReadInJoyUserInfo)localObject1, true, true);
+        this.jdField_a_of_type_Pgu.a(paramToServiceMsg, (ReadInJoyUserInfo)localObject1, true, true);
         QLog.d("ReadInJoyUserInfoModule", 1, new Object[] { "handle0xb81UserInfo succeed, userInfo = ", localObject1 });
         i += 1;
         break label182;
@@ -325,7 +334,7 @@ public class ReadInJoyUserInfoModule
       {
         paramToServiceMsg.addAttribute("retry_request_count_key", Integer.valueOf(paramObject.intValue() + 1));
         paramToServiceMsg.addAttribute("request_begin_time", Long.valueOf(System.currentTimeMillis()));
-        onh.a("handle0xb81UserInfo", new ReadInJoyUserInfoModule.4(this, paramToServiceMsg), this.jdField_a_of_type_JavaUtilConcurrentExecutorService);
+        ors.a("handle0xb81UserInfo", new ReadInJoyUserInfoModule.4(this, paramToServiceMsg), this.jdField_a_of_type_JavaUtilConcurrentExecutorService);
         label883:
         return;
       }
@@ -346,11 +355,11 @@ public class ReadInJoyUserInfoModule
           localObject2 = ((List)localObject1).iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            pbg localpbg = (pbg)((Iterator)localObject2).next();
-            if (localpbg != null)
+            pgr localpgr = (pgr)((Iterator)localObject2).next();
+            if (localpgr != null)
             {
-              localpbg.a(paramToServiceMsg, "request0xb81UserInfo result = " + j);
-              paramObject.add(localpbg);
+              localpgr.a(paramToServiceMsg, "request0xb81UserInfo result = " + j);
+              paramObject.add(localpgr);
             }
           }
           if (paramObject.size() <= 0) {
@@ -383,10 +392,10 @@ public class ReadInJoyUserInfoModule
     if (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      AppRuntime localAppRuntime = onh.a();
+      AppRuntime localAppRuntime = ors.a();
       long l = 0L;
       if ((localAppRuntime instanceof QQAppInterface)) {
-        if (!((ajxl)((QQAppInterface)localAppRuntime).getManager(51)).b(str)) {
+        if (!((aloz)((QQAppInterface)localAppRuntime).getManager(51)).b(str)) {
           break label136;
         }
       }
@@ -395,7 +404,7 @@ public class ReadInJoyUserInfoModule
       {
         try
         {
-          localArrayList.add(new pbh().a(Long.valueOf(str).longValue()).b(l).a());
+          localArrayList.add(new pgs().a(Long.valueOf(str).longValue()).b(l).a());
         }
         catch (NumberFormatException localNumberFormatException)
         {
@@ -409,10 +418,10 @@ public class ReadInJoyUserInfoModule
       QLog.d("ReadInJoyUserInfoModule", 2, "requestReadInJoyUserInfoWithParams failed, the uinList is empty.");
       return;
     }
-    a(new pbi().a(paramInt1).b(paramInt2).c(paramInt3).a(localArrayList).a());
+    a(new pgt().a(paramInt1).b(paramInt2).c(paramInt3).a(localArrayList).a());
   }
   
-  public ReadInJoyUserInfo a(String paramString, int paramInt1, int paramInt2, int paramInt3, pbg parampbg)
+  public ReadInJoyUserInfo a(String paramString, int paramInt1, int paramInt2, int paramInt3, pgr parampgr)
   {
     if (TextUtils.isEmpty(paramString))
     {
@@ -424,10 +433,10 @@ public class ReadInJoyUserInfoModule
     {
       return paramString;
       QLog.d("ReadInJoyUserInfoModule", 1, "load data from 0xb81 userinfo uin" + paramString);
-      if (this.jdField_a_of_type_Pbj == null) {
+      if (this.jdField_a_of_type_Pgu == null) {
         break;
       }
-      localReadInJoyUserInfo = this.jdField_a_of_type_Pbj.a(paramString);
+      localReadInJoyUserInfo = this.jdField_a_of_type_Pgu.a(paramString);
       if (localReadInJoyUserInfo == null) {
         break;
       }
@@ -435,40 +444,40 @@ public class ReadInJoyUserInfoModule
     } while (!TextUtils.isEmpty(localReadInJoyUserInfo.nick));
     localReadInJoyUserInfo.nick = a();
     return localReadInJoyUserInfo;
-    if ((parampbg != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null))
+    if ((parampgr != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null))
     {
       if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) == null) {
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, new CopyOnWriteArrayList());
       }
-      ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(parampbg);
+      ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(parampgr);
     }
-    onh.a("getSingleReadInJoyUserInfoWithParams", new ReadInJoyUserInfoModule.1(this, paramString, paramInt1, paramInt2, paramInt3), this.jdField_a_of_type_JavaUtilConcurrentExecutorService);
+    ors.a("getSingleReadInJoyUserInfoWithParams", new ReadInJoyUserInfoModule.1(this, paramString, paramInt1, paramInt2, paramInt3), this.jdField_a_of_type_JavaUtilConcurrentExecutorService);
     return null;
   }
   
-  public ReadInJoyUserInfo a(String paramString, pbg parampbg)
+  public ReadInJoyUserInfo a(String paramString, pgr parampgr)
   {
     if (TextUtils.isEmpty(paramString))
     {
       QLog.d("ReadInJoyUserInfoModule", 1, "getSingleReadInJoyUserInfo uin is null or empty.");
       return null;
     }
-    return a(paramString, 1, 1, 0, parampbg);
+    return a(paramString, 1, 1, 0, parampgr);
   }
   
-  public ConcurrentHashMap<String, List<pbg>> a()
+  public ConcurrentHashMap<String, List<pgr>> a()
   {
     return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   }
   
-  public pbj a()
+  public pgu a()
   {
-    return this.jdField_a_of_type_Pbj;
+    return this.jdField_a_of_type_Pgu;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Pbj.b();
+    this.jdField_a_of_type_Pgu.b();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     this.b.clear();
     if (jdField_a_of_type_JavaUtilMap != null) {
@@ -485,9 +494,9 @@ public class ReadInJoyUserInfoModule
   
   public void a(List<String> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (onh.i())
+    if (ors.i())
     {
-      onh.a("requestReadInJoyUserInfoWithParamsInSubThread", new ReadInJoyUserInfoModule.3(this, paramList, paramInt1, paramInt2, paramInt3), this.jdField_a_of_type_JavaUtilConcurrentExecutorService);
+      ors.a("requestReadInJoyUserInfoWithParamsInSubThread", new ReadInJoyUserInfoModule.3(this, paramList, paramInt1, paramInt2, paramInt3), this.jdField_a_of_type_JavaUtilConcurrentExecutorService);
       return;
     }
     b(paramList, paramInt1, paramInt2, paramInt3);
@@ -500,14 +509,14 @@ public class ReadInJoyUserInfoModule
   
   public void b()
   {
-    if (this.jdField_a_of_type_Pbj != null) {
-      this.jdField_a_of_type_Pbj.a();
+    if (this.jdField_a_of_type_Pgu != null) {
+      this.jdField_a_of_type_Pgu.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package cooperation.buscard;
 
-import bcql;
-import bglh;
+import bimg;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -25,7 +25,7 @@ public class BuscardPluginInstallActivity$1
         BuscardPluginInstallActivity.a(this.this$0, true);
         return;
       }
-      bcql.a(this.this$0.getApplicationContext(), 2131695210, 0);
+      QQToast.a(this.this$0.getApplicationContext(), 2131695368, 0);
       BuscardPluginInstallActivity.a(this.this$0, false);
       this.this$0.finish();
       return;
@@ -38,7 +38,7 @@ public class BuscardPluginInstallActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.buscard.BuscardPluginInstallActivity.1
  * JD-Core Version:    0.7.0.1
  */

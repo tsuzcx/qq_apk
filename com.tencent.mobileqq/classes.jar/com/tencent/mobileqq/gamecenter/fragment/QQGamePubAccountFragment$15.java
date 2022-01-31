@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import ajya;
-import bcql;
+import alpo;
 import com.tencent.mobileqq.gamecenter.view.QQGameStatusView;
+import com.tencent.mobileqq.widget.QQToast;
 import cooperation.wadl.ipc.WadlParams;
 import cooperation.wadl.ipc.WadlResult;
 
@@ -32,7 +32,7 @@ class QQGamePubAccountFragment$15
     if (this.a.b == 7)
     {
       if (this.this$0.getActivity() != null) {
-        bcql.a(this.this$0.getActivity(), ajya.a(2131710326), 0).a();
+        QQToast.a(this.this$0.getActivity(), alpo.a(2131710698), 0).a();
       }
       QQGamePubAccountFragment.a(this.this$0).a(this.a.a.a, 2);
       return;
@@ -42,7 +42,7 @@ class QQGamePubAccountFragment$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.15
  * JD-Core Version:    0.7.0.1
  */

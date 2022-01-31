@@ -1,26 +1,23 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.fts.FTSDatabase;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqkz
-  extends FTSDatabase
+  extends avqr
 {
-  public boolean a()
+  public aqkz(FileAssistantActivity paramFileAssistantActivity) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((Build.VERSION.SDK_INT < 18) && (!SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "sqlite_qq"))) {
-      akta.a = false;
-    }
-    boolean bool = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "FTSDatabaseV2");
-    if (!bool) {
-      akta.a = false;
-    }
-    return bool;
+    QLog.i("FileAssistantActivity", 1, " fileRedTouch get push GameCenterObserver ");
+    paramBundle = this.a.a.obtainMessage(1);
+    this.a.a.sendMessage(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkz
  * JD-Core Version:    0.7.0.1
  */

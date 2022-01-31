@@ -76,7 +76,7 @@ public class MiniAppCamera
     //   68: getstatic 110	com/tencent/mobileqq/microapp/widget/media/MiniAppCamera:h	I
     //   71: getstatic 112	com/tencent/mobileqq/microapp/widget/media/MiniAppCamera:i	I
     //   74: iload_3
-    //   75: invokestatic 117	bbef:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   75: invokestatic 117	bdda:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   78: astore_0
     //   79: aload 6
     //   81: ifnull +8 -> 89
@@ -331,7 +331,7 @@ public class MiniAppCamera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.MiniAppCamera
  * JD-Core Version:    0.7.0.1
  */

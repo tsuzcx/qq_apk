@@ -1,19 +1,29 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
+import android.support.annotation.NonNull;
 
-class wly
-  implements wlk
+public class wly
+  extends uhw<wli, uqw>
 {
-  wly(wlu paramwlu) {}
-  
-  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
+  public wly(wli paramwli)
   {
-    this.a.d(paramStFeed);
+    super(paramwli);
   }
+  
+  public void a(@NonNull wli paramwli, @NonNull uqw paramuqw)
+  {
+    wsv.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramuqw);
+    wli.a(paramwli, paramuqw.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uqw.class;
+  }
+  
+  public void b(@NonNull wli paramwli, @NonNull uqw paramuqw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wly
  * JD-Core Version:    0.7.0.1
  */

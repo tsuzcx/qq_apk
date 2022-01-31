@@ -1,37 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class pfs
-  implements ViewBase.OnClickListener
+public class pfs<T>
 {
-  pfs(pfp parampfp, int paramInt, pau parampau, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
+  private long jdField_a_of_type_Long;
+  T jdField_a_of_type_JavaLangObject;
+  public boolean a;
+  private long b;
   
-  public void onClick(ViewBase paramViewBase)
+  public pfs(T paramT)
   {
-    int i;
-    ram localram;
-    if (this.jdField_a_of_type_Int == 1152)
-    {
-      i = 1;
-      localram = this.jdField_a_of_type_Pau.a();
-      if (i == 0) {
-        break label42;
-      }
+    this(paramT, localObject, 600000L);
+    if (localObject == null) {
+      this.jdField_a_of_type_Boolean = true;
     }
-    label42:
-    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
-    {
-      localram.b(paramViewBase);
-      return;
-      i = 0;
-      break;
-    }
+  }
+  
+  public pfs(T paramT, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramLong;
+    this.b = System.currentTimeMillis();
+    Object localObject;
+    this.jdField_a_of_type_Long = localObject;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.b = System.currentTimeMillis();
+  }
+  
+  public boolean a()
+  {
+    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfs
  * JD-Core Version:    0.7.0.1
  */

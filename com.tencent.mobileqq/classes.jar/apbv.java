@@ -1,68 +1,32 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 class apbv
-  extends apbm
+  implements DialogInterface.OnCancelListener
 {
-  public apbv(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  apbv(apbu paramapbu) {}
   
-  protected String a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return "StateExcepInvalidWhenChangeToOff";
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    b(paramInt1, paramInt2);
-    apbi.b(this.jdField_a_of_type_Apbi, 11, 11);
-    apbi.c(this.jdField_a_of_type_Apbi, 11, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateUploadingWhenChangeToOff)");
-    this.jdField_a_of_type_Apbm = new apcm(this.jdField_a_of_type_Apbi);
-  }
-  
-  protected boolean a()
-  {
-    if (this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if (apbu.a(this.a).equals("checked corrupt"))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
+      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
+      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_Cancel").commit();
+      QLog.d(apbu.a(), 1, "dialog cancel");
     }
-    apbi.b(this.jdField_a_of_type_Apbi, 9, 12);
-    apbi.c(this.jdField_a_of_type_Apbi, 9, 12);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateExcepInvalidWhenRecv)");
-    this.jdField_a_of_type_Apbm = new apbx(this.jdField_a_of_type_Apbi);
-    return true;
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((apug.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
-    }
-    localFileManagerEntity.setCloudType(1);
-    apbi.b(this.jdField_a_of_type_Apbi, 11, 13);
-    apbi.c(this.jdField_a_of_type_Apbi, 11, 13);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateUploadoneWhenChangeToOff)");
-    this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Apbm = new apcp(this.jdField_a_of_type_Apbi);
-    return true;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apbv
  * JD-Core Version:    0.7.0.1
  */

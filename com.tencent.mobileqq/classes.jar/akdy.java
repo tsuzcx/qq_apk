@@ -1,30 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import java.util.Comparator;
+import java.util.HashMap;
 
-public class akdy
-  extends BroadcastReceiver
+class akdy
+  implements Comparator<awbv>
 {
-  public akdy(QQAppInterface paramQQAppInterface) {}
+  akdy(akdx paramakdx, HashMap paramHashMap) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(awbv paramawbv1, awbv paramawbv2)
   {
-    if (this.a.l) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
-      }
+    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramawbv1).uin)).longValue();
+    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramawbv2).uin)).longValue();
+    if (l1 < l2) {
+      return -1;
     }
-    while ((paramIntent == null) || (!"com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
-      return;
+    if (l1 > l2) {
+      return 1;
     }
-    QQAppInterface.a(this.a, paramIntent);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdy
  * JD-Core Version:    0.7.0.1
  */

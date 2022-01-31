@@ -1,7 +1,7 @@
 
 {
     "ReadInJoy_comment_bottom_fold_cell": {
-        "view_type": "cell",
+        "view_type": "container",
         "default_visible":"YES",
         "layout_type":"layout_relative",
         "height": {

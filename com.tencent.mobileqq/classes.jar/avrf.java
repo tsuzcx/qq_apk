@@ -1,24 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
 
 public class avrf
+  implements View.OnClickListener
 {
-  public static int a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, "##" + paramString2);
-    }
-    return 0;
-  }
+  public avrf(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public static int b(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    QLog.e(paramString1, 2, "##" + paramString2);
-    return 0;
+    avrh.a("0X800AADF", 0);
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avrf
  * JD-Core Version:    0.7.0.1
  */

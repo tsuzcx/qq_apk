@@ -1,177 +1,127 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.os.Bundle;
+import android.os.Messenger;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.PresendPicMgr;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.util.BinderWarpper;
+import java.util.Arrays;
 
-public class axjg
+class axjg
+  extends axjb
 {
-  public static HashMap<String, WeakReference<Drawable>> a;
-  private static boolean a;
-  public static String[] a;
+  axjg(axje paramaxje) {}
   
-  static
+  public Bundle a(int paramInt, Bundle paramBundle)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X" };
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static Drawable a(Context paramContext, String paramString)
-  {
-    Object localObject1 = null;
-    Object localObject2;
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    Bundle localBundle = new Bundle();
+    PresendPicMgr localPresendPicMgr;
+    if (paramInt == 16)
     {
-      localObject2 = (Drawable)((WeakReference)jdField_a_of_type_JavaUtilHashMap.get(paramString)).get();
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        return localObject2;
+      axjd.a("PTV.RichmediaClient", "ICallBack.Stub() getData start. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER");
+      localPresendPicMgr = PresendPicMgr.a();
+      Object localObject = null;
+      if ((localPresendPicMgr != null) && (localPresendPicMgr.jdField_a_of_type_Boolean)) {
+        break label113;
       }
-    }
-    if (paramString.equals("fivea")) {
-      paramContext = paramContext.getResources().getDrawable(2130841628);
+      paramBundle = localObject;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PTV.RichmediaClient", 2, "ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER failed, presendMgr is null or disable preCompress,presendMgr = " + localPresendPicMgr);
+        paramBundle = localObject;
+      }
     }
     for (;;)
     {
-      localObject2 = paramContext;
-      if (paramContext == null) {
-        break;
-      }
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramContext));
-      return paramContext;
-      if (paramString.equals("palmup"))
+      if (paramBundle != null)
       {
-        paramContext = paramContext.getResources().getDrawable(2130841629);
+        localBundle.putParcelable("key_presend_mgr_handler", new BinderWarpper(paramBundle));
+        localBundle.putInt("PhotoConst.PHOTO_COUNT", localPresendPicMgr.a());
       }
-      else if (paramString.equals("qheart"))
-      {
-        paramContext = paramContext.getResources().getDrawable(2130841630);
-      }
-      else
-      {
-        paramContext = localObject1;
-        if (!paramString.equals("")) {
-          paramContext = new BitmapDrawable(apvd.a(axgy.a() + paramString + ".png"));
-        }
-      }
+      return localBundle;
+      label113:
+      paramBundle = new Messenger(localPresendPicMgr.jdField_a_of_type_Awfp).getBinder();
+      axjd.a("PTV.RichmediaClient", "ICallBack.Stub() getData. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER , b = " + paramBundle);
     }
   }
   
-  public static avsr a(avsr paramavsr)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    if ((!c()) || (!b())) {}
-    for (int i = 1; i == 0; i = 0) {
-      return paramavsr;
-    }
-    avsr localavsr = new avsr();
-    localavsr.jdField_a_of_type_Int = paramavsr.jdField_a_of_type_Int;
-    localavsr.jdField_a_of_type_JavaLangString = paramavsr.jdField_a_of_type_JavaLangString;
-    localavsr.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramavsr = paramavsr.jdField_a_of_type_JavaUtilList.iterator();
-    if (i != 0) {
-      while (paramavsr.hasNext())
-      {
-        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramavsr.next();
-        if (!localPtvTemplateInfo.hasGesture()) {
-          localavsr.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
-        }
-      }
-    }
-    return localavsr;
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    jdField_a_of_type_Boolean = paramBoolean;
-    bbkb.a(BaseApplicationImpl.getApplication().getSharedPreferences("GestureRecognitionUtils", 4).edit().putBoolean("shared_gesture_recognize_result", paramBoolean));
-  }
-  
-  public static boolean a()
-  {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
+    axjd.a("PTV.RichmediaClient", "sendRequest. cmd = " + paramInt + ",data = " + paramBundle);
+    if (paramBundle != null)
     {
-      boolean bool1 = bool2;
-      if (i < j)
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      switch (paramInt)
       {
-        if (arrayOfString[i].contains(str)) {
-          bool1 = true;
-        }
       }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GestureRecognitionUtils", 2, "isPhoneInBlackList ： phone = " + str + ", result=" + bool1);
-        }
-        return bool1;
-      }
-      i += 1;
     }
-  }
-  
-  public static boolean b()
-  {
-    boolean bool = axgr.a().a();
-    if (!bool) {
-      axgr.a().b();
-    }
-    QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils check gestureResource ready " + bool);
-    return bool;
-  }
-  
-  public static boolean c()
-  {
-    boolean bool1;
-    if ((lpu.a(8, 1400000L)) || (lpu.a(4, 2150000L)))
+    do
     {
-      bool1 = true;
-      QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils check condition 2 +cpuNumber is" + bool1);
-      lpd locallpd = lpd.a();
-      if ((locallpd == null) || (locallpd.b())) {
-        break label196;
-      }
-    }
-    label196:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      if (Build.VERSION.SDK_INT > 17) {}
-      for (boolean bool3 = true;; bool3 = false)
+      do
       {
-        boolean bool4 = axkt.d();
-        boolean bool5 = a();
-        QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils isSupportGestureFilter faceFilterCheck: " + true + ";checkDeviceSupport:" + bool1 + ":inBlackLists:" + bool2 + ":isSDKEnable:" + bool3 + ":isNotInShortVideoBlackWhiteList:" + bool4 + ":isHardCodePhoneInBlackList" + bool5);
-        if ((bool1) && (!bool2) && (bool3) && (bool4) && (!bool5))
+        do
         {
-          return true;
-          bool1 = false;
-          break;
-        }
-        return false;
-      }
-    }
+          Object localObject;
+          do
+          {
+            do
+            {
+              return;
+              paramBundle = (BinderWarpper)paramBundle.getParcelable("binder_presendService");
+              if (paramBundle != null)
+              {
+                localObject = PresendPicMgr.a();
+                if (localObject != null) {
+                  ((PresendPicMgr)localObject).b();
+                }
+                paramBundle = PresendPicMgr.b(awek.a(paramBundle.a));
+                axjd.a("PTV.RichmediaClient", "ICALLBACK_CMD_INIT_PRESEND_PIC_MGR  presendMgr = " + paramBundle);
+                return;
+              }
+              axjd.a("PTV.RichmediaClient", "ICALLBACK_CMD_INIT_PRESEND_PIC_MGR  failed, bw is null ! ");
+              return;
+              localObject = paramBundle.getString("key_presend_path");
+              paramInt = paramBundle.getInt("entrance", 0);
+              paramBundle = PresendPicMgr.a();
+            } while ((localObject == null) || (paramBundle == null));
+            paramBundle.a((String)localObject, 1052, paramInt);
+            return;
+            localObject = paramBundle.getString("key_presend_path");
+            paramInt = paramBundle.getInt("key_presend_cancel_type");
+            paramBundle = PresendPicMgr.a();
+          } while ((localObject == null) || (paramBundle == null));
+          paramBundle.b((String)localObject, paramInt);
+          return;
+          paramInt = paramBundle.getInt("key_presend_cancel_type");
+          paramBundle = PresendPicMgr.a();
+        } while (paramBundle == null);
+        paramBundle.a(paramInt);
+        paramBundle.b();
+        return;
+        paramBundle = paramBundle.getIntArray("key_compress_config");
+      } while ((paramBundle == null) || (paramBundle.length < 9));
+      awgc.e = paramBundle[0];
+      awgc.f = paramBundle[1];
+      awgc.g = paramBundle[2];
+      awgc.h = paramBundle[3];
+      awgc.i = paramBundle[4];
+      awgc.j = paramBundle[5];
+      awgc.a = paramBundle[6];
+      awgc.b = paramBundle[7];
+      awgc.c = paramBundle[8];
+    } while (!QLog.isColorLevel());
+    QLog.d("PTV.RichmediaClient", 2, "ICALLBACK_CMD_INIT_COMPRESS_CONFIG, compressConfig = " + Arrays.toString(paramBundle));
+  }
+  
+  public void a(CompressInfo paramCompressInfo)
+  {
+    axjd.a("PTV.RichmediaClient", "ICallBack.Stub() compress start. info.src = " + paramCompressInfo.c + ",uuid = " + paramCompressInfo.a);
+    awga.a(paramCompressInfo);
+    axjd.a("PTV.RichmediaClient", "ICallBack.Stub() compress finish. info = " + paramCompressInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axjg
  * JD-Core Version:    0.7.0.1
  */

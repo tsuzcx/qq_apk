@@ -1,12 +1,10 @@
-import java.io.File;
-
 public abstract interface bldl
 {
-  public abstract boolean a(File paramFile, bldj parambldj, boolean paramBoolean);
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bldl
  * JD-Core Version:    0.7.0.1
  */

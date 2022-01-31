@@ -1,10 +1,10 @@
-public class bemq
+public abstract interface bemq
 {
-  public int a;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bemq
  * JD-Core Version:    0.7.0.1
  */

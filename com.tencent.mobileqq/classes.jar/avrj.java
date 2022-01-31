@@ -1,60 +1,94 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class avrj
-  extends Handler
+public class avrj
 {
-  final WeakReference<avrg> a;
+  public String a;
+  public HashMap<String, String> a;
+  public List<String> a;
+  public String b;
+  public List<String> b;
+  public String c;
+  public List<String> c;
   
-  public avrj(Looper paramLooper, avrg paramavrg)
+  public avrj()
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramavrg);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
   }
   
-  public void handleMessage(Message paramMessage)
+  public Pair<String, String> a(String paramString)
   {
-    avrf.a("PTV.RichmediaClient", "handleMessage, msg.what = " + paramMessage.what);
-    avrg localavrg = (avrg)this.a.get();
-    if (localavrg == null) {}
-    do
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      if (paramMessage.getData() != null) {
-        paramMessage.getData().getInt("msg_sub_cmd");
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (((String)localEntry.getKey()).equalsIgnoreCase(paramString)) {
+        return new Pair(localEntry.getKey(), localEntry.getValue());
       }
-      switch (paramMessage.what)
-      {
-      case 1001: 
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 1000: 
-        avrf.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
-        return;
-      case 1002: 
-        avrf.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
-        paramMessage = paramMessage.getData();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    String str1 = "ocrLan:" + this.jdField_a_of_type_JavaLangString + ", ocrLanOptions:" + this.jdField_a_of_type_JavaUtilList.toString();
+    String str2 = "srcLan:" + this.jdField_b_of_type_JavaLangString + ", srcLanOptions:" + this.jdField_b_of_type_JavaUtilList.toString();
+    String str3 = "dstLan:" + this.jdField_c_of_type_JavaLangString + ", dstLanOptions:" + this.jdField_c_of_type_JavaUtilList.toString();
+    return str1 + "\n" + str2 + "\n" + str3;
+  }
+  
+  public String a(String paramString)
+  {
+    return OcrConfig.getDefaultLanguageName(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_c_of_type_JavaUtilList = avrh.a(this.jdField_b_of_type_JavaLangString);
+      this.jdField_c_of_type_JavaLangString = ((String)this.jdField_c_of_type_JavaUtilList.get(0));
+    }
+  }
+  
+  public boolean a(List<String> paramList, String paramString)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (((String)paramList.next()).trim().equalsIgnoreCase(paramString)) {
+        return true;
       }
-    } while (paramMessage == null);
-    paramMessage = paramMessage.getString("vidoe_record_uniseq");
-    localavrg.a().a(paramMessage);
-    return;
-    AIOLongCaptureCtrl.a(paramMessage.getData());
-    return;
-    AIOLongCaptureCtrl.b(paramMessage.getData());
-    return;
-    paramMessage = paramMessage.getData();
-    aegp.a().a(paramMessage);
+    }
+    return false;
+  }
+  
+  public String b(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("zh")) {
+      return "en/ja/ko/fr/es/it/de/tr/ru/pt/vi/id/ms/th".trim().split("/")[0];
+    }
+    return "zh";
+  }
+  
+  public void b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_c_of_type_JavaLangString = paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avrj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-class bcfa
-  implements ThreadExcutor.IThreadListener
+public class bcfa
+  implements bepk
 {
-  bcfa(bcey parambcey) {}
+  public bcfa(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void onAdded() {}
+  public void a(Bundle paramBundle) {}
   
-  public void onPostRun() {}
-  
-  public void onPreRun() {}
+  public void b(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcfa
  * JD-Core Version:    0.7.0.1
  */

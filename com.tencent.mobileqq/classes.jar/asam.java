@@ -1,23 +1,47 @@
-public class asam
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class asam
+  extends asan
 {
-  public int a;
-  public String a;
+  public ImageView a;
+  public TextView a;
   
-  public asam()
+  public asam(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
+    super(paramView);
+    this.jdField_a_of_type_Int = asag.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368169));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379141));
+    paramView.setTag(this);
   }
   
-  public String toString()
+  public void a(String paramString1, String paramString2, bcws parambcws)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("CommonGuideInfo|").append("webUrl=").append(this.jdField_a_of_type_JavaLangString).append(",type=").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    Object localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = paramString1;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(new baig((CharSequence)localObject, 2));
+    localObject = parambcws.a(1, paramString1);
+    paramString2 = (String)localObject;
+    if (localObject == null)
+    {
+      localObject = bdda.a();
+      paramString2 = (String)localObject;
+      if (!parambcws.a())
+      {
+        parambcws.a(paramString1, 1, false);
+        paramString2 = (String)localObject;
+      }
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asam
  * JD-Core Version:    0.7.0.1
  */

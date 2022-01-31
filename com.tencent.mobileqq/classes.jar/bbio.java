@@ -1,75 +1,85 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bbio
-  extends BaseAdapter
+public class bbio
+  extends VasWebviewJsPlugin
 {
-  bbio(bbin parambbin) {}
+  public static String a;
+  protected Context a;
+  protected AppInterface a;
   
-  public int getCount()
+  static
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
+    jdField_a_of_type_JavaLangString = "TroopUpgradePlugin";
   }
   
-  public Object getItem(int paramInt)
+  public bbio()
   {
-    return null;
+    this.mPluginNameSpace = "Troop";
   }
   
-  public long getItemId(int paramInt)
+  public long getPluginBusiness()
   {
-    return 0L;
+    return 2147614720L;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
     }
-    paramViewGroup = paramView;
-    if (paramView == null)
+    if ("Troop".equals(paramString2)) {}
+    try
     {
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558894, null);
-      paramView = new bbit(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131368381));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (bbit)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
-    {
-      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      paramView.a.setOnClickListener(new bbis(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-        break label207;
-      }
-      paramView.a.setBackgroundResource(2130839270);
-    }
-    for (;;)
-    {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label207:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130839271);
-      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-        paramView.a.setBackgroundResource(2130839269);
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      if (paramJsBridgeListener == null) {
+        return false;
       }
     }
+    catch (JSONException paramJsBridgeListener)
+    {
+      for (;;)
+      {
+        paramJsBridgeListener.printStackTrace();
+        paramJsBridgeListener = null;
+      }
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      int i;
+      do
+      {
+        for (;;)
+        {
+          paramJsBridgeListener.printStackTrace();
+          paramJsBridgeListener = null;
+        }
+        if (!"updateMaxMemberNum".equals(paramString3)) {
+          break;
+        }
+        paramString1 = paramJsBridgeListener.optString("groupId", "");
+        i = paramJsBridgeListener.optInt("type", 0);
+      } while ((TextUtils.isEmpty(paramString1)) || (i == 0));
+      paramJsBridgeListener = new Bundle();
+      paramJsBridgeListener.putString("groupId", paramString1);
+      paramJsBridgeListener.putInt("type", i);
+      sendRemoteReq(apic.a("notifyTroopUpgradeSuccess", "", this.mOnRemoteResp.key, paramJsBridgeListener), true, false);
+    }
+    return true;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
   }
 }
 

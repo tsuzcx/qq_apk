@@ -5,18 +5,19 @@ import android.text.TextUtils;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
+import com.tencent.aekit.openrender.internal.AEFilterI;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
-import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.filter.AlphaAdjustFilter;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.trigger.TRIGGERED_STATUS;
 import java.io.File;
 
 public class EffectTriggerFilter
   extends BaseFilter
+  implements AEFilterI
 {
   private static final int FLAG_DECREASE_CHANGE = 1;
   private static final int FLAG_INCREASE_CHANGE = 0;
@@ -37,8 +38,6 @@ public class EffectTriggerFilter
   private float mStartAlphaRadio = 0.0F;
   private long mStartChangeTime;
   private float mTargetAlpha = 1.0F;
-  private TriggerCtrlItem triggerCtrlItem;
-  private boolean triggered = false;
   
   public EffectTriggerFilter(StickerItem paramStickerItem, String paramString)
   {
@@ -48,7 +47,6 @@ public class EffectTriggerFilter
     this.mLutFilterName = this.mItem.lutFilterName;
     this.mAlphaChangeTime = ((this.mItem.filterAlphaGradientDuration * 1000.0D));
     this.mTargetAlpha = this.mItem.alpha;
-    this.triggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
     initParams();
   }
   
@@ -123,11 +121,6 @@ public class EffectTriggerFilter
     return this.mCurEffectStatus == EffectTriggerFilter.EFFECT_TRIGGERED_STATUS.INCREASE_TRIGGERED;
   }
   
-  private TRIGGERED_STATUS updateActionTriggered(PTDetectInfo paramPTDetectInfo)
-  {
-    return this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
-  }
-  
   private void updateAplha()
   {
     int i = 1;
@@ -148,7 +141,7 @@ public class EffectTriggerFilter
         setAdjustParam(1.0F - this.mCurAlphaRadio);
       }
     }
-    while ((!this.triggered) || (!isIncrease())) {
+    while (!isIncrease()) {
       for (;;)
       {
         float f2;
@@ -190,6 +183,11 @@ public class EffectTriggerFilter
     }
   }
   
+  public Frame RenderProcess(Frame paramFrame)
+  {
+    return paramFrame;
+  }
+  
   public void clearGLSLSelf()
   {
     if (this.mAlphaFilter != null) {
@@ -225,7 +223,7 @@ public class EffectTriggerFilter
   
   public boolean isRenderReady()
   {
-    return (this.triggered) || (isInChangeStatus());
+    return (this.mCurStatus != TRIGGERED_STATUS.NOT_TRIGGERED) || (isInChangeStatus());
   }
   
   public void reset()
@@ -238,10 +236,6 @@ public class EffectTriggerFilter
     this.mStartChangeTime = 0L;
     this.mCurAlphaRadio = 0.0F;
     this.mStartAlphaRadio = 0.0F;
-    this.triggered = false;
-    if (this.triggerCtrlItem != null) {
-      this.triggerCtrlItem.reset();
-    }
   }
   
   public void setAdjustParam(float paramFloat)
@@ -254,13 +248,16 @@ public class EffectTriggerFilter
     this.mAlreadyRenderInSingleFrame = paramBoolean;
   }
   
-  public void updatePreview(PTDetectInfo paramPTDetectInfo)
+  public void updatePreview(Object paramObject)
   {
-    this.triggered = this.triggerCtrlItem.isTriggered();
-    this.mCurStatus = updateActionTriggered(paramPTDetectInfo);
-    updateChangeTriggerStatus();
-    updateAplha();
-    this.mLastStatus = this.mCurStatus;
+    if (this.mCurStatus == TRIGGERED_STATUS.NOT_TRIGGERED) {}
+    for (this.mCurStatus = TRIGGERED_STATUS.FIRST_TRIGGERED;; this.mCurStatus = TRIGGERED_STATUS.TRIGGERED)
+    {
+      updateChangeTriggerStatus();
+      updateAplha();
+      this.mLastStatus = this.mCurStatus;
+      return;
+    }
   }
 }
 

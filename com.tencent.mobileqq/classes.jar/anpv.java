@@ -1,92 +1,134 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.1;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.2;
-import com.tencent.mobileqq.earlydownload.xmldata.PokeResData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.ReqBody;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.RspBody;
 
 public class anpv
-  extends anpn
+  extends alko
 {
-  private boolean d;
-  
-  public anpv(QQAppInterface paramQQAppInterface)
+  public anpv(AppInterface paramAppInterface)
   {
-    super("qq.android.poke.res_0625", paramQQAppInterface);
+    super(paramAppInterface);
   }
   
-  public int a()
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return 10044;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PokeResData.class;
-  }
-  
-  public String a()
-  {
-    return "PokeResHandler_0625";
-  }
-  
-  public void a()
-  {
-    BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).edit().putBoolean("ready", true);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess:" + paramString);
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
+      notifyUI(1001, false, null);
     }
-    if (!new File(paramString).exists())
+    oidb_0x74b.RspBody localRspBody;
+    int j;
+    int k;
+    int m;
+    boolean bool;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess sorse not exists");
+      return;
+      localRspBody = new oidb_0x74b.RspBody();
+      int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      paramFromServiceMsg = Long.valueOf(paramToServiceMsg.extraData.getLong("id"));
+      j = paramToServiceMsg.extraData.getInt("type");
+      k = paramToServiceMsg.extraData.getInt("headType");
+      m = paramToServiceMsg.extraData.getInt("sizeType");
+      bool = paramToServiceMsg.extraData.getBoolean("isSmartMode");
+      QLog.i("Q.dynamicAvatar", 2, "handleDynamicAvatarInfo, result : " + i);
+      if (i != 0) {
+        break;
       }
+      paramToServiceMsg = anpr.a(localRspBody);
+      notifyUI(1001, true, new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
+      paramFromServiceMsg = (anpx)this.mApp.getManager(180);
+    } while (paramFromServiceMsg == null);
+    if ((this.mApp instanceof QQAppInterface))
+    {
+      paramFromServiceMsg.a(paramToServiceMsg);
       return;
     }
-    String str = bbvj.a(adwj.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess imagePath=" + str);
+    paramFromServiceMsg.a(localRspBody.toByteArray());
+    return;
+    QLog.i("Q.dynamicAvatar", 1, "handleGetDynamicAvatarInfo result not success.");
+    notifyUI(1001, false, new Object[] { null, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
+  }
+  
+  public void a(Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    Object localObject = null;
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList2.add(Integer.valueOf(17));
+    localArrayList2.add(Integer.valueOf(18));
+    ArrayList localArrayList1;
+    if (paramInt1 != 18)
+    {
+      localArrayList1 = new ArrayList();
+      localArrayList1.add(paramLong);
     }
-    ThreadManager.post(new PokeResHandler.1(this, str, paramString), 8, null, true);
-    super.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    ThreadManager.executeOnSubThread(new PokeResHandler.2(this));
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean g()
-  {
-    if (!this.d) {
-      this.d = BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).getBoolean("ready", false);
+    for (;;)
+    {
+      oidb_0x74b.ReqBody localReqBody = new oidb_0x74b.ReqBody();
+      if ((localArrayList1 != null) && (!localArrayList1.isEmpty())) {
+        localReqBody.rpt_uint64_uin.set(localArrayList1);
+      }
+      if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
+        localReqBody.rpt_uint64_tinyid.set((List)localObject);
+      }
+      if ((localArrayList2 != null) && (!localArrayList2.isEmpty())) {
+        localReqBody.rpt_head_type.set(localArrayList2);
+      }
+      localObject = makeOIDBPkg("OidbSvc.0x74b", 1867, 0, localReqBody.toByteArray());
+      ((ToServiceMsg)localObject).extraData.putLong("id", paramLong.longValue());
+      ((ToServiceMsg)localObject).extraData.putInt("type", paramInt1);
+      ((ToServiceMsg)localObject).extraData.putInt("headType", paramInt2);
+      ((ToServiceMsg)localObject).extraData.putInt("sizeType", paramInt3);
+      ((ToServiceMsg)localObject).extraData.putBoolean("isSmartMode", paramBoolean);
+      sendPbReq((ToServiceMsg)localObject);
+      return;
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(paramLong);
+      localArrayList1 = null;
     }
-    return super.g() & this.d;
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0x74b");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return anpw.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (msgCmdFilter(paramFromServiceMsg.getServiceCmd()));
+      paramFromServiceMsg.getServiceCmd();
+    } while (!"OidbSvc.0x74b".equals(paramFromServiceMsg.getServiceCmd()));
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anqf;
-
 public class ViolaBizLibData
   extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "preload_" + anqf.a;
+    return "preload_android.qq.readinjoy.viola_biz_810";
   }
   
   public String getStrResName()
   {
-    return anqf.a;
+    return "android.qq.readinjoy.viola_biz_810";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData
  * JD-Core Version:    0.7.0.1
  */

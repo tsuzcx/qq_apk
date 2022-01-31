@@ -10,16 +10,16 @@ import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import onh;
-import pbg;
-import rej;
+import ors;
+import pgr;
+import ruf;
 
 public class ReadInJoyNickNameTextView
   extends TextView
-  implements pbg
+  implements pgr
 {
   private long jdField_a_of_type_Long;
-  private rej jdField_a_of_type_Rej;
+  private ruf jdField_a_of_type_Ruf;
   private boolean jdField_a_of_type_Boolean;
   
   public ReadInJoyNickNameTextView(Context paramContext)
@@ -44,11 +44,11 @@ public class ReadInJoyNickNameTextView
     {
       return;
       if (this.jdField_a_of_type_Boolean) {
-        setText(onh.d(paramReadInJoyUserInfo.nick));
+        setText(ors.d(paramReadInJoyUserInfo.nick));
       }
-      while (this.jdField_a_of_type_Rej != null)
+      while (this.jdField_a_of_type_Ruf != null)
       {
-        this.jdField_a_of_type_Rej.a(paramReadInJoyUserInfo.nick);
+        this.jdField_a_of_type_Ruf.a(paramReadInJoyUserInfo.nick);
         return;
         setText(paramReadInJoyUserInfo.nick);
       }
@@ -86,7 +86,7 @@ public class ReadInJoyNickNameTextView
     {
       localObject = str;
       if (this.jdField_a_of_type_Boolean) {
-        localObject = onh.d(str);
+        localObject = ors.d(str);
       }
       setText((CharSequence)localObject);
       return;
@@ -122,14 +122,14 @@ public class ReadInJoyNickNameTextView
     setNickNameByUin(l1, paramBoolean);
   }
   
-  public void setOnSetNickNameListener(rej paramrej)
+  public void setOnSetNickNameListener(ruf paramruf)
   {
-    this.jdField_a_of_type_Rej = paramrej;
+    this.jdField_a_of_type_Ruf = paramruf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView
  * JD-Core Version:    0.7.0.1
  */

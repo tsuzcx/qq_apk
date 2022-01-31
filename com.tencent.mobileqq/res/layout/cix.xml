@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/mnn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/mno" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:src="@drawable/g76" android:layout_centerInParent="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/al6" android:gravity="center" android:id="@id/mnp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gn_" android:layout_below="@id/mno" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/mop" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" qzone:ptrCoverMode="true" />
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView android:id="@id/iir" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendBottomBarView android:layout_gravity="bottom" android:id="@id/ac1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_gravity="bottom|center|right" android:id="@id/hgt" android:background="@drawable/g0u" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="40.0dip">
+        <ImageView android:id="@id/hgu" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="23.5dip" android:layout_marginTop="15.5dip" android:src="@drawable/g0v" />
+    </FrameLayout>
+</FrameLayout>

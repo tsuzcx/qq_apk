@@ -1,30 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
 class anoa
+  extends bhnr
 {
-  anoa(annz paramannz) {}
+  anoa(annx paramannx) {}
   
-  @QQPermissionDenied(1818)
-  public void denied()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
-    annz.a(this.a);
-    this.a.onGetError(1830001);
-  }
-  
-  @QQPermissionGrant(1818)
-  public void grant()
-  {
-    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
-    annz.a(this.a);
-    annz.b(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anoa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acwg;
+import aenq;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 public final class ForwardUtils$Section_Text
   extends ForwardUtils.SectionBase
 {
-  public static final Parcelable.Creator<Section_Text> CREATOR = new acwg();
+  public static final Parcelable.Creator<Section_Text> CREATOR = new aenq();
   public String a;
   
   public ForwardUtils$Section_Text()
@@ -35,7 +35,7 @@ public final class ForwardUtils$Section_Text
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text
  * JD-Core Version:    0.7.0.1
  */

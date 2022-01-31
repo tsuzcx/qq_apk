@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,29 +20,29 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import aunl;
-import aunv;
-import auod;
-import auoe;
-import bahf;
-import bahr;
-import balg;
-import balh;
-import balt;
-import balu;
-import batr;
-import batu;
-import batv;
-import baty;
-import batz;
-import baud;
-import baxn;
-import bbbx;
-import bbdx;
-import bbef;
+import awes;
+import awfc;
+import awfl;
+import awfm;
+import bcfr;
+import bcgd;
+import bcjt;
+import bcju;
+import bckg;
+import bckh;
+import bcsl;
+import bcso;
+import bcsp;
+import bcss;
+import bcst;
+import bcsx;
+import bcwh;
+import bdar;
+import bdcs;
+import bdda;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.JpegExifReader;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -68,8 +68,8 @@ import java.io.InputStream;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.manager.TicketManager;
-import mxf;
-import mxj;
+import mzy;
+import nac;
 import tencent.im.msg.im_msg_body.CustomFace;
 import tencent.im.oidb.cmd0x991.oidb_cmd0x991.Goods;
 import tencent.im.oidb.cmd0x991.oidb_cmd0x991.LoginSig;
@@ -82,15 +82,15 @@ public class TroopPicEffectsEditActivity
 {
   public int a;
   protected ProgressDialog a;
-  public SparseArray<balt> a;
+  public SparseArray<bckg> a;
   public Button a;
   protected FrameLayout a;
-  public baty a;
-  protected batz a;
-  protected baud a;
+  public bcss a;
+  protected bcst a;
+  protected bcsx a;
   protected HorizontalListView a;
   public String a;
-  public baty[] a;
+  public bcss[] a;
   public String b;
   protected String c;
   
@@ -103,7 +103,7 @@ public class TroopPicEffectsEditActivity
   public static void a(Activity paramActivity, String paramString1, String paramString2)
   {
     Intent localIntent = new Intent();
-    localIntent.setClass(paramActivity, PhotoListActivity.class);
+    localIntent.setClass(paramActivity, NewPhotoListActivity.class);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", TroopPicEffectsEditActivity.class.getName());
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
@@ -113,8 +113,8 @@ public class TroopPicEffectsEditActivity
     localIntent.putExtra("friendUin", paramString1);
     localIntent.putExtra("troopUin", paramString2);
     paramActivity.startActivity(localIntent);
-    bbbx.a(paramActivity, false, true);
-    batr.a("pic_select", "page_exp");
+    bdar.anim(paramActivity, false, true);
+    bcsl.a("pic_select", "page_exp");
   }
   
   public String a(String paramString)
@@ -134,7 +134,7 @@ public class TroopPicEffectsEditActivity
     }
     for (;;)
     {
-      return paramString.replace("$GCODE$", this.b).replace("$CLIENTVER$", "android8.3.0").replace("$UIN$", this.app.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$ROLE$", (CharSequence)localObject);
+      return paramString.replace("$GCODE$", this.b).replace("$CLIENTVER$", "android8.3.3").replace("$UIN$", this.app.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$ROLE$", (CharSequence)localObject);
       if (((TroopInfo)localObject).isAdmin())
       {
         localObject = "1";
@@ -150,30 +150,30 @@ public class TroopPicEffectsEditActivity
   
   protected void a()
   {
-    this.jdField_a_of_type_ArrayOfBaty = new baty[] { new baty(40000, ajya.a(2131715706), Color.parseColor("#F2575757"), true), new baty(40002, ajya.a(2131715709), Color.parseColor("#F23FCCDF"), false), new baty(40001, ajya.a(2131715722), Color.parseColor("#F2EF7AEE"), false), new baty(40003, ajya.a(2131715716), Color.parseColor("#F2FFA02D"), false), new baty(40004, ajya.a(2131715708), Color.parseColor("#F21CD28C"), false), new baty(40005, ajya.a(2131715715), Color.parseColor("#F2FF6EA2"), false) };
-    this.jdField_a_of_type_Baty = this.jdField_a_of_type_ArrayOfBaty[0];
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Batz);
+    this.jdField_a_of_type_ArrayOfBcss = new bcss[] { new bcss(40000, alpo.a(2131716078), Color.parseColor("#F2575757"), true), new bcss(40002, alpo.a(2131716081), Color.parseColor("#F23FCCDF"), false), new bcss(40001, alpo.a(2131716094), Color.parseColor("#F2EF7AEE"), false), new bcss(40003, alpo.a(2131716088), Color.parseColor("#F2FFA02D"), false), new bcss(40004, alpo.a(2131716080), Color.parseColor("#F21CD28C"), false), new bcss(40005, alpo.a(2131716087), Color.parseColor("#F2FF6EA2"), false) };
+    this.jdField_a_of_type_Bcss = this.jdField_a_of_type_ArrayOfBcss[0];
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Bcst);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
-    a(new batu(this));
+    a(new bcso(this));
   }
   
   public void a(int paramInt, String paramString)
   {
     int i = 0;
-    if (this.jdField_a_of_type_Baud != null)
+    if (this.jdField_a_of_type_Bcsx != null)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_Baud.a());
-      this.jdField_a_of_type_Baud.b();
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_Bcsx.a());
+      this.jdField_a_of_type_Bcsx.b();
     }
-    boolean bool = balu.a(paramInt);
+    boolean bool = bckh.a(paramInt);
     switch (paramInt)
     {
     default: 
-      this.jdField_a_of_type_Baud = new NormalPicView(this);
+      this.jdField_a_of_type_Bcsx = new NormalPicView(this);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_Baud.a(), -1, -1);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_Bcsx.a(), -1, -1);
       paramInt = i;
       label154:
       Object localObject1;
@@ -191,29 +191,29 @@ public class TroopPicEffectsEditActivity
       try
       {
         localObject2 = new BufferedInputStream(new FileInputStream((File)localObject2), 2048);
-        ((BitmapFactory.Options)localObject1).inSampleSize = ((int)bbef.a((InputStream)localObject2, 720, 1080));
+        ((BitmapFactory.Options)localObject1).inSampleSize = ((int)bdda.a((InputStream)localObject2, 720, 1080));
         ((BufferedInputStream)localObject2).close();
-        paramString = bbef.a(paramString, (BitmapFactory.Options)localObject1);
+        paramString = bdda.a(paramString, (BitmapFactory.Options)localObject1);
         localObject1 = new Matrix();
         ((Matrix)localObject1).reset();
         ((Matrix)localObject1).setRotate(paramInt);
-        this.jdField_a_of_type_Baud.setBitmap(Bitmap.createBitmap(paramString, 0, 0, paramString.getWidth(), paramString.getHeight(), (Matrix)localObject1, true));
+        this.jdField_a_of_type_Bcsx.setBitmap(Bitmap.createBitmap(paramString, 0, 0, paramString.getWidth(), paramString.getHeight(), (Matrix)localObject1, true));
         if (bool) {
-          this.jdField_a_of_type_Baud.a();
+          this.jdField_a_of_type_Bcsx.a();
         }
         return;
-        this.jdField_a_of_type_Baud = new PhantomPicView(this);
+        this.jdField_a_of_type_Bcsx = new PhantomPicView(this);
         continue;
-        this.jdField_a_of_type_Baud = new ShakePicView(this);
+        this.jdField_a_of_type_Bcsx = new ShakePicView(this);
         continue;
         int j = this.jdField_a_of_type_AndroidWidgetFrameLayout.getWidth();
-        this.jdField_a_of_type_Baud = new VideoPicView(this, paramInt, j, j * 1024 / 750);
+        this.jdField_a_of_type_Bcsx = new VideoPicView(this, paramInt, j, j * 1024 / 750);
         if (bool) {
           continue;
         }
-        localObject1 = (bahf)this.app.getManager(223);
-        ((bahf)localObject1).a(this);
-        ((bahf)localObject1).a(paramInt, this.b, null);
+        localObject1 = (bcfr)this.app.getManager(223);
+        ((bcfr)localObject1).a(this);
+        ((bcfr)localObject1).a(paramInt, this.b, null);
         continue;
         paramInt = 90;
         break label154;
@@ -245,17 +245,17 @@ public class TroopPicEffectsEditActivity
     }
   }
   
-  protected void a(aunv paramaunv)
+  protected void a(awfc paramawfc)
   {
-    ThreadManager.post(new TroopPicEffectsEditActivity.3(this, paramaunv.a), 8, null, true);
+    ThreadManager.post(new TroopPicEffectsEditActivity.3(this, paramawfc.a), 8, null, true);
   }
   
-  protected void a(balg parambalg)
+  protected void a(bcjt parambcjt)
   {
-    ((balh)this.app.getManager(113)).a("OidbSvc.0x6c3", 1731, 1, this.b, 1, 7, true, true, parambalg);
+    ((bcju)this.app.getManager(113)).a("OidbSvc.0x6c3", 1731, 1, this.b, 1, 7, true, true, parambcjt);
   }
   
-  public void a(baty parambaty, im_msg_body.CustomFace paramCustomFace, mxj parammxj)
+  public void a(bcss parambcss, im_msg_body.CustomFace paramCustomFace, nac paramnac)
   {
     oidb_cmd0x991.ReqBody localReqBody = new oidb_cmd0x991.ReqBody();
     oidb_cmd0x991.User localUser = new oidb_cmd0x991.User();
@@ -277,53 +277,53 @@ public class TroopPicEffectsEditActivity
       }
       localUser.msg_login_sig.set(localLoginSig);
       localUser.uint32_instance_id.set(AppSetting.a());
-      localGoods.int32_product_id.set(parambaty.jdField_a_of_type_Int);
-      localGoods.bytes_goods_name.set(ByteStringMicro.copyFrom(parambaty.jdField_a_of_type_JavaLangString.getBytes()));
+      localGoods.int32_product_id.set(parambcss.jdField_a_of_type_Int);
+      localGoods.bytes_goods_name.set(ByteStringMicro.copyFrom(parambcss.jdField_a_of_type_JavaLangString.getBytes()));
       localGoods.int32_goods_price.set(9);
       localGoods.bytes_animation_param.set(ByteStringMicro.copyFrom("{}".getBytes()));
       localGoods.msg_img.set(paramCustomFace);
       localReqBody.msg_user.set(localUser);
       localReqBody.msg_goods.set(localGoods);
-      mxf.a(this.app, parammxj, localReqBody.toByteArray(), "OidbSvc.0x991_" + 0, 2449, 0, new Bundle(), 5000L);
+      mzy.a(this.app, paramnac, localReqBody.toByteArray(), "OidbSvc.0x991_" + 0, 2449, 0, new Bundle(), 5000L);
       return;
     }
   }
   
   public void a(String paramString)
   {
-    if (!bbdx.b(paramString))
+    if (!bdcs.b(paramString))
     {
       QLog.e("TroopPicEffectsEditActivity", 2, "sendPhotoTask. path invalid,path:" + paramString);
       return;
     }
-    aunv localaunv = aunl.a(2, 1007);
-    Object localObject = new auoe();
-    ((auoe)localObject).d(this.b);
-    ((auoe)localObject).a(this.jdField_a_of_type_JavaLangString);
-    ((auoe)localObject).e(1);
-    ((auoe)localObject).e(this.c);
-    ((auoe)localObject).d(1007);
-    ((auoe)localObject).f(0);
-    ((auoe)localObject).k(0);
-    localObject = ((auoe)localObject).a();
-    if (!localaunv.a((auod)localObject))
+    awfc localawfc = awes.a(2, 1007);
+    Object localObject = new awfm();
+    ((awfm)localObject).d(this.b);
+    ((awfm)localObject).a(this.jdField_a_of_type_JavaLangString);
+    ((awfm)localObject).e(1);
+    ((awfm)localObject).e(this.c);
+    ((awfm)localObject).d(1007);
+    ((awfm)localObject).f(0);
+    ((awfm)localObject).k(0);
+    localObject = ((awfm)localObject).a();
+    if (!localawfc.a((awfl)localObject))
     {
       QLog.e("TroopPicEffectsEditActivity", 2, "sendPhotoTask. failed to bind the UpInfo to the sendReq");
       return;
     }
-    ((auod)localObject).g = paramString;
-    a(localaunv);
+    ((awfl)localObject).g = paramString;
+    a(localawfc);
   }
   
   protected void b()
   {
     if (this.jdField_a_of_type_AndroidAppProgressDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131755791);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131755801);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559386);
-      ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371557)).setText(ajya.a(2131715714));
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559438);
+      ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371874)).setText(alpo.a(2131716086));
       return;
     }
     this.jdField_a_of_type_AndroidAppProgressDialog.show();
@@ -339,39 +339,39 @@ public class TroopPicEffectsEditActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131562567);
-    setTitle(ajya.a(2131715713));
-    this.leftView.setText(ajya.a(2131715718));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131377882));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377883));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131377881));
-    this.jdField_a_of_type_Batz = new batz(this);
+    setContentView(2131562769);
+    setTitle(alpo.a(2131716085));
+    this.leftView.setText(alpo.a(2131716090));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131378427));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378428));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131378426));
+    this.jdField_a_of_type_Bcst = new bcst(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(baxn.a(this, 5.0F));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(bcwh.a(this, 5.0F));
     paramBundle = getIntent();
     this.b = paramBundle.getStringExtra("friendUin");
     this.c = paramBundle.getStringExtra("troopUin");
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
     a(40000, this.jdField_a_of_type_JavaLangString);
     a();
-    batr.a("action_select", "page_exp");
+    bcsl.a("action_select", "page_exp");
     return true;
   }
   
   public void doOnDestroy()
   {
     c();
-    if (this.jdField_a_of_type_Baud != null) {
-      this.jdField_a_of_type_Baud.b();
+    if (this.jdField_a_of_type_Bcsx != null) {
+      this.jdField_a_of_type_Bcsx.b();
     }
-    this.jdField_a_of_type_ArrayOfBaty = new baty[0];
-    ((bahf)this.app.getManager(223)).b(this);
+    this.jdField_a_of_type_ArrayOfBcss = new bcss[0];
+    ((bcfr)this.app.getManager(223)).b(this);
     super.doOnDestroy();
   }
   
   public boolean onBackEvent()
   {
-    batr.a("action_select", "clk_back");
+    bcsl.a("action_select", "clk_back");
     return super.onBackEvent();
   }
   
@@ -379,22 +379,22 @@ public class TroopPicEffectsEditActivity
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
-      a(new batv(this));
+      a(new bcsp(this));
       b();
-      batr.a("send_pic", "clk_send");
+      bcsl.a("send_pic", "clk_send");
     }
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     int j = 0;
-    a(this.jdField_a_of_type_ArrayOfBaty[paramInt].jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Baty = this.jdField_a_of_type_ArrayOfBaty[paramInt];
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ArrayOfBaty[paramInt].jdField_a_of_type_Int;
+    a(this.jdField_a_of_type_ArrayOfBcss[paramInt].jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bcss = this.jdField_a_of_type_ArrayOfBcss[paramInt];
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_ArrayOfBcss[paramInt].jdField_a_of_type_Int;
     int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfBaty.length)
+    if (i < this.jdField_a_of_type_ArrayOfBcss.length)
     {
-      paramAdapterView = this.jdField_a_of_type_ArrayOfBaty[i];
+      paramAdapterView = this.jdField_a_of_type_ArrayOfBcss[i];
       if (i == paramInt) {}
       for (boolean bool = true;; bool = false)
       {
@@ -403,8 +403,8 @@ public class TroopPicEffectsEditActivity
         break;
       }
     }
-    this.jdField_a_of_type_Batz.notifyDataSetChanged();
-    paramView = (balt)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bcst.notifyDataSetChanged();
+    paramView = (bckg)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
     if (paramView != null)
     {
       paramAdapterView = paramView.jdField_a_of_type_JavaLangString;
@@ -423,7 +423,7 @@ public class TroopPicEffectsEditActivity
       paramAdapterView = new SpannableString(paramAdapterView);
       paramAdapterView.setSpan(new StrikethroughSpan(), paramInt, i, 18);
       this.jdField_a_of_type_AndroidWidgetButton.setText(paramAdapterView);
-      batr.a("action_select", "clk_switch");
+      bcsl.a("action_select", "clk_switch");
       return;
       paramAdapterView = "30金豆秀一下";
       break;
@@ -437,15 +437,15 @@ public class TroopPicEffectsEditActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    paramObservable = (bahr)paramObject;
-    if ((paramObservable.jdField_a_of_type_Boolean) && (paramObservable.jdField_a_of_type_JavaLangString.equals("" + this.jdField_a_of_type_Int)) && ((this.jdField_a_of_type_Baud instanceof VideoPicView))) {
-      ((VideoPicView)this.jdField_a_of_type_Baud).a();
+    paramObservable = (bcgd)paramObject;
+    if ((paramObservable.jdField_a_of_type_Boolean) && (paramObservable.jdField_a_of_type_JavaLangString.equals("" + this.jdField_a_of_type_Int)) && ((this.jdField_a_of_type_Bcsx instanceof VideoPicView))) {
+      ((VideoPicView)this.jdField_a_of_type_Bcsx).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity
  * JD-Core Version:    0.7.0.1
  */

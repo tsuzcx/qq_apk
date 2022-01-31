@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import aztn;
+import bbrw;
 import java.util.HashSet;
 
 public class TroopFileDownloadMgr$10
   implements Runnable
 {
-  public TroopFileDownloadMgr$10(aztn paramaztn) {}
+  public TroopFileDownloadMgr$10(bbrw parambbrw) {}
   
   public void run()
   {
     HashSet localHashSet = new HashSet();
     this.this$0.a(1, localHashSet);
-    aztn.a(this.this$0, 1, new Object[] { localHashSet });
+    bbrw.a(this.this$0, 1, new Object[] { localHashSet });
   }
 }
 

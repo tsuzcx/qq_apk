@@ -1,57 +1,31 @@
-import com.tencent.mobileqq.activity.weather.WeatherServlet.PermissionCallback.1;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.NewIntent;
-import mqq.app.QQPermissionCallback;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
 
-public final class aikz
-  implements QQPermissionCallback
+final class aikz
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<QQAppInterface> a;
-  private WeakReference<NewIntent> b;
-  private WeakReference<AppActivity> c;
+  aikz(Activity paramActivity, String paramString1, String paramString2, QQAppInterface paramQQAppInterface) {}
   
-  private aikz(QQAppInterface paramQQAppInterface, NewIntent paramNewIntent, AppActivity paramAppActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramNewIntent);
-    this.c = new WeakReference(paramAppActivity);
-  }
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 1, "User requestPermissions denied...");
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    NewIntent localNewIntent = (NewIntent)this.b.get();
-    AppActivity localAppActivity = (AppActivity)this.c.get();
-    if ((localQQAppInterface != null) && (localNewIntent != null) && (localAppActivity != null))
+    switch (paramInt)
     {
-      ThreadManager.getSubThreadHandler().post(new WeatherServlet.PermissionCallback.1(this, localNewIntent, localQQAppInterface));
-      bbdj.a(localAppActivity, paramArrayOfString, paramArrayOfInt);
+    default: 
+      return;
+    case 0: 
+      aikt.a(this.jdField_a_of_type_AndroidAppActivity, true, this.jdField_a_of_type_JavaLangString, this.b, false);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFC", "0X8009DFC", 0, 0, this.b, "", "", "");
+      return;
     }
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 1, "User requestPermissions grant...");
-    }
-    paramArrayOfString = (QQAppInterface)this.a.get();
-    paramArrayOfInt = (NewIntent)this.b.get();
-    if ((paramArrayOfString != null) && (paramArrayOfInt != null)) {
-      aikx.a(paramArrayOfString, paramArrayOfInt);
-    }
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFD", "0X8009DFD", 0, 0, this.b, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikz
  * JD-Core Version:    0.7.0.1
  */

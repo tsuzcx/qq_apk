@@ -3,7 +3,6 @@ package com.tencent.qqmini.sdk.core.auth;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import beig;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -12,7 +11,7 @@ public class UserAuthScope
 {
   public static final int AUTH_TYPE_ASK_EVERY_TIME = 1;
   public static final int AUTH_TYPE_ASK_ONLY_ONCE = 0;
-  public static final Parcelable.Creator<UserAuthScope> CREATOR = new beig();
+  public static final Parcelable.Creator<UserAuthScope> CREATOR = new UserAuthScope.1();
   public int authType;
   public String desc;
   public String scope;
@@ -20,7 +19,7 @@ public class UserAuthScope
   
   public UserAuthScope() {}
   
-  public UserAuthScope(Parcel paramParcel)
+  protected UserAuthScope(Parcel paramParcel)
   {
     this.scope = paramParcel.readString();
     this.authType = paramParcel.readInt();
@@ -76,7 +75,7 @@ public class UserAuthScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.auth.UserAuthScope
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,556 @@
-import android.annotation.TargetApi;
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.ark.open.ArkAppInfo.AppDesc;
+import com.tencent.ark.open.ArkAppInfo.AppDownloadInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCGI.10;
+import com.tencent.mobileqq.ark.ArkAppCGI.8;
+import com.tencent.mobileqq.ark.ArkAppCGI.9;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import mqq.manager.TicketManager;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anit
-  implements ArkViewImplement.LoadCallback
+  implements bapx
 {
-  public anit(MessageForArkApp paramMessageForArkApp, alts paramalts, adli paramadli, alto paramalto, int paramInt) {}
+  static int jdField_a_of_type_Int;
+  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern;
+  private bapv jdField_a_of_type_Bapv;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private final ArrayList<anjf> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean) {}
-  
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView onLoadFinish MessageForArkApp state=", Integer.valueOf(paramInt), ",app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
-    }
-    this.jdField_a_of_type_Alts.b.setVisibility(8);
-    if (paramInt == 1)
+    if (!anit.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      Object localObject = this.jdField_a_of_type_Adli.getContainerRect();
-      float f = alsz.a();
-      paramInt = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
-      int i = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
-      this.jdField_a_of_type_Alto.a(this.jdField_a_of_type_Alts, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      if (alsz.a)
+      jdField_a_of_type_Boolean = bool;
+      jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("Last-Modified[ ]*=[ ]*\\[([^\\[\\]]+)\\]");
+      return;
+    }
+  }
+  
+  public anit(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    if (this.jdField_a_of_type_Bapv == null) {
+      this.jdField_a_of_type_Bapv = ((baqu)paramQQAppInterface.getManager(21)).a(paramQQAppInterface, 0);
+    }
+  }
+  
+  private int a(String paramString)
+  {
+    int j = 5381;
+    int i = 0;
+    while (i < paramString.length())
+    {
+      j += (j << 5) + paramString.charAt(i);
+      i += 1;
+    }
+    return 0x7FFFFFFF & j;
+  }
+  
+  private anjd a(String paramString)
+  {
+    anjd localanjd = new anjd();
+    localanjd.jdField_a_of_type_Int = 0;
+    if (paramString == null) {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "parserReply_queryAppInfoByAppNameBatch, data is empty");
+    }
+    for (;;)
+    {
+      return localanjd;
+      try
       {
-        localObject = this.jdField_a_of_type_Alts.a.getLayoutParams();
-        QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView.onLoadFinish arkContainer rect(", Integer.valueOf(paramInt), ",", Integer.valueOf(i), "), arkView rect(", Integer.valueOf(((ViewGroup.LayoutParams)localObject).width), ",", Integer.valueOf(((ViewGroup.LayoutParams)localObject).height), "),app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
+        paramString = new JSONObject(paramString).optJSONObject("data");
+        if (paramString == null)
+        {
+          ArkAppCenter.c("ArkApp.ArkAppCGI", "parserReply_queryAppInfoByAppNameBatch, 'data' not found");
+          return localanjd;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        ArkAppCenter.c("ArkApp.ArkAppCGI", String.format("ArkTemp.parserReply_queryAppInfoByAppNameBatch, exception: %s", new Object[] { paramString.getMessage() }));
+        return localanjd;
+      }
+      localanjd.jdField_a_of_type_Int = paramString.optInt("updateInterval", 300);
+      localanjd.jdField_a_of_type_Int = Math.max(60, localanjd.jdField_a_of_type_Int);
+      paramString = paramString.optJSONArray("apps");
+      if (paramString != null)
+      {
+        int i = 0;
+        while (i < paramString.length())
+        {
+          Object localObject1 = paramString.optJSONObject(i);
+          if (localObject1 != null)
+          {
+            String str1 = ((JSONObject)localObject1).optString("app");
+            if (TextUtils.isEmpty(str1))
+            {
+              ArkAppCenter.c("ArkApp.ArkAppCGI", "parserReply_queryAppInfoByAppNameBatch, 'app' not found");
+            }
+            else
+            {
+              int j = ((JSONObject)localObject1).optInt("ret", -1);
+              Object localObject2 = ((JSONObject)localObject1).optString("msg", "");
+              anje localanje;
+              if (j != 0)
+              {
+                localanje = new anje();
+                localanje.jdField_a_of_type_Int = j;
+                localanje.jdField_a_of_type_JavaLangString = ((String)localObject2);
+                localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo = null;
+                localanjd.jdField_a_of_type_JavaUtilHashMap.put(str1, localanje);
+              }
+              else
+              {
+                localanje = new anje();
+                localanje.jdField_a_of_type_Int = 0;
+                localanje.jdField_a_of_type_JavaLangString = ((String)localObject2);
+                localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo = new ArkAppInfo.AppDownloadInfo();
+                localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo.desc = new ArkAppInfo.AppDesc();
+                localObject2 = ((JSONObject)localObject1).optJSONObject("config");
+                if (localObject2 != null)
+                {
+                  localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo.config = ArkAppConfigMgr.convertJsonToConfig((JSONObject)localObject2);
+                  localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo.desc.isTempApp = ArkAppConfigMgr.isTemplateApp(localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo.config);
+                }
+                localanje.b = ((JSONObject)localObject1).optInt("state", 0);
+                if (localanje.b == 0)
+                {
+                  ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkTemp.parserReply_queryAppInfoByAppNameBatch, invalid 'state'");
+                  localanje.jdField_a_of_type_Int = -1;
+                  localanjd.jdField_a_of_type_JavaUtilHashMap.put(str1, localanje);
+                }
+                else if (localanje.b == 1)
+                {
+                  localObject2 = ((JSONObject)localObject1).optString("ver", null);
+                  String str2 = ((JSONObject)localObject1).optString("url", null);
+                  String str3 = ((JSONObject)localObject1).optString("sign", null);
+                  j = ((JSONObject)localObject1).optInt("updatePeriod", 0);
+                  if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)))
+                  {
+                    ArkAppCenter.c("ArkApp.ArkAppCGI", String.format("ArkTemp.parserReply_queryAppInfoByAppNameBatch, invalid app info, app=%s", new Object[] { str1 }));
+                  }
+                  else
+                  {
+                    localObject1 = Base64.decode(str3, 0);
+                    if ((localObject1 == null) || (localObject1.length == 0))
+                    {
+                      ArkAppCenter.c("ArkApp.ArkAppCGI", String.format("ArkTemp.parserReply_queryAppInfoByAppNameBatch, invalid sign, app=%s", new Object[] { str1 }));
+                    }
+                    else
+                    {
+                      localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo.downloadUrl = str2;
+                      localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo.sign = ((byte[])localObject1);
+                      localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo.updatePeriodByMinutes = j;
+                      localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo.desc.name = str1;
+                      localanje.jdField_a_of_type_ComTencentArkOpenArkAppInfo$AppDownloadInfo.desc.version = ((String)localObject2);
+                    }
+                  }
+                }
+                else
+                {
+                  localanjd.jdField_a_of_type_JavaUtilHashMap.put(str1, localanje);
+                }
+              }
+            }
+          }
+          i += 1;
+        }
       }
     }
-    this.jdField_a_of_type_Alto.a(this.jdField_a_of_type_Adli, this.jdField_a_of_type_Int);
   }
+  
+  private String a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "parseReply_QueryPackageNameByAppID: replyBuf is empty");
+      return null;
+    }
+    Object localObject;
+    try
+    {
+      paramArrayOfByte = new JSONObject(new String(paramArrayOfByte, "UTF-8"));
+      str = paramArrayOfByte.getString("retcode");
+      if (!str.equalsIgnoreCase("0"))
+      {
+        ArkAppCenter.c("ArkApp.ArkAppCGI", "parseReply_QueryPackageNameByAppID, reply fail, ret=" + str);
+        return null;
+      }
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "parseReply_QueryPackageNameByAppID, Json Exception:" + paramArrayOfByte.getMessage());
+      return null;
+      localObject = paramArrayOfByte.getJSONObject("result");
+      paramArrayOfByte = ((JSONObject)localObject).getString("retcode");
+      String str = ((JSONObject)localObject).getString("msg");
+      localObject = ((JSONObject)localObject).getString("apk_name");
+      if ((localObject == null) || (((String)localObject).length() <= 0))
+      {
+        ArkAppCenter.c("ArkApp.ArkAppCGI", "parseReply_QueryPackageNameByAppID, packageName is empty, retcode=" + paramArrayOfByte + str);
+        return null;
+      }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "parseReply_QueryPackageNameByAppID, Exception:" + paramArrayOfByte.getMessage());
+      return null;
+    }
+    return localObject;
+  }
+  
+  private void a(anjf paramanjf, anjc arg2)
+  {
+    paramanjf.jdField_a_of_type_Anjc = ???;
+    paramanjf.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream();
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramanjf);
+      ??? = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (??? == null)
+      {
+        ArkAppCenter.c("ArkApp.ArkAppCGI", "runTask_retry, app is null, return");
+        return;
+      }
+    }
+    baps localbaps = new baps();
+    localbaps.jdField_a_of_type_JavaLangString = paramanjf.jdField_a_of_type_JavaLangString;
+    localbaps.e = 1;
+    if (paramanjf.jdField_a_of_type_ArrayOfByte == null) {
+      localbaps.jdField_a_of_type_Int = 0;
+    }
+    for (;;)
+    {
+      localbaps.a(paramanjf);
+      localbaps.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+      localbaps.jdField_a_of_type_Bapx = this;
+      localbaps.c = 30L;
+      localbaps.jdField_a_of_type_JavaIoOutputStream = paramanjf.jdField_a_of_type_JavaIoByteArrayOutputStream;
+      if (paramanjf.jdField_b_of_type_JavaLangString != null) {
+        localbaps.jdField_a_of_type_JavaUtilHashMap.put("Cookie", paramanjf.jdField_b_of_type_JavaLangString);
+      }
+      if (paramanjf.jdField_a_of_type_Long >= 0L)
+      {
+        Object localObject = new SimpleDateFormat("E, d MMM y HH:mm:ss 'GMT'", Locale.US);
+        ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT"));
+        localObject = ((SimpleDateFormat)localObject).format(new Date(paramanjf.jdField_a_of_type_Long));
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          localbaps.jdField_a_of_type_JavaUtilHashMap.put("If-Modified-Since", localObject);
+        }
+      }
+      ThreadManager.post(new ArkAppCGI.8(this, ???, paramanjf, localbaps), 5, null, true);
+      return;
+      localbaps.jdField_a_of_type_Int = 1;
+      localbaps.jdField_a_of_type_ArrayOfByte = paramanjf.jdField_a_of_type_ArrayOfByte;
+    }
+  }
+  
+  private void a(anjf paramanjf, boolean paramBoolean, byte[] paramArrayOfByte)
+  {
+    new Handler(Looper.getMainLooper()).post(new ArkAppCGI.10(this, paramanjf, paramBoolean, paramArrayOfByte));
+  }
+  
+  private void a(anjh paramanjh, boolean paramBoolean, byte[] paramArrayOfByte)
+  {
+    int i;
+    label31:
+    Object localObject;
+    anjb localanjb;
+    if (!paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", String.format("onQueryPackageNameByAppID: fail, url=%s", new Object[] { paramanjh.jdField_a_of_type_JavaLangString }));
+      paramArrayOfByte = null;
+      i = 0;
+      if (i >= paramanjh.jdField_b_of_type_JavaUtilArrayList.size()) {
+        return;
+      }
+      localObject = paramanjh.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localanjb = (anjb)paramanjh.jdField_b_of_type_JavaUtilArrayList.get(i);
+      if (localanjb != null) {
+        if (paramArrayOfByte == null) {
+          break label136;
+        }
+      }
+    }
+    label136:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localanjb.a(paramBoolean, paramArrayOfByte, paramanjh.d, localObject);
+      i += 1;
+      break label31;
+      paramArrayOfByte = a(paramArrayOfByte);
+      if (paramArrayOfByte == null) {
+        ArkAppCenter.c("ArkApp.ArkAppCGI", String.format("onQueryPackageNameByAppID: parseReply fail, url=%s", new Object[] { paramanjh.jdField_a_of_type_JavaLangString }));
+      }
+      break;
+    }
+  }
+  
+  private boolean a(String paramString, long paramLong, Object paramObject, anjb paramanjb)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        anjf localanjf = (anjf)localIterator.next();
+        if ((localanjf.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (localanjf.jdField_a_of_type_Long == paramLong))
+        {
+          localanjf.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+          localanjf.jdField_b_of_type_JavaUtilArrayList.add(paramanjb);
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+  
+  private static String b()
+  {
+    try
+    {
+      String str = ArkEnvironmentManager.getInstance().getCacheDirectory() + "/tmp";
+      new File(str).mkdirs();
+      long l = System.currentTimeMillis();
+      int i = jdField_a_of_type_Int + 1;
+      jdField_a_of_type_Int = i;
+      str = String.format("%s/%s", new Object[] { str, String.format("cgi_%d_%d", new Object[] { Long.valueOf(l), Integer.valueOf(i) }) });
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private void b(anjf paramanjf, anjc arg2)
+  {
+    paramanjf.jdField_a_of_type_Anjc = ???;
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramanjf);
+      ThreadManager.post(new ArkAppCGI.9(this, paramanjf), 5, null, true);
+      return;
+    }
+  }
+  
+  protected void a(anjg paramanjg, boolean paramBoolean, byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    while (i < paramanjg.jdField_b_of_type_JavaUtilArrayList.size())
+    {
+      anjb localanjb = (anjb)paramanjg.jdField_b_of_type_JavaUtilArrayList.get(i);
+      if (localanjb != null) {
+        localanjb.a(paramBoolean, paramanjg.jdField_a_of_type_Long, paramArrayOfByte);
+      }
+      i += 1;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport=null");
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (localObject == null);
+        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
+      } while (localObject == null);
+      localObject = ((ArkAppCenter)localObject).a();
+    } while (localObject == null);
+    ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport=" + paramString);
+    ((ankf)localObject).a("ArkAppReport.URLCheck", paramString, 10000, 0, new anix(this));
+  }
+  
+  public void a(String paramString, long paramLong, anjb paramanjb)
+  {
+    if (a(paramString, paramLong, null, paramanjb)) {
+      return;
+    }
+    anjg localanjg = new anjg(null);
+    localanjg.jdField_a_of_type_JavaLangString = paramString;
+    localanjg.jdField_a_of_type_Long = paramLong;
+    localanjg.jdField_b_of_type_JavaUtilArrayList.add(paramanjb);
+    a(localanjg, new aniz(this));
+  }
+  
+  public void a(String paramString, Object paramObject, anjb paramanjb)
+  {
+    if ((paramString == null) || (paramString.length() <= 0)) {
+      if (paramanjb != null) {
+        paramanjb.a(false, null, paramString, paramObject);
+      }
+    }
+    Object localObject2;
+    String str1;
+    String str2;
+    do
+    {
+      do
+      {
+        return;
+        localObject1 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localObject1 == null)
+        {
+          ArkAppCenter.c("ArkApp.ArkAppCGI", "queryPackageNameByAppID, app is null, return");
+          return;
+        }
+        localObject2 = (TicketManager)((QQAppInterface)localObject1).getManager(2);
+        str1 = ((TicketManager)localObject2).getPskey(((QQAppInterface)localObject1).getCurrentAccountUin(), "connect.qq.com");
+        if ((str1 != null) && (str1.length() > 0)) {
+          break;
+        }
+        ArkAppCenter.c("ArkApp.ArkAppCGI", "queryPackageNameByAppID, pskey is null, return");
+      } while (paramanjb == null);
+      paramanjb.a(false, null, paramString, paramObject);
+      return;
+      localObject2 = ((TicketManager)localObject2).getSkey(((QQAppInterface)localObject1).getCurrentAccountUin());
+      str2 = String.format("https://cgi.connect.qq.com/qqconnectwebsite/v2/appinfo/apkname/get?appid=%s&token=%d", new Object[] { paramString, Integer.valueOf(a(str1)) });
+    } while (a(str2, -1L, paramObject, paramanjb));
+    anjh localanjh = new anjh(null);
+    for (Object localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin(); ((String)localObject1).length() < 10; localObject1 = "0" + (String)localObject1) {}
+    localObject1 = "o" + (String)localObject1;
+    localanjh.jdField_b_of_type_JavaLangString = ("p_uin=" + (String)localObject1 + "; p_skey=" + str1 + "; uin=" + (String)localObject1 + "; skey=" + (String)localObject2);
+    localanjh.jdField_a_of_type_JavaLangString = str2;
+    localanjh.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+    localanjh.jdField_b_of_type_JavaUtilArrayList.add(paramanjb);
+    localanjh.d = paramString;
+    localanjh.c = "https://connect.qq.com";
+    b(localanjh, new aniv(this));
+  }
+  
+  public void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "doVipReport()=null");
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (localObject == null);
+        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
+      } while (localObject == null);
+      localObject = ((ArkAppCenter)localObject).a();
+    } while (localObject == null);
+    ArkAppCenter.c("ArkApp.ArkAppCGI", "doVipReport()=" + paramString);
+    ((ankf)localObject).a("ArkAppReport.VIPReport", paramString, 10000, 0, new aniy(this));
+  }
+  
+  public void b(String paramString, long paramLong, anjb paramanjb)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramanjb == null) || (a(paramString, paramLong, null, paramanjb))) {
+      return;
+    }
+    anjg localanjg = new anjg(null);
+    localanjg.jdField_a_of_type_JavaLangString = paramString;
+    localanjg.jdField_a_of_type_Long = paramLong;
+    localanjg.jdField_b_of_type_JavaUtilArrayList.add(paramanjb);
+    a(localanjg, new aniw(this));
+  }
+  
+  public void onResp(baqw parambaqw)
+  {
+    anjf localanjf = (anjf)parambaqw.jdField_a_of_type_Baqv.a();
+    boolean bool;
+    if (parambaqw.jdField_a_of_type_Int == 0)
+    {
+      bool = true;
+      if (!bool) {
+        break label202;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        arrayOfByte = localanjf.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray();
+        if (parambaqw.c == 304)
+        {
+          bool = true;
+          parambaqw = (String)parambaqw.jdField_a_of_type_JavaUtilHashMap.get("param_rspHeader");
+          if (!TextUtils.isEmpty(parambaqw))
+          {
+            parambaqw = jdField_a_of_type_JavaUtilRegexPattern.matcher(parambaqw);
+            if (!parambaqw.find()) {}
+          }
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        try
+        {
+          byte[] arrayOfByte;
+          parambaqw = parambaqw.group(1);
+          SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("E,d MMM y HH:mm:ss 'GMT'", Locale.US);
+          localSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+          localanjf.jdField_a_of_type_Long = localSimpleDateFormat.parse(parambaqw).getTime();
+          a(localanjf, bool, arrayOfByte);
+          return;
+          bool = false;
+          break;
+          localOutOfMemoryError = localOutOfMemoryError;
+          ArkAppCenter.c("ArkApp.ArkAppCGI", String.format("ArkAppCGI.onResp, out of memory, msg=%s", new Object[] { localOutOfMemoryError.getMessage() }));
+          localObject = null;
+          bool = false;
+        }
+        catch (ParseException parambaqw)
+        {
+          ArkAppCenter.c("ArkApp.ArkAppCGI", String.format("lastModified time parse fail, url=%s", new Object[] { localanjf.jdField_a_of_type_JavaLangString }));
+          continue;
+        }
+        continue;
+      }
+      label202:
+      Object localObject = null;
+    }
+  }
+  
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anit
  * JD-Core Version:    0.7.0.1
  */

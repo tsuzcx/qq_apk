@@ -1,14 +1,21 @@
-import android.graphics.Bitmap;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ScrollView;
 
 class arwq
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  long jdField_a_of_type_Long;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  long b;
+  arwq(arwl paramarwl) {}
+  
+  public void onGlobalLayout()
+  {
+    if (this.a.a != null) {
+      this.a.a.fullScroll(130);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arwq
  * JD-Core Version:    0.7.0.1
  */

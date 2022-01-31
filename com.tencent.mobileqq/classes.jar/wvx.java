@@ -1,38 +1,19 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class wvx
-  extends FragmentPagerAdapter
+class wvx
+  implements View.OnClickListener
 {
-  public wvx(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
-  {
-    super(paramFragmentManager);
-  }
+  wvx(wvv paramwvv) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    return RelativePersonalBottomView.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
-      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
+    this.a.a.a(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvx
  * JD-Core Version:    0.7.0.1
  */

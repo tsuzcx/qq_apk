@@ -1,41 +1,85 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.dataline.activities.LiteActivity;
-import com.dataline.activities.LiteActivity.51.1;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XEditTextEx;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
+import android.annotation.TargetApi;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 public class dk
-  implements Animator.AnimatorListener
 {
-  public dk(LiteActivity paramLiteActivity) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static int a(String paramString)
   {
-    LiteActivity.a(this.a).setPadding(0, actj.a(8.0F, this.a.app.getApplication().getResources()), 0, 0);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams().height = -2;
-    ((FrameLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams()).setMargins(actj.a(14.0F, this.a.app.getApplication().getResources()), 0, 0, 0);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMaxLines(6);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130848777);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setGravity(16);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setPadding(actj.a(11.0F, this.a.app.getApplication().getResources()), actj.a(6.0F, this.a.app.getApplication().getResources()), actj.a(11.0F, this.a.app.getApplication().getResources()), actj.a(6.0F, this.a.app.getApplication().getResources()));
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestLayout();
-    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new LiteActivity.51.1(this), 100L);
+    try
+    {
+      paramString = InetAddress.getByName(a()).getAddress();
+      int i = paramString[3];
+      int j = paramString[2];
+      int k = paramString[1];
+      int m = paramString[0];
+      return (m & 0xFF) + (((i & 0xFF) << 24) + ((j & 0xFF) << 16) + ((k & 0xFF) << 8)) & 0xFFFFFFFF;
+    }
+    catch (Exception paramString) {}
+    return 0;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  @TargetApi(11)
+  public static String a()
+  {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      try
+      {
+        InetAddress localInetAddress;
+        do
+        {
+          localObject1 = NetworkInterface.getNetworkInterfaces();
+          Object localObject2;
+          while (!((Enumeration)localObject2).hasMoreElements())
+          {
+            do
+            {
+              if (!((Enumeration)localObject1).hasMoreElements()) {
+                break;
+              }
+              localObject2 = (NetworkInterface)((Enumeration)localObject1).nextElement();
+              ((NetworkInterface)localObject2).getHardwareAddress();
+            } while (!((NetworkInterface)localObject2).getName().contains("wlan"));
+            localObject2 = ((NetworkInterface)localObject2).getInetAddresses();
+          }
+          localInetAddress = (InetAddress)((Enumeration)localObject2).nextElement();
+        } while ((localInetAddress.isLoopbackAddress()) || (localInetAddress.getAddress().length != 4));
+        Object localObject1 = localInetAddress.getHostAddress();
+        return localObject1;
+      }
+      catch (SocketException localSocketException)
+      {
+        localSocketException.printStackTrace();
+      }
+      return "";
+    }
+    WifiManager localWifiManager = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
+    if (!localWifiManager.isWifiEnabled()) {
+      return "";
+    }
+    return a(localWifiManager.getConnectionInfo().getIpAddress());
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public static String a(long paramLong)
+  {
+    return (paramLong & 0xFF) + "." + (paramLong >> 8 & 0xFF) + "." + (paramLong >> 16 & 0xFF) + "." + (paramLong >> 24 & 0xFF);
+  }
+  
+  public static String b(long paramLong)
+  {
+    return (paramLong & 0xFF) + "." + (paramLong >> 8 & 0xFF) + "." + (paramLong >> 16 & 0xFF) + "." + (paramLong >> 24 & 0xFF);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dk
  * JD-Core Version:    0.7.0.1
  */

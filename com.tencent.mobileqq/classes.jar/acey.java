@@ -1,22 +1,50 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class acey
-  implements amdh
+final class acey
+  implements awfy
 {
-  public acey(TextPreviewActivity paramTextPreviewActivity) {}
+  acey(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
   
-  public void a(amdi paramamdi)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.a.jdField_a_of_type_Amdi = paramamdi;
-    if (this.a.i != 0) {
-      paramamdi.a(this.a.i);
+    return null;
+  }
+  
+  public void a(awfz paramawfz) {}
+  
+  public void b(awfz paramawfz)
+  {
+    try
+    {
+      if (paramawfz.jdField_a_of_type_Int == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramawfz.c;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, result.errStr=" + paramawfz.b + ",result.errStr=" + paramawfz.jdField_a_of_type_JavaLangString);
+      }
+      aukr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      return;
     }
-    this.a.i = paramamdi.a(1, this.a.e, 3, this.a.jdField_a_of_type_Amdf);
+    catch (Exception paramawfz)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, catch exception", paramawfz);
+      }
+      aukr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acey
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,32 @@
 import android.support.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class vmd
-  extends ssh
+  extends Subscriber.SingleEventSubscriberNoRefect<uzs>
 {
-  public final int a;
-  @NonNull
-  public final List<tee> a;
+  vlz a;
   
-  public vmd(int paramInt, @NonNull List<tee> paramList)
+  public vmd(@NonNull vlz paramvlz)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    this.a = paramvlz;
+  }
+  
+  protected void a(@NonNull uzs paramuzs)
+  {
+    if (paramuzs.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramuzs.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uzs.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmd
  * JD-Core Version:    0.7.0.1
  */

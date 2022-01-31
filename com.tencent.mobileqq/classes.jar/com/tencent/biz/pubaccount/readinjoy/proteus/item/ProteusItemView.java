@@ -30,26 +30,26 @@ import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oxk;
-import pau;
-import phq;
-import phr;
-import pli;
-import ply;
-import pmq;
-import pno;
-import rbq;
+import pcp;
+import pgd;
+import pob;
+import poc;
+import prm;
+import psd;
+import psy;
+import ptw;
+import rrn;
 
 public class ProteusItemView
   extends RelativeLayout
-  implements oxk
+  implements pcp
 {
   public final int a;
   private ComponentLastRead jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead;
   private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
   private ViewBase jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-  private List<phr> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final pmq jdField_a_of_type_Pmq = new pmq(this);
+  private List<poc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final psy jdField_a_of_type_Psy = new psy(this);
   
   public ProteusItemView(Context paramContext)
   {
@@ -72,7 +72,7 @@ public class ProteusItemView
     paramView.clearColorFilter();
   }
   
-  private void a(pau parampau, View paramView)
+  private void a(pgd parampgd, View paramView)
   {
     if (paramView == null) {
       QLog.d("ProteusItemView", 1, "dealFlowGuideSeparator, view is null.");
@@ -80,16 +80,16 @@ public class ProteusItemView
     for (;;)
     {
       return;
-      if ((parampau != null) && (parampau.a() != null))
+      if ((parampgd != null) && (parampgd.a() != null))
       {
-        parampau = parampau.a();
-        if (TextUtils.isEmpty(parampau.proteusItemsData)) {
+        parampgd = parampgd.a();
+        if (TextUtils.isEmpty(parampgd.proteusItemsData)) {
           continue;
         }
         try
         {
-          parampau = new JSONObject(parampau.proteusItemsData);
-          Iterator localIterator = parampau.keys();
+          parampgd = new JSONObject(parampgd.proteusItemsData);
+          Iterator localIterator = parampgd.keys();
           String str;
           Object localObject;
           do
@@ -98,7 +98,7 @@ public class ProteusItemView
               break;
             }
             str = (String)localIterator.next();
-            localObject = parampau.opt(str);
+            localObject = parampgd.opt(str);
           } while (!"guide_card_type".equals(str));
           if ("1".equals(String.valueOf(localObject)))
           {
@@ -107,17 +107,17 @@ public class ProteusItemView
             return;
           }
         }
-        catch (JSONException parampau)
+        catch (JSONException parampgd)
         {
-          QLog.d("ProteusItemView", 1, "dealFlowGuideSeparator JSONException, e = ", parampau);
+          QLog.d("ProteusItemView", 1, "dealFlowGuideSeparator JSONException, e = ", parampgd);
           return;
           QLog.d("ProteusItemView", 1, "flow guide card, hide separator.");
           paramView.setVisibility(8);
           return;
         }
-        catch (Exception parampau)
+        catch (Exception parampgd)
         {
-          QLog.d("ProteusItemView", 1, "dealFlowGuideSeparator, e = ", parampau);
+          QLog.d("ProteusItemView", 1, "dealFlowGuideSeparator, e = ", parampgd);
           return;
         }
       }
@@ -154,15 +154,15 @@ public class ProteusItemView
   private boolean a(int paramInt)
   {
     Object localObject1;
-    if ((this.jdField_a_of_type_Pmq != null) && (this.jdField_a_of_type_Pmq.a() != null))
+    if ((this.jdField_a_of_type_Psy != null) && (this.jdField_a_of_type_Psy.a() != null))
     {
-      QLog.d("gifvideo.ProteusItemView", 2, " proteusitemhelper celltype: " + this.jdField_a_of_type_Pmq.a().a());
+      QLog.d("gifvideo.ProteusItemView", 2, " proteusitemhelper celltype: " + this.jdField_a_of_type_Psy.a().a());
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) {
         break label841;
       }
       QLog.d("ProteusItemView", 1, "type pgc gif");
       localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().findViewBaseByName("id_middle_body_content");
-      if ((localObject1 != null) && ((localObject1 instanceof pli)))
+      if ((localObject1 != null) && ((localObject1 instanceof prm)))
       {
         QLog.d("ProteusItemView", 2, "ReadInJoyMiddleBodyView");
         localObject1 = ((ViewBase)localObject1).getNativeView();
@@ -189,10 +189,10 @@ public class ProteusItemView
         break label841;
       }
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      if ((((Map.Entry)localObject2).getValue() instanceof ply))
+      if ((((Map.Entry)localObject2).getValue() instanceof psd))
       {
-        localObject2 = (ply)((Map.Entry)localObject2).getValue();
-        if (((ply)localObject2).a() == null) {
+        localObject2 = (psd)((Map.Entry)localObject2).getValue();
+        if (((psd)localObject2).a() == null) {
           continue;
         }
         switch (paramInt)
@@ -200,7 +200,7 @@ public class ProteusItemView
         default: 
           break;
         case 1: 
-          return ((ply)localObject2).a().b();
+          return ((psd)localObject2).a().c();
           QLog.d("gifvideo.ProteusItemView", 2, "proteusitemhelper celltype: null");
           break;
           QLog.d("gifvideo.ProteusItemView", 2, "shortcontent to play");
@@ -216,24 +216,24 @@ public class ProteusItemView
           QLog.d("gifvideo.ProteusItemView", 2, localObject1 + " is not NativeMiddleBodyView");
           break;
         case 2: 
-          ((ply)localObject2).a().b();
+          ((psd)localObject2).a().b();
           return false;
         case 3: 
-          ((ply)localObject2).a().c();
+          ((psd)localObject2).a().c();
           return false;
         case 4: 
           label360:
-          ((ply)localObject2).a().e();
+          ((psd)localObject2).a().e();
           label390:
           return false;
         }
       }
-      if ((((Map.Entry)localObject2).getValue() instanceof pno))
+      if ((((Map.Entry)localObject2).getValue() instanceof ptw))
       {
-        localObject2 = (pno)((Map.Entry)localObject2).getValue();
-        if ((((pno)localObject2).getNativeView() instanceof RelativeLayout))
+        localObject2 = (ptw)((Map.Entry)localObject2).getValue();
+        if ((((ptw)localObject2).getNativeView() instanceof RelativeLayout))
         {
-          localObject2 = (RelativeLayout)((pno)localObject2).getNativeView();
+          localObject2 = (RelativeLayout)((ptw)localObject2).getNativeView();
           if ((((RelativeLayout)localObject2).getChildCount() > 0) && ((((RelativeLayout)localObject2).getChildAt(0) instanceof ProteusRecycleView)))
           {
             localObject2 = (ProteusRecycleView)((RelativeLayout)localObject2).getChildAt(0);
@@ -247,29 +247,29 @@ public class ProteusItemView
                 while (localIterator.hasNext())
                 {
                   Object localObject3 = (Map.Entry)localIterator.next();
-                  if ((((Map.Entry)localObject3).getValue() instanceof ply))
+                  if ((((Map.Entry)localObject3).getValue() instanceof psd))
                   {
-                    localObject3 = (ply)((Map.Entry)localObject3).getValue();
-                    if (((ply)localObject3).a() != null) {
+                    localObject3 = (psd)((Map.Entry)localObject3).getValue();
+                    if (((psd)localObject3).a() != null) {
                       switch (paramInt)
                       {
                       default: 
                         break;
                       case 1: 
-                        return ((ply)localObject3).a().b();
+                        return ((psd)localObject3).a().c();
                       case 2: 
-                        ((ply)localObject3).a().b();
+                        ((psd)localObject3).a().b();
                         return false;
                       case 3: 
-                        ((ply)localObject3).a().c();
+                        ((psd)localObject3).a().c();
                         return false;
                       case 4: 
-                        ((ply)localObject3).a().e();
+                        ((psd)localObject3).a().e();
                         return false;
                       }
                     }
                   }
-                  else if ((((Map.Entry)localObject3).getValue() instanceof pli))
+                  else if ((((Map.Entry)localObject3).getValue() instanceof prm))
                   {
                     localObject3 = ((ViewBase)((Map.Entry)localObject3).getValue()).getNativeView();
                     if ((localObject3 instanceof NativeMiddleBodyView))
@@ -310,7 +310,7 @@ public class ProteusItemView
   public TemplateBean a()
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {
-      return (TemplateBean)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getTag(2131374825);
+      return (TemplateBean)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getTag(2131375288);
     }
     return null;
   }
@@ -320,9 +320,9 @@ public class ProteusItemView
     return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
   }
   
-  public pmq a()
+  public psy a()
   {
-    return this.jdField_a_of_type_Pmq;
+    return this.jdField_a_of_type_Psy;
   }
   
   public void a()
@@ -336,13 +336,13 @@ public class ProteusItemView
     localObject = new RelativeLayout.LayoutParams(((Layout.Params)localObject).mLayoutWidth, ((Layout.Params)localObject).mLayoutHeight);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramContainer;
     paramContainer.setId(1);
-    setBackgroundColor(getResources().getColor(2131167087));
+    setBackgroundColor(getResources().getColor(2131167138));
     addView(paramContainer, (ViewGroup.LayoutParams)localObject);
   }
   
-  public void a(phr paramphr)
+  public void a(poc parampoc)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramphr);
+    this.jdField_a_of_type_JavaUtilList.add(parampoc);
   }
   
   public boolean a()
@@ -375,14 +375,14 @@ public class ProteusItemView
     {
       paramCanvas = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramCanvas.hasNext()) {
-        ((phr)paramCanvas.next()).a();
+        ((poc)paramCanvas.next()).a();
       }
     }
   }
   
-  public void setModel(pau parampau, rbq paramrbq)
+  public void setModel(pgd parampgd, rrn paramrrn)
   {
-    this.jdField_a_of_type_Pmq.a(parampau);
+    this.jdField_a_of_type_Psy.a(parampgd);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead == null)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead = new ComponentLastRead(getContext());
@@ -395,19 +395,19 @@ public class ProteusItemView
     }
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView() != null))
     {
-      if (!parampau.g()) {
+      if (!parampgd.g()) {
         break label144;
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(parampau);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(new phq(this, paramrbq));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(parampgd);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(new pob(this, paramrrn));
       return;
       label144:
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().setVisibility(0);
-      a(parampau, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView());
+      a(parampgd, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView());
     }
   }
   
@@ -424,7 +424,7 @@ public class ProteusItemView
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setTag(2131374825, paramTemplateBean);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setTag(2131375288, paramTemplateBean);
       setPressed(false);
       return;
     }
@@ -433,7 +433,7 @@ public class ProteusItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView
  * JD-Core Version:    0.7.0.1
  */

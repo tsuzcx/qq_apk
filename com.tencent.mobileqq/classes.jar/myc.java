@@ -1,39 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import android.view.View;
+import com.tencent.av.widget.stageview.StageEffectView;
+import java.util.Comparator;
 
 public class myc
+  implements Comparator<Integer>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public myc(StageEffectView paramStageEffectView) {}
   
-  public byte[] a()
+  public int a(Integer paramInteger1, Integer paramInteger2)
   {
-    if (TextUtils.isEmpty(this.a)) {}
-    do
-    {
-      return null;
-      try
-      {
-        byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
-        return arrayOfByte;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AnonymousChatHelper", 2, "getByteAnId UnsupportedEncodingException");
-    return null;
+    paramInteger1 = (myj)this.a.getChildAt(paramInteger1.intValue()).getTag();
+    paramInteger2 = (myj)this.a.getChildAt(paramInteger2.intValue()).getTag();
+    if (paramInteger1.c < paramInteger2.c) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myc
  * JD-Core Version:    0.7.0.1
  */

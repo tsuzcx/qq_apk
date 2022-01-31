@@ -1,28 +1,28 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
-public class bjru
-  extends bjan
+public final class bjru
+  implements bjmq
 {
-  private bbww jdField_a_of_type_Bbww;
-  private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
+  public bjru(Handler paramHandler) {}
   
-  public PtvTemplateManager.PtvTemplateInfo a()
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-  }
-  
-  public void a() {}
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bbww != null) {
-      this.jdField_a_of_type_Bbww.onDestroy();
+    if ("cmd.uploadCommentVideo".equals(paramString))
+    {
+      paramString = new Message();
+      paramString.obj = paramBundle;
+      this.a.sendMessage(paramString);
+      if ((paramBundle.getBundle("data") != null) && (paramBundle.getBundle("data").getInt("status") != 2)) {
+        bjmn.a().b(this);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjru
  * JD-Core Version:    0.7.0.1
  */

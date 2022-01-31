@@ -1,39 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.4;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
 public class auhu
-  implements Animation.AnimationListener
+  implements auhn
 {
-  public auhu(AccountPanel.4 param4) {}
+  public auhu(MultiAIOViewPager paramMultiAIOViewPager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void b(int paramInt)
   {
-    try
-    {
-      this.a.this$0.dismiss();
-      paramAnimation.setAnimationListener(null);
-      auhk.a(this.a.this$0).clearAnimation();
-      auhk.a(this.a.this$0, true);
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      for (;;)
-      {
-        paramAnimation.printStackTrace();
-      }
+    if (MultiAIOViewPager.a(this.a) != null) {
+      MultiAIOViewPager.a(this.a).a(paramInt);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auhu
  * JD-Core Version:    0.7.0.1
  */

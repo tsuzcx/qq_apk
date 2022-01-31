@@ -4,15 +4,15 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
-import bivl;
-import bivm;
+import blaf;
+import blag;
 
 public class VideoPlayView
   extends GLSurfaceView
 {
   private static final String jdField_a_of_type_JavaLangString = VideoPlayView.class.getSimpleName();
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private final bivm jdField_a_of_type_Bivm;
+  private final blag jdField_a_of_type_Blag;
   
   public VideoPlayView(Context paramContext)
   {
@@ -24,8 +24,8 @@ public class VideoPlayView
     super(paramContext, paramAttributeSet);
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 0, 0);
-    this.jdField_a_of_type_Bivm = new bivm(this);
-    setRenderer(this.jdField_a_of_type_Bivm);
+    this.jdField_a_of_type_Blag = new blag(this);
+    setRenderer(this.jdField_a_of_type_Blag);
     setRenderMode(0);
   }
   
@@ -40,7 +40,7 @@ public class VideoPlayView
       this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
     }
     this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
-    this.jdField_a_of_type_Bivm.a(paramMediaPlayer);
+    this.jdField_a_of_type_Blag.a(paramMediaPlayer);
     return this;
   }
   
@@ -49,23 +49,23 @@ public class VideoPlayView
     queueEvent(new VideoPlayView.1(this));
   }
   
-  public void setFrameRenderCallback(bivl parambivl)
+  public void setFrameRenderCallback(blaf paramblaf)
   {
-    if (this.jdField_a_of_type_Bivm != null) {
-      this.jdField_a_of_type_Bivm.a(parambivl);
+    if (this.jdField_a_of_type_Blag != null) {
+      this.jdField_a_of_type_Blag.a(paramblaf);
     }
   }
   
   public void setNeedComposeAlpha(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bivm != null) {
-      this.jdField_a_of_type_Bivm.a(paramBoolean);
+    if (this.jdField_a_of_type_Blag != null) {
+      this.jdField_a_of_type_Blag.a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.preview.VideoPlayView
  * JD-Core Version:    0.7.0.1
  */

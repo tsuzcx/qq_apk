@@ -1,25 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class suo
-  extends SimpleJob
+  implements View.OnClickListener
 {
-  suo(sun paramsun, String paramString, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  suo(suk paramsuk) {}
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
-  {
-    this.jdField_a_of_type_Sun.b(this.jdField_a_of_type_Boolean);
-    return null;
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     suo
  * JD-Core Version:    0.7.0.1
  */

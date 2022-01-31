@@ -1,121 +1,69 @@
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import android.content.Intent;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule.5;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
+import eipc.EIPCResult;
+import java.util.List;
 
 public class akrj
-  extends akon
+  implements akzp
 {
-  public akrj(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
-  {
-    super(paramQQAppInterface, paramMessageHandler);
-  }
+  public akrj(CmGameServerQIPCModule.5 param5) {}
   
-  private void a(byte[] paramArrayOfByte)
+  public void a(boolean paramBoolean, String paramString, List<akzn> paramList)
   {
-    if (paramArrayOfByte == null) {}
-    do
+    int i = 1;
+    if (paramBoolean)
     {
-      for (;;)
-      {
-        return;
-        C2CType0x211_SubC2CType0xb.MsgBody localMsgBody = new C2CType0x211_SubC2CType0xb.MsgBody();
-        try
-        {
-          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader)paramArrayOfByte.msg_msg_header.get();
-          if (paramArrayOfByte != null) {
-            break label71;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgHeader failed");
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.g = 6;
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext.b;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.jdField_e_of_type_Int >= 1) {
+        this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.b = this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext.jdField_a_of_type_JavaLangString;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgBody failed", paramArrayOfByte);
-    return;
-    label71:
-    long l1 = paramArrayOfByte.uint64_to_uin.get();
-    long l2 = paramArrayOfByte.uint64_room_id.get();
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.setAction("tencent.video.q2v.AudioEngineReady");
-    paramArrayOfByte.putExtra("uin", String.valueOf(l1));
-    paramArrayOfByte.putExtra("c2cuin", l1);
-    paramArrayOfByte.putExtra("c2croomid", l2);
-    this.a.getApp().sendBroadcast(paramArrayOfByte);
-    QLog.d("svenxu", 1, "ACTION_OPPOSITE_AUDIO_ENGINE_READY Send video c2c broadcast: selfUin = " + l1 + " roomid = " + l2);
-  }
-  
-  private void a(byte[] paramArrayOfByte, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramArrayOfByte);
-  }
-  
-  public akqi a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
-  {
-    switch (paramInt)
-    {
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.jdField_a_of_type_Int = this.a.b;
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.l = this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkCmShowRenderView$PlayActionConfig.c;
+      paramString = akxx.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam, this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext, this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkCmShowRenderView$PlayActionConfig);
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.jdField_e_of_type_JavaLangString = paramString;
+      paramString = this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkCmShowRenderView$PlayActionConfig.jdField_a_of_type_Boolean)
+      {
+        paramString.m = i;
+        paramString = new Bundle();
+        paramString.putParcelable("IPCSpriteContext", this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext);
+        paramString.putParcelable("SpriteTaskParam", this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
+        paramString = EIPCResult.createSuccessResult(paramString);
+        this.a.this$0.callbackResult(this.a.c, paramString);
+      }
     }
     for (;;)
     {
-      return new akqi(null, true);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
-      {
-        a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime);
-      }
-      else
-      {
-        a(getClass().getName(), paramInt);
-        continue;
-        if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
-        {
-          boolean bool = llm.a(paramMsgInfo.vMsg);
-          this.a.a().a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime, bool);
-        }
-        else
-        {
-          a(getClass().getName(), paramInt);
-        }
-      }
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      return;
+      i = 0;
+      break;
+      paramString = EIPCResult.createResult(-1, null);
+      this.a.this$0.callbackResult(this.a.c, paramString);
     }
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    switch (paramInt)
+    if (paramBoolean) {}
+    for (paramInt1 = 0;; paramInt1 = -1)
     {
-    default: 
+      paramString = EIPCResult.createResult(paramInt1, null);
+      this.a.this$0.callbackResult(this.a.c, paramString);
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
       return;
     }
-    if ((paramVarArgs != null) && (paramVarArgs.length == 3))
-    {
-      a((byte[])paramVarArgs[2], 11);
-      return;
-    }
-    a(getClass().getName(), paramInt);
   }
-  
-  public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akrj
  * JD-Core Version:    0.7.0.1
  */

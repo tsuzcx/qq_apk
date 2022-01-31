@@ -1,40 +1,45 @@
+import android.app.Activity;
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class afkp
-  extends afjt
-  implements View.OnClickListener
+class afkp
+  extends ClickableSpan
 {
-  public afkp(Context paramContext, QQAppInterface paramQQAppInterface, aipn paramaipn, atza paramatza)
+  private WeakReference<QQAppInterface> a;
+  private WeakReference<Context> b;
+  
+  afkp(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramContext, paramQQAppInterface, paramaipn, paramatza);
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
   }
   
-  public View a(int paramInt, View paramView)
+  public void onClick(View paramView)
   {
-    afkq localafkq;
-    if ((paramView == null) || (!(paramView.getTag() instanceof afkq)))
+    paramView = (QQAppInterface)this.a.get();
+    if (((this.b.get() instanceof Activity)) && (paramView != null))
     {
-      localafkq = new afkq();
-      paramView = LayoutInflater.from(this.a).inflate(2131560923, null);
-      paramView.setTag(localafkq);
-    }
-    for (;;)
-    {
-      paramView.setOnClickListener(this);
-      return paramView;
-      localafkq = (afkq)paramView.getTag();
+      if (QLog.isColorLevel()) {
+        QLog.d("GrayTipsItemBuilder", 2, "handleHotChatToSeeTip span click ");
+      }
+      HotChatManager.a(null, false);
     }
   }
   
-  public void onClick(View paramView) {}
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afkp
  * JD-Core Version:    0.7.0.1
  */

@@ -24,6 +24,7 @@ import com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfo.TVKCGIVideoMp4Clip
 import com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfo.TVKCGIVideoSubtitleInfo;
 import com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfo.TVKCGIVideoTVLogoInfo;
 import com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfo.TVKCGIVideoUrlInfo;
+import com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVideoInfoParams;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -75,7 +76,7 @@ public class TVKVideoInfoTransfer
     }
   }
   
-  public static String[] compriseBackPlayUrl(TVKVideoInfo paramTVKVideoInfo)
+  public static String[] compriseBackPlayUrl(TVKVideoInfo paramTVKVideoInfo, TVKVideoInfoParams paramTVKVideoInfoParams)
   {
     int j = paramTVKVideoInfo.getUrlList().size();
     String[] arrayOfString = new String[j - 1];
@@ -94,13 +95,13 @@ public class TVKVideoInfoTransfer
             continue;
           }
           if (((TVKVideoInfo.ReferUrl)paramTVKVideoInfo.getUrlList().get(i)).getHlsNode() == null) {
-            break label403;
+            break label420;
           }
           localObject1 = (String)localObject1 + ((TVKVideoInfo.ReferUrl)paramTVKVideoInfo.getUrlList().get(i)).getHlsNode().getPt();
         }
       }
     }
-    label403:
+    label420:
     for (;;)
     {
       localObject1 = Uri.parse((String)localObject1).buildUpon();
@@ -110,14 +111,14 @@ public class TVKVideoInfoTransfer
       }
       for (;;)
       {
-        ((Uri.Builder)localObject1).appendQueryParameter("sdtfrom", TVideoMgr.getVinfoSdtfrom());
+        ((Uri.Builder)localObject1).appendQueryParameter("sdtfrom", paramTVKVideoInfoParams.getSdtFrom());
         ((Uri.Builder)localObject1).appendQueryParameter("guid", TVideoMgr.getStaGuid());
         arrayOfString[(i - 1)] = ((Uri.Builder)localObject1).toString();
         break;
         ((Uri.Builder)localObject1).appendQueryParameter("hlskey", "");
       }
       localObject2 = Uri.parse(((TVKVideoInfo.ReferUrl)paramTVKVideoInfo.getUrlList().get(i)).getUrl() + paramTVKVideoInfo.getFileName()).buildUpon();
-      ((Uri.Builder)localObject2).appendQueryParameter("platform", String.valueOf(TVideoMgr.getVinfoPlatform()));
+      ((Uri.Builder)localObject2).appendQueryParameter("platform", String.valueOf(paramTVKVideoInfoParams.getPlatForm()));
       ((Uri.Builder)localObject2).appendQueryParameter("br", paramTVKVideoInfo.getBitrate());
       if (paramTVKVideoInfo.getCurDefinition() == null) {}
       for (localObject1 = "";; localObject1 = paramTVKVideoInfo.getCurDefinition().getDefn())
@@ -135,49 +136,7 @@ public class TVKVideoInfoTransfer
     }
   }
   
-  public static String comprisePlayUrl(TVKVideoInfo paramTVKVideoInfo)
-  {
-    if (paramTVKVideoInfo.isHLSDownloadType())
-    {
-      if ((!TextUtils.isEmpty(TVideoMgr.mOriginalUpc)) && (TVideoMgr.mFreeNetFlowRequestMap != null) && (TVKVcSystemInfo.getNetworkClass(TVideoMgr.getApplicationContext()) != 1))
-      {
-        if (paramTVKVideoInfo.getUrlList().size() > 0) {
-          return ((TVKVideoInfo.ReferUrl)paramTVKVideoInfo.getUrlList().get(0)).getUrl();
-        }
-        return null;
-      }
-      localObject1 = Uri.parse(paramTVKVideoInfo.getFirstCdnHlsPlayUrl()).buildUpon();
-      localObject2 = ((TVKVideoInfo.ReferUrl)paramTVKVideoInfo.getUrlList().get(0)).getHlsNode().getHk();
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!"empty".equals(localObject2))) {
-        ((Uri.Builder)localObject1).appendQueryParameter("hlskey", ((TVKVideoInfo.ReferUrl)paramTVKVideoInfo.getUrlList().get(0)).getHlsNode().getHk());
-      }
-      for (;;)
-      {
-        paramTVKVideoInfo = (TVKVideoInfo)localObject1;
-        paramTVKVideoInfo.appendQueryParameter("sdtfrom", TVideoMgr.getVinfoSdtfrom());
-        paramTVKVideoInfo.appendQueryParameter("guid", TVideoMgr.getStaGuid());
-        return paramTVKVideoInfo.toString();
-        ((Uri.Builder)localObject1).appendQueryParameter("hlskey", "");
-      }
-    }
-    Object localObject2 = Uri.parse(paramTVKVideoInfo.getFirstCdnServer() + paramTVKVideoInfo.getFileName()).buildUpon();
-    ((Uri.Builder)localObject2).appendQueryParameter("platform", String.valueOf(TVideoMgr.getVinfoPlatform()));
-    ((Uri.Builder)localObject2).appendQueryParameter("br", paramTVKVideoInfo.getBitrate());
-    if (paramTVKVideoInfo.getCurDefinition() == null) {}
-    for (Object localObject1 = "";; localObject1 = paramTVKVideoInfo.getCurDefinition().getDefn())
-    {
-      ((Uri.Builder)localObject2).appendQueryParameter("fmt", (String)localObject1);
-      ((Uri.Builder)localObject2).appendQueryParameter("vkey", paramTVKVideoInfo.getVKey());
-      ((Uri.Builder)localObject2).appendQueryParameter("level", paramTVKVideoInfo.getLevel());
-      if (!TextUtils.isEmpty(paramTVKVideoInfo.getSha())) {
-        ((Uri.Builder)localObject2).appendQueryParameter("sha", paramTVKVideoInfo.getSha());
-      }
-      paramTVKVideoInfo = (TVKVideoInfo)localObject2;
-      break;
-    }
-  }
-  
-  private static void dealClipUrl(TVKVideoInfo paramTVKVideoInfo)
+  private static void dealClipUrl(TVKVideoInfo paramTVKVideoInfo, TVKVideoInfoParams paramTVKVideoInfoParams)
   {
     if (paramTVKVideoInfo != null)
     {
@@ -186,11 +145,11 @@ public class TVKVideoInfoTransfer
       int i = 0;
       if (i < j)
       {
-        StringBuilder localStringBuilder = new StringBuilder().append(paramTVKVideoInfo.getFirstCdnServer()).append(((TVKVideoInfo.Section)paramTVKVideoInfo.getSectionList().get(i)).getIndexName()).append("?&vkey=").append(((TVKVideoInfo.Section)paramTVKVideoInfo.getSectionList().get(i)).getVbkey()).append("&platform=").append(TVideoMgr.getVinfoPlatform()).append("&fmt=");
+        StringBuilder localStringBuilder = new StringBuilder().append(paramTVKVideoInfo.getFirstCdnServer()).append(((TVKVideoInfo.Section)paramTVKVideoInfo.getSectionList().get(i)).getIndexName()).append("?&vkey=").append(((TVKVideoInfo.Section)paramTVKVideoInfo.getSectionList().get(i)).getVbkey()).append("&platform=").append(paramTVKVideoInfoParams.getPlatForm()).append("&fmt=");
         if (paramTVKVideoInfo.getCurDefinition() == null) {}
         for (String str = "";; str = paramTVKVideoInfo.getCurDefinition().getDefn())
         {
-          arrayOfString[i] = (str + "&br=" + String.valueOf(paramTVKVideoInfo.getBitrate()) + "&sdtfrom=" + TVideoMgr.getVinfoSdtfrom() + "&guid=" + TVideoMgr.getStaGuid() + "&keyid=" + ((TVKVideoInfo.Section)paramTVKVideoInfo.getSectionList().get(i)).getVbkeyId());
+          arrayOfString[i] = (str + "&br=" + String.valueOf(paramTVKVideoInfo.getBitrate()) + "&sdtfrom=" + paramTVKVideoInfoParams.getSdtFrom() + "&guid=" + TVideoMgr.getStaGuid() + "&keyid=" + ((TVKVideoInfo.Section)paramTVKVideoInfo.getSectionList().get(i)).getVbkeyId());
           i += 1;
           break;
         }
@@ -219,7 +178,7 @@ public class TVKVideoInfoTransfer
     return paramDefnInfo;
   }
   
-  public static TVKVideoInfo transfer(TVKCGIVideoInfo paramTVKCGIVideoInfo)
+  public static TVKVideoInfo transfer(TVKCGIVideoInfo paramTVKCGIVideoInfo, TVKVideoInfoParams paramTVKVideoInfoParams)
   {
     int k = 0;
     TVKVideoInfo localTVKVideoInfo = new TVKVideoInfo();
@@ -279,17 +238,19 @@ public class TVKVideoInfoTransfer
       ((TVKNetVideoInfo.DefnInfo)localObject2).setHdr10EnHance(((TVKCGIVideoInfo.TVKCGIVideoFormatInfo)localObject1).getHdr10enh());
       localObject3 = ((TVKCGIVideoInfo.TVKCGIVideoFormatInfo)localObject1).getCname();
       if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        ((TVKNetVideoInfo.DefnInfo)localObject2).setDefnName(TVKUtils.convertDefnName((String)localObject3));
+        ((TVKNetVideoInfo.DefnInfo)localObject2).setDefnShowName(TVKUtils.convertDefnName((String)localObject3));
       }
       for (;;)
       {
+        ((TVKNetVideoInfo.DefnInfo)localObject2).setDefnRate(((TVKCGIVideoInfo.TVKCGIVideoFormatInfo)localObject1).getResolution());
+        ((TVKNetVideoInfo.DefnInfo)localObject2).setDefnName(((TVKCGIVideoInfo.TVKCGIVideoFormatInfo)localObject1).getSname());
         if (((TVKCGIVideoInfo.TVKCGIVideoFormatInfo)localObject1).getSl() == 1) {
           localTVKVideoInfo.setCurDefinition((TVKNetVideoInfo.DefnInfo)localObject2);
         }
         localTVKVideoInfo = addDefinition2VideoInfo(localTVKVideoInfo, (TVKNetVideoInfo.DefnInfo)localObject2);
         i += 1;
         break;
-        ((TVKNetVideoInfo.DefnInfo)localObject2).setDefnName(TVKDefinitionUtils.getDefShowName(((TVKCGIVideoInfo.TVKCGIVideoFormatInfo)localObject1).getName()));
+        ((TVKNetVideoInfo.DefnInfo)localObject2).setDefnShowName(TVKDefinitionUtils.getDefShowName(((TVKCGIVideoInfo.TVKCGIVideoFormatInfo)localObject1).getName()));
       }
     }
     i = 0;
@@ -343,10 +304,10 @@ public class TVKVideoInfoTransfer
       localTVKVideoInfo.setFileName(paramTVKCGIVideoInfo.getFn());
       localTVKVideoInfo.setIFlag(paramTVKCGIVideoInfo.getIflag());
       if (TextUtils.isEmpty(paramTVKCGIVideoInfo.getBase())) {
-        break label1155;
+        break label1176;
       }
     }
-    label1155:
+    label1176:
     for (boolean bool = true;; bool = false)
     {
       localTVKVideoInfo.setEncryptionVideo(bool);
@@ -403,11 +364,11 @@ public class TVKVideoInfoTransfer
           localTVKVideoInfo.setLogX(((TVKCGIVideoInfo.TVKCGIVideoTVLogoInfo)paramTVKCGIVideoInfo.getTvLogoInfos().get(0)).getTvLogoX());
           localTVKVideoInfo.setLogY(((TVKCGIVideoInfo.TVKCGIVideoTVLogoInfo)paramTVKCGIVideoInfo.getTvLogoInfos().get(0)).getTvLogoY());
           if (((TVKCGIVideoInfo.TVKCGIVideoTVLogoInfo)paramTVKCGIVideoInfo.getTvLogoInfos().get(0)).getTvLogoShow() != 0) {
-            break label1629;
+            break label1662;
           }
           localTVKVideoInfo.setmIsLogShow(false);
         }
-        label1331:
+        label1352:
         localTVKVideoInfo.setWanIP(paramTVKCGIVideoInfo.getIp());
         localTVKVideoInfo.setVKey(paramTVKCGIVideoInfo.getFvkey());
         localTVKVideoInfo.setBitrate(String.valueOf(paramTVKCGIVideoInfo.getBr()));
@@ -433,18 +394,19 @@ public class TVKVideoInfoTransfer
       }
       catch (Throwable localThrowable)
       {
-        label1629:
+        label1662:
         TVKLogUtil.i("VideoInfo[TVKVideoInfoTransfer.java]", "onPlayInfoSuccess catch error ==" + localThrowable.getMessage());
         continue;
       }
       localObject1 = paramTVKCGIVideoInfo.getUrl();
-      localObject2 = compriseBackPlayUrl(localTVKVideoInfo);
+      localObject2 = compriseBackPlayUrl(localTVKVideoInfo, paramTVKVideoInfoParams);
       localTVKVideoInfo.setPlayUrl((String)localObject1);
       localTVKVideoInfo.setBackPlayUrl((String[])localObject2);
       if (paramTVKCGIVideoInfo.getUrl().contains("<?xml")) {
-        dealClipUrl(localTVKVideoInfo);
+        dealClipUrl(localTVKVideoInfo, paramTVKVideoInfoParams);
       }
       localTVKVideoInfo.setCGIVideoInfo(paramTVKCGIVideoInfo);
+      localTVKVideoInfo.setWatermarkInfos(paramTVKCGIVideoInfo.getWatermarkInfos());
       return localTVKVideoInfo;
       if (localTVKVideoInfo.getSt() == 2)
       {
@@ -466,14 +428,14 @@ public class TVKVideoInfoTransfer
       localTVKVideoInfo.setPrePlayTime(localTVKVideoInfo.getDuration());
       break;
       localTVKVideoInfo.setmIsLogShow(true);
-      break label1331;
+      break label1352;
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoTransfer
  * JD-Core Version:    0.7.0.1
  */

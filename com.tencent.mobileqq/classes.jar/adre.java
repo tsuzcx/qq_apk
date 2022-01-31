@@ -1,35 +1,91 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class adre
-  implements apuv
+public class adre
+  implements mxt
 {
-  adre(adqw paramadqw, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, bbwo parambbwo) {}
+  public adre(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject, int paramInt)
   {
-    paramView = new Bundle();
-    paramView.putString(bbrk.i, this.jdField_a_of_type_JavaLangString);
-    paramView.putString(bbrk.c, this.b);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
-      paramView.putString(bbrk.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
+    if (QLog.isColorLevel()) {
+      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
     }
-    bbrk.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, paramView);
-    String str = this.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
-    for (paramView = "0";; paramView = "1")
+    this.a.e = paramInt;
+    if (paramInt <= 3) {}
+    for (;;)
     {
-      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_Bbwo.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", "", "");
-      return;
+      try
+      {
+        if (mum.a("qav_score_bad.jpg")) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mum.b() + "qav_score_bad.jpg"));
+        }
+        ScoreQAVFragment.a(this.a).setVisibility(0);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.b.setText(2131696308);
+        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+        {
+          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
+          if (paramInt <= 0) {
+            break label398;
+          }
+          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
+          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+          return;
+        }
+      }
+      catch (OutOfMemoryError paramObject)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
+        continue;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
+        continue;
+      }
+      if (paramInt > 3)
+      {
+        ScoreQAVFragment.a(this.a).setVisibility(8);
+        try
+        {
+          if (mum.a("qav_score_good.jpg")) {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mum.b() + "qav_score_good.jpg"));
+          }
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+          this.a.b.setText(2131696308);
+        }
+        catch (OutOfMemoryError paramObject)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
+            }
+          }
+        }
+        label398:
+        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adre
  * JD-Core Version:    0.7.0.1
  */

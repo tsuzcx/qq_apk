@@ -1,21 +1,10 @@
-import android.os.AsyncTask;
-import com.dataline.activities.LiteActivity;
-
-public class ca
-  implements aptw
+public abstract interface ca
 {
-  public ca(LiteActivity paramLiteActivity, AsyncTask paramAsyncTask, int paramInt) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-  }
-  
-  public void b() {}
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ca
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,38 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import java.io.File;
 
 class agdn
-  implements View.OnClickListener
+  implements bhqd
 {
-  agdn(agdl paramagdl) {}
+  agdn(agdi paramagdi, bhpy parambhpy, AIOImageData paramAIOImageData, File paramFile) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.setText("");
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+    }
+    paramView = this.jdField_a_of_type_Bhpy.a(paramInt);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+    }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+    }
+    if (this.jdField_a_of_type_Agdi.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
+    this.jdField_a_of_type_Bhpy.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,501 +1,343 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-import tencent.im.babyq.babyq_cookie.BabyQCookie;
+import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import java.util.ArrayList;
+import java.util.List;
 
 public class axuw
 {
-  private static bfpc jdField_a_of_type_Bfpc;
-  Context jdField_a_of_type_AndroidContentContext;
-  public QQAppInterface a;
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  
-  public axuw(QQAppInterface paramQQAppInterface, View paramView)
+  public static AIOFilePicData a(AIOFilePictureData paramAIOFilePictureData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    if ((paramQQAppInterface == null) && (FragmentActivity.class.isInstance(this.jdField_a_of_type_AndroidContentContext)))
-    {
-      paramQQAppInterface = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-      if (paramQQAppInterface != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface.a().a();
-      }
-    }
+    AIOFilePicData localAIOFilePicData = new AIOFilePicData();
+    localAIOFilePicData.jdField_f_of_type_Long = paramAIOFilePictureData.jdField_a_of_type_Long;
+    localAIOFilePicData.jdField_f_of_type_Int = paramAIOFilePictureData.jdField_a_of_type_Int;
+    localAIOFilePicData.jdField_g_of_type_Long = paramAIOFilePictureData.jdField_b_of_type_Long;
+    localAIOFilePicData.jdField_h_of_type_Long = paramAIOFilePictureData.jdField_c_of_type_Long;
+    localAIOFilePicData.jdField_i_of_type_Long = paramAIOFilePictureData.jdField_d_of_type_Long;
+    localAIOFilePicData.jdField_g_of_type_Int = paramAIOFilePictureData.jdField_b_of_type_Int;
+    localAIOFilePicData.jdField_k_of_type_Boolean = paramAIOFilePictureData.jdField_a_of_type_Boolean;
+    localAIOFilePicData.jdField_a_of_type_JavaLangString = paramAIOFilePictureData.jdField_a_of_type_JavaLangString;
+    localAIOFilePicData.jdField_a_of_type_Int = paramAIOFilePictureData.jdField_c_of_type_Int;
+    localAIOFilePicData.jdField_b_of_type_JavaLangString = paramAIOFilePictureData.jdField_b_of_type_JavaLangString;
+    localAIOFilePicData.jdField_c_of_type_JavaLangString = paramAIOFilePictureData.jdField_c_of_type_JavaLangString;
+    localAIOFilePicData.jdField_d_of_type_JavaLangString = paramAIOFilePictureData.jdField_d_of_type_JavaLangString;
+    localAIOFilePicData.jdField_e_of_type_JavaLangString = paramAIOFilePictureData.jdField_e_of_type_JavaLangString;
+    localAIOFilePicData.jdField_f_of_type_JavaLangString = paramAIOFilePictureData.jdField_f_of_type_JavaLangString;
+    localAIOFilePicData.jdField_b_of_type_Int = paramAIOFilePictureData.jdField_d_of_type_Int;
+    localAIOFilePicData.jdField_g_of_type_JavaLangString = paramAIOFilePictureData.jdField_g_of_type_JavaLangString;
+    localAIOFilePicData.jdField_d_of_type_Boolean = paramAIOFilePictureData.jdField_g_of_type_Boolean;
+    localAIOFilePicData.jdField_a_of_type_Long = paramAIOFilePictureData.jdField_e_of_type_Long;
+    localAIOFilePicData.jdField_b_of_type_Long = paramAIOFilePictureData.jdField_f_of_type_Long;
+    localAIOFilePicData.jdField_e_of_type_Boolean = paramAIOFilePictureData.jdField_h_of_type_Boolean;
+    localAIOFilePicData.jdField_h_of_type_JavaLangString = paramAIOFilePictureData.jdField_h_of_type_JavaLangString;
+    localAIOFilePicData.jdField_i_of_type_JavaLangString = paramAIOFilePictureData.jdField_i_of_type_JavaLangString;
+    return localAIOFilePicData;
   }
   
-  public axuw(QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord)
+  public static com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData a(com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData paramAIOFileVideoData)
   {
-    this(paramQQAppInterface, paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData localAIOFileVideoData = new com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData();
+    localAIOFileVideoData.jdField_f_of_type_Long = paramAIOFileVideoData.jdField_a_of_type_Long;
+    localAIOFileVideoData.jdField_f_of_type_Int = paramAIOFileVideoData.jdField_a_of_type_Int;
+    localAIOFileVideoData.jdField_g_of_type_Long = paramAIOFileVideoData.jdField_b_of_type_Long;
+    localAIOFileVideoData.jdField_h_of_type_Long = paramAIOFileVideoData.jdField_c_of_type_Long;
+    localAIOFileVideoData.jdField_i_of_type_Long = paramAIOFileVideoData.jdField_d_of_type_Long;
+    localAIOFileVideoData.jdField_g_of_type_Int = paramAIOFileVideoData.jdField_b_of_type_Int;
+    localAIOFileVideoData.jdField_k_of_type_Boolean = paramAIOFileVideoData.jdField_a_of_type_Boolean;
+    localAIOFileVideoData.jdField_b_of_type_JavaLangString = paramAIOFileVideoData.jdField_b_of_type_JavaLangString;
+    localAIOFileVideoData.jdField_a_of_type_JavaLangString = paramAIOFileVideoData.jdField_a_of_type_JavaLangString;
+    localAIOFileVideoData.jdField_c_of_type_JavaLangString = paramAIOFileVideoData.jdField_c_of_type_JavaLangString;
+    localAIOFileVideoData.jdField_a_of_type_Long = paramAIOFileVideoData.jdField_e_of_type_Long;
+    localAIOFileVideoData.jdField_a_of_type_Int = paramAIOFileVideoData.jdField_c_of_type_Int;
+    localAIOFileVideoData.jdField_b_of_type_Int = paramAIOFileVideoData.jdField_d_of_type_Int;
+    return localAIOFileVideoData;
   }
   
-  private static void a(Context paramContext, String paramString)
+  public static AIOImageData a(AIOPictureData paramAIOPictureData)
   {
-    if ((jdField_a_of_type_Bfpc == null) || (!jdField_a_of_type_Bfpc.getContext().equals(paramContext)))
-    {
-      jdField_a_of_type_Bfpc = bfpc.a(paramContext);
-      jdField_a_of_type_Bfpc.a(2131691644, 1);
-      jdField_a_of_type_Bfpc.a(2131691307, 1);
-      jdField_a_of_type_Bfpc.c(2131690596);
-      jdField_a_of_type_Bfpc.a(String.format(paramContext.getString(2131694750), new Object[] { paramString }));
-      jdField_a_of_type_Bfpc.a(new axux(paramString, paramContext));
-    }
-    if (!jdField_a_of_type_Bfpc.isShowing()) {
-      jdField_a_of_type_Bfpc.show();
-    }
+    AIOImageData localAIOImageData = new AIOImageData();
+    localAIOImageData.jdField_f_of_type_Long = paramAIOPictureData.jdField_a_of_type_Long;
+    localAIOImageData.jdField_f_of_type_Int = paramAIOPictureData.jdField_a_of_type_Int;
+    localAIOImageData.jdField_g_of_type_Long = paramAIOPictureData.jdField_b_of_type_Long;
+    localAIOImageData.jdField_h_of_type_Long = paramAIOPictureData.jdField_c_of_type_Long;
+    localAIOImageData.jdField_i_of_type_Long = paramAIOPictureData.jdField_d_of_type_Long;
+    localAIOImageData.jdField_g_of_type_Int = paramAIOPictureData.jdField_b_of_type_Int;
+    localAIOImageData.jdField_k_of_type_Boolean = paramAIOPictureData.jdField_a_of_type_Boolean;
+    localAIOImageData.jdField_a_of_type_JavaLangString = paramAIOPictureData.jdField_a_of_type_JavaLangString;
+    localAIOImageData.jdField_b_of_type_JavaLangString = paramAIOPictureData.jdField_b_of_type_JavaLangString;
+    localAIOImageData.jdField_c_of_type_JavaLangString = paramAIOPictureData.jdField_c_of_type_JavaLangString;
+    localAIOImageData.jdField_d_of_type_JavaLangString = paramAIOPictureData.jdField_d_of_type_JavaLangString;
+    localAIOImageData.jdField_e_of_type_JavaLangString = paramAIOPictureData.jdField_e_of_type_JavaLangString;
+    localAIOImageData.jdField_c_of_type_Long = paramAIOPictureData.jdField_g_of_type_Long;
+    localAIOImageData.jdField_d_of_type_Long = paramAIOPictureData.jdField_h_of_type_Long;
+    localAIOImageData.jdField_a_of_type_Long = paramAIOPictureData.jdField_e_of_type_Long;
+    localAIOImageData.jdField_b_of_type_Long = paramAIOPictureData.jdField_f_of_type_Long;
+    localAIOImageData.jdField_d_of_type_Boolean = paramAIOPictureData.jdField_g_of_type_Boolean;
+    localAIOImageData.jdField_e_of_type_Boolean = paramAIOPictureData.jdField_h_of_type_Boolean;
+    localAIOImageData.jdField_f_of_type_Boolean = paramAIOPictureData.jdField_i_of_type_Boolean;
+    localAIOImageData.jdField_a_of_type_Int = paramAIOPictureData.jdField_c_of_type_Int;
+    localAIOImageData.jdField_b_of_type_Int = paramAIOPictureData.jdField_d_of_type_Int;
+    localAIOImageData.jdField_a_of_type_JavaLangObject = paramAIOPictureData.jdField_a_of_type_JavaLangObject;
+    localAIOImageData.jdField_g_of_type_Boolean = paramAIOPictureData.jdField_j_of_type_Boolean;
+    localAIOImageData.jdField_e_of_type_Long = paramAIOPictureData.jdField_i_of_type_Long;
+    localAIOImageData.jdField_g_of_type_JavaLangString = paramAIOPictureData.jdField_g_of_type_JavaLangString;
+    localAIOImageData.jdField_h_of_type_JavaLangString = paramAIOPictureData.jdField_h_of_type_JavaLangString;
+    localAIOImageData.jdField_c_of_type_Int = paramAIOPictureData.jdField_e_of_type_Int;
+    localAIOImageData.jdField_d_of_type_Int = paramAIOPictureData.jdField_f_of_type_Int;
+    localAIOImageData.jdField_i_of_type_JavaLangString = paramAIOPictureData.jdField_i_of_type_JavaLangString;
+    localAIOImageData.jdField_f_of_type_JavaLangString = paramAIOPictureData.jdField_f_of_type_JavaLangString;
+    localAIOImageData.jdField_j_of_type_JavaLangString = paramAIOPictureData.jdField_j_of_type_JavaLangString;
+    localAIOImageData.jdField_k_of_type_JavaLangString = paramAIOPictureData.jdField_k_of_type_JavaLangString;
+    localAIOImageData.jdField_h_of_type_Boolean = paramAIOPictureData.jdField_k_of_type_Boolean;
+    localAIOImageData.jdField_e_of_type_Int = paramAIOPictureData.jdField_g_of_type_Int;
+    localAIOImageData.jdField_i_of_type_Boolean = paramAIOPictureData.jdField_l_of_type_Boolean;
+    localAIOImageData.jdField_l_of_type_JavaLangString = paramAIOPictureData.jdField_l_of_type_JavaLangString;
+    localAIOImageData.jdField_j_of_type_Boolean = paramAIOPictureData.jdField_m_of_type_Boolean;
+    localAIOImageData.jdField_m_of_type_JavaLangString = paramAIOPictureData.jdField_m_of_type_JavaLangString;
+    localAIOImageData.n = paramAIOPictureData.n;
+    localAIOImageData.o = paramAIOPictureData.o;
+    localAIOImageData.p = paramAIOPictureData.p;
+    return localAIOImageData;
   }
   
-  public boolean a(String paramString)
+  public static AIORichMediaData a(AIOBrowserBaseData paramAIOBrowserBaseData)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))) {
-      bool1 = false;
-    }
+    if (paramAIOBrowserBaseData == null) {}
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return bool1;
-                  localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
-                  ((Intent)localObject).putExtra("key_isReadModeEnabled", true);
-                  ((Intent)localObject).putExtra("url", paramString);
-                  ((Intent)localObject).putExtra("FORCE_BLANK_SCREEN_REPORTE", true);
-                  ((Intent)localObject).putExtra("articalChannelId", 1);
-                  sgg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (Intent)localObject, paramString);
-                  this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-                  bool1 = bool2;
-                } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null);
-                bool1 = bool2;
-              } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend());
-              bool1 = bool2;
-            } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop != 0);
-            bool1 = bool2;
-          } while (!bbbr.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin));
-          bool1 = bool2;
-        } while (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("guide_msg_cookie")));
-        paramString = bbbr.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));
-        bool1 = bool2;
-      } while (paramString == null);
-      Object localObject = new babyq_cookie.BabyQCookie();
-      try
-      {
-        ((babyq_cookie.BabyQCookie)localObject).mergeFrom(paramString);
-        switch (((babyq_cookie.BabyQCookie)localObject).uint32_type.get())
-        {
-        case 204: 
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b("babyq_game_strategy");
-          return true;
-        }
+      return null;
+      if ((paramAIOBrowserBaseData instanceof AIOPictureData)) {
+        return a((AIOPictureData)paramAIOBrowserBaseData);
       }
-      catch (InvalidProtocolBufferMicroException paramString)
-      {
-        bool1 = bool2;
+      if ((paramAIOBrowserBaseData instanceof AIOFilePictureData)) {
+        return a((AIOFilePictureData)paramAIOBrowserBaseData);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("StructMsg", 2, "babbyq -> sendSpecialMessage:" + paramString.getStackTrace());
-    return true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b("babyq_game_gift");
-    return true;
-    return true;
+      if ((paramAIOBrowserBaseData instanceof AIOVideoData)) {
+        return a((AIOVideoData)paramAIOBrowserBaseData);
+      }
+    } while (!(paramAIOBrowserBaseData instanceof com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData));
+    return a((com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData)paramAIOBrowserBaseData);
   }
   
-  public boolean a(String paramString, long paramLong, Object... paramVarArgs)
+  public static AIOShortVideoData a(AIOVideoData paramAIOVideoData)
   {
-    if (com.tencent.mobileqq.microapp.sdk.MiniAppLauncher.isMiniAppScheme(paramString))
-    {
-      com.tencent.mobileqq.microapp.sdk.MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, paramString, 1211);
-      return true;
-    }
-    if (com.tencent.mobileqq.mini.sdk.MiniAppLauncher.isMiniAppUrl(paramString))
-    {
-      com.tencent.mobileqq.mini.sdk.MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramString, 1043, null);
-      return true;
-    }
-    if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))) {
-      return false;
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
-    localIntent.putExtra("key_isReadModeEnabled", true);
-    localIntent.putExtra("url", paramString);
-    Object localObject;
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))
-    {
-      localObject = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-      if (localObject != null)
-      {
-        int i = ((ChatFragment)localObject).a().b();
-        if (i == 1008)
-        {
-          String str = ((ChatFragment)localObject).a().a();
-          localIntent.putExtra("puin", str);
-          localIntent.putExtra("uin_type", i);
-          localIntent.putExtra("msg_id", String.valueOf(paramLong));
-          localIntent.putExtra("switch_msg_btn", sgg.a());
-          localIntent.putExtra("articalChannelId", 1);
-          localIntent.putExtra("FORCE_BLANK_SCREEN_REPORTE", true);
-          localIntent.putExtra("fromOneCLickCLose", true);
-          localObject = sgg.b(str);
-          if ((!"3046055438".equals(str)) || (paramVarArgs == null) || (paramVarArgs.length <= 0) || (!(paramVarArgs[0] instanceof Boolean)) || (!((Boolean)paramVarArgs[0]).booleanValue())) {
-            break label321;
-          }
-        }
-      }
-    }
-    label321:
-    for (paramVarArgs = "biz_src_ads";; paramVarArgs = (Object[])localObject)
-    {
-      localIntent.putExtra("big_brother_source_key", paramVarArgs);
-      sgg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localIntent, paramString);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return true;
-    }
+    AIOShortVideoData localAIOShortVideoData = new AIOShortVideoData();
+    localAIOShortVideoData.jdField_f_of_type_Long = paramAIOVideoData.jdField_a_of_type_Long;
+    localAIOShortVideoData.jdField_f_of_type_Int = paramAIOVideoData.jdField_a_of_type_Int;
+    localAIOShortVideoData.jdField_g_of_type_Long = paramAIOVideoData.jdField_b_of_type_Long;
+    localAIOShortVideoData.jdField_h_of_type_Long = paramAIOVideoData.jdField_c_of_type_Long;
+    localAIOShortVideoData.jdField_i_of_type_Long = paramAIOVideoData.jdField_d_of_type_Long;
+    localAIOShortVideoData.jdField_g_of_type_Int = paramAIOVideoData.jdField_b_of_type_Int;
+    localAIOShortVideoData.jdField_k_of_type_Boolean = paramAIOVideoData.jdField_a_of_type_Boolean;
+    localAIOShortVideoData.jdField_a_of_type_JavaLangString = paramAIOVideoData.jdField_a_of_type_JavaLangString;
+    localAIOShortVideoData.jdField_b_of_type_JavaLangString = paramAIOVideoData.jdField_b_of_type_JavaLangString;
+    localAIOShortVideoData.jdField_a_of_type_Int = paramAIOVideoData.jdField_c_of_type_Int;
+    localAIOShortVideoData.jdField_b_of_type_Int = paramAIOVideoData.jdField_d_of_type_Int;
+    localAIOShortVideoData.jdField_c_of_type_Int = paramAIOVideoData.jdField_e_of_type_Int;
+    localAIOShortVideoData.jdField_d_of_type_Int = paramAIOVideoData.jdField_f_of_type_Int;
+    localAIOShortVideoData.jdField_a_of_type_Long = paramAIOVideoData.jdField_e_of_type_Long;
+    localAIOShortVideoData.jdField_e_of_type_Int = paramAIOVideoData.jdField_g_of_type_Int;
+    localAIOShortVideoData.jdField_c_of_type_JavaLangString = paramAIOVideoData.jdField_c_of_type_JavaLangString;
+    localAIOShortVideoData.jdField_d_of_type_JavaLangString = paramAIOVideoData.jdField_d_of_type_JavaLangString;
+    localAIOShortVideoData.jdField_h_of_type_Int = paramAIOVideoData.jdField_h_of_type_Int;
+    localAIOShortVideoData.jdField_e_of_type_JavaLangString = paramAIOVideoData.jdField_e_of_type_JavaLangString;
+    localAIOShortVideoData.jdField_i_of_type_Int = paramAIOVideoData.jdField_i_of_type_Int;
+    localAIOShortVideoData.jdField_k_of_type_Int = paramAIOVideoData.jdField_k_of_type_Int;
+    localAIOShortVideoData.j = paramAIOVideoData.j;
+    localAIOShortVideoData.jdField_f_of_type_JavaLangString = paramAIOVideoData.jdField_f_of_type_JavaLangString;
+    localAIOShortVideoData.jdField_g_of_type_JavaLangString = paramAIOVideoData.jdField_g_of_type_JavaLangString;
+    return localAIOShortVideoData;
   }
   
-  public boolean a(String paramString1, String paramString2)
+  public static AIOBrowserBaseData a(AIORichMediaData paramAIORichMediaData)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      localObject = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-      if (((FragmentActivity)localObject).getChatFragment() != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("StructMsg", 2, "chatfragment is null");
-      }
-      return true;
-      paramString1 = paramString2;
-    }
-    int i = ((FragmentActivity)localObject).getChatFragment().a().b();
-    paramString2 = ((FragmentActivity)localObject).getChatFragment().a().b();
-    Object localObject = ((FragmentActivity)localObject).getChatFragment().a().a();
-    Intent localIntent = actj.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
-    localIntent.putExtra("uin", (String)localObject);
-    localIntent.putExtra("uintype", i);
-    localIntent.putExtra("uinname", paramString2);
-    localIntent.putExtra("forward_type", -1);
-    localIntent.putExtra("forward_text", paramString1);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2, int paramInt, long paramLong)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      paramString2 = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-      if (paramString2.getChatFragment() != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("StructMsg", 2, "chatfragment is null");
-      }
-      return true;
-      paramString1 = paramString2;
-    }
-    paramString2 = paramString2.getChatFragment().a().a();
-    nnu.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1, false, 0.0D, 0.0D, null, paramInt, paramLong, 2);
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3)
-  {
-    if (TextUtils.isEmpty(paramString3)) {}
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        int i = paramString2.indexOf("://");
-        Object localObject = "";
-        if (i == -1)
-        {
-          paramString3 = paramString2;
-          paramString2 = (String)localObject;
-          label39:
-          localObject = this.jdField_a_of_type_AndroidContentContext.getPackageManager();
-        }
-        try
-        {
-          if (((PackageManager)localObject).getPackageInfo(paramString3, 1) != null)
-          {
-            localObject = ((PackageManager)localObject).getLaunchIntentForPackage(paramString3);
-            if (localObject != null)
-            {
-              if (!TextUtils.isEmpty(paramString2)) {
-                ((Intent)localObject).setData(Uri.parse(paramString2));
-              }
-              akgr.a("structmsg", "", paramString3, "1", "structmsgClick", this.jdField_a_of_type_AndroidContentContext.getClass().getName());
-              this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-              return true;
-              paramString2 = paramString3;
-              continue;
-              paramString3 = paramString2.substring(0, i);
-              paramString2 = paramString2.substring(i + 3);
-              break label39;
-            }
-            return false;
-          }
-        }
-        catch (Exception paramString2)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, paramString2.getMessage());
-          }
-        }
-      }
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      paramString2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramString2.putExtra("key_isReadModeEnabled", true);
-      paramString2.putExtra("url", paramString1);
-      paramString2.putExtra("fromAio", true);
-      sgg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramString2, paramString1);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramString2);
-      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    return a(paramString1, paramString2, paramString3, paramString4, 0L, new Object[0]);
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, Object... paramVarArgs)
-  {
-    Object localObject2;
-    Object localObject1;
-    MessageForStructing localMessageForStructing;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder().append("StructMsgClickHandler doAction action = ").append(paramString1).append(", url = ").append(paramString2).append(", actionData = ").append(paramString3).append(", actionDataA = ").append(paramString4);
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        localObject1 = ", args = " + paramVarArgs[0];
-        QLog.d("StructMsg", 2, (String)localObject1);
-      }
-    }
-    else
-    {
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))
-      {
-        localObject1 = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-        if (localObject1 != null)
-        {
-          localObject2 = ((ChatFragment)localObject1).a().a();
-          int i = ((ChatFragment)localObject1).a().b();
-          if ((paramString1 != null) && (!paramString1.equals("")) && (i == 1008)) {
-            nnu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2);
-          }
-          if (((((ChatFragment)localObject1).a() instanceof aert)) && ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForStructing)))
-          {
-            localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-            localObject1 = "";
-            if (localMessageForStructing.mExJsonObject != null) {
-              localObject1 = localMessageForStructing.mExJsonObject.optString("report_key_bytes_oac_msg_extend");
-            }
-            if (!(localMessageForStructing.structingMsg instanceof StructMsgForHypertext)) {
-              break label338;
-            }
-            akwu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, 0, 2, paramLong, (String)localObject1);
-          }
-        }
-      }
-      label268:
-      if (!"web".equals(paramString1)) {
-        break label417;
-      }
-      if (paramLong <= 0L) {
-        break label407;
-      }
-    }
-    label407:
-    for (boolean bool1 = a(paramString2, paramLong, paramVarArgs);; bool1 = a(paramString2))
-    {
-      boolean bool2 = bool1;
-      if (bool1)
-      {
-        bool2 = bool1;
-        if (paramLong > 0L) {
-          bool2 = a(paramString2, null, 2, paramLong);
-        }
-      }
-      return bool2;
-      localObject1 = "";
-      break;
-      label338:
-      if ((localMessageForStructing.structingMsg instanceof StructMsgForGeneralShare)) {
-        break label268;
-      }
-      if ((localMessageForStructing.structingMsg instanceof StructMsgForImageShare))
-      {
-        akwu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, 0, 1, paramLong, (String)localObject1);
-        break label268;
-      }
-      if (!(localMessageForStructing.structingMsg instanceof StructMsgForAudioShare)) {
-        break label268;
-      }
-      akwu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, 0, 5, paramLong, (String)localObject1);
-      break label268;
-    }
-    label417:
-    if ("app".equals(paramString1)) {
-      return a(paramString2, paramString3, paramString4);
-    }
-    if ("plugin".equals(paramString1))
-    {
-      if ((TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString2))) {
-        return c(paramString2, null);
-      }
-      return c(paramString3, paramString4);
-    }
-    if ("auto".equals(paramString1)) {
-      return b(paramString2);
-    }
-    if ("replyMsg".equals(paramString1)) {
-      return a(paramString3, paramString4);
-    }
-    if ("replyCmd".equals(paramString1))
-    {
-      if (paramLong == 0L) {
-        return b(paramString3, paramString4);
-      }
-      return a(paramString3, null, 1, paramLong);
-    }
-    return false;
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (paramString.startsWith("tel:"))
-    {
-      paramString = paramString.substring("tel:".length());
-      a(this.jdField_a_of_type_AndroidContentContext, paramString);
-    }
-    for (;;)
-    {
-      return true;
-      try
-      {
-        paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-        paramString.putExtra("com.android.browser.application_id", this.jdField_a_of_type_AndroidContentContext.getPackageName());
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramString);
-      }
-      catch (Exception paramString) {}
-      if (QLog.isColorLevel()) {
-        QLog.d("HyperTextMsg", 2, paramString.getMessage());
-      }
-    }
-  }
-  
-  public boolean b(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      paramString2 = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-      if (paramString2.getChatFragment() != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("StructMsg", 2, "chatfragment is null");
-      }
-      return true;
-      paramString1 = paramString2;
-    }
-    paramString2 = paramString2.getChatFragment().a().a();
-    nnu.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1, false, 0.0D, 0.0D, null, 1, 0L, 2);
-    return true;
-  }
-  
-  public boolean c(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "StructMsgClickHandler clickPluginMsg  actionData = " + paramString1 + ", actionDataA = " + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString2)) {
-      if (!TextUtils.equals(paramString1, "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity&from=recent")) {
-        break label66;
-      }
-    }
-    label66:
+    if (paramAIORichMediaData == null) {}
     do
     {
-      for (;;)
-      {
-        return true;
-        paramString1 = paramString2;
-        break;
-        try
-        {
-          paramString1 = bbex.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString1);
-          if (paramString1 != null)
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
-              paramString1.a("msg_uniseq", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq));
-            }
-            paramString1.c();
-            if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 0) && (bbbr.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"))))
-            {
-              paramString1 = bbbr.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));
-              if (paramString1 != null)
-              {
-                paramString2 = new babyq_cookie.BabyQCookie();
-                paramString2.mergeFrom(paramString1);
-                if (paramString2.uint32_type.get() == 207)
-                {
-                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b("baqyq_mayknow_people");
-                  return true;
-                }
-              }
-            }
-          }
-        }
-        catch (Exception paramString1) {}
+      return null;
+      if ((paramAIORichMediaData instanceof AIOImageData)) {
+        return a((AIOImageData)paramAIORichMediaData);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("StructMsg", 2, paramString1.getMessage(), paramString1);
-    return true;
+      if ((paramAIORichMediaData instanceof AIOFilePicData)) {
+        return a((AIOFilePicData)paramAIORichMediaData);
+      }
+      if ((paramAIORichMediaData instanceof AIOShortVideoData)) {
+        return a((AIOShortVideoData)paramAIORichMediaData);
+      }
+    } while (!(paramAIORichMediaData instanceof com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData));
+    return a((com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData)paramAIORichMediaData);
+  }
+  
+  public static AIOFilePictureData a(AIOFilePicData paramAIOFilePicData)
+  {
+    AIOFilePictureData localAIOFilePictureData = new AIOFilePictureData();
+    localAIOFilePictureData.jdField_a_of_type_Long = paramAIOFilePicData.jdField_f_of_type_Long;
+    localAIOFilePictureData.jdField_a_of_type_Int = paramAIOFilePicData.jdField_f_of_type_Int;
+    localAIOFilePictureData.jdField_b_of_type_Long = paramAIOFilePicData.jdField_g_of_type_Long;
+    localAIOFilePictureData.jdField_c_of_type_Long = paramAIOFilePicData.jdField_h_of_type_Long;
+    localAIOFilePictureData.jdField_d_of_type_Long = paramAIOFilePicData.jdField_i_of_type_Long;
+    localAIOFilePictureData.jdField_b_of_type_Int = paramAIOFilePicData.jdField_g_of_type_Int;
+    localAIOFilePictureData.jdField_a_of_type_Boolean = paramAIOFilePicData.jdField_k_of_type_Boolean;
+    localAIOFilePictureData.jdField_b_of_type_Boolean = paramAIOFilePicData.jdField_l_of_type_Boolean;
+    localAIOFilePictureData.jdField_c_of_type_Boolean = paramAIOFilePicData.jdField_m_of_type_Boolean;
+    localAIOFilePictureData.jdField_a_of_type_JavaLangString = paramAIOFilePicData.jdField_a_of_type_JavaLangString;
+    localAIOFilePictureData.jdField_c_of_type_Int = paramAIOFilePicData.jdField_a_of_type_Int;
+    localAIOFilePictureData.jdField_b_of_type_JavaLangString = paramAIOFilePicData.jdField_b_of_type_JavaLangString;
+    localAIOFilePictureData.jdField_c_of_type_JavaLangString = paramAIOFilePicData.jdField_c_of_type_JavaLangString;
+    localAIOFilePictureData.jdField_d_of_type_JavaLangString = paramAIOFilePicData.jdField_d_of_type_JavaLangString;
+    localAIOFilePictureData.jdField_e_of_type_JavaLangString = paramAIOFilePicData.jdField_e_of_type_JavaLangString;
+    localAIOFilePictureData.jdField_f_of_type_JavaLangString = paramAIOFilePicData.jdField_f_of_type_JavaLangString;
+    localAIOFilePictureData.jdField_d_of_type_Int = paramAIOFilePicData.jdField_b_of_type_Int;
+    localAIOFilePictureData.jdField_g_of_type_JavaLangString = paramAIOFilePicData.jdField_g_of_type_JavaLangString;
+    localAIOFilePictureData.jdField_g_of_type_Boolean = paramAIOFilePicData.jdField_d_of_type_Boolean;
+    localAIOFilePictureData.jdField_e_of_type_Long = paramAIOFilePicData.jdField_a_of_type_Long;
+    localAIOFilePictureData.jdField_f_of_type_Long = paramAIOFilePicData.jdField_b_of_type_Long;
+    localAIOFilePictureData.jdField_h_of_type_Boolean = paramAIOFilePicData.jdField_e_of_type_Boolean;
+    localAIOFilePictureData.jdField_h_of_type_JavaLangString = paramAIOFilePicData.jdField_h_of_type_JavaLangString;
+    localAIOFilePictureData.jdField_i_of_type_JavaLangString = paramAIOFilePicData.jdField_i_of_type_JavaLangString;
+    localAIOFilePictureData.jdField_e_of_type_Int = paramAIOFilePicData.jdField_c_of_type_Int;
+    localAIOFilePictureData.jdField_f_of_type_Int = paramAIOFilePicData.jdField_d_of_type_Int;
+    localAIOFilePictureData.jdField_g_of_type_Int = paramAIOFilePicData.jdField_e_of_type_Int;
+    return localAIOFilePictureData;
+  }
+  
+  public static com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData a(com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData paramAIOFileVideoData)
+  {
+    com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData localAIOFileVideoData = new com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData();
+    localAIOFileVideoData.jdField_a_of_type_Long = paramAIOFileVideoData.jdField_f_of_type_Long;
+    localAIOFileVideoData.jdField_a_of_type_Int = paramAIOFileVideoData.jdField_f_of_type_Int;
+    localAIOFileVideoData.jdField_b_of_type_Long = paramAIOFileVideoData.jdField_g_of_type_Long;
+    localAIOFileVideoData.jdField_c_of_type_Long = paramAIOFileVideoData.jdField_h_of_type_Long;
+    localAIOFileVideoData.jdField_d_of_type_Long = paramAIOFileVideoData.jdField_i_of_type_Long;
+    localAIOFileVideoData.jdField_b_of_type_Int = paramAIOFileVideoData.jdField_g_of_type_Int;
+    localAIOFileVideoData.jdField_a_of_type_Boolean = paramAIOFileVideoData.jdField_k_of_type_Boolean;
+    localAIOFileVideoData.jdField_b_of_type_Boolean = paramAIOFileVideoData.jdField_l_of_type_Boolean;
+    localAIOFileVideoData.jdField_c_of_type_Boolean = paramAIOFileVideoData.jdField_m_of_type_Boolean;
+    localAIOFileVideoData.jdField_b_of_type_JavaLangString = paramAIOFileVideoData.jdField_b_of_type_JavaLangString;
+    localAIOFileVideoData.jdField_a_of_type_JavaLangString = paramAIOFileVideoData.jdField_a_of_type_JavaLangString;
+    localAIOFileVideoData.jdField_c_of_type_JavaLangString = paramAIOFileVideoData.jdField_c_of_type_JavaLangString;
+    localAIOFileVideoData.jdField_e_of_type_Long = paramAIOFileVideoData.jdField_a_of_type_Long;
+    localAIOFileVideoData.jdField_c_of_type_Int = paramAIOFileVideoData.jdField_a_of_type_Int;
+    localAIOFileVideoData.jdField_d_of_type_Int = paramAIOFileVideoData.jdField_b_of_type_Int;
+    localAIOFileVideoData.jdField_f_of_type_Boolean = paramAIOFileVideoData.jdField_c_of_type_Boolean;
+    localAIOFileVideoData.jdField_i_of_type_JavaLangString = paramAIOFileVideoData.jdField_h_of_type_JavaLangString;
+    localAIOFileVideoData.jdField_e_of_type_Int = paramAIOFileVideoData.jdField_c_of_type_Int;
+    localAIOFileVideoData.jdField_f_of_type_Int = paramAIOFileVideoData.jdField_d_of_type_Int;
+    localAIOFileVideoData.jdField_j_of_type_JavaLangString = paramAIOFileVideoData.jdField_i_of_type_JavaLangString;
+    localAIOFileVideoData.jdField_k_of_type_JavaLangString = paramAIOFileVideoData.jdField_j_of_type_JavaLangString;
+    return localAIOFileVideoData;
+  }
+  
+  public static AIOPictureData a(AIOImageData paramAIOImageData)
+  {
+    AIOPictureData localAIOPictureData = new AIOPictureData();
+    localAIOPictureData.jdField_a_of_type_Long = paramAIOImageData.jdField_f_of_type_Long;
+    localAIOPictureData.jdField_a_of_type_Int = paramAIOImageData.jdField_f_of_type_Int;
+    localAIOPictureData.jdField_b_of_type_Long = paramAIOImageData.jdField_g_of_type_Long;
+    localAIOPictureData.jdField_c_of_type_Long = paramAIOImageData.jdField_h_of_type_Long;
+    localAIOPictureData.jdField_d_of_type_Long = paramAIOImageData.jdField_i_of_type_Long;
+    localAIOPictureData.jdField_b_of_type_Int = paramAIOImageData.jdField_g_of_type_Int;
+    localAIOPictureData.jdField_a_of_type_Boolean = paramAIOImageData.jdField_k_of_type_Boolean;
+    localAIOPictureData.jdField_b_of_type_Boolean = paramAIOImageData.jdField_l_of_type_Boolean;
+    localAIOPictureData.jdField_c_of_type_Boolean = paramAIOImageData.jdField_m_of_type_Boolean;
+    localAIOPictureData.jdField_a_of_type_JavaLangString = paramAIOImageData.jdField_a_of_type_JavaLangString;
+    localAIOPictureData.jdField_b_of_type_JavaLangString = paramAIOImageData.jdField_b_of_type_JavaLangString;
+    localAIOPictureData.jdField_c_of_type_JavaLangString = paramAIOImageData.jdField_c_of_type_JavaLangString;
+    localAIOPictureData.jdField_d_of_type_JavaLangString = paramAIOImageData.jdField_d_of_type_JavaLangString;
+    localAIOPictureData.jdField_e_of_type_JavaLangString = paramAIOImageData.jdField_e_of_type_JavaLangString;
+    localAIOPictureData.jdField_g_of_type_Long = paramAIOImageData.jdField_c_of_type_Long;
+    localAIOPictureData.jdField_h_of_type_Long = paramAIOImageData.jdField_d_of_type_Long;
+    localAIOPictureData.jdField_e_of_type_Long = paramAIOImageData.jdField_a_of_type_Long;
+    localAIOPictureData.jdField_f_of_type_Long = paramAIOImageData.jdField_b_of_type_Long;
+    localAIOPictureData.jdField_g_of_type_Boolean = paramAIOImageData.jdField_d_of_type_Boolean;
+    localAIOPictureData.jdField_h_of_type_Boolean = paramAIOImageData.jdField_e_of_type_Boolean;
+    localAIOPictureData.jdField_i_of_type_Boolean = paramAIOImageData.jdField_f_of_type_Boolean;
+    localAIOPictureData.jdField_c_of_type_Int = paramAIOImageData.jdField_a_of_type_Int;
+    localAIOPictureData.jdField_d_of_type_Int = paramAIOImageData.jdField_b_of_type_Int;
+    localAIOPictureData.jdField_a_of_type_JavaLangObject = paramAIOImageData.jdField_a_of_type_JavaLangObject;
+    localAIOPictureData.jdField_j_of_type_Boolean = paramAIOImageData.jdField_g_of_type_Boolean;
+    localAIOPictureData.jdField_i_of_type_Long = paramAIOImageData.jdField_e_of_type_Long;
+    localAIOPictureData.jdField_g_of_type_JavaLangString = paramAIOImageData.jdField_g_of_type_JavaLangString;
+    localAIOPictureData.jdField_h_of_type_JavaLangString = paramAIOImageData.jdField_h_of_type_JavaLangString;
+    localAIOPictureData.jdField_e_of_type_Int = paramAIOImageData.jdField_c_of_type_Int;
+    localAIOPictureData.jdField_f_of_type_Int = paramAIOImageData.jdField_d_of_type_Int;
+    localAIOPictureData.jdField_i_of_type_JavaLangString = paramAIOImageData.jdField_i_of_type_JavaLangString;
+    localAIOPictureData.jdField_f_of_type_JavaLangString = paramAIOImageData.jdField_f_of_type_JavaLangString;
+    localAIOPictureData.jdField_j_of_type_JavaLangString = paramAIOImageData.jdField_j_of_type_JavaLangString;
+    localAIOPictureData.jdField_k_of_type_JavaLangString = paramAIOImageData.jdField_k_of_type_JavaLangString;
+    localAIOPictureData.jdField_k_of_type_Boolean = paramAIOImageData.jdField_h_of_type_Boolean;
+    localAIOPictureData.jdField_g_of_type_Int = paramAIOImageData.jdField_e_of_type_Int;
+    localAIOPictureData.jdField_l_of_type_Boolean = paramAIOImageData.jdField_i_of_type_Boolean;
+    localAIOPictureData.jdField_l_of_type_JavaLangString = paramAIOImageData.jdField_l_of_type_JavaLangString;
+    localAIOPictureData.jdField_m_of_type_Boolean = paramAIOImageData.jdField_j_of_type_Boolean;
+    localAIOPictureData.jdField_m_of_type_JavaLangString = paramAIOImageData.jdField_m_of_type_JavaLangString;
+    localAIOPictureData.n = paramAIOImageData.n;
+    localAIOPictureData.o = paramAIOImageData.o;
+    localAIOPictureData.p = paramAIOImageData.p;
+    return localAIOPictureData;
+  }
+  
+  public static AIOVideoData a(AIOShortVideoData paramAIOShortVideoData)
+  {
+    AIOVideoData localAIOVideoData = new AIOVideoData();
+    localAIOVideoData.jdField_a_of_type_Long = paramAIOShortVideoData.jdField_f_of_type_Long;
+    localAIOVideoData.jdField_a_of_type_Int = paramAIOShortVideoData.jdField_f_of_type_Int;
+    localAIOVideoData.jdField_b_of_type_Long = paramAIOShortVideoData.jdField_g_of_type_Long;
+    localAIOVideoData.jdField_c_of_type_Long = paramAIOShortVideoData.jdField_h_of_type_Long;
+    localAIOVideoData.jdField_d_of_type_Long = paramAIOShortVideoData.jdField_i_of_type_Long;
+    localAIOVideoData.jdField_b_of_type_Int = paramAIOShortVideoData.jdField_g_of_type_Int;
+    localAIOVideoData.jdField_a_of_type_Boolean = paramAIOShortVideoData.jdField_k_of_type_Boolean;
+    localAIOVideoData.jdField_b_of_type_Boolean = paramAIOShortVideoData.jdField_l_of_type_Boolean;
+    localAIOVideoData.jdField_c_of_type_Boolean = paramAIOShortVideoData.jdField_m_of_type_Boolean;
+    localAIOVideoData.jdField_a_of_type_JavaLangString = paramAIOShortVideoData.jdField_a_of_type_JavaLangString;
+    localAIOVideoData.jdField_b_of_type_JavaLangString = paramAIOShortVideoData.jdField_b_of_type_JavaLangString;
+    localAIOVideoData.jdField_c_of_type_Int = paramAIOShortVideoData.jdField_a_of_type_Int;
+    localAIOVideoData.jdField_d_of_type_Int = paramAIOShortVideoData.jdField_b_of_type_Int;
+    localAIOVideoData.jdField_e_of_type_Int = paramAIOShortVideoData.jdField_c_of_type_Int;
+    localAIOVideoData.jdField_f_of_type_Int = paramAIOShortVideoData.jdField_d_of_type_Int;
+    localAIOVideoData.jdField_e_of_type_Long = paramAIOShortVideoData.jdField_a_of_type_Long;
+    localAIOVideoData.jdField_g_of_type_Int = paramAIOShortVideoData.jdField_e_of_type_Int;
+    localAIOVideoData.jdField_c_of_type_JavaLangString = paramAIOShortVideoData.jdField_c_of_type_JavaLangString;
+    localAIOVideoData.jdField_d_of_type_JavaLangString = paramAIOShortVideoData.jdField_d_of_type_JavaLangString;
+    localAIOVideoData.jdField_h_of_type_Int = paramAIOShortVideoData.jdField_h_of_type_Int;
+    localAIOVideoData.jdField_e_of_type_JavaLangString = paramAIOShortVideoData.jdField_e_of_type_JavaLangString;
+    localAIOVideoData.jdField_i_of_type_Int = paramAIOShortVideoData.jdField_i_of_type_Int;
+    localAIOVideoData.jdField_k_of_type_Int = paramAIOShortVideoData.jdField_k_of_type_Int;
+    localAIOVideoData.j = paramAIOShortVideoData.j;
+    localAIOVideoData.jdField_f_of_type_JavaLangString = paramAIOShortVideoData.jdField_f_of_type_JavaLangString;
+    localAIOVideoData.jdField_g_of_type_JavaLangString = paramAIOShortVideoData.jdField_g_of_type_JavaLangString;
+    return localAIOVideoData;
+  }
+  
+  public static AIOBrowserBaseData[] a(AIORichMediaData[] paramArrayOfAIORichMediaData)
+  {
+    if (paramArrayOfAIORichMediaData == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayOfAIORichMediaData.length)
+    {
+      AIOBrowserBaseData localAIOBrowserBaseData = a(paramArrayOfAIORichMediaData[i]);
+      if (localAIOBrowserBaseData != null) {
+        localArrayList.add(localAIOBrowserBaseData);
+      }
+      i += 1;
+    }
+    if (localArrayList.size() > 0) {
+      return (AIOBrowserBaseData[])localArrayList.toArray(new AIOBrowserBaseData[localArrayList.size()]);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axuw
  * JD-Core Version:    0.7.0.1
  */

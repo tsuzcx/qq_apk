@@ -1,40 +1,25 @@
-import android.os.Bundle;
-import java.util.concurrent.CountDownLatch;
+import android.content.Intent;
+import java.util.ArrayList;
 
 class arjq
-  implements areo
+  implements army
 {
-  arjq(arjp paramarjp, arek paramarek, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
+  arjq(arjp paramarjp) {}
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      paramString = new Bundle();
-      paramString.putString("authid", this.jdField_a_of_type_Arek.a().b);
-      paramString.putString("authKey", this.jdField_a_of_type_Arek.a().jdField_a_of_type_JavaLangString);
-      paramString.putLong("accountUpdateTime", this.jdField_a_of_type_Arek.a().jdField_a_of_type_Long);
-      paramString.putString("payToken", this.jdField_a_of_type_Arek.a().c);
-      Bundle localBundle = new Bundle();
-      localBundle.putBundle("data", paramString);
-      localBundle.putBoolean("isSuccess", true);
-      localBundle.putInt("code", paramInt);
-      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
-      paramString = new Bundle();
-      paramString.putBoolean("isSuccess", false);
-      paramString.putInt("code", paramInt);
-      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = paramString;
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(aqxj.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    arjo.a(this.a.a, localIntent);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjq
  * JD-Core Version:    0.7.0.1
  */

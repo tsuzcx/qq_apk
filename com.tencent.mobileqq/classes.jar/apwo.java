@@ -1,157 +1,111 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.text.format.Time;
+import com.tencent.ims.devlock_mobile_phone.status;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
 
-class apwo
-  implements apwp
+public class apwo
 {
-  apwo(apwn paramapwn) {}
+  public static int a;
+  private static apwo jdField_a_of_type_Apwo;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  private long jdField_a_of_type_Long;
+  private int e = -1;
   
-  public void a(int paramInt, Bundle paramBundle)
+  static
   {
-    this.a.b(paramInt);
-    if (apwn.a(this.a) != null)
-    {
-      if (paramInt <= 100) {
-        break label45;
-      }
-      apwn.a(this.a).b(this.a.h(), paramBundle);
-    }
-    label45:
-    while (paramInt - this.a.g() <= 0) {
-      return;
-    }
-    this.a.a(paramInt);
-    apwn.a(this.a).b(paramInt, paramBundle);
+    jdField_a_of_type_Int = -1;
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public static apwo a()
   {
-    this.a.c(5);
-    QQAppInterface localQQAppInterface = apdc.a().a();
-    if (localQQAppInterface != null)
+    if (jdField_a_of_type_Apwo == null) {
+      jdField_a_of_type_Apwo = new apwo();
+    }
+    return jdField_a_of_type_Apwo;
+  }
+  
+  public int a()
+  {
+    return this.e;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DevlockPhoneStatus", 2, "pre:" + this.e + " now:" + paramInt);
+    }
+    this.e = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(Context paramContext, String paramString)
+  {
+    apwp localapwp = new apwp(this);
+    String str2 = paramContext.getString(2131692225);
+    String str1 = paramContext.getString(2131692209);
+    long l = this.jdField_a_of_type_Long * 1000L;
+    if (l > 0L)
     {
-      long l1 = -1L;
-      long l2 = -1L;
-      apwt localapwt = apwt.a(paramBundle);
-      if (localapwt != null)
+      localObject = new Time();
+      ((Time)localObject).set(l);
+    }
+    for (Object localObject = String.format(paramContext.getString(2131692223), new Object[] { Integer.valueOf(((Time)localObject).year), Integer.valueOf(((Time)localObject).month + 1), Integer.valueOf(((Time)localObject).monthDay), Integer.valueOf(((Time)localObject).hour), Integer.valueOf(((Time)localObject).minute) });; localObject = paramContext.getString(2131692224))
+    {
+      paramContext = bdcd.a(paramContext, 230, str2, String.format(paramContext.getString(2131692222), new Object[] { paramString, localObject }), null, localapwp);
+      if (paramContext != null)
       {
-        l1 = localapwt.jdField_a_of_type_Long;
-        l2 = localapwt.b;
+        paramContext.setNegativeButton(str1, localapwp);
+        paramContext.show();
       }
-      apug.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-      apug.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-      axrm.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-0");
+      return;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    this.e = jdField_a_of_type_Int;
+    this.jdField_a_of_type_Long = 0L;
+    if (paramArrayOfByte == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("DevlockPhoneStatus", 2, "info is null");
+      }
     }
     for (;;)
     {
-      if (apwn.a(this.a) != null) {
-        apwn.a(this.a).a(paramInt, paramString, paramBundle);
-      }
       return;
-      QLog.w(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 6");
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (apwn.a(this.a) != null) {
-      apwn.a(this.a).a(this.a.h(), null);
-    }
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    QLog.i(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "] >>>>>>Download SUCCESS. sdk download path=" + paramString);
-    this.a.c(4);
-    if (paramString == null)
-    {
-      QLog.e(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. download success, but filepath = null");
-      a(40, apwj.a(40), paramBundle);
-    }
-    label783:
-    label821:
-    for (;;)
-    {
-      return;
-      if (bbdx.a(this.a.e)) {
-        this.a.e = apug.b(this.a.e);
-      }
-      QLog.i(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. try to rename file to path:" + this.a.e);
-      Object localObject;
-      if (!bbdx.b(new File(paramString), new File(this.a.e)))
+      try
       {
-        QLog.e(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed. temppath=" + paramString + " save path=" + this.a.e);
-        localObject = apvd.c(paramString);
-        if (!apug.b().equalsIgnoreCase((String)localObject))
+        devlock_mobile_phone.status localstatus = new devlock_mobile_phone.status();
+        localstatus.mergeFrom(paramArrayOfByte);
+        if (localstatus.u32_mb_mobile_state.has()) {
+          this.e = localstatus.u32_mb_mobile_state.get();
+        }
+        if (localstatus.u32_audit_time.has())
         {
-          String str = (String)localObject + this.a.d;
-          localObject = str;
-          if (bbdx.a(str)) {
-            localObject = apug.b(str);
-          }
-          QLog.i(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try to save file to path: " + (String)localObject);
-          if (!bbdx.b(new File(paramString), new File((String)localObject)))
-          {
-            QLog.e(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try failed save path: " + (String)localObject);
-            a(7, apwj.a(7), paramBundle);
-            return;
-          }
-          this.a.e = ((String)localObject);
+          this.jdField_a_of_type_Long = localstatus.u32_audit_time.get();
+          return;
         }
       }
-      else
+      catch (Throwable paramArrayOfByte)
       {
-        QLog.i(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename file success. path:" + this.a.e);
-        paramString = apdc.a().a();
-        if (paramString == null) {
-          break label783;
+        if (QLog.isColorLevel()) {
+          QLog.d("DevlockPhoneStatus", 2, "exception occurs");
         }
-        long l1 = -1L;
-        long l2 = -1L;
-        localObject = apwt.a(paramBundle);
-        if (localObject == null) {
-          break label743;
-        }
-        l1 = ((apwt)localObject).jdField_a_of_type_Long;
-        l2 = ((apwt)localObject).b;
-        apug.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
-        apug.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
-        axrm.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_0");
-      }
-      for (;;)
-      {
-        if (apwn.a(this.a) == null) {
-          break label821;
-        }
-        apwn.a(this.a).a(this.a.e, this.a.b, paramBundle);
-        return;
-        QLog.e(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed 2, try failed save path: " + paramString);
-        a(7, apwj.a(7), paramBundle);
-        return;
-        label743:
-        QLog.w(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report may failed - 0");
-        break;
-        QLog.i(apwn.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 7");
+        paramArrayOfByte.printStackTrace();
       }
     }
   }
-  
-  public void b(Bundle paramBundle)
-  {
-    this.a.c(3);
-    if (apwn.a(this.a) != null) {
-      apwn.a(this.a).c(this.a.h(), null);
-    }
-  }
-  
-  public void c(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwo
  * JD-Core Version:    0.7.0.1
  */

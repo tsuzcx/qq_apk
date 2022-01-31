@@ -1,22 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aqjv
-  implements CompoundButton.OnCheckedChangeListener
+class aqjv
+  implements army
 {
-  public aqjv(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  aqjv(aqjt paramaqjt, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    ((aseu)this.a.a.getManager(303)).a((short)-23309, paramBoolean, true);
-    axqy.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 5, 5, "", "", "", "");
+    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_Aqjt.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjv
  * JD-Core Version:    0.7.0.1
  */

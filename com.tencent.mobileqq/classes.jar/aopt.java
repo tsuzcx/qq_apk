@@ -1,19 +1,38 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
 
-public class aopt
-  implements bfpj
+class aopt
+  implements aooy
 {
-  public aopt(UniformDownloadActivity paramUniformDownloadActivity) {}
+  aopt(aopq paramaopq) {}
   
-  public void onDismiss()
+  public void a(Context paramContext)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    Intent localIntent = new Intent();
+    localIntent.addFlags(268435456);
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      localIntent.setAction(aopq.a(this.a));
+      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
+    }
+    for (;;)
+    {
+      paramContext.startActivity(localIntent);
+      return;
+      if (Build.VERSION.SDK_INT <= 8)
+      {
+        localIntent.setAction("android.intent.action.VIEW");
+        localIntent.setClassName("com.android.settings", aopq.a(this.a));
+        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopt
  * JD-Core Version:    0.7.0.1
  */

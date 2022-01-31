@@ -1,47 +1,56 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver.1;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.database.PromoteTaskEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.PromoteTask;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class usx
-  extends QQUIEventReceiver<ust, utn>
 {
-  public usx(ust paramust)
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
+  public long e;
+  
+  public static usx a(qqstory_service.PromoteTask paramPromoteTask)
   {
-    super(paramust);
+    usx localusx = new usx();
+    localusx.jdField_a_of_type_Long = paramPromoteTask.uint64_taskid.get();
+    localusx.jdField_a_of_type_Int = paramPromoteTask.uint32_promote_type.get();
+    localusx.jdField_a_of_type_JavaLangString = paramPromoteTask.bytes_union_id.get().toStringUtf8();
+    localusx.jdField_b_of_type_JavaLangString = paramPromoteTask.bytes_feed_id.get().toStringUtf8();
+    localusx.jdField_b_of_type_Long = paramPromoteTask.uint64_limit_count.get();
+    localusx.c = paramPromoteTask.uint64_minimal_video_count.get();
+    localusx.d = paramPromoteTask.uint64_expire_time.get();
+    return localusx;
   }
   
-  public void a(@NonNull ust paramust, @NonNull utn paramutn)
+  public PromoteTaskEntry a()
   {
-    if (paramutn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      paramutn = paramutn.jdField_a_of_type_JavaUtilList.iterator();
-      for (int i = 0; paramutn.hasNext(); i = ((MomeriesYearNode)paramutn.next()).videoCount + i) {}
-      if (i >= 0)
-      {
-        ved.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
-        ust.a(paramust, i);
-        if (paramust.a != null)
-        {
-          paramust.a.videoCount = ust.a(paramust);
-          ThreadManager.post(new MemoriesProfilePresenter.GetYearNodeListReceiver.1(this, paramust), 5, null, false);
-        }
-      }
-    }
+    PromoteTaskEntry localPromoteTaskEntry = new PromoteTaskEntry();
+    localPromoteTaskEntry.taskId = this.jdField_a_of_type_Long;
+    localPromoteTaskEntry.type = this.jdField_a_of_type_Int;
+    localPromoteTaskEntry.unionId = this.jdField_a_of_type_JavaLangString;
+    localPromoteTaskEntry.feedId = this.jdField_b_of_type_JavaLangString;
+    localPromoteTaskEntry.limitPromoteCount = this.jdField_b_of_type_Long;
+    localPromoteTaskEntry.minimalVideoCount = this.c;
+    localPromoteTaskEntry.expireTime = this.d;
+    localPromoteTaskEntry.promoteCount = this.e;
+    return localPromoteTaskEntry;
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return utn.class;
+    return "PromoteTaskItem{taskId=" + this.jdField_a_of_type_Long + ", type=" + this.jdField_a_of_type_Int + ", unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", limitPromoteCount=" + this.jdField_b_of_type_Long + ", minimalVideoCount=" + this.c + ", expireTime=" + this.d + ", promoteCount=" + this.e + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,50 @@
-import java.io.File;
-import java.util.ArrayList;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public class wzd
+public final class wzd
+  extends wzy
 {
-  public int a;
-  String jdField_a_of_type_JavaLangString;
-  public ArrayList<String> a;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
-  public ArrayList<String> b;
-  boolean b;
-  public String c;
-  public ArrayList<File> c = new ArrayList();
-  public String d;
-  public String e;
-  
-  public wzd(wyt paramwyt)
+  public wzd(DoodleView paramDoodleView)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramDoodleView);
+  }
+  
+  public String a()
+  {
+    return "EmptyLayer";
+  }
+  
+  public void a() {}
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    wsv.b("EmptyLayer", "EmptyLayer handle touch event.");
+    return false;
+  }
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzd
  * JD-Core Version:    0.7.0.1
  */

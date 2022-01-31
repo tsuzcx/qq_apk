@@ -10,7 +10,7 @@ import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import vem;
+import wte;
 
 public class DanceMachineQQBrowserActivity
   extends QQTranslucentBrowserActivity
@@ -81,7 +81,7 @@ public class DanceMachineQQBrowserActivity
   public void doOnResume()
   {
     getWindow().getDecorView().setSystemUiVisibility(2);
-    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new vem(this));
+    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new wte(this));
   }
   
   public void finish()
@@ -97,7 +97,7 @@ public class DanceMachineQQBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

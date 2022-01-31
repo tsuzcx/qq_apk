@@ -41,6 +41,7 @@ public class FaceOffUtil
   private static String GRAY_FILE_FACE_COS3D_MASK;
   private static String GRAY_FILE_FACE_SKIN;
   private static String GRAY_FILE_HAS_EYE;
+  private static String GRAY_FILE_LIPS_MASK;
   private static String GRAY_FILE_MASK;
   private static String GRAY_FILE_NOSE_MASK;
   private static String GRAY_FILE_NO_EYE;
@@ -65,6 +66,7 @@ public class FaceOffUtil
     GRAY_FILE_MASK = "assets://camera/camera_video/faceOff/grayImages/faceoffmask.png";
     GRAY_FILE_FACE_COS3D_MASK = "assets://camera/camera_video/faceOff/grayImages/faceMaskCos3D.png";
     GRAY_FILE_NOSE_MASK = "assets://camera/camera_video/faceOff/grayImages/faceoffnose.png";
+    GRAY_FILE_LIPS_MASK = "assets://realtimeBeauty/lipsMask.png";
     DEFAULT_BRUSH_POINT = "assets://camera/camera_video/defaultmask/default_brush_point.png";
     GRAY_CRAZY_SKIN_MERGE_MASK_NAME = "defaultMaskImage.jpg";
     EMPTY_POINT = new PointF();
@@ -2205,8 +2207,11 @@ public class FaceOffUtil
       if (paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.FACE_COS3D_MASK)) {
         return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_FACE_COS3D_MASK, 2147483647, 2147483647);
       }
-    } while (!paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.NOSE_MASK));
-    return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_NOSE_MASK, 2147483647, 2147483647);
+      if (paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.NOSE_MASK)) {
+        return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_NOSE_MASK, 2147483647, 2147483647);
+      }
+    } while (!paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.LIPS_MASK));
+    return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_LIPS_MASK, 2147483647, 2147483647);
   }
   
   public static List<PointF> getGrayCoords(FaceOffUtil.FEATURE_TYPE paramFEATURE_TYPE)
@@ -2897,6 +2902,11 @@ public class FaceOffUtil
   public static void setCrazyFacePath(String paramString)
   {
     GRAY_FILE_CRAZY_FACE = paramString;
+  }
+  
+  public static void setCrazyLipsMaskPath(String paramString)
+  {
+    GRAY_FILE_LIPS_MASK = paramString;
   }
   
   public static void setCrazyMaskCos3DPath(String paramString)

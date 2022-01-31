@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aaob;
+import acez;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public class ChatActivityFacade$17$1$1
   implements Runnable
 {
-  public ChatActivityFacade$17$1$1(aaob paramaaob) {}
+  public ChatActivityFacade$17$1$1(acez paramacez) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class ChatActivityFacade$17$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.17.1.1
  * JD-Core Version:    0.7.0.1
  */

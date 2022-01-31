@@ -1,41 +1,29 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.lebasearch.Utils;
+import android.app.Activity;
+import android.view.View;
 
-public final class ncz
-  implements DialogInterface.OnClickListener
+class ncz
+  implements bhqd
 {
-  public ncz(int paramInt, ajte paramajte, Context paramContext, wxr paramwxr, long paramLong) {}
+  ncz(ncv paramncv, Activity paramActivity, String paramString, bhpy parambhpy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
-    default: 
-      return;
-    case 1: 
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_Ajte.onUpdate(17, false, null);
-        paramDialogInterface.dismiss();
-        return;
-      }
-      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wxr, this.jdField_a_of_type_Ajte, this.jdField_a_of_type_Long, false);
-      return;
     }
-    if (this.jdField_a_of_type_Int == 1)
+    for (;;)
     {
-      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wxr, this.jdField_a_of_type_Ajte, this.jdField_a_of_type_Long, true);
+      this.jdField_a_of_type_Bhpy.dismiss();
       return;
+      ncv.b(this.jdField_a_of_type_Ncv, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      ncv.a(this.jdField_a_of_type_Ncv, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Ajte.onUpdate(17, false, null);
-    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncz
  * JD-Core Version:    0.7.0.1
  */

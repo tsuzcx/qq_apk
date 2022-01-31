@@ -1,52 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.3;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
 
 public class rwa
-  implements myy
+  extends RecyclerViewWithHeaderFooterFix
 {
-  public rwa(ViolaAccessHelper.3 param3) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public rwa(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "downOffline  code " + paramInt + "  param " + paramString);
-    }
-    if (paramInt == 0) {
-      if (paramString == null) {
-        if (this.a.jdField_a_of_type_Rwe != null) {
-          this.a.jdField_a_of_type_Rwe.a();
-        }
-      }
-    }
-    while (this.a.jdField_a_of_type_Rwe == null)
-    {
-      return;
-      if (paramString.contains("url"))
-      {
-        QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. contains url. cost=", Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) });
-        return;
-      }
-      long l1 = System.currentTimeMillis();
-      long l2 = this.a.jdField_a_of_type_Long;
-      if (this.a.jdField_a_of_type_Rwe != null) {
-        this.a.jdField_a_of_type_Rwe.a();
-      }
-      QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. no update. cost=", Long.valueOf(l1 - l2) });
-      return;
-    }
-    this.a.jdField_a_of_type_Rwe.b();
+    super(paramContext);
   }
   
-  public void progress(int paramInt)
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Rwe != null) {
-      this.a.jdField_a_of_type_Rwe.a(paramInt);
-    }
+    super.a(paramViewHolder, paramInt);
+    this.a.a(paramViewHolder, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rwa
  * JD-Core Version:    0.7.0.1
  */

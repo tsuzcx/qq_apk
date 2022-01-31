@@ -1,25 +1,40 @@
-import android.view.MotionEvent;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import java.util.HashSet;
 
 public class awld
-  implements View.OnTouchListener
+  implements Animator.AnimatorListener
 {
-  public awld(BaseSearchFragment paramBaseSearchFragment) {}
+  public awld(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, awlg paramawlg, View paramView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Awlg.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.height = -2;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Awlg.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.height = -2;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awld
  * JD-Core Version:    0.7.0.1
  */

@@ -1,121 +1,22 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-class nyq
-  extends rkg
+public class nyq
+  implements asry
 {
-  private ProteusItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  public nyq(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public nyq(nyp paramnyp, View paramView, BaseData paramBaseData)
+  public void a(HotPicData paramHotPicData)
   {
-    super(paramView, paramBaseData);
-    if ((paramView instanceof Container)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
-    }
-  }
-  
-  private void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
-  {
-    paramJSONObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView();
-    ViewFactory.findClickableViewListener(paramJSONObject, new nyr(this, paramContext, paramBaseData, paramJSONObject));
-  }
-  
-  private void a(Container paramContainer, ProteusItemData paramProteusItemData)
-  {
-    if (paramContainer != null)
-    {
-      ViewBase localViewBase = paramContainer.getVirtualView();
-      Object localObject = localViewBase.findViewBaseByName("id_view_AdDownloadView");
-      if ((localObject != null) && ((localObject instanceof odd)))
-      {
-        localObject = (odd)localObject;
-        ((odd)localObject).b(false);
-        ((odd)localObject).a(false);
-        ((odd)localObject).a(null, true);
-      }
-      if (((paramProteusItemData instanceof AdData)) && (((AdData)paramProteusItemData).a != null) && (oai.a((AdData)paramProteusItemData)))
-      {
-        localObject = localViewBase.findViewBaseByName("id_inner_small_img");
-        if ((localObject != null) && ((localObject instanceof pme)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.k))) {
-          oai.a(paramContainer.getContext(), (ViewBase)localObject, ((AdData)paramProteusItemData).a.k, 10);
-        }
-        localObject = localViewBase.findViewBaseByName("id_inner_game_img1");
-        if ((localObject != null) && ((localObject instanceof pme)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.d))) {
-          oai.a(paramContainer.getContext(), (ViewBase)localObject, ((AdData)paramProteusItemData).a.a.d, 10);
-        }
-        localObject = localViewBase.findViewBaseByName("id_inner_game_img2");
-        if ((localObject != null) && ((localObject instanceof pme)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.e))) {
-          oai.a(paramContainer.getContext(), (ViewBase)localObject, ((AdData)paramProteusItemData).a.a.e, 10);
-        }
-        localViewBase = localViewBase.findViewBaseByName("id_inner_game_img3");
-        if ((localViewBase != null) && ((localViewBase instanceof pme)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.f))) {
-          oai.a(paramContainer.getContext(), localViewBase, ((AdData)paramProteusItemData).a.a.f, 10);
-        }
-      }
-    }
-  }
-  
-  private void a(ViewBase paramViewBase)
-  {
-    if (paramViewBase == null) {}
-    do
-    {
-      return;
-      paramViewBase = paramViewBase.findViewBaseByName("id_view_AdDownloadView");
-    } while ((paramViewBase == null) || (!(paramViewBase instanceof odd)));
-    ((odd)paramViewBase).a(false);
-  }
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
-    TemplateBean localTemplateBean;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramBaseData2 instanceof ProteusItemData));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
-      localTemplateBean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
-    } while (localTemplateBean == null);
-    if (paramBaseData1 != paramBaseData2) {}
-    try
-    {
-      localTemplateBean.getViewBean().bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, localTemplateBean.getViewDataBinding());
-      olo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
-      if (nyp.a(this.jdField_a_of_type_Nyp) != null) {
-        a(paramBaseData2, (Context)nyp.a(this.jdField_a_of_type_Nyp).get(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b);
-      }
-      this.jdField_a_of_type_AndroidViewView.setTag(2131362033, paramBaseData2);
-      return;
-    }
-    catch (Exception paramBaseData1)
-    {
-      for (;;)
-      {
-        paramBaseData1.printStackTrace();
-      }
+    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
+      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyq
  * JD-Core Version:    0.7.0.1
  */

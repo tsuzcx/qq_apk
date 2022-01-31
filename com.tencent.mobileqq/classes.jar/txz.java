@@ -1,38 +1,36 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-class txz
-  implements tbc
+public class txz
+  extends yfn
 {
-  txz(txy paramtxy, CommentEntry paramCommentEntry, boolean paramBoolean) {}
+  private QCircleInitBean a;
   
-  public void a(int paramInt, Bundle paramBundle)
+  public txz(QCircleInitBean paramQCircleInitBean)
   {
-    a(-1, ajya.a(2131702180));
+    this.a = paramQCircleInitBean;
   }
   
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    bcql.a(BaseApplication.getContext(), 1, ajya.a(2131702177), 0).a();
-    ved.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
-  }
+  public void a() {}
   
-  public void a(MessageMicro paramMessageMicro)
+  public void a(yft paramyft)
   {
-    if (!txt.b(this.jdField_a_of_type_Txy.a)) {
-      txt.a(this.jdField_a_of_type_Txy.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    if ((this.a != null) && (this.a.getTagInfo() != null) && ((!TextUtils.isEmpty(this.a.getTagInfo().tagId.get())) || (!TextUtils.isEmpty(this.a.getTagInfo().tagName.get()))))
+    {
+      QCircleGetFeedListRequest localQCircleGetFeedListRequest = new QCircleGetFeedListRequest(this.a.getTagInfo().tagId.get(), this.a.getTagInfo().tagName.get(), null);
+      paramyft = new tya(this, paramyft);
+      localQCircleGetFeedListRequest.setEnableCache(true);
+      VSNetworkHelper.a().a(localQCircleGetFeedListRequest, paramyft);
     }
   }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,52 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.app.Activity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public class bbtz
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+class bbtz
+  implements View.OnKeyListener
 {
-  public bbtz(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  private bbtz(bbtx parambbtx) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
-    }
-    if (this.a.jdField_a_of_type_Boolean)
+    Activity localActivity = this.a.a();
+    if (localActivity != null)
     {
-      paramTVK_IMediaPlayer.pause();
-      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
+      this.a.a().finish();
+      localActivity.overridePendingTransition(2130772036, 2130772233);
     }
-    for (;;)
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
-      return;
-      paramTVK_IMediaPlayer.start();
+    default: 
+      bool1 = false;
     }
+    do
+    {
+      return bool1;
+      bool1 = bool2;
+      switch (paramKeyEvent.getAction())
+      {
+      case 0: 
+      default: 
+        break;
+      case 1: 
+        bool1 = bool2;
+      }
+    } while (paramKeyEvent.isCanceled());
+    a();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbtz
  * JD-Core Version:    0.7.0.1
  */

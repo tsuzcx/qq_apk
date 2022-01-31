@@ -1,55 +1,19 @@
-import com.tencent.ttpic.videoshelf.model.VideoShelfEngine.Callback;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-import java.lang.ref.WeakReference;
-
 public class biyg
-  implements VideoShelfEngine.Callback
 {
-  private WeakReference<AEVideoShelfEditFragment> a;
+  public String biz_params;
+  public String bus_type;
+  public String people_num;
+  public String pick_entry;
+  public String recv_type;
   
-  public biyg(AEVideoShelfEditFragment paramAEVideoShelfEditFragment)
+  public String toString()
   {
-    this.a = new WeakReference(paramAEVideoShelfEditFragment);
-  }
-  
-  public void onCancelCompleted()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfEditFragment)this.a.get()).e();
-    }
-  }
-  
-  public void onCompleted()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfEditFragment)this.a.get()).d();
-    }
-  }
-  
-  public void onError(int paramInt1, int paramInt2, String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfEditFragment)this.a.get()).a(paramInt1, paramInt2, paramString);
-    }
-  }
-  
-  public void onProgress(int paramInt)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfEditFragment)this.a.get()).a(paramInt);
-    }
-  }
-  
-  public void onStartGenerate()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfEditFragment)this.a.get()).c();
-    }
+    return new StringBuilder().append("people_num: ").append(this.people_num).toString() + new StringBuilder().append("recv_type: ").append(this.recv_type).toString() + new StringBuilder().append("bus_type: ").append(this.bus_type).toString() + new StringBuilder().append("pick_entry: ").append(this.pick_entry).toString() + new StringBuilder().append("biz_params: ").append(this.biz_params).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biyg
  * JD-Core Version:    0.7.0.1
  */

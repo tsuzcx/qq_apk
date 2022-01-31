@@ -1,14 +1,7 @@
-public abstract interface alzo
-{
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-}
+public class alzo {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzo
  * JD-Core Version:    0.7.0.1
  */

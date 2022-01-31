@@ -1,49 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Message;
+import com.tencent.kwstudio.office.base.Log;
+import com.tencent.kwstudio.office.debug.Debugger.IDebugCallback;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
+import java.lang.ref.WeakReference;
 
-final class arcm
-  implements EIPCResultCallback
+public final class arcm
+  implements Debugger.IDebugCallback
 {
-  arcm(arcn paramarcn) {}
+  private final WeakReference<TdsDebugView> a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private arcm(TdsDebugView paramTdsDebugView)
   {
-    String str = null;
-    QLog.d("FaceLoginHelper", 1, "callServer error_code:" + paramEIPCResult.code);
-    FaceDetectForThirdPartyManager.AppConf localAppConf;
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      str = ajya.a(2131714525);
-      localAppConf = null;
-    }
-    while ((paramEIPCResult.code != 0) || (paramEIPCResult.data == null))
-    {
-      this.a.a(paramEIPCResult.code, str);
+    this.a = new WeakReference(paramTdsDebugView);
+  }
+  
+  public void onCleanCache(String paramString, int paramInt)
+  {
+    Log.d("TdsDebugView", "onCleanCache: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
       return;
-      if (paramEIPCResult.data != null)
-      {
-        localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf");
-        QLog.d("FaceLoginHelper", 1, "callServer error_code:" + localAppConf);
-      }
-      else
-      {
-        str = ajya.a(2131714525);
-        localAppConf = null;
-        continue;
-        str = ajya.a(2131692278);
-        localAppConf = null;
-      }
     }
-    this.a.a(localAppConf);
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 3, paramInt, 0, paramString).sendToTarget();
+  }
+  
+  public void onCleanPlugin(String paramString, int paramInt)
+  {
+    Log.d("TdsDebugView", "onCleanPlugin: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
+    }
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 1, paramInt, 0, paramString).sendToTarget();
+  }
+  
+  public void onUpgradePlugin(String paramString, int paramInt)
+  {
+    Log.d("TdsDebugView", "onUpgradePlugin: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
+    }
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 2, paramInt, 0, paramString).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arcm
  * JD-Core Version:    0.7.0.1
  */

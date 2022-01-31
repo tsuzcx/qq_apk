@@ -1,28 +1,51 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.text.TextUtils;
 
-public final class afgm
-  implements MessageQueue.IdleHandler
+abstract class afgm
 {
-  final SearchContactsActivity a;
+  protected int a;
+  protected afli a;
+  protected String a;
+  protected int b;
+  protected String b;
   
-  public afgm(SearchContactsActivity paramSearchContactsActivity)
+  public int a()
   {
-    this.a = paramSearchContactsActivity;
+    return this.jdField_b_of_type_Int;
   }
   
-  public boolean queueIdle()
+  public String a()
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    return this.jdField_b_of_type_JavaLangString;
   }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(afli paramafli)
+  {
+    this.jdField_a_of_type_Afli = paramafli;
+  }
+  
+  public boolean a(String paramString)
+  {
+    a();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = -1;
+    return true;
+  }
+  
+  public abstract boolean b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgm
  * JD-Core Version:    0.7.0.1
  */

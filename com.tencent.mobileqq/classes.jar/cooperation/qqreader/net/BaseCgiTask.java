@@ -5,12 +5,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfnn;
-import bgvh;
-import bgvj;
-import bgwf;
-import bgwk;
-import com.squareup.okhttp.MediaType;
+import bhoi;
+import biwg;
+import biwi;
+import bixe;
+import bixj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -24,6 +23,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
+import okhttp3.MediaType;
 
 public abstract class BaseCgiTask
   implements Runnable
@@ -32,12 +32,12 @@ public abstract class BaseCgiTask
   public static String b = "AND";
   public static String c = "QQPLUGIN_B";
   protected Context a;
-  private bgvh jdField_a_of_type_Bgvh;
-  private WeakReference<bgvh> jdField_a_of_type_JavaLangRefWeakReference;
+  private biwg jdField_a_of_type_Biwg;
+  private WeakReference<biwg> jdField_a_of_type_JavaLangRefWeakReference;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "8.3.0.0001";
+    jdField_a_of_type_JavaLangString = "8.3.3.0001";
   }
   
   public BaseCgiTask()
@@ -45,13 +45,13 @@ public abstract class BaseCgiTask
     this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
   }
   
-  private bgvh a()
+  private biwg a()
   {
-    if (this.jdField_a_of_type_Bgvh != null) {
-      return this.jdField_a_of_type_Bgvh;
+    if (this.jdField_a_of_type_Biwg != null) {
+      return this.jdField_a_of_type_Biwg;
     }
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (bgvh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      return (biwg)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
     return null;
   }
@@ -69,7 +69,7 @@ public abstract class BaseCgiTask
       for (;;)
       {
         Object localObject2;
-        bgwf.a("BaseCgiTask", "getRequestContent", localIOException);
+        bixe.a("BaseCgiTask", "getRequestContent", localIOException);
         continue;
         localObject1 = a(new String((byte[])localObject1), 100);
       }
@@ -91,33 +91,33 @@ public abstract class BaseCgiTask
     return paramString.substring(0, paramInt);
   }
   
-  private void a(bgvj parambgvj)
+  private void a(biwi parambiwi)
   {
-    bgvh localbgvh = a();
-    if (localbgvh != null)
+    biwg localbiwg = a();
+    if (localbiwg != null)
     {
-      localbgvh.b(parambgvj);
-      ThreadManager.getUIHandler().post(new BaseCgiTask.1(this, localbgvh, parambgvj));
+      localbiwg.b(parambiwi);
+      ThreadManager.getUIHandler().post(new BaseCgiTask.1(this, localbiwg, parambiwi));
       return;
     }
-    bgwf.c("BaseCgiTask", getClass().getName() + " request: " + a() + " onConnectionReceiveData callback null");
+    bixe.c("BaseCgiTask", getClass().getName() + " request: " + a() + " onConnectionReceiveData callback null");
   }
   
   private void a(BaseCgiTask paramBaseCgiTask, Exception paramException)
   {
-    bgvh localbgvh = a();
-    if (localbgvh != null)
+    biwg localbiwg = a();
+    if (localbiwg != null)
     {
-      bgwf.a("BaseCgiTask", a("failed task:" + getClass().getName()), paramException);
-      ThreadManager.getUIHandler().post(new BaseCgiTask.2(this, localbgvh, paramBaseCgiTask, paramException));
+      bixe.a("BaseCgiTask", a("failed task:" + getClass().getName()), paramException);
+      ThreadManager.getUIHandler().post(new BaseCgiTask.2(this, localbiwg, paramBaseCgiTask, paramException));
       return;
     }
-    bgwf.c("BaseCgiTask", getClass().getName() + "onConnectionError callback null");
+    bixe.c("BaseCgiTask", getClass().getName() + "onConnectionError callback null");
   }
   
   public static String b()
   {
-    String str2 = bfnn.a("674ef4");
+    String str2 = bhoi.a("674ef4");
     String str1;
     if (str2 != null)
     {
@@ -163,7 +163,7 @@ public abstract class BaseCgiTask
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       localObject2 = "";
-      bgwf.a("BaseCgiTask", "skey is null");
+      bixe.a("BaseCgiTask", "skey is null");
     }
     return localObject2;
   }
@@ -191,30 +191,30 @@ public abstract class BaseCgiTask
     return localStringBuilder.toString();
   }
   
-  protected MediaType a()
-  {
-    return MediaType.parse("application/json");
-  }
-  
   protected abstract BaseCgiTask.RequestType a();
   
   protected abstract String a();
   
   protected abstract HashMap<String, String> a();
   
+  protected MediaType a()
+  {
+    return MediaType.parse("application/json");
+  }
+  
   public void a()
   {
     ThreadManagerV2.excute(this, 128, null, true);
   }
   
-  public void a(bgvh parambgvh, boolean paramBoolean)
+  public void a(biwg parambiwg, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Bgvh = parambgvh;
+      this.jdField_a_of_type_Biwg = parambiwg;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambgvh);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambiwg);
   }
   
   protected byte[] a()
@@ -225,7 +225,7 @@ public abstract class BaseCgiTask
   protected HashMap<String, String> b()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qq_version", "8.3.0");
+    localHashMap.put("qq_version", "8.3.3");
     localHashMap.put("c_platform", "mqqandroid");
     localHashMap.put("qqnum", d());
     localHashMap.put("client_version", jdField_a_of_type_JavaLangString);
@@ -239,7 +239,7 @@ public abstract class BaseCgiTask
     localHashMap.put("Referer", "http://readercentera.qq.com");
     localHashMap.put("cookie", g());
     localHashMap.put("identify", "skey");
-    localHashMap.put("resolution", bgwk.a() + "*" + bgwk.b());
+    localHashMap.put("resolution", bixj.a() + "*" + bixj.b());
     localHashMap.put("timi", d());
     return localHashMap;
   }
@@ -252,8 +252,8 @@ public abstract class BaseCgiTask
       for (Object localObject = OkHttpHelper.HttpMethodType.POST;; localObject = OkHttpHelper.HttpMethodType.GET)
       {
         localObject = OkHttpHelper.a(a(), (OkHttpHelper.HttpMethodType)localObject, a(), a(), a());
-        a(new bgvj(this, (String)localObject));
-        bgwf.c("BaseCgiTask", a((String)localObject));
+        a(new biwi(this, (String)localObject));
+        bixe.c("BaseCgiTask", a((String)localObject));
         return;
       }
       return;
@@ -276,7 +276,7 @@ public abstract class BaseCgiTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.net.BaseCgiTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,31 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 
 public class aiif
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Animation.AnimationListener
 {
-  public aiif(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aiif(NewStyleCountryActivity paramNewStyleCountryActivity) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ThreadManager.post(this.a, 8, null, false);
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_Aiil.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      NewStyleCountryActivity.a(this.a).setVisibility(8);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiif
  * JD-Core Version:    0.7.0.1
  */

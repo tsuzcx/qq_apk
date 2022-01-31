@@ -28,13 +28,13 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bfnz;
-import bfqh;
-import bfqi;
-import bfqj;
-import bfqk;
-import bfql;
-import bfqm;
+import bhou;
+import bhrd;
+import bhre;
+import bhrf;
+import bhrg;
+import bhrh;
+import bhri;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -48,25 +48,25 @@ public class BubblePopupWindow
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
   private View jdField_a_of_type_AndroidViewView;
-  private ViewTreeObserver.OnScrollChangedListener jdField_a_of_type_AndroidViewViewTreeObserver$OnScrollChangedListener = new bfqh(this);
+  private ViewTreeObserver.OnScrollChangedListener jdField_a_of_type_AndroidViewViewTreeObserver$OnScrollChangedListener = new bhrd(this);
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bfqi jdField_a_of_type_Bfqi;
-  private bfqj jdField_a_of_type_Bfqj;
-  private bfqk jdField_a_of_type_Bfqk;
-  private bfqm jdField_a_of_type_Bfqm;
+  private bhre jdField_a_of_type_Bhre;
+  private bhrf jdField_a_of_type_Bhrf;
+  private bhrg jdField_a_of_type_Bhrg;
+  private bhri jdField_a_of_type_Bhri;
   private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int = 1;
   private View jdField_b_of_type_AndroidViewView;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private bfqi jdField_b_of_type_Bfqi;
+  private bhre jdField_b_of_type_Bhre;
   private boolean jdField_b_of_type_Boolean;
   private int[] jdField_b_of_type_ArrayOfInt = new int[2];
   private int jdField_c_of_type_Int = -1;
-  private bfqi jdField_c_of_type_Bfqi;
+  private bhre jdField_c_of_type_Bhre;
   private boolean jdField_c_of_type_Boolean;
   private int jdField_d_of_type_Int;
   private boolean jdField_d_of_type_Boolean = true;
@@ -145,9 +145,9 @@ public class BubblePopupWindow
       if (this.jdField_b_of_type_Boolean)
       {
         if (this.jdField_m_of_type_Boolean) {
-          return 2131755173;
+          return 2131755177;
         }
-        return 2131755172;
+        return 2131755176;
       }
       return 0;
     }
@@ -239,7 +239,7 @@ public class BubblePopupWindow
     if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewWindowManager == null)) {
       throw new IllegalStateException("You must specify a valid content view by calling setContentView() before attempting to show the popup.");
     }
-    bfql localbfql = new bfql(this, this.jdField_a_of_type_AndroidContentContext);
+    bhrh localbhrh = new bhrh(this, this.jdField_a_of_type_AndroidContentContext);
     Object localObject = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
     if (paramBoolean) {
       ((FrameLayout)localObject).setOnClickListener(this);
@@ -254,28 +254,28 @@ public class BubblePopupWindow
     for (;;)
     {
       ((FrameLayout)localObject).setPadding(i2, Math.round(TypedValue.applyDimension(1, 8.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics())), i1, Math.round(TypedValue.applyDimension(1, 8.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics())));
-      localbfql.addView((View)localObject, -1, -1);
+      localbhrh.addView((View)localObject, -1, -1);
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
       ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -1, -1);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838590);
-      this.jdField_a_of_type_Bfqi = new bfqi(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838591));
-      localObject = new LayerDrawable(new Drawable[] { localObject, this.jdField_a_of_type_Bfqi });
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838661);
+      this.jdField_a_of_type_Bhre = new bhre(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838662));
+      localObject = new LayerDrawable(new Drawable[] { localObject, this.jdField_a_of_type_Bhre });
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable((Drawable)localObject);
       localObject = new FrameLayout.LayoutParams(-1, -1, 17);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
       this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
       localObject = new FrameLayout.LayoutParams(-2, -2, 51);
-      this.jdField_b_of_type_Bfqi = new bfqi(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838589));
-      LayerDrawable localLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838588), this.jdField_b_of_type_Bfqi });
+      this.jdField_b_of_type_Bhre = new bhre(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838660));
+      LayerDrawable localLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838659), this.jdField_b_of_type_Bhre });
       this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(localLayerDrawable);
-      localbfql.addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
+      localbhrh.addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
       localObject = new FrameLayout.LayoutParams(-2, -2, 83);
-      this.jdField_c_of_type_Bfqi = new bfqi(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838587));
-      localLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838586), this.jdField_c_of_type_Bfqi });
+      this.jdField_c_of_type_Bhre = new bhre(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838658));
+      localLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838657), this.jdField_c_of_type_Bhre });
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localLayerDrawable);
-      localbfql.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_b_of_type_AndroidViewView = localbfql;
+      localbhrh.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
+      this.jdField_b_of_type_AndroidViewView = localbhrh;
       this.jdField_j_of_type_Int = paramLayoutParams.width;
       this.jdField_k_of_type_Int = paramLayoutParams.height;
       return;
@@ -548,7 +548,7 @@ public class BubblePopupWindow
     if (this.jdField_a_of_type_AndroidContentContext != null) {
       paramLayoutParams.packageName = this.jdField_a_of_type_AndroidContentContext.getPackageName();
     }
-    if (bfnz.d()) {
+    if (bhou.d()) {
       this.jdField_b_of_type_AndroidViewView.setFitsSystemWindows(this.jdField_j_of_type_Boolean);
     }
     if (this.jdField_b_of_type_AndroidViewView.getParent() == null) {
@@ -765,14 +765,14 @@ public class BubblePopupWindow
     b(localLayoutParams);
   }
   
-  public void a(bfqj parambfqj)
+  public void a(bhrf parambhrf)
   {
-    this.jdField_a_of_type_Bfqj = parambfqj;
+    this.jdField_a_of_type_Bhrf = parambhrf;
   }
   
-  public void a(bfqm parambfqm)
+  public void a(bhri parambhri)
   {
-    this.jdField_a_of_type_Bfqm = parambfqm;
+    this.jdField_a_of_type_Bhri = parambhri;
   }
   
   public void a(boolean paramBoolean)
@@ -816,8 +816,8 @@ public class BubblePopupWindow
         ((ViewGroup)this.jdField_b_of_type_AndroidViewView).removeView(this.jdField_a_of_type_AndroidViewView);
       }
       this.jdField_b_of_type_AndroidViewView = null;
-      if (this.jdField_a_of_type_Bfqj != null) {
-        this.jdField_a_of_type_Bfqj.a();
+      if (this.jdField_a_of_type_Bhrf != null) {
+        this.jdField_a_of_type_Bhrf.a();
       }
     }
   }
@@ -954,14 +954,14 @@ public class BubblePopupWindow
   public void onClick(View paramView)
   {
     b();
-    if (this.jdField_a_of_type_Bfqm != null) {
-      this.jdField_a_of_type_Bfqm.a();
+    if (this.jdField_a_of_type_Bhri != null) {
+      this.jdField_a_of_type_Bhri.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.BubblePopupWindow
  * JD-Core Version:    0.7.0.1
  */

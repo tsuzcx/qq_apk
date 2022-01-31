@@ -2,8 +2,8 @@ package cooperation.troop;
 
 import android.os.Handler;
 import android.os.Looper;
-import bhwz;
-import bhxc;
+import bjyk;
+import bjyn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
@@ -27,13 +27,13 @@ public class TroopPluginManager
   public TroopPluginManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_AndroidOsHandler = new bhwz(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new bjyk(this, Looper.getMainLooper());
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public boolean a(String paramString, bhxc parambhxc)
+  public boolean a(String paramString, bjyn parambjyn)
   {
-    ThreadManager.post(new TroopPluginManager.1(this, paramString, parambhxc), 8, null, true);
+    ThreadManager.post(new TroopPluginManager.1(this, paramString, parambjyn), 8, null, true);
     return false;
   }
   
@@ -53,7 +53,7 @@ public class TroopPluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.troop.TroopPluginManager
  * JD-Core Version:    0.7.0.1
  */

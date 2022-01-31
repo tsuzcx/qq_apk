@@ -1,27 +1,61 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 class betv
-  implements AsyncResult
+  implements Animator.AnimatorListener
 {
-  betv(bett parambett, int paramInt, EngineChannel paramEngineChannel) {}
+  betv(bets parambets, int paramInt) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    betc.b("EngineManager", "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
-    if ((paramBoolean) && (paramJSONObject != null))
+    if (this.jdField_a_of_type_Bets.a != null)
     {
-      paramJSONObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(this.jdField_a_of_type_Int)));
-      betc.b("EngineManager", "[MiniEng] engineLibInfo " + paramJSONObject);
-      betq.c(this.jdField_a_of_type_Bett.a, paramJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
+      if (this.jdField_a_of_type_Int != 0) {
+        break label41;
+      }
+      this.jdField_a_of_type_Bets.a.setAlpha(1.0F);
+    }
+    for (;;)
+    {
+      bets.b(this.jdField_a_of_type_Bets, this.jdField_a_of_type_Int);
+      return;
+      label41:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Bets.a.setAlpha(0.0F);
+      }
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bets.b(this.jdField_a_of_type_Bets, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      bets.a(this.jdField_a_of_type_Bets, false);
+      this.jdField_a_of_type_Bets.a(false, new View[] { bets.a(this.jdField_a_of_type_Bets) });
+    }
+    bets.a(this.jdField_a_of_type_Bets);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    bets.b(this.jdField_a_of_type_Bets, 2);
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      bets.a(this.jdField_a_of_type_Bets, true);
+      if (bets.a(this.jdField_a_of_type_Bets) == 1) {
+        this.jdField_a_of_type_Bets.a(true, new View[] { bets.a(this.jdField_a_of_type_Bets) });
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     betv
  * JD-Core Version:    0.7.0.1
  */

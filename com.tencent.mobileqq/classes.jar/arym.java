@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class arym
-  implements aruy
+class arym
+  implements DialogInterface.OnClickListener
 {
-  public arym(MapWidget paramMapWidget) {}
+  arym(aryh paramaryh) {}
   
-  public void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramLatLng, paramDouble, paramBoolean);
+    this.a.a(false);
+    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arym
  * JD-Core Version:    0.7.0.1
  */

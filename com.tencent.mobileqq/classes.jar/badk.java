@@ -1,29 +1,91 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 import java.util.List;
 
-class badk
-  implements akif
+public class badk
+  implements alkr
 {
-  badk(badj parambadj, String paramString1, String paramString2, badl parambadl) {}
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2) {}
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void a(boolean paramBoolean, int paramInt, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList) {}
+  
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void d(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    List localList = null;
-    if (paramTroopMemberInfo != null) {
-      localList = this.jdField_a_of_type_Badj.a(paramTroopMemberInfo.honorList);
+    switch (paramInt)
+    {
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
-    }
-    if (this.jdField_a_of_type_Badl != null) {
-      this.jdField_a_of_type_Badl.a(localList);
-    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        return;
+                      } while (paramObject == null);
+                      paramObject = (Object[])paramObject;
+                      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+                      return;
+                    } while (paramObject == null);
+                    paramObject = (Object[])paramObject;
+                    b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                  a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
+                  return;
+                } while (paramObject == null);
+                a(paramBoolean, (Object[])paramObject);
+                return;
+                if (paramObject != null) {
+                  b(paramBoolean, (Object[])paramObject);
+                }
+              } while (paramObject == null);
+              c(paramBoolean, (Object[])paramObject);
+              return;
+            } while (paramObject == null);
+            d(paramBoolean, (Object[])paramObject);
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 2);
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     badk
  * JD-Core Version:    0.7.0.1
  */

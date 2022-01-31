@@ -1,18 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
-class ajny
-  extends ajod
+public class ajny
+  implements DialogInterface.OnClickListener
 {
-  ajny(ajnv paramajnv) {}
+  public ajny(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
+    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajny
  * JD-Core Version:    0.7.0.1
  */

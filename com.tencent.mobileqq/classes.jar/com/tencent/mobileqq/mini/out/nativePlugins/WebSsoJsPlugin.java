@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bdov;
-import bdow;
-import bicx;
-import bicy;
+import bfns;
+import bfnt;
+import bket;
+import bkeu;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class WebSsoJsPlugin
-  implements bicx, NativePlugin
+  implements bket, NativePlugin
 {
   public static final String EVENT_QUERY_WEBSSO = "requestWebSSO";
   public static final String KEY_CMD = "cmd";
@@ -30,7 +30,7 @@ public class WebSsoJsPlugin
   
   public WebSsoJsPlugin()
   {
-    bicy.a().a(this);
+    bkeu.a().a(this);
   }
   
   private int genSeq()
@@ -50,11 +50,11 @@ public class WebSsoJsPlugin
   
   public HashSet<String> getFilterCmds()
   {
-    bdov localbdov = (bdov)bdow.a().a("comminfo");
-    if (localbdov != null) {
-      return localbdov.a();
+    bfns localbfns = (bfns)bfnt.a().a("comminfo");
+    if (localbfns != null) {
+      return localbfns.a();
     }
-    return bicy.a;
+    return bkeu.a;
   }
   
   public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
@@ -123,19 +123,19 @@ public class WebSsoJsPlugin
           Object localObject = getFilterCmds();
           if ((TextUtils.isEmpty(paramJSONObject)) || (localObject == null) || (!((HashSet)localObject).contains(paramJSONObject)))
           {
-            paramJSContext.evaluateCallback(false, new JSONObject(), ajya.a(2131716901));
+            paramJSContext.evaluateCallback(false, new JSONObject(), alpo.a(2131717273));
             return;
           }
           int i = genSeq();
           this.callbackMap.put(i, paramJSContext);
           localObject = new Bundle();
           ((Bundle)localObject).putInt("mini_seq", i);
-          bicy.a().a(paramJSONObject, localJSONObject, (Bundle)localObject);
+          bkeu.a().a(paramJSONObject, localJSONObject, (Bundle)localObject);
           return;
         }
         catch (Throwable paramJSONObject)
         {
-          paramJSContext.evaluateCallback(false, new JSONObject(), ajya.a(2131716900));
+          paramJSContext.evaluateCallback(false, new JSONObject(), alpo.a(2131717272));
           if (QLog.isColorLevel()) {
             QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
           }
@@ -146,7 +146,7 @@ public class WebSsoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.WebSsoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package cooperation.qzone.birthdaynotice;
 
 import GIFT_MALL_PROTOCOL.DouFuInfo;
-import acuo;
-import awzy;
-import bhcd;
+import aely;
+import ayvc;
+import bjdn;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -17,26 +17,26 @@ public final class BirthDayNoticeManager$1
   public void run()
   {
     String str = String.valueOf(this.jdField_a_of_type_GIFT_MALL_PROTOCOLDouFuInfo.uin);
-    if (bhcd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str))
+    if (bjdn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str))
     {
       long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str);
       long l2 = System.currentTimeMillis();
       if (Math.abs(l1 - l2) > 432000000L)
       {
-        acuo localacuo = (acuo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282);
+        aely localaely = (aely)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282);
         BeancurdMsg localBeancurdMsg = new BeancurdMsg();
         localBeancurdMsg.buffer = this.jdField_a_of_type_OrgJsonJSONObject.toString();
         localBeancurdMsg.busiid = 6;
         localBeancurdMsg.frienduin = String.valueOf(str);
         localBeancurdMsg.isNeedDelHistory = true;
         localBeancurdMsg.ispush = false;
-        localBeancurdMsg.startTime = awzy.a();
+        localBeancurdMsg.startTime = ayvc.a();
         localBeancurdMsg.validTime = 432000L;
         localBeancurdMsg.token = this.jdField_a_of_type_Long;
         if (QLog.isColorLevel()) {
           QLog.i("BirthDayNoticeManager", 2, "addBirthDayFeedMessage receiveBeancurd:" + String.valueOf(localBeancurdMsg));
         }
-        localacuo.a(localBeancurdMsg);
+        localaely.a(localBeancurdMsg);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(String.valueOf(str), l2);
       }
     }
@@ -44,7 +44,7 @@ public final class BirthDayNoticeManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.birthdaynotice.BirthDayNoticeManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,36 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.4.1;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class akxu
-  implements MediaPlayer.OnPreparedListener
+public class akxu
+  implements EIPCResultCallback
 {
-  akxu(akxp paramakxp) {}
+  akxu(akxs paramakxs, akxr paramakxr) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    try
+    Object localObject = (IPCSpriteContext)paramEIPCResult.data.getParcelable("IPCSpriteContext");
+    paramEIPCResult = paramEIPCResult.data.getString("js_content");
+    QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "checkfDressChanged CmShow_ spriteJs:" + paramEIPCResult);
+    if (TextUtils.isEmpty(paramEIPCResult)) {
+      alda.a(this.jdField_a_of_type_Akxr.a(), 300, 301, new Object[] { "spriteJs is empty" });
+    }
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + akxp.b(this.a));
-      }
-      this.a.a.seekTo(0);
-      akxp.b(this.a, true);
-      if (akxp.b(this.a))
-      {
-        this.a.a.start();
-        akxp.c(this.a, false);
-      }
       return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      paramMediaPlayer.printStackTrace();
-    }
+      localObject = (akxo)akxs.a(this.jdField_a_of_type_Akxs).a(100);
+    } while (localObject == null);
+    ThreadManagerV2.excute(new CmShowSpriteDrawerInfoBridge.4.1(this, paramEIPCResult, (akxo)localObject), 16, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxu
  * JD-Core Version:    0.7.0.1
  */

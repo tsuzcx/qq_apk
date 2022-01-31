@@ -1,28 +1,45 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
 public class artm
+  extends QIPCModule
 {
-  public static void a(int paramInt1, int paramInt2)
+  private static volatile artm a;
+  
+  private artm(String paramString)
   {
-    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
+    super(paramString);
   }
   
-  public static void a(boolean paramBoolean, int paramInt)
+  public static artm a()
   {
-    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new artm("FlutterMainQIPCModule");
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public static void b(boolean paramBoolean, int paramInt)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, bbfj.b(null), paramInt), 5, null, false);
+    if ("ACTION_INSTALL_ENGINE".equals(paramString))
+    {
+      artf.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), new artn(this));
+      return EIPCResult.createSuccessResult(null);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     artm
  * JD-Core Version:    0.7.0.1
  */

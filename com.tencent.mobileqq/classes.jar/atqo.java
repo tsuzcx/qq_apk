@@ -1,74 +1,19 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.fragment.NearbyBaseFragment;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class atqo
-  implements ViewPager.OnPageChangeListener
+  implements View.OnClickListener
 {
-  atqo(atpk paramatpk) {}
+  atqo(atqj paramatqj, atpy paramatpy) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      atbr.a("onPageSelected", new Object[] { Integer.valueOf(paramInt) });
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
-    Object localObject = (NearbyBaseFragment)this.a.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("android:switcher:2131379344:" + paramInt);
-    if (localObject != null) {
-      ((NearbyBaseFragment)localObject).aT_();
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2)
-    {
-      if (paramInt == 0) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-    }
-    else
-    {
-      if (paramInt != 0) {
-        break label289;
-      }
-      localaxrc = new axrc(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
-        break label283;
-      }
-    }
-    label283:
-    for (localObject = "1";; localObject = "2")
-    {
-      localaxrc.a(new String[] { localObject }).a();
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localaxrc = new axrc(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("exp_pub").e(atpk.a(this.a).uin);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
-      for (localObject = "1";; localObject = "2")
-      {
-        localaxrc.a(new String[] { localObject }).a();
-        break;
-      }
-    }
-    label289:
-    axrc localaxrc = new axrc(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp").e(atpk.a(this.a).uin);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
-    for (localObject = "1";; localObject = "2")
-    {
-      localaxrc.a(new String[] { localObject }).a();
-      return;
-    }
+    this.jdField_a_of_type_Atpy.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atqo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,46 @@
-import android.content.res.Resources;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
 
-class arxz
+public class arxz
+  extends arxw
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  private String h;
+  private String i;
   
-  arxz(arxj paramarxj, View paramView)
+  public arxz(Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378827);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378829));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378826));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378831));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131378828);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131378830);
-    if (bfwr.a())
-    {
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130844531);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130844529);
-      if ((this.jdField_b_of_type_AndroidViewView instanceof TextView)) {
-        ((TextView)this.jdField_b_of_type_AndroidViewView).setTextColor(-1);
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-      ((TextView)this.jdField_b_of_type_AndroidViewView).setTextColor(-1);
-    }
+    super(paramIntent);
+    this.h = paramIntent.getStringExtra("uin");
+    this.i = paramIntent.getStringExtra("uinname");
   }
   
-  void a()
+  private View a(String paramString, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558942, null);
+    TextView localTextView = (TextView)localView.findViewById(2131379140);
+    ImageView localImageView = (ImageView)localView.findViewById(2131368169);
+    localTextView.setText(paramString);
+    localImageView.setImageDrawable(paramDrawable);
+    return localView;
   }
   
-  void a(LocationRoom.Venue paramVenue)
+  protected View a()
   {
-    LocationRoom.Venue localVenue = paramVenue;
-    if (paramVenue == null) {
-      localVenue = arxj.a(this.jdField_a_of_type_Arxj).a();
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(arxj.a(this.jdField_a_of_type_Arxj).getResources().getString(2131694017), new Object[] { localVenue.b }));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
-    aryf.a(arxj.a(this.jdField_a_of_type_Arxj, localVenue.a), arxj.a(this.jdField_a_of_type_Arxj).getResources().getString(2131694018), this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new arya(this));
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new aryb(this));
+    return a(String.format("[%s]%s", new Object[] { alpo.a(2131705161), this.i }), bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
   }
   
-  void b()
+  protected boolean h()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arxz
  * JD-Core Version:    0.7.0.1
  */

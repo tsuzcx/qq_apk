@@ -1,29 +1,41 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class wnw
-  implements View.OnClickListener
+public class wnw
+  extends unf
 {
-  wnw(wns paramwns, CertifiedAccountMeta.StReply paramStReply) {}
+  public List<String> a = new ArrayList();
+  public int b;
   
-  public void onClick(View paramView)
+  public wnw(qqstory_service.RspGetPhotographyGuide paramRspGetPhotographyGuide)
   {
-    paramView = (ClipboardManager)wni.i(this.jdField_a_of_type_Wns.a).getSystemService("clipboard");
-    if (paramView != null)
+    super(paramRspGetPhotographyGuide.result);
+    Object localObject = paramRspGetPhotographyGuide.word.get();
+    if (localObject != null)
     {
-      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get()));
-      wni.a(this.jdField_a_of_type_Wns.a).dismiss();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ByteStringMicro localByteStringMicro = (ByteStringMicro)((Iterator)localObject).next();
+        this.a.add(localByteStringMicro.toStringUtf8());
+      }
     }
+    this.b = paramRspGetPhotographyGuide.seqno.get();
+  }
+  
+  public String toString()
+  {
+    return "GetPhotographyGuideResponse{, wordList=" + this.a.size() + ", seqno=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wnw
  * JD-Core Version:    0.7.0.1
  */

@@ -33,8 +33,8 @@ import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import bbbm;
-import bbkk;
+import bdag;
+import bdje;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
@@ -99,12 +99,11 @@ public class CanvasView
   public static final String ACTION_TRANSLATE = "translate";
   public static final String CUSTOM_ACTION_FILL = "fill";
   private static final int DEFAULT_PAINT_COLOR = -16777216;
-  private static final float DRAW_IMAGE_MAX_REQUEQST_HEIGHT = 4000.0F;
-  private static final float DRAW_IMAGE_MAX_REQUEQST_WIDTH = 1440.0F;
   private static final int INVALIDATE_TIME_INTERVAL = 16;
   public static final String KEY_CALLBACK_ID = "callbackId";
   public static final String KEY_DATA = "data";
   public static final String KEY_METHOD = "method";
+  private static final long REQUEST_IMAGE_MAX_SAFE_SIZE = 8985600L;
   private static final String TAG = CanvasView.class.getSimpleName();
   private ApkgInfo mApkgInfo;
   private int mBitmapH;
@@ -171,345 +170,389 @@ public class CanvasView
       return;
     }
     int i = 0;
-    Object localObject4;
+    Object localObject6;
     Object localObject1;
+    Object localObject7;
     label94:
-    float f5;
-    float f6;
+    float f7;
+    float f8;
     float f4;
     float f3;
     int j;
+    int k;
+    int m;
+    int n;
+    int i1;
     float f1;
     float f2;
     if (i < paramJSONArray.length())
     {
-      localObject4 = paramJSONArray.getJSONObject(i);
-      localObject1 = ((JSONObject)localObject4).optString("method");
-      Object localObject5 = ((JSONObject)localObject4).optJSONArray("data");
+      localObject6 = paramJSONArray.getJSONObject(i);
+      localObject1 = ((JSONObject)localObject6).optString("method");
+      localObject7 = ((JSONObject)localObject6).optJSONArray("data");
       if ("drawImage".equals(localObject1))
       {
-        localObject4 = ((JSONArray)localObject5).optString(0);
-        localObject1 = localObject4;
-        int k;
-        int m;
-        int n;
-        int i1;
-        if (!bbkk.a((String)localObject4))
+        localObject1 = ((JSONArray)localObject7).optString(0);
+        localObject6 = localObject1;
+        if (!bdje.a((String)localObject1))
         {
-          if (((String)localObject4).startsWith("wxfile")) {
-            localObject1 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject4);
+          if (((String)localObject1).startsWith("wxfile")) {
+            localObject6 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject1);
           }
         }
-        else if (!bbkk.a((String)localObject1))
+        else if (!bdje.a((String)localObject6))
         {
-          f5 = mpx2px(((JSONArray)localObject5).optDouble(1, 0.0D));
-          f6 = mpx2px(((JSONArray)localObject5).optDouble(2, 0.0D));
-          f4 = mpx2px(((JSONArray)localObject5).optDouble(3, 0.0D));
-          f3 = mpx2px(((JSONArray)localObject5).optDouble(4, 0.0D));
-          j = (int)((JSONArray)localObject5).optDouble(5, 0.0D);
-          k = (int)((JSONArray)localObject5).optDouble(6, 0.0D);
-          m = (int)((JSONArray)localObject5).optDouble(7, 0.0D);
-          n = (int)((JSONArray)localObject5).optDouble(8, 0.0D);
-          localObject4 = new BitmapFactory.Options();
-          i1 = ImageUtil.getExifOrientation((String)localObject1);
+          f7 = (float)((JSONArray)localObject7).optDouble(1, 0.0D);
+          f8 = (float)((JSONArray)localObject7).optDouble(2, 0.0D);
+          f4 = (float)((JSONArray)localObject7).optDouble(3, 0.0D);
+          f3 = (float)((JSONArray)localObject7).optDouble(4, 0.0D);
+          j = (int)((JSONArray)localObject7).optDouble(5, 0.0D);
+          k = (int)((JSONArray)localObject7).optDouble(6, 0.0D);
+          m = (int)((JSONArray)localObject7).optDouble(7, 0.0D);
+          n = (int)((JSONArray)localObject7).optDouble(8, 0.0D);
+          localObject7 = new BitmapFactory.Options();
+          i1 = ImageUtil.getExifOrientation((String)localObject6);
           f1 = f4;
         }
-        for (;;)
+        try
         {
-          try
+          ((BitmapFactory.Options)localObject7).inJustDecodeBounds = true;
+          f1 = f4;
+          BitmapFactory.decodeFile((String)localObject6, (BitmapFactory.Options)localObject7);
+          if (f4 > 0.0F)
           {
-            ((BitmapFactory.Options)localObject4).inJustDecodeBounds = true;
-            f1 = f4;
-            BitmapFactory.decodeFile((String)localObject1, (BitmapFactory.Options)localObject4);
-            if (f4 > 0.0F)
-            {
-              f1 = f3;
-              f2 = f4;
-              if (f3 > 0.0F) {}
-            }
-            else
-            {
-              if ((m <= 0) || (n <= 0)) {
-                continue;
-              }
-              f1 = f4;
-              f2 = this.mDensity * m;
-              f1 = f2;
-              f4 = this.mDensity;
-              f1 = f4 * n;
-            }
-          }
-          catch (Exception localException3)
-          {
-            label505:
-            int i2;
-            QLog.e(TAG, 2, "calculate image size error! " + Log.getStackTraceString(localException3));
-            f2 = f1;
             f1 = f3;
-            continue;
-            if (i1 != 180) {
-              continue;
-            }
-            ((Rect)localObject1).left = (((BitmapFactory.Options)localObject4).outWidth - j - m);
-            ((Rect)localObject1).top = (((BitmapFactory.Options)localObject4).outHeight - k - n);
-            ((Rect)localObject1).right = (((Rect)localObject1).left + m);
-            ((Rect)localObject1).bottom = (((Rect)localObject1).top + n);
-            continue;
-            if (i1 != 270) {
-              continue;
-            }
-            ((Rect)localObject1).left = (((BitmapFactory.Options)localObject4).outWidth - k - n);
-            ((Rect)localObject1).top = j;
-            ((Rect)localObject1).right = (((Rect)localObject1).left + n);
-            ((Rect)localObject1).bottom = (((Rect)localObject1).top + m);
-            continue;
-            ((Rect)localObject1).left = j;
-            ((Rect)localObject1).top = k;
-            ((Rect)localObject1).right = (((Rect)localObject1).left + m);
-            ((Rect)localObject1).bottom = (((Rect)localObject1).top + n);
-            continue;
-            f3 = Math.min(1440.0F / f2, 4000.0F / f1);
-            if (f3 >= 1.0F) {
-              break label5574;
-            }
-          }
-          if ((f2 > 0.0F) && (f1 > 0.0F))
-          {
-            ((BitmapFactory.Options)localObject4).inDither = true;
-            if ((m <= 0) || (n <= 0)) {
-              continue;
-            }
-            localObject5 = BitmapRegionDecoder.newInstance((String)localObject1, false);
-            localObject1 = new Rect();
-            if (i1 != 90) {
-              continue;
-            }
-            ((Rect)localObject1).left = k;
-            ((Rect)localObject1).top = (((BitmapFactory.Options)localObject4).outHeight - j - m);
-            ((Rect)localObject1).right = (((Rect)localObject1).left + n);
-            ((Rect)localObject1).bottom = (((Rect)localObject1).top + m);
-            localObject1 = ((BitmapRegionDecoder)localObject5).decodeRegion((Rect)localObject1, (BitmapFactory.Options)localObject4);
-            ((BitmapRegionDecoder)localObject5).recycle();
-            if (localObject1 != null)
-            {
-              localObject4 = localObject1;
-              if (i1 != 0) {
-                localObject4 = ImageUtil.rotaingImageView(i1, (Bitmap)localObject1);
-              }
-              localObject1 = new RectF();
-              ((RectF)localObject1).left = f5;
-              ((RectF)localObject1).top = f6;
-              ((RectF)localObject1).right = (((RectF)localObject1).left + f2);
-              ((RectF)localObject1).bottom = (f1 + ((RectF)localObject1).top);
-              paramCanvas.drawBitmap((Bitmap)localObject4, null, (RectF)localObject1, null);
-              ((Bitmap)localObject4).recycle();
-            }
-          }
-          i += 1;
-          break;
-          localObject1 = this.mApkgInfo.getFilePath((String)localObject4);
-          break label94;
-          if ((i1 == 90) || (i1 == 270))
-          {
-            f1 = f4;
-            f2 = this.mDensity;
-            f1 = f4;
-            f2 = ((BitmapFactory.Options)localObject4).outHeight * f2;
-            f1 = f2;
-            f4 = this.mDensity;
-            f1 = f2;
-            f4 = ((BitmapFactory.Options)localObject4).outWidth * f4;
-            f1 = f4;
+            f2 = f4;
+            if (f3 > 0.0F) {}
           }
           else
           {
-            f1 = f4;
-            f2 = this.mDensity;
-            f1 = f4;
-            f2 = ((BitmapFactory.Options)localObject4).outWidth * f2;
-            f1 = f2;
-            f4 = this.mDensity;
-            f1 = f2;
-            i2 = ((BitmapFactory.Options)localObject4).outHeight;
-            f1 = i2 * f4;
-            continue;
-            f4 = (int)(f3 * f2);
-            f3 = (int)(f3 * f1);
+            if ((m <= 0) || (n <= 0)) {
+              break label514;
+            }
+            f2 = m;
+            f1 = n;
           }
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            label265:
+            QLog.e(TAG, 2, "calculate image size error! " + Log.getStackTraceString(localException1));
+            f2 = f1;
+            f1 = f3;
+            continue;
+            if (i1 == 180)
+            {
+              localException1.left = (((BitmapFactory.Options)localObject7).outWidth - j - m);
+              localException1.top = (((BitmapFactory.Options)localObject7).outHeight - k - n);
+              localException1.right = (localException1.left + m);
+              localException1.bottom = (localException1.top + n);
+            }
+            else if (i1 == 270)
+            {
+              localException1.left = (((BitmapFactory.Options)localObject7).outWidth - k - n);
+              localException1.top = j;
+              localException1.right = (localException1.left + n);
+              localException1.bottom = (localException1.top + m);
+            }
+            else
+            {
+              localException1.left = j;
+              localException1.top = k;
+              localException1.right = (localException1.left + m);
+              localException1.bottom = (localException1.top + n);
+              continue;
+              ((BitmapFactory.Options)localObject7).inJustDecodeBounds = false;
+              f6 = ((BitmapFactory.Options)localObject7).outWidth;
+              f5 = ((BitmapFactory.Options)localObject7).outHeight;
+              f9 = (float)Math.sqrt(f2 * f1 / ((BitmapFactory.Options)localObject7).outWidth / ((BitmapFactory.Options)localObject7).outHeight);
+              f4 = f5;
+              f3 = f6;
+              if (f9 < 1.0F)
+              {
+                f3 = f6 * f9;
+                f4 = f5 * f9;
+              }
+              if (ImageUtil.isPngFile((String)localObject6))
+              {
+                ((BitmapFactory.Options)localObject7).inPreferredConfig = Bitmap.Config.ARGB_4444;
+                f5 = (float)Math.sqrt(8985600.0F / f3 / f4 / 2.0F);
+                if (f5 >= 1.0F) {
+                  break label1038;
+                }
+                ((BitmapFactory.Options)localObject7).inSampleSize = ImageUtil.calculateInSampleSize((BitmapFactory.Options)localObject7, f3 * f5, f4 * f5);
+              }
+              for (;;)
+              {
+                try
+                {
+                  for (;;)
+                  {
+                    localBitmap1 = BitmapFactory.decodeFile((String)localObject6, (BitmapFactory.Options)localObject7);
+                    if (localBitmap1 != null) {
+                      break label5726;
+                    }
+                    if (((BitmapFactory.Options)localObject7).inSampleSize <= 0) {
+                      break label1068;
+                    }
+                    ((BitmapFactory.Options)localObject7).inSampleSize *= 2;
+                    try
+                    {
+                      localBitmap1 = BitmapFactory.decodeFile((String)localObject6, (BitmapFactory.Options)localObject7);
+                    }
+                    catch (Throwable localThrowable3)
+                    {
+                      QLog.e(TAG, 2, "getLocalBitmap 2nd time error!", localThrowable3);
+                      localObject3 = null;
+                    }
+                  }
+                  ((BitmapFactory.Options)localObject7).inPreferredConfig = Bitmap.Config.RGB_565;
+                  f5 = (float)Math.sqrt(8985600.0F / f3 / f4 / 2.0F);
+                }
+                catch (Throwable localThrowable1)
+                {
+                  QLog.w(TAG, 2, "getLocalBitmap error with inSampleSize error!try again with lower quality!");
+                  localBitmap2 = null;
+                  continue;
+                }
+                try
+                {
+                  localBitmap2 = BitmapFactory.decodeFile((String)localObject6, (BitmapFactory.Options)localObject7);
+                }
+                catch (Throwable localThrowable2)
+                {
+                  QLog.w(TAG, 2, "getLocalBitmap error! try again with lower quality!");
+                  localObject2 = null;
+                }
+                continue;
+                ((BitmapFactory.Options)localObject7).inSampleSize = 2;
+              }
+            }
+          }
+        }
+        if ((f2 > 0.0F) && (f1 > 0.0F))
+        {
+          ((BitmapFactory.Options)localObject7).inDither = true;
+          if ((m <= 0) || (n <= 0)) {
+            break label807;
+          }
+          localObject6 = BitmapRegionDecoder.newInstance((String)localObject6, false);
+          localObject1 = new Rect();
+          if (i1 != 90) {
+            break label635;
+          }
+          ((Rect)localObject1).left = k;
+          ((Rect)localObject1).top = (((BitmapFactory.Options)localObject7).outHeight - j - m);
+          ((Rect)localObject1).right = (((Rect)localObject1).left + n);
+          ((Rect)localObject1).bottom = (((Rect)localObject1).top + m);
+          localObject1 = ((BitmapRegionDecoder)localObject6).decodeRegion((Rect)localObject1, (BitmapFactory.Options)localObject7);
+          ((BitmapRegionDecoder)localObject6).recycle();
         }
       }
     }
-    label1689:
-    label2078:
-    label3235:
-    label5413:
+    label514:
+    label807:
+    label1068:
+    label1841:
+    label1877:
+    label5719:
+    label5726:
     for (;;)
     {
-      ((BitmapFactory.Options)localObject4).inSampleSize = ImageUtil.calculateInSampleSize((BitmapFactory.Options)localObject4, f4, f3);
-      ((BitmapFactory.Options)localObject4).inJustDecodeBounds = false;
-      localObject1 = ImageUtil.getLocalCompressedBitmap((String)localObject1, (BitmapFactory.Options)localObject4);
-      break;
-      Object localObject7;
-      Object localObject6;
-      if (("setStrokeStyle".equals(localObject1)) || ("setFillStyle".equals(localObject1)))
+      if (localObject1 != null)
       {
-        this.mRepeatX = false;
-        this.mRepeatY = false;
-        this.mBitmapW = 0;
-        this.mBitmapH = 0;
-        localObject4 = localException3.optString(0);
-        if ("normal".equals(localObject4))
+        localObject6 = localObject1;
+        if (i1 != 0) {
+          localObject6 = ImageUtil.rotaingImageView(i1, (Bitmap)localObject1);
+        }
+        localObject1 = new RectF();
+        ((RectF)localObject1).left = mpx2px(f7);
+        ((RectF)localObject1).top = mpx2px(f8);
+        ((RectF)localObject1).right = (((RectF)localObject1).left + mpx2px(f2));
+        ((RectF)localObject1).bottom = (((RectF)localObject1).top + mpx2px(f1));
+        paramCanvas.drawBitmap((Bitmap)localObject6, null, (RectF)localObject1, null);
+        ((Bitmap)localObject6).recycle();
+      }
+      label635:
+      float f6;
+      float f5;
+      Object localObject3;
+      Object localObject8;
+      label1632:
+      label1661:
+      do
+      {
+        do
         {
-          localObject4 = localException3.optJSONArray(1);
-          if ("setStrokeStyle".equals(localObject1))
+          for (;;)
           {
-            j = getColor((JSONArray)localObject4);
-            this.mStrokeColorAlpha = ((JSONArray)localObject4).optInt(3);
-            this.mStrokePaint.setShader(null);
-            this.mStrokePaint.setColor(j);
-            break label505;
+            i += 1;
+            break;
+            localObject6 = this.mApkgInfo.getFilePath((String)localObject1);
+            break label94;
+            if ((i1 == 90) || (i1 == 270))
+            {
+              f1 = f4;
+              f2 = ((BitmapFactory.Options)localObject7).outHeight;
+              f1 = f2;
+              f4 = ((BitmapFactory.Options)localObject7).outWidth;
+              f1 = f4;
+              break label265;
+            }
+            f1 = f4;
+            f2 = ((BitmapFactory.Options)localObject7).outWidth;
+            f1 = f2;
+            int i2 = ((BitmapFactory.Options)localObject7).outHeight;
+            f1 = i2;
+            break label265;
+            float f9;
+            Bitmap localBitmap1;
+            Bitmap localBitmap2;
+            Object localObject2;
+            if ((!"setStrokeStyle".equals(localObject3)) && (!"setFillStyle".equals(localObject3))) {
+              break label1895;
+            }
+            this.mRepeatX = false;
+            this.mRepeatY = false;
+            this.mBitmapW = 0;
+            this.mBitmapH = 0;
+            localObject6 = ((JSONArray)localObject7).optString(0);
+            if ("normal".equals(localObject6))
+            {
+              localObject6 = ((JSONArray)localObject7).optJSONArray(1);
+              if ("setStrokeStyle".equals(localObject3))
+              {
+                j = getColor((JSONArray)localObject6);
+                this.mStrokeColorAlpha = ((JSONArray)localObject6).optInt(3);
+                this.mStrokePaint.setShader(null);
+                this.mStrokePaint.setColor(j);
+              }
+              else if ("setFillStyle".equals(localObject3))
+              {
+                j = getColor((JSONArray)localObject6);
+                this.mFillColorAlpha = ((JSONArray)localObject6).optInt(3);
+                this.mFillPaint.setShader(null);
+                this.mFillPaint.setColor(j);
+              }
+            }
+            else if ("radial".equals(localObject6))
+            {
+              localObject6 = ((JSONArray)localObject7).optJSONArray(1);
+              localObject8 = ((JSONArray)localObject7).optJSONArray(2);
+              localObject7 = ((JSONArray)localObject8).optJSONArray(0).optJSONArray(1);
+              localObject8 = ((JSONArray)localObject8).optJSONArray(1).optJSONArray(1);
+              localObject6 = new RadialGradient(mpx2px(((JSONArray)localObject6).optDouble(0)), mpx2px(((JSONArray)localObject6).optDouble(1)), mpx2px(((JSONArray)localObject6).optDouble(2)), getColor((JSONArray)localObject7), getColor((JSONArray)localObject8), Shader.TileMode.CLAMP);
+              if ("setStrokeStyle".equals(localObject3)) {
+                this.mStrokePaint.setShader((Shader)localObject6);
+              } else if ("setFillStyle".equals(localObject3)) {
+                this.mFillPaint.setShader((Shader)localObject6);
+              }
+            }
+            else
+            {
+              if (!"linear".equals(localObject6)) {
+                break label1571;
+              }
+              localObject6 = ((JSONArray)localObject7).optJSONArray(1);
+              localObject8 = ((JSONArray)localObject7).optJSONArray(2);
+              localObject7 = ((JSONArray)localObject8).optJSONArray(0).optJSONArray(1);
+              localObject8 = ((JSONArray)localObject8).optJSONArray(1).optJSONArray(1);
+              localObject6 = new LinearGradient(mpx2px(((JSONArray)localObject6).optDouble(0)), mpx2px(((JSONArray)localObject6).optDouble(1)), mpx2px(((JSONArray)localObject6).optDouble(2)), mpx2px(((JSONArray)localObject6).optDouble(3)), getColor((JSONArray)localObject7), getColor((JSONArray)localObject8), Shader.TileMode.CLAMP);
+              if ("setStrokeStyle".equals(localObject3)) {
+                this.mStrokePaint.setShader((Shader)localObject6);
+              } else if ("setFillStyle".equals(localObject3)) {
+                this.mFillPaint.setShader((Shader)localObject6);
+              }
+            }
           }
-          if (!"setFillStyle".equals(localObject1)) {
-            break label505;
-          }
-          j = getColor((JSONArray)localObject4);
-          this.mFillColorAlpha = ((JSONArray)localObject4).optInt(3);
-          this.mFillPaint.setShader(null);
-          this.mFillPaint.setColor(j);
-          break label505;
-        }
-        if ("radial".equals(localObject4))
+        } while ((!"pattern".equals(localObject6)) || (((JSONArray)localObject7).length() != 3));
+        localObject6 = ((JSONArray)localObject7).optString(1);
+        localObject3 = localObject6;
+        if (!bdje.a((String)localObject6))
         {
-          localObject4 = localException3.optJSONArray(1);
-          localObject7 = localException3.optJSONArray(2);
-          localObject6 = ((JSONArray)localObject7).optJSONArray(0).optJSONArray(1);
-          localObject7 = ((JSONArray)localObject7).optJSONArray(1).optJSONArray(1);
-          localObject4 = new RadialGradient(mpx2px(((JSONArray)localObject4).optDouble(0)), mpx2px(((JSONArray)localObject4).optDouble(1)), mpx2px(((JSONArray)localObject4).optDouble(2)), getColor((JSONArray)localObject6), getColor((JSONArray)localObject7), Shader.TileMode.CLAMP);
-          if ("setStrokeStyle".equals(localObject1))
-          {
-            this.mStrokePaint.setShader((Shader)localObject4);
-            break label505;
+          if (!((String)localObject6).startsWith("wxfile")) {
+            break label1827;
           }
-          if (!"setFillStyle".equals(localObject1)) {
-            break label505;
-          }
-          this.mFillPaint.setShader((Shader)localObject4);
-          break label505;
+          localObject3 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject6);
         }
-        if ("linear".equals(localObject4))
+        localObject6 = ((JSONArray)localObject7).optString(2);
+        if (!"repeat".equals(localObject6)) {
+          break label1841;
+        }
+        this.mRepeatX = true;
+        this.mRepeatY = true;
+        if (bdje.a((String)localObject3)) {
+          break label1877;
+        }
+        localObject3 = ImageUtil.getLocalBitmap((String)localObject3);
+        if (localObject3 != null)
         {
-          localObject4 = ((JSONArray)localObject6).optJSONArray(1);
-          localObject7 = ((JSONArray)localObject6).optJSONArray(2);
-          localObject6 = ((JSONArray)localObject7).optJSONArray(0).optJSONArray(1);
-          localObject7 = ((JSONArray)localObject7).optJSONArray(1).optJSONArray(1);
-          localObject4 = new LinearGradient(mpx2px(((JSONArray)localObject4).optDouble(0)), mpx2px(((JSONArray)localObject4).optDouble(1)), mpx2px(((JSONArray)localObject4).optDouble(2)), mpx2px(((JSONArray)localObject4).optDouble(3)), getColor((JSONArray)localObject6), getColor((JSONArray)localObject7), Shader.TileMode.CLAMP);
-          if ("setStrokeStyle".equals(localObject1))
-          {
-            this.mStrokePaint.setShader((Shader)localObject4);
-            break label505;
-          }
-          if (!"setFillStyle".equals(localObject1)) {
-            break label505;
-          }
-          this.mFillPaint.setShader((Shader)localObject4);
-          break label505;
+          this.mBitmapW = ((Bitmap)localObject3).getWidth();
+          this.mBitmapH = ((Bitmap)localObject3).getHeight();
         }
-        if ((!"pattern".equals(localObject4)) || (((JSONArray)localObject6).length() != 3)) {
-          break label505;
-        }
-        localObject4 = ((JSONArray)localObject6).optString(1);
-        localObject1 = localObject4;
-        if (!bbkk.a((String)localObject4))
-        {
-          if (((String)localObject4).startsWith("wxfile")) {
-            localObject1 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject4);
-          }
-        }
-        else
-        {
-          label1480:
-          localObject4 = ((JSONArray)localObject6).optString(2);
-          if (!"repeat".equals(localObject4)) {
-            break label1689;
-          }
-          this.mRepeatX = true;
-          this.mRepeatY = true;
-          label1509:
-          if (bbkk.a((String)localObject1)) {
-            break label1725;
-          }
-          localObject1 = ImageUtil.getLocalBitmap((String)localObject1);
-          if (localObject1 != null)
-          {
-            this.mBitmapW = ((Bitmap)localObject1).getWidth();
-            this.mBitmapH = ((Bitmap)localObject1).getHeight();
-          }
-          localObject4 = new Matrix();
-          ((Matrix)localObject4).postScale(this.mDensity, this.mDensity);
-          localObject6 = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, this.mBitmapW, this.mBitmapH, (Matrix)localObject4, true);
-          if (localObject6 == null) {
-            break label505;
-          }
-          this.mBitmapW = ((Bitmap)localObject6).getWidth();
-          this.mBitmapH = ((Bitmap)localObject6).getHeight();
-          if (!this.mRepeatX) {
-            break label1727;
-          }
-          localObject1 = Shader.TileMode.REPEAT;
-          label1625:
-          if (!this.mRepeatY) {
-            break label1735;
-          }
-        }
-        label1725:
-        label1727:
-        label1735:
-        for (localObject4 = Shader.TileMode.REPEAT;; localObject4 = Shader.TileMode.CLAMP)
-        {
-          localObject1 = new BitmapShader((Bitmap)localObject6, (Shader.TileMode)localObject1, (Shader.TileMode)localObject4);
-          this.mFillPaint.setShader((Shader)localObject1);
-          this.mStrokePaint.setShader((Shader)localObject1);
-          break;
-          localObject1 = this.mApkgInfo.getFilePath((String)localObject4);
-          break label1480;
-          if ("repeat-x".equals(localObject4))
-          {
-            this.mRepeatX = true;
-            break label1509;
-          }
-          if (!"repeat-y".equals(localObject4)) {
-            break label1509;
-          }
-          this.mRepeatY = true;
-          break label1509;
-          break;
-          localObject1 = Shader.TileMode.CLAMP;
-          break label1625;
+        localObject6 = new Matrix();
+        ((Matrix)localObject6).postScale(this.mDensity, this.mDensity);
+        localObject7 = Bitmap.createBitmap((Bitmap)localObject3, 0, 0, this.mBitmapW, this.mBitmapH, (Matrix)localObject6, true);
+      } while (localObject7 == null);
+      this.mBitmapW = ((Bitmap)localObject7).getWidth();
+      this.mBitmapH = ((Bitmap)localObject7).getHeight();
+      if (this.mRepeatX)
+      {
+        localObject3 = Shader.TileMode.REPEAT;
+        label1777:
+        if (!this.mRepeatY) {
+          break label1887;
         }
       }
-      if (("strokePath".equals(localObject1)) || ("fillPath".equals(localObject1)) || ("clip".equals(localObject1)))
+      label1887:
+      for (localObject6 = Shader.TileMode.REPEAT;; localObject6 = Shader.TileMode.CLAMP)
+      {
+        localObject3 = new BitmapShader((Bitmap)localObject7, (Shader.TileMode)localObject3, (Shader.TileMode)localObject6);
+        this.mFillPaint.setShader((Shader)localObject3);
+        this.mStrokePaint.setShader((Shader)localObject3);
+        break;
+        localObject3 = this.mApkgInfo.getFilePath((String)localObject6);
+        break label1632;
+        if ("repeat-x".equals(localObject6))
+        {
+          this.mRepeatX = true;
+          break label1661;
+        }
+        if (!"repeat-y".equals(localObject6)) {
+          break label1661;
+        }
+        this.mRepeatY = true;
+        break label1661;
+        break;
+        localObject3 = Shader.TileMode.CLAMP;
+        break label1777;
+      }
+      label1895:
+      if (("strokePath".equals(localObject3)) || ("fillPath".equals(localObject3)) || ("clip".equals(localObject3)))
       {
         if (this.mPath == null) {
           this.mPath = new Path();
         }
         this.mPath.reset();
         j = 0;
-        if (j < ((JSONArray)localObject6).length())
+        if (j < ((JSONArray)localObject7).length())
         {
-          localObject7 = ((JSONArray)localObject6).optJSONObject(j);
-          if (localObject7 != null)
+          localObject8 = ((JSONArray)localObject7).optJSONObject(j);
+          if (localObject8 != null)
           {
-            localObject4 = ((JSONObject)localObject7).optString("method");
-            localObject7 = ((JSONObject)localObject7).optJSONArray("data");
-            if (!"rect".equals(localObject4)) {
-              break label2176;
+            localObject6 = ((JSONObject)localObject8).optString("method");
+            localObject8 = ((JSONObject)localObject8).optJSONArray("data");
+            if (!"rect".equals(localObject6)) {
+              break label2328;
             }
-            f2 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
-            f6 = mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D));
-            f3 = mpx2px(((JSONArray)localObject7).optDouble(2, 0.0D));
-            f5 = mpx2px(((JSONArray)localObject7).optDouble(3, 0.0D));
+            f2 = mpx2px(((JSONArray)localObject8).optDouble(0, 0.0D));
+            f6 = mpx2px(((JSONArray)localObject8).optDouble(1, 0.0D));
+            f3 = mpx2px(((JSONArray)localObject8).optDouble(2, 0.0D));
+            f5 = mpx2px(((JSONArray)localObject8).optDouble(3, 0.0D));
             if (f3 > 0.0F) {
-              break label5567;
+              break label5719;
             }
             f1 = -f3;
             f2 += f3;
@@ -517,10 +560,6 @@ public class CanvasView
           }
         }
       }
-      label3118:
-      label3509:
-      label5561:
-      label5567:
       for (f1 = f2;; f1 = f2)
       {
         for (;;)
@@ -532,30 +571,29 @@ public class CanvasView
             f2 = f6 + f5;
             f4 = -f5;
           }
-          localObject4 = new RectF();
+          localObject6 = new RectF();
           if (((this.mRepeatX) || (this.mRepeatY)) && ((this.mBitmapW != 0) || (this.mBitmapH != 0)))
           {
             if (this.mRepeatX) {
               f1 = 0.0F;
             }
-            ((RectF)localObject4).left = f1;
+            ((RectF)localObject6).left = f1;
             if (this.mRepeatY) {
               f2 = 0.0F;
             }
-            ((RectF)localObject4).top = f2;
+            ((RectF)localObject6).top = f2;
             if (this.mRepeatX)
             {
-              f1 = ((RectF)localObject4).left + f3;
-              label2047:
-              ((RectF)localObject4).right = f1;
+              f1 = ((RectF)localObject6).left + f3;
+              ((RectF)localObject6).right = f1;
               if (!this.mRepeatY) {
-                break label2123;
+                break label2275;
               }
-              f1 = f4 + ((RectF)localObject4).top;
-              ((RectF)localObject4).bottom = f1;
-              this.mPath.addRect((RectF)localObject4, Path.Direction.CW);
-              f1 = ((RectF)localObject4).right;
-              f1 = ((RectF)localObject4).bottom;
+              f1 = f4 + ((RectF)localObject6).top;
+              ((RectF)localObject6).bottom = f1;
+              this.mPath.addRect((RectF)localObject6, Path.Direction.CW);
+              f1 = ((RectF)localObject6).right;
+              f1 = ((RectF)localObject6).bottom;
             }
           }
           for (;;)
@@ -563,48 +601,48 @@ public class CanvasView
             j += 1;
             break;
             f1 = this.mBitmapW;
-            break label2047;
-            label2123:
+            break label2199;
+            label2275:
             f1 = this.mBitmapH;
-            break label2071;
-            ((RectF)localObject4).left = f1;
-            ((RectF)localObject4).top = f2;
-            ((RectF)localObject4).right = (((RectF)localObject4).left + f3);
-            ((RectF)localObject4).bottom = (f4 + ((RectF)localObject4).top);
-            break label2078;
-            if ("moveTo".equals(localObject4))
+            break label2223;
+            ((RectF)localObject6).left = f1;
+            ((RectF)localObject6).top = f2;
+            ((RectF)localObject6).right = (((RectF)localObject6).left + f3);
+            ((RectF)localObject6).bottom = (f4 + ((RectF)localObject6).top);
+            break label2230;
+            if ("moveTo".equals(localObject6))
             {
-              f1 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
-              f2 = mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D));
+              f1 = mpx2px(((JSONArray)localObject8).optDouble(0, 0.0D));
+              f2 = mpx2px(((JSONArray)localObject8).optDouble(1, 0.0D));
               this.mPath.moveTo(f1, f2);
             }
-            else if ("lineTo".equals(localObject4))
+            else if ("lineTo".equals(localObject6))
             {
-              f1 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
-              f2 = mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D));
+              f1 = mpx2px(((JSONArray)localObject8).optDouble(0, 0.0D));
+              f2 = mpx2px(((JSONArray)localObject8).optDouble(1, 0.0D));
               if (this.mPath.isEmpty()) {
                 this.mPath.moveTo(f1, f2);
               } else {
                 this.mPath.lineTo(f1, f2);
               }
             }
-            else if ("closePath".equals(localObject4))
+            else if ("closePath".equals(localObject6))
             {
               this.mPath.close();
             }
             else
             {
-              if ("arc".equals(localObject4))
+              if ("arc".equals(localObject6))
               {
-                f5 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
-                f3 = mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D));
-                f4 = mpx2px(((JSONArray)localObject7).optDouble(2, 0.0D));
-                double d1 = ((JSONArray)localObject7).optDouble(3, 0.0D);
-                double d2 = ((JSONArray)localObject7).optDouble(4, 0.0D);
+                f5 = mpx2px(((JSONArray)localObject8).optDouble(0, 0.0D));
+                f3 = mpx2px(((JSONArray)localObject8).optDouble(1, 0.0D));
+                f4 = mpx2px(((JSONArray)localObject8).optDouble(2, 0.0D));
+                double d1 = ((JSONArray)localObject8).optDouble(3, 0.0D);
+                double d2 = ((JSONArray)localObject8).optDouble(4, 0.0D);
                 f6 = (float)(d1 / 3.141592653589793D * 180.0D);
                 f1 = (float)(d2 / 3.141592653589793D * 180.0D);
-                boolean bool = ((JSONArray)localObject6).optBoolean(5);
-                localObject4 = new RectF(f5 - f4, f3 - f4, f5 + f4, f3 + f4);
+                boolean bool = ((JSONArray)localObject7).optBoolean(5);
+                localObject6 = new RectF(f5 - f4, f3 - f4, f5 + f4, f3 + f4);
                 if (bool)
                 {
                   f1 = f6 - f1;
@@ -614,9 +652,9 @@ public class CanvasView
                     f1 = f2 + 360.0F;
                   }
                   if (!this.mPath.isEmpty()) {
-                    break label2555;
+                    break label2707;
                   }
-                  this.mPath.addArc((RectF)localObject4, f6, f1);
+                  this.mPath.addArc((RectF)localObject6, f6, f1);
                 }
                 for (;;)
                 {
@@ -624,219 +662,216 @@ public class CanvasView
                   f1 = (float)(f3 + f4 * Math.sin(d2));
                   break;
                   f1 -= f6;
-                  break label2460;
-                  label2555:
+                  break label2612;
                   f2 = (float)(f5 + f4 * Math.cos(d1));
                   double d3 = f3;
                   double d4 = f4;
                   f2 = (float)(Math.sin(d1) * d4 + d3);
                   if (Math.abs(Math.abs(f1) - 360.0F) < 1.0E-014D) {
-                    this.mPath.addArc((RectF)localObject4, f6, f1);
+                    this.mPath.addArc((RectF)localObject6, f6, f1);
                   } else {
-                    this.mPath.arcTo((RectF)localObject4, f6, f1);
+                    this.mPath.arcTo((RectF)localObject6, f6, f1);
                   }
                 }
               }
-              if ("quadraticCurveTo".equals(localObject4))
+              if ("quadraticCurveTo".equals(localObject6))
               {
-                f1 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
-                f2 = mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D));
-                f3 = mpx2px(((JSONArray)localObject7).optDouble(2, 0.0D));
-                f4 = mpx2px(((JSONArray)localObject7).optDouble(3, 0.0D));
+                f1 = mpx2px(((JSONArray)localObject8).optDouble(0, 0.0D));
+                f2 = mpx2px(((JSONArray)localObject8).optDouble(1, 0.0D));
+                f3 = mpx2px(((JSONArray)localObject8).optDouble(2, 0.0D));
+                f4 = mpx2px(((JSONArray)localObject8).optDouble(3, 0.0D));
                 if (this.mPath.isEmpty()) {
                   this.mPath.moveTo(f1, f2);
                 }
                 this.mPath.quadTo(f1, f2, f3, f4);
               }
-              else if ("bezierCurveTo".equals(localObject4))
+              else if ("bezierCurveTo".equals(localObject6))
               {
-                f1 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
-                f2 = mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D));
-                f3 = mpx2px(((JSONArray)localObject7).optDouble(2, 0.0D));
-                f4 = mpx2px(((JSONArray)localObject7).optDouble(3, 0.0D));
-                f5 = mpx2px(((JSONArray)localObject7).optDouble(4, 0.0D));
-                f6 = mpx2px(((JSONArray)localObject7).optDouble(5, 0.0D));
+                f1 = mpx2px(((JSONArray)localObject8).optDouble(0, 0.0D));
+                f2 = mpx2px(((JSONArray)localObject8).optDouble(1, 0.0D));
+                f3 = mpx2px(((JSONArray)localObject8).optDouble(2, 0.0D));
+                f4 = mpx2px(((JSONArray)localObject8).optDouble(3, 0.0D));
+                f5 = mpx2px(((JSONArray)localObject8).optDouble(4, 0.0D));
+                f6 = mpx2px(((JSONArray)localObject8).optDouble(5, 0.0D));
                 if (this.mPath.isEmpty()) {
                   this.mPath.moveTo(f1, f2);
                 }
                 this.mPath.cubicTo(f1, f2, f3, f4, f5, f6);
               }
-              else if ("translate".equals(localObject4))
+              else if ("translate".equals(localObject6))
               {
-                paramCanvas.translate(mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D)), mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D)));
+                paramCanvas.translate(mpx2px(((JSONArray)localObject8).optDouble(0, 0.0D)), mpx2px(((JSONArray)localObject8).optDouble(1, 0.0D)));
               }
             }
           }
-          if ("clip".equals(localObject1))
+          if ("clip".equals(localObject3))
           {
             paramCanvas.clipPath(this.mPath);
             break;
           }
-          paramCanvas.drawPath(this.mPath, getCurrentPaint((String)localObject1));
+          paramCanvas.drawPath(this.mPath, getCurrentPaint((String)localObject3));
           break;
-          if ("setFontSize".equals(localObject1))
+          if ("setFontSize".equals(localObject3))
           {
-            f1 = mpx2px(((JSONArray)localObject6).optDouble(0, 0.0D));
+            f1 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
             this.mFillPaint.setTextSize(f1);
             this.mStrokePaint.setTextSize(f1);
             break;
           }
-          if ("setFontStyle".equals(localObject1))
+          if ("setFontStyle".equals(localObject3))
           {
-            localObject1 = ((JSONArray)localObject6).optString(0, "normal");
-            if ("normal".equals(localObject1))
+            localObject3 = ((JSONArray)localObject7).optString(0, "normal");
+            if ("normal".equals(localObject3))
             {
-              localObject1 = this.mFillPaint.getTypeface();
-              if ((localObject1 != null) && (((Typeface)localObject1).isBold()))
+              localObject3 = this.mFillPaint.getTypeface();
+              if ((localObject3 != null) && (((Typeface)localObject3).isBold()))
               {
                 j = 1;
-                label3054:
-                this.mFillPaint.setTypeface(Typeface.create((Typeface)localObject1, j));
-                localObject1 = this.mStrokePaint.getTypeface();
-                if ((localObject1 == null) || (!((Typeface)localObject1).isBold())) {
-                  break label3118;
+                this.mFillPaint.setTypeface(Typeface.create((Typeface)localObject3, j));
+                localObject3 = this.mStrokePaint.getTypeface();
+                if ((localObject3 == null) || (!((Typeface)localObject3).isBold())) {
+                  break label3270;
                 }
               }
               for (j = 1;; j = 0)
               {
-                this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject1, j));
+                this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject3, j));
                 break;
                 j = 0;
-                break label3054;
+                break label3206;
               }
             }
-            if ((!"italic".equals(localObject1)) && (!"oblique".equals(localObject1))) {
+            if ((!"italic".equals(localObject3)) && (!"oblique".equals(localObject3))) {
               break;
             }
-            localObject1 = this.mFillPaint.getTypeface();
-            if ((localObject1 != null) && (((Typeface)localObject1).isBold()))
+            localObject3 = this.mFillPaint.getTypeface();
+            if ((localObject3 != null) && (((Typeface)localObject3).isBold()))
             {
               j = 3;
-              label3171:
-              this.mFillPaint.setTypeface(Typeface.create((Typeface)localObject1, j));
-              localObject1 = this.mStrokePaint.getTypeface();
-              if ((localObject1 == null) || (!((Typeface)localObject1).isBold())) {
-                break label3235;
+              label3323:
+              this.mFillPaint.setTypeface(Typeface.create((Typeface)localObject3, j));
+              localObject3 = this.mStrokePaint.getTypeface();
+              if ((localObject3 == null) || (!((Typeface)localObject3).isBold())) {
+                break label3387;
               }
             }
             for (j = 3;; j = 2)
             {
-              this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject1, j));
+              this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject3, j));
               break;
               j = 2;
-              break label3171;
+              break label3323;
             }
           }
-          if ("setFontWeight".equals(localObject1))
+          if ("setFontWeight".equals(localObject3))
           {
-            localObject1 = ((JSONArray)localObject6).optString(0);
-            if ("normal".equals(localObject1))
+            localObject3 = ((JSONArray)localObject7).optString(0);
+            if ("normal".equals(localObject3))
             {
-              localObject1 = this.mFillPaint.getTypeface();
-              if ((localObject1 != null) && (((Typeface)localObject1).isItalic()))
+              localObject3 = this.mFillPaint.getTypeface();
+              if ((localObject3 != null) && (((Typeface)localObject3).isItalic()))
               {
                 j = 2;
-                label3294:
-                this.mFillPaint.setTypeface(Typeface.create((Typeface)localObject1, j));
-                localObject1 = this.mStrokePaint.getTypeface();
-                if ((localObject1 == null) || (!((Typeface)localObject1).isItalic())) {
-                  break label3358;
+                label3446:
+                this.mFillPaint.setTypeface(Typeface.create((Typeface)localObject3, j));
+                localObject3 = this.mStrokePaint.getTypeface();
+                if ((localObject3 == null) || (!((Typeface)localObject3).isItalic())) {
+                  break label3510;
                 }
               }
               for (j = 2;; j = 0)
               {
-                this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject1, j));
+                this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject3, j));
                 break;
                 j = 0;
-                break label3294;
+                break label3446;
               }
             }
-            if (!"bold".equals(localObject1)) {
+            if (!"bold".equals(localObject3)) {
               break;
             }
-            localObject1 = this.mFillPaint.getTypeface();
-            if ((localObject1 != null) && (((Typeface)localObject1).isItalic()))
+            localObject3 = this.mFillPaint.getTypeface();
+            if ((localObject3 != null) && (((Typeface)localObject3).isItalic()))
             {
               j = 3;
-              label3400:
-              this.mFillPaint.setTypeface(Typeface.create((Typeface)localObject1, j));
-              localObject1 = this.mStrokePaint.getTypeface();
-              if ((localObject1 == null) || (!((Typeface)localObject1).isItalic())) {
-                break label3464;
+              label3552:
+              this.mFillPaint.setTypeface(Typeface.create((Typeface)localObject3, j));
+              localObject3 = this.mStrokePaint.getTypeface();
+              if ((localObject3 == null) || (!((Typeface)localObject3).isItalic())) {
+                break label3616;
               }
             }
             for (j = 3;; j = 1)
             {
-              this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject1, j));
+              this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject3, j));
               break;
               j = 1;
-              break label3400;
+              break label3552;
             }
           }
-          if ("setFontFamily".equals(localObject1))
+          if ("setFontFamily".equals(localObject3))
           {
-            localObject1 = ((JSONArray)localObject6).optString(0);
-            localObject4 = this.mFillPaint.getTypeface();
-            if (localObject4 != null)
+            localObject3 = ((JSONArray)localObject7).optString(0);
+            localObject6 = this.mFillPaint.getTypeface();
+            if (localObject6 != null)
             {
-              j = ((Typeface)localObject4).getStyle();
-              this.mFillPaint.setTypeface(Typeface.create((String)localObject1, j));
-              localObject1 = this.mStrokePaint.getTypeface();
-              if (localObject1 == null) {
-                break label3569;
+              j = ((Typeface)localObject6).getStyle();
+              this.mFillPaint.setTypeface(Typeface.create((String)localObject3, j));
+              localObject3 = this.mStrokePaint.getTypeface();
+              if (localObject3 == null) {
+                break label3721;
               }
             }
-            label3569:
-            for (j = ((Typeface)localObject1).getStyle();; j = 0)
+            for (j = ((Typeface)localObject3).getStyle();; j = 0)
             {
-              this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject1, j));
+              this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject3, j));
               break;
               j = 0;
-              break label3509;
+              break label3661;
             }
           }
-          if ("setTextAlign".equals(localObject1))
+          if ("setTextAlign".equals(localObject3))
           {
-            localObject1 = ((JSONArray)localObject6).optString(0);
-            if ("center".equals(localObject1)) {
-              localObject1 = Paint.Align.CENTER;
+            localObject3 = ((JSONArray)localObject7).optString(0);
+            if ("center".equals(localObject3)) {
+              localObject3 = Paint.Align.CENTER;
             }
             for (;;)
             {
-              this.mFillPaint.setTextAlign((Paint.Align)localObject1);
-              this.mStrokePaint.setTextAlign((Paint.Align)localObject1);
+              this.mFillPaint.setTextAlign((Paint.Align)localObject3);
+              this.mStrokePaint.setTextAlign((Paint.Align)localObject3);
               break;
-              if ("right".equals(localObject1)) {
-                localObject1 = Paint.Align.RIGHT;
+              if ("right".equals(localObject3)) {
+                localObject3 = Paint.Align.RIGHT;
               } else {
-                localObject1 = Paint.Align.LEFT;
+                localObject3 = Paint.Align.LEFT;
               }
             }
           }
-          if (("fillText".equals(localObject1)) || ("strokeText".equals(localObject1)))
+          if (("fillText".equals(localObject3)) || ("strokeText".equals(localObject3)))
           {
-            localObject1 = getCurrentPaint((String)localObject1);
-            f5 = ((Paint)localObject1).descent();
-            f6 = ((Paint)localObject1).ascent();
+            localObject3 = getCurrentPaint((String)localObject3);
+            f5 = ((Paint)localObject3).descent();
+            f6 = ((Paint)localObject3).ascent();
             j = (int)(f5 - f6);
-            localObject4 = ((JSONArray)localObject6).optString(0);
-            f3 = mpx2px(((JSONArray)localObject6).optDouble(1, 0.0D));
-            f2 = mpx2px(((JSONArray)localObject6).optDouble(2, 0.0D));
-            f4 = mpx2px(((JSONArray)localObject6).optDouble(3, -1.0D));
+            localObject6 = ((JSONArray)localObject7).optString(0);
+            f3 = mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D));
+            f2 = mpx2px(((JSONArray)localObject7).optDouble(2, 0.0D));
+            f4 = mpx2px(((JSONArray)localObject7).optDouble(3, -1.0D));
             if (this.mTextBaseline.equals("top")) {
               f1 = f2 - f6;
             }
             for (;;)
             {
               if (f4 <= 0.0F) {
-                break label3892;
+                break label4044;
               }
               paramCanvas.save();
-              f2 = f4 / ((Paint)localObject1).measureText((String)localObject4);
+              f2 = f4 / ((Paint)localObject3).measureText((String)localObject6);
               if (f2 < 1.0F) {
                 paramCanvas.scale(f2, 1.0F, f3, f1);
               }
-              paramCanvas.drawText((String)localObject4, f3, f1, (Paint)localObject1);
+              paramCanvas.drawText((String)localObject6, f3, f1, (Paint)localObject3);
               paramCanvas.restore();
               break;
               if (this.mTextBaseline.equals("bottom"))
@@ -851,15 +886,15 @@ public class CanvasView
                 }
               }
             }
-            paramCanvas.drawText((String)localObject4, f3, f1, (Paint)localObject1);
+            paramCanvas.drawText((String)localObject6, f3, f1, (Paint)localObject3);
             break;
           }
-          if ("setGlobalAlpha".equals(localObject1))
+          if ("setGlobalAlpha".equals(localObject3))
           {
-            this.mGlobalAlpha = ((JSONArray)localObject6).optInt(0, 0);
+            this.mGlobalAlpha = ((JSONArray)localObject7).optInt(0, 0);
             break;
           }
-          if ("restore".equals(localObject1)) {
+          if ("restore".equals(localObject3)) {
             try
             {
               paramCanvas.restore();
@@ -874,16 +909,16 @@ public class CanvasView
               this.mBitmapW = this.mSaveBitmapW;
               this.mBitmapH = this.mSaveBitmapH;
             }
-            catch (Exception localException1)
+            catch (Exception localException2)
             {
               for (;;)
               {
-                QLog.e(TAG, 2, "ACTION_RESTORE: " + Log.getStackTraceString(localException1));
+                QLog.e(TAG, 2, "ACTION_RESTORE: " + Log.getStackTraceString(localException2));
               }
             }
           }
         }
-        if ("save".equals(localException1))
+        if ("save".equals(localException2))
         {
           paramCanvas.save();
           this.mSaveFillPaint = new Paint(this.mFillPaint);
@@ -898,13 +933,13 @@ public class CanvasView
           this.mSaveBitmapH = this.mBitmapH;
           break;
         }
-        if ("clearRect".equals(localException1))
+        if ("clearRect".equals(localException2))
         {
           paramCanvas.save();
-          f4 = mpx2px(((JSONArray)localObject6).optDouble(0, 0.0D));
-          f6 = mpx2px(((JSONArray)localObject6).optDouble(1, 0.0D));
-          f3 = mpx2px(((JSONArray)localObject6).optDouble(2, 0.0D));
-          f5 = mpx2px(((JSONArray)localObject6).optDouble(3, 0.0D));
+          f4 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
+          f6 = mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D));
+          f3 = mpx2px(((JSONArray)localObject7).optDouble(2, 0.0D));
+          f5 = mpx2px(((JSONArray)localObject7).optDouble(3, 0.0D));
           f2 = f3;
           f1 = f4;
           if (f3 <= 0.0F)
@@ -919,209 +954,209 @@ public class CanvasView
             f3 = f6 + f5;
             f4 = -f5;
           }
-          localObject2 = new RectF();
-          ((RectF)localObject2).left = f1;
-          ((RectF)localObject2).top = f3;
-          ((RectF)localObject2).right = (((RectF)localObject2).left + f2);
-          ((RectF)localObject2).bottom = (f4 + ((RectF)localObject2).top);
-          paramCanvas.clipRect((RectF)localObject2);
+          localObject4 = new RectF();
+          ((RectF)localObject4).left = f1;
+          ((RectF)localObject4).top = f3;
+          ((RectF)localObject4).right = (((RectF)localObject4).left + f2);
+          ((RectF)localObject4).bottom = (f4 + ((RectF)localObject4).top);
+          paramCanvas.clipRect((RectF)localObject4);
           paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
           paramCanvas.restore();
           break;
         }
-        if ("setGlobalCompositeOperation".equals(localObject2))
+        if ("setGlobalCompositeOperation".equals(localObject4))
         {
-          localObject4 = ((JSONArray)localObject6).optString(0);
-          localObject2 = null;
-          if ("xor".equals(localObject4)) {
-            localObject2 = PorterDuff.Mode.XOR;
+          localObject6 = ((JSONArray)localObject7).optString(0);
+          localObject4 = null;
+          if ("xor".equals(localObject6)) {
+            localObject4 = PorterDuff.Mode.XOR;
           }
           for (;;)
           {
-            if (localObject2 == null) {
-              break label4563;
+            if (localObject4 == null) {
+              break label4715;
             }
-            this.mFillPaint.setXfermode(new PorterDuffXfermode((PorterDuff.Mode)localObject2));
-            this.mStrokePaint.setXfermode(new PorterDuffXfermode((PorterDuff.Mode)localObject2));
+            this.mFillPaint.setXfermode(new PorterDuffXfermode((PorterDuff.Mode)localObject4));
+            this.mStrokePaint.setXfermode(new PorterDuffXfermode((PorterDuff.Mode)localObject4));
             break;
-            if ("source-atop".equals(localObject4)) {
-              localObject2 = PorterDuff.Mode.SRC_ATOP;
-            } else if ("destination-out".equals(localObject4)) {
-              localObject2 = PorterDuff.Mode.DST_OUT;
-            } else if (("lighter".equals(localObject4)) || ("lighten".equals(localObject4)) || ("hard-light".equals(localObject4))) {
-              localObject2 = PorterDuff.Mode.LIGHTEN;
-            } else if ("overlay".equals(localObject4)) {
-              localObject2 = PorterDuff.Mode.OVERLAY;
-            } else if ("darken".equals(localObject4)) {
-              localObject2 = PorterDuff.Mode.DARKEN;
+            if ("source-atop".equals(localObject6)) {
+              localObject4 = PorterDuff.Mode.SRC_ATOP;
+            } else if ("destination-out".equals(localObject6)) {
+              localObject4 = PorterDuff.Mode.DST_OUT;
+            } else if (("lighter".equals(localObject6)) || ("lighten".equals(localObject6)) || ("hard-light".equals(localObject6))) {
+              localObject4 = PorterDuff.Mode.LIGHTEN;
+            } else if ("overlay".equals(localObject6)) {
+              localObject4 = PorterDuff.Mode.OVERLAY;
+            } else if ("darken".equals(localObject6)) {
+              localObject4 = PorterDuff.Mode.DARKEN;
             }
           }
-          label4563:
+          label4715:
           break;
         }
-        if ("rotate".equals(localObject2))
+        if ("rotate".equals(localObject4))
         {
-          paramCanvas.rotate((float)(((JSONArray)localObject6).optDouble(0, 0.0D) * 180.0D / 3.141592653589793D));
+          paramCanvas.rotate((float)(((JSONArray)localObject7).optDouble(0, 0.0D) * 180.0D / 3.141592653589793D));
           break;
         }
-        if ("scale".equals(localObject2))
+        if ("scale".equals(localObject4))
         {
-          paramCanvas.scale((float)((JSONArray)localObject6).optDouble(0, 1.0D), (float)((JSONArray)localObject6).optDouble(1, 1.0D));
+          paramCanvas.scale((float)((JSONArray)localObject7).optDouble(0, 1.0D), (float)((JSONArray)localObject7).optDouble(1, 1.0D));
           break;
         }
-        if ("translate".equals(localObject2))
+        if ("translate".equals(localObject4))
         {
-          paramCanvas.translate(mpx2px(((JSONArray)localObject6).optDouble(0, 0.0D)), mpx2px(((JSONArray)localObject6).optDouble(1, 0.0D)));
+          paramCanvas.translate(mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D)), mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D)));
           break;
         }
-        if ("setLineWidth".equals(localObject2))
+        if ("setLineWidth".equals(localObject4))
         {
-          f1 = mpx2px(((JSONArray)localObject6).optDouble(0, 0.0D));
+          f1 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
           this.mStrokePaint.setStrokeWidth(f1);
           break;
         }
-        if ("setShadow".equals(localObject2))
+        if ("setShadow".equals(localObject4))
         {
-          localObject2 = new CanvasView.ShadowLayer(this);
-          localObject4 = ((JSONArray)localObject6).optJSONArray(3);
-          f1 = mpx2px(((JSONArray)localObject6).optDouble(2, 0.0D));
-          f2 = mpx2px(((JSONArray)localObject6).optDouble(0, 0.0D));
-          f3 = mpx2px(((JSONArray)localObject6).optDouble(1, 0.0D));
-          ((CanvasView.ShadowLayer)localObject2).radius = f1;
-          ((CanvasView.ShadowLayer)localObject2).dx = f2;
-          ((CanvasView.ShadowLayer)localObject2).dy = f3;
-          ((CanvasView.ShadowLayer)localObject2).color = getColor((JSONArray)localObject4);
-          this.mFillPaint.setShadowLayer(((CanvasView.ShadowLayer)localObject2).radius, ((CanvasView.ShadowLayer)localObject2).dx, ((CanvasView.ShadowLayer)localObject2).dy, ((CanvasView.ShadowLayer)localObject2).color);
-          this.mStrokePaint.setShadowLayer(((CanvasView.ShadowLayer)localObject2).radius, ((CanvasView.ShadowLayer)localObject2).dx, ((CanvasView.ShadowLayer)localObject2).dy, ((CanvasView.ShadowLayer)localObject2).color);
+          localObject4 = new CanvasView.ShadowLayer(this);
+          localObject6 = ((JSONArray)localObject7).optJSONArray(3);
+          f1 = mpx2px(((JSONArray)localObject7).optDouble(2, 0.0D));
+          f2 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
+          f3 = mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D));
+          ((CanvasView.ShadowLayer)localObject4).radius = f1;
+          ((CanvasView.ShadowLayer)localObject4).dx = f2;
+          ((CanvasView.ShadowLayer)localObject4).dy = f3;
+          ((CanvasView.ShadowLayer)localObject4).color = getColor((JSONArray)localObject6);
+          this.mFillPaint.setShadowLayer(((CanvasView.ShadowLayer)localObject4).radius, ((CanvasView.ShadowLayer)localObject4).dx, ((CanvasView.ShadowLayer)localObject4).dy, ((CanvasView.ShadowLayer)localObject4).color);
+          this.mStrokePaint.setShadowLayer(((CanvasView.ShadowLayer)localObject4).radius, ((CanvasView.ShadowLayer)localObject4).dx, ((CanvasView.ShadowLayer)localObject4).dy, ((CanvasView.ShadowLayer)localObject4).color);
           break;
         }
-        if ("setLineCap".equals(localObject2))
+        if ("setLineCap".equals(localObject4))
         {
-          localObject2 = null;
-          localObject4 = ((JSONArray)localObject6).optString(0);
-          if ("butt".equals(localObject4)) {
-            localObject2 = Paint.Cap.BUTT;
+          localObject4 = null;
+          localObject6 = ((JSONArray)localObject7).optString(0);
+          if ("butt".equals(localObject6)) {
+            localObject4 = Paint.Cap.BUTT;
           }
           for (;;)
           {
-            if (localObject2 == null) {
-              break label4951;
+            if (localObject4 == null) {
+              break label5103;
             }
-            this.mStrokePaint.setStrokeCap((Paint.Cap)localObject2);
+            this.mStrokePaint.setStrokeCap((Paint.Cap)localObject4);
             break;
-            if ("round".equals(localObject4)) {
-              localObject2 = Paint.Cap.ROUND;
-            } else if ("square".equals(localObject4)) {
-              localObject2 = Paint.Cap.SQUARE;
+            if ("round".equals(localObject6)) {
+              localObject4 = Paint.Cap.ROUND;
+            } else if ("square".equals(localObject6)) {
+              localObject4 = Paint.Cap.SQUARE;
             }
           }
-          label4951:
+          label5103:
           break;
         }
-        if ("setLineJoin".equals(localObject2))
+        if ("setLineJoin".equals(localObject4))
         {
-          localObject2 = null;
-          localObject4 = ((JSONArray)localObject6).optString(0);
-          if ("bevel".equals(localObject4)) {
-            localObject2 = Paint.Join.BEVEL;
+          localObject4 = null;
+          localObject6 = ((JSONArray)localObject7).optString(0);
+          if ("bevel".equals(localObject6)) {
+            localObject4 = Paint.Join.BEVEL;
           }
           for (;;)
           {
-            if (localObject2 == null) {
-              break label5043;
+            if (localObject4 == null) {
+              break label5195;
             }
-            this.mStrokePaint.setStrokeJoin((Paint.Join)localObject2);
+            this.mStrokePaint.setStrokeJoin((Paint.Join)localObject4);
             break;
-            if ("round".equals(localObject4)) {
-              localObject2 = Paint.Join.ROUND;
-            } else if ("miter".equals(localObject4)) {
-              localObject2 = Paint.Join.MITER;
+            if ("round".equals(localObject6)) {
+              localObject4 = Paint.Join.ROUND;
+            } else if ("miter".equals(localObject6)) {
+              localObject4 = Paint.Join.MITER;
             }
           }
           break;
         }
-        if ("setLineDash".equals(localObject2))
+        if ("setLineDash".equals(localObject4))
         {
-          localObject2 = (JSONArray)((JSONArray)localObject6).opt(0);
-          if (((JSONArray)localObject2).length() <= 0) {
-            break label5561;
+          localObject4 = (JSONArray)((JSONArray)localObject7).opt(0);
+          if (((JSONArray)localObject4).length() <= 0) {
+            break label5713;
           }
-          f1 = mpx2px(((JSONArray)localObject6).optDouble(1, 0.0D));
-          localObject4 = new float[((JSONArray)localObject2).length()];
+          f1 = mpx2px(((JSONArray)localObject7).optDouble(1, 0.0D));
+          localObject6 = new float[((JSONArray)localObject4).length()];
           j = 0;
-          while (j < ((JSONArray)localObject2).length())
+          while (j < ((JSONArray)localObject4).length())
           {
-            localObject4[j] = mpx2px(((JSONArray)localObject2).optDouble(j, 0.0D));
+            localObject6[j] = mpx2px(((JSONArray)localObject4).optDouble(j, 0.0D));
             j += 1;
           }
         }
-        Object localObject3;
-        for (Object localObject2 = new DashPathEffect((float[])localObject4, f1);; localObject3 = null)
+        Object localObject5;
+        for (Object localObject4 = new DashPathEffect((float[])localObject6, f1);; localObject5 = null)
         {
           for (;;)
           {
-            this.mFillPaint.setPathEffect((PathEffect)localObject2);
-            this.mStrokePaint.setPathEffect((PathEffect)localObject2);
+            this.mFillPaint.setPathEffect((PathEffect)localObject4);
+            this.mStrokePaint.setPathEffect((PathEffect)localObject4);
             break;
-            if ("setMiterLimit".equals(localObject2))
+            if ("setMiterLimit".equals(localObject4))
             {
-              f1 = mpx2px(((JSONArray)localObject6).optDouble(0, 0.0D));
+              f1 = mpx2px(((JSONArray)localObject7).optDouble(0, 0.0D));
               this.mFillPaint.setStrokeMiter(f1);
               this.mStrokePaint.setStrokeMiter(f1);
               break;
             }
-            if ((!"setTransform".equals(localObject2)) && (!"transform".equals(localObject2))) {
-              break label5453;
+            if ((!"setTransform".equals(localObject4)) && (!"transform".equals(localObject4))) {
+              break label5605;
             }
-            f1 = (float)((JSONArray)localObject6).optDouble(0, 1.0D);
-            f2 = (float)((JSONArray)localObject6).optDouble(3, 1.0D);
-            f3 = (float)((JSONArray)localObject6).optDouble(2, 0.0D);
-            f4 = (float)((JSONArray)localObject6).optDouble(1, 0.0D);
-            f5 = mpx2px(((JSONArray)localObject6).optDouble(4, 0.0D));
-            f6 = mpx2px(((JSONArray)localObject6).optDouble(5, 0.0D));
-            localObject6 = new float[9];
-            localObject6[2] = f5;
-            localObject6[5] = f6;
-            localObject6[0] = f1;
-            localObject6[4] = f2;
-            localObject6[1] = f3;
-            localObject6[3] = f4;
-            localObject6[6] = 0.0F;
-            localObject6[7] = 0.0F;
-            localObject6[8] = 1.0F;
+            f1 = (float)((JSONArray)localObject7).optDouble(0, 1.0D);
+            f2 = (float)((JSONArray)localObject7).optDouble(3, 1.0D);
+            f3 = (float)((JSONArray)localObject7).optDouble(2, 0.0D);
+            f4 = (float)((JSONArray)localObject7).optDouble(1, 0.0D);
+            f5 = mpx2px(((JSONArray)localObject7).optDouble(4, 0.0D));
+            f6 = mpx2px(((JSONArray)localObject7).optDouble(5, 0.0D));
+            localObject7 = new float[9];
+            localObject7[2] = f5;
+            localObject7[5] = f6;
+            localObject7[0] = f1;
+            localObject7[4] = f2;
+            localObject7[1] = f3;
+            localObject7[3] = f4;
+            localObject7[6] = 0.0F;
+            localObject7[7] = 0.0F;
+            localObject7[8] = 1.0F;
             try
             {
-              if (!"transform".equals(localObject2)) {
-                break label5413;
+              if (!"transform".equals(localObject4)) {
+                break label5565;
               }
-              localObject2 = new Matrix();
-              ((Matrix)localObject2).setValues((float[])localObject6);
-              paramCanvas.concat((Matrix)localObject2);
+              localObject4 = new Matrix();
+              ((Matrix)localObject4).setValues((float[])localObject7);
+              paramCanvas.concat((Matrix)localObject4);
             }
-            catch (Exception localException2)
+            catch (Exception localException3)
             {
-              QLog.e(TAG, 2, Log.getStackTraceString(localException2));
+              QLog.e(TAG, 2, Log.getStackTraceString(localException3));
             }
           }
           break;
-          localObject4 = paramCanvas.getMatrix();
-          localObject3 = localObject4;
-          if (localObject4 == null) {
-            localObject3 = new Matrix();
+          localObject6 = paramCanvas.getMatrix();
+          localObject5 = localObject6;
+          if (localObject6 == null) {
+            localObject5 = new Matrix();
           }
-          ((Matrix)localObject3).setValues((float[])localObject6);
-          paramCanvas.setMatrix((Matrix)localObject3);
+          ((Matrix)localObject5).setValues((float[])localObject7);
+          paramCanvas.setMatrix((Matrix)localObject5);
           break;
-          label5453:
-          if ("setTextBaseline".equals(localObject3))
+          label5605:
+          if ("setTextBaseline".equals(localObject5))
           {
-            this.mTextBaseline = ((JSONArray)localObject6).optString(0);
+            this.mTextBaseline = ((JSONArray)localObject7).optString(0);
             break;
           }
-          if (!"canvasPutImageData".equals(localObject3)) {
+          if (!"canvasPutImageData".equals(localObject5)) {
             break;
           }
-          putImageData(paramCanvas, (String)localObject3, ((JSONObject)localObject4).optJSONObject("data"), ((JSONObject)localObject4).optInt("callbackId"));
+          putImageData(paramCanvas, (String)localObject5, ((JSONObject)localObject6).optJSONObject("data"), ((JSONObject)localObject6).optInt("callbackId"));
           break;
           this.mFillPaint.setShader(null);
           this.mFillPaint.setColor(-16777216);
@@ -1132,11 +1167,6 @@ public class CanvasView
           return;
         }
       }
-      label3892:
-      label5574:
-      f3 = f1;
-      label5043:
-      f4 = f2;
     }
   }
   
@@ -1464,7 +1494,7 @@ public class CanvasView
     if ((Build.MANUFACTURER.equalsIgnoreCase("vivo")) || (Build.MODEL.toLowerCase().contains("vivo"))) {}
     try
     {
-      Object localObject = bbbm.a("ro.vivo.os.version");
+      Object localObject = bdag.a("ro.vivo.os.version");
       if ((localObject != null) && ("3.1".equals(((String)localObject).trim())))
       {
         localObject = Class.forName("android.util.VivoSmartMultiWindowConfig").getDeclaredField("ENABLE_SPLIT");
@@ -1724,7 +1754,7 @@ public class CanvasView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.CanvasView
  * JD-Core Version:    0.7.0.1
  */

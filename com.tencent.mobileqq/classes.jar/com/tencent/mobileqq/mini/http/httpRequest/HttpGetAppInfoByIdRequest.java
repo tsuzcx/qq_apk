@@ -5,7 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.http.HttpProtoBufRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -59,7 +59,7 @@ public class HttpGetAppInfoByIdRequest
     INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
     try
     {
-      localStQWebRsp.mergeFrom(bbma.b(paramArrayOfByte));
+      localStQWebRsp.mergeFrom(bdku.b(paramArrayOfByte));
       localStGetAppInfoByIdRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
       QLog.d("GetAppInfoByIdRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());
       if (localStGetAppInfoByIdRsp != null)
@@ -82,7 +82,7 @@ public class HttpGetAppInfoByIdRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.http.httpRequest.HttpGetAppInfoByIdRequest
  * JD-Core Version:    0.7.0.1
  */

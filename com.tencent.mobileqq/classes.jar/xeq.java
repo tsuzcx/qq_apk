@@ -1,24 +1,45 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-class xeq
-  extends RecyclerView.ViewHolder
+public class xeq
+  extends xej
 {
-  final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  final StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
+  protected EditVideoParams a;
+  public String c;
   
-  xeq(View paramView)
+  public xeq(int paramInt1, String paramString, int paramInt2)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367698));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131364818));
+    super(paramInt1, paramString, paramInt2);
+  }
+  
+  public xeq(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
+  {
+    super(paramInt1, paramString, paramInt2);
+    this.a = paramEditVideoParams;
+  }
+  
+  @NonNull
+  public Class<? extends xek> a()
+  {
+    return xes.class;
+  }
+  
+  @NonNull
+  public xek a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new xes(this, paramContext, paramViewGroup, null);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xeq
  * JD-Core Version:    0.7.0.1
  */

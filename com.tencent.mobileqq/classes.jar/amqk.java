@@ -1,71 +1,54 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class amqk
+  extends Handler
 {
-  protected String a = "";
+  private WeakReference<VideoEncoderCore> a;
   
-  public amqk() {}
-  
-  public amqk(String paramString)
+  public amqk(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
   {
-    if (paramString != null) {
-      this.a = paramString;
-    }
+    super(paramLooper);
+    this.a = new WeakReference(paramVideoEncoderCore);
   }
   
-  public amql a()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this instanceof amql)) {
-      return (amql)this;
+    if (this.a != null) {}
+    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
+    {
+      switch (paramMessage.what)
+      {
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (localVideoEncoderCore == null);
+        paramMessage = (Object[])paramMessage.obj;
+        try
+        {
+          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
+        }
+      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
+      VideoEncoderCore.a(localVideoEncoderCore).a(3);
+      return;
     }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIDictConfBean object");
-    return null;
-  }
-  
-  public amqm a()
-  {
-    if ((this instanceof amqm)) {
-      return (amqm)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordConfBean object");
-    return null;
-  }
-  
-  public amqn a()
-  {
-    if ((this instanceof amqn)) {
-      return (amqn)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordSDKShareConfBean object");
-    return null;
-  }
-  
-  public amqo a()
-  {
-    if ((this instanceof amqo)) {
-      return (amqo)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkMsgAIDisableConfBean object");
-    return null;
-  }
-  
-  public amqp a()
-  {
-    if ((this instanceof amqp)) {
-      return (amqp)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkPlatformConfigBean object");
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqk
  * JD-Core Version:    0.7.0.1
  */

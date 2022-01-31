@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.dating;
 
-import ahmo;
-import ahmv;
-import ahpd;
-import ahpo;
-import ajsd;
-import ajxj;
-import ajxl;
-import akpb;
-import akpu;
-import akpx;
+import abol;
+import abor;
+import abot;
+import ajdx;
+import ajee;
+import ajgm;
+import ajgx;
+import aljq;
+import alox;
+import aloz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -22,15 +22,17 @@ import android.view.ViewStub;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anmc;
-import anmd;
-import anme;
-import anmq;
-import axqy;
-import bbcz;
-import bbdc;
-import bfos;
-import bfvx;
+import apdj;
+import apdk;
+import apdl;
+import apdx;
+import azmj;
+import bdbt;
+import bdbw;
+import bhpo;
+import bhwu;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
@@ -41,8 +43,6 @@ import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -61,13 +61,13 @@ import mqq.os.MqqHandler;
 
 public class BaseMsgBoxActivity
   extends IphoneTitleBarActivity
-  implements ahmo, ahpo, Handler.Callback, anmq, bfos, bfvx, Observer
+  implements ajdx, ajgx, Handler.Callback, apdx, bhpo, bhwu, Observer
 {
   public int a;
   public long a;
-  public ahmv a;
-  ajxj jdField_a_of_type_Ajxj = new anmc(this);
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new anme(this);
+  public ajee a;
+  alox jdField_a_of_type_Alox = new apdj(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new apdl(this);
   public View a;
   public ViewStub a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -185,7 +185,7 @@ public class BaseMsgBoxActivity
     }
     this.app.a().c(paramRecentBaseData.a(), this.jdField_a_of_type_Int);
     paramView = paramRecentBaseData.a();
-    if (akpx.c(paramView))
+    if (abot.c(paramView))
     {
       paramRecentBaseData = new Intent(this, SayHelloMsgListActivity.class);
       paramRecentBaseData.putExtra("uin", paramView);
@@ -194,11 +194,11 @@ public class BaseMsgBoxActivity
       if (this.jdField_d_of_type_Boolean) {}
       for (paramView = "1";; paramView = "0")
       {
-        axqy.b(this.app, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_say_hi", 0, 0, "", "", paramView, "");
+        azmj.b(this.app, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_say_hi", 0, 0, "", "", paramView, "");
         return;
       }
     }
-    paramString = (ajxl)this.app.getManager(51);
+    paramString = (aloz)this.app.getManager(51);
     if (paramString != null) {}
     for (paramBoolean = paramString.b(paramView);; paramBoolean = false)
     {
@@ -207,10 +207,10 @@ public class BaseMsgBoxActivity
       if (paramBoolean)
       {
         localIntent.putExtra("uintype", 0);
-        paramString = bbcz.q(this.app, paramRecentBaseData.a());
+        paramString = bdbt.q(this.app, paramRecentBaseData.a());
         paramView = paramString;
         if (TextUtils.isEmpty(paramString)) {
-          paramView = bbcz.b(this.app, paramRecentBaseData.a(), false);
+          paramView = bdbt.b(this.app, paramRecentBaseData.a(), false);
         }
         localIntent.putExtra("uinname", paramView);
         startActivity(localIntent);
@@ -224,7 +224,7 @@ public class BaseMsgBoxActivity
         }
         paramString = (RecentSayHelloListItem)paramRecentBaseData;
         if (paramString.commonId > 0) {
-          axqy.b(this.app, "CliOper", "", "", "0X8005DEF", "0X8005DEF", paramString.commonId, 0, "", "", "", "");
+          azmj.b(this.app, "CliOper", "", "", "0X8005DEF", "0X8005DEF", paramString.commonId, 0, "", "", "", "");
         }
         paramString = this.app;
         if (paramRecentBaseData.a() != 1001) {
@@ -235,7 +235,7 @@ public class BaseMsgBoxActivity
       label359:
       for (paramRecentBaseData = "0";; paramRecentBaseData = "1")
       {
-        axqy.b(paramString, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_aio", 0, 0, paramRecentBaseData, "1", paramView, "");
+        azmj.b(paramString, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_aio", 0, 0, paramRecentBaseData, "1", paramView, "");
         return;
         localIntent.putExtra("uintype", paramRecentBaseData.a());
         localIntent.putExtra("NEARBY_MSG_REPORT_SOURCE", "4");
@@ -248,7 +248,7 @@ public class BaseMsgBoxActivity
       if (paramRecentBaseData.a() == 1001) {}
       for (paramRecentBaseData = "0";; paramRecentBaseData = "1")
       {
-        axqy.b(paramString, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_aio", 0, 0, paramRecentBaseData, "0", paramView, "");
+        azmj.b(paramString, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_aio", 0, 0, paramRecentBaseData, "0", paramView, "");
         return;
       }
     }
@@ -264,7 +264,7 @@ public class BaseMsgBoxActivity
       this.app.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramRecentBaseData.a(), this.app.getCurrentAccountUin());
       if (i > 0)
       {
-        if (!akpx.c(paramRecentBaseData.a())) {
+        if (!abot.c(paramRecentBaseData.a())) {
           break label175;
         }
         ThreadManager.post(new BaseMsgBoxActivity.3(this, paramRecentBaseData.a(), paramRecentBaseData.a()), 8, null, false);
@@ -272,15 +272,15 @@ public class BaseMsgBoxActivity
     }
     for (;;)
     {
-      if ((ajsd.ak.equals(paramRecentBaseData.a())) || (ajsd.aj.equals(paramRecentBaseData.a())))
+      if ((aljq.ak.equals(paramRecentBaseData.a())) || (aljq.aj.equals(paramRecentBaseData.a())))
       {
-        axqy.b(this.app, "CliOper", "", "", "0X8005297", "0X8005297", 0, 0, "", "", "", "");
-        axqy.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "drag_msg", 0, 0, "", "", "", "");
+        azmj.b(this.app, "CliOper", "", "", "0X8005297", "0X8005297", 0, 0, "", "", "", "");
+        azmj.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "drag_msg", 0, 0, "", "", "", "");
       }
       return;
       label175:
       this.jdField_b_of_type_JavaLangString = (paramRecentBaseData.a() + "_" + this.jdField_a_of_type_Int);
-      ahpd.b(this.app, paramRecentBaseData.a(), this.jdField_a_of_type_Int);
+      ajgm.b(this.app, paramRecentBaseData.a(), this.jdField_a_of_type_Int);
       this.app.a().a(paramRecentBaseData.a(), this.jdField_a_of_type_Int, true, true);
     }
   }
@@ -333,7 +333,7 @@ public class BaseMsgBoxActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131560839);
+    setContentView(2131561022);
     getWindow().setBackgroundDrawable(null);
     paramBundle = getIntent();
     this.jdField_a_of_type_Int = paramBundle.getIntExtra("uintype", -1);
@@ -343,34 +343,34 @@ public class BaseMsgBoxActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg_box", 2, "BOX UIN:" + this.jdField_a_of_type_JavaLangString + "|BOX TYPE:" + this.jdField_a_of_type_Int);
     }
-    if (!akpx.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))
+    if (!abot.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))
     {
-      this.jdField_a_of_type_JavaLangString = ajsd.H;
+      this.jdField_a_of_type_JavaLangString = aljq.H;
       this.jdField_a_of_type_Int = 1001;
     }
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131373067));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131373503));
     this.jdField_a_of_type_AndroidViewViewStub.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)findViewById(2131364920));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131364921);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364922));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364923));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131365668);
+    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)findViewById(2131365007));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131365008);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365009));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365010));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131365752);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
-    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2131558820, null);
+    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2131558856, null);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setRightIconMenuListener(this);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOnScrollListener(this);
-    if (akpx.c(this.jdField_a_of_type_JavaLangString))
+    if (abot.c(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Ahmv = new ahmv(this, this.app, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, this, 7);
-      this.jdField_a_of_type_Ahmv.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
-      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setAdapter(this.jdField_a_of_type_Ahmv);
-      this.jdField_a_of_type_MqqOsMqqHandler = new bbdc(ThreadManager.getSubThreadLooper(), this);
-      this.jdField_b_of_type_MqqOsMqqHandler = new bbdc(getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
+      this.jdField_a_of_type_Ajee = new ajee(this, this.app, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, this, 7);
+      this.jdField_a_of_type_Ajee.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setAdapter(this.jdField_a_of_type_Ajee);
+      this.jdField_a_of_type_MqqOsMqqHandler = new bdbw(ThreadManager.getSubThreadLooper(), this);
+      this.jdField_b_of_type_MqqOsMqqHandler = new bdbw(getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
       this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.app.addObserver(this.jdField_a_of_type_Ajxj);
+      this.app.addObserver(this.jdField_a_of_type_Alox);
       this.app.a().addObserver(this);
       if (QLog.isColorLevel()) {
         this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -386,10 +386,10 @@ public class BaseMsgBoxActivity
         this.jdField_b_of_type_Int = paramBundle.getIntExtra("msgTabIndex", -1);
         if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_b_of_type_Int >= 0) && (this.jdField_b_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131376796));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131377309));
           NearbyActivity.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView, this.jdField_a_of_type_JavaUtilArrayList);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(new anmd(this));
-          findViewById(2131376797).setVisibility(0);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(new apdk(this));
+          findViewById(2131377310).setVisibility(0);
           this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setVisibility(0);
           this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_b_of_type_Int, false);
           this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = NearbyActivity.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView, this.jdField_a_of_type_JavaUtilArrayList.size(), this.jdField_b_of_type_Int);
@@ -406,7 +406,7 @@ public class BaseMsgBoxActivity
         QLog.d("nearby.msgbox.tab", 2, "BaseMsgBoxActivity, doOnCreate: msgBoxTabIndex=" + this.jdField_b_of_type_Int + ", count=" + this.jdField_a_of_type_JavaUtilArrayList.size());
       }
       return true;
-      this.jdField_a_of_type_Ahmv = new ahmv(this, this.app, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, this, 6);
+      this.jdField_a_of_type_Ajee = new ajee(this, this.app, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, this, 6);
       break;
       label722:
       ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
@@ -419,12 +419,12 @@ public class BaseMsgBoxActivity
     ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
     this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    removeObserver(this.jdField_a_of_type_Ajxj);
+    removeObserver(this.jdField_a_of_type_Alox);
     if ((this.app != null) && (this.app.a() != null)) {
       this.app.a().deleteObserver(this);
     }
-    if (this.jdField_a_of_type_Ahmv != null) {
-      this.jdField_a_of_type_Ahmv.b();
+    if (this.jdField_a_of_type_Ajee != null) {
+      this.jdField_a_of_type_Ajee.b();
     }
   }
   
@@ -434,7 +434,7 @@ public class BaseMsgBoxActivity
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a();
     }
-    if ((this.app != null) && (this.jdField_a_of_type_Ahmv != null) && ((ajsd.ab.equals(this.jdField_a_of_type_JavaLangString)) || (ajsd.H.equals(this.jdField_a_of_type_JavaLangString))))
+    if ((this.app != null) && (this.jdField_a_of_type_Ajee != null) && ((aljq.ab.equals(this.jdField_a_of_type_JavaLangString)) || (aljq.H.equals(this.jdField_a_of_type_JavaLangString))))
     {
       QQMessageFacade.Message localMessage = this.app.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       if (localMessage != null) {
@@ -576,7 +576,7 @@ public class BaseMsgBoxActivity
     for (int i = 1;; i = 0)
     {
       if ((paramInt == 0) || (paramInt == 1)) {
-        this.jdField_a_of_type_Ahmv.a(false);
+        this.jdField_a_of_type_Ajee.a(false);
       }
       for (;;)
       {
@@ -591,7 +591,7 @@ public class BaseMsgBoxActivity
         }
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
         return;
-        this.jdField_a_of_type_Ahmv.a(true);
+        this.jdField_a_of_type_Ajee.a(true);
       }
     }
   }
@@ -617,7 +617,7 @@ public class BaseMsgBoxActivity
       return;
     }
     boolean bool;
-    if (((akpx.a(paramObservable.istroop) == 1010) && (this.jdField_a_of_type_Int == 1010)) || ((akpx.a(paramObservable.istroop) == 1001) && (this.jdField_a_of_type_Int == 1001))) {
+    if (((abot.a(paramObservable.istroop) == 1010) && (this.jdField_a_of_type_Int == 1010)) || ((abot.a(paramObservable.istroop) == 1001) && (this.jdField_a_of_type_Int == 1001))) {
       bool = true;
     }
     for (;;)
@@ -652,7 +652,7 @@ public class BaseMsgBoxActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity
  * JD-Core Version:    0.7.0.1
  */

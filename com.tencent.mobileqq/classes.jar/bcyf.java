@@ -1,71 +1,105 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.os.Handler;
+import android.view.View;
+import android.widget.ImageView;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 public class bcyf
-  extends BroadcastReceiver
 {
-  public bcyf(AgentActivity paramAgentActivity) {}
+  protected int a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bcyb jdField_a_of_type_Bcyb;
+  private Map<View, bcyi> jdField_a_of_type_JavaUtilMap = new WeakHashMap();
+  private boolean jdField_a_of_type_Boolean;
+  protected int b;
+  private boolean b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bcyf(Context paramContext)
   {
-    if ((QLog.isColorLevel()) && (this.a.getAppInterface() != null)) {
-      QLog.d("AgentActivity", 2, "-->onReceive, intent.getAction(): " + paramIntent.getAction());
-    }
-    if ("action_login_sucess".equals(paramIntent.getAction())) {
-      if (AgentActivity.a(this.a) != null)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bcyb = new bcyb(bczj.a(paramContext) / 8);
+  }
+  
+  private bcyh a(View paramView)
+  {
+    if (paramView != null)
+    {
+      bcyi localbcyi = (bcyi)this.jdField_a_of_type_JavaUtilMap.get(paramView);
+      if (localbcyi != null) {
+        paramView = localbcyi.jdField_a_of_type_Bcyg;
+      }
+      while ((paramView instanceof bcyg))
       {
-        paramContext = bdfb.a(paramIntent, "login_success_uin");
-        if (!TextUtils.isEmpty(paramContext)) {
-          AgentActivity.a(this.a).putExtra("login_success_uin", paramContext);
+        return ((bcyg)paramView).a();
+        if ((paramView instanceof ImageView)) {
+          paramView = ((ImageView)paramView).getDrawable();
+        } else {
+          paramView = paramView.getBackground();
         }
-        if (AgentActivity.a(this.a).getIntExtra("intent_router", 0) != 1) {
-          break label305;
-        }
-        abtq.a(this.a, AgentActivity.a(this.a), PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
       }
     }
-    for (;;)
+    return null;
+  }
+  
+  private void a(boolean paramBoolean, View paramView, Drawable paramDrawable, bcyi parambcyi)
+  {
+    Object localObject = paramDrawable;
+    if (this.jdField_b_of_type_Boolean)
     {
-      if ((AgentActivity.a(this.a)) && (!this.a.a.isLogin()))
+      localObject = paramDrawable;
+      if (paramBoolean)
       {
-        paramContext = this.a.a.getAccount();
-        QLog.i("AgentActivity", 1, "mLonginReceiver() OpenSDKAppinterface not login, logined uin= " + paramContext);
-        paramIntent = this.a.a.getApplication().getAllAccounts();
-        if ((paramIntent != null) && (paramIntent.size() > 0) && (!TextUtils.isEmpty(paramContext)))
+        localObject = paramDrawable;
+        if (!(paramDrawable instanceof AnimationDrawable))
         {
-          paramIntent = paramIntent.iterator();
-          while (paramIntent.hasNext())
+          localObject = paramDrawable;
+          if (paramDrawable != null)
           {
-            SimpleAccount localSimpleAccount = (SimpleAccount)paramIntent.next();
-            if (paramContext.equals(localSimpleAccount.getUin()))
-            {
-              this.a.a.login(localSimpleAccount);
-              QLog.i("AgentActivity", 2, "mLonginReceiver() OpenSDKAppinterface do login uin= " + paramContext);
-            }
+            localObject = new TransitionDrawable(new Drawable[] { new ColorDrawable(17170445), paramDrawable });
+            ((TransitionDrawable)localObject).startTransition(200);
           }
         }
       }
-      this.a.unregisterReceiver(this);
-      return;
-      label305:
-      this.a.startActivityForResult(AgentActivity.a(this.a), 0);
     }
+    paramDrawable = null;
+    if (parambcyi != null) {
+      paramDrawable = parambcyi.jdField_a_of_type_Bcye;
+    }
+    if (paramDrawable != null)
+    {
+      paramDrawable.a(paramView, (Drawable)localObject);
+      return;
+    }
+    if ((paramView instanceof ImageView))
+    {
+      ((ImageView)paramView).setImageDrawable((Drawable)localObject);
+      return;
+    }
+    paramView.setBackgroundDrawable((Drawable)localObject);
+  }
+  
+  public bcyb a()
+  {
+    return this.jdField_a_of_type_Bcyb;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcyf
  * JD-Core Version:    0.7.0.1
  */

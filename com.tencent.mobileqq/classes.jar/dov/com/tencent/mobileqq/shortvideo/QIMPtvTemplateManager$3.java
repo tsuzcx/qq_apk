@@ -1,21 +1,21 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import axle;
-import bbfj;
-import bkzp;
+import azgk;
+import bdee;
+import bnkz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class QIMPtvTemplateManager$3
   implements Runnable
 {
-  public QIMPtvTemplateManager$3(bkzp parambkzp) {}
+  public QIMPtvTemplateManager$3(bnkz parambnkz) {}
   
   public void run()
   {
     int i = 1;
-    boolean bool1 = axle.c();
-    boolean bool2 = bbfj.d(BaseApplication.getContext());
+    boolean bool1 = azgk.c();
+    boolean bool2 = bdee.d(BaseApplication.getContext());
     if (BaseApplicationImpl.sProcessId == 1) {
       i = 0;
     }
@@ -26,7 +26,7 @@ public class QIMPtvTemplateManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager.3
  * JD-Core Version:    0.7.0.1
  */

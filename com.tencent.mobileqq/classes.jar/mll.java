@@ -1,195 +1,98 @@
-import android.app.Dialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
+import android.graphics.Rect;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class mll
-  extends Dialog
-  implements View.OnClickListener
+public abstract class mll
 {
-  private int jdField_a_of_type_Int;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public Handler a;
-  View jdField_a_of_type_AndroidViewView;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  public TextView a;
-  public VideoController a;
-  public Runnable a;
-  mlk jdField_a_of_type_Mlk;
-  public boolean a;
-  View jdField_b_of_type_AndroidViewView;
-  boolean jdField_b_of_type_Boolean;
-  View jdField_c_of_type_AndroidViewView;
-  boolean jdField_c_of_type_Boolean;
+  Context a;
+  public VideoAppInterface a;
   
-  private void c()
+  protected mll(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    int i = 2130841797;
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().ay) {
-      i = 2130841798;
-    }
-    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    QLog.d("ScreenLayout", 1, "ScreenLayout. onCreate." + this);
   }
   
-  void a()
+  public static mll a(Context paramContext, VideoAppInterface paramVideoAppInterface, int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Mlk.getCount() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696265);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().T == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696264);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696263);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoController == null)
-    {
-      lcg.e("VoiceChangeChooseDialog", "updateDialogStyle mVideoController is null!!");
-      return;
-    }
-    boolean bool;
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().d == 2) || (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 4))
-    {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (!this.jdField_b_of_type_Boolean) {
-        break label118;
-      }
-      this.jdField_a_of_type_Mlk.a(-1);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(16777216);
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-534962398);
-      this.jdField_c_of_type_AndroidViewView.setBackgroundColor(-16777216);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-    }
-    for (;;)
-    {
-      c();
-      return;
-      bool = false;
-      break;
-      label118:
-      this.jdField_a_of_type_Mlk.a(-16777216);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(-2147483648);
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1);
-      this.jdField_c_of_type_AndroidViewView.setBackgroundColor(-2170912);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-8947849);
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-    }
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentContext = null;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_Mlk = null;
-    this.jdField_a_of_type_ComTencentAvVideoController = null;
-  }
-  
-  public void onClick(View paramView)
-  {
-    boolean bool = true;
-    switch (paramView.getId())
+    Object localObject = null;
+    switch (paramInt)
     {
     default: 
-      if (!this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_c_of_type_Boolean = true;
-        paramView = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772123);
-        paramView.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-        this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
-      }
-    case 2131369739: 
-      return;
-    }
-    paramView = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().ay)
-    {
-      paramView.ay = bool;
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().T != 0)
-      {
-        this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_ComTencentAvVideoController.a().ay);
-        if (!this.jdField_a_of_type_ComTencentAvVideoController.a().ay) {
-          break label196;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696263);
-      }
+      paramContext = localObject;
     }
     for (;;)
     {
-      c();
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().ay) {
-        break label224;
+      return paramContext;
+      if (paramBoolean)
+      {
+        try
+        {
+          paramContext = new mlr(paramContext, paramVideoAppInterface);
+          continue;
+        }
+        finally {}
       }
-      mao.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 1017);
-      mlo.a("0X8007EF4", "");
-      return;
-      bool = false;
-      break;
-      label196:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696262);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_Int = 0;
+      else
+      {
+        paramContext = new mlo(paramContext, paramVideoAppInterface);
+        continue;
+        if (paramBoolean)
+        {
+          paramContext = new mlq(paramContext, paramVideoAppInterface);
+        }
+        else
+        {
+          paramContext = new mlm(paramContext, paramVideoAppInterface);
+          continue;
+          if (paramBoolean)
+          {
+            paramContext = new mlr(paramContext, paramVideoAppInterface);
+          }
+          else
+          {
+            paramContext = new mln(paramContext, paramVideoAppInterface);
+            continue;
+            if (paramBoolean) {
+              paramContext = new mlr(paramContext, paramVideoAppInterface);
+            } else {
+              paramContext = new mlp(paramContext, paramVideoAppInterface);
+            }
+          }
+        }
+      }
     }
-    label224:
-    mlo.a("0X8007EF3", "");
   }
   
-  public void show()
+  public abstract int a();
+  
+  public void a()
   {
-    int j = 1;
-    int k = 0;
-    super.show();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView.startAnimation(AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772124));
-    int i = k;
-    if (this.jdField_a_of_type_Mlk.getCount() == 0)
-    {
-      this.jdField_a_of_type_Mlk.a(mlm.a().a());
-      i = k;
-      if (this.jdField_a_of_type_Mlk.getCount() != 0) {
-        i = 1;
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().T == 0) {
-      i = j;
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        this.jdField_a_of_type_Mlk.notifyDataSetChanged();
-      }
-      a();
-      return;
-    }
+    QLog.d("ScreenLayout", 1, "ScreenLayout. onDestroy." + this);
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void a(int paramInt, Rect paramRect1, Rect paramRect2, ConcurrentHashMap<Long, moa> paramConcurrentHashMap) {}
+  
+  public void a(lid paramlid, mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4) {}
+  
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public abstract boolean a();
+  
+  public boolean b()
+  {
+    return a() == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mll
  * JD-Core Version:    0.7.0.1
  */

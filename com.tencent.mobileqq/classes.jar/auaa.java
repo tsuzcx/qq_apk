@@ -1,31 +1,57 @@
-import android.view.View;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class auaa
-  implements bfph
 {
-  public auaa(OCRPerformFragment paramOCRPerformFragment) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  private boolean a(atzt paramatzt, MiniAppOptions paramMiniAppOptions)
   {
-    if (paramInt == 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "checkMemory. cacheKey=", paramatzt.a.h });
+    }
+    return true;
+  }
+  
+  atzt a(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "createApp type=", Integer.valueOf(paramInt) });
+    }
+    switch (paramInt)
     {
-      auad.a(OCRPerformFragment.a(this.a), String.valueOf(OCRPerformFragment.a(this.a)));
-      auad.a("0X800AAE9", 0);
+    default: 
+      QLog.e("MiniAppLauncher", 1, "createApp error. unknown appType");
+    case 0: 
+    case 1: 
+    case 2: 
+    case 4: 
+    case 5: 
+      return null;
     }
-    if (paramInt == 1)
-    {
-      awgs.a(OCRPerformFragment.a(this.a), OCRPerformFragment.a(this.a));
-      auad.a("0X800AAEA", 0);
+    return new bfti(paramMiniAppActivity, paramString, paramInt);
+  }
+  
+  void a(atzt paramatzt, MiniAppOptions paramMiniAppOptions)
+  {
+    if (!a(paramatzt, paramMiniAppOptions)) {
+      return;
     }
-    if ((OCRPerformFragment.a(this.a) != null) && (OCRPerformFragment.a(this.a).isShowing())) {
-      OCRPerformFragment.a(this.a).dismiss();
+    bdcb.a();
+    paramatzt.a();
+  }
+  
+  void a(atzw paramatzw, @NonNull atzu paramatzu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "downloadApp. cacheKey=", paramatzw.h });
     }
+    paramatzu.a(paramatzw.f, "MiniAppLauncher", paramatzw.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auaa
  * JD-Core Version:    0.7.0.1
  */

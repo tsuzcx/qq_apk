@@ -1,302 +1,54 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class pax
+  implements bejd
 {
-  public static long a;
-  ozo a;
+  public pax(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  static
-  {
-    jdField_a_of_type_Long = 1L;
-  }
+  public void a(float paramFloat1, float paramFloat2) {}
   
-  public pax(ozo paramozo)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Ozo = paramozo;
-  }
-  
-  public static List<BaseArticleInfo> a(List<BaseArticleInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int j = paramList.size();
-    int i = 0;
-    if (i < j)
+    paramInt1 = ReadInJoySelfFragment.a(this.a).getScrollY();
+    if ((this.a.getActivity() != null) && ((this.a.getActivity() instanceof ReadInJoyNewFeedsActivity))) {}
+    do
     {
-      BaseArticleInfo localBaseArticleInfo1 = (BaseArticleInfo)paramList.get(i);
-      localBaseArticleInfo1.mIsInPolymeric = false;
-      if (!onh.h(localBaseArticleInfo1)) {
-        localArrayList.add(localBaseArticleInfo1);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localBaseArticleInfo1.mIsInPolymeric = true;
-        ArticleInfo localArticleInfo = new ArticleInfo();
-        localArticleInfo.mRecommendSeq = localBaseArticleInfo1.mRecommendSeq;
-        localArticleInfo.mGroupSubArticleList = new ArrayList();
-        localArticleInfo.mGroupSubArticleList.add(localBaseArticleInfo1);
-        localArticleInfo.mPolymericInfo = localBaseArticleInfo1.mPolymericInfo;
-        localArticleInfo.mStrategyId = ((int)localBaseArticleInfo1.mPolymericInfo.d);
-        localArticleInfo.mAlgorithmID = ((int)localBaseArticleInfo1.mPolymericInfo.e);
-        StringBuilder localStringBuilder = new StringBuilder("polymeric【").append(localArrayList.size()).append("】").append(localBaseArticleInfo1.mPolymericInfo.toString()).append("\n title : ").append(localBaseArticleInfo1.mTitle).append(", articleID : ").append(localBaseArticleInfo1.mArticleID).append(", oriIndex : ").append(i).append("\n");
-        while ((i + 1 < j) && (onh.a(localBaseArticleInfo1, (BaseArticleInfo)paramList.get(i + 1))))
-        {
-          BaseArticleInfo localBaseArticleInfo2 = (BaseArticleInfo)paramList.get(i + 1);
-          localBaseArticleInfo2.mIsInPolymeric = true;
-          localArticleInfo.mGroupSubArticleList.add(localBaseArticleInfo2);
-          i += 1;
-          localStringBuilder.append("title : ").append(localBaseArticleInfo2.mTitle).append(", articleID : ").append(localBaseArticleInfo2.mArticleID).append(", oriIndex : ").append(i).append("\n");
-        }
-        if ((onh.l(localBaseArticleInfo1)) && (localArticleInfo.mGroupSubArticleList.size() >= 1))
-        {
-          localArrayList.add(localArticleInfo);
-          if (QLog.isColorLevel()) {
-            QLog.d("PolymericSmallVideo_" + pax.class.getSimpleName(), 2, localStringBuilder.toString());
-          }
-        }
-        else if (localArticleInfo.mGroupSubArticleList.size() > 1)
-        {
-          localArrayList.add(localArticleInfo);
-        }
-        else
-        {
-          localBaseArticleInfo1.mIsInPolymeric = false;
-          localArrayList.add(localBaseArticleInfo1);
-        }
-      }
-    }
-    if ((localArrayList.size() > 1) && (onh.j((BaseArticleInfo)localArrayList.get(localArrayList.size() - 1)))) {
-      localArrayList.remove(localArrayList.size() - 1);
-    }
-    return localArrayList;
-  }
-  
-  static void a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    if ((paramBaseArticleInfo.mNewPolymericInfo != null) && (paramBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null) && (paramBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      paramBaseArticleInfo.mGroupSubArticleList = new ArrayList();
-      Object localObject = paramBaseArticleInfo.getSubscribeUin();
-      try
-      {
-        l = Long.parseLong((String)localObject);
-        localObject = paramBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          localqbo = (qbo)((Iterator)localObject).next();
-          localArticleInfo = new ArticleInfo();
-          localArticleInfo.mChannelID = paramBaseArticleInfo.mChannelID;
-          localArticleInfo.mArticleID = localqbo.jdField_a_of_type_Long;
-          localArticleInfo.mStrategyId = localqbo.jdField_a_of_type_Int;
-          localArticleInfo.mAlgorithmID = localqbo.b;
-          localArticleInfo.innerUniqueID = localqbo.g;
-          localArticleInfo.mArticleContentUrl = localqbo.jdField_d_of_type_JavaLangString;
-          localArticleInfo.mSubscribeID = localqbo.e;
-          if (localqbo.jdField_c_of_type_Int == 1)
-          {
-            bool = true;
-            localArticleInfo.mIsPolymericGallery = bool;
-            localArticleInfo.mGalleryPicNumber = localqbo.jdField_d_of_type_Int;
-            localArticleInfo.mSinglePicture = onh.a(localqbo.jdField_c_of_type_JavaLangString);
-            if (localqbo.jdField_a_of_type_Qbr != null)
-            {
-              localArticleInfo.mVideoCoverUrl = onh.a(localqbo.jdField_c_of_type_JavaLangString);
-              localArticleInfo.mVideoVid = localqbo.jdField_a_of_type_Qbr.a;
-            }
-            localArticleInfo.mNewPolymericInfo = new qbn();
-            localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int = paramBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int;
-            localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Boolean = false;
-            localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          for (;;)
-          {
-            qbo localqbo;
-            ArticleInfo localArticleInfo;
-            localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.add((qbo)localqbo.clone());
-            if (ram.a(paramBaseArticleInfo))
-            {
-              localqbo.jdField_a_of_type_Boolean = true;
-              localArticleInfo.mSocialFeedInfo = paramBaseArticleInfo.mSocialFeedInfo;
-            }
-            localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Long = l;
-            paramBaseArticleInfo.mGroupSubArticleList.add(localArticleInfo);
-            continue;
-            localException1 = localException1;
-            QLog.e("PackMsgProcess", 2, "handleNewPolymericArticleInfo parse exception = " + localException1);
-            long l = 0L;
-          }
-          boolean bool = false;
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            QLog.e("PackMsgProcess", 2, "handleNewPolymericArticleInfo packSubArticle clone failed. exception = " + localException2);
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(Integer paramInteger, List<Long> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
       return;
-    }
-    long l2 = System.currentTimeMillis();
-    int k = paramList.size();
-    long l1 = -1L;
-    ArrayList localArrayList = new ArrayList(5);
-    int i = 0;
-    Object localObject1;
-    label75:
-    Object localObject2;
-    for (;;)
-    {
-      if (i < k)
+      if (paramInt1 >= ReadInJoySelfFragment.a(this.a))
       {
-        localObject1 = this.jdField_a_of_type_Ozo.a(paramInteger, (Long)paramList.get(i));
-        if (localObject1 == null)
+        ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#FFFFFF"));
+        if (paramInt1 >= ReadInJoySelfFragment.a(this.a) * 3) {}
+        for (float f = 1.0F;; f = paramInt1 * 0.33F / ReadInJoySelfFragment.a(this.a))
         {
-          i += 1;
-        }
-        else if (((ArticleInfo)localObject1).mGroupId == -1L)
-        {
-          if (l1 == -1L) {
-            break label535;
-          }
-          localObject1 = localArrayList.iterator();
-          j = 0;
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (ArticleInfo)((Iterator)localObject1).next();
-            ((ArticleInfo)localObject2).mFeedIndexInGroup = j;
-            ((ArticleInfo)localObject2).mGroupCount = localArrayList.size();
-            j += 1;
-          }
-          if (QLog.isColorLevel()) {
-            if ((localArrayList.size() <= 0) || (((ArticleInfo)localArrayList.get(0)).mPackInfoObj == null)) {
-              break label777;
-            }
-          }
-        }
-      }
-    }
-    label771:
-    label777:
-    for (int j = ((articlesummary.PackInfo)((ArticleInfo)localArrayList.get(0)).mPackInfoObj.get()).pack_type.get();; j = -1)
-    {
-      QLog.d("PackMsgProcess", 2, "groupId:" + l1 + " count:" + localArrayList.size() + " type:" + j);
-      localArrayList.clear();
-      l1 = -1L;
-      break label75;
-      if (l1 != ((ArticleInfo)localObject1).mGroupId) {
-        if (l1 != -1L)
-        {
-          localObject2 = localArrayList.iterator();
-          j = 0;
-          while (((Iterator)localObject2).hasNext())
-          {
-            ArticleInfo localArticleInfo = (ArticleInfo)((Iterator)localObject2).next();
-            localArticleInfo.mFeedIndexInGroup = j;
-            localArticleInfo.mGroupCount = localArrayList.size();
-            j += 1;
-          }
-          if (QLog.isColorLevel()) {
-            if ((localArrayList.size() <= 0) || (((ArticleInfo)localArrayList.get(0)).mPackInfoObj == null)) {
-              break label771;
-            }
-          }
-        }
-      }
-      for (j = ((articlesummary.PackInfo)((ArticleInfo)localArrayList.get(0)).mPackInfoObj.get()).pack_type.get();; j = -1)
-      {
-        QLog.d("PackMsgProcess", 2, "groupId:" + l1 + " count:" + localArrayList.size() + " type:" + j);
-        localArrayList.clear();
-        localArrayList.add(localObject1);
-        l1 = ((ArticleInfo)localObject1).mGroupId;
-        break label75;
-        localArrayList.add(localObject1);
-        label535:
-        break label75;
-        if (localArrayList.size() > 0)
-        {
-          paramInteger = localArrayList.iterator();
-          i = 0;
-          while (paramInteger.hasNext())
-          {
-            paramList = (ArticleInfo)paramInteger.next();
-            paramList.mFeedIndexInGroup = i;
-            paramList.mGroupCount = localArrayList.size();
-            i += 1;
-          }
-          if (QLog.isColorLevel()) {
-            if ((localArrayList.size() <= 0) || (((ArticleInfo)localArrayList.get(0)).mPackInfoObj == null)) {
-              break label766;
-            }
-          }
-        }
-        label766:
-        for (i = ((articlesummary.PackInfo)((ArticleInfo)localArrayList.get(0)).mPackInfoObj.get()).pack_type.get();; i = -1)
-        {
-          QLog.d("PackMsgProcess", 2, "groupId:" + l1 + " count:" + localArrayList.size() + " type:" + i);
-          if (!QLog.isColorLevel()) {
+          ReadInJoySelfFragment.a(this.a).setAlpha(f);
+          ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842591);
+          ReadInJoySelfFragment.a(this.a).setVisibility(0);
+          if ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity))) {
             break;
           }
-          QLog.d("PackMsgProcess", 2, "process article group info,feeds:" + k + " cost:" + (System.currentTimeMillis() - l2));
+          ImmersiveUtils.a(true, this.a.getActivity().getWindow());
           return;
         }
       }
-    }
-  }
-  
-  public void a(Integer paramInteger, List<ArticleInfo> paramList, boolean paramBoolean)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      break label13;
-    }
-    for (;;)
-    {
-      label13:
-      return;
-      if (!paramBoolean)
-      {
-        ArticleInfo localArticleInfo1 = (ArticleInfo)paramList.get(paramList.size() - 1);
-        if (localArticleInfo1.mGroupId == -1L) {
-          break;
-        }
-        paramInteger = this.jdField_a_of_type_Ozo.a(paramInteger.intValue(), 10, localArticleInfo1.mRecommendSeq, true).iterator();
-        while (paramInteger.hasNext())
-        {
-          ArticleInfo localArticleInfo2 = (ArticleInfo)paramInteger.next();
-          if (localArticleInfo2.mGroupId == localArticleInfo1.mGroupId) {
-            paramList.add(localArticleInfo2);
-          }
-        }
-      }
-    }
+      ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#00FFFFFF"));
+      ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842592);
+      ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    } while ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity)));
+    ImmersiveUtils.a(false, this.a.getActivity().getWindow());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pax
  * JD-Core Version:    0.7.0.1
  */

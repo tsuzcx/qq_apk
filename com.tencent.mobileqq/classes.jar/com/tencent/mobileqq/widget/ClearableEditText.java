@@ -11,11 +11,11 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
-import baww;
-import bckh;
-import bcki;
-import bckj;
-import bckk;
+import bcvq;
+import beji;
+import bejj;
+import bejk;
+import bejl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
@@ -27,8 +27,8 @@ public class ClearableEditText
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   public Drawable a;
-  bckj jdField_a_of_type_Bckj;
-  public bckk a;
+  bejk jdField_a_of_type_Bejk;
+  public bejl a;
   public boolean a;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -51,8 +51,8 @@ public class ClearableEditText
     try
     {
       a(paramContext, paramAttributeSet);
-      this.jdField_a_of_type_Bckj = new bckj(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bckj);
+      this.jdField_a_of_type_Bejk = new bejk(this, this);
+      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bejk);
       ViewCompat.setImportantForAccessibility(this, 1);
       return;
     }
@@ -76,7 +76,7 @@ public class ClearableEditText
       this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(1, -1);
       paramContext.recycle();
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839266);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839355);
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
@@ -88,8 +88,8 @@ public class ClearableEditText
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         setClearButtonVisible(false);
       }
-      setOnTouchListener(new bckh(this));
-      addTextChangedListener(new bcki(this));
+      setOnTouchListener(new beji(this));
+      addTextChangedListener(new bejj(this));
       return;
     }
     finally
@@ -140,14 +140,14 @@ public class ClearableEditText
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
     if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getX() > getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth())) {
-      return this.jdField_a_of_type_Bckj.dispatchHoverEvent(paramMotionEvent);
+      return this.jdField_a_of_type_Bejk.dispatchHoverEvent(paramMotionEvent);
     }
     return super.dispatchHoverEvent(paramMotionEvent);
   }
   
   public void onDetachedFromWindow()
   {
-    if ((QLog.isColorLevel()) && (AppSetting.e))
+    if ((QLog.isColorLevel()) && (AppSetting.d))
     {
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("onDetachedFromWindow ");
@@ -205,7 +205,7 @@ public class ClearableEditText
     {
       setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], localDrawable, getCompoundDrawables()[3]);
       if (this.jdField_b_of_type_Boolean != paramBoolean) {
-        baww.a(this);
+        bcvq.a(this);
       }
       this.jdField_b_of_type_Boolean = paramBoolean;
       return;
@@ -214,7 +214,7 @@ public class ClearableEditText
   
   public void setCursorVisible(boolean paramBoolean)
   {
-    if ((QLog.isColorLevel()) && (AppSetting.e) && (this.jdField_a_of_type_Boolean))
+    if ((QLog.isColorLevel()) && (AppSetting.d) && (this.jdField_a_of_type_Boolean))
     {
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("setCursorVisible=");
@@ -230,9 +230,9 @@ public class ClearableEditText
     super.setCursorVisible(paramBoolean);
   }
   
-  public void setTextClearedListener(bckk parambckk)
+  public void setTextClearedListener(bejl parambejl)
   {
-    this.jdField_a_of_type_Bckk = parambckk;
+    this.jdField_a_of_type_Bejl = parambejl;
   }
 }
 

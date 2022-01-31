@@ -1,13 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
-
-public abstract interface aniz
+class aniz
+  implements anjc
 {
-  public abstract void a(View paramView, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct);
+  aniz(anit paramanit) {}
+  
+  public void a(anjf paramanjf, boolean paramBoolean, byte[] paramArrayOfByte)
+  {
+    this.a.a((anjg)paramanjf, paramBoolean, paramArrayOfByte);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aniz
  * JD-Core Version:    0.7.0.1
  */

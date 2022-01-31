@@ -1,38 +1,19 @@
-import android.opengl.GLES20;
-
-public class aljx
-  extends alkd
+class aljx
 {
   public int a;
-  public int b;
+  public String a;
+  public String b;
   
-  public aljx(int paramInt)
+  public aljx(aljv paramaljv, int paramInt, String paramString1, String paramString2)
   {
-    super(paramInt);
-    this.e = "uniform float uA;\nuniform float uD;\n";
-    this.j = "    if(abs(gl_FragColor[0]-u_screenColor[0]) < uD && abs(gl_FragColor[1]-u_screenColor[1]) < uD  && abs(gl_FragColor[2]-u_screenColor[2]) < uD ){\n        gl_FragColor[3] = uA;\n        if(uA < 0.01){\n            gl_FragColor[0] = 0.0;\n            gl_FragColor[1] = 0.0;\n            gl_FragColor[2] = 0.0;\n        }\n    }\n";
-  }
-  
-  protected void a()
-  {
-    this.a = GLES20.glGetUniformLocation(this.d, "uA");
-    alkh.a("glGetAttribLocation uA");
-    this.b = GLES20.glGetUniformLocation(this.d, "uD");
-    alkh.a("glGetAttribLocation uD");
-  }
-  
-  protected void a(alkg paramalkg)
-  {
-    if (paramalkg == null) {
-      return;
-    }
-    GLES20.glUniform1f(this.a, paramalkg.d);
-    GLES20.glUniform1f(this.b, paramalkg.e);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aljx
  * JD-Core Version:    0.7.0.1
  */

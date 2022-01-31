@@ -1,18 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import java.util.List;
 
 public class udy
-  implements ufi
 {
-  public udy(TextureVideoView paramTextureVideoView) {}
-  
-  public void a(ufh paramufh, int paramInt)
-  {
-    this.a.f = paramInt;
-  }
+  public int a;
+  public String a;
+  public List<uea> a;
+  public boolean a;
+  public int b = 500;
+  public String b;
+  public List<udz> b;
+  public int c = 100;
+  public int d = 15;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     udy
  * JD-Core Version:    0.7.0.1
  */

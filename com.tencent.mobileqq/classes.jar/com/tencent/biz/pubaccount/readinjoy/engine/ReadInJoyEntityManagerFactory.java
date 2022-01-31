@@ -1,11 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import akfu;
+import alxk;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
-import aukp;
-import aulc;
-import aulp;
+import awbw;
+import awcj;
+import awcw;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RedPacketTaskData;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleExposureInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
@@ -50,12 +51,12 @@ public class ReadInJoyEntityManagerFactory
           if (!"sqlite_sequence".equals(str)) {
             try
             {
-              paramSQLiteDatabase.a(aulp.a(str));
+              paramSQLiteDatabase.a(awcw.a(str));
             }
             catch (SQLiteException localSQLiteException)
             {
               QLog.e(this.TAG, 1, "[DB] dropAllTable " + str, localSQLiteException);
-              akfu.a(localSQLiteException);
+              alxk.a(localSQLiteException);
             }
           }
         }
@@ -82,7 +83,7 @@ public class ReadInJoyEntityManagerFactory
                 continue;
               }
               localObject = ArticleInfo.class;
-              aulc.a(localArrayList, str, localCursor2, (Class)localObject);
+              awcj.a(localArrayList, str, localCursor2, (Class)localObject);
             }
             catch (ClassNotFoundException localClassNotFoundException)
             {
@@ -107,6 +108,8 @@ public class ReadInJoyEntityManagerFactory
               localObject = WeiShiVideoArticleInfo.class;
             } else if (str.equals(ArticleExposureInfo.TABLE_NAME)) {
               localObject = ArticleExposureInfo.class;
+            } else if (str.equals(RedPacketTaskData.TABLE_NAME)) {
+              localObject = RedPacketTaskData.class;
             } else {
               localObject = Class.forName(paramString + "." + str);
             }
@@ -143,19 +146,19 @@ public class ReadInJoyEntityManagerFactory
     //   2: aload_1
     //   3: ldc 73
     //   5: aconst_null
-    //   6: invokevirtual 183	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   6: invokevirtual 186	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   9: astore 4
     //   11: aload 4
     //   13: ifnull +177 -> 190
     //   16: aload 4
     //   18: astore 5
     //   20: aload 4
-    //   22: invokeinterface 186 1 0
+    //   22: invokeinterface 189 1 0
     //   27: ifeq +163 -> 190
     //   30: aload 4
     //   32: astore 5
     //   34: aload 4
-    //   36: invokeinterface 190 1 0
+    //   36: invokeinterface 193 1 0
     //   41: anewarray 26	java/lang/String
     //   44: astore_1
     //   45: aload 4
@@ -194,13 +197,13 @@ public class ReadInJoyEntityManagerFactory
     //   111: aload_0
     //   112: getfield 14	com/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyEntityManagerFactory:TAG	Ljava/lang/String;
     //   115: iconst_1
-    //   116: ldc 192
+    //   116: ldc 195
     //   118: aload 6
     //   120: invokestatic 63	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   123: aload 4
     //   125: astore 5
     //   127: aload 6
-    //   129: invokestatic 68	akfu:a	(Ljava/lang/Exception;)V
+    //   129: invokestatic 68	alxk:a	(Ljava/lang/Exception;)V
     //   132: aload_1
     //   133: astore 5
     //   135: aload 4
@@ -271,23 +274,24 @@ public class ReadInJoyEntityManagerFactory
     a(this.dbHelper.a());
   }
   
-  public akfu build(String paramString)
+  public alxk build(String paramString)
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "readinjoy_message_node_" + paramString + ".db", null, 87);
-      this.dbHelper = new akfu(this.mInnerDbHelper);
+      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "readinjoy_message_node_" + paramString + ".db", null, 91);
+      this.dbHelper = new alxk(this.mInnerDbHelper);
     }
     return this.dbHelper;
   }
   
   public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    paramSQLiteDatabase.execSQL(aulp.a(new ArticleInfo()));
-    paramSQLiteDatabase.execSQL(aulp.a(new ArticleReadInfo()));
-    paramSQLiteDatabase.execSQL(aulp.a(new AdvertisementInfo()));
-    paramSQLiteDatabase.execSQL(aulp.a(new WeiShiVideoArticleInfo()));
-    paramSQLiteDatabase.execSQL(aulp.a(new ArticleExposureInfo()));
+    paramSQLiteDatabase.execSQL(awcw.a(new ArticleInfo()));
+    paramSQLiteDatabase.execSQL(awcw.a(new ArticleReadInfo()));
+    paramSQLiteDatabase.execSQL(awcw.a(new AdvertisementInfo()));
+    paramSQLiteDatabase.execSQL(awcw.a(new WeiShiVideoArticleInfo()));
+    paramSQLiteDatabase.execSQL(awcw.a(new ArticleExposureInfo()));
+    paramSQLiteDatabase.execSQL(awcw.a(new RedPacketTaskData()));
     paramSQLiteDatabase.execSQL("create trigger if not exists readinjoy_readinfo_delete_trigger after delete on " + ArticleInfo.TABLE_NAME + " for each row begin  delete from " + ArticleReadInfo.TABLE_NAME + " where mArticleID = old.mArticleID; end ");
   }
   
@@ -314,7 +318,7 @@ public class ReadInJoyEntityManagerFactory
       }
     }
     if (paramInt1 == 0) {
-      paramSQLiteDatabase.execSQL(aulp.a(new ArticleReadInfo()));
+      paramSQLiteDatabase.execSQL(awcw.a(new ArticleReadInfo()));
     }
     paramSQLiteDatabase.execSQL("create trigger if not exists readinjoy_readinfo_delete_trigger after delete on " + ArticleInfo.TABLE_NAME + " for each row begin  delete from " + ArticleReadInfo.TABLE_NAME + " where mArticleID = old.mArticleID; end ");
   }
@@ -325,13 +329,13 @@ public class ReadInJoyEntityManagerFactory
     {
       if (this.name.matches("^[0-9]*$"))
       {
-        aukp localaukp = createEntityManager();
-        ReadInJoyEntityManagerFactory.VerifyEntity localVerifyEntity = (ReadInJoyEntityManagerFactory.VerifyEntity)localaukp.a(ReadInJoyEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "readinjoy_message_node_verify_entity" });
+        awbw localawbw = createEntityManager();
+        ReadInJoyEntityManagerFactory.VerifyEntity localVerifyEntity = (ReadInJoyEntityManagerFactory.VerifyEntity)localawbw.a(ReadInJoyEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "readinjoy_message_node_verify_entity" });
         if (localVerifyEntity == null)
         {
           localVerifyEntity = new ReadInJoyEntityManagerFactory.VerifyEntity();
           localVerifyEntity.name = this.name;
-          localaukp.b(localVerifyEntity);
+          localawbw.b(localVerifyEntity);
           return true;
         }
         if ((!localVerifyEntity.flags.equals("readinjoy_message_node_verify_entity")) || (!localVerifyEntity.name.equals(this.name)))
@@ -339,7 +343,7 @@ public class ReadInJoyEntityManagerFactory
           this.mInnerDbHelper.dropAllTable();
           localVerifyEntity = new ReadInJoyEntityManagerFactory.VerifyEntity();
           localVerifyEntity.name = this.name;
-          localaukp.b(localVerifyEntity);
+          localawbw.b(localVerifyEntity);
           return false;
         }
       }
@@ -353,7 +357,7 @@ public class ReadInJoyEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

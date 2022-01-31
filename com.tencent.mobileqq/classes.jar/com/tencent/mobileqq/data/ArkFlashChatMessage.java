@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import aylc;
+import baiy;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -77,7 +77,7 @@ public class ArkFlashChatMessage
   public String getArkDisplay()
   {
     if (this.promptText != null) {
-      return aylc.a(getSummery());
+      return baiy.a(getSummery());
     }
     return getSummery();
   }
@@ -115,7 +115,7 @@ public class ArkFlashChatMessage
     if (!TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return MobileQQ.sMobileQQ.getString(2131690240);
+    return MobileQQ.sMobileQQ.getString(2131690290);
   }
   
   public void reset()
@@ -204,7 +204,7 @@ public class ArkFlashChatMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ArkFlashChatMessage
  * JD-Core Version:    0.7.0.1
  */

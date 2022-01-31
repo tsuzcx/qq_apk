@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import ajya;
-import aulz;
+import alpo;
+import awdg;
 import java.io.File;
 
 public class MessageForFile
@@ -13,11 +13,11 @@ public class MessageForFile
   public long fileSize;
   public String fileSizeString;
   public String fileType;
-  @aulz
+  @awdg
   public long originalMsgUid;
-  @aulz
+  @awdg
   public long originalTime;
-  @aulz
+  @awdg
   public long originalmsgShseq;
   public int status;
   public String[] tempMsg;
@@ -52,7 +52,7 @@ public class MessageForFile
   
   public String getSummaryMsg()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(ajya.a(2131706577));
+    StringBuilder localStringBuilder = new StringBuilder().append(alpo.a(2131706949));
     if (this.fileName == null) {}
     for (String str = "";; str = this.fileName) {
       return str;
@@ -76,7 +76,7 @@ public class MessageForFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFile
  * JD-Core Version:    0.7.0.1
  */

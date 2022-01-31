@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import ansm;
+import apju;
 import com.tencent.image.URLDrawable;
 
 public class EmoticonFromGroupManager$7
   implements Runnable
 {
-  public EmoticonFromGroupManager$7(ansm paramansm, URLDrawable paramURLDrawable) {}
+  public EmoticonFromGroupManager$7(apju paramapju, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class EmoticonFromGroupManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.7
  * JD-Core Version:    0.7.0.1
  */

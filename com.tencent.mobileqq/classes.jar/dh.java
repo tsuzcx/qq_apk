@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.datadef.DeviceInfo;
+import java.util.ArrayList;
 
-public final class dh
-  implements DialogInterface.OnClickListener
+class dh
+  extends zoz
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  dh(df paramdf) {}
+  
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
-    paramDialogInterface.dismiss();
+    df.a(this.a, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dh
  * JD-Core Version:    0.7.0.1
  */

@@ -34,7 +34,7 @@ public class e
   static ConcurrentHashMap c = new ConcurrentHashMap();
   static b d = new b();
   static MsfCore e;
-  static r f = null;
+  static u f = null;
   
   public static c a(String paramString)
   {
@@ -90,7 +90,7 @@ public class e
   {
     e = paramMsfCore;
     d.setName("MsfServiceAppMsgHandler");
-    f = new r(paramMsfCore);
+    f = new u(paramMsfCore);
     d.start();
     a(paramContext);
   }
@@ -242,6 +242,7 @@ public class e
         QLog.d("MSF.S.AppProcessManager", 2, "add process :" + paramString1);
       }
       d.a();
+      h.b();
       return;
     }
     catch (Exception localException)

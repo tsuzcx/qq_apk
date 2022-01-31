@@ -1,47 +1,24 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
 
 class atrv
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  atrv(atqw paramatqw) {}
+  atrv(atrr paramatrr, Activity paramActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (paramAnimation == atqw.b(this.a))
-    {
-      atqw.a(this.a).setVisibility(8);
-      atqw.a(this.a).setVisibility(4);
-      atqw.a(this.a).clearAnimation();
-      atqw.a(this.a).clearAnimation();
-      atqw.a(this.a).setBackgroundResource(2130848202);
-      atqw.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166557));
-      atqw.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166557));
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == atqw.a(this.a))
-    {
-      atqw.a(this.a).setVisibility(0);
-      atqw.a(this.a).setVisibility(0);
-      atqw.a(this.a).setBackgroundResource(2130849547);
-      atqw.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166848));
-      atqw.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166848));
-    }
+    LoginUserGuideHelper.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Atrr.a.a, atrr.a(this.jdField_a_of_type_Atrr));
+    this.jdField_a_of_type_Atrr.g();
+    azmj.b(this.jdField_a_of_type_Atrr.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 1, 0, "1", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atrv
  * JD-Core Version:    0.7.0.1
  */

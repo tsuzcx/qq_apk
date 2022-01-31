@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 class CommonRecordSoundPanel$9
   implements Runnable
@@ -11,12 +11,12 @@ class CommonRecordSoundPanel$9
   public void run()
   {
     this.this$0.b();
-    bcql.a(this.this$0.a, this.this$0.a.getString(2131698551), 0).a();
+    QQToast.a(this.this$0.a, this.this$0.a.getString(2131698846), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel.9
  * JD-Core Version:    0.7.0.1
  */

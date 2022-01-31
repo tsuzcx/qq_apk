@@ -1,32 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
 public class akms
-  extends akil
+  extends baua
 {
-  private akms(UpdateTroop paramUpdateTroop) {}
+  public akms(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  protected void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.b();
     }
-    if (!paramBoolean)
-    {
-      this.a.a(6);
-      return;
-    }
-    this.a.a.a.edit().putBoolean("isTrooplistok", true).commit();
-    this.a.a.notifyUI(3, true, Integer.valueOf(2));
-    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akms
  * JD-Core Version:    0.7.0.1
  */

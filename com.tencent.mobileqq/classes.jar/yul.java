@@ -1,113 +1,89 @@
-import android.content.Context;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public final class yul
+public class yul
+  extends aofy<yuk>
 {
-  private static volatile yul jdField_a_of_type_Yul;
-  private volatile long jdField_a_of_type_Long = -2147483648L;
-  private volatile yud jdField_a_of_type_Yud;
-  private yuf jdField_a_of_type_Yuf = new yun(this);
-  private yuo jdField_a_of_type_Yuo = new yuo();
-  private volatile boolean jdField_a_of_type_Boolean;
-  
-  public static yul a()
+  private void a(String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_Yul == null) {}
-    try
+    QLog.d("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate() apply new style config");
+    if (!TextUtils.isEmpty(paramString2))
     {
-      if (jdField_a_of_type_Yul == null) {
-        jdField_a_of_type_Yul = new yul();
-      }
-      return jdField_a_of_type_Yul;
+      yuh.a().a("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(true));
+      yuh.a().a("KEY_VS_ENTRANCE_STYLE_MD5", paramString1);
+      yuh.a().a("KEY_VS_ENTRANCE_STYLE_CONTENT", paramString2);
     }
-    finally {}
-  }
-  
-  private void a()
-  {
-    Boolean localBoolean = AdProcessManager.INSTANCE.isWebProcessRunning();
-    yxp.b("GdtInterstitialPreDownloader", String.format("preDownloadOnMainProcess isWebProcessRunning:%b isModuleRunning:%b", new Object[] { localBoolean, Boolean.valueOf(QIPCServerHelper.getInstance().isModuleRunning("gdt_server_ipc")) }));
-    if ((localBoolean == null) || (localBoolean.booleanValue() != true)) {
-      return;
-    }
-    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "gdt_server_ipc", "PRELOAD_INTERSTITIAL_MAIN_TO_TOOL", null, new yum(this));
-  }
-  
-  private void b()
-  {
-    yxp.b("GdtInterstitialPreDownloader", "preDownloadOnToolProcess");
-    if (this.jdField_a_of_type_Yud == null) {
-      synchronized (jdField_a_of_type_Yul)
-      {
-        if (this.jdField_a_of_type_Yud == null)
-        {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          this.jdField_a_of_type_Yud = new yud(new WeakReference(this.jdField_a_of_type_Yuf), yui.a().a(), -2147483648L);
-          yyc.a(BaseApplicationImpl.getApplication());
-        }
-        return;
-      }
-    }
-  }
-  
-  private void c()
-  {
-    yxp.b("GdtInterstitialPreDownloader", "preloadOnOtherProcess");
-    this.jdField_a_of_type_Yuo.send(null);
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_Yud != null) {
-      return this.jdField_a_of_type_Yud.a();
-    }
-    return -2147483648;
+    return 473;
   }
   
-  public void a(Context arg1)
+  public Class<yuk> a()
   {
-    Boolean localBoolean = AdProcessManager.INSTANCE.isOnWebProcess();
-    yxp.b("GdtInterstitialPreDownloader", String.format("init %b isOnWebProcess:%b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), localBoolean }));
-    if (this.jdField_a_of_type_Boolean) {}
-    do
+    return yuk.class;
+  }
+  
+  @NonNull
+  public yuk a(int paramInt)
+  {
+    return new yuk();
+  }
+  
+  @Nullable
+  public yuk a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
     {
-      return;
-      synchronized (jdField_a_of_type_Yul)
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      yuk localyuk = yuk.a(paramArrayOfaogf[0].a);
+      if (localyuk == null)
       {
-        if (this.jdField_a_of_type_Boolean) {
-          return;
-        }
+        QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed error!");
+        return null;
       }
-      this.jdField_a_of_type_Boolean = true;
-    } while ((localObject == null) || (localObject.booleanValue() != true));
-    QIPCClientHelper.getInstance().register(yup.a());
-    yxp.b("GdtInterstitialPreDownloader", "QIPCClientHelper.getInstance().register(ServerToClientIPCModule.getInstance())");
+      String str = (String)yuh.a().a("KEY_VS_ENTRANCE_STYLE_MD5", "");
+      if ((!TextUtils.isEmpty(localyuk.b())) && (!localyuk.b().equals(str)))
+      {
+        yuz.a().a(localyuk);
+        a(localyuk.b(), paramArrayOfaogf[0].a);
+      }
+      return localyuk;
+    }
+    QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed conf content is null!");
+    return null;
   }
   
-  public void b(Context paramContext)
+  public void a(int paramInt) {}
+  
+  public void a(yuk paramyuk)
   {
-    yxp.b("GdtInterstitialPreDownloader", String.format("preDownload", new Object[0]));
-    paramContext = AdProcessManager.INSTANCE.isOnWebProcess();
-    if (AdProcessManager.INSTANCE.isOnMainProcess().booleanValue())
-    {
-      a();
-      return;
+    if (paramyuk != null) {
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate:" + paramyuk.toString());
     }
-    if ((paramContext != null) && (paramContext.booleanValue() == true))
-    {
-      b();
-      return;
-    }
-    c();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yul
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+
 public class twz
-  extends twl
+  implements View.OnClickListener
 {
-  public int a;
-  public tff a;
-  public boolean a;
-  public String c = "";
-  public String d = "";
+  public twz(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public twz(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  static twz a(tff paramtff)
-  {
-    twz localtwz = new twz(paramtff.jdField_a_of_type_JavaLangString);
-    localtwz.jdField_a_of_type_Tff = paramtff;
-    if (paramtff.jdField_a_of_type_Int == 12)
-    {
-      localtwz.d = paramtff.e;
-      localtwz.c = paramtff.i;
-    }
-    return localtwz;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Tff != null) {
-      return this.jdField_a_of_type_Tff.jdField_a_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Tff != null) && (this.jdField_a_of_type_Tff.jdField_a_of_type_Int == 12);
+    QCircleContentOperationView.a(this.a, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twz
  * JD-Core Version:    0.7.0.1
  */

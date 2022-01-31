@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.troop.data;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.Intent;
-import axqy;
-import azop;
+import azmj;
+import bbmy;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.AccountDetail;
-import sgg;
+import syb;
 
 public class TroopEntranceBar$2
   implements Runnable
 {
-  public TroopEntranceBar$2(azop paramazop) {}
+  public TroopEntranceBar$2(bbmy parambbmy) {}
   
   public void run()
   {
     Object localObject2 = "";
     Object localObject1 = "";
-    Object localObject4 = sgg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    Object localObject4 = syb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     if (localObject4 != null)
     {
       localObject3 = ((AccountDetail)localObject4).uin;
@@ -30,7 +30,7 @@ public class TroopEntranceBar$2
       {
         localObject1 = localObject4;
         localObject2 = localObject3;
-        if (((String)localObject4).endsWith(ajya.a(2131715314)))
+        if (((String)localObject4).endsWith(alpo.a(2131715686)))
         {
           localObject1 = ((String)localObject4).substring(0, ((String)localObject4).length() - 3);
           localObject2 = localObject3;
@@ -41,7 +41,7 @@ public class TroopEntranceBar$2
     Object localObject3 = new Intent(this.this$0.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
     ((Intent)localObject3).putExtra("url", (String)localObject1);
     this.this$0.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject3);
-    axqy.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "clk_tribechat_aio", "exp_tribechat_aio", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject2, "", "");
+    azmj.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "clk_tribechat_aio", "exp_tribechat_aio", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject2, "", "");
   }
 }
 

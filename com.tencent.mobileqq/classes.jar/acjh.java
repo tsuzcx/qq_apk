@@ -1,21 +1,34 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class acjh
+class acjh
   implements View.OnClickListener
 {
-  public acjh(TroopMemberListActivity paramTroopMemberListActivity) {}
+  acjh(acjf paramacjf) {}
   
   public void onClick(View paramView)
   {
-    TroopMemberListActivity.b(this.a);
-    new axrc(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
+    if ((paramView.getTag() instanceof String)) {}
+    do
+    {
+      return;
+      paramView = (akdm)paramView.getTag();
+      if ((paramView.a instanceof FileManagerEntity))
+      {
+        paramView = (FileManagerEntity)paramView.a;
+        this.a.a(paramView);
+        return;
+      }
+    } while (!(paramView.a instanceof TencentDocData));
+    paramView = (TencentDocData)paramView.a;
+    this.a.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acjh
  * JD-Core Version:    0.7.0.1
  */

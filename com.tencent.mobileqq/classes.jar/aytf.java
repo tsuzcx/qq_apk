@@ -1,52 +1,39 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class aytf
-  extends aejo
+  extends aytj
 {
-  public aytf(BaseApplicationImpl paramBaseApplicationImpl)
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public LinearLayout b;
+  public TextView b;
+  
+  public aytf() {}
+  
+  public aytf(ViewGroup paramViewGroup)
   {
-    super(paramBaseApplicationImpl);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562579, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131370723);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369073));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367910));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365127));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131369588));
   }
   
-  public File getFile(DownloadParams paramDownloadParams)
+  public LinearLayout a()
   {
-    paramDownloadParams = paramDownloadParams.url;
-    try
-    {
-      File localFile1 = new File(paramDownloadParams.toURI().getPath());
-      return localFile1;
-    }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      try
-      {
-        File localFile2 = new File(paramDownloadParams.toString().replaceFirst("filegalleryorigimage:", ""));
-        return localFile2;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
-        }
-        return null;
-      }
-    }
-    catch (NullPointerException paramDownloadParams)
-    {
-      paramDownloadParams.printStackTrace();
-    }
-    return null;
+    return this.jdField_b_of_type_AndroidWidgetLinearLayout;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aytf
  * JD-Core Version:    0.7.0.1
  */

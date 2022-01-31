@@ -1,26 +1,17 @@
-import android.widget.ImageView;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-
-public class wtx
-  implements wtr
+public abstract interface wtx
+  extends wwd
 {
-  public wtx(VideoPlayerView paramVideoPlayerView) {}
+  public abstract void a(wxm paramwxm);
   
-  public void a(boolean paramBoolean)
-  {
-    if ((VideoPlayerView.a(this.a) != null) && (!paramBoolean) && (this.a.e != null) && (this.a.e.getVisibility() == 0))
-    {
-      this.a.e.setVisibility(8);
-      VideoPlayerView.a(this.a, "");
-    }
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).a(paramBoolean);
-    }
-  }
+  public abstract void ah_();
+  
+  public abstract void b();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtx
  * JD-Core Version:    0.7.0.1
  */

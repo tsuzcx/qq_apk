@@ -1,64 +1,59 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class ardq
-  extends ampa<ardr>
+public abstract interface ardq
 {
-  public int a()
-  {
-    return 445;
-  }
+  public abstract int a();
   
-  @NonNull
-  public ardr a(int paramInt)
-  {
-    return new ardr();
-  }
+  public abstract long a();
   
-  @Nullable
-  public ardr a(amph[] paramArrayOfamph)
-  {
-    ardr localardr = new ardr();
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null)) {
-      ardr.a(localardr, paramArrayOfamph[0].a);
-    }
-    return localardr;
-  }
+  public abstract FileManagerEntity a();
   
-  public Class<ardr> a()
-  {
-    return ardr.class;
-  }
+  public abstract WeiYunFileInfo a();
   
-  public void a() {}
+  public abstract String a();
   
-  public void a(int paramInt) {}
+  public abstract void a(int paramInt);
   
-  public void a(ardr paramardr) {}
+  public abstract void a(String paramString);
   
-  public boolean a()
-  {
-    return false;
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public int b()
-  {
-    return 0;
-  }
+  public abstract boolean a();
   
-  public boolean b()
-  {
-    return false;
-  }
+  public abstract int b();
   
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract long b();
+  
+  public abstract String b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract int c();
+  
+  public abstract long c();
+  
+  public abstract String c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract int e();
+  
+  public abstract String e();
+  
+  public abstract String f();
+  
+  public abstract String g();
+  
+  public abstract String h();
+  
+  public abstract String i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardq
  * JD-Core Version:    0.7.0.1
  */

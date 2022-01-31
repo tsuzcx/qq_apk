@@ -1,29 +1,25 @@
-import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class afyg
-  extends afxp
+  implements Animation.AnimationListener
 {
-  public static final int[] a = { 2131690735 };
-  public static final int[] b = { 2131364097 };
+  public afyg(StructingMsgItemBuilder paramStructingMsgItemBuilder, afyi paramafyi) {}
   
-  public afyg(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  protected int[] a()
-  {
-    return b;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected int[] b()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return a;
+    this.jdField_a_of_type_Afyi.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afyg
  * JD-Core Version:    0.7.0.1
  */

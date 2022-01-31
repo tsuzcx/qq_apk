@@ -1,13 +1,50 @@
-import android.view.View;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-public abstract interface bany
+class bany
+  implements baux
 {
-  public abstract void a(TextView paramTextView, View paramView, boolean paramBoolean);
+  bany(banw parambanw) {}
+  
+  public Bitmap getBitmap(URL paramURL)
+  {
+    paramURL = this.a.a(paramURL);
+    if (paramURL == null) {
+      paramURL = null;
+    }
+    for (;;)
+    {
+      return paramURL;
+      String str = paramURL.path;
+      if (TextUtils.isEmpty(str)) {
+        return null;
+      }
+      try
+      {
+        Bitmap localBitmap = this.a.a(str);
+        paramURL = localBitmap;
+        if (localBitmap == null)
+        {
+          paramURL = this.a.b(str);
+          return paramURL;
+        }
+      }
+      catch (Throwable paramURL)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
+        }
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bany
  * JD-Core Version:    0.7.0.1
  */

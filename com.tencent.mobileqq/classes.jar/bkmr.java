@@ -1,385 +1,444 @@
-import android.animation.Keyframe;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.provider.MediaStore.Video.Media;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.photo.DynamicImageMediaFileFilter;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.MediaScanner;
+import com.tencent.mobileqq.activity.photo.album.AlbumListBaseData;
+import com.tencent.mobileqq.activity.photo.album.QAlbumCustomAlbumConstants;
+import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.XListView;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelPart.1;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelPart.2;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelPart.3;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import dov.com.qq.im.ae.album.logic.AEAlbumListLogicBase.1;
+import dov.com.qq.im.ae.album.logic.AEAlbumListLogicBase.2;
+import dov.com.qq.im.ae.album.logic.AEAlbumListLogicBase.3;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
-public class bkmr
-  extends bjxl
-  implements View.OnClickListener, bjzv, bkme, bkmf, bkmg
+public class bkmr<K extends bklz>
+  extends bkmp<K>
+  implements bkmq
 {
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bkmi jdField_a_of_type_Bkmi;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private SlideBottomPanel jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel;
-  public boolean a;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
-  private View jdField_c_of_type_AndroidViewView;
-  private volatile boolean jdField_c_of_type_Boolean;
-  private View d;
+  protected bklw a;
   
-  public bkmr(@NonNull bjxn parambjxn)
+  protected bkmr(K paramK)
   {
-    super(parambjxn);
+    super(paramK);
+    this.jdField_a_of_type_Bkmq = this;
   }
   
-  private View a()
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView = new View(a());
-    localView.setLayoutParams(new AbsListView.LayoutParams(-1, actj.a(130.0F, a())));
-    localView.setBackgroundResource(2130849248);
-    return localView;
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramInt1, paramInt2);
-    this.jdField_c_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
-    localAlphaAnimation.setDuration(500L);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(paramInt3);
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
-  {
-    boolean bool1 = false;
-    boolean bool2 = true;
-    boolean bool3 = true;
-    if (paramInt1 == 1) {
-      if ((paramInt2 == 0) || (paramInt2 == 1000) || (paramInt2 == 1004)) {
-        bool1 = true;
+    Resources localResources = ((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources();
+    bklw localbklw = b();
+    View localView;
+    QQAlbumInfo localQQAlbumInfo;
+    Object localObject;
+    if (paramView == null)
+    {
+      localView = ((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity().getLayoutInflater().inflate(2131560816, null);
+      paramViewGroup = (TextView)localView;
+      localQQAlbumInfo = localbklw.a(paramInt);
+      localView.setContentDescription(localQQAlbumInfo.name + "，" + localQQAlbumInfo.mMediaFileCount + "张照片");
+      paramView = localQQAlbumInfo.name;
+      if (localQQAlbumInfo.mMediaFileCount > 0) {
+        paramView = localQQAlbumInfo.name + String.format(" (%d)", new Object[] { Integer.valueOf(localQQAlbumInfo.mMediaFileCount) });
+      }
+      paramViewGroup.setText(paramView);
+      localObject = paramViewGroup.getCompoundDrawables()[0];
+      if (localbklw.getItemViewType(paramInt) != 1) {
+        break label389;
+      }
+      if (!localQQAlbumInfo.mCoverInfo.isSystemMeidaStore) {
+        break label375;
+      }
+      paramView = QAlbumUtil.generateAlbumThumbURL(localQQAlbumInfo.mCoverInfo, "VIDEO");
+      label205:
+      LocalMediaInfo localLocalMediaInfo = localQQAlbumInfo.mCoverInfo;
+      localQQAlbumInfo.mCoverInfo.thumbHeight = 200;
+      localLocalMediaInfo.thumbWidth = 200;
+      if ((localObject == null) || (!URLDrawable.class.isInstance(localObject))) {
+        break label406;
+      }
+      localObject = (URLDrawable)localObject;
+      if (!paramView.equals(((URLDrawable)localObject).getURL())) {
+        break label406;
       }
     }
-    do
+    for (;;)
     {
-      return bool1;
-      if (paramInt1 == 4)
+      if (localObject == null)
       {
-        if (paramInt2 == 1) {}
-        for (bool1 = bool3;; bool1 = false) {
-          return bool1;
+        localObject = baul.a(paramView, bklw.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, bklw.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
+        ((URLDrawable)localObject).setTag(localQQAlbumInfo.mCoverInfo);
+        ((URLDrawable)localObject).setBounds(0, 0, localbklw.jdField_a_of_type_Int, localbklw.b);
+        if (!localQQAlbumInfo._id.equals(this.jdField_a_of_type_Aimj.albumId)) {
+          break label401;
         }
+        paramView = localbklw.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState.newDrawable(localResources);
+        paramView.setBounds(0, 0, paramView.getIntrinsicWidth(), paramView.getIntrinsicHeight());
       }
-    } while (paramInt1 != 101);
-    if (paramInt2 == 3000) {}
-    for (bool1 = bool2;; bool1 = false) {
-      return bool1;
-    }
-  }
-  
-  private void b(List<bkmo> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        ((bkmo)paramList.next()).a();
-      }
-    }
-  }
-  
-  private void j()
-  {
-    this.jdField_a_of_type_AndroidViewView = ((ViewStub)a(2131375853)).inflate();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel = ((SlideBottomPanel)this.jdField_a_of_type_AndroidViewView.findViewById(2131376272));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364721);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369266));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131375865);
-    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131362998);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377634));
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(a());
-    this.jdField_a_of_type_Bkmi = new bkmi(a(), this);
-    this.jdField_a_of_type_Bkmi.a(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bkmi);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.setSlidePanelListener(this);
-    this.jdField_c_of_type_AndroidViewView.findViewById(2131375832).setOnClickListener(this);
-  }
-  
-  private void k()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    bkmp.a().a(this);
-    List localList = bkmp.a().a();
-    if ((localList != null) && (this.jdField_a_of_type_Bkmi != null))
-    {
-      b(localList);
-      this.jdField_a_of_type_Bkmi.a(localList);
-    }
-    bjzt.a().a(this);
-  }
-  
-  private void l()
-  {
-    if ((this.jdField_c_of_type_AndroidViewView != null) && (this.jdField_c_of_type_AndroidViewView.getVisibility() == 8) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.b()) && (this.jdField_a_of_type_Bkmi != null) && (this.jdField_a_of_type_Bkmi.a()))
-    {
-      this.jdField_c_of_type_Boolean = true;
-      a(0, 1, 0);
-      avtd.b(this.jdField_a_of_type_Bjxn);
-    }
-  }
-  
-  private void n()
-  {
-    PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_Y, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.3F, 0.0F), Keyframe.ofFloat(0.45F, -80.0F), Keyframe.ofFloat(0.65F, 50.0F), Keyframe.ofFloat(0.8F, -30.0F), Keyframe.ofFloat(0.9F, 10.0F), Keyframe.ofFloat(1.0F, 0.0F) });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(this.jdField_b_of_type_AndroidViewView, new PropertyValuesHolder[] { localPropertyValuesHolder });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(1600L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setStartDelay(1000L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatCount(1);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  @NonNull
-  public Context a()
-  {
-    return super.a();
-  }
-  
-  public void a()
-  {
-    super.a();
-    j();
-    k();
-  }
-  
-  public void a(int paramInt, bkmo parambkmo)
-  {
-    if (this.jdField_a_of_type_Bkmi != null)
-    {
-      this.jdField_a_of_type_Bkmi.a(paramInt, parambkmo);
-      if (this.jdField_a_of_type_ComTencentWidgetXListView != null)
+      for (;;)
       {
-        int i = this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition();
-        int j = this.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition();
-        if ((paramInt >= i) && (paramInt <= j))
-        {
-          Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt - i);
-          if ((((View)localObject).getTag() instanceof bkmn))
-          {
-            localObject = (bkmn)((View)localObject).getTag();
-            ((bkmn)localObject).a = parambkmo;
-            this.jdField_a_of_type_Bkmi.a(paramInt, (bkmn)localObject);
-          }
-        }
+        paramViewGroup.setCompoundDrawables((Drawable)localObject, null, paramView, null);
+        return localView;
+        paramViewGroup = (TextView)paramView;
+        localView = paramView;
+        break;
+        label375:
+        paramView = QAlbumUtil.generateAlbumThumbURL(localQQAlbumInfo.mCoverInfo, "APP_VIDEO");
+        break label205;
+        label389:
+        paramView = QAlbumUtil.generateAlbumThumbURL(localQQAlbumInfo.mCoverInfo);
+        break label205;
+        label401:
+        paramView = null;
       }
-      if (!this.jdField_c_of_type_Boolean) {
-        l();
-      }
+      label406:
+      localObject = null;
     }
   }
   
-  public void a(String paramString1, int paramInt, String paramString2, Bitmap paramBitmap)
+  protected bklw a()
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("SendPanelPart", 4, "onUpdateIcon uin is empty");
-      }
+    return new bklw((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get());
+  }
+  
+  public String a()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.filter;
+    boolean bool1 = ((MediaFileFilter)localObject).isSupportHeif();
+    boolean bool2 = ((MediaFileFilter)localObject).isSupportWebp();
+    localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("_size>0 and (mime_type='image/jpeg' or mime_type='image/gif' or (mime_type='*/*' and _display_name LIKE'%.jpg%' )  or (mime_type='*/*' and _display_name LIKE'%.jpeg%' )  or (mime_type='*/*' and _display_name LIKE'%.gif%' )  or (mime_type='*/*' and _display_name LIKE'%.bmp%' )  or (mime_type='*/*' and _display_name LIKE'%.png%' )  or mime_type LIKE'%bmp%' or mime_type LIKE'%bitmap%' or mime_type='image/png'");
+    if (bool1) {
+      ((StringBuffer)localObject).append(" or mime_type='image/heif' or mime_type='image/heic'");
     }
-    label164:
+    if (bool2) {
+      ((StringBuffer)localObject).append(" or mime_type='image/webp'");
+    }
+    ((StringBuffer)localObject).append(")) GROUP BY (1");
+    return ((StringBuffer)localObject).toString();
+  }
+  
+  public List<LocalMediaInfo> a(Context paramContext, int paramInt1, int paramInt2, MediaFileFilter paramMediaFileFilter, int paramInt3, boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    return QAlbumUtil.queryRecentImages(paramContext, paramInt3, paramInt2, paramMediaFileFilter, paramBoolean, paramInt1, paramArrayList, false);
+  }
+  
+  public List<QQAlbumInfo> a(List<QQAlbumInfo> paramList1, List<QQAlbumInfo> paramList2, int paramInt)
+  {
+    if ((this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity() == null)) {
+      return null;
+    }
+    Object localObject;
+    if ((paramList1 == null) && (paramList2 == null)) {
+      localObject = null;
+    }
+    int j;
+    int i;
     do
     {
       for (;;)
       {
-        return;
-        List localList = bkmp.a().a();
-        if ((localList == null) || (localList.size() <= 0)) {
-          break;
+        bddw.a();
+        if ((localObject == null) || (((List)localObject).isEmpty())) {
+          break label559;
         }
-        int j = localList.size();
-        int i = 0;
-        for (;;)
+        j = ((List)localObject).size();
+        i = 0;
+        while (i < j)
         {
-          if (i >= j) {
-            break label164;
-          }
-          bkmo localbkmo = (bkmo)localList.get(i);
-          if ((!TextUtils.isEmpty(localbkmo.jdField_a_of_type_JavaLangString)) && (localbkmo.jdField_a_of_type_JavaLangString.equals(paramString1)) && (a(paramInt, localbkmo.jdField_a_of_type_Int)))
+          paramList1 = (QQAlbumInfo)((List)localObject).get(i);
+          if ((i != 0) && (bklw.a(paramList1.name)))
           {
-            localbkmo.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-            localbkmo.d = paramString2;
-            if (this.jdField_a_of_type_AndroidOsHandler == null) {
-              break;
-            }
-            this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelPart.2(this, i, localbkmo));
-            return;
+            ((List)localObject).remove(paramList1);
+            ((List)localObject).add(0, paramList1);
           }
           i += 1;
         }
+        if (paramList1 != null) {
+          break;
+        }
+        localObject = paramList2;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("SendPanelPart", 4, "onUpdateIcon itemInfoList is empty");
-  }
-  
-  public void a(List<bkmo> paramList)
-  {
-    if (this.jdField_a_of_type_Bkmi != null) {
-      this.jdField_a_of_type_Bkmi.a(paramList);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel != null)
+      localObject = paramList1;
+    } while (paramList2 == null);
+    paramList2 = paramList2.iterator();
+    label259:
+    label678:
+    label684:
+    for (;;)
     {
-      if (!paramBoolean) {
-        break label29;
+      localObject = paramList1;
+      if (!paramList2.hasNext()) {
+        break;
       }
-      if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a()) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.c();
+      localObject = (QQAlbumInfo)paramList2.next();
+      Iterator localIterator = paramList1.iterator();
+      QQAlbumInfo localQQAlbumInfo;
+      while (localIterator.hasNext())
+      {
+        localQQAlbumInfo = (QQAlbumInfo)localIterator.next();
+        if (localQQAlbumInfo._id.equals(((QQAlbumInfo)localObject)._id)) {
+          localQQAlbumInfo.mMediaFileCount += ((QQAlbumInfo)localObject).mMediaFileCount;
+        }
+      }
+      for (i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label684;
+        }
+        localIterator = paramList1.iterator();
+        i = 0;
+        if (localIterator.hasNext())
+        {
+          localQQAlbumInfo = (QQAlbumInfo)localIterator.next();
+          if (((QQAlbumInfo)localObject).coverDate > localQQAlbumInfo.coverDate)
+          {
+            j = 1;
+            paramList1.add(i, localObject);
+          }
+        }
+        for (i = j;; i = 0)
+        {
+          if (i != 0) {
+            break label678;
+          }
+          paramList1.add(localObject);
+          break;
+          i += 1;
+          break label259;
+          boolean bool;
+          if (paramInt == -1)
+          {
+            paramList1 = b().b(((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesLimitSize, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesMaxCount, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.filter, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesLimitWidth, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.isBothwidthheight, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesBlockPaths);
+            ((List)localObject).add(0, paramList1);
+            if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.filter != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.filter.showVideo()))
+            {
+              paramList1 = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+              paramList1 = ((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity().getContentResolver().query(paramList1, new String[] { "_id" }, "_size>0 ", null, null);
+              i = 0;
+              if (paramList1 != null)
+              {
+                i = paramList1.getCount();
+                paramList1.close();
+              }
+              bool = false;
+              if (i <= 0) {
+                break label607;
+              }
+              bool = true;
+              label510:
+              b().jdField_a_of_type_Boolean = bool;
+              if (bool)
+              {
+                if (paramInt != -1) {
+                  break label638;
+                }
+                paramList1 = b().a(((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity());
+              }
+            }
+          }
+          for (;;)
+          {
+            ((List)localObject).add(1, paramList1);
+            label559:
+            bddw.a("PEAK", "compact.queryRecentBucket");
+            return localObject;
+            paramList1 = new QQAlbumInfo();
+            paramList1._id = "$RecentAlbumId";
+            paramList1.name = QAlbumCustomAlbumConstants.RECENT_ALBUM_NAME;
+            paramList1.mCoverInfo = new LocalMediaInfo();
+            break;
+            label607:
+            paramList1 = MediaScanner.getInstance(BaseApplicationImpl.getContext());
+            i = 0;
+            if (paramList1 != null) {
+              i = paramList1.getMediaScannerInfosCount();
+            }
+            if (i <= 0) {
+              break label510;
+            }
+            bool = true;
+            break label510;
+            label638:
+            paramList1 = new QQAlbumInfo();
+            paramList1._id = "$VideoAlbumId";
+            paramList1.name = QAlbumCustomAlbumConstants.VIDEO_ALBUM_NAME;
+            paramList1.mCoverInfo = new LocalMediaInfo();
+          }
+        }
+        break;
       }
     }
-    label29:
-    while (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a()) {
+  }
+  
+  public void a(int paramInt)
+  {
+    int k = 0;
+    int j = 1;
+    bklw localbklw = b();
+    MediaFileFilter localMediaFileFilter = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.filter;
+    List localList1;
+    int i;
+    if ((localMediaFileFilter != null) && (localMediaFileFilter.showImage()))
+    {
+      bddw.a();
+      localList1 = localbklw.a(((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), paramInt);
+      if ((paramInt != -1) && (localList1 != null) && (localList1.size() == paramInt))
+      {
+        i = 1;
+        bddw.a("PEAK", "queryImageBuckets");
+      }
+    }
+    for (;;)
+    {
+      List localList2;
+      if ((localMediaFileFilter != null) && (localMediaFileFilter.showVideo()))
+      {
+        bddw.a();
+        localList2 = localbklw.a(((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), paramInt, localMediaFileFilter);
+        if ((paramInt != -1) && (localList2 != null) && (localList2.size() == paramInt))
+        {
+          i = 1;
+          bddw.a("PEAK", "queryVideoBuckets");
+        }
+      }
+      for (;;)
+      {
+        bddw.a();
+        localList1 = this.jdField_a_of_type_Bkmq.a(localList1, localList2, paramInt);
+        if (localList1 != null) {
+          while (j < localList1.size())
+          {
+            k += ((QQAlbumInfo)localList1.get(j)).mMediaFileCount;
+            j += 1;
+          }
+        }
+        bddw.a("PEAK", "compact: medias ==null");
+        do
+        {
+          return;
+          bddw.a("PEAK", "compact(" + (localList1.size() - 1) + "," + k + ")");
+          localbklw.b(localList1);
+        } while (paramInt == -1);
+        if (i != 0)
+        {
+          ThreadManager.getFileThreadHandler().post(new AEAlbumListLogicBase.2(this, localbklw));
+          return;
+        }
+        ThreadManager.getFileThreadHandler().post(new AEAlbumListLogicBase.3(this, localbklw, localMediaFileFilter));
+        return;
+        break;
+        localList2 = null;
+      }
+      i = 0;
+      break;
+      localList1 = null;
+      i = 0;
+    }
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    int i = paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.filter = MediaFileFilter.getFilter(i);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.filterVideoGif = paramIntent.getBooleanExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", false);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.filterVideoGif)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.filter = new DynamicImageMediaFileFilter(MediaFileFilter.MEDIA_FILTER_SHOW_IMAGE);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.showMediaType = 1;
+    }
+    this.jdField_a_of_type_Aimj.mIsAwlaysShowNumber = paramIntent.getBooleanExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", this.jdField_a_of_type_Aimj.mIsAwlaysShowNumber);
+    paramIntent = (HashMap)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap");
+    if (paramIntent != null)
+    {
+      if ((this.jdField_a_of_type_Aimj.selectedMediaInfoHashMap != null) && (!this.jdField_a_of_type_Aimj.selectedMediaInfoHashMap.isEmpty())) {
+        break label178;
+      }
+      this.jdField_a_of_type_Aimj.selectedMediaInfoHashMap = paramIntent;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bklw = a();
+      ((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_Bklw = this.jdField_a_of_type_Bklw;
+      ThreadManager.getFileThreadHandler().post(new AEAlbumListLogicBase.1(this));
       return;
+      label178:
+      this.jdField_a_of_type_Aimj.selectedMediaInfoHashMap.putAll(paramIntent);
     }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.d();
   }
   
-  public boolean a()
+  boolean a(Intent paramIntent, QQAlbumInfo paramQQAlbumInfo)
   {
-    return super.a();
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Bkmi != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
+    String str1 = paramIntent.getStringExtra("ALBUM_NAME");
+    String str2 = paramIntent.getStringExtra("ALBUM_ID");
+    if (((str1 != null) && (!str1.equals(this.jdField_a_of_type_Aimj.albumName))) || ((str2 != null) && (!str2.equals(this.jdField_a_of_type_Aimj.albumId)))) {}
+    for (boolean bool = true; a(bool, paramQQAlbumInfo); bool = false)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelPart.3(this));
-      this.jdField_c_of_type_Boolean = false;
+      this.jdField_a_of_type_Aimj.albumName = str1;
+      this.jdField_a_of_type_Aimj.albumId = str2;
+      this.jdField_a_of_type_Aimj.currentQualityType = paramIntent.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0);
+      return true;
     }
+    return false;
   }
   
-  public void c() {}
-  
-  public void cancelAnimator()
+  public boolean a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
   {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null))
+    paramIntent.putExtra("ALBUM_ID", paramQQAlbumInfo._id);
+    paramIntent.putExtra("ALBUM_NAME", paramQQAlbumInfo.name);
+    paramIntent.putExtra("album_enter_directly", false);
+    XListView localXListView = ((bklz)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentWidgetXListView;
+    paramIntent.putExtra("PhotoConst.photo_selection_index", localXListView.getFirstVisiblePosition());
+    View localView = localXListView.getChildAt(0);
+    if (localView == null) {}
+    for (paramInt = 0;; paramInt = localView.getTop())
     {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-      this.jdField_b_of_type_Boolean = false;
+      paramIntent.putExtra("PhotoConst.photo_selection_y", paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.d("AlbumModule", 2, "save Scroll Position,index:" + localXListView.getFirstVisiblePosition() + " top:" + paramInt);
+      }
+      return a(paramIntent, paramQQAlbumInfo);
     }
   }
   
-  public void d()
+  boolean a(boolean paramBoolean, QQAlbumInfo paramQQAlbumInfo)
   {
-    if (this.jdField_a_of_type_Bkmi != null) {
-      this.jdField_a_of_type_Bkmi.b();
-    }
+    return paramBoolean;
   }
   
-  public void displayPanel()
+  protected bklw b()
   {
-    l();
-    if (this.d != null) {
-      this.d.setVisibility(0);
-    }
-    avtd.d(this.jdField_a_of_type_Bjxn);
+    return this.jdField_a_of_type_Bklw;
   }
   
-  public void displayPanelFinish()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130848617);
-    }
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SendPanelPart", 4, "compositeFail");
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelPart.1(this));
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
-    if (bkmp.a().jdField_a_of_type_Boolean)
-    {
-      bkmp.a().jdField_a_of_type_Boolean = false;
-      n();
-      bkmp.a().a(false);
-    }
-  }
-  
-  public void fadeBackground(float paramFloat)
-  {
-    if (this.d != null)
-    {
-      this.d.setVisibility(0);
-      this.d.setAlpha(paramFloat);
-    }
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_Bkmi != null) {
-      this.jdField_a_of_type_Bkmi.a();
-    }
-    this.jdField_c_of_type_Boolean = false;
-    bjzt.a().b(this);
-    super.g();
-  }
-  
-  public void hidePanel()
-  {
-    if ((this.jdField_c_of_type_AndroidViewView != null) && (this.jdField_c_of_type_AndroidViewView.getVisibility() == 0)) {
-      a(1, 0, 8);
-    }
-    if (this.d != null) {
-      this.d.setVisibility(8);
-    }
-  }
-  
-  public void hidePanelFinish()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130848616);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    if (this.jdField_a_of_type_Bjxn.a.k()) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    this.jdField_a_of_type_Bjxn.e();
-    avtd.a(this.jdField_a_of_type_Bjxn);
-    bizx.a().d();
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmr
  * JD-Core Version:    0.7.0.1
  */

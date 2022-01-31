@@ -1,27 +1,43 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import java.io.File;
+import java.io.RandomAccessFile;
 
 public class apif
-  extends GestureDetector.SimpleOnGestureListener
+  extends RandomAccessFile
 {
-  public apif(FileBrowserActivity paramFileBrowserActivity, int paramInt) {}
+  private final byte[] a = new byte[8];
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public apif(String paramString1, String paramString2)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
-    do
-    {
-      return false;
-      paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-      paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-    } while ((paramFloat1 > -this.jdField_a_of_type_Int) || (paramFloat2 >= 0.5F) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a.c()));
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.onBackEvent();
+    super(new File(paramString1), paramString2);
+  }
+  
+  public int read()
+  {
+    int i = -1;
+    if (read(this.a, 0, 1) != -1) {
+      i = this.a[0] & 0xFF;
+    }
+    return i;
+  }
+  
+  public int read(byte[] paramArrayOfByte)
+  {
+    return read(paramArrayOfByte, 0, paramArrayOfByte.length);
+  }
+  
+  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    long l = super.getFilePointer();
+    paramInt2 = super.read(paramArrayOfByte, paramInt1, paramInt2);
+    if (paramInt2 > -1) {
+      apih.a(paramArrayOfByte, paramInt1, paramInt2, l);
+    }
+    return paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apif
  * JD-Core Version:    0.7.0.1
  */

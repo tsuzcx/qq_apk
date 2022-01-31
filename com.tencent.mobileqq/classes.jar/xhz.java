@@ -1,14 +1,10 @@
-public class xhz
-  implements xhr
+public abstract interface xhz
 {
-  public asbc a(String paramString)
-  {
-    return new asbo(paramString).a();
-  }
+  public abstract void a(xig paramxig);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhz
  * JD-Core Version:    0.7.0.1
  */

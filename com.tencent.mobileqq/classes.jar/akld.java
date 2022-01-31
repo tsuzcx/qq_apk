@@ -1,91 +1,37 @@
-import QC.HamletCheck;
-import QC.UniBusinessCheckItem;
-import QC.UniLoginCheckRsp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.step.ChatBackgroundAuth;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class akld
-  implements ajte
+  implements GLSurfaceView.EGLConfigChooser
 {
-  private WeakReference<QQAppInterface> a;
+  private int a;
   
-  public akld(QQAppInterface paramQQAppInterface)
+  public akld(int paramInt)
   {
-    this.a = new WeakReference(paramQQAppInterface);
+    QLog.i("ApolloSurfaceView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
+    this.a = paramInt;
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null) {}
-    for (;;)
+    int i = this.a;
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0)
     {
-      return;
-      if ((paramObject instanceof UniLoginCheckRsp))
-      {
-        bbtq.a(localQQAppInterface).a(((UniLoginCheckRsp)paramObject).stKeyWord);
-        paramObject = (UniLoginCheckRsp)paramObject;
-        if (paramObject.ret != 0) {
-          break;
-        }
-        ChatBackgroundManager localChatBackgroundManager = (ChatBackgroundManager)localQQAppInterface.getManager(63);
-        localChatBackgroundManager.a();
-        localChatBackgroundManager.b();
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 2, "bg and effect id clear");
-        }
-        Iterator localIterator = paramObject.stHamletList.iterator();
-        while (localIterator.hasNext())
-        {
-          HamletCheck localHamletCheck = (HamletCheck)localIterator.next();
-          if ((localHamletCheck.itemlist != null) && (localHamletCheck.itemlist.size() > 0))
-          {
-            int i = -1;
-            paramInt = -1;
-            paramObject = localHamletCheck.itemlist.iterator();
-            Object localObject;
-            while (paramObject.hasNext())
-            {
-              localObject = (UniBusinessCheckItem)paramObject.next();
-              if (((UniBusinessCheckItem)localObject).appid == 8) {
-                i = ((UniBusinessCheckItem)localObject).itemid;
-              } else if (((UniBusinessCheckItem)localObject).appid == 35) {
-                paramInt = ((UniBusinessCheckItem)localObject).itemid;
-              }
-            }
-            if (i >= 0)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("QQInitHandler", 2, "bgId:" + i + " effectId:" + paramInt);
-              }
-              localObject = String.valueOf(localHamletCheck.uid);
-              paramObject = localObject;
-              if (localQQAppInterface.getAccount().equals(localObject))
-              {
-                paramObject = localObject;
-                if (localHamletCheck.locationtype == 1) {
-                  paramObject = null;
-                }
-              }
-              if ((!"99".equals(String.valueOf(i))) || (paramInt > 0)) {
-                localChatBackgroundManager.a(i, paramInt, paramObject, "chatbgAuth", ChatBackgroundAuth.a(localHamletCheck.locationtype));
-              }
-            }
-          }
-        }
-      }
+      QLog.e("ApolloSurfaceView", 1, "[ApolloConfigChooser], fail to set config");
+      return null;
     }
-    QLog.e("QQInitHandler", 1, "onResponse: ret:" + paramObject.ret + " errmsg:" + paramObject.errmsg);
+    return arrayOfEGLConfig[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akld
  * JD-Core Version:    0.7.0.1
  */

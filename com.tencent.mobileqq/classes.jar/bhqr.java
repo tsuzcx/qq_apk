@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.video.QzoneWeishiFeedsGpuProxyActivity;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public class bhqr
+public abstract interface bhqr
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
-  {
-    return QzoneWeishiFeedsGpuProxyActivity.class;
-  }
+  public abstract void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  
+  public abstract void onNothingSelected(AdapterView<?> paramAdapterView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhqr
  * JD-Core Version:    0.7.0.1
  */

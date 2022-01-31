@@ -2,18 +2,18 @@ package com.tencent.mobileqq.contactsync;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import anem;
+import aovt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.locks.Lock;
 
 public class ContactSyncManager$5
   implements Runnable
 {
-  public ContactSyncManager$5(anem paramanem, Account[] paramArrayOfAccount) {}
+  public ContactSyncManager$5(aovt paramaovt, Account[] paramArrayOfAccount) {}
   
   public void run()
   {
-    anem.a(this.this$0).lock();
+    aovt.a(this.this$0).lock();
     int i = 1;
     try
     {
@@ -22,20 +22,20 @@ public class ContactSyncManager$5
         if (QLog.isColorLevel()) {
           QLog.d("ContactSync.Manager", 2, "initSyncAccount | delAccount = " + this.a[i]);
         }
-        anem.a(this.this$0).removeAccount(this.a[i], null, null);
+        aovt.a(this.this$0).removeAccount(this.a[i], null, null);
         i += 1;
       }
       return;
     }
     catch (Throwable localThrowable) {}finally
     {
-      anem.a(this.this$0).unlock();
+      aovt.a(this.this$0).unlock();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.contactsync.ContactSyncManager.5
  * JD-Core Version:    0.7.0.1
  */

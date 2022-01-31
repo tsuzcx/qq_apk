@@ -1,40 +1,93 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Intent;
+import android.os.Bundle;
+import java.util.Iterator;
+import java.util.Set;
 
 public class vuw
+  extends vox
 {
-  public final int a;
-  public final String a;
-  public final boolean a;
-  public final String b;
-  public final String c;
-  public final String d;
+  public vuw(vuu paramvuu) {}
   
-  public vuw(qqstory_struct.CompInfoBase paramCompInfoBase)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramCompInfoBase.title.get();
-    this.b = paramCompInfoBase.backgroud_url.get();
-    this.c = paramCompInfoBase.compared_vid.get();
-    if (paramCompInfoBase.is_compared_able.get() == 1) {}
-    for (;;)
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.d = paramCompInfoBase.icon_url.get();
-      this.jdField_a_of_type_Int = paramCompInfoBase.oa_task_id.get();
-      return;
-      bool = false;
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((vno)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
+      }
     }
   }
   
-  public String toString()
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    return "CompInfoBase{title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", linkUrl='" + this.b + '\'' + ", comparedVid='" + this.c + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.d + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((vno)localIterator.next()).a(paramBundle1, paramBundle2);
+      }
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((vno)localIterator.next()).c();
+      }
+    }
+  }
+  
+  public void d()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((vno)localIterator.next()).d();
+      }
+    }
+  }
+  
+  public void e()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((vno)localIterator.next()).e();
+      }
+    }
+  }
+  
+  public void f()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((vno)localIterator.next()).f();
+      }
+    }
+  }
+  
+  public void g()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((vno)localIterator.next()).g();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vuw
  * JD-Core Version:    0.7.0.1
  */

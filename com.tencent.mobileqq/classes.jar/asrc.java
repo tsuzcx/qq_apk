@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class asrc
-  implements asqy
+  implements View.OnClickListener
 {
-  public asrc(TabPageIndicator paramTabPageIndicator) {}
+  public asrc(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void onClick(View paramView)
   {
-    TabPageIndicator.a(this.a);
-    return false;
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.a(3, paramView);
+    QLog.d("HotVideoRelativeLayout", 2, "click mute view");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asrc
  * JD-Core Version:    0.7.0.1
  */

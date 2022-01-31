@@ -1,25 +1,25 @@
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
+import android.view.View.OnClickListener;
+import java.util.Calendar;
 
 class bcov
-  implements View.OnKeyListener
+  implements View.OnClickListener
 {
-  bcov(bcou parambcou) {}
+  bcov(bcot parambcot, bcox parambcox) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4)
-    {
-      bcou.a(this.a);
-      return true;
+    if ((bcot.a(this.jdField_a_of_type_Bcot) != null) && (bcot.a(this.jdField_a_of_type_Bcot).isShowing())) {
+      bcot.a(this.jdField_a_of_type_Bcot).dismiss();
     }
-    return false;
+    if ((this.jdField_a_of_type_Bcox != null) && (bcot.a(this.jdField_a_of_type_Bcot) != null)) {
+      this.jdField_a_of_type_Bcox.a(bcot.a(this.jdField_a_of_type_Bcot).getTimeInMillis());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcov
  * JD-Core Version:    0.7.0.1
  */

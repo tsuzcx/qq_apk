@@ -1,75 +1,37 @@
-import android.widget.TextView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.QLog;
 
 public class awra
-  extends awsa
+  extends bhnr
 {
-  public awra(baxy parambaxy)
-  {
-    super(parambaxy);
-  }
+  public awra(ProfileHeaderView paramProfileHeaderView, LinearLayout paramLinearLayout, View paramView) {}
   
-  public void b(awoi paramawoi, awwr paramawwr)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.b(paramawoi, paramawwr);
-    TextView localTextView;
-    CharSequence localCharSequence;
-    if ((paramawoi instanceof awlx))
-    {
-      awlx localawlx = (awlx)paramawoi;
-      localTextView = ((awwn)paramawwr).e();
-      paramawoi = ((awwn)paramawwr).f();
-      paramawwr = ((awwn)paramawwr).g();
-      if (localTextView != null)
-      {
-        localCharSequence = localawlx.e();
-        if (localCharSequence != null) {
-          break label96;
-        }
-        localTextView.setText("");
-        if (paramawwr != null) {
-          paramawwr.setVisibility(8);
-        }
-      }
-      if (paramawoi != null)
-      {
-        paramawwr = localawlx.f();
-        if (paramawwr != null) {
-          break label115;
-        }
-        paramawoi.setText("");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView updateTips sideOutAnim onAnimationEnd");
     }
-    label96:
-    label115:
-    do
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
+    paramAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130772261);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Int < 4)
     {
-      do
-      {
-        return;
-        localTextView.setText(localCharSequence);
-        if (paramawwr == null) {
-          break;
-        }
-        paramawwr.setVisibility(0);
-        break;
-        paramawoi.setText(paramawwr);
-        return;
-      } while (!(paramawoi instanceof awlw));
-      paramawoi = (awlw)paramawoi;
-      paramawwr = ((awwn)paramawwr).h();
-    } while (paramawwr == null);
-    paramawoi = paramawoi.e();
-    if (paramawoi == null)
-    {
-      paramawwr.setText("");
-      return;
+      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView;
+      paramAnimation.jdField_a_of_type_Int += 1;
+      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Bhoe.obtainMessage(ProfileHeaderView.b);
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Bhoe.sendMessageDelayed(paramAnimation, 4000L);
     }
-    paramawwr.setText(paramawoi);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awra
  * JD-Core Version:    0.7.0.1
  */

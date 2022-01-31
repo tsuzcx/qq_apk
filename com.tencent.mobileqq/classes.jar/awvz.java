@@ -1,63 +1,59 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.GroupIconHelper;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class awvz
+  extends almw
 {
-  private static int jdField_a_of_type_Int;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public awvz(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public static int a(int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if (localInteger == null) {
-      return 0;
-    }
-    return localInteger.intValue();
-  }
-  
-  public static String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      jdField_a_of_type_JavaLangString = "";
-      jdField_a_of_type_Int = 0;
-      jdField_a_of_type_JavaUtilMap.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.a(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000)) {
+      this.a.a(QCallDetailActivity.a(this.a));
     }
   }
   
-  public static void a(int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    switch (paramInt)
-    {
+    if ((QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
+      this.a.a(paramString);
     }
-    for (;;)
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCallDetailActivity", 2, " === onUpdateDiscussionFaceIcon isSuccess | " + paramBoolean1 + ", disUin | " + paramString + ",isComplete | " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
     {
-      return;
-      try
-      {
-        jdField_a_of_type_Int += 1;
-        jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaLangString + paramInt + "|";
-        jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(jdField_a_of_type_Int));
+      String str = paramString;
+      if (GroupIconHelper.a(paramString)) {
+        str = GroupIconHelper.b(paramString);
       }
-      finally {}
+      if (QCallDetailActivity.a(this.a).equals(str))
+      {
+        this.a.a(QCallDetailActivity.a(this.a));
+        if (QLog.isColorLevel()) {
+          QLog.i("QCallDetailActivity", 2, "==== onUpdateDiscussionFaceIcon updateUin ===");
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.a(this.a))) && (QCallDetailActivity.a(this.a).equals(paramString)) && (!this.a.isFinishing())) {
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awvz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,45 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-class axyz
-  implements View.OnClickListener
+public class axyz
+  implements TextWatcher
 {
-  axyz(axyy paramaxyy) {}
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
   
-  public void onClick(View paramView)
+  public axyz(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (TextUtils.isEmpty(this.a.W)) {
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (baiy.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 50))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 1, 2131690363, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
+    }
+    if ((paramEditable == null) || (paramEditable.length() == 0))
+    {
+      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
       return;
     }
-    for (;;)
-    {
-      String str;
-      try
-      {
-        str = aytd.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.V);
-        if (TextUtils.isEmpty(str))
-        {
-          this.a.a();
-          this.a.a(this.a.W, paramView);
-          axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.W, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.U, this.a.V);
-          return;
-        }
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-      if (new File(str).exists())
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          this.a.d();
-        } else {
-          this.a.c();
-        }
-      }
-      else
-      {
-        this.a.a();
-        this.a.a(this.a.W, paramView);
-      }
-    }
+    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axyz
  * JD-Core Version:    0.7.0.1
  */

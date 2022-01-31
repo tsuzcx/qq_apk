@@ -1,11 +1,48 @@
-final class lci
-  implements bbmv
+import com.tencent.qphone.base.util.QLog;
+import java.net.Socket;
+import java.security.KeyStore;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+
+public class lci
+  extends org.apache.http.conn.ssl.SSLSocketFactory
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  private SSLContext a = SSLContext.getInstance("TLS");
+  
+  public lci(KeyStore paramKeyStore)
+  {
+    super(paramKeyStore);
+    try
+    {
+      paramKeyStore = new lck();
+      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
+      return;
+    }
+    catch (Exception paramKeyStore)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Translator", 2, "[cancel] cancel task" + paramKeyStore);
+        }
+        paramKeyStore = null;
+      }
+    }
+  }
+  
+  public Socket createSocket()
+  {
+    return this.a.getSocketFactory().createSocket();
+  }
+  
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  {
+    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lci
  * JD-Core Version:    0.7.0.1
  */

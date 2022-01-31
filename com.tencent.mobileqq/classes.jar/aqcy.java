@@ -1,403 +1,217 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
-import com.tencent.mobileqq.mini.share.opensdk.OpenSdkShareModel;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.List<Ltencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.BatchSendRsp;>;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xb77.oidb_cmd0xb77.ImageInfo;
-import tencent.im.oidb.cmd0xb77.oidb_cmd0xb77.ReqBody;
-import tencent.im.oidb.cmd0xb77.oidb_cmd0xb77.RspBody;
-import tencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.BatchSendReq;
-import tencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.BatchSendRsp;
-import tencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.ReqBody;
+import java.io.File;
 
 public class aqcy
-  implements Handler.Callback
 {
-  private static String jdField_a_of_type_JavaLangString = "ForwardMultServerShare";
-  private long jdField_a_of_type_Long = -1L;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private aqbz jdField_a_of_type_Aqbz;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private OpenSdkShareModel jdField_a_of_type_ComTencentMobileqqMiniShareOpensdkOpenSdkShareModel;
-  private AbsShareMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
-  private List<ResultRecord> jdField_a_of_type_JavaUtilList;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bfnk(Looper.getMainLooper(), this);
-  private boolean jdField_a_of_type_Boolean;
+  public static final String[] a = { "expand_feed_bg1.png", "expand_feed_bg2.png", "expand_feed_bg3.png", "expand_feed_bg4.png", "expand_voice_logo1.png", "expand_voice_logo2.png", "expand_voice_logo3.png", "expand_voice_logo4.png", "expand_square_blank.png", "expand_voice_animation.json", "expand_summary_bg.png", "expand_summary_default_bg.png", "expand_guide_wording.png", "expand_guide_profile.png", "expand_guide_switch.png", "expand_summary_bg1.png", "expand_summary_bg2.png", "expand_summary_bg3.png", "expand_summary_bg4.png" };
+  public static final String[] b = { "expand_summary_bg1.png", "expand_summary_bg2.png", "expand_summary_bg3.png", "expand_summary_bg4.png" };
+  public static final String[] c = { "expand_feed_bg1.png", "expand_feed_bg2.png", "expand_feed_bg3.png", "expand_feed_bg4.png" };
+  public static final String[] d = { "expand_voice_logo1.png", "expand_voice_logo2.png", "expand_voice_logo3.png", "expand_voice_logo4.png" };
   
-  aqcy(Bundle paramBundle)
+  /* Error */
+  public static android.graphics.Bitmap a(String paramString, android.graphics.BitmapFactory.Options paramOptions)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_ComTencentMobileqqMiniShareOpensdkOpenSdkShareModel = ((OpenSdkShareModel)paramBundle.getParcelable("KEY_MINI_PROGRAM_SHARE_OBJ"));
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aload 4
+    //   5: astore_2
+    //   6: aload_0
+    //   7: invokestatic 71	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   10: ifne +58 -> 68
+    //   13: new 73	java/io/File
+    //   16: dup
+    //   17: aload_0
+    //   18: invokespecial 77	java/io/File:<init>	(Ljava/lang/String;)V
+    //   21: astore_2
+    //   22: aload_2
+    //   23: invokevirtual 81	java/io/File:exists	()Z
+    //   26: ifeq +139 -> 165
+    //   29: new 83	java/io/BufferedInputStream
+    //   32: dup
+    //   33: new 85	java/io/FileInputStream
+    //   36: dup
+    //   37: aload_2
+    //   38: invokespecial 88	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   41: invokespecial 91	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   44: astore_3
+    //   45: aload_3
+    //   46: astore_2
+    //   47: aload_3
+    //   48: aconst_null
+    //   49: aload_1
+    //   50: invokestatic 97	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   53: astore_1
+    //   54: aload_1
+    //   55: astore_0
+    //   56: aload_0
+    //   57: astore_2
+    //   58: aload_3
+    //   59: ifnull +9 -> 68
+    //   62: aload_3
+    //   63: invokevirtual 102	java/io/InputStream:close	()V
+    //   66: aload_0
+    //   67: astore_2
+    //   68: aload_2
+    //   69: areturn
+    //   70: astore_1
+    //   71: aconst_null
+    //   72: astore_3
+    //   73: aload_3
+    //   74: astore_2
+    //   75: ldc 104
+    //   77: iconst_1
+    //   78: ldc 106
+    //   80: iconst_1
+    //   81: anewarray 4	java/lang/Object
+    //   84: dup
+    //   85: iconst_0
+    //   86: aload_0
+    //   87: aastore
+    //   88: invokestatic 110	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   91: aload_1
+    //   92: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   95: aload 4
+    //   97: astore_2
+    //   98: aload_3
+    //   99: ifnull -31 -> 68
+    //   102: aload_3
+    //   103: invokevirtual 102	java/io/InputStream:close	()V
+    //   106: aconst_null
+    //   107: areturn
+    //   108: astore_0
+    //   109: aconst_null
+    //   110: areturn
+    //   111: astore_1
+    //   112: aconst_null
+    //   113: astore_3
+    //   114: aload_3
+    //   115: astore_2
+    //   116: ldc 104
+    //   118: iconst_1
+    //   119: ldc 106
+    //   121: iconst_1
+    //   122: anewarray 4	java/lang/Object
+    //   125: dup
+    //   126: iconst_0
+    //   127: aload_0
+    //   128: aastore
+    //   129: invokestatic 110	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   132: aload_1
+    //   133: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   136: aload 4
+    //   138: astore_2
+    //   139: aload_3
+    //   140: ifnull -72 -> 68
+    //   143: aload_3
+    //   144: invokevirtual 102	java/io/InputStream:close	()V
+    //   147: aconst_null
+    //   148: areturn
+    //   149: astore_0
+    //   150: aconst_null
+    //   151: areturn
+    //   152: astore_0
+    //   153: aconst_null
+    //   154: astore_2
+    //   155: aload_2
+    //   156: ifnull +7 -> 163
+    //   159: aload_2
+    //   160: invokevirtual 102	java/io/InputStream:close	()V
+    //   163: aload_0
+    //   164: athrow
+    //   165: ldc 104
+    //   167: iconst_1
+    //   168: ldc 117
+    //   170: iconst_1
+    //   171: anewarray 4	java/lang/Object
+    //   174: dup
+    //   175: iconst_0
+    //   176: aload_0
+    //   177: aastore
+    //   178: invokestatic 110	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   181: invokestatic 120	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   184: aconst_null
+    //   185: areturn
+    //   186: astore_1
+    //   187: aload_0
+    //   188: areturn
+    //   189: astore_1
+    //   190: goto -27 -> 163
+    //   193: astore_0
+    //   194: goto -39 -> 155
+    //   197: astore_1
+    //   198: goto -84 -> 114
+    //   201: astore_1
+    //   202: goto -129 -> 73
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	205	0	paramString	String
+    //   0	205	1	paramOptions	android.graphics.BitmapFactory.Options
+    //   5	155	2	localObject1	Object
+    //   44	100	3	localBufferedInputStream	java.io.BufferedInputStream
+    //   1	136	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   29	45	70	java/lang/Exception
+    //   102	106	108	java/lang/Exception
+    //   29	45	111	java/lang/OutOfMemoryError
+    //   143	147	149	java/lang/Exception
+    //   29	45	152	finally
+    //   62	66	186	java/lang/Exception
+    //   159	163	189	java/lang/Exception
+    //   47	54	193	finally
+    //   75	95	193	finally
+    //   116	136	193	finally
+    //   47	54	197	java/lang/OutOfMemoryError
+    //   47	54	201	java/lang/Exception
   }
   
-  private ResultRecord a(long paramLong)
+  public static String a(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    return String.format("%s/%s", new Object[] { apxd.a(), paramString });
+  }
+  
+  public static boolean a()
+  {
+    return a(a(a));
+  }
+  
+  public static boolean a(String[] paramArrayOfString)
+  {
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-      if (Long.toString(paramLong).equals(localResultRecord.jdField_a_of_type_JavaLangString)) {
-        return localResultRecord;
-      }
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "recvUin not found");
-    return null;
-  }
-  
-  private oidb_cmd0xb77.ImageInfo a(auor paramauor)
-  {
-    if (paramauor == null) {
-      return null;
-    }
-    if (!(paramauor.a instanceof int[])) {
-      return null;
-    }
-    int[] arrayOfInt = (int[])paramauor.a;
-    if (arrayOfInt.length != 5) {
-      return null;
-    }
-    oidb_cmd0xb77.ImageInfo localImageInfo = new oidb_cmd0xb77.ImageInfo();
-    localImageInfo.md5.set(paramauor.d);
-    localImageInfo.uuid.set(paramauor.c);
-    localImageInfo.file_size.set(arrayOfInt[0]);
-    localImageInfo.img_type.set(arrayOfInt[1]);
-    localImageInfo.width.set(arrayOfInt[2]);
-    localImageInfo.height.set(arrayOfInt[3]);
-    localImageInfo.original.set(arrayOfInt[4]);
-    localImageInfo.file_id.set((int)paramauor.b);
-    return localImageInfo;
-  }
-  
-  private oidb_cmd0xdc2.ReqBody a(String paramString1, String paramString2, Map<ResultRecord, auor> paramMap)
-  {
-    oidb_cmd0xdc2.ReqBody localReqBody = new oidb_cmd0xdc2.ReqBody();
-    localReqBody.msg_body.set(aqfv.a(this.jdField_a_of_type_AndroidOsBundle, paramString1, paramString2, null));
-    paramString1 = new ArrayList();
-    paramString2 = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (paramString2.hasNext())
-    {
-      ResultRecord localResultRecord = (ResultRecord)paramString2.next();
-      oidb_cmd0xdc2.BatchSendReq localBatchSendReq = new oidb_cmd0xdc2.BatchSendReq();
-      localBatchSendReq.recv_uin.set(ForwardUtils.a(localResultRecord.jdField_a_of_type_JavaLangString));
-      if (localResultRecord.b == 0) {
-        localBatchSendReq.send_type.set(0);
-      }
-      for (;;)
+      String str = paramArrayOfString[i];
+      if (!new File(str).exists())
       {
-        a(paramMap, localResultRecord, localBatchSendReq);
-        paramString1.add(localBatchSendReq);
-        break;
-        if (localResultRecord.b == 1) {
-          localBatchSendReq.send_type.set(1);
-        } else if (localResultRecord.b == 3000) {
-          localBatchSendReq.send_type.set(2);
-        }
+        QLog.e("ExtendFriendResourceUtil", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { str }));
+        return false;
       }
+      i += 1;
     }
-    localReqBody.batch_send_req.set(paramString1);
-    return localReqBody;
+    return true;
   }
   
-  private void a()
+  public static String[] a(String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(93), 500L);
-    if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg instanceof StructMsgForImageShare))
+    String[] arrayOfString = null;
+    if (paramArrayOfString != null)
     {
-      d();
-      return;
-    }
-    b();
-  }
-  
-  private void a(Intent paramIntent, List<oidb_cmd0xdc2.BatchSendRsp> paramList)
-  {
-    paramIntent.putExtra("sdk_mult_share_total_count", paramList.size());
-    if (paramList.size() == 1)
-    {
-      localObject1 = (oidb_cmd0xdc2.BatchSendRsp)paramList.get(0);
-      if (((oidb_cmd0xdc2.BatchSendRsp)localObject1).err_code.get() == 901503)
+      arrayOfString = new String[paramArrayOfString.length];
+      int i = 0;
+      while (i < paramArrayOfString.length)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "buildResult SHARE_ERROR_NOT_FRIEND");
-        }
-        paramIntent.putExtra("sdk_mult_share_result_code", 901503);
-        localObject1 = ((oidb_cmd0xdc2.BatchSendRsp)localObject1).rsp_body.wording.get();
-        paramList = (List<oidb_cmd0xdc2.BatchSendRsp>)localObject1;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          paramList = aqfv.jdField_a_of_type_JavaLangString;
-        }
-        paramIntent.putExtra("sdk_mult_share_error_wording", paramList);
-        return;
+        arrayOfString[i] = a(paramArrayOfString[i]);
+        i += 1;
       }
     }
-    Object localObject1 = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject2 = (oidb_cmd0xdc2.BatchSendRsp)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "rsp.recv_uin=", ((oidb_cmd0xdc2.BatchSendRsp)localObject2).recv_uin, ", rsp.err_msg=", ((oidb_cmd0xdc2.BatchSendRsp)localObject2).err_msg, ", rsp.err_code=", ((oidb_cmd0xdc2.BatchSendRsp)localObject2).err_code });
-      }
-      if (((oidb_cmd0xdc2.BatchSendRsp)localObject2).err_code.get() != 0)
-      {
-        localObject2 = a(((oidb_cmd0xdc2.BatchSendRsp)localObject2).recv_uin.get());
-        if (localObject2 != null) {
-          ((ArrayList)localObject1).add(localObject2);
-        }
-      }
-    }
-    if (((ArrayList)localObject1).isEmpty())
-    {
-      paramIntent.putExtra("sdk_mult_share_result_code", 0);
-      return;
-    }
-    if (((ArrayList)localObject1).size() == this.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramIntent.putExtra("sdk_mult_share_result_code", 2);
-      return;
-    }
-    paramIntent.putExtra("sdk_mult_share_result_code", 1);
-    paramIntent.putParcelableArrayListExtra("sdk_mult_share_fail_record", (ArrayList)localObject1);
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    paramString1 = a(paramString1, paramString2, null);
-    aqfv.a(this.jdField_a_of_type_ComTencentMobileqqMiniShareOpensdkOpenSdkShareModel, this.jdField_a_of_type_AndroidOsBundle, paramString1.msg_body);
-    paramString2 = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramString2 == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "notifyNormalSendMessage send runtime = null");
-      c();
-      return;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("0xdc2_9_sendTime", this.jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "notifyNormalSendMessage sendOIDBRequest");
-    }
-    aqgj.a("KEY_STAGE_2_NORMAL_DC2");
-    mxf.a(paramString2, new aqdc(this), paramString1.toByteArray(), "OidbSvc.0xdc2_9", 3522, 9, localBundle, 0L);
-  }
-  
-  private void a(Map<ResultRecord, auor> paramMap)
-  {
-    paramMap = a(null, null, paramMap);
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "notifyImageSendMessage runtime = null ");
-      c();
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    localBundle.putLong("0xdc2_9_sendTime", this.jdField_a_of_type_Long);
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "notifyImageSendMessage OIDBRequest ");
-    aqgj.a("KEY_STAGE_2_IMAGE_DC2");
-    mxf.a(localAppRuntime, new aqdb(this), paramMap.toByteArray(), "OidbSvc.0xdc2_9", 3522, 9, localBundle, 0L);
-  }
-  
-  private void a(Map<ResultRecord, auor> paramMap, ResultRecord paramResultRecord, oidb_cmd0xdc2.BatchSendReq paramBatchSendReq)
-  {
-    if (paramMap != null)
-    {
-      paramMap = a((auor)paramMap.get(paramResultRecord));
-      if (paramMap != null) {
-        paramBatchSendReq.image_info.set(paramMap);
-      }
-    }
-  }
-  
-  private void b()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "-->ForwardMultServerShare requestNormalShare");
-    WeakReference localWeakReference = new WeakReference(new aqcz(this));
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin");
-    aqgj.a("KEY_STAGE_2_SEND_MSG_BY_SERVER");
-    AbsShareMsg.sendSdkShareMessageByServer(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg, str1, i, str2, (auoq)localWeakReference.get());
-  }
-  
-  private void b(List<oidb_cmd0xdc2.BatchSendRsp> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onShareEnd");
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(94);
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(93);
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    localIntent.putExtra("k_from_login", true);
-    localIntent.putExtra("sdk_mult_share_app_name", this.jdField_a_of_type_AndroidOsBundle.getString("app_name"));
-    localIntent.putExtra("sdk_mult_share_source_app_id", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid);
-    localIntent.putExtra("sdk_mult_share_msg_service_id", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID);
-    localIntent.putExtra("sdk_mult_share", true);
-    a(localIntent, paramList);
-    if (this.jdField_a_of_type_AndroidOsBundle.getInt("forward_type", -1) == 11)
-    {
-      long l = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
-      ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle.getString("pkg_name"), localIntent, l);
-    }
-    if (!this.jdField_a_of_type_AndroidOsBundle.getBoolean("share_from_aio", false))
-    {
-      paramList = actj.a(localIntent, new int[] { 2 });
-      this.jdField_a_of_type_AndroidOsBundle.remove("share_from_aio");
-    }
-    for (;;)
-    {
-      paramList.putExtra("open_chatfragment", false);
-      paramList.putExtra("fragment_id", 1);
-      paramList.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramList);
-      this.jdField_a_of_type_Aqbz.b(this.jdField_a_of_type_AndroidAppActivity);
-      ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity);
-      return;
-      paramList = actj.a(localIntent, null);
-      paramList.putExtra("share_from_aio", true);
-    }
-  }
-  
-  private void c()
-  {
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "onError");
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(94);
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(93);
-    this.jdField_a_of_type_Aqbz.b(this.jdField_a_of_type_AndroidAppActivity);
-    ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, aqfv.jdField_a_of_type_JavaLangString);
-  }
-  
-  private void d()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "-->ForwardMultServerShare requestImageShare");
-    HashMap localHashMap = new HashMap();
-    aqgj.a("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ThreadManager.post(new ForwardMultServerShare.2(this, (ResultRecord)localIterator.next(), localHashMap), 8, null, false);
-    }
-  }
-  
-  private void e()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "reportException");
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ForwardUtils.a(localQQAppInterface, "0X800A739", new String[] { Integer.toString(i) });
-      return;
-    }
-  }
-  
-  void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Aqbz = new aqbz();
-  }
-  
-  void a(List<ResultRecord> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "null == multiTargetWithoutDataLine || multiTargetWithoutDataLine.isEmpty()");
-      e();
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mApp");
-      e();
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidOsBundle == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mExtraData");
-      e();
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidAppActivity == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mActivity");
-      e();
-      return;
-    }
-    paramList = axva.a(this.jdField_a_of_type_AndroidOsBundle);
-    if (!(paramList instanceof AbsShareMsg))
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error !(structMsg instanceof AbsShareMsg)");
-      e();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)paramList);
-    if (!bbfj.d(this.jdField_a_of_type_AndroidAppActivity))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "sendArkWithStruct no network");
-      ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, ajya.a(2131704802));
-      return;
-    }
-    a();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "MSG_SDK_SHARE_REQUEST_LOADING_STATUS");
-      this.jdField_a_of_type_Aqbz.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(94), 10000L);
-      continue;
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "MSG_SDK_SHARE_REQUEST_TIMEOUT_STATUS");
-      this.jdField_a_of_type_Boolean = true;
-      if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
-      {
-        this.jdField_a_of_type_Aqbz.b(this.jdField_a_of_type_AndroidAppActivity);
-        ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, ajya.a(2131704801));
-      }
-      else
-      {
-        e();
-      }
-    }
+    return arrayOfString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqcy
  * JD-Core Version:    0.7.0.1
  */

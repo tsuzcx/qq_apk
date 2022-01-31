@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
 
-class qtj
-  extends bfmx
+public class qtj
+  implements srx
 {
-  qtj(qth paramqth) {}
+  public qtj(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    this.a.a.s.setVisibility(8);
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qtj
  * JD-Core Version:    0.7.0.1
  */

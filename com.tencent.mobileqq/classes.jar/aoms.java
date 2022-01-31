@@ -1,364 +1,1108 @@
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Bundle;
-import android.os.Message;
-import android.text.Editable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDoingSomething;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.SPEventReportSwitch;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
 import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import mqq.app.AppRuntime;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class aoms
-  extends ajxj
 {
-  private int jdField_a_of_type_Int;
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new aomt(this);
-  DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new aomv(this);
-  private bbgu jdField_a_of_type_Bbgu;
-  DialogInterface.OnClickListener b = new aomu(this);
-  
-  public aoms(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  private void a()
+  private void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Int != 0))
+    QLog.d("KandianConfigServlet", 1, "[all]updateKandianTabConfigSwitch value : " + paramString);
+    long l1 = System.currentTimeMillis();
+    Boolean localBoolean = (Boolean)bjxj.a("local_kd_tab_has_set");
+    boolean bool3 = TextUtils.equals("1", paramString);
+    bjxj.a(paramQQAppInterface, "remote_kd_tab_switch", Boolean.valueOf(bool3));
+    boolean bool2;
+    if ((localBoolean != null) && (!localBoolean.booleanValue()))
     {
-      localObject1 = (Bundle)bbbz.a().a("SecWarningCfg", "AlertTitle", 147, this.jdField_a_of_type_Int);
-      if (localObject1 == null) {
-        break label483;
-      }
-    }
-    label203:
-    label223:
-    label483:
-    for (Object localObject1 = ((Bundle)localObject1).getString("AlertTitle");; localObject1 = null)
-    {
-      Object localObject2 = (Bundle)bbbz.a().a("SecWarningCfg", "AlertText", 147, this.jdField_a_of_type_Int);
-      if (localObject2 != null) {}
-      for (Object localObject3 = ((Bundle)localObject2).getString("AlertText");; localObject3 = null)
+      bool2 = bjxj.a(bool3);
+      bool1 = bool2;
+      if (bool2)
       {
-        localObject2 = (Bundle)bbbz.a().a("SecWarningCfg", "AlertLeftBtnText", 147, this.jdField_a_of_type_Int);
-        if (localObject2 != null) {}
-        for (localObject2 = ((Bundle)localObject2).getString("AlertLeftBtnText");; localObject2 = null)
+        bool1 = bool2;
+        if (!ors.d())
         {
-          Object localObject4 = (Bundle)bbbz.a().a("SecWarningCfg", "AlertRightBtnText", 147, this.jdField_a_of_type_Int);
-          if (localObject4 != null) {}
-          for (localObject4 = ((Bundle)localObject4).getString("AlertRightBtnText");; localObject4 = null)
+          bool1 = bool2;
+          if (!ors.k())
           {
-            Object localObject5 = localObject1;
-            int i;
-            if (localObject1 == null)
-            {
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity;
-              if (this.jdField_a_of_type_Int == 1)
-              {
-                i = 2131719128;
-                localObject5 = ((Face2FaceAddFriendActivity)localObject1).getString(i);
-              }
-            }
-            else
-            {
-              localObject1 = localObject3;
-              if (localObject3 == null)
-              {
-                if (this.jdField_a_of_type_Int != 1) {
-                  break label327;
-                }
-                localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getString(2131719129);
-              }
-              if (localObject2 != null) {
-                break label407;
-              }
-              if (this.jdField_a_of_type_Int != 1) {
-                break label393;
-              }
-              this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-              localObject3 = localObject2;
-              if (localObject4 != null) {
-                break label444;
-              }
-              if (this.jdField_a_of_type_Int != 1) {
-                break label431;
-              }
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getString(2131719123);
-            }
-            for (;;)
-            {
-              this.jdField_a_of_type_Bbgu.setTitle((String)localObject5);
-              this.jdField_a_of_type_Bbgu.setMessage((CharSequence)localObject1);
-              this.jdField_a_of_type_Bbgu.setNegativeButton((String)localObject3, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-              this.jdField_a_of_type_Bbgu.setPositiveButton((String)localObject2, this.b);
-              if ((this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null) || (this.b == null)) {
-                this.jdField_a_of_type_Bbgu.findViewById(2131363439).setVisibility(8);
-              }
-              return;
-              i = 2131719132;
-              break;
-              if (this.jdField_a_of_type_Int == 2)
-              {
-                localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getString(2131719127);
-                break label203;
-              }
-              if (this.jdField_a_of_type_Int == 3)
-              {
-                localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getString(2131719131);
-                break label203;
-              }
-              localObject1 = localObject3;
-              if (this.jdField_a_of_type_Int != 4) {
-                break label203;
-              }
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getString(2131719130);
-              break label203;
-              localObject3 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getString(2131719124);
-              break label223;
-              localObject3 = localObject2;
-              if (!TextUtils.isEmpty(((String)localObject2).trim())) {
-                break label223;
-              }
-              this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-              localObject3 = localObject2;
-              break label223;
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getString(2131719122);
-              continue;
-              if (TextUtils.isEmpty(((String)localObject4).trim())) {
-                this.b = null;
-              }
-              localObject2 = localObject4;
-            }
+            bjxj.c();
+            oxb.a().a(0, null);
           }
         }
       }
     }
-  }
-  
-  protected void onAddFriend(String paramString)
-  {
-    super.onAddFriend(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onAddFriend 进入好友列表" + paramString);
-    }
-    Object localObject = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-    ((Message)localObject).what = 2;
-    ((Message)localObject).arg1 = 2;
-    ((Message)localObject).obj = paramString;
-    Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage((Message)localObject);
-    Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 2, paramString);
-    localObject = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, paramString, 1);
-    if (localObject == null) {}
-    aonp localaonp;
-    do
+    for (boolean bool1 = bool2;; bool1 = false)
     {
+      long l2 = System.currentTimeMillis();
+      QLog.d("KandianConfigServlet", 1, "[all]updateKandianTabConfigSwitch tabSwitch = " + bool3 + ", write sp cost:" + (l2 - l1) + ", succ : " + bool1);
       return;
-      localaonp = ((Face2FaceFriendBubbleView)localObject).a();
-      if ((localaonp != null) && (this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))
-      {
-        String str = (String)this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if ((!TextUtils.isEmpty(str)) && (localaonp != null) && (localaonp.jdField_a_of_type_Int == 1))
-        {
-          ((aonr)localaonp).jdField_a_of_type_JavaLangString = str;
-          ((Face2FaceFriendBubbleView)localObject).a(str);
-        }
-      }
-    } while (!this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(localaonp));
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_Aomx.a(paramString);
-    paramString = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-    paramString.what = 11;
-    paramString.arg1 = 1;
-    Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessageDelayed(paramString, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a());
+      QLog.d("KandianConfigServlet", 1, "[all]updateKandianTabConfigSwitch user has set switch, give up !");
+    }
   }
   
-  protected void onGetAutoInfo(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  public void a(aogf[] paramArrayOfaogf)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f, paramString1)) {}
-    do
+    QQAppInterface localQQAppInterface;
+    Document localDocument;
+    Object localObject2;
+    label294:
+    label357:
+    int i;
+    int k;
+    label533:
+    Object localObject3;
+    for (;;)
     {
-      for (;;)
+      String str2;
+      String str1;
+      try
       {
-        return;
-        if (paramBoolean)
+        localQQAppInterface = (QQAppInterface)ors.a();
+        if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+          break label6364;
+        }
+        int j = 0;
+        if (j < paramArrayOfaogf.length)
         {
-          if (!this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1)) {
-            this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_AndroidWidgetEditText.setText(paramString2);
+          if (TextUtils.isEmpty(paramArrayOfaogf[j].a))
+          {
+            QLog.e("ReadinjoyCommonConfProcessor", 1, "receive empty config content, skip ! index : " + j);
+            j += 1;
+            continue;
           }
           try
           {
-            this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-            if (!this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_b_of_type_JavaUtilHashMap.containsKey(paramString1))
+            str2 = paramArrayOfaogf[j].a.trim();
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "receiveAllConfigs|type: 92,content: " + str2);
+            }
+            localDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(str2.getBytes("utf-8")));
+            Node localNode = localDocument.getElementsByTagName("configs").item(0).getFirstChild();
+            if (localNode == null) {
+              continue;
+            }
+            if (localNode.getFirstChild() != null)
             {
-              this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_l_of_type_Int = paramInt;
-              this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_l_of_type_Int));
-              this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_b_of_type_JavaUtilHashMap.put(paramString1, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_l_of_type_Int));
-              return;
+              localObject2 = localNode.getNodeName();
+              str1 = localNode.getFirstChild().getNodeValue();
+              if (!TextUtils.isEmpty(str1)) {}
+            }
+            else
+            {
+              localNode = localNode.getNextSibling();
+              continue;
+            }
+            if (!TextUtils.equals((CharSequence)localObject2, "smartcrop_pic")) {
+              break label294;
+            }
+            bjxj.c(localQQAppInterface, str1);
+            continue;
+            if (!QLog.isColorLevel()) {
+              continue;
             }
           }
-          catch (IndexOutOfBoundsException paramString2)
+          catch (Exception localException1) {}
+          QLog.d("ReadinjoyCommonConfProcessor", 2, "exception occurs", localException1);
+          continue;
+        }
+        return;
+      }
+      catch (Exception paramArrayOfaogf)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ReadinjoyCommonConfProcessor", 2, "received readinjoy cropandgroup config error,cmd : 92" + paramArrayOfaogf.toString());
+        }
+      }
+      if (TextUtils.equals((CharSequence)localObject2, "feeds_group"))
+      {
+        bjxj.a(localQQAppInterface, str1);
+      }
+      else if (TextUtils.equals((CharSequence)localObject2, "remind_only_wifi"))
+      {
+        bjxj.b(localQQAppInterface, str1);
+      }
+      else if (TextUtils.equals((CharSequence)localObject2, "kandian_individual_time_push"))
+      {
+        if (!TextUtils.equals(str1, "1")) {
+          break label6385;
+        }
+        bool = true;
+        bjxj.a(localQQAppInterface, bool);
+      }
+      else if (TextUtils.equals((CharSequence)localObject2, "push_switch"))
+      {
+        bjxj.d(localQQAppInterface, TextUtils.equals(str1, "1"));
+      }
+      else
+      {
+        bool = TextUtils.equals((CharSequence)localObject2, "sticky_times");
+        if (bool)
+        {
+          try
           {
-            for (;;)
+            i = Integer.valueOf(str1).intValue();
+            k = Integer.valueOf(localDocument.getElementsByTagName("effective_time").item(0).getFirstChild().getNodeValue()).intValue();
+            if ((i >= 0) && (k < 86400)) {
+              break label533;
+            }
+            throw new IllegalArgumentException("stickyTime or effectiveTime has error ! " + i + "," + k);
+          }
+          catch (Exception localException2)
+          {
+            localException2.printStackTrace();
+            QLog.d("ReadinjoyCommonConfProcessor", 2, "covert stickyTime and effectiveTime has error : " + localException2);
+          }
+          continue;
+          ((KandianMergeManager)localQQAppInterface.getManager(162)).a(i, k);
+        }
+        else
+        {
+          Object localObject1;
+          if (TextUtils.equals((CharSequence)localObject2, "socializeWebUrl"))
+          {
+            localObject1 = localException1.getFirstChild();
+            if (localObject1 != null)
+            {
+              if (((Node)localObject1).getNodeType() == 1)
+              {
+                localObject2 = ((Node)localObject1).getNodeName();
+                localObject3 = ((Node)localObject1).getFirstChild().getNodeValue();
+                if (!bjxj.a((String)localObject2)) {
+                  break label641;
+                }
+                bjxj.a(localQQAppInterface, (String)localObject2, (String)localObject3);
+              }
+              for (;;)
+              {
+                localObject1 = ((Node)localObject1).getNextSibling();
+                break;
+                label641:
+                QLog.d("ReadinjoyCommonConfProcessor", 1, "find unrecognized key:" + (String)localObject2 + " with value:" + (String)localObject3);
+              }
+            }
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "free_time_refresh_push"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "updateFreeTimeRefreshPush " + TextUtils.equals((CharSequence)localObject1, "1"));
+            }
+            bjxj.i(localQQAppInterface, TextUtils.equals((CharSequence)localObject1, "1"));
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandian_my_tab_page"))
+          {
+            bjxj.c(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandian_gallery_channel_bar_hidden"))
+          {
+            bjxj.x(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandian_gallery_channel_waterfall_bar_hidden"))
+          {
+            bjxj.y(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "tab_click_gap_in_seconds"))
+          {
+            SPEventReportSwitch.a(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "tab_click_count_limit"))
+          {
+            SPEventReportSwitch.b(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "tab_click_push_algo_id"))
+          {
+            SPEventReportSwitch.c(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "tab_click_forbid_report_time_in_seconds"))
+          {
+            SPEventReportSwitch.d(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "fore_ground_gap_in_seconds"))
+          {
+            SPEventReportSwitch.e(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "screen_switch_in_seconds"))
+          {
+            SPEventReportSwitch.f(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "user_idle_repor"))
+          {
+            SPEventReportSwitch.g(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandian_report_tt"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "kandian_report_tt = " + TextUtils.equals((CharSequence)localObject1, "1"));
+            }
+            if (TextUtils.equals((CharSequence)localObject1, "1")) {
+              bjxj.j(localQQAppInterface, true);
+            } else {
+              bjxj.j(localQQAppInterface, false);
+            }
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandian_report_user_apps_switch"))
+          {
+            localObject1 = Boolean.valueOf(TextUtils.equals((CharSequence)localObject1, "1"));
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "kandian_report_user_apps_switch: " + localObject1);
+            }
+            bjxj.a("kandian_report_user_apps_switch", localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "actKandianReportManyApps"))
+          {
+            ReadInJoyDoingSomething.a(localException1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandian_optimize_strategy"))
+          {
+            ork.a((String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "maintab_reddot_times"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "maintab_reddot_times = " + (String)localObject1);
+            }
+            bjxj.h(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "maintab_reddot_feeds"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "maintab_reddot_feeds = " + (String)localObject1);
+            }
+            bjxj.i(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "feedsbackWebUrl"))
+          {
+            bjxj.b(localQQAppInterface, (String)localObject2, (String)localObject1);
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "feedsbackWebUrl " + TextUtils.equals((CharSequence)localObject1, "1"));
+            }
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "feedsbackSwitch"))
+          {
+            bjxj.b(localQQAppInterface, (String)localObject2, (String)localObject1);
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "feedsbackSwitch " + TextUtils.equals((CharSequence)localObject1, "1"));
+            }
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "feedsbackName"))
+          {
+            bjxj.b(localQQAppInterface, (String)localObject2, (String)localObject1);
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "feedsbackName " + TextUtils.equals((CharSequence)localObject1, "1"));
+            }
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "biufeedsSwitch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "biufeedsSwitch = " + (String)localObject1);
+            }
+            bjxj.k(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "biufeedsName"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "biufeedsName = " + (String)localObject1);
+            }
+            bjxj.d(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "biufeedsWebUrl"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "biufeedsWebUrl = " + (String)localObject1);
+            }
+            bjxj.e(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "badgeNumber"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "badgeNumber = " + (String)localObject1);
+            }
+            bjxj.z(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "biu_word_count"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "biu_word_count = " + (String)localObject1);
+            }
+            bjxj.f(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "new_channel_style"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "new_channel_style = " + (String)localObject1);
+            }
+            bjxj.l(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "local_record_time"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_time = " + (String)localObject1);
+            }
+            bjxj.b(localQQAppInterface, Long.valueOf((String)localObject1).longValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "local_record_feeds"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_feeds = " + (String)localObject1);
+            }
+            bjxj.A(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "local_record_time_weishi"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_time_weishi = " + (String)localObject1);
+            }
+            bjxj.c(localQQAppInterface, Long.valueOf((String)localObject1).longValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "local_record_feeds_weishi"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_feeds_weishi = " + (String)localObject1);
+            }
+            bjxj.B(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandianWebPreLoadData"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "kandianWebPreLoadData = " + (String)localObject1);
+            }
+            if (TextUtils.equals((CharSequence)localObject1, "1")) {
+              bjxj.o(localQQAppInterface, true);
+            } else {
+              bjxj.o(localQQAppInterface, false);
+            }
+          }
+          else if ((TextUtils.equals((CharSequence)localObject2, "ExitAIO_Android_Uin")) && (localObject1 != null))
+          {
+            localObject1 = ((String)localObject1).split(":");
+            if (localObject1.length >= 2) {
+              bjxj.b(Integer.valueOf(localObject1[0]).intValue(), Integer.valueOf(localObject1[1]).intValue());
+            }
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandian_tab_switch"))
+          {
+            a(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandian_tab_type"))
+          {
+            bjxj.a(localQQAppInterface, "remote_kd_tab_type", localObject1);
+            localObject2 = bjxj.a("local_kd_tab_has_set");
+            if (!(localObject2 instanceof Boolean)) {
+              break label6379;
+            }
+            bool = ((Boolean)localObject2).booleanValue();
+            label2224:
+            if (!bool)
+            {
+              bjxj.a(localQQAppInterface, "local_kd_tab_type", localObject1);
+              QLog.d("ReadinjoyCommonConfProcessor", 1, new Object[] { "receiveKDTabTypeRemoteSP, userHasSetKDTab = ", Boolean.valueOf(bool), ", updateLocalTabSwitch tabType = ", localObject1 });
+            }
+            else
+            {
+              QLog.d("ReadinjoyCommonConfProcessor", 1, new Object[] { "receiveKDTabTypeRemoteSP, userHasSetKDTab = ", Boolean.valueOf(bool), ", no need to updateTabType." });
+            }
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "DiaobaodeKandian"))
+          {
+            bjxj.G(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "topic_card_jump"))
+          {
+            bjxj.a(localQQAppInterface, "kd_topic_recommend_card_jump_switch", Boolean.valueOf(((String)localObject1).equals("1")));
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "topic_card_jump_url"))
+          {
+            bjxj.a(localQQAppInterface, "kd_topic_recommend_card_jump_url", localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "comment_word_count"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "comment_word_count = " + (String)localObject1);
+            }
+            bjxj.g(localQQAppInterface, (String)localObject1);
+          }
+          else if ((TextUtils.equals((CharSequence)localObject2, "KW")) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+          {
+            localObject2 = new HashMap();
+            localObject1 = ((String)localObject1).split(",");
+            k = localObject1.length;
+            i = 0;
+            label2488:
+            if (i < k)
+            {
+              localObject3 = localObject1[i].split(":");
+              if (localObject3.length != 2) {
+                break label6391;
+              }
+              ((HashMap)localObject2).put(localObject3[1], localObject3[0]);
+              break label6391;
+            }
+            ors.a("kandian_aio_sp_word", localObject2, true);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "comment_gif_switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "comment_gif_switch = " + (String)localObject1);
+            }
+            bjxj.h(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "ugc_gif_switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "ugc_gif_switch = " + (String)localObject1);
+            }
+            bjxj.i(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "biu_at_switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "biu_at_switch = " + (String)localObject1);
+            }
+            bjxj.n(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "UGC_at_switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "UGC_at_switch = " + (String)localObject1);
+            }
+            bjxj.m(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "comment_at_switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "comment_at_switch = " + (String)localObject1);
+            }
+            bjxj.v(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "biu_profile_switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "biu_profile_switch = " + (String)localObject1);
+            }
+            bjxj.o(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "IconMerge_BiuMsg"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "IconMerge_BiuMsg = " + (String)localObject1);
+            }
+            bjxj.b(TextUtils.equals((CharSequence)localObject1, "1"));
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "IconMerge_InteractiveMsg"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "IconMerge_InteractiveMsg = " + (String)localObject1);
+            }
+            bjxj.c(TextUtils.equals((CharSequence)localObject1, "1"));
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "IconMerge_SubscribeMsg"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "IconMerge_InteractiveMsg = " + (String)localObject1);
+            }
+            bjxj.e((String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "nw_support"))
+          {
+            bjxj.p(localQQAppInterface, TextUtils.equals((CharSequence)localObject1, "1"));
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "nw_preload"))
+          {
+            bjxj.q(localQQAppInterface, TextUtils.equals((CharSequence)localObject1, "1"));
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "arkapp_enable_switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, new Object[] { "arkapp_enable_switch, value: ", localObject1 });
+            }
+            bjxj.b(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "exposure_strengthen"))
+          {
+            bjxj.r(localQQAppInterface, "1".equals(localObject1));
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "native_timeout"))
+          {
+            bjxj.H(localQQAppInterface, (String)localObject1);
+            QLog.d("ReadinjoyCommonConfProcessor", 2, "update native engine timeout config : " + (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "diandian_publish_switch_new"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "dian dian right button new config: " + (String)localObject1);
+            }
+            bjxj.p(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandian_publish_switch_new"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "kan dian right button new config: " + (String)localObject1);
+            }
+            bjxj.q(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "readinjoy_QA_square_autoTimeval"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_QA_square_autoTimeval: " + (String)localObject1);
+            }
+            bjxj.r(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "WXShareFromKandian_Switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "get wx share from readinjoy :" + (String)localObject1);
+            }
+            bjxj.s(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "proteus_enable"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "get proteus switch from config: " + (String)localObject1);
+            }
+            bjxj.d("1".equals(localObject1));
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "proteus_bid"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "get proteus offline bid from config: " + (String)localObject1);
+            }
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "proteus_native_article_bid"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "get proteus_native_article_bid: " + (String)localObject1);
+            }
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "zhitu"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "comment_zhitu_switch:" + (String)localObject1);
+            }
+            bjxj.j(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "comment_biu_switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "comment biu switch :" + (String)localObject1);
+            }
+            bjxj.t(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "native_comment_biu"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "native comment biu switch:" + (String)localObject1);
+            }
+            bjxj.u(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "readinjoy_short_video_width_height_ratio"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_short_video_width_height_ratio :" + (String)localObject1);
+            }
+            bjxj.b(localQQAppInterface, Float.valueOf((String)localObject1).floatValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "readinjoy_short_video_max_duration_limit"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_short_video_max_duration_limit :" + (String)localObject1);
+            }
+            bjxj.w(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "multi_video_ad_config"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "multi_video_ad_config :" + (String)localObject1);
+            }
+            bjxj.B(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "multi_video_interrupted_ad_config"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "multi_video_interrupted_ad_config: " + (String)localObject1);
+            }
+            bjxj.D(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "record_duration_count"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "record_duration_count :" + (String)localObject1);
+            }
+            bjxj.g(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "kandiansettings"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "kandiansettings :" + str2);
+            }
+            bjxj.C(localQQAppInterface, str2);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "ReadInJoy_Tab_Auto_Refresh_Time_Duration"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "ReadInJoy_Tab_Auto_Refresh_Time_Duration :" + (String)localObject1);
+            }
+            bjxj.I(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "ReadInJoy_Message_Auto_Refresh_Time_Duration"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "ReadInJoy_Message_Auto_Refresh_Time_Duration :" + (String)localObject1);
+            }
+            bjxj.J(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "is_show_weishi_entrance"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "should show weishi entrance : " + (String)localObject1);
+            }
+            bjxj.E(localQQAppInterface, Integer.valueOf((String)localObject1).intValue());
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "is_jump_to_video_content"))
+          {
+            QLog.d("ReadinjoyCommonConfProcessor", 2, "is_jump_to_video_content: " + (String)localObject1);
+            bjxj.K(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "multi_video_ecommerce_entrance_config"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "multi_video_shunt_bar_config: " + (String)localObject1);
+            }
+            bjxj.F(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "ReadInJoy_Fast_Web_Biu_Cnt_CLose_Switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "ReadInJoy_Fast_Web_Biu_Cnt_CLose_Switch: " + (String)localObject1);
+            }
+            bjxj.k(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "ReadInJoy_Red_Pnt_Push_Article_Preload_Switch"))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "ReadInJoy_Red_Pnt_Push_Article_Preload_Switch: " + (String)localObject1);
+            }
+            bjxj.l(localQQAppInterface, (String)localObject1);
+          }
+          else if (TextUtils.equals((CharSequence)localObject2, "video_switch"))
+          {
+            QLog.d("ReadinjoyCommonConfProcessor", 2, "video_switch: " + (String)localObject1);
+            try
+            {
+              if (Integer.valueOf((String)localObject1).intValue() != 0) {
+                break label6398;
+              }
+              bool = true;
+              label4507:
+              bjxj.a("sp_key_readinjoy_video_entrance_reddot_button_switch", Boolean.valueOf(bool));
+            }
+            catch (NumberFormatException localNumberFormatException1)
+            {
+              QLog.e("ReadinjoyCommonConfProcessor", 2, "handleReadInJoyCommonConfig: video_switch ", localNumberFormatException1);
+            }
+          }
+          else
+          {
+            bool = TextUtils.equals((CharSequence)localObject2, "video_type_color");
+            if (bool)
+            {
+              try
+              {
+                bjxj.a("sp_key_readinjoy_video_entrance_reddot_button_color", Integer.valueOf(Color.parseColor(localNumberFormatException1)));
+              }
+              catch (IllegalArgumentException localIllegalArgumentException)
+              {
+                QLog.e("ReadinjoyCommonConfProcessor", 2, "handleReadInJoyCommonConfig: video_type_color", localIllegalArgumentException);
+              }
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "play_time"))
+            {
+              bjxj.a("sp_key_readinjoy_video_entrance_reddot_expire_time_list", localIllegalArgumentException);
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "ReadInJoy_guanzhu_Auto_Refresh_Time_Duration"))
+            {
+              i = Integer.valueOf(localIllegalArgumentException).intValue();
+              bjxj.a("sp_key_kandian_subscribe_auto_refresh_config", Integer.valueOf(i));
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "update kandian subscribe auto refresh config : " + i);
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "sharp_pic_support_switch"))
+            {
+              bjxj.a("sp_native_web_sharpp_pic_switch", Boolean.valueOf("1".equals(localIllegalArgumentException)));
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "video_feeds_preload_switch"))
+            {
+              bjxj.l(localQQAppInterface, "1".equals(localIllegalArgumentException));
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "enable_preoutput_kandianvideo_first_frame"))
+            {
+              bjxj.f(localQQAppInterface, "1".equals(localIllegalArgumentException));
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "rij_discover_entrance_show"))
+            {
+              bjxj.A(localQQAppInterface, localIllegalArgumentException);
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "readinjoy_small_video_pack_ui_style"))
+            {
+              bjxj.z(localQQAppInterface, str2);
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "hot_comment_number"))
+            {
+              i = Integer.parseInt(localIllegalArgumentException);
+              bjxj.a(ojl.READINJOY_COMMENT_HOT_NUM, Integer.valueOf(i));
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "hot_comment_likes_number"))
+            {
+              i = Integer.parseInt(localIllegalArgumentException);
+              bjxj.a(ojl.READINJOY_COMMENT_HOT_COMMENT_LIKE_FILTER, Integer.valueOf(i));
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "weishi_with_channel_discovery_switch"))
             {
               if (QLog.isColorLevel()) {
-                QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetAutoInfo | IndexOutOfBoundsException");
+                QLog.d("ReadinjoyCommonConfProcessor", 2, "weishi_with_channel_discovery_switch: " + localIllegalArgumentException);
               }
+              bjxj.f(localIllegalArgumentException);
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "ugc_upload_lbs_switch"))
+            {
+              i = Integer.parseInt(localIllegalArgumentException);
+              bjxj.a(ojl.READINJOY_UGC_LBS, Integer.valueOf(i));
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "local_record_time_weishi_recommend"))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_time_weishi_recommend: " + localIllegalArgumentException);
+              }
+              bjxj.c(localIllegalArgumentException);
+            }
+            else if (TextUtils.equals((CharSequence)localObject2, "local_record_feeds_counts_weishi_recommend"))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("ReadinjoyCommonConfProcessor", 2, "local_record_feeds_counts_weishi_recommend: " + localIllegalArgumentException);
+              }
+              bjxj.d(localIllegalArgumentException);
+            }
+            else
+            {
+              if (!TextUtils.equals((CharSequence)localObject2, "kandian_aladdin_configuration_switch")) {
+                break;
+              }
+              if (QLog.isColorLevel()) {
+                QLog.d("ReadinjoyCommonConfProcessor", 2, "kandian_aladdin_configuration_switch: " + localIllegalArgumentException);
+              }
+              bjxj.a("should_request_aladdin_config", Boolean.valueOf(TextUtils.equals("1", localIllegalArgumentException)));
             }
           }
         }
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_b_of_type_JavaUtilHashMap.containsKey(paramString1));
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_l_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_l_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_b_of_type_JavaUtilHashMap.put(paramString1, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_l_of_type_Int));
-  }
-  
-  protected void onQueryUinSafetyFlag(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 147)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onQueryUinSafetyFlag isSuccess=" + paramBoolean + "status=" + paramInt2);
-      }
-      if ((!paramBoolean) || (paramInt2 == 0)) {
-        Face2FaceAddFriendActivity.e(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
-      }
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt2;
-    bbbz.a().a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app, "SecWarningCfg");
-    try
-    {
-      this.jdField_a_of_type_Bbgu = bbdj.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 230, "", "", this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b);
-      a();
-      this.jdField_a_of_type_Bbgu.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-      this.jdField_a_of_type_Bbgu.show();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    super.onUpdateAddFriend(paramBoolean1, paramBoolean2, paramBoolean3, paramString, paramBundle);
-    int i = paramBundle.getInt("friend_setting");
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onUpdateAddFriend请求加好友回调 isSuccess= " + paramBoolean1 + "addSuccess=" + paramBoolean2 + "reqestUin=" + paramString + "friendSetting" + i);
-    }
-    if (paramBoolean2)
-    {
-      paramString = paramBundle.getString("remark");
-      paramBundle = paramBundle.getString("uin");
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_JavaUtilHashMap.put(paramBundle, paramString);
-      if (i == 0)
-      {
-        paramString = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-        paramString.what = 2;
-        paramString.arg1 = 2;
-        paramString.obj = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f;
-        Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramString);
-        Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 2, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f);
-        return;
-      }
-      paramString = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-      paramString.what = 2;
-      paramString.arg1 = 4;
-      paramString.obj = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f;
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramString);
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 4, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f);
-      return;
-    }
-    paramBundle = paramBundle.getString("ErrorString");
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "add friend response error and ErroString = " + paramBundle);
-    }
-    paramString = paramBundle;
-    if (TextUtils.isEmpty(paramBundle)) {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getString(2131692269);
-    }
-    bcql.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
-  }
-  
-  protected void onUpdateAddFriendSetting(boolean paramBoolean, Bundle paramBundle)
-  {
-    String str1 = paramBundle.getString("uin");
-    int i = paramBundle.getInt("friend_setting");
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onUpdateAddFriendSetting请求加好友设置 isSuccess= " + paramBoolean + "friendSetting=" + i);
-    }
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app.a(1);
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    byte b1 = (byte)this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_l_of_type_Int;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f)) {}
-    do
-    {
-      return;
-      localFriendListHandler.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f, null, i, b1, "", 3021, 0, true, null, true, str2, "");
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "请求加好友" + this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f);
-      }
-    } while ((!this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f.equals(str1)) || (!paramBoolean));
-    paramBundle.getStringArrayList("user_question");
-    paramBundle.getBoolean("contact_bothway");
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "好友onUpdateCustomHead success = " + paramBoolean);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_l_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_b_of_type_Int == 1) {}
+    boolean bool = TextUtils.equals((CharSequence)localObject2, "publish_topic");
+    if (bool) {}
     for (;;)
     {
-      Face2FaceFriendBubbleView localFace2FaceFriendBubbleView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, paramString, i);
-      if (localFace2FaceFriendBubbleView == null) {
+      for (;;)
+      {
+        for (;;)
+        {
+          for (;;)
+          {
+            for (;;)
+            {
+              for (;;)
+              {
+                for (;;)
+                {
+                  for (;;)
+                  {
+                    for (;;)
+                    {
+                      try
+                      {
+                        if (Integer.valueOf(localIllegalArgumentException).intValue() != 1) {
+                          break label6404;
+                        }
+                        bool = true;
+                        bjxj.a("sp_key_create_topic_switch", Boolean.valueOf(bool));
+                      }
+                      catch (Exception localException10)
+                      {
+                        int m;
+                        continue;
+                      }
+                      if (!QLog.isColorLevel()) {
+                        break;
+                      }
+                      QLog.d("ReadinjoyCommonConfProcessor", 2, "publish_topic: " + localIllegalArgumentException);
+                      break;
+                      if (TextUtils.equals((CharSequence)localObject2, "coin_item_jump_url"))
+                      {
+                        bjxj.a("readinjoy_coin_item_jump_url", localIllegalArgumentException);
+                        if (!QLog.isColorLevel()) {
+                          break;
+                        }
+                        QLog.d("ReadinjoyCommonConfProcessor", 2, "coin_item_jump_url: " + localIllegalArgumentException);
+                        break;
+                      }
+                      if (TextUtils.equals((CharSequence)localObject2, "coin_item_wording"))
+                      {
+                        bjxj.a("readinjoy_coin_item_title", localIllegalArgumentException);
+                        if (!QLog.isColorLevel()) {
+                          break;
+                        }
+                        QLog.d("ReadinjoyCommonConfProcessor", 2, "coin_item_wording: " + localIllegalArgumentException);
+                        break;
+                      }
+                      if (TextUtils.equals((CharSequence)localObject2, "user_behavior_norm_switch"))
+                      {
+                        PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit().putString("qq_readinjoy_user_protocol_92_switch_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), localIllegalArgumentException).apply();
+                        if (!QLog.isColorLevel()) {
+                          break;
+                        }
+                        QLog.d("ReadinjoyCommonConfProcessor", 2, "user_behavior_norm_switch: " + localIllegalArgumentException);
+                        break;
+                      }
+                      if (TextUtils.equals((CharSequence)localObject2, "user_behavior_norm_jump_url"))
+                      {
+                        PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit().putString("qq_readinjoy_user_protocol_92_jump_url_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), localIllegalArgumentException).apply();
+                        if (!QLog.isColorLevel()) {
+                          break;
+                        }
+                        QLog.d("ReadinjoyCommonConfProcessor", 2, "user_behavior_norm_jump_url: " + localIllegalArgumentException);
+                        break;
+                      }
+                      if (!TextUtils.equals((CharSequence)localObject2, "awake_time")) {
+                        continue;
+                      }
+                      localObject2 = localDocument.getElementsByTagName("awake_position");
+                      if ((localObject2 == null) || (((NodeList)localObject2).item(0) == null) || (((NodeList)localObject2).item(0).getFirstChild() == null)) {
+                        break;
+                      }
+                      localObject2 = localDocument.getElementsByTagName("awake_switch");
+                      if ((localObject2 == null) || (((NodeList)localObject2).item(0) == null) || (((NodeList)localObject2).item(0).getFirstChild() == null)) {
+                        break;
+                      }
+                      localObject2 = localDocument.getElementsByTagName("awake_position").item(0).getFirstChild().getNodeValue();
+                      localObject3 = localDocument.getElementsByTagName("awake_switch").item(0).getFirstChild().getNodeValue();
+                      try
+                      {
+                        i = Integer.parseInt((String)localObject2);
+                        k = Integer.parseInt(localIllegalArgumentException);
+                        m = Integer.parseInt((String)localObject3);
+                        if ((k >= 0) && (k <= 86400) && (i >= 0) && (m >= 0) && (m <= 1)) {
+                          continue;
+                        }
+                        QLog.d("ReadinjoyCommonConfProcessor", 2, "sticky kandian subscribe config value is invalid");
+                      }
+                      catch (NumberFormatException localNumberFormatException2)
+                      {
+                        localNumberFormatException2.printStackTrace();
+                      }
+                    }
+                    break;
+                    ((KandianSubscribeManager)localQQAppInterface.getManager(280)).a(k, i, m);
+                    break;
+                    if (TextUtils.equals((CharSequence)localObject2, "kandian_feature_compute"))
+                    {
+                      bjxj.a("kandianreport_ON", Integer.valueOf(Integer.parseInt(localNumberFormatException2)));
+                      break;
+                    }
+                    if (!TextUtils.equals((CharSequence)localObject2, "kdad_exposure_report_threshold")) {
+                      continue;
+                    }
+                    if (QLog.isColorLevel()) {
+                      QLog.d("ReadinjoyCommonConfProcessor", 2, "kdad_exposure_report_threshold = " + localNumberFormatException2);
+                    }
+                    try
+                    {
+                      m = Integer.parseInt(localNumberFormatException2);
+                      i = oqu.e;
+                      k = i;
+                      if (m == 1)
+                      {
+                        k = i;
+                        if (((Element)localException1).hasAttribute("time"))
+                        {
+                          k = Integer.parseInt(((Element)localException1).getAttribute("time"));
+                          if (k <= 0) {
+                            break label6416;
+                          }
+                          i = k;
+                          break label6410;
+                        }
+                      }
+                      bjxj.F(localQQAppInterface, k);
+                    }
+                    catch (Exception localException3)
+                    {
+                      localException3.printStackTrace();
+                    }
+                  }
+                  break;
+                  if (TextUtils.equals((CharSequence)localObject2, "kandian_daily_fast_web_bottom_share"))
+                  {
+                    bjxj.a("kandian_daily_fast_web_bottom_share", localException3);
+                    break;
+                  }
+                  bool = TextUtils.equals((CharSequence)localObject2, "kandian_comment_limit_number");
+                  if (!bool) {
+                    continue;
+                  }
+                  try
+                  {
+                    bjxj.g(Integer.parseInt(localException3));
+                  }
+                  catch (Exception localException4)
+                  {
+                    localException4.printStackTrace();
+                  }
+                }
+                break;
+                bool = TextUtils.equals((CharSequence)localObject2, "title_label_number_of_lines");
+                if (!bool) {
+                  continue;
+                }
+                try
+                {
+                  bjxj.h(Integer.parseInt(localException4));
+                }
+                catch (Exception localException5)
+                {
+                  localException5.printStackTrace();
+                }
+              }
+              break;
+              bool = TextUtils.equals((CharSequence)localObject2, "is_play_comment_button_show");
+              if (!bool) {
+                continue;
+              }
+              try
+              {
+                bjxj.i(Integer.parseInt(localException5));
+              }
+              catch (Exception localException6)
+              {
+                localException6.printStackTrace();
+              }
+            }
+            break;
+            bool = TextUtils.equals((CharSequence)localObject2, "readinjoy_video_ff_probesize");
+            if (!bool) {
+              continue;
+            }
+            try
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_video_ff_probesize: " + localException6);
+              }
+              bjxj.a("readinjoy_video_ff_probesize", Long.valueOf(Long.parseLong(localException6)));
+            }
+            catch (Exception localException7)
+            {
+              localException7.printStackTrace();
+            }
+          }
+          break;
+          bool = TextUtils.equals((CharSequence)localObject2, "readinjoy_video_is_ff_probelist_switch");
+          if (!bool) {
+            continue;
+          }
+          try
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_video_is_ff_probelist_switch: " + localException7);
+            }
+            bjxj.a("readinjoy_video_is_ff_probelist_switch", Integer.valueOf(Integer.parseInt(localException7)));
+          }
+          catch (Exception localException8)
+          {
+            localException8.printStackTrace();
+          }
+        }
+        break;
+        bool = TextUtils.equals((CharSequence)localObject2, "readinjoy_video_is_download_async_io");
+        if (!bool) {
+          continue;
+        }
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ReadinjoyCommonConfProcessor", 2, "readinjoy_video_is_download_async_io: " + localException8);
+          }
+          bjxj.a("readinjoy_video_is_download_async_io", Integer.valueOf(Integer.parseInt(localException8)));
+        }
+        catch (Exception localException9)
+        {
+          localException9.printStackTrace();
+        }
+      }
+      break;
+      if (TextUtils.equals((CharSequence)localObject2, "kandian_daily_wrapper_alpha"))
+      {
+        bjxj.a("kandian_daily_wrapper_alpha", localException9);
         break;
       }
-      localFace2FaceFriendBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app, paramString, 1);
+      if (TextUtils.equals((CharSequence)localObject2, "kandian_daily_wrapper_default_text"))
+      {
+        bjxj.a("kandian_daily_wrapper_default_text", localException9);
+        break;
+      }
+      if (TextUtils.equals((CharSequence)localObject2, "kandian_daily_wrapper_drag_text"))
+      {
+        bjxj.a("kandian_daily_wrapper_drag_text", localException9);
+        break;
+      }
+      if (!TextUtils.equals((CharSequence)localObject2, "video_extract_frame")) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadinjoyCommonConfProcessor", 2, "video_extract_frame = " + localException9);
+      }
+      bjxj.a("kandian_video_extract_frame", localException9);
+      break;
+      label6364:
+      QLog.d("ReadinjoyCommonConfProcessor", 1, "receiveAllConfigs|type: 92,content_list is empty ");
       return;
-      i = 1;
+      label6379:
+      bool = false;
+      break label2224;
+      label6385:
+      bool = false;
+      break label357;
+      label6391:
+      i += 1;
+      break label2488;
+      label6398:
+      bool = false;
+      break label4507;
+      label6404:
+      bool = false;
     }
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    super.onUpdateDelFriend(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onUpdateDelFriend 删除好友");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.e.contains(String.valueOf(paramObject))) {
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.e.remove(String.valueOf(paramObject));
-    }
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "群onUpdateTroopHead success = " + paramBoolean);
-    }
-    Face2FaceFriendBubbleView localFace2FaceFriendBubbleView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, paramString, 2);
-    if (localFace2FaceFriendBubbleView != null) {
-      localFace2FaceFriendBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app, paramString, 2);
+    label6410:
+    label6416:
+    for (;;)
+    {
+      k = i;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoms
  * JD-Core Version:    0.7.0.1
  */

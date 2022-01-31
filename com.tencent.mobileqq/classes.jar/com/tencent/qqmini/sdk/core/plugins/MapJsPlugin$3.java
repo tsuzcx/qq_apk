@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import beky;
+import bgkd;
+import bgkj;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class MapJsPlugin$3
   implements AsyncResult
 {
-  MapJsPlugin$3(MapJsPlugin paramMapJsPlugin, beky parambeky, bekr parambekr) {}
+  MapJsPlugin$3(MapJsPlugin paramMapJsPlugin, bgkj parambgkj, bgkd parambgkd) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -22,7 +22,7 @@ class MapJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.MapJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

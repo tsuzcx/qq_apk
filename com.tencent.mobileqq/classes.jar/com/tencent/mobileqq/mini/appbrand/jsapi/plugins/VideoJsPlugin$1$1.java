@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.os.Bundle;
-import bhbb;
+import bjci;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.MobileQQ;
 
 class VideoJsPlugin$1$1
-  implements bhbb
+  implements bjci
 {
   VideoJsPlugin$1$1(VideoJsPlugin.1 param1) {}
   
@@ -36,7 +36,7 @@ class VideoJsPlugin$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.VideoJsPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

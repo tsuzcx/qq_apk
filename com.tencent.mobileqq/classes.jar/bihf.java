@@ -1,18 +1,10 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-
-public class bihf
-  implements bkwn
+public abstract interface bihf
 {
-  public bihf(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void a()
-  {
-    QIMEffectCameraCaptureUnit.d(this.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bihf
  * JD-Core Version:    0.7.0.1
  */

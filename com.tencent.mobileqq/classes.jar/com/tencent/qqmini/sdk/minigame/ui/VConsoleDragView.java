@@ -7,17 +7,18 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bexf;
-import bfgs;
-import bfho;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import bgvx;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.utils.LiuHaiUtils;
+import com.tencent.qqmini.sdk.utils.ViewUtils;
 
 public class VConsoleDragView
   extends ImageView
 {
   private int jdField_a_of_type_Int;
   private DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  private bexf jdField_a_of_type_Bexf;
+  private bgvx jdField_a_of_type_Bgvx;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -51,21 +52,21 @@ public class VConsoleDragView
   
   private void b()
   {
-    this.jdField_a_of_type_Int = bfho.a();
-    int n = bfho.b();
-    if (bfgs.a()) {}
-    for (int m = bfgs.a(getContext());; m = 0)
+    this.jdField_a_of_type_Int = ViewUtils.getScreenWidth();
+    int n = ViewUtils.getScreenHeight();
+    if (LiuHaiUtils.isLiuHaiUseValid()) {}
+    for (int m = LiuHaiUtils.getStatusBarHeight(getContext());; m = 0)
     {
       this.b = (m + n);
-      this.jdField_a_of_type_AndroidUtilDisplayMetrics = MiniAppEnv.g().getContext().getResources().getDisplayMetrics();
+      this.jdField_a_of_type_AndroidUtilDisplayMetrics = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics();
       return;
     }
   }
   
   public void a()
   {
-    int m = bfho.a();
-    int i1 = bfho.b();
+    int m = ViewUtils.getScreenWidth();
+    int i1 = ViewUtils.getScreenHeight();
     if (m > i1)
     {
       n = m;
@@ -75,11 +76,11 @@ public class VConsoleDragView
         n = i1;
       }
       this.b = n;
-      this.jdField_a_of_type_AndroidUtilDisplayMetrics = MiniAppEnv.g().getContext().getResources().getDisplayMetrics();
+      this.jdField_a_of_type_AndroidUtilDisplayMetrics = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics();
       return;
     }
-    if (bfgs.a()) {}
-    for (int n = bfgs.a(getContext());; n = 0)
+    if (LiuHaiUtils.isLiuHaiUseValid()) {}
+    for (int n = LiuHaiUtils.getStatusBarHeight(getContext());; n = 0)
     {
       n += i1;
       break;
@@ -148,21 +149,21 @@ public class VConsoleDragView
         }
       }
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bexf != null)) {
-      this.jdField_a_of_type_Bexf.d();
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bgvx != null)) {
+      this.jdField_a_of_type_Bgvx.d();
     }
     this.jdField_a_of_type_Boolean = false;
     return true;
   }
   
-  public void setListener(bexf parambexf)
+  public void setListener(bgvx parambgvx)
   {
-    this.jdField_a_of_type_Bexf = parambexf;
+    this.jdField_a_of_type_Bgvx = parambgvx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.ui.VConsoleDragView
  * JD-Core Version:    0.7.0.1
  */

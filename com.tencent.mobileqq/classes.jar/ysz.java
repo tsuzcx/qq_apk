@@ -1,19 +1,25 @@
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import tencent.gdt.qq_ad_get.QQAdGet;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.ui.RefreshView;
 
-public abstract class ysz
+public class ysz
+  extends Handler
 {
-  public GdtHandler.Params a;
-  public qq_ad_get.QQAdGet a;
+  public ysz(RefreshView paramRefreshView) {}
   
-  public boolean a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.a != null;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysz
  * JD-Core Version:    0.7.0.1
  */

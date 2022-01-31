@@ -61,7 +61,7 @@ public class TPPlayProxyListenerEmptyImpl
   
   public void onDownloadFinish() {}
   
-  public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
     TPLogUtil.i(this.tag, " empty proxy player listener , notify , onPlayProgress, current : " + paramLong1 + ", total : " + paramLong2);
   }
@@ -90,7 +90,7 @@ public class TPPlayProxyListenerEmptyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPlayProxyListenerEmptyImpl
  * JD-Core Version:    0.7.0.1
  */

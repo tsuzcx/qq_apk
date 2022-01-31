@@ -35,10 +35,12 @@ import com.tencent.viola.ui.dom.DomObjectPage;
 import com.tencent.viola.ui.dom.DomObjectSlider;
 import com.tencent.viola.ui.dom.DomObjectSmartHeader;
 import com.tencent.viola.ui.dom.DomObjectText;
+import com.tencent.viola.ui.dom.DomObjectVInstance;
 import com.tencent.viola.ui.dom.DomObjectWaterfallList;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
 import com.tencent.viola.utils.ViolaLogUtils;
 import com.tencent.viola.utils.ViolaUtils;
+import com.tencent.viola.vinstance.VInstanceManager;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
@@ -61,9 +63,12 @@ public class ViolaInstance
   public static long pageEnd;
   public static long pageStart = 0L;
   private boolean compatMode;
+  private String currentVInstanceId;
   private boolean enableLayerType = true;
   private boolean isDestroy;
+  private boolean isGlobalMode;
   private boolean isResume;
+  private WeakReference<Activity> mActivityReference;
   public long mApplyLayoutAndEventEnd = 0L;
   public long mApplyLayoutAndEventStart = 0L;
   public long mBindDataEnd = 0L;
@@ -97,6 +102,7 @@ public class ViolaInstance
   private boolean mMeasuredExactly = true;
   private NativeInvokeHelper mNativeInvokeHelper;
   public long mPageStartTime = 0L;
+  private boolean mPageVisiable = true;
   private ViolaRenderContainer mRenderContainer;
   public long mRenderJsStartTime = 0L;
   private boolean mRendered;
@@ -110,6 +116,12 @@ public class ViolaInstance
   {
     pageEnd = 0L;
     jsCreateInstanceStart = 0L;
+  }
+  
+  public ViolaInstance(Application paramApplication, String paramString)
+  {
+    this(paramApplication, null, null, null, 0L, paramString);
+    this.isGlobalMode = true;
   }
   
   public ViolaInstance(Application paramApplication, WeakReference paramWeakReference1, WeakReference paramWeakReference2, Object paramObject, long paramLong, String paramString)
@@ -209,6 +221,7 @@ public class ViolaInstance
     ViolaDomObjectManager.registerDomObj("slider", DomObjectSlider.class);
     ViolaDomObjectManager.registerDomObj("kdrefresh", DomObjectKdRefresh.class);
     ViolaDomObjectManager.registerDomObj("smart-header", DomObjectSmartHeader.class);
+    ViolaDomObjectManager.registerDomObj("instance", DomObjectVInstance.class);
     return true;
   }
   
@@ -304,6 +317,11 @@ public class ViolaInstance
         this.mFragmentReference.clear();
         this.mFragmentReference = null;
       }
+      if (this.mActivityReference != null)
+      {
+        this.mActivityReference.clear();
+        this.mActivityReference = null;
+      }
       this.mLifeCycleMap.clear();
       this.isDestroy = true;
       return;
@@ -321,6 +339,14 @@ public class ViolaInstance
     if (this.mFragmentReference != null) {
       return ((Fragment)this.mFragmentReference.get()).getActivity();
     }
+    return getBizActivity();
+  }
+  
+  public Activity getBizActivity()
+  {
+    if (this.mActivityReference != null) {
+      return (Activity)this.mActivityReference.get();
+    }
     return null;
   }
   
@@ -335,6 +361,9 @@ public class ViolaInstance
   
   public Context getContext()
   {
+    if (this.isGlobalMode) {
+      return VInstanceManager.getInstance().getCurrentContext(this.currentVInstanceId);
+    }
     if (this.mContextReference != null) {
       return (Context)this.mContextReference.get();
     }
@@ -491,6 +520,11 @@ public class ViolaInstance
   public boolean isLayerTypeEnabled()
   {
     return this.enableLayerType;
+  }
+  
+  public boolean isPageVisiable()
+  {
+    return this.mPageVisiable;
   }
   
   public boolean isReceiveOrder()
@@ -720,12 +754,14 @@ public class ViolaInstance
   
   public void onRootCreated(VComponentContainer paramVComponentContainer)
   {
+    ViolaLogUtils.e("ViolaInstance", "violaInstance onRootCreated start!");
     if (!this.isDestroy)
     {
+      ViolaLogUtils.e("ViolaInstance", "violaInstance pageEndMonitor postOnUiThread start!");
       ViolaSDKManager.getInstance().postOnUiThread(new ViolaInstance.1(this, paramVComponentContainer));
       return;
     }
-    ViolaLogUtils.d("ViolaInstance", "onRootCreated is destroy");
+    ViolaLogUtils.e("ViolaInstance", "onRootCreated is destroy");
   }
   
   public void pageEndMonitor()
@@ -806,10 +842,12 @@ public class ViolaInstance
     if ((this.mRendered) || (TextUtils.isEmpty(paramString1))) {
       return;
     }
+    ViolaLogUtils.e("ViolaInstance", "violaInstance render start!,jsUrl=" + this.mUrl);
     renderJsStartMonitor();
     jsCreateInstanceStart = System.currentTimeMillis();
     ensureRenderArchor();
     ViolaSDKManager.getInstance().createInstance(this, paramString1, null, paramString2);
+    ViolaLogUtils.e("ViolaInstance", "violaInstance render end!,jsUrl=" + this.mUrl);
   }
   
   public void renderJSSource(String paramString1, String paramString2, String paramString3)
@@ -817,12 +855,14 @@ public class ViolaInstance
     if ((this.mRendered) || (TextUtils.isEmpty(paramString1))) {
       return;
     }
+    ViolaLogUtils.e("ViolaInstance", "violaInstance renderJSSource start!,jsUrl=" + this.mUrl);
     renderJsStartMonitor();
     jsCreateInstanceStart = System.currentTimeMillis();
     this.mInitData = paramString2;
     this.mCreateBodyCache = paramString3;
     ensureRenderArchor();
     ViolaSDKManager.getInstance().createInstanceJSSource(this, paramString1, paramString3, paramString2);
+    ViolaLogUtils.e("ViolaInstance", "violaInstance renderJSSource end!,jsUrl=" + this.mUrl);
   }
   
   public void renderJsEndMonitor()
@@ -844,6 +884,16 @@ public class ViolaInstance
       localIReportDelegate.addReportData(ViolaEnvironment.KEY_RENDER_JS, ViolaEnvironment.JS_START);
     }
     this.mReportDataMap.put(ViolaEnvironment.KEY_RENDER_JS, ViolaEnvironment.JS_START);
+  }
+  
+  public void setBizActivity(Activity paramActivity)
+  {
+    this.mActivityReference = new WeakReference(paramActivity);
+  }
+  
+  public void setCurrentVInstanceId(String paramString)
+  {
+    this.currentVInstanceId = paramString;
   }
   
   public void setHttpReportData(long paramLong, int paramInt)
@@ -875,6 +925,11 @@ public class ViolaInstance
   public void setMaxDomDeep(int paramInt)
   {
     this.mMaxVDomDeepLayer = paramInt;
+  }
+  
+  public void setPageVisibility(boolean paramBoolean)
+  {
+    this.mPageVisiable = paramBoolean;
   }
   
   public void setRenderContainer(ViolaRenderContainer paramViolaRenderContainer)
@@ -976,7 +1031,7 @@ public class ViolaInstance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.core.ViolaInstance
  * JD-Core Version:    0.7.0.1
  */

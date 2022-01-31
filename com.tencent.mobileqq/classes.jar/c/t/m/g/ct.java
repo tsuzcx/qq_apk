@@ -1,81 +1,55 @@
 package c.t.m.g;
 
-import java.util.HashMap;
-
 public final class ct
 {
-  public static boolean a = false;
-  public static boolean b = false;
-  public static boolean c;
-  public static boolean d = false;
-  public static boolean e = true;
-  public static boolean f = false;
-  public static boolean g = false;
-  public static boolean h = false;
-  public static de i = de.a;
+  private static int[] a = { 0, 8, 10, 33, 65535, 50594049, 268435455, 2147483647 };
   
-  public static final int a(String paramString)
+  public static boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if ((paramString.startsWith("fc4")) || (paramString.startsWith("dc4"))) {
-      return 4;
+    if ((paramInt2 < 0) || (paramInt3 < 0) || (paramInt4 < 0) || (paramInt5 <= 0) || (paramInt2 == 535) || (paramInt3 == 535) || (paramInt4 == 65535) || (paramInt5 == 65535)) {}
+    label75:
+    label104:
+    label111:
+    label114:
+    for (;;)
+    {
+      return false;
+      paramInt2 = cp.a.a;
+      if (paramInt1 == 2)
+      {
+        paramInt1 = 1;
+        if (paramInt1 == 0)
+        {
+          if (paramInt4 == 25840) {
+            continue;
+          }
+          int[] arrayOfInt = a;
+          paramInt1 = 0;
+          if (paramInt1 >= arrayOfInt.length) {
+            break label111;
+          }
+          if (paramInt5 != arrayOfInt[paramInt1]) {
+            break label104;
+          }
+        }
+      }
+      for (paramInt1 = 1;; paramInt1 = 0)
+      {
+        if (paramInt1 != 0) {
+          break label114;
+        }
+        return true;
+        paramInt1 = 0;
+        break;
+        paramInt1 += 1;
+        break label75;
+      }
     }
-    if ((paramString.startsWith("fc3")) || (paramString.startsWith("dc3"))) {
-      return 3;
-    }
-    if ((paramString.startsWith("fc2")) || (paramString.startsWith("dc2"))) {
-      return 2;
-    }
-    if ((paramString.startsWith("fc1")) || (paramString.startsWith("fc")) || (paramString.startsWith("dc"))) {
-      return 1;
-    }
-    return -1;
-  }
-  
-  public static final String a()
-  {
-    return "fc4.";
-  }
-  
-  public static final String a(int paramInt)
-  {
-    String str = "https://analytics.map.qq.com/?sf";
-    if (paramInt > 1) {
-      str = "https://analytics.map.qq.com/?sf" + paramInt;
-    }
-    while (paramInt == 1) {
-      return str;
-    }
-    return "";
-  }
-  
-  public static HashMap<String, String> b()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("D_CH_ID", "fc_sdk");
-    localHashMap.put("D_FC_SRC", "209");
-    localHashMap.put("D_UP_INTERVAL", "1800000");
-    localHashMap.put("D_UP_USE_HTTPS", "true");
-    localHashMap.put("D_MAX_1F_SIZE", "102400");
-    localHashMap.put("D_NUM_UP", "1");
-    localHashMap.put("D_MAX_BUF_WF", "25600");
-    localHashMap.put("D_MAX_FOLDER_SIZE", "104857600");
-    localHashMap.put("D_MAX_DAY_RENAME", "3");
-    localHashMap.put("D_MAX_DAY_DELETE", "30");
-    localHashMap.put("D_MAX_SIZE_UP_1DAY", "10485760");
-    localHashMap.put("D_UP_NET", "w");
-    localHashMap.put("D_POS_COLL", "false");
-    localHashMap.put("D_WRITE_MAC", "false");
-    localHashMap.put("D_UP_WF_INFO", "true");
-    localHashMap.put("D_CHEJI_ALLOW_UPLOAD_GPS", "0");
-    localHashMap.put("D_CHEJI_UPLOAD_GPS_INTERVAL", "20000");
-    localHashMap.put("D_CHEJI_COLL_GPS_INTERVAL", "3000");
-    localHashMap.put("D_CHEJI_SET_STATUS", "0");
-    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.ct
  * JD-Core Version:    0.7.0.1
  */

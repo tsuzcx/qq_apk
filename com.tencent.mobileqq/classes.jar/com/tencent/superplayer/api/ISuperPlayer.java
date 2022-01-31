@@ -1,6 +1,7 @@
 package com.tencent.superplayer.api;
 
 import android.content.Context;
+import android.view.Surface;
 import com.tencent.superplayer.player.MediaInfo;
 import com.tencent.superplayer.view.ISPlayerVideoView;
 
@@ -9,6 +10,8 @@ public abstract interface ISuperPlayer
   public abstract int captureImageInTime(long paramLong, int paramInt1, int paramInt2);
   
   public abstract int captureImageInTime(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  
+  public abstract int getBufferPercent();
   
   public abstract long getCurrentPositionMs();
   
@@ -36,17 +39,15 @@ public abstract interface ISuperPlayer
   
   public abstract void openMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong);
   
-  public abstract void openMediaPlayerByUrl(Context paramContext, String paramString, long paramLong);
-  
-  public abstract void openMediaPlayerByUrl(Context paramContext, String paramString1, long paramLong, String paramString2, String paramString3);
-  
-  public abstract void openMediaPlayerByUrl(Context paramContext, String[] paramArrayOfString, long paramLong, String paramString1, String paramString2);
-  
   public abstract void pause();
+  
+  public abstract void pauseDownload();
   
   public abstract void release();
   
   public abstract void reset();
+  
+  public abstract void resumeDownload();
   
   public abstract void seekTo(int paramInt);
   
@@ -62,11 +63,15 @@ public abstract interface ISuperPlayer
   
   public abstract void setOnCompletionListener(ISuperPlayer.OnCompletionListener paramOnCompletionListener);
   
+  public abstract void setOnDefinitionInfoListener(ISuperPlayer.OnDefinitionInfoListener paramOnDefinitionInfoListener);
+  
   public abstract void setOnErrorListener(ISuperPlayer.OnErrorListener paramOnErrorListener);
   
   public abstract void setOnInfoListener(ISuperPlayer.OnInfoListener paramOnInfoListener);
   
   public abstract void setOnSeekCompleteListener(ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener);
+  
+  public abstract void setOnTVideoNetInfoUpdateListener(ISuperPlayer.OnTVideoNetInfoListener paramOnTVideoNetInfoListener);
   
   public abstract void setOnVideoOutputFrameListener(ISuperPlayer.OnVideoOutputFrameListener paramOnVideoOutputFrameListener);
   
@@ -78,17 +83,21 @@ public abstract interface ISuperPlayer
   
   public abstract void setPlaySpeedRatio(float paramFloat);
   
+  public abstract void setSurface(Surface paramSurface);
+  
   public abstract void setXYaxis(int paramInt);
   
   public abstract void start();
   
   public abstract void stop();
   
+  public abstract void switchDefinition(String paramString);
+  
   public abstract void updatePlayerVideoView(ISPlayerVideoView paramISPlayerVideoView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.superplayer.api.ISuperPlayer
  * JD-Core Version:    0.7.0.1
  */

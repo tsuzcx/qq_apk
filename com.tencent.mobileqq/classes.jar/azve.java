@@ -1,118 +1,133 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadWorker.1.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.TextView;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.util.HashMap;
+import org.xmlpull.v1.XmlSerializer;
 
 public class azve
-  extends xbe
+  extends azql
 {
-  azve(azvd paramazvd) {}
+  public boolean c;
+  public boolean d = true;
+  public int k;
+  public int l = 48;
+  public int m = 1;
+  public int n = 1;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle)
+  public azve()
   {
-    long l = paramBundle.getLong("troopUin");
-    if (l != this.a.d) {}
-    do
+    this(null);
+  }
+  
+  public azve(String paramString)
+  {
+    super(paramString, "td");
+  }
+  
+  public TextView a(Context paramContext)
+  {
+    return new TextView(paramContext);
+  }
+  
+  public String a()
+  {
+    return "td";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.n = paramObjectInput.readInt();
+    this.l = paramObjectInput.readInt();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.n);
+    paramObjectOutput.writeInt(this.l);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, this.a);
+    paramXmlSerializer.attribute(null, "weight", String.valueOf(this.n));
+    paramXmlSerializer.attribute(null, "align", String.valueOf(this.l));
+    paramXmlSerializer.endTag(null, this.a);
+    super.a(paramXmlSerializer);
+  }
+  
+  public boolean a(azsa paramazsa)
+  {
+    try
     {
-      return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      azst.b("TroopFileUploadWorker", azst.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult.but stoped");
-      return;
-    }
-    if ((paramUploadFileRspBody == null) || (!paramBoolean))
-    {
-      azst.a("TroopFileUploadWorker", azst.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult isSuccess:false  errCode:" + paramInt);
-      this.a.jdField_a_of_type_Azsf.c = 1;
-      this.a.jdField_a_of_type_Azsf.d = paramInt;
-      paramUploadFileRspBody = new bajv(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.a.d, 3, 207);
-      this.a.a(true, bamw.b, bamw.A, paramUploadFileRspBody);
-      return;
-    }
-    int j = paramUploadFileRspBody.int32_ret_code.get();
-    azst.c("TroopFileUploadWorker", azst.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult isSuccess:true  errCode:" + paramInt + " retCode:" + j);
-    if (j < 0)
-    {
-      paramBundle = null;
-      int i;
-      switch (j)
+      Object localObject = paramazsa.a("weight");
+      if (localObject != null) {}
+      for (int i = Integer.parseInt((String)localObject);; i = 0)
       {
-      default: 
-        i = 207;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Azsf.c = 1;
-        this.a.jdField_a_of_type_Azsf.d = j;
-        paramBundle = paramUploadFileRspBody;
-        if (paramUploadFileRspBody == null) {
-          paramBundle = new bajv(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, l, 3, i);
+        this.n = i;
+        localObject = paramazsa.a("align");
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break;
         }
-        this.a.a(paramBoolean, bamw.c, paramInt, paramBundle);
-        return;
-        i = 202;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        i = 208;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        new Handler(Looper.getMainLooper()).postDelayed(new TroopFileUploadWorker.1.1(this, l), 1000L);
-        return;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId != 104)
+        localObject = ((String)localObject).split("\\|");
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("left", Integer.valueOf(3));
+        localHashMap.put("right", Integer.valueOf(5));
+        localHashMap.put("top", Integer.valueOf(48));
+        localHashMap.put("bottom", Integer.valueOf(80));
+        localHashMap.put("center", Integer.valueOf(17));
+        i = 0;
+        while (i < localObject.length)
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId = 104;
-          this.a.m();
-          return;
+          if (!TextUtils.isEmpty(localObject[i]))
+          {
+            String str = localObject[i].toLowerCase();
+            if (localHashMap.containsKey(str))
+            {
+              int j = this.l;
+              this.l = (((Integer)localHashMap.get(str)).intValue() | j);
+            }
+          }
+          i += 1;
         }
-        i = 204;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        i = 209;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        i = -136;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        i = -138;
-        paramBoolean = true;
-        paramUploadFileRspBody = paramBundle;
-        continue;
-        paramUploadFileRspBody = paramUploadFileRspBody.str_client_wording.get();
-        paramUploadFileRspBody = new bajv(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, l, 3, 704, paramUploadFileRspBody);
-        i = 207;
-        paramBoolean = false;
       }
+      return super.a(paramazsa);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath = paramUploadFileRspBody.str_file_id.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.UploadIp = paramUploadFileRspBody.str_upload_ip.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ServerDns = paramUploadFileRspBody.str_server_dns.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.CheckKey = paramUploadFileRspBody.bytes_check_key.get().toByteArray();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId = paramUploadFileRspBody.uint32_bus_id.get();
-    azst.c("TroopFileUploadWorker", azst.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult fileid:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath + " UploadIp:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.UploadIp + " ServerDns:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ServerDns + " busId:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId);
-    this.a.a(paramUploadFileRspBody);
-    this.a.a(false);
+    catch (NumberFormatException localNumberFormatException)
+    {
+      this.n = 1;
+    }
+  }
+  
+  public int b()
+  {
+    return this.m;
+  }
+  
+  protected int c()
+  {
+    return 2131378960;
+  }
+  
+  public int e()
+  {
+    if ((this.c) && (this.k != 0)) {
+      return -1;
+    }
+    return -16777216;
+  }
+  
+  public int f()
+  {
+    return 28;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azve
  * JD-Core Version:    0.7.0.1
  */

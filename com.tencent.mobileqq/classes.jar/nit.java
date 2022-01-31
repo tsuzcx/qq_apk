@@ -1,110 +1,49 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0xf9.submsgtype0xf9.Video;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
 
 public class nit
+  implements bhqd
 {
-  public int a;
-  public VideoCoverView a;
-  public String a;
-  public String b;
+  nit(nin paramnin, npo paramnpo, bhpy parambhpy) {}
   
-  public nit() {}
-  
-  public nit(int paramInt, String paramString1, String paramString2)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public static nit a(int paramInt, JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
+    int i = 1;
+    if (this.jdField_a_of_type_Nin.f) {
+      return;
     }
-    try
+    this.jdField_a_of_type_Nin.f = true;
+    if (paramInt + 1 == 1)
     {
-      nit localnit = new nit();
-      localnit.jdField_a_of_type_Int = paramInt;
-      localnit.jdField_a_of_type_JavaLangString = paramJSONObject.getString("str_cover");
-      localnit.b = paramJSONObject.getString("str_src");
-      return localnit;
+      if (!aljq.aS.equals(this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString)) {
+        break label209;
+      }
+      nrt.a(null, "", "0X8009947", "0X8009947", 0, 0, "", "", "", "", false);
+      i = 1;
     }
-    catch (JSONException paramJSONObject)
+    label209:
+    for (;;)
     {
-      paramJSONObject.printStackTrace();
+      this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nin.jdField_a_of_type_Amnh);
+      this.jdField_a_of_type_Nin.jdField_a_of_type_Amnh = new amnh(new niu(this, i));
+      this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nin.jdField_a_of_type_Amnh);
+      amnm.a(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, paramInt);
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      int j = 3;
+      i = j;
+      if (aljq.aS.equals(this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString))
+      {
+        nrt.a(null, "", "0X8009943", "0X8009943", 0, 0, "", "", "", "", false);
+        i = j;
+      }
     }
-    return null;
-  }
-  
-  public static nit a(int paramInt, submsgtype0xf9.Video paramVideo)
-  {
-    if (paramVideo == null) {
-      return null;
-    }
-    try
-    {
-      nit localnit = new nit();
-      localnit.b = paramVideo.str_src.get();
-      localnit.jdField_a_of_type_JavaLangString = paramVideo.str_cover.get();
-      localnit.jdField_a_of_type_Int = paramInt;
-      return localnit;
-    }
-    catch (Exception paramVideo)
-    {
-      paramVideo.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static nit a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    try
-    {
-      nit localnit = new nit();
-      localnit.jdField_a_of_type_Int = paramJSONObject.getInt("index");
-      localnit.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
-      localnit.b = paramJSONObject.getString("src");
-      return localnit;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return null;
-  }
-  
-  public JSONObject a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("index", this.jdField_a_of_type_Int);
-      localJSONObject.put("cover", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("src", this.b);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return null;
-  }
-  
-  public String toString()
-  {
-    return "mVideoSrc " + this.b + " mVideoCoverPic " + this.jdField_a_of_type_JavaLangString + " mVideoIndex " + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nit
  * JD-Core Version:    0.7.0.1
  */

@@ -1,271 +1,83 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.Ads;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qconn.protofile.appType.AndroidInfo;
-import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.3.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.oidb_0xd55.RspBody;
-import tencent.im.oidb.qqconnect.AndroidAppInfo;
-import tencent.im.oidb.qqconnect.Appinfo;
-import tencent.im.oidb.qqconnect.MobileAppInfo;
+import java.util.Map;
 
 public class aqas
+  extends RecyclerView.OnScrollListener
 {
-  private int jdField_a_of_type_Int;
-  public GetAppInfoProto.Ads a;
-  private String jdField_a_of_type_JavaLangString;
-  public List<xmv> a;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  private String c;
-  private String d;
-  private String e;
-  private String f;
+  public aqas(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  private static int a(List<xmv> paramList)
+  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
   {
-    paramList = paramList.iterator();
-    int i = 0;
-    while (paramList.hasNext())
-    {
-      xmv localxmv = (xmv)paramList.next();
-      if ("16".equals(localxmv.b.get()))
-      {
-        i |= 0x1;
-      }
-      else if ("64".equals(localxmv.b.get()))
-      {
-        i |= 0x2;
-      }
-      else
-      {
-        if (!"100".equals(localxmv.b.get())) {
-          break label96;
-        }
-        i |= 0x4;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
     }
-    label96:
+    if (this.a.jdField_a_of_type_Bcws != null)
+    {
+      if (paramInt != 0) {
+        break label94;
+      }
+      this.a.c = false;
+      this.a.jdField_a_of_type_Bcws.b();
+      this.a.aA_();
+    }
     for (;;)
     {
-      break;
-      return i;
-    }
-  }
-  
-  public static int a(qqconnect.Appinfo paramAppinfo)
-  {
-    int j = 0;
-    if (paramAppinfo.icon_mini_url.has()) {
-      j = 1;
-    }
-    int i;
-    if (!paramAppinfo.icon_middle_url.has())
-    {
-      i = j;
-      if (!paramAppinfo.icon_small_url.has()) {}
-    }
-    else
-    {
-      i = j | 0x2;
-    }
-    j = i;
-    if (paramAppinfo.icon_url.has()) {
-      j = i | 0x4;
-    }
-    return j;
-  }
-  
-  public static aqas a(GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse)
-  {
-    aqas localaqas = new aqas();
-    localaqas.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$Ads = paramGetAppinfoResponse.ads;
-    localaqas.jdField_a_of_type_JavaUtilList = xmq.a(paramGetAppinfoResponse.iconsURL);
-    if (!localaqas.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      localaqas.jdField_a_of_type_JavaLangString = xmq.a(localaqas.jdField_a_of_type_JavaUtilList, 16);
-      localaqas.b = xmq.a(localaqas.jdField_a_of_type_JavaUtilList, 100);
-      localaqas.jdField_a_of_type_Int = a(localaqas.jdField_a_of_type_JavaUtilList);
-    }
-    GetAppInfoProto.AndroidInfo localAndroidInfo = paramGetAppinfoResponse.androidInfo;
-    if (localAndroidInfo != null)
-    {
-      localaqas.jdField_a_of_type_Boolean = true;
-      if (!localAndroidInfo.sourceUrl.has()) {
-        break label183;
-      }
-      paramGetAppinfoResponse = localAndroidInfo.sourceUrl.get();
-      localaqas.c = paramGetAppinfoResponse;
-      if (!localAndroidInfo.messagetail.has()) {
-        break label189;
-      }
-      paramGetAppinfoResponse = localAndroidInfo.messagetail.get();
-      label131:
-      localaqas.d = paramGetAppinfoResponse;
-      if (!localAndroidInfo.packName.has()) {
-        break label195;
-      }
-    }
-    label183:
-    label189:
-    label195:
-    for (paramGetAppinfoResponse = localAndroidInfo.packName.get();; paramGetAppinfoResponse = "")
-    {
-      localaqas.e = paramGetAppinfoResponse;
-      QLog.d("AppInfo", 1, new Object[] { "convertToAppInfo AppInfo : ", localaqas.toString() });
-      return localaqas;
-      paramGetAppinfoResponse = "";
-      break;
-      paramGetAppinfoResponse = "";
-      break label131;
-    }
-  }
-  
-  public static aqas a(preAuth.PreAuthResponse paramPreAuthResponse, appType.AndroidInfo paramAndroidInfo)
-  {
-    aqas localaqas = new aqas();
-    String str;
-    if (paramAndroidInfo.message_tail.has())
-    {
-      str = paramAndroidInfo.message_tail.get();
-      localaqas.d = str;
-      if (!paramAndroidInfo.pack_name.has()) {
-        break label172;
-      }
-      str = paramAndroidInfo.pack_name.get();
-      label49:
-      localaqas.e = str;
-      if (!paramAndroidInfo.source_url.has()) {
-        break label178;
-      }
-    }
-    label172:
-    label178:
-    for (paramAndroidInfo = paramAndroidInfo.source_url.get();; paramAndroidInfo = "")
-    {
-      localaqas.c = paramAndroidInfo;
-      localaqas.jdField_a_of_type_Boolean = true;
-      localaqas.jdField_a_of_type_JavaUtilList = xmq.b(paramPreAuthResponse.icons_url);
-      if (!localaqas.jdField_a_of_type_JavaUtilList.isEmpty())
+      if (paramInt == 0)
       {
-        localaqas.jdField_a_of_type_JavaLangString = xmq.a(localaqas.jdField_a_of_type_JavaUtilList, 16);
-        localaqas.b = xmq.a(localaqas.jdField_a_of_type_JavaUtilList, 100);
-        localaqas.jdField_a_of_type_Int = a(localaqas.jdField_a_of_type_JavaUtilList);
+        ExtendFriendSquareFragment.c(this.a);
+        this.a.g();
+        this.a.b(false);
       }
-      QLog.d("AppInfo", 1, new Object[] { "convertToAppInfo AppInfo : ", localaqas.toString() });
-      return localaqas;
-      str = "";
-      break;
-      str = "";
-      break label49;
-    }
-  }
-  
-  private static String a(qqconnect.Appinfo paramAppinfo, String paramString)
-  {
-    Iterator localIterator = null;
-    Object localObject2 = null;
-    Object localObject1 = localIterator;
-    if (paramAppinfo.mobile_app_info.has())
-    {
-      localObject1 = localIterator;
-      if (paramAppinfo.mobile_app_info.android_app_info.has())
+      return;
+      label94:
+      this.a.c = true;
+      this.a.jdField_a_of_type_Bcws.c();
+      this.a.jdField_a_of_type_Bcws.a();
+      synchronized (ExtendFriendBaseFragment.a)
       {
-        localIterator = paramAppinfo.mobile_app_info.android_app_info.get().iterator();
-        paramAppinfo = localObject2;
-        localObject1 = paramAppinfo;
-        if (localIterator.hasNext())
-        {
-          localObject1 = (qqconnect.AndroidAppInfo)localIterator.next();
-          if (((qqconnect.AndroidAppInfo)localObject1).pack_name.has())
-          {
-            localObject1 = ((qqconnect.AndroidAppInfo)localObject1).pack_name.get();
-            paramAppinfo = (qqconnect.Appinfo)localObject1;
-            if (!((String)localObject1).equals(paramString)) {}
-          }
+        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.clear();
         }
       }
     }
-    while (TextUtils.isEmpty((CharSequence)localObject1))
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    this.a.h = this.a.d();
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (this.a.e != -1L)
     {
-      return paramString;
-      break;
+      long l = System.currentTimeMillis() - this.a.e;
+      f1 = f2;
+      if (l > 0L)
+      {
+        f1 = f2;
+        if (l < 2000L) {
+          f1 = paramInt2 * 1.0F / (float)l;
+        }
+      }
     }
-    return localObject1;
-  }
-  
-  public static void a(oidb_0xd55.RspBody paramRspBody, String paramString, aqas paramaqas)
-  {
-    paramaqas.jdField_a_of_type_Boolean = true;
-    qqconnect.Appinfo localAppinfo = paramRspBody.appinfo;
-    paramaqas.jdField_a_of_type_JavaLangString = localAppinfo.icon_mini_url.get();
-    paramaqas.b = localAppinfo.icon_url.get();
-    paramaqas.jdField_a_of_type_Int = a(localAppinfo);
-    paramaqas.c = localAppinfo.source_url.get();
-    paramaqas.d = localAppinfo.app_name.get();
-    paramaqas.e = a(localAppinfo, paramString);
-    if (paramRspBody.wording.has()) {}
-    for (paramRspBody = paramRspBody.wording.get();; paramRspBody = "")
+    this.a.e = System.currentTimeMillis();
+    ExtendFriendSquareFragment.a(this.a, this.a.h, f1);
+    if ((!ExtendFriendSquareFragment.a(this.a)) && (!ExtendFriendSquareFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Aqay != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Aqay.getItemCount() - 2) != null))
     {
-      paramaqas.f = paramRspBody;
-      QLog.d("AppInfo", 1, new Object[] { "fillAppInfo AppInfo : ", paramaqas.toString() });
-      return;
+      this.a.a(true);
+      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.3.1(this));
+      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.c;
-  }
-  
-  public String c()
-  {
-    return this.d;
-  }
-  
-  public String d()
-  {
-    return this.e;
-  }
-  
-  public String e()
-  {
-    return this.b;
-  }
-  
-  public String f()
-  {
-    return this.f;
-  }
-  
-  public String toString()
-  {
-    return "iconUrlMini=" + this.jdField_a_of_type_JavaLangString + ", iconUrlBig=" + this.b + ", appLackOfIcons=" + this.jdField_a_of_type_Int + ", isAndroidInfoExist=" + this.jdField_a_of_type_Boolean + ", sourceUrl=" + this.c + ", appName=" + this.d + ", pkgName=" + this.e + ", mErrorWording=" + this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqas
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,79 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import mqq.app.QQPermissionCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class azbx
-  implements QQPermissionCallback
+public class azbx
 {
-  azbx(azbw paramazbw) {}
+  private static volatile azbx jdField_a_of_type_Azbx;
+  azbz jdField_a_of_type_Azbz = null;
+  azcc jdField_a_of_type_Azcc = null;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static azbx a()
   {
-    TribeVideoPreviewFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment, false);
+    if (jdField_a_of_type_Azbx == null) {}
+    try
+    {
+      if (jdField_a_of_type_Azbx == null)
+      {
+        azbx localazbx = new azbx();
+        localazbx.b();
+        jdField_a_of_type_Azbx = localazbx;
+      }
+      return jdField_a_of_type_Azbx;
+    }
+    finally {}
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.a.jdField_a_of_type_JavaLangString);
+    azbx localazbx = a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, String.format("onDownloadRequest, mStatusGesture[%s]", new Object[] { Integer.valueOf(localazbx.jdField_a_of_type_Azcc.a) }));
+    }
+    azbz.a();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Azcc = new azcc();
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      this.jdField_a_of_type_Azbz = new azbz();
+    }
+  }
+  
+  public void a(boolean paramBoolean, azby paramazby)
+  {
+    this.jdField_a_of_type_Azcc.a(paramBoolean, paramazby);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Azcc.a();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Azcc.d();
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Azcc.b();
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Azcc.a == 1;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_a_of_type_Azcc.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azbx
  * JD-Core Version:    0.7.0.1
  */

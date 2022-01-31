@@ -1,23 +1,23 @@
-public class akvs
+import android.view.SurfaceHolder;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+
+class akvs
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
+  akvs(akvr paramakvr) {}
   
-  public akvs(String paramString, int paramInt1, int paramInt2)
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    akvr.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvs
  * JD-Core Version:    0.7.0.1
  */

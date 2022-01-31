@@ -1,109 +1,65 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.ImageInfo;
+import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.OutputStream;
 
 public class banv
-  implements baqs
+  extends banq
 {
-  private long jdField_a_of_type_Long;
-  private UsingTimeReportManager jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  public String c;
-  
-  public banv(String paramString1, String paramString2, String paramString3)
+  public banv(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
+    super("DataLineFaceDownloader", paramBaseApplicationImpl);
   }
   
-  private void f()
+  private String a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager = a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (!this.jdField_b_of_type_Boolean))
+    String str = bdda.a(paramContext, paramString, 0);
+    ImageInfo localImageInfo = new ImageInfo();
+    bdda.a(4, paramContext, paramString, str, true, localImageInfo, 0);
+    return localImageInfo.b;
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if ((paramDownloadParams.tag instanceof MessageForPic)) {}
+    for (paramDownloadParams = ((MessageForPic)paramDownloadParams.tag).path;; paramDownloadParams = null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.a(this);
-      this.jdField_b_of_type_Boolean = true;
-    }
-  }
-  
-  private void g()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.b(this);
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
-  private void h()
-  {
-    if (!this.jdField_b_of_type_Boolean) {}
-    while (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseUsingTimeReport", 2, "stop,usingTime=" + l);
-    }
-    if ((l > 0L) && (this.jdField_b_of_type_Boolean)) {
-      a(l);
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public UsingTimeReportManager a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    f();
-    if (!this.jdField_b_of_type_Boolean) {}
-    do
-    {
+      if (TextUtils.isEmpty(paramDownloadParams)) {}
+      File localFile1;
       do
       {
-        return;
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("BaseUsingTimeReport", 2, "start(), mStartTime=" + this.jdField_a_of_type_Long);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void b()
-  {
-    h();
-    g();
-  }
-  
-  public void c()
-  {
-    h();
-  }
-  
-  public void d()
-  {
-    a();
-  }
-  
-  public void e()
-  {
-    b();
+        return null;
+        localFile1 = new File(paramDownloadParams);
+      } while (!localFile1.exists());
+      File localFile2;
+      if (localFile1.length() >= 1048576L)
+      {
+        String str = a(this.a.getApplicationContext(), paramDownloadParams);
+        if (!bdcs.a(str)) {
+          break label203;
+        }
+        localFile2 = new File(str);
+        QLog.i("DataLineFaceDownloader", 1, "DatalineChat downloadImage compress, orgFilePath:" + paramDownloadParams + " orgFileSize:" + localFile1.length() + " compressPath:" + str + " compressFileSize:" + localFile2.length());
+      }
+      label203:
+      for (paramDownloadParams = localFile2;; paramDownloadParams = localFile1)
+      {
+        banq.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+        return null;
+        QLog.i("DataLineFaceDownloader", 1, "DatalineChat downloadImage uncompress, orgFilePath:" + paramDownloadParams + " orgFileSize:" + localFile1.length());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     banv
  * JD-Core Version:    0.7.0.1
  */

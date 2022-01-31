@@ -122,6 +122,7 @@ public class PagVideoShelfProcessor
         this.mReplaceImgs = paramHashMap;
         return;
       }
+      this.mReplaceImgs = paramHashMap;
       paramHashMap = paramHashMap.entrySet().iterator();
       while (paramHashMap.hasNext())
       {

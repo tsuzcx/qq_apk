@@ -1,38 +1,74 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class atvj
-  implements bfos
 {
-  public atvj(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public static atvj a(JSONObject paramJSONObject)
   {
-    int i = 0;
-    if (paramInt == 0)
-    {
-      paramInt = i;
-      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
+    if (paramJSONObject != null) {
+      for (;;)
       {
-        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
-        paramInt = i;
-        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
-          paramInt = 1;
+        try
+        {
+          localObject = new atvj();
+          try
+          {
+            if (paramJSONObject.has("tip"))
+            {
+              ((atvj)localObject).a = paramJSONObject.getString("tip");
+              if (!paramJSONObject.has("key_word")) {
+                continue;
+              }
+              ((atvj)localObject).b = paramJSONObject.getString("key_word");
+              if (!paramJSONObject.has("jump_url")) {
+                continue;
+              }
+              ((atvj)localObject).c = paramJSONObject.getString("jump_url");
+              return localObject;
+            }
+            ((atvj)localObject).a = "";
+            continue;
+            localObject = paramJSONObject;
+          }
+          catch (Exception localException1)
+          {
+            paramJSONObject = (JSONObject)localObject;
+          }
         }
-      }
-      if (paramInt != 0) {
-        NearbyMomentFragment.a(this.a);
+        catch (Exception localException2)
+        {
+          paramJSONObject = null;
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          return localObject;
+        }
+        QLog.i("CUOpenCardGuideMng", 2, "GuideEntry-parse", localException1);
+        return paramJSONObject;
+        ((atvj)localObject).b = "";
+        continue;
+        ((atvj)localObject).c = "";
+        return localObject;
       }
     }
+    Object localObject = null;
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("[tip:").append(this.a).append(", key_word:").append(this.b).append(", jump_url:").append(this.c).append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atvj
  * JD-Core Version:    0.7.0.1
  */

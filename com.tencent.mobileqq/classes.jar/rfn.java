@@ -1,36 +1,25 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat;
 
-public class rfn
-  implements Handler.Callback
+class rfn
+  implements rpt
 {
-  private WeakReference<ReadInJoyXListView> a;
+  rfn(rfm paramrfm, String paramString) {}
   
-  public rfn(ReadInJoyXListView paramReadInJoyXListView)
+  public void a(@NonNull View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramReadInJoyXListView);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if ((paramView == VideoFeedsPlayActivity.a(this.jdField_a_of_type_Rfm.a)) && (paramInt == 0))
     {
-    default: 
-      return false;
+      VideoFeedsPlayActivity.a(this.jdField_a_of_type_Rfm.a).setVisibilityChangedListener(null);
+      this.jdField_a_of_type_Rfm.a(true, this.jdField_a_of_type_JavaLangString);
     }
-    if ((this.a != null) && (this.a.get() != null))
-    {
-      ((ReadInJoyXListView)this.a.get()).i();
-      return true;
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfn
  * JD-Core Version:    0.7.0.1
  */

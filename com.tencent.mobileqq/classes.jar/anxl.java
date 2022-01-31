@@ -1,72 +1,72 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class anxl
-  implements View.OnClickListener
+public class anxl
+  extends aofy<anxk>
 {
-  anxl(anxk paramanxk, anzn paramanzn) {}
-  
-  public void onClick(View paramView)
+  public static anxk a()
   {
-    paramView = new Intent();
-    label80:
-    String str1;
-    label106:
-    int i;
-    if (this.jdField_a_of_type_Anzn.jdField_a_of_type_Boolean)
+    return (anxk)aogj.a().a(549);
+  }
+  
+  public int a()
+  {
+    return 549;
+  }
+  
+  @NonNull
+  public anxk a(int paramInt)
+  {
+    return new anxk();
+  }
+  
+  @Nullable
+  public anxk a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
     {
-      paramView.putExtra("emoji_to_dressup", true);
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Anxk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, paramView, false);
-      if (this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label243;
+      anxk localanxk = anxk.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteConfigProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
       }
-      paramView = "";
-      String str2 = this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-      if (!this.jdField_a_of_type_Anzn.jdField_a_of_type_Boolean) {
-        break label257;
-      }
-      str1 = "1";
-      VasWebviewUtil.reportCommercialDrainage(paramView, "ep_mall", "0X8007192", null, 1, 0, 0, null, str2, str1);
-      if ((this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) <= 0) {
-        break label264;
-      }
-      i = 3;
+      return localanxk;
     }
-    for (;;)
-    {
-      axqy.b(this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, i + "", "");
-      return;
-      if ((this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramView.putExtra("emoji_is_original", bool);
-        paramView.putExtra("emoji_author_id", this.jdField_a_of_type_Anzn.jdField_a_of_type_Int);
-        break;
-      }
-      label243:
-      paramView = this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      break label80;
-      label257:
-      str1 = "2";
-      break label106;
-      label264:
-      if (this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.subType == 4) {
-        i = 4;
-      } else {
-        i = 1;
-      }
+    return null;
+  }
+  
+  public Class a()
+  {
+    return anxk.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteConfigProcessor", 2, "onReqFailed " + paramInt);
     }
+  }
+  
+  public void a(anxk paramanxk) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxl
  * JD-Core Version:    0.7.0.1
  */

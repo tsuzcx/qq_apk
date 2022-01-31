@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
 import android.graphics.drawable.Drawable;
-import atnt;
+import avet;
 import com.tencent.image.URLImageView;
 
 public class GalleryItemVideo$2
   implements Runnable
 {
-  public GalleryItemVideo$2(atnt paramatnt, URLImageView paramURLImageView, Drawable paramDrawable) {}
+  public GalleryItemVideo$2(avet paramavet, URLImageView paramURLImageView, Drawable paramDrawable) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class GalleryItemVideo$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.GalleryItemVideo.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
-
-public class affd
-  extends osm
+public abstract interface affd
 {
-  public affd(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public abstract void a();
   
-  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
-  {
-    if (paramBoolean)
-    {
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        this.a.c.clear();
-        this.a.c.addAll(paramList);
-      }
-      ClassificationSearchActivity.b(this.a, true);
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     affd
  * JD-Core Version:    0.7.0.1
  */

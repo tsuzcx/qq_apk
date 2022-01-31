@@ -24,10 +24,7 @@ import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
-import java.net.URLDecoder;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Set;
 import org.json.JSONObject;
 
@@ -177,7 +174,7 @@ public class NavigationPlugin
           continue;
         }
         if (!"navigateToMiniProgram".equals(paramString1)) {
-          break label1133;
+          break label990;
         }
       }
       MiniAppStateManager.getInstance().notifyChange("hideInput");
@@ -195,10 +192,10 @@ public class NavigationPlugin
               i = 2077;
               localObject3 = ((JSONObject)localObject2).optJSONObject("extraData");
               if (localObject3 == null) {
-                break label595;
+                break label594;
               }
             }
-            label595:
+            label594:
             for (localObject3 = ((JSONObject)localObject3).toString();; localObject3 = "")
             {
               localObject8 = new LaunchParam();
@@ -216,7 +213,7 @@ public class NavigationPlugin
               }
               return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
               if (!this.jsPluginEngine.isMiniAppStore()) {
-                break label1342;
+                break label1199;
               }
               i = 2001;
               break;
@@ -237,62 +234,36 @@ public class NavigationPlugin
           if (localObject2 != null)
           {
             localObject2 = ((JSONObject)localObject2).toString();
+            label701:
             localObject8 = new LaunchParam();
             if (!this.jsPluginEngine.isMiniAppStore()) {
-              break label1011;
+              break label926;
             }
           }
-          for (i = 2001;; i = 1037) {
-            for (;;)
+          label926:
+          for (i = 2001;; i = 1037)
+          {
+            ((LaunchParam)localObject8).scene = i;
+            ((LaunchParam)localObject8).entryPath = ((String)localObject6);
+            ((LaunchParam)localObject8).navigateExtData = ((String)localObject2);
+            ((LaunchParam)localObject8).fromMiniAppId = this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.launchParam.miniAppId;
+            ((LaunchParam)localObject8).entryModel = this.jsPluginEngine.getEntryModel();
+            ((LaunchParam)localObject8).envVersion = ((String)localObject7);
+            if ((!this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.isSpecialMiniApp()) && (navigateBackByAPPInfo == 1))
             {
-              ((LaunchParam)localObject8).scene = i;
-              ((LaunchParam)localObject8).entryPath = ((String)localObject6);
-              ((LaunchParam)localObject8).navigateExtData = ((String)localObject2);
-              ((LaunchParam)localObject8).fromMiniAppId = this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.launchParam.miniAppId;
-              ((LaunchParam)localObject8).entryModel = this.jsPluginEngine.getEntryModel();
-              ((LaunchParam)localObject8).envVersion = ((String)localObject7);
-              if ((!this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.isSpecialMiniApp()) && (navigateBackByAPPInfo == 1))
-              {
-                ((LaunchParam)localObject8).fromEnvVersion = this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.getVerTypeStr();
-                ((LaunchParam)localObject8).fromMiniAppInfo = MiniAppInfo.copy(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config);
-              }
-              if (TextUtils.isEmpty((CharSequence)localObject5)) {
-                break label1032;
-              }
-              try
-              {
-                ((LaunchParam)localObject8).reportData = new HashMap();
-                localObject2 = ((String)localObject5).split("&");
-                int j = localObject2.length;
-                i = 0;
-                while (i < j)
-                {
-                  String str2 = localObject2[i];
-                  int k = str2.indexOf("=");
-                  if ((k > 0) && (k < str2.length() - 1))
-                  {
-                    localObject5 = URLDecoder.decode(str2.substring(0, k), "UTF-8");
-                    str2 = URLDecoder.decode(str2.substring(k + 1), "UTF-8");
-                    ((LaunchParam)localObject8).reportData.put(localObject5, str2);
-                  }
-                  i += 1;
-                }
-                localObject2 = "";
-              }
-              catch (Exception localException)
-              {
-                label1011:
-                QLog.e("[mini] NavigationPlugin", 1, "reportData error.", localException);
-              }
+              ((LaunchParam)localObject8).fromEnvVersion = this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.getVerTypeStr();
+              ((LaunchParam)localObject8).fromMiniAppInfo = MiniAppInfo.copy(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config);
             }
+            ((LaunchParam)localObject8).reportData = ((String)localObject5);
+            MiniAppController.startAppByAppid(this.jsPluginEngine.activityContext, (String)localObject4, (String)localObject6, (String)localObject7, (LaunchParam)localObject8, new NavigationPlugin.6(this, paramJsRuntime, paramString1, paramInt));
+            this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
+            break;
+            localObject2 = "";
+            break label701;
           }
-          label1032:
-          MiniAppController.startAppByAppid(this.jsPluginEngine.activityContext, (String)localObject4, (String)localObject6, (String)localObject7, (LaunchParam)localObject8, new NavigationPlugin.6(this, paramJsRuntime, paramString1, paramInt));
-          this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
         }
-        else if (i == 1)
-        {
-          if (GameProxy.startGameByMiniApp(this.jsPluginEngine.appBrandRuntime.activity, (String)localObject4, localException))
+        if (i == 1) {
+          if (GameProxy.startGameByMiniApp(this.jsPluginEngine.appBrandRuntime.activity, (String)localObject4, (JSONObject)localObject2))
           {
             this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
           }
@@ -300,29 +271,28 @@ public class NavigationPlugin
           {
             this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
             continue;
-            label1133:
+            label990:
             if ("navigateBackMiniProgram".equals(paramString1))
             {
-              String str1;
               if (navigateBackByAPPInfo == 0)
               {
-                if (localException != null)
+                if (localObject2 != null)
                 {
-                  str1 = localException.optString("extraData");
+                  localObject2 = ((JSONObject)localObject2).optString("extraData");
                   localObject4 = this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.launchParam.fromMiniAppId;
-                  if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (navigateBackMiniApp(paramJsRuntime, (String)localObject4, str1))) {
+                  if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (navigateBackMiniApp(paramJsRuntime, (String)localObject4, (String)localObject2))) {
                     this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
                   } else {
                     this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
                   }
                 }
               }
-              else if ((navigateBackByAPPInfo == 1) && (str1 != null))
+              else if ((navigateBackByAPPInfo == 1) && (localObject2 != null))
               {
-                str1 = str1.optString("extraData");
+                localObject2 = ((JSONObject)localObject2).optString("extraData");
                 localObject4 = this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.launchParam.fromMiniAppInfo;
                 if (localObject4 != null) {
-                  navigateBackMiniApp((MiniAppInfo)localObject4, str1, new NavigationPlugin.7(this, paramJsRuntime, paramString1, paramInt));
+                  navigateBackMiniApp((MiniAppInfo)localObject4, (String)localObject2, new NavigationPlugin.7(this, paramJsRuntime, paramString1, paramInt));
                 }
               }
             }
@@ -338,7 +308,7 @@ public class NavigationPlugin
     for (;;)
     {
       break;
-      label1342:
+      label1199:
       i = 1037;
     }
   }
@@ -370,7 +340,7 @@ public class NavigationPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.NavigationPlugin
  * JD-Core Version:    0.7.0.1
  */

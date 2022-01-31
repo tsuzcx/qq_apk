@@ -1,41 +1,27 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.CameraFocusView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class biia
-  extends avss
+public class biia
 {
-  public biia(bihz parambihz, CameraFocusView paramCameraFocusView)
-  {
-    super(paramCameraFocusView);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  protected void a(CameraCaptureView paramCameraCaptureView, float paramFloat1, float paramFloat2)
+  public biia(int paramInt, String paramString)
   {
-    super.a(paramCameraCaptureView, paramFloat1, paramFloat2 - paramCameraCaptureView.getTop());
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("GLGestureListener", 2, "event : (" + paramMotionEvent.getX() + "," + paramMotionEvent.getY() + ")");
-      QLog.d("GLGestureListener", 2, "view : (" + bihz.a(this.a).getLeft() + "," + bihz.a(this.a).getRight() + "," + bihz.a(this.a).getTop() + "," + bihz.a(this.a).getBottom() + ")");
-    }
-    if ((paramMotionEvent.getX() > bihz.a(this.a).getRight() / 2) || (paramMotionEvent.getY() < bihz.a(this.a).getTop()) || (paramMotionEvent.getY() > bihz.a(this.a).getBottom()))
-    {
-      QLog.d("GLGestureListener", 2, "touch out");
-      return false;
-    }
-    QLog.d("GLGestureListener", 2, "touch in");
-    return super.onTouchEvent(paramMotionEvent, paramBoolean);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", 4);
+    this.jdField_a_of_type_Int = localSharedPreferences.getInt(paramInt + "preload_switch" + paramString, -1);
+    this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(paramInt + "preload" + paramString, false);
+    this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean(paramInt + "preload_data" + paramString, false);
+    this.jdField_b_of_type_Int = localSharedPreferences.getInt(paramInt + "mem_limit" + paramString, 256);
+    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(paramInt + "ext1" + paramString, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biia
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,42 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForWantGiftMsg;
 
 class agbg
-  extends ajxj
+  implements View.OnClickListener
 {
-  agbg(agbf paramagbf) {}
+  agbg(agbf paramagbf, ChatMessage paramChatMessage, MessageForWantGiftMsg paramMessageForWantGiftMsg) {}
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(1, paramString);
+    if (paramView.getId() == 2131373108)
+    {
+      new azmo(this.jdField_a_of_type_Agbf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + "", "29" }).a();
+      paramView = bdiv.i(this.jdField_a_of_type_Agbf.jdField_a_of_type_AndroidContentContext, "url");
+      if (TextUtils.isEmpty(paramView)) {
+        break label216;
+      }
     }
-  }
-  
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (paramBoolean) {
-      this.a.a(1, paramString);
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(2, null);
+    for (;;)
+    {
+      paramView = paramView.replace("{troopUin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin).replace("{uin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin).replace("{from}", "29");
+      Intent localIntent = new Intent(this.jdField_a_of_type_Agbf.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_Agbf.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      return;
+      label216:
+      paramView = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbg
  * JD-Core Version:    0.7.0.1
  */

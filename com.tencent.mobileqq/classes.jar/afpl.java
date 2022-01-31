@@ -1,26 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Friends;
-import mqq.app.QQPermissionCallback;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afpl
-  implements QQPermissionCallback
+  extends afpq
 {
-  afpl(afpj paramafpj, View paramView, Friends paramFriends, BaseActivity paramBaseActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  afpl(aflj paramaflj)
   {
-    bbdj.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    super(paramaflj, null);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    afpj.a(this.jdField_a_of_type_Afpj, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataFriends);
+    return new agas(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afpl
  * JD-Core Version:    0.7.0.1
  */

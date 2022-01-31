@@ -1,23 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class aemi
-  extends Handler
+public abstract interface aemi
 {
-  aemi(aemh paramaemh) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if (this.a.p.isShown()) {
-      this.a.p.setVisibility(8);
-    }
-  }
+  public abstract void f(ChatMessage paramChatMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemi
  * JD-Core Version:    0.7.0.1
  */

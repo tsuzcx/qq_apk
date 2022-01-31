@@ -1,30 +1,35 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.HorizontalScrollView;
+import com.tencent.av.ui.EffectSettingUi;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class mfu
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public mfu(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public mfu(EffectSettingUi paramEffectSettingUi, ViewTreeObserver paramViewTreeObserver, HorizontalScrollView paramHorizontalScrollView) {}
   
-  public void onClick(View paramView)
+  @TargetApi(16)
+  public void onGlobalLayout()
   {
-    if (this.a.g()) {
-      return;
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeOnGlobalLayoutListener(this);
     }
-    QLog.d(this.a.c, 1, "onClick R.id.qav_btn_accept_video");
-    mqw.b(bbfj.h((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()), this.a.jdField_a_of_type_ComTencentAvVideoController.a().C);
-    this.a.e();
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().ao = true;
+    for (;;)
+    {
+      QLog.w("EffectSettingUi", 1, "onGlobalLayout");
+      this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setTag(new Object());
+      this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.c();
+      return;
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfu
  * JD-Core Version:    0.7.0.1
  */

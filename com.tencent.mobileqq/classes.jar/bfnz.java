@@ -1,80 +1,57 @@
-import android.os.Build.VERSION;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
 
 public final class bfnz
+  implements Parcelable.Creator<WadlJsBridgeDownloadInfo>
 {
-  public static boolean a()
+  public WadlJsBridgeDownloadInfo a(Parcel paramParcel)
   {
-    return Build.VERSION.SDK_INT >= 7;
+    boolean bool2 = true;
+    WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.d = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.g = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.j = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localWadlJsBridgeDownloadInfo.jdField_b_of_type_Boolean = bool1;
+      localWadlJsBridgeDownloadInfo.l = paramParcel.readString();
+      localWadlJsBridgeDownloadInfo.h = paramParcel.readInt();
+      localWadlJsBridgeDownloadInfo.i = paramParcel.readInt();
+      localWadlJsBridgeDownloadInfo.m = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label203;
+      }
+    }
+    label203:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localWadlJsBridgeDownloadInfo.jdField_c_of_type_Boolean = bool1;
+      return localWadlJsBridgeDownloadInfo;
+      bool1 = false;
+      break;
+    }
   }
   
-  public static boolean b()
+  public WadlJsBridgeDownloadInfo[] a(int paramInt)
   {
-    return Build.VERSION.SDK_INT >= 8;
-  }
-  
-  public static boolean c()
-  {
-    return Build.VERSION.SDK_INT >= 9;
-  }
-  
-  public static boolean d()
-  {
-    return Build.VERSION.SDK_INT >= 14;
-  }
-  
-  public static boolean e()
-  {
-    return Build.VERSION.SDK_INT >= 11;
-  }
-  
-  public static boolean f()
-  {
-    return Build.VERSION.SDK_INT >= 13;
-  }
-  
-  public static boolean g()
-  {
-    return Build.VERSION.SDK_INT >= 16;
-  }
-  
-  public static boolean h()
-  {
-    return Build.VERSION.SDK_INT >= 17;
-  }
-  
-  public static boolean i()
-  {
-    return Build.VERSION.SDK_INT >= 18;
-  }
-  
-  public static boolean j()
-  {
-    return Build.VERSION.SDK_INT >= 19;
-  }
-  
-  public static boolean k()
-  {
-    return Build.VERSION.SDK_INT >= 21;
-  }
-  
-  public static boolean l()
-  {
-    return Build.VERSION.SDK_INT >= 23;
-  }
-  
-  public static boolean m()
-  {
-    return Build.VERSION.SDK_INT >= 24;
-  }
-  
-  public static boolean n()
-  {
-    return Build.VERSION.SDK_INT >= 26;
+    return new WadlJsBridgeDownloadInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfnz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,13 @@
-import android.os.Handler;
+import android.graphics.Bitmap;
+import java.net.URL;
 
-class baux
-  implements bauv
+public abstract interface baux
 {
-  baux(bauw parambauw) {}
-  
-  public void a()
-  {
-    bauw.a(this.a).sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    bauw.a(this.a).sendEmptyMessage(0);
-  }
-  
-  public void c()
-  {
-    if (bauw.a(this.a) != null) {
-      bauw.a(this.a).b();
-    }
-  }
+  public abstract Bitmap getBitmap(URL paramURL);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baux
  * JD-Core Version:    0.7.0.1
  */

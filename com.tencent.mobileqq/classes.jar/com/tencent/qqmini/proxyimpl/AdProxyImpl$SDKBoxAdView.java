@@ -1,12 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
+import aais;
 import android.app.Activity;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBoxAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBoxADLisener;
 import java.lang.ref.WeakReference;
-import ytb;
 
 class AdProxyImpl$SDKBoxAdView
   extends AdProxy.AbsBoxAdView
@@ -18,7 +18,7 @@ class AdProxyImpl$SDKBoxAdView
   AdProxy.IBoxADLisener mBoxListener;
   int mDeviceOrientation;
   String mEntryPath;
-  ytb mGdtBoxView;
+  aais mGdtBoxView;
   String mGdtCookie;
   String mPosid;
   String mRefer;
@@ -91,7 +91,7 @@ class AdProxyImpl$SDKBoxAdView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBoxAdView
  * JD-Core Version:    0.7.0.1
  */

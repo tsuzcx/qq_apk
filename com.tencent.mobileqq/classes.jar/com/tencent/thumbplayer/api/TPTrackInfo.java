@@ -6,11 +6,11 @@ public class TPTrackInfo
   public static final int TP_MEDIA_TRACK_TYPE_SUBTITLE = 3;
   public static final int TP_MEDIA_TRACK_TYPE_UNKNOW = 0;
   public static final int TP_MEDIA_TRACK_TYPE_VIDEO = 1;
-  public boolean isExclusive;
-  public boolean isInternal;
-  public boolean isSelected;
-  public String name;
-  public int trackType;
+  public boolean isExclusive = true;
+  public boolean isInternal = true;
+  public boolean isSelected = false;
+  public String name = "";
+  public int trackType = 0;
   
   public boolean equals(Object paramObject)
   {
@@ -32,7 +32,7 @@ public class TPTrackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPTrackInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.ExpandableListAdapter;
 import android.widget.Scroller;
-import bfwa;
-import bfwb;
-import bfwc;
+import bhwx;
+import bhwy;
+import bhwz;
 
 public class SwipPinnedHeaderExpandableListView
   extends PinnedHeaderExpandableListView
@@ -26,8 +26,8 @@ public class SwipPinnedHeaderExpandableListView
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private bfwa jdField_a_of_type_Bfwa;
-  private bfwc jdField_a_of_type_Bfwc;
+  private bhwx jdField_a_of_type_Bhwx;
+  private bhwz jdField_a_of_type_Bhwz;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -52,7 +52,7 @@ public class SwipPinnedHeaderExpandableListView
   public SwipPinnedHeaderExpandableListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new bfwb());
+    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new bhwy());
     paramContext = ViewConfiguration.get(getContext());
     this.g = paramContext.getScaledTouchSlop();
     this.e = (paramContext.getScaledMinimumFlingVelocity() * 4);
@@ -128,8 +128,8 @@ public class SwipPinnedHeaderExpandableListView
     if (paramView != null) {}
     for (int i = paramView.getScrollX();; i = 0)
     {
-      if (this.jdField_a_of_type_Bfwc != null) {
-        this.jdField_a_of_type_Bfwc.a(null);
+      if (this.jdField_a_of_type_Bhwz != null) {
+        this.jdField_a_of_type_Bhwz.a(null);
       }
       if (i != 0) {
         if (!(paramView.getTag(-3) instanceof Integer)) {
@@ -150,8 +150,8 @@ public class SwipPinnedHeaderExpandableListView
         do
         {
           return;
-        } while (this.jdField_a_of_type_Bfwa == null);
-        this.jdField_a_of_type_Bfwa.b(this.jdField_c_of_type_AndroidViewView);
+        } while (this.jdField_a_of_type_Bhwx == null);
+        this.jdField_a_of_type_Bhwx.b(this.jdField_c_of_type_AndroidViewView);
         return;
       }
     }
@@ -184,8 +184,8 @@ public class SwipPinnedHeaderExpandableListView
     {
       j = paramView.getScrollX();
       i = j;
-      if (this.jdField_a_of_type_Bfwc != null) {
-        this.jdField_a_of_type_Bfwc.a(paramView);
+      if (this.jdField_a_of_type_Bhwz != null) {
+        this.jdField_a_of_type_Bhwz.a(paramView);
       }
     }
     for (int i = j;; i = 0)
@@ -207,12 +207,12 @@ public class SwipPinnedHeaderExpandableListView
           this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, k, 0, a(j, k));
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
         }
-        while (this.jdField_a_of_type_Bfwa == null)
+        while (this.jdField_a_of_type_Bhwx == null)
         {
           int k;
           return;
         }
-        this.jdField_a_of_type_Bfwa.a(paramView);
+        this.jdField_a_of_type_Bhwx.a(paramView);
         return;
       }
     }
@@ -258,8 +258,8 @@ public class SwipPinnedHeaderExpandableListView
   
   public boolean a(View paramView)
   {
-    if (this.jdField_a_of_type_Bfwc != null) {
-      return this.jdField_a_of_type_Bfwc.a(paramView);
+    if (this.jdField_a_of_type_Bhwz != null) {
+      return this.jdField_a_of_type_Bhwz.a(paramView);
     }
     return true;
   }
@@ -324,8 +324,8 @@ public class SwipPinnedHeaderExpandableListView
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
         return true;
       }
-      if (this.jdField_a_of_type_Bfwa != null) {
-        this.jdField_a_of_type_Bfwa.a(this.jdField_c_of_type_AndroidViewView);
+      if (this.jdField_a_of_type_Bhwx != null) {
+        this.jdField_a_of_type_Bhwx.a(this.jdField_c_of_type_AndroidViewView);
       }
       this.jdField_c_of_type_AndroidViewView = null;
       return true;
@@ -341,13 +341,13 @@ public class SwipPinnedHeaderExpandableListView
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
         return true;
       }
-      if (this.jdField_a_of_type_Bfwa != null) {
-        this.jdField_a_of_type_Bfwa.b(this.jdField_c_of_type_AndroidViewView);
+      if (this.jdField_a_of_type_Bhwx != null) {
+        this.jdField_a_of_type_Bhwx.b(this.jdField_c_of_type_AndroidViewView);
       }
       this.jdField_c_of_type_AndroidViewView = null;
       return true;
-    } while (this.jdField_a_of_type_Bfwc == null);
-    this.jdField_a_of_type_Bfwc.e();
+    } while (this.jdField_a_of_type_Bhwz == null);
+    this.jdField_a_of_type_Bhwz.e();
     return true;
   }
   
@@ -371,8 +371,8 @@ public class SwipPinnedHeaderExpandableListView
       label75:
       if ((k == 0) && (this.jdField_b_of_type_Boolean))
       {
-        if (this.jdField_a_of_type_Bfwc != null) {
-          this.jdField_a_of_type_Bfwc.a(true);
+        if (this.jdField_a_of_type_Bhwz != null) {
+          this.jdField_a_of_type_Bhwz.a(true);
         }
         d();
       }
@@ -386,8 +386,8 @@ public class SwipPinnedHeaderExpandableListView
       }
       return super.onInterceptTouchEvent(paramMotionEvent);
       this.jdField_a_of_type_Byte = 0;
-      if (this.jdField_a_of_type_Bfwc != null) {
-        this.jdField_a_of_type_Bfwc.a(null);
+      if (this.jdField_a_of_type_Bhwz != null) {
+        this.jdField_a_of_type_Bhwz.a(null);
       }
       this.jdField_a_of_type_Int = j;
       this.jdField_c_of_type_Int = j;
@@ -471,8 +471,8 @@ public class SwipPinnedHeaderExpandableListView
       this.jdField_b_of_type_Int = -1;
       this.d = -1;
       break label72;
-      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_Bfwc != null)) {
-        this.jdField_a_of_type_Bfwc.a(false);
+      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_Bhwz != null)) {
+        this.jdField_a_of_type_Bhwz.a(false);
       }
     }
   }
@@ -500,8 +500,8 @@ public class SwipPinnedHeaderExpandableListView
       {
         if ((k == 0) && (this.jdField_b_of_type_Boolean))
         {
-          if (this.jdField_a_of_type_Bfwc != null) {
-            this.jdField_a_of_type_Bfwc.a(true);
+          if (this.jdField_a_of_type_Bhwz != null) {
+            this.jdField_a_of_type_Bhwz.a(true);
           }
           label112:
           bool2 = bool1;
@@ -615,10 +615,10 @@ public class SwipPinnedHeaderExpandableListView
                 a();
                 bool1 = true;
                 continue;
-                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_Bfwc == null)) {
+                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_Bhwz == null)) {
                   break label112;
                 }
-                this.jdField_a_of_type_Bfwc.a(false);
+                this.jdField_a_of_type_Bhwz.a(false);
                 break label112;
               }
               bool1 = false;
@@ -636,8 +636,8 @@ public class SwipPinnedHeaderExpandableListView
   public void setAdapter(ExpandableListAdapter paramExpandableListAdapter)
   {
     super.setAdapter(paramExpandableListAdapter);
-    if ((paramExpandableListAdapter instanceof bfwc)) {
-      this.jdField_a_of_type_Bfwc = ((bfwc)paramExpandableListAdapter);
+    if ((paramExpandableListAdapter instanceof bhwz)) {
+      this.jdField_a_of_type_Bhwz = ((bhwz)paramExpandableListAdapter);
     }
   }
   
@@ -649,19 +649,19 @@ public class SwipPinnedHeaderExpandableListView
     }
   }
   
-  public void setRightIconMenuListener(bfwa parambfwa)
+  public void setRightIconMenuListener(bhwx parambhwx)
   {
-    this.jdField_a_of_type_Bfwa = parambfwa;
+    this.jdField_a_of_type_Bhwx = parambhwx;
   }
   
-  public void setSwipListListener(bfwc parambfwc)
+  public void setSwipListListener(bhwz parambhwz)
   {
-    this.jdField_a_of_type_Bfwc = parambfwc;
+    this.jdField_a_of_type_Bhwz = parambhwz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.SwipPinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

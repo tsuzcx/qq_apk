@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
-public class aozd
-  extends aoyv
+public abstract interface aozd<T>
 {
-  int a;
-  int b;
-  
-  public aozd(FileManagerEntity paramFileManagerEntity)
-  {
-    super(paramFileManagerEntity);
-  }
+  public abstract int a(T paramT, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozd
  * JD-Core Version:    0.7.0.1
  */

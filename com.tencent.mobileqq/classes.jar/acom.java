@@ -1,25 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acom
-  implements DialogInterface.OnClickListener
 {
-  public acom(UpgradeActivity paramUpgradeActivity, bbfk parambbfk, int paramInt) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final String b;
+  private final String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acom(Conversation paramConversation, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Bbfk.d();
-    bbjm.c(true);
-    bbjm.c(this.jdField_a_of_type_Int);
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity, akuz.a().a(), false, true, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity.finish();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public void a()
+  {
+    acon localacon = new acon(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a = bdcd.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, alpo.a(2131702973), alpo.a(2131702977), localacon, localacon);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acom
  * JD-Core Version:    0.7.0.1
  */

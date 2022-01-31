@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aabg;
-import actb;
-import actc;
+import absd;
+import aekl;
+import aekm;
 import android.os.Build;
-import axrn;
-import bbkj;
+import azmz;
+import bdjd;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -13,30 +13,30 @@ import java.util.HashMap;
 public class AIOTimeReporter$1
   implements Runnable
 {
-  public AIOTimeReporter$1(actc paramactc) {}
+  public AIOTimeReporter$1(aekm paramaekm) {}
   
   public void run()
   {
-    Object localObject = actb.a();
-    actc.a(this.this$0, ((actb)localObject).a());
-    if (bbkj.a <= 0L)
+    Object localObject = aekl.a();
+    aekm.a(this.this$0, ((aekl)localObject).a());
+    if (bdjd.a <= 0L)
     {
-      actc.a(this.this$0);
+      aekm.a(this.this$0);
       return;
     }
     String str = "";
-    switch (actc.a(this.this$0))
+    switch (aekm.a(this.this$0))
     {
     default: 
       return;
     case 1: 
-      switch (((actb)localObject).a)
+      switch (((aekl)localObject).a)
       {
       default: 
-        if (aabg.a().a())
+        if (absd.a().a())
         {
           localObject = new HashMap();
-          ((HashMap)localObject).put("hcState", String.valueOf(aabg.a().a()));
+          ((HashMap)localObject).put("hcState", String.valueOf(absd.a().a()));
           ((HashMap)localObject).put("model", Build.MODEL);
         }
         break;
@@ -45,65 +45,65 @@ public class AIOTimeReporter$1
     }
     for (;;)
     {
-      axrn.a(BaseApplication.getContext()).a(null, str, true, bbkj.a, 0L, (HashMap)localObject, "");
+      azmz.a(BaseApplication.getContext()).a(null, str, true, bdjd.a, 0L, (HashMap)localObject, "");
       if (QLog.isDevelopLevel()) {
-        QLog.d(this.this$0.a, 4, "reportAIOTime: " + str + " cost : " + bbkj.a);
+        QLog.d(this.this$0.a, 4, "reportAIOTime: " + str + " cost : " + bdjd.a);
       }
-      actc.a(this.this$0);
+      aekm.a(this.this$0);
       return;
-      if (!actc.a(this.this$0).equalsIgnoreCase("0"))
+      if (!aekm.a(this.this$0).equalsIgnoreCase("0"))
       {
-        str = actc.a();
+        str = aekm.a();
         break;
       }
-      str = actc.b();
+      str = aekm.b();
       break;
-      if (!actc.a(this.this$0).equalsIgnoreCase("0"))
+      if (!aekm.a(this.this$0).equalsIgnoreCase("0"))
       {
-        str = actc.c();
+        str = aekm.c();
         break;
       }
-      str = actc.d();
+      str = aekm.d();
       break;
-      switch (((actb)localObject).a)
+      switch (((aekl)localObject).a)
       {
       }
       for (;;)
       {
         break;
-        if (!actc.a(this.this$0).equalsIgnoreCase("0"))
+        if (!aekm.a(this.this$0).equalsIgnoreCase("0"))
         {
-          str = actc.e();
+          str = aekm.e();
         }
         else
         {
-          str = actc.f();
+          str = aekm.f();
           continue;
-          if (!actc.a(this.this$0).equalsIgnoreCase("0")) {
-            str = actc.g();
+          if (!aekm.a(this.this$0).equalsIgnoreCase("0")) {
+            str = aekm.g();
           } else {
-            str = actc.h();
+            str = aekm.h();
           }
         }
       }
-      switch (((actb)localObject).a)
+      switch (((aekl)localObject).a)
       {
       }
       for (;;)
       {
         break;
-        if (!actc.a(this.this$0).equalsIgnoreCase("0"))
+        if (!aekm.a(this.this$0).equalsIgnoreCase("0"))
         {
-          str = actc.i();
+          str = aekm.i();
         }
         else
         {
-          str = actc.j();
+          str = aekm.j();
           continue;
-          if (!actc.a(this.this$0).equalsIgnoreCase("0")) {
-            str = actc.k();
+          if (!aekm.a(this.this$0).equalsIgnoreCase("0")) {
+            str = aekm.k();
           } else {
-            str = actc.l();
+            str = aekm.l();
           }
         }
       }
@@ -113,7 +113,7 @@ public class AIOTimeReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTimeReporter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,16 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import behp;
-import bekr;
-import betc;
+import bghn;
+import bgkd;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class InputJsPlugin$5
   implements TextWatcher
 {
-  InputJsPlugin$5(InputJsPlugin paramInputJsPlugin, bekr parambekr) {}
+  InputJsPlugin$5(InputJsPlugin paramInputJsPlugin, bgkd parambgkd) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
@@ -24,7 +24,7 @@ class InputJsPlugin$5
     }
     catch (JSONException paramEditable)
     {
-      betc.d("NetworkJsPlugin", "afterTextChanged callback exception", paramEditable);
+      QMLog.e("NetworkJsPlugin", "afterTextChanged callback exception", paramEditable);
     }
   }
   
@@ -34,7 +34,7 @@ class InputJsPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.InputJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

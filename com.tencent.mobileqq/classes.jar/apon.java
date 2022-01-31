@@ -1,76 +1,63 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public abstract class apon
+class apon
+  extends alnb
 {
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = true;
+  final WeakReference<apoj> a;
   
-  public abstract Intent a();
-  
-  public SessionInfo a()
+  public apon(apoj paramapoj)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.a = new WeakReference(paramapoj);
   }
   
-  public ChatMessage a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return null;
-  }
-  
-  public void a(SessionInfo paramSessionInfo) {}
-  
-  public void a(ChatMessage paramChatMessage) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(Bundle paramBundle) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  boolean c()
-  {
-    return false;
-  }
-  
-  boolean d()
-  {
-    return false;
-  }
-  
-  public boolean e()
-  {
-    return this.b;
-  }
-  
-  public boolean f()
-  {
-    return this.c;
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func onEmosmBack begins, isSuccess:" + paramBoolean + ",type:" + paramInt);
+    }
+    if ((!paramBoolean) || (paramObject == null) || (paramInt != 3)) {}
+    do
+    {
+      apoj localapoj;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            localapoj = (apoj)this.a.get();
+            if (localapoj == null)
+            {
+              QLog.d("SogouEmoji", 2, "WeakReference error");
+              return;
+            }
+            paramObject = (EmoticonResp)paramObject;
+          } while (paramObject.data == null);
+          paramObject = (ArrayList)paramObject.data;
+        } while (paramObject.size() == 0);
+        paramBoolean = localapoj.a.a(localapoj.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiKeyBack begins, isTaskExist:" + paramBoolean);
+        }
+        if (paramBoolean) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, task CANCELLED by user.");
+      return;
+      localapoj.a((Emoticon)paramObject.get(0));
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, Ready to send.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apon
  * JD-Core Version:    0.7.0.1
  */

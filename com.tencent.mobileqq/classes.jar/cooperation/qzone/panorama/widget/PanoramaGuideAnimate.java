@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bhhz;
-import bhia;
+import bjjk;
+import bjjl;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,10 +21,10 @@ public class PanoramaGuideAnimate
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bhhz(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bjjk(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhia jdField_a_of_type_Bhia;
+  private bjjl jdField_a_of_type_Bjjl;
   private Timer jdField_a_of_type_JavaUtilTimer;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask;
   private float b;
@@ -66,13 +66,13 @@ public class PanoramaGuideAnimate
     setOrientation(1);
     setGravity(1);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846707);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847074);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(100, 100);
     localLayoutParams.bottomMargin = 20;
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718009));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718384));
     }
     for (;;)
     {
@@ -84,18 +84,18 @@ public class PanoramaGuideAnimate
       this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
       a();
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718010));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718385));
     }
   }
   
-  public void setOnAnimateListener(bhia parambhia)
+  public void setOnAnimateListener(bjjl parambjjl)
   {
-    this.jdField_a_of_type_Bhia = parambhia;
+    this.jdField_a_of_type_Bjjl = parambjjl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaGuideAnimate
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.Window;
-import bhwf;
+import bjxq;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
 import com.tencent.image.ApngImage;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,35 +27,35 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nol;
-import nsc;
-import ntr;
-import olj;
-import onh;
-import onz;
-import oou;
+import nrt;
+import nvp;
+import nww;
 import opt;
-import osj;
-import osx;
-import oug;
-import ouh;
-import oui;
-import pqh;
-import pyn;
-import sea;
+import ors;
+import osk;
+import otf;
+import ouk;
+import oxb;
+import oxp;
+import ozk;
+import ozl;
+import ozm;
+import pxc;
+import qhl;
+import svt;
 
 public class ReadInJoyDailyFragment
   extends PublicBaseFragment
 {
   public static List<String> a;
-  private static onz jdField_a_of_type_Onz = new onz();
+  private static osk jdField_a_of_type_Osk = new osk();
   private int jdField_a_of_type_Int = 5;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ouh(this);
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new oug(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ozl(this);
+  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ozk(this);
   private View jdField_a_of_type_AndroidViewView;
   private Runnable jdField_a_of_type_JavaLangRunnable = new ReadInJoyDailyFragment.1(this);
-  private nsc jdField_a_of_type_Nsc;
-  private ntr jdField_a_of_type_Ntr;
+  private nvp jdField_a_of_type_Nvp;
+  private nww jdField_a_of_type_Nww;
   private boolean jdField_a_of_type_Boolean;
   private View b;
   
@@ -65,7 +66,7 @@ public class ReadInJoyDailyFragment
   
   private void a(int paramInt)
   {
-    osj.a().a(new oui(this, paramInt));
+    oxb.a().a(new ozm(this, paramInt));
   }
   
   private void a(Intent paramIntent)
@@ -76,20 +77,20 @@ public class ReadInJoyDailyFragment
       do
       {
         return;
-        olj.a(paramIntent);
+        opt.a(paramIntent);
       } while (!b());
-      paramIntent = onh.a();
+      paramIntent = ors.a();
     } while (paramIntent == null);
     KandianMergeManager localKandianMergeManager = (KandianMergeManager)paramIntent.getManager(162);
     localKandianMergeManager.c();
     localKandianMergeManager.s();
-    onh.f(paramIntent);
-    onh.a(false);
+    ors.f(paramIntent);
+    ors.a(false);
   }
   
   private void a(String paramString)
   {
-    if (oou.b(oou.b())) {}
+    if (otf.b(otf.b())) {}
     for (String str = "0X80089D1";; str = "0X80098B0")
     {
       ThreadManager.executeOnSubThread(new ReadInJoyDailyFragment.4(this, paramString, str));
@@ -104,9 +105,9 @@ public class ReadInJoyDailyFragment
   
   public static void b()
   {
-    if (jdField_a_of_type_Onz != null)
+    if (jdField_a_of_type_Osk != null)
     {
-      jdField_a_of_type_Onz.b();
+      jdField_a_of_type_Osk.b();
       QLog.d("ReadInJoyDailyFragment", 2, "stopTimeCalculateWhenInBackground");
     }
   }
@@ -118,9 +119,9 @@ public class ReadInJoyDailyFragment
   
   public static void c()
   {
-    if (jdField_a_of_type_Onz != null)
+    if (jdField_a_of_type_Osk != null)
     {
-      jdField_a_of_type_Onz.a();
+      jdField_a_of_type_Osk.a();
       QLog.d("ReadInJoyDailyFragment", 2, "wakeUpTimeCalculateWhenInForeground");
     }
   }
@@ -148,16 +149,16 @@ public class ReadInJoyDailyFragment
   
   private void g()
   {
-    jdField_a_of_type_Onz.c();
+    jdField_a_of_type_Osk.c();
     QLog.d("ReadInJoyDailyFragment", 2, "resetTime when create");
   }
   
   public void a()
   {
-    if (ThemeUtil.isNowThemeIsNight(onh.a(), false, null))
+    if (ThemeUtil.isNowThemeIsNight(ors.a(), false, null))
     {
       if (this.b == null) {
-        this.b = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131364886)).inflate();
+        this.b = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131364973)).inflate();
       }
       if (this.b != null) {
         this.b.setVisibility(0);
@@ -181,18 +182,38 @@ public class ReadInJoyDailyFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Ntr != null) {
-      this.jdField_a_of_type_Ntr.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Nww != null) {
+      this.jdField_a_of_type_Nww.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public boolean onBackEvent()
+  {
+    if ((getActivity() != null) && (getActivity().getIntent() != null) && (getActivity().getIntent().hasExtra("launch_from")))
+    {
+      int i = getActivity().getIntent().getIntExtra("launch_from", 0);
+      if ((i == 9) || (i == 6))
+      {
+        Intent localIntent = new Intent(getActivity(), SplashActivity.class);
+        localIntent.putExtra("fragment_id", 1);
+        localIntent.putExtra("open_kandian_tab_fragment", true);
+        localIntent.putExtra("arg_channel_cover_id", 0);
+        localIntent.setFlags(335544320);
+        getActivity().startActivity(localIntent);
+      }
+    }
+    return super.onBackEvent();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    opt.a(getActivity().app);
+    opt.c();
     jdField_a_of_type_JavaUtilList.add(String.valueOf(hashCode()));
-    pyn.a().a(pyn.d, 1);
-    sea.a();
+    qhl.a().a(qhl.d, 1);
+    svt.a();
     paramBundle = getActivity();
     if (paramBundle != null)
     {
@@ -203,13 +224,13 @@ public class ReadInJoyDailyFragment
       a((Intent)localObject);
     }
     ThreadManager.getFileThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 20000L);
-    pqh.a().a();
+    pxc.a().a();
     a(0);
     f();
     Object localObject = getArguments();
     if (this.jdField_a_of_type_Int == 15)
     {
-      onh.c = true;
+      ors.c = true;
       QLog.d("ReadInJoyDailyFragment", 1, "from aio share");
     }
     for (int i = 1;; i = 0)
@@ -223,11 +244,15 @@ public class ReadInJoyDailyFragment
         {
           QLog.d("ReadInJoyDailyFragment", 1, "openFloatingWindow is true");
           i = ((Bundle)localObject).getInt("floating_window_business");
-          bhwf.a(paramBundle, ((Bundle)localObject).getInt("floating_window_scene"), i, (Bundle)localObject);
+          int j = ((Bundle)localObject).getInt("floating_window_scene");
+          bjxq.a(paramBundle, j, i, (Bundle)localObject, otf.b());
+          if ((j == 1) && ((i != 1) || (bjxq.a((Bundle)localObject)))) {
+            opt.a(32);
+          }
         }
       }
       d();
-      onh.g();
+      ors.i();
       g();
       return;
     }
@@ -235,19 +260,19 @@ public class ReadInJoyDailyFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    opt.a();
-    oou.b();
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559891, paramViewGroup, false);
-    osx.b(0, olj.a(), 0);
-    oou.b();
-    this.jdField_a_of_type_Ntr = new ntr(getActivity());
-    this.jdField_a_of_type_Ntr.a(oou.b());
-    paramLayoutInflater = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374833);
-    this.jdField_a_of_type_Ntr.a(paramLayoutInflater);
-    this.jdField_a_of_type_Ntr.a();
-    this.jdField_a_of_type_Nsc = new nsc(this.jdField_a_of_type_Ntr.a());
-    this.jdField_a_of_type_Nsc.a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_Nsc.a(this.jdField_a_of_type_AndroidViewView);
+    ouk.a();
+    otf.b();
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559987, paramViewGroup, false);
+    oxp.b(0, opt.a(), 0);
+    otf.b();
+    this.jdField_a_of_type_Nww = new nww(getActivity());
+    this.jdField_a_of_type_Nww.a(otf.b());
+    paramLayoutInflater = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375298);
+    this.jdField_a_of_type_Nww.a(paramLayoutInflater);
+    this.jdField_a_of_type_Nww.a();
+    this.jdField_a_of_type_Nvp = new nvp(this.jdField_a_of_type_Nww.a());
+    this.jdField_a_of_type_Nvp.a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_Nvp.a(this.jdField_a_of_type_AndroidViewView);
     a();
     return this.jdField_a_of_type_AndroidViewView;
   }
@@ -256,19 +281,19 @@ public class ReadInJoyDailyFragment
   {
     super.onDestroy();
     jdField_a_of_type_JavaUtilList.remove(String.valueOf(hashCode()));
-    sea.b();
-    if (this.jdField_a_of_type_Ntr != null) {
-      this.jdField_a_of_type_Ntr.d();
+    svt.b();
+    if (this.jdField_a_of_type_Nww != null) {
+      this.jdField_a_of_type_Nww.d();
     }
     ThreadManager.getFileThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    pqh.a().b();
+    pxc.a().b();
     a(5);
     e();
   }
   
   public void onDestroyView()
   {
-    this.jdField_a_of_type_Nsc.a();
+    this.jdField_a_of_type_Nvp.a();
     super.onDestroyView();
   }
   
@@ -280,16 +305,16 @@ public class ReadInJoyDailyFragment
       this.jdField_a_of_type_Int = paramIntent.getIntExtra("launch_from", 5);
     }
     a(paramIntent);
-    if (this.jdField_a_of_type_Ntr != null) {
-      this.jdField_a_of_type_Ntr.j();
+    if (this.jdField_a_of_type_Nww != null) {
+      this.jdField_a_of_type_Nww.j();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Ntr != null) {
-      this.jdField_a_of_type_Ntr.g();
+    if (this.jdField_a_of_type_Nww != null) {
+      this.jdField_a_of_type_Nww.g();
     }
     ApngImage.pauseByTag(31);
     a(3);
@@ -298,23 +323,23 @@ public class ReadInJoyDailyFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Ntr != null) {
-      this.jdField_a_of_type_Ntr.h();
+    if (this.jdField_a_of_type_Nww != null) {
+      this.jdField_a_of_type_Nww.h();
     }
     RecommendFeedsDiandianEntranceManager.a().a();
     ApngImage.playByTag(31);
     a(2);
-    nol.a(null, "", "0X8009940", "0X8009940", 0, 0, "", "", "", "", false);
+    nrt.a(null, "", "0X8009940", "0X8009940", 0, 0, "", "", "", "", false);
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Ntr != null) {
-      this.jdField_a_of_type_Ntr.e();
+    if (this.jdField_a_of_type_Nww != null) {
+      this.jdField_a_of_type_Nww.e();
     }
-    if (jdField_a_of_type_Onz != null) {
-      jdField_a_of_type_Onz.a();
+    if (jdField_a_of_type_Osk != null) {
+      jdField_a_of_type_Osk.a();
     }
     a(1);
   }
@@ -322,32 +347,32 @@ public class ReadInJoyDailyFragment
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Ntr != null) {
-      this.jdField_a_of_type_Ntr.f();
+    if (this.jdField_a_of_type_Nww != null) {
+      this.jdField_a_of_type_Nww.f();
     }
-    if ((!BaseActivity.mAppForground) && (jdField_a_of_type_Onz != null)) {
-      jdField_a_of_type_Onz.b();
+    if ((!BaseActivity.mAppForground) && (jdField_a_of_type_Osk != null)) {
+      jdField_a_of_type_Osk.b();
     }
     if (getActivity().isFinishing())
     {
-      if (this.jdField_a_of_type_Ntr != null) {
-        this.jdField_a_of_type_Ntr.c();
+      if (this.jdField_a_of_type_Nww != null) {
+        this.jdField_a_of_type_Nww.c();
       }
-      pyn.a().c();
-      osx.b(1, olj.a(), olj.b());
+      qhl.a().c();
+      oxp.b(1, opt.a(), opt.b());
       if (!this.jdField_a_of_type_Boolean) {
-        a(olj.a());
+        a(opt.a());
       }
-      olj.b();
-      onh.c = false;
-      oou.c();
+      opt.b();
+      ors.c = false;
+      otf.c();
     }
     a(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment
  * JD-Core Version:    0.7.0.1
  */

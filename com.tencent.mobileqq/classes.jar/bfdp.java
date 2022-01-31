@@ -1,19 +1,13 @@
-import android.webkit.ValueCallback;
-import com.tencent.tissue.v8rt.engine.Callback;
-
-class bfdp
-  implements Callback
+public class bfdp
 {
-  bfdp(bfdn parambfdn, ValueCallback paramValueCallback) {}
-  
-  public void onFinish(Object paramObject)
+  public static String a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(null);
+    return String.format("http://q.qlogo.cn/qqapp/%s/%s/%d", new Object[] { paramString1, paramString2, Short.valueOf(100) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfdp
  * JD-Core Version:    0.7.0.1
  */

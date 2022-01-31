@@ -1,157 +1,29 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
-public abstract class apqr
+class apqr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public Activity a;
-  protected Bundle a;
-  public View a;
-  protected ViewGroup a;
-  protected ProgressBar a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected apqs a;
-  protected View b;
-  protected TextView b;
-  protected TextView c;
+  apqr(apqq paramapqq, int paramInt) {}
   
-  public apqr(Activity paramActivity)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public Rect a()
-  {
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      return (Rect)this.jdField_a_of_type_AndroidOsBundle.getParcelable("file_browser_params_thumb_bound");
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i == this.jdField_a_of_type_Int) {
+      AbstractGifImage.resumeAll();
     }
-    return null;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131377674));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377641));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377650));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365774));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377640);
-    }
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void a(apqs paramapqs)
-  {
-    this.jdField_a_of_type_Apqs = paramapqs;
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-  }
-  
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if (this.c == null) {
-      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371063));
-    }
-    if (this.c != null)
-    {
-      this.c.setText(paramString);
-      this.c.setOnClickListener(paramOnClickListener);
-      this.c.setVisibility(0);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    TextView localTextView;
-    if (this.c != null)
-    {
-      localTextView = this.c;
-      if (!paramBoolean) {
-        break label24;
-      }
-    }
-    label24:
-    for (int i = 0;; i = 4)
-    {
-      localTextView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_AndroidViewView != null) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    RelativeLayout localRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      if (!paramBoolean) {
-        break label24;
-      }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localRelativeLayout.setVisibility(i);
-      return;
+    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
+    if (apqq.a(this.jdField_a_of_type_Apqq).getParent() != null) {
+      apqq.a(this.jdField_a_of_type_Apqq).getParent().requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apqr
  * JD-Core Version:    0.7.0.1
  */

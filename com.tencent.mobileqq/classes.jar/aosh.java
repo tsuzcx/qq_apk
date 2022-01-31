@@ -1,50 +1,91 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aosh
-  implements View.OnClickListener
+  implements aoga<String>
 {
-  public aosh(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public String a;
+  public ArrayList<aosi> a;
+  private String b = "place_holder";
+  private String c = "data";
+  private String d = "topic_id";
+  private String e = "topic_name";
   
-  public void onClick(View paramView)
+  public aosh()
   {
-    if (paramView == null)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (TextUtils.isEmpty(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
-      }
+      QLog.e("SigTopicConfig", 1, "SigTopic config content is empty");
       return;
-    }
-    FileInfo localFileInfo = (FileInfo)paramView.getTag();
-    if (localFileInfo != null)
-    {
-      if (this.a.jdField_a_of_type_Aoqb != null) {
-        this.a.jdField_a_of_type_Aoqb.a(null);
-      }
-      if (!apvd.c(localFileInfo.c())) {
-        break label99;
-      }
-      this.a.a(localFileInfo);
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Aoqb.a(Integer.valueOf(-1));
-      paramView.setVisibility(4);
-      this.a.f();
-      return;
-      label99:
-      String str = QfileBaseLocalFileTabView.a(this.a).getString(2131692412);
-      aptx.a(apug.d(localFileInfo.d()) + str);
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        paramString = localJSONObject.optJSONArray(this.c);
+        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, alpo.a(2131714538));
+        if (paramString == null) {
+          break;
+        }
+        i = 0;
+        if (i >= paramString.length()) {
+          break;
+        }
+        localJSONObject = paramString.getJSONObject(i);
+        localaosi = new aosi();
+        localaosi.jdField_a_of_type_Int = localJSONObject.optInt(this.d);
+        localaosi.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.e);
+        if (!TextUtils.isEmpty(localaosi.jdField_a_of_type_JavaLangString)) {
+          break label193;
+        }
+        if (!QLog.isColorLevel()) {
+          break label198;
+        }
+        QLog.e("SigTopicConfig", 2, new Object[] { "SigTopic config parse has invalid item,index=", Integer.valueOf(i) });
+      }
+      catch (JSONException paramString)
+      {
+        int i;
+        aosi localaosi;
+        QLog.e("SigTopicConfig", 1, "SigTopic config parse exception", paramString);
+        return;
+      }
+      if (j != 0) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(localaosi);
+      }
+      i += 1;
+      continue;
+      label193:
+      int j = 1;
+      continue;
+      label198:
+      j = 0;
     }
+  }
+  
+  public String toString()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      return "recommend title is " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilArrayList.toString();
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aosh
  * JD-Core Version:    0.7.0.1
  */

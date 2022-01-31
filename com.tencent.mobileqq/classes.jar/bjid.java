@@ -1,64 +1,83 @@
-import android.text.Spanned;
+import android.os.Build;
 import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
-class bjid
-  extends bkda
+public class bjid
 {
-  bjid(bjia parambjia, int paramInt)
-  {
-    super(paramInt);
-  }
+  private static int a = -1;
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public static boolean a()
   {
-    String str1;
-    String str2;
-    int i;
-    if (this.jdField_a_of_type_Bjia.b() == 0)
-    {
-      str1 = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-      str2 = bakx.b(str1);
-      String[] arrayOfString = this.jdField_a_of_type_Bjia.a(str2).split("\n");
-      int m = arrayOfString.length;
-      int j = 0;
-      i = 0;
-      if (j < m)
-      {
-        int k = arrayOfString[j].length();
-        int n = k / 5;
-        if (k % 5 > 0) {}
-        for (k = 1;; k = 0)
-        {
-          i += k + n;
-          j += 1;
-          break;
-        }
-      }
-      if (!TextUtils.equals(paramCharSequence, "\n")) {
-        break label261;
-      }
-      i += 1;
-    }
-    label261:
+    boolean bool = true;
     for (;;)
     {
-      if (i > 4)
+      try
       {
-        if (!TextUtils.equals("", paramCharSequence)) {
-          a();
+        int i;
+        if (a != -1)
+        {
+          i = a;
+          if (i == 1) {
+            return bool;
+          }
+          bool = false;
+          continue;
         }
-        return "";
+        Object localObject1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_module_black_list", "");
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          if (TextUtils.isEmpty(""))
+          {
+            if (TextUtils.isEmpty((CharSequence)localObject1))
+            {
+              a = 0;
+              bool = false;
+            }
+          }
+          else
+          {
+            localObject1 = "" + "," + (String)localObject1;
+            continue;
+          }
+          try
+          {
+            localObject1 = ((String)localObject1).split(",");
+            String str2 = Build.MODEL.toLowerCase();
+            String str3 = Build.MANUFACTURER.toLowerCase();
+            QLog.i("QzoneModuleCompat", 1, "Device info -- model: " + str2 + ", manufacturer: " + str3 + ", platform: " + System.getProperty("ro.board.platform"));
+            int j = localObject1.length;
+            i = 0;
+            if (i < j)
+            {
+              Object localObject3 = localObject1[i];
+              if ((!localObject3.contains(str2)) && (!localObject3.equals(str3))) {
+                continue;
+              }
+              a = 1;
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("QzoneModuleCompat", 1, "catch an exception:", localThrowable);
+            a = 0;
+            bool = false;
+          }
+          continue;
+          i += 1;
+        }
+        else
+        {
+          String str1 = "";
+        }
       }
-      this.jdField_a_of_type_Int = (str1.length() - str2.length() + 20);
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      this.jdField_a_of_type_Int = 20;
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      finally {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjid
  * JD-Core Version:    0.7.0.1
  */

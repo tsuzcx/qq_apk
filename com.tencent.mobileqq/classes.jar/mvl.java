@@ -1,28 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.av.widget.stageview.StageEffectView.5.1;
-import com.tencent.av.widget.stageview.StageMemberView;
+import android.app.PendingIntent;
 
-public class mvl
-  implements Animation.AnimationListener
+class mvl
 {
-  public void onAnimationEnd(Animation paramAnimation)
+  public final int a;
+  public final PendingIntent a;
+  public final String a;
+  
+  public mvl(int paramInt, String paramString, PendingIntent paramPendingIntent)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.post(new StageEffectView.5.1(this));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvl
  * JD-Core Version:    0.7.0.1
  */

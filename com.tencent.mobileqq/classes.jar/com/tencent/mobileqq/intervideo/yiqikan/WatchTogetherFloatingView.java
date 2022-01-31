@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import arlb;
+import atbp;
 import com.tencent.biz.ui.TouchWebView;
 
 public class WatchTogetherFloatingView
@@ -23,7 +23,7 @@ public class WatchTogetherFloatingView
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private arlb jdField_a_of_type_Arlb = new arlb(this);
+  private atbp jdField_a_of_type_Atbp = new atbp(this);
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   
   public WatchTogetherFloatingView(Context paramContext)
@@ -34,11 +34,11 @@ public class WatchTogetherFloatingView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131560635, this, true));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375370));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378249));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369407));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368675));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131560810, this, true));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375855));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378818));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369656));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368882));
   }
   
   private void c()
@@ -47,10 +47,10 @@ public class WatchTogetherFloatingView
     String str;
     if ((getParent() instanceof FrameLayout))
     {
-      localView = ((FrameLayout)getParent().getParent()).findViewById(2131373158);
+      localView = ((FrameLayout)getParent().getParent()).findViewById(2131373607);
       if (localView != null)
       {
-        str = getContext().getString(2131699596);
+        str = getContext().getString(2131699951);
         switch (this.jdField_a_of_type_Int)
         {
         }
@@ -60,11 +60,11 @@ public class WatchTogetherFloatingView
     {
       localView.setContentDescription(str);
       return;
-      str = getContext().getString(2131699594);
+      str = getContext().getString(2131699949);
       continue;
-      str = getContext().getString(2131699596);
+      str = getContext().getString(2131699951);
       continue;
-      str = getContext().getString(2131699593);
+      str = getContext().getString(2131699948);
     }
   }
   
@@ -75,7 +75,7 @@ public class WatchTogetherFloatingView
   
   public void a()
   {
-    this.jdField_a_of_type_Arlb.sendEmptyMessage(3);
+    this.jdField_a_of_type_Atbp.sendEmptyMessage(3);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
@@ -102,7 +102,9 @@ public class WatchTogetherFloatingView
   public void a(String paramString)
   {
     a(true);
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    {
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("about:blank");
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(paramString);
     }
   }
@@ -111,7 +113,7 @@ public class WatchTogetherFloatingView
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Arlb.sendEmptyMessage(1);
+      this.jdField_a_of_type_Atbp.sendEmptyMessage(1);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -120,7 +122,7 @@ public class WatchTogetherFloatingView
     {
       c();
       return;
-      this.jdField_a_of_type_Arlb.sendEmptyMessage(3);
+      this.jdField_a_of_type_Atbp.sendEmptyMessage(3);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);

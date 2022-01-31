@@ -1,33 +1,59 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqob
+class aqob
+  implements aqnr
 {
-  public int a;
-  public long a;
-  public MessageForShortVideo a;
-  String jdField_a_of_type_JavaLangString;
-  public String[] a;
+  aqob(aqoa paramaqoa, String paramString, aqot paramaqot) {}
   
-  public aqob(aqny paramaqny, String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2DiscTaskExcuter faild");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqoa.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Aqot.a(aqnw.a(this.jdField_a_of_type_Aqoa.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
+    }
   }
   
-  public boolean a()
+  public void a(String paramString)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    aqmd.a().a().a(" LongVideoUrlCacheManager", 4, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + aqny.a());
-    return l2 < aqny.a();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "2");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqoa.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqoa.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqoa.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqoa.d);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqoa.e);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqoa.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter success");
+    }
+    this.jdField_a_of_type_Aqot.a(paramString, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqob
  * JD-Core Version:    0.7.0.1
  */

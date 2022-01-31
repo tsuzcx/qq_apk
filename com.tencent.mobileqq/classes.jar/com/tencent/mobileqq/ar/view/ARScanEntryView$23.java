@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.view;
 
-import akzk;
-import albj;
-import alky;
+import amqa;
+import amrz;
+import anbo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import axqy;
+import azmj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
@@ -18,14 +18,14 @@ import com.tencent.qphone.base.util.BaseApplication;
 class ARScanEntryView$23
   implements Runnable
 {
-  ARScanEntryView$23(ARScanEntryView paramARScanEntryView, albj paramalbj, int paramInt, boolean paramBoolean) {}
+  ARScanEntryView$23(ARScanEntryView paramARScanEntryView, amrz paramamrz, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Albj.a.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Albj.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (this.jdField_a_of_type_Albj.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_Albj.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int == 0)) {
-      if (this.jdField_a_of_type_Albj.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.b)
+    if ((this.jdField_a_of_type_Amrz.a.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int == 0)) {
+      if (this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.b)
       {
-        axqy.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Albj.a.b, "1", "1", "");
+        azmj.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Amrz.a.b, "1", "1", "");
         ARScanEntryView.a(this.this$0, true);
         if (ARScanEntryView.a(this.this$0) != null)
         {
@@ -38,14 +38,14 @@ class ARScanEntryView$23
     do
     {
       return;
-      axqy.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Albj.a.b, "1", "0", "");
-      if (this.jdField_a_of_type_Albj.a.c()) {
-        axqy.b(null, "CliOper", "", "", "0X80098D0", "0X80098D0", 0, 0, this.jdField_a_of_type_Albj.a.b, "1", "0", "");
+      azmj.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Amrz.a.b, "1", "0", "");
+      if (this.jdField_a_of_type_Amrz.a.c()) {
+        azmj.b(null, "CliOper", "", "", "0X80098D0", "0X80098D0", 0, 0, this.jdField_a_of_type_Amrz.a.b, "1", "0", "");
       }
       Object localObject = (Activity)this.this$0.jdField_a_of_type_AndroidContentContext;
-      String str = this.jdField_a_of_type_Albj.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
+      String str = this.jdField_a_of_type_Amrz.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
       ((Activity)localObject).setResult(11);
-      akzk.a().b(2);
+      amqa.a().b(2);
       if (this.this$0.a(str))
       {
         localObject = new Intent("android.intent.action.VIEW");
@@ -74,7 +74,7 @@ class ARScanEntryView$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.23
  * JD-Core Version:    0.7.0.1
  */

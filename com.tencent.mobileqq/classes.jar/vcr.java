@@ -1,18 +1,27 @@
-import android.widget.TextView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class vcr
-  implements svz
+public class vcr
+  extends unf
 {
-  vcr(vcp paramvcp, TextView paramTextView) {}
+  public int b;
+  public int c;
   
-  public void a(String paramString, int paramInt)
+  public vcr(qqstory_service.RspGetBlackList paramRspGetBlackList)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131707530) + paramInt + "%");
+    super(paramRspGetBlackList.result);
+    this.b = paramRspGetBlackList.black_status.get();
+    this.c = paramRspGetBlackList.update_interval.get();
+  }
+  
+  public String toString()
+  {
+    return "GetBlackListStatusResponse{blackStatus=" + this.b + ", updateInterval=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcr
  * JD-Core Version:    0.7.0.1
  */

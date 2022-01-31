@@ -1,26 +1,30 @@
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class tsb
-  extends syr<tnn, tno>
+  implements skr
 {
-  public tsb(StoryShareEncryptHelper.2 param2, long paramLong, bcqf parambcqf) {}
+  public tsb(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
   
-  public void a(@NonNull tnn paramtnn, @Nullable tno paramtno, @NonNull ErrorMessage paramErrorMessage)
+  public View a(ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramtno);
+    return LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131560550, paramViewGroup, false);
+  }
+  
+  public void a(sko paramsko1, @Nullable sko paramsko2, int paramInt)
+  {
+    if (paramsko1 != null) {
+      QCircleFolderFragmentsPart.a(this.a, paramsko1.a(), 1);
     }
-    vei.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$2.a.a(paramtno, this.jdField_a_of_type_Bcqf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsb
  * JD-Core Version:    0.7.0.1
  */

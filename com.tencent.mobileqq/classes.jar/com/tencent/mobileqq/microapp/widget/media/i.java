@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.widget.media;
 
 import android.content.Context;
 import android.content.Intent;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.microapp.appbrand.a;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.microapp.c.a.a;
@@ -15,7 +15,7 @@ final class i
   public void a(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (bbkk.a(paramContext)) {}
+    if (bdje.a(paramContext)) {}
     do
     {
       do
@@ -34,7 +34,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.i
  * JD-Core Version:    0.7.0.1
  */

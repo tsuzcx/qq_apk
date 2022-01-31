@@ -1,90 +1,170 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.QLog;
 
-class azuj
-  extends xba
+public class azuj
+  extends azqk
 {
-  azuj(azui paramazui) {}
+  protected boolean a;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  protected int b()
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
-    boolean bool;
-    do
+    return 2;
+  }
+  
+  @TargetApi(16)
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("pre_dialog", false);
+    Resources localResources = paramContext.getResources();
+    AbsShareMsg localAbsShareMsg = (AbsShareMsg)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+    int i = aekt.a(10.0F, localResources);
+    if (paramView == null)
     {
-      String str;
-      do
+      paramBundle = new LinearLayout(paramContext);
+      paramBundle.setOrientation(1);
+      azul localazul = new azul(null);
+      paramBundle.setTag(2131374038, localazul);
+      paramView = paramBundle.getLayoutParams();
+      if (paramView == null)
       {
-        return;
-        str = paramBundle.getString("itemKey");
-      } while ((str == null) || (!UUID.fromString(str).equals(this.a.a())) || (this.a.jdField_a_of_type_Boolean));
-      i = paramBundle.getInt("thumbNail");
-      bool = paramBundle.getBoolean("isPreview", false);
-    } while ((i == 0) || (bool) || (i != this.a.jdField_a_of_type_Int));
-    if ((paramDownloadFileRspBody == null) || (!paramBoolean))
-    {
-      azst.a("TroopFileDownloadWorker", azst.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult isSuccess:false  errCode:" + paramInt);
-      this.a.c(bamw.A);
-      return;
-    }
-    int i = paramDownloadFileRspBody.int32_ret_code.get();
-    azst.c("TroopFileDownloadWorker", azst.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult isSuccess:true  errCode:" + paramInt + " retCode:" + i);
-    if (i < 0)
-    {
-      if ((i != -103) && (i != -302) && (i != -301)) {
-        break label779;
+        paramView = new LinearLayout.LayoutParams(-1, -2);
+        paramBundle.setLayoutParams(paramView);
+        paramView = new TextView(paramContext);
+        paramView.setSingleLine(true);
+        paramView.setCompoundDrawablePadding(i);
+        paramView.setGravity(16);
+        paramView.setEllipsize(TextUtils.TruncateAt.END);
+        paramView.setTextColor(-16777216);
+        paramView.setTextSize(2, 16.0F);
+        paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        paramView.setPadding(i, i, i, i);
+        paramBundle.addView(paramView);
+        TextView localTextView = new TextView(paramContext);
+        localTextView.setTextColor(-16777216);
+        localTextView.setMaxLines(2);
+        localTextView.setEllipsize(TextUtils.TruncateAt.END);
+        localTextView.setTextSize(2, 12.0F);
+        localTextView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        localTextView.setPadding(i, 0, i, i);
+        paramBundle.addView(localTextView);
+        ImageView localImageView = new ImageView(paramContext);
+        Object localObject = new LinearLayout.LayoutParams(BaseChatItemLayout.A, (int)(BaseChatItemLayout.e * 0.468D));
+        ((LinearLayout.LayoutParams)localObject).gravity = 1;
+        localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        paramBundle.addView(localImageView);
+        paramContext = new TextView(paramContext);
+        paramContext.setTextColor(-7829368);
+        paramContext.setTextSize(2, 12.0F);
+        paramContext.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        paramContext.setCompoundDrawablePadding(aekt.a(5.0F, localResources));
+        localObject = localResources.getDrawable(2130846792);
+        ((Drawable)localObject).setBounds(0, 0, aekt.a(18.0F, localResources), aekt.a(10.0F, localResources));
+        paramContext.setCompoundDrawables((Drawable)localObject, null, null, null);
+        paramContext.setPadding(i, i, i, i);
+        paramBundle.addView(paramContext);
+        localazul.jdField_a_of_type_AndroidWidgetTextView = paramView;
+        localazul.b = localTextView;
+        localazul.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+        localazul.c = paramContext;
+        localazul.jdField_a_of_type_AndroidWidgetLinearLayout = paramBundle;
+        paramView = localazul;
+        paramContext = paramBundle;
+        label443:
+        if (!this.jdField_a_of_type_Boolean) {
+          break label517;
+        }
+        paramContext.setPadding(i, i, i, i);
+        label462:
+        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
+          break label528;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsgItemLayoutMicro", 2, "getView but parentMsg or message is null");
+        }
       }
-      azst.a("TroopFileDownloadWorker", azst.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult  file is not exsit. retCode:" + i);
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.b(4);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ErrorCode = 0;
-      azsd.a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 12);
-      if (this.a.jdField_a_of_type_Azuk != null) {
-        this.a.jdField_a_of_type_Azuk.a(this.a.a(), false, i, this.a);
-      }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = bbea.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue.toLowerCase();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS = paramDownloadFileRspBody.str_download_dns.get().toStringUtf8();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl = bbea.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp))
+    for (;;)
     {
-      azst.a("TroopFileDownloadWorker", azst.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult DownloadIp is null");
-      bamv.a("gfile", "ipnull", "", "", "", "");
-    }
-    i = paramDownloadFileRspBody.uint32_preview_port.get();
-    azst.c("TroopFileDownloadWorker", azst.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult DownloadIp:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + " DownloadDNS:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + " videoPort:" + i + " DownloadUrl:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + " cookieValue:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue);
-    if (paramDownloadFileRspBody.uint32_preview_port_https.has()) {}
-    for (paramInt = paramDownloadFileRspBody.uint32_preview_port_https.get();; paramInt = 0)
-    {
-      paramBundle = null;
-      if (paramDownloadFileRspBody.str_download_dns_https.has()) {
-        paramBundle = paramDownloadFileRspBody.str_download_dns_https.get();
-      }
-      this.a.a(i, paramBundle, paramInt);
-      return;
-      label779:
-      this.a.c(i);
+      return paramContext;
+      paramView.width = -1;
+      paramView.height = -2;
       break;
+      paramContext = (LinearLayout)paramView;
+      paramView = (azul)paramContext.getTag(2131374038);
+      break label443;
+      label517:
+      paramContext.setPadding(0, 0, 0, 0);
+      break label462;
+      label528:
+      i = aekt.a(24.0F, localResources);
+      try
+      {
+        paramBundle = URLDrawable.URLDrawableOptions.obtain();
+        paramBundle.mRequestWidth = i;
+        paramBundle.mRequestHeight = i;
+        paramBundle = URLDrawable.getDrawable(localAbsShareMsg.mContentCover, paramBundle);
+        paramBundle.setDecodeHandler(bcuq.a);
+        paramBundle.setBounds(0, 0, i, i);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramBundle, null, null, null);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localAbsShareMsg.mContentTitle);
+        paramView.b.setText(localAbsShareMsg.mContentSummary);
+        paramView.c.setText(alpo.a(2131714993));
+        if (!TextUtils.isEmpty(localAbsShareMsg.mMsg_I_ActionData))
+        {
+          try
+          {
+            paramBundle = URLDrawable.getDrawable(localAbsShareMsg.mMsg_I_ActionData, null);
+            paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+            return paramContext;
+          }
+          catch (IllegalArgumentException paramView) {}
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("StructMsgItemLayoutMicro", 2, "getView fail");
+          return paramContext;
+        }
+      }
+      catch (Throwable paramBundle)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsgItemLayoutMicro", 2, "getTitleView fail e=" + paramBundle.getMessage());
+          }
+        }
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      }
     }
+    return paramContext;
+  }
+  
+  public String b()
+  {
+    return "layoutMicro";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azuj
  * JD-Core Version:    0.7.0.1
  */

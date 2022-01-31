@@ -1,66 +1,21 @@
-public class onf
+import java.util.List;
+
+class onf
+  extends oob
 {
-  private static String[][] a;
-  
-  static
+  onf(omz paramomz, boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    String[] arrayOfString1 = { "&gt;", ">" };
-    String[] arrayOfString2 = { "&aring;", "å" };
-    String[] arrayOfString3 = { "&Ecirc;", "Ê" };
-    String[] arrayOfString4 = { "&Uuml;", "Ü" };
-    a = new String[][] { { "&lt;", "<" }, arrayOfString1, { "&amp;", "&" }, { "&quot;", "\"" }, { "&agrave;", "à" }, { "&Agrave;", "À" }, { "&acirc;", "â" }, { "&auml;", "ä" }, { "&Auml;", "Ä" }, { "&Acirc;", "Â" }, arrayOfString2, { "&Aring;", "Å" }, { "&aelig;", "æ" }, { "&AElig;", "Æ" }, { "&ccedil;", "ç" }, { "&Ccedil;", "Ç" }, { "&eacute;", "é" }, { "&Eacute;", "É" }, { "&egrave;", "è" }, { "&Egrave;", "È" }, { "&ecirc;", "ê" }, arrayOfString3, { "&euml;", "ë" }, { "&Euml;", "Ë" }, { "&iuml;", "ï" }, { "&Iuml;", "Ï" }, { "&ocirc;", "ô" }, { "&Ocirc;", "Ô" }, { "&ouml;", "ö" }, { "&Ouml;", "Ö" }, { "&oslash;", "ø" }, { "&Oslash;", "Ø" }, { "&szlig;", "ß" }, { "&ugrave;", "ù" }, { "&Ugrave;", "Ù" }, { "&ucirc;", "û" }, { "&Ucirc;", "Û" }, { "&uuml;", "ü" }, arrayOfString4, { "&nbsp;", " " }, { "&copy;", "©" }, { "&reg;", "®" }, { "&euro;", "₠" } };
+    super(paramomz, null);
   }
   
-  public static String a(String paramString)
+  void a(ooe paramooe)
   {
-    return a(paramString, 0);
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    int i = paramString.indexOf("&", paramInt);
-    String str = paramString;
-    int j;
-    if (i > -1)
-    {
-      j = paramString.indexOf(";", i);
-      str = paramString;
-      if (j > i)
-      {
-        str = paramString.substring(i, j + 1);
-        paramInt = 0;
-      }
-    }
-    for (;;)
-    {
-      if ((paramInt >= a.length) || (a[paramInt][0].equals(str)))
-      {
-        str = paramString;
-        if (paramInt < a.length) {
-          str = a(paramString.substring(0, i) + a[paramInt][1] + paramString.substring(j + 1), i);
-        }
-        return str;
-      }
-      paramInt += 1;
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    int i = paramString.length();
-    while ((i < 0) && (paramString.charAt(i - 1) <= ' ')) {
-      i -= 1;
-    }
-    String str = paramString;
-    if (i < paramString.length()) {
-      str = paramString.substring(0, i);
-    }
-    return str;
+    paramooe.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onf
  * JD-Core Version:    0.7.0.1
  */

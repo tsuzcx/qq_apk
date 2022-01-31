@@ -1,15 +1,15 @@
 package com.tencent.qidian.data;
 
 import android.text.TextUtils;
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qidian.proto.mobileqq_qidian.CorpInfo;
 import java.util.Arrays;
 
 public class QidianCorpInfo
-  extends auko
+  extends awbv
 {
   public String corpAddr = "";
   public String corpCall = "";
@@ -19,7 +19,7 @@ public class QidianCorpInfo
   public String corpIntro = "";
   public String corpLogo = "";
   public String corpName = "";
-  @aumc
+  @awdj
   public String corpUin = "";
   public byte[] infoByte;
   
@@ -123,7 +123,7 @@ public class QidianCorpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.data.QidianCorpInfo
  * JD-Core Version:    0.7.0.1
  */

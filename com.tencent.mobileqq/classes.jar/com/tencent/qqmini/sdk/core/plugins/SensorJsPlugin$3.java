@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
+import bgkd;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class SensorJsPlugin$3
   implements Runnable
 {
-  SensorJsPlugin$3(SensorJsPlugin paramSensorJsPlugin, bekr parambekr) {}
+  SensorJsPlugin$3(SensorJsPlugin paramSensorJsPlugin, bgkd parambgkd) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ class SensorJsPlugin$3
           if (j != 20) {
             break label201;
           }
-          if (this.this$0.startGyroscope(this.val$req.jdField_a_of_type_Behp, i))
+          if (this.this$0.startGyroscope(this.val$req.jdField_a_of_type_Bghn, i))
           {
             SensorJsPlugin.access$202(this.this$0, true);
             this.val$req.a();
@@ -66,7 +66,7 @@ class SensorJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.SensorJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

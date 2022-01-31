@@ -1,192 +1,49 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract class wco<T>
+public class wco
 {
-  protected Context a;
-  private SegmentList jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
-  private wcl jdField_a_of_type_Wcl;
-  protected boolean a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public wco(Context paramContext)
+  public wco(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void R_() {}
-  
-  protected void T_() {}
-  
-  public abstract int a();
-  
-  protected int a(int paramInt)
-  {
-    return 0;
-  }
-  
-  public abstract View a(int paramInt, vap paramvap, ViewGroup paramViewGroup);
-  
-  protected SegmentList a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
-  }
-  
-  public abstract String a();
-  
-  public vap a(int paramInt)
-  {
-    SegmentList localSegmentList = a();
-    if (localSegmentList == null)
+    this.jdField_a_of_type_Int = 3;
+    paramString = (String)((urk)urr.a(10)).b(paramString, "");
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
     {
-      vxp.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
-      return null;
-    }
-    int i = 0;
-    if (i < localSegmentList.getChildCount())
-    {
-      vap localvap = (vap)localSegmentList.getChildAt(i).getTag();
-      if (localvap == null) {}
-      while ((!localvap.a.equals(a())) || (localvap.b != paramInt))
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
+      if (this.jdField_a_of_type_Int >= 0)
       {
-        i += 1;
-        break;
+        this.c = paramString.optString("url");
+        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
+        this.b = paramString.optString("text");
       }
-      return localvap;
+      return;
     }
-    return null;
-  }
-  
-  public abstract vap a(int paramInt, ViewGroup paramViewGroup);
-  
-  protected void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(wcl paramwcl, SegmentList paramSegmentList)
-  {
-    this.jdField_a_of_type_Wcl = paramwcl;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList = paramSegmentList;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(vap paramvap)
-  {
-    SegmentList localSegmentList = a();
-    if (localSegmentList == null) {
-      vxp.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
-    }
-    int i;
-    int j;
-    int k;
-    do
+    catch (Exception paramString)
     {
       do
       {
-        return false;
-      } while (paramvap == null);
-      i = localSegmentList.getFirstVisiblePosition();
-      j = localSegmentList.getLastVisiblePosition();
-      k = paramvap.c;
-    } while ((k < i) || (k > j));
-    return true;
-  }
-  
-  public void a_(vap paramvap) {}
-  
-  protected boolean a_(boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return "";
-  }
-  
-  protected void b() {}
-  
-  public void b_(vap paramvap) {}
-  
-  protected void c() {}
-  
-  public void c(vap paramvap) {}
-  
-  public final void c(boolean paramBoolean)
-  {
-    
-    if (this.jdField_a_of_type_Wcl != null)
-    {
-      this.jdField_a_of_type_Wcl.a(a(), paramBoolean);
-      this.jdField_a_of_type_Wcl.notifyDataSetChanged();
-    }
-    uyj.b("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged ", Boolean.valueOf(paramBoolean) });
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return a();
-    }
-    return 0;
-  }
-  
-  protected void d() {}
-  
-  public void d(int paramInt)
-  {
-    paramInt = this.jdField_a_of_type_Wcl.a(this, paramInt);
-    a().setSelection(paramInt);
-  }
-  
-  protected boolean d()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList == null) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.a(a());
-    return true;
-  }
-  
-  protected void e() {}
-  
-  public void e_(boolean paramBoolean)
-  {
-    if (paramBoolean != this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+        this.jdField_a_of_type_Int = 3;
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
     }
   }
   
-  protected int f_()
+  public String toString()
   {
-    return 1;
-  }
-  
-  public void g_(int paramInt) {}
-  
-  public void k() {}
-  
-  protected void m()
-  {
-    if (this.jdField_a_of_type_Wcl == null) {
-      return;
-    }
-    this.jdField_a_of_type_Wcl.notifyDataSetChanged();
+    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wco
  * JD-Core Version:    0.7.0.1
  */

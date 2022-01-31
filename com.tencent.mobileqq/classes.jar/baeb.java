@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 class baeb
-  implements baia
+  extends WebChromeClient
 {
-  baeb(badx parambadx, TroopChatPie paramTroopChatPie) {}
+  baeb(baea parambaea) {}
   
-  public void a(int paramInt)
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    if (!bahy.a(paramInt)) {
-      this.jdField_a_of_type_Badx.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie);
-    }
-    this.jdField_a_of_type_Badx.e(bahy.b(paramInt));
+    super.onProgressChanged(paramWebView, paramInt);
+    QLog.i("TenDocWebViewPool", 1, "tendocpreload onProgressChanged = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baeb
  * JD-Core Version:    0.7.0.1
  */

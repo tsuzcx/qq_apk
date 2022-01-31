@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia;
 
-import avrk;
+import axji;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
 public class RichmediaService$IncomingHandler$1
   implements Runnable
 {
-  public RichmediaService$IncomingHandler$1(avrk paramavrk) {}
+  public RichmediaService$IncomingHandler$1(axji paramaxji) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class RichmediaService$IncomingHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaService.IncomingHandler.1
  * JD-Core Version:    0.7.0.1
  */

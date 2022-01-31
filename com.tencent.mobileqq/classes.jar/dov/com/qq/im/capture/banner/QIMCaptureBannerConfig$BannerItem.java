@@ -34,7 +34,7 @@ public class QIMCaptureBannerConfig$BannerItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem
  * JD-Core Version:    0.7.0.1
  */

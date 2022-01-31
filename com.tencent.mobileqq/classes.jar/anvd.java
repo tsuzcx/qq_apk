@@ -1,38 +1,114 @@
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import java.util.ArrayList;
 
-class anvd
-  implements URLDrawable.URLDrawableListener
+public class anvd
+  extends BaseAdapter
 {
-  anvd(anuq paramanuq, String paramString) {}
+  public anvd(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public String a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
+      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
+    return null;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public int getCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url failed:" + this.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
     }
+    return 0;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public long getItemId(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url down:" + this.jdField_a_of_type_JavaLangString);
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = this.a.getLayoutInflater().inflate(2131560849, null);
+      paramViewGroup = new anvn();
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131363999));
+      paramView.setTag(paramViewGroup);
+      localObject = a(paramInt);
+      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
+        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
+      }
+      if (localObject == null) {}
+    }
+    else
+    {
+      for (;;)
+      {
+        try
+        {
+          localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+            continue;
+          }
+          localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          paramViewGroup.a.setImageDrawable((Drawable)localObject);
+        }
+        catch (Exception paramViewGroup)
+        {
+          URLDrawable.URLDrawableOptions localURLDrawableOptions;
+          paramViewGroup.printStackTrace();
+          continue;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          return paramView;
+        }
+        if ((this.a.d != 1) || (this.a.jdField_a_of_type_Boolean)) {
+          continue;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        return paramView;
+        paramViewGroup = (anvn)paramView.getTag();
+        break;
+        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+      }
+    }
+    try
+    {
+      if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
+        localObject = URLDrawable.getDrawable("http://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramViewGroup.a.setImageDrawable((Drawable)localObject);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        return paramView;
+        paramViewGroup.a.setImageDrawable(null);
+      }
+    }
+    catch (Exception paramViewGroup)
+    {
+      for (;;)
+      {
+        paramViewGroup.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
-import cooperation.qzone.share.QZoneShareActivity.5.1;
-import cooperation.qzone.share.QZoneShareActivity.5.2;
-import java.util.ArrayList;
-import org.json.JSONObject;
-
-public class bhmc
-  implements MiniAppCmdInterface
+public final class bhmc
+  implements Cloneable
 {
-  public bhmc(QZoneShareActivity paramQZoneShareActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, int paramInt4, String paramString6, MiniAppCmdInterface paramMiniAppCmdInterface) {}
+  private long a;
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public bhmc(long paramLong)
   {
-    if (paramBoolean)
-    {
-      MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
-      if (localMiniAppInfo != null)
-      {
-        paramJSONObject = this.jdField_a_of_type_JavaLangString;
-        String str = this.jdField_b_of_type_JavaLangString;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          paramJSONObject = localMiniAppInfo.name;
-        }
-        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-          str = localMiniAppInfo.desc;
-        }
-        if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) != null)
-        {
-          QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).jdField_b_of_type_JavaLangString = paramJSONObject;
-          QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).jdField_c_of_type_JavaLangString = str;
-          if ((QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).a != null) && (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).a.size() == 0)) {
-            QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).a.add(localMiniAppInfo.iconUrl);
-          }
-        }
-        MiniProgramShareUtils.shareAsQzoneFeeds(this.jdField_c_of_type_JavaLangString, paramJSONObject, str, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, null, this.e, localMiniAppInfo.iconUrl, this.jdField_d_of_type_Int, localMiniAppInfo.versionId, this.f, this.jdField_a_of_type_ComTencentMobileqqMiniReuseMiniAppCmdInterface);
-        return;
-      }
-      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.runOnUiThread(new QZoneShareActivity.5.1(this));
-      return;
+    this.a = paramLong;
+  }
+  
+  public bhmc(byte[] paramArrayOfByte)
+  {
+    this(paramArrayOfByte, 0);
+  }
+  
+  public bhmc(byte[] paramArrayOfByte, int paramInt)
+  {
+    this.a = (paramArrayOfByte[(paramInt + 3)] << 24 & 0xFF000000);
+    this.a += (paramArrayOfByte[(paramInt + 2)] << 16 & 0xFF0000);
+    this.a += (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
+    this.a += (paramArrayOfByte[paramInt] & 0xFF);
+  }
+  
+  public long a()
+  {
+    return this.a;
+  }
+  
+  public byte[] a()
+  {
+    return new byte[] { (byte)(int)(this.a & 0xFF), (byte)(int)((this.a & 0xFF00) >> 8), (byte)(int)((this.a & 0xFF0000) >> 16), (byte)(int)((this.a & 0xFF000000) >> 24) };
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof bhmc))) {}
+    while (this.a != ((bhmc)paramObject).a()) {
+      return false;
     }
-    long l;
-    if (paramJSONObject != null)
-    {
-      l = paramJSONObject.optLong("retCode");
-      if (paramJSONObject == null) {
-        break label260;
-      }
-    }
-    label260:
-    for (paramJSONObject = paramJSONObject.optString("errMsg");; paramJSONObject = "")
-    {
-      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.runOnUiThread(new QZoneShareActivity.5.2(this, paramJSONObject, l));
-      return;
-      l = 0L;
-      break;
-    }
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return (int)this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhmc
  * JD-Core Version:    0.7.0.1
  */

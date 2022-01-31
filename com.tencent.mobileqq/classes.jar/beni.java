@@ -1,30 +1,18 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ParticipleBottomMenuView;
 
-class beni
-  implements View.OnClickListener
+public class beni
+  implements benn
 {
-  beni(bene parambene, DialogInterface.OnClickListener paramOnClickListener) {}
+  public beni(ParticipleBottomMenuView paramParticipleBottomMenuView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bene, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bene.isShowing()) {
-        this.jdField_a_of_type_Bene.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beni
  * JD-Core Version:    0.7.0.1
  */

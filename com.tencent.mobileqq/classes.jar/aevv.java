@@ -1,13 +1,14 @@
-import android.annotation.SuppressLint;
-
-class aevv
+final class aevv
+  implements aewj<aevu>
 {
-  @SuppressLint({"StaticFieldLeak"})
-  private static aevr a = new aevr(null);
+  public aevu a(aewg paramaewg)
+  {
+    return new aevu(paramaewg);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevv
  * JD-Core Version:    0.7.0.1
  */

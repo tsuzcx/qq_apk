@@ -1,22 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.7.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.view.KeyEvent;
 
-public class apqc
-  implements TVK_IMediaPlayer.OnCompletionListener
+public abstract interface apqc
 {
-  apqc(appt paramappt) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    new Handler(Looper.getMainLooper()).post(new VideoFilePresenter.7.1(this));
-  }
+  public abstract boolean a(KeyEvent paramKeyEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apqc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-public final class bjhp
-  implements Parcelable.Creator<DynamicTextItem.TextMap>
+public class bjhp
+  implements View.OnClickListener
 {
-  public DynamicTextItem.TextMap a(Parcel paramParcel)
-  {
-    return new DynamicTextItem.TextMap(paramParcel);
-  }
+  public bjhp(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public DynamicTextItem.TextMap[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DynamicTextItem.TextMap[paramInt];
+    QzoneWebMusicJsPlugin.access$300(this.a, "buttonclick");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjhp
  * JD-Core Version:    0.7.0.1
  */

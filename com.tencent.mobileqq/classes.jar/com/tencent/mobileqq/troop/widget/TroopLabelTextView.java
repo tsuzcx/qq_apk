@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -12,13 +12,13 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bfwr;
-import bfws;
+import bhxo;
+import bhxp;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopLabelTextView
   extends TextView
-  implements bfws
+  implements bhxp
 {
   protected int a;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -26,7 +26,7 @@ public class TroopLabelTextView
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode;
-  public bfwr a;
+  public bhxo a;
   int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private int c;
@@ -39,15 +39,15 @@ public class TroopLabelTextView
     setTextColor(paramInt2);
     setMaxLines(1);
     setGravity(17);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, actj.a(16.0F, getResources()));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, aekt.a(16.0F, getResources()));
     localLayoutParams.rightMargin = 4;
-    paramInt2 = actj.a(4.0F, getResources());
-    int i = actj.a(4.0F, getResources());
-    int j = actj.a(0.0F, getResources());
-    int k = actj.a(0.0F, getResources());
+    paramInt2 = aekt.a(4.0F, getResources());
+    int i = aekt.a(4.0F, getResources());
+    int j = aekt.a(0.0F, getResources());
+    int k = aekt.a(0.0F, getResources());
     setTextSize(1, 10.0F);
     if (paramInt3 == 2) {
-      paramInt1 = actj.a(10.0F, getResources());
+      paramInt1 = aekt.a(10.0F, getResources());
     }
     for (;;)
     {
@@ -55,15 +55,15 @@ public class TroopLabelTextView
       setPadding(paramInt1, j, i, k);
       this.jdField_a_of_type_AndroidContentContext = paramContext;
       this.c = paramInt3;
-      this.jdField_b_of_type_Int = actj.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.d = actj.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      this.jdField_b_of_type_Int = aekt.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      this.d = aekt.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       a();
       return;
       paramInt1 = paramInt2;
       if (paramInt3 == 1)
       {
         setIncludeFontPadding(false);
-        localLayoutParams.height = actj.a(14.0F, getResources());
+        localLayoutParams.height = aekt.a(14.0F, getResources());
         paramInt1 = paramInt2;
       }
     }
@@ -71,19 +71,19 @@ public class TroopLabelTextView
   
   private void a()
   {
-    this.jdField_a_of_type_Bfwr = new bfwr();
-    this.jdField_a_of_type_Bfwr.a(true);
-    this.jdField_a_of_type_Bfwr.a(bfwr.c);
+    this.jdField_a_of_type_Bhxo = new bhxo();
+    this.jdField_a_of_type_Bhxo.a(true);
+    this.jdField_a_of_type_Bhxo.a(bhxo.c);
   }
   
-  public void a(Canvas paramCanvas)
+  public void a_(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_Bfwr.a(paramCanvas, this);
+    this.jdField_a_of_type_Bhxo.a(paramCanvas, this);
   }
   
   public void onDraw(Canvas paramCanvas)

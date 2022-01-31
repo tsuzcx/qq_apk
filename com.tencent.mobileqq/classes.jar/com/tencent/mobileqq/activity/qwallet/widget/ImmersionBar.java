@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import ahip;
-import ahis;
+import aizy;
+import ajab;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -50,7 +50,7 @@ public class ImmersionBar
           break;
         }
         int i = 256;
-        if ((Build.VERSION.SDK_INT >= 21) && (!ahis.d()))
+        if ((Build.VERSION.SDK_INT >= 21) && (!ajab.d()))
         {
           if (this.statusBarView != null) {
             i = 1280;
@@ -87,7 +87,7 @@ public class ImmersionBar
   
   public static boolean isSupportStatusBarDarkFont()
   {
-    return (ahis.b()) || (ahis.f()) || (Build.VERSION.SDK_INT >= 23);
+    return (ajab.b()) || (ajab.f()) || (Build.VERSION.SDK_INT >= 23);
   }
   
   private static void setMIUIStatusBarDarkFont(Window paramWindow, boolean paramBoolean)
@@ -149,11 +149,11 @@ public class ImmersionBar
       if (isSupportStatusBarDarkFont())
       {
         initStateBar(this.statusBarViewColor);
-        if (ahis.b()) {
+        if (ajab.b()) {
           setMIUIStatusBarDarkFont(this.mWindow, paramBoolean);
         }
-        if (ahis.f()) {
-          ahip.a(this.mActivity, paramBoolean);
+        if (ajab.f()) {
+          aizy.a(this.mActivity, paramBoolean);
         }
       }
       return;
@@ -166,7 +166,7 @@ public class ImmersionBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar
  * JD-Core Version:    0.7.0.1
  */

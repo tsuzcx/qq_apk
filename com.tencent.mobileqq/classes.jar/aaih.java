@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-
 public class aaih
-  implements DialogInterface.OnClickListener
 {
-  public aaih(AddRequestActivity paramAddRequestActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(long paramLong1, long paramLong2, int paramInt)
   {
-    this.a.a.cancel();
+    return bfhi.d(String.format("%s_%d_%d_%d", new Object[] { "!@#$%qboi!@#^&*m13=4aa22", Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) })).toLowerCase();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaih
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 {
     "ReadInjoy_large_cell":
     {
-        "view_type":"cell",
+        "view_type":"container",
         "direction":"vertical",
         "height":{
             "type":"wrap_content"
@@ -137,6 +137,24 @@
                                 }
                             }
                         ]
+                    },
+                    {
+                        "view_type":"UIImageView",
+                        "view_id":"id_red_packet_icon",
+                        "align_parent_right":"YES",
+                        "margin_top": "8",
+                        "margin_right":"8",
+                        "height":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:":"$red_packet_icon_path"
+                        }
                     }
                 ]
             },
@@ -320,8 +338,8 @@
             },
 
             {"$includeComponet":"componet/article_main_body.geojson"},
-            {"$includeComponet":"componet/info_bar.geojson"},
-
+            {"$includeComponet":"componet/column_bar.geojson"},
+            {"$includeComponet":"componet/large_image_info_bar.geojson"},
             {
                 "view_type": "ReadInJoyAwesomeCommentView",
                 "view_id": "id_awesomeview_mutlilines",

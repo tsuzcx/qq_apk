@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-
-public class agng
-  implements DialogInterface.OnClickListener
+class agng
+  implements bcnf
 {
-  public agng(PhotoListActivity paramPhotoListActivity, Runnable paramRunnable) {}
+  agng(agmy paramagmy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    {
+      this.a.X = true;
+      paramString = (afby)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      this.a.X = false;
+      paramString = (afby)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agng
  * JD-Core Version:    0.7.0.1
  */

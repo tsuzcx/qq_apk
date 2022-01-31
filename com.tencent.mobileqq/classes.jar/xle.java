@@ -1,45 +1,60 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class xle
-  implements myy
+public class xle
+  extends nbq
 {
-  xle(xlb paramxlb, JsBridgeListener paramJsBridgeListener) {}
+  public boolean a;
   
-  public void loaded(String paramString, int paramInt)
+  public xle(Context paramContext, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject();
-        paramString.put("retcode", -1);
-        paramString.put("msg", "error");
-        this.jdField_a_of_type_Xlb.callJs(this.jdField_a_of_type_Xlb.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + paramString);
-        return;
-      }
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 121;
-    localMessage.obj = new Object[] { this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, paramString };
-    this.jdField_a_of_type_Xlb.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    super(paramContext, paramString);
   }
   
-  public void progress(int paramInt) {}
+  public String a()
+  {
+    return "key_for_troop_dynamic";
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    this.a = true;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramString).getInt("isShowTroopDynamic") != 1) {
+          break label56;
+        }
+        this.a = bool;
+        return;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
+      return;
+      label56:
+      bool = false;
+    }
+  }
+  
+  public String b()
+  {
+    return "key_for_troop_dynamic_version";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xle
  * JD-Core Version:    0.7.0.1
  */

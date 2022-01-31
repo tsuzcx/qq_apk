@@ -1089,7 +1089,7 @@ public class TbsDownloader
         ((JSONObject)localObject3).put("APPVN", notNullString(localTbsDownloadConfig.mPreferences.getString("app_versionname", null)));
         ((JSONObject)localObject3).put("APPVC", localTbsDownloadConfig.mPreferences.getInt("app_versioncode", 0));
         ((JSONObject)localObject3).put("APPMETA", notNullString(localTbsDownloadConfig.mPreferences.getString("app_metadata", null)));
-        ((JSONObject)localObject3).put("TBSSDKV", 43739);
+        ((JSONObject)localObject3).put("TBSSDKV", 43752);
         ((JSONObject)localObject3).put("TBSV", i);
         if (!paramBoolean3) {
           break label1153;
@@ -3145,7 +3145,7 @@ public class TbsDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+import java.util.ArrayList;
 
-class apfw
-  implements apgg
+public class apfw
 {
-  apfw(apfv paramapfv) {}
+  public String a;
+  public ArrayList<String> a;
+  public String b;
+  public ArrayList<String> b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void a()
-  {
-    FileSelectorSearchFragment.a(this.a.a).a();
-  }
+  public apfw(apfv paramapfv) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apfw
  * JD-Core Version:    0.7.0.1
  */

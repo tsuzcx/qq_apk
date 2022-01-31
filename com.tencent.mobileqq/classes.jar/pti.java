@@ -1,72 +1,65 @@
-import android.content.Context;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
 import com.tencent.widget.AbsListView.LayoutParams;
-import java.lang.reflect.Constructor;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class pti<T extends View>
-  extends pqq
+public class pti
+  extends BaseAdapter
 {
-  private Class<T> a;
+  List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<rxv> b = new ArrayList();
   
-  pti(Context paramContext, baxy parambaxy, ram paramram, Class<T> paramClass)
+  public pti(NativeGridImageView paramNativeGridImageView) {}
+  
+  public List<URL> a()
   {
-    super(paramContext, parambaxy, paramram);
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public pqq a()
+  public void a(ptj paramptj)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
+    this.b = paramptj.a();
+    this.jdField_a_of_type_JavaUtilList = paramptj.b();
   }
   
-  public pqq d()
+  public int getCount()
   {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_Pqp != null) && (this.jdField_a_of_type_Pqp.getClass().equals(this.jdField_a_of_type_JavaLangClass))) {
-      localLinearLayout.addView((View)this.jdField_a_of_type_Pqp);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
+    return this.b.size();
   }
   
-  public pqq e()
+  public Object getItem(int paramInt)
   {
-    return this;
+    return this.b.get(paramInt);
   }
   
-  public pqq g()
+  public long getItemId(int paramInt)
   {
-    try
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramViewGroup.getContext();
+    if (paramView == null)
     {
-      this.jdField_a_of_type_Pqp = ((pqp)this.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.jdField_a_of_type_AndroidContentContext }));
-      return this;
+      paramView = new SquareCornerTextImageView(paramViewGroup);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     }
-    catch (Exception localException)
+    for (;;)
     {
-      localException.printStackTrace();
+      ((SquareCornerTextImageView)paramView).a((rxv)this.b.get(paramInt));
+      return paramView;
     }
-    return this;
-  }
-  
-  public pqq o()
-  {
-    super.o();
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pti
  * JD-Core Version:    0.7.0.1
  */

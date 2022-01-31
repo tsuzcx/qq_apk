@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import aljn;
-import aljo;
+import anad;
+import anae;
 
 public class MiniRecog$2
   implements Runnable
 {
-  public MiniRecog$2(aljn paramaljn, long paramLong) {}
+  public MiniRecog$2(anad paramanad, long paramLong) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class MiniRecog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.codeEngine.MiniRecog.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,48 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import com.tencent.YTFace.model.FaceStatus;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class amxf
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
-  private String d = "";
+  public int a;
+  public String a;
+  public ArrayList<amxg> a;
+  public FaceStatus[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public static amxf a(JSONObject paramJSONObject)
+  public static boolean a(amxf paramamxf)
   {
-    if (paramJSONObject == null) {
-      return null;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramamxf != null)
+    {
+      bool1 = bool2;
+      if (paramamxf.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramamxf.jdField_b_of_type_Int == 0) {
+          bool1 = true;
+        }
+      }
     }
-    amxf localamxf = new amxf();
-    localamxf.a = paramJSONObject.getString("tips");
-    localamxf.b = paramJSONObject.getString("buttonText");
-    localamxf.c = paramJSONObject.getString("url");
-    localamxf.d = paramJSONObject.getString("icon");
-    return localamxf;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARRspFaceResult", 2, "[ScanStarFace]isRecogSuccess result = " + bool1);
+    }
+    return bool1;
   }
   
-  public String a()
+  public String toString()
   {
-    return this.a;
-  }
-  
-  public boolean a()
-  {
-    return (TextUtils.isEmpty(this.a)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d));
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return this.d;
+    return "ARCloudRecogRspFaceResult{errCode_MQ=" + this.jdField_a_of_type_Int + ", errMsg_MQ='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errCode_YT=" + this.jdField_b_of_type_Int + ", errMsg_YT=" + this.jdField_b_of_type_JavaLangString + ", time_ms_YT=" + this.jdField_c_of_type_Int + ", group_size_YT=" + this.d + ", sessionID='" + this.jdField_c_of_type_JavaLangString + '\'' + ", starInfoList=" + this.jdField_a_of_type_JavaUtilArrayList + ", faceStatus[]=" + this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxf
  * JD-Core Version:    0.7.0.1
  */

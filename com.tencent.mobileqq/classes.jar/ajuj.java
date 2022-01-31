@@ -1,34 +1,19 @@
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import java.util.Comparator;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
 public class ajuj
-  implements Comparator<DiscussionMemberInfo>
 {
-  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
-  {
-    if ((paramDiscussionMemberInfo1 != null) && (paramDiscussionMemberInfo2 != null))
-    {
-      paramDiscussionMemberInfo1 = Long.valueOf(Long.parseLong(paramDiscussionMemberInfo1.memberUin));
-      paramDiscussionMemberInfo2 = Long.valueOf(Long.parseLong(paramDiscussionMemberInfo2.memberUin));
-      if (paramDiscussionMemberInfo1.longValue() <= paramDiscussionMemberInfo2.longValue()) {}
-    }
-    while (paramDiscussionMemberInfo1 != null)
-    {
-      return 1;
-      if (paramDiscussionMemberInfo1.longValue() < paramDiscussionMemberInfo2.longValue()) {
-        return -1;
-      }
-      return 0;
-    }
-    if (paramDiscussionMemberInfo2 != null) {
-      return -1;
-    }
-    return 0;
-  }
+  public ImageView a;
+  public TextView a;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
+  
+  ajuj(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajuj
  * JD-Core Version:    0.7.0.1
  */

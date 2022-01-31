@@ -2,7 +2,7 @@ package com.tencent.qqlive.tvkplayer.vinfo.ckey;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.BeaconAdapter;
+import android.util.Log;
 import com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsAppKeyVerify;
 import com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsGuidUtil;
 import com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsLog;
@@ -50,7 +50,6 @@ public class CKeyFacade
     if (moduleUpdateInterface != null) {
       bLoadSucc = moduleUpdateInterface.loadLibrary("ckeygeneratorV2");
     }
-    BeaconAdapter.registerTunnel("ACJR7JT12C16", "0.1.1", "10000000");
     flag_11 = 1;
     flag_22 = 2;
     flag_33 = 4;
@@ -248,50 +247,79 @@ public class CKeyFacade
   
   public static String getCKey(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, String paramString5, int[] paramArrayOfInt, int paramInt, String paramString6)
   {
-    Object localObject = "";
+    localObject1 = "";
     String str3 = "";
-    String str1 = str3;
+    str1 = str3;
+    try
+    {
+      str2 = new Exception().getStackTrace()[1].getClassName();
+      str1 = str3;
+      localObject1 = str2;
+      str3 = new Exception().getStackTrace()[1].getMethodName();
+      str1 = str3;
+      localObject1 = str2;
+      VsLog.info(str2 + "  " + str3, new Object[0]);
+      localObject1 = str3;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        String str2;
+        label465:
+        Object localObject2 = localObject1;
+        localObject1 = str1;
+      }
+    }
+    if (paramString4 != null) {}
     for (;;)
     {
       try
       {
-        str2 = new Exception().getStackTrace()[1].getClassName();
-        str1 = str3;
-        localObject = str2;
-        str3 = new Exception().getStackTrace()[1].getMethodName();
-        str1 = str3;
-        localObject = str2;
-        VsLog.info(str2 + "  " + str3, new Object[0]);
-        str1 = str3;
-        localObject = str2;
-      }
-      catch (Throwable localThrowable)
-      {
-        String str2;
-        continue;
-      }
-      try
-      {
-        if ((TextUtils.isEmpty(mPlatform)) || (TextUtils.isEmpty(mSdtfrom)) || (TextUtils.isEmpty(mVsKey)))
-        {
-          VsLog.error("init plz~~", new Object[0]);
-          return "";
+        if (!paramString4.trim().equals("")) {
+          break label465;
         }
-        if ((paramString4 != null) && (!paramString4.trim().equals(""))) {
-          continue;
-        }
-        paramString4 = mPlatform;
+        str1 = mPlatform;
         if ((paramString5 == null) || (paramString5.trim().equals("")))
         {
-          paramString5 = mSdtfrom;
+          paramString4 = mSdtfrom;
+          paramString5 = mVsKey;
+          Object localObject4 = (Map)VsAppKeyVerify.getInstance().getAppKeyMap().get(str1);
+          String str4 = paramString5;
+          Object localObject3 = str1;
+          str3 = paramString4;
+          if (localObject4 != null)
+          {
+            str3 = (String)((Map)localObject4).get("vskey");
+            if (str3 != null) {
+              paramString5 = str3;
+            }
+            str3 = (String)((Map)localObject4).get("sdtfrom");
+            if (str3 != null) {
+              paramString4 = str3;
+            }
+            localObject4 = (String)((Map)localObject4).get("platform");
+            str4 = paramString5;
+            localObject3 = str1;
+            str3 = paramString4;
+            if (localObject4 != null)
+            {
+              localObject3 = localObject4;
+              str3 = paramString4;
+              str4 = paramString5;
+            }
+          }
+          if ((TextUtils.isEmpty((CharSequence)localObject3)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4))) {
+            break;
+          }
           mBsGuid = paramString1;
           CKeyGuard.instance();
-          str2 = CKeyGuard.genGuard(mContext);
+          paramString4 = CKeyGuard.genGuard(mContext);
           if (mGuid.trim().equals("")) {
             mGuid = VsGuidUtil.getInstance(mContext).loadVsGuid();
           }
-          paramString3 = new String(GenCKey(paramLong, Integer.parseInt(paramString4), paramString3, paramString2, getfd(paramString5), mVsKey, paramString1, mGuid, paramArrayOfInt, paramInt, paramString6, str2));
-          VsReporter.reportCKey(mContext, cKeyBeaconReport, mPlatform, mSdtfrom, mVsKey, mGuid, paramString1, mBeaconID, 0, mPkgName, paramString4, paramString5, paramString2, paramLong, paramString3, (String)localObject + "|" + str1, mExtInfo, str2);
+          paramString3 = new String(GenCKey(paramLong, Integer.parseInt((String)localObject3), paramString3, paramString2, getfd(str3), str4, paramString1, mGuid, paramArrayOfInt, paramInt, paramString6, paramString4));
+          VsReporter.reportCKey(mContext, cKeyBeaconReport, (String)localObject3, str3, str4, mGuid, paramString1, mBeaconID, 0, mPkgName, (String)localObject3, str3, paramString2, paramLong, paramString3, str2 + "|" + (String)localObject1, mExtInfo, paramString4);
           return paramString3;
         }
       }
@@ -299,7 +327,11 @@ public class CKeyFacade
       {
         return "";
       }
+      paramString4 = paramString5;
+      continue;
+      str1 = paramString4;
     }
+    return "";
   }
   
   private static native String getCKeyVersion();
@@ -313,7 +345,7 @@ public class CKeyFacade
   
   public static String getSoVersion()
   {
-    return mSoVersion;
+    return getVersion();
   }
   
   public static String getVersion()
@@ -420,6 +452,13 @@ public class CKeyFacade
   
   private static native String taskEncrypt(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString5);
   
+  public void addVsAppKey(Context paramContext, String paramString)
+  {
+    if (!VsAppKeyVerify.getInstance().addVsAppKey(paramContext, paramString)) {
+      Log.e("CKeyFacade|ckeygeneratorV2.so", "add vsAppKey verify error!!!");
+    }
+  }
+  
   public String getmExtInfo()
   {
     return mExtInfo;
@@ -448,11 +487,13 @@ public class CKeyFacade
     {
       return;
       mContext = paramContext.getApplicationContext();
-      VsAppKeyVerify.getInstance().verifyVsAppKey(mContext, paramString1);
-      mPlatform = VsAppKeyVerify.getInstance().getmPlatform();
-      mPkgName = VsAppKeyVerify.getInstance().getmPkgName();
-      mSdtfrom = VsAppKeyVerify.getInstance().getmSdtfrom();
-      mVsKey = VsAppKeyVerify.getInstance().getmVsKey();
+      if (VsAppKeyVerify.getInstance().verifyVsAppKey(mContext, paramString1))
+      {
+        mPlatform = VsAppKeyVerify.getInstance().getmPlatform();
+        mPkgName = VsAppKeyVerify.getInstance().getmPkgName();
+        mSdtfrom = VsAppKeyVerify.getInstance().getmSdtfrom();
+        mVsKey = VsAppKeyVerify.getInstance().getmVsKey();
+      }
     } while ((this.isInit) || (this.isMutiInit));
     CKeyGuard.setModuleUpdateInterface(moduleUpdateInterface);
     CKeyGuard.instance();
@@ -479,7 +520,7 @@ public class CKeyFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.CKeyFacade
  * JD-Core Version:    0.7.0.1
  */

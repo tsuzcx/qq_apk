@@ -1,30 +1,27 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.widget.RecentDynamicAvatarView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aikr
-  extends RecyclerView.ViewHolder
+class aikr
+  implements DialogInterface.OnClickListener
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecentDynamicAvatarView jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
-  TextView b;
+  aikr(aikl paramaikl) {}
   
-  public aikr(SessionClearFragment paramSessionClearFragment, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364192));
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131367679));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
-    this.b = ((TextView)paramView.findViewById(2131376250));
+    if (paramInt == 1) {
+      aikl.a(this.a, aikl.a(this.a));
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    this.a.b();
+    aikl.a(this.a).moveTaskToBack(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikr
  * JD-Core Version:    0.7.0.1
  */

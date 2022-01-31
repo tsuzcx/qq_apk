@@ -1,23 +1,44 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import android.app.Notification;
+import android.graphics.Bitmap;
+import android.os.IInterface;
+import com.tencent.av.service.AVPbInfo;
 
-public class lza
-  extends OrientationEventListener
+public abstract interface lza
+  extends IInterface
 {
-  public lza(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public abstract int a(long paramLong, int paramInt);
   
-  public void onOrientationChanged(int paramInt)
-  {
-    this.a.a();
-  }
+  public abstract AVPbInfo a(byte[] paramArrayOfByte);
+  
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, Bitmap paramBitmap);
+  
+  public abstract void a(lyx paramlyx);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, Notification paramNotification);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void b();
+  
+  public abstract void b(byte[] paramArrayOfByte);
+  
+  public abstract void c();
+  
+  public abstract void c(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lza
  * JD-Core Version:    0.7.0.1
  */

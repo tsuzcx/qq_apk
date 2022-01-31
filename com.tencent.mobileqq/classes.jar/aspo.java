@@ -1,21 +1,6 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-
-public class aspo
-  implements bfsa
-{
-  public aspo(MultiAIOItemFragment paramMultiAIOItemFragment) {}
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    MultiAIOItemFragment.a(this.a).onTouchEvent(paramMotionEvent);
-    return false;
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspo
  * JD-Core Version:    0.7.0.1
  */

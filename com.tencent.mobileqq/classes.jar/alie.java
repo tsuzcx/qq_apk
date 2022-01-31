@@ -1,85 +1,55 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class alie
-  implements alja
+public class alie
+  implements View.OnClickListener
 {
-  alie(alid paramalid, alih paramalih, ArCloudConfigInfo paramArCloudConfigInfo, alfy paramalfy) {}
+  public alie(ApolloPanel paramApolloPanel, Bundle paramBundle, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Alih != null) {
-      this.jdField_a_of_type_Alih.d();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Alih != null) {
-      this.jdField_a_of_type_Alih.a(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    int j = 0;
-    int i = 0;
-    if (this.jdField_a_of_type_Alih != null) {
-      this.jdField_a_of_type_Alih.a(paramBoolean, paramInt, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    }
-    if (paramInt == 2)
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null))
     {
-      this.jdField_a_of_type_Alid.jdField_d_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_Alid.jdField_a_of_type_Long);
-      localalid = this.jdField_a_of_type_Alid;
-      if (paramBoolean)
-      {
-        paramInt = i;
-        localalid.jdField_a_of_type_Int = paramInt;
+      paramView = null;
+      if (this.jdField_a_of_type_AndroidOsBundle != null) {
+        paramView = this.jdField_a_of_type_AndroidOsBundle.getString("activityUrl");
       }
-    }
-    while (paramInt != 3) {
-      for (;;)
-      {
-        return;
-        paramInt = 1;
+      Object localObject = paramView;
+      if (TextUtils.isEmpty(paramView)) {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url;
       }
-    }
-    this.jdField_a_of_type_Alid.g = (System.currentTimeMillis() - this.jdField_a_of_type_Alid.jdField_a_of_type_Long);
-    alid localalid = this.jdField_a_of_type_Alid;
-    if (paramBoolean) {}
-    for (paramInt = j;; paramInt = 1)
-    {
-      localalid.jdField_b_of_type_Int = paramInt;
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Alih != null) {
-      this.jdField_a_of_type_Alih.a(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    }
-    this.jdField_a_of_type_Alid.jdField_b_of_type_Long = System.currentTimeMillis();
-    alid localalid = this.jdField_a_of_type_Alid;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      localalid.jdField_d_of_type_Int = i;
-      this.jdField_a_of_type_Alid.e();
-      if (paramBoolean)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_b_of_type_Int != 1) {
-          alid.a(this.jdField_a_of_type_Alid, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a.a, this.jdField_a_of_type_Alfy);
-        }
-        alid.a(this.jdField_a_of_type_Alid, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanel", 2, new Object[] { "[realshowNewActionFloatView] btn click, activityUrl=", localObject });
       }
-      return;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+        paramView.putExtra("url", (String)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
+      }
+      ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
+      }
+      akji.a(125, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alie
  * JD-Core Version:    0.7.0.1
  */

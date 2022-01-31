@@ -1,21 +1,7 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.concurrent.Executor;
-
-class aouv
-  implements apuc
+public class aouv
 {
-  aouv(aouu paramaouu, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString;
-    apus.a().execute(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString;
-  }
+  public int a;
+  public int b;
 }
 
 

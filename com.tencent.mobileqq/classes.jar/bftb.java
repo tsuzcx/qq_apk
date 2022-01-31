@@ -1,18 +1,18 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.text.TextUtils;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class bftb
-  implements PopupWindow.OnDismissListener
+final class bftb
+  implements FilenameFilter
 {
-  bftb(bfsz parambfsz) {}
-  
-  public void onDismiss()
+  public boolean accept(File paramFile, String paramString)
   {
-    this.a.a(1.0F);
+    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".so"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bftb
  * JD-Core Version:    0.7.0.1
  */

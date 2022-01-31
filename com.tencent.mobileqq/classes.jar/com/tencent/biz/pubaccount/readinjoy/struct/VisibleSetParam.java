@@ -7,12 +7,12 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import qdz;
+import qnw;
 
 public class VisibleSetParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<VisibleSetParam> CREATOR = new qdz();
+  public static final Parcelable.Creator<VisibleSetParam> CREATOR = new qnw();
   public static VisibleSetParam a;
   public static VisibleSetParam b;
   private final int jdField_a_of_type_Int;
@@ -65,7 +65,7 @@ public class VisibleSetParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam
  * JD-Core Version:    0.7.0.1
  */

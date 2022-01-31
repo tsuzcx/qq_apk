@@ -1,77 +1,17 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class tao
+final class tao
+  implements DialogInterface.OnClickListener
 {
-  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
-  private static tao jdField_a_of_type_Tao;
-  
-  public static tao a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (jdField_a_of_type_Tao == null)
-    {
-      jdField_a_of_type_Tao = new tao();
-      jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      Iterator localIterator = ((tbw)tcz.a(17)).a().iterator();
-      while (localIterator.hasNext())
-      {
-        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
-        {
-          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
-        }
-      }
-    }
-    return jdField_a_of_type_Tao;
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
-      return -1;
-    }
-    return paramString.intValue();
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    Iterator localIterator = ((tbw)tcz.a(17)).a().iterator();
-    while (localIterator.hasNext())
-    {
-      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
-      {
-        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
-      }
-    }
-    ved.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
-  }
-  
-  public boolean a(String paramString)
-  {
-    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
-  }
-  
-  public void b()
-  {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    jdField_a_of_type_Tao = null;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tao
  * JD-Core Version:    0.7.0.1
  */

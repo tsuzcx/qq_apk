@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.format.DateFormat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import java.io.File;
 
 public final class TencentLogImpl
@@ -107,7 +107,7 @@ public final class TencentLogImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.geolocation.internal.TencentLogImpl
  * JD-Core Version:    0.7.0.1
  */

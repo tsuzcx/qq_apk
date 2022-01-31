@@ -4,33 +4,33 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import behq;
-import betc;
+import bgho;
+import bgkd;
 
 class NavigationJsPlugin$3
   extends ResultReceiver
 {
-  NavigationJsPlugin$3(NavigationJsPlugin paramNavigationJsPlugin, Handler paramHandler)
+  NavigationJsPlugin$3(NavigationJsPlugin paramNavigationJsPlugin, Handler paramHandler, bgkd parambgkd)
   {
     super(paramHandler);
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    super.onReceiveResult(paramInt, paramBundle);
     if (paramInt == 0)
     {
+      this.val$req.a();
       if ((this.this$0.mMiniAppContext.a() != null) && (!this.this$0.mMiniAppContext.a().isFinishing())) {
         this.this$0.mMiniAppContext.a().finish();
       }
       return;
     }
-    betc.d("NavigationJsPlugin", "navigateBackMiniApp failed");
+    this.val$req.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.NavigationJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

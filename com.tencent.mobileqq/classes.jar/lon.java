@@ -1,43 +1,100 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.PathMeasure;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 public class lon
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
+  private final ArrayList<loo> a = new ArrayList(1);
   
-  public lon()
+  public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 4L;
-    this.jdField_a_of_type_JavaLangString = "";
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((loo)this.a.get(i)).a(paramFloat);
+      i += 1;
+    }
   }
   
-  public boolean equals(Object paramObject)
+  public void a(Context paramContext, int paramInt1, int paramInt2)
   {
-    if ((paramObject != null) && ((paramObject instanceof lon)))
+    paramContext = paramContext.getResources();
+    this.a.clear();
+    if (paramInt1 != 0)
     {
-      paramObject = (lon)paramObject;
-      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
-        return true;
+      Object localObject1 = paramContext.openRawResource(paramInt1);
+      try
+      {
+        localObject1 = new BufferedReader(new InputStreamReader((InputStream)localObject1), 512);
+        Object localObject2;
+        do
+        {
+          localObject2 = new loo((BufferedReader)localObject1);
+          ((BufferedReader)localObject1).readLine();
+          ((BufferedReader)localObject1).readLine();
+          TypedArray localTypedArray = paramContext.obtainTypedArray(paramInt2);
+          int i = localTypedArray.length();
+          BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[i];
+          paramInt1 = 0;
+          while (paramInt1 < i)
+          {
+            arrayOfBitmapDrawable[paramInt1] = ((BitmapDrawable)localTypedArray.getDrawable(paramInt1));
+            paramInt1 += 1;
+          }
+          ((loo)localObject2).a(arrayOfBitmapDrawable);
+          localTypedArray.recycle();
+          this.a.add(localObject2);
+          if (((BufferedReader)localObject1).readLine() == null) {
+            return;
+          }
+          localObject2 = ((BufferedReader)localObject1).readLine();
+        } while (localObject2 != null);
+        return;
+      }
+      catch (IOException paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ParticleEffect", 2, "WL_DEBUG loadEmitters ex = " + paramContext);
+        }
       }
     }
-    return false;
   }
   
-  public String toString()
+  public void a(Canvas paramCanvas)
   {
-    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.f + "]";
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((loo)this.a.get(i)).a(paramCanvas);
+      i += 1;
+    }
+  }
+  
+  public void a(PathMeasure paramPathMeasure)
+  {
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((loo)this.a.get(i)).a(paramPathMeasure);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lon
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adpg;
+import afhq;
 import android.os.Handler;
-import apuy;
+import aroa;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class FilePicItemBuilder$1
   implements Runnable
 {
-  public FilePicItemBuilder$1(adpg paramadpg, FileManagerEntity paramFileManagerEntity) {}
+  public FilePicItemBuilder$1(afhq paramafhq, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    apuy.a(this.a);
+    aroa.a(this.a);
     this.this$0.b.post(new FilePicItemBuilder.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,153 @@
+import android.content.Intent;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AccountSecurityInfo.SecCheckBanner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import com.tencent.msfmqpsdkbridge.MSFNetTransportProvider;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask;
+import tencent.im.s2c.msgtype0x210.submsgtype0x4a.MsgBody;
 
-final class alxp
-  implements aysb
+public class alxp
+  extends alko
 {
-  public void a(aysy paramaysy, aysz paramaysz)
+  public static int a;
+  
+  public alxp(QQAppInterface paramQQAppInterface)
   {
-    if ((paramaysy == null) || (paramaysz == null)) {}
+    super(paramQQAppInterface);
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      a += 1;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      a -= 1;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    Object localObject = new MsgBody();
     do
     {
-      do
+      try
       {
-        return;
-      } while (!(paramaysy instanceof ayrx));
-      paramaysy = (ayrx)paramaysy;
-      paramaysy.jdField_a_of_type_Long += paramaysz.c;
-      paramaysz.c = 0L;
-      paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
-      paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
-      paramaysz = paramaysy.jdField_a_of_type_JavaLangString;
-      if (paramaysz.contains("range="))
-      {
-        String str = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
-        paramaysy.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysy.jdField_a_of_type_Long);
+        ((MsgBody)localObject).mergeFrom(paramArrayOfByte);
+        if ((!((MsgBody)localObject).has()) || (!((MsgBody)localObject).uint32_sec_cmd.has())) {
+          return;
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + paramaysz);
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                for (;;)
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("SafeCenterPushHandler", 2, "onReceive: onReceive push package: msgbody parse fail");
+                  }
+                  paramArrayOfByte.printStackTrace();
+                }
+                switch (((MsgBody)localObject).uint32_sec_cmd.get())
+                {
+                case 5: 
+                default: 
+                  return;
+                case 1: 
+                  new zey(this.app).a();
+                  return;
+                case 2: 
+                  paramArrayOfByte = (MSFNetTransportProvider)this.app.a(63);
+                  paramArrayOfByte = new bewr(this.app.getApp().getApplicationContext(), paramArrayOfByte);
+                }
+              } while (paramArrayOfByte == null);
+              paramArrayOfByte = (bewu)paramArrayOfByte.a("intchk");
+            } while (paramArrayOfByte == null);
+            paramArrayOfByte.a(1, new MSFIntChkStrike(this.app, 1));
+            paramArrayOfByte.a(2, new MSFIntChkStrike(this.app, 2));
+            paramArrayOfByte.a(3, new MSFIntChkStrike(this.app, 3));
+            paramArrayOfByte.b("8.3.3." + AppSetting.g());
+            return;
+            paramArrayOfByte = (MSFNetTransportProvider)this.app.a(63);
+            paramArrayOfByte = new bewr(this.app.getApp().getApplicationContext(), paramArrayOfByte);
+          } while (paramArrayOfByte == null);
+          paramArrayOfByte = (bewt)paramArrayOfByte.a("app_scan");
+        } while (paramArrayOfByte == null);
+        paramArrayOfByte.a(((MsgBody)localObject).bytes_data.get().toByteArray());
+        return;
+        localObject = ((MsgBody)localObject).bytes_data.get().toByteArray();
+        paramArrayOfByte = new AccountSecurityInfo.SecCheckBanner();
+        try
+        {
+          paramArrayOfByte.mergeFrom((byte[])localObject);
+          localObject = paramArrayOfByte.str_wording.get();
+          int i = paramArrayOfByte.u32_timeToShow.get();
+          paramArrayOfByte = new Intent();
+          paramArrayOfByte.putExtra("wording", (String)localObject);
+          paramArrayOfByte.putExtra("timetowait", i);
+          this.app.a(paramArrayOfByte);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          for (;;)
+          {
+            localInvalidProtocolBufferMicroException.printStackTrace();
+          }
+        }
+        new QPTxVerifyApkTimerTask(this.app, true).a();
+        return;
+      }
+    } while (localInvalidProtocolBufferMicroException.bytes_data.get() == null);
+    QSecFramework.a().a(localInvalidProtocolBufferMicroException.bytes_data.get().toByteArray());
   }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxp
  * JD-Core Version:    0.7.0.1
  */

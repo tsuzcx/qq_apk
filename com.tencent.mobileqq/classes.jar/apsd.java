@@ -1,28 +1,32 @@
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
 
-class apsd
-  implements bcwm
+public class apsd
+  implements Animator.AnimatorListener
 {
-  apsd(apsc paramapsc, List paramList, apsb paramapsb) {}
+  public apsd(EmotionKeywordLayout paramEmotionKeywordLayout) {}
   
-  public void a(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt == 2)
-    {
-      apsc.a(this.jdField_a_of_type_Apsc, this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Apsb != null) {
-        this.jdField_a_of_type_Apsb.a(1, 0);
-      }
+    if (paramAnimator == EmotionKeywordLayout.a(this.a)) {
+      this.a.setVisibility(8);
     }
-    while (this.jdField_a_of_type_Apsb == null) {
-      return;
+    if (EmotionKeywordLayout.a(this.a) != null) {
+      EmotionKeywordLayout.a(this.a).resetCurrentX(0);
     }
-    this.jdField_a_of_type_Apsb.a(1, 1);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apsd
  * JD-Core Version:    0.7.0.1
  */

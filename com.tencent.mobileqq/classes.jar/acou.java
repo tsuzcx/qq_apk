@@ -1,25 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
 
 public class acou
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public acou(UpgradeActivity paramUpgradeActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    axqy.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
-    if (UpgradeActivity.a(this.a)) {
-      axqy.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
-    }
-    UpgradeActivity.a(this.a, false);
-    axqy.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akuy.b(), String.valueOf(2), akuz.a(), "");
-  }
+  public acou(DevlockPushActivity paramDevlockPushActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acou
  * JD-Core Version:    0.7.0.1
  */

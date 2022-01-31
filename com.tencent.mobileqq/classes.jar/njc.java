@@ -1,154 +1,114 @@
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x487.oidb_0x487.GroupList;
+import tencent.im.oidb.cmd0x487.oidb_0x487.RspBody;
 
-public class njc
+class njc
+  extends nac
 {
-  private static njc jdField_a_of_type_Njc = new njc();
-  private long jdField_a_of_type_Long;
-  private nje jdField_a_of_type_Nje = new nje(null);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  njc(nin paramnin) {}
   
-  public static njc a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, errorCode=" + paramInt);
+    }
+    int i;
+    if ((paramInt != -1) && (paramArrayOfByte != null))
     {
-      if (jdField_a_of_type_Njc == null) {
-        jdField_a_of_type_Njc = new njc();
+      try
+      {
+        paramBundle = new oidb_0x487.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        k = paramBundle.uint32_result.get();
+        if (k != 0) {
+          break label463;
+        }
+        paramArrayOfByte = new ArrayList();
+        if (!paramBundle.msg_groups.has()) {
+          break label458;
+        }
+        localObject1 = paramBundle.msg_groups.get();
+        if (localObject1 == null) {
+          break label458;
+        }
+        int j = ((List)localObject1).size();
+        i = 0;
+        paramInt = j;
+        if (i < j)
+        {
+          localObject2 = ((oidb_0x487.GroupList)((List)localObject1).get(i)).uint64_groupcode.get() + "";
+          ((oidb_0x487.GroupList)((List)localObject1).get(i)).bytes_group_name.get().toStringUtf8();
+          paramArrayOfByte.add(localObject2);
+          if (paramArrayOfByte.size() < 3) {
+            break label469;
+          }
+          paramInt = j;
+        }
       }
-      njc localnjc = jdField_a_of_type_Njc;
-      return localnjc;
-    }
-    finally {}
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("videoId", paramString2);
-    localHashMap.put("uin", paramString1);
-    axrn.a(BaseApplicationImpl.getContext()).a("", "IMAX_Ad_VIDEO_PRELOADED_RATE", true, 0L, 0L, localHashMap, "", false);
-    if (QLog.isColorLevel()) {
-      QLog.i("AdvertisementStatistics", 2, "reportImaxVideoCoverRate:" + paramString2);
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Nje.jdField_c_of_type_Long == -1L) {
-      this.jdField_a_of_type_Nje.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-    }
-  }
-  
-  public void a(String paramString, long paramLong, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Nje.a();
-    this.jdField_a_of_type_Long = paramLong;
-    if (QLog.isColorLevel()) {
-      QLog.i("AdvertisementStatistics", 2, "mClickTime:" + this.jdField_a_of_type_Long + " sToolShowTime:" + BaseApplicationImpl.sToolShowTime);
-    }
-    if ((BaseApplicationImpl.sToolShowTime == 0L) || (BaseApplicationImpl.sToolShowTime > paramLong)) {
-      this.jdField_a_of_type_Nje.jdField_a_of_type_Int = 0;
-    }
-    for (this.jdField_a_of_type_Nje.jdField_b_of_type_Long = (BaseApplicationImpl.sToolShowTime - paramLong);; this.jdField_a_of_type_Nje.jdField_b_of_type_Long = 0L)
-    {
-      long l = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Nje.jdField_a_of_type_Long = (l - paramLong);
-      this.jdField_a_of_type_Nje.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Nje.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-      this.jdField_a_of_type_Nje.jdField_a_of_type_Int = 1;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString = "IMAX_Ad_videoLoadErr";
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("adId", paramString1);
-    localHashMap.put("vid", paramString2);
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_Nje.toString());
-    }
-    axrn.a(BaseApplicationImpl.getContext()).a("", "IMAX_Ad_videoLoadErr", true, l1 - l2, 0L, localHashMap, "", false);
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (this.b) {
-      return;
-    }
-    this.b = true;
-    this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString = "IMAX_Ad_Remind_Dialog_Click";
-    this.jdField_a_of_type_Nje.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Nje.jdField_c_of_type_JavaLangString = paramString2;
-    paramString1 = this.jdField_a_of_type_Nje.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_Nje.toString() + " ok " + paramBoolean);
-    }
-    axrn.a(BaseApplicationImpl.getContext()).a("", this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString, paramBoolean, this.jdField_a_of_type_Nje.jdField_c_of_type_Long, 0L, paramString1, "", false);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Nje.jdField_b_of_type_Int == -1)
-    {
-      this.jdField_a_of_type_Nje.jdField_c_of_type_JavaLangString = paramString;
-      paramString = this.jdField_a_of_type_Nje;
-      if (!paramBoolean) {
-        break label36;
+      catch (Exception paramArrayOfByte)
+      {
+        int k;
+        Object localObject1;
+        Object localObject2;
+        while (QLog.isColorLevel())
+        {
+          QLog.e("PubAccountMoreInfoActivity.bindTroop", 2, "getBindedTroops, exception=" + paramArrayOfByte.toString());
+          return;
+          paramInt = 0;
+          continue;
+          paramInt = 0;
+        }
+      }
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayOfByte);
+      if (paramBundle.uint32_privilege_flag.has())
+      {
+        localObject1 = this.a;
+        if (paramBundle.uint32_privilege_flag.get() != 1) {
+          break label478;
+        }
       }
     }
-    label36:
-    for (int i = 1;; i = 0)
+    label458:
+    label463:
+    label469:
+    label478:
+    for (boolean bool = true;; bool = false)
     {
-      paramString.jdField_b_of_type_Int = i;
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    HashMap localHashMap = this.jdField_a_of_type_Nje.a();
-    if (paramBoolean) {}
-    for (this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost_ByUsr";; this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost")
-    {
-      axrn.a(BaseApplicationImpl.getContext()).a("", this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Nje.d, 0L, localHashMap, "", false);
-      if (!QLog.isColorLevel()) {
-        break;
+      ((nin)localObject1).d = bool;
+      localObject1 = (bcic)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putBoolean("mIsAbleBindTroop", this.a.d);
+      ((Bundle)localObject2).putStringArrayList("mBindedTroopUins", paramArrayOfByte);
+      ((bcic)localObject1).a(this.a.jdField_a_of_type_JavaLangString, (Bundle)localObject2);
+      this.a.d();
+      if (QLog.isColorLevel())
+      {
+        if (paramBundle.bytes_errmsg.has()) {}
+        for (paramArrayOfByte = paramBundle.bytes_errmsg.get().toStringUtf8();; paramArrayOfByte = "")
+        {
+          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, ret=" + k + "," + paramInt + "," + paramArrayOfByte + "," + this.a.d);
+          return;
+        }
       }
-      QLog.i("AdvertisementStatistics", 2, "remindUsr:" + paramBoolean + this.jdField_a_of_type_Nje.toString());
       return;
-    }
-  }
-  
-  public void b(String paramString, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Nje.d == -1L)
-    {
-      this.jdField_a_of_type_Nje.jdField_c_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Nje.d = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-      a(paramBoolean);
+      i += 1;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njc
  * JD-Core Version:    0.7.0.1
  */

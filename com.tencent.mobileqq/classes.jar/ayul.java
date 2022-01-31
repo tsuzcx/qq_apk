@@ -1,17 +1,34 @@
-class ayul
+import android.os.Parcel;
+
+public class ayul
 {
-  int jdField_a_of_type_Int;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  ayul(int paramInt, String[] paramArrayOfString)
+  public void a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Int = paramInt;
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeInt(this.c);
+  }
+  
+  public void b(Parcel paramParcel)
+  {
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.c = paramParcel.readInt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayul
  * JD-Core Version:    0.7.0.1
  */

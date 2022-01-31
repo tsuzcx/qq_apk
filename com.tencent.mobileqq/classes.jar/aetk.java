@@ -1,19 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.7;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import mqq.app.QQPermissionCallback;
 
 public class aetk
-  implements noj
+  implements QQPermissionCallback
 {
-  public aetk(PublicAccountChatPie.7 param7) {}
+  public aetk(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.this$0.a.sendEmptyMessage(1);
+    bdcd.a(this.a.a, paramArrayOfString, paramArrayOfInt);
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetk
  * JD-Core Version:    0.7.0.1
  */

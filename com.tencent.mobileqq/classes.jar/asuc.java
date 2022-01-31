@@ -1,107 +1,291 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneShareData;
 import java.util.ArrayList;
-import java.util.HashMap;
-import tencent.im.msg.im_msg_body.RichText;
+import java.util.List;
 
-class asuc
-  extends axfd
+public class asuc
+  implements AdapterView.OnItemClickListener
 {
-  asuc(asua paramasua, ArrayList paramArrayList, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, HashMap paramHashMap, int paramInt2) {}
+  private static URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private Context jdField_a_of_type_AndroidContentContext;
+  protected ShareActionSheetBuilder a;
+  private nlo jdField_a_of_type_Nlo;
   
-  public void a(int paramInt, ArrayList<axeu> paramArrayList)
+  public asuc(Context paramContext, nlo paramnlo)
   {
-    int i;
-    int k;
-    int j;
-    MessageRecord localMessageRecord;
-    if ((paramInt == 0) && (paramArrayList != null) && (paramArrayList.size() > 0))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Nlo = paramnlo;
+  }
+  
+  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    QZoneShareData localQZoneShareData = new QZoneShareData();
+    localQZoneShareData.b = paramString1;
+    localQZoneShareData.c = paramString2;
+    localQZoneShareData.a = new ArrayList();
+    localQZoneShareData.a.add(paramString4);
+    localQZoneShareData.d = paramString3;
+    bjao.a(paramContext, String.valueOf(bexd.a().a()), localQZoneShareData, null, 1003);
+    azmj.b(null, "dc00898", "", this.jdField_a_of_type_Nlo.a.a, "0X80092A4", "0X80092A4", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
+  }
+  
+  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    if (a(paramContext, paramInt))
+    {
+      paramContext = String.valueOf(System.currentTimeMillis());
+      if (jdField_a_of_type_ComTencentImageURLDrawable != null) {
+        jdField_a_of_type_ComTencentImageURLDrawable.cancelDownload();
+      }
+      jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramString4, URLDrawable.URLDrawableOptions.obtain());
+      if (jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
+        a(paramContext, paramString1, paramString2, auzi.a(jdField_a_of_type_ComTencentImageURLDrawable), paramString3, paramInt);
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "onMultiForwardVideoUploadResult success[" + paramArrayList.size() + "]");
+        QLog.d("ImaxAdvertisement", 2, "s_forShare Bitmap FAILED, downloadImediatly ...");
       }
-      i = 0;
-      k = 0;
-      paramInt = 0;
-      j = paramInt;
-      if (k >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label278;
+      jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ImaxAdvertisement", 2, "start load URLDrawable. ...");
+    }
+    jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new asud(this, paramContext, paramString1, paramString2, paramString3, paramInt));
+    jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+  }
+  
+  private void a(String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4, int paramInt)
+  {
+    if (paramInt == 1001)
+    {
+      WXShareHelper.a().b(paramString1, paramString2, paramBitmap, paramString3, paramString4);
+      azmj.b(null, "dc00898", "", this.jdField_a_of_type_Nlo.a.a, "0X80092A3", "0X80092A3", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
+    }
+    while (paramInt != 1002) {
+      return;
+    }
+    WXShareHelper.a().a(paramString1, paramString2, paramBitmap, paramString3, paramString4);
+    azmj.b(null, "dc00898", "", this.jdField_a_of_type_Nlo.a.a, "0X80092A5", "0X80092A5", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
+  }
+  
+  private void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    paramString4 = new azqg(StructMsgForGeneralShare.class).c(127).b(12345).e(paramString4).a(alpo.a(2131706121) + paramString3).a();
+    Object localObject = this.jdField_a_of_type_Nlo.a.v;
+    String str = this.jdField_a_of_type_Nlo.a.w;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramString4.mSourceName = this.jdField_a_of_type_Nlo.a.v;
+      if (!TextUtils.isEmpty(str)) {
+        paramString4.mSourceIcon = this.jdField_a_of_type_Nlo.a.w;
       }
-      localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-      if (!(localMessageRecord instanceof MessageForShortVideo)) {
-        break label363;
+    }
+    paramString4.mContentLayout = 2;
+    localObject = azqt.a(2);
+    ((azqk)localObject).a(paramString1, paramString2, paramString3);
+    paramString4.addItem((azqj)localObject);
+    paramString1 = new Intent();
+    paramString1.putExtra("forward_type", -3);
+    paramString1.putExtra("stuctmsg_bytes", paramString4.getBytes());
+    paramString1.putExtra("structmsg_service_id", paramString4.mMsgServiceID);
+    paramString1.putExtra("emoInputType", 2);
+    paramString1.putExtra("forwardDirect", true);
+    arum.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramString1, 1000);
+    azmj.b(null, "dc00898", "", this.jdField_a_of_type_Nlo.a.a, "0X80092A2", "0X80092A2", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
+  }
+  
+  private boolean a(Context paramContext, int paramInt)
+  {
+    if (!WXShareHelper.a().a())
+    {
+      QQToast.a(paramContext, 2131694568, 0).a();
+      return false;
+    }
+    if (!WXShareHelper.a().b())
+    {
+      QQToast.a(paramContext, 2131721479, 0).a();
+      return false;
+    }
+    if ((paramInt == 1002) && (!WXShareHelper.a().c()))
+    {
+      QQToast.a(paramContext, 2131721479, 0).a();
+      return false;
+    }
+    if (!bdee.g(this.jdField_a_of_type_AndroidContentContext))
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131694766, 1).a();
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    boolean bool = true;
+    if (TextUtils.isEmpty(paramString1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ImaxAdvertisement", 2, "shareImaxAd Failed title==null");
       }
-      if (i >= paramArrayList.size())
-      {
-        QLog.e("MultiMsg_TAG", 1, "MultiForwardVideo: error index!");
-        j = i;
-        i = paramInt;
-        paramInt = j;
-      }
+      bool = false;
     }
     for (;;)
     {
-      k += 1;
-      j = i;
-      i = paramInt;
-      paramInt = j;
-      break;
-      axeu localaxeu = (axeu)paramArrayList.get(i);
-      j = paramInt;
-      if (localaxeu != null)
+      if (!bool) {
+        QQToast.a(paramContext, 2131718411, 0).a();
+      }
+      return bool;
+      if (TextUtils.isEmpty(paramString2))
       {
-        if ((localaxeu.jdField_a_of_type_Int != 0) || (localaxeu.jdField_a_of_type_JavaLangObject == null) || (!(localaxeu.jdField_a_of_type_JavaLangObject instanceof im_msg_body.RichText))) {
-          break label213;
+        if (QLog.isColorLevel()) {
+          QLog.d("ImaxAdvertisement", 2, "shareImaxAd Failed bitmapUrl==null");
         }
-        ((MessageForShortVideo)localMessageRecord).richText = ((im_msg_body.RichText)localaxeu.jdField_a_of_type_JavaLangObject);
-        j = paramInt;
+        bool = false;
       }
-      for (;;)
+      else if (TextUtils.isEmpty(paramString3))
       {
-        paramInt = i + 1;
-        i = j;
-        break;
-        label213:
-        j = paramInt;
-        if (localaxeu.jdField_a_of_type_Int == -1)
-        {
-          j = paramInt;
-          if (localaxeu.jdField_a_of_type_Aunr != null)
-          {
-            j = paramInt;
-            if ("cancel".equals(localaxeu.jdField_a_of_type_Aunr.b)) {
-              j = 1;
-            }
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("ImaxAdvertisement", 2, "shareImaxAd Failed jumpUrl==null");
         }
+        bool = false;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "onMultiForwardVideoUploadResult failed!");
-      }
-      j = 0;
-      label278:
-      if (j != 0) {
-        asua.a(this.jdField_a_of_type_Asua, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      }
-      do
-      {
-        return;
-        asua.a(this.jdField_a_of_type_Asua, 2);
-      } while (asua.c(this.jdField_a_of_type_Asua) != 0);
-      asua.a(this.jdField_a_of_type_Asua, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, false, this.b);
+    }
+  }
+  
+  public ShareActionSheetBuilder.ActionSheetItem a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString)
+  {
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = this.jdField_a_of_type_AndroidContentContext.getString(paramInt1);
+    localActionSheetItem.icon = paramInt2;
+    localActionSheetItem.iconNeedBg = paramBoolean;
+    localActionSheetItem.action = paramInt3;
+    localActionSheetItem.argus = paramString;
+    return localActionSheetItem;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131720040));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a());
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(this);
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
       return;
-      label363:
-      j = paramInt;
-      paramInt = i;
-      i = j;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ShareActionSheet", 2, "actionSheet.show exception=", localException);
+    }
+  }
+  
+  public List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(a(2131696871, 2130838916, true, 2, ""));
+    localArrayList.add(a(2131696884, 2130838917, true, 3, ""));
+    localArrayList.add(a(2131696891, 2130838920, true, 9, ""));
+    localArrayList.add(a(2131696874, 2130838914, true, 10, ""));
+    return (List[])new ArrayList[] { localArrayList };
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = null;
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      if ("onshare_ItemClick mAdItem " + this.jdField_a_of_type_Nlo == null)
+      {
+        paramAdapterView = " null";
+        QLog.d("ImaxAdvertisement", 2, paramAdapterView);
+      }
+    }
+    else
+    {
+      localObject2 = paramView.getTag();
+      if ((localObject2 != null) && (this.jdField_a_of_type_Nlo != null)) {
+        break label73;
+      }
+    }
+    label73:
+    String str2;
+    Object localObject1;
+    do
+    {
+      return;
+      paramAdapterView = this.jdField_a_of_type_Nlo.toString();
+      break;
+      str2 = this.jdField_a_of_type_Nlo.a.x;
+      paramView = this.jdField_a_of_type_Nlo.a.t;
+      localObject1 = this.jdField_a_of_type_Nlo.a.s;
+      String str1 = this.jdField_a_of_type_Nlo.a.u;
+      paramAdapterView = paramView;
+      if (TextUtils.isEmpty(paramView)) {
+        paramAdapterView = this.jdField_a_of_type_Nlo.e;
+      }
+      paramView = (View)localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        paramView = this.jdField_a_of_type_Nlo.d;
+      }
+      localObject1 = str1;
+      if (TextUtils.isEmpty(str1)) {
+        localObject1 = this.jdField_a_of_type_Nlo.f;
+      }
+    } while (!a(this.jdField_a_of_type_AndroidContentContext, paramView, paramAdapterView, str2));
+    switch (((bdip)localObject2).a.action)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+      return;
+      a(paramAdapterView, paramView, (String)localObject1, str2);
+      continue;
+      a(this.jdField_a_of_type_AndroidContentContext, paramView, (String)localObject1, str2, paramAdapterView);
+      continue;
+      a(this.jdField_a_of_type_AndroidContentContext, paramView, (String)localObject1, str2, paramAdapterView, 1001);
+      continue;
+      a(this.jdField_a_of_type_AndroidContentContext, paramView, (String)localObject1, str2, paramAdapterView, 1002);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asuc
  * JD-Core Version:    0.7.0.1
  */

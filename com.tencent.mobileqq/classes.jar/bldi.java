@@ -1,29 +1,56 @@
-import android.os.Build.VERSION;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl;
-import java.io.File;
+import android.content.Context;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.ttpic.baseutils.string.StringUtils;
 
-public class bldi
+class bldi
+  implements View.OnClickListener
 {
-  bldl a;
+  bldi(bldg parambldg) {}
   
-  public bldi()
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new JBMR2VideoConverterImpl();
+    if (bldg.a(this.a).getText().length() > bldg.a(this.a))
+    {
+      QQToast.a(this.a.getContext(), this.a.getContext().getString(2131689849, new Object[] { Integer.valueOf(bldg.a(this.a)) }), 1).a();
+      return;
     }
-  }
-  
-  public boolean a(File paramFile, bldj parambldj, boolean paramBoolean)
-  {
-    if (this.a != null) {
-      return this.a.a(paramFile, parambldj, paramBoolean);
+    if (bldg.a(this.a) != null) {
+      localObject = null;
     }
-    return false;
+    try
+    {
+      paramView = bldg.a(this.a).getText().toString();
+      localObject = paramView;
+    }
+    catch (IndexOutOfBoundsException paramView)
+    {
+      label98:
+      break label98;
+    }
+    paramView = (View)localObject;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      paramView = StringUtils.removeUTF8Emoji((String)localObject);
+    }
+    Object localObject = paramView;
+    if (!TextUtils.isEmpty(paramView)) {
+      localObject = paramView.replaceAll("\\r|\\n", "");
+    }
+    paramView = (View)localObject;
+    if (localObject != null) {
+      paramView = ((String)localObject).trim();
+    }
+    bldg.a(this.a).a(paramView);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bldi
  * JD-Core Version:    0.7.0.1
  */

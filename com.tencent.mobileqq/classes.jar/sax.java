@@ -1,48 +1,33 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 class sax
-  extends akws
+  implements Animation.AnimationListener
 {
-  sax(sau paramsau, sat paramsat) {}
+  sax(saw paramsaw, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public int a()
-  {
-    return 5;
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public void a(Object paramObject)
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
-    }
-    sau.b(this.jdField_a_of_type_Sau, this.jdField_a_of_type_Sat);
-    StructLongMessageDownloadProcessor.a(sau.a(this.jdField_a_of_type_Sau), this.jdField_a_of_type_Sat.a);
-    ((bajo)sau.a(this.jdField_a_of_type_Sau).getManager(132)).a(this.jdField_a_of_type_Sat.a);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Sat.a + ", success:" + String.valueOf(paramBoolean));
-    }
-    if ((sau.a(this.jdField_a_of_type_Sau) != null) && (sau.a(this.jdField_a_of_type_Sau).isResume())) {
-      sau.a(this.jdField_a_of_type_Sau).b(false);
+    ImageView localImageView = saw.a(this.jdField_a_of_type_Saw);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a) {}
+    for (int i = 2130842475;; i = 2130841341)
+    {
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
+      return;
     }
   }
   
-  public void b(Object paramObject)
-  {
-    sau.a(this.jdField_a_of_type_Sau);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sax
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aivm
-  implements Comparator<aivp>
+class aivm
+  extends bavo
 {
-  public aivm(ApolloCmdChannel paramApolloCmdChannel) {}
-  
-  public int a(aivp paramaivp1, aivp paramaivp2)
+  aivm(aivk paramaivk, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, bdvu parambdvu, DownloadParam paramDownloadParam)
   {
-    return paramaivp1.a() - paramaivp2.a();
+    super(paramQQAppInterface, paramString);
+  }
+  
+  protected void realCancel() {}
+  
+  protected void realStart()
+  {
+    aivk.a(this.jdField_a_of_type_Aivk, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bdvu, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aivm
  * JD-Core Version:    0.7.0.1
  */

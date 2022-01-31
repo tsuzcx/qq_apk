@@ -1,36 +1,49 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class rjp
-  extends BaseAdapter
 {
-  private List<BaseAdapter> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static boolean b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new rjq(this));
   private rjr jdField_a_of_type_Rjr;
-  private rjs jdField_a_of_type_Rjs;
+  private boolean jdField_a_of_type_Boolean;
   
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
+  public rjp(Context paramContext)
   {
-    return getView(paramInt, paramView, paramViewGroup);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    ThreadManager.executeOnSubThread(new VideoPluginInstall.1(this));
   }
   
-  public List<BaseAdapter> a()
+  private void c()
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a() {}
-  
-  public void a(BaseAdapter paramBaseAdapter)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramBaseAdapter == null)) {
+    TVK_SDKMgr.setOnLogListener(new rjt(null));
+    try
+    {
+      if (!b)
+      {
+        TVK_SDKMgr.setDebugEnable(true);
+        TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.readinjoy.video", 2, "initVideoSDK() finish");
+        }
+        b = true;
+      }
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramBaseAdapter);
-    paramBaseAdapter.registerDataSetObserver(new rjq(this));
+    finally {}
+  }
+  
+  public void a()
+  {
+    if ((!a()) && (!this.jdField_a_of_type_Boolean)) {
+      ThreadManager.post(new VideoPluginInstall.2(this), 8, null, true);
+    }
   }
   
   public void a(rjr paramrjr)
@@ -38,110 +51,21 @@ public class rjp
     this.jdField_a_of_type_Rjr = paramrjr;
   }
   
-  public void a(rjs paramrjs)
+  public boolean a()
   {
-    this.jdField_a_of_type_Rjs = paramrjs;
+    return TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext);
   }
   
-  public int getCount()
+  public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((BaseAdapter)localIterator.next()).getCount() + i) {}
-    return i;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      BaseAdapter localBaseAdapter = (BaseAdapter)localIterator.next();
-      int i = localBaseAdapter.getCount();
-      if (paramInt < i) {
-        return localBaseAdapter.getItem(paramInt);
-      }
-      paramInt -= i;
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      BaseAdapter localBaseAdapter = (BaseAdapter)localIterator.next();
-      int i = localBaseAdapter.getCount();
-      if (paramInt < i) {
-        return localBaseAdapter.getItemId(paramInt);
-      }
-      paramInt -= i;
-    }
-    return -1L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    BaseAdapter localBaseAdapter;
-    if (localIterator.hasNext())
-    {
-      localBaseAdapter = (BaseAdapter)localIterator.next();
-      j = localBaseAdapter.getCount();
-      if (i >= j) {}
-    }
-    for (i = localBaseAdapter.getItemViewType(i);; i = -1)
-    {
-      return i + paramInt;
-      i -= j;
-      paramInt = localBaseAdapter.getViewTypeCount() + paramInt;
-      break;
-    }
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = paramInt;
-    while (localIterator.hasNext())
-    {
-      Object localObject = (BaseAdapter)localIterator.next();
-      int j = ((BaseAdapter)localObject).getCount();
-      if (i < j)
-      {
-        localObject = ((BaseAdapter)localObject).getView(i, paramView, paramViewGroup);
-        if (this.jdField_a_of_type_Rjs != null)
-        {
-          this.jdField_a_of_type_Rjs.a(paramInt, (View)localObject);
-          return localObject;
-        }
-      }
-      i -= j;
-    }
-    return null;
-  }
-  
-  public int getViewTypeCount()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((BaseAdapter)localIterator.next()).getViewTypeCount() + i) {}
-    return Math.max(i, 1);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    super.notifyDataSetChanged();
-    if (this.jdField_a_of_type_Rjr != null) {
-      this.jdField_a_of_type_Rjr.a();
-    }
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_Rjr = null;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjp
  * JD-Core Version:    0.7.0.1
  */

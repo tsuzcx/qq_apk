@@ -1,24 +1,21 @@
-public abstract interface man
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
+
+public class man
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public man(AVSchema paramAVSchema, String paramString) {}
   
-  public abstract boolean a();
-  
-  public abstract boolean a(maq parammaq);
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean b(maq parammaq);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    mts.d();
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     man
  * JD-Core Version:    0.7.0.1
  */

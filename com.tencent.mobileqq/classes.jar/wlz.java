@@ -1,29 +1,29 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.MotionEvent;
+import android.support.annotation.NonNull;
 
-class wlz
-  implements RecyclerView.OnItemTouchListener
+public class wlz
+  extends uhw<wli, uzs>
 {
-  wlz(wlu paramwlu) {}
-  
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  public wlz(wli paramwli)
   {
-    return wlu.a(this.a, paramMotionEvent);
+    super(paramwli);
   }
   
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
-  
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  public void a(@NonNull wli paramwli, @NonNull uzs paramuzs)
   {
-    if (wlu.a(this.a) != null) {
-      wlu.a(this.a).a(paramMotionEvent);
-    }
+    wsv.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramuzs);
+    wli.a(paramwli, paramuzs.a);
   }
+  
+  public Class acceptEventClass()
+  {
+    return uzs.class;
+  }
+  
+  public void b(@NonNull wli paramwli, @NonNull uzs paramuzs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wlz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,19 @@
-import android.animation.ValueAnimator;
+import com.tencent.component.animation.rebound.SimpleSpringListener;
+import com.tencent.component.animation.rebound.Spring;
 
-public abstract interface bkde
+class bkde
+  extends SimpleSpringListener
 {
-  public abstract void a(ValueAnimator paramValueAnimator);
+  bkde(bkdd parambkdd) {}
   
-  public abstract void b(ValueAnimator paramValueAnimator);
-  
-  public abstract void c(ValueAnimator paramValueAnimator);
-  
-  public abstract void d(ValueAnimator paramValueAnimator);
+  public void onSpringUpdate(Spring paramSpring)
+  {
+    bkdd.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkde
  * JD-Core Version:    0.7.0.1
  */

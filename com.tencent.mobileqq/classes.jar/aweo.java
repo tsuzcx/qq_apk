@@ -1,67 +1,87 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.richstatus.StatusJsHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import java.util.List;
 
 public class aweo
-  implements BusinessObserver
 {
-  public aweo(StatusJsHandler paramStatusJsHandler) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
+    if ((paramBundle == null) || (paramQQAppInterface == null))
+    {
+      a("picPreSendProcess bundle=null!");
+      return;
+    }
+    paramBundle.setClassLoader(PhotoSendParams.class.getClassLoader());
+    PhotoSendParams localPhotoSendParams = (PhotoSendParams)paramBundle.getParcelable("PhotoConst.photo_send_qzone_pic_file_params");
+    String str1 = paramBundle.getString("uin");
+    String str2 = paramQQAppInterface.c();
+    paramBundle.getString("troop_uin");
+    int i = paramBundle.getInt("uintype", 1003);
+    if ((localPhotoSendParams == null) || (TextUtils.isEmpty(localPhotoSendParams.rawMd5)) || (TextUtils.isEmpty(localPhotoSendParams.thumbPath)) || (!bdcs.b(localPhotoSendParams.thumbPath)) || (TextUtils.isEmpty(localPhotoSendParams.rawDownloadUrl)) || (TextUtils.isEmpty(str1)))
+    {
+      a("picPreSendProcess sendParams error, friendUin:" + str1);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
+      QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess params friendUin:" + str1 + ", uinType:" + i + ", sendParams:" + localPhotoSendParams.toString());
     }
-    if (!paramBoolean) {
-      this.a.a(2131695569);
-    }
-    for (;;)
+    bawo localbawo = new bawo();
+    bawx localbawx;
+    switch (i)
     {
-      this.a.a(this.a.c, "false");
+    default: 
+      localbawx = new bawx();
+      localbawx.jdField_c_of_type_JavaLangString = str2;
+      localbawx.jdField_d_of_type_JavaLangString = str1;
+      localbawx.jdField_e_of_type_JavaLangString = str2;
+      localbawx.jdField_a_of_type_Long = localPhotoSendParams.fileSize;
+      localbawx.jdField_a_of_type_ArrayOfByte = bdcv.a(localPhotoSendParams.rawMd5);
+      localbawx.jdField_a_of_type_JavaLangString = (localPhotoSendParams.rawMd5 + ".jpg");
+      localbawx.jdField_c_of_type_Int = localPhotoSendParams.rawWidth;
+      localbawx.jdField_d_of_type_Int = localPhotoSendParams.rawHeight;
+      localbawx.jdField_a_of_type_Int = 1000;
+      localbawx.jdField_e_of_type_Int = 3;
+      localbawx.jdField_b_of_type_JavaLangString = localPhotoSendParams.rawDownloadUrl;
+    }
+    for (paramBundle = "c2c_pic_up"; TextUtils.isEmpty(paramBundle); paramBundle = "grp_pic_up")
+    {
+      a("picPreSendProcess protoKey=null!");
       return;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
-          {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null))
-            {
-              paramBundle = new AccountDetail(localGetPublicAccountDetailInfoResponse);
-              this.a.a(localBaseActivity, paramBundle);
-              StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-            }
-          }
-          else {
-            this.a.a(2131695569);
-          }
-        }
-        else
-        {
-          this.a.a(2131695569);
-        }
-      }
-      catch (Exception paramBundle) {}
+      localbawx = new bawx();
+      localbawx.jdField_c_of_type_JavaLangString = str2;
+      localbawx.jdField_d_of_type_JavaLangString = str1;
+      localbawx.jdField_e_of_type_JavaLangString = str2;
+      localbawx.jdField_a_of_type_Long = localPhotoSendParams.fileSize;
+      localbawx.jdField_a_of_type_ArrayOfByte = bdcv.a(localPhotoSendParams.rawMd5);
+      localbawx.jdField_a_of_type_JavaLangString = (localPhotoSendParams.rawMd5 + ".jpg");
+      localbawx.jdField_c_of_type_Int = localPhotoSendParams.rawWidth;
+      localbawx.jdField_d_of_type_Int = localPhotoSendParams.rawHeight;
+      localbawx.jdField_a_of_type_Int = 1000;
+      localbawx.jdField_b_of_type_Int = 1045;
+      localbawx.f = 1;
+      localbawx.jdField_e_of_type_Int = 3;
+      localbawx.jdField_b_of_type_JavaLangString = localPhotoSendParams.rawDownloadUrl;
+    }
+    localbawo.jdField_a_of_type_JavaUtilList.add(localbawx);
+    localbawo.jdField_a_of_type_JavaLangString = paramBundle;
+    localbawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = paramQQAppInterface.getProtoReqManager();
+    localbawo.jdField_a_of_type_Baxv = new awep(str2, str1, localPhotoSendParams);
+    baxu.a(localbawo);
+  }
+  
+  private static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("PicAioQzonePreSendMgr", 2, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aweo
  * JD-Core Version:    0.7.0.1
  */

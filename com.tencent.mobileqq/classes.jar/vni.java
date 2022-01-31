@@ -1,24 +1,46 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 public class vni
-  implements vvm
+  implements View.OnTouchListener
 {
-  public vni(DoodleLayout paramDoodleLayout) {}
-  
-  public void a(@NonNull vvt paramvvt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    vej.b("0X80075CD");
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 1, 2);
+    Object localObject = ((TextView)paramView).getText();
+    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
+    paramView = (TextView)paramView;
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
+    {
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramView.getTotalPaddingLeft();
+      int n = paramView.getTotalPaddingTop();
+      int i1 = paramView.getScrollX();
+      int i2 = paramView.getScrollY();
+      paramMotionEvent = paramView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length != 0)
+      {
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramView);
+        }
+        return true;
+      }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vni
  * JD-Core Version:    0.7.0.1
  */

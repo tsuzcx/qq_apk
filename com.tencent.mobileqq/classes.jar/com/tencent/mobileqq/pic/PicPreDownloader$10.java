@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.pic;
 
-import aunl;
-import aunv;
+import awes;
+import awfc;
 
 class PicPreDownloader$10
   implements Runnable
 {
-  PicPreDownloader$10(PicPreDownloader paramPicPreDownloader, aunv paramaunv) {}
+  PicPreDownloader$10(PicPreDownloader paramPicPreDownloader, awfc paramawfc) {}
   
   public void run()
   {
-    aunl.a(this.a, this.this$0.a);
+    awes.a(this.a, this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount;
 
-import ajya;
+import alpo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 import java.util.Arrays;
-import npk;
+import nss;
 
 public class VideoInfo$InterruptedWeishiAd
   implements Parcelable
 {
-  public static final Parcelable.Creator<InterruptedWeishiAd> CREATOR = new npk();
+  public static final Parcelable.Creator<InterruptedWeishiAd> CREATOR = new nss();
   public int a;
   public UrlJumpInfo a;
   public String a;
@@ -81,7 +81,7 @@ public class VideoInfo$InterruptedWeishiAd
       if (this.jdField_b_of_type_Int != 1) {
         break;
       }
-      str = ajya.a(2131716293);
+      str = alpo.a(2131716665);
       break;
     }
   }
@@ -116,7 +116,7 @@ public class VideoInfo$InterruptedWeishiAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd
  * JD-Core Version:    0.7.0.1
  */

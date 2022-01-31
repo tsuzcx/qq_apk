@@ -1,61 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
-public class atpd
-  extends Handler
+class atpd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public atpd(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  atpd(atpc paramatpc) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onGlobalLayout()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 101: 
-    case 100: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a();
-          bfnm localbfnm = bfnm.b;
-          if ((localbfnm != null) && (localbfnm.a())) {
-            localbfnm.b(5);
-          }
-        } while (paramMessage.obj == null);
-        paramMessage = (NearbyPeopleCard)paramMessage.obj;
-        this.a.b = true;
-        this.a.a(paramMessage, true, false);
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      NearbyPeopleProfileActivity.a(this.a).b();
-      return;
-    case 102: 
-      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 202: 
-      NearbyPeopleProfileActivity.a(this.a).a(true);
-      this.a.a.sendEmptyMessageDelayed(203, 1500L);
-      return;
-    case 203: 
-      NearbyPeopleProfileActivity.a(this.a).a(false);
-      return;
-    case 204: 
-      this.a.a(this.a.getString(2131694564));
-      return;
-    case 207: 
-      this.a.a(ajya.a(2131707249));
-      return;
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    CameraPosition localCameraPosition = this.a.a.a.getCameraPosition();
+    if (localCameraPosition != null) {
+      MapWidget.a(this.a.a).a(localCameraPosition.target);
     }
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atpd
  * JD-Core Version:    0.7.0.1
  */

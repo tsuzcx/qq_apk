@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class thx
-  implements View.OnClickListener
+public class thx
 {
-  thx(thv paramthv) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onClick(View paramView)
+  public thx(String paramString, int paramInt)
   {
-    this.a.a.dismiss();
-    vei.a("msg_tab", "clk_tips", 0, 0, new String[] { "1", "", "", "" });
+    this.jdField_a_of_type_Boolean = true;
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thx
  * JD-Core Version:    0.7.0.1
  */

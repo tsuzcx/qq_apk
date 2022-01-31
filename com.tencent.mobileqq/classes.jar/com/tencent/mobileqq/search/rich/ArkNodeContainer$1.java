@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.rich;
 
-import awsw;
+import aynz;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkNodeContainer$1
   implements Runnable
 {
-  public ArkNodeContainer$1(awsw paramawsw, String paramString) {}
+  public ArkNodeContainer$1(aynz paramaynz, String paramString) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ArkNodeContainer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkNodeContainer.1
  * JD-Core Version:    0.7.0.1
  */

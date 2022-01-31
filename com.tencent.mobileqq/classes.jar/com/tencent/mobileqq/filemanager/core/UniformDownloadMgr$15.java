@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apdc;
-import apdh;
-import apdi;
-import apwj;
+import aqwa;
+import aqwf;
+import aqwg;
+import arpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,22 +16,22 @@ import java.util.Set;
 public class UniformDownloadMgr$15
   implements Runnable
 {
-  public UniformDownloadMgr$15(apdc paramapdc) {}
+  public UniformDownloadMgr$15(aqwa paramaqwa) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject4;
     Object localObject5;
-    synchronized (apdc.a(this.this$0))
+    synchronized (aqwa.a(this.this$0))
     {
-      if (apdc.a(this.this$0).size() > 0)
+      if (aqwa.a(this.this$0).size() > 0)
       {
-        localObject4 = apdc.a(this.this$0).entrySet().iterator();
+        localObject4 = aqwa.a(this.this$0).entrySet().iterator();
         while (((Iterator)localObject4).hasNext())
         {
-          localObject5 = (apdh)((Map.Entry)((Iterator)localObject4).next()).getValue();
-          if ((((apdh)localObject5).jdField_a_of_type_Apwj != null) && (8 == ((apdh)localObject5).jdField_a_of_type_Apwj.f()) && (2 == ((apdh)localObject5).jdField_a_of_type_Apwj.g())) {
+          localObject5 = (aqwf)((Map.Entry)((Iterator)localObject4).next()).getValue();
+          if ((((aqwf)localObject5).jdField_a_of_type_Arpl != null) && (8 == ((aqwf)localObject5).jdField_a_of_type_Arpl.f()) && (2 == ((aqwf)localObject5).jdField_a_of_type_Arpl.g())) {
             localArrayList.add(localObject5);
           }
         }
@@ -41,11 +41,11 @@ public class UniformDownloadMgr$15
     Object localObject3;
     while (((Iterator)???).hasNext())
     {
-      localObject3 = (apdh)((Iterator)???).next();
-      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> resumeRuningGenDownloadOfOldApp, url:[" + ((apdh)localObject3).jdField_a_of_type_JavaLangString + "]");
-      ((apdh)localObject3).jdField_a_of_type_Apwj.a();
+      localObject3 = (aqwf)((Iterator)???).next();
+      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> resumeRuningGenDownloadOfOldApp, url:[" + ((aqwf)localObject3).jdField_a_of_type_JavaLangString + "]");
+      ((aqwf)localObject3).jdField_a_of_type_Arpl.a();
     }
-    if (apdc.a(this.this$0))
+    if (aqwa.a(this.this$0))
     {
       QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot. start resume");
       localObject3 = this.this$0.a();
@@ -58,17 +58,17 @@ public class UniformDownloadMgr$15
         {
           localObject5 = (Map.Entry)((Iterator)localObject3).next();
           localObject4 = (String)((Map.Entry)localObject5).getKey();
-          localObject5 = (apdi)((Map.Entry)localObject5).getValue();
+          localObject5 = (aqwg)((Map.Entry)localObject5).getValue();
           if (localObject5 != null)
           {
-            if (((apdi)localObject5).jdField_a_of_type_Boolean)
+            if (((aqwg)localObject5).jdField_a_of_type_Boolean)
             {
               ((Map)???).put(localObject4, localObject5);
             }
             else
             {
-              QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[" + (String)localObject4 + "] nId:[" + ((apdi)localObject5).jdField_a_of_type_Int + "] - 1");
-              apdc.a(this.this$0, (String)localObject4, ((apdi)localObject5).jdField_a_of_type_JavaLangString, ((apdi)localObject5).jdField_a_of_type_Long, ((apdi)localObject5).b, ((apdi)localObject5).jdField_a_of_type_AndroidOsBundle, ((apdi)localObject5).jdField_a_of_type_Int, true);
+              QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[" + (String)localObject4 + "] nId:[" + ((aqwg)localObject5).jdField_a_of_type_Int + "] - 1");
+              aqwa.a(this.this$0, (String)localObject4, ((aqwg)localObject5).jdField_a_of_type_JavaLangString, ((aqwg)localObject5).jdField_a_of_type_Long, ((aqwg)localObject5).b, ((aqwg)localObject5).jdField_a_of_type_AndroidOsBundle, ((aqwg)localObject5).jdField_a_of_type_Int, true);
             }
           }
           else {
@@ -83,11 +83,11 @@ public class UniformDownloadMgr$15
         {
           localObject4 = (Map.Entry)((Iterator)???).next();
           localObject3 = (String)((Map.Entry)localObject4).getKey();
-          localObject4 = (apdi)((Map.Entry)localObject4).getValue();
+          localObject4 = (aqwg)((Map.Entry)localObject4).getValue();
           if (localObject4 != null)
           {
-            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[" + (String)localObject3 + "] nId:[" + ((apdi)localObject4).jdField_a_of_type_Int + "] - 2");
-            apdc.a(this.this$0, (String)localObject3, ((apdi)localObject4).jdField_a_of_type_JavaLangString, ((apdi)localObject4).jdField_a_of_type_Long, ((apdi)localObject4).b, ((apdi)localObject4).jdField_a_of_type_AndroidOsBundle, ((apdi)localObject4).jdField_a_of_type_Int, true);
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[" + (String)localObject3 + "] nId:[" + ((aqwg)localObject4).jdField_a_of_type_Int + "] - 2");
+            aqwa.a(this.this$0, (String)localObject3, ((aqwg)localObject4).jdField_a_of_type_JavaLangString, ((aqwg)localObject4).jdField_a_of_type_Long, ((aqwg)localObject4).b, ((aqwg)localObject4).jdField_a_of_type_AndroidOsBundle, ((aqwg)localObject4).jdField_a_of_type_Int, true);
           }
           else
           {
@@ -101,12 +101,12 @@ public class UniformDownloadMgr$15
       QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot. not resume");
       this.this$0.d();
     }
-    apdc.b(this.this$0);
+    aqwa.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.15
  * JD-Core Version:    0.7.0.1
  */

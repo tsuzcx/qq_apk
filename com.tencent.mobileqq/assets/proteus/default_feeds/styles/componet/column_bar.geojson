@@ -1,0 +1,98 @@
+{
+    "view_type": "UIView",
+    "view_id":"id_column_root",
+    "layout_type":"layout_linear",
+    "direction": "horizontal",
+    "margin_top": "8",
+    "margin_left": "6",
+    "margin_right": "6",
+    "event_type":"column_entrances_click",
+    "visible_depend_on_children": "YES",
+    "height": {
+        "type":"relative",
+        "value":"24"
+    },
+    "width": {
+        "type": "wrap_content"
+    },
+    "attributes":{
+        "setCornerRadiusString:": "4",
+        "setBackgroundColorString:": "#F5F6FA"
+    },
+    "subviews": [
+        {
+            "view_type":"ReadInjoyAsynImageIcon",
+            "view_id":"id_column_icon",
+            "margin_left": "8",
+            "align_parent_center_vertical": "YES",
+            "height":{
+                "type":"relative",
+                "value":"12"
+            },
+            "width":{
+                "type":"relative",
+                "value":"12"
+            },
+            "attributes":{
+                "setImageWithURLString:lineup:":["$readinjoy_column_icon","1"]
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_column_tips",
+            "margin_left":"3",
+            "align_parent_center_vertical": "YES",
+            "height":{
+                "type":"match_parent"
+            },
+            "width":{
+                "type":"wrap_content"
+
+            },
+            "attributes":{
+                "setText:":"$column_tips",
+                "setTextColorString:":"#5E5E5E",
+                "setFontSizeString:":"12",
+                "setNumberOfLinesString:":"1"
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_column_name",
+            "margin_left":"2",
+            "align_parent_center_vertical": "YES",
+            "height":{
+                "type":"match_parent"
+            },
+            "width":{
+                "type":"wrap_content"
+
+            },
+            "attributes":{
+                "setText:":"$column_name",
+                "setTextColorString:":"#00CAFC",
+                "setFontSizeString:":"12",
+                "setNumberOfLinesString:":"1"
+            }
+        },
+        {
+            "view_type":"ReadInjoyAsynImageIcon",
+            "view_id":"id_column_arrow",
+            "visible_depend_on_brother":"id_column_name",
+            "margin_left": "2",
+            "margin_right": "6",
+            "align_parent_center_vertical": "YES",
+            "height":{
+                "type":"relative",
+                "value":"12"
+            },
+            "width":{
+                "type":"relative",
+                "value":"12"
+            },
+            "attributes":{
+                "setImageWithURLString:lineup:":["http://pub.idqqimg.com/pc/misc/files/20200227/a2a146da4174460fa9662061fdd144f5.png","1"]
+            }
+        }
+    ]
+}

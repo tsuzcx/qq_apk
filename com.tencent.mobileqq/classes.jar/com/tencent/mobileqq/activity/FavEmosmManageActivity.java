@@ -1,31 +1,30 @@
 package com.tencent.mobileqq.activity;
 
-import abbd;
-import afup;
+import acsc;
+import ahsh;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import anqj;
-import anqy;
-import anrc;
-import anrl;
-import axqy;
+import aphr;
+import apig;
+import apik;
+import apit;
+import azmj;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class FavEmosmManageActivity
   extends IphoneTitleBarActivity
-  implements anrl
+  implements apit
 {
-  private afup jdField_a_of_type_Afup;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new abbd(this);
-  private anqj jdField_a_of_type_Anqj;
-  private anrc jdField_a_of_type_Anrc;
+  private ahsh jdField_a_of_type_Ahsh;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new acsc(this);
+  private aphr jdField_a_of_type_Aphr;
+  private apik jdField_a_of_type_Apik;
   
   private void a()
   {
@@ -44,25 +43,9 @@ public class FavEmosmManageActivity
         QLog.d("FavEmosmManageActivity", 2, "initParam fromSdkSetAvatar =  " + bool);
       }
     } while (!bool);
-    this.jdField_a_of_type_Afup = new afup(this);
-    this.jdField_a_of_type_Afup.a(localIntent);
-    this.jdField_a_of_type_Afup.a();
-  }
-  
-  public static void a(Context paramContext, ArrayList<String> paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      localIntent = new Intent("com.tencent.mobileqq.action.upload.emotiom");
-      localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", paramArrayList);
-      paramContext.sendBroadcast(localIntent);
-    }
-    while (!QLog.isColorLevel())
-    {
-      Intent localIntent;
-      return;
-    }
-    QLog.d("FavEmosmManageActivity", 2, "uploadEmotion pathList is empty");
+    this.jdField_a_of_type_Ahsh = new ahsh(this);
+    this.jdField_a_of_type_Ahsh.a(localIntent);
+    this.jdField_a_of_type_Ahsh.a();
   }
   
   public void a(boolean paramBoolean)
@@ -89,12 +72,12 @@ public class FavEmosmManageActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559022);
+    super.setContentView(2131559061);
     int i = getIntent().getIntExtra("camera_emo_mode", 0);
-    this.jdField_a_of_type_Anrc = new anrc(this.app, this);
-    this.jdField_a_of_type_Anrc.a(this);
-    this.jdField_a_of_type_Anqj = anqy.a(this.app, this.jdField_a_of_type_Anrc, i);
-    this.jdField_a_of_type_Anrc.a(this.jdField_a_of_type_Anqj);
+    this.jdField_a_of_type_Apik = new apik(this.app, this);
+    this.jdField_a_of_type_Apik.a(this);
+    this.jdField_a_of_type_Aphr = apig.a(this.app, this.jdField_a_of_type_Apik, i);
+    this.jdField_a_of_type_Apik.a(this.jdField_a_of_type_Aphr);
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
     {
       paramBundle = new IntentFilter("com.tencent.mobileqq.action.update.emotiom");
@@ -103,8 +86,8 @@ public class FavEmosmManageActivity
       getApplicationContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     }
     a();
-    this.jdField_a_of_type_Anqj.a();
-    this.jdField_a_of_type_Anqj.g();
+    this.jdField_a_of_type_Aphr.a();
+    this.jdField_a_of_type_Aphr.g();
     return true;
   }
   
@@ -116,23 +99,21 @@ public class FavEmosmManageActivity
       getApplicationContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
     }
-    if (this.jdField_a_of_type_Anqj.b) {
+    if (this.jdField_a_of_type_Aphr.b) {
       getApplicationContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.update.emotiom"));
     }
-    if (this.jdField_a_of_type_Afup != null) {
-      this.jdField_a_of_type_Afup.e();
+    if (this.jdField_a_of_type_Ahsh != null) {
+      this.jdField_a_of_type_Ahsh.e();
     }
-    if (this.jdField_a_of_type_Anqj != null) {
-      this.jdField_a_of_type_Anqj.d();
-    }
+    this.jdField_a_of_type_Aphr.d();
   }
   
   public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    if (this.jdField_a_of_type_Afup != null)
+    if (this.jdField_a_of_type_Ahsh != null)
     {
-      this.jdField_a_of_type_Afup.b(paramIntent);
+      this.jdField_a_of_type_Ahsh.b(paramIntent);
       return;
     }
     setIntent(paramIntent);
@@ -142,13 +123,13 @@ public class FavEmosmManageActivity
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Anrc.b();
+    this.jdField_a_of_type_Apik.b();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Anrc.a();
+    this.jdField_a_of_type_Apik.a();
   }
   
   public void doOnStart()
@@ -163,27 +144,27 @@ public class FavEmosmManageActivity
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Anqj != null) {
-      this.jdField_a_of_type_Anqj.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Aphr != null) {
+      this.jdField_a_of_type_Aphr.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean onBackEvent()
   {
-    axqy.b(this.app, "CliOper", "", "", "ep_mall", "0X80057D4", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_Afup != null) {
-      this.jdField_a_of_type_Afup.b();
+    azmj.b(this.app, "CliOper", "", "", "ep_mall", "0X80057D4", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Ahsh != null) {
+      this.jdField_a_of_type_Ahsh.b();
     }
-    if (this.jdField_a_of_type_Anrc != null) {
-      this.jdField_a_of_type_Anrc.h();
+    if (this.jdField_a_of_type_Apik != null) {
+      this.jdField_a_of_type_Apik.g();
     }
     return super.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FavEmosmManageActivity
  * JD-Core Version:    0.7.0.1
  */

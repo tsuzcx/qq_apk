@@ -1,78 +1,87 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class amwt
-  extends ampa<amws>
+  extends amxe
+  implements amwr
 {
-  public int a()
+  public int a;
+  public String a;
+  public amwu[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
+  
+  public amwt()
   {
-    return 585;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAmwu = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
   }
   
-  @NonNull
-  public amws a(int paramInt)
+  public static boolean a(amwt paramamwt)
   {
-    return new amws();
-  }
-  
-  @Nullable
-  public amws a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramamwt != null)
     {
-      amws localamws = amws.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      bool1 = bool2;
+      if (paramamwt.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramamwt.b == 0)
+        {
+          bool1 = bool2;
+          if (paramamwt.jdField_a_of_type_ArrayOfAmwu != null)
+          {
+            bool1 = bool2;
+            if (paramamwt.jdField_a_of_type_ArrayOfAmwu[0].jdField_c_of_type_Int == 0)
+            {
+              bool1 = bool2;
+              if (paramamwt.jdField_a_of_type_ArrayOfAmwu[0].a != null) {
+                bool1 = true;
+              }
+            }
+          }
+        }
       }
-      return localamws;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed is null");
+    return bool1;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfAmwu[0].a;
+  }
+  
+  public String toString()
+  {
+    if (this.jdField_a_of_type_ArrayOfAmwu != null)
+    {
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfAmwu.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAmwu[i];
+        i += 1;
+      }
     }
-    return null;
-  }
-  
-  public Class<amws> a()
-  {
-    return amws.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(amws paramamws)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onUpdate " + paramamws.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    String str2 = "null";
+    return "ARCloudObjectClassifyResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwt
  * JD-Core Version:    0.7.0.1
  */

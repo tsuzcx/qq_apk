@@ -3,14 +3,14 @@ package com.tencent.qqmini.proxyimpl;
 import NS_MINI_INTERFACE.INTERFACE.StGetAuthListRsp;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import beif;
-import beih;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.core.auth.UserAuthInfo;
+import com.tencent.qqmini.sdk.core.auth.UserSettingInfo;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy.AuthListResult;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,11 +41,11 @@ class ChannelProxyImpl$1
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (INTERFACE.StUserAuthInfo)((Iterator)localObject1).next();
-            beif localbeif = new beif();
-            localbeif.jdField_a_of_type_JavaLangString = ((INTERFACE.StUserAuthInfo)localObject2).scope.get();
-            localbeif.b = ((INTERFACE.StUserAuthInfo)localObject2).desc.get();
-            localbeif.jdField_a_of_type_Int = ((INTERFACE.StUserAuthInfo)localObject2).authState.get();
-            localArrayList1.add(localbeif);
+            UserAuthInfo localUserAuthInfo = new UserAuthInfo();
+            localUserAuthInfo.scope = ((INTERFACE.StUserAuthInfo)localObject2).scope.get();
+            localUserAuthInfo.desc = ((INTERFACE.StUserAuthInfo)localObject2).desc.get();
+            localUserAuthInfo.authState = ((INTERFACE.StUserAuthInfo)localObject2).authState.get();
+            localArrayList1.add(localUserAuthInfo);
           }
           if (this.val$result == null) {
             break label208;
@@ -67,10 +67,10 @@ class ChannelProxyImpl$1
       while (paramJSONObject.hasNext())
       {
         localObject1 = (INTERFACE.StUserSettingInfo)paramJSONObject.next();
-        localObject2 = new beih();
-        ((beih)localObject2).jdField_a_of_type_JavaLangString = ((INTERFACE.StUserSettingInfo)localObject1).settingItem.get();
-        ((beih)localObject2).jdField_a_of_type_Int = ((INTERFACE.StUserSettingInfo)localObject1).authState.get();
-        ((beih)localObject2).b = ((INTERFACE.StUserSettingInfo)localObject1).desc.get();
+        localObject2 = new UserSettingInfo();
+        ((UserSettingInfo)localObject2).settingItem = ((INTERFACE.StUserSettingInfo)localObject1).settingItem.get();
+        ((UserSettingInfo)localObject2).authState = ((INTERFACE.StUserSettingInfo)localObject1).authState.get();
+        ((UserSettingInfo)localObject2).desc = ((INTERFACE.StUserSettingInfo)localObject1).desc.get();
       }
     } while (this.val$result == null);
     this.val$result.onReceiveResult(true, localArrayList1, localArrayList2);
@@ -78,7 +78,7 @@ class ChannelProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

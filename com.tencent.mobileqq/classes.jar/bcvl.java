@@ -1,44 +1,39 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bcvl
-  implements AdapterView.OnItemClickListener
+final class bcvl
+  implements DownloadParams.DecodeHandler
 {
-  public bcvl(ShareActionSheetV2 paramShareActionSheetV2) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof bbjv)) {
-      return;
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    paramView = ((bbjv)paramView).a;
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).a(paramView, this.a);
-    }
-    ShareActionSheetV2 localShareActionSheetV2 = this.a;
-    if (paramAdapterView == this.a.a) {
-      paramInt = 0;
-    }
-    for (;;)
+    Object localObject;
+    do
     {
-      ShareActionSheetV2.a(localShareActionSheetV2, paramView, paramInt);
-      return;
-      if (paramAdapterView == this.a.b) {
-        paramInt = 1;
-      } else if (paramAdapterView == this.a.c) {
-        paramInt = 2;
-      } else {
-        paramInt = -1;
-      }
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    if (paramDownloadParams[0] == 0) {
+      paramDownloadParams[0] = paramBitmap.getWidth();
     }
+    if (paramDownloadParams[1] == 0) {
+      paramDownloadParams[1] = paramBitmap.getHeight();
+    }
+    return bdda.d(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcvl
  * JD-Core Version:    0.7.0.1
  */

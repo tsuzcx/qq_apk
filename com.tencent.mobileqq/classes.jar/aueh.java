@@ -1,58 +1,29 @@
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.HashSet;
 
 public class aueh
-  implements aueg
+  implements audu
 {
-  public void a(Matrix paramMatrix) {}
+  public aueh(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void a(MotionEvent paramMotionEvent) {}
-  
-  public void a(ScaleGestureDetector paramScaleGestureDetector) {}
-  
-  public boolean a(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
   {
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
-  
-  public void b(MotionEvent paramMotionEvent) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean b(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
-  
-  public void c(MotionEvent paramMotionEvent) {}
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
+    if (paramBoolean) {
+      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
+    }
+    for (;;)
+    {
+      int i = MsgBackupSelectionFragment.a(this.a).a.size();
+      MsgBackupSelectionFragment.a(this.a, i);
+      return;
+      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aueh
  * JD-Core Version:    0.7.0.1
  */

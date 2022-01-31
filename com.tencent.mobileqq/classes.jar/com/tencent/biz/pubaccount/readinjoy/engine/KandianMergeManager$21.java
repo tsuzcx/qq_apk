@@ -2,27 +2,23 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhvy;
+import bjxj;
 
 class KandianMergeManager$21
   implements Runnable
 {
-  KandianMergeManager$21(KandianMergeManager paramKandianMergeManager, long paramLong, String paramString1, int paramInt1, String paramString2, int paramInt2) {}
+  KandianMergeManager$21(KandianMergeManager paramKandianMergeManager, int paramInt) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bhvy.a(KandianMergeManager.a(this.this$0), 1).edit();
-    localEditor.putLong("subscribe_push_msg_time", this.jdField_a_of_type_Long);
-    localEditor.putString("subscribe_push_msg_uin", this.jdField_a_of_type_JavaLangString);
-    localEditor.putInt("subscribe_push_msg_status", this.jdField_a_of_type_Int);
-    localEditor.putString("subscribe_push_msg_xml", this.jdField_b_of_type_JavaLangString);
-    localEditor.putInt("subscribe_push_msg_msgtype", this.jdField_b_of_type_Int);
-    bhvy.a(localEditor, true);
+    SharedPreferences.Editor localEditor = bjxj.a(KandianMergeManager.a(this.this$0), 1).edit();
+    localEditor.putInt("subscribe_push_msg_status", this.a);
+    bjxj.a(localEditor, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.21
  * JD-Core Version:    0.7.0.1
  */

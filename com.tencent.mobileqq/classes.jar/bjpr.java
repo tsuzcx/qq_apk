@@ -1,47 +1,27 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import java.util.Calendar;
 
-class bjpr
-  extends BroadcastReceiver
+public class bjpr
 {
-  bjpr(bjpq parambjpq) {}
+  public static final String a = alpo.a(2131703222);
+  public static final String b = alpo.a(2131703193);
+  public static final String c = alpo.a(2131703174);
+  public static final String d = alpo.a(2131703214);
+  public static final String e = alpo.a(2131703184);
+  public static final String f = alpo.a(2131703178);
+  public static final String g = alpo.a(2131703217);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static boolean a(long paramLong1, long paramLong2)
   {
-    paramContext = this.a.a.a();
-    if ((paramContext == null) || (paramContext.isFinishing())) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("LightWeightCameraCaptureUnit", 2, "receive ACTION_START_VIDEO_CHAT.");
-          }
-          this.a.h();
-          return;
-        }
-      } while (!"tencent.qq.ipc.event".equals(paramContext));
-      paramContext = paramIntent.getExtras();
-      if (paramContext != null)
-      {
-        AIOLongCaptureCtrl.a(paramContext);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LightWeightCameraCaptureUnit", 2, "receive ACTION_START_IPC_EVENT. extras=null");
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(paramLong1);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.setTimeInMillis(paramLong2);
+    return (localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjpr
  * JD-Core Version:    0.7.0.1
  */

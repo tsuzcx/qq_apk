@@ -1,18 +1,40 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract interface wjy
-  extends wiw<wjx>
+public class wjy
+  extends wjz<BannerFeedItem>
 {
-  public abstract void a();
+  public wjy(@NonNull BannerFeedItem paramBannerFeedItem)
+  {
+    super(paramBannerFeedItem);
+  }
   
-  public abstract void a(int paramInt);
+  public List<StoryVideoItem> a()
+  {
+    return new ArrayList(0);
+  }
   
-  public abstract void a(CertifiedAccountMeta.StEntry paramStEntry, List<wkl> paramList, boolean paramBoolean);
+  public void a() {}
+  
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  {
+    qqstory_struct.BannerFeed localBannerFeed = (qqstory_struct.BannerFeed)paramStoryFeed.banner_feed.get();
+    ((BannerFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), localBannerFeed);
+    ((BannerFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjy
  * JD-Core Version:    0.7.0.1
  */

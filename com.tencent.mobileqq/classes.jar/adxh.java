@@ -1,33 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
-class adxh
-  extends GestureDetector.SimpleOnGestureListener
+public class adxh
+  implements View.OnClickListener
 {
-  adxh(adxg paramadxg) {}
+  public adxh(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Adxe.a()) {
-      return false;
+    if (this.a.isFinishing()) {
+      return;
     }
-    actj.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_Adxe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Adxe.jdField_a_of_type_AndroidContentContext);
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_Acxj != null) {
-      this.a.jdField_a_of_type_Acxj.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
+    this.a.c = false;
+    if (this.a.a != null)
+    {
+      this.a.a.a(4);
+      this.a.d();
+      this.a.c();
     }
+    if (atwd.a().c()) {
+      atwd.a().f(this.a.app);
+    }
+    TroopAssistantActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,19 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.AVFunDrawing.MessageBody;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class loe
-  implements mho
+class loe
 {
-  public loe(GaInviteLockActivity paramGaInviteLockActivity, long paramLong) {}
+  long jdField_a_of_type_Long = AudioHelper.a();
+  AVFunDrawing.MessageBody jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody;
   
-  public void a()
+  loe(AVFunDrawing.MessageBody paramMessageBody)
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
-    {
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131372374, false);
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131372375, false);
-    }
-  }
-  
-  public void b()
-  {
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, this.jdField_a_of_type_Long);
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772163);
+    this.jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody = paramMessageBody;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     loe
  * JD-Core Version:    0.7.0.1
  */

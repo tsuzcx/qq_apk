@@ -1,22 +1,22 @@
 package com.tencent.qidian.controller;
 
-import bdvp;
+import bfvk;
 import com.tencent.qidian.data.PubAccountNavigationMenu;
 
 public class QidianPubAccountBigDataHandler$3
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$3(bdvp parambdvp, PubAccountNavigationMenu paramPubAccountNavigationMenu) {}
+  public QidianPubAccountBigDataHandler$3(bfvk parambfvk, PubAccountNavigationMenu paramPubAccountNavigationMenu) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	com/tencent/qidian/controller/QidianPubAccountBigDataHandler$3:this$0	Lbdvp;
-    //   4: getfield 29	bdvp:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   7: invokevirtual 35	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Laukq;
-    //   10: invokevirtual 41	aukq:createEntityManager	()Laukp;
+    //   1: getfield 14	com/tencent/qidian/controller/QidianPubAccountBigDataHandler$3:this$0	Lbfvk;
+    //   4: getfield 29	bfvk:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   7: invokevirtual 35	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lawbx;
+    //   10: invokevirtual 41	awbx:createEntityManager	()Lawbw;
     //   13: astore_1
     //   14: aload_1
     //   15: ifnull +22 -> 37
@@ -26,9 +26,9 @@ public class QidianPubAccountBigDataHandler$3
     //   25: aload_1
     //   26: aload_0
     //   27: getfield 16	com/tencent/qidian/controller/QidianPubAccountBigDataHandler$3:a	Lcom/tencent/qidian/data/PubAccountNavigationMenu;
-    //   30: invokevirtual 47	aukp:b	(Lauko;)V
+    //   30: invokevirtual 47	awbw:b	(Lawbv;)V
     //   33: aload_1
-    //   34: invokevirtual 49	aukp:a	()V
+    //   34: invokevirtual 49	awbw:a	()V
     //   37: return
     //   38: invokestatic 55	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   41: ifeq -8 -> 33
@@ -41,17 +41,17 @@ public class QidianPubAccountBigDataHandler$3
     //   56: aload_2
     //   57: invokevirtual 66	java/lang/Exception:printStackTrace	()V
     //   60: aload_1
-    //   61: invokevirtual 49	aukp:a	()V
+    //   61: invokevirtual 49	awbw:a	()V
     //   64: return
     //   65: astore_2
     //   66: aload_1
-    //   67: invokevirtual 49	aukp:a	()V
+    //   67: invokevirtual 49	awbw:a	()V
     //   70: aload_2
     //   71: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	72	0	this	3
-    //   13	54	1	localaukp	aukp
+    //   13	54	1	localawbw	awbw
     //   55	2	2	localException	java.lang.Exception
     //   65	6	2	localObject	Object
     // Exception table:
@@ -65,7 +65,7 @@ public class QidianPubAccountBigDataHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianPubAccountBigDataHandler.3
  * JD-Core Version:    0.7.0.1
  */

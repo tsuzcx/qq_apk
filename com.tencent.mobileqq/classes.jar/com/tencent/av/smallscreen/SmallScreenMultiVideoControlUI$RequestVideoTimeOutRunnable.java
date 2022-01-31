@@ -1,10 +1,10 @@
 package com.tencent.av.smallscreen;
 
-import axqy;
+import azmj;
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import lga;
-import mao;
+import lid;
+import mdd;
 
 class SmallScreenMultiVideoControlUI$RequestVideoTimeOutRunnable
   implements Runnable
@@ -15,14 +15,14 @@ class SmallScreenMultiVideoControlUI$RequestVideoTimeOutRunnable
   {
     if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.f();
-      mao.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
-      mao.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
-      mao.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030, 2131696175);
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a("Small_RequestVideoTimeOutRunnable");
+      mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
+      mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
+      mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030, 2131696342);
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().a(this.this$0.jdField_a_of_type_Long, true, true);
       this.this$0.a(true, false, true);
       if (this.this$0.d == 2) {
-        axqy.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
+        azmj.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
       }
     }
     while (!QLog.isColorLevel()) {
@@ -33,7 +33,7 @@ class SmallScreenMultiVideoControlUI$RequestVideoTimeOutRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI.RequestVideoTimeOutRunnable
  * JD-Core Version:    0.7.0.1
  */

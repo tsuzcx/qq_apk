@@ -1,43 +1,47 @@
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amwu
 {
+  public float a;
   public int a;
+  public String a;
+  public byte[] a;
   public int b;
+  public String b;
+  public int c = -1;
   
-  public static amwu a(String paramString)
+  public amwu()
   {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        amwu localamwu = new amwu();
-        paramString = new JSONObject(paramString);
-        localamwu.a = paramString.optInt("switch", 0);
-        localamwu.b = paramString.optInt("stoppreload", 0);
-        QLog.d("ConfBean", 2, "confBean = " + localamwu.a);
-        return localamwu;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("result:").append(this.a);
-    localStringBuilder.append(" stoppreload:").append(this.b);
-    return localStringBuilder.toString();
+    try
+    {
+      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
+      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ARCloudObjectClassifyResult", 2, "toString error, msg:" + localException.getMessage());
+        }
+        String str2 = "";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwu
  * JD-Core Version:    0.7.0.1
  */

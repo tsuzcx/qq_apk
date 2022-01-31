@@ -1,31 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class achy
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public achy(TroopInfoActivity paramTroopInfoActivity) {}
+  public achy(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
-    {
-      axqy.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
-      paramDialogInterface.dismiss();
-      this.a.i();
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
+    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.b.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import aqsr;
+import asiy;
 
 class QQGamePubAccountFragment$8
   implements Runnable
@@ -16,7 +16,7 @@ class QQGamePubAccountFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.8
  * JD-Core Version:    0.7.0.1
  */

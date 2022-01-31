@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.UiApiPlugin.8;
+import com.tencent.mobileqq.jsp.UiApiPlugin.8.1.1;
 
-class atfs
-  implements View.OnClickListener
+public class atfs
+  implements bczq
 {
-  atfs(atfr paramatfr) {}
+  public atfs(UiApiPlugin.8 param8) {}
   
-  public void onClick(View paramView)
+  public void a(Bitmap paramBitmap)
   {
-    if (atfr.a(this.a) != null) {
-      atfr.a(this.a).a(atfr.a(this.a));
-    }
-    this.a.dismiss();
+    ThreadManager.post(new UiApiPlugin.8.1.1(this, paramBitmap), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfs
  * JD-Core Version:    0.7.0.1
  */

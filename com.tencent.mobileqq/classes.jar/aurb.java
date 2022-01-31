@@ -1,112 +1,55 @@
-import android.opengl.GLES20;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class aurb
+  implements BusinessObserver
 {
-  public static int a;
-  public static int b = 2;
-  public static int c = 3;
-  public HashMap<String, Integer> a;
-  private int[] a;
+  public aurb(NearbyJsInterface paramNearbyJsInterface, String paramString, int paramInt) {}
   
-  static
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    jdField_a_of_type_Int = 1;
-  }
-  
-  public aurb()
-  {
-    this.jdField_a_of_type_ArrayOfInt = new int[1];
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7)
-  {
-    a(paramFloat1, "percent1");
-    a(paramFloat2, "percent2");
-    a(paramFloat3, "percent3");
-    a(paramFloat4, "percent4");
-    a(paramFloat5, "percent5");
-    a(paramFloat6, "percent6");
-    a(paramFloat7, "percent7");
-  }
-  
-  private void a(float paramFloat, String paramString)
-  {
-    int i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-    if (i >= 0) {
-      GLES20.glUniform1f(i, paramFloat);
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    float f = new float[] { 1.0F, 1.0F, 0.95F, 0.9F }[paramInt];
-    if (paramInt == c) {
-      f = 1.1F;
-    }
-    for (;;)
+    if (paramBoolean) {}
+    try
     {
-      a(f, "quality");
-      a(0.0F, "add_red");
-      a(0.0F, "red_m");
-      a(0.0F, "green_m");
-      a(0.0F, "blue_m");
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        Object localObject = new WebSsoBody.WebSsoResponseBody();
+        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+        if (paramBundle.optInt("retcode") == 0)
+        {
+          paramBundle = paramBundle.optString(this.jdField_a_of_type_JavaLangString);
+          localObject = bdiv.d(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.a, this.jdField_a_of_type_JavaLangString);
+          paramBundle = (String)localObject + "&uid=" + paramBundle + "&from=" + this.jdField_a_of_type_Int;
+          localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.a, QQBrowserActivity.class);
+          ((Intent)localObject).putExtra("url", paramBundle);
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.a.startActivity((Intent)localObject);
+          if (QLog.isColorLevel()) {
+            QLog.d("NearbyJsInterface", 2, "openProfileCard web url:" + paramBundle);
+          }
+        }
+      }
       return;
-      if (paramInt == b) {
-        f = 1.0F;
-      }
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    float f5 = 0.2F;
-    float f1;
-    float f2;
-    float f3;
-    float f4;
-    if (paramInt == jdField_a_of_type_Int)
+    catch (Exception paramBundle)
     {
-      f1 = 0.455F;
-      f2 = 0.17F;
-      f3 = 0.177F;
-      f4 = 0.0F;
-    }
-    for (;;)
-    {
-      a(0.0F, f1, f2, f3, 0.0F, f5, f4);
-      b(paramInt);
-      return;
-      if (paramInt == b)
-      {
-        f1 = 0.62F;
-        f2 = 0.375F;
-        f3 = 0.07F;
-        f5 = 0.125F;
-        f4 = 0.26F;
-      }
-      else if (paramInt == c)
-      {
-        f1 = 0.824F;
-        f2 = 0.461F;
-        f3 = 0.152F;
-        f4 = 0.0F;
-      }
-      else
-      {
-        f4 = 0.0F;
-        f5 = 0.0F;
-        f3 = 0.0F;
-        f2 = 0.0F;
-        f1 = 0.0F;
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.d("NearbyJsInterface", 2, "openProfileCard, exception");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aurb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.av.utils;
 
 import com.tencent.qphone.base.util.QLog;
-import msb;
-import msc;
+import muv;
+import muw;
 
 class PhoneStatusMonitor$2$1
   implements Runnable
@@ -17,8 +17,8 @@ class PhoneStatusMonitor$2$1
     if (this.a.this$0.jdField_a_of_type_Boolean)
     {
       this.a.this$0.jdField_a_of_type_Boolean = false;
-      if (this.a.this$0.jdField_a_of_type_Msc != null) {
-        this.a.this$0.jdField_a_of_type_Msc.a(false);
+      if (this.a.this$0.jdField_a_of_type_Muw != null) {
+        this.a.this$0.jdField_a_of_type_Muw.a(false);
       }
     }
   }

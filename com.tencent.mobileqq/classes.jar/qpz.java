@@ -1,18 +1,20 @@
-public abstract interface qpz
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import java.util.List;
+
+public class qpz
+  extends oxe
 {
-  public abstract void a();
+  public qpz(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public abstract void a(Object paramObject);
-  
-  public abstract void a(Object paramObject, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
+  public void a(List<String> paramList, List<TopicInfo> paramList1)
+  {
+    ReadInJoyUgcSearchTopicFragment.a(this.a, paramList, paramList1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qpz
  * JD-Core Version:    0.7.0.1
  */

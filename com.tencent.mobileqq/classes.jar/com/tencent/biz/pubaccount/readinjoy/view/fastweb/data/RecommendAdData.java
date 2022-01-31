@@ -5,11 +5,11 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import nmc;
+import noy;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rpr;
-import sfa;
+import sfq;
+import swu;
 
 public class RecommendAdData
   extends AdData
@@ -75,7 +75,7 @@ public class RecommendAdData
       }
       if (!TextUtils.isEmpty(this.l))
       {
-        localObject = sfa.a(this.l, 4);
+        localObject = swu.a(this.l, 4);
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("image_url", ((URL)localObject).toString());
         localJSONObject1.put("id_recommend_cover_img", localJSONObject2);
@@ -97,7 +97,7 @@ public class RecommendAdData
         if (!TextUtils.isEmpty(this.p))
         {
           localObject = new JSONObject();
-          if (!nmc.a(BaseApplicationImpl.getContext(), this.p)) {
+          if (!noy.a(BaseApplicationImpl.getContext(), this.p)) {
             break label353;
           }
           ((JSONObject)localObject).put("text", "打开APP");
@@ -135,13 +135,13 @@ public class RecommendAdData
   public void a()
   {
     localObject3 = null;
-    this.b = a();
+    this.c = a();
     try
     {
-      rpr localrpr = rpr.a("native_article", true);
+      sfq localsfq = sfq.a("native_article", true);
       localObject1 = localObject3;
-      if (localrpr != null) {
-        localObject1 = localrpr.getTemplateBean(this.b);
+      if (localsfq != null) {
+        localObject1 = localsfq.getTemplateBean(this.c);
       }
     }
     catch (JSONException localJSONException)
@@ -167,7 +167,7 @@ public class RecommendAdData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData
  * JD-Core Version:    0.7.0.1
  */

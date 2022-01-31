@@ -1,38 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-class arnt
-  implements wxt
+final class arnt
+  extends ClickableSpan
 {
-  arnt(arnr paramarnr) {}
+  arnt(arnx paramarnx) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int i = paramBundle.getInt("state", 0);
-    String str = paramBundle.getString("version");
-    long l = paramBundle.getLong("size", 0L);
-    try
-    {
-      paramBundle = new JSONObject();
-      paramBundle.put("status", i);
-      paramBundle.put("versionCode", str);
-      paramBundle.put("fileSize", l);
-      this.a.callJs(this.a.f, new String[] { paramBundle.toString() });
-      return;
+    if (this.a != null) {
+      this.a.onClick(paramView);
     }
-    catch (Exception paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
-      }
-      this.a.callJs(this.a.f, new String[] { "{\"result\":-10,\"message\":\"request fail\"}" });
-    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnt
  * JD-Core Version:    0.7.0.1
  */

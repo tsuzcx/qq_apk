@@ -1,121 +1,184 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo.QQEmoConfigItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class apny
-  extends xba
+public class apny
+  extends QQSysAndEmojiResInfo
+  implements apoe
 {
-  apny(apnq paramapnq, apnd paramapnd) {}
+  private int a;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public int a()
   {
-    if (this.jdField_a_of_type_Apnd == null) {}
-    Object localObject;
-    label612:
-    do
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int a(int paramInt)
+  {
+    int j = -1;
+    int i = j;
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      do
+      i = j;
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+        i = Integer.parseInt(((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).QCid);
+      }
+    }
+    return i;
+  }
+  
+  public Drawable a(int paramInt)
+  {
+    for (;;)
+    {
+      try
       {
-        do
+        localURL1 = new URL("qqsys_emoji", "host_emoji", String.format("emoji_%03d.png", new Object[] { Integer.valueOf(paramInt) }));
+        localURL2 = localURL1;
+        localURL2 = localURL1;
+      }
+      catch (MalformedURLException localMalformedURLException1)
+      {
+        try
         {
-          return;
-          if (paramDownloadFileRspBody == null)
+          if (QLog.isColorLevel())
           {
-            if (QLog.isDevelopLevel()) {
-              QLog.e("TroopFileModel<FileAssistant>", 4, "error DownloadFileRspBody is null!!!!!");
-            }
-            this.jdField_a_of_type_Apnd.c();
-            return;
+            QLog.d("QQEmojiResInfo", 2, "getDrawable url:" + localURL1.toString());
+            localURL2 = localURL1;
           }
-          long l = paramBundle.getLong("troopUin");
-          localObject = TroopFileTransferManager.a(l);
-          if (localObject == null)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.e("TroopFileModel<FileAssistant>", 4, "bad troopUin" + l);
-            }
-            this.jdField_a_of_type_Apnd.c();
-            return;
-          }
-          paramBundle = paramBundle.getString("itemKey");
-          if (paramBundle == null)
-          {
-            this.jdField_a_of_type_Apnd.c();
-            return;
-          }
-          localObject = ((TroopFileTransferManager)localObject).a(UUID.fromString(paramBundle));
-          if (localObject == null)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.e("TroopFileModel<FileAssistant>", 4, "bad item key" + paramBundle);
-            }
-            this.jdField_a_of_type_Apnd.c();
-            return;
-          }
-          paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-          if (QLog.isDevelopLevel()) {
-            QLog.e("TroopFileModel<FileAssistant>", 4, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
-          }
-          ((TroopFileTransferManager.Item)localObject).cookieValue = bbea.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-          if (((TroopFileTransferManager.Item)localObject).cookieValue != null) {
-            ((TroopFileTransferManager.Item)localObject).cookieValue = ((TroopFileTransferManager.Item)localObject).cookieValue.toLowerCase();
-          }
-          ((TroopFileTransferManager.Item)localObject).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-          ((TroopFileTransferManager.Item)localObject).DownloadUrl = bbea.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-          ((TroopFileTransferManager.Item)localObject).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-          ((TroopFileTransferManager.Item)localObject).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-          if ((paramInt != -133) && (paramInt != -132) && (paramInt != -134)) {
-            break;
-          }
-          this.jdField_a_of_type_Apnd.c();
-        } while (!QLog.isDevelopLevel());
-        QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
-        return;
-        if ((paramInt != -103) && (paramInt != -301)) {
-          break;
+          return a(localURL2, null, false, String.valueOf(paramInt));
         }
-      } while (!QLog.isDevelopLevel());
-      QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
-      return;
-      paramDownloadFileRspBody = apkb.a(((TroopFileTransferManager.Item)localObject).DownloadIp, ((TroopFileTransferManager.Item)localObject).DownloadUrl, ((TroopFileTransferManager.Item)localObject).FilePath, ((TroopFileTransferManager.Item)localObject).cookieValue, "");
-      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
+        catch (MalformedURLException localMalformedURLException2)
+        {
+          URL localURL1;
+          URL localURL2;
+          break label82;
+        }
+        localMalformedURLException1 = localMalformedURLException1;
+        localURL1 = null;
+      }
+      label82:
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_Apnd.a(paramDownloadFileRspBody, ((TroopFileTransferManager.Item)localObject).cookieValue);
+        QLog.d("QQEmojiResInfo", 2, "getDrawable ,", localMalformedURLException1);
+        localURL2 = localURL1;
+      }
+    }
+  }
+  
+  public String a(int paramInt)
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      str1 = str2;
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+        str1 = ((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).QDes;
+      }
+    }
+    return str1;
+  }
+  
+  public void a()
+  {
+    Object localObject = a();
+    if (localObject != null)
+    {
+      JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("emoji");
+      if (localJSONArray != null)
+      {
+        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        }
+        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        }
+        if (this.b == null) {
+          this.b = new HashMap();
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.b.clear();
+        long l = System.currentTimeMillis();
+        int i = 0;
+        for (;;)
+        {
+          if (i >= localJSONArray.length()) {
+            break label270;
+          }
+          localObject = null;
+          try
+          {
+            JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+            localObject = localJSONObject;
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+          localObject = (QQSysAndEmojiResInfo.QQEmoConfigItem)atco.a((JSONObject)localObject, QQSysAndEmojiResInfo.QQEmoConfigItem.class);
+          try
+          {
+            int j = Integer.parseInt(((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject).AQLid);
+            int k = Integer.parseInt(((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject).QCid);
+            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
+            this.b.put(Integer.valueOf(k), Integer.valueOf(j));
+            if (!a((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject)) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
+            }
+            if (j > this.jdField_a_of_type_Int) {
+              this.jdField_a_of_type_Int = j;
+            }
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            for (;;)
+            {
+              QLog.d("QQEmojiResInfo", 1, new Object[] { "error occur in emoji AQLid:", ((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject).AQLid });
+            }
+          }
+          i += 1;
+        }
+        label270:
         if (QLog.isColorLevel()) {
-          QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
-        }
-        if (this.jdField_a_of_type_Apnq.a.a() != null)
-        {
-          paramDownloadFileRspBody = String.valueOf(this.jdField_a_of_type_Apnq.a.a().TroopUin);
-          if (this.jdField_a_of_type_Apnq.a.a() == null) {
-            break label612;
-          }
-        }
-        for (paramBundle = apug.b(this.jdField_a_of_type_Apnq.a.a().nFileType);; paramBundle = "unknow")
-        {
-          axqy.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
-          return;
-          paramDownloadFileRspBody = "";
-          break;
+          QLog.d("QQEmojiResInfo", 2, new Object[] { "emoji configItem:", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()), " ,orderlist:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), ", maxLid:", Integer.valueOf(this.jdField_a_of_type_Int), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
         }
       }
-      this.jdField_a_of_type_Apnd.c();
-    } while (!QLog.isColorLevel());
-    QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
+    }
   }
+  
+  public void a(int paramInt)
+  {
+    a(a(paramInt), paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    azmj.b(null, "dc00898", "", "", "0X800A7A3", "0X800A7A3", a(paramInt1), 0, String.valueOf(paramInt2), "", "", "");
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Apod = new apod(this);
+  }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apny
  * JD-Core Version:    0.7.0.1
  */

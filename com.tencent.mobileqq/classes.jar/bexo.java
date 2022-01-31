@@ -1,59 +1,120 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.SystemClock;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.util.HandlerPlus;
+import mqq.observer.SSOAccountObserver;
 
 public class bexo
+  extends SSOAccountObserver
 {
-  public static JSONObject a(String paramString)
+  public bexo(AuthorityActivity paramAuthorityActivity) {}
+  
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    int i = 0;
-    localJSONObject = new JSONObject();
+    this.a.i = true;
+    String str = paramBundle.getString("error");
+    paramInt1 = paramBundle.getInt("code");
     try
     {
-      if (!TextUtils.isEmpty(paramString))
+      bfix.a().a("agent_login", this.a.d, 0L, 0L, paramInt1, Long.parseLong(paramString), "1000069", "ret: " + paramInt2 + " | error: " + str);
+      bfja.a().a(1, "LOGIN_GETTICKT", paramString, AuthorityActivity.jdField_e_of_type_JavaLangString, null, Long.valueOf(SystemClock.elapsedRealtime()), paramInt1, 1, str);
+      bfdq.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "1", "" + paramInt1, false);
+      bfdq.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "6", "" + paramInt1, false);
+      arzy.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
+      arzy.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, this.a.jdField_a_of_type_Long, null, true);
+      QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfdz.a(paramString) + " | ret : " + paramInt2 + " - error: " + str + " | code: " + paramInt1);
+      if ((paramInt2 == -1000) || (paramInt2 == 154))
       {
-        int j = paramString.indexOf("?");
-        String str = paramString;
-        if (j > -1)
+        this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
+        bfhg.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
+        if ((paramInt1 == 1002) && (this.a.b < 2))
         {
-          str = paramString;
-          if (paramString.length() > j + 1) {
-            str = paramString.substring(j + 1);
-          }
-        }
-        paramString = str.split("&");
-        if ((paramString != null) && (paramString.length > 0))
-        {
-          j = paramString.length;
-          while (i < j)
-          {
-            str = paramString[i];
-            if (!TextUtils.isEmpty(str))
-            {
-              int k = str.indexOf("=");
-              if (k >= 0) {
-                localJSONObject.put(str.substring(0, k), str.substring(k + 1));
-              }
-            }
-            i += 1;
-          }
+          paramString = this.a;
+          paramString.b += 1;
+          this.a.f();
+          return;
         }
       }
-      return localJSONObject;
     }
-    catch (Throwable paramString)
+    catch (Exception paramBundle)
     {
-      betc.d("PathUtil", "getJSONQueryString exception " + paramString);
+      for (;;)
+      {
+        bfhg.c("Authority_Report", "report login error : ", paramBundle);
+      }
+      this.a.a(3003, this.a.getResources().getString(2131695063));
+      paramString = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+      paramString.what = 6;
+      paramString.arg1 = 3003;
+      paramString.obj = this.a.getResources().getString(2131695063);
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramString);
+      return;
+    }
+    this.a.c(paramString);
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    long l = System.currentTimeMillis();
+    boolean bool = paramBundle.getBoolean("fake_callback");
+    if ((!bool) && (paramInt == 4096)) {
+      bfjq.a(paramString, l);
+    }
+    int i;
+    Object localObject;
+    if (!bool)
+    {
+      i = paramBundle.getInt("code");
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("report_type", "103");
+      ((Bundle)localObject).putString("act_type", "10");
+      ((Bundle)localObject).putString("stringext_1", "GetTicketNoPassword");
+      ((Bundle)localObject).putString("intext_2", "" + i);
+      ((Bundle)localObject).putString("intext_5", "" + (l - AuthorityActivity.a(this.a).jdField_a_of_type_Long));
+      bfdq.a().a((Bundle)localObject, AuthorityActivity.jdField_e_of_type_JavaLangString, paramString, false);
+      QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfdz.a(paramString) + " | ret : success | code: " + i);
+      bfhg.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
+    }
+    try
+    {
+      bfix.a().a("agent_login", this.a.d, this.a.jdField_a_of_type_JavaLangString.length(), paramArrayOfByte.length, 0, Long.parseLong(paramString), "1000069", null);
+      bfja.a().a(0, "LOGIN_GETTICKT", paramString, AuthorityActivity.jdField_e_of_type_JavaLangString, null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
+      bfdq.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "1", "0", false);
+      this.a.i = false;
+      this.a.b = 0;
+      localObject = null;
+      if (paramInt == 4096) {
+        localObject = new String(paramArrayOfByte);
+      }
+      this.a.a(paramString, (String)localObject, paramBundle);
+      this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        bfhg.c("Authority_Report", "report login error : ", localException);
+      }
     }
   }
   
-  public static boolean a(String paramString)
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("https://"));
+    paramInt = paramBundle.getInt("code");
+    this.a.b = 0;
+    this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
+    bfhg.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
+    arzy.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
+    arzy.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, this.a.jdField_a_of_type_Long, null, false);
+    QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bfdz.a(paramString) + " | ret : on_user_cancel | code: " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexo
  * JD-Core Version:    0.7.0.1
  */

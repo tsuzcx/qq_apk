@@ -1,132 +1,107 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
-import com.tencent.mobileqq.widget.RoundImageView;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 public class amlq
-  extends anhk
+  implements INetEventHandler
 {
-  private int jdField_a_of_type_Int;
-  private alxf jdField_a_of_type_Alxf;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-  private ViewGroup.LayoutParams jdField_a_of_type_AndroidViewViewGroup$LayoutParams;
-  private String jdField_a_of_type_JavaLangString;
-  private ConcurrentHashMap<String, List<amlu>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private int b;
   
-  public amlq(Context paramContext)
+  public amlq(amlp paramamlp)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = Color.parseColor("#00CAFC");
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bbef.a();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    this.b = ChatTextSizeSettingActivity.a();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = new ViewGroup.LayoutParams(-2, baxn.a(paramContext, 21.0F));
-    b();
+    this.jdField_a_of_type_AndroidContentContext = amlp.a(paramamlp);
   }
   
-  private void a(amlp paramamlp, RoundImageView paramRoundImageView, angi paramangi)
-  {
-    if (paramamlp.jdField_a_of_type_Boolean)
-    {
-      paramamlp = myb.a(paramamlp.jdField_a_of_type_Int);
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-      localObject = URLDrawable.getDrawable(paramamlp, (URLDrawable.URLDrawableOptions)localObject);
-      if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 1))
-      {
-        paramRoundImageView.setImageDrawable((Drawable)localObject);
-        return;
-      }
-      ((URLDrawable)localObject).setURLDrawableListener(new amls(this, paramRoundImageView, paramangi, paramamlp));
-      ((URLDrawable)localObject).startDownload();
-      return;
-    }
-    List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramamlp.jdField_a_of_type_JavaLangString);
-    Object localObject = localList;
-    if (localList == null) {
-      localObject = new ArrayList();
-    }
-    ((List)localObject).add(new amlu(this, paramRoundImageView, paramangi));
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramamlp.jdField_a_of_type_JavaLangString, localObject);
-    paramRoundImageView.setImageBitmap(this.jdField_a_of_type_Alxf.a(paramamlp.jdField_a_of_type_JavaLangString, true));
-  }
-  
-  private boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Alxf = new alxf(this.jdField_a_of_type_AndroidContentContext, 1);
-    this.jdField_a_of_type_Alxf.a();
-    this.jdField_a_of_type_Alxf.a(new amlr(this));
-  }
-  
-  public anhl a(int paramInt)
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558817, null);
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
-    return new amlt(this, localView);
-  }
-  
+  /* Error */
   public void a()
   {
-    if (this.jdField_a_of_type_Alxf != null) {
-      this.jdField_a_of_type_Alxf.b();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 23	amlq:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   6: aload_0
+    //   7: invokestatic 32	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:registerNetChangeReceiver	(Landroid/content/Context;Lcom/tencent/mobileqq/msf/sdk/handler/INetEventHandler;)V
+    //   10: invokestatic 36	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:isWifiConn	()Z
+    //   13: ifeq +14 -> 27
+    //   16: aload_0
+    //   17: getfield 13	amlq:jdField_a_of_type_Amlp	Lamlp;
+    //   20: iconst_1
+    //   21: invokevirtual 40	amlp:c	(Z)V
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: return
+    //   27: invokestatic 45	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   30: ifeq -6 -> 24
+    //   33: ldc 47
+    //   35: iconst_2
+    //   36: ldc 49
+    //   38: invokestatic 53	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: goto -17 -> 24
+    //   44: astore_1
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_1
+    //   48: athrow
+    //   49: astore_1
+    //   50: goto -40 -> 10
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	amlq
+    //   44	4	1	localObject	Object
+    //   49	1	1	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   2	10	44	finally
+    //   10	24	44	finally
+    //   27	41	44	finally
+    //   2	10	49	java/lang/Exception
   }
   
-  public void a(int paramInt, anhl paramanhl, angi paramangi)
+  public void b()
   {
-    amlp localamlp;
-    ETTextView localETTextView;
-    if ((paramangi != null) && ((paramangi.a() instanceof amlp)) && ((paramanhl instanceof amlt)))
+    try
     {
-      localamlp = (amlp)paramangi.a();
-      paramanhl = (amlt)paramanhl;
-      paramanhl.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setText(new aykk(localamlp.a(), 13, this.b));
-      localETTextView = paramanhl.jdField_a_of_type_ComEtrumpMixlayoutETTextView;
-      if (!a(localamlp.jdField_a_of_type_JavaLangString)) {
-        break label111;
-      }
-    }
-    label111:
-    for (paramInt = this.jdField_a_of_type_Int;; paramInt = -1)
-    {
-      localETTextView.setTextColor(paramInt);
-      paramanhl.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setAlpha(0.85F);
-      a(localamlp, paramanhl.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView, paramangi);
+      AppNetConnInfo.unregisterNetEventHandler(this);
+      label7:
+      this.jdField_a_of_type_Amlp.c();
       return;
     }
+    catch (Exception localException)
+    {
+      break label7;
+    }
+    finally {}
+  }
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    int i = bdee.b(this.jdField_a_of_type_AndroidContentContext);
+    if (i == 0) {
+      if (amlp.a(this.jdField_a_of_type_Amlp)) {
+        this.jdField_a_of_type_Amlp.e();
+      }
+    }
+    do
+    {
+      return;
+      if (i == 1)
+      {
+        if (!amlp.a(this.jdField_a_of_type_Amlp))
+        {
+          this.jdField_a_of_type_Amlp.c(true);
+          return;
+        }
+        this.jdField_a_of_type_Amlp.d();
+        return;
+      }
+    } while ((i != 0) || (!amlp.a(this.jdField_a_of_type_Amlp)));
+    this.jdField_a_of_type_Amlp.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.1;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.2;
-import com.tencent.mobileqq.app.BaseActivity;
+import java.util.List;
 
-public final class onk
-  implements bfux
+class onk
+  extends oob
 {
-  onk(BaseActivity paramBaseActivity) {}
-  
-  public void a(bfuw parambfuw)
+  onk(omz paramomz, boolean paramBoolean, List paramList)
   {
-    switch (parambfuw.a)
-    {
-    default: 
-      return;
-    case 0: 
-      rfz.a(this.a, new ReadInJoyUtils.15.1(this));
-      return;
-    }
-    rfz.a(this.a, new ReadInJoyUtils.15.2(this));
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    paramooe.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, omz.c(this.jdField_a_of_type_Omz), 6, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ajhu;
-import ajic;
+import akzg;
+import akzo;
 import android.app.Activity;
 import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class ApolloJsPlugin$5
-  implements ajic
+  implements akzo
 {
   ApolloJsPlugin$5(ApolloJsPlugin paramApolloJsPlugin, ApolloWebAvatarParam paramApolloWebAvatarParam, Activity paramActivity, AtomicInteger paramAtomicInteger, ArrayList paramArrayList, String paramString) {}
   
   public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
     if ((this.val$param.dressIds == null) || (this.val$param.dressIds.length == 0)) {
-      this.val$param.dressIds = ajhu.a(this.val$param.roleId);
+      this.val$param.dressIds = akzg.a(this.val$param.roleId);
     }
     paramString = new ArrayList();
     paramString.add(this.val$param);

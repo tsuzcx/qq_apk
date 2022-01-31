@@ -1,44 +1,38 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class avbb
-  implements Animation.AnimationListener
+public class avbb
+  implements TextWatcher
 {
-  avbb(avba paramavba) {}
+  public avbb(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (!avba.a(this.a)) {
-      for (;;)
-      {
-        int j = (int)(avba.a(this.a) * (Math.random() * 2.0D - 1.0D));
-        int i = (int)Math.sqrt(avba.a(this.a) * avba.a(this.a) - j * j);
-        if (Math.random() > 0.5D) {}
-        while ((avba.b(this.a) + j) * (avba.b(this.a) + j) + (avba.c(this.a) + i) * (avba.c(this.a) + i) <= avba.d(this.a) * avba.d(this.a))
-        {
-          avba.a(this.a, new TranslateAnimation(avba.b(this.a), avba.b(this.a) + j, avba.c(this.a), avba.c(this.a) + i));
-          avba.a(this.a, j + avba.b(this.a));
-          avba.b(this.a, i + avba.c(this.a));
-          avba.a(this.a).setAnimationListener(avba.a(this.a));
-          avba.a(this.a).setDuration(avba.a(this.a) * (int)(50.0D + Math.random() * 30.0D));
-          avba.a(this.a).startAnimation(avba.a(this.a));
-          return;
-          i = -i;
-        }
-      }
+    if (ShortVideoCommentsView.a(this.a) == null) {}
+    while (auzv.a(paramEditable.toString()) <= 140) {
+      return;
     }
-    avba.a(this.a, false);
+    int j = Selection.getSelectionEnd(paramEditable);
+    paramEditable = auzv.a(paramEditable.toString(), 0, 140).toString();
+    ShortVideoCommentsView.a(this.a).setText(paramEditable);
+    paramEditable = ShortVideoCommentsView.a(this.a).getText();
+    int i = j;
+    if (j > paramEditable.length()) {
+      i = paramEditable.length();
+    }
+    Selection.setSelection(paramEditable, i);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avbb
  * JD-Core Version:    0.7.0.1
  */

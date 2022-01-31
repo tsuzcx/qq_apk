@@ -1,52 +1,98 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.qphone.base.util.QLog;
-
 public class auzv
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public auzv(ProfileTagView paramProfileTagView) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static int a(CharSequence paramCharSequence)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
+    if (paramCharSequence == null) {
+      return 0;
     }
-    this.a.d = true;
-    paramFloat1 = paramFloat2;
-    if (paramMotionEvent1 != null)
+    int m = paramCharSequence.length();
+    int i = 0;
+    int j = 0;
+    if (i < m)
     {
-      paramFloat1 = paramFloat2;
-      if (paramMotionEvent2 != null) {
-        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
+      if (paramCharSequence.charAt(i) < '') {}
+      for (int k = 1;; k = 2)
+      {
+        j += k;
+        i += 1;
+        break;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
-    }
-    if (Math.abs(paramFloat1) > ProfileTagView.a(this.a))
+    return j;
+  }
+  
+  public static CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    int m = paramCharSequence.length();
+    int j = 0;
+    int i = paramInt1;
+    for (;;)
     {
-      if ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Boolean)) {
-        if (this.a.a())
-        {
-          this.a.f();
-          this.a.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.b(null);
+      CharSequence localCharSequence = paramCharSequence;
+      if (i < m) {
+        if (paramCharSequence.charAt(i) >= '') {
+          break label91;
         }
       }
-      while ((paramFloat1 >= 0.0F) || (this.a.jdField_a_of_type_Boolean)) {
-        return true;
+      label91:
+      for (int k = 1;; k = 2)
+      {
+        j = k + j;
+        if (j <= paramInt2) {
+          break;
+        }
+        paramInt2 = i;
+        if (i > 0)
+        {
+          paramInt2 = i;
+          if (Character.isHighSurrogate(paramCharSequence.charAt(i - 1))) {
+            paramInt2 = i - 1;
+          }
+        }
+        localCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
+        return localCharSequence;
       }
-      this.a.a();
-      return true;
+      i += 1;
     }
-    return false;
+  }
+  
+  public static String a(long paramLong)
+  {
+    paramLong = System.currentTimeMillis() - paramLong;
+    if (paramLong < 3600000L) {
+      return paramLong / 60L / 1000L + 1L + alpo.a(2131702580);
+    }
+    if (paramLong < 86400000L) {
+      return paramLong / 60L / 60L / 1000L + alpo.a(2131702587);
+    }
+    return paramLong / 24L / 60L / 60L / 1000L + alpo.a(2131702579);
+  }
+  
+  public static String b(long paramLong)
+  {
+    if (paramLong < 10000L) {
+      return Long.toString(paramLong);
+    }
+    if (paramLong > 100000L) {
+      return "9.9万+";
+    }
+    return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
+  }
+  
+  public static String c(long paramLong)
+  {
+    if (paramLong < 10000L) {
+      return Long.toString(paramLong);
+    }
+    if ((paramLong > 10000L) && (paramLong < 10000000L)) {
+      return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
+    }
+    return String.format("%d千万", new Object[] { Long.valueOf(paramLong / 10000000L) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auzv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-
-class num
-  implements ViewFactory.FoundClickableViewListener
+public class num
+  implements alkr
 {
-  num(nuk paramnuk, TemplateBean paramTemplateBean) {}
+  public void a(Object paramObject) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    switch (paramInt)
     {
-    }
-    do
-    {
+    case 2: 
+    default: 
       return;
-    } while (!(paramViewBase instanceof pno));
-    ((pno)paramViewBase).a(new nun(this, paramViewBase));
+    }
+    a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     num
  * JD-Core Version:    0.7.0.1
  */

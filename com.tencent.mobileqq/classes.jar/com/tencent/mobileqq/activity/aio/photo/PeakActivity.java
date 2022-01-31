@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Bundle;
-import axmv;
-import bjal;
+import azib;
+import bllv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
@@ -12,12 +12,12 @@ public class PeakActivity
   extends BaseActivity2
 {
   @Deprecated
-  protected AppInterface a;
-  protected boolean e = true;
+  protected AppInterface appInterface;
+  protected boolean mNeedPauseRichMedia = true;
   
-  protected void c()
+  protected void adjustStatusBar()
   {
-    axmv.a(this.a, getWindow());
+    azib.a(this.mSystemBarComp, getWindow());
   }
   
   public String getModuleId()
@@ -30,14 +30,14 @@ public class PeakActivity
     super.onCreate(paramBundle);
     setVolumeControlStream(3);
     if (!isLatecyWaitRuntime()) {
-      bjal.a();
+      bllv.a();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.e)
+    if (this.mNeedPauseRichMedia)
     {
       NativeVideoImage.pauseAll();
       AbstractGifImage.pauseAll();
@@ -53,7 +53,7 @@ public class PeakActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PeakActivity
  * JD-Core Version:    0.7.0.1
  */

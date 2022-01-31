@@ -1,28 +1,20 @@
-import io.flutter.plugin.common.BinaryMessenger;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodCodec;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class apzl
-  extends apzj
+  implements DialogInterface.OnClickListener
 {
-  public apzl(String paramString, BinaryMessenger paramBinaryMessenger)
-  {
-    super(paramString, paramBinaryMessenger);
-  }
+  public apzl(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public MethodChannel.MethodCallHandler a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new apzm(this);
-  }
-  
-  public MethodCodec a()
-  {
-    return apzn.a;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzl
  * JD-Core Version:    0.7.0.1
  */

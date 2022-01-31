@@ -1,31 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class aehv
-  implements View.OnClickListener
+public class aehv
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aehv(aeht paramaeht, AIOShortVideoData paramAIOShortVideoData) {}
+  public aehv(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    aeht.a(this.jdField_a_of_type_Aeht, aeht.a(this.jdField_a_of_type_Aeht), ajya.a(2131700054));
-    boolean bool = axgo.a().a();
-    paramView = aeht.b(this.jdField_a_of_type_Aeht);
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
-    if (bool) {}
-    for (int i = 1;; i = 0)
-    {
-      DanceMachineQQBrowserActivity.a(paramView, j, str, i, -999, 1, 0, null);
-      return;
-    }
+    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int[] arrayOfInt = new int[2];
+    this.a.b.getLocationInWindow(arrayOfInt);
+    this.a.i = arrayOfInt[1];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehv
  * JD-Core Version:    0.7.0.1
  */

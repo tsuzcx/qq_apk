@@ -1,33 +1,21 @@
-import android.text.Editable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.BaseChatPie.84;
 
 public class acef
-  implements View.OnFocusChangeListener
+  implements View.OnTouchListener
 {
-  public acef(SubLoginActivity paramSubLoginActivity) {}
+  public acef(BaseChatPie.84 param84) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (true == paramBoolean)
-    {
-      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
-    }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
-      return;
-    }
-    SubLoginActivity.a(this.a).setVisibility(8);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acef
  * JD-Core Version:    0.7.0.1
  */

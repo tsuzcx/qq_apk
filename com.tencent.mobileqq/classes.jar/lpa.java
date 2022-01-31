@@ -1,39 +1,12 @@
-public class lpa
+public abstract interface lpa
 {
-  private short jdField_a_of_type_Short;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private short b;
+  public abstract void a(int paramInt);
   
-  public lpa(short paramShort1, short paramShort2, byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_Short = paramShort1;
-    this.b = paramShort2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public int a()
-  {
-    return b() + 4;
-  }
-  
-  public short a()
-  {
-    return this.jdField_a_of_type_Short;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public short b()
-  {
-    return this.b;
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lpa
  * JD-Core Version:    0.7.0.1
  */

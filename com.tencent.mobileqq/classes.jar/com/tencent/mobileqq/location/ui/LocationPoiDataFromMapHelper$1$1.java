@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.location.ui;
 
-import arxd;
-import arxe;
-import arxf;
+import atnz;
+import atoa;
+import atob;
 
 public class LocationPoiDataFromMapHelper$1$1
   implements Runnable
 {
-  public LocationPoiDataFromMapHelper$1$1(arxe paramarxe) {}
+  public LocationPoiDataFromMapHelper$1$1(atoa paramatoa) {}
   
   public void run()
   {
-    arxd.a(this.a.a).a(arxd.a(this.a.a));
+    atnz.a(this.a.a).a(atnz.a(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

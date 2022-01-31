@@ -1,21 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class afvn
-  extends RecyclerView.ViewHolder
+public class afvn
+  extends aelt
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public RelativeLayout a;
+  public DoodleMsgLayout a;
+  public MessageProgressView a;
   
-  afvn(afvm paramafvm, View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376419));
-  }
+  public afvn(ScribbleItemBuilder paramScribbleItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afvn
  * JD-Core Version:    0.7.0.1
  */

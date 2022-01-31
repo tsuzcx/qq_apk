@@ -1,59 +1,67 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import java.lang.ref.WeakReference;
 
-class aoxc
-  implements aout
+public class aoxc
+  implements Handler.Callback
 {
-  aoxc(aoxb paramaoxb, String paramString, aoxt paramaoxt) {}
+  private WeakReference<DanmakuManager> a;
   
-  public void a(int paramInt, String paramString)
+  private aoxc(DanmakuManager paramDanmakuManager)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2DiscTaskExcuter faild");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxb.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Aoxt.a(aowx.a(this.jdField_a_of_type_Aoxb.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
-    }
+    this.a = new WeakReference(paramDanmakuManager);
   }
   
-  public void a(String paramString)
+  public boolean handleMessage(Message paramMessage)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "2");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aoxb.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aoxb.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aoxb.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aoxb.d);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aoxb.e);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxb.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter success");
+    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
+    if (localDanmakuManager == null) {
+      return false;
     }
-    this.jdField_a_of_type_Aoxt.a(paramString, localBundle);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      DanmakuManager.a(localDanmakuManager, paramMessage);
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 2: 
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 4: 
+      DanmakuManager.b(localDanmakuManager);
+      return false;
+    case 3: 
+      DanmakuManager.c(localDanmakuManager);
+      return false;
+    case 5: 
+      DanmakuManager.b(localDanmakuManager, paramMessage);
+      return false;
+    case 6: 
+      DanmakuManager.d(localDanmakuManager);
+      return false;
+    case 7: 
+      DanmakuManager.e(localDanmakuManager);
+      return false;
+    case 8: 
+      DanmakuManager.f(localDanmakuManager);
+      return false;
+    case 9: 
+      DanmakuManager.g(localDanmakuManager);
+      return false;
+    case 10: 
+      DanmakuManager.h(localDanmakuManager);
+      return false;
+    }
+    DanmakuManager.i(localDanmakuManager);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxc
  * JD-Core Version:    0.7.0.1
  */

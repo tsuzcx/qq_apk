@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import auko;
+import awbv;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="picMd5")
 public class VipComicFavorEmoStructMsgInfo
-  extends auko
+  extends awbv
 {
   public static final int init = 1;
   public static final int updated = 2;
@@ -40,7 +40,7 @@ public class VipComicFavorEmoStructMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.VipComicFavorEmoStructMsgInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,176 +1,173 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.List;
 
-class adsb
-  implements apuv
+public class adsb
+  extends BaseAdapter
 {
-  adsb(adqw paramadqw, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public adsb(SelectedAndSearchBar paramSelectedAndSearchBar)
   {
-    switch (this.jdField_a_of_type_Int)
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = SelectedAndSearchBar.a(paramSelectedAndSearchBar).getResources().getDrawable(2130844480);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bdda.a();
+  }
+  
+  private int a(int paramInt)
+  {
+    int i = 4;
+    if (paramInt == 4) {
+      i = 11;
+    }
+    while (paramInt == 1) {
+      return i;
+    }
+    if (paramInt == 3000) {
+      return 101;
+    }
+    return 1;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-    default: 
-      QLog.e("GrayTipsItemBuilder", 1, "handle renewal gray tips click, action not support yet, action=" + this.jdField_a_of_type_Int);
+      if ((SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar) != null) && (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size() > 0))
+      {
+        ResultRecord localResultRecord = (ResultRecord)SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).get(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size() - 1);
+        if (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar) != null) {
+          SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).a(localResultRecord);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar.a(false);
+        this.jdField_a_of_type_Boolean = false;
+      }
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = null;
+    ResultRecord localResultRecord = (ResultRecord)getItem(paramInt);
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar)).inflate(2131559202, null);
+    }
+    paramViewGroup.setTag(localResultRecord);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131365910);
+    label99:
+    int i;
+    if (paramInt == getCount() - 1)
+    {
+      paramView = str;
+      if (this.jdField_a_of_type_Boolean) {
+        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      }
+      localImageView.setImageDrawable(paramView);
+      if (localResultRecord.jdField_b_of_type_Int != -1) {
+        break label166;
+      }
+      paramInt = localResultRecord.jdField_a_of_type_Int;
+      if (localResultRecord.jdField_a_of_type_Int != -1) {
+        break label179;
+      }
+      i = paramInt;
+      label111:
+      localResultRecord.jdField_a_of_type_Int = i;
+      if (!aljq.z.equals(localResultRecord.jdField_a_of_type_JavaLangString)) {
+        break label189;
+      }
+      localImageView.setBackgroundResource(2130843762);
     }
     for (;;)
     {
-      akpx.b(this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -4020);
-      do
+      if (AppSetting.c) {
+        localImageView.setContentDescription(localResultRecord.jdField_b_of_type_JavaLangString);
+      }
+      return paramViewGroup;
+      localImageView.setImageDrawable(null);
+      break;
+      label166:
+      paramInt = a(localResultRecord.jdField_b_of_type_Int);
+      break label99;
+      label179:
+      i = localResultRecord.jdField_a_of_type_Int;
+      break label111;
+      label189:
+      if (aljq.A.equals(localResultRecord.jdField_a_of_type_JavaLangString))
       {
-        return;
-        paramView = (bbpz)this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(177);
-        if (paramView.jdField_a_of_type_Int == 0) {}
-        for (;;)
-        {
-          VasWebviewUtil.openIndividuationIndex(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext);
-          VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_personality", "", 1, 0, 0, "", "", "");
-          break;
-          if (!TextUtils.isEmpty(paramView.jdField_a_of_type_JavaLangString)) {}
-        }
-        EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 10, false, "");
-        VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_emoji", "", 1, 0, 0, "", "", "");
-        break;
-        paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        paramView.putExtra("individuation_url_type", 40306);
-        VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, bbqd.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab"), 64L, paramView, false, -1);
-        VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_bubble", "", 1, 0, 0, "", "", "");
-        break;
-        if (!BaseApplicationImpl.IS_SUPPORT_THEME) {
-          Toast.makeText(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.getString(2131720233), 0).show();
-        }
-        for (;;)
-        {
-          VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_theme", "", 1, 0, 0, "", "", "");
-          break;
-          if (bbbr.a())
-          {
-            paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-            paramView.putExtra("individuation_url_type", 40306);
-            VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, bbqd.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, paramView, true, -1);
-          }
-          else
-          {
-            Toast.makeText(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.getString(2131719055), 0).show();
-          }
-        }
-        if (!bbbr.a()) {
-          Toast.makeText(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.getString(2131719055), 0).show();
-        }
-        for (;;)
-        {
-          VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_widget", "", 1, 0, 0, "", "", "");
-          break;
-          paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          paramView.putExtra("individuation_url_type", 40100);
-          paramView.putExtra("vasUsePreWebview", true);
-          paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-          paramView.putExtra("hide_left_button", false);
-          paramView.putExtra("show_right_close_button", false);
-          paramView.putExtra("url", bbqd.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "pendant", ""));
-          paramView.putExtra("business", 512L);
-          VasWebviewUtil.insertVasWbPluginToIntent(512L, paramView);
-          paramView.putExtra("isShowAd", false);
-          this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        }
-        if (!((ho)this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(42)).c())
-        {
-          paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, ChatTextSizeSettingActivity.class);
-          this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        }
-        for (;;)
-        {
-          VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_font", "", 1, 0, 0, "", "", "");
-          break;
-          paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          paramView.putExtra("hide_left_button", false);
-          paramView.putExtra("show_right_close_button", false);
-          paramView.putExtra("individuation_url_type", 40100);
-          paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-          VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, bbqd.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "font", ""), 4096L, paramView, false, -1);
-        }
-        paramView = new Intent();
-        paramView.putExtra("vasUsePreWebview", true);
-        paramView.putExtra("bg_replace_entrance", 8);
-        paramView.putExtra("hide_left_button", false);
-        paramView.putExtra("show_right_close_button", false);
-        paramView.putExtra("individuation_url_type", 40306);
-        VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, bbqd.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "background", ""), 33554432L, paramView, false, -1);
-        VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_background", "", 1, 0, 0, "", "", "");
-        break;
-        bbac.a((Activity)this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "inside.myIndividuation", 1, 2, 1, "", false, false, "");
-        VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_card", "", 1, 0, 0, "", "", "");
-        break;
-        paramView = ajzd.a(2, this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      } while (TextUtils.isEmpty(paramView));
-      Object localObject = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("individuation_url_type", 40100);
-      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, paramView, 134217728L, (Intent)localObject, true, -1);
-      VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_redbag", "", 1, 0, 0, "", "", "");
-      continue;
-      paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("individuation_url_type", 40302);
-      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, bbqd.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "bubbleDetailDialog", String.valueOf(this.b), "mvip.gongneng.android.bubble.index_dynamic_tab"), 64L, paramView, false, -1);
-      VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
-      continue;
-      paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("individuation_url_type", 40302);
-      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, bbqd.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "fontDetailDialog", String.valueOf(this.b), "mvip.gexinghua.mobile.font.client_tab_store"), 4096L, paramView, false, -1);
-      VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
-      continue;
-      paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-      paramView.putExtra("hide_left_button", false);
-      paramView.putExtra("show_right_close_button", false);
-      paramView.putExtra("url", bbqd.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "pendantDetailDialog", String.valueOf(this.b), "mvip.gexinghua.mobile.faceaddon.client_tab_store"));
-      paramView.putExtra("business", 512L);
-      paramView.putExtra("individuation_url_type", 40100);
-      VasWebviewUtil.insertVasWbPluginToIntent(512L, paramView);
-      paramView.putExtra("isShowAd", false);
-      this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
-      continue;
-      paramView = new Intent();
-      paramView.putExtra("individuation_url_type", 40100);
-      localObject = bbqd.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "backgroundDetail", String.valueOf(this.b), "");
-      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, (String)localObject, 33554432L, paramView, false, -1);
-      VasWebviewUtil.reportCommercialDrainage("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
-      continue;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        localImageView.setBackgroundResource(2130843760);
+      }
+      else if (aljq.B.equals(localResultRecord.jdField_a_of_type_JavaLangString))
       {
-        paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-        paramView.putExtra("isShowAd", false);
-        this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+        localImageView.setBackgroundResource(2130843765);
+      }
+      else if (aljq.y.equals(localResultRecord.jdField_a_of_type_JavaLangString))
+      {
+        localImageView.setBackgroundResource(2130839384);
       }
       else
       {
-        QLog.e("GrayTipsItemBuilder", 1, "MSG_TYPE_RENEWAL_TAIL_TIP, onClick, url null");
-        continue;
-        bbrk.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "mvip.gexinghua.android.aio_pay", "LTMCLUB", 3, false, false);
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "aio_pay", "aio_payclk", "", 1, 0, 0, "", String.valueOf(this.c), "");
-        continue;
-        bbrk.a(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, "mvip.gexinghua.android.aio_pay", "CJCLUBT", 3, false, false);
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "aio_pay", "aio_payclk", "", 1, 0, 0, "", String.valueOf(this.c), "");
+        if (localResultRecord.jdField_a_of_type_Int != 5) {
+          break label280;
+        }
+        localImageView.setImageResource(2130841731);
       }
     }
+    label280:
+    str = localResultRecord.jdField_a_of_type_JavaLangString;
+    paramView = SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).a(paramInt, str);
+    if (paramView == null)
+    {
+      SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).a(str, paramInt, true);
+      paramView = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    }
+    for (;;)
+    {
+      localImageView.setBackgroundDrawable(new BitmapDrawable(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).getResources(), paramView));
+      break;
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsb
  * JD-Core Version:    0.7.0.1
  */

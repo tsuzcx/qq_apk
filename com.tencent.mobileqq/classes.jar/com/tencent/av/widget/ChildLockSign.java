@@ -14,12 +14,12 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import axqy;
+import azmj;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
 import com.tencent.qphone.base.util.QLog;
-import lga;
+import lid;
 
 public class ChildLockSign
   extends View
@@ -64,13 +64,13 @@ public class ChildLockSign
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131372230);
+    setId(2131372586);
     paramAttributeSet = getResources();
     this.jdField_a_of_type_Boolean = true;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841572);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841573);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841723);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841724);
       if (this.jdField_a_of_type_Boolean) {}
       for (this.c = this.jdField_a_of_type_AndroidGraphicsBitmap;; this.c = this.jdField_b_of_type_AndroidGraphicsBitmap)
       {
@@ -109,19 +109,19 @@ public class ChildLockSign
       Object localObject = (AVActivity)getContext();
       paramMessage = ((AVActivity)localObject).a();
       localObject = (DoubleVideoCtrlUI)((AVActivity)localObject).a;
-      if (!paramMessage.a().w)
+      if (!paramMessage.a().x)
       {
-        paramMessage.a().x = true;
+        paramMessage.a().y = true;
         ((DoubleVideoCtrlUI)localObject).d(true);
-        axqy.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
+        azmj.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
       }
       for (;;)
       {
         setEnabled(true);
         return false;
-        paramMessage.a().x = false;
+        paramMessage.a().y = false;
         ((DoubleVideoCtrlUI)localObject).s();
-        axqy.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
+        azmj.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
       }
     }
     catch (Exception paramMessage)
@@ -175,7 +175,7 @@ public class ChildLockSign
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.widget.ChildLockSign
  * JD-Core Version:    0.7.0.1
  */

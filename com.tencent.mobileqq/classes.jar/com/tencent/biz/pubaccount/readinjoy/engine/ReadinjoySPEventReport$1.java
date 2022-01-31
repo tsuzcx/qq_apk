@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import osx;
+import oxp;
 
 public class ReadinjoySPEventReport$1
   implements Runnable
 {
-  public ReadinjoySPEventReport$1(osx paramosx) {}
+  public ReadinjoySPEventReport$1(oxp paramoxp) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ReadinjoySPEventReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.1
  * JD-Core Version:    0.7.0.1
  */

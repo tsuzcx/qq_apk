@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.splash;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bbdx;
+import bdcs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
@@ -96,7 +96,7 @@ public class SplashMiniGameUtil
       localEditor.remove("priority_" + localSplashMiniGameData.appId);
       localEditor.remove("request_DomainList_" + localSplashMiniGameData.appId);
       localEditor.remove("downloadFile_DomainList_" + localSplashMiniGameData.appId);
-      bbdx.a(getFilePath(localSplashMiniGameData.appId));
+      bdcs.a(getFilePath(localSplashMiniGameData.appId));
     }
     localEditor.commit();
   }
@@ -279,7 +279,7 @@ public class SplashMiniGameUtil
           break;
         }
         BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit().clear().commit();
-        bbdx.a("/data/data/com.tencent.mobileqq/files/minigame/splash/");
+        bdcs.a("/data/data/com.tencent.mobileqq/files/minigame/splash/");
         return;
         i = 0;
         while (i < paramString.length())
@@ -376,14 +376,14 @@ public class SplashMiniGameUtil
           deleteConfig(paramString);
         }
       }
-      BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit().putString("appVersion", "8.3.0.4480").commit();
+      BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit().putString("appVersion", "8.3.3.4515").commit();
       SplashMiniGameStarter.refresh();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.splash.SplashMiniGameUtil
  * JD-Core Version:    0.7.0.1
  */

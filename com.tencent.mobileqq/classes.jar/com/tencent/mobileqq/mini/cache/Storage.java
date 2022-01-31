@@ -480,7 +480,11 @@ public class Storage
       if (this.mLruCache != null) {
         this.mLruCache.remove(paramString);
       }
-      if (this.mDiskCache == null) {}
+      if (this.mDiskCache != null) {
+        if (this.mDiskCache.isClosed()) {
+          reCreateCache();
+        }
+      }
     }
     try
     {
@@ -695,7 +699,7 @@ public class Storage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.cache.Storage
  * JD-Core Version:    0.7.0.1
  */

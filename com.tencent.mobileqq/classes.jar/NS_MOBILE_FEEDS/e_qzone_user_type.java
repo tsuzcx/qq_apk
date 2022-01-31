@@ -15,7 +15,7 @@ public final class e_qzone_user_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_qzone_user_type
  * JD-Core Version:    0.7.0.1
  */

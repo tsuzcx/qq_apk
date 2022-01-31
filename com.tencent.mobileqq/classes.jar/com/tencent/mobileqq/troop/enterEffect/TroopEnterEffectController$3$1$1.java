@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import aybe;
-import ayck;
-import azrn;
-import azrq;
+import azzb;
+import baah;
+import bbpw;
+import bbpz;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class TroopEnterEffectController$3$1$1
   implements Runnable
 {
-  public TroopEnterEffectController$3$1$1(azrq paramazrq, aybe paramaybe) {}
+  public TroopEnterEffectController$3$1$1(bbpz parambbpz, azzb paramazzb) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Azrq.a.this$0.a != null) {
-      this.jdField_a_of_type_Azrq.a.this$0.a.a((ayck)this.jdField_a_of_type_Aybe);
+    if (this.jdField_a_of_type_Bbpz.a.this$0.a != null) {
+      this.jdField_a_of_type_Bbpz.a.this$0.a.a((baah)this.jdField_a_of_type_Azzb);
     }
   }
 }

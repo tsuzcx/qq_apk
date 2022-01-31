@@ -1,36 +1,51 @@
-import android.content.Context;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class alyc
-  extends alyb
+  implements Handler.Callback
 {
-  private float[] d = new float[16];
+  public alyc(SignatureManager paramSignatureManager) {}
   
-  public alyc(Context paramContext, int paramInt, SensorManager paramSensorManager, alxt paramalxt)
+  public boolean handleMessage(Message paramMessage)
   {
-    super(paramContext, paramInt, paramSensorManager, paramalxt);
-    paramContext = paramSensorManager.getDefaultSensor(15);
-    if ((Build.VERSION.SDK_INT >= 18) && (paramContext != null))
+    if (2 == paramMessage.what)
     {
-      this.a.add(paramContext);
-      return;
+      SignatureManager.jdField_a_of_type_ArrayOfBdpl = (bdpl[])paramMessage.obj;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        if (paramMessage != null) {
+          paramMessage.sendEmptyMessageDelayed(2, 50L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Signature", 2, "update sign tpl info...");
+        }
+      }
     }
-    throw new OrientationProviderNotFound(String.valueOf(15));
-  }
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    alxv.a(this.d, paramSensorEvent);
-    super.a(this.d);
+    for (;;)
+    {
+      return true;
+      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        if (paramMessage != null) {
+          paramMessage.sendEmptyMessageDelayed(7, 50L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Signature", 2, "update sign tpl animation ...");
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyc
  * JD-Core Version:    0.7.0.1
  */

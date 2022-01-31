@@ -1,55 +1,43 @@
-import android.app.Activity;
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.BuddyUploadTaskExcuter.1;
+import java.util.concurrent.Executor;
 
 public class aqoe
-  extends BroadcastReceiver
+  extends aqou
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  boolean jdField_a_of_type_Boolean = true;
+  public long a;
+  private Bundle a;
+  public String a;
+  private long b;
+  public String b;
   
-  public aqoe(Activity paramActivity)
+  public aqoe(aqnw paramaqnw, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    super(paramaqnw);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    paramaqnw = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaqnw);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
   }
   
-  public boolean a(Context paramContext)
-  {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
+  void a(String paramString, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  void a(String paramString, int paramInt, aqot paramaqot)
   {
-    boolean bool = true;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
-      if (!a(paramContext)) {
-        this.jdField_a_of_type_Boolean = bool;
-      }
-    }
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      return;
-      bool = false;
-      break;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = false;
-      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "1");
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
+    arnu.a().execute(new FileMultiMsgManager.BuddyUploadTaskExcuter.1(this, paramString, paramaqot));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqoe
  * JD-Core Version:    0.7.0.1
  */

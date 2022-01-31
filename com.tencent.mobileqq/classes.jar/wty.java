@@ -1,59 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
 public class wty
-  implements Handler.Callback
+  extends ayym
 {
-  public wty(VideoPlayerView paramVideoPlayerView) {}
+  public wty(EditPicActivity paramEditPicActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
+    wsv.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    wtj localwtj = (wtj)this.a.a.a(wtj.class);
+    if (localwtj != null) {
+      localwtj.ag_();
     }
-    label258:
-    do
-    {
-      do
-      {
-        return false;
-        if (VideoPlayerView.g(this.a)) {}
-        for (int i = paramMessage.arg2 - paramMessage.arg1;; i = paramMessage.arg1)
-        {
-          int j = i / 1000 / 60;
-          i = i / 1000 % 60;
-          if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a).a() > VideoPlayerView.a(this.a).b() / 2L) && (!VideoPlayerView.h(this.a))) {
-            VideoPlayerView.f(this.a);
-          }
-          if (VideoPlayerView.i(this.a)) {
-            break label258;
-          }
-          if (this.a.b != null) {
-            this.a.b.setText(String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
-          }
-          if ((VideoPlayerView.a(this.a) == null) || (!((Boolean)paramMessage.obj).booleanValue())) {
-            break;
-          }
-          VideoPlayerView.a(this.a).a(String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }), paramMessage.arg2, paramMessage.arg1);
-          return false;
-        }
-      } while ((VideoPlayerView.a(this.a) == null) || (!((Boolean)paramMessage.obj).booleanValue()));
-      VideoPlayerView.a(this.a).onVideoProgressUpdate(paramMessage.arg1);
-      return false;
-      VideoPlayerView.g(this.a);
-      return false;
-    } while (VideoPlayerView.d(this.a) == null);
-    VideoPlayerView.d(this.a).setVisibility(8);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wty
  * JD-Core Version:    0.7.0.1
  */

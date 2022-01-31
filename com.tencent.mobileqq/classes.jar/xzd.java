@@ -1,21 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.bind.DevicePluginDownloadActivity;
-
-public class xzd
-  implements DialogInterface.OnClickListener
+public abstract interface xzd
 {
-  public xzd(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    bhwm.a().a();
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzd
  * JD-Core Version:    0.7.0.1
  */

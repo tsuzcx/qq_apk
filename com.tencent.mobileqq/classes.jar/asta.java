@@ -1,32 +1,49 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class asta
-  implements bfsa
+final class asta
+  implements EIPCResultCallback
 {
-  public asta(MultiCardRootLayout paramMultiCardRootLayout) {}
+  asta(astb paramastb) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (MultiCardRootLayout.a(this.a) != null)
+    String str = null;
+    QLog.d("FaceLoginHelper", 1, "callServer error_code:" + paramEIPCResult.code);
+    FaceDetectForThirdPartyManager.AppConf localAppConf;
+    switch (paramEIPCResult.code)
     {
-      astc localastc = (astc)MultiCardRootLayout.a(this.a).get();
-      if ((localastc != null) && (localastc.a(i))) {
-        return true;
+    default: 
+      str = alpo.a(2131714897);
+      localAppConf = null;
+    }
+    while ((paramEIPCResult.code != 0) || (paramEIPCResult.data == null))
+    {
+      this.a.a(paramEIPCResult.code, str);
+      return;
+      if (paramEIPCResult.data != null)
+      {
+        localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf");
+        QLog.d("FaceLoginHelper", 1, "callServer error_code:" + localAppConf);
+      }
+      else
+      {
+        str = alpo.a(2131714897);
+        localAppConf = null;
+        continue;
+        str = alpo.a(2131692354);
+        localAppConf = null;
       }
     }
-    if (MultiCardRootLayout.a(this.a) != null) {
-      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
-    }
-    return false;
+    this.a.a(localAppConf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asta
  * JD-Core Version:    0.7.0.1
  */

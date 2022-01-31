@@ -1,27 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import org.json.JSONObject;
 
 class bjun
-  implements View.OnClickListener
+  implements bjup
 {
-  bjun(bjum parambjum) {}
+  bjun(bjul parambjul) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, Bundle paramBundle)
   {
-    paramView = this.a;
-    if (!bjum.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bjum.a(paramView, bool);
-      bjum.a(this.a, bjum.a(this.a));
-      tcs.d(bjum.a(this.a));
-      return;
-    }
+    paramJSONObject.put("status", paramBundle.getInt("status", 1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjun
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class RoamSetting
-  extends auko
+  extends awbv
 {
   public static final String SETTING_REVISION = "setting_revision";
-  @aumc
+  @awdj
   public String path;
   public String value;
   
@@ -39,7 +39,7 @@ public class RoamSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RoamSetting
  * JD-Core Version:    0.7.0.1
  */

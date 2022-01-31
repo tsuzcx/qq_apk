@@ -1,21 +1,16 @@
-import android.graphics.Bitmap;
+import java.util.ArrayList;
 
 public class baxj
+  extends baxq
 {
-  public int a;
-  public Bitmap a;
-  private baxj a;
-  
-  public baxj()
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_Baxj = null;
-  }
+  public String a;
+  public ArrayList<basp> a = new ArrayList();
+  public String b;
+  public ArrayList<basp> b = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baxj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
-public abstract interface acxd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+
+public class acxd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void k();
+  public acxd(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public abstract void l();
-  
-  public abstract void m();
-  
-  public abstract void n();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxd
  * JD-Core Version:    0.7.0.1
  */

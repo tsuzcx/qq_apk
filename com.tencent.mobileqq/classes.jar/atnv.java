@@ -1,37 +1,38 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnHoverListener;
+import android.view.accessibility.AccessibilityManager;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class atnv
-  extends xpw
+  implements View.OnHoverListener
 {
-  public atnv(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  public atnv(LocationPickFragment paramLocationPickFragment) {}
   
-  public xpd a(Activity paramActivity, xpj paramxpj)
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    return super.a(paramActivity, paramxpj);
-  }
-  
-  public xpf a(Activity paramActivity, xpj paramxpj)
-  {
-    return new atnx((PicBrowserActivity)paramActivity, paramxpj);
-  }
-  
-  public xpj a(Activity paramActivity)
-  {
-    paramActivity = new atog(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public xpk a(Activity paramActivity, xpj paramxpj)
-  {
-    return null;
+    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
+    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
+    {
+      if (paramView.requestFocus()) {
+        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
+      }
+      if (!LocationPickFragment.a(this.a).b())
+      {
+        LocationPickFragment.a(this.a).setDisplayFromType(3);
+        LocationPickFragment.a(this.a).a();
+      }
+      azmj.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atnv
  * JD-Core Version:    0.7.0.1
  */

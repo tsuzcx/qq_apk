@@ -1,75 +1,95 @@
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aoju
+  extends aofy<aojv>
 {
-  private int a;
-  private int b;
-  
-  public static aoju a(amph paramamph)
+  public static boolean e()
   {
-    aoju localaoju = new aoju();
-    if (paramamph != null)
+    if ((Build.VERSION.SDK_INT >= 26) && (Build.MODEL.toLowerCase().contains("vivo")))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("limitChatOnPlusConfBean", 2, "parse taskid->" + paramamph.jdField_a_of_type_Int + " content->" + paramamph.jdField_a_of_type_JavaLangString);
+        QLog.d("LocaleConfProcessor", 2, "hide entrance for vivo");
       }
-      try
-      {
-        paramamph = paramamph.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramamph))
-        {
-          paramamph = new JSONObject(paramamph);
-          localaoju.a(paramamph.optInt("business_switch", 0));
-          localaoju.b(paramamph.optInt("showInRecentView", 0));
-          return localaoju;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.e("limitChatOnPlusConfBean", 2, "parse content is null ");
-          return localaoju;
-        }
-      }
-      catch (JSONException paramamph)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("limitChatOnPlusConfBean", 2, "parse error->" + paramamph.toString());
-        }
-      }
+      return false;
     }
-    return localaoju;
+    aojv localaojv = (aojv)aogj.a().a(552);
+    if ((localaojv != null) && (!TextUtils.isEmpty(localaojv.a))) {
+      alrh.a = "1".equals(localaojv.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LocaleConfProcessor", 2, new Object[] { "isLocaleEntranceEnable: ", Boolean.valueOf(alrh.a) });
+    }
+    if (!alrh.a()) {
+      return true;
+    }
+    return alrh.a;
   }
   
-  void a(int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return 552;
   }
   
-  public boolean a()
+  @NonNull
+  public aojv a(int paramInt)
   {
-    return this.jdField_a_of_type_Int == 1;
+    return new aojv();
   }
   
-  void b(int paramInt)
+  @Nullable
+  public aojv a(aogf[] paramArrayOfaogf)
   {
-    this.b = paramInt;
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    {
+      aojv localaojv = aojv.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocaleConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      }
+      return localaojv;
+    }
+    return new aojv();
+  }
+  
+  public Class<aojv> a()
+  {
+    return aojv.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aojv paramaojv)
+  {
+    if ((paramaojv != null) && (!TextUtils.isEmpty(paramaojv.a))) {
+      alrh.a = "1".equals(paramaojv.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LocaleConfProcessor", 2, "onUpdate, isConfShowEntrance: " + alrh.a);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
   }
   
   public boolean b()
   {
-    return this.b == 1;
+    return false;
   }
   
-  public String toString()
+  public boolean c()
   {
-    return String.format("mBusinessSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoju
  * JD-Core Version:    0.7.0.1
  */

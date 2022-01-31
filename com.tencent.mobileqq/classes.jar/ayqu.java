@@ -1,152 +1,134 @@
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ForwardStep.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Arrays;
 
-public abstract class ayqu
+public class ayqu
 {
-  protected long a;
-  private ayqu jdField_a_of_type_Ayqu;
-  protected String a;
-  protected AtomicBoolean a;
-  private ayqu[] jdField_a_of_type_ArrayOfAyqu;
-  public AtomicBoolean b = new AtomicBoolean(false);
-  
-  ayqu(ayqt paramayqt)
+  static boolean a(int paramInt, long[][] paramArrayOfLong, long[] paramArrayOfLong1, long[] paramArrayOfLong2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean[] paramArrayOfBoolean1, boolean[] paramArrayOfBoolean2, long[] paramArrayOfLong3)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaLangString = "ForwardStep";
-  }
-  
-  public void a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|doStep");
-    }
-    if ((this.jdField_a_of_type_ArrayOfAyqu != null) && (this.jdField_a_of_type_ArrayOfAyqu.length > 0))
+    paramArrayOfBoolean1[paramInt] = true;
+    int i = 0;
+    if (i < paramArrayOfLong2.length)
     {
-      ayqu[] arrayOfayqu = this.jdField_a_of_type_ArrayOfAyqu;
-      int m = arrayOfayqu.length;
-      int j = 0;
-      int i = 1;
+      if ((paramArrayOfBoolean2[i] != 0) || (paramArrayOfLong[paramInt][i] <= 0L)) {}
       for (;;)
       {
-        k = i;
-        if (j >= m) {
-          break;
-        }
-        ayqu localayqu = arrayOfayqu[j];
-        QLog.d("Q.share.ForwardSdkShareProcessor", 1, new Object[] { localayqu.jdField_a_of_type_JavaLangString, "|finished=", Boolean.valueOf(localayqu.a()), ", processing=", Boolean.valueOf(localayqu.b()) });
-        if (!localayqu.a())
-        {
-          if (!localayqu.b()) {
-            localayqu.a();
-          }
-          i = 0;
-        }
-        j += 1;
-      }
-    }
-    int k = 1;
-    if ((k != 0) && (!a()) && (!b()))
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      d();
-    }
-  }
-  
-  void a(ayqu[] paramArrayOfayqu)
-  {
-    this.jdField_a_of_type_ArrayOfAyqu = paramArrayOfayqu;
-    if ((this.jdField_a_of_type_ArrayOfAyqu != null) && (this.jdField_a_of_type_ArrayOfAyqu.length > 0))
-    {
-      paramArrayOfayqu = this.jdField_a_of_type_ArrayOfAyqu;
-      int j = paramArrayOfayqu.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramArrayOfayqu[i].jdField_a_of_type_Ayqu = this;
         i += 1;
+        break;
+        long l = paramArrayOfLong1[paramInt] + paramArrayOfLong2[i] - paramArrayOfLong[paramInt][i];
+        if (l == 0L)
+        {
+          paramArrayOfBoolean2[i] = true;
+          int j = paramArrayOfInt2[i];
+          if ((j == -1) || (a(j, paramArrayOfLong, paramArrayOfLong1, paramArrayOfLong2, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfBoolean1, paramArrayOfBoolean2, paramArrayOfLong3)))
+          {
+            paramArrayOfInt2[i] = paramInt;
+            paramArrayOfInt1[paramInt] = i;
+            return true;
+          }
+        }
+        else if (l < paramArrayOfLong3[i])
+        {
+          paramArrayOfLong3[i] = l;
+        }
       }
     }
-  }
-  
-  protected boolean a()
-  {
     return false;
   }
   
-  public void b()
+  public static int[] a(long[][] paramArrayOfLong, int paramInt1, int paramInt2)
   {
-    long l = 0L;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|doNextStep");
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Long != 0L) {
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, this.jdField_a_of_type_JavaLangString + "|finished,cost=" + l);
-    }
-    aqgj.a(this.jdField_a_of_type_JavaLangString, l);
-    if ((this.jdField_a_of_type_Ayqu != null) && (!this.b.get())) {
-      this.jdField_a_of_type_Ayqt.a.a.post(new ForwardSdkShareProcessor.ForwardStep.1(this));
-    }
-  }
-  
-  protected boolean b()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public void c()
-  {
-    long l = 0L;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Long != 0L) {
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    }
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.jdField_a_of_type_JavaLangString + "|doError,cost=" + l);
-    this.jdField_a_of_type_Ayqt.d();
-  }
-  
-  protected abstract void d();
-  
-  protected void e()
-  {
-    if (a()) {}
-    for (;;)
+    long[] arrayOfLong1 = new long[paramInt1];
+    long[] arrayOfLong2 = new long[paramInt2];
+    long[] arrayOfLong3 = new long[paramInt2];
+    int[] arrayOfInt1 = new int[paramInt1];
+    int[] arrayOfInt2 = new int[paramInt2];
+    Arrays.fill(arrayOfLong1, -9223372036854775808L);
+    Arrays.fill(arrayOfLong2, 0L);
+    int i = 0;
+    int j;
+    while (i < paramInt1)
     {
-      return;
-      this.b.set(true);
-      if ((this.jdField_a_of_type_ArrayOfAyqu != null) && (this.jdField_a_of_type_ArrayOfAyqu.length > 0))
+      j = 0;
+      while (j < paramInt2)
       {
-        ayqu[] arrayOfayqu = this.jdField_a_of_type_ArrayOfAyqu;
-        int j = arrayOfayqu.length;
-        int i = 0;
-        while (i < j)
-        {
-          arrayOfayqu[i].e();
-          i += 1;
+        if ((paramArrayOfLong[i][j] > 0L) && (paramArrayOfLong[i][j] > arrayOfLong1[i])) {
+          arrayOfLong1[i] = paramArrayOfLong[i][j];
         }
+        j += 1;
+      }
+      i += 1;
+    }
+    Arrays.fill(arrayOfInt1, -1);
+    Arrays.fill(arrayOfInt2, -1);
+    i = 0;
+    if (i < paramInt1)
+    {
+      boolean[] arrayOfBoolean1 = new boolean[paramInt1];
+      boolean[] arrayOfBoolean2 = new boolean[paramInt2];
+      Arrays.fill(arrayOfLong3, 9223372036854775807L);
+      Arrays.fill(arrayOfBoolean1, false);
+      Arrays.fill(arrayOfBoolean2, false);
+      for (;;)
+      {
+        long l1;
+        if (!a(i, paramArrayOfLong, arrayOfLong1, arrayOfLong2, arrayOfInt1, arrayOfInt2, arrayOfBoolean1, arrayOfBoolean2, arrayOfLong3))
+        {
+          l1 = 9223372036854775807L;
+          j = 0;
+          if (j < paramInt2)
+          {
+            long l2;
+            if (arrayOfBoolean2[j] != 0) {
+              l2 = l1;
+            }
+            for (;;)
+            {
+              j += 1;
+              l1 = l2;
+              break;
+              l2 = l1;
+              if (arrayOfLong3[j] < l1) {
+                l2 = arrayOfLong3[j];
+              }
+            }
+          }
+          if ((l1 != 9223372036854775807L) && (l1 != 0L)) {}
+        }
+        else
+        {
+          i += 1;
+          break;
+        }
+        j = 0;
+        while (j <= i)
+        {
+          if (arrayOfBoolean1[j] != 0) {
+            arrayOfLong1[j] -= l1;
+          }
+          j += 1;
+        }
+        j = 0;
+        if (j < paramInt2)
+        {
+          if (arrayOfBoolean2[j] != 0) {
+            arrayOfLong2[j] += l1;
+          }
+          for (;;)
+          {
+            j += 1;
+            break;
+            arrayOfLong3[j] -= l1;
+          }
+        }
+        Arrays.fill(arrayOfBoolean1, false);
+        Arrays.fill(arrayOfBoolean2, false);
       }
     }
-  }
-  
-  public void f()
-  {
-    long l = 0L;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Long != 0L) {
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    }
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.jdField_a_of_type_JavaLangString + "|doCancel,cost=" + l);
+    return arrayOfInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayqu
  * JD-Core Version:    0.7.0.1
  */

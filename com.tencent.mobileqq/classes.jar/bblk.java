@@ -1,13 +1,27 @@
-public abstract class bblk
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.qphone.base.util.QLog;
+
+class bblk
+  extends bblq
 {
-  public int a;
+  bblk(bblj parambblj) {}
   
-  public bblk(int paramInt)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    this.a = paramInt;
+    if (!this.a.a.this$0.a) {}
+    do
+    {
+      return;
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
+    return;
+    bblf.a(this.a.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
-  
-  public abstract void a();
 }
 
 

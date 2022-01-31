@@ -4,26 +4,26 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anjs;
-import auko;
-import aulz;
-import aumc;
+import apaz;
+import awbv;
+import awdg;
+import awdj;
 
 public class PrecoverResource
-  extends auko
+  extends awbv
   implements Parcelable
 {
-  public static final Parcelable.Creator<PrecoverResource> CREATOR = new anjs();
-  @aulz
+  public static final Parcelable.Creator<PrecoverResource> CREATOR = new apaz();
+  @awdg
   public int arg1;
-  @aulz
+  @awdg
   public int arg2;
   public String businessId;
   public String md5;
-  @aumc
+  @awdj
   public String pk;
   public String resId;
-  @aulz
+  @awdg
   public String thirdPartDownloadPath;
   public String url;
   
@@ -129,7 +129,7 @@ public class PrecoverResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PrecoverResource
  * JD-Core Version:    0.7.0.1
  */

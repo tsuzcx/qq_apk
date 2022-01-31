@@ -1,44 +1,51 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.view.ViewPager;
-import cooperation.qzone.contentbox.BaseMsgView;
-import java.lang.ref.WeakReference;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqmini.sdk.runtime.core.page.widget.WebEditText;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bhct
-  extends Handler
+class bhct
+  implements TextView.OnEditorActionListener
 {
-  private WeakReference<BaseMsgView> a;
+  bhct(bhcq parambhcq, WebEditText paramWebEditText, bgid parambgid) {}
   
-  public bhct(BaseMsgView paramBaseMsgView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a = new WeakReference(paramBaseMsgView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    BaseMsgView localBaseMsgView = (BaseMsgView)this.a.get();
-    if (localBaseMsgView == null) {}
-    ViewPager localViewPager;
-    do
+    boolean bool = true;
+    switch (paramInt)
     {
-      return;
-      switch (paramMessage.what)
+    default: 
+      bool = false;
+    }
+    for (;;)
+    {
+      return bool;
+      try
       {
-      default: 
-        localBaseMsgView.a(paramMessage);
-        return;
+        paramTextView = new JSONObject();
+        paramTextView.put("inputId", bhcq.a(this.jdField_a_of_type_Bhcq));
+        paramTextView.put("value", this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetWebEditText.getText().toString());
+        this.jdField_a_of_type_Bgid.a.a("onKeyboardConfirm", paramTextView.toString(), 0);
+        if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetWebEditText.c()) {
+          continue;
+        }
+        this.jdField_a_of_type_Bhcq.a(true);
+        return true;
       }
-      localViewPager = (ViewPager)((WeakReference)paramMessage.obj).get();
-    } while (localViewPager == null);
-    int i = paramMessage.arg1;
-    localViewPager.setCurrentItem((localViewPager.getCurrentItem() + 1) % i, true);
-    localBaseMsgView.a();
+      catch (JSONException paramTextView)
+      {
+        for (;;)
+        {
+          paramTextView.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhct
  * JD-Core Version:    0.7.0.1
  */

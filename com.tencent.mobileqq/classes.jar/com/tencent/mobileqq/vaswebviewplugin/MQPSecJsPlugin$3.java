@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bcqf;
+import bepp;
 
 class MQPSecJsPlugin$3
   implements Runnable

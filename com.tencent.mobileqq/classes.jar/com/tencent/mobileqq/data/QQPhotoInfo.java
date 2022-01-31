@@ -3,7 +3,7 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anjx;
+import apbe;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class QQPhotoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QQPhotoInfo> CREATOR = new anjx();
+  public static final Parcelable.Creator<QQPhotoInfo> CREATOR = new apbe();
   private static List<WeakReference<QQPhotoInfo>> photoInfoCache = new ArrayList();
   private long id;
   private String mPath;
@@ -59,7 +59,7 @@ public class QQPhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQPhotoInfo
  * JD-Core Version:    0.7.0.1
  */

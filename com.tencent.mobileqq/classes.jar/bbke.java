@@ -1,109 +1,114 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadReport;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
+import android.animation.ValueAnimator;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import java.util.ArrayList;
 
 public class bbke
-  implements SoLoadReport
 {
-  private static SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+  protected final Context a;
+  protected final View.OnClickListener a;
+  protected View a;
+  protected final ViewStub a;
+  protected bbiq a;
+  protected bbkc a;
+  protected final bbki a;
+  protected boolean a;
   
-  private HashMap<String, String> a(String paramString, long paramLong)
+  public bbke(ViewStub paramViewStub, Context paramContext, View.OnClickListener paramOnClickListener, bbki parambbki)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("osVersion", Build.VERSION.RELEASE);
-    localHashMap.put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-    localHashMap.put("time", a.format(new Date(System.currentTimeMillis())));
-    localHashMap.put("libName", paramString);
-    localHashMap.put("costTime", paramLong + "");
-    localHashMap.put("processName", BaseApplicationImpl.processName);
-    return localHashMap;
+    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Bbki = parambbki;
   }
   
-  private void a(boolean paramBoolean, int paramInt, HashMap<String, String> paramHashMap)
+  private void a(View paramView, int paramInt1, int paramInt2, Interpolator paramInterpolator, boolean paramBoolean)
   {
-    axrn.a(paramHashMap, paramInt);
-    axrn localaxrn = axrn.a(BaseApplicationImpl.getContext());
-    if (paramBoolean)
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt1, paramInt2 });
+    localValueAnimator.setDuration(200L);
+    localValueAnimator.setInterpolator(paramInterpolator);
+    localValueAnimator.addUpdateListener(new bbkf(this, paramView));
+    localValueAnimator.addListener(new bbkg(this, paramBoolean, paramView, paramInt2));
+    localValueAnimator.start();
+  }
+  
+  private void a(bbiq parambbiq, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 100 });; localValueAnimator = ValueAnimator.ofInt(new int[] { 100, 0 }))
     {
-      localaxrn.a("", "loadSoNew", false, 0L, 0L, paramHashMap, "");
+      localValueAnimator.setDuration(200L);
+      localValueAnimator.setInterpolator(new LinearInterpolator());
+      localValueAnimator.addUpdateListener(new bbkh(this, parambbiq));
+      localValueAnimator.start();
       return;
     }
-    localaxrn.a("", "loadSoOld", false, 0L, 0L, paramHashMap, "");
   }
   
-  public void report(int paramInt, String paramString, long paramLong)
+  private void b()
   {
-    HashMap localHashMap1 = a(paramString, paramLong);
-    HashMap localHashMap2 = a(paramString, paramLong);
-    boolean bool;
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+    GridView localGridView = (GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377135);
+    this.jdField_a_of_type_Bbkc = new bbkc(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    localGridView.setAdapter(this.jdField_a_of_type_Bbkc);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bbiq = null;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public boolean a(bbiq parambbiq, bbkk parambbkk)
+  {
+    b();
     int i;
-    if (((paramInt & 0x2) == 2) || ((paramInt & 0x40000) == 262144))
+    if (this.jdField_a_of_type_Bbiq != null)
     {
-      a(true, 0, localHashMap1);
-      bool = true;
-      QLog.i("SoLoadUtilNew", 1, "load " + paramString + " result:" + bool + " code " + paramInt);
-      if ((paramInt & 0x2) != 2) {
-        break label189;
+      i = ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams()).height;
+      if (this.jdField_a_of_type_Bbiq == parambbiq)
+      {
+        a(parambbiq, false);
+        a(this.jdField_a_of_type_AndroidViewView, i, 0, new DecelerateInterpolator(), true);
+        this.jdField_a_of_type_Bbiq = null;
+        return false;
       }
-      if (((paramInt & 0x8000) != 32768) || ((paramInt & 0x1000) != 4096) || ((paramInt & 0x800) != 0)) {
-        break label149;
-      }
-      i = 0;
+      a(this.jdField_a_of_type_Bbiq, false);
     }
     for (;;)
     {
-      a(false, i, localHashMap2);
-      return;
-      a(true, paramInt, localHashMap1);
-      bool = false;
-      break;
-      label149:
-      i = paramInt;
-      if ((paramInt & 0x200) == 512)
-      {
-        i = paramInt;
-        if ((paramInt & 0x40) == 0)
-        {
-          i = paramInt;
-          if ((paramInt & 0x8) == 0)
-          {
-            i = 0;
-            continue;
-            label189:
-            i = paramInt;
-            if ((paramInt & 0x40000) == 262144) {
-              i = 0;
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_Bbkc.a(parambbkk);
+      this.jdField_a_of_type_Bbiq = parambbiq;
+      int[] arrayOfInt = new int[2];
+      parambbiq.a.getLocationInWindow(arrayOfInt);
+      int j = (int)Math.ceil(parambbkk.a.size() / 3.0F);
+      j = xod.a(this.jdField_a_of_type_AndroidContentContext, j * 56 - 13 + 30);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      a(parambbiq, true);
+      a(this.jdField_a_of_type_AndroidViewView, i, j, new AccelerateInterpolator(), false);
+      return true;
+      i = 0;
     }
-  }
-  
-  public void reportThrowable(Throwable paramThrowable, String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramThrowable == null) || (!(paramThrowable instanceof UnsatisfiedLinkError)));
-      paramThrowable = paramThrowable.getMessage();
-    } while ((paramThrowable == null) || (paramThrowable.indexOf("too many libraries") < 0));
-    axrn.a(BaseApplicationImpl.getContext()).a("", "SoCountLimit", false, 0L, 0L, a(paramString, 0L), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbke
  * JD-Core Version:    0.7.0.1
  */

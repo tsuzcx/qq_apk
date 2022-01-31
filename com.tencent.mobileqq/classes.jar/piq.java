@@ -1,97 +1,52 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.util.NetworkState;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.1;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.2;
+import java.util.List;
+import mqq.util.WeakReference;
 
 public class piq
-  implements ViewBase.OnClickListener
+  implements pgx
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private SelectPositionModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule = owy.a().a();
+  private WeakReference<pir> jdField_a_of_type_MqqUtilWeakReference;
   
-  public piq(ArticleInfo paramArticleInfo, Context paramContext)
+  public piq(pir parampir)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule.a(this);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parampir);
   }
   
-  public static void a(ArticleInfo paramArticleInfo, int paramInt)
+  private void b(List<pio> paramList)
   {
-    int i = 1;
-    Object localObject1 = "";
-    for (;;)
-    {
-      try
-      {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("algorithm_id", paramArticleInfo.mAlgorithmID);
-        ((JSONObject)localObject2).put("folder_status", onh.d);
-        ((JSONObject)localObject2).put("feeds_type", paramInt);
-        ((JSONObject)localObject2).put("time", System.currentTimeMillis());
-        ((JSONObject)localObject2).put("channel_id", paramArticleInfo.mChannelID);
-        if (!NetworkState.isWifiConn()) {
-          continue;
-        }
-        paramInt = 2;
-        ((JSONObject)localObject2).put("network_type", paramInt);
-        ((JSONObject)localObject2).put("feeds_source", onh.c(paramArticleInfo));
-        ((JSONObject)localObject2).put("imei", onh.f());
-        ((JSONObject)localObject2).put("imsi", onh.g());
-        if (!TextUtils.isEmpty(paramArticleInfo.innerUniqueID)) {
-          ((JSONObject)localObject2).put("rowkey", paramArticleInfo.innerUniqueID);
-        }
-        ((JSONObject)localObject2).put("comment", paramArticleInfo.mSocialFeedInfo.d);
-        if (bhvy.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
-          continue;
-        }
-        paramInt = i;
-        ((JSONObject)localObject2).put("reddot_style", paramInt);
-        ((JSONObject)localObject2).put("tab_source", onh.d());
-        ((JSONObject)localObject2).put("kandian_mode", "" + onh.e());
-        localObject2 = ((JSONObject)localObject2).toString();
-        localObject1 = localObject2;
-      }
-      catch (JSONException localJSONException)
-      {
-        Object localObject2;
-        String str2;
-        localJSONException.printStackTrace();
-        continue;
-        String str1 = paramArticleInfo.mArticleID + "";
-        continue;
-      }
-      if ((!ram.a(paramArticleInfo)) && (!ram.i(paramArticleInfo)) && (!ram.j(paramArticleInfo)) && (!ram.k(paramArticleInfo))) {
-        continue;
-      }
-      localObject2 = "0";
-      str2 = "0X8009492";
-      if (paramArticleInfo.mChannelID == 70L) {
-        str2 = "0X8009488";
-      }
-      nol.a(null, onh.c(paramArticleInfo), str2, str2, 0, 0, String.valueOf(paramArticleInfo.mFeedId), (String)localObject2, "" + paramArticleInfo.mStrategyId, (String)localObject1, false);
-      return;
-      paramInt = 1;
-      continue;
-      paramInt = 0;
+    pir localpir = (pir)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((localpir != null) && (paramList != null)) {
+      localpir.a(paramList);
     }
   }
   
-  public void onClick(ViewBase paramViewBase)
+  public void a()
   {
-    int i = onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    osg.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mExtraBiuBriefInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, i);
+    SelectPositionModule localSelectPositionModule = owy.a().a();
+    if (localSelectPositionModule != null) {
+      b(localSelectPositionModule.a());
+    }
+  }
+  
+  public void a(SelectPositionModule.PositionData paramPositionData)
+  {
+    bfrq.a().post(new SelectCityPresenter.2(this, paramPositionData));
+  }
+  
+  public void a(List<pio> paramList)
+  {
+    bfrq.a().post(new SelectCityPresenter.1(this, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     piq
  * JD-Core Version:    0.7.0.1
  */

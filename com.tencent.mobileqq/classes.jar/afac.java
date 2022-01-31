@@ -1,55 +1,41 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
+import android.text.InputFilter;
+import android.text.Spanned;
 
-public class afac
+class afac
+  implements InputFilter
 {
-  public int a;
-  public afad a;
-  @Nullable
-  public afaj a;
-  @Nullable
-  public Drawable a;
-  public String a;
-  public boolean a;
-  @Nullable
-  public Drawable b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
-  public String f;
-  public String g;
+  afac(afab paramafab) {}
   
-  public void a(afac paramafac)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_JavaLangString = paramafac.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramafac.jdField_b_of_type_JavaLangString;
-    this.c = paramafac.c;
-    this.jdField_e_of_type_JavaLangString = paramafac.jdField_e_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramafac.jdField_a_of_type_Int;
-    this.jdField_d_of_type_JavaLangString = paramafac.jdField_d_of_type_JavaLangString;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramafac.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_b_of_type_Boolean = paramafac.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Afad = paramafac.jdField_a_of_type_Afad;
-    this.jdField_a_of_type_Afaj = paramafac.jdField_a_of_type_Afaj;
-    this.jdField_a_of_type_Boolean = paramafac.jdField_a_of_type_Boolean;
-    this.jdField_d_of_type_Boolean = paramafac.jdField_d_of_type_Boolean;
-    this.jdField_e_of_type_Boolean = paramafac.jdField_e_of_type_Boolean;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramafac.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public String toString()
-  {
-    return "ZhituPicData{url='" + this.jdField_a_of_type_JavaLangString + '\'' + ", path='" + this.jdField_b_of_type_JavaLangString + '\'' + ", originPath='" + this.c + '\'' + ", drawTextParam=" + this.jdField_a_of_type_Afaj + ", inCache=" + this.jdField_a_of_type_Boolean + ", reqKey='" + this.jdField_d_of_type_JavaLangString + '\'' + ", idxInRes=" + this.jdField_a_of_type_Int + ", pic_md5='" + this.jdField_e_of_type_JavaLangString + '\'' + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", isGif=" + this.jdField_b_of_type_Boolean + ", reportData=" + this.jdField_a_of_type_Afad + '}';
+    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
+    if (paramInt3 <= 0)
+    {
+      afab.a(this.a);
+      return "";
+    }
+    if (paramInt3 >= paramInt2 - paramInt1) {
+      return null;
+    }
+    paramInt3 += paramInt1;
+    paramInt2 = paramInt3;
+    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    {
+      paramInt3 -= 1;
+      paramInt2 = paramInt3;
+      if (paramInt3 == paramInt1)
+      {
+        afab.a(this.a);
+        return "";
+      }
+    }
+    afab.a(this.a);
+    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afac
  * JD-Core Version:    0.7.0.1
  */

@@ -1,96 +1,116 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public abstract class mxj
-  implements BusinessObserver
+class mxj
+  implements ITransactionCallback
 {
-  public boolean a;
-  public int b;
-  public WeakReference<QQAppInterface> b;
+  long jdField_a_of_type_Long = 0L;
   
-  public mxj()
+  mxj(mxi parammxi, String paramString, long paramLong, byte[] paramArrayOfByte, mxk parammxk) {}
+  
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.a = true;
+    QLog.w(this.jdField_a_of_type_Mxi.jdField_a_of_type_JavaLangString, 1, "onFailed, sessionId[" + this.jdField_a_of_type_JavaLangString + "], retCode[" + paramInt + "]");
+    paramArrayOfByte = bdcv.a(this.jdField_a_of_type_ArrayOfByte);
+    this.jdField_a_of_type_Mxk.a(paramInt, this.jdField_a_of_type_JavaLangString, "", paramArrayOfByte);
   }
   
-  public mxj(boolean paramBoolean)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.a = paramBoolean;
-  }
-  
-  private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (!paramBoolean) {
-      a(-1, null, paramBundle);
+    String str2 = "";
+    String str1;
+    if (paramArrayOfByte != null) {
+      str1 = str2;
     }
-    label172:
-    do
+    for (;;)
     {
-      for (;;)
+      int i;
+      try
       {
-        return;
-        Object localObject = paramBundle.getByteArray("data");
-        if (this.jdField_b_of_type_Int != 1) {
-          break label172;
+        localObject2 = new Bdh_extinfo.CommFileExtRsp();
+        str1 = str2;
+        ((Bdh_extinfo.CommFileExtRsp)localObject2).mergeFrom(paramArrayOfByte);
+        str1 = str2;
+        str2 = ((Bdh_extinfo.CommFileExtRsp)localObject2).bytes_download_url.get().toStringUtf8();
+        str1 = str2;
+        boolean bool = TextUtils.isEmpty(str2);
+        if (!bool) {
+          continue;
         }
-        oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        i = -10010;
+        str1 = str2;
+      }
+      catch (Exception localException2)
+      {
+        Object localObject2;
+        StringBuilder localStringBuilder;
+        i = -10012;
+        continue;
+        paramArrayOfByte = null;
+        continue;
+      }
+      str2 = bdcv.a(this.jdField_a_of_type_ArrayOfByte);
+      localObject2 = this.jdField_a_of_type_Mxi.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder().append("onSuccess, sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], respData[");
+      Object localObject1;
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length);
+        QLog.w((String)localObject2, 1, paramArrayOfByte + "], retCode[" + i + "], md5[" + str2 + "], url[" + str1 + "]");
+        AudioHelper.a(this.jdField_a_of_type_Mxi.jdField_a_of_type_JavaLangString, paramHashMap, false);
+        this.jdField_a_of_type_Mxk.a(i, this.jdField_a_of_type_JavaLangString, str1, str2);
+        return;
         try
         {
-          localObject = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom((byte[])localObject);
-          if ((((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() == 0) || (!((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.has()) || (!a(-1, ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get(), paramBundle))) {
-            if ((localObject == null) || (!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
-            {
-              a(-1, null, paramBundle);
-              return;
-            }
+          if (QLog.isDevelopLevel()) {
+            QLog.w(this.jdField_a_of_type_Mxi.jdField_a_of_type_JavaLangString, 1, "onSuccess, sessionId[" + this.jdField_a_of_type_JavaLangString + "], 原始url[" + str2 + "]");
           }
+          str1 = bhos.a(str2);
+          i = 0;
         }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        catch (Exception localException1)
         {
-          a(-1, null, paramBundle);
-          return;
+          i = -10011;
+          localObject1 = str2;
         }
       }
-      a(localInvalidProtocolBufferMicroException.uint32_result.get(), localInvalidProtocolBufferMicroException.bytes_bodybuffer.get().toByteArray(), paramBundle);
-      return;
-    } while (this.jdField_b_of_type_Int != 2);
-    a(0, localInvalidProtocolBufferMicroException, paramBundle);
-  }
-  
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
-  
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    return false;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (this.a)
-    {
-      a(paramInt, paramBoolean, paramBundle);
-      return;
+      else
+      {
+        i = 0;
+        localObject1 = localException2;
+      }
     }
-    ThreadManager.post(new ProtoUtils.TroopProtocolObserver.1(this, paramInt, paramBoolean, paramBundle), 5, null, false);
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    QLog.w(this.jdField_a_of_type_Mxi.jdField_a_of_type_JavaLangString, 1, "onTransStart, sessionId[" + this.jdField_a_of_type_JavaLangString + "]");
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      long l = System.currentTimeMillis();
+      if (this.jdField_a_of_type_Long < l)
+      {
+        QLog.w(this.jdField_a_of_type_Mxi.jdField_a_of_type_JavaLangString, 1, "onUpdateProgress, sessionId[" + this.jdField_a_of_type_JavaLangString + "], transferedSize[" + paramInt + "], totalSize[" + this.b + "]");
+        this.jdField_a_of_type_Long = (l + 2000L);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,39 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopTabFragment;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.smtt.sdk.WebView;
 
 public class nvj
-  implements anyg
+  extends nvi
 {
-  public nvj(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public void a(anyh paramanyh)
+  public nvj(EcshopTabFragment paramEcshopTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView, String paramString)
   {
-    if ((paramanyh instanceof aobp))
-    {
-      paramanyh = (aobp)paramanyh;
-      if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
-        ((ReadInJoyDeliverUGCActivity)this.a).a(paramanyh);
-      }
-      return;
-    }
-    ReadInJoyBaseDeliverActivity.a(this.a.app, paramanyh, this.a.a);
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView, paramString);
   }
   
-  public void a(anyh paramanyh1, anyh paramanyh2, Drawable paramDrawable) {}
-  
-  public boolean a(anyh paramanyh)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    return true;
+    super.onPageFinished(paramWebView, paramString);
+    EcshopTabFragment.a(this.a).setVisibility(0);
   }
   
-  public void b()
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (this.a.a.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
   
-  public void b(anyh paramanyh) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvj
  * JD-Core Version:    0.7.0.1
  */

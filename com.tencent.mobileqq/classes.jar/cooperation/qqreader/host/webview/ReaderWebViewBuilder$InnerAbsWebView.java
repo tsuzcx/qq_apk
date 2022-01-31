@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bcaz;
+import beaa;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
 
 class ReaderWebViewBuilder$InnerAbsWebView
-  extends bcaz
+  extends beaa
 {
   private boolean jdField_a_of_type_Boolean;
   
@@ -78,7 +78,7 @@ class ReaderWebViewBuilder$InnerAbsWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.host.webview.ReaderWebViewBuilder.InnerAbsWebView
  * JD-Core Version:    0.7.0.1
  */

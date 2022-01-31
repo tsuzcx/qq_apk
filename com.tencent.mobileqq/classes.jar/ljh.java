@@ -1,28 +1,123 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectOperateManager;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class ljh
 {
-  public static void a()
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ljg[] jdField_a_of_type_ArrayOfLjg = new ljg[14];
+  
+  public ljh(VideoAppInterface paramVideoAppInterface)
   {
-    a("0X8009850");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    a(4);
+    a(5);
+    a(12);
+    a(10);
   }
   
-  static void a(String paramString)
+  public ljg a(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("VoiceRecogReport", 1, "report, key[" + paramString + "]");
+    Object localObject1 = this.jdField_a_of_type_ArrayOfLjg[paramInt];
+    if (localObject1 != null) {
+      return localObject1;
     }
-    axqy.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", null, null);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      ljg localljg = this.jdField_a_of_type_ArrayOfLjg[paramInt];
+      localObject1 = localljg;
+      if (localljg == null)
+      {
+        localljg = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
+        localObject1 = localljg;
+        if (localljg != null)
+        {
+          this.jdField_a_of_type_ArrayOfLjg[paramInt] = localljg;
+          localObject1 = localljg;
+        }
+      }
+      return localObject1;
+    }
   }
   
-  public static void b()
+  protected ljg a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    a("0X8009851");
+    Object localObject = null;
+    long l1 = System.currentTimeMillis();
+    switch (paramInt)
+    {
+    case 9: 
+    default: 
+      lek.c("BusinessManagerFactory", "error-->create Manager unknown name :" + paramInt);
+      paramVideoAppInterface = localObject;
+    }
+    for (;;)
+    {
+      if (paramVideoAppInterface != null) {
+        paramVideoAppInterface.a();
+      }
+      long l2 = System.currentTimeMillis();
+      lek.c("BusinessManagerFactory", "create Manager,cost time:" + (l2 - l1));
+      return paramVideoAppInterface;
+      paramVideoAppInterface = new lls(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new ljs(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lkt(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lkz(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new llc(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lju(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new AVRedPacketManager(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new mrt(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new EffectOperateManager(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new llj(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lli(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new ljq(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lkj(paramVideoAppInterface);
+    }
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt >= 0) && (paramInt < 14) && (!ljg.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) && (a(paramInt).a(paramString))) {
+      ljg.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), paramInt, true);
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramInt >= 0)
+    {
+      bool1 = bool2;
+      if (paramInt < 14)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_ArrayOfLjg[paramInt] != null) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljh
  * JD-Core Version:    0.7.0.1
  */

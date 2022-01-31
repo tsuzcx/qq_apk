@@ -1,23 +1,20 @@
-public class nwp
+import com.tencent.biz.widgets.TabLayout;
+
+class nwp
+  implements bhtl
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  nwp(nwm paramnwm) {}
   
-  public nwp(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    if (paramInt == 4098) {
+      nwm.a(this.a).setOverScrollMode(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwp
  * JD-Core Version:    0.7.0.1
  */

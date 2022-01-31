@@ -1,128 +1,180 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import java.lang.ref.WeakReference;
 
 public class akvh
+  implements agvy
 {
-  static final String jdField_a_of_type_JavaLangString = akvh.class.getSimpleName();
-  private final ConcurrentHashMap<String, byte[]> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
+  public RelativeLayout a;
+  public TextView a;
+  public WeakReference<Context> a;
+  private Animation b;
+  public RelativeLayout b;
+  public TextView b;
+  public RelativeLayout c;
   
-  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public akvh(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    for (;;)
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-1);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = new RelativeLayout((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    paramContext = new RelativeLayout.LayoutParams(-1, aekt.a(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(16.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131702500));
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(aekt.a(8.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    paramOnClickListener = a(2130838408);
+    paramOnClickListener.setBounds(0, 0, paramOnClickListener.getIntrinsicWidth(), paramOnClickListener.getIntrinsicHeight());
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramOnClickListener, null, null, null);
+    paramContext = new RelativeLayout.LayoutParams(-2, aekt.a(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    paramContext.addRule(15);
+    paramContext.leftMargin = aekt.a(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    paramContext.addRule(9);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
+    Object localObject = new ImageView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(15);
+    localLayoutParams.addRule(11);
+    localLayoutParams.rightMargin = aekt.a(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    paramContext = new StateListDrawable();
+    Drawable localDrawable1 = a(2130838507);
+    Drawable localDrawable2 = a(2130838508);
+    paramContext.addState(new int[] { 16842919, 16842910 }, localDrawable2);
+    paramContext.addState(new int[0], localDrawable1);
+    ((ImageView)localObject).setImageDrawable(paramContext);
+    ((ImageView)localObject).setDuplicateParentStateEnabled(true);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView((View)localObject, localLayoutParams);
+    this.c = new RelativeLayout((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    localObject = new RelativeLayout.LayoutParams(-1, aekt.a(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.c, (ViewGroup.LayoutParams)localObject);
+    this.jdField_b_of_type_AndroidWidgetTextView = new TextView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
+    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131702501));
+    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(aekt.a(8.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(paramOnClickListener, null, null, null);
+    paramOnClickListener = new RelativeLayout.LayoutParams(-2, aekt.a(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    paramOnClickListener.addRule(15);
+    paramOnClickListener.leftMargin = aekt.a(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    paramOnClickListener.addRule(9);
+    this.c.addView(this.jdField_b_of_type_AndroidWidgetTextView, paramOnClickListener);
+    paramOnClickListener = new ImageView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    localObject = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject).addRule(15);
+    ((RelativeLayout.LayoutParams)localObject).addRule(11);
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = aekt.a(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    paramOnClickListener.setImageDrawable(paramContext);
+    paramOnClickListener.setDuplicateParentStateEnabled(true);
+    this.c.addView(paramOnClickListener, (ViewGroup.LayoutParams)localObject);
+    this.c.setVisibility(4);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -1.0F, 1, 0.0F);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(500L);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(false);
+    paramContext = new AlphaAnimation(0.0F, 1.0F);
+    paramContext.setDuration(500L);
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(paramContext);
+    paramContext = new ScaleAnimation(0.8F, 1.0F, 0.8F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramContext.setDuration(500L);
+    paramContext.setInterpolator(new OvershootInterpolator(1.3F));
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(paramContext);
+  }
+  
+  public int a()
+  {
+    return 40;
+  }
+  
+  public Drawable a(int paramInt)
+  {
+    try
     {
-      return;
-      if (!TextUtils.isEmpty(paramString)) {
-        try
-        {
-          paramString = String.format("%s_%s_%s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramArrayOfByte);
-          if (QLog.isColorLevel())
-          {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("cacheToken key: %s, token_len: %s", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.length) }));
-            return;
-          }
-        }
-        catch (Throwable paramString)
-        {
-          paramString.printStackTrace();
-        }
-      }
+      Drawable localDrawable = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDrawable(paramInt);
+      return localDrawable;
+    }
+    catch (Throwable localThrowable)
+    {
+      ColorDrawable localColorDrawable = new ColorDrawable(-1);
+      localThrowable.printStackTrace();
+      QLog.e("CmGameTipsBar", 2, localThrowable.getMessage());
+      return localColorDrawable;
     }
   }
   
-  /* Error */
-  public byte[] a(String paramString, int paramInt1, int paramInt2)
+  public View a(Object... paramVarArgs)
   {
-    // Byte code:
-    //   0: ldc 40
-    //   2: iconst_3
-    //   3: anewarray 4	java/lang/Object
-    //   6: dup
-    //   7: iconst_0
-    //   8: aload_1
-    //   9: aastore
-    //   10: dup
-    //   11: iconst_1
-    //   12: iload_2
-    //   13: invokestatic 46	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   16: aastore
-    //   17: dup
-    //   18: iconst_2
-    //   19: iload_3
-    //   20: invokestatic 46	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   23: aastore
-    //   24: invokestatic 52	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   27: astore 4
-    //   29: aload_0
-    //   30: getfield 29	akvh:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   33: aload 4
-    //   35: invokevirtual 76	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   38: checkcast 78	[B
-    //   41: astore_1
-    //   42: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   45: ifeq +65 -> 110
-    //   48: getstatic 18	akvh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   51: astore 5
-    //   53: aload_1
-    //   54: ifnonnull +34 -> 88
-    //   57: iconst_0
-    //   58: istore_2
-    //   59: aload 5
-    //   61: iconst_2
-    //   62: ldc 80
-    //   64: iconst_2
-    //   65: anewarray 4	java/lang/Object
-    //   68: dup
-    //   69: iconst_0
-    //   70: aload 4
-    //   72: aastore
-    //   73: dup
-    //   74: iconst_1
-    //   75: iload_2
-    //   76: invokestatic 46	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   79: aastore
-    //   80: invokestatic 52	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   83: invokestatic 68	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   86: aload_1
-    //   87: areturn
-    //   88: aload_1
-    //   89: arraylength
-    //   90: istore_2
-    //   91: goto -32 -> 59
-    //   94: astore 4
-    //   96: aconst_null
-    //   97: astore_1
-    //   98: aload 4
-    //   100: invokevirtual 71	java/lang/Throwable:printStackTrace	()V
-    //   103: aload_1
-    //   104: areturn
-    //   105: astore 4
-    //   107: goto -9 -> 98
-    //   110: aload_1
-    //   111: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	112	0	this	akvh
-    //   0	112	1	paramString	String
-    //   0	112	2	paramInt1	int
-    //   0	112	3	paramInt2	int
-    //   27	44	4	str1	String
-    //   94	5	4	localThrowable1	Throwable
-    //   105	1	4	localThrowable2	Throwable
-    //   51	9	5	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   0	42	94	java/lang/Throwable
-    //   42	53	105	java/lang/Throwable
-    //   59	86	105	java/lang/Throwable
-    //   88	91	105	java/lang/Throwable
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.reset();
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.c.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation.reset();
+    this.c.clearAnimation();
+    this.c.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 15;
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation.reset();
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+    this.c.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.reset();
+    this.c.clearAnimation();
+    this.c.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvh
  * JD-Core Version:    0.7.0.1
  */

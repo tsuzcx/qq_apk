@@ -1,27 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.VideoUrl;
+import android.widget.NumberPicker;
+import android.widget.NumberPicker.OnValueChangeListener;
 
-public final class bhfp
-  implements Parcelable.Creator<VideoUrl>
+class bhfp
+  implements NumberPicker.OnValueChangeListener
 {
-  public VideoUrl a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  
+  public bhfp(bhfo parambhfo, int paramInt)
   {
-    VideoUrl localVideoUrl = new VideoUrl();
-    localVideoUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localVideoUrl.jdField_a_of_type_Int = paramParcel.readInt();
-    localVideoUrl.b = paramParcel.readInt();
-    return localVideoUrl;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public VideoUrl[] a(int paramInt)
+  public void onValueChange(NumberPicker paramNumberPicker, int paramInt1, int paramInt2)
   {
-    return new VideoUrl[paramInt];
+    if ((bhfo.a(this.jdField_a_of_type_Bhfo) != null) && (bhfo.a(this.jdField_a_of_type_Bhfo).length > this.jdField_a_of_type_Int))
+    {
+      bhfo.a(this.jdField_a_of_type_Bhfo)[this.jdField_a_of_type_Int] = paramInt2;
+      bhfo.a(this.jdField_a_of_type_Bhfo).onValChange(this.jdField_a_of_type_Int, paramInt2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhfp
  * JD-Core Version:    0.7.0.1
  */

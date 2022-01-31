@@ -3,8 +3,8 @@ package dov.com.qq.im.capture.music;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import bfob;
-import bjdx;
+import bhow;
+import blpi;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
@@ -13,10 +13,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class QQMusicPlayerScene
-  extends bjdx
+  extends blpi
   implements Handler.Callback
 {
-  bfob jdField_a_of_type_Bfob = new bfob(Looper.getMainLooper(), this);
+  bhow jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
   private Timer jdField_a_of_type_JavaUtilTimer;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask;
   private boolean jdField_a_of_type_Boolean = true;
@@ -302,7 +302,7 @@ public class QQMusicPlayerScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QQMusicPlayerScene
  * JD-Core Version:    0.7.0.1
  */

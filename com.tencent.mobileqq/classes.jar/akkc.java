@@ -1,20 +1,10 @@
-import android.os.Bundle;
-
-class akkc
-  extends ajxj
+public abstract interface akkc
 {
-  akkc(akka paramakka) {}
-  
-  protected void onAddFriendSecCheck(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    akka.a(this.a, paramBoolean2, paramBundle);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkc
  * JD-Core Version:    0.7.0.1
  */

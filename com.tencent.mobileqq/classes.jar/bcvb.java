@@ -1,28 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
+import android.graphics.Bitmap;
+import com.tencent.gdtad.util.GdtSmartBlur;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bcvb
-  implements ValueAnimator.AnimatorUpdateListener
+final class bcvb
+  implements DownloadParams.DecodeHandler
 {
-  public bcvb(QUSHalfScreenFloatView paramQUSHalfScreenFloatView, View paramView, int paramInt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
+    paramDownloadParams = paramDownloadParams.tag;
+    if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
     {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSHalfScreenFloatView.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSHalfScreenFloatView.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
-      }
+      int i = ((int[])(int[])paramDownloadParams)[0];
+      GdtSmartBlur.a().a(paramBitmap, i);
     }
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcvb
  * JD-Core Version:    0.7.0.1
  */

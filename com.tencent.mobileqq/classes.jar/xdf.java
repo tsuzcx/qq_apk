@@ -1,22 +1,40 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.graphics.Matrix;
+import android.graphics.Path;
 
-class xdf
-  implements DialogInterface.OnShowListener
+public class xdf
+  extends xct
 {
-  xdf(xdb paramxdb) {}
+  public Path a;
+  public int b;
+  public int c;
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public xdf(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
   {
-    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
+    super(paramInt1);
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public xdf(xct paramxct, float paramFloat)
+  {
+    super(paramxct.jdField_a_of_type_Int);
+    if ((paramxct instanceof xdf))
+    {
+      paramxct = (xdf)paramxct;
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(paramFloat, paramFloat);
+      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramxct.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+      this.jdField_a_of_type_Int = paramxct.jdField_a_of_type_Int;
+      this.b = paramxct.b;
+      this.c = ((int)(paramxct.c * paramFloat));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdf
  * JD-Core Version:    0.7.0.1
  */

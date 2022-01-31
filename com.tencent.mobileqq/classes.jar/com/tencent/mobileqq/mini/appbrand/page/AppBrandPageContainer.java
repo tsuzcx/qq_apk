@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -11,7 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
-import bcqf;
+import bepp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.WindowInfo;
@@ -93,11 +93,11 @@ public final class AppBrandPageContainer
       QLog.e("AppBrandPageContainer", 1, "executeDownSubPack return, activity is null or finishing.");
       return;
     }
-    bcqf localbcqf = new bcqf(this.appBrandRuntime.activity);
-    localbcqf.a(ajya.a(2131700599));
-    localbcqf.setCancelable(false);
-    localbcqf.show();
-    this.appBrandRuntime.apkgInfo.downloadSubPack(paramString1, new AppBrandPageContainer.1(this, paramString1, localWeakReference, paramString2, localbcqf));
+    bepp localbepp = new bepp(this.appBrandRuntime.activity);
+    localbepp.a(alpo.a(2131700968));
+    localbepp.setCancelable(false);
+    localbepp.show();
+    this.appBrandRuntime.apkgInfo.downloadSubPack(paramString1, new AppBrandPageContainer.1(this, paramString1, localWeakReference, paramString2, localbepp));
   }
   
   private AbsAppBrandPage getBrandPage()
@@ -353,7 +353,7 @@ public final class AppBrandPageContainer
       {
         localObject2 = (AbsAppBrandPage)((Iterator)localObject1).next();
         QLog.d("AppBrandPageContainer", 4, "navigateBack clearPage=" + localObject2);
-        Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.getAppLoaderManager().getContext(), 2130772257);
+        Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.getAppLoaderManager().getContext(), 2130772271);
         localAnimation.setDuration(200L);
         localAnimation.setAnimationListener(new AppBrandPageContainer.3(this, (AbsAppBrandPage)localObject2));
         ((AbsAppBrandPage)localObject2).startAnimation(localAnimation);
@@ -375,8 +375,8 @@ public final class AppBrandPageContainer
     QLog.i("miniapp-start", 1, "navigateTo url=" + paramString + "; aliveWebViewCount : " + BaseAppBrandWebview.aliveWebViewCount);
     if (BaseAppBrandWebview.aliveWebViewCount > 11)
     {
-      Toast.makeText(getContext(), ajya.a(2131700597), 0).show();
-      QLog.e("AppBrandPageContainer", 4, "打开WebView数量超过上限");
+      Toast.makeText(getContext(), alpo.a(2131700966), 0).show();
+      QLog.e("AppBrandPageContainer", 1, "打开WebView数量超过上限");
       return;
     }
     MiniProgramReporter.getInstance().getReportHandler().post(new AppBrandPageContainer.2(this));
@@ -545,7 +545,7 @@ public final class AppBrandPageContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer
  * JD-Core Version:    0.7.0.1
  */

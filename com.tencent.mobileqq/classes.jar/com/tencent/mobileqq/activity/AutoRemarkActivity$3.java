@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajxl;
+import aloz;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,7 +13,7 @@ class AutoRemarkActivity$3
   public void run()
   {
     if (TextUtils.isEmpty(this.this$0.a)) {}
-    while (((ajxl)this.this$0.app.getManager(51)).b(this.this$0.a) != null) {
+    while (((aloz)this.this$0.app.getManager(51)).b(this.this$0.a) != null) {
       return;
     }
     ((FriendListHandler)this.this$0.app.a(1)).b(this.this$0.a);
@@ -21,7 +21,7 @@ class AutoRemarkActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoRemarkActivity.3
  * JD-Core Version:    0.7.0.1
  */

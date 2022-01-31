@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/gfi" android:layout_width="fill_parent" android:layout_height="50.0dip" layout="@layout/a4h" />
-    <com.tencent.widget.pull2refresh.XRecyclerView android:orientation="vertical" android:id="@id/i4l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="50.0dip" />
+    <com.tencent.widget.pull2refresh.XRecyclerView android:orientation="vertical" android:id="@id/i4l" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <include android:id="@id/fm3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="50.0dip" layout="@layout/acb" />
     <include android:id="@id/eep" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="50.0dip" layout="@layout/acc" />
-    <ViewStub android:id="@id/hzq" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

@@ -1,141 +1,97 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
 public class bjyj
-  extends bjxl
 {
-  public SparseArray<teq> a;
-  
-  public bjyj(@NonNull bjxn parambjxn)
+  public static final AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    super(parambjxn);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(6);
-  }
-  
-  @NonNull
-  private List<Long> a(@NonNull List<String> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
+    if (paramBaseApplicationImpl == null) {
+      return null;
+    }
+    if ("troop_member_card_plugin.apk".equals(paramString)) {}
+    label158:
+    for (String str = "com.tencent.mobileqq.memcard.base.TroopMemberCardAppInterface";; str = null) {
       try
       {
-        localArrayList.add(Long.valueOf(Long.valueOf(str).longValue()));
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        ved.e("Q.qqstory.publish.edit.EditVideoPermission", "can't format uin:%s", new Object[] { str });
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void d()
-  {
-    Activity localActivity = a().getActivity();
-    if (localActivity != null)
-    {
-      Intent localIntent = new Intent(localActivity, ShareToActivity.class);
-      teq localteq = (teq)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Bjxn.a());
-      if (!teq.a(localteq)) {
-        localIntent.putStringArrayListExtra("share_to_group_key", new ArrayList(localteq.a));
-      }
-      localActivity.startActivityForResult(localIntent, 5555);
-    }
-  }
-  
-  private void j()
-  {
-    bjss localbjss = (bjss)super.a(bjss.class);
-    if (teq.a((teq)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Bjxn.a())))
-    {
-      localbjss.a(2130845934);
-      return;
-    }
-    localbjss.a(2130845935);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 5555)
-    {
-      if (paramInt2 == 1)
-      {
-        paramIntent = paramIntent.getStringArrayListExtra("share_to_group_key");
-        if (paramIntent != null) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Bjxn.a(), new teq(paramIntent));
+        for (;;)
+        {
+          Class localClass = Class.forName(str);
+          paramBaseApplicationImpl = localClass;
+          if (paramBaseApplicationImpl != null) {
+            break;
+          }
+          try
+          {
+            QLog.e("TroopMemCardLog", 1, "*createTroopMemcardAppInterface load class fail");
+            return null;
+          }
+          catch (ClassNotFoundException paramBaseApplicationImpl)
+          {
+            paramBaseApplicationImpl.printStackTrace();
+            return null;
+          }
+          if (!"troop_manage_plugin.apk".equals(paramString)) {
+            break label158;
+          }
+          str = "com.tencent.mobileqq.base.TroopManageAppInterface";
         }
       }
-      this.jdField_a_of_type_Bjxn.a(0);
-      j();
-    }
-  }
-  
-  public void a(int paramInt, @NonNull bkld parambkld)
-  {
-    super.a(paramInt, parambkld);
-    Object localObject = (teq)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (teq.a((teq)localObject)) {}
-    for (;;)
-    {
-      return;
-      localObject = a(((teq)localObject).a);
-      qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList;
-      if (((List)localObject).size() > 0)
+      catch (ClassNotFoundException localClassNotFoundException)
       {
-        localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
-        localVideoSpreadGroupList.group_list.set((List)localObject);
-        localVideoSpreadGroupList.visibility_type.set(2);
-        localVideoSpreadGroupList.setHasFlag(true);
+        for (;;)
+        {
+          paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, paramString);
+          paramBaseApplicationImpl = paramString.loadClass(str);
+          BasicClassTypeUtil.setClassLoader(true, paramString);
+        }
       }
-      for (parambkld.a.spreadGroupBytes = localVideoSpreadGroupList.toByteArray(); QLog.isColorLevel(); parambkld.a.spreadGroupBytes = null)
+      catch (IllegalArgumentException paramBaseApplicationImpl)
       {
-        QLog.d("zivonchen", 2, "editVideoPrePublish fragmentIndex = " + paramInt + ", shareGroupArray: " + parambkld.a.spreadGroupBytes);
-        return;
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+        if ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime))) {
+          break;
+        }
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+      }
+      catch (IllegalAccessException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (InstantiationException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (InvocationTargetException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (NoSuchMethodException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (Exception paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
       }
     }
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return super.a(paramMessage);
-      j();
-    }
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyj
  * JD-Core Version:    0.7.0.1
  */

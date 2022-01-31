@@ -1,62 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.view.View;
+import android.widget.TextView;
 
-public class tnb
-  extends sys<top>
+class tnb
+  implements bhqd
 {
-  public final List<String> a;
+  tnb(tna paramtna, stSimpleMetaPerson paramstSimpleMetaPerson) {}
   
-  public tnb(List<String> paramList)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = paramList;
-  }
-  
-  public String a()
-  {
-    return "StorySvc.get_video_tag_778";
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
-    try
+    if (!ndk.a(tna.a(this.jdField_a_of_type_Tna)))
     {
-      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
-      return new top(localRspStoryPlayerTagInfo);
+      bfhq.a().a(2131721476);
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        ved.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
-      }
+    tna.a(this.jdField_a_of_type_Tna).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
+    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
+    if ((tfw.a != null) && (tfw.a.poster != null)) {
+      tfw.a.poster.followStatus = 2;
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    localReqStoryPlayerTagInfo.client.set(2);
-    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.3.0"));
-    return localReqStoryPlayerTagInfo.toByteArray();
+    tna.a(this.jdField_a_of_type_Tna).setText("关注");
+    tna.a(this.jdField_a_of_type_Tna).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tnb
  * JD-Core Version:    0.7.0.1
  */

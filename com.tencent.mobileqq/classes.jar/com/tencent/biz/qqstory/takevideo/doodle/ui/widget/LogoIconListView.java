@@ -6,15 +6,15 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import com.tencent.widget.HorizontalListView;
-import vkk;
-import voq;
-import vpf;
-import vpl;
+import wzc;
+import xdi;
+import xdx;
+import xed;
 
 @TargetApi(14)
 public class LogoIconListView
   extends HorizontalListView
-  implements vpl
+  implements xed
 {
   private int a;
   
@@ -28,13 +28,13 @@ public class LogoIconListView
   
   public void b(int paramInt)
   {
-    vpf localvpf = (vpf)super.getAdapter();
-    if ((paramInt < 0) || (paramInt >= localvpf.getCount())) {
+    xdx localxdx = (xdx)super.getAdapter();
+    if ((paramInt < 0) || (paramInt >= localxdx.getCount())) {
       return;
     }
-    Object localObject = (voq)localvpf.getItem(paramInt);
+    Object localObject = (xdi)localxdx.getItem(paramInt);
     int i;
-    if ((localObject != null) && ("LocationFacePackage".equals(((voq)localObject).a())))
+    if ((localObject != null) && ("LocationFacePackage".equals(((xdi)localObject).a())))
     {
       if (DoodleLayout.a)
       {
@@ -44,13 +44,13 @@ public class LogoIconListView
     }
     else
     {
-      localvpf.a(paramInt);
-      i = localvpf.a();
+      localxdx.a(paramInt);
+      i = localxdx.a();
       if ((this.a >= super.getFirstVisiblePosition()) && (this.a <= super.getLastVisiblePosition())) {
-        vkk.a(super.getChild(this.a), 0.5F);
+        wzc.a(super.getChild(this.a), 0.5F);
       }
       if ((paramInt >= super.getFirstVisiblePosition()) && (paramInt <= super.getLastVisiblePosition())) {
-        vkk.a(super.getChild(paramInt), 1.0F);
+        wzc.a(super.getChild(paramInt), 1.0F);
       }
       if (paramInt > super.getFirstVisiblePosition()) {
         break label179;
@@ -73,7 +73,7 @@ public class LogoIconListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.widget.LogoIconListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity.photo;
 
 import android.content.Intent;
-import aunv;
-import auod;
-import bhwm;
+import awfc;
+import awfl;
+import bjxx;
 import com.tencent.device.datadef.DeviceInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 import java.util.ArrayList;
-import yah;
+import zpa;
 
 class SendPhotoTask$1
   implements Runnable
 {
-  SendPhotoTask$1(SendPhotoTask paramSendPhotoTask, yah paramyah, aunv paramaunv, BaseActivity paramBaseActivity) {}
+  SendPhotoTask$1(SendPhotoTask paramSendPhotoTask, zpa paramzpa, awfc paramawfc, BaseActivity paramBaseActivity) {}
   
   public void run()
   {
     try
     {
-      this.jdField_a_of_type_Yah.a(Long.parseLong(this.jdField_a_of_type_Aunv.a.c), "", "", "", 0, null);
-      DeviceInfo localDeviceInfo = this.jdField_a_of_type_Yah.a(Long.parseLong(this.jdField_a_of_type_Aunv.a.c));
-      Object localObject = new FileInfo(this.jdField_a_of_type_Aunv.a.g);
+      this.jdField_a_of_type_Zpa.a(Long.parseLong(this.jdField_a_of_type_Awfc.a.c), "", "", "", 0, null);
+      DeviceInfo localDeviceInfo = this.jdField_a_of_type_Zpa.a(Long.parseLong(this.jdField_a_of_type_Awfc.a.c));
+      Object localObject = new FileInfo(this.jdField_a_of_type_Awfc.a.g);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localObject);
       localObject = new Intent();
@@ -32,7 +32,7 @@ class SendPhotoTask$1
       ((Intent)localObject).putExtra("device_info", localDeviceInfo);
       ((Intent)localObject).putExtra("url", "http://qzs.qq.com/open/mobile/iot_print/html/printOpt.html");
       ((Intent)localObject).putExtra("filetype", "pic");
-      bhwm.a().a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
+      bjxx.a().a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
       return;
     }
     catch (Exception localException) {}
@@ -40,7 +40,7 @@ class SendPhotoTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SendPhotoTask.1
  * JD-Core Version:    0.7.0.1
  */

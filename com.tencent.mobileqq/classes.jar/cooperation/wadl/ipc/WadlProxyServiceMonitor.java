@@ -1,24 +1,24 @@
 package cooperation.wadl.ipc;
 
 import android.os.Bundle;
-import bdot;
-import bibz;
-import bici;
+import bfnq;
+import bkdv;
+import bkee;
 import com.tencent.qphone.base.util.QLog;
 
 public class WadlProxyServiceMonitor
-  implements bibz
+  implements bkdv
 {
   private static String jdField_a_of_type_JavaLangString = "WadlProxyServiceMonitor";
   private long jdField_a_of_type_Long = 10000L;
-  private bici jdField_a_of_type_Bici;
+  private bkee jdField_a_of_type_Bkee;
   private WadlProxyServiceMonitor.MonitorWorkingThread jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread;
   private volatile boolean jdField_a_of_type_Boolean;
   private long b;
   
-  public WadlProxyServiceMonitor(bici parambici)
+  public WadlProxyServiceMonitor(bkee parambkee)
   {
-    this.jdField_a_of_type_Bici = parambici;
+    this.jdField_a_of_type_Bkee = parambkee;
   }
   
   private boolean c()
@@ -31,7 +31,7 @@ public class WadlProxyServiceMonitor
     try
     {
       if (QLog.isColorLevel()) {
-        bdot.b(jdField_a_of_type_JavaLangString, "##@stopMonitoring(), isAnyTaskActive:" + this.jdField_a_of_type_Boolean);
+        bfnq.c(jdField_a_of_type_JavaLangString, "##@stopMonitoring(), isAnyTaskActive:" + this.jdField_a_of_type_Boolean);
       }
       if (this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread != null) {
         this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread.jdField_a_of_type_Boolean = false;
@@ -52,7 +52,7 @@ public class WadlProxyServiceMonitor
       return;
       this.jdField_a_of_type_Boolean = paramBundle.getBoolean("WADL_UNFINISHED_RUNING_TASK_FLAG");
     } while (!QLog.isColorLevel());
-    bdot.b(jdField_a_of_type_JavaLangString, "##@onReportFromDownloadTask(), isAnyTaskActive:" + this.jdField_a_of_type_Boolean);
+    bfnq.c(jdField_a_of_type_JavaLangString, "##@onReportFromDownloadTask(), isAnyTaskActive:" + this.jdField_a_of_type_Boolean);
   }
   
   public boolean a()
@@ -67,13 +67,13 @@ public class WadlProxyServiceMonitor
       try
       {
         if (QLog.isColorLevel()) {
-          bdot.b(jdField_a_of_type_JavaLangString, "##@startMonitoring()");
+          bfnq.c(jdField_a_of_type_JavaLangString, "##@startMonitoring()");
         }
         if (!b()) {
           continue;
         }
         if (QLog.isColorLevel()) {
-          bdot.b(jdField_a_of_type_JavaLangString, "##@startMonitoring():Monitor is running");
+          bfnq.c(jdField_a_of_type_JavaLangString, "##@startMonitoring():Monitor is running");
         }
       }
       catch (Throwable localThrowable)
@@ -100,7 +100,7 @@ public class WadlProxyServiceMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.wadl.ipc.WadlProxyServiceMonitor
  * JD-Core Version:    0.7.0.1
  */

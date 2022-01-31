@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.chathistory;
 
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import java.util.List;
 import mqq.os.MqqHandler;
 
@@ -21,7 +21,7 @@ class ChatHistoryBubbleListForTroopFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment.4
  * JD-Core Version:    0.7.0.1
  */

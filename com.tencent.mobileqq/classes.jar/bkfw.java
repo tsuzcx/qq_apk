@@ -1,75 +1,65 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
 
-public class bkfw
-  extends bkev
+final class bkfw
 {
-  public Path a;
-  ArrayList<bkfv> a;
-  public int b;
-  public int c;
+  private static String a = "PBSerialization-L";
   
-  public bkfw(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
+  public static bkfv a(byte[] paramArrayOfByte)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-    this.b = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public bkfw(bkev parambkev, float paramFloat)
-  {
-    super(parambkev.jdField_a_of_type_Int);
-    if ((parambkev instanceof bkfw))
+    Object localObject = new bkfu();
+    if (paramArrayOfByte.length < bkfu.d)
     {
-      parambkev = (bkfw)parambkev;
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(paramFloat, paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(parambkev.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-      this.jdField_a_of_type_Int = parambkev.jdField_a_of_type_Int;
-      this.b = parambkev.b;
-      this.jdField_c_of_type_Int = ((int)(parambkev.jdField_c_of_type_Int * paramFloat));
+      QLog.w(a, 1, "buffer length is short than 16!");
+      return null;
     }
-  }
-  
-  public JSONObject a()
-  {
+    ((bkfu)localObject).a(paramArrayOfByte);
+    if (paramArrayOfByte.length < ((bkfu)localObject).a())
+    {
+      QLog.w(a, 1, "buffer length is short!");
+      return null;
+    }
+    int i = ((bkfu)localObject).a() - ((bkfu)localObject).b() - bkfu.d;
+    int j = ((bkfu)localObject).b();
+    localObject = new byte[i];
+    byte[] arrayOfByte = new byte[j];
+    System.arraycopy(paramArrayOfByte, bkfu.d, localObject, 0, i);
+    System.arraycopy(paramArrayOfByte, i + bkfu.d, arrayOfByte, 0, j);
+    paramArrayOfByte = new WeiyunPB.MsgHead();
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("mode", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.b);
-      localJSONObject.put("lineWidth", this.jdField_c_of_type_Int);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        bkfv localbkfv = (bkfv)localIterator.next();
-        localJSONArray.put(localbkfv.jdField_d_of_type_Int);
-        localJSONArray.put(localbkfv.a);
-        localJSONArray.put(localbkfv.b);
-        if (localbkfv.jdField_d_of_type_Int == bkfv.jdField_c_of_type_Int)
-        {
-          localJSONArray.put(localbkfv.jdField_c_of_type_Float);
-          localJSONArray.put(localbkfv.jdField_d_of_type_Float);
-        }
-      }
-      localJSONObject.put("points", localJSONArray);
-      return localJSONObject;
+      paramArrayOfByte.mergeFrom((byte[])localObject);
+      paramArrayOfByte = new bkfv(paramArrayOfByte, arrayOfByte);
+      return paramArrayOfByte;
     }
-    catch (Exception localException) {}
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.e(a, 1, "throw InvalidProtocolBufferException.");
+    }
     return null;
+  }
+  
+  public static byte[] a(bkfv parambkfv)
+  {
+    byte[] arrayOfByte1 = parambkfv.a().toByteArray();
+    parambkfv = parambkfv.a();
+    int i = bkfu.d + arrayOfByte1.length + parambkfv.length;
+    Object localObject = new bkfu();
+    ((bkfu)localObject).b(parambkfv.length);
+    ((bkfu)localObject).a(i);
+    localObject = ((bkfu)localObject).a();
+    byte[] arrayOfByte2 = new byte[i];
+    System.arraycopy(localObject, 0, arrayOfByte2, 0, localObject.length);
+    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, localObject.length, arrayOfByte1.length);
+    i = localObject.length;
+    System.arraycopy(parambkfv, 0, arrayOfByte2, arrayOfByte1.length + i, parambkfv.length);
+    return arrayOfByte2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkfw
  * JD-Core Version:    0.7.0.1
  */

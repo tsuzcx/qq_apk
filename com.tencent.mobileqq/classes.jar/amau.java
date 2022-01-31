@@ -1,54 +1,48 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class amau
+  extends alko
 {
-  private static final amau jdField_a_of_type_Amau = new amau();
-  private int jdField_a_of_type_Int;
-  private final SparseArrayCompat<amag> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  
-  public static amau a()
+  public amau(QQAppInterface paramQQAppInterface)
   {
-    return jdField_a_of_type_Amau;
+    super(paramQQAppInterface);
   }
   
-  public int a(amag paramamag)
+  protected Class<? extends alkr> observerClass()
   {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
+    return amav.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {
+      notifyUI(1, false, null);
+    }
+    String str;
+    do
     {
-      do
+      return;
+      str = paramToServiceMsg.getServiceCmd();
+      if (TextUtils.isEmpty(str))
       {
-        this.jdField_a_of_type_Int += 1;
-      } while ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_Int) != null) || (this.jdField_a_of_type_Int == 0));
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_Int, paramamag);
-      int i = this.jdField_a_of_type_Int;
-      return i;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.delete(paramInt);
-      return;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      amag localamag = (amag)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt1);
-      if (localamag != null) {
-        localamag.a(paramInt1, paramInt2);
+        notifyUI(1, false, null);
+        return;
       }
-      return;
-    }
+      if ((str.compareTo("VipPayLogicServer.getCommPayInfo ") == 0) && (QLog.isColorLevel())) {
+        QLog.i("VIPRecommendPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
+      }
+    } while (str.compareTo("VipPayLogicServer.getCommPayInfo ") != 0);
+    notifyUI(1, true, paramObject);
+    bdcs.a(this.app.getCurrentAccountUin() + "_" + "VIPRecommendPayFile.txt", paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amau
  * JD-Core Version:    0.7.0.1
  */

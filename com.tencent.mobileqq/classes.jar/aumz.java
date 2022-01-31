@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.CompressInfo;
-
-public final class aumz
-  implements Parcelable.Creator<CompressInfo>
+public abstract interface aumz
 {
-  public CompressInfo a(Parcel paramParcel)
-  {
-    return new CompressInfo(paramParcel, null);
-  }
-  
-  public CompressInfo[] a(int paramInt)
-  {
-    return new CompressInfo[paramInt];
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aumz
  * JD-Core Version:    0.7.0.1
  */

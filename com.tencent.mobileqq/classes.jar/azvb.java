@@ -1,414 +1,100 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
+import android.view.View;
+import android.widget.ProgressBar;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public class azvb
-  implements azup, azus, azuz
+  extends azqj
 {
-  private int jdField_a_of_type_Int = 0;
-  protected long a;
-  private azsh jdField_a_of_type_Azsh;
-  private azuo jdField_a_of_type_Azuo;
-  private String jdField_a_of_type_JavaLangString;
-  private List<azva> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private UUID jdField_a_of_type_JavaUtilUUID;
-  private xbe jdField_a_of_type_Xbe = new azvc(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int = 102;
-  private long jdField_b_of_type_Long = 0L;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString;
-  private byte[] jdField_c_of_type_ArrayOfByte;
-  private int jdField_d_of_type_Int;
-  private long jdField_d_of_type_Long;
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
-  private String f;
-  private String g;
+  private int k;
   
-  public azvb(UUID paramUUID, long paramLong, String paramString1, String paramString2)
+  public azvb()
   {
-    this.jdField_a_of_type_JavaUtilUUID = paramUUID;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaUtilUUID.toString();
-    this.jdField_c_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.a = "progress";
   }
   
-  private void b(int paramInt)
+  public azvb(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.k = paramInt;
+    this.a = "progress";
   }
   
-  private void b(boolean paramBoolean)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onUploadSuc. bHit:" + paramBoolean);
-    b(5);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((azva)localIterator.next()).a(this.jdField_a_of_type_JavaUtilUUID, true, 0, this);
-    }
-  }
-  
-  private void c()
-  {
-    QQAppInterface localQQAppInterface = azsr.a();
-    if (localQQAppInterface == null)
+    if ((paramView != null) && ((paramView instanceof ProgressBar))) {}
+    for (paramContext = (ProgressBar)paramView;; paramContext = paramView)
     {
-      azst.a("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] reqUploadFile app=null");
-      this.jdField_b_of_type_Boolean = true;
-      c(bamw.w);
-      return;
+      paramContext.setTag(this);
+      paramContext.setProgress(this.k);
+      if (this.k == paramContext.getMax()) {
+        paramContext.setVisibility(8);
+      }
+      return paramContext;
+      paramView = new ProgressBar(paramContext, null, 16842872);
+      paramView.setId(2131377064);
+      paramView.setMax(100);
+      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130837923));
     }
-    azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] reqUploadFile");
-    this.jdField_a_of_type_Azsh = xam.a(localQQAppInterface, this.jdField_c_of_type_Long, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.jdField_b_of_type_Int, "", null, this.jdField_a_of_type_Xbe);
-    b(2);
-  }
-  
-  private void c(int paramInt)
-  {
-    azst.a("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onUploadErr ResultCode:" + paramInt);
-    this.jdField_a_of_type_Boolean = true;
-    b(6);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((azva)localIterator.next()).a(this.jdField_a_of_type_JavaUtilUUID, false, paramInt, this);
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_c_of_type_Long;
   }
   
   public String a()
   {
-    return this.jdField_d_of_type_JavaLangString;
+    return "Progress";
   }
   
-  public UUID a()
+  public void a(ObjectInput paramObjectInput)
   {
-    return this.jdField_a_of_type_JavaUtilUUID;
+    super.a(paramObjectInput);
+    this.k = paramObjectInput.readInt();
   }
   
-  public void a()
+  public void a(ObjectOutput paramObjectOutput)
   {
-    b(7);
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.k);
   }
   
-  public void a(int paramInt)
+  public void a(XmlSerializer paramXmlSerializer)
   {
-    if (this.jdField_a_of_type_Boolean)
+    paramXmlSerializer.startTag(null, "progress");
+    paramXmlSerializer.text(String.valueOf(this.k));
+    paramXmlSerializer.endTag(null, "progress");
+  }
+  
+  public boolean a(azsa paramazsa)
+  {
+    paramazsa = azqu.a(paramazsa);
+    try
     {
-      azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. but had stoped. mStatus:" + this.jdField_a_of_type_Int);
-      return;
+      this.k = Integer.valueOf(paramazsa).intValue();
+      return true;
     }
-    this.jdField_a_of_type_Boolean = true;
-    azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. mStatus:" + this.jdField_a_of_type_Int + " reason:" + paramInt);
-    if (this.jdField_a_of_type_Int == 1) {
-      if (this.jdField_b_of_type_Long != 0L)
-      {
-        azur.a().a(this.jdField_b_of_type_Long);
-        this.jdField_b_of_type_Long = 0L;
-      }
-    }
-    for (;;)
+    catch (NumberFormatException paramazsa)
     {
-      if (this.jdField_a_of_type_Azsh != null)
-      {
-        xam.a(azsr.a(), this.jdField_a_of_type_Azsh);
-        this.jdField_a_of_type_Azsh = null;
-      }
-      b(0);
-      return;
-      if (this.jdField_a_of_type_Int == 3) {
-        if (this.jdField_a_of_type_Azuo == null)
-        {
-          azst.b("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop upload. uploader=null");
-        }
-        else
-        {
-          this.jdField_a_of_type_Azuo.a();
-          this.jdField_a_of_type_Azuo = null;
-        }
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (paramLong <= this.jdField_a_of_type_Long) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (this.jdField_b_of_type_Long != paramLong1) {}
-    while ((paramLong2 == 0L) || (this.jdField_d_of_type_Long != 0L)) {
-      return;
-    }
-    this.jdField_d_of_type_Long = paramLong2;
-  }
-  
-  public void a(long paramLong1, String paramString, long paramLong2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, Bundle paramBundle, int paramInt)
-  {
-    if (this.jdField_b_of_type_Long != paramLong1) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      azst.b("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFileScanResult. but had stop");
-      return;
-    }
-    if (paramInt != 0)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      int i = bamw.l;
-      if (paramInt == -2) {
-        i = bamw.s;
-      }
       for (;;)
       {
-        azst.a("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFileScanResult. errCode:" + paramInt);
-        c(i);
-        return;
-        if (paramInt == -1) {
-          i = bamw.g;
-        } else if (paramInt == -4) {
-          i = bamw.jdField_e_of_type_Int;
-        } else if (paramInt == -3) {
-          i = bamw.j;
-        }
+        this.k = 0;
       }
     }
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0) || (paramArrayOfByte2 == null) || (paramArrayOfByte2.length == 0))
-    {
-      azst.a("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFileScanResult. md5 or sha is null");
-      this.jdField_b_of_type_Boolean = true;
-      c(bamw.l);
-      return;
-    }
-    azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFileScanResult. errCode:" + paramInt);
-    if ((paramLong2 != 0L) && (this.jdField_d_of_type_Long == 0L)) {
-      this.jdField_d_of_type_Long = paramLong2;
-    }
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    if (paramBundle != null)
-    {
-      this.jdField_c_of_type_Int = paramBundle.getInt("_with_", 0);
-      this.jdField_d_of_type_Int = paramBundle.getInt("_height_", 0);
-      this.jdField_e_of_type_Int = paramBundle.getInt("_duration_", 0);
-    }
-    c();
-  }
-  
-  public void a(azva paramazva)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramazva);
-  }
-  
-  public void a(String paramString)
-  {
-    azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onChangeUrl:" + paramString);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    QQAppInterface localQQAppInterface = azsr.a();
-    if (localQQAppInterface == null)
-    {
-      azst.a("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startUpload app=null");
-      this.jdField_b_of_type_Boolean = true;
-      c(bamw.w);
-      return;
-    }
-    if (this.jdField_a_of_type_Azuo != null)
-    {
-      this.jdField_a_of_type_Azuo.a();
-      this.jdField_a_of_type_Azuo.a(null);
-    }
-    azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startUpload firstIP=" + this.jdField_e_of_type_JavaLangString);
-    String str1 = HexUtil.bytes2HexStr(this.jdField_c_of_type_ArrayOfByte);
-    String str2 = HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte);
-    long l = azsr.a();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_e_of_type_JavaLangString);
-    if ((!paramBoolean) && (!TextUtils.isEmpty(this.f)))
-    {
-      localArrayList.add(this.f);
-      if (!apvm.b(localQQAppInterface)) {
-        break label307;
-      }
-      QLog.i("TroopFileUploadSimpleWorker<FileAssistant>", 1, "[Troop Upload] upload support IPv6. domain[" + this.f + "]");
-      localArrayList.add(0, this.f);
-    }
-    for (;;)
-    {
-      paramBoolean = bakx.a(localQQAppInterface);
-      this.jdField_a_of_type_Azuo = azvg.a(localQQAppInterface, l, this.jdField_c_of_type_JavaLangString, str1, str2, localArrayList, "/ftn_handler", paramBoolean, this.f);
-      if (this.jdField_a_of_type_Azuo != null) {
-        break;
-      }
-      this.jdField_b_of_type_Boolean = true;
-      c(bamw.w);
-      return;
-      label307:
-      localArrayList.add(this.f);
-    }
-    azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startUpload. nSessionId:" + l + " firstIP=" + this.jdField_e_of_type_JavaLangString);
-    this.jdField_a_of_type_Azuo.a(this);
-    this.jdField_a_of_type_Azuo.a();
-    b(3);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (!paramBoolean) {
-      return;
-    }
-    azst.a("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onHasErr. upload fail. errCode:" + paramInt + " transferedSize:" + paramLong + " rspHeader:" + paramString2 + " errMsg:" + paramString1);
-    this.jdField_b_of_type_Boolean = true;
-    c(paramInt);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (!paramBoolean) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    c(bamw.v);
-  }
-  
-  public boolean a()
-  {
-    azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] start filepath:" + this.jdField_c_of_type_JavaLangString);
-    if (!bbfj.g(BaseApplication.getContext()))
-    {
-      azst.a("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] no network");
-      b(6);
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    b();
-    return true;
   }
   
   public int b()
   {
-    return this.jdField_c_of_type_Int;
+    return this.k;
   }
   
-  public long b()
+  public void b(int paramInt)
   {
-    return this.jdField_d_of_type_Long;
-  }
-  
-  public String b()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  protected void b()
-  {
-    this.jdField_b_of_type_Long = azur.a().a(this.jdField_c_of_type_JavaLangString, this, null);
-    if (this.jdField_b_of_type_Long == 0L)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      azst.a("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] scanFile. startScan failed");
-      c(bamw.w);
-      return;
-    }
-    azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] scanFile. cookie:" + this.jdField_b_of_type_Long);
-    b(1);
-  }
-  
-  public void b(long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public int c()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return apgt.a(this.jdField_a_of_type_ArrayOfByte);
-  }
-  
-  public int d()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public String d()
-  {
-    return apgt.a(this.jdField_b_of_type_ArrayOfByte);
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    b(true);
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    b(false);
-  }
-  
-  public void h()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    azst.a("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onOutDate. upload fail");
-    c(206);
-  }
-  
-  public void i()
-  {
-    azst.c("TroopFileUploadSimpleWorker", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onRetrySend");
+    this.k = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azvb
  * JD-Core Version:    0.7.0.1
  */

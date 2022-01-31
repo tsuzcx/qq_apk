@@ -3,10 +3,10 @@ package com.tencent.qqmini.nativePlugins;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import behq;
-import bekr;
-import bgyp;
-import bgyw;
+import bgho;
+import bgkd;
+import bizm;
+import bizt;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
@@ -15,7 +15,7 @@ public class RefreshQzoneFeedPlugin
 {
   public static final String TAG = "RefreshQzoneFeedPlugin";
   
-  public void refreshQzoneFeed(bekr parambekr)
+  public void refreshQzoneFeed(bgkd parambgkd)
   {
     Activity localActivity = this.mMiniAppContext.a();
     if (localActivity != null)
@@ -24,8 +24,8 @@ public class RefreshQzoneFeedPlugin
       Bundle localBundle = new Bundle();
       localBundle.putString("cmd", "refreshFeed");
       localIntent.putExtras(localBundle);
-      bgyp.a(localActivity, bgyw.a(), localIntent);
-      parambekr.a();
+      bizm.a(localActivity, bizt.a(), localIntent);
+      parambgkd.a();
       if (QLog.isColorLevel()) {
         QLog.i("RefreshQzoneFeedPlugin", 2, "RefreshQzoneFeed");
       }
@@ -36,7 +36,7 @@ public class RefreshQzoneFeedPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.RefreshQzoneFeedPlugin
  * JD-Core Version:    0.7.0.1
  */

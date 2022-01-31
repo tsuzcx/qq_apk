@@ -1,48 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class agio
-  extends Handler
+  extends agij
 {
-  private WeakReference<BaseActivityView> a;
+  public AnimationView.AnimationInfo a;
+  public String b;
   
-  public agio(BaseActivityView paramBaseActivityView)
+  public agio(String paramString)
   {
-    this.a = new WeakReference(paramBaseActivityView);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    boolean bool = true;
-    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
-    if (localBaseActivityView == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (paramRedPacketInfo != null)
     {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localBaseActivityView.b(i, bool);
-        return;
-        bool = false;
-      }
-    case 2: 
-      localBaseActivityView.f();
-      return;
+      this.b = paramRedPacketInfo.background;
+      this.a = paramRedPacketInfo.animInfo;
     }
-    localBaseActivityView.i();
+  }
+  
+  public boolean a()
+  {
+    return (this.b != null) || (this.a != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agio
  * JD-Core Version:    0.7.0.1
  */

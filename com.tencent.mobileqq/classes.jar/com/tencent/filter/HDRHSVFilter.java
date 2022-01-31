@@ -42,16 +42,14 @@ public class HDRHSVFilter
     ((Frame)localObject2).unlock();
     this.stretech.setTextureParam(((Frame)localObject1).getTextureId(), 0);
     paramInt1 = (int)Math.ceil(Math.max(paramInt2, paramInt3) / 200.0D);
-    Object localObject3 = RendererUtils.saveTexture2QImage(((Frame)localObject1).getTextureId(), ((Frame)localObject1).width, ((Frame)localObject1).height);
-    localObject2 = ((QImage)localObject3).InplaceBlur8bitQImage(paramInt1, 10);
-    ((QImage)localObject3).Dispose();
-    GLSLRender.nativeTextImage((QImage)localObject2, this.tex[0]);
-    localObject3 = this.scaleUpFilter.RenderProcess(this.tex[0], ((QImage)localObject2).getWidth(), ((QImage)localObject2).getHeight(), paramInt2, paramInt3);
+    localObject2 = RendererUtils.saveTexture2QImage(((Frame)localObject1).getTextureId(), ((Frame)localObject1).width, ((Frame)localObject1).height);
+    QImage localQImage = ((QImage)localObject2).InplaceBlur8bitQImage(paramInt1, 10);
     ((QImage)localObject2).Dispose();
-    this.stretech.setTextureParam(((Frame)localObject3).getTextureId(), 1);
+    GLSLRender.nativeTextImage(localQImage, this.tex[0]);
+    localQImage.Dispose();
+    this.stretech.setTextureParam(this.tex[0], 1);
     localObject2 = this.stretech.RenderProcess(((Frame)localObject1).getTextureId(), paramInt2, paramInt3);
     ((Frame)localObject1).unlock();
-    ((Frame)localObject3).unlock();
     localObject1 = this.sharpen.RenderProcess(((Frame)localObject2).getTextureId(), paramInt2, paramInt3);
     ((Frame)localObject2).unlock();
     localObject2 = this.hsv2rgbFilter.RenderProcess(((Frame)localObject1).getTextureId(), paramInt2, paramInt3);
@@ -155,7 +153,7 @@ public class HDRHSVFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.filter.HDRHSVFilter
  * JD-Core Version:    0.7.0.1
  */

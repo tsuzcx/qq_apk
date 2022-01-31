@@ -1,92 +1,86 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.concurrent.atomic.AtomicBoolean;
+import cooperation.qzone.plugin.QZoneConnectProcessor.1;
+import cooperation.qzone.plugin.QZonePatchService;
+import java.util.LinkedList;
 
 public class bjki
-  extends bjdv
 {
-  public bjki(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  private static bjki jdField_a_of_type_Bjki;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private LinkedList<bjkj> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt)
+  public static bjki a()
   {
-    this.a.c(paramInt);
+    if (jdField_a_of_type_Bjki == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bjki == null) {
+        jdField_a_of_type_Bjki = new bjki();
+      }
+      return jdField_a_of_type_Bjki;
+    }
+    finally {}
   }
   
-  public void a(String paramString)
+  private void a(bjkj parambjkj)
   {
-    if ((MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).getLocalPath().equals(paramString)))
-    {
-      MusicFragmentProviderView.a(this.a).mProgress = -1;
-      if (this.a.a != null) {
-        this.a.a.sendEmptyMessage(3);
-      }
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("MusicFragmentProviderView", 2, "download onCancel");
+      QLog.i("QZonePluginManger", 2, "processInner, " + parambjkj + ", " + QZonePatchService.class);
     }
-    MusicFragmentProviderView.a(this.a).set(false);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    this.a.a(paramString, paramInt);
-    MusicFragmentProviderView.a(this.a).set(true);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (!paramBoolean)
+    if (QZonePatchService.class == null) {}
+    do
     {
-      this.a.b(-115);
-      MusicFragmentProviderView.a(this.a).set(false);
-    }
+      return;
+      Context localContext = bjkj.a(parambjkj).getApplicationContext();
+      Intent localIntent = new Intent(localContext, QZonePatchService.class);
+      try
+      {
+        localContext.bindService(localIntent, parambjkj, 1);
+        return;
+      }
+      catch (SecurityException parambjkj) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("QZonePluginManger", 2, "processInner", parambjkj);
   }
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  private void a(bjkj parambjkj, int paramInt)
   {
-    this.a.b(paramInt);
-    if ((paramBoolean) && (MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).getLocalPath().equals(paramString)))
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "processInnerDelay. " + paramInt + ", " + parambjkj);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QZoneConnectProcessor.1(this, parambjkj), paramInt);
+  }
+  
+  public void a(Context arg1, ServiceConnection paramServiceConnection, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "PluginRemoteProcessor.process, " + paramInt);
+    }
+    paramServiceConnection = new bjkj(this, paramServiceConnection, ???, paramInt);
+    if (this.jdField_a_of_type_Boolean)
     {
-      MusicFragmentProviderView.a(this.a).musicStart = 0;
-      MusicFragmentProviderView.a(this.a).musicEnd = (MusicFragmentProviderView.a(this.a).musicStart + MusicFragmentProviderView.a(this.a));
-      MusicFragmentProviderView.a(this.a).musicDuration = ((int)ShortVideoUtils.a(MusicFragmentProviderView.a(this.a).getLocalPath()));
-      if (MusicFragmentProviderView.a(this.a).musicEnd > MusicFragmentProviderView.a(this.a).musicDuration) {
-        MusicFragmentProviderView.a(this.a).musicEnd = MusicFragmentProviderView.a(this.a).musicDuration;
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "queue");
       }
-      MusicFragmentProviderView.a(this.a, MusicFragmentProviderView.a(this.a).musicStart);
-      MusicFragmentProviderView.b(this.a, MusicFragmentProviderView.a(this.a).musicEnd);
-      paramString = (QIMMusicConfigManager)bjav.a(2);
-      MusicItemInfo localMusicItemInfo = paramString.a(MusicFragmentProviderView.a(this.a).mItemId);
-      if (localMusicItemInfo != null)
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MusicFragmentProviderView", 2, "music exist name =" + localMusicItemInfo.mMusicName);
-        }
-        paramString.a(MusicFragmentProviderView.a(this.a), false);
-      }
-      if (this.a.a != null) {
-        this.a.a.sendEmptyMessage(2);
-      }
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder("onFinish musicStart=").append(MusicFragmentProviderView.a(this.a).musicStart);
-        paramString.append(" musicEnd=").append(MusicFragmentProviderView.a(this.a).musicEnd);
-        paramString.append(" musicDuration").append(MusicFragmentProviderView.a(this.a).musicDuration);
-        paramString.append(" premusicStart").append(MusicFragmentProviderView.b(this.a));
-        paramString.append(" premusicEnd").append(MusicFragmentProviderView.c(this.a));
-        paramString.append(" musicName").append(MusicFragmentProviderView.a(this.a).mMusicName);
-        QLog.d("MusicFragmentProviderView", 2, paramString.toString());
+        this.jdField_a_of_type_JavaUtilLinkedList.offer(paramServiceConnection);
+        return;
       }
     }
-    MusicFragmentProviderView.a(this.a).set(false);
+    this.jdField_a_of_type_Boolean = true;
+    a(paramServiceConnection);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjki
  * JD-Core Version:    0.7.0.1
  */

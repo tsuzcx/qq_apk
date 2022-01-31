@@ -1,81 +1,40 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import dov.com.tencent.mobileqq.activity.richmedia.view.ExtendEditText;
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 
-public class bksw
-  implements InputFilter
+class bksw
 {
-  private int jdField_a_of_type_Int;
-  
-  public bksw(ExtendEditText paramExtendEditText, int paramInt)
+  static CharSequence a(@NonNull bksh parambksh)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (parambksh.a) {
+      return parambksh.toString();
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    parambksh = parambksh.toString();
+    SpannableString localSpannableString = new SpannableString(parambksh);
+    localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambksh.length(), 17);
+    localSpannableStringBuilder.append(localSpannableString);
+    return localSpannableStringBuilder;
   }
   
-  private void a()
+  static CharSequence a(@NonNull bksi parambksi)
   {
-    if (ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText) != null) {
-      ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText).a(this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    aiau localaiau = ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText);
-    if (localaiau == null)
+    if ("failed".equals(parambksi.c))
     {
-      paramInt3 = paramSpanned.length() - (paramInt4 - paramInt3);
-      if (localaiau != null) {
-        break label95;
-      }
-      paramInt2 -= paramInt1;
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      parambksi = parambksi.toString();
+      SpannableString localSpannableString = new SpannableString(parambksi);
+      localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambksi.length(), 17);
+      localSpannableStringBuilder.append(localSpannableString);
+      return localSpannableStringBuilder;
     }
-    for (;;)
-    {
-      paramInt3 = this.jdField_a_of_type_Int - paramInt3;
-      if (paramInt3 > 0) {
-        break label109;
-      }
-      a();
-      return "";
-      paramInt3 = localaiau.a(paramSpanned, 0, paramInt3) + localaiau.a(paramSpanned, paramInt4, paramSpanned.length());
-      break;
-      label95:
-      paramInt2 = localaiau.a(paramCharSequence, paramInt1, paramInt2);
-    }
-    label109:
-    if (paramInt3 >= paramInt2) {
-      return null;
-    }
-    a();
-    if (localaiau != null)
-    {
-      paramInt3 = localaiau.b(paramCharSequence, paramInt1, paramInt1 + paramInt3);
-      paramInt2 = paramInt3;
-      if (paramInt3 <= 0) {
-        return "";
-      }
-    }
-    else
-    {
-      paramInt2 = paramInt3;
-    }
-    paramInt3 = paramInt2 + paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1) {
-        return "";
-      }
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    return parambksi.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bksw
  * JD-Core Version:    0.7.0.1
  */

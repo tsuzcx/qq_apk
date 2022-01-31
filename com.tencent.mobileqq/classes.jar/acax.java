@@ -1,79 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.widget.ListView;
+import mqq.os.MqqHandler;
 
-class acax
-  extends aoun
+public class acax
+  implements bhuy
 {
-  acax(acav paramacav) {}
+  public acax(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      paramInt = 0;
-      if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label232;
-      }
-      if (((acbc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a != paramLong1) {}
-    }
-    for (;;)
-    {
-      if (paramInt != -1) {
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
-        {
-          paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-          if (paramString.uniseq != paramLong1) {
-            break label202;
-          }
-          if (this.a.jdField_a_of_type_Bbgu != null) {
-            this.a.jdField_a_of_type_Bbgu.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
-          }
-        }
-        return;
-        paramInt += 1;
-        break;
-        label202:
-        paramInt += 1;
-      }
-      this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.aw_();
       return;
-      label232:
-      paramInt = -1;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
-    if (!this.a.jdField_b_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.a.a();
-        return;
-      }
+    if (this.a.jdField_a_of_type_Boolean) {
+      return true;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
+    }
+    if (this.a.c())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+      this.a.b = true;
+      AssociatedAccountActivity.b(this.a, false, true);
+      return true;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.14.1(this), 800L);
+    return true;
   }
   
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void b(int paramInt, View paramView, ListView paramListView)
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
-    if (this.a.jdField_a_of_type_Bbgu != null) {
-      this.a.jdField_a_of_type_Bbgu.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
     }
-    this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
   }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acax
  * JD-Core Version:    0.7.0.1
  */

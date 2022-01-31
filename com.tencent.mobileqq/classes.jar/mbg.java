@@ -1,83 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.AVActivity;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class mbg
-  extends BroadcastReceiver
+class mbg
+  implements bhqd
 {
-  public mbg(AVActivity paramAVActivity) {}
+  mbg(mbc parammbc, long paramLong, bhpy parambhpy) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "showChooseTypeActionSheet, which[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Mbc.a + "]");
+    }
+    if (this.jdField_a_of_type_Mbc.a == null) {
+      return;
+    }
+    paramView = paramView.getContext();
+    switch (paramInt)
     {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (this.a.a != null) && (paramContext.equals("homekey")))
-      {
-        if (this.a.a.a().d == 4)
-        {
-          if (this.a.d != 3000) {
-            break label237;
-          }
-          if (!this.a.a.a().j) {
-            break label210;
-          }
-          axqy.b(null, "CliOper", "", "", "0X80041BB", "0X80041BB", 0, 0, "", "", "", "");
-        }
-        if (this.a.g)
-        {
-          if (!this.a.a.a().j) {
-            break label424;
-          }
-          axqy.b(null, "CliOper", "", "", "0X8005216", "0X8005216", 0, 0, "", "", "", "");
-        }
-      }
     }
     for (;;)
     {
-      if (AVActivity.a(this.a) != null) {
-        AVActivity.a(this.a).a(this.a.isResume());
-      }
-      this.a.a.a("backgroundReason", "1");
-      lde.a = "1";
+      this.jdField_a_of_type_Bhpy.dismiss();
       return;
-      label210:
-      axqy.b(null, "CliOper", "", "", "0X80041BE", "0X80041BE", 0, 0, "", "", "", "");
-      break;
-      label237:
-      if (this.a.d != 1) {
-        break;
-      }
-      if (this.a.a.a().j)
-      {
-        if (this.a.a.a().C == 10)
-        {
-          axqy.b(null, "CliOper", "", "", "0X800593E", "0X800593E", 0, 0, "", "", "", "");
-          break;
-        }
-        axqy.b(null, "CliOper", "", "", "0X80046E8", "0X80046E8", 0, 0, "", "", "", "");
-        break;
-      }
-      if (!this.a.a.a().k) {
-        break;
-      }
-      if (this.a.a.a().C == 10)
-      {
-        axqy.b(null, "CliOper", "", "", "0X8005941", "0X8005941", 0, 0, "", "", "", "");
-        break;
-      }
-      axqy.b(null, "CliOper", "", "", "0X80046EB", "0X80046EB", 0, 0, "", "", "", "");
-      break;
-      label424:
-      axqy.b(null, "CliOper", "", "", "0X8005219", "0X8005219", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Mbc.b(this.jdField_a_of_type_Long, paramView);
+      continue;
+      this.jdField_a_of_type_Mbc.a(this.jdField_a_of_type_Long, paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mbg
  * JD-Core Version:    0.7.0.1
  */

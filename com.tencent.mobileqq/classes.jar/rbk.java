@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-class rbk
-  implements View.OnClickListener
+public abstract interface rbk
 {
-  rbk(ram paramram, String paramString) {}
+  public abstract void a(long paramLong);
   
-  public void onClick(View paramView)
-  {
-    nol.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
-  }
+  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
+  
+  public abstract void a(rbt paramrbt);
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rbk
  * JD-Core Version:    0.7.0.1
  */

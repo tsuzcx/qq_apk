@@ -1,47 +1,16 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public final class szd
-  extends MSFServlet
+class szd
+  implements DialogInterface.OnCancelListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    Bundle localBundle = paramIntent.getExtras();
-    paramIntent = null;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      paramIntent = bbma.b(paramFromServiceMsg.getWupBuffer());
-      localBundle.putInt("data_error_code", 0);
-    }
-    for (;;)
-    {
-      QQStoryContext.a().a().a(localBundle, paramIntent);
-      return;
-      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
-    }
-  }
+  szd(szc paramszc) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bbma.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     szd
  * JD-Core Version:    0.7.0.1
  */

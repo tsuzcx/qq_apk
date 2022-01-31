@@ -1,110 +1,106 @@
-public class bbmz
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0x487.oidb_0x487.RspBody;
+
+class bbmz
+  extends nac
 {
-  private static String a = "3g.qq.com";
+  bbmz(bbmy parambbmy, long paramLong) {}
   
-  public static int a(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramInt1 < 128)
-    {
-      paramArrayOfByte[(0 + paramInt2)] = ((byte)paramInt1);
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.troop_pubaccount", 2, "TroopEntranceBar fetchBindTroopInfo onResult, errorCode=" + paramInt);
     }
-    if (paramInt1 < 2048)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    for (;;)
     {
-      paramArrayOfByte[(paramInt2 + 0)] = ((byte)(paramInt1 >> 6 & 0x1F | 0xC0));
-      paramArrayOfByte[(paramInt2 + 1)] = ((byte)(paramInt1 & 0x3F | 0x80));
-      return 2;
-    }
-    if (paramInt1 < 65536)
-    {
-      paramArrayOfByte[(paramInt2 + 0)] = ((byte)(paramInt1 >> 12 & 0xF | 0xE0));
-      paramArrayOfByte[(paramInt2 + 1)] = ((byte)(paramInt1 >> 6 & 0x3F | 0x80));
-      paramArrayOfByte[(paramInt2 + 2)] = ((byte)(paramInt1 & 0x3F | 0x80));
-      return 3;
-    }
-    if (paramInt1 < 2097152)
-    {
-      paramArrayOfByte[(paramInt2 + 0)] = ((byte)(paramInt1 >> 18 & 0x7 | 0xF0));
-      paramArrayOfByte[(paramInt2 + 1)] = ((byte)(paramInt1 >> 12 & 0x3F | 0x80));
-      paramArrayOfByte[(paramInt2 + 2)] = ((byte)(paramInt1 >> 6 & 0x3F | 0x80));
-      paramArrayOfByte[(paramInt2 + 3)] = ((byte)(paramInt1 & 0x3F | 0x80));
-      return 4;
-    }
-    return 0;
-  }
-  
-  public static String a(String paramString, boolean paramBoolean)
-  {
-    paramString = paramString.toCharArray();
-    byte[] arrayOfByte = new byte[paramString.length * 4];
-    int j = 0;
-    int k = 0;
-    if (j < paramString.length)
-    {
-      int m;
-      int i;
-      if ((paramString[j] == '%') && (j + 2 < paramString.length))
+      try
       {
-        m = 1;
-        int n = 0;
-        if (m < 3)
+        Object localObject = new oidb_0x487.RspBody();
+        ((oidb_0x487.RspBody)localObject).mergeFrom(paramArrayOfByte);
+        paramInt = ((oidb_0x487.RspBody)localObject).uint32_result.get();
+        if (QLog.isColorLevel())
         {
-          if ((paramString[(j + m)] <= '9') && (paramString[(j + m)] >= '0')) {
-            i = n * 16 + (paramString[(j + m)] - '0');
+          if (!((oidb_0x487.RspBody)localObject).bytes_errmsg.has()) {
+            break label563;
           }
-          for (;;)
+          paramArrayOfByte = ((oidb_0x487.RspBody)localObject).bytes_errmsg.get().toStringUtf8();
+          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo onResult, ret=" + paramInt + "," + paramArrayOfByte);
+        }
+        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_groups_flag.has()))
+        {
+          this.jdField_a_of_type_Bbmy.jdField_a_of_type_Int = ((oidb_0x487.RspBody)localObject).uint32_groups_flag.get();
+          bbmy.a(this.jdField_a_of_type_Bbmy);
+          this.jdField_a_of_type_Bbmy.notifyObservers(Integer.valueOf(0));
+          return;
+        }
+        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_follow_state.has()))
+        {
+          paramBundle = (bcic)this.jdField_a_of_type_Bbmy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+          paramInt = ((oidb_0x487.RspBody)localObject).uint32_follow_state.get();
+          int i = ((oidb_0x487.RspBody)localObject).uint32_remind_flag.get();
+          if (i == 1)
           {
-            m += 1;
-            n = i;
-            break;
-            if ((paramString[(j + m)] <= 'F') && (paramString[(j + m)] >= 'A'))
-            {
-              i = n * 16 + (paramString[(j + m)] - 'A' + 10);
+            localObject = (QQAppInterface)this.b.get();
+            if (localObject == null) {
+              break label562;
             }
-            else
-            {
-              i = n;
-              if (paramString[(j + m)] <= 'f')
-              {
-                i = n;
-                if (paramString[(j + m)] >= 'a') {
-                  i = n * 16 + (paramString[(j + m)] - 'a' + 10);
-                }
-              }
+            String str = ((QQAppInterface)localObject).c();
+            paramArrayOfByte = (TicketManager)((QQAppInterface)localObject).getManager(2);
+            if (paramArrayOfByte == null) {
+              break label557;
             }
+            paramArrayOfByte = paramArrayOfByte.getSkey(str);
+            HashMap localHashMap = new HashMap();
+            Bundle localBundle = new Bundle();
+            localBundle.putString("op", "0");
+            localBundle.putString("puin", "" + this.jdField_a_of_type_Long);
+            localBundle.putString("Cookie", "uin=" + str + ";skey=" + paramArrayOfByte);
+            localBundle.putString("Referer", "https://buluo.qq.com");
+            localHashMap.put("BUNDLE", localBundle);
+            localHashMap.put("CONTEXT", ((QQAppInterface)localObject).getApp().getApplicationContext());
+            new bcgp("https://buluo.qq.com/cgi-bin/bar/extra/clean_temp_follow_state", "", new bbna(this, paramBundle, i), 1000, null).a(localHashMap);
+          }
+          paramBundle.a(this.jdField_a_of_type_Bbmy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramInt, i);
+          if (paramInt == 1)
+          {
+            bbmy.b(this.jdField_a_of_type_Bbmy);
+            this.jdField_a_of_type_Bbmy.notifyObservers(Integer.valueOf(1));
+            return;
           }
         }
-        arrayOfByte[k] = ((byte)n);
-        j += 2;
-        i = k + 1;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo, exception=" + paramArrayOfByte.toString());
+        }
       }
       for (;;)
       {
-        j += 1;
-        k = i;
-        break;
-        if (paramBoolean)
-        {
-          i = k + a(paramString[j], arrayOfByte, k);
-        }
-        else
-        {
-          m = k + 1;
-          arrayOfByte[k] = ((byte)(paramString[j] >> '\b'));
-          i = m + 1;
-          arrayOfByte[m] = ((byte)paramString[j]);
-        }
+        bbmy.c(this.jdField_a_of_type_Bbmy);
+        this.jdField_a_of_type_Bbmy.notifyObservers();
+        return;
+        QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo error. errorCode=" + paramInt);
       }
+      label557:
+      paramArrayOfByte = null;
+      continue;
+      label562:
+      return;
+      label563:
+      paramArrayOfByte = "";
     }
-    if (paramBoolean) {}
-    try
-    {
-      paramString = bbmx.b(arrayOfByte, 0, k);
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return new String(arrayOfByte, 0, k);
-    return null;
   }
 }
 

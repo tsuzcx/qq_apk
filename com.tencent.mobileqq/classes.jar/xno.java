@@ -1,21 +1,18 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.widgets.QQMapRoutingHelper.1.1;
-import org.json.JSONObject;
+import android.view.View;
 
-public class xno
-  implements baic
+public abstract class xno
+  extends xnr
 {
-  xno(xnn paramxnn) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public xno(xnt paramxnt, View paramView)
   {
-    this.a.a.post(new QQMapRoutingHelper.1.1(this, paramJSONObject, paramBundle));
+    super(paramxnt, paramView);
   }
+  
+  public abstract int a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xno
  * JD-Core Version:    0.7.0.1
  */

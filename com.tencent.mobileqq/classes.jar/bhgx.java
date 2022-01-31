@@ -1,52 +1,89 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-class bhgx
-  implements Downloader.DownloadListener
+public class bhgx
+  implements InvocationHandler
 {
-  bhgx(bhgw parambhgw) {}
+  public bhgx(bhgr parambhgr) {}
   
-  public void onDownloadCanceled(String paramString)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    Message localMessage = Message.obtain(bhgw.a(this.a));
-    localMessage.what = 5;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramDownloadResult = Message.obtain(bhgw.a(this.a));
-    paramDownloadResult.what = 3;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    paramString = (bhgy)bhgw.a(this.a).get(paramString);
-    if (paramString != null) {
-      paramString.a = Float.valueOf(paramFloat);
+    QMLog.e("TXLivePlayerJSAdapter", "InnerTXLivePlayListenerImpl invoke:" + paramMethod.getName());
+    if (Object.class.equals(paramMethod.getDeclaringClass())) {
+      try
+      {
+        paramObject = paramMethod.invoke(this, paramArrayOfObject);
+        return paramObject;
+      }
+      catch (Throwable paramObject)
+      {
+        paramObject.printStackTrace();
+      }
     }
-    Message localMessage = Message.obtain(bhgw.a(this.a));
-    localMessage.what = 6;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramDownloadResult = Message.obtain(bhgw.a(this.a));
-    paramDownloadResult.what = 2;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
+    for (;;)
+    {
+      return null;
+      if ("onPlayEvent".equals(paramMethod.getName()))
+      {
+        if (paramArrayOfObject.length == 2)
+        {
+          paramMethod = (Integer)paramArrayOfObject[0];
+          paramArrayOfObject = (Bundle)paramArrayOfObject[1];
+          if ((paramMethod.equals(Integer.valueOf(2006))) || (paramMethod.equals(Integer.valueOf(-2301)))) {
+            this.a.a("stop", null);
+          }
+          if ((paramMethod.intValue() == 2012) && (paramArrayOfObject != null))
+          {
+            paramObject = paramArrayOfObject.getByteArray("EVT_GET_MSG");
+            if ((paramObject == null) || (paramObject.length <= 0)) {
+              break label261;
+            }
+          }
+          for (;;)
+          {
+            try
+            {
+              paramObject = new String(paramObject, "UTF-8");
+              paramArrayOfObject.putString("EVT_MSG", paramObject);
+              if ((bhgr.a(this.a)) && (bhgr.a(this.a) != null)) {
+                bhgr.a(this.a).a(paramMethod.intValue(), paramArrayOfObject);
+              }
+              if (paramArrayOfObject == null) {
+                break;
+              }
+              paramObject = paramArrayOfObject.getString("EVT_MSG");
+              QMLog.d("TXLivePlayerJSAdapter", "onPlayEvent: event = " + paramMethod + " message = " + paramObject);
+            }
+            catch (UnsupportedEncodingException paramObject)
+            {
+              paramObject.printStackTrace();
+            }
+            label261:
+            paramObject = "";
+          }
+        }
+      }
+      else if (("onNetStatus".equals(paramMethod.getName())) && (paramArrayOfObject.length == 1))
+      {
+        paramObject = (Bundle)paramArrayOfObject[0];
+        if (bhgr.a(this.a) != null) {
+          bhgr.a(this.a).a(paramObject);
+        }
+        if (QMLog.isColorLevel())
+        {
+          paramObject = String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { "CPU:" + paramObject.getString("CPU_USAGE"), "RES:" + paramObject.getInt("VIDEO_WIDTH") + "*" + paramObject.getInt("VIDEO_HEIGHT"), "SPD:" + paramObject.getInt("NET_SPEED") + "Kbps", "JIT:" + paramObject.getInt("NET_JITTER"), "FPS:" + paramObject.getInt("VIDEO_FPS"), "GOP:" + paramObject.getInt("VIDEO_GOP") + "s", "ARA:" + paramObject.getInt("AUDIO_BITRATE") + "Kbps", "QUE:" + paramObject.getInt("AUDIO_CACHE") + " | " + paramObject.getInt("VIDEO_CACHE") + "," + paramObject.getInt("V_SUM_CACHE_SIZE") + "," + paramObject.getInt("V_DEC_CACHE_SIZE") + " | " + paramObject.getInt("AV_RECV_INTERVAL") + "," + paramObject.getInt("AV_PLAY_INTERVAL") + "," + String.format("%.1f", new Object[] { Float.valueOf(paramObject.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString(), "VRA:" + paramObject.getInt("VIDEO_BITRATE") + "Kbps", "DRP:" + paramObject.getInt("AUDIO_DROP") + "|" + paramObject.getInt("VIDEO_DROP"), "SVR:" + paramObject.getString("SERVER_IP"), "AUDIO:" + paramObject.getString("AUDIO_PLAY_INFO") });
+          QMLog.d("TXLivePlayerJSAdapter", "onNetStatus:" + paramObject);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhgx
  * JD-Core Version:    0.7.0.1
  */

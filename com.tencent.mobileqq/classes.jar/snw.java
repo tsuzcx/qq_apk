@@ -1,51 +1,31 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class snw
-  extends GestureDetector.SimpleOnGestureListener
+  implements bhqf
 {
-  private snw(snn paramsnn) {}
+  snw(snu paramsnu, String paramString) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onDismiss()
   {
-    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
-    snn.b(this.a);
-    return false;
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((!(snn.a(this.a).getTag() instanceof snu)) || (((snn.a(this.a).getTag() instanceof snu)) && (!snn.a(this.a).a(snn.a(this.a)).booleanValue()))) {
-      snn.c(this.a);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("index", -1);
+      localJSONObject.put("type", 1);
+      if (snu.a(this.jdField_a_of_type_Snu) != null) {
+        ((BridgeModule)snu.a(this.jdField_a_of_type_Snu).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      }
+      return;
     }
-    return false;
+    catch (JSONException localJSONException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snw
  * JD-Core Version:    0.7.0.1
  */

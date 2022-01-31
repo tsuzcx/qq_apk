@@ -1,16 +1,63 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class uyo
-  extends ssh
 {
-  public int a;
+  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
   
-  public uyo(int paramInt)
+  @Nullable
+  public static vbu a(String paramString, List<vbu> paramList)
   {
-    this.a = paramInt;
+    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      vbu localvbu = (vbu)paramList.next();
+      if (paramString.equals(localvbu.a)) {
+        return localvbu;
+      }
+    }
+    return null;
+  }
+  
+  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
+  {
+    wsv.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
+    if (paramBoolean)
+    {
+      localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        Long localLong = (Long)a.get(str);
+        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
+        {
+          ((Iterator)localObject).remove();
+          wsv.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
+        }
+        else
+        {
+          a.put(str, Long.valueOf(System.currentTimeMillis()));
+        }
+      }
+    }
+    if (paramList.size() == 0) {
+      return;
+    }
+    wsv.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
+    Object localObject = new vbt(paramList);
+    ung.a().a((unk)localObject, new uyp(paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyo
  * JD-Core Version:    0.7.0.1
  */

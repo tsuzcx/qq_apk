@@ -1,33 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
-class baav
-  extends bbwt
+public class baav
+  extends azyx
 {
-  baav(baas parambaas, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  protected azze a;
+  protected SpriteNativeView a;
   
-  public void onDone(bbwu parambbwu)
+  public baav()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate loaded json = " + parambbwu.c + " code = " + parambbwu.jdField_a_of_type_Int);
-    }
-    boolean bool = baas.a(this.jdField_a_of_type_Baas, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate unCompressOffline " + bool);
-    }
-    baas.b(this.jdField_a_of_type_Baas);
+    this.jdField_a_of_type_Azze = new azze(0.0F, 0.0F);
   }
   
-  public void onProgress(bbwu parambbwu)
+  public azzd<baav> a()
   {
-    int i = (int)(parambbwu.jdField_a_of_type_Float * 100.0F);
-    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
-      QLog.d("SoLibraryLoader", 2, "downding progress = " + i);
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView;
   }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public boolean c()
+  {
+    this.e = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth();
+    this.f = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getHeight();
+    return b();
+  }
+  
+  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baav
  * JD-Core Version:    0.7.0.1
  */

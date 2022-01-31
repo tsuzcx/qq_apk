@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import java.util.Comparator;
+import java.util.Map;
 
-final class aypf
-  implements WeakNetCallback
+public final class aypf
+  implements Comparator<aypw>
 {
-  private axrn a = axrn.a(BaseApplication.getContext());
-  
-  public void onResultOverflow(HashMap<String, String> paramHashMap)
+  public int a(aypw paramaypw1, aypw paramaypw2)
   {
-    this.a.a(bbjc.a(), "actWeaknetProbe", true, 0L, paramHashMap.size(), paramHashMap, "");
+    paramaypw2 = (Integer)SearchConfigManager.searchEngineOrder.get(paramaypw2.a);
+    if (paramaypw2 == null) {
+      paramaypw2 = Integer.valueOf(0);
+    }
+    for (;;)
+    {
+      Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramaypw1.a);
+      paramaypw1 = localInteger;
+      if (localInteger == null) {
+        paramaypw1 = Integer.valueOf(0);
+      }
+      return Integer.signum(paramaypw2.intValue() - paramaypw1.intValue());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aypf
  * JD-Core Version:    0.7.0.1
  */

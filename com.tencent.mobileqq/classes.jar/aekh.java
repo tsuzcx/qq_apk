@@ -1,382 +1,221 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import android.view.VelocityTracker;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener.1;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener.2;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener.3;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.os.MqqHandler;
-
 public class aekh
-  implements View.OnTouchListener
 {
-  private static int jdField_e_of_type_Int = 60;
-  private static int jdField_f_of_type_Int = 300;
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  public long a;
-  aekg jdField_a_of_type_Aekg;
-  public aekm a;
-  VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  public PhotoListPanel a;
-  public AtomicBoolean a;
-  public boolean a;
-  int[] jdField_a_of_type_ArrayOfInt;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  aekm jdField_b_of_type_Aekm;
-  public AtomicBoolean b;
-  public float c;
-  public int c;
-  public aekm c;
-  public float d;
-  int d;
-  float jdField_e_of_type_Float;
-  float jdField_f_of_type_Float = 0.7F;
-  float g;
+  public static int a;
+  public static aekg a;
+  public static boolean a;
+  public static boolean b;
   
-  public aekh(Context paramContext, ViewGroup paramViewGroup, int[] paramArrayOfInt, int paramInt, aekg paramaekg, PhotoListPanel paramPhotoListPanel)
+  /* Error */
+  public static void a(com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aekg = paramaekg;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel = paramPhotoListPanel;
-    this.jdField_e_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    jdField_e_of_type_Int = (int)(30.0F * this.jdField_e_of_type_Float);
-    switch (PhotoListPanel.f())
-    {
-    }
-    for (this.jdField_b_of_type_Aekm = new aekk(this, paramContext, paramViewGroup);; this.jdField_b_of_type_Aekm = new aekm(this, paramContext, paramViewGroup))
-    {
-      this.jdField_c_of_type_Aekm = new aeki(this, paramContext, paramViewGroup);
-      return;
-    }
-  }
-  
-  float a(int paramInt1, int paramInt2)
-  {
-    LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Aekc.a(paramInt1);
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Aekc.getItemViewType(paramInt1);
-    float f1;
-    if (i == 1) {
-      f1 = 1168.0F / (paramInt2 * this.jdField_e_of_type_Float);
-    }
-    for (;;)
-    {
-      aung.a("PhotoListPanel", "calcuEndScale", "position = " + paramInt1 + ",scale = " + f1 + ",mediaType = " + i + ",info.mediaWidth = " + localLocalMediaInfo.mediaWidth + ",info.mediaHeight = " + localLocalMediaInfo.mediaHeight + ",sideLength = " + paramInt2);
-      return f1;
-      f1 = localLocalMediaInfo.mediaHeight * 1.0F / localLocalMediaInfo.mediaWidth;
-      if ((localLocalMediaInfo.mediaWidth > 100) || (localLocalMediaInfo.mediaHeight > 100))
-      {
-        if (localLocalMediaInfo.mediaHeight > localLocalMediaInfo.mediaWidth) {
-          f1 = 1168.0F / (f1 * paramInt2 * this.jdField_e_of_type_Float);
-        } else {
-          f1 = f1 * 1168.0F / (paramInt2 * this.jdField_e_of_type_Float);
-        }
-      }
-      else if (localLocalMediaInfo.mediaHeight > localLocalMediaInfo.mediaWidth) {
-        f1 = paramInt2 * 2336.0F / (f1 * this.jdField_e_of_type_Float);
-      } else {
-        f1 = f1 * 2336.0F / (paramInt2 * this.jdField_e_of_type_Float);
-      }
-    }
-  }
-  
-  float a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Aekc.a(paramInt1);
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Aekc.getItemViewType(paramInt1);
-    float f1;
-    if (i == 1) {
-      f1 = 160.0F * this.jdField_e_of_type_Float / Math.max(paramInt2, paramInt3);
-    }
-    for (;;)
-    {
-      aung.a("PhotoListPanel", "calcuEndScale", "position = " + paramInt1 + ",scale = " + f1 + ",mediaType = " + i + ",info.mediaWidth = " + localLocalMediaInfo.mediaWidth + ",info.mediaHeight = " + localLocalMediaInfo.mediaHeight);
-      return f1;
-      if ((localLocalMediaInfo.mediaWidth > 100) || (localLocalMediaInfo.mediaHeight > 100)) {
-        f1 = 135.0F * this.jdField_e_of_type_Float / Math.max(paramInt2, paramInt3);
-      } else {
-        f1 = Math.max(localLocalMediaInfo.mediaWidth, localLocalMediaInfo.mediaHeight) * this.jdField_e_of_type_Float / Math.max(paramInt2, paramInt3);
-      }
-    }
-  }
-  
-  aekm a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2)
-  {
-    boolean bool5 = false;
-    boolean bool4 = false;
-    boolean bool1;
-    boolean bool2;
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      i = paramMotionEvent.findPointerIndex(this.jdField_d_of_type_Int);
-      this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-      this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-      f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
-      if (-f1 > 1500.0F)
-      {
-        bool1 = true;
-        if (paramFloat2 >= 0.0F) {
-          break label384;
-        }
-        bool2 = true;
-        label81:
-        if (Math.abs(paramFloat1 / paramFloat2) >= 1.0F) {
-          break label390;
-        }
-      }
-      label384:
-      label390:
-      for (bool3 = true;; bool3 = false)
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 0)) {
-          bool4 = true;
-        }
-        aung.a("PhotoListPanel", "detectGesture", "Xvelocity=" + this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) + "Yvelocity=" + f1 + ",delX = " + paramFloat1 + ", delY = " + paramFloat2 + "tanA = " + Math.abs(paramFloat1 / paramFloat2) + ",Angle A = " + Math.toDegrees(Math.atan(Math.abs(paramFloat1 / paramFloat2))) + ",Velocity Angle = " + Math.toDegrees(Math.atan(Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) / f1))) + " vThresh = " + bool1 + ",direction = " + bool2 + ",anc = " + bool3 + ",satate = " + bool4 + ",mGestureHandler = " + this.jdField_a_of_type_Aekm);
-        aung.a("PhotoListPanel", "detectGesture", "mActivePointerId x = " + paramMotionEvent.getX() + ",mActivePointerId y = " + paramMotionEvent.getY());
-        if ((this.jdField_a_of_type_Aekm != null) || (!bool2) || (!bool3) || (!bool4)) {
-          break label775;
-        }
-        aung.a("PhotoListPanel", "detectGesture", "return mDragHandler.");
-        return this.jdField_c_of_type_Aekm;
-        bool1 = false;
-        break;
-        bool2 = false;
-        break label81;
-      }
-    }
-    int i = paramMotionEvent.findPointerIndex(this.jdField_d_of_type_Int);
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-    float f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
-    if (-f1 > 3000.0F)
-    {
-      bool1 = true;
-      if (paramFloat2 >= 0.0F) {
-        break label763;
-      }
-      bool2 = true;
-      label457:
-      if (Math.abs(paramFloat1 / paramFloat2) >= 1.0F) {
-        break label769;
-      }
-    }
-    label769:
-    for (boolean bool3 = true;; bool3 = false)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l != 1)
-      {
-        bool4 = bool5;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l != 0) {}
-      }
-      else
-      {
-        bool4 = true;
-      }
-      aung.a("PhotoListPanel", "detectGesture", "2 Xvelocity=" + this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) + "Yvelocity=" + f1 + ",delX = " + paramFloat1 + ", delY = " + paramFloat2 + "tanA = " + Math.abs(paramFloat1 / paramFloat2) + ",Angle A = " + Math.toDegrees(Math.atan(Math.abs(paramFloat1 / paramFloat2))) + ",Velocity Angle = " + Math.toDegrees(Math.atan(Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) / f1))) + " vThresh = " + bool1 + ",direction = " + bool2 + ",anc = " + bool3 + ",satate = " + bool4);
-      aung.a("PhotoListPanel", "detectGesture", "2 mActivePointerId x = " + paramMotionEvent.getX() + ",mActivePointerId y = " + paramMotionEvent.getY());
-      if ((this.jdField_a_of_type_Aekm != null) || (!bool2) || (!bool3) || (!bool4) || (!bool1)) {
-        break label775;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      aung.a("PhotoListPanel", "detectGesture", "return mFlingHandler.");
-      return this.jdField_b_of_type_Aekm;
-      bool1 = false;
-      break;
-      label763:
-      bool2 = false;
-      break label457;
-    }
-    label775:
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aekm != null)
-    {
-      this.jdField_a_of_type_Aekm.b();
-      this.jdField_a_of_type_Aekm = null;
-    }
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
-    {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-    }
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    boolean bool = true;
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findChildViewUnder(f1, f2);
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAdapterPosition(localView);
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null)
-    {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-      this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-      this.jdField_d_of_type_Int = paramMotionEvent.getPointerId(0);
-      aung.a("PhotoListPanel", "onTouch", " touchFirstActtion,mActivePointerId x = " + paramMotionEvent.getX() + ",mActivePointerId y = " + paramMotionEvent.getY());
-      this.jdField_a_of_type_Aekm = null;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      ThreadManager.getUIHandler().postDelayed(new PhotoListPanel.SwipeUpAndDragListener.2(this), 100L);
-      if (PhotoListPanel.f() == 1)
-      {
-        ThreadManager.getUIHandler().postDelayed(new PhotoListPanel.SwipeUpAndDragListener.3(this), jdField_f_of_type_Int);
-        paramMotionEvent = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l != 0) {
-          break label219;
-        }
-      }
-    }
-    for (;;)
-    {
-      paramMotionEvent.set(bool);
-      return;
-      this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
-      break;
-      label219:
-      bool = false;
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_c_of_type_Aekm != null) && (this.jdField_c_of_type_Aekm.a())) {
-      this.jdField_c_of_type_Aekm.b();
-    }
-    while ((this.jdField_b_of_type_Aekm == null) || (!this.jdField_b_of_type_Aekm.a())) {
-      return;
-    }
-    this.jdField_b_of_type_Aekm.b();
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    boolean bool1 = true;
-    int i = paramMotionEvent.getAction();
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    aung.a("PhotoListPanel", "onTouch", "x = " + f1 + ",y = " + f2 + ",event = " + paramMotionEvent + ", mPanel.mDisableGuestrueSend = " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Boolean) {
-      return bool1;
-    }
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      aung.a("PhotoListPanel", "onTouch", " ACTION_DOWN,x = " + f1 + ",y = " + f2);
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getY();
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Boolean)
-      {
-        aung.a("PhotoListPanel", "onTouch", " ACTION_DOWN,x = " + paramMotionEvent.getX() + ",y = " + paramMotionEvent.getY());
-        a(paramMotionEvent);
-        continue;
-        aung.a("PhotoListPanel", "onTouch", " ACTION_MOVE,x = " + f1 + ",y = " + f2 + ",mGestureHandler = " + this.jdField_a_of_type_Aekm);
-        if ((this.jdField_c_of_type_Float == f1) && (this.jdField_d_of_type_Float == f2)) {
-          return false;
-        }
-        float f3 = this.jdField_a_of_type_Float;
-        float f4 = this.jdField_b_of_type_Float;
-        if (PhotoListPanel.f() == 1)
-        {
-          if ((SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long < jdField_f_of_type_Int) && ((Math.abs(this.jdField_c_of_type_Float - paramMotionEvent.getX()) > this.jdField_b_of_type_Int) || (Math.abs(this.jdField_d_of_type_Float - paramMotionEvent.getY()) > this.jdField_b_of_type_Int))) {
-            this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          }
-          if (!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-            return false;
-          }
-        }
-        if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-          this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-        }
-        paramView = (aeke)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(this.jdField_c_of_type_Int);
-        if (paramView == null) {
-          return false;
-        }
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          if (PhotoListPanel.f() == 0)
-          {
-            this.jdField_a_of_type_Aekm = a(paramMotionEvent, f1 - f3, f2 - f4);
-            if (this.jdField_a_of_type_Aekm != null) {
-              return this.jdField_a_of_type_Aekm.a(paramView, this.jdField_c_of_type_Int);
-            }
-          }
-        }
-        else if (this.jdField_a_of_type_Aekm != null) {
-          return this.jdField_a_of_type_Aekm.a(paramMotionEvent);
-        }
-        aung.a("PhotoListPanel", "onTouch", "f ACTION_MOVE,x = " + f1 + ",y = " + f2);
-        continue;
-        if (PhotoListPanel.f() == 1) {
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        }
-        if (this.jdField_a_of_type_Aekm != null)
-        {
-          boolean bool2 = this.jdField_a_of_type_Aekm.b(paramMotionEvent);
-          this.jdField_a_of_type_Aekm = null;
-          bool1 = bool2;
-          if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-            break;
-          }
-          this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-          return bool2;
-        }
-        long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-        if (((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 0)) && (Math.abs(f2 - this.jdField_b_of_type_Float) > Math.abs(f1 - this.jdField_a_of_type_Float)) && ((l > 200L) || (Math.abs(f2 - this.jdField_b_of_type_Float) > this.jdField_b_of_type_Int) || (Math.abs(f1 - this.jdField_a_of_type_Float) > this.jdField_b_of_type_Int)))
-        {
-          aung.a("PhotoListPanel", "onTouch", " ACTION_UP,eat up event.dx = " + Math.abs(f1 - this.jdField_a_of_type_Float) + ",dy = " + Math.abs(f2 - this.jdField_b_of_type_Float) + ",duration = " + l);
-          if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-            break;
-          }
-          this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-          return true;
-        }
-        aung.a("PhotoListPanel", "onTouch", "f ACTION_UP,x = " + f1 + ",y = " + f2);
-        continue;
-        if (PhotoListPanel.f() == 1) {
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        }
-        if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
-        {
-          this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-        }
-        ThreadManagerV2.getUIHandlerV2().post(new PhotoListPanel.SwipeUpAndDragListener.1(this));
-      }
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_1
+    //   2: ldc 2
+    //   4: monitorenter
+    //   5: invokestatic 20	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   8: ifeq +11 -> 19
+    //   11: ldc 22
+    //   13: iconst_2
+    //   14: ldc 24
+    //   16: invokestatic 28	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   19: aload_0
+    //   20: invokevirtual 34	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
+    //   23: astore_0
+    //   24: invokestatic 40	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   27: new 42	java/lang/StringBuilder
+    //   30: dup
+    //   31: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   34: aload_0
+    //   35: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: ldc 52
+    //   40: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: ldc 54
+    //   45: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: iconst_0
+    //   52: invokevirtual 61	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   55: astore_0
+    //   56: invokestatic 20	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   59: ifeq +11 -> 70
+    //   62: ldc 22
+    //   64: iconst_2
+    //   65: ldc 63
+    //   67: invokestatic 28	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   70: aload_0
+    //   71: ldc 65
+    //   73: iconst_0
+    //   74: invokeinterface 71 3 0
+    //   79: iconst_1
+    //   80: if_icmpne +275 -> 355
+    //   83: iload_1
+    //   84: putstatic 73	aekh:b	Z
+    //   87: aload_0
+    //   88: ldc 75
+    //   90: bipush 10
+    //   92: invokeinterface 71 3 0
+    //   97: putstatic 77	aekh:jdField_a_of_type_Int	I
+    //   100: aload_0
+    //   101: ldc 79
+    //   103: ldc 81
+    //   105: invokeinterface 85 3 0
+    //   110: astore_0
+    //   111: aload_0
+    //   112: invokestatic 91	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   115: ifne +15 -> 130
+    //   118: aload_0
+    //   119: ldc 93
+    //   121: invokestatic 98	atco:a	(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+    //   124: checkcast 93	aekg
+    //   127: putstatic 100	aekh:jdField_a_of_type_Aekg	Laekg;
+    //   130: getstatic 100	aekh:jdField_a_of_type_Aekg	Laekg;
+    //   133: ifnull +35 -> 168
+    //   136: getstatic 104	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   139: ldc 106
+    //   141: iconst_4
+    //   142: invokevirtual 61	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   145: invokeinterface 110 1 0
+    //   150: ldc 112
+    //   152: getstatic 100	aekh:jdField_a_of_type_Aekg	Laekg;
+    //   155: getfield 114	aekg:jdField_a_of_type_Boolean	Z
+    //   158: invokeinterface 120 3 0
+    //   163: invokeinterface 123 1 0
+    //   168: getstatic 124	aekh:jdField_a_of_type_Boolean	Z
+    //   171: ifeq +47 -> 218
+    //   174: getstatic 100	aekh:jdField_a_of_type_Aekg	Laekg;
+    //   177: ifnonnull +13 -> 190
+    //   180: new 93	aekg
+    //   183: dup
+    //   184: invokespecial 125	aekg:<init>	()V
+    //   187: putstatic 100	aekh:jdField_a_of_type_Aekg	Laekg;
+    //   190: getstatic 100	aekh:jdField_a_of_type_Aekg	Laekg;
+    //   193: iconst_1
+    //   194: putfield 126	aekg:jdField_a_of_type_Int	I
+    //   197: getstatic 100	aekh:jdField_a_of_type_Aekg	Laekg;
+    //   200: iconst_1
+    //   201: putfield 129	aekg:e	I
+    //   204: getstatic 100	aekh:jdField_a_of_type_Aekg	Laekg;
+    //   207: iconst_1
+    //   208: putfield 132	aekg:d	I
+    //   211: getstatic 100	aekh:jdField_a_of_type_Aekg	Laekg;
+    //   214: iconst_1
+    //   215: putfield 135	aekg:f	I
+    //   218: invokestatic 20	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   221: ifeq +130 -> 351
+    //   224: new 42	java/lang/StringBuilder
+    //   227: dup
+    //   228: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   231: astore_2
+    //   232: aload_2
+    //   233: ldc 137
+    //   235: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: pop
+    //   239: aload_2
+    //   240: new 42	java/lang/StringBuilder
+    //   243: dup
+    //   244: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   247: ldc 139
+    //   249: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: getstatic 73	aekh:b	Z
+    //   255: invokevirtual 142	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   258: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   261: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   264: pop
+    //   265: aload_2
+    //   266: new 42	java/lang/StringBuilder
+    //   269: dup
+    //   270: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   273: ldc 144
+    //   275: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   278: getstatic 77	aekh:jdField_a_of_type_Int	I
+    //   281: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   284: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   287: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: pop
+    //   291: aload_2
+    //   292: new 42	java/lang/StringBuilder
+    //   295: dup
+    //   296: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   299: ldc 149
+    //   301: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   304: getstatic 151	com/tencent/common/app/BaseApplicationImpl:httpMonitorBan	Z
+    //   307: invokevirtual 142	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   310: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   313: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: pop
+    //   317: aload_2
+    //   318: new 42	java/lang/StringBuilder
+    //   321: dup
+    //   322: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   325: ldc 153
+    //   327: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   330: aload_0
+    //   331: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   334: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   337: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   340: pop
+    //   341: ldc 22
+    //   343: iconst_2
+    //   344: aload_2
+    //   345: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   348: invokestatic 28	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   351: ldc 2
+    //   353: monitorexit
+    //   354: return
+    //   355: iconst_0
+    //   356: istore_1
+    //   357: goto -274 -> 83
+    //   360: astore_0
+    //   361: aload_0
+    //   362: invokevirtual 156	java/lang/Exception:printStackTrace	()V
+    //   365: goto -14 -> 351
+    //   368: astore_0
+    //   369: ldc 2
+    //   371: monitorexit
+    //   372: aload_0
+    //   373: athrow
+    //   374: astore_0
+    //   375: aload_0
+    //   376: invokevirtual 157	java/lang/Error:printStackTrace	()V
+    //   379: goto -28 -> 351
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	382	0	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
+    //   1	356	1	bool	boolean
+    //   231	114	2	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   5	19	360	java/lang/Exception
+    //   19	70	360	java/lang/Exception
+    //   70	83	360	java/lang/Exception
+    //   83	130	360	java/lang/Exception
+    //   130	168	360	java/lang/Exception
+    //   168	190	360	java/lang/Exception
+    //   190	218	360	java/lang/Exception
+    //   218	351	360	java/lang/Exception
+    //   5	19	368	finally
+    //   19	70	368	finally
+    //   70	83	368	finally
+    //   83	130	368	finally
+    //   130	168	368	finally
+    //   168	190	368	finally
+    //   190	218	368	finally
+    //   218	351	368	finally
+    //   361	365	368	finally
+    //   375	379	368	finally
+    //   5	19	374	java/lang/Error
+    //   19	70	374	java/lang/Error
+    //   70	83	374	java/lang/Error
+    //   83	130	374	java/lang/Error
+    //   130	168	374	java/lang/Error
+    //   168	190	374	java/lang/Error
+    //   190	218	374	java/lang/Error
+    //   218	351	374	java/lang/Error
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aekh
  * JD-Core Version:    0.7.0.1
  */

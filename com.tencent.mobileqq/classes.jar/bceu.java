@@ -1,169 +1,26 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler.2;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler.3;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.17;
 
 public class bceu
-  extends bceg
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public Handler a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bbpd jdField_a_of_type_Bbpd;
-  private QQBrowserActivity jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity;
-  private WebViewFragment jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment;
-  public boolean a;
+  public bceu(VisitorTroopCardFragment.17 param17) {}
   
-  public bceu()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), this);
-  }
-  
-  public void a(int paramInt1, int paramInt2, bcew parambcew)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment == null)) {}
-    CustomWebView localCustomWebView;
-    do
+    if (paramInt == 1)
     {
-      return;
-      localCustomWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getWebView();
-      if (localCustomWebView != null) {
-        break;
-      }
-    } while (parambcew == null);
-    parambcew.a("");
-    return;
-    ThreadManager.post(new SwiftBrowserMiscHandler.3(this, bbaq.a(localCustomWebView, paramInt1, paramInt2), parambcew), 8, null, true);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_Bbpd == null);
-        this.jdField_a_of_type_Bbpd.f();
-        return;
-      } while (this.jdField_a_of_type_Bbpd == null);
-      this.jdField_a_of_type_Bbpd.g();
-      return;
-      if (this.jdField_a_of_type_Bbpd != null) {
-        this.jdField_a_of_type_Bbpd.e();
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    ThreadManager.executeOnFileThread(new SwiftBrowserMiscHandler.2(this));
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Bceh.a() instanceof QQBrowserActivity))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = ((QQBrowserActivity)this.jdField_a_of_type_Bceh.a());
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment = this.jdField_a_of_type_Bceh.a();
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    int i;
-    boolean bool;
-    switch (paramMessage.what)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null)
-      {
-        i = paramMessage.arg1;
-        if ((i & 0x1) != 0) {
-          break label102;
-        }
-        bool = true;
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a(bool);
-        if ((i & 0x2) != 0) {
-          break label107;
-        }
-        i = 1;
-        label82:
-        if (i == 0) {
-          break label112;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_Bccj.a.setVisibility(0);
-      }
-      break;
-    }
-    for (;;)
-    {
-      return true;
-      label102:
-      bool = false;
-      break;
-      label107:
-      i = 0;
-      break label82;
-      label112:
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_Bccj.a.setVisibility(8);
-      continue;
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_Bcfx != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_Bcfx.d != null))
-      {
-        if (this.jdField_a_of_type_AndroidViewViewGroup == null)
-        {
-          RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_Bcfx.d.findViewById(2131363418);
-          this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131561485, null));
-          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-          localLayoutParams.addRule(12);
-          localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewViewGroup, localLayoutParams);
-          this.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(new bcev(this));
-        }
-        if (this.jdField_a_of_type_Bbpd == null) {
-          this.jdField_a_of_type_Bbpd = new bbpd(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, this.jdField_a_of_type_AndroidViewViewGroup);
-        }
-        this.jdField_a_of_type_Bbpd.h();
-        paramMessage = (Bundle)paramMessage.obj;
-        this.jdField_a_of_type_Bbpd.a(paramMessage.getLong("id"), paramMessage.getString("type"), paramMessage.getString("callbackId"));
-        continue;
-        paramMessage = (Bundle)paramMessage.obj;
-        if (this.jdField_a_of_type_Bbpd != null)
-        {
-          this.jdField_a_of_type_Bbpd.a(paramMessage.getLong("id"), paramMessage.getString("type"), paramMessage.getInt("status"), paramMessage.getString("callbackId"));
-          continue;
-          if (this.jdField_a_of_type_Bbpd != null)
-          {
-            paramMessage = (Bundle)paramMessage.obj;
-            this.jdField_a_of_type_Bbpd.a(paramMessage.getString("callbackId"));
-          }
-        }
-      }
+      this.a.this$0.a.cancel();
+      this.a.this$0.getActivity().finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bceu
  * JD-Core Version:    0.7.0.1
  */

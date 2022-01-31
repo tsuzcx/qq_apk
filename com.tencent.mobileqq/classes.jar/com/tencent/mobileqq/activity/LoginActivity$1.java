@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ahnl;
+import ajeu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.kingkong.Common;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,7 +15,7 @@ final class LoginActivity$1
   public void run()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b = NetConnInfoCenter.getServerTime();
-    ahnl.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.sApplication, false, true);
+    ajeu.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.sApplication, false, true);
     try
     {
       Common.OnLogin(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString);
@@ -30,7 +30,7 @@ final class LoginActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginActivity.1
  * JD-Core Version:    0.7.0.1
  */

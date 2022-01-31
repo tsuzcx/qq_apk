@@ -12,18 +12,18 @@ import android.view.View;
 public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  public float a;
+  public int a;
+  public Paint a;
   RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private int d;
-  private int e;
-  private int f;
+  private volatile boolean jdField_a_of_type_Boolean;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
   public ReadInjoyHeaderAdDownloadView$SimpleRoundProgress(Context paramContext)
   {
@@ -38,6 +38,7 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
   public ReadInjoyHeaderAdDownloadView$SimpleRoundProgress(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -97,9 +98,15 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
     this.jdField_c_of_type_Int = paramInt;
   }
   
+  public void setPauseWithoutInvalidate(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
   public void setPaused(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
+    postInvalidate();
   }
   
   public void setProgress(int paramInt)
@@ -121,7 +128,7 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyHeaderAdDownloadView.SimpleRoundProgress
  * JD-Core Version:    0.7.0.1
  */

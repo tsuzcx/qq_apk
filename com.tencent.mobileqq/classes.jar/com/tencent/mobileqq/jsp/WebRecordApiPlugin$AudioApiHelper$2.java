@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import arpb;
-import bbax;
+import atfv;
+import bczr;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.util.Date;
 public class WebRecordApiPlugin$AudioApiHelper$2
   implements Runnable
 {
-  public WebRecordApiPlugin$AudioApiHelper$2(arpb paramarpb, String paramString) {}
+  public WebRecordApiPlugin$AudioApiHelper$2(atfv paramatfv, String paramString) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class WebRecordApiPlugin$AudioApiHelper$2
               if (((Date)localObject2).before(((Calendar)localObject3).getTime()))
               {
                 localObject1[i].delete();
-                bbax.a(this.jdField_a_of_type_Arpb.a, str);
+                bczr.a(this.jdField_a_of_type_Atfv.a, str);
               }
               i += 1;
             }
@@ -57,13 +57,13 @@ public class WebRecordApiPlugin$AudioApiHelper$2
       }
       long l = System.currentTimeMillis();
       localObject1 = new SimpleDateFormat("yyyyMMdd").format(new Date(l));
-      bbax.a(this.jdField_a_of_type_Arpb.a, "LAST_DELETE_TIME", (String)localObject1);
+      bczr.a(this.jdField_a_of_type_Atfv.a, "LAST_DELETE_TIME", (String)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.WebRecordApiPlugin.AudioApiHelper.2
  * JD-Core Version:    0.7.0.1
  */

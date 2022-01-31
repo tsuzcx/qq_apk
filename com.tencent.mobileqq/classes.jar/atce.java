@@ -1,29 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class atce
-  implements bfpt
 {
-  public atce(GameQuickWordsPanel paramGameQuickWordsPanel) {}
+  static HookMethodCallback jdField_a_of_type_ComTencentMobileqqJavahooksdkHookMethodCallback = new atcf();
+  private static ConcurrentHashMap<Long, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  static HookMethodCallback b = new atcg();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static void a()
   {
-    paramAdapterView = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramView = new aaog();
-    paramView.c = bbfj.a(BaseApplication.getContext());
-    paramView.a = System.currentTimeMillis();
-    aanz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramAdapterView, null, paramView);
-    this.a.jdField_a_of_type_Aepe.aK();
-    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "send_default", 0, 0, "", "", "", "");
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(Thread.currentThread().getId()), Long.valueOf(0L));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atce
  * JD-Core Version:    0.7.0.1
  */

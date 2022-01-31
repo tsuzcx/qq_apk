@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.persistence.fts;
 
-import auko;
+import awbv;
 
 public abstract class FTSOptSync
-  extends auko
+  extends awbv
 {
   public String mContent;
   public long mOId;
@@ -12,7 +12,7 @@ public abstract class FTSOptSync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.fts.FTSOptSync
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,41 @@
-public class wid
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+class wid
+  implements uni<vbk, vbl>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  wid(wic paramwic, boolean paramBoolean) {}
   
-  public wid(int paramInt)
+  public void a(@NonNull vbk paramvbk, @Nullable vbl arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = "QQ";
-    this.d = 1;
-    switch (paramInt)
+    if (wic.a(this.jdField_a_of_type_Wic).get())
     {
-    default: 
-      return;
-    case 65793: 
-      this.c = 1;
-      this.jdField_a_of_type_JavaLangString = "Windows";
-      this.jdField_a_of_type_Long = 1L;
-      this.jdField_b_of_type_Int = 1;
-      return;
-    case 66818: 
-    case 66831: 
-      this.c = 2;
-      this.jdField_a_of_type_JavaLangString = "Mac";
-      this.jdField_b_of_type_Int = 1;
-      return;
-    case 68361: 
-    case 72194: 
-      this.c = 3;
-      this.jdField_a_of_type_JavaLangString = "iPad";
-      this.jdField_b_of_type_Int = 2;
-      this.d = 2;
-      return;
-    case 65805: 
-    case 68104: 
-      this.c = 4;
-      this.jdField_a_of_type_JavaLangString = "aPad";
-      this.jdField_b_of_type_Int = 2;
-      this.d = 2;
-      return;
-    case 75023: 
-    case 78082: 
-    case 78096: 
-      this.c = 5;
-      this.jdField_a_of_type_JavaLangString = ajya.a(2131706335);
-      this.jdField_b_of_type_Int = 3;
-      this.d = 3;
+      wsv.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
       return;
     }
-    this.c = 6;
-    this.jdField_a_of_type_JavaLangString = "Windows";
-    this.jdField_b_of_type_JavaLangString = "TIM";
-    this.jdField_a_of_type_Long = 1L;
-    this.jdField_b_of_type_Int = 1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("LoginDevItem[").append(this.jdField_b_of_type_JavaLangString).append("|").append(this.jdField_a_of_type_Int).append("|").append(this.jdField_a_of_type_Long).append("|").append(this.d).append("]");
-    return localStringBuilder.toString();
+    wsv.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
+    paramvbk = new wif(this.jdField_a_of_type_Wic, paramErrorMessage);
+    paramvbk.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    if ((??? == null) || (paramErrorMessage.isFail()))
+    {
+      uht.a().dispatch(paramvbk);
+      return;
+    }
+    paramvbk.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
+    ((ure)urr.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
+    synchronized (this.jdField_a_of_type_Wic)
+    {
+      uht.a().dispatch(paramvbk);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wid
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,87 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
+import android.graphics.drawable.shapes.Shape;
 
-class bhyx
-  implements ModuleDownloadListener
+public class bhyx
 {
-  bhyx(bhyv parambhyv, bhza parambhza) {}
+  private int jdField_a_of_type_Int;
+  private bhyw jdField_a_of_type_Bhyw;
+  private int b;
+  private int c = 12;
+  private int d = 8;
   
-  public void onDownloadCanceled(String paramString)
+  public bhyx(bhyw parambhyw)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    this.jdField_a_of_type_Bhyw = parambhyw;
   }
   
-  public void onDownloadFailed(String paramString)
+  private int a(float paramFloat)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-    bhyv.b(this.jdField_a_of_type_Bhyv, false);
-    this.jdField_a_of_type_Bhza.a(false);
+    return bcwh.a(bhyw.a(this.jdField_a_of_type_Bhyw), paramFloat);
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat)
+  private static int a(int paramInt)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("libTar.so")) {
-      return;
+    switch (paramInt)
+    {
+    default: 
+      return 32;
+    case 49: 
+      return 33;
+    case 50: 
+      return 34;
+    case 51: 
+      return 36;
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhyv.c(), " onDownloadSucceed = ", bhyv.d() });
-    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bhyv.d());
-    bhyv.b(this.jdField_a_of_type_Bhyv);
-    this.jdField_a_of_type_Bhza.a(bhyv.b(this.jdField_a_of_type_Bhyv));
+    return 35;
+  }
+  
+  private static Drawable a(float paramFloat, int paramInt)
+  {
+    ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat }, null, null));
+    localShapeDrawable.getPaint().setColor(paramInt);
+    return localShapeDrawable;
+  }
+  
+  private static Drawable a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    Object localObject = new bhyz(a(paramInt3));
+    ((bhyz)localObject).resize(paramInt1, paramInt2);
+    localObject = new ShapeDrawable((Shape)localObject);
+    ((ShapeDrawable)localObject).setIntrinsicWidth(paramInt1);
+    ((ShapeDrawable)localObject).setIntrinsicHeight(paramInt2);
+    ((ShapeDrawable)localObject).getPaint().setColor(paramInt4);
+    return localObject;
+  }
+  
+  public bhyw a()
+  {
+    Drawable localDrawable1 = a(a(this.jdField_a_of_type_Int), this.b);
+    this.jdField_a_of_type_Bhyw.c(localDrawable1);
+    localDrawable1 = a(a(this.c), a(this.d), 49, this.b);
+    Drawable localDrawable2 = a(a(this.d), a(this.c), 51, this.b);
+    this.jdField_a_of_type_Bhyw.b(localDrawable2);
+    this.jdField_a_of_type_Bhyw.a(localDrawable1);
+    return this.jdField_a_of_type_Bhyw;
+  }
+  
+  public bhyx a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bhyx b(int paramInt)
+  {
+    this.b = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhyx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,26 @@
-import android.app.Activity;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface apkq
+public class apkq
 {
-  public abstract int a();
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  ImageView d;
+  ImageView e;
+  ImageView f;
   
-  public abstract RelativeLayout a();
-  
-  public abstract QQAppInterface a();
-  
-  public abstract ForwardFileInfo a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
-  
-  public abstract void e();
-  
-  public abstract boolean e();
-  
-  public abstract void f();
-  
-  public abstract Activity getActivity();
+  public apkq(apkp paramapkp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apkq
  * JD-Core Version:    0.7.0.1
  */

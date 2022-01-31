@@ -1,84 +1,66 @@
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class bbeh
-  extends mxj
+public class bbeh
+  implements bhqd
 {
-  bbeh(bbeg parambbeg, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Bcnq.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bbeh(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, bhpy parambhpy, URLDrawable paramURLDrawable) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    int i;
+    if (!bcgh.b(this.jdField_a_of_type_JavaLangString))
     {
-      aqgj.a("KEY_STAGE_2_CONNECT_MINI_D55", bool);
-      if (this.jdField_a_of_type_Bbeg.d)
-      {
-        this.jdField_a_of_type_Bbeg.d = false;
-        this.jdField_a_of_type_Bbeg.c();
+      i = 1;
+      if (i == 0) {
+        break label74;
       }
-      if (!this.jdField_a_of_type_Bbeg.c) {
-        break;
+      paramView = this.jdField_a_of_type_JavaLangString;
+      paramView = this.jdField_a_of_type_Bhpy.a(paramInt);
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693485).equals(paramView)) {
+        break label130;
       }
-      bcql.a(this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext, 1, 2131699571, 1).a();
-      paramArrayOfByte = new Intent(this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
-      paramArrayOfByte.addFlags(67108864);
-      paramArrayOfByte.addFlags(268435456);
-      this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte);
-      bbeg.c(this.jdField_a_of_type_Bbeg);
-      return;
-    }
-    if (this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    paramBundle = bbeg.a(this.jdField_a_of_type_Bbeg);
-    if (paramInt == 0)
-    {
-      axqy.b(bbeg.a(this.jdField_a_of_type_Bbeg), "dc01160", "", "", "0X800A51A", "0X800A51A", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, this.b);
-      paramBundle.putExtra("mini_app_id", this.b);
-      paramBundle.putExtra("mini_app_path", this.c);
-      paramBundle.putExtra("mini_app_type", this.d);
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext.startActivity(paramBundle);
-      bbeg.c(this.jdField_a_of_type_Bbeg);
+      this.jdField_a_of_type_Bhpy.dismiss();
       return;
-      if (paramInt == 25501)
+      i = 0;
+      break;
+      label74:
+      if (this.jdField_a_of_type_JavaLangString.equals(aiiy.jdField_a_of_type_JavaLangString)) {}
+      for (paramView = bcgh.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString, 0);; paramView = bcgh.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString, 1))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("JumpAction", 2, "Account not the same");
-        }
-        axqy.b(bbeg.a(this.jdField_a_of_type_Bbeg), "dc01160", "", "", "0X800A51A", "0X800A51A", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, this.b);
-        paramBundle.putExtra("mini_app_id", this.b);
-        paramBundle.putExtra("mini_app_path", this.c);
-        paramBundle.putExtra("mini_app_type", this.d);
-        paramBundle.putExtra("openid", this.e);
-        paramBundle.putExtra("appid", this.jdField_a_of_type_JavaLangString);
-        paramBundle.putExtra("pull_show_open_id_diff_main", true);
+        bcgh.a(paramView);
+        break;
       }
-      else
-      {
-        paramArrayOfByte = ajwj.a(paramArrayOfByte);
-        axqy.b(bbeg.a(this.jdField_a_of_type_Bbeg), "dc01160", "", "", "0X800A51B", "0X800A51B", 0, paramInt, "", "", this.jdField_a_of_type_JavaLangString, this.b);
-        if (paramInt == 25601)
-        {
-          paramBundle.putExtra("pull_mini_app_not_privilege_not_bind", true);
-          paramBundle.putExtra("pull_mini_app_not_privilege_not_bind_app_name", this.f);
+      label130:
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693495).equals(paramView)) {
+        TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693493).equals(paramView)) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.d, this.jdField_a_of_type_JavaLangString);
+      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131698181).equals(paramView)) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
+      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693482).equals(paramView)) {
+        if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Boolean) && (TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity) != null) && (TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity).getBoolean("from_personality_label", false))) {
+          TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int, TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity));
+        } else if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int))) {
+          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
+        } else {
+          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
         }
-        paramBundle.putExtra("pull_mini_app_not_privilege", true);
-        paramBundle.putExtra("pull_mini_app_not_privilege_string", paramArrayOfByte);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbeh
  * JD-Core Version:    0.7.0.1
  */

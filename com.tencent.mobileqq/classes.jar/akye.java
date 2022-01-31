@@ -1,559 +1,196 @@
-import android.graphics.PointF;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.1;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.10;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.11;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.12;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.13;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.2;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.3;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.4;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.5;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.6;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.7;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.8;
-import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.9;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecog;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.annotation.TargetApi;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.List;
 
 public class akye
-  implements akxw
 {
-  public static final String a;
-  public int a;
-  private long jdField_a_of_type_Long;
-  private akxv jdField_a_of_type_Akxv;
-  private akyf jdField_a_of_type_Akyf;
-  volatile akyh jdField_a_of_type_Akyh = null;
-  private akyi jdField_a_of_type_Akyi;
-  private alhk jdField_a_of_type_Alhk = new alhk();
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  public ARScanEntryView a;
-  public WeakReference<alky> a;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean;
-  public final int b;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = true;
-  public final int c;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = true;
-  public final int d;
-  private String d;
-  public final int e = 4;
-  public final int f = 5;
-  public final int g = 6;
-  private volatile int h = -1;
-  private int i;
-  private int j = 15;
+  public static int a;
+  private akxn jdField_a_of_type_Akxn;
+  private akyc jdField_a_of_type_Akyc;
+  private ApolloTextureView jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView;
+  private final int b;
+  private int c;
   
-  static
+  public akye(CmShowRenderView paramCmShowRenderView, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = akye.class.getSimpleName();
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = paramCmShowRenderView;
+    this.b = paramInt;
   }
   
-  public akye()
+  public static void a(ArrayList<String> paramArrayList, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_Int = 2;
-    this.jdField_d_of_type_Int = 3;
-  }
-  
-  public int a()
-  {
-    return this.h;
+    QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes start");
+    Bundle localBundle = new Bundle();
+    localBundle.putIntArray("actionIds", paramArrayOfInt);
+    localBundle.putStringArrayList("uins", paramArrayList);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_preload_res", localBundle, new akyf());
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Akyi != null) {
-      this.jdField_a_of_type_Akyi.b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_RenderViewController", 2, "onResume");
     }
-    this.jdField_a_of_type_Akyf = null;
-    f();
-    this.h = -1;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "setGamePlayMode mode " + paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "setRecogRes");
-    if (this.jdField_a_of_type_Akyf != null)
-    {
-      this.jdField_a_of_type_Akyf.a(paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
-    }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "setRecogRes failed.");
-  }
-  
-  public void a(akyf paramakyf)
-  {
-    if (paramakyf != null)
-    {
-      this.jdField_a_of_type_Akyf = paramakyf;
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.jdField_a_of_type_Akyf.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      }
-      this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Akyf.b();
-      if (!this.jdField_a_of_type_Akyf.c()) {
-        break label75;
-      }
-    }
-    label75:
-    for (int k = 1;; k = 2)
-    {
-      this.jdField_a_of_type_Int = k;
-      this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Akyf.a();
-      return;
+    if ((a()) && (this.jdField_a_of_type_Akxn != null)) {
+      this.jdField_a_of_type_Akxn.b();
     }
   }
   
-  public void a(alhk paramalhk, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(int paramInt1, int paramInt2)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "processInternalGestureRecogResult");
-    if (!b()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "processInternalGestureRecogResult into Error status");
-    }
-    this.jdField_a_of_type_Alhk = paramalhk;
-    int k = 1;
-    if (this.jdField_a_of_type_Long > 0L) {
-      k = 0;
-    }
-    int m;
-    boolean bool;
-    if ((this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_d_of_type_Int == 0) && (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_c_of_type_Int > 0))
-    {
-      f();
-      if (k != 0)
-      {
-        c(4);
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "processInternalGestureRecogResult start draw circle");
-      }
-      paramalhk = ARLocalGestureCircleRecog.a(paramInt1, paramInt2, paramInt3, paramInt4, new PointF(this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_a_of_type_Alhl.b, this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_a_of_type_Alhl.c));
-      m = (int)(this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_a_of_type_Alhl.jdField_a_of_type_Float / paramInt2 * paramInt3);
-      int n = (int)paramalhk.x;
-      int i1 = (int)paramalhk.y;
-      if (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_a_of_type_Alhl.jdField_a_of_type_Boolean)
-      {
-        k = 1;
-        a(m, n, i1, k);
-        b(1);
-        akzk.a().a(6);
-        this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.g = 0;
-      }
-    }
-    else
-    {
-      if (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_c_of_type_Int <= this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_d_of_type_Int) {
-        break label547;
-      }
-      m = 0;
-      if (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhn.jdField_d_of_type_Int != 1) {
-        break label478;
-      }
-      if (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_d_of_type_Int != 0) {
-        break label457;
-      }
-      k = 0;
-      m = 1;
-      bool = true;
-    }
-    for (;;)
-    {
-      label291:
-      if (m != 0)
-      {
-        if (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhn.jdField_d_of_type_Int != 1) {
-          break label779;
-        }
-        paramalhk = new int[this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_c_of_type_Int - k];
-        int[] arrayOfInt1 = new int[this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_c_of_type_Int - k];
-        int[] arrayOfInt2 = new int[this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_c_of_type_Int - k];
-        paramInt2 = k;
-        for (;;)
-        {
-          if (paramInt2 < this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_c_of_type_Int)
-          {
-            PointF localPointF = ARLocalGestureCircleRecog.a(paramInt1, paramInt1, paramInt3, paramInt4, this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[paramInt2]);
-            paramalhk[(paramInt2 - k)] = ((int)localPointF.x);
-            arrayOfInt1[(paramInt2 - k)] = ((int)localPointF.y);
-            arrayOfInt2[(paramInt2 - k)] = this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_a_of_type_ArrayOfInt[paramInt2];
-            paramInt2 += 1;
-            continue;
-            k = -1;
-            break;
-            label457:
-            k = this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_d_of_type_Int;
-            m = 1;
-            bool = false;
-            break label291;
-            label478:
-            if (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_c_of_type_Int >= 1) {
-              m = 1;
-            }
-            if (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_d_of_type_Int < 1)
-            {
-              bool = true;
-              k = 0;
-              break label291;
-            }
-            bool = false;
-            k = this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_d_of_type_Int;
-            break label291;
-          }
-        }
-        a(paramalhk, arrayOfInt1, arrayOfInt2, bool);
-      }
-    }
-    for (;;)
-    {
-      label547:
-      if ((this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_b_of_type_Int != -1) && (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_c_of_type_Int > 0))
-      {
-        this.jdField_c_of_type_Boolean = true;
-        d();
-        c(3);
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-          ((alky)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(new ARTransferDoorLogicManager.2(this), 1000L);
-        }
-      }
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "zoomOutWorldCupSparks curent state " + this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_a_of_type_Int);
-      if ((this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.jdField_b_of_type_Int != 0))
-      {
-        c(5);
-        b(2);
-        ThreadManager.getSubThreadHandler().post(new ARTransferDoorLogicManager.3(this));
-        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-          ((alky)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(new ARTransferDoorLogicManager.4(this), 1500L);
-        }
-      }
-      return;
-      label779:
-      this.i = 0;
-      if (this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_c_of_type_Boolean = false;
-        paramalhk = new ARTransferDoorLogicManager.1(this, paramInt1, paramInt2, paramInt3, paramInt4);
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "DrawCircle. resume. mDrawCirclePuase = " + this.jdField_c_of_type_Boolean + ", genIdx = " + this.jdField_a_of_type_Alhk.jdField_a_of_type_Alhm.g);
-        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!this.jdField_c_of_type_Boolean)) {
-          ((alky)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramalhk, this.j);
-        }
-      }
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramInt1, paramInt2);
     }
   }
   
-  public void a(alky paramalky)
+  public void a(akxj paramakxj)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalky);
-  }
-  
-  public void a(AppInterface paramAppInterface, ScanTorchActivity paramScanTorchActivity, RelativeLayout paramRelativeLayout)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getUIHandler();
-    this.jdField_a_of_type_Akxv = new akxv(paramScanTorchActivity);
-    this.jdField_a_of_type_Akxv.a(this);
-    if ((this.jdField_a_of_type_Akyf != null) && (paramRelativeLayout != null))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "init " + paramRelativeLayout.getChildCount());
-      this.jdField_a_of_type_Akyf.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_Akyi = new akyi(paramScanTorchActivity);
-      return;
+    if (this.jdField_a_of_type_Akyc != null) {
+      this.jdField_a_of_type_Akyc.a(paramakxj);
     }
-    paramAppInterface = jdField_a_of_type_JavaLangString;
-    paramRelativeLayout = new StringBuilder().append("init ");
-    if (this.jdField_a_of_type_Akyf != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d(paramAppInterface, 2, bool);
-      break;
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramakxj);
     }
   }
   
-  public void a(ArCloudConfigInfo paramArCloudConfigInfo)
+  public void a(CmShowRenderView.PlayActionConfig paramPlayActionConfig)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "startRenderTransferGame config " + paramArCloudConfigInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-    }
-    ArCloudConfigInfo localArCloudConfigInfo = paramArCloudConfigInfo;
-    if (paramArCloudConfigInfo == null)
-    {
-      localArCloudConfigInfo = paramArCloudConfigInfo;
-      if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null)
-      {
-        localArCloudConfigInfo = paramArCloudConfigInfo;
-        if (a()) {
-          localArCloudConfigInfo = this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-        }
-      }
-    }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((alky)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(4096L, localArCloudConfigInfo);
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramPlayActionConfig);
     }
   }
   
-  public void a(boolean paramBoolean)
+  @TargetApi(14)
+  public void a(String paramString)
   {
-    b();
-    if (paramBoolean)
-    {
-      if ((this.jdField_a_of_type_Akyf != null) && (this.jdField_a_of_type_Int == 1)) {
-        if (this.jdField_a_of_type_Akyf.b())
-        {
-          c(6);
-          this.jdField_a_of_type_Akyf.a();
-          this.h = -1;
-        }
-      }
-      for (;;)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onPhonePoseChaned standBy SUCCESS with mode: " + this.jdField_a_of_type_Int + "-mCurrentPoseStatus:" + this.h);
-        return;
-        this.h = 0;
-        continue;
-        if ((this.jdField_a_of_type_Akyf != null) && (this.jdField_a_of_type_Int == 2))
-        {
-          c(2);
-          this.h = 0;
-        }
-        else if (this.jdField_a_of_type_Akyf == null)
-        {
-          c(2);
-          this.h = 0;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_RenderViewController", 2, "initApolloSurfaceView");
     }
-    if ((this.jdField_a_of_type_Akyf != null) && (this.jdField_a_of_type_Akyf.b()) && (this.jdField_a_of_type_Int == 1)) {
-      c(1);
-    }
-    for (;;)
-    {
-      this.h = 1;
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onPhonePoseChaned standBy FAIL with mode: " + this.jdField_a_of_type_Int + "-mCurrentPoseStatus:" + this.h);
-      return;
-      if (this.jdField_a_of_type_Int == 2) {
-        c(1);
-      }
+    this.jdField_a_of_type_Akxn = new akxn(paramString, this.b);
+    this.jdField_a_of_type_Akyc = new akyc(this.jdField_a_of_type_Akxn, 0);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.init(this.jdField_a_of_type_Akyc);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setDumplicateCreateRenderThread(akji.q);
+    this.jdField_a_of_type_Akxn.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
+    int i = akwt.a();
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setInitHeight(i);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramString, paramInt);
     }
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "updateUITipsMessage " + paramBoolean + ";" + paramString);
-    if ((this.jdField_a_of_type_Boolean == paramBoolean) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
-      return;
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramString, paramInt1, paramInt2, paramInt3);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.6(this, paramString));
-      return;
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.7(this));
   }
   
-  public void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, boolean paramBoolean)
+  public void a(String paramString1, String paramString2)
   {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "insertWorldCupSpark start.");
-    if ((this.jdField_a_of_type_Akyf != null) && (this.jdField_a_of_type_Akyf.a()))
-    {
-      this.jdField_a_of_type_Akyf.a(paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramBoolean);
-      return;
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramString1, paramString2);
     }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "insertWorldCupSpark failed.");
+  }
+  
+  public void a(String paramString1, String paramString2, float paramFloat, int paramInt, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramString1, paramString2, paramFloat, paramInt, paramBundle);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramString1, paramString2, paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramString, paramBoolean);
+    }
+  }
+  
+  public void a(List<String> paramList, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramList, paramBoolean);
+    }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 2;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_Akyf != null) {
-      return this.jdField_a_of_type_Akyf.a();
-    }
-    return 0;
+    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null;
   }
   
   public void b()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnResume");
-    if (this.jdField_a_of_type_Int == 1) {}
-  }
-  
-  public void b(int paramInt)
-  {
-    boolean bool = true;
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "switchGameStatus " + paramInt);
-    if (this.jdField_a_of_type_Akyf != null)
-    {
-      this.jdField_a_of_type_Akyf.a(paramInt);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_RenderViewController", 2, "onPause");
     }
-    String str = jdField_a_of_type_JavaLangString;
-    if ("switchGameStatus " + paramInt + "|" + this.jdField_a_of_type_Akyf != null) {}
-    for (;;)
-    {
-      QLog.d(str, 2, new Object[] { Boolean.valueOf(bool) });
-      return;
-      bool = false;
+    if ((a()) && (this.jdField_a_of_type_Akxn != null)) {
+      this.jdField_a_of_type_Akxn.a();
     }
   }
   
-  public void b(boolean paramBoolean)
+  public void b(String paramString)
   {
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.5(this, paramBoolean));
+    if (this.jdField_a_of_type_Akxn != null) {
+      this.jdField_a_of_type_Akxn.a(paramString);
     }
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Akyf == null) {}
-    int k;
-    do
-    {
-      return true;
-      k = b();
-    } while ((k == 0) || (k == 1));
-    return false;
   }
   
   public void c()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "notifyEnterIntoTransferDoorStatus");
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((alky)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_RenderViewController", 2, "onDestroy ");
     }
-  }
-  
-  public void c(int paramInt)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "OnARTransferStatusChanged status changeTo " + paramInt);
-    if ((this.jdField_a_of_type_MqqOsMqqHandler == null) || (this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView == null) || ((this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView != null) && (!this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.a()))) {
-      return;
-    }
-    switch (paramInt)
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null)
     {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.8(this));
-      return;
-    case 2: 
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.9(this));
-      return;
-    case 3: 
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.10(this));
-      return;
-    case 4: 
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.11(this));
-      return;
-    case 5: 
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.12(this));
-      return;
+      ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender();
+      if (localApolloRender != null) {
+        localApolloRender.queueDestroy();
+      }
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.13(this));
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = true;
-    this.i = 0;
-    this.j = 15;
-  }
-  
-  public void e()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "startPhonePoseDetect");
-    this.jdField_a_of_type_Akxv.a();
-    this.h = -1;
-  }
-  
-  public void f()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "stopPhonePoseDetect");
-    this.jdField_a_of_type_Akxv.b();
-  }
-  
-  public void g()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnPause");
-    if (this.jdField_a_of_type_Akyf == null)
+    if (this.jdField_a_of_type_Akxn != null)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnPause but do nothing here");
+      this.jdField_a_of_type_Akxn.c();
+      this.jdField_a_of_type_Akxn = null;
+    }
+    if (!a())
+    {
+      QLog.e("CmShow_RenderViewController", 1, new Object[] { "[onDestory] isViewAvailable:", Boolean.valueOf(a()) });
       return;
     }
-    if (this.jdField_a_of_type_Akyi != null) {
-      this.jdField_a_of_type_Akyi.b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    c(6);
-    f();
-    this.h = -1;
-  }
-  
-  public void h()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "ARWorldGC ARWorldCupGameLogicManager uninit");
-    this.jdField_a_of_type_Akyf = null;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(null);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(8);
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getParent() instanceof ViewGroup)) {
+        ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView = null;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-    this.jdField_a_of_type_Akyh = null;
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    }
-    this.jdField_a_of_type_Akyi = null;
-    if (this.jdField_a_of_type_Akxv != null)
-    {
-      this.jdField_a_of_type_Akxv.b();
-      this.jdField_a_of_type_Akxv = null;
-    }
-    this.h = -1;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-  }
-  
-  public void i()
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "zoomOutWorldCupSparks .");
-    if (this.jdField_a_of_type_Akyf != null)
-    {
-      this.jdField_a_of_type_Akyf.b();
-      return;
-    }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "zoomOutWorldCupSparks failed.");
+    this.c = 0;
+    akxe.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akye
  * JD-Core Version:    0.7.0.1
  */

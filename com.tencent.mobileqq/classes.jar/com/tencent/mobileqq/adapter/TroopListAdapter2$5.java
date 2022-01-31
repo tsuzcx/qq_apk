@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.adapter;
 
-import aipr;
-import aipy;
+import akhc;
+import akhj;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import mqq.os.MqqHandler;
 public class TroopListAdapter2$5
   implements Runnable
 {
-  public TroopListAdapter2$5(aipr paramaipr, TroopManager paramTroopManager, String paramString, aipy paramaipy, boolean paramBoolean) {}
+  public TroopListAdapter2$5(akhc paramakhc, TroopManager paramTroopManager, String paramString, akhj paramakhj, boolean paramBoolean) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class TroopListAdapter2$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopListAdapter2.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
 class ahbh
-  extends ayxp
+  implements Animator.AnimatorListener
 {
-  ahbh(ahbf paramahbf, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, bbwt parambbwt, DownloadParam paramDownloadParam)
+  ahbh(ahbf paramahbf) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramQQAppInterface, paramString);
+    this.a.a.a = true;
+    paramAnimator = new Intent(this.a.a, SearchContactsActivity.class);
+    paramAnimator.putExtra("from_key", this.a.a.a());
+    paramAnimator.putExtra("fromType", 13);
+    this.a.a.startActivity(paramAnimator);
+    this.a.a.overridePendingTransition(0, 0);
+    bdah.a(false);
   }
   
-  protected void realCancel() {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  protected void realStart()
-  {
-    ahbf.a(this.jdField_a_of_type_Ahbf, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bbwt, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahbh
  * JD-Core Version:    0.7.0.1
  */

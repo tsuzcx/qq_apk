@@ -1,22 +1,39 @@
-import android.support.v4.util.ArraySet;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.smtt.sdk.ValueCallback;
+import java.lang.ref.WeakReference;
 
-class arnq
-  implements amag
+final class arnq
+  implements ValueCallback<String>
 {
-  arnq(arnp paramarnp, String paramString) {}
+  arnq(WeakReference paramWeakReference, Activity paramActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(String paramString)
   {
-    if (arnp.a(this.jdField_a_of_type_Arnp) != null) {
-      arnp.a(this.jdField_a_of_type_Arnp).remove(Integer.valueOf(paramInt1));
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localActivity != null) && (paramString != null) && (paramString.startsWith("http")))
+    {
+      if (aqwa.a().a() == null)
+      {
+        paramString = new Bundle();
+        paramString.putString("_filename_from_dlg", this.jdField_a_of_type_AndroidAppActivity.getString(2131694943));
+        paramString.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
+        Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
+        localIntent.putExtra("param", paramString);
+        localIntent.putExtra("url", "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
+        localActivity.sendBroadcast(localIntent);
+      }
     }
-    amau.a().a(paramInt1);
-    this.jdField_a_of_type_Arnp.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"openresult\":" + paramInt2 + "}" });
+    else {
+      return;
+    }
+    arni.b(localActivity, "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,65 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqQQStoryGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.AppRuntime;
 
 public class tha
-  extends sys
 {
-  public static String a = sxm.a("StorySvc.new_user_guide");
-  public String b;
-  public String c;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static tha jdField_a_of_type_Tha;
+  private String jdField_a_of_type_JavaLangString = "WeishiNewService";
   
-  public tha(String paramString1, String paramString2)
+  public static tha a()
   {
-    this.b = paramString1;
-    this.c = paramString2;
-  }
-  
-  public String a()
-  {
-    return a;
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspQQStoryGuide localRspQQStoryGuide = new qqstory_service.RspQQStoryGuide();
-    try
+    if (jdField_a_of_type_Tha == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      localRspQQStoryGuide.mergeFrom(paramArrayOfByte);
-      return new thb(localRspQQStoryGuide);
+      if (jdField_a_of_type_Tha == null) {
+        jdField_a_of_type_Tha = new tha();
+      }
+      return jdField_a_of_type_Tha;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  public int a(thb paramthb, tgs paramtgs)
+  {
+    if (paramthb == null) {}
+    for (;;)
     {
-      for (;;)
+      return 1000004;
+      paramthb.a(paramtgs);
+      paramthb.a = System.currentTimeMillis();
+      try
       {
-        paramArrayOfByte.printStackTrace();
+        WeishiIntent localWeishiIntent = new WeishiIntent(BaseApplication.getContext(), thd.class);
+        localWeishiIntent.setWithouLogin(true);
+        localWeishiIntent.a = ((the)paramtgs);
+        if ((localWeishiIntent.a != null) && (localWeishiIntent.a.a != null))
+        {
+          paramtgs = BaseApplicationImpl.getApplication().getRuntime();
+          if (paramtgs != null)
+          {
+            paramtgs.startServlet(localWeishiIntent);
+            Log.i("weishi", "cmd=" + paramthb.uniKey() + ", pkgId=" + paramthb.a() + " submit to MSF, isLogin: " + paramtgs.isLogin());
+          }
+          else
+          {
+            Log.e("weishi", "app is null");
+          }
+        }
+      }
+      catch (Exception paramthb)
+      {
+        Log.e("weishi", "WeishiProtocolService occur exception. stack=" + paramthb.getLocalizedMessage());
       }
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqQQStoryGuide localReqQQStoryGuide = new qqstory_service.ReqQQStoryGuide();
-    try
-    {
-      localReqQQStoryGuide.to_uid.set(Long.valueOf(this.b).longValue());
-      localReqQQStoryGuide.version.set(this.c);
-      return localReqQQStoryGuide.toByteArray();
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        localReqQQStoryGuide.to_uid.set(0L);
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    return "QQStoryGuideRequest{toUid='" + this.b + '\'' + "version='" + this.c + '\'' + '}';
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tha
  * JD-Core Version:    0.7.0.1
  */

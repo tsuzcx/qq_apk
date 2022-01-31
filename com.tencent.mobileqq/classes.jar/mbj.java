@@ -1,22 +1,20 @@
-import java.util.Comparator;
+import android.telephony.PhoneStateListener;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
 
-class mbj
-  implements Comparator<lon>
+public class mbj
+  extends PhoneStateListener
 {
-  mbj(mbh parammbh) {}
+  public mbj(BaseSmallScreenService paramBaseSmallScreenService) {}
   
-  public int a(lon paramlon1, lon paramlon2)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    if (paramlon1.a) {}
-    while (paramlon2.a) {
-      return -1;
-    }
-    return 0;
+    super.onCallStateChanged(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mbj
  * JD-Core Version:    0.7.0.1
  */

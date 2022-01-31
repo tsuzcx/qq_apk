@@ -1,23 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akup
-  implements Parcelable.Creator<SosoInterface.SosoAttribute>
+class akup
+  extends bdvu
 {
-  public SosoInterface.SosoAttribute a(Parcel paramParcel)
+  akup(akun paramakun) {}
+  
+  public void onDone(bdvv parambdvv)
   {
-    return new SosoInterface.SosoAttribute(paramParcel);
+    super.onDone(parambdvv);
+    QLog.i("cmgame_process.CmGameRscDownloader", 2, "[onDone], status:" + parambdvv.a());
   }
   
-  public SosoInterface.SosoAttribute[] a(int paramInt)
+  public void onDoneFile(bdvv parambdvv)
   {
-    return new SosoInterface.SosoAttribute[paramInt];
+    if ((parambdvv == null) || (akun.a(this.a) == null)) {
+      return;
+    }
+    if (parambdvv.a() != 3)
+    {
+      akun.a(this.a, 2);
+      if (akun.a(this.a) != null) {
+        akun.a(this.a).c(-1005, akun.a(this.a).jdField_b_of_type_JavaLangString);
+      }
+      QLog.e("cmgame_process.CmGameRscDownloader", 1, "downLoad game res fail retCode: " + parambdvv.a());
+      return;
+    }
+    akun.a(this.a);
+  }
+  
+  public void onProgress(bdvv parambdvv)
+  {
+    int i = (int)parambdvv.a;
+    if (akun.a(this.a) != null) {
+      akun.a(this.a).a(i, akun.a(this.a).jdField_b_of_type_Int, akun.a(this.a).jdField_b_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akup
  * JD-Core Version:    0.7.0.1
  */

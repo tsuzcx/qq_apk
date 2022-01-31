@@ -1,144 +1,53 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
 import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.media.AudioManager;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-abstract class beub
+class beub
+  implements atxr
 {
-  private final INTERFACE.GuardInstruction jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$GuardInstruction;
-  private INTERFACE.StJudgeTimingRsp jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StJudgeTimingRsp;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener;
-  private final MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  beub(betz parambetz) {}
   
-  beub(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$GuardInstruction = paramGuardInstruction;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
-  }
-  
-  static void a(Context paramContext, MiniAppInfo paramMiniAppInfo, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp, int paramInt)
-  {
-    if ((paramContext == null) || (paramStJudgeTimingRsp == null) || (paramStJudgeTimingRsp.timingInstructions.isEmpty())) {}
-    for (;;)
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TVKVideoController", 4, new Object[] { "onFocusChange focusType:", Integer.valueOf(paramInt) });
+    }
+    switch (paramInt)
     {
-      return;
-      try
+    }
+    do
+    {
+      do
       {
-        if (paramInt >= paramStJudgeTimingRsp.timingInstructions.size()) {
-          continue;
-        }
-        Object localObject1 = (INTERFACE.GuardInstruction)paramStJudgeTimingRsp.timingInstructions.get(paramInt);
-        if (localObject1 == null) {
-          continue;
-        }
-        if (((INTERFACE.GuardInstruction)localObject1).type.get() == 1)
+        do
         {
-          localObject1 = new beup((INTERFACE.GuardInstruction)localObject1, paramContext, paramMiniAppInfo);
-          if (localObject1 == null) {
-            continue;
-          }
-          ((beub)localObject1).a(paramStJudgeTimingRsp);
-          ((beub)localObject1).a(new beuc(paramContext, paramMiniAppInfo, paramStJudgeTimingRsp, paramInt));
-          ((beub)localObject1).a();
           return;
+        } while (betz.a(this.a) == null);
+        ((AudioManager)((Context)betz.a(this.a).get()).getSystemService("audio")).requestAudioFocus(null, 3, 2);
+        betz.a(this.a).c();
+        betz.a(this.a, 1);
+        if (betz.a(this.a) != null) {
+          betz.a(this.a).onVideoStart((int)betz.a(this.a).c());
         }
+        betz.a(this.a).postDelayed(this.a.a, 100L);
+        return;
+      } while (betz.a(this.a) == null);
+      betz.a(this.a).b();
+      betz.a(this.a, 4);
+      if (betz.a(this.a) != null) {
+        betz.a(this.a).onVideoStop();
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          betc.d("GameGrowthGuardianManager", "tryBuildAndShow", localException);
-          Object localObject2 = null;
-          continue;
-          if (((INTERFACE.GuardInstruction)localObject2).type.get() == 2)
-          {
-            localObject2 = new beuh((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
-          }
-          else if (((INTERFACE.GuardInstruction)localObject2).type.get() == 3)
-          {
-            localObject2 = new beuj((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
-          }
-          else if (((INTERFACE.GuardInstruction)localObject2).type.get() == 6)
-          {
-            localObject2 = new beuf((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
-          }
-          else if (((INTERFACE.GuardInstruction)localObject2).type.get() == 7)
-          {
-            localObject2 = new beum((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
-          }
-          else
-          {
-            betc.c("GameGrowthGuardianManager", "tryBuildAndShow not create and show dialog for " + ((INTERFACE.GuardInstruction)localObject2).type.get());
-            a(paramContext, paramMiniAppInfo, paramStJudgeTimingRsp, paramInt + 1);
-            localObject2 = null;
-          }
-        }
-      }
-    }
-  }
-  
-  INTERFACE.GuardInstruction a()
-  {
-    return this.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$GuardInstruction;
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  protected beua a()
-  {
-    return null;
-  }
-  
-  public MiniAppInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  }
-  
-  void a()
-  {
-    if ((a() == null) || (a() == null)) {
+      betz.a(this.a).removeCallbacks(this.a.a);
       return;
-    }
-    bene localbene = beld.a(a(), 230).a(a().title.get()).a(a().msg.get());
-    if (a() != null) {
-      localbene.b(a().a(), a().a());
-    }
-    if (b() != null) {
-      localbene.a(b().a(), b().a());
-    }
-    localbene.setOnShowListener(new beud(this));
-    localbene.setOnDismissListener(new beue(this));
-    localbene.setCancelable(false);
-    localbene.show();
-  }
-  
-  public void a(INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
-  {
-    this.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StJudgeTimingRsp = paramStJudgeTimingRsp;
-  }
-  
-  public void a(DialogInterface.OnDismissListener paramOnDismissListener)
-  {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = paramOnDismissListener;
-  }
-  
-  protected beua b()
-  {
-    return null;
+    } while (betz.a(this.a) == null);
+    betz.a(this.a).a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beub
  * JD-Core Version:    0.7.0.1
  */

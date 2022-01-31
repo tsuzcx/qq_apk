@@ -1,10 +1,10 @@
 package com.tencent.mfsdk.LeakInspector;
 
+import abqm;
 import android.app.Activity;
 import android.view.Choreographer;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
-import zzp;
 
 public final class ActivityLeakSolution$1
   implements Runnable
@@ -16,7 +16,7 @@ public final class ActivityLeakSolution$1
     try
     {
       Choreographer localChoreographer = Choreographer.getInstance();
-      zzp.a.set(localChoreographer, this.a.getApplicationContext());
+      abqm.a.set(localChoreographer, this.a.getApplicationContext());
       return;
     }
     catch (Throwable localThrowable)
@@ -28,7 +28,7 @@ public final class ActivityLeakSolution$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mfsdk.LeakInspector.ActivityLeakSolution.1
  * JD-Core Version:    0.7.0.1
  */

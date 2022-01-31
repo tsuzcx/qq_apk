@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import aijc;
+import akam;
 import com.tencent.common.app.AppInterface;
 import java.util.HashMap;
 
 class QvipSpecialSoundManager$2
   implements Runnable
 {
-  QvipSpecialSoundManager$2(QvipSpecialSoundManager paramQvipSpecialSoundManager, aijc paramaijc) {}
+  QvipSpecialSoundManager$2(QvipSpecialSoundManager paramQvipSpecialSoundManager, akam paramakam) {}
   
   public void run()
   {

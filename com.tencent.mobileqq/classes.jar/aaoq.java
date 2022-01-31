@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 public final class aaoq
-  implements DialogInterface.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  List<AdAnalysisEvent> a = new ArrayList();
+  public qq_ad_get.QQAdGet.DeviceInfo a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaoq
  * JD-Core Version:    0.7.0.1
  */

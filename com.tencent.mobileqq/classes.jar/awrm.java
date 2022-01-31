@@ -1,76 +1,52 @@
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.widget.TextView;
-import java.util.List;
+import android.view.animation.Transformation;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
 public class awrm
-  extends awrx
+  implements bdjy<Integer>
 {
-  public awrm(baxy parambaxy)
-  {
-    super(parambaxy);
-  }
+  public awrm(ProfileTagView paramProfileTagView) {}
   
-  protected awrc<awoi, awwr> a(baxy parambaxy)
+  public void a(bdjs<Integer> parambdjs, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    return new awrn(parambaxy);
-  }
-  
-  public void a(awog paramawog, awwq paramawwq)
-  {
-    int i = 0;
-    Object localObject = (awoh)paramawog;
-    a(paramawwq, (awoh)localObject);
-    int k = ((awoh)localObject).a();
-    paramawog = paramawwq.a();
-    if ((paramawog != null) && (paramawog != null))
+    paramTransformation = this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getLayoutParams();
+    if (paramTransformation != null)
     {
-      localObject = ((awoh)localObject).a();
-      if (localObject != null)
+      paramTransformation.height = paramInteger.intValue();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.setLayoutParams(paramTransformation);
+      if (Build.VERSION.SDK_INT >= 11)
       {
-        int m = Math.min(Math.min(paramawog.size(), ((List)localObject).size()), k);
-        i = 0;
-        if (i < m)
+        paramInteger = (FrameLayout)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908290);
+        if ((paramInteger != null) && (paramInteger.getChildCount() > 0))
         {
-          ((awwr)paramawog.get(i)).a().setVisibility(0);
-          ((awwr)paramawog.get(i)).a().setTag(2131379213, ((List)localObject).get(i));
-          ((awwr)paramawog.get(i)).a().setTag(2131379218, paramawog.get(i));
-          ((awwr)paramawog.get(i)).a().setTag(2131379214, Integer.valueOf(i));
-          ((awwr)paramawog.get(i)).a().setTag(2131379212, Integer.valueOf(paramawog.size()));
-          ((awwr)paramawog.get(i)).a().setTag(2131379215, this.a);
-          awwd.a((awoi)((List)localObject).get(i), m, i);
-          int n = ((awoi)((List)localObject).get(i)).a();
-          int i1 = ((awoi)((List)localObject).get(i)).b();
-          View localView = ((awwr)paramawog.get(i)).a();
-          if ((((List)localObject).get(i) instanceof awoj)) {}
-          for (int j = ((awoj)((List)localObject).get(i)).r;; j = 0)
+          paramInteger = paramInteger.getChildAt(0);
+          if (paramInteger != null)
           {
-            awwd.a(n, i1, localView, j);
-            this.a.a((awog)((List)localObject).get(i), (awws)paramawog.get(i));
-            i += 1;
-            break;
+            paramInteger = paramInteger.getBackground();
+            if ((paramInteger instanceof BitmapDrawable))
+            {
+              int j = (int)(255.0F * paramFloat);
+              int i = j;
+              if (parambdjs == this.a.jdField_a_of_type_Bdjs) {
+                i = 255 - j;
+              }
+              paramInteger.setAlpha(i);
+            }
           }
         }
-        i = Math.min(((List)localObject).size(), k);
-        while (i < paramawog.size())
-        {
-          ((awwr)paramawog.get(i)).a().setVisibility(8);
-          i += 1;
-        }
       }
-      while (i < paramawog.size())
-      {
-        ((awwr)paramawog.get(i)).a().setVisibility(8);
-        i += 1;
-      }
-    }
-    if (paramawwq.b() != null) {
-      paramawwq.b().setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awrm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,47 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import java.util.HashSet;
 
 public class amgu
 {
-  public static void a(ArrayList<ColorNote> paramArrayList)
+  public static final HashSet<amgu> a;
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public long c;
+  
+  static
   {
-    HashMap localHashMap = new HashMap();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      ColorNote localColorNote = (ColorNote)paramArrayList.next();
-      Integer localInteger = Integer.valueOf(localColorNote.getServiceType());
-      if (localHashMap.containsKey(localInteger))
-      {
-        ((ArrayList)localHashMap.get(localInteger)).add(localColorNote);
-      }
-      else
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(localColorNote);
-        localHashMap.put(localInteger, localArrayList);
-      }
-    }
-    rno.a((List)localHashMap.get(Integer.valueOf(16908290)));
+    jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  }
+  
+  public amgu(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PushMsg0x210_c7Info{");
+    localStringBuilder.append("fromUin:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("msgSeq:").append(this.jdField_b_of_type_Long).append(", ");
+    localStringBuilder.append("msgTime:").append(this.jdField_b_of_type_Int).append(", ");
+    localStringBuilder.append("onlinePush:").append(this.jdField_a_of_type_Boolean).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgu
  * JD-Core Version:    0.7.0.1
  */

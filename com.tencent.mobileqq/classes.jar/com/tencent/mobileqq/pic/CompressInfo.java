@@ -3,14 +3,14 @@ package com.tencent.mobileqq.pic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aumz;
+import aweg;
 import com.tencent.mobileqq.data.ThumbWidthHeightDP;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class CompressInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CompressInfo> CREATOR = new aumz();
+  public static final Parcelable.Creator<CompressInfo> CREATOR = new aweg();
   public int a;
   public ThumbWidthHeightDP a;
   public String a;
@@ -102,7 +102,7 @@ public class CompressInfo
     this.jdField_b_of_type_Boolean = true;
     BaseApplication localBaseApplication = BaseApplication.getContext();
     if (paramBoolean) {}
-    for (int k = 2131691007;; k = 2131691003)
+    for (int k = 2131691060;; k = 2131691056)
     {
       this.jdField_b_of_type_JavaLangString = localBaseApplication.getString(k);
       return;
@@ -166,7 +166,7 @@ public class CompressInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.CompressInfo
  * JD-Core Version:    0.7.0.1
  */

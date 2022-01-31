@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.triton.sdk.APICallback;
-import com.tencent.qqmini.sdk.core.plugins.QQFriendJsPlugin.IAddFriendCallBack;
-import org.json.JSONObject;
+import MWIFI.SCGet3rdCloudCheck;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bevf
-  implements QQFriendJsPlugin.IAddFriendCallBack
+final class bevf
+  implements ambj
 {
-  bevf(bevd parambevd, APICallback paramAPICallback) {}
+  bevf(QQAppInterface paramQQAppInterface, ambi paramambi) {}
   
-  public void onAddFriendCallBack(String paramString1, boolean paramBoolean, String paramString2)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkAPICallback != null) {
-      if (!paramBoolean) {
-        break label32;
-      }
-    }
-    label32:
-    for (paramString1 = bekx.a(paramString1, null);; paramString1 = bekx.a(paramString1, null, paramString2))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkAPICallback.onCallback(paramBoolean, paramString1.toString());
-      return;
+    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ambi);
     }
   }
+  
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevf
  * JD-Core Version:    0.7.0.1
  */

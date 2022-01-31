@@ -2,7 +2,7 @@ package com.tencent.mobileqq.triton.sdk;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.triton.sdk.callback.DialogCallback;
 import com.tencent.mobileqq.triton.sdk.download.ITDownloadListener;
 import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
@@ -85,7 +85,7 @@ public abstract interface IQQEnv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.sdk.IQQEnv
  * JD-Core Version:    0.7.0.1
  */

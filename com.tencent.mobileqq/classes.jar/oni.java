@@ -1,18 +1,21 @@
-import android.content.Context;
+import java.util.List;
 
-final class oni
-  implements rwf
+class oni
+  extends oob
 {
-  oni(Context paramContext, String paramString) {}
-  
-  public void a()
+  oni(omz paramomz, boolean paramBoolean, List paramList)
   {
-    onh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    paramooe.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, omz.b(this.jdField_a_of_type_Omz), 3, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oni
  * JD-Core Version:    0.7.0.1
  */

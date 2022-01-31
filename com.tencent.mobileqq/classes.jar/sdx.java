@@ -1,16 +1,26 @@
-class sdx
-  implements shc
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+
+public class sdx
+  implements slg
 {
-  sdx(sdw paramsdw, int paramInt1, int paramInt2) {}
+  public sdx(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    sds.a(this.jdField_a_of_type_Sdw.a, this.jdField_a_of_type_Int, this.b, false, Boolean.valueOf(paramBoolean));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.h();
+      return;
+    }
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdx
  * JD-Core Version:    0.7.0.1
  */

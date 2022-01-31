@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
-import afww;
-import akaw;
+import ahuq;
+import alsl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -15,7 +15,7 @@ import mqq.os.MqqHandler;
 public class ChatHistoryC2CDateFragment$3$1
   implements Runnable
 {
-  public ChatHistoryC2CDateFragment$3$1(afww paramafww) {}
+  public ChatHistoryC2CDateFragment$3$1(ahuq paramahuq) {}
   
   public void run()
   {
@@ -48,7 +48,7 @@ public class ChatHistoryC2CDateFragment$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

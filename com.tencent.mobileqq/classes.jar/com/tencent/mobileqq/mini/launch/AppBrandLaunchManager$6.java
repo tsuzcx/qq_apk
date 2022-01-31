@@ -1,24 +1,21 @@
 package com.tencent.mobileqq.mini.launch;
 
-import ajya;
-import bcql;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import com.tencent.mobileqq.widget.QQToast;
 
 class AppBrandLaunchManager$6
   implements Runnable
 {
-  AppBrandLaunchManager$6(AppBrandLaunchManager paramAppBrandLaunchManager, MiniAppConfig paramMiniAppConfig) {}
+  AppBrandLaunchManager$6(AppBrandLaunchManager paramAppBrandLaunchManager) {}
   
   public void run()
   {
-    QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, scene未知" + this.val$appConfig.toString());
-    bcql.a(AppBrandLaunchManager.access$100(this.this$0), ajya.a(2131700602), 2000).a();
+    QQToast.a(AppBrandLaunchManager.access$100(this.this$0), GameWnsUtils.gameDisableHint(), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.subscribe.widget.AlphaLoadingView;
+import android.view.View;
+import android.widget.ImageView;
 
-public class wuo
-  extends Handler
+class wuo
 {
-  public wuo(AlphaLoadingView paramAlphaLoadingView) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if (!AlphaLoadingView.a(this.a))
-    {
-      this.a.invalidate();
-      sendEmptyMessageDelayed(1, AlphaLoadingView.a(this.a));
-    }
-  }
+  wuo(wun paramwun) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wuo
  * JD-Core Version:    0.7.0.1
  */

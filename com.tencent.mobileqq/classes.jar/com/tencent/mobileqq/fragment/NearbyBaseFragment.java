@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import bcaz;
-import bfob;
+import beaa;
+import bhow;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
@@ -35,31 +35,31 @@ public class NearbyBaseFragment
   public NearbyBaseFragment()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo = null;
-    this.jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new bhow(Looper.getMainLooper(), this);
   }
   
-  public bcaz a()
+  public beaa a()
   {
     return null;
   }
   
   public void a()
   {
-    bcaz localbcaz = a();
-    if ((localbcaz == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
+    beaa localbeaa = a();
+    if ((localbeaa == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
     }
     try
     {
-      int i = localbcaz.mWebview.getWebScrollY();
-      int j = localbcaz.mWebview.getHeight();
+      int i = localbeaa.mWebview.getWebScrollY();
+      int j = localbeaa.mWebview.getHeight();
       if (QLog.isColorLevel()) {
         QLog.d("NearbyBaseFragment", 2, "gotoFragmentHead, scrollY=" + i + ", webH=" + j + ", maxV=" + this.c);
       }
       if (i > j)
       {
-        localbcaz.mWebview.getView().scrollTo(0, j);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbcaz), 60L);
+        localbeaa.mWebview.getView().scrollTo(0, j);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbeaa), 60L);
         return;
       }
     }
@@ -77,9 +77,9 @@ public class NearbyBaseFragment
     this.jdField_a_of_type_Int = paramTabInfo.tabIndex;
   }
   
-  public void aT_()
+  public void aU_()
   {
-    super.aT_();
+    super.aU_();
     if (!this.e)
     {
       if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.f) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
@@ -191,7 +191,7 @@ public class NearbyBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyBaseFragment
  * JD-Core Version:    0.7.0.1
  */

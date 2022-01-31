@@ -1,33 +1,76 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class utt
-  extends QQUIEventReceiver<utr, tcd>
 {
-  public utt(@NonNull utr paramutr)
+  public final String a;
+  public final String b;
+  public final String c;
+  
+  public utt(String paramString1, String paramString2, String paramString3)
   {
-    super(paramutr);
+    if ((paramString1 == null) || (paramString2 == null)) {
+      throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
+    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public void a(@NonNull utr paramutr, @NonNull tcd paramtcd)
+  public boolean equals(Object paramObject)
   {
-    if (paramtcd.a)
+    boolean bool2 = true;
+    boolean bool3 = false;
+    if (this == paramObject) {
+      bool1 = true;
+    }
+    do
     {
-      ved.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive delete share group member event. %s.", paramtcd);
-      utr.a(paramutr).a.h();
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (utt)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.c != null)
+    {
+      bool1 = bool2;
+      if (this.c.equals(paramObject.c)) {}
+    }
+    for (boolean bool1 = false;; bool1 = bool2)
+    {
+      return bool1;
+      if (paramObject.c != null) {
+        break;
+      }
     }
   }
   
-  public Class acceptEventClass()
+  public int hashCode()
   {
-    return tcd.class;
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.c != null) {}
+    for (int i = this.c.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
+    }
+  }
+  
+  public String toString()
+  {
+    return "Input{downloadUrl='" + this.a + '\'' + ", downloadLocalPath='" + this.b + '\'' + ", downloadFileMd5='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utt
  * JD-Core Version:    0.7.0.1
  */

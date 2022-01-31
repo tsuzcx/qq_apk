@@ -1,411 +1,162 @@
-import android.content.ContentResolver;
-import android.database.CharArrayBuffer;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.database.DataSetObserver;
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.List;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.qphone.base.util.QLog;
 
-class akpv
-  implements Cursor
+public class akpv
+  extends aknt
 {
-  private int jdField_a_of_type_Int = -1;
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "_id", "selfuin", "frienduin", "senderuin", "time", "msg", "msgtype", "isread", "issend", "msgseq", "shmsgseq", "istroop", "extraflag", "troopnick", "friendnick", "versionCode", "msgData", "vipBubbleID", "msgUid", "uniseq", "sendFailCode", "versionCode" };
-  
-  protected akpv(List<MessageRecord> paramList)
+  public akpv(ApolloWebGameActivity paramApolloWebGameActivity, AppInterface paramAppInterface)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    super(paramAppInterface, false);
   }
   
-  private Object a(int paramInt)
+  public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, aknu paramaknu, long paramLong)
   {
-    MessageRecord localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-    switch (paramInt)
+    if (ApolloWebGameActivity.a(this.a)) {}
+    do
     {
-    default: 
-      return null;
-    case 0: 
-    case 1: 
-      return Long.valueOf(localMessageRecord.msgId);
-    case 2: 
-      return localMessageRecord.selfuin;
-    case 3: 
-      return localMessageRecord.frienduin;
-    case 4: 
-      return localMessageRecord.senderuin;
-    case 5: 
-      return Long.valueOf(localMessageRecord.time);
-    case 6: 
-      return localMessageRecord.msg;
-    case 7: 
-      return Integer.valueOf(localMessageRecord.msgtype);
-    case 8: 
-      if (localMessageRecord.isread) {}
-      for (paramInt = 1;; paramInt = 0) {
-        return Integer.valueOf(paramInt);
-      }
-    case 9: 
-      return Integer.valueOf(localMessageRecord.issend);
-    case 10: 
-      return Long.valueOf(localMessageRecord.msgseq);
-    case 11: 
-      return Long.valueOf(localMessageRecord.shmsgseq);
-    case 12: 
-      return Integer.valueOf(localMessageRecord.istroop);
-    case 13: 
-      return Integer.valueOf(localMessageRecord.extraflag);
-    case 14: 
-      return bbcz.a(akpu.a(this.jdField_a_of_type_Akpu), localMessageRecord.senderuin, localMessageRecord.frienduin, 1, 0);
-    case 15: 
-      if (localMessageRecord.istroop == 3000) {
-        return bbcz.d(akpu.b(this.jdField_a_of_type_Akpu), localMessageRecord.senderuin);
-      }
-      if (localMessageRecord.istroop == 1) {
-        return ((TroopManager)akpu.c(this.jdField_a_of_type_Akpu).getManager(52)).a(localMessageRecord.senderuin);
-      }
-      return bbcz.a(akpu.d(this.jdField_a_of_type_Akpu), localMessageRecord.senderuin);
-    case 16: 
-      return Integer.valueOf(((ajxl)akpu.e(this.jdField_a_of_type_Akpu).getManager(51)).b(localMessageRecord.frienduin));
-    case 17: 
-      return Integer.valueOf(localMessageRecord.versionCode);
-    case 18: 
-      return localMessageRecord.msgData;
-    case 19: 
-      return Long.valueOf(localMessageRecord.vipBubbleID);
-    case 20: 
-      return Long.valueOf(localMessageRecord.msgUid);
-    case 21: 
-      return Long.valueOf(localMessageRecord.uniseq);
-    case 22: 
-      return Integer.valueOf(localMessageRecord.sendFailCode);
-    }
-    return Integer.valueOf(localMessageRecord.versionCode);
-  }
-  
-  public void close() {}
-  
-  public void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public void deactivate() {}
-  
-  public byte[] getBlob(int paramInt)
-  {
-    localObject = a(paramInt);
-    if ((localObject instanceof byte[])) {
-      return (byte[])localObject;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    try
-    {
-      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
-      localObjectOutputStream.writeObject(localObject);
-      localObjectOutputStream.flush();
-      localObject = localByteArrayOutputStream.toByteArray();
-      try
+      do
       {
-        localObjectOutputStream.close();
-        localByteArrayOutputStream.close();
-        return localObject;
-      }
-      catch (IOException localIOException1) {}
-    }
-    catch (IOException localIOException2)
+        do
+        {
+          return;
+          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onDownloadConfirm mStartCheckParam == null || mStartCheckParam.game == null");
+        return;
+        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onDownloadConfirm startCheckParam.requestCode != mStartCheckParam.requestCode");
+      return;
+    } while (paramaknu == null);
+    paramaknu.a(paramStartCheckParam);
+  }
+  
+  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    QLog.d("cmgame_process.ApolloWebGameActivity", 1, "[onDownloadGameResFail]");
+    paramStartCheckParam = ApolloWebGameActivity.a(this.a).obtainMessage(17);
+    paramStartCheckParam.obj = alpo.a(2131700955);
+    ApolloWebGameActivity.a(this.a).sendMessage(paramStartCheckParam);
+  }
+  
+  public void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (ApolloWebGameActivity.a(this.a)) {}
+    do
     {
-      for (;;)
+      do
       {
-        localObject = null;
+        do
+        {
+          return;
+          QLog.d("cmgame_process.ApolloWebGameActivity", 1, new Object[] { "[onGameCheckFinish] resultCode=", Long.valueOf(paramLong) });
+          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish mStartCheckParam == null || mStartCheckParam.game == null");
+        return;
+        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+      return;
+    } while (paramLong == 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish resultCode != 0");
+    }
+    paramCmGameInitParams = ApolloWebGameActivity.a(this.a).obtainMessage(17);
+    paramCmGameInitParams.obj = paramStartCheckParam.wordingV2;
+    ApolloWebGameActivity.a(this.a).sendMessage(paramCmGameInitParams);
+  }
+  
+  public void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (ApolloWebGameActivity.a(this.a)) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      if (paramStartCheckParam != null) {
+        break label39;
       }
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "showGameLifeTip mStartCheckParam is null");
     }
-    localIOException1.printStackTrace();
-    return localObject;
-  }
-  
-  public int getColumnCount()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
-  }
-  
-  public int getColumnIndex(String paramString)
-  {
-    if ("_id".equalsIgnoreCase(paramString)) {
-      return 1;
-    }
-    if ("selfuin".equals(paramString)) {
-      return 2;
-    }
-    if ("frienduin".equals(paramString)) {
-      return 3;
-    }
-    if ("senderuin".equals(paramString)) {
-      return 4;
-    }
-    if ("time".equals(paramString)) {
-      return 5;
-    }
-    if ("msg".equals(paramString)) {
-      return 6;
-    }
-    if ("msgtype".equals(paramString)) {
-      return 7;
-    }
-    if ("isread".equals(paramString)) {
-      return 8;
-    }
-    if ("issend".equals(paramString)) {
-      return 9;
-    }
-    if ("msgseq".equals(paramString)) {
-      return 10;
-    }
-    if ("shmsgseq".equals(paramString)) {
-      return 11;
-    }
-    if ("istroop".equals(paramString)) {
-      return 12;
-    }
-    if ("extraflag".equals(paramString)) {
-      return 13;
-    }
-    if ("troopnick".equals(paramString)) {
-      return 14;
-    }
-    if ("friendnick".equals(paramString)) {
-      return 15;
-    }
-    if ("friendstatus".equals(paramString)) {
-      return 16;
-    }
-    if ("versionCode".equals(paramString)) {
-      return 17;
-    }
-    if ("msgData".equals(paramString)) {
-      return 18;
-    }
-    if ("vipBubbleID".equals(paramString)) {
-      return 19;
-    }
-    if ("msgUid".equals(paramString)) {
-      return 20;
-    }
-    if ("uniseq".equals(paramString)) {
-      return 21;
-    }
-    if ("sendFailCode".equals(paramString)) {
-      return 22;
-    }
-    if ("versionCode".equals(paramString)) {
-      return 23;
-    }
-    return -1;
-  }
-  
-  public int getColumnIndexOrThrow(String paramString)
-  {
-    if (getColumnIndex(paramString) < 0) {
-      throw new IllegalArgumentException();
-    }
-    return getColumnIndex(paramString);
-  }
-  
-  public String getColumnName(int paramInt)
-  {
-    if ((paramInt > 0) && (paramInt < this.jdField_a_of_type_ArrayOfJavaLangString.length)) {
-      return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-    }
-    return null;
-  }
-  
-  public String[] getColumnNames()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public double getDouble(int paramInt)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public Bundle getExtras()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public float getFloat(int paramInt)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public int getInt(int paramInt)
-  {
-    return ((Integer)a(paramInt)).intValue();
-  }
-  
-  public long getLong(int paramInt)
-  {
-    return ((Long)a(paramInt)).longValue();
-  }
-  
-  public Uri getNotificationUri()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public int getPosition()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public short getShort(int paramInt)
-  {
-    return ((Short)a(paramInt)).shortValue();
-  }
-  
-  public String getString(int paramInt)
-  {
-    return String.valueOf(a(paramInt));
-  }
-  
-  public int getType(int paramInt)
-  {
-    return 0;
-  }
-  
-  public boolean getWantsAllOnMoveCalls()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public boolean isAfterLast()
-  {
-    return this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size() - 1;
-  }
-  
-  public boolean isBeforeFirst()
-  {
-    return this.jdField_a_of_type_Int > 0;
-  }
-  
-  public boolean isClosed()
-  {
-    return false;
-  }
-  
-  public boolean isFirst()
-  {
-    return this.jdField_a_of_type_Int == 0;
-  }
-  
-  public boolean isLast()
-  {
-    return this.jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilList.size() - 1;
-  }
-  
-  public boolean isNull(int paramInt)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public boolean move(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Int + paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_Int + paramInt >= 0))
+    for (;;)
     {
-      this.jdField_a_of_type_Int += paramInt;
-      return true;
+      onGameCheckFinish(-1L, paramStartCheckParam, null);
+      return;
+      label39:
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, new Object[] { "showGameLifeTip mStartCheckParam:", paramStartCheckParam });
     }
-    return false;
   }
   
-  public boolean moveToFirst()
+  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    boolean bool = false;
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      bool = true;
+    super.onGetGameData(paramStartCheckParam);
+    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
+      QLog.e("cmgame_process.ApolloWebGameActivity", 1, "onGetGameData startCheckParam == null or game is null");
     }
-    return bool;
-  }
-  
-  public boolean moveToLast()
-  {
-    this.jdField_a_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
-    return true;
-  }
-  
-  public boolean moveToNext()
-  {
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size() - 1)
+    do
     {
-      this.jdField_a_of_type_Int += 1;
-      return true;
-    }
-    return false;
+      return;
+      ApolloWebGameActivity.a(this.a).game = paramStartCheckParam.game;
+    } while (ApolloWebGameActivity.a(this.a) == null);
+    ApolloWebGameActivity.a(this.a).a(ApolloWebGameActivity.a(this.a));
   }
   
-  public boolean moveToPosition(int paramInt)
+  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
   {
-    if ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt >= 0))
+    if (ApolloWebGameActivity.a(this.a)) {}
+    do
     {
-      this.jdField_a_of_type_Int = paramInt;
-      return true;
-    }
-    return false;
+      do
+      {
+        do
+        {
+          return;
+          QLog.d("cmgame_process.ApolloWebGameActivity", 1, new Object[] { "[onVerifyGameFinish] resultCode=", Long.valueOf(paramLong) });
+          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onVerifyGameFinish mStartCheckParam == null || mStartCheckParam.game == null");
+        return;
+        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onVerifyGameFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+      return;
+      if (paramLong != 0L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onVerifyGameFinish resultCode != 0");
+        }
+        paramCmGameInitParams = ApolloWebGameActivity.a(this.a).obtainMessage(17);
+        paramCmGameInitParams.obj = paramStartCheckParam.wordingV2;
+        ApolloWebGameActivity.a(this.a).sendMessage(paramCmGameInitParams);
+        return;
+      }
+      ApolloWebGameActivity.a(this.a).startCallEngine = System.currentTimeMillis();
+      ApolloGameStateMachine.a().a(1, "ApolloWebGameActivity.openGame");
+      ApolloGameStateMachine.a().a(2, "ApolloWebGameActivity.openGame");
+    } while (ApolloWebGameActivity.a(this.a) == null);
+    ApolloWebGameActivity.a(this.a).a(this.a, paramCmGameInitParams);
   }
-  
-  public boolean moveToPrevious()
-  {
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      this.jdField_a_of_type_Int -= 1;
-      return true;
-    }
-    return false;
-  }
-  
-  public void registerContentObserver(ContentObserver paramContentObserver) {}
-  
-  public void registerDataSetObserver(DataSetObserver paramDataSetObserver) {}
-  
-  public boolean requery()
-  {
-    return false;
-  }
-  
-  public Bundle respond(Bundle paramBundle)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public void setExtras(Bundle paramBundle) {}
-  
-  public void setNotificationUri(ContentResolver paramContentResolver, Uri paramUri)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public void unregisterContentObserver(ContentObserver paramContentObserver) {}
-  
-  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpv
  * JD-Core Version:    0.7.0.1
  */

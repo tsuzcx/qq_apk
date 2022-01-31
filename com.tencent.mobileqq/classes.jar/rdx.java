@@ -1,30 +1,20 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.44.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.44.2;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class rdx
-  implements ory
+final class rdx
+  extends AnimatorListenerAdapter
 {
-  public rdx(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  rdx(View paramView) {}
   
-  public void a(MessageRecord paramMessageRecord) {}
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.44.2(this));
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.44.1(this));
+    this.a.setLayerType(0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdx
  * JD-Core Version:    0.7.0.1
  */

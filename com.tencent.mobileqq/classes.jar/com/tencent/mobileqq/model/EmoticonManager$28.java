@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.model;
 
-import askf;
-import aukp;
+import aube;
+import awbw;
 import com.tencent.mobileqq.data.Emoticon;
 
 public class EmoticonManager$28
   implements Runnable
 {
-  public EmoticonManager$28(askf paramaskf, Emoticon paramEmoticon) {}
+  public EmoticonManager$28(aube paramaube, Emoticon paramEmoticon) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class EmoticonManager$28
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.28
  * JD-Core Version:    0.7.0.1
  */

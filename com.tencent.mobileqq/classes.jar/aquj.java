@@ -1,36 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
 class aquj
-  extends Handler
+  extends aquk
 {
-  aquj(aqui paramaqui, Looper paramLooper)
+  public aquj(aqug paramaqug)
   {
-    super(paramLooper);
+    super(paramaqug);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected String a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)aqui.a(this.a).get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    return "StateAcceptByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-    default: 
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    paramMessage = "https://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
-    this.a.a(paramMessage, null);
-    this.a.b();
+    aqug.b(this.jdField_a_of_type_Aqug, 11, 5);
+    aqug.c(this.jdField_a_of_type_Aqug, 11, 5);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateAcceptByPC)");
+    this.jdField_a_of_type_Aquk = new aquh(this.jdField_a_of_type_Aqug);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aquj
  * JD-Core Version:    0.7.0.1
  */

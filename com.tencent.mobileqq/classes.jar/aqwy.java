@@ -1,41 +1,32 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskDirFileBatchDeleteExMsgRsp;
 
-public class aqwy
-  extends RecyclerView.Adapter<FontBubblePanelView<T>.aqwz>
+class aqwy
+  implements bkgc<WeiyunPB.DiskDirFileBatchDeleteExMsgRsp>
 {
-  public aqwy(FontBubblePanelView paramFontBubblePanelView) {}
+  aqwy(aqwl paramaqwl, WeiYunFileInfo paramWeiYunFileInfo) {}
   
-  public FontBubblePanelView<T>.aqwz a(ViewGroup paramViewGroup, int paramInt)
+  public void a(int paramInt, String paramString, WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
   {
-    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131562599, paramViewGroup, false);
-    return new aqwz(this.a, paramViewGroup);
-  }
-  
-  public void a(FontBubblePanelView<T>.aqwz paramFontBubblePanelView, int paramInt)
-  {
-    if (paramInt < FontBubblePanelView.a(this.a).size()) {
-      this.a.a(paramFontBubblePanelView, (FontBubble)FontBubblePanelView.a(this.a).get(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onFailed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c + "]errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
     }
+    aqwl.a(this.jdField_a_of_type_Aqwl).a().a(false, 20, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c, Boolean.valueOf(false) });
   }
   
-  public int getItemCount()
+  public void a(WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
   {
-    return FontBubblePanelView.a(this.a).size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return ((FontBubble)FontBubblePanelView.a(this.a).get(paramInt)).viewType;
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onSucceed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c + "]");
+    }
+    aqwl.a(this.jdField_a_of_type_Aqwl).a().a(true, 20, new Object[] { Integer.valueOf(0), null, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c, Boolean.valueOf(false) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwy
  * JD-Core Version:    0.7.0.1
  */

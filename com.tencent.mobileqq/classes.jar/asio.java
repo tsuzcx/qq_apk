@@ -1,30 +1,31 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 
-class asio
-  extends ClickableSpan
+public class asio
 {
-  asio(asim paramasim, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(View paramView)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    asim.a(this.jdField_a_of_type_Asim, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    TinyInfo localTinyInfo = new TinyInfo();
+    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
+    if (paramMessageRecord.isSend()) {
+      return localTinyInfo.fromRoleId;
+    }
+    return localTinyInfo.toRoleId;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public static String b(MessageRecord paramMessageRecord)
   {
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.jdField_a_of_type_Asim.a.getApp().getResources().getColor(2131166862));
+    TinyInfo localTinyInfo = new TinyInfo();
+    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
+    if (paramMessageRecord.isSend()) {
+      return localTinyInfo.toRoleId;
+    }
+    return localTinyInfo.fromRoleId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asio
  * JD-Core Version:    0.7.0.1
  */

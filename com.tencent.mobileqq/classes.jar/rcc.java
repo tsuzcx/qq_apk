@@ -1,29 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
-import com.tencent.qphone.base.util.QLog;
-
-public class rcc
-  implements rbs
+public abstract interface rcc
 {
-  public rcc(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void a()
-  {
-    if (ReadInJoyDailyXListView.a(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDailyXListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", this.a.c + " mNoMoreData : " + this.a.b });
-      }
-      if ((this.a.c == 0) && ((!shu.a(this.a.d)) || (!this.a.b)))
-      {
-        this.a.a(4);
-        QLog.d("ReadInJoyDailyXListView", 2, "preloadOptimize switch ON, loadingMore()");
-      }
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rcc
  * JD-Core Version:    0.7.0.1
  */

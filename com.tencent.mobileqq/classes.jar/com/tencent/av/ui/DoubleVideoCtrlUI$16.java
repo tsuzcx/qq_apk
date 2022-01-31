@@ -18,13 +18,13 @@ class DoubleVideoCtrlUI$16
     {
       localObject1 = localObject2;
       if (this.this$0.a.get() != null) {
-        localObject1 = (ChildLockCircle)((Activity)this.this$0.a.get()).findViewById(2131372227);
+        localObject1 = (ChildLockCircle)((Activity)this.this$0.a.get()).findViewById(2131372583);
       }
     }
     if (localObject1 != null)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.w(this.this$0.c, 1, "timtest HideChildLockUIRunnable");
+        QLog.w(this.this$0.d, 1, "timtest HideChildLockUIRunnable");
       }
       ((ChildLockCircle)localObject1).setVisibility(8);
     }
@@ -32,7 +32,7 @@ class DoubleVideoCtrlUI$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.16
  * JD-Core Version:    0.7.0.1
  */

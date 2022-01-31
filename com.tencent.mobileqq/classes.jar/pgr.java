@@ -1,24 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-class pgr
-  implements ViewBase.OnClickListener
+public abstract interface pgr
 {
-  pgr(pgp parampgp, Container paramContainer, pau parampau, int paramInt) {}
+  public abstract void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo);
   
-  public void onClick(ViewBase paramViewBase)
-  {
-    pgp.a(this.jdField_a_of_type_Pgp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pau, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("PgcProteusItem", 2, "click gallery comment for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pau.a() + " position = " + this.jdField_a_of_type_Int);
-    }
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,30 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqcircle.widgets.QCirclePersonInfoAndStatusWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class ubk
-  extends ubs<StoryVideoItem>
+  implements ubh
 {
-  public ubk(VideoViewVideoHolder paramVideoViewVideoHolder)
+  public ubk(QCirclePersonInfoAndStatusWidget paramQCirclePersonInfoAndStatusWidget) {}
+  
+  public void a()
   {
-    super(paramVideoViewVideoHolder, null);
+    tyj.a(QCirclePersonInfoAndStatusWidget.a(this.a).id.get(), 11, 3L, 3L);
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void a(int paramInt)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
+    tyj.a(QCirclePersonInfoAndStatusWidget.a(this.a).id.get(), 11, 3L, 1L, String.valueOf(paramInt));
   }
   
-  public void onError(@NonNull Error paramError)
+  public void b(int paramInt)
   {
-    super.onError(paramError);
-    ved.d(this.a.a, "STATE_VIDEOFILE_ED error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    tyj.a(QCirclePersonInfoAndStatusWidget.a(this.a).id.get(), 11, 3L, 2L, String.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,26 @@
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 
 class axuc
-  implements Comparator
+  implements army
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  axuc(axub paramaxub, Context paramContext, AIOFileVideoData paramAIOFileVideoData, ailt paramailt) {}
+  
+  public void a()
   {
-    paramObject1 = (axtz)paramObject1;
-    paramObject2 = (axtz)paramObject2;
-    if (paramObject1.b > paramObject2.b) {
-      return -1;
+    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData != null) && (this.jdField_a_of_type_Ailt != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.g = true;
+      this.jdField_a_of_type_Ailt.b();
+      this.jdField_a_of_type_Ailt.f();
     }
-    if (paramObject1.b < paramObject2.b) {
-      return 1;
-    }
-    return 0;
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axuc
  * JD-Core Version:    0.7.0.1
  */

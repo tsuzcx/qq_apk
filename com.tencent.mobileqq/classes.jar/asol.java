@@ -1,66 +1,42 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.etrump.mixlayout.EMEmoticon;
+import com.etrump.mixlayout.ETFont;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import java.lang.ref.WeakReference;
 
-class asol
-  implements asuu
+public class asol
 {
-  asol(asoj paramasoj, asun paramasun, asuw paramasuw, List paramList) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = -1L;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private ETFont jdField_a_of_type_ComEtrumpMixlayoutETFont;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<HiBoomTextView> jdField_a_of_type_JavaLangRefWeakReference;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
   
-  public void a()
+  public static asol a(HiBoomTextView paramHiBoomTextView)
   {
-    this.jdField_a_of_type_Asun.a(new asom(this));
-    this.jdField_a_of_type_Asun.show();
-  }
-  
-  public void a(asus paramasus)
-  {
-    if ((paramasus != null) && (asoj.a(this.jdField_a_of_type_Asoj) != null) && (asoj.a(this.jdField_a_of_type_Asoj).v())) {
-      switch (paramasus.a)
-      {
-      }
-    }
-    for (;;)
+    if (paramHiBoomTextView != null)
     {
-      if (this.jdField_a_of_type_Asun.isShowing()) {
-        this.jdField_a_of_type_Asun.dismiss();
-      }
-      if (asoj.a(this.jdField_a_of_type_Asoj) != null) {
-        asoj.a(this.jdField_a_of_type_Asoj).a(false, null, false);
-      }
-      this.jdField_a_of_type_Asuw.b();
-      return;
-      asut.a(asoj.a(this.jdField_a_of_type_Asoj));
-      continue;
-      asut.b(asoj.a(this.jdField_a_of_type_Asoj));
-      continue;
-      asut.c(asoj.a(this.jdField_a_of_type_Asoj));
+      asol localasol = new asol();
+      localasol.jdField_a_of_type_Long = HiBoomTextView.a(paramHiBoomTextView);
+      localasol.jdField_a_of_type_JavaLangString = HiBoomTextView.a(paramHiBoomTextView);
+      localasol.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, null, 0.0F);
+      localasol.jdField_a_of_type_ComEtrumpMixlayoutETFont.copy(HiBoomTextView.a(paramHiBoomTextView));
+      localasol.jdField_a_of_type_AndroidGraphicsBitmap = paramHiBoomTextView.a.a();
+      localasol.jdField_a_of_type_Int = HiBoomTextView.a(paramHiBoomTextView);
+      localasol.jdField_b_of_type_Int = HiBoomTextView.a(paramHiBoomTextView).currentFrameIndex();
+      localasol.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHiBoomTextView);
+      localasol.jdField_b_of_type_Long = System.currentTimeMillis();
+      return localasol;
     }
-  }
-  
-  public void a(asus paramasus, int paramInt)
-  {
-    this.jdField_a_of_type_Asun.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Asun.isShowing()) {
-      this.jdField_a_of_type_Asun.dismiss();
-    }
-    if (asoj.a(this.jdField_a_of_type_Asoj) != null) {
-      asoj.a(this.jdField_a_of_type_Asoj).a(false, null, false);
-    }
-    this.jdField_a_of_type_Asuw.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Asuw.a(asoj.a(this.jdField_a_of_type_Asoj), this.jdField_a_of_type_JavaUtilList);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asol
  * JD-Core Version:    0.7.0.1
  */

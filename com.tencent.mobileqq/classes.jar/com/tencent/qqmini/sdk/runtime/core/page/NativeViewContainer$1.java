@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import bekj;
+import bgid;
 import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 class NativeViewContainer$1
   implements Runnable
 {
-  NativeViewContainer$1(NativeViewContainer paramNativeViewContainer, int paramInt, bekj parambekj) {}
+  NativeViewContainer$1(NativeViewContainer paramNativeViewContainer, int paramInt, bgid parambgid) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ class NativeViewContainer$1
     {
       localObject = new JSONObject();
       ((JSONObject)localObject).put("inputId", this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bekj.a((JSONObject)localObject);
+      this.jdField_a_of_type_Bgid.a((JSONObject)localObject);
       return;
     }
     catch (JSONException localJSONException)
@@ -42,7 +42,7 @@ class NativeViewContainer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer.1
  * JD-Core Version:    0.7.0.1
  */

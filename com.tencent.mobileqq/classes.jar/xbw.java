@@ -1,23 +1,10 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.biz.troopgift.RadioButtonIndicator;
-
-public class xbw
-  extends RadioButton
+public abstract interface xbw
 {
-  public xbw(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public boolean performClick()
-  {
-    return true;
-  }
+  public abstract void a(xeh paramxeh);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbw
  * JD-Core Version:    0.7.0.1
  */

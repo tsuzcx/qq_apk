@@ -1,23 +1,18 @@
-class anom
+public abstract interface anom
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
+  public abstract String a(anop paramanop);
   
-  public anom(anoi paramanoi, long paramLong1, long paramLong2, String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
+  public abstract boolean a(anop paramanop);
+  
+  public abstract boolean a(anop paramanop, boolean paramBoolean);
+  
+  public abstract String b(anop paramanop);
+  
+  public abstract boolean b(anop paramanop);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anom
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,43 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 class utl
-  implements syq<tms, tmt>
+  extends amle
 {
-  utl(utk paramutk, boolean paramBoolean) {}
-  
-  public void a(@NonNull tms paramtms, @Nullable tmt arg2, @NonNull ErrorMessage paramErrorMessage)
+  utl(utk paramutk, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (utk.a(this.jdField_a_of_type_Utk).get())
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    wsv.b("LbsManager", "onLocationFinish.");
+    boolean bool;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      ved.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
-      return;
+      bool = true;
+      if (!bool) {
+        break label114;
+      }
+      this.a.b = utj.a(paramSosoLbsInfo.a);
+      wsv.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
     }
-    ved.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
-    paramtms = new utn(this.jdField_a_of_type_Utk, paramErrorMessage);
-    paramtms.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if ((??? == null) || (paramErrorMessage.isFail()))
+    for (;;)
     {
-      stb.a().dispatch(paramtms);
+      if (!utk.a(this.a)) {
+        this.a.a(bool, this.a.b);
+      }
+      this.a.a = false;
       return;
-    }
-    paramtms.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    ((tcm)tcz.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
-    synchronized (this.jdField_a_of_type_Utk)
-    {
-      stb.a().dispatch(paramtms);
-      return;
+      bool = false;
+      break;
+      label114:
+      wsv.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utl
  * JD-Core Version:    0.7.0.1
  */

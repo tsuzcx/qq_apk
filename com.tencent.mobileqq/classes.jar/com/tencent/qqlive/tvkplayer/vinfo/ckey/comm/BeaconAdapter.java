@@ -21,23 +21,26 @@ public class BeaconAdapter
         beaconEnable = true;
         return;
       }
+      beaconEnable = false;
+      return;
+    }
+    catch (Exception localException1)
+    {
       try
       {
         Class.forName("com.tencent.tvkbeacon.event.UserAction");
-        beaconEnable = true;
-        return;
+        if (sdkVersionBiggerThanThat(UserAction.getSDKVersion(), "3.1.2"))
+        {
+          beaconEnable = true;
+          return;
+        }
       }
-      catch (ClassNotFoundException localClassNotFoundException)
+      catch (Exception localException2)
       {
         beaconEnable = false;
         return;
       }
-      return;
-    }
-    catch (Exception localException)
-    {
       beaconEnable = false;
-      localException.printStackTrace();
     }
   }
   
@@ -294,7 +297,7 @@ public class BeaconAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.BeaconAdapter
  * JD-Core Version:    0.7.0.1
  */

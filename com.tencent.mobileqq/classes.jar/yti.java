@@ -1,21 +1,22 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class yti
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  yti(ytd paramytd, ImageView paramImageView) {}
+  yti(yth paramyth, ytk paramytk) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    yxy.a().a(this.jdField_a_of_type_AndroidWidgetImageView);
+    if (ytg.a(yth.class.getName() + "clickFeed")) {
+      return;
+    }
+    yth.a(this.jdField_a_of_type_Yth).a(this.jdField_a_of_type_Ytk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yti
  * JD-Core Version:    0.7.0.1
  */

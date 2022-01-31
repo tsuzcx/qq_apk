@@ -1,45 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
-import com.tencent.mobileqq.portal.PortalManager.LogoConfig;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class aurl
+class aurl
+  implements DialogInterface.OnClickListener
 {
-  public void a() {}
+  aurl(auri paramauri, Activity paramActivity) {}
   
-  public void a(int paramInt, aurm paramaurm) {}
-  
-  public void a(long paramLong1, int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, Bitmap paramBitmap4, Bitmap paramBitmap5, Bitmap paramBitmap6, Bitmap paramBitmap7, List<PortalManager.LogoConfig> paramList, String paramString, long paramLong2, boolean paramBoolean, long paramLong3) {}
-  
-  public void a(long paramLong1, int paramInt1, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong2, boolean paramBoolean, int paramInt2, Bitmap paramBitmap4, Bitmap paramBitmap5, List<PortalManager.LogoConfig> paramList, List<PortalManager.ComboNumber> paramList1, Bitmap paramBitmap6, long paramLong3, Bitmap paramBitmap7, Bitmap paramBitmap8) {}
-  
-  public void a(boolean paramBoolean, String paramString, aurm paramaurm) {}
-  
-  public boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean a(Bitmap paramBitmap)
-  {
-    return false;
-  }
-  
-  public boolean a(Bitmap paramBitmap, String paramString)
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public boolean b()
-  {
-    return false;
+    paramDialogInterface = this.jdField_a_of_type_Auri.a;
+    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.a)))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramDialogInterface.a);
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 1028);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aurl
  * JD-Core Version:    0.7.0.1
  */

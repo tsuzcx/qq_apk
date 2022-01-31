@@ -1,24 +1,28 @@
-import android.view.MotionEvent;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ProfileNameView;
 
-public abstract interface beoz
+public class beoz
+  implements View.OnClickListener
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  public beoz(ProfileNameView paramProfileNameView, awmk paramawmk) {}
   
-  public abstract void a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(MotionEvent paramMotionEvent);
-  
-  public abstract void b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract void c(MotionEvent paramMotionEvent);
-  
-  public abstract void c(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract void d(MotionEvent paramMotionEvent);
+  public void onClick(View paramView)
+  {
+    String str = bckj.a().a(this.jdField_a_of_type_Awmk.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", str);
+    paramView.getContext().startActivity(localIntent);
+    azmj.b(null, "dc00898", "", "", "0X800A708", "0X800A708", 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beoz
  * JD-Core Version:    0.7.0.1
  */

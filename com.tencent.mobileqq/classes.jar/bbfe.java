@@ -1,69 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class bbfe
+  extends ClickableSpan
 {
-  public ConcurrentHashMap<String, MessageProgressView.RefreshProgressRunnable> a = new ConcurrentHashMap();
+  public bbfe(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt) {}
   
-  public static final bbfe a()
+  public void onClick(View paramView)
   {
-    return bbfg.a();
-  }
-  
-  public MessageProgressView.RefreshProgressRunnable a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.a.isEmpty()) {
-      return null;
-    }
-    return (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.a.keySet().iterator();
-    while (localIterator.hasNext()) {
-      a((String)localIterator.next());
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, 2002, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.t);
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
+    for (int i = 2;; i = 1)
     {
-      MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable = (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
-      if (localRefreshProgressRunnable != null) {
-        localRefreshProgressRunnable.a();
-      }
-    }
-    try
-    {
-      this.a.remove(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.e("MessageProgressView", 2, " aflter removeAnimRunnable size=" + this.a.size());
-      }
+      azmj.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_add_topic", i, 0, "", "", "", "");
       return;
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MessageProgressView", 2, "removeAnimRunnable exception = " + paramString.getMessage());
-        }
-      }
-    }
   }
   
-  public void a(String paramString, MessageProgressView.RefreshProgressRunnable paramRefreshProgressRunnable)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.a.put(paramString, paramRefreshProgressRunnable);
-    }
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

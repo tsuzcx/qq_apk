@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.search.fragment;
 
-import awlp;
+import aygp;
 
 public class PublicAcntSearchFragment$2$2
   implements Runnable
 {
-  public PublicAcntSearchFragment$2$2(awlp paramawlp) {}
+  public PublicAcntSearchFragment$2$2(aygp paramaygp) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class PublicAcntSearchFragment$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment.2.2
  * JD-Core Version:    0.7.0.1
  */

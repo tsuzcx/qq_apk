@@ -1,16 +1,19 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.os.Bundle;
-import behn;
-import behp;
-import beqf;
-import beqm;
-import besl;
-import betc;
+import bghl;
+import bghn;
+import bghq;
+import bgqg;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qqmini.sdk.core.widget.CapsuleButton;
+import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
+import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import com.tencent.qqmini.sdk.log.QMLog;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
 import mqq.os.MqqHandler;
@@ -40,43 +43,84 @@ public class MiniSDKClientQIPCModule
   
   private void onShareCallback(boolean paramBoolean)
   {
-    Object localObject = beqf.a().a();
-    if (localObject == null) {}
-    behn localbehn;
-    behp localbehp;
-    besl localbesl;
+    Object localObject1 = AppRuntimeLoaderManager.g().getCurrentRunTimeLoader();
+    if (localObject1 == null) {}
+    bghl localbghl;
+    ShareState localShareState;
+    Object localObject2;
+    for (;;)
+    {
+      return;
+      localbghl = ((bgqg)localObject1).getRuntime();
+      if (localbghl != null) {
+        try
+        {
+          localObject1 = localbghl.a();
+          if (localObject1 != null)
+          {
+            localShareState = localbghl.a();
+            if (localShareState != null) {
+              if (paramBoolean)
+              {
+                localObject3 = ApiUtil.wrapCallbackOk(localShareState.shareEvent, null);
+                if (localObject3 != null)
+                {
+                  localObject3 = ((JSONObject)localObject3).toString();
+                  ((bghn)localObject1).a(localShareState.shareCallbackId, (String)localObject3);
+                  ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.1(this, localbghl));
+                  return;
+                }
+              }
+            }
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            localObject2 = null;
+            continue;
+            localObject3 = "";
+          }
+          localObject3 = ApiUtil.wrapCallbackFail(localShareState.shareEvent, null);
+          if (localObject3 == null) {}
+        }
+      }
+    }
+    for (Object localObject3 = ((JSONObject)localObject3).toString();; localObject3 = "")
+    {
+      localObject2.a(localShareState.shareCallbackId, (String)localObject3);
+      ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.2(this, localbghl));
+      return;
+    }
+  }
+  
+  private void onSyncUnReadCount(Bundle paramBundle)
+  {
+    int i;
+    if (paramBundle != null)
+    {
+      i = paramBundle.getInt("param_proc_badge_count");
+      if (QMLog.isColorLevel()) {
+        QMLog.d("MiniSDKClientQIPCModule", "count is " + i);
+      }
+      paramBundle = AppRuntimeLoaderManager.g().getCurrentRunTimeLoader();
+      if (paramBundle != null) {
+        break label53;
+      }
+    }
+    label53:
     do
     {
       do
       {
-        do
-        {
-          return;
-          localbehn = ((beqm)localObject).getRuntime();
-        } while (localbehn == null);
-        localbehp = localbehn.a();
-      } while (localbehp == null);
-      localbesl = localbehn.a();
-    } while (localbesl == null);
-    if (paramBoolean)
-    {
-      localObject = ApiUtil.wrapCallbackOk(localbesl.a, null);
-      if (localObject != null) {}
-      for (localObject = ((JSONObject)localObject).toString();; localObject = "")
-      {
-        localbehp.a(localbesl.c, (String)localObject);
-        ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.1(this, localbehn));
         return;
-      }
-    }
-    localObject = ApiUtil.wrapCallbackFail(localbesl.a, null);
-    if (localObject != null) {}
-    for (localObject = ((JSONObject)localObject).toString();; localObject = "")
-    {
-      localbehp.a(localbesl.c, (String)localObject);
-      ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.2(this, localbehn));
-      return;
-    }
+        paramBundle = paramBundle.getRuntime();
+      } while ((paramBundle == null) || (paramBundle.a() == null));
+      paramBundle = paramBundle.a().a();
+    } while (paramBundle == null);
+    QMLog.e("MiniSDKClientQIPCModule", BaseApplicationImpl.getApplication().getQQProcessName() + " msg count = " + i);
+    paramBundle.setUnReadCount(i, true);
   }
   
   public static void registerModule()
@@ -89,7 +133,7 @@ public class MiniSDKClientQIPCModule
     }
     catch (Exception localException)
     {
-      betc.d("MiniSDKClientQIPCModule", "register ipc module error.", localException);
+      QMLog.e("MiniSDKClientQIPCModule", "register ipc module error.", localException);
     }
   }
   
@@ -106,10 +150,12 @@ public class MiniSDKClientQIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (betc.a()) {
-      betc.a("MiniSDKClientQIPCModule", "onCall main server action=" + paramString);
+    if (QMLog.isColorLevel()) {
+      QMLog.d("MiniSDKClientQIPCModule", "onCall main server action=" + paramString);
     }
-    if ("action_sync_unreadcount".equals(paramString)) {}
+    if ("action_sync_unreadcount".equals(paramString)) {
+      onSyncUnReadCount(paramBundle);
+    }
     for (;;)
     {
       return null;
@@ -123,7 +169,7 @@ public class MiniSDKClientQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule
  * JD-Core Version:    0.7.0.1
  */

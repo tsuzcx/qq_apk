@@ -1,45 +1,40 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 
 public class acfe
-  extends atzx
 {
-  public acfe(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
-  
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
-  {
-    TextPreviewTranslateActivity.b(this.a);
-    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
-    {
-      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
-      return;
-    }
-    String str2 = this.a.getResources().getString(2131699266);
-    String str1 = str2;
-    if (paramTranslateResult != null)
-    {
-      if (TextUtils.isEmpty(paramTranslateResult.e)) {
-        break label92;
-      }
-      str1 = paramTranslateResult.e;
-    }
-    for (;;)
-    {
-      bcql.a(this.a, 1, str1, 0).a();
-      return;
-      label92:
-      str1 = str2;
-      if (paramTranslateResult.a()) {
-        str1 = this.a.getResources().getString(2131699245);
-      }
-    }
-  }
+  public int a;
+  public long a;
+  public MessageForReplyText.SourceMsgInfo a;
+  public EmojiStickerManager.StickerInfo a;
+  public String a;
+  public boolean a = true;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g = -1;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfe
  * JD-Core Version:    0.7.0.1
  */

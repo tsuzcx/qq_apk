@@ -49,6 +49,9 @@ class VRefreshViewGroup$1
             VRefreshViewGroup.access$200(this.this$0).getContentViewProvider().onHeaderRebounded();
           }
         }
+        if ((VRefreshViewGroup.access$200(this.this$0).isBottom()) && (VRefreshViewGroup.access$600(this.this$0) != null)) {
+          VRefreshViewGroup.access$600(this.this$0).onFooterReachEnd();
+        }
         this.this$0.mPullRefreshing = false;
         VRefreshViewGroup.access$802(this.this$0, false);
         return;
@@ -62,7 +65,7 @@ class VRefreshViewGroup$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.view.refresh.VRefreshViewGroup.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,45 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import java.lang.ref.WeakReference;
 
 public class aiie
-  implements SeekBar.OnSeekBarChangeListener
+  extends Handler
 {
-  public aiie(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  private WeakReference<DialogBaseActivity> a;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public aiie(DialogBaseActivity paramDialogBaseActivity)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-    this.a.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
+    this.a = new WeakReference(paramDialogBaseActivity);
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public void handleMessage(Message paramMessage)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
+    boolean bool = true;
+    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
+    if (localDialogBaseActivity == null) {
+      return;
     }
-    if (this.a.jdField_a_of_type_Bbvo != null)
+    switch (paramMessage.what)
     {
-      if (this.a.a() == 2) {
-        this.a.b();
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localDialogBaseActivity.a(i, bool);
+        return;
+        bool = false;
       }
-      this.a.c.setImageResource(2130845268);
-      this.a.jdField_a_of_type_Bbvo.a();
-      this.a.jdField_a_of_type_Bbvo.a(i);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.b.setEnabled(false);
-      this.a.b.setTextColor(-2130706433);
     }
+    localDialogBaseActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiie
  * JD-Core Version:    0.7.0.1
  */

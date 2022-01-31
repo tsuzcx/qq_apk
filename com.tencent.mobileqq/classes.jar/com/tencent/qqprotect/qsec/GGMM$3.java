@@ -1,6 +1,6 @@
 package com.tencent.qqprotect.qsec;
 
-import bfiu;
+import bhjo;
 
 public final class GGMM$3
   implements Runnable

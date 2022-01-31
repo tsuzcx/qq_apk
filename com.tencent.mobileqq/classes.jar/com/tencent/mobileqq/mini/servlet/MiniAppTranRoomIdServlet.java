@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_APP_MISC.MISC.StTrans4RoomidRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -51,14 +51,14 @@ public class MiniAppTranRoomIdServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_misc.Trans4Roomid");
-    paramPacket.putSendData(bbma.a((byte[])localObject1));
+    paramPacket.putSendData(bdku.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppTranRoomIdServlet
  * JD-Core Version:    0.7.0.1
  */

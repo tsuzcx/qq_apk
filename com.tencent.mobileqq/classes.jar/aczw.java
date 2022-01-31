@@ -1,20 +1,20 @@
-import android.support.annotation.IntRange;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
-public abstract interface aczw
+public class aczw
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public aczw(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt);
-  
-  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt, String paramString1, String paramString2);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    HongbaoShowerActivity.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,49 @@
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class akbo
-  implements Comparator<atza>
+  extends bajk
 {
-  akbo(akbn paramakbn) {}
+  akbo(akbl paramakbl, String paramString) {}
   
-  public int a(atza paramatza1, atza paramatza2)
+  public void onComplete(String paramString, int paramInt)
   {
-    if ((!paramatza1.a()) && (paramatza2.a())) {
-      return -1;
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: " + paramString + "," + paramInt);
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 2);
+      paramString.put("errorCode", paramInt);
+      this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
     }
-    if ((paramatza1.a()) && (!paramatza2.a())) {
-      return 1;
+    catch (JSONException paramString)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
     }
-    return (int)(paramatza2.a - paramatza1.a);
+  }
+  
+  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  {
+    int i = (int)(100.0F * (float)paramLong1 / (float)paramLong2);
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 1);
+      paramString.put("progress", i);
+      this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbo
  * JD-Core Version:    0.7.0.1
  */

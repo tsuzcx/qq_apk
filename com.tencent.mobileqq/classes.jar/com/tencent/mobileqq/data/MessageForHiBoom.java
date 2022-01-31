@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import akwa;
+import ammq;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,7 +14,7 @@ public class MessageForHiBoom
   {
     try
     {
-      this.mHiBoomMessage = ((HiBoomMessage)akwa.a(this.msgData));
+      this.mHiBoomMessage = ((HiBoomMessage)ammq.a(this.msgData));
       if ((this.msg == null) && (this.mHiBoomMessage != null)) {
         this.msg = this.mHiBoomMessage.text;
       }
@@ -36,7 +36,7 @@ public class MessageForHiBoom
     if (this.mHiBoomMessage != null) {}
     try
     {
-      this.msgData = akwa.a(this.mHiBoomMessage);
+      this.msgData = ammq.a(this.mHiBoomMessage);
       if (!TextUtils.isEmpty(this.mHiBoomMessage.text)) {
         this.msg = this.mHiBoomMessage.text;
       }
@@ -50,7 +50,7 @@ public class MessageForHiBoom
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForHiBoom
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,50 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Matrix;
+import android.view.View;
+import java.util.ArrayList;
 
 class wrv
-  implements TypeEvaluator<Matrix>
+  extends wna
 {
-  public static TypeEvaluator<Matrix> a;
-  Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  float[] jdField_a_of_type_ArrayOfFloat = new float[9];
-  float[] b = new float[9];
+  wrv(wrh paramwrh) {}
   
-  static
+  public void a(int paramInt, View paramView, Object paramObject, wph paramwph)
   {
-    jdField_a_of_type_AndroidAnimationTypeEvaluator = new wrw();
-  }
-  
-  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
-  {
-    paramMatrix1.getValues(this.jdField_a_of_type_ArrayOfFloat);
-    paramMatrix2.getValues(this.b);
-    int i = 0;
-    while (i < 9)
+    boolean bool;
+    switch (paramView.getId())
     {
-      float f1 = this.b[i];
-      float f2 = this.jdField_a_of_type_ArrayOfFloat[i];
-      this.b[i] = ((f1 - f2) * paramFloat + this.jdField_a_of_type_ArrayOfFloat[i]);
-      i += 1;
+    default: 
+      if (wrh.a(this.a).a().size() <= 0) {
+        break label149;
+      }
+      paramView = this.a;
+      if (!wrh.a(this.a))
+      {
+        bool = true;
+        wrh.a(paramView, bool);
+        wrh.a(this.a);
+        if (!wrh.a(this.a)) {
+          break label143;
+        }
+      }
+      break;
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setValues(this.b);
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+    label143:
+    for (paramView = "1";; paramView = "2")
+    {
+      wta.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
+      wta.a("home_page", "exp_share_day", 0, 0, new String[0]);
+      return;
+      wrh.a(this.a, wrh.a(this.a), paramView);
+      return;
+      bool = false;
+      break;
+    }
+    label149:
+    wrh.a(this.a, wrh.a(this.a), paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrv
  * JD-Core Version:    0.7.0.1
  */

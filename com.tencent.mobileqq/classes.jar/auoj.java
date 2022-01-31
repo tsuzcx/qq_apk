@@ -1,666 +1,401 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.AccountNotMatchException;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class auoj
-  extends aund
 {
-  private static auoj jdField_a_of_type_Auoj;
-  public int a;
-  public long a;
-  public String a;
-  private ArrayList<aunv> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private ArrayList<aunv> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 90;
-  private long jdField_c_of_type_Long = 209715200L;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = 70;
-  private long jdField_d_of_type_Long = 157286400L;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int = 50;
-  private long jdField_e_of_type_Long = 73400320L;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int;
-  private long jdField_f_of_type_Long = 52428800L;
-  private boolean jdField_f_of_type_Boolean;
-  private int jdField_g_of_type_Int;
-  private boolean jdField_g_of_type_Boolean;
-  private boolean h;
-  private boolean i;
+  public static HashMap<String, Integer> a;
+  public static HashMap<String, Integer> b;
+  private static HashMap<String, Integer> c = new HashMap();
   
-  public auoj(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2)
+  static
   {
-    this.jdField_f_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.jdField_d_of_type_JavaLangString = paramString3;
-    this.jdField_g_of_type_Int = paramInt2;
-    long l1 = auns.a("presend_lastDayTime", 0L);
-    long l2 = System.currentTimeMillis();
-    aung.a("PresendPicMgrService", "[@]PresendPicMgrService", "currentTime = " + l2 + ", lastDayTime = " + l1 + ", curFriendUin = " + paramString1 + ",troopUin = " + paramString2 + ",myUin = " + paramString3);
-    e();
-    if (l2 - l1 > 86400000L)
-    {
-      aung.a("PresendPicMgrService", "PresendPicMgrService", "more than one day, clear wastesize");
-      agqd.a(auns.a("presend_FlowWaste", 0L));
-      auns.a("presend_lastDayTime", l2);
-      auns.a("presend_FlowWaste", 0L);
-    }
-    this.jdField_b_of_type_Long = auns.a("presend_FlowWaste", 0L);
-    jdField_a_of_type_Auoj = this;
+    c.put("hot_reactive_gray_intimate_lover_1_icon", Integer.valueOf(2130849539));
+    c.put("hot_reactive_gray_intimate_lover_2_icon", Integer.valueOf(2130849540));
+    c.put("hot_reactive_gray_intimate_lover_3_icon", Integer.valueOf(2130849541));
+    c.put("hot_reactive_gray_intimate_guimi_1_icon", Integer.valueOf(2130849533));
+    c.put("hot_reactive_gray_intimate_guimi_2_icon", Integer.valueOf(2130849534));
+    c.put("hot_reactive_gray_intimate_guimi_3_icon", Integer.valueOf(2130849535));
+    c.put("hot_reactive_gray_intimate_jiyou_1_icon", Integer.valueOf(2130849536));
+    c.put("hot_reactive_gray_intimate_jiyou_2_icon", Integer.valueOf(2130849537));
+    c.put("hot_reactive_gray_intimate_jiyou_3_icon", Integer.valueOf(2130849538));
+    c.put("hot_reactive_gray_friendship_1_icon", Integer.valueOf(2130849530));
+    c.put("hot_reactive_gray_friendship_2_icon", Integer.valueOf(2130849531));
+    c.put("hot_reactive_gray_friendship_3_icon", Integer.valueOf(2130849532));
+    c.put("gray_small_fire", Integer.valueOf(2130849557));
+    c.put("gray_big_fire", Integer.valueOf(2130849516));
+    c.put("gray_small_zan", Integer.valueOf(2130849561));
+    c.put("gray_big_zan", Integer.valueOf(2130849520));
+    c.put("gray_small_lover", Integer.valueOf(2130849549));
+    c.put("gray_big_lover", Integer.valueOf(2130849548));
+    c.put("qzone_gray_qzone_visit_normal", Integer.valueOf(2130849555));
+    c.put("qzone_gray_qzone_visit_super", Integer.valueOf(2130849556));
+    c.put("gray_small_ship", Integer.valueOf(2130849560));
+    c.put("gray_big_ship", Integer.valueOf(2130849519));
+    a = new HashMap();
+    a.put("skin_icon_small_fire", Integer.valueOf(2130849557));
+    a.put("skin_icon_big_fire", Integer.valueOf(2130849516));
+    a.put("skin_icon_small_flower", Integer.valueOf(2130849560));
+    a.put("skin_icon_big_flower", Integer.valueOf(2130849519));
+    a.put("skin_icon_small_praise", Integer.valueOf(2130849561));
+    a.put("skin_icon_big_praise", Integer.valueOf(2130849520));
+    a.put("skin_icon_lover_small", Integer.valueOf(2130849549));
+    a.put("skin_icon_lover_big", Integer.valueOf(2130849548));
+    a.put("skin_icon_qzone_visit_normal", Integer.valueOf(2130849555));
+    a.put("skin_icon_qzone_visit_super", Integer.valueOf(2130849556));
+    a.put("skin_icon_frdship_1", Integer.valueOf(2130849530));
+    a.put("skin_icon_frdship_2", Integer.valueOf(2130849531));
+    a.put("skin_icon_frdship_3", Integer.valueOf(2130849532));
+    a.put("skin_icon_intimate_lover_1", Integer.valueOf(2130849539));
+    a.put("skin_icon_intimate_lover_2", Integer.valueOf(2130849540));
+    a.put("skin_icon_intimate_lover_3", Integer.valueOf(2130849541));
+    a.put("skin_icon_intimate_guimi_1", Integer.valueOf(2130849533));
+    a.put("skin_icon_intimate_guimi_2", Integer.valueOf(2130849534));
+    a.put("skin_icon_intimate_guimi_3", Integer.valueOf(2130849535));
+    a.put("skin_icon_intimate_jiyou_1", Integer.valueOf(2130849536));
+    a.put("skin_icon_intimate_jiyou_2", Integer.valueOf(2130849537));
+    a.put("skin_icon_intimate_jiyou_3", Integer.valueOf(2130849538));
+    a.put("skin_icon_mutual_x_character_1", Integer.valueOf(2130849554));
+    a.put("skin_icon_mentorship", Integer.valueOf(2130849552));
+    a.put("skin_icon_mentorship_svip", Integer.valueOf(2130849551));
+    a.put("skin_icon_mentorship_yellowvip", Integer.valueOf(2130849553));
+    a.put("skin_icon_mentorship_newyear", Integer.valueOf(2130849550));
+    a.put("skin_icon_kapu_1", Integer.valueOf(2130849545));
+    a.put("skin_icon_kapu_2", Integer.valueOf(2130849546));
+    a.put("skin_icon_kapu_3", Integer.valueOf(2130849547));
+    a.put("skin_icon_forget_me_not_1", Integer.valueOf(2130849527));
+    a.put("skin_icon_forget_me_not_2", Integer.valueOf(2130849528));
+    a.put("skin_icon_forget_me_not_3", Integer.valueOf(2130849529));
+    b = new HashMap();
+    b.putAll(c);
+    b.putAll(a);
+    b.putAll(auov.a);
   }
   
-  private aunv a(ArrayList<aunv> paramArrayList, String paramString)
+  public static int a()
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
-    }
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      aunv localaunv = (aunv)paramArrayList.next();
-      if (localaunv.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return localaunv;
-      }
-    }
-    return null;
+    return bdjj.a(NetConnInfoCenter.getServerTimeMillis());
   }
   
-  private auod a(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
+  public static int a(long paramLong1, long paramLong2)
   {
-    Object localObject = new auoe();
-    aung.a("PresendPicMgrService", "[@]buildPicUploadInfo", "curFriendUin = " + this.jdField_b_of_type_JavaLangString);
-    ((auoe)localObject).d(this.jdField_b_of_type_JavaLangString);
-    ((auoe)localObject).a(paramString);
-    ((auoe)localObject).e(this.jdField_f_of_type_Int);
-    ((auoe)localObject).e(this.jdField_c_of_type_JavaLangString);
-    ((auoe)localObject).d(paramInt1);
-    ((auoe)localObject).f(0);
-    ((auoe)localObject).k(paramInt2);
-    ((auoe)localObject).l(this.jdField_g_of_type_Int);
-    localObject = ((auoe)localObject).a();
-    ((auod)localObject).jdField_c_of_type_Boolean = true;
-    if (bgky.a(paramString)) {
-      bbfb.a();
-    }
+    return (int)(100000L + 10L * paramLong1 + paramLong2);
+  }
+  
+  public static long a(String paramString)
+  {
+    long l = 0L;
+    if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      ((auod)localObject).jdField_a_of_type_JavaUtilArrayList = bgky.a(paramString);
-      if ((((auod)localObject).jdField_a_of_type_JavaUtilArrayList != null) && (QLog.isColorLevel())) {
-        QLog.d("peak_pgjpeg", 2, "PresendPicMgrService.buildPicUploadInfo:" + ((auod)localObject).jdField_a_of_type_JavaUtilArrayList.toString());
-      }
-      bbfb.a("peak_pgjpeg", "PeakUtils.getSliceInfos(" + paramString + ")");
-      if (paramBoolean)
-      {
-        ((auod)localObject).jdField_g_of_type_Int = 1;
-        aung.a(localObject, "fixProtocolType", "sendReq.upInfo.protocolType");
-        return localObject;
+      l = Long.valueOf(Long.parseLong(paramString)).longValue() % 10L;
+      return l;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MutualMarkUtils", 1, "getTypeLevel error:" + paramString.getMessage());
+    }
+    return 0L;
+  }
+  
+  /* Error */
+  public static String a()
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_1
+    //   2: aconst_null
+    //   3: astore_0
+    //   4: ldc 250
+    //   6: astore_3
+    //   7: invokestatic 256	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   10: invokevirtual 262	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
+    //   13: ldc_w 264
+    //   16: invokevirtual 270	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   19: astore_2
+    //   20: aload_2
+    //   21: astore_0
+    //   22: aload_2
+    //   23: astore_1
+    //   24: aload_2
+    //   25: invokestatic 275	ndq:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   28: astore 4
+    //   30: aload 4
+    //   32: astore_0
+    //   33: aload_0
+    //   34: astore_1
+    //   35: aload_2
+    //   36: ifnull +9 -> 45
+    //   39: aload_2
+    //   40: invokevirtual 280	java/io/InputStream:close	()V
+    //   43: aload_0
+    //   44: astore_1
+    //   45: aload_1
+    //   46: areturn
+    //   47: astore_2
+    //   48: aload_0
+    //   49: astore_1
+    //   50: aload_2
+    //   51: invokevirtual 283	java/lang/Throwable:printStackTrace	()V
+    //   54: aload_3
+    //   55: astore_1
+    //   56: aload_0
+    //   57: ifnull -12 -> 45
+    //   60: aload_0
+    //   61: invokevirtual 280	java/io/InputStream:close	()V
+    //   64: ldc 250
+    //   66: areturn
+    //   67: astore_0
+    //   68: ldc 250
+    //   70: areturn
+    //   71: astore_0
+    //   72: aload_1
+    //   73: ifnull +7 -> 80
+    //   76: aload_1
+    //   77: invokevirtual 280	java/io/InputStream:close	()V
+    //   80: aload_0
+    //   81: athrow
+    //   82: astore_1
+    //   83: aload_0
+    //   84: areturn
+    //   85: astore_1
+    //   86: goto -6 -> 80
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   3	58	0	localObject1	Object
+    //   67	1	0	localIOException1	java.io.IOException
+    //   71	13	0	str1	String
+    //   1	76	1	localObject2	Object
+    //   82	1	1	localIOException2	java.io.IOException
+    //   85	1	1	localIOException3	java.io.IOException
+    //   19	21	2	localInputStream	java.io.InputStream
+    //   47	4	2	localThrowable	java.lang.Throwable
+    //   6	49	3	str2	String
+    //   28	3	4	str3	String
+    // Exception table:
+    //   from	to	target	type
+    //   7	20	47	java/lang/Throwable
+    //   24	30	47	java/lang/Throwable
+    //   60	64	67	java/io/IOException
+    //   7	20	71	finally
+    //   24	30	71	finally
+    //   50	54	71	finally
+    //   39	43	82	java/io/IOException
+    //   76	80	85	java/io/IOException
+  }
+  
+  public static String a(int paramInt)
+  {
+    Iterator localIterator = a.entrySet().iterator();
+    Map.Entry localEntry;
+    while (localIterator.hasNext())
+    {
+      localEntry = (Map.Entry)localIterator.next();
+      if (((Integer)localEntry.getValue()).intValue() == paramInt) {
+        return (String)localEntry.getKey();
       }
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    localIterator = auov.a.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      for (;;)
+      localEntry = (Map.Entry)localIterator.next();
+      if (((Integer)localEntry.getValue()).intValue() == paramInt) {
+        return (String)localEntry.getKey();
+      }
+    }
+    return "";
+  }
+  
+  public static String a(long paramLong1, long paramLong2)
+  {
+    return String.valueOf(100000L + 10L * paramLong1 + paramLong2);
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    return new String(bdbi.decode(paramString, 0));
+  }
+  
+  public static ArrayList<auol> a(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString);
+    while (paramString.find())
+    {
+      auol localauol = new auol();
+      localauol.jdField_a_of_type_JavaLangString = paramString.group();
+      localauol.jdField_a_of_type_Int = paramString.start();
+      localauol.jdField_b_of_type_Int = (localauol.jdField_a_of_type_Int + localauol.jdField_a_of_type_JavaLangString.length());
+      localauol.jdField_b_of_type_JavaLangString = paramString.group(1);
+      if ((!TextUtils.isEmpty(localauol.jdField_b_of_type_JavaLangString)) && (localauol.jdField_b_of_type_JavaLangString.contains("client/42px-")))
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("peak_pgjpeg", 2, "OutOfMemoryError occurred in PeakUtils.getSliceInfos， " + paramString + "'s size is " + bbdx.a(paramString));
+        Matcher localMatcher = Pattern.compile("x_character/([^\\)]+?)/client").matcher(localauol.jdField_b_of_type_JavaLangString);
+        if (localMatcher.find()) {
+          localauol.c = localMatcher.group(1);
         }
       }
-      ((auod)localObject).jdField_g_of_type_Int = ((auod)localObject).a();
-    }
-    return localObject;
-  }
-  
-  public static auoj a()
-  {
-    return jdField_a_of_type_Auoj;
-  }
-  
-  private void a(long paramLong, int paramInt)
-  {
-    this.jdField_b_of_type_Long += paramLong;
-    auns.a("presend_FlowWaste", this.jdField_b_of_type_Long);
-    agqd.a(paramLong, paramInt);
-    aung.a("PresendPicMgrService", "calcWasteFlow ", "PresendStatus:  wastesize = " + paramLong + ",mWastedUploadFlow = " + this.jdField_b_of_type_Long + ",cancelType = " + paramInt);
-  }
-  
-  private void a(aunv paramaunv, int paramInt)
-  {
-    synchronized (paramaunv.jdField_a_of_type_Auod)
-    {
-      paramaunv.jdField_a_of_type_Auod.jdField_d_of_type_Boolean = true;
-      if (paramaunv.jdField_a_of_type_Auod.jdField_a_of_type_JavaLangObject == null)
-      {
-        aung.b("PresendPicMgrService", "doCancel", " req.upInfo.picExtraObject == null!");
-        return;
-      }
-    }
-    ??? = (MessageRecord)paramaunv.jdField_a_of_type_Auod.jdField_a_of_type_JavaLangObject;
-    for (;;)
-    {
-      aypg localaypg;
-      long l1;
-      try
-      {
-        localaypg = (aypg)((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_d_of_type_JavaLangString)).a().a(((MessageRecord)???).frienduin, ((MessageRecord)???).uniseq);
-        if (localaypg != null) {
-          break label243;
-        }
-        aung.a("PresendPicMgrService", "doCancel", " processor == null!");
-        l1 = ((MessageForPic)???).mPresendTransferedSize;
-        long l2 = bbdx.a(((MessageForPic)???).path);
-        aung.a("PresendPicMgrService", "doCancel", "picSize = " + l2);
-        a(l1, paramInt);
-        aung.a("PresendPicMgrService", "doCancel ", "PresendStatus: Path:" + paramaunv.jdField_a_of_type_Auod.jdField_g_of_type_JavaLangString + ",uuid:" + paramaunv.jdField_a_of_type_Auod.jdField_a_of_type_JavaLangString + ",canceled:true, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true");
-        return;
-      }
-      catch (AccountNotMatchException paramaunv) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("PresendPicMgrService", 2, "no appRuntime");
-      return;
-      label243:
-      int j = b();
-      if (localaypg.g() < j)
-      {
-        aung.a("PresendPicMgrService", "doCancel", " processor upload less than cancelPercent:" + j + ", do cancel! ");
-        localaypg.a();
-        l1 = localaypg.b();
-      }
-      else
-      {
-        aung.a("PresendPicMgrService", "doCancel", " processor upload more than cancelPercent:" + j + ", do not cancel!");
-        l1 = localaypg.a();
-      }
-    }
-  }
-  
-  private void a(MessageForPic paramMessageForPic)
-  {
-    aung.a("PresendPicMgrService", "reuploadPhoto", " ");
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_d_of_type_JavaLangString);
-      localQQAppInterface.a().b(paramMessageForPic.frienduin, paramMessageForPic.istroop, paramMessageForPic.uniseq);
-      if (paramMessageForPic.isSendFromLocal()) {
-        localQQAppInterface.a().a(localQQAppInterface.a().a(paramMessageForPic.frienduin, paramMessageForPic.uniseq));
-      }
-      auoe localauoe = new auoe();
-      localauoe.a(paramMessageForPic.path);
-      localauoe.d(5);
-      localauoe.d(paramMessageForPic.frienduin);
-      localauoe.b(paramMessageForPic.uniseq);
-      if (paramMessageForPic.fileSizeFlag == 1) {
-        localauoe.c(ayvw.jdField_e_of_type_Int);
-      }
-      for (;;)
-      {
-        localauoe.e(paramMessageForPic.senderuin);
-        localauoe.c(paramMessageForPic.selfuin);
-        localauoe.e(paramMessageForPic.istroop);
-        localauoe.jdField_i_of_type_Int = paramMessageForPic.extLong;
-        localauoe.jdField_i_of_type_JavaLangString = paramMessageForPic.extStr;
-        auof localauof = new auof();
-        localauof.jdField_a_of_type_Long = paramMessageForPic.msgseq;
-        localauof.jdField_b_of_type_Long = paramMessageForPic.shmsgseq;
-        localauof.jdField_a_of_type_Long = paramMessageForPic.msgseq;
-        localauoe.a(localauof);
-        paramMessageForPic = aunl.a(4, 5);
-        paramMessageForPic.a(localauoe.a());
-        aunl.a(paramMessageForPic, localQQAppInterface);
-        return;
-        localauoe.c(ayvw.jdField_d_of_type_Int);
-      }
-      return;
-    }
-    catch (AccountNotMatchException paramMessageForPic)
-    {
+      localArrayList.add(localauol);
       if (QLog.isColorLevel()) {
-        QLog.d("PresendPicMgrService", 2, "no appRuntime");
+        QLog.i("MutualMarkUtils", 2, "getMutualMarkImageUrlTemplateInfos. url:" + localauol.jdField_b_of_type_JavaLangString + " template:" + localauol.jdField_a_of_type_JavaLangString);
       }
     }
+    return localArrayList;
   }
   
-  private void a(MessageRecord paramMessageRecord)
+  public static List<String> a()
   {
-    awap localawap = (awap)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(326);
-    localawap.a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
-    localawap.a(paramMessageRecord, ((MessageForPic)paramMessageRecord).path);
+    ArrayList localArrayList = new ArrayList(b.keySet());
+    Collections.sort(localArrayList, new auok());
+    return localArrayList;
   }
   
-  private int b()
+  public static boolean a(int paramInt)
   {
-    int j = 0;
-    int k = bbfj.a(BaseApplication.getContext());
-    switch (k)
-    {
+    if ((paramInt <= 100000) || (paramInt >= 200000)) {}
+    while (b(String.valueOf(paramInt)) <= 0L) {
+      return false;
     }
-    for (;;)
-    {
-      aung.a("PresendPicMgrService", "getCancelPercent", " NetType = " + k + ", cancelpercent = " + j);
-      return j;
-      j = this.jdField_b_of_type_Int;
-      continue;
-      j = this.jdField_c_of_type_Int;
-      continue;
-      j = this.jdField_d_of_type_Int;
-      continue;
-      j = this.jdField_e_of_type_Int;
-    }
+    return true;
   }
   
-  private boolean b()
+  public static boolean a(long paramLong)
   {
-    boolean bool = true;
-    int j = bbfj.a(BaseApplication.getContext());
-    switch (j)
-    {
-    default: 
-      bool = false;
-    }
-    for (;;)
-    {
-      aung.a("PresendPicMgrService", "isOverWasteLimit", "PresendStatus : nettype = " + j + " result =  " + bool + ",mWastedUploadFlow = " + this.jdField_b_of_type_Long);
-      return bool;
-      if (this.jdField_b_of_type_Long <= this.jdField_c_of_type_Long) {
-        break;
-      }
-      continue;
-      if (this.jdField_b_of_type_Long <= this.jdField_f_of_type_Long) {
-        break;
-      }
-      continue;
-      if (this.jdField_b_of_type_Long <= this.jdField_e_of_type_Long) {
-        break;
-      }
-      continue;
-      if (this.jdField_b_of_type_Long <= this.jdField_d_of_type_Long) {
-        break;
-      }
-    }
-  }
-  
-  private void e()
-  {
-    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.pic_presend.name());
-    if (DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name()))
-    {
-      localObject = "1|1|1|1|1|1|1|1|104857600|104857600|104857600|104857600|0|90|70|50";
-      aung.a("PresendPicMgrService", "getServerConfig", "In VIP list, presendConfigString " + "1|1|1|1|1|1|1|1|104857600|104857600|104857600|104857600|0|90|70|50");
-    }
-    aung.a("PresendPicMgrService", "getServerConfig", "presendConfigString = " + (String)localObject);
-    if ((localObject != null) && (((String)localObject).length() > 0))
-    {
-      localObject = ((String)localObject).split("\\|");
-      if (localObject.length >= 16)
-      {
-        this.jdField_a_of_type_Boolean = localObject[0].equals("1");
-        this.jdField_b_of_type_Boolean = localObject[1].equals("1");
-        this.jdField_c_of_type_Boolean = localObject[2].equals("1");
-        this.jdField_d_of_type_Boolean = localObject[3].equals("1");
-        this.jdField_e_of_type_Boolean = localObject[4].equals("1");
-        this.jdField_f_of_type_Boolean = localObject[5].equals("1");
-        this.jdField_g_of_type_Boolean = localObject[6].equals("1");
-        this.h = localObject[7].equals("1");
-      }
-    }
-    try
-    {
-      this.jdField_c_of_type_Long = Long.valueOf(localObject[8]).longValue();
-      this.jdField_f_of_type_Long = Long.valueOf(localObject[9]).longValue();
-      this.jdField_e_of_type_Long = Long.valueOf(localObject[10]).longValue();
-      this.jdField_d_of_type_Long = Long.valueOf(localObject[11]).longValue();
-      this.jdField_b_of_type_Int = Integer.parseInt(localObject[12]);
-      this.jdField_c_of_type_Int = Integer.parseInt(localObject[13]);
-      this.jdField_d_of_type_Int = Integer.parseInt(localObject[14]);
-      this.jdField_e_of_type_Int = Integer.parseInt(localObject[15]);
-      aung.a("PresendPicMgrService", "getServerConfig", "mEnablePreCompress_WIFI = " + this.jdField_a_of_type_Boolean + "mEnablePreCompress_2G = " + this.jdField_b_of_type_Boolean + "mEnablePreCompress_3G = " + this.jdField_c_of_type_Boolean + "mEnablePreCompress_4G = " + this.jdField_d_of_type_Boolean + "mEnablePreUpload_WIFI = " + this.jdField_e_of_type_Boolean + ",mEnablePreUpload_2G = " + this.jdField_f_of_type_Boolean + ",mEnablePreUpload_3G = " + this.jdField_g_of_type_Boolean + ",mEnablePreUpload_4G = " + this.h + "mPreUpMaxWasteSizeWIFI = " + this.jdField_c_of_type_Long + ", mPreUpMaxWasteSize2G = " + this.jdField_f_of_type_Long + ",mPreUpMaxWasteSize3G = " + this.jdField_e_of_type_Long + ",mPreUpMaxWasteSize4G = " + this.jdField_d_of_type_Long + ",mCancelPercentWIFI = " + this.jdField_b_of_type_Int + ",mCancelPercent2G = " + this.jdField_c_of_type_Int + ",mCancelPercent3G = " + this.jdField_d_of_type_Int + ",mCancelPercent4G = " + this.jdField_e_of_type_Int);
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        localNumberFormatException.printStackTrace();
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  public void a()
-  {
-    aung.a("PresendPicMgrService", "sendMsg__ start!", " ");
-    jdField_a_of_type_Auoj = null;
-    ArrayList localArrayList1 = new ArrayList();
-    long l1 = 0L;
-    Object localObject4;
-    ArrayList localArrayList2;
-    int j;
-    Object localObject5;
-    long l2;
-    try
-    {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-      {
-        this.i = true;
-        localObject4 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_d_of_type_JavaLangString);
-        localArrayList2 = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-        ??? = new ArrayList(this.jdField_b_of_type_JavaUtilArrayList);
-        j = 0;
-        if (j >= localArrayList2.size()) {
-          break label592;
-        }
-        localObject5 = (aunv)localArrayList2.get(j);
-        if (((aunv)localObject5).jdField_a_of_type_Auod.jdField_c_of_type_Int != 4) {
-          break label204;
-        }
-        aung.a("PresendPicMgrService", "sendMsg", "FLAG_UPLOADINFO_ERROR do not send! uuid = " + ((aunv)localObject5).jdField_a_of_type_JavaLangString);
-        l2 = l1;
-        j += 1;
-        l1 = l2;
-      }
-      aung.a("PresendPicMgrService", "sendMsg__ end!", " ");
-    }
-    catch (AccountNotMatchException localAccountNotMatchException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PresendPicMgrService", 2, "no appRuntime");
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        d();
-        return;
-        label204:
-        synchronized (((aunv)localObject5).jdField_a_of_type_Auod)
-        {
-          for (;;)
-          {
-            Object localObject7 = ((aunv)localObject5).jdField_a_of_type_Auod.jdField_a_of_type_JavaLangObject;
-            if (localObject7 == null) {}
-            try
-            {
-              aung.a("PresendPicMgrService", "sendMsg", "start wait! uuid = " + ((aunv)localObject5).jdField_a_of_type_JavaLangString);
-              ((aunv)localObject5).jdField_a_of_type_Auod.jdField_e_of_type_Boolean = true;
-              ((aunv)localObject5).jdField_a_of_type_Auod.wait();
-              aung.a("PresendPicMgrService", "sendMsg", "finish wait! uuid = " + ((aunv)localObject5).jdField_a_of_type_JavaLangString);
-              ((aunv)localObject5).jdField_a_of_type_Auod.jdField_f_of_type_Boolean = true;
-              if (((aunv)localObject5).jdField_a_of_type_Auod.jdField_a_of_type_JavaLangObject == null)
-              {
-                aung.b("PresendPicMgrService", "sendMsg", "get MR failed! uuid = " + ((aunv)localObject5).jdField_a_of_type_Auod.jdField_a_of_type_JavaLangString);
-                l2 = l1;
-              }
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                localInterruptedException.printStackTrace();
-              }
-            }
-          }
-        }
-      }
-      ??? = (MessageRecord)((aunv)localObject5).jdField_a_of_type_Auod.jdField_a_of_type_JavaLangObject;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        ((MessageRecord)???).saveExtInfoToExtStr("msg_extra_key_is_sync_qzone", String.valueOf(1));
-        ((MessageRecord)???).saveExtInfoToExtStr("msg_extra_key_qzone_album_id", this.jdField_a_of_type_JavaLangString);
-        ((MessageRecord)???).saveExtInfoToExtStr("msg_extra_key_qzone_batch_id", String.valueOf(this.jdField_a_of_type_Long));
-        ((MessageRecord)???).saveExtInfoToExtStr("msg_extra_key_qzone_is_raw", String.valueOf(((aunv)localObject5).jdField_a_of_type_Auod.jdField_g_of_type_Int));
-        ((MessageRecord)???).saveExtInfoToExtStr("msg_extra_key_qzone_batch_count", String.valueOf(localArrayList2.size()));
-        ((MessageRecord)???).saveExtInfoToExtStr("msg_extra_key_qzone_photo_index", String.valueOf(j));
-      }
-      a((MessageRecord)???);
-      if ((??? instanceof MessageForPic))
-      {
-        localObject2.add(((MessageForPic)???).path);
-        l1 = ((MessageRecord)???).uniseq;
-      }
-      l2 = l1;
-      if (((aunv)localObject5).jdField_a_of_type_Auod.jdField_c_of_type_Int != 3) {
-        break;
-      }
-      aung.a("PresendPicMgrService", "sendMsg", "Pic not upload,reupload! mr = " + ???);
-      a((MessageForPic)???);
-      l2 = l1;
-      break;
-      for (;;)
-      {
-        label592:
-        MessageRecord localMessageRecord;
-        try
-        {
-          localObject5 = ((ArrayList)???).iterator();
-          if (!((Iterator)localObject5).hasNext()) {
-            break;
-          }
-          ??? = (aunv)((Iterator)localObject5).next();
-          j = ((aunv)???).jdField_a_of_type_Auod.jdField_c_of_type_Int;
-          localMessageRecord = (MessageRecord)((aunv)???).jdField_a_of_type_Auod.jdField_a_of_type_JavaLangObject;
-          if (!localArrayList2.contains(???)) {
-            break label759;
-          }
-          if (j == 1)
-          {
-            aung.a("PresendPicMgrService", "sendMsg", "preupload success,dosend! mr =  " + localMessageRecord);
-            ((awap)((QQAppInterface)localObject4).getManager(326)).a(localMessageRecord, null);
-            continue;
-          }
-          aung.a("PresendPicMgrService", "sendMsg", "preupload failed,reupload! mr =  " + localMessageRecord);
-        }
-        finally {}
-        a((MessageForPic)localMessageRecord);
-        continue;
-        label759:
-        aung.a("PresendPicMgrService", "sendMsg", "unselect,do not send mr =  " + localMessageRecord);
-      }
-      if ((localList.size() >= 5) && (this.jdField_f_of_type_Int == 1))
-      {
-        if (QLog.isColorLevel())
-        {
-          ??? = localList.iterator();
-          while (((Iterator)???).hasNext())
-          {
-            localObject4 = (String)((Iterator)???).next();
-            QLog.d("PresendPicMgrService", 2, "sendPhotoTask,  mSendPaths path=" + (String)localObject4);
-          }
-          QLog.d("PresendPicMgrService", 2, "sendPhotoTask,  lastMessageUniseq=" + l1);
-        }
-        balv.a((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_d_of_type_JavaLangString), this.jdField_b_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, localList, l1);
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PresendPicMgrService", 2, "sendPhotoTask,  mSendPaths size=" + localList.size());
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    aung.a("PresendPicMgrService", "cancelAll", "cancelType = " + paramInt);
-    c();
-  }
-  
-  public void a(int paramInt, long paramLong, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    aung.a("PresendPicMgrService", "cancelUploadReq", " start,localUUID = " + paramString + ", cancelType = " + paramInt);
-    aunv localaunv = a(this.jdField_a_of_type_JavaUtilArrayList, paramString);
-    if (localaunv == null)
-    {
-      aung.a("PresendPicMgrService", "cancelUploadReq", " find req failed ");
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.remove(localaunv);
-    a(localaunv, paramInt);
-    aung.a("PresendPicMgrService", "cancelUploadReq", " end,localUUID = " + paramString);
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgVia", 2, "presendPic in main process " + paramInt2);
-    }
-    aung.a("PresendPicMgrService", "presendPic", "PresendStatus : path = " + paramString1 + ", localUUID = " + paramString2 + ",fileSize = " + bbdx.a(paramString1) + ",entrance = " + paramInt2);
-    aunv localaunv = aunl.a(2, 1052);
-    paramString1 = a(paramString1, paramBoolean, paramInt1, paramInt2);
-    localaunv.a(paramString1);
-    localaunv.a(paramString2);
-    if (!paramString1.a())
-    {
-      aung.b("PresendPicMgrService", paramString2, paramString1.jdField_a_of_type_Aunr.jdField_a_of_type_JavaLangString, paramString1.jdField_a_of_type_Aunr.jdField_b_of_type_JavaLangString);
-      paramString1.jdField_c_of_type_Int = 4;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localaunv);
-    }
+    if (paramLong <= 0L) {}
+    int i;
     do
     {
-      return;
-      localaunv.a(new auok(this, localaunv, paramString1));
-      if ((!a()) || (b()) || (bbdx.a(localaunv.jdField_a_of_type_Auod.jdField_g_of_type_JavaLangString) > 512000L))
-      {
-        aung.a("PresendPicMgrService", "presendPic", "set FLAG_NOT_UPLOAD!");
-        localaunv.a(null);
-        localaunv.jdField_a_of_type_Auod.jdField_c_of_type_Int = 3;
-      }
-      try
-      {
-        aunl.a(localaunv, (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_d_of_type_JavaLangString));
-        this.jdField_a_of_type_JavaUtilArrayList.add(localaunv);
-        return;
-      }
-      catch (AccountNotMatchException paramString1) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("PresendPicMgrService", 2, "no appRuntime");
+      return false;
+      i = a();
+    } while ((i < 18) || (i >= 24) || (bdjj.c(paramLong) == 2131720882));
+    return true;
   }
   
-  boolean a()
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    int j = bbfj.a(BaseApplication.getContext());
-    boolean bool = false;
-    switch (j)
-    {
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null)) {
+      return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("hotDisableInteractive", 0) == 1;
     }
-    for (;;)
-    {
-      aung.a("PresendPicMgrService", "isPreuploadEnable", "nettype = " + j + " result =  " + bool);
-      return bool;
-      bool = this.jdField_e_of_type_Boolean;
-      continue;
-      bool = this.jdField_f_of_type_Boolean;
-      continue;
-      bool = this.jdField_g_of_type_Boolean;
-      continue;
-      bool = this.h;
-    }
+    return false;
   }
   
-  public int[] a()
+  public static boolean a(String paramString)
   {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bool1 = bool2;
+      if (paramString.startsWith("#image_url"))
+      {
+        bool1 = bool2;
+        if (Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString).matches()) {
+          bool1 = true;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkUtils", 2, "isMutualMarkImageUrlTemplate. res:" + bool1 + " template:" + paramString);
+    }
+    return bool1;
+  }
+  
+  public static long b(String paramString)
+  {
+    long l = 0L;
+    if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      int[] arrayOfInt = aunl.a((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_d_of_type_JavaLangString));
-      return arrayOfInt;
+      paramString = Long.valueOf(Long.parseLong(paramString));
+      l = (paramString.longValue() - 100000L - paramString.longValue() % 10L) / 10L;
+      return l;
     }
-    catch (AccountNotMatchException localAccountNotMatchException)
+    catch (Exception paramString)
     {
+      QLog.e("MutualMarkUtils", 1, "getType error:" + paramString.getMessage());
+    }
+    return 0L;
+  }
+  
+  public static String b(String paramString)
+  {
+    Object localObject = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString);
+    if (((Matcher)localObject).matches())
+    {
+      localObject = ((Matcher)localObject).group(1);
       if (QLog.isColorLevel()) {
-        QLog.d("PresendPicMgrService", 2, "getPicCompressArgConfig no appRuntime");
+        QLog.i("MutualMarkUtils", 2, "getMutualMarkImageUrlTemplateUrl. url:" + (String)localObject + " template:" + paramString);
       }
+      return localObject;
     }
     return null;
   }
   
-  public boolean[] a()
+  public static boolean b(int paramInt)
   {
-    return new boolean[] { this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean, this.jdField_d_of_type_Boolean };
+    return (paramInt == 2097153) || (paramInt == 2097154) || (paramInt == 2097155);
   }
   
-  public void b()
+  public static boolean b(long paramLong)
   {
-    int j = bbfj.a(BaseApplication.getContext());
-    aung.a("PresendPicMgrService", "handletWifi2Mobile", "netType = " + j);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      aung.a("PresendPicMgrService", "handletWifi2Mobile", "mUploadReqList is Null! ");
-    }
+    boolean bool2 = false;
+    long[] arrayOfLong = aunz.b;
+    int j = arrayOfLong.length;
+    int i = 0;
     for (;;)
     {
-      return;
-      Iterator localIterator;
-      aunv localaunv;
-      if (j == 2)
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        aung.a("PresendPicMgrService", "handletWifi2Mobile", "switch to G2,cancel upload! ");
-        localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          localaunv = (aunv)localIterator.next();
-          a(localaunv, 1001);
-          localaunv.jdField_a_of_type_Auod.jdField_c_of_type_Int = 3;
+        if (arrayOfLong[i] == paramLong) {
+          bool1 = true;
         }
       }
-      if (((j == 3) || (j == 4)) && (b()))
-      {
-        aung.a("PresendPicMgrService", "handletWifi2Mobile", "switch to G3/G4,overWastLimit,cancel upload! ");
-        localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          localaunv = (aunv)localIterator.next();
-          a(localaunv, 1002);
-          localaunv.jdField_a_of_type_Auod.jdField_c_of_type_Int = 3;
-        }
+      else {
+        return bool1;
       }
+      i += 1;
     }
   }
   
-  void c()
+  public static boolean c(long paramLong)
   {
-    aung.a("PresendPicMgrService", "resetStatus", "");
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.i = false;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = null;
+    long[] arrayOfLong;
+    int j;
+    int i;
+    if (b(paramLong))
+    {
+      arrayOfLong = aunz.a;
+      j = arrayOfLong.length;
+      i = 0;
+    }
+    while (i < j)
+    {
+      if (arrayOfLong[i] == paramLong) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auoj
  * JD-Core Version:    0.7.0.1
  */

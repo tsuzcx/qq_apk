@@ -1,26 +1,30 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahsl
-  implements ahtg
+class ahsl
+  implements DialogInterface.OnClickListener
 {
-  public ahsl(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ahsl(ahsh paramahsh) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditLocalVideoActivity.a(this.a, paramString);
-    EditLocalVideoActivity.g(this.a);
-  }
-  
-  public void b()
-  {
-    bcql.a(this.a, 2131695104, 1).a();
+    try
+    {
+      paramDialogInterface.dismiss();
+      ahsh.a(this.a, ahsh.a(this.a), Long.valueOf(ahsh.a(this.a)).longValue());
+      ahsh.a(this.a);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.e("SDKEmotionSettingManager", 1, "setNegativeButton cancel error");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsl
  * JD-Core Version:    0.7.0.1
  */

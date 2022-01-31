@@ -1,114 +1,107 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.manager.TicketManager;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
+import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class xjv
-  extends WebViewPlugin
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public final int a;
+  public final String a;
+  public final xjw a;
+  
+  public xjv(qqstory_struct.TagItem paramTagItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountRelease", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if (!"accountRelease".equals(paramString2)) {
-      return false;
-    }
-    if ("onReleaseSuccess".equals(paramString3))
+    this.jdField_a_of_type_Xjw = new xjw((qqstory_struct.TagInfoBase)paramTagItem.base_info.get());
+    this.jdField_a_of_type_Int = paramTagItem.join_count.get();
+    this.jdField_a_of_type_JavaLangString = paramTagItem.wording.get();
+  }
+  
+  public xjv(TagItemEntry paramTagItemEntry)
+  {
+    this.jdField_a_of_type_Xjw = new xjw(paramTagItemEntry.id, paramTagItemEntry.name, paramTagItemEntry.desc, paramTagItemEntry.type);
+    this.jdField_a_of_type_Int = paramTagItemEntry.joinCount;
+    this.jdField_a_of_type_JavaLangString = paramTagItemEntry.wording;
+  }
+  
+  public xjv(xjw paramxjw, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Xjw = paramxjw;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public TagItemEntry a()
+  {
+    TagItemEntry localTagItemEntry = new TagItemEntry();
+    localTagItemEntry.id = this.jdField_a_of_type_Xjw.jdField_a_of_type_Long;
+    localTagItemEntry.name = this.jdField_a_of_type_Xjw.jdField_a_of_type_JavaLangString;
+    localTagItemEntry.desc = this.jdField_a_of_type_Xjw.b;
+    localTagItemEntry.type = this.jdField_a_of_type_Xjw.jdField_a_of_type_Int;
+    localTagItemEntry.joinCount = this.jdField_a_of_type_Int;
+    localTagItemEntry.wording = this.jdField_a_of_type_JavaLangString;
+    return localTagItemEntry;
+  }
+  
+  public String a()
+  {
+    Object localObject = new JSONObject();
+    try
     {
-      paramJsBridgeListener = this.mRuntime.a();
-      if (paramJsBridgeListener != null)
-      {
-        paramJsBridgeListener.setResult(-1, null);
-        paramJsBridgeListener.finish();
+      if (this.jdField_a_of_type_Xjw == null) {
+        return null;
       }
+      ((JSONObject)localObject).put("tag_id", this.jdField_a_of_type_Xjw.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("tag_name", this.jdField_a_of_type_Xjw.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("tag_desc", this.jdField_a_of_type_Xjw.b);
+      ((JSONObject)localObject).put("tag_type", this.jdField_a_of_type_Xjw.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("join_count", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("wording", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("one_page", 1);
+      ((JSONObject)localObject).put("src_type", "web");
+      ((JSONObject)localObject).put("version", 1);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    while (!"getToken".equals(paramString3)) {
-      for (;;)
-      {
+    catch (JSONException localJSONException) {}
+    return null;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
         return false;
-        QLog.d("AccountRelease", 1, "release success, activity == null");
       }
+      paramObject = (xjv)paramObject;
+      if (this.jdField_a_of_type_Xjw != null) {
+        return this.jdField_a_of_type_Xjw.equals(paramObject.jdField_a_of_type_Xjw);
+      }
+    } while (paramObject.jdField_a_of_type_Xjw == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_Xjw != null) {
+      return this.jdField_a_of_type_Xjw.hashCode();
     }
-    paramJsBridgeListener = this.mRuntime.a();
-    paramString1 = this.mRuntime.a();
-    boolean bool = false;
-    if (paramString1 != null) {
-      bool = paramString1.getIntent().getBooleanExtra("is_release_account", false);
-    }
-    for (;;)
-    {
-      if ((bool) && (paramJsBridgeListener != null))
-      {
-        paramString1 = (TicketManager)paramJsBridgeListener.getManager(2);
-        paramJsBridgeListener = paramJsBridgeListener.getCurrentAccountUin();
-        paramString1 = paramString1.getA2(paramJsBridgeListener);
-        if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString1)))
-        {
-          paramString1 = bbea.a(paramString1);
-          long l = Long.valueOf(paramJsBridgeListener).longValue();
-          paramJsBridgeListener = new byte[76];
-          paramJsBridgeListener[3] = ((byte)(int)(0xFF & l));
-          paramJsBridgeListener[2] = ((byte)(int)(l >>> 8 & 0xFF));
-          paramJsBridgeListener[1] = ((byte)(int)(l >>> 16 & 0xFF));
-          paramJsBridgeListener[0] = ((byte)(int)(l >>> 24 & 0xFF));
-          int i = 0;
-          for (;;)
-          {
-            if (i < paramString1.length)
-            {
-              paramJsBridgeListener[(i + 4)] = paramString1[i];
-              i += 1;
-              continue;
-              QLog.d("AccountRelease", 1, "getToken, activity == null");
-              break;
-            }
-          }
-          paramJsBridgeListener = bdik.a(paramJsBridgeListener);
-          if (QLog.isColorLevel()) {
-            QLog.d("AccountRelease", 2, String.format("getToken: %s", new Object[] { paramJsBridgeListener }));
-          }
-          paramString1 = new JSONObject();
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!TextUtils.isEmpty(paramJsBridgeListener)) {
-          break label465;
-        }
-        paramString1.put("token", "");
-        callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { paramString1.toString() });
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-      }
-      break;
-      QLog.d("AccountRelease", 1, "uin or a2 is empty, uin:" + paramJsBridgeListener + ",a2:" + paramString1);
-      for (;;)
-      {
-        paramJsBridgeListener = "";
-        break;
-        QLog.d("AccountRelease", 1, "getToken, app == null or flag: " + bool);
-      }
-      label465:
-      paramString1.put("token", paramJsBridgeListener);
-    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "TagItem{tagInfo=" + this.jdField_a_of_type_Xjw + ", joinCount=" + this.jdField_a_of_type_Int + ", wording='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjv
  * JD-Core Version:    0.7.0.1
  */

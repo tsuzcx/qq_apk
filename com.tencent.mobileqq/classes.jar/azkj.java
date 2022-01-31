@@ -1,136 +1,111 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import java.util.ArrayList;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.startup.step.ProcessInfoUtil.1;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
+import java.util.List;
 
 public class azkj
-  implements View.OnClickListener
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new azkk(this);
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  azkg jdField_a_of_type_Azkg;
-  azlz jdField_a_of_type_Azlz = new azkl(this);
-  azmb jdField_a_of_type_Azmb;
-  ArrayList<azlv> jdField_a_of_type_JavaUtilArrayList;
-  View jdField_b_of_type_AndroidViewView;
-  ArrayList<azkh> jdField_b_of_type_JavaUtilArrayList;
-  
-  public azkj(azkg paramazkg, View paramView)
+  public static int a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Azkg = paramazkg;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369284));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364838);
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    azkh localazkh = new azkh(paramView.findViewById(2131369285), 0);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localazkh);
-    localazkh = new azkh(paramView.findViewById(2131369286), 1);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localazkh);
-    localazkh = new azkh(paramView.findViewById(2131369287), 2);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localazkh);
-    paramView = new azkh(paramView.findViewById(2131369288), 3);
-    this.jdField_b_of_type_JavaUtilArrayList.add(paramView);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
-    paramView = new azlv((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131369289), paramazkg.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_Azlz);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
-    paramazkg = new azlv((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131369290), paramazkg.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_Azlz);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramazkg);
+    if (paramContext != null)
+    {
+      paramContext = (ActivityManager)paramContext.getSystemService("activity");
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getRunningAppProcesses();
+        if (paramContext != null)
+        {
+          paramContext = paramContext.iterator();
+          while (paramContext.hasNext())
+          {
+            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+            if (paramString.compareTo(localRunningAppProcessInfo.processName) == 0) {
+              return localRunningAppProcessInfo.pid;
+            }
+          }
+        }
+      }
+    }
+    return -1;
   }
   
-  public void a(azmb paramazmb)
+  public static int a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((azlv)((Iterator)localObject).next()).a();
+    int i = -1;
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt("pid" + paramString, -1);
     }
-    this.jdField_a_of_type_Azmb = paramazmb;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramazmb.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramazmb.jdField_b_of_type_JavaLangString);
-    if (paramazmb.jdField_b_of_type_JavaLangString.equals(azkg.jdField_a_of_type_JavaLangString))
-    {
-      localObject = (TroopManager)this.jdField_a_of_type_Azkg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-      boolean bool = ((TroopManager)localObject).c();
-      if (((TroopManager)localObject).a.jdField_a_of_type_Boolean)
-      {
-        localObject = this.jdField_b_of_type_AndroidViewView;
-        if (!bool) {
-          break label181;
-        }
-      }
-    }
-    label181:
-    for (int i = 8;; i = 0)
-    {
-      ((View)localObject).setVisibility(i);
-      i = 0;
-      while (i < paramazmb.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        ((azkh)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a(this.jdField_a_of_type_Azkg.jdField_a_of_type_AndroidContentContext, (azmb)paramazmb.jdField_a_of_type_JavaUtilArrayList.get(i), this);
-        i += 1;
-      }
-    }
+    return i;
   }
   
-  public void onClick(View paramView)
+  public static long a(String paramString)
   {
-    azkh localazkh = (azkh)paramView.getTag();
-    if ((localazkh == null) || (localazkh.jdField_a_of_type_Azmb == null)) {
-      return;
+    long l2 = 0L;
+    int i = a(BaseApplicationImpl.getContext(), paramString);
+    long l1;
+    if (i == -1) {
+      l1 = l2;
     }
-    azmb localazmb = localazkh.jdField_a_of_type_Azmb;
-    if (localazmb.jdField_a_of_type_JavaLangString == null) {}
-    for (paramView = "";; paramView = localazmb.jdField_a_of_type_JavaLangString)
+    do
     {
-      axqy.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, paramView, "", "", "");
-      if (!localazmb.jdField_a_of_type_Boolean) {
-        break;
-      }
-      int i = localazkh.jdField_a_of_type_Int / 2;
-      ((azlv)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(localazkh, localazmb);
-      return;
-    }
-    if (localazmb.jdField_b_of_type_Int == 1)
-    {
-      if ((localazmb.jdField_a_of_type_JavaLangString.equals("20001")) || (localazmb.jdField_a_of_type_JavaLangString.equals("20002")))
+      long l3;
+      do
       {
-        paramView = (TroopManager)this.jdField_a_of_type_Azkg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-        if (paramView.a.jdField_a_of_type_Boolean)
+        int j;
+        do
         {
-          paramView.g();
-          this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        }
-        this.jdField_a_of_type_Azkg.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCateView.a(localazmb.jdField_a_of_type_JavaLangString);
-        if (localazmb.jdField_a_of_type_JavaLangString.equals("20001")) {}
-        for (paramView = "Clk_type_2";; paramView = "Clk_type_3")
-        {
-          axqy.b(this.jdField_a_of_type_Azkg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_mobile", "", "chose_type", paramView, 0, 0, "", "", "", "");
-          return;
-        }
-      }
-      if (localazmb.jdField_a_of_type_JavaLangString.equals("20003"))
-      {
-        QLog.e("vip_pretty.createNewTroop.CateListAdapter", 1, "click the create pretty troop icon");
-        bbje.a(amza.c().a("category"), this.jdField_a_of_type_Azkg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), (Activity)this.jdField_a_of_type_Azkg.jdField_a_of_type_AndroidContentContext);
-        axqy.b(this.jdField_a_of_type_Azkg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A582", 0, 0, "", "", "", "");
-        return;
-      }
-      this.jdField_a_of_type_Azkg.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCateView.a(localazmb.jdField_a_of_type_JavaLangString, null);
-      return;
+          do
+          {
+            return l1;
+            j = a(paramString);
+            l1 = l2;
+          } while (j == -1);
+          l1 = l2;
+        } while (i != j);
+        l3 = b(paramString);
+        l1 = l2;
+      } while (l3 == -1L);
+      l2 = System.currentTimeMillis() - l3;
+      l1 = l2;
+    } while (!QLog.isColorLevel());
+    QLog.d("ProcessUtils", 2, "getProcessRunningTime - " + paramString + ":" + l2);
+    return l2;
+  }
+  
+  public static void a(String paramString)
+  {
+    ThreadManager.post(new ProcessInfoUtil.1(paramString), 5, null, true);
+  }
+  
+  public static long b(String paramString)
+  {
+    long l = -1L;
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong("start_time" + paramString, -1L);
     }
-    this.jdField_a_of_type_Azkg.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCateView.a(localazmb.d, localazmb.jdField_a_of_type_JavaLangString);
+    return l;
+  }
+  
+  private static SharedPreferences b()
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      return localBaseApplicationImpl.getSharedPreferences("process_info_pref", 4);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azkj
  * JD-Core Version:    0.7.0.1
  */

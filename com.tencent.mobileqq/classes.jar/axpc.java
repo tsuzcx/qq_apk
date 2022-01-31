@@ -1,93 +1,38 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.splashad.SplashADView;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
+import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 
-public final class axpc
-  extends axny
+public class axpc
 {
-  public axpc(Object paramObject, SplashADView paramSplashADView, AppActivity paramAppActivity, ImageView paramImageView1, ImageView paramImageView2, long paramLong)
+  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  static String jdField_a_of_type_JavaLangString = "DataCollector";
+  Handler jdField_a_of_type_AndroidOsHandler = new axpd(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  public boolean a;
+  
+  static
   {
-    super(paramObject);
+    jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
+    jdField_a_of_type_AndroidOsHandlerThread.start();
   }
   
-  protected void a()
+  public axpc(Context paramContext)
   {
-    try
-    {
-      avdv localavdv = (avdv)this.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b = false;
-      switch (localavdv.a)
-      {
-      case 2: 
-        this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QSplash@QbossSplashUtil", 1, "show SplashAd end() error ", localException);
-      return;
-    }
+    this.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
   }
   
-  protected void a(axnx paramaxnx)
+  static Looper a()
   {
-    avdv localavdv;
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        return;
-      }
-      localavdv = (avdv)this.jdField_a_of_type_JavaLangObject;
-      QLog.i("QSplash@QbossSplashUtil", 1, "bindView");
-      axns.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (!this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.jdField_a_of_type_Boolean)
-      {
-        paramaxnx.jdField_a_of_type_Long = 0L;
-        return;
-      }
-    }
-    catch (Exception paramaxnx)
-    {
-      QLog.e("QSplash@QbossSplashUtil", 1, "show SplashAd bindView error ", paramaxnx);
-      return;
-    }
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_MqqAppAppActivity.findViewById(2131376397);
-    if (localViewGroup == null)
-    {
-      QLog.i("QSplash@QbossSplashUtil", 1, "bindView fail, root is null");
-      paramaxnx.jdField_a_of_type_Long = 0L;
-      return;
-    }
-    localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView, 0);
-    switch (localavdv.a)
-    {
-    }
-    for (;;)
-    {
-      avdu.a(localavdv.j, null, 1);
-      avdu.a(localavdv.b, this.jdField_a_of_type_Long, false);
-      axns.a(localavdv.c, localavdv.g);
-      return;
-      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.b != null))
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.b.setVisibility(8);
-      }
-      paramaxnx.jdField_a_of_type_Long = 3000L;
-      continue;
-      QLog.i("QSplash@QbossSplashUtil", 1, "show video");
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b();
-      paramaxnx.jdField_a_of_type_Long = 10000L;
-    }
+    return jdField_a_of_type_AndroidOsHandlerThread.getLooper();
   }
+  
+  protected void a(Message paramMessage) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axpc
  * JD-Core Version:    0.7.0.1
  */

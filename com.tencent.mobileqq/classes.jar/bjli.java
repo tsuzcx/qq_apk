@@ -1,27 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.content.Context;
 
 public class bjli
-  implements Animator.AnimatorListener
 {
-  public bjli(QIMProviderContainerView paramQIMProviderContainerView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.c.setVisibility(8);
-  }
+  public Context a;
+  public bjjy a;
+  public bjjz a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjli
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class TracePathData
-  extends auko
+  extends awbv
 {
   public static final String TABLE_NAME = "TracePathData";
   public double distance;
   public long endTime;
   public int isStop;
-  @aumc
+  @awdj
   public long startTime;
   public int stepsGoal;
   public int totalSteps;
@@ -26,7 +26,7 @@ public class TracePathData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.TracePathData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,155 +1,148 @@
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.ReportBean;
-import com.tencent.image.URLDrawable.DebuggableCallback;
-import com.tencent.mobileqq.startup.step.InitUrlDrawable;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.util.SparseArray;
 
 public class axon
-  implements URLDrawable.DebuggableCallback
+  extends axpc
 {
-  private Set<String> a = new HashSet();
+  private SparseArray<axop> a = new SparseArray();
+  private Handler jdField_b_of_type_AndroidOsHandler = new axoo(this, a());
+  private String jdField_b_of_type_JavaLangString;
   
-  public boolean isNeedSample()
+  public axon(Context paramContext)
   {
-    return UnifiedMonitor.a().whetherReportThisTime(2);
+    super(paramContext);
+    int i = ((Activity)paramContext).getIntent().getIntExtra("forward_source_uin_type", -1);
+    if (i == 0)
+    {
+      this.jdField_b_of_type_JavaLangString = "c2c";
+      return;
+    }
+    if (i == 1)
+    {
+      this.jdField_b_of_type_JavaLangString = "grp";
+      return;
+    }
+    if (i == 3000)
+    {
+      this.jdField_b_of_type_JavaLangString = "dis";
+      return;
+    }
+    this.jdField_b_of_type_JavaLangString = "other";
   }
   
-  public void onDebug(int paramInt, Object paramObject)
+  private axop a(int paramInt)
   {
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    Exception localException;
-    switch (paramInt)
+    axop localaxop2 = (axop)this.a.get(paramInt);
+    axop localaxop1 = localaxop2;
+    if (localaxop2 == null)
     {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        paramObject = (Object[])paramObject;
-      } while (paramObject.length != 5);
-      str1 = (String)paramObject[0];
-      str2 = (String)paramObject[1];
-      str3 = (String)paramObject[2];
-      str4 = (String)paramObject[3];
-      localException = (Exception)paramObject[4];
-      if (paramObject.length > 5) {
-        paramObject = (String)paramObject[5];
-      }
-      break;
+      localaxop1 = new axop(paramInt, this.jdField_b_of_type_JavaLangString);
+      this.a.put(paramInt, localaxop1);
     }
-    label525:
+    return localaxop1;
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_AndroidOsHandler.obtainMessage().sendToTarget();
+  }
+  
+  public void a(int paramInt)
+  {
+    axop.a(a(paramInt));
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    axop localaxop = (axop)this.a.get(paramInt);
+    String str;
+    if (localaxop != null)
+    {
+      paramInt = axpe.a(paramLong1, paramLong2);
+      str = null;
+      switch (paramInt)
+      {
+      }
+    }
     for (;;)
     {
-      try
-      {
-        Object localObject = str1.split("\\(|,|\\)");
-        int j = Integer.parseInt(localObject[1]);
-        int k = Integer.parseInt(localObject[2]);
-        localObject = str2.split("\\(|,|\\)");
-        paramInt = Integer.parseInt(localObject[1]);
-        int i = Integer.parseInt(localObject[2]);
-        if ((paramInt <= 0) || (i <= 0) || (j <= 0) || (k <= 0)) {
-          break;
-        }
-        j = Math.max(Math.round(paramInt / j), Math.round(i / k));
-        if (j >= 2)
-        {
-          paramInt = paramInt * i - i * paramInt / (j * j);
-          if (paramInt <= 0) {
-            break;
-          }
-          paramInt = paramInt * 4 / 1024;
-          HashMap localHashMap = new HashMap(8);
-          localObject = InitUrlDrawable.a(localException, false);
-          String str5 = InitUrlDrawable.a((String)localObject, 1);
-          if (localObject == null) {
-            break label525;
-          }
-          localHashMap.put("stack", localObject);
-          localHashMap.put("title", str5);
-          localHashMap.put("viewsize", str1);
-          localHashMap.put("picsize", str2);
-          localHashMap.put("req_info", paramObject);
-          if (str3 != null)
-          {
-            localObject = str3.replace('&', ' ');
-            localHashMap.put("img_url", localObject);
-            UnifiedMonitor.a().addEvent(2, str4, paramInt, 0, localHashMap);
-            if (paramInt < 512) {
-              break;
-            }
-            InitUrlDrawable.a(localException, str5, str4, str1 + paramObject, str2, str3, paramInt);
-            return;
-          }
-          localObject = "";
-          continue;
-          paramObject = (Object[])paramObject;
-          if (paramObject.length != 2) {
-            break;
-          }
-          localObject = (String)paramObject[0];
-          paramObject = (Exception)paramObject[1];
-          return;
-          paramObject = (Long)paramObject;
-          if (SystemClock.uptimeMillis() % 100L != 0L) {
-            break;
-          }
-          axrn.a(BaseApplicationImpl.sApplication).a(null, "AioPicDownloadWait", true, paramObject.longValue(), 0L, null, null);
-          return;
-          paramObject = (Long)paramObject;
-          if (SystemClock.uptimeMillis() % 100L != 0L) {
-            break;
-          }
-          axrn.a(BaseApplicationImpl.sApplication).a(null, "AioPicDispatchWait", true, paramObject.longValue(), 0L, null, null);
-          return;
-        }
-        paramInt = 0;
-        continue;
-        paramObject = "";
-        continue;
-        localObject = "";
-      }
-      catch (Throwable paramObject)
-      {
-        return;
-      }
+      axop.b(localaxop, str);
+      return;
+      str = "long";
+      continue;
+      str = "small";
+      continue;
+      str = "mid";
+      continue;
+      str = "large";
+      continue;
+      str = "extra";
     }
   }
   
-  public void onReport(ReportBean paramReportBean)
+  public void a(int paramInt, String paramString)
   {
-    if ((paramReportBean != null) && (paramReportBean.tag != null)) {
-      axrn.a(BaseApplicationImpl.sApplication).a(null, paramReportBean.tag, paramReportBean.suc, paramReportBean.time, paramReportBean.size, paramReportBean.params, null);
+    axop localaxop = (axop)this.a.get(paramInt);
+    if (localaxop != null) {
+      axop.d(localaxop, paramString);
     }
   }
   
-  public void onReportLoadingDrawableError()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    axpu.a(new IllegalArgumentException(), "ReportURLDrawableError");
+    axop localaxop = (axop)this.a.get(paramInt);
+    if (localaxop != null) {
+      axop.a(localaxop, paramBoolean);
+    }
   }
   
-  public void onReportThread(HashMap<String, String> paramHashMap)
+  public void b(int paramInt)
   {
-    if (paramHashMap != null)
+    axop localaxop = (axop)this.a.get(paramInt);
+    if ((localaxop != null) && (axop.a(localaxop))) {
+      axop.b(localaxop);
+    }
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    axop localaxop = (axop)this.a.get(paramInt);
+    if (localaxop != null) {
+      if (!paramBoolean) {
+        break label33;
+      }
+    }
+    label33:
+    for (String str = "dynamic";; str = "static")
     {
-      paramHashMap.put("version", AppSetting.f());
-      paramHashMap.put("build_type", "pub");
-      axrn.a(BaseApplicationImpl.sApplication).a(null, "URLDrawableThreadState", true, 0L, 0L, paramHashMap, null);
+      axop.c(localaxop, str);
+      return;
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    axop localaxop = (axop)this.a.get(paramInt);
+    if ((localaxop != null) && (axop.a(localaxop))) {
+      axop.c(localaxop);
+    }
+  }
+  
+  public void d(int paramInt)
+  {
+    axop localaxop = (axop)this.a.get(paramInt);
+    if ((localaxop != null) && (axop.a(localaxop))) {
+      axop.a(localaxop, "sender");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axon
  * JD-Core Version:    0.7.0.1
  */

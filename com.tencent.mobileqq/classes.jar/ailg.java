@@ -1,36 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
 
-class ailg
-  implements View.OnClickListener
+public final class ailg
+  implements Parcelable.Creator<TroopClipPic>
 {
-  ailg(ailf paramailf, agii paramagii, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public TroopClipPic a(Parcel paramParcel)
   {
-    paramView = new Intent(this.jdField_a_of_type_Ailf.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Agii.b);
-    paramView.putExtra("isShowAd", false);
-    this.jdField_a_of_type_Ailf.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    if ((this.jdField_a_of_type_Ailf.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
-      ((AvatarPendantActivity)this.jdField_a_of_type_Ailf.jdField_a_of_type_AndroidContentContext).a = -1L;
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
-      return;
-    }
-    axqy.b(this.jdField_a_of_type_Ailf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
+    return new TroopClipPic(paramParcel);
+  }
+  
+  public TroopClipPic[] a(int paramInt)
+  {
+    return new TroopClipPic[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ailg
  * JD-Core Version:    0.7.0.1
  */

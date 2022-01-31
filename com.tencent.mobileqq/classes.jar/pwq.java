@@ -1,49 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSImageView;
+import com.tencent.pts.core.PTSAppInstance;
+import com.tencent.pts.ui.PTSNodeInfo;
+import com.tencent.pts.ui.PTSNodeStyle;
+import com.tencent.pts.ui.vnode.PTSNodeVirtual;
+import com.tencent.pts.utils.PTSLog;
+import com.tencent.pts.utils.PTSTimeCostUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class pwq
-  implements View.OnClickListener
+  extends PTSNodeVirtual<PTSImageView>
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  public final String a = "PTSNodeImage";
   
-  private pwq(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
-  
-  public void onClick(View paramView)
+  private pwq(PTSAppInstance paramPTSAppInstance)
   {
-    switch (paramView.getId())
+    super(paramPTSAppInstance);
+  }
+  
+  private String a(String paramString)
+  {
+    int i = getNodeInfo().getStyle().getWidth();
+    int j = getNodeInfo().getStyle().getHeight();
+    String str = paramString;
+    if (i > 0)
     {
-    default: 
-      return;
-    case 2131366528: 
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList;
-      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramView.a(localRecommendFollowInfo, bool);
-        return;
+      str = paramString;
+      if (j > 0) {
+        str = ors.a(paramString, i, j);
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+    return str;
+  }
+  
+  private void a(String paramString)
+  {
+    PTSTimeCostUtil.start("image-" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http")) || (paramString.startsWith("pubaccount"))))
+    {
+      String str = a(paramString);
+      PTSLog.i("PTSNodeImage", "[setImageSrc], cropUrl = " + str);
+      ((PTSImageView)getView()).setImageSrc(str);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PTSNodeImage", 2, "[setImageSrc], path = " + paramString);
+    }
+    PTSTimeCostUtil.end("image-" + paramString);
+  }
+  
+  public PTSImageView a()
+  {
+    return new PTSImageView(this);
+  }
+  
+  public void resetAll() {}
+  
+  public boolean setAttribute(String paramString, Object paramObject)
+  {
+    if (super.setAttribute(paramString, paramObject)) {
+      return true;
+    }
+    if (("src".equals(paramString)) && ((paramObject instanceof String)))
+    {
+      a((String)paramObject);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwq
  * JD-Core Version:    0.7.0.1
  */

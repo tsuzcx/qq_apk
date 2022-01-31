@@ -1,28 +1,22 @@
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.ShapeDrawable.ShaderFactory;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afov
-  extends ShapeDrawable.ShaderFactory
+  extends afpq
 {
-  afov(afou paramafou, float paramFloat) {}
-  
-  public Shader resize(int paramInt1, int paramInt2)
+  afov(aflj paramaflj)
   {
-    float f1 = paramInt1;
-    paramInt1 = Color.parseColor("#00FFFFFF");
-    paramInt2 = Color.parseColor("#FFFFFFFF");
-    int i = Color.parseColor("#FFFFFFFF");
-    float f2 = this.jdField_a_of_type_Float;
-    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-    return new LinearGradient(0.0F, 0.0F, f1, 0.0F, new int[] { paramInt1, paramInt2, i }, new float[] { 0.0F, f2, 1.0F }, localTileMode);
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new affu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afov
  * JD-Core Version:    0.7.0.1
  */

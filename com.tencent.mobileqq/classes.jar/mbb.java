@@ -1,35 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoLayerUI;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class mbb
-  extends Handler
+class mbb
+  extends amab
 {
-  public mbb(AVActivity paramAVActivity) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void handleMessage(Message paramMessage)
+  private mbb(max parammax) {}
+  
+  protected void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
+    }
+  }
+  
+  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
+  {
+    if (paramTroopInfo == null) {}
+    do
     {
-    default: 
-      super.handleMessage(paramMessage);
       return;
+      paramTroopInfo = paramTroopInfo.troopuin;
+    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramTroopInfo)));
+    this.jdField_a_of_type_Max.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    if (this == this.jdField_a_of_type_Max.jdField_a_of_type_Mbb) {
+      this.jdField_a_of_type_Max.jdField_a_of_type_Mbb = null;
     }
-    long l = mtj.a(paramMessage.obj);
-    this.a.a(l, "handleMessage", true);
-    if (this.a.jdField_a_of_type_Min != null) {
-      this.a.jdField_a_of_type_Min.n();
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.k(this.a.jdField_a_of_type_Min.a);
-    }
-    this.a.g(-1031L);
+    QLog.w("ShareChat", 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "]");
+    this.jdField_a_of_type_Max.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mbb
  * JD-Core Version:    0.7.0.1
  */

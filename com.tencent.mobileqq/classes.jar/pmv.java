@@ -1,27 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class pmv
-  implements View.OnClickListener
+class pmv
+  implements ViewBase.OnClickListener
 {
-  public pmv(NativeAwesomeCommentView paramNativeAwesomeCommentView, qam paramqam) {}
+  pmv(pms parampms, Container paramContainer) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView)) {
-      NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView, false);
+    paramViewBase = BaseApplicationImpl.getContext();
+    int i;
+    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
+      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
+        i = 1;
+      }
     }
-    while (this.jdField_a_of_type_Qam == null) {
+    for (;;)
+    {
+      if ((i == 0) && (pid.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
+        pms.a(this.jdField_a_of_type_Pms, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
+      }
       return;
+      i = 0;
+      continue;
+      i = 1;
     }
-    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getContext(), this.jdField_a_of_type_Qam.a, this.jdField_a_of_type_Qam.c);
-    qam.a(NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).a, "0X8009B77");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pmv
  * JD-Core Version:    0.7.0.1
  */

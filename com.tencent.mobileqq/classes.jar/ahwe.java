@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.1;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.2;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
+import android.support.v4.app.FragmentActivity;
 
 public class ahwe
-  implements axdj
+  extends ahvn
 {
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public static final int[] a = { 2131690787 };
+  public static final int[] b = { 2131364159 };
+  
+  public ahwe(FragmentActivity paramFragmentActivity)
   {
-    this.a.a.post(new PtvTemplateAdapter.5.2(this, paramPtvTemplateInfo, paramInt));
+    super(paramFragmentActivity);
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  protected int[] a()
   {
-    this.a.a.post(new PtvTemplateAdapter.5.1(this, paramPtvTemplateInfo, paramBoolean));
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,249 +1,514 @@
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.content.res.Resources;
+import android.graphics.NinePatch;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.StateListDrawable;
+import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import android.widget.Button;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.emosm.favroaming.EmoAddedAuthCallback.4;
-import com.tencent.mobileqq.mqsafeedit.MD5;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class ansf
-  implements Handler.Callback, auoq
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  CustomEmotionData jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
-  StructMsgForImageShare jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare;
-  private WeakReference<ansj> jdField_a_of_type_JavaLangRefWeakReference;
+  public double a;
+  public int a;
+  public NinePatch a;
+  public ansg a;
+  @Deprecated
+  public antl a;
+  public String a;
+  public HashMap<String, antk> a;
+  public List<Pair<ansg, ansg>> a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  public NinePatch b;
+  public ansg b;
+  public String b;
+  public HashMap<String, String> b;
+  List<View> b;
+  public boolean b;
+  public String[] b;
+  public int c;
+  public String c;
+  List<View> c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  private int g;
+  private int h;
   
-  public ansf(QQAppInterface paramQQAppInterface, Context paramContext, CustomEmotionData paramCustomEmotionData, StructMsgForImageShare paramStructMsgForImageShare, int paramInt)
+  public ansf(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData = paramCustomEmotionData;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = paramStructMsgForImageShare;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_c_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
+  public ansf(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt == 1)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.g = paramInt2;
+    this.h = paramInt3;
+  }
+  
+  public ansf(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, antl paramantl, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2, double paramDouble, String[] paramArrayOfString, ansg paramansg1, int paramInt5, int paramInt6, ansg paramansg2, List<Pair<ansg, ansg>> paramList, HashMap<String, String> paramHashMap)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_d_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_e_of_type_JavaLangString = paramString4;
+    this.jdField_a_of_type_Antl = paramantl;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_Double = paramDouble;
+    this.jdField_e_of_type_Int = paramInt5;
+    this.jdField_f_of_type_Int = paramInt6;
+    this.jdField_b_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    paramString1 = paramList;
+    if (paramList == null) {
+      paramString1 = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilList = paramString1;
+    this.jdField_a_of_type_Ansg = paramansg1;
+    this.jdField_b_of_type_Ansg = paramansg2;
+    paramString1 = paramHashMap;
+    if (paramHashMap == null) {
+      paramString1 = new HashMap();
+    }
+    this.jdField_b_of_type_JavaUtilHashMap = paramString1;
+  }
+  
+  private Drawable a(Context paramContext, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, int paramInt3)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("bubbleinfo_").append(paramInt1).append("_bg_").append(paramBoolean1).append("_").append(paramBoolean2);
+    Object localObject = (Pair)BaseApplicationImpl.sImageCache.get(localStringBuffer.toString());
+    if ((localObject != null) && (((Pair)localObject).first != null)) {
+      paramContext = ((Drawable.ConstantState)((Pair)localObject).first).newDrawable(paramContext.getResources());
+    }
+    do
     {
-      paramQQAppInterface = new ansi(paramQQAppInterface, paramContext);
-      if ((paramContext instanceof BaseActivity))
+      return paramContext;
+      Drawable localDrawable = paramContext.getResources().getDrawable(paramInt2);
+      paramContext = paramContext.getResources().getDrawable(paramInt3);
+      localObject = new StateListDrawable();
+      if (localDrawable != null) {
+        ((StateListDrawable)localObject).addState(new int[] { 16842919, 16842910 }, localDrawable);
+      }
+      if (paramContext != null)
       {
-        if (!((BaseActivity)paramContext).isFinishing())
-        {
-          paramQQAppInterface = bbdj.a(paramContext, 0, "温馨提示", paramContext.getString(2131689688), "取消", "立即开通", paramQQAppInterface, paramQQAppInterface);
-          if (paramQQAppInterface != null) {
-            paramQQAppInterface.show();
-          }
+        ((StateListDrawable)localObject).addState(new int[] { 16842910 }, paramContext);
+        ((StateListDrawable)localObject).addState(new int[] { -16842910 }, paramContext);
+      }
+      paramInt1 = bczs.a(localDrawable) + bczs.a(paramContext);
+      paramContext = (Context)localObject;
+    } while (paramInt1 <= 0);
+    BaseApplicationImpl.sImageCache.put(localStringBuffer.toString(), new Pair(((StateListDrawable)localObject).getConstantState(), Integer.valueOf(paramInt1)));
+    return localObject;
+  }
+  
+  private Pair<ansg, ansg> a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    Pair localPair;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
         }
-        askf.c("2007", 1);
-      }
+        localPair = (Pair)localIterator.next();
+      } while (!paramString.equals(((ansg)localPair.first).jdField_b_of_type_JavaLangString));
     }
-    while (paramInt != 2) {
-      for (;;)
-      {
-        return;
-        bcql.a(paramContext, paramContext.getString(2131689689), 0).b(2131298865);
-      }
+    for (paramString = localPair;; paramString = null) {
+      return paramString;
     }
-    bcql.a(paramContext, paramContext.getString(2131689689), 0).b(2131298865);
-    askf.c("2007", 1);
   }
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public Drawable a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, View paramView, String paramString, int paramInt)
   {
-    return null;
-  }
-  
-  public void a(ansj paramansj)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramansj);
-  }
-  
-  public void a(auor paramauor) {}
-  
-  public void b(auor paramauor)
-  {
-    int i = paramauor.jdField_a_of_type_Int;
-    if (i == 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("BubbleInfo", 2, "getBubbleDrawable, bubbleId=" + this.jdField_a_of_type_Int + ", isUser=" + paramBoolean1 + ", needVipBubble=" + paramBoolean2 + ", useAnimationBg=" + paramBoolean3 + ", senderUin=" + paramString);
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    boolean bool;
+    if (paramBoolean2)
     {
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
+        break label650;
+      }
+      localObject2 = new anty(paramQQAppInterface.getApp().getResources(), this.jdField_a_of_type_AndroidGraphicsNinePatch, this.jdField_b_of_type_AndroidGraphicsNinePatch, this.jdField_a_of_type_Int);
+      if (paramBoolean1) {
+        break label644;
+      }
+      bool = true;
+      ((anty)localObject2).a(bool, paramBoolean3);
       if (QLog.isColorLevel()) {
-        QLog.e("EmoAddedAuthCallback", 2, "add custom emotion result success");
+        QLog.d("BubbleInfo", 2, "getBubbleDrawable, bubbleId=" + this.jdField_a_of_type_Int + ", vipBubbleDrawable=" + localObject2);
       }
-      if (this.jdField_a_of_type_Int == 0)
+      localObject1 = localObject2;
+      if (!BubbleManager.jdField_a_of_type_Boolean)
       {
-        if ((!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5)))
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_Int != 0)
         {
-          paramauor = MD5.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
-          this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = HexUtil.bytes2HexStr(paramauor);
-          paramauor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-          if (paramauor != null)
-          {
-            paramauor.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-            paramauor.a();
-          }
-        }
-        ((answ)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149)).c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare != null) {
-          aehw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-        }
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-        paramauor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-        if (paramauor != null) {
-          paramauor.obtainMessage(10).sendToTarget();
+          BubbleManager.jdField_a_of_type_Boolean = true;
+          localObject1 = localObject2;
         }
       }
     }
-    label177:
+    label221:
+    label235:
+    Object localObject3;
+    if (localObject1 == null) {
+      if (paramBoolean1)
+      {
+        localObject2 = "bubblebg://default_mine";
+        if (BaseApplicationImpl.sImageCache == null) {
+          break label860;
+        }
+        localObject3 = (Drawable.ConstantState)BaseApplicationImpl.sImageCache.get(localObject2);
+        if (localObject3 == null) {
+          break label860;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("BubbleInfo", 2, "getBubbleDrawable, get Default from imageCache, key=" + (String)localObject2 + ", bubbleId=" + this.jdField_a_of_type_Int);
+        }
+        localObject1 = ((Drawable.ConstantState)localObject3).newDrawable();
+      }
+    }
+    label339:
+    label728:
+    label860:
+    for (;;)
+    {
+      localObject2 = localObject1;
+      int i;
+      if (localObject1 == null)
+      {
+        localObject2 = paramQQAppInterface.getApp().getResources();
+        if (!paramBoolean1) {
+          break label720;
+        }
+        i = 2130849366;
+        localObject1 = ((Resources)localObject2).getDrawable(i);
+        if (!paramBoolean1) {
+          break label728;
+        }
+        i = 2130849365;
+        label357:
+        localObject2 = ((Resources)localObject2).getDrawable(i);
+        localObject3 = new StateListDrawable();
+        ((StateListDrawable)localObject3).addState(new int[] { 16842919 }, (Drawable)localObject1);
+        ((StateListDrawable)localObject3).addState(new int[] { 16842910 }, (Drawable)localObject2);
+        localObject2 = localObject3;
+        if (BaseApplicationImpl.sImageCache != null)
+        {
+          if (!paramBoolean1) {
+            break label736;
+          }
+          localObject1 = "bubblebg://default_mine";
+          if (QLog.isColorLevel()) {
+            QLog.d("BubbleInfo", 2, "getBubbleDrawable, put default bubble to imageCache, key=" + (String)localObject1 + ", bubbleId=" + this.jdField_a_of_type_Int);
+          }
+          BaseApplicationImpl.sImageCache.put(localObject1, ((StateListDrawable)localObject3).getConstantState());
+          localObject2 = localObject3;
+        }
+      }
+      int j;
+      if (((localObject2 instanceof anty)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)))
+      {
+        if ((this.jdField_a_of_type_Antl == null) || (paramView == null)) {
+          break label832;
+        }
+        j = paramView.getWidth();
+        if (this.jdField_a_of_type_Antl.jdField_c_of_type_Int == 0) {
+          ((anty)localObject2).a(true, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Antl.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_Antl.jdField_a_of_type_JavaLangString);
+        }
+      }
+      else if (((localObject2 instanceof anty)) && (paramBoolean2) && (!paramBoolean3) && (paramInt > 0))
+      {
+        paramString = paramString + "_" + paramInt;
+        localObject1 = (anty)localObject2;
+        if (paramBoolean1) {
+          break label855;
+        }
+      }
+      for (paramBoolean1 = true;; paramBoolean1 = false)
+      {
+        ((anty)localObject1).a(paramQQAppInterface, paramString, paramBoolean1);
+        a(paramView, (Drawable)localObject2);
+        return localObject2;
+        bool = false;
+        break;
+        if (this.jdField_a_of_type_Int != 100000)
+        {
+          localObject1 = localObject2;
+          if (this.jdField_a_of_type_Int != 100001) {
+            break label221;
+          }
+        }
+        if (paramBoolean1) {}
+        for (localObject1 = null;; localObject1 = a(paramQQAppInterface.getApp(), this.jdField_a_of_type_Int, paramBoolean1, paramBoolean3, this.g, this.h)) {
+          break;
+        }
+        localObject2 = "bubblebg://default_friend";
+        break label235;
+        i = 2130849190;
+        break label339;
+        i = 2130849189;
+        break label357;
+        label736:
+        localObject1 = "bubblebg://default_friend";
+        break label424;
+        i = j;
+        if (j == 0)
+        {
+          paramView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
+          i = paramView.getMeasuredWidth();
+        }
+        if (i > this.jdField_a_of_type_Antl.jdField_c_of_type_Int)
+        {
+          ((anty)localObject2).a(true, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Antl.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_Antl.jdField_a_of_type_JavaLangString);
+          break label562;
+        }
+        ((anty)localObject2).a(false, null, null, null);
+        break label562;
+        if (!(localObject2 instanceof anty)) {
+          break label562;
+        }
+        ((anty)localObject2).a(false, null, null, null);
+        break label562;
+      }
+    }
+  }
+  
+  public Drawable a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, View paramView, boolean paramBoolean4)
+  {
+    antl localantl = this.jdField_a_of_type_Antl;
+    if (!paramBoolean4) {
+      this.jdField_a_of_type_Antl = null;
+    }
+    paramQQAppInterface = a(paramQQAppInterface, paramBoolean1, paramBoolean2, paramBoolean3, paramView, "", 0);
+    this.jdField_a_of_type_Antl = localantl;
+    return paramQQAppInterface;
+  }
+  
+  public Pair<ansg, ansg> a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    Object localObject3 = null;
+    Object localObject1;
+    if (paramQQAppInterface != null)
+    {
+      localObject1 = (BubbleManager)paramQQAppInterface.getManager(44);
+      localObject2 = localObject3;
+      if (localObject1 != null)
+      {
+        localObject2 = ((BubbleManager)localObject1).a(this.jdField_a_of_type_Int, true);
+        if (localObject2 != null) {
+          break label53;
+        }
+        localObject2 = localObject3;
+      }
+    }
+    label53:
+    label102:
     do
     {
       do
       {
-        do
+        return localObject2;
+        localObject1 = null;
+        break;
+        switch (paramInt)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      break label177;
-                      break label177;
-                      break label177;
-                      break label177;
-                      break label177;
-                      break label177;
-                      break label177;
-                      do
-                      {
-                        return;
-                      } while (1 == this.jdField_a_of_type_Int);
-                      if (2 != this.jdField_a_of_type_Int) {
-                        break;
-                      }
-                      ((answ)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149)).c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-                    } while ((2 != this.jdField_a_of_type_Int) || (this.jdField_a_of_type_JavaLangRefWeakReference == null));
-                    paramauor = (ansj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-                  } while (paramauor == null);
-                  paramauor.a(0, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
-                  return;
-                } while (3 != this.jdField_a_of_type_Int);
-                ((answ)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149)).c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-                this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-                return;
-              } while (-1 != i);
-              i = paramauor.b;
-              if ((400010 == i) || (400011 == i)) {
-                ThreadManager.getFileThreadHandler().post(new EmoAddedAuthCallback.4(this));
-              }
-              if (QLog.isColorLevel()) {
-                QLog.e("EmoAddedAuthCallback", 2, "add custom emotion result errCode=" + i);
-              }
-              if (this.jdField_a_of_type_Int != 0) {
-                break;
-              }
-              if (400010 == i)
-              {
-                this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-                return;
-              }
-            } while (400011 != i);
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-            return;
-            if (2 != this.jdField_a_of_type_Int) {
-              break;
-            }
-          } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-          paramauor = (ansj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while (paramauor == null);
-        if (400010 == i)
-        {
-          paramauor.a(2, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
-          return;
+        case 4: 
+        case 5: 
+        default: 
+          paramQQAppInterface = null;
+          localObject2 = localObject3;
         }
-        if (400011 == i)
-        {
-          paramauor.a(3, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
-          return;
-        }
-        paramauor.a(i, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
-        return;
-      } while (3 != this.jdField_a_of_type_Int);
-      if (400010 == i)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        return;
+      } while (TextUtils.isEmpty(paramQQAppInterface));
+      localObject2 = a(paramQQAppInterface);
+      localObject1 = ((BubbleManager)localObject1).a(this.jdField_a_of_type_Int, paramQQAppInterface, (Pair)localObject2);
+      localObject2 = localObject1;
+    } while (!QLog.isDevelopLevel());
+    Object localObject2 = new StringBuilder().append("getAttrs|key=").append(paramQQAppInterface).append(", animAttrs=");
+    if (localObject1 == null) {}
+    for (paramQQAppInterface = "null";; paramQQAppInterface = "first:" + ((Pair)localObject1).first + ",second:" + ((Pair)localObject1).second)
+    {
+      QLog.w("BubbleInfo", 4, paramQQAppInterface);
+      return localObject1;
+      if (((ansc)localObject2).a == null) {
+        break;
       }
-    } while (400011 != i);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      paramQQAppInterface = ((ansc)localObject2).a.jdField_b_of_type_JavaLangString;
+      break label102;
+      if (((ansc)localObject2).b == null) {
+        break;
+      }
+      paramQQAppInterface = ((ansc)localObject2).b.jdField_b_of_type_JavaLangString;
+      break label102;
+      paramQQAppInterface = "width";
+      if (((ansc)localObject2).c == null) {
+        break label102;
+      }
+      paramQQAppInterface = ((ansc)localObject2).c.jdField_b_of_type_JavaLangString;
+      break label102;
+      if ((this.jdField_b_of_type_JavaUtilHashMap == null) || (this.jdField_b_of_type_JavaUtilHashMap.size() <= 0) || (this.jdField_f_of_type_JavaLangString == null)) {
+        break;
+      }
+      paramQQAppInterface = (String)this.jdField_b_of_type_JavaUtilHashMap.get(this.jdField_f_of_type_JavaLangString);
+      break label102;
+      if (((ansc)localObject2).d == null) {
+        break;
+      }
+      paramQQAppInterface = ((ansc)localObject2).d.jdField_b_of_type_JavaLangString;
+      break label102;
+      if (((ansc)localObject2).e == null) {
+        break;
+      }
+      paramQQAppInterface = ((ansc)localObject2).e.jdField_b_of_type_JavaLangString;
+      break label102;
+    }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public String a(String paramString)
   {
-    switch (paramMessage.what)
+    if ((this.jdField_b_of_type_ArrayOfJavaLangString != null) && (!TextUtils.isEmpty(paramString)))
     {
-    default: 
-      return true;
-    case 1: 
-    case 2: 
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramMessage.what);
-      return true;
-    }
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      bcql.a(this.jdField_a_of_type_AndroidContentContext, 2131689686, 0).b(2131298865);
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData != null) && (this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace)) {
-        aexb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).h();
-      }
-      if ((bbkb.F(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace) && (this.jdField_a_of_type_Int == 0))
+      String[] arrayOfString = this.jdField_b_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        paramMessage = new Dialog(this.jdField_a_of_type_AndroidContentContext, 2131755791);
-        paramMessage.setContentView(2131559017);
-        Button localButton1 = (Button)paramMessage.findViewById(2131365110);
-        Button localButton2 = (Button)paramMessage.findViewById(2131365114);
-        localButton1.setOnClickListener(new ansg(this, paramMessage));
-        localButton2.setOnClickListener(new ansh(this, paramMessage));
-        if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing())
+        String str = arrayOfString[i];
+        if (paramString.indexOf(str.toLowerCase()) != -1)
         {
-          bbkb.w(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false);
-          paramMessage.show();
+          this.jdField_f_of_type_JavaLangString = str;
+          return str;
         }
+        i += 1;
       }
     }
-    askf.c("0", 1);
-    return true;
+    return null;
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_b_of_type_JavaUtilList)
+    {
+      this.jdField_b_of_type_JavaUtilList.clear();
+    }
+    synchronized (this.jdField_c_of_type_JavaUtilList)
+    {
+      this.jdField_c_of_type_JavaUtilList.clear();
+      return;
+      localObject1 = finally;
+      throw localObject1;
+    }
+  }
+  
+  public void a(View paramView, Drawable paramDrawable)
+  {
+    if ((paramDrawable == null) || (paramView == null)) {
+      return;
+    }
+    Rect localRect = new Rect();
+    paramDrawable.getPadding(localRect);
+    int i = paramView.getPaddingTop();
+    int j = localRect.top;
+    int k = paramView.getPaddingLeft();
+    int m = localRect.left;
+    int n = paramView.getPaddingRight();
+    int i1 = localRect.right;
+    int i2 = paramView.getPaddingBottom();
+    int i3 = localRect.bottom;
+    paramView.setBackgroundDrawable(paramDrawable);
+    paramView.setPadding(k + m, i + j, n + i1, i3 + i2);
+  }
+  
+  public void a(View arg1, View paramView2)
+  {
+    synchronized (this.jdField_b_of_type_JavaUtilList)
+    {
+      this.jdField_b_of_type_JavaUtilList.remove(???);
+    }
+    synchronized (this.jdField_c_of_type_JavaUtilList)
+    {
+      this.jdField_c_of_type_JavaUtilList.remove(paramView2);
+      return;
+      ??? = finally;
+      throw ???;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (this.jdField_e_of_type_Int > 0) && (this.jdField_f_of_type_Int > this.jdField_e_of_type_Int) && (paramInt >= this.jdField_e_of_type_Int) && (paramInt <= this.jdField_f_of_type_Int);
+  }
+  
+  public String toString()
+  {
+    return "BubbleInfo [bubbleId=" + this.jdField_a_of_type_Int + ",aioUserBgNorResPath=" + this.jdField_a_of_type_JavaLangString + ",aioUserPicNorResPath=" + this.jdField_b_of_type_JavaLangString + ",bubbleThumbnailResPath=" + this.jdField_d_of_type_JavaLangString + ",bubbleChartletResPath=" + this.jdField_e_of_type_JavaLangString + ", mTextColor=" + this.jdField_b_of_type_Int + ", mKeyWords=" + Arrays.toString(this.jdField_b_of_type_ArrayOfJavaLangString) + ", currKeyWord=" + this.jdField_f_of_type_JavaLangString + ", mBubbleHeightBegin=" + this.jdField_e_of_type_Int + ", mBubbleHeightEnd=" + this.jdField_f_of_type_Int + ", pttAttrs=" + this.jdField_a_of_type_Ansg + ", heightAttrs=" + this.jdField_b_of_type_Ansg + ", keywordAttrs=" + this.jdField_a_of_type_JavaUtilList + ", keyWorsAnimMap=" + this.jdField_b_of_type_JavaUtilHashMap + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansf
  * JD-Core Version:    0.7.0.1
  */

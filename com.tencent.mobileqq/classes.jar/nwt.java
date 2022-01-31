@@ -1,18 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import java.util.List;
 
-public class nwt
-  implements bfpj
+public abstract interface nwt
 {
-  public nwt(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onDismiss()
-  {
-    ReadInJoySettingActivity.b(this.a).cancel();
-  }
+  public abstract void a(List<TabChannelCoverInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,117 @@
-import android.content.Context;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.ark.ArkPanelPagerAdapter;
-import com.tencent.widget.XPanelContainer;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class alty
-  extends RelativeLayout
+  extends AsyncTask<RespondQueryQQBindingStat, Void, List<PhoneContact>>
 {
-  public int a;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  public alty(ArkPanelPagerAdapter paramArkPanelPagerAdapter, Context paramContext, AttributeSet paramAttributeSet)
+  private alty(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  
+  protected List<PhoneContact> a(RespondQueryQQBindingStat... paramVarArgs)
   {
-    super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    int k = paramArkPanelPagerAdapter.a();
-    int m = paramArkPanelPagerAdapter.b();
-    int n = actj.a(15.0F, getContext().getResources());
-    int i = 0;
-    while (i < m)
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager.ContactFriendTask", 2, "doInBackground");
+    }
+    Object localObject = paramVarArgs[0];
+    paramVarArgs = new ArrayList();
+    paramVarArgs.addAll(PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).values());
+    Collections.sort(paramVarArgs, new altz(this));
+    ArrayList localArrayList = new ArrayList();
+    aloz localaloz = (aloz)PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).getManager(51);
+    Iterator localIterator;
+    if (paramVarArgs.size() > 0)
     {
-      paramArkPanelPagerAdapter = new LinearLayout(paramContext);
-      int j = (XPanelContainer.jdField_a_of_type_Int - XPanelContainer.d - n) / m;
-      paramAttributeSet = new RelativeLayout.LayoutParams(-1, j);
-      paramAttributeSet.leftMargin = actj.a(20.0F, getContext().getResources());
-      paramAttributeSet.rightMargin = actj.a(20.0F, getContext().getResources());
-      paramArkPanelPagerAdapter.setOrientation(0);
-      if (i == 0) {}
-      for (paramAttributeSet.topMargin = (XPanelContainer.d / (m + 1));; paramAttributeSet.topMargin = (j * i + XPanelContainer.d * (i + 2) / (m + 1) / 2))
+      localObject = ((RespondQueryQQBindingStat)localObject).mobileNo;
+      localIterator = paramVarArgs.iterator();
+    }
+    PhoneContact localPhoneContact;
+    do
+    {
+      do
       {
-        j = 0;
-        while (j < k)
+        if (localIterator.hasNext())
         {
-          Object localObject = new LinearLayout.LayoutParams(-1, -1);
-          ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
-          if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-            this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-          }
-          View localView = LayoutInflater.from(paramContext).inflate(2131558762, null);
-          paramArkPanelPagerAdapter.addView(localView, (ViewGroup.LayoutParams)localObject);
-          localObject = new altz();
-          ((altz)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367800));
-          ((altz)localObject).b = ((ImageView)localView.findViewById(2131366359));
-          ((altz)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377046));
-          localView.setTag(localObject);
-          j += 1;
+          paramVarArgs = (PhoneContact)localIterator.next();
+          if (!isCancelled()) {}
         }
-      }
-      addView(paramArkPanelPagerAdapter, paramAttributeSet);
-      i += 1;
-    }
-    setTag(Integer.valueOf(XPanelContainer.d));
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    while (i < getChildCount())
+        else
+        {
+          Collections.sort(localArrayList, new alua(this));
+          return localArrayList;
+        }
+      } while ((localObject != null) && (((String)localObject).endsWith(paramVarArgs.mobileNo.trim())));
+      localPhoneContact = (PhoneContact)paramVarArgs.clone();
+    } while (TextUtils.isEmpty(localPhoneContact.uin));
+    if (localPhoneContact.uin.equals("0"))
     {
-      Object localObject = getChildAt(i);
-      if (localObject != null)
-      {
-        localObject = (altz)((View)localObject).getTag();
-        if ((localObject != null) && (((altz)localObject).jdField_a_of_type_AndroidWidgetImageView != null)) {
-          ((altz)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-        }
+      paramVarArgs = null;
+      label201:
+      if ((paramVarArgs == null) || (paramVarArgs.groupid < 0)) {
+        break label260;
       }
-      i += 1;
+      localPhoneContact.nickName = paramVarArgs.getFriendNick();
+      localPhoneContact.remark = paramVarArgs.remark;
+      localPhoneContact.sortWeight = 262144;
     }
-    this.jdField_a_of_type_Int = -1;
+    for (;;)
+    {
+      localArrayList.add(localPhoneContact);
+      break;
+      paramVarArgs = localaloz.e(localPhoneContact.uin);
+      break label201;
+      label260:
+      localPhoneContact.uin = "0";
+      if (localaloz.d(localPhoneContact.nationCode + localPhoneContact.mobileCode))
+      {
+        localPhoneContact.sortWeight = 131072;
+        localPhoneContact.hasSendAddReq = true;
+      }
+      else if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.contains(localPhoneContact.mobileNo)))
+      {
+        localPhoneContact.sortWeight = this.jdField_a_of_type_JavaUtilList.indexOf(localPhoneContact.mobileNo);
+      }
+      else
+      {
+        localPhoneContact.sortWeight = 65536;
+      }
+    }
   }
   
-  public void a(int paramInt)
+  public void a(List<String> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  protected void b(List<PhoneContact> paramList)
+  {
+    if (!isCancelled()) {
+      this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a(paramList);
+    }
+  }
+  
+  protected void onCancelled()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager.ContactFriendTask", 2, "on cancelled");
+    }
+    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alty
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,124 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.content.Context;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class aipt
-  implements View.OnClickListener
+public class aipt
+  extends SQLiteOpenHelper
 {
-  aipt(aipr paramaipr) {}
-  
-  public void onClick(View paramView)
+  public aipt(Context paramContext, String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-    Object localObject = (View)paramView.getParent();
-    if ((localObject instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)localObject).d();
-    }
-    paramView = paramView.getTag();
-    if (!(paramView instanceof TroopInfo)) {
+    super(paramContext, "passwd_red_bag_" + paramString + ".db", null, 5);
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PasswdRedBagDBHelper", 2, " onCreate execSQL sqlRedBags=" + "CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);" + " sqlRedBagRelation=" + "CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );" + " sqlUpdateTimes=" + "CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
+      }
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);");
       return;
     }
-    localObject = (TroopInfo)paramView;
-    boolean bool = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(((TroopInfo)localObject).troopuin);
-    paramView = (ajsx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-    int i;
-    label100:
-    label120:
-    axrc localaxrc;
-    label190:
-    String str;
-    if (bool)
+    catch (SQLException localSQLException2)
     {
-      i = 1;
-      if (!paramView.a(((TroopInfo)localObject).troopcode, i)) {
-        break label241;
+      try
+      {
+        paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );");
       }
-      if (!bool) {
-        break label243;
-      }
-      paramView = "Clk_uncommgrp";
-      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_set", "", "Grp_contactlist", paramView, 0, 0, ((TroopInfo)localObject).troopuin, "", "", "");
-      localaxrc = new axrc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_set").c("Grp_contactlist");
-      if (!bool) {
-        break label249;
-      }
-      paramView = "Clk_unstick";
-      localaxrc = localaxrc.d(paramView);
-      str = ((TroopInfo)localObject).troopuin;
-      if (!((TroopInfo)localObject).hasSetTroopHead()) {
-        break label255;
+      catch (SQLException localSQLException2)
+      {
+        try
+        {
+          for (;;)
+          {
+            paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
+            return;
+            localSQLException1 = localSQLException1;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException1);
+              continue;
+              localSQLException2 = localSQLException2;
+              if (QLog.isColorLevel()) {
+                QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException2);
+              }
+            }
+          }
+        }
+        catch (SQLException paramSQLiteDatabase)
+        {
+          while (!QLog.isColorLevel()) {}
+          QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", paramSQLiteDatabase);
+        }
       }
     }
-    label241:
-    label243:
-    label249:
-    label255:
-    for (paramView = "1";; paramView = "0")
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    int i = paramInt1;
+    if (QLog.isColorLevel())
     {
-      localaxrc.a(new String[] { str, paramView }).a();
-      return;
-      i = 0;
-      break label100;
-      break;
-      paramView = "Clk_setcommgrp";
-      break label120;
-      paramView = "Clk_stick";
-      break label190;
+      QLog.d("PasswdRedBagDBHelper", 2, "onUpgrade<<<<<oldVersion: " + paramInt1 + " newVersion: " + paramInt2);
+      i = paramInt1;
+    }
+    if (i < paramInt2)
+    {
+      switch (i)
+      {
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ");
+        }
+        catch (Exception localException1) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ", localException1);
+          continue;
+          try
+          {
+            paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0");
+          }
+          catch (Exception localException2) {}
+          if (QLog.isColorLevel())
+          {
+            QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0", localException2);
+            continue;
+            try
+            {
+              paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ");
+            }
+            catch (Exception localException3) {}
+            if (QLog.isColorLevel())
+            {
+              QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ", localException3);
+              continue;
+              try
+              {
+                paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ");
+              }
+              catch (Exception localException4) {}
+              if (QLog.isColorLevel()) {
+                QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ", localException4);
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,38 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfan
-  extends bfau
+  implements View.OnLayoutChangeListener
 {
-  private INTERFACE.StGetUserInfoExtraReq a = new INTERFACE.StGetUserInfoExtraReq();
+  public bfan(OpenAuthorityAccountView paramOpenAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
   
-  public bfan(String paramString)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    paramInt1 = paramView.getHeight();
+    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenAuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
     }
-    INTERFACE.StGetUserInfoExtraRsp localStGetUserInfoExtraRsp = new INTERFACE.StGetUserInfoExtraRsp();
-    try
+    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    if (paramView == null) {
+      paramView = new RelativeLayout.LayoutParams(-1, -2);
+    }
+    for (;;)
     {
-      localStGetUserInfoExtraRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetUserInfoExtraRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("encryptedData", localStGetUserInfoExtraRsp.encryptedData.get());
-        paramArrayOfByte.put("iv", localStGetUserInfoExtraRsp.iv.get());
-        return paramArrayOfByte;
-      }
-      betc.a("GetUserInfoExtraRequest", "onResponse fail.rsp = null");
-      return null;
+      paramView.addRule(12);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      return;
+      paramView.height = -2;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("GetUserInfoExtraRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetUserInfoExtra";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfan
  * JD-Core Version:    0.7.0.1
  */

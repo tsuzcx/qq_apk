@@ -16,7 +16,7 @@ public final class follow_user$FollowUserRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.nearby.user.relation.follow_user.FollowUserRsp
  * JD-Core Version:    0.7.0.1
  */

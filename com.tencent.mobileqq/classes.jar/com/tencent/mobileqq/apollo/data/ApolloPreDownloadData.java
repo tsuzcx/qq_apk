@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.data;
 
-import auko;
+import awbv;
 import java.io.Serializable;
 
 public class ApolloPreDownloadData
-  extends auko
+  extends awbv
   implements Serializable
 {
   public static final int DOWNLOAD_STATUS_FAILED = 0;
@@ -24,7 +24,7 @@ public class ApolloPreDownloadData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.data.ApolloPreDownloadData
  * JD-Core Version:    0.7.0.1
  */

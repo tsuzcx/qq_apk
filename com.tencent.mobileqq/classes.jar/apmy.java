@@ -1,255 +1,275 @@
-import android.app.Activity;
-import android.os.Handler.Callback;
+import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.1;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.2;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.3;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.4;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class apmy
-  extends apmi
-  implements Handler.Callback
 {
-  public long a;
-  private ayej jdField_a_of_type_Ayej;
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  public long b;
-  private int c = 1000;
-  private int d = 60000;
+  private static apmy jdField_a_of_type_Apmy;
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private apll jdField_a_of_type_Apll = new apmz(this);
+  private Client jdField_a_of_type_ComTencentMobileqqEmosmClient = new Client();
+  EmojiIPCAlarmer jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer = null;
+  private Vector<apna> jdField_a_of_type_JavaUtilVector = new Vector();
+  private CopyOnWriteArrayList<aphy> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   
-  public apmy(Activity paramActivity, List<apkt> paramList, int paramInt)
+  public static apmy a()
   {
-    super(paramActivity);
-    a(paramList, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_Apkt.a();
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), this);
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if ((localQQAppInterface != null) && (paramString2 != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)) {
-      axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009956", "0X8009956", 0, 2, "", "", ayek.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType), paramString2);
-    }
-    paramString2 = paramString1;
-    if (TextUtils.isEmpty(paramString1)) {
-      paramString2 = ajya.a(2131703404);
-    }
-    bcql.a(this.jdField_a_of_type_AndroidAppActivity, 1, paramString2, 0).a();
-    f_();
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-  }
-  
-  public int a()
-  {
-    return 10;
-  }
-  
-  public apli a()
-  {
-    if (this.jdField_a_of_type_Apli == null) {
-      this.jdField_a_of_type_Apli = new apna(this);
-    }
-    return this.jdField_a_of_type_Apli;
-  }
-  
-  public aplk a()
-  {
-    return null;
-  }
-  
-  public ArrayList<bbjs>[] a()
-  {
-    Object localObject3 = this.jdField_a_of_type_Apkt.a();
-    String str = c();
-    boolean bool1 = apvd.b(str);
-    if ((localObject3 == null) && (TextUtils.isEmpty(str))) {
-      return null;
-    }
-    if (b() == 16) {
-      return null;
-    }
-    if ((!bool1) && (localObject3 != null) && (((FileManagerEntity)localObject3).isZipInnerFile)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1;
-    if (bool1)
+    if (jdField_a_of_type_Apmy == null) {}
+    try
     {
-      localObject1 = localObject3;
-      if (localObject3 != null) {}
+      if (jdField_a_of_type_Apmy == null) {
+        jdField_a_of_type_Apmy = new apmy();
+      }
+      return jdField_a_of_type_Apmy;
     }
-    for (;;)
+    finally {}
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchBindToClient suc");
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((aphy)localIterator.next()).onBindedToClient();
+    }
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchBindToClient suc");
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((aphy)localIterator.next()).onDisconnectWithService();
+    }
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer == null)
     {
-      try
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "alarm init");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer = new EmojiIPCAlarmer(this.jdField_a_of_type_Apll);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a();
+    }
+  }
+  
+  private void f(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchPushMsg suc");
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((aphy)localIterator.next()).onPushMsg(paramBundle);
+    }
+  }
+  
+  public apna a(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+      while (localIterator.hasNext())
       {
-        localObject1 = apug.a(new FileInfo(str));
-        Object localObject4 = apvm.a(2130843422, ajya.a(2131703409), apio.a(this.jdField_a_of_type_Apkq, (FileManagerEntity)localObject1, this.jdField_a_of_type_AndroidAppActivity));
-        localObject3 = localObject1;
-        localObject1 = localObject4;
-        ((bbjs)localObject1).c = 2;
-        localArrayList.add(localObject1);
-        if ((localObject3 == null) || (TextUtils.isEmpty(((FileManagerEntity)localObject3).WeiYunFileId)) || (TextUtils.isEmpty(((FileManagerEntity)localObject3).WeiYunDirKey))) {
-          break label632;
-        }
-        i = 1;
-        if (i == 0)
+        apna localapna = (apna)localIterator.next();
+        if (localapna.jdField_a_of_type_Int == paramInt)
         {
-          if (!bool1) {
-            break label637;
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "remove req queue seq:" + paramInt);
           }
-          localObject1 = apvm.a(2130843426, ajya.a(2131703405), apio.a(this.jdField_a_of_type_Apkq, str));
-          ((bbjs)localObject1).c = 27;
-          localArrayList.add(localObject1);
+          this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a(localapna.jdField_a_of_type_JavaLangRunnable);
+          this.jdField_a_of_type_JavaUtilVector.remove(localapna);
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "after remove req queue size:" + this.jdField_a_of_type_JavaUtilVector.size());
+          }
+          return localapna;
         }
-        boolean bool2 = anbq.a().d();
-        long l = apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
-        localObject4 = ancg.a().c();
-        localObject1 = localObject4;
-        if (TextUtils.isEmpty((CharSequence)localObject4)) {
-          localObject1 = ayfx.a;
-        }
-        if ((bool2) && (localObject3 != null) && (ayfx.a(((FileManagerEntity)localObject3).strFilePath, ((FileManagerEntity)localObject3).fileName, (String)localObject1)) && (((FileManagerEntity)localObject3).fileSize <= l))
-        {
-          localObject1 = apvm.a(2130837566, ajya.a(2131703412), apio.a((FileManagerEntity)localObject3, this.jdField_a_of_type_AndroidAppActivity));
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009062", "0X8009062", 0, 0, "", "", "", "");
-          localArrayList.add(localObject1);
-        }
-        if (apug.c((FileManagerEntity)localObject3))
-        {
-          localObject1 = apvm.a(2130843388, ajya.a(2131703402), apio.b(this.jdField_a_of_type_Apkq, (FileManagerEntity)localObject3));
-          ((bbjs)localObject1).c = 6;
-          localArrayList.add(localObject1);
-        }
-        if ((bool1) && (((ajum)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a(8)).a.a(b()))) {
-          localArrayList.add(apvm.a(2130843424, ajya.a(2131703410), apio.b(this.jdField_a_of_type_Apkq, c())));
-        }
-        if (aprl.a((FileManagerEntity)localObject3, bool1))
-        {
-          localArrayList.add(apvm.a(2130843417, this.jdField_a_of_type_AndroidAppActivity.getString(2131692548), apio.a(this.jdField_a_of_type_AndroidAppActivity, (FileManagerEntity)localObject3, str)));
-          localArrayList.add(apvm.a(2130839646, this.jdField_a_of_type_AndroidAppActivity.getString(2131692549), apio.b(this.jdField_a_of_type_AndroidAppActivity, (FileManagerEntity)localObject3, str)));
-        }
-        if (bool1) {
-          localArrayList.add(apvm.a(2130843423, ajya.a(2131703403), apio.a(this.jdField_a_of_type_AndroidAppActivity, str)));
-        }
-        return new ArrayList[] { localArrayList };
       }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        localFileNotFoundException.printStackTrace();
-        localObject2 = localObject3;
-        continue;
-      }
-      Object localObject2 = apvm.a(2130843422, ajya.a(2131703411), apio.a(this.jdField_a_of_type_Apkq, (FileManagerEntity)localObject3, this.jdField_a_of_type_AndroidAppActivity));
-      continue;
-      label632:
-      int i = 0;
-      continue;
-      label637:
-      if (d() == 1) {
-        localObject2 = apvm.a(2130843426, ajya.a(2131703408), apio.a(this.jdField_a_of_type_Apkq, (FileManagerEntity)localObject3));
-      }
+      return null;
     }
   }
   
-  protected void b()
+  public apna a(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Ayej != null) {}
-    QQAppInterface localQQAppInterface;
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      paramBundle = new apna(i, paramBundle);
+      e();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "add to req queue seq: " + paramBundle.jdField_a_of_type_Int);
+      }
+      paramBundle.jdField_a_of_type_JavaLangRunnable = this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a(paramBundle.jdField_a_of_type_Int, 30000L);
+      this.jdField_a_of_type_JavaUtilVector.add(paramBundle);
+      return paramBundle;
+    }
+  }
+  
+  public Client a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqEmosmClient;
+  }
+  
+  public void a()
+  {
+    c();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      QLog.e("Q.emoji.web.EmoWebIPCOperator", 1, "error:reqbundle is null.");
+    }
+    do
+    {
+      do
+      {
+        return;
+        localObject = a(paramBundle);
+      } while ((localObject == null) || ((this.jdField_a_of_type_ComTencentMobileqqEmosmClient != null) && (this.jdField_a_of_type_ComTencentMobileqqEmosmClient.onReqToServer(((apna)localObject).jdField_a_of_type_AndroidOsBundle))));
+      paramBundle = a(paramBundle.getInt("seq"));
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "sendServiceIpcReq unbind fail seq:" + this.jdField_a_of_type_Int);
+      }
+    } while (paramBundle == null);
+    Object localObject = new Bundle();
+    a((Bundle)localObject, 1002);
+    paramBundle.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+    a(new WebIPCOperator.1(this, paramBundle));
+  }
+  
+  void a(Bundle paramBundle, int paramInt)
+  {
+    if (paramBundle != null) {
+      paramBundle.putInt("failcode", paramInt);
+    }
+  }
+  
+  public void a(aphy paramaphy)
+  {
+    if (paramaphy == null) {}
     do
     {
       return;
-      this.jdField_a_of_type_Ayej = new apmz(this);
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    } while ((localQQAppInterface == null) || (this.jdField_a_of_type_Ayej == null));
-    localQQAppInterface.addObserver(this.jdField_a_of_type_Ayej);
-  }
-  
-  protected void c()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if ((this.jdField_a_of_type_Ayej != null) && (localQQAppInterface != null)) {
-      localQQAppInterface.removeObserver(this.jdField_a_of_type_Ayej);
-    }
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
-    {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(8001);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(8002);
-    }
-  }
-  
-  public void f_()
-  {
-    super.f_();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress <= 45.0F))
-      {
-        if (this.jdField_a_of_type_Apnf != null)
-        {
-          paramMessage = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-          paramMessage.fProgress += 5.0F;
-          this.jdField_a_of_type_Apnf.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress);
-        }
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(8001, this.c);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "RegisterObserver key:" + paramaphy.key);
       }
-      else
-      {
-        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(8001);
-        continue;
-        a(ajya.a(2131703407), "");
-      }
+    } while (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramaphy));
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramaphy);
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    if (paramRunnable != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
     }
   }
   
-  public int i()
+  public boolean a()
   {
-    int i = super.i();
-    if (g() == 10) {
-      i = 6;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmClient != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqEmosmClient.isClientBinded();
     }
-    return i;
+    return false;
   }
   
-  public void i()
+  public void b()
   {
-    super.i();
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Apkt.a();
-    if (d() == 1)
+    d();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    if ((paramBundle != null) && ((this.jdField_a_of_type_ComTencentMobileqqEmosmClient == null) || (!this.jdField_a_of_type_ComTencentMobileqqEmosmClient.onReqToServer(paramBundle))))
     {
-      if (f() == 3000) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(new aoyw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.Uuid, localFileManagerEntity.peerUin));
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "sendServiceIpcReq unbind fail seq:" + this.jdField_a_of_type_Int);
+      }
+      Bundle localBundle = new Bundle();
+      a(localBundle, 1002);
+      paramBundle.putBundle("response", localBundle);
+      a(new WebIPCOperator.2(this, paramBundle));
+    }
+  }
+  
+  public void b(aphy paramaphy)
+  {
+    if (paramaphy != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "unRegisterObserver key:" + paramaphy.key);
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramaphy)) {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramaphy);
       }
     }
-    else {
+  }
+  
+  public void c(Bundle paramBundle)
+  {
+    Object localObject;
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("seq");
+      localObject = a(i);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchResp seq:" + i);
+      }
+      if (localObject == null) {
+        break label74;
+      }
+      a(paramBundle, 1000);
+      a(new WebIPCOperator.3(this, paramBundle));
+    }
+    label74:
+    do
+    {
       return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(new apav(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.Uuid));
+      localObject = paramBundle.getString("cmd");
+    } while ((localObject == null) || ((!((String)localObject).equals("startDownloadEmoji")) && (!((String)localObject).equals("stopdownload")) && (!((String)localObject).equals("openEquipmentLock")) && (!((String)localObject).equals("card_setSummaryCard")) && (!((String)localObject).equals("card_getVipInfo")) && (!((String)localObject).equals("closeWeb")) && (!((String)localObject).equals("setMobileResult")) && (!((String)localObject).equals("setWaitingResponse")) && (!((String)localObject).equals("openEmojiMall")) && (!((String)localObject).equals("openProfileCard")) && (!((String)localObject).equals("close_version")) && (!((String)localObject).equals("openEmojiDetail")) && (!((String)localObject).equals("openFontSetting")) && (!((String)localObject).equals("startDownloadColorRing")) && (!((String)localObject).equals("stopDownloadColorRing")) && (!((String)localObject).equals("funcall_download")) && (!((String)localObject).equals("funcall_set")) && (!((String)localObject).equals("getA2")) && (!((String)localObject).equals("openDevLock")) && (!((String)localObject).equals("queryDevLockStatus")) && (!((String)localObject).equals("ipc_funnypic_add")) && (!((String)localObject).equals("ipc_funnypic_add")) && (!((String)localObject).equals("ipc_video_isinstalled")) && (!((String)localObject).equals("ipc_video_install_plugin")) && (!((String)localObject).equals("gamecenter_delaydownload")) && (!((String)localObject).equals("ipc_apollo_changerole")) && (!((String)localObject).equals("ipc_apollo_preview")) && (!((String)localObject).equals("ipc_apollo_check_avatar_res")) && (!((String)localObject).equals("ipc_apollo_preview_audio_action")) && (!((String)localObject).equals("ipc_apollo_preview_action")) && (!((String)localObject).equals("IPC_APOLLO_DOWNLOAD_GAME")) && (!((String)localObject).equals("ipc_apollo_downloadImageOnFrame")) && (!((String)localObject).equals("emojiStickerRecall")) && (!((String)localObject).equals("ipc_cmd_get_team_work_url")) && (!((String)localObject).equals("emojiStickerRecall")) && (!((String)localObject).equals("ipc_cmd_apollo_exec_script")) && (!((String)localObject).equals("ipc_apollo_get_playmate_msg"))));
+    a(paramBundle, 1000);
+    a(new WebIPCOperator.4(this, paramBundle));
   }
   
-  public boolean i()
+  public void d(Bundle paramBundle)
   {
-    return true;
+    f(paramBundle);
+  }
+  
+  public void e(Bundle paramBundle)
+  {
+    Object localObject = paramBundle.getString("cmd");
+    int i = paramBundle.getInt("failcode");
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchResp suc: " + (String)localObject + ", retCode: " + i);
+    }
+    localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((aphy)((Iterator)localObject).next()).onResponse(paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apmy
  * JD-Core Version:    0.7.0.1
  */

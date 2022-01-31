@@ -1,10 +1,13 @@
-public abstract interface afhm
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
+class afhm
+  implements algd
 {
-  public abstract void a(int paramInt, String paramString);
+  afhm(afhh paramafhh, FileManagerEntity paramFileManagerEntity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afhm
  * JD-Core Version:    0.7.0.1
  */

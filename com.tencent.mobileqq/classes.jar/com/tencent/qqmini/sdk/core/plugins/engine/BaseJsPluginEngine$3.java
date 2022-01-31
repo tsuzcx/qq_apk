@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import beic;
-import bekr;
+import bgkd;
+import com.tencent.qqmini.sdk.core.auth.PermissionManager;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class BaseJsPluginEngine$3
   implements AsyncResult
 {
-  BaseJsPluginEngine$3(BaseJsPluginEngine paramBaseJsPluginEngine, bekr parambekr) {}
+  BaseJsPluginEngine$3(BaseJsPluginEngine paramBaseJsPluginEngine, bgkd parambgkd) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -20,11 +20,11 @@ class BaseJsPluginEngine$3
     }
     if ((paramBoolean) && (!"0".equals(str)))
     {
-      paramJSONObject = beic.a().a("scope.getPhoneNumber");
+      paramJSONObject = PermissionManager.g().getScopePermission("scope.getPhoneNumber");
       if (paramJSONObject != null)
       {
-        paramJSONObject.c = str;
-        beic.a().a("scope.getPhoneNumber", paramJSONObject);
+        paramJSONObject.description = str;
+        PermissionManager.g().updateScopePermission("scope.getPhoneNumber", paramJSONObject);
         BaseJsPluginEngine.access$400(this.this$0, this.val$req);
       }
       return;
@@ -39,7 +39,7 @@ class BaseJsPluginEngine$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.engine.BaseJsPluginEngine.3
  * JD-Core Version:    0.7.0.1
  */

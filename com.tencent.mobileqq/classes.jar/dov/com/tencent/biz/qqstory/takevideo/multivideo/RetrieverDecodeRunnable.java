@@ -3,15 +3,15 @@ package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.text.TextUtils;
-import bkkf;
+import bmvp;
 import com.tencent.qphone.base.util.QLog;
 
 class RetrieverDecodeRunnable
   extends DecodeRunnable
 {
-  public RetrieverDecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bkkf parambkkf)
+  public RetrieverDecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bmvp parambmvp)
   {
-    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, parambkkf);
+    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, parambmvp);
   }
   
   private void c()
@@ -101,7 +101,7 @@ class RetrieverDecodeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.RetrieverDecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

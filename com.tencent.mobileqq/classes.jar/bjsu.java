@@ -1,38 +1,55 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bjsu
-  extends bjxm
+public class bjsu
+  extends bjts
 {
-  public abstract int a();
+  public static bjsu a;
   
-  public abstract Bitmap a();
+  public bjsu()
+  {
+    jdField_a_of_type_Bjsu = this;
+  }
   
-  public abstract Bitmap a(int paramInt, boolean paramBoolean);
+  public static void a(String paramString)
+  {
+    if ((jdField_a_of_type_Bjsu != null) && (jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null))
+    {
+      QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onDeleteAudioVoice");
+      jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.moodVoice.onVoiceDelete('" + paramString + "')");
+    }
+  }
   
-  @NonNull
-  public abstract DoodleLayout a();
+  public static void b()
+  {
+    if ((jdField_a_of_type_Bjsu != null) && (jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null))
+    {
+      QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onNotifyH5CutCancel");
+      jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.moodVoice.cutCancel()");
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
+  public static void c()
+  {
+    if ((jdField_a_of_type_Bjsu != null) && (jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null)) {
+      jdField_a_of_type_Bjsu.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZMoodVoiceJSInterface.notifyGetVoiceRecordTime()");
+    }
+  }
   
-  public abstract void a(Bitmap paramBitmap);
+  public void a()
+  {
+    jdField_a_of_type_Bjsu = null;
+  }
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract byte[] a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract boolean c();
-  
-  public abstract boolean g_();
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjsu
  * JD-Core Version:    0.7.0.1
  */

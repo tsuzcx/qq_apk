@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import aujj;
+import awam;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.app.AppRuntime.Status;
@@ -53,27 +53,26 @@ public class OnlineStatusListLayout
   
   private void a()
   {
-    this.e = actj.a(12.0F, getResources());
-    this.f = actj.a(16.0F, getResources());
+    this.e = aekt.a(12.0F, getResources());
+    this.f = aekt.a(16.0F, getResources());
     setPadding(this.e, this.f, this.e, 0);
-    this.c = actj.a(16.0F, getResources());
-    this.a = ((getResources().getDisplayMetrics().widthPixels - this.e * 2 - this.c * 2) / 3);
-    this.d = actj.a(20.0F, getResources());
-    this.b = actj.a(32.0F, getResources());
+    this.c = aekt.a(16.0F, getResources());
+    this.d = aekt.a(20.0F, getResources());
+    this.b = aekt.a(32.0F, getResources());
   }
   
-  private boolean a(aujj paramaujj1, aujj paramaujj2)
+  private boolean a(awam paramawam1, awam paramawam2)
   {
-    if ((paramaujj1 == null) || (paramaujj2 == null) || (paramaujj1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramaujj2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
-    while (paramaujj1.jdField_a_of_type_Long != paramaujj2.jdField_a_of_type_Long) {
+    if ((paramawam1 == null) || (paramawam2 == null) || (paramawam1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramawam2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
+    while (paramawam1.jdField_a_of_type_Long != paramawam2.jdField_a_of_type_Long) {
       return false;
     }
     return true;
   }
   
-  public void a(aujj paramaujj)
+  public void a(awam paramawam)
   {
-    if (paramaujj == null) {}
+    if (paramawam == null) {}
     for (;;)
     {
       return;
@@ -85,23 +84,23 @@ public class OnlineStatusListLayout
         if ((localObject instanceof OnlineStatusItemView))
         {
           localObject = (OnlineStatusItemView)localObject;
-          ((OnlineStatusItemView)localObject).a(a(((OnlineStatusItemView)localObject).a, paramaujj));
+          ((OnlineStatusItemView)localObject).a(a(((OnlineStatusItemView)localObject).a, paramawam));
         }
         i += 1;
       }
     }
   }
   
-  public void a(List<aujj> paramList, View.OnClickListener paramOnClickListener)
+  public void a(List<awam> paramList, View.OnClickListener paramOnClickListener)
   {
     int j = paramList.size();
     int i = 0;
     while (i < j)
     {
-      aujj localaujj = (aujj)paramList.get(i);
+      awam localawam = (awam)paramList.get(i);
       OnlineStatusItemView localOnlineStatusItemView = new OnlineStatusItemView(getContext());
-      localOnlineStatusItemView.a(localaujj);
-      localOnlineStatusItemView.setTag(localaujj);
+      localOnlineStatusItemView.a(localawam);
+      localOnlineStatusItemView.setTag(localawam);
       localOnlineStatusItemView.setOnClickListener(paramOnClickListener);
       addView(localOnlineStatusItemView);
       i += 1;
@@ -110,17 +109,22 @@ public class OnlineStatusListLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt1 = 0;
-    paramInt2 = getChildCount();
-    while (paramInt1 < paramInt2)
+    if (getWidth() > 0) {}
+    for (paramInt1 = getWidth();; paramInt1 = getResources().getDisplayMetrics().widthPixels)
     {
-      paramInt3 = this.e + paramInt1 % 3 * (this.a + this.c);
-      paramInt4 = this.f + (a(paramInt1) - 1) * (this.b + this.d);
-      getChildAt(paramInt1).layout(paramInt3, paramInt4, this.a + paramInt3, this.b + paramInt4);
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusListLayout", 2, "onLayout : startX -> " + paramInt3 + ", startY -> " + paramInt4 + ", getRowByChildIndex(i) -> " + a(paramInt1));
+      this.a = ((paramInt1 - this.e * 2 - this.c * 2) / 3);
+      paramInt1 = 0;
+      paramInt2 = getChildCount();
+      while (paramInt1 < paramInt2)
+      {
+        paramInt3 = this.e + paramInt1 % 3 * (this.a + this.c);
+        paramInt4 = this.f + (a(paramInt1) - 1) * (this.b + this.d);
+        getChildAt(paramInt1).layout(paramInt3, paramInt4, this.a + paramInt3, this.b + paramInt4);
+        if (QLog.isColorLevel()) {
+          QLog.d("OnlineStatusListLayout", 2, "onLayout : startX -> " + paramInt3 + ", startY -> " + paramInt4 + ", getRowByChildIndex(i) -> " + a(paramInt1));
+        }
+        paramInt1 += 1;
       }
-      paramInt1 += 1;
     }
   }
   
@@ -138,7 +142,7 @@ public class OnlineStatusListLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusListLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,25 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class axha
+  extends RecyclerView.ViewHolder
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
   
-  static
+  private axha(View paramView)
   {
-    jdField_a_of_type_Int = 1500;
-  }
-  
-  public static boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
-    }
-    boolean bool = axhq.a(axhq.r);
-    if (bool) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
-      }
-    }
-    while (Build.VERSION.SDK_INT < 18) {
-      return false;
-    }
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportPre_SendEncode=" + b + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
-    }
-    if (Build.VERSION.SDK_INT < 18) {}
-    do
-    {
-      boolean bool;
-      do
-      {
-        do
-        {
-          return false;
-          bool = axhq.e(axhq.o);
-          if (!bool) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool);
-        return false;
-        bool = axhq.a(axhq.r);
-        if (!bool) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool + " hardware Black");
-      return false;
-    } while ((!b) || (!jdField_a_of_type_Boolean));
-    return true;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378839));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368782));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axha
  * JD-Core Version:    0.7.0.1
  */

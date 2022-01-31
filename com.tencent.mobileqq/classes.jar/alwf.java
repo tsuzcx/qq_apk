@@ -1,55 +1,73 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AccountNotMatchException;
 
-class alwf
-  implements View.OnClickListener
+public class alwf
 {
-  alwf(alwe paramalwe, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
+  private alqy jdField_a_of_type_Alqy = new alwh(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new alwg(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onClick(View paramView)
+  public alwf(String paramString)
   {
-    int i = paramView.getId();
-    if (this.jdField_a_of_type_Int == 2) {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
+    try
+    {
+      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
+      paramString = new IntentFilter();
+      paramString.addAction("com.tencent.mobileqq.addLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.removeLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.getStreetViewUrl");
+      paramString.addAction("com.tencent.mobileqq.unregisterReceiver");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareSearch");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareShop");
+      paramString.addAction("com.tencent.mobileqq.getShareShopDetail");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-create, registerReceiver:" + hashCode() + ", " + this.jdField_a_of_type_AndroidContentBroadcastReceiver.hashCode());
+      }
+      return;
+    }
+    catch (AccountNotMatchException paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivityProxy", 2, "AccountNotMatchException " + paramString.toString());
+        }
       }
     }
-    do
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMapActivityProxy", 2, "onDestory,  hashCode=" + hashCode());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alqy);
+    }
+    try
     {
-      do
-      {
-        return;
-        if (i == 1)
-        {
-          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
-          return;
-        }
-      } while (i != 2);
-      this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       return;
-      if (this.jdField_a_of_type_Int != 1) {
-        break;
-      }
-      if (i == 0)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
-        return;
-      }
-      if (i == 1)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
-        return;
-      }
-    } while (i != 2);
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-    return;
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("QQMapActivityProxy", 2, "onDestory, mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + localException.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwf
  * JD-Core Version:    0.7.0.1
  */

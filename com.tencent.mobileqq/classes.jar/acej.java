@@ -1,33 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class acej
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public acej(SubLoginActivity paramSubLoginActivity) {}
+  public acej(BaseChatPie paramBaseChatPie) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramCharSequence.length() > 0) {
-      if (SubLoginActivity.a(this.a) != null) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
     }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
-      return;
-    }
-    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acej
  * JD-Core Version:    0.7.0.1
  */

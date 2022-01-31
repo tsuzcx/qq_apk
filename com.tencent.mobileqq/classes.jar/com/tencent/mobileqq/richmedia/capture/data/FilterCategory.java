@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import avsn;
+import axkl;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator<FilterCategory> CREATOR = new avsn();
+  public static final Parcelable.Creator<FilterCategory> CREATOR = new axkl();
   public int a;
   public String a;
   public List<FilterCategoryItem> a;
@@ -147,7 +147,7 @@ public class FilterCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.FilterCategory
  * JD-Core Version:    0.7.0.1
  */

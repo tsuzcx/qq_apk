@@ -1,40 +1,25 @@
-import android.media.MediaPlayer;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
+import org.apache.http.Header;
+import org.json.JSONObject;
 
-public class ldh
-  extends lds
+class ldh
+  extends lcn
 {
-  public ldh(VideoController paramVideoController)
+  ldh(lde paramlde, lcn paramlcn) {}
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    super(paramVideoController);
+    this.jdField_a_of_type_Lcn.a(paramInt, paramArrayOfHeader, paramJSONObject);
   }
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void a(Throwable paramThrowable, String paramString)
   {
-    lcg.d(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onCloseDoubleVideoMeeting");
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().J)
-    {
-      if (paramMediaPlayer != null) {
-        paramMediaPlayer.release();
-      }
-      long l = this.jdField_a_of_type_ComTencentAvVideoController.a().g;
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
-      this.jdField_a_of_type_ComTencentAvVideoController.a(3, l, 85);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().J = false;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().I = false;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      return;
-      lcg.e(VideoController.jdField_a_of_type_JavaLangString, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
-    }
+    this.jdField_a_of_type_Lcn.a(paramThrowable, paramString);
+    super.a(paramThrowable, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldh
  * JD-Core Version:    0.7.0.1
  */

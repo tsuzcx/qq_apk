@@ -1,39 +1,28 @@
-import MQQ.VipUserInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.apollo.ApolloManager.21;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class akjo
-  implements ajte
+  implements nbs
 {
-  protected void a(boolean paramBoolean, int paramInt) {}
+  public akjo(ApolloManager.21 param21) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipInfoObserver", 2, "onUpdate-isSuccess:" + paramBoolean);
+    QLog.d("ApolloManager", 1, new Object[] { "[predownloadForGameCenter] offline pkg bid:", this.a.jdField_a_of_type_JavaLangString, " loaded, param=", paramString, ", code=", Integer.valueOf(paramInt) });
+    if (paramInt == 0) {
+      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(this.a.b, this.a.jdField_a_of_type_Int).commit();
     }
-    if (paramInt == 1)
-    {
-      int i = -1;
-      paramInt = i;
-      if (paramBoolean)
-      {
-        paramObject = (VipUserInfo)paramObject;
-        paramInt = i;
-        if (paramObject != null)
-        {
-          paramInt = i;
-          if (paramObject.bUpdate == 1) {
-            paramInt = paramObject.iGrowthValue;
-          }
-        }
-      }
-      a(paramBoolean, paramInt);
-    }
+    VipUtils.a(this.a.this$0.a, "cmshow", "Apollo", "gamecenter_preload_res_android", 0, paramInt, new String[] { this.a.jdField_a_of_type_JavaLangString, String.valueOf(this.a.jdField_a_of_type_Int) });
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjo
  * JD-Core Version:    0.7.0.1
  */

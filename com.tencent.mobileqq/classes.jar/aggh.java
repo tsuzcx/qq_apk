@@ -1,92 +1,96 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.HashSet;
 import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import mqq.manager.Manager;
 
 public class aggh
+  implements Manager
 {
-  public Map<Integer, Boolean> a;
-  public boolean a;
+  public int a;
+  public Set<String> a;
+  boolean a;
+  public int b;
   
   public aggh()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public static aggh a(amph[] paramArrayOfamph)
+  public static int a(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfamph[0].a);
-    }
-    localaggh = new aggh();
+    return paramContext.getSharedPreferences("PhotoListConfig" + paramString, 0).getInt("k_version", 0);
+  }
+  
+  public static aggh a(QQAppInterface paramQQAppInterface)
+  {
+    aggh localaggh = (aggh)paramQQAppInterface.getManager(215);
+    localaggh.a(paramQQAppInterface);
+    return localaggh;
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext.getSharedPreferences("PhotoListConfig" + paramString, 0).edit().putInt("k_version", paramInt).apply();
+  }
+  
+  @TargetApi(14)
+  private void a(QQAppInterface paramQQAppInterface)
+  {
     try
     {
-      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a);
-      int i;
-      label93:
-      int k;
-      if (paramArrayOfamph.optInt("allSwitch") == 1)
+      if (!this.jdField_a_of_type_Boolean)
       {
-        bool = true;
-        localaggh.jdField_a_of_type_Boolean = bool;
-        paramArrayOfamph = paramArrayOfamph.optJSONArray("business");
-        int j = paramArrayOfamph.length();
-        i = 0;
-        if (i >= j) {
-          break label174;
-        }
-        JSONObject localJSONObject = (JSONObject)paramArrayOfamph.get(i);
-        k = localJSONObject.optInt("id");
-        if (localJSONObject.optInt("switch") != 1) {
-          break label163;
-        }
+        this.jdField_a_of_type_Boolean = true;
+        paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("PhotoListConfig" + paramQQAppInterface.getCurrentAccountUin(), 0);
+        this.jdField_a_of_type_Int = paramQQAppInterface.getInt("k_s", 0);
+        this.b = paramQQAppInterface.getInt("k_w", 0);
+        this.jdField_a_of_type_JavaUtilSet = paramQQAppInterface.getStringSet("k_b_l", null);
+        paramQQAppInterface = new StringBuilder("init ");
+        paramQQAppInterface.append("size:").append(this.jdField_a_of_type_Int).append(" width:").append(this.b).append(" black:").append(this.jdField_a_of_type_JavaUtilSet);
+        QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
       }
-      label163:
-      for (boolean bool = true;; bool = false)
-      {
-        localaggh.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Boolean.valueOf(bool));
-        i += 1;
-        break label93;
-        bool = false;
-        break;
-      }
-      return localaggh;
+      return;
     }
-    catch (Exception paramArrayOfamph)
+    finally
     {
-      paramArrayOfamph.printStackTrace();
+      paramQQAppInterface = finally;
+      throw paramQQAppInterface;
     }
   }
   
-  public String toString()
+  @TargetApi(14)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, Set<String> paramSet)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("allSwitch = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",businessSwitch: ");
-    if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        boolean bool = ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).booleanValue();
-        localStringBuilder.append(localInteger);
-        localStringBuilder.append("=");
-        localStringBuilder.append(bool);
-        localStringBuilder.append(",");
-      }
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.jdField_a_of_type_JavaUtilSet = paramSet;
+      paramQQAppInterface.getApp().getSharedPreferences("PhotoListConfig" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putInt("k_s", paramInt1).putInt("k_w", paramInt2).putStringSet("k_b_l", paramSet).apply();
+      paramQQAppInterface = new StringBuilder("updateConfig ");
+      paramQQAppInterface.append("size:").append(this.jdField_a_of_type_Int).append(" width:").append(this.b).append(" black:").append(paramSet);
+      QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
+      return;
     }
-    return localStringBuilder.toString();
+    finally
+    {
+      paramQQAppInterface = finally;
+      throw paramQQAppInterface;
+    }
   }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggh
  * JD-Core Version:    0.7.0.1
  */

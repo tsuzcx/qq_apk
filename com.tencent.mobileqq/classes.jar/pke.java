@@ -1,59 +1,34 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import org.json.JSONObject;
 
 public class pke
-  extends ViewBase
 {
-  private NativeGridImageView a;
-  
-  public pke(VafContext paramVafContext)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramVafContext);
-    this.a = new NativeGridImageView(paramVafContext.getContext());
-  }
-  
-  public void a(ArticleInfo paramArticleInfo)
-  {
-    this.a.a(paramArticleInfo);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.a.a(this);
+    JSONObject localJSONObject1 = new JSONObject();
+    pkm.a(paramBaseArticleInfo, localJSONObject1, Utils.toLong(paramBaseArticleInfo.mSubscribeID));
+    pkm.q(paramBaseArticleInfo, localJSONObject1);
+    pkm.t(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_multi_image", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", alpo.a(2131713418));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_small_imge_url", "https://qqpublic.qpic.cn/qq_public_cover/0/0-1512726317-04871A48D592EB571A29D6F16C134B70_open/320");
+    localJSONObject1.put("id_article_small_imge", localJSONObject2);
+    pkm.a(paramBaseArticleInfo, localJSONObject1, false);
+    pkm.l(paramBaseArticleInfo, localJSONObject1);
+    pkm.B(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_pgc_multi_cell");
+    return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pke
  * JD-Core Version:    0.7.0.1
  */

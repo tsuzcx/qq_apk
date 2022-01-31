@@ -1,43 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class ajjl
-  implements aiui
+public class ajjl
+  implements DialogInterface.OnClickListener
 {
-  ajjl(ajjd paramajjd, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
+  public ajjl(LoginView paramLoginView) {}
   
-  public void a(boolean paramBoolean, aiuh paramaiuh)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramaiuh = aitz.a().a(8, this.jdField_a_of_type_Int);
-    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
-    if (paramaiuh == null) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    try
     {
-      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
-      localObject = ajjd.a(this.jdField_a_of_type_JavaLangString);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
-      }
-      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.dismiss();
       return;
     }
-    if (paramaiuh == null)
-    {
-      this.jdField_a_of_type_Ajjd.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramaiuh);
-    aiub.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new ajjm(this, (String)localObject), localArrayList, false, null);
+    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjl
  * JD-Core Version:    0.7.0.1
  */

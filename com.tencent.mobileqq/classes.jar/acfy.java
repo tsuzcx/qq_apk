@@ -1,37 +1,23 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acfy
-  implements bfux
+public final class acfy
+  implements DialogInterface.OnClickListener
 {
-  public acfy(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public acfy(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, acgy paramacgy, Bundle paramBundle) {}
   
-  public void a(bfuw parambfuw)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = false;
-    switch (parambfuw.a)
-    {
-    default: 
-      return;
-    case 0: 
-      parambfuw = this.a;
-      if (!this.a.d) {
-        bool = true;
-      }
-      parambfuw.d = bool;
-      asfd.a().b(this.a.app, this.a.d);
-      return;
-    }
-    parambfuw = new Intent(this.a, TroopAssisSettingActivity.class);
-    parambfuw.setFlags(67108864);
-    this.a.startActivity(parambfuw);
-    axqy.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_Acgy, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfy
  * JD-Core Version:    0.7.0.1
  */

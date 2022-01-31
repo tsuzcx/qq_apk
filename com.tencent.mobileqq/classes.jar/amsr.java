@@ -1,65 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-public class amsr
-  extends ampa<amsq>
+class amsr
+  implements amzd
 {
-  public int a()
-  {
-    return 598;
-  }
+  amsr(amsq paramamsq, String paramString, amzd paramamzd) {}
   
-  @NonNull
-  public amsq a(int paramInt)
+  public void a()
   {
-    return new amsq();
-  }
-  
-  @Nullable
-  public amsq a(amph[] paramArrayOfamph)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onParsed] config");
-    }
-    return amsq.a(paramArrayOfamph);
-  }
-  
-  public Class<amsq> a()
-  {
-    return amsq.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("LebaRedTouchSwitchProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public void a(amsq paramamsq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onUpdate]");
+    if (this.jdField_a_of_type_Amzd != null) {
+      this.jdField_a_of_type_Amzd.a();
     }
   }
   
-  public int b()
+  public void a(long paramLong1, long paramLong2)
   {
-    return 0;
+    if (this.jdField_a_of_type_Amzd != null) {
+      this.jdField_a_of_type_Amzd.a(paramLong1, paramLong2);
+    }
   }
   
-  public boolean b()
+  public void a(boolean paramBoolean, amze paramamze)
   {
-    return false;
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramamze.d + ", filename = " + paramamze.c + ", url = " + paramamze.jdField_a_of_type_JavaLangString);
+    if (paramBoolean) {
+      if (!amsq.a(this.jdField_a_of_type_Amsq, paramamze.c, paramamze.b))
+      {
+        amsq.a(this.jdField_a_of_type_Amsq, paramamze.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    while (this.jdField_a_of_type_Amzd == null)
+    {
+      return;
+      if ((!paramamze.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Amsq.a(paramamze.d, paramamze.c, paramamze.b) != 0)) {}
+    }
+    this.jdField_a_of_type_Amzd.a(paramBoolean, paramamze);
   }
   
-  public boolean c()
+  public void b()
   {
-    return true;
+    if (this.jdField_a_of_type_Amzd != null) {
+      this.jdField_a_of_type_Amzd.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsr
  * JD-Core Version:    0.7.0.1
  */

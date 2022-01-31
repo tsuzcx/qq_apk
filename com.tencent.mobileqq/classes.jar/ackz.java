@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.Comparator;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.ClearChatRecordTask;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class ackz
-  implements Comparator<acku>
+  implements bekp
 {
-  public ackz(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ackz(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public int a(acku paramacku1, acku paramacku2)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    return paramacku1.f.compareToIgnoreCase(paramacku2.f);
+    ThreadManager.post(new ChatSettingForTroop.ClearChatRecordTask(this.a), 5, null, false);
+    bdaj.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.a.a.troopUin, bdaj.a(this.a.a) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ackz
  * JD-Core Version:    0.7.0.1
  */

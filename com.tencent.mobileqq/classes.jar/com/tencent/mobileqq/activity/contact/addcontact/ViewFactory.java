@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
@@ -25,20 +25,20 @@ public class ViewFactory
     switch (paramInt)
     {
     default: 
-      return 2131689739;
+      return 2131689740;
     case 80000000: 
-      return 2131689714;
+      return 2131689715;
     case 80000001: 
-      return 2131689770;
+      return 2131689771;
     case 80000002: 
       if (UniteSearchActivity.d == 12) {
-        return 2131689766;
+        return 2131689767;
       }
-      return 2131689764;
+      return 2131689765;
     case 80000003: 
-      return 2131689721;
+      return 2131689722;
     }
-    return 2131720031;
+    return 2131720567;
   }
   
   private View a(Context paramContext)
@@ -47,14 +47,14 @@ public class ViewFactory
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
     localLinearLayout.setOrientation(1);
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(ajya.a(2131716470));
-    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298820));
-    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298182), 0, 0);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131166929));
+    localTextView.setText(alpo.a(2131716842));
+    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298848));
+    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298207), 0, 0);
+    localTextView.setTextColor(paramContext.getResources().getColor(2131166976));
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     paramContext.gravity = 1;
     localLinearLayout.addView(localTextView, paramContext);
-    localLinearLayout.setContentDescription(ajya.a(2131716471));
+    localLinearLayout.setContentDescription(alpo.a(2131716843));
     return localLinearLayout;
   }
   
@@ -136,7 +136,7 @@ public class ViewFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ViewFactory
  * JD-Core Version:    0.7.0.1
  */

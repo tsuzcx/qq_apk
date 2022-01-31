@@ -1,53 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
 
-public class pjc
-  implements ViewBase.OnClickListener
+class pjc
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  public final String a;
+  pjc(pja parampja, long paramLong, ArticleInfo paramArticleInfo) {}
   
-  public pjc(ArticleInfo paramArticleInfo, Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "OnTopicCapsuleClickListener";
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
-    String str;
-    do
-    {
-      return;
-      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl;
-      if (QLog.isColorLevel()) {
-        QLog.d("OnTopicCapsuleClickListener", 2, "business url is " + str);
-      }
-    } while ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_AndroidContentContext == null));
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
-    localIntent.putExtra("url", str);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    nol.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    a();
+    paramView = oqu.g + bdbi.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    ors.a(pja.a(this.jdField_a_of_type_Pja), paramView);
+    pja.a(1, ors.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pjc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import actj;
-import ajya;
-import akaw;
+import aekt;
+import alpo;
+import alsl;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -47,7 +47,7 @@ public class TimeLineView
   
   public int a()
   {
-    return actj.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    return aekt.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   public BitSet a()
@@ -78,10 +78,10 @@ public class TimeLineView
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    int k = actj.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int m = actj.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int n = actj.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int i1 = actj.b(7.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = aekt.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int m = aekt.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int n = aekt.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i1 = aekt.b(7.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int j = (this.jdField_b_of_type_Int >> 1) - (m >> 1);
     Paint localPaint1 = new Paint();
     Paint localPaint2 = new Paint();
@@ -113,10 +113,10 @@ public class TimeLineView
       if (i3 != 1) {
         break label389;
       }
-      str = i2 + ajya.a(2131714965);
+      str = i2 + alpo.a(2131715337);
       label287:
       float f = localPaint2.measureText(str);
-      i2 = actj.b(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      i2 = aekt.b(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramCanvas.drawText(str, m / 2 + j - f / 2.0F, (getHeight() >> 1) - i2, localPaint2);
       label339:
       j += k + m;
@@ -170,7 +170,7 @@ public class TimeLineView
       localStringBuilder.append(i).append("-").append(j + 1).append("-").append(k);
       localStringBuilder.append(", isLoc: ").append(paramBoolean);
     }
-    paramQQAppInterface = (akaw)paramQQAppInterface.getManager(92);
+    paramQQAppInterface = (alsl)paramQQAppInterface.getManager(92);
     if (!paramBoolean) {}
     for (this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.c(this.jdField_a_of_type_JavaUtilCalendar, this.jdField_b_of_type_JavaUtilCalendar);; this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.a(paramCalendar1, paramCalendar2))
     {
@@ -192,7 +192,7 @@ public class TimeLineView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TimeLineView
  * JD-Core Version:    0.7.0.1
  */

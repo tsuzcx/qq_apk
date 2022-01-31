@@ -1,253 +1,467 @@
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.av.VideoConstants.EmShareState;
+import com.tencent.av.app.VideoObserver.1;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 public class lij
+  implements Observer
 {
-  public static lij a;
-  public int a;
-  public List<lik> a;
-  public boolean a;
-  public int b = 0;
+  Handler a = null;
   
-  public lij()
+  private void a(Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public static int a()
-  {
-    lij locallij = a();
-    if (locallij != null) {
-      return locallij.b;
+    int j = -1;
+    try
+    {
+      i = Integer.parseInt(String.valueOf(paramArrayOfObject[1]));
+      int k = Integer.parseInt(String.valueOf(paramArrayOfObject[2]));
+      j = k;
     }
-    return 3;
-  }
-  
-  public static List<lik> a()
-  {
-    lij locallij = a();
-    if (locallij != null) {
-      return locallij.jdField_a_of_type_JavaUtilList;
-    }
-    return null;
-  }
-  
-  public static lij a()
-  {
-    if ((jdField_a_of_type_Lij == null) || (jdField_a_of_type_Lij.jdField_a_of_type_Boolean)) {
-      jdField_a_of_type_Lij = b();
-    }
-    return jdField_a_of_type_Lij;
-  }
-  
-  public static boolean a()
-  {
-    lij locallij = a();
-    return (locallij != null) && (locallij.jdField_a_of_type_Int == 1);
-  }
-  
-  private static lij b()
-  {
-    int i1 = 3;
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC!");
-    }
-    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.AVPanCfg.name());
-    QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC dpcValue: " + str);
-    ArrayList localArrayList = new ArrayList();
-    int i;
-    int k;
-    int m;
-    int n;
-    if (!TextUtils.isEmpty(str)) {
+    catch (NumberFormatException paramArrayOfObject)
+    {
       for (;;)
       {
-        try
-        {
-          Object localObject1 = str.split("\\|");
-          if ((localObject1 != null) && (localObject1.length >= 3))
-          {
-            j = arai.a(localObject1[0], 0);
-            localObject3 = localObject1[1];
-            i = j;
-          }
-          try
-          {
-            if (!TextUtils.isEmpty((CharSequence)localObject3))
-            {
-              i = j;
-              localObject3 = ((String)localObject3).split("-");
-              k = 0;
-              i = j;
-              if (k < localObject3.length)
-              {
-                Object localObject4 = localObject3[k];
-                i = j;
-                if (TextUtils.isEmpty((CharSequence)localObject4)) {
-                  break label623;
-                }
-                i = j;
-                localObject4 = ((String)localObject4).split("_");
-                i = j;
-                if (localObject4.length < 2) {
-                  break label615;
-                }
-                i = j;
-                m = arai.a(localObject4[0], 0);
-                i = j;
-                n = arai.a(localObject4[1], 0);
-                label204:
-                if ((m <= 0) || (n <= 0)) {
-                  break label623;
-                }
-                i = j;
-                localArrayList.add(new lik(n, m));
-                break label623;
-              }
-            }
-            i = j;
-            k = arai.a(localObject1[2], 3);
-            i = j;
-            label249:
-            if (localArrayList.size() == 0)
-            {
-              localArrayList.add(new lik(215, 4));
-              localArrayList.add(new lik(150, 8));
-            }
-            localObject1 = new lij();
-            ((lij)localObject1).jdField_a_of_type_Int = i;
-            ((lij)localObject1).b = k;
-            ((lij)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
-            if ((str == null) || (str.isEmpty())) {
-              bool = true;
-            }
-            ((lij)localObject1).jdField_a_of_type_Boolean = bool;
-            return localObject1;
-          }
-          catch (Exception localException1)
-          {
-            j = i;
-          }
-          if ((localObject1 == null) || (localObject1.length != 1)) {
-            continue;
-          }
-          j = arai.a(localObject1[0], 0);
-          i = j;
-          QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 1");
-          k = i1;
-          i = j;
-          continue;
+        paramArrayOfObject.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.e("VideoObserver", 2, "Data transfer error", paramArrayOfObject);
         }
-        catch (Exception localException2)
-        {
-          Object localObject3;
-          Object localObject2;
-          int j = 0;
-          continue;
-          m = 0;
-          n = 0;
-          continue;
-        }
-        k = i1;
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC exception:", localException1);
-          k = i1;
-          i = j;
-          continue;
-          if ((localException1 != null) && (localException1.length == 2))
-          {
-            j = arai.a(localException1[0], 0);
-            localObject2 = localException1[1];
-            i = j;
-            if (!TextUtils.isEmpty((CharSequence)localObject2))
-            {
-              i = j;
-              localObject2 = ((String)localObject2).split("-");
-              k = 0;
-            }
-          }
-        }
+        int i = -5;
       }
     }
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoObserver", 2, String.format("Before send, ivrRequestSeq = %d", new Object[] { Integer.valueOf(j) }));
+    }
+    b(i, j);
+  }
+  
+  private void b(Object[] paramArrayOfObject)
+  {
+    int i = -1;
+    str = "";
+    try
     {
+      j = Integer.parseInt(String.valueOf(paramArrayOfObject[1]));
       i = j;
-      if (k < localObject2.length)
+      int k = Integer.parseInt(String.valueOf(paramArrayOfObject[2]));
+      i = j;
+      paramArrayOfObject = String.valueOf(paramArrayOfObject[3]);
+      i = j;
+      j = k;
+    }
+    catch (NumberFormatException paramArrayOfObject)
+    {
+      for (;;)
       {
-        localObject3 = localObject2[k];
-        i = j;
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label630;
+        paramArrayOfObject.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.e("VideoObserver", 2, "Data transfer error", paramArrayOfObject);
         }
-        i = j;
-        localObject3 = ((String)localObject3).split("_");
-        i = j;
-        if (localObject3.length >= 2)
-        {
-          i = j;
-          m = arai.a(localObject3[0], 0);
-          i = j;
-          n = arai.a(localObject3[1], 0);
-          if ((m <= 0) || (n <= 0)) {
-            break label630;
-          }
-          i = j;
-          localArrayList.add(new lik(n, m));
-          break label630;
-        }
+        int j = -4;
+        paramArrayOfObject = str;
       }
-      else
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoObserver", 2, String.format("Receive request ivrRequestSeq = %d, errorCode = %d, errorMsg = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramArrayOfObject }));
+    }
+    a(i, j, paramArrayOfObject);
+  }
+  
+  private void c(Object[] paramArrayOfObject)
+  {
+    j = -1;
+    long l1 = -1L;
+    String str3 = "";
+    String str4 = "";
+    int i = j;
+    String str2 = str3;
+    String str1 = str4;
+    try
+    {
+      int k = Integer.parseInt(String.valueOf(paramArrayOfObject[1]));
+      i = j;
+      str2 = str3;
+      str1 = str4;
+      j = Integer.parseInt(String.valueOf(paramArrayOfObject[2]));
+      i = j;
+      str2 = str3;
+      str1 = str4;
+      str3 = String.valueOf(paramArrayOfObject[3]);
+      i = j;
+      str2 = str3;
+      str1 = str4;
+      str4 = String.valueOf(paramArrayOfObject[4]);
+      i = j;
+      str2 = str3;
+      str1 = str4;
+      long l2 = Long.parseLong(String.valueOf(paramArrayOfObject[5]));
+      l1 = l2;
+      str1 = str4;
+      str2 = str3;
+      i = j;
+      j = k;
+    }
+    catch (NumberFormatException paramArrayOfObject)
+    {
+      for (;;)
       {
-        i = j;
-        QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 2");
-        k = i1;
-        i = j;
-        break label249;
+        paramArrayOfObject.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.e("VideoObserver", 2, "Data transfer error", paramArrayOfObject);
+        }
+        j = -3;
       }
-      i = 0;
-      k = i1;
-      break label249;
-      label615:
-      m = 0;
-      n = 0;
-      break label204;
-      label623:
-      k += 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoObserver", 2, String.format("Get data from VideoController, errorCode = %d, seq = %d, url = %s, str = %s, roomId = %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), str2, str1, Long.valueOf(l1) }));
+    }
+    a(j, i, str2, str1, l1);
+  }
+  
+  protected void a() {}
+  
+  protected void a(int paramInt) {}
+  
+  protected void a(int paramInt1, int paramInt2) {}
+  
+  protected void a(int paramInt1, int paramInt2, String paramString) {}
+  
+  protected void a(int paramInt1, int paramInt2, String paramString1, String paramString2, long paramLong) {}
+  
+  public void a(int paramInt1, long paramLong, int paramInt2) {}
+  
+  protected void a(int paramInt, String paramString) {}
+  
+  protected void a(long paramLong) {}
+  
+  protected void a(long paramLong, int paramInt) {}
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2) {}
+  
+  protected void a(long paramLong, int paramInt, String paramString) {}
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3) {}
+  
+  protected void a(long paramLong, String paramString, boolean paramBoolean) {}
+  
+  protected void a(long paramLong, boolean paramBoolean) {}
+  
+  public void a(VideoConstants.EmShareState paramEmShareState, int paramInt1, int paramInt2, long paramLong, int paramInt3) {}
+  
+  protected void a(RecvMsg paramRecvMsg) {}
+  
+  public void a(Object paramObject)
+  {
+    int j = -1;
+    if (paramObject == null) {
+      return;
+    }
+    Object[] arrayOfObject = (Object[])paramObject;
+    switch (((Integer)arrayOfObject[0]).intValue())
+    {
+    case 0: 
+    default: 
+      return;
+    case 10: 
+      a();
+      return;
+    case 32: 
+      if (arrayOfObject.length > 2) {
+        j = ((Integer)arrayOfObject[1]).intValue();
+      }
       break;
-      label630:
-      k += 1;
+    }
+    for (int i = ((Integer)arrayOfObject[2]).intValue();; i = -1)
+    {
+      a(mwd.a(arrayOfObject, 3), j, i);
+      return;
+      b();
+      return;
+      a((RecvMsg)arrayOfObject[1]);
+      return;
+      a(mwd.a(arrayOfObject, 1));
+      return;
+      i = ((Integer)arrayOfObject[1]).intValue();
+      paramObject = null;
+      if (arrayOfObject.length > 2) {
+        paramObject = (String)arrayOfObject[2];
+      }
+      a(mwd.a(arrayOfObject, 3), i, paramObject);
+      return;
+      c();
+      return;
+      b(mwd.a(arrayOfObject, 1));
+      return;
+      d();
+      return;
+      e();
+      return;
+      a((String)arrayOfObject[1]);
+      return;
+      a(((Long)arrayOfObject[1]).longValue(), ((Long)arrayOfObject[2]).longValue(), ((Long)arrayOfObject[3]).longValue());
+      return;
+      a(((Boolean)arrayOfObject[1]).booleanValue(), ((Integer)arrayOfObject[2]).intValue(), (String)arrayOfObject[3], ((Integer)arrayOfObject[4]).intValue());
+      return;
+      b(((Long)arrayOfObject[1]).longValue(), ((Long)arrayOfObject[2]).longValue(), ((Long)arrayOfObject[3]).longValue());
+      return;
+      f();
+      return;
+      b(((Integer)arrayOfObject[1]).intValue());
+      return;
+      c(((Integer)arrayOfObject[1]).intValue());
+      return;
+      a(true, ((Boolean)arrayOfObject[1]).booleanValue());
+      return;
+      a(false, ((Boolean)arrayOfObject[1]).booleanValue());
+      return;
+      a(((Boolean)arrayOfObject[1]).booleanValue());
+      return;
+      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
+      a(mwd.a(arrayOfObject, 2), bool);
+      return;
+      b((String)arrayOfObject[1]);
+      return;
+      c((String)arrayOfObject[1]);
+      return;
+      String str = (String)arrayOfObject[1];
+      bool = ((Boolean)arrayOfObject[2]).booleanValue();
+      paramObject = str;
+      if (TextUtils.isEmpty(str)) {
+        paramObject = "";
+      }
+      a(paramObject, bool);
+      return;
+      h();
+      return;
+      str = (String)arrayOfObject[1];
+      for (;;)
+      {
+        for (;;)
+        {
+          try
+          {
+            if ((arrayOfObject.length <= 2) || (arrayOfObject[2] == null) || (!(arrayOfObject[2] instanceof String))) {
+              break label1803;
+            }
+            paramObject = (String)arrayOfObject[2];
+          }
+          catch (Exception paramObject)
+          {
+            paramObject = null;
+            continue;
+          }
+          a(str, paramObject);
+          return;
+          try
+          {
+            if ((arrayOfObject.length <= 1) || (arrayOfObject[1] == null) || (!(arrayOfObject[1] instanceof String))) {
+              break;
+            }
+            paramObject = (String)arrayOfObject[1];
+            a(mwd.a(arrayOfObject, 2), paramObject, true);
+            return;
+          }
+          catch (Exception paramObject)
+          {
+            return;
+          }
+        }
+        a(((Integer)arrayOfObject[1]).intValue(), (String)arrayOfObject[2]);
+        return;
+        c(arrayOfObject);
+        return;
+        a(arrayOfObject);
+        return;
+        b(arrayOfObject);
+        return;
+        bool = ((Boolean)arrayOfObject[2]).booleanValue();
+        c((String)arrayOfObject[1], bool);
+        return;
+        c(((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue());
+        return;
+        i();
+        return;
+        j();
+        return;
+        i = ((Integer)arrayOfObject[1]).intValue();
+        a(mwd.a(arrayOfObject, 2), i);
+        return;
+        b((String)arrayOfObject[1], ((Boolean)arrayOfObject[2]).booleanValue());
+        return;
+        a(((Boolean)arrayOfObject[1]).booleanValue(), ((Long)arrayOfObject[2]).longValue(), ((Integer)arrayOfObject[3]).intValue(), ((Integer)arrayOfObject[4]).intValue(), ((Integer)arrayOfObject[5]).intValue(), (String)arrayOfObject[6]);
+        return;
+        c(((Long)arrayOfObject[1]).longValue());
+        return;
+        a((String)arrayOfObject[1], (Bitmap)arrayOfObject[2]);
+        return;
+        paramObject = (String)arrayOfObject[1];
+        bool = ((Boolean)arrayOfObject[2]).booleanValue();
+        b(mwd.a(arrayOfObject, 3), paramObject, bool);
+        return;
+        g();
+        return;
+        e((String)arrayOfObject[1]);
+        return;
+        f((String)arrayOfObject[1]);
+        return;
+        g((String)arrayOfObject[1]);
+        return;
+        h((String)arrayOfObject[1]);
+        return;
+        a((String)arrayOfObject[1], ((Long)arrayOfObject[2]).longValue(), (byte[])arrayOfObject[3]);
+        return;
+        a((RecvGVideoLevelInfo[])arrayOfObject[1]);
+        return;
+        d((String)arrayOfObject[1]);
+        return;
+        a((String)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
+        return;
+        b((String)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
+        return;
+        b(paramObject);
+        return;
+        a(((Boolean)arrayOfObject[1]).booleanValue(), (String)arrayOfObject[2], (String)arrayOfObject[3], (String)arrayOfObject[4]);
+        return;
+        b(((Boolean)arrayOfObject[1]).booleanValue());
+        return;
+        c(((Boolean)arrayOfObject[1]).booleanValue());
+        return;
+        k();
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoObserver", 1, "WL_DEBUG VideoConstants.TYPE_NOTIFY_REDPACKET_FLOATWINDOW_ANIMATION");
+        }
+        b(((Boolean)arrayOfObject[1]).booleanValue(), ((Boolean)arrayOfObject[2]).booleanValue());
+        return;
+        a((byte[])arrayOfObject[2], ((Integer)arrayOfObject[3]).intValue(), ((Integer)arrayOfObject[4]).intValue());
+        return;
+        a(((Integer)arrayOfObject[1]).intValue());
+        return;
+        a(((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue());
+        return;
+        a((VideoConstants.EmShareState)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue(), ((Integer)arrayOfObject[3]).intValue(), ((Long)arrayOfObject[4]).longValue(), ((Integer)arrayOfObject[5]).intValue());
+        return;
+        a(((Integer)arrayOfObject[1]).intValue(), ((Long)arrayOfObject[2]).longValue(), ((Integer)arrayOfObject[3]).intValue());
+        return;
+        label1803:
+        paramObject = null;
+      }
     }
   }
   
-  public String toString()
+  protected void a(String paramString) {}
+  
+  protected void a(String paramString, int paramInt) {}
+  
+  protected void a(String paramString, long paramLong, byte[] paramArrayOfByte) {}
+  
+  protected void a(String paramString, Bitmap paramBitmap) {}
+  
+  protected void a(String paramString1, String paramString2) {}
+  
+  protected void a(String paramString, boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2) {}
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
+  
+  protected void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo) {}
+  
+  protected void b() {}
+  
+  protected void b(int paramInt) {}
+  
+  protected void b(int paramInt1, int paramInt2) {}
+  
+  protected void b(long paramLong) {}
+  
+  protected void b(long paramLong1, long paramLong2, long paramLong3) {}
+  
+  protected void b(long paramLong, String paramString, boolean paramBoolean) {}
+  
+  protected void b(Object paramObject) {}
+  
+  protected void b(String paramString) {}
+  
+  protected void b(String paramString, int paramInt) {}
+  
+  protected void b(String paramString, boolean paramBoolean) {}
+  
+  protected void b(boolean paramBoolean) {}
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void c() {}
+  
+  protected void c(int paramInt) {}
+  
+  protected void c(int paramInt1, int paramInt2) {}
+  
+  protected void c(long paramLong) {}
+  
+  protected void c(String paramString) {}
+  
+  protected void c(String paramString, boolean paramBoolean) {}
+  
+  protected void c(boolean paramBoolean) {}
+  
+  protected void d() {}
+  
+  protected void d(String paramString) {}
+  
+  protected void e() {}
+  
+  protected void e(String paramString) {}
+  
+  protected void f() {}
+  
+  protected void f(String paramString) {}
+  
+  protected void g() {}
+  
+  protected void g(String paramString) {}
+  
+  protected void h() {}
+  
+  protected void h(String paramString) {}
+  
+  protected void i() {}
+  
+  protected void j() {}
+  
+  protected void k() {}
+  
+  public void update(Observable paramObservable, Object paramObject)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" mPanoramaEffectMemory: ").append(this.b);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    String str = "";
-    while (localIterator.hasNext())
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
     {
-      lik locallik = (lik)localIterator.next();
-      if (locallik != null) {
-        str = str + locallik.b + "_" + locallik.jdField_a_of_type_Int + "-";
+      if (this.a == null) {
+        this.a = new Handler(paramObservable);
       }
+      this.a.post(new VideoObserver.1(this, paramObject));
+      return;
     }
-    localStringBuilder.append(" hotVideoBlurMemory: ").append(str);
-    return localStringBuilder.toString();
+    a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lij
  * JD-Core Version:    0.7.0.1
  */

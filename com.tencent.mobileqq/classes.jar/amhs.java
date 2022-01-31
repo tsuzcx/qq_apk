@@ -1,52 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Parcel;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-
 public class amhs
-  implements amhm
 {
-  private String a = "ReadInJoyLauncher";
-  
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public static String a(long paramLong)
   {
-    paramColorNote = paramColorNote.getReserve();
-    if (paramColorNote == null) {
-      return;
+    if (paramLong <= 0L) {
+      return "";
     }
-    try
-    {
-      Parcel localParcel = Parcel.obtain();
-      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
-      localParcel.setDataPosition(0);
-      paramColorNote = new ArticleInfo(localParcel);
-      if (paramColorNote == null)
-      {
-        QLog.d(this.a, 2, "init color error something is null");
-        return;
-      }
+    if (paramLong < 1024L) {
+      return paramLong + "B";
     }
-    catch (Exception paramColorNote)
-    {
-      for (;;)
-      {
-        QLog.e(this.a, 2, "unmarshall error");
-        paramColorNote.printStackTrace();
-        paramColorNote = null;
-      }
-      QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + paramColorNote.toString());
-      paramColorNote = onq.b(paramContext, paramColorNote);
-      paramColorNote.addFlags(268435456);
-      paramColorNote.putExtra("from_color_note", true);
-      paramContext.startActivity(paramColorNote);
+    if (paramLong < 1048576L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F) }) + "K";
     }
+    if (paramLong < 1073741824L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) }) + "M";
+    }
+    return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) }) + "G";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amhs
  * JD-Core Version:    0.7.0.1
  */

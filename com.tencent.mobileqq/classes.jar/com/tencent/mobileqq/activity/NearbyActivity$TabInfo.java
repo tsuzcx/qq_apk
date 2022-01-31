@@ -50,7 +50,7 @@ public class NearbyActivity$TabInfo
   
   public String getTabTag()
   {
-    return "android:switcher:" + 2131379344 + ":" + this.tabIndex;
+    return "android:switcher:" + 2131380045 + ":" + this.tabIndex;
   }
   
   public String toJson()
@@ -78,7 +78,7 @@ public class NearbyActivity$TabInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NearbyActivity.TabInfo
  * JD-Core Version:    0.7.0.1
  */

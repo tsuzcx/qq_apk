@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abwu;
+import adoc;
 
 public class QQSettingMe$34$1
   implements Runnable
 {
-  public QQSettingMe$34$1(abwu paramabwu) {}
+  public QQSettingMe$34$1(adoc paramadoc) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QQSettingMe$34$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.34.1
  * JD-Core Version:    0.7.0.1
  */

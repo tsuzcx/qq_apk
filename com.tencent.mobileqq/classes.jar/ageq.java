@@ -1,94 +1,114 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.AsyncTask;
+import android.text.TextUtils;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.ColorNickTextView;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URL;
 
-public class ageq
-  extends agdg
+final class ageq
+  extends AsyncTask<Void, Void, Integer>
 {
-  public ageq(Context paramContext, bfnk parambfnk, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  ageq(Context paramContext, int paramInt, URLDrawable paramURLDrawable, QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, PicMessageExtraData paramPicMessageExtraData) {}
+  
+  protected Integer a(Void... paramVarArgs)
   {
-    super(paramContext, parambfnk, paramSessionInfo, paramQQAppInterface);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly(false);
+    }
+    URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getTag() == null) {
+      return Integer.valueOf(1);
+    }
+    paramVarArgs = ((MessageForPic)this.jdField_a_of_type_ComTencentImageURLDrawable.getTag()).path;
+    paramVarArgs = agem.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs);
+    if (paramVarArgs != null)
+    {
+      agem.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, paramVarArgs);
+      return Integer.valueOf(2);
+    }
+    paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
+    if (!bame.b(paramVarArgs))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryUtils", 2, "addCustomEmotionFromDownLoad fail, has file");
+      }
+      return Integer.valueOf(1);
+    }
+    File localFile = bame.a(paramVarArgs);
+    if (localFile != null) {}
+    for (paramVarArgs = SecUtil.getFileMd5(localFile.getAbsolutePath());; paramVarArgs = null)
+    {
+      if ((paramVarArgs == null) || ("".equals(paramVarArgs)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOGalleryUtils", 2, "addCustomEmotionFromDownLoad fail, md5 is null");
+        }
+        return Integer.valueOf(1);
+      }
+      bdcs.c(aljq.bi + ".nomedia");
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      int i;
+      StringBuilder localStringBuilder;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null) && (this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.isDiyDouTu()))
+      {
+        i = 1;
+        if (i == 0) {
+          break label364;
+        }
+        localStringBuilder = new StringBuilder().append("_diydoutu@");
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId)) {
+          break label353;
+        }
+        str1 = "0";
+      }
+      label266:
+      label353:
+      label364:
+      for (String str1 = str1;; str1 = "")
+      {
+        paramVarArgs = aljq.bi + ammj.a(str2) + paramVarArgs + str1 + ".jpg";
+        try
+        {
+          bdcs.a(localFile, new File(paramVarArgs));
+          return Integer.valueOf(agem.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData));
+        }
+        catch (Exception paramVarArgs)
+        {
+          QLog.d("AIOGalleryUtils", 1, paramVarArgs, new Object[0]);
+          return Integer.valueOf(1);
+        }
+        i = 0;
+        break;
+        str1 = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId;
+        break label266;
+      }
+    }
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  protected void a(Integer paramInteger)
   {
-    agep localagep = (agep)getItem(paramInt);
-    View localView;
-    MessageRecord localMessageRecord;
-    if (paramView == null)
+    if (paramInteger.intValue() == 1)
     {
-      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559216, null);
-      paramViewGroup = new agdh();
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)localView.findViewById(2131377033));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377035));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367679));
-      paramViewGroup.b = ((TextView)localView.findViewById(2131368885));
-      localView.setTag(paramViewGroup);
-      localMessageRecord = localagep.a;
-      paramView = bbos.a(localMessageRecord.msg, localMessageRecord, 32, 3);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-      localObject = localMessageRecord.senderuin;
-      paramView = (View)localObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1)
-      {
-        paramView = (View)localObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) {
-          if (!localMessageRecord.isSend()) {
-            break label282;
-          }
-        }
-      }
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131695340, 0).b(this.jdField_a_of_type_Int);
+      aube.c("2004", 1);
     }
-    label282:
-    for (paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)
-    {
-      if (!myb.a(localMessageRecord)) {
-        break label293;
-      }
-      paramView = myb.a(localMessageRecord);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131697495) + paramView.jdField_b_of_type_JavaLangString);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(myb.a(paramView.jdField_b_of_type_Int)));
-      paramViewGroup.b.setText(localagep.a(localMessageRecord.time));
-      return localView;
-      paramViewGroup = (agdh)paramView.getTag();
-      localView = paramView;
-      break;
+    while (paramInteger.intValue() != 2) {
+      return;
     }
-    label293:
-    Object localObject = bajp.a(localMessageRecord);
-    if (localObject != null)
-    {
-      paramView = ((bajq)localObject).c;
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839736);
-      localObject = URLDrawable.getDrawable(((bajq)localObject).jdField_a_of_type_JavaLangString, localDrawable, localDrawable);
-      ((URLDrawable)localObject).setTag(bavw.b(100, 100, 6));
-      ((URLDrawable)localObject).setDecodeHandler(bavw.a);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-    }
-    for (;;)
-    {
-      paramView = new ayjw(paramView, 32).a();
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(paramView);
-      bbos.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, paramView);
-      break;
-      localObject = bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localMessageRecord.isSend(), localMessageRecord.senderuin);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(bayh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramView));
-      paramView = (View)localObject;
-    }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, 2131689688, 0).b(this.jdField_a_of_type_Int);
+    aube.c("2003", 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ageq
  * JD-Core Version:    0.7.0.1
  */

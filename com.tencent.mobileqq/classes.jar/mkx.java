@@ -1,20 +1,14 @@
-import com.tencent.av.ui.VideoLayerUI;
+import android.widget.RelativeLayout;
 
-public class mkx
-  implements lso
+public abstract interface mkx
 {
-  public mkx(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
-  }
+  public abstract void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkx
  * JD-Core Version:    0.7.0.1
  */

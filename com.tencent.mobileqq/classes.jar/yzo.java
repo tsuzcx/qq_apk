@@ -1,77 +1,65 @@
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.canvas.components.appbutton.GdtDownloadReportManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class yzo
-  implements bdld
+  implements aoec
 {
-  yzo(yzn paramyzn) {}
+  public yzo(NewerGuidePlugin paramNewerGuidePlugin, IphonePickerView paramIphonePickerView, bhpy parambhpy) {}
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void a()
   {
-    paramString2 = yzn.a(this.a, paramString2);
-    String str = (String)yzn.c(this.a).get(paramString1);
-    ThreadManager.getFileThreadHandler().post(new GdtDownloadReportManager.1.1(this, paramString2, str, paramString1));
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    yxp.a("GdtDownloadReportManager", "onDownloadFinish: infos:" + paramDownloadInfo.f);
-    if (!yzn.c(this.a).containsKey(paramDownloadInfo.c)) {
-      yzn.c(this.a).put(paramDownloadInfo.c, paramDownloadInfo.l);
+    int i = NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897;
+    int j = NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
+    int k = NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, String.format("onDismissOperations year=%s month=%s day=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }));
     }
-    if ((yzn.a(this.a).containsKey(paramDownloadInfo.c)) && (yzn.a(this.a).get(paramDownloadInfo.c) != null)) {
-      yye.a((GdtAd)yzn.a(this.a).get(paramDownloadInfo.c), 274);
+    if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing())) {
+      this.jdField_a_of_type_Bhpy.dismiss();
     }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    yxp.a("GdtDownloadReportManager", "onDownloadPause: infos:" + paramDownloadInfo.f);
-    if ((yzn.a(this.a).containsKey(paramDownloadInfo.c)) && (yzn.a(this.a).get(paramDownloadInfo.c) != null))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      yye.a((GdtAd)yzn.a(this.a).get(paramDownloadInfo.c), 273);
-      yzn.b(this.a).put(paramDownloadInfo.c, yzn.a(this.a).get(paramDownloadInfo.c));
+      localJSONObject.put("result", 1);
+      localJSONObject.put("year", i);
+      localJSONObject.put("month", j);
+      localJSONObject.put("date", k);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respDatePicker", new String[] { localJSONObject.toString() });
+      return;
     }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    yxp.a("GdtDownloadReportManager", "onDownloadUpdate: infos:" + paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    catch (Exception localException)
     {
-      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-      yxp.a("GdtDownloadReportManager", "onDownloadUpdate: progress:" + localDownloadInfo.f);
-      if ((yzn.b(this.a).containsKey(localDownloadInfo.c)) && (yzn.b(this.a).get(localDownloadInfo.c) != null))
+      for (;;)
       {
-        yye.a((GdtAd)yzn.b(this.a).get(localDownloadInfo.c), 271);
-        yzn.b(this.a).remove(localDownloadInfo.c);
+        QLog.e("NewerGuidePlugin", 1, "sendDatePickerResp fail", localException);
       }
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
-  
-  public void packageReplaced(String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2)
   {
-    installSucceed(paramString1, paramString2);
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+      }
+      return;
+      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+      continue;
+      NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+      continue;
+      NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+    }
   }
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzo
  * JD-Core Version:    0.7.0.1
  */

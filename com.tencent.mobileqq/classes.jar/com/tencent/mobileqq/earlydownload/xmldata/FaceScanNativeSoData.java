@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anpp;
-
 public class FaceScanNativeSoData
   extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "early_" + anpp.a;
+    return "early_qq.android.ar.face.so_v8.2.0_32";
   }
   
   public String getStrResName()
   {
-    return anpp.a;
+    return "qq.android.ar.face.so_v8.2.0_32";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.FaceScanNativeSoData
  * JD-Core Version:    0.7.0.1
  */

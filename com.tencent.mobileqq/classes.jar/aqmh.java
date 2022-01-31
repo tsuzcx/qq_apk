@@ -1,37 +1,63 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class aqmh
-  implements aqmg
+  implements View.OnClickListener
 {
-  public void a(String paramString1, int paramInt, String paramString2)
+  public aqmh(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  
+  public void onClick(View paramView)
   {
-    if (a()) {
-      QLog.d(paramString1, paramInt, paramString2);
+    Object localObject1 = paramView.getTag();
+    Object localObject2;
+    FileManagerEntity localFileManagerEntity;
+    int i;
+    if ((localObject1 instanceof aqmq))
+    {
+      localObject2 = (aqmq)paramView.getTag();
+      localObject1 = ((aqmq)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+      localFileManagerEntity = (FileManagerEntity)((aqmq)localObject2).jdField_a_of_type_JavaLangObject;
+      i = ((aqmq)localObject2).b;
+      i = ((aqmq)localObject2).c;
     }
-  }
-  
-  public boolean a()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public void b(String paramString1, int paramInt, String paramString2)
-  {
-    if (a()) {
-      QLog.i(paramString1, paramInt, paramString2);
-    }
-  }
-  
-  public void c(String paramString1, int paramInt, String paramString2)
-  {
-    if (a()) {
-      QLog.e(paramString1, paramInt, paramString2);
+    for (;;)
+    {
+      if ((paramView.getId() == 2131366299) && (QfileBaseRecentFileTabView.b(this.a))) {
+        azmj.b(QfileBaseRecentFileTabView.s(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+      }
+      if (localFileManagerEntity != null)
+      {
+        localObject2 = this.a;
+        if (paramView.getId() != 2131366299) {
+          break label183;
+        }
+      }
+      label183:
+      for (boolean bool = true;; bool = false)
+      {
+        ((QfileBaseRecentFileTabView)localObject2).a(localFileManagerEntity, (View)localObject1, bool);
+        return;
+        if (!(localObject1 instanceof aqiy)) {
+          break label188;
+        }
+        localObject2 = (aqiy)paramView.getTag();
+        localObject1 = ((aqiy)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+        localFileManagerEntity = (FileManagerEntity)((aqiy)localObject2).jdField_a_of_type_JavaLangObject;
+        i = ((aqiy)localObject2).b;
+        i = ((aqiy)localObject2).jdField_a_of_type_Int;
+        break;
+      }
+      label188:
+      localObject1 = null;
+      localFileManagerEntity = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmh
  * JD-Core Version:    0.7.0.1
  */

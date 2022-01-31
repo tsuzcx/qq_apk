@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bbjf;
+import bdib;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -39,26 +39,26 @@ class RandomAccessFileManager$CloseThread
           }
           if (j < i)
           {
-            localbbjf2 = (bbjf)RandomAccessFileManager.a(this.this$0).get(arrayOfString[j]);
-            bbjf localbbjf1;
-            for (??? = localbbjf2.jdField_b_of_type_Bbjf;; localObject3 = localbbjf1)
+            localbdib2 = (bdib)RandomAccessFileManager.a(this.this$0).get(arrayOfString[j]);
+            bdib localbdib1;
+            for (??? = localbdib2.jdField_b_of_type_Bdib;; localObject3 = localbdib1)
             {
-              localbbjf1 = ((bbjf)???).jdField_b_of_type_Bbjf;
-              if (((bbjf)???).jdField_a_of_type_Int != 0) {
+              localbdib1 = ((bdib)???).jdField_b_of_type_Bdib;
+              if (((bdib)???).jdField_a_of_type_Int != 0) {
                 break;
               }
               long l1 = System.currentTimeMillis();
-              long l2 = ((bbjf)???).jdField_b_of_type_Long;
+              long l2 = ((bdib)???).jdField_b_of_type_Long;
               if (l1 - l2 <= 1000L) {
                 break;
               }
               try
               {
-                ((bbjf)???).jdField_a_of_type_JavaIoRandomAccessFile.close();
+                ((bdib)???).jdField_a_of_type_JavaIoRandomAccessFile.close();
                 if (QLog.isColorLevel()) {
-                  QLog.d("AppleMojiHandler", 2, "file " + arrayOfString[j] + "[" + ((bbjf)???).jdField_a_of_type_Long + "]" + " close by Thread:" + Thread.currentThread().getId());
+                  QLog.d("AppleMojiHandler", 2, "file " + arrayOfString[j] + "[" + ((bdib)???).jdField_a_of_type_Long + "]" + " close by Thread:" + Thread.currentThread().getId());
                 }
-                RandomAccessFileManager.a(this.this$0, localbbjf2, (bbjf)???, arrayOfString[j], RandomAccessFileManager.a(this.this$0));
+                RandomAccessFileManager.a(this.this$0, localbdib2, (bdib)???, arrayOfString[j], RandomAccessFileManager.a(this.this$0));
               }
               catch (IOException localIOException)
               {
@@ -78,11 +78,11 @@ class RandomAccessFileManager$CloseThread
     {
       for (;;)
       {
-        bbjf localbbjf2;
+        bdib localbdib2;
         continue;
         int j = 0;
         continue;
-        if (localbbjf2 == localInterruptedException) {
+        if (localbdib2 == localInterruptedException) {
           j += 1;
         }
       }
@@ -91,7 +91,7 @@ class RandomAccessFileManager$CloseThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.RandomAccessFileManager.CloseThread
  * JD-Core Version:    0.7.0.1
  */

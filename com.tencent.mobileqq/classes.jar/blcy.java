@@ -1,83 +1,44 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.RectF;
+import android.os.Build.VERSION;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import dov.com.qq.im.ae.play.EditTextViewer;
 
 public class blcy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private blcv[] jdField_a_of_type_ArrayOfBlcv;
+  public blcy(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, EditTextViewer paramEditTextViewer, NodeItem paramNodeItem) {}
   
-  private boolean b()
+  public void onGlobalLayout()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
-  }
-  
-  public blcv a()
-  {
-    if (!b()) {
-      return null;
-    }
-    int i = 0;
-    blcv localblcv;
-    if (i < this.jdField_a_of_type_ArrayOfBlcv.length) {
-      if (this.jdField_a_of_type_ArrayOfBlcv[i].b() == 0)
-      {
-        localblcv = this.jdField_a_of_type_ArrayOfBlcv[i];
-        localblcv.c();
-      }
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
     for (;;)
     {
-      return localblcv;
-      i += 1;
-      break;
-      localblcv = null;
-    }
-  }
-  
-  public boolean a()
-  {
-    if (!b()) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfBlcv.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfBlcv[i].a() == 3) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public blcv b()
-  {
-    if (!b()) {
-      return null;
-    }
-    int i = 0;
-    blcv localblcv;
-    if (i < this.jdField_a_of_type_ArrayOfBlcv.length)
-    {
-      if (this.jdField_a_of_type_ArrayOfBlcv[i].c() == 0) {}
-      while (this.jdField_a_of_type_ArrayOfBlcv[i].a() != 0)
-      {
-        i += 1;
-        break;
-      }
-      localblcv = this.jdField_a_of_type_ArrayOfBlcv[i];
-      localblcv.c();
-    }
-    for (;;)
-    {
-      return localblcv;
-      localblcv = null;
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getLayoutParams();
+      int i = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.left * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      int j = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.top * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      int k = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.right) * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      int m = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.bottom) * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      localMarginLayoutParams.leftMargin = i;
+      localMarginLayoutParams.topMargin = j;
+      localMarginLayoutParams.rightMargin = k;
+      localMarginLayoutParams.bottomMargin = m;
+      localMarginLayoutParams.width = (AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - k - i);
+      localMarginLayoutParams.height = (AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - m - j);
+      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.setLayoutParams(localMarginLayoutParams);
+      return;
+      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blcy
  * JD-Core Version:    0.7.0.1
  */

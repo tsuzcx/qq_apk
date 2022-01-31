@@ -1,56 +1,46 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class bdcz
-  implements bdje
 {
-  protected bdcz(bdcy parambdcy) {}
+  public static int a = 40000;
+  public static int b = 30000;
+  public static int c = 20000;
+  public static int d = 20000;
+  public static int e = 15000;
+  public static int f = 10000;
+  public static int g;
   
-  public void a(Exception paramException)
+  public static int a(int paramInt)
   {
-    bdii.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return a;
+    case 1: 
+    case 4: 
+    case 5: 
+      return c;
+    }
+    return b;
   }
   
-  public void a(JSONObject paramJSONObject)
+  public static int b(int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      int i = paramJSONObject.getInt("ret");
-      Object localObject = paramJSONObject.getString("msg");
-      if (i == 0)
-      {
-        localObject = paramJSONObject.getJSONArray("update_list");
-        i = ((JSONArray)localObject).length();
-        if (i > 0) {
-          ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
-        }
-        localObject = bdob.a(bcyb.a().a(), "prefer_last_avatar_update_time").edit();
-        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
-        ((SharedPreferences.Editor)localObject).commit();
-        if (this.a.a != null) {
-          this.a.a.a();
-        }
-      }
-      else
-      {
-        bdii.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
-        return;
-      }
+    case 2: 
+    default: 
+      return d + g;
+    case 1: 
+    case 4: 
+    case 5: 
+      return f + g;
     }
-    catch (JSONException paramJSONObject)
-    {
-      bdii.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
-    }
+    return e + g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdcz
  * JD-Core Version:    0.7.0.1
  */

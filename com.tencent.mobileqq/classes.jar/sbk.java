@@ -1,25 +1,29 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class sbk
-  implements wsn
+public class sbk
+  implements sai
 {
-  sbk(sbj paramsbj) {}
-  
-  public void a(boolean paramBoolean)
+  public int a(BaseData paramBaseData)
   {
-    if (paramBoolean)
-    {
-      sbi.a(this.a.a).c();
-      this.a.a.a(false);
-      this.a.a.a.c();
-      xhb.a("", "auth_discover", "fold", 0, 0, new String[0]);
-    }
+    return 2;
+  }
+  
+  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    return new sbl(LayoutInflater.from(paramContext).inflate(2131560026, null), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.s == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbk
  * JD-Core Version:    0.7.0.1
  */

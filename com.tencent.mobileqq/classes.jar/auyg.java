@@ -1,38 +1,23 @@
-import QC.UniBusiGetOneItemWithCheckRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.Comments;
 
-class auyg
-  implements ajte
+public final class auyg
+  implements Parcelable.Creator<Comments>
 {
-  auyg(auyb paramauyb, auyi paramauyi) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public Comments a(Parcel paramParcel)
   {
-    QLog.d("StickyNoteVasAdapter", 2, " type:" + paramInt + " isSuccess:" + paramBoolean);
-    auyi localauyi;
-    if (this.jdField_a_of_type_Auyi != null)
-    {
-      if (!(paramObject instanceof UniBusiGetOneItemWithCheckRsp)) {
-        break label84;
-      }
-      localauyi = this.jdField_a_of_type_Auyi;
-      if (((UniBusiGetOneItemWithCheckRsp)paramObject).ret != 0) {
-        break label79;
-      }
-    }
-    label79:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localauyi.a(paramBoolean, (UniBusiGetOneItemWithCheckRsp)paramObject);
-      return;
-    }
-    label84:
-    this.jdField_a_of_type_Auyi.a(false, null);
+    return new Comments(paramParcel);
+  }
+  
+  public Comments[] a(int paramInt)
+  {
+    return new Comments[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auyg
  * JD-Core Version:    0.7.0.1
  */

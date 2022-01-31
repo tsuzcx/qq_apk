@@ -1,19 +1,25 @@
-class advh
-  extends actn
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import mqq.os.MqqHandler;
+
+public class advh
+  extends MqqHandler
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  int d;
+  public advh(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  advh(advf paramadvf) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advh
  * JD-Core Version:    0.7.0.1
  */

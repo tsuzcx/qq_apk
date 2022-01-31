@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class adgn
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adgn(AIOLongShotHelper paramAIOLongShotHelper) {}
+  public adgn(NotifyPCActiveActivity paramNotifyPCActiveActivity, alkv paramalkv) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AIOLongShotHelper.a(this.a).performClick();
+    this.jdField_a_of_type_Alkv.b(true);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgn
  * JD-Core Version:    0.7.0.1
  */

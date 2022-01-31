@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class acpf
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public acpf(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public acpf(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!this.a.b) {
-      this.a.a();
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpf
  * JD-Core Version:    0.7.0.1
  */

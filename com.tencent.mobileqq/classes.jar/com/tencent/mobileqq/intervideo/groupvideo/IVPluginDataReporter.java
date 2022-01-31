@@ -3,14 +3,14 @@ package com.tencent.mobileqq.intervideo.groupvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import aney;
-import axqy;
+import aowf;
+import azmj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVPluginReportInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import naj;
+import ndd;
 
 public class IVPluginDataReporter
   implements IVPluginReportInterface
@@ -30,10 +30,10 @@ public class IVPluginDataReporter
   private int mOpResult;
   private String mOpType = "";
   private int mPlatform = 2;
-  private String mQQVersion = "8.3.0";
+  private String mQQVersion = "8.3.3";
   private String mRoomType;
   private String mRoomid;
-  private String mSdkversion = String.valueOf(aney.a(BaseApplicationImpl.getContext()));
+  private String mSdkversion = String.valueOf(aowf.a(BaseApplicationImpl.getContext()));
   private String mSource;
   private String mSysVersion = Build.VERSION.RELEASE;
   private String mTimeLong;
@@ -97,7 +97,7 @@ public class IVPluginDataReporter
   public void report()
   {
     String str = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
-    this.networktype = (naj.a() + "");
+    this.networktype = (ndd.a() + "");
     if (QLog.isColorLevel()) {
       QLog.d("IVPluginDataReporter", 1, "IVPluginDataReporter: department = " + this.mDepartment + " op_type = " + this.mOpType + " op_name = " + this.mOpName + " op_in = " + this.mOpIn + " d1= " + this.d1 + " d2=" + this.d2 + " d3=" + this.d3 + " d4=" + this.d4 + " timelong=" + this.mTimeLong + " op_result = " + this.mOpResult + " qq_version = " + this.mQQVersion);
     }
@@ -106,7 +106,7 @@ public class IVPluginDataReporter
       QLog.e("IVPluginDataReporter", 1, "has null str ,stop report");
       return;
     }
-    axqy.b(null, "dc03445", this.mDepartment, this.mToUin, this.mOpType, this.mOpName, this.mOpIn, 1, this.mOpResult, this.d1, this.d2, this.d3, this.d4 + "|" + this.mTimeLong + "|" + this.mRoomid + "|" + this.mRoomType + "|" + this.mSource + "|" + this.networktype + "|" + this.mPlatform + "|" + this.mMacVersion + "|" + this.mSysVersion + "|" + this.mFrameVersion + "|" + this.mSdkversion + "|" + this.mQQVersion + "|" + str + "|" + this.mLastOpName);
+    azmj.b(null, "dc03445", this.mDepartment, this.mToUin, this.mOpType, this.mOpName, this.mOpIn, 1, this.mOpResult, this.d1, this.d2, this.d3, this.d4 + "|" + this.mTimeLong + "|" + this.mRoomid + "|" + this.mRoomType + "|" + this.mSource + "|" + this.networktype + "|" + this.mPlatform + "|" + this.mMacVersion + "|" + this.mSysVersion + "|" + this.mFrameVersion + "|" + this.mSdkversion + "|" + this.mQQVersion + "|" + str + "|" + this.mLastOpName);
   }
   
   public IVPluginDataReporter toUin(String paramString)

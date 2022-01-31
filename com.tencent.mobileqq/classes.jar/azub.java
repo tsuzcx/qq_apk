@@ -1,153 +1,263 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.Collection;
-import java.util.HashMap;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.widget.PAImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
 
 public class azub
 {
-  protected int a;
-  protected long a;
-  protected Map<UUID, TroopFileTransferManager.Item> a;
-  xaz a;
-  protected Map<UUID, Integer> b = new HashMap();
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private azqk jdField_a_of_type_Azqk;
+  private int b;
   
-  protected azub(long paramLong, List<TroopFileTransferManager.Item> paramList, int paramInt)
+  public azub(azqk paramazqk, Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Xaz = new azuc(this);
-    this.jdField_a_of_type_Long = paramLong;
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)paramList.next();
-      this.jdField_a_of_type_JavaUtilMap.put(localItem.Id, localItem);
-    }
+    this.jdField_a_of_type_Azqk = paramazqk;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = paramInt;
+    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296358);
   }
   
-  public static azub a(long paramLong, List<TroopFileTransferManager.Item> paramList)
+  private TextView a(String paramString, View paramView, boolean paramBoolean)
   {
-    if (paramLong == 0L)
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    TextView localTextView;
+    if (paramView == null)
     {
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
-      return null;
-    }
-    if (paramList == null)
-    {
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
-      return null;
-    }
-    return new azub(paramLong, paramList, 1);
-  }
-  
-  private final void a(TroopFileTransferManager.Item paramItem, boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
-  {
-    if (!paramBoolean) {}
-    try
-    {
-      bicz.a(-1);
-      this.b.put(paramItem.Id, Integer.valueOf(-1));
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun fail. isSuc:" + paramBoolean);
-      return;
-    }
-    finally {}
-    azst.c("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun retCode:" + paramInt1);
-    bicz.a(paramInt1);
-    if (paramInt1 == 0)
-    {
-      this.b.remove(paramItem.Id);
-      if (this.b.size() != 0) {
-        break label212;
+      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      localTextView.setMaxLines(2);
+      localTextView.setTextColor(-1);
+      localTextView.setTextSize(2, 19.0F);
+      localTextView.setMaxLines(2);
+      localTextView.setLineSpacing(aekt.a(2.5F, localResources), 1.0F);
+      localTextView.setGravity(80);
+      localTextView.setEllipsize(TextUtils.TruncateAt.END);
+      if (paramBoolean) {
+        localTextView.setBackgroundResource(2130841314);
       }
-      paramString1 = new bajv(paramItem.FileName, this.jdField_a_of_type_Long, 5, 604);
-      azsd.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
+      int i = aekt.a(12.5F, localResources);
+      int j = aekt.a(12.0F, localResources);
+      localTextView.setPadding(j, 0, j, i);
+      localTextView.setId(2131377186);
+      paramView = localTextView;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localTextView.setText(paramString);
+        paramView = localTextView;
+      }
     }
-    label316:
-    for (;;)
+    do
     {
-      return;
-      this.b.put(paramItem.Id, Integer.valueOf(paramInt1));
-      break;
-      label212:
-      paramString1 = this.b.keySet().iterator();
       do
       {
-        if (!paramString1.hasNext()) {
-          break;
+        return paramView;
+        localTextView = (TextView)paramView;
+        if (!TextUtils.isEmpty(paramString)) {
+          localTextView.setText(paramString);
         }
-        paramString2 = (UUID)paramString1.next();
-      } while (((Integer)this.b.get(paramString2)).intValue() != 2147483647);
-      for (paramInt1 = 0;; paramInt1 = 1)
-      {
-        if (paramInt1 == 0) {
-          break label316;
-        }
-        paramString1 = new bajv(paramItem.FileName, this.jdField_a_of_type_Long, 5, 605);
-        azsd.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
+        paramView = localTextView;
+      } while (!paramBoolean);
+      paramView = localTextView;
+    } while (localTextView.getBackground() != null);
+    localTextView.setBackgroundResource(2130841314);
+    return localTextView;
+  }
+  
+  public static boolean a(azqk paramazqk, int paramInt)
+  {
+    if (paramInt != 0) {
+      return false;
+    }
+    paramazqk = paramazqk.a.iterator();
+    label14:
+    String str;
+    if (paramazqk.hasNext())
+    {
+      str = ((azqj)paramazqk.next()).a;
+      if (!"picture".equals(str)) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      return bool;
+      if (!"title".equals(str)) {
         break;
       }
+      break label14;
     }
   }
   
-  private int b()
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    QQAppInterface localQQAppInterface = azsr.a();
-    if (localQQAppInterface == null)
-    {
-      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "multiTroop2weiyun app=null");
-      return -1;
+    if (!a(this.jdField_a_of_type_Azqk, this.jdField_a_of_type_Int)) {
+      paramContext = this.jdField_a_of_type_Azqk.a(paramContext, paramView, paramBundle);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
+    LinearLayout localLinearLayout;
+    Object localObject1;
+    Object localObject2;
+    do
     {
-      TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)localIterator.next();
-      if (localItem.Id == null)
-      {
-        azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "multiTroop2weiyun. item.id=null");
+      return paramContext;
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsgItemLayout5Adapter", 2, "layout5 use new style");
       }
-      else if (localItem.ForwardTroopuin == 0L)
-      {
-        azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardTroopuin=0");
+      if ((paramView == null) || (!(paramView instanceof LinearLayout))) {
+        break label598;
       }
-      else if (localItem.BusId != 25)
-      {
-        azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "multiTroop2weiyun. BusId err:" + localItem.BusId);
+      localLinearLayout = (LinearLayout)paramView;
+      localObject1 = (FrameLayout)localLinearLayout.findViewById(2131377170);
+      if (localObject1 == null) {
+        break label381;
       }
-      else if (TextUtils.isEmpty(localItem.ForwardPath))
+      localObject2 = this.jdField_a_of_type_Azqk.a.iterator();
+      paramView = null;
+      if (((Iterator)localObject2).hasNext())
       {
-        azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardPath=null");
-      }
-      else
-      {
-        azst.c("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + localItem.Id.toString() + "] multiTroop2weiyun. BusId:" + localItem.BusId + " ForwardBusId:" + localItem.ForwardBusId + " ForwardPath:" + localItem.ForwardPath);
-        try
-        {
-          this.b.put(localItem.Id, Integer.valueOf(2147483647));
-          xam.a(localQQAppInterface, true, this.jdField_a_of_type_Long, localItem, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_Xaz);
+        azqj localazqj = (azqj)((Iterator)localObject2).next();
+        String str = localazqj.a;
+        if ("title".equals(str)) {
+          paramView = ((StructMsgItemTitle)localazqj).b();
         }
-        finally {}
+        for (;;)
+        {
+          break;
+          if ("picture".equals(str)) {
+            this.jdField_a_of_type_AndroidViewView = a(localazqj, (View)localObject1, paramBundle);
+          }
+        }
       }
+      if (this.jdField_a_of_type_AndroidViewView == null) {
+        break;
+      }
+      paramBundle = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377183);
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (paramBundle != null)
+        {
+          a(paramView, paramBundle, true);
+          return localLinearLayout;
+        }
+        paramContext = a(paramView, null, true);
+        paramView = new ViewGroup.LayoutParams(-1, this.b);
+        paramContext.setId(2131377183);
+        ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView(paramContext, paramView);
+        return localLinearLayout;
+      }
+      paramContext = localLinearLayout;
+    } while (paramBundle == null);
+    ((ViewGroup)this.jdField_a_of_type_AndroidViewView).removeView(paramBundle);
+    return localLinearLayout;
+    localLinearLayout.removeAllViews();
+    for (;;)
+    {
+      if (localLinearLayout == null)
+      {
+        localLinearLayout = new LinearLayout(paramContext);
+        localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        localLinearLayout.setOrientation(1);
+        localLinearLayout.setId(2131377184);
+      }
+      for (;;)
+      {
+        localObject1 = this.jdField_a_of_type_Azqk.a.iterator();
+        label331:
+        if (((Iterator)localObject1).hasNext())
+        {
+          paramContext = (azqj)((Iterator)localObject1).next();
+          localObject2 = paramContext.a;
+          if ("title".equals(localObject2)) {}
+          for (paramContext = ((StructMsgItemTitle)paramContext).b();; paramContext = paramView)
+          {
+            paramView = paramContext;
+            break label331;
+            label381:
+            localLinearLayout.removeAllViews();
+            paramView = null;
+            break;
+            if ("picture".equals(localObject2)) {
+              this.jdField_a_of_type_AndroidViewView = a(paramContext, null, paramBundle);
+            }
+          }
+        }
+        if (this.jdField_a_of_type_AndroidViewView != null)
+        {
+          if (!TextUtils.isEmpty(paramView))
+          {
+            paramContext = new ViewGroup.LayoutParams(-1, this.b);
+            paramView = a(paramView.trim(), null, true);
+            paramView.setId(2131377183);
+            ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView(paramView, paramContext);
+          }
+          localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
+        }
+        for (;;)
+        {
+          return localLinearLayout;
+          if ((!TextUtils.isEmpty(paramView)) && (paramView.trim().length() > 0))
+          {
+            this.jdField_a_of_type_AndroidWidgetTextView = a(paramView.trim(), null, false);
+            paramContext = new ViewGroup.LayoutParams(-2, -2);
+            this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramContext);
+            int i = aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+            this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, i, i, i);
+            this.jdField_a_of_type_AndroidWidgetTextView.setId(2131377186);
+            this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
+            localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
+          }
+        }
+      }
+      label598:
+      paramView = null;
+      localLinearLayout = null;
     }
-    return 0;
   }
   
-  public int a()
+  public View a(azqj paramazqj, View paramView, Bundle paramBundle)
   {
-    if (1 == this.jdField_a_of_type_Int) {
-      return b();
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    if ((paramView != null) && ((paramView instanceof FrameLayout)))
+    {
+      paramView = (FrameLayout)paramView;
+      paramazqj.a(this.jdField_a_of_type_AndroidContentContext, paramView.findViewById(2131368083), paramBundle);
+      return paramView;
     }
-    return -1;
+    paramView = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
+    paramView.setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
+    paramView.setId(2131377170);
+    if (paramBundle != null) {
+      paramBundle.putBoolean("pa_should_change", true);
+    }
+    paramazqj = (ImageView)paramazqj.a(this.jdField_a_of_type_AndroidContentContext, null, paramBundle).findViewById(2131368083);
+    paramBundle = new FrameLayout.LayoutParams(-1, this.b);
+    if ((paramazqj != null) && ((paramazqj instanceof PAImageView)))
+    {
+      PAImageView localPAImageView = (PAImageView)paramazqj;
+      localPAImageView.setUseRadiusRound(true, localResources.getDimensionPixelSize(2131296357));
+      localPAImageView.setTag(2131372427, Integer.valueOf(1));
+    }
+    paramView.addView(paramazqj, paramBundle);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azub
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,23 @@
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appstore.dl.DownloadManagerV2.19;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bdhn
-  implements DialogInterface.OnClickListener
+class bdhn
+  implements View.OnClickListener
 {
-  public bdhn(DownloadManagerV2.19 param19) {}
+  bdhn(bdhj parambdhj, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bdlb.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      this.a.this$0.a(10, paramDialogInterface);
-      return;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdhj, 1);
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    this.jdField_a_of_type_Bdhj.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdhn
  * JD-Core Version:    0.7.0.1
  */

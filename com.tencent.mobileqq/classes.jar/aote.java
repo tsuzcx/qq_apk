@@ -1,43 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aote
-  implements View.OnClickListener
+  extends aofy<aotc>
 {
-  public aote(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  public void onClick(View paramView)
+  public static aotc a()
   {
-    if (paramView == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
-      }
-      return;
+    return (aotc)aogj.a().a(429);
+  }
+  
+  public int a()
+  {
+    return 429;
+  }
+  
+  @NonNull
+  public aotc a(int paramInt)
+  {
+    return new aotc();
+  }
+  
+  @Nullable
+  public aotc a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aotc.a(paramArrayOfaogf);
     }
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
-    if (localFileManagerEntity != null)
-    {
-      if (this.a.jdField_a_of_type_Aoqb != null) {
-        this.a.jdField_a_of_type_Aoqb.a(null);
-      }
-      this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
-      if (QfileBaseRecentFileTabView.m(this.a).a().b(this.a.jdField_a_of_type_Long)) {
-        this.a.a(localFileManagerEntity);
-      }
-    }
-    this.a.jdField_a_of_type_Aoqb.a(Integer.valueOf(-1));
-    paramView.setVisibility(4);
-    this.a.g();
+    return null;
+  }
+  
+  public Class<aotc> a()
+  {
+    return aotc.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aotc paramaotc) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aote
  * JD-Core Version:    0.7.0.1
  */

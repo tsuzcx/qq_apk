@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.data.Friends;
 
-public final class bbiz
-  implements Parcelable.Creator<QQRecorder.RecorderParam>
+class bbiz
 {
-  public QQRecorder.RecorderParam a(Parcel paramParcel)
-  {
-    return new QQRecorder.RecorderParam(paramParcel);
-  }
+  public int a;
+  public Friends a;
   
-  public QQRecorder.RecorderParam[] a(int paramInt)
+  public bbiz(Friends paramFriends, int paramInt)
   {
-    return new QQRecorder.RecorderParam[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

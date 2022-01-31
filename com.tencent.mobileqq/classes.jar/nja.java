@@ -1,64 +1,42 @@
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 class nja
-  implements URLDrawable.DownloadListener
+  implements View.OnClickListener
 {
-  nja(niz paramniz) {}
+  nja(nin paramnin, int paramInt) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void onClick(View paramView)
   {
-    synchronized ()
+    if (this.jdField_a_of_type_Nin.d)
     {
-      String str = (String)niz.a(this.a).get(0);
-      niz.a(this.a).remove(0);
-      if (niz.b(this.a) != null)
+      this.jdField_a_of_type_Nin.e = true;
+      if (this.jdField_a_of_type_Int == 0)
       {
-        if (!niz.b(this.a).contains(str)) {
-          break label119;
-        }
-        niz.b(this.a).remove(str);
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(delete) url:" + str);
-        }
+        azmj.b(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_num", 0, 0, "", "", "", this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+        paramView = "http://qun.qq.com/qqweb/m/qun/qun_pub_bind/qun2pub.html?_wv=1027&scode=" + this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString;
       }
-      label119:
-      do
-      {
-        niz.a(this.a, null);
-        niz.a(this.a);
-        return;
-        niz.a(this.a).add(str);
-        niz.b(this.a).add(str);
-      } while (!QLog.isColorLevel());
-      QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(retry) url:" + str);
     }
-  }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    synchronized ()
+    for (;;)
     {
-      String str = (String)niz.a(this.a).get(0);
-      niz.a(this.a).remove(0);
-      if ((niz.b(this.a) != null) && (niz.b(this.a).contains(str))) {
-        niz.b(this.a).remove(str);
-      }
       if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadSucceed url:" + str);
+        QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "jumpTo:" + paramView);
       }
-      niz.a(this.a, null);
-      niz.a(this.a);
+      nin.c(this.jdField_a_of_type_Nin, paramView);
       return;
+      azmj.b(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_grp", 0, 0, "", "", "", this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+      paramView = "http://qun.qq.com/qqweb/m/qun/qun_pub_bind/qunlist.html?_wv=1027&power=1&scode=" + this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString;
+      continue;
+      azmj.b(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_grp", 0, 0, "", "", "", this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+      paramView = "http://qun.qq.com/qqweb/m/qun/qun_pub_bind/qunlist.html?_wv=1027&scode=" + this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nja
  * JD-Core Version:    0.7.0.1
  */

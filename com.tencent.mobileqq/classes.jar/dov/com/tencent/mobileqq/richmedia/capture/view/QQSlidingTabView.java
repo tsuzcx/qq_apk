@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bkxi;
-import blcq;
+import bnis;
+import bnoa;
 import com.tencent.mobileqq.R.styleable;
 import java.util.ArrayList;
 
@@ -27,7 +27,7 @@ public class QQSlidingTabView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private bkxi jdField_a_of_type_Bkxi;
+  private bnis jdField_a_of_type_Bnis;
   private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   private boolean jdField_a_of_type_Boolean;
   private int b = -16777216;
@@ -115,7 +115,7 @@ public class QQSlidingTabView
     setFillViewport(true);
     setWillNotDraw(false);
     setHorizontalScrollBarEnabled(false);
-    this.o = blcq.a(this.n);
+    this.o = bnoa.a(this.n);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -148,14 +148,14 @@ public class QQSlidingTabView
     invalidate();
   }
   
-  public void setTabCheckListener(bkxi parambkxi)
+  public void setTabCheckListener(bnis parambnis)
   {
-    this.jdField_a_of_type_Bkxi = parambkxi;
+    this.jdField_a_of_type_Bnis = parambnis;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView
  * JD-Core Version:    0.7.0.1
  */

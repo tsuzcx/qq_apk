@@ -1,22 +1,33 @@
-import android.app.Activity;
-import java.util.List;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 class apsh
-  implements aptw
+  extends apns
 {
-  apsh(apsc paramapsc, List paramList) {}
+  apsh(apsf paramapsf) {}
   
-  public void a()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    aptx.d(apsc.a(this.jdField_a_of_type_Apsc).getString(2131692830));
-    bakx.a(apsc.a(this.jdField_a_of_type_Apsc), apsc.a(this.jdField_a_of_type_Apsc), this.jdField_a_of_type_JavaUtilList);
+    this.a.b(paramEmoticonPackage);
   }
   
-  public void b() {}
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  {
+    this.a.a(paramEmoticonPackage, paramInt);
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage);
+  }
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apsh
  * JD-Core Version:    0.7.0.1
  */

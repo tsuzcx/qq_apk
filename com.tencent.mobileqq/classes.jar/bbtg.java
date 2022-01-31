@@ -1,34 +1,19 @@
-import android.content.Context;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.6.1;
+import java.util.UUID;
 
 public class bbtg
-  extends bbtc
+  implements bbtj
 {
-  public static final bbtg a = new bbtg();
+  bbtg(bbtf parambbtf) {}
   
-  public void cleanCache(Context paramContext)
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, bbti parambbti)
   {
-    super.cleanCache(paramContext);
-    aylu.a().b();
-  }
-  
-  public long getBID()
-  {
-    return 38L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "musicTheme";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "musicTheme.";
+    bbqt.a(new TroopFileUploadMgr.6.1(this, paramUUID, paramBoolean, paramInt, parambbti), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbtg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,44 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import java.util.Iterator;
-import java.util.List;
+import mqq.os.MqqHandler;
 
-public class nro
+class nro
   extends BroadcastReceiver
 {
-  public nro(ShopWebViewFragment paramShopWebViewFragment) {}
+  nro(nrc paramnrc, boolean paramBoolean, MqqHandler paramMqqHandler) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    do
+    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
+    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
+    if (this.jdField_a_of_type_Boolean)
     {
-      Object localObject;
-      do
+      this.jdField_a_of_type_Nrc.a(str, i, 12, -1, null);
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
+      }
+    }
+    try
+    {
+      for (;;)
       {
-        do
-        {
-          return;
-          paramContext = paramIntent.getAction();
-          localObject = paramIntent.getStringExtra("uin");
-          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-          if (!"action_decode_finish".equals(paramContext)) {
-            break;
-          }
-          if ((this.a.jdField_a_of_type_Nrd != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
-            this.a.jdField_a_of_type_Nrd.a((String)localObject, localBitmap);
-          }
-        } while (this.a.jdField_a_of_type_Nrj == null);
-        this.a.jdField_a_of_type_Nrj.a((String)localObject);
+        paramContext.unregisterReceiver(this.jdField_a_of_type_Nrc.a);
+        label65:
+        this.jdField_a_of_type_Nrc.a = null;
         return;
-      } while (!"action_on_shop_msg_receive".equals(paramContext));
-      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
-      paramContext = this.a.getActivity();
-      if ((paramContext instanceof EcshopWebActivity)) {
-        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
+        this.jdField_a_of_type_Nrc.a(str, i, 11, -1, null);
       }
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext())
-      {
-        localObject = (RecentShopParcel)paramIntent.next();
-        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
-          ((RecentShopParcel)localObject).b += 1;
-        }
-      }
-    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_Nrj == null));
-    this.a.jdField_a_of_type_Nrj.a(this.a.jdField_a_of_type_JavaUtilList);
+    }
+    catch (Exception paramContext)
+    {
+      break label65;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nro
  * JD-Core Version:    0.7.0.1
  */

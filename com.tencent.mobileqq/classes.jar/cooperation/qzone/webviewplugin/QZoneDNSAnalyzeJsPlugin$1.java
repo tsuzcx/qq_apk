@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import bhqv;
+import bjsg;
 import com.tencent.qphone.base.util.QLog;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 public class QZoneDNSAnalyzeJsPlugin$1
   implements Runnable
 {
-  public QZoneDNSAnalyzeJsPlugin$1(bhqv parambhqv, String paramString1, String paramString2) {}
+  public QZoneDNSAnalyzeJsPlugin$1(bjsg parambjsg, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -23,20 +23,20 @@ public class QZoneDNSAnalyzeJsPlugin$1
         localObject = str;
         QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "Analyze " + this.a + " ip address : " + str);
         localObject = str;
-        bhqv.a(this.this$0, this.b, 0, str);
+        bjsg.a(this.this$0, this.b, 0, str);
       }
       return;
     }
     catch (UnknownHostException localUnknownHostException)
     {
       QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "UnknownHostException:Analyze " + this.a + " ip address failed");
-      bhqv.a(this.this$0, this.b, -1, (String)localObject);
+      bjsg.a(this.this$0, this.b, -1, (String)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

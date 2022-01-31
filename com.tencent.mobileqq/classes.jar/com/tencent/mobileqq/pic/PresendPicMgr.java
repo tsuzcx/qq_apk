@@ -8,14 +8,14 @@ import android.os.HandlerThread;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import aunc;
-import aung;
-import auoh;
-import auoi;
-import auos;
-import auou;
-import bbdx;
-import bbfj;
+import awej;
+import awen;
+import awfp;
+import awfq;
+import awga;
+import awgc;
+import bdcs;
+import bdee;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BinderWarpper;
@@ -28,9 +28,9 @@ public class PresendPicMgr
   private static PresendPicMgr jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public Messenger a;
-  private final aunc jdField_a_of_type_Aunc;
-  public auoh a;
-  private ArrayList<auoi> jdField_a_of_type_JavaUtilArrayList;
+  private final awej jdField_a_of_type_Awej;
+  public awfp a;
+  private ArrayList<awfq> jdField_a_of_type_JavaUtilArrayList;
   public boolean a;
   private boolean b = true;
   private boolean c;
@@ -38,48 +38,48 @@ public class PresendPicMgr
   private boolean e;
   private boolean f;
   
-  public PresendPicMgr(aunc paramaunc)
+  public PresendPicMgr(awej paramawej)
   {
-    aung.a("PresendPicMgr", "getInstance", "construct PresendPicMgr, service = " + paramaunc);
-    this.jdField_a_of_type_Aunc = paramaunc;
+    awen.a("PresendPicMgr", "getInstance", "construct PresendPicMgr, service = " + paramawej);
+    this.jdField_a_of_type_Awej = paramawej;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("presend_worker_thread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Auoh = new auoh(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_Awfp = new awfp(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
     try
     {
-      paramaunc = this.jdField_a_of_type_Aunc.a();
-      if ((paramaunc != null) && (paramaunc.length >= 4))
+      paramawej = this.jdField_a_of_type_Awej.a();
+      if ((paramawej != null) && (paramawej.length >= 4))
       {
-        this.c = paramaunc[0];
-        this.d = paramaunc[1];
-        this.e = paramaunc[2];
-        this.f = paramaunc[3];
+        this.c = paramawej[0];
+        this.d = paramawej[1];
+        this.e = paramawej[2];
+        this.f = paramawej[3];
       }
-      int[] arrayOfInt = this.jdField_a_of_type_Aunc.a();
+      int[] arrayOfInt = this.jdField_a_of_type_Awej.a();
       if ((arrayOfInt != null) && (arrayOfInt.length >= 9))
       {
-        auou.e = arrayOfInt[0];
-        auou.f = arrayOfInt[1];
-        auou.g = arrayOfInt[2];
-        auou.h = arrayOfInt[3];
-        auou.i = arrayOfInt[4];
-        auou.j = arrayOfInt[5];
-        auou.a = arrayOfInt[6];
-        auou.b = arrayOfInt[7];
-        auou.c = arrayOfInt[8];
+        awgc.e = arrayOfInt[0];
+        awgc.f = arrayOfInt[1];
+        awgc.g = arrayOfInt[2];
+        awgc.h = arrayOfInt[3];
+        awgc.i = arrayOfInt[4];
+        awgc.j = arrayOfInt[5];
+        awgc.a = arrayOfInt[6];
+        awgc.b = arrayOfInt[7];
+        awgc.c = arrayOfInt[8];
       }
-      aung.a("PresendPicMgr", "getInstance", "preCompressConfig = " + Arrays.toString(paramaunc) + ",compressArgConfig = " + Arrays.toString(arrayOfInt));
-      aung.a("PresendPicMgr", "getInstance", "construct PresendPicMgr, mEnablePreCompress_WIFI = " + this.c + ",mEnablePreCompress_2G = " + this.d + ",mEnablePreCompress_3G = " + this.e + ",mEnablePreCompress_4G = " + this.f + ",PicType.MaxLongSide_Camera_C2C = " + auou.e + ",PicType.MaxLongSide_Camera_Grp = " + auou.f + ",PicType.MaxLongSide_Screenshot_C2C = " + auou.g + ",PicType.MaxLongSide_Screenshot_Grp = " + auou.h + ",PicType.MaxLongSide_Other_C2C = " + auou.i + ",PicType.MaxLongSide_Other_Grp = " + auou.j + ",PicType.SendPhotoWiFiPicQuality = " + auou.a + ",PicType.SendPhoto23GPicQuality = " + auou.b + ",PicType.SendPhoto4GPicQuality = " + auou.c);
+      awen.a("PresendPicMgr", "getInstance", "preCompressConfig = " + Arrays.toString(paramawej) + ",compressArgConfig = " + Arrays.toString(arrayOfInt));
+      awen.a("PresendPicMgr", "getInstance", "construct PresendPicMgr, mEnablePreCompress_WIFI = " + this.c + ",mEnablePreCompress_2G = " + this.d + ",mEnablePreCompress_3G = " + this.e + ",mEnablePreCompress_4G = " + this.f + ",PicType.MaxLongSide_Camera_C2C = " + awgc.e + ",PicType.MaxLongSide_Camera_Grp = " + awgc.f + ",PicType.MaxLongSide_Screenshot_C2C = " + awgc.g + ",PicType.MaxLongSide_Screenshot_Grp = " + awgc.h + ",PicType.MaxLongSide_Other_C2C = " + awgc.i + ",PicType.MaxLongSide_Other_Grp = " + awgc.j + ",PicType.SendPhotoWiFiPicQuality = " + awgc.a + ",PicType.SendPhoto23GPicQuality = " + awgc.b + ",PicType.SendPhoto4GPicQuality = " + awgc.c);
     }
-    catch (RemoteException paramaunc)
+    catch (RemoteException paramawej)
     {
       for (;;)
       {
         int i;
         if (QLog.isColorLevel())
         {
-          QLog.e("PresendPicMgr", 2, "getPreCompressConfig" + paramaunc.getMessage(), paramaunc);
+          QLog.e("PresendPicMgr", 2, "getPreCompressConfig" + paramawej.getMessage(), paramawej);
           continue;
           this.jdField_a_of_type_Boolean = this.c;
           continue;
@@ -91,35 +91,35 @@ public class PresendPicMgr
         }
       }
     }
-    i = bbfj.a(BaseApplication.getContext());
+    i = bdee.a(BaseApplication.getContext());
     switch (i)
     {
     default: 
       this.jdField_a_of_type_Boolean = true;
-      aung.a("PresendPicMgr", "getInstance", "construct PresendPicMgr, NetType = " + i + ", mEnablePreCompress = " + this.jdField_a_of_type_Boolean);
+      awen.a("PresendPicMgr", "getInstance", "construct PresendPicMgr, NetType = " + i + ", mEnablePreCompress = " + this.jdField_a_of_type_Boolean);
       return;
     }
   }
   
-  private auoi a(String paramString)
+  private awfq a(String paramString)
   {
-    aung.a("PresendPicMgr", "findRequestByPath", "path = " + paramString);
+    awen.a("PresendPicMgr", "findRequestByPath", "path = " + paramString);
     if (this.jdField_a_of_type_JavaUtilArrayList == null)
     {
-      aung.b("PresendPicMgr", "findRequestByPath", "mPresendReqList == null");
+      awen.b("PresendPicMgr", "findRequestByPath", "mPresendReqList == null");
       return null;
     }
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
     {
-      aung.b("PresendPicMgr", "findRequestByPath", "mPresendReqList.size() == 0");
+      awen.b("PresendPicMgr", "findRequestByPath", "mPresendReqList.size() == 0");
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      auoi localauoi = (auoi)localIterator.next();
-      if (localauoi.a.c.equals(paramString)) {
-        return localauoi;
+      awfq localawfq = (awfq)localIterator.next();
+      if (localawfq.a.c.equals(paramString)) {
+        return localawfq;
       }
     }
     return null;
@@ -127,36 +127,36 @@ public class PresendPicMgr
   
   public static PresendPicMgr a()
   {
-    aung.a("PresendPicMgr", "getInstance()", "mInstance = " + jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr);
+    awen.a("PresendPicMgr", "getInstance()", "mInstance = " + jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr);
     return jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr;
   }
   
-  public static PresendPicMgr a(aunc paramaunc)
+  public static PresendPicMgr a(awej paramawej)
   {
     if (jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr == null) {}
     try
     {
-      if ((jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr == null) && (paramaunc != null)) {
-        jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr = new PresendPicMgr(paramaunc);
+      if ((jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr == null) && (paramawej != null)) {
+        jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr = new PresendPicMgr(paramawej);
       }
-      aung.a("PresendPicMgr", "getInstance", "mInstance = " + jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr + ", Ibinder = " + paramaunc);
+      awen.a("PresendPicMgr", "getInstance", "mInstance = " + jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr + ", Ibinder = " + paramawej);
       return jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr;
     }
     finally {}
   }
   
-  public static PresendPicMgr b(aunc paramaunc)
+  public static PresendPicMgr b(awej paramawej)
   {
     if (jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr != null)
     {
-      aung.a("PresendPicMgr", "newInstance()", "mInstance:" + jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr + "is not null,reset mInstance!");
+      awen.a("PresendPicMgr", "newInstance()", "mInstance:" + jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr + "is not null,reset mInstance!");
       jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr = null;
     }
-    if (paramaunc != null) {}
+    if (paramawej != null) {}
     try
     {
-      jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr = new PresendPicMgr(paramaunc);
-      aung.a("PresendPicMgr", "newInstance()", "mInstance = " + jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr + ", Ibinder = " + paramaunc);
+      jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr = new PresendPicMgr(paramawej);
+      awen.a("PresendPicMgr", "newInstance()", "mInstance = " + jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr + ", Ibinder = " + paramawej);
       return jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr;
     }
     finally {}
@@ -164,11 +164,11 @@ public class PresendPicMgr
   
   private void c()
   {
-    aung.a("PresendPicMgr", "sendMsg___ start!", "");
+    awen.a("PresendPicMgr", "sendMsg___ start!", "");
     try
     {
-      this.jdField_a_of_type_Aunc.a();
-      aung.a("PresendPicMgr", "sendMsg___ end!", "");
+      this.jdField_a_of_type_Awej.a();
+      awen.a("PresendPicMgr", "sendMsg___ end!", "");
       return;
     }
     catch (Exception localException)
@@ -192,7 +192,7 @@ public class PresendPicMgr
   
   public void a()
   {
-    aung.a("PresendPicMgr", "disablePicPresend", "");
+    awen.a("PresendPicMgr", "disablePicPresend", "");
     Object localObject = BaseApplication.getContext();
     if (Build.VERSION.SDK_INT > 10) {}
     for (int i = 4;; i = 0)
@@ -208,21 +208,21 @@ public class PresendPicMgr
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      aung.a("PresendPicMgr", "cancelAll", "mEnablePreCompress is false!");
+      awen.a("PresendPicMgr", "cancelAll", "mEnablePreCompress is false!");
       return;
     }
-    aung.a("PresendPicMgr", "cancelAll", "Start! cancelType = " + paramInt);
+    awen.a("PresendPicMgr", "cancelAll", "Start! cancelType = " + paramInt);
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ((auoi)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
+      ((awfq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
       i += 1;
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     try
     {
-      this.jdField_a_of_type_Aunc.a(paramInt);
-      aung.a("PresendPicMgr", "cancelAll", "End!");
+      this.jdField_a_of_type_Awej.a(paramInt);
+      awen.a("PresendPicMgr", "cancelAll", "End!");
       return;
     }
     catch (RemoteException localRemoteException)
@@ -238,13 +238,13 @@ public class PresendPicMgr
   
   public void a(Intent paramIntent)
   {
-    aung.a("PresendPicMgr", "getCompossedIntent", "");
+    awen.a("PresendPicMgr", "getCompossedIntent", "");
     if (!this.jdField_a_of_type_Boolean)
     {
-      aung.a("PresendPicMgr", "getCompossedIntent", "Presend is OFF!");
+      awen.a("PresendPicMgr", "getCompossedIntent", "Presend is OFF!");
       return;
     }
-    paramIntent.putExtra("presend_handler", new BinderWarpper(new Messenger(this.jdField_a_of_type_Auoh).getBinder()));
+    paramIntent.putExtra("presend_handler", new BinderWarpper(new Messenger(this.jdField_a_of_type_Awfp).getBinder()));
   }
   
   public void a(String paramString, int paramInt)
@@ -256,26 +256,26 @@ public class PresendPicMgr
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      aung.a("PresendPicMgr", "presendPic", "mEnablePreCompress is false!");
+      awen.a("PresendPicMgr", "presendPic", "mEnablePreCompress is false!");
       return;
     }
-    aung.a("PresendPicMgr", "presendPic", "path = " + paramString + ",busiType = " + paramInt1);
-    if ((TextUtils.isEmpty(paramString)) || (!bbdx.b(paramString)))
+    awen.a("PresendPicMgr", "presendPic", "path = " + paramString + ",busiType = " + paramInt1);
+    if ((TextUtils.isEmpty(paramString)) || (!bdcs.b(paramString)))
     {
-      aung.b("PresendPicMgr", "presendPic", "path = " + paramString + " pic not exist,return!");
+      awen.b("PresendPicMgr", "presendPic", "path = " + paramString + " pic not exist,return!");
       return;
     }
-    paramString = new CompressInfo(paramString, auos.a(0), 1052);
+    paramString = new CompressInfo(paramString, awga.a(0), 1052);
     int j = -1;
     try
     {
-      i = this.jdField_a_of_type_Aunc.a();
+      i = this.jdField_a_of_type_Awej.a();
       paramString.j = i;
       paramString.g = true;
-      aung.a("PresendPicMgr", "presendPic", "uinType = " + i);
-      paramString = new auoi(this, paramString, paramInt1, paramInt2);
+      awen.a("PresendPicMgr", "presendPic", "uinType = " + i);
+      paramString = new awfq(this, paramString, paramInt1, paramInt2);
       this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      this.jdField_a_of_type_Auoh.post(new PresendPicMgr.PresendRunnable(this, paramString));
+      this.jdField_a_of_type_Awfp.post(new PresendPicMgr.PresendRunnable(this, paramString));
       return;
     }
     catch (RemoteException localRemoteException)
@@ -294,7 +294,7 @@ public class PresendPicMgr
   
   public void b()
   {
-    aung.b("PresendPicMgr", "release", "");
+    awen.b("PresendPicMgr", "release", "");
     this.jdField_a_of_type_AndroidOsHandlerThread.quit();
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr = null;
@@ -304,23 +304,23 @@ public class PresendPicMgr
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      aung.a("PresendPicMgr", "cancelPresendPic", "mEnablePreCompress is false!");
+      awen.a("PresendPicMgr", "cancelPresendPic", "mEnablePreCompress is false!");
       return;
     }
-    aung.a("PresendPicMgr", "cancelPresendPic", "path = " + paramString);
-    auoi localauoi = a(paramString);
-    if (localauoi == null)
+    awen.a("PresendPicMgr", "cancelPresendPic", "path = " + paramString);
+    awfq localawfq = a(paramString);
+    if (localawfq == null)
     {
-      aung.a("PresendPicMgr", "cancelPresendPic", "cannot find PresendReq,path = " + paramString);
+      awen.a("PresendPicMgr", "cancelPresendPic", "cannot find PresendReq,path = " + paramString);
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.remove(localauoi);
-    localauoi.a(paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList.remove(localawfq);
+    localawfq.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PresendPicMgr
  * JD-Core Version:    0.7.0.1
  */

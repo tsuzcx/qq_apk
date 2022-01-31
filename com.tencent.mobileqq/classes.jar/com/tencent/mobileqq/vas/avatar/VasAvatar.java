@@ -4,9 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import bbsw;
-import bcnq;
-import bcnr;
+import bdrt;
+import bems;
+import bemt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
@@ -16,11 +16,11 @@ import com.tencent.widget.URLThemeImageView;
 
 public class VasAvatar
   extends URLThemeImageView
-  implements bcnr
+  implements bemt
 {
   public Drawable a;
-  public bbsw a;
-  private bcnq jdField_a_of_type_Bcnq;
+  public bdrt a;
+  private bems jdField_a_of_type_Bems;
   private AvatarLayout jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
   private String jdField_a_of_type_JavaLangString;
   
@@ -70,21 +70,21 @@ public class VasAvatar
     }
   }
   
-  public void b(Canvas paramCanvas)
+  public void a(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
   }
   
-  public void c(Canvas paramCanvas)
+  public void b(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bcnq != null)
+    if (this.jdField_a_of_type_Bems != null)
     {
-      this.jdField_a_of_type_Bcnq.a(paramCanvas);
+      this.jdField_a_of_type_Bems.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -92,9 +92,9 @@ public class VasAvatar
   
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bcnq != null)
+    if (this.jdField_a_of_type_Bems != null)
     {
-      this.jdField_a_of_type_Bcnq.b(paramCanvas);
+      this.jdField_a_of_type_Bems.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -113,35 +113,35 @@ public class VasAvatar
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_Bbsw = null;
+    this.jdField_a_of_type_Bdrt = null;
   }
   
-  public void setLoader(AvatarLayout paramAvatarLayout, bbsw parambbsw)
+  public void setLoader(AvatarLayout paramAvatarLayout, bdrt parambdrt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambbsw.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    parambbsw.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambdrt.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    parambdrt.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = paramAvatarLayout;
-    this.jdField_a_of_type_Bbsw = parambbsw;
-    this.jdField_a_of_type_JavaLangString = parambbsw.jdField_a_of_type_JavaLangString;
-    parambbsw.a(this);
+    this.jdField_a_of_type_Bdrt = parambdrt;
+    this.jdField_a_of_type_JavaLangString = parambdrt.jdField_a_of_type_JavaLangString;
+    parambdrt.a(this);
   }
   
-  public void setMosaicEffect(bcnq parambcnq)
+  public void setMosaicEffect(bems parambems)
   {
-    if (this.jdField_a_of_type_Bcnq != null) {
-      this.jdField_a_of_type_Bcnq.a(null);
+    if (this.jdField_a_of_type_Bems != null) {
+      this.jdField_a_of_type_Bems.a(null);
     }
-    this.jdField_a_of_type_Bcnq = parambcnq;
-    if (this.jdField_a_of_type_Bcnq != null) {
-      this.jdField_a_of_type_Bcnq.a(this);
+    this.jdField_a_of_type_Bems = parambems;
+    if (this.jdField_a_of_type_Bems != null) {
+      this.jdField_a_of_type_Bems.a(this);
     }
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasAvatar
  * JD-Core Version:    0.7.0.1
  */

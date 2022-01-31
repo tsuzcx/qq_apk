@@ -1,8 +1,7 @@
 package cooperation.qzone.pfc.opencv;
 
 import android.graphics.Bitmap;
-import bhnz;
-import com.tencent.common.config.AppSetting;
+import bjpl;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
 
@@ -25,7 +24,7 @@ public class QzoneVision
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +118 -> 126
-    //   11: getstatic 25	bhnz:a	Ljava/io/File;
+    //   11: getstatic 25	bjpl:a	Ljava/io/File;
     //   14: invokevirtual 31	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   17: astore_1
     //   18: ldc 33
@@ -116,33 +115,30 @@ public class QzoneVision
     if (c()) {
       return true;
     }
-    bhnz.a().b();
+    bjpl.a().b();
     return false;
   }
   
   public static boolean c()
   {
-    Object localObject = bhnz.a.getAbsolutePath();
-    if (AppSetting.b) {}
-    for (localObject = new File((String)localObject + "/gifAntishake64.zip");; localObject = new File((String)localObject + "/photoQulatitySo.zip"))
+    Object localObject = bjpl.a.getAbsolutePath();
+    localObject = new File((String)localObject + "/photoQulatitySo.zip");
+    boolean bool = LocalMultiProcConfig.getBool(bjpl.e, true);
+    if (!bjpl.a().a(bjpl.e, bool)) {
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
+      }
+    }
+    do
     {
-      bool = LocalMultiProcConfig.getBool(bhnz.e, true);
-      if (bhnz.a().a(bhnz.e, bool)) {
+      return false;
+      bool = LocalMultiProcConfig.getBool(bjpl.d, true);
+      if (bjpl.a().a(bjpl.d, bool)) {
         break;
       }
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
-      }
-      return false;
-    }
-    boolean bool = LocalMultiProcConfig.getBool(bhnz.d, true);
-    if (!bhnz.a().a(bhnz.d, bool))
-    {
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
-      }
-      return false;
-    }
+    } while (!((File)localObject).exists());
+    ((File)localObject).delete();
+    return false;
     return true;
   }
   
@@ -150,7 +146,7 @@ public class QzoneVision
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.pfc.opencv.QzoneVision
  * JD-Core Version:    0.7.0.1
  */

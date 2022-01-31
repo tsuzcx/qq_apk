@@ -1,7 +1,7 @@
 package cooperation.qqreader.helper;
 
 import android.content.Context;
-import bguq;
+import bivp;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.dinifly.LottieCompositionFactory;
 import com.tencent.mobileqq.dinifly.LottieResult;
@@ -10,7 +10,7 @@ import mqq.os.MqqHandler;
 public class LoadingAnimationManager$2
   implements Runnable
 {
-  public LoadingAnimationManager$2(bguq parambguq, Context paramContext) {}
+  public LoadingAnimationManager$2(bivp parambivp, Context paramContext) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class LoadingAnimationManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.helper.LoadingAnimationManager.2
  * JD-Core Version:    0.7.0.1
  */

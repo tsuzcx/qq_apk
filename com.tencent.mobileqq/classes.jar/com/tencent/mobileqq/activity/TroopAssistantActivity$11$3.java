@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acfv;
+import adxf;
 import mqq.os.MqqHandler;
 
 public class TroopAssistantActivity$11$3
   implements Runnable
 {
-  public TroopAssistantActivity$11$3(acfv paramacfv) {}
+  public TroopAssistantActivity$11$3(adxf paramadxf) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class TroopAssistantActivity$11$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.11.3
  * JD-Core Version:    0.7.0.1
  */

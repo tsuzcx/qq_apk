@@ -1,37 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
 
 class bitr
-  implements View.OnClickListener
+  extends alye
 {
-  bitr(bitq parambitq, bits parambits, String paramString) {}
+  bitr(bito parambito) {}
   
-  public void onClick(View paramView)
+  protected void c(boolean paramBoolean, Object paramObject)
   {
-    if (bitq.a(this.jdField_a_of_type_Bitq) != this.jdField_a_of_type_Bits.getLayoutPosition()) {
-      bizt.a().f(this.jdField_a_of_type_JavaLangString);
-    }
-    if (bitq.a(this.jdField_a_of_type_Bitq) == -1)
+    if (paramBoolean)
     {
-      bitq.a(this.jdField_a_of_type_Bitq).a(this.jdField_a_of_type_JavaLangString, ((bitd)bitc.a.get(0)).jdField_a_of_type_JavaLangString, ((bitd)bitc.a.get(0)).b);
-      bitq.a(this.jdField_a_of_type_Bitq).a(true, false);
+      paramObject = (Bundle)paramObject;
+      paramObject.putInt("which_method", 0);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
     }
-    for (;;)
+  }
+  
+  protected void d(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Bitq.a();
-      bitq.a(this.jdField_a_of_type_Bitq, this.jdField_a_of_type_Bits.getLayoutPosition());
-      ((bitb)bitq.a(this.jdField_a_of_type_Bitq).get(bitq.a(this.jdField_a_of_type_Bitq) - 1)).a(true);
-      this.jdField_a_of_type_Bits.a(true);
-      return;
-      bitq.a(this.jdField_a_of_type_Bitq).a(this.jdField_a_of_type_JavaLangString);
+      paramObject = (Bundle)paramObject;
+      paramObject.putInt("which_method", 1);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bitr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRspV3;
 
-class aqpq
-  implements DialogInterface.OnClickListener
+public abstract class aqpq
+  extends aqpn
 {
-  aqpq(aqpp paramaqpp) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.j();
-  }
+  protected abstract void a(boolean paramBoolean, int paramInt, cmd0x346.ApplyUploadRspV3 paramApplyUploadRspV3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqpq
  * JD-Core Version:    0.7.0.1
  */

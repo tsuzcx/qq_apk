@@ -1,10 +1,16 @@
-public abstract interface bkwy
+class bkwy
+  implements bkyo
 {
-  public abstract void a();
+  bkwy(bkwx parambkwx) {}
+  
+  public void a(bkvz parambkvz)
+  {
+    bkwx.a(this.a, parambkvz);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkwy
  * JD-Core Version:    0.7.0.1
  */

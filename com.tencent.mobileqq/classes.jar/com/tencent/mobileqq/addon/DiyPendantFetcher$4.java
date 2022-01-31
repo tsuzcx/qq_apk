@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.addon;
 
-import aiqx;
+import akii;
 import android.graphics.Typeface;
-import bbcm;
+import bdbg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LRULinkedHashMap;
-import hn;
+import fw;
 import mqq.app.AppRuntime;
 
 public class DiyPendantFetcher$4
   implements Runnable
 {
-  public DiyPendantFetcher$4(aiqx paramaiqx, int paramInt, String paramString) {}
+  public DiyPendantFetcher$4(akii paramakii, int paramInt, String paramString) {}
   
   public void run()
   {
-    if (bbcm.a(String.valueOf(this.jdField_a_of_type_Int))) {
+    if (bdbg.a(String.valueOf(this.jdField_a_of_type_Int))) {
       if (this.jdField_a_of_type_Int == 1) {}
     }
     AppRuntime localAppRuntime;
@@ -26,7 +26,7 @@ public class DiyPendantFetcher$4
     {
       try
       {
-        ((hn)this.this$0.b.get(Integer.valueOf(this.jdField_a_of_type_Int))).a = Typeface.createFromFile(this.jdField_a_of_type_JavaLangString);
+        ((fw)this.this$0.b.get(Integer.valueOf(this.jdField_a_of_type_Int))).a = Typeface.createFromFile(this.jdField_a_of_type_JavaLangString);
         this.this$0.d();
         return;
       }
@@ -44,7 +44,7 @@ public class DiyPendantFetcher$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.4
  * JD-Core Version:    0.7.0.1
  */

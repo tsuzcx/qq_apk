@@ -1,6 +1,7 @@
 package com.tencent.aekit.api.standard;
 
 import android.content.SharedPreferences;
+import com.tencent.ttpic.filter.aifilter.NetworkRequest;
 
 public class AEModuleConfig
 {
@@ -17,6 +18,7 @@ public class AEModuleConfig
   private int licenseInitType;
   private String lutDir;
   private String modelDir;
+  private NetworkRequest networkRequest;
   private SharedPreferences preferences;
   private String soDir;
   private boolean strictMode;
@@ -39,6 +41,7 @@ public class AEModuleConfig
     this.enableProfiler = AEModuleConfig.Builder.access$1300(paramBuilder);
     this.enableDumpFilterParams = AEModuleConfig.Builder.access$1400(paramBuilder);
     this.enableReducedMeidaLibrary = AEModuleConfig.Builder.access$1500(paramBuilder);
+    this.networkRequest = AEModuleConfig.Builder.access$1600(paramBuilder);
   }
   
   public static AEModuleConfig.Builder newBuilder()
@@ -69,6 +72,11 @@ public class AEModuleConfig
   public String getModelDir()
   {
     return this.modelDir;
+  }
+  
+  public NetworkRequest getNetworkRequest()
+  {
+    return this.networkRequest;
   }
   
   public SharedPreferences getPreferences()
@@ -128,7 +136,7 @@ public class AEModuleConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.api.standard.AEModuleConfig
  * JD-Core Version:    0.7.0.1
  */

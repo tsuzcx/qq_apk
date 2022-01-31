@@ -1,42 +1,70 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.app.AppRuntime;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-class rga
-  extends ClickableSpan
+public class rga
+  implements rcc
 {
-  rga(rfz paramrfz, int paramInt) {}
+  private rga(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    paramView = new Intent(this.jdField_a_of_type_Rfz.getContext(), QQBrowserActivity.class);
-    String str = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_Rfz.getContext()).getString("qq_readinjoy_user_protocol_92_jump_url_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), "https://kandian.qq.com/mqq/watchspot/extrapage.html ");
-    if (!TextUtils.isEmpty(str))
+    boolean bool2 = true;
+    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
+    if (VideoFeedsRecommendFragment.a(this.a) != null)
     {
-      paramView.putExtra("url", URLUtil.guessUrl(str));
-      this.jdField_a_of_type_Rfz.getContext().startActivity(paramView);
+      VideoFeedsRecommendFragment.a(this.a).a.d(paramBoolean);
+      if ((!VideoFeedsRecommendFragment.a(this.a).b) && ((VideoFeedsRecommendFragment.a(this.a).itemView.getParent() instanceof VideoFeedsRecyclerView)))
+      {
+        localVideoFeedsRecyclerView = (VideoFeedsRecyclerView)VideoFeedsRecommendFragment.a(this.a).itemView.getParent();
+        if (paramBoolean) {
+          break label201;
+        }
+        bool1 = true;
+        localVideoFeedsRecyclerView.setScrollable(bool1);
+      }
+    }
+    if (paramBoolean)
+    {
+      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
+      label112:
+      if (!VideoFeedsRecommendFragment.b(this.a))
+      {
+        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
+        if (paramBoolean) {
+          break label223;
+        }
+      }
+    }
+    label201:
+    label223:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localVideoFeedsRecyclerView.setScrollable(bool1);
+      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
+      {
+        VideoFeedsRecommendFragment.a(this.a).a();
+        VideoFeedsRecommendFragment.a(this.a, false);
+      }
+      if (VideoFeedsRecommendFragment.a(this.a) != null) {
+        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
+      }
+      return;
+      bool1 = false;
+      break;
+      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
+      break label112;
     }
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public void b()
   {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
+    this.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rga
  * JD-Core Version:    0.7.0.1
  */

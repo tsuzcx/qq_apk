@@ -3,11 +3,11 @@ package cooperation.comic;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.text.TextUtils;
-import bbdh;
-import bggx;
-import bggz;
-import bghd;
-import bghf;
+import bdcb;
+import bihv;
+import bihx;
+import biib;
+import biid;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -19,15 +19,15 @@ import mqq.app.AppRuntime;
 public final class PluginPreloader$1
   implements Runnable
 {
-  public PluginPreloader$1(bggz parambggz) {}
+  public PluginPreloader$1(bihx parambihx) {}
   
   public void run()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    int i = (int)(bbdh.e() >> 20);
+    int i = (int)(bdcb.e() >> 20);
     try
     {
-      bghf localbghf = new bghf();
+      biid localbiid = new biid();
       Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
       if (localObject != null)
       {
@@ -42,15 +42,15 @@ public final class PluginPreloader$1
               if (QLog.isColorLevel()) {
                 QLog.d("PluginPreloader", 2, "pluginType:" + this.a.jdField_b_of_type_Int + "  preload:ok:loadmodule " + this.a.jdField_c_of_type_JavaLangString);
               }
-              localbghf.jdField_a_of_type_Int = 1;
-              localbghf.jdField_a_of_type_JavaLangString = "preload:ok:loadmodule";
-              bghd.a(localAppRuntime, this.a, i, localbghf);
+              localbiid.jdField_a_of_type_Int = 1;
+              localbiid.jdField_a_of_type_JavaLangString = "preload:ok:loadmodule";
+              biib.a(localAppRuntime, this.a, i, localbiid);
               return;
             }
             if (QLog.isColorLevel()) {
               QLog.d("PluginPreloader", 2, "pluginType:" + this.a.jdField_b_of_type_Int + "  preload:fail:procexist " + this.a.jdField_a_of_type_JavaLangString);
             }
-            bggx.a(localAppRuntime, 1, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int, 3, "preload:fail:procexist", i, new String[] { String.valueOf(this.a.d) });
+            bihv.a(localAppRuntime, 1, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int, 3, "preload:fail:procexist", i, new String[] { String.valueOf(this.a.d) });
             return;
           }
         }
@@ -61,7 +61,7 @@ public final class PluginPreloader$1
       if (QLog.isColorLevel()) {
         QLog.d("PluginPreloader", 2, "pluginType:" + this.a.jdField_b_of_type_Int + " preload:fail:exception " + localException.getMessage());
       }
-      bggx.a(localAppRuntime, 1, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int, 3, "preload:fail:exception", i, new String[] { String.valueOf(this.a.d), localException.getMessage() });
+      bihv.a(localAppRuntime, 1, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int, 3, "preload:fail:exception", i, new String[] { String.valueOf(this.a.d), localException.getMessage() });
       return;
     }
     if (!this.a.a(localException))
@@ -69,7 +69,7 @@ public final class PluginPreloader$1
       if (QLog.isColorLevel()) {
         QLog.d("PluginPreloader", 2, this.a.jdField_a_of_type_JavaLangString + " is not allowed to preload.");
       }
-      bggx.a(localAppRuntime, 1, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int, localException.jdField_a_of_type_Int, localException.jdField_a_of_type_JavaLangString, i, new String[] { String.valueOf(this.a.d) });
+      bihv.a(localAppRuntime, 1, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int, localException.jdField_a_of_type_Int, localException.jdField_a_of_type_JavaLangString, i, new String[] { String.valueOf(this.a.d) });
       return;
     }
     if (i < this.a.jdField_a_of_type_Int)
@@ -77,7 +77,7 @@ public final class PluginPreloader$1
       if (QLog.isColorLevel()) {
         QLog.d("PluginPreloader", 2, "pluginType:" + this.a.jdField_b_of_type_Int + "  preload:fail:memorylimit (" + i + "MB)");
       }
-      bggx.a(localAppRuntime, 1, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int, 3, "preload:fail:memorylimit", i, new String[] { String.valueOf(this.a.d), String.valueOf(this.a.jdField_a_of_type_Int) });
+      bihv.a(localAppRuntime, 1, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int, 3, "preload:fail:memorylimit", i, new String[] { String.valueOf(this.a.d), String.valueOf(this.a.jdField_a_of_type_Int) });
       return;
     }
     if (!this.a.b(localException))
@@ -85,15 +85,15 @@ public final class PluginPreloader$1
       if (QLog.isColorLevel()) {
         QLog.d("PluginPreloader", 2, "the plugin is inactive.");
       }
-      bggx.a(localAppRuntime, 1, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int, localException.jdField_a_of_type_Int, localException.jdField_a_of_type_JavaLangString, i, new String[] { String.valueOf(this.a.d) });
+      bihv.a(localAppRuntime, 1, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int, localException.jdField_a_of_type_Int, localException.jdField_a_of_type_JavaLangString, i, new String[] { String.valueOf(this.a.d) });
       return;
     }
-    bghd.a(localAppRuntime, this.a, i, localException);
+    biib.a(localAppRuntime, this.a, i, localException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.comic.PluginPreloader.1
  * JD-Core Version:    0.7.0.1
  */

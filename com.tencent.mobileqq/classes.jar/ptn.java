@@ -1,24 +1,21 @@
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView;
 
-class ptn
+public class ptn
   implements View.OnTouchListener
 {
-  ptn(ptl paramptl, RelativeLayout paramRelativeLayout) {}
+  public ptn(NativeShareView paramNativeShareView) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    return paramMotionEvent.getAction() == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ptn
  * JD-Core Version:    0.7.0.1
  */

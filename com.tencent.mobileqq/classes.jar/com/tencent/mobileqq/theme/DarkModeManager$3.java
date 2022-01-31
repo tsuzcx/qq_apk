@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import aylh;
+import bajd;
 
 public final class DarkModeManager$3
   implements Runnable
@@ -9,12 +9,12 @@ public final class DarkModeManager$3
   
   public void run()
   {
-    aylh.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    bajd.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.DarkModeManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,36 @@
-import java.util.Calendar;
+import android.util.Log;
+import java.util.ArrayList;
 
-class atsk
-  implements amnf
+public class atsk
 {
-  atsk(atsc paramatsc) {}
-  
-  public int a()
+  public static atsc a(String paramString, boolean paramBoolean)
   {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
+    if ((paramString != null) && (paramString.length() >= 0))
     {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
+      if (paramBoolean) {}
+      for (;;)
+      {
+        try
+        {
+          paramString = new atso(paramString).a();
+          if ((paramString == null) || (paramString.a.size() <= 0)) {
+            break;
+          }
+          return paramString;
+        }
+        catch (Exception paramString)
+        {
+          Log.e("LyricParseHelper", "parse exception:", paramString);
+        }
+        paramString = new atsl(paramString).a();
+      }
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + ajya.a(2131707261);
-    case 1: 
-      return paramInt2 + 1 + ajya.a(2131707364);
-    }
-    return paramInt2 + 1 + ajya.a(2131707346);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsk
  * JD-Core Version:    0.7.0.1
  */

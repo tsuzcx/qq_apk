@@ -1,47 +1,34 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.util.Pair;
-import cooperation.qqreader.net.BusinessTask;
-import mqq.app.AppRuntime;
+import android.support.annotation.NonNull;
 
 public class bgvp
 {
-  private static bgvp jdField_a_of_type_Bgvp;
-  private static final Pair<Integer, Integer> jdField_a_of_type_ComTencentUtilPair = new Pair(Integer.valueOf(1494), Integer.valueOf(2));
-  private static boolean jdField_a_of_type_Boolean;
+  private float jdField_a_of_type_Float = 0.0F;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public static SharedPreferences a()
+  public float a()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("Reader_shadow_gray" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
+    return this.jdField_a_of_type_Float;
   }
   
-  public static bgvp a()
+  public String a()
   {
-    if (jdField_a_of_type_Bgvp == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bgvp == null) {
-        jdField_a_of_type_Bgvp = new bgvp();
-      }
-      return jdField_a_of_type_Bgvp;
-    }
-    finally {}
+    return (int)(this.jdField_a_of_type_Float * 100.0F) + "%";
   }
   
-  public void a()
+  public boolean a()
   {
-    bgwf.e("ReaderShadowGrayManager", "[fetchConfig] sIsRequestedGray = " + jdField_a_of_type_Boolean);
-    if (jdField_a_of_type_Boolean) {
-      return;
-    }
-    BusinessTask localBusinessTask = new BusinessTask("ReaderShadowGray", jdField_a_of_type_ComTencentUtilPair);
-    localBusinessTask.a(new bgvq(this), true);
-    localBusinessTask.a();
+    return (this.jdField_a_of_type_Float > 0.0F) && (this.jdField_a_of_type_Float < 1.0F);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "LoadingStatus {progress=" + this.jdField_a_of_type_Float + "} ";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgvp
  * JD-Core Version:    0.7.0.1
  */

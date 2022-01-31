@@ -1,18 +1,7 @@
-import com.tencent.aekit.openrender.internal.Frame;
-
-class lqy
-  implements lrf
-{
-  lqy(lqx paramlqx) {}
-  
-  public void a(Frame paramFrame, lrc paramlrc)
-  {
-    lqx.a(this.a, paramFrame);
-  }
-}
+public abstract interface lqy {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lqy
  * JD-Core Version:    0.7.0.1
  */

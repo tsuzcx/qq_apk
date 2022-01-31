@@ -1,41 +1,63 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.ManageInfo;
+import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
 
 public class aclq
-  extends bajm
+  implements View.OnClickListener
 {
-  public aclq(TroopRequestActivity paramTroopRequestActivity) {}
+  public aclq(ChatSettingForTroop paramChatSettingForTroop, oidb_0xaf4.RspBody paramRspBody) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramBundle != null)) {
-      try
+    paramView = this.jdField_a_of_type_TencentImOidbCmd0xaf4Oidb_0xaf4$RspBody.manage_info.url.get();
+    Intent localIntent;
+    String str;
+    if ((paramView.startsWith("http")) || (paramView.startsWith("https")))
+    {
+      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, QQBrowserActivity.class);
+      str = paramView.replace("$GCODE$", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin);
+      paramView = null;
+      int i = 0;
+      while (i < ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).size())
       {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        new structmsg.StructMsg().mergeFrom(paramBundle);
-        TroopRequestActivity.a(this.a, 1);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
+        Object localObject = paramView;
+        if (paramView == null) {
+          localObject = new StringBuilder("&mini_appids=");
         }
-        this.a.i();
-        bcql.a(this.a, this.a.getString(2131697634), 0).b(this.a.getTitleBarHeight());
-        return;
+        ((StringBuilder)localObject).append(ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).get(i));
+        if (i != ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).size() - 1) {
+          ((StringBuilder)localObject).append(",");
+        }
+        i += 1;
+        paramView = (View)localObject;
+      }
+      if (paramView == null) {
+        break label233;
       }
     }
-    this.a.i();
-    bcql.a(this.a, this.a.getString(2131697634), 0).b(this.a.getTitleBarHeight());
+    label233:
+    for (paramView = str + paramView.toString();; paramView = str)
+    {
+      localIntent.putExtra("url", paramView);
+      localIntent.putExtra("webStyle", "noBottomBar");
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.startActivity(localIntent);
+      MiniProgramLpReportDC04239.reportByQQqunInfo("qun", "qun_info", "click_set", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import dov.com.qq.im.ae.AEPituCameraUnit.10;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-
-public class bijf
-  implements DialogInterface.OnCancelListener
+public abstract interface bijf
 {
-  public bijf(AEPituCameraUnit.10 param10) {}
+  public abstract void a();
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    bijd.a(this.a.this$0).setCameraPermissionResult(false);
-  }
+  public abstract void a(bije parambije);
+  
+  public abstract void b(bije parambije);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bijf
  * JD-Core Version:    0.7.0.1
  */

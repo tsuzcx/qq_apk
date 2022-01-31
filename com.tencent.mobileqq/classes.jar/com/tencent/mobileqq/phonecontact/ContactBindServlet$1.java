@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.phonecontact;
 
 import android.content.Intent;
-import aumi;
+import awdp;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
 public class ContactBindServlet$1
   implements Runnable
 {
-  public ContactBindServlet$1(aumi paramaumi, Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
+  public ContactBindServlet$1(awdp paramawdp, Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ContactBindServlet$1
     }
     try
     {
-      aumi.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
+      awdp.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
       return;
     }
     catch (Exception localException)
@@ -28,7 +28,7 @@ public class ContactBindServlet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.ContactBindServlet.1
  * JD-Core Version:    0.7.0.1
  */

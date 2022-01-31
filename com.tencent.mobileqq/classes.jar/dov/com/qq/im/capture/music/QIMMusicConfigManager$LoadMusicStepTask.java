@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.music;
 
-import aysa;
-import aysc;
-import aysy;
-import aysz;
-import bflg;
+import bapv;
+import bapx;
+import baqv;
+import baqw;
+import bhma;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -15,9 +15,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 abstract class QIMMusicConfigManager$LoadMusicStepTask
-  implements aysc, Runnable
+  implements bapx, Runnable
 {
-  final aysa jdField_a_of_type_Aysa;
+  final bapv jdField_a_of_type_Bapv;
   final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   final QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
   final String b;
@@ -29,7 +29,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQIMMusicConfigManager.a();
     this.b = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
     this.c = paramQIMMusicConfigManager.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Aysa = paramQIMMusicConfigManager.jdField_a_of_type_Aysa;
+    this.jdField_a_of_type_Bapv = paramQIMMusicConfigManager.jdField_a_of_type_Bapv;
   }
   
   String a(long paramLong)
@@ -37,7 +37,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000025").append("_").append("SApgehUTVGxZKBQZTt").append("_").append("QmnkKmaTHNDozKdIUA").append("_").append(paramLong);
     localObject = ((StringBuilder)localObject).toString();
-    String str = bflg.a((String)localObject).toLowerCase();
+    String str = bhma.a((String)localObject).toLowerCase();
     if (QLog.isColorLevel()) {
       QLog.d("QIMMusicConfigManager", 2, "generate the sign string, pre=" + (String)localObject + ", md5=" + str);
     }
@@ -89,13 +89,13 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     ThreadManager.executeOnSubThread(this);
   }
   
-  public void onResp(aysz paramaysz) {}
+  public void onResp(baqw parambaqw) {}
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QIMMusicConfigManager.LoadMusicStepTask
  * JD-Core Version:    0.7.0.1
  */

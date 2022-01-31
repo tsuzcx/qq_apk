@@ -1,20 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.widget.ExpandableListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acfr
-  implements bfru
+public final class acfr
+  implements DialogInterface.OnClickListener
 {
-  public acfr(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public acfr(acgy paramacgy) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    if (this.a != null) {
+      this.a.a();
+    }
+    mtq.e(true, false);
+    paramDialogInterface.dismiss();
+    mtq.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfr
  * JD-Core Version:    0.7.0.1
  */

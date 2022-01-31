@@ -1,49 +1,54 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aofy
-  implements View.OnTouchListener
+public abstract class aofy<T>
 {
-  aofy(aofw paramaofw, View paramView1, View paramView2, View paramView3) {}
+  public abstract int a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public abstract Class<T> a();
+  
+  @NonNull
+  public abstract T a(int paramInt);
+  
+  public void a()
   {
-    switch (paramMotionEvent.getActionMasked())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + a());
     }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
-      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      this.jdField_a_of_type_Aofw.b.setAlpha(0.5F);
-      this.b.setAlpha(0.5F);
-      this.c.setAlpha(0.5F);
-      continue;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      this.jdField_a_of_type_Aofw.b.setAlpha(1.0F);
-      this.b.setAlpha(1.0F);
-      this.c.setAlpha(1.0F);
-      this.jdField_a_of_type_Aofw.onClick(this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidViewView);
-      continue;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      this.jdField_a_of_type_Aofw.b.setAlpha(1.0F);
-      this.b.setAlpha(1.0F);
-      this.c.setAlpha(1.0F);
-    }
+  }
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(T paramT);
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public abstract int b();
+  
+  public int b(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @Nullable
+  public abstract T b(aogf[] paramArrayOfaogf);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public boolean d()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aofy
  * JD-Core Version:    0.7.0.1
  */

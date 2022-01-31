@@ -1,67 +1,113 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Point;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.view.View;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.WindowManager;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
+@TargetApi(14)
 public class xee
 {
-  protected Context a;
-  protected Drawable a;
-  protected View a;
-  protected WindowManager a;
-  protected PopupWindow a;
+  public static int a;
+  public static int b;
   
-  public xee(Context paramContext)
+  public static float a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchInterceptor(new xef(this));
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+    if (paramInt2 < paramInt4) {
+      return 1.0F;
+    }
+    return paramInt4 / paramInt2;
   }
   
-  protected void a()
+  public static int a()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new IllegalStateException("setContentView was not called with a view to display.");
+    return b(BaseApplicationImpl.getApplication().getBaseContext(), 24.0F);
+  }
+  
+  public static int a(Context paramContext)
+  {
+    if (a > 0) {
+      return a;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
-    }
-    for (;;)
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    Point localPoint;
+    if (Build.VERSION.SDK_INT >= 13)
     {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
-      return;
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      localPoint = new Point();
+      paramContext.getDefaultDisplay().getSize(localPoint);
+    }
+    for (a = localPoint.x;; a = paramContext.getDefaultDisplay().getWidth()) {
+      return a;
     }
   }
   
-  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  public static int a(Context paramContext, float paramFloat)
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
+    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
-  public void b()
+  public static void a(Canvas paramCanvas, xeg paramxeg, xeh paramxeh, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    paramInt1 = a();
+    paramCanvas.concat(paramxeg.b(paramxeh));
+    int i = (int)(paramxeh.n * paramxeh.j * paramxeh.p) + paramxeh.e * 2;
+    int j = (int)(paramxeh.o * paramxeh.j * paramxeh.p) + paramxeh.e * 2;
+    paramCanvas.translate(-i * 1.0F / 2.0F, -j * 1.0F / 2.0F);
+    paramxeg = new Paint();
+    paramxeg.setStyle(Paint.Style.STROKE);
+    paramxeg.setColor(BaseApplicationImpl.getApplication().getResources().getColor(2131167204));
+    paramxeg.setStrokeWidth(b(BaseApplicationImpl.getApplication().getBaseContext(), 1.0F));
+    int k = b(BaseApplicationImpl.getApplication().getBaseContext(), 3.0F);
+    paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, i, j), k, k, paramxeg);
+    paramCanvas.translate(-paramInt1 / 2, -paramInt1 / 2);
+    paramCanvas.translate(i, j);
+    paramxeg = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt3);
+    paramxeg.setBounds(0, 0, paramInt1, paramInt1);
+    paramxeg.draw(paramCanvas);
+    paramCanvas.translate(0.0F, -j);
+    paramxeg = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt2);
+    paramxeg.setBounds(0, 0, paramInt1, paramInt1);
+    paramxeg.draw(paramCanvas);
   }
   
-  public void b(View paramView)
+  public static int b(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramView);
+    if (b > 0) {
+      return b;
+    }
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    Point localPoint;
+    if (Build.VERSION.SDK_INT >= 13)
+    {
+      localPoint = new Point();
+      paramContext.getDefaultDisplay().getSize(localPoint);
+    }
+    for (b = localPoint.y;; b = paramContext.getDefaultDisplay().getHeight()) {
+      return b;
+    }
+  }
+  
+  public static int b(Context paramContext, float paramFloat)
+  {
+    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+  }
+  
+  public static int c(Context paramContext, float paramFloat)
+  {
+    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().scaledDensity + 0.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xee
  * JD-Core Version:    0.7.0.1
  */

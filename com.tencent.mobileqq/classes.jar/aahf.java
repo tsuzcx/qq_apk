@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.os.SystemClock;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
 
-public class aahf
-  implements View.OnClickListener
+class aahf
+  implements affd
 {
-  public aahf(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  aahf(aahe paramaahe, AdArkAdapter.Callback paramCallback) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void b()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.firstPaint(SystemClock.elapsedRealtime());
     }
-    AddFriendVerifyActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahf
  * JD-Core Version:    0.7.0.1
  */

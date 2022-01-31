@@ -41,6 +41,8 @@ public abstract interface NowBizInterface
   
   public abstract void openPhoneAuthPage();
   
+  public abstract void openWxMiniProgram(String paramString);
+  
   public abstract void queryPhoneAuthState();
   
   public abstract void reportData(Bundle paramBundle);
@@ -59,7 +61,7 @@ public abstract interface NowBizInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqinterface.NowBizInterface
  * JD-Core Version:    0.7.0.1
  */

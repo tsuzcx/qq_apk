@@ -1,50 +1,38 @@
-import android.graphics.Bitmap;
+import android.app.Dialog;
+import android.graphics.Color;
 import android.view.View;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.widget.XListView;
+import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
 public class acpx
-  implements awcf
+  implements bekp
 {
-  public acpx(VisitorsActivity paramVisitorsActivity) {}
+  public acpx(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    int i = 0;
-    if ((paramBitmap != null) && (paramInt2 == 200))
-    {
-      paramBitmap = this.a.a;
-      if (paramBitmap == null) {
-        break label108;
-      }
-      paramInt2 = paramBitmap.getChildCount();
-    }
-    for (;;)
-    {
-      if (i < paramInt2)
-      {
-        Object localObject = paramBitmap.getChildAt(i).getTag();
-        if ((localObject != null) && ((localObject instanceof acqo)))
-        {
-          localObject = (acqo)localObject;
-          if ((((acqo)localObject).b == paramInt1) && (((acqo)localObject).e != null)) {
-            VisitorsActivity.a(this.a, ((acqo)localObject).e, paramInt1);
-          }
-        }
-        i += 1;
-      }
-      else
-      {
-        return;
-        label108:
-        paramInt2 = 0;
-      }
+    this.a.app.a().a(DiscussionInfoCardActivity.a(this.a), 3000);
+    this.a.app.a().e(DiscussionInfoCardActivity.a(this.a), 3000);
+    akwk.a(this.a.app, "chat_history_confirm_del_msg");
+    paramDialog = this.a.app.getHandler(Conversation.class);
+    paramView = paramDialog.obtainMessage(1017);
+    paramView.obj = DiscussionInfoCardActivity.a(this.a);
+    paramView.arg1 = 3000;
+    paramDialog.sendMessage(paramView);
+    QQToast.a(this.a, 2, this.a.getString(2131690871), 0).a();
+    if (this.a.a != null) {
+      ((TextView)this.a.a.findViewById(2131377884)).setTextColor(Color.parseColor("#cccccc"));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpx
  * JD-Core Version:    0.7.0.1
  */

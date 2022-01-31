@@ -1,12 +1,10 @@
-import android.view.MotionEvent;
-
 public abstract interface avce
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abstract void a(avbz paramavbz);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avce
  * JD-Core Version:    0.7.0.1
  */

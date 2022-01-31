@@ -1,38 +1,48 @@
-import java.util.UUID;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface azuz
+class azuz
+  extends URLDrawableDownListener.Adapter
 {
-  public abstract int a();
+  azuz(azux paramazux) {}
   
-  public abstract long a();
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  {
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadCancelled");
+    }
+  }
   
-  public abstract String a();
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
   
-  public abstract UUID a();
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadInterrupted");
+    }
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract String b();
-  
-  public abstract int c();
-  
-  public abstract String c();
-  
-  public abstract int d();
-  
-  public abstract String d();
-  
-  public abstract boolean d();
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadSuccessed");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azuz
  * JD-Core Version:    0.7.0.1
  */

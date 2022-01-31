@@ -1,22 +1,34 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class audb
-  implements ndd
 {
-  public audb(SearchResultFragment paramSearchResultFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public ConcurrentHashMap<Long, audc> a;
+  public AtomicBoolean a;
+  public boolean a;
+  public String b;
+  public ConcurrentHashMap<Long, audc> b = new ConcurrentHashMap();
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public void a(int paramInt)
+  public audb()
   {
-    this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(paramInt);
-    this.a.jdField_a_of_type_Auco.a(false);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public void b(int paramInt) {}
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Int;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     audb
  * JD-Core Version:    0.7.0.1
  */

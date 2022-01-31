@@ -1,48 +1,41 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
-import java.lang.ref.WeakReference;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.Handler;
+import android.os.Looper;
+import java.util.ArrayList;
 
 public class baua
-  implements auoq
+  extends Handler
 {
-  protected WeakReference<TroopPicEffectsEditActivity> a;
+  private ArrayList<Class<?>> filterList = new ArrayList();
   
-  public baua(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity)
+  public baua()
   {
-    this.a = new WeakReference(paramTroopPicEffectsEditActivity);
+    this.filterList.clear();
   }
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public baua(Looper paramLooper)
   {
-    return null;
+    super(paramLooper);
+    this.filterList.clear();
   }
   
-  public void a(auor paramauor) {}
-  
-  public void b(auor paramauor)
+  public void addFilter(Class<?>... paramVarArgs)
   {
-    TroopPicEffectsEditActivity localTroopPicEffectsEditActivity = (TroopPicEffectsEditActivity)this.a.get();
-    if (localTroopPicEffectsEditActivity == null) {
-      return;
+    int i = 0;
+    while (i < paramVarArgs.length)
+    {
+      this.filterList.add(paramVarArgs[i]);
+      i += 1;
     }
-    localTroopPicEffectsEditActivity.c();
-    Intent localIntent = new Intent(localTroopPicEffectsEditActivity, SplashActivity.class);
-    localIntent.putExtra("uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("friendUin"));
-    localIntent.putExtra("uintype", 1);
-    localIntent.putExtra("troop_uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("troopUin"));
-    localIntent.putExtra("isFromTroopEffectPic", true);
-    localTroopPicEffectsEditActivity.startActivity(actj.a(localIntent, new int[] { 1 }));
-    localTroopPicEffectsEditActivity.finish();
-    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.a, (im_msg_body.CustomFace)paramauor.a, new baub(this, localTroopPicEffectsEditActivity));
+  }
+  
+  public ArrayList<Class<?>> getFilter()
+  {
+    return this.filterList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baua
  * JD-Core Version:    0.7.0.1
  */

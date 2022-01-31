@@ -1,34 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdDownloadInfo;
 
-class nsr
-  implements ValueAnimator.AnimatorUpdateListener
+public final class nsr
+  implements Parcelable.Creator<VideoInfo.GameAdDownloadInfo>
 {
-  nsr(nsp paramnsp) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public VideoInfo.GameAdDownloadInfo a(Parcel paramParcel)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    nsp.a(this.a).setTranslationY(-i);
-    paramValueAnimator = nsp.a(this.a).getLayoutParams();
-    paramValueAnimator.height = (nsp.a(this.a) - i);
-    QLog.d("IconTabController", 1, "hideWithAnimation: " + paramValueAnimator.height);
-    if (paramValueAnimator.height < 0)
-    {
-      actj.a("IconTabController", "", new IllegalStateException("hideWithAnimation" + paramValueAnimator.height));
-      paramValueAnimator.height = 0;
-    }
-    nsp.a(this.a).setLayoutParams(paramValueAnimator);
-    nsp.a(this.a).setAlpha(paramValueAnimator.height / nsp.a(this.a));
+    return new VideoInfo.GameAdDownloadInfo(paramParcel);
+  }
+  
+  public VideoInfo.GameAdDownloadInfo[] a(int paramInt)
+  {
+    return new VideoInfo.GameAdDownloadInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsr
  * JD-Core Version:    0.7.0.1
  */

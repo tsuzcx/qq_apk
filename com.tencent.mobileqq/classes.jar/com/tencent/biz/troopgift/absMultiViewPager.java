@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
-import xdj;
+import ysc;
 
 public abstract class absMultiViewPager
   extends ViewPager
@@ -18,7 +18,7 @@ public abstract class absMultiViewPager
   protected AdapterView.OnItemClickListener a;
   protected absMultiViewPager.ViewPagerAdapter a;
   protected ArrayList<Object> a;
-  protected xdj a;
+  protected ysc a;
   protected ArrayList<View> b = new ArrayList();
   protected int d;
   
@@ -53,8 +53,8 @@ public abstract class absMultiViewPager
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Xdj != null) {
-      this.jdField_a_of_type_Xdj.a(paramInt1, paramInt2, getCurrentItem());
+    if (this.jdField_a_of_type_Ysc != null) {
+      this.jdField_a_of_type_Ysc.a(paramInt1, paramInt2, getCurrentItem());
     }
   }
   
@@ -106,14 +106,14 @@ public abstract class absMultiViewPager
     super.setOnPageChangeListener(paramOnPageChangeListener);
   }
   
-  public void setOnPagerSizeChangeListener(xdj paramxdj)
+  public void setOnPagerSizeChangeListener(ysc paramysc)
   {
-    this.jdField_a_of_type_Xdj = paramxdj;
+    this.jdField_a_of_type_Ysc = paramysc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.troopgift.absMultiViewPager
  * JD-Core Version:    0.7.0.1
  */

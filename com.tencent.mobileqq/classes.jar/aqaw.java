@@ -1,74 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class aqaw
-  extends aqbe
+  implements View.OnClickListener
 {
-  public aqaw(Intent paramIntent)
-  {
-    super(paramIntent);
-  }
+  public aqaw(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public List<RecentUser> a(List<RecentUser> paramList)
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E2F", "0X8009E2F", 0, 0, "", "", "", "");
+    if (this.a.jdField_a_of_type_Apzs != null)
     {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bbbr.a(localRecentUser.uin)) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1))) {
-        localArrayList.add(localRecentUser);
-      }
+      aqcx.a().b(3);
+      this.a.jdField_a_of_type_Apzs.a();
     }
-    return localArrayList;
-  }
-  
-  protected void a()
-  {
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramBundle.getString("uin"));
-    this.jdField_a_of_type_AndroidOsBundle.putInt("uintype", paramBundle.getInt("uintype"));
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("apollo_forward_key", true);
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("isBack2Root", true);
-    this.jdField_a_of_type_AndroidContentIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    this.jdField_a_of_type_AndroidContentIntent = actj.a(this.jdField_a_of_type_AndroidContentIntent, new int[] { 2 });
-    this.jdField_a_of_type_AndroidContentIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    return true;
-  }
-  
-  public void c()
-  {
-    super.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqaw
  * JD-Core Version:    0.7.0.1
  */

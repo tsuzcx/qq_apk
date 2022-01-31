@@ -1,77 +1,34 @@
-import java.lang.reflect.Array;
+import com.tencent.qphone.base.util.QLog;
 
-public class aquq
+class aquq
+  extends aquk
 {
-  static aquq[][] a;
-  public int a;
-  public int b;
-  
-  static
+  public aquq(aqug paramaqug)
   {
-    jdField_a_of_type_Array2dOfAquq = (aquq[][])Array.newInstance(aquq.class, new int[] { 3, 3 });
-    int i = 0;
-    while (i < 3)
+    super(paramaqug);
+  }
+  
+  protected String a()
+  {
+    return "StateChangeToOffWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      int j = 0;
-      while (j < 3)
-      {
-        jdField_a_of_type_Array2dOfAquq[i][j] = new aquq(i, j);
-        j += 1;
-      }
-      i += 1;
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
-  }
-  
-  private aquq(int paramInt1, int paramInt2)
-  {
-    a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static aquq a(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      a(paramInt1, paramInt2);
-      aquq localaquq = jdField_a_of_type_Array2dOfAquq[paramInt1][paramInt2];
-      return localaquq;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private static void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 < 0) || (paramInt1 > 2)) {
-      throw new IllegalArgumentException("row must be in range 0-2");
-    }
-    if ((paramInt2 < 0) || (paramInt2 > 2)) {
-      throw new IllegalArgumentException("column must be in range 0-2");
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return "(row=" + this.jdField_a_of_type_Int + ",clmn=" + this.b + ")";
+    aqug.b(this.jdField_a_of_type_Aqug, 9, 11);
+    aqug.c(this.jdField_a_of_type_Aqug, 9, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateUploadingWhenRecv)");
+    this.jdField_a_of_type_Aquk = new aqvm(this.jdField_a_of_type_Aqug);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aquq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class arkg
-  implements Parcelable.Creator<NewTogetherRoomMessageData>
+class arkg
+  implements View.OnClickListener
 {
-  public NewTogetherRoomMessageData a(Parcel paramParcel)
-  {
-    return new NewTogetherRoomMessageData(paramParcel);
-  }
+  arkg(arke paramarke, String paramString) {}
   
-  public NewTogetherRoomMessageData[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new NewTogetherRoomMessageData[paramInt];
+    arni.a(this.jdField_a_of_type_Arke.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arkg
  * JD-Core Version:    0.7.0.1
  */

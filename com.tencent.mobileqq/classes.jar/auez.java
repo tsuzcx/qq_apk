@@ -1,73 +1,115 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import com.tencent.mobileqq.olympic.TorchInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class auez
-  extends aufa
+  extends aofy<aufa>
 {
-  public auez(OlympicManager paramOlympicManager) {}
+  public static boolean a;
+  private static boolean b;
   
-  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2)
+  public static boolean e()
   {
-    if (QLog.isColorLevel())
+    if (b) {
+      return a;
+    }
+    b = true;
+    a = f();
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData isSwitchOpened = " + a);
+    }
+    return a;
+  }
+  
+  private static boolean f()
+  {
+    aufa localaufa2 = (aufa)aogj.a().a(522);
+    aufa localaufa1 = localaufa2;
+    if (localaufa2 == null)
     {
-      OlympicManager localOlympicManager = this.a;
-      QLog.i("OlympicManager", 2, "onGetMyTorchInfo.isSuccess=" + paramBoolean + ",errCode=" + paramInt1 + ",errStr=,info=" + paramTorchInfo);
+      localaufa2 = new aufa();
+      localaufa1 = localaufa2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData = null, general new bean, so switch default");
+        localaufa1 = localaufa2;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData switch isOpened = " + localaufa1);
+    }
+    return localaufa1.a();
+  }
+  
+  public int a()
+  {
+    return 522;
+  }
+  
+  @NonNull
+  public aufa a(int paramInt)
+  {
+    return new aufa();
+  }
+  
+  @Nullable
+  public aufa a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackupConfigProcessor", 2, "onParsed : " + paramArrayOfaogf[0].a);
+      }
+      return aufa.a(paramArrayOfaogf[0].a);
+    }
+    return new aufa();
+  }
+  
+  public Class<aufa> a()
+  {
+    return aufa.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackupConfigProcessor", 2, "onReqFailed : " + paramInt);
     }
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo)
+  public void a(aufa paramaufa)
   {
-    if (QLog.isColorLevel())
-    {
-      OlympicManager localOlympicManager = this.a;
-      QLog.i("OlympicManager", 2, "onCollectTorch.isSuccess=" + paramBoolean + ",errCode=" + paramInt + ",errStr=" + paramString + ",sig=" + paramArrayOfByte + ",info=" + paramTorchInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackupConfigProcessor", 2, "onUpdate : " + paramaufa);
     }
-    OlympicManager.a(this.a, false);
-    if (paramBoolean)
-    {
-      OlympicManager.a(this.a, paramArrayOfByte);
-      if (paramInt == 0)
-      {
-        axqy.b(this.a.a, "CliOper", "", "", "0X80069C8", "0X80069C8", 0, 0, "", "", "", "");
-        this.a.a(1);
-        this.a.a(paramTorchInfo);
-        OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
-        OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-        paramArrayOfByte = Long.valueOf(-1L);
-        paramString = paramArrayOfByte;
-        if (OlympicManager.a(this.a) != null)
-        {
-          paramString = paramArrayOfByte;
-          if (OlympicManager.a(this.a).type == 2) {
-            paramString = Long.valueOf(OlympicManager.a(this.a).uiBegin);
-          }
-        }
-        OlympicManager.a(this.a).obtainMessage(7, paramString).sendToTarget();
-      }
+    if (paramaufa != null) {
+      a = paramaufa.a();
     }
-    else
-    {
-      return;
-    }
-    if (paramInt == 1)
-    {
-      this.a.a(1);
-      OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
-      OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-      return;
-    }
-    OlympicManager.b(this.a, false);
-    OlympicManager.b(this.a, null);
-    OlympicManager.a(this.a, 0);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public boolean d()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auez
  * JD-Core Version:    0.7.0.1
  */

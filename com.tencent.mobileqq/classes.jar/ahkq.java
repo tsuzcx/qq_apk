@@ -1,29 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import java.util.HashMap;
 
-class ahkq
-  implements View.OnClickListener
+public class ahkq
+  implements ahko
 {
-  ahkq(ahkd paramahkd) {}
+  public ahkq(TroopActivity paramTroopActivity) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, boolean paramBoolean)
   {
-    this.a.a(-1, null);
-    if (akuz.a().a() == 4)
+    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
     {
-      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akuy.b(), akuz.b(), akuz.a(), "1");
-      akuz.a().a(ahkd.a(this.a));
+      this.a.a.remove(paramString);
       return;
     }
-    axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akuy.b(), akuz.b(), akuz.a(), "1");
-    UpgradeDetailActivity.a(ahkd.a(this.a), akuz.a().a(), true, true, true);
+    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkq
  * JD-Core Version:    0.7.0.1
  */

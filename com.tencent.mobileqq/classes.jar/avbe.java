@@ -1,12 +1,14 @@
+import android.view.View;
+
 public abstract interface avbe
 {
-  public abstract void a(Object paramObject);
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public abstract void b(Object paramObject);
+  public abstract void a(String paramString, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avbe
  * JD-Core Version:    0.7.0.1
  */

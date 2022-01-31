@@ -1,27 +1,22 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable;
 
 public class ahxx
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  ahxy jdField_a_of_type_Ahxy = new ahxy(this.jdField_a_of_type_Ahxw);
-  String jdField_a_of_type_JavaLangString;
-  public AtomicInteger a;
-  volatile boolean jdField_a_of_type_Boolean;
-  public int b;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  public int c;
-  public String c;
-  public String d;
+  public ahxx(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public ahxx(ahxw paramahxw)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+    this.a.b.postDelayed(new ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxx
  * JD-Core Version:    0.7.0.1
  */

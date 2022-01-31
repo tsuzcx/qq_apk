@@ -1,27 +1,21 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment;
 
 public class ahhk
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public ahhk(SpringHbTranslucentBrowserActivity paramSpringHbTranslucentBrowserActivity) {}
+  public ahhk(NewFriendMoreSysMsgSuspiciousFragment paramNewFriendMoreSysMsgSuspiciousFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (SpringHbTranslucentBrowserActivity.a(this.a) != null) {
-      SpringHbTranslucentBrowserActivity.a(this.a).setAlpha(1.0F);
-    }
+    this.a.getActivity().finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhk
  * JD-Core Version:    0.7.0.1
  */

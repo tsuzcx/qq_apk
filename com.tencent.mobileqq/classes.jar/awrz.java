@@ -1,19 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Point;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
-class awrz
-  implements View.OnClickListener
+public class awrz
 {
-  awrz(awry paramawry, awoh paramawoh) {}
+  public int a;
+  public Point a;
+  public int b;
+  public Point b;
+  public int c;
+  public Point c;
+  public int d;
+  public Point d;
+  public Point e;
+  public Point f;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Awoh.a(paramView);
-  }
+  public awrz(SingleTouchLayout paramSingleTouchLayout) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awrz
  * JD-Core Version:    0.7.0.1
  */

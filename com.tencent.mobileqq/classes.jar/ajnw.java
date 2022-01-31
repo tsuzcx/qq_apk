@@ -1,18 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
-class ajnw
-  extends ajod
+public class ajnw
+  implements View.OnClickListener
 {
-  ajnw(ajnv paramajnv) {}
+  public ajnw(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    QLog.d("ApolloGameUtil", 2, "  onPermission the http retcode = " + paramInt);
+    QzoneSlideShowPreparingFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnw
  * JD-Core Version:    0.7.0.1
  */

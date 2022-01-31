@@ -1,30 +1,22 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ahtd
-  implements acts
+  implements View.OnClickListener
 {
-  ahtd(ahtc paramahtc) {}
+  ahtd(ahta paramahta, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public void onClick(View paramView)
   {
-    if (ahtc.a(this.a))
-    {
-      ahtc.a(this.a, false);
-      ahtc.a(this.a);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ahta, 2);
     }
   }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtd
  * JD-Core Version:    0.7.0.1
  */

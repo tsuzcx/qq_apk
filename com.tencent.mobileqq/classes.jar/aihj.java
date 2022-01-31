@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
 public class aihj
-  implements DialogInterface.OnClickListener
+  extends alox
 {
-  public aihj(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public aihj(ContactListView paramContactListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onAddFriend(String paramString) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    this.a.s();
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aihj
  * JD-Core Version:    0.7.0.1
  */

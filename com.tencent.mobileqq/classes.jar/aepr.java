@@ -1,39 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import android.graphics.drawable.Drawable;
 
-class aepr
-  implements bcix<oidb_0x8ed.RspBody>
+public class aepr
 {
-  aepr(aepq paramaepq) {}
-  
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.jdField_a_of_type_JavaLangString, 2, "exitRoom: errorCode = " + paramInt);
-    }
-    if ((paramInt == 0) || (paramInt == 1285))
-    {
-      if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-        this.a.a.d.dismiss();
-      }
-      new Intent().putExtra("isNeedFinish", true);
-      bbkb.e(this.a.a.a(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-      atch.a().d();
-      this.a.a.ab = true;
-      this.a.a.b(1);
-      return;
-    }
-    if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-      this.a.a.d.dismiss();
-    }
-    bcql.a(this.a.a.a(), 1, ajya.a(2131705080), 0).b(this.a.a.a());
-  }
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepr
  * JD-Core Version:    0.7.0.1
  */

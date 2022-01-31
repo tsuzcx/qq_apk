@@ -1,10 +1,20 @@
-public abstract interface nou
+import com.tencent.qphone.base.util.QLog;
+
+class nou
+  implements bhqg
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  nou(not paramnot) {}
+  
+  public void as_()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdDislikeHelper", 2, "onDismissOperations");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nou
  * JD-Core Version:    0.7.0.1
  */

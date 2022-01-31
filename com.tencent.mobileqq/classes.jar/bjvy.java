@@ -1,58 +1,102 @@
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.DownloadResult.Status;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class bjvy
-  implements bkdr
+  implements Downloader.DownloadListener
 {
-  bjvy(bjvt parambjvt) {}
+  bjvy(bjvx parambjvx, String paramString) {}
   
-  public void a()
+  public void onDownloadCanceled(String paramString)
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a();
-    if (this.a.jdField_a_of_type_Bjxn.a == 27) {
-      this.a.jdField_a_of_type_Bjxn.a(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadCanceled:" + paramString);
     }
-    if (this.a.jdField_a_of_type_Bjxn.a == 36)
+    try
     {
-      bjtj localbjtj = (bjtj)this.a.a(bjtj.class);
-      if (localbjtj != null) {
-        localbjtj.c();
-      }
-      this.a.jdField_a_of_type_Bjxn.a(0);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", -1);
+      localJSONObject.put("message", paramString);
+      bjvx.a(this.jdField_a_of_type_Bjvx).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadCanceled : " + paramString.getMessage());
     }
   }
   
-  public void a(bkin parambkin)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if ((this.a.jdField_a_of_type_Bjxn.h() != 0) && (bjxn.a(bjvt.a(this.a), 134217728)))
-    {
-      VideoSegmentPickerProviderView localVideoSegmentPickerProviderView = (VideoSegmentPickerProviderView)this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111);
-      if (localVideoSegmentPickerProviderView != null)
-      {
-        bjtj localbjtj = (bjtj)this.a.a(bjtj.class);
-        if (localbjtj != null)
-        {
-          localVideoSegmentPickerProviderView.setPlayMode(localbjtj.a());
-          localbjtj.h_();
-          localbjtj.b();
-        }
-      }
-      this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111, new Object[] { parambkin });
-      if (this.a.jdField_a_of_type_Bjxn.a == 0) {
-        this.a.jdField_a_of_type_Bjxn.a(36);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadFailed:" + paramString);
     }
-    do
+    for (;;)
     {
+      try
+      {
+        paramString = new JSONObject();
+        if (paramDownloadResult == null) {
+          continue;
+        }
+        DownloadResult.Status localStatus = paramDownloadResult.getStatus();
+        if (localStatus == null) {
+          continue;
+        }
+        paramString.put("code", localStatus.failReason);
+        paramString.put("message", paramDownloadResult.getDetailDownloadInfo());
+      }
+      catch (Exception paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadFailed : " + paramString.getMessage());
+        return;
+        paramString.put("code", -1);
+        paramString.put("message", "DownloadFailed");
+        continue;
+      }
+      bjvx.b(this.jdField_a_of_type_Bjvx).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
       return;
-      this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(103, new Object[] { parambkin });
-    } while (this.a.jdField_a_of_type_Bjxn.a != 0);
-    this.a.jdField_a_of_type_Bjxn.a(27);
+      paramString.put("code", -1);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, new Object[] { "onDownloadProgress: ", paramString + " : " + paramLong + " : " + paramFloat });
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadSucceed");
+    }
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 0);
+      paramString.put("message", "success");
+      bjvx.c(this.jdField_a_of_type_Bjvx).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramString.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjvy
  * JD-Core Version:    0.7.0.1
  */

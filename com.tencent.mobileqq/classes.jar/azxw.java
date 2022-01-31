@@ -1,22 +1,34 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class azxw
-  implements View.OnClickListener
+class azxw
+  implements Callable<File>
 {
-  public azxw(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  azxw(azxv paramazxv) {}
   
-  public void onClick(View paramView)
+  public File a()
   {
-    bfni.b(paramView);
-    this.a.getActivity().doOnBackPressed();
+    if ((!azxv.a(this.a).exists()) || (!azxv.a(this.a)))
+    {
+      long l = System.currentTimeMillis();
+      if (!azxv.a(this.a, azxv.a(this.a), azxv.a(this.a), azxv.a(this.a).getAbsolutePath())) {
+        break label111;
+      }
+      QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm success, cost=" + (System.currentTimeMillis() - l));
+    }
+    while (azxv.a(this.a).exists())
+    {
+      return azxv.a(this.a);
+      label111:
+      QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm fail");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azxw
  * JD-Core Version:    0.7.0.1
  */

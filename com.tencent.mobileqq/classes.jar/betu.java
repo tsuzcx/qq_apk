@@ -1,27 +1,25 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout;
 
 class betu
-  implements AsyncResult
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  betu(bett parambett, int paramInt, EngineChannel paramEngineChannel) {}
+  betu(bets parambets, float paramFloat1, float paramFloat2) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    betc.b("EngineManager", "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      paramJSONObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(this.jdField_a_of_type_Int)));
-      betc.b("EngineManager", "[MiniEng] engineLibInfo " + paramJSONObject);
-      betq.b(this.jdField_a_of_type_Bett.a, paramJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
-    }
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = paramValueAnimator.floatValue();
+    float f3 = this.b;
+    float f4 = this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_Bets.a.setAlpha(f2 * (f3 - f4) + f1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     betu
  * JD-Core Version:    0.7.0.1
  */

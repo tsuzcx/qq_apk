@@ -1,25 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afmz
-  implements View.OnClickListener
+  extends afpq
 {
-  afmz(afmy paramafmy) {}
-  
-  public void onClick(View paramView)
+  afmz(aflj paramaflj)
   {
-    if (afmy.a(this.a))
-    {
-      TroopSuspiciousFragment.a(afmy.a(this.a));
-      return;
-    }
-    this.a.b();
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agbu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afmz
  * JD-Core Version:    0.7.0.1
  */

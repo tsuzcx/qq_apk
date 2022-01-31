@@ -1,40 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
-
 public class bfmc
-  implements ArtFilterResource
 {
-  public String getCommonPrefix()
+  public static final bfmc a;
+  public static final bfmc b;
+  public static final bfmc c = new bfmc("ANDROID.QQ.NEWYYBAPK", "7001");
+  public String a;
+  public String b;
+  
+  static
   {
-    return ahww.c;
+    jdField_a_of_type_Bfmc = new bfmc("ANDROID.QQ.WLISTAPK", "7003");
+    jdField_b_of_type_Bfmc = new bfmc("ANDROID.QQ.YYBAPK", "7002");
   }
   
-  public String getFilterResPath()
+  bfmc(String paramString1, String paramString2)
   {
-    if (bfma.a) {
-      return bkuv.b;
-    }
-    return avsf.b;
-  }
-  
-  public String getModelPath()
-  {
-    return "";
-  }
-  
-  public String getReshapePath()
-  {
-    return "";
-  }
-  
-  public String getSoPathDir()
-  {
-    return axle.d(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfmc
  * JD-Core Version:    0.7.0.1
  */

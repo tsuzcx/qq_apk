@@ -1,29 +1,10 @@
-import android.app.Activity;
-import android.view.View;
-
-class nae
-  implements bfph
+public abstract interface nae
 {
-  nae(nab paramnab, Activity paramActivity, String paramString, bfpc parambfpc) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      nab.a(this.jdField_a_of_type_Nab, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      nab.a(this.jdField_a_of_type_Nab, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nae
  * JD-Core Version:    0.7.0.1
  */

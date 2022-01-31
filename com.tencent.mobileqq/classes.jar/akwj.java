@@ -1,29 +1,22 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import com.tencent.qphone.base.util.QLog;
-
-class akwj
-  implements ayju
+public class akwj
+  extends akwd
 {
-  akwj(akwi paramakwi) {}
+  private int b;
   
-  public void a(int paramInt)
+  public akwj(int paramInt1, int paramInt2, akwl paramakwl)
   {
-    QLog.e("QQConfMeetingLogReportHelper", 1, "doReportLocalLog OnGetLocalLogListener onError, code=" + paramInt);
+    super(paramInt1, paramakwl);
+    this.b = paramInt2;
   }
   
-  public void a(String paramString)
+  public aknh a(long paramLong, String paramString1, String paramString2)
   {
-    akwi.a(this.a, paramString);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.a.a.a(false);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwj
  * JD-Core Version:    0.7.0.1
  */

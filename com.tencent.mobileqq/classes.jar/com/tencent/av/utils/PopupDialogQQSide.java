@@ -6,17 +6,17 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bbdj;
-import bbgu;
+import bdcd;
+import bdfq;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import msj;
-import msk;
-import msl;
+import mvd;
+import mve;
+import mvf;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
 {
-  public bbgu a = null;
+  public bdfq a = null;
   
   void a()
   {
@@ -39,31 +39,31 @@ public class PopupDialogQQSide
     boolean bool1 = ((Bundle)localObject1).getBoolean("leftBtnVisiable", true);
     boolean bool2 = ((Bundle)localObject1).getBoolean("rightBtnVisiable", true);
     a();
-    localObject1 = new msj(this, (ResultReceiver)localObject2);
-    localObject2 = new msk(this, (ResultReceiver)localObject2);
+    localObject1 = new mvd(this, (ResultReceiver)localObject2);
+    localObject2 = new mve(this, (ResultReceiver)localObject2);
     if (i == 0) {
-      i = 2131720783;
+      i = 2131721323;
     }
     for (;;)
     {
       if (j == 0) {
-        j = 2131720783;
+        j = 2131721323;
       }
       for (;;)
       {
-        bbgu localbbgu = bbdj.a(getActivity(), k);
-        localbbgu.setMessage(str2);
-        localbbgu.setTitle(str1);
+        bdfq localbdfq = bdcd.a(getActivity(), k);
+        localbdfq.setMessage(str2);
+        localbdfq.setTitle(str1);
         if (bool1) {
-          localbbgu.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
+          localbdfq.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
         }
         if (bool2) {
-          localbbgu.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
+          localbdfq.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
         }
-        localbbgu.setOnDismissListener(new msl(this));
-        localbbgu.setCancelable(true);
-        localbbgu.show();
-        this.a = localbbgu;
+        localbdfq.setOnDismissListener(new mvf(this));
+        localbdfq.setCancelable(true);
+        localbdfq.show();
+        this.a = localbdfq;
         return;
       }
     }
@@ -88,7 +88,7 @@ public class PopupDialogQQSide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.utils.PopupDialogQQSide
  * JD-Core Version:    0.7.0.1
  */

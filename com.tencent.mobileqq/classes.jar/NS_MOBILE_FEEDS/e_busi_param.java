@@ -66,6 +66,7 @@ public final class e_busi_param
   public static final int _FeedGetMethod = 118;
   public static final int _FeedTime = 42;
   public static final int _FeedsOpUin = 197;
+  public static final int _FloatLayerSession = 198;
   public static final int _FontLibraryURL = 89;
   public static final int _Framerate = 110;
   public static final int _FriendshipEndTime = 129;
@@ -100,6 +101,7 @@ public final class e_busi_param
   public static final int _IsRealTimeReportTTT = 122;
   public static final int _IsServiceLink = 27;
   public static final int _IsSignIn = 50;
+  public static final int _IsStoryBannerVideo = 192;
   public static final int _IsSuportTbsDownload = 167;
   public static final int _IsTimerMachineFeeds = 183;
   public static final int _JumpIndexEndTime = 81;
@@ -140,6 +142,7 @@ public final class e_busi_param
   public static final int _PhotoViewGetPicList = 16;
   public static final int _PhotoWithComm = 9;
   public static final int _PicEnlargeRate = 53;
+  public static final int _PraiseActId = 199;
   public static final int _PublishSource = 51;
   public static final int _QQGroupId = 166;
   public static final int _QuanKey = 144;
@@ -197,7 +200,7 @@ public final class e_busi_param
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_busi_param
  * JD-Core Version:    0.7.0.1
  */

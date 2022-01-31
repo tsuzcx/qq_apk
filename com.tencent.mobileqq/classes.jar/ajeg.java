@@ -1,23 +1,18 @@
-import android.view.SurfaceHolder;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import com.tencent.widget.XListView;
 
 class ajeg
-  implements IVideoViewBase.IVideoViewCallBack
+  implements uzi
 {
-  ajeg(ajef paramajef) {}
+  ajeg(ajee paramajee) {}
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  public void a()
   {
-    ajef.a(this.a, true);
+    this.a.a.invalidateViews();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajeg
  * JD-Core Version:    0.7.0.1
  */

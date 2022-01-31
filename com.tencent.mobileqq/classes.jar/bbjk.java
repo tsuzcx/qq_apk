@@ -1,24 +1,34 @@
-import java.util.ArrayList;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
 public class bbjk
+  implements View.OnFocusChangeListener
 {
-  public static bbjs a(int paramInt, ArrayList<bbjs> paramArrayList)
-  {
-    bbjs localbbjs = bbjs.a(paramInt);
-    paramArrayList.add(localbbjs);
-    return localbbjs;
-  }
+  public bbjk(NewTroopContactView paramNewTroopContactView) {}
   
-  public static bbjs a(int paramInt1, ArrayList<bbjs> paramArrayList, String paramString, int paramInt2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    bbjs localbbjs = a(paramInt1, paramArrayList);
-    paramArrayList = paramString;
-    if (paramString == null) {
-      paramArrayList = "";
+    if (paramBoolean)
+    {
+      paramView = this.a.a();
+      if (paramView != null)
+      {
+        paramView.d(true);
+        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
+        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        }
+        localFragmentTransaction.add(2131375671, paramView);
+        localFragmentTransaction.commitAllowingStateLoss();
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
+      }
     }
-    localbbjs.b = paramArrayList;
-    localbbjs.e = paramInt2;
-    return localbbjs;
   }
 }
 

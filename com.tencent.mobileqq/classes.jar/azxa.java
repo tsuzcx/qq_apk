@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
 
-public class azxa
-  implements QQPermissionCallback
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class azxa
+  implements View.OnClickListener
 {
-  public azxa(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  azxa(azwy paramazwy) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public final void onClick(View paramView)
   {
-    bbdj.a(this.a.getActivity(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.c = TroopHWJsPlugin.a(this.a.getActivity(), 260);
-    bfni.a(this.a.getActivity());
+    azwy.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azxa
  * JD-Core Version:    0.7.0.1
  */

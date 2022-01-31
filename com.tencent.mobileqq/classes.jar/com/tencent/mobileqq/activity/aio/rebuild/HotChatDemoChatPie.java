@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeqb;
+import agmy;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -29,7 +29,7 @@ import java.net.URLEncoder;
 import mqq.os.MqqHandler;
 
 public class HotChatDemoChatPie
-  extends aeqb
+  extends agmy
 {
   protected LinearLayout c;
   protected String i;
@@ -93,7 +93,7 @@ public class HotChatDemoChatPie
         this.p.setLayoutParams(localLayoutParams);
         this.p.setImageDrawable(paramDrawable);
         paramDrawable = new SimpleTextView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-        paramDrawable.setText(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getText(2131699069));
+        paramDrawable.setText(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getText(2131699412));
         localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.bottomMargin = this.r;
         localLayoutParams.gravity = 1;
@@ -110,7 +110,7 @@ public class HotChatDemoChatPie
         paramDrawable.addRule(15);
         paramDrawable.rightMargin = this.s;
         this.c.setLayoutParams(paramDrawable);
-        this.c.setBackgroundResource(2130844619);
+        this.c.setBackgroundResource(2130844983);
       } while (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.c);
       return;
@@ -123,9 +123,9 @@ public class HotChatDemoChatPie
     this.jdField_a_of_type_JavaLangString = "HotChatDemoChatPie";
   }
   
-  public void ag()
+  public void ai()
   {
-    super.ag();
+    super.ai();
     if (this.c == null)
     {
       if (TextUtils.isEmpty(this.i)) {
@@ -152,8 +152,8 @@ public class HotChatDemoChatPie
   {
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699068);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131699068));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699411);
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131699411));
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
     }
   }
@@ -197,7 +197,7 @@ public class HotChatDemoChatPie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatDemoChatPie
  * JD-Core Version:    0.7.0.1
  */

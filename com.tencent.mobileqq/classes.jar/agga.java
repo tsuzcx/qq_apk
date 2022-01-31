@@ -1,28 +1,61 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-public class agga
+public abstract class agga
+  extends Binder
+  implements agfz
 {
-  public static void a(String paramString)
+  public agga()
   {
-    a(paramString, "");
+    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
   }
   
-  public static void a(String paramString1, String paramString2)
+  public static agfz a(IBinder paramIBinder)
   {
-    a(paramString1, paramString2, "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    axqy.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d(aghk.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
+    if (paramIBinder == null) {
+      return null;
     }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    if ((localIInterface != null) && ((localIInterface instanceof agfz))) {
+      return (agfz)localIInterface;
+    }
+    return new aggb(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      a((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      b((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    c((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agga
  * JD-Core Version:    0.7.0.1
  */

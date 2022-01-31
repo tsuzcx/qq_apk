@@ -1,12 +1,31 @@
-import java.util.List;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aiud
+public class aiud
+  implements aiqm
 {
-  public abstract void a(boolean paramBoolean, String paramString1, List<aiua> paramList, String paramString2);
+  public aiud(ThemeHbFragment paramThemeHbFragment) {}
+  
+  public void a()
+  {
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+    }
+    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
+      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiud
  * JD-Core Version:    0.7.0.1
  */

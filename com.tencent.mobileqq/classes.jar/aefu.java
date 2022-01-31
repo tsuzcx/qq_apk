@@ -1,32 +1,33 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.widget.ListView;
-import com.tencent.widget.XPanelContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aefu
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public aefu(PEPanel paramPEPanel) {}
+  public aefu(UpgradeActivity paramUpgradeActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
+    bfhg.b("qqBaseActivity", bfeh.a(10010, 1, 3, 200));
+    bfef.a().a(17, bfeh.a(10010, 1, 3, 200));
+    if (!bfko.a().b()) {
+      bfhq.a().a(alpo.a(2131716293));
     }
-    PEPanel.a(this.a).setVisibility(0);
-    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
-    paramMessage.setDuration(200L);
-    PEPanel.a(this.a).startAnimation(paramMessage);
-    return true;
+    for (;;)
+    {
+      ThreadManager.getSubThreadHandler().postDelayed(new UpgradeActivity.15.1(this), 500L);
+      return;
+      bdef.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefu
  * JD-Core Version:    0.7.0.1
  */

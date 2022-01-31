@@ -1,23 +1,23 @@
 package cooperation.vip.ar.controller;
 
 import android.widget.TextView;
-import bhyi;
+import bkae;
 
 public class VipARCameraController$6
   implements Runnable
 {
-  public VipARCameraController$6(bhyi parambhyi) {}
+  public VipARCameraController$6(bkae parambkae) {}
   
   public void run()
   {
-    if (bhyi.a(this.this$0) != null) {
-      bhyi.a(this.this$0).setText("[ 尝试一下屏幕点击吧 ]");
+    if (bkae.a(this.this$0) != null) {
+      bkae.a(this.this$0).setText("[ 尝试一下屏幕点击吧 ]");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.vip.ar.controller.VipARCameraController.6
  * JD-Core Version:    0.7.0.1
  */

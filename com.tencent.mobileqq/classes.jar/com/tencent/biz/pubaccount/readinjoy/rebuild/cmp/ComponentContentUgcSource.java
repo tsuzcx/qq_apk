@@ -18,22 +18,22 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import nol;
-import onh;
-import pau;
-import pqo;
-import pqy;
-import puy;
-import ram;
+import nrt;
+import ors;
+import pgd;
+import pxj;
+import pxt;
+import qbs;
+import rqj;
 
 public class ComponentContentUgcSource
   extends LinearLayout
-  implements View.OnClickListener, pqo
+  implements View.OnClickListener, pxj
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private String jdField_a_of_type_JavaLangString;
-  puy jdField_a_of_type_Puy;
+  qbs jdField_a_of_type_Qbs;
   
   public ComponentContentUgcSource(Context paramContext)
   {
@@ -60,22 +60,22 @@ public class ComponentContentUgcSource
       localObject = new Intent(getContext(), PublicAccountBrowser.class);
       ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
       getContext().startActivity((Intent)localObject);
-      localObject = this.jdField_a_of_type_Puy.a.a();
+      localObject = this.jdField_a_of_type_Qbs.a.a();
     } while (localObject == null);
-    nol.a((ArticleInfo)localObject);
-    ram.a((ArticleInfo)localObject, this.jdField_a_of_type_Puy.a.e());
+    nrt.a((ArticleInfo)localObject);
+    rqj.a((ArticleInfo)localObject, this.jdField_a_of_type_Qbs.a.e());
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Puy = new puy();
+    this.jdField_a_of_type_Qbs = new qbs();
     a(paramContext);
     a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560035, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560136, this, true);
   }
   
   public void a()
@@ -90,17 +90,17 @@ public class ComponentContentUgcSource
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378567));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379182));
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131378568));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379183));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pau))
+    if ((paramObject instanceof pgd))
     {
-      paramObject = (pau)paramObject;
-      this.jdField_a_of_type_Puy.a(paramObject);
+      paramObject = (pgd)paramObject;
+      this.jdField_a_of_type_Qbs.a(paramObject);
       paramObject = paramObject.a();
       if (paramObject != null) {
         break label46;
@@ -111,7 +111,7 @@ public class ComponentContentUgcSource
     }
     return;
     label46:
-    if ((ram.a(paramObject)) || ((ram.i(paramObject)) && (!ram.m(paramObject))) || (onh.g(paramObject)) || ((onh.h(paramObject)) && (!ram.l(paramObject))) || (ram.d(paramObject)))
+    if ((rqj.b(paramObject)) || ((rqj.i(paramObject)) && (!rqj.m(paramObject))) || (ors.g(paramObject)) || ((ors.h(paramObject)) && (!rqj.l(paramObject))) || (rqj.d(paramObject)))
     {
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = 0;
@@ -139,9 +139,9 @@ public class ComponentContentUgcSource
     }
   }
   
-  public void a(pqy parampqy)
+  public void a(pxt parampxt)
   {
-    this.jdField_a_of_type_Puy.a(parampqy);
+    this.jdField_a_of_type_Qbs.a(parampxt);
   }
   
   public void onClick(View paramView)
@@ -156,7 +156,7 @@ public class ComponentContentUgcSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource
  * JD-Core Version:    0.7.0.1
  */

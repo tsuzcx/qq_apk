@@ -1,10 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
+import com.tencent.widget.AdapterView;
 
 public class bbdt
-  implements DialogInterface.OnClickListener
+  implements bhqp
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public bbdt(TroopAvatarWallPreviewActivity.2.1 param1) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    this.a.a.this$0.a();
+  }
 }
 
 

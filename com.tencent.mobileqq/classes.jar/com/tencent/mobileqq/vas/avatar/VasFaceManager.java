@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vas.avatar;
 
-import actj;
-import acup;
-import ajsd;
-import ajtb;
-import ajxl;
+import aekt;
+import aelz;
+import aljq;
+import alko;
+import aloz;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -13,12 +13,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import axmv;
-import bbbm;
-import bbrg;
-import bbrl;
-import bbrm;
-import bfnj;
+import azib;
+import bdag;
+import bdqa;
+import bdqf;
+import bdqg;
+import bhod;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -45,14 +45,14 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 public class VasFaceManager
-  extends bbrl<String>
+  extends bdqf<String>
 {
   private static Bundle jdField_a_of_type_AndroidOsBundle;
   public static Handler a;
   public static Boolean a;
   private static final ArrayList<VasFaceManager.Replayer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private static boolean jdField_a_of_type_Boolean;
-  private final bfnj<Object> jdField_a_of_type_Bfnj = new bfnj();
+  private final bhod<Object> jdField_a_of_type_Bhod = new bhod();
   public QQAppInterface a;
   private LinkedHashMap<String, Object> jdField_a_of_type_JavaUtilLinkedHashMap = new VasFaceManager.3(this, 20, 0.75F, true);
   
@@ -70,7 +70,7 @@ public class VasFaceManager
   {
     int i = 0;
     paramString = paramQQAppInterface.a(paramString, false);
-    if (((paramString != null) && (paramString.faceId > 0)) || (axmv.b())) {
+    if (((paramString != null) && (paramString.faceId > 0)) || (azib.b())) {
       i = 4;
     }
     return i;
@@ -124,14 +124,14 @@ public class VasFaceManager
   
   public static VasFaceManager a(QQAppInterface paramQQAppInterface)
   {
-    return ((bbrg)paramQQAppInterface.getManager(235)).a;
+    return ((bdqa)paramQQAppInterface.getManager(235)).a;
   }
   
   public static String a(int paramInt, String paramString)
   {
-    StringBuilder localStringBuilder = actj.a();
+    StringBuilder localStringBuilder = aekt.a();
     if (a()) {
-      localStringBuilder.append(ajsd.bL);
+      localStringBuilder.append(aljq.bM);
     }
     for (;;)
     {
@@ -246,7 +246,7 @@ public class VasFaceManager
   private static boolean a()
   {
     if (jdField_a_of_type_JavaLangBoolean == null) {
-      jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bbbm.a());
+      jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bdag.a());
     }
     return jdField_a_of_type_JavaLangBoolean.booleanValue();
   }
@@ -292,10 +292,10 @@ public class VasFaceManager
     }
   }
   
-  public void a(int paramInt, String paramString, bbrm<String> parambbrm, Object paramObject)
+  public void a(int paramInt, String paramString, bdqg<String> parambdqg, Object paramObject)
   {
     String str = "face." + paramInt + "." + paramString;
-    a(str, parambbrm, paramObject);
+    a(str, parambdqg, paramObject);
     ThreadManagerV2.excute(new VasFaceManager.1(this, a(paramInt, paramString), str), 128, null, true);
   }
   
@@ -310,10 +310,10 @@ public class VasFaceManager
     }
   }
   
-  public void a(ListView paramListView, acup paramacup, int paramInt)
+  public void a(ListView paramListView, aelz paramaelz, int paramInt)
   {
     int j = 0;
-    int k = paramListView.getContext().getResources().getDimensionPixelSize(2131298865);
+    int k = paramListView.getContext().getResources().getDimensionPixelSize(2131298914);
     int n = paramListView.getFirstVisiblePosition();
     int m = paramListView.getChildCount();
     int i1 = paramListView.getHeaderViewsCount();
@@ -321,7 +321,7 @@ public class VasFaceManager
     Object localObject;
     for (int i = 0;; i = n - i1)
     {
-      m = Math.min(paramacup.getCount(), m + n - i1);
+      m = Math.min(paramaelz.getCount(), m + n - i1);
       if (n < i1) {
         j = i1 - n;
       }
@@ -333,11 +333,11 @@ public class VasFaceManager
         localObject = a(paramListView, j, k);
         if (localObject != null)
         {
-          ChatMessage localChatMessage = (ChatMessage)paramacup.getItem(i);
+          ChatMessage localChatMessage = (ChatMessage)paramaelz.getItem(i);
           if (localChatMessage != null)
           {
             long l = localChatMessage.uniseq;
-            if (this.jdField_a_of_type_Bfnj.a(l) == null)
+            if (this.jdField_a_of_type_Bhod.a(l) == null)
             {
               localObject = ((VasAvatar)localObject).getDrawable();
               if ((localObject instanceof URLDrawable))
@@ -354,19 +354,19 @@ public class VasFaceManager
         i += 1;
       }
     }
-    this.jdField_a_of_type_Bfnj.a();
+    this.jdField_a_of_type_Bhod.a();
     for (;;)
     {
       return;
       label213:
-      if (this.jdField_a_of_type_Bfnj.a() == 0) {
+      if (this.jdField_a_of_type_Bhod.a() == 0) {
         while (i < m)
         {
           if (a(paramListView, j, k) != null)
           {
-            localObject = (ChatMessage)paramacup.getItem(i);
+            localObject = (ChatMessage)paramaelz.getItem(i);
             if (localObject != null) {
-              this.jdField_a_of_type_Bfnj.a(((ChatMessage)localObject).uniseq, this);
+              this.jdField_a_of_type_Bhod.a(((ChatMessage)localObject).uniseq, this);
             }
           }
           j += 1;
@@ -435,7 +435,7 @@ public class VasFaceManager
         if (i != paramInt) {
           b(Arrays.asList(new String[] { paramString }));
         }
-        paramString = (ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+        paramString = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
         localExtensionInfo.setStatus(1000);
         localExtensionInfo.faceId = paramInt;
         localExtensionInfo.faceIdUpdateTime = NetConnInfoCenter.getServerTime();
@@ -452,9 +452,9 @@ public class VasFaceManager
     }
   }
   
-  public void b(String paramString, bbrm<String> parambbrm, Object paramObject)
+  public void b(String paramString, bdqg<String> parambdqg, Object paramObject)
   {
-    a(paramString, parambbrm, paramObject);
+    a(paramString, parambdqg, paramObject);
     ThreadManagerV2.excute(new VasFaceManager.2(this, paramString), 32, null, true);
   }
   
@@ -464,16 +464,16 @@ public class VasFaceManager
     // Byte code:
     //   0: aload_0
     //   1: getfield 59	com/tencent/mobileqq/vas/avatar/VasFaceManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 576	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Laukq;
-    //   7: invokevirtual 582	aukq:createEntityManager	()Laukp;
+    //   4: invokevirtual 576	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lawbx;
+    //   7: invokevirtual 582	awbx:createEntityManager	()Lawbw;
     //   10: astore 4
     //   12: aconst_null
     //   13: astore_3
     //   14: aload 4
-    //   16: invokevirtual 587	aukp:a	()Laukr;
+    //   16: invokevirtual 587	awbw:a	()Lawby;
     //   19: astore_2
     //   20: aload_2
-    //   21: invokevirtual 590	aukr:a	()V
+    //   21: invokevirtual 590	awby:a	()V
     //   24: aload_1
     //   25: invokeinterface 509 1 0
     //   30: astore_1
@@ -487,7 +487,7 @@ public class VasFaceManager
     //   50: aload 4
     //   52: ldc_w 592
     //   55: aload_3
-    //   56: invokevirtual 595	aukp:a	(Ljava/lang/Class;Ljava/lang/String;)Lauko;
+    //   56: invokevirtual 595	awbw:a	(Ljava/lang/Class;Ljava/lang/String;)Lawbv;
     //   59: checkcast 592	com/tencent/mobileqq/data/Setting
     //   62: astore 5
     //   64: aload 5
@@ -507,7 +507,7 @@ public class VasFaceManager
     //   93: invokevirtual 604	com/tencent/mobileqq/app/QQAppInterface:a	(ILjava/lang/String;I)V
     //   96: aload 4
     //   98: aload 5
-    //   100: invokevirtual 607	aukp:a	(Lauko;)Z
+    //   100: invokevirtual 607	awbw:a	(Lawbv;)Z
     //   103: pop
     //   104: goto -73 -> 31
     //   107: astore_3
@@ -523,18 +523,18 @@ public class VasFaceManager
     //   122: aload_1
     //   123: ifnull +7 -> 130
     //   126: aload_1
-    //   127: invokevirtual 610	aukr:b	()V
+    //   127: invokevirtual 610	awby:b	()V
     //   130: aload 4
-    //   132: invokevirtual 611	aukp:a	()V
+    //   132: invokevirtual 611	awbw:a	()V
     //   135: return
     //   136: aload_2
-    //   137: invokevirtual 612	aukr:c	()V
+    //   137: invokevirtual 612	awby:c	()V
     //   140: aload_2
     //   141: ifnull +7 -> 148
     //   144: aload_2
-    //   145: invokevirtual 610	aukr:b	()V
+    //   145: invokevirtual 610	awby:b	()V
     //   148: aload 4
-    //   150: invokevirtual 611	aukp:a	()V
+    //   150: invokevirtual 611	awbw:a	()V
     //   153: return
     //   154: astore_1
     //   155: aconst_null
@@ -542,9 +542,9 @@ public class VasFaceManager
     //   157: aload_2
     //   158: ifnull +7 -> 165
     //   161: aload_2
-    //   162: invokevirtual 610	aukr:b	()V
+    //   162: invokevirtual 610	awby:b	()V
     //   165: aload 4
-    //   167: invokevirtual 611	aukp:a	()V
+    //   167: invokevirtual 611	awbw:a	()V
     //   170: aload_1
     //   171: athrow
     //   172: astore_1
@@ -568,7 +568,7 @@ public class VasFaceManager
     //   13	77	3	str	String
     //   107	4	3	localException2	Exception
     //   176	10	3	localObject2	Object
-    //   10	156	4	localaukp	aukp
+    //   10	156	4	localawbw	awbw
     //   62	37	5	localSetting	com.tencent.mobileqq.data.Setting
     // Exception table:
     //   from	to	target	type
@@ -592,7 +592,7 @@ public class VasFaceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasFaceManager
  * JD-Core Version:    0.7.0.1
  */

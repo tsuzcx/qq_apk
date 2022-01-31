@@ -1,49 +1,70 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.DeviceProfileManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ajuy
-  extends BroadcastReceiver
+  extends amab
 {
-  public ajuy(DeviceProfileManager paramDeviceProfileManager) {}
+  public ajuy(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.e("DeviceProfileManager", 4, "onReceive");
-    }
-    if (paramIntent == null) {}
-    do
+    Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getIntent().getStringExtra("group_uin");
+    Object localObject2 = new StringBuilder().append("onUpdateTroopGetMemberList, troopUin[").append(paramString).append("], ftroopUin[").append((String)localObject1).append("], troopMemberInfoList[");
+    if (paramList != null) {}
+    for (paramInt1 = paramList.size();; paramInt1 = -1)
     {
-      for (;;)
+      QLog.w("FriendTeamListInnerFrameNew", 1, paramInt1 + "]");
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).equals(paramString))) {
+        break;
+      }
+      return;
+    }
+    paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localObject1 = new ArrayList();
+    localObject2 = (bckx)this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.getManager(203);
+    bfua localbfua = (bfua)this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.getManager(165);
+    Object localObject3 = (aloz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        return;
-        try
+        localObject3 = (TroopMemberInfo)paramList.next();
+        if (localObject3 != null)
         {
-          paramContext = paramIntent.getExtras();
-          if (paramContext != null)
-          {
-            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
-            if (DeviceProfileManager.a() != null)
+          if (QLog.isDevelopLevel()) {
+            QLog.w("FriendTeamListInnerFrameNew", 1, "onUpdateTroopGetMemberList, memberuin[" + ((TroopMemberInfo)localObject3).memberuin + "]");
+          }
+          if (!TextUtils.equals(((TroopMemberInfo)localObject3).memberuin, paramString)) {
+            if ((((bckx)localObject2).b(((TroopMemberInfo)localObject3).memberuin)) || (localbfua.f(((TroopMemberInfo)localObject3).memberuin)))
             {
-              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
-              return;
+              if (QLog.isDevelopLevel()) {
+                QLog.w("FriendTeamListInnerFrameNew", 1, "onUpdateTroopGetMemberList, isRobotUin");
+              }
+            }
+            else {
+              ((ArrayList)localObject1).add(localObject3);
             }
           }
         }
-        catch (Exception paramContext) {}
       }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b((ArrayList)localObject1);
+    FriendTeamListInnerFrame.a(this.a).a((ArrayList)localObject1);
+    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajuy
  * JD-Core Version:    0.7.0.1
  */

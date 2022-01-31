@@ -1,181 +1,96 @@
-import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.gamecenter.anim.FullPopAnimWithLOLLIPOP.5;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
-import cooperation.qwallet.plugin.QWalletPicHelper;
-import java.io.File;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aqrf
-  extends aqqw
-  implements aqsy
+  extends aqro
 {
-  private int jdField_a_of_type_Int;
-  @SuppressLint({"HandlerLeak"})
-  private Handler jdField_a_of_type_AndroidOsHandler = new aqrg(this);
-  private aqsb jdField_a_of_type_Aqsb;
-  private int b;
-  private int c;
-  private int d;
-  
-  public aqrf(Context paramContext, FullPopData paramFullPopData, String paramString1, String paramString2, boolean paramBoolean)
+  public aqrf(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    super(paramContext, paramFullPopData, paramString1, paramString2, paramBoolean);
-    this.jdField_c_of_type_Int = 200;
-    this.jdField_d_of_type_Int = 10;
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    QLog.e("DefaultBubbleModel", 1, "error, this is a default bubble model.");
   }
   
-  private void a(FullPopData paramFullPopData, FullPopVideoView paramFullPopVideoView)
+  public int a()
   {
-    paramFullPopData = aqsr.a(paramFullPopData.resPath, "video.mp4");
-    FeedsItemData localFeedsItemData = new FeedsItemData();
-    localFeedsItemData.videoUrl = Uri.parse(paramFullPopData.getPath()).toString();
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.a();
-    paramFullPopVideoView.a(this.jdField_a_of_type_AndroidContentContext, localFeedsItemData.videoUrl);
+    return 0;
   }
   
-  private void e()
+  public long a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      int i = axlk.e(this.jdField_a_of_type_AndroidContentContext);
-      Object localObject1 = aqsr.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.resPath, "line.png", i, 0);
-      Object localObject2 = QWalletPicHelper.getDrawableForWallet(aqsr.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.resPath, "box.png").getPath(), null);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
-      localObject1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "scaleY", new float[] { 0.0F, 1.0F });
-      ((ObjectAnimator)localObject1).setDuration(500L);
-      localObject2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
-      ((ObjectAnimator)localObject2).setDuration(500L);
-      a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData, this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView);
-      ((ObjectAnimator)localObject2).addListener(new aqrh(this));
-      ((ObjectAnimator)localObject1).start();
-      ((ObjectAnimator)localObject2).start();
-    }
+    return 0L;
   }
   
-  @SuppressLint({"NewApi"})
-  private void f()
+  public aqnd a()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTop() + actj.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getBottom() - actj.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_Aqsb = new aqsb(i, j, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLeft(), this.jdField_a_of_type_AndroidWidgetRelativeLayout.getRight());
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOutlineProvider(this.jdField_a_of_type_Aqsb);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setClipToOutline(true);
-    this.jdField_a_of_type_Int = ((int)(i * 1.0F / this.jdField_c_of_type_Int * this.jdField_d_of_type_Int));
-    this.jdField_b_of_type_Int = ((int)((this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() - j) * 1.0F / this.jdField_c_of_type_Int * this.jdField_d_of_type_Int));
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 1100L);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.b();
-    aqsw.a(System.currentTimeMillis());
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 4000L);
+    return null;
   }
   
-  private void g()
+  public aqng a()
   {
-    if (this.jdField_a_of_type_Aqsb != null)
-    {
-      aqsb localaqsb = this.jdField_a_of_type_Aqsb;
-      localaqsb.jdField_a_of_type_Int -= this.jdField_a_of_type_Int;
-      localaqsb = this.jdField_a_of_type_Aqsb;
-      localaqsb.jdField_b_of_type_Int += this.jdField_b_of_type_Int;
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOutlineProvider(this.jdField_a_of_type_Aqsb);
-        this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setClipToOutline(true);
-      }
-      if (this.jdField_a_of_type_Aqsb.jdField_a_of_type_Int <= 0) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 5L);
+    return null;
   }
   
-  private void h()
+  public String a()
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetImageView.bringToFront();
-    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new aqri(this));
+    return null;
   }
   
-  @SuppressLint({"NewApi"})
-  private void i()
+  public List<Integer> a(int paramInt)
   {
-    if (this.jdField_a_of_type_Aqsb != null)
-    {
-      aqsb localaqsb = this.jdField_a_of_type_Aqsb;
-      localaqsb.jdField_a_of_type_Int += this.jdField_a_of_type_Int;
-      localaqsb = this.jdField_a_of_type_Aqsb;
-      localaqsb.jdField_b_of_type_Int -= this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOutlineProvider(this.jdField_a_of_type_Aqsb);
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setClipToOutline(true);
-      if (this.jdField_a_of_type_Aqsb.jdField_a_of_type_Int > this.jdField_a_of_type_Aqsb.jdField_b_of_type_Int)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-        this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.c();
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 5L);
+    return null;
   }
   
-  private void j()
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, View paramView) {}
+  
+  protected void a(ChatMessage paramChatMessage) {}
+  
+  public boolean a()
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 1.0F, 0.0F });
-    localObjectAnimator.setDuration(100L);
-    localObjectAnimator.start();
-    localObjectAnimator.addListener(new aqrj(this));
+    return false;
   }
   
-  public void a()
+  public int b()
   {
-    super.a();
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    return 0;
   }
   
-  public void b()
+  public String b()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      a();
-    }
+    return null;
   }
   
-  public void c() {}
-  
-  public void d()
+  public List<Integer> b(int paramInt)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new FullPopAnimWithLOLLIPOP.5(this));
-    a(false);
+    return null;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public int e()
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrf
  * JD-Core Version:    0.7.0.1
  */

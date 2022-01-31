@@ -1,31 +1,29 @@
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
+
+@TargetApi(16)
 public class bekc
-  implements bekl
+  implements bhrf
 {
-  private int jdField_a_of_type_Int;
-  private Object jdField_a_of_type_JavaLangObject;
+  bekc(ContextMenuTextView paramContextMenuTextView) {}
   
-  public static bekc a(int paramInt)
+  public void a()
   {
-    return a(paramInt, null);
-  }
-  
-  public static bekc a(int paramInt, Object paramObject)
-  {
-    bekc localbekc = new bekc();
-    localbekc.jdField_a_of_type_Int = paramInt;
-    localbekc.jdField_a_of_type_JavaLangObject = paramObject;
-    return localbekc;
-  }
-  
-  public Object a(behn parambehn)
-  {
-    parambehn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject);
-    return null;
+    if (Build.VERSION.SDK_INT < 16) {
+      ContextMenuTextView.a(this.a, null);
+    }
+    for (;;)
+    {
+      this.a.a = null;
+      return;
+      ContextMenuTextView.b(this.a, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bekc
  * JD-Core Version:    0.7.0.1
  */

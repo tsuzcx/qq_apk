@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class PhoneContactAdd
-  extends auko
+  extends awbv
 {
-  @aumc
+  @awdj
   public String mobileNo;
   public String name;
   public String remindInfo;
@@ -15,7 +15,7 @@ public class PhoneContactAdd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PhoneContactAdd
  * JD-Core Version:    0.7.0.1
  */

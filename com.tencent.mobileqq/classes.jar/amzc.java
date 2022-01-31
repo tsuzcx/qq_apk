@@ -1,76 +1,32 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
-public class amzc
-  extends amyp<amzb>
+final class amzc
+  implements bapw
 {
-  public static amzb c()
+  public void a(baqv parambaqv, baqw parambaqw)
   {
-    amzb localamzb2 = (amzb)ampl.a().a(498);
-    amzb localamzb1 = localamzb2;
-    if (localamzb2 == null) {
-      localamzb1 = new amzb();
+    if ((parambaqv == null) || (parambaqw == null)) {}
+    while (!(parambaqv instanceof baps)) {
+      return;
     }
-    return localamzb1;
-  }
-  
-  public int a()
-  {
-    return 498;
-  }
-  
-  @NonNull
-  public amzb a()
-  {
-    return new amzb();
-  }
-  
-  @NonNull
-  public amzb a(@NonNull amph[] paramArrayOfamph)
-  {
-    amzb localamzb = new amzb();
-    paramArrayOfamph = paramArrayOfamph[0].jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(paramArrayOfamph)) {}
-    for (;;)
+    baps localbaps = (baps)parambaqv;
+    localbaps.jdField_a_of_type_Long += parambaqw.c;
+    parambaqw.c = 0L;
+    parambaqw = "bytes=" + localbaps.jdField_a_of_type_Long + "-";
+    localbaps.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+    parambaqw = localbaps.jdField_a_of_type_JavaLangString;
+    if (parambaqw.contains("range="))
     {
-      return localamzb;
-      try
-      {
-        paramArrayOfamph = new JSONObject(paramArrayOfamph);
-        localamzb.jdField_a_of_type_Int = paramArrayOfamph.optInt("stage");
-        localamzb.jdField_a_of_type_JavaLangString = paramArrayOfamph.optString("pay_url");
-        if (QLog.isColorLevel())
-        {
-          QLog.d("vip_ptt.ConfigProcessor", 1, "json parse config.stage:" + localamzb.jdField_a_of_type_Int + " url=" + localamzb.jdField_a_of_type_JavaLangString);
-          return localamzb;
-        }
-      }
-      catch (JSONException paramArrayOfamph)
-      {
-        QLog.e("vip_ptt.ConfigProcessor", 1, "json parse error:" + paramArrayOfamph);
-        localamzb.b = paramArrayOfamph.toString();
-      }
+      parambaqw = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
+      localbaps.jdField_a_of_type_JavaLangString = (parambaqw + "range=" + localbaps.jdField_a_of_type_Long);
     }
-    return localamzb;
-  }
-  
-  public Class<amzb> a()
-  {
-    return amzb.class;
-  }
-  
-  @NonNull
-  public amzb b()
-  {
-    return new amzb();
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((baps)parambaqv).jdField_a_of_type_JavaLangString + ", offset=" + localbaps.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzc
  * JD-Core Version:    0.7.0.1
  */

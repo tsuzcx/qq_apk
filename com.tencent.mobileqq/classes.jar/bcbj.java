@@ -1,70 +1,59 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.PasswdUrlReport.RspBody;
-import tencent.im.PasswdUrlReport.UploadRespItem;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import java.util.List;
+import org.json.JSONObject;
 
-class bcbj
-  extends mxj
+public class bcbj
+  extends bcbo
 {
-  bcbj(bcbh parambcbh) {}
+  private TextView a;
+  private TextView b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected bcbj(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("urlSecMgr", 2, "receive PasswdUrlReport code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label231;
-      }
-    }
-    for (;;)
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378900));
+    this.b = ((TextView)paramView.findViewById(2131378773));
+  }
+  
+  public void a(View paramView, HWReciteItem paramHWReciteItem, bcbm parambcbm)
+  {
+    paramHWReciteItem = (bbzr)parambcbm.a;
+    switch (paramView.getId())
     {
-      try
-      {
-        paramBundle = ((PasswdUrlReport.RspBody)new PasswdUrlReport.RspBody().mergeFrom(paramArrayOfByte)).upload_rsp_item.ret_msg.get();
-        StringBuilder localStringBuilder = new StringBuilder().append("PasswdUrlReport error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("urlSecMgr", 2, paramArrayOfByte);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      paramBundle = new PasswdUrlReport.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("urlSecMgr", 2, new Object[] { "parse PasswdUrlReport result res=", Integer.valueOf(paramBundle.result.get()), " retCode=", Integer.valueOf(paramBundle.upload_rsp_item.ret_code.get()) });
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-      if (QLog.isColorLevel())
-      {
-        QLog.i("urlSecMgr", 2, "parse error", paramArrayOfByte);
-        return;
-        label231:
-        paramBundle = "";
-      }
     }
+    do
+    {
+      return;
+      ReciteFragment.a(paramView.getContext(), paramHWReciteItem.a().toString(), paramHWReciteItem.jdField_c_of_type_Int);
+      paramView = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(paramView instanceof QQAppInterface));
+    bdaj.a((QQAppInterface)paramView, paramHWReciteItem.f, "Grp_recite", "Recite_Clk", 0, 0, new String[] { paramHWReciteItem.f, "", paramHWReciteItem.b, "" });
+  }
+  
+  public void a(HWReciteItem paramHWReciteItem, bcbm parambcbm, bbzr parambbzr, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (TextUtils.isEmpty(parambbzr.jdField_c_of_type_JavaLangString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder(alpo.a(2131705687)).append(parambbzr.b);
+      if ((parambbzr.a != null) && (!parambbzr.a.isEmpty())) {
+        localStringBuilder.append(bbyv.a(parambbzr.a));
+      }
+      parambbzr.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambbzr.jdField_c_of_type_JavaLangString);
+    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, parambcbm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcbj
  * JD-Core Version:    0.7.0.1
  */

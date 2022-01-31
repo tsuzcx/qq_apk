@@ -1,23 +1,21 @@
-import com.idlefish.flutterboost.FlutterBoost.BoostPluginsRegister;
-import com.tencent.qflutter.TextPlatformViewPlugin;
-import io.flutter.plugin.common.PluginRegistry;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
-import io.flutter.plugins.GeneratedPluginRegistrant;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
-final class aqaj
-  implements FlutterBoost.BoostPluginsRegister
+public class aqaj
+  implements aqdv
 {
-  public void registerPlugins(PluginRegistry paramPluginRegistry)
+  public aqaj(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    GeneratedPluginRegistrant.registerWith(paramPluginRegistry);
-    paramPluginRegistry = paramPluginRegistry.registrarFor("TextPlatformViewPlugin");
-    TextPlatformViewPlugin.register(paramPluginRegistry);
-    apzk.a().a(paramPluginRegistry.messenger());
+    this.a.a.setText(paramString);
+    this.a.a.setSelection(this.a.a.length());
+    this.a.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqaj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahqs;
+import ajib;
 import android.content.Context;
-import asyx;
+import aupu;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -14,7 +14,7 @@ public abstract class RecentUserBaseData
 {
   protected static final String DES_DEFAULT_HAVE_MSG = "%s,%s,%d条未读,%s";
   protected static final String DES_DEFAULT_NO_MSG = "%s,%s,%s";
-  @ahqs
+  @ajib
   public RecentUser mUser;
   
   public RecentUserBaseData(RecentUser paramRecentUser)
@@ -71,7 +71,7 @@ public abstract class RecentUserBaseData
     this.mMsgExtroInfo = "";
     this.mMenuFlag &= 0xFFFFFF0F;
     int i;
-    if ((this.mUser.getType() == 1) && (!asyx.a(paramQQAppInterface, this.mUser)))
+    if ((this.mUser.getType() == 1) && (!aupu.a(paramQQAppInterface, this.mUser)))
     {
       paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
       int j = this.mMenuFlag;
@@ -139,7 +139,7 @@ public abstract class RecentUserBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentUserBaseData
  * JD-Core Version:    0.7.0.1
  */

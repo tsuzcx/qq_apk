@@ -1,13 +1,11 @@
-class akej
-  implements bgkr
+import com.tencent.mobileqq.data.RecentUser;
+
+public class akej
 {
-  akej(akei paramakei) {}
-  
-  public void a(bgkq parambgkq)
-  {
-    parambgkq.a(this.a.a.a);
-    parambgkq.a();
-  }
+  public int a;
+  public RecentUser a;
+  public String a;
+  public String b;
 }
 
 

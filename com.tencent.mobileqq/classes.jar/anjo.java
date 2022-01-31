@@ -1,100 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.ark.ArkEnvironmentManager.IDataReport;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
 public final class anjo
-  implements Parcelable.Creator<MessageForShortVideo>
+  implements ArkEnvironmentManager.IDataReport
 {
-  public MessageForShortVideo a(Parcel paramParcel)
+  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
   {
-    boolean bool2 = true;
-    MessageForShortVideo localMessageForShortVideo = new MessageForShortVideo();
-    localMessageForShortVideo.uniseq = paramParcel.readLong();
-    localMessageForShortVideo.istroop = paramParcel.readInt();
-    localMessageForShortVideo.selfuin = paramParcel.readString();
-    localMessageForShortVideo.frienduin = paramParcel.readString();
-    localMessageForShortVideo.senderuin = paramParcel.readString();
-    localMessageForShortVideo.uuid = paramParcel.readString();
-    localMessageForShortVideo.md5 = paramParcel.readString();
-    localMessageForShortVideo.videoFileName = paramParcel.readString();
-    localMessageForShortVideo.videoFileSize = paramParcel.readInt();
-    localMessageForShortVideo.videoFileFormat = paramParcel.readInt();
-    localMessageForShortVideo.videoFileTime = paramParcel.readInt();
-    localMessageForShortVideo.thumbWidth = paramParcel.readInt();
-    localMessageForShortVideo.thumbHeight = paramParcel.readInt();
-    localMessageForShortVideo.videoFileStatus = paramParcel.readInt();
-    localMessageForShortVideo.videoFileProgress = paramParcel.readInt();
-    localMessageForShortVideo.fileType = paramParcel.readInt();
-    localMessageForShortVideo.thumbMD5 = paramParcel.readString();
-    localMessageForShortVideo.fileSource = paramParcel.readString();
-    localMessageForShortVideo.lastModified = paramParcel.readLong();
-    localMessageForShortVideo.thumbFileSize = paramParcel.readInt();
-    localMessageForShortVideo.busiType = paramParcel.readInt();
-    localMessageForShortVideo.fromChatType = paramParcel.readInt();
-    localMessageForShortVideo.toChatType = paramParcel.readInt();
-    localMessageForShortVideo.uiOperatorFlag = paramParcel.readInt();
-    localMessageForShortVideo.mVideoFileSourceDir = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localMessageForShortVideo.supportProgressive = bool1;
-      localMessageForShortVideo.fileWidth = paramParcel.readInt();
-      localMessageForShortVideo.fileHeight = paramParcel.readInt();
-      localMessageForShortVideo.transferedSize = paramParcel.readInt();
-      localMessageForShortVideo.subBusiType = paramParcel.readInt();
-      localMessageForShortVideo.videoAttr = paramParcel.readInt();
-      localMessageForShortVideo.binarySet = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label457;
-      }
-      bool1 = true;
-      label314:
-      localMessageForShortVideo.mediacodecEncode = bool1;
-      localMessageForShortVideo.hotVideoIconUrl = paramParcel.readString();
-      localMessageForShortVideo.hotVideoSubIconUrl = paramParcel.readString();
-      localMessageForShortVideo.hotVideoTitle = paramParcel.readString();
-      localMessageForShortVideo.hotVideoUrl = paramParcel.readString();
-      localMessageForShortVideo.specialVideoType = paramParcel.readInt();
-      localMessageForShortVideo.msgTailType = paramParcel.readInt();
-      localMessageForShortVideo.redBagType = paramParcel.readInt();
-      localMessageForShortVideo.shortVideoId = paramParcel.readString();
-      localMessageForShortVideo.redBagStat = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label462;
-      }
-      bool1 = true;
-      label410:
-      localMessageForShortVideo.syncToStory = bool1;
-      localMessageForShortVideo.videoKandianType = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label467;
-      }
+    QQAppInterface localQQAppInterface = null;
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)localAppRuntime;
     }
-    label457:
-    label462:
-    label467:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localMessageForShortVideo.sendRawVideo = bool1;
-      localMessageForShortVideo.templateId = paramParcel.readString();
-      return localMessageForShortVideo;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label314;
-      bool1 = false;
-      break label410;
-    }
-  }
-  
-  public MessageForShortVideo[] a(int paramInt)
-  {
-    return new MessageForShortVideo[paramInt];
+    anjv.a(localQQAppInterface, paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjo
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,20 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.util.Pair;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nxw;
-import nzf;
-import odd;
+import obd;
+import ocp;
+import ogy;
 
 public class ReadinjoyNativeArticleAdDownloadView$1
   implements Runnable
 {
-  public ReadinjoyNativeArticleAdDownloadView$1(odd paramodd) {}
+  public ReadinjoyNativeArticleAdDownloadView$1(ogy paramogy) {}
   
   public void run()
   {
-    if ((odd.a(this.this$0).a != null) && (!TextUtils.isEmpty(odd.a(this.this$0).a.b)) && (odd.a(this.this$0).a.a != null))
+    if ((ogy.a(this.this$0).a != null) && (!TextUtils.isEmpty(ogy.a(this.this$0).a.b)) && (ogy.a(this.this$0).a.a != null))
     {
-      Pair localPair = nzf.a(odd.a(this.this$0).a.b);
+      Pair localPair = ocp.a(ogy.a(this.this$0).a.b);
       if (((this.this$0.a instanceof Activity)) && (localPair.first != null) && (((List)localPair.first).size() > 0))
       {
         Activity localActivity = (Activity)this.this$0.a;
@@ -36,7 +36,7 @@ public class ReadinjoyNativeArticleAdDownloadView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ad.view.ReadinjoyNativeArticleAdDownloadView.1
  * JD-Core Version:    0.7.0.1
  */

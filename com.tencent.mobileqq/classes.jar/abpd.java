@@ -1,41 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
 public class abpd
-  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  public int a;
+  long a;
+  public aboo a;
+  public Object a;
+  public String a;
+  public List<MessageRecord> a;
+  public boolean a;
+  public int b;
+  long b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d = true;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f = true;
+  public boolean g = true;
+  public boolean h;
+  public volatile boolean i;
   
-  public abpd(NotificationActivity paramNotificationActivity, int paramInt)
+  public abpd()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_b_of_type_Long = 0L;
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int == 1) {
-        NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
-      }
-    }
-    while (paramInt != 1)
-    {
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Int != 2);
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
-      return;
-    }
-    NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
+    return "[isComplete = " + this.jdField_a_of_type_Boolean + ", isJoined = " + this.jdField_b_of_type_Boolean + ", isLocalOnly = " + this.c + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpd
  * JD-Core Version:    0.7.0.1
  */

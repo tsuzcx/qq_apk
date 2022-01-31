@@ -1,114 +1,158 @@
 import android.text.TextUtils;
-import com.tencent.av.chatroom.ChatRoomInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.av.chatroom.chatroom_sso.Msg;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
 
-public class lkq
+public abstract class lkq
+  extends EffectConfigBase<PendantItem>
+  implements ljr
 {
-  public static int a;
-  public static int b;
-  public static int c;
-  public static int d;
-  private static long e;
-  public final long a;
-  public ChatRoomInfo a;
-  public final String a;
-  public final long b;
-  public long c;
-  public long d;
-  public int e;
-  private int f;
+  protected final lkr a;
+  protected boolean a;
   
-  static
+  public lkq(VideoAppInterface paramVideoAppInterface)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
-    jdField_d_of_type_Int = 4;
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Lkr = new lkr();
   }
   
-  public lkq(ChatRoomInfo paramChatRoomInfo, long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt)
+  public abstract VideoMaterial a(String paramString);
+  
+  public Class<?> a()
   {
-    this.jdField_b_of_type_Long = a();
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo = paramChatRoomInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Long = paramLong2;
-    this.jdField_d_of_type_Long = paramLong3;
-    this.jdField_e_of_type_Int = paramInt;
-    if (this.jdField_e_of_type_Int == jdField_a_of_type_Int)
-    {
-      paramChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-      paramChatRoomInfo.jdField_b_of_type_Int += 1;
+    return PendantItem.class;
+  }
+  
+  public String a(PendantItem paramPendantItem)
+  {
+    String str = null;
+    if (paramPendantItem != null) {
+      str = len.c() + paramPendantItem.getMd5();
     }
-    this.f = 0;
+    return str;
   }
   
-  private static long a()
+  public List<PendantItem> a(String paramString)
   {
-    long l = jdField_e_of_type_Long + 1L;
-    jdField_e_of_type_Long = l;
-    return l;
+    paramString = super.a(paramString);
+    ArrayList localArrayList = new ArrayList();
+    if (paramString != null) {
+      localArrayList.addAll(paramString);
+    }
+    return localArrayList;
+  }
+  
+  public lkr a(int paramInt1, int paramInt2)
+  {
+    if (!lsa.e()) {
+      return null;
+    }
+    VideoMemoryManager.getInstance().setForceLoadFromSdCard(true);
+    PendantItem localPendantItem = (PendantItem)a();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      d();
+    }
+    if ((paramInt1 == 0) || (paramInt2 == 0) || (localPendantItem == null) || (TextUtils.isEmpty(localPendantItem.getId())))
+    {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Lkr.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_Lkr.jdField_a_of_type_JavaLangString = null;
+      }
+      return null;
+    }
+    String str1 = c(localPendantItem);
+    String str2 = localPendantItem.getId();
+    if ((str1.equals(this.jdField_a_of_type_Lkr.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Lkr.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (str2.equals(this.jdField_a_of_type_Lkr.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getId()))) {
+      return this.jdField_a_of_type_Lkr;
+    }
+    long l = System.currentTimeMillis();
+    VideoMaterial localVideoMaterial = a(str1);
+    this.jdField_a_of_type_Lkr.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = localVideoMaterial;
+    this.jdField_a_of_type_Lkr.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = localPendantItem;
+    this.jdField_a_of_type_Lkr.jdField_a_of_type_JavaLangString = str1;
+    lek.c(this.jdField_a_of_type_JavaLangString, String.format("getVideoPendant, patternPath[%s], id[%s], material[%s], cost[%s]", new Object[] { str1, str2, localVideoMaterial, Long.valueOf(System.currentTimeMillis() - l) }));
+    return this.jdField_a_of_type_Lkr;
   }
   
   public void a()
   {
-    this.f += 1;
+    super.a();
+    ljq localljq = (ljq)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+    if (localljq != null) {
+      localljq.a(b(), this);
+    }
   }
   
-  public void a(int paramInt)
+  protected void a(long paramLong, PendantItem paramPendantItem)
   {
-    ChatRoomInfo localChatRoomInfo;
-    if (paramInt == jdField_c_of_type_Int)
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+      ((ljs)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a(paramLong, paramPendantItem);
+    }
+  }
+  
+  public boolean a(long paramLong, PendantItem paramPendantItem)
+  {
+    boolean bool = super.a(paramLong, paramPendantItem);
+    lid locallid = VideoController.a().a();
+    a(paramLong, paramPendantItem);
+    if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
     {
-      localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-      localChatRoomInfo.jdField_d_of_type_Int += 1;
+      locallid.a.set(1);
+      return bool;
     }
-    for (;;)
+    locallid.a.clear(1);
+    return bool;
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return llg.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+  }
+  
+  public abstract int b();
+  
+  public String b(PendantItem paramPendantItem)
+  {
+    String str = "";
+    if (paramPendantItem != null) {
+      str = len.d() + paramPendantItem.getMd5() + File.separator;
+    }
+    return str;
+  }
+  
+  protected String c(PendantItem paramPendantItem)
+  {
+    String str = "";
+    if (paramPendantItem != null)
     {
-      if ((this.jdField_d_of_type_Long == -9223372036854775808L) || (this.jdField_e_of_type_Int != jdField_d_of_type_Int)) {
-        this.jdField_e_of_type_Int = paramInt;
-      }
-      return;
-      if (paramInt == jdField_b_of_type_Int)
-      {
-        localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-        localChatRoomInfo.jdField_c_of_type_Int += 1;
-      }
+      str = b(paramPendantItem) + paramPendantItem.getName() + File.separator;
+      if (!new File(str).exists()) {}
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_d_of_type_Long != -9223372036854775808L;
-  }
-  
-  public boolean a(chatroom_sso.Msg paramMsg)
-  {
-    if (paramMsg == null) {}
-    while ((this.jdField_d_of_type_Long != paramMsg.msg_id.get()) || (this.jdField_a_of_type_Long != paramMsg.uin.get()) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramMsg.msg.get()))) {
-      return false;
+    else
+    {
+      return str;
     }
-    return true;
+    return len.b() + paramPendantItem.getName() + File.separator;
   }
   
-  public boolean b()
+  public void d()
   {
-    return (this.jdField_e_of_type_Int == jdField_b_of_type_Int) && (this.f < 3) && (this.jdField_d_of_type_Long == -9223372036854775808L);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(60);
-    localStringBuilder.append("ChatRoomMsg{senderUin: ").append(this.jdField_a_of_type_Long).append(", serverSeq: ").append(this.jdField_d_of_type_Long).append(", localSeq: ").append(this.jdField_b_of_type_Long).append(", state: ").append(this.jdField_e_of_type_Int).append("}");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Lkr.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
+    this.jdField_a_of_type_Lkr.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
+    this.jdField_a_of_type_Lkr.jdField_a_of_type_JavaLangString = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lkq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,36 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import com.tencent.ims.QSecCloudAVEngineMsg.QSecCloudRespBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
 
-public class bhiy
-  implements ServiceConnection
+class bhiy
+  implements bhlf
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
+  bhiy(bhix parambhix) {}
   
-  public bhiy(bhix parambhix, ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
-  {
-    do
-    {
-      try
-      {
-        this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unbindService(this);
-        if (QLog.isColorLevel()) {
-          QLog.i("QZonePluginManger", 2, "onServiceConnected, " + this);
-        }
-        this.jdField_a_of_type_AndroidContentServiceConnection.onServiceConnected(???, paramIBinder);
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && (paramObject != null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, "server reply packet");
       }
-      catch (Exception localException)
-      {
-        synchronized (bhix.a(this.jdField_a_of_type_Bhix))
-        {
-          do
-          {
-            paramIBinder = (bhiy)bhix.a(this.jdField_a_of_type_Bhix).poll();
-            if (paramIBinder == null) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("QZonePluginManger", 2, "continue process");
-            }
-            bhix.a(this.jdField_a_of_type_Bhix, paramIBinder, 300);
-            return;
-            localException = localException;
-          } while (!QLog.isColorLevel());
-          QLog.i("QZonePluginManger", 2, "unbindService, " + this);
-        }
-      }
-      bhix.a(this.jdField_a_of_type_Bhix, false);
-    } while (!QLog.isColorLevel());
-    QLog.i("QZonePluginManger", 2, "queue empty");
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "onServiceDisconnected, " + this);
     }
-    this.jdField_a_of_type_AndroidContentServiceConnection.onServiceDisconnected(paramComponentName);
+    try
+    {
+      paramToServiceMsg = new QSecCloudAVEngineMsg.QSecCloudRespBody();
+      paramToServiceMsg.mergeFrom((byte[])paramObject);
+      bhix.a(this.a).sendMessage(bhix.a(this.a).obtainMessage(4, paramToServiceMsg));
+      return;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      paramToServiceMsg.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhiy
  * JD-Core Version:    0.7.0.1
  */

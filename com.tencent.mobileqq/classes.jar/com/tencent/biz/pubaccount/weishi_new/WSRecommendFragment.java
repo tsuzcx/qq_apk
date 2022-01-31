@@ -6,49 +6,41 @@ import UserGrowth.stJumpInfo;
 import UserGrowth.stNotificationRsp;
 import UserGrowth.stReportItem;
 import UserGrowth.stSimpleMetaFeed;
-import abtq;
-import akwu;
+import aaos;
+import aaot;
+import amnk;
 import android.content.Context;
 import android.content.IntentFilter;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.Window;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import axlk;
-import bbbm;
-import bcuc;
-import bdle;
-import bfzl;
-import bfzx;
+import azgq;
+import betl;
+import bfkb;
+import bhzz;
+import biai;
+import biau;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 import com.tencent.biz.pubaccount.weishi_new.event.ForeBackgroundEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.LikeRspEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
 import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.biz.pubaccount.weishi_new.view.WeiShiNoticeView;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import com.tencent.widget.pull2refresh.XRecyclerView;
 import java.util.ArrayList;
@@ -63,76 +55,68 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import otm;
-import rpg;
-import siy;
-import sjb;
-import sjf;
-import sjh;
-import sji;
-import sjj;
-import sjk;
-import sjl;
-import sjm;
-import sjn;
-import sjo;
-import sjp;
-import sjq;
-import sjv;
-import sjy;
-import skq;
-import sli;
-import slp;
-import slw;
-import smn;
-import smp;
-import smr;
-import smy;
-import sna;
-import snb;
-import snc;
-import snd;
-import snf;
-import snk;
-import vzw;
-import wpt;
-import wpv;
-import yyt;
-import yyu;
+import oye;
+import sff;
+import tax;
+import tbp;
+import tby;
+import tca;
+import tcb;
+import tcc;
+import tcd;
+import tce;
+import tcf;
+import tcg;
+import tch;
+import tci;
+import tcq;
+import tee;
+import tfd;
+import tff;
+import tfi;
+import tgu;
+import thb;
+import tip;
+import tjl;
+import tjm;
+import tjr;
+import tju;
+import tjz;
+import tld;
+import tlk;
+import tlo;
+import tlp;
+import tlq;
+import tlv;
+import tmc;
+import xoo;
+import yej;
+import yel;
 
 public class WSRecommendFragment
-  extends PublicBaseFragment
-  implements wpv
+  extends WSBaseHomeFragment<tjm, tjl, List<stSimpleMetaFeed>>
+  implements tfi, tjm, yel
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private stGlobalConfig jdField_a_of_type_UserGrowthStGlobalConfig;
   private stNotificationRsp jdField_a_of_type_UserGrowthStNotificationRsp;
-  private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public FrameLayout a;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
   private WSRecommendFragment.InternetDynamicBroadCastReceiver jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment$InternetDynamicBroadCastReceiver;
   private WSRedDotPushMsg jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg;
   private WeiShiNoticeView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView;
-  private SystemBarCompact jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact;
-  private XRecyclerView jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView;
   private String jdField_a_of_type_JavaLangString;
   private volatile HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private Map<Integer, stSimpleMetaFeed> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private siy jdField_a_of_type_Siy;
-  private sjf jdField_a_of_type_Sjf;
-  private slw jdField_a_of_type_Slw;
-  private sna jdField_a_of_type_Sna;
-  public snk a;
-  private boolean jdField_a_of_type_Boolean;
+  private tax jdField_a_of_type_Tax;
+  private tby jdField_a_of_type_Tby;
+  private tlk jdField_a_of_type_Tlk;
+  public tmc a;
   private long jdField_b_of_type_Long;
   private View jdField_b_of_type_AndroidViewView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private Map<Integer, String> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
   private boolean jdField_b_of_type_Boolean;
   private long jdField_c_of_type_Long;
@@ -142,10 +126,11 @@ public class WSRecommendFragment
   private long jdField_e_of_type_Long;
   private boolean jdField_e_of_type_Boolean;
   private boolean f;
+  private boolean g;
   
   public WSRecommendFragment()
   {
-    this.jdField_a_of_type_Snk = new sjh(this);
+    this.jdField_a_of_type_Tmc = new tca(this);
   }
   
   private int a(stNotificationRsp paramstNotificationRsp)
@@ -167,28 +152,6 @@ public class WSRecommendFragment
     return 103;
   }
   
-  private int a(int[] paramArrayOfInt)
-  {
-    int i = paramArrayOfInt[0];
-    int m = paramArrayOfInt.length;
-    int j = 0;
-    if (j < m)
-    {
-      int k = paramArrayOfInt[j];
-      if (k <= i) {
-        break label39;
-      }
-      i = k;
-    }
-    label39:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
-  }
-  
   @NonNull
   private WSDownloadParams a(int paramInt)
   {
@@ -196,8 +159,8 @@ public class WSRecommendFragment
     localWSDownloadParams.mScene = 1;
     localWSDownloadParams.mLinkStrategyType = paramInt;
     localWSDownloadParams.mEventId = a(this.jdField_a_of_type_UserGrowthStNotificationRsp);
-    localWSDownloadParams.mTestId = snf.a(4);
-    stReportItem localstReportItem = smn.a();
+    localWSDownloadParams.mTestId = tlv.a(4);
+    stReportItem localstReportItem = tjr.a();
     localstReportItem.pagetype = 4;
     localstReportItem.optype = 115;
     localWSDownloadParams.mStReportItem = localstReportItem;
@@ -238,65 +201,47 @@ public class WSRecommendFragment
       str1 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg.mFeedIds;
       str2 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg.mPushId;
     }
-    for (boolean bool = snf.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg);; bool = false)
+    for (boolean bool = tlv.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg);; bool = false)
     {
-      String str3 = str1;
-      if (!paramBoolean)
+      if ((!paramBoolean) && (TextUtils.isEmpty(str1)) && (paramstSimpleMetaFeed != null)) {
+        str1 = paramstSimpleMetaFeed.id;
+      }
+      for (;;)
       {
-        str3 = str1;
-        if (TextUtils.isEmpty(str1))
+        int i;
+        int j;
+        if (bool)
         {
-          str3 = str1;
-          if (paramstSimpleMetaFeed != null) {
-            str3 = paramstSimpleMetaFeed.id;
+          i = tcq.a().a();
+          if (!bool) {
+            break label158;
+          }
+          j = 1;
+          label77:
+          if (!paramBoolean) {
+            break label164;
           }
         }
-      }
-      int i;
-      int j;
-      if (bool)
-      {
-        i = sjv.a().a();
-        if (!bool) {
-          break label178;
+        label158:
+        label164:
+        for (int k = 1;; k = 2)
+        {
+          Object localObject = tjr.a(paramstSimpleMetaFeed, 0);
+          if (localObject != null) {
+            localObject = ((stReportItem)localObject).authorid;
+          }
+          tju.a(301, new Object[] { Integer.valueOf(paramInt), tju.a(str2, str1, i, j, k) });
+          WSPublicAccReport.getInstance().reportPublicAccDataExposure(paramstSimpleMetaFeed, j, k, i);
+          return str1;
+          i = 0;
+          break;
+          j = 0;
+          break label77;
         }
-        j = 1;
-        label89:
-        if (!paramBoolean) {
-          break label184;
-        }
-      }
-      label178:
-      label184:
-      for (int k = 1;; k = 2)
-      {
-        str1 = "-";
-        stReportItem localstReportItem = smn.a(paramstSimpleMetaFeed, 0);
-        paramstSimpleMetaFeed = str1;
-        if (localstReportItem != null) {
-          paramstSimpleMetaFeed = localstReportItem.authorid;
-        }
-        smp.a(301, new Object[] { Integer.valueOf(paramInt), smp.a(str2, str3, i, j, k) });
-        WSPublicAccReport.getInstance().reportPublicAccDataExposure(str3, paramstSimpleMetaFeed, j, k, i);
-        return str3;
-        i = 0;
-        break;
-        j = 0;
-        break label89;
       }
       str2 = "0";
       str1 = "";
     }
-  }
-  
-  private void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact == null)
-    {
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(getActivity(), true, -1);
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.init();
-    }
-    this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarColor(paramInt);
   }
   
   private void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
@@ -304,7 +249,7 @@ public class WSRecommendFragment
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new WSRecommendFragment.7(this, paramInt, paramstSimpleMetaFeed));
+    this.jdField_a_of_type_AndroidOsHandler.post(new WSRecommendFragment.6(this, paramInt, paramstSimpleMetaFeed));
   }
   
   private void a(stSimpleMetaFeed paramstSimpleMetaFeed, Integer paramInteger, stReportItem paramstReportItem, ArrayList<stReportItem> paramArrayList)
@@ -312,15 +257,15 @@ public class WSRecommendFragment
     stH5OpInfo localstH5OpInfo = paramstSimpleMetaFeed.h5_op_info;
     if ((localstH5OpInfo != null) && (localstH5OpInfo.type > 0))
     {
-      stReportItem localstReportItem = smn.a(paramstSimpleMetaFeed, paramInteger.intValue());
+      stReportItem localstReportItem = tjr.a(paramstSimpleMetaFeed, paramInteger.intValue());
       if (localstH5OpInfo.type == 1) {}
       for (localstReportItem.pagetype = 9;; localstReportItem.pagetype = 14)
       {
         localstReportItem.optype = 6;
         paramArrayList.add(localstReportItem);
-        smp.a(6, localstH5OpInfo.type, paramInteger.intValue(), paramstSimpleMetaFeed.h5_op_info.id);
-        WSPublicAccReport.getInstance().reportOperationCard("gzh_exposure", 0, paramstSimpleMetaFeed.h5_op_info.id);
-        snb.a("weishi-report", "luopan report H5");
+        tju.a(6, localstH5OpInfo.type, paramInteger.intValue(), paramstSimpleMetaFeed.h5_op_info.id);
+        WSPublicAccReport.getInstance().reportOperationCard("gzh_exposure", 0, paramstSimpleMetaFeed);
+        tlo.a("weishi-report", "luopan report H5");
         paramstReportItem.pagetype = 1;
         return;
       }
@@ -328,54 +273,47 @@ public class WSRecommendFragment
     if (paramstSimpleMetaFeed.video_type == 6)
     {
       paramstReportItem.pagetype = 1;
-      smp.a(false);
-      snb.a("weishi-report", "luopan report NOW");
+      tju.a(false);
+      tlo.a("weishi-report", "luopan report NOW");
       return;
     }
     paramstReportItem.pagetype = 1;
-    snb.b("weishi-report", "luopan normal is no need report");
-  }
-  
-  public static void a(Context paramContext)
-  {
-    abtq.a(paramContext, PublicFragmentActivity.class, WSRecommendFragment.class);
+    tlo.b("weishi-report", "luopan normal is no need report");
   }
   
   private void a(List<stSimpleMetaFeed> paramList, stGlobalConfig paramstGlobalConfig, String paramString, boolean paramBoolean)
   {
     int j = 1;
     if (paramstGlobalConfig != null) {
-      snb.d("WSRecommendFragment", "RockDownloader:" + paramstGlobalConfig.download);
+      tlo.d("WSRecommendFragment", "RockDownloader:" + paramstGlobalConfig.download);
     }
     for (int i = paramstGlobalConfig.link_strategy_type;; i = 1)
     {
-      skq.a().a(getActivity(), i, (stSimpleMetaFeed)paramList.get(0));
-      if (paramBoolean) {
-        skq.a().a();
-      }
+      tfd.a().a(getActivity(), i, (stSimpleMetaFeed)paramList.get(0));
+      tfd.a().a();
       if (i == 7)
       {
         if ((paramstGlobalConfig.jumpinfo == null) || (TextUtils.isEmpty(paramstGlobalConfig.jumpinfo.h5url))) {
-          break label168;
+          break label163;
         }
-        sjp.a(this.jdField_a_of_type_AndroidContentContext, paramstGlobalConfig.jumpinfo.h5url);
+        tch.a(this.jdField_a_of_type_AndroidContentContext, paramstGlobalConfig.jumpinfo.h5url);
       }
-      label168:
+      label163:
       for (i = j;; i = 2)
       {
-        smp.a(i, 2, paramString);
+        tju.a(i, 2, paramString);
         do
         {
           return;
           if (i == 3)
           {
-            b(paramList);
+            c(paramList);
             return;
           }
           if (i != 4) {
             break;
           }
-        } while (!vzw.a(this.jdField_a_of_type_AndroidContentContext));
+        } while (!xoo.a(this.jdField_a_of_type_AndroidContentContext));
         a(paramList);
         return;
         a(paramList);
@@ -391,8 +329,8 @@ public class WSRecommendFragment
     }
     try
     {
-      i = a();
-      int j = b();
+      i = b();
+      int j = c();
       i = i - j + 1;
     }
     catch (Exception localException)
@@ -400,11 +338,11 @@ public class WSRecommendFragment
       for (;;)
       {
         localException.printStackTrace();
-        snb.d("WSRecommendFragment", "exposeRefreshCard getLastVisiblePosition error: " + localException.getMessage());
+        tlo.d("WSRecommendFragment", "exposeRefreshCard getLastVisiblePosition error: " + localException.getMessage());
         int i = 4;
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new WSRecommendFragment.8(this, i, paramList, paramBoolean));
+    this.jdField_a_of_type_AndroidOsHandler.post(new WSRecommendFragment.7(this, i, paramList, paramBoolean));
   }
   
   private void a(Map<Integer, stSimpleMetaFeed> paramMap, Map<Integer, String> paramMap1)
@@ -413,7 +351,7 @@ public class WSRecommendFragment
     Object localObject1 = new StringBuilder();
     StringBuilder localStringBuilder = new StringBuilder();
     Object localObject3;
-    if ((paramMap != null) && (paramMap.size() > 0))
+    if (paramMap.size() > 0)
     {
       paramMap = paramMap.entrySet().iterator();
       while (paramMap.hasNext())
@@ -421,12 +359,12 @@ public class WSRecommendFragment
         Object localObject4 = (Map.Entry)paramMap.next();
         localObject3 = (Integer)((Map.Entry)localObject4).getKey();
         localObject4 = (stSimpleMetaFeed)((Map.Entry)localObject4).getValue();
-        stReportItem localstReportItem = smn.a((stSimpleMetaFeed)localObject4, ((Integer)localObject3).intValue());
+        stReportItem localstReportItem = tjr.a((stSimpleMetaFeed)localObject4, ((Integer)localObject3).intValue());
         a((stSimpleMetaFeed)localObject4, (Integer)localObject3, localstReportItem, (ArrayList)localObject2);
         localstReportItem.optype = 6;
-        snb.a("weishi-report", "推荐实时上报:" + localstReportItem.feedid + ", upos:" + localstReportItem.upos);
+        tlo.a("weishi-report", "推荐实时上报:" + localstReportItem.feedid + ", upos:" + localstReportItem.upos);
         ((ArrayList)localObject2).add(localstReportItem);
-        localObject3 = snf.a((stSimpleMetaFeed)localObject4);
+        localObject3 = tlv.a((stSimpleMetaFeed)localObject4);
         if (!TextUtils.isEmpty((CharSequence)localObject3))
         {
           ((StringBuilder)localObject1).append((String)localObject3);
@@ -436,11 +374,11 @@ public class WSRecommendFragment
         }
       }
       if (((StringBuilder)localObject1).length() <= 1) {
-        break label599;
+        break label591;
       }
     }
-    label590:
-    label599:
+    label582:
+    label591:
     for (paramMap = new StringBuilder(((StringBuilder)localObject1).substring(0, ((StringBuilder)localObject1).length() - 1));; paramMap = (Map<Integer, stSimpleMetaFeed>)localObject1)
     {
       if (localStringBuilder.length() > 1) {
@@ -448,8 +386,8 @@ public class WSRecommendFragment
       }
       for (;;)
       {
-        smn.a((ArrayList)localObject2);
-        while ((paramMap1 != null) && (paramMap1.size() > 0))
+        tjr.a((ArrayList)localObject2);
+        while (paramMap1.size() > 0)
         {
           localObject1 = new StringBuilder();
           paramMap1 = paramMap1.entrySet().iterator();
@@ -460,20 +398,20 @@ public class WSRecommendFragment
               localObject3 = (Map.Entry)paramMap1.next();
               localObject2 = (Integer)((Map.Entry)localObject3).getKey();
               localObject3 = (String)((Map.Entry)localObject3).getValue();
-              snb.a("weishi-report", "898实时上报:" + (String)localObject3 + ", upos:" + localObject2);
+              tlo.a("weishi-report", "898实时上报:" + (String)localObject3 + ", upos:" + localObject2);
               if (!TextUtils.isEmpty((CharSequence)localObject3))
               {
                 ((StringBuilder)localObject1).append((String)localObject3);
                 ((StringBuilder)localObject1).append("_");
                 continue;
-                snb.c("weishi-report", "推荐上报的feeds为0个");
+                tlo.c("weishi-report", "推荐上报的feeds为0个");
                 paramMap = (Map<Integer, stSimpleMetaFeed>)localObject1;
                 break;
               }
             }
           }
           if (((StringBuilder)localObject1).length() <= 1) {
-            break label590;
+            break label582;
           }
         }
         for (paramMap1 = new StringBuilder(((StringBuilder)localObject1).substring(0, ((StringBuilder)localObject1).length() - 1));; paramMap1 = (Map<Integer, String>)localObject1)
@@ -483,96 +421,24 @@ public class WSRecommendFragment
           ((Map)localObject1).put("cover_type", paramMap.toString());
           ((Map)localObject1).put("dynamic_cover", localStringBuilder.toString());
           paramMap = new JSONObject((Map)localObject1);
-          snb.c("weishi-report", "jsonObj:" + paramMap);
-          smp.a(303, paramMap.toString());
+          tlo.c("weishi-report", "jsonObj:" + paramMap);
+          tju.a(303, paramMap.toString());
           return;
-          snb.c("weishi-report", "898上报的feeds为0个");
+          tlo.c("weishi-report", "898上报的feeds为0个");
           return;
         }
       }
     }
   }
   
-  private boolean a(boolean paramBoolean)
-  {
-    int i = 9216;
-    if ((Build.VERSION.SDK_INT >= 23) && (!bbbm.d()) && (!bbbm.b())) {
-      if (paramBoolean) {
-        getActivity().getWindow().getDecorView().setSystemUiVisibility(i);
-      }
-    }
-    do
-    {
-      return paramBoolean;
-      i = 1280;
-      break;
-      if (!ImmersiveUtils.a()) {
-        break label110;
-      }
-      ImmersiveUtils.a(getActivity().getWindow(), paramBoolean);
-    } while ((Build.VERSION.SDK_INT < 23) || (!bbbm.b()));
-    if (paramBoolean) {}
-    for (;;)
-    {
-      getActivity().getWindow().getDecorView().setSystemUiVisibility(i);
-      return paramBoolean;
-      i = 1280;
-    }
-    label110:
-    return false;
-  }
-  
-  private int b()
-  {
-    RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
-    if ((localRecyclerViewWithHeaderFooter == null) || (localRecyclerViewWithHeaderFooter.getAdapter() == null) || (this.jdField_a_of_type_Sjf == null)) {
-      return 0;
-    }
-    return ((bfzx)localRecyclerViewWithHeaderFooter.getAdapter()).a();
-  }
-  
-  private void b(List<stSimpleMetaFeed> paramList)
+  private void c(List<stSimpleMetaFeed> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList.size() > 0)
     {
       stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.get(0);
       localArrayList.add(paramList.get(0));
-      snf.a(this.jdField_a_of_type_AndroidContentContext, localArrayList, 0, localstSimpleMetaFeed.poster_id, this.jdField_a_of_type_UserGrowthStGlobalConfig, 2);
-    }
-  }
-  
-  private void c()
-  {
-    otm localotm = snf.a();
-    if (localotm != null) {
-      localotm.a(getActivity());
-    }
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a(0);
-      a(false);
-      return;
-    }
-    if (a(true))
-    {
-      a(-1);
-      return;
-    }
-    a(-2368549);
-  }
-  
-  private void d()
-  {
-    smy.a().b();
-    boolean bool = smy.a().a();
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "WSRecommendFragment onAttach start!! preloadInWsRecommend = " + bool);
-    if (bool) {
-      smy.a().a();
+      tlv.a(this.jdField_a_of_type_AndroidContentContext, localArrayList, 0, localstSimpleMetaFeed.poster_id, this.jdField_a_of_type_UserGrowthStGlobalConfig, 2);
     }
   }
   
@@ -580,56 +446,121 @@ public class WSRecommendFragment
   {
     long l1 = System.currentTimeMillis();
     long l2 = l1 - this.jdField_e_of_type_Long;
-    snb.c("weishi-report", "瀑布流拿到Notification的时间点：" + l1 + ",请求接口耗时：" + l2 + "毫秒");
-    smr.a().c(paramBoolean, l2);
+    tlo.c("weishi-report", "瀑布流拿到Notification的时间点：" + l1 + ",请求接口耗时：" + l2 + "毫秒");
+    tjz.a().c(paramBoolean, l2);
     this.jdField_e_of_type_Long = 0L;
   }
   
   private void e()
   {
-    snb.d("weishi-report", "hasClickFuceng:" + snf.jdField_a_of_type_Boolean + ",mHasRefresh:" + this.jdField_c_of_type_Boolean + ",mHasScroll:" + this.jdField_d_of_type_Boolean);
-    if ((!this.jdField_b_of_type_Boolean) || ((!snf.jdField_a_of_type_Boolean) && (!this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))) {
-      smn.a(137, 1, null);
+    bfkb.a();
+    g();
+    this.jdField_d_of_type_Long = System.currentTimeMillis();
+    tlo.a("weishi-report", "进入瀑布流的时间：" + this.jdField_d_of_type_Long);
+    Object localObject = new IntentFilter();
+    ((IntentFilter)localObject).addAction("weishi_public_account_ding_state_change");
+    ((IntentFilter)localObject).addAction("weishi_public_account_follow_state_change");
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment$InternetDynamicBroadCastReceiver = new WSRecommendFragment.InternetDynamicBroadCastReceiver(this);
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment$InternetDynamicBroadCastReceiver, (IntentFilter)localObject);
+    localObject = new aaot();
+    aaos.a().a(this.jdField_a_of_type_AndroidContentContext, (aaot)localObject);
+    tip.c("");
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg = tlv.a();
+    this.jdField_a_of_type_JavaLangString = tlv.b();
+    f();
+    yej.a().a(this);
+    tff.a().a(this);
+    this.jdField_e_of_type_Long = System.currentTimeMillis();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg == null) {}
+    for (localObject = "";; localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg.mMsgData)
+    {
+      tfd.a().a(this.jdField_a_of_type_AndroidContentContext);
+      ((tjl)b()).a((String)localObject);
+      ((tjl)b()).b((String)localObject);
+      try
+      {
+        this.jdField_a_of_type_Tlk = new tlk();
+        localObject = this.jdField_a_of_type_Tlk.a();
+        if (!((HandlerThread)localObject).isAlive()) {
+          ((HandlerThread)localObject).start();
+        }
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(((HandlerThread)localObject).getLooper());
+        return;
+      }
+      catch (Exception localException)
+      {
+        tlo.b("WSRecommendFragment", "HandlerThread Exception.");
+      }
     }
   }
   
   private void f()
   {
-    int i = 2;
-    if (!sjq.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Long = (System.currentTimeMillis() - this.jdField_c_of_type_Long);
-      snb.a("weishi-report", "用户退出公众号，一共使用:" + this.jdField_b_of_type_Long + "毫秒");
-      this.jdField_c_of_type_Long = 0L;
-    }
-    smp.a(117, new Object[] { Long.valueOf(this.jdField_b_of_type_Long), Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
-    smr.a().a(this.jdField_b_of_type_Long, this.jdField_a_of_type_Slw.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap.size(), snf.jdField_a_of_type_Boolean, snd.jdField_a_of_type_Boolean);
-    if (!this.jdField_b_of_type_Boolean) {}
-    for (;;)
-    {
-      WSPublicAccReport.getInstance().closePublicAccReport(i);
-      g();
-      return;
-      if ((!snf.jdField_a_of_type_Boolean) && (!this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean)) {
-        i = 3;
-      } else {
-        i = 1;
-      }
+    oye localoye = tlv.a();
+    if (localoye != null) {
+      localoye.a(getActivity());
     }
   }
   
   private void g()
   {
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_e_of_type_Long = 0L;
+    tld.a().b();
+    boolean bool = tld.a().a();
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "WSRecommendFragment onAttach start!! preloadInWsRecommend = " + bool);
+    if (bool) {
+      tld.a().a();
+    }
   }
   
   private void h()
   {
-    if (this.jdField_a_of_type_Sna != null)
+    tlo.d("weishi-report", "hasClickFuceng:" + tlv.jdField_a_of_type_Boolean + ",mHasRefresh:" + this.jdField_d_of_type_Boolean + ",mHasScroll:" + this.jdField_e_of_type_Boolean);
+    if ((!this.jdField_c_of_type_Boolean) || ((!tlv.jdField_a_of_type_Boolean) && (!this.jdField_d_of_type_Boolean) && (!this.jdField_e_of_type_Boolean))) {
+      tjr.a(137, 1, null);
+    }
+  }
+  
+  private void i()
+  {
+    if (!tci.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Sna.a();
-      this.jdField_a_of_type_Sna = null;
+      this.jdField_b_of_type_Long = (System.currentTimeMillis() - this.jdField_c_of_type_Long);
+      tlo.a("weishi-report", "用户退出公众号，一共使用:" + this.jdField_b_of_type_Long + "毫秒");
+      this.jdField_c_of_type_Long = 0L;
+    }
+    tju.a(117, new Object[] { Long.valueOf(this.jdField_b_of_type_Long), Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
+    tjz.a().a(this.jdField_b_of_type_Long, ((tjl)b()).a(), this.jdField_a_of_type_JavaUtilHashMap.size(), tlv.jdField_a_of_type_Boolean, tlq.jdField_a_of_type_Boolean);
+    j();
+    k();
+  }
+  
+  private void j()
+  {
+    if (!this.jdField_c_of_type_Boolean)
+    {
+      tjx.jdField_a_of_type_Int = 2;
+      return;
+    }
+    if ((!tlv.jdField_a_of_type_Boolean) && (!this.jdField_d_of_type_Boolean) && (!this.jdField_e_of_type_Boolean))
+    {
+      tjx.jdField_a_of_type_Int = 3;
+      return;
+    }
+    tjx.jdField_a_of_type_Int = 1;
+  }
+  
+  private void k()
+  {
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_e_of_type_Long = 0L;
+  }
+  
+  private void l()
+  {
+    if (this.jdField_a_of_type_Tlk != null)
+    {
+      this.jdField_a_of_type_Tlk.a();
+      this.jdField_a_of_type_Tlk = null;
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
@@ -638,113 +569,62 @@ public class WSRecommendFragment
     }
   }
   
-  private void i()
+  private void m()
   {
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
-    {
-      snb.a("weishi-815", "is night mode");
-      c(true);
-      if (this.jdField_b_of_type_AndroidViewView == null) {
-        this.jdField_b_of_type_AndroidViewView = ((ViewStub)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374821)).inflate();
-      }
-      if (this.jdField_b_of_type_AndroidViewView != null) {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(-16777216);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849070);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842605);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    }
-    do
-    {
-      return;
-      snb.a("weishi-815", "is day mode");
-      c(false);
-    } while (this.jdField_b_of_type_AndroidViewView == null);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  private void j()
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372612));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372608));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372610));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372611));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new sji(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new sjj(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView = ((WeiShiNoticeView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559784, null));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView.setOnClickListener(new sjk(this));
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView = ((XRecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375021));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366413));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView = ((WeiShiNoticeView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559864, null));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView.setOnClickListener(new tcb(this));
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView = ((XRecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375491));
     Object localObject = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
     if (localObject != null) {
-      ((bfzl)localObject).a(12);
+      ((biai)localObject).a(12);
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(new sjl(this));
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(new tcc(this));
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().addOnScrollListener(new tcd(this));
     localObject = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
-    this.jdField_a_of_type_Sjf = new sjf(getActivity(), (RecyclerViewWithHeaderFooter)localObject);
-    ((RecyclerViewWithHeaderFooter)localObject).setAdapter(this.jdField_a_of_type_Sjf);
-    this.jdField_a_of_type_Sjf.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg);
-    this.jdField_a_of_type_Sjf.a(new sjm(this));
-    sjo localsjo = new sjo(2, 1);
-    localsjo.setGapStrategy(0);
-    ((RecyclerViewWithHeaderFooter)localObject).setLayoutManager(localsjo);
+    this.jdField_a_of_type_Tby = new tby(getActivity(), (RecyclerViewWithHeaderFooter)localObject);
+    ((RecyclerViewWithHeaderFooter)localObject).setAdapter(this.jdField_a_of_type_Tby);
+    this.jdField_a_of_type_Tby.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg);
+    this.jdField_a_of_type_Tby.a(new tce(this));
+    tcg localtcg = new tcg(2, 1);
+    localtcg.setGapStrategy(0);
+    ((RecyclerViewWithHeaderFooter)localObject).setLayoutManager(localtcg);
     ((RecyclerViewWithHeaderFooter)localObject).setItemAnimator(null);
-    ((RecyclerViewWithHeaderFooter)localObject).addItemDecoration(new sjb());
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371404);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369469));
-    int i = axlk.a(this.jdField_a_of_type_AndroidContentContext);
+    ((RecyclerViewWithHeaderFooter)localObject).addItemDecoration(new tbp());
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371720);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369729));
+    int i = azgq.a(this.jdField_a_of_type_AndroidContentContext);
     if (i > 1920) {}
-    try
-    {
-      this.jdField_a_of_type_Sna = new sna();
-      localObject = this.jdField_a_of_type_Sna.a();
-      if (!((HandlerThread)localObject).isAlive()) {
-        ((HandlerThread)localObject).start();
-      }
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(((HandlerThread)localObject).getLooper());
-      return;
-    }
-    catch (Exception localException)
-    {
-      snb.b("WSRecommendFragment", "HandlerThread Exception.");
-    }
   }
   
-  private void k()
+  private void n()
   {
-    snb.b("WSRecommendFragment", "showErrorView");
+    tlo.b("WSRecommendFragment", "showErrorView");
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setVisibility(8);
-    smn.a(135, 1, null);
-    smp.b(false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new sjn(this));
+    tjr.a(135, 1, null);
+    tju.b(false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new tcf(this));
   }
   
-  private void l()
+  private void o()
   {
-    ThreadManager.getSubThreadHandler().post(new WSRecommendFragment.10(this));
+    ThreadManager.getSubThreadHandler().post(new WSRecommendFragment.9(this));
   }
   
-  public int a()
+  protected int a()
   {
-    int j = -1;
-    int i = j;
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView != null)
-    {
-      i = j;
-      if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a() != null)
-      {
-        RecyclerView.LayoutManager localLayoutManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().getLayoutManager();
-        i = j;
-        if ((localLayoutManager instanceof StaggeredGridLayoutManager))
-        {
-          int[] arrayOfInt = new int[((StaggeredGridLayoutManager)localLayoutManager).getSpanCount()];
-          ((StaggeredGridLayoutManager)localLayoutManager).findLastVisibleItemPositions(arrayOfInt);
-          i = a(arrayOfInt);
-        }
-      }
-    }
-    return i;
+    return 2131559858;
+  }
+  
+  protected RecyclerView.LayoutManager a()
+  {
+    return null;
+  }
+  
+  protected bhzz a()
+  {
+    return null;
   }
   
   public String a()
@@ -756,32 +636,36 @@ public class WSRecommendFragment
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(ForeBackgroundEvent.class);
+    localArrayList.add(LikeRspEvent.class);
     return localArrayList;
   }
   
-  public void a()
+  @NonNull
+  public tjl a()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return new tip();
   }
+  
+  protected void a() {}
   
   public void a(int paramInt, String paramString)
   {
-    snb.b("WSRecommendFragment", "onGetNotificationFailed" + paramInt + " | " + paramString);
+    tlo.b("WSRecommendFragment", "onGetNotificationFailed" + paramInt + " | " + paramString);
     this.jdField_e_of_type_Long = 0L;
-    skq.b(2);
+    tfd.b(2);
   }
   
   public void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    snb.d("WSRecommendFragment", "onLoadDataFailed:" + paramInt + " | " + paramString);
+    tlo.d("WSRecommendFragment", "onLoadDataFailed:" + paramInt + " | " + paramString);
     if (paramBoolean1)
     {
-      if (this.jdField_a_of_type_Slw.a())
+      if (((tjl)b()).a())
       {
         this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(false);
         return;
       }
-      k();
+      n();
       return;
     }
     if (paramBoolean2)
@@ -792,23 +676,75 @@ public class WSRecommendFragment
     this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(false, true);
   }
   
-  public void a(stNotificationRsp paramstNotificationRsp, sli paramsli)
+  public void a(stNotificationRsp paramstNotificationRsp, tgu paramtgu)
   {
     this.jdField_a_of_type_UserGrowthStNotificationRsp = paramstNotificationRsp;
     d(true);
-    b(true);
-    skq.a(2);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView.a(paramstNotificationRsp, paramsli);
+    c(true);
+    tfd.a(2);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView.a(paramstNotificationRsp, paramtgu);
+  }
+  
+  protected void a(Bundle paramBundle) {}
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
+    m();
+    e();
+  }
+  
+  public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
+  {
+    if ((paramWSSimpleBaseEvent instanceof LikeRspEvent))
+    {
+      paramWSSimpleBaseEvent = (LikeRspEvent)paramWSSimpleBaseEvent;
+      String str = paramWSSimpleBaseEvent.getFeedId();
+      List localList = this.jdField_a_of_type_Tby.a();
+      if (localList != null)
+      {
+        int i = 0;
+        if (i < localList.size())
+        {
+          stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)localList.get(i);
+          int j;
+          if (TextUtils.equals(localstSimpleMetaFeed.id, str)) {
+            if (paramWSSimpleBaseEvent.getRspIsDing() != localstSimpleMetaFeed.is_ding)
+            {
+              if (localstSimpleMetaFeed.is_ding != 1) {
+                break label134;
+              }
+              j = 1;
+              label94:
+              if (j == 0) {
+                break label139;
+              }
+            }
+          }
+          label134:
+          label139:
+          for (localstSimpleMetaFeed.ding_count -= 1;; localstSimpleMetaFeed.ding_count += 1)
+          {
+            localstSimpleMetaFeed.is_ding = paramWSSimpleBaseEvent.getRspIsDing();
+            this.jdField_a_of_type_Tby.notifyItemChanged(i);
+            i += 1;
+            break;
+            j = 0;
+            break label94;
+          }
+        }
+      }
+    }
   }
   
   public void a(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    if ((paramSimpleBaseEvent instanceof ForeBackgroundEvent))
+    if (((paramSimpleBaseEvent instanceof ForeBackgroundEvent)) && (!getActivity().isFinishing()))
     {
       if (((ForeBackgroundEvent)paramSimpleBaseEvent).mIsBackground)
       {
         WSPublicAccReport.getInstance().backgroundPublicAccReport();
-        l();
+        o();
       }
     }
     else {
@@ -817,10 +753,14 @@ public class WSRecommendFragment
     WSPublicAccReport.getInstance().foregroundPublicAccReport();
   }
   
+  protected void a(XRecyclerView paramXRecyclerView, int paramInt) {}
+  
+  protected void a(XRecyclerView paramXRecyclerView, boolean paramBoolean) {}
+  
   public void a(List<stSimpleMetaFeed> paramList)
   {
-    if (this.jdField_a_of_type_Siy == null) {
-      this.jdField_a_of_type_Siy = new siy(getActivity());
+    if (this.jdField_a_of_type_Tax == null) {
+      this.jdField_a_of_type_Tax = new tax(getActivity());
     }
     if ((paramList != null) && (paramList.size() > 0))
     {
@@ -828,35 +768,35 @@ public class WSRecommendFragment
       if (paramList != null)
       {
         paramList = "weishi://feed?feed_id=" + paramList.id;
-        this.jdField_a_of_type_Siy.a(paramList);
+        this.jdField_a_of_type_Tax.a(paramList);
       }
     }
-    this.jdField_a_of_type_Siy.a(this.jdField_a_of_type_UserGrowthStGlobalConfig);
-    this.jdField_a_of_type_Siy.a(getActivity(), 0);
+    this.jdField_a_of_type_Tax.a(this.jdField_a_of_type_UserGrowthStGlobalConfig);
+    this.jdField_a_of_type_Tax.a(getActivity(), 0);
   }
   
-  public void a(List<stSimpleMetaFeed> paramList, sli paramsli, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void a(List<stSimpleMetaFeed> paramList, tgu paramtgu, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    snb.b("WSRecommendFragment", "onLoadDataSuccess:" + paramList.size() + ", isFirstFromService:" + paramBoolean1);
-    if (paramsli != null)
+    tlo.f("WSRecommendFragment", "onLoadDataSuccess:" + paramList.size() + ", isFirstFromService:" + paramBoolean1);
+    if (paramtgu != null)
     {
-      this.jdField_b_of_type_Boolean = true;
-      snb.b("WSRecommendFragment", "onLoadDataSuccess AbTestId = " + paramsli.jdField_a_of_type_JavaLangString);
+      this.jdField_c_of_type_Boolean = true;
+      tlo.f("WSRecommendFragment", "onLoadDataSuccess AbTestId = " + paramtgu.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_UserGrowthStGlobalConfig = sjy.a().a();
-    snb.b("WSRecommendFragment", "mStGlobalConfig from WSGlobalConfig");
+    this.jdField_a_of_type_UserGrowthStGlobalConfig = tee.a().a();
+    tlo.a("WeishiDownloadUtil", "WeishiDownloadUtil link_strategy_type:" + this.jdField_a_of_type_UserGrowthStGlobalConfig.link_strategy_type);
     int i;
     if (paramBoolean1) {
       if (this.jdField_a_of_type_UserGrowthStGlobalConfig != null)
       {
         i = this.jdField_a_of_type_UserGrowthStGlobalConfig.link_strategy_type;
-        paramsli = a(false, i, (stSimpleMetaFeed)paramList.get(0));
-        a(paramList, this.jdField_a_of_type_UserGrowthStGlobalConfig, paramsli, paramBoolean4);
+        paramtgu = a(false, i, (stSimpleMetaFeed)paramList.get(0));
+        a(paramList, this.jdField_a_of_type_UserGrowthStGlobalConfig, paramtgu, paramBoolean4);
         if (!paramBoolean4) {
-          break label236;
+          break label260;
         }
         paramList.remove(0);
-        this.jdField_a_of_type_Sjf.a(paramList);
+        this.jdField_a_of_type_Tby.a(paramList);
       }
     }
     for (;;)
@@ -869,44 +809,44 @@ public class WSRecommendFragment
         }
       }
       if ((paramBoolean3) || (paramBoolean4)) {
-        snf.a(paramList);
+        tlv.a(paramList, false);
       }
       if (paramBoolean1)
       {
-        snc.a();
-        snc.a(sjy.a().a());
+        tlp.a();
+        tlp.a(tee.a().a());
       }
       return;
       i = 1;
       break;
-      label236:
-      b();
+      label260:
+      d();
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setVisibility(0);
-      if (this.jdField_a_of_type_Slw.a()) {
+      if (((tjl)b()).a()) {
         this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(true);
       }
-      this.jdField_a_of_type_Sjf.a(paramList);
-      this.jdField_a_of_type_Slw.a(false, false, "");
+      this.jdField_a_of_type_Tby.a(paramList);
+      ((tjl)b()).a(false, false, "");
       continue;
       if (paramBoolean2)
       {
         this.jdField_a_of_type_JavaUtilHashMap.clear();
         this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(true);
-        this.jdField_a_of_type_Sjf.a(paramList);
+        this.jdField_a_of_type_Tby.a(paramList);
       }
       else
       {
         this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(true, paramBoolean3);
-        this.jdField_a_of_type_Sjf.a(paramList);
+        this.jdField_a_of_type_Tby.a(paramList);
       }
     }
   }
   
   public void a(List<stSimpleMetaFeed> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    b();
+    this.jdField_c_of_type_Boolean = paramBoolean1;
+    d();
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setVisibility(0);
     if (paramBoolean2) {
@@ -914,15 +854,15 @@ public class WSRecommendFragment
     }
     if (paramBoolean1) {
       if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg != null) {
-        break label99;
+        break label104;
       }
     }
-    label99:
+    label104:
     for (String str = "";; str = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg.mMsgData)
     {
-      this.jdField_a_of_type_Slw.a(false, true, true, str);
+      ((tjl)this.jdField_a_of_type_Taw).a(false, true, true, str);
       a(paramList, false);
-      this.jdField_a_of_type_Sjf.a(paramList);
+      this.jdField_a_of_type_Tby.a(paramList);
       this.jdField_a_of_type_Int = paramList.size();
       this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(true, true);
       return;
@@ -931,167 +871,128 @@ public class WSRecommendFragment
   
   public void a(boolean paramBoolean)
   {
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    if (this.jdField_a_of_type_Boolean) {
+      tlv.c("feeds");
+    }
+  }
+  
+  public void b(List<stSimpleMetaFeed> paramList) {}
+  
+  public void b(boolean paramBoolean)
+  {
     if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView != null)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_b_of_type_Boolean = paramBoolean;
       this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.b();
     }
   }
   
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
+  public void c() {}
   
-  public void b(boolean paramBoolean)
+  public void c(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     if (paramBoolean) {
-      ((bfzx)this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().getAdapter()).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView);
+      ((biau)this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().getAdapter()).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView);
     }
     for (;;)
     {
-      ((bfzx)this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().getAdapter()).notifyDataSetChanged();
+      ((biau)this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().getAdapter()).notifyDataSetChanged();
       return;
-      ((bfzx)this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().getAdapter()).b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView);
+      ((biau)this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().getAdapter()).b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView);
     }
   }
   
-  public void beforeFinish()
+  public void d()
   {
-    super.beforeFinish();
-    if (!this.f)
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void onDestroyView()
+  {
+    super.onDestroyView();
+    if (!this.g)
     {
-      this.f = true;
-      skq.a().b();
-      l();
+      this.g = true;
+      i();
       h();
+      tfd.a().b();
+      o();
+      l();
       if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment$InternetDynamicBroadCastReceiver != null) {
         this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment$InternetDynamicBroadCastReceiver);
       }
-      rpg.a().a();
+      sff.a().a();
       this.jdField_a_of_type_JavaUtilHashMap.clear();
-      if (this.jdField_a_of_type_Sjf != null)
+      if (this.jdField_a_of_type_Tby != null)
       {
-        List localList = this.jdField_a_of_type_Sjf.a();
-        sjv.a().a(localList, this.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_Sjf.jdField_a_of_type_Skm != null) {
-          this.jdField_a_of_type_Sjf.jdField_a_of_type_Skm = null;
+        List localList = this.jdField_a_of_type_Tby.a();
+        tcq.a().a(localList, this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Tby.jdField_a_of_type_Tez != null) {
+          this.jdField_a_of_type_Tby.jdField_a_of_type_Tez = null;
         }
-        if (this.jdField_a_of_type_Sjf.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper != null) {
-          this.jdField_a_of_type_Sjf.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper = null;
+        if (this.jdField_a_of_type_Tby.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper != null) {
+          this.jdField_a_of_type_Tby.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper = null;
         }
       }
-      sjf.b = 0;
-      wpt.a().b(this);
-      snf.jdField_a_of_type_AndroidUtilSparseArray.clear();
-      slp.jdField_a_of_type_JavaUtilMap.clear();
+      yej.a().b(this);
+      tff.a().b(this);
+      tlv.jdField_a_of_type_AndroidUtilSparseArray.clear();
+      thb.jdField_a_of_type_JavaUtilMap.clear();
+      tby.b = 0;
     }
-  }
-  
-  public void onActivityCreated(Bundle paramBundle)
-  {
-    super.onActivityCreated(paramBundle);
-    this.jdField_e_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg == null) {}
-    for (paramBundle = "";; paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg.mMsgData)
-    {
-      skq.a().a(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Slw.a(paramBundle);
-      this.jdField_a_of_type_Slw.b(paramBundle);
-      return;
-    }
-  }
-  
-  public boolean onBackEvent()
-  {
-    snb.b("weishi-beacon", "onBackEvent");
-    f();
-    e();
-    return super.onBackEvent();
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    bdle.a();
-    d();
-    this.jdField_d_of_type_Long = System.currentTimeMillis();
-    snb.a("weishi-report", "进入瀑布流的时间：" + this.jdField_d_of_type_Long);
-    this.jdField_a_of_type_AndroidContentContext = getActivity();
-    paramBundle = new IntentFilter();
-    paramBundle.addAction("weishi_public_account_ding_state_change");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment$InternetDynamicBroadCastReceiver = new WSRecommendFragment.InternetDynamicBroadCastReceiver(this);
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment$InternetDynamicBroadCastReceiver, paramBundle);
-    paramBundle = new yyu();
-    yyt.a().a(this.jdField_a_of_type_AndroidContentContext, paramBundle);
-    slw.c("");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg = snf.a();
-    this.jdField_a_of_type_JavaLangString = snf.b();
-    c();
-    wpt.a().a(this);
-  }
-  
-  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131559782, paramViewGroup, false));
-    if (ImmersiveUtils.isSupporImmersive() == 1) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setFitsSystemWindows(true);
-    }
-    return this.jdField_a_of_type_AndroidViewViewGroup;
   }
   
   public void onDetach()
   {
     super.onDetach();
-    bcuc.a(BaseApplicationImpl.getContext(), true);
+    betl.a(BaseApplicationImpl.getContext(), true);
   }
   
   public void onPause()
   {
     super.onPause();
-    akwu.a(getActivity().app, "2062433139", 1, 4, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    amnk.a(getActivity().app, "2062433139", 1, 4, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_Boolean) {
+      WSPublicAccReport.getInstance().reportPageVisitExit("feeds");
+    }
   }
   
   public void onResume()
   {
     super.onResume();
-    i();
-    if (!sjq.jdField_a_of_type_Boolean) {
+    if (!tci.jdField_a_of_type_Boolean) {
       this.jdField_c_of_type_Long = System.currentTimeMillis();
     }
     for (;;)
     {
-      smp.a(6, smp.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg));
+      tju.a(6, tju.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg));
       if (this.jdField_d_of_type_Long > 0L)
       {
         long l = System.currentTimeMillis() - this.jdField_d_of_type_Long;
         this.jdField_d_of_type_Long = 0L;
-        snb.b("weishi-report", "page init cost：" + l);
-        smn.a();
-        smr.a().a(true, l);
+        tlo.b("weishi-report", "page init cost：" + l);
+        tjr.a();
+        tjz.a().a(true, l);
       }
-      bcuc.a(BaseApplicationImpl.getContext(), false);
+      betl.a(BaseApplicationImpl.getContext(), false);
+      if (this.jdField_a_of_type_Boolean) {
+        WSPublicAccReport.getInstance().reportPageVisitEnter("feeds");
+      }
       return;
-      sjq.jdField_a_of_type_Boolean = false;
+      tci.jdField_a_of_type_Boolean = false;
     }
-  }
-  
-  public void onStop()
-  {
-    super.onStop();
-  }
-  
-  public void onViewCreated(View paramView, Bundle paramBundle)
-  {
-    super.onViewCreated(paramView, paramBundle);
-    j();
-    this.jdField_a_of_type_Slw = new slw(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment
  * JD-Core Version:    0.7.0.1
  */

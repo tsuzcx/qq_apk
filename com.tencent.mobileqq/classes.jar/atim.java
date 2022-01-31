@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.2.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
 
-public class atim
-  implements atiu
+public final class atim
+  implements Parcelable.Creator<MusicInfo>
 {
-  atim(atik paramatik) {}
-  
-  public void a(boolean paramBoolean)
+  public MusicInfo a(Parcel paramParcel)
   {
-    if (paramBoolean) {
-      ThreadManagerV2.excute(new ShortVideoShareUtil.1.2.1(this, (aszf)this.a.a.getManager(106)), 16, null, false);
-    }
+    return new MusicInfo(paramParcel, null);
+  }
+  
+  public MusicInfo[] a(int paramInt)
+  {
+    return new MusicInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atim
  * JD-Core Version:    0.7.0.1
  */

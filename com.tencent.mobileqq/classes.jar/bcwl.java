@@ -1,20 +1,18 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.wifisdk.TMSDKCustomConfig.IToast;
+import android.view.Choreographer.FrameCallback;
 
-final class bcwl
-  implements TMSDKCustomConfig.IToast
+class bcwl
+  implements Choreographer.FrameCallback
 {
-  public void showToast(Context paramContext, CharSequence paramCharSequence, int paramInt)
+  bcwl(bcwk parambcwk) {}
+  
+  public void doFrame(long paramLong)
   {
-    if (!TextUtils.isEmpty(paramCharSequence)) {
-      bcql.a(paramContext, paramCharSequence, paramInt).a();
-    }
+    bcwk.a(this.a, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcwl
  * JD-Core Version:    0.7.0.1
  */

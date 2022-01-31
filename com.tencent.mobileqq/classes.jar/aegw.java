@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
-class aegw
-  implements DialogInterface.OnClickListener
+public class aegw
+  implements aehe
 {
-  aegw(aegs paramaegs) {}
+  public aegw(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "showSaveFileTips cancel");
-    }
+    this.a.a.setActualViewSize(paramInt1, paramInt2);
+    this.a.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegw
  * JD-Core Version:    0.7.0.1
  */

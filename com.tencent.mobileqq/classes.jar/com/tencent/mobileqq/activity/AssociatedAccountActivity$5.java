@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import ajya;
-import akpb;
+import abol;
+import alpo;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.SubAccountInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -12,14 +12,12 @@ import java.util.Iterator;
 class AssociatedAccountActivity$5
   implements Runnable
 {
-  AssociatedAccountActivity$5(AssociatedAccountActivity paramAssociatedAccountActivity, QQMessageFacade paramQQMessageFacade) {}
-  
   public void run()
   {
     if (this.this$0.isFinishing()) {
       return;
     }
-    Object localObject2 = new StringBuilder(ajya.a(2131700786)).append(this.this$0.getString(2131720034));
+    Object localObject2 = new StringBuilder(alpo.a(2131701155)).append(this.this$0.getString(2131720570));
     int i;
     Object localObject1;
     if (this.a != null)
@@ -33,7 +31,7 @@ class AssociatedAccountActivity$5
       localArrayList.addAll(this.this$0.a);
       Iterator localIterator = localArrayList.iterator();
       while (localIterator.hasNext()) {
-        i -= ((akpb)localObject1).a(((SubAccountInfo)localIterator.next()).subuin, 7000);
+        i -= ((abol)localObject1).a(((SubAccountInfo)localIterator.next()).subuin, 7000);
       }
       localArrayList.clear();
     }
@@ -64,7 +62,7 @@ class AssociatedAccountActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.5
  * JD-Core Version:    0.7.0.1
  */

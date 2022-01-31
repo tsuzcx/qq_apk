@@ -1,29 +1,21 @@
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
 
-class adrr
-  implements bfph
+public class adrr
+  implements View.OnClickListener
 {
-  adrr(adrp paramadrp, bfpc parambfpc) {}
+  public adrr(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bfpc.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_Adrp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Adrp.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adrp.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Adrp.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
-    axqy.b(this.jdField_a_of_type_Adrp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8003F02", "0X8003F02", 0, 0, "", "", "", "");
-    axqy.b(this.jdField_a_of_type_Adrp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrr
  * JD-Core Version:    0.7.0.1
  */

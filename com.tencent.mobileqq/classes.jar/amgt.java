@@ -1,83 +1,110 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.TMG.utils.QLog;
+import IMMsgBodyPack.PersonInfoChange;
+import IMMsgBodyPack.PersonInfoField;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import com.qq.taf.jce.JceInputStream;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.ProfileCardMessageProcessor.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class amgt
+  extends abnx
 {
-  private amgo a;
-  
-  private static SharedPreferences a()
+  public amgt(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "color_note_recent_view_switch" + str;
-    return BaseApplicationImpl.getApplication().getSharedPreferences(str, 4);
+    super(paramQQAppInterface, paramMessageHandler);
   }
   
-  public static void a(boolean paramBoolean)
+  private void a(MsgInfo paramMsgInfo)
   {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
-    {
-      localSharedPreferences.edit().putBoolean("color_note_recently_viewed_switch", paramBoolean).apply();
-      if (!paramBoolean) {
-        amkf.a(BaseApplicationImpl.getContext(), 5, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteRecentView", 0, "setRecentColorNoteSwitch: " + paramBoolean);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "Recieved user info update");
     }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = true;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("color_note_recently_viewed_switch", true);
-    }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if ((localSharedPreferences != null) && (!localSharedPreferences.getBoolean("color_note_recent_first_visit", false)))
+    paramMsgInfo = new JceInputStream(paramMsgInfo.vMsg);
+    paramMsgInfo.setServerEncoding("utf-8");
+    PersonInfoChange localPersonInfoChange = new PersonInfoChange();
+    localPersonInfoChange.readFrom(paramMsgInfo);
+    int j;
+    int i;
+    long l;
+    int k;
+    if (localPersonInfoChange.cType == 0)
     {
-      localSharedPreferences.edit().putBoolean("color_note_recent_first_visit", true).apply();
-      return true;
-    }
-    return false;
-  }
-  
-  public void a(amgo paramamgo)
-  {
-    this.a = paramamgo;
-  }
-  
-  public void a(ColorNote paramColorNote)
-  {
-    Object localObject = amhg.a();
-    if ((localObject != null) && (((amhf)localObject).a())) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (paramColorNote != null) && (this.a != null) && (amhj.a().a()))
+      paramMsgInfo = localPersonInfoChange.vChgField.iterator();
+      j = 0;
+      i = 0;
+      if (paramMsgInfo.hasNext())
       {
-        localObject = amhh.a(paramColorNote);
-        this.a.b((ColorNote)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteRecentView", 0, "updateRecentNote: " + paramColorNote.toString());
+        l = ((PersonInfoField)paramMsgInfo.next()).uField;
+        if ((l == 20015L) || (l == 10009L))
+        {
+          k = 1;
+          j = i;
+          i = k;
         }
       }
-      return;
+    }
+    for (;;)
+    {
+      k = j;
+      j = i;
+      i = k;
+      break;
+      if ((l == 20002L) || (l == 20009L) || (l == 20031L) || (l == 20019L))
+      {
+        i = j;
+        j = 1;
+        continue;
+        if (this.a != null)
+        {
+          paramMsgInfo = (FriendListHandler)this.a.a(1);
+          if (j != 0) {
+            paramMsgInfo.c(this.a.getAccount());
+          }
+          if (i != 0) {
+            BaseApplicationImpl.sUiHandler.postDelayed(new ProfileCardMessageProcessor.1(this), 150L);
+          }
+        }
+        do
+        {
+          return;
+        } while ((localPersonInfoChange.cType != 1) || (!QLog.isColorLevel()));
+        QLog.d("MessageHandler", 2, "group data update push");
+      }
+      else
+      {
+        k = i;
+        i = j;
+        j = k;
+      }
+    }
+  }
+  
+  public aboz a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return new aboz(null, false);
+      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
+        a(paramMsgInfo);
+      } else {
+        a(getClass().getName(), paramInt);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgt
  * JD-Core Version:    0.7.0.1
  */

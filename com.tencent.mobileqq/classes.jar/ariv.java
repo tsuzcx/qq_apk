@@ -1,62 +1,24 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.11.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCaptureImageListener;
 
-class ariv
-  implements aabi
+public class ariv
+  implements TVK_IMediaPlayer.OnCaptureImageListener
 {
-  ariv(arik paramarik, WeakReference paramWeakReference, Bundle paramBundle) {}
+  ariv(aris paramaris) {}
   
-  public void onComplete() {}
+  public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2) {}
   
-  public void onFailure(int paramInt, String paramString)
+  public void onCaptureImageSucceed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onFailure code = " + paramInt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131703584), 0).a();
+    ThreadManagerV2.executeOnSubThread(new VideoFilePresenter.11.1(this, paramBitmap));
   }
-  
-  public void onPermission(int paramInt)
-  {
-    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onPermission code = " + paramInt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131703585), 0).a();
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    try
-    {
-      QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onSuccess");
-      this.jdField_a_of_type_Arik.b = paramJSONObject.optString("access_token");
-      this.jdField_a_of_type_Arik.jdField_a_of_type_JavaLangString = paramJSONObject.optString("openid");
-      this.jdField_a_of_type_AndroidOsBundle.putString("access_token", this.jdField_a_of_type_Arik.b);
-      this.jdField_a_of_type_AndroidOsBundle.putString("openid", this.jdField_a_of_type_Arik.jdField_a_of_type_JavaLangString);
-      arik.a(this.jdField_a_of_type_Arik);
-      this.jdField_a_of_type_Arik.jdField_a_of_type_Arje.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      QLog.e("XProxy|NowProxy", 1, paramJSONObject, new Object[0]);
-    }
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ariv
  * JD-Core Version:    0.7.0.1
  */

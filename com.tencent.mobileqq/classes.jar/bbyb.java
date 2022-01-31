@@ -1,42 +1,45 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.os.CountDownTimer;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbyb
-  implements DownloadParams.DecodeHandler
+  extends CountDownTimer
 {
-  private int a;
-  private int b;
-  
-  @Deprecated
-  public bbyb() {}
-  
-  public bbyb(int paramInt1, int paramInt2)
+  public bbyb(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    super(paramLong1, paramLong2);
   }
   
-  @Deprecated
-  public void a(int paramInt1, int paramInt2)
+  public void onFinish()
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.b())
+    {
+      this.a.b();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+      {
+        bdfq localbdfq = bdcd.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131697877).setNegativeButton(2131697913, new bbyd(this)).setPositiveButton(2131697905, new bbyc(this));
+        localbdfq.setCancelable(false);
+        localbdfq.show();
+      }
+    }
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void onTick(long paramLong)
   {
-    return bbje.a(paramBitmap, this.a, this.b);
-  }
-  
-  public String toString()
-  {
-    return "NinePatchDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
+    int i = (int)(paramLong / 1000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReciteRecordLayout", 2, "onTick remainSecond = " + i);
+    }
+    if (i == 5) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131697869);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbyb
  * JD-Core Version:    0.7.0.1
  */

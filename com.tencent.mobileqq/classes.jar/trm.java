@@ -1,25 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.HashMap;
-import java.util.Map;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
-public class trm
+class trm
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public StoryVideoItem a;
-  public Map<String, String> a = new HashMap();
-  public final String b = "Q.qqstory.share." + getClass().getSimpleName();
-  
-  public final void a(String paramString1, String paramString2)
+  public trm(BaseWidgetView paramBaseWidgetView)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      this.a.put(paramString1, paramString2);
+    super(paramBaseWidgetView);
+  }
+  
+  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, trr paramtrr)
+  {
+    if ((this.itemView instanceof BaseWidgetView))
+    {
+      this.itemView.setTag(this);
+      ((BaseWidgetView)this.itemView).setInteractor(paramtrr);
+      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trm
  * JD-Core Version:    0.7.0.1
  */

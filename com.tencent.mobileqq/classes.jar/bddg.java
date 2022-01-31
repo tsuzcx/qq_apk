@@ -1,14 +1,22 @@
-import android.widget.TextView;
-import com.tencent.widget.Switch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
-public class bddg
+class bddg
+  implements DialogInterface.OnDismissListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  Switch jdField_a_of_type_ComTencentWidgetSwitch;
+  bddg(bddb parambddb) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if ((this.a.a instanceof LoginActivity)) {
+      ((LoginActivity)this.a.a).finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bddg
  * JD-Core Version:    0.7.0.1
  */

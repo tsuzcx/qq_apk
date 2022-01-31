@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
 
-public final class akus
-  implements Parcelable.Creator<SosoInterface.SosoLocation>
+public class akus
+  implements DialogInterface.OnClickListener
 {
-  public SosoInterface.SosoLocation a(Parcel paramParcel)
-  {
-    return new SosoInterface.SosoLocation(paramParcel);
-  }
+  public akus(CmGameSubRscHandler.2 param2) {}
   
-  public SosoInterface.SosoLocation[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new SosoInterface.SosoLocation[paramInt];
+    if (this.a.a != null) {
+      this.a.a.a(null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akus
  * JD-Core Version:    0.7.0.1
  */

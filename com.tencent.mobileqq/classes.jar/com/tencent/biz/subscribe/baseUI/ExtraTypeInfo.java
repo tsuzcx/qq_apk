@@ -21,9 +21,12 @@ public class ExtraTypeInfo
   public static final int SOURCE_TYPE_FROM_SEARCH = 9005;
   public static final int SOURCE_TYPE_IS_MINI_PROJECT = 9001;
   public static final int SOURCE_TYPE_QZONE = 9002;
-  private String commentId;
+  public String commentId;
+  public String mCommentPosterId;
+  public int mDataPosition;
+  public String mReplyPosterId;
   public int pageType;
-  private String replyId;
+  public String replyId;
   public int sourceType;
   
   public ExtraTypeInfo() {}
@@ -61,7 +64,7 @@ public class ExtraTypeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.baseUI.ExtraTypeInfo
  * JD-Core Version:    0.7.0.1
  */

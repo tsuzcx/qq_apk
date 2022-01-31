@@ -11,35 +11,35 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
-import bikl;
-import biou;
-import biov;
-import biow;
-import biox;
-import bioy;
-import biwo;
-import biws;
-import bjav;
-import bjcb;
-import bjjp;
-import bkrf;
+import bkpa;
+import bkto;
+import bktp;
+import bktq;
+import bktr;
+import bkts;
+import blbm;
+import blmf;
+import blnl;
+import blva;
+import bncp;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 import java.util.ArrayList;
 import java.util.Iterator;
-import vzl;
+import xod;
 
 public class AEProviderContainerView
   extends FrameLayout
 {
   public int a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new biou(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bkto(this);
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private bikl jdField_a_of_type_Bikl;
-  private biwo jdField_a_of_type_Biwo = biwo.jdField_a_of_type_Biwo;
-  private biws jdField_a_of_type_Biws;
+  private bkpa jdField_a_of_type_Bkpa;
+  private blbm jdField_a_of_type_Blbm;
   private AEBeautyProviderView jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView;
   private AEFilterProviderView jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView;
+  private AECaptureMode jdField_a_of_type_DovComQqImAeModeAECaptureMode = AECaptureMode.NORMAL;
   private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
@@ -52,35 +52,35 @@ public class AEProviderContainerView
   public AEProviderContainerView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = vzl.a(getContext(), 195.0F);
+    this.jdField_a_of_type_Int = xod.a(getContext(), 195.0F);
     i();
   }
   
   public AEProviderContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = vzl.a(getContext(), 195.0F);
+    this.jdField_a_of_type_Int = xod.a(getContext(), 195.0F);
     i();
   }
   
   public AEProviderContainerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = vzl.a(getContext(), 195.0F);
+    this.jdField_a_of_type_Int = xod.a(getContext(), 195.0F);
     i();
   }
   
   private void i()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131558496, null);
+    View localView = LayoutInflater.from(getContext()).inflate(2131558500, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131363137);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131363173);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366269);
+    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366363);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131372055));
-    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131372056);
-    this.d = localView.findViewById(2131363995);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131372372));
+    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131372373);
+    this.d = localView.findViewById(2131364056);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_AndroidViewView);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.d);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidViewView);
@@ -115,7 +115,7 @@ public class AEProviderContainerView
     {
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView = new AEFilterProviderView(getContext());
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.setNeedTabBar(false);
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.d(vzl.a(getContext(), 162.0F));
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.d(xod.a(getContext(), 162.0F));
       if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView != null) {
         this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView);
       }
@@ -143,7 +143,6 @@ public class AEProviderContainerView
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.d();
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.setAlpha(1.0F);
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.setVisibility(8);
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView = null;
     }
     if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView == null)
     {
@@ -156,7 +155,7 @@ public class AEProviderContainerView
     {
       if (!this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setController(this.jdField_a_of_type_Bikl);
+        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setController(this.jdField_a_of_type_Bkpa);
         this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.a(null);
       }
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setAlpha(1.0F);
@@ -171,25 +170,27 @@ public class AEProviderContainerView
     Object localObject = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, this.jdField_a_of_type_Int });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play((Animator)localObject);
-    localAnimatorSet.addListener(new biox(this));
+    localAnimatorSet.addListener(new bktr(this));
     localAnimatorSet.setDuration(300L).start();
-    localObject = bjjp.a(this, 1.0F, 0.0F);
+    localObject = blva.a(this, 1.0F, 0.0F);
     ((Animation)localObject).setStartOffset(0L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new bioy(this));
+    ((Animation)localObject).setAnimationListener(new bkts(this));
     startAnimation((Animation)localObject);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView != null) {
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView != null)
+    {
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.a();
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView = null;
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Biwo == biwo.c;
+    return this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.GIF;
   }
   
   public void b()
@@ -260,15 +261,14 @@ public class AEProviderContainerView
     {
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.d();
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.setVisibility(8);
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView = null;
     }
     if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView != null)
     {
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setVisibility(8);
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView = null;
     }
-    if (this.jdField_a_of_type_Biws != null) {
-      this.jdField_a_of_type_Biws.a(196613, new Object[0]);
+    if (this.jdField_a_of_type_Blbm != null) {
+      this.jdField_a_of_type_Blbm.a(196613, new Object[0]);
     }
     if (QLog.isColorLevel()) {
       QLog.d("AEProviderContainerView", 2, "panel closed");
@@ -280,12 +280,12 @@ public class AEProviderContainerView
     this.jdField_a_of_type_Boolean = true;
     Object localObject = new AnimatorSet();
     ((AnimatorSet)localObject).play(ObjectAnimator.ofFloat(this, "translationY", new float[] { this.jdField_a_of_type_Int, 0.0F }));
-    ((AnimatorSet)localObject).addListener(new biov(this));
+    ((AnimatorSet)localObject).addListener(new bktp(this));
     ((AnimatorSet)localObject).setDuration(300L).start();
-    localObject = bjjp.a(this, 0.0F, 1.0F);
+    localObject = blva.a(this, 0.0F, 1.0F);
     ((Animation)localObject).setStartOffset(200L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new biow(this));
+    ((Animation)localObject).setAnimationListener(new bktq(this));
     startAnimation((Animation)localObject);
   }
   
@@ -301,9 +301,9 @@ public class AEProviderContainerView
     if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView != null) {
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.b();
     }
-    bkrf.a().b(null, (Activity)getContext(), 0);
-    bkrf.a().a(null, 0);
-    ((bjcb)bjav.a(5)).a((Activity)getContext());
+    bncp.a().b(null, (Activity)getContext(), 0);
+    bncp.a().a(null, 0);
+    ((blnl)blmf.a(5)).a((Activity)getContext());
   }
   
   public void h()
@@ -328,15 +328,15 @@ public class AEProviderContainerView
     }
   }
   
-  public void setCaptureMode(biwo parambiwo)
+  public void setCaptureMode(AECaptureMode paramAECaptureMode)
   {
-    this.jdField_a_of_type_Biwo = parambiwo;
+    this.jdField_a_of_type_DovComQqImAeModeAECaptureMode = paramAECaptureMode;
   }
   
-  public void setControllerAndManager(bikl parambikl, biws parambiws)
+  public void setControllerAndManager(bkpa parambkpa, blbm paramblbm)
   {
-    this.jdField_a_of_type_Bikl = parambikl;
-    this.jdField_a_of_type_Biws = parambiws;
+    this.jdField_a_of_type_Bkpa = parambkpa;
+    this.jdField_a_of_type_Blbm = paramblbm;
     this.jdField_b_of_type_Boolean = true;
   }
   
@@ -350,7 +350,7 @@ public class AEProviderContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ public final class oidb_cmd0x83e$SocializeFeedsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.SocializeFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,65 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ContactCard;
 
 public class abxz
-  extends Handler
+  extends allb
 {
-  public abxz(RegisterActivity paramRegisterActivity) {}
+  public abxz(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.a.c();
-    switch (paramMessage.what)
+    Object localObject;
+    if ((paramBoolean) && (paramObject != null))
     {
-    case -1: 
-    case 0: 
-    case 2: 
-    default: 
-    case 1: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
+      if (!(paramObject instanceof Card)) {
+        break label163;
+      }
+      localObject = (Card)paramObject;
+      if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.a(this.a))))
       {
-        return;
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Byte = ((byte)(paramMessage.jdField_a_of_type_Byte + 1));
-        this.a.a();
-        return;
-        this.a.d();
-        return;
-        this.a.b();
-        return;
-      } while (this.a.jdField_a_of_type_JavaLangString == null);
-      Toast.makeText(this.a.getApplicationContext(), this.a.jdField_a_of_type_JavaLangString, 1).show();
-      this.a.jdField_a_of_type_JavaLangString = null;
-      return;
-    case 6: 
-      paramMessage = paramMessage.getData().getString("url");
-      this.a.a(paramMessage);
-      return;
-    case 7: 
-      this.a.a(paramMessage.getData().getString("telNum"), paramMessage.getData().getString("msg"));
-      return;
+        paramObject = bcyw.a(this.a, ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
+        if (this.a.a != null) {
+          paramObject = bcyw.a(this.a, ((Card)localObject).shGender, 0, "", "", "");
+        }
+        if (!TextUtils.isEmpty(paramObject))
+        {
+          this.a.c.setVisibility(0);
+          this.a.c.setText(paramObject);
+        }
+      }
     }
-    this.a.jdField_a_of_type_Byte = 3;
-    this.a.a();
+    for (;;)
+    {
+      if (bfua.b(this.a.app, AddFriendVerifyActivity.a(this.a))) {
+        this.a.c.setVisibility(8);
+      }
+      return;
+      label163:
+      if ((paramObject instanceof ContactCard))
+      {
+        localObject = (ContactCard)paramObject;
+        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.a(this.a))))
+        {
+          paramObject = bcyw.a(this.a, ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
+          if (this.a.a != null) {
+            paramObject = bcyw.a(this.a, ((ContactCard)localObject).bSex, 0, "", "", "");
+          }
+          if (!TextUtils.isEmpty(paramObject))
+          {
+            this.a.c.setVisibility(0);
+            this.a.c.setText(paramObject);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxz
  * JD-Core Version:    0.7.0.1
  */

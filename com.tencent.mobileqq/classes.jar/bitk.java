@@ -1,46 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.Set;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-class bitk
-  implements View.OnClickListener
+public abstract class bitk
+  extends Binder
+  implements bitj
 {
-  bitk(bitj parambitj, bita parambita, int paramInt, bitp parambitp) {}
-  
-  public void onClick(View paramView)
+  public bitk()
   {
-    boolean bool;
-    if (this.jdField_a_of_type_Bita.jdField_a_of_type_Int == 13)
-    {
-      if (this.jdField_a_of_type_Bita.a()) {
-        break label73;
-      }
-      bool = true;
-      if (!bool) {
-        break label78;
-      }
-      bitj.a(this.jdField_a_of_type_Bitj).add(Integer.valueOf(this.jdField_a_of_type_Int));
-      bitj.a(this.jdField_a_of_type_Bitj, true);
+    attachInterface(this, "cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+  }
+  
+  public static bitj a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    for (;;)
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof bitj))) {
+      return (bitj)localIInterface;
+    }
+    return new bitl(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_Bita.a(bool);
-      this.jdField_a_of_type_Bitp.a(bool);
-      return;
-      label73:
-      bool = false;
-      break;
-      label78:
-      bitj.a(this.jdField_a_of_type_Bitj).remove(Integer.valueOf(this.jdField_a_of_type_Int));
-      if (bitj.a(this.jdField_a_of_type_Bitj).size() < 1) {
-        bitj.a(this.jdField_a_of_type_Bitj, false);
-      }
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+    paramInt1 = paramParcel1.readInt();
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramInt1, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bitk
  * JD-Core Version:    0.7.0.1
  */

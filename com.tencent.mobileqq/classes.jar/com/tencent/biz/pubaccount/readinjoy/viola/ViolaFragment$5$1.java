@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import rwk;
-import rxb;
+import smx;
+import sno;
 
 public class ViolaFragment$5$1
   implements Runnable
 {
-  public ViolaFragment$5$1(rwk paramrwk) {}
+  public ViolaFragment$5$1(smx paramsmx) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class ViolaFragment$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.5.1
  * JD-Core Version:    0.7.0.1
  */

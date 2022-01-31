@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import actj;
-import ajya;
+import aekt;
+import alpo;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -21,10 +21,10 @@ public class ApolloMessageProgressView
   {
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
-    localPaint.setTextSize(actj.a(15.0F, getResources()));
+    localPaint.setTextSize(aekt.a(15.0F, getResources()));
     localPaint.setColor(-1);
     localPaint.setTextAlign(Paint.Align.CENTER);
-    paramCanvas.drawText(ajya.a(2131700468), this.a, getHeight() - actj.a(25.0F, getResources()), localPaint);
+    paramCanvas.drawText(alpo.a(2131700837), this.a, getHeight() - aekt.a(25.0F, getResources()), localPaint);
   }
   
   @TargetApi(11)
@@ -33,7 +33,7 @@ public class ApolloMessageProgressView
     if (this.d == 1)
     {
       d();
-      this.b -= actj.a(7.0F, getResources());
+      this.b -= aekt.a(7.0F, getResources());
       this.f = -822083584;
       b(paramCanvas);
       c(paramCanvas);
@@ -47,7 +47,7 @@ public class ApolloMessageProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloMessageProgressView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.util.Log;
-import asvl;
-import asvn;
+import aumi;
+import aumk;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 class AudioJsPlugin$2
-  extends asvl
+  extends aumi
 {
   AudioJsPlugin$2(AudioJsPlugin paramAudioJsPlugin) {}
   
@@ -118,7 +118,7 @@ class AudioJsPlugin$2
       AudioJsPlugin.access$3502(this.this$0, AudioJsPlugin.access$2100(this.this$0).a());
     }
     onMusicStop();
-    QLog.i("[mini] AudioJsPlugin", 2, "onPlaySongChanged title:" + paramSongInfo.b + " url:" + paramSongInfo.a);
+    QLog.i("[mini] AudioJsPlugin", 2, "onPlaySongChanged title:" + paramSongInfo.c + " url:" + paramSongInfo.b);
   }
   
   public void onPlayStateChanged(int paramInt)
@@ -156,7 +156,7 @@ class AudioJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,63 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
+import com.tencent.qphone.base.util.QLog;
 
-final class ahja
-  implements View.OnTouchListener
+public class ahja
+  extends alox
 {
-  private float b = 1.0F;
+  public ahja(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
   
-  ahja(float paramFloat) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onAddFriend(String paramString)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.b = paramView.getAlpha();
-      paramView.setAlpha(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsExplorationFragment", 2, "onAddFriend " + paramString);
     }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        paramView.setAlpha(this.b);
-      }
-      else if (paramMotionEvent.getAction() == 2)
-      {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!ahiw.a(paramView, i, j)) {
-          paramView.setAlpha(1.0F);
-        }
-      }
+    ConnectionsExplorationFragment.a(this.a, false, true);
+  }
+  
+  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsExplorationFragment", 2, "onAddReqStatesChanged isSuccess=" + paramBoolean + " " + paramString);
+    }
+    ConnectionsExplorationFragment.a(this.a, false, true);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean + " " + paramString);
+    }
+    ConnectionsExplorationFragment.a(this.a, false, true);
+  }
+  
+  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      ConnectionsExplorationFragment.a(this.a, false, true);
+    }
+    while (paramInt1 != 1205) {
+      return;
+    }
+    ConnectionsExplorationFragment.a(this.a, false, false);
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsExplorationFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      ConnectionsExplorationFragment.a(this.a, false, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahja
  * JD-Core Version:    0.7.0.1
  */

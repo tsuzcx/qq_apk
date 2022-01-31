@@ -1,127 +1,36 @@
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.database.sqlite.SQLiteOpenHelper;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.UUID;
 
-public class aqrr
-  extends SQLiteOpenHelper
+class aqrr
+  implements DialogInterface.OnClickListener
 {
-  private Context a;
+  aqrr(aqrp paramaqrp, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
   
-  public aqrr(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramContext, "WADLTASK.db", null, 27);
-    this.a = paramContext;
-  }
-  
-  private aqrs a(Cursor paramCursor)
-  {
-    if (paramCursor != null)
+    switch (paramInt)
     {
-      aqrs localaqrs = new aqrs();
-      localaqrs.jdField_a_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("appId"));
-      localaqrs.jdField_b_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("packageName"));
-      localaqrs.jdField_c_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("apkUrl"));
-      localaqrs.jdField_d_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("apkSign"));
-      localaqrs.jdField_a_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("versionCode"));
-      localaqrs.e = paramCursor.getString(paramCursor.getColumnIndex("appName"));
-      localaqrs.f = paramCursor.getString(paramCursor.getColumnIndex("iconUrl"));
-      localaqrs.g = paramCursor.getString(paramCursor.getColumnIndex("apkChannel"));
-      localaqrs.h = paramCursor.getString(paramCursor.getColumnIndex("via"));
-      localaqrs.jdField_b_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("flags"));
-      localaqrs.i = paramCursor.getString(paramCursor.getColumnIndex("fromWebUrl"));
-      localaqrs.jdField_c_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("actionFrom"));
-      localaqrs.j = paramCursor.getString(paramCursor.getColumnIndex("adtag"));
-      localaqrs.k = paramCursor.getString(paramCursor.getColumnIndex("extraData"));
-      localaqrs.jdField_a_of_type_Long = paramCursor.getLong(paramCursor.getColumnIndex("totalSize"));
-      localaqrs.jdField_b_of_type_Long = paramCursor.getLong(paramCursor.getColumnIndex("downloadSize"));
-      localaqrs.l = paramCursor.getString(paramCursor.getColumnIndex("savePath"));
-      localaqrs.jdField_d_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("status"));
-      localaqrs.m = paramCursor.getString(paramCursor.getColumnIndex("taskId"));
-      localaqrs.jdField_c_of_type_Long = paramCursor.getLong(paramCursor.getColumnIndex("createTime"));
-      return localaqrs;
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface = bcil.a(this.jdField_a_of_type_Aqrp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
+      this.jdField_a_of_type_Aqrp.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Aqrp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_Aqrp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqrp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      return;
     }
-    return null;
-  }
-  
-  private boolean a()
-  {
-    return new File(this.a.getDatabasePath("WADLTASK.db").getPath()).exists();
-  }
-  
-  public List<aqrs> a()
-  {
-    Object localObject1 = null;
-    SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
-    if (localSQLiteDatabase == null) {
-      return null;
-    }
-    Cursor localCursor = localSQLiteDatabase.rawQuery("select * from TASKS", null);
-    for (;;)
-    {
-      Object localObject4;
-      if (localCursor != null) {
-        localObject4 = localObject1;
-      }
-      try
-      {
-        if (localCursor.moveToNext())
-        {
-          localObject4 = localObject1;
-          aqrs localaqrs = a(localCursor);
-          if (localaqrs == null) {
-            continue;
-          }
-          Object localObject3 = localObject1;
-          if (localObject1 == null)
-          {
-            localObject4 = localObject1;
-            localObject3 = new ArrayList();
-          }
-          localObject4 = localObject3;
-          ((List)localObject3).add(localaqrs);
-          localObject1 = localObject3;
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return localObject4;
-        return localException;
-      }
-      finally
-      {
-        if (localCursor != null) {
-          localCursor.close();
-        }
-        localSQLiteDatabase.close();
-      }
-    }
-  }
-  
-  public SQLiteDatabase getReadableDatabase()
-  {
-    if (!a()) {
-      return null;
-    }
-    return super.getReadableDatabase();
-  }
-  
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    throw new SQLiteException("WadlTaskReader don't upgrade database from version " + paramInt1 + " to " + paramInt2);
+    new bboe(this.jdField_a_of_type_Long, this.jdField_a_of_type_Aqrp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrr
  * JD-Core Version:    0.7.0.1
  */

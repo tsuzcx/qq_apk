@@ -1,79 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 
-class ajll
-  implements aysc
+public abstract class ajll
 {
-  ajll(ajlk paramajlk, String paramString, ajli paramajli) {}
+  FlowActivity a;
   
-  public void onResp(aysz paramaysz)
+  public ajll(FlowActivity paramFlowActivity)
   {
-    ayrx localayrx = (ayrx)paramaysz.jdField_a_of_type_Aysy;
-    if (this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ayrx == localayrx) {
-      this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ayrx = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localayrx.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaysz.jdField_a_of_type_Int), Integer.valueOf(paramaysz.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    if (paramaysz.jdField_a_of_type_Int == 0)
-    {
-      paramaysz = new File(localayrx.c);
-      if (!paramaysz.exists()) {}
-    }
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          paramaysz = paramaysz.getParent();
-          bbdx.a(localayrx.c, paramaysz, false);
-          ajlj.a(this.jdField_a_of_type_Ajli.b);
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          if (this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm != null)
-          {
-            this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm.a(100);
-            this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm.a(0, "Download Complete!!!");
-          }
-          this.jdField_a_of_type_Ajlk.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        catch (Exception paramaysz)
-        {
-          paramaysz.printStackTrace();
-        }
-        int i = 0;
-      }
-    } while (this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm == null);
-    this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm.a(2, "");
+    this.a = paramFlowActivity;
   }
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
+  public Context a()
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm != null) {
-        this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm.a(i);
-      }
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
-    }
+    return this.a;
   }
+  
+  public abstract void a(ViewGroup paramViewGroup);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajll
  * JD-Core Version:    0.7.0.1
  */

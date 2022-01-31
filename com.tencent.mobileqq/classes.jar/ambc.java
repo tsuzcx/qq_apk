@@ -1,81 +1,154 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-class ambc
-  extends Drawable
+public class ambc
+  extends MqqHandler
 {
-  public int a;
-  public Bitmap a;
-  private Paint a;
-  public boolean a;
-  public int b = -1;
+  WeakReference<VideoBroadcastReceiver> a;
   
-  public ambc(Bitmap paramBitmap)
+  public ambc(Looper paramLooper, VideoBroadcastReceiver paramVideoBroadcastReceiver)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = paramBitmap.getWidth();
-    this.b = paramBitmap.getHeight();
+    super(paramLooper);
+    this.a = new WeakReference(paramVideoBroadcastReceiver);
   }
   
-  public void draw(Canvas paramCanvas)
+  public void handleMessage(Message paramMessage)
   {
-    Rect localRect = super.getBounds();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a == null) {}
+    QQAppInterface localQQAppInterface;
+    do
     {
-      paramCanvas.save();
-      paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, super.getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Boolean) {
-      paramCanvas.restore();
-    }
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.b;
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      super.invalidateSelf();
-    }
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    super.invalidateSelf();
-  }
-  
-  public void setDither(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
-    super.invalidateSelf();
+      Object localObject1;
+      Object localObject2;
+      int i;
+      Object localObject4;
+      String str;
+      Object localObject3;
+      int j;
+      do
+      {
+        boolean bool2;
+        boolean bool3;
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              localObject1 = (VideoBroadcastReceiver)this.a.get();
+            } while ((localObject1 == null) || (VideoBroadcastReceiver.a((VideoBroadcastReceiver)localObject1) == null));
+            localQQAppInterface = (QQAppInterface)VideoBroadcastReceiver.a((VideoBroadcastReceiver)localObject1).get();
+          } while (localQQAppInterface == null);
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 0: 
+            localObject2 = (Object[])paramMessage.obj;
+            i = ((Integer)localObject2[0]).intValue();
+            localObject4 = (String)localObject2[1];
+            localObject1 = (String)localObject2[2];
+            str = (String)localObject2[3];
+            paramMessage = (Context)localObject2[4];
+            localObject2 = (String)localObject2[5];
+            localObject3 = new SessionInfo();
+            ((SessionInfo)localObject3).jdField_a_of_type_Int = i;
+            ((SessionInfo)localObject3).d = ((String)localObject4);
+            if (i == 1006)
+            {
+              ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
+              localObject1 = ((aubm)localQQAppInterface.getManager(11)).a();
+              if (localObject1 != null) {
+                ((SessionInfo)localObject3).e = (((RespondQueryQQBindingStat)localObject1).nationCode + ((RespondQueryQQBindingStat)localObject1).mobileNo);
+              }
+            }
+            for (;;)
+            {
+              acex.b(localQQAppInterface, paramMessage, (SessionInfo)localObject3, (String)localObject2);
+              return;
+              if (i == 1000)
+              {
+                localObject4 = ((TroopManager)localQQAppInterface.getManager(52)).b((String)localObject1);
+                if (localObject4 == null)
+                {
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.e(VideoBroadcastReceiver.jdField_a_of_type_JavaLangString, 2, "findTroopInfo fail ,uin : " + (String)localObject1);
+                  return;
+                }
+                ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = str;
+                ((SessionInfo)localObject3).b = ((TroopInfo)localObject4).troopcode;
+                ((SessionInfo)localObject3).c = ((TroopInfo)localObject4).troopuin;
+                continue;
+              }
+              if (i == 1004)
+              {
+                ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = str;
+                ((SessionInfo)localObject3).b = ((String)localObject1);
+              }
+              else
+              {
+                ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = str;
+              }
+            }
+          case 1: 
+            paramMessage = (Object[])paramMessage.obj;
+            localObject1 = (bdfq)paramMessage[0];
+            i = ((Integer)paramMessage[1]).intValue();
+            bool2 = ((Boolean)paramMessage[2]).booleanValue();
+            str = (String)paramMessage[3];
+            localObject2 = (String)paramMessage[4];
+            bool3 = ((Boolean)paramMessage[5]).booleanValue();
+          }
+        } while (!((bdfq)localObject1).isShowing());
+        ((bdfq)localObject1).dismiss();
+        if (!bool2) {}
+        for (boolean bool1 = true;; bool1 = false)
+        {
+          VideoMsgTools.a(localQQAppInterface, i, 10, bool1, str, (String)localObject2, bool3, null, true, new Object[0]);
+          mtq.c(localQQAppInterface.isBackground_Pause, bool2);
+          return;
+        }
+        localObject4 = (Object[])paramMessage.obj;
+        paramMessage = (bdfq)localObject4[0];
+        i = ((Integer)localObject4[1]).intValue();
+        j = ((Integer)localObject4[2]).intValue();
+        str = (String)localObject4[3];
+        localObject2 = (String)localObject4[4];
+        localObject3 = (String)localObject4[5];
+        localObject4 = (String)localObject4[6];
+      } while (!paramMessage.isShowing());
+      paramMessage.dismiss();
+      VideoMsgTools.a(localQQAppInterface, i, j, false, str, (String)localObject2, false, null, false, new Object[0]);
+      VideoBroadcastReceiver.a((VideoBroadcastReceiver)localObject1, 8, str, (String)localObject3, (String)localObject4);
+      mtq.e(localQQAppInterface.isBackground_Pause);
+      return;
+      paramMessage = (bdfq)((Object[])(Object[])paramMessage.obj)[0];
+    } while (!paramMessage.isShowing());
+    paramMessage.dismiss();
+    return;
+    paramMessage = (Intent)((Object[])(Object[])paramMessage.obj)[0];
+    localQQAppInterface.getApp().startActivity(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ambc
  * JD-Core Version:    0.7.0.1
  */

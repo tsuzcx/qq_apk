@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
 
-class agwp
-  implements DialogInterface.OnClickListener
+public final class agwp
+  implements Parcelable.Creator<ZhituImgResponse>
 {
-  agwp(agwo paramagwo) {}
+  public ZhituImgResponse a(Parcel paramParcel)
+  {
+    return new ZhituImgResponse(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ZhituImgResponse[] a(int paramInt)
+  {
+    return new ZhituImgResponse[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agwp
  * JD-Core Version:    0.7.0.1
  */

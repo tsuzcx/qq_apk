@@ -1,74 +1,31 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import java.util.HashMap;
 
-public abstract class bkgn<PACKAGE extends bkfz>
-  extends BaseAdapter
+final class bkgn
+  implements bapw
 {
-  public int a;
-  protected Context a;
-  protected bjcu a;
-  protected PACKAGE a;
-  protected FaceListPage a;
-  
-  public bkgn(Context paramContext, FaceListPage paramFaceListPage)
+  public void a(baqv parambaqv, baqw parambaqw)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage = paramFaceListPage;
-  }
-  
-  public void a(bjcu parambjcu)
-  {
-    this.jdField_a_of_type_Bjcu = parambjcu;
-  }
-  
-  public void a(PACKAGE paramPACKAGE)
-  {
-    this.jdField_a_of_type_Bkfz = paramPACKAGE;
-  }
-  
-  protected boolean a()
-  {
-    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Bkfz == null)
+    if ((parambaqv == null) || (parambaqw == null)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceList", 2, "facePkg is null");
-      }
-      return 0;
-    }
-    int i = this.jdField_a_of_type_Bkfz.b();
-    int j = this.jdField_a_of_type_Bkfz.a();
-    if (j < 1) {
-      throw new IllegalArgumentException("per item count < 1 :" + j);
-    }
-    if ((QLog.isColorLevel()) && (i == 0)) {
-      QLog.d("FaceList", 2, "totalFaceCount = 0");
-    }
-    if (i % j == 0) {
-      return i / j;
-    }
-    return i / j + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+      do
+      {
+        return;
+      } while (!(parambaqv instanceof baps));
+      parambaqv = (baps)parambaqv;
+      parambaqv.jdField_a_of_type_Long += parambaqw.c;
+      parambaqw.c = 0L;
+      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
+      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
+    } while (!parambaqw.contains("range="));
+    parambaqw = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
+    parambaqv.jdField_a_of_type_JavaLangString = (parambaqw + "range=" + parambaqv.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkgn
  * JD-Core Version:    0.7.0.1
  */

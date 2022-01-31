@@ -1,87 +1,53 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqWatchVideoBatch;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideoBatch;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.VideoItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import UserGrowth.stSimpleMetaFeed;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 public class tnq
-  extends sys<toz>
+  extends tnn
 {
-  public static final String a;
-  public ArrayList<tcq> a;
-  public int c;
+  private String a;
   
-  static
+  public tnq(tmj paramtmj)
   {
-    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.video_watch_batch");
+    super(paramtmj);
   }
   
-  public tnq()
+  public List<tmv> a(ArrayList paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspWatchVideoBatch localRspWatchVideoBatch = new qqstory_service.RspWatchVideoBatch();
-    try
-    {
-      localRspWatchVideoBatch.mergeFrom(paramArrayOfByte);
-      return new toz(localRspWatchVideoBatch);
+    if ((paramArrayList != null) && (paramArrayList.size() > 0) && ((paramArrayList.get(0) instanceof stSimpleMetaFeed))) {
+      this.a = ((stSimpleMetaFeed)paramArrayList.get(0)).id;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    return tms.a().a(paramArrayList);
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    tlo.d("WSVerticalForMiniAppPresenter", "WSVerticalForMiniAppPresenter onPageSelected: " + paramInt);
+    if ((paramViewHolder instanceof tnj))
     {
-      for (;;)
-      {
-        ved.d("Q.qqstory:WatchVideoBatchRequest", paramArrayOfByte.toString());
-      }
+      paramViewHolder = new ybt(4, new Object[] { Integer.valueOf(paramInt), ((tnj)paramViewHolder).a });
+      uht.a().dispatch(paramViewHolder);
     }
   }
   
-  protected byte[] a()
+  public void a(String paramString, tmr paramtmr)
   {
-    qqstory_service.ReqWatchVideoBatch localReqWatchVideoBatch = new qqstory_service.ReqWatchVideoBatch();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    if (localIterator.hasNext())
-    {
-      tcq localtcq = (tcq)localIterator.next();
-      qqstory_service.VideoItem localVideoItem = new qqstory_service.VideoItem();
-      localVideoItem.vid.set(ByteStringMicro.copyFromUtf8(localtcq.jdField_a_of_type_JavaLangString));
-      Object localObject = a(localtcq.b);
-      localVideoItem.to_union_id.set(ByteStringMicro.copyFromUtf8((String)localObject));
-      localObject = localVideoItem.is_live_video;
-      if (localtcq.jdField_a_of_type_Boolean) {}
-      for (int i = 1;; i = 0)
-      {
-        ((PBUInt32Field)localObject).set(i);
-        localVideoItem.create_time.set(localtcq.jdField_a_of_type_Long / 1000L);
-        localVideoItem.source.set(localtcq.jdField_a_of_type_Int);
-        localReqWatchVideoBatch.video_list.add(localVideoItem);
-        break;
-      }
-    }
-    return localReqWatchVideoBatch.toByteArray();
+    paramString = new the(new tkg(paramString), null, new tnr(this, paramtmr), 4002);
+    tgx.a().a(paramString);
   }
   
-  public String toString()
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return "WatchVideoBatchRequest{seq=" + this.c + "mVideoList=" + this.jdField_a_of_type_JavaUtilArrayList + "}";
+    a(this.a, this);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tnq
  * JD-Core Version:    0.7.0.1
  */

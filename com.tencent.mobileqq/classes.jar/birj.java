@@ -1,14 +1,13 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import android.content.Intent;
 
-public class birj
+class birj
 {
-  public int a;
-  public MetaMaterial a;
-  public String a;
+  public long a;
+  public Intent a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     birj
  * JD-Core Version:    0.7.0.1
  */

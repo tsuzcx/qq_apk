@@ -1,37 +1,25 @@
-import java.util.HashMap;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class sug
-  implements aysb
+  implements View.OnClickListener
 {
-  sug(sue paramsue) {}
+  sug(sue paramsue, sud paramsud) {}
   
-  public void a(aysy paramaysy, aysz paramaysz)
+  public void onClick(View paramView)
   {
-    if ((paramaysy == null) || (paramaysz == null)) {}
-    while (!(paramaysy instanceof ayrx)) {
+    azmj.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.a, "P_CliOper", "Pb_account_lifeservice", "", "0X8005731", "0X8005731", 0, 0, "", "", "", "");
+    azmj.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.a, "CliOper", "", "", "0X800642E", "0X800642E", 0, 0, String.valueOf(this.jdField_a_of_type_Sue.jdField_a_of_type_Suc.a), "", "", "");
+    if ((this.jdField_a_of_type_Sue.jdField_a_of_type_Suc == null) || (TextUtils.isEmpty(String.valueOf(this.jdField_a_of_type_Sue.jdField_a_of_type_Suc.a)))) {
       return;
     }
-    ayrx localayrx = (ayrx)paramaysy;
-    localayrx.jdField_a_of_type_Long += paramaysz.c;
-    paramaysz.c = 0L;
-    paramaysz = "bytes=" + localayrx.jdField_a_of_type_Long + "-";
-    localayrx.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
-    String str1 = localayrx.jdField_a_of_type_JavaLangString;
-    if (str1.contains("range="))
-    {
-      String str2 = str1.substring(0, str1.lastIndexOf("range="));
-      localayrx.jdField_a_of_type_JavaLangString = (str2 + "range=" + localayrx.jdField_a_of_type_Long);
-    }
-    paramaysy = paramaysy.a();
-    if ((paramaysy != null) && ((paramaysy instanceof sui))) {
-      ((sui)paramaysy).b = true;
-    }
-    ved.b("AsyncFileDownloader", String.format("breakDown , range = %s , url = %s", new Object[] { paramaysz, str1 }));
+    sue.a(this.jdField_a_of_type_Sue);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sug
  * JD-Core Version:    0.7.0.1
  */

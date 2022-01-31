@@ -1,19 +1,26 @@
-public class beki
-  implements bekl<besl>
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+
+final class beki
+  implements beiv
 {
-  public static beki a()
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    return new beki();
-  }
-  
-  public besl a(behn parambehn)
-  {
-    return parambehn.a();
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
+    }
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    float f = Math.max(paramInt1 / i, paramInt2 / j);
+    localMatrix.setScale(f, f);
+    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
+    return localMatrix;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beki
  * JD-Core Version:    0.7.0.1
  */

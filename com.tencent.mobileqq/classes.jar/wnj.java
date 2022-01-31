@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
 
-class wnj
-  implements View.OnClickListener
+final class wnj
+  implements wor
 {
-  wnj(wni paramwni) {}
+  wnj(WeakReference paramWeakReference) {}
   
-  public void onClick(View paramView)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    wni.a(this.a);
+    wnk localwnk = (wnk)this.a.get();
+    if (localwnk != null) {
+      localwnk.a(paramErrorMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wnj
  * JD-Core Version:    0.7.0.1
  */

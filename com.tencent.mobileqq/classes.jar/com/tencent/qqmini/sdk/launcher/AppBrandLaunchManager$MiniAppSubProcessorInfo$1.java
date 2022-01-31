@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import beqa;
-import betc;
+import bgpw;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 public class AppBrandLaunchManager$MiniAppSubProcessorInfo$1
   implements Runnable
 {
-  public AppBrandLaunchManager$MiniAppSubProcessorInfo$1(beqa parambeqa) {}
+  public AppBrandLaunchManager$MiniAppSubProcessorInfo$1(bgpw parambgpw) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class AppBrandLaunchManager$MiniAppSubProcessorInfo$1
       if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null) {
         str2 = this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.name;
       }
-      betc.b("minisdk-start_AppBrandLaunchManager", "recycle process=" + this.a.jdField_a_of_type_JavaLangString + " appId=" + str1 + " appName=" + str2);
+      QMLog.i("minisdk-start_AppBrandLaunchManager", "recycle process=" + this.a.jdField_a_of_type_JavaLangString + " appId=" + str1 + " appName=" + str2);
       this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherAppBrandLaunchManager.forceKillProcess(this.a);
       return;
     }
@@ -29,7 +29,7 @@ public class AppBrandLaunchManager$MiniAppSubProcessorInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager.MiniAppSubProcessorInfo.1
  * JD-Core Version:    0.7.0.1
  */

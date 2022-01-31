@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity;
 
-import abts;
-import abtt;
-import ajsd;
-import akpu;
+import abor;
+import adla;
+import adlb;
+import aljq;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import java.util.Observer;
 
 public class QQBroadcastActivity
   extends BaseSystemActivity
   implements Observer
 {
-  public abtt a;
+  public adlb a;
   public Handler a;
   
   public QQBroadcastActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new abts(this);
+    this.jdField_a_of_type_AndroidOsHandler = new adla(this);
   }
   
   private void c()
@@ -43,10 +43,10 @@ public class QQBroadcastActivity
     }
     for (;;)
     {
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131720034) + "(" + i + ")"));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131720570) + "(" + i + ")"));
       return;
       label79:
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131720034)));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131720570)));
       return;
       label99:
       i = j;
@@ -60,20 +60,20 @@ public class QQBroadcastActivity
   
   protected CursorAdapter a()
   {
-    if (this.jdField_a_of_type_Abtt == null) {
-      this.jdField_a_of_type_Abtt = new abtt(this, this, this.app.a(0).a(a(), 0));
+    if (this.jdField_a_of_type_Adlb == null) {
+      this.jdField_a_of_type_Adlb = new adlb(this, this, this.app.a(0).a(a(), 0));
     }
-    return this.jdField_a_of_type_Abtt;
+    return this.jdField_a_of_type_Adlb;
   }
   
   protected CharSequence a()
   {
-    return getString(2131719984);
+    return getString(2131720519);
   }
   
   public String a()
   {
-    return String.valueOf(ajsd.J);
+    return String.valueOf(aljq.J);
   }
   
   protected void a()
@@ -92,8 +92,8 @@ public class QQBroadcastActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Abtt != null) {
-      this.jdField_a_of_type_Abtt.changeCursor(null);
+    if (this.jdField_a_of_type_Adlb != null) {
+      this.jdField_a_of_type_Adlb.changeCursor(null);
     }
   }
   
@@ -104,7 +104,7 @@ public class QQBroadcastActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBroadcastActivity
  * JD-Core Version:    0.7.0.1
  */

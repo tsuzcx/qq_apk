@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.model;
 
-import askq;
-import askr;
+import aubp;
+import aubq;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class QueryTask<Param, Result>
   implements Runnable
 {
-  public askq<Result> a;
-  public askr<Param, Result> a;
+  public aubp<Result> a;
+  public aubq<Param, Result> a;
   private Param a;
   
-  public QueryTask(askr<Param, Result> paramaskr, askq<Result> paramaskq)
+  public QueryTask(aubq<Param, Result> paramaubq, aubp<Result> paramaubp)
   {
-    this.jdField_a_of_type_Askr = paramaskr;
-    this.jdField_a_of_type_Askq = paramaskq;
+    this.jdField_a_of_type_Aubq = paramaubq;
+    this.jdField_a_of_type_Aubp = paramaubp;
   }
   
   public void a(Param paramParam)
@@ -26,13 +26,13 @@ public class QueryTask<Param, Result>
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Askr.a(this.jdField_a_of_type_JavaLangObject);
+    Object localObject = this.jdField_a_of_type_Aubq.a(this.jdField_a_of_type_JavaLangObject);
     ThreadManager.getUIHandler().post(new QueryTask.1(this, localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.model.QueryTask
  * JD-Core Version:    0.7.0.1
  */

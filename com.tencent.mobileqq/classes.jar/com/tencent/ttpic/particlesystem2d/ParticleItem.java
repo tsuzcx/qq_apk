@@ -1,6 +1,5 @@
 package com.tencent.ttpic.particlesystem2d;
 
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.model.WMGroup;
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ public class ParticleItem
   public int emissionMode;
   public float emitterX;
   public float emitterY;
+  public String id;
   private TreeSet<Integer> idleWMGroupIndiesSet = new TreeSet();
   public boolean lastFrameParticleReachMax;
   public long lastUpdateTimestamp;
@@ -33,7 +33,6 @@ public class ParticleItem
   public StickerItem stickerItem;
   public boolean takenByParticle = false;
   public boolean textureUpdated;
-  public TriggerCtrlItem triggerCtrlItem;
   public boolean triggered;
   public int updateCount = 0;
   public List<WMGroup> wmGroupCopies;

@@ -1,28 +1,24 @@
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
 
 public class ahoh
-  extends ahny
+  extends View.AccessibilityDelegate
 {
-  public Button a;
-  public RelativeLayout a;
-  public TextView a;
-  public TroopLabelLayout a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public ahoh(ContactsBaseFragment paramContactsBaseFragment) {}
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt == 8) {
+      i = 32768;
+    }
+    super.sendAccessibilityEvent(paramView, i);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahoh
  * JD-Core Version:    0.7.0.1
  */

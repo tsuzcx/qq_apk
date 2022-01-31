@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio;
 
-import auko;
+import awbv;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="busiid,frienduin")
 public class BeancurdMsg
-  extends auko
+  extends awbv
 {
   public String buffer;
   public int busiid;
@@ -25,7 +25,7 @@ public class BeancurdMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BeancurdMsg
  * JD-Core Version:    0.7.0.1
  */

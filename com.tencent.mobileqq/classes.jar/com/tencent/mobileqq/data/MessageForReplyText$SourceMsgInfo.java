@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import aslw;
+import aucv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -70,7 +70,7 @@ public class MessageForReplyText$SourceMsgInfo
     do
     {
       return;
-      paramQQAppInterface = aslw.a(paramQQAppInterface, paramMessageRecord);
+      paramQQAppInterface = aucv.a(paramQQAppInterface, paramMessageRecord);
     } while (paramQQAppInterface == null);
     setSourceMsgByte(paramQQAppInterface);
     setUniSeq(paramMessageRecord.uniseq, false);
@@ -107,12 +107,12 @@ public class MessageForReplyText$SourceMsgInfo
     if (this.mSourceMessageByte == null) {
       return null;
     }
-    return aslw.a(paramQQAppInterface, this.mSourceMessageByte);
+    return aucv.a(paramQQAppInterface, this.mSourceMessageByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo
  * JD-Core Version:    0.7.0.1
  */

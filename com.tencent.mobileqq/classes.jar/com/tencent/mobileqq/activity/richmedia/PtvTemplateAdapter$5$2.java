@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahvz;
-import ahwe;
+import ajnj;
+import ajno;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -10,12 +10,12 @@ import java.util.ArrayList;
 public class PtvTemplateAdapter$5$2
   implements Runnable
 {
-  public PtvTemplateAdapter$5$2(ahwe paramahwe, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt) {}
+  public PtvTemplateAdapter$5$2(ajno paramajno, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Ahwe.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
-    int k = this.jdField_a_of_type_Ahwe.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLastVisiblePosition();
+    int j = this.jdField_a_of_type_Ajno.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
+    int k = this.jdField_a_of_type_Ajno.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLastVisiblePosition();
     int i = j;
     Object localObject;
     if (i <= k)
@@ -25,13 +25,13 @@ public class PtvTemplateAdapter$5$2
       {
         i += 1;
         break;
-        localObject = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Ahwe.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Ajno.a.jdField_a_of_type_JavaUtilArrayList.get(i);
       } while ((localObject == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
       if (QLog.isColorLevel()) {
         QLog.i("PtvTemplateManager", 2, "onProgressUpdate index: " + i + " progress: " + this.jdField_a_of_type_Int);
       }
       ((PtvTemplateManager.PtvTemplateInfo)localObject).downloading = true;
-      localObject = this.jdField_a_of_type_Ahwe.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(i - j);
+      localObject = this.jdField_a_of_type_Ajno.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(i - j);
       if ((localObject instanceof PtvTemplateItemView))
       {
         localObject = (PtvTemplateItemView)localObject;
@@ -50,7 +50,7 @@ public class PtvTemplateAdapter$5$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.2
  * JD-Core Version:    0.7.0.1
  */

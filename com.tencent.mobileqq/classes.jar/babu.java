@@ -1,48 +1,38 @@
+import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
+import com.tencent.qphone.base.util.QLog;
 
 public class babu
-  extends bacv<ArithmeticViewHolder, babd>
+  extends baig
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ArithmeticViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
-  
-  public babu(XMediaEditor paramXMediaEditor, Context paramContext)
+  public babu(CharSequence paramCharSequence, int paramInt)
   {
-    super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    super(paramCharSequence, paramInt);
   }
   
-  public ArithmeticViewHolder a(ViewGroup paramViewGroup)
+  protected void a(View paramView, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder = new ArithmeticViewHolder(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561141, paramViewGroup, false));
-    return this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
-  }
-  
-  public void a(View paramView, ArithmeticViewHolder paramArithmeticViewHolder) {}
-  
-  public void a(babd parambabd)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder.a(true);
+    paramString = Uri.parse(paramString);
+    paramView = paramView.getContext();
+    paramString = new Intent("android.intent.action.VIEW", paramString);
+    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
+    try
+    {
+      paramView.startActivity(paramString);
+      return;
     }
-  }
-  
-  public void a(ArithmeticViewHolder paramArithmeticViewHolder, babd parambabd, int paramInt)
-  {
-    paramArithmeticViewHolder.a(parambabd, paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) {
-      paramArithmeticViewHolder.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
+    catch (ActivityNotFoundException paramView)
+    {
+      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     babu
  * JD-Core Version:    0.7.0.1
  */

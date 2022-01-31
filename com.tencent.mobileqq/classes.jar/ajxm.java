@@ -1,37 +1,32 @@
-import com.tencent.mobileqq.app.FriendsManager.1.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
 
 public class ajxm
-  extends AccountObserver
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ajxm(ajxl paramajxl) {}
+  public ajxm(TroopMemberListInnerFrame paramTroopMemberListInnerFrame, ViewGroup paramViewGroup) {}
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public void onGlobalLayout()
   {
-    ThreadManager.executeOnSubThread(new FriendsManager.1.1(this, paramString2, paramString1));
-  }
-  
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.friend", 2, "onOnlineStatusChanged isSuccess = " + paramBoolean1 + " ,curStatus =  , isUserSet = " + paramStatus + " ,isFriendListChang = " + paramBoolean3 + " ,timeStamp = " + paramLong + " ,isGatherListChange = " + paramBoolean4);
-    }
-    ajxl.a(this.a).a.a(paramBoolean3, paramLong, paramBoolean4);
-    if (!paramBoolean3)
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b);
+    Bitmap localBitmap = TroopMemberListInnerFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b);
+    if (localBitmap == null) {}
+    do
     {
-      paramStatus = new akes(ajxl.a(this.a));
-      ajxl.a(this.a).a.a(101, paramStatus);
-    }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.b.setTag(localBitmap);
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a == null);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class ajyh
-  implements bcix<oidb_0x8e4.RspBody>
+final class ajyh
+  implements DialogInterface.OnClickListener
 {
-  ajyh(ajyg paramajyg) {}
+  ajyh(boolean paramBoolean, BaseActivity paramBaseActivity) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      paramRspBody = paramRspBody.string_invite_id.get().toStringUtf8();
-      if (!TextUtils.isEmpty(paramRspBody))
-      {
-        com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = paramRspBody;
-        atch.a().a(0, paramRspBody, 0L, null);
-      }
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyh
  * JD-Core Version:    0.7.0.1
  */

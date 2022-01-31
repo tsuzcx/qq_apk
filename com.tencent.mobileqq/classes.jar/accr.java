@@ -1,59 +1,34 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class accr
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public accr(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public accr(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (Build.VERSION.SDK_INT >= 26) {}
-    try
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      paramView = new Intent("android.settings.CHANNEL_NOTIFICATION_SETTINGS");
-      paramView.putExtra("android.provider.extra.APP_PACKAGE", this.a.getPackageName());
-      paramView.putExtra("android.provider.extra.CHANNEL_ID", "CHANNEL_ID_SHOW_BADGE");
-      this.a.startActivity(paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarActivity", 2, "go to channel setting");
-      }
-      return;
     }
-    catch (Exception paramView)
+    do
     {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        try
-        {
-          paramView = new Intent();
-          paramView.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-          paramView.setData(Uri.fromParts("package", this.a.getPackageName(), null));
-          this.a.startActivity(paramView);
-          if (QLog.isColorLevel())
-          {
-            QLog.d("IphoneTitleBarActivity", 2, "go to system setting");
-            return;
-          }
-        }
-        catch (Exception paramView)
-        {
-          paramView.printStackTrace();
-          QLog.e("IphoneTitleBarActivity", 2, "go to setting fail");
-        }
-      }
-    }
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accr
  * JD-Core Version:    0.7.0.1
  */

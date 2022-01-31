@@ -1,7 +1,7 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
 import NS_QQ_STORY_META.META.StMusic;
-import ajya;
+import alpo;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -15,7 +15,7 @@ public class VsMusicItemInfo
   public String a;
   public boolean a;
   public String b;
-  public String c = ajya.a(2131716878);
+  public String c = alpo.a(2131717250);
   
   public VsMusicItemInfo()
   {
@@ -46,6 +46,8 @@ public class VsMusicItemInfo
     this.mMusicName = paramJSONObject.optString("strSongName");
     this.mHasCopyright = true;
     this.jdField_a_of_type_Int = 2;
+    this.mUrl = paramJSONObject.optString("strPlayUrl");
+    this.musicDuration = (paramJSONObject.optInt("iPlayTime") * 1000);
   }
   
   public void a(META.StMusic paramStMusic)
@@ -75,7 +77,7 @@ public class VsMusicItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo
  * JD-Core Version:    0.7.0.1
  */

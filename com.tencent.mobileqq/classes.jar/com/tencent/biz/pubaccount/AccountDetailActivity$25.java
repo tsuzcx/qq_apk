@@ -23,7 +23,7 @@ class AccountDetailActivity$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetailActivity.25
  * JD-Core Version:    0.7.0.1
  */

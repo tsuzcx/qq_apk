@@ -1,23 +1,59 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqreader.js.JsCallParams;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.lang.ref.WeakReference;
 
-public final class bgux
-  implements Parcelable.Creator<JsCallParams>
+public class bgux
 {
-  public JsCallParams a(Parcel paramParcel)
+  private static volatile bgux jdField_a_of_type_Bgux;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ViewGroup> b;
+  
+  public static bgux a()
   {
-    return new JsCallParams(paramParcel, null);
+    if (jdField_a_of_type_Bgux == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bgux == null) {
+        jdField_a_of_type_Bgux = new bgux();
+      }
+      return jdField_a_of_type_Bgux;
+    }
+    finally {}
   }
   
-  public JsCallParams[] a(int paramInt)
+  public void a(Activity paramActivity, ViewGroup paramViewGroup)
   {
-    return new JsCallParams[paramInt];
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramViewGroup);
+  }
+  
+  public void a(View paramView)
+  {
+    ViewGroup localViewGroup = (ViewGroup)this.b.get();
+    if (localViewGroup == null)
+    {
+      QMLog.e("GameVideoPlayerManager", "removePlayerView error: parent == null");
+      return;
+    }
+    localViewGroup.removeView(paramView);
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    if (this.b != null) {}
+    for (ViewGroup localViewGroup = (ViewGroup)this.b.get(); localViewGroup == null; localViewGroup = null)
+    {
+      QMLog.e("GameVideoPlayerManager", "addPlayerView error: parent == null");
+      return;
+    }
+    localViewGroup.addView(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgux
  * JD-Core Version:    0.7.0.1
  */

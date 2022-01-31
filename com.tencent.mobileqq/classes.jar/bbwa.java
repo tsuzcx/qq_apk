@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
 public class bbwa
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements bbzj
 {
-  public bbwa(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  public bbwa(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(View paramView, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
+    if (paramBoolean) {
+      this.a.a(this.a.a.a());
     }
-    this.a.runOnUiThread(new VipVideoPlayActivity.VideoPlayerPreparedListener.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbwa
  * JD-Core Version:    0.7.0.1
  */

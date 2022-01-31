@@ -1,30 +1,40 @@
-public abstract class alag
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
+public class alag
+  extends bdvu
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
+  public alag(ApolloCardWindow paramApolloCardWindow) {}
   
-  public alag(String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void onDoneFile(bdvv parambdvv)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
+    if (parambdvv == null) {
+      return;
+    }
+    try
+    {
+      ??? = parambdvv.a().getString("path");
+      String str = parambdvv.a().getString("url");
+      parambdvv = this.a.a((String)???);
+      str = bfhi.d(str);
+      synchronized (ApolloCardWindow.a)
+      {
+        ApolloCardWindow.a.put(str, parambdvv);
+        return;
+      }
+      return;
+    }
+    catch (Exception parambdvv)
+    {
+      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambdvv);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alag
  * JD-Core Version:    0.7.0.1
  */

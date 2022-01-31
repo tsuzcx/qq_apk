@@ -1,141 +1,108 @@
 package c.t.m.g;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import java.net.NetworkInterface;
-import java.util.Enumeration;
-import java.util.Locale;
+import android.util.Pair;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public final class dw
+  implements ez
 {
-  private static String a = "0123456789ABCDEF";
-  private static String b = "0123456789ABCDEF";
-  private static String c = "0123456789ABCDEF";
+  private byte[] a = new byte[512];
   
-  public static String a()
+  private static String a(String paramString)
   {
-    return a(do.a());
+    String str2 = "GBK";
+    String str1 = str2;
+    int j;
+    int i;
+    if (paramString != null)
+    {
+      paramString = paramString.split(";");
+      j = paramString.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      str1 = str2;
+      if (i < j)
+      {
+        str1 = paramString[i].trim();
+        int k = str1.indexOf("charset=");
+        if (-1 != k) {
+          str1 = str1.substring(k + 8, str1.length());
+        }
+      }
+      else
+      {
+        return str1;
+      }
+      i += 1;
+    }
   }
   
-  @Deprecated
-  @SuppressLint({"MissingPermission"})
-  private static String a(Context paramContext)
+  private byte[] a(InputStream paramInputStream)
   {
-    if ((TextUtils.isEmpty(a)) || ("0123456789ABCDEF".equals(a))) {}
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(256);
+    for (;;)
+    {
+      int i = paramInputStream.read(this.a);
+      if (i == -1) {
+        break;
+      }
+      localByteArrayOutputStream.write(this.a, 0, i);
+    }
+    paramInputStream.close();
+    return localByteArrayOutputStream.toByteArray();
+  }
+  
+  public final Pair<byte[], String> a(String paramString, byte[] paramArrayOfByte)
+  {
+    paramString = (HttpURLConnection)new URL(paramString).openConnection();
     for (;;)
     {
       try
       {
-        paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-        boolean bool = do.a;
-        if (Build.VERSION.SDK_INT < 26) {
-          continue;
-        }
-        paramContext = paramContext.getImei();
-        a = du.a(paramContext, du.a).toUpperCase(Locale.ENGLISH);
-      }
-      catch (Throwable paramContext)
-      {
-        continue;
-      }
-      return a(a);
-      paramContext = paramContext.getDeviceId();
-    }
-  }
-  
-  private static String a(String paramString)
-  {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "0123456789ABCDEF";
-    }
-    return str;
-  }
-  
-  public static String b()
-  {
-    return b(do.a());
-  }
-  
-  @Deprecated
-  @SuppressLint({"MissingPermission"})
-  private static String b(Context paramContext)
-  {
-    if (TextUtils.isEmpty(b))
-    {
-      boolean bool = do.a;
-      if (!"0123456789ABCDEF".equals(b)) {}
-    }
-    try
-    {
-      b = du.a(((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId(), du.b);
-      label45:
-      return a(b);
-    }
-    catch (Throwable paramContext)
-    {
-      break label45;
-    }
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public static String c()
-  {
-    try
-    {
-      boolean bool = do.a;
-      if (Build.VERSION.SDK_INT >= 26) {
-        return Build.getSerial();
-      }
-      String str = Build.SERIAL;
-      return str;
-    }
-    catch (Throwable localThrowable) {}
-    return "0123456789ABCDEF";
-  }
-  
-  public static String d()
-  {
-    if ((TextUtils.isEmpty(c)) || ("0123456789ABCDEF".equals(c))) {
-      try
-      {
-        Enumeration localEnumeration = NetworkInterface.getNetworkInterfaces();
-        while (localEnumeration.hasMoreElements())
+        paramString.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
+        paramString.setRequestMethod("POST");
+        paramString.setConnectTimeout(10000);
+        paramString.setDoOutput(true);
+        paramString.setFixedLengthStreamingMode(paramArrayOfByte.length);
+        localObject = paramString.getOutputStream();
+        ((OutputStream)localObject).write(paramArrayOfByte);
+        ((OutputStream)localObject).flush();
+        ((OutputStream)localObject).close();
+        int i = paramString.getResponseCode();
+        switch (i)
         {
-          Object localObject = (NetworkInterface)localEnumeration.nextElement();
-          if ((localObject != null) && (((NetworkInterface)localObject).getName().equalsIgnoreCase("wlan0")))
-          {
-            localObject = ((NetworkInterface)localObject).getHardwareAddress();
-            if ((localObject != null) && (localObject.length != 0))
-            {
-              StringBuilder localStringBuilder = new StringBuilder();
-              int j = localObject.length;
-              int i = 0;
-              while (i < j)
-              {
-                localStringBuilder.append(String.format("%02X:", new Object[] { Byte.valueOf(localObject[i]) }));
-                i += 1;
-              }
-              if (localStringBuilder.length() > 0) {
-                localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-              }
-              c = localStringBuilder.toString();
-            }
-          }
+        case 200: 
+          throw new IOException("net sdk error: ".concat(String.valueOf(i)));
         }
-        return a(c);
       }
-      catch (Throwable localThrowable) {}
+      finally
+      {
+        paramString.disconnect();
+      }
+      paramArrayOfByte = a(paramString.getHeaderField("content-type"));
+      Object localObject = a(paramString.getInputStream());
+      if ((localObject == null) || (localObject.length == 0))
+      {
+        paramArrayOfByte = Pair.create("{}".getBytes(), "utf-8");
+        paramString.disconnect();
+        return paramArrayOfByte;
+      }
+      paramArrayOfByte = Pair.create(localObject, paramArrayOfByte);
+      paramString.disconnect();
+      return paramArrayOfByte;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dw
  * JD-Core Version:    0.7.0.1
  */

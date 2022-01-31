@@ -1,7 +1,7 @@
 package com.tencent.av.core;
 
 import com.tencent.qphone.base.util.QLog;
-import llp;
+import lns;
 
 class VcControllerImpl$2
   implements Runnable
@@ -21,7 +21,7 @@ class VcControllerImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.core.VcControllerImpl.2
  * JD-Core Version:    0.7.0.1
  */

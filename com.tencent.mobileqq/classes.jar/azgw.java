@@ -1,41 +1,21 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-
 public class azgw
-  extends ClickableSpan
 {
-  public azgw(TroopBarPublishActivity paramTroopBarPublishActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.a != null)
-    {
-      if (!this.a.a.a()) {
-        break label42;
-      }
-      this.a.a.b();
-    }
-    for (;;)
-    {
-      this.a.e(true);
-      return;
-      label42:
-      this.a.a.a();
-      axqy.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.q, "", "", "");
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
+  public long e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azgw
  * JD-Core Version:    0.7.0.1
  */

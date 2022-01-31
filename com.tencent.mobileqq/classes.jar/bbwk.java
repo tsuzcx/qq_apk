@@ -1,54 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.SuperPlayerMgr.ILogListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
-class bbwk
-  implements SuperPlayerMgr.ILogListener
+public class bbwk
+  implements DialogInterface.OnClickListener
 {
-  bbwk(bbwh parambbwh) {}
+  public bbwk(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public int d(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
+    SubmitHomeWorkFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbwk
  * JD-Core Version:    0.7.0.1
  */

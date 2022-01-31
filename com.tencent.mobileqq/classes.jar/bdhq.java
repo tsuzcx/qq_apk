@@ -1,27 +1,74 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
 
-class bdhq
-  implements DialogInterface.OnClickListener
+public class bdhq
 {
-  bdhq(bdho parambdho, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  private float jdField_a_of_type_Float;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Sensor jdField_a_of_type_AndroidHardwareSensor;
+  public SensorEventListener a;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bdhs(this, Looper.getMainLooper());
+  private bdht jdField_a_of_type_Bdht;
+  public boolean a;
+  private boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bdhq(Context paramContext, bdht parambdht)
   {
-    bdho.a(this.jdField_a_of_type_Bdho, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
-    axqy.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
-    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bdlb.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdlb.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdlb.d);
-    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
-    bdfh.a().a(25, paramDialogInterface);
-    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString("pageId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString("moduleId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdlb.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdlb.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bdlb.d);
-    bdhz.b("6006", "2", "0", this.jdField_a_of_type_AndroidOsBundle.getString(bdlb.i), paramDialogInterface);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bdhr(this);
+    this.jdField_a_of_type_Bdht = parambdht;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSSensor", 2, "LSSensor open=====");
+    }
+    this.b = false;
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
+    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
+    if (this.jdField_a_of_type_AndroidHardwareSensor != null)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidHardwareSensor.getMaximumRange();
+      if (this.jdField_a_of_type_Float > 10.0F) {
+        this.jdField_a_of_type_Float = 10.0F;
+      }
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, 2);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Bdht.a(this.b);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSSensor", 2, "LSSensor shutdown=====");
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
+    {
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
+      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
+    }
+    try
+    {
+      this.jdField_a_of_type_Bdht = null;
+      this.jdField_a_of_type_AndroidHardwareSensor = null;
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdhq
  * JD-Core Version:    0.7.0.1
  */

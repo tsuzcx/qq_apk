@@ -1,204 +1,72 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.view.Surface;
-import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Queue;
+import java.util.Set;
 
-@TargetApi(14)
 public class ufr
-  implements ufh
 {
-  MediaPlayer a = new MediaPlayer();
+  private ufs a = new ufs();
   
-  public int a()
+  public ufr(HashMap<String, List<uer>> paramHashMap)
   {
-    return this.a.getDuration();
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.a.setVolume(paramFloat1, paramFloat2);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.seekTo(paramInt);
-  }
-  
-  public void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
-  {
-    this.a.setDataSource(paramContext, paramUri, paramMap);
-  }
-  
-  public void a(Surface paramSurface)
-  {
-    this.a.setSurface(paramSurface);
-  }
-  
-  public void a(ufi paramufi)
-  {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramufi == null) {}
-    for (paramufi = null;; paramufi = new ufu(this, paramufi))
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
     {
-      localMediaPlayer.setOnBufferingUpdateListener(paramufi);
-      return;
+      Object localObject = (Map.Entry)paramHashMap.next();
+      String str = (String)((Map.Entry)localObject).getKey();
+      localObject = ((Map.Entry)localObject).getValue();
+      if (localObject == null)
+      {
+        wsv.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "value is null key=%s", new Object[] { str });
+      }
+      else
+      {
+        localObject = (List)localObject;
+        this.a.a(str, ((List)localObject).size());
+      }
     }
   }
   
-  public void a(ufj paramufj)
+  public String a()
   {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramufj == null) {}
-    for (paramufj = null;; paramufj = new uft(this, paramufj))
+    StringBuilder localStringBuilder = new StringBuilder("AlbumTree=[\n");
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(this.a);
+    while (localLinkedList.size() > 0)
     {
-      localMediaPlayer.setOnCompletionListener(paramufj);
-      return;
+      int j = localLinkedList.size();
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = (ufs)localLinkedList.poll();
+        if (localObject != null)
+        {
+          localStringBuilder.append(" [").append(((ufs)localObject).toString()).append("];");
+          localObject = ((ufs)localObject).a.iterator();
+          while (((Iterator)localObject).hasNext()) {
+            localLinkedList.offer((ufs)((Iterator)localObject).next());
+          }
+        }
+        i += 1;
+      }
+      localStringBuilder.append("\n");
     }
+    localStringBuilder.append("\n]");
+    wsv.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "traverse " + localStringBuilder.toString());
+    return localStringBuilder.toString();
   }
   
-  public void a(ufk paramufk)
+  public ufs a()
   {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramufk == null) {}
-    for (paramufk = null;; paramufk = new ufx(this, paramufk))
-    {
-      localMediaPlayer.setOnErrorListener(paramufk);
-      return;
-    }
-  }
-  
-  public void a(ufl paramufl)
-  {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramufl == null) {}
-    for (paramufl = null;; paramufl = new ufy(this, paramufl))
-    {
-      localMediaPlayer.setOnInfoListener(paramufl);
-      return;
-    }
-  }
-  
-  public void a(ufm paramufm)
-  {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramufm == null) {}
-    for (paramufm = null;; paramufm = new ufs(this, paramufm))
-    {
-      localMediaPlayer.setOnPreparedListener(paramufm);
-      return;
-    }
-  }
-  
-  public void a(ufn paramufn)
-  {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramufn == null) {}
-    for (paramufn = null;; paramufn = new ufv(this, paramufn))
-    {
-      localMediaPlayer.setOnSeekCompleteListener(paramufn);
-      return;
-    }
-  }
-  
-  public void a(ufp paramufp)
-  {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramufp == null) {}
-    for (paramufp = null;; paramufp = new ufw(this, paramufp))
-    {
-      localMediaPlayer.setOnVideoSizeChangedListener(paramufp);
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.setLooping(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.a.isPlaying();
-  }
-  
-  public int b()
-  {
-    return this.a.getCurrentPosition();
-  }
-  
-  public void b()
-  {
-    this.a.prepareAsync();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.a.setAudioSessionId(paramInt);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.a.setScreenOnWhilePlaying(paramBoolean);
-  }
-  
-  public int c()
-  {
-    return this.a.getVideoWidth();
-  }
-  
-  public void c()
-  {
-    this.a.start();
-  }
-  
-  public void c(int paramInt)
-  {
-    this.a.setAudioStreamType(paramInt);
-  }
-  
-  public int d()
-  {
-    return this.a.getVideoHeight();
-  }
-  
-  public void d()
-  {
-    this.a.pause();
-  }
-  
-  public int e()
-  {
-    return this.a.getAudioSessionId();
-  }
-  
-  public void e()
-  {
-    this.a.stop();
-  }
-  
-  public void f()
-  {
-    this.a.release();
-  }
-  
-  public void g()
-  {
-    try
-    {
-      this.a.reset();
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      axpu.a(localIllegalStateException);
-    }
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufr
  * JD-Core Version:    0.7.0.1
  */

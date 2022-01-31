@@ -78,6 +78,7 @@ public class ApngImage
   public boolean mOnceAndClear;
   protected boolean mPaused = false;
   public boolean mStopOnFirstFrame;
+  private boolean mSupportGlobalPasued = true;
   int[] mTagIDArr;
   public boolean mUseFileLoop;
   long nativeFrameInfoInstance;
@@ -107,11 +108,11 @@ public class ApngImage
       bool1 = bool2;
       if (!this.mDrawRoundCorner) {
         if (!paramBundle.getBoolean("key_double_bitmap", false)) {
-          break label285;
+          break label290;
         }
       }
     }
-    label285:
+    label290:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.mDoubleBitmap = bool1;
@@ -575,7 +576,7 @@ public class ApngImage
     for (;;)
     {
       return false;
-      if (!sPaused)
+      if ((!this.mSupportGlobalPasued) || (!sPaused))
       {
         if (this.mTagIDArr == null) {
           break;
@@ -849,6 +850,11 @@ public class ApngImage
       label78:
       i += 1;
     }
+  }
+  
+  public void setSupportGlobalPasued(boolean paramBoolean)
+  {
+    this.mSupportGlobalPasued = paramBoolean;
   }
 }
 

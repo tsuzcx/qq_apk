@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -195,9 +196,9 @@ public class JSONUtil
       }
       return localObject2;
     }
-    catch (JSONException paramJSONObject)
+    catch (Exception paramJSONObject)
     {
-      paramJSONObject.printStackTrace();
+      QLog.e("JSONUtil", 1, "jsonArrayToMutiStringArray, exception: " + Log.getStackTraceString(paramJSONObject));
       localObject2 = localObject1;
     }
   }
@@ -274,7 +275,7 @@ public class JSONUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.JSONUtil
  * JD-Core Version:    0.7.0.1
  */

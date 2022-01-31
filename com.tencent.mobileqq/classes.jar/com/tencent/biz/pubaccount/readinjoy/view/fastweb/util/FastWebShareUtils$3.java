@@ -2,36 +2,36 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import bcqf;
-import bhvy;
+import bepp;
+import bjxj;
 import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.util.Map;
 import mqq.app.MobileQQ;
-import onh;
-import rmy;
-import rno;
+import ors;
+import scx;
+import sdn;
 
 public class FastWebShareUtils$3
   implements Runnable
 {
-  public FastWebShareUtils$3(rmy paramrmy, Map paramMap, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, AppInterface paramAppInterface, String paramString6, ArticleInfo paramArticleInfo, int paramInt) {}
+  public FastWebShareUtils$3(scx paramscx, Map paramMap, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, AppInterface paramAppInterface, String paramString6, ArticleInfo paramArticleInfo, int paramInt) {}
   
   public void run()
   {
     int j = 1;
     int i = 1;
-    if (rmy.a(this.this$0).isShowing()) {
-      rmy.a(this.this$0).dismiss();
+    if (scx.a(this.this$0).isShowing()) {
+      scx.a(this.this$0).dismiss();
     }
-    rmy.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+    scx.a(this.this$0, String.valueOf(System.currentTimeMillis()));
     Object localObject1 = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
     Object localObject2;
     if (this.jdField_a_of_type_Boolean)
     {
-      WxShareHelperFromReadInjoy.a().a(rmy.a(this.this$0), this.jdField_a_of_type_JavaLangString, (Bitmap)localObject1, this.b, this.c, this.d);
+      WxShareHelperFromReadInjoy.a().a(scx.a(this.this$0), this.jdField_a_of_type_JavaLangString, (Bitmap)localObject1, this.b, this.c, this.d);
       localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext();
       localObject2 = this.f;
       if (!"2".equals(this.e)) {
@@ -41,13 +41,13 @@ public class FastWebShareUtils$3
     label303:
     for (i = 4;; i = 5)
     {
-      rmy.a((Context)localObject1, (String)localObject2, i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      rno.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false);
+      scx.a((Context)localObject1, (String)localObject2, i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      sdn.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false);
       return;
-      if (bhvy.t(onh.a()) == 1)
+      if (bjxj.t(ors.a()) == 1)
       {
         localObject2 = WXShareHelper.a();
-        str1 = rmy.a(this.this$0);
+        str1 = scx.a(this.this$0);
         str2 = this.jdField_a_of_type_JavaLangString;
         str3 = this.b;
         str4 = this.c;
@@ -58,7 +58,7 @@ public class FastWebShareUtils$3
         break;
       }
       localObject2 = WxShareHelperFromReadInjoy.a();
-      String str1 = rmy.a(this.this$0);
+      String str1 = scx.a(this.this$0);
       String str2 = this.jdField_a_of_type_JavaLangString;
       String str3 = this.b;
       String str4 = this.c;
@@ -73,7 +73,7 @@ public class FastWebShareUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils.3
  * JD-Core Version:    0.7.0.1
  */

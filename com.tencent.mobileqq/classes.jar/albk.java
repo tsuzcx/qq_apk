@@ -1,383 +1,391 @@
-import android.opengl.GLES20;
-import android.os.Build;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.apollo.store.webview.ApolloUrlConnection.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class albk
 {
-  public static final float[] a;
-  public static final short[] a;
-  public static final float[] b;
+  public int a;
+  private albg jdField_a_of_type_Albg;
+  private BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
+  private String jdField_a_of_type_JavaLangString;
+  private HttpURLConnection jdField_a_of_type_JavaNetHttpURLConnection;
+  private boolean jdField_a_of_type_Boolean;
+  public int b;
+  private String b;
   
-  static
+  public albk(String paramString1, boolean paramBoolean, albg paramalbg, String paramString2)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -0.5F, 0.5F, 0.0F, 0.0F, 1.0F, -0.5F, -0.5F, 0.0F, 0.0F, 0.0F, 0.5F, -0.5F, 0.0F, 1.0F, 0.0F, 0.5F, 0.5F, 0.0F, 1.0F, 1.0F };
-    b = new float[] { -0.5F, 0.5F, 0.0F, 0.0F, 0.0F, -0.5F, -0.5F, 0.0F, 0.0F, 1.0F, 0.5F, -0.5F, 0.0F, 1.0F, 1.0F, 0.5F, 0.5F, 0.0F, 1.0F, 0.0F };
-    jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 2, 3, 0 };
+    this.jdField_a_of_type_Int = 5000;
+    this.jdField_b_of_type_Int = 15000;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Albg = paramalbg;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public static int a(albj paramalbj)
+  /* Error */
+  private BufferedInputStream a()
   {
-    if ((paramalbj == null) || (paramalbj.a == null)) {}
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 35	albk:jdField_a_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
+    //   6: ifnonnull +54 -> 60
+    //   9: aload_0
+    //   10: getfield 37	albk:jdField_a_of_type_JavaNetHttpURLConnection	Ljava/net/HttpURLConnection;
+    //   13: astore_1
+    //   14: aload_1
+    //   15: ifnull +45 -> 60
+    //   18: aload_0
+    //   19: getfield 37	albk:jdField_a_of_type_JavaNetHttpURLConnection	Ljava/net/HttpURLConnection;
+    //   22: invokevirtual 43	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   25: astore_1
+    //   26: ldc 45
+    //   28: aload_0
+    //   29: getfield 37	albk:jdField_a_of_type_JavaNetHttpURLConnection	Ljava/net/HttpURLConnection;
+    //   32: invokevirtual 49	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
+    //   35: invokevirtual 55	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   38: ifeq +31 -> 69
+    //   41: aload_0
+    //   42: new 57	java/io/BufferedInputStream
+    //   45: dup
+    //   46: new 59	java/util/zip/GZIPInputStream
+    //   49: dup
+    //   50: aload_1
+    //   51: invokespecial 62	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   54: invokespecial 63	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   57: putfield 35	albk:jdField_a_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
+    //   60: aload_0
+    //   61: getfield 35	albk:jdField_a_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
+    //   64: astore_1
+    //   65: aload_0
+    //   66: monitorexit
+    //   67: aload_1
+    //   68: areturn
+    //   69: aload_0
+    //   70: new 57	java/io/BufferedInputStream
+    //   73: dup
+    //   74: aload_1
+    //   75: invokespecial 63	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   78: putfield 35	albk:jdField_a_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
+    //   81: goto -21 -> 60
+    //   84: astore_1
+    //   85: ldc 65
+    //   87: iconst_2
+    //   88: new 67	java/lang/StringBuilder
+    //   91: dup
+    //   92: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   95: ldc 70
+    //   97: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: aload_1
+    //   101: invokevirtual 77	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   104: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: ldc 79
+    //   109: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   115: invokestatic 88	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   118: goto -58 -> 60
+    //   121: astore_1
+    //   122: aload_0
+    //   123: monitorexit
+    //   124: aload_1
+    //   125: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	126	0	this	albk
+    //   13	62	1	localObject1	Object
+    //   84	17	1	localThrowable	Throwable
+    //   121	4	1	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   18	60	84	java/lang/Throwable
+    //   69	81	84	java/lang/Throwable
+    //   2	14	121	finally
+    //   18	60	121	finally
+    //   60	65	121	finally
+    //   69	81	121	finally
+    //   85	118	121	finally
+  }
+  
+  int a()
+  {
+    char c = '?';
     for (;;)
     {
-      return 0;
+      String str2;
       try
       {
-        int i = ((ArVideoResourceInfo)paramalbj.a.a.get(0)).jdField_b_of_type_Int;
-        if (i >= 0) {}
-        for (;;)
+        if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
+          continue;
+        }
+        long l = System.currentTimeMillis();
+        localObject3 = "";
+        if (this.jdField_a_of_type_Boolean)
         {
-          return i;
-          i = 0;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Throwable paramalbj) {}
-    }
-    paramalbj.printStackTrace();
-    return 0;
-  }
-  
-  public static aldy a(String paramString)
-  {
-    aldy localaldy = new aldy();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("\\|");
-      if (paramString != null)
-      {
-        if (paramString.length >= 1) {
-          localaldy.jdField_a_of_type_Int = Integer.valueOf(paramString[0]).intValue();
-        }
-        if (paramString.length >= 2) {
-          localaldy.jdField_b_of_type_Int = Integer.valueOf(paramString[1]).intValue();
-        }
-      }
-    }
-    return localaldy;
-  }
-  
-  public static aldy a(String paramString, int paramInt1, int paramInt2)
-  {
-    paramString = a(paramString);
-    if ((paramString.jdField_a_of_type_Int == 0) || (paramString.jdField_b_of_type_Int == 0)) {
-      return paramString;
-    }
-    int i = paramString.jdField_a_of_type_Int;
-    int j = paramString.jdField_b_of_type_Int;
-    if (paramInt2 * 1.0F / j > paramInt1 * 1.0F / i)
-    {
-      paramInt1 = j * 1 * paramInt1 / i;
-      paramString.jdField_a_of_type_Float = 2.0F;
-    }
-    for (paramString.jdField_b_of_type_Float = (paramInt1 * 2.0F / paramInt2);; paramString.jdField_b_of_type_Float = 2.0F)
-    {
-      paramString.c = 0.0F;
-      paramString.d = 0.0F;
-      paramString.e = 0.0F;
-      return paramString;
-      paramString.jdField_a_of_type_Float = (i * 1 * paramInt2 / j * 2.0F / paramInt1);
-    }
-  }
-  
-  public static aldy a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    aldy localaldy = a(paramString);
-    if ((localaldy.jdField_a_of_type_Int == 0) || (localaldy.jdField_b_of_type_Int == 0))
-    {
-      localaldy.jdField_a_of_type_Int = paramInt1;
-      localaldy.jdField_b_of_type_Int = paramInt2;
-    }
-    float f7 = paramInt1 * 1.0F / Math.max(1, paramInt2);
-    float f8 = localaldy.jdField_a_of_type_Int;
-    float f9 = localaldy.jdField_b_of_type_Int;
-    float f2 = 1.0F;
-    float f1 = 1.0F;
-    float f3 = 0.0F;
-    float f4 = 0.0F;
-    float f10 = 1.0F * f8 / f9;
-    float f5;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("\\|");
-      if (paramString != null)
-      {
-        if (paramString.length >= 3) {
-          f2 = Float.valueOf(paramString[2]).floatValue();
-        }
-        if (paramString.length >= 4) {
-          f1 = Float.valueOf(paramString[3]).floatValue();
-        }
-        if (paramString.length >= 5) {
-          f3 = Float.valueOf(paramString[4]).floatValue();
-        }
-        if (paramString.length >= 6) {
-          f4 = -Float.valueOf(paramString[5]).floatValue();
-        }
-        f5 = f4;
-        paramInt2 = 1;
-        f4 = f3;
-        f3 = f5;
-      }
-    }
-    for (;;)
-    {
-      paramInt1 = 1;
-      f5 = f1;
-      float f6 = f2;
-      if (paramInt2 != 0)
-      {
-        if ((f2 <= 0.05F) || (f1 <= 0.05F)) {
-          break label385;
-        }
-        if (f10 > f7)
-        {
-          paramInt1 = 1;
-          f6 = f2;
-          f5 = f1;
-        }
-      }
-      else
-      {
-        if (!paramBoolean) {
-          break label500;
-        }
-        localaldy.jdField_a_of_type_Float = (10.0F * f7);
-        localaldy.jdField_b_of_type_Float = 10.0F;
-        localaldy.c = 0.0F;
-        localaldy.d = 0.0F;
-        localaldy.e = -5.0F;
-        if (paramInt2 != 0)
-        {
-          if (paramInt1 == 0) {
-            break label459;
+          str1 = alao.c(this.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel()) {
+            QLog.d("apollo_client_ApolloUrlConnection", 2, "get cookie cost: " + (System.currentTimeMillis() - l));
           }
-          localaldy.jdField_a_of_type_Float *= f6;
-          localaldy.jdField_b_of_type_Float = (localaldy.jdField_a_of_type_Float * (f9 / f8));
-          f1 = localaldy.jdField_a_of_type_Float / 2.0F;
-          label320:
-          localaldy.c = (f4 * f7 / f1);
-          localaldy.d = (f3 / f1);
+          localObject3 = str1;
+          if (TextUtils.isEmpty(str1))
+          {
+            localObject3 = str1;
+            if (QLog.isColorLevel())
+            {
+              QLog.w("apollo_client_ApolloUrlConnection", 2, " cookie is null!");
+              localObject3 = str1;
+            }
+          }
+        }
+        if ((this.jdField_a_of_type_Albg == null) || (!this.jdField_a_of_type_Albg.a()) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+          break label888;
+        }
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Albg.jdField_a_of_type_JavaLangString;
+        str2 = this.jdField_a_of_type_Albg.a(true);
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloUrlConnection", 2, "getUrlConnection mCgiConfig.parameterStr:" + str2);
+        }
+        if ((TextUtils.isEmpty(str2)) || (!"get".equals(this.jdField_a_of_type_Albg.jdField_b_of_type_JavaLangString.toLowerCase()))) {
+          break label881;
+        }
+        i = this.jdField_a_of_type_JavaLangString.indexOf('?');
+        j = this.jdField_a_of_type_JavaLangString.indexOf('#');
+        if (i != -1) {
+          continue;
+        }
+        if (j != -1) {
+          continue;
+        }
+        str1 = this.jdField_a_of_type_JavaLangString + c;
+        this.jdField_a_of_type_JavaLangString = str1;
+        this.jdField_a_of_type_JavaLangString += str2;
+        str1 = null;
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloUrlConnection", 2, " getUrlConnection mCurrentUrl:" + this.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_JavaNetHttpURLConnection = ((HttpURLConnection)new URL(this.jdField_a_of_type_JavaLangString).openConnection());
+        if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
+          continue;
+        }
+        QLog.e("apollo_client_ApolloUrlConnection", 1, "getUrlConnection HttpURLConnection is null!");
+        i = -1;
+      }
+      catch (IOException localIOException)
+      {
+        String str1;
+        int j;
+        QLog.e("apollo_client_ApolloUrlConnection", 2, "getUrlConnection connect http exception !!!!" + localIOException);
+        if (this.jdField_a_of_type_JavaNetHttpURLConnection == null) {
+          continue;
+        }
+        this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
+        i = -1;
+        continue;
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          continue;
+        }
+        this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty("Origin", this.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty("Referer", this.jdField_b_of_type_JavaLangString);
+        if ((this.jdField_a_of_type_Albg == null) || (!this.jdField_a_of_type_Albg.a())) {
+          break label876;
+        }
+        if (!"get".equals(this.jdField_a_of_type_Albg.jdField_b_of_type_JavaLangString.toLowerCase())) {
+          continue;
+        }
+        this.jdField_a_of_type_JavaNetHttpURLConnection.setDoOutput(false);
+        this.jdField_a_of_type_JavaNetHttpURLConnection.setDoInput(true);
+        this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestMethod("GET");
+        i = 0;
+        if (i != 0) {
+          break label894;
+        }
+        this.jdField_a_of_type_JavaNetHttpURLConnection.connect();
+        break label894;
+        if (!"post".equals(this.jdField_a_of_type_Albg.jdField_b_of_type_JavaLangString.toLowerCase())) {
+          break label876;
+        }
+        this.jdField_a_of_type_JavaNetHttpURLConnection.setDoOutput(true);
+        this.jdField_a_of_type_JavaNetHttpURLConnection.setDoInput(true);
+        this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestMethod("POST");
+        if (TextUtils.isEmpty(localIOException)) {
+          break label876;
+        }
+        Object localObject3 = new OutputStreamWriter(this.jdField_a_of_type_JavaNetHttpURLConnection.getOutputStream());
+        ((OutputStreamWriter)localObject3).write(localIOException);
+        ((OutputStreamWriter)localObject3).flush();
+        ((OutputStreamWriter)localObject3).close();
+        i = 1;
+        continue;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("apollo_client_ApolloUrlConnection", 2, "getUrlConnection connect http exception !!!!" + localThrowable);
+        if (this.jdField_a_of_type_JavaNetHttpURLConnection == null) {
+          continue;
+        }
+        this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
+        continue;
+      }
+      finally {}
+      return i;
+      c = '&';
+      continue;
+      str1 = this.jdField_a_of_type_JavaLangString.substring(0, j) + c + this.jdField_a_of_type_JavaLangString.substring(j);
+      continue;
+      this.jdField_a_of_type_JavaNetHttpURLConnection.setConnectTimeout(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_JavaNetHttpURLConnection.setReadTimeout(this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_JavaNetHttpURLConnection.setInstanceFollowRedirects(false);
+      this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty("Cookie", (String)localObject3);
+      this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty("Accept-Encoding", "gzip");
+      localObject3 = befr.a(befr.c("httpAsync 1.0"), "", false);
+      this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty("User-Agent", (String)localObject3);
+      if (this.jdField_a_of_type_Albg != null)
+      {
+        localObject3 = this.jdField_a_of_type_Albg.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+        if (((Iterator)localObject3).hasNext())
+        {
+          str2 = (String)((Iterator)localObject3).next();
+          this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty(str2, (String)this.jdField_a_of_type_Albg.jdField_a_of_type_JavaUtilHashMap.get(str2));
+          continue;
         }
       }
-      label385:
-      label459:
-      label500:
-      do
-      {
-        QLog.i("ARVideoUtil", 1, "parseVideoLayout layout = " + localaldy);
-        return localaldy;
-        paramInt1 = 0;
-        f5 = f1;
-        f6 = f2;
-        break;
-        if (f2 > 0.05F)
-        {
-          paramInt1 = 1;
-          f5 = f1;
-          f6 = f2;
-          break;
-        }
-        if (f1 > 0.05F)
-        {
-          paramInt1 = 0;
-          f5 = f1;
-          f6 = f2;
-          break;
-        }
-        if (f10 > f7)
-        {
-          paramInt1 = 1;
-          f6 = 1.0F;
-          f5 = f1;
-          break;
-        }
-        paramInt1 = 0;
-        f5 = 1.0F;
-        f6 = f2;
-        break;
-        localaldy.jdField_b_of_type_Float *= f5;
-        localaldy.jdField_a_of_type_Float = (localaldy.jdField_b_of_type_Float * (f8 / f9));
-        f1 = localaldy.jdField_b_of_type_Float / 2.0F;
-        break label320;
-        localaldy.jdField_a_of_type_Float = 2.0F;
-        localaldy.jdField_b_of_type_Float = 2.0F;
-        localaldy.c = 0.0F;
-        localaldy.d = 0.0F;
-        localaldy.e = 0.0F;
-      } while (paramInt2 == 0);
-      if (paramInt1 != 0)
-      {
-        localaldy.jdField_a_of_type_Float *= f6;
-        localaldy.jdField_b_of_type_Float = (localaldy.jdField_a_of_type_Float * f7 * (f9 / f8));
-      }
-      for (f1 = localaldy.jdField_a_of_type_Float / 2.0F;; f1 = localaldy.jdField_b_of_type_Float / 2.0F)
-      {
-        localaldy.c = (f4 / f1);
-        localaldy.d = (f3 / f1);
-        break;
-        localaldy.jdField_b_of_type_Float *= f5;
-        localaldy.jdField_a_of_type_Float = (localaldy.jdField_b_of_type_Float / f7 * (f8 / f9));
-      }
-      f4 = 0.0F;
-      f2 = 1.0F;
-      f3 = 0.0F;
-      paramInt2 = 0;
+      label876:
+      int i = 0;
+      continue;
+      label881:
+      Object localObject2 = str2;
+      continue;
+      label888:
+      localObject2 = null;
+      continue;
+      label894:
+      i = 0;
     }
   }
   
-  public static Pair<Integer, alkg> a(albj paramalbj)
+  albl a(AtomicBoolean paramAtomicBoolean, ByteArrayOutputStream paramByteArrayOutputStream)
   {
-    int k = 0;
-    alkg localalkg = alkf.a(0);
-    if (paramalbj.a.d == 2) {}
+    boolean bool = false;
     for (;;)
     {
+      BufferedInputStream localBufferedInputStream;
+      ByteArrayOutputStream localByteArrayOutputStream;
       int j;
       try
       {
-        j = Integer.parseInt(((ArVideoResourceInfo)paramalbj.a.a.get(0)).jdField_a_of_type_JavaLangString);
-        if (j < 0)
+        localBufferedInputStream = a();
+        if (localBufferedInputStream != null)
         {
-          i = k;
-          return new Pair(Integer.valueOf(i), localalkg);
-        }
-      }
-      catch (Throwable paramalbj)
-      {
-        j = 0;
-        continue;
-        if (j != 0)
-        {
-          i = k;
-          if (j != 1) {
-            continue;
+          localByteArrayOutputStream = paramByteArrayOutputStream;
+          if (paramByteArrayOutputStream == null) {
+            localByteArrayOutputStream = new ByteArrayOutputStream();
           }
-        }
-        i = j;
-        continue;
-      }
-      if (paramalbj.a.d != 3)
-      {
-        i = k;
-        if (paramalbj.a.d != 4) {}
-      }
-      else if ((paramalbj.a.d == 4) && ("circle".equalsIgnoreCase(((ArVideoResourceInfo)paramalbj.a.a.get(0)).jdField_a_of_type_JavaLangString)))
-      {
-        i = 1;
-      }
-      else
-      {
-        try
-        {
-          paramalbj = ((ArVideoResourceInfo)paramalbj.a.a.get(0)).jdField_a_of_type_JavaLangString.split("\\|");
-          if ((paramalbj == null) || (paramalbj.length < 5)) {
-            break;
-          }
-          i = Integer.parseInt(paramalbj[0]);
-          j = Integer.parseInt(paramalbj[1]);
-          int m = Integer.parseInt(paramalbj[2]);
-          int n = Integer.parseInt(paramalbj[3]);
-          int i1 = Integer.parseInt(paramalbj[4]);
-          if ((i > 255) || (j > 255) || (m > 255) || (n > 255) || (i < 0) || (j < 0) || (m < 0) || (n < 0) || (i1 < 0) || (i1 > 100)) {
-            break label601;
-          }
-          localalkg.a(i / 255.0F, j / 255.0F, m / 255.0F);
-          localalkg.jdField_a_of_type_Int = 1;
-          localalkg.d = (n / 255.0F);
-          localalkg.e = (i1 / 100.0F);
-          if ((paramalbj != null) && (paramalbj.length >= 6) && (Integer.parseInt(paramalbj[5]) == 1)) {
-            localalkg.jdField_a_of_type_Int = 2;
-          }
-          if ((paramalbj != null) && (paramalbj.length >= 8))
+          paramByteArrayOutputStream = new byte[10240];
+          int i = 0;
+          j = i;
+          try
           {
-            i = Integer.parseInt(paramalbj[6]);
-            paramalbj = paramalbj[7];
-            if ((i == 2) && (!TextUtils.isEmpty(paramalbj)))
-            {
-              paramalbj = paramalbj.split(";");
-              if ((paramalbj == null) || (paramalbj.length != 3)) {
-                break label606;
-              }
-              localalkg.f = Float.valueOf(paramalbj[0]).floatValue();
-              localalkg.g = Float.valueOf(paramalbj[1]).floatValue();
-              localalkg.h = Float.valueOf(paramalbj[2]).floatValue();
-              localalkg.jdField_a_of_type_Int = 3;
-              break label606;
+            if (paramAtomicBoolean.get()) {
+              continue;
             }
-            if ((i == 3) && (!TextUtils.isEmpty(paramalbj)))
-            {
-              paramalbj = paramalbj.split(";");
-              if ((paramalbj == null) || (paramalbj.length != 3)) {
-                break label611;
-              }
-              localalkg.f = Float.valueOf(paramalbj[0]).floatValue();
-              localalkg.g = Float.valueOf(paramalbj[1]).floatValue();
-              localalkg.h = Float.valueOf(paramalbj[2]).floatValue();
-              localalkg.jdField_a_of_type_Int = 4;
-              break label611;
+            i = localBufferedInputStream.read(paramByteArrayOutputStream);
+            j = i;
+            if (-1 == i) {
+              continue;
             }
-            if ((i == 4) && (!TextUtils.isEmpty(paramalbj)))
-            {
-              localalkg.jdField_a_of_type_JavaLangString = aljy.a(paramalbj, "uniform int uDisplayType;\n", null, "    if(uDisplayType == 1){\n        // 需要渲染成圆形\n        float x = vTextureCoord.x;\n        float y = vTextureCoord.y;\n        // 圆心(0.5, 0.5), 0.25=0.5*0.5\n        if(pow(abs(x-0.5), 2.0) + pow(abs(y-0.5), 2.0) >= 0.25) {\n            gl_FragColor[3] = 0.0;\n        }\n    }\n");
-              localalkg.jdField_a_of_type_Int = 5;
-            }
+            localByteArrayOutputStream.write(paramByteArrayOutputStream, 0, i);
           }
-          i = 2;
+          catch (Throwable paramAtomicBoolean)
+          {
+            QLog.e("apollo_client_ApolloUrlConnection", 2, " getResponseData error:" + paramAtomicBoolean.getMessage());
+          }
         }
-        catch (Throwable paramalbj)
-        {
-          i = k;
-        }
-        if (QLog.isColorLevel())
-        {
-          paramalbj.printStackTrace();
-          i = k;
-        }
+        paramAtomicBoolean = null;
+        return paramAtomicBoolean;
       }
-    }
-    int i = 0;
-    break label603;
-    label601:
-    i = 0;
-    for (;;)
-    {
-      label603:
-      break;
-      label606:
-      i = 2;
-      continue;
-      label611:
-      i = 2;
+      finally {}
+      paramAtomicBoolean = new albl();
+      paramAtomicBoolean.jdField_a_of_type_JavaIoBufferedInputStream = localBufferedInputStream;
+      paramAtomicBoolean.jdField_a_of_type_JavaIoByteArrayOutputStream = localByteArrayOutputStream;
+      if (-1 == j) {
+        bool = true;
+      }
+      paramAtomicBoolean.jdField_a_of_type_Boolean = bool;
     }
   }
   
-  public static void a(String paramString)
+  Map<String, List<String>> a()
   {
-    for (;;)
+    Map localMap = null;
+    try
     {
-      int i = GLES20.glGetError();
-      if (i == 0) {
-        break;
+      if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
+        localMap = this.jdField_a_of_type_JavaNetHttpURLConnection.getHeaderFields();
       }
-      QLog.d("ARVideoUtil", 1, paramString + ": glError " + i);
+      return localMap;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("apollo_client_ApolloUrlConnection", 1, localException, new Object[0]);
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaNetHttpURLConnection == null) {
+      return;
+    }
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      ThreadManager.executeOnSubThread(new ApolloUrlConnection.1(this));
+      return;
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("apollo_client_ApolloUrlConnection", 2, "disconnect error:" + localException.getMessage());
     }
   }
   
-  public static boolean a()
+  public int b()
   {
-    String str = Build.MODEL.toLowerCase();
-    return (Build.MANUFACTURER.toLowerCase().contains("meizu")) && (str.contains("m040"));
+    if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
+      try
+      {
+        int i = this.jdField_a_of_type_JavaNetHttpURLConnection.getResponseCode();
+        return i;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("apollo_client_ApolloUrlConnection", 2, "getResponseCode error:" + localThrowable.getMessage());
+      }
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     albk
  * JD-Core Version:    0.7.0.1
  */

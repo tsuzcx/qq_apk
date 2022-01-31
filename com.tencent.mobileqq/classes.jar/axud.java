@@ -1,24 +1,25 @@
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 
 class axud
-  implements Comparator
+  implements aroi
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  axud(axub paramaxub, AIOFileVideoData paramAIOFileVideoData, ailt paramailt, View paramView) {}
+  
+  public void a()
   {
-    paramObject1 = (axtz)paramObject1;
-    paramObject2 = (axtz)paramObject2;
-    if (paramObject1.a > paramObject2.a) {
-      return -1;
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.h)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.h = false;
+      this.jdField_a_of_type_Ailt.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Axub.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData, false));
     }
-    if (paramObject1.a < paramObject2.a) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_Ailt.b();
+    this.jdField_a_of_type_Ailt.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axud
  * JD-Core Version:    0.7.0.1
  */

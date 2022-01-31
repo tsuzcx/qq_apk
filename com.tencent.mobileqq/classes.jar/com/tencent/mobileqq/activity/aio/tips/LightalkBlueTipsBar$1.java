@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aeye;
-import aeyf;
+import agvj;
+import agvk;
 
 public class LightalkBlueTipsBar$1
   implements Runnable
 {
-  public LightalkBlueTipsBar$1(aeye paramaeye) {}
+  public LightalkBlueTipsBar$1(agvj paramagvj) {}
   
   public void run()
   {
-    aeyf localaeyf = aeyf.a();
-    if (localaeyf != null)
+    agvk localagvk = agvk.a();
+    if (localagvk != null)
     {
-      this.this$0.a = localaeyf.d;
-      this.this$0.b = localaeyf.e;
+      this.this$0.a = localagvk.d;
+      this.this$0.b = localagvk.e;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.1
  * JD-Core Version:    0.7.0.1
  */

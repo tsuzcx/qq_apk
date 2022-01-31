@@ -1,29 +1,27 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
+
 public class audj
+  implements DialogInterface.OnClickListener
 {
-  auda[] a = new auda[3];
+  public audj(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  public auda a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = this.a[paramInt];
-    if (localObject != null) {
-      return localObject;
+    MsgBackupCompleteFragment.a(this.a);
+    if (MsgBackupCompleteFragment.a(this.a) == 1) {
+      auff.a("0X800A253", 5);
     }
-    switch (paramInt)
-    {
+    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
+      return;
     }
-    for (;;)
-    {
-      this.a[paramInt] = localObject;
-      return localObject;
-      localObject = new audg();
-      continue;
-      localObject = new audd();
-    }
+    auff.a("0X800A267", 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     audj
  * JD-Core Version:    0.7.0.1
  */

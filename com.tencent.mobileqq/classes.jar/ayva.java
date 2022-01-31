@@ -1,35 +1,54 @@
-import java.util.HashMap;
+import android.util.SparseArray;
 
 public class ayva
+  extends ayvz
 {
-  public static long a;
-  public static Object a;
-  public static HashMap<Long, ayvb> a;
-  public static long b;
+  public int a;
+  public long a;
+  private SparseArray<Object> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public long c;
+  public boolean c;
+  public long d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g = true;
+  public boolean h;
+  public boolean i;
   
-  static
+  public ayva(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Long = paramLong1;
+    this.e = paramLong2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
   }
   
-  public static ayvb a(long paramLong)
+  public Object a(int paramInt)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      ayvb localayvb2 = (ayvb)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      ayvb localayvb1 = localayvb2;
-      if (localayvb2 == null) {
-        localayvb1 = new ayvb();
-      }
-      jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localayvb1);
-      return localayvb1;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
+      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     }
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayva
  * JD-Core Version:    0.7.0.1
  */

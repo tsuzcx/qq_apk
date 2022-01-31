@@ -1,83 +1,77 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import tencent.nearby.now.nearby_now_anchor.RspBatchGetAnchorStatus;
 
-public class apeh
-  extends BaseAdapter
+public abstract class apeh
+  extends nac
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private bcns jdField_a_of_type_Bcns;
-  private Object jdField_a_of_type_JavaLangObject;
-  
-  public apeh(Context paramContext, View.OnClickListener paramOnClickListener)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(bcns parambcns)
-  {
-    this.jdField_a_of_type_Bcns = parambcns;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public boolean a(int paramInt, View paramView, ShaderAnimLayout paramShaderAnimLayout, Button paramButton, Object paramObject)
-  {
-    boolean bool = false;
-    if (paramShaderAnimLayout != null)
+    boolean bool4 = false;
+    boolean bool3 = false;
+    Object localObject = null;
+    nearby_now_anchor.RspBatchGetAnchorStatus localRspBatchGetAnchorStatus;
+    boolean bool1;
+    if (paramInt == 0)
     {
-      if ((this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_a_of_type_JavaLangObject.equals(paramObject)))
+      localRspBatchGetAnchorStatus = new nearby_now_anchor.RspBatchGetAnchorStatus();
+      bool1 = bool4;
+    }
+    for (;;)
+    {
+      try
       {
-        bool = true;
-        paramShaderAnimLayout.a();
-        if (this.jdField_a_of_type_Bcns != null) {
-          this.jdField_a_of_type_Bcns.setMotionView(paramView, paramInt);
+        localRspBatchGetAnchorStatus.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = localObject;
+        bool2 = bool3;
+        bool1 = bool4;
+        if (localRspBatchGetAnchorStatus.uint32_result.has())
+        {
+          paramArrayOfByte = localObject;
+          bool2 = bool3;
+          bool1 = bool4;
+          if (localRspBatchGetAnchorStatus.uint32_result.get() == 0)
+          {
+            bool1 = true;
+            bool2 = true;
+            paramArrayOfByte = localRspBatchGetAnchorStatus.msg_anchor_stats.get();
+          }
         }
-        paramButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramButton.setTag(Integer.valueOf(paramInt));
+      }
+      catch (Exception localException)
+      {
+        paramArrayOfByte = localObject;
+        bool2 = bool1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("Q.msg_box.protocol", 2, localException.toString());
+        paramArrayOfByte = localObject;
+        bool2 = bool1;
+        continue;
+      }
+      a(bool2, paramArrayOfByte, paramBundle);
+      return;
+      paramArrayOfByte = localObject;
+      boolean bool2 = bool3;
+      if (QLog.isColorLevel())
+      {
+        QLog.w("Q.msg_box.protocol", 2, "getNowState failed, errorCode=" + paramInt);
+        paramArrayOfByte = localObject;
+        bool2 = bool3;
       }
     }
-    else {
-      return bool;
-    }
-    paramShaderAnimLayout.d();
-    paramButton.setOnClickListener(null);
-    paramButton.setTag(null);
-    return false;
   }
   
-  public int getCount()
-  {
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
-  }
+  public abstract void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apeh
  * JD-Core Version:    0.7.0.1
  */

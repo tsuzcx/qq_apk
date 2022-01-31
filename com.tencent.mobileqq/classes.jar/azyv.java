@@ -1,149 +1,263 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
-import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteDisplayView;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import tencent.im.oidb.cmd0x7a2.oidb_0x7a2.RspBody;
 
 public class azyv
-  extends BaseAdapter
 {
-  public static int c = 1;
-  public static int d = 2;
-  int jdField_a_of_type_Int = 1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ReciteDisplayView jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView;
-  List<ParagraphInfo> jdField_a_of_type_JavaUtilList;
-  protected int b;
-  int e = c;
-  int f = -2;
-  int g = -1;
+  public int a;
+  public Object a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public ArrayList<String> b;
+  public boolean b;
+  public String c;
+  public ArrayList<String> c;
+  public boolean c;
+  public boolean d;
   
-  public azyv(ReciteDisplayView paramReciteDisplayView, Context paramContext, List<ParagraphInfo> paramList, int paramInt1, int paramInt2)
+  public azyv()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView = paramReciteDisplayView;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = muc.b(paramContext);
-    int i = paramList.size() - 1;
-    while (i > 0)
+    this.jdField_a_of_type_Int = -99999;
+    this.jdField_b_of_type_Int = -99999;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static azyv a(azyv paramazyv)
+  {
+    if (paramazyv == null)
     {
-      paramReciteDisplayView = (ParagraphInfo)paramList.get(i);
-      paramReciteDisplayView.paragraphPos = i;
-      if ((TextUtils.isEmpty(paramReciteDisplayView.content_html)) && (TextUtils.isEmpty(paramReciteDisplayView.content_pinyin))) {
-        paramList.remove(i);
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.clone() return, backData == null.");
       }
-      i -= 1;
+      return null;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.e = paramInt2;
+    azyv localazyv = new azyv();
+    localazyv.jdField_a_of_type_JavaLangString = paramazyv.jdField_a_of_type_JavaLangString;
+    localazyv.jdField_a_of_type_Int = paramazyv.jdField_a_of_type_Int;
+    localazyv.jdField_b_of_type_JavaLangString = paramazyv.jdField_b_of_type_JavaLangString;
+    localazyv.jdField_c_of_type_JavaLangString = paramazyv.jdField_c_of_type_JavaLangString;
+    ArrayList localArrayList = new ArrayList();
+    if (paramazyv.jdField_a_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(paramazyv.jdField_a_of_type_JavaUtilArrayList);
+    }
+    localazyv.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    localArrayList = new ArrayList();
+    if (paramazyv.jdField_b_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(paramazyv.jdField_b_of_type_JavaUtilArrayList);
+    }
+    localazyv.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+    localArrayList = new ArrayList();
+    if (paramazyv.jdField_c_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(paramazyv.jdField_c_of_type_JavaUtilArrayList);
+    }
+    localazyv.jdField_c_of_type_JavaUtilArrayList = localArrayList;
+    localazyv.jdField_a_of_type_JavaLangObject = paramazyv.jdField_a_of_type_JavaLangObject;
+    localazyv.jdField_b_of_type_Int = paramazyv.jdField_b_of_type_Int;
+    localazyv.jdField_a_of_type_Boolean = paramazyv.jdField_a_of_type_Boolean;
+    localazyv.jdField_b_of_type_Boolean = paramazyv.jdField_b_of_type_Boolean;
+    localazyv.jdField_c_of_type_Boolean = paramazyv.jdField_c_of_type_Boolean;
+    localazyv.d = paramazyv.d;
+    return localazyv;
+  }
+  
+  public ArrayList<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
+    }
+    return localArrayList;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return;
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(i)).setWordColor(3);
-      i += 1;
-    }
-    this.e = c;
-    notifyDataSetChanged();
-  }
-  
-  public void a(WordInfo paramWordInfo)
-  {
-    if ((paramWordInfo == null) || (paramWordInfo.paragraphPos < 0) || (paramWordInfo.wordPos < 0) || (this.jdField_a_of_type_JavaUtilList == null)) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.e("ReciteDetect.ReciteDisplayView", 1, "recite result = " + paramWordInfo.text);
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.clearNewUins()");
     }
-    if (paramWordInfo.paragraphPos > this.f) {
-      this.f = paramWordInfo.paragraphPos;
+    if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+      this.jdField_b_of_type_JavaUtilArrayList.clear();
     }
-    for (this.g = paramWordInfo.wordPos;; this.g = paramWordInfo.wordPos) {
-      do
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.a = paramWordInfo;
-        notifyDataSetChanged();
-        return;
-      } while ((paramWordInfo.paragraphPos != this.f) || (paramWordInfo.wordPos <= this.g));
+    if (this.jdField_c_of_type_JavaUtilArrayList != null) {
+      this.jdField_c_of_type_JavaUtilArrayList.clear();
     }
   }
   
-  public int getCount()
+  public void a(String paramString)
   {
-    int j;
-    if (this.e == c)
-    {
-      j = this.jdField_a_of_type_JavaUtilList.size();
-      return j;
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.addNewUin subUin=" + paramString);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
+    if ((paramString == null) || (paramString.length() < 4)) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      }
+      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      }
+    } while (this.jdField_b_of_type_JavaUtilArrayList.contains(paramString));
+    this.jdField_b_of_type_JavaUtilArrayList.add(paramString);
+  }
+  
+  public void a(oidb_0x7a2.RspBody paramRspBody, ArrayList<String> paramArrayList)
+  {
+    if (paramRspBody == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      for (;;)
+      {
+        if ((paramRspBody.uint64_bind_uin.has()) && (paramRspBody.uint64_bind_uin.get() > 10000L))
+        {
+          this.jdField_c_of_type_JavaLangString = Long.toString(paramRspBody.uint64_bind_uin.get());
+          this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_JavaLangString);
+        }
+        if (!paramRspBody.uint64_multi_bind_uin.has()) {
+          break;
+        }
+        paramRspBody = paramRspBody.uint64_multi_bind_uin.get();
+        if (paramRspBody == null) {
+          break;
+        }
+        paramRspBody = paramRspBody.iterator();
+        while (paramRspBody.hasNext())
+        {
+          Object localObject = (Long)paramRspBody.next();
+          if (((Long)localObject).longValue() > 10000L)
+          {
+            localObject = Long.toString(((Long)localObject).longValue());
+            if (!this.jdField_a_of_type_JavaUtilArrayList.contains(localObject)) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+            }
+            if (this.jdField_c_of_type_JavaLangString == null) {
+              this.jdField_c_of_type_JavaLangString = ((String)localObject);
+            }
+          }
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+      }
+      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        paramRspBody = paramArrayList.iterator();
+        while (paramRspBody.hasNext())
+        {
+          paramArrayList = (String)paramRspBody.next();
+          if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramArrayList)) {
+            this.jdField_c_of_type_JavaUtilArrayList.add(paramArrayList);
+          }
+          this.jdField_b_of_type_JavaUtilArrayList.remove(paramArrayList);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.parseUins() figure new subUins. localSubUins is null. new SubUins=" + String.valueOf(this.jdField_b_of_type_JavaUtilArrayList) + " overdue SubUins=" + String.valueOf(this.jdField_c_of_type_JavaUtilArrayList));
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_b_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public ArrayList<String> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_c_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(this.jdField_c_of_type_JavaUtilArrayList);
+    }
+    return localArrayList;
+  }
+  
+  public boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_c_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_c_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public ArrayList<String> c()
+  {
+    if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.length() > 4))
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_c_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_c_of_type_JavaLangString);
+      }
+    }
     for (;;)
     {
-      j = i;
-      if (!localIterator.hasNext()) {
-        break;
+      ArrayList localArrayList = new ArrayList();
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
       }
-      j = i;
-      if (((ParagraphInfo)localIterator.next()).paragraphPos > this.f) {
-        break;
+      return localArrayList;
+      this.jdField_a_of_type_JavaUtilArrayList = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "getUinsBinded() return null, mSubUin is null");
       }
-      i += 1;
     }
   }
   
-  public Object getItem(int paramInt)
+  public boolean c()
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
+    boolean bool2 = false;
+    if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.length() > 4))
     {
-      paramView = new azyu();
-      paramView.a = new PinyinTextView(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-      paramViewGroup = paramView.a;
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (azyu)paramViewGroup.getTag();
-    ParagraphInfo localParagraphInfo = (ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.e == d)
-    {
-      if (paramInt == getCount() - 1)
-      {
-        paramView.a.setWordInfos(localParagraphInfo, this.g, true);
-        return paramViewGroup;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       }
-      paramView.a.setWordInfos(localParagraphInfo, this.g, false);
-      return paramViewGroup;
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_c_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_c_of_type_JavaLangString);
+      }
     }
-    paramView.a.setWordInfos(localParagraphInfo, this.g, false);
-    return paramViewGroup;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azyv
  * JD-Core Version:    0.7.0.1
  */

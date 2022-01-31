@@ -1,92 +1,86 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
 
 public class mlm
+  extends mll
 {
-  public static String a;
-  private static mlm jdField_a_of_type_Mlm;
-  private final int jdField_a_of_type_Int = 40;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean;
-  private mln[] jdField_a_of_type_ArrayOfMln;
-  
-  static
+  protected mlm(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    jdField_a_of_type_JavaLangString = "VoiceChangeData";
+    super(paramContext, paramVideoAppInterface);
   }
   
-  public static mlm a()
+  public static int a(int paramInt)
   {
-    if (jdField_a_of_type_Mlm == null) {}
-    try
+    return (paramInt << 16) / 1201 >> 6;
+  }
+  
+  private void a(mgp parammgp1, mgp parammgp2, int paramInt)
+  {
+    int i = paramInt >> 1;
+    int j = b(paramInt);
+    parammgp1.a(0, 0, 0, 0);
+    parammgp1.b(0, 0, i, j);
+    parammgp1.d(-15197410);
+    parammgp2.a(0, 0, 0, 0);
+    parammgp2.b(i, 0, paramInt, j);
+    parammgp2.d(-15197410);
+  }
+  
+  public static int b(int paramInt)
+  {
+    return paramInt * 1201 >> 10;
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public void a(lid paramlid, mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4) {}
+  
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    boolean bool;
+    if (!this.a.getCurrentAccountUin().equals(paramArrayOfmgp[1].a(0)))
     {
-      if (jdField_a_of_type_Mlm == null) {
-        jdField_a_of_type_Mlm = new mlm();
+      bool = true;
+      lek.c("ScreenLayoutDoubleScreen", "layoutCommon: " + paramBoolean + "|" + bool);
+      if (!bool) {
+        break label112;
       }
-      return jdField_a_of_type_Mlm;
+      if (paramBoolean) {
+        break label94;
+      }
+      paramBoolean = true;
     }
-    finally {}
-  }
-  
-  protected void a(String paramString)
-  {
-    if (paramString == null) {
+    label94:
+    label112:
+    for (;;)
+    {
+      if (paramBoolean)
+      {
+        a(paramArrayOfmgp[1], paramArrayOfmgp[0], paramInt1);
+        return;
+        bool = false;
+        break;
+        paramBoolean = false;
+        continue;
+      }
+      a(paramArrayOfmgp[0], paramArrayOfmgp[1], paramInt1);
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_ArrayOfMln = null;
-      try
-      {
-        Object localObject2 = new JSONObject(paramString);
-        if (((JSONObject)localObject2).has("voices"))
-        {
-          localObject2 = ((JSONObject)localObject2).getJSONArray("voices");
-          lcg.d(jdField_a_of_type_JavaLangString, "parseConfig|voices size= " + ((JSONArray)localObject2).length());
-          this.jdField_a_of_type_ArrayOfMln = new mln[((JSONArray)localObject2).length()];
-          int i = 0;
-          while (i < ((JSONArray)localObject2).length())
-          {
-            JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
-            mln localmln = new mln();
-            localmln.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
-            localmln.jdField_b_of_type_JavaLangString = localJSONObject.getString("icon1");
-            localmln.c = localJSONObject.getString("icon2");
-            localmln.jdField_a_of_type_Int = Integer.parseInt(localJSONObject.getString("type"));
-            localmln.jdField_b_of_type_Int = Integer.parseInt(localJSONObject.getString("vip_level"));
-            this.jdField_a_of_type_ArrayOfMln[i] = localmln;
-            i += 1;
-          }
-        }
-        paramString = finally;
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "parseConfig, JSONException, \ncontent[" + paramString + "]", localJSONException);
-        this.jdField_a_of_type_ArrayOfMln = null;
-        return;
-      }
-    }
   }
   
-  public mln[] a()
+  public boolean a()
   {
-    if (this.jdField_a_of_type_ArrayOfMln == null) {
-      a(lct.b(172).jdField_a_of_type_JavaLangString);
-    }
-    if ((this.jdField_a_of_type_ArrayOfMln == null) && (!this.jdField_a_of_type_Boolean))
-    {
-      mlo.a("0X8007EFD", "");
-      this.jdField_a_of_type_Boolean = true;
-    }
-    return this.jdField_a_of_type_ArrayOfMln;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlm
  * JD-Core Version:    0.7.0.1
  */

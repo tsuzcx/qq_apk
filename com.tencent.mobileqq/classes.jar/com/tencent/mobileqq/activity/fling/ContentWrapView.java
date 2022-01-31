@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.fling;
 
-import afvr;
+import ahtl;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 public class ContentWrapView
   extends RelativeLayout
 {
-  private afvr jdField_a_of_type_Afvr;
+  private ahtl jdField_a_of_type_Ahtl;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   
   public ContentWrapView(Context paramContext)
@@ -32,13 +32,13 @@ public class ContentWrapView
   
   private void a()
   {
-    afvr localafvr = this.jdField_a_of_type_Afvr;
-    if (localafvr == null) {}
-    while (!localafvr.jdField_a_of_type_Boolean) {
+    ahtl localahtl = this.jdField_a_of_type_Ahtl;
+    if (localahtl == null) {}
+    while (!localahtl.jdField_a_of_type_Boolean) {
       return;
     }
-    afvr.a(localafvr).setTranslate(localafvr.jdField_a_of_type_Float, localafvr.b);
-    localafvr.jdField_a_of_type_Boolean = false;
+    ahtl.a(localahtl).setTranslate(localahtl.jdField_a_of_type_Float, localahtl.b);
+    localahtl.jdField_a_of_type_Boolean = false;
   }
   
   private void a(Context paramContext)
@@ -48,34 +48,34 @@ public class ContentWrapView
   
   public void draw(Canvas paramCanvas)
   {
-    afvr localafvr = this.jdField_a_of_type_Afvr;
-    if (localafvr != null)
+    ahtl localahtl = this.jdField_a_of_type_Ahtl;
+    if (localahtl != null)
     {
       a();
-      paramCanvas.concat(afvr.a(localafvr));
+      paramCanvas.concat(ahtl.a(localahtl));
     }
     super.draw(paramCanvas);
   }
   
   public void ensureTransformationInfo()
   {
-    if (this.jdField_a_of_type_Afvr == null) {
-      this.jdField_a_of_type_Afvr = new afvr();
+    if (this.jdField_a_of_type_Ahtl == null) {
+      this.jdField_a_of_type_Ahtl = new ahtl();
     }
   }
   
   public float getTransX()
   {
-    if (this.jdField_a_of_type_Afvr != null) {
-      return this.jdField_a_of_type_Afvr.jdField_a_of_type_Float;
+    if (this.jdField_a_of_type_Ahtl != null) {
+      return this.jdField_a_of_type_Ahtl.jdField_a_of_type_Float;
     }
     return 0.0F;
   }
   
   public float getTransY()
   {
-    if (this.jdField_a_of_type_Afvr != null) {
-      return this.jdField_a_of_type_Afvr.b;
+    if (this.jdField_a_of_type_Ahtl != null) {
+      return this.jdField_a_of_type_Ahtl.b;
     }
     return 0.0F;
   }
@@ -83,11 +83,11 @@ public class ContentWrapView
   public void transX(float paramFloat)
   {
     ensureTransformationInfo();
-    afvr localafvr = this.jdField_a_of_type_Afvr;
-    if (localafvr.jdField_a_of_type_Float != paramFloat)
+    ahtl localahtl = this.jdField_a_of_type_Ahtl;
+    if (localahtl.jdField_a_of_type_Float != paramFloat)
     {
-      localafvr.jdField_a_of_type_Float = paramFloat;
-      localafvr.jdField_a_of_type_Boolean = true;
+      localahtl.jdField_a_of_type_Float = paramFloat;
+      localahtl.jdField_a_of_type_Boolean = true;
       invalidate();
     }
   }
@@ -102,11 +102,11 @@ public class ContentWrapView
   public void transY(float paramFloat)
   {
     ensureTransformationInfo();
-    afvr localafvr = this.jdField_a_of_type_Afvr;
-    if (localafvr.b != paramFloat)
+    ahtl localahtl = this.jdField_a_of_type_Ahtl;
+    if (localahtl.b != paramFloat)
     {
-      localafvr.b = paramFloat;
-      localafvr.jdField_a_of_type_Boolean = true;
+      localahtl.b = paramFloat;
+      localahtl.jdField_a_of_type_Boolean = true;
       invalidate();
     }
   }
@@ -120,7 +120,7 @@ public class ContentWrapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.ContentWrapView
  * JD-Core Version:    0.7.0.1
  */

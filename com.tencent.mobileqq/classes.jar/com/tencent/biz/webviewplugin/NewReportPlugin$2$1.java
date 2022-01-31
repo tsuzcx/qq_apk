@@ -1,7 +1,7 @@
 package com.tencent.biz.webviewplugin;
 
-import bcqf;
-import xkn;
+import bepp;
+import yzg;
 
 class NewReportPlugin$2$1
   implements Runnable
@@ -10,13 +10,13 @@ class NewReportPlugin$2$1
   
   public void run()
   {
-    xkn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a);
-    this.this$0.jdField_a_of_type_Bcqf.dismiss();
+    yzg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a);
+    this.this$0.jdField_a_of_type_Bepp.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

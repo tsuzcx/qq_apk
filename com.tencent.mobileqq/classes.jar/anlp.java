@@ -1,21 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
-class anlp
-  implements View.OnClickListener
+public class anlp
+  implements CompoundButton.OnCheckedChangeListener
 {
-  anlp(anlm paramanlm, WindowManager paramWindowManager) {}
+  public anlp(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Anlm.a.a);
+    if (paramBoolean)
+    {
+      this.a.b();
+      this.a.a("");
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
+      return;
+    }
+    this.a.c();
+    this.a.a("close");
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlp
  * JD-Core Version:    0.7.0.1
  */

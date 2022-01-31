@@ -1,20 +1,20 @@
 package com.tencent.biz.webviewplugin;
 
-import xmf;
+import zay;
 
 public class QzoneWebViewOfflinePlugin$4
   implements Runnable
 {
-  public QzoneWebViewOfflinePlugin$4(xmf paramxmf, String paramString, long paramLong) {}
+  public QzoneWebViewOfflinePlugin$4(zay paramzay, String paramString, long paramLong) {}
   
   public void run()
   {
-    xmf.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.mRuntime);
+    zay.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.mRuntime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin.4
  * JD-Core Version:    0.7.0.1
  */

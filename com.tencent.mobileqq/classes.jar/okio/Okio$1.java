@@ -2,7 +2,7 @@ package okio;
 
 import java.io.OutputStream;
 
-class Okio$1
+final class Okio$1
   implements Sink
 {
   Okio$1(Timeout paramTimeout, OutputStream paramOutputStream) {}
@@ -30,11 +30,8 @@ class Okio$1
   public void write(Buffer paramBuffer, long paramLong)
   {
     Util.checkOffsetAndCount(paramBuffer.size, 0L, paramLong);
-    for (;;)
+    while (paramLong > 0L)
     {
-      if (paramLong <= 0L) {
-        return;
-      }
       this.val$timeout.throwIfReached();
       Segment localSegment = paramBuffer.head;
       int i = (int)Math.min(paramLong, localSegment.limit - localSegment.pos);
@@ -54,7 +51,7 @@ class Okio$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.Okio.1
  * JD-Core Version:    0.7.0.1
  */

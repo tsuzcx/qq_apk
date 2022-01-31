@@ -1,65 +1,35 @@
-import android.support.annotation.Nullable;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-class biui
-  implements bjos<List<birj>>
+public class biui
 {
-  biui(biug parambiug, bist parambist) {}
-  
-  public void a(@Nullable List<birj> paramList)
+  public static long a(Context paramContext, String paramString)
   {
-    biua.a(this.jdField_a_of_type_Biug.a).a().a(biua.a(this.jdField_a_of_type_Biug.a));
-    QLog.d("AEGIFChunkPreviewFragment", 4, "On observe material list state");
-    int j;
-    int i;
-    if (paramList == null)
-    {
-      QLog.e("AEGIFChunkPreviewFragment", 4, "aeMaterialWrappers == null");
-      if ((paramList != null) && (biua.a(this.jdField_a_of_type_Biug.a) != null))
-      {
-        QLog.e("AEGIFChunkPreviewFragment", 4, "Find materials num = " + paramList.size());
-        j = Math.min(paramList.size(), this.jdField_a_of_type_Bist.b);
-        Collections.shuffle(paramList);
-        i = 0;
-      }
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
+  }
+  
+  public static String a(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
+  }
+  
+  public static void a(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if (paramString2 == null) {
+      return;
     }
-    for (;;)
-    {
-      bita localbita;
-      if (i < j)
-      {
-        birj localbirj = (birj)paramList.get(i);
-        localbita = new bita();
-        localbita.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = localbirj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial;
-        QLog.d("AEGIFChunkPreviewFragment", 4, "Assigning material to item index = " + i + "material id = " + localbirj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
-        localbita.b = 0;
-        localbita.jdField_a_of_type_Int = 10;
-        localbita.jdField_a_of_type_JavaLangString = "";
-        bizt.a().g(localbirj.jdField_a_of_type_JavaLangString);
-        if (biua.a(this.jdField_a_of_type_Biug.a).size() < biua.a(this.jdField_a_of_type_Biug.a)) {}
-      }
-      else
-      {
-        return;
-        if (!paramList.isEmpty()) {
-          break;
-        }
-        QLog.e("AEGIFChunkPreviewFragment", 4, "aeMaterialWrappers is empty");
-        break;
-      }
-      biua.a(this.jdField_a_of_type_Biug.a).add(localbita);
-      biua.a(this.jdField_a_of_type_Biug.a).notifyItemInserted(biua.a(this.jdField_a_of_type_Biug.a).size() - 1);
-      biua.a(this.jdField_a_of_type_Biug.a).a(bjal.a(), localbita);
-      i += 1;
-    }
+    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biui
  * JD-Core Version:    0.7.0.1
  */

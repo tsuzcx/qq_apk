@@ -1,20 +1,159 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
 public class absp
-  implements DialogInterface.OnClickListener
+  extends absi
 {
-  public absp(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  protected atzw a;
+  private String jdField_c_of_type_JavaLangString = "doraemon_user_permission_" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+  private Map<String, Integer> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private String d;
+  private String e;
+  private String f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public absp(Activity paramActivity, int paramInt, String paramString)
   {
-    this.a.finish();
+    super(paramActivity, paramInt, paramString);
+  }
+  
+  private int a(abso paramabso)
+  {
+    Integer localInteger2 = (Integer)this.jdField_c_of_type_JavaUtilMap.get(paramabso.jdField_a_of_type_JavaLangString);
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      if (BaseApplicationImpl.getApplication().getSharedPreferences(this.jdField_c_of_type_JavaLangString, 4).getLong(this.b + "_" + paramabso.jdField_a_of_type_JavaLangString + "_2", 0L) <= NetConnInfoCenter.getServerTimeMillis()) {
+        break label106;
+      }
+    }
+    label106:
+    for (localInteger1 = Integer.valueOf(2);; localInteger1 = Integer.valueOf(0))
+    {
+      this.jdField_c_of_type_JavaUtilMap.put(paramabso.jdField_a_of_type_JavaLangString, localInteger1);
+      return localInteger1.intValue();
+    }
+  }
+  
+  private void a(abso paramabso, int paramInt)
+  {
+    if (2 == paramInt)
+    {
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      BaseApplicationImpl.getApplication().getSharedPreferences(this.jdField_c_of_type_JavaLangString, 4).edit().putLong(this.b + "_" + paramabso.jdField_a_of_type_JavaLangString + "_2", l + 2592000000L).apply();
+    }
+    this.jdField_c_of_type_JavaUtilMap.put(paramabso.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+  }
+  
+  public atzw a()
+  {
+    return this.jdField_a_of_type_Atzw;
+  }
+  
+  public String a()
+  {
+    if (this.e == null) {
+      return MobileQQ.getContext().getPackageName();
+    }
+    return this.e;
+  }
+  
+  protected Map<String, absg> a()
+  {
+    return abur.a();
+  }
+  
+  protected void a(absg paramabsg, JSONObject paramJSONObject, absf paramabsf)
+  {
+    abso localabso;
+    Object localObject2;
+    Object localObject1;
+    switch (paramabsg.b)
+    {
+    default: 
+      QLog.i("DoraemonOpenAPI.apiMgr", 1, "unsupport auth type " + paramabsg.b);
+      a(6, paramabsg, paramJSONObject, paramabsf);
+      return;
+    case 0: 
+      a(0, paramabsg, paramJSONObject, paramabsf);
+      return;
+    case 1: 
+      localabso = absu.a().a(paramabsg.jdField_a_of_type_JavaLangString);
+      if (localabso == null)
+      {
+        a(1, paramabsg, paramJSONObject, paramabsf);
+        return;
+      }
+      int i = a(localabso);
+      if (i == 1)
+      {
+        a(4, paramabsg, paramJSONObject, paramabsf);
+        return;
+      }
+      if (i == 2)
+      {
+        a(0, paramabsg, paramJSONObject, paramabsf);
+        return;
+      }
+      localObject2 = a();
+      if (localObject2 == null)
+      {
+        localObject1 = null;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label352;
+        }
+        localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131695082);
+      }
+      break;
+    }
+    label352:
+    for (;;)
+    {
+      if (localObject2 == null) {}
+      for (localObject2 = null;; localObject2 = ((atzw)localObject2).jdField_c_of_type_JavaLangString)
+      {
+        a((String)localObject1, (String)localObject2, BaseApplicationImpl.getApplication().getResources().getString(2131695081, new Object[] { localObject1 }), localabso.b, BaseApplicationImpl.getApplication().getResources().getString(2131721441), new absr(this, localabso, paramabsg, paramJSONObject, paramabsf), BaseApplicationImpl.getApplication().getResources().getString(2131721450), new abss(this, localabso, paramabsg, paramJSONObject, paramabsf), new abst(this, localabso, paramabsg, paramJSONObject, paramabsf));
+        return;
+        localObject1 = ((atzw)localObject2).b;
+        break;
+      }
+      localObject1 = (abtp)a(abtp.class, false);
+      if ((localObject1 != null) && (((abtp)localObject1).a()))
+      {
+        a(0, paramabsg, paramJSONObject, paramabsf);
+        return;
+      }
+      QLog.i("DoraemonOpenAPI.apiMgr", 1, "not login");
+      a(5, paramabsg, paramJSONObject, paramabsf);
+      return;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    this.d = paramString1;
+    this.e = paramString2;
+    this.f = paramString3;
+  }
+  
+  protected void c()
+  {
+    absu.a().a(this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.d, this.e, this.f, new absq(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absp
  * JD-Core Version:    0.7.0.1
  */

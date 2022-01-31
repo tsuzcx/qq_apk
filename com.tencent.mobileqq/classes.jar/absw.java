@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class absw
-  extends ajxj
+class absw
+  extends JobSegment<atzw, atzw>
 {
-  public absw(PublicAccountListActivity paramPublicAccountListActivity) {}
+  absw(absu paramabsu, String paramString, int paramInt) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  protected void a(JobContext paramJobContext, atzw paramatzw)
   {
-    if (paramBoolean) {
-      this.a.c();
-    }
+    auab.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new absx(this, this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absw
  * JD-Core Version:    0.7.0.1
  */

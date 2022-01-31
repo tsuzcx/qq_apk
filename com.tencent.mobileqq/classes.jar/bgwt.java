@@ -1,22 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bgwt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   bgwt(bgws parambgws) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bgwi.a(bgws.a(this.a), bgws.b(this.a), "5", "27", "", "3", "", "", "");
-    this.a.a.a.a.loadUrl("jsbridge://JSTittlebarAction/managerBtnSingleClick");
+    bgws.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgwt
  * JD-Core Version:    0.7.0.1
  */

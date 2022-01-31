@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.animation.AlphaAnimation;
-import apvb;
-import apvc;
+import arod;
+import aroe;
 
 class FilePreviewActivity$11
   implements Runnable
@@ -12,22 +12,22 @@ class FilePreviewActivity$11
   public void run()
   {
     if (this.this$0.b == null) {
-      this.this$0.b = new apvb(this.this$0.a);
+      this.this$0.b = new arod(this.this$0.a);
     }
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setFillAfter(true);
-    apvc localapvc = new apvc();
-    localapvc.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localapvc.jdField_a_of_type_Boolean = false;
-    localapvc.jdField_a_of_type_Int = apvb.jdField_a_of_type_Int;
-    localapvc.b = 1500;
-    this.this$0.b.a(localapvc);
+    aroe localaroe = new aroe();
+    localaroe.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
+    localaroe.jdField_a_of_type_Boolean = false;
+    localaroe.jdField_a_of_type_Int = arod.jdField_a_of_type_Int;
+    localaroe.b = 1500;
+    this.this$0.b.a(localaroe);
     this.this$0.b.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.11
  * JD-Core Version:    0.7.0.1
  */

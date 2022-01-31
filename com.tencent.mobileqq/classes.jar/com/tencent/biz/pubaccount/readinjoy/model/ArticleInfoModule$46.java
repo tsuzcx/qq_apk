@@ -1,30 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import osj;
-import ozo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import opy;
 
-public class ArticleInfoModule$46
+public final class ArticleInfoModule$46
   implements Runnable
 {
-  public ArticleInfoModule$46(ozo paramozo, int paramInt1, int paramInt2) {}
+  public ArticleInfoModule$46(ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
-    boolean bool = true;
-    osj localosj = osj.a();
-    long l = this.a;
-    if (this.b == 1) {}
-    for (;;)
-    {
-      localosj.a(l, bool);
-      return;
-      bool = false;
-    }
+    opy.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.46
  * JD-Core Version:    0.7.0.1
  */

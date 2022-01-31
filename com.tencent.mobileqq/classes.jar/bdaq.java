@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.photo.album.QAlbumCustomAlbumConstants;
 
-class bdaq
-  implements QQPermissionCallback
+public class bdaq
+  implements QAlbumCustomAlbumConstants
 {
-  bdaq(bdap parambdap) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbdj.a(this.a.a.getActivity(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a.a = ProfileActivity.a(this.a.a.getActivity(), 257);
-  }
+  public static final String a = l + "SelectedPhotoList";
+  public static final String b = l + "ForwardWhere";
+  public static final String c = l + "FromWhere";
+  public static final String d = l + "AlbumName";
+  public static final String e = l + "AlbumId";
+  public static final String f = l + "InitActivityClass";
+  public static final String g = l + "DestActivityClass";
+  public static final String h = l + "RequestCode";
+  public static final String i = l + "TempSelectPhotoMap";
+  public static final String j = l + "PassToDestActivity";
+  public static final String k = l + "PassFromDestActivity";
+  private static final String l = bdaq.class.getName() + ".";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdaq
  * JD-Core Version:    0.7.0.1
  */

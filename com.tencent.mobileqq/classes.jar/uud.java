@@ -1,20 +1,20 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+import android.os.Handler;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1;
 
 public class uud
-  implements bfso
+  implements uzb
 {
-  public uud(MemoriesInnerListView paramMemoriesInnerListView) {}
+  uud(uuc paramuuc) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void a(uzc paramuzc)
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(MemoriesInnerListView.a(this.a).a);
-    }
+    wsv.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramuzc);
+    this.a.a.post(new MsgTabNodeListLoader.1.1(this, paramuzc));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uud
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.av.redpacket.AVRedPacketManager;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.mobileqq.app.ThreadManager;
-import luk;
+import lwr;
 
 class RedPacketGameView$2
   implements Runnable
@@ -28,7 +28,7 @@ class RedPacketGameView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketGameView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,33 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class ayss
-  implements ITransactionCallback
+public class ayss
+  extends aysb
 {
-  ayss(aysr paramaysr) {}
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public TextView b;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public ayss(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TAG_MultiMsg", 2, "BDH.Upload fail  : result:" + paramInt);
-    }
-    this.a.d();
+    super(paramViewGroup, paramInt);
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TAG_MultiMsg", 2, "Multimsg upload file by BDH and onSuccess  ");
-    }
-    this.a.e();
-    paramArrayOfByte = new File(ayoi.d(aysr.a(this.a)));
-    if (paramArrayOfByte.exists()) {
-      paramArrayOfByte.delete();
-    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131376228));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369366));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375784));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131368471));
   }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayss
  * JD-Core Version:    0.7.0.1
  */

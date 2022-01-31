@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import ajya;
+import alpo;
 import android.view.View;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -12,15 +12,15 @@ class VideoControlUI$3
   
   public void run()
   {
-    if (this.this$0.h)
+    if (this.this$0.i)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.w(this.this$0.c, 1, "HideToolbarRunnable");
+        QLog.w(this.this$0.d, 1, "HideToolbarRunnable");
       }
       if (AudioHelper.a(1) != 1) {
         break label46;
       }
-      AudioHelper.a(ajya.a(2131716130));
+      AudioHelper.a(alpo.a(2131716502));
     }
     label46:
     Object localObject;
@@ -31,14 +31,14 @@ class VideoControlUI$3
       if (localObject == null) {
         break;
       }
-      localObject = ((AVActivity)localObject).findViewById(2131372388);
+      localObject = ((AVActivity)localObject).findViewById(2131372744);
     } while ((localObject != null) && (((View)localObject).getVisibility() == 0));
     this.this$0.e(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.3
  * JD-Core Version:    0.7.0.1
  */

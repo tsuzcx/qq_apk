@@ -13,7 +13,7 @@ public final class cmd0x874$ConvertToGroupReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x874.cmd0x874.ConvertToGroupReq
  * JD-Core Version:    0.7.0.1
  */

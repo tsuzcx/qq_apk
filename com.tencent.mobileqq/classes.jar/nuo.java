@@ -1,128 +1,96 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPAccoutRelation;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPClientRsp;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPNewUserRecmd;
 
-public class nuo
-  extends ntd
+class nuo
+  implements BusinessObserver
 {
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
-  protected osm a;
+  nuo(nun paramnun) {}
   
-  public nuo(Activity paramActivity)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Osm = new nup(this);
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public void a()
-  {
-    super.a();
-    b();
-    osg.a().e();
-    osj.a().a(this.jdField_a_of_type_Osm);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    super.a(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    super.a(paramBoolean, paramInt);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
-  }
-  
-  public void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
+    Object localObject = paramBundle.getString("extra_cmd");
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, null);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.b(null);
-      ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup, localLayoutParams);
+      if (!"SQQShopFolderSvc.GetShopBindUin".equals(localObject)) {
+        break label205;
+      }
+      paramBundle = paramBundle.getByteArray("extra_data");
+      localObject = new qqshop.SQQSHPClientRsp();
     }
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, false);
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup);
-    }
-  }
-  
-  public void d()
-  {
-    osj.a().b(this.jdField_a_of_type_Osm);
-    super.d();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.g();
-  }
-  
-  public void e()
-  {
-    super.e();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.e();
-  }
-  
-  public void f()
-  {
-    super.f();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.f();
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.d();
-  }
-  
-  public void h()
-  {
-    super.h();
-    osg.a().e();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a();
-  }
-  
-  public void o()
-  {
-    super.o();
-    if (((this.jdField_a_of_type_AndroidAppActivity instanceof ReadInJoyFeedsActivity)) && (((ReadInJoyFeedsActivity)this.jdField_a_of_type_AndroidAppActivity).a() == 1)) {
-      sdc.a().d(((BaseActivity)a()).app);
+      label205:
+      try
+      {
+        ((qqshop.SQQSHPClientRsp)localObject).mergeFrom(paramBundle);
+        paramBundle = ((qqshop.SQQSHPClientRsp)localObject).bindlist.get();
+        paramInt = 0;
+        if (paramInt < paramBundle.size())
+        {
+          localObject = (qqshop.SQQSHPAccoutRelation)paramBundle.get(paramInt);
+          String str = String.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).puin.get());
+          long l = ((qqshop.SQQSHPAccoutRelation)localObject).binduin.get();
+          this.a.c.put(str, Integer.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).distance.get()));
+          this.a.d.put(str, String.valueOf(l));
+          paramInt += 1;
+          continue;
+        }
+        if ((this.a.a != null) && (this.a.a.a != null) && (this.a.a.b == 1)) {
+          this.a.a.a.notifyDataSetChanged();
+        }
+        return;
+      }
+      catch (Exception paramBundle) {}
+      if ("SQQShopFolderSvc.GetFolderInfo".equals(localObject))
+      {
+        paramBundle = paramBundle.getByteArray("extra_data");
+        localObject = new qqshop.SQQSHPClientRsp();
+        try
+        {
+          ((qqshop.SQQSHPClientRsp)localObject).mergeFrom(paramBundle);
+          if (((qqshop.SQQSHPClientRsp)localObject).newusrrecmd.has())
+          {
+            paramBundle = (qqshop.SQQSHPNewUserRecmd)((qqshop.SQQSHPClientRsp)localObject).newusrrecmd.get();
+            if ((paramBundle.recmdflag.has()) && (paramBundle.recmdflag.get() == 1))
+            {
+              paramBundle = paramBundle.recmdurl.get();
+              if ((!TextUtils.isEmpty(paramBundle)) && (this.a.a != null))
+              {
+                QLog.i("EcshopCacheTool", 2, "newusrrecmd url:" + paramBundle);
+                localObject = new Intent(this.a.a.getActivity(), QQBrowserActivity.class);
+                ((Intent)localObject).putExtra("url", paramBundle);
+                ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+                this.a.a.startActivity((Intent)localObject);
+                this.a.a.getActivity().overridePendingTransition(2130771979, 0);
+                azmj.b(null, "CliOper", "", "", "Shop_newuser", "Pv_shopnewuserpage", 0, 0, "", "", "", "");
+                return;
+              }
+            }
+          }
+        }
+        catch (Exception paramBundle) {}
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nuo
  * JD-Core Version:    0.7.0.1
  */

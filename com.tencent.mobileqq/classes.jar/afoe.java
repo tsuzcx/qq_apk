@@ -1,32 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import mqq.os.MqqHandler;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afoe
-  extends MqqHandler
+class afoe
+  extends afpq
 {
-  public afoe(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
-  
-  public void handleMessage(Message paramMessage)
+  afoe(aflj paramaflj)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (TroopSuspiciousFragment.a(this.a) == null);
-      TroopSuspiciousFragment.a(this.a).notifyDataSetChanged();
-      return;
-    }
-    this.a.a();
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afyz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afoe
  * JD-Core Version:    0.7.0.1
  */

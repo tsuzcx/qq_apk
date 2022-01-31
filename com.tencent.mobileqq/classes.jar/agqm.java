@@ -1,42 +1,27 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class agqm
-  extends akil
+  extends BroadcastReceiver
 {
-  agqm(agqi paramagqi) {}
+  private agqm(agot paramagot) {}
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (!bbbr.a(paramString1, this.a.jdField_a_of_type_JavaLangString)));
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopPhotoController", 2, String.format("onGetTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
-      }
-    } while (paramInt1 != 0);
-    this.a.a(true);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
-  {
-    if (!bbbr.a(paramString1, this.a.jdField_a_of_type_JavaLangString)) {
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      agot.a(this.a, 1);
+    }
+    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopPhotoController", 2, String.format("onCmdTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
-    }
-    this.a.a(true);
+    agot.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqm
  * JD-Core Version:    0.7.0.1
  */

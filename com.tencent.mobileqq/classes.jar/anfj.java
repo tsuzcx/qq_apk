@@ -1,23 +1,11 @@
-public class anfj
+public abstract interface anfj
+  extends anfm
 {
-  private anfm a;
-  
-  public static anfj a()
-  {
-    return anfl.a();
-  }
-  
-  public anfm a()
-  {
-    if (this.a == null) {
-      this.a = new anfn();
-    }
-    return this.a;
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfj
  * JD-Core Version:    0.7.0.1
  */

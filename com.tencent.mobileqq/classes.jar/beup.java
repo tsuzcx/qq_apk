@@ -1,23 +1,37 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
-class beup
-  extends beub
+public class beup
+  implements Application.ActivityLifecycleCallbacks
 {
-  beup(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
+  public beup(ShareActionSheetV2 paramShareActionSheetV2) {}
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
+    if (paramActivity == this.a.a)
+    {
+      ShareActionSheetV2.a(this.a);
+      ShareActionSheetV2.b(this.a);
+    }
   }
   
-  protected beua a()
-  {
-    return new beua(2131694219, new beuq(this));
-  }
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity) {}
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beup
  * JD-Core Version:    0.7.0.1
  */

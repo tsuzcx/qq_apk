@@ -1,32 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+
 public class adff
-  extends adfi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
+  public adff(NotificationActivity paramNotificationActivity) {}
   
-  public adff(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b = paramInt1;
-    this.a = paramInt2;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof adff));
-      paramObject = (adff)paramObject;
-    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
-    return true;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adff
  * JD-Core Version:    0.7.0.1
  */

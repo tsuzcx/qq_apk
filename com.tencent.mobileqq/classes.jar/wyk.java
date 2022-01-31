@@ -1,59 +1,72 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import tencent.im.group.nearbybanner.nearbybanner.Banners;
-import tencent.im.group.nearbybanner.nearbybanner.RspBody;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import java.io.File;
+import java.util.Locale;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class wyk
-  implements BusinessObserver
+public class wyk
 {
-  wyk(wyj paramwyj, Bundle paramBundle) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public wyk(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_AndroidOsBundle.remove("data");
-    if (!paramBoolean)
-    {
-      this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    nearbybanner.RspBody localRspBody = new nearbybanner.RspBody();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+  }
+  
+  public String a()
+  {
+    return this.c + File.separator + this.jdField_a_of_type_Int + ".zip";
+  }
+  
+  public JSONObject a()
+  {
     try
     {
-      localRspBody.mergeFrom(paramBundle);
-      if ((localRspBody.uint32_result.get() != 0) && (!localRspBody.msg_banners.has()))
-      {
-        this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("thumbPath", ArtFilterManager.jdField_b_of_type_JavaLangString + b() + c());
+      localJSONObject.put("priority", this.jdField_b_of_type_Int);
+      localJSONObject.put("name", this.c);
+      localJSONObject.put("pron", this.e);
+      return localJSONObject;
     }
-    catch (InvalidProtocolBufferMicroException paramBundle)
+    catch (JSONException localJSONException)
     {
-      this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
-      if (!paramBundle.rpt_banner_info.has())
-      {
-        this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
+      localJSONException.printStackTrace();
     }
-    catch (Exception paramBundle)
-    {
-      this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
-    this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+    return null;
+  }
+  
+  public String b()
+  {
+    return this.c + File.separator + this.jdField_a_of_type_Int + File.separator;
+  }
+  
+  public String c()
+  {
+    return this.c + "_thumb" + ".png";
+  }
+  
+  public String toString()
+  {
+    return String.format(Locale.CHINA, "ArtFilter: id=%s, version=%d, priority=%d, url=%s, name=%s, md5=%s, pron=%s", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyk
  * JD-Core Version:    0.7.0.1
  */

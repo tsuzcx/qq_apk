@@ -1,22 +1,22 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+
 public class algq
+  implements best
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public algq(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
   
-  public String toString()
+  public void a(View paramView, int paramInt)
   {
-    return "StarInfo{faceID=" + this.jdField_a_of_type_Int + ", uin=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pinyin_name='" + this.b + '\'' + ", wiki='" + this.c + '\'' + ", wikiTitle='" + this.d + '\'' + ", wikiURL='" + this.e + '\'' + ", confidence='" + this.jdField_a_of_type_Float + '\'' + '}';
+    if (paramInt == 1) {
+      this.a.getActivity().finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algq
  * JD-Core Version:    0.7.0.1
  */

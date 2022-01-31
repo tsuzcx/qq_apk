@@ -33,7 +33,7 @@ class AppBrandLaunchManager$RecommendRunnable$1
     }
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      AppBrandLaunchManager.access$800(this.this$1.this$0).remove(AppBrandLaunchManager.RecommendRunnable.access$700(this.this$1));
+      AppBrandLaunchManager.access$1000(this.this$1.this$0).remove(AppBrandLaunchManager.RecommendRunnable.access$900(this.this$1));
       QLog.e("DesktopDataManager-Recommend", 1, "getRecommendAppList suc : " + paramJSONObject.toString());
       localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject1 instanceof QQAppInterface)) {
@@ -66,7 +66,7 @@ class AppBrandLaunchManager$RecommendRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.RecommendRunnable.1
  * JD-Core Version:    0.7.0.1
  */

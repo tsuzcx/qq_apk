@@ -1,23 +1,19 @@
-import android.support.annotation.NonNull;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
 
-class bjic
-  implements bjho
+public class bjic
+  implements ModuleDownloadListener
 {
-  bjic(bjia parambjia) {}
+  public void onDownloadCanceled(String paramString) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = bakx.b(paramString);
-    }
-    return str;
-  }
+  public void onDownloadFailed(String paramString) {}
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjic
  * JD-Core Version:    0.7.0.1
  */

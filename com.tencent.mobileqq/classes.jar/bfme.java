@@ -1,36 +1,37 @@
-import com.tencent.sveffects.DpcSwitcher;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bfme
-  implements DpcSwitcher
+final class bfme
+  implements URLDrawable.URLDrawableListener
 {
-  public float getBeatyRate()
+  bfme(ImageView paramImageView) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    return axkt.a();
+    QLog.d("CommonUtils_", 1, "onLoadCanceled");
   }
   
-  public boolean isBeautySwitchOpen()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return axkt.b();
+    QLog.d("CommonUtils_", 1, "onLoadFialed urldrawable load failed ");
   }
   
-  public boolean isDeNoiseSwitchOpen()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    return axkt.e();
+    QLog.d("CommonUtils_", 1, "onLoadProgressed");
   }
   
-  public boolean isPortraitSwitchOpen()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return axle.g();
-  }
-  
-  public boolean isSvafSwitchOpen()
-  {
-    return axkt.c();
+    this.a.setImageDrawable(paramURLDrawable);
+    QLog.d("CommonUtils_", 1, "onLoadSuccessed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfme
  * JD-Core Version:    0.7.0.1
  */

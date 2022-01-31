@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agqd;
-import agqq;
-import ajya;
+import aild;
+import ailp;
+import alpo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,23 +11,21 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.animation.RotateAnimation;
-import axqy;
-import axrn;
-import bbbr;
-import bbbx;
-import bbef;
-import bcql;
-import bglh;
-import bglq;
-import bgpw;
-import bgyp;
+import azmj;
+import azmz;
+import bdal;
+import bdar;
+import bdda;
+import bimg;
+import bimp;
+import biqv;
+import bizm;
 import com.tencent.component.media.image.ImageManager;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.comic.VipComicProxyActivity;
@@ -67,19 +65,6 @@ public class PhotoUtils
     return 3;
   }
   
-  public static int a(String paramString)
-  {
-    paramString = paramString.split(",", 3);
-    String[] arrayOfString = paramString[0].split("/", 2);
-    double d1 = Double.valueOf(arrayOfString[0]).doubleValue() / Double.valueOf(arrayOfString[1]).doubleValue();
-    arrayOfString = paramString[1].split("/", 2);
-    double d3 = Double.valueOf(arrayOfString[0]).doubleValue() / Double.valueOf(arrayOfString[1]).doubleValue();
-    paramString = paramString[2].split("/", 2);
-    double d2 = Double.valueOf(paramString[0]).doubleValue() / Double.valueOf(paramString[1]).doubleValue();
-    d3 /= 60.0D;
-    return (int)((d2 / 3600.0D + (d1 + d3)) * 1000000.0D);
-  }
-  
   public static long a()
   {
     return System.currentTimeMillis();
@@ -97,28 +82,28 @@ public class PhotoUtils
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 82	java/io/FileInputStream
+    //   2: new 55	java/io/FileInputStream
     //   5: dup
     //   6: aload_0
-    //   7: invokespecial 83	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   7: invokespecial 56	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   10: astore_2
     //   11: aload_1
     //   12: ifnull +47 -> 59
     //   15: aload_2
     //   16: astore_0
     //   17: aload_1
-    //   18: getfield 89	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   18: getfield 62	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   21: ifeq +38 -> 59
     //   24: aload_2
     //   25: astore_0
-    //   26: new 91	java/io/BufferedInputStream
+    //   26: new 64	java/io/BufferedInputStream
     //   29: dup
     //   30: aload_2
     //   31: sipush 8192
-    //   34: invokespecial 94	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   34: invokespecial 67	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   37: aconst_null
     //   38: aload_1
-    //   39: invokestatic 100	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   39: invokestatic 73	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   42: astore_1
     //   43: aload_1
     //   44: astore_0
@@ -127,21 +112,21 @@ public class PhotoUtils
     //   47: aload_2
     //   48: ifnull +9 -> 57
     //   51: aload_2
-    //   52: invokevirtual 105	java/io/InputStream:close	()V
+    //   52: invokevirtual 78	java/io/InputStream:close	()V
     //   55: aload_0
     //   56: astore_1
     //   57: aload_1
     //   58: areturn
     //   59: aload_2
     //   60: astore_0
-    //   61: new 91	java/io/BufferedInputStream
+    //   61: new 64	java/io/BufferedInputStream
     //   64: dup
     //   65: aload_2
     //   66: sipush 8192
-    //   69: invokespecial 94	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   69: invokespecial 67	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   72: aconst_null
     //   73: aload_1
-    //   74: invokestatic 100	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   74: invokestatic 73	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   77: astore_1
     //   78: aload_1
     //   79: astore_0
@@ -151,21 +136,21 @@ public class PhotoUtils
     //   85: astore_2
     //   86: aload_2
     //   87: astore_0
-    //   88: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   88: invokestatic 84	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   91: ifeq +14 -> 105
     //   94: aload_2
     //   95: astore_0
-    //   96: ldc 113
+    //   96: ldc 86
     //   98: iconst_2
-    //   99: ldc 115
+    //   99: ldc 88
     //   101: aload_1
-    //   102: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   102: invokestatic 92	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   105: aload_3
     //   106: astore_1
     //   107: aload_2
     //   108: ifnull -51 -> 57
     //   111: aload_2
-    //   112: invokevirtual 105	java/io/InputStream:close	()V
+    //   112: invokevirtual 78	java/io/InputStream:close	()V
     //   115: aconst_null
     //   116: areturn
     //   117: astore_0
@@ -176,21 +161,21 @@ public class PhotoUtils
     //   122: astore_2
     //   123: aload_2
     //   124: astore_0
-    //   125: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   125: invokestatic 84	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   128: ifeq +14 -> 142
     //   131: aload_2
     //   132: astore_0
-    //   133: ldc 113
+    //   133: ldc 86
     //   135: iconst_2
-    //   136: ldc 115
+    //   136: ldc 88
     //   138: aload_1
-    //   139: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   139: invokestatic 92	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   142: aload_3
     //   143: astore_1
     //   144: aload_2
     //   145: ifnull -88 -> 57
     //   148: aload_2
-    //   149: invokevirtual 105	java/io/InputStream:close	()V
+    //   149: invokevirtual 78	java/io/InputStream:close	()V
     //   152: aconst_null
     //   153: areturn
     //   154: astore_0
@@ -202,7 +187,7 @@ public class PhotoUtils
     //   160: aload_0
     //   161: ifnull +7 -> 168
     //   164: aload_0
-    //   165: invokevirtual 105	java/io/InputStream:close	()V
+    //   165: invokevirtual 78	java/io/InputStream:close	()V
     //   168: aload_1
     //   169: athrow
     //   170: astore_1
@@ -433,12 +418,12 @@ public class PhotoUtils
       }
       localIntent.putExtra("PhotoConst.send_photo_activity_result", -1);
       if (paramInt1 != 7001) {
-        break label179;
+        break label176;
       }
       paramIntent = paramActivity.getIntent();
       String str1 = paramIntent.getStringExtra("UploadPhoto.key_album_id");
       String str2 = paramIntent.getStringExtra("UploadPhoto.key_album_name");
-      bgyp.a(paramString, paramIntent.getStringExtra("uin"), str1, str2);
+      bizm.a(paramString, paramIntent.getStringExtra("uin"), str1, str2);
       paramIntent.putExtras(localIntent);
       paramString = paramActivity.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
       paramIntent.setClassName(paramActivity.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME"), paramString);
@@ -451,15 +436,15 @@ public class PhotoUtils
     for (;;)
     {
       paramActivity.finish();
-      bbbx.a(paramActivity, false, false);
+      bdar.anim(paramActivity, false, false);
       return;
-      label179:
+      label176:
       paramIntent = paramActivity.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
       localIntent.setClassName(paramActivity.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME"), paramIntent);
       if (!paramBoolean)
       {
         localIntent.addFlags(603979776);
-        agqd.a(localIntent);
+        aild.a(localIntent);
         paramActivity.startActivity(localIntent);
       }
       else
@@ -505,8 +490,8 @@ public class PhotoUtils
     while (!"qzone_plugin.apk".equals(paramIntent.getStringExtra("PhotoConst.PLUGIN_APK"))) {
       for (;;)
       {
-        if (bbbr.b(paramIntent.getStringExtra("uin"))) {
-          axqy.b(null, "dc00898", "", "", "0X8007249", "0X8007249", 0, 0, "", "", "", "");
+        if (bdal.b(paramIntent.getStringExtra("uin"))) {
+          azmj.b(null, "dc00898", "", "", "0X8007249", "0X8007249", 0, 0, "", "", "", "");
         }
         paramActivity.finish();
         return;
@@ -526,7 +511,7 @@ public class PhotoUtils
       }
       QzonePluginProxyActivity.a(paramIntent, paramArrayList);
       paramIntent.putExtra("cleartop", true);
-      bgyp.a(paramActivity, str2, paramIntent, -1);
+      bizm.a(paramActivity, str2, paramIntent, -1);
       break;
     }
   }
@@ -565,7 +550,7 @@ public class PhotoUtils
         QLog.d("PhotoUtils", 2, String.format("sendPhoto action=%s", new Object[] { paramArrayList }));
       }
       if (TextUtils.isEmpty(paramArrayList)) {
-        bcql.a(paramActivity, ajya.a(2131708152), 0).a();
+        QQToast.a(paramActivity, alpo.a(2131708524), 0).a();
       }
     }
     for (;;)
@@ -611,7 +596,7 @@ public class PhotoUtils
       while (!bool1)
       {
         paramActivity.finish();
-        bbbx.a(paramActivity, false, false);
+        bdar.anim(paramActivity, false, false);
         return;
         if (bool3)
         {
@@ -664,19 +649,19 @@ public class PhotoUtils
               QzonePluginProxyActivity.a(paramIntent, str1);
               paramIntent.putExtra("cleartop", true);
               paramIntent.putExtra("PhotoConst.IS_FROM_PHOTO_LIST", true);
-              bgyp.a(paramActivity, str4, paramIntent, -1);
+              bizm.a(paramActivity, str4, paramIntent, -1);
               bool1 = false;
             }
           }
           else if ("qqfav.apk".equals(str3))
           {
-            bgpw.a(paramActivity, str4, paramIntent, 2);
+            biqv.a(paramActivity, str4, paramIntent, 2);
             bool1 = paramBoolean;
           }
           else if ("qqsmartdevice.apk".equals(str3))
           {
             paramIntent.putExtra("cleartop", true);
-            paramArrayList = new bglq(0);
+            paramArrayList = new bimp(0);
             paramArrayList.jdField_b_of_type_JavaLangString = str3;
             paramArrayList.d = str2;
             paramArrayList.jdField_a_of_type_JavaLangString = str4;
@@ -684,7 +669,7 @@ public class PhotoUtils
             paramArrayList.jdField_a_of_type_JavaLangClass = SmartDevicePluginProxyActivity.class;
             paramArrayList.jdField_a_of_type_AndroidContentIntent = paramIntent;
             paramArrayList.jdField_b_of_type_Int = 2;
-            bglh.a(paramActivity, paramArrayList);
+            bimg.a(paramActivity, paramArrayList);
             bool1 = paramBoolean;
           }
           else
@@ -693,7 +678,7 @@ public class PhotoUtils
             if ("comic_plugin.apk".equals(str3))
             {
               paramIntent.putExtra("cleartop", true);
-              paramArrayList = new bglq(0);
+              paramArrayList = new bimp(0);
               paramArrayList.jdField_b_of_type_JavaLangString = str3;
               paramArrayList.d = str2;
               paramArrayList.jdField_a_of_type_JavaLangString = str4;
@@ -701,7 +686,7 @@ public class PhotoUtils
               paramArrayList.jdField_a_of_type_JavaLangClass = VipComicProxyActivity.a(str1);
               paramArrayList.jdField_a_of_type_AndroidContentIntent = paramIntent;
               paramArrayList.jdField_b_of_type_Int = 2;
-              bglh.a(paramActivity, paramArrayList);
+              bimg.a(paramActivity, paramArrayList);
               bool1 = paramBoolean;
             }
           }
@@ -772,7 +757,7 @@ public class PhotoUtils
         QLog.d("PhotoUtils", 2, String.format("sendPhoto action=%s", new Object[] { paramArrayList }));
       }
       if (TextUtils.isEmpty(paramArrayList)) {
-        bcql.a(paramActivity, ajya.a(2131708153), 0).a();
+        QQToast.a(paramActivity, alpo.a(2131708525), 0).a();
       }
     }
     for (;;)
@@ -819,7 +804,7 @@ public class PhotoUtils
       while (!paramBoolean)
       {
         paramActivity.finish();
-        bbbx.a(paramActivity, false, false);
+        bdar.anim(paramActivity, false, false);
         return;
         label702:
         paramIntent.putExtra("PhotoConst.QZONE_ALBUM_FROM_AIO", true);
@@ -900,7 +885,7 @@ public class PhotoUtils
     }
     for (;;)
     {
-      bbbx.a(paramActivity, false, true);
+      bdar.anim(paramActivity, false, true);
       return;
       paramActivity.startActivity(paramIntent);
     }
@@ -912,7 +897,7 @@ public class PhotoUtils
     if ((100 == i) || (102 == i) || (103 == i))
     {
       paramIntent.setClass(paramActivity, PhotoCropForPortraitActivity.class);
-      paramIntent.putExtra("PhotoConst.EDIT_MASK_SHAPE_TYPE", agqq.c(i));
+      paramIntent.putExtra("PhotoConst.EDIT_MASK_SHAPE_TYPE", ailp.c(i));
     }
     for (;;)
     {
@@ -926,7 +911,7 @@ public class PhotoUtils
       paramIntent.putExtra("PhotoConst.TARGET_WIDTH", paramInt3);
       paramIntent.putExtra("PhotoConst.TARGET_HEIGHT", paramInt4);
       paramActivity.startActivity(paramIntent);
-      bbbx.a(paramActivity, false, true);
+      bdar.anim(paramActivity, false, true);
       return;
       paramIntent.setClass(paramActivity, PhotoCropActivity.class);
     }
@@ -938,7 +923,7 @@ public class PhotoUtils
     if ((100 == i) || (102 == i) || (103 == i))
     {
       paramIntent.setClass(paramActivity, PhotoCropForPortraitActivity.class);
-      paramIntent.putExtra("PhotoConst.EDIT_MASK_SHAPE_TYPE", agqq.c(i));
+      paramIntent.putExtra("PhotoConst.EDIT_MASK_SHAPE_TYPE", ailp.c(i));
     }
     for (;;)
     {
@@ -952,7 +937,7 @@ public class PhotoUtils
       paramIntent.putExtra("PhotoConst.TARGET_WIDTH", paramInt3);
       paramIntent.putExtra("PhotoConst.TARGET_HEIGHT", paramInt4);
       paramActivity.startActivityForResult(paramIntent, paramInt5);
-      bbbx.a(paramActivity, false, true);
+      bdar.anim(paramActivity, false, true);
       return;
       paramIntent.setClass(paramActivity, PhotoCropActivity.class);
     }
@@ -968,23 +953,6 @@ public class PhotoUtils
     paramIntent2.putExtra("custom_photopreview_sendbtn_reportActionName", str1);
     paramIntent2.putExtra("custom_photopreview_sendbtn_album_reportReverse2", str2);
     paramIntent2.putExtra("custom_photopreview_sendbtn_camera_reportReverse2", paramIntent1);
-  }
-  
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    float f2 = 180.0F;
-    if (paramBoolean) {}
-    for (float f1 = 180.0F;; f1 = 0.0F)
-    {
-      if (paramBoolean) {
-        f2 = 360.0F;
-      }
-      RotateAnimation localRotateAnimation = new RotateAnimation(f1, f2, 1, 0.5F, 1, 0.5F);
-      localRotateAnimation.setDuration(300L);
-      localRotateAnimation.setFillAfter(true);
-      paramView.startAnimation(localRotateAnimation);
-      return;
-    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt, ArrayList<String> paramArrayList)
@@ -1033,7 +1001,7 @@ public class PhotoUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
-    axrn.a(BaseApplication.getContext()).a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "Pic_edit", paramString, 0, 1, null, String.valueOf(paramInt1), null, String.valueOf(paramInt2), null);
+    azmz.a(BaseApplication.getContext()).a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "Pic_edit", paramString, 0, 1, null, String.valueOf(paramInt1), null, String.valueOf(paramInt2), null);
   }
   
   public static boolean a(String paramString)
@@ -1043,7 +1011,7 @@ public class PhotoUtils
     localOptions.inJustDecodeBounds = true;
     try
     {
-      bbef.a(paramString, localOptions);
+      bdda.a(paramString, localOptions);
       int i = localOptions.outHeight;
       int j = localOptions.outWidth;
       if (QLog.isColorLevel()) {
@@ -1128,6 +1096,7 @@ public class PhotoUtils
     case 1025: 
     case 7400: 
     case 10004: 
+    case 10008: 
       return 3;
     case 3000: 
       return 4;
@@ -1137,7 +1106,7 @@ public class PhotoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoUtils
  * JD-Core Version:    0.7.0.1
  */

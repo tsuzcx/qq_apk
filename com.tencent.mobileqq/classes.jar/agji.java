@@ -1,103 +1,55 @@
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class agji
-  extends bcos
+class agji
+  implements View.OnClickListener
 {
-  private agji(ContactListView paramContactListView) {}
+  agji(agiy paramagiy) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 2131559371;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    if ((this.a.a == null) || (this.a.a.isEmpty()) || (paramInt < 0) || (paramInt >= this.a.a.size())) {}
-    PhoneContact localPhoneContact1;
-    do
-    {
+    boolean bool = true;
+    paramView = paramView.getTag();
+    if ((paramView == null) || (!(paramView instanceof Integer))) {
       return;
-      PhoneContact localPhoneContact2 = (PhoneContact)this.a.a.get(paramInt);
-      localPhoneContact1 = localPhoneContact2;
-      if (localPhoneContact2 == null)
+    }
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    switch (((Integer)paramView).intValue())
+    {
+    default: 
+      return;
+    case 1: 
+      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
+      return;
+    case 2: 
+      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
+      return;
+    }
+    if (this.a.jdField_a_of_type_Bfua.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+    {
+      paramView = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131690623);
+      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("param_return_addr") != null) {}
+      for (;;)
       {
-        localPhoneContact1 = localPhoneContact2;
-        if (paramInt + 1 < this.a.a.size()) {
-          localPhoneContact1 = (PhoneContact)this.a.a.get(paramInt + 1);
-        }
+        ChatActivityUtils.a(paramView, (SessionInfo)localObject, str, bool);
+        return;
+        bool = false;
       }
-    } while (localPhoneContact1 == null);
-    ((TextView)paramView).setText(localPhoneContact1.pinyinFirst);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return getItemViewType(paramInt) == 1;
-  }
-  
-  public int getCount()
-  {
-    if (this.a.a != null) {
-      return this.a.a.size();
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.a.a == null) || (this.a.a.isEmpty())) {}
-    while (this.a.a.get(paramInt) == null) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (getItemViewType(paramInt) == 1)
-    {
-      View localView = paramView;
-      if (paramView == null) {
-        localView = LayoutInflater.from(this.a.getContext()).inflate(a(), paramViewGroup, false);
-      }
-      a(localView, paramInt);
-      return localView;
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.a.a();
-      paramViewGroup.setOnClickListener(this.a);
-    }
-    paramView = (PhoneContact)this.a.a.get(paramInt);
-    this.a.a(paramViewGroup, paramView, false);
-    return paramViewGroup;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
+    this.a.bu();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agji
  * JD-Core Version:    0.7.0.1
  */

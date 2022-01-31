@@ -7,11 +7,11 @@ import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 public class PluginBaseActivity
   extends BasePluginActivity
 {
-  public boolean t = true;
+  public boolean u = true;
   
   protected String a()
   {
-    return getString(2131690572);
+    return getString(2131690623);
   }
   
   protected boolean a()
@@ -21,7 +21,7 @@ public class PluginBaseActivity
   
   public int g()
   {
-    return getResources().getDimensionPixelSize(2131298865);
+    return getResources().getDimensionPixelSize(2131298914);
   }
   
   public final Activity getActivity()
@@ -31,7 +31,7 @@ public class PluginBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.plugin.PluginBaseActivity
  * JD-Core Version:    0.7.0.1
  */

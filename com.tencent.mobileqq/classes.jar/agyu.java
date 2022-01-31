@@ -1,125 +1,163 @@
-import Wallet.RedPackGrapInfo;
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.ViewGroup;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter.1;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForBlessPTV;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class agyu
-  extends RecyclerView.Adapter<agyv>
+  extends AsyncTask<Void, Void, Integer>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<RedPackGrapInfo> jdField_a_of_type_JavaUtilList;
+  int jdField_a_of_type_Int;
+  Intent jdField_a_of_type_AndroidContentIntent;
+  MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  int jdField_b_of_type_Int;
+  WeakReference<BaseActivity> jdField_b_of_type_JavaLangRefWeakReference;
+  int c;
   
-  public agyu(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, Context paramContext)
+  public agyu(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
+    this.jdField_a_of_type_AndroidContentIntent = paramBaseActivity.getIntent();
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("param_entrance", 0);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_send_path");
+    this.jdField_b_of_type_Int = 2;
+    this.c = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: create");
+    }
   }
   
-  public agyv a(ViewGroup paramViewGroup, int paramInt)
+  protected Integer a(Void... arg1)
   {
-    return new agyv(this, new agyw(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList, this.jdField_a_of_type_AndroidContentContext, new adxz(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList))));
-  }
-  
-  public void a(agyv paramagyv, int paramInt)
-  {
-    RedPackGrapInfo localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramagyv.getPosition());
-    if (localRedPackGrapInfo == null) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.e("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: doInBackground start");
+    }
+    long l = SystemClock.elapsedRealtime();
+    ??? = (BaseActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if (??? == null) {
+      return Integer.valueOf(5);
+    }
+    if (!TextUtils.isEmpty(BlessSelectMemberActivity.jdField_a_of_type_JavaLangString))
     {
-      return;
-      paramagyv = paramagyv.a;
-    } while (paramagyv == null);
-    paramagyv.a(localRedPackGrapInfo);
-  }
-  
-  void a(String paramString)
-  {
-    for (;;)
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: currVideoPath is not null");
+      }
+      return Integer.valueOf(1);
+    }
+    SendVideoActivity.a(this.jdField_a_of_type_AndroidContentIntent);
+    azds.z = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
+    azds.y = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
+    if (!bdcs.b(this.jdField_a_of_type_JavaLangString)) {
+      return Integer.valueOf(2);
+    }
+    Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
+    localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject1);
+    ((URLDrawable)localObject1).downloadImediatly();
+    if (((URLDrawable)localObject1).getStatus() == 1)
     {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          break label233;
-        }
-        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          break label234;
-        }
-        return;
+      localObject1 = ayyu.a(0, this.jdField_b_of_type_Int);
+      azae localazae = ayyu.a(this.jdField_a_of_type_AndroidContentIntent, (ayzo)localObject1);
+      if (localazae == null) {
+        return Integer.valueOf(5);
       }
-      catch (Throwable paramString)
-      {
-        RedPackGrapInfo localRedPackGrapInfo;
-        int j;
-        if (!QLog.isColorLevel()) {
-          break label233;
-        }
-        QLog.e(TroopUnAccalimedRedPacketList.b(), 2, "removeHbList occur an exception: " + paramString);
-        return;
-        i += 1;
-        continue;
-        TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList).postDelayed(new TroopUnAccalimedRedPacketList.HbListAdapter.1(this), 300L);
-        return;
-        i = 0;
-        continue;
+      localazae.d = true;
+      localazae.a = false;
+      if ((localazae.r != null) && (localazae.r.length() == 39)) {
+        localazae.r = localazae.r.substring(0, 28);
       }
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      ((ayzo)localObject1).a(localazae);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = ((MessageForShortVideo)new ayye(???.app).a(localazae));
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo instanceof MessageForBlessPTV)) {
+        ((MessageForBlessPTV)this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo).videoFileName = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("bless_ptv_mp4_path");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: generate req and mr success, cost:" + (SystemClock.elapsedRealtime() - l));
+      }
+      l = SystemClock.elapsedRealtime();
+      ((agyc)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getManager(138)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+      if (BlessSelectMemberActivity.a() == null) {
+        break label452;
+      }
+      BlessSelectMemberActivity.a().sendEmptyMessage(3);
+    }
+    try
+    {
+      synchronized (BlessSelectMemberActivity.a())
       {
-        localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localRedPackGrapInfo != null) && (localRedPackGrapInfo.sBiilNo.equals(paramString)))
+        BlessSelectMemberActivity.a().wait(BlessSelectMemberActivity.a());
+        BlessSelectMemberActivity.b(SystemClock.elapsedRealtime() - l);
+        if (QLog.isColorLevel()) {
+          QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: encodeVideo cost = " + (SystemClock.elapsedRealtime() - l));
+        }
+        if (BlessSelectMemberActivity.b() >= BlessSelectMemberActivity.a())
         {
-          j = i;
-          if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-            j = i - 1;
-          }
-          this.jdField_a_of_type_JavaUtilList.remove(j);
-          notifyItemRemoved(j);
-          notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size());
-          if (TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList) == null) {
-            break label233;
-          }
-          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-            continue;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a == null) {
-            break label233;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a.dismiss();
+          return Integer.valueOf(9);
+          return Integer.valueOf(2);
+          label452:
+          QLog.e("BlessSelectMemberActivity", 1, "mUIHandler is null!");
         }
       }
-      label233:
-      return;
-      label234:
-      int i = 0;
+      return Integer.valueOf(BlessSelectMemberActivity.a());
+    }
+    catch (InterruptedException ???)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: wait exception = " + ???.getMessage());
+      }
+      return Integer.valueOf(5);
     }
   }
   
-  void a(List<RedPackGrapInfo> paramList)
+  protected void a(Integer arg1)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    super.onPostExecute(???);
+    if (QLog.isColorLevel()) {
+      QLog.i("BlessSelectMemberActivity", 1, "BlessPTVProcessTask: onPostExecute result=" + ???);
+    }
+    BlessSelectMemberActivity.b(???.intValue());
+    synchronized (BlessSelectMemberActivity.b())
+    {
+      BlessSelectMemberActivity.b().set(true);
+      BlessSelectMemberActivity.b().notifyAll();
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
   }
   
-  public int getItemCount()
+  public boolean a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      return 0;
+    if (ShortVideoUtils.a()) {
+      return true;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    ShortVideoUtils.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    return ShortVideoUtils.a();
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    BlessSelectMemberActivity.b(1);
+    QLog.d("BlessSelectMemberActivity", 1, "Is video useable:" + a() + ", mEntrance:" + this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agyu
  * JD-Core Version:    0.7.0.1
  */

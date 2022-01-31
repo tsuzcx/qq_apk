@@ -1,101 +1,84 @@
 package com.tencent.pts.bridge;
 
-import android.app.Activity;
 import com.tencent.pts.core.PTSAppInstance;
-import com.tencent.pts.core.PTSJNIHandler;
-import com.tencent.pts.core.PTSThreadUtil;
-import com.tencent.pts.utils.PTSFileUtil;
+import com.tencent.pts.core.jni.PTSJsJniHandler;
+import com.tencent.pts.utils.PTSLog;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class PTSJSBridge
 {
+  public static final String ANIMATION_JS_FILE_NAME = "Animation.js";
+  public static final String BIND_DATA_JS_FILE_NAME = "BindData.js";
   private static final AtomicInteger NEXT_ID = new AtomicInteger(1);
-  private final String ANIMATION_JS_FILE_NAME = "Animation.js";
-  private final String BIND_DATA_JS_FILE_NAME = "BindData.js";
-  private final String FRAME_TREE_SUFFIX = ".frametree";
-  private final String JS_SUFFIX = ".js";
   private final String TAG = "PTSJSBridge";
   private volatile boolean hasInitBasicJSBundle = false;
-  private Activity mActivity;
-  private int mJSEnvID;
+  private int jsEnvId = NEXT_ID.getAndIncrement();
   
-  PTSJSBridge(Activity paramActivity)
+  PTSJSBridge(String paramString1, String paramString2)
   {
-    this.mActivity = paramActivity;
-    this.mJSEnvID = NEXT_ID.getAndIncrement();
-    createJSEnvironment();
+    createJsEnvironment();
+    initBasicJSBundle(paramString1, paramString2);
   }
   
-  private void createJSEnvironment()
+  private void createJsEnvironment()
   {
-    PTSJNIHandler.createJSEnvironment(getJSEnvID());
+    PTSJsJniHandler.createJSEnvironment(getJsEnvID());
   }
   
-  private String getFileContent(String paramString1, String paramString2)
-  {
-    return PTSFileUtil.getFileContent(paramString1, paramString2, this.mActivity);
-  }
-  
-  private void initBasicJSBundle(String paramString, PTSAppInstance paramPTSAppInstance)
-  {
-    PTSThreadUtil.runOnSubThread(new PTSJSBridge.2(this, paramString, paramPTSAppInstance));
-  }
-  
-  private void loadAppJSBundle(String paramString1, String paramString2, PTSAppInstance paramPTSAppInstance)
-  {
-    PTSJNIHandler.create(paramPTSAppInstance, getFileContent("pages/" + paramString1 + "/" + paramString1 + ".frametree", paramString2), getFileContent("pages/" + paramString1 + "/" + paramString1 + ".js", paramString2), getJSEnvID());
-    PTSJNIHandler.get(paramPTSAppInstance).callJSFunction("onLoad", null, getJSEnvID());
-  }
-  
-  private void loadBasicJSBundle(String paramString, PTSAppInstance paramPTSAppInstance)
+  private void initBasicJSBundle(String paramString1, String paramString2)
   {
     if (this.hasInitBasicJSBundle) {
       return;
     }
-    paramPTSAppInstance = getFileContent("BindData.js", paramString);
-    paramString = getFileContent("Animation.js", paramString);
-    PTSJNIHandler.evaluateJavaScript(getJSEnvID(), paramPTSAppInstance);
-    PTSJNIHandler.evaluateJavaScript(getJSEnvID(), paramString);
+    PTSJsJniHandler.evaluateJavaScript(getJsEnvID(), paramString1);
+    PTSJsJniHandler.evaluateJavaScript(getJsEnvID(), paramString2);
     this.hasInitBasicJSBundle = true;
   }
   
   public void callJSEventFunction(String paramString1, int paramInt, String paramString2, String paramString3, String[] paramArrayOfString1, String[] paramArrayOfString2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, PTSAppInstance paramPTSAppInstance)
   {
-    paramPTSAppInstance = PTSJNIHandler.get(paramPTSAppInstance);
-    if (paramPTSAppInstance != null) {
-      paramPTSAppInstance.callJSEventFunction(paramString1, paramInt, paramString2, paramString3, paramArrayOfString1, paramArrayOfString2, paramArrayOfFloat1, paramArrayOfFloat2, getJSEnvID());
-    }
+    PTSJsJniHandler.callJSEventFunction(paramPTSAppInstance, paramString1, paramInt, paramString2, paramString3, paramArrayOfString1, paramArrayOfString2, paramArrayOfFloat1, paramArrayOfFloat2, getJsEnvID());
   }
   
   public void callJSFunction(String paramString, Object[] paramArrayOfObject, PTSAppInstance paramPTSAppInstance)
   {
-    paramPTSAppInstance = PTSJNIHandler.get(paramPTSAppInstance);
-    if (paramPTSAppInstance != null) {
-      paramPTSAppInstance.callJSFunction(paramString, paramArrayOfObject, getJSEnvID());
+    PTSJsJniHandler.callJSFunction(paramPTSAppInstance, paramString, paramArrayOfObject, getJsEnvID());
+  }
+  
+  public void callOnLoadJsFunction(PTSAppInstance paramPTSAppInstance)
+  {
+    if (!this.hasInitBasicJSBundle)
+    {
+      PTSLog.e("PTSJSBridge", "[callOnLoadJsFunction] error, has not init basic js bundle.");
+      return;
     }
+    PTSJsJniHandler.callJSFunction(paramPTSAppInstance, "onLoad", null, getJsEnvID());
   }
   
-  void destroyJSEnvironment()
+  void destroyJsEnvironment()
   {
-    PTSJNIHandler.destroyJSEnvironment(getJSEnvID());
+    PTSJsJniHandler.destroyJSEnvironment(getJsEnvID());
   }
   
-  public int getJSEnvID()
+  public int getJsEnvID()
   {
-    return this.mJSEnvID;
+    return this.jsEnvId;
   }
   
   public void initAppJSBundle(String paramString1, String paramString2, PTSAppInstance paramPTSAppInstance)
   {
-    if (!this.hasInitBasicJSBundle) {
-      initBasicJSBundle(paramString2, paramPTSAppInstance);
+    if (!this.hasInitBasicJSBundle)
+    {
+      PTSLog.e("PTSJSBridge", "[initAppJSBundle] error, has not init basic js bundle.");
+      return;
     }
-    PTSThreadUtil.runOnSubThread(new PTSJSBridge.1(this, paramString1, paramString2, paramPTSAppInstance));
+    PTSJsJniHandler.create(paramPTSAppInstance, paramString1, paramString2, getJsEnvID());
+    PTSJsJniHandler.callJSFunction(paramPTSAppInstance, "onLoad", null, getJsEnvID());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.bridge.PTSJSBridge
  * JD-Core Version:    0.7.0.1
  */

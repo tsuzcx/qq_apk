@@ -1,56 +1,63 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryReq;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
 
 public class xgw
-  extends ProtoBufRequest
 {
-  private CLIENT.StGetUserNewestStoryReq a = new CLIENT.StGetUserNewestStoryReq();
+  private static boolean[] a;
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public xgw(COMM.StCommonExt paramStCommonExt, long paramLong1, long paramLong2)
+  static
   {
-    CLIENT.StUinTime localStUinTime = new CLIENT.StUinTime();
-    localStUinTime.newestTime.set(paramLong1);
-    localStUinTime.uin.set(paramLong2);
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(localStUinTime);
-    this.a.vecUinTime.set(localArrayList);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
+    jdField_a_of_type_ArrayOfBoolean = new boolean[5];
   }
   
-  public static CLIENT.StGetUserNewestStoryRsp a(byte[] paramArrayOfByte)
+  public xgw(String paramString)
   {
-    CLIENT.StGetUserNewestStoryRsp localStGetUserNewestStoryRsp = new CLIENT.StGetUserNewestStoryRsp();
-    try
-    {
-      localStGetUserNewestStoryRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetUserNewestStoryRsp;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAioStoryFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static void a(int[] paramArrayOfInt)
+  {
+    int i = 0;
+    while (i < 5) {
+      if ((paramArrayOfInt == null) || (paramArrayOfInt.length != 5))
+      {
+        jdField_a_of_type_ArrayOfBoolean[i] = false;
+        i += 1;
+      }
+      else
+      {
+        boolean[] arrayOfBoolean = jdField_a_of_type_ArrayOfBoolean;
+        int k = arrayOfBoolean[i];
+        if (paramArrayOfInt[i] > 0) {}
+        for (int j = 1;; j = 0)
+        {
+          arrayOfBoolean[i] = (j | k);
+          break;
+        }
       }
     }
-    return null;
   }
   
-  public byte[] getBusiBuf()
+  public static boolean a(int paramInt)
   {
-    return this.a.toByteArray();
+    if ((paramInt < 0) || (paramInt > 4)) {
+      return true;
+    }
+    return jdField_a_of_type_ArrayOfBoolean[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgw
  * JD-Core Version:    0.7.0.1
  */

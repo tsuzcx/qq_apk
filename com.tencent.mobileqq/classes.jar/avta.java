@@ -1,25 +1,25 @@
-import android.animation.Animator;
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.animation.Animation;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
 public class avta
+  implements avvc
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
-    localValueAnimator.addUpdateListener(new avtc(paramInt1, paramView));
-    return localValueAnimator;
-  }
+  public avta(TranslateFragment paramTranslateFragment, avrj paramavrj) {}
   
-  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
+  public void a(int paramInt, avvd paramavvd)
   {
-    return new bbky(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new avtb(paramView));
+    if ((paramavvd != null) && (!TextUtils.isEmpty(paramavvd.b)))
+    {
+      if (!this.jdField_a_of_type_Avrj.c.equalsIgnoreCase(paramavvd.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, this.jdField_a_of_type_Avrj.b, paramavvd.b);
+      }
+      avrh.a("0X800AD31", avrh.a(paramavvd.b));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avta
  * JD-Core Version:    0.7.0.1
  */

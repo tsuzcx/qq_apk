@@ -1,24 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class bbjy
-  extends akat
+class bbjy
 {
-  public void a(boolean paramBoolean, long paramLong, akau paramakau)
+  final float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  float b = 0.0F;
+  
+  public bbjy(bbjv parambbjv, float paramFloat)
   {
-    if (paramakau != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(256);
-      localStringBuilder.append("StatictisInfo[ ");
-      localStringBuilder.append("appSeq: " + paramakau.jdField_a_of_type_Int);
-      localStringBuilder.append("errCode: " + paramakau.b);
-      localStringBuilder.append("retryCount: " + paramakau.c);
-      localStringBuilder.append("detailErrorReason: " + paramakau.jdField_a_of_type_Long);
-      localStringBuilder.append("timeoutReason: " + paramakau.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(" ]");
-      QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + "," + localStringBuilder.toString());
-      return;
-    }
-    QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + ",statictisInfo == null");
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Int * this.jdField_a_of_type_Float * 0.4F + this.b * 0.6F;
   }
 }
 

@@ -1,31 +1,17 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.graphics.drawable.AnimationDrawable;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
-class bjxc
-  implements View.OnTouchListener
+public class bjxc
 {
-  bjxc(bjxb parambjxb) {}
+  public QzoneZipCacheHelperCallBack mCallBack;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
-      continue;
-      this.a.a.setTextColor(Color.parseColor("#ffffff"));
-    }
-  }
+  public void onLoadedFailed() {}
+  
+  public void onLoadedSuccess(AnimationDrawable paramAnimationDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjxc
  * JD-Core Version:    0.7.0.1
  */

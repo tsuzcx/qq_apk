@@ -1,29 +1,56 @@
-import android.view.View;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
-class mwy
-  implements bfpt
+public class mwy
 {
-  mwy(mwx parammwx, PoiMapActivity paramPoiMapActivity) {}
+  private awbw jdField_a_of_type_Awbw;
+  private awbx jdField_a_of_type_Awbx;
+  private ConcurrentHashMap<String, awbv> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public mwy(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Mwx.a(paramInt, true);
-    int i = this.jdField_a_of_type_Mwx.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
-    paramInt = 0;
-    while (paramInt < i)
+    this.jdField_a_of_type_Awbx = paramVideoAppInterface.getEntityManagerFactory(paramVideoAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_Awbw = this.jdField_a_of_type_Awbx.createEntityManager();
+  }
+  
+  public ExtensionInfo a(String paramString)
+  {
+    Object localObject3 = null;
+    Object localObject2 = null;
+    ??? = localObject2;
+    if (paramString != null)
     {
-      if (this.jdField_a_of_type_Mwx.e != paramInt) {
-        this.jdField_a_of_type_Mwx.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
+      if (!"".equals(paramString)) {
+        break label24;
       }
-      paramInt += 1;
+      ??? = localObject2;
+    }
+    label24:
+    do
+    {
+      do
+      {
+        return ???;
+        localObject2 = localObject3;
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+          localObject2 = (ExtensionInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        }
+        ??? = localObject2;
+      } while (localObject2 != null);
+      localObject2 = (ExtensionInfo)this.jdField_a_of_type_Awbw.a(ExtensionInfo.class, paramString);
+      ??? = localObject2;
+    } while (localObject2 == null);
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
+      return localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
-class vcq
-  implements vzq<uyz>
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+
+public class vcq
+  extends unf
 {
-  vcq(vcp paramvcp) {}
-  
-  public uyz a()
+  public vcq(qqstory_service.RspDeleteVideo paramRspDeleteVideo)
   {
-    return new uyz();
+    super(paramRspDeleteVideo.result);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.os.Build;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
 
 class bdhr
-  implements DialogInterface.OnClickListener
+  implements SensorEventListener
 {
-  bdhr(bdho parambdho, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  bdhr(bdhq parambdhq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent arg1)
   {
-    bdho.a(this.jdField_a_of_type_Bdho, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QQLSSensor", 4, "QQLSSensor onSensorChanged" + ???.values[0]);
+    }
+    if (bdhq.a(this.a) == null) {
+      return;
+    }
+    if (aekt.b())
+    {
+      this.a.a = false;
+      return;
+    }
+    if (???.values[0] < bdhq.a(this.a)) {
+      bdhq.a(this.a, true);
+    }
+    for (;;)
+    {
+      ??? = Build.MODEL;
+      if (!aekt.a()) {
+        break;
+      }
+      if (bdhq.a(this.a).hasMessages(1)) {
+        bdhq.a(this.a).removeMessages(1);
+      }
+      bdhq.a(this.a).sendMessageDelayed(bdhq.a(this.a).obtainMessage(1), 150L);
+      return;
+      bdhq.a(this.a, false);
+    }
+    if ((???.equalsIgnoreCase("mi 3c")) || (???.equalsIgnoreCase("K-Touch W619")) || (???.equalsIgnoreCase("mi 3w")))
+    {
+      if (bdhq.a(this.a).hasMessages(1)) {
+        bdhq.a(this.a).removeMessages(1);
+      }
+      bdhq.a(this.a).sendMessageDelayed(bdhq.a(this.a).obtainMessage(1), 250L);
+      return;
+    }
+    synchronized (this.a)
+    {
+      if (bdhq.a(this.a) != null) {
+        bdhq.a(this.a).a(bdhq.a(this.a));
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdhr
  * JD-Core Version:    0.7.0.1
  */

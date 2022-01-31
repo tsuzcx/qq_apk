@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import kotlin.Metadata;
 
-public class azxb
-  implements azyi
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+final class azxb
+  implements DialogInterface.OnDismissListener
 {
-  public azxb(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  azxb(azwy paramazwy) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    long l = azye.a(this.a.a, paramInt1, paramInt2, paramInt3) / 1000L;
-    if (!PublishHomeWorkFragment.a(this.a, l))
-    {
-      azye.a(this.a.a, (azye)this.a.a.a());
-      return;
-    }
-    this.a.c = l;
-    this.a.a.b();
-    this.a.b.setRightText(this.a.a(l));
+    azwy.a(this.a).b((azwm)this.a);
+    azwy.a(this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azxb
  * JD-Core Version:    0.7.0.1
  */

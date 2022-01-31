@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.od;
 
-import ajya;
+import alpo;
 import android.widget.Toast;
 
 class ODLoadingActivity$2$2
@@ -10,7 +10,7 @@ class ODLoadingActivity$2$2
   
   public void run()
   {
-    Toast.makeText(this.a.this$0, ajya.a(2131707837), 0).show();
+    Toast.makeText(this.a.this$0, alpo.a(2131708209), 0).show();
   }
 }
 

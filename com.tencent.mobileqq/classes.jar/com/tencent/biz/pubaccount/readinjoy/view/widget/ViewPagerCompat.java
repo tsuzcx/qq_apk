@@ -9,16 +9,16 @@ import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import ruh;
-import rui;
+import sku;
+import skv;
 
 public class ViewPagerCompat
   extends ViewPager
 {
   private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private rui jdField_a_of_type_Rui;
+  private skv jdField_a_of_type_Skv;
   private boolean jdField_a_of_type_Boolean = true;
-  private List<ruh> b;
+  private List<sku> b;
   
   public ViewPagerCompat(Context paramContext)
   {
@@ -34,8 +34,8 @@ public class ViewPagerCompat
   
   private void a()
   {
-    this.jdField_a_of_type_Rui = new rui(this, null);
-    super.setOnPageChangeListener(this.jdField_a_of_type_Rui);
+    this.jdField_a_of_type_Skv = new skv(this, null);
+    super.setOnPageChangeListener(this.jdField_a_of_type_Skv);
   }
   
   public void a(ViewPager.OnPageChangeListener paramOnPageChangeListener)
@@ -46,12 +46,12 @@ public class ViewPagerCompat
     this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
   }
   
-  public void a(ruh paramruh)
+  public void a(sku paramsku)
   {
     if (this.b == null) {
       this.b = new ArrayList();
     }
-    this.b.add(paramruh);
+    this.b.add(paramsku);
   }
   
   public void b(ViewPager.OnPageChangeListener paramOnPageChangeListener)
@@ -61,10 +61,10 @@ public class ViewPagerCompat
     }
   }
   
-  public void b(ruh paramruh)
+  public void b(sku paramsku)
   {
     if (this.b != null) {
-      this.b.remove(paramruh);
+      this.b.remove(paramsku);
     }
   }
   
@@ -110,7 +110,7 @@ public class ViewPagerCompat
       int i = 0;
       while (i < j)
       {
-        ((ruh)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
+        ((sku)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
         i += 1;
       }
     }
@@ -129,7 +129,7 @@ public class ViewPagerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat
  * JD-Core Version:    0.7.0.1
  */

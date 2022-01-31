@@ -1,24 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class abqi
-  implements DialogInterface.OnKeyListener
 {
-  public abqi(OverloadTipsActivity paramOverloadTipsActivity) {}
+  private static ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public static String a(String paramString)
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    String str2 = (String)a.get(paramString);
+    String str1 = str2;
+    if (str2 == null)
+    {
+      str2 = SecUtil.getFileMd5(paramString);
+      str1 = str2;
+      if (str2 != null)
+      {
+        a.put(paramString, str2);
+        str1 = str2;
+      }
     }
-    return false;
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.hotpic;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class HotPicTagInfo
-  extends auko
+  extends awbv
   implements Comparable<HotPicTagInfo>
 {
   public int position;
-  @aumc
+  @awdj
   public int tagId;
   public String tagName;
   public int tagType;
@@ -27,7 +27,7 @@ public class HotPicTagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicTagInfo
  * JD-Core Version:    0.7.0.1
  */

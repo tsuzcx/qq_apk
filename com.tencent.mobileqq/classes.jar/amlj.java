@@ -1,19 +1,23 @@
-public class amlj
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
+
+public final class amlj
+  implements Parcelable.Creator<SosoInterface.SosoWifi>
 {
-  public String a = "";
-  public String b = "";
-  
-  public amlj() {}
-  
-  public amlj(String paramString1, String paramString2)
+  public SosoInterface.SosoWifi a(Parcel paramParcel)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    return new SosoInterface.SosoWifi(paramParcel);
+  }
+  
+  public SosoInterface.SosoWifi[] a(int paramInt)
+  {
+    return new SosoInterface.SosoWifi[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlj
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import auko;
-import qbw;
+import awbv;
+import qls;
 
 public class RecommendFollowInfoTitle
-  extends auko
+  extends awbv
   implements Parcelable
 {
-  public static Parcelable.Creator<RecommendFollowInfoTitle> CREATOR = new qbw();
+  public static Parcelable.Creator<RecommendFollowInfoTitle> CREATOR = new qls();
   public boolean isAllFollowed;
   public String title;
   
@@ -45,7 +45,7 @@ public class RecommendFollowInfoTitle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfoTitle
  * JD-Core Version:    0.7.0.1
  */

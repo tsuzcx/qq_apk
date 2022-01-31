@@ -1,29 +1,89 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ahks
-  implements View.OnClickListener
+public class ahks
+  implements ahjp
 {
-  ahks(ahkd paramahkd) {}
+  public ahks(TroopActivity paramTroopActivity) {}
   
-  public void onClick(View paramView)
+  public Activity a()
   {
-    if (akuz.a().a() == 4) {
-      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akuy.b(), akuz.b(), akuz.a(), "0");
-    }
-    for (;;)
-    {
-      this.a.a(12, 0);
-      this.a.a(-1, null);
+    return this.a;
+  }
+  
+  public View a()
+  {
+    return this.a.findViewById(2131375981);
+  }
+  
+  public arum a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public bhoe a()
+  {
+    return this.a.jdField_a_of_type_Bhoe;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.app;
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.a.b != 2) {
       return;
-      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akuy.b(), akuz.b(), akuz.a(), "0");
     }
+    switch (paramInt)
+    {
+    }
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.a.runOnUiThread(paramRunnable);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.a.isResume()) {
+      QQToast.a(a(), paramString, 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  public boolean a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public View b()
+  {
+    return this.a.findViewById(2131375934);
+  }
+  
+  public boolean b()
+  {
+    return TroopActivity.b(this.a);
+  }
+  
+  public View c()
+  {
+    return this.a.findViewById(2131375926);
+  }
+  
+  public View d()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahks
  * JD-Core Version:    0.7.0.1
  */

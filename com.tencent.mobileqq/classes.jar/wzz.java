@@ -1,36 +1,12 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.BounceScrollView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
 
-class wzz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface wzz<T extends wzy>
 {
-  wzz(wzt paramwzt, int paramInt) {}
-  
-  public void onGlobalLayout()
-  {
-    this.jdField_a_of_type_Wzt.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Wzt.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    int i = this.jdField_a_of_type_Wzt.b - this.jdField_a_of_type_Wzt.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "maxHeight = " + i);
-    }
-    if (this.jdField_a_of_type_Wzt.jdField_a_of_type_AndroidViewView.getMeasuredHeight() > i)
-    {
-      localLayoutParams.height = (i - 5);
-      this.jdField_a_of_type_Wzt.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    }
-    if ((this.jdField_a_of_type_Wzt.jdField_a_of_type_Azph != null) && (this.jdField_a_of_type_Wzt.d) && (this.jdField_a_of_type_Wzt.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller() != null)) {
-      this.jdField_a_of_type_Wzt.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller().a(0, 0, 0, 1);
-    }
-  }
+  public abstract boolean a(T paramT, MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzz
  * JD-Core Version:    0.7.0.1
  */

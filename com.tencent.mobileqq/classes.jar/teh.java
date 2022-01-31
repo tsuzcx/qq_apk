@@ -1,56 +1,62 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.QimVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class teh
 {
-  public String a;
-  public String b;
-  public String c;
+  public tej a;
+  public tek a;
   
-  public teh(qqstory_struct.QimVideoInfo paramQimVideoInfo)
+  public teh()
   {
-    this.a = paramQimVideoInfo.qim_unionid.get().toStringUtf8();
-    this.b = paramQimVideoInfo.qim_feedID.get().toStringUtf8();
-    this.c = paramQimVideoInfo.qim_vid.get().toStringUtf8();
+    this.jdField_a_of_type_Tek = new tek(null);
+    this.jdField_a_of_type_Tej = new tej(null);
   }
   
-  public static teh a(byte[] paramArrayOfByte)
+  private static JSONObject a(String paramString)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return null;
-    }
-    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
-    try
-    {
-      localQimVideoInfo.mergeFrom(paramArrayOfByte);
-      return new teh(localQimVideoInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      ved.c("QimVideoInfoItem", "Error: parse db bytes error.", paramArrayOfByte);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        return paramString;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return null;
   }
   
-  public byte[] a()
+  public static teh a()
   {
-    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
-    localQimVideoInfo.qim_vid.set(ByteStringMicro.copyFromUtf8(this.c));
-    localQimVideoInfo.qim_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
-    localQimVideoInfo.qim_feedID.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localQimVideoInfo.toByteArray();
+    return (teh)aogj.a().a(447);
+  }
+  
+  public void a(String paramString)
+  {
+    tlo.b("WeSeeConfigBean", "WeSeeConfigBean content = " + paramString);
+    paramString = a(paramString);
+    if (paramString == null) {
+      return;
+    }
+    this.jdField_a_of_type_Tek = tek.a(paramString.optJSONObject("video_plugin_threshold"));
+    this.jdField_a_of_type_Tej = tej.a(paramString.optJSONObject("trends_tab_strategy"));
   }
   
   public String toString()
   {
-    return "QimVideoInfoItem{mOwnerUnionId='" + this.a + '\'' + ", mFeedId='" + this.b + '\'' + ", mVid='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder().append("WeSeeConfigBean{mPluginConfigInfo=").append(this.jdField_a_of_type_Tek).append(", mStrategyConfig=");
+    if (this.jdField_a_of_type_Tej != null) {}
+    for (String str = this.jdField_a_of_type_Tej.a;; str = "null") {
+      return str + '}';
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     teh
  * JD-Core Version:    0.7.0.1
  */

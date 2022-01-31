@@ -1,114 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.observer.BusinessObserver;
 
-class ayqw
-  implements BusinessObserver
+public class ayqw
 {
-  ayqw(ayqv paramayqv) {}
+  static ayqw jdField_a_of_type_Ayqw;
+  public String a;
+  ArrayList<awbv> jdField_a_of_type_JavaUtilArrayList = null;
+  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public boolean a;
+  public boolean b = true;
+  public boolean c = false;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  ayqw()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|isSuccess=" + paramBoolean + ",time=" + (System.currentTimeMillis() - ayqt.b(this.a.b)));
-    }
-    int j = -1;
-    paramInt = j;
-    int i;
-    if (paramBoolean) {
-      i = j;
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "0";
+  }
+  
+  public static ayqw a()
+  {
     try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      paramInt = j;
-      if (paramBundle != null)
-      {
-        i = j;
-        GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-        i = j;
-        localGetAppinfoResponse.mergeFrom(paramBundle);
-        i = j;
-        j = localGetAppinfoResponse.ret.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|ret=" + j);
-        }
-        paramInt = j;
-        if (j == 0)
-        {
-          i = j;
-          ayqt.a(this.a.b).d = xmq.a(localGetAppinfoResponse.iconsURL, 16);
-          i = j;
-          ayqt.a(this.a.b).e = xmq.a(localGetAppinfoResponse.iconsURL, 100);
-          i = j;
-          if (localGetAppinfoResponse.androidInfo != null)
-          {
-            i = j;
-            paramBundle = localGetAppinfoResponse.androidInfo;
-            i = j;
-            if (paramBundle.packName.has())
-            {
-              i = j;
-              ayqt.a(this.a.b).jdField_a_of_type_JavaLangString = paramBundle.packName.get();
-            }
-            i = j;
-            if (paramBundle.messagetail.has())
-            {
-              i = j;
-              ayqt.a(this.a.b).b = paramBundle.messagetail.get();
-            }
-            i = j;
-            if (paramBundle.sourceUrl.has())
-            {
-              i = j;
-              if (ayqt.a(this.a.b) != Long.parseLong("1103584836"))
-              {
-                i = j;
-                ayqt.a(this.a.b).c = paramBundle.sourceUrl.get();
-              }
-            }
-          }
-          i = j;
-          ayqt.a(this.a.b).jdField_a_of_type_Int = 1;
-          i = j;
-          ayqv.a(this.a);
-          paramInt = j;
-        }
+      if (jdField_a_of_type_Ayqw == null) {
+        jdField_a_of_type_Ayqw = new ayqw();
       }
+      ayqw localayqw = jdField_a_of_type_Ayqw;
+      return localayqw;
     }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        paramInt = i;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("Q.share.ForwardSdkShareProcessor", 2, paramBundle, new Object[0]);
-          paramInt = i;
-        }
-      }
-      ayqv.a(this.a).set(true);
-      this.a.b();
+    finally {}
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (paramString == null) {
+      return false;
     }
-    if ((ayqt.a(this.a.b).jdField_a_of_type_Int != 1) && (ayqv.a(this.a) < 2) && (paramInt != 110507) && (paramInt != 110401))
-    {
-      ayqv.b(this.a);
-      this.a.d();
-      return;
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     }
+    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayqw
  * JD-Core Version:    0.7.0.1
  */

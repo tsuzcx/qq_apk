@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import java.util.HashSet;
 
-public final class aucl
-  implements Parcelable.Creator<TranslateResult>
+public class aucl
 {
-  public TranslateResult a(Parcel paramParcel)
-  {
-    return new TranslateResult(paramParcel);
-  }
-  
-  public TranslateResult[] a(int paramInt)
-  {
-    return new TranslateResult[paramInt];
-  }
+  public int a;
+  public long a;
+  public aubz a;
+  public String a;
+  public HashSet<RecentBaseData> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aucl
  * JD-Core Version:    0.7.0.1
  */

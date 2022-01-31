@@ -4,8 +4,8 @@ import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import nlq;
-import nol;
+import nom;
+import nrt;
 
 class ReadInJoyNativeAdAppVideoView$8
   implements Runnable
@@ -30,7 +30,7 @@ class ReadInJoyNativeAdAppVideoView$8
     }
     for (;;)
     {
-      nol.a(null, str, "0X80093B8", "0X80093B8", 0, i, ReadInJoyNativeAdAppVideoView.a(this.this$0).mAdTraceId, null, null, null);
+      nrt.a(null, str, "0X80093B8", "0X80093B8", 0, i, ReadInJoyNativeAdAppVideoView.a(this.this$0).mAdTraceId, null, null, null);
       ReadInJoyNativeAdAppVideoView.a(this.this$0).start();
       ReadInJoyNativeAdAppVideoView.e(this.this$0, 4);
       ReadInJoyNativeAdAppVideoView.a(this.this$0);
@@ -43,7 +43,7 @@ class ReadInJoyNativeAdAppVideoView$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,126 +1,129 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.richmediabrowser.listener.IBrowserAnimationListener;
+import com.tencent.richmediabrowser.model.BrowserAnimation;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
 
 public class axtl
+  extends BrowserAnimation
+  implements IBrowserAnimationListener
 {
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  private TreeMap<axtm, String> jdField_a_of_type_JavaUtilTreeMap;
+  public int a;
+  public Rect a;
+  private RichMediaBaseData a;
+  Rect b;
   
-  private String a()
+  public axtl() {}
+  
+  public axtl(RichMediaBaseData paramRichMediaBaseData)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nBusiness\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      localObject = (Map.Entry)localIterator.next();
-      if (i < 20) {}
-    }
-    else
-    {
-      return localStringBuilder.toString();
-    }
-    localStringBuilder.append("fd: ").append((String)((Map.Entry)localObject).getValue()).append(" ").append("(").append("count: ").append(((axtm)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int).append(")").append("\n");
-    Object localObject = new ArrayList(((axtm)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
-    Collections.sort((List)localObject);
-    localObject = ((List)localObject).iterator();
-    int j = 0;
+    this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData = paramRichMediaBaseData;
+  }
+  
+  public Drawable getAnimationDrawable()
+  {
     for (;;)
     {
-      axtm localaxtm;
-      if (((Iterator)localObject).hasNext())
+      try
       {
-        localaxtm = (axtm)((Iterator)localObject).next();
-        if (j >= 5) {
-          localStringBuilder.append("\t\t").append("…").append("\n");
+        Drawable localDrawable;
+        if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOPictureData))
+        {
+          localDrawable = new axue().a((AIOPictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          localObject2 = getThumbRect();
+          if ((localDrawable != null) && ((localDrawable.getIntrinsicHeight() * 3 < localDrawable.getIntrinsicWidth()) || (localDrawable.getIntrinsicWidth() * 3 < localDrawable.getIntrinsicHeight()))) {
+            this.isImgCenterCropMode = false;
+          }
+          if ((localDrawable != null) && (localObject2 != null))
+          {
+            this.jdField_a_of_type_Int = getCutValue((Rect)localObject2, localDrawable);
+            if (localDrawable.getIntrinsicHeight() == -1) {
+              break;
+            }
+            localObject2 = localDrawable;
+            if (localDrawable.getIntrinsicWidth() != -1) {
+              return localObject2;
+            }
+            break;
+          }
         }
+        else
+        {
+          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOVideoData))
+          {
+            localDrawable = new axuf().a((AIOVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+            continue;
+          }
+          if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFilePictureData))
+          {
+            localDrawable = new axua().a((AIOFilePictureData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+            continue;
+          }
+          if (!(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData instanceof AIOFileVideoData)) {
+            break label219;
+          }
+          localDrawable = new axub().a((AIOFileVideoData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBaseData);
+          continue;
+        }
+        return null;
       }
-      else
+      catch (Throwable localThrowable)
       {
-        i += 1;
-        break;
+        if (QLog.isColorLevel()) {
+          QLog.e("AIOImageInfo", 2, "getAnimationBitmap ", localThrowable);
+        }
+        return null;
       }
-      j += 1;
-      localStringBuilder.append("\t\t").append(localaxtm.jdField_a_of_type_JavaLangString).append("(").append("count: ").append(localaxtm.jdField_a_of_type_Int).append(")").append("\n");
+      label219:
+      Object localObject1 = null;
     }
+    Object localObject2 = null;
+    return localObject2;
   }
   
-  private void a(axtn paramaxtn)
+  public BrowserAnimation getBrowserAnimation(RichMediaBaseData paramRichMediaBaseData)
   {
-    paramaxtn.a();
-    c(paramaxtn);
-    b(paramaxtn);
+    paramRichMediaBaseData = new axtl(paramRichMediaBaseData);
+    paramRichMediaBaseData.jdField_a_of_type_AndroidGraphicsRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    return paramRichMediaBaseData;
   }
   
-  private String b()
+  public int getCutValue()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nSystem\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      localStringBuilder.append("fd: ").append((String)localEntry.getKey()).append(" ").append("(").append("count: ").append(localEntry.getValue()).append(")").append("\n");
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Rect getStartSrcRect()
+  {
+    return this.b;
+  }
+  
+  public int getStartX()
+  {
+    return 0;
+  }
+  
+  public int getStartY()
+  {
+    return 0;
+  }
+  
+  public Rect getThumbRect()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
+      return this.jdField_a_of_type_AndroidGraphicsRect;
     }
-    return localStringBuilder.toString();
-  }
-  
-  private void b(axtn paramaxtn)
-  {
-    Object localObject = paramaxtn.a();
-    paramaxtn = new HashMap(20);
-    localObject = ((HashMap)localObject).entrySet().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      String str = (String)localEntry.getValue();
-      if (axtn.a(str) == null) {
-        paramaxtn.put(localEntry.getKey(), str);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilTreeMap = new TreeMap(paramaxtn);
-  }
-  
-  private void c(axtn paramaxtn)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap(10);
-    paramaxtn = paramaxtn.b().entrySet().iterator();
-    while (paramaxtn.hasNext())
-    {
-      Object localObject = (Map.Entry)paramaxtn.next();
-      axtm localaxtm = (axtm)((Map.Entry)localObject).getKey();
-      localObject = (String)((Map.Entry)localObject).getValue();
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localaxtm.jdField_a_of_type_Int));
-      }
-      else
-      {
-        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        Map localMap = this.jdField_a_of_type_JavaUtilMap;
-        int i = localInteger.intValue();
-        localMap.put(localObject, Integer.valueOf(localaxtm.jdField_a_of_type_Int + i));
-      }
-    }
-  }
-  
-  public String a(axtn paramaxtn)
-  {
-    a(paramaxtn);
-    return a() + b();
+    return super.getThumbRect();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axtl
  * JD-Core Version:    0.7.0.1
  */

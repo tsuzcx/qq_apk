@@ -1,21 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
 
 public class ret
-  extends oyd
+  extends AnimatorListenerAdapter
 {
-  public ret(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup, String paramString)
+  public ret(VideoFeedsLikeAnimate.LikeExplosionCenterView paramLikeExplosionCenterView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramString);
+    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
   }
   
-  public void a(oxx paramoxx)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramoxx.a(ReadInJoyProteusFamilyListViewGroup.a(this.a), this.a.a);
+    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ret
  * JD-Core Version:    0.7.0.1
  */

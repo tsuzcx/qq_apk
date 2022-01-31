@@ -1,28 +1,39 @@
 package dov.com.qq.im.ae;
 
-import android.widget.ImageView;
-import bijd;
-import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
+import bkle;
+import bkph;
+import bkvr;
+import blmf;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 public class AEPituCameraUnit$25
   implements Runnable
 {
-  public AEPituCameraUnit$25(bijd parambijd) {}
+  public AEPituCameraUnit$25(bkle parambkle) {}
   
   public void run()
   {
-    bijd.a(this.this$0).setVisibility(8);
-    if (bijd.a(this.this$0).getDrawable() != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("AEPituCameraUnit", 2, "onResourceDownload update filterpager begin");
+    }
+    Object localObject = bkle.a(this.this$0);
+    if (bkle.b(this.this$0) == AECaptureMode.NORMAL) {}
+    for (boolean bool = true;; bool = false)
     {
-      LazyLoadAnimationDrawable localLazyLoadAnimationDrawable = (LazyLoadAnimationDrawable)bijd.a(this.this$0).getDrawable();
-      localLazyLoadAnimationDrawable.stop();
-      localLazyLoadAnimationDrawable.clear();
+      ((bkph)localObject).c(bool);
+      localObject = (bkvr)blmf.a(18);
+      blmo.c = 0;
+      if (QLog.isColorLevel()) {
+        QLog.d("AEPituCameraUnit", 2, "onResourceDownload update filterpager end");
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.25
  * JD-Core Version:    0.7.0.1
  */

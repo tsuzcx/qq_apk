@@ -1,20 +1,65 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class otq
-  implements View.OnClickListener
+  implements AladdinConfigHandler
 {
-  public otq(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
-  
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.a.onBackEvent();
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    Map localMap = osq.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "native_article"))
+      {
+        bjxj.a("native_proteus_offline_bid", (String)localObject2);
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+      }
+    }
+    for (;;)
+    {
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+      break;
+      if (TextUtils.equals(str, "native_article_cdn_url"))
+      {
+        localObject1 = paramString;
+        paramString = (String)localObject2;
+        continue;
+        sgl.a(paramString, (String)localObject1);
+        return true;
+      }
+      else
+      {
+        localObject2 = paramString;
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+      }
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bjxj.a("native_proteus_offline_bid", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otq
  * JD-Core Version:    0.7.0.1
  */

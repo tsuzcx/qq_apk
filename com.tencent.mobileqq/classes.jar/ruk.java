@@ -1,36 +1,27 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import com.tencent.widget.AbsListView;
 
 public class ruk
-  extends GestureDetector.SimpleOnGestureListener
+  implements bhpo
 {
-  private ruk(WordNavView paramWordNavView) {}
+  public ruk(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    float f = paramMotionEvent.getY();
-    Iterator localIterator = WordNavView.a(this.a).entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if ((f >= ((Float)localEntry.getKey()).floatValue() - this.a.getHeight() / WordNavView.a(this.a).size() / 2) && (f <= ((Float)localEntry.getKey()).floatValue() + this.a.getHeight() / WordNavView.a(this.a).size() / 2)) {
-        if (WordNavView.a(this.a) != null) {
-          WordNavView.a(this.a).a((String)localEntry.getValue());
-        }
-      }
+    this.a.a(new rum(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.a.a(new rul(this, "onScrollStateChanged", paramAbsListView, paramInt));
+    if ((ors.a()) && (paramInt != 0)) {
+      abqw.a().a("proteus_family_feeds");
     }
-    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ruk
  * JD-Core Version:    0.7.0.1
  */

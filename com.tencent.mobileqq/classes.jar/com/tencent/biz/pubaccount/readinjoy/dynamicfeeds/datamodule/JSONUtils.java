@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
-import naj;
+import ndd;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -106,7 +106,7 @@ public class JSONUtils
         a(paramJSONObject, (Bundle)localObject);
       }
     }
-    localObject = naj.a((Bundle)localObject);
+    localObject = ndd.a((Bundle)localObject);
     StringBuilder localStringBuilder = new StringBuilder().append(paramString);
     if (paramString.contains("?")) {}
     for (paramJSONObject = "&";; paramJSONObject = "?")
@@ -151,7 +151,7 @@ public class JSONUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.JSONUtils
  * JD-Core Version:    0.7.0.1
  */

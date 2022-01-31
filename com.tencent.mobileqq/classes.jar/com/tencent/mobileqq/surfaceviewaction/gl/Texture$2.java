@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import aycp;
+import baam;
 
 public class Texture$2
   implements Runnable
 {
-  public Texture$2(aycp paramaycp) {}
+  public Texture$2(baam parambaam) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class Texture$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Texture.2
  * JD-Core Version:    0.7.0.1
  */

@@ -29,13 +29,22 @@ final class GameGrowthGuardianManager$2
     do
     {
       return;
-      if ((paramStJudgeTimingRsp != null) && (!paramStJudgeTimingRsp.loginInstructions.isEmpty()))
+      if (paramStJudgeTimingRsp != null)
       {
-        Iterator localIterator = paramStJudgeTimingRsp.loginInstructions.get().iterator();
-        while (localIterator.hasNext()) {
-          ((INTERFACE.GuardInstruction)localIterator.next()).type.set(7);
+        if (!paramStJudgeTimingRsp.loginInstructions.isEmpty())
+        {
+          Iterator localIterator = paramStJudgeTimingRsp.loginInstructions.get().iterator();
+          while (localIterator.hasNext()) {
+            ((INTERFACE.GuardInstruction)localIterator.next()).type.set(7);
+          }
+          paramStJudgeTimingRsp.timingInstructions.get().addAll(0, paramStJudgeTimingRsp.loginInstructions.get());
         }
-        paramStJudgeTimingRsp.timingInstructions.get().addAll(0, paramStJudgeTimingRsp.loginInstructions.get());
+        GameGrowthGuardianManager.access$502(paramStJudgeTimingRsp.extInfo);
+      }
+      if (!GameGrowthGuardianManager.access$600())
+      {
+        QLog.e("GameGrowthGuardianManag", 1, "not in foreground, not allowed to show dialog or send heartbeat");
+        return;
       }
       GameGrowthGuardianManager.GuardInstructionDialog.tryBuildAndShow(this.val$context, this.val$miniAppConfig, paramStJudgeTimingRsp, 0);
     } while ((this.val$judgeTimingRequestFactType != 11) && (this.val$judgeTimingRequestFactType != 12));
@@ -48,13 +57,13 @@ final class GameGrowthGuardianManager$2
         i = paramStJudgeTimingRsp.nextDuration.get();
       }
     }
-    GameGrowthGuardianManager.access$502(new GameGrowthGuardianManager.2.1(this));
-    ThreadManagerV2.getUIHandlerV2().postDelayed(GameGrowthGuardianManager.access$500(), TimeUnit.SECONDS.toMillis(i));
+    GameGrowthGuardianManager.access$702(new GameGrowthGuardianManager.2.1(this));
+    ThreadManagerV2.getUIHandlerV2().postDelayed(GameGrowthGuardianManager.access$700(), TimeUnit.SECONDS.toMillis(i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameGrowthGuardianManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import afkf;
-import afkg;
+import ahhk;
+import ahhl;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import axqy;
+import azmj;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SwipListView;
@@ -17,20 +17,20 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class NewFriendMoreSysMsgSuspiciousFragment
   extends PublicBaseFragment
 {
-  private afkg jdField_a_of_type_Afkg;
+  private ahhl jdField_a_of_type_Ahhl;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   
   private void a(View paramView)
   {
-    View localView = paramView.findViewById(2131370850);
-    ((TextView)localView.findViewById(2131377363)).setText(2131699558);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131376778));
+    View localView = paramView.findViewById(2131371160);
+    ((TextView)localView.findViewById(2131377896)).setText(2131699913);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131377290));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_Afkg = new afkg(getActivity(), getActivity().app, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Afkg);
-    paramView.findViewById(2131368429).setOnClickListener(new afkf(this));
-    ((TextView)paramView.findViewById(2131368472)).setText(2131699557);
-    axqy.b(getActivity().app, "dc00898", "", "", "0X800A32B", "0X800A32B", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Ahhl = new ahhl(getActivity(), getActivity().app, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Ahhl);
+    paramView.findViewById(2131368613).setOnClickListener(new ahhk(this));
+    ((TextView)paramView.findViewById(2131368659)).setText(2131699912);
+    azmj.b(getActivity().app, "dc00898", "", "", "0X800A32B", "0X800A32B", 0, 0, "", "", "", "");
   }
   
   public void onCreate(Bundle paramBundle)
@@ -43,7 +43,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onCreateView");
     }
-    paramViewGroup = paramLayoutInflater.inflate(2131560914, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131561097, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
@@ -58,8 +58,8 @@ public class NewFriendMoreSysMsgSuspiciousFragment
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onDestroy");
     }
-    if (this.jdField_a_of_type_Afkg != null) {
-      this.jdField_a_of_type_Afkg.c();
+    if (this.jdField_a_of_type_Ahhl != null) {
+      this.jdField_a_of_type_Ahhl.c();
     }
     super.onDestroy();
   }
@@ -67,24 +67,24 @@ public class NewFriendMoreSysMsgSuspiciousFragment
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Afkg != null) {
-      this.jdField_a_of_type_Afkg.b();
+    if (this.jdField_a_of_type_Ahhl != null) {
+      this.jdField_a_of_type_Ahhl.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Afkg != null)
+    if (this.jdField_a_of_type_Ahhl != null)
     {
-      this.jdField_a_of_type_Afkg.a();
-      this.jdField_a_of_type_Afkg.d();
+      this.jdField_a_of_type_Ahhl.a();
+      this.jdField_a_of_type_Ahhl.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment
  * JD-Core Version:    0.7.0.1
  */

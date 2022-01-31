@@ -1,26 +1,55 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.widget.SlideDownFrameLayout;
+import java.util.ArrayList;
 
 public class bcru
-  implements Animator.AnimatorListener
 {
-  public bcru(SlideDownFrameLayout paramSlideDownFrameLayout) {}
+  public int a;
+  public bcru a;
+  public String a;
+  public ArrayList<bcru> a;
+  public String b;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  private bcru() {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bcru(int paramInt, String paramString1, String paramString2)
   {
-    SlideDownFrameLayout.a(this.a).a();
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public String a()
+  {
+    String str = this.jdField_a_of_type_JavaLangString;
+    bcru localbcru = this;
+    while (localbcru.jdField_a_of_type_Bcru != null)
+    {
+      localbcru = localbcru.jdField_a_of_type_Bcru;
+      str = localbcru.jdField_a_of_type_JavaLangString + "-" + str;
+    }
+    return str;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(bcru parambcru)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambcru);
+  }
+  
+  public boolean a(bcru parambcru)
+  {
+    if ((parambcru != null) && (parambcru.jdField_a_of_type_Int + 1 == this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_Bcru = parambcru;
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcru
  * JD-Core Version:    0.7.0.1
  */

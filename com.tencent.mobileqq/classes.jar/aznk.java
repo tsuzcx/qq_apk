@@ -1,25 +1,76 @@
-import java.util.Comparator;
+import com.tencent.common.config.AppSetting;
 
 class aznk
-  implements Comparator<Long>
 {
-  aznk(azni paramazni) {}
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k = "8.3.3.4515";
+  public String l = "AND";
   
-  public int a(Long paramLong1, Long paramLong2)
+  public aznk()
   {
-    int i = 0;
-    if (paramLong1.longValue() - paramLong2.longValue() > 0L) {
-      i = 1;
-    }
-    while (paramLong1.longValue() - paramLong2.longValue() >= 0L) {
-      return i;
-    }
-    return -1;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_Long = AppSetting.a();
+    this.jdField_a_of_type_JavaLangString = bdcb.a();
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(256);
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.i);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.j);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.k);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.l);
+    localStringBuilder.append('|');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aznk
  * JD-Core Version:    0.7.0.1
  */

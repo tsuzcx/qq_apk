@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbsh;
+import bdrb;
 import com.tencent.qphone.base.util.QLog;
 
 class QQSettingMe$8
@@ -13,12 +13,12 @@ class QQSettingMe$8
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "init parse config json");
     }
-    bbsh.a().a(this.this$0.a);
+    bdrb.a().a(this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.8
  * JD-Core Version:    0.7.0.1
  */

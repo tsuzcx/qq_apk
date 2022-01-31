@@ -1,61 +1,41 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.qphone.base.util.QLog;
 
-public class afiy<T>
+class afiy
+  implements agbp
 {
-  SparseArrayCompat<afix<T>> a = new SparseArrayCompat();
+  afiy(afiw paramafiw, afiv paramafiv, MessageForPoke paramMessageForPoke) {}
   
-  public int a()
+  public void a()
   {
-    return this.a.size();
-  }
-  
-  public int a(T paramT, int paramInt)
-  {
-    int i = this.a.size() - 1;
-    while (i >= 0)
+    if (QLog.isColorLevel()) {
+      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 3");
+    }
+    afss.a().a(20);
+    this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+    this.jdField_a_of_type_Afiv.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Afiv.b == afij.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Afiw.a.a instanceof ChatHistoryActivity)) && (!afij.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Afiv.c.setVisibility(0);
+    }
+    for (;;)
     {
-      if (((afix)this.a.valueAt(i)).a(paramT, paramInt)) {
-        return this.a.keyAt(i);
-      }
-      i -= 1;
+      this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      return;
+      this.jdField_a_of_type_Afiv.c.setVisibility(8);
     }
-    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
-  }
-  
-  public afix a(int paramInt)
-  {
-    return (afix)this.a.get(paramInt);
-  }
-  
-  public afiy<T> a(afix<T> paramafix)
-  {
-    int i = this.a.size();
-    if (paramafix != null) {
-      this.a.put(i, paramafix);
-    }
-    return this;
-  }
-  
-  public void a(afjf paramafjf, T paramT, int paramInt)
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      afix localafix = (afix)this.a.valueAt(i);
-      if (localafix.a(paramT, paramInt))
-      {
-        localafix.a(paramafjf, paramT, paramInt);
-        return;
-      }
-      i += 1;
-    }
-    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afiy
  * JD-Core Version:    0.7.0.1
  */

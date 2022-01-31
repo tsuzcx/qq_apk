@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.34.1;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class abwu
-  extends ajzz
+  implements View.OnClickListener
 {
-  public abwu(QQSettingMe paramQQSettingMe) {}
+  public abwu(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    this.a.a.runOnUiThread(new QQSettingMe.34.1(this));
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwu
  * JD-Core Version:    0.7.0.1
  */

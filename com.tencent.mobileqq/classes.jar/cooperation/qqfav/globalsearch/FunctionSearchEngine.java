@@ -1,10 +1,10 @@
 package cooperation.qqfav.globalsearch;
 
-import awhn;
-import awng;
-import awuu;
-import awuv;
-import awvi;
+import aycr;
+import ayij;
+import aypx;
+import aypy;
+import ayql;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FunctionSearchEngine
-  implements awuu<awng>
+  implements aypx<ayij>
 {
   public static final String a;
   private int a;
@@ -32,9 +32,9 @@ public class FunctionSearchEngine
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public List<awng> a(awvi paramawvi)
+  public List<ayij> a(ayql paramayql)
   {
-    if ((paramawvi == null) || (paramawvi.jdField_a_of_type_JavaLangString == null) || (paramawvi.jdField_a_of_type_JavaLangString.trim().length() == 0)) {
+    if ((paramayql == null) || (paramayql.jdField_a_of_type_JavaLangString == null) || (paramayql.jdField_a_of_type_JavaLangString.trim().length() == 0)) {
       return null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
@@ -42,15 +42,15 @@ public class FunctionSearchEngine
       QLog.e(jdField_a_of_type_JavaLangString, 1, "search, app is null.");
       return null;
     }
-    paramawvi = ((awhn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(222)).a("" + paramawvi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    if ((paramawvi == null) || (paramawvi.size() == 0)) {
+    paramayql = ((aycr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(222)).a("" + paramayql.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if ((paramayql == null) || (paramayql.size() == 0)) {
       return null;
     }
-    ArrayList localArrayList = new ArrayList(paramawvi.size());
+    ArrayList localArrayList = new ArrayList(paramayql.size());
     int i = 0;
-    while (i < paramawvi.size())
+    while (i < paramayql.size())
     {
-      localArrayList.add((awng)paramawvi.get(i));
+      localArrayList.add((ayij)paramayql.get(i));
       i += 1;
     }
     return localArrayList;
@@ -58,15 +58,15 @@ public class FunctionSearchEngine
   
   public void a() {}
   
-  public void a(awvi paramawvi, awuv<awng> paramawuv)
+  public void a(ayql paramayql, aypy<ayij> paramaypy)
   {
-    if ((paramawvi == null) || (paramawvi.jdField_a_of_type_JavaLangString == null) || (paramawvi.jdField_a_of_type_JavaLangString.trim().length() == 0)) {
+    if ((paramayql == null) || (paramayql.jdField_a_of_type_JavaLangString == null) || (paramayql.jdField_a_of_type_JavaLangString.trim().length() == 0)) {
       return;
     }
     synchronized (this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_Awvi = paramawvi;
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_Awuv = paramawuv;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_Ayql = paramayql;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_Aypy = paramaypy;
       ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable, 32);
       ThreadManager.excute(this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable, 32, null, false);
       return;
@@ -77,8 +77,8 @@ public class FunctionSearchEngine
   {
     synchronized (this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_Awvi = null;
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_Awuv = null;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_Ayql = null;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_Aypy = null;
       ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable, 32);
       return;
     }
@@ -92,7 +92,7 @@ public class FunctionSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FunctionSearchEngine
  * JD-Core Version:    0.7.0.1
  */

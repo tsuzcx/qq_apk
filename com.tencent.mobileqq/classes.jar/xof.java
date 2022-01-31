@@ -1,82 +1,112 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.widgets.TabLayout;
-import com.tencent.biz.widgets.TabLayout.TabAdapter.1;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.net.URL;
 
-public abstract class xof<T>
-  extends BaseAdapter
+class xof
+  implements URLDrawable.DownloadListener, URLDrawable.URLDrawableListener
 {
-  protected Context a;
-  public TabLayout a;
-  protected List<T> a;
+  public static String c;
+  public static int f = 1;
+  public static int g = 2;
+  public static int h = 4;
+  public static int i = 8;
+  public static int j = 16;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  String jdField_a_of_type_JavaLangString;
+  xoh jdField_a_of_type_Xoh;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString = "";
+  int c;
+  int d = 0;
+  int e = 0;
   
-  public xof(Context paramContext, List<T> paramList)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    jdField_c_of_type_JavaLangString = "story_url_drawable";
   }
   
-  protected abstract int a();
-  
-  public void a(TabLayout paramTabLayout)
+  public xof(xoh paramxoh, URLDrawable paramURLDrawable, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout = paramTabLayout;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.jdField_a_of_type_Xoh = paramxoh;
+    this.jdField_a_of_type_JavaLangString = paramURLDrawable.getURL().toString();
+    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  protected abstract void a(xog paramxog, T paramT, int paramInt);
-  
-  public int getCount()
+  void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size() + 1;
-    }
-    return 0;
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_b_of_type_Long;
+    wta.b(jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Long), String.valueOf(l1 - l2), String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString });
   }
   
-  public Object getItem(int paramInt)
+  public void onFileDownloadFailed(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
+    this.jdField_b_of_type_Int |= g;
+    this.jdField_a_of_type_Int = paramInt;
+    wsv.a("Q.qqstory.UIUtils", "onFileDownloadFailed() %s, error(%d), %s, %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
-  public long getItemId(int paramInt)
+  public void onFileDownloadStarted()
   {
-    return paramInt;
+    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    wsv.a("Q.qqstory.UIUtils", "onFileDownloadStarted() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onFileDownloadSucceed(long paramLong)
   {
-    Object localObject1 = null;
-    if (paramInt < getCount() - 1)
-    {
-      Object localObject2 = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a(paramInt);
-      paramView = (View)localObject2;
-      if (localObject2 == null)
-      {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), paramViewGroup, false);
-        paramView.post(new TabLayout.TabAdapter.1(this, paramInt, paramView));
-      }
-      localObject2 = new xog(paramView, null);
-      paramView.setTranslationX(0.0F);
-      paramViewGroup = localObject1;
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        paramViewGroup = this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
-      a((xog)localObject2, paramViewGroup, paramInt);
-      return paramView;
-    }
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559967, paramViewGroup, false);
+    this.jdField_b_of_type_Int |= f;
+    this.jdField_a_of_type_Long = paramLong;
+    wsv.a("Q.qqstory.UIUtils", "onFileDownloadSucceed() %s, %d, %s, %d", this.jdField_a_of_type_JavaLangString, Long.valueOf(paramLong), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  {
+    this.jdField_b_of_type_Int |= j;
+    wsv.a("Q.qqstory.UIUtils", "onLoadCanceled() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    a();
+    this.e += 1;
+    this.jdField_a_of_type_Xoh.a(this);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.jdField_b_of_type_Int |= i;
+    wsv.a("Q.qqstory.UIUtils", "onLoadFialed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    a();
+    this.jdField_c_of_type_Int += 1;
+    this.jdField_a_of_type_Xoh.a(this);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    wsv.a("Q.qqstory.UIUtils", "onLoadProgressed(%d/10000%%) %s, %s, %d", Integer.valueOf(paramInt), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.jdField_b_of_type_Int |= h;
+    wsv.a("Q.qqstory.UIUtils", "onLoadSuccessed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    a();
+    this.d += 1;
+    this.jdField_a_of_type_Xoh.a(this);
+  }
+  
+  public String toString()
+  {
+    return "DrawableListenerHolder{url='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileSize=" + this.jdField_a_of_type_Long + ", startTime=" + this.jdField_b_of_type_Long + ", errorCode=" + this.jdField_a_of_type_Int + ", result=" + this.jdField_b_of_type_Int + ", loadFailTime=" + this.jdField_c_of_type_Int + ", loadSuccessTime=" + this.d + ", loadCancelTime=" + this.e + ", op_name='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xof
  * JD-Core Version:    0.7.0.1
  */

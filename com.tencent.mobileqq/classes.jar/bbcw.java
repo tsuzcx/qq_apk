@@ -1,81 +1,30 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.cache.Sizeable;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bbcw
+class bbcw
+  implements View.OnTouchListener
 {
-  public static Bitmap a(String paramString)
+  bbcw(bbcv parambbcv) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
+    switch (paramMotionEvent.getAction())
     {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Bitmap))) {
-        return (Bitmap)paramString;
+    }
+    for (;;)
+    {
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
+        }
       }
     }
-    return null;
-  }
-  
-  public static Sizeable a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Sizeable))) {
-        return (Sizeable)paramString;
-      }
-    }
-    return null;
-  }
-  
-  public static rpd a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString instanceof rpd)) {
-        return (rpd)paramString;
-      }
-    }
-    return null;
-  }
-  
-  public static void a(String paramString, Bitmap paramBitmap)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramBitmap);
-  }
-  
-  public static void a(String paramString, Sizeable paramSizeable)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramSizeable == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramSizeable);
-  }
-  
-  public static void a(String paramString, rpd paramrpd)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramrpd == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramrpd);
   }
 }
 

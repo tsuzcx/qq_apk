@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
-
 public class xah
-  implements DialogInterface.OnClickListener
 {
-  public xah(MoveFileActivity paramMoveFileActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(xah paramxah)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangString = paramxah.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramxah.jdField_a_of_type_Int;
+    this.b = paramxah.b;
+    this.c = paramxah.c;
+    this.d = paramxah.d;
+  }
+  
+  public String toString()
+  {
+    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xah
  * JD-Core Version:    0.7.0.1
  */

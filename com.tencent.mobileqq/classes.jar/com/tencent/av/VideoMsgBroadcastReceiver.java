@@ -8,10 +8,10 @@ import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import ldx;
+import lga;
 import mqq.app.AccountNotMatchException;
 import mqq.app.MobileQQ;
-import mtj;
+import mwd;
 
 public class VideoMsgBroadcastReceiver
   extends BroadcastReceiver
@@ -96,7 +96,7 @@ public class VideoMsgBroadcastReceiver
                 }
                 localObject = localVideoAppInterface.a();
                 if (str2 != null) {
-                  ((VideoController)localObject).f(str2, 0);
+                  ((VideoController)localObject).e(str2, 0);
                 }
                 if (!str3.equals("com.tencent.av.ui.VChatActivity")) {
                   break;
@@ -153,14 +153,14 @@ public class VideoMsgBroadcastReceiver
     } while (!str3.equals("tencent.video.q2v.sendQueryRoomInfoRequest"));
     long l1 = paramIntent.getLongExtra("roomId", 0L);
     long l2 = paramIntent.getLongExtra("peerUin", 0L);
-    long l3 = mtj.a(paramIntent);
+    long l3 = mwd.a(paramIntent);
     QLog.w("VideoMsgBroadcastReceiver", 1, "QueryRoomInfo.receive, roomId[" + l1 + "], peerUin[" + l2 + "], seq[" + l3 + "]");
     ((VideoController)localObject).c(l1, l2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.VideoMsgBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

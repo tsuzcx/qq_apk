@@ -1,40 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class argb
-  extends BroadcastReceiver
+class argb
+  implements areh
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  argb(arfz paramarfz) {}
+  
+  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HuayangPluginLauncher", 2, "onReceive ACTION_FORCE_UPDATE");
-    }
-    if (TextUtils.equals(paramIntent.getAction(), "action_iv_plugin_update"))
+    this.a.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      paramIntent = (InstalledPlugin)paramIntent.getSerializableExtra("plugin");
-      if (paramIntent != null)
-      {
-        boolean bool = arge.a(paramContext, paramIntent).a();
-        if (QLog.isColorLevel()) {
-          QLog.d("HuayangPluginLauncher", 2, "onReceive isCalled:" + bool);
-        }
-        if (!bool)
-        {
-          com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity.a = 0L;
-          Process.killProcess(Process.myPid());
-        }
+      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      this.a.f = paramString;
+      if (this.a.jdField_a_of_type_Ardn != null) {
+        this.a.jdField_a_of_type_Ardn.e();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argb
  * JD-Core Version:    0.7.0.1
  */

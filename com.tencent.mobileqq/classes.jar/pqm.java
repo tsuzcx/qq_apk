@@ -1,29 +1,59 @@
-import android.support.annotation.NonNull;
-import java.util.HashSet;
-import java.util.Set;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
 public class pqm
+  extends ViewBase
 {
-  public int a;
-  public long a;
-  public Set<String> a;
-  public Set<String> b = new HashSet();
+  private NativeGridImageView a;
   
-  public pqm()
+  public pqm(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    super(paramVafContext);
+    this.a = new NativeGridImageView(paramVafContext.getContext());
   }
   
-  @NonNull
-  public String toString()
+  public void a(ArticleInfo paramArticleInfo)
   {
-    return "time:" + this.jdField_a_of_type_Long + "effectTime:" + this.jdField_a_of_type_Int + "  " + this.jdField_a_of_type_JavaUtilSet + "  " + this.b;
+    this.a.a(paramArticleInfo);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pqm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,41 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 final class awvf
-  implements Comparator<awoe>
+  extends bavo
 {
-  private final ajxl jdField_a_of_type_Ajxl;
-  private final askn jdField_a_of_type_Askn;
-  
-  awvf(QQAppInterface paramQQAppInterface)
+  awvf(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_Askn = ((askn)paramQQAppInterface.getManager(11));
-    this.jdField_a_of_type_Ajxl = ((ajxl)paramQQAppInterface.getManager(51));
+    super(paramQQAppInterface, paramString1);
   }
   
-  public int a(awoe paramawoe1, awoe paramawoe2)
+  protected void realCancel()
   {
-    int i = -1;
-    paramawoe1 = this.jdField_a_of_type_Askn.c(((awna)paramawoe1).e());
-    paramawoe2 = this.jdField_a_of_type_Askn.c(((awna)paramawoe2).e());
-    if ((paramawoe1 == null) || (paramawoe2 == null)) {
-      if ((paramawoe1 == null) && (paramawoe2 == null)) {
-        i = 0;
-      }
+    QLog.i("QSplash@QbossSplashUtil", 1, "ctrl realCancel");
+  }
+  
+  protected void realStart()
+  {
+    QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes adid" + this.jdField_a_of_type_JavaLangString);
+    awvh.a(this.b + ".splashtemp");
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("qbossSplashresAppid", this.jdField_a_of_type_JavaLangString);
+    awve.a("qbossSplashrequest", (HashMap)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("QSplash@QbossSplashDownloadManager", 2, "qboss_ad_res_png realStart, key  " + this.jdField_a_of_type_JavaLangString + "_" + this.b);
     }
-    boolean bool2;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return i;
-          } while (paramawoe2 == null);
-          return 1;
-          if ((paramawoe1.uin.equals("0")) && (paramawoe2.uin.equals("0"))) {
-            break;
-          }
-          if ((!paramawoe1.uin.equals("0")) && (!paramawoe2.uin.equals("0"))) {
-            return 0;
-          }
-        } while (!paramawoe2.uin.equals("0"));
-        return 1;
-        bool1 = this.jdField_a_of_type_Ajxl.a(paramawoe1.unifiedCode, true);
-        bool2 = this.jdField_a_of_type_Ajxl.a(paramawoe2.unifiedCode, true);
-        if ((!bool1) && (!bool2)) {
-          break;
-        }
-        if ((bool1) && (bool2)) {
-          return 0;
-        }
-      } while (bool2);
-      return 1;
-      boolean bool1 = TextUtils.isEmpty(paramawoe1.pinyinFirst);
-      bool2 = TextUtils.isEmpty(paramawoe2.pinyinFirst);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-    } while (bool2);
-    return 1;
-    return paramawoe1.pinyinFirst.toLowerCase().charAt(0) - paramawoe2.pinyinFirst.toLowerCase().charAt(0);
+    localObject = new baps();
+    ((baps)localObject).jdField_a_of_type_Bapx = new awvg(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b + ".splashtemp", this.c, this.d);
+    ((baps)localObject).jdField_a_of_type_JavaLangString = this.d;
+    ((baps)localObject).jdField_a_of_type_Int = 0;
+    ((baps)localObject).c = (this.b + ".splashtemp");
+    ((baqy)this.app.getNetEngine(0)).a((baqv)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awvf
  * JD-Core Version:    0.7.0.1
  */

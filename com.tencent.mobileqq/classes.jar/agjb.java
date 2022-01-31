@@ -1,30 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 
-public class agjb
-  implements agjv
+class agjb
+  implements View.OnClickListener
 {
-  public agjb(BindVerifyActivity paramBindVerifyActivity) {}
+  agjb(agiy paramagiy) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
-    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("bind_mobile", this.a.a());
-      localIntent.putExtra("check_permission_result", paramContext);
-      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-      return;
-    }
+    aekt.n = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agjb
  * JD-Core Version:    0.7.0.1
  */

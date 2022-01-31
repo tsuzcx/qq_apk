@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.location.ui;
 
-import arwf;
-import arwj;
-import bcql;
+import atnb;
+import atnf;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class LocationPickController$3
   implements Runnable
 {
-  public LocationPickController$3(arwj paramarwj) {}
+  public LocationPickController$3(atnf paramatnf) {}
   
   public void run()
   {
-    if (arwj.a(this.this$0).getCount() <= 0) {
-      arwj.a(this.this$0);
+    if (atnf.a(this.this$0).getCount() <= 0) {
+      atnf.a(this.this$0);
     }
-    bcql.a(arwj.a(this.this$0), 1, 2131694002, 0).a();
+    QQToast.a(atnf.a(this.this$0), 1, 2131694118, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickController.3
  * JD-Core Version:    0.7.0.1
  */

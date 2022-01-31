@@ -1,32 +1,40 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.process.data.CmGameManager.GameEventReceiver.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+
 public class akuc
-  implements ajte
+  extends BroadcastReceiver
 {
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
-    {
+    if (paramIntent == null) {
+      QLog.e("cmgame_process.CmGameManager", 1, "[onReceive] intent null");
     }
     do
     {
       do
       {
         return;
-      } while (paramObject == null);
-      if (!paramBoolean) {
-        break;
+        paramContext = paramIntent.getAction();
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
+        }
+      } while ((!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
+      paramContext = paramIntent.getStringExtra("data");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] data=", paramContext });
       }
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 2);
-    a(true, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue());
-    return;
-    a(false, false, -1);
+    } while (TextUtils.isEmpty(paramContext));
+    ThreadManagerV2.excute(new CmGameManager.GameEventReceiver.1(this, paramContext), 16, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akuc
  * JD-Core Version:    0.7.0.1
  */

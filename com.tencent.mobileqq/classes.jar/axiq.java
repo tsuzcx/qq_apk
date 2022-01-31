@@ -1,13 +1,12 @@
-import com.tencent.maxvideo.common.AVIOStruct;
+import com.tencent.mobileqq.remind.widget.WheelView;
 
-public class axiq
+public abstract interface axiq
 {
-  public AVIOStruct a;
-  public byte[] a;
+  public abstract long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axiq
  * JD-Core Version:    0.7.0.1
  */

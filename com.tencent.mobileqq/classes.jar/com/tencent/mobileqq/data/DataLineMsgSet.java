@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import apvd;
-import awzy;
+import arof;
+import ayvc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,7 +34,7 @@ public class DataLineMsgSet
   public static boolean isCanReciveOrResend(DataLineMsgRecord paramDataLineMsgRecord)
   {
     if ((!paramDataLineMsgRecord.issuc) || (paramDataLineMsgRecord.fileMsgStatus == 1L) || (paramDataLineMsgRecord.fileMsgStatus == 2L)) {}
-    while ((paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!apvd.a(paramDataLineMsgRecord.path)))) {
+    while ((paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!arof.a(paramDataLineMsgRecord.path)))) {
       return true;
     }
     return false;
@@ -466,7 +466,7 @@ public class DataLineMsgSet
   
   public boolean isTimeOut()
   {
-    return awzy.a() - this.mLastArriveTime > 90L;
+    return ayvc.a() - this.mLastArriveTime > 90L;
   }
   
   public void printlog()
@@ -614,7 +614,7 @@ public class DataLineMsgSet
   
   public void setTimeOut()
   {
-    this.mLastArriveTime = (awzy.a() - 95L);
+    this.mLastArriveTime = (ayvc.a() - 95L);
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "设置timeOut, mLastArriveTime[" + this.mLastArriveTime);
     }
@@ -654,7 +654,7 @@ public class DataLineMsgSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.DataLineMsgSet
  * JD-Core Version:    0.7.0.1
  */

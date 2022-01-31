@@ -1,45 +1,56 @@
-import android.graphics.Canvas;
-import com.tencent.av.doodle.MySurfaceView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class lmj
-  extends lmi
+  extends Handler
 {
-  private lmk a;
+  WeakReference<CameraUtils> a;
   
-  public lmj(int paramInt)
+  public lmj(CameraUtils paramCameraUtils, Looper paramLooper)
   {
-    this.jdField_a_of_type_Lmk = new lmk();
-    a(paramInt);
+    super(paramLooper);
+    this.a = new WeakReference(paramCameraUtils);
   }
-  
-  private void a(int paramInt)
-  {
-    this.jdField_a_of_type_Lmk.a(BaseApplicationImpl.getApplication(), 2131230735, paramInt);
-    this.jdField_a_of_type_Lmk.a(this.jdField_a_of_type_AndroidGraphicsPathMeasure);
-  }
-  
-  public void a() {}
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Lmk.a((float)paramLong / 1000.0F);
+    removeMessages(1);
   }
   
-  public void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
+  public void a(String paramString, long paramLong, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Lmk.a(paramCanvas);
+    QLog.w("CameraUtils", 1, "sendReopenCameraMsg[" + paramString + "], size[" + paramInt1 + ", " + paramInt2 + "], subthread[" + getLooper().getThread().getId() + "], seq[" + paramLong + "]");
+    a(paramLong);
+    paramString = obtainMessage(1);
+    paramString.arg1 = paramInt1;
+    paramString.arg2 = paramInt2;
+    paramString.obj = Long.valueOf(paramLong);
+    sendMessageDelayed(paramString, 1000L);
   }
   
-  public void c(float paramFloat1, float paramFloat2)
+  public void handleMessage(Message paramMessage)
   {
-    super.c(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Lmk.a(null);
+    if ((this.a != null) && (this.a.get() != null) && (paramMessage != null) && (paramMessage.what == 1)) {
+      if (!(paramMessage.obj instanceof Long)) {
+        break label75;
+      }
+    }
+    label75:
+    for (long l = Long.valueOf(0L).longValue();; l = 0L)
+    {
+      CameraUtils.a((CameraUtils)this.a.get(), l, paramMessage.arg1, paramMessage.arg2);
+      super.handleMessage(paramMessage);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmj
  * JD-Core Version:    0.7.0.1
  */

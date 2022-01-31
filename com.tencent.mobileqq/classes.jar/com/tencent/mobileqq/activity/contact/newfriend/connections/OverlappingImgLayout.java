@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import afmi;
+import ahjn;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import baxy;
-import baxz;
-import bbdv;
+import bcws;
+import bcwt;
+import bdcq;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ThemeImageView;
@@ -19,8 +19,8 @@ public class OverlappingImgLayout
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
-  private baxy jdField_a_of_type_Baxy;
-  baxz jdField_a_of_type_Baxz = new afmi(this);
+  private bcws jdField_a_of_type_Bcws;
+  bcwt jdField_a_of_type_Bcwt = new ahjn(this);
   private List<ThemeImageView> jdField_a_of_type_JavaUtilList = new ArrayList();
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private int b;
@@ -44,7 +44,7 @@ public class OverlappingImgLayout
   private Bitmap a(String paramString)
   {
     Object localObject;
-    if (this.jdField_a_of_type_Baxy == null)
+    if (this.jdField_a_of_type_Bcws == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("OverlappingImgLayout", 2, "mFaceDecoder null");
@@ -55,11 +55,11 @@ public class OverlappingImgLayout
     do
     {
       return localObject;
-      localBitmap = this.jdField_a_of_type_Baxy.a(1, paramString, 0, (byte)4);
+      localBitmap = this.jdField_a_of_type_Bcws.a(1, paramString, 0, (byte)4);
       localObject = localBitmap;
     } while (localBitmap != null);
-    if (!this.jdField_a_of_type_Baxy.a()) {
-      this.jdField_a_of_type_Baxy.a(paramString, 200, false, 1, true, (byte)0, 4);
+    if (!this.jdField_a_of_type_Bcws.a()) {
+      this.jdField_a_of_type_Bcws.a(paramString, 200, false, 1, true, (byte)0, 4);
     }
     return null;
   }
@@ -82,12 +82,12 @@ public class OverlappingImgLayout
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
       localThemeImageView = (ThemeImageView)this.jdField_a_of_type_JavaUtilList.get(i);
-      int k = (int)bbdv.a(getContext(), 1.0F);
+      int k = (int)bdcq.a(getContext(), 1.0F);
       localThemeImageView.setPadding(k, k, k, k);
       if (a()) {
         break label134;
       }
-      localThemeImageView.setBackgroundResource(2130837583);
+      localThemeImageView.setBackgroundResource(2130837584);
     }
     for (;;)
     {
@@ -100,28 +100,28 @@ public class OverlappingImgLayout
       break label21;
       break;
       label134:
-      localThemeImageView.setBackgroundResource(2130837584);
+      localThemeImageView.setBackgroundResource(2130837585);
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString, baxy parambaxy)
+  public void a(int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString, bcws parambcws)
   {
-    this.jdField_a_of_type_Int = ((int)bbdv.a(getContext(), paramInt1));
-    this.b = ((int)bbdv.a(getContext(), paramInt2));
+    this.jdField_a_of_type_Int = ((int)bdcq.a(getContext(), paramInt1));
+    this.b = ((int)bdcq.a(getContext(), paramInt2));
     this.c = paramInt3;
     setOrientation(0);
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Baxy = parambaxy;
-    if (parambaxy != null) {
-      parambaxy.a(this.jdField_a_of_type_Baxz);
+    this.jdField_a_of_type_Bcws = parambcws;
+    if (parambcws != null) {
+      parambcws.a(this.jdField_a_of_type_Bcwt);
     }
     setImgs();
     a();
   }
   
-  public void a(int paramInt1, int paramInt2, String[] paramArrayOfString, baxy parambaxy)
+  public void a(int paramInt1, int paramInt2, String[] paramArrayOfString, bcws parambcws)
   {
-    a(paramInt1, paramInt2, (int)bbdv.a(getContext(), 4.0F), paramArrayOfString, parambaxy);
+    a(paramInt1, paramInt2, (int)bdcq.a(getContext(), 4.0F), paramArrayOfString, parambcws);
   }
   
   public void setImgs()
@@ -147,7 +147,7 @@ public class OverlappingImgLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.connections.OverlappingImgLayout
  * JD-Core Version:    0.7.0.1
  */

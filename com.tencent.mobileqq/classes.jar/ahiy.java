@@ -1,26 +1,31 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationClidFragment;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
 
-final class ahiy
-  extends ClickableSpan
+public class ahiy
+  implements bhwu
 {
-  ahiy(ahjb paramahjb, String paramString) {}
+  public ahiy(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_Ahjb.a(this.jdField_a_of_type_JavaLangString);
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(false);
+    }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void b(View paramView)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,75 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bduw
-  implements DialogInterface.OnClickListener
 {
-  public bduw(QidianProfileCardActivity paramQidianProfileCardActivity, URLDrawable paramURLDrawable, String paramString) {}
+  private static volatile boolean a;
+  private static boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(String paramString)
   {
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    if (!a) {}
+    String str3;
+    try
+    {
+      b = "mounted".equals(Environment.getExternalStorageState());
+      a = true;
+      String str1 = paramString;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        str1 = paramString;
+        if (b)
+        {
+          str3 = bdux.a().a();
+          if ((!paramString.startsWith("/")) && (paramString.indexOf(":") <= 0)) {
+            break label149;
+          }
+          str1 = paramString;
+          if (str3 != null)
+          {
+            str1 = paramString;
+            if (!paramString.startsWith(str3))
+            {
+              str1 = paramString;
+              if (paramString.startsWith(bdux.a().b()))
+              {
+                String[] arrayOfString = paramString.split(bdux.a().b());
+                str1 = paramString;
+                if (arrayOfString.length >= 2) {
+                  str1 = str3 + arrayOfString[1];
+                }
+              }
+            }
+          }
+        }
+      }
+      return str1;
+    }
+    catch (Exception localException)
+    {
+      label149:
+      do
+      {
+        for (;;)
+        {
+          QLog.e("VFSAssistantUtils", 1, "getSDKPrivatePath is called!", localException);
+        }
+        String str2 = paramString;
+      } while (str3 == null);
+    }
+    return str3 + File.separator + paramString;
+  }
+  
+  public static String b(String paramString)
+  {
+    return new File(paramString).getCanonicalPath();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bduw
  * JD-Core Version:    0.7.0.1
  */

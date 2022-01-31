@@ -1,55 +1,37 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.animation.DecelerateInterpolator;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
 import com.tencent.qphone.base.util.QLog;
 
-class axxd
-  implements View.OnTouchListener
+public class axxd
+  implements TextWatcher
 {
-  axxd(axxb paramaxxb, View paramView) {}
+  public axxd(EditActivity paramEditActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void afterTextChanged(Editable paramEditable)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    EditActivity.a = true;
+    azmj.b(this.a.app, "CliOper", "", "", "signiture", "set_clk_mdf", 0, 0, "", "", "", "");
+    if ((EditActivity.a(this.a).getSelectionStart() == 7) && (EditActivity.a(this.a).getText().toString().trim().length() == 7)) {
+      EditActivity.a(this.a).setSelection(paramEditable.length());
     }
-    for (;;)
-    {
-      return false;
-      if (!this.jdField_a_of_type_Axxb.b)
-      {
-        this.jdField_a_of_type_Axxb.b = true;
-        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131373071);
-        paramMotionEvent = localObjectAnimator;
-        if (localObjectAnimator == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("StructMsgItemLayout12", 2, "animator is null");
-          }
-          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
-          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
-          paramMotionEvent.setDuration(100L);
-          paramView.setTag(2131373071, paramMotionEvent);
-        }
-        paramMotionEvent.start();
-      }
-      return true;
-      this.jdField_a_of_type_Axxb.a.onClick(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Axxb.b = false;
-      paramView = (ObjectAnimator)paramView.getTag(2131373071);
-      if (paramView != null) {
-        paramView.reverse();
-      }
-    }
+    EditActivity.a(this.a);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.d("EditActivity", 2, "beforeTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt2 + ", after = " + paramInt3);
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.d("EditActivity", 2, "onTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxd
  * JD-Core Version:    0.7.0.1
  */

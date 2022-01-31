@@ -1,38 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
 
 public class opf
-  implements AladdinConfigHandler
+  implements View.OnClickListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public opf(ReadInJoyCommentLikeView paramReadInJoyCommentLikeView) {}
+  
+  public void onClick(View paramView)
   {
-    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = oof.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "native_article")) {
-        bhvy.a("native_proteus_offline_bid", str2);
+    if (ors.j()) {}
+    while (ReadInJoyCommentLikeView.a(this.a) == null) {
+      return;
+    }
+    if (ReadInJoyCommentLikeView.a(this.a).isLiked()) {
+      if (ReadInJoyCommentLikeView.a(this.a) != null) {
+        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 0, 0);
       }
     }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    bhvy.a("native_proteus_offline_bid", "0");
+    for (;;)
+    {
+      ReadInJoyCommentLikeView.a(this.a, ReadInJoyCommentLikeView.a(this.a));
+      ReadInJoyCommentLikeView.a(this.a);
+      return;
+      if (ReadInJoyCommentLikeView.a(this.a) != null) {
+        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 1, 0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opf
  * JD-Core Version:    0.7.0.1
  */

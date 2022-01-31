@@ -1,41 +1,77 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
-class atri
-  implements View.OnClickListener
+public class atri
+  extends allb
 {
-  atri(atqw paramatqw, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
+  public atri(LoginWelcomeManager paramLoginWelcomeManager) {}
   
-  public void onClick(View paramView)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, String.format("onCardDownload isSuccess=%s data=%s", new Object[] { Boolean.valueOf(paramBoolean), paramObject }));
+    }
+    if ((LoginWelcomeManager.a(this.a) == null) || ((paramBoolean) && (paramObject != null))) {}
+    for (;;)
     {
-      atqw.a(this.jdField_a_of_type_Atqw, 1);
-      new axrc(this.jdField_a_of_type_Atqw.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Atqw.a.a.a).a();
+      try
+      {
+        Object localObject = LoginWelcomeManager.a(this.a).getBundle("request");
+        String str = ((Bundle)localObject).getString("uin");
+        long l1 = Long.parseLong(LoginWelcomeManager.a(this.a).getCurrentAccountUin());
+        long l2 = Long.parseLong(str);
+        localObject = ((Bundle)localObject).getString("authSig");
+        LoginWelcomeManager.a(this.a).addObserver(this.a.a);
+        alzf localalzf = (alzf)LoginWelcomeManager.a(this.a).a(20);
+        paramObject = localalzf.a((Card)paramObject);
+        localalzf.a(str, paramObject, 1, null, (String)localObject, localalzf.a(paramObject, l1, l2), null);
+        LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("LoginWelcomeManager", 1, "onCardDownload fail.", paramObject);
+        continue;
+      }
+      this.a.b();
+    }
+  }
+  
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
+  {
+    int i = 1;
+    QLog.d("LoginWelcomeManager", 1, String.format("mCardObserver.onUpdateAvatar isSuccess=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    if (TextUtils.equals(LoginWelcomeManager.a(this.a).getCurrentAccountUin(), paramString)) {
+      if (LoginWelcomeManager.a(this.a) != null)
+      {
+        paramString = LoginWelcomeManager.a(this.a).getBundle("request");
+        if (paramString != null) {
+          if (!paramBoolean) {
+            break label130;
+          }
+        }
+      }
     }
     for (;;)
     {
-      atqw.b(this.jdField_a_of_type_Atqw);
+      paramString.putInt("result", i);
+      paramString.putString("path", LoginWelcomeManager.a(this.a));
+      LoginWelcomeManager.a(this.a, null);
+      this.a.b();
+      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
       return;
-      if (paramView == this.b)
-      {
-        atqw.a(this.jdField_a_of_type_Atqw, 2);
-        new axrc(this.jdField_a_of_type_Atqw.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Atqw.a.a.a).a();
-      }
-      else if (paramView == this.c)
-      {
-        atqw.a(this.jdField_a_of_type_Atqw, 3);
-        new axrc(this.jdField_a_of_type_Atqw.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Atqw.a.a.a).a();
-      }
+      label130:
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atri
  * JD-Core Version:    0.7.0.1
  */

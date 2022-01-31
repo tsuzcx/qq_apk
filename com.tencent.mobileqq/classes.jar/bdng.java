@@ -1,93 +1,41 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.tmassistantbase.util.GlobalUtil;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLDecoder;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class bdng
+public abstract class bdng
+  extends RecyclerView.OnScrollListener
 {
-  public static String a(String paramString)
+  private boolean a;
+  
+  public abstract void a();
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    bdii.b("CommonUtils_", "genExistedAPKFileNameByUrl url = " + paramString);
-    Object localObject2 = null;
-    if (paramString.contains(".apk"))
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
     {
-      localObject2 = paramString.trim().substring(paramString.lastIndexOf("/") + 1).trim();
-      localObject1 = localObject2;
-      if (((String)localObject2).contains("?")) {
-        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("?"));
-      }
-      localObject2 = localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        paramString = c(b((String)localObject1));
-        bdii.b("CommonUtils_", "genExistedAPKFileNameByUrl  fileName = " + paramString);
-        return paramString;
+      paramInt = localGridLayoutManager.findLastCompletelyVisibleItemPosition();
+      if ((((bdnd)paramRecyclerView.getAdapter()).a(paramInt).a == 4) && (this.a)) {
+        a();
       }
     }
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject2 = GlobalUtil.calcMD5AsString(paramString);
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = Integer.toString(Math.abs(paramString.hashCode()));
-      }
-      localObject1 = (String)localObject1 + ".apk";
-    }
-    bdii.b("CommonUtils_", "genExistedAPKFileNameByUrl fileName == null, return fileName = " + (String)localObject1);
-    return localObject1;
   }
   
-  public static void a(ImageView paramImageView, String paramString)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    try
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramString = new URL(paramString);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestHeight = 234;
-      localURLDrawableOptions.mRequestWidth = 234;
-      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130841351);
-      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130841351);
-      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      paramString.setAutoDownload(true);
-      paramString.setURLDrawableListener(new bdnh(paramImageView));
-      paramString.startDownload();
-      paramImageView.setImageDrawable(paramString);
+      this.a = bool;
       return;
     }
-    catch (MalformedURLException paramImageView)
-    {
-      paramImageView.printStackTrace();
-    }
-  }
-  
-  public static boolean a()
-  {
-    return bdlr.a().b();
-  }
-  
-  private static String b(String paramString)
-  {
-    if (paramString != null) {
-      return URLDecoder.decode(paramString);
-    }
-    return "";
-  }
-  
-  private static String c(String paramString)
-  {
-    return paramString.replace("?", "_").replace("*", "_").replace(" ", "_").replace("$", "_").replace("&", "_").replace("@", "_").replace("#", "_").replace("<", "_").replace(">", "_").replace("|", "_").replace(":", "_").replace("/", "_").replace("\\", "_").replace("\"", "_");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdng
  * JD-Core Version:    0.7.0.1
  */

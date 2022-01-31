@@ -1,38 +1,38 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
-import qvx;
+import rlo;
 
 public class VideofeedsUserGuideController$4
   implements Runnable
 {
-  public VideofeedsUserGuideController$4(qvx paramqvx) {}
+  public VideofeedsUserGuideController$4(rlo paramrlo) {}
   
   public void run()
   {
-    TranslateAnimation localTranslateAnimation = qvx.b(this.this$0);
+    TranslateAnimation localTranslateAnimation = rlo.b(this.this$0);
     if (localTranslateAnimation != null)
     {
-      qvx.a(this.this$0).setVisibility(0);
-      qvx.a(this.this$0).findViewById(2131378761).setVisibility(0);
-      qvx.a(this.this$0).findViewById(2131378755).setVisibility(0);
-      qvx.a(this.this$0).findViewById(2131378756).setVisibility(0);
-      qvx.a(this.this$0).bringToFront();
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)qvx.a(this.this$0).getLayoutParams();
-      localMarginLayoutParams.setMargins(0, 0, 0, actj.a(187.0F, qvx.a(this.this$0).getResources()));
-      qvx.a(this.this$0).setLayoutParams(localMarginLayoutParams);
-      qvx.a(this.this$0).startAnimation(localTranslateAnimation);
+      rlo.a(this.this$0).setVisibility(0);
+      rlo.a(this.this$0).findViewById(2131379379).setVisibility(0);
+      rlo.a(this.this$0).findViewById(2131379373).setVisibility(0);
+      rlo.a(this.this$0).findViewById(2131379374).setVisibility(0);
+      rlo.a(this.this$0).bringToFront();
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)rlo.a(this.this$0).getLayoutParams();
+      localMarginLayoutParams.setMargins(0, 0, 0, aekt.a(187.0F, rlo.a(this.this$0).getResources()));
+      rlo.a(this.this$0).setLayoutParams(localMarginLayoutParams);
+      rlo.a(this.this$0).startAnimation(localTranslateAnimation);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideofeedsUserGuideController.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,32 @@
-import android.text.SpannableString;
-import android.text.style.AbsoluteSizeSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.widget.XEditTextEx;
-import com.tribe.async.dispatch.IEventReceiver;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class vqf
-  implements IEventReceiver
+  extends vqk<StoryVideoItem>
 {
-  public View.OnClickListener a;
-  public final View a;
-  public ImageButton a;
-  public TextView a;
-  public XEditTextEx a;
-  public String a;
-  public vqi a;
-  
-  public vqf(View paramView)
+  public vqf(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a(paramView);
+    super(paramVideoViewVideoHolder, null);
   }
   
-  private void a(View paramView)
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131363006));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364584));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)paramView.findViewById(2131365514));
-    paramView = new SpannableString(ajya.a(2131710808));
-    paramView.setSpan(new AbsoluteSizeSpan(14, true), 0, paramView.length(), 33);
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(paramView);
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(new vqh(this));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new vqg(this));
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
   }
   
-  public int a()
+  public void onError(@NonNull Error paramError)
   {
-    return this.jdField_a_of_type_AndroidViewView.getVisibility();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void b(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-  }
-  
-  public boolean isValidate()
-  {
-    return true;
+    super.onError(paramError);
+    wsv.d(this.a.a, "VideoPrepareSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqf
  * JD-Core Version:    0.7.0.1
  */

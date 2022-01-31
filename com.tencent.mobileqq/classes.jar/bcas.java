@@ -1,151 +1,77 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Map;
 
-public class bcas
+class bcas
+  extends SimpleObserver<bbzu>
 {
-  public static long a;
-  public static WebViewPluginEngine a;
-  public static final Object a;
-  public static HashMap<Integer, bcau> a;
-  public static volatile boolean a;
-  public static WebViewPluginEngine b;
-  public static HashMap<Integer, bcau> b;
-  public static volatile boolean b;
-  public static volatile boolean c;
-  public static volatile boolean d;
+  bcas(bcar parambcar, bbzu parambbzu) {}
   
-  static
+  public void a(bbzu parambbzu)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    b = new HashMap();
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public static void a()
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_Long > 3600000L)
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageItem", 2, new Object[] { "ImageItem onNext. info position=", Integer.valueOf(parambbzu.c), ", old status=", Integer.valueOf(parambbzu.g), ", result=", parambbzu });
+    }
+    parambbzu.g = 3;
+    parambbzu.e = 100;
+    this.jdField_a_of_type_Bcar.jdField_a_of_type_JavaUtilMap.remove(parambbzu);
+    if (this.jdField_a_of_type_Bcar.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      bcau localbcau;
-      HashMap localHashMap;
-      while (localIterator.hasNext())
+      Object localObject = this.jdField_a_of_type_Bcar.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Bbzu.c);
+      if ((localObject instanceof bcav))
       {
-        localbcau = (bcau)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbcau.a));
-        localHashMap.put("totalNum", String.valueOf(localbcau.b));
-        localHashMap.put("hasProc", String.valueOf(localbcau.c));
-        localHashMap.put("noProc", String.valueOf(localbcau.d));
-        axrn.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actPreloadWebview", true, 0L, 0L, localHashMap, null);
+        localObject = (bcav)localObject;
+        if (QLog.isColorLevel()) {
+          QLog.d("ImageItem", 2, new Object[] { "ImageItem onNext. info hash=", Integer.valueOf(parambbzu.hashCode()), ", result hash=", Integer.valueOf(parambbzu.hashCode()), ", info position=", Integer.valueOf(parambbzu.c), ", result position=", Integer.valueOf(parambbzu.c), ", vh position=", Integer.valueOf(((bcav)localObject).jdField_a_of_type_Bbzp.c), ",vh hash=", Integer.valueOf(localObject.hashCode()) });
+        }
+        if (parambbzu.d.equals(((bcav)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag()))
+        {
+          ((bcav)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
+          ((bcav)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+          ((bcav)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(parambbzu.e, parambbzu.d);
+        }
+        this.jdField_a_of_type_Bcar.jdField_a_of_type_Bcam.a((RecyclerView.ViewHolder)localObject, true);
       }
-      localIterator = b.values().iterator();
-      while (localIterator.hasNext())
+    }
+    bcli.a("hw_entry_upload", "upload_image", "1", "", String.valueOf(System.currentTimeMillis() - parambbzu.a), "");
+    this.jdField_a_of_type_Bcar.a(0, false);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageItem", 2, new Object[] { "ImageItem onError: ", paramError.getMessage(), ", info position =", Integer.valueOf(this.jdField_a_of_type_Bbzu.c), ", info hash=", Integer.valueOf(this.jdField_a_of_type_Bbzu.hashCode()), ", info old status=", Integer.valueOf(this.jdField_a_of_type_Bbzu.g) });
+    }
+    this.jdField_a_of_type_Bbzu.g = 2;
+    this.jdField_a_of_type_Bcar.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Bbzu);
+    QLog.d("ImageItem", 1, paramError, new Object[0]);
+    paramError = paramError.getMessage();
+    if (this.jdField_a_of_type_Bcar.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
+    {
+      Object localObject = this.jdField_a_of_type_Bcar.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Bbzu.c);
+      if ((localObject instanceof bcav))
       {
-        localbcau = (bcau)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbcau.a));
-        localHashMap.put("totalNum", String.valueOf(localbcau.b));
-        localHashMap.put("hasProc", String.valueOf(localbcau.c));
-        localHashMap.put("noProc", String.valueOf(localbcau.d));
-        axrn.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actJumpWebview", true, 0L, 0L, localHashMap, null);
-      }
-      jdField_a_of_type_JavaUtilHashMap.clear();
-      b.clear();
-      jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "reportInterval...");
+        localObject = (bcav)localObject;
+        if (this.jdField_a_of_type_Bbzu.d.equals(((bcav)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag())) {
+          ((bcar)((bbzl)this.jdField_a_of_type_Bcar.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(1)).a((bcav)localObject, this.jdField_a_of_type_Bbzu, 0);
+        }
       }
     }
-  }
-  
-  public static void a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_accelerator_mode_", 3);
-    localBundle.putInt("from", paramInt);
-    bcgn.a().a(localBundle);
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
+    if (!paramError.startsWith("c_")) {
+      bcli.a("hw_entry_upload", "upload_image", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Bbzu.a), "");
     }
-    return paramAppRuntime.getClass().getSimpleName().equals("ReaderRuntime");
-  }
-  
-  public static void b(int paramInt)
-  {
-    int j = 0;
-    Object localObject = (amwu)ampl.a().a(158);
-    if ((localObject != null) && (((amwu)localObject).b == 1)) {
-      return;
+    if (this.jdField_a_of_type_Bbzu.d.equals(this.jdField_a_of_type_Bcar.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Bcar.a(0, false);
     }
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (!bool)
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("from", 305);
-      ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.preload_web_process");
-      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-      ((Intent)localObject).putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "preloadWebview...");
-      }
-    }
-    localObject = new bcau(paramInt);
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      localObject = (bcau)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    }
-    ((bcau)localObject).b += 1;
-    int k = ((bcau)localObject).c;
-    if (bool)
-    {
-      i = 1;
-      label184:
-      ((bcau)localObject).c = (i + k);
-      k = ((bcau)localObject).d;
-      if (!bool) {
-        break label244;
-      }
-    }
-    label244:
-    for (int i = j;; i = 1)
-    {
-      ((bcau)localObject).d = (k + i);
-      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
-      if (((bcau)localObject).b <= 3) {
-        break;
-      }
-      a();
-      return;
-      i = 0;
-      break label184;
-    }
-  }
-  
-  public static boolean b(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getClass().getSimpleName().equals("VipComicPluginRuntime");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcas
  * JD-Core Version:    0.7.0.1
  */

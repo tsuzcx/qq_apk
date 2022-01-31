@@ -1,15 +1,38 @@
-import com.tencent.common.config.AppSetting;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
-public class axfr
+final class axfr
+  implements Downloader.DownloadListener
 {
-  public static boolean a()
+  axfr(QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack) {}
+  
+  public void onDownloadCanceled(String paramString)
   {
-    return AppSetting.b;
+    if (this.a != null) {
+      this.a.onResult(false);
+    }
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (this.a != null) {
+      this.a.onResult(false);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (this.a != null) {
+      this.a.onResult(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axfr
  * JD-Core Version:    0.7.0.1
  */

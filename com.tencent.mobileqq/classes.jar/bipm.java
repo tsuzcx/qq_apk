@@ -1,28 +1,21 @@
-import android.support.annotation.Nullable;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class bipm
-  implements bjos<Boolean>
+public class bipm
+  implements DialogInterface.OnClickListener
 {
-  bipm(bipi parambipi) {}
+  public bipm(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    View localView = bipi.f(this.a);
-    if (paramBoolean.booleanValue()) {}
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    QlinkShareJumpActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bipm
  * JD-Core Version:    0.7.0.1
  */

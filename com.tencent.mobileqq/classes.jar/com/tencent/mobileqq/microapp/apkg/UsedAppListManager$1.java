@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import aukp;
-import aukq;
+import awbw;
+import awbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
@@ -21,7 +21,7 @@ class UsedAppListManager$1
         return;
         ??? = UsedAppListManager.access$000(this.this$0).getEntityManagerFactory().createEntityManager();
       } while (??? == null);
-      localList = ((aukp)???).a(AppInfo.class, AppInfo.class.getSimpleName(), false, null, null, null, null, "timestamp desc", null);
+      localList = ((awbw)???).a(AppInfo.class, AppInfo.class.getSimpleName(), false, null, null, null, null, "timestamp desc", null);
     } while (localList == null);
     synchronized (UsedAppListManager.access$100(this.this$0))
     {

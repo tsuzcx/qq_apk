@@ -1,30 +1,30 @@
-import com.tencent.mobileqq.app.MayknowRecommendManager.3.1;
-import com.tencent.mobileqq.app.MayknowRecommendManager.3.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class akac
-  extends ajxj
+  extends alwq
 {
-  akac(akaa paramakaa) {}
+  public akac(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  protected void onAddFriend(String paramString)
+  public void a(Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "onAddFriend " + paramString);
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
     }
-    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.1(this, paramString));
-  }
-  
-  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.2(this, paramBoolean, paramString));
+    if (paramObject != null) {
+      this.a.stopTitleProgress();
+    }
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    }
+    QQSpecialCareSettingActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akac
  * JD-Core Version:    0.7.0.1
  */

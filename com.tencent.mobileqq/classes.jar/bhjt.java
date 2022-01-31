@@ -1,14 +1,10 @@
-import cooperation.qzone.plugin.PluginRecord;
-
-abstract interface bhjt
+public abstract interface bhjt
 {
-  public abstract void a(boolean paramBoolean, PluginRecord paramPluginRecord);
-  
-  public abstract void d(PluginRecord paramPluginRecord);
+  public abstract void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhjt
  * JD-Core Version:    0.7.0.1
  */

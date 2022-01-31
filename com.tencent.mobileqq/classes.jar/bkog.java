@@ -1,21 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.graphics.Bitmap;
 
-public class bkog
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bkog
 {
-  public bkog(PickerContainer paramPickerContainer) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.setAlpha(PickerContainer.b(this.a).floatValue());
-    this.a.invalidate();
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkog
  * JD-Core Version:    0.7.0.1
  */

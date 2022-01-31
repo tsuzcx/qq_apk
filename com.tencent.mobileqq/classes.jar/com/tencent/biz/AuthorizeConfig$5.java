@@ -3,12 +3,12 @@ package com.tencent.biz;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.TicketManager;
-import mvs;
+import myl;
 
 public class AuthorizeConfig$5
   implements Runnable
 {
-  public AuthorizeConfig$5(mvs parammvs, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
+  public AuthorizeConfig$5(myl parammyl, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
   
   public void run()
   {

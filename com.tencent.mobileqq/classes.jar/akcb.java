@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.widget.RecentDynamicAvatarView;
 
 public class akcb
-  implements Comparator<PhoneContact>
+  extends RecyclerView.ViewHolder
 {
-  public akcb(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecentDynamicAvatarView jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
+  TextView b;
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public akcb(SessionClearFragment paramSessionClearFragment, View paramView)
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364254));
+    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131367808));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370958));
+    this.b = ((TextView)paramView.findViewById(2131376753));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcb
  * JD-Core Version:    0.7.0.1
  */

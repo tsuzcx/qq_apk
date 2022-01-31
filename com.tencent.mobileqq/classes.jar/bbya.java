@@ -1,35 +1,47 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import java.lang.ref.WeakReference;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bbya
-  extends aywn
+  implements INetInfoHandler
 {
-  private WeakReference<View> a;
+  public bbya(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public bbya(View paramView)
+  public void onNetMobile2None()
   {
-    this.a = new WeakReference(paramView);
+    this.a.b.cancel();
+    this.a.b.start();
   }
   
-  public static void a(URLDrawable paramURLDrawable, View paramView)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (paramURLDrawable.getStatus() != 1) {
-      paramURLDrawable.setURLDrawableListener(new bbya(paramView));
-    }
+    this.a.b.cancel();
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onNetNone2Mobile(String paramString)
   {
-    paramURLDrawable = (View)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.invalidate();
-    }
+    this.a.b.cancel();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.b.cancel();
+    this.a.b.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbya
  * JD-Core Version:    0.7.0.1
  */

@@ -1,185 +1,85 @@
-import android.text.Spannable;
-import android.text.TextUtils;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
 
-public class azcb
-  extends azby
+class azcb
+  implements bapx
 {
-  public int a;
-  public Spannable a;
-  public ArrayList<azbz> a;
-  public JSONObject a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c;
-  public long c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m;
-  public int n;
+  azcb(azca paramazca, String paramString, DownloadInfo paramDownloadInfo, int paramInt1, int paramInt2) {}
   
-  public azcb(JSONObject paramJSONObject)
+  public void onResp(baqw parambaqw)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("del");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("views_num");
-    this.jdField_f_of_type_Int = paramJSONObject.optInt("hot_score");
-    this.m = paramJSONObject.optInt("commentnum_v2");
-    this.jdField_c_of_type_Long = paramJSONObject.optLong("uin");
-    this.jdField_l_of_type_Int = paramJSONObject.optInt("likes");
-    this.jdField_g_of_type_Int = paramJSONObject.optInt("readnum");
-    this.jdField_h_of_type_Int = paramJSONObject.optInt("theme_id");
-    this.jdField_k_of_type_Int = paramJSONObject.optInt("alreadyzan");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("pid");
-    this.jdField_b_of_type_Long = paramJSONObject.optLong("bid");
-    if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) || (this.jdField_b_of_type_Long == 0L)) {
-      throw new IllegalArgumentException("pid = " + this.jdField_d_of_type_JavaLangString + ", bid = " + this.jdField_b_of_type_Long);
+    baps localbaps = (baps)parambaqw.jdField_a_of_type_Baqv;
+    if (this.jdField_a_of_type_Azca.jdField_a_of_type_Baps == localbaps) {
+      this.jdField_a_of_type_Azca.jdField_a_of_type_Baps = null;
     }
-    label251:
-    Object localObject;
-    if (paramJSONObject.optInt("relation") == 1)
-    {
-      bool1 = true;
-      this.jdField_c_of_type_Boolean = bool1;
-      this.jdField_g_of_type_JavaLangString = paramJSONObject.optString("detail_page_url").replace("${bid}", String.valueOf(this.jdField_b_of_type_Long)).replace("${pid}", this.jdField_d_of_type_JavaLangString);
-      if (paramJSONObject.optInt("star") != 1) {
-        break label684;
-      }
-      bool1 = true;
-      this.jdField_d_of_type_Boolean = bool1;
-      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("gbar_home_url_android");
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject.optJSONObject("report");
-      localObject = paramJSONObject.optJSONObject("user_info");
-      if (localObject != null)
-      {
-        this.n = ((JSONObject)localObject).optInt("sex");
-        this.jdField_k_of_type_JavaLangString = ((JSONObject)localObject).optString("nickname");
-        this.jdField_l_of_type_JavaLangString = ((JSONObject)localObject).optString("headimgurl");
-      }
-      localObject = paramJSONObject.optJSONObject("theme_info");
-      if (localObject != null)
-      {
-        this.jdField_d_of_type_Long = ((JSONObject)localObject).optLong("creator_uin");
-        this.jdField_i_of_type_Int = ((JSONObject)localObject).optInt("censor_status");
-        this.jdField_j_of_type_Int = ((JSONObject)localObject).optInt("recommend_status");
-        this.jdField_h_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_intro");
-        this.jdField_i_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_name");
-      }
-      localObject = paramJSONObject.optJSONObject("post");
-      this.jdField_j_of_type_JavaLangString = ((JSONObject)localObject).optString("content");
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("cs_source");
-      localObject = ((JSONObject)localObject).optJSONArray("ugc_video_list").optJSONObject(0);
-      this.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("duration");
-      this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("height");
-      this.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("width");
-      this.jdField_b_of_type_Boolean = ((JSONObject)localObject).optBoolean("isLocalVideo");
-      this.jdField_e_of_type_Long = ((JSONObject)localObject).optLong("size");
-      this.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("text");
-      this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("url");
-      this.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("vid");
-      this.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("video_thumbe_url");
-      if (this.jdField_b_of_type_Int / this.jdField_a_of_type_Int <= 0.75F) {
-        break label689;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("QavGesture", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbaps.jdField_a_of_type_JavaLangString, Integer.valueOf(parambaqw.jdField_a_of_type_Int), Integer.valueOf(parambaqw.c), this.jdField_a_of_type_JavaLangString }));
     }
-    label684:
-    label689:
-    for (boolean bool1 = bool2;; bool1 = false)
+    int i;
+    if (parambaqw.jdField_a_of_type_Int == 0)
     {
-      this.jdField_a_of_type_Boolean = bool1;
-      paramJSONObject = paramJSONObject.optJSONArray("gbar_info_list");
-      if (paramJSONObject == null) {
-        return;
-      }
-      while (i1 < paramJSONObject.length())
+      parambaqw = new File(localbaps.c);
+      if (parambaqw.exists())
       {
-        localObject = paramJSONObject.optJSONObject(i1);
-        long l1 = ((JSONObject)localObject).optLong("bid");
-        if (((JSONObject)localObject).optInt("bar_class") != 101)
-        {
-          localObject = new azbz(l1, ((JSONObject)localObject).optString("name") + ajya.a(2131715109), this.jdField_e_of_type_JavaLangString.replace("${bid}", String.valueOf(l1)));
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        }
-        i1 += 1;
-      }
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label251;
-    }
-  }
-  
-  public static ArrayList<azcb> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList(paramJSONArray.length());
-    int i1 = 0;
-    for (;;)
-    {
-      if (i1 < paramJSONArray.length()) {
         try
         {
-          azcb localazcb = new azcb(paramJSONArray.optJSONObject(i1));
-          if (localazcb != null) {
-            localArrayList.add(new azcb(paramJSONArray.optJSONObject(i1)));
-          }
-          i1 += 1;
+          String str = parambaqw.getParent();
+          bdcs.a(localbaps.c, str, false);
+          azbz.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.jdField_a_of_type_Int);
+          i = 1;
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            if (QLog.isColorLevel()) {
-              QLog.e("TribeVideoItem", 2, QLog.getStackTraceString(localException));
-            }
-            Object localObject = null;
+            localException.printStackTrace();
+            i = 0;
           }
+          azbz.a(-1);
+          this.jdField_a_of_type_Azca.jdField_a_of_type_Boolean = false;
+          return;
         }
+        parambaqw.delete();
       }
     }
-    return localArrayList;
+    for (;;)
+    {
+      if (i != 0)
+      {
+        azbz.a(100 / this.jdField_a_of_type_Azca.jdField_a_of_type_Int + this.jdField_a_of_type_Azca.b);
+        parambaqw = this.jdField_a_of_type_Azca;
+        parambaqw.b += 100 / this.jdField_a_of_type_Azca.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_Azca.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.b - 1)) {
+          this.jdField_a_of_type_Azca.jdField_a_of_type_Boolean = false;
+        }
+        return;
+      }
+      i = 0;
+    }
   }
   
-  public boolean equals(Object paramObject)
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
   {
-    if (this == paramObject) {}
-    do
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      azbz.a(i / this.jdField_a_of_type_Azca.jdField_a_of_type_Int + this.jdField_a_of_type_Azca.b);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
       }
-      paramObject = (azcb)paramObject;
-    } while ((this.jdField_d_of_type_JavaLangString.equals(paramObject.jdField_d_of_type_JavaLangString)) && (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long));
-    return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azcb
  * JD-Core Version:    0.7.0.1
  */

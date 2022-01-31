@@ -1,89 +1,104 @@
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class atfa
-  implements View.OnClickListener
+  implements bhvu
 {
-  public atfa(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public atfa(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void a(bhvt parambhvt)
   {
-    if (paramView == ChooseInterestTagActivity.b(this.a)) {
-      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
-      {
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
-        ChooseInterestTagActivity.a(this.a, true, true);
-      }
-    }
-    label371:
-    do
+    int i = parambhvt.a - 1;
+    Object localObject1 = null;
+    parambhvt = null;
+    for (;;)
     {
-      do
+      JSONArray localJSONArray;
+      int j;
+      try
       {
-        return;
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
-        break;
-        if (paramView == this.a.leftView)
-        {
-          bfni.b(ChooseInterestTagActivity.a(this.a));
-          if (ChooseInterestTagActivity.a(this.a))
-          {
-            this.a.finish();
-            return;
-          }
-          localObject = this.a.getIntent();
-          paramView = (View)localObject;
-          if (localObject == null) {
-            paramView = new Intent();
-          }
-          Collections.reverse(ChooseInterestTagActivity.a(this.a));
-          paramView.putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
-          paramView.putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
-          this.a.setResult(-1, paramView);
-          this.a.finish();
+        String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+        localJSONArray = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("list");
+        if (localJSONArray == null) {
+          break;
+        }
+        if (i >= localJSONArray.length()) {
           return;
         }
-        if (paramView != this.a.rightViewText) {
-          break label371;
+        if (TextUtils.isEmpty(str)) {
+          break label169;
         }
-        bfni.b(ChooseInterestTagActivity.a(this.a));
-      } while (!ChooseInterestTagActivity.a(this.a));
-      if (ChooseInterestTagActivity.a(this.a).isEmpty())
-      {
-        ChooseInterestTagActivity.a(this.a, ajya.a(2131701805));
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { String.valueOf(i + 1) });
         return;
       }
-      ChooseInterestTagActivity.a(this.a, 0, ajya.a(2131701799), 0);
-      Collections.reverse(ChooseInterestTagActivity.a(this.a));
-      paramView = new atfm(ChooseInterestTagActivity.a(this.a));
-      paramView.a.addAll(ChooseInterestTagActivity.a(this.a));
-      Object localObject = new ArrayList(1);
-      ((List)localObject).add(paramView);
-      ChooseInterestTagActivity.a(this.a).a((List)localObject, 0, 1);
+      catch (Exception localException1)
+      {
+        i = 0;
+        localObject1 = parambhvt;
+        j = i;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("UiApiPlugin", 2, "showPopupMenu Exception: " + localException1.getMessage());
+          j = i;
+          localObject1 = parambhvt;
+        }
+        switch (j)
+        {
+        default: 
+          return;
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().loadUrl((String)localObject1);
       return;
-    } while (paramView != ChooseInterestTagActivity.a(this.a));
-    ChooseInterestTagActivity.a(this.a).setText(ajya.a(2131701822));
-    paramView = ChooseInterestTagActivity.a(this.a);
-    int j = ChooseInterestTagActivity.a(this.a);
-    int k = ChooseInterestTagActivity.b(this.a);
-    if (ChooseInterestTagActivity.a(this.a)) {}
-    for (int i = 1;; i = 0)
-    {
-      paramView.a("", j, k, 30, 0, i);
+      label169:
+      Object localObject2 = localJSONArray.optJSONObject(i);
+      i = ((JSONObject)localObject2).optInt("target");
+      parambhvt = (bhvt)localObject1;
+      try
+      {
+        localObject1 = ((JSONObject)localObject2).optString("jumpUrl");
+        parambhvt = (bhvt)localObject1;
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
+        j = i;
+        if (!bool) {
+          continue;
+        }
+        return;
+      }
+      catch (Exception localException2) {}
+      parambhvt = new Bundle();
+      if ((this.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity))
+      {
+        localObject2 = new Intent(((BasePluginActivity)this.jdField_a_of_type_AndroidAppActivity).getOutActivity(), QQBrowserActivity.class);
+        ((Intent)localObject2).putExtras(parambhvt);
+        ((Intent)localObject2).putExtra("url", (String)localObject1);
+        ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
+        ((Intent)localObject2).setFlags(0);
+        this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject2);
+        return;
+      }
+      localObject2 = new Intent(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getClass());
+      ((Intent)localObject2).putExtras(parambhvt);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
+      ((Intent)localObject2).setFlags(0);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject2);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfa
  * JD-Core Version:    0.7.0.1
  */

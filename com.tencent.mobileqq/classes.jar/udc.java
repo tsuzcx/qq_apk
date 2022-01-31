@@ -1,10 +1,19 @@
-public abstract interface udc
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class udc
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean a(ucz paramucz, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
+  udc(ucz paramucz) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     udc
  * JD-Core Version:    0.7.0.1
  */

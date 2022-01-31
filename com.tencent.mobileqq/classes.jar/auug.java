@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-public final class auug
-  implements Parcelable.Creator<PersonalityLabelPhoto>
+public class auug
+  implements behy<oidb_0x8e4.RspBody>
 {
-  public PersonalityLabelPhoto a(Parcel paramParcel)
-  {
-    return new PersonalityLabelPhoto(paramParcel);
-  }
+  public auug(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public PersonalityLabelPhoto[] a(int paramInt)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    return new PersonalityLabelPhoto[paramInt];
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    {
+      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomInviteActivity.a = this.a.b;
+    }
+    for (;;)
+    {
+      this.a.a(true);
+      return;
+      paramRspBody = this.a;
+      GameRoomInviteActivity.a = null;
+      paramRspBody.b = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auug
  * JD-Core Version:    0.7.0.1
  */

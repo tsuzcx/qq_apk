@@ -1,36 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
-class akyl
-  extends aler
+public class akyl
+  implements DialogInterface.OnClickListener
 {
-  akyl(akyk paramakyk) {}
+  public akyl(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(akyx.a, 2, "onArSoDownloadSuccess");
-    }
-    this.a.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(akyx.a, 2, "onArSoDownloadProcess process=" + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(akyx.a, 2, "onArSoDownloadFail");
-    }
-    this.a.a();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyl
  * JD-Core Version:    0.7.0.1
  */

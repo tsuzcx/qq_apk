@@ -13,7 +13,7 @@ class QZoneShareActivity$13
   {
     this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
     this.this$0.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848116);
+    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848501);
     this.this$0.d = true;
     this.this$0.e = false;
     QZoneShareActivity.a(this.this$0, this.this$0.d);
@@ -21,7 +21,7 @@ class QZoneShareActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.13
  * JD-Core Version:    0.7.0.1
  */

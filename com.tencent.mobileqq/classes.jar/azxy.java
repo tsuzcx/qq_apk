@@ -1,30 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class azxy
-  implements DialogInterface.OnClickListener
+class azxy
+  implements Callable<File>
 {
-  public azxy(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, azvn paramazvn) {}
+  azxy(azxx paramazxx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public File a()
   {
-    switch (paramInt)
+    try
     {
-    default: 
-      return;
+      boolean bool = azxx.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("studyroom.CdnPmUpdater", 2, "isNeedDownload:" + bool);
+      }
+      if (!bool)
+      {
+        localFile = this.a.getLatest();
+        return localFile;
+      }
+      File localFile = this.a.a();
+      return localFile;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a > 0L)
+    finally
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(this.jdField_a_of_type_Azvn);
-      return;
+      azxx.a(this.a, false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(3, null, null, this.jdField_a_of_type_Azvn);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azxy
  * JD-Core Version:    0.7.0.1
  */

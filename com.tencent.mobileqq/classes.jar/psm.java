@@ -1,64 +1,36 @@
 import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyLifeCycleLinearLayout;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
 
-public class psm
-  extends pqq
+class psm
+  extends NativeTextImp
 {
-  public psm(Context paramContext, baxy parambaxy, ram paramram)
+  psm(psl parampsl, Context paramContext)
   {
-    super(paramContext, parambaxy, paramram);
+    super(paramContext);
   }
   
-  public pqq a()
+  public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
-  }
-  
-  public void b()
-  {
-    super.b();
-    ((ComponentContentNoteCard)this.jdField_a_of_type_Pqp).c();
-  }
-  
-  public pqq d()
-  {
-    ReadInJoyLifeCycleLinearLayout localReadInJoyLifeCycleLinearLayout = new ReadInJoyLifeCycleLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
-    localReadInJoyLifeCycleLinearLayout.setOrientation(1);
-    localReadInJoyLifeCycleLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_Pqp != null) && ((this.jdField_a_of_type_Pqp instanceof ComponentContentNoteCard))) {
-      localReadInJoyLifeCycleLinearLayout.addView((ComponentContentNoteCard)this.jdField_a_of_type_Pqp);
+    if (!TextUtils.isEmpty(getText()))
+    {
+      this.a.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
+      this.a.b.set(0.0F, 0.0F, getWidth() * psl.a(this.a) / 100.0F, getHeight());
+      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(psl.a(this.a)));
+      paramCanvas.drawRoundRect(this.a.jdField_a_of_type_AndroidGraphicsRectF, aekt.a(2.0F, getResources()), aekt.a(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
+      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(psl.b(this.a)));
+      paramCanvas.drawRoundRect(this.a.b, aekt.a(2.0F, getResources()), aekt.a(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localReadInJoyLifeCycleLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localReadInJoyLifeCycleLinearLayout);
-    return this;
-  }
-  
-  public pqq e()
-  {
-    return this;
-  }
-  
-  public pqq g()
-  {
-    this.jdField_a_of_type_Pqp = new ComponentContentNoteCard(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ram);
-    return this;
-  }
-  
-  public pqq o()
-  {
-    super.o();
-    return this;
+    super.draw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     psm
  * JD-Core Version:    0.7.0.1
  */

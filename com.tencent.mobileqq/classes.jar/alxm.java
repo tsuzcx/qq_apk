@@ -1,71 +1,68 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.SVIPHandler.1;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class alxm
-  implements alxn
+  implements alkr
 {
-  public final String a = alxl.a + "." + getClass().getSimpleName();
+  public alxm(SVIPHandler.1 param1, ansd paramansd) {}
   
-  public static final String a(String paramString1, String paramString2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return alyn.a() + File.separator + "_res/" + paramString1;
-  }
-  
-  public String a(alxq paramalxq)
-  {
-    return alyn.a() + File.separator + "_res/" + paramalxq.b + File.separator;
-  }
-  
-  public boolean a(alxq paramalxq)
-  {
-    String str = b(paramalxq);
     try
     {
-      boolean bool = new File(str).exists();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "needDownload.file exist|" + bool + "|" + paramalxq + "|" + str);
+      String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
+      if ((paramObject instanceof List))
+      {
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Object localObject = (BubbleDiyEntity)paramObject.next();
+            String str2;
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
+              this.jdField_a_of_type_Ansd.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
+              this.jdField_a_of_type_Ansd.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
+              this.jdField_a_of_type_Ansd.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
+            {
+              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
+              this.jdField_a_of_type_Ansd.b.add(localObject);
+            }
+          }
+        }
       }
-      if (!bool) {
-        return true;
-      }
+      return;
     }
-    catch (Throwable paramalxq)
+    catch (Exception paramObject)
     {
       if (QLog.isColorLevel()) {
-        QLog.i(this.a, 2, "isNeedDownload.exception happen.e=" + paramalxq.getMessage());
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
       }
-      paramalxq.printStackTrace();
     }
-    return false;
-  }
-  
-  public boolean a(alxq paramalxq, boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public String b(alxq paramalxq)
-  {
-    return a(paramalxq.b, paramalxq.c);
-  }
-  
-  public boolean b(alxq paramalxq)
-  {
-    boolean bool = true;
-    String str = aurn.a(b(paramalxq));
-    if (!paramalxq.b.equalsIgnoreCase(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 1, "checkDownloadFile.verify failed|" + str + "|" + paramalxq);
-      }
-      bool = false;
-    }
-    return bool;
+    this.jdField_a_of_type_Ansd.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxm
  * JD-Core Version:    0.7.0.1
  */

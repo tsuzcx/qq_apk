@@ -45,7 +45,7 @@ public class AioTitleLayout
   private TextView a()
   {
     if (this.a == null) {
-      this.a = ((TextView)findViewById(2131365233));
+      this.a = ((TextView)findViewById(2131365318));
     }
     return this.a;
   }
@@ -73,7 +73,7 @@ public class AioTitleLayout
         int j = localView.getLeft() + paramInt3;
         int k = localView.getRight() + paramInt3;
         if (QLog.isColorLevel()) {
-          QLog.d("AioTitleLayout", 2, new Object[] { "alignScreenHorizontalCenter() called with: l = [" + paramInt1 + "], r = [" + paramInt2 + "], diff = [" + paramInt3 + "], candidateLeft = [" + j + "]", ", candidateRight = [" + k + "]" });
+          QLog.d("AioTitleLayout", 2, new Object[] { "alignScreenHorizontalCenter() called with: l = [" + paramInt1 + "], r = [" + paramInt2 + "], diff = [" + paramInt3 + "], i = [" + i + "], candidateLeft = [" + j + "]", ", candidateRight = [" + k + "]" });
         }
         localView.layout(j, localView.getTop(), k, localView.getBottom());
       }
@@ -98,7 +98,7 @@ public class AioTitleLayout
   private TextView b()
   {
     if (this.b == null) {
-      this.b = ((TextView)findViewById(2131377350));
+      this.b = ((TextView)findViewById(2131377884));
     }
     return this.b;
   }
@@ -127,17 +127,23 @@ public class AioTitleLayout
     Object localObject1 = b();
     Object localObject2 = a();
     j = i / 2;
-    i = ((TextView)localObject1).getLeft() + paramInt1;
-    int k = (Math.max(((TextView)localObject1).getRight(), ((TextView)localObject2).getRight()) - ((TextView)localObject1).getLeft()) / 2;
-    QLog.d("AioTitleLayout", 2, "onLayout() called with: textLeftOnScreenX = [" + i + "], titleTv.getRight() = [" + ((TextView)localObject1).getRight() + "], countTv.getRight() = [" + ((TextView)localObject2).getRight() + "], titleTv.getLeft() = [" + ((TextView)localObject1).getLeft() + "], half width = [" + k + "]");
-    k = i + k;
-    i = j - k;
-    if (QLog.isColorLevel())
+    int k = paramInt1 + ((TextView)localObject1).getLeft();
+    int m = ((TextView)localObject1).getRight();
+    if (((TextView)localObject2).isShown())
     {
-      QLog.d("AioTitleLayout", 2, "onLayout() called with: changed = [" + paramBoolean + "], l = [" + paramInt1 + "], t = [" + paramInt2 + "], r = [" + paramInt3 + "], b = [" + paramInt4 + "]");
-      QLog.d("AioTitleLayout", 2, "onLayout() called with: screenCenterX = [" + j + "], textCenterX = [" + k + "], diff = [" + i + "]");
-    }
-    if (i == 0) {
+      i = ((TextView)localObject2).getRight();
+      i = (Math.max(m, i) - ((TextView)localObject1).getLeft()) / 2;
+      QLog.d("AioTitleLayout", 2, "onLayout() called with: textLeftOnScreenX = [" + k + "], titleTv.getRight() = [" + ((TextView)localObject1).getRight() + "], countTv.getRight() = [" + ((TextView)localObject2).getRight() + "], titleTv.getLeft() = [" + ((TextView)localObject1).getLeft() + "], half width = [" + i + "]");
+      k += i;
+      i = j - k;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AioTitleLayout", 2, "onLayout() called with: changed = [" + paramBoolean + "], l = [" + paramInt1 + "], t = [" + paramInt2 + "], r = [" + paramInt3 + "], b = [" + paramInt4 + "]");
+        QLog.d("AioTitleLayout", 2, "onLayout() called with: screenCenterX = [" + j + "], textCenterX = [" + k + "], diff = [" + i + "]");
+      }
+      if (i != 0) {
+        break label488;
+      }
       paramInt2 = i;
     }
     for (;;)
@@ -149,6 +155,9 @@ public class AioTitleLayout
         a(paramInt1, paramInt3, paramInt2);
       }
       return;
+      i = -2147483648;
+      break;
+      label488:
       if (i > 0)
       {
         paramInt2 = getMeasuredWidth() - a();
@@ -190,7 +199,7 @@ public class AioTitleLayout
         {
           paramInt2 = j;
           paramInt1 = i;
-          if (((View)localObject1).getId() != 2131377350)
+          if (((View)localObject1).getId() != 2131377884)
           {
             localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
             paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
@@ -283,7 +292,7 @@ public class AioTitleLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AioTitleLayout
  * JD-Core Version:    0.7.0.1
  */

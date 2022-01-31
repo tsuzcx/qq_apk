@@ -1,93 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-class xka
-  extends BroadcastReceiver
+public abstract interface xka
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
   
-  private xka(xjy paramxjy) {}
+  public abstract void a(String paramString);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    int i = paramIntent.getIntExtra("bc_seq", -1);
-    if (i < 0) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence = " + i + "| wrong seq");
-      }
-    }
-    byte[] arrayOfByte;
-    do
-    {
-      do
-      {
-        return;
-        if (i == this.jdField_a_of_type_Int) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence != seq | miss hit");
-      return;
-      paramContext = paramIntent.getExtras();
-      arrayOfByte = paramContext.getByteArray("bc_data");
-      i = paramIntent.getIntExtra("portal_type_key", -1);
-      if (arrayOfByte != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive data = null");
-    return;
-    if (QLog.isColorLevel())
-    {
-      if (i != 1009) {
-        break label286;
-      }
-      paramContext = "REQ_TYPE_GET_HEAD returned";
-    }
-    for (;;)
-    {
-      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceiver.onReceive | " + i + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + paramContext);
-      switch (i)
-      {
-      default: 
-        return;
-      }
-      this.jdField_a_of_type_Xjy.a(this.jdField_a_of_type_Int);
-      paramIntent = aurn.b(arrayOfByte);
-      paramContext = paramIntent;
-      if (paramIntent == null) {
-        paramContext = new JSONObject();
-      }
-      try
-      {
-        paramContext.put("errorCode", -1);
-        paramContext = paramContext.toString();
-        this.jdField_a_of_type_Xjy.a(this.jdField_a_of_type_JavaLangString, new String[] { paramContext });
-        return;
-        label286:
-        paramContext = paramContext.toString();
-      }
-      catch (JSONException paramContext)
-      {
-        for (;;)
-        {
-          paramContext.printStackTrace();
-          paramContext = paramIntent;
-        }
-      }
-    }
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xka
  * JD-Core Version:    0.7.0.1
  */

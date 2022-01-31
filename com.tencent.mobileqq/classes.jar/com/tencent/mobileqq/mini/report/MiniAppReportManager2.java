@@ -148,7 +148,7 @@ public class MiniAppReportManager2
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {}
     for (paramString4 = String.valueOf(paramMiniAppConfig.launchParam.scene);; paramString4 = null)
     {
-      localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, str2, paramString4, paramString1, paramString2, paramString5, paramString6, paramString7, null, null, str1, paramString3));
+      localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, str2, paramString4, paramString1, paramString2, paramString5, paramString6, paramString7, null, null, null, str1, paramString3));
       localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
       paramString1 = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
       MiniProgramReporter.getInstance().addDcData(paramString1);
@@ -527,7 +527,7 @@ public class MiniAppReportManager2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportManager2
  * JD-Core Version:    0.7.0.1
  */

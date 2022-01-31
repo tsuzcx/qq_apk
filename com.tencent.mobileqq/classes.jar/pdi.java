@@ -1,20 +1,23 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
-
-class pdi
-  implements bfsx
+public abstract class pdi
 {
-  pdi(pdh parampdh) {}
+  public Object a;
+  private String a;
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public pdi(String paramString)
   {
-    pdg.a(this.a.jdField_a_of_type_Pdg, this.a.jdField_a_of_type_Rfk, this.a.jdField_a_of_type_Pau, paramInt, paramArrayList, paramObject);
+    this.a = paramString;
   }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a(pdc parampdc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pdi
  * JD-Core Version:    0.7.0.1
  */

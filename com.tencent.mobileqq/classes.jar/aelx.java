@@ -1,34 +1,13 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aelx
-  extends aels
+public abstract interface aelx
 {
-  public AnimationView.AnimationInfo a;
-  public String b;
-  
-  public aelx(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.b = paramRedPacketInfo.background;
-      this.a = paramRedPacketInfo.animInfo;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.b != null) || (this.a != null);
-  }
+  public abstract void a(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelx
  * JD-Core Version:    0.7.0.1
  */

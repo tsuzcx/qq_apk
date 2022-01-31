@@ -1,24 +1,16 @@
-class bhmx
-  extends bhna
+import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
+
+public class bhmx
+  implements BeautyResource
 {
-  bhmx(bhmw parambhmw, String paramString, boolean paramBoolean)
+  public String getBeautyFilePath()
   {
-    super(paramString, paramBoolean);
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return "wspeed.qq.com";
+    return axkd.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhmx
  * JD-Core Version:    0.7.0.1
  */

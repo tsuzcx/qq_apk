@@ -1,50 +1,21 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
 
-public class bhdi
-  implements BusinessObserver
+class bhdi
+  implements BaselibLoader.OnLoadBaselibListener
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  bhdi(bhdd parambhdd) {}
   
-  protected boolean a(boolean paramBoolean, Bundle paramBundle)
+  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
   {
-    return false;
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (!a(paramBoolean, paramBundle)) {}
-    do
-    {
-      return;
-      if (paramInt == 0)
-      {
-        b(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1)
-      {
-        c(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 2)
-      {
-        a(paramBoolean, paramBundle);
-        return;
-      }
-    } while (paramInt != 100);
-    d(paramBoolean, paramBundle);
+    if ((paramInt == 0) && (paramBaselibContent != null)) {
+      this.a.a(paramBaselibContent.waServiceJsStr, paramBaselibContent.waServicePath);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhdi
  * JD-Core Version:    0.7.0.1
  */

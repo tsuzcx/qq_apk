@@ -1,26 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-
 class aqrj
-  extends AnimatorListenerAdapter
+  implements army
 {
-  aqrj(aqrf paramaqrf) {}
+  aqrj(aqrg paramaqrg) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.d.setVisibility(8);
-    this.a.a.setVisibility(8);
-    this.a.a.setFocusable(false);
-    aqrf.a(this.a).sendEmptyMessage(3);
+    arni.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aqrg.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrj
  * JD-Core Version:    0.7.0.1
  */

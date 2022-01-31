@@ -1,63 +1,44 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
 
 class xmm
-  extends anqq
+  extends Handler
 {
   xmm(xml paramxml) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  xmm(xml paramxml, Handler paramHandler)
   {
-    int i;
-    Object localObject;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == xml.a(this.a).key))
+    super(paramHandler.getLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      i = paramBundle.getInt("failcode");
-      localObject = paramBundle.getBundle("request");
-      if (i == 1000) {
-        break label80;
-      }
-      QLog.e("SSOWebviewPlugin", 2, "IPC failed ! failcode: " + i + "  reqParams: " + localObject);
+    default: 
+      throw new RuntimeException("Unknown message " + paramMessage);
+    case 1: 
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
     }
-    for (;;)
+    do
     {
       return;
-      label80:
-      String str = paramBundle.getString("cmd");
-      paramBundle = paramBundle.getBundle("response");
-      if (("ipc_cmd_certified_account_web_plugin_follow".equals(str)) && (localObject != null) && (paramBundle != null))
-      {
-        localObject = ((Bundle)localObject).getString("callback");
-        i = paramBundle.getInt("retCode");
-        paramBundle = new JSONObject();
-        try
-        {
-          paramBundle.put("retCode", i);
-          this.a.callJs((String)localObject, new String[] { paramBundle.toString() });
-          if (QLog.isColorLevel())
-          {
-            QLog.d("SSOWebviewPlugin", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW return! retCode: " + i);
-            return;
-          }
-        }
-        catch (Throwable paramBundle)
-        {
-          QLog.e("SSOWebviewPlugin", 2, "sso.PublicFollow failed! " + QLog.getStackTraceString(paramBundle));
-        }
-      }
+      this.a.a();
+      return;
+    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+      return;
     }
+    this.a.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmm
  * JD-Core Version:    0.7.0.1
  */

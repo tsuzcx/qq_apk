@@ -1,25 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
 
-class qlh
-  implements TVK_IMediaPlayer.OnCompletionListener
+public final class qlh
+  implements Parcelable.Creator<MultiBiuSameContent>
 {
-  qlh(qlg paramqlg) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public MultiBiuSameContent a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(qlg.a(), 2, "播放器状态回调 onCompletion");
-    }
-    if (qlg.a(this.a) != null) {
-      qlg.a(this.a).a(1, null, qlg.a(this.a), System.currentTimeMillis() - qlg.a(this.a));
-    }
+    return new MultiBiuSameContent(paramParcel);
+  }
+  
+  public MultiBiuSameContent[] a(int paramInt)
+  {
+    return new MultiBiuSameContent[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qlh
  * JD-Core Version:    0.7.0.1
  */

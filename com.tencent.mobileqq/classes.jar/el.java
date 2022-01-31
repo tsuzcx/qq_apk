@@ -1,21 +1,18 @@
-import com.dataline.activities.PrinterSubOptionActivity;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class el
 {
-  public int a;
   public long a;
+  public RelativeLayout a;
+  public TextView a;
   public String a;
   
-  public el(PrinterSubOptionActivity paramPrinterSubOptionActivity, int paramInt, long paramLong, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public el(ef paramef) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     el
  * JD-Core Version:    0.7.0.1
  */

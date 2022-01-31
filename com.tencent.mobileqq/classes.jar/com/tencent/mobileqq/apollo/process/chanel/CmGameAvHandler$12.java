@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajac;
-import ajba;
-import ajbc;
-import ajct;
-import ajla;
+import akro;
+import aksm;
+import akso;
+import akuf;
+import alcm;
 import android.text.TextUtils;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVRoomMulti;
@@ -16,37 +16,37 @@ import org.json.JSONArray;
 public class CmGameAvHandler$12
   implements Runnable
 {
-  public CmGameAvHandler$12(ajba paramajba, JSONArray paramJSONArray) {}
+  public CmGameAvHandler$12(aksm paramaksm, JSONArray paramJSONArray) {}
   
   public void run()
   {
     if (this.a.length() <= 0)
     {
-      ajba.a(this.this$0).clear();
-      ajla.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new ajbc(this));
+      aksm.a(this.this$0).clear();
+      alcm.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new akso(this));
     }
     for (;;)
     {
       return;
-      ajba.a(this.this$0).clear();
+      aksm.a(this.this$0).clear();
       String[] arrayOfString = new String[this.a.length()];
-      String str3 = ajac.a().getCurrentAccountUin();
+      String str3 = akro.a().getCurrentAccountUin();
       int i = 0;
       while (i < this.a.length())
       {
         try
         {
-          ajct localajct = ajac.a(ajba.a(this.this$0));
-          if (localajct != null)
+          akuf localakuf = akro.a(aksm.a(this.this$0));
+          if (localakuf != null)
           {
-            String str2 = localajct.c(this.a.get(i).toString());
+            String str2 = localakuf.c(this.a.get(i).toString());
             String str1 = str2;
             if (TextUtils.isEmpty(str2)) {
-              str1 = localajct.a(this.a.get(i).toString());
+              str1 = localakuf.a(this.a.get(i).toString());
             }
             arrayOfString[i] = str1;
-            ajba.a(this.this$0).add(str1);
-            ajba.a(this.this$0, arrayOfString, str3);
+            aksm.a(this.this$0).add(str1);
+            aksm.a(this.this$0, arrayOfString, str3);
           }
         }
         catch (Exception localException)
@@ -61,7 +61,7 @@ public class CmGameAvHandler$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.12
  * JD-Core Version:    0.7.0.1
  */

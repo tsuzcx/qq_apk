@@ -1,77 +1,76 @@
-import android.graphics.Matrix;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class aues
+  extends aueu<MessageForPtt>
 {
-  private static final Matrix a = new Matrix();
-  private static final Matrix b = new Matrix();
-  
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  public aues(MessageForPtt paramMessageForPtt)
   {
-    return Math.max(paramFloat2, Math.min(paramFloat1, paramFloat3));
+    super(paramMessageForPtt);
   }
   
-  public static void a(auep paramauep1, auep paramauep2, float paramFloat1, float paramFloat2, auep paramauep3, float paramFloat3, float paramFloat4, float paramFloat5)
+  protected int a()
   {
-    paramauep1.a(paramauep2);
-    if (!auep.a(paramauep2.c(), paramauep3.c())) {
-      paramauep1.b(b(paramauep2.c(), paramauep3.c(), paramFloat5), paramFloat1, paramFloat2);
+    return 3;
+  }
+  
+  public List<MsgBackupResEntity> a()
+  {
+    MsgBackupResEntity localMsgBackupResEntity = a();
+    localMsgBackupResEntity.msgSubType = 15;
+    localMsgBackupResEntity.filePath = ((MessageForPtt)this.a).getLocalFilePath();
+    if (!a(localMsgBackupResEntity.filePath)) {
+      return null;
     }
-    float f2 = paramauep2.d();
-    float f3 = paramauep3.d();
-    float f1;
-    if (Math.abs(f2 - f3) <= 180.0F)
-    {
-      if (auep.a(f2, f3)) {
-        break label189;
-      }
-      f1 = b(f2, f3, paramFloat5);
+    a(localMsgBackupResEntity.filePath, localMsgBackupResEntity);
+    Object localObject = a(15);
+    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
+    ((HashMap)localObject).put("uuid", ((MessageForPtt)this.a).urlAtServer);
+    ((HashMap)localObject).put("md5", ((MessageForPtt)this.a).md5);
+    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
+    if (((MessageForPtt)this.a).istroop == 1) {
+      ((HashMap)localObject).put("chatType", "1");
     }
     for (;;)
     {
-      if (!Float.isNaN(f1)) {
-        paramauep1.d(f1, paramFloat1, paramFloat2);
-      }
-      paramauep1.a(b(0.0F, paramFloat3 - paramFloat1, paramFloat5), b(0.0F, paramFloat4 - paramFloat2, paramFloat5));
-      return;
-      f1 = f2;
-      if (f2 < 0.0F) {
-        f1 = f2 + 360.0F;
-      }
-      f2 = f3;
-      if (f3 < 0.0F) {
-        f2 = f3 + 360.0F;
-      }
-      if (!auep.a(f1, f2)) {
-        f1 = b(f1, f2, paramFloat5);
+      localMsgBackupResEntity.extraDataStr = a((Map)localObject);
+      localObject = new ArrayList();
+      ((List)localObject).add(localMsgBackupResEntity);
+      return localObject;
+      if (((MessageForPtt)this.a).istroop == 3000) {
+        ((HashMap)localObject).put("chatType", "2");
       } else {
-        label189:
-        f1 = (0.0F / 0.0F);
+        ((HashMap)localObject).put("chatType", "3");
       }
     }
   }
   
-  public static void a(auep paramauep1, auep paramauep2, auep paramauep3, float paramFloat)
+  public void a()
   {
-    a(paramauep1, paramauep2, paramauep2.a(), paramauep2.b(), paramauep3, paramauep3.a(), paramauep3.b(), paramFloat);
+    Object localObject = (MessageForPtt)this.a;
+    a("packMsg uinType:" + ((MessageForPtt)localObject).istroop);
+    localObject = ((MessageForPtt)this.a).getRichText();
+    ((MessageForPtt)this.a).richText = ((im_msg_body.RichText)localObject);
   }
   
-  public static void a(float[] paramArrayOfFloat, auep paramauep1, auep paramauep2)
+  public void b()
   {
-    paramauep1.a(a);
-    a.invert(b);
-    b.mapPoints(paramArrayOfFloat);
-    paramauep2.a(a);
-    a.mapPoints(paramArrayOfFloat);
-  }
-  
-  public static float b(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
+    ((MessageForPtt)this.a).url = auet.a(((MessageForPtt)this.a).md5, ((MessageForPtt)this.a).selfuin);
+    if (((MessageForPtt)this.a).isSendFromLocal()) {
+      ((MessageForPtt)this.a).issend = 2;
+    }
+    ((MessageForPtt)this.a).isReadPtt = true;
+    ((MessageForPtt)this.a).serial();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aues
  * JD-Core Version:    0.7.0.1
  */

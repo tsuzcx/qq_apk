@@ -1,24 +1,12 @@
-import java.util.Comparator;
-
-class sqs
-  implements Comparator<spz>
+public abstract interface sqs
 {
-  sqs(sqr paramsqr) {}
+  public abstract void a();
   
-  public int a(spz paramspz1, spz paramspz2)
-  {
-    if (paramspz1.b == paramspz2.b) {
-      return 0;
-    }
-    if (paramspz1.b > paramspz2.b) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqs
  * JD-Core Version:    0.7.0.1
  */

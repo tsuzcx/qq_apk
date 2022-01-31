@@ -1,36 +1,54 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.6.1;
-import java.util.Random;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class aoom
-  implements View.OnClickListener
 {
-  public aoom(FilePreviewActivity paramFilePreviewActivity) {}
+  private String a = "";
+  private String b = "";
+  private String c = "";
+  private String d = "";
   
-  public void onClick(View paramView)
+  public static aoom a(JSONObject paramJSONObject)
   {
-    this.a.startTitleProgress();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131695129);
-    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-    if (this.a.jdField_a_of_type_Apet != null)
-    {
-      paramView = this.a.jdField_a_of_type_Apet;
-      paramView.a += 1;
+    if (paramJSONObject == null) {
+      return null;
     }
-    int i = new Random(System.currentTimeMillis()).nextInt(1500);
-    new Handler().postDelayed(new FilePreviewActivity.6.1(this), i % 1001 + 500);
+    aoom localaoom = new aoom();
+    localaoom.a = paramJSONObject.getString("tips");
+    localaoom.b = paramJSONObject.getString("buttonText");
+    localaoom.c = paramJSONObject.getString("url");
+    localaoom.d = paramJSONObject.getString("icon");
+    return localaoom;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public boolean a()
+  {
+    return (TextUtils.isEmpty(this.a)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d));
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoom
  * JD-Core Version:    0.7.0.1
  */

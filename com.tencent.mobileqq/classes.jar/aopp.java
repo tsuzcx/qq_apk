@@ -1,104 +1,107 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.1;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.2;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.3;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.4;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class aopp
-  implements bdld
+  extends aofy<aopo>
 {
-  public aopp(UniformDownloadActivity paramUniformDownloadActivity) {}
-  
-  public void installSucceed(String paramString1, String paramString2)
+  public int a()
   {
-    if ("1101070898".equals(paramString1))
-    {
-      paramString1 = UniformDownloadActivity.a(this.a);
-      UniformDownloadActivity.a(this.a, paramString1);
-      paramString1 = UniformDownloadActivity.a(this.a, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "tmastUrl=" + paramString1);
+    return 449;
+  }
+  
+  @NonNull
+  public aopo a(int paramInt)
+  {
+    QLog.i("QFileIPv6ConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    return new aopo();
+  }
+  
+  @Nullable
+  public aopo a(aogf[] paramArrayOfaogf)
+  {
+    QLog.i("QFileIPv6ConfigProcessor", 1, "onParsed");
+    if (paramArrayOfaogf != null) {
+      try
+      {
+        if (paramArrayOfaogf.length > 0)
+        {
+          paramArrayOfaogf = (aopo)aogt.a(paramArrayOfaogf[0].a, aopo.class);
+          return paramArrayOfaogf;
+        }
       }
-      UniformDownloadActivity.a(this.a, paramString1);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      catch (QStorageInstantiateException paramArrayOfaogf) {}
     }
+    return null;
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public Class<aopo> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadCancel " + paramDownloadInfo.e);
+    return aopo.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("QFileIPv6ConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public void a(aopo paramaopo)
+  {
+    if (paramaopo == null) {
+      QLog.i("QFileIPv6ConfigProcessor", 1, "onUpdate: newConf is null.");
     }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    label141:
+    for (;;)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadError " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadFinish " + paramDownloadInfo.e);
-    }
-    axqy.b(null, "dc00898", "", "", "0X8008F88", "0X8008F88", 1, 0, "", "", "", "");
-    this.a.runOnUiThread(new UniformDownloadActivity.10.4(this));
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadPause " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898"))) {
-      this.a.runOnUiThread(new UniformDownloadActivity.10.3(this));
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "onDownloadUpdate " + localDownloadInfo.e);
-      }
-      if ((localDownloadInfo != null) && (localDownloadInfo.c.equals("1101070898"))) {
-        this.a.runOnUiThread(new UniformDownloadActivity.10.2(this, localDownloadInfo));
+      return;
+      QLog.i("QFileIPv6ConfigProcessor", 1, "onUpdate");
+      Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 instanceof QQAppInterface)) {}
+      for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
+      {
+        if (localObject1 == null) {
+          break label141;
+        }
+        Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject1).c(), 0).edit();
+        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_all_switch", paramaopo.a);
+        ((SharedPreferences.Editor)localObject2).apply();
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putBoolean("ipv6_all_switch", paramaopo.a);
+        paramaopo = (aqpu)((QQAppInterface)localObject1).getManager(317);
+        if (paramaopo == null) {
+          break;
+        }
+        paramaopo.b((Bundle)localObject2);
+        return;
       }
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public int b()
   {
-    this.a.runOnUiThread(new UniformDownloadActivity.10.1(this));
+    return 0;
   }
   
-  public void packageReplaced(String paramString1, String paramString2) {}
+  public boolean b()
+  {
+    return false;
+  }
   
-  public void uninstallSucceed(String paramString1, String paramString2) {}
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopp
  * JD-Core Version:    0.7.0.1
  */

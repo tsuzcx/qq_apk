@@ -1,69 +1,28 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahqg
-  extends ahpt
+class ahqg
+  implements ahqd
 {
-  public ahqg(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697705);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  ahqg(ahqf paramahqf) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void a(String paramString, int paramInt)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    ((alro)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
+    if (paramInt == 0)
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Azmm == null) {
-        this.jdField_a_of_type_Azmm = new azmm();
-      }
-      this.jdField_a_of_type_Azmm.a(paramArrayOfByte.getString("messageNavInfo"));
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
       return;
     }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+    if (this.a.jdField_a_of_type_Ahpo != null) {
+      this.a.jdField_a_of_type_Ahpo.a();
     }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Azmm != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Azmm.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    ahqf.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqg
  * JD-Core Version:    0.7.0.1
  */

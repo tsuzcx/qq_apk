@@ -1,25 +1,51 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class oew
-  implements pbg
+class oew
+  implements ofd
 {
-  public oew(CommentInfo paramCommentInfo) {}
+  oew(oev paramoev) {}
   
-  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.authorUin)) || (paramReadInJoyUserInfo == null)) {
-      return;
+    Object localObject = oev.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!((String)localObject).equals(paramGiftServiceBean.t)))
+    {
+      oev.a(this.a, paramGiftServiceBean);
+      oev.a(this.a).setText(paramGiftServiceBean.t);
+      oev.b(this.a, null);
+      if (oev.a(this.a)) {
+        oev.c(this.a, null);
+      }
+      oev.b(this.a).setText("");
+      oev.c(this.a).setText("");
+      oev.a(this.a, new ArrayList());
+      localObject = oev.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
+        if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
+          oev.b(this.a).add(localGiftServiceBean);
+        }
+      }
+      if (oev.b(this.a).size() <= 0)
+      {
+        paramGiftServiceBean = new GiftServiceBean();
+        paramGiftServiceBean.t = alpo.a(2131705654);
+        paramGiftServiceBean.v = "0";
+        oev.b(this.a).add(paramGiftServiceBean);
+      }
+      oev.a(this.a);
     }
-    this.a.authorNickName = paramReadInJoyUserInfo.nick;
   }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oew
  * JD-Core Version:    0.7.0.1
  */

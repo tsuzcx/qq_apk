@@ -1,18 +1,19 @@
-public abstract interface baht
+public class baht
 {
-  public abstract String getFriendUin();
+  public int a;
+  public int b;
+  public int c;
   
-  public abstract int getLimitType();
-  
-  public abstract long getSenderUin();
-  
-  public abstract long getShmsgseq();
-  
-  public abstract boolean isReaded();
+  public baht(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baht
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emosm.web;
 
-import ajya;
-import akpb;
+import abol;
+import alpo;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anuq;
-import aykk;
+import aply;
+import baig;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForApollo;
 import com.tencent.mobileqq.data.MessageForCmGameTips;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$32
   implements Runnable
 {
-  public MessengerService$IncomingHandler$32(anuq paramanuq, JSONArray paramJSONArray, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$32(aply paramaply, JSONArray paramJSONArray, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -74,7 +74,7 @@ public class MessengerService$IncomingHandler$32
         continue;
         if ((localMessageRecord instanceof MessageForPic))
         {
-          localJSONObject2.put("text", ajya.a(2131706686));
+          localJSONObject2.put("text", alpo.a(2131707058));
           localJSONObject2.put("timestamp", localMessageRecord.time);
           continue;
         }
@@ -89,11 +89,11 @@ public class MessengerService$IncomingHandler$32
         this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
         return;
       }
-      localJSONObject2.put("text", new aykk(localMessageRecord.msg, 3).a());
+      localJSONObject2.put("text", new baig(localMessageRecord.msg, 3).a());
       localJSONObject2.put("timestamp", localMessageRecord.time);
       continue;
       label406:
-      localJSONObject2.put("text", ajya.a(2131706690));
+      localJSONObject2.put("text", alpo.a(2131707062));
       localJSONObject2.put("timestamp", localMessageRecord.time);
       continue;
       label435:
@@ -110,7 +110,7 @@ public class MessengerService$IncomingHandler$32
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.32
  * JD-Core Version:    0.7.0.1
  */

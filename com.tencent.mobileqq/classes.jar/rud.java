@@ -1,27 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import java.lang.ref.WeakReference;
 
 public class rud
-  implements rtw
+  extends Handler
 {
-  private final ViewPagerCompat a;
+  private WeakReference<ReadInJoyNavigationGridview> a;
   
-  public rud(ViewPagerCompat paramViewPagerCompat)
+  public rud(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
   {
-    this.a = paramViewPagerCompat;
+    this.a = new WeakReference(paramReadInJoyNavigationGridview);
   }
   
-  public void a(rub paramrub)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.setCurrentItem(paramrub.a());
+    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
+    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
   }
-  
-  public void b(rub paramrub) {}
-  
-  public void c(rub paramrub) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rud
  * JD-Core Version:    0.7.0.1
  */

@@ -1,154 +1,81 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import com.tencent.biz.huiyin.ILiveProto.iLiveResponse;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.huiyin.HuiyinUtilsImpl.3.1.1;
+import com.tencent.mobileqq.intervideo.huiyin.proto.FalcoLoginProto.LoginCheckRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.List;
+import mqq.observer.BusinessObserver;
 
 public class asyb
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<asyc> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
+  asyb(asya paramasya) {}
   
-  public asyb()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 999;
-  }
-  
-  public static asyb a(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    if (paramJSONObject == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("huiyin", 2, "login rsp " + paramBoolean);
     }
-    localasyb = new asyb();
-    try
+    Object localObject;
+    if (paramBoolean)
     {
-      localasyb.jdField_a_of_type_Long = paramJSONObject.optLong("type");
-      localasyb.jdField_a_of_type_JavaLangString = paramJSONObject.optString("cluster");
-      localasyb.jdField_b_of_type_JavaLangString = paramJSONObject.optString("ruleUrl");
-      if (paramJSONObject.has("disableLocalResource")) {
-        if (paramJSONObject.optInt("disableLocalResource") != 1) {
-          break label145;
-        }
-      }
-      label145:
-      for (boolean bool = true;; bool = false)
+      localObject = paramBundle.getByteArray("data");
+      paramBundle = new ILiveProto.iLiveResponse();
+      try
       {
-        localasyb.jdField_b_of_type_Boolean = bool;
-        if (!paramJSONObject.has("typeItem")) {
-          break;
+        paramBundle.mergeFrom((byte[])localObject);
+        localObject = new FalcoLoginProto.LoginCheckRsp();
+        ((FalcoLoginProto.LoginCheckRsp)localObject).mergeFrom(paramBundle.ex.get().toByteArray());
+        this.a.a.jdField_a_of_type_Long = ((FalcoLoginProto.LoginCheckRsp)localObject).tinyid.get();
+        this.a.a.jdField_a_of_type_JavaLangString = ((FalcoLoginProto.LoginCheckRsp)localObject).a2_key.get();
+        this.a.a.jdField_b_of_type_JavaLangString = ((FalcoLoginProto.LoginCheckRsp)localObject).user_sig.get();
+        this.a.a.jdField_a_of_type_Boolean = ((FalcoLoginProto.LoginCheckRsp)localObject).is_not_registered.get();
+        this.a.a.jdField_a_of_type_ArrayOfByte = ((FalcoLoginProto.LoginCheckRsp)localObject).ex.get().toByteArray();
+        this.a.a.jdField_b_of_type_Boolean = false;
+        asxy.a(this.a.a).opType("huiyin").opName("loginresult").d1(String.valueOf(this.a.a.jdField_a_of_type_Long)).d2(String.valueOf(this.a.a.jdField_a_of_type_Boolean)).report();
+        Log.i("huiyin.login", "login ok " + this.a.a.jdField_a_of_type_Long + ", " + this.a.a.jdField_b_of_type_JavaLangString);
+        paramBundle = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramBundle.hasNext()) {
+          ((asyf)paramBundle.next()).a();
         }
-        paramJSONObject = paramJSONObject.optJSONArray("typeItem");
-        localasyb.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        while (i < paramJSONObject.length())
-        {
-          asyc localasyc = asyc.a(paramJSONObject.getJSONObject(i));
-          if (localasyc != null)
-          {
-            localasyb.jdField_a_of_type_JavaUtilArrayList.add(localasyc);
-            localasyc.jdField_a_of_type_Asyb = localasyb;
-          }
-          i += 1;
-        }
+        this.a.a.jdField_a_of_type_JavaUtilList.clear();
       }
-      return localasyb;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.e("MutualMarkConfigIRType", 1, "parse error->" + paramJSONObject.toString());
-      return null;
-    }
-  }
-  
-  public long a(long paramLong)
-  {
-    long l2 = -1L;
-    long l1 = l2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      l1 = l2;
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        l1 = -1L;
-        if (localIterator.hasNext())
-        {
-          asyc localasyc = (asyc)localIterator.next();
-          if ((localasyc == null) || (!localasyc.jdField_a_of_type_Boolean) || (localasyc.jdField_b_of_type_Long > paramLong)) {
-            break label97;
-          }
-          l1 = localasyc.jdField_b_of_type_Long;
-        }
+        paramBundle.printStackTrace();
+        return;
       }
+      new Handler(Looper.getMainLooper()).postDelayed(new HuiyinUtilsImpl.3.1.1(this), 7200000L);
+      return;
     }
-    label97:
-    for (;;)
+    if (paramBundle.containsKey("data_error_msg"))
     {
-      break;
-      return l1;
-    }
-  }
-  
-  public asyc a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        asyc localasyc = (asyc)localIterator.next();
-        if ((localasyc != null) && (localasyc.jdField_b_of_type_Long == paramLong)) {
-          return localasyc;
-        }
+      localObject = paramBundle.getString("data_error_msg");
+      IVPluginDataReporter localIVPluginDataReporter = asxy.a(this.a.a).opType("huiyin").opName("login_fail");
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = "null";
       }
+      localIVPluginDataReporter.d1(paramBundle).report();
+      return;
     }
-    return null;
-  }
-  
-  public String a(long paramLong)
-  {
-    asyc localasyc = a(paramLong);
-    if (localasyc != null) {
-      return localasyc.jdField_b_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        asyc localasyc = (asyc)localIterator.next();
-        if ((localasyc != null) && (localasyc.jdField_a_of_type_Boolean)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    asyc localasyc = a(paramLong);
-    if (localasyc != null) {
-      return localasyc.jdField_a_of_type_Boolean;
-    }
-    return false;
+    asxy.a(this.a.a).opType("huiyin").opName("login_fail").report();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asyb
  * JD-Core Version:    0.7.0.1
  */

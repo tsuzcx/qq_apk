@@ -1,179 +1,57 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity.ListViewBaseAdapter.1;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-public class mgq
-  extends BaseAdapter
+class mgq
+  implements lug
 {
-  public mgq(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  mgq(mgp parammgp, VideoAppInterface paramVideoAppInterface) {}
   
-  Bitmap a()
+  public void a()
   {
-    return ((BitmapDrawable)MultiVideoMembersListviewAvtivity.d(this.a).getDrawable(2130839736)).getBitmap();
+    mgp.c(this.jdField_a_of_type_Mgp);
   }
   
-  public Bitmap a(String paramString)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-      return null;
+    int i = mgp.a(paramInt4);
+    if (QLog.isColorLevel()) {
+      QLog.w(mgp.a(this.jdField_a_of_type_Mgp), 1, "onRenderInfoNotify, width[" + this.jdField_a_of_type_Mgp.w + "->" + paramInt1 + "], height[" + this.jdField_a_of_type_Mgp.x + "->" + paramInt2 + "], angle[" + this.jdField_a_of_type_Mgp.v + "->" + paramInt3 + "], rotation[" + mgp.a(this.jdField_a_of_type_Mgp) + "->" + i + "], srcR[" + paramInt4 + "], isLocalView[" + this.jdField_a_of_type_Mgp.c() + "]");
     }
-    int i = -1;
-    if (this.a.jdField_a_of_type_Int == 3000) {
-      i = 1004;
+    if ((!this.jdField_a_of_type_Mgp.c()) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10004), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     }
-    for (;;)
+    this.jdField_a_of_type_Mgp.w = paramInt1;
+    this.jdField_a_of_type_Mgp.x = paramInt2;
+    this.jdField_a_of_type_Mgp.v = paramInt3;
+    this.jdField_a_of_type_Mgp.i = i;
+    if (paramInt4 != -1) {
+      mgp.a(this.jdField_a_of_type_Mgp, i);
+    }
+    mgp.d(this.jdField_a_of_type_Mgp);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      return this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, paramString, String.valueOf(this.a.jdField_a_of_type_Long), true, false);
-      if (this.a.jdField_a_of_type_Int == 1) {
-        i = 1000;
-      }
+      String str = this.jdField_a_of_type_Mgp.b();
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), str, paramArrayOfByte });
     }
   }
   
-  String a(String paramString)
+  public void b()
   {
-    int i = -1;
-    if (this.a.jdField_a_of_type_Int == 3000) {
-      i = 1004;
-    }
-    for (;;)
-    {
-      return this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, paramString, String.valueOf(this.a.jdField_a_of_type_Long));
-      if (this.a.jdField_a_of_type_Int == 1) {
-        i = 1000;
-      }
-    }
+    mgp.b(this.jdField_a_of_type_Mgp);
   }
   
-  public void a(ldr paramldr, mgr parammgr)
+  public void c()
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (paramldr == null) || (parammgr == null)) {
-      return;
-    }
-    if (paramldr.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      parammgr.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a());
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new MultiVideoMembersListviewAvtivity.ListViewBaseAdapter.1(this, parammgr, paramldr));
-      return;
-    }
-    parammgr.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramldr.jdField_a_of_type_AndroidGraphicsBitmap);
-  }
-  
-  public int getCount()
-  {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
-    }
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    label28:
-    label117:
-    ldr localldr;
-    String str;
-    if (paramView == null) {
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559527, null);
-        paramViewGroup = new mgr(this);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368339));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368352));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368393));
-        paramViewGroup.c = ((ImageView)paramView.findViewById(2131368397));
-        if (this.a.jdField_a_of_type_Boolean) {
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368346));
-        }
-        paramView.setTag(paramViewGroup);
-        localldr = (ldr)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        paramViewGroup.jdField_a_of_type_Long = localldr.jdField_a_of_type_Long;
-        a(localldr, paramViewGroup);
-        localldr.jdField_a_of_type_JavaLangString = a(String.valueOf(localldr.jdField_a_of_type_Long));
-        if (localldr.jdField_a_of_type_JavaLangString != null) {
-          break label366;
-        }
-        str = "";
-        label178:
-        localldr.jdField_a_of_type_JavaLangString = str;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localldr.jdField_a_of_type_JavaLangString);
-        if ((localldr.jdField_a_of_type_Int <= 0) && (!localldr.b) && (!localldr.c)) {
-          break label376;
-        }
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        label229:
-        if (!localldr.jdField_a_of_type_Boolean) {
-          break label388;
-        }
-        paramViewGroup.c.setVisibility(0);
-      }
-    }
-    for (;;)
-    {
-      int i;
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        paramInt = localldr.d;
-        i = localldr.e;
-        if (paramInt < 0) {
-          break label462;
-        }
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText("Lv." + paramInt);
-      }
-      switch (i)
-      {
-      default: 
-        return paramView;
-        paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559535, null);
-        break label28;
-        paramViewGroup = (mgr)paramView.getTag();
-        break label117;
-        label366:
-        str = localldr.jdField_a_of_type_JavaLangString;
-        break label178;
-        label376:
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        break label229;
-        label388:
-        paramViewGroup.c.setVisibility(4);
-      }
-    }
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setTextColor(MultiVideoMembersListviewAvtivity.a(this.a).getColor(2131165894));
-    return paramView;
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setTextColor(MultiVideoMembersListviewAvtivity.b(this.a).getColor(2131165895));
-    return paramView;
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setTextColor(MultiVideoMembersListviewAvtivity.c(this.a).getColor(2131165896));
-    return paramView;
-    label462:
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    return paramView;
+    mgp.a(this.jdField_a_of_type_Mgp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgq
  * JD-Core Version:    0.7.0.1
  */

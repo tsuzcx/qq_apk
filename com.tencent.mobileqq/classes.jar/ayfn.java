@@ -1,91 +1,24 @@
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 
-public class ayfn
-  implements ajte
+class ayfn
+  implements View.OnClickListener
 {
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2) {}
+  ayfn(ayfm paramayfm, String paramString) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList) {}
-  
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void d(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        return;
-                      } while (paramObject == null);
-                      paramObject = (Object[])paramObject;
-                      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-                      return;
-                    } while (paramObject == null);
-                    paramObject = (Object[])paramObject;
-                    b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                  a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
-                  return;
-                } while (paramObject == null);
-                a(paramBoolean, (Object[])paramObject);
-                return;
-                if (paramObject != null) {
-                  b(paramBoolean, (Object[])paramObject);
-                }
-              } while (paramObject == null);
-              c(paramBoolean, (Object[])paramObject);
-              return;
-            } while (paramObject == null);
-            d(paramBoolean, (Object[])paramObject);
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 2);
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+    paramView = new Intent(this.jdField_a_of_type_Ayfm.a.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ayfm.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayfn
  * JD-Core Version:    0.7.0.1
  */

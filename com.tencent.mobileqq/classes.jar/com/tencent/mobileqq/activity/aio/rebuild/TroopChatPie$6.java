@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import acus;
-import akpu;
-import akpx;
-import akqr;
+import abor;
+import abot;
+import abpd;
+import aemc;
 import android.os.SystemClock;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -21,7 +21,7 @@ class TroopChatPie$6
   public void run()
   {
     int j = 0;
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).e(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).f(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     int k;
     int i;
     label92:
@@ -79,18 +79,18 @@ class TroopChatPie$6
         QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 2, "now pull more message for troop!");
       }
       TroopChatPie.a(this.this$0, SystemClock.uptimeMillis());
-      ((acus)TroopChatPie.a(this.this$0).a).a(TroopChatPie.a(this.this$0));
-      TroopChatPie.b(this.this$0).e = akpx.c((List)localObject);
+      ((aemc)TroopChatPie.a(this.this$0).a).a(TroopChatPie.a(this.this$0));
+      TroopChatPie.b(this.this$0).e = abot.c((List)localObject);
       TroopChatPie.c(this.this$0).f = true;
     } while (TroopChatPie.d(this.this$0).c != 0);
     localObject = TroopChatPie.e(this.this$0);
-    ((akqr)localObject).c += 1;
+    ((abpd)localObject).c += 1;
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 15, TroopChatPie.f(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.6
  * JD-Core Version:    0.7.0.1
  */

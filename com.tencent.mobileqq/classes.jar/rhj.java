@@ -1,20 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class rhj
-  implements nto
+class rhj
+  implements DialogInterface.OnShowListener
 {
-  public rhj(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  rhj(rhf paramrhf, bhpy parambhpy) {}
   
-  public void a(List<TabChannelCoverInfo> paramList)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    ReadinjoyTabFrame.a(this.a).a(paramList);
+    rhf.a(this.jdField_a_of_type_Rhf, "mShareActionSheet onShow()");
+    this.jdField_a_of_type_Bhpy.getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhj
  * JD-Core Version:    0.7.0.1
  */

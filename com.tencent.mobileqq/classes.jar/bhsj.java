@@ -1,18 +1,23 @@
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
 
-public class bhsj
+public final class bhsj
+  implements Parcelable.Creator<ExpandableListConnector.GroupMetadata>
 {
-  public String a;
-  public HashMap<String, String> a;
-  
-  public bhsj(bhsi parambhsi)
+  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
+  }
+  
+  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  {
+    return new ExpandableListConnector.GroupMetadata[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhsj
  * JD-Core Version:    0.7.0.1
  */

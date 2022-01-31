@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aash;
+import acjf;
 
 public class ChatHistoryFileView$1
   implements Runnable
 {
-  public ChatHistoryFileView$1(aash paramaash) {}
+  public ChatHistoryFileView$1(acjf paramacjf) {}
   
   /* Error */
   public void run()
@@ -20,19 +20,19 @@ public class ChatHistoryFileView$1
     //   7: aconst_null
     //   8: astore_1
     //   9: aload_0
-    //   10: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Laash;
-    //   13: invokestatic 29	aash:a	(Laash;)Ljava/util/LinkedHashMap;
+    //   10: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lacjf;
+    //   13: invokestatic 29	acjf:a	(Lacjf;)Ljava/util/LinkedHashMap;
     //   16: astore 5
     //   18: aload_0
-    //   19: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Laash;
-    //   22: getfield 32	aash:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   25: invokestatic 38	bbfj:g	(Landroid/content/Context;)Z
+    //   19: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lacjf;
+    //   22: getfield 32	acjf:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   25: invokestatic 38	bdee:g	(Landroid/content/Context;)Z
     //   28: ifne +251 -> 279
     //   31: new 40	java/io/File
     //   34: dup
     //   35: aload_0
-    //   36: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Laash;
-    //   39: getfield 32	aash:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   36: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lacjf;
+    //   39: getfield 32	acjf:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   42: invokevirtual 46	android/content/Context:getCacheDir	()Ljava/io/File;
     //   45: ldc 48
     //   47: invokespecial 51	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
@@ -80,10 +80,10 @@ public class ChatHistoryFileView$1
     //   124: aconst_null
     //   125: astore_1
     //   126: aload_0
-    //   127: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Laash;
+    //   127: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lacjf;
     //   130: aload_1
     //   131: aload 5
-    //   133: invokestatic 85	aash:a	(Laash;Lorg/json/JSONObject;Ljava/util/LinkedHashMap;)V
+    //   133: invokestatic 85	acjf:a	(Lacjf;Lorg/json/JSONObject;Ljava/util/LinkedHashMap;)V
     //   136: return
     //   137: aload_2
     //   138: astore_1
@@ -174,15 +174,15 @@ public class ChatHistoryFileView$1
     //   273: invokevirtual 94	java/io/IOException:printStackTrace	()V
     //   276: goto -7 -> 269
     //   279: aload_0
-    //   280: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Laash;
-    //   283: getfield 98	aash:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   280: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lacjf;
+    //   283: getfield 98	acjf:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   286: bipush 122
-    //   288: invokevirtual 103	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lajtb;
-    //   291: checkcast 105	ayfg
+    //   288: invokevirtual 103	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalko;
+    //   291: checkcast 105	badd
     //   294: aload_0
-    //   295: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Laash;
-    //   298: invokestatic 108	aash:a	(Laash;)Ljava/lang/String;
-    //   301: invokevirtual 111	ayfg:a	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   295: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lacjf;
+    //   298: invokestatic 108	acjf:a	(Lacjf;)Ljava/lang/String;
+    //   301: invokevirtual 111	badd:a	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   304: astore 6
     //   306: invokestatic 116	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   309: ifeq +61 -> 370
@@ -211,17 +211,17 @@ public class ChatHistoryFileView$1
     //   364: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   367: invokestatic 133	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   370: aload_0
-    //   371: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Laash;
+    //   371: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lacjf;
     //   374: aload 6
     //   376: aload 5
-    //   378: invokestatic 85	aash:a	(Laash;Lorg/json/JSONObject;Ljava/util/LinkedHashMap;)V
+    //   378: invokestatic 85	acjf:a	(Lacjf;Lorg/json/JSONObject;Ljava/util/LinkedHashMap;)V
     //   381: aload_2
     //   382: astore_1
     //   383: new 40	java/io/File
     //   386: dup
     //   387: aload_0
-    //   388: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Laash;
-    //   391: getfield 32	aash:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   388: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lacjf;
+    //   391: getfield 32	acjf:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   394: invokevirtual 46	android/content/Context:getCacheDir	()Ljava/io/File;
     //   397: ldc 48
     //   399: invokespecial 51	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
@@ -435,7 +435,7 @@ public class ChatHistoryFileView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileView.1
  * JD-Core Version:    0.7.0.1
  */

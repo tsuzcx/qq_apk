@@ -1,34 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class atis
-  implements bcww
+public class atis
+  implements bhqd
 {
-  atis(atir paramatir) {}
+  public atis(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, atjn paramatjn) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
     {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
+      this.jdField_a_of_type_Atjn.b(false);
+      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
       }
-      if (this.a.jdField_a_of_type_Atiu != null) {
-        this.a.jdField_a_of_type_Atiu.a(true);
-      }
-    }
-    label59:
-    while (this.a.jdField_a_of_type_Atiu == null) {
       return;
+      atii.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Atjn.a().e, this.jdField_a_of_type_Atjn.a().b);
+      continue;
+      this.jdField_a_of_type_Atjn.g();
+      continue;
+      this.jdField_a_of_type_Atjn.g();
     }
-    this.a.jdField_a_of_type_Atiu.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atis
  * JD-Core Version:    0.7.0.1
  */

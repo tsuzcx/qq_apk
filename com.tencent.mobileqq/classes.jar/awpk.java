@@ -1,15 +1,6 @@
-public class awpk
-{
-  public int a;
-  public CharSequence a;
-  public String a;
-  public boolean a;
-  
-  public awpk(awph paramawph) {}
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awpk
  * JD-Core Version:    0.7.0.1
  */

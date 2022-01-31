@@ -1,79 +1,18 @@
-import android.content.IntentFilter;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class akyz
-  extends akyq
+class akyz
+  implements Comparator<akzy>
 {
-  static PromotionConfigInfo b;
-  final String c = "SubProcessPromotionMgr_" + AudioHelper.b();
+  akyz(akyw paramakyw) {}
   
-  public akyz(AppInterface paramAppInterface)
+  public int a(akzy paramakzy1, akzy paramakzy2)
   {
-    super(paramAppInterface);
-    a(paramAppInterface);
-    QLog.w(this.c, 1, "SubProcessPromotionMgr, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
-  }
-  
-  public void a(AppInterface paramAppInterface, akys paramakys)
-  {
-    if (a("snycGetConfig", paramAppInterface, paramakys)) {
-      return;
-    }
-    paramakys.a(a());
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString)
-  {
-    BusinessCommonConfig.notifyQQDownload(2, paramString, 0);
-  }
-  
-  void a(PromotionConfigInfo paramPromotionConfigInfo)
-  {
-    super.a(paramPromotionConfigInfo);
-    try
-    {
-      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
-      return;
-    }
-    finally {}
-  }
-  
-  boolean a(AppInterface paramAppInterface)
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
-    return paramAppInterface.getApp().registerReceiver(new akza(this), localIntentFilter) != null;
-  }
-  
-  void b(AppInterface paramAppInterface) {}
-  
-  void b(String paramString)
-  {
-    try
-    {
-      paramString = bbmd.a(this.jdField_b_of_type_JavaLangString, paramString);
-      a(paramString);
-      QLog.w(this.c, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] configInfo[" + paramString + "]");
-      return;
-    }
-    finally {}
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+    return paramakzy1.h - paramakzy2.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,86 +1,87 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.1;
+import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.2;
+import java.util.List;
 
-class aoxe
-  implements aout
+public class aoxe
 {
-  aoxe(aoxd paramaoxd, String paramString, aoxt paramaoxt) {}
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private aoxq jdField_a_of_type_Aoxq;
   
-  public void a(int paramInt, String paramString)
+  public aoxe(aoxq paramaoxq)
   {
-    boolean bool3 = false;
-    boolean bool4 = true;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2TroopTaskExcuter onFaild retcode[" + paramInt + "] retMsg[" + paramString + "]");
-    boolean bool2 = bool3;
-    boolean bool1 = bool4;
-    if (paramInt != -100001)
+    this.jdField_a_of_type_Aoxq = paramaoxq;
+  }
+  
+  private Handler a()
+  {
+    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
+    try
     {
-      bool2 = bool3;
-      bool1 = bool4;
-      if (paramInt != -100002)
-      {
-        if (paramInt != -100003) {
-          break label107;
-        }
-        bool1 = bool4;
-        bool2 = bool3;
-      }
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DanmakuMeasureThread");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandlerThread.setUncaughtExceptionHandler(new aozg());
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      return this.jdField_a_of_type_AndroidOsHandler;
     }
-    for (;;)
+    catch (Throwable localThrowable)
     {
-      this.jdField_a_of_type_Aoxt.a(aowx.a(this.jdField_a_of_type_Aoxd.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      label107:
-      if ((paramInt == -6101) || (paramInt == -7003))
+      for (;;)
       {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-        bool2 = bool3;
+        aozj.d("DanmakuMeasureManager", new Object[] { localThrowable });
       }
     }
   }
   
-  public void a(String paramString)
+  public static void a(aoxq paramaoxq, aoxh paramaoxh)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "3");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aoxd.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aoxd.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aoxd.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aoxd.d);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aoxd.e);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    int i;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Aoxd.d))
-    {
-      i = 0;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aoxd.e)) {
-        break label257;
-      }
-    }
-    label257:
-    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Aoxd.e))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxd.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter send success, send feeds");
-      }
-      aowx.a(aowx.a(this.jdField_a_of_type_Aoxd.jdField_a_of_type_Aowx), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString, this.jdField_a_of_type_Aoxd.jdField_a_of_type_Long, 0, i, j, 0, false, localBundle, this.jdField_a_of_type_Aoxt);
+    if (paramaoxh.b()) {
       return;
-      i = Integer.parseInt(this.jdField_a_of_type_Aoxd.d);
-      break;
     }
+    paramaoxq = paramaoxq.a(paramaoxh).a(paramaoxh);
+    paramaoxh.d(paramaoxq.a() + aoxq.a().g() * 2);
+    paramaoxh.e(paramaoxq.b() + aoxq.a().c() * 2);
+    paramaoxh.g();
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
+      return;
+    }
+    if (aozh.a())
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+  }
+  
+  public void a(aoxh paramaoxh, aoxf paramaoxf)
+  {
+    Handler localHandler = a();
+    if (localHandler != null) {
+      localHandler.post(new DanmakuMeasureManager.1(this, paramaoxh, paramaoxf));
+    }
+  }
+  
+  public void a(List<aoxh> paramList, aoxf paramaoxf)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    Handler localHandler;
+    do
+    {
+      return;
+      localHandler = a();
+    } while (localHandler == null);
+    localHandler.post(new DanmakuMeasureManager.2(this, paramList, paramaoxf));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxe
  * JD-Core Version:    0.7.0.1
  */

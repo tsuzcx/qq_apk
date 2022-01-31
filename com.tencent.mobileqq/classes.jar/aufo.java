@@ -1,23 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aufo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aufo(aufj paramaufj, aufy paramaufy) {}
+  aufo(aufi paramaufi) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aufj.a(this.jdField_a_of_type_Aufj).removeMessages(101);
-    aufj.a(this.jdField_a_of_type_Aufj).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Aufy.a.b();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aufo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package cooperation.qzone.widget;
 
-import bhvf;
+import bjwq;
 
 public class QzoneGuideBubbleHelper$1
   implements Runnable
 {
-  public QzoneGuideBubbleHelper$1(bhvf parambhvf) {}
+  public QzoneGuideBubbleHelper$1(bjwq parambjwq) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QzoneGuideBubbleHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneGuideBubbleHelper.1
  * JD-Core Version:    0.7.0.1
  */

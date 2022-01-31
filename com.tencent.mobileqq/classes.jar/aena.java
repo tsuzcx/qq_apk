@@ -1,27 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class aena
-  implements View.OnClickListener
+public class aena
+  implements aemo
 {
-  aena(aemy paramaemy) {}
+  public aitd a;
+  public PreloadManager a;
+  private QQAppInterface a;
   
-  public void onClick(View paramView)
+  public aena(QQAppInterface paramQQAppInterface)
   {
-    if (!ajac.e()) {
-      ((airx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.a.a(), 319);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
+    this.jdField_a_of_type_Aitd = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+      this.jdField_a_of_type_Aitd = ((aitd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
     }
-    while (!QLog.isColorLevel()) {
-      return;
+  }
+  
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    ThreadManager.post(new CustomizeStrategyFactory.VoiceResStrategy.1(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agij paramagij)
+  {
+    if ((paramRedPacketInfo != null) && ((paramagij instanceof agiq)))
+    {
+      paramagij = (agiq)paramagij;
+      paramRedPacketInfo.icon = paramagij.a;
+      paramRedPacketInfo.resPath = paramagij.b;
     }
-    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[onClick] click audio button too fast.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aena
  * JD-Core Version:    0.7.0.1
  */

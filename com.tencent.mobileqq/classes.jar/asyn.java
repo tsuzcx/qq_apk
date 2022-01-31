@@ -1,470 +1,413 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.os.Message;
-import android.text.TextUtils;
-import android.text.format.Time;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper.1;
-import com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper.2;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.intervideo.now.FileUploadUtil.1;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Random;
+import java.util.Set;
 
 public class asyn
 {
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    ThreadManager.post(new OldMutualMarkLogicHelper.2(paramQQAppInterface), 5, null, true);
-  }
+  private static String jdField_a_of_type_JavaLangString;
+  private static char[] jdField_a_of_type_ArrayOfChar = "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
   
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, aeom paramaeom)
+  private static String a(InputStream paramInputStream, String paramString)
   {
-    ThreadManager.post(new OldMutualMarkLogicHelper.1(paramQQAppInterface, paramSessionInfo, paramaeom), 5, null, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForUniteGrayTip paramMessageForUniteGrayTip, MqqHandler paramMqqHandler, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt)
-  {
-    Object localObject = null;
-    if (a(paramMessageForUniteGrayTip.subType))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendReactive", 2, "new message graytips big ship");
+      paramString = new BufferedReader(new InputStreamReader(paramInputStream, paramString));
+      StringWriter localStringWriter = new StringWriter();
+      char[] arrayOfChar = new char[256];
+      for (;;)
+      {
+        int i = paramString.read(arrayOfChar);
+        if (i <= 0) {
+          break;
+        }
+        localStringWriter.write(arrayOfChar, 0, i);
       }
-      paramMqqHandler.sendEmptyMessage(70);
+      paramString = localStringWriter.toString();
     }
+    finally
+    {
+      if (paramInputStream != null) {
+        paramInputStream.close();
+      }
+    }
+    if (paramInputStream != null) {
+      paramInputStream.close();
+    }
+    return paramString;
+  }
+  
+  private static String a(HttpURLConnection paramHttpURLConnection)
+  {
+    if (paramHttpURLConnection.getResponseCode() != 200) {
+      throw new IOException(alpo.a(2131704956));
+    }
+    return b(paramHttpURLConnection);
+  }
+  
+  private static HttpURLConnection a(String paramString)
+  {
+    paramString = (HttpURLConnection)new URL(paramString).openConnection();
+    paramString.setDoInput(true);
+    paramString.setUseCaches(false);
+    paramString.setDoOutput(true);
+    paramString.setRequestMethod("POST");
+    paramString.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + jdField_a_of_type_JavaLangString);
+    paramString.setRequestProperty("User-Agent", "Android Client Agent");
+    return paramString;
+  }
+  
+  /* Error */
+  private static void a(DataOutputStream paramDataOutputStream, java.io.File paramFile)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +4 -> 5
+    //   4: return
+    //   5: aload_1
+    //   6: invokevirtual 133	java/io/File:getName	()Ljava/lang/String;
+    //   9: astore_3
+    //   10: aload_0
+    //   11: new 109	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 135
+    //   20: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: getstatic 59	asyn:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   26: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   35: aload_0
+    //   36: ldc 142
+    //   38: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   41: aload_0
+    //   42: new 109	java/lang/StringBuilder
+    //   45: dup
+    //   46: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   49: ldc 144
+    //   51: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: aload_3
+    //   55: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: ldc 146
+    //   60: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   69: aload_0
+    //   70: ldc 142
+    //   72: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   75: aload_0
+    //   76: new 109	java/lang/StringBuilder
+    //   79: dup
+    //   80: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   83: ldc 148
+    //   85: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: aload_3
+    //   89: invokestatic 153	java/net/URLConnection:guessContentTypeFromName	(Ljava/lang/String;)Ljava/lang/String;
+    //   92: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   101: aload_0
+    //   102: ldc 142
+    //   104: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   107: aload_0
+    //   108: ldc 142
+    //   110: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   113: aconst_null
+    //   114: astore_3
+    //   115: new 155	java/io/FileInputStream
+    //   118: dup
+    //   119: aload_1
+    //   120: invokespecial 158	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   123: astore_1
+    //   124: sipush 4096
+    //   127: newarray byte
+    //   129: astore_3
+    //   130: aload_1
+    //   131: aload_3
+    //   132: invokevirtual 161	java/io/InputStream:read	([B)I
+    //   135: istore_2
+    //   136: iload_2
+    //   137: iconst_m1
+    //   138: if_icmpeq +25 -> 163
+    //   141: aload_0
+    //   142: aload_3
+    //   143: iconst_0
+    //   144: iload_2
+    //   145: invokevirtual 164	java/io/DataOutputStream:write	([BII)V
+    //   148: goto -18 -> 130
+    //   151: astore_0
+    //   152: aload_1
+    //   153: ifnull -149 -> 4
+    //   156: aload_1
+    //   157: invokevirtual 53	java/io/InputStream:close	()V
+    //   160: return
+    //   161: astore_0
+    //   162: return
+    //   163: aload_1
+    //   164: invokevirtual 53	java/io/InputStream:close	()V
+    //   167: aload_0
+    //   168: ldc 142
+    //   170: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   173: aload_0
+    //   174: invokevirtual 167	java/io/DataOutputStream:flush	()V
+    //   177: aload_1
+    //   178: ifnull -174 -> 4
+    //   181: aload_1
+    //   182: invokevirtual 53	java/io/InputStream:close	()V
+    //   185: return
+    //   186: astore_0
+    //   187: return
+    //   188: astore_0
+    //   189: aload_3
+    //   190: astore_1
+    //   191: aload_1
+    //   192: ifnull +7 -> 199
+    //   195: aload_1
+    //   196: invokevirtual 53	java/io/InputStream:close	()V
+    //   199: aload_0
+    //   200: athrow
+    //   201: astore_1
+    //   202: goto -3 -> 199
+    //   205: astore_0
+    //   206: goto -15 -> 191
+    //   209: astore_0
+    //   210: aconst_null
+    //   211: astore_1
+    //   212: goto -60 -> 152
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	215	0	paramDataOutputStream	DataOutputStream
+    //   0	215	1	paramFile	java.io.File
+    //   135	10	2	i	int
+    //   9	181	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   124	130	151	java/io/IOException
+    //   130	136	151	java/io/IOException
+    //   141	148	151	java/io/IOException
+    //   163	177	151	java/io/IOException
+    //   156	160	161	java/lang/Exception
+    //   181	185	186	java/lang/Exception
+    //   115	124	188	finally
+    //   195	199	201	java/lang/Exception
+    //   124	130	205	finally
+    //   130	136	205	finally
+    //   141	148	205	finally
+    //   163	177	205	finally
+    //   115	124	209	java/io/IOException
+  }
+  
+  private static void a(DataOutputStream paramDataOutputStream, Map<String, String> paramMap)
+  {
+    if ((paramMap == null) || (paramMap.isEmpty())) {}
     for (;;)
     {
       return;
-      if (b(paramMessageForUniteGrayTip.subType))
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendReactive", 2, "new message graytips friendship");
-        }
-        paramMqqHandler.sendEmptyMessage(88);
-        return;
-      }
-      if (c(paramMessageForUniteGrayTip.subType))
-      {
-        paramMqqHandler.obtainMessage(201, new String[] { paramMessageForUniteGrayTip.caidanAnimUrl, paramMessageForUniteGrayTip.caidanAnimUrlMd5 }).sendToTarget();
-        return;
-      }
-      if (d(paramMessageForUniteGrayTip.subType))
-      {
-        if (!TextUtils.isEmpty(paramMessageForUniteGrayTip.caidanAnimUrl)) {
-          acyq.a().a(paramQQAppInterface, false, true, paramAIOAnimationConatiner, 0, new asxj(BaseApplicationImpl.getContext(), paramMessageForUniteGrayTip.caidanAnimUrl), 4);
-        }
-      }
-      else
-      {
-        paramMqqHandler = acyq.a();
-        if (paramInt == 3) {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849126);
-        }
-        while (paramMessageForUniteGrayTip != null)
-        {
-          paramMqqHandler.a(paramQQAppInterface, false, true, paramAIOAnimationConatiner, 0, paramMessageForUniteGrayTip, 4);
-          return;
-          if (paramInt == 26)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849127);
-          }
-          else if (paramInt == 27)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849128);
-          }
-          else if (paramInt == 4)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849085);
-          }
-          else if (paramInt == 28)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849086);
-          }
-          else if (paramInt == 29)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849087);
-          }
-          else if (paramInt == 1)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849130);
-          }
-          else if (paramInt == 2)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849089);
-          }
-          else if (paramInt == 5)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849129);
-          }
-          else if (paramInt == 30)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849131);
-          }
-          else if (paramInt == 31)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849132);
-          }
-          else if (paramInt == 7)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849124);
-          }
-          else if (paramInt == 8)
-          {
-            paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849125);
-          }
-          else
-          {
-            paramMessageForUniteGrayTip = localObject;
-            if (paramInt != 11) {
-              if (paramInt == 12)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849100);
-              }
-              else if (paramInt == 13)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849101);
-              }
-              else if (paramInt == 14)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849108);
-              }
-              else if (paramInt == 15)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849109);
-              }
-              else if (paramInt == 16)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849110);
-              }
-              else if (paramInt == 17)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849102);
-              }
-              else if (paramInt == 18)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849103);
-              }
-              else if (paramInt == 19)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849104);
-              }
-              else if (paramInt == 20)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849105);
-              }
-              else if (paramInt == 21)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849106);
-              }
-              else if (paramInt == 22)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849107);
-              }
-              else if (paramInt == 23)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849111);
-              }
-              else if (paramInt == 24)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849112);
-              }
-              else if (paramInt == 25)
-              {
-                paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130849113);
-              }
-              else
-              {
-                paramMessageForUniteGrayTip = localObject;
-                if (asxm.a(paramInt))
-                {
-                  paramMessageForUniteGrayTip = localObject;
-                  if (paramSessionInfo != null)
-                  {
-                    paramInt = asxb.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, String.valueOf(paramInt));
-                    paramMessageForUniteGrayTip = localObject;
-                    if (paramInt != 0) {
-                      paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(paramInt);
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        paramDataOutputStream.writeBytes("--" + jdField_a_of_type_JavaLangString);
+        paramDataOutputStream.writeBytes("\r\n");
+        paramDataOutputStream.writeBytes("Content-Disposition: form-data; name=\"" + (String)localEntry.getKey() + "\"");
+        paramDataOutputStream.writeBytes("\r\n");
+        paramDataOutputStream.writeBytes("\r\n");
+        paramDataOutputStream.writeBytes(URLEncoder.encode((String)localEntry.getValue(), "UTF-8"));
+        paramDataOutputStream.writeBytes("\r\n");
       }
     }
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, List<ChatMessage> paramList, aeom paramaeom)
+  public static void a(String paramString1, String paramString2)
   {
-    if ((aktz.a().a()) && (a(paramQQAppInterface, paramSessionInfo, paramList)))
+    if ((paramString1 == null) || (paramString2 == null))
     {
-      paramaeom.W = true;
-      aktz.a().a();
-      if (QLog.isColorLevel()) {
-        QLog.i("OldMutualMarkLogicHelper", 2, "checkLightingQzoneLover enter!!!!!!!!");
-      }
-    }
-    while (!QLog.isColorLevel()) {
+      Log.e("HttpUtil", "uin null or file path null");
       return;
     }
-    QLog.i("OldMutualMarkLogicHelper", 2, "checkLightingQzoneLover not enter!!!!!!!!");
+    ThreadManagerV2.excute(new FileUploadUtil.1(paramString1, paramString2), 128, null, false);
   }
   
-  public static boolean a(int paramInt)
+  private static String b()
   {
-    if (paramInt == 6) {}
-    while (paramInt == asxm.a(12L, 2L)) {
-      return true;
+    Random localRandom = new Random();
+    char[] arrayOfChar = new char[localRandom.nextInt(9) + 12];
+    int i = 0;
+    while (i < arrayOfChar.length)
+    {
+      arrayOfChar[i] = jdField_a_of_type_ArrayOfChar[localRandom.nextInt(jdField_a_of_type_ArrayOfChar.length)];
+      i += 1;
     }
-    return false;
+    return "===AndroidFormBoundary" + new String(arrayOfChar);
   }
   
-  private static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, List<ChatMessage> paramList)
+  private static String b(String paramString)
   {
-    if ((paramList == null) || (paramList.isEmpty()) || (paramSessionInfo == null) || (paramQQAppInterface == null)) {
-      return false;
-    }
-    long l1 = awzy.a();
-    Time localTime1 = new Time();
-    localTime1.set(1000L * l1);
-    Time localTime2 = new Time();
-    boolean bool1 = false;
-    boolean bool2 = false;
-    int i = paramList.size() - 1;
+    String str = "UTF-8";
+    String[] arrayOfString = paramString.split(";");
+    int j = arrayOfString.length;
+    int i = 0;
     for (;;)
     {
-      boolean bool3 = bool2;
-      boolean bool4 = bool1;
-      if (i >= 0) {}
-      try
+      paramString = str;
+      if (i < j)
       {
-        localChatMessage = (ChatMessage)paramList.get(i);
-        if (localChatMessage == null)
-        {
-          bool3 = bool1;
-          bool1 = bool2;
-          bool2 = bool3;
-          break label411;
+        paramString = arrayOfString[i].trim();
+        if (!paramString.startsWith("charset")) {
+          break label71;
         }
-        long l2 = Math.abs(localChatMessage.time - l1);
-        if (l2 <= 86400L) {
-          break label200;
-        }
-        bool4 = bool1;
-        bool3 = bool2;
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        for (;;)
-        {
-          ChatMessage localChatMessage;
-          bool4 = false;
-          bool3 = false;
-          QLog.e("OldMutualMarkLogicHelper", 1, "hasInteractiveToday error: " + paramQQAppInterface.getMessage());
+        arrayOfString = paramString.split("=", 2);
+        paramString = str;
+        if (arrayOfString.length == 2) {
+          paramString = arrayOfString[1].trim();
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("OldMutualMarkLogicHelper", 2, "hasInteractiveToday selfSend:" + bool4 + " friendSend: " + bool3);
-      }
-      if ((bool4) && (bool3))
-      {
-        return true;
-        label200:
-        if (!a(localChatMessage))
-        {
-          bool3 = bool1;
-          bool1 = bool2;
-          bool2 = bool3;
-          break label411;
-        }
-        if ((TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.jdField_a_of_type_JavaLangString)) || (TextUtils.equals(localChatMessage.senderuin, paramQQAppInterface.getCurrentAccountUin())))
-        {
-          localTime2.set(localChatMessage.time * 1000L);
-          if ((localTime1.year == localTime2.year) && (localTime1.yearDay == localTime2.yearDay))
-          {
-            bool3 = TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.jdField_a_of_type_JavaLangString);
-            if (bool3)
-            {
-              bool3 = true;
-              bool4 = bool1;
-            }
-            for (;;)
-            {
-              bool1 = bool3;
-              bool2 = bool4;
-              if (!bool4) {
-                break label411;
-              }
-              bool1 = bool3;
-              bool2 = bool4;
-              if (!bool3) {
-                break label411;
-              }
-              break;
-              bool4 = true;
-              bool3 = bool2;
-            }
-          }
-        }
-      }
-      else
-      {
-        return false;
-      }
-      bool3 = bool2;
-      bool2 = bool1;
-      bool1 = bool3;
-      label411:
-      i -= 1;
-      bool3 = bool2;
-      bool2 = bool1;
-      bool1 = bool3;
+      return paramString;
+      label71:
+      i += 1;
     }
   }
   
-  private static boolean a(ChatMessage paramChatMessage)
+  /* Error */
+  private static String b(String paramString, Map<String, String> paramMap, java.io.File paramFile)
   {
-    if (paramChatMessage == null) {}
-    for (;;)
-    {
-      return false;
-      int[] arrayOfInt = new int[20];
-      int[] tmp12_11 = arrayOfInt;
-      tmp12_11[0] = -1000;
-      int[] tmp18_12 = tmp12_11;
-      tmp18_12[1] = -1001;
-      int[] tmp24_18 = tmp18_12;
-      tmp24_18[2] = -2009;
-      int[] tmp30_24 = tmp24_18;
-      tmp30_24[3] = -2045;
-      int[] tmp36_30 = tmp30_24;
-      tmp36_30[4] = -2009;
-      int[] tmp42_36 = tmp36_30;
-      tmp42_36[5] = -2001;
-      int[] tmp48_42 = tmp42_36;
-      tmp48_42[6] = -2005;
-      int[] tmp55_48 = tmp48_42;
-      tmp55_48[7] = -2010;
-      int[] tmp62_55 = tmp55_48;
-      tmp62_55[8] = -2000;
-      int[] tmp69_62 = tmp62_55;
-      tmp69_62[9] = -2002;
-      int[] tmp76_69 = tmp69_62;
-      tmp76_69[10] = -2008;
-      int[] tmp83_76 = tmp76_69;
-      tmp83_76[11] = -2022;
-      int[] tmp90_83 = tmp83_76;
-      tmp90_83[12] = -30002;
-      int[] tmp97_90 = tmp90_83;
-      tmp97_90[13] = -2011;
-      int[] tmp104_97 = tmp97_90;
-      tmp104_97[14] = -2020;
-      int[] tmp111_104 = tmp104_97;
-      tmp111_104[15] = -2025;
-      int[] tmp118_111 = tmp111_104;
-      tmp118_111[16] = -2065;
-      int[] tmp125_118 = tmp118_111;
-      tmp125_118[17] = -2066;
-      int[] tmp132_125 = tmp125_118;
-      tmp132_125[18] = -3000;
-      int[] tmp139_132 = tmp132_125;
-      tmp139_132[19] = -1035;
-      tmp139_132;
-      int i = 0;
-      while (i < arrayOfInt.length)
-      {
-        if (paramChatMessage.msgtype == arrayOfInt[i]) {
-          return true;
-        }
-        i += 1;
-      }
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aload_0
+    //   3: invokestatic 267	asyn:a	(Ljava/lang/String;)Ljava/net/HttpURLConnection;
+    //   6: astore_0
+    //   7: new 137	java/io/DataOutputStream
+    //   10: dup
+    //   11: aload_0
+    //   12: invokevirtual 271	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   15: invokespecial 274	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   18: astore_3
+    //   19: aload_3
+    //   20: aload_1
+    //   21: invokestatic 276	asyn:a	(Ljava/io/DataOutputStream;Ljava/util/Map;)V
+    //   24: aload_3
+    //   25: aload_2
+    //   26: invokestatic 278	asyn:a	(Ljava/io/DataOutputStream;Ljava/io/File;)V
+    //   29: aload_3
+    //   30: ldc 142
+    //   32: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   35: aload_3
+    //   36: new 109	java/lang/StringBuilder
+    //   39: dup
+    //   40: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   43: ldc 135
+    //   45: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: getstatic 59	asyn:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   51: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: ldc 135
+    //   56: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   65: aload_3
+    //   66: ldc 142
+    //   68: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   71: aload_3
+    //   72: invokevirtual 279	java/io/DataOutputStream:close	()V
+    //   75: aload_0
+    //   76: invokestatic 281	asyn:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
+    //   79: astore_1
+    //   80: ldc 215
+    //   82: aload_1
+    //   83: invokestatic 284	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   86: pop
+    //   87: aload_0
+    //   88: ifnull +7 -> 95
+    //   91: aload_0
+    //   92: invokevirtual 287	java/net/HttpURLConnection:disconnect	()V
+    //   95: aload_3
+    //   96: ifnull +7 -> 103
+    //   99: aload_3
+    //   100: invokevirtual 279	java/io/DataOutputStream:close	()V
+    //   103: aload_1
+    //   104: areturn
+    //   105: astore_0
+    //   106: aload_0
+    //   107: invokevirtual 290	java/lang/Exception:printStackTrace	()V
+    //   110: aload_1
+    //   111: areturn
+    //   112: astore_0
+    //   113: aconst_null
+    //   114: astore_1
+    //   115: aload_3
+    //   116: astore_2
+    //   117: aload_2
+    //   118: ifnull +7 -> 125
+    //   121: aload_2
+    //   122: invokevirtual 287	java/net/HttpURLConnection:disconnect	()V
+    //   125: aload_1
+    //   126: ifnull +7 -> 133
+    //   129: aload_1
+    //   130: invokevirtual 279	java/io/DataOutputStream:close	()V
+    //   133: aload_0
+    //   134: athrow
+    //   135: astore_1
+    //   136: aload_1
+    //   137: invokevirtual 290	java/lang/Exception:printStackTrace	()V
+    //   140: goto -7 -> 133
+    //   143: astore_3
+    //   144: aconst_null
+    //   145: astore_1
+    //   146: aload_0
+    //   147: astore_2
+    //   148: aload_3
+    //   149: astore_0
+    //   150: goto -33 -> 117
+    //   153: astore_1
+    //   154: aload_0
+    //   155: astore_2
+    //   156: aload_1
+    //   157: astore_0
+    //   158: aload_3
+    //   159: astore_1
+    //   160: goto -43 -> 117
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	163	0	paramString	String
+    //   0	163	1	paramMap	Map<String, String>
+    //   0	163	2	paramFile	java.io.File
+    //   1	115	3	localDataOutputStream	DataOutputStream
+    //   143	16	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   99	103	105	java/lang/Exception
+    //   2	7	112	finally
+    //   129	133	135	java/lang/Exception
+    //   7	19	143	finally
+    //   19	87	153	finally
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, aeom paramaeom)
+  private static String b(HttpURLConnection paramHttpURLConnection)
   {
-    if (paramaeom.W) {}
-    for (;;)
-    {
-      return;
-      ajxl localajxl = (ajxl)paramQQAppInterface.getManager(51);
-      ExtensionInfo localExtensionInfo = localajxl.a(paramSessionInfo.jdField_a_of_type_JavaLangString, false);
-      if (localExtensionInfo != null)
-      {
-        int i = asyj.a(1, paramSessionInfo.jdField_a_of_type_JavaLangString, localExtensionInfo, localajxl.a(false));
-        long l = localExtensionInfo.loverLastChatTime;
-        boolean bool = asyj.a(asyj.b(), l * 1000L, localExtensionInfo.loverTransFlag);
-        if ((i != 0) && (bool)) {}
-        for (i = 1; i != 0; i = 0)
-        {
-          a(paramQQAppInterface, paramSessionInfo, paramQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int), paramaeom);
-          return;
-        }
-      }
+    String str = b(paramHttpURLConnection.getContentType());
+    InputStream localInputStream = paramHttpURLConnection.getErrorStream();
+    if (localInputStream == null) {
+      return a(paramHttpURLConnection.getInputStream(), str);
     }
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    if (paramInt == 13) {}
-    while (paramInt == asxm.a(4L, 3L)) {
-      return true;
-    }
-    return false;
-  }
-  
-  private static boolean b(QQAppInterface paramQQAppInterface, String paramString, Boolean paramBoolean, int paramInt1, int paramInt2, boolean paramBoolean1, ExtensionInfo paramExtensionInfo, int paramInt3)
-  {
-    boolean bool = true;
-    paramQQAppInterface = paramQQAppInterface.getPreferences();
-    SharedPreferences.Editor localEditor = paramQQAppInterface.edit();
-    int i = paramQQAppInterface.getInt(paramString, 0);
-    if ((i >= paramInt3) || ((paramInt1 & paramInt2) > 0) || (!paramBoolean1)) {
-      bool = false;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("reactivetip", 2, "checkReactiveGraytip remindTimes=" + i + "isRemind=" + paramInt1 + "needRemind=" + paramBoolean1 + "isNeed=" + bool);
-      }
-      return bool;
-      localEditor.putInt(paramString, i + 1);
-      localEditor.commit();
-      if (paramBoolean.booleanValue()) {
-        paramExtensionInfo.isGrayTipMultiRemind |= paramInt2;
-      } else {
-        paramExtensionInfo.isGrayTipRemind |= paramInt2;
-      }
-    }
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return paramInt == 999;
-  }
-  
-  public static boolean d(int paramInt)
-  {
-    return paramInt == 998;
+    return a(localInputStream, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asyn
  * JD-Core Version:    0.7.0.1
  */

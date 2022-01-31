@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import aald;
-import aale;
-import aalf;
-import akgd;
-import akge;
+import accb;
+import accc;
+import accd;
+import alxt;
+import alxu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,12 +15,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import bbfj;
-import bcqf;
-import bcql;
+import bdee;
+import bepp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class AuthDevRenameActivity
   extends IphoneTitleBarActivity
@@ -35,9 +35,9 @@ public class AuthDevRenameActivity
   public static String g = "target_type_info";
   public static String h = "target_desc";
   public static String i = "index";
-  private akge jdField_a_of_type_Akge = new aale(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new aalf(this);
-  private bcqf jdField_a_of_type_Bcqf;
+  private alxu jdField_a_of_type_Alxu = new accc(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new accd(this);
+  private bepp jdField_a_of_type_Bepp;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   
   static
@@ -58,10 +58,10 @@ public class AuthDevRenameActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560726);
-    super.addObserver(this.jdField_a_of_type_Akge);
-    super.setRightButton(2131692110, this);
-    this.leftView.setText(2131690596);
+    super.setContentView(2131560902);
+    super.addObserver(this.jdField_a_of_type_Alxu);
+    super.setRightButton(2131692179, this);
+    this.leftView.setText(2131690648);
     this.leftView.setOnClickListener(this);
     if ((this.centerView != null) && ((this.centerView instanceof TextView))) {
       this.centerView.setVisibility(8);
@@ -75,31 +75,31 @@ public class AuthDevRenameActivity
     }
     for (;;)
     {
-      Object localObject = super.findViewById(2131377400);
+      Object localObject = super.findViewById(2131377935);
       if (localObject != null)
       {
         ((View)localObject).setVisibility(0);
-        TextView localTextView = (TextView)((View)localObject).findViewById(2131377438);
+        TextView localTextView = (TextView)((View)localObject).findViewById(2131377975);
         if (localTextView != null) {
-          localTextView.setText(2131692164);
+          localTextView.setText(2131692237);
         }
-        localObject = (TextView)((View)localObject).findViewById(2131377379);
+        localObject = (TextView)((View)localObject).findViewById(2131377914);
         if ((localObject != null) && (!TextUtils.isEmpty(paramBundle))) {
           ((TextView)localObject).setText(paramBundle);
         }
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131362874));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131362909));
         if (!TextUtils.isEmpty(str)) {
           this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(str);
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeOptions(6);
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnEditorActionListener(this);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeActionLabel(getString(2131694026), 6);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { new aald(this) });
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeActionLabel(getString(2131694142), 6);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { new accb(this) });
         return true;
-        super.setTitle(2131692164);
+        super.setTitle(2131692237);
       }
       paramBundle = null;
       str = null;
@@ -121,15 +121,15 @@ public class AuthDevRenameActivity
         {
           super.finish();
           return;
-          if (!bbfj.d(this))
+          if (!bdee.d(this))
           {
-            bcql.a(this, getString(2131692321), 0).b(getTitleBarHeight());
+            QQToast.a(this, getString(2131692397), 0).b(getTitleBarHeight());
             return;
           }
           paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getEditableText().toString();
           if (TextUtils.isEmpty(paramView))
           {
-            bcql.a(this, getString(2131692129), 0).b(getTitleBarHeight());
+            QQToast.a(this, getString(2131692199), 0).b(getTitleBarHeight());
             return;
           }
           localObject = super.getIntent();
@@ -139,7 +139,7 @@ public class AuthDevRenameActivity
       localObject = ((Intent)localObject).getExtras();
       ((Bundle)localObject).putString(f, paramView);
       ((Bundle)localObject).putString(jdField_a_of_type_JavaLangString, this.app.getCurrentAccountUin());
-      paramView = (akgd)this.app.a(34);
+      paramView = (alxt)this.app.a(34);
     } while (paramView == null);
     a();
     paramView.a((Bundle)localObject);
@@ -149,7 +149,7 @@ public class AuthDevRenameActivity
   {
     b();
     super.onDestroy();
-    super.removeObserver(this.jdField_a_of_type_Akge);
+    super.removeObserver(this.jdField_a_of_type_Alxu);
   }
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
@@ -164,7 +164,7 @@ public class AuthDevRenameActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevRenameActivity
  * JD-Core Version:    0.7.0.1
  */

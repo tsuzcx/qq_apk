@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class vhf
-  implements View.OnClickListener
+public abstract interface vhf
 {
-  vhf(vhd paramvhd) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.a(0);
-  }
+  public abstract boolean a(@NonNull StoryVideoItem paramStoryVideoItem);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhf
  * JD-Core Version:    0.7.0.1
  */

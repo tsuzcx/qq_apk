@@ -1,21 +1,37 @@
-import android.graphics.Bitmap;
-import java.util.List;
+import dov.com.qq.im.ae.view.NoScrollViewPager;
 
-public abstract interface bkkf
+class bkkf
+  implements blfm
 {
-  public abstract void a();
+  bkkf(bkke parambkke) {}
   
-  public abstract void a(int paramInt);
+  public void a(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      bkke.a(this.a).setCurrentItem(0, true);
+      bkke.a(this.a).d();
+      bkke.a(this.a).t();
+      blen.a().L();
+      return;
+    }
+    if (bkke.a(this.a))
+    {
+      bkke.a(this.a);
+      blen.a().M();
+      return;
+    }
+    bkke.b(this.a);
+  }
   
-  public abstract void a(int paramInt, long paramLong, Bitmap paramBitmap);
-  
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void a(boolean paramBoolean);
+  public boolean a(int paramInt)
+  {
+    return (paramInt != 1) || (bkke.a(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkkf
  * JD-Core Version:    0.7.0.1
  */

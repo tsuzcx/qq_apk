@@ -1,33 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
 
-final class ascj
-  extends Handler
+public class ascj
+  implements ytc
 {
-  java.lang.ref.WeakReference<asbz> a;
+  public ascj(NowLiveFragment paramNowLiveFragment) {}
   
-  public ascj(asbz paramasbz)
+  public void a()
   {
-    super(Looper.getMainLooper());
-    this.a = new mqq.util.WeakReference(paramasbz);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a == null) {}
-    asbz localasbz;
-    do
-    {
-      return;
-      localasbz = (asbz)this.a.get();
-    } while (localasbz == null);
-    localasbz.a(paramMessage);
+    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.refresh();
+    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ascj
  * JD-Core Version:    0.7.0.1
  */

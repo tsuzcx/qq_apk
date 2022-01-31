@@ -1,109 +1,61 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.debug.PstnCardTestActivity;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class ajfs
+class ajfs
+  implements bhvu
 {
-  private static final HashMap<String, Integer> a = new HashMap();
-  private static final HashMap<String, String> b = new HashMap();
+  ajfs(ajfr paramajfr) {}
   
-  public static int a(String paramString)
+  public void a(bhvt parambhvt)
   {
-    Integer localInteger = (Integer)a.get(paramString);
-    if (localInteger != null)
+    switch (parambhvt.a)
     {
-      QLog.i("CmShow_CmShowDataHelper", 1, "getCmShowModel uin:" + paramString + " model:" + localInteger);
-      return localInteger.intValue();
-    }
-    return 0;
-  }
-  
-  public static String a(CmShowRenderView.PlayActionConfig paramPlayActionConfig)
-  {
-    if (paramPlayActionConfig == null) {
-      return null;
-    }
-    Object localObject = (String)b.get(paramPlayActionConfig.a());
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return null;
-    }
-    for (;;)
-    {
-      int i;
-      JSONObject localJSONObject;
-      String str4;
-      try
-      {
-        localObject = new JSONObject((String)localObject);
-        ((JSONObject)localObject).put("loop", paramPlayActionConfig.a);
-        ((JSONObject)localObject).put("needRestore", paramPlayActionConfig.jdField_b_of_type_Boolean);
-        ((JSONObject)localObject).put("taskId", paramPlayActionConfig.jdField_b_of_type_Int);
-        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("sprites");
-        int j = localJSONArray.length();
-        i = 0;
-        if (i >= j) {
-          break label262;
-        }
-        localJSONObject = localJSONArray.optJSONObject(i);
-        String str1 = localJSONObject.optString("action");
-        String str2 = localJSONObject.optString("preAction");
-        String str3 = localJSONObject.optString("mainAction");
-        str4 = localJSONObject.optString("postAction");
-        if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4))) {
-          break label269;
-        }
-        if (paramPlayActionConfig.c == 1) {
-          localJSONObject.put("action", str2);
-        } else if (paramPlayActionConfig.c == 2) {
-          localJSONObject.put("action", str3);
-        }
+    default: 
+      if (AudioHelper.d()) {
+        PstnCardTestActivity.onDebugMenuEvent(parambhvt, this.a.a);
       }
-      catch (Exception paramPlayActionConfig)
-      {
-        QLog.e("CmShow_CmShowDataHelper", 1, "getCacheActionJs e:" + paramPlayActionConfig);
-        return null;
-      }
-      if (paramPlayActionConfig.c == 3)
-      {
-        localJSONObject.put("action", str4);
-        break label271;
-        label262:
-        paramPlayActionConfig = ((JSONObject)localObject).toString();
-        return paramPlayActionConfig;
-        label269:
-        return null;
-      }
-      label271:
-      i += 1;
-    }
-  }
-  
-  public static void a()
-  {
-    b.clear();
-    a.clear();
-  }
-  
-  public static void a(CmShowRenderView.PlayActionConfig paramPlayActionConfig, String paramString)
-  {
-    if (paramPlayActionConfig == null) {
+      return;
+    case 2131699006: 
+      this.a.e();
+      return;
+    case 2131691316: 
+      this.a.d();
+      return;
+    case 2131691330: 
+      this.a.c();
+      return;
+    case 2131691323: 
+      this.a.f();
+      return;
+    case 2131691333: 
+      this.a.i();
+      return;
+    case 2131691335: 
+      ajfr.a(this.a);
+      return;
+    case 2131691320: 
+      this.a.a(8);
+      azmj.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
+      return;
+    case 2131691329: 
+      this.a.h();
+      return;
+    case 2131691322: 
+      this.a.g();
+      return;
+    case 2131691325: 
+      MiniAppUtils.handleMiniAppMoreClick(this.a.a);
+      azmj.b(this.a.a.app, "dc00898", "", "", "0X8009CB9", "0X8009CB9", 0, 0, "", "", "", "");
       return;
     }
-    b.put(paramPlayActionConfig.a(), paramString);
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    QLog.i("CmShow_CmShowDataHelper", 1, "setCmshowModel uin:" + paramString + " model:" + paramInt);
-    a.put(paramString, Integer.valueOf(paramInt));
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajfs
  * JD-Core Version:    0.7.0.1
  */

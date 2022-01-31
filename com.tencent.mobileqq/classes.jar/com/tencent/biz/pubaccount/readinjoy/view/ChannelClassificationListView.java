@@ -4,20 +4,20 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.AdapterView.OnItemClickListener;
-import baxn;
+import bcwh;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.DisableSlideHorizontalListView;
 import java.util.ArrayList;
-import qzk;
-import qzl;
-import qzn;
+import rpg;
+import rph;
+import rpj;
 
-public class ChannelClassificationListView<T extends qzn>
+public class ChannelClassificationListView<T extends rpj>
   extends DisableSlideHorizontalListView
 {
   private int jdField_a_of_type_Int;
   private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
   private ArrayList<T> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ChannelClassificationListView<T>.qzl jdField_a_of_type_Qzl;
+  private ChannelClassificationListView<T>.rph jdField_a_of_type_Rph;
   
   public ChannelClassificationListView(Context paramContext)
   {
@@ -33,17 +33,17 @@ public class ChannelClassificationListView<T extends qzn>
   
   private void a()
   {
-    this.jdField_a_of_type_Qzl = new qzl(this, null);
-    setAdapter(this.jdField_a_of_type_Qzl);
-    setDividerWidth(baxn.a(getContext(), 10.0F));
-    setOnScrollStateChangedListener(new qzk(this));
+    this.jdField_a_of_type_Rph = new rph(this, null);
+    setAdapter(this.jdField_a_of_type_Rph);
+    setDividerWidth(bcwh.a(getContext(), 10.0F));
+    setOnScrollStateChangedListener(new rpg(this));
   }
   
   public void setData(int paramInt, ArrayList<T> paramArrayList)
   {
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Qzl.notifyDataSetChanged();
+    this.jdField_a_of_type_Rph.notifyDataSetChanged();
   }
   
   public void setOnItemClickListener(@Nullable AdapterView.OnItemClickListener paramOnItemClickListener)
@@ -53,7 +53,7 @@ public class ChannelClassificationListView<T extends qzn>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView
  * JD-Core Version:    0.7.0.1
  */

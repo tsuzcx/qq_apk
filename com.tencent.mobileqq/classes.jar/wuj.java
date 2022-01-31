@@ -1,28 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-public class wuj
-  implements View.OnClickListener
+public final class wuj
+  implements Parcelable.Creator<EditTakeGifSource>
 {
-  public wuj(VideoPlayerView paramVideoPlayerView) {}
-  
-  public void onClick(View paramView)
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    if (xen.a("mLLSkipBackWrapper", 500L))
-    {
-      VideoPlayerView.e(this.a);
-      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.b(this.a)), 0, 1, true);
-      if (VideoPlayerView.a(this.a) != null) {
-        this.a.a(VideoPlayerView.a(this.a).a() - 10000L);
-      }
-    }
+    return new EditTakeGifSource(paramParcel);
+  }
+  
+  public EditTakeGifSource[] a(int paramInt)
+  {
+    return new EditTakeGifSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wuj
  * JD-Core Version:    0.7.0.1
  */

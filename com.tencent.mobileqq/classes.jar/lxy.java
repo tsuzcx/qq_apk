@@ -1,21 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import android.graphics.Bitmap;
 
-public class lxy
-  implements DialogInterface.OnClickListener
+public abstract interface lxy
 {
-  public lxy(AVSchema paramAVSchema, String paramString) {}
+  public abstract void a(Bitmap paramBitmap);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    mqy.d();
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxy
  * JD-Core Version:    0.7.0.1
  */

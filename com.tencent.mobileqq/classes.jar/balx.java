@@ -1,60 +1,33 @@
-public class balx
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class balx
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  balx(balv parambalv) {}
   
-  public static balx a()
+  public void onClick(View paramView)
   {
-    return new balx();
-  }
-  
-  public balx a(String paramString)
-  {
-    this.a = paramString;
-    return this;
-  }
-  
-  public balx b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public balx c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public balx d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public balx e(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public balx f(String paramString)
-  {
-    this.j = paramString;
-    return this;
+    switch (((balg)paramView.getTag()).b)
+    {
+    }
+    for (;;)
+    {
+      this.a.dismiss();
+      return;
+      this.a.d();
+      continue;
+      this.a.e();
+      continue;
+      this.a.f();
+      continue;
+      this.a.g();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     balx
  * JD-Core Version:    0.7.0.1
  */

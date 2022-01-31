@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aczt;
+import aerh;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class XBubbleAnimation$3
   implements Runnable
 {
-  public XBubbleAnimation$3(aczt paramaczt, Object[] paramArrayOfObject) {}
+  public XBubbleAnimation$3(aerh paramaerh, Object[] paramArrayOfObject) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class XBubbleAnimation$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.3
  * JD-Core Version:    0.7.0.1
  */

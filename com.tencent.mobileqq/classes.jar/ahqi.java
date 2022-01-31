@@ -1,25 +1,22 @@
-import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahqi
-  extends ahpz
 {
-  public int c;
-  
-  public ahqi(Context paramContext, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.c = paramInt;
-    if (paramInt == 0) {
-      this.a = "";
-    }
-    while (paramInt != 1) {
+    if (paramQQAppInterface == null) {}
+    do
+    {
       return;
-    }
-    this.a = ajya.a(2131715692);
+      aush.a(paramQQAppInterface.getAccount(), "sp_key_card_redpoint_count", Integer.valueOf(paramInt));
+    } while (!QLog.isColorLevel());
+    QLog.i("CardUtil", 2, String.format("updateCardRedPoint count:%d", new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqi
  * JD-Core Version:    0.7.0.1
  */

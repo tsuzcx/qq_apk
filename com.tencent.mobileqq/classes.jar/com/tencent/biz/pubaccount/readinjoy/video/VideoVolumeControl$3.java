@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.TimerTask;
-import qvk;
+import rlb;
 
 public class VideoVolumeControl$3
   extends TimerTask
 {
-  public VideoVolumeControl$3(qvk paramqvk) {}
+  public VideoVolumeControl$3(rlb paramrlb) {}
   
   public void run()
   {
-    qvk.a(this.this$0, true);
+    rlb.a(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl.3
  * JD-Core Version:    0.7.0.1
  */

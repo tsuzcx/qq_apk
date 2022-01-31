@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.MotionEvent;
 
-class agcn
-  implements DialogInterface.OnDismissListener
+public abstract interface agcn
 {
-  agcn(agck paramagck) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcn
  * JD-Core Version:    0.7.0.1
  */

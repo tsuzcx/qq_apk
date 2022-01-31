@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcyb;
+import bexd;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -12,8 +12,6 @@ import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
@@ -43,12 +41,11 @@ class AppLoadingUI$8
           if (!TextUtils.isEmpty(((MiniAppConfig)localObject).launchParam.shareTicket)) {
             ((MiniAppConfig)localObject).launchParam.scene = 1044;
           }
-          if (((MiniAppConfig)localObject).launchParam.reportData == null) {
-            ((MiniAppConfig)localObject).launchParam.reportData = new HashMap();
+          if (!TextUtils.isEmpty(((MiniAppConfig)localObject).launchParam.reportData)) {
+            break label441;
           }
-          if (localMiniAppInfo.reportData != null) {
-            ((MiniAppConfig)localObject).launchParam.reportData.putAll(localMiniAppInfo.reportData);
-          }
+          ((MiniAppConfig)localObject).launchParam.reportData = localMiniAppInfo.reportData;
+          label217:
           if ((localMiniAppInfo.verType != 3) && (localMiniAppInfo.verType != 1)) {
             ((MiniAppConfig)localObject).forceReroad = 3;
           }
@@ -58,7 +55,7 @@ class AppLoadingUI$8
               localMiniAppInfo.firstPage.pagePath = localMiniAppInfo.firstPage.pagePath.substring(1);
             }
             if (!localMiniAppInfo.firstPage.pagePath.contains(".html")) {
-              break label466;
+              break label497;
             }
             ((MiniAppConfig)localObject).launchParam.entryPath = localMiniAppInfo.firstPage.pagePath;
           }
@@ -67,7 +64,7 @@ class AppLoadingUI$8
         {
           if (localMiniAppInfo.clearAuths == 1)
           {
-            l = bcyb.a().a();
+            l = bexd.a().a();
             if (l > 0L)
             {
               AuthorizeCenter.clearAuth(localMiniAppInfo.appId, String.valueOf(l));
@@ -89,7 +86,13 @@ class AppLoadingUI$8
           }
           ((MiniAppConfig)localObject).launchParam = this.val$param;
           break;
-          label466:
+          label441:
+          if (TextUtils.isEmpty(localMiniAppInfo.reportData)) {
+            break label217;
+          }
+          ((MiniAppConfig)localObject).launchParam.reportData = (((MiniAppConfig)localObject).launchParam.reportData + "&" + localMiniAppInfo.reportData);
+          break label217;
+          label497:
           if (localMiniAppInfo.firstPage.pagePath.contains("?")) {
             ((MiniAppConfig)localObject).launchParam.entryPath = localMiniAppInfo.firstPage.pagePath.replaceFirst("\\?", ".html\\?");
           } else {
@@ -105,7 +108,7 @@ class AppLoadingUI$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppLoadingUI.8
  * JD-Core Version:    0.7.0.1
  */

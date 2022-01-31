@@ -1,16 +1,14 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
+import android.os.Bundle;
 
-public class afft
-  extends aimt
+public abstract interface afft
 {
-  public TextView a;
-  public PublicRecommendAccountInfo a;
-  public TextView b;
+  public abstract void a();
+  
+  public abstract void a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afft
  * JD-Core Version:    0.7.0.1
  */

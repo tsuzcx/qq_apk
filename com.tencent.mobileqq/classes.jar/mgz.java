@@ -1,24 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.QQLogo;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.av.ui.MultiIncomingCallsActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class mgz
-  implements Animation.AnimationListener
+  extends lht
 {
-  public mgz(QQLogo paramQQLogo) {}
+  public mgz(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(long paramLong1, long paramLong2, ArrayList<lqk> paramArrayList)
   {
-    this.a.setVisibility(8);
+    ThreadManager.getUIHandler().post(new MultiIncomingCallsActivity.1.1(this, paramArrayList));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgz
  * JD-Core Version:    0.7.0.1
  */

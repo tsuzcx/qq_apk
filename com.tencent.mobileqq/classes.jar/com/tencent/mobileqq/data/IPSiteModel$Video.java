@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anir;
+import aozy;
 
 public class IPSiteModel$Video
   implements Parcelable
 {
-  public static final Parcelable.Creator<Video> CREATOR = new anir();
+  public static final Parcelable.Creator<Video> CREATOR = new aozy();
   public String buttonDesc;
   public String content;
   public String cover;
@@ -71,7 +71,7 @@ public class IPSiteModel$Video
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Video
  * JD-Core Version:    0.7.0.1
  */

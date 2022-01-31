@@ -1,34 +1,75 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.animation.AlphaAnimation;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class otw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements AladdinConfigHandler
 {
-  public otw(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, ReadInJoyStaticGridView paramReadInJoyStaticGridView, View paramView) {}
+  private final String a = "reset_kandian_configuration";
+  private final String b = "reset_version";
   
-  public void onGlobalLayout()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getHeight() > 0) {
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = osq.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "reset_kandian_configuration"))
+      {
+        localObject1 = paramString;
+        paramString = (String)localObject2;
       }
     }
-    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
-      return;
+    for (;;)
+    {
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+      break;
+      if (TextUtils.equals(str, "reset_version"))
+      {
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+        continue;
+        if ((TextUtils.equals("1", (CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString))) {}
+        try
+        {
+          paramInt1 = Integer.valueOf(paramString).intValue();
+          bdiv.q(BaseApplicationImpl.getApplication(), paramInt1, ors.a());
+          return true;
+        }
+        catch (NumberFormatException paramString)
+        {
+          QLog.e("ResetAllConfigHandler", 1, "[onReceiveConfig] e = " + paramString);
+          return true;
+        }
+      }
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setDuration(400L);
-    localAlphaAnimation.setAnimationListener(new otx(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("ResetAllConfigHandler", 2, "[onWipeConfig] id=" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otw
  * JD-Core Version:    0.7.0.1
  */

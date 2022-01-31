@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import baxn;
+import bcwh;
 
 public class IndexBarTipsLayout
   extends RelativeLayout
@@ -38,13 +38,13 @@ public class IndexBarTipsLayout
   {
     this.a.setText(paramString);
     paramString = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
-    paramString.topMargin = ((int)(paramFloat - getWidth() / 2.0D + baxn.a(getContext(), 20.0F)));
+    paramString.topMargin = ((int)(paramFloat - getWidth() / 2.0D + bcwh.a(getContext(), 20.0F)));
     this.a.setLayoutParams(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.view.IndexBarTipsLayout
  * JD-Core Version:    0.7.0.1
  */

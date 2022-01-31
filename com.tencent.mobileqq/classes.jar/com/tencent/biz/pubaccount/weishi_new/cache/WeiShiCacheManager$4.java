@@ -1,26 +1,44 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import UserGrowth.stSimpleGetFeedListRsp;
-import sjv;
-import sll;
-import snb;
+import UserGrowth.stFollowFeedsRsp;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.ArrayList;
+import java.util.List;
+import tcq;
+import tlv;
 
 public class WeiShiCacheManager$4
   implements Runnable
 {
+  public WeiShiCacheManager$4(tcq paramtcq, List paramList) {}
+  
   public void run()
   {
-    snb.b("CacheResponseLog", "getCachedRecommendData startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
-    if (!this.this$0.b()) {
-      return;
+    ArrayList localArrayList = new ArrayList();
+    if (this.a.size() > tcq.a(this.this$0))
+    {
+      int i = 0;
+      while (i < tcq.a(this.this$0))
+      {
+        localArrayList.add(this.a.get(i));
+        i += 1;
+      }
     }
-    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = sjv.a(this.this$0, 1);
-    sll.a().a(new WeiShiCacheManager.4.1(this, localstSimpleGetFeedListRsp));
+    for (;;)
+    {
+      stFollowFeedsRsp localstFollowFeedsRsp = new stFollowFeedsRsp();
+      localstFollowFeedsRsp.feeds = localArrayList;
+      if (tcq.a(this.this$0, localstFollowFeedsRsp, tcq.a(this.this$0), localArrayList.size())) {
+        LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", tlv.c());
+      }
+      return;
+      localArrayList = new ArrayList(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.4
  * JD-Core Version:    0.7.0.1
  */

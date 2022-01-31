@@ -1,19 +1,25 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class aikq
-  implements bcqh
+class aikq
+  implements DialogInterface.OnKeyListener
 {
-  public aikq(SessionClearFragment paramSessionClearFragment) {}
+  aikq(aikl paramaikl) {}
   
-  public void a()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    SessionClearFragment.a(this.a).onBackPressed();
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
+    {
+      this.a.a.dismiss();
+      aikl.a(this.a, aikl.a(this.a), true, Long.valueOf(aikl.b(this.a)).longValue(), true);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikq
  * JD-Core Version:    0.7.0.1
  */

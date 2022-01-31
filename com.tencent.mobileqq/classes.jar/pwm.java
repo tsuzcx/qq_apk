@@ -1,30 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSNavigateTo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.regex.Pattern;
 
 public class pwm
-  implements pbx
+  implements IPTSNavigateTo
 {
-  public pwm(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
+  private final String a = "PTSNavigateToModule";
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void navigateTo(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentContentRecommendFollowList", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
+    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
+    paramString = Pattern.compile("\\/").split(paramString);
+    if ((paramString != null) && (paramString.length > 0))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
-      return;
+      paramString = paramString[(paramString.length - 1)];
+      Intent localIntent = new Intent();
+      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", paramString);
+      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
     }
-    bcql.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131718513, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwm
  * JD-Core Version:    0.7.0.1
  */

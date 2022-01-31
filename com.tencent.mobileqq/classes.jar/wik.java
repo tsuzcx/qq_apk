@@ -1,45 +1,52 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-final class wik
-  implements BusinessObserver
+class wik
+  extends uhn
 {
-  wik(wfi paramwfi) {}
+  wik(wij paramwij) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
-    {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        if (paramBundle.getInt("r") != 0) {
-          continue;
-        }
-        paramBundle = paramBundle.getString("url");
-        if (paramBundle != null)
-        {
-          this.a.a(true, paramBundle);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramBundle = null;
-        }
-      }
-      this.a.a(false, null);
+    paramInt = 1;
+    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
       return;
     }
+    if (paramBoolean1)
+    {
+      paramString = this.a.a;
+      if (paramBoolean2)
+      {
+        paramString.isSubscribe = paramInt;
+        paramString = (uhl)vhj.a().getManager(181);
+        if (!paramBoolean2) {
+          break label128;
+        }
+        if (!paramString.h()) {
+          paramString.b();
+        }
+        QQToast.a(vhj.a(), 2, alpo.a(2131711322), 0).a();
+      }
+      for (;;)
+      {
+        wij.a(this.a).e();
+        wij.a(this.a).c();
+        return;
+        paramInt = 0;
+        break;
+        label128:
+        QQToast.a(vhj.a(), 2, alpo.a(2131711318), 0).a();
+      }
+    }
+    QQToast.a(vhj.a(), 1, alpo.a(2131711327), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wik
  * JD-Core Version:    0.7.0.1
  */

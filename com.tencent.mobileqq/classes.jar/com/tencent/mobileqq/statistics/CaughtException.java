@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import ajya;
+import alpo;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 public class CaughtException
   extends Exception
 {
-  public static final String ADVICE = ajya.a(2131701467);
+  public static final String ADVICE = alpo.a(2131701840);
   private static HashSet<String> a = new CaughtException.1();
   
   public CaughtException(String paramString)

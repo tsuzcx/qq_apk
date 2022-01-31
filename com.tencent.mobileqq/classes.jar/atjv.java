@@ -1,21 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-
-public class atjv
-  implements View.OnTouchListener
+class atjv
+  implements bhqf
 {
-  public atjv(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  atjv(atjn paramatjn) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss()
   {
-    return paramMotionEvent.getAction() == 2;
+    this.a.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atjv
  * JD-Core Version:    0.7.0.1
  */

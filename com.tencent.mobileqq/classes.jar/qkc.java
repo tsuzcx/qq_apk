@@ -1,56 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.5;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
-public class qkc
-  implements baic
+class qkc
 {
-  public qkc(ReadInJoyWebDataManager.5 param5) {}
+  int jdField_a_of_type_Int = 0;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
-  {
-    if (paramJSONObject != null)
-    {
-      this.a.this$0.a(this.a.b, Integer.toString(qkb.b));
-      try
-      {
-        if ((this.a.jdField_a_of_type_Qkg != null) && ((this.a.jdField_a_of_type_Qkg instanceof qkg))) {
-          this.a.jdField_a_of_type_Qkg.a(paramJSONObject);
-        }
-        paramBundle = paramJSONObject.toString();
-        qkb.a(this.a.this$0, this.a.b, paramBundle);
-        if (this.a.jdField_a_of_type_OrgJsonJSONObject != null)
-        {
-          this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
-          this.a.this$0.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:storeParams putData JSONException :" + paramBundle);
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result :" + paramJSONObject);
-      }
-    }
-    do
-    {
-      return;
-      this.a.this$0.a(this.a.b, Integer.toString(qkb.a));
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result null");
-  }
+  qkc(qjz paramqjz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qkc
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,8 @@ package com.tencent.mobileqq.msf.core.net;
 import android.os.Handler;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.am;
+import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.d;
 import com.tencent.qphone.base.a;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -118,30 +120,34 @@ class n$b
     //   110: getfield 16	com/tencent/mobileqq/msf/core/net/n$b:d	Lcom/tencent/mobileqq/msf/core/net/n;
     //   113: iconst_0
     //   114: invokestatic 101	com/tencent/mobileqq/msf/core/net/n:d	(Lcom/tencent/mobileqq/msf/core/net/n;Z)V
-    //   117: return
-    //   118: astore 4
-    //   120: aload_0
-    //   121: monitorexit
-    //   122: aload 4
-    //   124: athrow
-    //   125: astore 4
-    //   127: goto -20 -> 107
+    //   117: aload_0
+    //   118: iload_1
+    //   119: iload_2
+    //   120: invokespecial 103	com/tencent/mobileqq/msf/core/net/n$b:c	(II)V
+    //   123: return
+    //   124: astore 4
+    //   126: aload_0
+    //   127: monitorexit
+    //   128: aload 4
+    //   130: athrow
+    //   131: astore 4
+    //   133: goto -26 -> 107
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	130	0	this	b
-    //   0	130	1	paramInt1	int
-    //   0	130	2	paramInt2	int
+    //   0	136	0	this	b
+    //   0	136	1	paramInt1	int
+    //   0	136	2	paramInt2	int
     //   26	19	3	i	int
-    //   118	5	4	localObject	Object
-    //   125	1	4	localException	Exception
+    //   124	5	4	localObject	Object
+    //   131	1	4	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   50	94	118	finally
-    //   94	99	118	finally
-    //   99	107	118	finally
-    //   107	109	118	finally
-    //   120	122	118	finally
-    //   99	107	125	java/lang/Exception
+    //   50	94	124	finally
+    //   94	99	124	finally
+    //   99	107	124	finally
+    //   107	109	124	finally
+    //   126	128	124	finally
+    //   99	107	131	java/lang/Exception
   }
   
   private void b(CopyOnWriteArrayList paramCopyOnWriteArrayList1, CopyOnWriteArrayList paramCopyOnWriteArrayList2, CopyOnWriteArrayList paramCopyOnWriteArrayList3, CopyOnWriteArrayList paramCopyOnWriteArrayList4, ArrayList paramArrayList)
@@ -176,6 +182,65 @@ class n$b
     }
   }
   
+  private void c(int paramInt1, int paramInt2)
+  {
+    boolean bool3 = false;
+    int i;
+    int k;
+    int j;
+    if (paramInt2 == 0)
+    {
+      i = 1;
+      k = i;
+      j = paramInt2;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.d.d(paramInt2).j() == 1)
+        {
+          j = i;
+          k = paramInt2;
+        }
+        long l1 = this.d.b(k);
+        long l2 = this.d.b(j);
+        if (this.b[k] != 3) {
+          continue;
+        }
+        bool1 = true;
+        if (this.b[j] != 3) {
+          continue;
+        }
+        bool2 = true;
+        String str = this.d.l().d.c();
+        if (this.d.f.getStatReporter() != null)
+        {
+          k localk = this.d.f.getStatReporter();
+          if (paramInt1 == 2) {
+            bool3 = true;
+          }
+          localk.a(bool3, l1, bool1, l2, bool2, str);
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        boolean bool1;
+        boolean bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("DualConnContext", 1, "reportDualEvent fail!", localException);
+      }
+      i = 0;
+      break;
+      bool1 = false;
+      continue;
+      bool2 = false;
+    }
+  }
+  
   public int a()
   {
     return this.a;
@@ -198,14 +263,14 @@ class n$b
     boolean bool1 = true;
     for (;;)
     {
-      int i;
       label92:
+      int i;
       try
       {
-        i = this.b[paramInt2];
-        QLog.d("DualConnContext", 1, "onNextState connId = " + paramInt2 + ", connState = " + c(paramInt1) + ", preState = " + c(i) + ", remainTime = " + paramLong);
-        if (i != paramInt1) {
-          break label295;
+        j = this.b[paramInt2];
+        QLog.d("DualConnContext", 1, "onNextState connId = " + paramInt2 + ", connState = " + c(paramInt1) + ", preState = " + c(j) + ", remainTime = " + paramLong);
+        if (j != paramInt1) {
+          break label296;
         }
         bool2 = bool1;
         return bool2;
@@ -219,11 +284,11 @@ class n$b
       }
       else
       {
-        label295:
+        label296:
         while (paramInt2 != 0)
         {
           i = 0;
-          break label302;
+          break label303;
           this.b[paramInt2] = paramInt1;
           bool1 = bool2;
           break label92;
@@ -232,7 +297,7 @@ class n$b
           bool1 = bool2;
           break label92;
           bool1 = bool2;
-          if (paramInt1 != 2) {
+          if (j != 2) {
             break label92;
           }
           this.b[paramInt2] = paramInt1;
@@ -263,7 +328,7 @@ class n$b
           break;
         }
         i = 1;
-        label302:
+        label303:
         switch (paramInt1)
         {
         }
@@ -348,7 +413,7 @@ class n$b
     // Byte code:
     //   0: ldc 73
     //   2: iconst_1
-    //   3: ldc 213
+    //   3: ldc 255
     //   5: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   8: aload_0
     //   9: monitorenter
@@ -357,36 +422,36 @@ class n$b
     //   14: istore_1
     //   15: iload_1
     //   16: iconst_1
-    //   17: if_icmpne +15 -> 32
+    //   17: if_icmpne +16 -> 33
     //   20: ldc 73
     //   22: iconst_1
-    //   23: ldc 215
-    //   25: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   28: aload_0
-    //   29: invokevirtual 204	java/lang/Object:wait	()V
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: return
-    //   35: astore_2
-    //   36: aload_0
-    //   37: monitorexit
-    //   38: aload_2
-    //   39: athrow
-    //   40: astore_2
-    //   41: goto -9 -> 32
+    //   23: ldc_w 257
+    //   26: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   29: aload_0
+    //   30: invokevirtual 247	java/lang/Object:wait	()V
+    //   33: aload_0
+    //   34: monitorexit
+    //   35: return
+    //   36: astore_2
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: aload_2
+    //   40: athrow
+    //   41: astore_2
+    //   42: goto -9 -> 33
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	44	0	this	b
+    //   0	45	0	this	b
     //   14	4	1	i	int
-    //   35	4	2	localObject	Object
-    //   40	1	2	localException	Exception
+    //   36	4	2	localObject	Object
+    //   41	1	2	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   10	15	35	finally
-    //   20	32	35	finally
-    //   32	34	35	finally
-    //   36	38	35	finally
-    //   20	32	40	java/lang/Exception
+    //   10	15	36	finally
+    //   20	33	36	finally
+    //   33	35	36	finally
+    //   37	39	36	finally
+    //   20	33	41	java/lang/Exception
   }
 }
 

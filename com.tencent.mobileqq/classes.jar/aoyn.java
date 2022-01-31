@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.graphics.Canvas;
+import android.view.View.OnTouchListener;
 
-class aoyn
-  implements aptw
+public abstract interface aoyn
 {
-  aoyn(aoyi paramaoyi, FileManagerEntity paramFileManagerEntity) {}
+  public abstract float a();
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_Aoyi.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
-    }
-    this.jdField_a_of_type_Aoyi.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-  }
+  public abstract Canvas a();
   
-  public void b() {}
+  public abstract void a();
+  
+  public abstract void a(Canvas paramCanvas);
+  
+  public abstract void a(View.OnTouchListener paramOnTouchListener);
+  
+  public abstract void a(aoyo paramaoyo);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyn
  * JD-Core Version:    0.7.0.1
  */

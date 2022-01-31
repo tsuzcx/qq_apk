@@ -1,26 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import cooperation.qqreader.QRBridgeUtil;
+import java.util.Map;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class biuo
-  implements EIPCResultCallback
+public final class biuo
+  implements WtTicketPromise
 {
-  biuo(biuk parambiuk) {}
+  public biuo(String paramString) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void Done(Ticket paramTicket)
   {
-    QLog.d("AEGIFSinglePreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
-    if (paramEIPCResult.code == 0)
+    if (paramTicket != null)
     {
-      QLog.d("AEGIFSinglePreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
-      return;
+      bixe.d("QRBridgeUtil", "preGetKeyInPreloadService : Done");
+      paramTicket = (byte[])paramTicket._pskey_map.get(this.a);
+      if (paramTicket != null) {
+        QRBridgeUtil.access$000().put(this.a, new String(paramTicket));
+      }
     }
-    QLog.d("AEGIFSinglePreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    bixe.d("QRBridgeUtil", "preGetKeyInPreloadService failed " + paramErrMsg);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    bixe.d("QRBridgeUtil", "preGetKeyInPreloadService timeout!" + paramErrMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biuo
  * JD-Core Version:    0.7.0.1
  */

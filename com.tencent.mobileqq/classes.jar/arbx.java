@@ -1,22 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 
-class arbx
-  implements TVK_IMediaPlayer.OnVideoPreparingListener
+final class arbx
+  implements View.OnClickListener
 {
-  arbx(arbp paramarbp) {}
+  arbx(Activity paramActivity, String paramString) {}
   
-  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity))
+    {
+      arni.a(((BasePluginActivity)this.jdField_a_of_type_AndroidAppActivity).getOutActivity(), this.jdField_a_of_type_JavaLangString);
+      return;
     }
+    arni.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbx
  * JD-Core Version:    0.7.0.1
  */

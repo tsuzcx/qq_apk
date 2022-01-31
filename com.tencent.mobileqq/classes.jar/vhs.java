@@ -1,25 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class vhs
-  extends SimpleJob<Object>
+public final class vhs
+  extends ugz
 {
-  vhs(vhm paramvhm, String paramString)
-  {
-    super(paramString);
-  }
+  public int a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public vhs(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    vej.a("0X80076BC");
-    return null;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhs
  * JD-Core Version:    0.7.0.1
  */

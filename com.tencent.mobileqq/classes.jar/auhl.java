@@ -1,32 +1,75 @@
-import com.tencent.mobileqq.data.SubAccountInfo;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
-class auhl
-  implements Comparator<SubAccountInfo>
+public class auhl
+  extends AccessibilityDelegateCompat
 {
-  auhl(auhk paramauhk, akpb paramakpb) {}
+  public auhl(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
   
-  public int a(SubAccountInfo paramSubAccountInfo1, SubAccountInfo paramSubAccountInfo2)
+  private boolean a()
   {
-    int i = this.jdField_a_of_type_Akpb.a(paramSubAccountInfo1.subuin, 7000);
-    int j = this.jdField_a_of_type_Akpb.a(paramSubAccountInfo2.subuin, 7000);
-    if ((i > 0) && (j == 0)) {}
-    do
+    return (this.a.a != null) && (this.a.a.getCount() > 1);
+  }
+  
+  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  {
+    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+    paramAccessibilityEvent.setClassName(MultiAIOBaseViewPager.class.getName());
+    paramAccessibilityEvent.setScrollable(a());
+    if ((paramAccessibilityEvent.getEventType() == 4096) && (this.a.a != null))
     {
-      return 1;
-      if ((i == 0) && (j > 0)) {
-        return -1;
-      }
-    } while (paramSubAccountInfo1.lasttime > paramSubAccountInfo2.lasttime);
-    if (paramSubAccountInfo1.lasttime < paramSubAccountInfo2.lasttime) {
-      return -1;
+      paramAccessibilityEvent.setItemCount(this.a.a.getCount());
+      paramAccessibilityEvent.setFromIndex(this.a.b);
+      paramAccessibilityEvent.setToIndex(this.a.b);
     }
-    return 0;
+  }
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setClassName(MultiAIOBaseViewPager.class.getName());
+    paramAccessibilityNodeInfoCompat.setScrollable(a());
+    if (this.a.canScrollHorizontally(1)) {
+      paramAccessibilityNodeInfoCompat.addAction(4096);
+    }
+    if (this.a.canScrollHorizontally(-1)) {
+      paramAccessibilityNodeInfoCompat.addAction(8192);
+    }
+  }
+  
+  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+  {
+    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
+      return true;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 4096: 
+      if (this.a.canScrollHorizontally(1))
+      {
+        this.a.setCurrentItem(this.a.b + 1);
+        return true;
+      }
+      return false;
+    }
+    if (this.a.canScrollHorizontally(-1))
+    {
+      this.a.setCurrentItem(this.a.b - 1);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auhl
  * JD-Core Version:    0.7.0.1
  */

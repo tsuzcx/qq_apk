@@ -1,19 +1,17 @@
-class apcg
-  extends apbu
+import org.json.JSONObject;
+
+public abstract class apcg
 {
-  public apcg(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  public String a;
+  public boolean a = true;
   
-  protected String a()
-  {
-    return "StateSaveToWeiYunByPC";
-  }
+  public abstract JSONObject a();
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apcg
  * JD-Core Version:    0.7.0.1
  */

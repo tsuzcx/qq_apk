@@ -1,52 +1,43 @@
-import java.io.File;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wad
-  extends waa
+public class wad
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, uym>
 {
-  wad(wab paramwab, waj paramwaj, File paramFile) {}
-  
-  public void onFailure(String paramString)
+  public wad(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_a_of_type_Waj.onFailure(paramString);
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void onFinish(boolean paramBoolean)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull uym paramuym)
   {
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {
-      this.jdField_a_of_type_JavaIoFile.delete();
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramuym.jdField_a_of_type_JavaLangString)) {
+      return;
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_Wab.b.size())
+    if ((paramuym.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuym.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
     {
-      File localFile = new File((String)this.jdField_a_of_type_Wab.b.get(i));
-      if (localFile.exists()) {
-        localFile.delete();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramuym.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
       }
-      i += 1;
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramuym.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      return;
     }
-    this.jdField_a_of_type_Wab.b = new ArrayList();
-    this.jdField_a_of_type_Waj.onFinish(paramBoolean);
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramuym);
   }
   
-  public void onProgress(String paramString)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_Waj.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Waj.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Waj.onSuccess(paramString);
+    return uym.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wad
  * JD-Core Version:    0.7.0.1
  */

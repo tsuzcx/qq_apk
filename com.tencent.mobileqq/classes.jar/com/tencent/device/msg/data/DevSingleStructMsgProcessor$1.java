@@ -1,21 +1,21 @@
 package com.tencent.device.msg.data;
 
-import aptx;
-import yel;
+import armz;
+import zte;
 
 public class DevSingleStructMsgProcessor$1
   implements Runnable
 {
-  public DevSingleStructMsgProcessor$1(yel paramyel) {}
+  public DevSingleStructMsgProcessor$1(zte paramzte) {}
   
   public void run()
   {
-    aptx.a(2131693945);
+    armz.a(2131694061);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.device.msg.data.DevSingleStructMsgProcessor.1
  * JD-Core Version:    0.7.0.1
  */

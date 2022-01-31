@@ -1,18 +1,12 @@
-import android.content.Context;
-import android.view.ViewGroup.LayoutParams;
+import android.view.View;
 
-public class bcvv
+public abstract interface bcvv
 {
-  public float a = 0.5F;
-  public Context a;
-  public ViewGroup.LayoutParams a;
-  public boolean a;
-  public boolean b;
-  public boolean c = true;
+  public abstract void onClick(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcvv
  * JD-Core Version:    0.7.0.1
  */

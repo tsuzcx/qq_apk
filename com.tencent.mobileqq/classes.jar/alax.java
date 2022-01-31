@@ -1,30 +1,43 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-public class alax
-  extends alag
+class alax
+  implements aklu
 {
-  public ArCloudConfigInfo a;
+  alax(alap paramalap, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
   
-  public alax(String paramString, int paramInt1, int paramInt2, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void a(boolean paramBoolean, aklt paramaklt)
   {
-    super(paramString, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("MultiFragmentAnimARResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.b);
-    localStringBuilder.append(", arResourceInfo=").append(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    paramaklt = akll.a().a(8, this.jdField_a_of_type_Int);
+    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
+    if (paramaklt == null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
+      localObject = alap.a(this.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
+      }
+      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    if (paramaklt == null)
+    {
+      this.jdField_a_of_type_Alap.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramaklt);
+    akln.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new alay(this, (String)localObject), localArrayList, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alax
  * JD-Core Version:    0.7.0.1
  */

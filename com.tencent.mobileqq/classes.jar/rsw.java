@@ -1,53 +1,22 @@
-import android.widget.BaseAdapter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.Map;
 
-public abstract class rsw
-  extends BaseAdapter
-  implements rsz
+public class rsw
+  extends pdi
 {
-  private int jdField_a_of_type_Int;
-  private HashMap<Object, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  protected void a(Object paramObject)
+  public rsw(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localHashMap.put(paramObject, Integer.valueOf(i));
+    super(paramString);
   }
   
-  protected void a(List<?> paramList)
+  public void a(pdc parampdc)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramList.next());
-    }
-  }
-  
-  protected void b(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramObject);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
-      return -1L;
-    }
-    Object localObject = getItem(paramInt);
-    return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
-  }
-  
-  public final boolean hasStableIds()
-  {
-    return true;
+    parampdc.a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsw
  * JD-Core Version:    0.7.0.1
  */

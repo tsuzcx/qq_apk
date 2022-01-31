@@ -1,97 +1,46 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class axpz
+class axpz
+  implements GLSurfaceView.EGLContextFactory
 {
-  private static String a(QQAppInterface paramQQAppInterface, axtk paramaxtk, int paramInt)
+  private int jdField_a_of_type_Int = 12440;
+  
+  axpz(axpy paramaxpy) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    if (paramaxtk == null) {
-      return null;
+    int[] arrayOfInt = new int[3];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[1] = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Axpy.a);
+    arrayOfInt[2] = 12344;
+    wsv.d("FlowEdit_FlowDecodeScreenSurfaceBase", "createContext, display=%s, config=%s, shaContext=%s", new Object[] { paramEGLDisplay, paramEGLConfig, FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Axpy.a) });
+    EGLContext localEGLContext = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Axpy.a);
+    if (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Axpy.a) != 0) {}
+    for (;;)
+    {
+      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+      arrayOfInt = null;
     }
-    return paramaxtk.a(paramInt);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, axtj paramaxtj)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    a("dc03309", paramQQAppInterface, paramaxtj);
-  }
-  
-  private static void a(String paramString, QQAppInterface paramQQAppInterface, axtk paramaxtk)
-  {
-    if (paramaxtk == null)
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
     {
-      ExceptionTracker.trackException("EXReportController", "[EXReport runtime] Tag(" + paramString + ") report item is null");
-      if (!QLog.isColorLevel()) {}
-    }
-    do
-    {
-      return;
-      if ((!TextUtils.isEmpty(paramaxtk.i)) && (!TextUtils.isEmpty(paramaxtk.k)) && (!TextUtils.isEmpty(paramaxtk.j))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    return;
-    paramaxtk.b = NetConnInfoCenter.getServerTime();
-    if (QLog.isColorLevel()) {}
-    Object localObject = paramQQAppInterface;
-    if (paramQQAppInterface == null)
-    {
-      localObject = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localObject = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localObject = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localObject = (QQAppInterface)localAppRuntime;
-          }
-        }
-      }
-    }
-    if (localObject == null)
-    {
-      paramQQAppInterface = a((QQAppInterface)localObject, paramaxtk, 1);
-      localObject = new Intent();
-      ((Intent)localObject).setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      ((Intent)localObject).putExtra("reporting_tag", paramString);
-      ((Intent)localObject).putExtra("reporting_detail", paramQQAppInterface);
-      ((Intent)localObject).putExtra("reporting_count", paramaxtk.c);
-      ((Intent)localObject).putExtra("is_runtime", 1);
-      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
-      return;
-    }
-    a(paramString, (QQAppInterface)localObject, a((QQAppInterface)localObject, paramaxtk, 1));
-  }
-  
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
-  {
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      String str = paramString2;
-      if (paramString2.contains("${count_unknown}")) {
-        str = paramString2.replace("${count_unknown}", "1");
-      }
-      paramString2 = new NewIntent(paramQQAppInterface.getApplication(), axcv.class);
-      paramString2.putExtra("sendType", 2);
-      paramString2.putExtra("tag", paramString1);
-      paramString2.putExtra("content", str);
-      paramString2.setWithouLogin(true);
-      paramQQAppInterface.startServlet(paramString2);
+      wsv.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
+      wsv.c("DefaultContextFactory", "tid=" + Thread.currentThread().getId());
+      axqc.a("eglDestroyContex", paramEGL10.eglGetError());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axpz
  * JD-Core Version:    0.7.0.1
  */

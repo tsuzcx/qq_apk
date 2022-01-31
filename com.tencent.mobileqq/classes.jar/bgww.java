@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.Comparator;
 
-class bgww
-  implements View.OnClickListener
+final class bgww
+  implements Comparator<byte[]>
 {
-  bgww(bgwv parambgwv) {}
-  
-  public void onClick(View paramView)
+  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (bgwv.a(this.a))
-    {
-      if (bgwv.b(this.a)) {
-        this.a.dismiss();
-      }
-      if (bgwv.a(this.a) != null) {
-        bgwv.a(this.a).onClick(paramView);
-      }
-    }
+    return paramArrayOfByte1.length - paramArrayOfByte2.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgww
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,83 @@
-import SummaryCard.CondFitUser;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.utils.NumberWheelView;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.widget.VerticalGallery.LayoutParams;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ammt
-  implements ajuc
+  extends BaseAdapter
 {
-  public ammt(SearchResultActivity paramSearchResultActivity) {}
+  private int jdField_a_of_type_Int = 36;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public List<Integer> a;
   
-  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
+  public ammt(NumberWheelView paramNumberWheelView, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 1;
-    if (paramInt == 3) {
-      if (!paramBoolean1)
-      {
-        this.a.b = 3;
-        this.a.jdField_a_of_type_Ammv.notifyDataSetChanged();
-      }
-    }
-    while (paramInt != 2)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    a(paramInt2, paramInt3);
+  }
+  
+  public View a(int paramInt)
+  {
+    return getView(paramInt, null, null);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    while (paramInt1 <= paramInt2)
     {
-      return;
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      }
-      paramList = this.a;
-      if (paramBoolean2) {}
-      for (paramInt = i;; paramInt = 0)
-      {
-        paramList.b = paramInt;
-        break;
-      }
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt1));
+      paramInt1 += 1;
     }
-    if (paramBoolean1)
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = null;
+    if (paramView == null)
     {
-      bbbn.a(true);
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        this.a.jdField_a_of_type_JavaUtilList.clear();
-        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      }
-      this.a.jdField_a_of_type_Ammv.notifyDataSetChanged();
-      bbbn.a(false);
-      SearchResultActivity.a(this.a).a(0);
-      paramList = Message.obtain();
-      paramList.what = 5;
-      SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
-      return;
+      paramViewGroup = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
     }
-    SearchResultActivity.a(this.a).a(1);
-    paramList = Message.obtain();
-    paramList.what = 4;
-    SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
+    for (paramView = (WheelTextView)paramViewGroup;; paramView = (View)localObject)
+    {
+      localObject = paramView;
+      if (paramView == null) {
+        localObject = (WheelTextView)paramViewGroup;
+      }
+      paramView = String.format("%d", new Object[] { this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+      ((WheelTextView)localObject).setTextSize(18.0F);
+      ((WheelTextView)localObject).setTextColor(-7829368);
+      ((WheelTextView)localObject).setGravity(5);
+      ((WheelTextView)localObject).setVisibility(0);
+      ((WheelTextView)localObject).setText(paramView);
+      return paramViewGroup;
+      paramViewGroup = paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammt
  * JD-Core Version:    0.7.0.1
  */

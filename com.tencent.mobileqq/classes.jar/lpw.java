@@ -1,45 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-class lpw
+public class lpw
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c = 0;
-  int d = 0;
+  public lpw(GaInviteActivity paramGaInviteActivity) {}
   
-  void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, boolean paramBoolean, long paramLong2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str;
-    StringBuilder localStringBuilder;
-    if ((paramArrayOfByte == null) || (this.jdField_a_of_type_Int == 0) || (this.b == 0) || (this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.d != paramInt4) || (this.jdField_a_of_type_Long != paramLong1) || (this.jdField_a_of_type_Boolean != paramBoolean)) {
-      if (QLog.isColorLevel())
-      {
-        str = lpu.a;
-        localStringBuilder = new StringBuilder().append("onProcessFrame, data[");
-        if (paramArrayOfByte == null) {
-          break label299;
-        }
-      }
-    }
-    label299:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d(str, 1, bool + "], frameIndex[" + paramLong2 + "], width[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], height[" + this.b + "->" + paramInt2 + "], format[" + this.c + "->" + paramInt3 + "], angle[" + this.d + "->" + paramInt4 + "], FPS[" + this.jdField_a_of_type_Long + "->" + paramLong1 + "], isFront[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "]");
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      this.c = paramInt3;
-      this.d = paramInt4;
-      this.jdField_a_of_type_Long = paramLong1;
-      this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.a.isFinishing()) {}
+    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
       return;
     }
+    ChatActivityUtils.a(this.a, true, new lpx(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lpw
  * JD-Core Version:    0.7.0.1
  */

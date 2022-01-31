@@ -1,38 +1,28 @@
-import java.util.LinkedList;
-import java.util.List;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class astm<T>
+class astm
+  implements EIPCResultCallback
 {
-  private List<T> a = new LinkedList();
+  astm(astl paramastl) {}
   
-  public int a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return this.a.size();
-  }
-  
-  public T a()
-  {
-    if (this.a.size() == 0) {
-      return null;
+    astl.a(paramEIPCResult, "action");
+    switch (paramEIPCResult.code)
+    {
+    default: 
+      return;
+    case -102: 
+      astl.a(this.a).a(2, paramEIPCResult.data);
+      return;
     }
-    return this.a.remove(0);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(T paramT)
-  {
-    if (!this.a.contains(paramT)) {
-      this.a.add(paramT);
-    }
+    astl.a(this.a).a(1, paramEIPCResult.data);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     astm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
 
-public class ogt
-  implements okf
+class ogt
+  implements View.OnTouchListener
 {
-  public ogt(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  ogt(ogr paramogr) {}
   
-  public void a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt != 2) {
-      this.a.d();
+    if (paramMotionEvent.getAction() == 1) {
+      ogr.a(this.a).performClick();
     }
-    ono localono1 = new ono();
-    ono localono2 = localono1.i().b("rowkey", ReadInJoyCommentListFragment.a(this.a).innerUniqueID).b("entry", "2");
-    if (paramInt == 2) {}
-    for (String str = "1";; str = "0")
+    if (ogr.a(this.a, paramMotionEvent.getX(), paramMotionEvent.getY()).booleanValue()) {}
+    for (int i = 101;; i = 102)
     {
-      localono2.b("result", str);
-      ohf.a("0X800A00F", ReadInJoyCommentListFragment.a(this.a), localono1);
-      return;
+      int j = ogr.a(this.a, ogr.a(this.a));
+      ogr.a(this.a, i, j + 1);
+      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
-public class bhvh
+import android.view.View;
+
+public abstract interface bhvh
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhvh
  * JD-Core Version:    0.7.0.1
  */

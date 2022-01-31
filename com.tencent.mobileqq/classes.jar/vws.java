@@ -1,24 +1,21 @@
-import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class vws
-  extends akat
+  implements bhqf
 {
-  vws(vwq paramvwq) {}
+  vws(vwo paramvwo, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(boolean paramBoolean, long paramLong, akau paramakau)
+  public void onDismiss()
   {
-    paramakau = this.a.a;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 5)
-    {
-      paramakau.sendEmptyMessage(i);
-      return;
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vws
  * JD-Core Version:    0.7.0.1
  */

@@ -1,93 +1,42 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public class aamx
-  extends ajto
+class aamx
+  implements ymm
 {
-  public aamx(BaseChatPie paramBaseChatPie) {}
+  aamx(aamw paramaamw, aamm paramaamm, String paramString, String[] paramArrayOfString, ymk paramymk) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void callback(Bundle paramBundle)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    String str1 = paramBundle.getString("phone");
+    String str2 = paramBundle.getString("name");
+    String str3 = paramBundle.getString("city");
+    String str4 = paramBundle.getString("area");
+    paramBundle = new JSONObject();
+    try
     {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramObject != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)) && ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1003) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002)) && (paramObject.strCertificationInfo != null) && (!paramObject.strCertificationInfo.equals(""))) {
-        aanz.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      }
-      if ((paramBoolean) && (paramObject != null)) {}
-      switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
+      paramBundle.put("phone", str1);
+      paramBundle.put("name", str2);
+      paramBundle.put("city", str3);
+      paramBundle.put("area", str4);
+      paramBundle = paramBundle.toString();
+      aanp.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Aamm + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
+      this.jdField_a_of_type_Aamm.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      this.jdField_a_of_type_Ymk.b();
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-      default: 
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)))
-        {
-          this.a.A();
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onCardDownload nick = " + bbbr.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d));
-          }
-          this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-          if (AppSetting.d)
-          {
-            paramObject = this.a.e.getText().toString();
-            this.a.e.setContentDescription(paramObject);
-            this.a.a().setTitle(this.a.e.getText());
-          }
-          if ((3000 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && ((this.a instanceof aeoc))) {
-            ((aeoc)this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.e);
-          }
-        }
-      case 1034: 
-        return;
+        aanp.d("GdtGetUserInfoHandler", localException.toString());
       }
-      this.a.b(false, false);
-      return;
-    }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      this.a.aS();
-    }
-  }
-  
-  protected void onImpeach(boolean paramBoolean, String paramString)
-  {
-    if ((this.a.d != null) && (this.a.d.isShowing())) {
-      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(231);
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(232);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(233);
-  }
-  
-  protected void onSetCalReactiveDays(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
-      }
-      this.a.aS();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamx
  * JD-Core Version:    0.7.0.1
  */

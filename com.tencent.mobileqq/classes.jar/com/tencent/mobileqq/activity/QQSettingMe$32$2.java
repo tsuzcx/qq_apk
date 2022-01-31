@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abws;
+import adoa;
 
 public class QQSettingMe$32$2
   implements Runnable
 {
-  public QQSettingMe$32$2(abws paramabws) {}
+  public QQSettingMe$32$2(adoa paramadoa) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QQSettingMe$32$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.32.2
  * JD-Core Version:    0.7.0.1
  */

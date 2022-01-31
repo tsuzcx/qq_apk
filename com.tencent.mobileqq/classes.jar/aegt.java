@@ -1,32 +1,31 @@
-import com.tencent.widget.Gallery;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
-class aegt
-  implements aptw
+public class aegt
+  extends VasQuickUpdateManager.CallBacker
 {
-  aegt(aegs paramaegs) {}
+  public aegt(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void a()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    try
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")))
     {
-      this.a.a(true);
-      this.a.jdField_a_of_type_Aejb.a(this.a.jdField_a_of_type_Aehr.jdField_a_of_type_Long, this.a.jdField_a_of_type_Aehr.jdField_a_of_type_Int, 20);
-      aegs.a(this.a).b(true);
-      aegs.b(this.a).a(true);
+      if ((paramInt1 == 0) && (!TextUtils.isEmpty(this.a.g))) {
+        this.a.c(this.a.g);
+      }
+    }
+    else {
       return;
     }
-    catch (Exception localException) {}
-  }
-  
-  public void b()
-  {
-    this.a.a(false);
-    this.a.c(true);
+    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + paramInt1 + ", url=" + this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegt
  * JD-Core Version:    0.7.0.1
  */

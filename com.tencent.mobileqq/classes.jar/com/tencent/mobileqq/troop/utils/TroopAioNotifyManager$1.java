@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import akhp;
-import baiy;
+import alzf;
+import bchk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +9,13 @@ import java.util.List;
 public final class TroopAioNotifyManager$1
   implements Runnable
 {
-  public TroopAioNotifyManager$1(QQAppInterface paramQQAppInterface, String paramString, akhp paramakhp) {}
+  public TroopAioNotifyManager$1(QQAppInterface paramQQAppInterface, String paramString, alzf paramalzf) {}
   
   public void run()
   {
-    List localList = baiy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    localList = baiy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ArrayList(), localList);
-    this.jdField_a_of_type_Akhp.notifyUI(95, true, new Object[] { this.jdField_a_of_type_JavaLangString, localList });
+    List localList = bchk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    localList = bchk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ArrayList(), localList);
+    this.jdField_a_of_type_Alzf.notifyUI(95, true, new Object[] { this.jdField_a_of_type_JavaLangString, localList });
   }
 }
 

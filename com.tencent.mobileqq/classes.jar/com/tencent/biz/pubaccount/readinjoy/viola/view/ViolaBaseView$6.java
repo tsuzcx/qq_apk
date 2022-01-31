@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import ajsd;
+import aljq;
 import android.text.TextUtils;
-import bbdx;
-import bbvj;
-import bdij;
+import bdcs;
+import bduw;
+import bfhh;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -16,7 +16,7 @@ class ViolaBaseView$6
   
   public void run()
   {
-    String str = bbvj.a(ajsd.cC + bdij.a(new StringBuilder().append("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559&time=").append(System.currentTimeMillis()).toString()) + ".zip");
+    String str = bduw.a(aljq.cD + bfhh.a(new StringBuilder().append("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559&time=").append(System.currentTimeMillis()).toString()) + ".zip");
     if (TextUtils.isEmpty(str))
     {
       if (QLog.isColorLevel()) {
@@ -25,7 +25,7 @@ class ViolaBaseView$6
       return;
     }
     if (new File(str).exists()) {
-      bbdx.d(str);
+      bdcs.d(str);
     }
     boolean bool = HttpDownloadUtil.a(null, "https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559", new File(str));
     QLog.d(ViolaBaseView.a(), 2, "loadSOFromNet [ url:https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559] Download to " + str + ",isSuss:" + bool);
@@ -39,7 +39,7 @@ class ViolaBaseView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aaze;
+import acqd;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 public class DiscussionMemberActivity$3$1
   implements Runnable
 {
-  public DiscussionMemberActivity$3$1(aaze paramaaze) {}
+  public DiscussionMemberActivity$3$1(acqd paramacqd) {}
   
   public void run()
   {
@@ -16,12 +16,12 @@ public class DiscussionMemberActivity$3$1
     DiscussionMemberActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(0);
     this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
     this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getWindow().peekDecorView().getWindowToken(), 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.removeObserver(this.a.jdField_a_of_type_Ajxj);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.removeObserver(this.a.jdField_a_of_type_Alox);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionMemberActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

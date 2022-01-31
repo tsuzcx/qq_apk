@@ -1,48 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.AppRuntime;
 
-public class acnx
-  extends ajto
+class acnx
+  implements DialogInterface.OnClickListener
 {
-  public acnx(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  acnx(acnw paramacnw) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!paramBoolean) {
-      return;
-    }
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    if (this.a.a.a() != null)
     {
-      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
-      {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        acod localacod;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localacod = (acod)localIterator.next();
-        } while ((localacod.a == null) || (!(localacod.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localacod.a).uin)));
-      }
-      for (int i = 1; i != 0; i = 0)
-      {
-        UncommonlyUsedContactsActivity.a(this.a);
-        this.a.jdField_a_of_type_Acob.notifyDataSetChanged();
-        return;
-      }
-      break;
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.a().startActivity(localIntent);
     }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acnx
  * JD-Core Version:    0.7.0.1
  */

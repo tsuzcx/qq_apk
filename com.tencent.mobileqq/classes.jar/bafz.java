@@ -1,43 +1,39 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.List;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface bafz
+public class bafz
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public bafz(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, PadInfo paramPadInfo) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(long paramLong, List<oidb_0x899.memberlist> paramList);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(oidb_0x88d.GroupInfo paramGroupInfo);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, TroopInfo paramTroopInfo);
-  
-  public abstract void a(boolean paramBoolean, List<agle> paramList);
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d();
-  
-  public abstract void d(String paramString);
-  
-  public abstract void e(String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (!bdee.g(BaseApplicationImpl.getContext())) {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131692397), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298914));
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bafw == null) {
+      return;
+    }
+    paramDialogInterface = badt.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.domainId, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.padId);
+    if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCheckBoxState()) {
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bafw.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(1);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bafw.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, false);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bafz
  * JD-Core Version:    0.7.0.1
  */

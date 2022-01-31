@@ -1,31 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import java.util.Iterator;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anms
-  extends anna
+final class anms
+  implements ArkEnvironmentManager.LibraryLoader
 {
-  public anms(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
-  
-  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
+  public boolean Load()
   {
-    if (paramBoolean)
-    {
-      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramBundle.hasNext())
-      {
-        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
-        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
-      }
-    }
+    ArkAppCenter.f();
+    return ArkAppCenter.b;
+  }
+  
+  public boolean isLibraryLoad()
+  {
+    return ArkAppCenter.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anms
  * JD-Core Version:    0.7.0.1
  */

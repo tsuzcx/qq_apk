@@ -1,32 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class aryr
-  implements ValueAnimator.AnimatorUpdateListener
+class aryr
+  implements View.OnClickListener
 {
-  public aryr(PoiSlideBottomPanel paramPoiSlideBottomPanel, View paramView, float paramFloat1, float paramFloat2) {}
+  aryr(aryq paramaryq) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
-    {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("PoiSlideBottomPanel", 2, "[panel] onAnimationUpdate: show invoked. mPanel:" + this.jdField_a_of_type_AndroidViewView.getId() + " org: " + this.jdField_a_of_type_Float + " dest: " + this.b + " value: " + this.jdField_a_of_type_AndroidViewView.getY());
-      }
-      if (PoiSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel) != null) {
-        PoiSlideBottomPanel.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel).fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / (PoiSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel) - PoiSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel)));
-      }
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null) {
+      return;
     }
+    paramView = this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl.trim();
+    if (QLog.isColorLevel()) {
+      QLog.e("ForwardOption.ForwardSdkBaseOption", 2, "gotoWeb " + paramView);
+    }
+    Intent localIntent = new Intent(this.a.a.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
+    localIntent.putExtra("param_force_internal_browser", true);
+    localIntent.putExtra("reqType", 7);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("url", paramView);
+    aeif.a(this.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, paramView);
+    this.a.a.D();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryr
  * JD-Core Version:    0.7.0.1
  */

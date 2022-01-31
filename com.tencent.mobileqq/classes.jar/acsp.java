@@ -1,19 +1,31 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
-class acsp
-  implements FileFilter
+public class acsp
+  implements DialogInterface.OnClickListener
 {
-  acsp(acsn paramacsn) {}
+  public acsp(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public boolean accept(File paramFile)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramFile.getName().startsWith(acsn.a(this.a));
+    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
+    if (!TextUtils.isEmpty(paramDialogInterface))
+    {
+      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
+      Intent localIntent = new Intent();
+      localIntent.putExtras(this.a.getIntent().getExtras());
+      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsp
  * JD-Core Version:    0.7.0.1
  */

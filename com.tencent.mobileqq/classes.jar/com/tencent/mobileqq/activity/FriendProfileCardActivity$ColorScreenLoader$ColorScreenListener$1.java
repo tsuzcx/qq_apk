@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abfm;
+import acwm;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 public class FriendProfileCardActivity$ColorScreenLoader$ColorScreenListener$1
   implements Runnable
 {
-  public FriendProfileCardActivity$ColorScreenLoader$ColorScreenListener$1(abfm paramabfm) {}
+  public FriendProfileCardActivity$ColorScreenLoader$ColorScreenListener$1(acwm paramacwm) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class FriendProfileCardActivity$ColorScreenLoader$ColorScreenListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader.ColorScreenListener.1
  * JD-Core Version:    0.7.0.1
  */

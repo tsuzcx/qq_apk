@@ -1,68 +1,29 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
-class nzw
-  implements bfth
+public class nzw
+  implements bhqf
 {
-  nzw(nzv paramnzv, int paramInt, VideoInfo paramVideoInfo) {}
+  public nzw(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void onDismiss()
   {
-    int i = 0;
-    if (paramInt == this.jdField_a_of_type_Int)
+    boolean bool = true;
+    ReadInJoySettingActivity.a(this.a, true);
+    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
+    if (!ReadInJoySettingActivity.a(this.a)) {}
+    for (;;)
     {
-      bcql.a(nzv.a(this.jdField_a_of_type_Nzv), 0, 2131695527, 0).a();
-      nzv.a(this.jdField_a_of_type_Nzv).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
-        break label349;
-      }
-    }
-    label346:
-    label349:
-    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
-    {
-      paramView = "";
-      paramInt = i;
-      if (paramInt < paramArrayList.size())
-      {
-        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
-        if (paramObject == null) {
-          break label346;
-        }
-        paramObject = paramView + paramObject.a;
-        paramView = paramObject;
-        if (paramInt != paramArrayList.size() - 1) {
-          paramView = paramObject + ",";
-        }
-      }
-      for (;;)
-      {
-        paramInt += 1;
-        break;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f = l;
-          paramArrayList = nmc.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-          if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(nzv.a(this.jdField_a_of_type_Nzv))) {
-            nmc.a(new nyd().a(nzv.a(this.jdField_a_of_type_Nzv)).a(nmc.c).b(nmc.P).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
-          }
-        }
-        else
-        {
-          return;
-        }
-        nmc.a(new nyd().a(nzv.a(this.jdField_a_of_type_Nzv)).a(nmc.c).b(nmc.N).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
-        return;
-      }
+      localSwitch.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzw
  * JD-Core Version:    0.7.0.1
  */

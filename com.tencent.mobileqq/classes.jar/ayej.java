@@ -1,60 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+
 public class ayej
-  implements ajte
+  implements View.OnClickListener
 {
-  public void a(int paramInt) {}
+  public ayej(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                } while (paramObject.length != 2);
-                a((String)paramObject[0], (String)paramObject[1]);
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 4);
-            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
+    this.a.a.setText("");
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayej
  * JD-Core Version:    0.7.0.1
  */

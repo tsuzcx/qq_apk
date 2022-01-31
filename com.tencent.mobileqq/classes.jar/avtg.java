@@ -1,37 +1,34 @@
-class avtg
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.MaskView;
+
+public class avtg
+  implements SurfaceHolder.Callback
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  public avtg(ScanOcrActivity paramScanOcrActivity) {}
   
-  public avtg(avtf paramavtf, String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public int a()
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.b * 100 / this.jdField_a_of_type_Int;
+    ScanOcrActivity.a(this.a, paramSurfaceHolder);
+    if (ScanOcrActivity.a(this.a) == null)
+    {
+      ScanOcrActivity.a(this.a, new avsm(this.a, this.a.jdField_a_of_type_Avsr, ScanOcrActivity.a(this.a)));
+      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
+      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
+      if (ScanOcrActivity.a(this.a)) {
+        ScanOcrActivity.a(this.a).a();
+      }
     }
-    return 0;
   }
   
-  public void a()
-  {
-    this.b += 1;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int += 1;
-  }
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avtg
  * JD-Core Version:    0.7.0.1
  */

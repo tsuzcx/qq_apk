@@ -1,28 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
 public class uam
-  implements tzr
+  implements DialogInterface.OnClickListener
 {
-  public uam(StoryPlayerGroupAdapter paramStoryPlayerGroupAdapter) {}
+  public uam(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
-  {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramInt3);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uam
  * JD-Core Version:    0.7.0.1
  */

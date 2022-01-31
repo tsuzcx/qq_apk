@@ -1,72 +1,73 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.BaseConstants;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class amgl
-  extends ampa<amgk>
 {
-  public static amgk a()
+  private static boolean a;
+  private static boolean b;
+  
+  public static void a(MessageRecord paramMessageRecord)
   {
-    return (amgk)ampl.a().a(549);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+    localHashMap.put("param_FailCode", String.valueOf(paramMessageRecord.istroop));
+    azmz.a(BaseApplication.getContext()).a(null, "actInvalidMessageRecord", false, 0L, 0L, localHashMap, "");
   }
   
-  public int a()
+  public static void a(String paramString)
   {
-    return 549;
-  }
-  
-  @NonNull
-  public amgk a(int paramInt)
-  {
-    return new amgk();
-  }
-  
-  @Nullable
-  public amgk a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    if (!a)
     {
-      amgk localamgk = amgk.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteConfigProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      a = true;
+      c("reportSaveInvalidUserError");
+      azlf.a(new RuntimeException(), paramString);
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    if ((paramInt == 1008) && (paramQQAppInterface != null))
+    {
+      paramQQAppInterface = ((aloz)paramQQAppInterface.getManager(51)).c(paramString);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.isFriend())) {
+        return true;
       }
-      return localamgk;
     }
-    return null;
-  }
-  
-  public Class a()
-  {
-    return amgk.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteConfigProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(amgk paramamgk) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
     return false;
   }
   
-  public boolean c()
+  public static void b(String paramString)
   {
-    return true;
+    if (!b)
+    {
+      b = true;
+      c("reportInvalidRefredshLastMsg");
+      azlf.a(new RuntimeException(), paramString);
+    }
+  }
+  
+  public static void c(String paramString)
+  {
+    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+    StringBuilder localStringBuilder = new StringBuilder(512);
+    int j = arrayOfStackTraceElement.length;
+    int i = 0;
+    while (i < j)
+    {
+      localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append("\n");
+      i += 1;
+    }
+    QLog.i(paramString, 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgl
  * JD-Core Version:    0.7.0.1
  */

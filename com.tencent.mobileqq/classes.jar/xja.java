@@ -1,22 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class xja
-  implements View.OnClickListener
+  implements axrl
 {
-  xja(xiz paramxiz, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
+  xja(xiz paramxiz) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    if (xiz.a(this.jdField_a_of_type_Xiz) != null) {
-      xiz.a(this.jdField_a_of_type_Xiz).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
+    synchronized (xiz.a(this.a))
+    {
+      xiz.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(xiz.a, 2, "onEncodeFinish, filePath= " + paramString);
+      }
+      xiz.a(this.a).notifyAll();
+      return;
     }
   }
+  
+  public void a_(int paramInt, Throwable arg2)
+  {
+    synchronized (xiz.a(this.a))
+    {
+      xiz.b(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(xiz.a, 2, "onEncodeError, errorCode= " + paramInt);
+      }
+      xiz.a(this.a).notifyAll();
+      return;
+    }
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xja
  * JD-Core Version:    0.7.0.1
  */

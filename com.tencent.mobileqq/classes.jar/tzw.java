@@ -1,88 +1,29 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.PlayerGestureGroupHolder.OnViewPagerGestureListener.1;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class tzw
-  extends GestureDetector.SimpleOnGestureListener
+class tzw
+  implements TextView.OnEditorActionListener
 {
-  private tzw(tzu paramtzu) {}
+  tzw(tzr paramtzr) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    int i = 0;
-    Object localObject = (StoryPlayerGroupHolder)this.a.a();
-    if (((StoryPlayerGroupHolder)localObject).a() == null) {
-      return super.onDoubleTap(paramMotionEvent);
-    }
-    localObject = (ugk)((StoryPlayerGroupHolder)localObject).b(ugk.class);
-    if ((localObject != null) && (((ugk)localObject).d()))
+    switch (paramInt)
     {
-      try
-      {
-        localObject = (AnimationDrawable)this.a.a().getResources().getDrawable(2130846029);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        ((AnimationDrawable)localObject).start();
-        int j = 0;
-        while (i < ((AnimationDrawable)localObject).getNumberOfFrames())
-        {
-          j += ((AnimationDrawable)localObject).getDuration(i);
-          i += 1;
-        }
-        ThreadManager.getUIHandler().postDelayed(new PlayerGestureGroupHolder.OnViewPagerGestureListener.1(this, (AnimationDrawable)localObject), j);
-      }
-      catch (OutOfMemoryError paramMotionEvent)
-      {
-        axpu.a(paramMotionEvent);
-        return false;
-      }
-      ved.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap handle");
+    case 5: 
+    default: 
+      return false;
     }
-    for (;;)
-    {
-      return super.onDoubleTap(paramMotionEvent);
-      ved.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap not handle");
+    if (tzr.a(this.a) != null) {
+      tzr.a(this.a).a();
     }
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent = (StoryPlayerGroupHolder)this.a.a();
-    VideoViewVideoHolder localVideoViewVideoHolder = paramMotionEvent.a();
-    if (localVideoViewVideoHolder != null) {
-      switch (localVideoViewVideoHolder.a())
-      {
-      }
-    }
-    for (;;)
-    {
-      ved.c(this.a.jdField_a_of_type_JavaLangString, "onSingleTapConfirmed");
-      return true;
-      paramMotionEvent.a(true, true);
-      vei.a("play_video", "clk_video", 0, 0, new String[] { "", "2", "", "" });
-      continue;
-      paramMotionEvent.a(false, true);
-      vei.a("play_video", "clk_video", 0, 0, new String[] { "", "1", "", "" });
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tzw
  * JD-Core Version:    0.7.0.1
  */

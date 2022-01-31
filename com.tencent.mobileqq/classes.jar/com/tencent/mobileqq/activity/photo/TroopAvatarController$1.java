@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agle;
-import agqf;
+import aiiy;
+import aile;
 
 public class TroopAvatarController$1
   implements Runnable
 {
-  public TroopAvatarController$1(agqf paramagqf, agle paramagle1, agle paramagle2) {}
+  public TroopAvatarController$1(aile paramaile, aiiy paramaiiy1, aiiy paramaiiy2) {}
   
   public void run()
   {
-    agqf.a(this.this$0, this.a);
-    agqf.b(this.this$0, this.b);
+    aile.a(this.this$0, this.a);
+    aile.b(this.this$0, this.b);
     this.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.TroopAvatarController.1
  * JD-Core Version:    0.7.0.1
  */

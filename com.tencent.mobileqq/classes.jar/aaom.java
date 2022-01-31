@@ -1,27 +1,28 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public final class aaom
-  implements DialogInterface.OnClickListener
 {
-  public aaom(aaqb paramaaqb, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aaqa paramaaqa) {}
+  public final int a;
+  public final long a;
+  final String jdField_a_of_type_JavaLangString;
+  final Throwable jdField_a_of_type_JavaLangThrowable;
+  final String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private aaom(String paramString1, String paramString2, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Aaqb.d = false;
-    this.jdField_a_of_type_Aaqb.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aaqa, this.jdField_a_of_type_Aaqb);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this(paramString1, paramString2, paramInt, paramLong, null);
+  }
+  
+  private aaom(String paramString1, String paramString2, int paramInt, long paramLong, Throwable paramThrowable)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaom
  * JD-Core Version:    0.7.0.1
  */

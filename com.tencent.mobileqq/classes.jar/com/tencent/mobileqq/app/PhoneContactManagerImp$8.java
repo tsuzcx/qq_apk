@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aimf;
+import akdq;
 import java.util.List;
 
 class PhoneContactManagerImp$8
@@ -12,7 +12,7 @@ class PhoneContactManagerImp$8
   {
     if ((this.a != null) && (!this.a.isEmpty()))
     {
-      this.this$0.a = aimf.a(this.a, null, true);
+      this.this$0.a = akdq.a(this.a, null, true);
       return;
     }
     this.this$0.a = null;

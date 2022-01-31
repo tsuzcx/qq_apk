@@ -1,24 +1,31 @@
+import android.os.Handler;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
 
-final class vjp
-  implements Animation.AnimationListener
+class vjp
+  implements View.OnClickListener
 {
-  vjp(View paramView) {}
+  vjp(vjl paramvjl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.setAnimation(null);
+    paramView = vjl.a(this.a).a();
+    if (!bdee.g(paramView))
+    {
+      QQToast.a(paramView, 1, 2131694764, 0).a();
+      return;
+    }
+    wsv.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { vjl.a(this.a) });
+    vjl.a(this.a).setVisibility(0);
+    vjl.a(this.a).removeCallbacks(vjl.a(this.a));
+    vjl.a(this.a).postDelayed(vjl.a(this.a), 500L);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjp
  * JD-Core Version:    0.7.0.1
  */

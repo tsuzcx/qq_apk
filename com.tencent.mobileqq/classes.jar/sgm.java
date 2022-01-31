@@ -1,64 +1,80 @@
 import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.qphone.base.util.QLog;
 
-final class sgm
-  implements bfph
+public abstract class sgm
+  implements rvi
 {
-  sgm(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, bfpc parambfpc) {}
+  private static final String a;
+  protected int a;
+  protected Context a;
+  protected SlideActiveAnimController a;
+  protected sgn a;
+  protected sgo a;
+  public yst a;
   
-  public void OnClick(View paramView, int paramInt)
+  static
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Boolean) {
-        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        break;
-        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
-      }
-    } while (!this.jdField_a_of_type_JavaLangString.equals("2010741172"));
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (paramView != null)
-    {
-      paramView = acyk.a(paramView);
-      if (paramView != null)
-      {
-        paramView = (PAMessage.Item)paramView.items.get(0);
-        if (paramView.url != null) {
-          sgg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView.url);
-        }
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Boolean) {
-      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      break;
-      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+    jdField_a_of_type_JavaLangString = sgm.class.getSimpleName();
+  }
+  
+  public sgm(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    if (this.jdField_a_of_type_Sgn != null) {
+      this.jdField_a_of_type_Sgn.a(paramInt1, paramInt2);
     }
   }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isDebugVersion()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "onPullRefreshing percent:" + paramInt + " isTopRefreshing:" + paramBoolean);
+    }
+  }
+  
+  public void a(SlideActiveAnimController paramSlideActiveAnimController)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController = paramSlideActiveAnimController;
+  }
+  
+  public void a(sgn paramsgn)
+  {
+    this.jdField_a_of_type_Sgn = paramsgn;
+  }
+  
+  public void a(sgo paramsgo)
+  {
+    this.jdField_a_of_type_Sgo = paramsgo;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Sgo != null) {
+      this.jdField_a_of_type_Sgo.a(paramBoolean);
+    }
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.event.ExoticEvent;
+import com.tencent.qqmini.sdk.runtime.flutter.SurfaceFlutterVideoView;
 
-public final class bhdq
-  implements Parcelable.Creator<ExoticEvent>
+public class bhdq
+  implements bgnm
 {
-  public ExoticEvent a(Parcel paramParcel)
-  {
-    return new ExoticEvent(paramParcel, null);
-  }
+  public bhdq(SurfaceFlutterVideoView paramSurfaceFlutterVideoView) {}
   
-  public ExoticEvent[] a(int paramInt)
+  public boolean a(bgnj parambgnj, int paramInt1, int paramInt2)
   {
-    return new ExoticEvent[paramInt];
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhdq
  * JD-Core Version:    0.7.0.1
  */

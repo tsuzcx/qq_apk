@@ -1,174 +1,55 @@
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Activity;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import java.io.File;
 
-public class agep
+final class agep
+  extends AsyncTask<Void, Void, Boolean>
 {
-  public static String a;
-  public MessageRecord a;
+  agep(File paramFile1, File paramFile2, Activity paramActivity, ager paramager) {}
   
-  public agep(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  protected Boolean a(Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MessageItem", 2, "MessageItem, messageRecord.senderuin = " + paramMessageRecord.senderuin);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-  }
-  
-  public static String a(CharSequence paramCharSequence)
-  {
-    paramCharSequence = new StringBuilder(paramCharSequence);
-    int k = paramCharSequence.length();
-    int i = 0;
-    if (i < paramCharSequence.length())
+    try
     {
-      int m = paramCharSequence.codePointAt(i);
-      int j;
-      if ((m == 20) && (i < k - 1))
+      if (ey.a(this.jdField_a_of_type_JavaIoFile, this.b))
       {
-        j = i;
-        if (paramCharSequence.charAt(i + 1) < ayjy.jdField_a_of_type_Int)
-        {
-          paramCharSequence.replace(i, i + 2, "\001\001");
-          j = i + 1;
-        }
+        bdda.a(this.jdField_a_of_type_AndroidAppActivity, this.b.getAbsolutePath());
+        return Boolean.valueOf(true);
       }
-      for (;;)
-      {
-        i = j + 1;
-        break;
-        j = i;
-        if (ayjy.jdField_a_of_type_AndroidUtilSparseIntArray.get(m, -1) >= 0) {
-          if ((m > 65535) && (k >= i + 2))
-          {
-            paramCharSequence.replace(i, i + 2, "\001\001");
-            j = i;
-          }
-          else
-          {
-            paramCharSequence.replace(i, i + 1, "\001");
-            j = i;
-          }
-        }
-      }
+      return Boolean.valueOf(false);
     }
-    return paramCharSequence.toString();
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MessageItem", 2, "setKeyword, keyword = " + paramString);
-    }
-    if ((paramString != null) && (paramString.length() > 0)) {
-      jdField_a_of_type_JavaLangString = paramString.toLowerCase(Locale.US);
-    }
-  }
-  
-  public SpannableString a(String paramString)
-  {
-    int i = a(paramString).toLowerCase(Locale.US).indexOf(jdField_a_of_type_JavaLangString);
-    if (i > 20)
+    catch (OutOfMemoryError paramVarArgs)
     {
-      int j = i - 20;
-      int k = paramString.codePointAt(j - 1);
-      if (k != 20)
-      {
-        i = j;
-        if (ayjy.jdField_a_of_type_AndroidUtilSparseIntArray.get(k, -1) >= 0)
-        {
-          i = j;
-          if (k <= 65535) {}
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("AIOGalleryUtils", 2, "savePhoto  OOM ");
       }
-      else
-      {
-        i = j + 1;
-      }
-      StringBuilder localStringBuilder = new StringBuilder(paramString.length());
-      localStringBuilder.append("...");
-      localStringBuilder.append(paramString.substring(i));
-      paramString = new SpannableString(localStringBuilder.toString());
-      paramString.setSpan("...", 0, "...".length(), 33);
-      return paramString;
     }
-    return new SpannableString(paramString);
+    return Boolean.valueOf(false);
   }
   
-  public CharSequence a(String paramString, int paramInt)
+  protected void a(Boolean paramBoolean)
   {
-    if (paramString == null) {
-      return "";
-    }
-    paramString = new aykk(a(paramString), 3, 16);
-    a(paramString, paramInt);
-    return paramString;
-  }
-  
-  public String a(long paramLong)
-  {
-    return bbkp.a(1000L * paramLong, true, "yyyy-MM-dd");
-  }
-  
-  public void a(Spannable paramSpannable, int paramInt)
-  {
-    int i = 0;
-    int j = 0;
-    String str = a(paramSpannable.toString()).toString().toLowerCase(Locale.US);
-    int m = jdField_a_of_type_JavaLangString.length();
-    String[] arrayOfString = (String[])paramSpannable.getSpans(0, paramSpannable.length(), String.class);
-    if (arrayOfString != null)
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
+    for (int i = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();; i = 0)
     {
-      int n = arrayOfString.length;
-      int k = 0;
-      for (;;)
+      if (paramBoolean.booleanValue()) {}
+      for (String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131695322);; str = this.jdField_a_of_type_AndroidAppActivity.getString(2131695348))
       {
-        i = j;
-        if (k >= n) {
-          break;
+        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, str, 0).b(i);
+        if (this.jdField_a_of_type_Ager != null) {
+          this.jdField_a_of_type_Ager.a(paramBoolean.booleanValue());
         }
-        if ("...".equals(arrayOfString[k])) {
-          j = "...".length();
-        }
-        k += 1;
+        return;
       }
     }
-    j = str.indexOf(jdField_a_of_type_JavaLangString, i);
-    if ((j >= 0) && (j < str.length()))
-    {
-      i = j + m;
-      paramSpannable.setSpan(new ForegroundColorSpan(paramInt), j, i, 33);
-      j = i;
-    }
-    for (;;)
-    {
-      if (j >= 0)
-      {
-        i = j;
-        if (j < str.length()) {
-          break;
-        }
-      }
-      return;
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uniseq = ").append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    localStringBuilder.append(", msg = ").append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg);
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agep
  * JD-Core Version:    0.7.0.1
  */

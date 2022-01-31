@@ -1,23 +1,42 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.QLog;
-
-class aobs
-  implements asef
+public class aobs
 {
-  aobs(aobr paramaobr, String paramString) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  boolean jdField_a_of_type_Boolean;
+  long b;
+  long c;
+  long d;
   
-  public void a()
+  public aobs(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicEmoticonInfo", 2, "forward, [play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Aobr.jdField_a_of_type_Aobp.a.magicValue);
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof aobs))
+    {
+      paramObject = (aobs)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)
+      {
+        bool1 = bool2;
+        if (paramObject.b == this.b) {
+          bool1 = true;
+        }
+      }
     }
-    this.jdField_a_of_type_Aobr.jdField_a_of_type_Aobp.a.magicValue = this.jdField_a_of_type_JavaLangString;
-    aanz.a(this.jdField_a_of_type_Aobr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aobr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aobr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aobr.jdField_a_of_type_Aobp.a);
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aobs
  * JD-Core Version:    0.7.0.1
  */

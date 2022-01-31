@@ -1,78 +1,97 @@
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
-public class bkpm
+class bkpm
+  implements bmac<blbb>
 {
-  public static int a = 0;
+  bkpm(bkpi parambkpi) {}
   
-  public static void a(int paramInt, String paramString1, String paramString2, HashMap<String, String> paramHashMap)
+  public void a(@Nullable blbb paramblbb)
   {
-    switch (paramInt)
+    int i = 1;
+    if (paramblbb == null) {}
+    label305:
+    label336:
+    do
     {
-    default: 
       return;
-    }
-    String str1 = paramString2;
-    String str2;
-    String str3;
-    if (paramHashMap != null)
-    {
-      str2 = (String)paramHashMap.get("cameraType");
-      str3 = (String)paramHashMap.get("isTemplateMode");
-      paramHashMap = (String)paramHashMap.get("templateId");
-      if ((!String.valueOf(2).equals(str2)) || ((!String.valueOf(false).equals(str3)) && (paramHashMap != null))) {
-        break label99;
+      paramblbb = paramblbb.a;
+      bkpi.a(this.a, paramblbb);
+      blfg.a("VideoStoryPiecesPart", "[GifAuthor]---checkShowGifAuthor when capture mode change");
+      bkpi.a(this.a);
+      bkpi.a(this.a).q();
+      if (paramblbb == AECaptureMode.NORMAL) {
+        bkpi.a(this.a).c(true);
       }
-      str1 = "0X8007819";
-    }
-    for (;;)
-    {
-      a(paramString1, str1);
-      return;
-      label99:
-      if ((String.valueOf(2).equals(str2)) && (String.valueOf(true).equals(str3)) && (paramHashMap != null))
+      for (;;)
       {
-        str1 = "0X800781A";
-      }
-      else if ((String.valueOf(1).equals(str2)) && ((String.valueOf(false).equals(str3)) || (paramHashMap == null)))
-      {
-        str1 = "0X800781B";
-      }
-      else
-      {
-        str1 = paramString2;
-        if (String.valueOf(1).equals(str2))
-        {
-          str1 = paramString2;
-          if (String.valueOf(true).equals(str3))
-          {
-            str1 = paramString2;
-            if (paramHashMap != null) {
-              str1 = "0X800781C";
-            }
-          }
+        if (bkpi.a(this.a) != null) {
+          bkpi.a(this.a).a(paramblbb);
         }
+        if (paramblbb != AECaptureMode.NORMAL) {
+          break label336;
+        }
+        bkpi.a(this.a).setVisibility(0);
+        if (bkpi.a(this.a) != null)
+        {
+          if ((!bkwm.g(bkpi.b(this.a).getIntent())) && (!bkwm.h(bkpi.c(this.a).getIntent()))) {
+            break label305;
+          }
+          bkpi.a(this.a).setFunctionFlag(bkpi.d(this.a).getIntent().getIntExtra("ability_flag", 2));
+        }
+        bkpi.a(this.a).setMaxDuration(bkpi.a());
+        bkpi.a(this.a).a(false);
+        bkpi.a(this.a).b(bkwm.i(bkpi.e(this.a).getIntent()));
+        bkpi.a(this.a).c(false);
+        if (bkpi.b(this.a)) {
+          bkpi.a(this.a).setVisibility(0);
+        }
+        bkpi.a(this.a).setVisibility(0);
+        if (bkwm.a(bkpi.a(this.a).a())) {
+          break;
+        }
+        bkpi.a(this.a).a().b();
+        return;
+        bkpi.a(this.a).c(false);
       }
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    axqy.b(null, "dc00898", paramString1, "", paramString2, paramString2, a, 0, paramString3, "", "", "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    axqy.b(null, "dc00898", paramString1, "", paramString2, paramString2, a, 0, paramString3, paramString4, paramString5, paramString6);
+      paramblbb = bkpi.a(this.a);
+      if (bkpi.a(this.a)) {}
+      for (;;)
+      {
+        paramblbb.setFunctionFlag(i);
+        break;
+        i = 3;
+      }
+      if (paramblbb == AECaptureMode.GIF)
+      {
+        bkpi.a(this.a).setVisibility(0);
+        bkpi.a(this.a).setFunctionFlag(4);
+        bkpi.a(this.a).setMaxDuration(bkpi.b());
+        bkpi.a(this.a).a(true);
+        bkpi.a(this.a).c(true);
+        if (bkpi.b(this.a)) {
+          bkpi.a(this.a).setVisibility(0);
+        }
+        bkpi.a(this.a).setVisibility(0);
+        bkpi.a(this.a).a();
+        return;
+      }
+    } while (paramblbb != AECaptureMode.PLAY);
+    bkpi.a(this.a).setVisibility(8);
+    bkpi.a(this.a).setVisibility(8);
+    bkpi.a(this.a).setVisibility(8);
+    bkpi.a(this.a).setMaterial(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkpm
  * JD-Core Version:    0.7.0.1
  */

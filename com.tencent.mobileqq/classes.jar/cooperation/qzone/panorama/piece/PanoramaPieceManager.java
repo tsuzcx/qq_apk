@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Matrix;
 import android.graphics.Rect;
-import bbll;
-import bhhi;
-import bhhp;
-import bhht;
-import bhhu;
-import bhhw;
-import bhhy;
+import bdkf;
+import bjit;
+import bjja;
+import bjje;
+import bjjf;
+import bjjh;
+import bjjj;
 import com.tencent.mobileqq.app.MemoryManager;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
@@ -18,16 +18,16 @@ import cooperation.qzone.util.QZLog;
 import java.io.IOException;
 
 public class PanoramaPieceManager
-  implements bhhi
+  implements bjit
 {
   private float jdField_a_of_type_Float = 1.0F;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private BitmapRegionDecoder jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder;
-  private bhhp jdField_a_of_type_Bhhp;
-  private bhht jdField_a_of_type_Bhht;
-  private bhhw jdField_a_of_type_Bhhw;
+  private bjja jdField_a_of_type_Bjja;
+  private bjje jdField_a_of_type_Bjje;
+  private bjjh jdField_a_of_type_Bjjh;
   private volatile PanoramaPieceManager.ProcessState jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = new int[8];
@@ -46,21 +46,21 @@ public class PanoramaPieceManager
   private int l = -1;
   private int m = -1;
   
-  public PanoramaPieceManager(bhhw parambhhw, String paramString)
+  public PanoramaPieceManager(bjjh parambjjh, String paramString)
   {
-    this.jdField_a_of_type_Bhhw = parambhhw;
-    this.jdField_a_of_type_Bhhp = parambhhw.a();
+    this.jdField_a_of_type_Bjjh = parambjjh;
+    this.jdField_a_of_type_Bjja = parambjjh.a();
     try
     {
       this.jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder = BitmapRegionDecoder.newInstance(paramString, false);
       e();
       return;
     }
-    catch (IOException parambhhw)
+    catch (IOException parambjjh)
     {
       for (;;)
       {
-        parambhhw.printStackTrace();
+        parambjjh.printStackTrace();
       }
     }
   }
@@ -126,15 +126,15 @@ public class PanoramaPieceManager
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bhht == null) {
+    if (this.jdField_a_of_type_Bjje == null) {
       return;
     }
-    this.jdField_a_of_type_Bhht.remove(paramInt);
+    this.jdField_a_of_type_Bjje.remove(paramInt);
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Bhht == null) || (this.jdField_a_of_type_Bhht.size() < 8) || (!this.jdField_a_of_type_Bhht.a())) {
+    if ((this.jdField_a_of_type_Bjje == null) || (this.jdField_a_of_type_Bjje.size() < 8) || (!this.jdField_a_of_type_Bjje.a())) {
       return;
     }
     int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
@@ -200,38 +200,38 @@ public class PanoramaPieceManager
     }
   }
   
-  private void a(bhht parambhht, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap, boolean paramBoolean)
+  private void a(bjje parambjje, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap, boolean paramBoolean)
   {
     QZLog.i("PanoramaPieceManager", 4, new Object[] { "index = ", Integer.valueOf(paramInt1), " x = ", Integer.valueOf(paramInt2), " perWidth = ", Integer.valueOf(paramInt3), " (orgHeight * scaleRate) = ", Float.valueOf(this.jdField_b_of_type_Int * this.jdField_a_of_type_Float) });
     if ((paramBitmap == null) || (paramBitmap.isRecycled())) {}
-    while (parambhht.get(paramInt1) != null) {
+    while (parambjje.get(paramInt1) != null) {
       return;
     }
     try
     {
-      bhhu localbhhu = new bhhu();
-      localbhhu.a(paramInt1);
+      bjjf localbjjf = new bjjf();
+      localbjjf.a(paramInt1);
       if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int)
       {
         n = this.jdField_b_of_type_Int;
-        localbhhu.a(Bitmap.createBitmap(paramBitmap, paramInt2, 0, paramInt3, (int)(n * this.jdField_a_of_type_Float)));
-        parambhht.a(paramInt1, localbhhu, paramBoolean);
+        localbjjf.a(Bitmap.createBitmap(paramBitmap, paramInt2, 0, paramInt3, (int)(n * this.jdField_a_of_type_Float)));
+        parambjje.a(paramInt1, localbjjf, paramBoolean);
         return;
       }
     }
-    catch (IllegalArgumentException parambhht)
+    catch (IllegalArgumentException parambjje)
     {
       for (;;)
       {
-        parambhht.printStackTrace();
+        parambjje.printStackTrace();
         QZLog.e("PanoramaPieceManager", "createBitmap IllegalArgumentException");
         return;
         int n = this.jdField_a_of_type_Int;
       }
     }
-    catch (OutOfMemoryError parambhht)
+    catch (OutOfMemoryError parambjje)
     {
-      parambhht.printStackTrace();
+      parambjje.printStackTrace();
       QZLog.e("PanoramaPieceManager", "createBitmap OutOfMemoryError");
     }
   }
@@ -301,8 +301,8 @@ public class PanoramaPieceManager
   
   private void e()
   {
-    if (this.jdField_a_of_type_Bhhp != null) {
-      this.i = this.jdField_a_of_type_Bhhp.d();
+    if (this.jdField_a_of_type_Bjja != null) {
+      this.i = this.jdField_a_of_type_Bjja.d();
     }
     this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.INIT_LOCATION;
     if (this.jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder != null)
@@ -311,25 +311,25 @@ public class PanoramaPieceManager
       this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder.getHeight();
       QZLog.i("PanoramaPieceManager", 4, new Object[] { "orgWidth = ", Integer.valueOf(this.jdField_a_of_type_Int), " orgHeight = " + this.jdField_b_of_type_Int });
     }
-    this.c = bbll.a();
-    this.d = bbll.b();
+    this.c = bdkf.a();
+    this.d = bdkf.b();
     this.jdField_a_of_type_Long = (MemoryManager.a() / 8L);
-    if (this.jdField_a_of_type_Bhht == null) {
-      this.jdField_a_of_type_Bhht = new bhht(this.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_Bjje == null) {
+      this.jdField_a_of_type_Bjje = new bjje(this.jdField_a_of_type_Long);
     }
     QZLog.i("PanoramaPieceManager", 4, "initManager: maxSize = " + this.jdField_a_of_type_Long);
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_Bhht == null) {}
+    if (this.jdField_a_of_type_Bjje == null) {}
     for (;;)
     {
       return;
       int n = 0;
-      while (n < this.jdField_a_of_type_Bhht.size())
+      while (n < this.jdField_a_of_type_Bjje.size())
       {
-        ((bhhu)this.jdField_a_of_type_Bhht.valueAt(n)).a();
+        ((bjjf)this.jdField_a_of_type_Bjje.valueAt(n)).a();
         n += 1;
       }
     }
@@ -345,7 +345,7 @@ public class PanoramaPieceManager
       n = this.j;
       while (n <= this.k)
       {
-        a(this.jdField_a_of_type_Bhht, n, (n - this.j) * i1, i1, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Boolean);
+        a(this.jdField_a_of_type_Bjje, n, (n - this.j) * i1, i1, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Boolean);
         n += 1;
       }
       if (this.j != this.k) {
@@ -359,7 +359,7 @@ public class PanoramaPieceManager
       n = this.l;
       while (n <= this.m)
       {
-        a(this.jdField_a_of_type_Bhht, n, (n - this.l) * i1, i1, this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Boolean);
+        a(this.jdField_a_of_type_Bjje, n, (n - this.l) * i1, i1, this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Boolean);
         n += 1;
       }
       if (this.l != this.m) {
@@ -369,9 +369,9 @@ public class PanoramaPieceManager
     }
   }
   
-  public bhht a()
+  public bjje a()
   {
-    return this.jdField_a_of_type_Bhht;
+    return this.jdField_a_of_type_Bjje;
   }
   
   public void a() {}
@@ -451,7 +451,7 @@ public class PanoramaPieceManager
       n = 0;
       while (i1 < i3)
       {
-        if (this.jdField_a_of_type_Bhht.get(i1) == null)
+        if (this.jdField_a_of_type_Bjje.get(i1) == null)
         {
           if (this.j == -1) {
             this.j = i1;
@@ -479,7 +479,7 @@ public class PanoramaPieceManager
     int n = 0;
     while (i2 < this.i)
     {
-      if (this.jdField_a_of_type_Bhht.get(i2) == null)
+      if (this.jdField_a_of_type_Bjje.get(i2) == null)
       {
         if (this.j == -1) {
           this.j = i2;
@@ -498,7 +498,7 @@ public class PanoramaPieceManager
     i2 = 0;
     while (i2 < i3)
     {
-      if (this.jdField_a_of_type_Bhht.get(i2) == null)
+      if (this.jdField_a_of_type_Bjje.get(i2) == null)
       {
         if (this.l == -1) {
           this.l = i2;
@@ -533,7 +533,7 @@ public class PanoramaPieceManager
   
   public void d()
   {
-    switch (bhhs.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState.ordinal()])
+    switch (bjjd.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState.ordinal()])
     {
     case 4: 
     default: 
@@ -570,10 +570,10 @@ public class PanoramaPieceManager
       this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.END;
       return;
     case 7: 
-      if (this.jdField_a_of_type_Bhht != null)
+      if (this.jdField_a_of_type_Bjje != null)
       {
-        bhhy.a(this.jdField_a_of_type_Bhht);
-        this.jdField_a_of_type_Bhht.clear();
+        bjjj.a(this.jdField_a_of_type_Bjje);
+        this.jdField_a_of_type_Bjje.clear();
       }
       this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.END;
       return;
@@ -585,7 +585,7 @@ public class PanoramaPieceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.panorama.piece.PanoramaPieceManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,72 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoiv
-  extends RecyclerView.AdapterDataObserver
+  extends aofy<aoiu>
 {
-  public aoiv(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  public void onChanged()
+  public static aoiu a()
   {
-    if (this.a.jdField_a_of_type_Aoiz.a() == 0)
+    return (aoiu)aogj.a().a(452);
+  }
+  
+  public int a()
+  {
+    return 452;
+  }
+  
+  @NonNull
+  public aoiu a(int paramInt)
+  {
+    return new aoiu().b("0");
+  }
+  
+  @Nullable
+  public aoiu a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
     {
-      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aoja);
-      return;
+      aoiu localaoiu = aoiu.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      }
+      return localaoiu;
     }
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aoja);
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Aoja);
+    return null;
+  }
+  
+  public Class<aoiu> a()
+  {
+    return aoiu.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(aoiu paramaoiu) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoiv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,283 +1,317 @@
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.text.format.Time;
-import com.tencent.av.gaudio.AVNotifyCenter;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.os.MessageQueue.IdleHandler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.DrawerFrame;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.List;
-import mqq.app.MobileQQ;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
-public class aexr
-  implements aexz
+public abstract class aexr
+  implements belb
 {
-  private acup jdField_a_of_type_Acup;
-  private aeyv jdField_a_of_type_Aeyv;
-  private Time jdField_a_of_type_AndroidTextFormatTime;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int jdField_a_of_type_Int;
+  public Context a;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new aexs(this);
+  public FragmentActivity a;
+  private View jdField_a_of_type_AndroidViewView;
+  public ViewGroup a;
+  private belb jdField_a_of_type_Belb = new aexu(this);
+  public BaseChatPie a;
+  public SessionInfo a;
+  public QQAppInterface a;
+  private DrawerFrame jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame;
+  private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
+  private boolean jdField_a_of_type_Boolean;
+  public ViewGroup b;
   
-  public aexr(QQAppInterface paramQQAppInterface, aeyv paramaeyv, Activity paramActivity, SessionInfo paramSessionInfo, acup paramacup)
+  public aexr(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Aeyv = paramaeyv;
-    this.jdField_a_of_type_Acup = paramacup;
+    if (paramBaseChatPie == null) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.jdField_a_of_type_AndroidViewViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c;
+    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerEnabled(true);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerCallbacks(this.jdField_a_of_type_Belb);
+    m();
+    Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
   }
   
-  public MessageRecord a(Object... paramVarArgs)
+  private SystemBarCompact a()
   {
-    paramVarArgs = axas.a(-1016);
-    long l = awzy.a();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131691836), l, -1017, 3000, l);
-    paramVarArgs.isread = true;
-    return paramVarArgs;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1001) {}
-    String str;
-    boolean bool;
-    label452:
-    do
+    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV =====>");
-        }
-        str = "";
-        for (;;)
-        {
-          try
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000)
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "curType != disscusion");
-              return;
-            }
-            localObject1 = andn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            if (((andn)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 2))
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "hasNetTipShow today");
-              return;
-            }
-            localList = this.jdField_a_of_type_Acup.a();
-            if (localList == null)
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "aioMsgList == null");
-              return;
-            }
-            if (!bbfj.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "not wifi");
-              return;
-            }
-            if (localList.size() < 5)
-            {
-              paramVarArgs = "msgList size < 5, size = " + localList.size();
-              return;
-            }
-            l1 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-            paramInt = muc.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramInt, l1))
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "current discussion is on voice chating");
-              return;
-            }
-            i = localList.size();
-            paramInt = i - 1;
-          }
-          finally
-          {
-            Object localObject1;
-            List localList;
-            long l1;
-            SharedPreferences localSharedPreferences;
-            Object localObject2;
-            Object localObject3;
-            int k;
-            int m;
-            int n;
-            long l2;
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + str);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("DiscFreqPttGrayTips", 2, "findExcludeMsg :" + bool);
-          }
-          if (!bool) {
-            continue;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "findExcludeMsg, just return");
-          return;
-          if (((ChatMessage)localList.get(paramInt)).msgtype != -1043) {
-            break label1231;
-          }
-          bool = true;
-        }
-        l1 = 1000L * awzy.a();
-        if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
-          this.jdField_a_of_type_AndroidTextFormatTime = new Time();
-        }
-        this.jdField_a_of_type_AndroidTextFormatTime.set(l1);
-        paramInt = this.jdField_a_of_type_AndroidTextFormatTime.year;
-        i = this.jdField_a_of_type_AndroidTextFormatTime.month;
-        j = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-        paramVarArgs = "voice_disc_ptt_freq_tip_msg_insert_time" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("free_call", 0);
-        localObject2 = localSharedPreferences.getString(paramVarArgs, null);
-        if (QLog.isColorLevel())
-        {
-          localObject3 = paramInt + "-" + i + "-" + j;
-          QLog.d("VoiceTipMsg", 2, "currDate is:" + (String)localObject3 + ",curr hour is:" + this.jdField_a_of_type_AndroidTextFormatTime.hour + ",discPttFreqTipMsgInsertTime is:" + (String)localObject2);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidTextFormatTime.set(Long.parseLong((String)localObject2));
-        k = this.jdField_a_of_type_AndroidTextFormatTime.year;
-        m = this.jdField_a_of_type_AndroidTextFormatTime.month;
-        n = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-        if ((paramInt != k) || (i != m) || (j != n)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "already insert discuss ppt frequent tip msg this day");
-      return;
-      localObject2 = localSharedPreferences.getString("start_group_audio_time" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
-      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (l1 - Long.parseLong((String)localObject2) > 600000L)) {
-        break;
+      Fragment localFragment = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (localFragment != null) {
+        return ((ChatFragment)localFragment).a;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "has startGroupAudio in less 10 mins, just return");
-    return;
-    l2 = (l1 - 600000L) / 1000L;
-    int i = localList.size();
-    paramInt = 0;
-    localObject2 = new HashSet();
-    int j = i - 1;
-    for (;;)
-    {
-      if (j >= 0)
-      {
-        localObject3 = (ChatMessage)localList.get(j);
-        i = paramInt;
-        if (((ChatMessage)localObject3).time >= l2)
-        {
-          i = paramInt;
-          if (((ChatMessage)localObject3).msgtype == -2002)
-          {
-            i = paramInt;
-            if (((ChatMessage)localObject3).extraflag == 0)
-            {
-              i = paramInt + 1;
-              ((HashSet)localObject2).add(((ChatMessage)localObject3).senderuin);
-            }
-          }
-        }
-      }
-      else
-      {
-        i = ((HashSet)localObject2).size();
-        if ((paramInt >= 5) && (i >= 2))
-        {
-          if (!this.jdField_a_of_type_Aeyv.a(this, new Object[0])) {
-            break label1201;
-          }
-          ((andn)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 2);
-          localObject1 = localSharedPreferences.edit();
-          ((SharedPreferences.Editor)localObject1).putString(paramVarArgs, String.valueOf(l1));
-          ((SharedPreferences.Editor)localObject1).commit();
-        }
-        for (;;)
-        {
-          try
-          {
-            axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8003F01", "0X8003F01", 0, 0, "", "", "", "");
-            paramVarArgs = "insert discuss ppt frequent tip msg success";
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("DiscFreqPttGrayTips", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + paramVarArgs);
-            return;
-          }
-          finally
-          {
-            str = "insert discuss ppt frequent tip msg success";
-          }
-          paramVarArgs = "pttMsgNum : " + paramInt + ", msgUinNum : " + i;
-          continue;
-          label1201:
-          paramVarArgs = "";
-        }
-        label1231:
-        label1236:
-        for (;;)
-        {
-          bool = false;
-          break;
-          for (;;)
-          {
-            if (paramInt < 0) {
-              break label1236;
-            }
-            if (paramInt >= i - 10) {
-              break label452;
-            }
-            bool = false;
-            break;
-            paramInt -= 1;
-          }
-        }
-      }
-      j -= 1;
-      paramInt = i;
     }
-  }
-  
-  public int[] a()
-  {
     return null;
   }
   
-  public int b()
+  private boolean c()
   {
-    return 1001;
+    return (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 != null) && (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.getParent() != null);
   }
+  
+  private boolean d()
+  {
+    boolean bool = true;
+    if ((ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, null)) || (azib.b())) {
+      bool = false;
+    }
+    return bool;
+  }
+  
+  private void m()
+  {
+    NavBarAIO localNavBarAIO = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO;
+    if (localNavBarAIO != null) {
+      localNavBarAIO.addOnLayoutChangeListener(new aext(this, localNavBarAIO));
+    }
+  }
+  
+  private void n()
+  {
+    boolean bool = c();
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, "addImmersiveTitleBar, isVisible: " + bool);
+    }
+    if (!bool)
+    {
+      if (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 == null) {
+        this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = new ImmersiveTitleBar2(this.jdField_a_of_type_AndroidContentContext);
+      }
+      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.jdField_a_of_type_AndroidViewViewGroup.getPaddingLeft(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingTop(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingRight(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingBottom());
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, localLayoutParams);
+      ((TopGestureLayout)this.jdField_a_of_type_AndroidViewViewGroup).setPadding2(0, 0, 0, 0);
+      this.jdField_a_of_type_AndroidViewViewGroup.setFitsSystemWindows(false);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+      localLayoutParams.leftMargin += this.jdField_a_of_type_AndroidGraphicsRect.left;
+      localLayoutParams.rightMargin += this.jdField_a_of_type_AndroidGraphicsRect.right;
+      localLayoutParams.topMargin += this.jdField_a_of_type_AndroidGraphicsRect.top;
+      localLayoutParams.bottomMargin += this.jdField_a_of_type_AndroidGraphicsRect.bottom;
+      this.b.setFitsSystemWindows(true);
+      p();
+    }
+  }
+  
+  private void o()
+  {
+    boolean bool = c();
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, "removeImmersiveTitleBar, isVisible: " + bool);
+    }
+    if (bool)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2);
+      this.jdField_a_of_type_AndroidViewViewGroup.setFitsSystemWindows(true);
+      if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
+        this.jdField_a_of_type_AndroidViewViewGroup.setPadding(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
+      }
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+      if (this.jdField_a_of_type_AndroidGraphicsRect != null)
+      {
+        localLayoutParams.leftMargin -= this.jdField_a_of_type_AndroidGraphicsRect.left;
+        localLayoutParams.rightMargin -= this.jdField_a_of_type_AndroidGraphicsRect.right;
+        localLayoutParams.topMargin -= this.jdField_a_of_type_AndroidGraphicsRect.top;
+        localLayoutParams.bottomMargin -= this.jdField_a_of_type_AndroidGraphicsRect.bottom;
+      }
+      this.b.setFitsSystemWindows(false);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+        break label230;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
+    for (;;)
+    {
+      if (d()) {
+        ImmersiveUtils.a(false, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow());
+      }
+      return;
+      label230:
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_Int, false);
+    }
+  }
+  
+  private void p()
+  {
+    boolean bool = c();
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, "updateImmersiveTitleBar, isVisible: " + bool);
+    }
+    if (bool)
+    {
+      SystemBarCompact localSystemBarCompact = a();
+      if (localSystemBarCompact != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localSystemBarCompact.mStatusBarDarwable;
+        this.jdField_a_of_type_Int = localSystemBarCompact.mStatusBarColor;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(0, false);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+        break label113;
+      }
+      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
+    for (;;)
+    {
+      if (d()) {
+        ImmersiveUtils.a(true, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow());
+      }
+      return;
+      label113:
+      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(this.jdField_a_of_type_Int);
+    }
+  }
+  
+  protected abstract View a();
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidViewView = a();
+      if (this.jdField_a_of_type_AndroidViewView == null) {}
+      this.jdField_a_of_type_Boolean = true;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        localOutOfMemoryError.printStackTrace();
+        QLog.d("BaseChatDrawer", 1, "BaseChatDrawer createDrawerView oom", localOutOfMemoryError);
+      }
+    }
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a(this.jdField_a_of_type_AndroidViewView, 1);
+      b();
+    }
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, float paramFloat) {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a();
+    }
+    return false;
+  }
+  
+  protected abstract void b();
+  
+  public void b(int paramInt) {}
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a(1, paramBoolean);
+    }
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a())) {
+      p();
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      j();
+    }
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerEnabled(paramBoolean);
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      l();
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerCallbacks(null);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame = null;
+    }
+    Looper.myQueue().removeIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
+    o();
+    if (this.jdField_a_of_type_Boolean) {
+      k();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, String.format("onDestroy, mHadInflated: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+    }
+  }
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
+  
+  public void k() {}
+  
+  public void l() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,23 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class rze
-  implements SeekBar.OnSeekBarChangeListener
+  implements smi
 {
-  public rze(ViolaVideoView paramViolaVideoView) {}
+  public rze(FastWebActivity paramFastWebActivity) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public int a()
   {
-    if (!ViolaVideoView.a(this.a).a()) {
-      return;
-    }
-    long l = ViolaVideoView.a(this.a).a();
-    double d = paramInt / 100.0D;
-    paramInt = (int)(l * d);
-    qoi.a(ViolaVideoView.a(this.a), paramInt);
+    return FastWebActivity.a(this.a);
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public boolean a()
   {
-    ViolaVideoView.a(this.a, true);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (!ViolaVideoView.a(this.a).a()) {}
-    int i;
-    do
-    {
-      return;
-      ViolaVideoView.a(this.a, false);
-      i = paramSeekBar.getProgress();
-      long l = ViolaVideoView.a(this.a).a();
-      i = (int)(i / 100.0D * l);
-      ViolaVideoView.a(this.a).d(i);
-    } while (ViolaVideoView.a(this.a) == null);
-    ViolaVideoView.a(this.a).b(i);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rze
  * JD-Core Version:    0.7.0.1
  */

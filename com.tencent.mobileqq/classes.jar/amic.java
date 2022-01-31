@@ -1,28 +1,19 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager;
+import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager.ScanSpaceTask;
 
-class amic
-  implements View.OnClickListener
+public class amic
+  implements adnj
 {
-  amic(amib paramamib) {}
+  public amic(ScanSpaceManager.ScanSpaceTask paramScanSpaceTask) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if ((amib.a(this.a) != null) && (amib.a(this.a).getVisibility() == 0) && (amib.a(this.a).hasFocus())) {
-      return;
-    }
-    amib.a(this.a);
-    paramView = new Bundle();
-    paramView.putInt("start_from", 1);
-    ColorNoteSettingFragment.a(amib.a(this.a), ColorNoteSettingFragment.class, paramView);
-    axqy.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
+    ScanSpaceManager.a(this.a.this$0, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amic
  * JD-Core Version:    0.7.0.1
  */

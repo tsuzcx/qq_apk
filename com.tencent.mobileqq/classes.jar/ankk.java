@@ -1,30 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class ankk
-  implements CompoundButton.OnCheckedChangeListener
+class ankk
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public ankk(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  ankk(ankj paramankj) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    akry.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(akry.jdField_a_of_type_JavaLangString, 0).edit().putBoolean(akry.b, paramBoolean).commit();
-    bcql.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), ajya.a(2131702870), 1).a();
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).b(false);
+    if (paramBitmap != null)
+    {
+      this.a.a.b.setVisibility(0);
+      this.a.a.a.setVisibility(0);
+      this.a.a.a.setImageBitmap(paramBitmap);
+      return;
     }
+    this.a.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankk
  * JD-Core Version:    0.7.0.1
  */

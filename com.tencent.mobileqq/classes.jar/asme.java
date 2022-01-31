@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-public final class asme
-  implements Parcelable.Creator<MsgBackupUserData>
+public class asme
 {
-  public MsgBackupUserData a(Parcel paramParcel)
-  {
-    return new MsgBackupUserData(paramParcel);
-  }
+  public List<asmd> a;
+  public Set<String> a;
   
-  public MsgBackupUserData[] a(int paramInt)
+  public asme()
   {
-    return new MsgBackupUserData[paramInt];
+    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asme
  * JD-Core Version:    0.7.0.1
  */

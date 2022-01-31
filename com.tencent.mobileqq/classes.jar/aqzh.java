@@ -1,79 +1,155 @@
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
+import tencent.im.cs.cmd0x383.cmd0x383.RspBody;
 
-public class aqzh
-  extends aqyw
+class aqzh
+  extends alkl
 {
-  public static URL b(String paramString)
-  {
-    try
-    {
-      paramString = new URL("hot_pic_origin", "", paramString);
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
+  aqzh(aqzg paramaqzg) {}
   
-  protected String a(HotPicData paramHotPicData)
+  protected void i(boolean paramBoolean, Object paramObject)
   {
-    return paramHotPicData.originalUrl;
-  }
-  
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
-    String str = a(paramDownloadParams);
-    File localFile = a(str);
-    if (localFile.exists())
+    ArrayList localArrayList = new ArrayList();
+    aqzg.a(this.a, true);
+    if ((paramObject == null) || (!paramBoolean)) {}
+    Object localObject;
+    int i;
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "loadImageFile file exist:" + localFile.getAbsolutePath());
-      }
-      return localFile;
-    }
-    localFile.getParentFile().mkdirs();
-    if ((bbbr.a()) && (bbbr.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + bbbr.b());
-    }
-    Object localObject = new File(a);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdir();
-    }
-    int i = a(str, localFile);
-    if (i == 0)
-    {
-      localObject = aurn.a(localFile.getAbsolutePath());
-      if (!paramDownloadParams.originalMD5.equalsIgnoreCase((String)localObject))
+      try
       {
-        localFile.delete();
-        paramURLDrawableHandler.onFileDownloadFailed(0);
-        return null;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TroopFileSearchEngine<QFile>", 4, "data = " + paramObject + ", isSuccess = " + paramBoolean);
+        }
+        QLog.i("TroopFileSearchEngine<QFile>", 1, "error, can not handle search response, return a empty list.");
+        aqzg.a(this.a, false, localArrayList);
+        return;
+        paramObject = (byte[])paramObject;
+        localObject = new cmd0x383.RspBody();
+        try
+        {
+          paramObject = (cmd0x383.RspBody)((cmd0x383.RspBody)localObject).mergeFrom(paramObject);
+          if (paramObject != null) {
+            continue;
+          }
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d("TroopFileSearchEngine<QFile>", 4, "bigRsp is null !!!");
+        }
+        catch (InvalidProtocolBufferMicroException paramObject) {}
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
+        continue;
       }
-      paramURLDrawableHandler.onFileDownloadSucceed(localFile.length());
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->0");
+      catch (Exception paramObject)
+      {
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
+        continue;
+        i = paramObject.int32_ret_code.get();
+        if (i < 0)
+        {
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d("TroopFileSearchEngine<QFile>", 4, String.format("onRspTroopFileSearch - retCode: %d", new Object[] { Integer.valueOf(i) }));
+          continue;
+        }
+        paramObject = (cmd0x383.ApplyFileSearchRspBody)paramObject.msg_file_search_rsp_body.get();
+        if (paramObject == null)
+        {
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d("TroopFileSearchEngine<QFile>", 4, "rsp = " + paramObject);
+          continue;
+        }
+        localObject = paramObject.bytes_key_word.get().toStringUtf8();
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(aqzg.a(this.a))))
+        {
+          QLog.i("TroopFileSearchEngine<QFile>", 1, "keyword is update, current result is old");
+          return;
+        }
+        aqzg.b(this.a, paramObject.bytes_sync_cookie.get().toStringUtf8());
+        localObject = this.a;
+        if (paramObject.uint32_is_end.get() != 1) {
+          break;
+        }
       }
-      return localFile;
+      paramBoolean = true;
+      aqzg.b((aqzg)localObject, paramBoolean);
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onRspTroopFileSearch cookie = " + aqzg.b(this.a));
+        ((StringBuilder)localObject).append(", isEnd = " + aqzg.c(this.a));
+        ((StringBuilder)localObject).append(", keyWord = " + paramObject.bytes_key_word.get().toStringUtf8());
+        ((StringBuilder)localObject).append(", totalCount = " + paramObject.uint32_total_match_count.get());
+        QLog.d("TroopFileSearchEngine<QFile>", 4, ((StringBuilder)localObject).toString());
+      }
+      paramObject = paramObject.item_list.get();
+      if ((paramObject != null) && (paramObject.size() != 0)) {
+        break label747;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileSearchEngine<QFile>", 4, "filelist is empty--------");
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->" + i);
+    for (;;)
+    {
+      if (i < paramObject.size())
+      {
+        localObject = new bbrl(aqzg.a(this.a), (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
+        bcil localbcil;
+        bbnr localbbnr;
+        if (((bbrl)localObject).jdField_a_of_type_Bbnr != null)
+        {
+          localbcil = bcil.a(aqzg.a(this.a), ((bbrl)localObject).jdField_a_of_type_Long);
+          localbbnr = localbcil.a(((bbrl)localObject).jdField_a_of_type_Bbnr.b);
+          if (localbbnr == null) {
+            break label717;
+          }
+        }
+        label717:
+        for (((bbrl)localObject).jdField_a_of_type_Bbnr.a = localbbnr.a;; ((bbrl)localObject).jdField_a_of_type_Bbnr.a = UUID.randomUUID())
+        {
+          localbcil.a(((bbrl)localObject).jdField_a_of_type_Bbnr.b, ((bbrl)localObject).jdField_a_of_type_Bbnr);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopFileSearchEngine<QFile>", 4, "fileList[" + i + "]: " + ((bbrl)localObject).toString());
+          }
+          localArrayList.add(localObject);
+          i += 1;
+          break;
+        }
+      }
+      aqzg.a(this.a, true, localArrayList);
+      return;
+      paramBoolean = false;
+      break;
+      label747:
+      i = 0;
     }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzh
  * JD-Core Version:    0.7.0.1
  */

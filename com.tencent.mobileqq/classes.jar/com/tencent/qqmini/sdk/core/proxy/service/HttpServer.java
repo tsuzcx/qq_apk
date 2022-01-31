@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import android.util.Base64;
 import android.util.Log;
-import betc;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.InvalidKeyException;
@@ -41,7 +41,7 @@ public class HttpServer
   {
     try
     {
-      betc.a("HttpServer", "getSignature(). original request = " + paramString);
+      QMLog.d("HttpServer", "getSignature(). original request = " + paramString);
       paramString = hmacSHA256(paramString, getPlatformKey());
       if (paramString == null) {
         return null;
@@ -57,7 +57,7 @@ public class HttpServer
         }
       }
       paramString = URLEncoder.encode(paramString, "UTF-8");
-      betc.a("HttpServer", "getSignature(). signature = " + paramString);
+      QMLog.d("HttpServer", "getSignature(). signature = " + paramString);
       return paramString;
     }
     catch (NoSuchAlgorithmException paramString)
@@ -111,7 +111,7 @@ public class HttpServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.HttpServer
  * JD-Core Version:    0.7.0.1
  */

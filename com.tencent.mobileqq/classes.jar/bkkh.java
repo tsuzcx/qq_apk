@@ -1,16 +1,19 @@
-import java.util.List;
+import android.view.View;
 
-public abstract interface bkkh
+final class bkkh
 {
-  public abstract void a(long paramLong);
+  private View jdField_a_of_type_AndroidViewView;
+  private bkis jdField_a_of_type_Bkis;
   
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void b(long paramLong);
+  public bkkh(bkis parambkis, View paramView)
+  {
+    this.jdField_a_of_type_Bkis = parambkis;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkkh
  * JD-Core Version:    0.7.0.1
  */

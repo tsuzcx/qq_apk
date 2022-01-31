@@ -1,90 +1,73 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
 public class vvw
-  extends BaseAdapter
+  extends uhw<vvu, vaa>
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private vvy jdField_a_of_type_Vvy;
-  private int b;
-  private int c;
-  
-  public vvw(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public vvw(vvu paramvvu)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    super(paramvvu);
   }
   
-  public Bitmap a(int paramInt)
+  public void a(@NonNull vvu paramvvu, @NonNull vaa paramvaa)
   {
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Vvy = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    if (this.jdField_a_of_type_Vvy == null) {
-      return;
-    }
-    this.jdField_a_of_type_Vvy.a(paramLocalMediaInfo);
-  }
-  
-  public void a(vvy paramvvy)
-  {
-    this.jdField_a_of_type_Vvy = paramvvy;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      int i = (int)(vjo.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
-      paramViewGroup = new ViewGroup.LayoutParams(this.b, i);
-      paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramView.setLayoutParams(paramViewGroup);
-      paramViewGroup = new vvx();
-      paramViewGroup.a = paramView;
-      paramViewGroup.a.setImageDrawable(new ColorDrawable(-12303292));
-      paramView.setTag(paramViewGroup);
-    }
+    if (vvu.a(paramvvu) != 1) {}
+    label149:
+    label209:
+    label218:
     for (;;)
     {
-      this.jdField_a_of_type_Vvy.a(paramViewGroup.a, Integer.valueOf(paramInt));
-      return paramView;
-      paramViewGroup = (vvx)paramView.getTag();
+      return;
+      int i = 0;
+      StoryVideoItem localStoryVideoItem;
+      if (i < paramvaa.a.size())
+      {
+        localStoryVideoItem = (StoryVideoItem)paramvaa.a.get(i);
+        if (!localStoryVideoItem.mVid.equals(vvu.a(paramvvu))) {}
+      }
+      for (paramvaa = localStoryVideoItem;; paramvaa = null)
+      {
+        if ((paramvaa == null) || (paramvaa.mErrorCode != 0)) {
+          break label218;
+        }
+        localStoryVideoItem = vvu.a(paramvvu).a();
+        i = localStoryVideoItem.comparedLevel;
+        int j = vvu.a(paramvvu).a.jdField_a_of_type_Int;
+        String str = vvu.a(paramvvu).a.jdField_a_of_type_JavaLangString;
+        vvu.a(paramvvu, vvu.a(paramvvu), str, false, i, j);
+        paramvvu = ((usd)urr.a(2)).b(paramvaa.mOwnerUid);
+        if ((paramvvu != null) && (paramvvu.isVip))
+        {
+          i = 1;
+          if (i == 0) {
+            break label209;
+          }
+        }
+        for (paramvvu = "2";; paramvvu = "1")
+        {
+          wta.a("play_video", "multishoot_entry_clk", 0, j, new String[] { paramvvu, paramvaa.mVid, paramvaa.mOwnerUid, localStoryVideoItem.mVid });
+          return;
+          i += 1;
+          break;
+          i = 0;
+          break label149;
+        }
+      }
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return vaa.class;
+  }
+  
+  public void b(@NonNull vvu paramvvu, @NonNull vaa paramvaa) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvw
  * JD-Core Version:    0.7.0.1
  */

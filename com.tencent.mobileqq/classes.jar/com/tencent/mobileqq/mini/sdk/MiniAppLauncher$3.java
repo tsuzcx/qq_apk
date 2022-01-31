@@ -1,20 +1,22 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import ajya;
-import bcql;
+import alpo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 final class MiniAppLauncher$3
   implements Runnable
 {
+  MiniAppLauncher$3(String paramString) {}
+  
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131706820), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131707192) + this.val$appId, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppLauncher.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
-public class bdgr
-  implements DialogInterface.OnClickListener
+class bdgr
+  implements apux
 {
-  public bdgr(DownloadJSApi.2 param2) {}
+  bdgr(bdgl parambdgl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    try
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
     {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bdlb.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      bdle.a().a(10, paramDialogInterface);
-      return;
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      this.a.c = false;
+      paramKeyEvent = this.a.getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      bdgl.a(this.a);
+      return true;
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdgr
  * JD-Core Version:    0.7.0.1
  */

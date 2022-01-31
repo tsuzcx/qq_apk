@@ -1,80 +1,86 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
-import org.json.JSONObject;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.open.agent.SwitchAccountActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bfcx
-  implements TextWatcher
+class bfcx
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public bfcx(MiniAppTextArea paramMiniAppTextArea, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, JSONObject paramJSONObject3, bekj parambekj) {}
+  bfcx(bfcw parambfcw) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    JSONObject localJSONObject;
-    if ((paramCharSequence != null) && (paramCharSequence.length() == 0))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (Math.abs(paramFloat1) > Math.abs(paramFloat2))
     {
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+      bool1 = bool2;
+      if (Math.abs(paramFloat1) > 20.0F)
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetMiniAppTextArea.setTextSize(2, this.jdField_a_of_type_OrgJsonJSONObject.optInt("fontSize"));
-        this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetMiniAppTextArea.setTextColor(bfgh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("color")));
-      }
-      MiniAppTextArea.b(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetMiniAppTextArea);
-      if ((paramCharSequence != null) && (!paramCharSequence.toString().equals(MiniAppTextArea.a(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetMiniAppTextArea))))
-      {
-        localJSONObject = new JSONObject();
-        MiniAppTextArea.a(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetMiniAppTextArea, paramCharSequence.toString());
+        bool1 = bool2;
+        if (!this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a)
+        {
+          this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
+          if (this.a.jdField_a_of_type_AndroidViewView != null) {
+            this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+          }
+          if ((paramFloat1 < -20.0F) && (this.a.jdField_a_of_type_JavaLangRefWeakReference != null))
+          {
+            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (paramMotionEvent1 != null)
+            {
+              paramMotionEvent1 = paramMotionEvent1.findViewById(2131376497);
+              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
+                ((ShaderAnimLayout)paramMotionEvent1).e();
+              }
+            }
+            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+          }
+          if (paramFloat1 > 20.0F)
+          {
+            if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+              break label245;
+            }
+            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (paramMotionEvent1 != this.a.jdField_a_of_type_AndroidViewView)
+            {
+              paramMotionEvent1 = paramMotionEvent1.findViewById(2131376497);
+              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
+                ((ShaderAnimLayout)paramMotionEvent1).e();
+              }
+            }
+            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+          }
+        }
       }
     }
     for (;;)
     {
-      try
+      bool1 = true;
+      return bool1;
+      label245:
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
       {
-        localJSONObject.put("inputId", this.jdField_a_of_type_Int);
-        if (paramInt3 == 0)
+        paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131376497);
+        if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() != 0))
         {
-          localJSONObject.put("cursor", paramInt1);
-          localJSONObject.put("value", MiniAppTextArea.a(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetMiniAppTextArea));
-          if ((paramInt2 == 0) || (paramInt3 != 0)) {
-            break label299;
+          if (QLog.isColorLevel()) {
+            QLog.i("AccountManage", 2, "show current selectedAccountView");
           }
-          localJSONObject.put("keyCode", 8);
-          localJSONObject.put("data", this.c.optString("data"));
-          this.jdField_a_of_type_Bekj.a("onKeyboardValueChange", localJSONObject.toString(), MiniAppTextArea.a(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetMiniAppTextArea).b());
-          return;
-          if (this.b == null) {
-            break;
-          }
-          this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetMiniAppTextArea.setTextSize(2, this.b.optInt("fontSize"));
-          this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageWidgetMiniAppTextArea.setTextColor(bfgh.a(this.b.optString("color")));
-          break;
+          ((ShaderAnimLayout)paramMotionEvent1).a();
+          this.a.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.jdField_a_of_type_AndroidViewView);
+          this.a.jdField_a_of_type_AndroidViewView = null;
         }
-        if (paramInt2 != 0)
-        {
-          paramInt2 -= 1;
-          localJSONObject.put("cursor", paramInt1 + paramInt3 - paramInt2);
-          continue;
-        }
-        paramInt2 = 0;
       }
-      catch (Exception paramCharSequence)
-      {
-        betc.d("MiniAppTextArea", "onTextChanged error", paramCharSequence);
-        return;
-      }
-      continue;
-      label299:
-      localJSONObject.put("keyCode", paramCharSequence.charAt(paramInt1 + paramInt3 - 1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfcx
  * JD-Core Version:    0.7.0.1
  */

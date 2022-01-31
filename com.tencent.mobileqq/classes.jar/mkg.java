@@ -1,22 +1,12 @@
-import android.content.Context;
-import android.view.Window;
-import com.tencent.av.ui.VideoInviteActivity;
-
-public class mkg
-  extends bfpc
+public abstract interface mkg
 {
-  public mkg(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
-  {
-    super(paramContext);
-    super.getWindow().addFlags(524288);
-    super.getWindow().addFlags(128);
-    super.getWindow().addFlags(1024);
-    super.getWindow().addFlags(2097152);
-  }
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkg
  * JD-Core Version:    0.7.0.1
  */

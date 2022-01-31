@@ -1,43 +1,33 @@
-import java.io.FileOutputStream;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class apda
+  implements Animator.AnimatorListener
 {
-  int jdField_a_of_type_Int = -1;
-  long jdField_a_of_type_Long = -1L;
-  apaq jdField_a_of_type_Apaq;
-  apdb jdField_a_of_type_Apdb;
-  bbmu jdField_a_of_type_Bbmu;
-  FileOutputStream jdField_a_of_type_JavaIoFileOutputStream = null;
-  String jdField_a_of_type_JavaLangString;
-  short jdField_a_of_type_Short = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  bbmu jdField_b_of_type_Bbmu;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int = 0;
-  long jdField_d_of_type_Long = 0L;
-  String jdField_d_of_type_JavaLangString;
-  long jdField_e_of_type_Long;
-  String jdField_e_of_type_JavaLangString;
+  public apda(DataReportViewer paramDataReportViewer) {}
   
-  public apda()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.e = 0L;
+    this.a.a.setVisibility(0);
+    paramAnimator = new AlphaAnimation(0.0F, 1.0F);
+    paramAnimator.setFillAfter(true);
+    paramAnimator.setDuration(200L);
+    this.a.a.startAnimation(paramAnimator);
+    paramAnimator.setAnimationListener(new apdb(this));
   }
   
-  public String toString()
-  {
-    return null;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apda
  * JD-Core Version:    0.7.0.1
  */

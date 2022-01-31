@@ -27,6 +27,14 @@ public class MethodUpdateElement
     this.mUpdateData = paramJSONObject;
   }
   
+  private void tryCompatVR(Map<String, Object> paramMap, VComponent paramVComponent)
+  {
+    if ((paramMap == null) || (!paramMap.containsKey("vr")) || (paramVComponent == null) || (this.mDomObject == null)) {
+      return;
+    }
+    paramVComponent.tryCompatVR(this.mDomObject);
+  }
+  
   public void executeDom(DOMActionContext paramDOMActionContext)
   {
     if ((paramDOMActionContext.isDestory()) || (this.mUpdateData == null)) {}
@@ -73,6 +81,7 @@ public class MethodUpdateElement
         {
           localMap = ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("attr"));
           localVComponent.updateAttrs(localMap);
+          tryCompatVR(localMap, localVComponent);
           i = k;
           if (DomObject.shouldDirty(localMap)) {
             i = 1;
@@ -111,7 +120,7 @@ public class MethodUpdateElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodUpdateElement
  * JD-Core Version:    0.7.0.1
  */

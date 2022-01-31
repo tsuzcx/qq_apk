@@ -4,7 +4,7 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import loh;
+import lqk;
 import mqq.os.MqqHandler;
 
 class GaInviteLockActivity$2
@@ -28,11 +28,11 @@ class GaInviteLockActivity$2
         Iterator localIterator = GaInviteLockActivity.a(this.this$0).iterator();
         while (localIterator.hasNext())
         {
-          loh localloh = (loh)localIterator.next();
-          if (localloh.b + 60L > l) {
-            localArrayList.add(localloh);
+          lqk locallqk = (lqk)localIterator.next();
+          if (locallqk.b + 60L > l) {
+            localArrayList.add(locallqk);
           } else if (QLog.isColorLevel()) {
-            QLog.d(this.this$0.b, 2, "mTaskCheckRunnable " + localloh.b + ";otherTimestamp=" + l);
+            QLog.d(this.this$0.b, 2, "mTaskCheckRunnable " + locallqk.b + ";otherTimestamp=" + l);
           }
         }
         GaInviteLockActivity.a(this.this$0, localArrayList);
@@ -44,7 +44,7 @@ class GaInviteLockActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteLockActivity.2
  * JD-Core Version:    0.7.0.1
  */

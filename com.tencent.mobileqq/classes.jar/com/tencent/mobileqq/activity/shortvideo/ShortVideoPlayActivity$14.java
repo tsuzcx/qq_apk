@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import aihd;
-import bbdj;
-import bbgu;
+import ajyn;
+import bdcd;
+import bdfq;
 
 public class ShortVideoPlayActivity$14
   implements Runnable
@@ -11,13 +11,13 @@ public class ShortVideoPlayActivity$14
   
   public void run()
   {
-    bbgu localbbgu = bbdj.a(this.this$0, 232, null, this.a, new aihd(this), null);
-    ShortVideoPlayActivity.a(this.this$0, localbbgu);
+    bdfq localbdfq = bdcd.a(this.this$0, 232, null, this.a, new ajyn(this), null);
+    ShortVideoPlayActivity.a(this.this$0, localbdfq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.14
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pbi;
+import pgt;
 
 public class ReadInJoyUserInfoModule$Request0xb81Params
 {
@@ -11,13 +11,13 @@ public class ReadInJoyUserInfoModule$Request0xb81Params
   private int c;
   private int d;
   
-  private ReadInJoyUserInfoModule$Request0xb81Params(pbi parampbi)
+  private ReadInJoyUserInfoModule$Request0xb81Params(pgt parampgt)
   {
-    this.jdField_a_of_type_Int = pbi.a(parampbi);
-    this.b = pbi.b(parampbi);
-    this.c = pbi.c(parampbi);
-    this.d = pbi.d(parampbi);
-    this.jdField_a_of_type_JavaUtilList = pbi.a(parampbi);
+    this.jdField_a_of_type_Int = pgt.a(parampgt);
+    this.b = pgt.b(parampgt);
+    this.c = pgt.c(parampgt);
+    this.d = pgt.d(parampgt);
+    this.jdField_a_of_type_JavaUtilList = pgt.a(parampgt);
   }
   
   public String toString()
@@ -38,7 +38,7 @@ public class ReadInJoyUserInfoModule$Request0xb81Params
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params
  * JD-Core Version:    0.7.0.1
  */

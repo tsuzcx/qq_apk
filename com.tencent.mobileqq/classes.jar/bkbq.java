@@ -1,19 +1,14 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-
-public abstract interface bkbq
+final class bkbq
+  extends bjoe<bkbp, Void>
 {
-  public abstract void a();
-  
-  public abstract boolean a();
-  
-  public abstract void b(Canvas paramCanvas);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  protected bkbp a(Void paramVoid)
+  {
+    return new bkbp();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkbq
  * JD-Core Version:    0.7.0.1
  */

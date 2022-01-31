@@ -1,22 +1,20 @@
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+
 class aenu
-  implements axof
+  implements bevy
 {
-  aenu(aent paramaent) {}
+  aenu(aens paramaens) {}
   
-  public void a()
+  public void a(BaseResp paramBaseResp)
   {
-    aent.a(this.a);
-    this.a.H();
-  }
-  
-  public void b()
-  {
-    this.a.H();
+    if (paramBaseResp.errCode != 0) {
+      aens.a(this.a, 1, 2131693755);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,21 @@
-public class wqy
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+
+class wqy
+  implements wrd
 {
-  public static <T> String a(String paramString, wqx<T> paramwqx)
-  {
-    return wqz.a().a(paramString, paramwqx);
-  }
+  wqy(wqx paramwqx, ImageView paramImageView) {}
   
-  public static void a(String paramString)
+  public void a(Drawable paramDrawable)
   {
-    wqz.a().a(paramString);
-  }
-  
-  public static <T> void a(String paramString, wre<T> paramwre)
-  {
-    wqz.a().a(paramString, paramwre);
-  }
-  
-  public static void a(Throwable paramThrowable)
-  {
-    ved.a("PreLoader", "", paramThrowable);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return wqz.a().a(paramString);
-  }
-  
-  public static void b(String paramString)
-  {
-    ved.b("PreLoader", paramString);
+    if (paramDrawable != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqy
  * JD-Core Version:    0.7.0.1
  */

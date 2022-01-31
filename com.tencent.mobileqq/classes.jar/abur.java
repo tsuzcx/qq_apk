@@ -1,52 +1,51 @@
-import android.os.Handler;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
-public class abur
-  implements bfpt
+public final class abur
 {
-  public abur(QQLSActivity paramQQLSActivity) {}
+  private static Map<String, absg> a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static Map<String, absg> a()
   {
-    paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
-    paramLong = paramAdapterView.getAdapter().getItemId(paramInt);
-    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
+    if (a == null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLSActivity", 2, "mRecentList is double click");
+      if (a == null)
+      {
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("getLocation", new absg("getLocation", 7, 1, abtj.class));
+        localHashMap.put("getCity", new absg("getCity", 6, 1, abtj.class));
+        localHashMap.put("login", new absg("login", 17, 0, abtp.class));
+        localHashMap.put("loginSilent", new absg("loginSilent", 18, 0, abtp.class));
+        localHashMap.put("getUserInfo", new absg("getUserInfo", 10, 2, abtp.class));
+        localHashMap.put("getAppFriends", new absg("getAppFriends", 5, 2, abtp.class));
+        localHashMap.put("getRankingList", new absg("getRankingList", 8, 2, abtg.class));
+        localHashMap.put("reportScore", new absg("reportScore", 24, 2, abtg.class));
+        localHashMap.put("showShareMenu", new absg("showShareMenu", 30, 0, abtn.class));
+        localHashMap.put("shareMessage", new absg("shareMessage", 27, 0, abtn.class));
+        localHashMap.put("showActionSheet", new absg("showActionSheet", 28, 0, abtz.class));
+        localHashMap.put("showDialog", new absg("showDialog", 29, 0, abtz.class));
+        localHashMap.put("getSkey", new absg("getSkey", 9, 0, abue.class));
+        localHashMap.put("openWebView", new absg("openWebView", 21, 0, abuf.class));
+        localHashMap.put("openPlatoView", new absg("openPlatoView", 20, 0, abuf.class));
+        localHashMap.put("openNativeView", new absg("openNativeView", 19, 0, abuf.class));
+        localHashMap.put("addEventListener", new absg("addEventListener", 1, 0, abuc.class));
+        localHashMap.put("removeEventListener", new absg("removeEventListener", 23, 0, abuc.class));
+        localHashMap.put("dispatchEvent", new absg("dispatchEvent", 4, 0, abuc.class));
+        localHashMap.put("sdk_dynamic_avatar_edit", new absg("sdk_dynamic_avatar_edit", 31, 0, abug.class));
+        localHashMap.put("sdk_face_collection", new absg("sdk_face_collection", 32, 0, abug.class));
+        localHashMap.put("sdk_avatar_edit", new absg("sdk_avatar_edit", 33, 0, abug.class));
+        a = Collections.unmodifiableMap(localHashMap);
       }
-      QQLSActivity.a(this.a, -1L);
-      QQLSActivity.b(this.a, 0L);
-      QQLSActivity.a(this.a, paramView);
-      QQLSActivity.a(this.a, true);
-      return;
+      return a;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("QQLSActivity", 2, "mRecentList  click once");
-    }
-    QQLSActivity.a(this.a, paramLong);
-    QQLSActivity.b(this.a, System.currentTimeMillis());
-    if (QQLSActivity.a(this.a)) {
-      QQLSActivity.a(this.a).setText(2131699104);
-    }
-    for (;;)
-    {
-      paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
-      QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
-      return;
-      QQLSActivity.a(this.a).setText(2131699103);
-    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abur
  * JD-Core Version:    0.7.0.1
  */

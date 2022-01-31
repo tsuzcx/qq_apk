@@ -1,29 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.open.agent.BindGroupFragment;
+import android.view.SurfaceView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
 
 public class bczz
-  implements DialogInterface.OnClickListener
 {
-  public bczz(BindGroupFragment paramBindGroupFragment, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(SurfaceView paramSurfaceView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (paramInt == 1)
+    if (paramSurfaceView == null)
     {
-      BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment, ajya.a(2131701118));
-      ((akhp)BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Integer.valueOf(BindGroupFragment.b(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), BindGroupFragment.c(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment));
-    }
-    while (paramInt != 0) {
+      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: surfaceView==null");
       return;
     }
-    paramDialogInterface.dismiss();
+    if ((paramInt2 <= 0) || (paramInt1 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0))
+    {
+      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: width height <= 0");
+      return;
+    }
+    if (paramInt2 / paramInt1 > paramInt4 / paramInt3)
+    {
+      paramInt1 = (int)(paramInt1 * paramInt4 / paramInt3);
+      paramInt1 = (int)((paramInt2 - paramInt1) / 2.0F);
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      localLayoutParams.setMargins(0, paramInt1, 0, paramInt1);
+      paramSurfaceView.setLayoutParams(localLayoutParams);
+      return;
+    }
+    paramInt2 = (int)(paramInt2 * paramInt3 / paramInt4);
+    paramInt1 = (int)((paramInt1 - paramInt2) / 2.0F);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    localLayoutParams.setMargins(paramInt1, 0, paramInt1, 0);
+    paramSurfaceView.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bczz
  * JD-Core Version:    0.7.0.1
  */

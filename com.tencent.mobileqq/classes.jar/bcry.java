@@ -1,97 +1,114 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.ColorFilter;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.drawable.BitmapDrawable;
-import android.util.StateSet;
 import java.util.ArrayList;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class bcry
-  extends BitmapDrawable
+  extends DefaultHandler
 {
-  private static final ColorMatrixColorFilter jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter;
-  private static final float[] jdField_a_of_type_ArrayOfFloat;
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
-  private static final ColorMatrixColorFilter jdField_b_of_type_AndroidGraphicsColorMatrixColorFilter;
-  private static final float[] jdField_b_of_type_ArrayOfFloat;
-  private static final ColorMatrixColorFilter jdField_c_of_type_AndroidGraphicsColorMatrixColorFilter = new ColorMatrixColorFilter(jdField_c_of_type_ArrayOfFloat);
-  private static final float[] jdField_c_of_type_ArrayOfFloat;
-  private float jdField_a_of_type_Float = 1.0F;
-  private ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter;
-  private ArrayList<int[]> jdField_a_of_type_JavaUtilArrayList;
-  private ArrayList<ColorFilter> jdField_b_of_type_JavaUtilArrayList;
-  private float[] d = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, this.jdField_a_of_type_Float, 0.0F };
+  protected bcru a;
+  protected String a;
+  protected ArrayList<bcru> a;
+  protected boolean a;
+  protected bcru b;
   
-  static
+  public bcry(String paramString)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 0.0F, 3.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F };
-    jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter = new ColorMatrixColorFilter(jdField_a_of_type_ArrayOfFloat);
-    jdField_b_of_type_ArrayOfFloat = new float[] { 0.3F, 0.59F, 0.11F, 0.0F, 0.0F, 0.3F, 0.59F, 0.11F, 0.0F, 0.0F, 0.3F, 0.59F, 0.11F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    jdField_b_of_type_AndroidGraphicsColorMatrixColorFilter = new ColorMatrixColorFilter(jdField_b_of_type_ArrayOfFloat);
-    jdField_c_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.8F, 0.0F };
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public bcry(Resources paramResources, Bitmap paramBitmap, boolean paramBoolean1, boolean paramBoolean2)
+  public bcru a()
   {
-    super(paramResources, paramBitmap);
-    if (paramBoolean2) {
-      a(jdField_a_of_type_ArrayOfInt, jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter);
-    }
-    if (paramBoolean1) {
-      a(StateSet.WILD_CARD, jdField_b_of_type_AndroidGraphicsColorMatrixColorFilter);
+    return this.jdField_a_of_type_Bcru;
+  }
+  
+  public ArrayList<bcru> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
+  
+  public void endDocument() {}
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.b != null) {
+      this.b = this.b.jdField_a_of_type_Bcru;
     }
   }
   
-  private ColorFilter a(int[] paramArrayOfInt)
+  public void startDocument() {}
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList == null) {
-      return null;
-    }
-    int j = this.jdField_b_of_type_JavaUtilArrayList.size();
+    paramString3 = null;
+    int j = paramAttributes.getLength();
     int i = 0;
-    while (i < j)
+    paramString1 = null;
+    String str2;
+    String str1;
+    if (i < j)
     {
-      if (StateSet.stateSetMatches((int[])localArrayList.get(i), paramArrayOfInt)) {
-        return (ColorFilter)this.jdField_b_of_type_JavaUtilArrayList.get(i);
+      str2 = paramAttributes.getLocalName(i);
+      str1 = paramAttributes.getValue(str2);
+      if ("id".equals(str2)) {
+        paramString1 = str1;
       }
+    }
+    for (;;)
+    {
       i += 1;
+      break;
+      if ("value".equals(str2))
+      {
+        paramString3 = str1;
+        continue;
+        if (("0".equals(paramString1)) || (paramString1 == null)) {}
+        for (;;)
+        {
+          return;
+          paramAttributes = this.b;
+          if (paramString2.startsWith("L"))
+          {
+            paramString2 = paramString2.substring(1);
+            try
+            {
+              i = Integer.parseInt(paramString2);
+              if (i != 0)
+              {
+                paramString2 = new bcru(i, paramString1, paramString3);
+                this.b = paramString2;
+                if (paramString2.a(paramAttributes))
+                {
+                  paramAttributes.a(this.b);
+                  if ((this.jdField_a_of_type_Boolean) || (!String.valueOf(this.jdField_a_of_type_JavaLangString).equals(paramString1))) {
+                    continue;
+                  }
+                  this.jdField_a_of_type_Boolean = true;
+                  this.jdField_a_of_type_Bcru = paramString2;
+                }
+              }
+            }
+            catch (NumberFormatException paramString2)
+            {
+              for (;;)
+              {
+                paramString2.printStackTrace();
+                i = 0;
+                continue;
+                this.jdField_a_of_type_JavaUtilArrayList.add(this.b);
+              }
+            }
+          }
+        }
+      }
     }
-    return null;
-  }
-  
-  public int a(int[] paramArrayOfInt, ColorFilter paramColorFilter)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramArrayOfInt);
-    this.jdField_b_of_type_JavaUtilArrayList.add(paramColorFilter);
-    return this.jdField_b_of_type_JavaUtilArrayList.size();
-  }
-  
-  public boolean isStateful()
-  {
-    return true;
-  }
-  
-  protected boolean onStateChange(int[] paramArrayOfInt)
-  {
-    paramArrayOfInt = a(paramArrayOfInt);
-    if (this.jdField_a_of_type_AndroidGraphicsColorFilter != paramArrayOfInt)
-    {
-      this.jdField_a_of_type_AndroidGraphicsColorFilter = paramArrayOfInt;
-      setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
-      return true;
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcry
  * JD-Core Version:    0.7.0.1
  */

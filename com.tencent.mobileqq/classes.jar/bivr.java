@@ -1,15 +1,31 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class bivr
+class bivr
+  implements INetInfoHandler
 {
-  public ArrayList<String> a = new ArrayList();
-  public ArrayList<String> b = new ArrayList();
-  public ArrayList<String> c = new ArrayList();
-  public ArrayList<Integer> d = new ArrayList();
+  bivr(bivq parambivq) {}
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    bivq.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    bivq.a(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bivr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.widget.EditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
 
 class bjvk
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  bjvk(bjve parambjve, bkiy parambkiy) {}
+  bjvk(bjvj parambjvj) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bjve.a.a(0);
-    bjve.a(this.jdField_a_of_type_Bjve).setText(this.jdField_a_of_type_Bkiy.a());
+    if ((this.a.mRuntime.a() != null) && (this.a.mRuntime.a() != null))
+    {
+      paramView = bizq.a("qzone", String.valueOf(1), this.a.mRuntime.a().getAccount(), this.a.mRuntime.a().getAccount());
+      this.a.mRuntime.a().loadUrl(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjvk
  * JD-Core Version:    0.7.0.1
  */

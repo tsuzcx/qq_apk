@@ -3,8 +3,8 @@ package com.tencent.av.business.manager.tips;
 import android.os.Handler;
 import android.os.SystemClock;
 import com.tencent.av.app.VideoAppInterface;
-import ljf;
-import maq;
+import lli;
+import mdf;
 
 public class TipsViewTimerRunnable
   implements Runnable
@@ -12,26 +12,26 @@ public class TipsViewTimerRunnable
   volatile long jdField_a_of_type_Long = 0L;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   Object jdField_a_of_type_JavaLangObject = new Object();
-  volatile maq jdField_a_of_type_Maq = null;
+  volatile mdf jdField_a_of_type_Mdf = null;
   volatile boolean jdField_a_of_type_Boolean = false;
   volatile long jdField_b_of_type_Long = 0L;
-  volatile maq jdField_b_of_type_Maq = null;
+  volatile mdf jdField_b_of_type_Mdf = null;
   
   public TipsViewTimerRunnable(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
   }
   
-  private boolean a(maq parammaq, long paramLong)
+  private boolean a(mdf parammdf, long paramLong)
   {
     boolean bool = true;
-    if ((parammaq == null) || (parammaq.a())) {
+    if ((parammdf == null) || (parammdf.a())) {
       bool = false;
     }
     for (;;)
     {
       return bool;
-      if (SystemClock.elapsedRealtime() - paramLong >= parammaq.c() * 1000) {}
+      if (SystemClock.elapsedRealtime() - paramLong >= parammdf.c() * 1000) {}
       for (int i = 1; i != 0; i = 0) {
         return false;
       }
@@ -49,29 +49,29 @@ public class TipsViewTimerRunnable
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
   }
   
-  public maq a()
+  public mdf a()
   {
-    return this.jdField_a_of_type_Maq;
+    return this.jdField_a_of_type_Mdf;
   }
   
   public void a()
   {
-    maq localmaq = this.jdField_a_of_type_Maq;
-    this.jdField_a_of_type_Maq = null;
+    mdf localmdf = this.jdField_a_of_type_Mdf;
+    this.jdField_a_of_type_Mdf = null;
     this.jdField_a_of_type_Long = 0L;
-    ljf localljf = (ljf)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
-    if (localljf != null) {
-      localljf.a(localmaq);
+    lli locallli = (lli)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
+    if (locallli != null) {
+      locallli.a(localmdf);
     }
   }
   
-  public boolean a(maq parammaq)
+  public boolean a(mdf parammdf)
   {
-    if (parammaq == null) {
+    if (parammdf == null) {
       return false;
     }
-    this.jdField_a_of_type_Maq = parammaq;
-    if (!parammaq.a())
+    this.jdField_a_of_type_Mdf = parammdf;
+    if (!parammdf.a())
     {
       this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
       this.jdField_a_of_type_Boolean = true;
@@ -82,29 +82,29 @@ public class TipsViewTimerRunnable
     return true;
   }
   
-  public maq b()
+  public mdf b()
   {
-    return this.jdField_b_of_type_Maq;
+    return this.jdField_b_of_type_Mdf;
   }
   
   public void b()
   {
-    maq localmaq = this.jdField_b_of_type_Maq;
-    this.jdField_b_of_type_Maq = null;
+    mdf localmdf = this.jdField_b_of_type_Mdf;
+    this.jdField_b_of_type_Mdf = null;
     this.jdField_b_of_type_Long = 0L;
-    ljf localljf = (ljf)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
-    if (localljf != null) {
-      localljf.b(localmaq);
+    lli locallli = (lli)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
+    if (locallli != null) {
+      locallli.b(localmdf);
     }
   }
   
-  public boolean b(maq parammaq)
+  public boolean b(mdf parammdf)
   {
-    if (parammaq == null) {
+    if (parammdf == null) {
       return false;
     }
-    this.jdField_b_of_type_Maq = parammaq;
-    if (!parammaq.a())
+    this.jdField_b_of_type_Mdf = parammdf;
+    if (!parammdf.a())
     {
       this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
       this.jdField_a_of_type_Boolean = true;
@@ -119,10 +119,10 @@ public class TipsViewTimerRunnable
   {
     boolean bool2 = true;
     boolean bool1 = false;
-    if (a(this.jdField_a_of_type_Maq, this.jdField_a_of_type_Long))
+    if (a(this.jdField_a_of_type_Mdf, this.jdField_a_of_type_Long))
     {
       bool1 = true;
-      if (!a(this.jdField_b_of_type_Maq, this.jdField_b_of_type_Long)) {
+      if (!a(this.jdField_b_of_type_Mdf, this.jdField_b_of_type_Long)) {
         break label55;
       }
       bool1 = bool2;
@@ -141,7 +141,7 @@ public class TipsViewTimerRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.business.manager.tips.TipsViewTimerRunnable
  * JD-Core Version:    0.7.0.1
  */

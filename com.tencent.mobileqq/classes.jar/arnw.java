@@ -1,112 +1,165 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Stack;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class arnw
-  extends akil
+public class arnw
+  extends DefaultHandler
 {
-  arnw(arnr paramarnr) {}
+  private Object jdField_a_of_type_JavaLangObject;
+  private String jdField_a_of_type_JavaLangString;
+  Stack<Object> jdField_a_of_type_JavaUtilStack = new Stack();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  protected void a(int paramInt1, int paramInt2)
+  public HashMap<String, Object> a()
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      arnr.a(this.a, 2131693687);
-    }
-    this.a.jdField_a_of_type_Int = -1;
+    return (HashMap)this.jdField_a_of_type_JavaLangObject;
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      switch (paramInt2)
+    System.out.println("characters:");
+    if (paramInt2 > 0)
+    {
+      if (this.b)
       {
-      case -1: 
-      default: 
-        arnr.a(this.a, 2131693687);
+        this.jdField_a_of_type_JavaLangString = new String(paramArrayOfChar, paramInt1, paramInt2);
+        System.out.println("key:" + this.jdField_a_of_type_JavaLangString);
+      }
+      if (this.c)
+      {
+        if (!HashMap.class.equals(this.jdField_a_of_type_JavaUtilStack.peek().getClass())) {
+          break label157;
+        }
+        HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilStack.peek();
+        String str = new String(paramArrayOfChar, paramInt1, paramInt2);
+        localHashMap.put(this.jdField_a_of_type_JavaLangString, str);
       }
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Int = -1;
+      System.out.println("value:" + new String(paramArrayOfChar, paramInt1, paramInt2));
       return;
-      if ((this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 5))
-      {
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
-      }
-      else
-      {
-        arnr.a(this.a, 2131693688, 2);
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0,\"message\":\"ok\"}" });
-        continue;
-        arnr.a(this.a, 2131720506);
-        continue;
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
+      label157:
+      if (ArrayList.class.equals(this.jdField_a_of_type_JavaUtilStack.peek().getClass())) {
+        ((ArrayList)this.jdField_a_of_type_JavaUtilStack.peek()).add(new String(paramArrayOfChar, paramInt1, paramInt2));
       }
     }
   }
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public void endDocument()
   {
-    if (this.a.b == 0) {
-      return;
+    System.out.println(alpo.a(2131704931));
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    if ((!"plist".equals(paramString3)) || ("key".equals(paramString3))) {
+      this.b = false;
     }
-    if (paramBoolean)
+    if ("string".equals(paramString3)) {
+      this.c = false;
+    }
+    if ("integer".equals(paramString3)) {
+      this.c = false;
+    }
+    if ("array".equals(paramString3)) {
+      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
+    }
+    if ("dict".equals(paramString3)) {
+      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
+    }
+  }
+  
+  public void startDocument()
+  {
+    System.out.println(alpo.a(2131704920));
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    boolean bool2 = false;
+    if ("plist".equals(paramString3)) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    boolean bool1;
+    if ("dict".equals(paramString3))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret success.");
+      if (!this.jdField_a_of_type_Boolean) {
+        break label228;
       }
-      paramLong = paramTroopInfo.troopPrivilegeFlag;
-      if ((0x80 & paramLong) != 0L)
+      this.jdField_a_of_type_JavaUtilStack.push(new HashMap());
+      if (!this.jdField_a_of_type_Boolean)
       {
-        paramInt1 = 1;
-        if ((paramLong & 0x200) == 0L) {
-          break label110;
+        bool1 = true;
+        this.jdField_a_of_type_Boolean = bool1;
+      }
+    }
+    else
+    {
+      if ("key".equals(paramString3)) {
+        this.b = true;
+      }
+      if ("true".equals(paramString3)) {
+        ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+      }
+      if ("false".equals(paramString3)) {
+        ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+      }
+      if ("array".equals(paramString3))
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          break label295;
         }
-        paramInt2 = 1;
-        label61:
-        paramString = arnr.a(this.a);
-        if ((paramInt1 == 0) || (paramInt2 == 0) || (paramString == null)) {
-          break label116;
+        paramString1 = new ArrayList();
+        this.jdField_a_of_type_JavaUtilStack.push(paramString1);
+        bool1 = bool2;
+        if (!this.jdField_a_of_type_Boolean) {
+          bool1 = true;
         }
-        afns.a(paramString, paramTroopInfo.troopuin);
+        this.jdField_a_of_type_Boolean = bool1;
       }
     }
     for (;;)
     {
-      this.a.b = 0;
+      if ("string".equals(paramString3)) {
+        this.c = true;
+      }
+      if ("integer".equals(paramString3)) {
+        this.c = true;
+      }
       return;
-      paramInt1 = 0;
+      bool1 = false;
       break;
-      label110:
-      paramInt2 = 0;
-      break label61;
-      label116:
-      if (paramTroopInfo.cGroupOption == 1)
-      {
-        this.a.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
-        arnr.a(this.a, paramTroopInfo);
+      label228:
+      paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
+      paramString2 = new HashMap();
+      if ((paramString1 instanceof ArrayList)) {
+        ((ArrayList)paramString1).add(paramString2);
       }
-      else
+      for (;;)
       {
-        arnr.b(this.a, paramTroopInfo);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret failed.");
+        this.jdField_a_of_type_JavaUtilStack.push(paramString2);
+        break;
+        if ((paramString1 instanceof HashMap)) {
+          ((HashMap)paramString1).put(this.jdField_a_of_type_JavaLangString, paramString2);
         }
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
-        arnr.a(this.a, 2131718748);
       }
+      label295:
+      paramString1 = (HashMap)this.jdField_a_of_type_JavaUtilStack.peek();
+      paramString2 = new ArrayList();
+      this.jdField_a_of_type_JavaUtilStack.push(paramString2);
+      paramString1.put(this.jdField_a_of_type_JavaLangString, paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnw
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIActionCounter;
-import com.tencent.aekit.plugin.core.AIActionCounter.AI_TYPE;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.PTHandAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr;
@@ -140,7 +139,7 @@ public class VideoFilterListSnapshot
       paramPTFaceAttr = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
       if (paramPTFaceAttr != null)
       {
-        setHandActionCounter(AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND));
+        setHandActionCounter(AIActionCounter.getActions(AEDetectorType.HAND));
         this.mGestuereTrigger = paramPTFaceAttr.getHandType();
       }
     }

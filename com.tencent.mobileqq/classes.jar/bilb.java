@@ -1,21 +1,19 @@
-import android.support.annotation.Nullable;
-
-class bilb
-  implements bjos<bioz>
+public class bilb
 {
-  bilb(bikt parambikt) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void a(@Nullable bioz parambioz)
+  public bilb(int paramInt, String paramString1, String paramString2)
   {
-    bikt.a(this.a, parambioz);
-    if (bikt.a(this.a) != null) {
-      bikt.a(this.a).a(bikt.a(this.a).a(), bikt.a(this.a));
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bilb
  * JD-Core Version:    0.7.0.1
  */

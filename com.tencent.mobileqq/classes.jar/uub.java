@@ -1,28 +1,19 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.Comparator;
 
-public class uub
-  implements Comparator<VideoCollectionItem>
+class uub
+  implements Comparator<vhg>
 {
-  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
+  uub(uua paramuua) {}
+  
+  public int a(vhg paramvhg1, vhg paramvhg2)
   {
-    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (vxy.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
-      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
-    }
-    do
-    {
-      return -1;
-      return 1;
-      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
-        return 1;
-      }
-    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
-    return 0;
+    return uvv.a(paramvhg1.a.mCreateTime, paramvhg2.a.mCreateTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uub
  * JD-Core Version:    0.7.0.1
  */

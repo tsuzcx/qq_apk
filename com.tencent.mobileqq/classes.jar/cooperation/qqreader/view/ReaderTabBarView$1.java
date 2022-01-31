@@ -1,7 +1,7 @@
 package cooperation.qqreader.view;
 
-import bgvm;
-import bgwf;
+import biwl;
+import bixe;
 import com.tencent.common.app.AppInterface;
 import java.util.ArrayList;
 import java.util.Map;
@@ -21,12 +21,12 @@ public class ReaderTabBarView$1
     if (ReaderTabBarView.a(this.this$0) == null)
     {
       ReaderTabBarView.a(this.this$0, (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-      ReaderTabBarView.a(this.this$0, (bgvm)ReaderTabBarView.a(this.this$0).getManager(351));
+      ReaderTabBarView.a(this.this$0, (biwl)ReaderTabBarView.a(this.this$0).getManager(351));
     }
     Map localMap = ReaderTabBarView.a(this.this$0).a(ReaderTabBarView.a(this.this$0));
     if (localMap == null)
     {
-      bgwf.a("ReaderTabBarView", "RedAppInfoByPathList get map is null");
+      bixe.a("ReaderTabBarView", "RedAppInfoByPathList get map is null");
       return;
     }
     ReaderTabBarView.a(this.this$0).runOnUiThread(new ReaderTabBarView.1.1(this, localMap));
@@ -34,7 +34,7 @@ public class ReaderTabBarView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.view.ReaderTabBarView.1
  * JD-Core Version:    0.7.0.1
  */

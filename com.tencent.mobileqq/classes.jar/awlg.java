@@ -1,25 +1,27 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.GlowCountRecyclerView;
 
 public class awlg
-  implements View.OnTouchListener
 {
-  public awlg(FunctionSearchFragment paramFunctionSearchFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  public long a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public GlowCountRecyclerView a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  View c;
+  public ImageView c;
+  public View d;
+  public ImageView d;
+  View e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awlg
  * JD-Core Version:    0.7.0.1
  */

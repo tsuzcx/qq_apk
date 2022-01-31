@@ -1,52 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 class atkw
-  implements TVK_SDKMgr.OnLogListener
+  implements atil
 {
-  public int d(String paramString1, String paramString2)
+  atkw(atkt paramatkt, int paramInt, String paramString) {}
+  
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
+    ListenTogetherManager.a(this.jdField_a_of_type_Atkt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.jdField_a_of_type_Atkt.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1000);
+    azmj.b(null, "dc00899", this.jdField_a_of_type_Atkt.jdField_a_of_type_Atky.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_join", 0, 0, this.jdField_a_of_type_Atkt.jdField_a_of_type_Atky.b, "", this.jdField_a_of_type_Atkt.jdField_a_of_type_Atky.jdField_a_of_type_Int + "", "");
   }
   
-  public int e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
-public final class aeix
-  implements Parcelable.Creator<AIORichMediaData>
+public class aeix
+  implements aeiq
 {
-  public AIORichMediaData a(Parcel paramParcel)
-  {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIORichMediaData.a((String)localObject);
-      ((AIORichMediaData)localObject).a(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
-  }
+  public aeix(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  public AIORichMediaData[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new AIORichMediaData[paramInt];
+    if (paramInt > 0)
+    {
+      this.a.a.setEnabled(true);
+      return;
+    }
+    this.a.a.setEnabled(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeix
  * JD-Core Version:    0.7.0.1
  */

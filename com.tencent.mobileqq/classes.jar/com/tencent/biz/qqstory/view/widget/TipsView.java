@@ -12,7 +12,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.PopupWindow;
-import baxn;
+import bcwh;
 
 public class TipsView
   extends View
@@ -63,7 +63,7 @@ public class TipsView
     for (;;)
     {
       if (paramInt1 == 1) {}
-      for (float f = baxn.a(paramContext, 5.0F);; f = -paramView.getHeight() - localTipsView.b() - baxn.a(paramContext, 5.0F))
+      for (float f = bcwh.a(paramContext, 5.0F);; f = -paramView.getHeight() - localTipsView.b() - bcwh.a(paramContext, 5.0F))
       {
         paramString.showAsDropDown(paramView, paramInt3, (int)f + paramInt4);
         localTipsView.postDelayed(new TipsView.1(paramString), paramInt6);
@@ -92,12 +92,12 @@ public class TipsView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(baxn.a(super.getContext(), 14.0F));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(bcwh.a(super.getContext(), 14.0F));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.argb(178, 0, 0, 0));
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    int i = baxn.a(super.getContext(), 10.0F);
+    int i = bcwh.a(super.getContext(), 10.0F);
     super.setPadding(i, i, i, i);
   }
   
@@ -106,7 +106,7 @@ public class TipsView
     if (this.jdField_b_of_type_Float == 0.0F)
     {
       Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-      return localFontMetrics.bottom - localFontMetrics.top + (super.getPaddingTop() + super.getPaddingBottom()) + baxn.a(super.getContext(), 6.5F);
+      return localFontMetrics.bottom - localFontMetrics.top + (super.getPaddingTop() + super.getPaddingBottom()) + bcwh.a(super.getContext(), 6.5F);
     }
     return this.jdField_b_of_type_Float;
   }
@@ -122,7 +122,7 @@ public class TipsView
     int j;
     if (this.jdField_a_of_type_Int == 1)
     {
-      i = baxn.a(super.getContext(), 6.5F);
+      i = bcwh.a(super.getContext(), 6.5F);
       localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
       float f5 = i;
       float f6 = this.jdField_a_of_type_Float;
@@ -133,7 +133,7 @@ public class TipsView
       j = 0;
       label91:
       ((RectF)localObject).set(0.0F, f5, f6, f7 - j);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, baxn.a(super.getContext(), 4.0F), baxn.a(super.getContext(), 4.0F), this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, bcwh.a(super.getContext(), 4.0F), bcwh.a(super.getContext(), 4.0F), this.jdField_b_of_type_AndroidGraphicsPaint);
       paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, super.getPaddingLeft(), f4 + (f1 - f2 - f3) + i, this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
       f1 = this.jdField_a_of_type_Float / 2.0F;
@@ -148,8 +148,8 @@ public class TipsView
         break label325;
       }
       this.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 - baxn.a(super.getContext(), 6.5F), i);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 + baxn.a(super.getContext(), 6.5F), i);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 - bcwh.a(super.getContext(), 6.5F), i);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 + bcwh.a(super.getContext(), 6.5F), i);
       this.jdField_a_of_type_AndroidGraphicsPath.close();
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
       super.onDraw(paramCanvas);
@@ -157,7 +157,7 @@ public class TipsView
       i = 0;
       break;
       label289:
-      j = baxn.a(super.getContext(), 6.5F);
+      j = bcwh.a(super.getContext(), 6.5F);
       break label91;
       label303:
       if (this.jdField_b_of_type_Int == 2) {
@@ -167,7 +167,7 @@ public class TipsView
     label325:
     this.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, this.jdField_b_of_type_Float);
     localObject = this.jdField_a_of_type_AndroidGraphicsPath;
-    f2 = baxn.a(super.getContext(), 6.5F);
+    f2 = bcwh.a(super.getContext(), 6.5F);
     f3 = this.jdField_b_of_type_Float;
     if (this.jdField_a_of_type_Int == 1)
     {
@@ -175,20 +175,20 @@ public class TipsView
       label371:
       ((Path)localObject).lineTo(f1 - f2, f3 - i);
       localObject = this.jdField_a_of_type_AndroidGraphicsPath;
-      f2 = baxn.a(super.getContext(), 6.5F);
+      f2 = bcwh.a(super.getContext(), 6.5F);
       f3 = this.jdField_b_of_type_Float;
       if (this.jdField_a_of_type_Int != 1) {
         break label470;
       }
     }
     label470:
-    for (int i = k;; i = baxn.a(super.getContext(), 6.5F))
+    for (int i = k;; i = bcwh.a(super.getContext(), 6.5F))
     {
       ((Path)localObject).lineTo(f1 + f2, f3 - i);
       this.jdField_a_of_type_AndroidGraphicsPath.close();
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
       break;
-      i = baxn.a(super.getContext(), 6.5F);
+      i = bcwh.a(super.getContext(), 6.5F);
       break label371;
     }
   }
@@ -198,7 +198,7 @@ public class TipsView
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString) + (super.getPaddingLeft() + super.getPaddingRight()));
     Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-    this.jdField_b_of_type_Float = (localFontMetrics.bottom - localFontMetrics.top + (super.getPaddingTop() + super.getPaddingBottom()) + baxn.a(super.getContext(), 6.5F));
+    this.jdField_b_of_type_Float = (localFontMetrics.bottom - localFontMetrics.top + (super.getPaddingTop() + super.getPaddingBottom()) + bcwh.a(super.getContext(), 6.5F));
     super.setMeasuredDimension((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
   }
   
@@ -224,7 +224,7 @@ public class TipsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.TipsView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
 import android.support.annotation.NonNull;
-import auko;
-import aulz;
+import awbv;
+import awdg;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="md5")
 public class EmoticonFromGroupEntity
-  extends auko
+  extends awbv
   implements Comparable
 {
   public static final String TAG = "EmoticonFromGroupEntity";
@@ -17,10 +17,10 @@ public class EmoticonFromGroupEntity
   public int fromType;
   public boolean gifImg;
   public String md5;
-  @aulz
+  @awdg
   public MessageForPic msg;
   public long msgseq;
-  @aulz
+  @awdg
   public int status = -1;
   public String thumbURL;
   public long timestamp;
@@ -70,7 +70,7 @@ public class EmoticonFromGroupEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.EmoticonFromGroupEntity
  * JD-Core Version:    0.7.0.1
  */

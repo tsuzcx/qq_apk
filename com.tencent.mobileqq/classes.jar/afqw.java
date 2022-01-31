@@ -1,22 +1,45 @@
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-public class afqw
-  extends ajxj
+final class afqw
+  implements DialogInterface.OnClickListener
 {
-  public afqw(DeviceFragment paramDeviceFragment) {}
+  afqw(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  protected void onPullIpad()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == null) {
-      return;
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
+    {
+      bool = true;
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
+      if (afqr.a != null)
+      {
+        if (7 != this.jdField_a_of_type_Int) {
+          break label80;
+        }
+        afqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, afqr.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
+      }
     }
-    this.a.a.e();
-    this.a.a.notifyDataSetChanged();
+    label80:
+    while (6 != this.jdField_a_of_type_Int)
+    {
+      return;
+      bool = false;
+      break;
+    }
+    afqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, afqr.a.frienduin, "ep_mall", "Clk_collect_more", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afqw
  * JD-Core Version:    0.7.0.1
  */

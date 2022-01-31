@@ -1,31 +1,37 @@
-import java.util.HashMap;
+import android.graphics.Rect;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 class aofc
-  implements aysb
+  implements Comparator<Rect>
 {
-  aofc(aofa paramaofa) {}
+  aofc(aofb paramaofb) {}
   
-  public void a(aysy paramaysy, aysz paramaysz)
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    if ((paramaysy != null) && (paramaysz != null) && ((paramaysy instanceof ayrx)))
+    if (this.a.g.contains(paramRect1)) {}
+    do
     {
-      paramaysy = (ayrx)paramaysy;
-      paramaysy.jdField_a_of_type_Long += paramaysz.c;
-      paramaysz.c = 0L;
-      paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
-      paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
-      paramaysz = paramaysy.jdField_a_of_type_JavaLangString;
-      if (paramaysz.contains("range="))
+      do
       {
-        paramaysz = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
-        paramaysy.jdField_a_of_type_JavaLangString = (paramaysz + "range=" + paramaysy.jdField_a_of_type_Long);
+        return 1;
+        if (this.a.g.contains(paramRect2)) {
+          return -1;
+        }
+        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
+          return -1;
+        }
+      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
+      if (paramRect1.width() > paramRect2.width()) {
+        return -1;
       }
-    }
+    } while (paramRect1.width() < paramRect2.width());
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofc
  * JD-Core Version:    0.7.0.1
  */

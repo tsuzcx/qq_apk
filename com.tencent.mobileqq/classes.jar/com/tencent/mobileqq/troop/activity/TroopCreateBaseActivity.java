@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import azia;
+import bbgj;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ import com.tencent.smtt.sdk.WebView;
 public abstract class TroopCreateBaseActivity
   extends AbsBaseWebViewActivity
 {
-  protected azia a;
+  protected bbgj a;
   public CustomWebView a;
   
   public void a(int paramInt)
@@ -47,7 +47,7 @@ public abstract class TroopCreateBaseActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = b((ViewGroup)null);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setId(2131379402);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setId(2131380117);
     setContentView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView);
     paramBundle = getIntent().getStringExtra("url");
     if (TextUtils.isEmpty(paramBundle)) {
@@ -63,7 +63,7 @@ public abstract class TroopCreateBaseActivity
     {
       this.b = Long.parseLong((String)localObject, 10);
       this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
-      this.leftView.setOnClickListener(new azia(this, 0, null));
+      this.leftView.setOnClickListener(new bbgj(this, 0, null));
       return true;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -84,9 +84,9 @@ public abstract class TroopCreateBaseActivity
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Azia != null)
+    if (this.jdField_a_of_type_Bbgj != null)
     {
-      this.jdField_a_of_type_Azia.onClick(this.leftView);
+      this.jdField_a_of_type_Bbgj.onClick(this.leftView);
       return true;
     }
     return false;

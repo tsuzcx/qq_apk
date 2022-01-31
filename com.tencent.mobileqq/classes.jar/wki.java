@@ -1,81 +1,27 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
+import java.util.Comparator;
 
-public abstract class wki<T>
-  extends wkh<T>
+public class wki
+  implements Comparator<wkh>
 {
-  protected int c = -1;
-  
-  public wki(Context paramContext, boolean paramBoolean)
+  public int a(wkh paramwkh1, wkh paramwkh2)
   {
-    super(paramContext, paramBoolean);
-  }
-  
-  protected abstract View a();
-  
-  protected View a(int paramInt)
-  {
-    if (this.a != null) {
-      return this.a.findViewById(paramInt);
+    if (paramwkh1.a == paramwkh2.a) {
+      if (!paramwkh1.b) {}
     }
-    return null;
-  }
-  
-  protected void a()
-  {
-    this.a = a();
-    g();
-  }
-  
-  public void a(View paramView)
-  {
-    if ((paramView != null) && (a())) {
-      ((ViewGroup)this.a).addView(paramView);
-    }
-  }
-  
-  public void a(ViewStub paramViewStub)
-  {
-    if (paramViewStub == null) {
-      return;
-    }
-    if (this.c != -1)
+    while (paramwkh1.a > paramwkh2.a)
     {
-      a(paramViewStub, this.c);
-      return;
+      return -1;
+      if (paramwkh2.b) {
+        return 1;
+      }
+      return 0;
     }
-    paramViewStub.setLayoutResource(b());
-    this.a = paramViewStub.inflate();
-    if (b() == 2131562066) {
-      a(a());
-    }
-    g();
+    return 1;
   }
-  
-  public void a(ViewStub paramViewStub, int paramInt)
-  {
-    if (paramViewStub != null)
-    {
-      paramViewStub.setLayoutResource(paramInt);
-      this.a = paramViewStub.inflate();
-      g();
-    }
-  }
-  
-  protected boolean a()
-  {
-    return (this.a != null) && ((this.a instanceof ViewGroup));
-  }
-  
-  protected abstract int b();
-  
-  protected abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wki
  * JD-Core Version:    0.7.0.1
  */

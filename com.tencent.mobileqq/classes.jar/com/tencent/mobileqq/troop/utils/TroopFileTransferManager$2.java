@@ -7,6 +7,9 @@ final class TroopFileTransferManager$2
   
   public void run()
   {
+    if (this.a.d()) {
+      return;
+    }
     this.a.c();
   }
 }

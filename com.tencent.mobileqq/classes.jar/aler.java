@@ -1,63 +1,49 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import org.json.JSONObject;
 
-public abstract class aler
-  extends Binder
-  implements aleq
+final class aler
+  implements alev
 {
-  public aler()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArSoCallback");
-  }
+  aler(int paramInt) {}
   
-  public static aleq a(IBinder paramIBinder)
+  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    if (paramIBinder == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof aleq))) {
-      return (aleq)localIInterface;
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return;
     }
-    return new ales(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      b();
-      paramParcel2.writeNoException();
-      return true;
+      paramQQAppInterface = alep.a(paramInt2, paramArrayOfInt);
+      if (paramQQAppInterface == null)
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
+        return;
+      }
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-    a(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      return;
+    }
+    if (this.a == 1000) {
+      paramQQAppInterface.put("uin", paramString1);
+    }
+    paramQQAppInterface.put("openId", paramString2);
+    paramString1 = new Bundle();
+    paramString1.putString("resData", paramQQAppInterface.toString());
+    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
+    akrg.a().callbackResult(paramInt1, paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aler
  * JD-Core Version:    0.7.0.1
  */

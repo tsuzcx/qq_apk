@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import java.util.Comparator;
-
-public class aqus
-  implements Comparator<MessageForGrayTips.HightlightItem>
+class aqus
+  extends aquk
 {
-  public aqus(MessageForUniteGrayTip paramMessageForUniteGrayTip) {}
-  
-  public int a(MessageForGrayTips.HightlightItem paramHightlightItem1, MessageForGrayTips.HightlightItem paramHightlightItem2)
+  aqus(aqug paramaqug)
   {
-    return paramHightlightItem1.start - paramHightlightItem2.start;
+    super(paramaqug);
+    this.a = true;
+    this.b = true;
+  }
+  
+  protected String a()
+  {
+    return "StateEnd";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqus
  * JD-Core Version:    0.7.0.1
  */

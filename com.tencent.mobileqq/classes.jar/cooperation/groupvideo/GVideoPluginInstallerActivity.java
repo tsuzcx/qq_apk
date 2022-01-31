@@ -7,10 +7,10 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.text.format.Time;
 import android.widget.TextView;
-import bgkl;
-import bgkm;
-import bgkp;
-import bglh;
+import bilj;
+import bilk;
+import biln;
+import bimg;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
@@ -23,8 +23,8 @@ public class GVideoPluginInstallerActivity
   final int jdField_a_of_type_Int = 1;
   Handler jdField_a_of_type_AndroidOsHandler;
   public TextView a;
-  bglh jdField_a_of_type_Bglh;
-  private final OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new bgkm(this);
+  bimg jdField_a_of_type_Bimg;
+  private final OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new bilk(this);
   private final Runnable jdField_a_of_type_JavaLangRunnable = new GVideoPluginInstallerActivity.3(this);
   public final String a;
   final int jdField_b_of_type_Int = 2;
@@ -36,7 +36,7 @@ public class GVideoPluginInstallerActivity
   public GVideoPluginInstallerActivity()
   {
     this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_b_of_type_AndroidOsHandler = new bgkl(this, Looper.getMainLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new bilj(this, Looper.getMainLooper());
   }
   
   private String a(ArrayList<String> paramArrayList, boolean paramBoolean)
@@ -74,12 +74,12 @@ public class GVideoPluginInstallerActivity
     if (this.leftView != null) {
       localIntent.putExtra("leftViewString", this.leftView.getText().toString());
     }
-    bgkp.a(this.app, this, localIntent, 1);
+    biln.a(this.app, this, localIntent, 1);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131698053));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131698230));
     this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 1000L);
   }
   
@@ -94,14 +94,14 @@ public class GVideoPluginInstallerActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    super.setContentView(2131560407);
-    super.setTitle(getString(2131698055));
+    super.setContentView(2131560515);
+    super.setTitle(getString(2131698232));
     if ((this.leftView != null) && (getIntent() != null)) {
       this.leftView.setText(getIntent().getExtras().getString("leftViewText"));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377045));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131698054));
-    this.jdField_a_of_type_Bglh = ((bglh)this.app.getManager(27));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377566));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131698231));
+    this.jdField_a_of_type_Bimg = ((bimg)this.app.getManager(27));
     return bool;
   }
   
@@ -122,15 +122,15 @@ public class GVideoPluginInstallerActivity
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
-    if ((!paramBoolean) || (this.jdField_a_of_type_Bglh == null)) {
+    if ((!paramBoolean) || (this.jdField_a_of_type_Bimg == null)) {
       return;
     }
-    if (this.jdField_a_of_type_Bglh.isPlugininstalled("group_video_plugin.apk"))
+    if (this.jdField_a_of_type_Bimg.isPlugininstalled("group_video_plugin.apk"))
     {
       this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
       return;
     }
-    if (bgkp.a(getApplicationContext()))
+    if (biln.a(getApplicationContext()))
     {
       localObject = new Intent("com.tencent.process.exit");
       ArrayList localArrayList = new ArrayList();
@@ -149,7 +149,7 @@ public class GVideoPluginInstallerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.groupvideo.GVideoPluginInstallerActivity
  * JD-Core Version:    0.7.0.1
  */

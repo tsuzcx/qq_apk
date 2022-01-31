@@ -1,39 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.widget.ProgressPieView;
 
 public class bhvx
+  extends Handler
 {
-  public static int a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).getInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), 0);
-  }
+  long jdField_a_of_type_Long;
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).edit();
-    paramQQAppInterface.putInt("hot_shortvideo_multi_video_support_799", paramInt);
-    paramQQAppInterface.commit();
-  }
+  public bhvx(ProgressPieView paramProgressPieView) {}
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool = false;
-    if (paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).getInt("hot_shortvideo_multi_video_support_799", 0) != 0) {
-      bool = true;
+    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
+    {
+      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
+      sendEmptyMessageDelayed(0, 1L);
+      return;
     }
-    return bool;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).edit().putInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), paramInt).commit();
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhvx
  * JD-Core Version:    0.7.0.1
  */

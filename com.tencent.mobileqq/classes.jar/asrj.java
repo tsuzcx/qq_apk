@@ -1,65 +1,31 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import java.io.File;
 
-public class asrj
-  implements asqp
+class asrj
+  implements asqy
 {
-  public static float a = 0.85F;
-  private static float b = 1.0F;
-  private static float c = 0.75F;
-  private float d = 3.4028235E+38F;
-  private float e = 3.4028235E+38F;
+  asrj(asri paramasri, HotVideoData paramHotVideoData, File paramFile, URLDrawableHandler paramURLDrawableHandler) {}
   
-  public void a(@NonNull View paramView, float paramFloat)
+  public void a(asqz paramasqz)
   {
-    paramView.getWidth();
-    paramView.getHeight();
-    Object localObject1 = (MultiAIOBaseViewPager)paramView.getParent();
-    int i = ((MultiAIOBaseViewPager)localObject1).getMeasuredWidth() - ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - ((MultiAIOBaseViewPager)localObject1).getPaddingRight();
-    float f1 = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() / i;
-    float f2 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - i - ((MultiAIOBaseViewPager)localObject1).b()) / i;
-    int j = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft();
-    float f3 = (((MultiAIOBaseViewPager)localObject1).b() + (j + i)) / i;
-    if (paramFloat < f2)
+    if (paramasqz.a)
     {
-      paramFloat = this.d;
-      f1 = this.e;
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramasqz.a();
+      asri.a(this.jdField_a_of_type_Asri, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
     }
-    for (;;)
+    do
     {
-      paramView.setScaleX(paramFloat);
-      paramView.setScaleY(paramFloat);
-      Object localObject2 = paramView.getTag(2131370543);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = paramView.findViewById(2131370543);
-        paramView.setTag(2131370543, localObject1);
-      }
-      paramView = (View)localObject1;
-      paramView.setAlpha(1.0F - f1);
-      paramView.setBackgroundColor(-16777216);
       return;
-      if (paramFloat <= f3)
-      {
-        f1 = Math.abs(paramFloat - f1);
-        paramFloat = (float)(a + Math.cos(f1 * 1.570796326794897D) * (b - a));
-        this.d = Math.min(paramFloat, this.d);
-        f1 = (float)(c + Math.cos(f1 * 1.570796326794897D) * (1.0F - c));
-        this.e = Math.min(f1, this.e);
-      }
-      else
-      {
-        paramFloat = this.d;
-        f1 = this.e;
-      }
-    }
+      this.jdField_a_of_type_JavaIoFile.delete();
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+    } while (this.jdField_a_of_type_ComTencentImageURLDrawableHandler == null);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asrj
  * JD-Core Version:    0.7.0.1
  */

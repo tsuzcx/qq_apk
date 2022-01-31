@@ -1,33 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class avyn
-  implements Handler.Callback
+  extends awae
 {
-  public avyn(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  public avyn(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, "onBatteryChanged updateOnlineStatusItem");
     }
-    if (!NeoVideoFilterPlayView.a(this.a))
-    {
-      this.a.requestRender();
-      return true;
-    }
-    NeoVideoFilterPlayView.a(this.a).set(true);
-    ved.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
-    return true;
+    AccountOnlineStateActivity.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avyn
  * JD-Core Version:    0.7.0.1
  */

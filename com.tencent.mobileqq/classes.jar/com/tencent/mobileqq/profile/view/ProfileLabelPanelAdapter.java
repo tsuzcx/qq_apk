@@ -10,10 +10,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ToggleButton;
-import aobo;
-import auzq;
-import auzr;
-import auzt;
+import aptl;
+import awrd;
+import awre;
+import awrg;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import java.util.List;
@@ -25,16 +25,16 @@ public class ProfileLabelPanelAdapter
   public float a;
   protected int a;
   public Context a;
-  protected SparseArray<auzt> a;
-  protected aobo a;
-  protected auzq a;
-  public auzr a;
-  protected auzt a;
+  protected SparseArray<awrg> a;
+  protected aptl a;
+  protected awrd a;
+  public awre a;
+  protected awrg a;
   protected List<ProfileLabelTypeInfo> a;
   
   public ProfileLabelPanelAdapter(Context paramContext, List<ProfileLabelTypeInfo> paramList)
   {
-    this.jdField_a_of_type_Aobo = new aobo();
+    this.jdField_a_of_type_Aptl = new aptl();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
@@ -56,32 +56,32 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Auzt = ((auzt)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Auzt == null)
+    this.jdField_a_of_type_Awrg = ((awrg)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_Awrg == null)
     {
-      this.jdField_a_of_type_Auzt = new auzt(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Auzt);
+      this.jdField_a_of_type_Awrg = new awrg(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Awrg);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Auzt.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Auzt);
+    this.jdField_a_of_type_Awrg.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_Awrg);
   }
   
-  public void a(auzq paramauzq)
+  public void a(awrd paramawrd)
   {
-    this.jdField_a_of_type_Auzq = paramauzq;
+    this.jdField_a_of_type_Awrd = paramawrd;
   }
   
-  public void a(auzr paramauzr)
+  public void a(awre paramawre)
   {
-    this.jdField_a_of_type_Auzr = paramauzr;
+    this.jdField_a_of_type_Awre = paramawre;
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
     GridView localGridView = (GridView)paramObject;
     ((ViewGroup)paramView).removeView(localGridView);
-    this.jdField_a_of_type_Aobo.a((View)paramObject);
+    this.jdField_a_of_type_Aptl.a((View)paramObject);
   }
   
   public int getCount()
@@ -91,7 +91,7 @@ public class ProfileLabelPanelAdapter
   
   public Object instantiateItem(View paramView, int paramInt)
   {
-    GridView localGridView2 = (GridView)this.jdField_a_of_type_Aobo.a();
+    GridView localGridView2 = (GridView)this.jdField_a_of_type_Aptl.a();
     GridView localGridView1 = localGridView2;
     if (localGridView2 == null) {
       localGridView1 = a();
@@ -113,10 +113,10 @@ public class ProfileLabelPanelAdapter
     ToggleButton localToggleButton = (ToggleButton)paramView;
     localToggleButton.toggle();
     paramView = (ProfileLabelInfo)paramView.getTag();
-    auzq localauzq;
+    awrd localawrd;
     if (paramView != null)
     {
-      localauzq = this.jdField_a_of_type_Auzq;
+      localawrd = this.jdField_a_of_type_Awrd;
       if (paramView.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
         break label53;
       }
@@ -124,14 +124,14 @@ public class ProfileLabelPanelAdapter
     label53:
     for (boolean bool = false;; bool = true)
     {
-      localauzq.a(paramView, localToggleButton, Boolean.valueOf(bool));
+      localawrd.a(paramView, localToggleButton, Boolean.valueOf(bool));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

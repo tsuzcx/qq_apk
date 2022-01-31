@@ -1,36 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import cooperation.liveroom.LiveRoomProxyActivity;
 
 class plp
-  implements pbx
+  implements View.OnClickListener
 {
-  plp(plm paramplm, RecommendFollowInfo paramRecommendFollowInfo) {}
+  plp(plm paramplm, pgd parampgd, rqj paramrqj) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    if ((this.jdField_a_of_type_Pgd.a() != null) && (this.jdField_a_of_type_Pgd.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.a != null)) {
+      LiveRoomProxyActivity.open(this.jdField_a_of_type_Rqj.a(), this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.a.c, "kandian biu feed click");
     }
-    if (paramBoolean)
+    rro localrro;
+    do
     {
-      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (paramInt == 2) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramString.isFollowed = paramBoolean;
-        plm.a(this.jdField_a_of_type_Plm, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-        plm.a(this.jdField_a_of_type_Plm).notifyDataSetChanged();
-        return;
-      }
-    }
-    bcql.a(plm.a(this.jdField_a_of_type_Plm).getContext(), 1, 2131718513, 0).a();
+      return;
+      localrro = this.jdField_a_of_type_Rqj.a();
+    } while (localrro == null);
+    localrro.a(paramView, this.jdField_a_of_type_Pgd.a(), 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     plp
  * JD-Core Version:    0.7.0.1
  */

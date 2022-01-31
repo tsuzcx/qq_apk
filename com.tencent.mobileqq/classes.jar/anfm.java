@@ -1,23 +1,10 @@
-import android.content.res.Resources;
-import android.os.Handler;
-
 public abstract interface anfm
 {
-  public abstract Resources a();
-  
-  public abstract Handler a();
-  
-  public abstract Object a(Class<?> paramClass, String paramString, Object paramObject);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public abstract void a(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfm
  * JD-Core Version:    0.7.0.1
  */

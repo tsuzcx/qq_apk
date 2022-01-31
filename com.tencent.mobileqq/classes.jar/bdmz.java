@@ -1,74 +1,158 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.export.js.VipDownloadInterface;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
-public class bdmz
-  implements bdll
+final class bdmz
+  extends bdvu
 {
-  public bdmz(VipDownloadInterface paramVipDownloadInterface) {}
-  
-  public void a(int paramInt, String paramString)
+  public void onDone(bdvv parambdvv)
   {
-    bdii.e(this.a.a, "getQueryDownloadAction onException code = " + paramInt + " msg= ");
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("errCode", paramInt);
-      localJSONObject.put("errMsg", paramString);
-      paramString = "javascript:publicAccountDownload.queryProcess(" + localJSONObject.toString() + ")";
-      this.a.a(paramString);
-      return;
+    super.onDone(parambdvv);
+    Object localObject2 = parambdvv.a();
+    String str1 = ((Bundle)localObject2).getString("method");
+    if (str1 == null) {
+      str1 = "other";
     }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(List<DownloadInfo> paramList)
-  {
-    bdii.a(this.a.a, "getQueryDownloadAction onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
     for (;;)
     {
-      if (i < j)
+      String str2 = ((Bundle)localObject2).getString("ifromet");
+      if (str2 == null) {
+        str2 = "null";
+      }
+      for (;;)
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONArray.put(localJSONObject);
-          i += 1;
+        boolean bool2 = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("ClubContentJsonTask", 2, "Club_jsonDownloadListener key = " + parambdvv.jdField_a_of_type_JavaLangString + ",satatus = " + parambdvv.a() + ",errCode = " + parambdvv.jdField_a_of_type_Int + ",errMsg = " + parambdvv.b);
         }
-        catch (JSONException localJSONException)
+        Object localObject1 = BaseApplicationImpl.sApplication.getRuntime();
+        Object localObject3;
+        boolean bool1;
+        if ((localObject1 instanceof QQAppInterface))
         {
-          for (;;)
+          localObject1 = (QQAppInterface)localObject1;
+          if ((parambdvv.a() != 3) || (parambdvv.jdField_a_of_type_Int != 0)) {
+            break label613;
+          }
+          localObject3 = ((Bundle)localObject2).getString("version_key");
+          if (localObject3 != null) {
+            bdmy.a(BaseApplicationImpl.sApplication.getApplicationContext(), (String)localObject3, ((Bundle)localObject2).getInt("version", 0));
+          }
+          if ((parambdvv.jdField_a_of_type_JavaLangString == null) || (localObject1 == null)) {
+            break label540;
+          }
+          if (!bdmy.c.jdField_a_of_type_JavaLangString.equals(parambdvv.jdField_a_of_type_JavaLangString)) {
+            break label384;
+          }
+          bdmy.c.jdField_a_of_type_OrgJsonJSONObject = null;
+          bdmy.c.a(((QQAppInterface)localObject1).getApplication());
+          bool1 = bool2;
+        }
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ClubContentJsonTask", 2, "jsonDownloadListener,ret=" + bool1 + ",file.name:" + parambdvv.jdField_a_of_type_JavaLangString + ",method:" + str1 + ",ifromet:" + str2);
+          }
+          if (localObject1 != null) {}
+          try
           {
-            localJSONException.printStackTrace();
+            localObject2 = new HashMap();
+            ((HashMap)localObject2).put("param_jsonName", parambdvv.jdField_a_of_type_JavaLangString);
+            ((HashMap)localObject2).put("param_method", str1);
+            ((HashMap)localObject2).put("param_from", str2);
+            azmz.a(((QQAppInterface)localObject1).getApplication().getApplicationContext()).a(((QQAppInterface)localObject1).getAccount(), "ClubContentJsonLoaded", bool1, 1L, 0L, (HashMap)localObject2, "", false);
+            return;
+          }
+          catch (Exception parambdvv)
+          {
+            label384:
+            label540:
+            label561:
+            label608:
+            label613:
+            parambdvv.printStackTrace();
+            return;
+          }
+          localObject1 = null;
+          break;
+          if (parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.f.jdField_a_of_type_JavaLangString))
+          {
+            alpc.a((QQAppInterface)localObject1);
+            bool1 = bool2;
+          }
+          else
+          {
+            bool1 = bool2;
+            if (!parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.b.jdField_a_of_type_JavaLangString)) {
+              if (parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.h.jdField_a_of_type_JavaLangString))
+              {
+                ((bdpq)((QQAppInterface)localObject1).getManager(150)).a((QQAppInterface)localObject1);
+                bool1 = bool2;
+              }
+              else if (parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.d.jdField_a_of_type_JavaLangString))
+              {
+                bdmy.d.jdField_a_of_type_OrgJsonJSONObject = null;
+                bdmy.d.a(((QQAppInterface)localObject1).getApplication());
+                bool1 = bool2;
+              }
+              else
+              {
+                bool1 = bool2;
+                if (parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.i.jdField_a_of_type_JavaLangString))
+                {
+                  localObject2 = (fx)((QQAppInterface)localObject1).getManager(42);
+                  bool1 = bool2;
+                  continue;
+                  localObject2 = new StringBuilder().append("jsonDownloadListener, app == null:");
+                  if (localObject1 == null)
+                  {
+                    bool1 = true;
+                    localObject2 = ((StringBuilder)localObject2).append(bool1).append(",key == null:");
+                    if (parambdvv.jdField_a_of_type_JavaLangString != null) {
+                      break label608;
+                    }
+                  }
+                  for (bool1 = true;; bool1 = false)
+                  {
+                    QLog.e("ClubContentJsonTask", 2, bool1);
+                    bool1 = bool2;
+                    break;
+                    bool1 = false;
+                    break label561;
+                  }
+                  QLog.e("ClubContentJsonTask", 1, "ClubContentJsonTask jsondownfail task.key = " + parambdvv.jdField_a_of_type_JavaLangString);
+                  if ((parambdvv.jdField_a_of_type_JavaLangString != null) && (parambdvv.jdField_a_of_type_JavaLangString.equals(bdmy.g.jdField_a_of_type_JavaLangString)) && (localObject1 != null))
+                  {
+                    localObject3 = (alqr)((QQAppInterface)localObject1).getManager(131);
+                    localObject2 = "0";
+                    if (((alqr)localObject3).a()) {
+                      localObject2 = "1";
+                    }
+                    azmj.b((QQAppInterface)localObject1, "CliOper", "", "", "0X800612B", "0X800612B", 0, 0, (String)localObject2, "0", "", "");
+                  }
+                  bool1 = false;
+                }
+              }
+            }
           }
         }
       }
     }
-    paramList = "javascript:publicAccountDownload.queryProcess(" + localJSONArray.toString() + ")";
-    bdii.a(this.a.a, "getQueryDownloadAction callback url = " + paramList);
-    this.a.a(paramList);
+  }
+  
+  public void onProgress(bdvv parambdvv) {}
+  
+  public boolean onStart(bdvv parambdvv)
+  {
+    return super.onStart(parambdvv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmz
  * JD-Core Version:    0.7.0.1
  */

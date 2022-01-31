@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import nol;
+import nrt;
 import org.json.JSONObject;
 
 public final class ReadInJoyUtils$17
@@ -29,7 +29,7 @@ public final class ReadInJoyUtils$17
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("tab_status", 3);
             localJSONObject.put("reddot_num", ((KandianMsgBoxRedPntInfo)localObject).mMsgCnt);
-            nol.a(null, "CliOper", "", "", "0X80091DC", "0X80091DC", 0, 0, "0", "", "", localJSONObject.toString(), false);
+            nrt.a(null, "CliOper", "", "", "0X80091DC", "0X80091DC", 0, 0, "0", "", "", localJSONObject.toString(), false);
           }
         }
       }
@@ -43,7 +43,7 @@ public final class ReadInJoyUtils$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.17
  * JD-Core Version:    0.7.0.1
  */

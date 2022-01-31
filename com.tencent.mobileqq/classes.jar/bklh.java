@@ -1,58 +1,22 @@
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.AEPituCameraUnit.16;
 
 public class bklh
-  extends bklt<bkld, bkld>
+  implements View.OnClickListener
 {
-  public WeakReference<bjsy> a;
+  public bklh(AEPituCameraUnit.16 param16) {}
   
-  public bklh(bjsy parambjsy)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(parambjsy);
-  }
-  
-  protected void a(JobContext paramJobContext, bkld parambkld)
-  {
-    paramJobContext = (bjsy)this.a.get();
-    if (paramJobContext == null)
-    {
-      ved.e("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "EditInteractExport is null, return directly.");
-      notifyResult(parambkld);
-      return;
+    if (bkle.a(this.a.this$0) != null) {
+      bkle.a(this.a.this$0).f();
     }
-    paramJobContext = paramJobContext.a();
-    if (paramJobContext == null)
-    {
-      ved.e("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "interact bitmap is null, return directly.");
-      notifyResult(parambkld);
-      return;
-    }
-    String str = bklw.a(parambkld.jdField_a_of_type_Int, parambkld.b, ".png");
-    try
-    {
-      if (vxv.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, str))
-      {
-        parambkld.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("il_pic", str);
-        notifyResult(parambkld);
-        return;
-      }
-    }
-    catch (Exception paramJobContext)
-    {
-      ved.c("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "compressToFile Exception :", paramJobContext);
-      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
-      return;
-    }
-    ved.e("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "compressToFile failed.");
-    super.notifyError(new ErrorMessage(-1, "compress interact bitmap failed !"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bklh
  * JD-Core Version:    0.7.0.1
  */

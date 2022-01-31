@@ -1,28 +1,23 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.NumberCheckBox;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class agrt
+  extends badk
 {
-  agrq jdField_a_of_type_Agrq;
-  View jdField_a_of_type_AndroidViewView;
-  public ImageView a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  public NumberCheckBox a;
-  public ImageView b;
-  TextView b;
-  ImageView c;
-  ImageView d;
-  ImageView e;
+  public agrt(TroopChatPie paramTroopChatPie) {}
   
-  public agrt(agrs paramagrs) {}
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    badt.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.l(this.a), paramBoolean, paramArrayOfObject);
+  }
+  
+  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    badt.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.m(this.a), paramBoolean, paramArrayOfObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrt
  * JD-Core Version:    0.7.0.1
  */

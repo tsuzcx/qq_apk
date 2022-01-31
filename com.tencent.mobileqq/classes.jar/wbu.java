@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class wbu
-  implements View.OnClickListener
-{
-  wbu(wbr paramwbr) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbu
  * JD-Core Version:    0.7.0.1
  */

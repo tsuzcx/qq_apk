@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beix;
-import bekr;
+import bgiy;
+import bgkd;
 
 class StorageJsPlugin$1
   implements Runnable
 {
-  StorageJsPlugin$1(StorageJsPlugin paramStorageJsPlugin, String paramString1, String paramString2, String paramString3, bekr parambekr) {}
+  StorageJsPlugin$1(StorageJsPlugin paramStorageJsPlugin, String paramString1, String paramString2, String paramString3, bgkd parambgkd) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ class StorageJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.StorageJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

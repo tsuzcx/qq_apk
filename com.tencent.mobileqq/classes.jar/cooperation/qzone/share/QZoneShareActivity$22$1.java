@@ -1,11 +1,11 @@
 package cooperation.qzone.share;
 
-import bhlz;
+import bjnk;
 
 public class QZoneShareActivity$22$1
   implements Runnable
 {
-  public QZoneShareActivity$22$1(bhlz parambhlz) {}
+  public QZoneShareActivity$22$1(bjnk parambjnk) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QZoneShareActivity$22$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.22.1
  * JD-Core Version:    0.7.0.1
  */

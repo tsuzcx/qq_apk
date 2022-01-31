@@ -1,53 +1,53 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoic
+  implements aoga<String>
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList(20);
-  
-  public aoic(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      b();
-    }
-  }
+  public HashMap<String, String> a = new HashMap();
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
-      b();
+    if (TextUtils.isEmpty(paramString)) {
+      ArkAppCenter.c("ArkAIKeyWordSDKShareConfig", "onParse,fileOrRes is null");
     }
-  }
-  
-  void b()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    for (;;)
     {
-      if (i != 0) {
-        localStringBuffer.append("|");
+      return;
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("ark_ai_keyword_sdk_share_app_info");
+        if (paramString != null)
+        {
+          int i = 0;
+          while (i < paramString.length())
+          {
+            Object localObject = (JSONObject)paramString.get(i);
+            String str = ((JSONObject)localObject).getString("appID");
+            localObject = ((JSONObject)localObject).getString("appName");
+            QLog.i("ArkAIKeyWordSDKShareConfig", 1, "onParse ark_ai_keyword_sdk_share_app_info id=" + str + ", name=" + (String)localObject);
+            this.a.put(str, localObject);
+            i += 1;
+          }
+        }
+        ArkAppCenter.c("ArkAIKeyWordSDKShareConfig", "getArkShareConfig,ark_ai_keyword_sdk_share_app_info is empty");
+        return;
       }
-      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      i += 1;
+      catch (JSONException paramString)
+      {
+        QLog.e("ArkAIKeyWordSDKShareConfig", 1, "onParse error e = ", paramString);
+      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoic
  * JD-Core Version:    0.7.0.1
  */

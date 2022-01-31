@@ -1,25 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.widget.AdapterView;
 
 public class qqq
-  extends AnimatorListenerAdapter
+  implements bhqp
 {
-  public qqq(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, List paramList) {}
+  public qqq(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAnimator = new Bundle();
-    paramAnimator.putLong("ARGS_VIDEO_START_POSITION", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment.a() + 300L);
-    paramAnimator.putInt("VIDEO_FROM_TYPE", VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
-    qnl.a().a(this.jdField_a_of_type_JavaUtilList, paramAnimator);
+    paramAdapterView = (TagInfo)ReadInJoyVideoTagSelectionFragment.a(this.a).getItem(paramInt);
+    ReadInJoyVideoTagSelectionFragment.a(this.a).b(paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqq
  * JD-Core Version:    0.7.0.1
  */

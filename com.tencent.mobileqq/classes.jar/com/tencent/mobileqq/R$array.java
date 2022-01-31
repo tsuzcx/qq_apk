@@ -83,35 +83,37 @@ public final class R$array
   public static final int qav_doodle_heart_shaped = 2130968654;
   public static final int qav_doodle_heart_shaped0 = 2130968655;
   public static final int qq_dating_event_group = 2130968656;
-  public static final int qq_nearby_moment_comment_report = 2130968657;
-  public static final int qq_nearby_moment_feed_report = 2130968658;
-  public static final int qqstory_config_mystorys_subtitle_delimiter = 2130968659;
-  public static final int recent_item2 = 2130968660;
-  public static final int savor_tag_title = 2130968661;
-  public static final int savor_tag_type = 2130968662;
-  public static final int send_pic_item = 2130968663;
-  public static final int set_default_group = 2130968664;
-  public static final int set_group = 2130968665;
-  public static final int subaccount_manage_unbind_sheet = 2130968666;
-  public static final int troop_file_list_sheet = 2130968667;
-  public static final int troop_info_troop_type_setting_menu = 2130968668;
-  public static final int troop_member_king_segment_list = 2130968669;
-  public static final int troop_member_list_action_sheet_items = 2130968670;
-  public static final int troop_member_list_action_sheet_items2 = 2130968671;
-  public static final int troop_member_list_action_sheet_items3 = 2130968672;
-  public static final int troop_member_list_action_sheet_troop_fee = 2130968673;
-  public static final int troop_member_list_active_date_seg = 2130968674;
-  public static final int troop_member_list_add_date_seg = 2130968675;
-  public static final int troop_member_list_default_level = 2130968676;
-  public static final int troop_member_list_distance = 2130968677;
-  public static final int troop_member_list_sort_describe = 2130968678;
-  public static final int troop_member_list_sort_sheet_item = 2130968679;
-  public static final int troop_msg_off = 2130968680;
-  public static final int troop_msg_on = 2130968681;
+  public static final int qq_extend_friend_personality_label_background_color = 2130968657;
+  public static final int qq_extend_friend_personality_label_text_color = 2130968658;
+  public static final int qq_nearby_moment_comment_report = 2130968659;
+  public static final int qq_nearby_moment_feed_report = 2130968660;
+  public static final int qqstory_config_mystorys_subtitle_delimiter = 2130968661;
+  public static final int recent_item2 = 2130968662;
+  public static final int savor_tag_title = 2130968663;
+  public static final int savor_tag_type = 2130968664;
+  public static final int send_pic_item = 2130968665;
+  public static final int set_default_group = 2130968666;
+  public static final int set_group = 2130968667;
+  public static final int subaccount_manage_unbind_sheet = 2130968668;
+  public static final int troop_file_list_sheet = 2130968669;
+  public static final int troop_info_troop_type_setting_menu = 2130968670;
+  public static final int troop_member_king_segment_list = 2130968671;
+  public static final int troop_member_list_action_sheet_items = 2130968672;
+  public static final int troop_member_list_action_sheet_items2 = 2130968673;
+  public static final int troop_member_list_action_sheet_items3 = 2130968674;
+  public static final int troop_member_list_action_sheet_troop_fee = 2130968675;
+  public static final int troop_member_list_active_date_seg = 2130968676;
+  public static final int troop_member_list_add_date_seg = 2130968677;
+  public static final int troop_member_list_default_level = 2130968678;
+  public static final int troop_member_list_distance = 2130968679;
+  public static final int troop_member_list_sort_describe = 2130968680;
+  public static final int troop_member_list_sort_sheet_item = 2130968681;
+  public static final int troop_msg_off = 2130968682;
+  public static final int troop_msg_on = 2130968683;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.R.array
  * JD-Core Version:    0.7.0.1
  */

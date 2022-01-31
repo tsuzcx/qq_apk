@@ -1,32 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.text.style.CharacterStyle;
 
-class bejq
-  extends BroadcastReceiver
+public class bejq
 {
-  bejq(bejp parambejp) {}
+  public int a;
+  public CharacterStyle a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bejq(int paramInt1, int paramInt2, int paramInt3, String paramString, CharacterStyle paramCharacterStyle)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext != null) && (paramContext.equals("android.intent.action.HEADSET_PLUG")) && (paramIntent.hasExtra("state")))
-    {
-      if (paramIntent.getIntExtra("state", 0) != 0) {
-        break label46;
-      }
-      bejp.a(this.a, 2);
-    }
-    label46:
-    while (paramIntent.getIntExtra("state", 0) != 1) {
-      return;
-    }
-    bejp.a(this.a, 1);
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bejq
  * JD-Core Version:    0.7.0.1
  */

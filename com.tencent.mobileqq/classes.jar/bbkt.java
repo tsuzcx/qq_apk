@@ -1,33 +1,19 @@
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
 
-final class bbkt
-  extends ClickableSpan
+public abstract class bbkt
 {
-  bbkt(Context paramContext, athv paramathv) {}
+  public static final int ITEM_TYPE_AUDIO = 2;
+  public static final int ITEM_TYPE_MUSIC = 3;
+  public static final int ITEM_TYPE_NONE = 0;
+  public static final int ITEM_TYPE_PIC = 1;
+  public static final int ITEM_TYPE_VIDEO = 4;
+  protected static final String TAG = "publish_mediaInfo";
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Athv.b());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Athv.b());
-    }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-  }
+  public abstract String getJsonText();
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#00aced"));
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract View getView(Context paramContext, View.OnClickListener paramOnClickListener);
 }
 
 

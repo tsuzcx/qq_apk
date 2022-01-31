@@ -1,41 +1,34 @@
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimBridgeActivity;
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.content.Context;
+import android.content.DialogInterface;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bgsz
-  implements bgth
+class bgsz
+  extends bgsi
 {
-  public bgsz(QQPimBridgeActivity paramQQPimBridgeActivity) {}
-  
-  public void a()
+  bgsz(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bgta.a, 2, "QQPimBridgeActivity.hasInstalled()");
-    }
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
+    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
   }
   
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt)
+  protected bgsh a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bgta.a, 2, "QQPimBridgeActivity.downloadError()");
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 2;
-    localMessage.arg1 = paramInt;
-    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
+    return new bgsh(2131694348, new bgta(this));
   }
   
-  public void b()
+  protected void a(DialogInterface paramDialogInterface)
   {
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
+    a("expo");
+  }
+  
+  protected String b()
+  {
+    return "timeAlert";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgsz
  * JD-Core Version:    0.7.0.1
  */

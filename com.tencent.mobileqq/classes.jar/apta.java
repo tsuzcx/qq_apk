@@ -1,50 +1,22 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class apta
+class apta
+  implements apsl
 {
-  public static int a(bgbd parambgbd, long paramLong1, long paramLong2, long paramLong3)
+  apta(apsx paramapsx) {}
+  
+  public void a(List<apsj> paramList)
   {
-    if (paramLong3 == 0L)
+    if (paramList != null)
     {
-      if (paramLong1 < parambgbd.a(BaseApplication.getContext(), paramLong1, paramLong3, 1024)) {}
-      for (;;)
-      {
-        i = (int)paramLong1;
-        int k = bgbg.a(BaseApplication.getContext());
-        int j;
-        if (k != 1)
-        {
-          j = i;
-          if (k != 2) {}
-        }
-        else
-        {
-          j = i;
-          if (i > 16384) {
-            j = 16384;
-          }
-        }
-        i = Math.min(j, 1048576);
-        if (QLog.isColorLevel()) {
-          QLog.d("OfflineFileHttpUtils<FileAssistant>", 2, "sendFilePakage transferedSize[" + paramLong2 + "], size[" + i + "]");
-        }
-        return i;
-        paramLong1 = 1024L;
-      }
-    }
-    int i = parambgbd.a(BaseApplication.getContext(), paramLong1, paramLong2, 131072);
-    if (paramLong1 < i + paramLong2) {}
-    for (paramLong1 -= paramLong2;; paramLong1 = i)
-    {
-      i = (int)paramLong1;
-      break;
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apta
  * JD-Core Version:    0.7.0.1
  */

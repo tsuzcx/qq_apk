@@ -1,46 +1,45 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aotz
-  extends apvf
 {
-  public aotz(QfileRecentTDocFileTabView paramQfileRecentTDocFileTabView) {}
+  private Map<String, Long> a = new HashMap();
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e()
+  public static aotz a(aogf[] paramArrayOfaogf)
   {
-    Object localObject = apel.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+      return null;
+    }
+    localaotz = new aotz();
+    try
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (apej.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          axqy.b(QfileRecentTDocFileTabView.b(this.a), "dc00898", "", "", "0X800A08C", "0X800A08C", 0, 0, "", "", "", "");
-        }
+      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].a);
+      Iterator localIterator = paramArrayOfaogf.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localaotz.a.put(str, Long.valueOf(paramArrayOfaogf.getLong(str)));
       }
+      return localaotz;
+    }
+    catch (JSONException paramArrayOfaogf)
+    {
+      QLog.e("TencentDocPreviewConfigBean", 1, paramArrayOfaogf.getLocalizedMessage(), paramArrayOfaogf);
     }
   }
   
-  public void f() {}
-  
-  public void g()
+  public Map<String, Long> a()
   {
-    this.a.a.a().G();
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aotz
  * JD-Core Version:    0.7.0.1
  */

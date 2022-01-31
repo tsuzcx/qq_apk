@@ -1,32 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
 class vii
-  implements TextWatcher
+  implements ViewPager.OnPageChangeListener
 {
-  vii(vif paramvif) {}
+  vii(vig paramvig) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    vhm localvhm = this.a.a;
-    if (this.a.a.a()) {}
-    for (paramEditable = "2";; paramEditable = "1")
-    {
-      localvhm.a("search_poi", 0, 0, new String[] { paramEditable });
-      vej.a("0X80076D1");
-      vej.b("0X80075E6");
-      vif.a(this.a);
-      return;
-    }
+    this.a.a.setSelectedTab(paramInt, true);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vii
  * JD-Core Version:    0.7.0.1
  */

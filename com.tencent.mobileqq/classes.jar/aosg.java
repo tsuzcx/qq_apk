@@ -1,49 +1,35 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import java.util.ArrayList;
 
 public class aosg
-  extends apvf
 {
-  public aosg(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  private aosh jdField_a_of_type_Aosh;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a()
+  public aosg()
   {
-    this.a.a.a().c();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Aosh = new aosh();
   }
   
-  public void b()
+  public aosg(String paramString, aosh paramaosh)
   {
-    this.a.a.a().k();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aosh = paramaosh;
   }
   
-  public void c()
+  public aosh a()
   {
-    this.a.a.a().l();
+    return this.jdField_a_of_type_Aosh;
   }
   
-  public void d()
+  public boolean a()
   {
-    this.a.a.a().m();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().F();
+    return (this.jdField_a_of_type_Aosh == null) || (this.jdField_a_of_type_Aosh.a == null) || (this.jdField_a_of_type_Aosh.a.size() <= 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aosg
  * JD-Core Version:    0.7.0.1
  */

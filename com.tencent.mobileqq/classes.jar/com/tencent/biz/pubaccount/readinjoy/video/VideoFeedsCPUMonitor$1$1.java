@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bbdh;
+import bdcb;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
-import nol;
-import onh;
+import nrt;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qms;
-import qmt;
+import ors;
+import rbw;
+import rbx;
 
 public class VideoFeedsCPUMonitor$1$1
   implements Runnable
 {
-  public VideoFeedsCPUMonitor$1$1(qmt paramqmt) {}
+  public VideoFeedsCPUMonitor$1$1(rbx paramrbx) {}
   
   public void run()
   {
@@ -25,13 +25,13 @@ public class VideoFeedsCPUMonitor$1$1
         Thread.sleep(10000L);
         localThread.start();
         l1 = System.currentTimeMillis();
-        l2 = qms.a();
-        if (qms.a().get() == 2)
+        l2 = rbw.a();
+        if (rbw.a().get() == 2)
         {
           l3 = System.currentTimeMillis();
-          qms.b().getAndAdd(1);
+          rbw.b().getAndAdd(1);
           if (QLog.isColorLevel()) {
-            QLog.d(qms.a(), 2, "cost = " + (l3 - l1) + ", runCount = " + l2);
+            QLog.d(rbw.a(), 2, "cost = " + (l3 - l1) + ", runCount = " + l2);
           }
           localJSONObject = new JSONObject();
         }
@@ -45,21 +45,21 @@ public class VideoFeedsCPUMonitor$1$1
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(qms.a(), 2, "InterruptedException");
+        QLog.d(rbw.a(), 2, "InterruptedException");
         continue;
       }
       try
       {
         localJSONObject.put("result", String.valueOf(l2));
         localJSONObject.put("costTime", String.valueOf(l3 - l1));
-        localJSONObject.put("deviceModel", bbdh.d());
-        localJSONObject.put("manufactureInfo", bbdh.h());
-        localJSONObject.put("uin", onh.a());
-        nol.a(null, null, "0X8009576", "0X8009576", 0, 0, onh.a(), "1", "", localJSONObject.toString(), false);
+        localJSONObject.put("deviceModel", bdcb.d());
+        localJSONObject.put("manufactureInfo", bdcb.h());
+        localJSONObject.put("uin", ors.a());
+        nrt.a(null, null, "0X8009576", "0X8009576", 0, 0, ors.a(), "1", "", localJSONObject.toString(), false);
         if (localThread.isAlive()) {
           localThread.interrupt();
         }
-        qms.a().set(0);
+        rbw.a().set(0);
         return;
       }
       catch (JSONException localJSONException)
@@ -71,7 +71,7 @@ public class VideoFeedsCPUMonitor$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCPUMonitor.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beiz;
-import bekr;
+import bgja;
+import bgkd;
 
 class StorageJsPlugin$1$1
-  implements beiz
+  implements bgja
 {
   StorageJsPlugin$1$1(StorageJsPlugin.1 param1) {}
   
@@ -20,7 +20,7 @@ class StorageJsPlugin$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.StorageJsPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,104 +1,84 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.app.BaseActivity;
+import SummaryCardTaf.SSummaryCardRsp;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Pair;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity.2.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class awnm
-  extends awoj
+  extends allb
 {
-  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
-  public CharSequence a;
-  private String jdField_a_of_type_JavaLangString;
+  public awnm(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public awnm(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public CharSequence a()
-  {
-    return awwa.a(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    Context localContext = paramView.getContext();
-    if ((localContext != null) && ((localContext instanceof BaseActivity)))
-    {
-      PublicView.a((QQAppInterface)((BaseActivity)localContext).getAppRuntime(), localContext, this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.class_index.get(), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.account_flag.get(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), 4);
-      awwa.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-      awwa.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
-  }
-  
-  public boolean b()
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    String str = this.a.app.getCurrentAccountUin();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_BackgroundId", String.valueOf(this.a.g));
+    localHashMap.put("param_StyleId", String.valueOf(this.a.jdField_a_of_type_Long));
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.b();
+    if ((paramBoolean) && (paramObject != null))
     {
-      localStringBuilder = new StringBuilder().append("name = ").append(this.jdField_a_of_type_JavaLangCharSequence).append(", isCert = ");
-      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
-        break label102;
+      if ((paramObject instanceof Card)) {
+        ThreadManager.post(new VipProfileCardBaseActivity.2.1(this, (Card)paramObject, localHashMap, str), 5, null, true);
+      }
+      while (!(paramObject instanceof Pair)) {
+        return;
+      }
+      paramObject = (Pair)paramObject;
+      Message localMessage;
+      if (((Integer)paramObject.first).intValue() == 101107)
+      {
+        this.a.jdField_a_of_type_Int = 1;
+        this.a.d = 2;
+        localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      }
+      for (;;)
+      {
+        localHashMap.put("param_FailCode", String.valueOf(paramObject.first));
+        azmz.a(this.a.app.getApp()).a(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
+        return;
+        if (((Integer)paramObject.first).intValue() == 101108)
+        {
+          this.a.jdField_a_of_type_Int = 2;
+          this.a.d = 5;
+          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        }
+        else
+        {
+          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
+          if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
+            localMessage.obj = ((SSummaryCardRsp)paramObject.second).emsg;
+          }
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        }
       }
     }
-    label102:
-    for (boolean bool = true;; bool = false)
+    if (!paramBoolean) {}
+    for (paramObject = "-104";; paramObject = "-105")
     {
-      QLog.d("GroupNetSearchModelPublicAcntItem", 2, bool);
-      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
-        break;
-      }
-      return true;
+      localHashMap.put("param_FailCode", paramObject);
+      azmz.a(this.a.app.getApp()).a(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
+      paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
+      return;
     }
-    return false;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    return ajya.a(2131705357);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awnm
  * JD-Core Version:    0.7.0.1
  */

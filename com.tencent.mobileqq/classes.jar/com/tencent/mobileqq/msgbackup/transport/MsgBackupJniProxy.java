@@ -2,10 +2,10 @@ package com.tencent.mobileqq.msgbackup.transport;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import aslg;
-import asod;
-import asog;
-import asoi;
+import aucf;
+import aufc;
+import auff;
+import aufh;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -434,17 +434,17 @@ public class MsgBackupJniProxy
     }
     if ((paramBoolean1) && (paramBoolean2))
     {
-      asog.a();
-      aslg.a().a.add(Long.valueOf(paramLong2));
-      asod localasod = asog.a;
-      localasod.j += 1L;
+      auff.a();
+      aucf.a().a.add(Long.valueOf(paramLong2));
+      aufc localaufc = auff.a;
+      localaufc.j += 1L;
     }
     recvFile(paramLong1, paramLong2, paramString1, paramString2, paramBoolean1, paramLong3, 0L);
   }
   
   public void a(long paramLong, String paramString)
   {
-    setEncryptKey(paramLong, paramString, asoi.b);
+    setEncryptKey(paramLong, paramString, aufh.b);
   }
   
   public void b(long paramLong1, long paramLong2, long paramLong3, String paramString)
@@ -495,7 +495,7 @@ public class MsgBackupJniProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy
  * JD-Core Version:    0.7.0.1
  */

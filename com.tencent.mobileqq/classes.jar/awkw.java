@@ -1,51 +1,45 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 public class awkw
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public awkw(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
+  public awkw(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ObjectAnimator paramObjectAnimator) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    FragmentActivity localFragmentActivity;
-    Object localObject;
-    if (paramView.getTag() != null)
+    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
+    for (int i = 2130845189;; i = 2130845181)
     {
-      localFragmentActivity = this.a.getActivity();
-      localObject = (Integer)paramView.getTag(2131379214);
-      paramView = (awky)paramView.getTag(2131379213);
-      switch (paramView.jdField_a_of_type_Int)
-      {
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localFragmentActivity instanceof awkz));
-      Intent localIntent = new Intent(localFragmentActivity, QQBrowserActivity.class);
-      localObject = paramView.e;
-      paramView = (View)localObject;
-      if (!((String)localObject).startsWith("http")) {
-        paramView = "http://" + (String)localObject;
-      }
-      localIntent.putExtra("url", paramView);
-      localFragmentActivity.startActivity(localIntent);
-      localFragmentActivity.finish();
+      paramAnimator.setImageResource(i);
+      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
       return;
-    } while (!(localFragmentActivity instanceof awkz));
-    ((awkz)localFragmentActivity).a(paramView.jdField_a_of_type_JavaLangString, paramView.d);
+    }
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
+    for (int i = 2130845189;; i = 2130845181)
+    {
+      paramAnimator.setImageResource(i);
+      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
+      return;
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awkw
  * JD-Core Version:    0.7.0.1
  */

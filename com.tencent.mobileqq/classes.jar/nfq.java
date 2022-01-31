@@ -1,28 +1,28 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import android.widget.LinearLayout;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
 
-class nfq
-  implements bfpt
+public class nfq
+  implements bejd
 {
-  nfq(nfo paramnfo) {}
+  public nfq(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "onItemClick!");
+    paramInt1 = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() - this.a.b * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + 56.0F * this.a.jdField_a_of_type_Float);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setMaxOverScrollY(paramInt1);
+    if (LebaSearchPluginManagerActivity.a(this.a))
+    {
+      this.a.a(paramInt2);
+      LebaSearchPluginManagerActivity.b(this.a, paramInt2);
     }
-    paramAdapterView = (nms)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (this.a.jdField_a_of_type_Ney != null) {
-      this.a.jdField_a_of_type_Ney.a(paramAdapterView);
-    }
-    this.a.a(paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfq
  * JD-Core Version:    0.7.0.1
  */

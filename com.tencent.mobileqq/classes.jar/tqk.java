@@ -1,42 +1,32 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class tqk
-  extends tpl
+  extends amky
 {
-  tqk(tqh paramtqh, StoryVideoItem paramStoryVideoItem)
+  tqk(tqj paramtqj, String paramString, boolean paramBoolean)
   {
-    super(paramStoryVideoItem);
+    super(paramString, paramBoolean);
   }
   
-  public boolean b()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    Object localObject = (String)a("result");
-    try
+    if (paramInt == 0)
     {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
+      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
       {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
+        tqj.a(this.a, paramSosoLbsInfo);
+        return;
       }
+      QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: location is null");
+      return;
     }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      ved.c(this.b, "Error: 保存投票失败", localURISyntaxException);
-    }
-    return false;
+    QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqk
  * JD-Core Version:    0.7.0.1
  */

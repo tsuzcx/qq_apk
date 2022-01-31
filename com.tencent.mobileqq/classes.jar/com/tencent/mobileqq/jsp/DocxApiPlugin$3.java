@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.jsp;
 
-import ancq;
-import ancr;
-import armk;
-import ayfg;
+import aotx;
+import aoty;
+import atcy;
+import badd;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import org.json.JSONException;
@@ -12,21 +12,21 @@ import org.json.JSONObject;
 public class DocxApiPlugin$3
   implements Runnable
 {
-  public DocxApiPlugin$3(armk paramarmk, String paramString1, String paramString2, String paramString3) {}
+  public DocxApiPlugin$3(atcy paramatcy, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Object localObject = ancr.a();
-    if ((((ancq)localObject).a()) && (((ancq)localObject).b()) && (ayfg.a(this.a)))
+    Object localObject = aoty.a();
+    if ((((aotx)localObject).a()) && (((aotx)localObject).b()) && (badd.a(this.a)))
     {
-      localObject = ayfg.b(this.a);
+      localObject = badd.b(this.a);
       this.this$0.callJs(this.b, new String[] { localObject });
     }
     for (;;)
     {
       localObject = new ArrayList(1);
       ((ArrayList)localObject).add(this.c);
-      armk.a(this.this$0, (ArrayList)localObject);
+      atcy.a(this.this$0, (ArrayList)localObject);
       return;
       try
       {
@@ -43,7 +43,7 @@ public class DocxApiPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.3
  * JD-Core Version:    0.7.0.1
  */

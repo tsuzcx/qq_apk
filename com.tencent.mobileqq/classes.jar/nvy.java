@@ -1,40 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class nvy
-  extends osm
+class nvy
+  implements QQPermissionCallback
 {
-  public nvy(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
+  nvy(nvp paramnvp, Runnable paramRunnable) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (ReadInJoyFeedsActivity.a(this.a) == 1)
-    {
-      ((KandianMergeManager)this.a.app.getManager(162)).b(1);
-      return;
-    }
-    ReadInJoyFeedsActivity.b(this.a, paramInt1);
-    ((nsy)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    nvp.a(this.jdField_a_of_type_Nvp, 3);
   }
   
-  public void b(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a(paramInt);
-  }
-  
-  public void c(int paramInt)
-  {
-    ReadInJoyFeedsActivity.a(this.a, paramInt);
-    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
-      ((nsy)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
-    }
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvy
  * JD-Core Version:    0.7.0.1
  */

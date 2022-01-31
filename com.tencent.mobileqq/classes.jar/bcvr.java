@@ -1,24 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.EditText;
 
-public class bcvr
-  implements View.OnClickListener
+final class bcvr
+  extends View.AccessibilityDelegate
 {
-  public bcvr(ShareActionSheetV2 paramShareActionSheetV2) {}
-  
-  public void onClick(View paramView)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
+    EditText localEditText = (EditText)paramView;
+    localEditText.setHint("");
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    paramAccessibilityNodeInfo.setContentDescription(localEditText.getContentDescription());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcvr
  * JD-Core Version:    0.7.0.1
  */

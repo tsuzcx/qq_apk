@@ -57,7 +57,6 @@ public class ViolaBridgeManager
   
   private void createInstanceImpl(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    ViolaLogUtils.d("debugForTimeCost", "createInstanceImpl : " + System.currentTimeMillis());
     if (ViolaEnvironment.isDebugable())
     {
       this.mLogBuilder.append("createInstance >>>> instanceId:").append(paramString1).append("template:").append(paramString2);
@@ -65,13 +64,16 @@ public class ViolaBridgeManager
       ViolaLogUtils.d(TAG, this.mLogBuilder.substring(0));
       this.mLogBuilder.setLength(0);
     }
-    if (TextUtils.isEmpty(paramString2)) {}
+    if (TextUtils.isEmpty(paramString2)) {
+      ViolaLogUtils.e(TAG, "violaInstance createInstanceImpl template null!");
+    }
     do
     {
       return;
       ViolaModuleManager.createDomModule(ViolaSDKManager.getInstance().getViolaInstance(paramString1));
       if (Thread.currentThread().getName().equals("ViolaJSBridgeThread"))
       {
+        ViolaLogUtils.e(TAG, "violaInstance createInstanceImpl ViolaJSBridgeThread start!");
         paramString4 = this.mBridge;
         byte[] arrayOfByte = paramString2.getBytes();
         int i = paramString2.getBytes().length;
@@ -83,7 +85,7 @@ public class ViolaBridgeManager
         }
       }
       post(new ViolaBridgeManager.5(this, paramString1, paramString2, paramString3), paramString1);
-      ViolaLogUtils.d("debugForTimeCost", "preloadTest : " + System.currentTimeMillis());
+      ViolaLogUtils.e(TAG, "violaInstance createInstanceImpl end!");
     } while (TextUtils.isEmpty(paramString4));
     this.mBridge.preloadTest(paramString1, paramString4);
   }
@@ -343,9 +345,12 @@ public class ViolaBridgeManager
   @Deprecated
   public void createInstance(String paramString1, String paramString2, Map<String, Object> paramMap, String paramString3)
   {
-    if (isJSFrameworkInit()) {
+    if (isJSFrameworkInit())
+    {
       createInstanceImpl(paramString1, ViolaUtils.readFile(new File(paramString2)), paramString3, "");
+      return;
     }
+    ViolaLogUtils.e(TAG, "violaInstance createInstance init false!");
   }
   
   public void createInstanceBySource(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -583,7 +588,7 @@ public class ViolaBridgeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.bridge.ViolaBridgeManager
  * JD-Core Version:    0.7.0.1
  */

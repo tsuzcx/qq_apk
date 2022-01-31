@@ -1,43 +1,75 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public class lyv
+public abstract class lyv
+  extends Binder
+  implements lyu
 {
-  protected static int a(Context paramContext, String paramString, int paramInt)
+  public lyv()
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString, paramInt);
+    attachInterface(this, "com.tencent.av.service.IAVRedPacketCallback");
   }
   
-  protected static long a(Context paramContext, String paramString, long paramLong)
+  public static lyu a(IBinder paramIBinder)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong(paramString, paramLong);
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVRedPacketCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof lyu))) {
+      return (lyu)localIInterface;
+    }
+    return new lyw(paramIBinder);
   }
   
-  protected static void a(Context paramContext, String paramString, int paramInt)
+  public IBinder asBinder()
   {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putInt(paramString, paramInt).commit();
+    return this;
   }
   
-  protected static void a(Context paramContext, String paramString, long paramLong)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong(paramString, paramLong).commit();
-  }
-  
-  protected static void a(Context paramContext, String paramString, boolean paramBoolean)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putBoolean(paramString, paramBoolean).commit();
-  }
-  
-  protected static boolean a(Context paramContext, String paramString, boolean paramBoolean)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString, paramBoolean);
+    boolean bool = false;
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IAVRedPacketCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVRedPacketCallback");
+      if (paramParcel1.readInt() != 0)
+      {
+        bool = true;
+        if (paramParcel1.readInt() == 0) {
+          break label109;
+        }
+      }
+      label109:
+      for (paramParcel1 = (AVRedPacketConfig)AVRedPacketConfig.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(bool, paramParcel1);
+        return true;
+        bool = false;
+        break;
+      }
+    }
+    paramParcel1.enforceInterface("com.tencent.av.service.IAVRedPacketCallback");
+    if (paramParcel1.readInt() != 0) {
+      bool = true;
+    }
+    a(bool, paramParcel1.readString(), paramParcel1.readString());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyv
  * JD-Core Version:    0.7.0.1
  */

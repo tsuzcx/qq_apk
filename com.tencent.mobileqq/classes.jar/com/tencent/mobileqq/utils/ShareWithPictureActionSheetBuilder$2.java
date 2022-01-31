@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.utils;
 
-import bbjz;
+import bdit;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class ShareWithPictureActionSheetBuilder$2
   implements Runnable
 {
-  public ShareWithPictureActionSheetBuilder$2(bbjz parambbjz) {}
+  public ShareWithPictureActionSheetBuilder$2(bdit parambdit) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class ShareWithPictureActionSheetBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ShareWithPictureActionSheetBuilder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,19 @@
-public class aiam
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+
+class aiam
+  extends alls
 {
-  public int a;
-  public String a;
-  public String b = "";
-  public String c = "";
+  aiam(aiak paramaiak) {}
   
-  private aiam()
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
-    this.c = "";
+    aiak.a(this.a, paramUpgradeDetailWrapper);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiam
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,260 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-class meb
+public class meb
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = 0;
-  boolean jdField_c_of_type_Boolean = false;
-  int jdField_d_of_type_Int = 0;
-  boolean jdField_d_of_type_Boolean = false;
-  int e = 0;
-  int f = 0;
-  int g = 0;
-  int h = 0;
-  int i = 0;
-  int j = 0;
-  int k;
-  int l;
-  int m = 0;
-  int n = 0;
-  int o = 0;
-  
-  void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, float paramFloat1, float paramFloat2, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15)
+  public static void a()
   {
-    if (!QLog.isColorLevel()) {}
-    while ((this.jdField_c_of_type_Boolean == paramBoolean3) && (this.jdField_d_of_type_Boolean == paramBoolean4) && (this.jdField_a_of_type_Boolean == paramBoolean1) && (this.jdField_b_of_type_Boolean == paramBoolean2) && (this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2) && (this.jdField_c_of_type_Int == paramInt3) && (this.jdField_d_of_type_Int == paramInt4) && (this.e == paramInt5) && (this.f == paramInt6) && (this.g == paramInt7) && (this.h == paramInt8) && (this.i == paramInt9) && (this.j == paramInt10) && (this.k == paramInt11) && (this.l == paramInt12) && (this.m == paramInt13) && (this.n == paramInt14)) {
+    azmj.b(null, "dc00898", "", "", "0X8006F88", "0X8006F88", 0, 0, "", "", "", "");
+  }
+  
+  static void a(int paramInt1, int paramInt2, long paramLong, String paramString, int paramInt3)
+  {
+    String str2;
+    Object localObject;
+    String str1;
+    switch (paramInt1)
+    {
+    default: 
+      str2 = "0X8008395";
+      localObject = str2;
+      if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
+      {
+        str1 = "0X8008396";
+        localObject = str2;
+      }
+      break;
+    }
+    for (;;)
+    {
+      str2 = String.valueOf(paramInt3);
+      String str3 = String.valueOf(paramLong);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        azmj.b(null, "dc00898", "", "", (String)localObject, (String)localObject, paramInt2, 0, str2, "", str3, paramString);
+      }
+      if (!TextUtils.isEmpty(str1)) {
+        azmj.b(null, "dc00898", "", "", str1, str1, paramInt2, 0, str2, "", str3, paramString);
+      }
+      return;
+      str1 = "0X8007F37";
+      localObject = str1;
+      if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
+      {
+        str2 = "0X80083AA";
+        localObject = str1;
+        str1 = str2;
+        continue;
+        str1 = "0X8007F31";
+        localObject = str1;
+        if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
+        {
+          str2 = "0X8008398";
+          localObject = str1;
+          str1 = str2;
+          continue;
+        }
+      }
+      str1 = null;
+    }
+  }
+  
+  public static void a(int paramInt, long paramLong)
+  {
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      str = "0X8006F87";
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(str)) {
+        azmj.b(null, "dc00898", "", "", str, str, 0, 0, "", "", String.valueOf(paramLong), "");
+      }
+      return;
+      str = "0X8007F2B";
+      continue;
+      str = "0X8007F25";
+    }
+  }
+  
+  static void a(long paramLong, boolean paramBoolean)
+  {
+    Object localObject = loc.a();
+    if (!log.a()) {
+      localObject = "0X80077BF";
+    }
+    for (;;)
+    {
+      a((String)localObject, paramBoolean, paramLong);
+      return;
+      if (!((loc)localObject).a()) {
+        localObject = "0X80077C0";
+      } else if (!((loc)localObject).b) {
+        localObject = "0X80077BE";
+      } else {
+        localObject = "0X80077BD";
+      }
+    }
+  }
+  
+  static void a(Context paramContext, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
+  {
+    String str = null;
+    switch (paramInt1)
+    {
+    default: 
+      if (paramBoolean) {
+        str = "0X8006F8D";
+      }
+      break;
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(str)) {
+        a(str, paramBoolean, paramLong);
+      }
+      return;
+      if (paramInt2 == 4) {
+        if (ljs.a(paramContext))
+        {
+          str = "0X8007F2E";
+        }
+        else
+        {
+          str = "0X8007F2F";
+          continue;
+          if (paramInt2 == 4) {
+            if (ljs.a(paramContext))
+            {
+              str = "0X8007F28";
+            }
+            else
+            {
+              str = "0X8007F29";
+              continue;
+              str = "0X8006F8E";
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  static void a(VideoAppInterface paramVideoAppInterface, long paramLong, boolean paramBoolean)
+  {
+    boolean bool;
+    if (paramVideoAppInterface != null)
+    {
+      paramVideoAppInterface = (llc)paramVideoAppInterface.a(5);
+      bool = paramVideoAppInterface.a(3, "normal");
+      if (!paramVideoAppInterface.a(3, "interact")) {
+        break label42;
+      }
+      paramVideoAppInterface = "0X8008023";
+    }
+    for (;;)
+    {
+      a(paramVideoAppInterface, paramBoolean, paramLong);
+      return;
+      label42:
+      if (bool) {
+        paramVideoAppInterface = "0X8008024";
+      } else {
+        paramVideoAppInterface = "0X8008132";
+      }
+    }
+  }
+  
+  public static void a(String paramString, boolean paramBoolean, long paramLong)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.jdField_d_of_type_Boolean = paramBoolean4;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.e = paramInt5;
-    this.f = paramInt6;
-    this.g = paramInt7;
-    this.h = paramInt8;
-    this.i = paramInt9;
-    this.j = paramInt10;
-    this.k = paramInt11;
-    this.l = paramInt12;
-    this.m = paramInt13;
-    this.n = paramInt14;
-    this.o = paramInt15;
-    QLog.w(paramString, 1, "rendView, self[" + paramBoolean1 + "], mirror[" + paramBoolean2 + "], bForceGround[" + paramBoolean3 + "], pt[" + paramInt1 + ", " + paramInt2 + "], dst[" + paramInt3 + ", " + paramInt4 + "], src[" + paramInt5 + ", " + paramInt6 + "], t1[" + paramInt7 + ", " + paramInt8 + "], t2[" + paramInt9 + ", " + paramInt10 + "], sR[" + paramFloat1 + "], tR[" + paramFloat2 + "], border[" + paramBoolean4 + "], sAngle[" + paramInt11 + "], yuvAngle[" + paramInt12 + "], mRotation[" + paramInt13 + "], rotation[" + paramInt14 + "], scaleType[" + paramInt15 + "]");
+    if (paramBoolean) {}
+    for (int i = 1;; i = -1)
+    {
+      azmj.b(null, "dc00898", "", "", paramString, paramString, 0, i, "", "", String.valueOf(paramLong), "");
+      return;
+    }
+  }
+  
+  static void b()
+  {
+    azmj.b(null, "dc00898", "", "", "0X8006F8F", "0X8006F8F", 0, 0, "", "", "", "");
+  }
+  
+  static void b(Context paramContext, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
+  {
+    int j = 0;
+    Object localObject = "";
+    int i = j;
+    if (paramBoolean)
+    {
+      i = j;
+      if (ljs.a(paramContext))
+      {
+        i = j;
+        if (azbx.a().c()) {
+          i = 1;
+        }
+      }
+    }
+    switch (paramInt1)
+    {
+    default: 
+      if (paramBoolean)
+      {
+        localObject = "0X8006F89";
+        paramContext = (Context)localObject;
+        if (i == 0) {
+          break label163;
+        }
+        paramContext = "0X8008394";
+      }
+      break;
+    }
+    for (;;)
+    {
+      a((String)localObject, paramBoolean, paramLong);
+      a(paramContext, paramBoolean, paramLong);
+      return;
+      paramContext = (Context)localObject;
+      if (paramInt2 == 4)
+      {
+        paramContext = "0X8007F2C";
+        if (i != 0)
+        {
+          paramContext = "0X80083A9";
+          localObject = "0X8007F2C";
+          continue;
+          paramContext = (Context)localObject;
+          if (paramInt2 == 4)
+          {
+            paramContext = "0X8007F26";
+            if (i != 0)
+            {
+              paramContext = "0X8008397";
+              localObject = "0X8007F26";
+              continue;
+              localObject = "0X8006F8A";
+              break;
+            }
+          }
+        }
+      }
+      label163:
+      String str = "";
+      localObject = paramContext;
+      paramContext = str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     meb
  * JD-Core Version:    0.7.0.1
  */

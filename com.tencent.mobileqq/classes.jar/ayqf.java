@@ -1,45 +1,25 @@
-import java.io.File;
-import java.io.IOException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
 public class ayqf
+  extends ayox
 {
-  File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
+  private Comparator<ayjh> a = new ayqg(this);
   
-  ayqf(ayqe paramayqe, String paramString)
+  public ayqf(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    if (!paramayqe.jdField_a_of_type_JavaIoFile.exists()) {
-      paramayqe.jdField_a_of_type_JavaIoFile.mkdirs();
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaIoFile = new File(paramayqe.jdField_a_of_type_JavaIoFile, paramString + ".tmp");
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
   }
   
-  File a()
+  public Comparator<ayjh> a()
   {
-    File localFile = this.jdField_a_of_type_Ayqe.a(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      return localFile;
-    }
-    if ((!this.jdField_a_of_type_JavaIoFile.exists()) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L))
-    {
-      this.jdField_a_of_type_JavaIoFile.delete();
-      throw new IOException("write 0 length file or null File");
-    }
-    this.jdField_a_of_type_JavaIoFile.renameTo(localFile);
-    return localFile;
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    if ((!paramBoolean) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L)) {
-      this.jdField_a_of_type_JavaIoFile.delete();
-    }
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayqf
  * JD-Core Version:    0.7.0.1
  */

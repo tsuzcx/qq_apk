@@ -1,36 +1,28 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class wlj
-  extends RecyclerView.OnScrollListener
+  implements utn
 {
-  wlj(wlg paramwlg) {}
+  wlj(wli paramwli, utk paramutk) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(boolean paramBoolean, @Nullable utj paramutj)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((this.a.a instanceof StaggeredGridLayoutManager))
+    wsv.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramutj });
+    this.jdField_a_of_type_Utk.b(this);
+    if (this.jdField_a_of_type_Wli.a.get())
     {
-      paramRecyclerView = (StaggeredGridLayoutManager)this.a.a;
-      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
-      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
-      if ((this.a.b(arrayOfInt[0]) <= 0) && (!wlg.b(this.a)))
-      {
-        wlg.a(this.a, true);
-        paramRecyclerView.invalidateSpanAssignments();
-      }
-      if (arrayOfInt[0] > 2) {
-        wlg.a(this.a, false);
-      }
+      wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
+      return;
     }
+    wli.a(this.jdField_a_of_type_Wli).a = paramutj;
+    wli.a(this.jdField_a_of_type_Wli).a(null, 0);
+    ((wkp)urr.a(11)).a = paramutj;
   }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wlj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,28 @@
+import android.os.CountDownTimer;
+import android.widget.PopupWindow;
+
 class tqu
-  extends tpv
+  extends CountDownTimer
 {
-  tqu(tqh paramtqh, trp paramtrp) {}
-  
-  public boolean b()
+  tqu(tqt paramtqt, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Trp.e = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    super(paramLong1, paramLong2);
   }
+  
+  public void onFinish()
+  {
+    if (tqt.a(this.a) != null)
+    {
+      tqt.a(this.a).dismiss();
+      tqt.a(this.a, null);
+    }
+  }
+  
+  public void onTick(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqu
  * JD-Core Version:    0.7.0.1
  */

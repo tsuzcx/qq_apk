@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mfsdk.collector.ResultObject;
 
-public class abrg
-  implements View.OnClickListener
+public abstract interface abrg
 {
-  public abrg(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
-  
-  public void onClick(View paramView) {}
+  public abstract boolean a(ResultObject paramResultObject, abrh paramabrh);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrg
  * JD-Core Version:    0.7.0.1
  */

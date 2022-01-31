@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import agat;
+import ahyr;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
@@ -8,7 +8,7 @@ import android.widget.RelativeLayout.LayoutParams;
 public class ChatHistoryTroopMemberFragment$AnimationEndClearListener$1
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$AnimationEndClearListener$1(agat paramagat) {}
+  public ChatHistoryTroopMemberFragment$AnimationEndClearListener$1(ahyr paramahyr) {}
   
   public void run()
   {
@@ -35,9 +35,9 @@ public class ChatHistoryTroopMemberFragment$AnimationEndClearListener$1
       this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       this.a.jdField_a_of_type_AndroidViewView.setTag("left");
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130848620);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849050);
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130848619);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849049);
       continue;
       this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
       continue;
@@ -47,7 +47,7 @@ public class ChatHistoryTroopMemberFragment$AnimationEndClearListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.AnimationEndClearListener.1
  * JD-Core Version:    0.7.0.1
  */

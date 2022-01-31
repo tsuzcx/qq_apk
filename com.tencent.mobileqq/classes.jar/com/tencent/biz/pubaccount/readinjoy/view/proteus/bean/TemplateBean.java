@@ -6,6 +6,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.Parse
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.QLog;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,6 +14,7 @@ public class TemplateBean
   implements ProteusStyleModel
 {
   JSONObject data;
+  private Map<String, Object> globalVariable;
   private int id;
   public ParseData parseData = new ParseData();
   private final String styleName;
@@ -20,10 +22,11 @@ public class TemplateBean
   private ViewBean viewBean;
   private Map<String, ViewBean> viewDataBinding = new ArrayMap();
   
-  public TemplateBean(int paramInt, String paramString)
+  public TemplateBean(int paramInt, String paramString, Map<String, Object> paramMap)
   {
     this.id = paramInt;
     this.styleName = paramString;
+    this.globalVariable = paramMap;
   }
   
   private ViewBean getViewBean(String paramString)
@@ -34,9 +37,38 @@ public class TemplateBean
     return findViewById(paramString);
   }
   
+  public void bindData(JSONObject paramJSONObject)
+  {
+    if ((this.viewBean != null) && (paramJSONObject != null))
+    {
+      this.data = paramJSONObject;
+      Iterator localIterator = null;
+      Object localObject = localIterator;
+      if (this.globalVariable != null)
+      {
+        localObject = localIterator;
+        if (this.globalVariable.size() > 0)
+        {
+          localObject = new JSONObject();
+          localIterator = this.globalVariable.keySet().iterator();
+          while (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            if (!paramJSONObject.has(str)) {
+              ((JSONObject)localObject).put(str, this.globalVariable.get(str));
+            }
+          }
+        }
+      }
+      this.viewBean.bindData(paramJSONObject, (JSONObject)localObject, this.viewDataBinding);
+      return;
+    }
+    throw new JSONException("dataJson is null");
+  }
+  
   public TemplateBean clone()
   {
-    TemplateBean localTemplateBean = new TemplateBean(this.id, this.styleName);
+    TemplateBean localTemplateBean = new TemplateBean(this.id, this.styleName, this.globalVariable);
     localTemplateBean.viewBean = this.viewBean.clone();
     localTemplateBean.setStyleSource(this.styleSource);
     return localTemplateBean;
@@ -168,23 +200,16 @@ public class TemplateBean
   {
     try
     {
-      if (this.viewBean != null)
+      if ((this.viewBean != null) && (this.data != null))
       {
         this.viewDataBinding.clear();
-        this.viewBean.bindData(this.data, this.viewDataBinding);
+        bindData(this.data);
       }
       return;
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-    }
-  }
-  
-  public void setData(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      this.data = paramJSONObject;
     }
   }
   
@@ -210,7 +235,7 @@ public class TemplateBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean
  * JD-Core Version:    0.7.0.1
  */

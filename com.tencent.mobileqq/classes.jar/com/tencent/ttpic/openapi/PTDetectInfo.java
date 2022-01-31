@@ -6,6 +6,8 @@ import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.ttpic.facedetect.FaceActionCounterListener;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
+import com.tencent.ttpic.openapi.model.RedPacketPosition;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,6 +15,7 @@ import java.util.Set;
 public class PTDetectInfo
 {
   public AIAttr aiAttr;
+  public double audioScaleFactor;
   public List<PointF> bodyPoints;
   public Map<Integer, FaceActionCounter> faceActionCounter;
   public float[] faceAngles;
@@ -22,14 +25,18 @@ public class PTDetectInfo
   public List<PointF> facePoints;
   public FaceStatus faceStatus;
   public int[] featureIndices;
+  public int frameIndex;
   public int gestureTrigger = -1;
   public Map<Integer, Integer> handActionCounter;
   public List<PointF> handPoints;
   public boolean isFreezeInfo = false;
+  public boolean needRender;
   public Frame noseOcclusionFrame;
   public float phoneAngle;
   public float[] pointsVis;
+  public int randomGroupValue;
   public float realPhoneAngle;
+  public ArrayList<RedPacketPosition> redPacketPositions;
   public List<PointF> starPoints;
   public long timestamp;
   public Set<Integer> triggeredExpression;
@@ -59,6 +66,11 @@ public class PTDetectInfo
     this.featureIndices = PTDetectInfo.Builder.access$1800(paramBuilder);
     this.aiAttr = PTDetectInfo.Builder.access$1900(paramBuilder);
     this.noseOcclusionFrame = PTDetectInfo.Builder.access$2000(paramBuilder);
+    this.randomGroupValue = PTDetectInfo.Builder.access$2100(paramBuilder);
+    this.frameIndex = PTDetectInfo.Builder.access$2200(paramBuilder);
+    this.audioScaleFactor = PTDetectInfo.Builder.access$2300(paramBuilder);
+    this.redPacketPositions = PTDetectInfo.Builder.access$2400(paramBuilder);
+    this.needRender = PTDetectInfo.Builder.access$2500(paramBuilder);
   }
 }
 

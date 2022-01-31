@@ -1,20 +1,30 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
+import android.support.v4.content.FileProvider;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
-public class tqa
-  extends trf
+class tqa
+  implements tvv
 {
-  public tqa(@NonNull BannerFeedItem paramBannerFeedItem)
+  tqa(tpz paramtpz) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a = paramBannerFeedItem.shareInfo.a;
-    this.b = paramBannerFeedItem.shareInfo.b;
-    this.c = paramBannerFeedItem.shareInfo.d;
-    this.d = paramBannerFeedItem.shareInfo.c;
+    QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync onRspCallback " + paramBoolean + ", " + paramString);
+    if (paramBoolean)
+    {
+      paramString = new File(paramString, tpz.a(this.a));
+      if ((paramString.exists()) && (paramString.length() > 0L))
+      {
+        tpz.a(FileProvider.getUriForFile(MobileQQ.getContext(), "com.tencent.mobileqq.fileprovider", paramString));
+        QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync splashVideoPath: " + tpz.b());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqa
  * JD-Core Version:    0.7.0.1
  */

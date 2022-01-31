@@ -1,24 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import java.io.File;
 
-class oux
-  implements View.OnClickListener
+public class oux
+  implements OnCompositionLoadedListener
 {
-  oux(ouw paramouw) {}
+  public oux(ReadInJoyLottieDrawable.4 param4) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    this.a.a.a(paramView, i);
-    old.a(this.a.a.getActivity(), "0X8009A71", this.a.a.a(), ((ouv)this.a.a.a.get(i)).a.mChannelCoverId);
+    if (paramLottieComposition != null)
+    {
+      out.a().put(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramLottieComposition);
+      out.a(this.a.this$0).post(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oux
  * JD-Core Version:    0.7.0.1
  */

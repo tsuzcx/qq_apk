@@ -1,16 +1,20 @@
-public abstract interface sse
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+
+public class sse
+  implements View.OnClickListener
 {
-  public abstract void a(spy paramspy);
+  public sse(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public abstract void a(spy paramspy, int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void e();
+  public void onClick(View paramView)
+  {
+    this.a.doOnBackPressed();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sse
  * JD-Core Version:    0.7.0.1
  */

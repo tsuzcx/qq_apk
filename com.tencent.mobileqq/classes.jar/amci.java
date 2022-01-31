@@ -1,10 +1,14 @@
 public abstract interface amci
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void b(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amci
  * JD-Core Version:    0.7.0.1
  */

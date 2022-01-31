@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
 
-class atmu
-  implements View.OnClickListener
+public class atmu
+  implements DialogInterface.OnClickListener
 {
-  atmu(atlw paramatlw) {}
+  public atmu(LocationDialogUtil.5 param5) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d(paramView);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmu
  * JD-Core Version:    0.7.0.1
  */

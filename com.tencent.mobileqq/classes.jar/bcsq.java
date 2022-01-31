@@ -1,27 +1,28 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.VoteViewV2;
-import com.tencent.mobileqq.widget.VoteViewV2.1;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
 
-public class bcsq
-  implements View.OnClickListener
+class bcsq
+  implements DialogInterface.OnClickListener
 {
-  public bcsq(VoteViewV2.1 param1) {}
+  bcsq(bcsp parambcsp) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(VoteViewV2.a(this.a.this$0), QQBrowserActivity.class);
-    String str = bbqd.a(VoteViewV2.a(this.a.this$0), "praise", "");
-    VasWebviewUtil.openQQBrowserWithoutAD(VoteViewV2.a(this.a.this$0), str, 536870912L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(null, "thumbup", "others_click", null, 1, 0, 0, null, "0", null);
+    paramDialogInterface = String.format("https://qun.qq.com/qunpay/gifts/buy.html?_bid=2204&_wvSb=1&from=7&troopUin=%s", new Object[] { this.a.a.b });
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("selfSet_leftViewText", alpo.a(2131716076));
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("url", this.a.a.a(paramDialogInterface));
+    this.a.a.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcsq
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bctl;
+import besu;
 import com.tencent.image.URLImageView;
 
 public class RoundRectUrlImageView
@@ -133,10 +133,10 @@ public class RoundRectUrlImageView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bctl.a(this);
+      besu.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bctl.b(this);
+      besu.b(this);
     }
   }
   
@@ -161,7 +161,7 @@ public class RoundRectUrlImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.RoundRectUrlImageView
  * JD-Core Version:    0.7.0.1
  */

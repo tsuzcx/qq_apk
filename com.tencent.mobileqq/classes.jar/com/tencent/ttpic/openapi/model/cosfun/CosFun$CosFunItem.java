@@ -6,6 +6,7 @@ public class CosFun$CosFunItem
   private int backgroundMode2;
   private String crazyFacePath;
   private int duration;
+  public String externalTriggerWords;
   private int freezeDuration;
   private int freezeStart;
   private String id;
@@ -111,6 +112,11 @@ public class CosFun$CosFunItem
   public void setDuration(int paramInt)
   {
     this.duration = paramInt;
+  }
+  
+  public void setExternalTriggerWords(String paramString)
+  {
+    this.externalTriggerWords = paramString;
   }
   
   public void setFreezeDuration(int paramInt)

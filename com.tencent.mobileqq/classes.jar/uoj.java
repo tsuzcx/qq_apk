@@ -1,24 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
 
-class uoj
-  implements uys<Integer>
+public abstract class uoj
 {
-  uoj(uog paramuog, tcs paramtcs) {}
+  public abstract void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry);
   
-  public void a(ErrorMessage paramErrorMessage)
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
   {
-    ved.e("QQStoryTakeVideoHelper", "get vip error.");
-  }
-  
-  public void a(Integer paramInteger)
-  {
-    ved.b("QQStoryTakeVideoHelper", "get vip competed, vip:" + paramInteger);
-    this.jdField_a_of_type_Tcs.b("qqstory_i_am_vip", paramInteger);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uoj
  * JD-Core Version:    0.7.0.1
  */

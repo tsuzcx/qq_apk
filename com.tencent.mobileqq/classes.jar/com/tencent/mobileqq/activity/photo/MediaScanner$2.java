@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agmg;
 import java.lang.ref.WeakReference;
 
-public class MediaScanner$2
+class MediaScanner$2
   implements Runnable
 {
-  public MediaScanner$2(agmg paramagmg, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  MediaScanner$2(MediaScanner paramMediaScanner, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 17	com/tencent/mobileqq/activity/photo/MediaScanner$2:a	Ljava/lang/ref/WeakReference;
+    //   1: getfield 17	com/tencent/mobileqq/activity/photo/MediaScanner$2:val$infoReference	Ljava/lang/ref/WeakReference;
     //   4: invokevirtual 34	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
     //   7: checkcast 36	com/tencent/mobileqq/activity/photo/LocalMediaInfo
     //   10: astore 6
     //   12: aload_0
-    //   13: getfield 19	com/tencent/mobileqq/activity/photo/MediaScanner$2:b	Ljava/lang/ref/WeakReference;
+    //   13: getfield 19	com/tencent/mobileqq/activity/photo/MediaScanner$2:val$listenerReference	Ljava/lang/ref/WeakReference;
     //   16: invokevirtual 34	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   19: checkcast 38	agmh
+    //   19: checkcast 38	com/tencent/mobileqq/activity/photo/MediaScanner$OnMediaInfoScannerListener
     //   22: astore 7
     //   24: aload 6
     //   26: ifnull +8 -> 34
@@ -157,15 +156,15 @@ public class MediaScanner$2
     //   312: aload 7
     //   314: aload 6
     //   316: iconst_1
-    //   317: invokeinterface 160 3 0
-    //   322: invokestatic 166	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   325: invokestatic 171	agmg:a	(Landroid/content/Context;)Lagmg;
-    //   328: invokestatic 174	agmg:a	(Lagmg;)Laglu;
+    //   317: invokeinterface 161 3 0
+    //   322: invokestatic 167	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   325: invokestatic 173	com/tencent/mobileqq/activity/photo/MediaScanner:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/activity/photo/MediaScanner;
+    //   328: invokestatic 177	com/tencent/mobileqq/activity/photo/MediaScanner:access$000	(Lcom/tencent/mobileqq/activity/photo/MediaScanner;)Lcom/tencent/mobileqq/activity/photo/MediaDatabaseHelper;
     //   331: aload 6
     //   333: getfield 66	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
     //   336: aload 6
     //   338: getfield 84	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
-    //   341: invokevirtual 179	aglu:a	(Ljava/lang/String;J)V
+    //   341: invokevirtual 183	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:updateMediaScnnerInfoDuration	(Ljava/lang/String;J)V
     //   344: return
     //   345: astore 8
     //   347: ldc 40
@@ -173,11 +172,11 @@ public class MediaScanner$2
     //   350: new 112	java/lang/StringBuilder
     //   353: dup
     //   354: invokespecial 113	java/lang/StringBuilder:<init>	()V
-    //   357: ldc 181
-    //   359: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   357: ldc 185
+    //   359: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   362: aload 8
-    //   364: invokevirtual 187	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   367: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   364: invokevirtual 191	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   367: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   370: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   373: invokestatic 48	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   376: ldc 40
@@ -185,11 +184,11 @@ public class MediaScanner$2
     //   379: new 112	java/lang/StringBuilder
     //   382: dup
     //   383: invokespecial 113	java/lang/StringBuilder:<init>	()V
-    //   386: ldc 189
-    //   388: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   386: ldc 193
+    //   388: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   391: aload 8
-    //   393: invokestatic 195	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   396: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   393: invokestatic 199	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   396: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   399: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   402: invokestatic 48	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   405: aload 7
@@ -197,19 +196,19 @@ public class MediaScanner$2
     //   410: aload 7
     //   412: aload 6
     //   414: iconst_0
-    //   415: invokeinterface 160 3 0
+    //   415: invokeinterface 161 3 0
     //   420: return
     //   421: ldc 40
     //   423: iconst_2
     //   424: new 112	java/lang/StringBuilder
     //   427: dup
     //   428: invokespecial 113	java/lang/StringBuilder:<init>	()V
-    //   431: ldc 197
-    //   433: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   431: ldc 201
+    //   433: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   436: aload 9
-    //   438: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   441: ldc 199
-    //   443: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   438: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   441: ldc 203
+    //   443: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   446: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   449: invokestatic 48	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   452: goto +445 -> 897
@@ -227,45 +226,45 @@ public class MediaScanner$2
     //   481: invokevirtual 141	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   484: pop
     //   485: aload 10
-    //   487: invokevirtual 202	java/util/ArrayList:size	()I
+    //   487: invokevirtual 206	java/util/ArrayList:size	()I
     //   490: iconst_2
     //   491: if_icmplt -184 -> 307
     //   494: aload 6
     //   496: aload 10
     //   498: iconst_0
-    //   499: invokevirtual 205	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   499: invokevirtual 209	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   502: checkcast 92	java/lang/Integer
-    //   505: invokevirtual 208	java/lang/Integer:intValue	()I
-    //   508: putfield 211	com/tencent/mobileqq/activity/photo/LocalMediaInfo:latitude	I
+    //   505: invokevirtual 212	java/lang/Integer:intValue	()I
+    //   508: putfield 215	com/tencent/mobileqq/activity/photo/LocalMediaInfo:latitude	I
     //   511: aload 6
     //   513: aload 10
     //   515: iconst_1
-    //   516: invokevirtual 205	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   516: invokevirtual 209	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   519: checkcast 92	java/lang/Integer
-    //   522: invokevirtual 208	java/lang/Integer:intValue	()I
-    //   525: putfield 214	com/tencent/mobileqq/activity/photo/LocalMediaInfo:longitude	I
+    //   522: invokevirtual 212	java/lang/Integer:intValue	()I
+    //   525: putfield 218	com/tencent/mobileqq/activity/photo/LocalMediaInfo:longitude	I
     //   528: goto -221 -> 307
-    //   531: new 216	android/media/ExifInterface
+    //   531: new 220	android/media/ExifInterface
     //   534: dup
     //   535: aload 6
     //   537: getfield 66	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   540: invokespecial 218	android/media/ExifInterface:<init>	(Ljava/lang/String;)V
+    //   540: invokespecial 222	android/media/ExifInterface:<init>	(Ljava/lang/String;)V
     //   543: astore 11
     //   545: aload 11
-    //   547: ldc 220
-    //   549: invokevirtual 224	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
+    //   547: ldc 224
+    //   549: invokevirtual 228	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
     //   552: astore 8
     //   554: aload 11
-    //   556: ldc 226
-    //   558: invokevirtual 224	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
+    //   556: ldc 230
+    //   558: invokevirtual 228	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
     //   561: astore 9
     //   563: aload 11
-    //   565: ldc 228
-    //   567: invokevirtual 224	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
+    //   565: ldc 232
+    //   567: invokevirtual 228	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
     //   570: astore 10
     //   572: aload 11
-    //   574: ldc 230
-    //   576: invokevirtual 224	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
+    //   574: ldc 234
+    //   576: invokevirtual 228	android/media/ExifInterface:getAttribute	(Ljava/lang/String;)Ljava/lang/String;
     //   579: astore 11
     //   581: aload 8
     //   583: ifnull +58 -> 641
@@ -276,21 +275,21 @@ public class MediaScanner$2
     //   596: aload 11
     //   598: ifnull +43 -> 641
     //   601: aload 9
-    //   603: ldc 232
-    //   605: invokevirtual 235	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   603: ldc 236
+    //   605: invokevirtual 239	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   608: ifeq +200 -> 808
     //   611: aload 6
     //   613: aload 8
-    //   615: invokestatic 239	com/tencent/mobileqq/activity/photo/PhotoUtils:a	(Ljava/lang/String;)I
-    //   618: putfield 211	com/tencent/mobileqq/activity/photo/LocalMediaInfo:latitude	I
+    //   615: invokestatic 242	com/tencent/mobileqq/activity/photo/MediaScanner:convertGpsToDegreeE6	(Ljava/lang/String;)I
+    //   618: putfield 215	com/tencent/mobileqq/activity/photo/LocalMediaInfo:latitude	I
     //   621: aload 11
-    //   623: ldc 241
-    //   625: invokevirtual 235	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   623: ldc 244
+    //   625: invokevirtual 239	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   628: ifeq +195 -> 823
     //   631: aload 6
     //   633: aload 10
-    //   635: invokestatic 239	com/tencent/mobileqq/activity/photo/PhotoUtils:a	(Ljava/lang/String;)I
-    //   638: putfield 214	com/tencent/mobileqq/activity/photo/LocalMediaInfo:longitude	I
+    //   635: invokestatic 242	com/tencent/mobileqq/activity/photo/MediaScanner:convertGpsToDegreeE6	(Ljava/lang/String;)I
+    //   638: putfield 218	com/tencent/mobileqq/activity/photo/LocalMediaInfo:longitude	I
     //   641: aload 6
     //   643: getfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
     //   646: ifeq +11 -> 657
@@ -302,76 +301,76 @@ public class MediaScanner$2
     //   660: new 112	java/lang/StringBuilder
     //   663: dup
     //   664: invokespecial 113	java/lang/StringBuilder:<init>	()V
-    //   667: ldc 243
-    //   669: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   667: ldc 246
+    //   669: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   672: aload 6
     //   674: getfield 66	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   677: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   677: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   680: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   683: invokestatic 48	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   686: new 245	android/graphics/BitmapFactory$Options
+    //   686: new 248	android/graphics/BitmapFactory$Options
     //   689: dup
-    //   690: invokespecial 246	android/graphics/BitmapFactory$Options:<init>	()V
+    //   690: invokespecial 249	android/graphics/BitmapFactory$Options:<init>	()V
     //   693: astore 8
     //   695: aload 8
     //   697: iconst_1
-    //   698: putfield 250	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   698: putfield 253	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   701: aload 6
     //   703: getfield 66	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
     //   706: aload 8
-    //   708: invokestatic 256	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   708: invokestatic 259	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   711: pop
     //   712: aload 6
     //   714: aload 8
-    //   716: getfield 259	android/graphics/BitmapFactory$Options:outWidth	I
+    //   716: getfield 262	android/graphics/BitmapFactory$Options:outWidth	I
     //   719: putfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
     //   722: aload 6
     //   724: aload 8
-    //   726: getfield 262	android/graphics/BitmapFactory$Options:outHeight	I
+    //   726: getfield 265	android/graphics/BitmapFactory$Options:outHeight	I
     //   729: putfield 105	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
     //   732: aload 8
-    //   734: getfield 265	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
+    //   734: getfield 268	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
     //   737: astore 8
     //   739: ldc 40
     //   741: iconst_2
     //   742: new 112	java/lang/StringBuilder
     //   745: dup
     //   746: invokespecial 113	java/lang/StringBuilder:<init>	()V
-    //   749: ldc_w 267
-    //   752: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   749: ldc_w 270
+    //   752: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   755: aload 6
     //   757: getfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
-    //   760: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   763: ldc_w 272
-    //   766: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   760: invokevirtual 273	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   763: ldc_w 275
+    //   766: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   769: aload 6
     //   771: getfield 105	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
-    //   774: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   777: ldc_w 274
-    //   780: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   774: invokevirtual 273	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   777: ldc_w 277
+    //   780: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   783: aload 6
     //   785: getfield 52	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mMimeType	Ljava/lang/String;
-    //   788: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   788: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   791: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   794: invokestatic 48	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   797: aload 7
     //   799: aload 6
     //   801: iconst_1
-    //   802: invokeinterface 160 3 0
+    //   802: invokeinterface 161 3 0
     //   807: return
     //   808: aload 6
     //   810: iconst_0
     //   811: aload 8
-    //   813: invokestatic 239	com/tencent/mobileqq/activity/photo/PhotoUtils:a	(Ljava/lang/String;)I
+    //   813: invokestatic 242	com/tencent/mobileqq/activity/photo/MediaScanner:convertGpsToDegreeE6	(Ljava/lang/String;)I
     //   816: isub
-    //   817: putfield 211	com/tencent/mobileqq/activity/photo/LocalMediaInfo:latitude	I
+    //   817: putfield 215	com/tencent/mobileqq/activity/photo/LocalMediaInfo:latitude	I
     //   820: goto -199 -> 621
     //   823: aload 6
     //   825: iconst_0
     //   826: aload 10
-    //   828: invokestatic 239	com/tencent/mobileqq/activity/photo/PhotoUtils:a	(Ljava/lang/String;)I
+    //   828: invokestatic 242	com/tencent/mobileqq/activity/photo/MediaScanner:convertGpsToDegreeE6	(Ljava/lang/String;)I
     //   831: isub
-    //   832: putfield 214	com/tencent/mobileqq/activity/photo/LocalMediaInfo:longitude	I
+    //   832: putfield 218	com/tencent/mobileqq/activity/photo/LocalMediaInfo:longitude	I
     //   835: goto -194 -> 641
     //   838: astore 9
     //   840: goto -673 -> 167
@@ -416,7 +415,7 @@ public class MediaScanner$2
     //   223	679	4	k	int
     //   218	641	5	m	int
     //   10	814	6	localLocalMediaInfo	LocalMediaInfo
-    //   22	776	7	localagmh	agmh
+    //   22	776	7	localOnMediaInfoScannerListener	MediaScanner.OnMediaInfoScannerListener
     //   63	245	8	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
     //   345	47	8	localException	java.lang.Exception
     //   552	260	8	localObject1	Object
@@ -471,7 +470,7 @@ public class MediaScanner$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaScanner.2
  * JD-Core Version:    0.7.0.1
  */

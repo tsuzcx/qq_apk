@@ -1,36 +1,63 @@
-import java.net.URI;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.http.HttpResponse;
-import org.apache.http.impl.client.DefaultRedirectHandler;
-import org.apache.http.protocol.HttpContext;
 
-final class ayrr
-  extends DefaultRedirectHandler
+public class ayrr
+  implements ayrt
 {
-  public URI getLocationURI(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
+  protected View a;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private List<ayru> jdField_a_of_type_JavaUtilList;
+  private TextView b;
+  
+  public ayrr(ViewGroup paramViewGroup)
   {
-    URI localURI = super.getLocationURI(paramHttpResponse, paramHttpContext);
-    paramHttpResponse = paramHttpContext.getAttribute("mobileqq_report_flag");
-    if ((paramHttpResponse != null) && ((paramHttpResponse instanceof Integer)) && (((Integer)paramHttpResponse).intValue() > 0))
-    {
-      Object localObject = paramHttpContext.getAttribute("mobileqq_direct_uri");
-      paramHttpResponse = localObject;
-      if (localObject == null)
-      {
-        paramHttpResponse = new ArrayList();
-        paramHttpContext.setAttribute("mobileqq_direct_uri", paramHttpResponse);
-      }
-      if ((paramHttpResponse != null) && ((paramHttpResponse instanceof List))) {
-        ((List)paramHttpResponse).add(localURI);
-      }
-    }
-    return localURI;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562578, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370702));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369588));
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public ViewGroup a()
+  {
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public LinearLayout a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<ayru> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayrr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,43 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.util.WeakReference;
 
 class tqw
-  extends tpj
+  implements View.OnClickListener
 {
-  tqw(tqh paramtqh, StoryVideoItem paramStoryVideoItem, trp paramtrp)
-  {
-    super(paramStoryVideoItem);
-  }
+  tqw(tqt paramtqt) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    String str = (String)a("result");
-    vxp.a(str);
-    vxp.a(this.jdField_a_of_type_Trp.d);
-    if (this.jdField_a_of_type_Trp.d == null)
+    tqy localtqy;
+    if (tqt.a(this.a) != null)
     {
-      this.jdField_a_of_type_Trp.d = "";
-      ved.c(this.b, "imageLocalPath is null", new Throwable());
+      localtqy = (tqy)tqt.a(this.a).get();
+      if (localtqy == null) {}
     }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Trp.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Trp.a));
-    return true;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131373169: 
+      localtqy.a(tqz.a);
+      return;
+    case 2131373165: 
+      localtqy.a(tqz.b);
+      return;
+    case 2131373166: 
+      localtqy.a(tqz.c);
+      return;
+    case 2131373168: 
+      localtqy.a(tqz.d);
+      return;
+    }
+    localtqy.a(tqz.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqw
  * JD-Core Version:    0.7.0.1
  */

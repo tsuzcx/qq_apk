@@ -1,31 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-final class bbbo
-  extends Handler
+class bbbo
+  extends BroadcastReceiver
 {
-  bbbo(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bbbo(bbbm parambbbm) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
+    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
+    switch (paramIntent.getIntExtra("ret_action", 1000))
     {
     default: 
+      bbbm.a(this.a, bbbm.a(this.a).troopUin, 2);
       return;
-    case 1: 
-      bbbn.a();
+    case 1000: 
+      bbbm.a(this.a, bbbm.a(this.a).troopUin, 2);
+      return;
+    case 1001: 
+      bbbm.a(this.a, bbbm.a(this.a).troopUin, 2);
+      return;
+    case 1002: 
+      bbbm.a(this.a, bbbm.a(this.a).troopUin, 2);
+      return;
+    case 1003: 
+      bbbm.a(this.a, bbbm.a(this.a).troopUin, 1);
       return;
     }
-    bbbn.b();
+    bbbm.a(this.a, bbbm.a(this.a).troopUin, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbo
  * JD-Core Version:    0.7.0.1
  */

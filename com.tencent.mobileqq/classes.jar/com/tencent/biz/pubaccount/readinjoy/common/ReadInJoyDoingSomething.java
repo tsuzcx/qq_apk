@@ -3,11 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
 import android.text.TextUtils;
-import axrn;
-import bhvy;
+import azmz;
+import bhpe;
+import bjxj;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.text.DateFormat;
@@ -20,10 +22,9 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import oms;
-import onh;
+import ord;
 import org.w3c.dom.Node;
+import ors;
 
 public class ReadInJoyDoingSomething
 {
@@ -33,7 +34,6 @@ public class ReadInJoyDoingSomething
   private static ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "cache", "databases", "files", "lib", "shared_prefs" };
   public static String b;
-  private static List<PackageInfo> b;
   public static String c;
   public static String d;
   public static String e;
@@ -44,7 +44,7 @@ public class ReadInJoyDoingSomething
   static
   {
     jdField_a_of_type_JavaLangString = "read_in_joy_report_many_apps_key";
-    jdField_b_of_type_JavaLangString = "read_in_joy_report_many_apps_last_scan_date_key";
+    b = "read_in_joy_report_many_apps_last_scan_date_key";
     c = "ReadInJoyDoingSomething";
     d = "actKandianReportManyApps";
     e = "actKandianReportInstalledApps";
@@ -53,12 +53,12 @@ public class ReadInJoyDoingSomething
   
   public static ReadInJoyDoingSomething.AppConfigInfoList a(AppRuntime paramAppRuntime)
   {
-    if (bhvy.a(paramAppRuntime, true, true) == null)
+    if (bjxj.a(paramAppRuntime, true, true) == null)
     {
       QLog.d(c, 1, "getReadInJoySP failed, can not get config.");
       return null;
     }
-    Object localObject = onh.a(paramAppRuntime, jdField_a_of_type_JavaLangString, true);
+    Object localObject = ors.a(paramAppRuntime, jdField_a_of_type_JavaLangString, true);
     String str;
     if (QLog.isColorLevel())
     {
@@ -77,7 +77,7 @@ public class ReadInJoyDoingSomething
   
   private static String a()
   {
-    Object localObject = bhvy.a(onh.a(), true, true);
+    Object localObject = bjxj.a(ors.a(), true, true);
     if (localObject == null)
     {
       QLog.d(c, 1, "getLastScanDate failed, can not get config.");
@@ -87,7 +87,7 @@ public class ReadInJoyDoingSomething
     do
     {
       return localObject;
-      str = ((SharedPreferences)localObject).getString(jdField_b_of_type_JavaLangString, "");
+      str = ((SharedPreferences)localObject).getString(b, "");
       localObject = str;
     } while (!QLog.isColorLevel());
     QLog.d(c, 2, new Object[] { "lastScanDate = ", str });
@@ -117,59 +117,23 @@ public class ReadInJoyDoingSomething
   
   private static String a(String paramString)
   {
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    }
-    String str = (String)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    Object localObject2 = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject2 = str;
-    }
     try
     {
-      if (jdField_b_of_type_JavaUtilList != null)
+      paramString = bhpe.a(BaseApplicationImpl.getContext(), paramString);
+      if (paramString != null)
       {
-        localObject2 = str;
-        if (jdField_b_of_type_JavaUtilList.size() > 0) {}
+        paramString = paramString.versionName;
+        return paramString;
       }
-      else
-      {
-        localObject2 = str;
-        jdField_b_of_type_JavaUtilList = onh.a().getApplication().getPackageManager().getInstalledPackages(0);
-      }
-      localObject2 = str;
-      Iterator localIterator = jdField_b_of_type_JavaUtilList.iterator();
-      do
-      {
-        localObject1 = str;
-        localObject2 = str;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject2 = str;
-        localObject1 = (PackageInfo)localIterator.next();
-        localObject2 = str;
-      } while (!TextUtils.equals(((PackageInfo)localObject1).packageName, paramString));
-      localObject2 = str;
-      Object localObject1 = ((PackageInfo)localObject1).versionName;
-      localObject2 = localObject1;
-      if (localObject1 != null)
-      {
-        localObject2 = localObject1;
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
-        localObject2 = localObject1;
-      }
-      return localObject2;
     }
-    catch (Throwable paramString)
+    catch (PackageManager.NameNotFoundException paramString)
     {
-      paramString.printStackTrace();
-      QLog.d(c, 1, "getAppVersion throwable.");
+      QLog.i(c, 1, "[getAppVersion], e = " + paramString);
     }
-    return localObject2;
+    return "null";
   }
   
-  private static List<oms> a(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
+  private static List<ord> a(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramAppConfigInfo == null) {
@@ -190,24 +154,24 @@ public class ReadInJoyDoingSomething
     return localArrayList;
   }
   
-  private static oms a(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
+  private static ord a(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
   {
-    oms localoms = new oms();
+    ord localord = new ord();
     if (paramAppConfigInfo == null)
     {
       QLog.d(c, 1, "getReportData configInfo is null.");
-      return localoms;
+      return localord;
     }
-    localoms.jdField_a_of_type_JavaLangString = paramAppConfigInfo.appCode;
-    localoms.jdField_b_of_type_JavaLangString = a(paramAppConfigInfo.appPackageName);
-    return localoms;
+    localord.jdField_a_of_type_JavaLangString = paramAppConfigInfo.appCode;
+    localord.b = a(paramAppConfigInfo.appPackageName);
+    return localord;
   }
   
   public static void a()
   {
     try
     {
-      Object localObject = a(onh.a());
+      Object localObject = a(ors.a());
       if (localObject == null)
       {
         if (!QLog.isColorLevel()) {
@@ -239,40 +203,41 @@ public class ReadInJoyDoingSomething
   
   private static void a(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
   {
-    paramAppConfigInfo = a(paramAppConfigInfo);
-    if ((paramAppConfigInfo == null) || (TextUtils.isEmpty(paramAppConfigInfo.jdField_b_of_type_JavaLangString)))
+    ord localord = a(paramAppConfigInfo);
+    if ((paramAppConfigInfo == null) || (TextUtils.isEmpty(paramAppConfigInfo.appPackageName)) || (!bhpe.a(BaseApplicationImpl.getContext(), paramAppConfigInfo.appPackageName)))
     {
+      String str;
       if (QLog.isColorLevel())
       {
-        localObject = c;
-        if (paramAppConfigInfo == null) {
-          break label58;
+        str = c;
+        if (localord == null) {
+          break label71;
         }
       }
-      label58:
-      for (paramAppConfigInfo = paramAppConfigInfo.toString();; paramAppConfigInfo = "null")
+      label71:
+      for (paramAppConfigInfo = localord.toString();; paramAppConfigInfo = "null")
       {
-        QLog.d((String)localObject, 2, new Object[] { "user do not install this app or reportData is null, reportData = ", paramAppConfigInfo });
+        QLog.d(str, 2, new Object[] { "user do not install this app or reportData is null, reportData = ", paramAppConfigInfo });
         return;
       }
     }
     if (TextUtils.isEmpty(g))
     {
-      localObject = new Date();
-      g = new SimpleDateFormat("yyyy.MM.dd").format((Date)localObject);
+      paramAppConfigInfo = new Date();
+      g = new SimpleDateFormat("yyyy.MM.dd").format(paramAppConfigInfo);
     }
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("appCode", paramAppConfigInfo.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("appVersion", paramAppConfigInfo.jdField_b_of_type_JavaLangString);
-    ((HashMap)localObject).put("appScanDate", g);
-    ((HashMap)localObject).put("uin", onh.a());
+    paramAppConfigInfo = new HashMap();
+    paramAppConfigInfo.put("appCode", localord.jdField_a_of_type_JavaLangString);
+    paramAppConfigInfo.put("appVersion", localord.b);
+    paramAppConfigInfo.put("appScanDate", g);
+    paramAppConfigInfo.put("uin", ors.a());
     if (QLog.isColorLevel()) {
-      QLog.d(c, 2, new Object[] { "tagName = ", e, "\n", "reportData = \n", paramAppConfigInfo.toString(), "uin = ", onh.a(), "\n", "appScanDate = ", g, "\n" });
+      QLog.d(c, 2, new Object[] { "tagName = ", e, "\n", "reportData = \n", localord.toString(), "uin = ", ors.a(), "\n", "appScanDate = ", g, "\n" });
     }
-    axrn.a(onh.a().getApplication()).a(onh.a(), e, true, 1L, 0L, (HashMap)localObject, null, false);
+    azmz.a(ors.a().getApplication()).a(ors.a(), e, true, 1L, 0L, paramAppConfigInfo, null, false);
   }
   
-  private static void a(String paramString, List<oms> paramList, ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
+  private static void a(String paramString, List<ord> paramList, ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
   {
     int j = 0;
     if ((TextUtils.isEmpty(paramString)) || (paramList == null))
@@ -336,9 +301,9 @@ public class ReadInJoyDoingSomething
       localObject = new SimpleDateFormat("yyyy.MM.dd").format((Date)localObject);
       if (((TextUtils.isEmpty(h)) || (((String)localObject).compareTo(h) >= 0)) && (!a((String)localObject, paramList)))
       {
-        oms localoms = a(paramAppConfigInfo);
-        localoms.c = ((String)localObject);
-        paramList.add(localoms);
+        ord localord = a(paramAppConfigInfo);
+        localord.c = ((String)localObject);
+        paramList.add(localord);
         if (a(paramList))
         {
           QLog.d(c, 1, "report data is enough, no need to scan any more.");
@@ -352,7 +317,7 @@ public class ReadInJoyDoingSomething
     }
   }
   
-  private static void a(List<oms> paramList, String paramString)
+  private static void a(List<ord> paramList, String paramString)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       QLog.d(c, 1, "reportData but list is null or empty.");
@@ -364,16 +329,16 @@ public class ReadInJoyDoingSomething
       int i = 0;
       while (i < paramList.size())
       {
-        oms localoms = (oms)paramList.get(i);
+        ord localord = (ord)paramList.get(i);
         if (QLog.isColorLevel()) {
-          QLog.d(c, 2, new Object[] { "tagName = ", paramString, ", reportDataList [ ", Integer.valueOf(i), " ] : \n", localoms.toString(), "uin = ", onh.a(), "\n" });
+          QLog.d(c, 2, new Object[] { "tagName = ", paramString, ", reportDataList [ ", Integer.valueOf(i), " ] : \n", localord.toString(), "uin = ", ors.a(), "\n" });
         }
         localHashMap.clear();
-        localHashMap.put("appCode", localoms.jdField_a_of_type_JavaLangString);
-        localHashMap.put("appVersion", localoms.jdField_b_of_type_JavaLangString);
-        localHashMap.put("appUsedDate", localoms.c);
-        localHashMap.put("uin", onh.a());
-        axrn.a(onh.a().getApplication()).a(onh.a(), paramString, true, 1L, 0L, localHashMap, null, false);
+        localHashMap.put("appCode", localord.jdField_a_of_type_JavaLangString);
+        localHashMap.put("appVersion", localord.b);
+        localHashMap.put("appUsedDate", localord.c);
+        localHashMap.put("uin", ors.a());
+        azmz.a(ors.a().getApplication()).a(ors.a(), paramString, true, 1L, 0L, localHashMap, null, false);
         i += 1;
       }
     }
@@ -381,7 +346,7 @@ public class ReadInJoyDoingSomething
   
   public static void a(AppRuntime paramAppRuntime, ReadInJoyDoingSomething.AppConfigInfoList paramAppConfigInfoList)
   {
-    if (bhvy.a(paramAppRuntime, true, true) == null)
+    if (bjxj.a(paramAppRuntime, true, true) == null)
     {
       QLog.d(c, 1, "getReadInJoySP failed, can not update config.");
       return;
@@ -389,7 +354,7 @@ public class ReadInJoyDoingSomething
     if (QLog.isColorLevel()) {
       QLog.d(c, 2, new Object[] { "updateConfig, appConfigInfoList = ", paramAppConfigInfoList.toString() });
     }
-    onh.a(jdField_a_of_type_JavaLangString, paramAppConfigInfoList, true);
+    ors.a(jdField_a_of_type_JavaLangString, paramAppConfigInfoList, true);
   }
   
   public static void a(Node paramNode)
@@ -483,24 +448,24 @@ public class ReadInJoyDoingSomething
         paramNode = paramNode.getNextSibling();
       }
     }
-    a(onh.a(), localAppConfigInfoList);
+    a(ors.a(), localAppConfigInfoList);
   }
   
-  private static boolean a(String paramString, List<oms> paramList)
+  private static boolean a(String paramString, List<ord> paramList)
   {
     if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.size() <= 0)) {
       return false;
     }
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      if (paramString.equals(((oms)paramList.next()).c)) {
+      if (paramString.equals(((ord)paramList.next()).c)) {
         return true;
       }
     }
     return false;
   }
   
-  private static boolean a(List<oms> paramList)
+  private static boolean a(List<ord> paramList)
   {
     boolean bool = true;
     if ((paramList == null) || (paramList.size() <= 0) || (TextUtils.isEmpty(h))) {
@@ -543,16 +508,13 @@ public class ReadInJoyDoingSomething
     if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
       jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
-    if (jdField_b_of_type_JavaUtilList != null) {
-      jdField_b_of_type_JavaUtilList.clear();
-    }
   }
   
   private static void b(ReadInJoyDoingSomething.AppConfigInfo paramAppConfigInfo)
   {
     int i = 0;
     Object localObject2 = a(paramAppConfigInfo);
-    if ((localObject2 == null) || (TextUtils.isEmpty(((oms)localObject2).jdField_b_of_type_JavaLangString)))
+    if ((localObject2 == null) || (TextUtils.isEmpty(((ord)localObject2).b)))
     {
       if (QLog.isColorLevel())
       {
@@ -562,7 +524,7 @@ public class ReadInJoyDoingSomething
         }
       }
       label60:
-      for (paramAppConfigInfo = ((oms)localObject2).toString();; paramAppConfigInfo = "null")
+      for (paramAppConfigInfo = ((ord)localObject2).toString();; paramAppConfigInfo = "null")
       {
         QLog.d((String)localObject1, 2, new Object[] { "user do not install this app or reportData is null, reportData = ", paramAppConfigInfo });
         return;
@@ -587,7 +549,7 @@ public class ReadInJoyDoingSomething
           if (((TextUtils.isEmpty(h)) || (((String)localObject4).compareTo(h) >= 0)) && (!a((String)localObject4, (List)localObject1)))
           {
             localObject3 = a(paramAppConfigInfo);
-            ((oms)localObject3).c = ((String)localObject4);
+            ((ord)localObject3).c = ((String)localObject4);
             ((List)localObject1).add(localObject3);
           }
         }
@@ -608,7 +570,7 @@ public class ReadInJoyDoingSomething
   
   private static void c()
   {
-    Object localObject = bhvy.a(onh.a(), true, true);
+    Object localObject = bjxj.a(ors.a(), true, true);
     if (localObject == null)
     {
       QLog.d(c, 1, "setLastScanDate failed, can not get config.");
@@ -617,13 +579,13 @@ public class ReadInJoyDoingSomething
     Date localDate = new Date();
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
     localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putString(jdField_b_of_type_JavaLangString, localSimpleDateFormat.format(localDate));
-    bhvy.a((SharedPreferences.Editor)localObject, true);
+    ((SharedPreferences.Editor)localObject).putString(b, localSimpleDateFormat.format(localDate));
+    bjxj.a((SharedPreferences.Editor)localObject, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDoingSomething
  * JD-Core Version:    0.7.0.1
  */

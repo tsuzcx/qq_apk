@@ -1,41 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class ajrd
+  implements MediaPlayer.OnCompletionListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d = 3;
-  public int e;
+  public ajrd(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public void a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (QLog.isColorLevel())
+    if (this.a.a != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("gameId:").append(this.jdField_a_of_type_Int).append(",roomId:").append(this.jdField_a_of_type_Long).append(",actionId:").append(this.jdField_b_of_type_Int).append(",gameName:").append(this.jdField_b_of_type_JavaLangString).append(",wording:").append(",imgType:");
-      QLog.d("ApolloPanel", 2, localStringBuilder.toString());
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.d = 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajrd
  * JD-Core Version:    0.7.0.1
  */

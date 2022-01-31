@@ -1,17 +1,24 @@
-class ryn
-  extends rym
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+
+public class ryn
+  implements sag
 {
-  String b;
+  public ryn(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public ryn(String paramString1, int paramInt, boolean paramBoolean, String paramString2)
+  public BaseData a()
   {
-    super(paramString1, paramInt, paramBoolean);
-    this.b = paramString2;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    sdn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryn
  * JD-Core Version:    0.7.0.1
  */

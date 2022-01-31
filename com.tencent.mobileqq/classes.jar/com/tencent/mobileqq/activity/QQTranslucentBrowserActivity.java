@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import abxj;
-import abxk;
-import abxl;
+import ador;
+import ados;
+import adot;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import arkp;
+import atbd;
 import com.tencent.smtt.sdk.WebView;
 
 public class QQTranslucentBrowserActivity
@@ -21,23 +21,23 @@ public class QQTranslucentBrowserActivity
     this.jdField_a_of_type_JavaLangClass = QQTranslucentBrowserActivity.QQTranslucentBrowserFragment.class;
   }
   
-  public void a(WebView paramWebView, String paramString)
-  {
-    b();
-    super.a(paramWebView, paramString);
-  }
-  
-  public void as_()
+  public void a()
   {
     if (isFinishing()) {}
     do
     {
       return;
       if (this.jdField_a_of_type_AndroidAppDialog == null) {
-        this.jdField_a_of_type_AndroidAppDialog = new abxl(this);
+        this.jdField_a_of_type_AndroidAppDialog = new adot(this);
       }
     } while (this.jdField_a_of_type_AndroidAppDialog == null);
     this.jdField_a_of_type_AndroidAppDialog.show();
+  }
+  
+  public void a(WebView paramWebView, String paramString)
+  {
+    b();
+    super.a(paramWebView, paramString);
   }
   
   public void b()
@@ -53,10 +53,10 @@ public class QQTranslucentBrowserActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = super.getIntent();
-    getWindow().setBackgroundDrawableResource(2131167087);
-    View localView = findViewById(2131363418);
+    getWindow().setBackgroundDrawableResource(2131167138);
+    View localView = findViewById(2131363457);
     if (localView != null) {
-      localView.setBackgroundResource(2131167087);
+      localView.setBackgroundResource(2131167138);
     }
     int i;
     if (paramBundle != null)
@@ -65,7 +65,7 @@ public class QQTranslucentBrowserActivity
       if (!paramBundle.getBooleanExtra("flag_show_loading_dialog", false)) {
         break label68;
       }
-      as_();
+      a();
     }
     label68:
     do
@@ -73,15 +73,15 @@ public class QQTranslucentBrowserActivity
       return bool;
       if (i == 4)
       {
-        this.jdField_a_of_type_AndroidAppDialog = arkp.a(this);
-        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new abxj(this));
-        as_();
+        this.jdField_a_of_type_AndroidAppDialog = atbd.a(this);
+        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ador(this));
+        a();
         return bool;
       }
     } while (i != 5);
-    this.jdField_a_of_type_AndroidAppDialog = arkp.a(this, paramBundle);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new abxk(this));
-    as_();
+    this.jdField_a_of_type_AndroidAppDialog = atbd.a(this, paramBundle);
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ados(this));
+    a();
     return bool;
   }
   
@@ -99,7 +99,7 @@ public class QQTranslucentBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

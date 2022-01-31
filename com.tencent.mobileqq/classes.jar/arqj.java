@@ -1,133 +1,86 @@
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.leba.widget.LebaRoundLayout;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
 
 public class arqj
 {
-  public View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public LebaRoundLayout a;
-  private RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
-  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
+  public static final int[] a;
+  protected Context a;
+  protected Bundle a;
+  protected QQAppInterface a;
+  protected QFileSendBottomView a;
+  protected boolean a;
   
-  public arqj(Context paramContext, LayoutInflater paramLayoutInflater)
+  static
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560818, null);
-    this.jdField_a_of_type_ComTencentMobileqqLebaWidgetLebaRoundLayout = ((LebaRoundLayout)paramLayoutInflater.findViewById(2131375528));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131369083));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramLayoutInflater.findViewById(2131368595));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView.setMaskShape(bfwr.c);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378265));
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(paramContext, paramLayoutInflater).a(17).b(16).e(28).a();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
+    jdField_a_of_type_ArrayOfInt = new int[] { 1, 5 };
   }
   
-  private void a(TextView paramTextView, String paramString)
+  public arqj(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
-    try
-    {
-      QLog.i("LebaTableViewHolder", 1, paramString + " thread:" + Thread.currentThread().getId() + " v:" + paramTextView.getVisibility() + " w:" + paramTextView.getWidth() + " h:" + paramTextView.getHeight() + " x:" + paramTextView.getX() + " y:" + paramTextView.getY() + " colors:" + paramTextView.getTextColors() + " text:" + paramTextView.getText());
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView = paramQFileSendBottomView;
+  }
+  
+  public static arqj a(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView, Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("qfile_search_param_exparams_busi_type");
+    paramBundle.getInt("qfile_search_param_exparams_peer_type");
+    if (i == 1) {
+      paramQQAppInterface = new arjr(paramQQAppInterface, paramContext, paramQFileSendBottomView);
     }
-    catch (Exception paramTextView)
+    for (;;)
     {
-      QLog.i("LebaTableViewHolder", 1, "", paramTextView);
+      paramQQAppInterface.a(paramBundle);
+      return paramQQAppInterface;
+      if (i == 5) {
+        paramQQAppInterface = new arjo(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+      } else {
+        paramQQAppInterface = new arqk(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+      }
     }
   }
   
-  public void a(@NonNull arqk paramarqk)
+  public void a() {}
+  
+  protected void a(int paramInt, Intent paramIntent)
   {
-    anec localanec = paramarqk.jdField_a_of_type_Anec;
-    Context localContext = paramarqk.jdField_a_of_type_AndroidContentContext;
-    Drawable localDrawable = paramarqk.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int i = paramarqk.jdField_a_of_type_Int;
-    QQAppInterface localQQAppInterface = paramarqk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    arqd localarqd = paramarqk.jdField_a_of_type_Arqd;
-    boolean bool = paramarqk.jdField_a_of_type_Boolean;
-    int j = paramarqk.b;
-    if (bool) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130840180);
-    }
-    while ((localanec == null) || (localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null))
+    if (paramIntent != null) {}
+    for (paramIntent = new Intent(paramIntent);; paramIntent = new Intent())
     {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-      this.jdField_a_of_type_AndroidViewView.setEnabled(false);
-      this.jdField_a_of_type_ComTencentWidgetThemeImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (AppSetting.d) {
-        baww.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, "", Button.class.getName());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.b();
+      paramIntent.putExtra("qfile_send_bottom_bar_finish_result_code", -1);
+      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      localActivity.setResult(paramInt, paramIntent);
+      localActivity.finish();
       return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130839132);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setOnClickListener(paramarqk.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView.setVisibility(0);
-    if (!TextUtils.isEmpty(localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strGridIconUrl))
-    {
-      paramarqk = URLDrawable.URLDrawableOptions.obtain();
-      paramarqk.mRequestWidth = actj.a(32.0F, localContext.getResources());
-      paramarqk.mRequestHeight = paramarqk.mRequestWidth;
-      paramarqk.mLoadingDrawable = localDrawable;
-      paramarqk.mFailedDrawable = localDrawable;
-      paramarqk = URLDrawable.getDrawable(localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strGridIconUrl, paramarqk);
-      paramarqk.setTargetDensity(i);
-      if (paramarqk.getStatus() == 2) {
-        paramarqk.restartDownload();
-      }
-      this.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageDrawable(paramarqk);
-      label265:
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (!TextUtils.isEmpty(localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName)) {
-        break label442;
-      }
-    }
-    label442:
-    for (paramarqk = "";; paramarqk = localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramarqk);
-      if (TextUtils.isEmpty(localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName)) {
-        a(this.jdField_a_of_type_AndroidWidgetTextView, " tvName.setText:" + paramarqk + " index:" + j);
-      }
-      if (AppSetting.d) {
-        baww.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, paramarqk, Button.class.getName());
-      }
-      if (localarqd == null) {
-        break;
-      }
-      paramarqk = new arpu();
-      paramarqk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = localQQAppInterface;
-      paramarqk.jdField_a_of_type_AndroidContentContext = localContext;
-      paramarqk.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
-      paramarqk.jdField_a_of_type_Long = localanec.jdField_a_of_type_Long;
-      paramarqk.jdField_a_of_type_JavaLangString = localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strPkgName;
-      localarqd.a(paramarqk);
-      return;
-      this.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageDrawable(localDrawable);
-      break label265;
     }
   }
+  
+  protected void a(Intent paramIntent)
+  {
+    a(-1, paramIntent);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqj
  * JD-Core Version:    0.7.0.1
  */

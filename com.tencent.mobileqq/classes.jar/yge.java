@@ -1,23 +1,40 @@
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattService;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class yge
+public abstract class yge
 {
-  public int a;
-  public BluetoothGatt a;
-  public BluetoothGattCharacteristic a;
-  public BluetoothGattService a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public BluetoothGattCharacteristic b;
-  public int c;
-  public BluetoothGattCharacteristic c;
+  public static final AtomicInteger a = new AtomicInteger(0);
+  
+  public abstract byte[] a();
+  
+  public byte[] a(Intent paramIntent, int paramInt, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException("req traceId is null!");
+    }
+    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+    localStQWebReq.Seq.set(paramInt);
+    localStQWebReq.qua.set(bizf.a());
+    localStQWebReq.deviceInfo.set(bize.a().c());
+    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
+    if (!TextUtils.isEmpty(paramString)) {
+      localStQWebReq.traceid.set(paramString);
+    }
+    if (paramIntent != null) {
+      paramIntent.putExtra("traceid", paramString);
+    }
+    return localStQWebReq.toByteArray();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yge
  * JD-Core Version:    0.7.0.1
  */

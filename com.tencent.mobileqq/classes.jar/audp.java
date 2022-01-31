@@ -1,32 +1,64 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 
 public class audp
-  extends Handler
+  implements aoec
 {
-  public audp(ScanOcrView paramScanOcrView) {}
+  public audp(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
+    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing()))
+    {
+      MsgBackupDateFragment.a(this.a).dismiss();
+      MsgBackupDateFragment.b(this.a);
+      MsgBackupDateFragment.a(this.a);
+      MsgBackupDateFragment.b(this.a, MsgBackupDateFragment.b(this.a));
     }
-    switch (paramMessage.what)
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
     {
     }
     for (;;)
     {
-      super.handleMessage(paramMessage);
+      MsgBackupDateFragment.a(this.a, MsgBackupDateFragment.b(this.a));
+      MsgBackupDateFragment.a(this.a);
+      if ((MsgBackupDateFragment.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        MsgBackupDateFragment.a(this.a).a(2);
+      }
       return;
-      this.a.a(paramMessage.arg1);
+      if (MsgBackupDateFragment.b(this.a) == 1)
+      {
+        MsgBackupDateFragment.b(this.a, paramInt2);
+      }
+      else if (MsgBackupDateFragment.b(this.a) == 2)
+      {
+        MsgBackupDateFragment.c(this.a, paramInt2);
+        continue;
+        if (MsgBackupDateFragment.b(this.a) == 1)
+        {
+          MsgBackupDateFragment.d(this.a, paramInt2);
+        }
+        else if (MsgBackupDateFragment.b(this.a) == 2)
+        {
+          MsgBackupDateFragment.e(this.a, paramInt2);
+          continue;
+          if (MsgBackupDateFragment.b(this.a) == 1) {
+            MsgBackupDateFragment.f(this.a, paramInt2);
+          } else if (MsgBackupDateFragment.b(this.a) == 2) {
+            MsgBackupDateFragment.g(this.a, paramInt2);
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     audp
  * JD-Core Version:    0.7.0.1
  */

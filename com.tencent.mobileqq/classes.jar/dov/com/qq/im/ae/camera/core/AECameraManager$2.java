@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bika;
-import bjah;
+import bkoi;
+import blfg;
 
 public class AECameraManager$2
   implements Runnable
 {
-  public AECameraManager$2(bika parambika, boolean paramBoolean) {}
+  public AECameraManager$2(bkoi parambkoi, boolean paramBoolean) {}
   
   public void run()
   {
-    bjah.b("AECameraManager", "stopCamera---cameraCreated=" + bika.a(this.this$0) + ", isGif=" + this.a);
-    if (!bika.a(this.this$0)) {
+    blfg.b("AECameraManager", "stopCamera---cameraCreated=" + bkoi.a(this.this$0) + ", isGif=" + this.a);
+    if (!bkoi.a(this.this$0)) {
       return;
     }
     this.this$0.b(this.a);
@@ -19,7 +19,7 @@ public class AECameraManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraManager.2
  * JD-Core Version:    0.7.0.1
  */

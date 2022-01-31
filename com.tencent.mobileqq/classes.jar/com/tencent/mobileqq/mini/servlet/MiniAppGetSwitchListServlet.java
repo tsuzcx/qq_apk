@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -39,7 +39,7 @@ public class MiniAppGetSwitchListServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bbma.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bdku.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         if (!paramFromServiceMsg.isSuccess()) {
           continue;
@@ -89,7 +89,7 @@ public class MiniAppGetSwitchListServlet
         localObject = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetSwitchList");
-      paramPacket.putSendData(bbma.a((byte[])localObject));
+      paramPacket.putSendData(bdku.a((byte[])localObject));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;
@@ -108,7 +108,7 @@ public class MiniAppGetSwitchListServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetSwitchListServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.main;
 
-import afry;
-import agcf;
-import akbn;
-import akka;
+import ahpq;
+import aiak;
+import altc;
+import ambq;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,7 +15,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$13
   implements Runnable
 {
-  public MainAssistObserver$13(agcf paramagcf, QQAppInterface paramQQAppInterface) {}
+  public MainAssistObserver$13(aiak paramaiak, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -24,9 +24,9 @@ public class MainAssistObserver$13
       Object localObject3;
       try
       {
-        Object localObject1 = (afry)this.a.getManager(295);
-        localObject3 = (akbn)this.a.getManager(34);
-        int i = ((akbn)localObject3).d();
+        Object localObject1 = (ahpq)this.a.getManager(295);
+        localObject3 = (altc)this.a.getManager(34);
+        int i = ((altc)localObject3).d();
         if (i > 0)
         {
           localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
@@ -44,7 +44,7 @@ public class MainAssistObserver$13
           this.this$0.a.sendMessage((Message)localObject3);
           return;
         }
-        if (((akbn)localObject3).a())
+        if (((altc)localObject3).a())
         {
           localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
           ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
@@ -72,7 +72,7 @@ public class MainAssistObserver$13
         localObject2 = null;
       } else {
         label236:
-        if (akka.a(this.a).a())
+        if (ambq.a(this.a).a())
         {
           localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
           ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
@@ -95,7 +95,7 @@ public class MainAssistObserver$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.13
  * JD-Core Version:    0.7.0.1
  */

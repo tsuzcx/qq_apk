@@ -1,291 +1,284 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.InputFilter;
-import android.text.InputFilter.LengthFilter;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose.5;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose.6;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Collection;
 
-public class bbig
-  extends bbhz
-  implements View.OnClickListener
+public final class bbig
 {
-  public static final Integer a;
-  public static final Integer b;
-  final float jdField_a_of_type_Float = 267.0F;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  protected View.OnClickListener a;
-  public View a;
-  public WindowManager.LayoutParams a;
-  public WindowManager a;
-  public EditText a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public RelativeLayout a;
-  public MyLinearLayout a;
-  public SoftReference<Context> a;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  final float b;
-  public boolean b;
-  final float c;
-  public boolean c;
-  
-  static
+  public static long a(String paramString)
   {
-    jdField_a_of_type_JavaLangInteger = Integer.valueOf(1);
-    jdField_b_of_type_JavaLangInteger = Integer.valueOf(2);
-  }
-  
-  public bbig(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-    this.jdField_b_of_type_Float = 45.5F;
-    this.jdField_c_of_type_Float = 39.0F;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bbii(this);
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramContext);
-    getWindow().setSoftInputMode(19);
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-  }
-  
-  public int a(View paramView)
-  {
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    return arrayOfInt[1];
-  }
-  
-  public void a()
-  {
-    if (this.jdField_b_of_type_Boolean)
+    try
     {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout);
-      this.jdField_b_of_type_Boolean = false;
-      WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
-      localLayoutParams.y = 0;
-      getWindow().setAttributes(localLayoutParams);
+      long l = Long.parseLong(paramString);
+      return l;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null)
+    catch (NumberFormatException paramString)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bbij(this, paramInt));
+      paramString.printStackTrace();
     }
+    return 0L;
   }
   
-  void a(Context paramContext)
+  /* Error */
+  @android.support.annotation.Nullable
+  public static Object a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout = ((MyLinearLayout)View.inflate(paramContext, 2131558922, null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131369272).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.setDispatchKeyEventListener(new bbik(this));
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnonnull +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: new 26	java/io/ByteArrayInputStream
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 30	java/io/ByteArrayInputStream:<init>	([B)V
+    //   14: astore_3
+    //   15: new 32	java/io/ObjectInputStream
+    //   18: dup
+    //   19: aload_3
+    //   20: invokespecial 35	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   23: astore_1
+    //   24: aload_1
+    //   25: astore_0
+    //   26: aload_1
+    //   27: invokevirtual 39	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   30: astore_2
+    //   31: aload_1
+    //   32: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   35: aload_3
+    //   36: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   39: aload_2
+    //   40: areturn
+    //   41: astore_2
+    //   42: aconst_null
+    //   43: astore_1
+    //   44: aload_1
+    //   45: astore_0
+    //   46: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   49: ifeq +14 -> 63
+    //   52: aload_1
+    //   53: astore_0
+    //   54: ldc 50
+    //   56: iconst_2
+    //   57: ldc 52
+    //   59: aload_2
+    //   60: invokestatic 56	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   63: aload_1
+    //   64: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   67: aload_3
+    //   68: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   71: aconst_null
+    //   72: areturn
+    //   73: astore_2
+    //   74: aconst_null
+    //   75: astore_1
+    //   76: aload_1
+    //   77: astore_0
+    //   78: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   81: ifeq +14 -> 95
+    //   84: aload_1
+    //   85: astore_0
+    //   86: ldc 50
+    //   88: iconst_2
+    //   89: ldc 52
+    //   91: aload_2
+    //   92: invokestatic 56	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   95: aload_1
+    //   96: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   99: aload_3
+    //   100: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   103: aconst_null
+    //   104: areturn
+    //   105: astore_0
+    //   106: aconst_null
+    //   107: astore_2
+    //   108: aload_0
+    //   109: astore_1
+    //   110: aload_2
+    //   111: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   114: aload_3
+    //   115: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   118: aload_1
+    //   119: athrow
+    //   120: astore_1
+    //   121: aload_0
+    //   122: astore_2
+    //   123: goto -13 -> 110
+    //   126: astore_2
+    //   127: goto -51 -> 76
+    //   130: astore_2
+    //   131: goto -87 -> 44
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	134	0	paramArrayOfByte	byte[]
+    //   23	96	1	localObject1	Object
+    //   120	1	1	localObject2	Object
+    //   30	10	2	localObject3	Object
+    //   41	19	2	localIOException1	IOException
+    //   73	19	2	localClassNotFoundException1	java.lang.ClassNotFoundException
+    //   107	16	2	localObject4	Object
+    //   126	1	2	localClassNotFoundException2	java.lang.ClassNotFoundException
+    //   130	1	2	localIOException2	IOException
+    //   14	101	3	localByteArrayInputStream	java.io.ByteArrayInputStream
+    // Exception table:
+    //   from	to	target	type
+    //   15	24	41	java/io/IOException
+    //   15	24	73	java/lang/ClassNotFoundException
+    //   15	24	105	finally
+    //   26	31	120	finally
+    //   46	52	120	finally
+    //   54	63	120	finally
+    //   78	84	120	finally
+    //   86	95	120	finally
+    //   26	31	126	java/lang/ClassNotFoundException
+    //   26	31	130	java/io/IOException
   }
   
-  public void a(String paramString)
+  public static void a(Closeable paramCloseable)
   {
-    if (paramString != null)
+    if (paramCloseable != null) {}
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-    }
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
+      paramCloseable.close();
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    float f = getContext().getResources().getDisplayMetrics().density;
-    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131369269);
-    localLinearLayout.removeAllViews();
-    int i = 0;
-    while (i < paramArrayList.size())
+    catch (IOException paramCloseable)
     {
-      View localView = View.inflate(getContext(), 2131558923, null);
-      localView.setTag(Integer.valueOf(i));
-      localView.setClickable(true);
-      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      ((TextView)localView.findViewById(2131369268)).setText((CharSequence)paramArrayList.get(i));
-      localLinearLayout.addView(localView, new LinearLayout.LayoutParams(-1, (int)(45.5F * f)));
-      i += 1;
+      paramCloseable.printStackTrace();
     }
-    if (paramArrayList.size() >= 5) {}
-    for (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-1, (int)(267.0F * f), 2, 32, -1);; this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-1, (int)((39.0F + paramArrayList.size() * 45.5F + 2.0F) * f), 2, 32, -1))
+  }
+  
+  public static void a(ObjectOutputStream paramObjectOutputStream)
+  {
+    if (paramObjectOutputStream != null) {}
+    try
     {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 81;
+      paramObjectOutputStream.close();
       return;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public EditText getEditText()
-  {
-    return this.jdField_a_of_type_AndroidWidgetEditText;
-  }
-  
-  public String getInputValue()
-  {
-    return this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-  }
-  
-  public void hideSoftInputFromWindow()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-      ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+    catch (IOException paramObjectOutputStream)
+    {
+      paramObjectOutputStream.printStackTrace();
     }
   }
   
-  public void onClick(View paramView)
+  public static void a(Runnable paramRunnable)
   {
-    if (paramView.getId() == 2131368197)
+    if (Looper.myLooper() == Looper.getMainLooper())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout != null)
-      {
-        if (this.jdField_b_of_type_Boolean)
-        {
-          a();
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846382);
-          this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130846382));
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QQCustomDialogWtihInputAndChoose.5(this), 200L);
-        }
-      }
-      else {
-        return;
-      }
-      paramView = this.jdField_a_of_type_AndroidWidgetImageView.getTag();
-      if ((paramView != null) && ((paramView instanceof Integer)) && (((Integer)paramView).intValue() == 2130846989))
-      {
-        bfni.a(this.jdField_a_of_type_AndroidWidgetEditText);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846382);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130846382));
-        this.jdField_b_of_type_Boolean = false;
-        return;
-      }
-      bfni.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846989);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130846989));
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QQCustomDialogWtihInputAndChoose.6(this), 200L);
+      ThreadManagerV2.executeOnSubThread(paramRunnable);
       return;
     }
-    if (paramView.getId() == 2131369272)
-    {
-      a();
-      return;
-    }
-    a();
-    bfni.b(this.jdField_a_of_type_AndroidWidgetEditText);
+    paramRunnable.run();
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public static void a(Runnable paramRunnable, long paramLong)
   {
-    if (paramMotionEvent.getAction() != 1) {
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    a();
-    bfni.b(this.jdField_a_of_type_AndroidWidgetEditText);
-    super.onTouchEvent(paramMotionEvent);
-    return true;
+    new Handler(ThreadManagerV2.getSubThreadLooper()).postDelayed(paramRunnable, paramLong);
   }
   
-  @TargetApi(11)
-  public void setContentView(int paramInt)
+  public static boolean a(Collection paramCollection)
   {
-    super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365142));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131368186));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368197));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    findViewById(2131375659).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new bbih(this));
-    Context localContext = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    if (localContext == null) {
-      return;
-    }
-    ynt.a(localContext, this.jdField_a_of_type_AndroidWidgetEditText);
-    a(localContext);
+    return (paramCollection == null) || (paramCollection.size() <= 0);
   }
   
-  public void setEditLint(String paramString)
+  /* Error */
+  @android.support.annotation.Nullable
+  public static byte[] a(Object paramObject)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramString);
-  }
-  
-  public bbgu setMessage(CharSequence paramCharSequence)
-  {
-    TextView localTextView = (TextView)findViewById(2131365123);
-    if (!TextUtils.isEmpty(paramCharSequence))
-    {
-      localTextView.setText(paramCharSequence);
-      localTextView.setContentDescription(paramCharSequence);
-      localTextView.setVisibility(0);
-      return this;
-    }
-    localTextView.setVisibility(8);
-    return this;
-  }
-  
-  public bbgu setNegativeButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.lBtn.setVisibility(8);
-      return this;
-    }
-    this.lBtn.setText(paramInt);
-    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691105));
-    this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new bbil(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public bbgu setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.rBtn.setVisibility(8);
-      return this;
-    }
-    this.rBtn.setText(paramInt);
-    this.rBtn.setContentDescription(getContext().getString(paramInt));
-    this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new bbim(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public void show()
-  {
-    super.show();
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnonnull +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: new 110	java/io/ByteArrayOutputStream
+    //   9: dup
+    //   10: sipush 1024
+    //   13: invokespecial 113	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   16: astore 4
+    //   18: new 66	java/io/ObjectOutputStream
+    //   21: dup
+    //   22: aload 4
+    //   24: invokespecial 116	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   27: astore_2
+    //   28: aload_2
+    //   29: astore_1
+    //   30: aload_2
+    //   31: aload_0
+    //   32: invokevirtual 120	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   35: aload_2
+    //   36: astore_1
+    //   37: aload_2
+    //   38: invokevirtual 123	java/io/ObjectOutputStream:flush	()V
+    //   41: aload_2
+    //   42: astore_1
+    //   43: aload 4
+    //   45: invokevirtual 127	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   48: astore_0
+    //   49: aload_2
+    //   50: invokestatic 129	bbig:a	(Ljava/io/ObjectOutputStream;)V
+    //   53: aload 4
+    //   55: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   58: aload_0
+    //   59: areturn
+    //   60: astore_3
+    //   61: aconst_null
+    //   62: astore_0
+    //   63: aload_0
+    //   64: astore_1
+    //   65: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   68: ifeq +14 -> 82
+    //   71: aload_0
+    //   72: astore_1
+    //   73: ldc 50
+    //   75: iconst_2
+    //   76: ldc 131
+    //   78: aload_3
+    //   79: invokestatic 56	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   82: aload_0
+    //   83: invokestatic 129	bbig:a	(Ljava/io/ObjectOutputStream;)V
+    //   86: aload 4
+    //   88: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   91: aconst_null
+    //   92: areturn
+    //   93: astore_0
+    //   94: aconst_null
+    //   95: astore_1
+    //   96: aload_1
+    //   97: invokestatic 129	bbig:a	(Ljava/io/ObjectOutputStream;)V
+    //   100: aload 4
+    //   102: invokestatic 42	bbig:a	(Ljava/io/Closeable;)V
+    //   105: aload_0
+    //   106: athrow
+    //   107: astore_0
+    //   108: goto -12 -> 96
+    //   111: astore_3
+    //   112: aload_2
+    //   113: astore_0
+    //   114: goto -51 -> 63
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	117	0	paramObject	Object
+    //   29	68	1	localObject	Object
+    //   27	86	2	localObjectOutputStream	ObjectOutputStream
+    //   60	19	3	localIOException1	IOException
+    //   111	1	3	localIOException2	IOException
+    //   16	85	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   18	28	60	java/io/IOException
+    //   18	28	93	finally
+    //   30	35	107	finally
+    //   37	41	107	finally
+    //   43	49	107	finally
+    //   65	71	107	finally
+    //   73	82	107	finally
+    //   30	35	111	java/io/IOException
+    //   37	41	111	java/io/IOException
+    //   43	49	111	java/io/IOException
   }
 }
 

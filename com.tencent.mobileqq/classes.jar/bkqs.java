@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class bkqs
-  implements DialogInterface.OnClickListener
+  implements bkqp
 {
-  bkqs(bkqp parambkqp) {}
+  bkqs(bkqr parambkqr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    bkqp.a(this.a, "an_yuanshipin");
+    bkqr.a(this.a).a(131076, new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkqs
  * JD-Core Version:    0.7.0.1
  */

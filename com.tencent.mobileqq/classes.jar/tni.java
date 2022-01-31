@@ -1,58 +1,115 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetWeather;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import UserGrowth.stNewIconStyle;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class tni
-  extends sys<tot>
+  extends tck<tmv>
+  implements View.OnClickListener
 {
-  private static final String a = sxm.a("StorySvc.get_weather");
-  public final int c;
-  public final int d;
-  public final int e;
+  private stNewIconStyle jdField_a_of_type_UserGrowthStNewIconStyle;
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private View b;
   
-  public tni(int paramInt1, int paramInt2, int paramInt3)
+  public tni(Context paramContext, tnj paramtnj)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-  }
-  
-  public String a()
-  {
-    return a;
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetWeather localRspGetWeather = new qqstory_service.RspGetWeather();
-    try
-    {
-      localRspGetWeather.mergeFrom(paramArrayOfByte);
-      return new tot(localRspGetWeather);
+    super(paramContext);
+    if (paramtnj != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramtnj.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  private String a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a();
+    }
+    return "recommend_tab";
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_UserGrowthStNewIconStyle != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStNewIconStyle.title)))
     {
-      for (;;)
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
+      this.b.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStNewIconStyle.title);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl))
       {
-        paramArrayOfByte.printStackTrace();
+        tlv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl, null);
+        return;
       }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842787);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.b.setVisibility(8);
+  }
+  
+  private int c()
+  {
+    int i = 2;
+    if (TextUtils.equals(a(), "trends")) {
+      i = 6;
+    }
+    return i;
+  }
+  
+  protected void a()
+  {
+    tmv localtmv = (tmv)a();
+    if ((localtmv != null) && ((localtmv.a() instanceof stSimpleMetaFeed)))
+    {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)localtmv.a());
+      this.jdField_a_of_type_UserGrowthStNewIconStyle = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.new_icon;
     }
   }
   
-  protected byte[] a()
+  protected int b()
   {
-    qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
-    localReqGetWeather.coordinate.set(this.c);
-    localReqGetWeather.longitude.set(this.d);
-    localReqGetWeather.latitude.set(this.e);
-    return localReqGetWeather.toByteArray();
+    return 2131559878;
+  }
+  
+  protected void b()
+  {
+    if ((this.jdField_a_of_type_UserGrowthStNewIconStyle != null) && (this.jdField_a_of_type_UserGrowthStNewIconStyle.tag_type == 0))
+    {
+      a(true);
+      return;
+    }
+    a(false);
+  }
+  
+  protected void c() {}
+  
+  protected void e()
+  {
+    this.b = a(2131379520);
+    this.b.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131379522));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379521));
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131379520) {
+      tmo.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, a(), c());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tni
  * JD-Core Version:    0.7.0.1
  */

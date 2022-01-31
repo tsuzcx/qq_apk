@@ -1,44 +1,82 @@
-import android.util.Log;
-import com.tencent.mobileqq.apollo.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import Wallet.SkinInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class aiup
-  implements aius
 {
-  private int jdField_a_of_type_Int = 12440;
+  public static boolean a;
+  public static int c = 0;
+  public int a;
+  public SkinInfo a;
+  public RedPacketInfoBase a;
+  public String a;
+  public int b;
+  public String b = "";
   
-  private aiup(GLTextureView paramGLTextureView) {}
-  
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public aiup(SkinInfo paramSkinInfo)
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView);
-    arrayOfInt[2] = 12344;
-    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
-    if (GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
+    this.jdField_a_of_type_JavaLangString = paramSkinInfo.skin_name;
+    this.jdField_a_of_type_WalletSkinInfo = paramSkinInfo;
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public aiup(String paramString)
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static int a(List<aiup> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      aiuu.a("eglDestroyContex", paramEGL10.eglGetError());
+      aiup localaiup = (aiup)paramList.next();
+      if (c == localaiup.jdField_a_of_type_WalletSkinInfo.skin_id) {
+        return localaiup.jdField_a_of_type_WalletSkinInfo.skin_id;
+      }
     }
+    return -1;
+  }
+  
+  public static void a(List<aiup> paramList)
+  {
+    Collections.sort(paramList, new aiuq());
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof aiup)) {
+        break;
+      }
+    } while (this.jdField_a_of_type_WalletSkinInfo.skin_id == ((aiup)paramObject).jdField_a_of_type_WalletSkinInfo.skin_id);
+    return false;
+    return super.equals(paramObject);
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("");
+    localStringBuffer.append("background : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.background + " | ");
+    localStringBuffer.append("icon : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon + " | ");
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiup
  * JD-Core Version:    0.7.0.1
  */

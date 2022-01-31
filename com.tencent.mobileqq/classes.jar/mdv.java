@@ -1,55 +1,83 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.AVActivity;
 
 public class mdv
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public mdv(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, bfpc parambfpc) {}
+  public mdv(AVActivity paramAVActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().U) {
-      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
-        axqy.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
+    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (this.a.a != null) && (paramContext.equals("homekey")))
+      {
+        if (this.a.a.a().d == 4)
+        {
+          if (this.a.d != 3000) {
+            break label237;
+          }
+          if (!this.a.a.a().j) {
+            break label210;
+          }
+          azmj.b(null, "CliOper", "", "", "0X80041BB", "0X80041BB", 0, 0, "", "", "", "");
+        }
+        if (this.a.g)
+        {
+          if (!this.a.a.a().j) {
+            break label424;
+          }
+          azmj.b(null, "CliOper", "", "", "0X8005216", "0X8005216", 0, 0, "", "", "", "");
+        }
       }
     }
     for (;;)
     {
-      if (!this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().U) {
-        bool = true;
+      if (AVActivity.a(this.a) != null) {
+        AVActivity.a(this.a).a(this.a.isResume());
       }
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.b(bool);
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().b("OnClick", bool);
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a();
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.b();
-      try
-      {
-        this.jdField_a_of_type_Bfpc.dismiss();
-        return;
+      this.a.a.a("backgroundReason", "1");
+      lfh.a = "1";
+      return;
+      label210:
+      azmj.b(null, "CliOper", "", "", "0X80041BE", "0X80041BE", 0, 0, "", "", "", "");
+      break;
+      label237:
+      if (this.a.d != 1) {
+        break;
       }
-      catch (Throwable paramView)
+      if (this.a.a.a().j)
       {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000)
-      {
-        axqy.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
-        continue;
-        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
-          axqy.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
-        } else if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000) {
-          axqy.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
+        if (this.a.a.a().C == 10)
+        {
+          azmj.b(null, "CliOper", "", "", "0X800593E", "0X800593E", 0, 0, "", "", "", "");
+          break;
         }
+        azmj.b(null, "CliOper", "", "", "0X80046E8", "0X80046E8", 0, 0, "", "", "", "");
+        break;
       }
+      if (!this.a.a.a().k) {
+        break;
+      }
+      if (this.a.a.a().C == 10)
+      {
+        azmj.b(null, "CliOper", "", "", "0X8005941", "0X8005941", 0, 0, "", "", "", "");
+        break;
+      }
+      azmj.b(null, "CliOper", "", "", "0X80046EB", "0X80046EB", 0, 0, "", "", "", "");
+      break;
+      label424:
+      azmj.b(null, "CliOper", "", "", "0X8005219", "0X8005219", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdv
  * JD-Core Version:    0.7.0.1
  */

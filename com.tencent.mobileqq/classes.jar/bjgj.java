@@ -1,28 +1,41 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData;
+import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+import cooperation.qzone.model.CoverCacheData.PackageInfo;
 
-class bjgj
-  implements bfos
+public final class bjgj
+  implements Parcelable.Creator<CoverCacheData>
 {
-  int jdField_a_of_type_Int = 0;
-  
-  bjgj(bjgi parambjgi) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public CoverCacheData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    CoverCacheData localCoverCacheData = new CoverCacheData();
+    if (paramParcel != null)
+    {
+      localCoverCacheData.jdField_a_of_type_Long = paramParcel.readLong();
+      localCoverCacheData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = ((CoverCacheData.PackageInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo = ((CoverCacheData.GameCoverInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+      localCoverCacheData.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
+      localCoverCacheData.jdField_a_of_type_Int = paramParcel.readInt();
+      localCoverCacheData.jdField_b_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_c_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_b_of_type_Int = paramParcel.readInt();
+    }
+    return localCoverCacheData;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public CoverCacheData[] a(int paramInt)
   {
-    if ((paramInt == 0) && (bjgi.a(this.jdField_a_of_type_Bjgi).a() != null) && (this.jdField_a_of_type_Int == bjgi.a(this.jdField_a_of_type_Bjgi).a().size() - 1)) {
-      bjgi.a(this.jdField_a_of_type_Bjgi).a();
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjgj
  * JD-Core Version:    0.7.0.1
  */

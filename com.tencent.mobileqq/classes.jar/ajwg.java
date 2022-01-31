@@ -1,10 +1,13 @@
+import android.widget.TextView;
+
 class ajwg
 {
-  private static final ajwd a = new ajwd(null);
+  public int a;
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwg
  * JD-Core Version:    0.7.0.1
  */

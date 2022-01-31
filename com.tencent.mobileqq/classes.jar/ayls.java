@@ -1,89 +1,87 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Iterator;
+import java.util.List;
 
-class ayls
-  implements aylq
+public class ayls
+  extends aylv
 {
-  private IBinder a;
+  private List<PhoneContact> a;
   
-  ayls(IBinder paramIBinder)
+  public ayls(bcws parambcws, aylz paramaylz, List<PhoneContact> paramList)
   {
-    this.a = paramIBinder;
+    super(parambcws, paramaylz);
+    this.a = paramList;
   }
   
-  public IBinder asBinder()
+  public void b(ayjl paramayjl, ayru paramayru)
   {
-    return this.a;
+    boolean bool = true;
+    super.b(paramayjl, paramayru);
+    int i;
+    int j;
+    if (paramayru.c() != null)
+    {
+      paramayjl = (ayid)paramayjl;
+      if (this.a != null)
+      {
+        Iterator localIterator = this.a.iterator();
+        i = 0;
+        j = i;
+        if (!localIterator.hasNext()) {
+          break label101;
+        }
+        if (((PhoneContact)localIterator.next()).contactID != paramayjl.a.contactID) {
+          break label197;
+        }
+        paramayru.c().setText(alpo.a(2131702899));
+        i = 1;
+      }
+    }
+    label191:
+    label197:
+    for (;;)
+    {
+      break;
+      j = 0;
+      label101:
+      if (!TextUtils.isEmpty(paramayjl.c()))
+      {
+        paramayru.c().setText(paramayjl.c());
+        j = 1;
+      }
+      paramayjl = paramayru.c();
+      if (j != 0)
+      {
+        i = 0;
+        paramayjl.setVisibility(i);
+        paramayjl = paramayru.a();
+        if (j != 0) {
+          break label191;
+        }
+      }
+      for (;;)
+      {
+        paramayjl.setClickable(bool);
+        if (paramayru.a() != null) {
+          paramayru.a().setVisibility(8);
+        }
+        return;
+        i = 8;
+        break;
+        bool = false;
+      }
+    }
   }
   
-  public void beginSwitch()
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      this.a.transact(1, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void doSwitch(String paramString1, String paramString2)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeString(paramString1);
-      localParcel.writeString(paramString2);
-      this.a.transact(3, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void onProgress(long paramLong1, long paramLong2)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeLong(paramLong1);
-      localParcel.writeLong(paramLong2);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void postSwitch(int paramInt)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
-      localParcel.writeInt(paramInt);
-      this.a.transact(4, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
+  public void d(ayjl paramayjl, ayru paramayru) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayls
  * JD-Core Version:    0.7.0.1
  */

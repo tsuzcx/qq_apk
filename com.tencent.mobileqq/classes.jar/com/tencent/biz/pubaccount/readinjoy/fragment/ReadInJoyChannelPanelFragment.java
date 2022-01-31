@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import actj;
-import ajya;
+import aekt;
+import alpo;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
@@ -23,9 +23,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baxn;
-import bbbm;
-import bcrv;
+import bcwh;
+import bdag;
+import bere;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
@@ -49,31 +49,31 @@ import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import nol;
-import oep;
-import onh;
-import ono;
-import ooq;
-import osg;
-import osj;
-import osl;
-import osm;
-import otv;
-import otw;
-import oty;
-import otz;
-import oua;
-import oud;
-import ozv;
-import qao;
-import qaq;
-import qdg;
-import qdm;
-import rrx;
+import nrt;
+import ojb;
+import ors;
+import orz;
+import otb;
+import owy;
+import oxb;
+import oxd;
+import oxe;
+import oyz;
+import oza;
+import ozc;
+import ozd;
+import oze;
+import ozh;
+import pfd;
+import qkk;
+import qkm;
+import qnc;
+import qni;
+import sik;
 
 public class ReadInJoyChannelPanelFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, bcrv
+  implements View.OnClickListener, bere
 {
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
@@ -85,11 +85,11 @@ public class ReadInJoyChannelPanelFragment
   private ChannelBottomBanner jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerChannelBottomBanner;
   private SlideDownFrameLayout jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout;
   private ArrayList<ReadInJoyStaticGridView> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  private List<qaq> jdField_a_of_type_JavaUtilList;
+  private List<qkm> jdField_a_of_type_JavaUtilList;
   private Map<Integer, TabChannelCoverInfo> jdField_a_of_type_JavaUtilMap;
-  private osg jdField_a_of_type_Osg;
-  protected osm a;
-  private oua jdField_a_of_type_Oua;
+  private owy jdField_a_of_type_Owy;
+  protected oxe a;
+  private oze jdField_a_of_type_Oze;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -105,26 +105,26 @@ public class ReadInJoyChannelPanelFragment
   
   public ReadInJoyChannelPanelFragment()
   {
-    this.jdField_a_of_type_Osm = new oty(this);
+    this.jdField_a_of_type_Oxe = new ozc(this);
   }
   
   private int a(int paramInt)
   {
-    if (!ooq.a()) {
+    if (!otb.a()) {
       return paramInt;
     }
     switch (paramInt)
     {
     default: 
       return paramInt;
-    case 2131559834: 
-      return 2131559835;
-    case 2131559836: 
-      return 2131559837;
-    case 2131559969: 
-      return 2131559968;
+    case 2131559927: 
+      return 2131559928;
+    case 2131559929: 
+      return 2131559930;
+    case 2131560068: 
+      return 2131560067;
     }
-    return 2131559996;
+    return 2131560095;
   }
   
   public static int a(ChannelCoverInfo paramChannelCoverInfo)
@@ -168,15 +168,15 @@ public class ReadInJoyChannelPanelFragment
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_Oua.notifyDataSetChanged();
+    this.jdField_a_of_type_Oze.notifyDataSetChanged();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((oud)((ReadInJoyStaticGridView)localIterator.next()).a()).notifyDataSetChanged();
+      ((ozh)((ReadInJoyStaticGridView)localIterator.next()).a()).notifyDataSetChanged();
     }
     if (this.jdField_c_of_type_Boolean)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718446);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131718359);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718869);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131718749);
       if (this.jdField_d_of_type_Boolean)
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.a(paramInt);
@@ -189,8 +189,8 @@ public class ReadInJoyChannelPanelFragment
       return;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.a();
       break;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(((qaq)this.jdField_a_of_type_JavaUtilList.get(0)).b);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131718360);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(((qkm)this.jdField_a_of_type_JavaUtilList.get(0)).b);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131718750);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.a();
       h();
       if (this.jdField_b_of_type_Boolean) {
@@ -204,9 +204,9 @@ public class ReadInJoyChannelPanelFragment
   {
     if (paramTabChannelCoverInfo != null)
     {
-      osj.a().n();
-      osj.a().a(paramTabChannelCoverInfo);
-      oep.a("0X8007F02", paramTabChannelCoverInfo, oep.jdField_b_of_type_Int);
+      oxb.a().m();
+      oxb.a().a(paramTabChannelCoverInfo);
+      ojb.a("0X8007F02", paramTabChannelCoverInfo, ojb.jdField_b_of_type_Int);
     }
   }
   
@@ -224,14 +224,14 @@ public class ReadInJoyChannelPanelFragment
     }
   }
   
-  private void a(TabChannelCoverInfo paramTabChannelCoverInfo, rrx paramrrx)
+  private void a(TabChannelCoverInfo paramTabChannelCoverInfo, sik paramsik)
   {
     if (a(paramTabChannelCoverInfo) >= 0)
     {
       this.e = true;
       paramTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean = false;
-      if (paramrrx != null) {
-        paramrrx.notifyDataSetChanged();
+      if (paramsik != null) {
+        paramsik.notifyDataSetChanged();
       }
     }
   }
@@ -239,34 +239,34 @@ public class ReadInJoyChannelPanelFragment
   public static void a(String paramString1, String paramString2)
   {
     QLog.d("ReadInJoyChannelPanelFragment", 1, new Object[] { "actionName = ", paramString1, "\n", "r5 = ", paramString2 });
-    nol.a(null, "", paramString1, paramString1, 0, 0, "", "", "", paramString2, false);
+    nrt.a(null, "", paramString1, paramString1, 0, 0, "", "", "", paramString2, false);
   }
   
-  private void a(qao paramqao, int paramInt)
+  private void a(qkk paramqkk, int paramInt)
   {
-    if (paramqao != null)
+    if (paramqkk != null)
     {
-      TabChannelCoverInfo localTabChannelCoverInfo = paramqao.a;
+      TabChannelCoverInfo localTabChannelCoverInfo = paramqkk.a;
       if (localTabChannelCoverInfo != null) {
-        ThreadManager.executeOnSubThread(new ReadInJoyChannelPanelFragment.7(this, localTabChannelCoverInfo, paramqao, paramInt));
+        ThreadManager.executeOnSubThread(new ReadInJoyChannelPanelFragment.7(this, localTabChannelCoverInfo, paramqkk, paramInt));
       }
     }
   }
   
-  private void a(qaq paramqaq, int paramInt)
+  private void a(qkm paramqkm, int paramInt)
   {
-    oud localoud = new oud(this, getActivity(), 4, paramInt, (int)paramqaq.jdField_a_of_type_Long);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getActivity()).inflate(a(2131559834), this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
-    ReadInJoyStaticGridView localReadInJoyStaticGridView = (ReadInJoyStaticGridView)localRelativeLayout.findViewById(2131374929);
+    ozh localozh = new ozh(this, getActivity(), 4, paramInt, (int)paramqkm.jdField_a_of_type_Long);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getActivity()).inflate(a(2131559927), this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
+    ReadInJoyStaticGridView localReadInJoyStaticGridView = (ReadInJoyStaticGridView)localRelativeLayout.findViewById(2131375397);
     localReadInJoyStaticGridView.setExpendable(true);
     localReadInJoyStaticGridView.setEditModeEnabled(false);
-    localReadInJoyStaticGridView.setAdapter(localoud);
-    localReadInJoyStaticGridView.setTag(Long.valueOf(paramqaq.jdField_a_of_type_Long));
+    localReadInJoyStaticGridView.setAdapter(localozh);
+    localReadInJoyStaticGridView.setTag(Long.valueOf(paramqkm.jdField_a_of_type_Long));
     this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localRelativeLayout);
-    ((TextView)localRelativeLayout.findViewById(2131374930)).setText(paramqaq.jdField_a_of_type_JavaLangString);
-    ((TextView)localRelativeLayout.findViewById(2131374928)).setText(paramqaq.b);
-    paramqaq = localRelativeLayout.findViewById(2131374927);
-    localReadInJoyStaticGridView.getViewTreeObserver().addOnGlobalLayoutListener(new otw(this, localReadInJoyStaticGridView, paramqaq));
+    ((TextView)localRelativeLayout.findViewById(2131375398)).setText(paramqkm.jdField_a_of_type_JavaLangString);
+    ((TextView)localRelativeLayout.findViewById(2131375396)).setText(paramqkm.b);
+    paramqkm = localRelativeLayout.findViewById(2131375395);
+    localReadInJoyStaticGridView.getViewTreeObserver().addOnGlobalLayoutListener(new oza(this, localReadInJoyStaticGridView, paramqkm));
     this.jdField_a_of_type_JavaUtilArrayList.add(localReadInJoyStaticGridView);
   }
   
@@ -293,7 +293,7 @@ public class ReadInJoyChannelPanelFragment
   private void b()
   {
     this.jdField_a_of_type_Int = getActivity().getIntent().getIntExtra("currentIndex", 0);
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Osg.a();
+    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Owy.a();
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
@@ -305,14 +305,14 @@ public class ReadInJoyChannelPanelFragment
     }
   }
   
-  private void b(TabChannelCoverInfo paramTabChannelCoverInfo, rrx paramrrx)
+  private void b(TabChannelCoverInfo paramTabChannelCoverInfo, sik paramsik)
   {
     if (a(paramTabChannelCoverInfo) == 0)
     {
       this.e = true;
       paramTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean = false;
-      if (paramrrx != null) {
-        paramrrx.notifyDataSetChanged();
+      if (paramsik != null) {
+        paramsik.notifyDataSetChanged();
       }
     }
   }
@@ -333,56 +333,56 @@ public class ReadInJoyChannelPanelFragment
   
   private void c()
   {
-    ozv localozv = osg.a().a();
-    if (localozv != null)
+    pfd localpfd = owy.a().a();
+    if (localpfd != null)
     {
-      a(localozv.a(2000000000));
-      ThreadManager.getUIHandler().post(new ReadInJoyChannelPanelFragment.1(this, localozv));
+      a(localpfd.a(2000000000));
+      ThreadManager.getUIHandler().post(new ReadInJoyChannelPanelFragment.1(this, localpfd));
     }
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131364708));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131364055));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131374947));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewNestedScrollView = ((NestedScrollView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131364054));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131364271);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370614));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370612));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370610));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370406));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView = ((ReadInJoyDynamicGridView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370613));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131369817);
-    this.jdField_b_of_type_Int = actj.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.getResources());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131364787));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131364117));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131375417));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewNestedScrollView = ((NestedScrollView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131364116));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131364338);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370922));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370920));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370918));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370712));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView = ((ReadInJoyDynamicGridView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370921));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370081);
+    this.jdField_b_of_type_Int = aekt.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.getResources());
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerChannelBottomBanner == null)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerChannelBottomBanner = new ChannelBottomBanner(getActivity());
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = baxn.a(getActivity(), 18.0F);
-      if (ooq.a()) {
-        ((RelativeLayout.LayoutParams)localObject).bottomMargin = baxn.a(getActivity(), 18.0F);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = bcwh.a(getActivity(), 18.0F);
+      if (otb.a()) {
+        ((RelativeLayout.LayoutParams)localObject).bottomMargin = bcwh.a(getActivity(), 18.0F);
       }
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131370406);
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131370712);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerChannelBottomBanner, (ViewGroup.LayoutParams)localObject);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.setOnSlideListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new otv(this));
-    this.jdField_a_of_type_Oua = new oua(this, getActivity(), 4, TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new oyz(this));
+    this.jdField_a_of_type_Oze = new oze(this, getActivity(), 4, TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setExpendable(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setAdapter(this.jdField_a_of_type_Oua);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setAdapter(this.jdField_a_of_type_Oze);
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(((qaq)this.jdField_a_of_type_JavaUtilList.get(0)).b);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(((qkm)this.jdField_a_of_type_JavaUtilList.get(0)).b);
       int i = 1;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        a((qaq)this.jdField_a_of_type_JavaUtilList.get(i), i);
+        a((qkm)this.jdField_a_of_type_JavaUtilList.get(i), i);
         i += 1;
       }
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(ajya.a(2131712727));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131713099));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClipChildren(false);
     onPostThemeChanged();
     Object localObject = ((ViewGroup)((FrameLayout)getActivity().findViewById(16908290)).getParent()).getChildAt(1);
@@ -405,7 +405,7 @@ public class ReadInJoyChannelPanelFragment
         localFragmentActivity.mSystemBarComp = new SystemBarCompact(localFragmentActivity, true, -1);
       }
       localFragmentActivity.mSystemBarComp.init();
-      if ((Build.VERSION.SDK_INT >= 23) && (!bbbm.b()) && (!bbbm.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!bdag.b()) && (!bdag.d()))
       {
         localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
         localFragmentActivity.mSystemBarComp.setStatusBarColor(0);
@@ -415,7 +415,7 @@ public class ReadInJoyChannelPanelFragment
     {
       return;
     }
-    if (!bbbm.d())
+    if (!bdag.d())
     {
       localFragmentActivity.mSystemBarComp.setStatusBarColor(-2368549);
       return;
@@ -426,22 +426,22 @@ public class ReadInJoyChannelPanelFragment
   
   private void f()
   {
-    this.jdField_a_of_type_Osg = ((osl)onh.a().getManager(163)).a();
+    this.jdField_a_of_type_Owy = ((oxd)ors.a().getManager(163)).a();
   }
   
   private void g()
   {
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setOnItemLongClickListener(this.jdField_a_of_type_Oua);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setOnItemClickListener(this.jdField_a_of_type_Oua);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setOnDropListener(this.jdField_a_of_type_Oua);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setOnDragListener(this.jdField_a_of_type_Oua);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setOnItemLongClickListener(this.jdField_a_of_type_Oze);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setOnItemClickListener(this.jdField_a_of_type_Oze);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setOnDropListener(this.jdField_a_of_type_Oze);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.setOnDragListener(this.jdField_a_of_type_Oze);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
       ReadInJoyStaticGridView localReadInJoyStaticGridView = (ReadInJoyStaticGridView)localIterator.next();
-      localReadInJoyStaticGridView.setOnItemClickListener((oud)localReadInJoyStaticGridView.a());
+      localReadInJoyStaticGridView.setOnItemClickListener((ozh)localReadInJoyStaticGridView.a());
     }
   }
   
@@ -454,18 +454,18 @@ public class ReadInJoyChannelPanelFragment
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    qaq localqaq = new qaq(((qaq)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Long, ((qaq)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString, ((qaq)this.jdField_a_of_type_JavaUtilList.get(0)).b);
-    localqaq.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Oua.a();
-    localArrayList.add(localqaq);
+    qkm localqkm = new qkm(((qkm)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Long, ((qkm)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString, ((qkm)this.jdField_a_of_type_JavaUtilList.get(0)).b);
+    localqkm.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Oze.a();
+    localArrayList.add(localqkm);
     int i = 1;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localqaq = new qaq(((qaq)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long, ((qaq)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString, ((qaq)this.jdField_a_of_type_JavaUtilList.get(i)).b);
-      localqaq.jdField_a_of_type_JavaUtilList = ((oud)((ReadInJoyStaticGridView)this.jdField_a_of_type_JavaUtilArrayList.get(i - 1)).a()).a();
-      localArrayList.add(localqaq);
+      localqkm = new qkm(((qkm)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long, ((qkm)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString, ((qkm)this.jdField_a_of_type_JavaUtilList.get(i)).b);
+      localqkm.jdField_a_of_type_JavaUtilList = ((ozh)((ReadInJoyStaticGridView)this.jdField_a_of_type_JavaUtilArrayList.get(i - 1)).a()).a();
+      localArrayList.add(localqkm);
       i += 1;
     }
-    this.jdField_a_of_type_Osg.a(localArrayList, 1, true);
+    this.jdField_a_of_type_Owy.a(localArrayList, 1, true);
     this.e = false;
   }
   
@@ -481,10 +481,10 @@ public class ReadInJoyChannelPanelFragment
       if (a(localTabChannelCoverInfo) == 1)
       {
         localTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Osg.a(localTabChannelCoverInfo);
+        this.jdField_a_of_type_Owy.a(localTabChannelCoverInfo);
       }
     }
-    this.jdField_a_of_type_Osg.c(false);
+    this.jdField_a_of_type_Owy.c(false);
   }
   
   public View a()
@@ -503,7 +503,7 @@ public class ReadInJoyChannelPanelFragment
   
   public void a(float paramFloat, int paramInt)
   {
-    osj.a().a(paramFloat, paramInt);
+    oxb.a().a(paramFloat, paramInt);
     this.jdField_c_of_type_AndroidViewView.setAlpha(1.0F - paramFloat / paramInt);
   }
   
@@ -528,7 +528,7 @@ public class ReadInJoyChannelPanelFragment
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_d_of_type_AndroidWidgetTextView.setText(paramTopBannerInfo.moreChannelItem.jdField_a_of_type_JavaLangString);
       paramTopBannerInfo = paramTopBannerInfo.moreChannelItem.b;
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new otz(this, paramTopBannerInfo));
+      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new ozd(this, paramTopBannerInfo));
       return;
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerChannelBottomBanner.setVisibility(0);
@@ -571,7 +571,7 @@ public class ReadInJoyChannelPanelFragment
     {
     default: 
       return;
-    case 2131364271: 
+    case 2131364338: 
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.b();
       return;
     }
@@ -580,7 +580,7 @@ public class ReadInJoyChannelPanelFragment
     {
       this.jdField_c_of_type_Boolean = bool;
       a(-1);
-      a("0X8009498", new ono().b().a());
+      a("0X8009498", new orz().b().a());
       return;
     }
   }
@@ -593,22 +593,23 @@ public class ReadInJoyChannelPanelFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout = ((SlideDownFrameLayout)paramLayoutInflater.inflate(a(2131559836), paramViewGroup, false));
+    getActivity().setTheme(2131755150);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout = ((SlideDownFrameLayout)paramLayoutInflater.inflate(a(2131559929), paramViewGroup, false));
     f();
     b();
     d();
     c();
     g();
-    osj.a().a(this.jdField_a_of_type_Osm);
+    oxb.a().a(this.jdField_a_of_type_Oxe);
     return this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout;
   }
   
   public void onDestroy()
   {
-    osj.a().b(this.jdField_a_of_type_Osm);
+    oxb.a().b(this.jdField_a_of_type_Oxe);
     super.onDestroy();
     i();
-    this.jdField_a_of_type_Osg = null;
+    this.jdField_a_of_type_Owy = null;
   }
   
   public void onFinish()
@@ -630,10 +631,10 @@ public class ReadInJoyChannelPanelFragment
   
   public void onPostThemeChanged()
   {
-    if (ThemeUtil.isNowThemeIsNight(onh.a(), false, null))
+    if (ThemeUtil.isNowThemeIsNight(ors.a(), false, null))
     {
       if (this.jdField_b_of_type_AndroidViewView == null) {
-        this.jdField_b_of_type_AndroidViewView = ((ViewStub)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131374821)).inflate();
+        this.jdField_b_of_type_AndroidViewView = ((ViewStub)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131375284)).inflate();
       }
       if (this.jdField_b_of_type_AndroidViewView != null) {
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
@@ -649,7 +650,7 @@ public class ReadInJoyChannelPanelFragment
   {
     super.onResume();
     e();
-    osj.a().a(this.jdField_a_of_type_Osm);
+    oxb.a().a(this.jdField_a_of_type_Oxe);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerChannelBottomBanner != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerChannelBottomBanner.b();
     }
@@ -657,7 +658,7 @@ public class ReadInJoyChannelPanelFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment
  * JD-Core Version:    0.7.0.1
  */

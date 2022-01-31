@@ -1,44 +1,12 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Handler;
 
-class bjrr
-  extends QQUIEventReceiver<bjro, bjrq>
+public abstract interface bjrr
 {
-  public bjrr(@NonNull bjro parambjro)
-  {
-    super(parambjro);
-  }
-  
-  public void a(@NonNull bjro parambjro, @NonNull bjrq parambjrq)
-  {
-    if (bjrq.a(parambjrq))
-    {
-      switch (parambjrq.a())
-      {
-      }
-      for (;;)
-      {
-        bjro.a(parambjro);
-        return;
-        bjro.a(parambjro, true);
-        ved.b("QGEnvironment", "surface created");
-        continue;
-        ved.b("QGEnvironment", "qg so loaded");
-        continue;
-        ved.b("QGEnvironment", "filter manager inited");
-      }
-    }
-    ved.e("QGEnvironment", "QG environment init error :  event type = " + parambjrq.a());
-  }
-  
-  public Class acceptEventClass()
-  {
-    return bjrq.class;
-  }
+  public abstract void a(Handler paramHandler);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjrr
  * JD-Core Version:    0.7.0.1
  */

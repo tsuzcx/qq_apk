@@ -1,49 +1,33 @@
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.widget.QfavJumpActivity;
+import java.io.InputStream;
 
 public class bisv
-  extends BaseFilter
+  implements DialogInterface.OnClickListener
 {
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public bisv(QfavJumpActivity paramQfavJumpActivity, String paramString, InputStream paramInputStream, long paramLong) {}
   
-  public bisv()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  }
-  
-  public Frame a()
-  {
-    float f1 = 2.0F / this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    try
     {
-      float f2 = -1.0F + i * f1;
-      float f3 = f2 + f1;
-      setPositions(new float[] { f2, -1.0F, f2, 1.0F, f3, 1.0F, f3, -1.0F });
-      Frame localFrame = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
-      RenderProcess(localFrame.getTextureId(), localFrame.width, localFrame.height, this.jdField_a_of_type_JavaUtilList.size() * 64, 64, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      i += 1;
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
+      return;
     }
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  }
-  
-  public void a(List<Frame> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void clearGLSLSelf()
-  {
-    super.clearGLSLSelf();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    catch (Exception paramDialogInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
+      }
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bisv
  * JD-Core Version:    0.7.0.1
  */

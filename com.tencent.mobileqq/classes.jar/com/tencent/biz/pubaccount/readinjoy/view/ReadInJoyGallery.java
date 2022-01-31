@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import com.tencent.widget.Gallery;
-import rct;
-import rcu;
+import rsq;
+import rsr;
 
 public class ReadInJoyGallery
   extends Gallery
@@ -15,8 +15,8 @@ public class ReadInJoyGallery
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   ViewConfiguration jdField_a_of_type_AndroidViewViewConfiguration = ViewConfiguration.get(getContext());
-  protected rct a;
-  private rcu jdField_a_of_type_Rcu;
+  protected rsq a;
+  private rsr jdField_a_of_type_Rsr;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float;
   boolean jdField_b_of_type_Boolean = false;
@@ -56,8 +56,8 @@ public class ReadInJoyGallery
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     super.a(paramInt1, paramInt2, paramBoolean);
-    if (this.jdField_a_of_type_Rcu != null) {
-      this.jdField_a_of_type_Rcu.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Rsr != null) {
+      this.jdField_a_of_type_Rsr.a(paramInt1, paramInt2);
     }
   }
   
@@ -127,8 +127,8 @@ public class ReadInJoyGallery
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Rct != null) {
-      this.jdField_a_of_type_Rct.a();
+    if (this.jdField_a_of_type_Rsq != null) {
+      this.jdField_a_of_type_Rsq.a();
     }
     return super.onDoubleTap(paramMotionEvent);
   }
@@ -186,19 +186,19 @@ public class ReadInJoyGallery
     this.k = paramBoolean;
   }
   
-  public void setOnDoubleTapListener(rct paramrct)
+  public void setOnDoubleTapListener(rsq paramrsq)
   {
-    this.jdField_a_of_type_Rct = paramrct;
+    this.jdField_a_of_type_Rsq = paramrsq;
   }
   
-  public void setOnScrollChangeListener(rcu paramrcu)
+  public void setOnScrollChangeListener(rsr paramrsr)
   {
-    this.jdField_a_of_type_Rcu = paramrcu;
+    this.jdField_a_of_type_Rsr = paramrsr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyGallery
  * JD-Core Version:    0.7.0.1
  */

@@ -10,20 +10,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import baxn;
-import bdeo;
-import bdeq;
-import bder;
-import bdih;
-import bdii;
-import bdjr;
-import bdpk;
+import bcwh;
+import bfdm;
+import bfdo;
+import bfdp;
+import bfhf;
+import bfhg;
+import bfip;
+import bfoh;
 import com.tencent.open.widget.KeyboardDetectorRelativeLayout;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class ChallengeActivity
   extends ChallengeBragBase
-  implements View.OnClickListener, bdeq, bdpk
+  implements View.OnClickListener, bfdo, bfoh
 {
   protected ImageView a;
   protected ScrollView a;
@@ -37,23 +37,23 @@ public class ChallengeActivity
   @TargetApi(14)
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131375409));
+    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131375894));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.setFitsSystemWindows(true);
       this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_b_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131376732));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378284));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131365748));
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131376731));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363427));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363424));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362968));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362969));
+    this.jdField_b_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131377242));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378864));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131365834));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131377241));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363467));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363464));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363004));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363005));
     this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
     this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
-    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new bdih(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
+    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new bfhf(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
     this.jdField_a_of_type_AndroidWidgetEditText.setText(this.i);
     if (this.jdField_a_of_type_AndroidWidgetScrollView != null) {
@@ -66,10 +66,10 @@ public class ChallengeActivity
       try
       {
         a(this.h);
-        this.jdField_a_of_type_JavaLangString = bder.a(this.jdField_c_of_type_JavaLangString, this.d);
-        this.jdField_b_of_type_JavaLangString = bder.a(this.jdField_c_of_type_JavaLangString, this.h);
-        Bitmap localBitmap1 = bdeo.a().a(this.jdField_a_of_type_JavaLangString);
-        Bitmap localBitmap2 = bdeo.a().a(this.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_JavaLangString = bfdp.a(this.jdField_c_of_type_JavaLangString, this.d);
+        this.jdField_b_of_type_JavaLangString = bfdp.a(this.jdField_c_of_type_JavaLangString, this.h);
+        Bitmap localBitmap1 = bfdm.a().a(this.jdField_a_of_type_JavaLangString);
+        Bitmap localBitmap2 = bfdm.a().a(this.jdField_b_of_type_JavaLangString);
         if (localBitmap1 != null)
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap1);
@@ -82,20 +82,20 @@ public class ChallengeActivity
       }
       catch (Exception localException)
       {
-        bdii.c("ChallengeActivity", "getNickName error. " + localException.getMessage(), localException);
+        bfhg.c("ChallengeActivity", "getNickName error. " + localException.getMessage(), localException);
         c();
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839736);
-      bdeo.a().a(this.jdField_a_of_type_JavaLangString, this);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840084);
+      bfdm.a().a(this.jdField_a_of_type_JavaLangString, this);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839736);
-    bdeo.a().a(this.jdField_b_of_type_JavaLangString, this);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840084);
+    bfdm.a().a(this.jdField_b_of_type_JavaLangString, this);
   }
   
   public void a(int paramInt)
   {
-    int i = baxn.b(this, paramInt) - 10 - 10;
+    int i = bcwh.b(this, paramInt) - 10 - 10;
     if ((this.jdField_a_of_type_AndroidWidgetScrollView != null) && (i < 255))
     {
       paramInt = i - 20 - 30 - 5 - 145;
@@ -103,9 +103,9 @@ public class ChallengeActivity
       if ((paramInt > 0) && (paramInt < 55))
       {
         this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = baxn.a(this, paramInt);
+        this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = bcwh.a(this, paramInt);
         this.jdField_a_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(true);
-        this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = baxn.a(this, 30.0F);
+        this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = bcwh.a(this, 30.0F);
         this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
         this.jdField_b_of_type_AndroidWidgetScrollView.setVisibility(0);
       }
@@ -118,7 +118,7 @@ public class ChallengeActivity
     {
       this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = 0;
       this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().height = baxn.a(this, i);
+      this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().height = bcwh.a(this, i);
       this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(true);
       return;
     }
@@ -143,10 +143,10 @@ public class ChallengeActivity
   {
     if (this.jdField_a_of_type_AndroidWidgetScrollView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = baxn.a(this, 55.0F);
+      this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = bcwh.a(this, 55.0F);
       this.jdField_a_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
       this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = baxn.a(this, 30.0F);
+      this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = bcwh.a(this, 30.0F);
       this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
       this.jdField_b_of_type_AndroidWidgetScrollView.setVisibility(0);
     }
@@ -156,10 +156,10 @@ public class ChallengeActivity
   {
     super.getWindow().requestFeature(1);
     super.onCreate(paramBundle);
-    super.setContentView(2131559485);
+    super.setContentView(2131559537);
     super.a();
     a();
-    bdjr.a("100", "ANDROIDQQ.PK.FS", this.jdField_c_of_type_JavaLangString);
+    bfip.a("100", "ANDROIDQQ.PK.FS", this.jdField_c_of_type_JavaLangString);
   }
 }
 

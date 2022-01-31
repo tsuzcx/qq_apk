@@ -1,20 +1,23 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class aakt
-  extends CharacterStyle
+class aakt
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aakt(AuthDevActivity paramAuthDevActivity) {}
+  aakt(aakp paramaakp, ViewGroup paramViewGroup, View paramView) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onGlobalLayout()
   {
-    paramTextPaint.setColor(-5855578);
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    aanp.a("GdtMotiveVideoDialog", "onGlobalLayout: l=" + this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + ",t=" + this.jdField_a_of_type_AndroidViewViewGroup.getTop() + ",r=" + this.jdField_a_of_type_AndroidViewViewGroup.getRight() + ",b=" + this.jdField_a_of_type_AndroidViewViewGroup.getBottom());
+    aanp.a("GdtMotiveVideoDialog", "onGlobalLayout: " + this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aakt
  * JD-Core Version:    0.7.0.1
  */

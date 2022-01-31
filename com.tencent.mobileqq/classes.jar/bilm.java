@@ -1,18 +1,26 @@
-import com.tencent.aekit.api.standard.filter.AEFilterManager;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
-class bilm
-  implements bilu
+public class bilm
+  extends FlingGestureHandler
 {
-  bilm(bill parambill) {}
+  boolean a = true;
   
-  public void a(int paramInt, AEFilterManager paramAEFilterManager)
+  public bilm(Activity paramActivity)
   {
-    this.a.a(paramInt, paramAEFilterManager);
+    super(paramActivity);
+  }
+  
+  public void flingLToR()
+  {
+    if (this.a) {
+      super.flingLToR();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bilm
  * JD-Core Version:    0.7.0.1
  */

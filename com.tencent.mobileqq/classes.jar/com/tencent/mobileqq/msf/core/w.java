@@ -16,7 +16,6 @@ import android.os.SystemClock;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.c.k.c;
 import com.tencent.mobileqq.msf.core.net.b.o;
 import com.tencent.mobileqq.msf.core.net.n;
@@ -25,7 +24,6 @@ import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.a.a.b;
 import com.tencent.mobileqq.msf.sdk.a.a.c;
-import com.tencent.mobileqq.msf.service.h;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.msf.service.protocol.security.d;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -641,8 +639,8 @@ public class w
       return;
     }
     b.pushManager.d();
-    if (h.a) {
-      h.a(null);
+    if (com.tencent.mobileqq.msf.service.k.a) {
+      com.tencent.mobileqq.msf.service.k.a(null);
     }
     if ((b.standbyModeManager != null) && (!b.standbyModeManager.b()))
     {

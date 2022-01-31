@@ -1,49 +1,26 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.62.1;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.62.2;
 
-class acwj
-  implements AdapterView.OnItemClickListener
+public class acwj
+  implements beoy
 {
-  acwj(acwi paramacwi) {}
+  public acwj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt, String paramString)
   {
-    int j = ((bbjs)acwi.a(this.a)[0].get(paramInt)).c;
-    acwi.a(this.a).b();
-    int i = 0;
-    switch (j)
-    {
+    if ("profile_btn_config".equals(paramString)) {
+      this.a.runOnUiThread(new FriendProfileCardActivity.62.1(this));
     }
-    for (;;)
-    {
-      if (i != 0) {
-        axqy.b(null, "dc00898", "", "", "0X800A11B", "0X800A11B", i, 0, "", "", "", "");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("IntimateInfoShareHelper", 2, "intimate shareAction: " + paramInt + "," + j);
-      }
-      this.a.a(j, acwi.a(this.a));
+    while (!"profile_switch_config".equals(paramString)) {
       return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
     }
+    this.a.runOnUiThread(new FriendProfileCardActivity.62.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwj
  * JD-Core Version:    0.7.0.1
  */

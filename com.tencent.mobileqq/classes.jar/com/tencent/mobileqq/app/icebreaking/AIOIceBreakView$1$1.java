@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.icebreaking;
 
-import aknq;
+import amfe;
 import android.support.v4.view.ViewPager;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.hotpic.HotPicMainPanel;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 public class AIOIceBreakView$1$1
   implements Runnable
 {
-  public AIOIceBreakView$1$1(aknq paramaknq) {}
+  public AIOIceBreakView$1$1(amfe paramamfe) {}
   
   public void run()
   {

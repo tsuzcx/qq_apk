@@ -1,24 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import java.util.HashMap;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class ahch
-  implements ahbs
+public class ahch
+  extends nfu
 {
-  ahch(ahcg paramahcg, int paramInt) {}
+  public ahch(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
+  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramHashMap);
-    this.jdField_a_of_type_Ahcg.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
+      }
+      this.a.b = paramList;
+      ClassificationSearchActivity.a(this.a, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahch
  * JD-Core Version:    0.7.0.1
  */

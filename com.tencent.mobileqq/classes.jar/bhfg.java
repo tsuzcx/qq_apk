@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.KingCardInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public final class bhfg
-  implements Parcelable.Creator<KingCardInfo>
+class bhfg
+  implements ValueCallback<String>
 {
-  public KingCardInfo a(Parcel paramParcel)
-  {
-    return new KingCardInfo(paramParcel);
-  }
+  bhfg(bhfe parambhfe) {}
   
-  public KingCardInfo[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new KingCardInfo[paramInt];
+    QMLog.e("ProgressWebView", "evaluateJavascript miniAppWebviewStr callback");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhfg
  * JD-Core Version:    0.7.0.1
  */

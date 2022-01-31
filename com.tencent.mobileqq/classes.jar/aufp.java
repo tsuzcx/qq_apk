@@ -1,25 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 class aufp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  aufp(aufj paramaufj) {}
+  aufp(aufi paramaufi) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (aufj.a(this.a) != null)
-    {
-      aufj.a(this.a).setAlpha(f);
-      aufj.a(this.a).setTranslationY((1.0F - f) * actj.a(25.0F, aufj.a(this.a)));
+    paramDialogInterface.dismiss();
+    azmj.b(this.a.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
+    if (this.a.c()) {
+      aufi.a(this.a).a(false, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aufp
  * JD-Core Version:    0.7.0.1
  */

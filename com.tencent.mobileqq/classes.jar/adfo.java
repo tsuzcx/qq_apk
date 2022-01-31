@@ -1,21 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-final class adfo
-  implements ajuz
+public class adfo
+  implements DialogInterface.OnClickListener
 {
-  public void a(boolean paramBoolean)
+  public adfo(NotificationActivity paramNotificationActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      adfn.a(true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adfo
  * JD-Core Version:    0.7.0.1
  */

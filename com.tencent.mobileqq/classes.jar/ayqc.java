@@ -1,51 +1,27 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.media.ThumbnailUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
 
-class ayqc
-  implements aywy
+public class ayqc
+  extends amle
 {
-  ayqc(ayqb paramayqb) {}
-  
-  public Bitmap a(URL paramURL)
+  public ayqc(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    LocalMediaInfo localLocalMediaInfo = this.a.a(paramURL);
-    if (localLocalMediaInfo == null) {}
-    for (;;)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
     {
-      return null;
-      paramURL = new BitmapFactory.Options();
-      paramURL.inDensity = 160;
-      paramURL.inTargetDensity = 160;
-      paramURL.inScreenDensity = 160;
-      try
-      {
-        paramURL = BitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
-        if (paramURL == null) {
-          continue;
-        }
-        return ThumbnailUtils.extractThumbnail(paramURL, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbHeight, 2);
-      }
-      catch (OutOfMemoryError paramURL)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("VIdeoThumbDownloader", 2, "DeviceImgBitmapDecoder getBitmap", paramURL);
-          }
-          paramURL = null;
-        }
-      }
+      NetSearchEngine.a = paramSosoLbsInfo.a.a;
+      NetSearchEngine.b = paramSosoLbsInfo.a.b;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayqc
  * JD-Core Version:    0.7.0.1
  */

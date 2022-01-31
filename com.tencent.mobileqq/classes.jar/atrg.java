@@ -1,113 +1,82 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
 
-class atrg
-  implements BusinessObserver
+public class atrg
+  extends amab
 {
-  atrg(atqw paramatqw) {}
+  public atrg(LoginWelcomeManager paramLoginWelcomeManager) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayTribePanel", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
+      QLog.d("LoginWelcomeManager", 2, String.format("onTroopManagerFailed result=%s", new Object[] { Integer.valueOf(paramInt2) }));
     }
-    Object localObject;
+    if (1 == paramInt1) {
+      QQToast.a(LoginWelcomeManager.a(this.a).getApp(), 4, 2131719225, 1).a();
+    }
+    LoginWelcomeManager.a(this.a).removeObserver(this);
+    this.a.b();
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, String.format("onTroopManagerSuccess result=%s troopUin=%s", new Object[] { Integer.valueOf(paramInt2), paramString }));
+    }
+    Bundle localBundle;
+    if (1 == paramInt1)
+    {
+      QQToast.a(LoginWelcomeManager.a(this.a).getApp(), 5, 2131719226, 1).a();
+      localBundle = LoginWelcomeManager.a(this.a).getBundle("request");
+      localBundle.putString("uin", String.valueOf(paramString));
+      if (paramInt2 != 0) {
+        break label120;
+      }
+    }
+    label120:
+    for (paramInt1 = i;; paramInt1 = 0)
+    {
+      localBundle.putInt("result", paramInt1);
+      LoginWelcomeManager.a(this.a).removeObserver(this);
+      this.a.b();
+      return;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
     if (paramBoolean)
     {
-      try
-      {
-        ((aszf)this.a.a.app.getManager(106)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label544;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyProfileDisplayTribePanel", 2, "retCode = [" + paramInt + "]");
-        }
-        if (paramInt == 0) {
-          break label302;
-        }
-        paramBundle = paramBundle.optString("msg");
-        if (!TextUtils.isEmpty(paramBundle))
-        {
-          bcql.a(this.a.a, 1, "" + paramBundle, 1).a();
-          return;
-        }
-        bcql.a(this.a.a, 1, ajya.a(2131707380), 1).a();
-        return;
+      paramString = LoginWelcomeManager.a(this.a).getBundle("request");
+      paramString.putString("uin", String.valueOf(paramLong));
+      paramString.putShort("option", paramTroopInfo.cGroupOption);
+      paramString.putString("name", paramTroopInfo.troopname);
+      if ((paramTroopInfo.cGroupOption != 4) && (paramTroopInfo.cGroupOption != 5)) {
+        break label114;
       }
-      catch (Exception paramBundle)
-      {
-        bcql.a(this.a.a, 1, ajya.a(2131707316), 1).a();
-        if (!QLog.isColorLevel()) {
-          break label587;
-        }
-      }
-      QLog.e("NearbyProfileDisplayTribePanel", 2, "未知异常，请稍后重试", paramBundle);
-      return;
-      label302:
-      if (paramBundle.optInt("retcode") == 0)
-      {
-        paramBundle = this.a;
-        if (atqw.a(this.a)) {
-          break label588;
-        }
-      }
+      paramString.putString("answer", paramTroopInfo.joinTroopAnswer);
+      paramString.putString("question", paramTroopInfo.joinTroopQuestion);
     }
-    label544:
-    label587:
-    label588:
-    for (paramBoolean = true;; paramBoolean = false)
+    for (;;)
     {
-      atqw.a(paramBundle, paramBoolean);
-      localObject = this.a.a;
-      if (atqw.a(this.a)) {}
-      for (paramBundle = ajya.a(2131707345);; paramBundle = ajya.a(2131707303))
-      {
-        bcql.a((Context)localObject, 2, paramBundle, 1).a();
-        atqw.a(this.a, 1, 60);
-        if ((!atqw.a(this.a)) && (atqw.a(this.a).getChildAt(2).getVisibility() != 0))
-        {
-          paramBundle = (Button)atqw.a(this.a).getChildAt(1).findViewById(2131378436);
-          paramBundle.setTextColor(this.a.a.getResources().getColor(2131166885));
-          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839026));
-        }
-        if (!atqw.a(this.a)) {
-          break;
-        }
-        paramBundle = (Button)atqw.a(this.a).getChildAt(1).findViewById(2131378436);
-        paramBundle.setTextColor(this.a.a.getResources().getColor(2131166887));
-        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839065));
-        return;
+      this.a.b();
+      LoginWelcomeManager.a(this.a).removeObserver(this);
+      return;
+      label114:
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginWelcomeManager", 2, "onOIDB0X88D_1_Ret err");
       }
-      bcql.a(this.a.a, 1, ajya.a(2131707312), 1).a();
-      return;
-      bcql.a(this.a.a, 1, ajya.a(2131707318), 1).a();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atrg
  * JD-Core Version:    0.7.0.1
  */

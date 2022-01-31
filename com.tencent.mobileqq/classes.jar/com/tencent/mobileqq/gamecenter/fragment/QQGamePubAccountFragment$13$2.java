@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import aqsi;
+import asib;
 import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 import java.util.ArrayList;
 
 public class QQGamePubAccountFragment$13$2
   implements Runnable
 {
-  public QQGamePubAccountFragment$13$2(aqsi paramaqsi) {}
+  public QQGamePubAccountFragment$13$2(asib paramasib) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class QQGamePubAccountFragment$13$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.13.2
  * JD-Core Version:    0.7.0.1
  */

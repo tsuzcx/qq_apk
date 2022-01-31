@@ -1,41 +1,77 @@
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.wifisdk.TMSDKCustomConfig.IThreadPoolManager;
-
-final class bcwj
-  implements TMSDKCustomConfig.IThreadPoolManager
+public class bcwj
 {
-  public void addTask(int paramInt, Runnable paramRunnable, String paramString)
+  public static int a(byte paramByte)
   {
-    ThreadManagerV2.excute(paramRunnable, 16, null, false);
+    return paramByte & 0xFF;
   }
   
-  public void addTypeTask(Runnable paramRunnable, int paramInt)
+  public static int a(byte[] paramArrayOfByte)
   {
-    int i = 16;
-    if (paramInt == 3) {
-      i = 64;
-    }
-    for (;;)
+    int i = 0;
+    int j = 0;
+    while (i < 4)
     {
-      ThreadManagerV2.excute(paramRunnable, i, null, false);
-      return;
-      if (paramInt == 4) {
-        i = 128;
-      } else if (paramInt == 2) {
-        i = 32;
-      }
+      j = j << 8 | a(paramArrayOfByte[i]);
+      i += 1;
     }
+    return j;
   }
   
-  public Looper getSubThreadLooper()
+  public static int a(byte[] paramArrayOfByte, int paramInt)
   {
-    return ThreadManagerV2.getSubThreadLooper();
+    int j = 0;
+    int i = paramInt;
+    while (i < paramInt + 4)
+    {
+      j = j << 8 | a(paramArrayOfByte[i]);
+      i += 1;
+    }
+    return j;
+  }
+  
+  public static short a(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    short s = 0;
+    while (i < 2)
+    {
+      s = (short)((short)(s << 8) | a(paramArrayOfByte[i]));
+      i += 1;
+    }
+    return s;
+  }
+  
+  public static byte[] a(int paramInt)
+  {
+    byte[] arrayOfByte = new byte[4];
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    while (paramInt < 4)
+    {
+      arrayOfByte[paramInt] = Integer.valueOf(i >>> 24).byteValue();
+      i <<= 8;
+      paramInt += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  public static byte[] a(short paramShort)
+  {
+    return new byte[] { (byte)(paramShort >>> 8), (byte)paramShort };
+  }
+  
+  public static byte[] b(int paramInt)
+  {
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)((0xFF00 & paramInt) >> 8);
+    int k = (byte)((0xFF0000 & paramInt) >> 16);
+    return new byte[] { (byte)((0xFF000000 & paramInt) >> 24), k, j, i };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcwj
  * JD-Core Version:    0.7.0.1
  */

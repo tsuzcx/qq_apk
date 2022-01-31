@@ -1,12 +1,19 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public abstract interface bcne
+public class bcne
+  implements bclf
 {
-  public abstract void a(Bitmap paramBitmap);
+  public bcne(RobotPanelLayoutBase paramRobotPanelLayoutBase, bcnh parambcnh) {}
+  
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcne
  * JD-Core Version:    0.7.0.1
  */

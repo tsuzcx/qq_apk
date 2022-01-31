@@ -1,9 +1,9 @@
 package cooperation.qqfav.globalsearch;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.Intent;
-import bgqt;
+import birs;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -18,14 +18,14 @@ public class FavoriteSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  public BaseSearchFragment<bgqt> a()
+  public BaseSearchFragment<birs> a()
   {
     return new FavoriteSearchFragment();
   }
   
   public String a()
   {
-    return ajya.a(2131704392);
+    return alpo.a(2131704764);
   }
   
   public void doOnResume()
@@ -38,7 +38,7 @@ public class FavoriteSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,28 @@
-public class rre
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime;
+
+class rre
+  extends alxv
 {
-  private final int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final int b;
+  rre(rqj paramrqj) {}
   
-  public rre(int paramInt1, int paramInt2, Object paramObject)
+  protected void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (pid.a(this.a.a(), str) < qlx.d)
+    {
+      this.a.a.c(6);
+      return;
+    }
+    QQToast.a(this.a.a(), 0, this.a.a().getString(2131719054), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rre
  * JD-Core Version:    0.7.0.1
  */

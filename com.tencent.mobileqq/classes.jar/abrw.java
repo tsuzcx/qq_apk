@@ -1,24 +1,27 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-
 public class abrw
-  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public long b;
+  public String b;
+  public String c = "";
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  public abrw()
   {
-    return true;
+    this.jdField_a_of_type_Double = (0.0D / 0.0D);
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Double = (0.0D / 0.0D);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class vqv
-  extends tez
+  implements vrs
 {
-  vqv(vqu paramvqu, stw paramstw, long paramLong)
-  {
-    super(paramstw);
-  }
+  vqv(vqr paramvqr, StoryVideoItem paramStoryVideoItem) {}
   
-  protected void a(tfc paramtfc)
+  public void b(vrr paramvrr)
   {
-    if (paramtfc.jdField_a_of_type_Int == 0)
+    if (this.jdField_a_of_type_Vqr.isCanceled()) {}
+    do
     {
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
-      }
-      vqu.a().sendMessage(Message.obtain(vqu.a(), 1, null));
-    }
-    for (;;)
-    {
-      vqu.a(this.jdField_a_of_type_Vqu);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramtfc.jdField_a_of_type_Int + ", errMsg:" + paramtfc.jdField_a_of_type_JavaLangString);
-      }
-    }
+      wsv.a(this.jdField_a_of_type_Vqr.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Vqr.a.c]);
+    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Vqr.a, 12));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Vqr.a, 12);
+    this.jdField_a_of_type_Vqr.a.d = 1;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Vqr.a).a(this.jdField_a_of_type_Vqr.a, paramvrr, VideoViewVideoHolder.b(this.jdField_a_of_type_Vqr.a));
+    wta.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqv
  * JD-Core Version:    0.7.0.1
  */

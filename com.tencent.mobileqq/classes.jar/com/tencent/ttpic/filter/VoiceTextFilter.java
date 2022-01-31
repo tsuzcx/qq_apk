@@ -1,17 +1,14 @@
 package com.tencent.ttpic.filter;
 
 import android.graphics.PointF;
-import android.text.TextUtils;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.model.RenderParam;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
 import com.tencent.ttpic.model.TextRenderItem;
 import com.tencent.ttpic.model.Transition;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.model.WMGroup;
@@ -46,6 +43,7 @@ public class VoiceTextFilter
   private ParticleItem[] particleItems;
   private ParticleSystem2D particleSystem2D = new ParticleSystem2D(AEModule.getContext());
   private List<RenderParam> renderParams = new ArrayList();
+  private List<String> renderParticleIds;
   private List<TextRenderItem> textRenderItems = new ArrayList();
   private int zIndex;
   
@@ -158,7 +156,7 @@ public class VoiceTextFilter
             localParticleItem.wmGroupCopies.add(localWMGroup);
           }
         }
-        localParticleItem.triggerCtrlItem = new TriggerCtrlItem(localStickerItem);
+        localParticleItem.id = localStickerItem.id;
         localParticleItem.particles = new Particle[localStickerItem.transition.particleCountMax];
         localParticleItem.maxRepeatCount = localStickerItem.transition.repeatCount;
         localParticleItem.emissionMode = localStickerItem.transition.emissionMode;
@@ -302,28 +300,6 @@ public class VoiceTextFilter
         localObject = paramList1;
         break label282;
         break;
-      }
-    }
-  }
-  
-  private void updateParticleItemTrigger(PTDetectInfo paramPTDetectInfo)
-  {
-    if (this.particleItems != null)
-    {
-      ParticleItem[] arrayOfParticleItem = this.particleItems;
-      int j = arrayOfParticleItem.length;
-      int i = 0;
-      if (i < j)
-      {
-        ParticleItem localParticleItem = arrayOfParticleItem[i];
-        TRIGGERED_STATUS localTRIGGERED_STATUS = localParticleItem.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
-        if ((localTRIGGERED_STATUS == TRIGGERED_STATUS.FIRST_TRIGGERED) || (localTRIGGERED_STATUS == TRIGGERED_STATUS.TRIGGERED)) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localParticleItem.triggered = bool;
-          i += 1;
-          break;
-        }
       }
     }
   }
@@ -530,26 +506,9 @@ public class VoiceTextFilter
     return true;
   }
   
-  public void setTriggerWords(String paramString)
+  public void setRenderParticleIds(List<String> paramList)
   {
-    if (this.particleItems != null)
-    {
-      ParticleItem[] arrayOfParticleItem = this.particleItems;
-      int j = arrayOfParticleItem.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = arrayOfParticleItem[i];
-        TriggerCtrlItem localTriggerCtrlItem = ((ParticleItem)localObject).triggerCtrlItem;
-        if (TextUtils.isEmpty(((ParticleItem)localObject).stickerItem.triggerWords)) {}
-        for (localObject = paramString;; localObject = ((ParticleItem)localObject).stickerItem.triggerWords)
-        {
-          localTriggerCtrlItem.setTriggerWords((String)localObject);
-          i += 1;
-          break;
-        }
-      }
-    }
+    this.renderParticleIds = paramList;
   }
   
   public void updateAndRender(Frame paramFrame, long paramLong, boolean paramBoolean)
@@ -572,9 +531,16 @@ public class VoiceTextFilter
         this.frameInterval = ((int)(paramObject.timestamp - this.lastFrameTimestamp));
       }
       this.lastFrameTimestamp = paramObject.timestamp;
-      BenchUtil.benchStart(TAG + " updateParticleItemTrigger");
-      updateParticleItemTrigger(paramObject);
-      BenchUtil.benchEnd(TAG + " updateParticleItemTrigger");
+      int i = 0;
+      if (i < this.particleItems.length)
+      {
+        if ((this.renderParticleIds != null) && (this.renderParticleIds.contains(this.particleItems[i].id))) {}
+        for (this.particleItems[i].triggered = true;; this.particleItems[i].triggered = false)
+        {
+          i += 1;
+          break;
+        }
+      }
       BenchUtil.benchStart(TAG + " updateParticles");
       updateParticles(paramObject.facePoints, paramObject.handPoints, paramObject.timestamp);
       BenchUtil.benchEnd(TAG + " updateParticles");

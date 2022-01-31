@@ -1,17 +1,26 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
-class neo
+public class neo
+  extends Handler
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public neo(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  neo(nea paramnea) {}
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 5) {
+      this.a.a((String)paramMessage.obj);
+    }
+    while (paramMessage.what != 291) {
+      return;
+    }
+    this.a.updateMicStatus((String)paramMessage.obj);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     neo
  * JD-Core Version:    0.7.0.1
  */

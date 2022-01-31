@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo.artfilter;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -48,7 +48,7 @@ public class ArtFilterBridgeActivity
         localBundle.putInt("pic_entrance_type", localIntent.getIntExtra("pic_entrance_type", 0));
         boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
         if (bool2) {
-          localBundle.putString("extra_publish_text", ajya.a(2131700754));
+          localBundle.putString("extra_publish_text", alpo.a(2131701123));
         }
         if (localIntent.hasExtra("troop_uin")) {
           localBundle.putString("troop_uin", localIntent.getStringExtra("troop_uin"));
@@ -142,7 +142,7 @@ public class ArtFilterBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

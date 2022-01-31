@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.comment;
 
-import wnb;
-import wnc;
+import ybu;
+import ybv;
 
 public class CommentInputPopupWindow$1$1
   implements Runnable
 {
-  public CommentInputPopupWindow$1$1(wnc paramwnc) {}
+  public CommentInputPopupWindow$1$1(ybv paramybv) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class CommentInputPopupWindow$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,47 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class ajuu
-  extends MSFServlet
+  implements bhvg
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public ajuu(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineServlet", 2, "onReceive called");
-    }
-    if (paramIntent == null)
-    {
-      QLog.e("DataLineServlet", 1, "onReceive : req is null");
-      return;
-    }
-    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    ((ajum)localQQAppInterface.a(8)).a(paramIntent, paramFromServiceMsg);
+    this.a.a = true;
+    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineServlet", 2, "onSend called");
-    }
-    if (paramIntent == null) {
-      QLog.e("DataLineServlet", 1, "onSend : req is null");
-    }
-    do
+    if (!this.a.a)
     {
-      return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
+      if (paramInt - 1 >= 0) {
+        paramPinnedFooterExpandableListView.b(paramInt - 1);
       }
-      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-      paramPacket.putSendData(paramIntent.getWupBuffer());
-      paramPacket.setTimeout(paramIntent.getTimeout());
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("DataLineServlet", 1, "onSend : toMsg is null");
+      for (;;)
+      {
+        this.a.a = true;
+        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
+        }
+      }
+    }
+    if (paramPinnedFooterExpandableListView.c(paramInt))
+    {
+      paramPinnedFooterExpandableListView.b(paramInt);
+      return;
+    }
+    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajuu
  * JD-Core Version:    0.7.0.1
  */

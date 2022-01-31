@@ -1,34 +1,54 @@
-import android.graphics.Bitmap;
+import android.content.Intent;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class aywv
-  implements aywy
+public class aywv
+  extends MSFServlet
 {
-  aywv(aywu paramaywu) {}
-  
-  public Bitmap a(URL paramURL)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    String str = paramURL.getPath();
-    try
+    if (paramIntent != null)
     {
-      Bitmap localBitmap = aywu.a(this.a, str);
-      paramURL = localBitmap;
-      if (localBitmap == null) {
-        paramURL = aywu.b(this.a, str);
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      ((PeakAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioTransServlet", 2, " onSend runhw:" + paramIntent);
       }
-      return paramURL;
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
     }
-    catch (Throwable paramURL)
-    {
-      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aywv
  * JD-Core Version:    0.7.0.1
  */

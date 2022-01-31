@@ -1,22 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkBridgeActivity;
 
 public class biot
-  extends bjdt
+  implements DialogInterface.OnClickListener
 {
-  public biot(AEMaterialProviderView paramAEMaterialProviderView) {}
+  public biot(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEMaterialProviderView", 2, "material list updated!");
-    }
-    this.a.a(true);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biot
  * JD-Core Version:    0.7.0.1
  */

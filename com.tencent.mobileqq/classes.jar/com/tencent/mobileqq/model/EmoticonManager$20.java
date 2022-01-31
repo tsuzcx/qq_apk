@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.model;
 
 import android.text.TextUtils;
-import askf;
-import aukp;
-import aukr;
+import aube;
+import awbw;
+import awby;
 import com.tencent.mobileqq.data.RecentEmotion;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -11,18 +11,18 @@ import java.util.List;
 public class EmoticonManager$20
   implements Runnable
 {
-  public EmoticonManager$20(askf paramaskf, List paramList) {}
+  public EmoticonManager$20(aube paramaube, List paramList) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    aukr localaukr = this.this$0.a.a();
+    awby localawby = this.this$0.a.a();
     for (;;)
     {
       int i;
       try
       {
-        localaukr.a();
+        localawby.a();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("saveRecentEmotionToDB:");
         i = this.a.size() - 1;
@@ -49,27 +49,27 @@ public class EmoticonManager$20
           if (localRecentEmotion2 != null) {
             this.this$0.a.b(localRecentEmotion2);
           }
-          askf.a(this.this$0, localRecentEmotion3);
+          aube.a(this.this$0, localRecentEmotion3);
         }
       }
       catch (Exception localException)
       {
         QLog.e("EmoticonManager", 2, "saveRecentEmotionToDB e = " + localException.getMessage());
-        localaukr.b();
+        localawby.b();
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonManager", 2, "saveRecentEmotionToDB_Time: " + (System.currentTimeMillis() - l));
         }
         return;
-        localaukr.c();
+        localawby.c();
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonManager", 2, localException.toString());
         }
-        localaukr.b();
+        localawby.b();
         continue;
       }
       finally
       {
-        localaukr.b();
+        localawby.b();
       }
       label364:
       i -= 1;
@@ -78,7 +78,7 @@ public class EmoticonManager$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.20
  * JD-Core Version:    0.7.0.1
  */

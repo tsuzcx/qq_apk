@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class akrz
-  implements Comparator<Map.Entry<String, Integer>>
+class akrz
+  implements MediaPlayer.OnErrorListener
 {
-  public akrz(MsgLruCache paramMsgLruCache) {}
+  akrz(akry paramakry) {}
   
-  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (((Integer)paramEntry1.getValue()).intValue() < ((Integer)paramEntry2.getValue()).intValue()) {
-      return 1;
-    }
-    if (paramEntry1.getValue() == paramEntry2.getValue()) {
-      return 0;
-    }
-    return -1;
+    QLog.e("CmGameAudioPlayer", 1, "what " + paramInt1 + " ext " + paramInt2);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akrz
  * JD-Core Version:    0.7.0.1
  */

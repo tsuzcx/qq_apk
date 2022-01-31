@@ -1,38 +1,46 @@
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.ReboundLayout;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qidian.proto.mobileqq_qidian.GroupItem;
 
 public class bfvm
-  extends Animation
 {
-  private float jdField_a_of_type_Float;
-  private float b = 1.0F;
+  public int a;
+  public long a;
+  public String a;
   
-  private bfvm(ReboundLayout paramReboundLayout)
+  public bfvm() {}
+  
+  public bfvm(mobileqq_qidian.GroupItem paramGroupItem)
   {
-    ReboundLayout.a(paramReboundLayout, true);
+    a(paramGroupItem);
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public mobileqq_qidian.GroupItem a()
   {
-    paramFloat = (this.b - this.jdField_a_of_type_Float) * paramFloat + this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_ComTencentWidgetReboundLayout.scrollBy((int)((400 - this.jdField_a_of_type_ComTencentWidgetReboundLayout.getScrollX()) * paramFloat), 0);
-    if (paramFloat == 1.0F) {
-      ReboundLayout.a(this.jdField_a_of_type_ComTencentWidgetReboundLayout, false);
+    mobileqq_qidian.GroupItem localGroupItem = new mobileqq_qidian.GroupItem();
+    localGroupItem.uint64_groupid.set(this.jdField_a_of_type_Long);
+    localGroupItem.uint32_group_level.set(this.jdField_a_of_type_Int);
+    localGroupItem.str_group_name.set(this.jdField_a_of_type_JavaLangString);
+    return localGroupItem;
+  }
+  
+  public void a(mobileqq_qidian.GroupItem paramGroupItem)
+  {
+    if (paramGroupItem.uint64_groupid.has()) {
+      this.jdField_a_of_type_Long = paramGroupItem.uint64_groupid.get();
     }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    setDuration(260L);
-    setInterpolator(new AccelerateInterpolator());
+    if (paramGroupItem.uint32_group_level.has()) {
+      this.jdField_a_of_type_Int = paramGroupItem.uint32_group_level.get();
+    }
+    if (paramGroupItem.str_group_name.has()) {
+      this.jdField_a_of_type_JavaLangString = paramGroupItem.str_group_name.get();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfvm
  * JD-Core Version:    0.7.0.1
  */

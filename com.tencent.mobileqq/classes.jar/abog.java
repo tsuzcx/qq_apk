@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
-public class abog
-  implements DialogInterface.OnClickListener
+class abog
+  implements Comparator<msg_comm.Msg>
 {
-  public abog(NotificationActivity paramNotificationActivity) {}
+  abog(abof paramabof) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
   {
-    this.a.finish();
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abog
  * JD-Core Version:    0.7.0.1
  */

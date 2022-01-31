@@ -1,6 +1,6 @@
 package com.tencent.thumbplayer.tplayer.plugins.report;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 class TPReportManager$VodReportHandler
   implements TPReportManager.IReportHandler
@@ -20,7 +20,7 @@ class TPReportManager$VodReportHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager.VodReportHandler
  * JD-Core Version:    0.7.0.1
  */

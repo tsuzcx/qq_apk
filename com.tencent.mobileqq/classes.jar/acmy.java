@@ -1,62 +1,68 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.TroopShortcutbarFragment;
-import com.tencent.util.Pair;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class acmy
-  implements URLDrawable.URLDrawableListener
+  implements alos
 {
-  public acmy(TroopShortcutbarFragment paramTroopShortcutbarFragment) {}
+  public acmy(Conversation paramConversation) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public ViewGroup a()
   {
-    if ((paramURLDrawable.getCurrDrawable() instanceof RegionDrawable))
-    {
-      paramThrowable = this.a.a.iterator();
-      while (paramThrowable.hasNext())
-      {
-        Pair localPair = (Pair)paramThrowable.next();
-        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null)) {
-          ((URLImageView)localPair.second).setImageDrawable(this.a.getResources().getDrawable(2130843106));
-        }
-      }
-    }
+    return this.a.a.a;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public bhxu a(String paramString)
   {
-    Drawable localDrawable = paramURLDrawable.getCurrDrawable();
-    if ((localDrawable instanceof RegionDrawable))
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext())
-      {
-        Pair localPair = (Pair)localIterator.next();
-        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null))
-        {
-          Bitmap localBitmap = ((RegionDrawable)localDrawable).getBitmap();
-          ((URLImageView)localPair.second).setImageBitmap(localBitmap);
-          ((URLImageView)localPair.second).setVisibility(0);
-        }
-      }
-    }
+    return this.a.a.a(paramString);
+  }
+  
+  public void a()
+  {
+    this.a.a.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.a.a.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    this.a.a.a(paramConfiguration);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.a.a.a(paramQQAppInterface);
+  }
+  
+  public void a(String paramString, bhxu parambhxu)
+  {
+    this.a.a.a(paramString, parambhxu);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a.a(paramBoolean);
+  }
+  
+  public void b()
+  {
+    this.a.a.c();
+  }
+  
+  public void c()
+  {
+    this.a.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acmy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,83 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.app.Activity;
 import java.lang.ref.WeakReference;
+import java.net.URLDecoder;
+import org.json.JSONObject;
 
-class bady
-  implements View.OnClickListener
+public class bady
+  implements alkr
 {
-  bady(badx parambadx) {}
+  public WeakReference<Activity> a;
   
-  public void onClick(View paramView)
+  public bady(Activity paramActivity)
   {
-    paramView = (BaseActivity)badx.a(this.a).get();
-    if (paramView != null)
+    this.a = new WeakReference(paramActivity);
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
     {
-      bahy.a(badx.a(this.a), badx.a(this.a).a);
-      Object localObject1 = balw.a();
-      Object localObject2 = ((balw)localObject1).a("troop_list_homework");
-      balx localbalx = new balx();
-      localbalx.a = badx.b(this.a).a;
-      localbalx.c = "aio";
-      localObject1 = ((balw)localObject1).a((String)localObject2, localbalx);
-      localObject2 = new Intent(paramView, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      paramView.startActivity((Intent)localObject2);
-      bbbp.a(badx.b(this.a), badx.c(this.a).a, "homework", "AioSee_Clk", 0, 0, new String[] { badx.d(this.a).a, "", "", bbbp.a(badx.c(this.a), badx.e(this.a).a) });
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 2);
+            a((String)paramObject[0], (String)paramObject[1]);
+            return;
+            a();
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 1);
+        try
+        {
+          paramObject = (JSONObject)paramObject[0];
+          String str = paramObject.optString("url");
+          paramInt = paramObject.optInt("ret");
+          paramObject = URLDecoder.decode(str, "UTF-8");
+          if ((paramInt == 0) && (paramObject.length() > 0))
+          {
+            a(paramBoolean, paramObject);
+            return;
+          }
+        }
+        catch (Exception paramObject)
+        {
+          paramObject.printStackTrace();
+          a(paramObject.toString(), "");
+          return;
+        }
+        a(paramInt + "", "");
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bady
  * JD-Core Version:    0.7.0.1
  */

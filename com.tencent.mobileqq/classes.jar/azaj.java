@@ -1,21 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
-
-class azaj
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class azaj
+  implements azah
 {
-  azaj(azag paramazag) {}
+  public void a(int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    azag.a(this.a).setPadding(baxn.a(azag.a(this.a).getContext(), 8.0F), i, 0, 0);
-  }
+  public void a(int paramInt, azaa paramazaa) {}
+  
+  public void b(int paramInt, azaa paramazaa) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azaj
  * JD-Core Version:    0.7.0.1
  */

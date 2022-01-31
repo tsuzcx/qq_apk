@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acyq;
-import acyr;
-import acys;
+import aeqd;
+import aeqf;
+import aeqg;
 import android.graphics.drawable.Drawable;
 
 public class AioAnimationDetector$3
   implements Runnable
 {
-  public AioAnimationDetector$3(acyq paramacyq, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, acyr paramacyr) {}
+  public AioAnimationDetector$3(aeqd paramaeqd, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, aeqf paramaeqf) {}
   
   public void run()
   {
     AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
     Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (this.jdField_a_of_type_Acyr.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_Acyr.a.a)
+    if (this.jdField_a_of_type_Aeqf.a == null) {}
+    for (int i = -1;; i = this.jdField_a_of_type_Aeqf.a.a)
     {
       localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(0), Integer.valueOf(i) });
       return;
@@ -24,7 +24,7 @@ public class AioAnimationDetector$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector.3
  * JD-Core Version:    0.7.0.1
  */

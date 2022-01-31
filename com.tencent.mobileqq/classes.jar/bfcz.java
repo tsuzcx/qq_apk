@@ -1,79 +1,32 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfcz
-  implements belx
+  extends ndm
 {
-  public bfcz(MiniAppTextArea paramMiniAppTextArea) {}
+  public bfcz(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
   
-  public void onSoftKeyboardClosed()
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    MiniAppTextArea.a(this.a, false);
-  }
-  
-  public void onSoftKeyboardOpened(int paramInt)
-  {
-    MiniAppTextArea localMiniAppTextArea = null;
-    try
+    QLog.d("TroopAbility.PreVerification", 1, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID);
+    if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
     {
-      PageWebviewContainer localPageWebviewContainer;
-      Object localObject;
-      int i;
-      if (MiniAppTextArea.a(this.a) != null)
+      if (!paramOpenID.openID.equals(this.a.b))
       {
-        localPageWebviewContainer = MiniAppTextArea.a(this.a).a();
-        MiniAppTextArea.a(this.a).setCurInputId(MiniAppTextArea.d(this.a));
-        MiniAppTextArea.a(this.a, paramInt);
-        localObject = localMiniAppTextArea;
-        if (MiniAppTextArea.a(this.a) != null)
-        {
-          localObject = localMiniAppTextArea;
-          if (MiniAppTextArea.a(this.a).a() != null) {
-            localObject = MiniAppTextArea.a(this.a).a().a();
-          }
-        }
-        if ((bfgl.a((Context)localObject)) && (bfgl.a((Activity)localObject)))
-        {
-          localMiniAppTextArea = this.a;
-          paramInt = MiniAppTextArea.b(this.a);
-          MiniAppTextArea.a(localMiniAppTextArea, bfgl.c((Context)localObject) + paramInt);
-        }
-        MiniAppTextArea.c(this.a);
-        if (this.a.isFocused())
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("inputId", MiniAppTextArea.d(this.a));
-          i = MiniAppTextArea.b(this.a);
-          if (!MiniAppTextArea.b(this.a)) {
-            break label250;
-          }
-        }
-      }
-      label250:
-      for (paramInt = MiniAppTextArea.c(this.a);; paramInt = 0)
-      {
-        ((JSONObject)localObject).put("height", (int)((paramInt + i) / bfgl.a(this.a.getContext()) + 0.5F));
-        localPageWebviewContainer.b("onKeyboardShow", ((JSONObject)localObject).toString());
+        this.a.d();
+        TroopAbilityPreVerificationFragment.a(this.a);
         return;
-        localPageWebviewContainer = null;
-        break;
       }
+      this.a.c();
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    this.a.c(alpo.a(2131715512));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfcz
  * JD-Core Version:    0.7.0.1
  */

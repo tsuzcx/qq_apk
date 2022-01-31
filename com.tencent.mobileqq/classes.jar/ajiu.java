@@ -1,40 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ajiu
-  extends bbwt
+  implements DialogInterface.OnDismissListener
 {
-  public ajiu(ApolloCardWindow paramApolloCardWindow) {}
+  public ajiu(LoginView paramLoginView) {}
   
-  public void onDoneFile(bbwu parambbwu)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (parambbwu == null) {
-      return;
-    }
-    try
-    {
-      ??? = parambbwu.a().getString("path");
-      String str = parambbwu.a().getString("url");
-      parambbwu = this.a.a((String)???);
-      str = bdik.d(str);
-      synchronized (ApolloCardWindow.a)
-      {
-        ApolloCardWindow.a.put(str, parambbwu);
-        return;
-      }
-      return;
-    }
-    catch (Exception parambbwu)
-    {
-      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambbwu);
-    }
+    LoginView.g(this.a, false);
+    LoginView.h(this.a, false);
+    azmj.a(this.a.a, "new_reg_805", "log_page", "can_clk", "", 1, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajiu
  * JD-Core Version:    0.7.0.1
  */

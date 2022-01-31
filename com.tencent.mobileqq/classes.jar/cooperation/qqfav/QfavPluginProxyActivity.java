@@ -1,13 +1,14 @@
 package cooperation.qqfav;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import bglh;
-import bglq;
-import bgpw;
-import bgsa;
+import bimg;
+import bimp;
+import biqv;
+import bisz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -61,27 +62,34 @@ public class QfavPluginProxyActivity
   
   public static boolean a(Context paramContext, String paramString, Intent paramIntent, int paramInt)
   {
+    return a(paramContext, paramString, paramIntent, paramInt, true);
+  }
+  
+  public static boolean a(Context paramContext, String paramString, Intent paramIntent, int paramInt, boolean paramBoolean)
+  {
     QfavPluginProxyService.a();
-    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!bgpw.a(paramContext))) {}
-    for (bgsa localbgsa = new bgsa(paramContext);; localbgsa = null)
+    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!biqv.a(paramContext))) {}
+    for (bisz localbisz = new bisz(paramContext);; localbisz = null)
     {
       String str = a(paramIntent);
       paramIntent.putExtra("useSkinEngine", true);
       paramIntent.putExtra("userQqResources", 1);
-      paramIntent.addFlags(268435456);
-      bglq localbglq = new bglq(0);
-      localbglq.jdField_b_of_type_JavaLangString = "qqfav.apk";
-      localbglq.d = "qqfav.apk";
-      localbglq.jdField_a_of_type_JavaLangString = paramString;
-      localbglq.e = str;
-      localbglq.jdField_a_of_type_JavaLangClass = a(paramIntent);
-      localbglq.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localbglq.jdField_b_of_type_Int = paramInt;
-      localbglq.jdField_a_of_type_AndroidAppDialog = localbgsa;
-      localbglq.c = 30000;
-      localbglq.f = null;
-      localbglq.jdField_b_of_type_Boolean = false;
-      bglh.a(paramContext, localbglq);
+      if ((paramBoolean) || (!(paramContext instanceof Activity))) {
+        paramIntent.addFlags(268435456);
+      }
+      bimp localbimp = new bimp(0);
+      localbimp.jdField_b_of_type_JavaLangString = "qqfav.apk";
+      localbimp.d = "qqfav.apk";
+      localbimp.jdField_a_of_type_JavaLangString = paramString;
+      localbimp.e = str;
+      localbimp.jdField_a_of_type_JavaLangClass = a(paramIntent);
+      localbimp.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbimp.jdField_b_of_type_Int = paramInt;
+      localbimp.jdField_a_of_type_AndroidAppDialog = localbisz;
+      localbimp.c = 30000;
+      localbimp.f = null;
+      localbimp.jdField_b_of_type_Boolean = false;
+      bimg.a(paramContext, localbimp);
       QLog.i("qqfav", 2, "QfavPluginProxyActivity: openPluginActivityForResult: " + str);
       return true;
     }
@@ -125,7 +133,7 @@ public class QfavPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.QfavPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

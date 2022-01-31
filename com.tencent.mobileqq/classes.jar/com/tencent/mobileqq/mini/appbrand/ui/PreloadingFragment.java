@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import bfnx;
+import bhos;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -32,7 +32,6 @@ import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
@@ -52,9 +51,9 @@ public class PreloadingFragment
   private static final boolean mEnableDBCache;
   private static LruCache<String, PreloadingFragment.MiniAppConfigCache> sMiniAppConfigCache;
   private Bundle mBundle;
-  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131369500);
+  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131369762);
   private ResultReceiver mResultReceiver;
-  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559265, null);
+  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559309, null);
   private Handler mUIHandler;
   
   static
@@ -142,7 +141,7 @@ public class PreloadingFragment
       if (MiniAppLauncher.isMiniAppSchemeV2(paramString1)) {
         try
         {
-          paramString2 = (String)bfnx.a(paramString1).get("_mappid");
+          paramString2 = (String)bhos.a(paramString1).get("_mappid");
           QLog.d("PreloadingFragment", 4, "scheme: appid:  " + paramString2);
           if (!TextUtils.isEmpty(paramString2))
           {
@@ -297,19 +296,17 @@ public class PreloadingFragment
     {
       localMiniAppConfig = new MiniAppConfig(paramMiniAppInfo);
       if (paramLaunchParam != null) {
-        break label143;
+        break label120;
       }
       localMiniAppConfig.launchParam = new LaunchParam();
+      localMiniAppConfig.launchParam.navigateExtData = paramMiniAppInfo.extraData;
+      if (!TextUtils.isEmpty(localMiniAppConfig.launchParam.reportData)) {
+        break label139;
+      }
+      localMiniAppConfig.launchParam.reportData = paramMiniAppInfo.reportData;
     }
     for (;;)
     {
-      localMiniAppConfig.launchParam.navigateExtData = paramMiniAppInfo.extraData;
-      if (localMiniAppConfig.launchParam.reportData == null) {
-        localMiniAppConfig.launchParam.reportData = new HashMap();
-      }
-      if (paramMiniAppInfo.reportData != null) {
-        localMiniAppConfig.launchParam.reportData.putAll(paramMiniAppInfo.reportData);
-      }
       addAppConfigCache(localMiniAppConfig);
       if ((paramMiniAppInfo.verType != 3) && (paramMiniAppInfo.verType != 1)) {
         localMiniAppConfig.forceReroad = 3;
@@ -320,9 +317,14 @@ public class PreloadingFragment
       }
       quit();
       return;
-      label143:
+      label120:
       localMiniAppConfig.launchParam = paramLaunchParam;
       localMiniAppConfig.launchParam.miniAppId = paramMiniAppInfo.appId;
+      break;
+      label139:
+      if (!TextUtils.isEmpty(paramMiniAppInfo.reportData)) {
+        localMiniAppConfig.launchParam.reportData = (localMiniAppConfig.launchParam.reportData + "&" + paramMiniAppInfo.reportData);
+      }
     }
   }
   
@@ -491,8 +493,8 @@ public class PreloadingFragment
     QLog.i("miniapp-start", 1, "LoadingFragment onCreateView");
     if (this.mRootView == null)
     {
-      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559265, null);
-      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131369500));
+      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559309, null);
+      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131369762));
     }
     return this.mRootView;
   }
@@ -523,7 +525,7 @@ public class PreloadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment
  * JD-Core Version:    0.7.0.1
  */

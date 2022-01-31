@@ -1,53 +1,43 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.util.HashMap;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class bkgo<K, V>
+class bkgo
+  implements INetInfoHandler
 {
-  private ReferenceQueue<V> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
-  private HashMap<K, bkgo<K, V>.bkgp> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  bkgo(bkgl parambkgl) {}
   
-  @Nullable
-  public V a(K paramK)
+  public void onNetMobile2None()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK))
-    {
-      paramK = (bkgp)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
-      if (paramK.get() != null) {
-        return paramK.get();
-      }
-    }
-    return null;
+    this.a.a(false, false);
   }
   
-  public void a()
+  public void onNetMobile2Wifi(String paramString)
   {
-    for (;;)
-    {
-      Reference localReference = this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-      if (localReference == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.remove(((bkgp)localReference).a());
-    }
+    this.a.a(true, true);
   }
   
-  public void a(@NonNull K paramK, @NonNull V paramV)
+  public void onNetNone2Mobile(String paramString)
   {
-    if ((paramK == null) || (paramV == null)) {
-      throw new IllegalArgumentException("key-value cannot be null");
-    }
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK)) && (((bkgp)this.jdField_a_of_type_JavaUtilHashMap.get(paramK)).get() != null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramK, new bkgp(this, paramK, paramV, this.jdField_a_of_type_JavaLangRefReferenceQueue));
+    this.a.a(false, true);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.a(true, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.a(false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkgo
  * JD-Core Version:    0.7.0.1
  */

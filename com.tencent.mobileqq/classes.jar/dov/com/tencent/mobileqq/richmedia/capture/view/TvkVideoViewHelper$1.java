@@ -1,13 +1,13 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import bkxp;
+import bniz;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class TvkVideoViewHelper$1
   implements Runnable
 {
-  public TvkVideoViewHelper$1(bkxp parambkxp) {}
+  public TvkVideoViewHelper$1(bniz parambniz) {}
   
   public void run()
   {
@@ -18,12 +18,12 @@ public class TvkVideoViewHelper$1
     if (QLog.isColorLevel()) {
       QLog.d("TvkVideoViewHelper", 2, "start play");
     }
-    bkxp.a(this.this$0).start();
+    bniz.a(this.this$0).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.view.TvkVideoViewHelper.1
  * JD-Core Version:    0.7.0.1
  */

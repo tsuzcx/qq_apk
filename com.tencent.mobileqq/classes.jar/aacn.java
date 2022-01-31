@@ -1,35 +1,18 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
-abstract class aacn
-  extends akuo
+public class aacn
+  implements aadk
 {
-  long jdField_a_of_type_Long;
-  aabi jdField_a_of_type_Aabi;
-  boolean jdField_a_of_type_Boolean;
-  long b;
+  public aacn(GameCenterActivity.GameCenterFragment paramGameCenterFragment, WebView paramWebView) {}
   
-  public aacn(aabi paramaabi, int paramInt, long paramLong)
+  public void a(int paramInt, String paramString)
   {
-    super(paramInt, true, true, paramLong, true, false, "Doraemon");
-    this.jdField_a_of_type_Aabi = paramaabi;
-    this.b = 10000L;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void onConsecutiveFailure(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onConsecutiveFailure: errCode=" + paramInt1 + ", failCount=" + paramInt2);
+    QLog.i("GameCenterFragment", 1, "addShot res code=" + paramInt);
+    if (paramInt == 304) {
+      aadi.a().a(this.jdField_a_of_type_ComTencentSmttSdkWebView);
     }
-    if ((paramInt2 * 2000 < this.b) || (!this.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    aaep.a(this.jdField_a_of_type_Aabi, paramInt1, "error " + paramInt1);
-    Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    SosoInterface.b(this);
   }
 }
 

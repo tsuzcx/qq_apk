@@ -1,39 +1,44 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class adjk
-  extends akfk
+public class adjk
+  extends ased
 {
-  adjk(adji paramadji) {}
+  public adjk(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RedpointHandler", 2, "troopChatPie RedpointObserver  onDataChange");
+      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
     }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((avps)adji.a(this.a).a.getManager(36)).a(4, String.valueOf(130500));
-    if (this.a.b == null) {
-      this.a.b = ((ImageView)adji.a(this.a).c.findViewById(2131375030));
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
     }
-    if (this.a.b == null) {
+    while (!paramBoolean) {
       return;
     }
-    if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
-    {
-      this.a.b.setVisibility(0);
+    ProfileCardMoreActivity.a(this.a);
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean1) {
       return;
     }
-    this.a.b.setVisibility(8);
+    ProfileCardMoreActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjk
  * JD-Core Version:    0.7.0.1
  */

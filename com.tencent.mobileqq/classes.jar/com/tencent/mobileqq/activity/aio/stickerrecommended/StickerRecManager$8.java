@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aexb;
-import aukp;
+import agug;
+import awbw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class StickerRecManager$8
   implements Runnable
 {
-  public StickerRecManager$8(aexb paramaexb, List paramList) {}
+  public StickerRecManager$8(agug paramagug, List paramList) {}
   
   public void run()
   {
@@ -17,28 +17,28 @@ public class StickerRecManager$8
     while (localIterator.hasNext())
     {
       StickerRecCacheEntity localStickerRecCacheEntity1 = (StickerRecCacheEntity)localIterator.next();
-      StickerRecCacheEntity localStickerRecCacheEntity2 = (StickerRecCacheEntity)aexb.a(this.this$0).a(StickerRecCacheEntity.class, "md5=?", new String[] { localStickerRecCacheEntity1.md5 });
+      StickerRecCacheEntity localStickerRecCacheEntity2 = (StickerRecCacheEntity)agug.a(this.this$0).a(StickerRecCacheEntity.class, "md5=?", new String[] { localStickerRecCacheEntity1.md5 });
       if (localStickerRecCacheEntity2 != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("StickerRecManager", 2, "old exist: fileName=" + localStickerRecCacheEntity2.md5 + " lastTime=" + localStickerRecCacheEntity2.lastTime);
         }
         localStickerRecCacheEntity2.lastTime = localStickerRecCacheEntity1.lastTime;
-        aexb.a(this.this$0).a(localStickerRecCacheEntity2);
+        agug.a(this.this$0).a(localStickerRecCacheEntity2);
       }
       else
       {
         if (QLog.isColorLevel()) {
           QLog.d("StickerRecManager", 2, "old not exist: fileName=" + localStickerRecCacheEntity1.md5 + " lastTime=" + localStickerRecCacheEntity1.lastTime);
         }
-        aexb.a(this.this$0).b(localStickerRecCacheEntity1);
+        agug.a(this.this$0).b(localStickerRecCacheEntity1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager.8
  * JD-Core Version:    0.7.0.1
  */

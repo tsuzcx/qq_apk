@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class agkl
-  extends aumg
+class agkl
+  implements azjq
 {
-  public agkl(PhoneInnerFrame paramPhoneInnerFrame) {}
+  agkl(agkk paramagkk) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a()
   {
-    if (this.a.a)
-    {
-      this.a.b().a().unRegistObserver(this);
-      this.a.g();
-    }
+    agkk.a(this.a);
+    this.a.I();
+  }
+  
+  public void b()
+  {
+    this.a.I();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkl
  * JD-Core Version:    0.7.0.1
  */

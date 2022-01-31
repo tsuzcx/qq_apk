@@ -1,82 +1,67 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.viewmodels.ArticleViewModel.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.BaseMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
+@TargetApi(11)
 public class rvk
-  implements pbg
+  extends BaseMovementMethod
 {
-  private final BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence = "";
-  private rvl<CharSequence> jdField_a_of_type_Rvl = new rvl("");
-  private rvl<CharSequence> b = new rvl("");
-  private rvl<CharSequence> c = new rvl("");
+  private static rvk a;
   
-  private rvk(BaseArticleInfo paramBaseArticleInfo)
+  public static rvk a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_JavaLangCharSequence = pmo.a((ArticleInfo)paramBaseArticleInfo);
-    this.c.a(rvn.a(paramBaseArticleInfo, this));
-    this.jdField_a_of_type_Rvl.a(rvn.b(paramBaseArticleInfo, this));
-    this.b.a(rvn.c(paramBaseArticleInfo, this));
-  }
-  
-  public static rvk a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return new rvk(paramBaseArticleInfo);
-  }
-  
-  private void a()
-  {
-    ThreadManager.executeOnSubThread(new ArticleViewModel.1(this));
-  }
-  
-  public BaseArticleInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  }
-  
-  public CharSequence a()
-  {
-    a();
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public rvl<CharSequence> a()
-  {
-    return this.jdField_a_of_type_Rvl;
-  }
-  
-  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArticleViewModel", 2, "[onLoadUserInfoSucceed] uin=" + paramString + " userInfo: " + paramReadInJoyUserInfo);
+    if (a == null) {
+      a = new rvk();
     }
-    this.c.a(rvn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this));
-    this.jdField_a_of_type_Rvl.a(rvn.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this));
-    this.b.a(rvn.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this));
+    return a;
   }
   
-  public void a(String paramString1, String paramString2)
+  public void initialize(TextView paramTextView, Spannable paramSpannable)
   {
-    QLog.e("ArticleViewModel", 1, "[onLoadUserInfoFailed] uin=" + paramString1 + ", msg=" + paramString2);
+    Selection.removeSelection(paramSpannable);
   }
   
-  public rvl<CharSequence> b()
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    return this.b;
-  }
-  
-  public rvl<CharSequence> c()
-  {
-    return this.c;
+    int i = paramMotionEvent.getActionMasked();
+    if ((i == 1) || (i == 0))
+    {
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      paramMotionEvent = paramTextView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      if (j >= paramTextView.getText().length()) {
+        return true;
+      }
+      paramMotionEvent = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length > 0)
+      {
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(paramMotionEvent[0]), paramSpannable.getSpanEnd(paramMotionEvent[0]));
+        }
+      }
+      Selection.removeSelection(paramSpannable);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rvk
  * JD-Core Version:    0.7.0.1
  */

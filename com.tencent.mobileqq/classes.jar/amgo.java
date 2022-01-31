@@ -1,171 +1,50 @@
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.1;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.2;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.3;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.4;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.5;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public class amgo
+class amgo
+  implements abnz
 {
-  private amgq jdField_a_of_type_Amgq;
-  private Handler jdField_a_of_type_AndroidOsHandler = new amgp(this);
+  amgo(amgn paramamgn, String paramString, FMTransC2CMsgInfo paramFMTransC2CMsgInfo, int paramInt, byte[] paramArrayOfByte) {}
   
-  private void b(int paramInt1, String paramString, int paramInt2)
+  public ToServiceMsg a()
   {
-    boolean bool = amgr.b(paramInt1, paramString, paramInt2);
-    Message localMessage = Message.obtain();
-    localMessage.obj = new Pair(Integer.valueOf(paramInt1), paramString);
-    if (bool) {}
-    for (localMessage.what = 5;; localMessage.what = 6)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      return;
+    ToServiceMsg localToServiceMsg = amgn.a(this.jdField_a_of_type_Amgn).createToServiceMsg("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("msgsize", 0L);
+    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uniseq);
+    localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
+    localToServiceMsg.extraData.putString("uuid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uuid);
+    localToServiceMsg.extraData.putByte("cmd", (byte)0);
+    localToServiceMsg.extraData.putByte("keyType", (byte)0);
+    localToServiceMsg.extraData.putInt("busiType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.busiType);
+    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("queueSeq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.queueSeq);
+    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.sessionId);
+    localToServiceMsg.extraData.putInt("random", ayvy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq));
+    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_a_of_type_Int);
+    aywb localaywb = new aywb();
+    localaywb.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.subCmd;
+    localaywb.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    msg_svc.PbSendMsgReq localPbSendMsgReq = ayvu.a(amgn.a(this.jdField_a_of_type_Amgn), 13, this.jdField_a_of_type_JavaLangString, localaywb, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq, ayvy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
+    amgn.a(this.jdField_a_of_type_Amgn, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
+    amgn.a(this.jdField_a_of_type_Amgn, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo, localaywb);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity != null) {
+      localToServiceMsg.extraData.putLong("tmpSessionType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity.tmpSessionType);
     }
-  }
-  
-  private void b(int paramInt, String paramString, boolean paramBoolean)
-  {
-    Bundle localBundle = amgr.a(paramInt, paramString, paramBoolean);
-    localBundle.putInt("key_service_type", paramInt);
-    localBundle.putString("key_sub_type", paramString);
-    paramString = Message.obtain();
-    paramString.what = 9;
-    paramString.obj = localBundle;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
-  }
-  
-  private void b(Bundle paramBundle)
-  {
-    boolean bool = amgr.a(paramBundle);
-    Message localMessage = Message.obtain();
-    localMessage.obj = paramBundle;
-    if (bool) {}
-    for (localMessage.what = 3;; localMessage.what = 4)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      return;
-    }
-  }
-  
-  private void c(ColorNote paramColorNote)
-  {
-    Object localObject = paramColorNote.getUniKey();
-    boolean bool2 = true;
-    if (paramColorNote.mMainTitle != null) {
-      bool2 = amgr.a((String)localObject, "mMainTitle", paramColorNote.mMainTitle);
-    }
-    boolean bool1 = bool2;
-    if (paramColorNote.mSubTitle != null) {
-      bool1 = bool2 & amgr.a((String)localObject, "mSubTitle", paramColorNote.mSubTitle);
-    }
-    bool2 = bool1;
-    if (paramColorNote.mPicUrl != null) {
-      bool2 = bool1 & amgr.a((String)localObject, "mPicUrl", paramColorNote.mPicUrl);
-    }
-    localObject = Message.obtain();
-    if (bool2) {}
-    for (((Message)localObject).what = 10;; ((Message)localObject).what = 11)
-    {
-      ((Message)localObject).obj = paramColorNote;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-      return;
-    }
-  }
-  
-  private boolean c()
-  {
-    return Looper.getMainLooper() == Looper.myLooper();
-  }
-  
-  private void d(ColorNote paramColorNote)
-  {
-    amgr.a(paramColorNote);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    a(paramInt, paramString, 0);
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.2(this, paramInt1, paramString, paramInt2), 32, null, true);
-      return;
-    }
-    b(paramInt1, paramString, paramInt2);
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.3(this, paramInt, paramString, paramBoolean), 32, null, true);
-      return;
-    }
-    b(paramInt, paramString, paramBoolean);
-  }
-  
-  public void a(amgq paramamgq)
-  {
-    this.jdField_a_of_type_Amgq = paramamgq;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.1(this, paramBundle), 32, null, true);
-      return;
-    }
-    b(paramBundle);
-  }
-  
-  public void a(ColorNote paramColorNote)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.4(this, paramColorNote), 32, null, true);
-      return;
-    }
-    c(paramColorNote);
-  }
-  
-  public boolean a()
-  {
-    return amhj.a().c();
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    return amhj.a().a(paramInt, paramString);
-  }
-  
-  public void b(ColorNote paramColorNote)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.5(this, paramColorNote), 32, null, true);
-      return;
-    }
-    d(paramColorNote);
-  }
-  
-  public boolean b()
-  {
-    return amhj.a().b();
+    localToServiceMsg.putWupBuffer(localPbSendMsgReq.toByteArray());
+    localToServiceMsg.extraData.putLong(aqpg.class.getName(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.observerSeq);
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgo
  * JD-Core Version:    0.7.0.1
  */

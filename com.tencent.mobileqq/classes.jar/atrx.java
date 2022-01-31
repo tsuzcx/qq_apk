@@ -1,32 +1,30 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
 
-class atrx
-  implements View.OnClickListener
+public class atrx
+  implements Drawable.Callback
 {
-  atrx(atqw paramatqw, String paramString) {}
+  public atrx(LoveZoneTabRedDotView paramLoveZoneTabRedDotView) {}
   
-  public void onClick(View paramView)
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Atqw.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    paramView = this.jdField_a_of_type_Atqw.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Atqw.a.j)) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_Atqw.a.startActivity(localIntent);
-      axqy.b(this.jdField_a_of_type_Atqw.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
-      return;
-    }
+    this.a.invalidate();
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    this.a.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.a.unscheduleDrawable(paramDrawable, paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atrx
  * JD-Core Version:    0.7.0.1
  */

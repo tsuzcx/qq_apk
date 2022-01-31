@@ -30,14 +30,14 @@ public class UserListItemView
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     if (paramInt == 0) {
-      LayoutInflater.from(paramContext).inflate(2131561998, this);
+      LayoutInflater.from(paramContext).inflate(2131562190, this);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362958));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362955));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362993));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362990));
       return;
-      LayoutInflater.from(paramContext).inflate(2131561999, this);
+      LayoutInflater.from(paramContext).inflate(2131562191, this);
     }
   }
   
@@ -58,7 +58,7 @@ public class UserListItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.contentbox.UserListItemView
  * JD-Core Version:    0.7.0.1
  */

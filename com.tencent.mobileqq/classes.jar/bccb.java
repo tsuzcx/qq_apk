@@ -1,82 +1,38 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.lang.reflect.Method;
-
-@Deprecated
-public abstract class bccb
-  extends WebViewPlugin
+public class bccb
+  implements Comparable<bccb>
 {
-  public bccb()
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  
+  public bccb(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    this.mPluginNameSpace = getNameSpace();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  protected Method getJsMethod(String paramString1, String paramString2, int paramInt)
+  public int a(bccb parambccb)
   {
-    if (!getNameSpace().equals(paramString1)) {}
-    for (;;)
-    {
-      return null;
-      paramString1 = getClass().getDeclaredMethods();
-      int j = paramString1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Method localMethod = paramString1[i];
-        if ((localMethod.getName().equals(paramString2)) && (localMethod.getParameterTypes().length == paramInt)) {
-          return localMethod;
-        }
-        i += 1;
-      }
+    if (this.jdField_b_of_type_Int < parambccb.jdField_b_of_type_Int) {
+      return -1;
     }
+    if (this.jdField_b_of_type_Int > parambccb.jdField_b_of_type_Int) {
+      return 1;
+    }
+    return 0;
   }
   
-  protected abstract String getNameSpace();
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public String toString()
   {
-    boolean bool = false;
-    paramString2 = getJsMethod(paramString2, paramString3, paramVarArgs.length);
-    if (paramString2 != null) {}
-    try
-    {
-      if (paramVarArgs.length == 0) {}
-      for (paramString1 = paramString2.invoke(this, new Object[0]);; paramString1 = paramString2.invoke(this, paramVarArgs))
-      {
-        paramString2 = paramString2.getReturnType();
-        if ((paramString2 != Void.TYPE) && (paramString2 != Void.class)) {
-          break label97;
-        }
-        if (paramJsBridgeListener == null) {
-          break label128;
-        }
-        if (!paramJsBridgeListener.a) {
-          break;
-        }
-        callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, null, null));
-        break label128;
-      }
-      paramJsBridgeListener.a(null);
-      break label128;
-      label97:
-      if (paramJsBridgeListener != null) {
-        if (paramJsBridgeListener.a) {
-          callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, paramString1, null));
-        } else {
-          paramJsBridgeListener.a(paramString1);
-        }
-      }
-      label128:
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramJsBridgeListener) {}
-    return false;
+    return "TroopHonor{id=" + this.jdField_a_of_type_Int + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", priority='" + this.jdField_b_of_type_Int + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccb
  * JD-Core Version:    0.7.0.1
  */

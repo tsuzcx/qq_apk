@@ -1,27 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGallery;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
 
 public class pvg
-  implements View.OnClickListener
 {
-  public pvg(ComponentContentGallery paramComponentContentGallery, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<Long> a;
+  public pvh a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if (ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery) == null) {}
-    do
-    {
-      return;
-      paramView = ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery).a();
-    } while (paramView == null);
-    paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1, ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery), this.b);
+    return "channelID:" + this.jdField_a_of_type_Int + " channelType:" + this.jdField_b_of_type_Int + " upDateTimes：" + this.jdField_c_of_type_Int + " beginRecommendSeq：" + this.jdField_a_of_type_Long + " endRecommendSeq：" + this.jdField_b_of_type_Long + " beginCollectionID:" + this.jdField_c_of_type_Long + " endCollectionID:" + this.d + "   subscriptionArticleList:" + this.jdField_a_of_type_JavaUtilList + " innerMsg:" + this.jdField_a_of_type_Pvh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pvg
  * JD-Core Version:    0.7.0.1
  */

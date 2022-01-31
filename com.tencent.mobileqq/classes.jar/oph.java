@@ -1,62 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class oph
-  implements AladdinConfigHandler
 {
-  private static final Set<String> a = ;
-  
-  public static Set<String> a()
+  public static Bundle a(Bundle paramBundle, AdvertisementInfo paramAdvertisementInfo)
   {
-    return a;
-  }
-  
-  private static Set<String> b()
-  {
-    HashSet localHashSet = new HashSet();
-    Object localObject = (String)bhvy.a("default_feeds_aladdin_keys", "");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return localHashSet;
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
-    localObject = ((String)localObject).split("\\|");
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
-    {
-      localHashSet.add(localObject[i]);
-      i += 1;
-    }
-    return localHashSet;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = oof.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      bhvy.a("default_feeds_aladdin_keys", str2);
-    }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
+    localBundle.putString("param_ad_app_info_trace_id", paramAdvertisementInfo.mAdTraceId);
+    localBundle.putLong("param_ad_app_info_pull_time", paramAdvertisementInfo.mAdFetchTime);
+    localBundle.putString("param_ad_app_info_view_id", paramAdvertisementInfo.mAdViewId);
+    localBundle.putLong("param_ad_app_info_pos_id", paramAdvertisementInfo.mAdPosID);
+    localBundle.putInt("param_ad_app_info_kd_pos", paramAdvertisementInfo.mAdKdPos);
+    localBundle.putString("param_ad_app_info_product_id", paramAdvertisementInfo.mAdProductId);
+    localBundle.putInt("param_ad_app_info_product_type", paramAdvertisementInfo.mAdProductType);
+    localBundle.putString("param_ad_app_info_ap_url", paramAdvertisementInfo.mAdApurl);
+    localBundle.putString("param_ad_info_corporatelogo", paramAdvertisementInfo.mAdCorporateLogo);
+    localBundle.putString("param_ad_info_corporatename", paramAdvertisementInfo.mAdCorporationName);
+    localBundle.putString("param_ad_info_adtext", paramAdvertisementInfo.mAdTxt);
+    localBundle.putParcelable("param_ad_info", paramAdvertisementInfo);
+    localBundle.putParcelableArrayList("param_ad_info_dislike", paramAdvertisementInfo.mAdDislikeInfos);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oph
  * JD-Core Version:    0.7.0.1
  */

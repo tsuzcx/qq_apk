@@ -1,34 +1,24 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl;
+import android.graphics.Rect;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class axmf
+  implements azdk
 {
-  axmi a;
+  public axmf(CameraCaptureView paramCameraCaptureView, File paramFile, int paramInt, boolean paramBoolean) {}
   
-  public axmf()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new JBMR2VideoConverterImpl();
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback requestFocus when capture : " + paramBoolean1 + ", [Camera2]camera2:" + paramBoolean2);
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (this.a.a());
-  }
-  
-  public boolean a(File paramFile, axmg paramaxmg, boolean paramBoolean)
-  {
-    if (this.a != null) {
-      return this.a.a(paramFile, paramaxmg, paramBoolean);
-    }
-    return false;
+    CameraCaptureView.a.a(this.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.b, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.c), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axmf
  * JD-Core Version:    0.7.0.1
  */

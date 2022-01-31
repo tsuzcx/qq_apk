@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import agig;
+import aigl;
 import android.widget.BaseAdapter;
 import com.tencent.image.URLDrawable;
 
 public class AvatarPendantActivity$AnimationScrollListener$1
   implements Runnable
 {
-  public AvatarPendantActivity$AnimationScrollListener$1(agig paramagig) {}
+  public AvatarPendantActivity$AnimationScrollListener$1(aigl paramaigl) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class AvatarPendantActivity$AnimationScrollListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public final class device_lock_recommend_auth$DeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.device_lock_recommend_auth.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

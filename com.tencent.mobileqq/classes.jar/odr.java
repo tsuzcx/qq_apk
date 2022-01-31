@@ -1,27 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
 
 public class odr
-  extends ajxj
 {
-  public odr(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  private static HashMap<Integer, Integer> a = new HashMap();
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
+    a.put(Integer.valueOf(1105), Integer.valueOf(4));
+    a.put(Integer.valueOf(1106), Integer.valueOf(3));
+    a.put(Integer.valueOf(1107), Integer.valueOf(4));
+    a.put(Integer.valueOf(1103), Integer.valueOf(101));
+    a.put(Integer.valueOf(1104), Integer.valueOf(102));
+    a.put(Integer.valueOf(1108), Integer.valueOf(103));
+    a.put(Integer.valueOf(1109), Integer.valueOf(104));
+  }
+  
+  public static int a(int paramInt)
+  {
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      return ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
     }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odr
  * JD-Core Version:    0.7.0.1
  */

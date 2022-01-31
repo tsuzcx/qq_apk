@@ -1,212 +1,56 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class vmg
-  extends Dialog
-  implements View.OnClickListener
+  extends vkr<TroopAssistantHomeFeedPlayInfo>
 {
-  public final int a;
-  public ViewGroup a;
-  public ViewTreeObserver.OnGlobalLayoutListener a;
-  public EditText a;
-  public TextView a;
-  public EditVideoParams a;
-  public HorizontalSelectColorLayout a;
-  public String a;
-  public vlp a;
-  public vmn a;
-  public int b;
-  public TextView b;
-  public int c = -1;
-  public int d;
-  public int e;
-  public int f;
-  
-  public vmg(Context paramContext)
+  public vmg(TroopAssistantHomeFeedPlayInfo paramTroopAssistantHomeFeedPlayInfo)
   {
-    super(paramContext, 2131755176);
-    this.jdField_a_of_type_Int = 420;
-    this.jdField_a_of_type_Vlp = new vlp();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131561228, null));
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new vmp(this, null);
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new vmo(this, null));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377120));
-    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(super.getContext().getResources().getColor(2131166327));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377118));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377119));
-    if (vla.jdField_a_of_type_Int > vpm.b(getContext(), 14.0F)) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setPadding(vla.jdField_a_of_type_Int, vpm.b(getContext(), 5.0F), vla.jdField_a_of_type_Int, vpm.b(getContext(), 5.0F));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new vmh(this));
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new vmi(this));
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new vmj(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout = ((HorizontalSelectColorLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370770));
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setStrokeStrategy(new vvr(), false, 0);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setSelectedStrokeWithColor(vvt.a[1]);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setOnStrokeSelectedListener(new vmk(this));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new vml(this));
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new vmm(this));
-      return;
-      this.jdField_a_of_type_AndroidWidgetEditText.setPadding(vpm.b(getContext(), 14.0F), vpm.b(getContext(), 5.0F), vpm.b(getContext(), 14.0F), vpm.b(getContext(), 5.0F));
+    super(paramTroopAssistantHomeFeedPlayInfo);
+    paramTroopAssistantHomeFeedPlayInfo = (wkp)urr.a(11);
+    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
+      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
     }
   }
   
-  private void b()
+  public wkh a(String paramString)
   {
-    Window localWindow = super.getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = (vpm.b(getContext()) - b());
-    localLayoutParams.flags |= 0x20;
-    localLayoutParams.gravity = 80;
-    localWindow.setAttributes(localLayoutParams);
-  }
-  
-  protected int a()
-  {
-    int i = this.jdField_a_of_type_AndroidWidgetEditText.getTop();
-    int j = b();
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetEditText.getPaint();
-    return (int)(i + j + this.jdField_a_of_type_AndroidWidgetEditText.getBaseline() + localTextPaint.ascent());
-  }
-  
-  public int a(String paramString)
-  {
-    int i = 0;
-    int k = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    int m;
-    int j;
-    do
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      return k;
-      paramString = paramString.toCharArray();
-      m = paramString.length;
-      j = 0;
-      k = i;
-    } while (j >= m);
-    if (bbkk.c(paramString[j])) {
-      i += 3;
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      i += 1;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.f = paramInt;
-  }
-  
-  public void a(EditVideoParams paramEditVideoParams)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
-  }
-  
-  public void a(vlp paramvlp)
-  {
-    String str = paramvlp.jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(str))
-    {
-      str = "";
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#bbbbbb"));
-      this.jdField_b_of_type_AndroidWidgetTextView.setEnabled(false);
-    }
-    for (;;)
-    {
-      paramvlp.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_JavaLangString = str;
-      this.d = paramvlp.jdField_a_of_type_Int;
-      this.e = paramvlp.d;
-      this.jdField_a_of_type_Vlp.a(paramvlp);
-      ved.b("EditTextDialog", "setTextInfo:" + this.jdField_a_of_type_Vlp.toString());
-      this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(vpm.c(getContext(), this.jdField_a_of_type_Vlp.jdField_b_of_type_Int));
-      this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.jdField_a_of_type_Vlp.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_Vlp.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_Vlp.jdField_a_of_type_JavaLangString.length());
-      this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-      if (this.jdField_a_of_type_Vlp.c == 2)
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(super.getContext().getResources().getColor(2131166327));
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setSelectedStrokeWithColor(this.jdField_a_of_type_Vlp.jdField_a_of_type_Int);
+      wkh localwkh = (wkh)localIterator.next();
+      if (localwkh.a.equals(paramString)) {
+        return localwkh;
       }
-      this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-      return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#12b7f5"));
-      this.jdField_b_of_type_AndroidWidgetTextView.setEnabled(true);
     }
+    return null;
   }
   
-  public void a(vmn paramvmn)
-  {
-    this.jdField_a_of_type_Vmn = paramvmn;
-  }
+  public void a() {}
   
-  protected int b()
+  public void a(boolean paramBoolean, int paramInt, vlj paramvlj)
   {
-    return this.f;
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.dismiss();
-  }
-  
-  public void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Vmn == null) {
+    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject).size() > 0))
+    {
+      List localList = b((List)localObject);
+      paramvlj.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      wsv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
       return;
     }
-    String str2 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    this.jdField_a_of_type_Vlp.jdField_a_of_type_JavaLangString = str1;
-    this.jdField_a_of_type_Vmn.a(false, this.jdField_a_of_type_Vlp);
+    localObject = new vbw();
+    ((vbw)localObject).a = this.a.a();
+    wsv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((vbw)localObject).a);
+    ung.a().a((unk)localObject, new vmh(this, paramvlj));
   }
   
-  public void setContentView(int paramInt)
-  {
-    this.jdField_b_of_type_Int = actj.a(100.0F, getContext().getResources());
-    b();
-    a();
-    super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmg
  * JD-Core Version:    0.7.0.1
  */

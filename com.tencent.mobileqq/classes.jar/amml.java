@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity.2;
-import mqq.app.QQPermissionCallback;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class amml
-  implements QQPermissionCallback
+abstract class amml
 {
-  public amml(LocationSelectActivity.2 param2) {}
+  protected final SharedPreferences a = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected abstract String a();
+  
+  protected void a()
   {
-    bbdj.a(this.a.this$0, paramArrayOfString, paramArrayOfInt);
+    this.a.edit().putBoolean(a(), true).commit();
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected boolean a()
   {
-    LocationSelectActivity.a(this.a.this$0);
+    return !this.a.contains(a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amml
  * JD-Core Version:    0.7.0.1
  */

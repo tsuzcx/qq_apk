@@ -70,17 +70,17 @@ public class MyCheckBox
       localDrawable.setBounds(getWidth() - localDrawable.getIntrinsicWidth(), i, getWidth(), i + j);
       localDrawable.draw(paramCanvas);
       if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130849377);
+        this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130849816);
       }
       if (!isChecked()) {
         break;
       }
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
       f = getResources().getDisplayMetrics().density;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getResources().getDimension(2131296970));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getResources().getDimension(2131296986));
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-      paramCanvas.drawText(getResources().getString(2131719393), getWidth() - localDrawable.getIntrinsicWidth() * 2 / 3 - 2.0F * f, f * 4.0F + (j / 2 + i), this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawText(getResources().getString(2131719879), getWidth() - localDrawable.getIntrinsicWidth() * 2 / 3 - 2.0F * f, f * 4.0F + (j / 2 + i), this.jdField_a_of_type_AndroidGraphicsPaint);
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), i, null);
       return;
       i = getHeight() - j;
@@ -89,10 +89,10 @@ public class MyCheckBox
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-8814455);
     float f = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getResources().getDimension(2131296970));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getResources().getDimension(2131296986));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-    paramCanvas.drawText(getResources().getString(2131719375), getWidth() - localDrawable.getIntrinsicWidth() / 3 + 2.0F * f, f * 4.0F + (j / 2 + i), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawText(getResources().getString(2131719859), getWidth() - localDrawable.getIntrinsicWidth() / 3 + 2.0F * f, f * 4.0F + (j / 2 + i), this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() - localDrawable.getIntrinsicWidth(), i, null);
   }
   

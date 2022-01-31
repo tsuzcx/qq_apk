@@ -1,61 +1,59 @@
-import android.widget.BaseAdapter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public abstract class rrw<T>
-  extends BaseAdapter
-  implements rry
+public class rrw
+  implements qoh
 {
-  private int jdField_a_of_type_Int;
-  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public rrw(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
   
-  protected void a(T paramT)
+  public void a(Bundle paramBundle, float paramFloat)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localHashMap.put(paramT, Integer.valueOf(i));
-  }
-  
-  protected void a(List<T> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramList.next());
+    String str = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "");
+    if (this.a.jdField_a_of_type_JavaUtilMap.get(str) != null) {
+      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(str)).a((int)paramFloat);
     }
   }
   
-  protected void b()
+  public void a(Bundle paramBundle, int paramInt, float paramFloat)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public T getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
-      return -1L;
+    QLog.d("KandianVideoUpload", 1, paramBundle.getString("mTaskID") + "service中的状态:" + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 200: 
+      this.a.jdField_a_of_type_Qoh.a(paramBundle, (int)paramFloat);
+      return;
+    case 202: 
+      ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
+      return;
     }
-    Object localObject = getItem(paramInt);
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
-    }
-    return paramInt;
+    qod.b(paramBundle);
   }
   
-  public final boolean hasStableIds()
+  public void a(Bundle paramBundle, String paramString)
   {
-    return true;
+    paramString = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
+    if (this.a.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
+      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(paramString)).a();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.a();
+    owy.a().b(true);
+    ReadInJoyBaseListViewGroup.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rrw
  * JD-Core Version:    0.7.0.1
  */

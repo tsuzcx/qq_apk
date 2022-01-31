@@ -1,20 +1,11 @@
-import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
-
 public class alnb
-  implements alnc
+  implements alkr
 {
-  public alnb(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
-  
-  public void a(int paramInt)
-  {
-    if (ScanEntryProviderContainerView.a(this.a) != null) {
-      ScanEntryProviderContainerView.a(this.a).c(paramInt);
-    }
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alnb
  * JD-Core Version:    0.7.0.1
  */

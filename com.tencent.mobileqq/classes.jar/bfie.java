@@ -1,36 +1,12 @@
-import com.tencent.ims.QSecCloudAVEngineMsg.QSecCloudRespBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
-class bfie
-  implements bfkl
+public abstract interface bfie
 {
-  bfie(bfid parambfid) {}
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && (paramObject != null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "server reply packet");
-      }
-    }
-    try
-    {
-      paramToServiceMsg = new QSecCloudAVEngineMsg.QSecCloudRespBody();
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      bfid.a(this.a).sendMessage(bfid.a(this.a).obtainMessage(4, paramToServiceMsg));
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      paramToServiceMsg.printStackTrace();
-    }
-  }
+  public abstract void a(String paramString, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfie
  * JD-Core Version:    0.7.0.1
  */

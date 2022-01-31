@@ -1,57 +1,67 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class awqt
-  implements View.OnLongClickListener
+public class awqt
+  implements Handler.Callback
 {
-  awqt(awqs paramawqs, awoi paramawoi) {}
+  public awqt(ProfileHeaderView paramProfileHeaderView) {}
   
-  public boolean onLongClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramView = new AlertDialog.Builder(paramView.getContext());
-    paramView.setTitle(ajya.a(2131702567));
-    long l = ((awoe)this.jdField_a_of_type_Awoi).b();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = SearchConfigManager.contactSearchPinyinBaseBit;
-    int j = SearchConfigManager.contactSearchPinyinBaseBit;
-    localStringBuilder.append("拼音匹配：");
-    localStringBuilder.append((9223372036854775807L << i & l) >> j);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchRecentBaseBit;
-    j = SearchConfigManager.contactSearchRecentBaseBit;
-    int k = SearchConfigManager.contactSearchRecentBaseBit;
-    localStringBuilder.append("最近联系人排序：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 10) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchIndexBaseBit;
-    j = SearchConfigManager.contactSearchIndexBaseBit;
-    k = SearchConfigManager.contactSearchIndexBaseBit;
-    localStringBuilder.append("字符串匹配度：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchTypeBaseBit;
-    j = SearchConfigManager.contactSearchTypeBaseBit;
-    k = SearchConfigManager.contactSearchTypeBaseBit;
-    localStringBuilder.append("数据类型：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchFieldBaseBit;
-    j = SearchConfigManager.contactSearchFieldBaseBit;
-    k = SearchConfigManager.contactSearchFieldBaseBit;
-    localStringBuilder.append("字段类型：");
-    localStringBuilder.append((l & 9223372036854775807L >> 63 - (i + 8) & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    paramView.setMessage(localStringBuilder.toString());
-    paramView.create().show();
-    return false;
+    if (QLog.isDevelopLevel()) {
+      QLog.i(ProfileHeaderView.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "mUICallback [%d]", new Object[] { Integer.valueOf(paramMessage.what) }));
+    }
+    if (ProfileHeaderView.jdField_b_of_type_Int == paramMessage.what)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.a.jdField_a_of_type_Int);
+      }
+      if ((this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+        this.a.k(this.a.jdField_a_of_type_Awmk);
+      }
+    }
+    do
+    {
+      do
+      {
+        return true;
+      } while (ProfileHeaderView.c != paramMessage.what);
+      localObject = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
+    } while (!(localObject instanceof ImageView));
+    Object localObject = (ImageView)localObject;
+    paramMessage = (ExtensionInfo)paramMessage.obj;
+    if ((paramMessage != null) && (paramMessage.isPendantValid()))
+    {
+      this.a.jdField_a_of_type_Long = paramMessage.pendantId;
+      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      ((ImageView)localObject).setVisibility(0);
+      if (bdbg.a(this.a.jdField_a_of_type_Long))
+      {
+        localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+        return true;
+      }
+      localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+      return true;
+    }
+    ((ImageView)localObject).setVisibility(4);
+    this.a.jdField_a_of_type_Long = 0L;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awqt
  * JD-Core Version:    0.7.0.1
  */

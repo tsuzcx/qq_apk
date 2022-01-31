@@ -1,22 +1,22 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import betc;
+import bgkd;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class DataJsPlugin$7
   implements AsyncResult
 {
-  DataJsPlugin$7(DataJsPlugin paramDataJsPlugin, bekr parambekr) {}
+  DataJsPlugin$7(DataJsPlugin paramDataJsPlugin, bgkd parambgkd) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      if (betc.a()) {
-        betc.a("DataJsPlugin", "call checkNavigateRight ： " + paramJSONObject.toString());
+      if (QMLog.isColorLevel()) {
+        QMLog.d("DataJsPlugin", "call checkNavigateRight ： " + paramJSONObject.toString());
       }
       paramJSONObject = new JSONObject();
       JSONObject localJSONObject = new JSONObject();
@@ -24,7 +24,7 @@ class DataJsPlugin$7
       {
         localJSONObject.put("data", "{\"action_code\":1,\"skip_local_check\":1,\"wording\":\"\"}");
         paramJSONObject.put("respData", localJSONObject);
-        betc.a("DataJsPlugin", "call checkNavigateRight real： " + paramJSONObject.toString());
+        QMLog.d("DataJsPlugin", "call checkNavigateRight real： " + paramJSONObject.toString());
         this.val$req.a(paramJSONObject);
         return;
       }
@@ -36,13 +36,13 @@ class DataJsPlugin$7
         }
       }
     }
-    betc.a("DataJsPlugin", "call checkNavigateRight failed. ");
+    QMLog.d("DataJsPlugin", "call checkNavigateRight failed. ");
     this.val$req.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.DataJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

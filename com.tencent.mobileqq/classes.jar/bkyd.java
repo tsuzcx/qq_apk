@@ -1,46 +1,46 @@
-import android.opengl.GLES20;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.Set;
 
-public class bkyd
-  extends bkyc
+class bkyd
+  implements View.OnClickListener
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230751);
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  bkyd(bkyc parambkyc, bkxt parambkxt, int paramInt, bkyi parambkyi) {}
   
-  public bkyd()
+  public void onClick(View paramView)
   {
-    this(0.5F);
-  }
-  
-  public bkyd(float paramFloat)
-  {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void onDrawTexture()
-  {
-    super.onDrawTexture();
-    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float);
-  }
-  
-  public void onInitialized()
-  {
-    super.onInitialized();
-    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "brightness");
-    a(this.jdField_a_of_type_Float);
+    boolean bool;
+    if (this.jdField_a_of_type_Bkxt.jdField_a_of_type_Int == 13)
+    {
+      if (this.jdField_a_of_type_Bkxt.a()) {
+        break label73;
+      }
+      bool = true;
+      if (!bool) {
+        break label78;
+      }
+      bkyc.a(this.jdField_a_of_type_Bkyc).add(Integer.valueOf(this.jdField_a_of_type_Int));
+      bkyc.a(this.jdField_a_of_type_Bkyc, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkxt.a(bool);
+      this.jdField_a_of_type_Bkyi.a(bool);
+      return;
+      label73:
+      bool = false;
+      break;
+      label78:
+      bkyc.a(this.jdField_a_of_type_Bkyc).remove(Integer.valueOf(this.jdField_a_of_type_Int));
+      if (bkyc.a(this.jdField_a_of_type_Bkyc).size() < 1) {
+        bkyc.a(this.jdField_a_of_type_Bkyc, false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkyd
  * JD-Core Version:    0.7.0.1
  */

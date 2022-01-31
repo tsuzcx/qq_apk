@@ -7,20 +7,20 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
-import axqy;
-import bcfx;
-import bcga;
+import azmj;
+import beey;
+import befb;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
-import nau;
-import nis;
-import niu;
+import ndq;
+import nlo;
+import nlq;
 
 public class WebpageFragment
   extends WebViewFragment
 {
-  private nis a;
+  private nlo a;
   
   public static WebpageFragment a(Intent paramIntent)
   {
@@ -31,37 +31,37 @@ public class WebpageFragment
     return localWebpageFragment;
   }
   
-  public void a(nis paramnis)
+  public void a(nlo paramnlo)
   {
-    this.jdField_a_of_type_Nis = paramnis;
+    this.jdField_a_of_type_Nlo = paramnlo;
   }
   
   public boolean a()
   {
-    nau.a("Web_qqbrowser_ShowPreview");
+    ndq.a("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
-    this.jdField_a_of_type_Bcfx.a(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_Bcga.c = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcga.B);
+    this.jdField_a_of_type_Beey.a(this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_Befb.c = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.D);
     this.p = true;
     this.q = false;
-    F();
+    G();
     if (QLog.isColorLevel()) {
       QLog.d("WebpageFragment", 2, "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
     }
-    this.jdField_a_of_type_Bcfx.c = true;
-    this.jdField_a_of_type_Bcfx.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
+    this.jdField_a_of_type_Beey.c = true;
+    this.jdField_a_of_type_Beey.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_Bcfx.a(this.h);
-    this.jdField_a_of_type_Bcfx.b = false;
-    nau.b("Web_qqbrowser_ShowPreview");
+    this.jdField_a_of_type_Beey.a(this.g);
+    this.jdField_a_of_type_Beey.b = false;
+    ndq.b("Web_qqbrowser_ShowPreview");
     return true;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    axqy.a(null, "dc00898", "", this.jdField_a_of_type_Nis.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.jdField_a_of_type_Nis.a.c, "", "", this.jdField_a_of_type_Nis.a.b);
+    azmj.a(null, "dc00898", "", this.jdField_a_of_type_Nlo.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
   }
   
   public void onResume()
@@ -77,7 +77,7 @@ public class WebpageFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment
  * JD-Core Version:    0.7.0.1
  */

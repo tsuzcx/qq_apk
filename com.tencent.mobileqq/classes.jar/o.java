@@ -97,7 +97,7 @@ public class o
     }
   }
   
-  public int a(int paramInt1, int paramInt2, hx paramhx)
+  public int a(int paramInt1, int paramInt2, gg paramgg)
   {
     return 0;
   }
@@ -183,7 +183,7 @@ public class o
         this.jdField_b_of_type_AndroidGraphicsRect.set(-i, -j, this.jdField_b_of_type_ArrayOfInt[0] + i, j + this.jdField_b_of_type_ArrayOfInt[1]);
       }
     }
-    a(ajya.a(2131704866));
+    a(alpo.a(2131705238));
     return false;
   }
   
@@ -317,7 +317,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,64 @@
-import android.view.ViewGroup;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.SettingMeApolloViewController;
-import com.tencent.mobileqq.apollo.SettingMeApolloViewController.5.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aive
-  implements ajfk
+  implements aiva
 {
-  public aive(SettingMeApolloViewController paramSettingMeApolloViewController) {}
+  private List<String> a;
   
-  public void a()
+  public String a(CopyOnWriteArrayList<String> paramCopyOnWriteArrayList, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_Aixh == null) {}
-    Object localObject;
-    ViewGroup localViewGroup;
-    do
+    int i = paramCopyOnWriteArrayList.size() - 1;
+    while (i >= 0)
     {
-      do
-      {
-        do
-        {
-          return;
-          localObject = (QQSettingMe)SettingMeApolloViewController.a(this.a).get();
-        } while (localObject == null);
-        localObject = ((QQSettingMe)localObject).a();
-      } while (localObject == null);
-      localViewGroup = (ViewGroup)SettingMeApolloViewController.b(this.a).get();
-    } while ((localViewGroup == null) || (this.a.jdField_a_of_type_Aixh.a(SettingMeApolloViewController.a(this.a), this.a.jdField_a_of_type_Int, (AppInterface)localObject, localViewGroup.getContext()) != 0));
-    this.a.jdField_a_of_type_Aixh.a(SettingMeApolloViewController.a(this.a), localViewGroup.getContext(), (QQAppInterface)localObject, this.a.jdField_a_of_type_Int);
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SettingMeApolloViewController", 2, new Object[] { "[onApolloClick] ", "apolloStatus:", Integer.valueOf(paramInt1), ",clickPart:", Integer.valueOf(paramInt2), ",apolloId:", paramString });
+      String str = (String)paramCopyOnWriteArrayList.remove(i);
+      if (!TextUtils.isEmpty(str)) {
+        return str;
+      }
+      i -= 1;
     }
-    Object localObject = (QQSettingMe)SettingMeApolloViewController.a(this.a).get();
-    if (localObject == null) {}
-    ViewGroup localViewGroup;
-    do
+    if (paramBoolean)
     {
-      do
+      if (this.a == null)
       {
-        return;
-        localObject = ((QQSettingMe)localObject).a();
-      } while (localObject == null);
-      localViewGroup = (ViewGroup)SettingMeApolloViewController.b(this.a).get();
-    } while ((localViewGroup == null) || (paramInt1 == 0));
-    ThreadManager.getUIHandler().post(new SettingMeApolloViewController.5.1(this, paramInt2, localViewGroup, (QQAppInterface)localObject, paramString));
+        this.a = new ArrayList(4);
+        this.a.add("apple");
+        this.a.add("good");
+        this.a.add("study");
+        this.a.add("play");
+      }
+      i = new Random().nextInt(this.a.size());
+      if (QLog.isColorLevel()) {
+        QLog.i("WordChainBizImpl", 2, "getRandomIdiom get backIdiom:" + i + " backWordListSize:" + this.a.size());
+      }
+      return (String)this.a.get(i);
+    }
+    return "";
   }
   
-  public void b()
+  public boolean a(String paramString)
   {
-    this.a.i();
+    return !TextUtils.isEmpty(paramString);
+  }
+  
+  public InputFilter[] a(int paramInt)
+  {
+    if ((bdag.d()) || (bdag.e())) {}
+    for (int i = 1; (i == 0) && (paramInt > 0); i = 0) {
+      return new InputFilter[] { new InputFilter.LengthFilter(paramInt) };
+    }
+    return new InputFilter[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aive
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import cooperation.qzone.util.QZLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import ved;
+import wsv;
 
 public final class SubscribeUtils$2
   implements Runnable
@@ -37,7 +37,7 @@ public final class SubscribeUtils$2
       {
         URL localURL;
         int i;
-        ved.c("SubscribeUtils", "report exception" + localException.toString());
+        wsv.c("SubscribeUtils", "report exception" + localException.toString());
         if (!QZLog.isColorLevel()) {
           break;
         }
@@ -47,13 +47,13 @@ public final class SubscribeUtils$2
         boolean bool = false;
       }
     }
-    ved.c("SubscribeUtils", "report rspCode " + i + "， request thirdparty" + bool + " url =" + localURL);
+    wsv.c("SubscribeUtils", "report rspCode " + i + "， request thirdparty" + bool + " url =" + localURL);
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeUtils.2
  * JD-Core Version:    0.7.0.1
  */

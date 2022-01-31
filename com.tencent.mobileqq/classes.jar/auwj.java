@@ -1,37 +1,43 @@
-import android.os.Handler;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
 
 public class auwj
-  extends auyp
+  implements View.OnKeyListener
 {
-  public auwj(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3)
-  {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
-  }
+  public auwj(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 1001: 
-      do
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
+      if (ChooseInterestTagActivity.a(this.a).getText() == null)
       {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
-      return;
+        paramView = "";
+        if (TextUtils.isEmpty(paramView))
+        {
+          ChooseInterestTagActivity.a(this.a).fullScroll(66);
+          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
+    for (;;)
+    {
+      return false;
+      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
+      break;
+      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
+        bhoc.b(ChooseInterestTagActivity.a(this.a));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auwj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,54 @@
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.image.URLImageView;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ous
-  extends ouu
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private static int b = 5000;
+  private int jdField_a_of_type_Int = 3;
+  private final DownloadInfo jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo;
+  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  ous(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
+  private ous(DownloadInfo paramDownloadInfo)
   {
-    super(paramReadInJoyPicWaterFallFragment, paramView);
-    this.b = ((URLImageView)paramView.findViewById(2131364783));
-    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362525));
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#7f000000")));
-    actj.a(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361945));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377350));
-    paramView.setOnClickListener(new out(this, paramReadInJoyPicWaterFallFragment));
+    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo = paramDownloadInfo;
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_APPID, paramDownloadInfo.c);
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_TASK_PACKNAME, paramDownloadInfo.e);
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_TASK_VERSION, String.valueOf(paramDownloadInfo.b));
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_VIA, paramDownloadInfo.h);
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_UIN_TYPE, String.valueOf("qqNumber"));
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADTYPE, String.valueOf(2));
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_ICON_URL, paramDownloadInfo.n);
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_APP_NAME, paramDownloadInfo.f);
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION, String.valueOf(paramDownloadInfo.i));
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_IS_AUTOINSTALL_BY_SDK, String.valueOf(paramDownloadInfo.jdField_d_of_type_Boolean));
+    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADSIZE, String.valueOf(paramDownloadInfo.jdField_d_of_type_Long));
+  }
+  
+  private Map<String, String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilMap;
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Int -= 1;
+  }
+  
+  private int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public DownloadInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ous
  * JD-Core Version:    0.7.0.1
  */

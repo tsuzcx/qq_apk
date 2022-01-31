@@ -1,28 +1,28 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bjtk;
-import bjzg;
+import bmeu;
+import bmkq;
 
 public class HWEditImportVideoPlayer$4
   implements Runnable
 {
-  public HWEditImportVideoPlayer$4(bjzg parambjzg) {}
+  public HWEditImportVideoPlayer$4(bmkq parambmkq) {}
   
   public void run()
   {
     if (this.this$0.j) {}
-    bjtk localbjtk;
+    bmeu localbmeu;
     do
     {
       return;
-      localbjtk = (bjtk)this.this$0.a(bjtk.class);
-    } while (localbjtk == null);
-    localbjtk.b();
+      localbmeu = (bmeu)this.this$0.a(bmeu.class);
+    } while (localbmeu == null);
+    localbmeu.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer.4
  * JD-Core Version:    0.7.0.1
  */

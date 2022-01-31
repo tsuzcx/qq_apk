@@ -2,8 +2,8 @@ package cooperation.qlink;
 
 import android.content.Intent;
 import android.os.Bundle;
-import aoze;
-import bgnk;
+import aqsc;
+import bioj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -80,7 +80,7 @@ public class QlinkAgentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qlink.QlinkAgentActivity
  * JD-Core Version:    0.7.0.1
  */

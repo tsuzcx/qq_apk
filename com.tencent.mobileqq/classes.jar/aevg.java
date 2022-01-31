@@ -1,33 +1,21 @@
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+
 public class aevg
 {
-  public double a;
-  public double b;
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c;
   
-  public aevg(double paramDouble1, double paramDouble2)
+  public aevg(DoodleMsgLayout paramDoodleMsgLayout)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
-  }
-  
-  public aevg(aevg paramaevg)
-  {
-    a(paramaevg);
-  }
-  
-  public void a(aevg paramaevg)
-  {
-    this.a = paramaevg.a;
-    this.b = paramaevg.b;
-  }
-  
-  public String toString()
-  {
-    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevg
  * JD-Core Version:    0.7.0.1
  */

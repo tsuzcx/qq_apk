@@ -1,508 +1,347 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.VipComicFavorEmoStructMsgInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.mqqcomic.MqqComicHeadPb.ComicReqHead;
-import com.tencent.pb.mqqcomic.MqqComicHeadPb.ComicRspHead;
-import com.tencent.pb.mqqcomic.MqqComicPb.ComicFavorEmotIcons;
-import com.tencent.pb.mqqcomic.MqqComicPb.DelMyComicFavorEmotIconsReqBody;
-import com.tencent.pb.mqqcomic.MqqComicPb.DelMyComicFavorEmotIconsRspBody;
-import com.tencent.pb.mqqcomic.MqqComicPb.GetComicGlobalConfigReqBody;
-import com.tencent.pb.mqqcomic.MqqComicPb.GetComicGlobalConfigRspBody;
-import com.tencent.pb.mqqcomic.MqqComicPb.GetMyComicFavorEmotIconsReqBody;
-import com.tencent.pb.mqqcomic.MqqComicPb.GetMyComicFavorEmotIconsRspBody;
-import com.tencent.pb.mqqcomic.MqqComicPb.SetMyComicFavorEmotIconsReqBody;
-import com.tencent.pb.mqqcomic.MqqComicPb.SetMyComicFavorEmotIconsRspBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import mqq.manager.TicketManager;
-
 public class antz
-  extends ajtb
 {
-  public static int a;
-  public static String a;
-  
-  static
-  {
-    jdField_a_of_type_Int = 100;
-    jdField_a_of_type_JavaLangString = "1000290";
-  }
-  
-  public antz(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-  
-  private int a(byte[] paramArrayOfByte, int paramInt)
-  {
-    if (paramArrayOfByte == null) {
-      return 0;
-    }
-    return ((paramArrayOfByte[paramInt] & 0xFF) << 24) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16) + ((paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8) + ((paramArrayOfByte[(paramInt + 3)] & 0xFF) << 0);
-  }
-  
-  public static MqqComicHeadPb.ComicReqHead a(AppInterface paramAppInterface, String paramString1, long paramLong, String paramString2)
-  {
-    MqqComicHeadPb.ComicReqHead localComicReqHead = new MqqComicHeadPb.ComicReqHead();
-    localComicReqHead.src.set(1);
-    long l = paramLong;
-    if (paramLong == 0L) {
-      l = NetConnInfoCenter.getServerTime();
-    }
-    localComicReqHead.optTs.set(l);
-    localComicReqHead.os.set(2);
-    PBStringField localPBStringField = localComicReqHead.clientVer;
-    if (TextUtils.isEmpty("8.3.0")) {}
-    for (String str = "";; str = "8.3.0")
-    {
-      localPBStringField.set(str);
-      localComicReqHead.net.set(naj.a());
-      localComicReqHead.uin.set(Long.valueOf(paramAppInterface.getCurrentAccountUin()).longValue());
-      str = b(paramAppInterface);
-      if (!TextUtils.isEmpty(str)) {
-        localComicReqHead.screenQuality.set(str);
-      }
-      localComicReqHead.cmd.set(paramString1);
-      paramString1 = a(paramAppInterface);
-      if (!TextUtils.isEmpty(paramString1)) {
-        localComicReqHead.skey.set(paramString1);
-      }
-      if (!TextUtils.isEmpty(paramString2)) {
-        localComicReqHead.etag.set(paramString2);
-      }
-      paramAppInterface = bghx.a(paramAppInterface.getApp());
-      if (!TextUtils.isEmpty(paramAppInterface)) {
-        localComicReqHead.unifiedImei.set(paramAppInterface);
-      }
-      return localComicReqHead;
-    }
-  }
-  
-  private static String a(AppInterface paramAppInterface)
-  {
-    TicketManager localTicketManager = (TicketManager)paramAppInterface.getManager(2);
-    if (localTicketManager != null) {
-      return localTicketManager.getSkey(paramAppInterface.getAccount());
-    }
-    return "";
-  }
-  
-  private void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VipComicMqqHandler", 2, paramString);
-    }
-  }
-  
-  public static byte[] a(MqqComicHeadPb.ComicReqHead paramComicReqHead, MessageMicro paramMessageMicro)
-  {
-    if ((paramComicReqHead == null) || (paramMessageMicro == null)) {
-      return null;
-    }
-    try
-    {
-      paramComicReqHead = paramComicReqHead.toByteArray();
-      int i = paramComicReqHead.length + 4;
-      paramMessageMicro = paramMessageMicro.toByteArray();
-      int j = paramMessageMicro.length + 4;
-      byte[] arrayOfByte = new byte[i + j];
-      bbmx.a(arrayOfByte, 0, i);
-      bbmx.a(arrayOfByte, 4, paramComicReqHead, paramComicReqHead.length);
-      bbmx.a(arrayOfByte, i, j);
-      bbmx.a(arrayOfByte, i + 4, paramMessageMicro, paramMessageMicro.length);
-      return arrayOfByte;
-    }
-    catch (Exception paramComicReqHead)
-    {
-      paramComicReqHead.printStackTrace();
-    }
-    return null;
-  }
-  
-  private static String b(AppInterface paramAppInterface)
-  {
-    paramAppInterface = paramAppInterface.getApp().getResources().getDisplayMetrics();
-    return Math.min(paramAppInterface.widthPixels, paramAppInterface.heightPixels) + "*" + Math.max(paramAppInterface.widthPixels, paramAppInterface.heightPixels);
-  }
-  
-  public void a()
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("ComicProtoConvSvr.tunnel");
-    localToServiceMsg.extraData.putString("subcmd", "GetMyComicFavorEmotIcons");
-    localToServiceMsg.extraData.putLong("requestTime", SystemClock.elapsedRealtime());
-    localToServiceMsg.putWupBuffer(a(a(this.app, "GetMyComicFavorEmotIcons", NetConnInfoCenter.getServerTime(), null), new MqqComicPb.GetMyComicFavorEmotIconsReqBody()));
-    sendPbReq(localToServiceMsg);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, byte[] paramArrayOfByte, int paramInt)
+  public static int a(byte[] paramArrayOfByte)
   {
     int i = 0;
-    MqqComicPb.SetMyComicFavorEmotIconsReqBody localSetMyComicFavorEmotIconsReqBody = new MqqComicPb.SetMyComicFavorEmotIconsReqBody();
-    try
-    {
-      paramToServiceMsg = (byte[])paramToServiceMsg.getWupBuffer();
-      int j = a(paramToServiceMsg, 4);
-      byte[] arrayOfByte = new byte[a(paramToServiceMsg, j + 4) - 4];
-      bbmx.a(arrayOfByte, 0, paramToServiceMsg, j + 8, arrayOfByte.length);
-      localSetMyComicFavorEmotIconsReqBody.mergeFrom(arrayOfByte);
-      if ((localSetMyComicFavorEmotIconsReqBody != null) && (localSetMyComicFavorEmotIconsReqBody.reqs != null))
-      {
-        paramToServiceMsg = new ArrayList();
-        while (i < localSetMyComicFavorEmotIconsReqBody.reqs.size())
-        {
-          paramToServiceMsg.add(((MqqComicPb.ComicFavorEmotIcons)localSetMyComicFavorEmotIconsReqBody.reqs.get(i)).md5.get());
-          i += 1;
-        }
-        ((anua)this.app.getManager(141)).b(paramToServiceMsg);
-        a("responseSetMyComicFavorEmotIcons updateComicStructInfo");
-      }
+    int k = 0;
+    if (paramArrayOfByte.length != 4) {
+      return k;
     }
-    catch (Exception paramToServiceMsg)
+    int j = 3;
+    for (;;)
     {
-      try
-      {
-        paramToServiceMsg.mergeFrom(paramArrayOfByte);
-        if (paramInt != 0) {
-          break label249;
-        }
-        notifyUI(2, true, paramToServiceMsg);
-        return;
-        paramToServiceMsg = paramToServiceMsg;
-        a("responseSetMyComicFavorEmotIcons exception:" + paramToServiceMsg.getMessage());
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramToServiceMsg = null;
-          a("SetMyComicFavorEmotIconsRspBody mergeFrom exception : " + paramArrayOfByte.getMessage());
-        }
-        label249:
-        notifyUI(4, true, paramToServiceMsg);
-      }
-    }
-    paramToServiceMsg = new MqqComicPb.SetMyComicFavorEmotIconsRspBody();
-  }
-  
-  public void a(List<MqqComicPb.ComicFavorEmotIcons> paramList)
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("ComicProtoConvSvr.tunnel");
-    localToServiceMsg.extraData.putString("subcmd", "SetMyComicFavorEmotIcons");
-    localToServiceMsg.extraData.putLong("requestTime", SystemClock.elapsedRealtime());
-    MqqComicHeadPb.ComicReqHead localComicReqHead = a(this.app, "SetMyComicFavorEmotIcons", NetConnInfoCenter.getServerTime(), null);
-    MqqComicPb.SetMyComicFavorEmotIconsReqBody localSetMyComicFavorEmotIconsReqBody = new MqqComicPb.SetMyComicFavorEmotIconsReqBody();
-    localSetMyComicFavorEmotIconsReqBody.reqs.set(paramList);
-    localToServiceMsg.putWupBuffer(a(localComicReqHead, localSetMyComicFavorEmotIconsReqBody));
-    sendPbReq(localToServiceMsg);
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt)
-  {
-    Object localObject = new MqqComicPb.GetMyComicFavorEmotIconsRspBody();
-    if (paramInt == 0)
-    {
-      try
-      {
-        ((MqqComicPb.GetMyComicFavorEmotIconsRspBody)localObject).mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (byte[])localObject;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        for (;;)
-        {
-          a("GetMyComicFavorEmotIconsRspBody mergeFrom exception : " + paramArrayOfByte.getMessage());
-          paramArrayOfByte = null;
-        }
-        notifyUI(2, true, paramArrayOfByte);
-        return;
-      }
-      if (paramArrayOfByte != null) {
-        if (paramArrayOfByte.rsps != null)
-        {
-          localObject = (anua)this.app.getManager(141);
-          if (localObject != null)
-          {
-            paramInt = 0;
-            while (paramInt < paramArrayOfByte.rsps.size())
-            {
-              VipComicFavorEmoStructMsgInfo localVipComicFavorEmoStructMsgInfo = new VipComicFavorEmoStructMsgInfo();
-              localVipComicFavorEmoStructMsgInfo.picMd5 = ((MqqComicPb.ComicFavorEmotIcons)paramArrayOfByte.rsps.get(paramInt)).md5.get();
-              localVipComicFavorEmoStructMsgInfo.actionData = ((MqqComicPb.ComicFavorEmotIcons)paramArrayOfByte.rsps.get(paramInt)).info.get();
-              localVipComicFavorEmoStructMsgInfo.status = 2;
-              ((anua)localObject).a(localVipComicFavorEmoStructMsgInfo);
-              paramInt += 1;
-            }
-          }
-        }
-      }
-      notifyUI(3, true, paramArrayOfByte);
-      return;
-    }
-    notifyUI(4, true, localObject);
-  }
-  
-  public boolean a()
-  {
-    int i;
-    if (jdField_a_of_type_Int < 0)
-    {
-      i = 0;
-      if (i != 0) {
-        break label35;
-      }
-    }
-    label35:
-    do
-    {
-      return false;
-      if (jdField_a_of_type_Int > 100)
-      {
-        i = 100;
+      k = i;
+      if (j < 0) {
         break;
       }
-      i = jdField_a_of_type_Int;
-      break;
-      if (i == 100) {
-        return true;
+      k = paramArrayOfByte[j];
+      j -= 1;
+      i = k & 0xFF | i << 8;
+    }
+  }
+  
+  /* Error */
+  public static String a(String paramString)
+  {
+    // Byte code:
+    //   0: ldc 16
+    //   2: invokestatic 22	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   5: astore_2
+    //   6: new 24	java/io/File
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 28	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: astore_0
+    //   15: new 30	java/io/FileInputStream
+    //   18: dup
+    //   19: aload_0
+    //   20: invokespecial 33	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   23: astore_0
+    //   24: sipush 30720
+    //   27: newarray byte
+    //   29: astore_3
+    //   30: aload_0
+    //   31: aload_3
+    //   32: invokevirtual 36	java/io/FileInputStream:read	([B)I
+    //   35: istore_1
+    //   36: iload_1
+    //   37: ifge +27 -> 64
+    //   40: aload_0
+    //   41: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   44: aload_2
+    //   45: invokevirtual 44	java/security/MessageDigest:digest	()[B
+    //   48: invokestatic 50	bhli:b	([B)Ljava/lang/String;
+    //   51: areturn
+    //   52: astore_0
+    //   53: aload_0
+    //   54: invokevirtual 53	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   57: ldc 55
+    //   59: areturn
+    //   60: astore_0
+    //   61: ldc 55
+    //   63: areturn
+    //   64: aload_2
+    //   65: aload_3
+    //   66: iconst_0
+    //   67: iload_1
+    //   68: invokevirtual 59	java/security/MessageDigest:update	([BII)V
+    //   71: goto -41 -> 30
+    //   74: astore_2
+    //   75: aload_2
+    //   76: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   79: aload_0
+    //   80: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   83: ldc 55
+    //   85: areturn
+    //   86: astore_0
+    //   87: aload_0
+    //   88: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   91: ldc 55
+    //   93: areturn
+    //   94: astore_0
+    //   95: aload_0
+    //   96: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   99: goto -55 -> 44
+    //   102: astore_2
+    //   103: aload_0
+    //   104: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   107: aload_2
+    //   108: athrow
+    //   109: astore_0
+    //   110: aload_0
+    //   111: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   114: goto -7 -> 107
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	117	0	paramString	String
+    //   35	33	1	i	int
+    //   5	60	2	localMessageDigest	java.security.MessageDigest
+    //   74	2	2	localIOException	java.io.IOException
+    //   102	6	2	localObject	Object
+    //   29	37	3	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   0	6	52	java/security/NoSuchAlgorithmException
+    //   15	24	60	java/io/FileNotFoundException
+    //   24	30	74	java/io/IOException
+    //   30	36	74	java/io/IOException
+    //   64	71	74	java/io/IOException
+    //   79	83	86	java/io/IOException
+    //   40	44	94	java/io/IOException
+    //   24	30	102	finally
+    //   30	36	102	finally
+    //   64	71	102	finally
+    //   75	79	102	finally
+    //   103	107	109	java/io/IOException
+  }
+  
+  /* Error */
+  public static boolean a(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 63	antz:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   4: ldc 65
+    //   6: invokevirtual 71	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   9: ifne +19 -> 28
+    //   12: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   15: ifeq +11 -> 26
+    //   18: ldc 79
+    //   20: iconst_2
+    //   21: ldc 81
+    //   23: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   26: iconst_0
+    //   27: ireturn
+    //   28: new 87	java/io/FileOutputStream
+    //   31: dup
+    //   32: aload_1
+    //   33: invokespecial 88	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   36: astore 4
+    //   38: aconst_null
+    //   39: astore_3
+    //   40: new 90	java/util/zip/GZIPInputStream
+    //   43: dup
+    //   44: new 30	java/io/FileInputStream
+    //   47: dup
+    //   48: aload_0
+    //   49: invokespecial 91	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   52: invokespecial 94	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   55: astore_0
+    //   56: aload_0
+    //   57: astore_3
+    //   58: sipush 1024
+    //   61: newarray byte
+    //   63: astore 5
+    //   65: aload_0
+    //   66: astore_3
+    //   67: aload_0
+    //   68: aload 5
+    //   70: invokevirtual 95	java/util/zip/GZIPInputStream:read	([B)I
+    //   73: istore_2
+    //   74: iload_2
+    //   75: ifle +110 -> 185
+    //   78: aload_0
+    //   79: astore_3
+    //   80: aload 4
+    //   82: aload 5
+    //   84: iconst_0
+    //   85: iload_2
+    //   86: invokevirtual 98	java/io/FileOutputStream:write	([BII)V
+    //   89: goto -24 -> 65
+    //   92: astore_3
+    //   93: aload_0
+    //   94: astore_3
+    //   95: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   98: ifeq +30 -> 128
+    //   101: aload_0
+    //   102: astore_3
+    //   103: ldc 79
+    //   105: iconst_2
+    //   106: new 100	java/lang/StringBuilder
+    //   109: dup
+    //   110: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   113: ldc 104
+    //   115: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: aload_1
+    //   119: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   128: aload_0
+    //   129: ifnull +7 -> 136
+    //   132: aload_0
+    //   133: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   136: aload 4
+    //   138: ifnull -112 -> 26
+    //   141: aload 4
+    //   143: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   146: iconst_0
+    //   147: ireturn
+    //   148: astore_0
+    //   149: iconst_0
+    //   150: ireturn
+    //   151: astore_0
+    //   152: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   155: ifeq -129 -> 26
+    //   158: ldc 79
+    //   160: iconst_2
+    //   161: new 100	java/lang/StringBuilder
+    //   164: dup
+    //   165: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   168: ldc 104
+    //   170: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: aload_1
+    //   174: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   180: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   183: iconst_0
+    //   184: ireturn
+    //   185: aload_0
+    //   186: ifnull +7 -> 193
+    //   189: aload_0
+    //   190: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   193: aload 4
+    //   195: ifnull +8 -> 203
+    //   198: aload 4
+    //   200: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   203: iconst_1
+    //   204: ireturn
+    //   205: astore_0
+    //   206: aload_3
+    //   207: astore_0
+    //   208: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   211: ifeq +11 -> 222
+    //   214: ldc 79
+    //   216: iconst_2
+    //   217: ldc 116
+    //   219: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   222: aload_0
+    //   223: ifnull +7 -> 230
+    //   226: aload_0
+    //   227: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   230: aload 4
+    //   232: ifnull -206 -> 26
+    //   235: aload 4
+    //   237: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   240: iconst_0
+    //   241: ireturn
+    //   242: astore_0
+    //   243: iconst_0
+    //   244: ireturn
+    //   245: astore_0
+    //   246: aconst_null
+    //   247: astore_3
+    //   248: aload_3
+    //   249: ifnull +7 -> 256
+    //   252: aload_3
+    //   253: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   256: aload 4
+    //   258: ifnull +8 -> 266
+    //   261: aload 4
+    //   263: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   266: aload_0
+    //   267: athrow
+    //   268: astore_0
+    //   269: goto -76 -> 193
+    //   272: astore_0
+    //   273: goto -70 -> 203
+    //   276: astore_0
+    //   277: goto -141 -> 136
+    //   280: astore_0
+    //   281: goto -51 -> 230
+    //   284: astore_1
+    //   285: goto -29 -> 256
+    //   288: astore_1
+    //   289: goto -23 -> 266
+    //   292: astore_0
+    //   293: goto -45 -> 248
+    //   296: astore_1
+    //   297: aload_0
+    //   298: astore_3
+    //   299: aload_1
+    //   300: astore_0
+    //   301: goto -53 -> 248
+    //   304: astore_1
+    //   305: goto -97 -> 208
+    //   308: astore_0
+    //   309: aconst_null
+    //   310: astore_0
+    //   311: goto -218 -> 93
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	314	0	paramString1	String
+    //   0	314	1	paramString2	String
+    //   73	13	2	i	int
+    //   39	41	3	str1	String
+    //   92	1	3	localFileNotFoundException	java.io.FileNotFoundException
+    //   94	205	3	str2	String
+    //   36	226	4	localFileOutputStream	java.io.FileOutputStream
+    //   63	20	5	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   58	65	92	java/io/FileNotFoundException
+    //   67	74	92	java/io/FileNotFoundException
+    //   80	89	92	java/io/FileNotFoundException
+    //   141	146	148	java/io/IOException
+    //   28	38	151	java/io/FileNotFoundException
+    //   40	56	205	java/io/IOException
+    //   235	240	242	java/io/IOException
+    //   40	56	245	finally
+    //   189	193	268	java/io/IOException
+    //   198	203	272	java/io/IOException
+    //   132	136	276	java/io/IOException
+    //   226	230	280	java/io/IOException
+    //   252	256	284	java/io/IOException
+    //   261	266	288	java/io/IOException
+    //   58	65	292	finally
+    //   67	74	292	finally
+    //   80	89	292	finally
+    //   95	101	292	finally
+    //   103	128	292	finally
+    //   208	222	296	finally
+    //   58	65	304	java/io/IOException
+    //   67	74	304	java/io/IOException
+    //   80	89	304	java/io/IOException
+    //   40	56	308	java/io/FileNotFoundException
+  }
+  
+  public static String b(String paramString)
+  {
+    String str2 = "";
+    int i = paramString.lastIndexOf('.');
+    String str1 = str2;
+    if (i > 0)
+    {
+      str1 = str2;
+      if (i < paramString.length() - 1) {
+        str1 = paramString.substring(i + 1);
       }
-    } while (new Random(System.currentTimeMillis()).nextInt(100) + 1 > i);
-    return true;
-  }
-  
-  public void b()
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("ComicProtoConvSvr.tunnel");
-    localToServiceMsg.extraData.putString("subcmd", "GetComicGlobalConfig");
-    localToServiceMsg.extraData.putLong("requestTime", SystemClock.elapsedRealtime());
-    byte[] arrayOfByte = a(a(this.app, "GetComicGlobalConfig", NetConnInfoCenter.getServerTime(), null), new MqqComicPb.GetComicGlobalConfigReqBody());
-    if ((arrayOfByte == null) || (arrayOfByte.length == 0))
-    {
-      a("intent error , data = " + arrayOfByte);
-      return;
     }
-    localToServiceMsg.putWupBuffer(arrayOfByte);
-    sendPbReq(localToServiceMsg);
-    a("[ComicGlobalConfig] send request to server");
-  }
-  
-  public void b(List<String> paramList)
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("ComicProtoConvSvr.tunnel");
-    localToServiceMsg.extraData.putString("subcmd", "DelMyComicFavorEmotIcons");
-    localToServiceMsg.extraData.putLong("requestTime", SystemClock.elapsedRealtime());
-    MqqComicHeadPb.ComicReqHead localComicReqHead = a(this.app, "DelMyComicFavorEmotIcons", NetConnInfoCenter.getServerTime(), null);
-    MqqComicPb.DelMyComicFavorEmotIconsReqBody localDelMyComicFavorEmotIconsReqBody = new MqqComicPb.DelMyComicFavorEmotIconsReqBody();
-    localDelMyComicFavorEmotIconsReqBody.md5List.set(paramList);
-    localToServiceMsg.putWupBuffer(a(localComicReqHead, localDelMyComicFavorEmotIconsReqBody));
-    sendPbReq(localToServiceMsg);
-  }
-  
-  public void b(byte[] paramArrayOfByte, int paramInt)
-  {
-    MqqComicPb.DelMyComicFavorEmotIconsRspBody localDelMyComicFavorEmotIconsRspBody = new MqqComicPb.DelMyComicFavorEmotIconsRspBody();
-    try
-    {
-      localDelMyComicFavorEmotIconsRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = localDelMyComicFavorEmotIconsRspBody;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        paramArrayOfByte = null;
-        a("DelMyComicFavorEmotIconsRspBody mergeFrom exception : " + localException.getMessage());
-      }
-      notifyUI(9, true, paramArrayOfByte);
-    }
-    if (paramInt == 0)
-    {
-      notifyUI(8, true, paramArrayOfByte);
-      return;
-    }
-  }
-  
-  public void c(byte[] paramArrayOfByte, int paramInt)
-  {
-    MqqComicPb.GetComicGlobalConfigRspBody localGetComicGlobalConfigRspBody;
-    if (paramInt == 0) {
-      localGetComicGlobalConfigRspBody = new MqqComicPb.GetComicGlobalConfigRspBody();
-    }
-    try
-    {
-      localGetComicGlobalConfigRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = localGetComicGlobalConfigRspBody;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        a("getComicGlobalConfigRspBody mergeFrom exception : " + paramArrayOfByte.getMessage());
-        paramArrayOfByte = null;
-      }
-    }
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.maintab.has())) {
-      bghl.a(paramArrayOfByte.maintab.get());
-    }
-    a("[ComicGlobalConfig] receive from server");
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return anuc.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Object localObject = paramFromServiceMsg.getServiceCmd();
-    long l3 = paramToServiceMsg.extraData.size();
-    long l2 = 0L;
-    long l1 = l2;
-    if (paramObject != null)
-    {
-      l1 = l2;
-      if ((paramObject instanceof byte[])) {
-        l1 = ((byte[])paramObject).length;
-      }
-    }
-    l2 = paramToServiceMsg.extraData.getLong("requestTime");
-    String str = paramToServiceMsg.extraData.getString("subcmd");
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str))) {}
-    label87:
-    int j;
-    label579:
-    do
-    {
-      do
-      {
-        break label87;
-        break label87;
-        break label87;
-        break label87;
-        for (;;)
-        {
-          return;
-          if ("ComicProtoConvSvr.tunnel".equals(localObject))
-          {
-            if (!paramFromServiceMsg.isSuccess())
-            {
-              if ("GetMyComicFavorEmotIcons".equals(str))
-              {
-                notifyUI(1, true, null);
-                if (!a()) {
-                  break;
-                }
-                bdes.a().a("GetMyComicFavorEmotIcons", l2, l3, l1, paramFromServiceMsg.getBusinessFailCode(), Long.valueOf(this.app.getCurrentAccountUin()).longValue(), jdField_a_of_type_JavaLangString, "[会员中心].查询我的漫图发送失败", false);
-                return;
-              }
-              if ("SetMyComicFavorEmotIcons".equals(str))
-              {
-                notifyUI(7, true, null);
-                if (!a()) {
-                  break;
-                }
-                bdes.a().a("SetMyComicFavorEmotIcons", l2, l3, l1, paramFromServiceMsg.getBusinessFailCode(), Long.valueOf(this.app.getCurrentAccountUin()).longValue(), jdField_a_of_type_JavaLangString, "[会员中心].设置我的漫图发送失败", false);
-                return;
-              }
-              if ("DelMyComicFavorEmotIcons".equals(str))
-              {
-                notifyUI(10, true, null);
-                if (!a()) {
-                  break;
-                }
-                bdes.a().a("DelMyComicFavorEmotIcons", l2, l3, l1, paramFromServiceMsg.getBusinessFailCode(), Long.valueOf(this.app.getCurrentAccountUin()).longValue(), jdField_a_of_type_JavaLangString, "[会员中心].删除我的漫图发送失败", false);
-                return;
-              }
-              if ((!"GetComicGlobalConfig".equals(str)) || (!a())) {
-                break;
-              }
-              bdes.a().a("GetComicGlobalConfig", l2, l3, l1, paramFromServiceMsg.getBusinessFailCode(), Long.valueOf(this.app.getCurrentAccountUin()).longValue(), jdField_a_of_type_JavaLangString, "[QQ动漫].查询动漫全局配置失败", false);
-              return;
-            }
-            localObject = (byte[])paramObject;
-            int i = a((byte[])localObject, 0);
-            paramObject = new byte[i - 4];
-            bbmx.a(paramObject, 0, (byte[])localObject, 4, paramObject.length);
-            paramFromServiceMsg = new MqqComicHeadPb.ComicRspHead();
-            try
-            {
-              paramFromServiceMsg.mergeFrom(paramObject);
-              if ((paramFromServiceMsg != null) && (paramFromServiceMsg.retCode.has()))
-              {
-                j = paramFromServiceMsg.retCode.get();
-                jdField_a_of_type_Int = paramFromServiceMsg.reportRate.get();
-                paramObject = null;
-                if (j == 0)
-                {
-                  paramFromServiceMsg = new byte[a((byte[])localObject, i) - 4];
-                  bbmx.a(paramFromServiceMsg, 0, (byte[])localObject, i + 4, paramFromServiceMsg.length);
-                  if (!"GetMyComicFavorEmotIcons".equals(str)) {
-                    break label579;
-                  }
-                  a(paramFromServiceMsg, j);
-                  if (!a()) {
-                    continue;
-                  }
-                  bdes.a().a("GetMyComicFavorEmotIcons", l2, l3, l1, j, Long.valueOf(this.app.getCurrentAccountUin()).longValue(), jdField_a_of_type_JavaLangString, "[会员中心].查询我的漫图成功", false);
-                }
-              }
-            }
-            catch (Exception paramFromServiceMsg)
-            {
-              for (;;)
-              {
-                a("onReceive comicRspHead mergeFrom exception:" + paramFromServiceMsg.getMessage());
-                paramFromServiceMsg = null;
-                continue;
-                paramFromServiceMsg = paramObject;
-                if (j > 0) {
-                  paramFromServiceMsg = paramObject;
-                }
-              }
-              if ("SetMyComicFavorEmotIcons".equals(str))
-              {
-                a(paramToServiceMsg, paramFromServiceMsg, j);
-                if (a()) {
-                  bdes.a().a("SetMyComicFavorEmotIcons", l2, l3, l1, j, Long.valueOf(this.app.getCurrentAccountUin()).longValue(), jdField_a_of_type_JavaLangString, "[会员中心].设置我的漫图信息成功", false);
-                }
-              }
-              else if ("DelMyComicFavorEmotIcons".equals(str))
-              {
-                b(paramFromServiceMsg, j);
-                if (!a()) {
-                  continue;
-                }
-                bdes.a().a("DelMyComicFavorEmotIcons", l2, l3, l1, j, Long.valueOf(this.app.getCurrentAccountUin()).longValue(), jdField_a_of_type_JavaLangString, "[会员中心].删除我的漫图信息成功", false);
-              }
-            }
-          }
-        }
-      } while (!"GetComicGlobalConfig".equals(str));
-      c(paramFromServiceMsg, j);
-    } while (!a());
-    bdes.a().a("GetComicGlobalConfig", l2, l3, l1, j, Long.valueOf(this.app.getCurrentAccountUin()).longValue(), jdField_a_of_type_JavaLangString, "[QQ动漫].查询动漫全局配置，code = " + j, false);
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     antz
  * JD-Core Version:    0.7.0.1
  */

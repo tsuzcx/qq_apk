@@ -1,88 +1,100 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.arch.lifecycle.MutableLiveData;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudCommon.BytesEntry;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudMeta.StGPSV2;
+import feedcloud.FeedCloudRead.StGetBusiInfoReq;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StBusiInfoData;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
 public class tzi
-  extends tzh
+  extends tyz
 {
-  protected Map<String, tzh> a = new HashMap();
+  private MutableLiveData<tzm<List<QQCircleFeedBase.StTabInfo>>> a = new MutableLiveData();
   
-  public tzi(@NonNull ViewGroup paramViewGroup)
+  public MutableLiveData<tzm<List<QQCircleFeedBase.StTabInfo>>> a()
   {
-    super(paramViewGroup);
+    return this.a;
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public void a(FeedCloudMeta.StGPSV2 paramStGPSV2)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561390, paramViewGroup, false);
-  }
-  
-  public void a(int paramInt, twm paramtwm, @NonNull ArrayList<uas> paramArrayList)
-  {
-    super.a(paramInt, paramtwm, paramArrayList);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tzh)localIterator.next()).a(paramInt, paramtwm, paramArrayList);
+    paramStGPSV2 = new QCircleGetTabListRequest(paramStGPSV2);
+    paramStGPSV2.setEnableCache(true);
+    Object localObject = tym.a().a();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).getBytes();
+      tym.a().a(null);
+      FeedCloudCommon.StCommonExt localStCommonExt = new FeedCloudCommon.StCommonExt();
+      ArrayList localArrayList = new ArrayList();
+      if (localObject != null)
+      {
+        FeedCloudCommon.BytesEntry localBytesEntry = new FeedCloudCommon.BytesEntry();
+        localBytesEntry.key.set("circle_invite");
+        localBytesEntry.value.set(ByteStringMicro.copyFrom((byte[])localObject));
+        localArrayList.add(localBytesEntry);
+        localStCommonExt.mapBytesInfo.set(localArrayList);
+        if (paramStGPSV2.mReq != null) {
+          paramStGPSV2.mReq.extInfo.set(localStCommonExt);
+        }
+      }
     }
+    this.a.setValue(tzm.b());
+    a(paramStGPSV2, new tzj(this, paramStGPSV2));
   }
   
-  public void a(@NonNull tzh paramtzh)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
   {
-    this.a.put(paramtzh.getClass().getName(), paramtzh);
-  }
-  
-  public void a(tzi paramtzi)
-  {
-    super.a(paramtzi);
-    paramtzi = this.a.values().iterator();
-    while (paramtzi.hasNext()) {
-      ((tzh)paramtzi.next()).a(this);
+    boolean bool = VSNetworkHelper.a(paramString);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetBusiInfoRsp == null))
+    {
+      this.a.setValue(tzm.a(paramString));
+      return;
     }
-  }
-  
-  public void a(uag paramuag)
-  {
-    super.a(paramuag);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tzh)localIterator.next()).a(paramuag);
-    }
-  }
-  
-  @Nullable
-  public tzh b(Class<? extends tzh> paramClass)
-  {
-    return (tzh)this.a.get(paramClass.getName());
-  }
-  
-  protected void b()
-  {
-    super.b();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tzh)localIterator.next()).b();
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tzh)localIterator.next()).c();
+    paramString = new QQCircleFeedBase.StBusiInfoData();
+    paramStGetBusiInfoRsp = paramStGetBusiInfoRsp.busiRspData.get().toByteArray();
+    for (;;)
+    {
+      try
+      {
+        paramString.mergeFrom(paramStGetBusiInfoRsp);
+        tpz.a().a(paramStGetBusiInfoRsp);
+        paramStGetBusiInfoRsp = paramString.tabInfos.get();
+        if (paramStGetBusiInfoRsp.size() > 0)
+        {
+          this.a.setValue(tzm.a(bool).a(false, paramStGetBusiInfoRsp));
+          paramStGetBusiInfoRsp = paramString.allPolyInfo.get();
+          if ((paramStGetBusiInfoRsp != null) && (!bool)) {
+            tqg.a(paramStGetBusiInfoRsp);
+          }
+          tqg.a(paramString.schoolInfos.get(), paramString.companyInfos.get());
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramString)
+      {
+        paramString.printStackTrace();
+        this.a.setValue(tzm.a("parse stBusiInfo data exception!"));
+        return;
+      }
+      this.a.setValue(tzm.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tzi
  * JD-Core Version:    0.7.0.1
  */

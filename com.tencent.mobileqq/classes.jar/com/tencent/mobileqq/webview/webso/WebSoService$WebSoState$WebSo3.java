@@ -3,12 +3,12 @@ package com.tencent.mobileqq.webview.webso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bchr;
+import begs;
 
 public class WebSoService$WebSoState$WebSo3
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebSo3> CREATOR = new bchr();
+  public static final Parcelable.Creator<WebSo3> CREATOR = new begs();
   public String a;
   public boolean a;
   public String b;
@@ -79,7 +79,7 @@ public class WebSoService$WebSoState$WebSo3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3
  * JD-Core Version:    0.7.0.1
  */

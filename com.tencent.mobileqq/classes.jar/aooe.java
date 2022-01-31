@@ -1,41 +1,72 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aooe
-  implements apxf
+  extends aofy<aood>
 {
-  public aooe(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void a() {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b()
+  public int a()
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.f)) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_Apet != null)
-    {
-      this.a.jdField_a_of_type_Apet.l = "3";
-      this.a.jdField_a_of_type_Apet.e = System.currentTimeMillis();
-    }
-    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
+    return 361;
   }
   
-  public void c() {}
+  @NonNull
+  public aood a(int paramInt)
+  {
+    return new aood();
+  }
   
-  public void d() {}
+  @Nullable
+  public aood a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
+    {
+      aood localaood = aood.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      }
+      return localaood;
+    }
+    return null;
+  }
   
-  public void e() {}
+  public Class<aood> a()
+  {
+    return aood.class;
+  }
   
-  public void f() {}
+  public void a(int paramInt) {}
   
-  public void g() {}
+  public void a(aood paramaood)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramaood.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aooe
  * JD-Core Version:    0.7.0.1
  */

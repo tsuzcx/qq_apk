@@ -1,30 +1,18 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import UserGrowth.stRedDotReq;
+import UserGrowth.stRedDotRsp;
 
 public class tko
-  extends ssh
+  extends thb<stRedDotRsp>
 {
-  private tov a;
-  public boolean a;
-  
-  public tko(ErrorMessage paramErrorMessage)
+  public tko()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-  }
-  
-  public tko(boolean paramBoolean)
-  {
-    this(new ErrorMessage());
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public tov a()
-  {
-    return this.jdField_a_of_type_Tov;
+    super("RedDot");
+    this.a = new stRedDotReq(111, 1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tko
  * JD-Core Version:    0.7.0.1
  */

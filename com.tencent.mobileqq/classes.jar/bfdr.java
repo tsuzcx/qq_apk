@@ -1,23 +1,38 @@
-import com.tencent.tissue.v8rt.engine.IServiceEventHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class bfdr
-  implements IServiceEventHandler
+  extends Handler
 {
-  bfdr(bfdn parambfdn, bfdu parambfdu) {}
-  
-  public void onServiceEvent(String paramString1, String paramString2, int[] paramArrayOfInt)
+  bfdr(bfdq parambfdq, Looper paramLooper)
   {
-    this.jdField_a_of_type_Bfdu.a(paramString1, paramString2, paramArrayOfInt);
+    super(paramLooper);
   }
   
-  public String onServiceNativeRequest(String paramString1, String paramString2, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_Bfdu.a(paramString1, paramString2, paramInt);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      bfdq localbfdq = this.a;
+      if (paramMessage.obj == null) {}
+      for (String str = null;; str = (String)paramMessage.obj)
+      {
+        localbfdq.a(str);
+        break;
+      }
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfdr
  * JD-Core Version:    0.7.0.1
  */

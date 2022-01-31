@@ -1,46 +1,26 @@
-import android.widget.EditText;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahay
-  extends ahak
+  implements View.OnClickListener
 {
-  private int a;
+  public ahay(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
   
-  public ahay(EditText paramEditText)
+  public void onClick(View paramView)
   {
-    super(paramEditText);
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    CharSequence localCharSequence = paramCharSequence;
-    if (paramCharSequence.toString().contains("."))
-    {
-      localCharSequence = paramCharSequence;
-      if (paramCharSequence.length() - 1 - paramCharSequence.toString().indexOf(".") > this.jdField_a_of_type_Int)
-      {
-        localCharSequence = paramCharSequence.toString().subSequence(0, paramCharSequence.toString().indexOf(".") + this.jdField_a_of_type_Int + 1);
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(localCharSequence);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(localCharSequence.length());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener");
     }
-    paramCharSequence = localCharSequence;
-    if (localCharSequence.toString().trim().substring(0).equals("."))
-    {
-      paramCharSequence = "0" + localCharSequence;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(2);
-    }
-    if ((paramCharSequence.toString().startsWith("0")) && (paramCharSequence.toString().trim().length() > 1) && (!paramCharSequence.toString().substring(1, 2).equals(".")))
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, 1));
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(1);
-    }
+    azmj.b(null, "dc00899", "Grp_find_new", "", "grptab", "location_set_exp", 0, 0, "", "", "", "");
+    this.a.getActivity().requestPermissions(new ahaz(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahay
  * JD-Core Version:    0.7.0.1
  */

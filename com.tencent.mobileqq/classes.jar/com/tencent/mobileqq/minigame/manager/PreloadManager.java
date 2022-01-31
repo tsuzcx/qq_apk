@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.minigame.manager;
 
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PreloadManager
-  implements GameLoadManager.GameLoadListener
+  implements GameRuntimeLoader.GameRuntimeListener
 {
   public static final int PRELOAD_STATE_ERROR = 3;
   public static final int PRELOAD_STATE_LOADED = 2;
@@ -21,6 +22,7 @@ public class PreloadManager
   private static PreloadManager instance;
   private MiniAppConfig mMiniAppConfig;
   private PreloadManager.PreloadListener mPreloadListener;
+  private GameRuntimeLoader mPreloadRuntimeLoader;
   private volatile float mProgress = 0.0F;
   public String mSlashPic;
   public String mStartBtnPic;
@@ -112,7 +114,9 @@ public class PreloadManager
         this.mPreloadListener.onPreloadGpkgLoad(paramBoolean, paramString);
       }
       return;
-      GameInfoManager.g().setMiniAppConfig(this.mMiniAppConfig);
+      if (this.mPreloadRuntimeLoader != null) {
+        this.mPreloadRuntimeLoader.getGameInfoManager().setMiniAppConfig(this.mMiniAppConfig);
+      }
     }
   }
   
@@ -150,13 +154,12 @@ public class PreloadManager
   {
     initData(paramSplashMiniGameData);
     this.mState = 1;
-    GameLoadManager.g().setEngineChannel(null);
-    GameLoadManager.g().start(this.mMiniAppConfig, this);
+    this.mPreloadRuntimeLoader = GameRuntimeLoaderManager.g().obtain(BaseApplicationImpl.getApplication()).registerListener(this).prepareGameRuntime(this.mMiniAppConfig);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.PreloadManager
  * JD-Core Version:    0.7.0.1
  */

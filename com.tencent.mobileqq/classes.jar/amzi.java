@@ -1,95 +1,76 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class amzi
-  extends amyp<amzh>
 {
-  static amzh a = new amzh();
+  protected static bapw a;
+  private bapv jdField_a_of_type_Bapv;
+  public AppInterface a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ArrayList<amzm> jdField_a_of_type_JavaUtilArrayList;
   
-  public static amzh c()
+  static
   {
-    amzh localamzh2 = (amzh)ampl.a().a(444);
-    amzh localamzh1 = localamzh2;
-    if (localamzh2 == null) {
-      localamzh1 = a;
-    }
-    return localamzh1;
+    jdField_a_of_type_Bapw = new amzk();
   }
   
-  public int a()
+  public amzi(AppInterface paramAppInterface)
   {
-    return 444;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Bapv = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  @NonNull
-  public amzh a()
+  public void a()
   {
-    return a;
-  }
-  
-  @NonNull
-  public amzh a(@NonNull amph[] paramArrayOfamph)
-  {
-    amzh localamzh = new amzh();
-    int m = paramArrayOfamph.length;
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
     int i = 0;
-    int j = 0;
-    while (i < m)
+    try
     {
-      Object localObject = paramArrayOfamph[i];
-      if (j > ((amph)localObject).jdField_a_of_type_Int)
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
+        QLog.i("AREngine_ARResourceDownload", 1, "cancelDownloadTask. url = " + ((amzm)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Bapv.b(((amzm)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Baps);
         i += 1;
       }
-      else
-      {
-        int k = ((amph)localObject).jdField_a_of_type_Int;
-        j = k;
-        for (;;)
-        {
-          try
-          {
-            if (paramArrayOfamph[0].jdField_a_of_type_JavaLangString == null) {
-              break;
-            }
-            localObject = new JSONObject(paramArrayOfamph[0].jdField_a_of_type_JavaLangString);
-            localamzh.a = ((JSONObject)localObject).optBoolean("enable", false);
-            if (((JSONObject)localObject).optInt("dltc", 0) != 1) {
-              break label166;
-            }
-            bool = true;
-            localamzh.b = bool;
-            j = k;
-          }
-          catch (JSONException localJSONException)
-          {
-            ved.e("QVipDiyTemplateProcessor", "parsed : " + paramArrayOfamph[0].jdField_a_of_type_JavaLangString + " error:" + localJSONException);
-            j = k;
-          }
-          break;
-          label166:
-          boolean bool = false;
-        }
-      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
     }
-    return localamzh;
+    finally {}
   }
   
-  public Class<amzh> a()
+  public boolean a(amzm paramamzm, amzl arg2)
   {
-    return amzh.class;
+    if ((paramamzm == null) || (??? == null)) {
+      return false;
+    }
+    ??? = new amzj(this, paramamzm, ???);
+    baps localbaps = new baps();
+    localbaps.jdField_a_of_type_Bapx = ???;
+    localbaps.jdField_a_of_type_JavaLangString = paramamzm.jdField_a_of_type_JavaLangString;
+    localbaps.jdField_a_of_type_Int = 0;
+    localbaps.c = paramamzm.c;
+    localbaps.e = 1;
+    localbaps.jdField_a_of_type_Bapw = jdField_a_of_type_Bapw;
+    this.jdField_a_of_type_Bapv.a(localbaps);
+    paramamzm.jdField_a_of_type_Baps = localbaps;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramamzm);
+      QLog.i("AREngine_ARResourceDownload", 1, "submitDownloadTask. url = " + paramamzm.jdField_a_of_type_JavaLangString);
+      return true;
+    }
   }
   
-  @NonNull
-  public amzh b()
+  public void b()
   {
-    return a;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzi
  * JD-Core Version:    0.7.0.1
  */

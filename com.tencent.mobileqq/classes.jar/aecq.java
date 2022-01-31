@@ -1,68 +1,62 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AppGuideTipsConfig;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTimDouFuGuide;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aecq
-  extends actm
+  extends alsi
 {
-  public aecq(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  public aecq(TroopRequestActivity paramTroopRequestActivity) {}
+  
+  protected void a(String paramString)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    this.a.i();
+    paramString = this.a.getString(2131720539);
+    QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
   }
   
-  protected actn a()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    return new aecs(this);
+    this.a.a(2130839404, this.a.getString(2131720075));
   }
   
-  protected View a(MessageRecord paramMessageRecord, actn paramactn, View paramView, LinearLayout paramLinearLayout, acxj paramacxj)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
   {
-    paramLinearLayout = (aecs)paramactn;
-    paramactn = paramView;
-    if (paramView == null)
+    long l2 = baba.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
     {
-      paramactn = LayoutInflater.from(this.a).inflate(2131558784, null);
-      paramLinearLayout.b = ((TextView)paramactn.findViewById(2131377350));
-      paramLinearLayout.c = ((TextView)paramactn.findViewById(2131364691));
-    }
-    if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForTimDouFuGuide)))
-    {
-      paramMessageRecord = ((MessageForTimDouFuGuide)paramMessageRecord).config;
-      if (paramMessageRecord != null)
+      l1 = Long.parseLong(paramString1);
+      if (!paramBoolean)
       {
-        paramLinearLayout.b.setText(paramMessageRecord.tipsHighLight);
-        paramView = new SpannableString(paramMessageRecord.tipsMsg + ajya.a(2131714944));
-        int i = paramView.length();
-        paramView.setSpan(new ForegroundColorSpan(paramactn.getResources().getColor(2131166866)), i - 4, i, 33);
-        paramLinearLayout.c.setText(paramView);
-        paramactn.setOnClickListener(new aecr(this, paramMessageRecord));
+        this.a.i();
+        if (babb.a(baba.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
+          this.a.finish();
+        }
+        return;
+      }
+      this.a.i();
+      this.a.finish();
+      babb.a(baba.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        l1 = l2;
       }
     }
-    return paramactn;
   }
   
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bbmh[] a(View paramView)
+  protected void b(boolean paramBoolean, String paramString)
   {
-    return new bbmf().a();
+    this.a.a(2130839404, this.a.getString(2131720060));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecq
  * JD-Core Version:    0.7.0.1
  */

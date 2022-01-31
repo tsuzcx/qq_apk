@@ -1,29 +1,28 @@
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.dancemachine.PKVideoSharer.2.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.qphone.base.util.QLog;
 
-class wyx
-  extends wzo
+public class wyx
+  implements bevy
 {
-  wyx(wyt paramwyt, wzb paramwzb, String paramString)
+  public void a(BaseResp paramBaseResp)
   {
-    super(paramwyt);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Wyt.a));
-      this.jdField_a_of_type_Wyt.a = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceMachinePKVideoSharer", 2, "[DanceMachine Share]  shareToWechat errorCode : " + paramBaseResp.errCode + "   errorStr : " + paramBaseResp.errCode + "  transaction : " + paramBaseResp.transaction + "  openId : " + paramBaseResp.openId + " type : " + paramBaseResp.getType() + " bitmap ");
     }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Wzb.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    if ((paramBaseResp.errCode != 0) && (paramBaseResp.errCode != -2)) {
+      this.jdField_a_of_type_Wyw.a.runOnUiThread(new PKVideoSharer.2.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyx
  * JD-Core Version:    0.7.0.1
  */

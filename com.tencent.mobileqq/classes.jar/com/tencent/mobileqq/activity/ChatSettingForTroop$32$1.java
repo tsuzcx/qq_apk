@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aaug;
+import acle;
 import com.tencent.qphone.base.util.QLog;
 
 public class ChatSettingForTroop$32$1
   implements Runnable
 {
-  public ChatSettingForTroop$32$1(aaug paramaaug) {}
+  public ChatSettingForTroop$32$1(acle paramacle) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ChatSettingForTroop$32$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.32.1
  * JD-Core Version:    0.7.0.1
  */

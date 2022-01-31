@@ -1,78 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class xfy
-  extends ampa<xfx>
 {
-  public int a()
+  public static xgc a(Context paramContext, String paramString)
   {
-    return 463;
-  }
-  
-  public Class<xfx> a()
-  {
-    return xfx.class;
-  }
-  
-  @NonNull
-  public xfx a(int paramInt)
-  {
-    return new xfx();
-  }
-  
-  @Nullable
-  public xfx a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    paramContext = xgc.a(paramContext);
+    if (paramContext != null)
     {
-      xfx localxfx = xfx.a(paramArrayOfamph[0].a);
-      a(localxfx);
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
-      return localxfx;
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        xgc localxgc = (xgc)paramContext.next();
+        if (TextUtils.equals(paramString, localxgc.a)) {
+          return localxgc;
+        }
+      }
     }
     return null;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(xfx paramxfx)
+  public static boolean a(Context paramContext)
   {
-    QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate ");
-    if (paramxfx != null)
-    {
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate " + paramxfx.toString());
-      xfo.a().a("subscribe_entrance_enable", paramxfx.a());
-      xfo.a().a("is_open_sharing", paramxfx.b());
-      xfo.a().a("subscribe_account_title", paramxfx.c());
-      xfo.a().a("newfollowlist", paramxfx.d());
-      xfo.a().a("subscribe_publish_entrance_enable", paramxfx.e());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return !TextUtils.isEmpty(bczr.a(paramContext, "qqstory_savedMusicList"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -42,7 +42,7 @@ public class RecentCallItem
     this.mShowTime = "0";
     this.mUnreadNum = 0;
     this.mMenuFlag = 12288;
-    this.mCallingText = ajya.a(2131713159);
+    this.mCallingText = alpo.a(2131713531);
     this.call.isVideo = 1;
   }
   
@@ -58,7 +58,7 @@ public class RecentCallItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentCallItem
  * JD-Core Version:    0.7.0.1
  */

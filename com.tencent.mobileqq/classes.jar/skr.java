@@ -1,43 +1,16 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
 
-@SuppressLint({"HandlerLeak"})
-class skr
-  extends Handler
+public abstract interface skr
 {
-  WeakReference<skq> jdField_a_of_type_JavaLangRefWeakReference;
+  public abstract View a(ViewGroup paramViewGroup);
   
-  skr(skq paramskq1, skq paramskq2)
-  {
-    snb.b("WSFallKeyPicMonitor", "init DownloadHandler");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramskq2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    snb.b("WSFallKeyPicMonitor", "handleMessage to download");
-    if (paramMessage.what == 1)
-    {
-      if (skq.a(this.jdField_a_of_type_Skq) != 4) {
-        break label46;
-      }
-      skq.a(this.jdField_a_of_type_Skq);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Skq.b();
-      return;
-      label46:
-      skq.b(this.jdField_a_of_type_Skq);
-    }
-  }
+  public abstract void a(sko paramsko1, @Nullable sko paramsko2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     skr
  * JD-Core Version:    0.7.0.1
  */

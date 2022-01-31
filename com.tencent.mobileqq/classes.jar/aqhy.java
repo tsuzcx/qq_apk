@@ -1,27 +1,32 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.ArrayList;
 
-public class aqhy
-  implements TextWatcher
+class aqhy
+  implements View.OnClickListener
 {
-  public aqhy(MsgBackupSettingFragment paramMsgBackupSettingFragment, TextView paramTextView1, TextView paramTextView2) {}
+  aqhy(aqhx paramaqhx, View paramView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = paramEditable.toString();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(MsgBackupSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
-    this.b.setText(String.format(MsgBackupSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
+    paramView = (aqxu)this.jdField_a_of_type_AndroidViewView.getTag();
+    this.jdField_a_of_type_Aqhx.a.e = paramView.a;
+    paramView = (FileInfo)this.jdField_a_of_type_Aqhx.a.b.get(this.jdField_a_of_type_Aqhx.a.e);
+    if ((!arof.a(paramView.c())) || (arof.c(paramView.c())))
+    {
+      arni.d(paramView.c());
+      this.jdField_a_of_type_Aqhx.a.b.remove(this.jdField_a_of_type_Aqhx.a.e);
+      LocalFileBrowserActivity.a(this.jdField_a_of_type_Aqhx.a);
+      return;
+    }
+    armz.a(2131692486);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhy
  * JD-Core Version:    0.7.0.1
  */

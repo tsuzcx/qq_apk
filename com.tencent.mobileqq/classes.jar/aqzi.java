@@ -1,21 +1,18 @@
-import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
 public class aqzi
-  implements StaggeredGridLayoutManager.ExceptionListener
+  extends alkl
 {
-  public aqzi(HotPicPageView paramHotPicPageView) {}
+  public aqzi(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
+  protected void a(Object paramObject)
   {
-    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
+    TroopFileSearchFragment.a(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzi
  * JD-Core Version:    0.7.0.1
  */

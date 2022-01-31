@@ -3,10 +3,15 @@ package okio;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
 import java.util.logging.Logger;
+import org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement;
 
 public final class Okio
 {
@@ -20,19 +25,18 @@ public final class Okio
     return sink(new FileOutputStream(paramFile, true));
   }
   
+  public static Sink blackhole()
+  {
+    return new Okio.3();
+  }
+  
   public static BufferedSink buffer(Sink paramSink)
   {
-    if (paramSink == null) {
-      throw new IllegalArgumentException("sink == null");
-    }
     return new RealBufferedSink(paramSink);
   }
   
   public static BufferedSource buffer(Source paramSource)
   {
-    if (paramSource == null) {
-      throw new IllegalArgumentException("source == null");
-    }
     return new RealBufferedSource(paramSource);
   }
   
@@ -70,8 +74,20 @@ public final class Okio
     if (paramSocket == null) {
       throw new IllegalArgumentException("socket == null");
     }
+    if (paramSocket.getOutputStream() == null) {
+      throw new IOException("socket's output stream == null");
+    }
     AsyncTimeout localAsyncTimeout = timeout(paramSocket);
     return localAsyncTimeout.sink(sink(paramSocket.getOutputStream(), localAsyncTimeout));
+  }
+  
+  @IgnoreJRERequirement
+  public static Sink sink(Path paramPath, OpenOption... paramVarArgs)
+  {
+    if (paramPath == null) {
+      throw new IllegalArgumentException("path == null");
+    }
+    return sink(Files.newOutputStream(paramPath, paramVarArgs));
   }
   
   public static Source source(File paramFile)
@@ -103,18 +119,30 @@ public final class Okio
     if (paramSocket == null) {
       throw new IllegalArgumentException("socket == null");
     }
+    if (paramSocket.getInputStream() == null) {
+      throw new IOException("socket's input stream == null");
+    }
     AsyncTimeout localAsyncTimeout = timeout(paramSocket);
     return localAsyncTimeout.source(source(paramSocket.getInputStream(), localAsyncTimeout));
   }
   
+  @IgnoreJRERequirement
+  public static Source source(Path paramPath, OpenOption... paramVarArgs)
+  {
+    if (paramPath == null) {
+      throw new IllegalArgumentException("path == null");
+    }
+    return source(Files.newInputStream(paramPath, paramVarArgs));
+  }
+  
   private static AsyncTimeout timeout(Socket paramSocket)
   {
-    return new Okio.3(paramSocket);
+    return new Okio.4(paramSocket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.Okio
  * JD-Core Version:    0.7.0.1
  */

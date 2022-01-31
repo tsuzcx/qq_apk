@@ -1,79 +1,47 @@
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.util.Pair;
+import cooperation.qqreader.net.BusinessTask;
+import mqq.app.AppRuntime;
+
 public class biwo
 {
-  public static final biwo a;
-  private static final biwo[] jdField_a_of_type_ArrayOfBiwo;
-  public static final biwo b;
-  private static final biwo[] b;
-  public static final biwo c;
-  private static final biwo[] c;
-  private static final biwo[] d = { jdField_b_of_type_Biwo };
-  private static final biwo[] e = { jdField_b_of_type_Biwo, jdField_c_of_type_Biwo };
-  public final int a;
-  private boolean jdField_a_of_type_Boolean;
-  public final int b;
+  private static biwo jdField_a_of_type_Biwo;
+  private static final Pair<Integer, Integer> jdField_a_of_type_ComTencentUtilPair = new Pair(Integer.valueOf(1494), Integer.valueOf(2));
+  private static boolean jdField_a_of_type_Boolean;
   
-  static
+  public static SharedPreferences a()
   {
-    jdField_a_of_type_Biwo = new biwo(0, 2131689819);
-    jdField_b_of_type_Biwo = new biwo(1, 2131689820);
-    jdField_c_of_type_Biwo = new biwo(2, 2131689818);
-    jdField_a_of_type_ArrayOfBiwo = new biwo[] { jdField_a_of_type_Biwo, jdField_b_of_type_Biwo, jdField_c_of_type_Biwo };
-    jdField_b_of_type_ArrayOfBiwo = new biwo[] { jdField_a_of_type_Biwo, jdField_b_of_type_Biwo };
-    jdField_c_of_type_ArrayOfBiwo = new biwo[] { jdField_a_of_type_Biwo, jdField_c_of_type_Biwo };
+    return BaseApplicationImpl.getApplication().getSharedPreferences("Reader_shadow_gray" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
   }
   
-  biwo(int paramInt1, int paramInt2)
+  public static biwo a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static biwo a(biwo parambiwo)
-  {
-    return new biwo(parambiwo.jdField_a_of_type_Int, parambiwo.jdField_b_of_type_Int);
-  }
-  
-  public static boolean a(biwo parambiwo1, biwo parambiwo2)
-  {
-    return parambiwo1.jdField_a_of_type_Int == parambiwo2.jdField_a_of_type_Int;
-  }
-  
-  public static biwo[] a(bijd parambijd)
-  {
-    int i = birt.a(parambijd);
-    if (i == 204) {
-      return jdField_b_of_type_ArrayOfBiwo;
+    if (jdField_a_of_type_Biwo == null) {}
+    try
+    {
+      if (jdField_a_of_type_Biwo == null) {
+        jdField_a_of_type_Biwo = new biwo();
+      }
+      return jdField_a_of_type_Biwo;
     }
-    if (i == 205) {
-      return jdField_c_of_type_ArrayOfBiwo;
-    }
-    if (i == 206) {
-      return d;
-    }
-    if (i == 207) {
-      return e;
-    }
-    return jdField_a_of_type_ArrayOfBiwo;
+    finally {}
   }
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String toString()
-  {
-    return "AE_CAPTURE_MODE{index=" + this.jdField_a_of_type_Int + '}';
+    bixe.e("ReaderShadowGrayManager", "[fetchConfig] sIsRequestedGray = " + jdField_a_of_type_Boolean);
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    BusinessTask localBusinessTask = new BusinessTask("ReaderShadowGray", jdField_a_of_type_ComTencentUtilPair);
+    localBusinessTask.a(new biwp(this), true);
+    localBusinessTask.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biwo
  * JD-Core Version:    0.7.0.1
  */

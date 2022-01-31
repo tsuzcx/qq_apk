@@ -1,23 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-
-final class banj
-  extends bbwt
+class banj
+  extends alsi
 {
-  banj(WeakReference paramWeakReference, File paramFile, aycd paramaycd) {}
+  banj(bang parambang) {}
   
-  public void onDone(bbwu parambbwu)
+  public void a(boolean paramBoolean, long paramLong, alsj paramalsj)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoAnimationUtils", 2, "onDone:" + parambbwu.a);
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramalsj);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
     }
-    bani.a(this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Aycd);
+    if (paramalsj != null) {
+      this.a.v = paramalsj.d;
+    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     banj
  * JD-Core Version:    0.7.0.1
  */

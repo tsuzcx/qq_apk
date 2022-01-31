@@ -1,10 +1,12 @@
-public class bjci
+import android.os.Bundle;
+
+public abstract interface bjci
 {
-  public static final String[] a = { "Jitter", "SoulOut" };
+  public abstract void callback(int paramInt, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjci
  * JD-Core Version:    0.7.0.1
  */

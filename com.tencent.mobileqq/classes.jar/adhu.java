@@ -1,41 +1,20 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 
 public class adhu
-  implements adif
+  implements View.OnClickListener
 {
-  private BaseChatPie a;
+  public adhu(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public adhu(BaseChatPie paramBaseChatPie)
+  public void onClick(View paramView)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.a != null)) {
-      ((asuw)this.a.a.getManager(324)).onDestroy();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 11 };
+    bdkn.a(this.a.app, this.a, "setting");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.applets.data;
 
-import auko;
-import aulz;
-import aumc;
-import bbkk;
+import awbv;
+import awdg;
+import awdj;
+import bdje;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.oidb.qqconnect.Appinfo;
 
 public class AppletsAccountInfo
-  extends auko
+  extends awbv
 {
   private static final String TABLENAME = "applets_account_info";
-  @aulz
+  @awdg
   public AppletInfo appInfo;
   public byte[] appInfoDetail;
   public String faceUrl;
   public String faceUrlSimple;
   public String nick;
-  @aumc
+  @awdj
   public String uin;
   
   public AppletInfo convertToAppletInfo(qqconnect.Appinfo paramAppinfo)
@@ -70,7 +70,7 @@ public class AppletsAccountInfo
   
   public String toString()
   {
-    String str = bbkk.e(String.valueOf(this.uin));
+    String str = bdje.e(String.valueOf(this.uin));
     StringBuilder localStringBuilder = new StringBuilder("--AppletsAccountInfo--");
     localStringBuilder.append(",shortUin:").append(str).append(",nick:").append(this.nick).append(",face_url:").append(this.faceUrl).append(",face_url_simple:").append(this.faceUrlSimple).append(",appInfo:").append(this.appInfo);
     return localStringBuilder.toString();
@@ -78,7 +78,7 @@ public class AppletsAccountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.data.AppletsAccountInfo
  * JD-Core Version:    0.7.0.1
  */

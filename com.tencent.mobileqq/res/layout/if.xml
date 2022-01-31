@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#fff5f6fa" android:layout_width="fill_parent" android:layout_height="44.0dip"
+<RelativeLayout android:id="@id/cg_" android:background="@color/dw" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/cgb" />
-    <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/jbf" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxEms="15" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff4899df" android:id="@id/jil" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:includeFontPadding="false" android:maxLength="4" />
-    <ImageView android:id="@id/cp6" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/cip" android:contentDescription="@string/close" />
-</LinearLayout>
+    <dov.com.qq.im.ae.view.TabLayout android:id="@id/mpe" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true" />
+    <dov.com.qq.im.ae.view.NoScrollViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/mpe" />
+</RelativeLayout>

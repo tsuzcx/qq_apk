@@ -1,28 +1,28 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ndu
-  implements bfph
+  extends baio
 {
-  public ndu(EqqAccountDetailActivity paramEqqAccountDetailActivity, nms paramnms, bfpc parambfpc, int paramInt) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ndu(ndt paramndt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b) {}
-    do
+    super(paramndt, paramString);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (ndv.a.matcher(this.jdField_a_of_type_JavaLangString).find())
     {
+      ndt.a(paramView, this.jdField_a_of_type_Ndt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ndt.b, this.jdField_a_of_type_Ndt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_Nms, paramInt + 1);
-      this.jdField_a_of_type_Bfpc.dismiss();
-    } while ((!((nqn)EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getManager(88)).a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))) || (this.jdField_a_of_type_Int == paramInt));
-    ((nrf)EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).a(88)).a(134243867, EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), null, null, null, paramInt + 1, false);
+    }
+    super.onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ndu
  * JD-Core Version:    0.7.0.1
  */

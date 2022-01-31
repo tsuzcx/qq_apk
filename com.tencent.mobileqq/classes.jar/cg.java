@@ -1,22 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.LiteActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.dataline.activities.LiteAdvanceActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
 
 public class cg
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cg(LiteActivity paramLiteActivity) {}
+  public cg(LiteAdvanceActivity paramLiteAdvanceActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    actj.n = true;
-    paramView = (fw)((fw)paramView.getTag()).clone();
-    this.a.a(paramView);
+    if (!LiteAdvanceActivity.a(this.a, paramBoolean))
+    {
+      paramCompoundButton = LiteAdvanceActivity.a(this.a);
+      if (!paramBoolean) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramCompoundButton.setChecked(paramBoolean);
+        QQToast.a(this.a, 1, alpo.a(2131706566), 0).b(this.a.getTitleBarHeight());
+        return;
+      }
+    }
+    LiteAdvanceActivity.b(this.a, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cg
  * JD-Core Version:    0.7.0.1
  */

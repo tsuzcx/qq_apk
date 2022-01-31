@@ -1,39 +1,44 @@
 package com.tencent.mobileqq.applets;
 
-import advo;
-import aiku;
-import akwu;
+import amnk;
 import android.text.TextUtils;
-import axqy;
-import com.tencent.mobileqq.app.QQAppInterface;
+import bkci;
+import bkcj;
 
 public final class PublicAccountEventReport$3
   implements Runnable
 {
-  public PublicAccountEventReport$3(String paramString1, String paramString2, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, String paramString3) {}
+  public PublicAccountEventReport$3(String paramString1, String paramString2, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_JavaLangString;
-    String str2 = this.jdField_b_of_type_JavaLangString;
-    if ((this.jdField_a_of_type_Int != 0) || (this.jdField_b_of_type_Int > 0)) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject = amnk.a(this.jdField_a_of_type_JavaLangString);
+    int j;
+    String str;
+    int k;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      akwu.a(str1, 137, str2, bool);
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc05007", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, this.jdField_b_of_type_JavaLangString);
+      j = (int)(System.currentTimeMillis() / 1000L);
+      str = this.b + "_" + j;
+      k = this.jdField_a_of_type_Int;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label117;
       }
-      if (advo.a(this.jdField_a_of_type_JavaLangString)) {
-        aiku.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
-      }
+    }
+    label117:
+    for (int i = 6;; i = 1)
+    {
+      localObject = new bkcj(str, 1, k, i, "vab_push", "vab_push", (String)localObject, "vab_push", j);
+      ((bkcj)localObject).l = this.jdField_a_of_type_JavaLangString;
+      ((bkcj)localObject).f = "vab_push";
+      bkci.a().a((bkcj)localObject);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.3
  * JD-Core Version:    0.7.0.1
  */

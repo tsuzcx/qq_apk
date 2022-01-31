@@ -1,72 +1,29 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Queue;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.17.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.core.ViolaEnvironment;
 
 public class sqz
+  implements srg
 {
-  private sra a = new sra();
+  public sqz(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
   
-  public sqz(HashMap<String, List<spz>> paramHashMap)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
-    {
-      Object localObject = (Map.Entry)paramHashMap.next();
-      String str = (String)((Map.Entry)localObject).getKey();
-      localObject = ((Map.Entry)localObject).getValue();
-      if (localObject == null)
-      {
-        ved.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "value is null key=%s", new Object[] { str });
-      }
-      else
-      {
-        localObject = (List)localObject;
-        this.a.a(str, ((List)localObject).size());
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("AlbumTree=[\n");
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(this.a);
-    while (localLinkedList.size() > 0)
-    {
-      int j = localLinkedList.size();
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = (sra)localLinkedList.poll();
-        if (localObject != null)
-        {
-          localStringBuilder.append(" [").append(((sra)localObject).toString()).append("];");
-          localObject = ((sra)localObject).a.iterator();
-          while (((Iterator)localObject).hasNext()) {
-            localLinkedList.offer((sra)((Iterator)localObject).next());
-          }
-        }
-        i += 1;
-      }
-      localStringBuilder.append("\n");
+    if (QLog.isColorLevel()) {
+      ThreadManager.post(new ViolaBaseView.17.1(this, paramString), 8, null, true);
     }
-    localStringBuilder.append("\n]");
-    ved.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "traverse " + localStringBuilder.toString());
-    return localStringBuilder.toString();
-  }
-  
-  public sra a()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqz
  * JD-Core Version:    0.7.0.1
  */

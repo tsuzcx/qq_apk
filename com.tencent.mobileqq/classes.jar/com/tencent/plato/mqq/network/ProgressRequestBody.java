@@ -1,7 +1,8 @@
 package com.tencent.plato.mqq.network;
 
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.RequestBody;
+import android.util.Log;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import okio.BufferedSink;
 import okio.Okio;
 import okio.Sink;
@@ -36,16 +37,24 @@ public class ProgressRequestBody
   
   public void writeTo(BufferedSink paramBufferedSink)
   {
-    if (this.mBufferedSink == null) {
-      this.mBufferedSink = Okio.buffer(sink(paramBufferedSink));
+    try
+    {
+      if (this.mBufferedSink == null) {
+        this.mBufferedSink = Okio.buffer(sink(paramBufferedSink));
+      }
+      this.mRequestBody.writeTo(this.mBufferedSink);
+      this.mBufferedSink.flush();
+      return;
     }
-    this.mRequestBody.writeTo(this.mBufferedSink);
-    this.mBufferedSink.flush();
+    catch (IllegalStateException paramBufferedSink)
+    {
+      Log.e("ProgressRequestBody", "ProgressRequestBody exp:" + paramBufferedSink.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.plato.mqq.network.ProgressRequestBody
  * JD-Core Version:    0.7.0.1
  */

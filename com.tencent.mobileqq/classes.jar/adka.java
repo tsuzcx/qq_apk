@@ -1,130 +1,114 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.URLThemeImageView;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class adka
+  extends BaseAdapter
 {
-  private adkc jdField_a_of_type_Adkc;
-  private View jdField_a_of_type_AndroidViewView;
-  private IntimateInfo.MemoryDayInfo jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adkb(this);
+  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
   
-  public adka(adjy paramadjy, Context paramContext)
+  public adka(List<ProfileLabelInfo> paramList)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559153, null);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public View a()
+  private void a(ProfileLabelInfo paramProfileLabelInfo)
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a(adkc paramadkc)
-  {
-    this.jdField_a_of_type_Adkc = paramadkc;
-  }
-  
-  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
-  {
-    if (paramMemoryDayInfo != null)
+    Object localObject = null;
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awre.a().keySet().iterator();
+    if (localIterator.hasNext())
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo = paramMemoryDayInfo;
-      if (this.jdField_a_of_type_AndroidViewView != null) {}
+      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
+      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
+        break label114;
+      }
+      localObject = localProfileLabelInfo;
     }
-    else
+    label114:
+    for (;;)
     {
+      break;
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awre.a(localObject)))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awre.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Awre.a(localObject));
+        return;
+      }
+      a(paramProfileLabelInfo.labelId);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setTag(paramMemoryDayInfo);
-    URLThemeImageView localURLThemeImageView = (URLThemeImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367679);
-    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379499);
-    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369247);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369877);
-    Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362992);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = 686;
-    localURLDrawableOptions.mRequestHeight = 124;
-    localURLDrawableOptions.mRetryCount = 3;
-    localURLDrawableOptions.mPlayGifImage = true;
-    Object localObject1 = this.jdField_a_of_type_Adjy.jdField_a_of_type_JavaLangString;
-    if (localURLThemeImageView != null)
-    {
-      if (localURLThemeImageView.a != null) {
-        localURLThemeImageView.a.a(bfwr.c);
-      }
-      if (paramMemoryDayInfo.iconUrl != null) {
-        localURLThemeImageView.setBackgroundURL(paramMemoryDayInfo.iconUrl);
-      }
+  }
+  
+  private void a(Long paramLong)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
     }
-    if ((localRelativeLayout != null) && (ThemeUtil.isNowThemeIsNight(null, false, null))) {
-      localObject1 = this.jdField_a_of_type_Adjy.b;
+    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
+    if (paramLong != null) {
+      paramLong.toggleStatus();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2131562691, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
+      paramViewGroup = new adjz();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377352));
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null)) {
-        ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions));
-      }
-      for (;;)
-      {
-        if ((localTextView2 != null) && (paramMemoryDayInfo.wording != null))
-        {
-          localTextView2.setText(paramMemoryDayInfo.wording);
-          localObject2 = "";
-          localObject1 = localObject2;
-          if (localTextView1 != null)
-          {
-            localObject1 = localObject2;
-            if (paramMemoryDayInfo.linkWording != null) {
-              localObject1 = paramMemoryDayInfo.linkWording;
-            }
-          }
-          int i = actj.a(95.0F, this.jdField_a_of_type_Adjy.jdField_a_of_type_AndroidContentContext.getResources());
-          i = adjy.a(this.jdField_a_of_type_Adjy, (String)localObject1, 14.0F, i + 80);
-          if (i > 200) {
-            localTextView2.setMaxWidth(i);
-          }
-        }
-        else
-        {
-          if ((localTextView1 == null) || (paramMemoryDayInfo.linkWording == null)) {
-            break;
-          }
-          localTextView1.setText(paramMemoryDayInfo.linkWording);
-          if (TextUtils.isEmpty(paramMemoryDayInfo.linkColor)) {}
-        }
-        try
-        {
-          localTextView1.setTextColor(Color.parseColor(paramMemoryDayInfo.linkColor));
-          localTextView1.setOnClickListener(new adkb(this));
-          return;
-          QLog.e("intimate_relationship", 2, " url is empty");
-          continue;
-          localTextView2.setMaxWidth(200);
-        }
-        catch (IllegalArgumentException paramMemoryDayInfo)
-        {
-          for (;;)
-          {
-            QLog.e("intimate_relationship", 2, " color parse err");
-          }
-        }
-      }
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      int i = paramInt % ProfileActivity.a.length;
+      paramView.setBackgroundResource(ProfileActivity.a[i][0]);
+      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      i = ProfileActivity.a[i][1];
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      return paramView;
+      paramViewGroup = (adjz)paramView.getTag();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adka
  * JD-Core Version:    0.7.0.1
  */

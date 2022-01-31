@@ -1,136 +1,126 @@
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import android.view.ViewConfiguration;
+import java.lang.ref.WeakReference;
 
-class beqr
+public class beqr
+  implements Handler.Callback, beqq
 {
-  public List<bequ> a;
-  public boolean a;
+  int jdField_a_of_type_Int = 0;
+  Handler jdField_a_of_type_AndroidOsHandler = null;
+  beqs jdField_a_of_type_Beqs = null;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int = 10;
+  boolean jdField_b_of_type_Boolean = false;
   
-  private beqr(Context paramContext)
+  public beqr(beqs parambeqs, Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (a()) {
-      b(paramContext);
-    }
-    for (;;)
+    this.jdField_a_of_type_Beqs = parambeqs;
+    this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+  }
+  
+  void a(int paramInt)
+  {
+    int i;
+    if (paramInt != this.jdField_a_of_type_Int)
     {
-      c(paramContext);
+      i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = paramInt;
+      if (this.jdField_a_of_type_Beqs != null) {
+        if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+          break label47;
+        }
+      }
+    }
+    label47:
+    for (View localView = null;; localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    {
+      this.jdField_a_of_type_Beqs.a(localView, i, paramInt);
       return;
-      a(paramContext);
     }
   }
   
-  private Class a(String paramString)
+  void a(View paramView)
   {
-    return beqb.a().a(paramString);
-  }
-  
-  private void a(Context paramContext)
-  {
-    if (paramContext == null) {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    for (View localView = null;; localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    {
+      if (localView != paramView) {
+        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+      }
       return;
     }
+  }
+  
+  public void a(View paramView, float paramFloat1, float paramFloat2)
+  {
+    a(paramView);
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 100L);
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    a(paramView);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    a(2);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(paramView);
+    paramInt3 = Math.abs(paramInt2 - paramInt4);
+    if ((paramInt3 == 0) || (paramInt2 == 0)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      if ((paramInt1 == 0) || (this.jdField_b_of_type_Boolean)) {
+        break;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      a(0);
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (paramInt3 <= this.jdField_b_of_type_Int) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 50L);
+      }
+      a(2);
+      return;
+    }
+    if ((!this.jdField_b_of_type_Boolean) && (paramInt3 <= this.jdField_b_of_type_Int)) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 50L);
+    }
+    a(1);
+  }
+  
+  public void b(View paramView, float paramFloat1, float paramFloat2)
+  {
+    a(paramView);
+    this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Boolean = false;
-    paramContext = paramContext.getPackageName();
-    a(paramContext + ":mini1", a("com.tencent.qqmini.sdk.ui.MiniActivity1"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver1"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini2", a("com.tencent.qqmini.sdk.ui.MiniActivity2"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver2"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini3", a("com.tencent.qqmini.sdk.ui.MiniActivity3"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver3"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini4", a("com.tencent.qqmini.sdk.ui.MiniActivity4"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver4"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini5", a("com.tencent.qqmini.sdk.ui.MiniActivity5"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver5"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini_internal", a("com.tencent.qqmini.sdk.ui.InternalMiniActivity"), a("com.tencent.qqmini.sdk.receiver.InternalAppBrandMainReceiver"), ProcessType.MINI_INTERNAL);
   }
   
-  private void a(String paramString, Class paramClass1, Class paramClass2, ProcessType paramProcessType)
+  public boolean handleMessage(Message paramMessage)
   {
-    bequ localbequ = new bequ();
-    localbequ.jdField_a_of_type_JavaLangString = paramString;
-    localbequ.jdField_a_of_type_JavaLangClass = paramClass1;
-    localbequ.b = paramClass2;
-    localbequ.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = paramProcessType;
-    this.jdField_a_of_type_JavaUtilList.add(localbequ);
-  }
-  
-  private boolean a()
-  {
-    return a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration") != null;
-  }
-  
-  private void b(Context paramContext)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    paramContext = paramContext.getPackageName();
-    this.jdField_a_of_type_Boolean = ((Boolean)berh.a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").a("FLUTTER_ENABLED")).booleanValue();
-    Iterator localIterator = ((List)berh.a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").a("MINI_PROCESS_LIST")).iterator();
-    label49:
-    Object localObject;
-    bequ localbequ;
-    String str;
-    while (localIterator.hasNext())
+    if (paramMessage.what == 0)
     {
-      localObject = localIterator.next();
-      if ((localObject instanceof Map))
-      {
-        localObject = (Map)localObject;
-        localbequ = new bequ();
-        localbequ.jdField_a_of_type_JavaLangString = (paramContext + ":" + ((Map)localObject).get("name").toString());
-        str = ((Map)localObject).get("processType").toString();
-        if (!"MINI_GAME".equals(str)) {
-          break label210;
-        }
-        localbequ.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = ProcessType.MINI_GAME;
-      }
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_a_of_type_Boolean = false;
+      a(0);
     }
-    for (;;)
-    {
-      localbequ.jdField_a_of_type_JavaLangClass = a(((Map)localObject).get("ui").toString());
-      localbequ.b = a(((Map)localObject).get("receiver").toString());
-      this.jdField_a_of_type_JavaUtilList.add(localbequ);
-      break label49;
-      break;
-      label210:
-      if ("MINI_APP".equals(str)) {
-        localbequ.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = ProcessType.MINI_APP;
-      }
-    }
-  }
-  
-  private void c(Context paramContext)
-  {
-    try
-    {
-      PackageManager localPackageManager = paramContext.getPackageManager();
-      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-      while (i >= 0)
-      {
-        bequ localbequ = (bequ)this.jdField_a_of_type_JavaUtilList.get(i);
-        Intent localIntent = new Intent();
-        localIntent.setClassName(paramContext.getPackageName(), localbequ.jdField_a_of_type_JavaLangClass.getName());
-        if (localPackageManager.resolveActivity(localIntent, 0) == null)
-        {
-          betc.d("Configuration", "Not registered manifest. uiClass:" + localbequ.jdField_a_of_type_JavaLangClass.getName());
-          this.jdField_a_of_type_JavaUtilList.remove(i);
-        }
-        i -= 1;
-      }
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      betc.d("Configuration", "getDefaultConfiguration exception. ", paramContext);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beqr
  * JD-Core Version:    0.7.0.1
  */

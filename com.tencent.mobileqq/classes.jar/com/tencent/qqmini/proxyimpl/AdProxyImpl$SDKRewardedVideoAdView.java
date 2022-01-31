@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import bgqg;
 import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsRewardVideoAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IRewardVideoAdListener;
+import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.lang.ref.WeakReference;
 
 class AdProxyImpl$SDKRewardedVideoAdView
@@ -68,18 +71,50 @@ class AdProxyImpl$SDKRewardedVideoAdView
     if (QLog.isColorLevel()) {
       QLog.d("AdProxyImpl", 2, "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
     }
-    long l1 = paramBundle.getLong("duration_time");
-    long l2 = paramBundle.getLong("elapsed_time");
+    long l2 = paramBundle.getLong("duration_time");
+    long l3 = paramBundle.getLong("elapsed_time");
     boolean bool = paramBundle.getBoolean("profitable_flag", false);
-    if (this.mRewardedListener != null)
+    long l1;
+    if (l2 > l3)
     {
-      if ((bool) && (paramInt == -1)) {
-        this.mRewardedListener.onReward();
+      l1 = l3;
+      int j = (int)(l1 / 1000L);
+      int i = j;
+      if (j > 15) {
+        i = 15;
       }
-      this.mRewardedListener.onADClose();
+      Object localObject = null;
+      paramBundle = localObject;
+      if (AppRuntimeLoaderManager.g() != null)
+      {
+        paramBundle = localObject;
+        if (AppRuntimeLoaderManager.g().getCurrentRunTimeLoader() != null) {
+          paramBundle = AppRuntimeLoaderManager.g().getCurrentRunTimeLoader().getMiniAppInfo();
+        }
+      }
+      if (paramBundle == null) {
+        break label293;
+      }
+      paramBundle.gameAdsTotalTime += i;
+      QLog.d("AdProxyImpl", 1, "RewardedAd now gameAdsTotalTime = " + paramBundle.gameAdsTotalTime + ", reportTime = " + i);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AdProxyImpl", 1, "RewardedAd ActivityResultListener receive durationTime= " + l1 + " elaspedTime=" + l2 + " profitable=" + bool + ", resultCode = " + paramInt);
+    for (;;)
+    {
+      if (this.mRewardedListener != null)
+      {
+        if ((bool) && (paramInt == -1)) {
+          this.mRewardedListener.onReward();
+        }
+        this.mRewardedListener.onADClose();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AdProxyImpl", 1, "RewardedAd ActivityResultListener receive durationTime= " + l2 + " elaspedTime=" + l3 + " profitable=" + bool + ", resultCode = " + paramInt);
+      }
+      return;
+      l1 = l2;
+      break;
+      label293:
+      QLog.d("AdProxyImpl", 1, "RewardedAd miniAppInfo is null");
     }
   }
   
@@ -113,7 +148,7 @@ class AdProxyImpl$SDKRewardedVideoAdView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKRewardedVideoAdView
  * JD-Core Version:    0.7.0.1
  */

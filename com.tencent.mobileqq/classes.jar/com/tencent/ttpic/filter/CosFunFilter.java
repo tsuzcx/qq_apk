@@ -12,6 +12,7 @@ import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
 import com.tencent.ttpic.openapi.filter.CosFunTransitionFilter;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunItem;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.PagIndexList;
+import com.tencent.ttpic.trigger.TriggerManager;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FrameUtil;
 import java.io.File;
@@ -36,6 +37,7 @@ public class CosFunFilter
   private boolean isCosTransInit = false;
   private BaseFilter mCopyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private PagFilter pagFilter;
+  private TriggerManager triggerManager;
   private long triggerStartTime;
   
   private Frame fillBlackFrame(Frame paramFrame, int paramInt1, int paramInt2)
@@ -88,7 +90,7 @@ public class CosFunFilter
   
   private void parseFreeze(CosFun.CosFunItem paramCosFunItem)
   {
-    this.freezeFilter = new FreezeFilter(paramCosFunItem);
+    this.freezeFilter = new FreezeFilter(paramCosFunItem, this.triggerManager);
     this.freezeFilter.init();
   }
   
@@ -108,10 +110,11 @@ public class CosFunFilter
     return this.cosFunItem.getDuration();
   }
   
-  public void init(String paramString, CosFun.CosFunItem paramCosFunItem)
+  public void init(String paramString, CosFun.CosFunItem paramCosFunItem, TriggerManager paramTriggerManager)
   {
     this.cosFunItem = paramCosFunItem;
     this.mCopyFilter.apply();
+    this.triggerManager = paramTriggerManager;
     parseFreeze(paramCosFunItem);
     parseCosTransition(paramString, paramCosFunItem);
     parsePagFilter(paramString, paramCosFunItem);
@@ -149,19 +152,20 @@ public class CosFunFilter
   
   public Frame render(Frame paramFrame, PTFaceAttr paramPTFaceAttr, PTSegAttr paramPTSegAttr, AIAttr paramAIAttr)
   {
-    if (paramPTFaceAttr.getTimeStamp() - this.initStartTime < this.cosFunItem.getWaitInterval())
+    if ((this.cosFunTransitionFilter == null) || (!this.cosFunTransitionFilter.isInited())) {}
+    do
     {
-      if (paramPTFaceAttr.getFaceCount() < 1) {}
-      while (this.firstPagFrameRenderTriggered) {
-        return paramFrame;
-      }
-      BenchUtil.benchStart("[pagFilter.render]");
-      paramPTFaceAttr = fillBlackFrame(paramFrame, this.cosFunTransitionFilter.getWidth(), this.cosFunTransitionFilter.getHeight());
-      this.pagFilter.render(paramPTFaceAttr, paramFrame.width, paramFrame.height, 0.0D);
-      BenchUtil.benchEnd("[pagFilter.render]");
-      this.firstPagFrameRenderTriggered = true;
       return paramFrame;
-    }
+      if (paramPTFaceAttr.getTimeStamp() - this.initStartTime >= this.cosFunItem.getWaitInterval()) {
+        break;
+      }
+    } while ((paramPTFaceAttr.getFaceCount() < 1) || (this.firstPagFrameRenderTriggered));
+    BenchUtil.benchStart("[pagFilter.render]");
+    paramPTFaceAttr = fillBlackFrame(paramFrame, this.cosFunTransitionFilter.getWidth(), this.cosFunTransitionFilter.getHeight());
+    this.pagFilter.render(paramPTFaceAttr, paramFrame.width, paramFrame.height, 0.0D);
+    BenchUtil.benchEnd("[pagFilter.render]");
+    this.firstPagFrameRenderTriggered = true;
+    return paramFrame;
     long l = paramPTFaceAttr.getTimeStamp() - this.triggerStartTime;
     paramPTSegAttr = judgeTimeSection(l);
     switch (paramPTSegAttr.state)

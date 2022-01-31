@@ -1,23 +1,31 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import java.util.HashMap;
 
 public class axov
-  extends SQLiteOpenHelper
+  extends axow
 {
-  public axov(MigrateSubscribeDB paramMigrateSubscribeDB, Context paramContext, String paramString, int paramInt)
+  public int a = -1;
+  
+  public HashMap<String, String> a(String paramString)
   {
-    super(paramContext, paramString, null, paramInt);
+    if ("ShortVideo.Preview".equals(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.b + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_playAction", this.a + "");
+      return paramString;
+    }
+    return null;
   }
-  
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axov
  * JD-Core Version:    0.7.0.1
  */

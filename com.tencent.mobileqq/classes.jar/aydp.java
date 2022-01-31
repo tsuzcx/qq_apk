@@ -1,12 +1,22 @@
-import android.graphics.Bitmap;
+import android.support.v4.app.Fragment;
 
 public abstract interface aydp
 {
-  public abstract void a(Bitmap paramBitmap);
+  public abstract int a();
+  
+  public abstract Fragment a();
+  
+  public abstract String a();
+  
+  public abstract boolean a();
+  
+  public abstract long[] a();
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aydp
  * JD-Core Version:    0.7.0.1
  */

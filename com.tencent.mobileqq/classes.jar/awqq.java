@@ -1,53 +1,47 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.TextView;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
+import com.tencent.mobileqq.profile.view.VipScaledViewPager;
 
 public class awqq
-  extends awqs
+  implements ViewPager.OnPageChangeListener
 {
-  public awqq(baxy parambaxy, awqw paramawqw)
-  {
-    super(parambaxy, paramawqw);
-  }
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public void b(awoi paramawoi, awwr paramawwr)
+  public awqq(PhotoViewForShopping paramPhotoViewForShopping) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super.b(paramawoi, paramawwr);
-    if (TextUtils.isEmpty(paramawoi.c()))
+    if (paramInt == 1)
     {
-      paramawwr.c().setVisibility(8);
-      ((awwk)paramawwr).a().setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
+      this.jdField_a_of_type_Boolean = true;
     }
-    for (;;)
+    if (paramInt == 2) {
+      this.b = true;
+    }
+    if (paramInt == 0)
     {
-      if (paramawwr.d() != null)
+      if (this.b)
       {
-        paramawoi = paramawoi.d();
-        if (!TextUtils.isEmpty(paramawoi)) {
-          break;
-        }
-        paramawwr.d().setVisibility(8);
+        this.b = false;
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
       }
-      return;
-      paramawwr.c().setVisibility(0);
-      paramawwr.c().setText(paramawoi.c());
-      ((awwk)paramawwr).a().setVisibility(8);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
+        this.jdField_a_of_type_Boolean = false;
+      }
     }
-    paramawwr.d().setVisibility(0);
-    paramawwr.d().setText(paramawoi);
   }
   
-  protected void c(awoi paramawoi, awwr paramawwr)
-  {
-    super.c(paramawoi, paramawwr);
-    ((awwk)paramawwr).a().setOnClickListener(new awqr(this, paramawoi));
-  }
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  public void d(awoi paramawoi, awwr paramawwr) {}
+  public void onPageSelected(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awqq
  * JD-Core Version:    0.7.0.1
  */

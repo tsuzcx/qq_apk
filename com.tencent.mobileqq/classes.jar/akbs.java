@@ -1,31 +1,23 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class akbs
-  implements Comparator<Object>
+public class akbs
+  implements anoi
 {
-  akbs(akbn paramakbn) {}
+  public akbs(SessionClearFragment paramSessionClearFragment) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (((paramObject1 instanceof atza)) && ((paramObject2 instanceof atza))) {
-      return (int)(((atza)paramObject2).a - ((atza)paramObject1).a);
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForUser onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
     }
-    if (((paramObject1 instanceof atza)) && ((paramObject2 instanceof PhoneContact))) {
-      return (int)(((PhoneContact)paramObject2).lastScanTime - ((atza)paramObject1).a * 1000L);
-    }
-    if (((paramObject1 instanceof PhoneContact)) && ((paramObject2 instanceof PhoneContact))) {
-      return (int)(((PhoneContact)paramObject2).lastScanTime - ((PhoneContact)paramObject1).lastScanTime);
-    }
-    if (((paramObject1 instanceof PhoneContact)) && ((paramObject2 instanceof atza))) {
-      return (int)(((atza)paramObject2).a * 1000L - ((PhoneContact)paramObject1).lastScanTime);
-    }
-    return 0;
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.google.android.filament;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public class Skybox$Builder
 {
@@ -40,7 +40,7 @@ public class Skybox$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.Skybox.Builder
  * JD-Core Version:    0.7.0.1
  */

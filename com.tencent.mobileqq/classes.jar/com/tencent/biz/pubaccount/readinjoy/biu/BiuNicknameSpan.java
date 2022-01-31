@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.text.style.ForegroundColorSpan;
 import android.util.SparseIntArray;
-import ayjy;
-import rqz;
-import rrb;
+import bahu;
+import sgy;
+import sha;
 
 public class BiuNicknameSpan
   extends ForegroundColorSpan
-  implements rqz, rrb
+  implements sgy, sha
 {
   private int a;
   public long a;
@@ -63,7 +63,7 @@ public class BiuNicknameSpan
         i = j + 1;
         break;
         j = i;
-      } while (ayjy.a.get(k, -1) < 0);
+      } while (bahu.a.get(k, -1) < 0);
       if ((k > 65535) && (paramCharSequence.length() >= i + 2)) {
         paramCharSequence.delete(i, i + 2);
       }
@@ -79,7 +79,7 @@ public class BiuNicknameSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan
  * JD-Core Version:    0.7.0.1
  */

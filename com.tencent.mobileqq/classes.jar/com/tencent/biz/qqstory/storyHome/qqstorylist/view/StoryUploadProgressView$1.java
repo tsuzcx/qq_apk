@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view;
 
 import com.tencent.mobileqq.widget.MessageProgressView;
-import vaw;
+import wpo;
 
 public class StoryUploadProgressView$1
   implements Runnable
 {
-  public StoryUploadProgressView$1(vaw paramvaw) {}
+  public StoryUploadProgressView$1(wpo paramwpo) {}
   
   public void run()
   {
-    this.this$0.a.b(vaw.a(this.this$0) + "_" + hashCode());
+    this.this$0.a.b(wpo.a(this.this$0) + "_" + hashCode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryUploadProgressView.1
  * JD-Core Version:    0.7.0.1
  */

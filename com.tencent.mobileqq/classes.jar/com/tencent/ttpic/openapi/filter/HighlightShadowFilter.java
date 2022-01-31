@@ -13,6 +13,8 @@ public class HighlightShadowFilter
   private DirectionalBlurFilter mBlurFilter = new DirectionalBlurFilter();
   private Frame mBlurFrame1 = new Frame();
   private Frame mBlurFrame2 = new Frame();
+  private float mHighlights;
+  private float mShadows;
   
   public HighlightShadowFilter()
   {
@@ -59,14 +61,24 @@ public class HighlightShadowFilter
     super.clearGLSLSelf();
   }
   
+  public Frame render(Frame paramFrame)
+  {
+    if ((this.mHighlights == 0.0F) && (this.mShadows == 0.0F)) {
+      return paramFrame;
+    }
+    return super.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+  }
+  
   public void setHighlights(float paramFloat)
   {
     addParam(new UniformParam.FloatParam("highlights", paramFloat));
+    this.mHighlights = paramFloat;
   }
   
   public void setShadows(float paramFloat)
   {
     addParam(new UniformParam.FloatParam("shadows", paramFloat));
+    this.mShadows = paramFloat;
   }
 }
 

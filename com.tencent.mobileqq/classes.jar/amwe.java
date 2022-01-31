@@ -1,67 +1,33 @@
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class amwe
+class amwe
+  implements amvn
 {
-  private String jdField_a_of_type_JavaLangString = "1108338344";
-  private boolean jdField_a_of_type_Boolean;
-  private String b = "pages/list/list";
-  private String c = "";
+  amwe(amwd paramamwd) {}
   
-  public static amwe a(JSONObject paramJSONObject)
+  public void a(amwl paramamwl)
   {
-    boolean bool = true;
-    amwe localamwe = new amwe();
-    if (paramJSONObject.has("enableOpenMiniCode")) {
-      if (paramJSONObject.getInt("enableOpenMiniCode") != 1) {
-        break label93;
-      }
+    amwd.f(this.a, false);
+    if (amwd.a(this.a)) {
+      return;
     }
-    for (;;)
+    if (amwd.a(this.a) != null) {
+      amwd.a(this.a).removeMessages(2);
+    }
+    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramamwl.jdField_a_of_type_Int + ", imageId = " + paramamwl.jdField_a_of_type_JavaLangString);
+    if (amwd.a(this.a) != null)
     {
-      localamwe.jdField_a_of_type_Boolean = bool;
-      if (paramJSONObject.has("miniCodeAppid")) {
-        localamwe.jdField_a_of_type_JavaLangString = paramJSONObject.getString("miniCodeAppid");
-      }
-      if (paramJSONObject.has("miniCodePage")) {
-        localamwe.b = paramJSONObject.getString("miniCodePage");
-      }
-      if (paramJSONObject.has("miniCodeEnvVersion")) {
-        localamwe.c = paramJSONObject.getString("miniCodeEnvVersion");
-      }
-      return localamwe;
-      label93:
-      bool = false;
+      amxd.a(this.a.a.recognitions, amwd.a(this.a), paramamwl);
+      amwd.a(this.a).a(0, amwd.a(this.a));
     }
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    amwd.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwe
  * JD-Core Version:    0.7.0.1
  */

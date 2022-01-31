@@ -1,33 +1,39 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.17.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.1;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class nwf
-  extends osm
+  implements sgo
 {
-  public nwf(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public nwf(nwc paramnwc) {}
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
+    AppInterface localAppInterface;
+    if ((nwc.a(this.a) instanceof BaseActivity))
+    {
+      localAppInterface = ((BaseActivity)nwc.a(this.a)).getAppInterface();
+      if ((localAppInterface != null) && (nwc.a(this.a) != null) && (!paramBoolean))
+      {
+        qiu localqiu = (qiu)localAppInterface.getManager(270);
+        if ((localqiu.a() != 1) || (!localqiu.b())) {
+          break label87;
+        }
+        ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.1(this), 8, null, true);
+      }
     }
-    this.a.runOnUiThread(new ReadInJoyNewFeedsActivity.17.1(this));
+    label87:
+    while (((qja)localAppInterface.getManager(261)).a() != 1) {
+      return;
+    }
+    ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.2(this), 8, null, true);
   }
-  
-  public void b(int paramInt)
-  {
-    this.a.f(paramInt);
-  }
-  
-  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwf
  * JD-Core Version:    0.7.0.1
  */

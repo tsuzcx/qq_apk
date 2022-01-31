@@ -1,53 +1,32 @@
-import android.graphics.Rect;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
 
 public class nvg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements best
 {
-  public nvg(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public nvg(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   
-  public void onGlobalLayout()
+  public void a(View paramView, int paramInt)
   {
-    Rect localRect = new Rect();
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getWindowVisibleDisplayFrame(localRect);
-    int j = this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getRootView().getHeight();
-    int i = j - localRect.height();
-    if (i > 100) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramInt == 5) || (paramInt == 4))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout screenHeight:" + j + ", ExternalPanelheight:" + i + ", isShowKeybroad:" + bool);
-      }
-      if (bool != this.a.k)
-      {
-        if (i > this.a.e) {
-          this.a.e = i;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + this.a.e);
-        }
-        i = bbll.b(this.a.f);
-        j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.e;
-        int k = j - i;
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout contentHeight:" + j + ", fixedHeight:" + i + ", maxHeight:" + k);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setMaxHeight(k);
-      }
-      this.a.k = bool;
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "3046055438");
+      paramView.putExtra("from_tab", true);
+      this.a.startActivity(paramView);
+    }
+    while (paramInt != 1) {
       return;
     }
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvg
  * JD-Core Version:    0.7.0.1
  */

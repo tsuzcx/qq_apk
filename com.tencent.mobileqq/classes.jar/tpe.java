@@ -1,40 +1,25 @@
-class tpe
-  implements trv
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+
+public class tpe
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  tpe(tpb paramtpb) {}
+  public tpe(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void a()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (tpb.a(this.a) != null) {
-      tpb.a(this.a).c();
+    if (paramInt == 4102) {}
+    while (!bhou.e()) {
+      return;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    tpb.a(this.a).a(paramInt);
-    if (tpb.a(this.a) != null) {
-      tpb.a(this.a).b(paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (tpb.a(this.a) != null) {
-      tpb.a(this.a).d();
-    }
-  }
-  
-  public void c()
-  {
-    if (tpb.a(this.a) != null) {
-      tpb.a(this.a).d(-1);
-    }
+    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package cooperation.comic;
 
-import bghl;
-import bgja;
+import biij;
+import bijy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -25,7 +25,7 @@ final class VipComicJumpActivity$1
         do
         {
           return;
-          if (!bgja.a(localQQAppInterface)) {
+          if (!bijy.a(localQQAppInterface)) {
             break;
           }
         } while (!QLog.isColorLevel());
@@ -34,8 +34,8 @@ final class VipComicJumpActivity$1
         if (QLog.isColorLevel()) {
           QLog.d("QQComicDebug", 2, "wait for plugin installation...");
         }
-        bghl.a(2, localQQAppInterface);
-        if (bgja.a(localQQAppInterface, true, null)) {
+        biij.a(2, localQQAppInterface);
+        if (bijy.a(localQQAppInterface, true, null)) {
           break;
         }
       } while (!QLog.isColorLevel());
@@ -47,7 +47,7 @@ final class VipComicJumpActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.comic.VipComicJumpActivity.1
  * JD-Core Version:    0.7.0.1
  */

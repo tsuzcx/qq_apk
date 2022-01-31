@@ -1,68 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView;
 
-class rpa
-  implements rpl<Bitmap>
+public class rpa
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  rpa(roz paramroz) {}
+  public rpa(BezierSideBarView paramBezierSideBarView, ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramBitmap == null) {
-      return;
-    }
-    rpn.a(roz.a, "recycle:" + paramBitmap);
-    if (!rpn.a())
-    {
-      paramBitmap.recycle();
-      return;
-    }
-    for (;;)
-    {
-      synchronized (this.a.b)
-      {
-        ArrayList localArrayList = new ArrayList();
-        i = 0;
-        if (i >= this.a.b.size()) {
-          break label226;
-        }
-        Bitmap localBitmap = (Bitmap)((SoftReference)this.a.b.get(i)).get();
-        if (localBitmap != null)
-        {
-          if (localBitmap != paramBitmap) {
-            break label231;
-          }
-          i = 1;
-          if (!localArrayList.isEmpty()) {
-            this.a.b.removeAll(localArrayList);
-          }
-          if (i == 0)
-          {
-            paramBitmap = new SoftReference(paramBitmap);
-            this.a.b.add(paramBitmap);
-          }
-        }
-        else
-        {
-          localArrayList.add(this.a.b.get(i));
-        }
-      }
-      QLog.e(roz.a, 1, "reuse same bitmap " + paramBitmap);
-      return;
-      label226:
-      int i = 0;
-      continue;
-      label231:
-      i += 1;
+    BezierSideBarView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView.invalidate();
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener != null) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener.onAnimationUpdate(paramValueAnimator);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpa
  * JD-Core Version:    0.7.0.1
  */

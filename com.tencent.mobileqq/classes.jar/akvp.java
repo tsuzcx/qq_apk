@@ -1,30 +1,31 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
 
-public class akvp
-  extends awyp
+class akvp
+  implements Animation.AnimationListener
 {
-  BrowserAppInterface a;
+  akvp(akvo paramakvo, View paramView) {}
   
-  public akvp(BrowserAppInterface paramBrowserAppInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramBrowserAppInterface;
+    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimation.leftMargin = this.jdField_a_of_type_Akvo.e;
+    paramAnimation.topMargin = this.jdField_a_of_type_Akvo.f;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_Akvo.a = false;
   }
   
-  public AppInterface a()
-  {
-    return this.a;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, arpd.class);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvp
  * JD-Core Version:    0.7.0.1
  */

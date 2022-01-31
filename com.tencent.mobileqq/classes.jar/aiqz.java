@@ -1,139 +1,112 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.addon.DiyPendantEntity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.pendant.DiyAddonPbInfo.AddonGetDiyInfoReq;
-import com.tencent.pb.pendant.DiyAddonPbInfo.AddonGetDiyInfoRsp;
-import com.tencent.pb.pendant.DiyAddonPbInfo.AddonReqComm;
-import com.tencent.pb.pendant.DiyAddonPbInfo.ReadAddonReq;
-import com.tencent.pb.pendant.DiyAddonPbInfo.ReadAddonRsp;
-import com.tencent.pb.pendant.DiyAddonUser.UserDiyInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class aiqz
-  extends ajtb
 {
-  public aiqz(QQAppInterface paramQQAppInterface)
+  public static int a(String paramString1, String paramString2, int paramInt)
   {
-    super(paramQQAppInterface);
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    int i = paramInt;
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt(paramString2 + paramString1, paramInt);
+    }
+    return i;
   }
   
-  public void a(List<Long> paramList, ajte paramajte)
+  public static long a(String paramString1, String paramString2, long paramLong)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    long l = paramLong;
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong(paramString2 + paramString1, paramLong);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantHandler", 2, "try fetchDiyPendants: " + TextUtils.join(",", paramList));
-    }
-    DiyAddonPbInfo.AddonReqComm localAddonReqComm = new DiyAddonPbInfo.AddonReqComm();
-    localAddonReqComm.platform.set(109L);
-    localAddonReqComm.osver.set(Build.VERSION.RELEASE);
-    localAddonReqComm.mqqver.set("8.3.0");
-    DiyAddonPbInfo.AddonGetDiyInfoReq localAddonGetDiyInfoReq = new DiyAddonPbInfo.AddonGetDiyInfoReq();
-    localAddonGetDiyInfoReq.uin.set(paramList);
-    paramList = new DiyAddonPbInfo.ReadAddonReq();
-    paramList.cmd.set(1);
-    paramList.comm.set(localAddonReqComm);
-    paramList.packetseq.set(System.currentTimeMillis());
-    paramList.reqcmd0x01.set(localAddonGetDiyInfoReq);
-    paramajte = super.createToServiceMsg("ReadDiyAddonInfo.1", paramajte);
-    paramajte.putWupBuffer(paramList.toByteArray());
-    super.sendPbReq(paramajte);
+    return l;
   }
   
-  protected Class<? extends ajte> observerClass()
+  private static SharedPreferences a(String paramString)
   {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      return localBaseApplicationImpl.getSharedPreferences(paramString, 4);
+    }
     return null;
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    if (paramFromServiceMsg.getServiceCmd().equals("ReadDiyAddonInfo.1"))
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    String str = paramString3;
+    if (localSharedPreferences != null) {
+      str = localSharedPreferences.getString(paramString2 + paramString1, paramString3);
+    }
+    return str;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().remove(paramString2 + paramString1).apply();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt(paramString2 + paramString1, paramInt).commit();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, long paramLong)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putLong(paramString2 + paramString1, paramLong).commit();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putString(paramString2 + paramString1, paramString3).apply();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean(paramString2 + paramString1, paramBoolean).commit();
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    if (localSharedPreferences != null)
     {
-      bool = paramFromServiceMsg.isSuccess();
-      localObject = String.valueOf(paramToServiceMsg.getAttribute("_tag_LOGSTR"));
-      if (QLog.isColorLevel()) {
-        QLog.d("DiyPendantHandler", 2, "key_seq=" + (String)localObject + " isSuccess=" + bool + " resultCode=" + paramFromServiceMsg.getResultCode());
-      }
-      if (bool) {
-        paramFromServiceMsg = new DiyAddonPbInfo.ReadAddonRsp();
+      long l1 = localSharedPreferences.getLong("F2FRedpack_EntryColorBeginTime" + paramString, 0L);
+      long l2 = localSharedPreferences.getLong("F2FRedpack_EntryColorEndTime" + paramString, 0L);
+      long l3 = NetConnInfoCenter.getServerTimeMillis();
+      if ((l3 > l1) && (l3 < l2)) {
+        return true;
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        try
-        {
-          boolean bool;
-          paramFromServiceMsg = (DiyAddonPbInfo.ReadAddonRsp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-          if (paramFromServiceMsg != null) {
-            if (paramFromServiceMsg.ret.get() != 0L)
-            {
-              QLog.d("DiyPendantHandler", 1, "fetch diy pendant info 回包 sso 成功 ，server 失败，ret = " + paramFromServiceMsg.ret.get());
-              super.notifyUI(paramToServiceMsg, 1, false, null);
-              return;
-            }
-          }
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          Object localObject;
-          for (;;)
-          {
-            QLog.e("DiyPendantHandler", 1, "fetch diy pendant info on response err", paramFromServiceMsg);
-            paramFromServiceMsg = null;
-          }
-          if ((paramFromServiceMsg.rspcmd0x01.has()) && (paramFromServiceMsg.rspcmd0x01.userdiyinfo.has()))
-          {
-            paramObject = paramFromServiceMsg.rspcmd0x01.userdiyinfo.get();
-            paramFromServiceMsg = new ArrayList();
-            if (paramObject != null)
-            {
-              paramObject = paramObject.iterator();
-              while (paramObject.hasNext())
-              {
-                localObject = (DiyAddonUser.UserDiyInfo)paramObject.next();
-                if ((((DiyAddonUser.UserDiyInfo)localObject).uin.has()) && (((DiyAddonUser.UserDiyInfo)localObject).curid.has()))
-                {
-                  DiyPendantEntity localDiyPendantEntity = new DiyPendantEntity();
-                  localDiyPendantEntity.uinAndDiyId = (((DiyAddonUser.UserDiyInfo)localObject).uin.get() + "_" + ((DiyAddonUser.UserDiyInfo)localObject).curid.get());
-                  localDiyPendantEntity.diyId = ((DiyAddonUser.UserDiyInfo)localObject).curid.get();
-                  localDiyPendantEntity.borderId = ((DiyAddonUser.UserDiyInfo)localObject).frameid.get();
-                  localDiyPendantEntity.updateTs = ((DiyAddonUser.UserDiyInfo)localObject).updatets.get();
-                  localDiyPendantEntity.setStickerInfoList(((DiyAddonUser.UserDiyInfo)localObject).stickerinfo.get());
-                  paramFromServiceMsg.add(localDiyPendantEntity);
-                }
-              }
-            }
-            aiqx.a().a(this.app, true, paramFromServiceMsg);
-            super.notifyUI(paramToServiceMsg, 1, true, paramFromServiceMsg);
-            return;
-          }
-          super.notifyUI(paramToServiceMsg, 1, false, null);
-          return;
-        }
-        super.notifyUI(paramToServiceMsg, 1, false, null);
-        return;
-        super.notifyUI(paramToServiceMsg, 1, false, null);
-      } while (!QLog.isColorLevel());
-      QLog.d("DiyPendantHandler", 2, "DiyText isSuccess is false sso通道  异常");
-      return;
+    return false;
+  }
+  
+  public static boolean a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = a("qwallet_setting");
+    boolean bool = paramBoolean;
+    if (localSharedPreferences != null) {
+      bool = localSharedPreferences.getBoolean(paramString2 + paramString1, paramBoolean);
     }
-    QLog.d("DiyPendantHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
+    return bool;
   }
 }
 

@@ -1,40 +1,45 @@
 import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 
-public class nwn
-  implements qzf
+class nwn
+  implements View.OnClickListener
 {
-  public nwn(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  nwn(nwm paramnwm) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((ReadInJoyNewFeedsActivity.a(this.a).a(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a() != null)) {
-      ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a().k();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == paramInt2) {
-      shu.a(false);
-    }
-    if (paramInt2 == 1) {
-      this.a.getIntent().putExtra("channel_from", 7);
-    }
-    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.a() instanceof ReadInJoySubChannelFragment)))
-    {
-      this.a.a().f();
+    if (otb.a()) {
       return;
     }
-    this.a.a(paramInt2, 256, null, true);
+    paramView = new Intent();
+    paramView.putExtra("currentIndex", nwm.a(this.a).getCurrentItem());
+    PublicTransFragmentActivity.b(nwm.a(this.a), paramView, ReadInJoyChannelPanelFragment.class);
+    try
+    {
+      ReadInJoyChannelPanelFragment.a("0X8009497", new orz().b().c(this.a.a()).a());
+      nwm.a(this.a, false);
+      nwm.a(this.a).setVisibility(8);
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      for (;;)
+      {
+        QLog.e("ReadInJoyChannelViewPagerController", 1, QLog.getStackTraceString(paramView));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwn
  * JD-Core Version:    0.7.0.1
  */

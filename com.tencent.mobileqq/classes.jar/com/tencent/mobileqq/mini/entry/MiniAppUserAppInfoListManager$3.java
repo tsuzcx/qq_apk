@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import ajya;
-import amtb;
-import bcql;
+import alpo;
+import aokd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ class MiniAppUserAppInfoListManager$3
       if (this.val$miniAppInfo.recommend == 1) {
         MiniAppUserAppInfoListManager.access$300(this.this$0, this.val$miniAppInfo);
       }
-      if (amtb.g())
+      if (aokd.g())
       {
         paramJSONObject = MiniAppUtils.getAppInterface();
         if (paramJSONObject != null) {
@@ -45,12 +45,12 @@ class MiniAppUserAppInfoListManager$3
       }
     }
     QLog.e("MiniAppUserAppInfoListManager", 1, "sendDelUserAppRequest, failed to delete miniapp!");
-    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131706843), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131707215), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.3
  * JD-Core Version:    0.7.0.1
  */

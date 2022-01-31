@@ -1,26 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class rhh
-  implements View.OnClickListener
+class rhh
+  implements rsd
 {
-  public rhh(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  rhh(rhf paramrhf, VideoInfo paramVideoInfo) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a(this.a.a(), (ViewGroup)ReadinjoyTabFrame.a(this.a));
-    if (BaseApplicationImpl.sProcessId != 9) {
-      bihv.a(BaseApplicationImpl.getContext());
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsShareController", 2, "onDislikeDialogViewForAdComplain");
     }
-    onh.c("1");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_from_type", 2);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+    }
+    PublicFragmentActivity.a(rhf.a(this.jdField_a_of_type_Rhf), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    rhf.a(this.jdField_a_of_type_Rhf).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhh
  * JD-Core Version:    0.7.0.1
  */

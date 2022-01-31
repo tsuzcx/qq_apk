@@ -1,14 +1,30 @@
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
-public abstract interface ahuj
+public class ahuj
+  extends Handler
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public ahuj(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new bepp(this.a.getActivity(), this.a.getActivity().getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691583);
+      this.a.a.show();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahuj
  * JD-Core Version:    0.7.0.1
  */

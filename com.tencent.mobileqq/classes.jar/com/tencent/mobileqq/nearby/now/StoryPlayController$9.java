@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now;
 
 import android.app.Activity;
-import atnk;
+import avek;
 
 class StoryPlayController$9
   implements Runnable
@@ -25,7 +25,7 @@ class StoryPlayController$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.StoryPlayController.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,118 +1,148 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import tencent.im.oidb.location.RoomOperate.ReqAssemblyPointOperation;
-import tencent.im.oidb.location.RoomOperate.RspAssemblyPointOperation;
-import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
-import tencent.im.oidb.location.qq_lbs_share.RoomKey;
+import java.util.ArrayList;
+import java.util.List;
 
 public class arvh
-  extends aruo<arus>
 {
-  arvh(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  private Dialog a;
   
-  private void a(int paramInt1, int paramInt2, long paramLong, LocationRoom.Venue paramVenue)
+  public static void a(Activity paramActivity, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VenueOperateHandler", 2, new Object[] { "[venue] requestVenueOperate: invoked. ", "operateType: " + paramInt1 + " [R_OPT_ADD = 1; R_OPT_UPDATE = 2; R_OPT_DELETE = 3;]", ", uinType: " + paramInt2 + ", sessionUin: " + paramLong + ", venue: " + paramVenue });
+    if ((paramActivity == null) || (paramActivity.isFinishing())) {
+      QLog.e("ForwardDialogMgr", 1, "-->showMultShareDialog: (null == activity) || activity.isFinishing()");
     }
-    RoomOperate.ReqAssemblyPointOperation localReqAssemblyPointOperation = new RoomOperate.ReqAssemblyPointOperation();
-    Object localObject = aryz.a(this.a, paramInt2, paramLong);
-    localReqAssemblyPointOperation.room_key.set((MessageMicro)localObject);
-    localReqAssemblyPointOperation.room_key.setHasFlag(true);
-    localReqAssemblyPointOperation.point_operation.set(paramInt1);
-    localReqAssemblyPointOperation.poi_name.set(ByteStringMicro.copyFrom(paramVenue.b.getBytes()));
-    localReqAssemblyPointOperation.poi_address.set(ByteStringMicro.copyFrom(paramVenue.c.getBytes()));
-    localReqAssemblyPointOperation.lat.set(paramVenue.a.latitude);
-    localReqAssemblyPointOperation.lon.set(paramVenue.a.longitude);
-    localObject = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "QQLBSShareSvc.assembly_point_operation");
-    ((ToServiceMsg)localObject).extraData.putInt("OPT_VENUE_TYPE", paramInt1);
-    ((ToServiceMsg)localObject).extraData.putInt("uintype", paramInt2);
-    ((ToServiceMsg)localObject).extraData.putString("uin", String.valueOf(paramLong));
-    ((ToServiceMsg)localObject).extraData.putParcelable("key_location_venue", paramVenue);
-    ((ToServiceMsg)localObject).putWupBuffer(localReqAssemblyPointOperation.toByteArray());
-    a().sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  private void a(int paramInt1, String paramString, int paramInt2, int paramInt3, LocationRoom.Venue paramVenue)
-  {
-    aryz.a(this.a, paramInt1, paramString, false);
-    aryy.a(this.a, paramInt1, paramString, false);
-    a().notifyUI(7, false, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), paramString, paramVenue });
-  }
-  
-  protected arus a()
-  {
-    return arus.a(this.a);
-  }
-  
-  void a(arum paramarum, LocationRoom.Venue paramVenue)
-  {
-    if ((paramarum == null) || (paramVenue == null)) {
-      return;
-    }
-    a(1, paramarum.a(), Long.parseLong(paramarum.a()), paramVenue);
-  }
-  
-  void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
+    String str;
+    QQAppInterface localQQAppInterface;
     int i;
-    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
-      try
-      {
-        i = paramToServiceMsg.extraData.getInt("OPT_VENUE_TYPE");
-        int j = paramToServiceMsg.extraData.getInt("uintype", -1);
-        paramFromServiceMsg = paramToServiceMsg.extraData.getString("uin");
-        paramToServiceMsg = (LocationRoom.Venue)paramToServiceMsg.extraData.getParcelable("key_location_venue");
-        paramObject = (qq_lbs_share.ResultInfo)((RoomOperate.RspAssemblyPointOperation)new RoomOperate.RspAssemblyPointOperation().mergeFrom((byte[])paramObject)).msg_result.get();
-        if (aryz.a(paramObject))
-        {
-          a().notifyUI(7, true, new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), paramFromServiceMsg, paramToServiceMsg });
-          return;
-        }
-        a(j, paramFromServiceMsg, paramObject.uint32_result.get(), i, paramToServiceMsg);
-        return;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        QLog.e("VenueOperateHandler", 1, "[venue] requestOperateRoomResp: failed. ", paramToServiceMsg);
-        return;
-      }
-    }
-    if (paramFromServiceMsg != null)
+    arvi localarvi;
+    do
     {
-      i = paramFromServiceMsg.getResultCode();
-      if (QLog.isColorLevel()) {
-        QLog.d("VenueOperateHandler", 2, new Object[] { "[venue] requestOperateRoomResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
+      do
+      {
+        return;
+      } while (!paramIntent.getBooleanExtra("sdk_mult_share", false));
+      arzy.b("KEY_STAGE_2_TOTAL");
+      paramIntent.removeExtra("sdk_mult_share");
+      str = Integer.toString(paramIntent.getIntExtra("sdk_mult_share_total_count", 0));
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (paramIntent.getBooleanExtra("sdk_mult_share_for_local", false))
+      {
+        QLog.d("ForwardDialogMgr", 1, "showMultShareDialog SDK_MULT_SHARE_FOR_LOCAL");
+        i = BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914);
+        QQToast.a(localQQAppInterface.getApp(), 2, 2131692838, 0).b(i);
+        ForwardUtils.a(localQQAppInterface, "0X800A738", new String[] { str });
+        return;
       }
-    }
-    a(-2, "", -10001, -1, (LocationRoom.Venue)paramToServiceMsg.extraData.getParcelable("key_location_venue"));
+      i = paramIntent.getIntExtra("sdk_mult_share_result_code", -1);
+      localarvi = new arvi(paramIntent, i, paramActivity, localQQAppInterface);
+      QLog.d("ForwardDialogMgr", 1, new Object[] { "-->showMultShareDialog--RESULT_CODE=", Integer.valueOf(i), ", count=", str });
+      if (901503 == i)
+      {
+        ForwardUtils.a(localQQAppInterface, "0X800A739", new String[] { str });
+        a(paramActivity, paramIntent.getStringExtra("sdk_mult_share_error_wording"), localarvi);
+        return;
+      }
+      if (i == 0)
+      {
+        ForwardUtils.a(localQQAppInterface, "0X800A738", new String[] { str });
+        a(paramActivity, paramIntent, alpo.a(2131719915), localarvi);
+        return;
+      }
+      if (2 == i)
+      {
+        ForwardUtils.a(localQQAppInterface, "0X800A739", new String[] { str });
+        a(paramActivity, paramIntent, alpo.a(2131719914), localarvi);
+        return;
+      }
+      if (1 == i)
+      {
+        ArrayList localArrayList = paramIntent.getParcelableArrayListExtra("sdk_mult_share_fail_record");
+        ForwardUtils.a(localQQAppInterface, "0X800A73A", new String[] { str, Integer.toString(localArrayList.size()) });
+        a(paramActivity, paramIntent, localArrayList, localarvi);
+        return;
+      }
+    } while (3 != i);
+    ForwardUtils.a(localQQAppInterface, "0X800A739", new String[] { str });
+    a(paramActivity, paramIntent.getStringExtra("sdk_mult_share_error_wording"), localarvi);
   }
   
-  void b(arum paramarum, LocationRoom.Venue paramVenue)
+  private static void a(Activity paramActivity, Intent paramIntent, String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    if ((paramarum == null) || (paramVenue == null)) {
+    paramActivity = bdcd.a(paramActivity, 232, null, paramString, arzk.a(paramIntent.getStringExtra("sdk_mult_share_app_name")), alpo.a(2131719910), paramOnClickListener, paramOnClickListener);
+    try
+    {
+      paramActivity.show();
       return;
     }
-    a(3, paramarum.a(), Long.parseLong(paramarum.a()), paramVenue);
+    catch (Throwable paramActivity)
+    {
+      QLog.e("ForwardDialogMgr", 1, "-->showShareResultDialog: failed. ", paramActivity);
+    }
+  }
+  
+  private static void a(Activity paramActivity, Intent paramIntent, List<ResultRecord> paramList, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    bdgv localbdgv = new bdgv(paramActivity, 2131755801);
+    localbdgv.setContentView(2131558950);
+    localbdgv.a(localQQAppInterface, paramActivity, paramList, false);
+    localbdgv.c(String.format(paramActivity.getResources().getString(2131719911), new Object[] { Integer.valueOf(paramList.size()) }));
+    localbdgv.c();
+    localbdgv.setNegativeButton(arzk.a(paramIntent.getStringExtra("sdk_mult_share_app_name")), paramOnClickListener);
+    localbdgv.setPositiveButton(alpo.a(2131719910), paramOnClickListener);
+    localbdgv.findViewById(2131377901).setVisibility(8);
+    localbdgv.show();
+  }
+  
+  public static void a(Activity paramActivity, String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if ((paramActivity == null) || (paramActivity.isFinishing()))
+    {
+      QLog.e("ForwardDialogMgr", 1, "showOtherErrorDialog null == activity || activity.isFinishing()");
+      return;
+    }
+    paramActivity = bdcd.a(paramActivity, 230);
+    paramActivity.setMessage(paramString);
+    paramActivity.setPositiveButton(2131694951, paramOnClickListener);
+    paramActivity.show();
+  }
+  
+  void a(Activity paramActivity)
+  {
+    b(paramActivity);
+    this.a = new Dialog(paramActivity, 2131755801);
+    this.a.setCancelable(false);
+    this.a.setContentView(2131559438);
+    paramActivity = alpo.a(2131719912);
+    ((TextView)this.a.findViewById(2131371874)).setText(paramActivity);
+    this.a.show();
+  }
+  
+  void b(Activity paramActivity)
+  {
+    if ((!paramActivity.isFinishing()) && (this.a != null) && (this.a.isShowing()))
+    {
+      this.a.dismiss();
+      this.a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arvh
  * JD-Core Version:    0.7.0.1
  */

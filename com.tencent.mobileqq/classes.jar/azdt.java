@@ -1,26 +1,45 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-
 public class azdt
-  implements Animation.AnimationListener
 {
-  public azdt(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public int a;
+  private int b;
+  private int c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    this.a.b = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
+    int i = this.b;
+    this.b = (i + 1);
+    return i;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a()
+  {
+    this.b = 0;
+    this.a = 0;
+    this.c = 0;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int b()
+  {
+    int i = this.c;
+    this.c = (i + 1);
+    return i;
+  }
+  
+  public void b()
+  {
+    this.b = 0;
+    this.a = 0;
+    this.c = 0;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azdt
  * JD-Core Version:    0.7.0.1
  */

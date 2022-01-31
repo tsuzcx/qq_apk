@@ -1,33 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.dataline.activities.LiteActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class dd
-  implements DialogInterface.OnClickListener
+  extends de
 {
-  public dd(LiteActivity paramLiteActivity, String paramString, InputStream paramInputStream, long paramLong) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(List<FileInfo> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    try
+    if ((paramList != null) && (paramList.size() > 0) && (paramString != null))
     {
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
-      return;
+      ((allz)paramQQAppInterface.a(8)).a((ArrayList)paramList, "printer", paramString.getBytes(), Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
+      return true;
     }
-    catch (Exception paramDialogInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(LiteActivity.jdField_a_of_type_JavaLangString, 2, "copy file error", paramDialogInterface);
-      }
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b());
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dd
  * JD-Core Version:    0.7.0.1
  */

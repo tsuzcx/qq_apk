@@ -1,26 +1,28 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.11.1;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class acqy
-  implements Comparator<acsl>
+  extends allb
 {
-  public acqy(ActivateFriendActivity paramActivateFriendActivity) {}
+  public acqy(EditInfoActivity paramEditInfoActivity) {}
   
-  public int a(acsl paramacsl1, acsl paramacsl2)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    long l = paramacsl2.a - paramacsl1.a;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    if (!this.a.j) {}
+    do
+    {
+      return;
+      this.a.j = false;
+      this.a.runOnUiThread(new EditInfoActivity.11.1(this, paramBoolean, paramCard));
+    } while (!QLog.isColorLevel());
+    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqy
  * JD-Core Version:    0.7.0.1
  */

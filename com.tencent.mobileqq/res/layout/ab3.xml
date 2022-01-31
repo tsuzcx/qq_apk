@@ -9,7 +9,6 @@
     <ImageView android:id="@id/cir" android:layout_width="76.0dip" android:layout_height="fill_parent" android:src="@drawable/ht2" android:scaleType="center" />
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bvd" android:layout_width="76.0dip" android:layout_height="fill_parent">
         <ImageView android:id="@id/cil" android:visibility="visible" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/hsy" android:scaleType="center" android:layout_weight="1.0" />
-        <ImageView android:id="@id/rn" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="29.0dip" android:layout_marginBottom="2.5dip" android:scaleType="centerInside" />
     </LinearLayout>
     <View android:id="@id/a6" android:focusable="true" android:visibility="gone" android:layout_width="1.0px" android:layout_height="1.0px" android:contentDescription="@string/q0w" />
 </LinearLayout>

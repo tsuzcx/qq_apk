@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abtq;
+import adky;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +11,12 @@ public class PublicFragmentActivityForTool
 {
   public static void b(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    abtq.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
+    adky.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
   }
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    abtq.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
+    adky.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
   }
   
   public String getModuleId()
@@ -31,7 +31,7 @@ public class PublicFragmentActivityForTool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivityForTool
  * JD-Core Version:    0.7.0.1
  */

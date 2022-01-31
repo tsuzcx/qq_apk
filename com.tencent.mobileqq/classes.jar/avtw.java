@@ -1,21 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class avtw
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TextView.OnEditorActionListener
 {
-  public avtw(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public avtw(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    CameraCaptureButtonLayout.a(this.a, f);
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    {
+      OCRTextSearchActivity.a(this.a);
+      this.a.a.setSelection(this.a.a.getText().length());
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avtw
  * JD-Core Version:    0.7.0.1
  */

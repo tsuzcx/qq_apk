@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.config;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import ook;
+import osv;
 
 public final class QQAladdinUtils$1
   implements Runnable
 {
   public void run()
   {
-    int[] arrayOfInt = ook.a;
+    int[] arrayOfInt = osv.a;
     int k = arrayOfInt.length;
     int i = 0;
     if (i < k)
@@ -31,7 +31,7 @@ public final class QQAladdinUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.config.QQAladdinUtils.1
  * JD-Core Version:    0.7.0.1
  */

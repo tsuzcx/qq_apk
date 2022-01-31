@@ -1,7 +1,7 @@
 
 {
     "RIJ_fg_multi_cell": {
-        "view_type": "cell",
+        "view_type": "container",
        "direction": "vertical",
         "height": {
            "type": "wrap_content"

@@ -1,14 +1,41 @@
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
 
-public abstract interface alwm
+public class alwm
+  implements alkr
 {
-  public abstract boolean needProcess(JSONObject paramJSONObject);
+  private Handler a;
   
-  public abstract void process(JSONObject paramJSONObject, alwn paramalwn, Object paramObject);
+  public alwm(Handler paramHandler)
+  {
+    this.a = paramHandler;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    int i = 1;
+    if (this.a == null) {}
+    while ((paramInt != 1) && (paramInt != 0)) {
+      return;
+    }
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
+      i = 0;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwm
  * JD-Core Version:    0.7.0.1
  */

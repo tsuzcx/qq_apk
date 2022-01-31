@@ -1,45 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agmx
-  implements View.OnClickListener
+class agmx
+  implements DialogInterface.OnClickListener
 {
-  public agmx(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
+  agmx(agmb paramagmb, beig parambeig) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    paramView = this.a.a;
-    boolean bool;
-    String str;
-    if (!this.a.a.isChecked())
-    {
-      bool = true;
-      paramView.setChecked(bool);
-      this.a.d = this.a.a.isChecked();
-      this.a.i = 2;
-      paramView = this.a;
-      str = this.a.getCurrentAccountUin();
-      if (!this.a.d) {
-        break label92;
-      }
-    }
-    for (;;)
-    {
-      bbkb.D(paramView, str, i);
-      return;
-      bool = false;
-      break;
-      label92:
-      i = 0;
+    this.jdField_a_of_type_Agmb.ab = true;
+    this.jdField_a_of_type_Agmb.aa = true;
+    agmb.b(this.jdField_a_of_type_Agmb, false);
+    if ((this.jdField_a_of_type_Beig.a()) && (!this.jdField_a_of_type_Beig.b())) {
+      azmj.b(this.jdField_a_of_type_Agmb.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agmx
  * JD-Core Version:    0.7.0.1
  */

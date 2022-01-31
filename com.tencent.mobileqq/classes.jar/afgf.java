@@ -1,37 +1,39 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import com.tencent.mobileqq.data.MessageForConfessNews;
 
-public class afgf
-  extends Handler
+class afgf
+  implements View.OnClickListener
 {
-  public afgf(SearchBaseFragment paramSearchBaseFragment) {}
+  afgf(afge paramafge) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (SearchBaseFragment.a(this.a) != null) {
-      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
-    }
-    switch (paramMessage.what)
+    Object localObject;
+    if ((paramView instanceof ConfessNewsBgView))
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      this.a.a((String)paramMessage.obj);
-      return;
-    case 2: 
-      this.a.g();
+      localObject = paramView.getTag();
+      if ((localObject instanceof MessageForConfessNews))
+      {
+        localObject = (MessageForConfessNews)localObject;
+        if (((MessageForConfessNews)localObject).istroop != 1) {
+          break label73;
+        }
+      }
+    }
+    label73:
+    for (int i = 1; i != 0; i = 0)
+    {
+      aofk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
       return;
     }
-    this.a.c();
+    aoep.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgf
  * JD-Core Version:    0.7.0.1
  */

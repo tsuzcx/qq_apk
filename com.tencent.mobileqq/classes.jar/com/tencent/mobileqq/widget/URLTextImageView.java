@@ -18,7 +18,7 @@ public class URLTextImageView
   public String e;
   int i;
   public int j;
-  int k = 2131165473;
+  int k = 2131165508;
   
   public URLTextImageView(Context paramContext)
   {

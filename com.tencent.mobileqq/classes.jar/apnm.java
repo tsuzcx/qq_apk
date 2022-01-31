@@ -1,28 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.data.EmoticonResp;
+import java.lang.ref.WeakReference;
 
-class apnm
-  implements DialogInterface.OnClickListener
+public class apnm
 {
-  apnm(apnh paramapnh) {}
+  WeakReference<alna> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public apnm(apnf paramapnf, alna paramalna)
   {
-    this.a.c();
-    this.a.a.removeObserver(apnh.a(this.a));
-    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
-    localIntent.addFlags(67108864);
-    this.a.a.getApplication().startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    this.a = new WeakReference(paramalna);
   }
+  
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apnm
  * JD-Core Version:    0.7.0.1
  */

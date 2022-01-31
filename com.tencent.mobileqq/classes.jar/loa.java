@@ -1,32 +1,18 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public class loa
-  extends lfb
+class loa
+  implements FileFilter
 {
-  public loa(GaInviteLockActivity paramGaInviteLockActivity) {}
-  
-  protected void a(long paramLong, ArrayList<ldr> paramArrayList, int paramInt1, int paramInt2)
+  public boolean accept(File paramFile)
   {
-    GaInviteLockActivity.a(this.a, paramLong, paramArrayList, paramInt1);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onMembersChange");
-    }
-    if ((paramLong != this.a.a) || (paramBoolean)) {}
-    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
-      return;
-    }
-    GaInviteLockActivity.a(this.a, paramInt);
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     loa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
 
-class bhsx
-  implements DialogInterface.OnClickListener
+public abstract interface bhsx
 {
-  bhsx(bhsr parambhsr, String[] paramArrayOfString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    bhsr.a(this.jdField_a_of_type_Bhsr, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhsx
  * JD-Core Version:    0.7.0.1
  */

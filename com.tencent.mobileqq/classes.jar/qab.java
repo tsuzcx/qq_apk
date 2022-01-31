@@ -1,20 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
 
-public abstract interface qab
+public class qab
+  extends pzz
 {
-  public abstract String a(BaseArticleInfo paramBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase);
+  public qab(Context paramContext, bcws parambcws, rqj paramrqj)
+  {
+    super(paramContext, parambcws, paramrqj);
+  }
   
-  public abstract void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(Object paramObject);
-  
-  public abstract boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean);
+  public pxl g()
+  {
+    this.jdField_a_of_type_Pxk = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qab
  * JD-Core Version:    0.7.0.1
  */

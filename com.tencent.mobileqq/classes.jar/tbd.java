@@ -1,147 +1,65 @@
-import android.content.Context;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
 
-public abstract class tbd<M, VH extends tbg<M>>
-  extends tbh<M, VH>
+public class tbd
+  extends RecyclerView.OnScrollListener
 {
-  private List<M> a;
+  public tbd(WSFollowFragment paramWSFollowFragment) {}
   
-  public tbd(Context paramContext)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 1) {
+      WSFollowFragment.a(this.a, true);
+    }
   }
   
-  public abstract int a(int paramInt);
-  
-  public int a(M paramM)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
-    if (i < 0) {
-      return i;
-    }
-    this.jdField_a_of_type_JavaUtilList.set(i, paramM);
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    boolean bool2 = false;
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (WSFollowFragment.a(this.a).a == null)
     {
-      notifyItemChanged(i);
-      return i;
-    }
-    notifyItemChanged(i + 1);
-    return i;
-  }
-  
-  public M a(int paramInt)
-  {
-    if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + b())) {
-      return null;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
-  }
-  
-  public List<M> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void a(M paramM)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
-    if (i < 0) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.remove(i);
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      notifyItemRemoved(i);
-      return;
-    }
-    notifyItemRemoved(i + 1);
-  }
-  
-  public void a(M paramM, int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
-    if (i != -1) {
-      this.jdField_a_of_type_JavaUtilList.remove(i);
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramM);
-    if (i != -1)
-    {
-      if (this.jdField_a_of_type_AndroidViewView == null)
+      paramInt1 = WSFollowFragment.a(this.a).findFirstVisibleItemPosition();
+      paramRecyclerView = WSFollowFragment.a(this.a, paramInt1, false);
+      tlo.d("WSFollowContinuePlayLog", "mAdapter.mPlayingHolder is null. startPosition:" + paramInt1 + ", lastOrNextVideoHolder:" + paramRecyclerView);
+      if (WSFollowFragment.a(this.a, paramRecyclerView))
       {
-        notifyItemMoved(i, paramInt);
-        notifyItemChanged(paramInt);
-        return;
+        if (!WSFollowFragment.a(this.a)) {
+          break label149;
+        }
+        tlo.d("WSFollowContinuePlayLog", "[WSFollowFragment.java][onScrolled] mIsHandlingBackFromVertical true.");
       }
-      notifyItemMoved(i + 1, paramInt + 1);
-      notifyItemChanged(paramInt + 1);
-      return;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    else
     {
-      notifyItemInserted(paramInt);
-      return;
-    }
-    notifyItemInserted(paramInt + 1);
-  }
-  
-  public boolean a(List<M> paramList)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      boolean bool = i | this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (bool) {
-        notifyDataSetChanged();
+      paramRecyclerView = this.a;
+      localObject = WSFollowFragment.a(this.a).a;
+      if (paramInt2 > 0) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        paramRecyclerView = paramRecyclerView.a((tgd)localObject, bool1, false);
+        break;
       }
-      return bool;
     }
-  }
-  
-  public boolean b(List<M> paramList)
-  {
-    boolean bool = this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    if (bool) {
-      notifyDataSetChanged();
+    label149:
+    tlo.g("WSFollowContinuePlayLog", "[WSFollowFragment.java][onScrolled] playVideo title:" + paramRecyclerView.a.d + ", mPlayingHolder:" + paramRecyclerView);
+    WSFollowFragment.a(this.a, paramRecyclerView);
+    Object localObject = this.a;
+    boolean bool1 = bool2;
+    if (paramInt2 > 0) {
+      bool1 = true;
     }
-    return bool;
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size() + a();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) {
-      return 1024;
-    }
-    if ((this.b != null) && (paramInt == this.jdField_a_of_type_JavaUtilList.size() + b())) {
-      return 1025;
-    }
-    return a(paramInt);
+    paramRecyclerView = ((WSFollowFragment)localObject).a(paramRecyclerView, bool1, true);
+    tlo.a("WS_VIDEO_PRE_PLAY", "[WSFollowFragment.java][onScrolled] setPrePlayingHolder prePlayHolder:" + paramRecyclerView);
+    WSFollowFragment.a(this.a).b(paramRecyclerView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbd
  * JD-Core Version:    0.7.0.1
  */

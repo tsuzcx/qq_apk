@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bcfc;
-import bcqf;
-import rnr;
+import beed;
+import bepp;
+import sdq;
 
 class SwiftBrowserScreenShotHandler$6$1
   implements Runnable
@@ -11,12 +11,12 @@ class SwiftBrowserScreenShotHandler$6$1
   
   public void run()
   {
-    bcfc.a(this.a.this$0).a().dismiss();
+    beed.a(this.a.this$0).a().dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler.6.1
  * JD-Core Version:    0.7.0.1
  */

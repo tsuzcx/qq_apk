@@ -1,30 +1,27 @@
-import com.tencent.av.ui.EffectToolbar;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
-
 public class mdi
-  implements Observer
+  extends mdf
 {
-  private WeakReference<EffectToolbar> a;
+  boolean a = false;
   
-  public mdi(EffectToolbar paramEffectToolbar)
+  public mdi(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramEffectToolbar);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.a = paramBoolean;
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public int a()
   {
-    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
-    if (localEffectToolbar == null) {
-      return;
-    }
-    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
+    return 2;
+  }
+  
+  public boolean b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdi
  * JD-Core Version:    0.7.0.1
  */

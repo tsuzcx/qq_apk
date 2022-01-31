@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import bbkp;
+import bdjj;
 import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemPullActivePush
@@ -17,12 +17,12 @@ public class RecentItemPullActivePush
   {
     this.mTitleName = paramString;
     this.time = paramLong;
-    this.mShowTime = bbkp.a(paramLong, true, "yyyy-MM-dd");
+    this.mShowTime = bdjj.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPullActivePush
  * JD-Core Version:    0.7.0.1
  */

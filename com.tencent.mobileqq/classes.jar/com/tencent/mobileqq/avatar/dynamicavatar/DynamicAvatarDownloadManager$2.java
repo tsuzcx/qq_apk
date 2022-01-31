@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import alyp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import anpo;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class DynamicAvatarDownloadManager$2
   implements Runnable
 {
-  public DynamicAvatarDownloadManager$2(alyp paramalyp, long paramLong) {}
+  public DynamicAvatarDownloadManager$2(anpo paramanpo, long paramLong) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class DynamicAvatarDownloadManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

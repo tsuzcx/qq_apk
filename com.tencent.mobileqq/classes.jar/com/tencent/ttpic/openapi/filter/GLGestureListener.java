@@ -13,6 +13,7 @@ public abstract interface GLGestureListener
   public static final int PRIORITY_MIN_VALUE = 0;
   public static final int PRIORITY_MOVIE = 1050;
   public static final int PRIORITY_SWITCH_FILTER = 1002;
+  public static final int PRIORITY_TOUCH_TRIGGER = 1010;
   public static final int PROVIDER_VIEW_DISSMISS = 1060;
   public static final String TAG = "GLGestureListener";
   

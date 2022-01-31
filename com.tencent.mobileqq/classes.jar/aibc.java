@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-public class aibc
+class aibc
+  implements DialogInterface.OnClickListener
 {
-  public int a;
+  aibc(aiak paramaiak) {}
   
-  private aibc(GLVideoClipUtil paramGLVideoClipUtil) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibc
  * JD-Core Version:    0.7.0.1
  */

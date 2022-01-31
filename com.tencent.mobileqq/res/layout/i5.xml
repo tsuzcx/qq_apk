@@ -27,6 +27,7 @@
         </RelativeLayout>
         <com.tencent.widget.SingleLineTextView android:textSize="17.0dip" android:textColor="@color/skin_black_theme_version2" android:layout_gravity="center_vertical" android:id="@id/h0p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="6.0dip" android:text="@string/cil" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
         <ImageView android:id="@id/h0q" android:duplicateParentState="true" android:layout_width="10.5dip" android:layout_height="12.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="17.5dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="10.0dip" android:id="@id/mj5" android:visibility="visible" android:layout_marginRight="-8.0dip" android:layout_toLeftOf="@id/h0q" android:layout_centerVertical="true" style="@style/cg" />
     </RelativeLayout>
     <View android:id="@id/bmv" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="0.0dip" />
 </LinearLayout>

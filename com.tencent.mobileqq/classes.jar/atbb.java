@@ -1,22 +1,76 @@
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
+import eipc.EIPCResult;
 
-class atbb
-  extends atgh
+public class atbb
+  extends QIPCModule
 {
-  atbb(atav paramatav, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
+  private static volatile atbb a;
   
-  protected void a()
+  public atbb(String paramString)
+  {
+    super(paramString);
+  }
+  
+  public static atbb a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new atbb("TogetherBusinessIPCModule");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      atbr.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
+      QLog.d("TogetherBusinessIPCModule", 2, "call TogetherBusinessIPCModule action=" + paramString);
     }
-    atav.a(this.jdField_a_of_type_Atav, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
+    if ("action_open_identify".equals(paramString)) {
+      TogetherBusinessServlet.a("QQAIOMediaSvc.open_identify", (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramBundle, new atbc(this, paramInt));
+    }
+    do
+    {
+      boolean bool2;
+      do
+      {
+        do
+        {
+          return null;
+          if ("action_open_start".equals(paramString))
+          {
+            TogetherBusinessServlet.a("QQAIOMediaSvc.open_start", (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramBundle, new atbc(this, paramInt));
+            return null;
+          }
+        } while (!"action_set_floating".equals(paramString));
+        boolean bool1 = paramBundle.getBoolean("BUNDLE_SET_STATUS");
+        paramString = paramBundle.getString("BUNDLE_SET_KEY_UIN", "");
+        paramInt = paramBundle.getInt("BUNDLE_SET_KEY_SESSION_TYPE", -1);
+        bool2 = paramBundle.getBoolean("BUNDLE_SET_KEY_REFRESH_UI", true);
+        atbd.a(bool1, paramString, paramInt, bool2);
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherBusinessIPCModule", 2, "ACTION_SET_FLOATING " + " isShow=" + bool1 + " uin=" + paramString + " sessionType=" + paramInt + " refresh=" + bool2);
+        }
+      } while (!bool2);
+      paramBundle = (baky)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(339);
+      paramString = (WatchTogetherSession)paramBundle.a(2, paramInt, paramString);
+    } while (paramString == null);
+    paramBundle.a(true, paramString, 1002, "");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbb
  * JD-Core Version:    0.7.0.1
  */

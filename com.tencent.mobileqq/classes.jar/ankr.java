@@ -1,47 +1,92 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.ark.ArkPanelPagerAdapter;
+import com.tencent.widget.XPanelContainer;
 
-class ankr
-  implements DialogInterface.OnClickListener
+public class ankr
+  extends RelativeLayout
 {
-  ankr(ankn paramankn) {}
+  public int a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ankr(ArkPanelPagerAdapter paramArkPanelPagerAdapter, Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".db");
-    boolean bool = false;
-    if ((paramDialogInterface.exists()) && ((float)paramDialogInterface.length() * 1.7F > bbdx.a()))
+    super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    int k = paramArkPanelPagerAdapter.a();
+    int m = paramArkPanelPagerAdapter.b();
+    int n = aekt.a(15.0F, getContext().getResources());
+    int i = 0;
+    while (i < m)
     {
-      bool = true;
-      ankn.a(this.a);
-      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
-      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_MemoryAlert").commit();
+      paramArkPanelPagerAdapter = new LinearLayout(paramContext);
+      int j = (XPanelContainer.jdField_a_of_type_Int - XPanelContainer.d - n) / m;
+      paramAttributeSet = new RelativeLayout.LayoutParams(-1, j);
+      paramAttributeSet.leftMargin = aekt.a(20.0F, getContext().getResources());
+      paramAttributeSet.rightMargin = aekt.a(20.0F, getContext().getResources());
+      paramArkPanelPagerAdapter.setOrientation(0);
+      if (i == 0) {}
+      for (paramAttributeSet.topMargin = (XPanelContainer.d / (m + 1));; paramAttributeSet.topMargin = (j * i + XPanelContainer.d * (i + 2) / (m + 1) / 2))
+      {
+        j = 0;
+        while (j < k)
+        {
+          Object localObject = new LinearLayout.LayoutParams(-1, -1);
+          ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
+          if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+            this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+          }
+          View localView = LayoutInflater.from(paramContext).inflate(2131558798, null);
+          paramArkPanelPagerAdapter.addView(localView, (ViewGroup.LayoutParams)localObject);
+          localObject = new anks();
+          ((anks)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367934));
+          ((anks)localObject).b = ((ImageView)localView.findViewById(2131366463));
+          ((anks)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377567));
+          localView.setTag(localObject);
+          j += 1;
+        }
+      }
+      addView(paramArkPanelPagerAdapter, paramAttributeSet);
+      i += 1;
     }
-    for (;;)
+    setTag(Integer.valueOf(XPanelContainer.d));
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i < getChildCount())
     {
-      paramDialogInterface = new HashMap();
-      paramDialogInterface.put("isMemAlert", String.valueOf(bool));
-      axrn.a(BaseApplication.getContext()).a(null, DBFixManager.n, true, -1L, 0L, paramDialogInterface, null, false);
-      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, ankn.c, ankn.c, 0, 0, "", "", "", "");
-      return;
-      ankn.b(this.a);
+      Object localObject = getChildAt(i);
+      if (localObject != null)
+      {
+        localObject = (anks)((View)localObject).getTag();
+        if ((localObject != null) && (((anks)localObject).jdField_a_of_type_AndroidWidgetImageView != null)) {
+          ((anks)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+        }
+      }
+      i += 1;
     }
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankr
  * JD-Core Version:    0.7.0.1
  */

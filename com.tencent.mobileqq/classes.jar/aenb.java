@@ -1,42 +1,47 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.graphics.Bitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class aenb
-  extends akat
+public class aenb
+  implements aivw
 {
-  aenb(aemy paramaemy) {}
+  public aenb(CustomizeStrategyFactory.VoiceResStrategy.1 param1) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    a(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, akaq paramakaq)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.a.a)) {
-      return;
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
+    try
+    {
+      Object localObject = paramPathResult + File.separator;
+      localObject = (String)localObject + "aio.png";
+      localObject = SafeBitmapFactory.decodeFile((String)localObject, bdda.a((String)localObject, (int)(CustomizeStrategyFactory.a * 47.0F + 0.5D)));
+      if (localObject != null) {
+        this.a.a.icon = ((Bitmap)localObject);
+      }
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "VOICE_LOCK_RES info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
+      }
     }
-    this.a.u = true;
-    this.a.a(262144, paramakaq, paramLong);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
     }
-    this.a.e(131072);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.e(65536);
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenb
  * JD-Core Version:    0.7.0.1
  */

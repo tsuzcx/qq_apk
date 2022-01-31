@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import askq;
-import aymj;
+import aubp;
+import bakf;
 import org.json.JSONObject;
 
 class ThemeJsPlugin$3
-  implements askq<aymj>
+  implements aubp<bakf>
 {
   ThemeJsPlugin$3(ThemeJsPlugin paramThemeJsPlugin, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(aymj paramaymj)
+  public void postQuery(bakf parambakf)
   {
-    this.this$0.startDownload(this.val$json, this.val$callbackId, paramaymj);
+    this.this$0.startDownload(this.val$json, this.val$callbackId, parambakf);
   }
 }
 

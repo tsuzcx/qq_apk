@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bdcp;
+import bfbn;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;

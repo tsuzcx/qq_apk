@@ -1,60 +1,22 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
 
 public class axgp
+  implements berl
 {
-  private static axgp jdField_a_of_type_Axgp = new axgp();
-  private static String jdField_a_of_type_JavaLangString;
-  private axgq jdField_a_of_type_Axgq;
+  public axgp(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  private axgp()
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  }
-  
-  public static axgp a()
-  {
-    return jdField_a_of_type_Axgp;
-  }
-  
-  private void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
-  {
-    if (this.jdField_a_of_type_Axgq != null)
-    {
-      if (paramBoolean1) {
-        this.jdField_a_of_type_Axgq.a(paramInt, paramString, paramBoolean2);
-      }
-    }
-    else {
+    if (paramInt1 == paramInt2) {
       return;
     }
-    this.jdField_a_of_type_Axgq.b(paramInt, paramString, paramBoolean2);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Axgq = null;
-  }
-  
-  public void a(axgq paramaxgq)
-  {
-    this.jdField_a_of_type_Axgq = paramaxgq;
-  }
-  
-  public boolean a(Object paramObject, int paramInt, String paramString)
-  {
-    if ((paramObject instanceof AudioCapture)) {}
-    switch (paramInt)
-    {
-    default: 
-      return true;
-    }
-    a(true, 2001, ajya.a(2131704208) + 2001 + "）", true);
-    return false;
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axgp
  * JD-Core Version:    0.7.0.1
  */

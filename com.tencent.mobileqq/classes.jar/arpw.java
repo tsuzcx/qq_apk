@@ -1,186 +1,124 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fpsreport.FPSXListView;
-import com.tencent.mobileqq.leba.widget.LebaRoundLayout;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import java.util.List;
 
 public class arpw
-  implements arpr
 {
-  private ainr jdField_a_of_type_Ainr;
-  private View jdField_a_of_type_AndroidViewView;
-  private arpv jdField_a_of_type_Arpv;
-  private arqd jdField_a_of_type_Arqd = new arpy(null);
+  public static String b;
+  protected int a;
+  protected Object a;
+  protected int b;
+  protected long b;
+  protected Object b;
+  protected int c;
+  protected final long c;
+  protected Object c;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  private void a(View paramView)
+  static
   {
-    View localView = paramView.findViewById(2131369080);
-    localView.setBackgroundResource(2130849229);
-    LebaRoundLayout localLebaRoundLayout = (LebaRoundLayout)localView.findViewById(2131375530);
-    localLebaRoundLayout.a = bbll.b(16.0F);
-    localLebaRoundLayout.setVisibility(8);
-    localView.findViewById(2131365763).setBackgroundResource(2130849240);
-    ((LinearLayout)paramView.findViewById(2131369454)).setVisibility(8);
-    ((FrameLayout)paramView.findViewById(2131366322)).setVisibility(8);
+    jdField_b_of_type_JavaLangString = "UniformDownloaderAssinfo<FileAssistant>";
   }
   
-  private void b(View paramView)
+  public arpw(long paramLong)
   {
-    paramView = (RelativeLayout)paramView.findViewById(2131374125);
-    bbll.a(paramView, null);
-    paramView.setBackgroundResource(2130839132);
-    paramView.setPadding(0, 0, 0, 0);
-    Object localObject = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).leftMargin = 0;
-    ((LinearLayout.LayoutParams)localObject).rightMargin = 0;
-    localObject = (LebaRoundLayout)paramView.findViewById(2131375528);
-    ((LebaRoundLayout)localObject).a = bbll.b(16.0F);
-    ((LebaRoundLayout)localObject).setVisibility(8);
-    localObject = (ImageView)paramView.findViewById(2131369144);
-    ((ImageView)localObject).setImageResource(2130844489);
-    localObject = (RelativeLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).width = bbll.b(24.0F);
-    ((RelativeLayout.LayoutParams)localObject).height = bbll.b(24.0F);
-    ((RelativeLayout.LayoutParams)localObject).leftMargin = bbll.a(20.0F);
-    localObject = (RelativeLayout)paramView.findViewById(2131375343);
-    ((RelativeLayout.LayoutParams)((RelativeLayout)localObject).getLayoutParams()).width = bbll.a(28.0F);
-    localObject = (RelativeLayout.LayoutParams)((ImageView)((RelativeLayout)localObject).findViewById(2131362792)).getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).width = bbll.a(7.0F);
-    ((RelativeLayout.LayoutParams)localObject).height = (bbll.a(23.0F) / 2);
-    ((RelativeLayout.LayoutParams)((TextView)paramView.findViewById(2131369145)).getLayoutParams()).leftMargin = bbll.a(16.0F);
-    ((RelativeLayout.LayoutParams)((TextView)paramView.findViewById(2131374331)).getLayoutParams()).leftMargin = bbll.a(14.0F);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_JavaLangObject = new Object();
+    this.jdField_c_of_type_Long = paramLong;
   }
   
-  public int a()
+  public int a(String paramString, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Arqd != null) {
-      return this.jdField_a_of_type_Arqd.a();
+    if (a()) {
+      return 0;
     }
-    return -1;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Ainr != null) {
-      this.jdField_a_of_type_Ainr.a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Ainr != null) {
-      this.jdField_a_of_type_Ainr.a(paramInt);
-    }
-    if (this.jdField_a_of_type_Arqd != null) {
-      this.jdField_a_of_type_Arqd.a();
-    }
-  }
-  
-  public void a(arpt paramarpt)
-  {
-    QLog.i("Q.lebatab.LebaListController", 1, "init list ");
-    QQAppInterface localQQAppInterface = paramarpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    List localList = paramarpt.jdField_a_of_type_JavaUtilList;
-    Context localContext = paramarpt.jdField_a_of_type_AndroidContentContext;
-    FPSXListView localFPSXListView = paramarpt.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView;
-    View localView = paramarpt.jdField_a_of_type_AndroidViewView;
-    arpv localarpv = paramarpt.jdField_a_of_type_Arpv;
-    this.jdField_a_of_type_AndroidViewView = paramarpt.jdField_a_of_type_AndroidViewView;
-    if (localFPSXListView == null)
-    {
-      QLog.i("Q.lebatab.LebaListController", 1, "initView lebaSV == null ");
-      return;
-    }
-    if (localarpv != null) {
-      this.jdField_a_of_type_Arpv = localarpv;
-    }
-    try
-    {
-      if (localFPSXListView.getOverscrollHeader() == null) {
-        localFPSXListView.setOverscrollHeader(localContext.getResources().getDrawable(2130849142));
-      }
-      if (localView == null) {}
-    }
-    catch (Exception paramarpt)
-    {
+    if ((paramString == null) || (paramBundle == null)) {
       try
       {
-        if (localFPSXListView.getHeaderViewsCount() <= 0) {
-          localFPSXListView.addHeaderView(localView);
-        }
-        a(localView);
-        b(localView);
+        QLog.e(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. init param error");
+        return -1;
       }
-      catch (Exception paramarpt)
-      {
-        try
-        {
-          for (;;)
-          {
-            if (this.jdField_a_of_type_Ainr == null)
-            {
-              this.jdField_a_of_type_Ainr = new ainr(localContext, localList, 2131558984, 2131558985, localQQAppInterface, localFPSXListView, new arpx(this));
-              localFPSXListView.setAdapter(this.jdField_a_of_type_Ainr);
-            }
-            this.jdField_a_of_type_Ainr.a(localQQAppInterface);
-            this.jdField_a_of_type_Ainr.a(localList);
-            this.jdField_a_of_type_Ainr.a(this.jdField_a_of_type_Arqd);
-            return;
-            paramarpt = paramarpt;
-            QLog.i("Q.lebatab.LebaListController", 1, "addHeaderView ", paramarpt);
-            continue;
-            paramarpt = paramarpt;
-            QLog.i("Q.lebatab.LebaListController", 1, "addHeaderView ", paramarpt);
-          }
-        }
-        catch (Exception paramarpt)
-        {
-          for (;;)
-          {
-            QLog.i("Q.lebatab.LebaListController", 1, "setAdapter ", paramarpt);
-          }
-        }
-      }
+      finally {}
     }
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.e = paramBundle.getString("_PARAM_FILEPATH");
+    this.f = paramBundle.getString("_PARAM_TMP_FILEPATH");
+    this.d = paramBundle.getString("_PARAM_FILENAME");
+    this.jdField_b_of_type_Long = paramBundle.getLong("_PARAM_FILESIZE");
+    this.g = paramBundle.getString("_PARAM_COOKIE");
+    QLog.i(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] init. ST:" + e() + " PGR:" + h());
+    c(1);
+    return 0;
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void b()
+  protected void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      a(this.jdField_a_of_type_AndroidViewView);
-      b(this.jdField_a_of_type_AndroidViewView);
-    }
-    if (this.jdField_a_of_type_Ainr != null) {
-      this.jdField_a_of_type_Ainr.b();
+      this.jdField_a_of_type_Int = paramInt;
+      return;
     }
   }
   
-  public void c()
+  protected boolean a()
   {
-    if (this.jdField_a_of_type_Ainr != null) {
-      this.jdField_a_of_type_Ainr.notifyDataSetChanged();
+    return e() >= 1;
+  }
+  
+  protected void b(int paramInt)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      this.jdField_b_of_type_Int = paramInt;
+      return;
     }
   }
   
-  public void d() {}
+  protected void c(int paramInt)
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      QLog.i(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] setStatus. " + this.jdField_c_of_type_Int + "->" + paramInt);
+      this.jdField_c_of_type_Int = paramInt;
+      return;
+    }
+  }
+  
+  public int e()
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      int i = this.jdField_c_of_type_Int;
+      return i;
+    }
+  }
+  
+  protected int g()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      int i = this.jdField_a_of_type_Int;
+      return i;
+    }
+  }
+  
+  public int h()
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      int i = this.jdField_b_of_type_Int;
+      return i;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpw
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ public class LpReportInfoConfig
 {
   public static final int ACTION_ACTIVE_ALBUM_REC = 641;
   public static final int ACTION_ACTIVE_FEED = 302;
+  public static final int ACTION_ACTIVE_FEEDS_SIMPLE_MODE = 637;
   public static final int ACTION_AIO_SEND_QZONE_PHOTO = 96;
   public static final int ACTION_EDIT_PIC_OR_VIDEO = 608;
   public static final int ACTION_FRIEND_QZONE_KAPU = 123;
@@ -202,9 +203,16 @@ public class LpReportInfoConfig
   public static final int RESERVED_TYPE_QZ_DETAIL_JUMP_ICON_GUIDE = 3;
   public static final int RESERVED_TYPE_QZ_DETAIL_JUMP_ICON_SHOW = 1;
   public static final int RESERVED_TYPE_SLIDE = 2;
+  public static final String RESERVES2_QZONE_KAPU_INTERACT_BTN_LONG_CLICK = "2";
+  public static final String RESERVES2_QZONE_KAPU_INTERACT_BTN_SINGLE_CLICK = "1";
   public static final int RESERVES3 = 1;
   public static final String RESERVES3_NOT_RECEIVE = "2";
+  public static final String RESERVES3_QZONE_KAPU_2D = "2";
+  public static final String RESERVES3_QZONE_KAPU_3D = "3";
+  public static final String RESERVES3_STEP_ON_QZONE = "1";
   public static final String RESERVES3_TIMEOUT = "1";
+  public static final int RESERVES_ACTION_FEEDS_SIMPLE_MODE_CLICK = 2;
+  public static final int RESERVES_ACTION_FEEDS_SIMPLE_MODE_EXPOSE = 1;
   public static final int RESERVES_ACTION_FORWARDWEIXIN = 4;
   public static final int RESERVES_ACTION_PHOTO_DANMAKU_CLICK_CLOSE = 3;
   public static final int RESERVES_ACTION_PHOTO_DANMAKU_CLICK_OPEN = 2;
@@ -226,6 +234,8 @@ public class LpReportInfoConfig
   public static final int RESERVES_LONG_CLICK_SHARE_SUCCESS = 1;
   public static final int RESERVES_NUANSHUOSHUO_WEEK_DETAIL_ENTRANCE_CLICK = 8;
   public static final int RESERVES_NUANSHUOSHUO_WEEK_DETAIL_ENTRANCE_EXPOSE = 6;
+  public static final int RESERVES_QZONE_KAPU_FORBIDDEN_BTN_CLICK = 2;
+  public static final int RESERVES_QZONE_KAPU_FORBIDDEN_BTN_EXPOSURE = 1;
   public static final int RESERVES_QZONE_KAPU_FRIEND_RANK_CLICK = 2;
   public static final int RESERVES_QZONE_KAPU_FRIEND_RANK_EXPOSURE = 1;
   public static final int RESERVES_QZONE_KAPU_FRIEND_RANK_SHARE = 3;
@@ -240,6 +250,8 @@ public class LpReportInfoConfig
   public static final int RESERVES_QZONE_KAPU_HOST_PANEL_2D = 4;
   public static final int RESERVES_QZONE_KAPU_HOST_PANEL_3D = 3;
   public static final int RESERVES_QZONE_KAPU_HOST_PANEL_DECORATE = 2;
+  public static final int RESERVES_QZONE_KAPU_HOST_PANEL_FIREPOWER = 7;
+  public static final int RESERVES_QZONE_KAPU_HOST_PANEL_GREETINGS = 6;
   public static final int RESERVES_QZONE_KAPU_HOST_PANEL_HOME = 1;
   public static final int RESERVES_QZONE_KAPU_HOST_PANEL_SETTING = 5;
   public static final int RESERVES_QZONE_KAPU_INTERACTIVE_BTN_CLICK = 2;
@@ -248,11 +260,9 @@ public class LpReportInfoConfig
   public static final int RESERVES_QZONE_KAPU_SETTING_FRIEND_OPEN = 25;
   public static final int RESERVES_QZONE_KAPU_SETTING_USE_CLOSE = 33;
   public static final int RESERVES_QZONE_KAPU_SETTING_USR_OPEN = 34;
-  public static final int RESERVES_QZONE_KAPU_SINGLE_BTN_CLICK = 2;
-  public static final int RESERVES_QZONE_KAPU_SINGLE_BTN_EXPOSURE = 1;
-  public static final int RESERVES_QZONE_KAPU_UPFOLD_BTN_CLICK = 1;
-  public static final int RESERVES_QZONE_KAPU_UPFOLD_HOME = 4;
-  public static final int RESERVES_QZONE_KAPU_UPFOLD_SETTING = 5;
+  public static final int RESERVES_QZONE_KAPU_UNFOLD_BTN_CLICK = 1;
+  public static final int RESERVES_QZONE_KAPU_UNFOLD_HOME = 4;
+  public static final int RESERVES_QZONE_KAPU_UNFOLD_SETTING = 5;
   public static final int RESERVES_REDDOT_TYPE_NEW_FIREND_UPDATES = 1;
   public static final int RESERVES_RESHIP_BATCH_PHOTO = 3;
   public static final int RESERVES_SELECT = 1;
@@ -460,6 +470,11 @@ public class LpReportInfoConfig
   public static final int SUBATION_TYPE_P2V_SPEED = 10;
   public static final int SUBATION_TYPE_P2V_STICKER = 8;
   public static final int SUBATION_TYPE_P2V_TRANSITION = 7;
+  public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_ICON = 30;
+  public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_ICON_ALL = 31;
+  public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_NO_RED_POINT = 23;
+  public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_NUM_RED_POINT = 22;
+  public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_SMALL_RED_POINT = 21;
   public static final int SUB_ACTION_ADD_FRIEND_BTN_CLICK = 3;
   public static final int SUB_ACTION_AIO_SYNC_QZONE_PHOTO_LIST_ACTIVITY = 2;
   public static final int SUB_ACTION_AIO_SYNC_QZONE_PHOTO_LIST_PANEL = 1;
@@ -551,6 +566,7 @@ public class LpReportInfoConfig
   public static final int SUB_ACTION_TYPE_FACE_PHOTO = 5;
   public static final int SUB_ACTION_TYPE_FACE_PHOTO_DETAIL = 6;
   public static final int SUB_ACTION_TYPE_FEED_GIFT = 14;
+  public static final int SUB_ACTION_TYPE_FORBIDDEN_BTN = 3;
   public static final int SUB_ACTION_TYPE_FRIEND_RANK = 8;
   public static final int SUB_ACTION_TYPE_GIFT_BLESS = 22;
   public static final int SUB_ACTION_TYPE_GUEST_EVENT_BUBBLE = 7;
@@ -592,7 +608,6 @@ public class LpReportInfoConfig
   public static final int SUB_ACTION_TYPE_SETTING = 64;
   public static final int SUB_ACTION_TYPE_SHUOSHUO_CALENDAR = 32;
   public static final int SUB_ACTION_TYPE_SHUOSHUO_TIME_SETTING_EXPOSE = 1;
-  public static final int SUB_ACTION_TYPE_SINGLE_BTN = 3;
   public static final int SUB_ACTION_TYPE_SMART_BEAUTIFY_EXPOSURE = 10;
   public static final int SUB_ACTION_TYPE_SMART_BEAUTIFY_MORE_CLICK = 11;
   public static final int SUB_ACTION_TYPE_SMART_BEAUTIFY_PICTURE_VIEWER = 15;
@@ -601,13 +616,15 @@ public class LpReportInfoConfig
   public static final int SUB_ACTION_TYPE_SMART_BEAUTIFY_SELECTED_BTN_UNCKECK = 12;
   public static final int SUB_ACTION_TYPE_STRANGER_DRESS = 9;
   public static final int SUB_ACTION_TYPE_UGC_CLICK = 2;
-  public static final int SUB_ACTION_TYPE_UPFOLD_BTN = 2;
+  public static final int SUB_ACTION_TYPE_UNFOLD_BTN = 2;
   public static final int SUB_ACTION_TYPE_VIP_GIFT_CLICK = 2;
   public static final int SUB_ACTION_TYPE_VIP_GIFT_EXPLOSE = 1;
   public static final int SUB_ACTION_TYPE_WEIYUN_BACKUP = 2;
   public static final int SUB_ACTION_TYPE_WEIYUN_MEMU = 5;
   public static final int SUB_ACTION_TYPE_WEIYUN_OPEM_APP = 3;
   public static final int SUB_ACTION_TYPE_WEIYUN_QZONE_GUIDE_DIALOG = 4;
+  public static final int SUB_ACTION_TYPE_WEZONE_CLICK = 52;
+  public static final int SUB_ACTION_TYPE_WEZONE_EXPLOSE = 51;
   public static final int SUB_ACTION_TYPE_WE_PLAY = 33;
   public static final int SUB_ACTION_TYP_QZONE_SETTING = 2;
   public static final int SUB_ACTION_VIDEO_BACK = 1;
@@ -699,7 +716,7 @@ public class LpReportInfoConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfoConfig
  * JD-Core Version:    0.7.0.1
  */

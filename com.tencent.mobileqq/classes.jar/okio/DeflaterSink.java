@@ -1,6 +1,7 @@
 package okio;
 
 import java.util.zip.Deflater;
+import org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement;
 
 public final class DeflaterSink
   implements Sink
@@ -26,23 +27,25 @@ public final class DeflaterSink
     this(Okio.buffer(paramSink), paramDeflater);
   }
   
+  @IgnoreJRERequirement
   private void deflate(boolean paramBoolean)
   {
     Buffer localBuffer = this.sink.buffer();
     Segment localSegment;
+    label119:
     do
     {
-      for (;;)
+      localSegment = localBuffer.writableSegment(1);
+      if (paramBoolean) {}
+      for (int i = this.deflater.deflate(localSegment.data, localSegment.limit, 8192 - localSegment.limit, 2);; i = this.deflater.deflate(localSegment.data, localSegment.limit, 8192 - localSegment.limit))
       {
-        localSegment = localBuffer.writableSegment(1);
-        int i = this.deflater.deflate(localSegment.data, localSegment.limit, 8192 - localSegment.limit);
         if (i <= 0) {
-          break;
+          break label119;
         }
         localSegment.limit += i;
-        long l = localBuffer.size;
-        localBuffer.size = (i + l);
+        localBuffer.size += i;
         this.sink.emitCompleteSegments();
+        break;
       }
     } while (!this.deflater.needsInput());
     if (localSegment.pos == localSegment.limit)
@@ -133,11 +136,8 @@ public final class DeflaterSink
   public void write(Buffer paramBuffer, long paramLong)
   {
     Util.checkOffsetAndCount(paramBuffer.size, 0L, paramLong);
-    for (;;)
+    while (paramLong > 0L)
     {
-      if (paramLong <= 0L) {
-        return;
-      }
       Segment localSegment = paramBuffer.head;
       int i = (int)Math.min(paramLong, localSegment.limit - localSegment.pos);
       this.deflater.setInput(localSegment.data, localSegment.pos, i);
@@ -155,7 +155,7 @@ public final class DeflaterSink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.DeflaterSink
  * JD-Core Version:    0.7.0.1
  */

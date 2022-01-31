@@ -1,83 +1,47 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.annotation.TargetApi;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
+@TargetApi(14)
 public class ulu
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tkk>
 {
-  public ulu(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public volatile int a;
+  public long a;
+  public ErrorMessage a;
+  public List<ulp> a;
+  public int b;
+  public int c;
+  
+  public ulu()
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tkk paramtkk)
+  public boolean a()
   {
-    if ((paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkk.jdField_a_of_type_JavaUtilList != null) && (!paramtkk.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
-    {
-      if (!paramQQStoryShareGroupProfileActivity.g) {
-        break label54;
-      }
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.notifyDataSetChanged();
-    }
-    label54:
-    int j;
-    do
-    {
-      return;
-      j = 0;
-      int i = j;
-      Object localObject;
-      if (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList != null)
-      {
-        i = j;
-        if (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.isEmpty())
-        {
-          localObject = paramtkk.jdField_a_of_type_JavaUtilList.iterator();
-          QQUserUIItem localQQUserUIItem;
-          do
-          {
-            i = j;
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            localQQUserUIItem = (QQUserUIItem)((Iterator)localObject).next();
-          } while (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.contains(localQQUserUIItem.uid));
-          i = 1;
-        }
-      }
-      j = i;
-      if (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.d))
-      {
-        paramtkk = paramtkk.jdField_a_of_type_JavaUtilList.iterator();
-        do
-        {
-          j = i;
-          if (!paramtkk.hasNext()) {
-            break;
-          }
-          localObject = (QQUserUIItem)paramtkk.next();
-        } while (!paramQQStoryShareGroupProfileActivity.d.equals(((QQUserUIItem)localObject).uid));
-        j = 1;
-      }
-    } while (j == 0);
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+    return (this.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_Int == 3);
   }
   
-  public Class acceptEventClass()
+  public boolean b()
   {
-    return tkk.class;
+    return this.jdField_a_of_type_Int == 5;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("BaseTaskInfo{");
+    localStringBuffer.append("status=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", retryTimes=").append(this.b);
+    localStringBuffer.append(", result=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulu
  * JD-Core Version:    0.7.0.1
  */

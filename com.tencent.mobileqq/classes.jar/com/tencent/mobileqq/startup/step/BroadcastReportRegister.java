@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import axnz;
+import azji;
 import mqq.app.MobileQQ;
 
 public class BroadcastReportRegister
@@ -8,14 +8,14 @@ public class BroadcastReportRegister
 {
   protected boolean doStep()
   {
-    MobileQQ.sMobileQQ.registerAppCallbacks(new axnz(this));
+    MobileQQ.sMobileQQ.registerAppCallbacks(new azji(this));
     this.mDirector = null;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.BroadcastReportRegister
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.flashchat;
 
-import aanz;
-import ajya;
+import acex;
+import alpo;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import apyw;
-import apze;
-import aqxj;
-import axqy;
-import bcql;
+import arry;
+import arsg;
+import asnx;
+import azmj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.hiboom.RichTextPanelView;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.XEditTextEx;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,9 +23,9 @@ import mqq.os.MqqHandler;
 
 public class FlashChatPanelView
   extends RichTextPanelView
-  implements apze
+  implements arsg
 {
-  private static final String jdField_a_of_type_JavaLangString = ajya.a(2131704622);
+  private static final String jdField_a_of_type_JavaLangString = alpo.a(2131704994);
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private FlashChatTextEffectView jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView;
   
@@ -56,22 +56,22 @@ public class FlashChatPanelView
   
   public void a(View paramView, int paramInt1, int paramInt2)
   {
-    if (!aqxj.c.get()) {}
+    if (!asnx.c.get()) {}
     label128:
     do
     {
       return;
       Object localObject = new StringBuilder();
-      apyw localapyw = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.a(paramInt1);
-      if ((localapyw != null) && (localapyw.a != null)) {}
-      for (paramInt1 = localapyw.a.id;; paramInt1 = -1)
+      arry localarry = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.a(paramInt1);
+      if ((localarry != null) && (localarry.a != null)) {}
+      for (paramInt1 = localarry.a.id;; paramInt1 = -1)
       {
         paramView = (FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217);
         paramView.a(((StringBuilder)localObject).toString());
         if (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString().isEmpty()) {
           break label128;
         }
-        if ((localapyw == null) || (localapyw.a == null) || (localapyw.a.id != -100001)) {
+        if ((localarry == null) || (localarry.a == null) || (localarry.a.id != -100001)) {
           break;
         }
         return;
@@ -84,13 +84,13 @@ public class FlashChatPanelView
     } while (paramView == null);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131372739, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373095, null);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-    aanz.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramView);
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D6", "0X80094D6", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aC();
+    acex.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramView);
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D6", "0X80094D6", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aE();
     return;
-    bcql.a(getContext(), ajya.a(2131704621), 0).a();
+    QQToast.a(getContext(), alpo.a(2131704993), 0).a();
   }
   
   public void a(boolean paramBoolean)
@@ -152,7 +152,7 @@ public class FlashChatPanelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatPanelView
  * JD-Core Version:    0.7.0.1
  */

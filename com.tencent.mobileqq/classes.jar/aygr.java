@@ -1,39 +1,31 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
+import com.tencent.widget.ListView;
 
 public class aygr
-  implements bfph
+  extends ayff<ayjl, ayru>
 {
-  public aygr(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bfpc parambfpc) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public aygr(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment, ListView paramListView, bcws parambcws)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
-    {
-      paramInt = -1;
-      switch (paramInt)
-      {
-      }
+    super(paramListView, parambcws);
+  }
+  
+  protected aymg<ayjl, ayru> a(int paramInt)
+  {
+    return new aylv(this.jdField_a_of_type_Bcws);
+  }
+  
+  protected ayrv a(int paramInt, ViewGroup paramViewGroup)
+  {
+    if (ayrd.a(SelectMemberContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentSelectMemberContactSearchFragment))) {
+      return new ayro(paramViewGroup, 2131562583);
     }
-    for (;;)
-    {
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-      if (this.jdField_a_of_type_Bfpc.isShowing()) {
-        this.jdField_a_of_type_Bfpc.dismiss();
-      }
-      return;
-      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
-      break;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 3);
-    }
+    return new ayro(paramViewGroup, 2131562584);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aygr
  * JD-Core Version:    0.7.0.1
  */

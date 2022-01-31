@@ -1,30 +1,98 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qhuanji.QHuanjiPluginProxyActivity;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
 public class biof
-  implements bble<Float>
 {
-  public biof(AEBeautyProviderView paramAEBeautyProviderView, AEProviderContainerView paramAEProviderContainerView, View paramView) {}
-  
-  @TargetApi(11)
-  public void a(bbky<Float> parambbky, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    paramFloat = paramFloat1.floatValue();
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView != null) {
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.setBackGroundAlpha(paramFloat);
+    QLog.d("QHuanji", 1, "start create HuanjiAppInterface. processName=" + paramString);
+    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
+      return null;
     }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
+    try
+    {
+      paramString = Class.forName("com.tencent.huanji.QHuanjiAppInterface");
+      paramBaseApplicationImpl = paramString;
     }
-    AEBeautyProviderView.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView, paramFloat);
+    catch (ClassNotFoundException paramString)
+    {
+      for (;;)
+      {
+        try
+        {
+          QLog.e("QHuanji", 1, "*createQHuanjiAppInterface load class fail");
+          return null;
+        }
+        catch (ClassNotFoundException paramBaseApplicationImpl)
+        {
+          paramBaseApplicationImpl.printStackTrace();
+        }
+        paramString = paramString;
+        paramString = QHuanjiPluginProxyActivity.a(paramBaseApplicationImpl);
+        paramBaseApplicationImpl = paramString.loadClass("com.tencent.huanji.QHuanjiAppInterface");
+        BasicClassTypeUtil.setClassLoader(true, paramString);
+      }
+      do
+      {
+        return null;
+        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
+      paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+      return paramBaseApplicationImpl;
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    if (paramBaseApplicationImpl != null) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biof
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,37 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.9.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
-public class afyw
-  extends xau
+class afyw
+  implements Animation.AnimationListener
 {
-  public afyw(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  afyw(afyu paramafyu, afyy paramafyy, CharSequence paramCharSequence) {}
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
-    while (!paramBoolean) {
-      return;
-    }
-    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.9.1(this, paramLong1, paramLong2));
+    this.jdField_a_of_type_Afyy.d.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_Afyy.d.startAnimation(this.jdField_a_of_type_Afyu.a);
+    this.jdField_a_of_type_Afyy.a.requestLayout();
+    this.jdField_a_of_type_Afyy.g = 0;
+    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Afyy.a.getLayoutParams();
+    paramAnimation.width = -2;
+    paramAnimation.height = -2;
+    this.jdField_a_of_type_Afyy.a.setAnimation(null);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Afyy.g = 0;
+    this.jdField_a_of_type_Afyy.d.startAnimation(this.jdField_a_of_type_Afyu.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afyw
  * JD-Core Version:    0.7.0.1
  */

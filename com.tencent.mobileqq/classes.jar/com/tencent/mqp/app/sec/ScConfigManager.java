@@ -1,11 +1,11 @@
 package com.tencent.mqp.app.sec;
 
-import apvd;
-import bbbz;
-import bcxa;
-import bcxg;
-import bcxh;
-import bcxj;
+import arof;
+import bdat;
+import bewc;
+import bewi;
+import bewj;
+import bewl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -15,8 +15,8 @@ import java.util.HashMap;
 public class ScConfigManager
 {
   private static final ScConfigManager jdField_a_of_type_ComTencentMqpAppSecScConfigManager = new ScConfigManager();
-  private static final bcxg[] jdField_a_of_type_ArrayOfBcxg = { new bcxg("SecCenterConfig", new bcxj()) };
-  private HashMap<String, bcxh> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final bewi[] jdField_a_of_type_ArrayOfBewi = { new bewi("SecCenterConfig", new bewl()) };
+  private HashMap<String, bewj> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private HashMap<String, String> b = new HashMap();
   
   private ScConfigManager()
@@ -24,29 +24,29 @@ public class ScConfigManager
     this.b.put("SecCenterConfig", "qq_security_sccfg");
   }
   
-  public static bcxa a(String paramString)
+  public static bewc a(String paramString)
   {
-    bcxg[] arrayOfbcxg = jdField_a_of_type_ArrayOfBcxg;
-    int j = arrayOfbcxg.length;
+    bewi[] arrayOfbewi = jdField_a_of_type_ArrayOfBewi;
+    int j = arrayOfbewi.length;
     int i = 0;
     while (i < j)
     {
-      bcxg localbcxg = arrayOfbcxg[i];
-      if (localbcxg.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return localbcxg.jdField_a_of_type_Bcxa;
+      bewi localbewi = arrayOfbewi[i];
+      if (localbewi.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localbewi.jdField_a_of_type_Bewc;
       }
       i += 1;
     }
     return null;
   }
   
-  private bcxh a(String paramString)
+  private bewj a(String paramString)
   {
     synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
       if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
       {
-        paramString = (bcxh)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        paramString = (bewj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
         return paramString;
       }
       return null;
@@ -241,7 +241,7 @@ public class ScConfigManager
   
   private boolean b(String paramString)
   {
-    return !apvd.a(paramString);
+    return !arof.a(paramString);
   }
   
   private String c(String paramString)
@@ -256,7 +256,7 @@ public class ScConfigManager
     Object localObject2 = a(str);
     if (localObject2 != null)
     {
-      localObject2 = ((bcxa)localObject2).a(???);
+      localObject2 = ((bewc)localObject2).a(???);
       if (localObject2 != null) {
         synchronized (this.jdField_a_of_type_JavaUtilHashMap)
         {
@@ -271,25 +271,25 @@ public class ScConfigManager
     return true;
   }
   
-  public bcxh a(String paramString, boolean paramBoolean)
+  public bewj a(String paramString, boolean paramBoolean)
   {
-    bcxh localbcxh2 = a(paramString);
-    bcxh localbcxh1 = localbcxh2;
-    if (localbcxh2 == null)
+    bewj localbewj2 = a(paramString);
+    bewj localbewj1 = localbewj2;
+    if (localbewj2 == null)
     {
-      localbcxh1 = localbcxh2;
+      localbewj1 = localbewj2;
       if (paramBoolean)
       {
         a(paramString);
-        localbcxh1 = a(paramString);
+        localbewj1 = a(paramString);
       }
     }
-    return localbcxh1;
+    return localbewj1;
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    bbbz.a().a(paramQQAppInterface, paramString);
+    bdat.a().a(paramQQAppInterface, paramString);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
@@ -306,7 +306,7 @@ public class ScConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqp.app.sec.ScConfigManager
  * JD-Core Version:    0.7.0.1
  */

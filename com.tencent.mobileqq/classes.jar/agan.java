@@ -1,26 +1,25 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.view.View.OnClickListener;
 
-public class agan
-  implements View.OnTouchListener
+class agan
+  implements View.OnClickListener
 {
-  public agan(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  agan(agal paramagal) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
+    if (paramView.getId() == 2131363470) {
+      agal.a(this.a).a(paramView);
     }
-    return false;
+    while (paramView.getId() != 2131363471) {
+      return;
+    }
+    agal.a(this.a).b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agan
  * JD-Core Version:    0.7.0.1
  */

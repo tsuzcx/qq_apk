@@ -1,16 +1,87 @@
-public abstract interface bdsb
+import java.lang.ref.WeakReference;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class bdsb<E>
 {
-  public abstract void a();
+  private HashMap<String, CopyOnWriteArrayList<E>> a = new HashMap();
   
-  public abstract void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte);
+  public List<E> a(String paramString)
+  {
+    try
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.get(paramString);
+      paramString = localCopyOnWriteArrayList;
+      if (localCopyOnWriteArrayList == null) {
+        paramString = Collections.emptyList();
+      }
+      return paramString;
+    }
+    finally {}
+  }
   
-  public abstract void a(bdrz parambdrz);
+  public void a(String paramString, E paramE)
+  {
+    try
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList2 = (CopyOnWriteArrayList)this.a.get(paramString);
+      CopyOnWriteArrayList localCopyOnWriteArrayList1 = localCopyOnWriteArrayList2;
+      if (localCopyOnWriteArrayList2 == null)
+      {
+        localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
+        this.a.put(paramString, localCopyOnWriteArrayList1);
+      }
+      localCopyOnWriteArrayList1.add(paramE);
+      return;
+    }
+    finally {}
+  }
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public void a(String paramString, Object paramObject, boolean paramBoolean)
+  {
+    try
+    {
+      paramString = (CopyOnWriteArrayList)this.a.get(paramString);
+      if (paramString != null)
+      {
+        if (paramBoolean)
+        {
+          Iterator localIterator = paramString.iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject1 = localIterator.next();
+            Object localObject2 = ((WeakReference)localObject1).get();
+            if ((localObject2 == null) || (localObject2 == paramObject)) {
+              paramString.remove(localObject1);
+            }
+          }
+        }
+        paramString.remove(paramObject);
+      }
+    }
+    finally {}
+  }
+  
+  public List<E> b(String paramString)
+  {
+    try
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.remove(paramString);
+      paramString = localCopyOnWriteArrayList;
+      if (localCopyOnWriteArrayList == null) {
+        paramString = Collections.emptyList();
+      }
+      return paramString;
+    }
+    finally {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdsb
  * JD-Core Version:    0.7.0.1
  */

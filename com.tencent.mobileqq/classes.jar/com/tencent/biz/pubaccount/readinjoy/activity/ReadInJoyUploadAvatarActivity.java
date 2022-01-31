@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ajya;
+import alpo;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +12,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import nxf;
-import nxh;
-import onh;
-import qik;
-import qil;
+import oal;
+import oan;
+import ors;
+import qxr;
+import qxs;
 
 public class ReadInJoyUploadAvatarActivity
   extends IphoneTitleBarActivity
@@ -24,7 +24,7 @@ public class ReadInJoyUploadAvatarActivity
   public static String a;
   protected ProgressDialog a;
   protected Handler a;
-  qik a;
+  qxr a;
   
   static
   {
@@ -34,13 +34,13 @@ public class ReadInJoyUploadAvatarActivity
   public ReadInJoyUploadAvatarActivity()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_Qik = new nxh(this);
+    this.jdField_a_of_type_Qxr = new oan(this);
   }
   
   private void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)onh.a();
-    new qil(getApplicationContext(), localQQAppInterface, this.jdField_a_of_type_Qik).a(paramString, true, 2);
+    QQAppInterface localQQAppInterface = (QQAppInterface)ors.a();
+    new qxs(getApplicationContext(), localQQAppInterface, this.jdField_a_of_type_Qxr).a(paramString, true, 2);
   }
   
   private void a(String paramString, Handler paramHandler, int paramInt)
@@ -53,7 +53,7 @@ public class ReadInJoyUploadAvatarActivity
     switch (paramInt1)
     {
     default: 
-      a(paramString, new nxf(this, Looper.getMainLooper()), paramInt2);
+      a(paramString, new oal(this, Looper.getMainLooper()), paramInt2);
     }
     for (;;)
     {
@@ -67,8 +67,8 @@ public class ReadInJoyUploadAvatarActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(new View(this));
-    setTitle(ajya.a(2131712894), ajya.a(2131712894));
-    setLeftViewName(2131695080);
+    setTitle(alpo.a(2131713266), alpo.a(2131713266));
+    setLeftViewName(2131695238);
     this.jdField_a_of_type_AndroidOsHandler.post(new ReadInJoyUploadAvatarActivity.1(this));
     paramBundle = getIntent();
     ArrayList localArrayList = paramBundle.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
@@ -78,7 +78,7 @@ public class ReadInJoyUploadAvatarActivity
       Intent localIntent = getIntent();
       Bundle localBundle = new Bundle();
       localBundle.putInt("retCode", 2);
-      localBundle.putString("msg", ajya.a(2131712875));
+      localBundle.putString("msg", alpo.a(2131713247));
       localIntent.putExtra("Bundle", localBundle);
       setResult(-1, localIntent);
       finish();
@@ -106,7 +106,7 @@ public class ReadInJoyUploadAvatarActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity
  * JD-Core Version:    0.7.0.1
  */

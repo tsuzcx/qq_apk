@@ -1,28 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-
 public class nxd
-  implements bfph
+  extends bjxt
 {
-  public nxd(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.a(this.a, false);
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-    }
+    nxa.a().a(paramString, paramLong1, paramArrayOfLong, paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxd
  * JD-Core Version:    0.7.0.1
  */

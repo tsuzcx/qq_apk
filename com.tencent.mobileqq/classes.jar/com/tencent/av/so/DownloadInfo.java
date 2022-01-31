@@ -2,11 +2,10 @@ package com.tencent.av.so;
 
 import android.content.SharedPreferences;
 import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.utils.confighandler.ConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import lcs;
-import lct;
+import lew;
+import lex;
 import org.json.JSONObject;
 
 public class DownloadInfo
@@ -29,7 +28,7 @@ public class DownloadInfo
   
   public static DownloadInfo get()
   {
-    String str = lct.b(367).a;
+    String str = lex.b(367).a;
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.tryParse("QavSo", str);
     return localDownloadInfo;
@@ -42,66 +41,48 @@ public class DownloadInfo
   
   public boolean parse(JSONObject paramJSONObject)
   {
-    bool = true;
     try
     {
       if (paramJSONObject.has("enable")) {
         this.enable = paramJSONObject.getBoolean("enable");
       }
-      if (AppSetting.b)
-      {
-        if (paramJSONObject.has("url_zip_so_for_arm64")) {
-          this.url_zip_so = paramJSONObject.getString("url_zip_so_for_arm64");
-        }
-        if (paramJSONObject.has("MD5_zip_so_for_arm64")) {
-          this.MD5_zip_so = paramJSONObject.getString("MD5_zip_so_for_arm64");
-        }
-        if (paramJSONObject.has("MD5_so_wxvoiceembedqqegg_for_arm64")) {
-          this.MD5_so_wxvoiceembedqqegg = paramJSONObject.getString("MD5_so_wxvoiceembedqqegg_for_arm64");
-        }
+      if (paramJSONObject.has("url_zip_so")) {
+        this.url_zip_so = paramJSONObject.getString("url_zip_so");
       }
-      for (;;)
-      {
-        if (paramJSONObject.has("url_zip_model")) {
-          this.url_zip_model = paramJSONObject.getString("url_zip_model");
-        }
-        if (paramJSONObject.has("MD5_zip_model")) {
-          this.MD5_zip_model = paramJSONObject.getString("MD5_zip_model");
-        }
-        if (paramJSONObject.has("MD5_model_wxvoiceembed")) {
-          this.MD5_model_wxvoiceembed = paramJSONObject.getString("MD5_model_wxvoiceembed");
-        }
-        if (paramJSONObject.has("filename_so_wxvoiceembedqqegg")) {
-          this.filename_so_wxvoiceembedqqegg = paramJSONObject.getString("filename_so_wxvoiceembedqqegg");
-        }
-        if (paramJSONObject.has("filename_model_wxvoiceembed")) {
-          this.filename_model_wxvoiceembed = paramJSONObject.getString("filename_model_wxvoiceembed");
-        }
-        if (paramJSONObject.has("is_auto_download")) {
-          this.is_auto_download = paramJSONObject.getBoolean("is_auto_download");
-        }
-        if (!paramJSONObject.has("thre")) {
-          break;
-        }
+      if (paramJSONObject.has("MD5_zip_so")) {
+        this.MD5_zip_so = paramJSONObject.getString("MD5_zip_so");
+      }
+      if (paramJSONObject.has("MD5_so_wxvoiceembedqqegg")) {
+        this.MD5_so_wxvoiceembedqqegg = paramJSONObject.getString("MD5_so_wxvoiceembedqqegg");
+      }
+      if (paramJSONObject.has("url_zip_model")) {
+        this.url_zip_model = paramJSONObject.getString("url_zip_model");
+      }
+      if (paramJSONObject.has("MD5_zip_model")) {
+        this.MD5_zip_model = paramJSONObject.getString("MD5_zip_model");
+      }
+      if (paramJSONObject.has("MD5_model_wxvoiceembed")) {
+        this.MD5_model_wxvoiceembed = paramJSONObject.getString("MD5_model_wxvoiceembed");
+      }
+      if (paramJSONObject.has("filename_so_wxvoiceembedqqegg")) {
+        this.filename_so_wxvoiceembedqqegg = paramJSONObject.getString("filename_so_wxvoiceembedqqegg");
+      }
+      if (paramJSONObject.has("filename_model_wxvoiceembed")) {
+        this.filename_model_wxvoiceembed = paramJSONObject.getString("filename_model_wxvoiceembed");
+      }
+      if (paramJSONObject.has("is_auto_download")) {
+        this.is_auto_download = paramJSONObject.getBoolean("is_auto_download");
+      }
+      if (paramJSONObject.has("thre")) {
         this.thre = paramJSONObject.getInt("thre");
-        return true;
-        if (paramJSONObject.has("url_zip_so")) {
-          this.url_zip_so = paramJSONObject.getString("url_zip_so");
-        }
-        if (paramJSONObject.has("MD5_zip_so")) {
-          this.MD5_zip_so = paramJSONObject.getString("MD5_zip_so");
-        }
-        if (paramJSONObject.has("MD5_so_wxvoiceembedqqegg")) {
-          this.MD5_so_wxvoiceembedqqegg = paramJSONObject.getString("MD5_so_wxvoiceembedqqegg");
-        }
       }
-      return bool;
+      return true;
     }
     catch (Exception paramJSONObject)
     {
       QLog.d("QavSo", 1, String.format("parseJson, Exception\n%s", new Object[] { paramJSONObject }));
-      bool = false;
     }
+    return false;
   }
   
   public String toString()
@@ -111,7 +92,7 @@ public class DownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.so.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

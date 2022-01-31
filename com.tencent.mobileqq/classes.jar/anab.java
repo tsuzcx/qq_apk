@@ -1,61 +1,76 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class anab
-  extends amyp<anaa>
+class anab
+  implements amto
 {
-  public int a()
+  private int jdField_a_of_type_Int;
+  
+  anab(amzy paramamzy) {}
+  
+  public void a(int paramInt)
   {
-    return 26;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.MiniCodeController", 2, String.format("onMiniDownloadSuccess type=%d", new Object[] { Integer.valueOf(paramInt) }));
+      }
+      this.jdField_a_of_type_Amzy.a();
+      return;
+      amzy.c(this.jdField_a_of_type_Amzy, true);
+      continue;
+      amzy.d(this.jdField_a_of_type_Amzy, true);
+      continue;
+      amzy.e(this.jdField_a_of_type_Amzy, true);
+      this.jdField_a_of_type_Int = 100;
+    }
   }
   
-  @NonNull
-  public anaa a()
+  public void a(int paramInt1, int paramInt2)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ajts localajts = (ajts)localQQAppInterface.a(16);
-    if (localajts != null) {
-      localajts.a(localQQAppInterface.getApplication().getApplicationContext());
+    switch (paramInt1)
+    {
     }
-    return new anaa();
+    while (paramInt1 == 0)
+    {
+      Iterator localIterator = amzy.a(this.jdField_a_of_type_Amzy).iterator();
+      while (localIterator.hasNext())
+      {
+        anac localanac = (anac)((WeakReference)localIterator.next()).get();
+        if (localanac != null) {
+          localanac.b(this.jdField_a_of_type_Int);
+        }
+      }
+      this.jdField_a_of_type_Int = paramInt2;
+    }
   }
   
-  @NonNull
-  public anaa a(amph[] paramArrayOfamph)
+  public void b(int paramInt1, int paramInt2)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ajts localajts = (ajts)localQQAppInterface.a(16);
-    if (localajts != null) {
-      localajts.a(localQQAppInterface, paramArrayOfamph[0].a);
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("QVipResourceProcessor", 2, "receiveAllConfigs|type: 26,content: " + paramArrayOfamph[0]);
+      QLog.i("MiniRecog.MiniCodeController", 2, String.format("onMiniDownloadError type=%d error=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     }
-    return new anaa();
-  }
-  
-  public Class<anaa> a()
-  {
-    return anaa.class;
-  }
-  
-  @NonNull
-  public anaa b()
-  {
-    return new anaa();
-  }
-  
-  public boolean c()
-  {
-    return false;
+    if (paramInt1 == 0)
+    {
+      Iterator localIterator = amzy.a(this.jdField_a_of_type_Amzy).iterator();
+      while (localIterator.hasNext())
+      {
+        anac localanac = (anac)((WeakReference)localIterator.next()).get();
+        if (localanac != null) {
+          localanac.c(paramInt2);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anab
  * JD-Core Version:    0.7.0.1
  */

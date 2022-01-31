@@ -8,6 +8,7 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$Ext
   public String market_package_name;
   public int mini_program_preload = 0;
   public boolean no_clkcgi_jump = false;
+  public int render_pos_type = 0;
 }
 
 

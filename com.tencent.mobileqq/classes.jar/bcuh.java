@@ -1,151 +1,60 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
-import android.os.Handler;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenStatusReceiver;
-import com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper.2;
-import com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper.3;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcuh
-  extends bcug
-  implements arzx, bctv
+  extends MSFServlet
 {
-  public bcuh(Context paramContext)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramContext);
-    f();
-  }
-  
-  private arzn a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return arzn.a((QQAppInterface)localAppRuntime);
+    if (QLog.isColorLevel()) {
+      QLog.d("UnifiedDebugReportServlet", 2, "onReceive");
     }
-    return null;
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.setOnDragListener(this);
-    if (a() != null) {
-      a().a().a(this);
-    }
-  }
-  
-  private void g()
-  {
-    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373158);
-    localView.setContentDescription("位置共享悬浮窗");
-    if (bfwr.a())
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
     {
-      localView.setBackgroundColor(Color.parseColor("#4D000000"));
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
+      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
+      localBundle.putByteArray("extra_data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
       return;
+      arrayOfByte = null;
     }
-    localView.setBackgroundColor(Color.parseColor("#00000000"));
   }
   
-  public int a(FloatingScreenParams paramFloatingScreenParams, View paramView)
-  {
-    FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
-    if (paramFloatingScreenParams == null)
-    {
-      if (this.jdField_a_of_type_AndroidContentContext != null) {
-        localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().build();
-      }
-    }
-    else
-    {
-      paramFloatingScreenParams = new FloatingLocationWrapper.2(this, paramView, localFloatingScreenParams);
-      ThreadManager.getUIHandlerV2().postDelayed(paramFloatingScreenParams, 500L);
-      return 0;
-    }
-    return 2;
-  }
-  
-  public void a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FloatingLocationWrapper", 2, new Object[] { "onThemeChanged: invoked. ", " TAG: ", "FloatingLocationWrapper" });
+      QLog.d("UnifiedDebugReportServlet", 2, "onSend");
     }
-    g();
-  }
-  
-  public void a(Context paramContext)
-  {
-    super.a(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("关闭位置共享悬浮窗");
-    g();
-  }
-  
-  public void a(FloatingScreenParams paramFloatingScreenParams)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4);
-    int i = localSharedPreferences.getInt("KEY_QQFS_LOCATION_SHARE_CENTER_X", -2147483648);
-    int j = localSharedPreferences.getInt("KEY_QQFS_LOCATION_SHARE_CENTER_Y", -2147483648);
-    if ((i != -2147483648) && (j != -2147483648))
+    Object localObject = paramIntent.getStringExtra("extra_cmd");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    do
     {
-      paramFloatingScreenParams.setFloatingCenterX(i);
-      paramFloatingScreenParams.setFloatingCenterY(j);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingLocationWrapper", 2, new Object[] { "restoreLastCenterPosition: invoked. ", " centerX: ", Integer.valueOf(i), " centerY: ", Integer.valueOf(j) });
-    }
-  }
-  
-  public void b()
-  {
-    axqy.b(null, "CliOper", "", "", "0X800A977", "0X800A977", 0, 0, "", "0", "0", "");
-  }
-  
-  public void b(int paramInt)
-  {
-    FloatingLocationWrapper.3 local3 = new FloatingLocationWrapper.3(this, paramInt);
-    ThreadManager.getUIHandlerV2().post(local3);
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver = new FloatingScreenStatusReceiver(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver.a(1, new bcui(this));
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer != null)
-    {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.b();
-      SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4).edit();
-      int i = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a();
-      int j = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.b();
-      localEditor.putInt("KEY_QQFS_LOCATION_SHARE_CENTER_X", i);
-      localEditor.putInt("KEY_QQFS_LOCATION_SHARE_CENTER_Y", j);
-      localEditor.apply();
-      if (QLog.isColorLevel()) {
-        QLog.d("FloatingLocationWrapper", 2, new Object[] { "saveFloatingCenter: invoked. ", " centerX: ", Integer.valueOf(i), " centerY: ", Integer.valueOf(j), " isSmallFloating: ", Boolean.valueOf(bool) });
-      }
-    }
+      return;
+      paramIntent = paramIntent.getByteArrayExtra("extra_data");
+      paramPacket.setSSOCommand((String)localObject);
+    } while (paramIntent == null);
+    localObject = new byte[paramIntent.length + 4];
+    bdlr.a((byte[])localObject, 0, paramIntent.length + 4);
+    bdlr.a((byte[])localObject, 4, paramIntent, paramIntent.length);
+    paramPacket.putSendData((byte[])localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcuh
  * JD-Core Version:    0.7.0.1
  */

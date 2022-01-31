@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import ajsv;
+import alki;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import axsi;
+import aznu;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 class BaseActivity2$2
@@ -14,27 +14,27 @@ class BaseActivity2$2
   public void run()
   {
     int i = 0;
-    boolean bool = SettingCloneUtil.readValue(this.this$0, null, this.this$0.getString(2131695284), "qqsetting_screenshot_key", false);
-    if ((bool) && (BaseActivity2.a() == null))
+    boolean bool = SettingCloneUtil.readValue(this.this$0, null, this.this$0.getString(2131695442), "qqsetting_screenshot_key", false);
+    if ((bool) && (BaseActivity2.access$300() == null))
     {
-      localajsv = new ajsv(null);
+      localalki = new alki(null);
       localSensorManager = (SensorManager)this.this$0.getSystemService("sensor");
       localSensor = localSensorManager.getDefaultSensor(1);
-      if (axsi.a().a()) {
+      if (aznu.a().a()) {
         i = 2;
       }
-      localSensorManager.registerListener(localajsv, localSensor, i);
-      BaseActivity2.a(localajsv);
+      localSensorManager.registerListener(localalki, localSensor, i);
+      BaseActivity2.access$302(localalki);
     }
-    while ((bool) || (BaseActivity2.a() == null))
+    while ((bool) || (BaseActivity2.access$300() == null))
     {
-      ajsv localajsv;
+      alki localalki;
       SensorManager localSensorManager;
       Sensor localSensor;
       return;
     }
-    ((SensorManager)this.this$0.getSystemService("sensor")).unregisterListener(BaseActivity2.a());
-    BaseActivity2.a(null);
+    ((SensorManager)this.this$0.getSystemService("sensor")).unregisterListener(BaseActivity2.access$300());
+    BaseActivity2.access$302(null);
   }
 }
 

@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-public class azzw
-  implements DialogInterface.OnClickListener
+public abstract interface azzw
 {
-  public azzw(ReciteRecordLayout paramReciteRecordLayout) {}
+  public abstract int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract String a(azzc paramazzc, String paramString);
+  
+  public abstract void a(int paramInt, String paramString, Paint paramPaint);
+  
+  public abstract boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azzw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import android.os.MessageQueue.IdleHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aezo
-  implements MessageQueue.IdleHandler
+  implements DialogInterface.OnClickListener
 {
-  aezo(aezl paramaezl) {}
+  aezo(aezm paramaezm) {}
   
-  public boolean queueIdle()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezo
  * JD-Core Version:    0.7.0.1
  */

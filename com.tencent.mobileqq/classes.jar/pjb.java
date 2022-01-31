@@ -1,80 +1,21 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class pjb
-  implements ViewBase.OnClickListener
+class pjb
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  pjb(pja parampja, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public pjb(ArticleInfo paramArticleInfo, Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData))) {}
-    try
-    {
-      Object localObject = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData);
-      QLog.d("OnSuperTopicClickListener", 2, new Object[] { "mArticleInfo.proteusItemsData = ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData });
-      Iterator localIterator = ((JSONObject)localObject).keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if ("id_super_topic".equals(str))
-        {
-          localObject = ((JSONObject)localObject).getJSONObject(str).getString("super_topic_jump_url");
-          QLog.d("OnSuperTopicClickListener", 2, new Object[] { "jumpToSuperTopic, jumpUrl = ", localObject });
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            onh.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, null);
-          }
-        }
-      }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("OnSuperTopicClickListener", 2, "jumpToSuperTopic", localJSONException);
-    }
-  }
-  
-  public static void a(ArticleInfo paramArticleInfo, Context paramContext)
-  {
-    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a;
-    if (paramArticleInfo != null)
-    {
-      paramArticleInfo = paramArticleInfo.d;
-      onh.c(paramContext, paramArticleInfo);
-      QLog.i("OnSuperTopicClickListener", 2, "jumpToWendaRefer jumpUrl +" + paramArticleInfo);
-    }
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if ((onh.l(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (onh.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
-    {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
-      nol.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      return;
-    }
-    a();
-    nol.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    ors.a(pja.a(this.jdField_a_of_type_Pja), this.jdField_a_of_type_JavaLangString);
+    pja.a(1, ors.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pjb
  * JD-Core Version:    0.7.0.1
  */

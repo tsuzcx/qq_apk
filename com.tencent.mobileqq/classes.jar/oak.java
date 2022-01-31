@@ -1,21 +1,29 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity.1;
+
 public class oak
+  implements DialogInterface.OnCancelListener
 {
-  public static boolean a(int paramInt)
+  public oak(ReadInJoyUploadAvatarActivity.1 param1) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (!oln.a()) {
-      return false;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    paramDialogInterface = this.a.this$0.getIntent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("retCode", 1);
+    localBundle.putString("msg", alpo.a(2131713470));
+    paramDialogInterface.putExtra("Bundle", localBundle);
+    this.a.this$0.setResult(-1, paramDialogInterface);
+    this.a.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oak
  * JD-Core Version:    0.7.0.1
  */

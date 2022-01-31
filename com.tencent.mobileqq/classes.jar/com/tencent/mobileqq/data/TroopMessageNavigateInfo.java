@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import auko;
+import awbv;
 
 public class TroopMessageNavigateInfo
-  extends auko
+  extends awbv
 {
   public static int STATUS_ADD = 1;
   public static int STATUS_DELETE = 3;
@@ -72,7 +72,7 @@ public class TroopMessageNavigateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopMessageNavigateInfo
  * JD-Core Version:    0.7.0.1
  */

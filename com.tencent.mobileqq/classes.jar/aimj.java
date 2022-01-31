@@ -1,12 +1,38 @@
-import com.tencent.mobileqq.data.PhoneContact;
+import NS_MOBILE_OPERATION.PicInfo;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import java.util.HashMap;
 
-public abstract interface aimj
+public class aimj
+  extends PhotoCommonBaseData
 {
-  public abstract void a(PhoneContact paramPhoneContact, boolean paramBoolean);
+  public int a = (int)bavd.a();
+  public long a;
+  public HashMap<String, PicInfo> a;
+  public boolean a;
+  private boolean b;
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+    if (paramBoolean)
+    {
+      this.needMediaInfo = true;
+      bhmu.a();
+    }
+  }
+  
+  public boolean a()
+  {
+    if (Build.VERSION.SDK_INT < 17) {
+      return false;
+    }
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aimj
  * JD-Core Version:    0.7.0.1
  */

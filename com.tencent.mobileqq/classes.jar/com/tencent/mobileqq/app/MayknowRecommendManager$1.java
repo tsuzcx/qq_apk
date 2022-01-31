@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import akaa;
+import alro;
 
 public class MayknowRecommendManager$1
   implements Runnable
 {
-  public MayknowRecommendManager$1(akaa paramakaa) {}
+  public MayknowRecommendManager$1(alro paramalro) {}
   
   public void run()
   {
-    akaa.a(this.this$0);
+    alro.a(this.this$0);
   }
 }
 

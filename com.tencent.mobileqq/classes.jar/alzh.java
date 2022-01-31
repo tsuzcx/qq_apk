@@ -1,79 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class alzh
-  implements View.OnTouchListener
+class alzh
+  extends amky
 {
-  public alzh(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  alzh(alzf paramalzf, String paramString1, long paramLong, String paramString2)
   {
-    boolean bool = true;
-    if (!this.a.jdField_c_of_type_Boolean) {
-      bool = false;
+    super(paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopHandler", 2, "onLocationFinish, time=" + (l - this.jdField_a_of_type_Long) + "ms");
     }
-    do
-    {
-      return bool;
-      if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress)) {}
-      switch (paramMotionEvent.getAction())
-      {
-      case 2: 
-      default: 
-        return false;
-      case 0: 
-        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.a.d.setVisibility(4);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
-        this.a.e.setVisibility(4);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
-        if (this.a.jdField_b_of_type_Int == 1) {}
-        for (int i = 0;; i = 1)
-        {
-          axqy.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
-          return true;
-        }
-      }
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
-    return true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+    if (paramInt != 0) {
+      QLog.i("TroopHandler", 1, "getDetailOnlineMemberList, startLocation, errorCode=" + paramInt);
     }
-    if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d();
-      DynamicAvatarRecordActivity.a(this.a);
-      return true;
-    }
-    DynamicAvatarRecordActivity.b(this.a);
-    return true;
+    alzf.a(this.jdField_a_of_type_Alzf, this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzh
  * JD-Core Version:    0.7.0.1
  */

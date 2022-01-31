@@ -1,28 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public final class ajxh
-  implements Parcelable.Creator<FriendListHandler.QQHeadDetails>
+public class ajxh
+  extends akee
 {
-  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
-  {
-    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
-    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
-    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
-    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
-    return localQQHeadDetails;
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public ImageView b;
+  public TextView b;
   
-  public FriendListHandler.QQHeadDetails[] a(int paramInt)
-  {
-    return new FriendListHandler.QQHeadDetails[paramInt];
-  }
+  public ajxh(ajxc paramajxc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.OldBigDataChannelManager.1.1;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
 
-public class atbw
-  extends AccountObserver
+public final class atbw
+  implements Parcelable.Creator<WatchTogetherSession>
 {
-  atbw(atbv paramatbv) {}
-  
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public WatchTogetherSession a(Parcel paramParcel)
   {
-    ThreadManager.getFileThreadHandler().post(new OldBigDataChannelManager.1.1(this));
+    return new WatchTogetherSession(paramParcel);
+  }
+  
+  public WatchTogetherSession[] a(int paramInt)
+  {
+    return new WatchTogetherSession[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbw
  * JD-Core Version:    0.7.0.1
  */

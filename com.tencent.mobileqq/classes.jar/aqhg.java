@@ -1,40 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
-import com.tencent.widget.Switch;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
 public class aqhg
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aqhg(AppletsSettingFragment paramAppletsSettingFragment) {}
+  public aqhg(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (paramInt == 1)
-    {
-      paramDialogInterface = this.a;
-      if (!AppletsSettingFragment.a(this.a))
-      {
-        AppletsSettingFragment.a(paramDialogInterface, bool);
-        AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
-        this.a.a.cancel();
-      }
-    }
-    while (paramInt != 0) {
-      for (;;)
-      {
-        return;
-        bool = false;
-      }
-    }
-    AppletsSettingFragment.a(this.a).setChecked(AppletsSettingFragment.a(this.a));
-    this.a.a.cancel();
+    this.a.setResult(0, new Intent());
+    this.a.finish();
+    this.a.overridePendingTransition(2130771977, 2130771978);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhg
  * JD-Core Version:    0.7.0.1
  */

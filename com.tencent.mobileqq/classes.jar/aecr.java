@@ -1,26 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-class aecr
-  implements View.OnClickListener
+public class aecr
+  extends allb
 {
-  aecr(aecq paramaecq, AppGuideTipsConfig paramAppGuideTipsConfig) {}
+  public aecr(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(View paramView)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    paramView = new Intent(this.jdField_a_of_type_Aecq.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.tipsUrl);
-    this.jdField_a_of_type_Aecq.a.startActivity(paramView);
-    axqy.b(null, "dc00898", "", "", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
+    }
+    if (paramObject == null) {}
+    Card localCard;
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
+      localCard = (Card)paramObject;
+    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
+    TroopRequestActivity.a(this.a, (Card)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,28 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.av.widget.stageview.StageEffectView.5.1;
+import com.tencent.av.widget.stageview.StageMemberView;
+
 public class mye
+  implements Animation.AnimationListener
 {
-  public String a;
-  public String b;
-  public String c;
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.post(new StageEffectView.5.1(this));
+  }
   
-  public mye(myb parammyb) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mye
  * JD-Core Version:    0.7.0.1
  */

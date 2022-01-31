@@ -1,68 +1,27 @@
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.data.Emoticon;
 
 public class aczq
-  extends AsyncTask<Long, Void, Void>
+  implements View.OnClickListener
 {
-  private Object jdField_a_of_type_JavaLangObject;
+  public aczq(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public aczq(VipPngPlayAnimationDrawable paramVipPngPlayAnimationDrawable, Object paramObject)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  protected Void a(Long... paramVarArgs)
-  {
-    try
+    H5MagicPlayerActivity.a(this.a);
+    if ((this.a.d.equals(this.a.c)) && (this.a.a != null))
     {
-      long l1 = paramVarArgs[0].longValue();
-      long l2 = paramVarArgs[1].longValue();
-      long l3 = paramVarArgs[2].longValue();
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a((int)l3, this.jdField_a_of_type_JavaLangObject, (int)l2);
-      if ((paramVarArgs != null) && (!isCancelled()))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_AndroidGraphicsBitmap = paramVarArgs;
-        l2 = SystemClock.uptimeMillis();
-        if (l2 < l1)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable, l1 - l2);
-          return null;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable);
-        return null;
-      }
+      azmj.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
+      return;
     }
-    catch (OutOfMemoryError paramVarArgs)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("VipPngPlayAnimationDrawable", 4, "", paramVarArgs);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_Boolean = true;
-      return null;
-    }
-    catch (Throwable paramVarArgs)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("VipPngPlayAnimationDrawable", 4, "", paramVarArgs);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_Boolean = true;
-    }
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.jdField_a_of_type_Aczq = null;
+    azmj.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczq
  * JD-Core Version:    0.7.0.1
  */

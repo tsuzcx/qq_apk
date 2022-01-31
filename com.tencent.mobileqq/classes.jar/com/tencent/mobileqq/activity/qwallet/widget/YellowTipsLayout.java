@@ -53,7 +53,7 @@ public class YellowTipsLayout
     //   13: new 51	java/lang/StringBuilder
     //   16: dup
     //   17: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   20: getstatic 57	ahjc:c	Ljava/lang/String;
+    //   20: getstatic 57	ajal:c	Ljava/lang/String;
     //   23: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: aload_1
     //   27: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -199,12 +199,12 @@ public class YellowTipsLayout
   
   private void init(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560279, this, true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560387, this, true);
     paramContext.setClickable(true);
     paramContext.setOnClickListener(this);
-    this.mWariningView = ((ImageView)findViewById(2131367765));
-    this.mText = ((TextView)findViewById(2131367764));
-    this.mArrowView = ((ImageView)findViewById(2131367762));
+    this.mWariningView = ((ImageView)findViewById(2131367899));
+    this.mText = ((TextView)findViewById(2131367898));
+    this.mArrowView = ((ImageView)findViewById(2131367896));
   }
   
   public void onClick(View paramView)
@@ -324,7 +324,7 @@ public class YellowTipsLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.YellowTipsLayout
  * JD-Core Version:    0.7.0.1
  */

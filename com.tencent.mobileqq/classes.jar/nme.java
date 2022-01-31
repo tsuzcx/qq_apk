@@ -1,38 +1,71 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-final class nme
-  implements BusinessObserver
+class nme
+  implements INetInfoHandler
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  nmb a;
+  
+  public nme(nmb paramnmb1, nmb paramnmb2)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, "nativeEngineAdReport success!" + localWebSsoResponseBody.data.get());
-        }
-      }
-      return;
+    this.a = paramnmb2;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onNetMobile2None()
+  {
+    nmb.c("onNetMobile2None");
+    if (this.a != null) {
+      nmb.b(this.a);
     }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    nmb.c("onNetMobile2Wifi");
+    if (this.a != null) {
+      nmb.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    nmb.c("onNetNone2Mobile");
+    if (this.a != null) {
+      nmb.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    nmb.c("onNetNone2Wifi");
+    if (this.a != null) {
+      nmb.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    nmb.c("onNetWifi2Mobile");
+    if (this.a != null) {
+      nmb.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    nmb.c("onNetWifi2None");
+    if (this.a != null) {
+      nmb.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nme
  * JD-Core Version:    0.7.0.1
  */

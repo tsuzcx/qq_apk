@@ -1,36 +1,44 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import android.view.View;
 
 class aeog
-  extends ajsy
+  implements bhqd
 {
-  aeog(aeoc paramaeoc) {}
+  aeog(aenv paramaenv, String paramString) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean)
+    aenv.a(this.jdField_a_of_type_Aenv).dismiss();
+    switch (paramInt)
     {
-      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
-        aeoc.a(this.a);
-      }
-      do
+    }
+    do
+    {
+      return;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        do
-        {
-          return;
-        } while (paramBoolean1.booleanValue());
-        paramString1 = BaseActivity.sTopActivity;
-      } while (paramString1 == null);
-      bbdj.a(paramString1, 230, paramString1.getString(2131689957), null, null, paramString1.getString(2131719551), new aeoh(this, paramString1), null).show();
+        aenv.a(this.jdField_a_of_type_Aenv, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      if (aenv.a(this.jdField_a_of_type_Aenv))
+      {
+        aenv.b(this.jdField_a_of_type_Aenv);
+        return;
+      }
+      aenv.c(this.jdField_a_of_type_Aenv);
+      return;
+    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    if (aenv.a(this.jdField_a_of_type_Aenv))
+    {
+      aenv.b(this.jdField_a_of_type_Aenv);
       return;
     }
-    bcql.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
+    aenv.c(this.jdField_a_of_type_Aenv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeog
  * JD-Core Version:    0.7.0.1
  */

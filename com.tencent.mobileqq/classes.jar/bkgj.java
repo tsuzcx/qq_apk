@@ -1,187 +1,57 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-public class bkgj
-  extends bkfz
+public final class bkgj
+  implements Cloneable
 {
-  public final List<bkgl> a;
-  public boolean b;
-  public int c;
-  public int d;
-  public String f;
-  public String g;
+  public volatile int a;
+  public long a;
+  public bkgi a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c = "";
+  public String d = "";
   
-  public bkgj(@NonNull String paramString)
+  public bkgj()
   {
-    super(paramString);
-    this.jdField_c_of_type_Int = 100;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public int a(int paramInt)
+  public bkgj a()
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return ((bkgl)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    if ((!bbkk.a(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        bkgl localbkgl = (bkgl)localIterator.next();
-        if (paramString.equals(localbkgl.jdField_a_of_type_JavaLangString)) {
-          return localbkgl.jdField_a_of_type_Int;
-        }
-      }
+      bkgj localbkgj = (bkgj)super.clone();
+      return localbkgj;
     }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return "NormalFacePackage";
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return ((bkgl)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
-    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
     return null;
   }
   
-  public String a(String paramString)
+  public boolean a()
   {
-    if ((!bbkk.a(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        bkgl localbkgl = (bkgl)localIterator.next();
-        if (paramString.equals(localbkgl.jdField_a_of_type_JavaLangString)) {
-          return localbkgl.b;
-        }
-      }
-    }
-    return null;
+    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 3) || ((this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004)));
   }
   
-  public List<bkgl> a()
+  public boolean b()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(this.g)) {}
-    Object localObject;
-    do
-    {
-      return null;
-      localObject = new File(this.g);
-    } while (!((File)localObject).exists());
-    int j;
-    File localFile1;
-    if (((File)localObject).isDirectory())
-    {
-      File[] arrayOfFile = ((File)localObject).listFiles(new bkgk(this));
-      if (arrayOfFile != null)
-      {
-        int k = arrayOfFile.length;
-        j = 0;
-        if (j < k)
-        {
-          localFile1 = arrayOfFile[j];
-          if (this.jdField_a_of_type_JavaUtilList.size() < 100) {
-            break label104;
-          }
-        }
-      }
-    }
-    return localArrayList;
-    label104:
-    String str = localFile1.getName();
-    int i;
-    if (str.endsWith(".apng")) {
-      i = 1;
-    }
-    for (;;)
-    {
-      label123:
-      File localFile2;
-      if (i == 1)
-      {
-        localObject = localFile1.getAbsolutePath();
-        localObject = ((String)localObject).substring(0, ((String)localObject).length() - 5) + ".bpng";
-        localFile2 = new File((String)localObject);
-        if ((!localFile2.isFile()) || (!localFile2.exists())) {}
-      }
-      for (localObject = localFile2.toURI().toString();; localObject = null)
-      {
-        localArrayList.add(new bkgl(str, localFile1.toURI().toString(), i, (String)localObject));
-        j += 1;
-        break;
-        if (!str.endsWith(".gif")) {
-          break label293;
-        }
-        i = 2;
-        break label123;
-        if (QLog.isColorLevel()) {
-          QLog.d("FacePackage", 2, "dynamicStatic thumbFile not exist " + (String)localObject);
-        }
-      }
-      label293:
-      i = 0;
-    }
+    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
   }
   
-  public void a(List<bkgl> paramList)
+  public boolean c()
   {
-    if (paramList == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    return (this.jdField_a_of_type_Int == 1) && (this.jdField_b_of_type_Int != 1810003) && (this.jdField_b_of_type_Int != 1810004);
   }
   
-  public int b()
+  public boolean d()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public String b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return ((bkgl)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_JavaLangString;
-    }
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("NormalFacePackage{");
-    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append("logoUrl='").append(this.jdField_c_of_type_JavaLangString).append('\'');
-    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
-    localStringBuffer.append(", zipDownloadUrl='").append(this.f).append('\'');
-    localStringBuffer.append(", facePkgPath='").append(this.g).append('\'');
-    localStringBuffer.append(", isDownloading=").append(this.b);
-    localStringBuffer.append(", maxProgress=").append(this.jdField_c_of_type_Int);
-    localStringBuffer.append(", currentProgress=").append(this.d);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    return (this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkgj
  * JD-Core Version:    0.7.0.1
  */

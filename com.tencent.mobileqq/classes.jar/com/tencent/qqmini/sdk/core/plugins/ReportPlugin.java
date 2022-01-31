@@ -2,18 +2,18 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import behq;
-import bekr;
-import belj;
-import bepk;
-import betc;
-import beyx;
-import beyy;
-import beyz;
-import bezi;
-import bezl;
+import bgho;
+import bgkd;
+import bgkz;
+import bgpn;
+import bgxs;
+import bgxt;
+import bgxu;
+import bgyd;
+import bgyg;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -55,14 +55,14 @@ public class ReportPlugin
           paramJSONArray = new Bundle();
           paramJSONArray.putString("log_key", paramString);
           paramJSONArray.putStringArray("data", new String[] { localStringBuilder.toString() });
-          betc.d("ReportPlugin", "doReportBy898 key:  " + paramString + "  data: " + localStringBuilder.toString());
-          bepk.a().a("cmd_dc_report_log_key_data", paramJSONArray, null);
+          QMLog.e("ReportPlugin", "doReportBy898 key:  " + paramString + "  data: " + localStringBuilder.toString());
+          bgpn.a().a("cmd_dc_report_log_key_data", paramJSONArray, null);
           return;
         }
       }
       catch (Exception paramString)
       {
-        betc.d("ReportPlugin", "doReportBy898 failed, ", paramString);
+        QMLog.e("ReportPlugin", "doReportBy898 failed, ", paramString);
         return;
       }
       i += 1;
@@ -81,7 +81,7 @@ public class ReportPlugin
     return "0";
   }
   
-  public void apiReport(bekr parambekr)
+  public void apiReport(bgkd parambgkd)
   {
     String str2 = "";
     String str4 = "";
@@ -102,39 +102,39 @@ public class ReportPlugin
           str3 = localMiniAppInfo.baseLibInfo.baseLibVersion;
         }
       }
-      beyz.a(str1, parambekr.b, str2, str3);
+      bgxu.a(str1, parambgkd.b, str2, str3);
       return;
     }
     catch (Exception localException)
     {
-      betc.d("ReportPlugin", parambekr.a + " error.", localException);
+      QMLog.e("ReportPlugin", parambgkd.a + " error.", localException);
     }
   }
   
-  public void reportDC(bekr parambekr)
+  public void reportDC(bgkd parambgkd)
   {
     try
     {
-      Object localObject = new JSONObject(parambekr.b);
-      parambekr = ((JSONObject)localObject).getString("table");
+      Object localObject = new JSONObject(parambgkd.b);
+      parambgkd = ((JSONObject)localObject).getString("table");
       localObject = ((JSONObject)localObject).getJSONArray("reportArray");
-      if ((!TextUtils.isEmpty(parambekr)) && (((JSONArray)localObject).length() > 0)) {
-        doReportBy898(parambekr, (JSONArray)localObject);
+      if ((!TextUtils.isEmpty(parambgkd)) && (((JSONArray)localObject).length() > 0)) {
+        doReportBy898(parambgkd, (JSONArray)localObject);
       }
       return;
     }
-    catch (Exception parambekr)
+    catch (Exception parambgkd)
     {
-      betc.d("ReportPlugin", " handleReportDC error.", parambekr);
+      QMLog.e("ReportPlugin", " handleReportDC error.", parambgkd);
     }
   }
   
-  public void reportDataToDC(bekr parambekr)
+  public void reportDataToDC(bgkd parambgkd)
   {
     String str;
     try
     {
-      Object localObject2 = new JSONObject(parambekr.b);
+      Object localObject2 = new JSONObject(parambgkd.b);
       str = ((JSONObject)localObject2).optString("tableName");
       Object localObject1 = ((JSONObject)localObject2).optJSONObject("args");
       if (localObject1 != null)
@@ -147,25 +147,25 @@ public class ReportPlugin
           localObject2 = ((JSONObject)localObject1).optString("actiontype");
           str = ((JSONObject)localObject1).optString("sub_actiontype");
           localObject1 = ((JSONObject)localObject1).optString("reserves_action");
-          bezl.a(this.mMiniAppInfo, "1", null, (String)localObject2, str, (String)localObject1, "");
+          bgyg.a(this.mMiniAppInfo, "1", null, (String)localObject2, str, (String)localObject1, "");
           return;
         }
         if (!"dc04682".equals(str)) {
           return;
         }
-        beyy.a(this.mMiniAppInfo, (JSONObject)localObject1);
+        bgxt.a(this.mMiniAppInfo, (JSONObject)localObject1);
         return;
       }
     }
     catch (Exception localException)
     {
-      betc.d("ReportPlugin", "ReportPlugin handleNativeRequest exception, [eventName=" + parambekr.a + "][jsonParams=" + parambekr.b + "]");
+      QMLog.e("ReportPlugin", "ReportPlugin handleNativeRequest exception, [eventName=" + parambgkd.a + "][jsonParams=" + parambgkd.b + "]");
       return;
     }
-    betc.d("ReportPlugin", "ReportPlugin report to table[" + str + "] fail, no args, [eventName=" + parambekr.a + "][jsonParams=" + parambekr.b + "]");
+    QMLog.e("ReportPlugin", "ReportPlugin report to table[" + str + "] fail, no args, [eventName=" + parambgkd.a + "][jsonParams=" + parambgkd.b + "]");
   }
   
-  public void reportKeyValue(bekr parambekr)
+  public void reportKeyValue(bgkd parambgkd)
   {
     int i = 0;
     for (;;)
@@ -173,7 +173,7 @@ public class ReportPlugin
       long l;
       try
       {
-        JSONArray localJSONArray = new JSONObject(parambekr.b).getJSONArray("dataArray");
+        JSONArray localJSONArray = new JSONObject(parambgkd.b).getJSONArray("dataArray");
         if (i < localJSONArray.length())
         {
           Object localObject = localJSONArray.getJSONObject(i);
@@ -186,8 +186,8 @@ public class ReportPlugin
               j = Integer.parseInt(localObject[7]);
               if (j > 0)
               {
-                betc.d("ReportPlugin", parambekr.a + " REPORT_EVENT_Display: " + j);
-                bezi.a(this.mMiniAppInfo, 638, null, null, null, 0, "0", j, null);
+                QMLog.e("ReportPlugin", parambgkd.a + " REPORT_EVENT_Display: " + j);
+                bgyd.a(this.mMiniAppInfo, 638, null, null, null, 0, "0", j, null);
               }
             }
           }
@@ -201,9 +201,9 @@ public class ReportPlugin
               l = Long.parseLong(localObject[4]) - l;
               if (l > 0L)
               {
-                betc.d("ReportPlugin", parambekr.a + " REPORT_EVENT_Speed: " + l);
+                QMLog.e("ReportPlugin", parambgkd.a + " REPORT_EVENT_Speed: " + l);
                 if (9 == j) {
-                  bezi.a(this.mMiniAppInfo, 636, null, null, null, 0, "0", l, null);
+                  bgyd.a(this.mMiniAppInfo, 636, null, null, null, 0, "0", l, null);
                 }
               }
             }
@@ -212,42 +212,42 @@ public class ReportPlugin
       }
       catch (Exception localException)
       {
-        betc.d("ReportPlugin", parambekr.a + " error.", localException);
+        QMLog.e("ReportPlugin", parambgkd.a + " error.", localException);
       }
       return;
-      bezi.a(this.mMiniAppInfo, 637, null, null, null, 0, "0", l, null);
+      bgyd.a(this.mMiniAppInfo, 637, null, null, null, 0, "0", l, null);
       i += 1;
     }
   }
   
-  public String reportRealtimeAction(bekr parambekr)
+  public String reportRealtimeAction(bgkd parambgkd)
   {
     if (this.mIsMiniGame) {}
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambekr.b);
+      JSONObject localJSONObject1 = new JSONObject(parambgkd.b);
       MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
       JSONObject localJSONObject2 = new JSONObject(localJSONObject1.optString("actionData", ""));
       if (localJSONObject2 != null)
       {
         Object localObject = localJSONObject2.optString("eventID", "");
-        if (belj.a((String)localObject))
+        if (bgkz.a((String)localObject))
         {
           localObject = new JSONObject((String)localObject);
           if ((localObject != null) && (((JSONObject)localObject).has("finishShow")))
           {
-            bezl.a(localMiniAppInfo, getAppType(localMiniAppInfo), null, "page_view", "finishShow", "", "");
+            bgyg.a(localMiniAppInfo, getAppType(localMiniAppInfo), null, "page_view", "finishShow", "", "");
             if (((JSONObject)localObject).length() == 1)
             {
-              parambekr.a();
+              parambgkd.a();
               return "";
             }
           }
         }
         else if (((String)localObject).equals("finishShow"))
         {
-          bezl.a(localMiniAppInfo, getAppType(localMiniAppInfo), null, "page_view", "finishShow", "", "");
-          parambekr.a();
+          bgyg.a(localMiniAppInfo, getAppType(localMiniAppInfo), null, "page_view", "finishShow", "", "");
+          parambgkd.a();
           return "";
         }
         localJSONObject2.put("version", this.mMiniAppContext.a());
@@ -255,15 +255,15 @@ public class ReportPlugin
       }
       if (localMiniAppInfo != null)
       {
-        beyx.a(localMiniAppInfo.appId, localJSONObject1.toString());
-        parambekr.a();
+        bgxs.a(localMiniAppInfo.appId, localJSONObject1.toString());
+        parambgkd.a();
       }
     }
-    catch (Throwable parambekr)
+    catch (Throwable parambgkd)
     {
       for (;;)
       {
-        betc.d("ReportPlugin", "", parambekr);
+        QMLog.e("ReportPlugin", "", parambgkd);
       }
     }
     return "";
@@ -271,7 +271,7 @@ public class ReportPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.ReportPlugin
  * JD-Core Version:    0.7.0.1
  */

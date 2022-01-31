@@ -4,16 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnTouchListener;
 import android.widget.ListAdapter;
-import atxo;
-import atxp;
-import bfos;
-import bfpv;
+import avos;
+import avot;
+import bhpo;
+import bhqr;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
 
 public class AsyncListView
   extends FPSXListView
 {
-  final atxo a = new atxo(this);
+  final avos a = new avos(this);
   
   public AsyncListView(Context paramContext)
   {
@@ -42,24 +42,24 @@ public class AsyncListView
     this.a.b();
   }
   
-  public void setItemManager(atxp paramatxp)
+  public void setItemManager(avot paramavot)
   {
-    this.a.a(paramatxp);
+    this.a.a(paramavot);
   }
   
-  public void setOnItemSelectedListener(bfpv parambfpv)
+  public void setOnItemSelectedListener(bhqr parambhqr)
   {
-    this.a.a(parambfpv);
+    this.a.a(parambhqr);
     if (!this.a.a()) {
-      super.setOnItemSelectedListener(parambfpv);
+      super.setOnItemSelectedListener(parambhqr);
     }
   }
   
-  public void setOnScrollListener(bfos parambfos)
+  public void setOnScrollListener(bhpo parambhpo)
   {
-    this.a.a(parambfos);
+    this.a.a(parambhpo);
     if (!this.a.a()) {
-      super.setOnScrollListener(parambfos);
+      super.setOnScrollListener(parambhpo);
     }
   }
   
@@ -73,7 +73,7 @@ public class AsyncListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.AsyncListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import ajya;
+import alpo;
 import android.os.Handler;
 import android.os.Looper;
-import bcql;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
@@ -53,7 +53,7 @@ public class JsErrorGuard
     if ((this.mLoadingDialog != null) && (this.mLoadingDialog.isShowing())) {
       this.mLoadingDialog.dismiss();
     }
-    bcql.a(this.mAppBrandRuntime.activity, ajya.a(2131705898), 0).a();
+    QQToast.a(this.mAppBrandRuntime.activity, alpo.a(2131706270), 0).a();
   }
   
   private void onX5Succeed()
@@ -65,11 +65,11 @@ public class JsErrorGuard
       }
       if (this.mRestartDialog == null)
       {
-        this.mRestartDialog = new JsErrorGuard.PermissionDialog(this.mAppBrandRuntime.activity, 2131755791);
-        this.mRestartDialog.setTitle(ajya.a(2131705896));
-        this.mRestartDialog.setMessage(ajya.a(2131705894));
-        this.mRestartDialog.setNegativeButton(ajya.a(2131705892), new JsErrorGuard.7(this));
-        this.mRestartDialog.setPositiveButton(ajya.a(2131705895), new JsErrorGuard.8(this));
+        this.mRestartDialog = new JsErrorGuard.PermissionDialog(this.mAppBrandRuntime.activity, 2131755801);
+        this.mRestartDialog.setTitle(alpo.a(2131706268));
+        this.mRestartDialog.setMessage(alpo.a(2131706266));
+        this.mRestartDialog.setNegativeButton(alpo.a(2131706264), new JsErrorGuard.7(this));
+        this.mRestartDialog.setPositiveButton(alpo.a(2131706267), new JsErrorGuard.8(this));
         this.mRestartDialog.setCanceledOnTouchOutside(false);
       }
       if (!this.mRestartDialog.isShowing()) {
@@ -98,7 +98,7 @@ public class JsErrorGuard
       if (this.mLoadingDialog == null) {
         this.mLoadingDialog = new JsErrorGuard.LoadingDialog(this.mAppBrandRuntime.activity);
       }
-      this.mLoadingDialog.setTitle(ajya.a(2131705897));
+      this.mLoadingDialog.setTitle(alpo.a(2131706269));
     } while (this.mLoadingDialog.isShowing());
     this.mLoadingDialog.show();
   }
@@ -164,7 +164,7 @@ public class JsErrorGuard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.JsErrorGuard
  * JD-Core Version:    0.7.0.1
  */

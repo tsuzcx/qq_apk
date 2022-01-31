@@ -1,16 +1,17 @@
-class alsd
-  implements alsj
+public class alsd
 {
-  alsd(alsb paramalsb) {}
-  
-  public void a(alsm paramalsm, boolean paramBoolean, byte[] paramArrayOfByte)
-  {
-    alsb.a(this.a, (also)paramalsm, paramBoolean, paramArrayOfByte);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alsd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,88 +1,60 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import java.io.File;
+import android.os.IInterface;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class amur
-  extends ampa<bjjh>
+public abstract interface amur
+  extends IInterface
 {
-  public int a()
-  {
-    return 309;
-  }
+  public abstract ARCommonConfigInfo a();
   
-  @NonNull
-  public bjjh a(int paramInt)
-  {
-    return new bjjh();
-  }
+  public abstract ArConfigInfo a();
   
-  @Nullable
-  public bjjh a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length == 0)) {
-      return null;
-    }
-    paramArrayOfamph = paramArrayOfamph[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onParsed, content:" + paramArrayOfamph);
-    }
-    return new bjje().a(paramArrayOfamph, DynamicTextConfigManager.a.getAbsolutePath(), "temp_dynamic_text_zip", new amus(this));
-  }
+  public abstract ArEffectConfig a();
   
-  public Class<bjjh> a()
-  {
-    return bjjh.class;
-  }
+  public abstract void a();
   
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onReqFailed");
-    }
-  }
+  public abstract void a(int paramInt);
   
-  public void a(bjjh parambjjh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onUpdate");
-    }
-  }
+  public abstract void a(amuu paramamuu);
   
-  public int b()
-  {
-    if (!DynamicTextConfigManager.b()) {
-      return 0;
-    }
-    return bbkb.a(BaseApplicationImpl.getContext());
-  }
+  public abstract void a(amva paramamva);
   
-  public int b(int paramInt)
-  {
-    if (!DynamicTextConfigManager.b())
-    {
-      QLog.i("QIMDynamicTextConfigProcessor", 1, "config file not exist");
-      ampl.a().a(309, 0);
-      return 0;
-    }
-    return super.b(paramInt);
-  }
+  public abstract void a(amvd paramamvd);
   
-  public boolean b()
-  {
-    return false;
-  }
+  public abstract void a(amvg paramamvg);
   
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract void a(ArConfigInfo paramArConfigInfo);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(amuu paramamuu);
+  
+  public abstract void b(amva paramamva);
+  
+  public abstract void b(amvd paramamvd);
+  
+  public abstract void b(amvg paramamvg);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract void d();
+  
+  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amur
  * JD-Core Version:    0.7.0.1
  */

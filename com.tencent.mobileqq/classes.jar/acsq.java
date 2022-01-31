@@ -1,21 +1,21 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
-class acsq
-  implements BusinessObserver
+public class acsq
+  implements DialogInterface.OnClickListener
 {
-  acsq(acsn paramacsn, acss paramacss) {}
+  public acsq(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 2003) && (this.jdField_a_of_type_Acss != null)) {
-      this.jdField_a_of_type_Acss.a(paramBoolean, paramBundle);
-    }
+    ForwardFriendListActivity.a(this.a).dismiss();
+    ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsq
  * JD-Core Version:    0.7.0.1
  */

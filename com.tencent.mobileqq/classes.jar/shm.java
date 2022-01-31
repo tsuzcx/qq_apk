@@ -1,19 +1,14 @@
-class shm
+public abstract interface shm
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  public abstract void a();
   
-  public shm(String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void b(float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shm
  * JD-Core Version:    0.7.0.1
  */

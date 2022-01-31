@@ -1,108 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.huiyin.HuiyinRedDotProto.RedDotGetRsp;
+import com.tencent.biz.huiyin.ILiveProto.iLiveResponse;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import mqq.observer.BusinessObserver;
 
-public class asyd
+class asyd
+  implements BusinessObserver
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public long d;
-  public String d;
-  public boolean d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
+  asyd(asxy paramasxy, asyg paramasyg) {}
   
-  public asyd()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_b_of_type_Int = 999;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-  }
-  
-  public float a()
-  {
-    if (c()) {}
-    while (a()) {
-      return 0.4F;
-    }
-    return 1.0F;
-  }
-  
-  public void a(asye paramasye)
-  {
-    this.jdField_a_of_type_Long = paramasye.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = paramasye.jdField_b_of_type_Long;
-    this.jdField_a_of_type_Float = paramasye.jdField_a_of_type_Float;
-    this.jdField_c_of_type_Long = paramasye.jdField_c_of_type_Long;
-    this.jdField_d_of_type_Long = paramasye.jdField_d_of_type_Long;
-    this.e = paramasye.e;
-    this.f = paramasye.f;
-    this.g = paramasye.g;
-    this.jdField_a_of_type_Boolean = paramasye.jdField_b_of_type_Boolean;
-    this.h = paramasye.h;
-    this.jdField_c_of_type_JavaLangString = paramasye.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramasye.jdField_b_of_type_JavaLangString;
-    this.jdField_d_of_type_JavaLangString = paramasye.jdField_c_of_type_JavaLangString;
-    this.jdField_d_of_type_Boolean = paramasye.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a()
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_Long == 12L) || (this.jdField_a_of_type_Long == 1L) || (this.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Long == 3L)) {
-      bool = false;
-    }
-    do
+    Object localObject;
+    if (paramBoolean)
     {
-      return bool;
-      if ((!asxm.c(this.jdField_a_of_type_Long)) && (this.jdField_a_of_type_Long != 7L)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkForDisplayInfo", 2, "isInTwinkling icon_status:" + this.f + " currentMillis:" + NetConnInfoCenter.getServerTimeMillis() + " icon_status_end_time:" + this.g);
-      }
-    } while ((this.f == 2L) && (NetConnInfoCenter.getServerTimeMillis() < this.g * 1000L));
-    while (!asxm.a(this.jdField_d_of_type_Long * 1000L)) {
-      return false;
+      localObject = paramBundle.getByteArray("data");
+      paramBundle = new ILiveProto.iLiveResponse();
     }
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Long == 5L) || (this.jdField_a_of_type_Long == 6L) || (this.jdField_a_of_type_Long == 8L) || (this.jdField_a_of_type_Long == 4L);
-  }
-  
-  public boolean c()
-  {
-    return this.f == 1L;
-  }
-  
-  public boolean d()
-  {
-    if ((this.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {}
-    while ((this.jdField_c_of_type_Int == 0) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
-      return false;
+    try
+    {
+      paramBundle.mergeFrom((byte[])localObject);
+      localObject = new HuiyinRedDotProto.RedDotGetRsp();
+      ((HuiyinRedDotProto.RedDotGetRsp)localObject).mergeFrom(paramBundle.ex.get().toByteArray());
+      this.jdField_a_of_type_Asxy.a = ((int)((HuiyinRedDotProto.RedDotGetRsp)localObject).totalNum.get());
+      this.jdField_a_of_type_Asyg.a(this.jdField_a_of_type_Asxy.a);
+      return;
     }
-    return true;
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asyd
  * JD-Core Version:    0.7.0.1
  */

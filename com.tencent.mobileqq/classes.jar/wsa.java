@@ -1,69 +1,116 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.AnimationDrawable;
-import android.support.v4.util.MQLruCache;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class wsa
+  extends xrg
 {
-  private static volatile wsa jdField_a_of_type_Wsa;
-  private MQLruCache<String, AnimationDrawable> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(10);
+  public static final String KEY = "PlaceholderSegment";
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private wph jdField_a_of_type_Wph;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  private Bitmap a(File paramFile)
+  public wsa(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    QLog.i("AnimationDrawableFactory", 2, "getBitMapFromFile fileName:" + paramFile.getName());
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFile.exists())
-    {
-      localObject1 = localObject2;
-      if (paramFile.isFile()) {
-        localObject1 = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
-      }
-    }
-    return localObject1;
+    super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public static wsa a()
+  public void Z_()
   {
-    if (jdField_a_of_type_Wsa == null) {}
-    try
-    {
-      if (jdField_a_of_type_Wsa == null) {
-        jdField_a_of_type_Wsa = new wsa();
-      }
-      return jdField_a_of_type_Wsa;
-    }
-    finally {}
+    aa_();
   }
   
-  public void a(String paramString)
+  public int a()
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) && (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString) != null)) {
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(paramString);
+    return 1;
+  }
+  
+  public View a(int paramInt, wph paramwph, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramwph.a(2131373762);
+    ImageView localImageView = (ImageView)paramwph.a(2131373763);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      paramViewGroup.setText(alpo.a(2131708571) + ugx.jdField_a_of_type_JavaLangString + "\n拍摄一段小视频，分享眼前的世界");
+      QQStoryContext.a();
+      if (!ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        break label104;
+      }
+      localImageView.setImageResource(this.jdField_b_of_type_Int);
+    }
+    for (;;)
+    {
+      return paramwph.a();
+      paramViewGroup.setText(this.jdField_a_of_type_JavaLangString);
+      break;
+      label104:
+      localImageView.setImageResource(this.jdField_a_of_type_Int);
     }
   }
   
-  public void a(String paramString, int paramInt, wsc paramwsc, boolean paramBoolean)
+  public String a()
   {
-    QLog.i("AnimationDrawableFactory", 2, "createFromDirectory dirPath=" + paramString + " allDuration=" + paramInt + " useCache=" + paramBoolean);
-    if (TextUtils.isEmpty(paramString))
+    return "PlaceholderSegment";
+  }
+  
+  public wph a(int paramInt, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Wph = new wph(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561421, paramViewGroup, false));
+    return this.jdField_a_of_type_Wph;
+  }
+  
+  protected void aa_()
+  {
+    xrg localxrg = a().a(this.jdField_b_of_type_JavaLangString);
+    if ((localxrg == null) || (localxrg.a() == 0))
     {
-      QLog.e("AnimationDrawableFactory", 2, "createFromDirectory error dirPath is invalid");
-      if (paramwsc != null) {
-        paramwsc.a();
-      }
+      e_(true);
+      return;
     }
-    ThreadManagerV2.executeOnSubThread(new AnimationDrawableFactory.1(this, paramBoolean, paramString, paramInt, paramwsc));
+    e_(false);
+  }
+  
+  protected void c()
+  {
+    aa_();
+  }
+  
+  public void e()
+  {
+    super.e();
+    if (this.jdField_a_of_type_Wph == null) {}
+    ImageView localImageView;
+    do
+    {
+      return;
+      localImageView = (ImageView)this.jdField_a_of_type_Wph.a(2131373763);
+    } while (localImageView == null);
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
+    {
+      localImageView.setImageResource(this.jdField_b_of_type_Int);
+      return;
+    }
+    localImageView.setImageResource(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsa
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,6 @@ import com.tencent.aekit.openrender.UniformParam.IntParam;
 import com.tencent.aekit.openrender.UniformParam.Mat4Param;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.filter.NormalVideoFilter;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.util.MatrixUtil;
 import com.tencent.ttpic.util.AlgoUtils;
@@ -94,7 +93,7 @@ public class DynamicMaskFilter
       float f1 = localPointF3.x - this.item.anchorPoint[0];
       float f2 = localPointF3.y - this.item.anchorPoint[1];
       float f3 = this.item.width;
-      setPositions(AlgoUtils.adjustPosition(AlgoUtils.calPositions(f1, this.item.height + f2, f1 + f3, f2, this.width, this.height), (float)this.triggerCtrlItem.getAudioScaleFactor()));
+      setPositions(AlgoUtils.adjustPosition(AlgoUtils.calPositions(f1, this.item.height + f2, f1 + f3, f2, this.width, this.height), this.audioScaleFactor));
       addParam(new UniformParam.Float2fParam("texAnchor", localPointF3.x - this.canvasCenter.x, localPointF3.y - this.canvasCenter.y));
       localPointF3 = new PointF(((PointF)paramList.get(this.item.scalePivots[0])).x, ((PointF)paramList.get(this.item.scalePivots[0])).y);
       localPointF3.x = ((float)(localPointF3.x / this.mFaceDetScale));
@@ -105,15 +104,15 @@ public class DynamicMaskFilter
       d1 = Math.pow(localPointF3.x - paramList.x, 2.0D);
       d1 = Math.sqrt(Math.pow(localPointF3.y - paramList.y, 2.0D) + d1) / this.item.scaleFactor;
       if (this.item.maxScaledWidth == 0) {
-        break label682;
+        break label678;
       }
       d2 = this.item.maxScaledWidth / this.item.width;
       if (d1 <= d2) {
-        break label682;
+        break label678;
       }
       d1 = d2;
     }
-    label682:
+    label678:
     for (;;)
     {
       d2 = d1;
@@ -157,7 +156,7 @@ public class DynamicMaskFilter
       paramFloat = localPointF1.x - this.item.anchorPoint[0];
       float f1 = localPointF1.y - this.item.anchorPoint[1];
       float f2 = this.item.width;
-      setPositions(AlgoUtils.adjustPosition(AlgoUtils.calPositions(paramFloat, this.item.height + f1, paramFloat + f2, f1, this.width, this.height), (float)this.triggerCtrlItem.getAudioScaleFactor()));
+      setPositions(AlgoUtils.adjustPosition(AlgoUtils.calPositions(paramFloat, this.item.height + f1, paramFloat + f2, f1, this.width, this.height), this.audioScaleFactor));
       addParam(new UniformParam.Float2fParam("texAnchor", localPointF1.x - this.canvasCenter.x, localPointF1.y - this.canvasCenter.y));
       localPointF1 = new PointF(((PointF)paramList.get(this.item.scalePivots[0])).x, ((PointF)paramList.get(this.item.scalePivots[0])).y);
       localPointF1.x = ((float)(localPointF1.x / this.mFaceDetScale));
@@ -168,15 +167,15 @@ public class DynamicMaskFilter
       d1 = Math.pow(localPointF1.x - paramList.x, 2.0D);
       d1 = Math.sqrt(Math.pow(localPointF1.y - paramList.y, 2.0D) + d1) / this.item.scaleFactor;
       if (this.item.maxScaledWidth == 0) {
-        break label699;
+        break label695;
       }
       d2 = this.item.maxScaledWidth / this.item.width;
       if (d1 <= d2) {
-        break label699;
+        break label695;
       }
       d1 = d2;
     }
-    label699:
+    label695:
     for (;;)
     {
       d2 = d1;

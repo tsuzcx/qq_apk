@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public final class aapl
-  implements View.OnClickListener
+class aapl
+  extends AdHttp.Params
 {
-  public aapl(Toast paramToast) {}
+  public int a = -2147483648;
   
-  public void onClick(View paramView)
+  public boolean isSuccess()
   {
-    this.a.cancel();
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.WebViewTitleStyle;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class bcbv
-  implements Parcelable.Creator<WebViewTitleStyle>
+class bcbv
+  implements alzv
 {
-  public WebViewTitleStyle a(Parcel paramParcel)
-  {
-    return new WebViewTitleStyle(paramParcel);
-  }
+  bcbv(bcbt parambcbt, String paramString1, String paramString2, bcbw parambcbw) {}
   
-  public WebViewTitleStyle[] a(int paramInt)
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    return new WebViewTitleStyle[paramInt];
+    List localList = null;
+    if (paramTroopMemberInfo != null) {
+      localList = this.jdField_a_of_type_Bcbt.a(paramTroopMemberInfo.honorList);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
+    }
+    if (this.jdField_a_of_type_Bcbw != null) {
+      this.jdField_a_of_type_Bcbw.a(localList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcbv
  * JD-Core Version:    0.7.0.1
  */

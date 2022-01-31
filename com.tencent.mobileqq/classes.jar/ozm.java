@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
-class ozm
-  implements Comparator<AdvertisementInfo>
+public class ozm
+  implements oxc
 {
-  ozm(ozk paramozk) {}
+  public ozm(ReadInJoyDailyFragment paramReadInJoyDailyFragment, int paramInt) {}
   
-  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
+  public void a(oxe paramoxe)
   {
-    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
+    paramoxe.h(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ozm
  * JD-Core Version:    0.7.0.1
  */

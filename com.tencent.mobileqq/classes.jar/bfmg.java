@@ -1,56 +1,136 @@
-import com.tencent.mobileqq.shortvideo.resource.GestureResource;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.1;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.2;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.3;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.4;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.5;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.6;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.7;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.8;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bfmg
-  implements GestureResource
+  implements bfka
 {
-  public static String a;
-  public static boolean a;
-  public static String b = "200";
-  public static String c = "20";
+  public bfmg(ApkFileDownloadButton paramApkFileDownloadButton) {}
   
-  static
+  public void installSucceed(String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaLangString = "5";
+    bfhg.b("ApkFileDownloadButton_", "[installSucceed] packageName=" + paramString2 + ",mApkInfo=" + this.a.a);
+    if ((this.a.a != null) && (TextUtils.equals(paramString2, this.a.a.f))) {
+      ThreadManager.excute(new ApkFileDownloadButton.1.8(this, paramString2), 16, null, true);
+    }
   }
   
-  public String getGestureGapFrame()
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    return jdField_a_of_type_JavaLangString;
+    if (this.a.a(paramDownloadInfo, this.a.a))
+    {
+      bfhg.b("ApkFileDownloadButton_", "onDownloadCancel info.progress=" + paramDownloadInfo.f);
+      this.a.a.b = 1;
+      this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
+      if (this.a.a.jdField_a_of_type_Long == 0L) {
+        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
+      }
+      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.5(this));
+    }
   }
   
-  public String getGestureGapTime()
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    return b;
+    if (this.a.a(paramDownloadInfo, this.a.a))
+    {
+      bfhg.b("ApkFileDownloadButton_", "onDownloadError errorCode=" + paramInt1);
+      if ((paramInt1 == 6) && (ApkFileDownloadButton.a(this.a) > 0))
+      {
+        ApkFileDownloadButton.a(this.a, paramDownloadInfo);
+        ApkFileDownloadButton.a(this.a, ApkFileDownloadButton.a(this.a) - 1);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.a.b = 30;
+    ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.7(this));
   }
   
-  public boolean getGestureShouldUpload()
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    return jdField_a_of_type_Boolean;
+    if (this.a.a(paramDownloadInfo, this.a.a))
+    {
+      bfhg.b("ApkFileDownloadButton_", "onDownloadFinish info.progress=" + paramDownloadInfo.f);
+      this.a.a.b = 4;
+      this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
+      if (this.a.a.jdField_a_of_type_Long == 0L) {
+        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
+      }
+      ThreadManager.excute(new ApkFileDownloadButton.1.3(this), 16, null, true);
+      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.4(this));
+    }
   }
   
-  public String getGestureThreadColdTime()
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    return c;
+    if (this.a.a(paramDownloadInfo, this.a.a))
+    {
+      bfhg.b("ApkFileDownloadButton_", "onDownloadPause info.progress=" + paramDownloadInfo.f);
+      this.a.a.b = 3;
+      this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
+      if (this.a.a.jdField_a_of_type_Long == 0L) {
+        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
+      }
+      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.1(this));
+    }
   }
   
-  public String getModelPath()
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    return axgy.a();
+    if (paramList == null) {}
+    DownloadInfo localDownloadInfo;
+    do
+    {
+      return;
+      while (!paramList.hasNext()) {
+        paramList = paramList.iterator();
+      }
+      localDownloadInfo = (DownloadInfo)paramList.next();
+    } while (!this.a.a(localDownloadInfo, this.a.a));
+    ApkFileDownloadButton.a(this.a, 1);
+    bfhg.b("ApkFileDownloadButton_", "onDownloadUpdate info.progress=" + localDownloadInfo.f);
+    this.a.a.b = 2;
+    this.a.a.jdField_a_of_type_Int = localDownloadInfo.f;
+    if (this.a.a.jdField_a_of_type_Long == 0L) {
+      this.a.a.jdField_a_of_type_Long = localDownloadInfo.c;
+    }
+    ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.6(this));
   }
   
-  public String getSoPathDir()
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    return axgy.b();
+    if (this.a.a(paramDownloadInfo, this.a.a))
+    {
+      bfhg.b("ApkFileDownloadButton_", "onDownloadWait info.progress=" + paramDownloadInfo.f);
+      this.a.a.b = 20;
+      if (this.a.a.jdField_a_of_type_Long == 0L) {
+        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
+      }
+      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.2(this));
+    }
   }
   
-  public boolean isGestureEnable()
-  {
-    return axgr.a().d();
-  }
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfmg
  * JD-Core Version:    0.7.0.1
  */

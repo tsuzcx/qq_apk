@@ -1,178 +1,104 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import QQService.DeviceItemDes;
+import QQService.SvcDevLoginInfo;
+import android.os.Bundle;
+import android.os.Message;
 import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.Switch;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.Arrays;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class acbx
-  extends BaseAdapter
-  implements CompoundButton.OnCheckedChangeListener
+  extends alxu
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private baxy jdField_a_of_type_Baxy;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<Friends> jdField_a_of_type_JavaUtilList;
+  public acbx(AuthDevActivity paramAuthDevActivity) {}
   
-  public acbx(Context paramContext, baxy parambaxy, QQAppInterface paramQQAppInterface)
+  protected void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
-    this.jdField_a_of_type_Baxy = parambaxy;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(Friends paramFriends)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramFriends == null)) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramFriends);
-    notifyDataSetChanged();
-  }
-  
-  public void a(List<Friends> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      return false;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (((Friends)localIterator.next()).uin.equals(paramString)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return null;
-    }
-    return (Friends)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    paramInt = paramBundle.getInt("cmd", 1);
+    int i = paramBundle.getInt("opt", 2);
+    int j = paramBundle.getInt("ret", -1);
+    paramBundle = (String)paramBundle.get("wording");
+    FormSwitchItem localFormSwitchItem;
+    switch (paramInt)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561095, paramViewGroup, false);
-      paramViewGroup = new acbw();
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131376064));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376065));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131376066));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setTag(paramViewGroup);
-      paramView.setTag(paramViewGroup);
-    }
-    Object localObject;
-    for (;;)
-    {
-      localObject = (Friends)getItem(paramInt);
-      if (localObject != null) {
-        break;
-      }
-      return paramView;
-      paramViewGroup = (acbw)paramView.getTag();
-    }
-    paramViewGroup.jdField_a_of_type_JavaLangString = ((Friends)localObject).uin;
-    paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-    paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(((Friends)localObject).isShield());
-    paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = this;
-    Bitmap localBitmap = this.jdField_a_of_type_Baxy.a(1, ((Friends)localObject).uin, 0);
-    if (localBitmap == null)
-    {
-      if (!this.jdField_a_of_type_Baxy.a()) {
-        this.jdField_a_of_type_Baxy.a(((Friends)localObject).uin, 1, true);
-      }
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable((BitmapDrawable)bbef.a());
-    }
-    for (;;)
-    {
-      localObject = bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((Friends)localObject).uin, 0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      return paramView;
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
-    }
-  }
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      axqy.b((QQAppInterface)localObject, "CliOper", "", "", "0X8009DD1", "0X8009DD1", 0, i, "0", "0", "", "");
-      i = naj.a();
-      if (i != -1) {
-        break label150;
-      }
-      i = 2;
-    }
-    label150:
-    for (;;)
-    {
-      localObject = (acbw)paramCompoundButton.getTag();
-      if (i == 0)
+    default: 
+      return;
+    case 1: 
+      if (j == 0)
       {
-        bcql.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131696414, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
-        paramCompoundButton.setOnCheckedChangeListener(null);
-        if (!paramBoolean) {}
-        for (paramBoolean = true;; paramBoolean = false)
+        AuthDevActivity.a(this.a).setVisibility(0);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+        localFormSwitchItem = AuthDevActivity.a(this.a);
+        if (i == 1) {}
+        for (;;)
         {
-          paramCompoundButton.setChecked(paramBoolean);
-          paramCompoundButton.setOnCheckedChangeListener(((acbw)localObject).jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+          localFormSwitchItem.setChecked(bool1);
+          AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+          AuthDevActivity.b(this.a).setVisibility(0);
+          AuthDevActivity.b(this.a).setText(paramBundle);
           return;
-          i = 2;
-          break;
+          bool1 = false;
         }
       }
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(Long.valueOf(((acbw)localObject).jdField_a_of_type_JavaLangString).longValue(), paramBoolean);
+      AuthDevActivity.a(this.a).setVisibility(8);
+      AuthDevActivity.b(this.a).setVisibility(8);
       return;
+    }
+    if (j == 0)
+    {
+      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+      localFormSwitchItem = AuthDevActivity.a(this.a);
+      if (i == 1) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        localFormSwitchItem.setChecked(bool1);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+        AuthDevActivity.b(this.a).setText(paramBundle);
+        return;
+      }
+    }
+    AuthDevActivity.a(this.a).setVisibility(8);
+    AuthDevActivity.b(this.a).setVisibility(8);
+    QQToast.a(this.a, paramBundle, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
+  {
+    if ((paramBoolean) && (AuthDevActivity.b(this.a) != null) && (paramInt >= 0) && (paramInt < AuthDevActivity.b(this.a).size()))
+    {
+      Object localObject = (SvcDevLoginInfo)AuthDevActivity.b(this.a).get(paramInt);
+      if (Arrays.equals(((SvcDevLoginInfo)localObject).stDeviceItemDes.vecItemDes, paramArrayOfByte))
+      {
+        ((SvcDevLoginInfo)localObject).strDeviceName = paramString;
+        AuthDevActivity.a(this.a, AuthDevActivity.b(this.a));
+      }
+      localObject = this.a.app.getHandler(LoginInfoActivity.class);
+      if (localObject != null)
+      {
+        localObject = ((MqqHandler)localObject).obtainMessage(1);
+        Bundle localBundle = new Bundle();
+        localBundle.putString(AuthDevRenameActivity.f, paramString);
+        localBundle.putByteArray(AuthDevRenameActivity.h, paramArrayOfByte);
+        ((Message)localObject).setData(localBundle);
+        ((Message)localObject).sendToTarget();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbx
  * JD-Core Version:    0.7.0.1
  */

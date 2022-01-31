@@ -1,197 +1,155 @@
-import SharpSvrPack.MultiVideoMsg;
-import SharpSvrPack.SharpVideoMsg;
-import VideoSvrPack.VideoCallMsg;
-import com.qq.jce.wup.UniPacket;
-import java.util.ArrayList;
+import android.app.Application;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.reflect.Method;
 
-public abstract class bdry
-  implements bdsb
+class bdry
 {
-  private bdrz jdField_a_of_type_Bdrz;
-  private bdsd jdField_a_of_type_Bdsd;
-  
-  private void a(MultiVideoMsg paramMultiVideoMsg)
+  static void a(Exception paramException)
   {
-    UniPacket localUniPacket = new UniPacket();
-    localUniPacket.setServantName("MultiVideo");
-    localUniPacket.setFuncName("MultiVideos2cack");
-    localUniPacket.put("MultiVideoMsg", paramMultiVideoMsg);
-    j(localUniPacket.encode());
+    QLog.e("GLDrawable", 1, paramException, new Object[0]);
   }
   
-  private void a(SharpVideoMsg paramSharpVideoMsg)
+  static void a(String paramString)
   {
-    UniPacket localUniPacket = new UniPacket();
-    localUniPacket.setServantName("SharpSvr");
-    localUniPacket.setFuncName("s2cack");
-    localUniPacket.put("SharpVideoMsg", paramSharpVideoMsg);
-    h(localUniPacket.encode());
+    QLog.i("GLDrawable", 1, paramString);
   }
   
-  private boolean a(int paramInt)
+  static void a(String paramString, int paramInt)
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_Bdsd != null) {
-      bool = this.jdField_a_of_type_Bdsd.isSharpVideoMsgSupport(paramInt);
+    VasWebviewUtil.reportVasStatus("GLDrawable", "gl-" + paramString, "1", 0, 0, paramInt, 0, "", "");
+  }
+  
+  static void a(String paramString, Exception paramException)
+  {
+    QLog.e("GLDrawable", 1, paramString, paramException);
+  }
+  
+  static void a(String paramString1, String paramString2)
+  {
+    VasWebviewUtil.reportVasStatus("GLDrawable", "gl-" + paramString1, "2", 0, 0, 0, 0, paramString2, String.valueOf(System.currentTimeMillis()));
+  }
+  
+  static boolean a()
+  {
+    if (!aork.c().a()) {
+      return false;
     }
-    return bool;
-  }
-  
-  private boolean b(int paramInt)
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_Bdsd != null) {
-      bool = this.jdField_a_of_type_Bdsd.isMultiVideoMsgSupport(paramInt);
-    }
-    return bool;
-  }
-  
-  protected abstract long a();
-  
-  public void a()
-  {
-    b();
-  }
-  
-  public void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte)
-  {
-    long l = a();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Long.valueOf(paramLong1));
-    MultiVideoMsg localMultiVideoMsg = new MultiVideoMsg();
-    localMultiVideoMsg.ver = 0;
-    localMultiVideoMsg.type = 1;
-    localMultiVideoMsg.csCmd = ((short)(int)paramLong2);
-    localMultiVideoMsg.from_uin = l;
-    localMultiVideoMsg.to_uin = localArrayList;
-    localMultiVideoMsg.video_buff = paramArrayOfByte;
-    paramArrayOfByte = new UniPacket();
-    paramArrayOfByte.setServantName("MultiVideo");
-    paramArrayOfByte.setFuncName("MultiVideoMsg");
-    paramArrayOfByte.put("MultiVideoMsg", localMultiVideoMsg);
-    i(paramArrayOfByte.encode());
-  }
-  
-  public void a(bdrz parambdrz)
-  {
-    this.jdField_a_of_type_Bdrz = parambdrz;
-  }
-  
-  public void a(bdsd parambdsd)
-  {
-    this.jdField_a_of_type_Bdsd = parambdsd;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (this.jdField_a_of_type_Bdrz != null) {
-      this.jdField_a_of_type_Bdrz.a(paramString, paramInt);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    long l = a();
-    VideoCallMsg localVideoCallMsg = new VideoCallMsg();
-    localVideoCallMsg.ver = 1;
-    localVideoCallMsg.type = 1;
-    localVideoCallMsg.lUin = l;
-    localVideoCallMsg.uDateTime = ((int)(System.currentTimeMillis() / 1000L));
-    localVideoCallMsg.vMsg = paramArrayOfByte;
-    paramArrayOfByte = new UniPacket();
-    paramArrayOfByte.setServantName("VideoSvc");
-    paramArrayOfByte.setFuncName("SendVideoMsg");
-    paramArrayOfByte.put("VideoCallMsg", localVideoCallMsg);
-    g(paramArrayOfByte.encode());
-  }
-  
-  protected abstract void b();
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Bdrz != null)
+    try
     {
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      paramArrayOfByte = (SharpVideoMsg)localUniPacket.getByClass("SharpVideoMsg", new SharpVideoMsg());
-      if (a(paramArrayOfByte.type))
+      Application localApplication = bdrw.a();
+      if ((bdrv.a(localApplication)) && (new File(bdrw.a(localApplication), "gldrawable.dex").exists())) {
+        return true;
+      }
+      bdrv.a();
+      return false;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("GLDrawable", 1, "", localException);
+      a("download-error", localException.getMessage());
+    }
+    return false;
+  }
+  
+  static void b(String paramString1, String paramString2)
+  {
+    VasWebviewUtil.reportVasStatus("GLDrawable", "gl-" + paramString1, "1", 0, 0, 0, 0, paramString2, "");
+  }
+  
+  static boolean b()
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      return Process.is64Bit();
+    }
+    try
+    {
+      if (Build.VERSION.SDK_INT < 21) {
+        return false;
+      }
+      Object localObject1 = Class.forName("dalvik.system.VMRuntime");
+      if (localObject1 == null) {
+        return false;
+      }
+      Object localObject2 = ((Class)localObject1).getDeclaredMethod("getRuntime", new Class[0]);
+      if (localObject2 == null) {
+        return false;
+      }
+      localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
+      if (localObject2 == null) {
+        return false;
+      }
+      localObject1 = ((Class)localObject1).getDeclaredMethod("is64Bit", new Class[0]);
+      if (localObject1 == null) {
+        return false;
+      }
+      localObject1 = ((Method)localObject1).invoke(localObject2, new Object[0]);
+      if ((localObject1 instanceof Boolean))
       {
-        a(paramArrayOfByte);
-        this.jdField_a_of_type_Bdrz.b(paramArrayOfByte.video_buff);
+        boolean bool = ((Boolean)localObject1).booleanValue();
+        return bool;
       }
     }
-  }
-  
-  public void c(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Bdrz != null)
+    catch (Throwable localThrowable)
     {
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      paramArrayOfByte = (SharpVideoMsg)localUniPacket.getByClass("SharpVideoMsg", new SharpVideoMsg());
-      if (a(paramArrayOfByte.type)) {
-        this.jdField_a_of_type_Bdrz.c(paramArrayOfByte.video_buff);
-      }
+      QLog.e("GLDrawable", 1, localThrowable, new Object[0]);
     }
+    return false;
   }
   
-  public void d(byte[] paramArrayOfByte)
+  static boolean c()
   {
-    if (this.jdField_a_of_type_Bdrz != null)
+    boolean bool1 = VideoEnvironment.c();
+    Object localObject = Build.CPU_ABI;
+    if ((localObject != null) && (!"".equals(localObject)) && ("x86".equalsIgnoreCase((String)localObject))) {
+      return true;
+    }
+    boolean bool2 = bool1;
+    if (!bool1)
     {
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      paramArrayOfByte = (MultiVideoMsg)localUniPacket.getByClass("MultiVideoMsg", new MultiVideoMsg());
-      bdsj.c("VideoChannelBase", String.format("receiveMultiVideoMsg type=0x%X csCmd=0x%X", new Object[] { Byte.valueOf(paramArrayOfByte.type), Short.valueOf(paramArrayOfByte.csCmd) }));
-      if (b(paramArrayOfByte.type))
+      bool2 = bool1;
+      if (Build.VERSION.SDK_INT >= 21)
       {
-        a(paramArrayOfByte);
-        this.jdField_a_of_type_Bdrz.d(paramArrayOfByte.video_buff);
+        localObject = Build.SUPPORTED_ABIS;
+        int j = localObject.length;
+        int i = 0;
+        for (;;)
+        {
+          bool2 = bool1;
+          if (i >= j) {
+            break;
+          }
+          CharSequence localCharSequence = localObject[i];
+          bool2 = bool1;
+          if (!TextUtils.isEmpty(localCharSequence))
+          {
+            bool2 = bool1;
+            if (localCharSequence.toLowerCase().contains("x86")) {
+              bool2 = true;
+            }
+          }
+          i += 1;
+          bool1 = bool2;
+        }
       }
     }
+    return bool2;
   }
   
-  public void e(byte[] paramArrayOfByte)
+  static boolean d()
   {
-    if (this.jdField_a_of_type_Bdrz != null)
-    {
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      paramArrayOfByte = (MultiVideoMsg)localUniPacket.getByClass("MultiVideoMsg", new MultiVideoMsg());
-      bdsj.c("VideoChannelBase", String.format("receiveMultiVideoAck type=0x%X csCmd=0x%X", new Object[] { Byte.valueOf(paramArrayOfByte.type), Short.valueOf(paramArrayOfByte.csCmd) }));
-      if (b(paramArrayOfByte.type)) {
-        this.jdField_a_of_type_Bdrz.e(paramArrayOfByte.video_buff);
-      }
-    }
+    return false;
   }
-  
-  public void f(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Bdrz != null)
-    {
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      paramArrayOfByte = (VideoCallMsg)localUniPacket.getByClass("VideoCallMsg", new VideoCallMsg());
-      this.jdField_a_of_type_Bdrz.a(paramArrayOfByte.vMsg);
-    }
-  }
-  
-  protected abstract void g(byte[] paramArrayOfByte);
-  
-  protected abstract void h(byte[] paramArrayOfByte);
-  
-  protected abstract void i(byte[] paramArrayOfByte);
-  
-  protected abstract void j(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdry
  * JD-Core Version:    0.7.0.1
  */

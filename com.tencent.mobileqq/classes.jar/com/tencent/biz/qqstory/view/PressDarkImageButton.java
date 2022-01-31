@@ -14,7 +14,7 @@ import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageButton;
-import baxi;
+import bcwc;
 import com.tencent.common.app.BaseApplicationImpl;
 
 @TargetApi(14)
@@ -34,7 +34,7 @@ public class PressDarkImageButton
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 16843210, 16843211, 2131034363 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 16843210, 16843211, 2131034385 };
   }
   
   public PressDarkImageButton(Context paramContext)
@@ -90,7 +90,7 @@ public class PressDarkImageButton
         {
           localObject1 = paramContext;
           localObject2 = paramContext;
-          this.jdField_a_of_type_AndroidGraphicsBitmap = baxi.b(BaseApplicationImpl.getApplication().getResources(), 2130845587);
+          this.jdField_a_of_type_AndroidGraphicsBitmap = bcwc.b(BaseApplicationImpl.getApplication().getResources(), 2130845966);
           localObject1 = paramContext;
           localObject2 = paramContext;
           if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
@@ -235,7 +235,7 @@ public class PressDarkImageButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.PressDarkImageButton
  * JD-Core Version:    0.7.0.1
  */

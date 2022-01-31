@@ -24,21 +24,21 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import axlk;
+import azgq;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
-import xfm;
+import yuf;
 
 public class SquareRoundImageView
   extends ImageView
 {
-  private static int jdField_a_of_type_Int = axlk.a(2.0F);
+  private static int jdField_a_of_type_Int = azgq.a(2.0F);
   private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private PaintFlagsDrawFilter jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter;
   protected Path a;
-  private xfm jdField_a_of_type_Xfm;
+  private yuf jdField_a_of_type_Yuf;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = jdField_a_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -121,11 +121,11 @@ public class SquareRoundImageView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Xfm == null) {
+    if (this.jdField_a_of_type_Yuf == null) {
       try
       {
-        if (this.jdField_a_of_type_Xfm == null) {
-          this.jdField_a_of_type_Xfm = new xfm(Looper.getMainLooper(), this, null);
+        if (this.jdField_a_of_type_Yuf == null) {
+          this.jdField_a_of_type_Yuf = new yuf(Looper.getMainLooper(), this, null);
         }
         return;
       }
@@ -210,8 +210,8 @@ public class SquareRoundImageView
   public void a()
   {
     b();
-    if (!this.jdField_a_of_type_Xfm.hasMessages(1)) {
-      this.jdField_a_of_type_Xfm.sendEmptyMessage(1);
+    if (!this.jdField_a_of_type_Yuf.hasMessages(1)) {
+      this.jdField_a_of_type_Yuf.sendEmptyMessage(1);
     }
   }
   
@@ -299,8 +299,8 @@ public class SquareRoundImageView
     if (paramDrawable == null)
     {
       b();
-      if (this.jdField_a_of_type_Xfm.hasMessages(1)) {
-        this.jdField_a_of_type_Xfm.removeMessages(1);
+      if (this.jdField_a_of_type_Yuf.hasMessages(1)) {
+        this.jdField_a_of_type_Yuf.removeMessages(1);
       }
       this.jdField_a_of_type_AndroidGraphicsBitmapShader = null;
       this.d = 0;
@@ -334,7 +334,7 @@ public class SquareRoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.videostory.capture.widgets.SquareRoundImageView
  * JD-Core Version:    0.7.0.1
  */

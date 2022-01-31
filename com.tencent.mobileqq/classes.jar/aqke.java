@@ -1,29 +1,29 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader.RequestLoadedImgTask;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class aqke
-  implements URLDrawableHandler
+  implements Cloneable
 {
-  public aqke(NearbyImgLoader.RequestLoadedImgTask paramRequestLoadedImgTask) {}
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public int b;
+  public TextView b;
+  public int c;
+  public TextView c;
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
-  {
-    return false;
-  }
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
+  public aqke(aqkd paramaqkd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqke
  * JD-Core Version:    0.7.0.1
  */

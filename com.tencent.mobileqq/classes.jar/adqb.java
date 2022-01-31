@@ -1,20 +1,37 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class adqb
-  extends actn
+public class adqb
+  extends MqqHandler
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public adqb(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  adqb(adpz paramadpz) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      this.a.finish();
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqb
  * JD-Core Version:    0.7.0.1
  */

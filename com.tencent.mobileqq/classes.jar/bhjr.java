@@ -1,19 +1,12 @@
-import cooperation.qzone.plugin.PluginRecord;
-import java.io.File;
+import android.util.Pair;
 
-class bhjr
-  implements bhjv
+abstract interface bhjr
 {
-  bhjr(bhjq parambhjq) {}
-  
-  public boolean a(PluginRecord paramPluginRecord, File paramFile)
-  {
-    return bhjq.a(this.a, paramPluginRecord);
-  }
+  public abstract Pair<String, String> a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhjr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,35 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.LinearLayout.LayoutParams;
+import android.text.TextUtils;
+import android.view.View;
 
-public class axvw
-  extends Animation
+class axvw
+  implements bhqd
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  axvw(axvr paramaxvr, bhpy parambhpy) {}
   
-  public axvw(ViewGroup paramViewGroup)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
-    if (paramFloat == 1.0F)
+    if (paramView == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      paramTransformation.height = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
     }
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    paramView = this.jdField_a_of_type_Bhpy.a(paramInt);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+    }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+    }
+    this.jdField_a_of_type_Bhpy.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axvw
  * JD-Core Version:    0.7.0.1
  */

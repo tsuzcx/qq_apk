@@ -1,111 +1,42 @@
-import android.content.Context;
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
 public class auej
+  implements DialogInterface.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private final auek jdField_a_of_type_Auek;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean;
-  private float c;
-  private float d;
-  private float e;
+  public auej(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public auej(Context paramContext, auek paramauek)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Auek = paramauek;
-  }
-  
-  private float a(MotionEvent paramMotionEvent)
-  {
-    return (float)Math.toDegrees(Math.atan2(paramMotionEvent.getY(1) - paramMotionEvent.getY(0), paramMotionEvent.getX(1) - paramMotionEvent.getX(0)));
-  }
-  
-  private void a()
-  {
-    if ((this.jdField_a_of_type_Boolean) || (Math.abs(this.c - this.d) < 5.0F)) {
-      return;
+    paramInt = auey.a().a();
+    if (1 == paramInt)
+    {
+      this.a.l();
+      if (this.a.a) {
+        auff.a("0X800A253", 3);
+      }
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Auek.b(this);
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Auek.a(this));
-  }
-  
-  private void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
+    while (2 != paramInt)
     {
       return;
-      this.jdField_a_of_type_Boolean = false;
-    } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_Auek.a(this);
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    int i = 0;
-    switch (paramMotionEvent.getActionMasked())
-    {
+      auff.a("0X800A253", 1);
+      return;
     }
-    do
+    if (this.a.d) {
+      auff.a("0X800A244", 2);
+    }
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return true;
-            b();
-            return true;
-          } while (paramMotionEvent.getPointerCount() != 2);
-          float f = a(paramMotionEvent);
-          this.d = f;
-          this.e = f;
-          this.c = f;
-          return true;
-        } while ((paramMotionEvent.getPointerCount() < 2) || ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)));
-        this.d = a(paramMotionEvent);
-        this.jdField_a_of_type_Float = ((paramMotionEvent.getX(1) + paramMotionEvent.getX(0)) * 0.5F);
-        this.jdField_b_of_type_Float = ((paramMotionEvent.getY(1) + paramMotionEvent.getY(0)) * 0.5F);
-        boolean bool = this.jdField_a_of_type_Boolean;
-        a();
-        if ((!bool) || (a())) {
-          i = 1;
-        }
-      } while (i == 0);
-      this.e = this.d;
-      return true;
-    } while (paramMotionEvent.getPointerCount() != 2);
-    b();
-    return true;
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public float c()
-  {
-    return this.d - this.e;
+      this.a.l();
+      return;
+      auff.a("0X800A244", 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auej
  * JD-Core Version:    0.7.0.1
  */

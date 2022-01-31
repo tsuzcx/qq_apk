@@ -1,19 +1,13 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import SummaryCard.CondFitUser;
+import java.util.List;
 
-public class allp
-  extends alln
+public abstract interface allp
 {
-  public String a;
-  
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
-  {
-    this.a = paramBundle.getString("PromotionDescription", "");
-  }
+  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     allp
  * JD-Core Version:    0.7.0.1
  */

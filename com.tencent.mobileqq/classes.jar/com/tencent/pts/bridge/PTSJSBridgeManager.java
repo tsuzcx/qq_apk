@@ -8,7 +8,7 @@ public class PTSJSBridgeManager
 {
   private static PTSJSBridgeManager sInstance;
   public final String TAG = "PTSJSBridgeManager";
-  private HashMap<Activity, PTSJSBridge> mJSBridgeMap = new HashMap();
+  private HashMap<Activity, PTSJSBridge> mJsBridgeMap = new HashMap();
   
   public static PTSJSBridgeManager getInstance()
   {
@@ -25,30 +25,30 @@ public class PTSJSBridgeManager
   
   public void destroyJSBridge(Activity paramActivity)
   {
-    PTSJSBridge localPTSJSBridge = (PTSJSBridge)this.mJSBridgeMap.get(paramActivity);
+    PTSJSBridge localPTSJSBridge = (PTSJSBridge)this.mJsBridgeMap.get(paramActivity);
     if (localPTSJSBridge != null)
     {
       PTSLog.i("PTSJSBridgeManager", "[destroyJSBridge], destroyJSEnvironment.");
-      localPTSJSBridge.destroyJSEnvironment();
-      this.mJSBridgeMap.remove(paramActivity);
+      localPTSJSBridge.destroyJsEnvironment();
+      this.mJsBridgeMap.remove(paramActivity);
     }
   }
   
-  public PTSJSBridge getJSBridge(Activity paramActivity)
+  public PTSJSBridge getJSBridge(Activity paramActivity, String paramString1, String paramString2)
   {
-    PTSJSBridge localPTSJSBridge2 = (PTSJSBridge)this.mJSBridgeMap.get(paramActivity);
+    PTSJSBridge localPTSJSBridge2 = (PTSJSBridge)this.mJsBridgeMap.get(paramActivity);
     PTSJSBridge localPTSJSBridge1 = localPTSJSBridge2;
     if (localPTSJSBridge2 == null)
     {
-      localPTSJSBridge1 = new PTSJSBridge(paramActivity);
-      this.mJSBridgeMap.put(paramActivity, localPTSJSBridge1);
+      localPTSJSBridge1 = new PTSJSBridge(paramString1, paramString2);
+      this.mJsBridgeMap.put(paramActivity, localPTSJSBridge1);
     }
     return localPTSJSBridge1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.bridge.PTSJSBridgeManager
  * JD-Core Version:    0.7.0.1
  */

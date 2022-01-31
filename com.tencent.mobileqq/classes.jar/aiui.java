@@ -1,10 +1,26 @@
-public abstract interface aiui
+import android.text.Editable;
+import android.util.SparseArray;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.IdiomHbBundleInfo;
+import java.util.List;
+
+public class aiui
+  implements aiuk
 {
-  public abstract void a(boolean paramBoolean, aiuh paramaiuh);
+  public aiui(WordChainHbFragment paramWordChainHbFragment) {}
+  
+  public void a(boolean paramBoolean, List<String> paramList)
+  {
+    paramList = WordChainHbFragment.a(this.a, true);
+    this.a.c.setText(paramList);
+    WordChainHbFragment.a(this.a).put(WordChainHbFragment.a(this.a).currSelectedSubChannel, paramList);
+    this.a.c.setSelection(this.a.c.getText().length());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiui
  * JD-Core Version:    0.7.0.1
  */

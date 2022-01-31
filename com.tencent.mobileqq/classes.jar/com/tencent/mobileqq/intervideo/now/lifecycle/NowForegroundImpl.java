@@ -5,18 +5,24 @@ import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqinterface.IForeground;
+import java.lang.ref.WeakReference;
 import mqq.app.AppRuntime;
 import mqq.app.Foreground;
 
 public class NowForegroundImpl
   implements IForeground
 {
-  Activity a;
+  WeakReference<Activity> a;
   protected AppRuntime a;
   
   public NowForegroundImpl()
   {
-    updateRuntime();
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_MqqAppAppRuntime = BaseApplicationImpl.getApplication().waitAppRuntime(null);
   }
   
   public void onCreate(Context paramContext)
@@ -24,14 +30,17 @@ public class NowForegroundImpl
     QLog.d("NowForegroundImpl", 2, "onCreate context = " + paramContext);
     Foreground.updateRuntimeState(this.jdField_a_of_type_MqqAppAppRuntime);
     if ((paramContext instanceof Activity)) {
-      this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)paramContext);
     }
   }
   
   public void onDestroy()
   {
     QLog.d("NowForegroundImpl", 2, "onDestroy mRuntime = " + this.jdField_a_of_type_MqqAppAppRuntime);
-    Foreground.onDestroy(this.jdField_a_of_type_AndroidAppActivity);
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity != null) {
+      Foreground.onDestroy(localActivity);
+    }
   }
   
   public void onPause()
@@ -46,19 +55,17 @@ public class NowForegroundImpl
   
   public void onStart()
   {
-    QLog.d("NowForegroundImpl", 2, "onStart mActivity = " + this.jdField_a_of_type_AndroidAppActivity);
-    Foreground.onStart(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidAppActivity);
+    QLog.d("NowForegroundImpl", 2, "onStart mActivity = " + this.jdField_a_of_type_JavaLangRefWeakReference);
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity != null) {
+      Foreground.onStart(this.jdField_a_of_type_MqqAppAppRuntime, localActivity);
+    }
   }
   
   public void onStop()
   {
     QLog.d("NowForegroundImpl", 2, "onStop mRuntime = " + this.jdField_a_of_type_MqqAppAppRuntime);
     Foreground.onStop(this.jdField_a_of_type_MqqAppAppRuntime);
-  }
-  
-  public void updateRuntime()
-  {
-    this.jdField_a_of_type_MqqAppAppRuntime = BaseApplicationImpl.getApplication().waitAppRuntime(null);
   }
 }
 

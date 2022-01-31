@@ -1,29 +1,16 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
 class aero
-  implements xdi
+  implements baae
 {
-  aero(aerj paramaerj) {}
+  aero(aern paramaern) {}
   
-  public void a()
+  public void a(baaj parambaaj)
   {
-    ateo localateo = this.a.jdField_a_of_type_Ateo;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
-    for (int i = 8;; i = 6)
-    {
-      localateo.a(false, true, i);
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    this.a.jdField_a_of_type_Ateo.a();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aero
  * JD-Core Version:    0.7.0.1
  */

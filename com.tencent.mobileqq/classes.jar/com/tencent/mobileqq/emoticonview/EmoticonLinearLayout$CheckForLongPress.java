@@ -2,8 +2,8 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.view.View;
 import android.view.ViewParent;
-import anyg;
-import anyh;
+import appt;
+import appw;
 
 class EmoticonLinearLayout$CheckForLongPress
   implements Runnable
@@ -19,29 +19,29 @@ class EmoticonLinearLayout$CheckForLongPress
   
   public void run()
   {
-    anyh localanyh;
+    appw localappw;
     if ((this.this$0.getParent() != null) && (this.a == EmoticonLinearLayout.a(this.this$0)) && (this.this$0.jdField_a_of_type_AndroidViewView != null))
     {
-      localanyh = (anyh)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
-      if (localanyh != null)
+      localappw = (appw)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
+      if (localappw != null)
       {
-        if ((this.this$0.jdField_a_of_type_Anyg != null) && (this.this$0.jdField_a_of_type_Anyg.a(localanyh))) {
+        if ((this.this$0.jdField_a_of_type_Appt != null) && (this.this$0.jdField_a_of_type_Appt.a(localappw))) {
           break label172;
         }
         this.this$0.jdField_a_of_type_Boolean = true;
         this.this$0.getParent().requestDisallowInterceptTouchEvent(true);
         this.this$0.sendAccessibilityEvent(2);
-        if (!"delete".equals(localanyh.h)) {
+        if (!"delete".equals(localappw.i)) {
           break label132;
         }
         this.this$0.jdField_a_of_type_JavaLangRunnable.run();
       }
     }
     label132:
-    while (("setting".equals(localanyh.h)) || ("add".equals(localanyh.h))) {
+    while (("setting".equals(localappw.i)) || ("add".equals(localappw.i))) {
       return;
     }
-    this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localanyh);
+    this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localappw);
     return;
     label172:
     this.this$0.jdField_a_of_type_AndroidViewView = null;
@@ -49,7 +49,7 @@ class EmoticonLinearLayout$CheckForLongPress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonLinearLayout.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

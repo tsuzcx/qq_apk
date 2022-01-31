@@ -1,42 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-public class ahaf
-  implements agwn
+class ahaf
+  implements View.OnClickListener
 {
-  public ahaf(ThemeHbFragment paramThemeHbFragment) {}
+  ahaf(ahad paramahad) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (ThemeHbFragment.a(this.a) == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back drawable = " + paramObject);
-      }
-    } while (!(paramObject instanceof Drawable));
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
-    }
-    ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
+    paramView = (RecommendTroopItem)paramView.getTag(-1);
+    bclo.a(ahad.a(this.a), paramView, this.a.b(), this.a.c());
+    this.a.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahaf
  * JD-Core Version:    0.7.0.1
  */

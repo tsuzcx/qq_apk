@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.report;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import java.io.Serializable;
 
 public class MiniAppReportEntity
-  extends auko
+  extends awbv
   implements Serializable
 {
   public String appId;
   public String appType;
-  @aumc
+  @awdj
   public String launchId;
   public String subActionType;
   public String verType;
@@ -35,7 +35,7 @@ public class MiniAppReportEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-class adoo
-  extends actn
+public class adoo
+  extends alls
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
-  TextView e;
+  public adoo(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  adoo(adol paramadol) {}
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  {
+    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
+    QQSettingSettingActivity.c(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adoo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
 package cooperation.qzone.util;
 
+import android.content.Context;
 import android.text.TextUtils;
-import axqn;
-import bhou;
+import azly;
+import bjqf;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import java.util.Properties;
 
 public class PanoramaUtil$1
   implements Runnable
 {
-  public PanoramaUtil$1(bhou parambhou, String paramString1, String paramString2, int paramInt) {}
+  public PanoramaUtil$1(bjqf parambjqf, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -17,13 +18,16 @@ public class PanoramaUtil$1
     {
       Properties localProperties = new Properties();
       localProperties.put(this.b, this.jdField_a_of_type_JavaLangString);
-      axqn.a(BaseApplication.getContext()).reportTimeKVEvent("qzone_panorama", localProperties, this.jdField_a_of_type_Int);
+      Context localContext = BaseApplication.getContext();
+      if (localContext != null) {
+        azly.a(localContext).reportTimeKVEvent("qzone_panorama", localProperties, this.jdField_a_of_type_Int);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.util.PanoramaUtil.1
  * JD-Core Version:    0.7.0.1
  */

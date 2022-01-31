@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
-class ahom
-  extends bbdt
+public class ahom
+  extends almg
 {
-  ahom(ahoi paramahoi) {}
+  public ahom(DeviceFragment paramDeviceFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b()
   {
-    paramDialogInterface.dismiss();
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.d();
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahom
  * JD-Core Version:    0.7.0.1
  */

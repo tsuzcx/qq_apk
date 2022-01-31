@@ -1,23 +1,21 @@
-public class aksd
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import org.json.JSONObject;
+
+class aksd
+  implements MediaPlayer.OnCompletionListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public long c;
+  aksd(akry paramakry, aksy paramaksy, JSONObject paramJSONObject) {}
   
-  public aksd(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
+    this.jdField_a_of_type_Aksy.a(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Akry.a(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksd
  * JD-Core Version:    0.7.0.1
  */

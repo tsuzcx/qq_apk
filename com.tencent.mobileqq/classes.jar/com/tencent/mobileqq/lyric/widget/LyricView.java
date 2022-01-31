@@ -5,13 +5,13 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import asbu;
+import atsu;
 import com.tencent.mobileqq.R.styleable;
 
 public class LyricView
   extends FrameLayout
 {
-  protected asbu a;
+  protected atsu a;
   protected LyricViewInternal a;
   protected LyricViewScroll a;
   protected boolean a;
@@ -21,8 +21,8 @@ public class LyricView
   {
     super(paramContext, paramAttributeSet);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ModuleLyricView, 0, 0);
-    this.jdField_a_of_type_Asbu = new asbu();
-    this.jdField_a_of_type_Asbu.a(paramContext);
+    this.jdField_a_of_type_Atsu = new atsu();
+    this.jdField_a_of_type_Atsu.a(paramContext);
     this.jdField_a_of_type_Boolean = paramContext.getBoolean(16, false);
     paramContext.recycle();
   }
@@ -65,7 +65,7 @@ public class LyricView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricView
  * JD-Core Version:    0.7.0.1
  */

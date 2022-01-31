@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastAudio;
+import com.tencent.qqmini.sdk.runtime.widget.camera.MiniAppCamera;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bhfz
-  implements Parcelable.Creator<BroadcastAudio>
+public class bhfz
+  implements bhgd
 {
-  public BroadcastAudio a(Parcel paramParcel)
-  {
-    return new BroadcastAudio(paramParcel);
-  }
+  public bhfz(MiniAppCamera paramMiniAppCamera, bgkd parambgkd) {}
   
-  public BroadcastAudio[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new BroadcastAudio[paramInt];
+    if (bglo.a(paramString))
+    {
+      this.jdField_a_of_type_Bgkd.b();
+      return;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("tempImagePath", bgjm.a().e(paramString));
+      this.jdField_a_of_type_Bgkd.a.a(this.jdField_a_of_type_Bgkd.b, localJSONObject.toString());
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhfz
  * JD-Core Version:    0.7.0.1
  */

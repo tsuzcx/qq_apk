@@ -1,21 +1,10 @@
-class bgpl
-  implements axof
+public abstract interface bgpl
 {
-  bgpl(bgpj parambgpj) {}
-  
-  public void a()
-  {
-    bgpj.b(this.a);
-  }
-  
-  public void b()
-  {
-    bgpj.a(this.a, 1);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgpl
  * JD-Core Version:    0.7.0.1
  */

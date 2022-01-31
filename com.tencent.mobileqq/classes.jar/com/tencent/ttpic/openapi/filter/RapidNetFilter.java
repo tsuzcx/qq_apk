@@ -3,14 +3,13 @@ package com.tencent.ttpic.openapi.filter;
 import android.graphics.PointF;
 import android.opengl.GLES20;
 import com.tencent.aekit.openrender.internal.AEChainI;
+import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.model.SizeI;
-import com.tencent.ttpic.model.TriggerCtrlItem;
-import com.tencent.ttpic.openapi.PTDetectInfo;
-import com.tencent.ttpic.openapi.initializer.RapidNetSDKInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetGenderSwitchInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
@@ -22,6 +21,7 @@ import java.util.List;
 
 public class RapidNetFilter
   extends AEChainI
+  implements AEFilterI
 {
   private static final boolean DEBUG = false;
   private static final String TAG = "RapidNetFilter";
@@ -37,14 +37,12 @@ public class RapidNetFilter
   private float[] position = new float[8];
   private int[] tex = new int[2];
   private float[] texCoords = new float[8];
-  protected TriggerCtrlItem triggerCtrlItem;
   
   public RapidNetFilter(FaceStyleItem paramFaceStyleItem)
   {
     setImageNetSize(paramFaceStyleItem.imageSize[0], paramFaceStyleItem.imageSize[1]);
     this.dataPath = paramFaceStyleItem.dataPath;
     this.modelName = paramFaceStyleItem.modelName;
-    this.triggerCtrlItem = new TriggerCtrlItem(paramFaceStyleItem);
     init();
   }
   
@@ -79,6 +77,11 @@ public class RapidNetFilter
         localPointF.y = ((float)(localPointF.y * paramDouble));
       }
     }
+  }
+  
+  public Frame RenderProcess(Frame paramFrame)
+  {
+    return render(paramFrame);
   }
   
   public void calCropCoordsV2(List<PointF> paramList, int paramInt1, int paramInt2)
@@ -170,10 +173,7 @@ public class RapidNetFilter
   
   public Frame render(Frame paramFrame)
   {
-    if (this.triggerCtrlItem.isTriggered()) {
-      paramFrame = this.fillFrame;
-    }
-    return paramFrame;
+    return this.fillFrame;
   }
   
   public void setImageNetSize(int paramInt1, int paramInt2)
@@ -182,41 +182,34 @@ public class RapidNetFilter
     this.NET_SIZE.height = paramInt2;
   }
   
-  public void updateActionTriggered(Object paramObject)
-  {
-    paramObject = (PTDetectInfo)paramObject;
-    this.triggerCtrlItem.getTriggeredStatus(paramObject);
-  }
-  
   public void updateAndRender(Frame paramFrame, List<PointF> paramList, double paramDouble)
   {
     int i = paramFrame.getTextureId();
     int j = paramFrame.width;
     int k = paramFrame.height;
-    if (this.triggerCtrlItem.isTriggered())
-    {
-      paramFrame = VideoMaterialUtil.copyList(paramList);
-      scale(paramFrame, 1.0D / paramDouble);
-      FaceOffUtil.getFullCoords(paramFrame, 2.5F);
-      calCropCoordsV2(paramFrame, j, k);
-      this.cropFilter.setTexCords(this.texCoords);
-      this.cropFilter.RenderProcess(i, this.NET_SIZE.width, this.NET_SIZE.height, -1, 0.0D, this.cropFrame);
-      BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] saveTexture");
-      paramFrame = GlUtil.saveTexture(this.cropFrame);
-      BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] saveTexture");
-      BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] forward");
-      paramFrame = FeatureManager.Features.RAPID_NET.forward(paramFrame, 0, 0);
-      BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] forward");
-      BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] loadTexture");
-      GlUtil.loadTexture(this.tex[0], paramFrame);
-      BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] loadTexture");
-      this.copyFilter.RenderProcess(i, j, k, -1, 0.0D, this.fillFrame);
-      this.fillFilter.setPositions(this.position);
-      GlUtil.setBlendMode(true);
-      this.fillFilter.RenderProcess(this.tex[0], j, k, -1, 0.0D, this.fillFrame);
-      GlUtil.setBlendMode(false);
-    }
+    paramFrame = VideoMaterialUtil.copyList(paramList);
+    scale(paramFrame, 1.0D / paramDouble);
+    FaceOffUtil.getFullCoords(paramFrame, 2.5F);
+    calCropCoordsV2(paramFrame, j, k);
+    this.cropFilter.setTexCords(this.texCoords);
+    this.cropFilter.RenderProcess(i, this.NET_SIZE.width, this.NET_SIZE.height, -1, 0.0D, this.cropFrame);
+    BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] saveTexture");
+    paramFrame = GlUtil.saveTexture(this.cropFrame);
+    BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] saveTexture");
+    BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] forward");
+    paramFrame = FeatureManager.Features.RAPID_NET_GENDER_SWITCH.forward(paramFrame, 0, 0);
+    BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] forward");
+    BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] loadTexture");
+    GlUtil.loadTexture(this.tex[0], paramFrame);
+    BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "[updateAndRender] loadTexture");
+    this.copyFilter.RenderProcess(i, j, k, -1, 0.0D, this.fillFrame);
+    this.fillFilter.setPositions(this.position);
+    GlUtil.setBlendMode(true);
+    this.fillFilter.RenderProcess(this.tex[0], j, k, -1, 0.0D, this.fillFrame);
+    GlUtil.setBlendMode(false);
   }
+  
+  public void updatePreview(Object paramObject) {}
 }
 
 

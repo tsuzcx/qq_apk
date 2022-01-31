@@ -1,39 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-class bbfo
-  implements View.OnClickListener
+public final class bbfo
+  implements QQPermissionCallback
 {
-  bbfo(bbfk parambbfk) {}
+  public bbfo(BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (bbfk.a(this.a))
-    {
-    default: 
-      return;
-    case 1: 
-      bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
-      bbfk.a(this.a);
-      return;
-    case 4: 
-      bbfk.b(this.a);
-      bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
-      return;
-    case 10: 
-      bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
-      return;
-    case 3: 
-      bbfk.c(this.a);
-      bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
-      return;
-    case 2: 
-      this.a.c();
-      bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
-      return;
+    if (!this.a.isFinishing()) {
+      bdcd.b(this.a);
     }
-    bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

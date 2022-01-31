@@ -1,31 +1,22 @@
 public class anot
 {
-  public int a;
-  public String a;
-  public boolean a;
-  
-  public anot(String paramString, int paramInt)
+  public static float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    this(paramString, paramInt, true);
-  }
-  
-  public anot(String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append(',').append(this.jdField_a_of_type_Int).append(',').append(this.jdField_a_of_type_Boolean);
-    return localStringBuffer.toString();
+    if ((paramArrayOfFloat1 != null) && (paramArrayOfFloat2 != null) && (paramArrayOfFloat1.length == paramArrayOfFloat2.length))
+    {
+      int i = 0;
+      while (i < paramArrayOfFloat1.length)
+      {
+        paramArrayOfFloat1[i] = (paramArrayOfFloat2[i] * 0.9F + paramArrayOfFloat1[i] * 0.1F);
+        i += 1;
+      }
+    }
+    return paramArrayOfFloat1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anot
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxListActivity.6.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.ark.ArkEnvironmentManager.IDataReport;
+import com.tencent.ark.open.ArkAppReport;
 
-public class anmt
-  implements atii
+final class anmt
+  implements ArkEnvironmentManager.IDataReport
 {
-  public anmt(MsgBoxListActivity paramMsgBoxListActivity) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MsgBoxListActivity", 2, "follow onReceive errorCode = [" + paramInt + "]");
-    }
-    this.a.b.post(new MsgBoxListActivity.6.1(this, paramInt));
+    ArkAppReport.platformEventReport(paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmt
  * JD-Core Version:    0.7.0.1
  */

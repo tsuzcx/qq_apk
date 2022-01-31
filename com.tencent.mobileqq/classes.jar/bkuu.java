@@ -1,27 +1,32 @@
-public class bkuu
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.ttpic.openapi.model.WMEditItem;
+
+class bkuu
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public String f;
-  public String g;
+  bkuu(bkus parambkus, bkva parambkva, WMEditItem paramWMEditItem) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "danceScoreRate : " + this.jdField_a_of_type_JavaLangString + "\ndanceScore : " + this.jdField_a_of_type_Int + "\nptvCategory : " + this.jdField_b_of_type_JavaLangString + "\nptvId : " + this.jdField_c_of_type_JavaLangString + " \nactivityType : " + this.jdField_d_of_type_JavaLangString + "\nactivityId : " + this.e + "\noverPercent : " + this.f + "\nuseSpecialShare : " + this.jdField_a_of_type_Boolean + "\nshareWebUrl : " + this.g + "\nisShookHead : " + this.jdField_b_of_type_Boolean + "\nisRandomFortune : " + this.jdField_c_of_type_Boolean + "\nisFoolsDay : " + this.jdField_d_of_type_Boolean + "\nshookHeadCount : " + this.jdField_b_of_type_Int;
+    ((InputMethodManager)AEModule.getContext().getSystemService("input_method")).hideSoftInputFromWindow(bkus.a(this.jdField_a_of_type_Bkus).getWindowToken(), 0);
+    bkus.a(this.jdField_a_of_type_Bkus).setTextColor(-1);
+    bkus.a(this.jdField_a_of_type_Bkus, bkus.a(this.jdField_a_of_type_Bkus));
+    bkus.a(this.jdField_a_of_type_Bkus, this.jdField_a_of_type_Bkva.a);
+    bkus.a(this.jdField_a_of_type_Bkus).setTextColor(-12339461);
+    bkus.a(this.jdField_a_of_type_Bkus, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
+    if (bkus.a(this.jdField_a_of_type_Bkus) != null) {
+      bkus.a(this.jdField_a_of_type_Bkus).a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.itemType, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.value, this.jdField_a_of_type_Bkva.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkuu
  * JD-Core Version:    0.7.0.1
  */

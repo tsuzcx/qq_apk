@@ -1,60 +1,47 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public class bjcq
-  extends bjcj
 {
-  public bjcq(Object paramObject)
-  {
-    super(paramObject);
-  }
+  public final int a;
+  public final long a;
+  public final int b;
+  public final long b;
+  public final long c;
+  public final long d;
+  public final long e;
+  public final long f;
   
-  public int a(Activity paramActivity, int paramInt)
+  private bjcq(ByteBuffer paramByteBuffer, int paramInt)
   {
-    return super.a(paramActivity, paramInt);
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    super.a(paramActivity, paramInt);
-    bkrf localbkrf = bkrf.a();
-    bjcq localbjcq = localbkrf.a[paramInt];
-    if ((localbjcq != null) && (localbjcq.b().equals(b()))) {
-      localbkrf.a(null, paramActivity, paramInt);
+    switch (paramInt)
+    {
+    default: 
+      throw new IOException("Unexpected elf class: " + paramInt);
+    case 1: 
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
+      this.c = paramByteBuffer.getInt();
+      this.d = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.f = paramByteBuffer.getInt();
+      return;
     }
-  }
-  
-  public void b(Activity paramActivity, int paramInt)
-  {
-    super.b(paramActivity, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "select " + toString());
-    }
-    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a;
-    bkrf.a().a(localQIMFilterCategoryItem, paramActivity, paramInt);
-    ((bjcb)bjav.a(5)).a[paramInt].a(this);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return paramObject.hashCode() == hashCode();
-  }
-  
-  public int hashCode()
-  {
-    return ((QIMFilterCategoryItem)this.a).a.hashCode();
-  }
-  
-  public String toString()
-  {
-    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a;
-    return localQIMFilterCategoryItem.a + localQIMFilterCategoryItem.hashCode() + localQIMFilterCategoryItem.g + this.a;
+    this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+    this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+    this.jdField_a_of_type_Long = paramByteBuffer.getLong();
+    this.jdField_b_of_type_Long = paramByteBuffer.getLong();
+    this.c = paramByteBuffer.getLong();
+    this.d = paramByteBuffer.getLong();
+    this.e = paramByteBuffer.getLong();
+    this.f = paramByteBuffer.getLong();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjcq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity.history;
 
-import agai;
-import agau;
+import ahyg;
+import ahys;
 import android.support.v4.app.FragmentActivity;
 import java.util.List;
 
 public class ChatHistoryTroopMemberFragment$41$6
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$41$6(agai paramagai, List paramList) {}
+  public ChatHistoryTroopMemberFragment$41$6(ahyg paramahyg, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Agai.a.getActivity().isFinishing()) {}
-    while (this.jdField_a_of_type_Agai.a.a == null) {
+    if (this.jdField_a_of_type_Ahyg.a.getActivity().isFinishing()) {}
+    while (this.jdField_a_of_type_Ahyg.a.a == null) {
       return;
     }
-    this.jdField_a_of_type_Agai.a.a.d = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Agai.a.a.a();
+    this.jdField_a_of_type_Ahyg.a.a.d = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Ahyg.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.41.6
  * JD-Core Version:    0.7.0.1
  */

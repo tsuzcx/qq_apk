@@ -1,73 +1,94 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class lpk
-  extends lpj
+  extends MqqHandler
 {
-  public lpk(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  WeakReference<AVNotifyCenter> a;
+  
+  public lpk(Looper paramLooper, AVNotifyCenter paramAVNotifyCenter)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    super(paramLooper);
+    this.a = new WeakReference(paramAVNotifyCenter);
   }
   
-  public void a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split(";");
-      int j = paramString.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = paramString[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          int k = localObject.indexOf('=');
-          if ((k > 0) && (k < localObject.length()))
-          {
-            String str;
-            float f;
-            try
-            {
-              str = localObject.substring(0, k);
-              f = Float.parseFloat(localObject.substring(k + 1));
-              if (!"MemoryLimit".equalsIgnoreCase(str)) {
-                break label118;
-              }
-              this.jdField_b_of_type_Float = f;
-            }
-            catch (Throwable localThrowable)
-            {
-              localThrowable.printStackTrace();
-            }
-            continue;
-            label118:
-            if ("CpuNumLimit".equalsIgnoreCase(str)) {
-              this.jdField_b_of_type_Int = ((int)f);
-            } else if ("CpuFreqLimit".equalsIgnoreCase(str)) {
-              this.jdField_a_of_type_Float = f;
-            } else if ("APILevelLimit".equalsIgnoreCase(str)) {
-              this.jdField_a_of_type_Int = ((int)f);
-            }
-          }
-        }
-      }
+    AVNotifyCenter localAVNotifyCenter = (AVNotifyCenter)this.a.get();
+    if (localAVNotifyCenter == null) {}
+    while (!localAVNotifyCenter.i()) {
+      return;
     }
-  }
-  
-  public boolean a(@NonNull lpj paramlpj)
-  {
-    return (this.jdField_a_of_type_Int <= paramlpj.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int <= paramlpj.jdField_b_of_type_Int) && (this.jdField_a_of_type_Float <= paramlpj.jdField_a_of_type_Float) && (this.jdField_b_of_type_Float <= paramlpj.jdField_b_of_type_Float);
+    if (QLog.isColorLevel()) {
+      QLog.w("AVNotifyCenter", 1, "handleMessage, msg[" + paramMessage.what + "]");
+    }
+    if ((paramMessage.what >= 10003) && (paramMessage.what <= 10009))
+    {
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 35);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+    }
+    switch (paramMessage.what)
+    {
+    case 10006: 
+    case 10007: 
+    case 10008: 
+    case 10009: 
+    default: 
+      return;
+    case 10002: 
+      localAVNotifyCenter.b();
+      return;
+    case 10003: 
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 26);
+      localIntent.putExtra("discussId", ((Long)paramMessage.obj).longValue());
+      localIntent.putExtra("memberUin", localAVNotifyCenter.a.getCurrentAccountUin());
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10004: 
+      paramMessage = (Object[])paramMessage.obj;
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 24);
+      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
+      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
+      localIntent.putExtra("uins", (String[])paramMessage[2]);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10005: 
+      paramMessage = (Object[])paramMessage.obj;
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 31);
+      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
+      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
+      localIntent.putExtra("uins", (String[])paramMessage[2]);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10010: 
+      localAVNotifyCenter.c(((Boolean)paramMessage.obj).booleanValue());
+      return;
+    }
+    Intent localIntent = new Intent("tencent.video.q2v.MultiVideo");
+    localIntent.putExtra("type", 34);
+    localIntent.putExtra("relationId", ((Long)paramMessage.obj).longValue());
+    localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+    localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lpk
  * JD-Core Version:    0.7.0.1
  */

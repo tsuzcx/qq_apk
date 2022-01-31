@@ -1,20 +1,15 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
+import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
 
-public abstract interface bgqo
+class bgqo
 {
-  public abstract int delete(Uri paramUri, String paramString, String[] paramArrayOfString);
-  
-  public abstract Uri insert(Uri paramUri, ContentValues paramContentValues);
-  
-  public abstract Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2);
-  
-  public abstract int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString);
+  public ProcessType a;
+  public Class a;
+  public String a;
+  public Class b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgqo
  * JD-Core Version:    0.7.0.1
  */

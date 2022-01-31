@@ -1,11 +1,29 @@
-public class akjf
-  implements ajte
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+
+class akjf
+  implements INetInfoHandler
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    alfz.a("onNetMobile2Wifi");
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    alfz.a("onNetNone2Wifi");
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjf
  * JD-Core Version:    0.7.0.1
  */

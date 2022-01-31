@@ -1,25 +1,35 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class nkg
-  implements DialogInterface.OnCancelListener
+public class nkg
+  implements bhqd
 {
-  nkg(nkb paramnkb, JsResult paramJsResult, Context paramContext) {}
+  public nkg(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    if (this.jdField_a_of_type_Nkb.a > 2) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
+      continue;
+      this.a.G();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkg
  * JD-Core Version:    0.7.0.1
  */

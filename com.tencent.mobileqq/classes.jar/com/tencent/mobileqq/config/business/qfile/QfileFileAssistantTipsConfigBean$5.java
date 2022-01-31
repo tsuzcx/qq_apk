@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.config.business.qfile;
 
-import amyj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import apue;
-import awzy;
+import aopq;
+import arng;
+import ayvc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class QfileFileAssistantTipsConfigBean$5
   implements Runnable
 {
-  public QfileFileAssistantTipsConfigBean$5(amyj paramamyj) {}
+  public QfileFileAssistantTipsConfigBean$5(aopq paramaopq) {}
   
   public void run()
   {
@@ -29,17 +29,17 @@ public class QfileFileAssistantTipsConfigBean$5
         QLog.e("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "app is null!!!");
         return;
       }
-      apue.a("0X800AD01");
+      arng.a("0X800AD01");
       localObject1 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("qfile_file_assistant_tips" + ((QQAppInterface)localObject1).c(), 0);
       Object localObject3 = ((SharedPreferences)localObject1).getString("qfile_file_assistant_tips", "{}");
       try
       {
         localObject3 = new JSONObject((String)localObject3);
-        amyj.a(this.this$0);
-        amyj.b(this.this$0);
-        ((JSONObject)localObject3).put("local_day_last_time", awzy.a());
-        ((JSONObject)localObject3).put("local_day_times", amyj.c(this.this$0));
-        ((JSONObject)localObject3).put("local_max_times", amyj.d(this.this$0));
+        aopq.a(this.this$0);
+        aopq.b(this.this$0);
+        ((JSONObject)localObject3).put("local_day_last_time", ayvc.a());
+        ((JSONObject)localObject3).put("local_day_times", aopq.c(this.this$0));
+        ((JSONObject)localObject3).put("local_max_times", aopq.d(this.this$0));
         localObject3 = ((JSONObject)localObject3).toString();
         if (QLog.isDebugVersion()) {
           QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, (String)localObject3);

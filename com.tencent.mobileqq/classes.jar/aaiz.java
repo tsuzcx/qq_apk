@@ -1,26 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
-public class aaiz
-  implements CompoundButton.OnCheckedChangeListener
+class aaiz
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aaiz(AssistantSettingActivity paramAssistantSettingActivity, anoi paramanoi) {}
+  aaiz(aaiu paramaaiu, ImageView paramImageView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Anoi.a(paramBoolean);
-    if (!paramBoolean)
-    {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
-      return;
-    }
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    aany.a().a(this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaiz
  * JD-Core Version:    0.7.0.1
  */

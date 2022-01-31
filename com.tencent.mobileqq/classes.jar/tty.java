@@ -1,22 +1,19 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
 
-public class tty
-  implements View.OnTouchListener
+class tty
+  implements yvn<FeedCloudRead.StGetCommentListRsp>
 {
-  public tty(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  tty(ttv paramttv, FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    ttv.a(this.jdField_a_of_type_Ttv, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tty
  * JD-Core Version:    0.7.0.1
  */

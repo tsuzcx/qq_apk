@@ -1,35 +1,27 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.26;
 
 public class ancm
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  public ancm(ARScanEntryView.26 param26) {}
   
-  public static ancm a(amph[] paramArrayOfamph)
+  public void onClick(View paramView)
   {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
-      return null;
+    if (this.a.jdField_a_of_type_Amqu != null) {
+      this.a.jdField_a_of_type_Amqu.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
     }
-    ancm localancm = new ancm();
-    try
-    {
-      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].jdField_a_of_type_JavaLangString);
-      localancm.jdField_a_of_type_Boolean = paramArrayOfamph.getBoolean("enable");
-      localancm.jdField_a_of_type_JavaLangString = paramArrayOfamph.getString("content");
-      return localancm;
-    }
-    catch (JSONException paramArrayOfamph)
-    {
-      QLog.e("TencentDocMiniProgramGrayTipsBean", 1, paramArrayOfamph.getLocalizedMessage(), paramArrayOfamph);
-    }
-    return localancm;
+    ARScanEntryView.g(this.a.this$0);
+    ARScanEntryView.d(this.a.this$0);
+    this.a.this$0.a.setOnClickListener(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancm
  * JD-Core Version:    0.7.0.1
  */

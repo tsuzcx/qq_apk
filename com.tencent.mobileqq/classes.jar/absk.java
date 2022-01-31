@@ -1,45 +1,38 @@
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
 import com.tencent.qphone.base.util.QLog;
 
 public class absk
-  extends amdk
 {
-  public absk(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public static absj a(Class<? extends absj> paramClass, absi paramabsi)
   {
-    super.a(paramBoolean, paramString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.a(paramBoolean, paramString, paramInt);
-    if (paramBoolean)
-    {
-      BusinessCard localBusinessCard = ((amdj)this.a.app.getManager(112)).a(paramString);
-      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
-      this.a.a(localBusinessCard);
-      this.a.a = localBusinessCard;
-      return;
+    if (paramClass == abtj.class) {
+      paramClass = new abtj();
     }
-    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    super.b(paramBoolean, paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.b(paramBoolean, paramString, paramInt);
+    for (;;)
+    {
+      if (paramClass != null) {
+        paramClass.a(paramabsi);
+      }
+      return paramClass;
+      if (paramClass == abtp.class) {
+        paramClass = new abtp();
+      } else {
+        try
+        {
+          absj localabsj = (absj)paramClass.newInstance();
+          paramClass = localabsj;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
+          paramClass = null;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absk
  * JD-Core Version:    0.7.0.1
  */

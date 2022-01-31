@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.magicface.service;
 
 import android.media.SoundPool;
-import asds;
+import atus;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
 
 public class SoundPoolUtil$2
   extends TimerTask
 {
-  public SoundPoolUtil$2(asds paramasds, int paramInt, String paramString) {}
+  public SoundPoolUtil$2(atus paramatus, int paramInt, String paramString) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class SoundPoolUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.service.SoundPoolUtil.2
  * JD-Core Version:    0.7.0.1
  */

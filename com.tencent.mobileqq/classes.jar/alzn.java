@@ -1,141 +1,165 @@
-import android.content.Intent;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.CoverTransProcessorHandler.1;
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.CoverTransProcessorHandler.2;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class alzn
-  extends aywb
+  extends amab
 {
-  WeakReference<QQAppInterface> a;
-  WeakReference<SelectCoverActivity> b;
+  public alzn(TroopManager paramTroopManager) {}
   
-  public alzn(QQAppInterface paramQQAppInterface, SelectCoverActivity paramSelectCoverActivity)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramSelectCoverActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    SelectCoverActivity localSelectCoverActivity = (SelectCoverActivity)this.b.get();
-    if ((localQQAppInterface == null) || (localSelectCoverActivity == null)) {}
-    Object localObject;
-    label298:
+    switch (paramInt1)
+    {
+    }
+    Object localObject2;
     do
     {
       return;
-      localObject = (ayqo)paramMessage.obj;
-      switch (paramMessage.what)
+      this.a.f(paramString);
+      synchronized (this.a)
       {
-      case 1004: 
-      default: 
+        if (TroopManager.a(this.a) != null)
+        {
+          localObject2 = TroopManager.a(this.a).iterator();
+          while (((Iterator)localObject2).hasNext()) {
+            if (((TroopInfo)((Iterator)localObject2).next()).troopuin.equals(paramString)) {
+              ((Iterator)localObject2).remove();
+            }
+          }
+        }
         return;
-      case 1003: 
-        if (((ayqo)localObject).b == 48)
-        {
-          paramMessage = ((aysv)((ayqo)localObject).a).a;
-          if (QLog.isColorLevel()) {
-            QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), static avatar upload success. photoId = " + paramMessage);
-          }
-          paramMessage = (ajti)localQQAppInterface.a(2);
-          if (paramMessage != null) {
-            paramMessage.a(true, localQQAppInterface.getCurrentAccountUin(), 0);
-          }
-          bbac.a(null);
-          if (((Integer)atbi.a(localQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
-            atbi.a(localQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(1));
-          }
-          if (localSelectCoverActivity.jdField_d_of_type_Int != 3)
-          {
-            int i = localSelectCoverActivity.f;
-            localObject = localSelectCoverActivity.c;
-            String str = localSelectCoverActivity.jdField_d_of_type_JavaLangString;
-            if (localSelectCoverActivity.a)
-            {
-              paramMessage = "1";
-              axqy.b(localQQAppInterface, "dc00898", "", "", "0X800711D", "0X800711D", 0, 0, String.valueOf(i), (String)localObject, str, paramMessage);
-            }
-          }
-          else
-          {
-            if (!SelectCoverActivity.a(localSelectCoverActivity)) {
-              break label298;
-            }
-            paramMessage = new Intent();
-            paramMessage.putExtra("key_photo_file_path", SelectCoverActivity.a(localSelectCoverActivity));
-            localSelectCoverActivity.setResult(-1, paramMessage);
-          }
-          for (;;)
-          {
-            localSelectCoverActivity.finish();
-            return;
-            paramMessage = "0";
-            break;
-            if (localSelectCoverActivity.jdField_d_of_type_Int == 3)
-            {
-              paramMessage = new Intent(localSelectCoverActivity, AvatarPendantActivity.class);
-              localObject = localSelectCoverActivity.getIntent();
-              paramMessage.putExtra("fromThirdApp", true);
-              paramMessage.putExtra("pkg_name", ((Intent)localObject).getStringExtra("pkg_name"));
-              paramMessage.putExtra("app_name", ((Intent)localObject).getStringExtra("app_name"));
-              localObject = ((Intent)localObject).getStringExtra("share_id");
-              paramMessage.putExtra("share_id", (String)localObject);
-              axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009DFA", "0X8009DFA", 0, 0, (String)localObject, "", "", "");
-              paramMessage.putExtra("AllInOne", new ProfileActivity.AllInOne(localQQAppInterface.getCurrentAccountUin(), 0));
-              localSelectCoverActivity.startActivity(paramMessage);
-            }
-            else
-            {
-              localSelectCoverActivity.setResult(-1);
-            }
-          }
-        }
-        if (((ayqo)localObject).b == 36)
-        {
-          paramMessage = ((aysv)((ayqo)localObject).a).b;
-          if (QLog.isColorLevel()) {
-            QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), big video upload success. videoId = " + paramMessage);
-          }
-          ThreadManager.post(new SelectCoverActivity.CoverTransProcessorHandler.1(this, localSelectCoverActivity, localQQAppInterface), 8, null, true);
-          return;
-        }
-        if (((ayqo)localObject).b == 37)
-        {
-          paramMessage = ((aysv)((ayqo)localObject).a).b;
-          if (QLog.isColorLevel()) {
-            QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), medium video upload success. videoId = " + paramMessage);
-          }
-          ThreadManager.post(new SelectCoverActivity.CoverTransProcessorHandler.2(this, localSelectCoverActivity, localQQAppInterface), 8, null, true);
-          return;
-        }
-        break;
       }
-    } while (((ayqo)localObject).b != 38);
-    paramMessage = ((aysv)((ayqo)localObject).a).b;
-    if (QLog.isColorLevel()) {
-      QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), small video upload success. videoId = " + paramMessage);
+      ??? = new ArrayList();
+      ((ArrayList)???).add(paramString);
+      this.a.b((ArrayList)???);
+      return;
+      localObject2 = this.a.b(paramString);
+    } while ((localObject2 == null) || (!TroopManager.a(this.a, (TroopInfo)localObject2, true)));
+    alzf localalzf = (alzf)this.a.a.a(20);
+    for (;;)
+    {
+      synchronized (this.a)
+      {
+        if (TroopManager.a(this.a) == null)
+        {
+          TroopManager.a(this.a, new ArrayList());
+          TroopManager.a(this.a).add(localObject2);
+          localalzf.a(true, paramString, ((TroopInfo)localObject2).troopcode, 9);
+          return;
+        }
+      }
+      TroopManager.a(this.a).add(localObject2);
     }
-    alzk.a(localQQAppInterface, localSelectCoverActivity.b);
-    bbac.a(localSelectCoverActivity.b);
+  }
+  
+  protected void a(String arg1, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  {
+    boolean bool;
+    ArrayList localArrayList;
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder().append("onUpdateTroopGetMemberList(memberLimit), troopUin:").append(???).append(", mGetTroopMemberListTroops == null:");
+      if (TroopManager.a(this.a) == null)
+      {
+        bool = true;
+        QLog.i("Q.contacttab.troop", 2, bool);
+      }
+    }
+    else
+    {
+      localArrayList = new ArrayList();
+      localArrayList.add(???);
+      if (TroopManager.a(this.a) != null) {
+        break label98;
+      }
+      this.a.b(localArrayList);
+    }
+    label98:
+    TroopInfo localTroopInfo;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          bool = false;
+          break;
+        } while (TroopManager.a(this.a).size() <= 0);
+        localTroopInfo = (TroopInfo)TroopManager.a(this.a).get(0);
+      } while (!localTroopInfo.troopuin.equals(???));
+      paramList = (alzf)this.a.a.a(20);
+      if ((paramBoolean) || (TroopManager.a(this.a) >= 3)) {
+        break label237;
+      }
+      paramList.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 4);
+    } while (!QLog.isColorLevel());
+    QLog.w("Q.contacttab.troop", 2, "getTroopsMemberList(memberLimit), failed, retry mRetryGetTroopMemberListCount:" + TroopManager.b(this.a) + ", troopUin" + localTroopInfo.troopuin);
     return;
+    label237:
     if (QLog.isColorLevel()) {
-      QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed.");
+      QLog.i("Q.contacttab.troop", 2, "notifyTroopMembersUpdate, troopUin:" + ???);
     }
-    SelectCoverActivity.a(localSelectCoverActivity, 2, ajya.a(2131713718), 0);
-    bbac.a(null);
+    if (paramBoolean) {
+      this.a.b(localArrayList);
+    }
+    synchronized (this.a)
+    {
+      TroopManager.a(this.a).remove(0);
+      if (TroopManager.a(this.a).size() > 0)
+      {
+        ??? = (TroopInfo)TroopManager.a(this.a).get(0);
+        TroopManager.a(this.a, 0);
+        paramList.a(true, ???.troopuin, ???.troopcode, 4);
+        return;
+        this.a.g(???);
+      }
+    }
+    synchronized (this.a)
+    {
+      TroopManager.a(this.a, null);
+      return;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    QLog.i("troop_ext", 1, "onGetTroopInfoResult success: troopUin: " + paramString);
+  }
+  
+  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        paramString = (TroopMemberCardInfo)paramArrayList.get(i);
+        this.a.b(paramString.troopuin, paramString.memberuin);
+        i += 1;
+      }
+    }
+  }
+  
+  protected void f(boolean paramBoolean, String paramString)
+  {
+    QLog.i("troop_ext", 1, "onActiveExtTroop success: " + paramBoolean + " troopUin: " + paramString);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      ((alzf)this.a.a.a(20)).j(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzn
  * JD-Core Version:    0.7.0.1
  */

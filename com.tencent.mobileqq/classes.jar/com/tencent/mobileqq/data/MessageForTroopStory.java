@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ajya;
+import alpo;
 
 public class MessageForTroopStory
   extends MessageForRichText
@@ -19,7 +19,7 @@ public class MessageForTroopStory
   public static final String KEY_UNION_ID = "key_union_id";
   public static final String KEY_VIDEO_HEIGHT = "key_video_height";
   public static final String KEY_VIDEO_WIDTH = "key_video_width";
-  public static final String MSG_CONTENT = ajya.a(2131706588);
+  public static final String MSG_CONTENT = alpo.a(2131706960);
   public static final String TAG = "MessageForTroopStory";
   public String compatibleText;
   public int ctrVersion;
@@ -583,7 +583,7 @@ public class MessageForTroopStory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopStory
  * JD-Core Version:    0.7.0.1
  */

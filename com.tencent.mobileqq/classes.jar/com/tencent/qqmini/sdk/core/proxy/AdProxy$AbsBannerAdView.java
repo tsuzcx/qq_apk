@@ -9,6 +9,11 @@ public abstract class AdProxy$AbsBannerAdView
   
   public abstract void destroy(Context paramContext);
   
+  public long getAdID()
+  {
+    return 0L;
+  }
+  
   public String getReportUrl()
   {
     return "";
@@ -26,7 +31,7 @@ public abstract class AdProxy$AbsBannerAdView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBannerAdView
  * JD-Core Version:    0.7.0.1
  */

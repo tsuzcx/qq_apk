@@ -1,26 +1,39 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.activity.specialcare.SpecialCareUtils.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
-final class akbi
-  extends akui
+public class akbi
 {
-  akbi(String paramString, ToServiceMsg paramToServiceMsg)
+  public static void a(Activity paramActivity, String paramString, int paramInt)
   {
-    super(paramString);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
-  {
-    synchronized (this.a)
+    if ((paramInt == 3) && (arsx.a().a()))
     {
-      this.a.notify();
+      localObject = new HashMap();
+      ((Map)localObject).put("uin", paramString);
+      ((Map)localObject).put("from", Integer.valueOf(3));
+      artk.a(paramActivity, "SpecialCareFriendSettingPage", (Map)localObject);
       return;
     }
+    Object localObject = new Intent(paramActivity, QQSpecialCareSettingActivity.class);
+    ((Intent)localObject).putExtra("key_friend_uin", paramString);
+    ((Intent)localObject).putExtra("key_start_from", 3);
+    paramActivity.startActivity((Intent)localObject);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new SpecialCareUtils.1(paramQQAppInterface), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbi
  * JD-Core Version:    0.7.0.1
  */

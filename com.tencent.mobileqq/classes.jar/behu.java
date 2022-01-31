@@ -1,38 +1,38 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
 import java.util.List;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public abstract class behu
+class behu
+  implements behy<oidb_0x8ed.RspBody>
 {
-  private static MiniAppInfo a;
-  public static List<String> a;
+  behu(behr parambehr, behy parambehy1, HotChatInfo paramHotChatInfo, long paramLong, int paramInt1, int paramInt2, behy parambehy2) {}
   
-  static
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
-  }
-  
-  public static MiniAppInfo a()
-  {
-    if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)
-      {
-        MiniAppInfo localMiniAppInfo = new MiniAppInfo();
-        localMiniAppInfo.appId = "0000000000";
-        localMiniAppInfo.launchParam.a = "0000000000";
-        jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = localMiniAppInfo;
-      }
-      return jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    if (this.jdField_a_of_type_Behy != null) {
+      this.jdField_a_of_type_Behy.a(paramInt, paramRspBody);
     }
-    finally {}
+    paramRspBody = (HotChatManager)this.jdField_a_of_type_Behr.app.getManager(60);
+    List localList = paramRspBody.a();
+    if (localList != null) {
+      localList.remove(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
+    }
+    paramRspBody.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
+    autg.a().a(this.jdField_a_of_type_Long);
+    aush.a(this.jdField_a_of_type_Behr.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(ayvc.a()));
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals("0"))) {
+      this.jdField_a_of_type_Behr.app.a().a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin, 1);
+    }
+    this.jdField_a_of_type_Behr.b(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Behy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     behu
  * JD-Core Version:    0.7.0.1
  */

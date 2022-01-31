@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.sdk;
 
-import ahio;
+import aizx;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -59,7 +59,7 @@ public class MiniAppLauncher
         if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
           return openMiniApp(paramContext, paramLaunchParam);
         }
-        ahio.a(paramLaunchParam, null);
+        aizx.a(paramLaunchParam, null);
         return true;
       }
     }
@@ -255,7 +255,7 @@ public class MiniAppLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

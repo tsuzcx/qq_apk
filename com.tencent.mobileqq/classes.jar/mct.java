@@ -1,26 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-public class mct
-  implements View.OnClickListener
+class mct
 {
-  public mct(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  lsv jdField_a_of_type_Lsv;
+  mcs[] jdField_a_of_type_ArrayOfMcs = new mcs[2];
   
-  public void onClick(View paramView)
+  mct(mcr parammcr)
   {
-    QLog.d(this.a.c, 1, "quit double screen from reset clicker");
-    if ((this.a.a != null) && (this.a.a.get() != null) && ((this.a.a.get() instanceof AVActivity))) {
-      ((AVActivity)this.a.a.get()).BtnOnClick(paramView);
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfMcs.length)
+    {
+      this.jdField_a_of_type_ArrayOfMcs[i] = new mcs(parammcr);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mct
  * JD-Core Version:    0.7.0.1
  */

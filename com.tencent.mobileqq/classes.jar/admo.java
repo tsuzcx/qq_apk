@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
 
-class admo
-  implements DialogInterface.OnClickListener
+public class admo
 {
-  admo(admm paramadmm) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     admo
  * JD-Core Version:    0.7.0.1
  */

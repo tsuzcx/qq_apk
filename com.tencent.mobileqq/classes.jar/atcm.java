@@ -1,28 +1,109 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
 
-class atcm
-  implements ValueAnimator.AnimatorUpdateListener
+@Deprecated
+public class atcm
 {
-  atcm(atck paramatck, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void call(String paramString, List<String> paramList, atcl paramatcl)
   {
-    if (this.jdField_a_of_type_Atck.b)
+    Object localObject2 = null;
+    Method[] arrayOfMethod = getClass().getDeclaredMethods();
+    int j = arrayOfMethod.length;
+    int i = 0;
+    for (;;)
     {
-      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
-      this.jdField_a_of_type_Atck.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Atck.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      return;
+      Object localObject1 = localObject2;
+      if (i < j)
+      {
+        localObject1 = arrayOfMethod[i];
+        if ((!((Method)localObject1).getName().equals(paramString)) || (((Method)localObject1).getParameterTypes().length != paramList.size())) {}
+      }
+      else
+      {
+        if (localObject1 != null) {}
+        try
+        {
+          if (paramList.size() == 0) {}
+          for (localObject2 = ((Method)localObject1).invoke(this, new Object[0]);; localObject2 = ((Method)localObject1).invoke(this, paramList.toArray()))
+          {
+            localObject1 = ((Method)localObject1).getReturnType();
+            if ((localObject1 != Void.TYPE) && (localObject1 != Void.class)) {
+              break;
+            }
+            if (paramatcl == null) {
+              break label276;
+            }
+            paramatcl.a(null);
+            return;
+          }
+          if (paramatcl != null) {
+            if (customCallback())
+            {
+              paramatcl.a(localObject2.toString());
+              return;
+            }
+          }
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          if (paramatcl != null) {
+            paramatcl.a();
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d("JB", 4, "cannot found match method,maybe your method using args type is NO String? request method:class:" + getClass().getSimpleName() + paramString + " args:" + paramList);
+          }
+          if (paramatcl != null)
+          {
+            paramatcl.a();
+            return;
+            paramatcl.a(localObject2);
+            return;
+          }
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          for (;;)
+          {
+            if (paramatcl != null) {
+              paramatcl.a();
+            }
+          }
+        }
+        catch (InvocationTargetException localInvocationTargetException)
+        {
+          for (;;)
+          {
+            if (paramatcl != null) {
+              paramatcl.a();
+            }
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            if (paramatcl != null) {
+              paramatcl.a();
+            }
+          }
+        }
+        label276:
+        return;
+      }
+      i += 1;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+  }
+  
+  public boolean customCallback()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcm
  * JD-Core Version:    0.7.0.1
  */

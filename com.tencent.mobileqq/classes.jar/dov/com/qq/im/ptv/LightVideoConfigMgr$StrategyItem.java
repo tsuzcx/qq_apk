@@ -9,7 +9,7 @@ public class LightVideoConfigMgr$StrategyItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightVideoConfigMgr.StrategyItem
  * JD-Core Version:    0.7.0.1
  */

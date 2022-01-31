@@ -1,50 +1,137 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class aony
-  implements aopz
+  extends aofy<aonw>
 {
-  public aony(FMActivity paramFMActivity, int paramInt) {}
+  public static String a;
+  private WeakReference<bkad> a;
   
-  public void a()
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.b.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c.removeAllViews();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c.addView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setTabType(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.b();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.a(16, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getString(2131692691));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.a(15, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getString(2131692695));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.a(17, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getString(2131692697));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.a(18, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getString(2131692693));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.a(19, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getString(2131692694));
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.j) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.e >= 15) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.e <= 19)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.setSelectedTab(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.e);
-    }
-    for (;;)
+    jdField_a_of_type_JavaLangString = "{\n    \"switch\":1,\n    \"match\":[\n        {\n            \"key\":\"花木兰\",\n            \"resUrl\":\"https://d3g.qq.com/sngapp/app/update/20191028162616_9505/libai_dae.zip\",\n            \"md5\":\"52b1ab75bbd04aef4eb889cc6b625dad\"\n        },\n        {\n            \"key\":\"miku\",\n            \"resUrl\":\"https://d3g.qq.com/sngapp/app/update/20191029174146_1019/miku_fbx.zip\",\n            \"md5\":\"f957c6847f06e485a021ed81d5b5024a\"\n        },\n        {\n            \"key\":\"莓莓蛋糕\",\n            \"resUrl\":\"https://d3g.qq.com/sngapp/app/update/20191107111004_5856/cake_dae.zip\",\n            \"md5\":\"4fe9009093acbea20a65f281958879eb\"\n        }\n    ],\n    \"blackList\":\"SLA-AL00\"\n}";
+  }
+  
+  private void a(boolean paramBoolean, aonw paramaonw, String paramString1, String paramString2)
+  {
+    bkax.a().b(paramaonw);
+    if (this.jdField_a_of_type_MqqUtilWeakReference == null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
-      }
+      QLog.e("VipARConfProcessor", 1, "load config listener = null");
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.setSelectedTab(16);
     }
+    bkad localbkad = (bkad)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localbkad == null)
+    {
+      QLog.e("VipARConfProcessor", 1, "load config vipARConfigListener = null");
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramString2 = paramaonw;
+      if (paramaonw == null) {
+        paramString2 = new aonw();
+      }
+      QLog.i("VipARConfProcessor", 1, "notifyListener isSuccess : " + paramBoolean + " refer  = " + paramString1 + " data  = " + paramString2.toString());
+      localbkad.a(paramString2);
+      return;
+    }
+    QLog.i("VipARConfProcessor", 1, "notifyListener fail :  refer  = " + paramString1 + " error = " + paramString2);
+    localbkad.a(paramString2);
+  }
+  
+  public int a()
+  {
+    return 499;
+  }
+  
+  @NonNull
+  public aonw a(int paramInt)
+  {
+    QLog.e("VipARConfProcessor", 1, "migrateOldOrDefaultContent: " + paramInt);
+    return new aonw();
+  }
+  
+  @Nullable
+  public aonw a(aogf[] paramArrayOfaogf)
+  {
+    if (paramArrayOfaogf != null) {
+      try
+      {
+        if (paramArrayOfaogf.length > 0)
+        {
+          int j = paramArrayOfaogf.length;
+          int i = 0;
+          while (i < j)
+          {
+            aogf localaogf = paramArrayOfaogf[i];
+            if (localaogf != null)
+            {
+              aonw localaonw = aonw.a(localaogf.jdField_a_of_type_JavaLangString);
+              if (QLog.isColorLevel()) {
+                QLog.d("VipARConfProcessor", 2, "onParsed " + localaogf.jdField_a_of_type_JavaLangString);
+              }
+              if (localaonw != null) {
+                return localaonw;
+              }
+            }
+            i += 1;
+          }
+        }
+        return new aonw();
+      }
+      catch (Exception paramArrayOfaogf)
+      {
+        paramArrayOfaogf.printStackTrace();
+        QLog.e("VipARConfProcessor", 1, "onParsed Exception = " + paramArrayOfaogf.getMessage());
+      }
+    }
+  }
+  
+  public Class<aonw> a()
+  {
+    return aonw.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.e("VipARConfProcessor", 1, "onReqFailed: " + paramInt);
+    a(false, null, "onReqFailed", " failCode = " + paramInt);
+  }
+  
+  public void a(aonw paramaonw)
+  {
+    if ((QLog.isColorLevel()) && (paramaonw != null)) {
+      QLog.i("VipARConfProcessor", 2, "onUpdate: " + paramaonw.toString());
+    }
+    if (paramaonw != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool, paramaonw, "onUpdate", " error bean = null");
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aony
  * JD-Core Version:    0.7.0.1
  */

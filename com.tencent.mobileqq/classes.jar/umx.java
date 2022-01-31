@@ -1,20 +1,27 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
 
 public class umx
-  implements unm
 {
-  public umx(StoryPickerFragment paramStoryPickerFragment) {}
-  
-  public void a(String paramString)
+  public static Intent a(Context paramContext, int paramInt, String paramString)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramString);
-    }
+    return QQStoryMemoriesActivity.a(paramContext, paramInt, paramString);
+  }
+  
+  public static void a(Context paramContext, int paramInt, long paramLong)
+  {
+    QQStoryMemoriesActivity.a(paramContext, paramInt, paramLong);
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    paramContext.startActivity(a(paramContext, paramInt, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     umx
  * JD-Core Version:    0.7.0.1
  */

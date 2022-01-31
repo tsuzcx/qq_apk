@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import biqs;
-import birq;
-import bjaa;
+import bkvi;
+import bkwh;
+import bkwi;
+import blev;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -13,36 +14,36 @@ public class CameraCategoryMaterialStep
 {
   private long a()
   {
-    return bjaa.a().a("lasttime", 0L, 0);
+    return blev.a().a("lasttime", 0L, 0);
   }
   
   private String a()
   {
-    return bjaa.a().a("last_entry_version", "", 4);
+    return blev.a().a("last_entry_version", "", 4);
   }
   
   private void a(String paramString)
   {
-    bjaa.a().a("last_entry_version", paramString, 4);
+    blev.a().a("last_entry_version", paramString, 4);
   }
   
   private void b(long paramLong)
   {
-    bjaa.a().a("lasttime", paramLong, 0);
+    blev.a().a("lasttime", paramLong, 0);
   }
   
   public int a()
   {
-    biqs localbiqs = (biqs)this.a.app.a(159);
+    bkvi localbkvi = (bkvi)this.a.app.a(159);
     if (System.currentTimeMillis() - a() > 86400000L)
     {
       b(System.currentTimeMillis());
       a(AppSetting.a());
-      localbiqs.a("MqStoryCamera");
-      localbiqs.a("MqEmoCamera");
-      localbiqs.b();
-      localbiqs.a();
-      birq.a().a(0, null, false);
+      localbkvi.a("MqStoryCamera");
+      localbkvi.a("MqEmoCamera");
+      localbkvi.b();
+      localbkvi.a();
+      bkwi.a().a(bkwh.b, null, false);
     }
     for (;;)
     {
@@ -50,8 +51,8 @@ public class CameraCategoryMaterialStep
       if (!AppSetting.a().equals(a()))
       {
         a(AppSetting.a());
-        localbiqs.a();
-        birq.a().a(0, null, false);
+        localbkvi.a();
+        bkwi.a().a(bkwh.b, null, false);
       }
     }
   }

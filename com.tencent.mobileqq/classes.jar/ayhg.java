@@ -1,55 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
+import java.util.Comparator;
 
-public class ayhg
-  implements WtTicketPromise
+class ayhg
+  implements Comparator<FTSEntity>
 {
-  private ancy jdField_a_of_type_Ancy;
-  private WeakReference<ayhf> jdField_a_of_type_JavaLangRefWeakReference;
+  ayhg(ayhe paramayhe) {}
   
-  public ayhg(ayhf paramayhf, ancy paramancy)
+  public int a(FTSEntity paramFTSEntity1, FTSEntity paramFTSEntity2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramayhf);
-    this.jdField_a_of_type_Ancy = paramancy;
-  }
-  
-  public void Done(Ticket paramTicket)
-  {
-    if ((paramTicket != null) && (paramTicket._pskey_map != null))
+    paramFTSEntity1 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity1).msgExts;
+    paramFTSEntity2 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity2).msgExts;
+    long l1;
+    if (paramFTSEntity1 != null)
     {
-      ThreadManager.excute(new ConfigSetting.LocalWtTicketPromise.1(this), 128, null, false);
-      return;
+      l1 = paramFTSEntity1.time;
+      if (paramFTSEntity2 == null) {
+        break label54;
+      }
     }
-    if (this.jdField_a_of_type_Ancy != null) {
-      this.jdField_a_of_type_Ancy.a(false);
+    label54:
+    for (long l2 = paramFTSEntity2.time;; l2 = 0L)
+    {
+      return Long.signum(l2 - l1);
+      l1 = 0L;
+      break;
     }
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket is null");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_Ancy != null) {
-      this.jdField_a_of_type_Ancy.a(false);
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (this.jdField_a_of_type_Ancy != null) {
-      this.jdField_a_of_type_Ancy.a(false);
-    }
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket time oiut");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayhg
  * JD-Core Version:    0.7.0.1
  */

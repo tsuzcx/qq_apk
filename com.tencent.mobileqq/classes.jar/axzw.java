@@ -1,52 +1,154 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import PersonalState.UserProfile;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richstatus.StatusManager.3.1;
+import com.tencent.mobileqq.richstatus.StatusManager.3.2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import mqq.os.MqqHandler;
 
-class axzw
-  extends URLDrawableDownListener.Adapter
+public class axzw
+  extends axzy
 {
-  axzw(axzs paramaxzs) {}
+  axzw(axzt paramaxzt) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  @TargetApi(9)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
+    ThreadManager.getSubThreadHandler().post(new StatusManager.3.1(this, paramBoolean, paramBundle));
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadCancelled");
+      QLog.d("Q.richstatus.shuo", 2, "onGetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
+    }
+    label83:
+    axxl localaxxl;
+    if (paramBoolean1)
+    {
+      axzt.c(this.a, 0L);
+      axzt.a(this.a, paramBoolean2);
+      if (axzt.b(this.a) == null) {
+        return;
+      }
+      Iterator localIterator = axzt.b(this.a).iterator();
+      if (!localIterator.hasNext()) {
+        return;
+      }
+      localaxxl = (axxl)localIterator.next();
+      if (!paramBoolean1) {
+        break label162;
+      }
+    }
+    label162:
+    for (int i = 100;; i = -1)
+    {
+      localaxxl.a(i, paramBoolean2);
+      break label83;
+      axzt.c(this.a, System.currentTimeMillis() - 180000L + 60000L);
+      paramBoolean2 = axzt.b(this.a).getBoolean("k_sync_ss", false);
+      break;
     }
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList<UserProfile> paramArrayList)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
     if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadFailed ,cause = " + paramThrowable);
+      QLog.d("Q.richstatus.mate", 2, "onGetStatusMate " + paramBoolean1 + " " + paramBoolean2 + " " + paramInt + " " + paramArrayList.size());
+    }
+    if (paramBoolean1) {
+      axzt.a(this.a, paramArrayOfByte);
+    }
+    for (;;)
+    {
+      if (paramBoolean1) {
+        if (paramBoolean2)
+        {
+          if (axzt.a(this.a) != null)
+          {
+            axzt.a(this.a, paramArrayList);
+            return;
+            if (!paramBoolean2) {
+              continue;
+            }
+            axzt.a(this.a, null);
+            continue;
+          }
+          if (axzt.b(this.a) == null) {
+            axzt.b(this.a, new ArrayList());
+          }
+          paramArrayOfByte = this.a.a(axzt.b(this.a), paramArrayList, paramInt);
+        }
+      }
+    }
+    for (;;)
+    {
+      label165:
+      if ((axzt.a(this.a) != null) && (axzt.a(this.a).length > 0)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        if (axzt.c(this.a) == null) {
+          break label264;
+        }
+        paramArrayList = axzt.c(this.a).iterator();
+        while (paramArrayList.hasNext()) {
+          ((axxk)paramArrayList.next()).a(paramBoolean1, paramBoolean2, paramInt, paramArrayOfByte, bool);
+        }
+        break;
+        paramArrayOfByte = this.a.a(paramArrayList);
+        break label165;
+      }
+      label264:
+      break;
+      paramArrayOfByte = paramArrayList;
     }
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadInterrupted");
-    }
+    ThreadManager.getSubThreadHandler().post(new StatusManager.3.2(this, paramBoolean));
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = paramView.getLayoutParams().height * paramURLDrawable.getIntrinsicWidth() / paramURLDrawable.getIntrinsicHeight();
-    paramView.getLayoutParams().width = i;
-    paramView.setBackgroundDrawable(paramURLDrawable);
-    paramView.requestLayout();
     if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadSuccessed");
+      QLog.d("Q.richstatus.shuo", 2, "onSetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
+    }
+    label74:
+    axxl localaxxl;
+    if (paramBoolean1)
+    {
+      axzt.a(this.a, paramBoolean2);
+      if (axzt.b(this.a) == null) {
+        return;
+      }
+      Iterator localIterator = axzt.b(this.a).iterator();
+      if (!localIterator.hasNext()) {
+        return;
+      }
+      localaxxl = (axxl)localIterator.next();
+      if (!paramBoolean1) {
+        break label134;
+      }
+    }
+    label134:
+    for (int i = 100;; i = -1)
+    {
+      localaxxl.b(i, paramBoolean2);
+      break label74;
+      paramBoolean2 = axzt.b(this.a).getBoolean("k_sync_ss", false);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axzw
  * JD-Core Version:    0.7.0.1
  */

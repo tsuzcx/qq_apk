@@ -1,34 +1,66 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.widget.HorizontalLabelLayout;
 
 public class sal
-  implements View.OnKeyListener
+  implements sai
 {
-  private sal(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public int a(BaseData paramBaseData)
   {
-    paramView = ReadInJoyNewSearchActivity.a(this.a).getText().toString().trim();
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0) && (!TextUtils.isEmpty(paramView)))
+    switch (paramBaseData.s)
     {
-      paramKeyEvent = (InputMethodManager)this.a.getSystemService("input_method");
-      if (paramKeyEvent != null) {
-        paramKeyEvent.hideSoftInputFromWindow(ReadInJoyNewSearchActivity.a(this.a).getWindowToken(), 2);
-      }
-      ReadInJoyNewSearchActivity.a(this.a, paramView);
-      this.a.a(paramView);
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+    default: 
+      throw new IllegalArgumentException();
+    case 7: 
+    case 13: 
+      return 7;
+    case 8: 
+    case 14: 
+      return 8;
+    case 15: 
+      return 13;
     }
-    return false;
+    return 14;
+  }
+  
+  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    LayoutInflater localLayoutInflater = LayoutInflater.from(paramContext);
+    switch (a(paramBaseData))
+    {
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+    default: 
+      throw new IllegalArgumentException();
+    case 7: 
+      return new sap(this, localLayoutInflater.inflate(2131560021, paramViewGroup, false), paramBaseData);
+    case 8: 
+      return new san(this, localLayoutInflater.inflate(2131560018, paramViewGroup, false), paramBaseData);
+    case 13: 
+      paramViewGroup = new HorizontalLabelLayout(paramContext);
+      int i = aekt.a(15.0F, paramContext.getResources());
+      paramViewGroup.setPadding(i, 0, i, 0);
+      return new sam(this, paramViewGroup, paramBaseData);
+    }
+    return new sao(this, localLayoutInflater.inflate(2131559940, paramViewGroup, false), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return (paramBaseData.s == 7) || (paramBaseData.s == 8) || (paramBaseData.s == 13) || (paramBaseData.s == 14) || (paramBaseData.s == 15) || (paramBaseData.s == 16);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sal
  * JD-Core Version:    0.7.0.1
  */

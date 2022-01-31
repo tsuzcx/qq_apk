@@ -1,41 +1,40 @@
-import android.view.ViewGroup;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qappcenter.remote.SendMsg;
 
-public class biod
-  implements SeekBar.OnSeekBarChangeListener
+class biod
+  implements ServiceConnection
 {
-  public biod(AEBeautyProviderView paramAEBeautyProviderView) {}
+  biod(bioc parambioc) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (AEBeautyProviderView.a(this.a) != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + bioc.a(this.a));
+    }
+    this.a.a = binz.a(paramIBinder);
+    if (bioc.a(this.a) != null)
     {
-      AEBeautyProviderView.a(this.a).a(paramInt);
-      this.a.a.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
+      paramComponentName = new SendMsg("cmd.registerListener");
+      paramComponentName.a = bioc.a(this.a);
+      this.a.b(paramComponentName);
     }
+    this.a.a();
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    AEBeautyProviderView.a(this.a, AEBeautyProviderView.a(this.a), AEBeautyProviderView.b(this.a));
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
-      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + bioc.a(this.a));
     }
-    AEBeautyProviderView.a(this.a, paramSeekBar.getProgress());
-    bizx.a().d(paramSeekBar.getProgress());
-    AEBeautyProviderView.b(this.a, AEBeautyProviderView.a(this.a), AEBeautyProviderView.b(this.a));
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biod
  * JD-Core Version:    0.7.0.1
  */

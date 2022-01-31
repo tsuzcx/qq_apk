@@ -1,41 +1,35 @@
-import android.text.InputFilter;
-import android.text.Spanned;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class adhx
-  implements InputFilter
+public class adhx
+  extends alqy
 {
-  adhx(adhw paramadhw) {}
+  public adhx(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
-    if (paramInt3 <= 0)
-    {
-      adhw.a(this.a);
-      return "";
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
     }
-    if (paramInt3 >= paramInt2 - paramInt1) {
-      return null;
+    if ((paramBoolean1) && (paramInt == 64)) {
+      this.a.a(paramBoolean2);
     }
-    paramInt3 += paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1)
-      {
-        adhw.a(this.a);
-        return "";
-      }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
     }
-    adhw.a(this.a);
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    if (!paramBoolean1) {
+      this.a.a(2131719872, 1);
+    }
+    this.a.a(paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhx
  * JD-Core Version:    0.7.0.1
  */

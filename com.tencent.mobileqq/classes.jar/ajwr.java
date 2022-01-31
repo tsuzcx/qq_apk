@@ -1,22 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
 public class ajwr
-  extends apyt
+  extends akee
 {
-  public ajwr(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public void a()
-  {
-    if (this.a.a.hasMessages(17)) {
-      this.a.a.removeMessages(17);
-    }
-    this.a.a.sendEmptyMessage(17);
-  }
+  public View a;
+  public Button a;
+  public CheckBox a;
+  public TextView a;
+  public TroopMemberInfo a;
+  public View b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,10 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-
-public class ahep
-  implements View.OnLongClickListener
+public abstract interface ahep
 {
-  public ahep(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false) > 0) && (DrawRedpacketPannelPreviewFragment.a(this.a) != null)) {
-      DrawRedpacketPannelPreviewFragment.a(this.a).show();
-    }
-    return true;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahep
  * JD-Core Version:    0.7.0.1
  */

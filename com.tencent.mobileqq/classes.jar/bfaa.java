@@ -1,114 +1,89 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetFriendCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetFriendCloudStorageRsp;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StUserGameData;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.datamodel.Friend;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class bfaa
-  extends bfau
+  extends bfdg
 {
-  private CloudStorage.StGetFriendCloudStorageReq a = new CloudStorage.StGetFriendCloudStorageReq();
+  protected List<Friend> a;
   
-  public bfaa(String[] paramArrayOfString, String paramString)
+  public bfaa(List<Friend> paramList)
   {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      String str = paramArrayOfString[i];
-      this.a.keyList.add(str);
-      i += 1;
+      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131562615, paramViewGroup, false);
+      paramViewGroup = new bfad();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368782));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378839));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131378950));
+      paramView.setTag(paramViewGroup);
     }
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      return paramView;
+      paramViewGroup = (bfad)paramView.getTag();
     }
-    Object localObject1 = new CloudStorage.StGetFriendCloudStorageRsp();
+    Friend localFriend = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject;
+    if ((localFriend.c == null) || ("".equals(localFriend.c)))
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.b);
+      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
+        localFriend.d = bfdp.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), localFriend.a);
+      }
+      localObject = bfdm.a().a(localFriend.d);
+      if (localObject != null) {
+        break label290;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840084);
+      localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
+      bfdm.a().a(localFriend.d, new bfab(this, (ImageView)localObject));
+    }
     for (;;)
     {
-      JSONObject localJSONObject1;
-      try
-      {
-        ((CloudStorage.StGetFriendCloudStorageRsp)localObject1).mergeFrom(a(paramArrayOfByte));
-        if (localObject1 == null) {
-          break label330;
-        }
-        Object localObject2 = ((CloudStorage.StGetFriendCloudStorageRsp)localObject1).data.get();
-        if ((localObject2 == null) || (((List)localObject2).isEmpty())) {
-          break label339;
-        }
-        paramArrayOfByte = new JSONObject();
-        localObject1 = new JSONArray();
-        localObject2 = ((List)localObject2).iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        Object localObject3 = (CloudStorage.StUserGameData)((Iterator)localObject2).next();
-        localJSONObject1 = new JSONObject();
-        localJSONObject1.put("avatarUrl", ((CloudStorage.StUserGameData)localObject3).avatarUrl.get());
-        localJSONObject1.put("nickname", ((CloudStorage.StUserGameData)localObject3).nickname.get());
-        localJSONObject1.put("openid", ((CloudStorage.StUserGameData)localObject3).openid.get());
-        if ((((CloudStorage.StUserGameData)localObject3).KVDataList != null) && (((CloudStorage.StUserGameData)localObject3).KVDataList.size() > 0))
-        {
-          Object localObject4 = ((CloudStorage.StUserGameData)localObject3).KVDataList.get();
-          localObject3 = new JSONArray();
-          localObject4 = ((List)localObject4).iterator();
-          if (((Iterator)localObject4).hasNext())
-          {
-            CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject4).next();
-            JSONObject localJSONObject2 = new JSONObject();
-            localJSONObject2.put("key", localStKVData.key.get());
-            localJSONObject2.put("value", localStKVData.value.get());
-            ((JSONArray)localObject3).put(localJSONObject2);
-            continue;
-          }
-          localJSONObject1.put("KVDataList", localObject3);
-        }
+      if (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.a(localFriend.a)) {
+        break label302;
       }
-      catch (Exception paramArrayOfByte)
-      {
-        betc.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-        return null;
-      }
-      ((JSONArray)localObject1).put(localJSONObject1);
+      paramViewGroup.b.setText(2131691900);
+      return paramView;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.c);
+      break;
+      label290:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
     }
-    paramArrayOfByte.put("data", localObject1);
-    return paramArrayOfByte;
-    label330:
-    betc.a("ProtoBufRequest", "onResponse fail.rsp = null");
-    return null;
-    label339:
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetFriendCloudStorage";
+    label302:
+    paramViewGroup.b.setText("");
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfaa
  * JD-Core Version:    0.7.0.1
  */

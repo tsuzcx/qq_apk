@@ -1,24 +1,28 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.1.1;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.emoticonview.EmoticonGuideBubbleView;
+import com.tencent.qphone.base.util.QLog;
 
 public class appu
-  implements apag
+  implements Animation.AnimationListener
 {
-  appu(appt paramappt) {}
+  public appu(EmoticonGuideBubbleView paramEmoticonGuideBubbleView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.n();
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonGuideBubbleView", 2, "removeFastImage fadeoutanimation ended");
+    }
+    this.a.removeAllViews();
   }
   
-  public void b()
-  {
-    this.a.a.runOnUiThread(new VideoFilePresenter.1.1(this));
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appu
  * JD-Core Version:    0.7.0.1
  */

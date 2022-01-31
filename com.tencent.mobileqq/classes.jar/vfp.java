@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
-
-public final class vfp
-  implements Parcelable.Creator<EditRecordVideoSource>
+class vfp
+  extends veh
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
+  vfp(vez paramvez, String paramString1, String paramString2, boolean paramBoolean, vgf paramvgf)
   {
-    return new EditRecordVideoSource(paramParcel);
+    super(paramString1, paramString2, paramBoolean);
   }
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public boolean b()
   {
-    return new EditRecordVideoSource[paramInt];
+    this.jdField_a_of_type_Vgf.h = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfp
  * JD-Core Version:    0.7.0.1
  */

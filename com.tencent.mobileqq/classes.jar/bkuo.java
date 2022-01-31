@@ -1,35 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetWatermarkDictRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StWatermarkDict;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class bkuo
-  implements DialogInterface.OnClickListener
+class bkuo
+  implements yvn<CLIENT.StGetWatermarkDictRsp>
 {
-  public bkuo(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bkuo(bkum parambkum) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StGetWatermarkDictRsp paramStGetWatermarkDictRsp)
   {
-    Object localObject = ShortVideoPreviewActivity.a(this.a);
-    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
-    Intent localIntent = new Intent();
-    localIntent.setClassName((String)localObject, paramDialogInterface);
-    localIntent.addFlags(603979776);
-    localIntent.putExtra("file_send_path", this.a.d);
-    localIntent.putExtra("file_send_size", this.a.a);
-    localIntent.putExtra("file_send_duration", this.a.b);
-    localIntent.putExtra("file_source", this.a.c);
-    this.a.startActivity(localIntent);
-    ShortVideoPreviewActivity.a(this.a);
-    localObject = new Intent("key_video_select_confirm_ok_click");
-    ((Intent)localObject).putExtra("className", paramDialogInterface);
-    this.a.sendBroadcast((Intent)localObject);
+    if (paramBoolean)
+    {
+      blfg.b(bkum.a(), "[onReceive]:");
+      paramString = paramStGetWatermarkDictRsp.extInfo;
+      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.vecWatermarkDict.get();
+      paramString = new HashMap();
+      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.iterator();
+      while (paramStGetWatermarkDictRsp.hasNext())
+      {
+        CLIENT.StWatermarkDict localStWatermarkDict = (CLIENT.StWatermarkDict)paramStGetWatermarkDictRsp.next();
+        paramString.put(localStWatermarkDict.key.get(), localStWatermarkDict.value.get());
+      }
+      blfg.b(bkum.a(), "[onReceive] watermarkDict.size:" + paramString.size());
+      bkum.a(this.a, paramString);
+      return;
+    }
+    blfg.d(bkum.a(), "retCode:" + paramLong + " errMSg:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkuo
  * JD-Core Version:    0.7.0.1
  */

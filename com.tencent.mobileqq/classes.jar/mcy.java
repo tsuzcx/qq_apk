@@ -1,24 +1,81 @@
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public class mcy
-  implements View.OnClickListener
+class mcy
+  extends mcx
 {
-  public mcy(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
+  mcy(LinearLayout paramLinearLayout)
   {
-    QLog.d(this.a.c, 1, "onClick R.id.qav_btn_accept_video");
-    this.a.p();
-    this.a.a.a().ao = true;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131372860));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131372857));
+    this.jdField_a_of_type_AndroidViewView = paramLinearLayout.findViewById(2131372861);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131372863));
+  }
+  
+  Resources a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
+  }
+  
+  void a()
+  {
+    if (!a()) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
+      }
+      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      }
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      }
+    } while (this.jdField_a_of_type_AndroidWidgetProgressBar == null);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+  }
+  
+  boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null);
+  }
+  
+  boolean a(mda parammda)
+  {
+    a();
+    if ((parammda.b) && (parammda.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(parammda.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    if ((parammda.c) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null)) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    }
+    if ((parammda.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    if ((parammda.jdField_a_of_type_AndroidTextSpannableString != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
+      mcv.a(this.jdField_a_of_type_AndroidWidgetTextView, parammda);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mcy
  * JD-Core Version:    0.7.0.1
  */

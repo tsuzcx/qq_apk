@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.confess;
 
-import amnj;
+import aoeh;
 
 public class ConfessConfig$1
   implements Runnable
 {
-  public ConfessConfig$1(amnj paramamnj) {}
+  public ConfessConfig$1(aoeh paramaoeh) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ConfessConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessConfig.1
  * JD-Core Version:    0.7.0.1
  */

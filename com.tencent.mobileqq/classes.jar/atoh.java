@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public final class atoh
-  implements Parcelable.Creator<PicInfo>
+class atoh
+  extends alox
 {
-  public PicInfo a(Parcel paramParcel)
-  {
-    return new PicInfo(paramParcel);
-  }
+  atoh(atof paramatof) {}
   
-  public PicInfo[] a(int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    return new PicInfo[paramInt];
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    paramObject = String.valueOf(paramObject);
+    if ((paramBoolean) && (paramObject.equals(atof.a(this.a).a())))
+    {
+      atof.a(atof.a(this.a), 0, String.valueOf(paramObject));
+      if (atof.a(this.a) != null) {
+        atof.a(this.a).finish();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atoh
  * JD-Core Version:    0.7.0.1
  */

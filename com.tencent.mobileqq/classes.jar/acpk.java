@@ -1,36 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
 
 public class acpk
-  implements DialogInterface.OnClickListener
+  extends alox
 {
-  public acpk(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public acpk(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    this.a.n();
-    if (this.a.jdField_a_of_type_Boolean)
+    if (paramBoolean)
     {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.e();
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
-      this.a.f();
+      this.a.a();
+      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
     }
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, naj.a(), paramDialogInterface, "1");
+    while ((this.a.jdField_a_of_type_Bepp == null) || (!this.a.jdField_a_of_type_Bepp.isShowing()) || (this.a.isFinishing())) {
       return;
     }
+    this.a.jdField_a_of_type_Bepp.dismiss();
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
+      {
+        paramString = ((aloz)this.a.app.getManager(51)).e(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
+        if (paramString != null) {
+          this.a.d = paramString.name;
+        }
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpk
  * JD-Core Version:    0.7.0.1
  */

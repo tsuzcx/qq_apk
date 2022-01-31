@@ -1,39 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afyq
-  extends Handler
+class afyq
+  implements DialogInterface.OnClickListener
 {
-  public afyq(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  afyq(afyl paramafyl) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
-    for (;;)
-    {
-      return;
-      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
-      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
-      {
-        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.getTag();
-          if ((paramMessage != null) && ((paramMessage instanceof azsw))) {
-            ((azsw)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
-          }
-        }
-        i += 1;
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afyq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,48 @@
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class aidm
-  implements azls
+class aidm
+  implements TextWatcher
 {
-  public aidm(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public ArrayList<ResultRecord> a()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c();
-  }
+  aidm(aidj paramaidj) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
-    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
+    paramEditable = paramEditable.toString().trim();
+    if (TextUtils.isEmpty(paramEditable))
     {
-      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
-      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
-      if ((localGroups1 != null) || (localGroups2 != null))
-      {
-        FriendTeamListInnerFrame.a(this.a).a(0);
-        FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
-        FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
-        if (localGroups1 != null) {
-          this.a.jdField_a_of_type_Azlq.a();
-        }
-        if (localGroups2 != null) {
-          this.a.jdField_a_of_type_Azlq.c();
-        }
-      }
+      this.jdField_a_of_type_JavaLangString = "";
+      aidj.a(this.jdField_a_of_type_Aidj).a();
+      aidj.a(this.jdField_a_of_type_Aidj).setVisibility(8);
+      aidj.a(this.jdField_a_of_type_Aidj).setVisibility(8);
+      aidj.a(this.jdField_a_of_type_Aidj).setVisibility(8);
     }
+    while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramEditable)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TenDocMessageSearchDialog", 2, "afterTextChanged, mLastKeyword = " + this.jdField_a_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    }
+    this.jdField_a_of_type_JavaLangString = paramEditable;
+    aidj.a(this.jdField_a_of_type_Aidj).setVisibility(0);
+    this.jdField_a_of_type_Aidj.a();
   }
   
-  public ArrayList<String> b()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aidm
  * JD-Core Version:    0.7.0.1
  */

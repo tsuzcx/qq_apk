@@ -22,7 +22,7 @@ class UserGuideWeishiFragment$1
       if (localFragmentActivity.isFinishing()) {
         return;
       }
-      if (AppSetting.d)
+      if (AppSetting.c)
       {
         if (QLog.isColorLevel()) {
           QLog.d("UserGuideWeishiFragment", 2, "needAutoFinishForTalkBack|true ");
@@ -42,8 +42,8 @@ class UserGuideWeishiFragment$1
     if ((bool1) && (bool2)) {}
     for (bool1 = true;; bool1 = false)
     {
-      AppSetting.d = bool1;
-      if ((!AppSetting.d) || (localThrowable == null)) {
+      AppSetting.c = bool1;
+      if ((!AppSetting.c) || (localThrowable == null)) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -56,7 +56,7 @@ class UserGuideWeishiFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserGuideWeishiFragment.1
  * JD-Core Version:    0.7.0.1
  */

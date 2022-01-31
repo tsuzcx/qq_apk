@@ -1,49 +1,161 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import java.lang.ref.WeakReference;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.TextFaceLayerTouchListener.1;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
 public class xcq
-  implements DialogInterface.OnClickListener
+  implements wzz<wzy>
 {
-  public xcq(TroopGiftPanel paramTroopGiftPanel, int paramInt) {}
+  private final int jdField_a_of_type_Int = xee.b(DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout), 40.0F);
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private xcq(DoodleLayout paramDoodleLayout) {}
+  
+  public boolean a(wzy paramwzy, MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcc != null) && (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcc.a != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcc.a.c)))
+    if ((paramwzy instanceof wze)) {
+      localRect = new Rect();
+    }
+    for (Rect localRect = ((wze)paramwzy).a(localRect);; localRect = null)
     {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c();
-      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 2) {
-        axqy.b(null, "dc00899", "Grp_flower", "", "C2C", "Clk_topay", 0, 0, "", "", "", "");
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      int i = (int)Math.abs(f2 - DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout));
+      int j;
+      int k;
+      int m;
+      switch (paramMotionEvent.getAction() & 0xFF)
+      {
+      case 3: 
+      case 4: 
+      default: 
+      case 0: 
+      case 2: 
+      case 5: 
+      case 6: 
+        do
+        {
+          return false;
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout });
+          this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b.getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
+          paramwzy = this.jdField_a_of_type_AndroidGraphicsRect;
+          paramwzy.top -= this.jdField_a_of_type_Int;
+          paramwzy = this.jdField_a_of_type_AndroidGraphicsRect;
+          paramwzy.bottom += this.jdField_a_of_type_Int;
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getGlobalVisibleRect(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect);
+          DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, (int)f2);
+          this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new DoodleLayout.TextFaceLayerTouchListener.1(this), 200L);
+          return false;
+        } while (i <= DoodleLayout.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout));
+        if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a()) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.e()) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 12))
+        {
+          i = (int)f1;
+          j = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
+          k = (int)f2;
+          m = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
+          if ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(f1, f2, localRect)))
+          {
+            DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
+            return false;
+          }
+          DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+          return false;
+        }
+        if ((paramMotionEvent.getPointerCount() == 1) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)))
+        {
+          DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
+          return false;
+        }
+        DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+        return false;
+      }
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a()) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.e()) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 12)))
+      {
+        i = (int)f1;
+        j = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
+        k = (int)f2;
+        m = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
+        if ((DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) && ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(f1, f2, localRect))))
+        {
+          if (!(paramwzy instanceof wze)) {
+            break label661;
+          }
+          wsv.b("DoodleLayout", "remove face.");
+          ((wze)paramwzy).b();
+          DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+        }
+      }
+      label661:
+      while ((paramMotionEvent.getPointerCount() != 1) || (this.jdField_a_of_type_AndroidGraphicsRect == null) || (!this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2))) {
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.f();
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.d(0);
+          return false;
+          if ((paramwzy instanceof wzs))
+          {
+            wsv.b("DoodleLayout", "editpic remove text.");
+            paramwzy.a();
+            paramwzy.b(false);
+          }
+          else if ((paramwzy instanceof wzq))
+          {
+            paramMotionEvent = ((wzq)paramwzy).a();
+            if ((paramMotionEvent != null) && ((paramMotionEvent instanceof wzu)))
+            {
+              paramMotionEvent = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();
+              if (paramMotionEvent != null) {
+                paramMotionEvent.a();
+              }
+            }
+            ((wzq)paramwzy).b();
+          }
+        }
+      }
+      if ((paramwzy instanceof wzs))
+      {
+        wsv.b("DoodleLayout", "remove text.");
+        paramwzy.a();
+        paramwzy.b(false);
+      }
+      for (;;)
+      {
+        DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+        break;
+        if ((paramwzy instanceof wze))
+        {
+          wsv.b("DoodleLayout", "remove face.");
+          ((wze)paramwzy).b();
+        }
+        else if ((paramwzy instanceof wzq))
+        {
+          paramMotionEvent = ((wzq)paramwzy).a();
+          if ((paramMotionEvent != null) && ((paramMotionEvent instanceof wzu)))
+          {
+            paramMotionEvent = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();
+            if (paramMotionEvent != null) {
+              paramMotionEvent.a();
+            }
+          }
+          ((wzq)paramwzy).b();
+        }
       }
     }
-    else
-    {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 6)
-    {
-      axqy.b(null, "dc00899", "Grp_flower", "", "discuss_grp", "Clk_topay", 0, 0, "", "", "", "");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 7)
-    {
-      axqy.b(null, "dc00899", "Grp_flower", "", "temp_c2c", "Clk_topay", 0, 0, "", "", "", "");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
-    {
-      akbj.a("gift_store", "pay_tip", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
-      return;
-    }
-    axqy.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_topay", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mua.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xcq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import osj;
-import pau;
-import puy;
+import oxb;
+import pgd;
+import qbs;
 
 class ComponentLastRead$2
   implements Runnable
@@ -12,17 +12,17 @@ class ComponentLastRead$2
   public void run()
   {
     if (this.this$0.a.a.i()) {
-      osj.a().a(this.this$0);
+      oxb.a().a(this.this$0);
     }
     while (this.this$0.a.a.e() != 0) {
       return;
     }
-    osj.a().a(this.this$0);
+    oxb.a().a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead.2
  * JD-Core Version:    0.7.0.1
  */

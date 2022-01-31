@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.text.Layout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -14,9 +15,11 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import com.tencent.theme.ISkinTypeface;
 
 public class SimpleTextView
   extends View
+  implements ISkinTypeface
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
@@ -46,6 +49,7 @@ public class SimpleTextView
     this.jdField_a_of_type_AndroidTextTextPaint.density = paramContext.getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.SANS_SERIF);
   }
   
   private void a()
@@ -68,14 +72,14 @@ public class SimpleTextView
     }
   }
   
-  public Paint a()
-  {
-    return this.jdField_a_of_type_AndroidTextTextPaint;
-  }
-  
   public final CharSequence a()
   {
     return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public Paint getPaint()
+  {
+    return this.jdField_a_of_type_AndroidTextTextPaint;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -227,7 +231,7 @@ public class SimpleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.SimpleTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,41 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class apmm
-  implements aplj
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  apmm(apmi paramapmi) {}
+  apmm(aply paramaply, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void a(apnc paramapnc)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    apkt localapkt = ((aplm)paramapnc).a();
-    if (localapkt != null)
-    {
-      if (1 != localapkt.c()) {
-        break label147;
-      }
-      if (!localapkt.a().isZipInnerFile) {
-        break label91;
-      }
-      paramapnc = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localapkt.a());
-      if ((paramapnc != null) && (this.a.jdField_a_of_type_Apne != null)) {
-        this.a.jdField_a_of_type_Apne.a(String.valueOf(localapkt.a()), paramapnc);
-      }
+    Bundle localBundle;
+    if (paramBundle != null) {
+      localBundle = new Bundle();
     }
-    label91:
-    while (2 != localapkt.c())
+    try
     {
-      do
-      {
-        return;
-        paramapnc = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localapkt.a(), 7);
-      } while ((paramapnc == null) || (this.a.jdField_a_of_type_Apne == null));
-      this.a.jdField_a_of_type_Apne.a(localapkt.c(), paramapnc);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
+      if (!paramBoolean) {
+        localJSONObject.put("msg", paramBundle.getString("errMsg"));
+      }
+      localBundle.putString("result", localJSONObject.toString());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    label147:
-    aouu localaouu = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    String str = localapkt.e();
-    if (localapkt.a() == null) {}
-    for (paramapnc = null;; paramapnc = localapkt.a().e)
+    catch (Throwable paramBundle)
     {
-      paramapnc = localaouu.a(str, paramapnc, 7, localapkt);
-      if ((paramapnc == null) || (this.a.jdField_a_of_type_Apne == null)) {
-        break;
-      }
-      this.a.jdField_a_of_type_Apne.a(localapkt.e(), paramapnc);
-      return;
+      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apmm
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import android.opengl.GLES20;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import avte;
-import avwg;
-import avwh;
-import axim;
-import bfma;
-import biik;
+import axld;
+import axof;
+import axog;
+import azds;
+import bhmu;
+import bkkj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
@@ -28,8 +28,8 @@ public class SimpleEffectsCaptureView
   implements CameraInterFace
 {
   private static QQFilterRenderManager jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
-  private avwg jdField_a_of_type_Avwg;
-  private avwh jdField_a_of_type_Avwh;
+  private axof jdField_a_of_type_Axof;
+  private axog jdField_a_of_type_Axog;
   protected QQFilterRenderManager a;
   private short[] jdField_a_of_type_ArrayOfShort;
   private float[] jdField_b_of_type_ArrayOfFloat = new float[50];
@@ -41,8 +41,8 @@ public class SimpleEffectsCaptureView
   
   static
   {
-    bfma.a();
-    biik.a();
+    bhmu.a();
+    bkkj.a();
     VideoPrefsUtil.init(BaseApplicationImpl.getContext(), ShortVideoUtils.a());
   }
   
@@ -88,7 +88,7 @@ public class SimpleEffectsCaptureView
   {
     paramArrayOfByte = a(paramArrayOfByte, paramInt1, paramInt2);
     paramInt2 >>= 1;
-    paramInt1 = axim.q;
+    paramInt1 = azds.q;
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null) {
       paramInt1 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a();
     }
@@ -104,8 +104,8 @@ public class SimpleEffectsCaptureView
     if (QLog.isColorLevel()) {
       QLog.d("SimpleEffectsCaptureView", 2, "onAudioFrames length=" + paramInt2 + " shData.length: " + paramArrayOfByte.length + " duration: " + i + " countRefreshMs: " + i1);
     }
-    if (this.jdField_a_of_type_Avwg != null) {
-      this.jdField_a_of_type_Avwg.a(n, this.jdField_b_of_type_ArrayOfFloat);
+    if (this.jdField_a_of_type_Axof != null) {
+      this.jdField_a_of_type_Axof.a(n, this.jdField_b_of_type_ArrayOfFloat);
     }
   }
   
@@ -150,8 +150,8 @@ public class SimpleEffectsCaptureView
       localQQFilterRenderManager.setParam("key_width", String.valueOf(this.n));
       localQQFilterRenderManager.setParam("key_height", String.valueOf(this.o));
       i = localQQFilterRenderManager.drawFrame(paramInt);
-      if (this.jdField_a_of_type_Avwh != null) {
-        this.jdField_a_of_type_Avwh.a(System.currentTimeMillis());
+      if (this.jdField_a_of_type_Axog != null) {
+        this.jdField_a_of_type_Axog.a(System.currentTimeMillis());
       }
       return i;
     }
@@ -243,9 +243,9 @@ public class SimpleEffectsCaptureView
     }
   }
   
-  public void setAudioVolumeListener(avwg paramavwg)
+  public void setAudioVolumeListener(axof paramaxof)
   {
-    this.jdField_a_of_type_Avwg = paramavwg;
+    this.jdField_a_of_type_Axof = paramaxof;
   }
   
   public void setBeauty(int paramInt)
@@ -269,9 +269,9 @@ public class SimpleEffectsCaptureView
     this.m = paramBoolean;
   }
   
-  public void setFaceEffectListener(avwh paramavwh)
+  public void setFaceEffectListener(axog paramaxog)
   {
-    this.jdField_a_of_type_Avwh = paramavwh;
+    this.jdField_a_of_type_Axog = paramaxog;
   }
   
   protected void u()
@@ -287,7 +287,7 @@ public class SimpleEffectsCaptureView
       if (QLog.isColorLevel()) {
         QLog.d("SimpleEffectsCaptureView", 2, "QQFilterRenderManager initQQFilterManger");
       }
-      this.l = avte.b();
+      this.l = axld.b();
       QQFilterRenderManager localQQFilterRenderManager = new QQFilterRenderManager(new int[] { 25 });
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = localQQFilterRenderManager;
       jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = localQQFilterRenderManager;
@@ -298,7 +298,7 @@ public class SimpleEffectsCaptureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
-import java.lang.ref.WeakReference;
-
-class bhej
+public class bhej
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<bhdy> jdField_a_of_type_JavaLangRefWeakReference;
-  int b;
-  
-  private bhej(bheb parambheb) {}
+  public static com.tencent.smtt.sdk.ValueCallback a(android.webkit.ValueCallback paramValueCallback)
+  {
+    if (paramValueCallback != null) {
+      return new bhek(paramValueCallback);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhej
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.biz.qqcircle.comment.ItemReplyView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class ttt
-  implements View.OnTouchListener
+  implements tzq
 {
-  public ttt(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public ttt(ItemReplyView paramItemReplyView, FeedCloudMeta.StReply paramStReply) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.targetUser.id.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttt
  * JD-Core Version:    0.7.0.1
  */

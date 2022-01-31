@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class afrb
-  extends akat
+class afrb
+  implements atti
 {
-  private afrb(FriendFragment paramFriendFragment) {}
+  afrb(afra paramafra) {}
   
-  protected void f()
+  public void a(afrf paramafrf)
   {
-    if (FriendFragment.b(this.a)) {
-      FriendFragment.a(this.a, 1400L, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
+    }
+    afqr.a(this.a.jdField_a_of_type_Afqr, paramafrf);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      afqr.a(this.a.jdField_a_of_type_Afqr, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_Afrf);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afrb
  * JD-Core Version:    0.7.0.1
  */

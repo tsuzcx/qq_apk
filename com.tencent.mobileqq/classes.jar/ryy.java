@@ -1,42 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager.PlayStartVideoRunnable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.33;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class ryy
-  implements onx
+class ryy
+  implements View.OnClickListener
 {
-  public ryy(VideoPlayManager.PlayStartVideoRunnable paramPlayStartVideoRunnable) {}
+  ryy(ryx paramryx) {}
   
-  public void a(ooa paramooa)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Viola.VideoPlayManager", 2, "UUIDToUrlCallback Callback vid=" + paramooa.jdField_b_of_type_JavaLangString + ", url=" + paramooa.jdField_a_of_type_JavaLangString + ", isH265=" + paramooa.jdField_a_of_type_Boolean + ", isHWCodec=" + paramooa.jdField_b_of_type_Boolean + ", fileBitRate=" + paramooa.c);
-    }
-    if ((VideoPlayManager.PlayStartVideoRunnable.a(this.a) != null) && (paramooa.jdField_b_of_type_JavaLangString.equals(VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.jdField_a_of_type_JavaLangString))) {
-      if (TextUtils.isEmpty(paramooa.jdField_a_of_type_JavaLangString)) {
-        if (VideoPlayManager.a(this.a.this$0) != null) {
-          VideoPlayManager.a(this.a.this$0).a(null, 123, 107, 0, "UUIDToUrlCallback vid2url ERROR ", null);
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
+    RIJRedPacketManager.a().a(this.a.a.this$0, 5, FastWebActivity.c(this.a.a.this$0), FastWebActivity.a(this.a.a.this$0).innerUniqueID, new ryz(this), false, null);
+    paramView = new orz();
+    orz localorz = paramView.a("rowkey", FastWebActivity.a(this.a.a.this$0).innerUniqueID).a("content_type", Integer.valueOf(2));
+    if (bdee.h(BaseApplicationImpl.getContext())) {}
+    for (int i = 2;; i = 1)
     {
-      return;
-      if (paramooa.jdField_a_of_type_Int == 1)
-      {
-        VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramooa.jdField_b_of_type_JavaLangString, paramooa.jdField_a_of_type_JavaLangString, 1, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramooa.jdField_b_of_type_Boolean, true, false);
-        return;
-      }
-      VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramooa.jdField_b_of_type_JavaLangString, paramooa.jdField_a_of_type_JavaLangString, 2, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramooa.jdField_b_of_type_Boolean, true, false);
+      localorz.a("network_type", Integer.valueOf(i)).a("os", Integer.valueOf(1)).a("imei", ors.f());
+      nrt.a("0X800ABBA", paramView.a());
       return;
     }
-    QLog.d("Viola.VideoPlayManager", 2, "vid2url换回来后，当前视频已经不再播放，vid:" + paramooa.jdField_b_of_type_JavaLangString + " url:" + paramooa.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryy
  * JD-Core Version:    0.7.0.1
  */

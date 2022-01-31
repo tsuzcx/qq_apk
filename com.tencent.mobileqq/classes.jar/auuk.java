@@ -1,67 +1,36 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.1;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.2;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-public class auuk
-  implements AdapterView.OnItemClickListener
+class auuk
+  implements behy<oidb_0x8e4.RspBody>
 {
   auuk(auuj paramauuj) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (this.a.jdField_a_of_type_Bbjq.a().isShowing()) {
-      this.a.jdField_a_of_type_Bbjq.a().dismiss();
-    }
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131720917;
-      }
-    }
-    for (;;)
+    if (paramInt == 0)
     {
-      if (paramInt != -1)
-      {
-        wij.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131720918;
-        }
-      }
-      else
-      {
-        if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-        {
-          wij.a(1, 2131699292);
-          return;
-        }
-        this.a.jdField_a_of_type_Auum.a(true);
-        switch ((int)paramLong)
-        {
-        default: 
-          return;
-        case 0: 
-          ThreadManager.postImmediately(new ShareHelper.1.1(this), null, true);
-          return;
-        case 1: 
-          ThreadManager.postImmediately(new ShareHelper.1.2(this), null, true);
-          return;
-        }
-        ThreadManager.postImmediately(new ShareHelper.1.3(this, paramLong), null, true);
-        return;
-      }
-      paramInt = -1;
+      paramRspBody = paramRspBody.poi_info;
+      String str = paramRspBody.bytes_uid.get().toStringUtf8();
+      this.a.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
     }
+    do
+    {
+      return;
+      this.a.a.a(paramInt, paramRspBody, alpo.a(2131705445));
+    } while (!QLog.isColorLevel());
+    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auuk
  * JD-Core Version:    0.7.0.1
  */

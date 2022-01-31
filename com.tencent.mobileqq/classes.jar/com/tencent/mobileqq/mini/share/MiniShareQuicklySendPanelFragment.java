@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.share;
 
-import actj;
+import aekt;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,8 +12,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
-import awgs;
-import bkmg;
+import aybw;
+import bmxq;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -27,7 +27,7 @@ import java.util.List;
 
 public class MiniShareQuicklySendPanelFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, bkmg
+  implements View.OnClickListener, bmxq
 {
   public static final int QUCIKLY_SHARE_REQUEST_CODE = 678;
   public static final String TAG = MiniShareQuicklySendPanelFragment.class.getSimpleName();
@@ -39,7 +39,7 @@ public class MiniShareQuicklySendPanelFragment
   private boolean isCallback;
   private boolean isShowedPanel;
   private XListView listView;
-  private awgs mHelper;
+  private aybw mHelper;
   private View mRootView;
   private Handler mainHandler;
   private boolean needShareCallback;
@@ -55,15 +55,15 @@ public class MiniShareQuicklySendPanelFragment
   private View getBottomView()
   {
     View localView = new View(getActivity());
-    localView.setLayoutParams(new AbsListView.LayoutParams(-1, actj.a(130.0F, getResources())));
-    localView.setBackgroundResource(2130849248);
+    localView.setLayoutParams(new AbsListView.LayoutParams(-1, aekt.a(130.0F, getResources())));
+    localView.setBackgroundResource(2130849679);
     return localView;
   }
   
   private void initData()
   {
     Bundle localBundle = getActivity().getIntent().getExtras();
-    this.mHelper = new awgs();
+    this.mHelper = new aybw();
     List localList = this.mHelper.a(getActivity(), getActivity().app);
     if (localBundle != null)
     {
@@ -136,7 +136,7 @@ public class MiniShareQuicklySendPanelFragment
   public void displayPanelFinish()
   {
     if (this.arrowView != null) {
-      this.arrowView.setBackgroundResource(2130848617);
+      this.arrowView.setBackgroundResource(2130849047);
     }
   }
   
@@ -163,7 +163,7 @@ public class MiniShareQuicklySendPanelFragment
   public void hidePanelFinish()
   {
     if (this.arrowView != null) {
-      this.arrowView.setBackgroundResource(2130848616);
+      this.arrowView.setBackgroundResource(2130849046);
     }
   }
   
@@ -217,16 +217,16 @@ public class MiniShareQuicklySendPanelFragment
       return null;
     }
     this.mainHandler = new Handler(Looper.getMainLooper());
-    this.mRootView = paramLayoutInflater.inflate(2131562427, paramViewGroup, false);
-    this.slidePanel = ((SlideBottomPanel)this.mRootView.findViewById(2131376272));
-    this.contentView = this.mRootView.findViewById(2131364721);
-    this.listView = ((XListView)this.mRootView.findViewById(2131369266));
-    this.footerView = this.mRootView.findViewById(2131375865);
-    this.backgroundView = this.mRootView.findViewById(2131362998);
-    this.arrowView = ((ImageView)this.mRootView.findViewById(2131377634));
+    this.mRootView = paramLayoutInflater.inflate(2131562631, paramViewGroup, false);
+    this.slidePanel = ((SlideBottomPanel)this.mRootView.findViewById(2131376775));
+    this.contentView = this.mRootView.findViewById(2131364800);
+    this.listView = ((XListView)this.mRootView.findViewById(2131369501));
+    this.footerView = this.mRootView.findViewById(2131376364);
+    this.backgroundView = this.mRootView.findViewById(2131363034);
+    this.arrowView = ((ImageView)this.mRootView.findViewById(2131378176));
     this.listView.addFooterView(getBottomView());
     this.slidePanel.setSlidePanelListener(this);
-    this.footerView.findViewById(2131375832).setOnClickListener(this);
+    this.footerView.findViewById(2131376331).setOnClickListener(this);
     initData();
     return this.mRootView;
   }
@@ -260,7 +260,7 @@ public class MiniShareQuicklySendPanelFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniShareQuicklySendPanelFragment
  * JD-Core Version:    0.7.0.1
  */

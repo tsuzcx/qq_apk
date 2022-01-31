@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.app;
 
-import akdh;
+import aluw;
 import mqq.util.WeakReference;
-import osg;
-import saz;
-import sdc;
+import owy;
+import ssp;
+import suv;
 
 class PublicAccountHandler$FolderRefreshRunnable
   implements Runnable
 {
   private final WeakReference<QQAppInterface> a;
-  private final WeakReference<akdh> b;
+  private final WeakReference<aluw> b;
   
-  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, akdh paramakdh)
+  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, aluw paramaluw)
   {
     this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramakdh);
+    this.b = new WeakReference(paramaluw);
   }
   
   public void run()
   {
     Object localObject = (QQAppInterface)this.a.get();
-    akdh localakdh = (akdh)this.b.get();
-    if ((localObject != null) && (localakdh != null))
+    aluw localaluw = (aluw)this.b.get();
+    if ((localObject != null) && (localaluw != null))
     {
-      sdc.a().a((QQAppInterface)localObject, localakdh.a());
-      saz.a().c((QQAppInterface)localObject);
-      sdc.a().g((QQAppInterface)localObject);
-      localObject = osg.a();
+      suv.a().a((QQAppInterface)localObject, localaluw.a());
+      ssp.a().c((QQAppInterface)localObject);
+      suv.a().g((QQAppInterface)localObject);
+      localObject = owy.a();
       if (localObject != null) {
-        ((osg)localObject).e();
+        ((owy)localObject).e();
       }
     }
   }

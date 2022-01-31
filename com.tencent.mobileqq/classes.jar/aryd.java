@@ -1,30 +1,29 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class aryd
-  implements QQPermissionCallback
+class aryd
+  implements DialogInterface.OnClickListener
 {
-  public aryd(LocationShareFragment paramLocationShareFragment, BaseActivity paramBaseActivity, int paramInt1, String paramString, int paramInt2) {}
+  aryd(arya paramarya) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramArrayOfString = bbdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    if (paramArrayOfString != null) {
-      paramArrayOfString.setOnDismissListener(new arye(this));
+    if (paramInt == 1)
+    {
+      aryh.a(arya.a(this.a), false, "shareToQQ", arya.a(this.a));
+      ndq.a(arya.a(this.a), 0, "", "");
+      if (arya.a(this.a) != null) {
+        arya.a(this.a).b(1);
+      }
+      arya.a(this.a).moveTaskToBack(true);
     }
-    arus.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 1);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,40 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public class niw
-  implements View.OnTouchListener
+class niw
+  implements bhqd
 {
-  public niw(VideoCoverFragment paramVideoCoverFragment) {}
+  niw(nin paramnin, bhpy parambhpy) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (this.jdField_a_of_type_Nin.f) {
+      return;
+    }
+    this.jdField_a_of_type_Nin.f = true;
+    if (paramInt == 0) {
+      this.jdField_a_of_type_Nin.jdField_a_of_type_Int = 0;
+    }
+    for (;;)
     {
-      VideoCoverFragment.a(this.a).b();
-      if (!this.a.a())
-      {
-        if (!VideoCoverFragment.a(this.a)) {
-          break label47;
-        }
-        this.a.a(false);
+      this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nin.jdField_a_of_type_Amnh);
+      this.jdField_a_of_type_Nin.jdField_a_of_type_Amnh = new amnh(new nix(this));
+      this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nin.jdField_a_of_type_Amnh);
+      amnm.a(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nin.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      if (paramInt == 1) {
+        this.jdField_a_of_type_Nin.jdField_a_of_type_Int = 2;
+      } else if (paramInt == 2) {
+        this.jdField_a_of_type_Nin.jdField_a_of_type_Int = 1;
       }
     }
-    return false;
-    label47:
-    this.a.a(true);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     niw
  * JD-Core Version:    0.7.0.1
  */

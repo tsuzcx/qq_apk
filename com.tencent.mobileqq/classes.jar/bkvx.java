@@ -1,55 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
-public class bkvx
-  extends AnimatorListenerAdapter
+public abstract interface bkvx
 {
-  public bkvx(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public abstract void a(MetaMaterial paramMetaMaterial);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
-  }
+  public abstract void a(MetaMaterial paramMetaMaterial, int paramInt);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
-    {
-      this.a.a.set(true);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
-      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      return;
-      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
-      CameraCaptureButtonLayout.a(this.a);
-      CameraCaptureButtonLayout.a(this.a, 1.0F);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
-  }
+  public abstract void b(MetaMaterial paramMetaMaterial);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkvx
  * JD-Core Version:    0.7.0.1
  */

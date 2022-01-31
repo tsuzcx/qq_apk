@@ -1,61 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
 
 public class ancg
-  extends ampa<ancf>
 {
-  public static ancf a()
+  private Bundle a;
+  
+  public ancg(Bundle paramBundle)
   {
-    return (ancf)ampl.a().a(377);
+    this.a = paramBundle;
   }
   
-  public int a()
+  public Bundle a()
   {
-    return 377;
+    return this.a;
   }
   
-  @NonNull
-  public ancf a(int paramInt)
+  public void a(long paramLong)
   {
-    return new ancf();
+    this.a.putLong("downloadItems", paramLong);
   }
   
-  @Nullable
-  public ancf a(amph[] paramArrayOfamph)
+  public void a(boolean paramBoolean)
   {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return ancf.a(paramArrayOfamph);
-    }
-    return null;
+    this.a.putBoolean("NoLimitParams", paramBoolean);
   }
   
-  public Class<ancf> a()
+  public void b(long paramLong)
   {
-    return ancf.class;
+    this.a.putLong("recognitionMask", paramLong);
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(ancf paramancf) {}
-  
-  public int b()
+  public void b(boolean paramBoolean)
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.a.putBoolean("arTransferPromotion", paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,24 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 
 class benz
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  benz(beny parambeny) {}
+  benz(benw parambenw) {}
   
-  public void onClick(View paramView) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (benw.a(this.a) != null)
+    {
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      benw.a(this.a).setAlpha(f);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     benz
  * JD-Core Version:    0.7.0.1
  */

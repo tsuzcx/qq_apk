@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bcqf;
+import bepp;
 
 class DataJsPlugin$30$1
   implements Runnable
 {
-  DataJsPlugin$30$1(DataJsPlugin.30 param30, bcqf parambcqf) {}
+  DataJsPlugin$30$1(DataJsPlugin.30 param30, bepp parambepp) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class DataJsPlugin$30$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.DataJsPlugin.30.1
  * JD-Core Version:    0.7.0.1
  */

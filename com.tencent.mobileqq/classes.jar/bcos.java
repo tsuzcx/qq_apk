@@ -1,23 +1,21 @@
 import android.view.View;
-import android.widget.BaseAdapter;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView.UpdateTroopMembersFaceTask;
 
-public abstract class bcos
-  extends BaseAdapter
+public class bcos
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public bcos(TroopMoreDetailView.UpdateTroopMembersFaceTask paramUpdateTroopMembersFaceTask, TroopMoreDetailView paramTroopMoreDetailView) {}
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract boolean a(int paramInt);
-  
-  public boolean a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcos
  * JD-Core Version:    0.7.0.1
  */

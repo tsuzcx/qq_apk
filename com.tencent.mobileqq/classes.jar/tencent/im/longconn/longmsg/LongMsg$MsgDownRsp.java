@@ -24,7 +24,7 @@ public final class LongMsg$MsgDownRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.longconn.longmsg.LongMsg.MsgDownRsp
  * JD-Core Version:    0.7.0.1
  */

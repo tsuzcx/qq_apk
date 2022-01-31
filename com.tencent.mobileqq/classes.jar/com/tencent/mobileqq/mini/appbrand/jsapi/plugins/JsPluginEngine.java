@@ -57,6 +57,7 @@ public class JsPluginEngine
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.PayJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.VideoJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.EmbeddedVideoJsPlugin"));
+    localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.PreCacheJsPlugin"));
     if (Build.VERSION.SDK_INT >= 18) {
       localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BluetoothJsPlugin"));
     }
@@ -181,7 +182,7 @@ public class JsPluginEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.JsPluginEngine
  * JD-Core Version:    0.7.0.1
  */

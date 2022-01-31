@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui;
 
-import bkcm;
-import bkcx;
+import bmnw;
+import bmoh;
 
 public class EditTextDialog$13
   implements Runnable
 {
-  public EditTextDialog$13(bkcm parambkcm) {}
+  public EditTextDialog$13(bmnw parambmnw) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class EditTextDialog$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.13
  * JD-Core Version:    0.7.0.1
  */

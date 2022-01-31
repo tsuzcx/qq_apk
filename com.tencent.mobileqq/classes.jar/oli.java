@@ -1,43 +1,32 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class oli
-  implements INetInfoHandler
+  implements oil
 {
-  public void onNetMobile2None() {}
+  public oli(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void onNetMobile2Wifi(String paramString)
+  public void a(oio paramoio)
   {
-    QLog.d("KBPreDownloadUtils", 2, "[onNetMobile2Wifi] ");
-    AppNetConnInfo.unregisterNetInfoHandler(olg.a());
-    olg.a();
-  }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    QLog.d("KBPreDownloadUtils", 2, "[onNetNone2Wifi] ");
-    AppNetConnInfo.unregisterNetInfoHandler(olg.a());
-    olg.a();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
-    bdle.a().a("101480433");
-  }
-  
-  public void onNetWifi2None()
-  {
-    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
-    bdle.a().a("101480433");
+    StringBuilder localStringBuilder = new StringBuilder().append("onBiuAndCommentSend fragment");
+    if (paramoio == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramoio.a()))
+    {
+      QLog.d("ReadInJoyCommentListFragment", 1, localObject);
+      if ((paramoio == null) || (paramoio.a() != 0)) {
+        break;
+      }
+      oik.a(paramoio.b(), paramoio.a(), paramoio.c(), paramoio.b(), paramoio.a(), paramoio.c(), paramoio.d(), paramoio.a());
+      return;
+    }
+    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131713267), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oli
  * JD-Core Version:    0.7.0.1
  */

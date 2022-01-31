@@ -1,34 +1,22 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agko
-  extends aumg
+class agko
+  implements DialogInterface.OnClickListener
 {
-  public agko(PhoneMatchView.1 param1) {}
+  agko(agkk paramagkk) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
-  }
-  
-  protected void e(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
-  }
-  
-  protected void f(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
+    paramDialogInterface.dismiss();
+    zqh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.g);
+    this.a.g = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agko
  * JD-Core Version:    0.7.0.1
  */

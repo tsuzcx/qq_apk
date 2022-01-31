@@ -1,39 +1,22 @@
-import java.nio.ByteBuffer;
+import android.os.Bundle;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aznx
+  implements EIPCResultCallback
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
+  aznx(aznw paramaznw) {}
   
-  public aznx(long paramLong)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a = 2882377846L;
-    this.b = 1007L;
-    this.c = 0L;
-    this.d = paramLong;
-  }
-  
-  public aznx(ByteBuffer paramByteBuffer)
-  {
-    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-  }
-  
-  public void a(ByteBuffer paramByteBuffer)
-  {
-    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
+    if ((paramEIPCResult.isSuccess()) && (paramEIPCResult.data.getBoolean("key_monitor"))) {
+      azob.a().e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aznx
  * JD-Core Version:    0.7.0.1
  */

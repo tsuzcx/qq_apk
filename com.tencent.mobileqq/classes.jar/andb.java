@@ -1,69 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class andb
-  extends ampa<ancy>
+class andb
+  implements Animator.AnimatorListener
 {
-  public static ancy a()
-  {
-    return (ancy)ampl.a().a(346);
-  }
+  andb(ancz paramancz) {}
   
-  public int a()
-  {
-    return 346;
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  @NonNull
-  public ancy a(int paramInt)
-  {
-    return new ancy();
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  @Nullable
-  public ancy a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return ancy.a(paramArrayOfamph);
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public Class<ancy> a()
-  {
-    return ancy.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ancy paramancy)
-  {
-    if ((paramancy != null) && (!TextUtils.isEmpty(paramancy.d()))) {
-      ((aygx)BaseApplicationImpl.getApplication().getRuntime().getManager(272)).a(paramancy);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andb
  * JD-Core Version:    0.7.0.1
  */

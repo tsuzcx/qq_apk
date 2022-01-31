@@ -1,55 +1,65 @@
-import android.app.Activity;
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class aegi
-  extends BroadcastReceiver
+  extends WebViewClient
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  boolean jdField_a_of_type_Boolean = true;
+  private aegi(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
-  public aegi(Activity paramActivity)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = true;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
-      if (!a(paramContext)) {
-        this.jdField_a_of_type_Boolean = bool;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
     }
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
+    }
+    if (this.a.a(paramString)) {
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    }
+    try
+    {
+      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
+      return;
+    }
+    catch (Exception paramWebView) {}
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    return;
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(true);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
+    }
+    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
     for (;;)
     {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      return;
-      bool = false;
-      break;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = false;
-      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = true;
+      return true;
+      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
+        this.a.a(paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegi
  * JD-Core Version:    0.7.0.1
  */

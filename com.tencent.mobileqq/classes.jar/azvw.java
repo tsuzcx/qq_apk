@@ -1,35 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.text.TextUtils;
 
-class azvw
-  implements syq<azvy, syn>
+public class azvw
 {
-  azvw(azvv paramazvv) {}
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void a(@NonNull azvy paramazvy, @Nullable syn paramsyn, @NonNull ErrorMessage paramErrorMessage)
+  public azvw(azvv paramazvv, azsa paramazsa)
   {
-    if (paramErrorMessage.isFail())
-    {
-      ved.e("QQ.Troop.homework.SendArithHomeResultSegment", "onCmdRespond failed :" + paramErrorMessage);
-      azvv.a(this.a, paramErrorMessage);
+    if (paramazsa == null) {
       return;
     }
-    if (paramsyn.a == 0)
-    {
-      paramazvy = new azvz();
-      paramazvy.a = azvv.a(this.a);
-      paramazvy.b = azvv.a(this.a).b;
-      azvv.a(this.a, paramazvy);
-      return;
+    this.jdField_a_of_type_JavaLangString = paramazsa.a("c");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_JavaLangString = paramazsa.a("r");
     }
-    ved.e("QQ.Troop.homework.SendArithHomeResultSegment", "baseResponse failed :" + paramsyn.b);
-    azvv.b(this.a, new ErrorMessage(paramsyn.a, paramsyn.b));
+    this.b = ayvy.a(azqu.a(paramazsa), false);
+  }
+  
+  public azvw(azvv paramazvv, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azvw
  * JD-Core Version:    0.7.0.1
  */

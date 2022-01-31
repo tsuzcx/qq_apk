@@ -1,20 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.EffectSettingUi.2.1;
+import com.tencent.av.ui.EffectSettingUi.2.2;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class mft
-  implements DialogInterface.OnClickListener
+  implements mry
 {
-  public mft(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public mft(EffectSettingUi paramEffectSettingUi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("EffectSettingUi", 4, "onGetConfig, enable[" + paramBoolean + "]");
+    }
+    if (paramBoolean)
+    {
+      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
+      {
+        localObject = (AVActivity)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((AVActivity)localObject).runOnUiThread(new EffectSettingUi.2.1(this));
+        }
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_Mry = null;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectSettingUi", 1, "onStatusChanged, seq[" + l + "]");
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new EffectSettingUi.2.2(this, l, paramBoolean3, paramBoolean1, paramBoolean2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mft
  * JD-Core Version:    0.7.0.1
  */

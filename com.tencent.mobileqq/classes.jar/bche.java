@@ -1,302 +1,140 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.webso.HttpRequestPackage;
-import com.tencent.mobileqq.webview.webso.HybridWebReporter;
-import com.tencent.mobileqq.webview.webso.WebSoServlet;
+import android.text.style.ClickableSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
-import wns_proxy.EnumHttpMethod;
-import wns_proxy.HttpReq;
-import wns_proxy.HttpRsp;
+import java.text.MessageFormat;
 
 public class bche
-  implements BusinessObserver
+  extends ClickableSpan
+  implements bhqd
 {
-  private static volatile bche jdField_a_of_type_Bche;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentHashMap<String, bchg> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final bchd jdField_a_of_type_Bchd;
+  private bhpy jdField_a_of_type_Bhpy;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public static bche a()
+  public bche(QQAppInterface paramQQAppInterface, Context paramContext, bchd parambchd)
   {
-    if (jdField_a_of_type_Bche == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bchd = parambchd;
+    a("Grp_edu", "", "Grp_AIO", "GuideWords_Show", 0, 0);
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_Bhpy != null) && (this.jdField_a_of_type_Bhpy.isShowing())) {
+      this.jdField_a_of_type_Bhpy.dismiss();
+    }
+    this.jdField_a_of_type_Bhpy = ((bhpy)bhql.a(this.jdField_a_of_type_AndroidContentContext, null));
+    Object localObject2 = this.jdField_a_of_type_Bchd.b();
+    Object localObject1 = localObject2;
+    if (((String)localObject2).length() > 10) {
+      localObject1 = ((String)localObject2).substring(0, 5) + "…" + ((String)localObject2).substring(((String)localObject2).length() - 5, ((String)localObject2).length());
+    }
+    localObject1 = MessageFormat.format(bchc.a()[this.jdField_a_of_type_Bchd.jdField_b_of_type_Int], new Object[] { localObject1 });
+    localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558435, null);
+    ((View)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837560));
+    ((View)localObject2).setOnClickListener(new bchf(this));
+    TextView localTextView = (TextView)((View)localObject2).findViewById(2131361928);
+    localTextView.setVisibility(0);
+    localTextView.setText((CharSequence)localObject1);
+    localTextView.setContentDescription((CharSequence)localObject1);
+    localTextView.setGravity(17);
+    localTextView.setPadding(xod.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, xod.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0);
+    this.jdField_a_of_type_Bhpy.b((View)localObject2);
+    this.jdField_a_of_type_Bhpy.c(bchc.b()[this.jdField_a_of_type_Bchd.jdField_b_of_type_Int]);
+    this.jdField_a_of_type_Bhpy.d(alpo.a(2131713948));
+    this.jdField_a_of_type_Bhpy.a(this);
+    this.jdField_a_of_type_Bhpy.show();
+  }
+  
+  private void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
+  {
+    ThreadManager.excute(new SchoolTroopKeywordManager.SchoolTroopHighlightSpan.1(this, paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2), 32, null, true);
+  }
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    Object localObject;
+    bckj localbckj;
+    if (paramInt == 0)
     {
-      if (jdField_a_of_type_Bche == null) {
-        jdField_a_of_type_Bche = new bche();
+      localObject = null;
+      localbckj = bckj.a();
+      if (this.jdField_a_of_type_Bchd.jdField_b_of_type_Int != 1) {
+        break label201;
       }
-      return jdField_a_of_type_Bche;
+      paramView = localbckj.a("troop_homework_create_notice");
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramView))
+      {
+        localObject = new bckk();
+        ((bckk)localObject).a = this.jdField_a_of_type_Bchd.a;
+        ((bckk)localObject).c = "aio_keyword";
+        ((bckk)localObject).h = this.jdField_a_of_type_Bchd.jdField_b_of_type_JavaLangString;
+        ((bckk)localObject).i = this.jdField_a_of_type_Bchd.b();
+        paramView = localbckj.a(paramView, (bckk)localObject);
+        if (QLog.isDevelopLevel()) {
+          QLog.i(bchc.a, 2, "do action '" + this.jdField_a_of_type_Bchd.jdField_b_of_type_Int + "', open url: " + paramView);
+        }
+        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramView);
+        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      }
+      a("Grp_edu", "", "Grp_AIO", "GuideActionsheet_Clk", 0, 0);
+      if (this.jdField_a_of_type_Bhpy != null) {
+        this.jdField_a_of_type_Bhpy.dismiss();
+      }
+      return;
+      label201:
+      if (this.jdField_a_of_type_Bchd.jdField_b_of_type_Int == 2)
+      {
+        paramView = localbckj.a("troop_create_homework");
+      }
+      else
+      {
+        paramView = (View)localObject;
+        if (QLog.isColorLevel())
+        {
+          QLog.e(bchc.a, 2, "I don't know this action '" + this.jdField_a_of_type_Bchd.jdField_b_of_type_Int + "'");
+          paramView = (View)localObject;
+        }
+      }
     }
   }
   
-  private bchg a(String paramString)
+  public void onClick(View paramView)
   {
-    bchg localbchg = new bchg();
-    localbchg.jdField_a_of_type_JavaLangString = paramString;
-    localbchg.jdField_a_of_type_Int = 4;
-    localbchg.jdField_c_of_type_Int = 10006;
-    return localbchg;
-  }
-  
-  private void a(Handler paramHandler, bchg parambchg)
-  {
-    Message localMessage = paramHandler.obtainMessage(204);
-    localMessage.obj = parambchg;
-    paramHandler.sendMessage(localMessage);
-  }
-  
-  private void a(bchg parambchg)
-  {
-    Handler localHandler;
-    if ((parambchg != null) && (parambchg.jdField_a_of_type_AndroidOsHandler != null))
+    if (bdbk.a)
     {
-      localHandler = parambchg.jdField_a_of_type_AndroidOsHandler;
-      if (localHandler != null) {}
-    }
-    else
-    {
+      if (QLog.isColorLevel()) {
+        QLog.e(bchc.a, 2, "SchoolTroopHighlightSpan onCLick is invoked by LongClick misstake");
+      }
       return;
     }
-    a(localHandler, parambchg);
-    HybridWebReporter.a().a(parambchg.jdField_a_of_type_Bchc);
-  }
-  
-  private void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    String str1 = paramBundle.getString("key_uni_key");
-    String str2 = paramBundle.getString("url");
-    if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str1))) {
-      return;
+    if ((paramView instanceof ETTextView)) {
+      ((ETTextView)paramView).mHasClickedArkSpan = true;
     }
-    bchg localbchg = (bchg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str1);
-    if (localbchg == null)
-    {
-      QLog.e("WebSoCgiService", 1, "get webso state fail, unikey=" + str1 + ",map size=" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-      a(paramBoolean, paramBundle, a(str1));
-      return;
-    }
-    localbchg.jdField_a_of_type_Int = 2;
-    localbchg.jdField_c_of_type_Int = 0;
-    a(paramBoolean, paramBundle, localbchg);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str1);
-    QLog.i("WebSoCgiService", 1, "onGetHttpData success(" + paramBoolean + "), url:" + str2 + " ,map size=" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-  }
-  
-  private void a(boolean paramBoolean, Bundle paramBundle, bchg parambchg)
-  {
-    if (parambchg.jdField_a_of_type_Bchc == null)
-    {
-      parambchg.jdField_a_of_type_Bchc = new bchc();
-      parambchg.jdField_a_of_type_Bchc.jdField_a_of_type_Long = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-      parambchg.jdField_a_of_type_Bchc.jdField_a_of_type_JavaLangString = parambchg.jdField_b_of_type_JavaLangString;
-      parambchg.jdField_a_of_type_Bchc.jdField_a_of_type_Boolean = true;
-    }
-    if (!paramBoolean) {
-      parambchg.jdField_a_of_type_Bchc.jdField_f_of_type_Int = 1;
-    }
-    parambchg.jdField_a_of_type_Bchc.e = paramBundle.getString("key_user_ip");
-    parambchg.jdField_a_of_type_Bchc.h = paramBundle.getString("key_dns_result");
-    parambchg.jdField_a_of_type_Bchc.jdField_f_of_type_JavaLangString = paramBundle.getString("key_server_ip");
-    parambchg.jdField_a_of_type_Bchc.g = paramBundle.getString("key_server_port");
-    parambchg.jdField_a_of_type_Bchc.jdField_a_of_type_Int = paramBundle.getInt("key_time_cost");
-    parambchg.jdField_a_of_type_Bchc.jdField_b_of_type_Int = paramBundle.getInt("rsp_code");
-    parambchg.jdField_a_of_type_Bchc.jdField_c_of_type_Int = 0;
-    parambchg.jdField_a_of_type_Bchc.i = paramBundle.getString("key_detail_info");
-    if (!paramBoolean)
-    {
-      parambchg.jdField_c_of_type_Int = paramBundle.getInt("rsp_code", 10002);
-      parambchg.jdField_f_of_type_JavaLangString = paramBundle.getString("rsp_message");
-      a(parambchg);
-      QLog.w("WebSoCgiService", 1, "state=" + parambchg);
-    }
-    Object localObject1;
-    int i;
-    do
-    {
-      return;
-      localObject1 = (HttpRsp)paramBundle.getSerializable("rsp_data");
-      paramBundle = null;
-      if (localObject1 != null) {
-        paramBundle = new bchb((HttpRsp)localObject1);
-      }
-      if (localObject1 == null)
-      {
-        parambchg.jdField_c_of_type_Int = 10002;
-        parambchg.jdField_f_of_type_JavaLangString = "rsp is null";
-        a(parambchg);
-        QLog.w("WebSoCgiService", 1, "state=" + parambchg);
-        return;
-      }
-      localObject1 = ((HttpRsp)localObject1).rspinfo;
-      i = ((String)localObject1).indexOf("\r\n\r\n");
-      paramBundle = paramBundle.d;
-    } while (i < 1);
-    String[] arrayOfString1 = ((String)localObject1).substring(0, i - 1).split("\r\n");
-    int j = arrayOfString1.length;
-    if (j >= 1)
-    {
-      Object localObject2 = arrayOfString1[0].split(" ");
-      if (localObject2.length >= 2) {}
-      try
-      {
-        parambchg.jdField_b_of_type_Int = Integer.valueOf(localObject2[1].trim()).intValue();
-        parambchg.jdField_a_of_type_Bchc.d = localObject2[1].trim();
-        localObject2 = new JSONObject();
-        i = 1;
-        if (i < j)
-        {
-          arrayOfString2 = arrayOfString1[i].split(":");
-          if (arrayOfString2.length <= 1) {}
-        }
-      }
-      catch (Exception localException)
-      {
-        try
-        {
-          for (;;)
-          {
-            String[] arrayOfString2;
-            ((JSONObject)localObject2).put(arrayOfString2[0].trim(), arrayOfString2[1].trim());
-            i += 1;
-          }
-          localException = localException;
-          localException.printStackTrace();
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-        parambchg.jdField_c_of_type_JavaLangString = localException.toString();
-      }
-    }
-    parambchg.jdField_c_of_type_Int = 0;
-    parambchg.d = paramBundle;
-    long l1 = System.currentTimeMillis();
-    long l2 = parambchg.jdField_a_of_type_Long;
-    QLog.i("WebSoCgiService", 1, "wnscgi@ before send rsp msg,total cost " + (l1 - l2) + " ms");
-    a(parambchg);
-    if (TextUtils.isEmpty(paramBundle))
-    {
-      QLog.w("WebSoCgiService", 1, "html body empty, rspinfo is: " + (String)localObject1);
-      return;
-    }
-    QLog.i("WebSoCgiService", 1, "succ htmlBody len=" + paramBundle.length());
-  }
-  
-  public boolean a(bchf parambchf, Handler paramHandler)
-  {
-    return a(parambchf, paramHandler, SwiftBrowserCookieMonster.c(parambchf.jdField_a_of_type_JavaLangString));
-  }
-  
-  public boolean a(bchf parambchf, Handler paramHandler, String paramString)
-  {
-    if ((parambchf == null) || (TextUtils.isEmpty(parambchf.jdField_a_of_type_JavaLangString)))
-    {
-      QLog.w("WebSoCgiService", 2, "startCgiRequest param invalid, cgiInfo=" + parambchf);
-      return false;
-    }
-    if (!bbfj.g(BaseApplicationImpl.getContext()))
-    {
-      QLog.w("WebSoCgiService", 2, "startCgiRequest isNetworkAvailable false ,cgiInfo=" + parambchf);
-      return false;
-    }
-    String str1 = String.valueOf(Math.random()) + String.valueOf(System.currentTimeMillis());
-    if (QLog.isColorLevel()) {
-      QLog.i("WebSoCgiService", 2, "wnscgi@ startCgiRequest running cgiInfo=" + parambchf + ",uniKey=" + str1);
-    }
-    bchg localbchg = new bchg();
-    localbchg.jdField_a_of_type_JavaLangString = str1;
-    localbchg.jdField_b_of_type_JavaLangString = parambchf.jdField_a_of_type_JavaLangString;
-    localbchg.jdField_a_of_type_Boolean = parambchf.jdField_a_of_type_Boolean;
-    localbchg.jdField_a_of_type_Int = 1;
-    localbchg.e = parambchf.jdField_f_of_type_JavaLangString;
-    localbchg.jdField_a_of_type_JavaLangObject = parambchf.jdField_a_of_type_JavaLangObject;
-    localbchg.jdField_a_of_type_Bchc = new bchc();
-    localbchg.jdField_a_of_type_Bchc.jdField_a_of_type_Long = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    localbchg.jdField_a_of_type_Bchc.jdField_a_of_type_JavaLangString = parambchf.jdField_a_of_type_JavaLangString;
-    localbchg.jdField_a_of_type_Bchc.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, localbchg);
-    long l1 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    String str3 = bgyi.a();
-    String str2 = bchs.a();
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("method", parambchf.jdField_b_of_type_JavaLangString.toUpperCase());
-      localJSONObject.put("entity_body", parambchf.d);
-      localJSONObject.put("if_None_Match", "");
-      localJSONObject.put("content_type", parambchf.e);
-      localJSONObject.put("uri", parambchf.jdField_a_of_type_JavaLangString);
-      if (parambchf.jdField_b_of_type_JavaLangString.equalsIgnoreCase("GET"))
-      {
-        if (!TextUtils.isEmpty(parambchf.d))
-        {
-          if (!parambchf.jdField_a_of_type_JavaLangString.contains("?")) {
-            break label705;
-          }
-          localJSONObject.put("uri", parambchf.jdField_a_of_type_JavaLangString + "&" + parambchf.d);
-        }
-        for (;;)
-        {
-          localJSONObject.put("cookie", paramString + "; qua=" + str3 + "; ");
-          localJSONObject.put("no_Chunked", "true");
-          localJSONObject.put("accept_Encoding", "identity");
-          paramString = new HttpRequestPackage(str2, localJSONObject);
-          paramString.addHeader(parambchf.jdField_c_of_type_JavaLangString);
-          paramString = new HttpReq(EnumHttpMethod.convert("e" + paramString.method).value(), paramString.getHeaderString(), paramString.getBodyString(), paramString.host);
-          localbchg.jdField_a_of_type_AndroidOsHandler = paramHandler;
-          paramHandler = new NewIntent(BaseApplicationImpl.getContext(), WebSoServlet.class);
-          WebSoServlet.a(paramHandler, l1, parambchf.jdField_a_of_type_JavaLangString, paramString, "", parambchf.jdField_a_of_type_Int, 1101, str1, bche.class);
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            BaseApplicationImpl.getApplication().getRuntime().registObserver(this);
-            this.jdField_a_of_type_Boolean = true;
-          }
-          BaseApplicationImpl.getApplication().getRuntime().startServlet(paramHandler);
-          l1 = System.currentTimeMillis();
-          long l2 = localbchg.jdField_a_of_type_Long;
-          QLog.i("WebSoCgiService", 1, "wnscgi@ after start servlet,total cost " + (l1 - l2) + " ms");
-          return true;
-          label705:
-          localJSONObject.put("uri", parambchf.jdField_a_of_type_JavaLangString + "?" + parambchf.d);
-        }
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        continue;
-        if (!TextUtils.isEmpty(parambchf.d)) {
-          localJSONObject.put("content_length", parambchf.d.length());
-        }
-      }
-    }
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramInt == 1101) {
-      a(paramBoolean, paramBundle);
-    }
+    a();
+    a("Grp_edu", "", "Grp_AIO", "GuideWords_Clk", 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bche
  * JD-Core Version:    0.7.0.1
  */

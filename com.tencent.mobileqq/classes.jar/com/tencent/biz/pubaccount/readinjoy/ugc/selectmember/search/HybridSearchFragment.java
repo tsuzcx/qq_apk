@@ -1,60 +1,60 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search;
 
-import ajsd;
+import aljq;
 import android.view.View;
-import awke;
-import awoi;
-import awqw;
-import awtu;
-import awuu;
+import ayfe;
+import ayjl;
+import aylz;
+import ayox;
+import aypx;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import qhy;
-import qia;
-import qib;
-import qic;
+import qwd;
+import qwf;
+import qwg;
+import qwh;
 
 public class HybridSearchFragment
   extends BaseSearchFragment
-  implements awqw
+  implements aylz
 {
   private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private qib jdField_a_of_type_Qib;
+  private qwg jdField_a_of_type_Qwg;
   
   public static HybridSearchFragment a()
   {
     return new HybridSearchFragment();
   }
   
-  public awke a()
+  public ayfe a()
   {
-    return new qia(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxy);
+    return new qwf(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bcws);
   }
   
-  public awuu a()
+  public aypx a()
   {
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    localHashSet.add(ajsd.aC);
-    localArrayList.add(new awtu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 1, null, localHashSet));
-    localArrayList.add(new qhy());
-    return new qic(localArrayList);
+    localHashSet.add(aljq.aC);
+    localArrayList.add(new ayox(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 1, null, localHashSet));
+    localArrayList.add(new qwd());
+    return new qwh(localArrayList);
   }
   
   public void a(View paramView)
   {
-    paramView = (awoi)paramView.getTag(2131379213);
-    if (this.jdField_a_of_type_Qib != null) {
-      this.jdField_a_of_type_Qib.a(paramView);
+    paramView = (ayjl)paramView.getTag(2131379913);
+    if (this.jdField_a_of_type_Qwg != null) {
+      this.jdField_a_of_type_Qwg.a(paramView);
     }
   }
   
-  public void a(qib paramqib)
+  public void a(qwg paramqwg)
   {
-    this.jdField_a_of_type_Qib = paramqib;
+    this.jdField_a_of_type_Qwg = paramqwg;
   }
   
   public boolean a()
@@ -72,7 +72,7 @@ public class HybridSearchFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment
  * JD-Core Version:    0.7.0.1
  */

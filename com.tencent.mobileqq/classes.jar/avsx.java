@@ -1,113 +1,39 @@
-import android.opengl.GLSurfaceView;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-import java.math.BigDecimal;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import com.tencent.mobileqq.ocr.TranslateFragment.1.1;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class avsx
-  implements GLGestureListener
+  extends avrb
 {
-  public float a;
-  public GLSurfaceView a;
-  private float b;
-  private float c;
+  public avsx(TranslateFragment paramTranslateFragment) {}
   
-  public avsx(GLSurfaceView paramGLSurfaceView)
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
   {
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
-  }
-  
-  public int onGetPriority()
-  {
-    return 0;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((j != 3) || ((i == 1) && (paramBoolean))) {
-      switch (j)
-      {
-      }
+    if (!TranslateFragment.a(this.a)) {
+      return;
     }
-    float f4;
-    float f2;
-    float f3;
-    for (;;)
-    {
-      return false;
-      this.c = this.jdField_a_of_type_Float;
-      continue;
-      if (paramMotionEvent.getY() >= this.jdField_a_of_type_Float)
-      {
-        this.c = this.jdField_a_of_type_Float;
-      }
-      else
-      {
-        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-        if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
-        {
-          if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
-            ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
-          }
-          for (;;)
-          {
-            this.c = paramMotionEvent.getY();
-            break;
-            if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
-              ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
-            }
-          }
-          if ((i == 2) && (!paramBoolean))
-          {
-            ved.a("CameraZoomGesture", "onTouchEvent %s", new Object[] { paramMotionEvent });
-            if (i != 2) {
-              break;
-            }
-            f4 = paramMotionEvent.getX(0);
-            f2 = paramMotionEvent.getY(0);
-            f3 = paramMotionEvent.getX(1);
-            f1 = paramMotionEvent.getY(1);
-            label254:
-            switch (j)
-            {
-            }
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("TranslateFragment", 2, String.format("onGetTranslateResult isSuccess:%s, type:%s, result:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramTranslateResult }));
     }
-    float f1 = vjo.a(f4, f2, f3, f1);
-    i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-    if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
+    TranslateFragment.a(this.a).runOnUiThread(new TranslateFragment.1.1(this, paramBoolean, paramTranslateResult));
+    HashMap localHashMap = new HashMap();
+    if (paramTranslateResult != null) {}
+    for (int i = paramTranslateResult.b;; i = 2000)
     {
-      if (!(this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
-        break label421;
-      }
-      ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
-    }
-    for (;;)
-    {
-      this.b = f1;
-      return true;
-      f4 = paramMotionEvent.getX(1);
-      f2 = paramMotionEvent.getY(1);
-      f3 = paramMotionEvent.getX(2);
-      f1 = paramMotionEvent.getY(2);
-      break label254;
-      this.b = vjo.a(f4, f2, f3, f1);
-      break;
-      label421:
-      if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
-        ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
-      }
+      localHashMap.put("errCode", String.valueOf(i));
+      localHashMap.put("type", String.valueOf(paramInt));
+      azmz.a(BaseApplicationImpl.getContext()).a("", "SCAN_TRANSLATE_RESULT", paramBoolean, 0L, 0L, localHashMap, "", false);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avsx
  * JD-Core Version:    0.7.0.1
  */

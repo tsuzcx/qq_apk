@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import bcql;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 class BaseChatPie$56
   implements Runnable
 {
@@ -10,12 +7,12 @@ class BaseChatPie$56
   
   public void run()
   {
-    bcql.a(this.this$0.a.getApp(), 2131690023, 1).b(this.this$0.a());
+    this.this$0.l(2131230732);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.56
  * JD-Core Version:    0.7.0.1
  */

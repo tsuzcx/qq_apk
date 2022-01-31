@@ -8,7 +8,7 @@ public abstract interface Subscriber$IDispatchableListener<T extends Dispatcher.
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.dispatch.Subscriber.IDispatchableListener
  * JD-Core Version:    0.7.0.1
  */

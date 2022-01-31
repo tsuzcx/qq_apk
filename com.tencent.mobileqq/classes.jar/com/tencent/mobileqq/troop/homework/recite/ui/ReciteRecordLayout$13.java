@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
 import android.content.Context;
-import azzx;
-import bcql;
+import bbyg;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ReciteRecordLayout$13
   implements Runnable
@@ -11,7 +11,7 @@ class ReciteRecordLayout$13
   
   public void run()
   {
-    bcql.a(this.this$0.a, this.this$0.a.getString(2131698551), 0).a();
+    QQToast.a(this.this$0.a, this.this$0.a.getString(2131698846), 0).a();
     if (ReciteRecordLayout.a(this.this$0) != null) {
       ReciteRecordLayout.a(this.this$0).d();
     }

@@ -1,101 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.chatroom.ChatRoomInfo;
 import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class mph
-  extends mqg
+class mph
+  implements lmu
 {
-  public mpw a;
+  private final WeakReference<mpe> a;
   
-  mph(moz parammoz)
+  mph(mpe parammpe)
   {
-    super(parammoz);
+    this.a = new WeakReference(parammpe);
   }
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void a(int paramInt, ChatRoomInfo paramChatRoomInfo)
   {
-    moz localmoz = a();
-    if (localmoz == null) {
-      return;
-    }
-    mpw localmpw = this.jdField_a_of_type_Mpw;
-    this.jdField_a_of_type_Mpw = new mpw(paramString1, paramString2, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    QLog.w("AVRedBag_GameSink", 1, "onGameStart, new[" + this.jdField_a_of_type_Mpw + "], last[" + localmpw + "], fromType[" + paramInt + "], isAVActivityVisible[" + localmoz.e() + "], isSelfVideoOpen[" + mpv.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface) + "]");
-    if (!this.jdField_a_of_type_Mpw.jdField_b_of_type_Boolean)
+    int i;
+    mpe localmpe;
+    if ((paramInt & 0x4) == 4)
     {
-      if (!localmoz.e()) {
-        mpu.a();
+      i = 1;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomMsgUpdate, flag[" + paramInt + "], room[" + paramChatRoomInfo + "]");
       }
-      if (!mpv.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
-        mpu.b();
+      localmpe = (mpe)this.a.get();
+      if (localmpe != null) {
+        break label77;
       }
     }
-    mpu.a(paramInt);
-    localmoz.a(this);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString5, String paramString6, String paramString7, boolean paramBoolean, int paramInt5)
-  {
-    moz localmoz = a();
-    if (localmoz == null) {
+    label77:
+    do
+    {
       return;
-    }
-    if (this.jdField_a_of_type_Mpw == null)
-    {
-      this.jdField_a_of_type_Mpw = new mpw(paramString1, paramString2, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      QLog.w("AVRedBag_GameSink", 1, "onGameEnd , mResultData is empty");
-    }
-    String str1 = this.jdField_a_of_type_Mpw.jdField_a_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_Mpw.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Mpw.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Mpw.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Mpw.jdField_b_of_type_Boolean = TextUtils.equals(paramString1, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_Mpw.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Mpw.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_a_of_type_Mpw.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Mpw.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Mpw.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Mpw.jdField_d_of_type_Int = paramInt4;
-    this.jdField_a_of_type_Mpw.i = paramString5;
-    this.jdField_a_of_type_Mpw.jdField_f_of_type_JavaLangString = paramString7;
-    this.jdField_a_of_type_Mpw.jdField_e_of_type_JavaLangString = paramString6;
-    this.jdField_a_of_type_Mpw.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Mpw.jdField_f_of_type_Int = paramInt5;
-    if (this.jdField_a_of_type_Mpw.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_Mpw.jdField_e_of_type_Int = mpi.a(this.jdField_a_of_type_Mpw.i, this.jdField_a_of_type_Mpw.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Mpw.jdField_f_of_type_JavaLangString);
-    }
-    if ((!this.jdField_a_of_type_Mpw.jdField_b_of_type_Boolean) && (paramBoolean)) {
-      axrn.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "avRedPacketFinGameSuc", true, 0L, 0L, null, "");
-    }
-    paramString1 = new StringBuilder().append("onGameEnd, startUin[").append(str1).append("->").append(this.jdField_a_of_type_Mpw.jdField_a_of_type_JavaLangString).append("], playUin[").append(str2).append("->").append(this.jdField_a_of_type_Mpw.jdField_b_of_type_JavaLangString).append("], mStarter[").append(this.jdField_a_of_type_Mpw.jdField_b_of_type_Boolean).append("], score[").append(this.jdField_a_of_type_Mpw.jdField_a_of_type_Int).append("/").append(this.jdField_a_of_type_Mpw.jdField_b_of_type_Int).append("], Emoji[").append(this.jdField_a_of_type_Mpw.jdField_c_of_type_Int).append("/").append(this.jdField_a_of_type_Mpw.jdField_d_of_type_Int).append("], money[").append(this.jdField_a_of_type_Mpw.i).append("], playerGetRedbagResultCode[").append(this.jdField_a_of_type_Mpw.jdField_e_of_type_JavaLangString).append("], playerGetRedbagResultState[").append(this.jdField_a_of_type_Mpw.jdField_f_of_type_JavaLangString).append("], isSucc[").append(this.jdField_a_of_type_Mpw.jdField_a_of_type_Boolean).append("], exceptionType[").append(this.jdField_a_of_type_Mpw.jdField_f_of_type_Int).append("], mRedbagErrorType[").append(this.jdField_a_of_type_Mpw.jdField_e_of_type_Int).append("], mRedbagId[").append(this.jdField_a_of_type_Mpw.jdField_c_of_type_JavaLangString).append("], mAuthKey[");
-    if (paramString4 == null) {}
-    for (paramInt1 = 0;; paramInt1 = paramString4.length())
-    {
-      QLog.w("AVRedBag_GameSink", 1, paramInt1 + "]");
-      localmoz.b(this.jdField_a_of_type_Mpw);
-      if ((this.jdField_a_of_type_Mpw.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Mpw.a()))
+      i = 0;
+      break;
+      if (localmpe.a())
       {
-        paramString1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131696091);
-        mpv.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Mpw.jdField_b_of_type_JavaLangString, 0, paramString1);
+        mpe.a(localmpe, paramChatRoomInfo);
+        return;
       }
-      if (this.jdField_a_of_type_Mpw.jdField_b_of_type_Boolean) {
-        mpu.a(this.jdField_a_of_type_Mpw.jdField_c_of_type_JavaLangString);
-      }
-      mpk.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      this.jdField_a_of_type_Mpw = null;
-      return;
-    }
+    } while (i == 0);
+    mpe.a(localmpe, 0);
   }
   
-  public String toString()
+  public void a(lmt paramlmt)
   {
-    return "mResultData[" + this.jdField_a_of_type_Mpw + "]";
+    if (QLog.isDevelopLevel()) {
+      QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomSendMsgResult, msg[" + paramlmt + "]");
+    }
+    mpe localmpe = (mpe)this.a.get();
+    if ((paramlmt == null) || (localmpe == null)) {}
+    while (!localmpe.a()) {
+      return;
+    }
+    mpe.a(localmpe, paramlmt.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mph
  * JD-Core Version:    0.7.0.1
  */

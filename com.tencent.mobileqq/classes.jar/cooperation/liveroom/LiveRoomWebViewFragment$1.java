@@ -1,13 +1,13 @@
 package cooperation.liveroom;
 
-import bcbu;
-import bcil;
+import beav;
+import behm;
 import org.json.JSONObject;
 
 class LiveRoomWebViewFragment$1
-  implements bcil
+  implements behm
 {
-  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, bcbu parambcbu) {}
+  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, beav parambeav) {}
   
   public long getDetect302Time()
   {
@@ -111,7 +111,7 @@ class LiveRoomWebViewFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomWebViewFragment.1
  * JD-Core Version:    0.7.0.1
  */

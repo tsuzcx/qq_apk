@@ -1,80 +1,140 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class blbo
+public final class blbo
 {
-  public int a;
-  public long a;
-  public String a;
+  private long jdField_a_of_type_Long;
+  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b = true;
   
-  public static String a(List<blbo> paramList)
+  private long a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localStringBuilder.append(((blbo)paramList.next()).a()).append(";");
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+      return ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
     }
-    return localStringBuilder.toString();
+    return 0L;
   }
   
-  public static List<blbo> a(String paramString)
+  private long a(String paramString1, String paramString2)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramString = paramString.split(";");
-    if ((paramString == null) || (paramString.length == 0)) {
-      return localArrayList;
-    }
-    int j = paramString.length;
-    int i = 0;
-    label31:
-    CharSequence localCharSequence;
-    if (i < j)
+    long l2 = 0L;
+    long l3 = a(paramString1);
+    long l4 = a(paramString2);
+    long l1 = l2;
+    if (l4 > 0L)
     {
-      localCharSequence = paramString[i];
-      if (!TextUtils.isEmpty(localCharSequence)) {
-        break label56;
+      l1 = l2;
+      if (l3 > l4) {
+        l1 = l3 - l4;
       }
     }
-    for (;;)
-    {
-      i += 1;
-      break label31;
-      break;
-      label56:
-      blbo localblbo = new blbo();
-      localblbo.a(localCharSequence);
-      localArrayList.add(localblbo);
+    return l1;
+  }
+  
+  public static blbo a()
+  {
+    return blbq.a();
+  }
+  
+  private boolean a()
+  {
+    return true;
+  }
+  
+  public void a()
+  {
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Long > 0L) {
+      blfg.b("CameraLaunchPerf", "old AIO launch total cost=" + (l - this.jdField_a_of_type_Long));
     }
   }
   
-  public String a()
+  public void a(long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Long = paramLong;
   }
   
   public void a(String paramString)
   {
-    String[] arrayOfString = paramString.split("_");
-    if (arrayOfString.length != 3) {
-      throw new IllegalArgumentException(paramString + " illegal MessageBaseData!");
+    if (a()) {
+      return;
     }
-    this.jdField_a_of_type_JavaLangString = arrayOfString[0];
-    this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[1]).intValue();
-    this.jdField_a_of_type_Long = Long.valueOf(arrayOfString[2]).longValue();
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    }
+    blfg.b("CameraLaunchPerf", paramString);
   }
   
-  public boolean a(String paramString, int paramInt, long paramLong)
+  public void a(String paramString, long paramLong)
   {
-    return (this.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_Long == paramLong);
+    if (a()) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+    }
+    blfg.b("CameraLaunchPerf", paramString + " real happened at " + paramLong);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (!a()) {
+      blfg.b("CameraLaunchPerf******", paramString1 + "--" + paramString2);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (a()) {}
+    while (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("collect data:{");
+    if (!paramBoolean) {
+      localStringBuilder.append("userClick-startActivity=").append(a("startActivityForResult", "userClick")).append(", userClickDispatch=").append(a("AECameraLauncher---launchAECameraUnit-begin", "userClick")).append(", launchAECameraUnit=").append(a("AECameraLauncher---launchAECameraUnit-end", "AECameraLauncher---launchAECameraUnit-begin"));
+    }
+    for (;;)
+    {
+      localStringBuilder.append("}");
+      blfg.b("CameraLaunchPerf", localStringBuilder.toString());
+      return;
+      paramBoolean = this.b;
+      this.b = false;
+      localStringBuilder.append("isColdLaunch=").append(paramBoolean).append(", startActivity-firstRealFrame=").append(a("onDrawFrameReal-end", "mainProcessLaunch")).append(", startActivity-firstFakeFrame=").append(a("onDrawFrameFake-end1", "mainProcessLaunch")).append(", ipc_cost=").append(a("activityOnCreateBegin", "mainProcessLaunch")).append(", activityOnCreate=").append(a("activityOnCreateEnd", "activityOnCreateBegin")).append(", buildCaptureUnit=").append(a("buildCaptureUnit-end", "buildCaptureUnit-begin")).append(", unitOnCreateView=").append(a("unitOnCreateView-end", "unitOnCreateView-begin")).append(", unitInflateView=").append(a("unitInflateView-end", "unitInflateView-begin")).append(", glSurfaceViewStaticInit=").append(a("glSurfaceViewStaticInit-end", "glSurfaceViewStaticInit-begin")).append(", activityOnStart=").append(a("activityOnStartEnd", "activityOnStartBegin")).append(", activityOnResume=").append(a("activityOnResumeEnd", "activityOnResumeBegin")).append(", activityOnResume-onSurfaceCreated=").append(a("onSurfaceCreated-begin", "activityOnResumeEnd")).append(", onSurfaceCreated=").append(a("onSurfaceCreated-end", "onSurfaceCreated-begin")).append(", startCamPreview-onFrameAvailable=").append(a("onFrameAvailable", "startCameraPreview-end")).append(", onDrawFrame1=").append(a("onDrawFrameFake-end1", "onDrawFrameFake-begin1")).append(", onDrawFrame2=").append(a("onDrawFrameFake-end2", "onDrawFrameFake-begin2")).append(", onDrawFrame3=").append(a("onDrawFrameFake-end3", "onDrawFrameFake-begin3")).append(", onDrawFrameReal=").append(a("onDrawFrameReal-end", "onDrawFrameReal-begin")).append(", filterProcessInitFilters=").append(a("FilterProcessInitFilters-end", "FilterProcessInitFilters-begin")).append(", filterMgrDraw=").append(a("filterMgrDraw-end", "filterMgrDraw-begin")).append(", onDrawFrame1End-onFrameAvailable=").append(a("onFrameAvailable", "onDrawFrameFake-end1"));
+    }
+  }
+  
+  public void b()
+  {
+    if (a()) {
+      return;
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    blfg.b("CameraLaunchPerf", "beginSession----");
+  }
+  
+  public void c()
+  {
+    if (a()) {
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    blfg.b("CameraLaunchPerf", "endSession----");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blbo
  * JD-Core Version:    0.7.0.1
  */

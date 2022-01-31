@@ -1,30 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.Arrays;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public class vnv
-  implements vlj
+class vnv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  @NonNull
-  private final vlg[] a;
+  vnv(vnu paramvnu) {}
   
-  public vnv(vlg... paramVarArgs)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      return;
     }
-    this.a = paramVarArgs;
-  }
-  
-  public void a(List<vlg> paramList, DoodleView paramDoodleView)
-  {
-    paramList.addAll(Arrays.asList(this.a));
+    this.a.a.setImageResource(2130849999);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnv
  * JD-Core Version:    0.7.0.1
  */

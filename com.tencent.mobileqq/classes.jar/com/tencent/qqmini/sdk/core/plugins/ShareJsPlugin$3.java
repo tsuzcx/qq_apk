@@ -1,34 +1,36 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bekh;
-import bekp;
-import besj;
-import betc;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.core.proxy.ShareProxy;
+import bgib;
+import bgkc;
+import com.tencent.qqmini.sdk.core.model.InnerShareData;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class ShareJsPlugin$3
-  implements bekh
+  implements bgib
 {
-  ShareJsPlugin$3(ShareJsPlugin paramShareJsPlugin, besj parambesj, AsyncResult paramAsyncResult) {}
+  ShareJsPlugin$3(ShareJsPlugin paramShareJsPlugin, bgkc parambgkc) {}
   
   public void onGetScreenshot(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
-      this.val$shareData.b = this.this$0.mApkgInfo.e;
-      ShareJsPlugin.access$000(this.this$0).onJsShareAppMessage(this.val$shareData, this.val$shareListener);
-      betc.d("ShareJsPlugin", "getScreenshot failed, savedScreenshotPath = null");
+      QMLog.e("ShareJsPlugin", "getScreenshot failed, savedScreenshotPath = null");
+      if (this.this$0.mMiniAppInfo != null)
+      {
+        this.val$shareDataBuilder.c(this.this$0.mMiniAppInfo.iconUrl).a(false).a().b();
+        return;
+      }
+      QMLog.e("ShareJsPlugin", "getScreenshot failed, apkgInfo is null");
       return;
     }
-    this.val$shareData.b = paramString;
-    ShareJsPlugin.access$000(this.this$0).onJsShareAppMessage(this.val$shareData, this.val$shareListener);
+    this.val$shareDataBuilder.c(paramString).a(true).a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.ShareJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

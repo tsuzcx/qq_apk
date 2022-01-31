@@ -1,42 +1,22 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.Animation;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-public class avbp
-  extends avbi
+final class avbp
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public avbp(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startCloseAnimation onAnimationEnd");
-    }
-    if (LSRecordPanel.a(this.a))
-    {
-      if (paramAnimation == this.a.b) {
-        LSRecordPanel.a(this.a);
-      }
-      this.a.a = null;
-      this.a.b = null;
-      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.a(this.a).getLayoutParams();
-      int i = (int)(this.a.getResources().getDisplayMetrics().density * 4.0F);
-      paramAnimation.height -= i;
-      paramAnimation.width -= i;
-      int j = paramAnimation.rightMargin;
-      paramAnimation.rightMargin = (i / 2 + j);
-      LSRecordPanel.a(this.a, false);
-      LSRecordPanel.a(this.a).setLayoutParams(paramAnimation);
-    }
+    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avbp
  * JD-Core Version:    0.7.0.1
  */

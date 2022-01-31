@@ -1,17 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
-class nem
+public class nem
+  implements ymm
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public nem(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  nem(nea paramnea) {}
+  public void callback(Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("mode");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nem
  * JD-Core Version:    0.7.0.1
  */

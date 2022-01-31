@@ -1,32 +1,42 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class azhc
-  extends akuo
 {
-  public azhc(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public static int a;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static boolean jdField_a_of_type_Boolean;
+  
+  static
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    jdField_a_of_type_Int = -4;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopBarPublishLocationSelectActivity.a(this.a), 2, "onLocationFinish() errCode=" + paramInt);
+    boolean bool = false;
+    if (jdField_a_of_type_Boolean) {
+      return true;
     }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    String str = azgk.e(BaseApplicationImpl.getContext());
+    if (str == null) {
+      return false;
+    }
+    if (!bdcs.a(str + "libObjectTracker.so")) {}
+    for (;;)
     {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
-      TroopBarPublishLocationSelectActivity.a(this.a, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("TrackerSoLoader", 2, " isTrackingSoExist =" + bool);
+      }
+      jdField_a_of_type_Boolean = bool;
+      return jdField_a_of_type_Boolean;
+      bool = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azhc
  * JD-Core Version:    0.7.0.1
  */

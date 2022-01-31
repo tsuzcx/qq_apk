@@ -1,44 +1,20 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import android.content.Context;
-import beix;
-import betc;
-import beut;
+import bgnf;
 
-final class InternalJSPlugin$7
+class InternalJSPlugin$7
   implements Runnable
 {
-  InternalJSPlugin$7(Context paramContext, String paramString1, String paramString2, String paramString3) {}
+  InternalJSPlugin$7(InternalJSPlugin paramInternalJSPlugin) {}
   
   public void run()
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    try
-    {
-      beix localbeix = beix.a(this.val$context, String.valueOf(beut.a().a()), this.val$appId);
-      localObject1 = localbeix;
-      localObject3 = localbeix;
-      localbeix.a(this.val$key, "Object", this.val$data);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localObject3 = localObject1;
-      betc.d("InternalJSPlugin", "saveToMiniAppStorage ", localException);
-      return;
-    }
-    finally
-    {
-      if (localObject3 != null) {
-        localObject3.a();
-      }
-    }
+    bgnf.a(this.this$0.mContext, "当前版本下载能力暂不可用", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.InternalJSPlugin.7
  * JD-Core Version:    0.7.0.1
  */

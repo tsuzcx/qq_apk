@@ -30,30 +30,40 @@ public enum AdProcessManager
     return null;
   }
   
-  public static String getCurrentProcessNameInternal(Context paramContext)
+  private static String getCurrentProcessNameInternal(Context paramContext)
   {
     if (paramContext == null) {
       return null;
     }
-    paramContext = paramContext.getSystemService("activity");
-    if ((paramContext == null) || (!(paramContext instanceof ActivityManager)))
+    try
     {
-      AdLog.e("AdProcessManager", "getCurrentProcessNameInternal error");
-      return null;
-    }
-    paramContext = ((ActivityManager)ActivityManager.class.cast(paramContext)).getRunningAppProcesses();
-    if ((paramContext == null) || (paramContext.isEmpty()))
-    {
-      AdLog.e("AdProcessManager", "getCurrentProcessNameInternal error");
-      return null;
-    }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext())
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      if (localRunningAppProcessInfo.pid == Process.myPid()) {
-        return localRunningAppProcessInfo.processName;
+      paramContext = paramContext.getSystemService("activity");
+      if ((paramContext == null) || (!(paramContext instanceof ActivityManager)))
+      {
+        AdLog.e("AdProcessManager", "getCurrentProcessNameInternal error");
+        return null;
       }
+      paramContext = ((ActivityManager)ActivityManager.class.cast(paramContext)).getRunningAppProcesses();
+      if ((paramContext == null) || (paramContext.isEmpty()))
+      {
+        AdLog.e("AdProcessManager", "getCurrentProcessNameInternal error");
+        return null;
+      }
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if (localRunningAppProcessInfo.pid == Process.myPid())
+        {
+          paramContext = localRunningAppProcessInfo.processName;
+          return paramContext;
+        }
+      }
+      return null;
+    }
+    catch (Throwable paramContext)
+    {
+      AdLog.e("AdProcessManager", "getCurrentProcessNameInternal", paramContext);
     }
     return null;
   }

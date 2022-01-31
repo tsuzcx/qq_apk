@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
 import android.os.Bundle;
-import bepk;
+import bgpn;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public final class MiniAppReportManager2$1
@@ -17,12 +17,12 @@ public final class MiniAppReportManager2$1
     localBundle.putString("sub_action", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("path", this.b);
     localBundle.putString("reserves", this.c);
-    bepk.a().a("launch_report2", localBundle, null);
+    bgpn.a().a("launch_report2", localBundle, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniAppReportManager2.1
  * JD-Core Version:    0.7.0.1
  */

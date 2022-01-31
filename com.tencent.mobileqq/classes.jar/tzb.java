@@ -1,60 +1,136 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.arch.lifecycle.MutableLiveData;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudMeta.StDittoFeed;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetFeedListReq;
+import java.util.Iterator;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StFollowPageData;
 
-final class tzb
-  implements ValueAnimator.AnimatorUpdateListener
+public class tzb
+  extends tyz
 {
-  tzb(ViewGroup paramViewGroup, ImageView paramImageView1, ImageView paramImageView2) {}
+  private MutableLiveData<tzm<List<FeedCloudMeta.StFeed>>> jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  private String jdField_a_of_type_JavaLangString;
+  private trv jdField_a_of_type_Trv;
+  private final MutableLiveData<FeedCloudMeta.StFeed> b = new MutableLiveData();
+  private MutableLiveData<QQCircleFeedBase.StFollowPageData> c = new MutableLiveData();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotX(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleX(f1);
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotY(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleY(f2);
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
-    int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-    float f3;
-    if (f1 < f2)
+    boolean bool = true;
+    if (this.jdField_a_of_type_Trv == null)
     {
-      f1 = f2 / f1;
-      f2 = i;
-      f3 = i;
-      this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(f1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX((f2 - f3 * f1) * 0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
+      QLog.e("QCircleFeedViewModel", 1, "requestData() tabInfo is null!");
+      return;
     }
+    paramString = new QCircleGetFeedListRequest(this.jdField_a_of_type_Trv, paramString, tqj.a().a());
+    FeedCloudCommon.StCommonExt localStCommonExt = paramString.mRequest.extInfo;
+    if (!paramBoolean1) {}
     for (;;)
     {
-      this.b.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
+      localStCommonExt.set(a(bool));
+      paramString.setEnableCache(paramBoolean2);
+      this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(tzm.b());
+      a(paramString, new tzc(this, paramString, paramBoolean1));
       return;
-      if (f2 < f1)
+      bool = false;
+    }
+  }
+  
+  private boolean a(List<FeedCloudMeta.StFeed> paramList)
+  {
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)localIterator.next();
+      if (localStFeed.dittoFeed.dittoId.get() == 2)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-        f1 /= f2;
-        f2 = j;
-        f3 = j;
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(f1);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY((f2 - f3 * f1) * 0.5F);
+        this.b.postValue(localStFeed);
+        paramList.remove(localStFeed);
+        return true;
       }
     }
+    return false;
+  }
+  
+  public MutableLiveData<FeedCloudMeta.StFeed> a()
+  {
+    return this.b;
+  }
+  
+  public FeedCloudCommon.StCommonExt a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Tys != null) {
+      return this.jdField_a_of_type_Tys.a(paramBoolean);
+    }
+    return new FeedCloudCommon.StCommonExt();
+  }
+  
+  public void a(FeedCloudCommon.StCommonExt paramStCommonExt)
+  {
+    if (this.jdField_a_of_type_Tys != null) {
+      this.jdField_a_of_type_Tys.a(paramStCommonExt);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QCircleBaseTabFragment.d.equals(paramString)) {
+      this.jdField_a_of_type_Tys = tys.a(1);
+    }
+    while (!QCircleBaseTabFragment.i.equals(paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_Tys = tys.a(3);
+  }
+  
+  public void a(trv paramtrv)
+  {
+    this.jdField_a_of_type_Trv = paramtrv;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    a(null, false, paramBoolean);
+  }
+  
+  public MutableLiveData<tzm<List<FeedCloudMeta.StFeed>>> b()
+  {
+    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+  }
+  
+  public void b()
+  {
+    a(this.jdField_a_of_type_JavaLangString, true, false);
+  }
+  
+  public void b(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.startsWith("qcircle_fakeid_")))
+    {
+      paramString = new QCircleGetFeedListRequest(this.jdField_a_of_type_Trv, null, tqj.a().a());
+      paramString.mRequest.extInfo.set(a(true));
+      if (VSBaseRequest.isCacheExist(paramString)) {
+        VSBaseRequest.reMoveCache(paramString);
+      }
+    }
+  }
+  
+  public MutableLiveData<QQCircleFeedBase.StFollowPageData> c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tzb
  * JD-Core Version:    0.7.0.1
  */

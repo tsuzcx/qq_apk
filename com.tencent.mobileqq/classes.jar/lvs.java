@@ -1,44 +1,24 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
-import java.lang.ref.WeakReference;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class lvs
-  extends Handler
+  extends lvn
 {
-  WeakReference<RedPacketRollTextView> a;
+  String b;
   
-  public lvs(RedPacketRollTextView paramRedPacketRollTextView)
-  {
-    this.a = new WeakReference(paramRedPacketRollTextView);
-  }
+  public lvs(RandomWebProtocol paramRandomWebProtocol) {}
   
-  public void handleMessage(Message paramMessage)
+  void a(String paramString)
   {
-    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
-    if (localRedPacketRollTextView == null) {}
-    do
-    {
-      Bundle localBundle;
-      do
-      {
-        return;
-        localBundle = paramMessage.getData();
-      } while (localBundle == null);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      localRedPacketRollTextView.setText(localBundle.getString("content"));
-    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
-    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
+    super.a(paramString);
+    if ((this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) {
+      this.b = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lvs
  * JD-Core Version:    0.7.0.1
  */

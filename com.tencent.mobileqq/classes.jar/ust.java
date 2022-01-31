@@ -1,75 +1,89 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFilterList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FilterListPack;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class ust
-  implements IEventReceiver
+  extends unf
 {
-  private int jdField_a_of_type_Int = -1;
-  private ajxj jdField_a_of_type_Ajxj = new usu(this);
-  public QQUserUIItem a;
-  public String a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private usv jdField_a_of_type_Usv;
-  private usw jdField_a_of_type_Usw;
-  private usx jdField_a_of_type_Usx;
-  private usy jdField_a_of_type_Usy;
-  private usz jdField_a_of_type_Usz;
-  private int b = -1;
+  @NonNull
+  public final String a;
+  @NonNull
+  public final List<FilterItem> a;
+  public final boolean a;
+  public final int b;
   
-  public ust(String paramString, @NonNull usy paramusy)
+  public ust(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Usy = paramusy;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Usz = new usz(this);
-    stb.a().registerSubscriber(this.jdField_a_of_type_Usz);
-    tsr.a().addObserver(this.jdField_a_of_type_Ajxj);
-    this.jdField_a_of_type_Usv = new usv(this);
-    stb.a().registerSubscriber(this.jdField_a_of_type_Usv);
-    this.jdField_a_of_type_Usw = new usw(this);
-    stb.a().registerSubscriber(this.jdField_a_of_type_Usw);
-    this.jdField_a_of_type_Usx = new usx(this);
-    stb.a().registerSubscriber(this.jdField_a_of_type_Usx);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ved.b("Q.qqstory.memories.MemoriesProfilePresenter", "request refresh user info data. from cache : %s.", Boolean.valueOf(paramBoolean));
-    if (paramBoolean)
+    Object localObject1 = new qqstory_service.RspGetFilterList();
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((tdl)tcz.a(2)).b(this.jdField_a_of_type_JavaLangString);
-      ved.a("Q.qqstory.memories.MemoriesProfilePresenter", "get user info from cache: %s.", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      return;
+      try
+      {
+        ((qqstory_service.RspGetFilterList)localObject1).mergeFrom(paramArrayOfByte);
+        this.jdField_a_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).result.error_code.get();
+        this.jdField_b_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).result.error_desc.get().toStringUtf8();
+        if (((qqstory_service.RspGetFilterList)localObject1).is_end.get() != 0)
+        {
+          this.jdField_a_of_type_Boolean = bool;
+          this.jdField_a_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).next_cookie.get().toStringUtf8();
+          this.jdField_b_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).frequency.get();
+          paramArrayOfByte = new ArrayList();
+          localObject1 = ((qqstory_service.RspGetFilterList)localObject1).filter_list.get().iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          Object localObject2 = (qqstory_struct.FilterListPack)((Iterator)localObject1).next();
+          usl localusl = new usl();
+          localusl.jdField_a_of_type_Long = ((qqstory_struct.FilterListPack)localObject2).filter_id.get();
+          localusl.jdField_a_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_name.get().toStringUtf8();
+          localusl.jdField_a_of_type_Int = ((qqstory_struct.FilterListPack)localObject2).filter_type.get();
+          localusl.jdField_b_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_config_file.get().toStringUtf8();
+          localusl.c = ((qqstory_struct.FilterListPack)localObject2).filter_config_md5.get().toStringUtf8();
+          try
+          {
+            localObject2 = localusl.a();
+            paramArrayOfByte.add(localObject2);
+            wsv.d("VideoFilterManager", "GET Filter : id=%d, name=%s, type=%d, url=%s, md5=%s", new Object[] { Long.valueOf(((FilterItem)localObject2).filterId), ((FilterItem)localObject2).filterName, Integer.valueOf(((FilterItem)localObject2).filterType), ((FilterItem)localObject2).filterConfigUrl, ((FilterItem)localObject2).filterConfigMd5 });
+          }
+          catch (FilterItem.FilterItemIllegalException localFilterItemIllegalException)
+          {
+            wsv.c("VideoFilterManager", "GET Filter error : ", localFilterItemIllegalException);
+          }
+          continue;
+        }
+        bool = false;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        wsv.e("VideoFilterManager", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+        this.jdField_a_of_type_Int = -1;
+        this.jdField_b_of_type_JavaLangString = alpo.a(2131716644);
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
+        this.jdField_a_of_type_JavaLangString = "";
+        this.jdField_b_of_type_Int = 0;
+        return;
+      }
     }
-    ved.a("Q.qqstory.memories.MemoriesProfilePresenter", "request user info by uid: %s.", this.jdField_a_of_type_JavaLangString);
-    new tki().a(1, new teg("", this.jdField_a_of_type_JavaLangString), String.valueOf(hashCode()), true, true);
-  }
-  
-  public void b()
-  {
-    stb.a().unRegisterSubscriber(this.jdField_a_of_type_Usz);
-    tsr.a().removeObserver(this.jdField_a_of_type_Ajxj);
-    stb.a().unRegisterSubscriber(this.jdField_a_of_type_Usv);
-    stb.a().unRegisterSubscriber(this.jdField_a_of_type_Usw);
-    stb.a().unRegisterSubscriber(this.jdField_a_of_type_Usx);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public boolean isValidate()
-  {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ust
  * JD-Core Version:    0.7.0.1
  */

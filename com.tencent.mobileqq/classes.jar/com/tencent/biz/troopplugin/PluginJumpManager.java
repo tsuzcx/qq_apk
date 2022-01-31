@@ -13,7 +13,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import axqy;
+import azmj;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
 import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
@@ -26,16 +26,16 @@ import java.io.InputStream;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
-import mzb;
-import mzh;
-import nau;
+import nbv;
+import ncb;
+import ndq;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xdk;
-import xdm;
-import xdn;
-import xdo;
+import ysd;
+import ysf;
+import ysg;
+import ysh;
 
 public class PluginJumpManager
 {
@@ -49,12 +49,12 @@ public class PluginJumpManager
   public static final String WEB_PLUGIN_CONFIG = "web_plugin_config";
   public static PluginJumpManager sInstance;
   public boolean isLoadedPlugin;
-  public HashMap<String, xdn> mBidInfos;
+  public HashMap<String, ysg> mBidInfos;
   public int mConfigVersion;
   public Context mContext;
   public PluginManagerClient mPluginManager;
   public SharedPreferences mPref;
-  public HashMap<String, xdo> mUrlmappingInfos;
+  public HashMap<String, ysh> mUrlmappingInfos;
   
   public PluginJumpManager(Context paramContext)
   {
@@ -74,10 +74,10 @@ public class PluginJumpManager
   
   public static void report(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    axqy.b(null, "P_CliOper", paramString1, "", paramString2, paramString3, 0, paramInt, paramString4, paramString5, paramString6, paramString7);
+    azmj.b(null, "P_CliOper", paramString1, "", paramString2, paramString3, 0, paramInt, paramString4, paramString5, paramString6, paramString7);
   }
   
-  public boolean checkQVerAndModel(xdo paramxdo)
+  public boolean checkQVerAndModel(ysh paramysh)
   {
     boolean bool2 = true;
     int i;
@@ -86,28 +86,28 @@ public class PluginJumpManager
     try
     {
       i = this.mContext.getPackageManager().getPackageInfo(this.mContext.getPackageName(), 0).versionCode;
-      if (TextUtils.isEmpty(paramxdo.e)) {
-        if (TextUtils.isEmpty(paramxdo.d))
+      if (TextUtils.isEmpty(paramysh.e)) {
+        if (TextUtils.isEmpty(paramysh.d))
         {
           bool1 = bool2;
           bool2 = bool1;
-          if (!TextUtils.isEmpty(paramxdo.f))
+          if (!TextUtils.isEmpty(paramysh.f))
           {
             Object localObject = Build.BRAND;
             String str2 = Build.MODEL;
             String str1 = Build.VERSION.RELEASE;
-            paramxdo = paramxdo.f.split(",");
+            paramysh = paramysh.f.split(",");
             localObject = new StringBuffer((String)localObject);
             ((StringBuffer)localObject).append(" ").append(str2);
             str2 = ((StringBuffer)localObject).toString().toLowerCase();
             str1 = (" " + str1).toLowerCase();
-            j = paramxdo.length;
+            j = paramysh.length;
             i = 0;
             label147:
             bool2 = bool1;
             if (i < j)
             {
-              localObject = paramxdo[i].toLowerCase();
+              localObject = paramysh[i].toLowerCase();
               if ((!((String)localObject).contains(str2)) || (!str1.startsWith((String)localObject))) {
                 break label281;
               }
@@ -130,7 +130,7 @@ public class PluginJumpManager
     {
       try
       {
-        j = Integer.valueOf(paramxdo.d).intValue();
+        j = Integer.valueOf(paramysh.d).intValue();
         if (i < j) {
           break label294;
         }
@@ -141,7 +141,7 @@ public class PluginJumpManager
         bool1 = false;
         continue;
       }
-      String[] arrayOfString = paramxdo.e.split(",");
+      String[] arrayOfString = paramysh.e.split(",");
       int k = arrayOfString.length;
       j = 0;
       for (;;)
@@ -201,12 +201,12 @@ public class PluginJumpManager
           Object localObject3;
           while (i < k)
           {
-            localObject3 = new xdn(this);
+            localObject3 = new ysg(this);
             JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
-            ((xdn)localObject3).jdField_a_of_type_JavaLangString = localJSONObject.optString("bid");
-            ((xdn)localObject3).b = localJSONObject.optString("pluginid");
-            ((xdn)localObject3).c = localJSONObject.optString("pluginname");
-            this.mBidInfos.put(((xdn)localObject3).jdField_a_of_type_JavaLangString, localObject3);
+            ((ysg)localObject3).jdField_a_of_type_JavaLangString = localJSONObject.optString("bid");
+            ((ysg)localObject3).b = localJSONObject.optString("pluginid");
+            ((ysg)localObject3).c = localJSONObject.optString("pluginname");
+            this.mBidInfos.put(((ysg)localObject3).jdField_a_of_type_JavaLangString, localObject3);
             i += 1;
           }
           localObject1 = new JSONArray((String)localObject1);
@@ -214,17 +214,17 @@ public class PluginJumpManager
           i = j;
           while (i < k)
           {
-            localObject2 = new xdo(this);
+            localObject2 = new ysh(this);
             localObject3 = ((JSONArray)localObject1).getJSONObject(i);
-            ((xdo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("url");
-            ((xdo)localObject2).b = ((JSONObject)localObject3).optString("activity");
-            ((xdo)localObject2).c = ((JSONObject)localObject3).optString("bid");
-            ((xdo)localObject2).f = ((JSONObject)localObject3).optString("a_black_ver");
-            ((xdo)localObject2).d = ((JSONObject)localObject3).optString("q_min_ver");
-            ((xdo)localObject2).e = ((JSONObject)localObject3).optString("q_white_ver");
-            ((xdo)localObject2).jdField_a_of_type_Boolean = ((JSONObject)localObject3).optBoolean("useiphonetitlebar");
-            ((xdo)localObject2).g = ((JSONObject)localObject3).optString("extra");
-            this.mUrlmappingInfos.put(((xdo)localObject2).jdField_a_of_type_JavaLangString, localObject2);
+            ((ysh)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("url");
+            ((ysh)localObject2).b = ((JSONObject)localObject3).optString("activity");
+            ((ysh)localObject2).c = ((JSONObject)localObject3).optString("bid");
+            ((ysh)localObject2).f = ((JSONObject)localObject3).optString("a_black_ver");
+            ((ysh)localObject2).d = ((JSONObject)localObject3).optString("q_min_ver");
+            ((ysh)localObject2).e = ((JSONObject)localObject3).optString("q_white_ver");
+            ((ysh)localObject2).jdField_a_of_type_Boolean = ((JSONObject)localObject3).optBoolean("useiphonetitlebar");
+            ((ysh)localObject2).g = ((JSONObject)localObject3).optString("extra");
+            this.mUrlmappingInfos.put(((ysh)localObject2).jdField_a_of_type_JavaLangString, localObject2);
             i += 1;
           }
           if (!QLog.isColorLevel()) {}
@@ -240,7 +240,7 @@ public class PluginJumpManager
   
   public void loadConfigFromFile()
   {
-    Object localObject1 = new File(mzh.a("1007") + "1007" + "/urlplugin.cfg");
+    Object localObject1 = new File(ncb.a("1007") + "1007" + "/urlplugin.cfg");
     InputStream localInputStream;
     if (((File)localObject1).exists())
     {
@@ -268,12 +268,12 @@ public class PluginJumpManager
       return;
     }
     label103:
-    Object localObject2 = nau.a(localInputStream);
+    Object localObject2 = ndq.a(localInputStream);
     try
     {
       localObject2 = new JSONObject((String)localObject2);
       SharedPreferences.Editor localEditor = this.mPref.edit();
-      localEditor.putString("config_file_version", mzb.a("1007"));
+      localEditor.putString("config_file_version", nbv.a("1007"));
       localEditor.putString("version", ((JSONObject)localObject2).optString("version"));
       localEditor.putString("bidinfo", ((JSONObject)localObject2).optString("bidinfo"));
       localEditor.putString("urlmaping", ((JSONObject)localObject2).optString("urlmaping")).commit();
@@ -394,21 +394,21 @@ public class PluginJumpManager
     for (Object localObject1 = paramString1.substring(0, i); !this.mUrlmappingInfos.containsKey(localObject1); localObject1 = paramString1) {
       return false;
     }
-    localObject1 = (xdo)this.mUrlmappingInfos.get(localObject1);
-    Object localObject2 = ((xdo)localObject1).c;
+    localObject1 = (ysh)this.mUrlmappingInfos.get(localObject1);
+    Object localObject2 = ((ysh)localObject1).c;
     if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!this.mBidInfos.containsKey(localObject2))) {
       return false;
     }
-    if (!checkQVerAndModel((xdo)localObject1)) {
+    if (!checkQVerAndModel((ysh)localObject1)) {
       return false;
     }
-    if (!TextUtils.isEmpty(((xdo)localObject1).g))
+    if (!TextUtils.isEmpty(((ysh)localObject1).g))
     {
       String[] arrayOfString;
       int j;
-      if (((xdo)localObject1).g.contains(","))
+      if (((ysh)localObject1).g.contains(","))
       {
-        arrayOfString = ((xdo)localObject1).g.split(",");
+        arrayOfString = ((ysh)localObject1).g.split(",");
         int k = arrayOfString.length;
         j = 0;
         i = 0;
@@ -425,9 +425,9 @@ public class PluginJumpManager
       }
       else
       {
-        if (((xdo)localObject1).g.contains(";"))
+        if (((ysh)localObject1).g.contains(";"))
         {
-          arrayOfString = ((xdo)localObject1).g.split(";");
+          arrayOfString = ((ysh)localObject1).g.split(";");
           i = 0;
           j = arrayOfString.length;
           while (i < j)
@@ -438,13 +438,13 @@ public class PluginJumpManager
             i += 1;
           }
         }
-        if (!paramString1.contains(((xdo)localObject1).g)) {
+        if (!paramString1.contains(((ysh)localObject1).g)) {
           return false;
         }
       }
     }
-    localObject2 = (xdn)this.mBidInfos.get(localObject2);
-    PluginManagerHelper.getPluginInterface(paramActivity.getApplicationContext(), new xdm(this, (xdn)localObject2, paramActivity, paramString3, paramString1, paramString4, l, (xdo)localObject1, paramString2));
+    localObject2 = (ysg)this.mBidInfos.get(localObject2);
+    PluginManagerHelper.getPluginInterface(paramActivity.getApplicationContext(), new ysf(this, (ysg)localObject2, paramActivity, paramString3, paramString1, paramString4, l, (ysh)localObject1, paramString2));
     return true;
   }
   
@@ -453,19 +453,19 @@ public class PluginJumpManager
     if (paramAppRuntime == null) {
       return;
     }
-    mzb.a();
+    nbv.a();
     if (paramAppRuntime.getLongAccountUin() % 10L == 6L) {}
     for (boolean bool = true;; bool = false)
     {
-      mzb.jdField_a_of_type_Boolean = bool;
-      mzb.b("1007", paramAppRuntime, true, new xdk(this));
+      nbv.jdField_a_of_type_Boolean = bool;
+      nbv.b("1007", paramAppRuntime, true, new ysd(this));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.troopplugin.PluginJumpManager
  * JD-Core Version:    0.7.0.1
  */

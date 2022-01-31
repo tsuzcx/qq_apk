@@ -1,6 +1,6 @@
 {
   "ReadInjoy_nba_header": {
-    "view_type": "cell",
+    "view_type": "container",
     "direction": "horizontal",
     "height": {
       "type": "relative",

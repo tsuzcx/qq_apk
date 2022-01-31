@@ -1,11 +1,16 @@
-public class aric
+class aric
+  implements ardi
 {
-  public String a;
-  public String b;
+  aric(arhz paramarhz) {}
+  
+  public void a(int paramInt)
+  {
+    this.a.a(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aric
  * JD-Core Version:    0.7.0.1
  */

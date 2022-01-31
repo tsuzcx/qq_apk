@@ -1,164 +1,247 @@
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.graphics.Color;
 import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyTabTopSearchHeaderController.3;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyTabTopSearchHeaderController.4;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
 
 public class set
+  implements View.OnClickListener, rxg
 {
-  public static axzs a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForStructing))
-    {
-      paramMessageRecord = (MessageForStructing)paramMessageRecord;
-      paramMessageRecord.parse();
-      return a(paramMessageRecord.structingMsg);
-    }
-    return null;
-  }
+  protected static int a;
+  protected amar a;
+  protected BroadcastReceiver a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected HotWordSearchEntryDataModel.HotSearchItem a;
+  public HotWordSearchEntryDataModel a;
+  public String a;
+  public boolean a;
+  private TextView b;
+  public String b;
+  protected boolean b;
   
-  public static axzs a(AbsStructMsg paramAbsStructMsg)
+  public set(Context paramContext, ViewGroup paramViewGroup)
   {
-    if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
+    this.jdField_a_of_type_Amar = new seu(this);
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "search_word_prefix_search_change_times";
+    this.jdField_b_of_type_JavaLangString = "search_word_prefix_refresh_times";
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new sew(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378932));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378931));
+    paramViewGroup = Aladdin.getConfig(182);
+    int i;
+    if ((paramViewGroup != null) && (this.jdField_a_of_type_AndroidContentContext != null))
     {
-      Object localObject2;
-      do
+      i = paramViewGroup.getIntegerFromString("search_text_size", 14);
+      paramViewGroup = paramViewGroup.getString("search_text_colour", "#737373");
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramViewGroup));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramViewGroup));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(i);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(i);
+      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.jdField_a_of_type_Amar);
+      b(false, -1, -1);
+      paramViewGroup = new IntentFilter("mqq.intent.action.ACCOUNT_CHANGED");
+      paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramViewGroup);
+      return;
+    }
+    catch (Exception paramViewGroup)
+    {
+      for (;;)
       {
-        do
-        {
-          paramAbsStructMsg = ((StructMsgForGeneralShare)paramAbsStructMsg).iterator();
-          Object localObject1;
-          while (!((Iterator)localObject1).hasNext())
-          {
-            do
-            {
-              if (!paramAbsStructMsg.hasNext()) {
-                break;
-              }
-              localObject1 = (axup)paramAbsStructMsg.next();
-            } while (!(localObject1 instanceof axyg));
-            localObject1 = ((axyg)localObject1).a.iterator();
-          }
-          localObject2 = (axup)((Iterator)localObject1).next();
-        } while (!(localObject2 instanceof axzs));
-        localObject2 = (axzs)localObject2;
-      } while (!((axzs)localObject2).a());
-      return localObject2;
+        paramViewGroup.printStackTrace();
+      }
     }
-    return null;
   }
   
-  public static String a(String paramString)
+  private static void a(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return omj.k + bbco.encodeToString(paramString.getBytes(), 2);
+    String str = ors.a();
+    QLog.d("ReadInJoyTabTopSearchHeaderController", 1, new Object[] { "actionName = ", paramString1, "\n", "r2 = ", str, " r5 = ", paramString2 });
+    nrt.a(null, "", paramString1, paramString1, 0, 0, str, "", "", paramString2, false);
   }
   
-  public static void a(StructMsgForGeneralShare paramStructMsgForGeneralShare)
+  public void a()
   {
-    if (paramStructMsgForGeneralShare == null) {}
+    if (this.jdField_b_of_type_Boolean) {
+      this.jdField_b_of_type_Boolean = false;
+    }
+    for (;;)
+    {
+      AbstractGifImage.resumeAll();
+      return;
+      if (!TextUtils.isEmpty(aomq.a().jdField_a_of_type_JavaLangString))
+      {
+        a(false, -1, -1);
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        new amap(localQQAppInterface).a(localQQAppInterface, 10);
+      }
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 0) || (paramInt1 == 1) || ((paramInt2 == 0) && (paramInt1 != 2))) {
+      ThreadManager.getUIHandler().postDelayed(new ReadInJoyTabTopSearchHeaderController.3(this, paramInt1, paramInt2), 200L);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel == null) || (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719591);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719591);
+      this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem = null;
+    }
+    Object localObject1;
     do
     {
       return;
-      Iterator localIterator = paramStructMsgForGeneralShare.iterator();
-      while (localIterator.hasNext())
+      if (HotWordSearchEntryDataModel.a(10, false))
       {
-        Object localObject1 = (axup)localIterator.next();
-        if ((localObject1 instanceof axyg))
-        {
-          localObject1 = ((axyg)localObject1).a.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            Object localObject2 = (axup)((Iterator)localObject1).next();
-            if ((localObject2 instanceof axzs))
-            {
-              localObject2 = (axzs)localObject2;
-              if (((axzs)localObject2).a())
-              {
-                ((axzs)localObject2).W = null;
-                ((axzs)localObject2).T = null;
-                ((axzs)localObject2).k = 0;
-                if (QLog.isColorLevel()) {
-                  QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: summary = null");
-                }
-                axqy.b(null, "dc00899", "Pb_account_lifeservice", "", "0X800682F", "0X800682F", 0, 0, ((axzs)localObject2).U, "" + ((axzs)localObject2).r, "" + ((axzs)localObject2).a.msgId, "");
-              }
-            }
-            else if ((localObject2 instanceof StructMsgItemTitle))
-            {
-              localObject2 = (StructMsgItemTitle)localObject2;
-              String str = ((StructMsgItemTitle)localObject2).b();
-              int i = str.length();
-              if (QLog.isColorLevel()) {
-                QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: title = " + ((StructMsgItemTitle)localObject2).b() + ", length=" + i);
-              }
-              if (i > 15)
-              {
-                ((StructMsgItemTitle)localObject2).a(str.substring(0, 15) + "...");
-                if (QLog.isColorLevel()) {
-                  QLog.d("PAVideoStructMsgUtil", 2, "simplifyForForward: after reduce title length, title = " + ((StructMsgItemTitle)localObject2).b());
-                }
-              }
-            }
-          }
-        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719591);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719591);
+        this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem = null;
+        return;
       }
-    } while ((TextUtils.isEmpty(paramStructMsgForGeneralShare.mMsgBrief)) || (paramStructMsgForGeneralShare.mMsgBrief.length() <= 15));
-    paramStructMsgForGeneralShare.mMsgBrief = (paramStructMsgForGeneralShare.mMsgBrief.substring(0, 15) + "...");
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt >= 1) && (paramInt <= 100);
-  }
-  
-  public static boolean a(AbsStructMsg paramAbsStructMsg)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAbsStructMsg != null)
+      int i = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem = ((HotWordSearchEntryDataModel.HotSearchItem)this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_Int % i));
+      localObject1 = ayra.a("kFTSReadInJoySearchPlaceholderPrefix");
+      if (!paramBoolean) {
+        break;
+      }
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText((String)localObject1 + this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title);
+      localObject2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetTextView, "translationY", new float[] { 0.0F, -Utils.dp2px(43.0D) });
+      ((ObjectAnimator)localObject2).setDuration(150L);
+      ((ObjectAnimator)localObject2).start();
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetTextView, "translationY", new float[] { Utils.dp2px(43.0D), 0.0F });
+      localObjectAnimator.setDuration(150L);
+      localObjectAnimator.start();
+      ((ObjectAnimator)localObject2).addListener(new sev(this, (String)localObject1));
+      jdField_a_of_type_Int += 1;
+      aynt.a(null, new ReportModelDC02528().module("hot_list").action("exp_default_word").ver2(aynt.a(25)).ver4(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title));
+      localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      new amap((QQAppInterface)localObject1).a((QQAppInterface)localObject1, "exp_default_word", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title, aynt.a(25), null);
+    } while ((paramInt1 == -1) || (paramInt2 == -1));
+    Object localObject2 = new ReportModelDC02528().module("hot_list").action("feeds_hotword_wording");
+    if (paramInt1 == 0)
     {
-      bool1 = bool2;
-      if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
-      {
-        paramAbsStructMsg = ((StructMsgForGeneralShare)paramAbsStructMsg).iterator();
-        bool1 = false;
-        if (paramAbsStructMsg.hasNext())
-        {
-          Object localObject = (axup)paramAbsStructMsg.next();
-          if (!(localObject instanceof axyg)) {
-            break label110;
-          }
-          localObject = ((axyg)localObject).a.iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            axup localaxup = (axup)((Iterator)localObject).next();
-            if ((localaxup instanceof axzs)) {
-              if (((axzs)localaxup).a()) {
-                bool1 = true;
-              }
-            }
-          }
-        }
-      }
+      localObject1 = "1";
+      label420:
+      aynt.a(null, ((ReportModelDC02528)localObject2).ver1((String)localObject1).obj3(paramInt2 + ""));
+      localObject2 = ors.a();
     }
-    label110:
     for (;;)
     {
+      try
+      {
+        ((orz)localObject2).a("channelid", paramInt2 + "");
+        if (paramInt1 != 0) {
+          continue;
+        }
+        localObject1 = "1";
+        ((orz)localObject2).a("refresh_way", (String)localObject1);
+      }
+      catch (JSONException localJSONException)
+      {
+        continue;
+      }
+      a("0X800A4C5", ((orz)localObject2).a());
+      return;
+      this.jdField_b_of_type_AndroidWidgetTextView.setText((String)localObject1 + this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((String)localObject1 + this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTranslationY(Utils.dp2px(43.0D));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTranslationY(0.0F);
       break;
-      return bool1;
+      localObject1 = "2";
+      break label420;
+      localObject1 = "2";
+    }
+  }
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (!TextUtils.isEmpty(aomq.a().jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = new HotWordSearchEntryDataModel(localQQAppInterface, 1, 10, false);
+      ThreadManager.post(new ReadInJoyTabTopSearchHeaderController.4(this, paramBoolean, paramInt1, paramInt2, localQQAppInterface), 5, null, true);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = null;
+  }
+  
+  public void c()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).removeObserver(this.jdField_a_of_type_Amar);
+    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) {}
+    for (paramView = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo;; paramView = null)
+    {
+      UniteSearchActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, null, 25, 0L, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem, 0, paramView);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().opername("Kdian_inner_search").module("kd_web_search").action("active_search");
+      if (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem == null) {}
+      for (paramView = "";; paramView = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title)
+      {
+        aynt.a(localQQAppInterface, localReportModelDC02528.ver1(paramView).ver7("{experiment_id:" + aynt.jdField_b_of_type_JavaLangString + "}"));
+        aynt.a(null, 0, 25, "0X8009D15", 0, 0, null, null);
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     set
  * JD-Core Version:    0.7.0.1
  */

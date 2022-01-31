@@ -1,49 +1,26 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aczb
-  extends Animation
+public class aczb
+  extends alox
 {
-  private float jdField_a_of_type_Float;
-  private float b;
+  public aczb(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  aczb(acyx paramacyx) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    float f2 = 1.5F;
-    float f1 = 0.0F;
-    if (paramFloat < this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 5.0F) {
-      paramFloat = f2;
-    }
-    for (;;)
-    {
-      paramTransformation.setAlpha(f1);
-      paramTransformation.getMatrix().setScale(paramFloat, paramFloat, this.jdField_a_of_type_Float, this.b);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
+    while (this.a.a == null) {
       return;
-      if (paramFloat < 13.0F * this.jdField_a_of_type_Acyx.jdField_a_of_type_Float)
-      {
-        f1 = 0.5F - (paramFloat - this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 8.0F) * 0.5F;
-        paramFloat = 1.5F + (paramFloat - this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Acyx.jdField_a_of_type_Float * 8.0F) * 0.5F;
-      }
-      else
-      {
-        paramFloat = 2.0F;
-      }
     }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
-    this.b = (paramInt2 * 0.5F);
+    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
+    this.a.a.setImageBitmap(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczb
  * JD-Core Version:    0.7.0.1
  */

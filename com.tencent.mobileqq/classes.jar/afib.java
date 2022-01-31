@@ -1,18 +1,20 @@
-class afib
-  extends ajxj
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+
+public class afib
+  implements batz
 {
-  afib(afhx paramafhx) {}
+  public afib(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void a(ArrayList<MessageRecord> paramArrayList)
   {
-    if ((paramBoolean) && (afhx.a(this.a) != null)) {
-      afhx.a(this.a).a(String.valueOf(paramObject));
-    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afib
  * JD-Core Version:    0.7.0.1
  */

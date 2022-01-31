@@ -1,44 +1,44 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import awtu;
-import awub;
-import awuv;
-import awvi;
-import awvj;
+import ayox;
+import aype;
+import aypy;
+import ayql;
+import ayqm;
 import java.util.List;
 
 public class ContactSearchEngine$4
   implements Runnable
 {
-  public ContactSearchEngine$4(awtu paramawtu, awvi paramawvi) {}
+  public ContactSearchEngine$4(ayox paramayox, ayql paramayql) {}
   
   public void run()
   {
-    List localList1 = awtu.a(this.this$0, this.a);
-    awuv localawuv = awtu.a(this.this$0);
-    awvj localawvj;
-    if ((localawuv != null) && (localList1 != null))
+    List localList1 = ayox.a(this.this$0, this.a);
+    aypy localaypy = ayox.a(this.this$0);
+    ayqm localayqm;
+    if ((localaypy != null) && (localList1 != null))
     {
-      localawvj = new awvj(this.a.a, 1);
-      if (awtu.a(this.this$0) == null) {
-        localawuv.a(localList1, localawvj);
+      localayqm = new ayqm(this.a.a, 1);
+      if (ayox.a(this.this$0) == null) {
+        localaypy.a(localList1, localayqm);
       }
     }
     else
     {
       return;
     }
-    localawuv.a(localList1);
-    List localList2 = awtu.a(this.this$0).a(this.a);
+    localaypy.a(localList1);
+    List localList2 = ayox.a(this.this$0).a(this.a);
     if ((localList2 != null) && (!localList2.isEmpty())) {
       localList1.addAll(localList2);
     }
-    localawuv.a(localList1, localawvj);
+    localaypy.a(localList1, localayqm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.ContactSearchEngine.4
  * JD-Core Version:    0.7.0.1
  */

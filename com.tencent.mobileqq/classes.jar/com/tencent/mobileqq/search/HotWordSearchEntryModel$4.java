@@ -3,15 +3,15 @@ package com.tencent.mobileqq.search;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
-import awhx;
-import awid;
+import aydb;
+import aydh;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.GIFInfo;
 
 public class HotWordSearchEntryModel$4
   implements Runnable
 {
-  public HotWordSearchEntryModel$4(awhx paramawhx, HotWordSearchEntryDataModel.GIFInfo paramGIFInfo, awid paramawid) {}
+  public HotWordSearchEntryModel$4(aydb paramaydb, HotWordSearchEntryDataModel.GIFInfo paramGIFInfo, aydh paramaydh) {}
   
   public void run()
   {
@@ -22,12 +22,12 @@ public class HotWordSearchEntryModel$4
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.this$0.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
     localLayoutParams.height = i;
     this.this$0.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
-    awhx.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrlNight, this.jdField_a_of_type_Awid);
+    aydb.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrlNight, this.jdField_a_of_type_Aydh);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.HotWordSearchEntryModel.4
  * JD-Core Version:    0.7.0.1
  */

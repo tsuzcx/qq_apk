@@ -1,36 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiOperationInfo;
 
-class bjhg
-  implements bjhm
+public final class bjhg
+  implements Parcelable.Creator<WeishiOperationInfo>
 {
-  bjhg(bjhf parambjhf) {}
-  
-  public void a(float paramFloat, String paramString, int paramInt)
+  public WeishiOperationInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
-    }
-    bjhf.a(this.a, paramFloat);
+    return new WeishiOperationInfo(paramParcel);
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public WeishiOperationInfo[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      bjhf.a(this.a, 3);
-      this.a.b();
-      return;
-    }
-    bjhf.a(this.a, 2);
-    this.a.a(4);
+    return new WeishiOperationInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjhg
  * JD-Core Version:    0.7.0.1
  */

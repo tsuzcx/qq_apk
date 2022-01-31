@@ -1,113 +1,55 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
 
 public class bkup
-  implements bldj
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final String jdField_a_of_type_JavaLangString;
-  public Throwable a;
-  final int jdField_b_of_type_Int;
-  final long jdField_b_of_type_Long;
+  private static volatile bkup jdField_a_of_type_Bkup;
+  private final int jdField_a_of_type_Int = 2000;
+  private long jdField_a_of_type_Long;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int = 60000;
+  private long jdField_b_of_type_Long;
+  private final int c = 1000;
+  private int d;
   
-  public bkup(String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public static bkup a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    if (paramInt2 > 0) {}
-    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
+    if (jdField_a_of_type_Bkup == null) {}
+    try
     {
-      this.jdField_a_of_type_JavaLangThrowable = null;
-      if (paramString == null) {}
-      return;
+      if (jdField_a_of_type_Bkup == null) {
+        jdField_a_of_type_Bkup = new bkup();
+      }
+      return jdField_a_of_type_Bkup;
     }
+    finally {}
   }
   
-  public bldk a(int paramInt1, int paramInt2)
+  private void b()
   {
-    int j = 1280;
-    int i = 30;
-    bldk localbldk = new bldk();
-    Object localObject;
-    if (paramInt1 <= paramInt2)
+    AppInterface localAppInterface = QQStoryContext.a();
+    if (localAppInterface != null)
     {
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
-      }
-      localbldk.jdField_a_of_type_JavaIoFile = ((File)localObject);
-      if (paramInt2 < 1280) {
-        break label278;
-      }
-      localObject = "720p";
-      paramInt1 = j;
-      label70:
-      if (paramInt2 >= paramInt1) {
-        break label307;
-      }
+      bkvm localbkvm = (bkvm)localAppInterface.getBusinessHandler(3);
+      localAppInterface.addObserver(new bkur(this, localAppInterface));
+      localbkvm.c();
     }
-    label278:
-    label307:
-    for (localbldk.jdField_a_of_type_Int = ((int)(819200 * 1.0D / paramInt1 * paramInt2));; localbldk.jdField_a_of_type_Int = 819200)
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      localbldk.jdField_a_of_type_Float = (paramInt1 / paramInt2);
-      paramInt2 = i;
-      if (this.jdField_b_of_type_Int <= 30) {
-        paramInt2 = this.jdField_b_of_type_Int;
-      }
-      localbldk.jdField_b_of_type_Int = paramInt2;
-      localbldk.jdField_b_of_type_Boolean = a();
-      localbldk.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localbldk.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localbldk.jdField_b_of_type_Boolean + ", scaleRate=" + localbldk.jdField_a_of_type_Float + ", videoBitRate=" + localbldk.jdField_a_of_type_Int + ", videoFrameRate=" + localbldk.jdField_b_of_type_Int + ", beginTime=" + localbldk.jdField_a_of_type_Long + ", endTime=" + localbldk.jdField_b_of_type_Long + ",quality:" + (String)localObject + ",videoLongestEdge=" + paramInt1);
-      }
-      return localbldk;
-      paramInt2 = paramInt1;
-      break;
-      if (paramInt2 >= 960)
-      {
-        localObject = "540p";
-        paramInt1 = 960;
-        break label70;
-      }
-      paramInt1 = 640;
-      localObject = "480p";
-      break label70;
+      LogicDataManager.getInstance().setOnGetQQNumberEventListener(new bkuq(this));
+      this.jdField_a_of_type_Boolean = true;
     }
   }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(Throwable paramThrowable)
-  {
-    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onFailed:" + paramThrowable.getMessage());
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
-      bool = true;
-    }
-    while (Build.VERSION.SDK_INT <= 19) {
-      return bool;
-    }
-    return false;
-  }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkup
  * JD-Core Version:    0.7.0.1
  */

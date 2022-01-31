@@ -25,12 +25,13 @@ final class GpkgManager$6
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    GpkgManager.access$200(true, 1, 0L, 0.0F, paramString, paramDownloadResult, this.val$miniGamePkg, this.val$savePath, this.val$subRoot, this.val$listener);
+    String str = GpkgManager.access$000(this.val$savePath);
+    GpkgManager.access$200(true, 1, 0L, 0.0F, paramString, paramDownloadResult, this.val$miniGamePkg, str, this.val$subRoot, this.val$listener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.gpkg.GpkgManager.6
  * JD-Core Version:    0.7.0.1
  */

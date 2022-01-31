@@ -1,29 +1,20 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
 
 public class ajsr
-  implements View.OnSystemUiVisibilityChangeListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ajsr(BaseActivity paramBaseActivity) {}
+  public ajsr(RotationSeekBar paramRotationSeekBar) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      BaseActivity.mIsInMultiScreen = bool;
-      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
-      }
-      return;
-    }
+    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsr
  * JD-Core Version:    0.7.0.1
  */

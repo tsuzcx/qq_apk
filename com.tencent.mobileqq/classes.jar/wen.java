@@ -1,19 +1,53 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class wen
-  extends SparseArray<RotateCircleImageView.BorderStyle>
+public class wen
+  extends unf
 {
-  public wen(int paramInt)
+  public List<LikeEntry> a;
+  public int b;
+  public int c;
+  
+  public wen(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
   {
-    super(paramInt);
-    append(0, RotateCircleImageView.BorderStyle.STILL);
-    append(1, RotateCircleImageView.BorderStyle.ROTATE);
+    super(paramRspFeedLikeList.result);
+    paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
+    this.a = a(paramRspFeedLikeList);
+    this.b = paramRspFeedLikeList.like_total_count.get();
+    this.c = paramRspFeedLikeList.has_like.get();
+  }
+  
+  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
+  {
+    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
+    ArrayList localArrayList1 = new ArrayList();
+    usd localusd = (usd)urr.a(2);
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramFeedLikeInfo.size())
+    {
+      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
+      if (localusd.b(localLikeEntry.unionId) == null) {
+        localArrayList2.add(new usy("", localLikeEntry.unionId));
+      }
+      localArrayList1.add(localLikeEntry);
+      i += 1;
+    }
+    if (!localArrayList2.isEmpty()) {
+      new uza().a(1, localArrayList2);
+    }
+    return localArrayList1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wen
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,27 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import agtn;
-import agtr;
+import aini;
+import ainm;
 import android.util.Log;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import mqq.util.WeakReference;
 
 public class PhotoListLogicAECamera$3$2
   implements Runnable
 {
-  public PhotoListLogicAECamera$3$2(agtr paramagtr) {}
+  public PhotoListLogicAECamera$3$2(ainm paramainm) {}
   
   public void run()
   {
-    if (!((NewPhotoListActivity)this.a.a.a.get()).isFinishing())
+    if (!((NewPhotoListActivity)this.a.a.mActivity).isFinishing())
     {
-      ((NewPhotoListActivity)this.a.a.a.get()).d();
+      ((NewPhotoListActivity)this.a.a.mActivity).cancleProgressDailog();
       Log.d("Q.videostory.capture", "failed");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.logicImp.PhotoListLogicAECamera.3.2
  * JD-Core Version:    0.7.0.1
  */

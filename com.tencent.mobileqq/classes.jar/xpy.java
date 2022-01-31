@@ -1,29 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.media.MediaCodec.BufferInfo;
+import java.nio.ByteBuffer;
 
 class xpy
-  implements Animation.AnimationListener
 {
-  xpy(xpx paramxpx) {}
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public ByteBuffer a;
+  public int b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private xpy()
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (!this.a.jdField_a_of_type_Xpf.d()) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,29 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 
 class aqeg
-  extends GridLayoutManager.SpanSizeLookup
+  implements Animation.AnimationListener
 {
   aqeg(aqef paramaqef) {}
   
-  public int getSpanSize(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.getItemViewType(paramInt) == aqeb.b) {
-      return 5;
-    }
-    return 1;
+    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(500);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setAnimationListener(new aqeh(this));
+    this.a.c.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqeg
  * JD-Core Version:    0.7.0.1
  */

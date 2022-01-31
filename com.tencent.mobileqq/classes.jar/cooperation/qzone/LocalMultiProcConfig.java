@@ -30,6 +30,10 @@ public class LocalMultiProcConfig
   public static final String QZONE_ALBUM_DLNA_SWITCH = "QZone_dlnaSwitch";
   public static final String QZONE_BARRAGE_EFFECT_ENABLED = "qzone_barrage_effect_enabled";
   public static final String QZONE_BARRAGE_EFFECT_SAVE_DATA = "qzone_barrage_effect_save_data";
+  public static final String QZONE_CAMPUSINFO_SCHOOLNAME = "qzone_campusInfo_name";
+  public static final String QZONE_CAMPUSINFO_SCHOOL_ID = "qzone_campusInfo_school_id";
+  public static final String QZONE_CAMPUSINFO_SCHOOL_IDX = "qzone_campusInfo_school_idx";
+  public static final String QZONE_CAMPUSINFO_VERFYSTATUS = "qzone_campusInfo_verfyStatus";
   public static final String QZONE_CLEAR_CACHE_VERSION = "Qzone_clearCacheVersion";
   public static final String QZONE_CUSTOM_PRAISE_ENABLED = "qzone_custom_praise_enabled";
   public static final String QZONE_DIY_JUMP_URL = "qzone_diy_page_jump_url";

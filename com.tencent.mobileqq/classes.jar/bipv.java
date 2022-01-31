@@ -1,55 +1,50 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class bipv
+  implements DialogInterface.OnClickListener
 {
-  private static volatile bipv jdField_a_of_type_Bipv;
-  private final int jdField_a_of_type_Int = 2000;
-  private long jdField_a_of_type_Long;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 60000;
-  private long jdField_b_of_type_Long;
-  private final int c = 1000;
-  private int d;
+  public bipv(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public static bipv a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (jdField_a_of_type_Bipv == null) {}
-    try
+    this.a.app.a().a("0X8004750", 1);
+    this.a.app.a().a(new QlAndQQInterface.DailogClickInfo(9));
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
     {
-      if (jdField_a_of_type_Bipv == null) {
-        jdField_a_of_type_Bipv = new bipv();
+      localStringBuilder = new StringBuilder().append("topAct:");
+      if (QlinkStandardDialogActivity.a(this.a) == null) {
+        break label150;
       }
-      return jdField_a_of_type_Bipv;
     }
-    finally {}
-  }
-  
-  private void b()
-  {
-    AppInterface localAppInterface = QQStoryContext.a();
-    if (localAppInterface != null)
+    label150:
+    for (paramDialogInterface = QlinkStandardDialogActivity.a(this.a).getLocalClassName();; paramDialogInterface = "null")
     {
-      biqw localbiqw = (biqw)localAppInterface.getBusinessHandler(3);
-      localAppInterface.addObserver(new bipx(this, localAppInterface));
-      localbiqw.c();
+      QLog.d("QlinkStandardDialogActivity", 2, paramDialogInterface);
+      if ((QlinkStandardDialogActivity.a(this.a) == null) || (!(QlinkStandardDialogActivity.a(this.a) instanceof FMActivity))) {
+        break;
+      }
+      paramDialogInterface = (FMActivity)QlinkStandardDialogActivity.a(this.a);
+      if ((paramDialogInterface.e() != 0) && (7 != paramDialogInterface.e())) {
+        break;
+      }
+      this.a.finish();
+      return;
     }
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      LogicDataManager.getInstance().setOnGetQQNumberEventListener(new bipw(this));
-      this.jdField_a_of_type_Boolean = true;
-    }
+    arni.a(this.a, false);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bipv
  * JD-Core Version:    0.7.0.1
  */

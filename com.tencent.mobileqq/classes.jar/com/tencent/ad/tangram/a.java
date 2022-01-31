@@ -7,6 +7,7 @@ import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.AppInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
+import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.Ext;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
@@ -18,8 +19,13 @@ import org.json.JSONObject;
 public final class a
   implements Ad, Serializable
 {
+  public static final int REPORT_STATE_FINISHED = 2;
+  public static final int REPORT_STATE_INIT = -1;
+  public static final int REPORT_STATE_PENDING = 1;
   private static final String TAG = "AdImplementation";
+  public long actionSetId = -2147483648L;
   private qq_ad_get.QQAdGetRsp.AdInfo info;
+  public int reportState = -1;
   
   public a() {}
   
@@ -39,6 +45,43 @@ public final class a
       return this.info.report_info.trace_info.aid;
     }
     return -2147483648L;
+  }
+  
+  public long getActionSetId()
+  {
+    return this.actionSetId;
+  }
+  
+  public long getAdvertiserId()
+  {
+    if (isValid()) {
+      return this.info.display_info.advertiser_info.advertiser_id;
+    }
+    return -2147483648L;
+  }
+  
+  public String getAdvertiser_corporate_image_name()
+  {
+    if (isValid()) {
+      return this.info.display_info.advertiser_info.corporate_image_name;
+    }
+    return "";
+  }
+  
+  public String getAdvertiser_corporate_logo()
+  {
+    if (isValid()) {
+      return this.info.display_info.advertiser_info.corporate_logo;
+    }
+    return "";
+  }
+  
+  public String getAppChannelId()
+  {
+    if (isAppProductType()) {
+      return this.info.app_info.channel_id;
+    }
+    return null;
   }
   
   public String getAppDeeplink()
@@ -87,6 +130,14 @@ public final class a
   {
     if (isAppProductType()) {
       return this.info.app_info.pkg_url;
+    }
+    return null;
+  }
+  
+  public String getCanvas()
+  {
+    if (isCanvas()) {
+      return this.info.dest_info.canvas_json;
     }
     return null;
   }
@@ -140,6 +191,14 @@ public final class a
       return this.info.product_type;
     }
     return -2147483648;
+  }
+  
+  public String getTencent_video_id()
+  {
+    if (isValid()) {
+      return this.info.display_info.video_info.tencent_video_id;
+    }
+    return null;
   }
   
   public String getTraceId()
@@ -316,6 +375,11 @@ public final class a
   public boolean isVideoSplice()
   {
     return ((getProductType() == 1000) || (getProductType() == 12) || (getProductType() == 25) || (getProductType() == 30)) && ((getDestType() == 0) || (getDestType() == 4) || (getDestType() == 1)) && ((getCreativeSize() == 585) || (getCreativeSize() == 930));
+  }
+  
+  public void setActionSetId(long paramLong)
+  {
+    this.actionSetId = paramLong;
   }
 }
 

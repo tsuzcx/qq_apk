@@ -1,20 +1,26 @@
-import com.tencent.gdtad.api.GdtAd;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.PopupWindow;
 
-public abstract interface ysy
+class ysy
+  implements View.OnTouchListener
 {
-  public abstract void a(GdtAd paramGdtAd);
+  ysy(ysx paramysx) {}
   
-  public abstract void a(GdtAd paramGdtAd, ysx paramysx);
-  
-  public abstract void b(GdtAd paramGdtAd);
-  
-  public abstract void c(GdtAd paramGdtAd);
-  
-  public abstract void d(GdtAd paramGdtAd);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysy
  * JD-Core Version:    0.7.0.1
  */

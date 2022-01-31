@@ -1,28 +1,47 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.Emoticon;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.LinearLayout;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
+import com.tencent.smtt.sdk.WebView;
 
-class askk
-  implements askq<aobp>
+public class askk
+  extends asks
 {
-  askk(askf paramaskf, boolean paramBoolean, SessionInfo paramSessionInfo) {}
-  
-  public void a(aobp paramaobp)
+  public askk(QQGameFeedWebFragment paramQQGameFeedWebFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    if ((paramaobp != null) && (paramaobp.a != null))
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        askf.a(this.jdField_a_of_type_Askf.a, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramaobp.a.epId);
-      }
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    this.a.g = System.currentTimeMillis();
+    super.onPageFinished(paramWebView, paramString);
+    QQGameFeedWebFragment.a(this.a).setVisibility(0);
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
+    if ((this.a.isAdded()) && (QQGameFeedWebFragment.a(this.a) != null)) {
+      QQGameFeedWebFragment.a(this.a).a(true);
     }
-    else {
-      return;
-    }
-    askf.a(this.jdField_a_of_type_Askf.a, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramaobp.a.epId);
+    QQGameFeedWebFragment.b(this.a);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    this.a.e = System.currentTimeMillis();
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     askk
  * JD-Core Version:    0.7.0.1
  */

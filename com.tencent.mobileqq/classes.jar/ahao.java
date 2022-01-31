@@ -1,16 +1,11 @@
-import java.util.Comparator;
-
-final class ahao
-  implements Comparator<ahan>
+public class ahao
 {
-  public int a(ahan paramahan1, ahan paramahan2)
-  {
-    return paramahan1.a - paramahan2.a;
-  }
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahao
  * JD-Core Version:    0.7.0.1
  */

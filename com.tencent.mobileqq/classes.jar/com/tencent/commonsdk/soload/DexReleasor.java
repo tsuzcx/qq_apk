@@ -1,6 +1,11 @@
 package com.tencent.commonsdk.soload;
 
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
@@ -19,28 +24,19 @@ import java.util.zip.ZipException;
 public class DexReleasor
   implements MyZipConstants
 {
-  public static final int APK_DEX_COUNT = 11;
+  public static int APK_DEX_COUNT = 11;
+  private static final String DEX_COUNT_KEY = "mobileqq.dex.count";
   private static final String DEX_NAME = "classes.dex";
+  private static final String TAG = "DexReleasor";
   private static DexReleasor dexOperator = null;
-  public static String[] sExtraDexes = new String[10];
-  public static String[] sExtraJarDexes = new String[10];
+  public static String[] sExtraDexes;
+  public static String[] sExtraJarDexes;
   byte[] buffer = new byte[81920];
   byte[] commentOfEOCD = null;
   private String mDstPath;
   private final LinkedHashMap<String, MyZipEntry> mEntries = new LinkedHashMap();
   RandomAccessFile mRaf = null;
   private String mSrcFile;
-  
-  static
-  {
-    int i = 0;
-    while (i < 10)
-    {
-      sExtraDexes[i] = ("classes" + (i + 2) + ".dex");
-      sExtraJarDexes[i] = ("classes" + (i + 2) + ".jar");
-      i += 1;
-    }
-  }
   
   public DexReleasor(String paramString1, String paramString2)
   {
@@ -70,6 +66,40 @@ public class DexReleasor
     finally {}
   }
   
+  public static void initDexCount(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
+      if ((paramContext != null) && (paramContext.metaData != null))
+      {
+        i = paramContext.metaData.getInt("mobileqq.dex.count", -1);
+        if (i > 0)
+        {
+          QLog.d("DexReleasor", 1, "DexReleasor.read, meta-data dexCount = " + i);
+          APK_DEX_COUNT = i;
+        }
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        int i;
+        QLog.e("DexReleasor", 1, "DexReleaser.read meta-data dexCount Error", paramContext);
+      }
+    }
+    sExtraDexes = new String[APK_DEX_COUNT - 1];
+    sExtraJarDexes = new String[APK_DEX_COUNT - 1];
+    i = 0;
+    while (i < APK_DEX_COUNT - 1)
+    {
+      sExtraDexes[i] = ("classes" + (i + 2) + ".dex");
+      sExtraJarDexes[i] = ("classes" + (i + 2) + ".jar");
+      i += 1;
+    }
+  }
+  
   private boolean read()
   {
     long l1 = 0L;
@@ -90,90 +120,87 @@ public class DexReleasor
     int k;
     int m;
     int i1;
-    label245:
-    long l3;
-    label283:
-    byte[] arrayOfByte;
     if (l2 < 0L)
     {
       throw new ZipException("too short to be Zip");
-      do
+      this.mRaf.seek(l2);
+      if (Integer.reverseBytes(this.mRaf.readInt()) == 101010256)
       {
-        this.mRaf.seek(l2);
-        if (Integer.reverseBytes(this.mRaf.readInt()) == 101010256)
-        {
-          localObject = new byte[18];
-          this.mRaf.readFully((byte[])localObject);
-          localObject = HeapBufferIterator.iterator((byte[])localObject, 0, localObject.length, ByteOrder.LITTLE_ENDIAN);
-          i = ((BufferIterator)localObject).readShort();
-          j = ((BufferIterator)localObject).readShort();
-          n = ((BufferIterator)localObject).readShort();
-          k = ((BufferIterator)localObject).readShort();
-          l1 = ((BufferIterator)localObject).readInt();
-          m = ((BufferIterator)localObject).readInt();
-          i1 = ((BufferIterator)localObject).readShort();
-          if (i1 <= 0) {
-            break;
-          }
-          localObject = new byte[i1];
-          if (this.mRaf.read((byte[])localObject, 0, localObject.length) == -1) {
-            break;
-          }
-          this.commentOfEOCD = ((byte[])localObject);
-          break;
-          throw new ZipException("spanned archives not supported");
+        localObject = new byte[18];
+        this.mRaf.readFully((byte[])localObject);
+        localObject = HeapBufferIterator.iterator((byte[])localObject, 0, localObject.length, ByteOrder.LITTLE_ENDIAN);
+        i = ((BufferIterator)localObject).readShort();
+        j = ((BufferIterator)localObject).readShort();
+        n = ((BufferIterator)localObject).readShort();
+        k = ((BufferIterator)localObject).readShort();
+        l1 = ((BufferIterator)localObject).readInt();
+        m = ((BufferIterator)localObject).readInt();
+        i1 = ((BufferIterator)localObject).readShort();
+        if (i1 <= 0) {
+          break label493;
         }
-        l3 = l2 - 1L;
-        l2 = l3;
-      } while (l3 >= l1);
-      throw new ZipException("EOCD not found; not a Zip archive?");
-      localObject = new BufferedInputStream(new MyZipFile.RAFStream(this.mRaf, m), 4096);
-      arrayOfByte = new byte[46];
-      j = 0;
-      i = 0;
+        localObject = new byte[i1];
+        if (this.mRaf.read((byte[])localObject, 0, localObject.length) == -1) {
+          break label493;
+        }
+        this.commentOfEOCD = ((byte[])localObject);
+        break label493;
+      }
     }
     for (;;)
     {
-      label322:
-      boolean bool;
-      if (i == 10)
-      {
-        bool = readLocalHeader(this.mRaf);
-        label338:
-        return bool;
+      label245:
+      throw new ZipException("spanned archives not supported");
+      long l3 = l2 - 1L;
+      l2 = l3;
+      if (l3 >= l1) {
+        break;
       }
-      label495:
+      throw new ZipException("EOCD not found; not a Zip archive?");
+      label462:
+      label493:
       do
       {
-        MyZipEntry localMyZipEntry = new MyZipEntry(arrayOfByte, (InputStream)localObject);
-        String str = localMyZipEntry.getName();
-        m = i;
-        if (!TextUtils.isEmpty(str))
-        {
-          String[] arrayOfString = sExtraDexes;
-          i1 = arrayOfString.length;
-          k = 0;
-          for (;;)
-          {
-            m = i;
-            if (k >= i1) {
-              break;
-            }
-            m = i;
-            if (TextUtils.equals(str, arrayOfString[k]))
-            {
-              this.mEntries.put(str, localMyZipEntry);
-              m = i + 1;
-            }
-            k += 1;
-            i = m;
+        localObject = new BufferedInputStream(new MyZipFile.RAFStream(this.mRaf, m), 4096);
+        byte[] arrayOfByte = new byte[46];
+        j = 0;
+        i = 0;
+        if ((j >= n) || (i == APK_DEX_COUNT - 1)) {
+          if (i != APK_DEX_COUNT - 1) {
+            break label462;
           }
         }
-        j += 1;
-        i = m;
-        break label495;
-        bool = false;
-        break label338;
+        for (boolean bool = readLocalHeader(this.mRaf);; bool = false)
+        {
+          return bool;
+          MyZipEntry localMyZipEntry = new MyZipEntry(arrayOfByte, (InputStream)localObject);
+          String str = localMyZipEntry.getName();
+          m = i;
+          if (!TextUtils.isEmpty(str))
+          {
+            String[] arrayOfString = sExtraDexes;
+            i1 = arrayOfString.length;
+            k = 0;
+            for (;;)
+            {
+              m = i;
+              if (k >= i1) {
+                break;
+              }
+              m = i;
+              if (TextUtils.equals(str, arrayOfString[k]))
+              {
+                this.mEntries.put(str, localMyZipEntry);
+                m = i + 1;
+              }
+              k += 1;
+              i = m;
+            }
+          }
+          j += 1;
+          i = m;
+          break;
+        }
         do
         {
           l1 = l3;
@@ -184,14 +211,7 @@ public class DexReleasor
         if ((n != k) || (i != 0)) {
           break label245;
         }
-        if (j == 0) {
-          break label283;
-        }
-        break label245;
-        if (j >= n) {
-          break label322;
-        }
-      } while (i != 10);
+      } while (j == 0);
     }
   }
   
@@ -390,29 +410,29 @@ public class DexReleasor
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 67	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
+    //   1: getfield 49	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
     //   4: ifnull +15 -> 19
     //   7: aload_0
-    //   8: getfield 67	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
-    //   11: invokevirtual 375	java/io/RandomAccessFile:close	()V
+    //   8: getfield 49	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
+    //   11: invokevirtual 428	java/io/RandomAccessFile:close	()V
     //   14: aload_0
     //   15: aconst_null
-    //   16: putfield 67	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
+    //   16: putfield 49	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
     //   19: aload_0
     //   20: aconst_null
-    //   21: putfield 77	com/tencent/commonsdk/soload/DexReleasor:buffer	[B
+    //   21: putfield 59	com/tencent/commonsdk/soload/DexReleasor:buffer	[B
     //   24: aconst_null
-    //   25: putstatic 60	com/tencent/commonsdk/soload/DexReleasor:dexOperator	Lcom/tencent/commonsdk/soload/DexReleasor;
+    //   25: putstatic 40	com/tencent/commonsdk/soload/DexReleasor:dexOperator	Lcom/tencent/commonsdk/soload/DexReleasor;
     //   28: return
     //   29: astore_1
     //   30: aload_0
     //   31: aconst_null
-    //   32: putfield 67	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
+    //   32: putfield 49	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
     //   35: goto -16 -> 19
     //   38: astore_1
     //   39: aload_0
     //   40: aconst_null
-    //   41: putfield 67	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
+    //   41: putfield 49	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
     //   44: aload_1
     //   45: athrow
     // Local variable table:
@@ -444,73 +464,79 @@ public class DexReleasor
     //   2: aload_0
     //   3: aload_1
     //   4: aload_2
-    //   5: invokespecial 382	com/tencent/commonsdk/soload/DexReleasor:writeToJar	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   5: invokespecial 435	com/tencent/commonsdk/soload/DexReleasor:writeToJar	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
     //   8: astore_3
     //   9: aload_3
     //   10: astore_1
-    //   11: getstatic 34	com/tencent/commonsdk/soload/DexReleasor:sExtraDexes	[Ljava/lang/String;
-    //   14: bipush 9
-    //   16: aaload
-    //   17: aload_2
-    //   18: invokevirtual 385	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   21: ifeq +9 -> 30
-    //   24: aload_0
-    //   25: invokevirtual 387	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
-    //   28: aload_3
-    //   29: astore_1
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_1
-    //   33: areturn
-    //   34: astore_1
+    //   11: getstatic 131	com/tencent/commonsdk/soload/DexReleasor:sExtraDexes	[Ljava/lang/String;
+    //   14: getstatic 38	com/tencent/commonsdk/soload/DexReleasor:APK_DEX_COUNT	I
+    //   17: iconst_2
+    //   18: isub
+    //   19: aaload
+    //   20: aload_2
+    //   21: invokevirtual 438	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   24: ifeq +9 -> 33
+    //   27: aload_0
+    //   28: invokevirtual 440	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
+    //   31: aload_3
+    //   32: astore_1
+    //   33: aload_0
+    //   34: monitorexit
     //   35: aload_1
-    //   36: invokevirtual 388	java/io/IOException:printStackTrace	()V
-    //   39: aconst_null
-    //   40: astore_3
-    //   41: aload_3
-    //   42: astore_1
-    //   43: getstatic 34	com/tencent/commonsdk/soload/DexReleasor:sExtraDexes	[Ljava/lang/String;
-    //   46: bipush 9
-    //   48: aaload
-    //   49: aload_2
-    //   50: invokevirtual 385	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   53: ifeq -23 -> 30
-    //   56: aload_0
-    //   57: invokevirtual 387	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
-    //   60: aload_3
-    //   61: astore_1
-    //   62: goto -32 -> 30
-    //   65: astore_1
-    //   66: aload_0
-    //   67: monitorexit
-    //   68: aload_1
-    //   69: athrow
-    //   70: astore_1
-    //   71: getstatic 34	com/tencent/commonsdk/soload/DexReleasor:sExtraDexes	[Ljava/lang/String;
-    //   74: bipush 9
-    //   76: aaload
-    //   77: aload_2
-    //   78: invokevirtual 385	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   81: ifeq +7 -> 88
-    //   84: aload_0
-    //   85: invokevirtual 387	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
-    //   88: aload_1
-    //   89: athrow
+    //   36: areturn
+    //   37: astore_1
+    //   38: aload_1
+    //   39: invokevirtual 441	java/io/IOException:printStackTrace	()V
+    //   42: aconst_null
+    //   43: astore_3
+    //   44: aload_3
+    //   45: astore_1
+    //   46: getstatic 131	com/tencent/commonsdk/soload/DexReleasor:sExtraDexes	[Ljava/lang/String;
+    //   49: getstatic 38	com/tencent/commonsdk/soload/DexReleasor:APK_DEX_COUNT	I
+    //   52: iconst_2
+    //   53: isub
+    //   54: aaload
+    //   55: aload_2
+    //   56: invokevirtual 438	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   59: ifeq -26 -> 33
+    //   62: aload_0
+    //   63: invokevirtual 440	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
+    //   66: aload_3
+    //   67: astore_1
+    //   68: goto -35 -> 33
+    //   71: astore_1
+    //   72: aload_0
+    //   73: monitorexit
+    //   74: aload_1
+    //   75: athrow
+    //   76: astore_1
+    //   77: getstatic 131	com/tencent/commonsdk/soload/DexReleasor:sExtraDexes	[Ljava/lang/String;
+    //   80: getstatic 38	com/tencent/commonsdk/soload/DexReleasor:APK_DEX_COUNT	I
+    //   83: iconst_2
+    //   84: isub
+    //   85: aaload
+    //   86: aload_2
+    //   87: invokevirtual 438	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   90: ifeq +7 -> 97
+    //   93: aload_0
+    //   94: invokevirtual 440	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
+    //   97: aload_1
+    //   98: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	90	0	this	DexReleasor
-    //   0	90	1	paramString1	String
-    //   0	90	2	paramString2	String
-    //   8	53	3	localFile	File
+    //   0	99	0	this	DexReleasor
+    //   0	99	1	paramString1	String
+    //   0	99	2	paramString2	String
+    //   8	59	3	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   2	9	34	java/io/IOException
-    //   11	28	65	finally
-    //   43	60	65	finally
-    //   71	88	65	finally
-    //   88	90	65	finally
-    //   2	9	70	finally
-    //   35	39	70	finally
+    //   2	9	37	java/io/IOException
+    //   11	31	71	finally
+    //   46	66	71	finally
+    //   77	97	71	finally
+    //   97	99	71	finally
+    //   2	9	76	finally
+    //   38	42	76	finally
   }
 }
 

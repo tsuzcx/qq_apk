@@ -1,23 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public final class atfu
-  implements Parcelable.Creator<BasicTypeDataParcel>
+public class atfu
+  extends WebViewPlugin
 {
-  public BasicTypeDataParcel a(Parcel paramParcel)
+  public static final String a;
+  protected ymk a;
+  
+  static
   {
-    return new BasicTypeDataParcel(paramParcel);
+    jdField_a_of_type_JavaLangString = atfu.class.getSimpleName();
   }
   
-  public BasicTypeDataParcel[] a(int paramInt)
+  public atfu()
   {
-    return new BasicTypeDataParcel[paramInt];
+    this.mPluginNameSpace = "ftssearch";
+    this.jdField_a_of_type_Ymk = ymk.a();
+    this.jdField_a_of_type_Ymk.a();
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
+    while ("ftssearch".equals(paramString2)) {
+      return false;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfu
  * JD-Core Version:    0.7.0.1
  */

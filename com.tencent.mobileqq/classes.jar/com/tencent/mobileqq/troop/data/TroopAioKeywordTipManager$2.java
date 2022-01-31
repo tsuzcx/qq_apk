@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.data;
 
-import akhp;
+import alzf;
 import android.util.SparseArray;
-import azmt;
-import azmv;
-import azne;
-import aznf;
+import bblc;
+import bble;
+import bbln;
+import bblo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,7 +14,7 @@ import java.util.List;
 public class TroopAioKeywordTipManager$2
   implements Runnable
 {
-  public TroopAioKeywordTipManager$2(azne paramazne, List paramList) {}
+  public TroopAioKeywordTipManager$2(bbln parambbln, List paramList) {}
   
   public void run()
   {
@@ -47,7 +47,7 @@ public class TroopAioKeywordTipManager$2
               localObject7 = ???;
               break label589;
             }
-            if (((TroopAioKeywordTipInfo)???).version == ((azmv)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(((Integer)localObject11).intValue())).e) {
+            if (((TroopAioKeywordTipInfo)???).version == ((bble)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(((Integer)localObject11).intValue())).e) {
               break label573;
             }
             if (localObject1 != null) {
@@ -80,7 +80,7 @@ public class TroopAioKeywordTipManager$2
         }
       }
     }
-    ??? = azmt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String[])???);
+    ??? = bblc.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String[])???);
     label559:
     label562:
     label567:
@@ -105,7 +105,7 @@ public class TroopAioKeywordTipManager$2
               break label562;
             }
             TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)((Iterator)localObject11).next();
-            if ((localTroopAioKeywordTipInfo.ruleId != ((Integer)localObject10).intValue()) || (((azmv)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(((Integer)localObject10).intValue())).e != localTroopAioKeywordTipInfo.version)) {
+            if ((localTroopAioKeywordTipInfo.ruleId != ((Integer)localObject10).intValue()) || (((bble)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(((Integer)localObject10).intValue())).e != localTroopAioKeywordTipInfo.version)) {
               continue;
             }
             this.this$0.b.put(((Integer)localObject10).intValue(), localTroopAioKeywordTipInfo);
@@ -128,7 +128,7 @@ public class TroopAioKeywordTipManager$2
             ??? = localArrayList;
             label500:
             if ((??? != null) && (((List)???).size() > 0)) {
-              ((akhp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a((List)???, new aznf(this));
+              ((alzf)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a((List)???, new bblo(this));
             }
             return;
           }

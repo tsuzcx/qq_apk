@@ -1,29 +1,40 @@
-import android.text.TextUtils;
-import java.util.Collections;
-import java.util.concurrent.ConcurrentHashMap;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.QCircleFolderFollowTabFragment;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Arrays;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
 public class twd
+  implements Observer<trt>
 {
-  public static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
+  public twd(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  public static void a(String paramString)
+  public void a(@Nullable trt paramtrt)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    long l;
-    Long localLong;
-    do
+    if ((QCircleFolderFollowTabFragment.a(this.a) != null) && (this.a.a != null) && (this.a.a.a != null))
     {
+      if (paramtrt != null)
+      {
+        paramtrt.a(tqr.a(this.a.a.a.urlInfo.get(), "NoticeListUrl"));
+        boolean bool = paramtrt.a();
+        if (bool) {
+          tyj.a("", 18, 1L);
+        }
+        QCircleFolderFollowTabFragment.a(this.a).a(bool);
+        QCircleFolderFollowTabFragment.a(this.a).a(new ArrayList(Arrays.asList(new trt[] { paramtrt })));
+      }
+    }
+    else {
       return;
-      l = System.currentTimeMillis();
-      localLong = (Long)a.get(paramString);
-    } while ((localLong != null) && (Math.abs(l - localLong.longValue()) <= 120000L));
-    a.put(paramString, Long.valueOf(l));
-    tkl.a(Collections.singletonList(paramString));
+    }
+    QCircleFolderFollowTabFragment.a(this.a).a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twd
  * JD-Core Version:    0.7.0.1
  */

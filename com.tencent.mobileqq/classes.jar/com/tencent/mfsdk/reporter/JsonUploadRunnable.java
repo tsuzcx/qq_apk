@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.reporter;
 
-import aaak;
+import abrh;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
@@ -11,17 +11,17 @@ public class JsonUploadRunnable
   extends BaseUploadRunnable
 {
   private int jdField_a_of_type_Int;
-  private aaak jdField_a_of_type_Aaak;
+  private abrh jdField_a_of_type_Abrh;
   private URL jdField_a_of_type_JavaNetURL;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   private int b = -1;
   
-  public JsonUploadRunnable(URL paramURL, JSONObject paramJSONObject, aaak paramaaak, int paramInt, MqqHandler paramMqqHandler)
+  public JsonUploadRunnable(URL paramURL, JSONObject paramJSONObject, abrh paramabrh, int paramInt, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Aaak = paramaaak;
+    this.jdField_a_of_type_Abrh = paramabrh;
     this.b = paramInt;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     if (QLog.isColorLevel()) {
@@ -182,7 +182,7 @@ public class JsonUploadRunnable
     //   224: aload_2
     //   225: invokevirtual 151	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   228: invokespecial 154	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   231: invokestatic 159	aaba:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   231: invokestatic 159	abrx:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   234: astore 7
     //   236: aload_2
     //   237: astore 5
@@ -232,12 +232,12 @@ public class JsonUploadRunnable
     //   323: aload_3
     //   324: astore 4
     //   326: aload_0
-    //   327: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Aaak	Laaak;
+    //   327: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abrh	Labrh;
     //   330: ifnull +483 -> 813
     //   333: aload_3
     //   334: astore 4
     //   336: aload_0
-    //   337: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Aaak	Laaak;
+    //   337: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abrh	Labrh;
     //   340: aload_0
     //   341: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
     //   344: invokeinterface 186 2 0
@@ -327,14 +327,14 @@ public class JsonUploadRunnable
     //   502: aload_3
     //   503: astore 4
     //   505: aload_0
-    //   506: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Aaak	Laaak;
+    //   506: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abrh	Labrh;
     //   509: ifnull -157 -> 352
     //   512: aload_2
     //   513: astore 5
     //   515: aload_3
     //   516: astore 4
     //   518: aload_0
-    //   519: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Aaak	Laaak;
+    //   519: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abrh	Labrh;
     //   522: aload_0
     //   523: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
     //   526: invokeinterface 186 2 0
@@ -359,10 +359,10 @@ public class JsonUploadRunnable
     //   563: invokevirtual 189	java/net/HttpURLConnection:disconnect	()V
     //   566: return
     //   567: aload_0
-    //   568: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Aaak	Laaak;
+    //   568: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abrh	Labrh;
     //   571: ifnull -92 -> 479
     //   574: aload_0
-    //   575: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Aaak	Laaak;
+    //   575: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abrh	Labrh;
     //   578: aload_0
     //   579: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
     //   582: invokeinterface 186 2 0
@@ -663,7 +663,7 @@ public class JsonUploadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mfsdk.reporter.JsonUploadRunnable
  * JD-Core Version:    0.7.0.1
  */

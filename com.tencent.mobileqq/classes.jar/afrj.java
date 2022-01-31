@@ -1,53 +1,20 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class afrj
-  extends akdn
+class afrj
+  implements View.OnClickListener
 {
-  public afrj(PublicAccountFragment paramPublicAccountFragment) {}
+  afrj(afrh paramafrh) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      if (PublicAccountFragment.a(this.a))
-      {
-        if (this.a.a != null) {
-          this.a.a.a(this.a.b(), true, null);
-        }
-        PublicAccountFragment.a(this.a, false);
-      }
-      this.a.i();
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
+    afrh.a(this.a, true, this.a.a.getCurrentAccountUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afrj
  * JD-Core Version:    0.7.0.1
  */

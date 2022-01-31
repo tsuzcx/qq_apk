@@ -1,33 +1,51 @@
-import com.tencent.qphone.base.util.QLog;
+import android.database.Cursor;
+import android.os.Parcel;
 
-class bfhz
-  implements bfjs
+final class bfhz
+  implements bfjh<bfhy>
 {
-  bfhz(bfhy parambfhy) {}
-  
-  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public int a()
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)) && (paramObject2 != null) && ((paramObject2 instanceof byte[])))
+    return 1;
+  }
+  
+  public bfhy a(Cursor paramCursor)
+  {
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Long.valueOf(paramLong1), paramObject1 }));
-      }
-      if (paramLong1 == 0L) {
-        break label99;
-      }
-      this.a.a((String)paramObject1, (byte[])paramObject2, new bfic(this.a, paramLong1));
+      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
+      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
+      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
+      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
+      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
+      paramCursor = Parcel.obtain();
+      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+      paramCursor.setDataPosition(0);
+      localObject = paramCursor.readString();
+      paramCursor.recycle();
+      paramCursor = new bfhy(str1, str2, l1, l2, (String)localObject);
+      return paramCursor;
     }
-    for (;;)
+    catch (Exception paramCursor)
     {
-      return 0;
-      label99:
-      this.a.a((String)paramObject1, (byte[])paramObject2, null);
+      paramCursor.printStackTrace();
     }
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public bfji[] a()
+  {
+    return new bfji[] { new bfji("urlKey", "TEXT"), new bfji("ETag", "TEXT"), new bfji("lastModify", "INTEGER"), new bfji("cacheTime", "INTEGER"), new bfji("response", "BLOB") };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfhz
  * JD-Core Version:    0.7.0.1
  */

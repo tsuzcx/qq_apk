@@ -1,65 +1,81 @@
-import android.content.Context;
-import java.util.HashMap;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class bdkq
+  implements View.OnTouchListener
 {
-  protected static bdkq a;
-  protected Context a;
-  protected bdkp a;
-  protected final HashMap<String, bdkn> a;
+  private int jdField_a_of_type_Int;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  protected bdkq(Context paramContext)
+  public bdkq(QQAppInterface paramQQAppInterface, boolean paramBoolean1, ImageView paramImageView, String paramString, int paramInt, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Bdkp = new bdkr(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramBoolean2;
   }
   
-  public static bdkq a(Context paramContext)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (jdField_a_of_type_Bdkq != null) {
-      return jdField_a_of_type_Bdkq;
+    if (this.jdField_a_of_type_Boolean) {
+      return false;
     }
-    try
+    switch (paramMotionEvent.getAction())
     {
-      if (jdField_a_of_type_Bdkq == null) {
-        jdField_a_of_type_Bdkq = new bdkq(paramContext);
-      }
-      paramContext = jdField_a_of_type_Bdkq;
-      return paramContext;
-    }
-    finally {}
-  }
-  
-  public bdkn a(Class<? extends bdkj> paramClass, long paramLong, String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        throw new RuntimeException("call initiate(Context context) before this");
-      }
-    }
-    if (paramString == null) {
-      throw new RuntimeException("invalid table name");
-    }
-    Object localObject = bdkn.a(paramLong, paramString);
-    localObject = (bdkn)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-    if (localObject == null)
-    {
-      paramClass = new bdkn(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
-      paramClass.a(this.jdField_a_of_type_Bdkp);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
     }
     for (;;)
     {
-      return paramClass;
-      paramClass = (Class<? extends bdkj>)localObject;
+      return true;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(127);
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          continue;
+          if (Build.VERSION.SDK_INT >= 16) {
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
+          }
+          for (;;)
+          {
+            if (!this.b) {
+              break label192;
+            }
+            VipUtils.b(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+            azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F0D", "0X8009F0D", 0, 0, "", "", "", "");
+            break;
+            this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          }
+          label192:
+          VipUtils.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkq
  * JD-Core Version:    0.7.0.1
  */

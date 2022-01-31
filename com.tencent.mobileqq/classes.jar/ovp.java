@@ -1,24 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class ovp
-  extends osm
+  implements bibd
 {
-  public ovp(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public ovp(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "endOfRefresh.");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startLoadMore.");
+    paramXRecyclerView = ovz.a();
+    if (paramXRecyclerView != null) {
+      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.f(this.a), ReadInJoyCGIDynamicChannelFragment.a(this.a).a(), 10);
     }
-    if (paramInt1 == 0) {
-      this.a.a(paramInt2, paramInt3, paramBoolean);
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startTopRefresh.");
+    paramXRecyclerView = ovz.a();
+    if (paramXRecyclerView != null) {
+      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.e(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ovp
  * JD-Core Version:    0.7.0.1
  */

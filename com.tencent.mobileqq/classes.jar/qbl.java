@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class qbl
-  implements Parcelable.Creator<MultiBiuSameContent>
+class qbl
+  implements View.OnClickListener
 {
-  public MultiBiuSameContent a(Parcel paramParcel)
-  {
-    return new MultiBiuSameContent(paramParcel);
-  }
+  qbl(qbk paramqbk) {}
   
-  public MultiBiuSameContent[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new MultiBiuSameContent[paramInt];
+    paramView = this.a.jdField_a_of_type_Rqj.a();
+    if (paramView != null) {
+      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qbl
  * JD-Core Version:    0.7.0.1
  */

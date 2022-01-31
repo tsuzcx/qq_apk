@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class MiniAppProxyImpl$12$1
   implements Runnable
@@ -10,12 +10,12 @@ class MiniAppProxyImpl$12$1
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getContext(), "下载完成", 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), "下载完成", 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.12.1
  * JD-Core Version:    0.7.0.1
  */

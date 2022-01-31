@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.upgrade;
 
-import ajsd;
+import aljq;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -8,9 +8,9 @@ import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import apwe;
-import axqy;
-import bbfj;
+import arpg;
+import azmj;
+import bdee;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,24 +22,24 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import mzs;
+import ncm;
 
 public class UpgradeTIMManager
   implements INetInfoHandler, Manager
 {
-  private static final String jdField_a_of_type_JavaLangString = ajsd.aW + "tim";
+  private static final String jdField_a_of_type_JavaLangString = aljq.aX + "tim";
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private UpgradeTIMManager.DownloadTask jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMManager$DownloadTask;
   private UpgradeTIMWrapper jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper;
   private File jdField_a_of_type_JavaIoFile;
-  private mzs jdField_a_of_type_Mzs;
+  private ncm jdField_a_of_type_Ncm;
   private boolean jdField_a_of_type_Boolean;
   
   public UpgradeTIMManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Mzs = new mzs();
+    this.jdField_a_of_type_Ncm = new ncm();
     this.jdField_a_of_type_JavaIoFile = new File(jdField_a_of_type_JavaLangString, "tim.apk");
   }
   
@@ -94,7 +94,7 @@ public class UpgradeTIMManager
   
   private void c()
   {
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008A48", "0X8008A48", 0, 0, "", "", "", "");
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008A48", "0X8008A48", 0, 0, "", "", "", "");
     if (this.jdField_a_of_type_JavaIoFile.exists())
     {
       PackageInfo localPackageInfo = BaseApplication.getContext().getPackageManager().getPackageArchiveInfo(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 64);
@@ -130,7 +130,7 @@ public class UpgradeTIMManager
     if (a())
     {
       i = j;
-      if (apwe.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()) == 0) {
+      if (arpg.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()) == 0) {
         i = 1;
       }
     }
@@ -167,7 +167,7 @@ public class UpgradeTIMManager
       b(paramQQAppInterface, paramUpgradeTIMWrapper);
       return;
     }
-    if (!bbfj.h(BaseApplication.getContext()))
+    if (!bdee.h(BaseApplication.getContext()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("UpgradeTIMManager", 2, "onReceiveUpgradeInfo, wifi not connected...");
@@ -185,7 +185,7 @@ public class UpgradeTIMManager
       QLog.d("UpgradeTIMManager", 2, "onReceiveUpgradeInfo");
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMManager$DownloadTask != null) {}
-    while ((a()) || (!bbfj.h(BaseApplication.getContext()))) {
+    while ((a()) || (!bdee.h(BaseApplication.getContext()))) {
       return;
     }
     a(paramString, this.jdField_a_of_type_JavaIoFile.getPath());

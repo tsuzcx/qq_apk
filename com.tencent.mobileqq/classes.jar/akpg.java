@@ -1,29 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class akpg
-  extends akpf
+  extends akuz
 {
-  public akpg(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
-  {
-    super(paramQQAppInterface, paramQQMessageFacade);
-    this.jdField_a_of_type_JavaLangString = ajsd.z;
-    this.jdField_a_of_type_Int = 6000;
-  }
+  public akpg(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  protected aksy a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0);
-  }
-  
-  protected void a()
-  {
-    ((ajum)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(false);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (paramObject == null);
+    try
+    {
+      paramObject = new JSONObject(paramObject.toString());
+      paramInt = paramObject.optInt("errCode");
+      paramObject.remove("errCode");
+      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
+      return;
+    }
+    catch (Throwable paramObject)
+    {
+      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpg
  * JD-Core Version:    0.7.0.1
  */

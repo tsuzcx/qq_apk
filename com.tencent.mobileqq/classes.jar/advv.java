@@ -1,33 +1,65 @@
-import android.app.Activity;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import mqq.os.MqqHandler;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
-class advv
-  implements askq<EmoticonPackage>
+public class advv
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  advv(advs paramadvs, String paramString) {}
+  public advv(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onGlobalLayout()
   {
-    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1008) && (this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1000) && (this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 10004) && (this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1001) && (this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1002) && (this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1003) && (this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1004) && (this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1005) && (this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1006))
+    Object localObject = new Rect();
+    this.a.jdField_a_of_type_Beey.d.getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.jdField_a_of_type_Beey.d.getRootView().getHeight();
+    int j = i - ((Rect)localObject).bottom;
+    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
     {
-      paramEmoticonPackage = this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-      if (paramEmoticonPackage != null) {
-        paramEmoticonPackage.obtainMessage(22, this.jdField_a_of_type_JavaLangString).sendToTarget();
-      }
-      return;
+      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.e = j;
     }
-    EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Advs.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Advs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_JavaLangString, false, false);
+    if (j > i / 3)
+    {
+      if (this.a.c) {
+        this.a.c(false);
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_Int == 2) {
+          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+        }
+        i = (int)mww.b(BaseApplicationImpl.getApplication(), this.a.b + j);
+        return;
+        this.a.c(true);
+      }
+    }
+    this.a.c(false);
+    if (this.a.jdField_a_of_type_Int == 2) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    }
+    if (this.a.jdField_a_of_type_Int == 2) {
+      i = (int)mww.b(BaseApplicationImpl.getApplication(), this.a.b);
+    }
+    for (;;)
+    {
+      this.a.d = false;
+      return;
+      if (this.a.jdField_a_of_type_Int != 1) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import aayb;
-import aayc;
-import aayd;
-import aaye;
-import aayf;
-import aayg;
-import aayh;
-import aayi;
-import akse;
+import acpa;
+import acpb;
+import acpc;
+import acpd;
+import acpe;
+import acpf;
+import acpg;
+import acph;
+import amij;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.BadTokenException;
-import axqy;
-import ayfo;
-import bbdj;
-import bbgu;
+import azmj;
+import badl;
+import bdcd;
+import bdfq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -35,9 +35,9 @@ public class DialogActivity
   
   private void a()
   {
-    bbgu localbbgu = bbdj.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131719554), new aayc(this)).setNegativeButton(getString(2131719555), new aayb(this));
-    localbbgu.setOnCancelListener(new aayd(this));
-    a(localbbgu);
+    bdfq localbdfq = bdcd.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131720086), new acpb(this)).setNegativeButton(getString(2131720087), new acpa(this));
+    localbdfq.setOnCancelListener(new acpc(this));
+    a(localbdfq);
   }
   
   private void a(Dialog paramDialog)
@@ -50,7 +50,7 @@ public class DialogActivity
       }
       paramDialog.show();
       if (this.f == c) {
-        axqy.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
+        azmj.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
       }
       return;
     }
@@ -65,14 +65,14 @@ public class DialogActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidAppDialog = bbdj.a(this, 230, null, getString(2131698601), getString(2131690596), getString(2131698602), new aaye(this), new aayf(this));
+    this.jdField_a_of_type_AndroidAppDialog = bdcd.a(this, 230, null, getString(2131698898), getString(2131690648), getString(2131698899), new acpd(this), new acpe(this));
     a(this.jdField_a_of_type_AndroidAppDialog);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidAppDialog = new akse(this);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new aayg(this));
+    this.jdField_a_of_type_AndroidAppDialog = new amij(this);
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new acpf(this));
     a(this.jdField_a_of_type_AndroidAppDialog);
   }
   
@@ -81,7 +81,7 @@ public class DialogActivity
     if (getIntent() == null) {
       return;
     }
-    new ayfo(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new aayh(this), new aayi(this)).show();
+    new badl(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new acpg(this), new acph(this)).show();
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -90,7 +90,7 @@ public class DialogActivity
     if (localIntent != null)
     {
       this.f = localIntent.getIntExtra("key_dialog_type", jdField_a_of_type_Int);
-      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131691243);
+      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131691296);
     }
     return super.doOnCreate(paramBundle);
   }
@@ -150,7 +150,7 @@ public class DialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DialogActivity
  * JD-Core Version:    0.7.0.1
  */

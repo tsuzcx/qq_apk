@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-
-public class afjr
-  implements DialogInterface.OnDismissListener
+class afjr
+  implements bhqf
 {
-  public afjr(NewFriendActivity paramNewFriendActivity) {}
+  afjr(afjq paramafjq) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a = null;
-  }
+  public void onDismiss() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afjr
  * JD-Core Version:    0.7.0.1
  */

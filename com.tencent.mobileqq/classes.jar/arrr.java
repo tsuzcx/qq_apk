@@ -1,23 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-
-public final class arrr
-  implements Parcelable.Creator<MusicInfo>
+public class arrr
+  implements alkr
 {
-  public MusicInfo a(Parcel paramParcel)
-  {
-    return new MusicInfo(paramParcel, null);
-  }
-  
-  public MusicInfo[] a(int paramInt)
-  {
-    return new MusicInfo[paramInt];
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrr
  * JD-Core Version:    0.7.0.1
  */

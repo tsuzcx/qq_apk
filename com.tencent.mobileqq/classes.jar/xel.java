@@ -1,43 +1,76 @@
-import android.os.SystemClock;
-import android.support.v4.util.SimpleArrayMap;
-import com.tencent.biz.videostory.EventControlUtils.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import java.util.Timer;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.ViewGroup;
 
 public class xel
+  extends xej
 {
-  private static SimpleArrayMap<String, Long> a = new SimpleArrayMap();
-  private static SimpleArrayMap<String, Timer> b = new SimpleArrayMap();
+  public final int c;
+  @NonNull
+  public final String c;
+  public final int d;
+  @NonNull
+  public final String d;
+  public final int e;
+  public final String e;
+  public final String f;
+  public final String g;
+  public final String h;
+  public final String i;
   
-  public static void a(String paramString, long paramLong, xem paramxem)
+  public xel(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt3, int paramInt4, int paramInt5)
   {
-    try
-    {
-      Object localObject = (Long)a.get(paramString);
-      long l = SystemClock.elapsedRealtime();
-      QLog.i("EventControlUtils", 2, "currentTime" + l);
-      if ((localObject != null) && (l - ((Long)localObject).longValue() < paramLong))
-      {
-        LogUtils.w("EventControlUtils", "throttling in timeInterval" + paramLong);
-        return;
-      }
-      a.put(paramString, Long.valueOf(l));
-      localObject = (Timer)b.get(paramString);
-      if (localObject != null) {
-        ((Timer)localObject).cancel();
-      }
-      localObject = new Timer();
-      ((Timer)localObject).schedule(new EventControlUtils.1(paramxem), paramLong);
-      b.put(paramString, localObject);
-      return;
+    super(paramInt1, paramString1, paramInt2);
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_d_of_type_JavaLangString = paramString3;
+    this.jdField_e_of_type_JavaLangString = paramString4;
+    this.f = paramString5;
+    this.g = paramString6;
+    this.h = paramString7;
+    this.i = paramString8;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.jdField_e_of_type_Int = paramInt5;
+  }
+  
+  @NonNull
+  public Class<? extends xek> a()
+  {
+    return xem.class;
+  }
+  
+  public String a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))) {
+      return "";
     }
-    catch (Exception paramString) {}
+    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))) {
+      return this.jdField_c_of_type_JavaLangString + "，" + this.jdField_d_of_type_JavaLangString;
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      return this.jdField_c_of_type_JavaLangString;
+    }
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+      return this.jdField_d_of_type_JavaLangString;
+    }
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  @NonNull
+  public xek a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new xem(this, paramContext, paramViewGroup);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xel
  * JD-Core Version:    0.7.0.1
  */

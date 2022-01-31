@@ -1,34 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 class apck
-  extends apbm
+  implements DialogInterface.OnClickListener
 {
-  public apck(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  apck(apcj paramapcj) {}
   
-  protected String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "StateSenderCancelSendWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    EditText localEditText = (EditText)((bdfq)paramDialogInterface).findViewById(2131370966);
+    paramDialogInterface = (EditText)((bdfq)paramDialogInterface).findViewById(2131361898);
+    if ((TextUtils.isEmpty(localEditText.getText().toString())) || (TextUtils.isEmpty(paramDialogInterface.getText().toString())))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      QQToast.a(this.a.a.getActivity(), 1, alpo.a(2131703149), 0).a();
       return;
     }
-    apbi.b(this.jdField_a_of_type_Apbi, 11, 8);
-    apbi.c(this.jdField_a_of_type_Apbi, 11, 8);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateSenderCancelSend)");
-    this.jdField_a_of_type_Apbm = new apcj(this.jdField_a_of_type_Apbi);
+    apdh localapdh = new apdh();
+    localapdh.a = localEditText.getText().toString();
+    localapdh.jdField_b_of_type_JavaLangString = paramDialogInterface.getText().toString();
+    localapdh.jdField_b_of_type_Boolean = true;
+    apde.a().a(localapdh);
+    this.a.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apck
  * JD-Core Version:    0.7.0.1
  */

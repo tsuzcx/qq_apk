@@ -1,48 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class achb
-  extends BroadcastReceiver
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public achb(TroopInfoActivity paramTroopInfoActivity) {}
+  public achb(ChatFragment paramChatFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
-      paramContext = paramIntent.getStringExtra("data");
-    } while (paramContext == null);
-    try
-    {
-      paramContext = new JSONObject(paramContext);
-      this.a.a.tribeId = paramContext.optInt("bid");
-      this.a.a.tribeName = paramContext.optString("bname");
-      this.a.d = true;
-      paramContext = new ArrayList();
-      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
-        paramContext.add(this.a.a.tribeName);
-      }
-      this.a.a(9, paramContext, true, 1, true);
-      return;
+    if (this.a.a != null) {
+      this.a.a.b(paramMotionEvent);
     }
-    catch (JSONException paramContext) {}
+  }
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achb
  * JD-Core Version:    0.7.0.1
  */

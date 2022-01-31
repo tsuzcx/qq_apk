@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper;
 
-import pny;
+import pug;
 
 public class RecycleViewAdapterHelper$1
   implements Runnable
 {
-  public RecycleViewAdapterHelper$1(pny parampny) {}
+  public RecycleViewAdapterHelper$1(pug parampug) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class RecycleViewAdapterHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper.RecycleViewAdapterHelper.1
  * JD-Core Version:    0.7.0.1
  */

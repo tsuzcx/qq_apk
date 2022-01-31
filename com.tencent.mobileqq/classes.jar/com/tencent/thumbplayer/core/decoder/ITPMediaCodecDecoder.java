@@ -8,6 +8,7 @@ public abstract interface ITPMediaCodecDecoder
   public static final int BOOL_ENABLE_ASYNC_MODE = 1;
   public static final int BOOL_ENABLE_SET_OUTPUT_SURFACE_API = 0;
   public static final int BOOL_SET_IS_ADTS = 2;
+  public static final int BOOL_SET_IS_AUDIO_PASSTHROUGH = 3;
   public static final int BYTES_SET_CSD0_DATA = 200;
   public static final int BYTES_SET_CSD1_DATA = 201;
   public static final int BYTES_SET_CSD2_DATA = 202;
@@ -29,9 +30,9 @@ public abstract interface ITPMediaCodecDecoder
   
   public abstract int flush();
   
-  public abstract boolean initDecoder(String paramString, int paramInt1, int paramInt2);
+  public abstract boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface);
+  public abstract boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface, int paramInt4);
   
   public abstract int release();
   
@@ -59,7 +60,7 @@ public abstract interface ITPMediaCodecDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.ITPMediaCodecDecoder
  * JD-Core Version:    0.7.0.1
  */

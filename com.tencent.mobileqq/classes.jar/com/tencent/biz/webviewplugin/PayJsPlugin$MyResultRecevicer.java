@@ -3,7 +3,7 @@ package com.tencent.biz.webviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bcdp;
+import becq;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
 
@@ -76,7 +76,7 @@ public class PayJsPlugin$MyResultRecevicer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PayJsPlugin.MyResultRecevicer
  * JD-Core Version:    0.7.0.1
  */

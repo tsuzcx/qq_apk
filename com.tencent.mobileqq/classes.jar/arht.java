@@ -1,81 +1,50 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.hlyyb.downloader.DownloaderTaskListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.DownloadTaskListenerBridge.1;
-import mqq.os.MqqHandler;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.DocExportFilePresenter.3.1;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class arht
-  implements DownloaderTaskListener
+  implements arcg
 {
-  private arhv a;
+  arht(arhr paramarhr) {}
   
-  public arht(arhv paramarhv)
+  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(boolean paramBoolean)
   {
-    this.a = paramarhv;
+    if (this.a.jdField_a_of_type_Ardo != null) {
+      this.a.jdField_a_of_type_Ardo.a(paramBoolean);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a()) && (paramBoolean)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c();
+    }
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b() == null) || (paramBoolean)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.a.jdField_a_of_type_Arfz.a());
   }
   
-  public void a()
+  public void b(boolean paramBoolean)
   {
-    this.a = null;
-  }
-  
-  public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.a(paramDownloaderTask);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Ardo != null)) {
+      this.a.jdField_a_of_type_Ardo.a();
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Arfz.d(), this);
+      this.a.jdField_a_of_type_Boolean = false;
+      QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 2, 2131692492, 1).a();
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new DocExportFilePresenter.3.1(this), 800L);
     }
   }
-  
-  public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskDetectedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.b(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskFailedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    ThreadManager.getSubThreadHandler().post(new DownloadTaskListenerBridge.1(this, paramDownloaderTask));
-  }
-  
-  public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskPausedMainloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.d(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.f(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.e(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arht
  * JD-Core Version:    0.7.0.1
  */

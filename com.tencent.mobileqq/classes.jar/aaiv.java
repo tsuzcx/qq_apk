@@ -1,20 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aaiv
-  implements CompoundButton.OnCheckedChangeListener
+class aaiv
+  implements DialogInterface.OnDismissListener
 {
-  public aaiv(AssistantSettingActivity paramAssistantSettingActivity) {}
+  aaiv(aaiu paramaaiu) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    aspm.a(paramBoolean);
+    this.a.jdField_a_of_type_Aajd.d();
+    this.a.jdField_a_of_type_Aais.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaiv
  * JD-Core Version:    0.7.0.1
  */

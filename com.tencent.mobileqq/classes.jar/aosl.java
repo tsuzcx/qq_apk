@@ -1,46 +1,61 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class aosl
-  implements bfph
+public class aosl
+  extends aofy<aosk>
 {
-  aosl(aosk paramaosk, FileInfo paramFileInfo, bfpc parambfpc) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static aosk a()
   {
-    if ((!apvd.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) || (apvd.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
-    {
-      apug.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
-      this.jdField_a_of_type_Aosk.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    return (aosk)aogj.a().a(486);
+  }
+  
+  public int a()
+  {
+    return 486;
+  }
+  
+  @NonNull
+  public aosk a(int paramInt)
+  {
+    return new aosk();
+  }
+  
+  @Nullable
+  public aosk a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aosk.a(paramArrayOfaogf);
     }
-    try
-    {
-      paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
-      this.jdField_a_of_type_Aosk.a.a.a.sendBroadcast(paramView);
-      label104:
-      this.jdField_a_of_type_Aosk.a.a.f();
-      if (this.jdField_a_of_type_Bfpc.isShowing()) {
-        this.jdField_a_of_type_Bfpc.dismiss();
-      }
-      return;
-      aptx.a(2131692410);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      break label104;
-    }
+    return null;
+  }
+  
+  public Class<aosk> a()
+  {
+    return aosk.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aosk paramaosk) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aosl
  * JD-Core Version:    0.7.0.1
  */

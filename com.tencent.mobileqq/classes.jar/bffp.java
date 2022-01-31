@@ -1,47 +1,39 @@
-import android.text.TextUtils;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class bffp
-  implements ThreadFactory
+public class bffp
+  implements DialogInterface.OnClickListener
 {
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger b = new AtomicInteger(1);
+  public bffp(DownloadJSApi.2 param2) {}
   
-  bffp(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    try
     {
-      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localObject = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        localObject = "threadpool";
-      }
-      this.jdField_a_of_type_JavaLangString = ((String)localObject + "-" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() + "-thread-");
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfjy.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfjy.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfjy.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfjy.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfjy.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bfjy.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      bfkb.a().a(10, paramDialogInterface);
       return;
     }
-  }
-  
-  public Thread newThread(Runnable paramRunnable)
-  {
-    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.b.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
     }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
-    }
-    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bffp
  * JD-Core Version:    0.7.0.1
  */

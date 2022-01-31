@@ -1,121 +1,261 @@
+import android.app.Activity;
+import android.content.Context;
+import android.util.Size;
+import com.huawei.hiar.ARCamera;
+import com.huawei.hiar.ARCameraConfig;
+import com.huawei.hiar.ARFrame;
+import com.huawei.hiar.ARPose;
+import com.huawei.hiar.ARSession;
+import com.huawei.hiar.ARTrackable.TrackingState;
+import com.huawei.hiar.ARWorldTrackingConfig;
+import com.huawei.hiar.exceptions.ARUnSupportedConfigurationException;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 public class amvx
+  implements amvt
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  public static final float[] a;
+  private int jdField_a_of_type_Int;
+  private amvr jdField_a_of_type_Amvr;
+  private ARSession jdField_a_of_type_ComHuaweiHiarARSession;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private FloatBuffer jdField_b_of_type_JavaNioFloatBuffer;
+  private int c = 30;
+  private int d = -1;
+  private int e = 36197;
   
-  public amvx() {}
-  
-  public amvx(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  static
   {
-    this.a = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
+    jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F };
   }
   
-  public static amvx a(String paramString)
+  private void d()
   {
-    boolean bool5 = false;
-    if (paramString == null) {
-      return null;
-    }
-    boolean bool1;
-    try
+    if (this.d == -1)
     {
-      paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-      localNodeList = paramString.getElementsByTagName("bdh_ipv6_switch");
-      if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
-        break label405;
-      }
-      if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-        break label380;
-      }
-      bool1 = true;
+      ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(jdField_a_of_type_ArrayOfFloat.length * 4);
+      localByteBuffer.order(ByteOrder.nativeOrder());
+      this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
+      this.jdField_a_of_type_JavaNioFloatBuffer.put(jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+      localByteBuffer = ByteBuffer.allocateDirect(jdField_a_of_type_ArrayOfFloat.length * 4);
+      localByteBuffer.order(ByteOrder.nativeOrder());
+      this.jdField_b_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
+      this.jdField_b_of_type_JavaNioFloatBuffer.put(jdField_a_of_type_ArrayOfFloat);
+      this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
     }
-    catch (Exception paramString)
+  }
+  
+  private void e()
+  {
+    this.d = -1;
+    this.jdField_a_of_type_JavaNioFloatBuffer = null;
+    this.jdField_b_of_type_JavaNioFloatBuffer = null;
+  }
+  
+  public Size a()
+  {
+    QLog.d("HuaweiArCoreBridge", 1, "getARCoreCameraTextureSize");
+    if (this.jdField_a_of_type_ComHuaweiHiarARSession != null) {
+      return this.jdField_a_of_type_ComHuaweiHiarARSession.getCameraConfig().GetTextureDimensions();
+    }
+    return null;
+  }
+  
+  public FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    boolean bool1 = true;
+    boolean bool3 = true;
+    boolean bool2 = true;
+    if ((this.jdField_a_of_type_ComHuaweiHiarARSession == null) || (this.jdField_a_of_type_Amvr == null))
     {
-      NodeList localNodeList;
-      label152:
-      QLog.e("RichmediaIpv6ConifgProcessor", 1, "onParsed failed" + paramString);
-      return null;
-    }
-    localNodeList = paramString.getElementsByTagName("bdh_dual_ipv6_switch");
-    if ((localNodeList != null) && (localNodeList.getLength() > 0)) {
-      if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() > 0)
+      paramArrayOfFloat1 = new StringBuilder().append("getARCoreDataByCameraTexture has null ");
+      if (this.jdField_a_of_type_ComHuaweiHiarARSession == null)
       {
         bool1 = true;
-        break label415;
-        localNodeList = paramString.getElementsByTagName("richmedia_down_ipv6_switch");
-        if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
-          break label395;
+        paramArrayOfFloat1 = paramArrayOfFloat1.append(bool1).append("|");
+        if (this.jdField_a_of_type_Amvr != null) {
+          break label92;
         }
-        if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-          break label390;
-        }
-        bool1 = true;
-        break label420;
+      }
+      label92:
+      for (bool1 = bool2;; bool1 = false)
+      {
+        QLog.e("HuaweiArCoreBridge", 2, bool1);
+        return null;
+        bool1 = false;
+        break;
       }
     }
-    label390:
-    label395:
-    label405:
-    label410:
-    label415:
-    label420:
-    for (;;)
+    if ((paramArrayOfFloat1 == null) || (paramArrayOfFloat1.length < 4))
     {
-      paramString = paramString.getElementsByTagName("richmedia_down_dual_ipv6_switch");
-      boolean bool4 = bool5;
-      if (paramString != null)
+      paramArrayOfFloat2 = new StringBuilder().append("getARCoreDataByCameraTexture rotationQuaternion has error ");
+      if (paramArrayOfFloat1 == null) {}
+      for (;;)
       {
-        bool4 = bool5;
-        if (paramString.getLength() > 0)
+        QLog.e("HuaweiArCoreBridge", 2, bool1);
+        return null;
+        bool1 = false;
+      }
+    }
+    if ((paramArrayOfFloat2 == null) || (paramArrayOfFloat2.length < 3))
+    {
+      paramArrayOfFloat1 = new StringBuilder().append("getARCoreDataByCameraTexture movedata has error ");
+      if (paramArrayOfFloat2 == null) {}
+      for (bool1 = bool3;; bool1 = false)
+      {
+        QLog.e("HuaweiArCoreBridge", 2, bool1);
+        return null;
+      }
+    }
+    if (this.jdField_a_of_type_JavaNioFloatBuffer == null) {
+      d();
+    }
+    this.d = paramInt;
+    this.jdField_a_of_type_ComHuaweiHiarARSession.setCameraTextureName(this.d);
+    System.currentTimeMillis();
+    Object localObject2 = this.jdField_a_of_type_ComHuaweiHiarARSession.update();
+    Object localObject1 = ((ARFrame)localObject2).getCamera();
+    System.currentTimeMillis();
+    if (((ARFrame)localObject2).hasDisplayGeometryChanged()) {
+      ((ARFrame)localObject2).transformDisplayUvCoords(this.jdField_a_of_type_JavaNioFloatBuffer, this.jdField_b_of_type_JavaNioFloatBuffer);
+    }
+    if (((ARCamera)localObject1).getTrackingState() == ARTrackable.TrackingState.PAUSED)
+    {
+      QLog.d("HuaweiArCoreBridge", 2, "getARCoreDataByCameraTexture return false camera.getTrackingState() = " + ((ARCamera)localObject1).getTrackingState());
+      return null;
+    }
+    localObject2 = new float[3];
+    float[] arrayOfFloat = new float[4];
+    localObject1 = ((ARCamera)localObject1).getDisplayOrientedPose();
+    ((ARPose)localObject1).getRotationQuaternion(arrayOfFloat, 0);
+    float f1 = ((ARPose)localObject1).tx();
+    float f2 = ((ARPose)localObject1).ty();
+    localObject2[0] = (((ARPose)localObject1).tz() * this.c);
+    localObject2[1] = (this.c * f2);
+    localObject2[2] = (-f1 * this.c);
+    paramArrayOfFloat1[0] = arrayOfFloat[0];
+    paramArrayOfFloat1[1] = arrayOfFloat[1];
+    paramArrayOfFloat1[2] = arrayOfFloat[2];
+    paramArrayOfFloat1[3] = arrayOfFloat[3];
+    paramArrayOfFloat2[0] = localObject2[0];
+    paramArrayOfFloat2[1] = localObject2[1];
+    paramArrayOfFloat2[2] = localObject2[2];
+    return this.jdField_b_of_type_JavaNioFloatBuffer;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComHuaweiHiarARSession != null)
+    {
+      this.jdField_a_of_type_ComHuaweiHiarARSession.stop();
+      this.jdField_a_of_type_Amvr.b();
+      this.jdField_a_of_type_ComHuaweiHiarARSession = null;
+      this.jdField_a_of_type_Amvr = null;
+      this.jdField_a_of_type_Boolean = false;
+      QLog.d("HuaweiArCoreBridge", 2, "onDestory");
+    }
+    e();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Amvr == null) {
+      this.jdField_a_of_type_Amvr = new amvr(BaseApplicationImpl.getContext());
+    }
+    this.jdField_a_of_type_Amvr.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComHuaweiHiarARSession != null) && (this.jdField_a_of_type_Boolean);
+  }
+  
+  public boolean a(Context paramContext)
+  {
+    if ((paramContext == null) || (this.jdField_a_of_type_ComHuaweiHiarARSession != null)) {
+      return false;
+    }
+    if (this.jdField_a_of_type_ComHuaweiHiarARSession == null)
+    {
+      if (!amvv.b((Activity)paramContext)) {
+        break label151;
+      }
+      try
+      {
+        this.jdField_a_of_type_ComHuaweiHiarARSession = new ARSession(paramContext);
+        paramContext = new ARWorldTrackingConfig(this.jdField_a_of_type_ComHuaweiHiarARSession);
+        this.jdField_a_of_type_ComHuaweiHiarARSession.configure(paramContext);
+        if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0)) {
+          this.jdField_a_of_type_ComHuaweiHiarARSession.setDisplayGeometry(0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        }
+        paramContext = null;
+        str = null;
+      }
+      catch (ARUnSupportedConfigurationException paramContext)
+      {
+        for (;;)
         {
-          bool4 = bool5;
-          if (Integer.valueOf(((Element)paramString.item(0)).getFirstChild().getNodeValue()).intValue() > 0) {
-            bool4 = true;
-          }
+          str = "The configuration is not supported by the device!";
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("RichmediaIpv6ConifgProcessor", 2, "parse, bdh_ipv6_switch = " + bool2 + ", bdh_dual_ipv6_switch = " + bool3 + ", richmedia_down_ipv6_switch = " + bool1 + ", richmedia_down_dual_ipv6_switch = " + bool4);
+      catch (Exception paramContext)
+      {
+        for (;;)
+        {
+          String str = "exception throwed";
+        }
       }
-      paramString = new amvx(bool2, bool3, bool1, bool4);
-      return paramString;
-      label380:
-      bool1 = false;
-      break label410;
-      bool1 = false;
-      break label415;
-      bool1 = false;
-      break label420;
-      bool1 = false;
-      continue;
-      boolean bool3 = false;
-      break label152;
-      boolean bool2 = false;
-      break;
-      bool2 = bool1;
-      break;
-      bool3 = bool1;
-      break label152;
+      if (str == null) {
+        break label151;
+      }
+      QLog.e("HuaweiArCoreBridge", 2, "onCreate hasException msg = message", paramContext);
+      if (this.jdField_a_of_type_ComHuaweiHiarARSession != null)
+      {
+        this.jdField_a_of_type_ComHuaweiHiarARSession.stop();
+        this.jdField_a_of_type_ComHuaweiHiarARSession = null;
+        this.jdField_a_of_type_Amvr = null;
+      }
+      return false;
+    }
+    return false;
+    label151:
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComHuaweiHiarARSession != null)
+    {
+      this.jdField_a_of_type_ComHuaweiHiarARSession.pause();
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Amvr.b();
+      QLog.d("HuaweiArCoreBridge", 2, "onPause");
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComHuaweiHiarARSession != null)
+    {
+      this.jdField_a_of_type_ComHuaweiHiarARSession.resume();
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Amvr.a();
+      QLog.d("HuaweiArCoreBridge", 2, "onPause");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvx
  * JD-Core Version:    0.7.0.1
  */

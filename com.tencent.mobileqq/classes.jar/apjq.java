@@ -1,42 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class apjq
-  implements Handler.Callback
+final class apjq
+  implements DialogInterface.OnClickListener
 {
-  private final WeakReference<TdsDebugView> a;
+  apjq(QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  private apjq(TdsDebugView paramTdsDebugView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramTdsDebugView);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return true;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
-    case 2: 
-      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
+    if (paramInt == 1) {
+      bdqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720510), "");
     }
-    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apjq
  * JD-Core Version:    0.7.0.1
  */

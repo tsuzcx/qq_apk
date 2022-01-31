@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
 
 public class bfmi
-  implements LowLightResource
+  implements DialogInterface.OnClickListener
 {
-  public String getLowLightDir()
+  public bfmi(ApkFileDownloadButton paramApkFileDownloadButton, DownloadInfo paramDownloadInfo) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return ajsd.aW;
+    this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.h();
+    ApkFileDownloadButton.a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    bfgx.b(bfgz.a().a("400").k(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.a).j("5").l(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.c).m(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.d).a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfmi
  * JD-Core Version:    0.7.0.1
  */

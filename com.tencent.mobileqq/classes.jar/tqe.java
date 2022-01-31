@@ -1,58 +1,27 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCleanPlayView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class tqe
-  extends tre
+class tqe
+  implements vrw
 {
-  public static final String a;
-  public static final String b = jdField_a_of_type_JavaLangString + "&et=%d&time_zone=%d";
-  protected int a;
-  private final int[] a;
+  tqe(tqc paramtqc, String paramString1, QCircleFeedCleanPlayView paramQCircleFeedCleanPlayView, String paramString2) {}
   
-  static
+  public void a(vrr paramvrr)
   {
-    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + sxm.a(2131699685);
-  }
-  
-  public tqe(ShareGroupItem paramShareGroupItem, StoryVideoItem paramStoryVideoItem, String paramString, long paramLong, int paramInt1, int paramInt2)
-  {
-    tdl localtdl = (tdl)tcz.a(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.h = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_e_of_type_Int = paramInt2;
-    this.f = paramStoryVideoItem.mOwnerUid;
-    this.jdField_e_of_type_JavaLangString = localtdl.a(this.f, false);
-    this.c = bbkk.a(paramShareGroupItem.name, 0, 16, "...");
-    this.g = paramStoryVideoItem.mDoodleText;
-    this.jdField_d_of_type_JavaLangString = a();
-    this.k = (ajya.a(2131713918) + this.c + ajya.a(2131713926) + ssf.jdField_a_of_type_JavaLangString);
-    this.l = (this.c + "\n" + paramInt2 + ajya.a(2131713922));
-    new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
-    this.i = b();
-    this.j = ("#" + ssf.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
-    this.jdField_d_of_type_Int = 11;
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 97, 98, 99, 100, 101 };
-  }
-  
-  public static tqe a(ShareGroupItem paramShareGroupItem, StoryVideoItem paramStoryVideoItem, String paramString, long paramLong, int paramInt)
-  {
-    return new tqe(paramShareGroupItem, paramStoryVideoItem, paramString, paramLong, 9, paramInt);
-  }
-  
-  protected String a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&type=onedaylist&et=%d&time_zone=%d", new Object[] { this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.f, this.h, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime / 1000L), Integer.valueOf(vzl.a()) });
+    Long localLong = (Long)tqc.a(this.jdField_a_of_type_Tqc).get(this.jdField_a_of_type_JavaLangString);
+    if ((localLong != null) && (localLong.longValue() > 0L))
+    {
+      paramvrr.a(localLong.longValue());
+      QLog.d("QCircleFeedPlayerHelper", 4, "playInner seekTo: " + localLong);
     }
-    return String.format(b, new Object[] { this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.f, this.h, Integer.valueOf(this.jdField_a_of_type_Int), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime / 1000L), Integer.valueOf(vzl.a()) });
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCleanPlayView.c();
+    tyg.a(8, 4, tqc.a(this.jdField_a_of_type_Tqc, this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqe
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import bfnz;
+import bhou;
 
 public class HighLightMaskView
   extends View
@@ -35,7 +35,7 @@ public class HighLightMaskView
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     }
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    if (bfnz.e()) {
+    if (bhou.e()) {
       setLayerType(1, null);
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
@@ -65,7 +65,7 @@ public class HighLightMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.HighLightMaskView
  * JD-Core Version:    0.7.0.1
  */

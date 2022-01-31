@@ -1,28 +1,26 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import common.config.service.QzoneConfig;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class akbc
-  implements ajtd
+  implements Animation.AnimationListener
 {
-  private List<String> a = new ArrayList();
+  public akbc(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public List<String> a(AppInterface paramAppInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.isEmpty()) {
-      this.a.add("100077");
-    }
-    if (((paramAppInterface instanceof QQAppInterface)) && (QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameEnable", 1) == 1)) {
-      return this.a;
-    }
-    return null;
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbc
  * JD-Core Version:    0.7.0.1
  */

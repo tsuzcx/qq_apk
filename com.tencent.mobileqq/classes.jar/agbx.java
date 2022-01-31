@@ -1,13 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.widget.TextView;
 
-public abstract interface agbx
+class agbx
+  extends aelt
 {
-  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  agbx(agbu paramagbu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbx
  * JD-Core Version:    0.7.0.1
  */

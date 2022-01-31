@@ -1,17 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.39.1;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aebr
-  implements DialogInterface.OnClickListener
+  extends almw
 {
-  public aebr(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  public aebr(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (paramBoolean)
+    {
+      azmj.b(this.a.app, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      this.a.a(paramLong2 + "");
+      if (this.a.jdField_a_of_type_Aecg != null) {
+        this.a.jdField_a_of_type_Aecg.a();
+      }
+      if (this.a.h)
+      {
+        this.a.b(paramLong2 + "");
+        if (this.a.jdField_a_of_type_Aeci != null) {
+          this.a.jdField_a_of_type_Aeci.notifyDataSetChanged();
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      return;
+      QQToast.a(this.a, 1, this.a.getString(2131693827), 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
+  {
+    this.a.runOnUiThread(new TroopMemberListActivity.39.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebr
  * JD-Core Version:    0.7.0.1
  */

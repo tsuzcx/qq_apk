@@ -1,22 +1,20 @@
-import android.view.KeyEvent;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class azhy
-  implements bara
+class azhy
+  extends bakk
 {
-  public azhy(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  azhy(azhx paramazhx) {}
   
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  public boolean a(int paramInt)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1)) {
-      TroopBarReplyActivity.a(this.a, false);
-    }
-    return false;
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("emptyCallback postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
+    azhx.a(this.a, azhx.a(this.a), -2147483648, azhx.b(this.a), -2147483648, null, -2147483648);
+    return super.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azhy
  * JD-Core Version:    0.7.0.1
  */

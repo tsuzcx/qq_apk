@@ -1,32 +1,56 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.gallery.model.pic.AIOFilePicData;
-import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
 class aqox
-  implements aqmb
+  extends aqou
 {
-  aqox(aqot paramaqot, aqmi paramaqmi, String paramString, URLDrawable paramURLDrawable, AIOFilePicData paramAIOFilePicData, GalleryUrlImageView paramGalleryUrlImageView) {}
+  private long jdField_a_of_type_Long;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private aqot jdField_a_of_type_Aqot;
+  private bbtj jdField_a_of_type_Bbtj = new aqoy(this);
+  private String jdField_a_of_type_JavaLangString;
+  private UUID jdField_a_of_type_JavaUtilUUID;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void a(int paramInt, URLDrawable paramURLDrawable) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  private aqox(aqnw paramaqnw, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Aqot.b.setVisibility(8);
-    if (paramBoolean)
+    super(paramaqnw);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFilePath", this.jdField_b_of_type_JavaLangString);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter begin filename " + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  void a(String paramString, int paramInt)
+  {
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter stopped WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Boolean = true;
+    bbtf.a().a(this.jdField_a_of_type_JavaUtilUUID, null);
+  }
+  
+  void a(String paramString, int paramInt, aqot paramaqot)
+  {
+    if (paramaqot == null)
     {
-      aqot.a(this.jdField_a_of_type_Aqot, this.jdField_a_of_type_Aqmi, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run but callback is null filename " + this.jdField_a_of_type_JavaLangString);
       return;
     }
-    if ((!aqot.a(this.jdField_a_of_type_Aqot, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOFilePicData, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView)) && (!aqot.b(this.jdField_a_of_type_Aqot, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOFilePicData, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView))) {
-      aqot.a(this.jdField_a_of_type_Aqot, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView);
-    }
-    aqot.a(this.jdField_a_of_type_Aqot, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOFilePicData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOFilePicData.jdField_a_of_type_Int, 18);
+    this.jdField_a_of_type_Aqot = paramaqot;
+    this.jdField_b_of_type_Long = Long.parseLong(paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", String.valueOf(this.jdField_b_of_type_Long));
+    this.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
+    bbtf.a().a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bbtj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqox
  * JD-Core Version:    0.7.0.1
  */

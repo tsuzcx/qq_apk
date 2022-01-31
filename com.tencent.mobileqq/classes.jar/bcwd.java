@@ -1,23 +1,21 @@
-import MWIFI.SCGet3rdCloudCheck;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
 
-final class bcwd
-  implements akjt
+public class bcwd
 {
-  bcwd(QQAppInterface paramQQAppInterface, akjs paramakjs) {}
+  public int a;
+  public Bitmap a;
+  private bcwd a;
   
-  public void a(int paramInt)
+  public bcwd()
   {
-    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akjs);
-    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_Bcwd = null;
   }
-  
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcwd
  * JD-Core Version:    0.7.0.1
  */

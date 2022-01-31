@@ -1,50 +1,47 @@
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.cs.group_file_common.group_file_common.FolderInfo;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.CreateFolderRspBody;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
+import java.util.List;
 
-public abstract class xao
-  extends mxj
+class xao
+  implements LocationListener
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  xao(xak paramxak) {}
+  
+  public void onLocationChanged(Location paramLocation)
   {
-    if (paramInt != 0)
+    if (paramLocation != null)
     {
-      a(false, paramInt, null);
-      return;
-    }
-    paramBundle = new oidb_0x6d7.RspBody();
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d7.CreateFolderRspBody)paramBundle.create_folder_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label104;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      wsv.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
+      if (this.a.b.size() >= 10)
       {
-        a(true, 0, new azpi((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
-        return;
+        this.a.b.remove(0);
+        wsv.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null);
+      this.a.b.add(new Location(paramLocation));
       return;
     }
-    a(false, paramArrayOfByte.int32_ret_code.get(), null);
-    return;
-    label104:
-    a(false, -1, null);
+    wsv.d("DoodleEmojiManager", "onLocationChanged, location is null.");
   }
   
-  protected abstract void a(boolean paramBoolean, int paramInt, azpi paramazpi);
+  public void onProviderDisabled(String paramString)
+  {
+    wsv.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
+  }
+  
+  public void onProviderEnabled(String paramString)
+  {
+    wsv.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
+  }
+  
+  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
+  {
+    wsv.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xao
  * JD-Core Version:    0.7.0.1
  */

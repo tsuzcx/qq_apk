@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abox;
-import aboy;
+import adgf;
+import adgg;
 
 public class NotificationActivity$7$1$1
   implements Runnable
 {
-  public NotificationActivity$7$1$1(aboy paramaboy) {}
+  public NotificationActivity$7$1$1(adgg paramadgg) {}
   
   public void run()
   {

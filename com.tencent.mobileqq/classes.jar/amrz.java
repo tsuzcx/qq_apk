@@ -1,42 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class amrz
 {
-  private boolean a;
+  public ArCloudConfigInfo a;
   
-  public static amrz a(String paramString)
+  public amrz(ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      amrz localamrz = new amrz();
-      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
-      for (;;)
-      {
-        localamrz.a = bool;
-        return localamrz;
-        bool = false;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
-    }
+    this.a = paramArCloudConfigInfo;
   }
   
-  public boolean a()
+  public String toString()
   {
-    return this.a;
+    return "ARTarget{arResourceInfo=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrz
  * JD-Core Version:    0.7.0.1
  */

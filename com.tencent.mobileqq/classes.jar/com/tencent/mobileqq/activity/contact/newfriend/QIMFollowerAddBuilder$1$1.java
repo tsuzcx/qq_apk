@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aflb;
-import aipn;
+import ahig;
+import akgy;
 
 class QIMFollowerAddBuilder$1$1
   implements Runnable
@@ -15,7 +15,7 @@ class QIMFollowerAddBuilder$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

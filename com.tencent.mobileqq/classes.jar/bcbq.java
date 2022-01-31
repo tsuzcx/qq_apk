@@ -1,94 +1,40 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import java.util.ArrayList;
 
 class bcbq
-  implements wxt
+  implements bhqd
 {
-  bcbq(bcbp parambcbp, String paramString, boolean paramBoolean) {}
+  bcbq(bcbp parambcbp, bhpy parambhpy, boolean paramBoolean, bbzr parambbzr) {}
   
-  public void a(Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bcbp.isDestroy) {}
-    do
-    {
-      return;
-      if (TextUtils.equals(this.jdField_a_of_type_Bcbp.b, this.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("WebSecurityPluginV2", 2, "receive check result but not current url");
-    return;
-    int i = paramBundle.getInt("result", -1);
-    int j;
-    int k;
-    int m;
-    int n;
-    long l;
-    Object localObject;
-    if (i == 0)
-    {
-      j = paramBundle.getInt("jumpResult");
-      k = paramBundle.getInt("level");
-      m = paramBundle.getInt("subLevel");
-      n = paramBundle.getInt("umrType");
-      l = paramBundle.getLong("operationBit");
-      localObject = this.jdField_a_of_type_Bcbp;
-      int i1 = ((bcbp)localObject).jdField_a_of_type_Boolean;
-      if (k == 15)
-      {
-        i = 1;
-        label116:
-        ((bcbp)localObject).jdField_a_of_type_Boolean = (i & i1);
-        if (j != 0) {
-          break label252;
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          break label362;
-        }
-      }
+    this.jdField_a_of_type_Bhpy.dismiss();
+    int i = paramInt;
+    if (!this.jdField_a_of_type_Boolean) {
+      i = paramInt + 1;
     }
-    label167:
-    label360:
-    label362:
-    for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = null)
+    switch (i)
     {
-      QLog.i("UrlCheckLog", 1, "check pass l=" + k);
-      this.jdField_a_of_type_Bcbp.a(l);
-      for (;;)
-      {
-        if (TextUtils.isEmpty(paramBundle)) {
-          break label360;
-        }
-        localObject = this.jdField_a_of_type_Bcbp.mRuntime.a();
-        if (localObject == null) {
-          break;
-        }
-        QLog.i("WebSecurityPluginV2", 1, "now jump url=" + nau.b(paramBundle, new String[0]));
-        this.jdField_a_of_type_Bcbp.jdField_a_of_type_JavaLangString = paramBundle;
-        ((CustomWebView)localObject).loadUrl(paramBundle);
-        return;
-        i = 0;
-        break label116;
-        label252:
-        paramBundle = paramBundle.getString("jumpUrl");
-        QLog.i("UrlCheckLog", 1, "check finish jr=" + j + ", l=" + k + ", sl=" + m + ", umr=" + n);
-        break label167;
-        QLog.i("UrlCheckLog", 1, "check fail r=" + i);
-        if (!this.jdField_a_of_type_Boolean) {
-          paramBundle = this.jdField_a_of_type_JavaLangString;
-        } else {
-          paramBundle = null;
-        }
-      }
-      break;
+    default: 
+      paramView = "";
+    }
+    for (;;)
+    {
+      bdaj.a("Grp_edu", "Grp_recite", "Blueword_Clk", 0, 0, new String[] { this.jdField_a_of_type_Bbzr.f, paramView });
+      return;
+      SelectReciteParagraphFragment.a(paramView.getContext(), this.jdField_a_of_type_Bbzr.f, this.jdField_a_of_type_Bbzr.jdField_a_of_type_JavaLangString, new ArrayList(this.jdField_a_of_type_Bbzr.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_Bbzr.c);
+      paramView = "2";
+      continue;
+      SearchReciteArticleFragment.a(paramView.getContext(), this.jdField_a_of_type_Bbzr.f, "", this.jdField_a_of_type_Bbzr.c);
+      paramView = "0";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcbq
  * JD-Core Version:    0.7.0.1
  */

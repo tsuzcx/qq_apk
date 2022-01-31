@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.magicface.view;
 
-import asea;
+import atva;
 
 public class MagicfaceViewController$2
   implements Runnable
 {
-  public MagicfaceViewController$2(asea paramasea) {}
+  public MagicfaceViewController$2(atva paramatva) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class MagicfaceViewController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,108 +1,128 @@
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aywo
-  extends ayow
 {
-  public aywo(ayvx paramayvx, aywc paramaywc)
-  {
-    super(paramayvx, paramaywc);
-    this.b = ((aywf)this.jdField_a_of_type_Aywc.jdField_a_of_type_JavaLangObject).jdField_a_of_type_Int;
-  }
+  int jdField_a_of_type_Int;
+  public String a;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  int b;
+  public int c;
+  public int d;
   
-  public void aR_()
+  public void a()
   {
-    f();
-  }
-  
-  void d()
-  {
-    super.d();
-    this.jdField_a_of_type_Ayoz.a(ayvx.a(this.jdField_a_of_type_Aywc));
-    aywj localaywj = this.jdField_a_of_type_Aywc.jdField_a_of_type_Aywj;
-    if (localaywj != null)
-    {
-      localaywj.jdField_a_of_type_Int = -1;
-      localaywj.jdField_a_of_type_Long = this.jdField_j_of_type_Int;
-      localaywj.jdField_a_of_type_JavaLangString = this.jdField_j_of_type_JavaLangString;
-      localaywj.jdField_a_of_type_Aywc = this.jdField_a_of_type_Aywc;
-    }
-    try
-    {
-      b("notify", "start");
-      notifyAll();
-      b("notify", "end");
-      return;
-    }
-    finally {}
-  }
-  
-  void e()
-  {
-    super.e();
-    aywj localaywj = this.jdField_a_of_type_Aywc.jdField_a_of_type_Aywj;
-    this.jdField_a_of_type_Ayoz.a(ayvx.a(this.jdField_a_of_type_Aywc));
-    if (localaywj != null)
-    {
-      localaywj.jdField_a_of_type_Int = 0;
-      localaywj.jdField_a_of_type_Aywc = this.jdField_a_of_type_Aywc;
-    }
-    try
-    {
-      b("notify", "start");
-      notifyAll();
-      b("notify", "end");
-      return;
-    }
-    finally {}
-  }
-  
-  void f()
-  {
-    String str = this.jdField_a_of_type_Aywc.jdField_e_of_type_JavaLangString;
-    ayrx localayrx = new ayrx();
-    localayrx.jdField_a_of_type_Aysc = this;
-    localayrx.jdField_a_of_type_JavaLangString = str;
-    localayrx.jdField_a_of_type_Int = 0;
-    localayrx.jdField_a_of_type_JavaIoOutputStream = this.jdField_a_of_type_Aywc.jdField_a_of_type_JavaIoOutputStream;
-    localayrx.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Aywc.h;
-    localayrx.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
-    localayrx.g = this.jdField_a_of_type_Aywc.jdField_a_of_type_Int;
-    localayrx.f = this.jdField_a_of_type_Aywc.b;
-    localayrx.jdField_a_of_type_Long = this.b;
-    localayrx.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
-    localayrx.jdField_e_of_type_Int = this.jdField_a_of_type_Aywc.f;
-    if (this.jdField_a_of_type_Aywc.d)
-    {
-      localayrx.jdField_a_of_type_JavaUtilHashMap.put("Range", "bytes=" + localayrx.jdField_a_of_type_Long + "-");
-      localayrx.jdField_a_of_type_Aysb = jdField_a_of_type_Aysb;
-    }
-    localayrx.jdField_c_of_type_Int = 4;
-    localayrx.jdField_c_of_type_Long = 90000L;
-    b("httpDown", " url:" + str + ",downOffset:" + localayrx.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Aysa.a(localayrx);
-  }
-  
-  public void onResp(aysz paramaysz)
-  {
-    super.onResp(paramaysz);
-    StringBuilder localStringBuilder = new StringBuilder().append(" result:");
-    if (paramaysz.jdField_a_of_type_Int == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      b("onHttpResp", bool);
-      this.b += paramaysz.jdField_c_of_type_Long;
-      if (paramaysz.jdField_a_of_type_Int != 0) {
-        break;
+    JSONArray localJSONArray;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("reportId", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("switch_qzone", this.jdField_a_of_type_Int);
+        localJSONObject.put("switch_qq", this.b);
+        localJSONObject.put("report_count", this.c);
+        localJSONObject.put("report_time", this.d);
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+        {
+          localJSONArray = new JSONArray();
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            if (!TextUtils.isEmpty(str))
+            {
+              localJSONArray.put(str);
+              continue;
+              return;
+            }
+          }
+        }
       }
-      e();
-      return;
+      catch (Exception localException)
+      {
+        QLog.e("UndealCount.QZoneUnreadServletLogic", 1, localException, new Object[0]);
+      }
     }
-    d();
+    do
+    {
+      do
+      {
+        localException.put("blacks", localJSONArray);
+        LocalMultiProcConfig.putString4Uin("qzone_wmd_config", localException.toString(), BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+      } while (!QLog.isColorLevel());
+      QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "save wmd config:" + localException.toString());
+      return;
+      LocalMultiProcConfig.putString4Uin("qzone_wmd_config", "", BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "save wmd config:null");
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    try
+    {
+      Object localObject = LocalMultiProcConfig.getString4Uin("qzone_wmd_config", "", BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "load wmd config:" + (String)localObject);
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new JSONObject((String)localObject);
+        this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("reportId");
+        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switch_qzone");
+        this.b = ((JSONObject)localObject).optInt("switch_qq");
+        this.c = ((JSONObject)localObject).optInt("report_count");
+        this.d = ((JSONObject)localObject).optInt("report_time");
+        localObject = ((JSONObject)localObject).optJSONArray("blacks");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          int i = 0;
+          while (i < ((JSONArray)localObject).length())
+          {
+            if (!TextUtils.isEmpty(((JSONArray)localObject).optString(i))) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(((JSONArray)localObject).optString(i));
+            }
+            i += 1;
+          }
+        }
+        bool = true;
+      }
+      return bool;
+    }
+    catch (Exception localException) {}
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aywo
  * JD-Core Version:    0.7.0.1
  */

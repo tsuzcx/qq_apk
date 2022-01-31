@@ -1,31 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
+import javax.microedition.khronos.opengles.GL11;
 
-public class lsy
-  implements DialogInterface.OnClickListener
+public abstract interface lsy
 {
-  public lsy(RandomController paramRandomController) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (RandomController.a(this.a) == 1) {
-      axqy.b(null, "CliOper", "", "", "0X80053B5", "0X80053B5", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.b();
-      RandomController.d(this.a, false);
-      return;
-      if (RandomController.a(this.a) == 2) {
-        axqy.b(null, "CliOper", "", "", "0X80053C1", "0X80053C1", 0, 0, "", "", "", "");
-      }
-    }
-  }
+  public abstract void a(int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  
+  public abstract void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  
+  public abstract void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lsy
  * JD-Core Version:    0.7.0.1
  */

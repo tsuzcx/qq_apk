@@ -1,24 +1,20 @@
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+
 public class awqf
+  implements bdjy<Integer>
 {
-  public static awqd a(int paramInt)
+  public awqf(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  
+  public void a(bdjs<Integer> parambdjs, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 80000000: 
-      return new awqc();
-    case 80000001: 
-      return new awqi();
-    case 80000002: 
-      return new awqg();
-    }
-    return new awqa();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awqf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 
-public final class amep
-  implements Parcelable.Creator<CardMobileInfo>
+public abstract interface amep
 {
-  public CardMobileInfo a(Parcel paramParcel)
-  {
-    return new CardMobileInfo(paramParcel);
-  }
-  
-  public CardMobileInfo[] a(int paramInt)
-  {
-    return new CardMobileInfo[paramInt];
-  }
+  public abstract void a(FullMessageSearchResult paramFullMessageSearchResult);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amep
  * JD-Core Version:    0.7.0.1
  */

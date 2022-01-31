@@ -1,30 +1,29 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
+
 public class axnp
+  implements Animation.AnimationListener
 {
-  public amph[] a = new amph[0];
+  public axnp(ProviderContainerView paramProviderContainerView) {}
   
-  public String toString()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    StringBuilder localStringBuilder = new StringBuilder("SoLoadConfBean:");
-    if (this.a != null)
+    if (ProviderContainerView.a(this.a) != null)
     {
-      amph[] arrayOfamph = this.a;
-      int j = arrayOfamph.length;
-      int i = 0;
-      while (i < j)
-      {
-        amph localamph = arrayOfamph[i];
-        if (localamph != null) {
-          localStringBuilder.append("confItem ").append(localamph.jdField_a_of_type_Int).append(":").append(localamph.jdField_a_of_type_JavaLangString).append("\n");
-        }
-        i += 1;
-      }
+      ProviderContainerView.a(this.a).setAlpha(1.0F);
+      ProviderContainerView.a(this.a).setVisibility(0);
     }
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axnp
  * JD-Core Version:    0.7.0.1
  */

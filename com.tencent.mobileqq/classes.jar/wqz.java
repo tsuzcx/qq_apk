@@ -1,84 +1,54 @@
-import com.tencent.biz.subscribe.preloader.lib.Worker;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public class wqz
+class wqz
+  extends wna
 {
-  private static wqz jdField_a_of_type_Wqz;
-  private final ConcurrentHashMap<String, wrc> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  wqz(wqx paramwqx) {}
   
-  private <T> String a(String paramString, Worker<T> paramWorker)
+  public void a(int paramInt, View paramView, Object paramObject, wph paramwph)
   {
-    if (a(paramString))
-    {
-      wqy.b("preLoader ID is used, please note that remove!");
-      a(paramString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWorker);
-    paramWorker.a();
-    return paramString;
-  }
-  
-  public static wqz a()
-  {
-    if (jdField_a_of_type_Wqz == null) {
-      jdField_a_of_type_Wqz = new wqz();
-    }
-    return jdField_a_of_type_Wqz;
-  }
-  
-  public <T> String a(String paramString, wqx<T> paramwqx)
-  {
-    return a(paramString, new Worker(paramString, paramwqx, (wre)null));
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {
-      wqy.b("remove preloader id:" + paramString);
-    }
-    try
-    {
-      wrc localwrc = (wrc)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (localwrc != null) {
-        localwrc.b();
+    if ((paramView == paramwph.a(2131373743)) || (paramView == paramwph.a(2131373744)) || (paramView == paramwph.a(2131373747))) {
+      if (wqx.a(this.a)) {
+        wsv.d("Q.qqstory.home.LocalVideoPushSegment", "now is opening the new page, so ignore the click");
       }
     }
-    catch (Exception localException)
+    while (paramView != paramwph.a(2131373742))
     {
+      return;
+      wqx.a(this.a, true);
+      paramObject = new Bundle();
+      paramObject.putInt("capture_intent_mode", 3);
+      if (wqx.a(this.a) == 1) {
+        paramObject.putString("story_capture_album_id", "default_id");
+      }
       for (;;)
       {
-        wqy.a(localException);
+        xlb.a().a((Activity)wqx.a(this.a), paramObject, 20000);
+        wta.a("home_page", "clk_smartalbum", 0, 0, new String[] { wqx.a(this.a, wqx.a(this.a)) });
+        return;
+        if (wqx.a(this.a) == 2)
+        {
+          if (wqx.a(this.a) != null) {}
+          for (paramView = String.valueOf(wqx.a(this.a).a());; paramView = "default_id")
+          {
+            paramObject.putString("story_capture_album_id", paramView);
+            break;
+          }
+        }
+        if (wqx.a(this.a) != 3) {}
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-  }
-  
-  public <T> void a(String paramString, wre<T> paramwre)
-  {
-    try
-    {
-      paramString = (wrc)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a(paramwre);
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      wqy.a(paramString);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+    this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
+    this.a.a(null, 4);
+    wta.a("home_page", "close_smartalbum", 0, 0, new String[] { wqx.a(this.a, wqx.a(this.a)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqz
  * JD-Core Version:    0.7.0.1
  */

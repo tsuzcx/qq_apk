@@ -12,11 +12,11 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityNodeInfo;
-import aylc;
-import bfxh;
-import bfxi;
-import bfxj;
-import bfxk;
+import baiy;
+import bhye;
+import bhyf;
+import bhyg;
+import bhyh;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -27,10 +27,10 @@ public class XEditTextEx
   implements View.OnTouchListener
 {
   private int jdField_a_of_type_Int;
-  private bfxh jdField_a_of_type_Bfxh;
-  private bfxi jdField_a_of_type_Bfxi;
-  public bfxj a;
-  private bfxk jdField_a_of_type_Bfxk;
+  private bhye jdField_a_of_type_Bhye;
+  private bhyf jdField_a_of_type_Bhyf;
+  public bhyg a;
+  private bhyh jdField_a_of_type_Bhyh;
   private XEditTextEx.PerformClick jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick;
   public Object a;
   private List<WeakReference<View.OnClickListener>> jdField_a_of_type_JavaUtilList;
@@ -61,7 +61,7 @@ public class XEditTextEx
   
   public boolean dispatchKeyEventPreIme(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_Bfxh != null) && (this.jdField_a_of_type_Bfxh.a(paramKeyEvent))) {
+    if ((this.jdField_a_of_type_Bhye != null) && (this.jdField_a_of_type_Bhye.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEventPreIme(paramKeyEvent);
@@ -71,7 +71,7 @@ public class XEditTextEx
   public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-    String str = aylc.e(getText().toString());
+    String str = baiy.e(getText().toString());
     paramAccessibilityNodeInfo.setText(str);
     paramAccessibilityNodeInfo.setContentDescription(str);
   }
@@ -81,8 +81,8 @@ public class XEditTextEx
     if (QLog.isColorLevel()) {
       QLog.d("XEditTextEx", 1, "onPrivateIMECommand(), action:" + paramString + " data:" + paramBundle);
     }
-    if (this.jdField_a_of_type_Bfxi != null) {
-      return this.jdField_a_of_type_Bfxi.a(paramString, paramBundle);
+    if (this.jdField_a_of_type_Bhyf != null) {
+      return this.jdField_a_of_type_Bhyf.a(paramString, paramBundle);
     }
     return super.onPrivateIMECommand(paramString, paramBundle);
   }
@@ -93,8 +93,8 @@ public class XEditTextEx
     {
       try
       {
-        if ((this.jdField_a_of_type_Bfxk != null) && (paramInt == 16908322)) {
-          this.jdField_a_of_type_Bfxk.a();
+        if ((this.jdField_a_of_type_Bhyh != null) && (paramInt == 16908322)) {
+          this.jdField_a_of_type_Bhyh.a();
         }
       }
       catch (Throwable localThrowable)
@@ -159,24 +159,24 @@ public class XEditTextEx
     return false;
   }
   
-  public void setKeyEventPreImeListener(bfxh parambfxh)
+  public void setKeyEventPreImeListener(bhye parambhye)
   {
-    this.jdField_a_of_type_Bfxh = parambfxh;
+    this.jdField_a_of_type_Bhye = parambhye;
   }
   
-  public void setOnPrivateIMECommandListener(bfxi parambfxi)
+  public void setOnPrivateIMECommandListener(bhyf parambhyf)
   {
-    this.jdField_a_of_type_Bfxi = parambfxi;
+    this.jdField_a_of_type_Bhyf = parambhyf;
   }
   
-  public void setTextMenuListener(@Nullable bfxk parambfxk)
+  public void setTextMenuListener(@Nullable bhyh parambhyh)
   {
-    this.jdField_a_of_type_Bfxk = parambfxk;
+    this.jdField_a_of_type_Bhyh = parambhyh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.XEditTextEx
  * JD-Core Version:    0.7.0.1
  */

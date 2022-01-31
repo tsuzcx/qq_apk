@@ -1,64 +1,26 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class atqm
-  implements atvq
+  implements View.OnClickListener
 {
-  atqm(atpk paramatpk, int paramInt) {}
+  atqm(atqj paramatqj, BaseActivity paramBaseActivity, atlh paramatlh) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView != null))
-    {
-      if (paramInt > 0) {
-        this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(1, false);
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment.a(null);
-      if (this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView != null)
-      {
-        if (this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a() != 0) {
-          break label160;
-        }
-        localObject = new axrc(this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
-        if (this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
-          break label154;
-        }
-      }
-    }
-    label154:
-    for (String str = "1";; str = "2")
-    {
-      ((axrc)localObject).a(new String[] { str }).a();
-      return;
-      this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(0, false);
-      break;
-    }
-    label160:
-    axrc localaxrc = new axrc(this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp");
-    if (this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2)
-    {
-      str = "1";
-      if (paramInt != 0) {
-        break label250;
-      }
-    }
-    label250:
-    for (Object localObject = "1";; localObject = "2")
-    {
-      localaxrc.a(new String[] { str, localObject }).a();
-      return;
-      str = "2";
-      break;
-    }
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+    int i = this.jdField_a_of_type_Atlh.a();
+    Object localObject = this.jdField_a_of_type_Atlh.a();
+    atln.a(paramView).a.a(3, i, (String)localObject);
+    localObject = new atlh(i, (String)localObject);
+    atln.a(paramView).a((atlh)localObject, false);
+    azmj.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atqm
  * JD-Core Version:    0.7.0.1
  */

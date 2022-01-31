@@ -1,24 +1,25 @@
-public abstract interface tpg
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+
+public class tpg
+  implements Animation.AnimationListener
 {
-  public abstract void a();
+  public tpg(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public abstract void a(int paramInt);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.startAnimation(PublicAccountImageCollectionMainActivity.a(this.a));
+  }
   
-  public abstract void b();
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void b(int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpg
  * JD-Core Version:    0.7.0.1
  */

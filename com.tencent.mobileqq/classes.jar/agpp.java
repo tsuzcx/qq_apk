@@ -1,33 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class agpp
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  agpp(agpl paramagpl, QQAppInterface paramQQAppInterface) {}
+  agpp(agot paramagot) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    aekt.n = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Agpl.a.dismiss();
-      return;
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Agpl.b();
-      agpl.a(this.jdField_a_of_type_Agpl, agpl.a(this.jdField_a_of_type_Agpl), true, Long.valueOf(agpl.b(this.jdField_a_of_type_Agpl)).longValue(), false);
-      continue;
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
-      agpl.a(this.jdField_a_of_type_Agpl, agpl.a(this.jdField_a_of_type_Agpl), true, Long.valueOf(agpl.b(this.jdField_a_of_type_Agpl)).longValue(), true);
+    if (this.a.i != null) {
+      this.a.i.setVisibility(0);
+    }
+    if (this.a.j != null) {
+      this.a.j.setVisibility(0);
+    }
+    this.a.aD();
+    if (this.a.jdField_a_of_type_Nrc.b(this.a.a()) != 0) {
+      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agpp
  * JD-Core Version:    0.7.0.1
  */

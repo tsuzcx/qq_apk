@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingBaseSection;
-
-public class amiw
-  implements amit
+class amiw
 {
-  public amiw(ColorNoteSettingBaseSection paramColorNoteSettingBaseSection) {}
-  
-  public void a()
-  {
-    this.a.a();
-  }
+  private static amiv a = new amiv();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amiw
  * JD-Core Version:    0.7.0.1
  */

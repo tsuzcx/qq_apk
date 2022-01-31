@@ -1,32 +1,23 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nni
+class nni
   implements DialogInterface.OnClickListener
 {
-  public nni(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
+  nni(nmx paramnmx, JsResult paramJsResult, Context paramContext) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
-    if (paramDialogInterface == null) {}
-    do
-    {
-      return;
-      if (paramInt == 0)
-      {
-        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (paramInt != 1);
-    paramDialogInterface.loadUrl("javascript:" + this.b);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nni
  * JD-Core Version:    0.7.0.1
  */

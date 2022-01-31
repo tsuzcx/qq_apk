@@ -37,20 +37,37 @@ public final class AdReporterForAnalysis
   
   public static gdt_analysis_event createEventForAd(Context paramContext, int paramInt, Ad paramAd)
   {
-    String str2 = null;
-    if (paramAd != null) {}
-    for (String str1 = paramAd.getPosId();; str1 = null)
+    String str1;
+    String str2;
+    if (paramAd != null)
     {
-      if (paramAd != null) {
-        str2 = String.valueOf(paramAd.getAId());
+      str1 = paramAd.getPosId();
+      if (paramAd == null) {
+        break label101;
       }
+      str2 = String.valueOf(paramAd.getAId());
+      label27:
+      if (paramAd == null) {
+        break label107;
+      }
+    }
+    label101:
+    label107:
+    for (int i = paramAd.getCreativeSize();; i = -2147483648)
+    {
       paramAd = new gdt_analysis_event();
       AdAnalysisUtil.initEvent(paramContext, paramInt, paramAd);
       paramAd.posId = str1;
       paramAd.aid = str2;
       paramAd.carrierCode = AdCarrier.getCode(paramContext);
-      paramAd.netType = AdNet.getType(paramContext);
+      paramAd.creativeSize = i;
+      paramAd.netType = AdNet.getTypeWith5G(paramContext);
+      paramAd.networkType = AdNet.getNetworkType(paramContext);
       return paramAd;
+      str1 = null;
+      break;
+      str2 = null;
+      break label27;
     }
   }
   
@@ -300,6 +317,24 @@ public final class AdReporterForAnalysis
     }
   }
   
+  public static void reportForActionStatisticsEnd(Context paramContext, Ad paramAd, AdHttp.Params paramParams)
+  {
+    reportForStatisticsEnd(paramContext, 4, new int[] { 200 }, paramAd, paramParams);
+  }
+  
+  public static void reportForActionStatisticsStart(Context paramContext, Ad paramAd, String paramString)
+  {
+    reportForStatisticsStart(paramContext, 4, paramAd, paramString);
+  }
+  
+  public static void reportForActivityStatusChanged(Context paramContext, Ad paramAd, String paramString, int paramInt)
+  {
+    paramAd = createEventForAd(paramContext, 1102, paramAd);
+    paramAd.api = paramString;
+    paramAd.acitivtyStatus = paramInt;
+    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 102));
+  }
+  
   public static void reportForAppInstalled(AdClickUtil.Params paramParams)
   {
     Object localObject2 = null;
@@ -434,22 +469,23 @@ public final class AdReporterForAnalysis
     {
       i = 4;
       if (i != 0) {
-        break label179;
+        break label187;
       }
       j = 1047;
       label24:
       paramString = new gdt_analysis_event();
       AdAnalysisUtil.initEvent(paramContext, j, paramString);
       paramString.carrierCode = AdCarrier.getCode(paramContext);
-      paramString.netType = AdNet.getType(paramContext);
+      paramString.netType = AdNet.getTypeWith5G(paramContext);
+      paramString.networkType = AdNet.getNetworkType(paramContext);
       paramString.duration = paramLong;
       paramString.internalErrorCode = i;
       if (paramParams == null) {
-        break label187;
+        break label195;
       }
     }
-    label179:
     label187:
+    label195:
     for (int i = paramParams.responseCode;; i = -2147483648)
     {
       paramString.httpErrorCode = i;
@@ -487,7 +523,8 @@ public final class AdReporterForAnalysis
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
     AdAnalysisUtil.initEvent(paramContext, 1046, localgdt_analysis_event);
     localgdt_analysis_event.carrierCode = AdCarrier.getCode(paramContext);
-    localgdt_analysis_event.netType = AdNet.getType(paramContext);
+    localgdt_analysis_event.netType = AdNet.getTypeWith5G(paramContext);
+    localgdt_analysis_event.networkType = AdNet.getNetworkType(paramContext);
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
   }
   
@@ -721,7 +758,8 @@ public final class AdReporterForAnalysis
     {
       AdAnalysisUtil.initEvent(paramContext, 1001, localgdt_analysis_event);
       localgdt_analysis_event.carrierCode = AdCarrier.getCode(paramContext);
-      localgdt_analysis_event.netType = AdNet.getType(paramContext);
+      localgdt_analysis_event.netType = AdNet.getTypeWith5G(paramContext);
+      localgdt_analysis_event.networkType = AdNet.getNetworkType(paramContext);
       localgdt_analysis_event.duration = paramLong;
     }
     for (;;)
@@ -730,7 +768,8 @@ public final class AdReporterForAnalysis
       return;
       AdAnalysisUtil.initEvent(paramContext, 1002, localgdt_analysis_event);
       localgdt_analysis_event.carrierCode = AdCarrier.getCode(paramContext);
-      localgdt_analysis_event.netType = AdNet.getType(paramContext);
+      localgdt_analysis_event.netType = AdNet.getTypeWith5G(paramContext);
+      localgdt_analysis_event.networkType = AdNet.getNetworkType(paramContext);
       localgdt_analysis_event.duration = paramLong;
       localgdt_analysis_event.internalErrorCode = i;
       localgdt_analysis_event.httpErrorCode = paramInt1;
@@ -744,13 +783,21 @@ public final class AdReporterForAnalysis
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
     AdAnalysisUtil.initEvent(paramContext, 1000, localgdt_analysis_event);
     localgdt_analysis_event.carrierCode = AdCarrier.getCode(paramContext);
-    localgdt_analysis_event.netType = AdNet.getType(paramContext);
+    localgdt_analysis_event.netType = AdNet.getTypeWith5G(paramContext);
+    localgdt_analysis_event.networkType = AdNet.getNetworkType(paramContext);
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
   }
   
   public static void reportForRewardedVideo(Context paramContext, Ad paramAd)
   {
     paramAd = createEventForAd(paramContext, 1055, paramAd);
+    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 102));
+  }
+  
+  public static void reportForStartActivity(Context paramContext, Ad paramAd, String paramString)
+  {
+    paramAd = createEventForAd(paramContext, 1101, paramAd);
+    paramAd.api = paramString;
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 102));
   }
   
@@ -767,11 +814,11 @@ public final class AdReporterForAnalysis
       int k = paramArrayOfInt.length;
       i = 0;
       if (i >= k) {
-        break label188;
+        break label187;
       }
       if (paramArrayOfInt[i] != paramParams.responseCode) {}
     }
-    label188:
+    label187:
     for (int i = j;; i = 1)
     {
       if (i != 0) {
@@ -781,7 +828,7 @@ public final class AdReporterForAnalysis
       }
       for (;;)
       {
-        label83:
+        label82:
         if (paramParams != null) {}
         for (paramArrayOfInt = paramParams.getUrl();; paramArrayOfInt = null)
         {
@@ -797,9 +844,9 @@ public final class AdReporterForAnalysis
           i += 1;
           break;
           i = 3;
-          break label83;
+          break label82;
           i = 4;
-          break label83;
+          break label82;
         }
       }
     }

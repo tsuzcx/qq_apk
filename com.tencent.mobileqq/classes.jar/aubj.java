@@ -1,30 +1,28 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.Emoticon;
 
 class aubj
-  extends OrientationEventListener
+  implements aubp<aptm>
 {
-  aubj(aubi paramaubi, Context paramContext)
-  {
-    super(paramContext);
-  }
+  aubj(aube paramaube, boolean paramBoolean, SessionInfo paramSessionInfo) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void a(aptm paramaptm)
   {
-    if (paramInt == -1) {
-      this.a.b = 0;
-    }
-    do
+    if ((paramaptm != null) && (paramaptm.a != null))
     {
+      if (this.jdField_a_of_type_Boolean) {
+        aube.a(this.jdField_a_of_type_Aube.a, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramaptm.a.epId);
+      }
+    }
+    else {
       return;
-      this.a.b = ((paramInt + 45) / 90 * 90);
-    } while (this.a.b >= 0);
-    this.a.b = 0;
+    }
+    aube.a(this.jdField_a_of_type_Aube.a, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramaptm.a.epId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aubj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,28 @@
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
+
 public class acnq
+  extends alxd
 {
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
+  public acnq(Conversation paramConversation) {}
+  
+  protected void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, new Object[] { "onRegPrxyUpdateLoginDevStatus int iState = ", Integer.valueOf(paramInt) });
+    }
+    if (paramInt == 1)
+    {
+      this.a.a.a(27, 2);
+      this.a.a.a(-1, null);
+      return;
+    }
+    this.a.a.k();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acnq
  * JD-Core Version:    0.7.0.1
  */

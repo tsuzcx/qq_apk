@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class awwh
-  implements DialogInterface.OnClickListener
+class awwh
+  extends alox
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  awwh(awwg paramawwg) {}
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    com.tencent.mobileqq.search.util.VADHelper.c = false;
-    paramDialogInterface.dismiss();
+    this.a.a(String.valueOf(paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awwh
  * JD-Core Version:    0.7.0.1
  */

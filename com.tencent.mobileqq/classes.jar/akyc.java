@@ -1,149 +1,73 @@
+import com.tencent.mobileqq.apollo.sdk.CmShowViewListener.1;
+import com.tencent.mobileqq.apollo.sdk.CmShowViewListener.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 public class akyc
+  extends bdqc
+  implements akmo
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<akyd> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  private int jdField_a_of_type_Int = 3;
+  private akxj jdField_a_of_type_Akxj;
+  private WeakReference<akxn> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public akyc()
+  public akyc(akxn paramakxn, int paramInt)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_JavaLangString = "http://www.qq.com";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramakxn);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static akyc a(JSONObject paramJSONObject)
+  public void a(akxj paramakxj)
   {
-    localakyc = new akyc();
-    try
-    {
-      if (paramJSONObject.has("preDownload")) {
-        localakyc.jdField_a_of_type_Int = paramJSONObject.optInt("preDownload");
-      }
-      if (paramJSONObject.has("Video360Restart")) {
-        localakyc.jdField_b_of_type_Int = paramJSONObject.optInt("Video360Restart");
-      }
-      int i;
-      if (paramJSONObject.has("Video360Repeat"))
-      {
-        localakyc.jdField_c_of_type_Int = paramJSONObject.optInt("Video360Repeat");
-        if (localakyc.jdField_c_of_type_Int > 0) {
-          break label440;
-        }
-        i = 2147483647;
-      }
-      for (;;)
-      {
-        localakyc.jdField_c_of_type_Int = i;
-        if (paramJSONObject.has("Video360ConnectType")) {
-          localakyc.jdField_d_of_type_Int = paramJSONObject.optInt("Video360ConnectType");
-        }
-        Object localObject1;
-        if (paramJSONObject.has("TraversingResource"))
-        {
-          localObject1 = paramJSONObject.optJSONObject("TraversingResource");
-          if (((JSONObject)localObject1).has("TraversingResourceSize")) {
-            localakyc.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("TraversingResourceSize");
-          }
-          if (((JSONObject)localObject1).has("TraversingResourceUrl")) {
-            localakyc.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("TraversingResourceUrl");
-          }
-          if (((JSONObject)localObject1).has("TraversingResourceMD5")) {
-            localakyc.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("TraversingResourceMD5");
-          }
-        }
-        label440:
-        if (paramJSONObject.has("FragmentInfos"))
-        {
-          paramJSONObject = paramJSONObject.optJSONArray("FragmentInfos");
-          int k = paramJSONObject.length();
-          i = 0;
-          label212:
-          if (i < k)
-          {
-            Object localObject2 = paramJSONObject.getJSONObject(i);
-            localObject1 = new akyd();
-            if (((JSONObject)localObject2).has("name")) {
-              ((akyd)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("name");
-            }
-            if (((JSONObject)localObject2).has("md5")) {
-              ((akyd)localObject1).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("md5");
-            }
-            if (((JSONObject)localObject2).has("url")) {
-              ((akyd)localObject1).jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).getString("url");
-            }
-            int j;
-            if (((JSONObject)localObject2).has("repeat"))
-            {
-              ((akyd)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("repeat");
-              if (((akyd)localObject1).jdField_a_of_type_Int <= 0)
-              {
-                j = 2147483647;
-                ((akyd)localObject1).jdField_a_of_type_Int = j;
-              }
-            }
-            else
-            {
-              if (((JSONObject)localObject2).has("triggerType")) {
-                ((akyd)localObject1).jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("triggerType");
-              }
-              if (((JSONObject)localObject2).has("trigger"))
-              {
-                localObject2 = ((JSONObject)localObject2).getString("trigger").split("\\|");
-                if (localObject2 != null)
-                {
-                  j = localObject2.length;
-                  if (j != 2) {}
-                }
-              }
-            }
-            try
-            {
-              ((akyd)localObject1).jdField_c_of_type_Int = Integer.parseInt(localObject2[0]);
-              ((akyd)localObject1).jdField_d_of_type_Int = Integer.parseInt(localObject2[1]);
-              localakyc.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-              i += 1;
-              break label212;
-              i = localakyc.jdField_c_of_type_Int;
-              continue;
-              j = ((akyd)localObject1).jdField_a_of_type_Int;
-            }
-            catch (NumberFormatException localNumberFormatException)
-            {
-              for (;;)
-              {
-                ((akyd)localObject1).jdField_c_of_type_Int = 0;
-                ((akyd)localObject1).jdField_d_of_type_Int = 0;
-                QLog.d("ARTransferDoorConfigInfo", 1, String.format("ARTransferDoorConfigInfo parseJson, numberException\n%s", new Object[] { localNumberFormatException }));
-              }
-            }
-          }
-        }
-      }
-      return localakyc;
+    this.jdField_a_of_type_Akxj = paramakxj;
+  }
+  
+  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
     }
-    catch (Exception paramJSONObject)
-    {
-      QLog.d("ARTransferDoorConfigInfo", 1, String.format("ARTransferDoorConfigInfo parseJson, Exception\n%s", new Object[] { paramJSONObject }));
+    ThreadManager.post(new CmShowViewListener.2(this, paramBoolean, paramObject), 5, null, true);
+  }
+  
+  public void onNotifyLongTouch(String paramString)
+  {
+    QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onNotifyLongTouch name", paramString });
+    if (this.jdField_a_of_type_Akxj != null) {
+      this.jdField_a_of_type_Akxj.a(paramString);
     }
+  }
+  
+  public void onNotifyStatusChanged(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, new Object[] { "[onNotifyStatusChanged], clickPart:", Integer.valueOf(paramInt), ",apolloId:", paramString });
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    {
+      akxo localakxo = ((akxn)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+      if (localakxo != null) {
+        localakxo.a(akwt.a(paramInt), null, paramString);
+      }
+    }
+    QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onNotifyStatusChanged clickPart:", Integer.valueOf(paramInt), " apolloId:" + paramString });
+    if (this.jdField_a_of_type_Akxj != null) {
+      this.jdField_a_of_type_Akxj.a(paramInt, paramString);
+    }
+  }
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
+    }
+    ThreadManager.post(new CmShowViewListener.1(this, paramInt1, paramInt2), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyc
  * JD-Core Version:    0.7.0.1
  */

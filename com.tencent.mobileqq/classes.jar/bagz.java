@@ -1,34 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.teamworkforgroup.TeamWorkTransparentShareActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class bagz
-  implements View.OnTouchListener
+  implements bevy
 {
-  public bagz(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public bagz(TeamWorkTransparentShareActivity paramTeamWorkTransparentShareActivity, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(BaseResp paramBaseResp)
   {
-    boolean bool1 = this.a.a.canScrollVertically(-1);
-    boolean bool2 = this.a.a.canScrollVertically(1);
-    if ((paramView.isFocused()) && ((bool1) || (bool2))) {
-      paramView.getParent().requestDisallowInterceptTouchEvent(true);
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
+      return;
     }
-    switch (paramMotionEvent.getAction() & 0xFF)
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
+    case -1: 
     default: 
-      return false;
+      xxb.a(1, 2131720019);
     }
-    paramView.getParent().requestDisallowInterceptTouchEvent(false);
-    return false;
+    for (;;)
+    {
+      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkTransparentShareActivity.a);
+      return;
+      xxb.a(2, 2131720038);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bagz
  * JD-Core Version:    0.7.0.1
  */

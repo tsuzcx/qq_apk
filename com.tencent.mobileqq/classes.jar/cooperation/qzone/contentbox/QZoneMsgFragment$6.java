@@ -1,7 +1,7 @@
 package cooperation.qzone.contentbox;
 
 import android.widget.RelativeLayout.LayoutParams;
-import bbll;
+import bdkf;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ class QZoneMsgFragment$6
     for (int i = 44;; i = 0)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)QZoneMsgFragment.a(this.this$0).getLayoutParams();
-      localLayoutParams.bottomMargin = bbll.b(i);
+      localLayoutParams.bottomMargin = bdkf.b(i);
       QZoneMsgFragment.a(this.this$0).setLayoutParams(localLayoutParams);
       QZoneMsgFragment.a(this.this$0).a(this.a);
       return;
@@ -25,7 +25,7 @@ class QZoneMsgFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.6
  * JD-Core Version:    0.7.0.1
  */

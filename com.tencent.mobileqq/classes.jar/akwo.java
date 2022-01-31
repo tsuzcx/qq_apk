@@ -1,13 +1,11 @@
-import com.tencent.mobileqq.app.utils.NumberWheelView;
-import com.tencent.widget.VerticalGallery;
-
-public abstract interface akwo
+public class akwo
 {
-  public abstract void a(NumberWheelView paramNumberWheelView, VerticalGallery paramVerticalGallery);
+  public int a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwo
  * JD-Core Version:    0.7.0.1
  */

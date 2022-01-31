@@ -1,6 +1,8 @@
 package com.tencent.hotpatch;
 
-import akhc;
+import aarn;
+import aarp;
+import alys;
 import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
@@ -14,8 +16,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import zco;
-import zcq;
 
 public class PatchResolveForDalvik
 {
@@ -72,7 +72,7 @@ public class PatchResolveForDalvik
     return nativeResolvePatchClass(arrayOfString, arrayOfInt, paramInt);
   }
   
-  public static void a(Context paramContext, zcq paramzcq)
+  public static void a(Context paramContext, aarp paramaarp)
   {
     Object localObject;
     if (!jdField_a_of_type_Boolean)
@@ -87,32 +87,32 @@ public class PatchResolveForDalvik
         break label132;
       }
       jdField_a_of_type_Int = 609;
-      localObject = akhc.a(BaseApplicationImpl.sApplication, 0);
+      localObject = alys.a(BaseApplicationImpl.sApplication, 0);
       QLog.d("PatchLogTag", 1, "PatchResolveForDalvik tryResolvePatchClass unload as resolve lib load failed unloadResult=" + (String)localObject);
       if ("Success".equals(localObject))
       {
-        zch.jdField_a_of_type_Int = 0;
-        zch.jdField_a_of_type_JavaLangString = "";
+        aarg.jdField_a_of_type_Int = 0;
+        aarg.jdField_a_of_type_JavaLangString = "";
       }
     }
     for (;;)
     {
-      PatchReporter.reportPatchEvent(paramContext, "", "actPatchResolve", jdField_a_of_type_Int, paramzcq.b());
+      PatchReporter.reportPatchEvent(paramContext, "", "actPatchResolve", jdField_a_of_type_Int, paramaarp.b());
       return;
       jdField_a_of_type_Boolean = SoLoadUtilNew.loadSoByName(paramContext, "qq_patch");
       break;
       label132:
-      localObject = ((zco)paramzcq.a()).a();
+      localObject = ((aarn)paramaarp.a()).a();
       int i = a((List)localObject, ((ArrayList)localObject).size());
       jdField_a_of_type_Int = i % 10 + 600;
       if (jdField_a_of_type_Int != 600)
       {
-        localObject = akhc.a(BaseApplicationImpl.sApplication, 0);
+        localObject = alys.a(BaseApplicationImpl.sApplication, 0);
         QLog.d("PatchLogTag", 1, "PatchResolveForDalvik tryResolvePatchClass unload as resolve patch class failed unloadResult=" + (String)localObject + ", resolveResult=" + i);
         if ("Success".equals(localObject))
         {
-          zch.jdField_a_of_type_Int = 0;
-          zch.jdField_a_of_type_JavaLangString = "";
+          aarg.jdField_a_of_type_Int = 0;
+          aarg.jdField_a_of_type_JavaLangString = "";
         }
       }
       else

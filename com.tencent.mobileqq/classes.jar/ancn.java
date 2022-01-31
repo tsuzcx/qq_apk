@@ -1,56 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ancn
-  extends ampa<ancm>
+  implements avwx
 {
-  public int a()
-  {
-    return 440;
-  }
+  public ancn(ARScanEntryView paramARScanEntryView) {}
   
-  @NonNull
-  public ancm a(int paramInt)
-  {
-    return new ancm();
-  }
-  
-  @Nullable
-  public ancm a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return ancm.a(paramArrayOfamph);
-    }
-    return null;
-  }
-  
-  public Class<ancm> a()
-  {
-    return ancm.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ancm paramancm) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void a(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancn
  * JD-Core Version:    0.7.0.1
  */

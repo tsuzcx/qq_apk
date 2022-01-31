@@ -1,128 +1,141 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.AIOSearchBarHelper.1;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.widget.XListView;
+import mqq.os.MqqHandler;
 
 public class aezj
-  extends NativeGifImage
+  implements afal, View.OnClickListener
 {
-  private afaj jdField_a_of_type_Afaj;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private aica jdField_a_of_type_Aica;
+  private aidp jdField_a_of_type_Aidp;
+  private alsl jdField_a_of_type_Alsl;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private boolean jdField_a_of_type_Boolean;
-  private Paint b;
   
-  public aezj(File paramFile, boolean paramBoolean, float paramFloat)
+  aezj(BaseChatPie paramBaseChatPie)
   {
-    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    if (((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agld)) || ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof TroopChatPie))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
   }
   
-  private void a(Canvas paramCanvas, Rect paramRect)
+  private void a()
   {
-    float f2 = 1.0F;
-    if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_Boolean))
-    {
-      QLog.d("ZhituManager", 2, " dst rect is " + paramRect + " but bitmap is " + getWidth() + " / " + getHeight());
-      this.jdField_a_of_type_Boolean = true;
+    Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getIntent().getExtras();
+    if (localBundle == null) {
+      return;
     }
-    float f1 = paramRect.width() / getWidth();
-    if (Math.abs(f1 - 1.0F) < 0.01D)
+    SessionInfo localSessionInfo = new SessionInfo();
+    localSessionInfo.jdField_a_of_type_JavaLangString = localBundle.getString("uin");
+    localSessionInfo.jdField_a_of_type_Int = localBundle.getInt("uintype");
+    localSessionInfo.jdField_b_of_type_JavaLangString = localBundle.getString("troop_uin");
+    localSessionInfo.jdField_a_of_type_Aemb = new aemb();
+    localSessionInfo.jdField_b_of_type_Int = ChatTextSizeSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agld))
     {
-      f1 = f2;
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint = this.jdField_a_of_type_Afaj.jdField_a_of_type_AndroidGraphicsPaint;
-        this.b = this.jdField_a_of_type_Afaj.b;
-        f1 = f2;
-      }
+      this.jdField_a_of_type_Aica = new aica(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_Alsl.l());
+      this.jdField_a_of_type_Aica.show();
+      this.jdField_a_of_type_Aica.a.setOnItemLongClickListener(null);
+      this.jdField_a_of_type_Aica.a.setOnItemClickListener(new aezk(this));
+      return;
+    }
+    this.jdField_a_of_type_Aidp = new aidp(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_Alsl.l());
+    this.jdField_a_of_type_Aidp.show();
+    this.jdField_a_of_type_Aidp.a.setOnItemLongClickListener(null);
+    this.jdField_a_of_type_Aidp.a.setOnItemClickListener(new aezl(this));
+  }
+  
+  private void a(aicu paramaicu)
+  {
+    paramaicu = paramaicu.a;
+    if ((paramaicu instanceof ChatMessage))
+    {
+      aukx.a().b((ChatMessage)paramaicu, true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aelz.notifyDataSetChanged();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getIntent().getExtras() == null) {
+      return;
+    }
+    long l1 = paramaicu.time;
+    int i = paramaicu.istroop;
+    long l2 = paramaicu.shmsgseq;
+    if (i == 1) {
+      l1 = l2;
     }
     for (;;)
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_Afaj.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        f2 = paramRect.top + this.jdField_a_of_type_Afaj.jdField_a_of_type_ArrayOfFloat[i] * f1;
-        if (this.b != null) {
-          paramCanvas.drawText(this.jdField_a_of_type_Afaj.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.b);
-        }
-        paramCanvas.drawText(this.jdField_a_of_type_Afaj.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
-        i += 1;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_Afaj.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Afaj.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() * f1);
-        if (this.jdField_a_of_type_Afaj.b != null)
-        {
-          this.b = new Paint(this.jdField_a_of_type_Afaj.b);
-          this.b.setTextSize(this.jdField_a_of_type_Afaj.b.getTextSize() * f1);
-        }
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(l1);
+      return;
     }
   }
   
-  public int a()
+  public void a(int paramInt)
   {
-    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
-  }
-  
-  public Bitmap a()
-  {
-    return this.mCurrentFrameBitmap;
-  }
-  
-  public void a()
-  {
-    getNextFrame();
-    applyNextFrame();
-  }
-  
-  public void a(afaj paramafaj)
-  {
-    this.jdField_a_of_type_Afaj = paramafaj;
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    Rect localRect = new Rect(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "draw text to file dst rect is " + localRect + " and bitmap is " + getWidth() + " / " + getHeight());
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
     }
-    a(paramCanvas, localRect);
+    do
+    {
+      Bundle localBundle;
+      do
+      {
+        return;
+        localBundle = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getIntent().getExtras();
+      } while (localBundle == null);
+      this.jdField_a_of_type_Alsl = ((alsl)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(92));
+      ThreadManager.getFileThreadHandler().post(new AIOSearchBarHelper.1(this, localBundle));
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
+      return;
+      if (this.jdField_a_of_type_Alsl != null) {
+        this.jdField_a_of_type_Alsl.a(hashCode());
+      }
+      if ((this.jdField_a_of_type_Aidp != null) && (this.jdField_a_of_type_Aidp.isShowing()))
+      {
+        this.jdField_a_of_type_Aidp.dismiss();
+        this.jdField_a_of_type_Aidp = null;
+      }
+    } while ((this.jdField_a_of_type_Aica == null) || (!this.jdField_a_of_type_Aica.isShowing()));
+    this.jdField_a_of_type_Aica.dismiss();
+    this.jdField_a_of_type_Aica = null;
   }
   
-  public int b()
+  public int[] a()
   {
-    return this.mMetaData[FRAME_COUNT_INDEX];
+    return new int[] { 2, 6, 11 };
   }
   
-  public int c()
+  public void onClick(View paramView)
   {
-    return this.mCurrentFrameIndex;
-  }
-  
-  public int d()
-  {
-    return this.mMetaData[WIDTH_INDEX];
-  }
-  
-  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
-  {
-    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
-    a(paramCanvas, paramRect);
-  }
-  
-  public void drawFirstFrame(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
-  {
-    super.drawFirstFrame(paramCanvas, paramRect, paramPaint);
-    a(paramCanvas, paramRect);
+    if ((paramView.getId() == 2131368642) && (this.jdField_a_of_type_Boolean))
+    {
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A416", "0X800A416", 0, 0, "", "", "", "");
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezj
  * JD-Core Version:    0.7.0.1
  */

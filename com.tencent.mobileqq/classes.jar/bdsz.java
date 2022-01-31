@@ -1,28 +1,25 @@
-import com.tencent.image.URLDrawableHandler;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
 
 class bdsz
-  implements URLDrawableHandler
+  implements Drawable.Callback
 {
-  bdsz(bdsy parambdsy) {}
+  bdsz(bdsy parambdsy, bdsw parambdsw) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    return false;
+    if (this.jdField_a_of_type_Bdsw != null) {
+      this.jdField_a_of_type_Bdsw.a(paramDrawable);
+    }
   }
   
-  public void onFileDownloadFailed(int paramInt) {}
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdsz
  * JD-Core Version:    0.7.0.1
  */

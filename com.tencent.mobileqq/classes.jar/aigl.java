@@ -1,64 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.1;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.XListView;
 
 public class aigl
-  implements aigm
+  implements bhpo
 {
-  aigl(aigj paramaigj) {}
+  public aigl(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void a(int paramInt)
-  {
-    if (aigj.a(this.a) != null) {
-      aigj.a(this.a).a(paramInt);
-    }
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (paramPublishVideoEntry != null) && (paramString2 != null)) {
-      aigj.a(this.a).a(paramPublishVideoEntry, paramString2);
+    if (paramInt == 0) {
+      ((AvatarPendantManager)this.b.app.getManager(46)).a(this.b.jdField_a_of_type_Long).a(false);
     }
     for (;;)
     {
-      ThreadManager.excute(new EncodeVideoTask.2.2(this, paramInt, paramPublishVideoEntry, paramLong), 64, null, true);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", aigj.e(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
+      this.b.u = paramInt;
+      if (paramInt != 0) {
+        break label127;
       }
-      aigj.a(this.a).a(paramInt);
-    }
-  }
-  
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
-    }
-    if (aigj.b(this.a))
-    {
-      b(paramPublishVideoEntry, paramString);
+      if (!this.b.jdField_a_of_type_Akcq.a) {
+        break;
+      }
+      this.b.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new AvatarPendantActivity.AnimationScrollListener.1(this), 80L);
       return;
+      ((AvatarPendantManager)this.b.app.getManager(46)).a(this.b.jdField_a_of_type_Long).a(true);
     }
-    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (bbdx.b(paramPublishVideoEntry.doodlePath)))
-    {
-      aigj.a(paramString, paramPublishVideoEntry, aigj.a(this.a));
-      return;
-    }
-    b(paramPublishVideoEntry, paramString);
-  }
-  
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    ThreadManager.excute(new EncodeVideoTask.2.1(this, paramString, paramPublishVideoEntry), 64, null, true);
+    URLDrawable.resume();
+    this.b.jdField_a_of_type_Akcq.notifyDataSetChanged();
+    return;
+    label127:
+    URLDrawable.pause();
+    this.b.jdField_a_of_type_Akcq.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigl
  * JD-Core Version:    0.7.0.1
  */

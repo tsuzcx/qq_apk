@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingBottom="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center_vertical" android:paddingLeft="11.0dip" android:paddingRight="11.0dip" android:layout_width="fill_parent" android:layout_height="47.0dip">
+        <ImageView android:id="@id/loc" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/ew6" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wgi" android:layout_toRightOf="@id/loc" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff989eb4" android:id="@id/mrr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wgj" android:drawableRight="@drawable/e_p" android:drawablePadding="3.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/msq" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:paddingLeft="11.0dip" android:paddingRight="11.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.biz.qqcircle.widgets.QCirclePushRankItemView android:id="@id/mnh" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" app:rankNum="2" />
+            <com.tencent.biz.qqcircle.widgets.QCirclePushRankItemView android:id="@id/mnf" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0" app:rankNum="1" />
+            <com.tencent.biz.qqcircle.widgets.QCirclePushRankItemView android:id="@id/mng" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" app:rankNum="3" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

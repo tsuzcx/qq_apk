@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import ajya;
+import alpo;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.text.ParseException;
@@ -104,7 +104,7 @@ public class DateUtils
     }
     SimpleDateFormat localSimpleDateFormat;
     if (paramString.length() >= 10) {
-      if (Pattern.compile(ajya.a(2131702831)).matcher(paramString).matches()) {
+      if (Pattern.compile(alpo.a(2131703203)).matcher(paramString).matches()) {
         localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
       }
     }
@@ -169,7 +169,7 @@ public class DateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.DateUtils
  * JD-Core Version:    0.7.0.1
  */

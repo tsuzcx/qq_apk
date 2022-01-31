@@ -1,22 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
 public class arsn
-  implements ValueAnimator.AnimatorUpdateListener
+  extends arsl
 {
-  public arsn(FloatIconLayout paramFloatIconLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public arsn(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setRotation(f);
+    super(paramString, paramBinaryMessenger);
+  }
+  
+  public MethodChannel.MethodCallHandler a()
+  {
+    return new arso(this);
+  }
+  
+  public MethodCodec a()
+  {
+    return arsp.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arsn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,82 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.InflateException;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
-class binu
-  implements CompoundButton.OnCheckedChangeListener
+public class binu
+  extends Dialog
 {
-  binu(binq parambinq) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public binu(Context paramContext, String paramString)
   {
-    paramCompoundButton = binq.c(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    super(paramContext, 2131755804);
+    a(paramContext, paramString);
+  }
+  
+  @TargetApi(14)
+  private void a(Context paramContext, String paramString)
+  {
+    super.requestWindowFeature(1);
+    Object localObject1 = LayoutInflater.from(paramContext);
+    View localView = ((LayoutInflater)localObject1).inflate(2131558914, null);
+    try
     {
-      paramCompoundButton.setVisibility(i);
+      Object localObject2 = ((LayoutInflater)localObject1).inflate(2131561643, (ViewGroup)localView, false);
+      localObject1 = (RelativeLayout)localView.findViewById(2131377989);
+      Object localObject3 = new RelativeLayout.LayoutParams(-1, -1);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131375812);
+      ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+      localObject2 = (TextView)localView.findViewById(2131368613);
+      IphoneTitleBarActivity.setLayerType((View)localObject2);
+      if (localObject2 != null) {
+        ((TextView)localObject2).setText(alpo.a(2131708663));
+      }
+      localObject3 = (TextView)localView.findViewById(2131368659);
+      IphoneTitleBarActivity.setLayerType((View)localObject2);
+      if (localObject3 != null) {
+        ((TextView)localObject3).setText(paramString);
+      }
+      super.setContentView((View)localObject1);
+      paramString = getWindow();
+      localObject1 = paramString.getAttributes();
+      ((WindowManager.LayoutParams)localObject1).width = -1;
+      ((WindowManager.LayoutParams)localObject1).height = -1;
+      paramString.setAttributes((WindowManager.LayoutParams)localObject1);
+      if (ImmersiveUtils.isSupporImmersive() == 1)
+      {
+        paramString.addFlags(67108864);
+        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131166957)).init();
+        localView.setFitsSystemWindows(true);
+        localView.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramContext), 0, 0);
+      }
       return;
+    }
+    catch (InflateException paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQWIFIPluginLoadDialog", 2, "layout with merge ,use framelayout to immersive");
+      }
+      super.setContentView(2131561643);
+      getWindow().setFeatureInt(7, 2131558912);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     binu
  * JD-Core Version:    0.7.0.1
  */

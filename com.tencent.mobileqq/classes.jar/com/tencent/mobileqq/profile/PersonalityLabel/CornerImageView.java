@@ -10,7 +10,7 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import bfnz;
+import bhou;
 import com.tencent.image.URLImageView;
 
 public class CornerImageView
@@ -44,7 +44,7 @@ public class CornerImageView
   
   public void a()
   {
-    if (!bfnz.j()) {
+    if (!bhou.i()) {
       setLayerType(1, null);
     }
   }
@@ -138,7 +138,7 @@ public class CornerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView
  * JD-Core Version:    0.7.0.1
  */

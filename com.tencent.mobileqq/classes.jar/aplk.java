@@ -1,12 +1,27 @@
-public abstract interface aplk
+public class aplk
+  implements alkr
 {
-  public abstract void a();
+  public void a(Object paramObject) {}
   
-  public abstract void b();
+  public void b(Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      return;
+    case 2: 
+      a(paramObject);
+      return;
+    }
+    b(paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aplk
  * JD-Core Version:    0.7.0.1
  */

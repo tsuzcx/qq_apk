@@ -1,29 +1,32 @@
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.SpecialCareInfo;
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
 
-class ajxn
-  implements Comparator<SpecialCareInfo>
+public class ajxn
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ajxn(ajxl paramajxl) {}
+  public ajxn(TroopMemberListInnerFrame paramTroopMemberListInnerFrame, ViewGroup paramViewGroup) {}
   
-  private String a(SpecialCareInfo paramSpecialCareInfo)
+  public void onGlobalLayout()
   {
-    Friends localFriends = this.a.b(paramSpecialCareInfo.uin);
-    if (localFriends == null) {
-      return paramSpecialCareInfo.uin;
-    }
-    return bbcz.a(localFriends) + localFriends.uin;
-  }
-  
-  public int a(SpecialCareInfo paramSpecialCareInfo1, SpecialCareInfo paramSpecialCareInfo2)
-  {
-    return ajuh.a(a(paramSpecialCareInfo1), a(paramSpecialCareInfo2));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c);
+    Bitmap localBitmap = TroopMemberListInnerFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c);
+    if (localBitmap == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c.setTag(localBitmap);
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a == null);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxn
  * JD-Core Version:    0.7.0.1
  */

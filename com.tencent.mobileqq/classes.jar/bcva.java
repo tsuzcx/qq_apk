@@ -1,23 +1,54 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bcva
-  implements View.OnLayoutChangeListener
+final class bcva
+  implements DownloadParams.DecodeHandler
 {
-  public bcva(QUSHalfScreenFloatView paramQUSHalfScreenFloatView) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    paramView.setTop(paramInt6);
-    paramView.setBottom(paramInt8);
-    paramView.setLeft(paramInt5);
-    paramView.setRight(paramInt7);
+    Object localObject;
+    if (paramBitmap == null)
+    {
+      localObject = null;
+      return localObject;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length > 0)) {}
+    for (int i = ((int[])(int[])paramDownloadParams)[0];; i = 0)
+    {
+      int j;
+      int k;
+      boolean bool;
+      if (i != 0)
+      {
+        paramDownloadParams = new Matrix();
+        paramDownloadParams.postRotate(i);
+        j = paramBitmap.getWidth();
+        k = paramBitmap.getHeight();
+        if (i % 90 != 0) {
+          bool = true;
+        }
+      }
+      label84:
+      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, k, paramDownloadParams, bool);; paramDownloadParams = paramBitmap)
+      {
+        localObject = paramDownloadParams;
+        if (paramDownloadParams == paramBitmap) {
+          break;
+        }
+        paramBitmap.recycle();
+        return paramDownloadParams;
+        bool = false;
+        break label84;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcva
  * JD-Core Version:    0.7.0.1
  */

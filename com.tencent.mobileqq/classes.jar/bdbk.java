@@ -1,61 +1,233 @@
-import android.view.LayoutInflater;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.text.Layout;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuLayout;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
+import com.tencent.widget.BubblePopupWindow;
 
 public class bdbk
-  extends bdei
 {
-  public bdbk(GroupListOpenFrame paramGroupListOpenFrame) {}
+  public static boolean a;
   
-  public int getCount()
+  public static View a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bdkz parambdkz, View.OnClickListener paramOnClickListener)
   {
-    return this.a.jdField_a_of_type_Bdek.b();
+    return a(paramBubblePopupWindow, paramContext, parambdkz, paramOnClickListener, false);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public static View a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bdkz parambdkz, View.OnClickListener paramOnClickListener, boolean paramBoolean)
   {
-    String str;
     int i;
-    if (paramView == null)
+    int n;
+    int j;
+    label21:
+    int k;
+    if (paramBoolean)
     {
-      paramViewGroup = new bdbm(this);
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559491, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363429));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131367189));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367188));
-      paramView.setTag(paramViewGroup);
-      str = this.a.jdField_a_of_type_Bdek.a(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      paramViewGroup.b.setText(String.valueOf(this.a.jdField_a_of_type_Bdek.a(paramInt)));
-      i = (int)(10.0F * this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a);
-      if (paramInt != 0) {
-        break label194;
+      i = 8;
+      int m = 1;
+      n = parambdkz.a();
+      j = 0;
+      k = m;
+      if (j < n)
+      {
+        if (parambdkz.a(j).b() != 0) {
+          break label182;
+        }
+        k = 0;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839185);
+      if (!paramBoolean) {
+        break label191;
+      }
+      if (QQCustomMenuNoIconLayout.jdField_a_of_type_Int == 0)
+      {
+        localObject = paramContext.getResources();
+        QQCustomMenuNoIconLayout.jdField_a_of_type_Int = ((Resources)localObject).getDisplayMetrics().widthPixels;
+        QQCustomMenuNoIconLayout.jdField_a_of_type_Float = ((Resources)localObject).getDisplayMetrics().density;
+        QQCustomMenuNoIconLayout.c = aekt.a(QQCustomMenuNoIconLayout.c, (Resources)localObject);
+        QQCustomMenuNoIconLayout.f = aekt.a(QQCustomMenuNoIconLayout.f, (Resources)localObject);
+      }
     }
     for (;;)
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, 0, i, 0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bdbl(this, paramInt, str));
-      return paramView;
-      paramViewGroup = (bdbm)paramView.getTag();
+      if ((paramBoolean) || (k == 0) || (QQCustomMenuImageLayout.jdField_a_of_type_Int < 480)) {
+        break label281;
+      }
+      paramContext = new QQCustomMenuImageLayout(paramContext);
+      paramContext.setGravity(17);
+      paramContext.setPadding(QQCustomMenuImageLayout.c, 0, 0, 0);
+      paramContext.setPopup(paramBubblePopupWindow);
+      paramContext.setMenu(parambdkz);
+      paramContext.setMenuIconClickListener(paramOnClickListener);
+      paramContext.a();
+      return paramContext;
+      i = 6;
       break;
-      label194:
-      if (paramInt == getCount() - 1) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839176);
-      } else {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839179);
+      label182:
+      j += 1;
+      break label21;
+      label191:
+      if (QQCustomMenuImageLayout.jdField_a_of_type_Int == 0)
+      {
+        localObject = paramContext.getResources();
+        QQCustomMenuImageLayout.jdField_a_of_type_Int = ((Resources)localObject).getDisplayMetrics().widthPixels;
+        QQCustomMenuImageLayout.jdField_a_of_type_Float = ((Resources)localObject).getDisplayMetrics().density;
+        QQCustomMenuImageLayout.c = aekt.a(QQCustomMenuImageLayout.c, (Resources)localObject);
+        QQCustomMenuImageLayout.d = aekt.a(QQCustomMenuImageLayout.d, (Resources)localObject);
+        QQCustomMenuImageLayout.e = aekt.a(QQCustomMenuImageLayout.e, (Resources)localObject);
+        QQCustomMenuImageLayout.f = (QQCustomMenuImageLayout.jdField_a_of_type_Int - aekt.a(36.0F, (Resources)localObject)) / i;
       }
     }
+    label281:
+    if (paramBoolean)
+    {
+      paramContext = new QQCustomMenuNoIconLayout(paramContext);
+      paramContext.setGravity(17);
+      paramContext.setPadding(0, 0, 0, 0);
+      paramContext.setPopup(paramBubblePopupWindow);
+      paramContext.setMenu(parambdkz);
+      paramContext.setMenuIconClickListener(paramOnClickListener);
+      paramContext.a();
+      return paramContext;
+    }
+    Object localObject = new QQCustomMenuLayout(paramContext);
+    ((QQCustomMenuLayout)localObject).setGravity(17);
+    a(paramBubblePopupWindow, paramContext, parambdkz, paramOnClickListener, (QQCustomMenuLayout)localObject, n);
+    return localObject;
+  }
+  
+  private static QQCustomMenuLayout a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bdkz parambdkz, View.OnClickListener paramOnClickListener, QQCustomMenuLayout paramQQCustomMenuLayout, int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      Object localObject = parambdkz.a(i);
+      bdbl localbdbl = new bdbl(paramContext, paramBubblePopupWindow);
+      localbdbl.setText(((bdlb)localObject).a());
+      localbdbl.setTextSize(13.0F);
+      Resources localResources = paramContext.getResources();
+      TextPaint localTextPaint = new TextPaint(1);
+      localTextPaint.density = localResources.getDisplayMetrics().density;
+      int k = (int)Layout.getDesiredWidth(((bdlb)localObject).a(), localTextPaint);
+      int j = 5;
+      if (localTextPaint.density >= 2.0F) {
+        j = 10;
+      }
+      j = (int)(j * localTextPaint.density);
+      localbdbl.setMinimumWidth(j * 2 + k);
+      localbdbl.setPadding(j, 0, j, 0);
+      localbdbl.setContentDescription(((bdlb)localObject).a());
+      localbdbl.setId(((bdlb)localObject).a());
+      localbdbl.setTextColor(-1);
+      localbdbl.setBackgroundDrawable(null);
+      localbdbl.setIncludeFontPadding(true);
+      localbdbl.setOnClickListener(paramOnClickListener);
+      localbdbl.setGravity(17);
+      paramQQCustomMenuLayout.addView(localbdbl, new LinearLayout.LayoutParams(-2, -2, 1.0F));
+      if (i != paramInt - 1)
+      {
+        localObject = new ImageView(paramContext);
+        ((ImageView)localObject).setBackgroundResource(2130838663);
+        paramQQCustomMenuLayout.addView((View)localObject, -2, -2);
+      }
+      i += 1;
+    }
+    paramQQCustomMenuLayout.a();
+    return paramQQCustomMenuLayout;
+  }
+  
+  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, int paramInt3, bdkz parambdkz, View.OnClickListener paramOnClickListener)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdkz, paramOnClickListener));
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(false);
+    localBubblePopupWindow.a(true);
+    localBubblePopupWindow.c(1);
+    localBubblePopupWindow.b(2);
+    localBubblePopupWindow.e(false);
+    localBubblePopupWindow.g(paramInt3);
+    localBubblePopupWindow.a(0);
+    localBubblePopupWindow.b(paramView, paramInt1, paramInt2);
+    return localBubblePopupWindow;
+  }
+  
+  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bdkz parambdkz)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdkz, null));
+    localBubblePopupWindow.a(null);
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(true);
+    localBubblePopupWindow.a(false);
+    localBubblePopupWindow.a(paramView, paramInt1, paramInt2);
+    return localBubblePopupWindow;
+  }
+  
+  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bdkz parambdkz, View.OnClickListener paramOnClickListener)
+  {
+    return a(paramView, paramInt1, paramInt2, parambdkz, paramOnClickListener, false);
+  }
+  
+  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bdkz parambdkz, View.OnClickListener paramOnClickListener, bhrf parambhrf)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdkz, paramOnClickListener));
+    localBubblePopupWindow.a(parambhrf);
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(true);
+    localBubblePopupWindow.a(true);
+    localBubblePopupWindow.a(paramView, paramInt1, paramInt2);
+    return localBubblePopupWindow;
+  }
+  
+  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bdkz parambdkz, View.OnClickListener paramOnClickListener, boolean paramBoolean)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdkz, paramOnClickListener, paramBoolean));
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(true);
+    localBubblePopupWindow.a(true);
+    localBubblePopupWindow.c(1);
+    localBubblePopupWindow.b(2);
+    localBubblePopupWindow.a(paramView, paramInt1, paramInt2, paramBoolean);
+    return localBubblePopupWindow;
+  }
+  
+  public static BubblePopupWindow a(View paramView, bdkz parambdkz, View.OnClickListener paramOnClickListener)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdkz, paramOnClickListener));
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(true);
+    localBubblePopupWindow.a(true);
+    localBubblePopupWindow.b(paramView);
+    return localBubblePopupWindow;
+  }
+  
+  public static BubblePopupWindow a(View paramView, bdkz parambdkz, View.OnClickListener paramOnClickListener, bhrf parambhrf)
+  {
+    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambdkz, paramOnClickListener));
+    localBubblePopupWindow.a(parambhrf);
+    localBubblePopupWindow.a(new ColorDrawable(0));
+    localBubblePopupWindow.c(true);
+    localBubblePopupWindow.a(true);
+    localBubblePopupWindow.b(paramView);
+    return localBubblePopupWindow;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdbk
  * JD-Core Version:    0.7.0.1
  */

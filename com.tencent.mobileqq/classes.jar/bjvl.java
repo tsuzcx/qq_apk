@@ -1,23 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
+import mqq.app.QQPermissionCallback;
 
 class bjvl
-  extends AnimatorListenerAdapter
+  implements QQPermissionCallback
 {
-  bjvl(bjve parambjve) {}
+  bjvl(bjvj parambjvj, int paramInt) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.d.setVisibility(8);
-    this.a.e.setVisibility(8);
-    this.a.f.setVisibility(8);
-    this.a.b = this.a.c;
+    bdcd.b(this.jdField_a_of_type_Bjvj.mRuntime.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bjvj.a(this.jdField_a_of_type_Bjvj, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjvl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import airt;
-import airx;
-import aiye;
-import ajom;
-import akvi;
+import akje;
+import akji;
+import akpq;
+import alfz;
+import amly;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import apvd;
-import bbrd;
+import arof;
+import bdpx;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -25,41 +25,44 @@ public class GetApolloContentUpdateStatus
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "[GetApolloContentUpdateStatus]system time" + System.currentTimeMillis() + ",last update time:");
     }
-    airx localairx = (airx)this.a.app.getManager(153);
+    akji localakji = (akji)this.a.app.getManager(153);
     SharedPreferences localSharedPreferences = this.a.app.getApp().getSharedPreferences("mobileQQ", 0);
     long l = localSharedPreferences.getLong("last_pull_apollo_content_update_time", 0L);
-    akvi localakvi = (akvi)this.a.app.a(115);
+    amly localamly = (amly)this.a.app.a(115);
     if ((System.currentTimeMillis() - l > 21600000L) || (System.currentTimeMillis() < l)) {
-      if (localakvi != null)
+      if (localamly != null)
       {
-        localakvi.a(null);
+        localamly.a(null);
         localSharedPreferences.edit().putLong("last_pull_apollo_content_update_time", System.currentTimeMillis()).commit();
       }
     }
     for (;;)
     {
-      airt.b();
-      ((airt)this.a.app.getManager(211)).e();
+      akje.b();
+      ((akje)this.a.app.getManager(211)).e();
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "get game list on login.");
       }
-      if (localairx.j()) {
+      if (localakji.j()) {
         ((UsedAppListManager)this.a.app.getManager(288)).getUsedAppList();
       }
-      ajom.a("login");
-      airx.a = this.a.app.getCurrentAccountUin();
-      aiye.a(this.a.app);
-      if (localairx.c(this.a.app.getCurrentAccountUin())) {
-        ((bbrd)this.a.app.a(71)).b();
+      alfz.a("login");
+      akji.a = this.a.app.getCurrentAccountUin();
+      akpq.a(this.a.app);
+      if (localakji.c(this.a.app.getCurrentAccountUin())) {
+        ((bdpx)this.a.app.a(71)).b();
+      }
+      if (akji.a(this.a.app.getApp())) {
+        localakji.n();
       }
       return 7;
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "system time" + System.currentTimeMillis() + ",last update time:" + l);
       }
-      if (airx.a(this.a.app.getApp())) {
-        localairx.a(false, "login check file", 1);
-      } else if (apvd.a(ApolloUtil.a)) {
-        airx.a(this.a.app);
+      if (akji.a(this.a.app.getApp())) {
+        localakji.a(false, "login check file", 1);
+      } else if (arof.a(ApolloUtil.a)) {
+        akji.a(this.a.app);
       }
     }
   }

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajrn;
+import alja;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import aobo;
+import aptl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -17,13 +17,13 @@ public class ApolloPanelAdapter
   extends PagerAdapter
 {
   Context jdField_a_of_type_AndroidContentContext;
-  aobo jdField_a_of_type_Aobo = new aobo();
+  aptl jdField_a_of_type_Aptl = new aptl();
   public BaseChatPie a;
   SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private List<ajrn> jdField_a_of_type_JavaUtilList;
-  aobo b = new aobo();
-  aobo c = new aobo();
-  aobo d = new aobo();
+  private List<alja> jdField_a_of_type_JavaUtilList;
+  aptl b = new aptl();
+  aptl c = new aptl();
+  aptl d = new aptl();
   
   public ApolloPanelAdapter(Context paramContext)
   {
@@ -40,7 +40,7 @@ public class ApolloPanelAdapter
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
   }
   
-  public void a(List<ajrn> paramList)
+  public void a(List<alja> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     super.notifyDataSetChanged();
@@ -63,7 +63,7 @@ public class ApolloPanelAdapter
               do
               {
                 return;
-                if (((paramObject instanceof View)) && (((View)paramObject).getId() == 2131375499) && (this.d != null))
+                if (((paramObject instanceof View)) && (((View)paramObject).getId() == 2131375987) && (this.d != null))
                 {
                   this.d.a((View)paramObject);
                   if (QLog.isColorLevel()) {
@@ -92,8 +92,8 @@ public class ApolloPanelAdapter
         } while (!QLog.isColorLevel());
         QLog.d("ApolloPanelAdapter", 2, "add to reusePool view position = " + paramInt);
         return;
-      } while (this.jdField_a_of_type_Aobo == null);
-      this.jdField_a_of_type_Aobo.a((View)paramObject);
+      } while (this.jdField_a_of_type_Aptl == null);
+      this.jdField_a_of_type_Aptl.a((View)paramObject);
     } while (!QLog.isColorLevel());
     QLog.d("ApolloPanelAdapter", 2, "add to reusePool view position = " + paramInt);
     return;
@@ -116,9 +116,9 @@ public class ApolloPanelAdapter
       i = 0;
       j = i;
     } while (!localIterator.hasNext());
-    ajrn localajrn = (ajrn)localIterator.next();
-    if ((localajrn != null) && ((localajrn instanceof ajrn))) {
-      i += localajrn.a();
+    alja localalja = (alja)localIterator.next();
+    if ((localalja != null) && ((localalja instanceof alja))) {
+      i += localalja.a();
     }
     for (;;)
     {
@@ -135,28 +135,28 @@ public class ApolloPanelAdapter
   {
     Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
     int j = 0;
-    ajrn localajrn;
+    alja localalja;
     int i;
     Object localObject2;
     if (((Iterator)localObject1).hasNext())
     {
-      localajrn = (ajrn)((Iterator)localObject1).next();
+      localalja = (alja)((Iterator)localObject1).next();
       i = j;
-      if (localajrn != null)
+      if (localalja != null)
       {
         i = j;
-        if ((localajrn instanceof ajrn))
+        if ((localalja instanceof alja))
         {
-          int k = localajrn.a();
+          int k = localalja.a();
           j += k;
           i = j;
           if (paramInt + 1 <= j)
           {
             i = k - (j - paramInt);
-            if ((this.jdField_a_of_type_Aobo == null) || (localajrn.c != 0) || (localajrn.e >= 100)) {
+            if ((this.jdField_a_of_type_Aptl == null) || (localalja.c != 0) || (localalja.e >= 100)) {
               break label704;
             }
-            localObject2 = this.jdField_a_of_type_Aobo.a();
+            localObject2 = this.jdField_a_of_type_Aptl.a();
             localObject1 = localObject2;
             if (!(localObject2 instanceof ApolloLinearLayout)) {
               localObject1 = null;
@@ -172,7 +172,7 @@ public class ApolloPanelAdapter
             if (this.b != null)
             {
               localObject1 = localObject2;
-              if (localajrn.d == 4)
+              if (localalja.d == 4)
               {
                 localObject1 = this.b.a();
                 localObject2 = localObject1;
@@ -191,7 +191,7 @@ public class ApolloPanelAdapter
             if (this.c != null)
             {
               localObject2 = localObject1;
-              if (localajrn.d == 2)
+              if (localalja.d == 2)
               {
                 localObject2 = this.c.a();
                 localObject1 = localObject2;
@@ -210,10 +210,10 @@ public class ApolloPanelAdapter
             if (this.d != null)
             {
               localObject1 = localObject2;
-              if (localajrn.d == 100)
+              if (localalja.d == 100)
               {
                 localObject1 = localObject2;
-                if (localajrn.c != 8)
+                if (localalja.c != 8)
                 {
                   localObject2 = this.d.a();
                   localObject1 = localObject2;
@@ -232,8 +232,8 @@ public class ApolloPanelAdapter
             if ((localObject2 == null) || (!(localObject2 instanceof Integer)) || (((Integer)((View)localObject1).getTag()).intValue() == XPanelContainer.d)) {
               break label701;
             }
-            if (this.jdField_a_of_type_Aobo != null) {
-              this.jdField_a_of_type_Aobo.a();
+            if (this.jdField_a_of_type_Aptl != null) {
+              this.jdField_a_of_type_Aptl.a();
             }
             if (this.b != null) {
               this.b.a();
@@ -248,7 +248,7 @@ public class ApolloPanelAdapter
             label538:
             if (localObject1 == null)
             {
-              localObject2 = localajrn.a(i);
+              localObject2 = localalja.a(i);
               localObject1 = localObject2;
               if ((localObject2 instanceof ApolloLinearLayout))
               {
@@ -274,7 +274,7 @@ public class ApolloPanelAdapter
         paramViewGroup.addView((View)localObject1);
       }
       return localObject1;
-      localajrn.a((View)localObject1, i);
+      localalja.a((View)localObject1, i);
       continue;
       j = i;
       break;
@@ -294,7 +294,7 @@ public class ApolloPanelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

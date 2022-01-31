@@ -1,28 +1,24 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.av.ui.guide.GuideHelper.LottieDrawableHelper.2;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.SeekBar;
+import com.tencent.av.ui.beauty.BeautySeekView;
 
 public class mom
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public void a(long paramLong, Context paramContext, String paramString, mop parammop)
+  public mom(BeautySeekView paramBeautySeekView) {}
+  
+  public void onGlobalLayout()
   {
-    try
+    if ((this.a.a) && (BeautySeekView.a(this.a) != null) && (BeautySeekView.a(this.a).getWidth() > 0))
     {
-      LottieComposition.Factory.fromAssetFileName(paramContext, paramString, new mon(this, paramContext, paramLong, parammop));
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("GuideHelper", 1, "fromAssetFileName fail, seq[" + paramLong + "]", paramContext);
-      bdst.a().post(new GuideHelper.LottieDrawableHelper.2(this, parammop));
+      this.a.a = false;
+      BeautySeekView.a(this.a, BeautySeekView.a(this.a).getProgress());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mom
  * JD-Core Version:    0.7.0.1
  */

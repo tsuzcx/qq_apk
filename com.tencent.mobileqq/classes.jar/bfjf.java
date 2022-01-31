@@ -1,14 +1,22 @@
-public abstract interface bfjf
+import android.content.Context;
+
+public class bfjf
 {
-  public abstract void a(String paramString, Object paramObject);
+  protected static bfjn a;
   
-  public abstract void b(String paramString, Object paramObject);
+  public static bfjn a()
+  {
+    return a;
+  }
   
-  public abstract void c(String paramString, Object paramObject);
+  public static void a(Context paramContext)
+  {
+    a = bfjn.a(paramContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfjf
  * JD-Core Version:    0.7.0.1
  */

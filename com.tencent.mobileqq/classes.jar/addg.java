@@ -1,15 +1,28 @@
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import mqq.os.MqqHandler;
 
-public abstract interface addg
+public class addg
+  extends MqqHandler
 {
-  public abstract boolean a(DoodleMsgProto.DoodleData paramDoodleData);
+  public addg(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public abstract boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 2014: 
+      this.a.finish();
+      return;
+    }
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addg
  * JD-Core Version:    0.7.0.1
  */

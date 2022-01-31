@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import asek;
-import bbkk;
+import atvk;
+import bdje;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.data.DraftTextInfo;
 import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
@@ -16,7 +16,7 @@ import java.lang.ref.WeakReference;
 public class SaveTextDraftJob
   implements Runnable
 {
-  private asek jdField_a_of_type_Asek;
+  private atvk jdField_a_of_type_Atvk;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private MessageForReplyText.SourceMsgInfo jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
@@ -26,11 +26,11 @@ public class SaveTextDraftJob
   private String jdField_b_of_type_JavaLangString;
   private WeakReference<BaseChatPie> jdField_b_of_type_JavaLangRefWeakReference;
   
-  public SaveTextDraftJob(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, asek paramasek, CharSequence paramCharSequence, QQAppInterface paramQQAppInterface, String paramString, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, Object paramObject)
+  public SaveTextDraftJob(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, atvk paramatvk, CharSequence paramCharSequence, QQAppInterface paramQQAppInterface, String paramString, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, Object paramObject)
   {
     this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Asek = paramasek;
+    this.jdField_a_of_type_Atvk = paramatvk;
     this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -38,11 +38,11 @@ public class SaveTextDraftJob
     this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  public SaveTextDraftJob(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, asek paramasek, CharSequence paramCharSequence, QQAppInterface paramQQAppInterface, String paramString1, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, Object paramObject, String paramString2)
+  public SaveTextDraftJob(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, atvk paramatvk, CharSequence paramCharSequence, QQAppInterface paramQQAppInterface, String paramString1, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, Object paramObject, String paramString2)
   {
     this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Asek = paramasek;
+    this.jdField_a_of_type_Atvk = paramatvk;
     this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     this.jdField_a_of_type_JavaLangString = paramString1;
@@ -72,11 +72,11 @@ public class SaveTextDraftJob
         {
           return;
         } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.length() <= 2) || (((QQAppInterface)localObject1).a() == null));
-        if (this.jdField_a_of_type_Asek == null) {
-          this.jdField_a_of_type_Asek = asek.a((QQAppInterface)localObject1);
+        if (this.jdField_a_of_type_Atvk == null) {
+          this.jdField_a_of_type_Atvk = atvk.a((QQAppInterface)localObject1);
         }
-        localObject2 = this.jdField_a_of_type_Asek.b((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      } while (((bbkk.a(this.jdField_a_of_type_JavaLangString)) && (bbkk.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence))) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo == null) && (((DraftTextInfo)localObject2).sourceMsgSeq == 0L)) || ((!bbkk.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence)))));
+        localObject2 = this.jdField_a_of_type_Atvk.b((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      } while (((bdje.a(this.jdField_a_of_type_JavaLangString)) && (bdje.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence))) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo == null) && (((DraftTextInfo)localObject2).sourceMsgSeq == 0L)) || ((!bdje.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence)))));
       if (((this.jdField_a_of_type_JavaLangCharSequence == null) || (this.jdField_a_of_type_JavaLangCharSequence.length() <= 0)) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo == null)) {
         break label496;
       }
@@ -106,25 +106,25 @@ public class SaveTextDraftJob
     } while (localBaseChatPie == null);
     localBaseChatPie.c = ((DraftTextInfo)localObject2).text;
     ((DraftTextInfo)localObject2).time = NetConnInfoCenter.getServerTimeMillis();
-    this.jdField_a_of_type_Asek.a((QQAppInterface)localObject1, (DraftTextInfo)localObject2);
+    this.jdField_a_of_type_Atvk.a((QQAppInterface)localObject1, (DraftTextInfo)localObject2);
     for (;;)
     {
       localObject2 = ((QQAppInterface)localObject1).a();
-      localObject1 = this.jdField_a_of_type_Asek.a((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      localObject1 = this.jdField_a_of_type_Atvk.a((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       if (localObject1 == null) {
         break;
       }
       ((QQMessageFacade)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString, ((DraftSummaryInfo)localObject1).getSummary(), ((DraftSummaryInfo)localObject1).getTime());
       return;
       label496:
-      this.jdField_a_of_type_Asek.a((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Atvk.a((QQAppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     }
     ((QQMessageFacade)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString, "", 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.SaveTextDraftJob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,88 +1,111 @@
-import ConfigPush.DomainIpChannel;
-import ConfigPush.DomainIpInfo;
-import ConfigPush.DomainIpList;
-import ConfigPush.FileStoragePushFSSvcList;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class bgql
 {
-  protected String a;
-  protected String b;
-  protected String c;
+  public List<bgqo> a;
+  public boolean a;
+  public boolean b = true;
   
-  public void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
+  private bgql(Context paramContext)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    int i;
-    if (Build.VERSION.SDK_INT > 10)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (a())
     {
-      i = 4;
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavSrvAddrList", i);
-      if (localObject != null) {
-        break label32;
-      }
-    }
-    label32:
-    while ((paramFileStoragePushFSSvcList == null) || (paramFileStoragePushFSSvcList.domainIpChannel == null) || (paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists == null))
-    {
+      b(paramContext);
       return;
-      i = 0;
-      break;
     }
-    paramFileStoragePushFSSvcList = paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists.iterator();
-    while (paramFileStoragePushFSSvcList.hasNext())
+    QMLog.i("Configuration", "OK with CustomConfiguration not found. Use default configuration");
+    a(paramContext);
+  }
+  
+  private Class a(String paramString)
+  {
+    return AppLoaderFactory.g().findClass(paramString);
+  }
+  
+  private void a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.b = true;
+    paramContext = paramContext.getPackageName();
+    a(paramContext + ":mini1", a("com.tencent.qqmini.sdk.ui.MiniActivity1"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver1"), ProcessType.MINI_GAME);
+    a(paramContext + ":mini2", a("com.tencent.qqmini.sdk.ui.MiniActivity2"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver2"), ProcessType.MINI_GAME);
+    a(paramContext + ":mini3", a("com.tencent.qqmini.sdk.ui.MiniActivity3"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver3"), ProcessType.MINI_GAME);
+    a(paramContext + ":mini4", a("com.tencent.qqmini.sdk.ui.MiniActivity4"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver4"), ProcessType.MINI_GAME);
+    a(paramContext + ":mini5", a("com.tencent.qqmini.sdk.ui.MiniActivity5"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver5"), ProcessType.MINI_GAME);
+    a(paramContext + ":mini_internal", a("com.tencent.qqmini.sdk.ui.InternalMiniActivity"), a("com.tencent.qqmini.sdk.receiver.InternalAppBrandMainReceiver"), ProcessType.MINI_INTERNAL);
+  }
+  
+  private void a(String paramString, Class paramClass1, Class paramClass2, ProcessType paramProcessType)
+  {
+    bgqo localbgqo = new bgqo();
+    localbgqo.jdField_a_of_type_JavaLangString = paramString;
+    localbgqo.jdField_a_of_type_JavaLangClass = paramClass1;
+    localbgqo.b = paramClass2;
+    localbgqo.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = paramProcessType;
+    this.jdField_a_of_type_JavaUtilList.add(localbgqo);
+  }
+  
+  private boolean a()
+  {
+    return a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration") != null;
+  }
+  
+  private void b(Context paramContext)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    paramContext = paramContext.getPackageName();
+    this.jdField_a_of_type_Boolean = ((Boolean)bgqz.a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").a("FLUTTER_ENABLED")).booleanValue();
+    this.b = ((Boolean)bgqz.a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").a("DEXLOADER_ENABLED")).booleanValue();
+    Iterator localIterator = ((List)bgqz.a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").a("MINI_PROCESS_LIST")).iterator();
+    label69:
+    Object localObject;
+    bgqo localbgqo;
+    String str;
+    while (localIterator.hasNext())
     {
-      DomainIpList localDomainIpList = (DomainIpList)paramFileStoragePushFSSvcList.next();
-      StringBuilder localStringBuilder = new StringBuilder();
-      if ((localDomainIpList.uDomain_type == 4) || (localDomainIpList.uDomain_type == 5) || (localDomainIpList.uDomain_type == 6))
+      localObject = localIterator.next();
+      if ((localObject instanceof Map))
       {
-        if ((localDomainIpList.vIplist != null) && (localDomainIpList.vIplist.size() != 0))
-        {
-          i = 0;
-          while (i < localDomainIpList.vIplist.size())
-          {
-            DomainIpInfo localDomainIpInfo = (DomainIpInfo)localDomainIpList.vIplist.get(i);
-            localStringBuilder.append(bbfj.a(localDomainIpInfo.uIp)).append(":").append(localDomainIpInfo.uPort);
-            if (i < localDomainIpList.vIplist.size() - 1) {
-              localStringBuilder.append("|");
-            }
-            i += 1;
-          }
+        localObject = (Map)localObject;
+        localbgqo = new bgqo();
+        localbgqo.jdField_a_of_type_JavaLangString = (paramContext + ":" + ((Map)localObject).get("name").toString());
+        str = ((Map)localObject).get("processType").toString();
+        if (!"MINI_GAME".equals(str)) {
+          break label230;
         }
-      }
-      else {
-        switch (localDomainIpList.uDomain_type)
-        {
-        default: 
-          break;
-        case 4: 
-          this.a = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_FavIp", this.a).commit();
-          break;
-        case 5: 
-          this.c = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_UploadPicIp", this.c).commit();
-          break;
-        case 6: 
-          this.b = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_PicPlatformIp", this.b).commit();
-        }
+        localbgqo.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = ProcessType.MINI_GAME;
       }
     }
-    paramFileStoragePushFSSvcList = new Intent("com.tencent.receiver.qfav.srvaddr");
-    paramFileStoragePushFSSvcList.putExtra("com.tencent.receiver.qfav.srvaddr.type", 0);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramFileStoragePushFSSvcList);
+    for (;;)
+    {
+      localbgqo.jdField_a_of_type_JavaLangClass = a(((Map)localObject).get("ui").toString());
+      localbgqo.b = a(((Map)localObject).get("receiver").toString());
+      this.jdField_a_of_type_JavaUtilList.add(localbgqo);
+      break label69;
+      break;
+      label230:
+      if ("MINI_APP".equals(str)) {
+        localbgqo.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = ProcessType.MINI_APP;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgql
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,32 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
 public class xku
-  implements amne
+  implements bhtl
 {
-  public xku(NewerGuidePlugin paramNewerGuidePlugin, bfpc parambfpc) {}
+  public xku(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
   
-  public void a()
+  public void onScrollStateChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
-    }
-    if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing())) {
-      this.jdField_a_of_type_Bfpc.dismiss();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    wsv.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { localJSONObject.toString() });
+    default: 
+    case 4098: 
+    case 4099: 
+      do
+      {
+        return;
+      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
+      ScrollFrameSelectBar.a(this.a).c();
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xku
  * JD-Core Version:    0.7.0.1
  */

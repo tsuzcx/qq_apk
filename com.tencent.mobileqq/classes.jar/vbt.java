@@ -1,31 +1,62 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Iterator;
+import java.util.List;
 
 public class vbt
-  extends QQUIEventReceiver<vba, tli>
+  extends unk<vdh>
 {
-  public vbt(@NonNull vba paramvba)
+  public final List<String> a;
+  
+  public vbt(List<String> paramList)
   {
-    super(paramvba);
+    this.a = paramList;
   }
   
-  public void a(@NonNull vba paramvba, @NonNull tli paramtli)
+  public String a()
   {
-    if ((paramtli.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtli.jdField_a_of_type_JavaUtilList == null)) {
-      return;
+    return "StorySvc.get_video_tag_778";
+  }
+  
+  public unf a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
+    try
+    {
+      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
+      return new vdh(localRspStoryPlayerTagInfo);
     }
-    paramvba.a(paramtli);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        wsv.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
+      }
+    }
   }
   
-  public Class acceptEventClass()
+  protected byte[] a()
   {
-    return tli.class;
+    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    localReqStoryPlayerTagInfo.client.set(2);
+    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.3.3"));
+    return localReqStoryPlayerTagInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbt
  * JD-Core Version:    0.7.0.1
  */

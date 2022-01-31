@@ -19,6 +19,7 @@ import java.util.Map;
 
 public class VideoFilterBase
   extends AEChainI
+  implements AEFilterI
 {
   private static final String BASIC_VERTEX_SHADER = "precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\nuniform mat4 Projection;\nuniform mat4 Modelview; \nuniform mat4 tMat;\nvoid main(void)\n{\n   gl_Position = Projection * Modelview *position;\n   vec4 tmp = tMat*vec4(inputTextureCoordinate.x,inputTextureCoordinate.y,0.0,1.0);\n   textureCoordinate = tmp.xy;\n}";
   public static final String DefaultFragmentShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
@@ -187,7 +188,7 @@ public class VideoFilterBase
       while (localIterator.hasNext())
       {
         AttributeParam localAttributeParam = (AttributeParam)localIterator.next();
-        if (localAttributeParam.handle >= 0) {
+        if ((localAttributeParam.handle >= 0) && (this.shader != null)) {
           localAttributeParam.setParams(this.shader.getShaderProgram());
         }
       }
@@ -228,6 +229,11 @@ public class VideoFilterBase
     renderTexture(paramInt1, paramInt2, paramInt3);
     checkInputOutputValid(this, localFrame, paramInt1);
     return localFrame;
+  }
+  
+  public Frame RenderProcess(Frame paramFrame)
+  {
+    return render(paramFrame);
   }
   
   public void RenderProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, Frame paramFrame)
@@ -529,7 +535,7 @@ public class VideoFilterBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.openrender.internal.VideoFilterBase
  * JD-Core Version:    0.7.0.1
  */

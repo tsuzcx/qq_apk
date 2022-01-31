@@ -1,27 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
-
-public class qog
-  extends AnimatorListenerAdapter
+public abstract interface qog
 {
-  private qog(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  public abstract void a(String paramString, float paramFloat);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    VideoFeedsGuideView.a(this.a, false);
-  }
+  public abstract void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    VideoFeedsGuideView.a(this.a, true);
-  }
+  public abstract void a(String paramString, int paramInt, qxn paramqxn);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qog
  * JD-Core Version:    0.7.0.1
  */

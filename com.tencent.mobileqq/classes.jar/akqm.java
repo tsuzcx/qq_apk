@@ -1,47 +1,33 @@
-import android.support.annotation.NonNull;
-import java.util.HashSet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.2;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 
 public class akqm
+  implements View.OnClickListener
 {
-  public static final HashSet<akqm> a;
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
+  public akqm(CmGameLoadingView.2 param2) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  }
-  
-  public akqm(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("PushMsg0x210_c7Info{");
-    localStringBuilder.append("fromUin:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("msgSeq:").append(this.jdField_b_of_type_Long).append(", ");
-    localStringBuilder.append("msgTime:").append(this.jdField_b_of_type_Int).append(", ");
-    localStringBuilder.append("onlinePush:").append(this.jdField_a_of_type_Boolean).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.this$0.setProgressViewVisibility(true);
+    if (this.a.jdField_a_of_type_Aknu != null) {
+      this.a.jdField_a_of_type_Aknu.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mLoadingOnMainProcess)) {
+      ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqm
  * JD-Core Version:    0.7.0.1
  */

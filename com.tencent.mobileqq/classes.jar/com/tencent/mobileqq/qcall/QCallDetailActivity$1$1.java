@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.qcall;
 
-import avel;
+import awvy;
 
 public class QCallDetailActivity$1$1
   implements Runnable
 {
-  public QCallDetailActivity$1$1(avel paramavel) {}
+  public QCallDetailActivity$1$1(awvy paramawvy) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QCallDetailActivity$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

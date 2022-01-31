@@ -1,23 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
 public class vjf
-  implements ufm
+  implements Dispatcher.Event
 {
-  public vjf(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public final AnimationParam a;
+  public final String a;
   
-  public void a_(ufh paramufh)
+  public vjf(AnimationParam paramAnimationParam, String paramString)
   {
-    ved.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjf
  * JD-Core Version:    0.7.0.1
  */

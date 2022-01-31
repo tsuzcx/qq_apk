@@ -1,86 +1,34 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class auzt
-  extends BaseAdapter
+class auzt
+  implements bevy
 {
-  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
+  auzt(auzr paramauzr) {}
   
-  private auzt(ProfileLabelPanelAdapter paramProfileLabelPanelAdapter) {}
-  
-  public void a(List<ProfileLabelInfo> paramList)
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ProfileLabelInfo localProfileLabelInfo;
-    if (paramView == null)
+    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
     {
-      paramView = new ToggleButton(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(28.0F * this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Float)));
-      paramView.setBackgroundResource(2130849413);
-      paramViewGroup = (ToggleButton)paramView;
-      paramViewGroup.setGravity(17);
-      paramViewGroup.setTextSize(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131427334));
-      paramViewGroup.setTextColor(Color.parseColor("#777777"));
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter);
-      localProfileLabelInfo = (ProfileLabelInfo)getItem(paramInt);
-      if (localProfileLabelInfo == null) {
-        break label204;
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label59;
       }
-      paramViewGroup.setTag(localProfileLabelInfo);
-      if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
-        break label198;
+      if (this.a.jdField_a_of_type_Auzu != null) {
+        this.a.jdField_a_of_type_Auzu.a(true);
       }
     }
-    label198:
-    for (boolean bool = true;; bool = false)
-    {
-      paramViewGroup.setChecked(bool);
-      paramViewGroup.setText(localProfileLabelInfo.labelName);
-      paramViewGroup.setTextOn(localProfileLabelInfo.labelName);
-      paramViewGroup.setTextOff(localProfileLabelInfo.labelName);
-      if (localProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Auzr.a(localProfileLabelInfo, paramViewGroup);
-      }
-      return paramView;
-      paramViewGroup = (ToggleButton)paramView;
-      break;
+    label59:
+    while (this.a.jdField_a_of_type_Auzu == null) {
+      return;
     }
-    label204:
-    paramViewGroup.setVisibility(8);
-    return paramView;
+    this.a.jdField_a_of_type_Auzu.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auzt
  * JD-Core Version:    0.7.0.1
  */

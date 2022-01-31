@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import betc;
-import bfbj;
-import bfbs;
+import bhas;
+import bhbe;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class AppBrandPageContainer$1$2
   implements Runnable
 {
-  public AppBrandPageContainer$1$2(bfbs parambfbs) {}
+  public AppBrandPageContainer$1$2(bhbe parambhbe) {}
   
   public void run()
   {
@@ -16,9 +16,9 @@ public class AppBrandPageContainer$1$2
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("height", 0);
-      localJSONObject.put("inputId", this.a.a.d());
+      localJSONObject.put("inputId", this.a.a.f());
       if (this.a.a.a != null) {
-        this.a.a.a.a("onKeyboardHeightChange", localJSONObject.toString(), this.a.a.c());
+        this.a.a.a.a("onKeyboardHeightChange", localJSONObject.toString(), this.a.a.e());
       }
       this.a.a.d();
       return;
@@ -27,14 +27,14 @@ public class AppBrandPageContainer$1$2
     {
       for (;;)
       {
-        betc.d("AppBrandPageContainer", "KeyboardObserver error, ", localThrowable);
+        QMLog.e("minisdk-start-AppBrandPageContainer", "KeyboardObserver error, ", localThrowable);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.2
  * JD-Core Version:    0.7.0.1
  */

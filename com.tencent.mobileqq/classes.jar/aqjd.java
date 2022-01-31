@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-public class aqjd
-  extends akfy
+public abstract interface aqjd
 {
-  public aqjd(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
+  public abstract String a(FileInfo paramFileInfo);
   
-  public void a(String paramString, int paramInt)
-  {
-    QQSettingChatOperationFragment.a(this.a);
-  }
+  public abstract void a(FileInfo paramFileInfo, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjd
  * JD-Core Version:    0.7.0.1
  */

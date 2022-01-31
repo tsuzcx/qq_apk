@@ -1,12 +1,12 @@
 package dov.com.qq.im.story.mode;
 
-import bjry;
+import bmdi;
 import com.tencent.qg.sdk.QGRenderer.QGEventListener;
 
 public class StoryEffectTextMode$18
   implements Runnable
 {
-  public StoryEffectTextMode$18(bjry parambjry, QGRenderer.QGEventListener paramQGEventListener) {}
+  public StoryEffectTextMode$18(bmdi parambmdi, QGRenderer.QGEventListener paramQGEventListener) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class StoryEffectTextMode$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.story.mode.StoryEffectTextMode.18
  * JD-Core Version:    0.7.0.1
  */

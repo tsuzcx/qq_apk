@@ -1,62 +1,61 @@
 package com.tencent.qqmini.sdk.core;
 
 import android.content.Context;
-import behw;
-import bejf;
-import bekb;
-import beqb;
-import bess;
-import besy;
-import beut;
+import bgjg;
+import bgjv;
+import bgte;
+import com.tencent.qqmini.sdk.core.auth.AuthState;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MiniAppEnv
-  implements besy
+  implements IMiniAppEnv
 {
   private static final String TAG = "MiniAppEnv";
-  private static MiniAppEnv sInstance;
-  protected bejf mApkgLoader = bejf.a();
-  private Map<String, behw> mAuthStateMap = new HashMap();
+  protected bgjg mApkgLoader = bgjg.a();
+  private Map<String, AuthState> mAuthStateMap = new HashMap();
   protected Context mContext;
   private LoginInfo mLoginInfo = new LoginInfo();
   private String mMenuStyle = "light";
-  protected bess sBaselibLoader = new bekb();
+  protected BaselibLoader sBaselibLoader = new bgjv();
   
   public static MiniAppEnv g()
   {
-    return sInstance;
+    return (MiniAppEnv)AppLoaderFactory.g().getMiniAppEnv();
   }
   
-  public bejf getApkgLoader()
+  public bgjg getApkgLoader()
   {
     return this.mApkgLoader;
   }
   
-  public behw getAuthSate(String paramString)
+  public AuthState getAuthSate(String paramString)
   {
     if (this.mAuthStateMap.containsKey(paramString)) {
-      return (behw)this.mAuthStateMap.get(paramString);
+      return (AuthState)this.mAuthStateMap.get(paramString);
     }
     synchronized (this.mAuthStateMap)
     {
-      behw localbehw = (behw)this.mAuthStateMap.get(paramString);
-      Object localObject = localbehw;
-      if (localbehw == null)
+      AuthState localAuthState = (AuthState)this.mAuthStateMap.get(paramString);
+      Object localObject = localAuthState;
+      if (localAuthState == null)
       {
-        localObject = beut.a().a();
-        localObject = new behw(getContext(), paramString, (String)localObject);
+        localObject = bgte.a().a();
+        localObject = new AuthState(getContext(), paramString, (String)localObject);
         this.mAuthStateMap.put(paramString, localObject);
       }
       return localObject;
     }
   }
   
-  public bess getBaselibLoader()
+  public BaselibLoader getBaselibLoader()
   {
-    if (beqb.a().a() != null) {
-      return beqb.a().a();
+    if (AppLoaderFactory.g().getBaselibLoader() != null) {
+      return AppLoaderFactory.g().getBaselibLoader();
     }
     return this.sBaselibLoader;
   }
@@ -84,15 +83,15 @@ public class MiniAppEnv
     this.mContext = paramContext;
   }
   
-  public void setApkgLoader(bejf parambejf)
+  public void setApkgLoader(bgjg parambgjg)
   {
-    this.mApkgLoader = parambejf;
+    this.mApkgLoader = parambgjg;
   }
   
   @Deprecated
-  public void setBaselibLoader(bess parambess)
+  public void setBaselibLoader(BaselibLoader paramBaselibLoader)
   {
-    this.sBaselibLoader = parambess;
+    this.sBaselibLoader = paramBaselibLoader;
   }
   
   public void setLoginInfo(LoginInfo paramLoginInfo)
@@ -107,7 +106,7 @@ public class MiniAppEnv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.MiniAppEnv
  * JD-Core Version:    0.7.0.1
  */

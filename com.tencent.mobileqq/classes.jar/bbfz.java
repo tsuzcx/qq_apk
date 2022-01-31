@@ -1,67 +1,45 @@
-import com.tencent.commonsdk.pool.ByteArrayPool;
-import java.io.ByteArrayOutputStream;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.AudioUploadTask;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import java.io.File;
 
 public class bbfz
-  extends ByteArrayOutputStream
+  extends Handler
 {
-  private final ByteArrayPool a;
+  public bbfz(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public bbfz(ByteArrayPool paramByteArrayPool, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = paramByteArrayPool;
-    this.buf = this.a.getBuf(Math.max(paramInt, 256));
-  }
-  
-  private void a(int paramInt)
-  {
-    if (this.count + paramInt <= this.buf.length) {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 3: 
+      TroopBarReplyActivity.b(this.a, false);
       return;
     }
-    byte[] arrayOfByte = this.a.getBuf((this.count + paramInt) * 2);
-    System.arraycopy(this.buf, 0, arrayOfByte, 0, this.count);
-    this.a.returnBuf(this.buf);
-    this.buf = arrayOfByte;
-  }
-  
-  public byte[] a()
-  {
-    return this.buf;
-  }
-  
-  public void close()
-  {
-    this.a.returnBuf(this.buf);
-    this.buf = null;
-    super.close();
-  }
-  
-  public void write(int paramInt)
-  {
-    try
+    paramMessage = paramMessage.obj.toString();
+    File localFile = new File(paramMessage);
+    if (localFile.exists()) {}
+    for (long l = localFile.length();; l = 0L)
     {
-      a(1);
-      super.write(paramInt);
+      TroopBarReplyActivity.b(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+      TroopBarReplyActivity.a(this.a, new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l));
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = TroopBarReplyActivity.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask = new TroopBarPublishUtils.AudioUploadTask(this.a, this.a.jdField_a_of_type_AndroidOsHandler, "https://upload.buluo.qq.com/cgi-bin/bar/upload/meida", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
+      ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask, 5, null, true);
+      this.a.a(2, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
+      TroopBarReplyActivity.a(this.a, 0);
+      if (!this.a.k) {
+        break;
+      }
+      bcht.a(this.a.m, this.a.n, "sure_record", this.a.o, "", "", "");
       return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      a(paramInt2);
-      super.write(paramArrayOfByte, paramInt1, paramInt2);
-      return;
-    }
-    finally
-    {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
     }
   }
 }

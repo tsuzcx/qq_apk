@@ -1,28 +1,12 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.biz.troopplugin.PluginJumpManager;
-
-public class xdk
-  implements myy
+public abstract interface xdk
 {
-  public xdk(PluginJumpManager paramPluginJumpManager) {}
+  public abstract void a(xag paramxag, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public void loaded(String paramString, int paramInt)
-  {
-    if (paramInt == 0) {
-      mzb.a("urlplugin.cfg", this.a.mContext, "1007", new xdl(this));
-    }
-    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
-      return;
-    }
-    this.a.loadConfigFromFile();
-  }
-  
-  public void progress(int paramInt) {}
+  public abstract void a(xdm paramxdm);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdk
  * JD-Core Version:    0.7.0.1
  */

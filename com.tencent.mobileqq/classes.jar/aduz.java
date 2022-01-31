@@ -1,23 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 class aduz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aduz(aduy paramaduy) {}
+  aduz(aduy paramaduy, azyv paramazyv) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    actj.n = true;
-    if (this.a.a()) {
-      return;
+    if ((paramInt == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_Azyv.c)))
+    {
+      paramDialogInterface = new Intent(this.jdField_a_of_type_Aduy.a, SubLoginActivity.class);
+      paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_Azyv.c);
+      paramDialogInterface.putExtra("fromWhere", this.jdField_a_of_type_Aduy.a.b);
+      this.jdField_a_of_type_Aduy.a.startActivity(paramDialogInterface);
     }
-    aduy.a(this.a).onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aduz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 {
     "ReadInjoy_subscribed_topic_card_cell": {
-        "view_type": "cell",
+        "view_type": "container",
         "layout_type" : "layout_linear",
         "direction": "vertical",
         "height": {

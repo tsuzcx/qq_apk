@@ -15,7 +15,7 @@ import android.widget.LinearLayout.LayoutParams;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.Queue;
-import wbo;
+import xqg;
 
 public class PagerIndicator
   extends LinearLayout
@@ -26,7 +26,7 @@ public class PagerIndicator
   public EmptySupportViewPager a;
   protected WeakReference<PagerIndicator.IndicatorAdapter> a;
   protected Queue<PagerIndicator.InnerImageView> a;
-  public final wbo a;
+  public final xqg a;
   protected int b;
   
   static
@@ -43,7 +43,7 @@ public class PagerIndicator
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_a_of_type_Wbo = new wbo(this, null);
+    this.jdField_a_of_type_Xqg = new xqg(this, null);
     super.setOrientation(0);
     super.setGravity(17);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
@@ -135,13 +135,13 @@ public class PagerIndicator
     {
       if (this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager != null)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.b(this.jdField_a_of_type_Wbo);
+        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.b(this.jdField_a_of_type_Xqg);
         this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager = null;
       }
       if (paramEmptySupportViewPager != null)
       {
         this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager = paramEmptySupportViewPager;
-        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.a(this.jdField_a_of_type_Wbo);
+        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.a(this.jdField_a_of_type_Xqg);
       }
     }
   }
@@ -155,12 +155,12 @@ public class PagerIndicator
       {
         if (localIndicatorAdapter != null)
         {
-          localIndicatorAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Wbo);
+          localIndicatorAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Xqg);
           this.jdField_a_of_type_JavaLangRefWeakReference = null;
         }
         if (paramIndicatorAdapter != null)
         {
-          paramIndicatorAdapter.registerDataSetObserver(this.jdField_a_of_type_Wbo);
+          paramIndicatorAdapter.registerDataSetObserver(this.jdField_a_of_type_Xqg);
           this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIndicatorAdapter);
         }
         if (this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager != null) {
@@ -173,7 +173,7 @@ public class PagerIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.PagerIndicator
  * JD-Core Version:    0.7.0.1
  */

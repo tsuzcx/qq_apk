@@ -1,10 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import axrn;
-import bbdx;
-import bhvy;
+import azmz;
+import bdcs;
+import bjxj;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,12 +13,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
-import mzh;
-import nap;
-import nol;
-import onh;
+import ncb;
+import ndl;
+import nrt;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import ors;
 
 public class KandianReportSoLoader
 {
@@ -40,7 +39,7 @@ public class KandianReportSoLoader
   {
     try
     {
-      SO_DOWNLOAD_DIR = mzh.a("3454") + "3454";
+      SO_DOWNLOAD_DIR = ncb.a("3454") + "3454";
       SO_LOAD_DIR = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/kandianreport";
       configDownloadPath = SO_DOWNLOAD_DIR + "/so_config.json";
       configLoadPath = SO_LOAD_DIR + "/so_config.json";
@@ -54,9 +53,9 @@ public class KandianReportSoLoader
   
   public static boolean checkSoFileIsReady()
   {
-    boolean bool2 = ((Boolean)bhvy.a("kd_fc_so_copy", Boolean.valueOf(false))).booleanValue();
+    boolean bool2 = ((Boolean)bjxj.a("kd_fc_so_copy", Boolean.valueOf(false))).booleanValue();
     boolean bool1 = new File(configLoadPath).exists();
-    boolean bool3 = ((Boolean)bhvy.a("kd_fc_so_download", Boolean.valueOf(false))).booleanValue();
+    boolean bool3 = ((Boolean)bjxj.a("kd_fc_so_download", Boolean.valueOf(false))).booleanValue();
     boolean bool4 = new File(configDownloadPath).exists();
     QLog.d("kandianreport.KandianReportSoLoader", 1, "copy flag: " + bool2);
     QLog.d("kandianreport.KandianReportSoLoader", 1, "actual copy state: " + bool1);
@@ -73,7 +72,7 @@ public class KandianReportSoLoader
     {
       try
       {
-        if (!nap.a(SO_DOWNLOAD_DIR, "3454"))
+        if (!ndl.a(SO_DOWNLOAD_DIR, "3454"))
         {
           logAndReport("checkSoFileIsReady: verification failed");
           bool2 = false;
@@ -90,7 +89,7 @@ public class KandianReportSoLoader
         QLog.d("kandianreport.KandianReportSoLoader", 1, "download success but not copy");
         bool1 = copySoFromSdcardToData();
         QLog.d("kandianreport.KandianReportSoLoader", 1, "copy result: " + bool1);
-        if (!nap.a(SO_DOWNLOAD_DIR, "3454"))
+        if (!ndl.a(SO_DOWNLOAD_DIR, "3454"))
         {
           logAndReport("checkSoFileIsReady: verification failed");
           return false;
@@ -103,7 +102,7 @@ public class KandianReportSoLoader
   
   private static boolean copyFile(String paramString1, String paramString2)
   {
-    boolean bool1 = bbdx.d(paramString1, paramString2);
+    boolean bool1 = bdcs.d(paramString1, paramString2);
     boolean bool2;
     if (!bool1)
     {
@@ -152,7 +151,7 @@ public class KandianReportSoLoader
       }
       paramString1 = (String)localObject;
       if (!((File)localObject).exists()) {
-        paramString1 = bbdx.a(paramString2);
+        paramString1 = bdcs.a(paramString2);
       }
       if (localFile.getAbsolutePath().toString().equals(paramString1.getAbsolutePath().toString())) {
         return true;
@@ -185,7 +184,7 @@ public class KandianReportSoLoader
     {
       try
       {
-        bhvy.a("kd_fc_so_copy", Boolean.valueOf(false));
+        bjxj.a("kd_fc_so_copy", Boolean.valueOf(false));
         JSONArray localJSONArray = (JSONArray)new JSONObject(TaskOfflineUtils.readInputStreamAsString(new FileInputStream(configDownloadPath))).get("so_name");
         if ((localJSONArray != null) && (localJSONArray.length() > 0))
         {
@@ -196,8 +195,8 @@ public class KandianReportSoLoader
             bool = false;
             return bool;
           }
-          String str1 = nap.a(configDownloadPath);
-          String str2 = nap.a(configLoadPath);
+          String str1 = ndl.a(configDownloadPath);
+          String str2 = ndl.a(configLoadPath);
           logAndReport("so config copy success: " + str1 + " " + str2);
           if (str1 != null)
           {
@@ -216,8 +215,8 @@ public class KandianReportSoLoader
                 bool = false;
                 continue;
               }
-              str2 = nap.a(str3);
-              str1 = nap.a(str1);
+              str2 = ndl.a(str3);
+              str1 = ndl.a(str1);
               logAndReport("so copy success: " + str2 + " " + str1);
               if (str2 == null) {
                 break label385;
@@ -227,7 +226,7 @@ public class KandianReportSoLoader
               }
               break label385;
             }
-            bhvy.a("kd_fc_so_copy", Boolean.valueOf(true));
+            bjxj.a("kd_fc_so_copy", Boolean.valueOf(true));
             bool = true;
             continue;
           }
@@ -260,13 +259,13 @@ public class KandianReportSoLoader
   
   public static void downLoadSoFiles(Runnable paramRunnable)
   {
-    if (((Boolean)bhvy.a("qq_is_reinstall", Boolean.valueOf(true))).booleanValue()) {
-      bhvy.a("qq_is_reinstall", Boolean.valueOf(false));
+    if (((Boolean)bjxj.a("qq_is_reinstall", Boolean.valueOf(true))).booleanValue()) {
+      bjxj.a("qq_is_reinstall", Boolean.valueOf(false));
     }
     try
     {
       if (new File(configDownloadPath).exists()) {
-        bhvy.a("kd_fc_so_download", Boolean.valueOf(true));
+        bjxj.a("kd_fc_so_download", Boolean.valueOf(true));
       }
       QLog.d("kandianreport.KandianReportSoLoader", 1, "download so files now");
       TaskOfflineUtils.checkUpdate("3454", 1, new KandianReportSoLoader.1(paramRunnable));
@@ -318,7 +317,6 @@ public class KandianReportSoLoader
   
   public static void loadSoFiles(Runnable paramRunnable)
   {
-    int i = 0;
     for (;;)
     {
       try
@@ -334,7 +332,7 @@ public class KandianReportSoLoader
       {
         QLog.d("kandianreport.KandianReportSoLoader", 1, "load so files fail " + paramRunnable.getMessage());
         TaskException.reportSOException("load so files fail " + paramRunnable.getMessage());
-        bbdx.a(SO_DOWNLOAD_DIR);
+        bdcs.a(SO_DOWNLOAD_DIR);
         continue;
       }
       finally {}
@@ -342,77 +340,71 @@ public class KandianReportSoLoader
       if (!checkSoFileIsReady())
       {
         QLog.d("kandianreport.KandianReportSoLoader", 1, "so not ready");
-        bbdx.a(SO_DOWNLOAD_DIR);
+        bdcs.a(SO_DOWNLOAD_DIR);
       }
       else
       {
         QLog.d("kandianreport.KandianReportSoLoader", 1, "so ready, now load so");
         boolean bool = new File(configDownloadPath).exists();
         logAndReport("config find result " + bool);
-        if (bool) {
-          break;
-        }
-        QLog.d("kandianreport.KandianReportSoLoader", 1, "configDownloadPath not exists");
-        bbdx.a(SO_DOWNLOAD_DIR);
-      }
-    }
-    JSONArray localJSONArray = (JSONArray)new JSONObject(TaskOfflineUtils.readInputStreamAsString(new FileInputStream(configDownloadPath))).get("so_name");
-    if (localJSONArray != null)
-    {
-      int j = localJSONArray.length();
-      if (j <= 0) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        System.loadLibrary("c++_shared");
-        if (i < localJSONArray.length())
+        if (!bool)
         {
-          str3 = localJSONArray.getString(i);
-          StringBuilder localStringBuilder = new StringBuilder().append(SO_LOAD_DIR).append("/");
-          if (!AppSetting.b) {
-            break label581;
-          }
-          String str1 = "arm64-v8a";
-          str1 = str1 + "/" + str3;
-          if (!bbdx.a(str1))
+          QLog.d("kandianreport.KandianReportSoLoader", 1, "configDownloadPath not exists");
+          bdcs.a(SO_DOWNLOAD_DIR);
+        }
+        else
+        {
+          JSONArray localJSONArray = (JSONArray)new JSONObject(TaskOfflineUtils.readInputStreamAsString(new FileInputStream(configDownloadPath))).get("so_name");
+          if (localJSONArray != null)
           {
-            if (!copyFile(SO_DOWNLOAD_DIR + "/" + str3, str1))
-            {
-              QLog.d("kandianreport.KandianReportSoLoader", 1, "load so copy fail " + str3);
-              bbdx.a(SO_DOWNLOAD_DIR);
+            int i = localJSONArray.length();
+            if (i > 0) {
+              try
+              {
+                System.loadLibrary("c++_shared");
+                i = 0;
+                for (;;)
+                {
+                  if (i >= localJSONArray.length()) {
+                    break label499;
+                  }
+                  String str1 = localJSONArray.getString(i);
+                  String str2 = SO_LOAD_DIR + "/" + "armeabi-v7a" + "/" + str1;
+                  if (!bdcs.a(str2))
+                  {
+                    if (copyFile(SO_DOWNLOAD_DIR + "/" + str1, str2)) {
+                      break;
+                    }
+                    QLog.d("kandianreport.KandianReportSoLoader", 1, "load so copy fail " + str1);
+                    bdcs.a(SO_DOWNLOAD_DIR);
+                  }
+                  System.load(str2);
+                  QLog.d("kandianreport.KandianReportSoLoader", 1, "load so success " + str2);
+                  i += 1;
+                }
+              }
+              catch (Throwable localThrowable)
+              {
+                for (;;)
+                {
+                  QLog.d("kandianreport.KandianReportSoLoader", 1, "load c++_shared fail " + localThrowable.getMessage());
+                  TaskException.reportSOException("load c++_shared fail " + localThrowable.getMessage());
+                  continue;
+                  QLog.d("kandianreport.KandianReportSoLoader", 1, "load so copy success " + localThrowable);
+                }
+                label499:
+                isSoFileLoad = true;
+                nrt.a(null, "", "0X80099E1", "0X80099E1", 0, 0, "", "", "", "load so success", false);
+              }
             }
           }
-          else
-          {
-            System.load(str1);
-            QLog.d("kandianreport.KandianReportSoLoader", 1, "load so success " + str1);
-            i += 1;
-            continue;
+          soVersion = TaskOfflineUtils.checkOffLineConfig("3454", 1).version;
+          logAndReport("so load success");
+          if (paramRunnable != null) {
+            paramRunnable.run();
           }
         }
       }
-      catch (Throwable localThrowable)
-      {
-        String str3;
-        QLog.d("kandianreport.KandianReportSoLoader", 1, "load c++_shared fail " + localThrowable.getMessage());
-        TaskException.reportSOException("load c++_shared fail " + localThrowable.getMessage());
-        continue;
-        QLog.d("kandianreport.KandianReportSoLoader", 1, "load so copy success " + str3);
-        continue;
-        isSoFileLoad = true;
-        nol.a(null, "", "0X80099E1", "0X80099E1", 0, 0, "", "", "", "load so success", false);
-      }
-      soVersion = TaskOfflineUtils.checkOffLineConfig("3454", 1).version;
-      logAndReport("so load success");
-      if (paramRunnable == null) {
-        break;
-      }
-      paramRunnable.run();
-      break;
-      label581:
-      String str2 = "armeabi-v7a";
     }
   }
   
@@ -422,12 +414,12 @@ public class KandianReportSoLoader
     {
       QLog.d("kandianreport.KandianReportSoLoader", 1, paramString);
       HashMap localHashMap = new HashMap();
-      AppRuntime localAppRuntime = onh.a();
+      AppRuntime localAppRuntime = ors.a();
       if (localAppRuntime != null) {
         localHashMap.put("uin", localAppRuntime.getAccount());
       }
       localHashMap.put("log", paramString);
-      axrn.a(BaseApplicationImpl.getContext()).a(null, "kandianreportdataframe", true, 1L, 0L, localHashMap, null);
+      azmz.a(BaseApplicationImpl.getContext()).a(null, "kandianreportdataframe", true, 1L, 0L, localHashMap, null);
       TaskException.reportException(paramString);
     }
   }
@@ -463,7 +455,7 @@ public class KandianReportSoLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.KandianReportSoLoader
  * JD-Core Version:    0.7.0.1
  */

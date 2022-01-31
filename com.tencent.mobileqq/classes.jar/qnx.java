@@ -1,31 +1,23 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
 
-class qnx
-  implements DialogInterface.OnClickListener
+public final class qnx
+  implements Parcelable.Creator<WeishiRedDotInfo>
 {
-  qnx(qnv paramqnv, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public WeishiRedDotInfo a(Parcel paramParcel)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!qnv.a(this.jdField_a_of_type_Qnv)) {}
-    }
-    while (!(qnv.a(this.jdField_a_of_type_Qnv) instanceof Activity))
-    {
-      return;
-      this.jdField_a_of_type_Qnv.b();
-      return;
-    }
-    oar.b(qnv.a(this.jdField_a_of_type_Qnv));
-    oai.a(qnv.a(this.jdField_a_of_type_Qnv), qnv.a(this.jdField_a_of_type_Qnv).o, qnv.a(this.jdField_a_of_type_Qnv).p, "");
+    return new WeishiRedDotInfo(paramParcel);
+  }
+  
+  public WeishiRedDotInfo[] a(int paramInt)
+  {
+    return new WeishiRedDotInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qnx
  * JD-Core Version:    0.7.0.1
  */

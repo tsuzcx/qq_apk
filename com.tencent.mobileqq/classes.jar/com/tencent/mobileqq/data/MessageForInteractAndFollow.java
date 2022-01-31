@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import annb;
-import aykk;
+import apei;
+import baig;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -12,7 +12,7 @@ public class MessageForInteractAndFollow
   public static final int TYPE_FOLLOW = 2;
   public static final int TYPE_INTERACT = 1;
   public static final int TYPE_MOMENT = 3;
-  public aykk context;
+  public baig context;
   public int msgBoxUnreadCount;
   public String rawContext;
   public long timeStamp;
@@ -27,7 +27,7 @@ public class MessageForInteractAndFollow
     this.rawContext = paramObjectInput.readUTF();
     this.timeStamp = paramObjectInput.readLong();
     this.time = this.timeStamp;
-    this.context = annb.a(this.rawContext, 14);
+    this.context = apei.a(this.rawContext, 14);
   }
   
   private void writeExternal(ObjectOutput paramObjectOutput)
@@ -449,7 +449,7 @@ public class MessageForInteractAndFollow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForInteractAndFollow
  * JD-Core Version:    0.7.0.1
  */

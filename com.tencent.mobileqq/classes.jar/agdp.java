@@ -1,49 +1,16 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class agdp
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  agdp(agdl paramagdl) {}
+  agdp(agdi paramagdi) {}
   
-  public void onClick(View paramView)
-  {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onClick, id = " + i);
-    }
-    switch (i)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_Agep == null);
-      ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Agep.a.msg);
-      return;
-    } while ((this.a.jdField_a_of_type_Agep == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg == null) || (!(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg instanceof AbsShareMsg)));
-    paramView = (AbsShareMsg)this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
-    localIntent.putExtra("forward_type", -3);
-    localIntent.putExtra("stuctmsg_bytes", paramView.getBytes());
-    localIntent.putExtra("is_need_show_sources", false);
-    aqbe.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, 21);
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdp
  * JD-Core Version:    0.7.0.1
  */

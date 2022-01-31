@@ -1,29 +1,22 @@
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class adpn
-  extends acuj
+  implements DialogInterface.OnClickListener
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public int e;
-  public int f;
+  public adpn(RegisterActivity paramRegisterActivity) {}
   
-  public adpn(adpg paramadpg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
+    paramDialogInterface.dismiss();
+    this.a.a.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpn
  * JD-Core Version:    0.7.0.1
  */

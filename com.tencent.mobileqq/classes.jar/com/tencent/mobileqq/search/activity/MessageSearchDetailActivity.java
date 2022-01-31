@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.activity;
 
-import actj;
-import ajvi;
+import aekt;
+import almv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +15,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbcz;
+import bdbt;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
@@ -47,7 +47,7 @@ public class MessageSearchDetailActivity
       }
       return;
     }
-    int i = ((ajvi)this.app.getManager(53)).a(paramString2);
+    int i = ((almv)this.app.getManager(53)).a(paramString2);
     if (i <= 0)
     {
       paramTextView.setText(paramString1);
@@ -55,7 +55,7 @@ public class MessageSearchDetailActivity
     }
     int j = getResources().getDisplayMetrics().widthPixels;
     paramString2 = (RelativeLayout.LayoutParams)((View)paramTextView.getParent()).getLayoutParams();
-    int k = actj.a(207.0F, getResources());
+    int k = aekt.a(207.0F, getResources());
     TextPaint localTextPaint = paramTextView.getPaint();
     float f2 = j - k - localTextPaint.measureText(String.format("(%d人)", new Object[] { Integer.valueOf(i) })) - 4.0F * getResources().getDisplayMetrics().density;
     String str = paramString1;
@@ -114,23 +114,23 @@ public class MessageSearchDetailActivity
       finish();
       return false;
     }
-    super.setContentView(2131558822);
+    super.setContentView(2131558858);
     if (this.b.user.getType() == 3000) {
-      a(bbcz.a(this.app, this.b.user.uin, this.b.user.getType()), this.b.user.uin, this.centerView);
+      a(bdbt.a(this.app, this.b.user.uin, this.b.user.getType()), this.b.user.uin, this.centerView);
     }
     for (;;)
     {
       Object localObject = super.getSupportFragmentManager();
       paramBundle = MessageSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131364705, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131364784, paramBundle);
       ((FragmentTransaction)localObject).commit();
       this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver = new MessageSearchDetailActivity.CancelReceiver(this);
       paramBundle = new IntentFilter();
       paramBundle.addAction("com.tencent.mobileqq.search.cancel");
       super.registerReceiver(this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver, paramBundle);
       return true;
-      super.setTitle(bbcz.a(this.app, this.b.user.uin, this.b.user.getType()));
+      super.setTitle(bdbt.a(this.app, this.b.user.uin, this.b.user.getType()));
     }
   }
   
@@ -146,7 +146,7 @@ public class MessageSearchDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MessageSearchDetailActivity
  * JD-Core Version:    0.7.0.1
  */

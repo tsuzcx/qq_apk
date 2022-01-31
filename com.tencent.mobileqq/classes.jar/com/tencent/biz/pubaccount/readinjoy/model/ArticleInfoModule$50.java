@@ -1,23 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import osj;
-import ozo;
+import oxb;
+import pew;
 
 public class ArticleInfoModule$50
   implements Runnable
 {
-  public ArticleInfoModule$50(ozo paramozo, ArrayList paramArrayList, List paramList1, List paramList2) {}
+  public ArticleInfoModule$50(pew parampew, String paramString, int paramInt) {}
   
   public void run()
   {
-    osj.a().a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilList, this.b);
+    oxb.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.50
  * JD-Core Version:    0.7.0.1
  */

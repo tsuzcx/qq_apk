@@ -1,55 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.jsp.WebRecordApiPlugin;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.widget.ImageView;
 
-class arpc
-  extends Handler
+public abstract interface arpc
 {
-  arpc(arpb paramarpb, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(int paramInt);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 16711687: 
-      this.a.b(0);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
-      }
-      arpb.a(this.a).c();
-      bbcf.b(2131230744, false);
-      bbcf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
-    case 1: 
-      this.a.b(1);
-      return;
-    case 16711689: 
-      localObject = (JSONObject)paramMessage.obj;
-      paramMessage = ((JSONObject)localObject).optString("msg", "");
-      localObject = ((JSONObject)localObject).optString("path", "");
-      this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':0,'recordID':'" + (String)localObject + "','result':" + paramMessage + "}" });
-      return;
-    }
-    Object localObject = (JSONObject)paramMessage.obj;
-    paramMessage = ((JSONObject)localObject).optString("msg", "");
-    localObject = ((JSONObject)localObject).optString("path", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':1,'recordID':'" + (String)localObject + "','msg':'" + paramMessage + "'}" });
-  }
+  public abstract void a(ImageView paramImageView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpc
  * JD-Core Version:    0.7.0.1
  */

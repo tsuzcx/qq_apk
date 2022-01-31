@@ -1,13 +1,23 @@
-import android.graphics.drawable.BitmapDrawable;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-public class bhvs
+class bhvs
+  extends View.AccessibilityDelegate
 {
-  public BitmapDrawable a;
-  public String a;
+  bhvs(bhvq parambhvq) {}
+  
+  @TargetApi(14)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    if (paramInt != 32) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhvs
  * JD-Core Version:    0.7.0.1
  */

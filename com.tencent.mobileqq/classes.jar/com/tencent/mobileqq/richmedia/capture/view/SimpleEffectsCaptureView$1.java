@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import avte;
-import avwh;
+import axld;
+import axog;
 import com.tencent.qphone.base.util.QLog;
 
 class SimpleEffectsCaptureView$1
@@ -11,7 +11,7 @@ class SimpleEffectsCaptureView$1
   
   public void run()
   {
-    SimpleEffectsCaptureView.a(this.this$0, avte.b());
+    SimpleEffectsCaptureView.a(this.this$0, axld.b());
     if (SimpleEffectsCaptureView.a(this.this$0) != null) {
       SimpleEffectsCaptureView.a(this.this$0).a(SimpleEffectsCaptureView.a(this.this$0));
     }
@@ -26,7 +26,7 @@ class SimpleEffectsCaptureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView.1
  * JD-Core Version:    0.7.0.1
  */

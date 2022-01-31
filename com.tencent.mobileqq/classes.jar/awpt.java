@@ -1,53 +1,25 @@
-public class awpt
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+
+class awpt
+  implements URLDrawable.URLDrawableListener
 {
-  public static final int[] a = { 1, 2, 3, 4 };
-  public static final int[] b = { 6 };
-  public static final int[] c = { 7 };
+  awpt(awpn paramawpn) {}
   
-  public static int a(int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    int k = 0;
-    int[] arrayOfInt = a;
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (arrayOfInt[i] == paramInt)
-      {
-        i = 1;
-        return i;
-      }
-      i += 1;
-    }
-    arrayOfInt = b;
-    j = arrayOfInt.length;
-    i = 0;
-    while (i < j)
-    {
-      if (arrayOfInt[i] == paramInt) {
-        return 2;
-      }
-      i += 1;
-    }
-    arrayOfInt = c;
-    int m = arrayOfInt.length;
-    j = 0;
-    for (;;)
-    {
-      i = k;
-      if (j >= m) {
-        break;
-      }
-      if (arrayOfInt[j] == paramInt) {
-        return 3;
-      }
-      j += 1;
-    }
+    this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awpt
  * JD-Core Version:    0.7.0.1
  */

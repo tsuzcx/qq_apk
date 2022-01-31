@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import avrv;
-import axle;
-import bbfj;
+import axjt;
+import azgk;
+import bdee;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -10,13 +10,13 @@ import com.tencent.qphone.base.util.QLog;
 public class CapturePtvTemplateManager$4
   implements Runnable
 {
-  public CapturePtvTemplateManager$4(avrv paramavrv) {}
+  public CapturePtvTemplateManager$4(axjt paramaxjt) {}
   
   public void run()
   {
     int i = 1;
-    boolean bool1 = axle.c();
-    boolean bool2 = bbfj.d(BaseApplication.getContext());
+    boolean bool1 = azgk.c();
+    boolean bool2 = bdee.d(BaseApplication.getContext());
     if (BaseApplicationImpl.sProcessId == 1) {
       i = 0;
     }
@@ -30,7 +30,7 @@ public class CapturePtvTemplateManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.4
  * JD-Core Version:    0.7.0.1
  */

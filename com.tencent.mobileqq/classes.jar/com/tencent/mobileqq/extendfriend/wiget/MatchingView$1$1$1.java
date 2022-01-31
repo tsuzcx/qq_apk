@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
 import android.view.View;
-import aolo;
+import aqem;
 
 public class MatchingView$1$1$1
   implements Runnable
 {
-  public MatchingView$1$1$1(aolo paramaolo) {}
+  public MatchingView$1$1$1(aqem paramaqem) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class MatchingView$1$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.MatchingView.1.1.1
  * JD-Core Version:    0.7.0.1
  */

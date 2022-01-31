@@ -16,7 +16,7 @@ public final class RoomOperate$ReqRoomQuery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.location.RoomOperate.ReqRoomQuery
  * JD-Core Version:    0.7.0.1
  */

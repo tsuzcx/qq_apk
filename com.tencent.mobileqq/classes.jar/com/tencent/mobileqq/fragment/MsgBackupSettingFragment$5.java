@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import asoi;
+import aufh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupEndPoint;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy;
@@ -23,12 +23,12 @@ class MsgBackupSettingFragment$5
     MsgBackupSettingFragment.a(this.this$0, new MsgBackupEndPoint());
     MsgBackupSettingFragment.b(this.this$0, new MsgBackupEndPoint());
     int i = localMsgBackupJniProxy.start(l, MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.b(this.this$0));
-    QLog.d("MsgBackup", 1, "after start called with ret = " + i + ", ipv4 = " + asoi.a(MsgBackupSettingFragment.a(this.this$0).ipv4) + ", port = " + MsgBackupSettingFragment.a(this.this$0).port);
+    QLog.d("MsgBackup", 1, "after start called with ret = " + i + ", ipv4 = " + aufh.a(MsgBackupSettingFragment.a(this.this$0).ipv4) + ", port = " + MsgBackupSettingFragment.a(this.this$0).port);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MsgBackupSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

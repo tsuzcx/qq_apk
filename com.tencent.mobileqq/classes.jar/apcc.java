@@ -1,19 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class apcc
-  extends apbu
+  implements DialogInterface.OnClickListener
 {
-  public apcc(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  apcc(apbu paramapbu) {}
   
-  protected String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "StateRefuseByPC";
+    paramDialogInterface.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apcc
  * JD-Core Version:    0.7.0.1
  */

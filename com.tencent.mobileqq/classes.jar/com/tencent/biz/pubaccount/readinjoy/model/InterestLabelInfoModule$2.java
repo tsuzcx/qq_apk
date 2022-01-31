@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import pav;
+import pge;
 
 public class InterestLabelInfoModule$2
   implements Runnable
@@ -13,20 +13,20 @@ public class InterestLabelInfoModule$2
   {
     if ((this.a != null) && (!this.a.isEmpty()))
     {
-      pav.a(this.this$0).clear();
+      pge.a(this.this$0).clear();
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
         this.this$0.a(localInterestLabelInfo);
-        pav.a(this.this$0).put(Integer.valueOf(localInterestLabelInfo.mInterestLabelID), localInterestLabelInfo);
+        pge.a(this.this$0).put(Integer.valueOf(localInterestLabelInfo.mInterestLabelID), localInterestLabelInfo);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.2
  * JD-Core Version:    0.7.0.1
  */

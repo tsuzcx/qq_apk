@@ -4,75 +4,75 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import stl;
-import stt;
-import stz;
-import sui;
-import suj;
-import suy;
-import suz;
-import tcz;
-import ved;
+import uid;
+import uil;
+import uir;
+import uja;
+import ujb;
+import ujq;
+import ujr;
+import urr;
+import wsv;
 
 public class StorySingleFileDownloader$2
   implements Runnable
 {
-  public StorySingleFileDownloader$2(suy paramsuy, String paramString, int paramInt, suz paramsuz, boolean paramBoolean) {}
+  public StorySingleFileDownloader$2(ujq paramujq, String paramString, int paramInt, ujr paramujr, boolean paramBoolean) {}
   
   public void run()
   {
-    String str = sui.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    if (suy.a(this.this$0).containsKey(str))
+    String str = uja.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if (ujq.a(this.this$0).containsKey(str))
     {
-      ved.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s is running , wait", new Object[] { str });
+      wsv.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s is running , wait", new Object[] { str });
       return;
     }
-    Object localObject1 = suj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false, false);
+    Object localObject1 = ujb.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false, false);
     if ((localObject1 != null) && (((File)localObject1).exists()))
     {
-      ved.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s before , no need to download again", new Object[] { str });
-      suy.b(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Suz);
+      wsv.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s before , no need to download again", new Object[] { str });
+      ujq.b(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ujr);
       return;
     }
-    ved.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s start now! cancelOtherTask :%s", new Object[] { str, Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    wsv.d("Q.qqstory.download:StorySingleFileDownloader", "download task :%s start now! cancelOtherTask :%s", new Object[] { str, Boolean.valueOf(this.jdField_a_of_type_Boolean) });
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject1 = suy.a(this.this$0).values().iterator();
+      localObject1 = ujq.a(this.this$0).values().iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (sui)((Iterator)localObject1).next();
-        suy.a(this.this$0).a((sui)localObject2);
-        Object localObject3 = ((sui)localObject2).jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
-        if ((localObject3 != null) && ((localObject3 instanceof suz)))
+        localObject2 = (uja)((Iterator)localObject1).next();
+        ujq.a(this.this$0).a((uja)localObject2);
+        Object localObject3 = ((uja)localObject2).jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
+        if ((localObject3 != null) && ((localObject3 instanceof ujr)))
         {
-          suy.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (suz)localObject3);
-          ved.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!   because task :%s start", new Object[] { ((sui)localObject2).jdField_a_of_type_JavaLangString, str });
+          ujq.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (ujr)localObject3);
+          wsv.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!   because task :%s start", new Object[] { ((uja)localObject2).jdField_a_of_type_JavaLangString, str });
         }
       }
-      suy.a(this.this$0).clear();
+      ujq.a(this.this$0).clear();
     }
-    localObject1 = sui.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    Object localObject2 = ((stl)tcz.a(28)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    ((sui)localObject1).d = ((stt)localObject2).b;
-    ((sui)localObject1).jdField_a_of_type_Boolean = ((stt)localObject2).jdField_a_of_type_Boolean;
-    ((sui)localObject1).jdField_f_of_type_Int = ((stt)localObject2).c;
-    ((sui)localObject1).jdField_a_of_type_JavaUtilMap.put("DOWNLOAD_TASK_KEY_LISTENER", this.jdField_a_of_type_Suz);
-    if (((sui)localObject1).jdField_a_of_type_Boolean)
+    localObject1 = uja.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    Object localObject2 = ((uid)urr.a(28)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ((uja)localObject1).d = ((uil)localObject2).b;
+    ((uja)localObject1).jdField_a_of_type_Boolean = ((uil)localObject2).jdField_a_of_type_Boolean;
+    ((uja)localObject1).jdField_f_of_type_Int = ((uil)localObject2).c;
+    ((uja)localObject1).jdField_a_of_type_JavaUtilMap.put("DOWNLOAD_TASK_KEY_LISTENER", this.jdField_a_of_type_Ujr);
+    if (((uja)localObject1).jdField_a_of_type_Boolean)
     {
-      localObject2 = new File(((sui)localObject1).jdField_f_of_type_JavaLangString);
+      localObject2 = new File(((uja)localObject1).jdField_f_of_type_JavaLangString);
       if (((File)localObject2).exists())
       {
         ((File)localObject2).delete();
-        ved.d("Q.qqstory.download:StorySingleFileDownloader", "%s - %d found orphan tmp , delete it", new Object[] { ((sui)localObject1).b, Integer.valueOf(((sui)localObject1).jdField_a_of_type_Int) });
+        wsv.d("Q.qqstory.download:StorySingleFileDownloader", "%s - %d found orphan tmp , delete it", new Object[] { ((uja)localObject1).b, Integer.valueOf(((uja)localObject1).jdField_a_of_type_Int) });
       }
     }
-    suy.a(this.this$0).a((sui)localObject1, this.this$0);
-    suy.a(this.this$0).put(str, localObject1);
+    ujq.a(this.this$0).a((uja)localObject1, this.this$0);
+    ujq.a(this.this$0).put(str, localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader.2
  * JD-Core Version:    0.7.0.1
  */

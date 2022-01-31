@@ -1,22 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class amjj
-  implements DialogInterface.OnClickListener
+public class amjj
 {
-  amjj(amji paramamji) {}
+  public void a() {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (amji.a(this.a).isShowing()) {
-      amji.a(this.a).dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1000: 
+      a();
+      return;
     }
-    amkf.a(amji.a(this.a), true);
+    b();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjj
  * JD-Core Version:    0.7.0.1
  */

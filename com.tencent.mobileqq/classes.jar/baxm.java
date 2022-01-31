@@ -1,80 +1,41 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.res.Resources;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import java.util.ArrayList;
 
 public class baxm
+  extends baxq
 {
-  public static Dialog a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
+  public int a;
+  public String a;
+  public ArrayList<basp> a;
+  public byte[] a;
+  public ArrayList<basp> b;
+  public byte[] b;
+  
+  public baxm()
   {
-    Object localObject2 = paramContext.getResources().getString(paramInt1);
-    Object localObject1 = paramContext.getResources().getString(paramInt2);
-    String str2 = paramContext.getResources().getString(paramInt3);
-    String str1 = paramContext.getResources().getString(paramInt4);
-    paramContext = new Dialog(paramContext, 2131755791);
-    paramContext.setContentView(2131558883);
-    TextView localTextView = (TextView)paramContext.findViewById(2131365150);
-    if (localTextView != null)
-    {
-      localTextView.setText((CharSequence)localObject2);
-      localTextView.setContentDescription((CharSequence)localObject2);
-    }
-    localObject2 = (TextView)paramContext.findViewById(2131365146);
-    if (localObject2 != null)
-    {
-      ((TextView)localObject2).setText((CharSequence)localObject1);
-      ((TextView)localObject2).setContentDescription((CharSequence)localObject1);
-    }
-    localObject1 = (TextView)paramContext.findViewById(2131365135);
-    if (localObject1 != null)
-    {
-      ((TextView)localObject1).setText(str2);
-      ((TextView)localObject1).setContentDescription(str2);
-      if (paramOnClickListener1 != null) {
-        ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
-      }
-    }
-    paramOnClickListener1 = (TextView)paramContext.findViewById(2131365141);
-    if (paramOnClickListener1 != null)
-    {
-      paramOnClickListener1.setText(str1);
-      paramOnClickListener1.setContentDescription(str1);
-      if (paramOnClickListener2 != null) {
-        paramOnClickListener1.setOnClickListener(paramOnClickListener2);
-      }
-    }
-    return paramContext;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static Dialog a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
+  public String toString()
   {
-    paramContext = new Dialog(paramContext, 2131755791);
-    paramContext.setContentView(2131558883);
-    TextView localTextView = (TextView)paramContext.findViewById(2131365150);
-    if (localTextView != null) {
-      localTextView.setText(paramString1);
-    }
-    paramString1 = (TextView)paramContext.findViewById(2131365146);
-    if (paramString1 != null) {
-      paramString1.setText(paramString2);
-    }
-    paramString1 = (TextView)paramContext.findViewById(2131365135);
-    if (paramString1 != null) {
-      paramString1.setText(2131690495);
-    }
-    paramString1 = (TextView)paramContext.findViewById(2131365141);
-    if (paramString1 != null) {
-      paramString1.setText(2131690572);
-    }
-    paramContext.setOnDismissListener(paramOnDismissListener);
-    return paramContext;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" urlParam:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" msgUkey:");
+    localStringBuilder.append(this.jdField_b_of_type_ArrayOfByte);
+    localStringBuilder.append(" ipList:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(" mIpv6List:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList);
+    localStringBuilder.append(" resId:");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baxm
  * JD-Core Version:    0.7.0.1
  */

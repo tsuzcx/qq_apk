@@ -1,36 +1,100 @@
-import android.media.MediaPlayer;
-import com.tencent.av.VideoController;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
 import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.parsers.DocumentBuilder;
+import org.apache.http.Header;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
-public class ldg
-  extends lds
+class ldg
+  extends lcl
 {
-  public ldg(VideoController paramVideoController)
+  ldg(lde paramlde, List paramList, ldq paramldq, Long paramLong) {}
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, String paramString)
   {
-    super(paramVideoController);
+    paramArrayOfHeader = null;
+    try
+    {
+      localObject = this.jdField_a_of_type_Lde.a.parse(new InputSource(new StringReader(paramString)));
+      paramArrayOfHeader = (Header[])localObject;
+    }
+    catch (SAXException localSAXException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        NodeList localNodeList;
+        a(new TranslateError(localSAXException), paramString);
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        a(new TranslateError(localIOException), paramString);
+        continue;
+        if (this.jdField_a_of_type_JavaUtilList.get(paramInt) != null)
+        {
+          paramString.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+        }
+        else
+        {
+          paramString.add("");
+          continue;
+          localIOException.add(Language.AUTO_DETECT);
+        }
+      }
+      this.jdField_a_of_type_Ldq.a(localIOException, paramString, this.jdField_a_of_type_JavaLangLong);
+    }
+    paramString = new ArrayList();
+    localObject = new ArrayList();
+    if (paramArrayOfHeader != null)
+    {
+      localNodeList = paramArrayOfHeader.getElementsByTagName("TranslatedText");
+      paramArrayOfHeader = paramArrayOfHeader.getElementsByTagName("From");
+      paramInt = 0;
+      for (;;)
+      {
+        if (paramInt >= localNodeList.getLength()) {
+          break label270;
+        }
+        Node localNode = localNodeList.item(paramInt);
+        if (localNode.getFirstChild() == null) {
+          break;
+        }
+        paramString.add(localNode.getFirstChild().getNodeValue());
+        localNode = paramArrayOfHeader.item(paramInt);
+        if (localNode.getFirstChild() == null) {
+          break label256;
+        }
+        ((List)localObject).add(Language.fromString(localNode.getFirstChild().getNodeValue()));
+        paramInt += 1;
+      }
+    }
+    label256:
+    label270:
+    return;
   }
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void a(Throwable paramThrowable, String paramString)
   {
-    QLog.w(VideoController.a, 1, "onCompletion, onClose, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
+    if (QLog.isColorLevel()) {
+      QLog.e("Translator", 2, "[Microsoft] onFailure:" + paramThrowable);
     }
-    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().n())
-    {
-      lcg.d(VideoController.a, "onCompletion onClose is not Closing2");
-      this.jdField_a_of_type_Long = 0L;
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvVideoController.a().d, 217);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(217);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_ComTencentAvVideoController.a().d, this.jdField_a_of_type_ComTencentAvVideoController.a().y);
-    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Ldq.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,87 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.content.Context;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import java.util.HashSet;
+import java.util.Set;
 
-class uxa
-  extends ste<uwq, upt>
+public class uxa
+  extends RecyclerView.ItemDecoration
 {
-  uxa(uwq paramuwq)
+  static final Set<Integer> a;
+  protected int a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e;
+  
+  static
   {
-    super(paramuwq);
+    jdField_a_of_type_JavaUtilSet = new HashSet();
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
   }
   
-  public void a(@NonNull uwq paramuwq, @NonNull upt paramupt)
+  public uxa(Context paramContext)
   {
-    Object localObject = paramuwq.a(paramupt.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (paramupt.jdField_a_of_type_Boolean))
-    {
-      ved.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramupt.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramupt.jdField_a_of_type_Boolean) });
+    this.jdField_a_of_type_Int = aekt.a(5.0F, paramContext.getResources());
+    this.b = aekt.a(16.0F, paramContext.getResources());
+    this.c = aekt.a(8.5F, paramContext.getResources());
+    this.d = aekt.a(3.0F, paramContext.getResources());
+    this.e = aekt.a(3.0F, paramContext.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
+    paramView = paramRecyclerView.getAdapter();
+    if ((k < 0) || (k >= paramView.getItemCount())) {
       return;
     }
-    if (!(localObject instanceof uvh))
+    int m = paramView.getItemViewType(k);
+    if (paramView.getItemCount() > k + 1)
     {
-      ved.e(this.TAG, "that is error type!");
+      int n = paramView.getItemViewType(k + 1);
+      int i = 0;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
+        i = 1;
+      }
+      int j = i;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
+        j = i + 1;
+      }
+      if (j == 1)
+      {
+        paramRect.right = this.d;
+        return;
+      }
+      if (j == 2)
+      {
+        paramRect.right = this.e;
+        return;
+      }
+    }
+    if (m == 2)
+    {
+      paramRect.right = this.b;
       return;
     }
-    localObject = (uvh)localObject;
-    ((CommentLikeFeedItem)((uvh)localObject).a).mLikeCount = paramupt.b;
-    ((uvh)localObject).b(paramupt.jdField_a_of_type_JavaUtilList, true);
-    uwq.a(paramuwq).b(paramupt.jdField_a_of_type_JavaLangString);
+    if (k == paramState.getItemCount() - 1)
+    {
+      paramRect.right = this.c;
+      return;
+    }
+    paramRect.right = this.jdField_a_of_type_Int;
   }
-  
-  public Class acceptEventClass()
-  {
-    return upt.class;
-  }
-  
-  public void b(@NonNull uwq paramuwq, @NonNull upt paramupt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxa
  * JD-Core Version:    0.7.0.1
  */

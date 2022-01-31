@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akxy;
-import akye;
-import alae;
-import alal;
-import alan;
-import alfd;
-import alxs;
+import amoo;
+import amou;
+import amqu;
+import amrb;
+import amrd;
+import amvt;
+import anor;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
@@ -14,41 +14,41 @@ import mqq.os.MqqHandler;
 public class ARTransferPromotionRenderable$7
   implements Runnable
 {
-  public ARTransferPromotionRenderable$7(alal paramalal) {}
+  public ARTransferPromotionRenderable$7(amrb paramamrb) {}
   
   public void run()
   {
-    if (alal.a(this.this$0) == 6)
+    if (amrb.a(this.this$0) == 6)
     {
-      if ((alal.a(this.this$0) != null) && (alal.a(this.this$0)))
+      if ((amrb.a(this.this$0) != null) && (amrb.a(this.this$0)))
       {
-        alal.a(this.this$0).b(1, 0);
-        alal.a(this.this$0, false);
+        amrb.a(this.this$0).b(1, 0);
+        amrb.a(this.this$0, false);
       }
-      if ((alal.a(this.this$0) != null) && (alal.b(this.this$0))) {
-        alal.a(this.this$0).a();
+      if ((amrb.a(this.this$0) != null) && (amrb.b(this.this$0))) {
+        amrb.a(this.this$0).a();
       }
-      if (alal.a(this.this$0) != null) {
-        alal.a(this.this$0).a(alal.a(this.this$0).a);
+      if (amrb.a(this.this$0) != null) {
+        amrb.a(this.this$0).a(amrb.a(this.this$0).a);
       }
-      if (alal.a(this.this$0) == 6) {
-        alal.a(this.this$0, 7);
+      if (amrb.a(this.this$0) == 6) {
+        amrb.a(this.this$0, 7);
       }
-      alal.a(this.this$0).a();
-      if (alal.a(this.this$0) != null) {
+      amrb.a(this.this$0).a();
+      if (amrb.a(this.this$0) != null) {
         ThreadManager.getUIHandler().post(new ARTransferPromotionRenderable.7.1(this));
       }
     }
-    synchronized (alal.a(this.this$0))
+    synchronized (amrb.a(this.this$0))
     {
-      alal.a(this.this$0).clear();
-      alal.a(this.this$0).d();
-      alal.a(this.this$0);
-      if (alal.a(this.this$0) != null)
+      amrb.a(this.this$0).clear();
+      amrb.a(this.this$0).d();
+      amrb.a(this.this$0);
+      if (amrb.a(this.this$0) != null)
       {
-        alal.a(this.this$0).b();
-        alal.a(this.this$0).a();
-        alal.a(this.this$0, null);
+        amrb.a(this.this$0).b();
+        amrb.a(this.this$0).a();
+        amrb.a(this.this$0, null);
       }
       return;
     }
@@ -56,7 +56,7 @@ public class ARTransferPromotionRenderable$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.7
  * JD-Core Version:    0.7.0.1
  */

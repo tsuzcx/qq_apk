@@ -1,19 +1,16 @@
 public class ayjx
+  implements ayjj
 {
-  public int a;
-  public int b;
-  public int c;
+  public static final String a = ayjx.class.getSimpleName();
   
-  public ayjx(int paramInt1, int paramInt2, int paramInt3)
+  public static boolean a(int paramInt)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    return (paramInt > 0) && (paramInt < 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayjx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.qphone.base.util.QLog;
 
-public class bcvn
-  implements DialogInterface.OnDismissListener
+final class bcvn
+  implements DownloadParams.DecodeHandler
 {
-  public bcvn(ShareActionSheetV2 paramShareActionSheetV2) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareActionSheetV2", 2, "onDismiss() called with: dialog = [" + paramDialogInterface + "] #this = " + Integer.toHexString(System.identityHashCode(this)));
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    ShareActionSheetV2.a(this.a);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onDismiss(paramDialogInterface);
-    }
+    do
+    {
+      do
+      {
+        Object localObject;
+        do
+        {
+          do
+          {
+            return paramDownloadParams;
+            localObject = paramDownloadParams.tag;
+            paramDownloadParams = paramBitmap;
+          } while (!(localObject instanceof int[]));
+          paramDownloadParams = paramBitmap;
+        } while (((int[])localObject).length != 3);
+        paramDownloadParams = (int[])localObject;
+        if (paramDownloadParams[0] == 0) {
+          paramDownloadParams[0] = paramBitmap.getWidth();
+        }
+        if (paramDownloadParams[1] == 0) {
+          paramDownloadParams[1] = paramBitmap.getHeight();
+        }
+        paramBitmap = bdda.c(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+        paramDownloadParams = paramBitmap;
+      } while (paramBitmap != null);
+      paramDownloadParams = paramBitmap;
+    } while (!QLog.isDevelopLevel());
+    QLog.w(bcuq.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcvn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,21 @@
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
 
-public abstract interface bhdc
+class bhdc
+  implements BaselibLoader.OnLoadBaselibListener
 {
-  public abstract void a(int paramInt, View paramView, ViewGroup paramViewGroup);
+  bhdc(bhda parambhda) {}
+  
+  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
+  {
+    if ((paramInt == 0) && (paramBaselibContent != null)) {
+      this.a.a(paramBaselibContent.waServiceJsStr, paramBaselibContent.waServicePath);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhdc
  * JD-Core Version:    0.7.0.1
  */

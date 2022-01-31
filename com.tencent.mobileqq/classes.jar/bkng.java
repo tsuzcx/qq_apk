@@ -1,31 +1,27 @@
-import android.util.Property;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 class bkng
-  extends Property<bknf, Float>
+  implements DialogInterface.OnClickListener
 {
-  bkng(bknf parambknf, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  bkng(bknd parambknd) {}
   
-  public Float a(bknf parambknf)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (parambknf != null) {
-      return Float.valueOf(bknf.a(parambknf));
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(bknf parambknf, Float paramFloat)
-  {
-    if (parambknf != null) {
-      bknf.a(parambknf, paramFloat.floatValue());
+    if (((bkml)this.a.a.get()).b != null) {
+      ((bkml)this.a.a.get()).b.setClickable(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkng
  * JD-Core Version:    0.7.0.1
  */

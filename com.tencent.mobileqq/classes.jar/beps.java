@@ -1,172 +1,250 @@
 import android.app.Activity;
-import android.os.Bundle;
-import android.os.Process;
-import android.os.RemoteException;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class beps
+  implements DialogInterface.OnCancelListener, Handler.Callback
 {
-  private static beps jdField_a_of_type_Beps;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  int a;
+  public bepp a;
+  protected final WeakReference<Activity> a;
+  protected final ArrayList<DialogInterface.OnCancelListener> a;
+  protected final Handler b;
   
-  public static beps a()
+  public beps(Activity paramActivity)
   {
-    if (jdField_a_of_type_Beps == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    this(paramActivity, -1);
+  }
+  
+  public beps(Activity paramActivity, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = new bhow(Looper.getMainLooper(), this);
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    a(paramInt1, paramString, paramInt2, null);
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
     {
-      if (jdField_a_of_type_Beps == null) {
-        jdField_a_of_type_Beps = new beps();
+      if (QLog.isColorLevel()) {
+        QLog.i("QQProgressNotifier", 2, "show baseActivity is null");
       }
-      return jdField_a_of_type_Beps;
+      return;
+    }
+    if (paramOnCancelListener != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramOnCancelListener);
+    }
+    this.b.removeMessages(1);
+    this.b.removeMessages(2);
+    if ((paramInt1 == 0) && (paramInt2 > 0))
+    {
+      paramOnCancelListener = Message.obtain();
+      paramOnCancelListener.what = 1;
+      paramOnCancelListener.arg1 = paramInt1;
+      paramOnCancelListener.arg2 = 0;
+      paramOnCancelListener.obj = paramString;
+      this.b.sendMessageDelayed(paramOnCancelListener, paramInt2);
+      return;
+    }
+    if (this.jdField_a_of_type_Bepp == null)
+    {
+      if (this.jdField_a_of_type_Int > 0) {
+        this.jdField_a_of_type_Bepp = new bepp(localActivity, 0, this.jdField_a_of_type_Int, 17);
+      }
+    }
+    else
+    {
+      label147:
+      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        break label290;
+      }
+      this.jdField_a_of_type_Bepp.setOnCancelListener(null);
+      label165:
+      if (paramInt1 != 0) {
+        break label320;
+      }
+      if ((paramString != null) && (!"".equals(paramString.trim()))) {
+        break label301;
+      }
+      this.jdField_a_of_type_Bepp.a(localActivity.getString(2131719773));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bepp.a(false);
+      this.jdField_a_of_type_Bepp.b(true);
+      if (!localActivity.isFinishing()) {
+        break label312;
+      }
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
+      return;
+      this.jdField_a_of_type_Bepp = new bepp(localActivity, localActivity.getResources().getDimensionPixelSize(2131298914));
+      break label147;
+      label290:
+      this.jdField_a_of_type_Bepp.setOnCancelListener(this);
+      break label165;
+      label301:
+      this.jdField_a_of_type_Bepp.a(paramString);
+    }
+    label312:
+    this.jdField_a_of_type_Bepp.show();
+    return;
+    label320:
+    if ((paramInt1 == 2) || (paramInt1 == 4) || (paramInt1 == 6))
+    {
+      this.jdField_a_of_type_Bepp.a(paramString);
+      this.jdField_a_of_type_Bepp.d(2130839391);
+      this.jdField_a_of_type_Bepp.a(true);
+      this.jdField_a_of_type_Bepp.b(false);
+      if (!this.jdField_a_of_type_Bepp.isShowing())
+      {
+        if (!localActivity.isFinishing()) {
+          break label485;
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
+        }
+      }
+      paramString = Message.obtain();
+      paramString.what = 2;
+      paramString.arg1 = paramInt1;
+      paramOnCancelListener = this.b;
+      if (paramInt2 <= 0) {
+        break label495;
+      }
+    }
+    label427:
+    label485:
+    label495:
+    for (long l = paramInt2;; l = 1000L)
+    {
+      paramOnCancelListener.sendMessageDelayed(paramString, l);
+      return;
+      this.jdField_a_of_type_Bepp.a(paramString);
+      this.jdField_a_of_type_Bepp.d(2130839404);
+      break;
+      this.jdField_a_of_type_Bepp.show();
+      break label427;
     }
   }
   
-  public void a(String paramString, Bundle paramBundle, bepu parambepu)
+  public boolean a()
   {
-    int j = 2;
-    int i = -1;
-    if (TextUtils.isEmpty(paramString)) {}
+    return (this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing());
+  }
+  
+  public void b()
+  {
+    this.b.removeMessages(1);
+    this.b.removeMessages(2);
+    try
+    {
+      if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
+        this.jdField_a_of_type_Bepp.dismiss();
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQProgressNotifier", 2, "show baseActivity is null");
+      }
+      return;
+    }
+    a(paramInt1, localActivity.getString(paramInt2), paramInt3);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
+    }
     do
     {
       do
       {
-        Object localObject;
         do
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  betc.b("MiniAppCmdServlet", "sendCmd cmd=" + paramString);
-                  if ((paramBundle == null) || ("cmd_exit_qq".equals(paramString)))
-                  {
-                    Process.killProcess(Process.myPid());
-                    return;
-                  }
-                  if ("cmd_update_baselib".equals(paramString))
-                  {
-                    if (paramBundle != null) {
-                      paramBundle.getString("version");
-                    }
-                    bete.a().b(new bept(this, parambepu, paramString));
-                    return;
-                  }
-                  if (!"cmd_upload_ark_share_image".equals(paramString)) {
-                    break;
-                  }
-                } while (paramBundle != null);
-                betc.d("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-                return;
-                if (!"cmd_share_ark_async_message".equals(paramString)) {
-                  break;
-                }
-              } while (paramBundle != null);
-              betc.d("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-              return;
-              if ("cmd_dc_report_log_key_data".equals(paramString))
-              {
-                beza.a(paramBundle);
-                return;
-              }
-              if (!"cmd_rebind_engine_channel".equals(paramString)) {
-                break;
-              }
-              if (paramBundle != null) {
-                i = paramBundle.getInt("bundle_key_app_type", -1);
-              }
-              betc.b("MiniAppCmdServlet", "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
-            } while ((i != 0) && (i != 1));
-            paramBundle = new Bundle();
-            localObject = betq.a();
-            if (i == 1) {}
-            for (i = 2;; i = 3)
-            {
-              paramBundle.putParcelable("engineChannel", ((betq)localObject).a(i));
-              if (parambepu == null) {
-                break;
-              }
-              try
-              {
-                parambepu.a(true, paramBundle);
-                return;
-              }
-              catch (RemoteException paramBundle)
-              {
-                betc.d("MiniAppCmdServlet", "cmd response exception. cmd=" + paramString, paramBundle);
-                return;
-              }
-            }
-            if (!"cmd_rebind_engine_channel_new".equals(paramString)) {
-              break;
-            }
-            if (paramBundle != null) {
-              i = paramBundle.getInt("bundle_key_app_type", -1);
-            }
-            betc.b("MiniAppCmdServlet", "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
-          } while ((i != 0) && (i != 1));
-          paramBundle = new Bundle();
-          localObject = betq.a();
-          if (i == 1) {}
-          for (i = j;; i = 3)
-          {
-            paramBundle.putParcelable("engineChannel", ((betq)localObject).a(i));
-            if (parambepu == null) {
-              break;
-            }
-            try
-            {
-              parambepu.a(true, paramBundle);
-              return;
-            }
-            catch (RemoteException paramBundle)
-            {
-              betc.d("MiniAppCmdServlet", "cmd response exception. cmd=" + paramString, paramBundle);
-              return;
-            }
-          }
-          if (!"cmd_update_pull_down_entry_list".equals(paramString)) {
-            break;
-          }
-        } while (paramBundle != null);
-        betc.d("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-        return;
-        if ("launch_report2".equals(paramString))
+          return true;
+        } while (paramMessage.what != 2);
+        b();
+      } while ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 4) && (paramMessage.arg1 != 6) && (paramMessage.arg1 != 5));
+      Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localActivity != null)
+      {
+        if ((paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
         {
-          if (paramBundle != null)
-          {
-            paramBundle.setClassLoader(beyq.class.getClassLoader());
-            paramString = (MiniAppInfo)paramBundle.getParcelable("app_config");
-            parambepu = paramBundle.getString("sub_action");
-            localObject = paramBundle.getString("path");
-            beyq.a(parambepu, paramBundle.getString("reserves"), (String)localObject, paramString);
-            return;
-          }
-          betc.d("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-          return;
+          paramMessage = new Intent();
+          paramMessage.putExtra("isNeedFinish", true);
+          localActivity.setResult(-1, paramMessage);
         }
-      } while (!"cmd_update_app_for_mini_game".equals(paramString));
-      betc.a("MiniAppCmdServlet", "handleUpdateAppForMiniGame() called with: bundle = [" + paramBundle + "]");
-    } while (paramBundle == null);
-    paramString = (MiniAppInfo)paramBundle.getParcelable("key_app_info");
-    if ((paramString != null) && (MiniAppEnv.g().getContext() != null) && ((MiniAppEnv.g().getContext() instanceof Activity)))
-    {
-      beqb.a().a().stopMiniApp(paramString);
-      beqb.a().a().startMiniApp((Activity)MiniAppEnv.g().getContext(), paramString, null, null);
-      return;
+        for (;;)
+        {
+          localActivity.finish();
+          return true;
+          localActivity.setResult(-1);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("QQProgressNotifier", 2, "handleMessage baseActivity is null");
+    return true;
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QQProgressNotifier", 4, "onCancel");
     }
-    betc.d("MiniAppCmdServlet", "handleUpdateAppForMiniGame miniAppInfo = " + paramString + " activity = " + MiniAppEnv.g().getContext());
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      paramDialogInterface = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramDialogInterface.hasNext())
+      {
+        DialogInterface.OnCancelListener localOnCancelListener = (DialogInterface.OnCancelListener)paramDialogInterface.next();
+        if (localOnCancelListener != null) {
+          localOnCancelListener.onCancel(this.jdField_a_of_type_Bepp);
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beps
  * JD-Core Version:    0.7.0.1
  */

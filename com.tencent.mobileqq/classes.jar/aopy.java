@@ -1,39 +1,67 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aopy
-  extends aoun
+  extends aopw<aopx>
 {
-  public aopy(VerifyPwdView paramVerifyPwdView) {}
-  
-  protected void a(int paramInt, String paramString)
+  public int a()
   {
-    aptx.a(paramString);
+    return 479;
   }
   
-  protected void a(boolean paramBoolean)
+  @NonNull
+  public aopx a()
   {
-    if (!paramBoolean)
-    {
-      VerifyPwdView.a(this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOnlineStatusManager", 2, "migrateDefaultContent");
     }
-    VerifyPwdView.b(this.a);
+    return new aopx();
   }
   
-  protected void b(int paramInt, String paramString)
+  @NonNull
+  public aopx a(@NonNull aogf[] paramArrayOfaogf)
   {
-    aptx.a(paramString);
-    VerifyPwdView.c(this.a);
+    boolean bool = false;
+    aopx localaopx = new aopx();
+    try
+    {
+      if (paramArrayOfaogf[0].a != null)
+      {
+        if (new JSONObject(paramArrayOfaogf[0].a).optInt("show_custom_online_state", 1) == 1) {
+          bool = true;
+        }
+        localaopx.a = bool;
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomOnlineStatusManager", 2, "parsed showVipIcon: " + localaopx.a);
+        }
+      }
+      return localaopx;
+    }
+    catch (Exception paramArrayOfaogf)
+    {
+      QLog.e("CustomOnlineStatusManager", 1, "parsed failed: ", paramArrayOfaogf);
+    }
+    return localaopx;
   }
   
-  protected void e()
+  public Class<aopx> a()
   {
-    VerifyPwdView.a(this.a);
+    return aopx.class;
+  }
+  
+  @NonNull
+  public aopx b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOnlineStatusManager", 2, "migrateOldContent");
+    }
+    return new aopx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopy
  * JD-Core Version:    0.7.0.1
  */

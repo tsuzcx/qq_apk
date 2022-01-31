@@ -1,26 +1,47 @@
+import android.media.Image;
+import android.media.Image.Plane;
+import android.media.ImageReader;
+import android.media.ImageReader.OnImageAvailableListener;
 import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.23.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
+import java.nio.ByteBuffer;
 
 public class azba
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements ImageReader.OnImageAvailableListener
 {
-  public azba(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public azba(Camera2Control paramCamera2Control) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onImageAvailable(ImageReader paramImageReader)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onCompletion");
+    try
+    {
+      azbl.a(1, "[Camera2]Image Capture cost:" + (float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
+      azbk.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
+      paramImageReader = paramImageReader.acquireNextImage();
+      if (paramImageReader != null)
+      {
+        ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
+        byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
+        localByteBuffer.get(arrayOfByte);
+        if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
+        {
+          Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
+          Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
+        }
+        paramImageReader.close();
+      }
+      return;
     }
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.23.1(this));
+    catch (Exception paramImageReader)
+    {
+      azbl.a(1, "[Camera2] onImageAvailable mImageReader exception:" + paramImageReader);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azba
  * JD-Core Version:    0.7.0.1
  */

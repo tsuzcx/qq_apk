@@ -1,10 +1,19 @@
-public abstract interface ytn
+import android.view.View;
+
+class ytn
+  implements ytu
 {
-  public abstract void b(ytl paramytl);
+  ytn(ytl paramytl) {}
+  
+  public void a(View paramView, float paramFloat)
+  {
+    paramView.getLayoutParams().height = ((int)paramFloat);
+    paramView.requestLayout();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ytn
  * JD-Core Version:    0.7.0.1
  */

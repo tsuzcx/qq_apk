@@ -1,31 +1,27 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
-class xzs
-  extends MqqHandler
+public class xzs
+  implements ygu
 {
-  xzs(xzr paramxzr, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  xzs(xzn paramxzn) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public void a(AnimationDrawable paramAnimationDrawable)
   {
-    if (paramMessage.what == 100)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE2", 2, "QFindGattManager write data timeout bleSN " + (String)paramMessage.obj);
-      }
-      xzr.a(this.a, paramMessage.arg1);
-      this.a.a((String)paramMessage.obj);
+    if (xzn.g(this.a) != null) {
+      xzn.m(this.a).runOnUiThread(new DetailBaseAdapter.4.1(this, paramAnimationDrawable));
     }
   }
+  
+  public void a(QQAnimationDrawable paramQQAnimationDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,78 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
-class arxu
-  implements View.OnClickListener
+public class arxu
+  extends aryh
 {
-  arxu(arxt paramarxt, arxj paramarxj) {}
+  private boolean o;
   
-  public void onClick(View paramView)
+  public arxu(Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj.a()) {
-      return;
+    super(paramIntent);
+  }
+  
+  public boolean a()
+  {
+    super.a();
+    this.b = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
+    this.o = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("is_ec_live_share", false);
+    if ((this.b > 0L) && (!this.o)) {
+      zbj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.b, 0L, this.jdField_a_of_type_MqqObserverBusinessObserver);
     }
-    arxj.a(this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj).c(true);
-    arxj.a(this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj);
-    axqy.b(null, "CliOper", "", "", "0X800A973", "0X800A973", 0, 0, "0", "0", "0", "");
+    G();
+    Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
+    ((Bundle)localObject).putInt("req_type", 1);
+    localObject = azqu.a((Bundle)localObject);
+    if ((localObject != null) && ((localObject instanceof AbsShareMsg))) {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localObject);
+    }
+    H();
+    return true;
+  }
+  
+  protected boolean a(bdfq parambdfq)
+  {
+    if (this.o)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("struct_share_key_source_name");
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceIcon = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("struct_share_key_source_icon");
+    }
+    if ((parambdfq != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null))
+    {
+      this.jdField_a_of_type_Aryq = new aryq(this, this.jdField_a_of_type_AndroidAppActivity);
+      parambdfq.addView(this.jdField_a_of_type_Aryq.a());
+      parambdfq.adjustMessageTopBottomMargin(0.0F, 10.0F);
+      a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName, parambdfq);
+    }
+    return false;
+  }
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_Bdfq.setMessage("");
+  }
+  
+  protected boolean c()
+  {
+    I();
+    return true;
+  }
+  
+  protected void d()
+  {
+    if (this.d)
+    {
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005793", "0X8005793", 0, 0, "", "", "", "");
+      this.d = false;
+    }
+    super.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arxu
  * JD-Core Version:    0.7.0.1
  */

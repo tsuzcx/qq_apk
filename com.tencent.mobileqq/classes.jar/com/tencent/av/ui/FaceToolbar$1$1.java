@@ -1,20 +1,20 @@
 package com.tencent.av.ui;
 
-import mdj;
+import mfz;
 
 public class FaceToolbar$1$1
   implements Runnable
 {
-  public FaceToolbar$1$1(mdj parammdj, int paramInt) {}
+  public FaceToolbar$1$1(mfz parammfz, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mdj.a.fixDimmed(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Mfz.a.fixDimmed(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.FaceToolbar.1.1
  * JD-Core Version:    0.7.0.1
  */

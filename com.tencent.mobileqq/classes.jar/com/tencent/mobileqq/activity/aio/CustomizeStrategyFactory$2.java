@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import agzd;
-import ahiw;
+import aitd;
+import ajaf;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class CustomizeStrategyFactory$2
@@ -15,9 +15,9 @@ class CustomizeStrategyFactory$2
     {
       if (!CustomizeStrategyFactory.a(this.this$0))
       {
-        QQAppInterface localQQAppInterface = ahiw.a();
+        QQAppInterface localQQAppInterface = ajaf.a();
         if (localQQAppInterface != null) {
-          this.this$0.a = ((agzd)localQQAppInterface.getManager(245));
+          this.this$0.a = ((aitd)localQQAppInterface.getManager(245));
         }
         if (this.this$0.a != null) {
           this.this$0.a.c("redPack", this.this$0);
@@ -29,7 +29,7 @@ class CustomizeStrategyFactory$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.2
  * JD-Core Version:    0.7.0.1
  */

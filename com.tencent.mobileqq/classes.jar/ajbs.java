@@ -1,38 +1,32 @@
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.os.MqqHandler;
 
 class ajbs
-  implements aabi
+  implements DialogInterface.OnClickListener
 {
-  ajbs(ajbo paramajbo, String paramString, long paramLong, aabl paramaabl, CmGameInitParams paramCmGameInitParams) {}
+  ajbs(ajbr paramajbr) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ajbo.a(this.jdField_a_of_type_Ajbo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
+    if (akty.a() != null) {
+      akro.a();
+    }
+    paramDialogInterface = akro.a();
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
+      }
+    }
   }
-  
-  public void onPermission(int paramInt)
-  {
-    ajbo.a(this.jdField_a_of_type_Ajbo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    String str = paramJSONObject.optString("openid");
-    paramJSONObject = paramJSONObject.optString("access_token", "");
-    ajbo.a(this.jdField_a_of_type_Ajbo, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aabl);
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.openId = str;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessToken = paramJSONObject;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 1;
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbs
  * JD-Core Version:    0.7.0.1
  */

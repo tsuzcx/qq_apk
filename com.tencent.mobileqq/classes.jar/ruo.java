@@ -1,26 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class ruo
-  implements rut
+  extends alox
 {
-  public ruo(ChannelBottomBanner paramChannelBottomBanner) {}
+  public ruo(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  public void a(int paramInt)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    switch (paramInt)
+    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
     {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
+      QLog.d("ReadinJoyProteusFamilyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
+      this.a.k();
     }
-    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ruo
  * JD-Core Version:    0.7.0.1
  */

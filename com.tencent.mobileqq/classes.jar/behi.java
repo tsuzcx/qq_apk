@@ -1,28 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-
-public class behi
-  extends BroadcastReceiver
+public abstract interface behi
+  extends bebx
 {
-  public behi(OpenSDKAppInterface paramOpenSDKAppInterface) {}
+  public abstract int a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("OpenSDKAppInterface", 2, "onReceive: invoked.  intent: " + paramIntent + " action: " + paramContext);
-    }
-    if ((paramContext != null) && (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED"))) {
-      OpenSDKAppInterface.a(this.a);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     behi
  * JD-Core Version:    0.7.0.1
  */

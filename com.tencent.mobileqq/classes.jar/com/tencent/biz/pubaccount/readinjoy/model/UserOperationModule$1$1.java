@@ -5,7 +5,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.Iterator;
 import java.util.List;
-import osg;
+import owy;
 import tencent.im.oidb.cmd0x978.oidb_cmd0x978.OneFollowOperationResult;
 import tencent.im.oidb.cmd0x978.oidb_cmd0x978.RspFollowOperationResult;
 
@@ -20,13 +20,13 @@ class UserOperationModule$1$1
     while (localIterator.hasNext())
     {
       oidb_cmd0x978.OneFollowOperationResult localOneFollowOperationResult = (oidb_cmd0x978.OneFollowOperationResult)localIterator.next();
-      osg.a().b(localOneFollowOperationResult.uint64_dst_uin.get(), localOneFollowOperationResult.enum_follow_status.get());
+      owy.a().b(localOneFollowOperationResult.uint64_dst_uin.get(), localOneFollowOperationResult.enum_follow_status.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.1.1
  * JD-Core Version:    0.7.0.1
  */

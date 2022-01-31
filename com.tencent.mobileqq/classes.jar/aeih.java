@@ -1,34 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-class aeih
-  implements DialogInterface.OnClickListener
+public class aeih
+  implements Comparator<MessageRecord>
 {
-  aeih(aeid paramaeid, int paramInt) {}
+  public aeih(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label47;
-      }
-      this.jdField_a_of_type_Aeid.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
+    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
     }
-    for (;;)
-    {
-      aeid.b(this.jdField_a_of_type_Aeid, null);
-      return;
-      label47:
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Aeid.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
-      }
+    if (l1 > 0L) {
+      return -1;
     }
+    if (l1 < 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeih
  * JD-Core Version:    0.7.0.1
  */

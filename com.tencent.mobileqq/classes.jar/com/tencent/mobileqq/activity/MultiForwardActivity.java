@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adge;
+import aeyh;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 
 public class MultiForwardActivity
   extends ChatActivity
 {
-  public adge a = new adge();
+  public aeyh a = new aeyh();
   
   public boolean doOnCreate(Bundle paramBundle)
   {
@@ -23,7 +23,7 @@ public class MultiForwardActivity
     for (localObject = ((ChatFragment)localObject).a();; localObject = null)
     {
       if (localObject != null) {
-        ((BaseChatPie)localObject).G();
+        ((BaseChatPie)localObject).H();
       }
       this.a.c(this);
       super.doOnDestroy();
@@ -41,7 +41,7 @@ public class MultiForwardActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MultiForwardActivity
  * JD-Core Version:    0.7.0.1
  */

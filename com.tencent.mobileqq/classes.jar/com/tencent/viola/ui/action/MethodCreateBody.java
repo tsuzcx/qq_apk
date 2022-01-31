@@ -52,6 +52,7 @@ public class MethodCreateBody
     ViolaInstance localViolaInstance = paramDOMActionContext.getInstance();
     long l = System.currentTimeMillis();
     addDomInternal(paramDOMActionContext, this.mData);
+    paramDOMActionContext.postRenderTask(this);
     ViolaLogUtils.d("debugForTimeCost", "executeDom after : " + System.currentTimeMillis());
     if (localViolaInstance != null)
     {
@@ -63,26 +64,29 @@ public class MethodCreateBody
   
   public void executeRender(RenderActionContext paramRenderActionContext)
   {
-    if ((paramRenderActionContext == null) || (TextUtils.isEmpty(this.mRootRef))) {}
-    VComponent localVComponent;
-    do
-    {
+    if ((paramRenderActionContext == null) || (TextUtils.isEmpty(this.mRootRef))) {
       return;
-      localVComponent = paramRenderActionContext.getComponent(this.mRootRef);
-      paramRenderActionContext = paramRenderActionContext.getInstance();
-      if ((paramRenderActionContext == null) || (paramRenderActionContext.getContext() == null))
-      {
-        ViolaLogUtils.e(TAG, "instance is null or instance is destroy!");
-        return;
-      }
-    } while (ViolaSDKManager.getInstance().getRenderManager() == null);
+    }
+    ViolaLogUtils.e(TAG, "violaInstance executeRender start!");
+    VComponent localVComponent = paramRenderActionContext.getComponent(this.mRootRef);
+    paramRenderActionContext = paramRenderActionContext.getInstance();
+    if ((paramRenderActionContext == null) || (paramRenderActionContext.getContext() == null))
+    {
+      ViolaLogUtils.e(TAG, "instance is null or instance is destroy!");
+      return;
+    }
+    if (ViolaSDKManager.getInstance().getRenderManager() == null)
+    {
+      ViolaLogUtils.e(TAG, "violaInstance renderManager null!");
+      return;
+    }
     paramRenderActionContext.mCreateViewStart = System.currentTimeMillis();
     float f;
     if (!paramRenderActionContext.isRootMeasuredExactly())
     {
       f = paramRenderActionContext.getRenderContainerHeight() / FlexConvertUtils.getScreenWidth() * 750.0F;
       if (f != 0.0F) {
-        break label164;
+        break label189;
       }
       paramRenderActionContext.setRootMeasuredExactly(false);
     }
@@ -96,12 +100,13 @@ public class MethodCreateBody
       paramRenderActionContext.mBindDataStart = System.currentTimeMillis();
       localVComponent.bindData();
       paramRenderActionContext.mBindDataEnd = System.currentTimeMillis();
+      ViolaLogUtils.e(TAG, "violaInstance executeRender end!");
       if (!(localVComponent instanceof VComponentContainer)) {
         break;
       }
       paramRenderActionContext.onRootCreated((VComponentContainer)localVComponent);
       return;
-      label164:
+      label189:
       localVComponent.getDomObject().initRoot(localVComponent.getDomObject().getRef(), f, 750.0F);
       if (f != localVComponent.getDomObject().getLayoutHeight()) {
         ViolaSDKManager.getInstance().getDomManager().forceBatch();
@@ -112,7 +117,7 @@ public class MethodCreateBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodCreateBody
  * JD-Core Version:    0.7.0.1
  */

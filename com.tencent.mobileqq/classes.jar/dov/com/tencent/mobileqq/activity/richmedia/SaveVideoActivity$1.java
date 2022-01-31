@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import bjal;
+import bllv;
 import com.tencent.common.app.AppInterface;
 
 class SaveVideoActivity$1
@@ -10,13 +10,13 @@ class SaveVideoActivity$1
   
   public void run()
   {
-    AppInterface localAppInterface = bjal.a();
+    AppInterface localAppInterface = bllv.a();
     SaveVideoActivity.a(localAppInterface, SaveVideoActivity.a(localAppInterface, this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity.1
  * JD-Core Version:    0.7.0.1
  */

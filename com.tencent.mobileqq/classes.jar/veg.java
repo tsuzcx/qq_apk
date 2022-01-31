@@ -1,65 +1,38 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMonitorValue;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Bitmap;
 
-public class veg
-  extends sys
+class veg
+  implements vzt
 {
-  public String a;
-  private int c;
-  private int d;
+  veg(vef paramvef, String paramString) {}
   
-  public String a()
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    return sxm.a("StoryMonitorSvc.client_monitor_report");
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspMonitorValue localRspMonitorValue = new qqstory_service.RspMonitorValue();
-    try
+    if (vef.a(this.jdField_a_of_type_Vef))
     {
-      localRspMonitorValue.mergeFrom(paramArrayOfByte);
-      return new veh(localRspMonitorValue);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
-    localReqMonitorValue.ID.set(this.c);
-    if (this.d > 0) {
-      localReqMonitorValue.Value.set(this.d);
-    }
-    for (;;)
-    {
-      if (this.a != null) {
-        localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
+      paramString = bdda.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+      if (paramString == null)
+      {
+        vef.a(this.jdField_a_of_type_Vef, false);
+        return;
       }
-      return localReqMonitorValue.toByteArray();
-      localReqMonitorValue.Value.set(1);
+      bool = xmn.a(paramString, vef.a(this.jdField_a_of_type_Vef));
+      paramString.recycle();
+      vef.b(this.jdField_a_of_type_Vef, bool);
+      return;
     }
+    boolean bool = xmn.a(paramBitmap, vef.a(this.jdField_a_of_type_Vef));
+    vef.c(this.jdField_a_of_type_Vef, bool);
   }
   
-  public String toString()
+  public void a(String paramString, Throwable paramThrowable)
   {
-    return "MonitorValueRequest{ID=" + this.c + ", value=" + this.d + ", msg=" + this.a + '}';
+    wsv.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    vef.d(this.jdField_a_of_type_Vef, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     veg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 
-public class ajgx
-  implements DialogInterface.OnClickListener
+public abstract interface ajgx
 {
-  public ajgx(ApolloGameActivity paramApolloGameActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgx
  * JD-Core Version:    0.7.0.1
  */

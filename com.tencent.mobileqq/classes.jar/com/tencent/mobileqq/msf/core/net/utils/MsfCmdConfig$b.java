@@ -1,9 +1,12 @@
 package com.tencent.mobileqq.msf.core.net.utils;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,14 +16,18 @@ import java.util.Set;
 class MsfCmdConfig$b
   extends MsfCmdConfig.a
 {
-  private final Set d = new b(this);
+  private static final String e = "file_del_time";
+  private static final String f = "key_delete_version";
+  private boolean d;
+  private final Set g = new b(this);
   
-  MsfCmdConfig$b(String paramString, List paramList, boolean paramBoolean)
+  MsfCmdConfig$b(String paramString, List paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
     super(null);
     this.a = paramString;
     this.b = paramList;
-    this.c = paramBoolean;
+    this.c = paramBoolean1;
+    this.d = paramBoolean2;
   }
   
   private String a(String paramString)
@@ -104,13 +111,46 @@ class MsfCmdConfig$b
   
   protected void a(int paramInt, List paramList)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    try
     {
-      Pair localPair = (Pair)paramList.next();
-      String[] arrayOfString = ((String)localPair.second).split(File.separator);
-      ArrayList localArrayList = new ArrayList();
-      int i = arrayOfString.length;
+      if (this.d)
+      {
+        localObject = BaseApplication.getContext().getSharedPreferences("file_del_time", 0);
+        i = ((SharedPreferences)localObject).getInt("key_delete_version", 0);
+        if (i == paramInt) {
+          break label201;
+        }
+        localObject = ((SharedPreferences)localObject).edit();
+        if (localObject != null)
+        {
+          ((SharedPreferences.Editor)localObject).putInt("key_delete_version", paramInt);
+          ((SharedPreferences.Editor)localObject).commit();
+        }
+        QLog.d("MsfCmdConfig", 1, "One Time Mode,just delete file one times,localversion =" + i + ",version = " + paramInt);
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        Object localObject;
+        int i;
+        String[] arrayOfString;
+        ArrayList localArrayList;
+        label201:
+        QLog.e("MsfCmdConfig", 1, "execute faild", localThrowable);
+        continue;
+        a(localArrayList, "", 0, (String)localThrowable.first);
+      }
+    }
+    QLog.d("MsfCmdConfig", 1, "safe mode delete file");
+    paramList = paramList.iterator();
+    if (paramList.hasNext())
+    {
+      localObject = (Pair)paramList.next();
+      arrayOfString = ((String)((Pair)localObject).second).split(File.separator);
+      localArrayList = new ArrayList();
+      i = arrayOfString.length;
       paramInt = 0;
       while (paramInt < i)
       {
@@ -120,7 +160,7 @@ class MsfCmdConfig$b
         }
         paramInt += 1;
       }
-      a(localArrayList, "", 0, (String)localPair.first);
+      QLog.d("MsfCmdConfig", 1, "One Time Mode,don't delete file one more times,localversion =" + i + ",version = " + paramInt);
     }
   }
   
@@ -131,7 +171,7 @@ class MsfCmdConfig$b
   
   protected boolean a(Pair paramPair)
   {
-    if (!this.d.contains(paramPair.first)) {}
+    if (!this.g.contains(paramPair.first)) {}
     while (TextUtils.isEmpty((CharSequence)paramPair.second)) {
       return false;
     }

@@ -1,10 +1,22 @@
-public abstract interface bijv
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bijv
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bijv(biju parambiju) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
+      this.a.a.a.finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bijv
  * JD-Core Version:    0.7.0.1
  */

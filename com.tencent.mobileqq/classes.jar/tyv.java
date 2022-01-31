@@ -1,115 +1,104 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle;
+import com.tencent.qphone.base.util.QLog;
 
 public class tyv
-  implements tyl
 {
-  private tyv(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
+  public static final String a;
+  private static volatile tyv a;
   
-  public void a()
+  static
   {
-    this.a.p();
+    jdField_a_of_type_JavaLangString = tyv.class.getSimpleName();
   }
   
-  public void a(@NonNull upp paramupp, ErrorMessage paramErrorMessage, boolean paramBoolean)
+  public static tyv a()
   {
-    Object localObject;
-    if (paramErrorMessage.isSuccess())
+    if (jdField_a_of_type_Tyv == null) {}
+    try
     {
-      localObject = "suc";
-      ved.a("Q.qqstory.player.StoryPlayerCommentListView", "on cache item back %s:%s ", localObject, paramupp);
-      boolean bool = StoryPlayerCommentListView.a(this.a).a();
-      localObject = (tyo)this.a.a("PlayerCommentSegment");
-      if (localObject != null) {
-        ((tyo)localObject).a(paramupp);
+      if (jdField_a_of_type_Tyv == null) {
+        jdField_a_of_type_Tyv = new tyv();
       }
-      localObject = (tys)this.a.a("PlayerDoubleTabSegment");
-      if (localObject != null) {
-        ((tys)localObject).a(paramupp);
-      }
-      localObject = (tyn)this.a.a("PlayerCommentEmptySegment");
-      if (localObject != null)
-      {
-        ((tyn)localObject).a(paramupp);
-        if (!paramBoolean) {
-          break label183;
-        }
-        ((tyn)localObject).a(true);
-      }
-      label118:
-      localObject = this.a;
-      if (paramupp.a(bool)) {
-        break label192;
-      }
+      return jdField_a_of_type_Tyv;
     }
-    label183:
-    label192:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
-      this.a.p();
-      if (StoryPlayerCommentListView.a(this.a) != null) {
-        StoryPlayerCommentListView.a(this.a).a(paramupp, paramErrorMessage);
-      }
-      return;
-      localObject = "fail";
-      break;
-      ((tyn)localObject).a(false);
-      break label118;
-    }
+    finally {}
   }
   
-  public void a(@NonNull upp paramupp, boolean paramBoolean)
+  public static void a(Intent paramIntent, String paramString)
   {
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = "suc";
-      ved.a("Q.qqstory.player.StoryPlayerCommentListView", "on comment item back %s: %s", localObject, paramupp);
-      boolean bool = StoryPlayerCommentListView.a(this.a).a();
-      localObject = (tyo)this.a.a("PlayerCommentSegment");
-      if (localObject != null) {
-        ((tyo)localObject).a(paramupp);
-      }
-      localObject = (tys)this.a.a("PlayerDoubleTabSegment");
-      if (localObject != null) {
-        ((tys)localObject).a(paramupp);
-      }
-      localObject = (tyn)this.a.a("PlayerCommentEmptySegment");
-      if (localObject != null)
-      {
-        ((tyn)localObject).a(paramupp);
-        ((tyn)localObject).a(false);
-      }
-      if (!paramBoolean) {
-        break label159;
-      }
-      localObject = this.a;
-      if (paramupp.a(bool)) {
-        break label154;
-      }
-      paramBoolean = true;
-      label130:
-      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
+    if (paramIntent == null) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "getIntentByParseUrl intent is null");
     }
     for (;;)
     {
-      this.a.p();
       return;
-      localObject = "fail";
-      break;
-      label154:
-      paramBoolean = false;
-      break label130;
-      label159:
-      this.a.setLoadMoreComplete("CommentFloatDialog", false, false);
+      try
+      {
+        paramString = Uri.parse(paramString);
+        if (paramString != null)
+        {
+          if ("1".equals(paramString.getQueryParameter("show_right_cancel"))) {
+            paramIntent.putExtra("rightTopCancel", true);
+          }
+          if ("1".equals(paramString.getQueryParameter("move_web_view_top")))
+          {
+            paramIntent.putExtra("webViewMoveTop", true);
+            return;
+          }
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "getStyleFromUrl error " + paramIntent.getMessage());
+        paramIntent.printStackTrace();
+      }
     }
+  }
+  
+  public QCircleWebViewTitleStyle a(Context paramContext)
+  {
+    if (paramContext == null) {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "context is null");
+    }
+    QCircleWebViewTitleStyle localQCircleWebViewTitleStyle = new QCircleWebViewTitleStyle();
+    localQCircleWebViewTitleStyle.b = paramContext.getResources().getColor(2131166178);
+    localQCircleWebViewTitleStyle.c = paramContext.getResources().getColor(2131166178);
+    localQCircleWebViewTitleStyle.d = paramContext.getResources().getColor(2131165307);
+    localQCircleWebViewTitleStyle.e = paramContext.getResources().getColor(2131165307);
+    return localQCircleWebViewTitleStyle;
+  }
+  
+  public QCircleWebViewTitleStyle a(Context paramContext, String paramString)
+  {
+    paramContext = a(paramContext);
+    try
+    {
+      paramString = Uri.parse(paramString);
+      if (paramString != null)
+      {
+        paramString = paramString.getQueryParameter("left_back_icon");
+        if (!TextUtils.isEmpty(paramString)) {
+          paramContext.a = Integer.valueOf(paramString).intValue();
+        }
+      }
+      return paramContext;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "getStyleFromUrl error " + paramString.getMessage());
+      paramString.printStackTrace();
+    }
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tyv
  * JD-Core Version:    0.7.0.1
  */

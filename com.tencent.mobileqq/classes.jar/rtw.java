@@ -1,14 +1,31 @@
-public abstract interface rtw
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
+
+public class rtw
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(rub paramrub);
+  public rtw(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public abstract void b(rub paramrub);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    }
+  }
   
-  public abstract void c(rub paramrub);
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rtw
  * JD-Core Version:    0.7.0.1
  */

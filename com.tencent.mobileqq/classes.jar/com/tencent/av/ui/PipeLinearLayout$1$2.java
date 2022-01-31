@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import ajya;
+import alpo;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -22,13 +22,13 @@ class PipeLinearLayout$1$2
         localImageView.setVisibility(0);
         i += 1;
       }
-      ((TextView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(2131369863)).setText(PipeLinearLayout.b(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).size() + ajya.a(2131708189));
+      ((TextView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(2131370127)).setText(PipeLinearLayout.b(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).size() + alpo.a(2131708561));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.PipeLinearLayout.1.2
  * JD-Core Version:    0.7.0.1
  */

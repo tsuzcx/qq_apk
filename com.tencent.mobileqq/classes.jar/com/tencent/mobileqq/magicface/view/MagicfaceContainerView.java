@@ -6,15 +6,15 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import asdx;
-import asdy;
+import atux;
+import atuy;
 
 public class MagicfaceContainerView
   extends RelativeLayout
 {
-  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new asdx(this);
+  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new atux(this);
   GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  public asdy a;
+  public atuy a;
   boolean jdField_a_of_type_Boolean = false;
   
   public MagicfaceContainerView(Context paramContext)
@@ -46,9 +46,9 @@ public class MagicfaceContainerView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setMagicfaceGestureListener(asdy paramasdy)
+  public void setMagicfaceGestureListener(atuy paramatuy)
   {
-    this.jdField_a_of_type_Asdy = paramasdy;
+    this.jdField_a_of_type_Atuy = paramatuy;
   }
   
   public void setTouchEffect(boolean paramBoolean)
@@ -58,7 +58,7 @@ public class MagicfaceContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceContainerView
  * JD-Core Version:    0.7.0.1
  */

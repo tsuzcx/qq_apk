@@ -1,8 +1,8 @@
 package com.tencent.device.msg.data;
 
-import ajya;
-import akwa;
-import bbcz;
+import alpo;
+import ammq;
+import bdbt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -19,7 +19,7 @@ public class MessageForDevLittleVideo
   {
     try
     {
-      MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)akwa.a(this.msgData);
+      MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)ammq.a(this.msgData);
       if (localDevLittleVideoMsgSerial != null)
       {
         this.thumbFileKey = localDevLittleVideoMsgSerial.thumbFileKey;
@@ -69,9 +69,9 @@ public class MessageForDevLittleVideo
     {
       localObject = (QQAppInterface)localObject;
       if (isSendFromLocal()) {
-        return ajya.a(2131706589);
+        return alpo.a(2131706961);
       }
-      return bbcz.b((QQAppInterface)localObject, this.senderuin, true) + ajya.a(2131706593);
+      return bdbt.b((QQAppInterface)localObject, this.senderuin, true) + alpo.a(2131706965);
     }
     return null;
   }
@@ -108,7 +108,7 @@ public class MessageForDevLittleVideo
     localDevLittleVideoMsgSerial.senderuin = this.senderuin;
     try
     {
-      this.msgData = akwa.a(localDevLittleVideoMsgSerial);
+      this.msgData = ammq.a(localDevLittleVideoMsgSerial);
       return;
     }
     catch (Exception localException)
@@ -119,7 +119,7 @@ public class MessageForDevLittleVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevLittleVideo
  * JD-Core Version:    0.7.0.1
  */

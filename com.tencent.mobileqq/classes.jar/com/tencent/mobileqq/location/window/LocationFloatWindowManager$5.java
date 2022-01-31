@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.location.window;
 
-import arzn;
+import atqj;
 
 public class LocationFloatWindowManager$5
   implements Runnable
 {
-  public LocationFloatWindowManager$5(arzn paramarzn, int paramInt) {}
+  public LocationFloatWindowManager$5(atqj paramatqj, int paramInt) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class LocationFloatWindowManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.LocationFloatWindowManager.5
  * JD-Core Version:    0.7.0.1
  */

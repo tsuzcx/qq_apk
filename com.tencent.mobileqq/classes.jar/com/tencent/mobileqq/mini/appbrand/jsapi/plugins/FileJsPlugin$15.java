@@ -6,7 +6,7 @@ import com.tencent.mm.vfs.VFSFileOp;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
-import nav;
+import ndr;
 
 class FileJsPlugin$15
   implements FileJsPlugin.FileTask
@@ -28,7 +28,7 @@ class FileJsPlugin$15
     }
     str2 = VFSFileOp.exportExternalPath(str2, true);
     str1 = VFSFileOp.exportExternalPath(str1, true);
-    int i = nav.a(str2, str1);
+    int i = ndr.a(str2, str1);
     QLog.d("[mini] FileJsPlugin", 1, "unzip [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], zipPath:" + str2 + ", target:" + str1);
     if (i == 0) {
       return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
@@ -38,7 +38,7 @@ class FileJsPlugin$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.FileJsPlugin.15
  * JD-Core Version:    0.7.0.1
  */

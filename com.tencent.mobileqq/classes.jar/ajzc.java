@@ -1,57 +1,23 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class ajzc
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = -1;
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<ajzb> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public ajzc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public String toString()
-  {
-    int i = 2000;
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-    if (j > 2000) {}
-    for (;;)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(i);
-      localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_JavaUtilArrayList.size()).append(",");
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localStringBuilder.append("{");
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            localStringBuilder.append((ajzb)localIterator.next()).append(",");
-            continue;
-            if (j >= 100) {
-              break label155;
-            }
-            i = 100;
-            break;
-          }
-        }
-        localStringBuilder.append("}");
-      }
-      localStringBuilder.append("]");
-      return localStringBuilder.toString();
-      label155:
-      i = j;
-    }
+    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
+    this.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,81 @@
-import android.content.Context;
-import com.tencent.av.ui.funchat.zimu.ZimuView;
-import java.lang.ref.WeakReference;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
 
-public abstract class moa
-  extends mnx
+public class moa
 {
-  public moa(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
+  public int a;
+  public long a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  
+  public moa()
   {
-    super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
+    this.jdField_b_of_type_Long = 4L;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  protected abstract int a(int paramInt);
-  
-  public int a(long paramLong)
+  public int a()
   {
-    int i = 0;
-    if (a())
-    {
-      i = b(paramLong);
-      this.e -= i;
-    }
-    return i;
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(long paramLong)
+  public long a()
   {
-    super.a(paramLong);
-    this.e = (b(paramLong) + this.e);
+    return this.jdField_a_of_type_Long;
   }
   
   public boolean a()
   {
-    return this.e + c() > 0;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  protected int b(long paramLong)
+  public int b()
   {
-    return (int)(a(this.jdField_a_of_type_Lhc.a.length()) * paramLong / 1000L);
+    return this.jdField_b_of_type_Int;
   }
   
-  public void c()
+  public boolean b()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.e + c() < 0)) {
-      this.e = this.g;
-    }
+    return this.jdField_b_of_type_Int == 2;
   }
   
   public boolean c()
   {
-    return (this.e + c() > 0) && (this.e < this.g) && (this.f + d() > 0) && (this.f < this.h);
+    return this.e;
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_b_of_type_Boolean) && (!this.c);
+  }
+  
+  public boolean e()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin:=").append(this.jdField_a_of_type_Long).append(',');
+    localStringBuilder.append("videoSrc:=").append(this.jdField_b_of_type_Int).append(',');
+    localStringBuilder.append("isVideoIn:=").append(this.e).append(',');
+    localStringBuilder.append("isAttened:=").append(this.jdField_a_of_type_Boolean).append(',');
+    localStringBuilder.append("isSpeaking:=").append(this.jdField_b_of_type_Boolean).append(',');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     moa
  * JD-Core Version:    0.7.0.1
  */

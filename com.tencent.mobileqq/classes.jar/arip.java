@@ -1,20 +1,18 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.WebCallHandler;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
+import android.view.View;
 
 class arip
-  implements CustomizedWebView
+  implements arnx
 {
-  arip(arik paramarik) {}
+  arip(arin paramarin) {}
   
-  public void onJumpWeb(String paramString, Bundle paramBundle, WebCallHandler paramWebCallHandler)
+  public void onClick(View paramView)
   {
-    arjj.a().a(paramBundle);
+    arni.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arfz.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arip
  * JD-Core Version:    0.7.0.1
  */

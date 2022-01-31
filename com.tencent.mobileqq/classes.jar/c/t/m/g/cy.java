@@ -1,274 +1,188 @@
 package c.t.m.g;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import java.util.HashMap;
-import java.util.Timer;
+import java.util.Iterator;
+import java.util.List;
 
-public class cy
+public final class cy
 {
-  private static volatile cy b = null;
-  private static Context c = null;
-  private volatile boolean a = true;
-  private volatile boolean d = false;
-  private volatile de e = de.a;
-  private Timer f = null;
+  private static HashMap a = new HashMap();
   
-  private cy()
+  public static int a(Context paramContext)
   {
-    if ((c == null) || (c.getApplicationContext() == null)) {
-      throw new IllegalStateException("Please invoke initial(context,...) first when app started!");
-    }
-  }
-  
-  /* Error */
-  public static cy a()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 19	c/t/m/g/cy:b	Lc/t/m/g/cy;
-    //   6: ifnonnull +25 -> 31
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 19	c/t/m/g/cy:b	Lc/t/m/g/cy;
-    //   15: ifnonnull +13 -> 28
-    //   18: new 2	c/t/m/g/cy
-    //   21: dup
-    //   22: invokespecial 52	c/t/m/g/cy:<init>	()V
-    //   25: putstatic 19	c/t/m/g/cy:b	Lc/t/m/g/cy;
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: getstatic 19	c/t/m/g/cy:b	Lc/t/m/g/cy;
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: areturn
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   34	5	0	localcy	cy
-    //   40	5	0	localObject1	Object
-    //   46	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	28	40	finally
-    //   28	31	40	finally
-    //   41	44	40	finally
-    //   3	12	46	finally
-    //   31	35	46	finally
-    //   44	46	46	finally
-  }
-  
-  private void a(long paramLong)
-  {
-    if (this.f != null)
+    try
     {
-      Timer localTimer = this.f;
-      cy.a locala = new cy.a(this);
-      long l = paramLong;
-      if (paramLong < 0L) {
-        l = 0L;
-      }
-      localTimer.schedule(locala, l);
+      int i = a((WifiManager)paramContext.getSystemService("wifi"));
+      return i;
     }
+    catch (Throwable paramContext) {}
+    return 4;
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2)
+  @SuppressLint({"MissingPermission"})
+  private static int a(WifiManager paramWifiManager)
   {
-    if ((paramContext == null) || (paramContext.getApplicationContext() == null)) {
-      throw new NullPointerException("context cannot be null!");
+    if (paramWifiManager == null) {
+      return 4;
     }
-    paramContext = paramContext.getApplicationContext();
-    c = paramContext;
-    do.a(paramContext);
-    da.a(paramString1);
-    cz.a(paramString1, paramString2);
-    new cy.1("th_CC_init").start();
-  }
-  
-  public static void a(String paramString)
-  {
-    cz.a(paramString);
-  }
-  
-  public static void a(HashMap<String, String> paramHashMap)
-  {
-    cz.a(paramHashMap);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    for (;;)
+    try
     {
-      try
+      int i = paramWifiManager.getWifiState();
+      return i;
+    }
+    catch (Throwable paramWifiManager) {}
+    return 4;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String a()
+  {
+    try
+    {
+      Object localObject = co.a(dp.a());
+      if (localObject != null)
       {
-        int i = cz.a().b("cc_version");
-        if (i == -1)
+        String str = ((WifiInfo)localObject).getBSSID();
+        if ((str != null) && (!str.equals("000000000000")) && (!str.equals("00-00-00-00-00-00")) && (!str.equals("00:00:00:00:00:00")))
         {
-          if (paramBoolean)
-          {
-            l = 5000L;
-            co.a("schedule : first[" + paramBoolean + "],locVer[" + i + "],delayTime[" + l + "]");
-            a(l);
+          int i = ((WifiInfo)localObject).getRssi();
+          if ((i < -100) || (i > -20)) {
+            break label167;
           }
+          localObject = ((WifiInfo)localObject).getSSID().replace("\"", "").replace("|", "");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("{");
+          localStringBuilder.append("\"mac\":\"");
+          localStringBuilder.append(str);
+          localStringBuilder.append("\",\"rssi\":");
+          localStringBuilder.append(i);
+          localStringBuilder.append(",\"ssid\":\"");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("\"}");
+          str = localStringBuilder.toString();
+          return str;
         }
-        else
-        {
-          l = e();
-          continue;
-        }
-        long l = 10800000L;
       }
-      catch (Throwable localThrowable)
+      else
       {
-        co.b(localThrowable.toString());
-        return;
+        return "{}";
       }
     }
+    catch (Throwable localThrowable)
+    {
+      return "{}";
+    }
+    return "{}";
+    label167:
+    return "{}";
   }
   
-  private static long e()
+  public static boolean a(List<ScanResult> paramList)
   {
-    long l1 = 86400000L;
-    long l2 = cz.a().c("cc_req_interval");
-    if (l2 > 86400000L) {}
+    if ((paramList == null) || (paramList.size() <= 1)) {}
     for (;;)
     {
-      if (l1 < 3600000L) {
-        return 3600000L;
+      return true;
+      String str = ((ScanResult)paramList.get(0)).BSSID;
+      int i = 1;
+      while (i < paramList.size())
+      {
+        if (!str.equals(((ScanResult)paramList.get(i)).BSSID)) {
+          return false;
+        }
+        i += 1;
       }
-      return l1;
-      l1 = l2;
     }
   }
   
-  /* Error */
-  public final void b()
+  public static boolean a(List<ScanResult> paramList1, List<ScanResult> paramList2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 29	c/t/m/g/cy:d	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: iconst_1
-    //   16: putfield 29	c/t/m/g/cy:d	Z
-    //   19: ldc 167
-    //   21: invokestatic 142	c/t/m/g/co:a	(Ljava/lang/String;)V
-    //   24: aload_0
-    //   25: new 60	java/util/Timer
-    //   28: dup
-    //   29: ldc 169
-    //   31: invokespecial 170	java/util/Timer:<init>	(Ljava/lang/String;)V
-    //   34: putfield 37	c/t/m/g/cy:f	Ljava/util/Timer;
-    //   37: aload_0
-    //   38: iconst_1
-    //   39: invokespecial 155	c/t/m/g/cy:a	(Z)V
-    //   42: goto -31 -> 11
-    //   45: astore_2
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: aload_2
-    //   49: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	50	0	this	cy
-    //   6	2	1	bool	boolean
-    //   45	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	45	finally
-    //   14	42	45	finally
-  }
-  
-  /* Error */
-  public final void c()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 29	c/t/m/g/cy:d	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifne +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: iconst_0
-    //   16: putfield 29	c/t/m/g/cy:d	Z
-    //   19: invokestatic 104	c/t/m/g/cz:a	()Lc/t/m/g/cz;
-    //   22: getfield 173	c/t/m/g/cz:d	Ljava/util/concurrent/ConcurrentHashMap;
-    //   25: invokevirtual 178	java/util/concurrent/ConcurrentHashMap:clear	()V
-    //   28: ldc 180
-    //   30: invokestatic 142	c/t/m/g/co:a	(Ljava/lang/String;)V
-    //   33: aload_0
-    //   34: lconst_0
-    //   35: invokespecial 144	c/t/m/g/cy:a	(J)V
-    //   38: aload_0
-    //   39: getfield 37	c/t/m/g/cy:f	Ljava/util/Timer;
-    //   42: ifnull -31 -> 11
-    //   45: aload_0
-    //   46: getfield 37	c/t/m/g/cy:f	Ljava/util/Timer;
-    //   49: astore_2
-    //   50: aload_0
-    //   51: aconst_null
-    //   52: putfield 37	c/t/m/g/cy:f	Ljava/util/Timer;
-    //   55: aload_2
-    //   56: new 182	c/t/m/g/cy$2
-    //   59: dup
-    //   60: aload_0
-    //   61: aload_2
-    //   62: invokespecial 185	c/t/m/g/cy$2:<init>	(Lc/t/m/g/cy;Ljava/util/Timer;)V
-    //   65: ldc2_w 186
-    //   68: invokevirtual 64	java/util/Timer:schedule	(Ljava/util/TimerTask;J)V
-    //   71: goto -60 -> 11
-    //   74: astore_2
-    //   75: ldc 189
-    //   77: aload_2
-    //   78: invokestatic 192	c/t/m/g/co:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   81: goto -70 -> 11
-    //   84: astore_2
-    //   85: aload_0
-    //   86: monitorexit
-    //   87: aload_2
-    //   88: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	89	0	this	cy
-    //   6	2	1	bool	boolean
-    //   49	13	2	localTimer	Timer
-    //   74	4	2	localThrowable	Throwable
-    //   84	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   19	71	74	java/lang/Throwable
-    //   2	7	84	finally
-    //   14	19	84	finally
-    //   19	71	84	finally
-    //   75	81	84	finally
+    boolean bool;
+    if (paramList1 == paramList2) {
+      bool = true;
+    }
+    for (;;)
+    {
+      return bool;
+      int i;
+      if (paramList1 == null)
+      {
+        i = 0;
+        label23:
+        if (paramList2 != null) {
+          break label50;
+        }
+      }
+      for (int j = 0;; j = paramList2.size()) {
+        for (;;)
+        {
+          if (i == j) {
+            break label60;
+          }
+          bool = false;
+          break;
+          label50:
+          try
+          {
+            i = paramList1.size();
+            break label23;
+          }
+          finally {}
+        }
+      }
+      label60:
+      if (i == 0)
+      {
+        bool = true;
+      }
+      else
+      {
+        label87:
+        do
+        {
+          HashMap localHashMap;
+          while (!paramList1.hasNext())
+          {
+            try
+            {
+              localHashMap = a;
+              localHashMap.clear();
+              paramList1 = paramList1.iterator();
+              if (paramList1.hasNext())
+              {
+                ScanResult localScanResult = (ScanResult)paramList1.next();
+                localHashMap.put(localScanResult.BSSID, Integer.valueOf(localScanResult.level));
+                break label87;
+              }
+            }
+            catch (Throwable paramList1)
+            {
+              co.a("", paramList1);
+              bool = true;
+            }
+            paramList1 = paramList2.iterator();
+          }
+          paramList2 = (ScanResult)paramList1.next();
+          if (!localHashMap.containsKey(paramList2.BSSID)) {
+            break label206;
+          }
+          i = paramList2.level;
+          j = ((Integer)localHashMap.get(paramList2.BSSID)).intValue();
+        } while (i == j);
+        label206:
+        bool = false;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.cy
  * JD-Core Version:    0.7.0.1
  */

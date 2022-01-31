@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public class bakr
-  implements apag
+public abstract interface bakr
 {
-  public bakr(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
+  public abstract void callJs(String paramString, String... paramVarArgs);
   
-  public void a() {}
+  public abstract void diyThemeSetup(JSONObject paramJSONObject, String paramString);
   
-  public void b()
-  {
-    apab.a(new aplu(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.e)));
-  }
+  public abstract void downloadBgPic(String paramString, Bundle paramBundle);
+  
+  public abstract void startDownload(JSONObject paramJSONObject, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bakr
  * JD-Core Version:    0.7.0.1
  */

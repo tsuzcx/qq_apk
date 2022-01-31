@@ -1,35 +1,41 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import mqq.observer.AccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class abxp
-  extends AccountObserver
+  implements DialogInterface.OnClickListener
 {
-  public abxp(QuickLoginActivity paramQuickLoginActivity) {}
+  public abxp(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent(this.a, LoginActivity.class);
+      paramDialogInterface.putExtra("is_change_account", true);
+      paramDialogInterface.putExtra("if_check_account_same", true);
+      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
+      paramDialogInterface.putExtra("appid", AddFriendLogicActivity.c(this.a));
+      paramDialogInterface.putExtra("openid", AddFriendLogicActivity.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.putExtra("key_action", AddFriendLogicActivity.class.getSimpleName());
+      paramDialogInterface.addFlags(268435456);
+      paramDialogInterface.addFlags(67108864);
+      this.a.jdField_a_of_type_Bdfq.cancel();
+      this.a.startActivity(paramDialogInterface);
+      this.a.finish();
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxp
  * JD-Core Version:    0.7.0.1
  */

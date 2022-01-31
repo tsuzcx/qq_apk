@@ -1,18 +1,20 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 
-public abstract interface aejh
-  extends IInterface
+public class aejh
+  implements View.OnClickListener
 {
-  public abstract void a(CompressInfo paramCompressInfo);
+  public aejh(ReminderListFragment paramReminderListFragment) {}
   
-  public abstract void b(CompressInfo paramCompressInfo);
-  
-  public abstract void c(CompressInfo paramCompressInfo);
+  public void onClick(View paramView)
+  {
+    ReminderListFragment.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejh
  * JD-Core Version:    0.7.0.1
  */

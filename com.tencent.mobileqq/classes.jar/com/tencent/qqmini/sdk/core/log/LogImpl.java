@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.log;
 
-import betb;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.log.Log;
 
 public class LogImpl
-  implements betb
+  implements Log
 {
   private MiniAppProxy miniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
   
@@ -44,7 +44,7 @@ public class LogImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.log.LogImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,117 +1,81 @@
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo.QQEmoConfigItem;
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class anwu
-  extends QQSysAndEmojiBaseInfo
 {
-  public int a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))) {}
-    for (int i = Integer.parseInt(((QQSysAndEmojiBaseInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).QSid);; i = -1)
-    {
-      int j = i;
-      if (i == -1) {
-        j = axau.a[paramInt];
-      }
-      return j;
-    }
-  }
+  private static final anwu jdField_a_of_type_Anwu = new anwu();
+  private static String jdField_a_of_type_JavaLangString = anwu.class.getSimpleName();
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "motorola", "mot", "FIH", "Sony Ericsson", "samsung", "HTC", "HUN", "LGE", "alps", "OPPO", "TCL", "LENOVO", "ZTE", "Meizu", "Xiaomi", "HUAWEI", "TIANYU", "sprd", "K-Touch", "YuLong", "CoolPad", "Amazon", "Hisense", "Acer", "GIONEE", "Philips", "asus", "snda.com", "koobee", "AMOI", "Fason", "ainol", "Dell", "dlkjl12389", "haier", "sharp", "BBK", "nubia", "KONKA" };
+  private static final String[] b = { "MOTOROLA", "MOTOROLA", "MOTOROLA", "SONYERICSSON", "SAMSUNG", "HTC", "HTC", "LG", "OPPO", "OPPO", "TCL", "LENOVO", "ZTE", "MEIZU", "XIAOMI", "HUAWEI", "TIANYU", "TIANYU", "TIANYU", "COOLPAD", "COOLPAD", "AMAZON", "HISENSE", "ACER", "JINLI", "PHILIPS", "GOOGLE", "SHENGDA", "KUBI", "XIAXIN", "FANSHANG", "AINUO", "DELL", "DPD", "HAIER", "SHARP", "BBK", "NUBIA", "KONKA" };
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public ArrayList<Integer> a()
+  private anwu()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList;
-    }
-    int[] arrayOfInt = aocw.a();
-    ArrayList localArrayList = new ArrayList(arrayOfInt.length);
     int i = 0;
-    while (i < arrayOfInt.length)
+    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      localArrayList.add(Integer.valueOf(arrayOfInt[i]));
+      this.jdField_a_of_type_JavaUtilHashMap.put(jdField_a_of_type_ArrayOfJavaLangString[i].toUpperCase(), b[i]);
       i += 1;
     }
-    return localArrayList;
+    a();
   }
   
-  public void a()
+  public static anwu a()
   {
-    Object localObject = a();
-    if (localObject != null)
+    return jdField_a_of_type_Anwu;
+  }
+  
+  private void a()
+  {
+    if (QLog.isColorLevel())
     {
-      JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("sysface");
-      if (localJSONArray != null)
-      {
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-        }
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        long l = System.currentTimeMillis();
-        int i = 0;
-        for (;;)
-        {
-          if (i < localJSONArray.length())
-          {
-            localObject = null;
-            try
-            {
-              JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-              localObject = localJSONObject;
-              localObject = (QQSysAndEmojiBaseInfo.QQEmoConfigItem)arma.a((JSONObject)localObject, QQSysAndEmojiBaseInfo.QQEmoConfigItem.class);
-            }
-            catch (JSONException localJSONException)
-            {
-              try
-              {
-                int j = Integer.parseInt(((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject).AQLid);
-                this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
-                if (!a((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject)) {
-                  this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
-                }
-                i += 1;
-                continue;
-                localJSONException = localJSONException;
-                localJSONException.printStackTrace();
-              }
-              catch (NumberFormatException localNumberFormatException)
-              {
-                for (;;)
-                {
-                  QLog.d("QQSysAndEmojiBaseInfo", 1, new Object[] { "error occur in sysface AQLid:", ((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject).AQLid });
-                }
-              }
-            }
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "sysface configItem:", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()), " ,orderlist:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
-        }
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo  (+) *****");
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_KEYS.len = " + jdField_a_of_type_ArrayOfJavaLangString.length);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_NAMES.len = " + b.length);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "DeviceTypeName = " + a());
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "SubTagName = " + a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase());
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "MODEL = " + Build.MODEL);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "SDK_INT = " + Build.VERSION.SDK_INT);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND = " + Build.BRAND);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "DEVICE = " + Build.DEVICE);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "DISPLAY = " + Build.DISPLAY);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "HARDWARE = " + Build.HARDWARE);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "MANUFACTURER = " + Build.MANUFACTURER);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "PRODUCT = " + Build.PRODUCT);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "TAGS = " + Build.TAGS);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "USER = " + Build.USER);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "TYPE = " + Build.TYPE);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo (-) *****");
+    }
+  }
+  
+  public String a()
+  {
+    String str;
+    if (Build.MODEL.equalsIgnoreCase("K-Touch W619")) {
+      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("TIANYU") + " " + Build.MODEL;
+    }
+    for (;;)
+    {
+      return str.replace(" ", "_").replace("+", "").replace("(t)", "");
+      if ((Build.MODEL.equalsIgnoreCase("8150")) && (Build.BRAND.equalsIgnoreCase("COOLPAD"))) {
+        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("COOLPAD") + " " + Build.MODEL;
+      } else {
+        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(Build.MANUFACTURER.toUpperCase()) + " " + Build.MODEL;
       }
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public String b()
   {
-    int i = a(paramInt1);
-    paramInt1 = i;
-    if (i == 0) {
-      paramInt1 = 1000;
-    }
-    axqy.b(null, "dc00898", "", "", "0X800A7A2", "0X800A7A2", paramInt1, 0, String.valueOf(paramInt2), "", "", "");
+    return a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwu
  * JD-Core Version:    0.7.0.1
  */

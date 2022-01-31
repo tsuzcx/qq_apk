@@ -4,15 +4,15 @@ import android.content.Context;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.util.AttributeSet;
 import android.widget.VideoView;
-import bksc;
-import bksd;
-import bkse;
+import bndm;
+import bndn;
+import bndo;
 
 public class FixedSizeVideoView
   extends VideoView
 {
   private int jdField_a_of_type_Int = -1;
-  public bkse a;
+  public bndo a;
   private Runnable jdField_a_of_type_JavaLangRunnable = new FixedSizeVideoView.1(this);
   private int b;
   private int c;
@@ -20,13 +20,13 @@ public class FixedSizeVideoView
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new bksc(this));
+    super.setOnCompletionListener(new bndm(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new bksd(this));
+    super.setOnCompletionListener(new bndn(this));
   }
   
   public void pause()
@@ -40,10 +40,10 @@ public class FixedSizeVideoView
     throw new RuntimeException("Stub!");
   }
   
-  public void setOnFixVDPlayCompelteListener(bkse parambkse)
+  public void setOnFixVDPlayCompelteListener(bndo parambndo)
   {
-    if (parambkse != null) {
-      this.jdField_a_of_type_Bkse = parambkse;
+    if (parambndo != null) {
+      this.jdField_a_of_type_Bndo = parambndo;
     }
   }
   
@@ -87,7 +87,7 @@ public class FixedSizeVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView
  * JD-Core Version:    0.7.0.1
  */

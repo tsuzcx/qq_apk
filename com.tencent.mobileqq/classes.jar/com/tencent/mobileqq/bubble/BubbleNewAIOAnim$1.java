@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.bubble;
 
-import ambv;
 import android.animation.AnimatorSet;
+import ansu;
 
 public class BubbleNewAIOAnim$1
   implements Runnable
 {
-  public BubbleNewAIOAnim$1(ambv paramambv) {}
+  public BubbleNewAIOAnim$1(ansu paramansu) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class BubbleNewAIOAnim$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAIOAnim.1
  * JD-Core Version:    0.7.0.1
  */

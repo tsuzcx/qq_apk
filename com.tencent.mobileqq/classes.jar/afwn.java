@@ -1,63 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class afwn
-  extends aoun
+  implements View.OnClickListener
 {
-  public afwn(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  public afwn(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, boolean paramBoolean1, boolean paramBoolean2, QQAppInterface paramQQAppInterface) {}
   
-  protected void a(apez paramapez)
+  public void onClick(View paramView)
   {
-    if ((TextUtils.isEmpty(paramapez.a)) || (TextUtils.isEmpty(paramapez.b))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.history.C2CAllFragment", 2, "OnThumbDownLoad error : [fileId] = " + paramapez.a + " [path] = " + paramapez.b);
-      }
-    }
-    while (this.a.a == null) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 300L)) {
       return;
     }
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_Boolean) && (this.b))
+    {
+      azbu.a().a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b()
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void d()
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    QLog.d("ShortVideoRealItemBuilder", 1, String.format("not support dance Pendant, codec[%s], entry[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afwn
  * JD-Core Version:    0.7.0.1
  */

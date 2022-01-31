@@ -13,8 +13,9 @@ class TPAsyncMediaPlayer$1
     synchronized (TPAsyncMediaPlayer.access$000(this.this$0))
     {
       TPAsyncMediaPlayer.access$102(this.this$0, false);
-      if (TPAsyncMediaPlayer.access$200(this.this$0) != null) {
-        TPAsyncMediaPlayer.access$200(this.this$0).onSeekComplete(paramMediaPlayer);
+      ??? = TPAsyncMediaPlayer.access$200(this.this$0);
+      if (??? != null) {
+        ((MediaPlayer.OnSeekCompleteListener)???).onSeekComplete(paramMediaPlayer);
       }
       return;
     }
@@ -22,7 +23,7 @@ class TPAsyncMediaPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPAsyncMediaPlayer.1
  * JD-Core Version:    0.7.0.1
  */

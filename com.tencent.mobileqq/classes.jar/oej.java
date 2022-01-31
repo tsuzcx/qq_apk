@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-public final class oej
-  implements Parcelable.Creator<ReadInJoyUgcVideoReportItem>
+public abstract interface oej
 {
-  public ReadInJoyUgcVideoReportItem a(Parcel paramParcel)
-  {
-    return new ReadInJoyUgcVideoReportItem(paramParcel);
-  }
+  public abstract void a(rjk paramrjk, AdvertisementInfo paramAdvertisementInfo);
   
-  public ReadInJoyUgcVideoReportItem[] a(int paramInt)
-  {
-    return new ReadInJoyUgcVideoReportItem[paramInt];
-  }
+  public abstract void b(rjk paramrjk, AdvertisementInfo paramAdvertisementInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oej
  * JD-Core Version:    0.7.0.1
  */

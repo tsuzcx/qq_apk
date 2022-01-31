@@ -1,23 +1,24 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
 
 public class nvh
-  extends Editable.Factory
+  extends BroadcastReceiver
 {
-  public nvh(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public nvh(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramCharSequence instanceof odp)) {
-      return (Editable)paramCharSequence;
+    if ((paramIntent != null) && ("com.tencent.biz.pubaccount.ecshop.tabpage.finish".equals(paramIntent.getAction())) && (this.a.getActivity() != null)) {
+      this.a.getActivity().finish();
     }
-    return new odp(paramCharSequence, 3, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvh
  * JD-Core Version:    0.7.0.1
  */

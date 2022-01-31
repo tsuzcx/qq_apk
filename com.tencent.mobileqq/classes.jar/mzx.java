@@ -1,24 +1,54 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.Context;
-import android.os.Build.VERSION;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public final class mzx
+public class mzx
+  extends MSFServlet
 {
-  @TargetApi(11)
-  public static void a(Context paramContext, String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onReceive");
+    }
+    if (paramIntent == null) {
       return;
     }
-    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
+    Bundle localBundle = paramIntent.getExtras();
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (byte[] arrayOfByte = bdku.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
+    {
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("MSFServlet", 2, "onReceive exit");
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onSend");
+    }
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bdku.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onSend exit");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzx
  * JD-Core Version:    0.7.0.1
  */

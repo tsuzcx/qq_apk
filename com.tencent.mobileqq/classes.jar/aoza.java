@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
 public class aoza
-  extends aoyv
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  long b;
+  private long a;
   
-  public aoza(FileManagerEntity paramFileManagerEntity)
+  public long a()
   {
-    super(paramFileManagerEntity);
+    return this.a;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoza
  * JD-Core Version:    0.7.0.1
  */

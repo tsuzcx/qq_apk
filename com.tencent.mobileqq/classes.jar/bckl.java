@@ -1,56 +1,56 @@
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.TextView;
-import java.lang.reflect.Field;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class bckl
-  extends LinkMovementMethod
 {
-  private static MovementMethod jdField_a_of_type_AndroidTextMethodMovementMethod;
-  private static Field jdField_a_of_type_JavaLangReflectField;
+  private static final Drawable a = new ColorDrawable(-5658199);
   
-  public static MovementMethod a()
+  public static String a(String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_AndroidTextMethodMovementMethod == null) {
-      jdField_a_of_type_AndroidTextMethodMovementMethod = new bckl();
-    }
-    return jdField_a_of_type_AndroidTextMethodMovementMethod;
+    return "https://qun.qq.com/qqweb/m/qun/rank/rank.html?from=31&_wv=1031&_bid=2468&uin=" + paramString1 + "&gc=" + paramString2;
   }
   
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  protected static void a()
   {
-    if (paramMotionEvent.getActionMasked() == 1) {}
-    try
+    int i = 0;
+    while (i < 20)
     {
-      if (jdField_a_of_type_JavaLangReflectField == null) {
-        jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mHasPerformedLongPress");
+      Object localObject = String.format("http://pub.idqqimg.com/pc/misc/groupgift/global_troop_level_%d.png", new Object[] { Integer.valueOf(i) });
+      URLDrawable.removeMemoryCacheByUrl((String)localObject);
+      localObject = bame.a((String)localObject);
+      if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).isFile())) {
+        ((File)localObject).delete();
       }
-      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-      boolean bool = jdField_a_of_type_JavaLangReflectField.getBoolean(paramTextView);
-      if (bool) {
-        return true;
-      }
+      i += 1;
     }
-    catch (NoSuchFieldException localNoSuchFieldException)
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+    String str = new SimpleDateFormat("yyyy年MM月dd日").format(localCalendar.getTime());
+    if ((!TextUtils.isEmpty(str)) && (str.equals(bczr.a(paramContext, "glamour_has_update_today")))) {
+      return false;
+    }
+    if (localCalendar.get(11) >= 4)
     {
-      localNoSuchFieldException.printStackTrace();
-      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      a();
+      bczr.a(paramContext, "glamour_has_update_today", str);
     }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
-      }
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bckl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,17 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class amjv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class amjv
+  implements DialogInterface.OnDismissListener
 {
-  public amjv(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
-  
-  public void onGlobalLayout()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      ColorNoteSmallScreenRelativeLayout.a(this.a);
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    amju.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjv
  * JD-Core Version:    0.7.0.1
  */

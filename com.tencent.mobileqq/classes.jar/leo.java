@@ -1,75 +1,49 @@
-import java.io.File;
+import com.tencent.qphone.base.util.Cryptor;
+import org.json.JSONObject;
 
 public class leo
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public final String a = "uid";
+  public final String b = "ukey";
+  public final String c = "^%QAI$I+j{2HuP0L";
   public String d;
+  public String e;
   
-  public int a()
+  public static leo a(String paramString)
   {
-    if (this.a == 1) {
-      return 2;
+    leo localleo = new leo();
+    if (localleo.a(paramString)) {
+      return localleo;
     }
-    if (this.a == 4) {
-      return 1;
-    }
-    if (this.a == 2) {
-      return 4;
-    }
-    if (this.a == 8) {
-      return 3;
-    }
-    return 0;
+    return null;
   }
   
-  public String a()
+  private boolean a(String paramString)
   {
-    loy localloy = new loy('=', ';');
-    localloy.a("s_path", this.jdField_b_of_type_JavaLangString);
-    if (a())
+    try
     {
-      localloy.a("i_fps", this.jdField_b_of_type_Int);
-      localloy.a("i_bitrate", this.jdField_c_of_type_Int);
-      localloy.a("s_outpath", this.d);
-      File localFile = new File(this.d);
-      if (localFile.exists()) {
-        localFile.delete();
+      paramString = bdbi.decode(paramString, 0);
+      paramString = new JSONObject(new String(new Cryptor().decrypt(paramString, "^%QAI$I+j{2HuP0L".getBytes())));
+      if (paramString.has("uid")) {
+        this.d = paramString.getString("uid");
       }
-    }
-    for (;;)
-    {
-      return localloy.a();
-      localloy.a("s_expMd5", this.jdField_c_of_type_JavaLangString);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.a == 2) || (this.a == 8)) {
-      bool1 = true;
-    }
-    do
-    {
-      do
+      for (int i = 1; (i != 0) && (paramString.has("ukey")); i = 0)
       {
-        return bool1;
-        bool1 = bool2;
-      } while (this.a == 1);
-      bool1 = bool2;
-    } while (this.a != 4);
+        this.e = paramString.getString("ukey");
+        return true;
+      }
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     leo
  * JD-Core Version:    0.7.0.1
  */

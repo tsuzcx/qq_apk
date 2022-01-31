@@ -1,72 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.2;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.3;
 
 public class amwb
-  extends ampa<amwc>
+  extends Handler
 {
-  public int a()
+  public amwb(amvz paramamvz, Looper paramLooper)
   {
-    return 362;
+    super(paramLooper);
   }
   
-  @NonNull
-  public amwc a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new amwc();
-  }
-  
-  @Nullable
-  public amwc a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    switch (paramMessage.what)
     {
-      amwc localamwc = amwc.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("SlideShowStoryConfig", 2, "onParsed " + paramArrayOfamph[0].a);
-      }
-      return localamwc;
+    default: 
+      return;
+    case 100: 
+      anbk.a().a(new ARCamera.ARCameraHandler.1(this));
+      removeMessages(100);
+      sendEmptyMessageDelayed(100, 3000L);
+      return;
+    case 101: 
+      anbk.a().a(new ARCamera.ARCameraHandler.2(this));
+      return;
     }
-    return null;
-  }
-  
-  public Class<amwc> a()
-  {
-    return amwc.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowStoryConfig", 2, "onReqFailed");
-    }
-  }
-  
-  public void a(amwc paramamwc)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowStoryConfig", 2, new Object[] { paramamwc });
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    anbk.a().a(new ARCamera.ARCameraHandler.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwb
  * JD-Core Version:    0.7.0.1
  */

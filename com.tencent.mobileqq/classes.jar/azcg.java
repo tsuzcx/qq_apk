@@ -1,23 +1,69 @@
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
-final class azcg
-  implements QQPermissionCallback
+public class azcg
 {
-  azcg(AppActivity paramAppActivity) {}
+  public static int a;
+  public static boolean a;
+  public static boolean b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  static
   {
-    if (!this.a.isFinishing()) {
-      bbdj.b(this.a);
-    }
+    jdField_a_of_type_Int = 1500;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public static boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    }
+    boolean bool = azcw.a(azcw.r);
+    if (bool) {
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
+      }
+    }
+    while (Build.VERSION.SDK_INT < 18) {
+      return false;
+    }
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportPre_SendEncode=" + b + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    }
+    if (Build.VERSION.SDK_INT < 18) {}
+    do
+    {
+      boolean bool;
+      do
+      {
+        do
+        {
+          return false;
+          bool = azcw.e(azcw.o);
+          if (!bool) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool);
+        return false;
+        bool = azcw.a(azcw.r);
+        if (!bool) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool + " hardware Black");
+      return false;
+    } while ((!b) || (!jdField_a_of_type_Boolean));
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azcg
  * JD-Core Version:    0.7.0.1
  */

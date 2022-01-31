@@ -1,38 +1,38 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.content.Context;
-import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import cooperation.plugin.PluginBaseActivity;
-import quo;
-import qus;
-import qut;
-import ram;
+import rkd;
+import rkh;
+import rki;
+import rqj;
 
 public class VideoShareHelper$4$1$1
   implements Runnable
 {
-  public VideoShareHelper$4$1$1(qut paramqut) {}
+  public VideoShareHelper$4$1$1(rki paramrki) {}
   
   public void run()
   {
-    quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo).a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    if ((quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo) instanceof BaseActivity)) {
-      bcql.a(quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo), -1, quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo).getString(2131699674), 0).b(((BaseActivity)quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo)).getTitleBarHeight());
+    rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd).a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    if ((rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd) instanceof BaseActivity)) {
+      QQToast.a(rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd), -1, rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd).getString(2131700042), 0).b(((BaseActivity)rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd)).getTitleBarHeight());
     }
     for (;;)
     {
-      quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo).a(quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo), this.a.jdField_a_of_type_Qus.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
+      rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd).a(rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd), this.a.jdField_a_of_type_Rkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
       return;
-      if ((quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo) instanceof PluginBaseActivity)) {
-        bcql.a(quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo), -1, quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo).getString(2131699674), 0).b(((PluginBaseActivity)quo.a(this.a.jdField_a_of_type_Qus.jdField_a_of_type_Quo)).g());
+      if ((rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd) instanceof PluginBaseActivity)) {
+        QQToast.a(rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd), -1, rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd).getString(2131700042), 0).b(((PluginBaseActivity)rkd.a(this.a.jdField_a_of_type_Rkh.jdField_a_of_type_Rkd)).g());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper.4.1.1
  * JD-Core Version:    0.7.0.1
  */

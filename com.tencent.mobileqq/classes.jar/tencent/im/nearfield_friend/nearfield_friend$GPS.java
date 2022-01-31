@@ -16,7 +16,7 @@ public final class nearfield_friend$GPS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_friend.nearfield_friend.GPS
  * JD-Core Version:    0.7.0.1
  */

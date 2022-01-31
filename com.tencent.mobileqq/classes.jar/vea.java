@@ -1,16 +1,14 @@
-public class vea
+public abstract interface vea
 {
-  public static String a(String paramString)
-  {
-    if (paramString != null) {
-      return "file://" + paramString;
-    }
-    return null;
-  }
+  public abstract void a(vge paramvge);
+  
+  public abstract void b(vge paramvge);
+  
+  public abstract void c(vge paramvge);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vea
  * JD-Core Version:    0.7.0.1
  */

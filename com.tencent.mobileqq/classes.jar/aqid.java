@@ -1,29 +1,37 @@
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
+import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aqid
-  implements TouchWebView.OnScrollChangedListener
+  implements TextWatcher
 {
-  public aqid(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public aqid(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramInt4 > paramInt2) {
-      if (paramInt2 == 0) {
-        this.a.a.b();
-      }
+    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
+      armz.a(BaseApplicationImpl.getContext().getString(2131694539));
     }
-    while ((paramInt4 >= paramInt2) || (paramInt2 < this.a.c.getHeight())) {
+    while (TextUtils.isEmpty(paramEditable)) {
       return;
     }
-    this.a.a.a();
+    MPFileVerifyPwdView.b(this.a).setEnabled(true);
+    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqid
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,26 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.Arrays;
 
-class akjx
-  implements BusinessObserver
+public class akjx
 {
-  akjx(akjw paramakjw) {}
+  public int a;
+  public boolean a;
+  public int[] a;
+  public int b;
+  public int[] b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public String toString()
   {
-    if ((paramInt == 2004) && (paramBoolean) && (QLog.isColorLevel())) {
-      QLog.d("ActivateFriends.Manager", 2, "acs msg succ");
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("userStatus:").append(this.d).append(",roleId:").append(this.jdField_a_of_type_Int).append(",dressIds:").append(Arrays.toString(this.jdField_a_of_type_ArrayOfInt)).append(",threeRoleId:").append(this.jdField_b_of_type_Int).append(",threeDressIds:").append(Arrays.toString(this.jdField_b_of_type_ArrayOfInt));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjx
  * JD-Core Version:    0.7.0.1
  */

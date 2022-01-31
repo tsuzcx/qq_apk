@@ -1,25 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import org.json.JSONObject;
 
 public class rdd
-  implements Animation.AnimationListener
 {
-  public rdd(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  rdd(rcz paramrcz, JSONObject paramJSONObject)
   {
-    ReadInJoyListViewGroup.a(this.a).setVisibility(0);
+    if (paramJSONObject == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sActivityId");
+    this.b = paramJSONObject.optString("sGiftName");
+    this.c = paramJSONObject.optString("sNeedRole");
+    this.jdField_a_of_type_Long = paramJSONObject.optInt("iGiftId");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdd
  * JD-Core Version:    0.7.0.1
  */

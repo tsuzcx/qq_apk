@@ -2,26 +2,26 @@ package com.tencent.widget;
 
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
-import bfpc;
-import bfpe;
+import bhpy;
+import bhqa;
 
 public class ActionSheet$3
   implements Runnable
 {
-  public ActionSheet$3(bfpc parambfpc) {}
+  public ActionSheet$3(bhpy parambhpy) {}
   
   public void run()
   {
-    bfpc.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bfpc.a(this.this$0).getHeight()));
-    bfpc.a(this.this$0).setDuration(200L);
-    bfpc.a(this.this$0).setFillAfter(true);
-    bfpc.a(this.this$0).startAnimation(bfpc.a(this.this$0));
-    bfpc.a(this.this$0).setAnimationListener(new bfpe(this));
+    bhpy.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bhpy.a(this.this$0).getHeight()));
+    bhpy.a(this.this$0).setDuration(200L);
+    bhpy.a(this.this$0).setFillAfter(true);
+    bhpy.a(this.this$0).startAnimation(bhpy.a(this.this$0));
+    bhpy.a(this.this$0).setAnimationListener(new bhqa(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.ActionSheet.3
  * JD-Core Version:    0.7.0.1
  */

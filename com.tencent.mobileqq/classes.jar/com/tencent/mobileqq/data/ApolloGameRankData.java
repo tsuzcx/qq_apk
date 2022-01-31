@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import auko;
+import awbv;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="mGameId,mFriendUin")
 public class ApolloGameRankData
-  extends auko
+  extends awbv
 {
   private static final String TAG = "ApolloGameRankData";
   public String mFriendUin;
@@ -46,7 +46,7 @@ public class ApolloGameRankData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloGameRankData
  * JD-Core Version:    0.7.0.1
  */

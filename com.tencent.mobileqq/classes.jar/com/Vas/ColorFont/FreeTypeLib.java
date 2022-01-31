@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
-import bbdh;
+import bdcb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import i;
@@ -28,9 +28,9 @@ public class FreeTypeLib
   {
     int i = 1;
     int[] arrayOfInt = a();
-    int j = (int)bbdh.b();
+    int j = (int)bdcb.b();
     int k = Runtime.getRuntime().availableProcessors();
-    int m = (int)(bbdh.d() / 1024L);
+    int m = (int)(bdcb.d() / 1024L);
     i.a("FreeTypeLib", "......cpuFrequency:" + j + "   maxMemory:" + m);
     int n = arrayOfInt[0];
     int i1 = arrayOfInt[1];
@@ -77,7 +77,7 @@ public class FreeTypeLib
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.Vas.ColorFont.FreeTypeLib
  * JD-Core Version:    0.7.0.1
  */

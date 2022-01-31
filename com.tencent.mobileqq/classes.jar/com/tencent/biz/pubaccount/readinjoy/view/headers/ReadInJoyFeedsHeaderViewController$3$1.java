@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import akiz;
-import roj;
+import amap;
+import sei;
 
 class ReadInJoyFeedsHeaderViewController$3$1
   implements Runnable
@@ -14,13 +14,13 @@ class ReadInJoyFeedsHeaderViewController$3$1
       return;
     }
     this.a.this$0.f();
-    this.a.this$0.jdField_a_of_type_Akiz = new akiz(this.a.a);
-    this.a.this$0.jdField_a_of_type_Akiz.a(this.a.a, 6);
+    this.a.this$0.jdField_a_of_type_Amap = new amap(this.a.a);
+    this.a.this$0.jdField_a_of_type_Amap.a(this.a.a, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController.3.1
  * JD-Core Version:    0.7.0.1
  */

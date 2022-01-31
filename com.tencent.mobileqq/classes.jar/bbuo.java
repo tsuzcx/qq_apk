@@ -1,46 +1,31 @@
-import android.net.Uri;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
+import org.json.JSONException;
 
 public class bbuo
-  extends bbwt
+  implements View.OnClickListener
 {
-  public bbuo(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
+  public bbuo(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
   
-  public void onDone(bbwu parambbwu)
+  public void onClick(View paramView)
   {
-    super.onDone(parambbwu);
-    if (QLog.isColorLevel()) {
-      QLog.d("PathTraceManager", 1, "voice down");
-    }
-    parambbwu = new File(this.jdField_a_of_type_JavaLangString);
     try
     {
-      nav.a(parambbwu, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
-      i = 1;
+      CheckArithHWResultFragment.a(this.a, CheckArithHWResultFragment.a(this.a).a(), CheckArithHWResultFragment.a(this.a).a());
+      return;
     }
-    catch (IOException parambbwu)
+    catch (JSONException paramView)
     {
-      for (;;)
-      {
-        QLog.i("PathTraceManager", 1, "unzip fail");
-        int i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      QLog.d("PathTraceManager", 1, "unzip success");
-      if (this.b != null) {
-        bbcf.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
-      }
+      paramView.printStackTrace();
+      xmh.a("QQ.Troop.homework.CheckArithHWResultFragment//onClick toJSON error:" + paramView, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbuo
  * JD-Core Version:    0.7.0.1
  */

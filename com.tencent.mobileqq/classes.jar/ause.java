@@ -1,75 +1,71 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.PrecoverResource;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.dating.FansEntity;
+import java.util.List;
 
-class ause
-  extends QIPCModule
+public class ause
+  implements alkr
 {
-  ause(ausd paramausd, String paramString)
-  {
-    super(paramString);
-  }
+  public void a(String paramString1, String paramString2, Object paramObject) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  protected void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, String paramString1, List<auwl> paramList, String paramString2, int paramInt1, int paramInt2) {}
+  
+  public void a(boolean paramBoolean, List<FansEntity> paramList) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void c(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PrecoverIPCServer", 2, new Object[] { "onCall, action=" + paramString + ", params=" + paramBundle + ", callbackId=", Integer.valueOf(paramInt) });
-    }
-    if (paramBundle == null) {
-      QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, params is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
-    }
-    do
+    switch (paramInt)
     {
-      Object localObject;
-      do
+    case 9: 
+    case 10: 
+    case 11: 
+    case 13: 
+    default: 
+      return;
+    case 4: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
+      return;
+    case 12: 
+      a(paramBoolean);
+      return;
+    case 5: 
+      paramObject = (Object[])paramObject;
+      if ((paramBoolean) && (paramObject != null) && (paramObject.length == 1))
       {
-        do
-        {
-          return null;
-          if (ausd.a(this.a) == null)
-          {
-            QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, mManager is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
-            return null;
-          }
-          paramBundle.putString("key_action", paramString);
-          if (ausc.a.equals(paramString)) {
-            return ausd.a(this.a, paramBundle, paramInt);
-          }
-          if (ausc.b.equals(paramString))
-          {
-            paramString = ausd.a(this.a, paramBundle, paramInt);
-            if (paramString.isSuccess())
-            {
-              localObject = (PrecoverResource)paramBundle.getParcelable("resource");
-              if (QLog.isColorLevel()) {
-                QLog.d("PrecoverIPCServer", 2, "onCall, params.getParcelable, res=" + localObject);
-              }
-              if (ausd.a(this.a).a().a((PrecoverResource)localObject, new Object[] { "PrecoverIPCServer_MODEL", Integer.valueOf(paramInt) })) {
-                return EIPCResult.createResult(11, paramBundle);
-              }
-              paramBundle.putInt("errCode", -2);
-              paramBundle.putString("errDesc", "args invalid or file already exist!");
-              ausd.a(this.a).callbackResult(paramInt, EIPCResult.createResult(-2, paramBundle));
-            }
-            return paramString;
-          }
-        } while (!ausc.c.equals(paramString));
-        paramString = paramBundle.getString("businessId");
-        localObject = paramBundle.getString("md5");
-      } while ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject)));
-      paramString = ausd.a(this.a).a().a((String)localObject);
-    } while (paramString == null);
-    paramBundle.putLong("key_total", paramString.a);
-    paramBundle.putLong("key_loaded", paramString.b);
-    return EIPCResult.createSuccessResult(paramBundle);
+        a(paramBoolean, (List)paramObject[0]);
+        return;
+      }
+      a(false, null);
+      return;
+    case 6: 
+      c(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
+      return;
+    case 7: 
+      b(paramBoolean);
+      return;
+    case 8: 
+      paramObject = (Object[])paramObject;
+      a((String)paramObject[0], (String)paramObject[1], paramObject[2]);
+      return;
+    case 14: 
+      b(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
+      return;
+    }
+    a(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ause
  * JD-Core Version:    0.7.0.1
  */

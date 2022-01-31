@@ -1,323 +1,275 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.biz.pubaccount.readinjoy.video.player.ReadinjoyPlayerReporter.1;
-import com.tencent.biz.pubaccount.readinjoy.video.player.ReadinjoyPlayerReporter.3;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.net.Uri;
+import android.os.Binder;
+import android.os.Build.VERSION;
+import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import java.lang.reflect.Method;
 
 public class qyt
-  extends qyl
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private VideoPreDownloadMgr jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr;
-  public qbu a;
-  private qyu jdField_a_of_type_Qyu;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  
-  public qyt(int paramInt, qyu paramqyu)
+  public static boolean a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Qbu = new qbu();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Qyu = paramqyu;
+    int i = Build.VERSION.SDK_INT;
+    if (i >= 23) {
+      return Settings.canDrawOverlays(paramContext);
+    }
+    if (i >= 19) {
+      return a(paramContext, 24);
+    }
+    return true;
   }
   
-  private void a(String paramString1, String paramString2)
+  @RequiresApi(19)
+  private static boolean a(Context paramContext, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr != null)
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramString2, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadinjoyPlayerReporter", 2, "视频预下载: url:" + paramString1 + " ;isPreDownloadHit: " + this.jdField_b_of_type_Boolean);
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramString1, this.jdField_b_of_type_Boolean);
-    }
-  }
-  
-  private void a(qbu paramqbu)
-  {
-    this.jdField_c_of_type_Boolean = true;
-    ThreadManager.excute(new ReadinjoyPlayerReporter.1(this, paramqbu), 16, null, true);
-  }
-  
-  private void b(String paramString)
-  {
-    this.jdField_a_of_type_Qbu = new qbu();
-    this.jdField_a_of_type_Qbu.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Qbu.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Qbu.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Qbu.n = 0;
-    this.jdField_a_of_type_Qbu.jdField_o_of_type_Int = 0;
-    this.jdField_a_of_type_Qbu.jdField_p_of_type_Int = 0;
-    this.jdField_a_of_type_Qbu.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_Qbu.jdField_g_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Qbu.jdField_g_of_type_Boolean = false;
-    this.jdField_a_of_type_Qbu.jdField_h_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Qyu != null) {
-      this.jdField_a_of_type_Qyu.a(this.jdField_a_of_type_Qbu);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Qbu.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Qbu.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    this.jdField_a_of_type_Qbu.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Qbu.jdField_c_of_type_JavaLangString = (paramInt1 + ":" + paramInt2);
-    this.jdField_a_of_type_Qbu.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    int i = 0;
-    switch (paramInt)
-    {
-    }
-    label183:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              this.jdField_a_of_type_Qbu.jdField_d_of_type_Long = SystemClock.uptimeMillis();
-              return;
-              paramObject = this.jdField_a_of_type_Qbu;
-              paramObject.jdField_e_of_type_Long += SystemClock.uptimeMillis() - this.jdField_a_of_type_Qbu.jdField_d_of_type_Long;
-              paramObject = this.jdField_a_of_type_Qbu;
-              paramObject.jdField_b_of_type_Int += 1;
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_DECODER_BLOCK");
-              }
-              paramObject = this.jdField_a_of_type_Qbu;
-              paramObject.n += 1;
-              return;
-              try
-              {
-                paramObject = new JSONObject((String)paramObject);
-                paramInt = paramObject.optInt("decoderMode", 0);
-              }
-              catch (Exception paramObject)
-              {
-                for (;;)
-                {
-                  int j;
-                  paramInt = 0;
-                }
-              }
-              try
-              {
-                j = paramObject.optInt("skipFrameCount", 1);
-                i = j;
-              }
-              catch (Exception paramObject)
-              {
-                break label183;
-              }
-              if (i > 0)
-              {
-                paramObject = this.jdField_a_of_type_Qbu;
-                paramObject.jdField_o_of_type_Int += i;
-              }
-              paramObject = this.jdField_a_of_type_Qbu;
-              paramObject.jdField_p_of_type_Int += i;
-            } while (!QLog.isColorLevel());
-            QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_SKIP_ONE_FRAME decoderMode = " + paramInt + ", skipFrameCount = " + i + ", totalSkipCount = " + this.jdField_a_of_type_Qbu.jdField_o_of_type_Int + ", finalSkipCount = " + this.jdField_a_of_type_Qbu.jdField_p_of_type_Int);
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_HW_DECODE_FAILED");
-            }
-            this.jdField_a_of_type_Qbu.jdField_f_of_type_Boolean = true;
-          } while (!(paramObject instanceof String));
-          this.jdField_a_of_type_Qbu.jdField_g_of_type_JavaLangString = ((String)paramObject);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_CHANGE_HW_BACKUP_URL");
-          }
-          this.jdField_a_of_type_Qbu.jdField_g_of_type_Boolean = true;
-          return;
-        } while (paramObject == null);
-        paramObject = ((String)paramObject).split(":", 2);
-      } while ((paramObject == null) || (paramObject.length != 2));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadinjoyPlayerReporter", 2, "PERFORMANCE_REPORT method:" + paramObject[0] + "\ntimeJson:" + paramObject[1]);
-      }
-    } while (!"prepare".equals(paramObject[0]));
-    this.jdField_a_of_type_Qbu.jdField_m_of_type_JavaLangString = paramObject[1];
-  }
-  
-  public void a(VideoPreDownloadMgr paramVideoPreDownloadMgr)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr = paramVideoPreDownloadMgr;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Qbu.jdField_h_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    b(paramString1);
-    this.jdField_a_of_type_Qbu.jdField_m_of_type_Int = 0;
-    if (!paramBoolean1) {
-      this.jdField_a_of_type_Qbu.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    }
-    if (this.jdField_a_of_type_Qbu != null)
-    {
-      this.jdField_a_of_type_Qbu.n = 0;
-      this.jdField_a_of_type_Qbu.jdField_o_of_type_Int = 0;
-      this.jdField_a_of_type_Qbu.jdField_p_of_type_Int = 0;
-      this.jdField_a_of_type_Qbu.jdField_g_of_type_Boolean = false;
-      this.jdField_a_of_type_Qbu.jdField_h_of_type_Boolean = false;
-      this.jdField_a_of_type_Qbu.jdField_i_of_type_Boolean = paramBoolean2;
-    }
-    a(paramString1, paramString2);
-  }
-  
-  public void a(ooa paramooa)
-  {
-    int i = 0;
-    this.jdField_a_of_type_Qbu.jdField_i_of_type_Long = onu.a().a.longValue();
-    this.jdField_a_of_type_Qbu.jdField_d_of_type_Int = paramooa.jdField_d_of_type_Int;
-    this.jdField_a_of_type_Qbu.jdField_d_of_type_Boolean = paramooa.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Qbu.jdField_e_of_type_JavaLangString = paramooa.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_Qbu.jdField_e_of_type_Boolean = paramooa.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Qbu.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_Qbu.jdField_g_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Qbu.jdField_k_of_type_JavaLangString = paramooa.jdField_d_of_type_JavaLangString;
-    this.jdField_a_of_type_Qbu.jdField_l_of_type_JavaLangString = paramooa.jdField_e_of_type_JavaLangString;
-    Object localObject = this.jdField_a_of_type_Qbu;
-    boolean bool;
-    if (!TextUtils.isEmpty(paramooa.jdField_f_of_type_JavaLangString)) {
-      bool = true;
-    }
-    for (;;)
-    {
-      ((qbu)localObject).jdField_h_of_type_Boolean = bool;
+      AppOpsManager localAppOpsManager = (AppOpsManager)paramContext.getSystemService("appops");
       try
       {
-        localObject = new URL(paramooa.jdField_a_of_type_JavaLangString).getHost();
-        paramooa = ayxg.a().a((String)localObject, 1006);
-        qbu localqbu = this.jdField_a_of_type_Qbu;
-        if (paramooa == null)
+        paramContext = (Integer)localAppOpsManager.getClass().getDeclaredMethod("checkOp", new Class[] { Integer.TYPE, Integer.TYPE, String.class }).invoke(localAppOpsManager, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(Binder.getCallingUid()), paramContext.getApplicationContext().getPackageName() });
+        if (QLog.isColorLevel()) {
+          QLog.d("FloatWindowOpUtils", 1, "0 invoke " + paramContext);
+        }
+        if (paramContext != null)
         {
-          localqbu.jdField_q_of_type_Int = i;
-          localqbu = this.jdField_a_of_type_Qbu;
-          if (paramooa != null) {
-            break label206;
+          paramInt = paramContext.intValue();
+          if (paramInt == 0) {
+            return true;
           }
         }
-        label206:
-        for (paramooa = "";; paramooa = paramooa.toString())
-        {
-          localqbu.j = paramooa;
-          this.jdField_a_of_type_Qbu.jdField_i_of_type_JavaLangString = ((String)localObject);
-          return;
-          i = paramooa.size();
-          break;
-        }
-        bool = false;
+        return false;
       }
-      catch (Exception paramooa)
+      catch (Exception paramContext)
       {
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.e("FloatWindowOpUtils", 1, "checkOp failed.", paramContext);
+        }
       }
     }
+    return true;
   }
   
-  public void a(qty paramqty)
+  public static boolean a(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Qbu.jdField_l_of_type_Int = paramqty.b();
-    this.jdField_a_of_type_Qbu.jdField_k_of_type_Int = paramqty.a();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Qbu.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    qbu localqbu = this.jdField_a_of_type_Qbu;
-    if (paramBoolean) {}
-    for (int i = 2;; i = 1)
+    if ((paramContext == null) || (paramIntent == null)) {}
+    do
     {
-      localqbu.jdField_m_of_type_Int = i;
-      return;
-    }
+      return false;
+      paramContext = paramIntent.resolveActivityInfo(paramContext.getPackageManager(), 65536);
+    } while ((paramContext == null) || (!paramContext.exported));
+    return true;
   }
   
-  public void b(qty paramqty)
+  public static boolean b(Context paramContext)
   {
-    this.jdField_a_of_type_Qbu.jdField_a_of_type_Long = paramqty.a(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Qbu.jdField_e_of_type_Int = paramqty.c();
-    this.jdField_a_of_type_Qbu.jdField_m_of_type_Long = paramqty.c();
-    this.jdField_a_of_type_Qbu.jdField_f_of_type_Int = paramqty.d();
-    this.jdField_a_of_type_Qbu.jdField_c_of_type_Boolean = paramqty.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Qbu.jdField_p_of_type_Long = paramqty.jdField_b_of_type_Long;
-    this.jdField_a_of_type_Qbu.jdField_o_of_type_Long = paramqty.jdField_a_of_type_Long;
-    this.jdField_a_of_type_Qbu.jdField_q_of_type_Long = paramqty.f();
-    this.jdField_a_of_type_Qbu.r = paramqty.i();
-    this.jdField_a_of_type_Qbu.jdField_f_of_type_JavaLangString = paramqty.a();
-    this.jdField_a_of_type_Qbu.t = paramqty.h();
-    this.jdField_a_of_type_Qbu.u = paramqty.g();
-    if ((this.jdField_a_of_type_Qbu.jdField_a_of_type_Long == 0L) && (this.jdField_a_of_type_Qbu.jdField_c_of_type_Long == 0L))
-    {
-      this.jdField_a_of_type_Qbu.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Qbu.jdField_b_of_type_Long);
-      this.jdField_a_of_type_Qbu.jdField_e_of_type_Long = this.jdField_a_of_type_Qbu.jdField_c_of_type_Long;
+    boolean bool2 = false;
+    if (Build.VERSION.SDK_INT >= 23) {
+      bool2 = c(paramContext);
     }
-    this.jdField_a_of_type_Qbu.v = qwc.a().a();
-    paramqty = qwc.a().a();
-    this.jdField_a_of_type_Qbu.z = paramqty[0];
-    this.jdField_a_of_type_Qbu.A = paramqty[1];
-    this.jdField_a_of_type_Qbu.x = paramqty[2];
-    this.jdField_a_of_type_Qbu.y = paramqty[3];
-    this.jdField_a_of_type_Qbu.w = paramqty[4];
-    a(this.jdField_a_of_type_Qbu);
+    boolean bool1 = bool2;
+    if (!bool2) {
+      bool1 = h(paramContext);
+    }
+    bool2 = bool1;
+    if (!bool1) {
+      bool2 = i(paramContext);
+    }
+    bool1 = bool2;
+    if (!bool2) {
+      bool1 = j(paramContext);
+    }
+    bool2 = bool1;
+    if (!bool1) {
+      bool2 = g(paramContext);
+    }
+    bool1 = bool2;
+    if (!bool2) {
+      bool1 = f(paramContext);
+    }
+    bool2 = bool1;
+    if (!bool1) {
+      bool2 = d(paramContext);
+    }
+    bool1 = bool2;
+    if (!bool2) {
+      bool1 = e(paramContext);
+    }
+    return bool1;
   }
   
-  public void c(qty paramqty)
+  @RequiresApi(api=23)
+  private static boolean c(Context paramContext)
   {
-    if (this.jdField_a_of_type_Qbu.jdField_c_of_type_Long != 0L) {
-      return;
-    }
-    this.jdField_a_of_type_Qbu.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Qbu.jdField_b_of_type_Long);
-    Object localObject = this.jdField_a_of_type_Qbu;
-    ((qbu)localObject).jdField_e_of_type_Long += this.jdField_a_of_type_Qbu.jdField_c_of_type_Long;
-    localObject = this.jdField_a_of_type_Qbu;
-    ((qbu)localObject).jdField_b_of_type_Int += 1;
-    if (QLog.isColorLevel())
+    boolean bool = false;
+    Intent localIntent = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + paramContext.getPackageName()));
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("doReportOnVideoPrepared: vid=").append(this.jdField_a_of_type_Qbu.jdField_b_of_type_JavaLangString).append(", 预加载状态：").append(this.jdField_a_of_type_Qbu.jdField_m_of_type_Int).append(", 预下载命中：").append(this.jdField_b_of_type_Boolean).append(", 首帧耗时：").append(this.jdField_a_of_type_Qbu.jdField_c_of_type_Long);
-      QLog.d("ReadinjoyPlayerReporter", 2, ((StringBuilder)localObject).toString());
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
     }
-    ThreadManager.excute(new ReadinjoyPlayerReporter.3(this, paramqty), 16, null, true);
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean d(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent();
+    localIntent.setClassName("com.huawei.systemmanager", "com.huawei.systemmanager.addviewmonitor.AddViewMonitorActivity");
+    localIntent.putExtra("packageName", paramContext.getPackageName());
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean e(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("huawei.intent.action.NOTIFICATIONMANAGER");
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean f(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("com.meizu.safe.security.SHOW_APPSEC");
+    localIntent.setClassName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
+    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean g(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("com.iqoo.secure");
+    localIntent.setClassName("com.iqoo.secure", "com.iqoo.secure.MainActivity");
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean h(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+    localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean i(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+    localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.RealAppPermissionsEditorActivity");
+    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean j(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+    localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.PermissionsEditorActivity");
+    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qyt
  * JD-Core Version:    0.7.0.1
  */

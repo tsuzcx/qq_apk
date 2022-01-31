@@ -1,39 +1,12 @@
-import NS_USER_ACTION_REPORT.UserActionReport;
-import NS_USER_ACTION_REPORT.UserActionReportReq;
-import NS_USER_ACTION_REPORT.UserCommReport;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
-
-public class bhew
-  extends QzoneExternalRequest
+public abstract interface bhew
 {
-  private final JceStruct a;
+  public abstract void onDateCancel();
   
-  public bhew(UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
-  {
-    this.a = new UserActionReportReq(1, paramUserCommReport, paramArrayList);
-    this.needCompress = false;
-  }
-  
-  public String getCmdString()
-  {
-    return "MobileReport.UserActionReport";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "UserActionReport";
-  }
+  public abstract void onDateConfirm(String paramString1, String paramString2, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhew
  * JD-Core Version:    0.7.0.1
  */

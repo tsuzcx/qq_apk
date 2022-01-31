@@ -1,12 +1,16 @@
-import cooperation.qzone.util.TimeCostTrace;
+import android.view.animation.Interpolator;
 
-public abstract interface bhov
+public class bhov
+  implements Interpolator
 {
-  public abstract void reportPerfTime(TimeCostTrace paramTimeCostTrace);
+  public float getInterpolation(float paramFloat)
+  {
+    return bhnq.a(paramFloat);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhov
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import advs;
+import afsf;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForPic;
 
 public class PicItemBuilder$7
   implements Runnable
 {
-  public PicItemBuilder$7(advs paramadvs, MessageForPic paramMessageForPic) {}
+  public PicItemBuilder$7(afsf paramafsf, MessageForPic paramMessageForPic) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class PicItemBuilder$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PicItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

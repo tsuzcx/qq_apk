@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.adapter;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -8,13 +8,13 @@ import android.support.v4.view.PagerAdapter;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import axle;
-import bfpt;
-import bjav;
-import bjbe;
-import bjcz;
-import bjky;
-import bkzp;
+import azgk;
+import bhqp;
+import blmf;
+import blmo;
+import blok;
+import blwi;
+import bnkz;
 import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.qphone.base.util.QLog;
@@ -30,58 +30,58 @@ public class QIMPtvTemplateViewPagerAdapter
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bfpt jdField_a_of_type_Bfpt;
-  bjky jdField_a_of_type_Bjky;
-  private bkzp jdField_a_of_type_Bkzp;
+  private bhqp jdField_a_of_type_Bhqp;
+  blwi jdField_a_of_type_Blwi;
+  private bnkz jdField_a_of_type_Bnkz;
   public HashMap<Integer, GridView> a;
-  private List<bjcz> jdField_a_of_type_JavaUtilList;
+  private List<blok> jdField_a_of_type_JavaUtilList;
   
-  public QIMPtvTemplateViewPagerAdapter(Context paramContext, bjky parambjky, int paramInt)
+  public QIMPtvTemplateViewPagerAdapter(Context paramContext, blwi paramblwi, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bjky = parambjky;
+    this.jdField_a_of_type_Blwi = paramblwi;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bkzp = ((bkzp)bjav.a(3));
+    this.jdField_a_of_type_Bnkz = ((bnkz)blmf.a(3));
   }
   
-  public bjcz a(int paramInt)
+  public blok a(int paramInt)
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt) && (paramInt >= 0)) {
-      return (bjcz)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (blok)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
-  public bjcz a(bjcz parambjcz)
+  public blok a(blok paramblok)
   {
-    if (parambjcz == null) {
-      return parambjcz;
+    if (paramblok == null) {
+      return paramblok;
     }
     int i;
     label17:
     int j;
     label25:
-    bjcz localbjcz;
+    blok localblok;
     if (!AIManager.isDetectorReady(AEDetectorType.SEGMENT))
     {
       i = 1;
-      if (axle.h()) {
+      if (azgk.h()) {
         break label187;
       }
       j = 1;
       if ((j == 0) && (i == 0)) {
         break label190;
       }
-      localbjcz = new bjcz();
-      localbjcz.jdField_a_of_type_Int = parambjcz.jdField_a_of_type_Int;
-      localbjcz.jdField_a_of_type_JavaLangString = parambjcz.jdField_a_of_type_JavaLangString;
-      localbjcz.b = parambjcz.b;
-      localbjcz.jdField_a_of_type_JavaUtilList = new ArrayList();
-      if ((parambjcz.jdField_a_of_type_JavaUtilList == null) || (parambjcz.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      localblok = new blok();
+      localblok.jdField_a_of_type_Int = paramblok.jdField_a_of_type_Int;
+      localblok.jdField_a_of_type_JavaLangString = paramblok.jdField_a_of_type_JavaLangString;
+      localblok.b = paramblok.b;
+      localblok.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if ((paramblok.jdField_a_of_type_JavaUtilList == null) || (paramblok.jdField_a_of_type_JavaUtilList.size() <= 0)) {
         break label198;
       }
-      parambjcz = parambjcz.jdField_a_of_type_JavaUtilList.iterator();
+      paramblok = paramblok.jdField_a_of_type_JavaUtilList.iterator();
     }
     label187:
     label190:
@@ -89,17 +89,17 @@ public class QIMPtvTemplateViewPagerAdapter
     for (;;)
     {
       label110:
-      if (!parambjcz.hasNext()) {
+      if (!paramblok.hasNext()) {
         break label198;
       }
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)parambjcz.next();
+      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramblok.next();
       if (((i != 0) && (localPtvTemplateInfo.kind == 7)) || ((j != 0) && (localPtvTemplateInfo.kind == 11))) {}
       for (int k = 1;; k = 0)
       {
         if (k != 0) {
           break label196;
         }
-        localbjcz.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
+        localblok.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
         break label110;
         i = 0;
         break label17;
@@ -109,10 +109,10 @@ public class QIMPtvTemplateViewPagerAdapter
       }
     }
     label198:
-    return localbjcz;
+    return localblok;
   }
   
-  public void a(List<bjcz> paramList)
+  public void a(List<blok> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
@@ -123,8 +123,8 @@ public class QIMPtvTemplateViewPagerAdapter
     paramViewGroup = (GridView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
     if (paramViewGroup != null)
     {
-      paramViewGroup = (bjbe)paramViewGroup.a();
-      this.jdField_a_of_type_Bkzp.a(paramViewGroup);
+      paramViewGroup = (blmo)paramViewGroup.a();
+      this.jdField_a_of_type_Bnkz.a(paramViewGroup);
     }
   }
   
@@ -140,16 +140,16 @@ public class QIMPtvTemplateViewPagerAdapter
     }
     GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
     int j;
-    bjbe localbjbe;
+    blmo localblmo;
     if (localGridView == null)
     {
       localGridView = new GridView(this.jdField_a_of_type_AndroidContentContext);
       localGridView.setNumColumns(-1);
-      int n = actj.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int n = aekt.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       localGridView.setColumnWidth(n);
-      int i = actj.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      j = actj.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      int k = actj.a(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int i = aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      j = aekt.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int k = aekt.a(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - k * 2;
       int m = (i1 + j) / (n + j);
       n = i1 - n * m;
@@ -161,36 +161,36 @@ public class QIMPtvTemplateViewPagerAdapter
         localGridView.setPadding(k, k, k, i * 4);
         localGridView.setClipToPadding(false);
         localGridView.setSelector(new ColorDrawable(0));
-        localbjbe = new bjbe(this.jdField_a_of_type_AndroidContentContext, localGridView, this.jdField_a_of_type_Bjky, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Bkzp.a(localbjbe, 112);
-        this.jdField_a_of_type_Bkzp.a(localbjbe, 113);
-        this.jdField_a_of_type_Bkzp.a(localbjbe, 114);
-        this.jdField_a_of_type_Bkzp.a(localbjbe, 115);
+        localblmo = new blmo(this.jdField_a_of_type_AndroidContentContext, localGridView, this.jdField_a_of_type_Blwi, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Bnkz.a(localblmo, 112);
+        this.jdField_a_of_type_Bnkz.a(localblmo, 113);
+        this.jdField_a_of_type_Bnkz.a(localblmo, 114);
+        this.jdField_a_of_type_Bnkz.a(localblmo, 115);
         if (paramInt == 0) {
-          this.jdField_a_of_type_Bkzp.a(localbjbe, 111);
+          this.jdField_a_of_type_Bnkz.a(localblmo, 111);
         }
-        localGridView.setOnItemClickListener(this.jdField_a_of_type_Bfpt);
+        localGridView.setOnItemClickListener(this.jdField_a_of_type_Bhqp);
         this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localGridView);
       }
     }
     for (;;)
     {
-      localbjbe.a(a((bjcz)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
-      localGridView.setAdapter(localbjbe);
+      localblmo.a(a((blok)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+      localGridView.setAdapter(localblmo);
       paramViewGroup.addView(localGridView);
       if (QLog.isColorLevel()) {
-        QLog.i("PtvTemplateViewPagerAdapter", 2, "instantiateItem: invoked. info: ptvTemplateAdapter = " + localbjbe);
+        QLog.i("PtvTemplateViewPagerAdapter", 2, "instantiateItem: invoked. info: ptvTemplateAdapter = " + localblmo);
       }
       return localGridView;
       localGridView.setHorizontalSpacing(j);
       break;
-      localbjbe = (bjbe)localGridView.a();
-      this.jdField_a_of_type_Bkzp.a(localbjbe, 112);
-      this.jdField_a_of_type_Bkzp.a(localbjbe, 113);
-      this.jdField_a_of_type_Bkzp.a(localbjbe, 114);
-      this.jdField_a_of_type_Bkzp.a(localbjbe, 115);
+      localblmo = (blmo)localGridView.a();
+      this.jdField_a_of_type_Bnkz.a(localblmo, 112);
+      this.jdField_a_of_type_Bnkz.a(localblmo, 113);
+      this.jdField_a_of_type_Bnkz.a(localblmo, 114);
+      this.jdField_a_of_type_Bnkz.a(localblmo, 115);
       if (paramInt == 0) {
-        this.jdField_a_of_type_Bkzp.a(localbjbe, 111);
+        this.jdField_a_of_type_Bnkz.a(localblmo, 111);
       }
     }
   }
@@ -202,7 +202,7 @@ public class QIMPtvTemplateViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.adapter.QIMPtvTemplateViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

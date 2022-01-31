@@ -1,48 +1,27 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public abstract class aqls
-  implements aqlt
+class aqls
+  implements View.OnClickListener
 {
-  protected long a;
-  protected ArrayList<aqlt> a;
-  protected boolean a;
-  public boolean b = true;
+  aqls(aqlr paramaqlr) {}
   
-  public aqls()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = 350L;
+    Object localObject = arni.a((FileInfo)((aqlt)paramView.getTag()).a);
+    localObject = new arhh(aqlr.a(this.a).app, aqlr.a(this.a), (FileManagerEntity)localObject, 10000);
+    localObject = new arhj(aqlr.a(this.a), (arhm)localObject);
+    ((arhj)localObject).a(8);
+    ((arhj)localObject).a(zen.a(paramView));
+    ((arhj)localObject).a();
   }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 350L;
-  }
-  
-  public void a(aqlt paramaqlt)
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramaqlt)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramaqlt);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqls
  * JD-Core Version:    0.7.0.1
  */

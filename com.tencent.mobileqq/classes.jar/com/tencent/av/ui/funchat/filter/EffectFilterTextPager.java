@@ -22,12 +22,12 @@ import com.tencent.av.business.manager.filter.FilterItem;
 import com.tencent.av.ui.AVActivity.AnimationTrigger;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lcg;
-import lga;
-import mmv;
-import mmw;
-import mmx;
-import mmy;
+import lek;
+import lid;
+import mpp;
+import mpq;
+import mpr;
+import mps;
 
 public class EffectFilterTextPager
   extends EffectCycleViewPager
@@ -48,7 +48,7 @@ public class EffectFilterTextPager
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter = new EffectFilterTextPager.FilterTextAdapter(paramContext);
     setAdapter(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter);
-    this.jdField_a_of_type_AndroidOsHandler = new mmv(this);
+    this.jdField_a_of_type_AndroidOsHandler = new mpp(this);
     setOnTouchListener(this);
     this.jdField_a_of_type_Int = -1;
   }
@@ -56,7 +56,7 @@ public class EffectFilterTextPager
   void a()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    lcg.c("EffectFilterTextPager", "showPromotionText ");
+    lek.c("EffectFilterTextPager", "showPromotionText ");
     int j = getChildCount();
     int i = 0;
     while (i < j)
@@ -68,7 +68,7 @@ public class EffectFilterTextPager
   
   public void a(int paramInt)
   {
-    lcg.c("EffectFilterTextPager", "dispearPromotionText view:");
+    lek.c("EffectFilterTextPager", "dispearPromotionText view:");
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, paramInt);
@@ -93,14 +93,14 @@ public class EffectFilterTextPager
       }
     }
     label172:
-    for (int i = 2131297538;; i = 2131297537)
+    for (int i = 2131297559;; i = 2131297558)
     {
       float f2 = getContext().getResources().getDimension(i);
-      lcg.c("EffectFilterTextPager", "changeLayout: " + paramBoolean + "|" + j + "|" + f1);
+      lek.c("EffectFilterTextPager", "changeLayout: " + paramBoolean + "|" + j + "|" + f1);
       i = 0;
       while (i < j)
       {
-        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131372250);
+        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131372606);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
         localLayoutParams.setMargins(localLayoutParams.leftMargin, (int)f2, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
         localImageView.setScaleX(f1);
@@ -115,19 +115,19 @@ public class EffectFilterTextPager
   public void b()
   {
     View localView = a();
-    lcg.c("EffectFilterTextPager", "dispearPromotionText_internal view:" + getCurrentItem() + "|" + localView);
+    lek.c("EffectFilterTextPager", "dispearPromotionText_internal view:" + getCurrentItem() + "|" + localView);
     if ((localView != null) && (localView.getVisibility() == 0))
     {
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
       localAlphaAnimation.setDuration(450L);
-      localAlphaAnimation.setAnimationListener(new mmx(this, localView));
+      localAlphaAnimation.setAnimationListener(new mpr(this, localView));
       localView.startAnimation(localAlphaAnimation);
     }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = Boolean.valueOf(VideoController.a().a().w);
+    paramView = Boolean.valueOf(VideoController.a().a().x);
     if (paramMotionEvent.getAction() == 0)
     {
       this.jdField_a_of_type_Float = 0.0F;
@@ -140,7 +140,7 @@ public class EffectFilterTextPager
       }
       if (this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger != null)
       {
-        if (!VideoController.a().a().w) {
+        if (!VideoController.a().a().x) {
           break label380;
         }
         this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.a();
@@ -155,14 +155,14 @@ public class EffectFilterTextPager
       if ((localObject instanceof Activity))
       {
         localObject = (Activity)localObject;
-        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131368189);
+        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131368335);
         if (localEditText != null)
         {
           localEditText.clearFocus();
           ((InputMethodManager)((Activity)localObject).getSystemService("input_method")).hideSoftInputFromWindow(localEditText.getWindowToken(), 0);
         }
       }
-      if ((!VideoController.a().a().w) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getPointerCount() > 1) || ((paramMotionEvent.getAction() == 2) && ((Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float) > 70.0F) || (Math.abs(paramMotionEvent.getY() - this.b) > 70.0F)))))
+      if ((!VideoController.a().a().x) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getPointerCount() > 1) || ((paramMotionEvent.getAction() == 2) && ((Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float) > 70.0F) || (Math.abs(paramMotionEvent.getY() - this.b) > 70.0F)))))
       {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger);
         if ((this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger != null) && (this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.a())) {
@@ -203,9 +203,9 @@ public class EffectFilterTextPager
     setCurrentItem(i + 1, false);
   }
   
-  public void setOnFilterListenner(mmy parammmy)
+  public void setOnFilterListenner(mps parammps)
   {
-    setOnPageChangeListener(new mmw(this, parammmy));
+    setOnPageChangeListener(new mpq(this, parammps));
   }
   
   public void setVisibility(int paramInt)
@@ -214,7 +214,7 @@ public class EffectFilterTextPager
     if (paramInt == 0)
     {
       a();
-      if (VideoController.a().a().au)
+      if (VideoController.a().a().av)
       {
         i = 4000;
         a(i);
@@ -236,7 +236,7 @@ public class EffectFilterTextPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterTextPager
  * JD-Core Version:    0.7.0.1
  */

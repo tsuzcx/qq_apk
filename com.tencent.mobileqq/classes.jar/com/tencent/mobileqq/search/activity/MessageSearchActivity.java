@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.activity;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -23,12 +23,12 @@ public class MessageSearchActivity
   
   protected String a()
   {
-    return ajya.a(2131706670);
+    return alpo.a(2131707042);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MessageSearchActivity
  * JD-Core Version:    0.7.0.1
  */

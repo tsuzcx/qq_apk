@@ -1,13 +1,5 @@
 package com.tencent.mobileqq.mini.websocket;
 
-import com.squareup.okhttp.Dispatcher;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.ws.WebSocket;
-import com.squareup.okhttp.ws.WebSocketCall;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.RequestPlugin.MiniAppWebsocketListener;
 import com.tencent.qphone.base.util.QLog;
@@ -18,13 +10,20 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
+import okhttp3.Dispatcher;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
+import okhttp3.WebSocket;
+import okio.ByteString;
 
 public class WebsocketRequestTask
 {
   public static AtomicInteger sId = new AtomicInteger();
   private RequestPlugin.MiniAppWebsocketListener listener;
   private OkHttpClient mOkHttpClient;
-  private WebSocketCall mWebSocket;
   private WebsocketRequestTask.RequestParam requestParam;
   
   public WebsocketRequestTask(WebsocketRequestTask.RequestParam paramRequestParam, RequestPlugin.MiniAppWebsocketListener paramMiniAppWebsocketListener)
@@ -41,13 +40,9 @@ public class WebsocketRequestTask
       }
     }
     localObject = ((Request.Builder)localObject).build();
-    this.mOkHttpClient = new OkHttpClient();
     long l = paramRequestParam.timeout / 1000 + 1;
-    this.mOkHttpClient.setConnectTimeout(l, TimeUnit.SECONDS);
-    this.mOkHttpClient.setWriteTimeout(l, TimeUnit.SECONDS);
-    this.mOkHttpClient.setReadTimeout(0L, TimeUnit.SECONDS);
-    this.mWebSocket = WebSocketCall.create(this.mOkHttpClient, (Request)localObject);
-    this.mWebSocket.enqueue(paramMiniAppWebsocketListener);
+    this.mOkHttpClient = new OkHttpClient().newBuilder().connectTimeout(l, TimeUnit.SECONDS).writeTimeout(l, TimeUnit.SECONDS).readTimeout(0L, TimeUnit.SECONDS).build();
+    this.mOkHttpClient.newWebSocket((Request)localObject, paramMiniAppWebsocketListener);
     this.listener = paramMiniAppWebsocketListener;
     this.requestParam = paramRequestParam;
   }
@@ -59,7 +54,7 @@ public class WebsocketRequestTask
     {
       localStringBuilder = new StringBuilder().append("closeSocket listener ： ").append(this.listener).append(";  listener.webSocket : ");
       if (this.listener == null) {
-        break label122;
+        break label123;
       }
     }
     for (WebSocket localWebSocket = this.listener.webSocket;; localWebSocket = null)
@@ -74,12 +69,12 @@ public class WebsocketRequestTask
       }
       catch (Throwable localThrowable)
       {
-        label122:
+        label123:
         QLog.e("WebsocketRequestTask", 1, "closeSocket error:", localThrowable);
         if ((localThrowable.getMessage() == null) || (!localThrowable.getMessage().contains("closed"))) {
           break;
         }
-        this.listener.onClose(paramInt, paramString);
+        this.listener.onClosed(this.listener.webSocket, paramInt, paramString);
         return;
       }
       finally
@@ -93,7 +88,7 @@ public class WebsocketRequestTask
   {
     if (this.mOkHttpClient != null)
     {
-      this.mOkHttpClient.getDispatcher().getExecutorService().shutdown();
+      this.mOkHttpClient.dispatcher().executorService().shutdownNow();
       this.mOkHttpClient = null;
     }
   }
@@ -108,8 +103,8 @@ public class WebsocketRequestTask
     if ((this.listener != null) && (this.listener.webSocket != null)) {}
     try
     {
-      MediaType localMediaType = MediaType.parse("application/vnd.okhttp.websocket+binary");
-      this.listener.webSocket.sendMessage(RequestBody.create(localMediaType, paramArrayOfByte));
+      MediaType.parse("application/vnd.okhttp.websocket+binary");
+      this.listener.webSocket.send(ByteString.of(paramArrayOfByte));
       return;
     }
     catch (Exception paramArrayOfByte)
@@ -126,8 +121,8 @@ public class WebsocketRequestTask
     if ((this.listener != null) && (this.listener.webSocket != null)) {}
     try
     {
-      MediaType localMediaType = MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
-      this.listener.webSocket.sendMessage(RequestBody.create(localMediaType, paramString));
+      MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
+      this.listener.webSocket.send(paramString);
       return;
     }
     catch (Exception paramString)
@@ -141,7 +136,7 @@ public class WebsocketRequestTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.websocket.WebsocketRequestTask
  * JD-Core Version:    0.7.0.1
  */

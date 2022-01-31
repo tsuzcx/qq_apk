@@ -1,19 +1,37 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
 class bavh
-  implements FilenameFilter
+  implements EIPCOnGetConnectionListener
 {
-  bavh(bavg parambavg, String paramString) {}
+  bavh(bavf parambavf) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
+    if (paramEIPCConnection != null) {
+      bavf.a(this.a, paramEIPCConnection.procName);
+    }
+    bavf.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "onConnectBind");
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      bavf.a(this.a, paramEIPCConnection.procName);
+    }
+    bavf.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "onConnectUnbind");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bavh
  * JD-Core Version:    0.7.0.1
  */

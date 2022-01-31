@@ -1,100 +1,103 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.Ability;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.utils.SecurityUtile;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 public class awdh
-  implements Observer
+  extends QQEntityManagerFactory
 {
-  public awdh(SignatureEditFragment paramSignatureEditFragment) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public awdh(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Signature.Fragment", 2, "mSignatureObserver type = " + paramObject);
-    }
-    if ((paramObject instanceof ArrayList))
+    super(paramString);
+  }
+  
+  private void a(String paramString, android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  {
+    System.currentTimeMillis();
+    Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
+    ArrayList localArrayList = new ArrayList();
+    if (localCursor1 != null)
     {
-      paramObject = (ArrayList)paramObject;
-      switch (((Integer)paramObject.get(0)).intValue())
+      while (localCursor1.moveToNext())
       {
-      }
-    }
-    label395:
-    while (SignatureEditFragment.a(this.a) == null)
-    {
-      return;
-      paramObservable = (RichStatus)paramObject.get(1);
-      this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramObservable;
-      this.a.jdField_b_of_type_Boolean = false;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText != null)
-      {
-        paramObject = awek.a().jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus;
-        if (paramObject != null)
-        {
-          paramObject.plainText = ((ArrayList)this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText.clone());
-          paramObject.topics.clear();
-          paramObject.topics.addAll(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics);
+        String str = SecurityUtile.b(localCursor1.getString(0));
+        Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
+        if (localCursor2 != null) {
+          for (;;)
+          {
+            try
+            {
+              if (!str.startsWith("mr_slow_")) {
+                continue;
+              }
+              localObject = MessageRecord.class;
+              awcj.a(localArrayList, str, localCursor2, (Class)localObject);
+            }
+            catch (ClassNotFoundException localClassNotFoundException)
+            {
+              Object localObject;
+              continue;
+            }
+            localCursor2.close();
+            break;
+            localObject = Class.forName(paramString + "." + str);
+          }
         }
       }
-      if (paramObservable != null)
-      {
-        this.a.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramObservable);
-        awek.a().a(this.a.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
-      }
-      this.a.jdField_a_of_type_Boolean = false;
-      if (SignatureEditFragment.a(this.a) != null) {
-        SignatureEditFragment.a(this.a).sendEmptyMessage(257);
-      }
-      SignatureEditFragment.b(this.a);
-      return;
-      int i = ((Integer)paramObject.get(1)).intValue();
-      paramObservable = (HashMap)paramObject.get(2);
-      if ((i == 100) || (i == 0))
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        SignatureEditFragment.a(this.a, true);
-        this.a.jdField_b_of_type_Boolean = false;
-        if ((this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount() == null) && (((Integer)paramObject.get(3)).intValue() != 1)) {
-          break label395;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = RichStatus.getEmptyStatus();
-        awek.a().b(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-      }
-      for (;;)
-      {
-        paramObject = new Message();
-        paramObject.what = 259;
-        paramObject.obj = paramObservable;
-        SignatureEditFragment.a(this.a).sendMessage(paramObject);
-        return;
-        awek.a().jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
-        awek.a().jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = null;
-        SignatureEditFragment.c(this.a);
-        this.a.j();
-      }
-      ((Integer)paramObject.get(1)).intValue();
-      return;
-      i = ((Integer)paramObject.get(1)).intValue();
-      paramObservable = SignatureEditFragment.a(this.a).obtainMessage();
-      paramObservable.what = 262;
-      paramObservable.arg1 = i;
-      SignatureEditFragment.a(this.a).sendMessage(paramObservable);
-      return;
+      localCursor1.close();
     }
-    SignatureEditFragment.a(this.a).sendEmptyMessage(257);
+    com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
+    paramSQLiteDatabase.beginTransaction();
+    try
+    {
+      paramString = localArrayList.iterator();
+      while (paramString.hasNext()) {
+        paramSQLiteDatabase.execSQL((String)paramString.next());
+      }
+      paramSQLiteDatabase.setTransactionSuccessful();
+    }
+    finally
+    {
+      paramSQLiteDatabase.endTransaction();
+      com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+    }
+    paramSQLiteDatabase.endTransaction();
+    com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+  }
+  
+  public alxk build(String paramString)
+  {
+    if (this.dbHelper == null)
+    {
+      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "slowtable_" + paramString + ".db", null, 1);
+      this.dbHelper = new alxk(this.mInnerDbHelper);
+    }
+    return this.dbHelper;
+  }
+  
+  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL(awcw.a(new Ability()));
+  }
+  
+  public String getPackageName()
+  {
+    return getClass().getPackage().getName();
+  }
+  
+  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    a(getPackageName(), paramSQLiteDatabase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awdh
  * JD-Core Version:    0.7.0.1
  */

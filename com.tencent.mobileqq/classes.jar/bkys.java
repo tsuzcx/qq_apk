@@ -1,23 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import dov.com.qq.im.ae.gif.giftext.AEGIFTextColorSelectionView;
 
-final class bkys
-  implements bkju<Boolean, bkka>
+class bkys
+  extends RecyclerView.ViewHolder
 {
-  bkys(Object paramObject) {}
+  AEGIFTextColorSelectionView a;
   
-  public Void a(Boolean arg1, bkka parambkka)
+  public bkys(@NonNull View paramView)
   {
-    QLog.e(bkyr.a(), 2, "MediaCodecThumbnailGenerator finished().");
-    synchronized (this.a)
-    {
-      this.a.notifyAll();
-      return null;
-    }
+    super(paramView);
+    this.a = ((AEGIFTextColorSelectionView)paramView.findViewById(2131363844));
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.setColor(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(Boolean.valueOf(paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkys
  * JD-Core Version:    0.7.0.1
  */

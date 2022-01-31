@@ -1,44 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.os.FileObserver;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class szx
-  extends QQUIEventReceiver<szs, tkh>
+class szx
+  extends FileObserver
 {
-  public szx(@NonNull szs paramszs)
+  szx(szw paramszw, String paramString1, int paramInt, String paramString2)
   {
-    super(paramszs);
+    super(paramString1, paramInt);
   }
   
-  public void a(@NonNull szs paramszs, @NonNull tkh paramtkh)
+  public void onEvent(int paramInt, String paramString)
   {
-    if (paramtkh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
-    CommentEntry localCommentEntry;
-    do
-    {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
+    while ((paramString.equalsIgnoreCase(szw.a(this.jdField_a_of_type_Szw))) || (paramString.contains("temp")) || (szw.a(this.jdField_a_of_type_Szw) == null)) {
       return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = paramszs.a.iterator();
-      }
-      localCommentEntry = (CommentEntry)localIterator.next();
-    } while ((paramtkh.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) == null) && (paramtkh.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) == null));
-    paramszs.f();
-    ved.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tkh.class;
+    }
+    szw.a(this.jdField_a_of_type_Szw).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
+    szw.a(this.jdField_a_of_type_Szw, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     szx
  * JD-Core Version:    0.7.0.1
  */

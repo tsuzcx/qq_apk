@@ -1,21 +1,25 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.gdtad.views.form.framework.GdtFormTableView;
-import com.tencent.gdtad.views.form.framework.GdtFormTableView.1.1;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLImageView;
 
-public class zao
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class zao
+  implements Animation.AnimationListener
 {
-  public zao(GdtFormTableView paramGdtFormTableView) {}
+  zao(zal paramzal, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a(-1);
-    this.a.post(new GdtFormTableView.1.1(this));
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zao
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.utils.LightAppSettingInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
-public final class ymh
-  implements Parcelable.Creator<LightAppSettingInfo>
+public class ymh
+  implements DialogInterface.OnClickListener
 {
-  public LightAppSettingInfo a(Parcel paramParcel)
-  {
-    LightAppSettingInfo localLightAppSettingInfo = new LightAppSettingInfo();
-    localLightAppSettingInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localLightAppSettingInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localLightAppSettingInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localLightAppSettingInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localLightAppSettingInfo.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(ClassLoader.getSystemClassLoader());
-    localLightAppSettingInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localLightAppSettingInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localLightAppSettingInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localLightAppSettingInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localLightAppSettingInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localLightAppSettingInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localLightAppSettingInfo.f = paramParcel.readString();
-    localLightAppSettingInfo.g = paramParcel.readString();
-    localLightAppSettingInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localLightAppSettingInfo.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(ClassLoader.getSystemClassLoader());
-    localLightAppSettingInfo.h = paramParcel.readString();
-    return localLightAppSettingInfo;
-  }
+  public ymh(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public LightAppSettingInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new LightAppSettingInfo[paramInt];
+    EditUniqueTitleActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymh
  * JD-Core Version:    0.7.0.1
  */

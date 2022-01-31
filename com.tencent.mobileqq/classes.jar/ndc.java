@@ -1,28 +1,26 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-public class ndc
-  implements Animation.AnimationListener
+final class ndc
+  implements HostnameVerifier
 {
-  public ndc(ScrolledTabHost paramScrolledTabHost, View paramView1, View paramView2, int paramInt) {}
+  ndc(URL paramURL) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(this.jdField_a_of_type_Int);
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
+    if (bool) {
+      QLog.d("URLUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
+    }
+    return bool;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ndc
  * JD-Core Version:    0.7.0.1
  */

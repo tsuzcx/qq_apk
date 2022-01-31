@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.gamecenter.data.GameNoticeInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public final class aqrl
-  implements Comparator<GameNoticeInfo>
+class aqrl
+  implements army
 {
-  public int a(GameNoticeInfo paramGameNoticeInfo1, GameNoticeInfo paramGameNoticeInfo2)
+  aqrl(aqrg paramaqrg, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a()
   {
-    if (paramGameNoticeInfo1.startTime == paramGameNoticeInfo2.startTime) {
-      return paramGameNoticeInfo1.bannerType - paramGameNoticeInfo2.bannerType;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Aqrg.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
     }
-    if (paramGameNoticeInfo1.startTime < paramGameNoticeInfo2.startTime) {
-      return -1;
-    }
-    return 1;
+    this.jdField_a_of_type_Aqrg.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrl
  * JD-Core Version:    0.7.0.1
  */

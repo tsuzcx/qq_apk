@@ -1,16 +1,24 @@
-import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import java.nio.ByteBuffer;
 
-class lqv
-  extends VideoFilterBase
+public class lqv
 {
-  lqv(lqu paramlqu)
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public MediaFormat a;
+  public ByteBuffer a;
+  public boolean a;
+  
+  public lqv(lqu paramlqu)
   {
-    super(lqu.a(), lqu.b());
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lqv
  * JD-Core Version:    0.7.0.1
  */

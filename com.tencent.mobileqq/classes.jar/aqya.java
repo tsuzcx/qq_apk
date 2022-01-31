@@ -1,53 +1,27 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.hiboom.RichTextPanel;
-import com.tencent.mobileqq.hiboom.RichTextPanelView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class aqya
-  extends PagerAdapter
+public abstract class aqya
 {
-  public aqya(RichTextPanel paramRichTextPanel) {}
+  public abstract int a();
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    paramViewGroup.removeView((View)paramObject);
-  }
+  public abstract String a();
   
-  public int getCount()
-  {
-    return RichTextPanel.a(this.a).size();
-  }
+  public abstract HashMap<String, ArrayList<MessageRecord>> a();
   
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
-  }
+  public abstract void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2);
   
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
-    }
-    ViewParent localViewParent = ((RichTextPanelView)RichTextPanel.a(this.a).get(paramInt)).getParent();
-    if (localViewParent != null) {
-      ((ViewGroup)localViewParent).removeView((View)RichTextPanel.a(this.a).get(paramInt));
-    }
-    paramViewGroup.addView((View)RichTextPanel.a(this.a).get(paramInt));
-    return RichTextPanel.a(this.a).get(paramInt);
-  }
+  public abstract void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt);
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
-  }
+  protected void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap1, HashMap<String, ArrayList<MessageRecord>> paramHashMap2) {}
+  
+  public abstract String b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqya
  * JD-Core Version:    0.7.0.1
  */

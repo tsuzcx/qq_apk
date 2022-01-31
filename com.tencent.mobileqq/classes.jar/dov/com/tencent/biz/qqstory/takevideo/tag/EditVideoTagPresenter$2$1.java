@@ -1,21 +1,21 @@
 package dov.com.tencent.biz.qqstory.takevideo.tag;
 
-import bkok;
-import bkom;
+import bmzu;
+import bmzw;
 
 public class EditVideoTagPresenter$2$1
   implements Runnable
 {
-  public EditVideoTagPresenter$2$1(bkom parambkom) {}
+  public EditVideoTagPresenter$2$1(bmzw parambmzw) {}
   
   public void run()
   {
-    bkok.a(bkok.a(this.a.a), bkok.a(this.a.a));
+    bmzu.a(bmzu.a(this.a.a), bmzu.a(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.2.1
  * JD-Core Version:    0.7.0.1
  */

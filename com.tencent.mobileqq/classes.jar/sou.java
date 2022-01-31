@@ -1,160 +1,48 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class sou
+  implements quv
 {
-  public static ConcurrentHashMap<String, SoftReference<Bitmap>> a = new ConcurrentHashMap();
+  public sou(BridgeModule paramBridgeModule, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString2) {}
   
-  public static int a(ArticleInfo paramArticleInfo)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    int i = 3;
-    if (paramArticleInfo == null) {
-      return 0;
-    }
-    if (onh.a(paramArticleInfo)) {
-      if (paramArticleInfo.mVideoType == 0) {
-        i = 4;
-      }
-    }
-    for (;;)
+    orz localorz = null;
+    Iterator localIterator = paramList.iterator();
+    Object localObject;
+    do
     {
-      return i;
-      i = 5;
-      continue;
-      if (paramArticleInfo.mShowBigPicture)
-      {
-        if (paramArticleInfo.mIsGallery == 0) {
-          i = 2;
-        } else {
-          i = 8;
-        }
+      localObject = localorz;
+      if (!localIterator.hasNext()) {
+        break;
       }
-      else if ((paramArticleInfo.mPictures == null) || (paramArticleInfo.mPictures.length < 3)) {
-        if (TextUtils.isEmpty(paramArticleInfo.mFirstPagePicUrl)) {
-          i = 0;
-        } else if (paramArticleInfo.mIsGallery == 0) {
-          i = 1;
-        } else {
-          i = 7;
-        }
-      }
-    }
-  }
-  
-  private static Bitmap a(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    try
+      localObject = (UgcVideo)localIterator.next();
+    } while (!TextUtils.equals(((UgcVideo)localObject).seqId, this.jdField_a_of_type_JavaLangString));
+    if (localObject != null)
     {
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      localBitmap = paramBitmap;
-      if (i * j > 8000)
+      paramList.remove(localObject);
+      localorz = qok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, ((UgcVideo)localObject).isRemindQQFriend).a(qok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (UgcVideo)localObject).a());
+      if (((UgcVideo)localObject).reprintDisable) {}
+      for (int i = 0;; i = 1)
       {
-        double d = Math.sqrt(8000.0D / (i * j));
-        localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(i * d), (int)(j * d), true);
+        nrt.a("0X800AC64", localorz.a("reprint_flag", Integer.valueOf(i)).a("compress_time", Long.valueOf(((UgcVideo)localObject).compressTime)).a("upload_time", Long.valueOf(((UgcVideo)localObject).uploadTotalCostTime)).a("wait_time", Long.valueOf(((UgcVideo)localObject).userWaitingTotalCostTime)).a());
+        qun.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((UgcVideo)localObject);
+        BridgeModule.access$800(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+        return;
       }
     }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      for (;;)
-      {
-        System.gc();
-        paramBitmap.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountImageCollectionUtils", 2, "scaleBitmapForWeChat ERROR OutOfMemoryError");
-        }
-        localBitmap = null;
-      }
-    }
-    catch (Exception paramBitmap)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountImageCollectionUtils", 2, "scaleBitmapForWeChat ERROR e=" + paramBitmap.getMessage());
-        }
-        Bitmap localBitmap = null;
-      }
-    }
-    return localBitmap;
-  }
-  
-  public static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, int paramInt)
-  {
-    int j = 0;
-    if (paramString1 == null) {}
-    for (paramBaseActivity = "";; paramBaseActivity = paramString1)
-    {
-      if (paramString2 == null) {}
-      for (paramString1 = "";; paramString1 = paramString2)
-      {
-        int i;
-        if (!WXShareHelper.a().a()) {
-          i = 2131720917;
-        }
-        for (;;)
-        {
-          if (i != -1)
-          {
-            wij.a(0, i);
-            if (QLog.isColorLevel()) {
-              QLog.d("PublicAccountImageCollectionUtils", 2, "title=" + paramBaseActivity + ", description=" + paramString1 + ", shareUrl=" + paramString3 + ", action=" + paramInt);
-            }
-            return;
-            if (!WXShareHelper.a().b()) {
-              i = 2131720918;
-            }
-          }
-          else
-          {
-            paramString2 = String.valueOf(System.currentTimeMillis());
-            Object localObject = new sov(paramString2);
-            WXShareHelper.a().a((bcww)localObject);
-            localObject = WXShareHelper.a();
-            paramBitmap = a(paramBitmap);
-            if (paramInt == 9) {}
-            for (i = j;; i = 1)
-            {
-              ((WXShareHelper)localObject).b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
-              break;
-            }
-          }
-          i = -1;
-        }
-      }
-    }
-  }
-  
-  public static boolean a(Activity paramActivity, Intent paramIntent, String paramString)
-  {
-    if ((paramActivity == null) || (paramIntent == null)) {
-      return false;
-    }
-    paramIntent.putExtra("articleid", paramString);
-    paramActivity.startActivity(paramIntent);
-    return true;
-  }
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
-  {
-    int i = a(paramArticleInfo);
-    return (i == 8) || (i == 7);
+    BridgeModule.access$800(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sou
  * JD-Core Version:    0.7.0.1
  */

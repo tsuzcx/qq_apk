@@ -1,61 +1,35 @@
-import org.json.JSONObject;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class ryw
+  implements qfp
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  public ryw(FastWebActivity paramFastWebActivity) {}
   
-  public ryw() {}
-  
-  public ryw(JSONObject paramJSONObject)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (paramJSONObject == null) {}
-    do
+    FastWebActivity.e(this.a, paramBoolean);
+    if (paramBoolean)
     {
+      FastWebActivity.a(this.a, paramString);
+      if (FastWebActivity.a(this.a).getVisibility() == 0) {
+        break label55;
+      }
+      FastWebActivity.a(this.a).setImageResource(2130848864);
+    }
+    for (;;)
+    {
+      FastWebActivity.h(this.a);
       return;
-      if (paramJSONObject.has("busiType")) {
-        this.jdField_a_of_type_Int = paramJSONObject.getInt("busiType");
-      }
-      if (paramJSONObject.has("vid")) {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("vid");
-      }
-      if (paramJSONObject.has("width")) {
-        this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
-      }
-      if (paramJSONObject.has("height")) {
-        this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
-      }
-      if (paramJSONObject.has("duration")) {
-        this.jdField_d_of_type_Int = paramJSONObject.getInt("duration");
-      }
-      if (paramJSONObject.has("poster")) {
-        this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("poster");
-      }
-      if (paramJSONObject.has("title")) {
-        this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("title");
-      }
-      if (paramJSONObject.has("xgFileSize")) {
-        this.jdField_a_of_type_Long = paramJSONObject.getLong("xgFileSize");
-      }
-    } while (!paramJSONObject.has("videoUrl"));
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.getString("videoUrl");
-  }
-  
-  public String toString()
-  {
-    return "VideoInfo{busiType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", coverUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", XGFileSize=" + this.jdField_a_of_type_Long + ", videoUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + '}';
+      label55:
+      FastWebActivity.a(this.a).setImageResource(2130848918);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryw
  * JD-Core Version:    0.7.0.1
  */

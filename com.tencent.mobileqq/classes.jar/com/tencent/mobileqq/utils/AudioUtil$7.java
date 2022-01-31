@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
 import android.media.MediaPlayer.OnCompletionListener;
-import bbcf;
+import bdaz;
 
 public final class AudioUtil$7
   implements Runnable
@@ -10,12 +10,12 @@ public final class AudioUtil$7
   
   public void run()
   {
-    this.a.onCompletion(bbcf.a);
+    this.a.onCompletion(bdaz.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AudioUtil.7
  * JD-Core Version:    0.7.0.1
  */

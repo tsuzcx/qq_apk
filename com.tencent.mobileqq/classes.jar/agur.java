@@ -1,85 +1,186 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class agur
-  extends agta
+  implements agvy, Handler.Callback, View.OnClickListener
 {
-  private final String a;
+  private static final String jdField_a_of_type_JavaLangString = alpo.a(2131701643);
+  private static final String jdField_b_of_type_JavaLangString = alpo.a(2131701644);
+  private int jdField_a_of_type_Int;
+  private agwa jdField_a_of_type_Agwa;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bfua jdField_a_of_type_Bfua;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private Set<String> jdField_a_of_type_JavaUtilSet;
+  private int jdField_b_of_type_Int;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
   
-  private agur(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public agur(BaseActivity paramBaseActivity, agwa paramagwa)
   {
-    super(paramNewPhotoPreviewActivity);
-    this.jdField_a_of_type_JavaLangString = "PhotoPreviewLogicAEPlay";
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_Agwa = paramagwa;
+    this.jdField_a_of_type_Bfua = ((bfua)paramBaseActivity.app.getManager(165));
+    paramBaseActivity = SharedPreferencesProxyManager.getInstance().getProxy("qidian_sp", 0);
+    this.d = paramBaseActivity.getString("sp_c2b_tip_content", jdField_a_of_type_JavaLangString);
+    this.c = paramBaseActivity.getString("sp_c2b_tip_url", "https://m.qidian.qq.com/agreement/verified.html");
+    this.e = paramBaseActivity.getString("sp_c2b_tip_highlight", jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = paramBaseActivity.getInt("sp_c2b_tip_is_show", 1);
+    this.jdField_a_of_type_JavaUtilSet = paramBaseActivity.getStringSet("sp_c2b_tip_uins_shown", new HashSet());
+    this.jdField_b_of_type_Int = paramBaseActivity.getInt("sp_c2b_tip_hide_time", 60);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
   }
   
-  public static agsq b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public static void a()
   {
-    if ((jdField_a_of_type_Agsq == null) || (jdField_a_of_type_Agsq.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
+    SharedPreferences.Editor localEditor = SharedPreferencesProxyManager.getInstance().getProxy("qidian_sp", 0).edit();
+    localEditor.remove("sp_c2b_tip_content");
+    localEditor.remove("sp_c2b_tip_url");
+    localEditor.remove("sp_c2b_tip_highlight");
+    localEditor.remove("sp_c2b_tip_is_show");
+    localEditor.remove("sp_c2b_tip_hide_time");
+    localEditor.apply();
+  }
+  
+  public static boolean a(String paramString)
+  {
     try
     {
-      if ((jdField_a_of_type_Agsq == null) || (jdField_a_of_type_Agsq.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
-        jdField_a_of_type_Agsq = new agur(paramNewPhotoPreviewActivity);
+      paramString = new JSONObject(paramString);
+      if (!"lawtip".equals(paramString.getString("type"))) {
+        return false;
       }
-      return jdField_a_of_type_Agsq;
+      SharedPreferences.Editor localEditor = SharedPreferencesProxyManager.getInstance().getProxy("qidian_sp", 0).edit();
+      localEditor.putString("sp_c2b_tip_content", paramString.getString("content"));
+      localEditor.putString("sp_c2b_tip_url", paramString.getString("url"));
+      localEditor.putString("sp_c2b_tip_highlight", paramString.getString("highlight"));
+      localEditor.putInt("sp_c2b_tip_is_show", paramString.getInt("show"));
+      localEditor.putInt("sp_c2b_tip_hide_time", paramString.getInt("hideTime"));
+      localEditor.apply();
+      return true;
     }
-    finally {}
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("C2BTipsBar", 2, "parse config error:" + paramString.toString());
+      }
+    }
+    return false;
   }
   
-  private void c(String paramString)
+  public int a()
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Agsp.a >= 700L)
+    return 59;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131558616, null);
+    TextView localTextView = (TextView)paramVarArgs.findViewById(2131362403);
+    SpannableString localSpannableString = new SpannableString(this.d);
+    int i = 0;
+    for (;;)
     {
-      this.jdField_a_of_type_Agsp.a = l;
-      bcql.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), paramString, 0).b(((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources().getDimensionPixelSize(2131298865));
+      if (i < this.d.length())
+      {
+        i = this.d.indexOf(this.e, i);
+        if (i >= 0) {}
+      }
+      else
+      {
+        localTextView.setText(localSpannableString);
+        paramVarArgs.setOnClickListener(this);
+        paramVarArgs.findViewById(2131362402).setOnClickListener(this);
+        return paramVarArgs;
+      }
+      localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#12b7f5")), i, this.e.length() + i, 33);
+      i += this.e.length();
     }
   }
   
-  private boolean d()
-  {
-    return this.jdField_a_of_type_Agrz.jdField_a_of_type_JavaUtilArrayList.size() < this.jdField_a_of_type_Agrz.jdField_a_of_type_Int;
-  }
+  public void a(int paramInt, Object... paramVarArgs) {}
   
-  protected void a(View paramView)
+  public void a(String paramString)
   {
-    if ((!this.jdField_a_of_type_Agrz.b.contains(Integer.valueOf(((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a()))) && (this.jdField_a_of_type_Agrz.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Agrz.jdField_a_of_type_Int))
-    {
-      c(String.format(((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131689790), new Object[] { Integer.valueOf(this.jdField_a_of_type_Agrz.jdField_a_of_type_Int) }));
+    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
       return;
     }
-    super.a(paramView);
+    this.f = paramString;
+    this.jdField_a_of_type_Agwa.a(this, new Object[0]);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, this.jdField_b_of_type_Int * 1000);
   }
   
-  protected void c()
+  public int[] a()
   {
-    super.c();
-    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setOnClickListener(new agus(this));
+    return null;
   }
   
-  protected void d()
+  public int b()
   {
-    super.d();
-    String str = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131717113);
-    int i = this.jdField_a_of_type_Agrz.jdField_a_of_type_JavaUtilArrayList.size();
-    str = str + " " + i + "/" + this.jdField_a_of_type_Agrz.jdField_a_of_type_Int;
-    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setText(str);
-    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setEnabled(true);
-    if (d())
+    return 22;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.what == 1) && (this.jdField_a_of_type_Agwa.a() == this)) {
+      this.jdField_a_of_type_Agwa.a();
+    }
+    return true;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setBackgroundResource(2130848703);
+    default: 
+      return;
+    case 2131362401: 
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+      paramView.putExtra("url", this.c);
+      paramView.putExtra("hide_operation_bar", true);
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00899", "Qidian", this.f, "0X8009788", "ClickLawTip", 1, 0, String.valueOf(NetConnInfoCenter.getServerTime()), this.jdField_a_of_type_Bfua.a(this.f), "8.3.3", "");
       return;
     }
-    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setBackgroundResource(2130837669);
+    paramView = new HashSet(this.jdField_a_of_type_JavaUtilSet);
+    paramView.add(this.f);
+    SharedPreferences.Editor localEditor = SharedPreferencesProxyManager.getInstance().getProxy("qidian_sp", 0).edit();
+    localEditor.putStringSet("sp_c2b_tip_uins_shown", paramView);
+    localEditor.apply();
+    this.jdField_a_of_type_JavaUtilSet = paramView;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_Agwa.a();
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00899", "Qidian", this.f, "0X8009789", "CloseLawTip", 1, 0, String.valueOf(NetConnInfoCenter.getServerTime()), this.jdField_a_of_type_Bfua.a(this.f), "8.3.3", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agur
  * JD-Core Version:    0.7.0.1
  */

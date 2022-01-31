@@ -4,24 +4,31 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class stGlobalConfig
   extends JceStruct
 {
-  static downloadConfig cache_download = new downloadConfig();
+  static stCallInfo cache_callinfo = new stCallInfo();
+  static downloadConfig cache_download;
   static stJumpInfo cache_jumpinfo = new stJumpInfo();
-  static stLinkConfig cache_linkConfig = new stLinkConfig();
+  static stLinkConfig cache_linkConfig;
+  static Map<String, String> cache_mapExt;
   static pendantConfig cache_pendant;
-  static stPopWindowsConfig cache_red_dot_window = new stPopWindowsConfig();
+  static stPopWindowsConfig cache_red_dot_window;
   static ArrayList<stPopWindowsConfig> cache_windows_config = new ArrayList();
   public int cache_size;
+  public stCallInfo callinfo;
   public downloadConfig download;
   public String encrypted_deviceid = "";
+  public boolean isHalfAppStoreScreen;
   public byte is_call_weishi;
   public byte is_direct_open;
   public stJumpInfo jumpinfo;
   public stLinkConfig linkConfig;
   public int link_strategy_type;
+  public Map<String, String> mapExt;
   public int open_4g_autodownload;
   public pendantConfig pendant;
   public stPopWindowsConfig red_dot_window;
@@ -32,11 +39,16 @@ public final class stGlobalConfig
     stPopWindowsConfig localstPopWindowsConfig = new stPopWindowsConfig();
     cache_windows_config.add(localstPopWindowsConfig);
     cache_pendant = new pendantConfig();
+    cache_download = new downloadConfig();
+    cache_linkConfig = new stLinkConfig();
+    cache_red_dot_window = new stPopWindowsConfig();
+    cache_mapExt = new HashMap();
+    cache_mapExt.put("", "");
   }
   
   public stGlobalConfig() {}
   
-  public stGlobalConfig(stJumpInfo paramstJumpInfo, ArrayList<stPopWindowsConfig> paramArrayList, byte paramByte1, int paramInt1, int paramInt2, pendantConfig parampendantConfig, int paramInt3, byte paramByte2, downloadConfig paramdownloadConfig, String paramString, stLinkConfig paramstLinkConfig, stPopWindowsConfig paramstPopWindowsConfig)
+  public stGlobalConfig(stJumpInfo paramstJumpInfo, ArrayList<stPopWindowsConfig> paramArrayList, byte paramByte1, int paramInt1, int paramInt2, pendantConfig parampendantConfig, int paramInt3, byte paramByte2, downloadConfig paramdownloadConfig, String paramString, stLinkConfig paramstLinkConfig, stPopWindowsConfig paramstPopWindowsConfig, boolean paramBoolean, Map<String, String> paramMap, stCallInfo paramstCallInfo)
   {
     this.jumpinfo = paramstJumpInfo;
     this.windows_config = paramArrayList;
@@ -50,6 +62,9 @@ public final class stGlobalConfig
     this.encrypted_deviceid = paramString;
     this.linkConfig = paramstLinkConfig;
     this.red_dot_window = paramstPopWindowsConfig;
+    this.isHalfAppStoreScreen = paramBoolean;
+    this.mapExt = paramMap;
+    this.callinfo = paramstCallInfo;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -66,11 +81,9 @@ public final class stGlobalConfig
     this.encrypted_deviceid = paramJceInputStream.readString(9, false);
     this.linkConfig = ((stLinkConfig)paramJceInputStream.read(cache_linkConfig, 10, false));
     this.red_dot_window = ((stPopWindowsConfig)paramJceInputStream.read(cache_red_dot_window, 11, false));
-  }
-  
-  public String toString()
-  {
-    return "stGlobalConfig: {\nis_call_weishi=" + this.is_call_weishi + ", link_strategy_type=" + this.link_strategy_type + ", open_4g_autodownload=" + this.open_4g_autodownload + ", cache_size=" + this.cache_size + ", is_direct_open=" + this.is_direct_open + ", encrypted_deviceid=" + this.encrypted_deviceid + "\n" + this.linkConfig + "\n" + this.download + "\n}";
+    this.isHalfAppStoreScreen = paramJceInputStream.read(this.isHalfAppStoreScreen, 12, false);
+    this.mapExt = ((Map)paramJceInputStream.read(cache_mapExt, 13, false));
+    this.callinfo = ((stCallInfo)paramJceInputStream.read(cache_callinfo, 14, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -100,6 +113,13 @@ public final class stGlobalConfig
     }
     if (this.red_dot_window != null) {
       paramJceOutputStream.write(this.red_dot_window, 11);
+    }
+    paramJceOutputStream.write(this.isHalfAppStoreScreen, 12);
+    if (this.mapExt != null) {
+      paramJceOutputStream.write(this.mapExt, 13);
+    }
+    if (this.callinfo != null) {
+      paramJceOutputStream.write(this.callinfo, 14);
     }
   }
 }

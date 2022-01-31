@@ -1,22 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 
-final class bgpe
-  implements View.OnClickListener
+public class bgpe
 {
-  bgpe(Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  public static Animation a(Context paramContext, int paramInt1, int paramInt2)
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(paramInt1, paramInt2, 0.0F, 0.0F);
+    localTranslateAnimation.setDuration((Math.abs(paramInt2 - paramInt1) * 1.0F / DisplayUtil.getScreenWidth(paramContext) * 3000.0F));
+    localTranslateAnimation.setInterpolator(new bgpj());
+    localTranslateAnimation.setFillAfter(true);
+    return localTranslateAnimation;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgpe
  * JD-Core Version:    0.7.0.1
  */

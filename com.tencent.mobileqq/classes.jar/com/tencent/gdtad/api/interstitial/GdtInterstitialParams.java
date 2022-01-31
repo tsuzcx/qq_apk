@@ -1,38 +1,36 @@
 package com.tencent.gdtad.api.interstitial;
 
+import aaiq;
+import aakd;
+import aanp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
-import ysz;
-import yuk;
-import yxp;
 
 public class GdtInterstitialParams
-  extends ysz
+  extends aaiq
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new yuk();
+  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new aakd();
   public int a;
-  public long a;
   public GdtHandler.Options a;
   public boolean a;
-  public long b = -2147483648L;
+  public int b = -2147483648;
+  public int c = -2147483648;
   
   public GdtInterstitialParams()
   {
     this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_a_of_type_Long = -2147483648L;
   }
   
   public GdtInterstitialParams(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_a_of_type_Long = -2147483648L;
     if (paramParcel == null)
     {
-      yxp.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
+      aanp.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = ((GdtHandler.Options)paramParcel.readParcelable(GdtHandler.Options.class.getClassLoader()));
@@ -73,7 +71,7 @@ public class GdtInterstitialParams
   {
     if (paramParcel == null)
     {
-      yxp.d("GdtInterstitialParams", "writeToParcel error");
+      aanp.d("GdtInterstitialParams", "writeToParcel error");
       return;
     }
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options, paramInt);
@@ -88,7 +86,7 @@ public class GdtInterstitialParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialParams
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import bbdv;
-import bbfj;
+import bdcq;
+import bdee;
 
 public class PropertyUtils
 {
@@ -29,7 +29,7 @@ public class PropertyUtils
     if (!TextUtils.isEmpty(mNetworkType)) {
       return mNetworkType;
     }
-    int i = bbfj.a(paramContext.getApplicationContext());
+    int i = bdee.a(paramContext.getApplicationContext());
     if (i == 1) {
       mNetworkType = "WIFI";
     }
@@ -80,7 +80,7 @@ public class PropertyUtils
     if (mTitleBarHeight > 0) {
       return mTitleBarHeight;
     }
-    mTitleBarHeight = paramActivity.getResources().getDimensionPixelSize(2131298865);
+    mTitleBarHeight = paramActivity.getResources().getDimensionPixelSize(2131298914);
     return mTitleBarHeight;
   }
   
@@ -89,13 +89,13 @@ public class PropertyUtils
     if (mToastOffset > 0) {
       return mToastOffset;
     }
-    mToastOffset = paramContext.getResources().getDimensionPixelSize(2131298865) - (int)bbdv.a(paramContext, 5.0F);
+    mToastOffset = paramContext.getResources().getDimensionPixelSize(2131298914) - (int)bdcq.a(paramContext, 5.0F);
     return mToastOffset;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.PropertyUtils
  * JD-Core Version:    0.7.0.1
  */

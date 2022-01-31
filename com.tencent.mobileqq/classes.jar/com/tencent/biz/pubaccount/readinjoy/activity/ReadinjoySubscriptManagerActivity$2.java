@@ -8,9 +8,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nxs;
-import sdc;
-import sgg;
+import oaz;
+import suv;
+import syb;
 
 class ReadinjoySubscriptManagerActivity$2
   implements Runnable
@@ -19,7 +19,7 @@ class ReadinjoySubscriptManagerActivity$2
   
   public void run()
   {
-    Object localObject = sdc.a().c(this.this$0.app);
+    Object localObject = suv.a().c(this.this$0.app);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     if (localObject != null)
@@ -28,14 +28,14 @@ class ReadinjoySubscriptManagerActivity$2
       while (((Iterator)localObject).hasNext())
       {
         PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((Iterator)localObject).next();
-        nxs localnxs = new nxs(this.this$0, null);
-        nxs.a(localnxs, localPublicAccountInfo.getUin());
-        nxs.b(localnxs, localPublicAccountInfo.name);
-        nxs.c(localnxs, ChnToSpell.a(nxs.b(localnxs), 2));
-        if (sgg.b(this.this$0.app, localPublicAccountInfo.getUin())) {
-          localArrayList2.add(localnxs);
+        oaz localoaz = new oaz(this.this$0, null);
+        oaz.a(localoaz, localPublicAccountInfo.getUin());
+        oaz.b(localoaz, localPublicAccountInfo.name);
+        oaz.c(localoaz, ChnToSpell.a(oaz.b(localoaz), 2));
+        if (syb.b(this.this$0.app, localPublicAccountInfo.getUin())) {
+          localArrayList2.add(localoaz);
         } else {
-          localArrayList1.add(localnxs);
+          localArrayList1.add(localoaz);
         }
       }
     }
@@ -47,7 +47,7 @@ class ReadinjoySubscriptManagerActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity.2
  * JD-Core Version:    0.7.0.1
  */

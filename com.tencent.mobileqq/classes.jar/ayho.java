@@ -1,32 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class ayho
-  implements View.OnClickListener
+public class ayho
 {
-  ayho(ayhn paramayhn) {}
+  public List<Long> a;
   
-  public void onClick(View paramView)
+  public ayho() {}
+  
+  public ayho(List<Long> paramList)
   {
-    ayit localayit;
-    if (bbbr.a("tag_swip_icon_menu_item", paramView.getTag()))
-    {
-      localayit = (ayit)paramView.getTag(-10);
-      if (paramView.getId() != 2131364301) {
-        break label40;
-      }
-      ayhn.a(this.a, localayit);
-    }
-    label40:
-    while (ayhn.a(this.a) == null) {
-      return;
-    }
-    ayhn.a(this.a).a(paramView.getId(), localayit);
+    this.a = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayho
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,19 @@
-import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class bijk
-  implements CosFunHelper.CountDownListener
+public abstract interface bijk
 {
-  bijk(bijd parambijd) {}
+  public abstract HashMap<String, String> a();
   
-  public void onCountDownEnd()
-  {
-    bijd.d(this.a);
-  }
+  public abstract void a();
   
-  public void onCountDownStart(VideoMaterial paramVideoMaterial)
-  {
-    bijd.a(this.a, paramVideoMaterial.getTipsDrawable());
-  }
+  public abstract boolean a(String paramString, JSONObject paramJSONObject);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bijk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,31 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class vuv
-  implements avzm
+final class vuv
+  implements URLDrawable.URLDrawableListener
 {
-  vuv(vuu paramvuu, vun paramvun) {}
+  vuv(ImageView paramImageView, Drawable paramDrawable) {}
   
-  public void a() {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a(String paramString)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    synchronized (vuu.a(this.jdField_a_of_type_Vuu))
-    {
-      this.jdField_a_of_type_Vun.c = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeFinish, filePath= " + paramString);
-      }
-      vuu.a(this.jdField_a_of_type_Vuu).notifyAll();
-      return;
-    }
+    wsv.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
-  public void a_(int paramInt, Throwable arg2)
-  {
-    synchronized (vuu.a(this.jdField_a_of_type_Vuu))
-    {
-      this.jdField_a_of_type_Vun.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeError, errorCode= " + paramInt);
-      }
-      vuu.a(this.jdField_a_of_type_Vuu).notifyAll();
-      return;
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void b()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((this.jdField_a_of_type_Vun != null) && (!this.jdField_a_of_type_Vun.d) && (!this.jdField_a_of_type_Vun.b))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "cancel mergeVideoTask path : " + this.jdField_a_of_type_Vun.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.b + " currContext id : " + this.jdField_a_of_type_Vun + "  mCanceled : " + this.jdField_a_of_type_Vun.b);
-      }
-      this.jdField_a_of_type_Vuu.b(this.jdField_a_of_type_Vun);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "after cancel : " + this.jdField_a_of_type_Vun.b);
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vuv
  * JD-Core Version:    0.7.0.1
  */

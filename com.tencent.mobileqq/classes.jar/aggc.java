@@ -1,68 +1,51 @@
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aggc
-  implements IMiniMsgUnreadCallback
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private static int a;
+  public ConcurrentHashMap<Long, aggf> a;
   
-  public aggc(View paramView, TextView paramTextView)
+  static
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    jdField_a_of_type_Int = 900000;
   }
   
-  public void destroy()
+  private aggc()
   {
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public void hide()
+  public static final aggc a()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    return agge.a();
   }
   
-  public void hideUnread()
+  public aggf a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public boolean show(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    updateUnreadCount(paramInt, false);
-    return true;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle) {}
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    String str = String.valueOf(paramInt);
-    if (paramInt > 99) {
-      str = "99+";
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
+      return (aggf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
     }
-    localTextView.setText(str);
-    if (!paramBoolean)
-    {
-      if (paramInt <= 0) {
-        localTextView.setVisibility(8);
-      }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(" LongVideoUrlCacheManager", 2, "LongVideoUrlCacheManager,clearCache");
     }
-    else {
-      return;
-    }
-    localTextView.setVisibility(0);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new aggf(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggc
  * JD-Core Version:    0.7.0.1
  */

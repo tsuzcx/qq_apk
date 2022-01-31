@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.TimeInfo;
-import java.util.Comparator;
-
-class ahgc
-  implements Comparator<SpringFestivalRedpacketConfBean.TimeInfo>
+public abstract interface ahgc<T>
 {
-  ahgc(ahfx paramahfx) {}
+  public abstract int a();
   
-  public int a(SpringFestivalRedpacketConfBean.TimeInfo paramTimeInfo1, SpringFestivalRedpacketConfBean.TimeInfo paramTimeInfo2)
-  {
-    if (paramTimeInfo1.beginTime == paramTimeInfo2.beginTime) {
-      return 0;
-    }
-    if (paramTimeInfo1.beginTime > paramTimeInfo2.beginTime) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(ahgk paramahgk, T paramT, int paramInt);
+  
+  public abstract boolean a(T paramT, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgc
  * JD-Core Version:    0.7.0.1
  */

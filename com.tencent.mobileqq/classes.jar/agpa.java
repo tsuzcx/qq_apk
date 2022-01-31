@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public final class agpa
-  implements Parcelable.Creator<PhotoSendParams>
+class agpa
+  implements Animation.AnimationListener
 {
-  public PhotoSendParams a(Parcel paramParcel)
+  agpa(agot paramagot) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new PhotoSendParams(paramParcel);
+    this.a.W = false;
+    this.a.af = false;
+    this.a.d(this.a.o);
+    this.a.s = 1;
   }
   
-  public PhotoSendParams[] a(int paramInt)
-  {
-    return new PhotoSendParams[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agpa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,86 +1,46 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.ExtendGridView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import java.util.ArrayList;
 
 public class bbfb
+  implements Animation.AnimationListener
 {
-  public static final String a;
-  private static ThreadLocal<LinkedList<Long>> a;
-  public static final String b;
-  public static final String c;
+  public bbfb(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_JavaLangString = PhotoListActivity.class.getSimpleName();
-    b = AlbumListActivity.class.getSimpleName();
-    c = PhotoPreviewActivity.class.getSimpleName();
-    jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel())
+    boolean bool = false;
+    paramAnimation = this.a;
+    paramAnimation.jdField_q_of_type_Int -= 1;
+    if (this.a.jdField_q_of_type_Int == 0)
     {
-      LinkedList localLinkedList2 = (LinkedList)jdField_a_of_type_JavaLangThreadLocal.get();
-      LinkedList localLinkedList1 = localLinkedList2;
-      if (localLinkedList2 == null)
+      this.a.jdField_q_of_type_Boolean = false;
+      int i = 0;
+      while (i < this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getCount())
       {
-        localLinkedList1 = new LinkedList();
-        jdField_a_of_type_JavaLangThreadLocal.set(localLinkedList1);
-      }
-      localLinkedList1.addFirst(Long.valueOf(SystemClock.uptimeMillis()));
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = (LinkedList)jdField_a_of_type_JavaLangThreadLocal.get();
-      Object localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new LinkedList();
-        jdField_a_of_type_JavaLangThreadLocal.set(localObject1);
-        ((LinkedList)localObject1).addFirst(Long.valueOf(SystemClock.uptimeMillis()));
-      }
-      localObject2 = new StringBuilder();
-      int i = 1;
-      while (i < ((LinkedList)localObject1).size())
-      {
-        ((StringBuilder)localObject2).append("    ");
+        paramAnimation = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getChildAt(i);
+        if (paramAnimation != null) {
+          paramAnimation.clearAnimation();
+        }
         i += 1;
       }
-      if (((LinkedList)jdField_a_of_type_JavaLangThreadLocal.get()).size() != 0) {}
+      this.a.c.clearAnimation();
+      this.a.jdField_a_of_type_JavaUtilArrayList.remove(this.a.r);
+      paramAnimation = this.a.jdField_a_of_type_Bbel;
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() < this.a.s) {
+        bool = true;
+      }
+      paramAnimation.a(bool, true);
+      this.a.jdField_a_of_type_Bbel.a(this.a.jdField_a_of_type_JavaUtilArrayList);
     }
-    else
-    {
-      return;
-    }
-    ((StringBuilder)localObject2).append(paramString2);
-    ((StringBuilder)localObject2).append(":cost ");
-    ((StringBuilder)localObject2).append(SystemClock.uptimeMillis() - ((Long)((LinkedList)jdField_a_of_type_JavaLangThreadLocal.get()).removeFirst()).longValue());
-    ((StringBuilder)localObject2).append("ms");
-    QLog.i(paramString1, 2, ((StringBuilder)localObject2).toString());
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder("PreUploadVideo");
-      localStringBuilder.append("[").append(paramString1).append("] ");
-      if (paramString2 != null) {
-        localStringBuilder.append("status:").append(paramString2).append(" ");
-      }
-      localStringBuilder.append("content:").append(paramString3);
-      QLog.i("PreUploadVideo", 2, localStringBuilder.toString());
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

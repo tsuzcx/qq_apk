@@ -1,49 +1,28 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import java.util.HashMap;
+import android.content.Intent;
+import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
 
 public class aswq
-  extends asvl
+  implements aswu
 {
-  public aswq(MusicPlayerActivity paramMusicPlayerActivity) {}
+  public aswq(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public void a(int paramInt)
   {
-    if (paramSongInfo != null)
-    {
-      localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
-      if (!MusicPlayerActivity.b().containsKey(localObject)) {
-        break label64;
-      }
-      localObject = (asww)MusicPlayerActivity.b().get(localObject);
-      paramSongInfo = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, ((asww)localObject).a);
-      MusicPlayerActivity.a(this.a, (asww)localObject, paramSongInfo);
-    }
-    label64:
-    while (MusicPlayerActivity.a().containsKey(localObject)) {
-      return;
-    }
-    Object localObject = MusicPlayerActivity.a(this.a);
-    if (localObject != null) {}
-    for (int i = ((asvn)localObject).c();; i = 0)
-    {
-      localObject = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, -1L);
-      MusicPlayerActivity.a(this.a, paramSongInfo.b, paramSongInfo.g, paramSongInfo.d, (String)localObject, false, false);
-      MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.b, paramSongInfo.g, paramSongInfo.f, String.valueOf(paramSongInfo.a), paramSongInfo.c, i);
-      return;
-    }
+    Intent localIntent = new Intent(aswm.d(HuayangLoadbackgroudActivity.a(this.a)));
+    localIntent.putExtra("key_state", 4);
+    localIntent.putExtra("key_progress", paramInt);
+    localIntent.putExtra("key_totalSize", 100L);
+    this.a.sendBroadcast(localIntent);
   }
   
-  public void onPlayStateChanged(int paramInt)
+  public void a(boolean paramBoolean, Throwable paramThrowable)
   {
-    Message.obtain(MusicPlayerActivity.a(this.a), 50, paramInt, 0).sendToTarget();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aswq
  * JD-Core Version:    0.7.0.1
  */

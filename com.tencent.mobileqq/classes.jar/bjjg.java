@@ -1,10 +1,7 @@
-public abstract interface bjjg
-{
-  public abstract void a(String paramString);
-}
+public class bjjg {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjjg
  * JD-Core Version:    0.7.0.1
  */

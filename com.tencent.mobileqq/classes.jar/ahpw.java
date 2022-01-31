@@ -1,114 +1,59 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahpw
 {
-  public static Object a(int paramInt, byte[] paramArrayOfByte)
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  
+  public JSONObject a()
   {
-    Object localObject = null;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return null;
-    }
-    String str;
-    switch (paramInt)
+    try
     {
-    case 15: 
-    case 18: 
-    case 19: 
-    case 25: 
-    case 28: 
-    default: 
-      str = null;
+      localJSONObject = new JSONObject();
+      localJSONException1.printStackTrace();
     }
-    while (localObject != null)
+    catch (JSONException localJSONException1)
     {
-      ((ahpv)localObject).a(paramArrayOfByte);
-      return localObject;
-      localObject = new ahqp(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqh(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqb(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqj(BaseApplication.getContext(), false);
-      str = null;
-      continue;
-      localObject = new ahpy(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahpx(BaseApplication.getContext());
-      str = null;
-      continue;
-      str = new String(paramArrayOfByte);
-      continue;
-      localObject = new bhya(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqm(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqf(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqn(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqi(BaseApplication.getContext(), 1);
-      str = null;
-      continue;
-      localObject = new ahqi(BaseApplication.getContext(), 0);
-      str = null;
-      continue;
-      localObject = new ahqa(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqk(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqj(BaseApplication.getContext(), false);
-      str = null;
-      continue;
-      localObject = new ahqg(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqq(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahql(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahqd(BaseApplication.getContext());
-      str = null;
-      continue;
-      localObject = new ahpu(BaseApplication.getContext(), "");
-      str = null;
-      continue;
-      localObject = new ahqo(BaseApplication.getContext());
-      str = null;
+      try
+      {
+        localJSONObject.put("entryID", this.jdField_a_of_type_Int);
+        localJSONObject.put("redDotVersion", this.jdField_b_of_type_Int);
+        localJSONObject.put("showRedDot", this.jdField_a_of_type_Boolean);
+        localJSONObject.put("userCanceled", this.jdField_b_of_type_Boolean);
+        localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
+        return localJSONObject;
+      }
+      catch (JSONException localJSONException2)
+      {
+        JSONObject localJSONObject;
+        break label68;
+      }
+      localJSONException1 = localJSONException1;
+      localJSONObject = null;
     }
-    return str;
+    label68:
+    return localJSONObject;
   }
   
-  public static byte[] a(int paramInt, Object paramObject)
+  public void a(JSONObject paramJSONObject)
   {
-    if (paramObject == null) {}
-    do
+    if (paramJSONObject != null)
     {
-      return null;
-      switch (paramInt)
-      {
-      }
-    } while (!(paramObject instanceof ahpv));
-    return ((ahpv)paramObject).a();
-    return ((String)paramObject).getBytes();
-    return ((ahqn)paramObject).a();
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryID");
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("redDotVersion");
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("showRedDot");
+      this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("userCanceled");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("lastCancelTime");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpw
  * JD-Core Version:    0.7.0.1
  */

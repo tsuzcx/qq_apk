@@ -1,82 +1,64 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
 
 public class qku
+  implements Cloneable
 {
   public int a;
-  public ArrayList<Integer> a;
-  public boolean a;
+  public String a;
+  public int b;
+  public String b;
   
-  public qku(int paramInt)
+  public static qku a(articlesummary.FamilyCommentInfo paramFamilyCommentInfo)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    qku localqku = new qku();
+    localqku.jdField_a_of_type_JavaLangString = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
+    localqku.jdField_b_of_type_JavaLangString = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
+    localqku.jdField_a_of_type_Int = paramFamilyCommentInfo.medal_urls_width.get();
+    localqku.jdField_b_of_type_Int = paramFamilyCommentInfo.medal_urls_height.get();
+    return localqku;
   }
   
-  private String a(ArrayList<Integer> paramArrayList)
+  public qku a()
   {
-    if (paramArrayList == null) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder(paramArrayList.size() * 2);
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    try
     {
-      Integer localInteger = (Integer)paramArrayList.next();
-      if (localInteger != null) {
-        localStringBuilder.append(localInteger);
-      }
-      if (paramArrayList.hasNext()) {
-        localStringBuilder.append(",");
+      super.clone();
+      qku localqku = new qku();
+      localqku.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localqku.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localqku.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localqku.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return localqku;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FamilyCommentInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
+        }
       }
     }
-    return localStringBuilder.toString();
-  }
-  
-  public HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_sceneType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_indexList", a(this.jdField_a_of_type_JavaUtilArrayList));
-    localHashMap.put("param_isAutoPlay", String.valueOf(this.jdField_a_of_type_Boolean));
-    return localHashMap;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt));
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
-    }
-    return true;
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{");
-    localStringBuilder.append("mSceneType: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", mIsAutoPlay: ").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", mIndexList: ").append(a(this.jdField_a_of_type_JavaUtilArrayList));
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    return "FamilyCommentInfo\n familyIconUrl " + this.jdField_a_of_type_JavaLangString + "\n familyJumpUrl " + this.jdField_b_of_type_JavaLangString + "\n width " + this.jdField_a_of_type_Int + "\n height " + this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qku
  * JD-Core Version:    0.7.0.1
  */

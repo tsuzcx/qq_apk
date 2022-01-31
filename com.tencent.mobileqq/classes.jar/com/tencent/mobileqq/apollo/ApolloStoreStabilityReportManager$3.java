@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import aitq;
+import aklc;
 import android.os.Build.VERSION;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.WebSsoBody.STServiceMonitItem;
@@ -20,23 +20,23 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.NewIntent;
-import mxe;
+import mzx;
 
 public class ApolloStoreStabilityReportManager$3
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$3(aitq paramaitq) {}
+  public ApolloStoreStabilityReportManager$3(aklc paramaklc) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList(aitq.a(this.this$0));
-    aitq.a(this.this$0);
+    ArrayList localArrayList = new ArrayList(aklc.a(this.this$0));
+    aklc.a(this.this$0);
     try
     {
       Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.3.0");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.3.3");
       Object localObject1 = new WebSSOAgent.UniSsoServerReq();
       ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
       if ((localArrayList == null) || (localArrayList.size() == 0))
@@ -68,10 +68,10 @@ public class ApolloStoreStabilityReportManager$3
         i += 1;
       }
       ((WebSSOAgent.UniSsoServerReq)localObject1).pbReqData.set(ByteStringMicro.copyFrom(((WebSsoBody.STServiceMonitReq)localObject2).toByteArray()));
-      localObject2 = aitq.a();
+      localObject2 = aklc.a();
       if (localObject2 != null)
       {
-        localObject3 = new NewIntent(((AppInterface)localObject2).getApp().getApplicationContext(), mxe.class);
+        localObject3 = new NewIntent(((AppInterface)localObject2).getApp().getApplicationContext(), mzx.class);
         ((NewIntent)localObject3).putExtra("cmd", "apollo_dc_report.service_monit");
         ((NewIntent)localObject3).putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
         ((NewIntent)localObject3).setObserver(this.this$0);
@@ -96,7 +96,7 @@ public class ApolloStoreStabilityReportManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.3
  * JD-Core Version:    0.7.0.1
  */

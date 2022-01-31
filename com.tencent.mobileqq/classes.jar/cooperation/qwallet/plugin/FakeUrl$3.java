@@ -3,7 +3,7 @@ package cooperation.qwallet.plugin;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import bbgu;
+import bdfq;
 import com.tencent.qphone.base.util.QLog;
 
 class FakeUrl$3
@@ -31,7 +31,7 @@ class FakeUrl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.FakeUrl.3
  * JD-Core Version:    0.7.0.1
  */

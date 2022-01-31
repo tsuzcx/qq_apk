@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 
-public class amek
-  implements DialogInterface.OnClickListener
+class amek
+  implements amep
 {
-  public amek(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  amek(amej paramamej) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(FullMessageSearchResult paramFullMessageSearchResult)
+  {
+    amej.a(this.a);
+    this.a.notifyObservers(paramFullMessageSearchResult);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amek
  * JD-Core Version:    0.7.0.1
  */

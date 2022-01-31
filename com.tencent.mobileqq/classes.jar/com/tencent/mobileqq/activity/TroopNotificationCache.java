@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import auko;
+import awbv;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="feedsId")
 public class TroopNotificationCache
-  extends auko
+  extends awbv
 {
   public static final int FEED_TYPE_NEW_GUIDE = 34;
   public static final int FEED_TYPE_NOTICE = 23;
@@ -30,7 +30,7 @@ public class TroopNotificationCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopNotificationCache
  * JD-Core Version:    0.7.0.1
  */

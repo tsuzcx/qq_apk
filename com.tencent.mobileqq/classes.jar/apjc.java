@@ -1,37 +1,31 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-
-final class apjc
-  implements View.OnClickListener
+public class apjc
 {
-  apjc(apkq paramapkq, FileManagerEntity paramFileManagerEntity) {}
+  public static int a = 300;
   
-  public void onClick(View paramView)
+  public static String a(String paramString)
   {
-    try
-    {
-      paramView = bakx.a(this.jdField_a_of_type_Apkq.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (paramView.e == null) {
-        return;
-      }
-      if (bbfj.a(this.jdField_a_of_type_Apkq.getActivity()) == 0)
-      {
-        bajt.a(this.jdField_a_of_type_Apkq.getActivity(), this.jdField_a_of_type_Apkq.getActivity().getString(2131697863));
-        return;
-      }
-      bajt.a(this.jdField_a_of_type_Apkq.getActivity(), this.jdField_a_of_type_Apkq.getActivity().getString(2131692830), 0);
-      TroopFileTransferManager.a(this.jdField_a_of_type_Apkq.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(paramView.e, paramView.g, paramView.c, paramView.h);
-      return;
+    if (bdje.a(paramString)) {
+      return "";
     }
-    catch (Exception paramView) {}
+    paramString = paramString.split("_");
+    if (paramString.length > 2) {
+      return paramString[1];
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if ((bdje.a(paramString1)) || (bdje.a(paramString2))) {
+      return "";
+    }
+    paramString2 = bfhh.a(paramString2);
+    return aljq.bj + paramString2 + paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apjc
  * JD-Core Version:    0.7.0.1
  */

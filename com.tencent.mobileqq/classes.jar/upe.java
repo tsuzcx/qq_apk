@@ -1,29 +1,19 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
-
-class upe
-  extends ParallelJobSegment<uvo, upb>
+public class upe
+  extends ugz
 {
-  public upe(upa paramupa)
-  {
-    this(paramupa, "RequestCommentListSegment");
-  }
-  
-  public upe(upa paramupa, String paramString)
-  {
-    super(paramString);
-  }
-  
-  protected void a(JobContext paramJobContext, uvo paramuvo)
-  {
-    tmg localtmg = new tmg();
-    localtmg.a = paramuvo;
-    syo.a().a(localtmg, new upf(this, paramJobContext, paramuvo));
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upe
  * JD-Core Version:    0.7.0.1
  */

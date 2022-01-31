@@ -3,14 +3,14 @@ package cooperation.comic.webbundle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import axqy;
-import bcfo;
-import bgjm;
+import azmj;
+import beep;
+import bikk;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.webbundle.sdk.IWebBundleWebView;
 import com.tencent.webbundle.sdk.WebBundleClient;
 import cooperation.comic.ui.QQComicFragment;
-import nau;
+import ndq;
 
 public class WebBundleFragment
   extends QQComicFragment
@@ -26,10 +26,10 @@ public class WebBundleFragment
       IWebBundleWebView localIWebBundleWebView = this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient.getValidWebView(super.getActivity(), this.b);
       if ((localIWebBundleWebView instanceof TouchWebView))
       {
-        bgjm.a(this.jdField_a_of_type_JavaLangString, true, bgjm.jdField_a_of_type_JavaLangString);
+        bikk.a(this.jdField_a_of_type_JavaLangString, true, bikk.jdField_a_of_type_JavaLangString);
         return (TouchWebView)localIWebBundleWebView;
       }
-      bgjm.a(this.jdField_a_of_type_JavaLangString, false, bgjm.d);
+      bikk.a(this.jdField_a_of_type_JavaLangString, false, bikk.d);
     }
     return super.a();
   }
@@ -47,29 +47,29 @@ public class WebBundleFragment
   
   public void g()
   {
-    nau.a("Web_readyToLoadUrl");
+    ndq.a("Web_readyToLoadUrl");
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) {
       return;
     }
     a();
-    if ((this.jdField_a_of_type_Bcfo.i) && (this.jdField_a_of_type_Bcfo.k > 0L))
+    if ((this.jdField_a_of_type_Beep.i) && (this.jdField_a_of_type_Beep.k > 0L))
     {
-      axqy.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.jdField_a_of_type_Bcfo.k) / 1000000L), "", "", "", "" + this.jdField_a_of_type_Bcfo.c);
-      this.jdField_a_of_type_Bcfo.k = 0L;
+      azmj.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.jdField_a_of_type_Beep.k) / 1000000L), "", "", "", "" + this.jdField_a_of_type_Beep.c);
+      this.jdField_a_of_type_Beep.k = 0L;
     }
-    this.jdField_a_of_type_Bcfo.q = System.currentTimeMillis();
-    long l = this.jdField_a_of_type_Bcfo.q;
-    l = this.jdField_a_of_type_Bcfo.b;
-    if (((this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient == null) || (!this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient.interceptLoadUrl(this.jdField_a_of_type_AndroidContentIntent))) && (!TextUtils.isEmpty(this.h))) {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.h);
+    this.jdField_a_of_type_Beep.q = System.currentTimeMillis();
+    long l = this.jdField_a_of_type_Beep.q;
+    l = this.jdField_a_of_type_Beep.b;
+    if (((this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient == null) || (!this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient.interceptLoadUrl(this.jdField_a_of_type_AndroidContentIntent))) && (!TextUtils.isEmpty(this.g))) {
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.g);
     }
-    nau.b("Web_readyToLoadUrl");
-    this.jdField_a_of_type_Bcfo.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.h, 0, 0, 0, 0, 0, null);
+    ndq.b("Web_readyToLoadUrl");
+    this.jdField_a_of_type_Beep.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.g, 0, 0, 0, 0, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.comic.webbundle.WebBundleFragment
  * JD-Core Version:    0.7.0.1
  */

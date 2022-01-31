@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.qim;
 
-import aekq;
+import aghh;
 import com.tencent.mobileqq.troop.widget.RedDotImageView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,19 +15,19 @@ class QIMUserManager$5$1
     Iterator localIterator = this.a.a.iterator();
     while (localIterator.hasNext())
     {
-      aekq localaekq = (aekq)localIterator.next();
-      if (localaekq.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView != null) {
-        localaekq.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setImageDrawable(localaekq.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      aghh localaghh = (aghh)localIterator.next();
+      if (localaghh.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView != null) {
+        localaghh.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setImageDrawable(localaghh.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
-      localaekq.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = null;
-      localaekq.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      localaghh.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = null;
+      localaghh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     }
     this.a.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.qim.QIMUserManager.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,59 @@
-import dov.com.qq.im.BaseVMPeakActivity;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
+import cooperation.qqpim.QQPimTipsInfo;
+import eipc.EIPCResult;
 
 public class biub
-  implements bivv
+  extends QIPCModule
 {
-  biub(biua parambiua) {}
-  
-  public void a(int paramInt, String paramString)
+  public biub(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString)
   {
-    if (paramInt == 0) {
-      biua.a(this.a, paramString);
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(bitz.a, 2, "QQPimGetTipsInfoIPC.onCall()" + paramString);
     }
-    ((bita)biua.a(this.a).get(paramInt)).c = paramString;
-    ((bita)biua.a(this.a).get(paramInt)).a = 13;
-    biua.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
+    if (bitz.g.equals(paramString)) {
+      if (QQPimGetTipsInfoIPC.a() != -1) {}
+    }
+    while ((!bitz.h.equals(paramString)) || (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L))
+    {
+      do
+      {
+        do
+        {
+          return null;
+        } while (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L);
+        QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
+        if (QQPimGetTipsInfoIPC.a() == 0)
+        {
+          QQPimGetTipsInfoIPC.a(-1);
+          ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.GetContactTipsRunnable(this.a, QQPimGetTipsInfoIPC.a(this.a), QQPimGetTipsInfoIPC.b(this.a)), null, true);
+          return null;
+        }
+      } while (QQPimGetTipsInfoIPC.a() != 1);
+      QQPimGetTipsInfoIPC.a(-1);
+      ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable(this.a, null), null, true);
+      return null;
+    }
+    QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
+    paramString = new QQPimTipsInfo();
+    paramString.a = 0;
+    QQPimGetTipsInfoIPC.a(this.a).a(paramString);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biub
  * JD-Core Version:    0.7.0.1
  */

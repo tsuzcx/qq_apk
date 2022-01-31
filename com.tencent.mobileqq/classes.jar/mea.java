@@ -1,57 +1,45 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.content.Context;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class mea
-  implements lrz
+public class mea
+  extends mef
 {
-  mea(mdz parammdz, VideoAppInterface paramVideoAppInterface) {}
-  
-  public void a()
+  public mea(AVActivity paramAVActivity, Context paramContext, int paramInt)
   {
-    mdz.c(this.jdField_a_of_type_Mdz);
+    super(paramContext, paramInt);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    int i = mdz.a(paramInt4);
-    if (QLog.isColorLevel()) {
-      QLog.w(mdz.a(this.jdField_a_of_type_Mdz), 1, "onRenderInfoNotify, width[" + this.jdField_a_of_type_Mdz.u + "->" + paramInt1 + "], height[" + this.jdField_a_of_type_Mdz.v + "->" + paramInt2 + "], angle[" + this.jdField_a_of_type_Mdz.t + "->" + paramInt3 + "], rotation[" + mdz.a(this.jdField_a_of_type_Mdz) + "->" + i + "], srcR[" + paramInt4 + "], isLocalView[" + this.jdField_a_of_type_Mdz.c() + "]");
-    }
-    if ((!this.jdField_a_of_type_Mdz.c()) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10004), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    }
-    this.jdField_a_of_type_Mdz.u = paramInt1;
-    this.jdField_a_of_type_Mdz.v = paramInt2;
-    this.jdField_a_of_type_Mdz.t = paramInt3;
-    this.jdField_a_of_type_Mdz.i = i;
-    if (paramInt4 != -1) {
-      mdz.a(this.jdField_a_of_type_Mdz, i);
-    }
-    mdz.d(this.jdField_a_of_type_Mdz);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.h != paramInt)
     {
-      String str = this.jdField_a_of_type_Mdz.b();
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), str, paramArrayOfByte });
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, mRotationAngle[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.h + "->" + paramInt + "], seq[" + l + "], isFinishing[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing() + "]");
+      if (AudioHelper.d())
+      {
+        Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay();
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, Display.getRotation[" + localDisplay.getRotation() + "], seq[" + l + "]");
+      }
     }
-  }
-  
-  public void b()
-  {
-    mdz.b(this.jdField_a_of_type_Mdz);
-  }
-  
-  public void c()
-  {
-    mdz.a(this.jdField_a_of_type_Mdz);
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing()) {
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, 270, paramBoolean);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, paramInt, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mea
  * JD-Core Version:    0.7.0.1
  */

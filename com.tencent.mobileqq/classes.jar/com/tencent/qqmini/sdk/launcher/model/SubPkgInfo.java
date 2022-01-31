@@ -3,13 +3,12 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import besm;
 import java.io.Serializable;
 
 public class SubPkgInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<SubPkgInfo> CREATOR = new besm();
+  public static final Parcelable.Creator<SubPkgInfo> CREATOR = new SubPkgInfo.1();
   public String downloadUrl;
   public int fileSize = -1;
   public int independent;
@@ -65,7 +64,7 @@ public class SubPkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.SubPkgInfo
  * JD-Core Version:    0.7.0.1
  */

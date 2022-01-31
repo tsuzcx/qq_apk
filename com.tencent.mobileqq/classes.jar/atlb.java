@@ -1,18 +1,20 @@
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.listentogether.ui.MusicPanelView;
 
-public abstract interface atlb
+public class atlb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  public atlb(MusicPanelView paramMusicPanelView) {}
   
-  public abstract void a(String paramString1, String paramString2, long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString1, String paramString2, File paramFile);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    MusicPanelView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atlb
  * JD-Core Version:    0.7.0.1
  */

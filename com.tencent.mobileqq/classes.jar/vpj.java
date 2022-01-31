@@ -1,22 +1,39 @@
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import android.support.annotation.NonNull;
+import android.util.SparseArray;
+import java.util.LinkedList;
 
 public class vpj
-  extends vnb
 {
-  public vpj(ElasticImageView paramElasticImageView) {}
+  private final SparseArray<LinkedList<Object>> a = new SparseArray();
   
-  public void a(ValueAnimator paramValueAnimator)
+  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
   {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ElasticImageView.a(this.a, this.a.d);
-    ved.b("ElasticImageView", "updateAnimator:" + this.a.d);
-    ElasticImageView.a(this.a);
+    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
+    if (paramClass != null)
+    {
+      paramClass = paramClass.poll();
+      if (paramClass != null) {}
+      return paramClass;
+    }
+    return null;
+  }
+  
+  public void a(@NonNull Object paramObject)
+  {
+    int i = paramObject.getClass().hashCode();
+    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
+    LinkedList localLinkedList1 = localLinkedList2;
+    if (localLinkedList2 == null)
+    {
+      localLinkedList1 = new LinkedList();
+      this.a.put(i, localLinkedList1);
+    }
+    localLinkedList1.offer(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpj
  * JD-Core Version:    0.7.0.1
  */

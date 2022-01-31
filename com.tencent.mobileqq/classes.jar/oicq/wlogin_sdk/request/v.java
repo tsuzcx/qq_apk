@@ -77,7 +77,7 @@ public class v
   public int b(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2)
   {
     long l = System.currentTimeMillis();
-    t.as.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2423");
+    t.as.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2424");
     try
     {
       paramArrayOfByte1 = t.as.toJasonObj().toString().getBytes();

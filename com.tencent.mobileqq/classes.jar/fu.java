@@ -1,7 +1,14 @@
-class fu {}
+import com.tencent.mobileqq.data.ChatMessage;
+
+public abstract class fu
+{
+  public abstract void a(ChatMessage paramChatMessage, int paramInt);
+  
+  public abstract void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     fu
  * JD-Core Version:    0.7.0.1
  */

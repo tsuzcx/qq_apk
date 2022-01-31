@@ -1,33 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public abstract interface ohb
+class ohb
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  ohb(ogy paramogy, boolean paramBoolean) {}
   
-  public abstract void a(int paramInt, String paramString, ojs paramojs, ojt paramojt);
-  
-  public abstract void a(int paramInt, ojs paramojs1, ojs paramojs2, ojt paramojt);
-  
-  public abstract void a(int paramInt, ojs paramojs, ojt paramojt, CommentData paramCommentData);
-  
-  public abstract void a(long paramLong, boolean paramBoolean, int paramInt1, String paramString, int paramInt2);
-  
-  public abstract void a(long paramLong, boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2);
-  
-  public abstract void a(boolean paramBoolean, BaseCommentData paramBaseCommentData);
-  
-  public abstract void a(boolean paramBoolean, BaseCommentData paramBaseCommentData, String paramString);
-  
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt, ojs paramojs, ojt paramojt, CommentData paramCommentData);
-  
-  public abstract void c(int paramInt, ojs paramojs, ojt paramojt, CommentData paramCommentData);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = new HashMap();
+    paramDialogInterface.put("stat_src", "2");
+    noy.a(new obk().a(BaseApplication.getContext()).a(noy.e).b(noy.ac).a(oef.a(ogy.a(this.jdField_a_of_type_Ogy))).d(noy.a(ogy.a(this.jdField_a_of_type_Ogy), paramDialogInterface)).a());
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!ogy.a(this.jdField_a_of_type_Ogy)) {}
+    }
+    while (!(this.jdField_a_of_type_Ogy.a instanceof Activity))
+    {
+      return;
+      this.jdField_a_of_type_Ogy.g();
+      return;
+    }
+    szl.a(this.jdField_a_of_type_Ogy.a);
+    odv.a(this.jdField_a_of_type_Ogy.a, ogy.a(this.jdField_a_of_type_Ogy));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ohb
  * JD-Core Version:    0.7.0.1
  */

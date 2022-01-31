@@ -1,60 +1,63 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedReq;
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgzi
-  extends QzoneExternalRequest
+  extends bgzp
 {
-  public JceStruct a;
+  private INTERFACE.StGetUserInfoExtraReq a = new INTERFACE.StGetUserInfoExtraReq();
   
-  public bgzi(long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString, int paramInt)
+  public bgzi(String paramString)
   {
-    super.setRefer(paramString);
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong1);
-    paramString = new AIONewestFeedReq();
-    paramString.uOpUin = paramLong1;
-    paramString.uHostUin = paramArrayList;
-    paramString.uLastTime = paramLong2;
-    paramString.src = paramInt;
-    this.a = paramString;
+    this.a.appid.set(paramString);
   }
   
-  public static AIONewestFeedRsp a(byte[] paramArrayOfByte, QQAppInterface paramQQAppInterface, int[] paramArrayOfInt)
+  protected String a()
+  {
+    return "mini_user_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    do
+    INTERFACE.StGetUserInfoExtraRsp localStGetUserInfoExtraRsp = new INTERFACE.StGetUserInfoExtraRsp();
+    try
     {
-      return paramArrayOfByte;
-      paramQQAppInterface = (AIONewestFeedRsp)decode(paramArrayOfByte, "getAIONewestFeed", paramArrayOfInt);
-      paramArrayOfByte = paramQQAppInterface;
-    } while (paramQQAppInterface != null);
+      localStGetUserInfoExtraRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetUserInfoExtraRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("encryptedData", localStGetUserInfoExtraRsp.encryptedData.get());
+        paramArrayOfByte.put("iv", localStGetUserInfoExtraRsp.iv.get());
+        return paramArrayOfByte;
+      }
+      QMLog.d("GetUserInfoExtraRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("GetUserInfoExtraRequest", "onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
-  public String getCmdString()
+  protected byte[] a()
   {
-    return "QzoneNewService.getAIONewestFeed";
+    return this.a.toByteArray();
   }
   
-  public JceStruct getReq()
+  protected String b()
   {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getAIONewestFeed";
+    return "GetUserInfoExtra";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgzi
  * JD-Core Version:    0.7.0.1
  */
